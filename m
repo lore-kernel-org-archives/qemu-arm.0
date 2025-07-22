@@ -4,118 +4,120 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF74BC83F1A
-	for <qemu-arm@archiver.kernel.org>; Tue, 22 Jul 2025 17:58:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64A00C83F27
+	for <qemu-arm@archiver.kernel.org>; Tue, 22 Jul 2025 18:01:54 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ueHG6-0004LH-21; Tue, 22 Jul 2025 13:58:35 -0400
+	id 1ueHJ9-0007BH-CO; Tue, 22 Jul 2025 14:01:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <vacha.bhavsar@oss.qualcomm.com>)
- id 1ueGwR-0000sh-2A
- for qemu-arm@nongnu.org; Tue, 22 Jul 2025 13:38:15 -0400
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+ id 1ueGvx-0000Fg-GR
+ for qemu-arm@nongnu.org; Tue, 22 Jul 2025 13:37:45 -0400
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <vacha.bhavsar@oss.qualcomm.com>)
- id 1ueGwN-0000D9-MM
- for qemu-arm@nongnu.org; Tue, 22 Jul 2025 13:38:14 -0400
-Received: from pps.filterd (m0279864.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 56MF9J5I013299
- for <qemu-arm@nongnu.org>; Tue, 22 Jul 2025 17:38:09 GMT
+ id 1ueGvu-00009w-JN
+ for qemu-arm@nongnu.org; Tue, 22 Jul 2025 13:37:45 -0400
+Received: from pps.filterd (m0279872.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 56MF1rLo010707
+ for <qemu-arm@nongnu.org>; Tue, 22 Jul 2025 17:37:41 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-type:date:from:in-reply-to:message-id:mime-version
- :references:subject:to; s=qcppdkim1; bh=fWiNpI4sQ9CEWLe68Mec0P4x
- 7LZOJJJIxJQ/jJX/Eb8=; b=inRcUpKeU10RjLfn2CIhdINmBrm/ORDdazZlU1yc
- 6Rw1B04BxYhglc39Q3D0ND6a+3DXf/TdbGwrHGasrTWBk+xO5vH+ewkPjtYVMJt4
- rc34e8FNoHYwGxzXLYP/sa9tn/a6gFkODoVtNjI2qv3ZR8vCYdaU4R2VPYN8nOCy
- oLMGN15GgLF1H5fe8vlLklGGyfz5qCuW70TffTq+8JWsstnuoxcBQmW1fiIrnyu5
- JLcJx7M8+G5l5ka3ENh875C7cExiaPwgsHhLOVaro68Tv9+T7tmUtfRHNsGNV5Hv
- WSQgJySoCsw3ilrT2HfZwGTYb9G/45lSwnk6H5CV10xBIw==
-Received: from mail-yw1-f197.google.com (mail-yw1-f197.google.com
- [209.85.128.197])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 481g3en5sh-1
+ cc:content-transfer-encoding:date:from:in-reply-to:message-id
+ :mime-version:references:subject:to; s=qcppdkim1; bh=obCClsJcQMc
+ 052y7t2akKepUi0DGGNqD8BY6lnSGTo4=; b=cmH3rjw/HL32ef0orVUn42DkGAW
+ RGvvmqQ++ZJ4FnoCYNbu39SIoZcXsDDfHwIRaGBv+iYyHMKq0qs+OT83hgwmqV+t
+ g+YcDInE9/TwL2G1os53YFswWEatzSejza/2/e+goLl8fPvbAs2zb4Y5uV2OqANi
+ xlRjeUfFtPlo8LfWGuvuYlccrI8DNGaBHOfzgsxEFodZ0WQUrAQyezSl0yvFv7/Z
+ tbbNsm7N/fDcKA/M3yBjISo7RGG/zXg58FOENtVo6PLjhrWcBSkLTa3C+mVZYbJi
+ riKNGUHOe7Z96861yF8vZ6LpoxsaCQca0RK3qt9N/AcuiD4wRaGd7WLxdRQ==
+Received: from mail-pg1-f200.google.com (mail-pg1-f200.google.com
+ [209.85.215.200])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4826t19qxu-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Tue, 22 Jul 2025 17:38:09 +0000 (GMT)
-Received: by mail-yw1-f197.google.com with SMTP id
- 00721157ae682-7183fd8c3cfso92200167b3.0
- for <qemu-arm@nongnu.org>; Tue, 22 Jul 2025 10:38:09 -0700 (PDT)
+ for <qemu-arm@nongnu.org>; Tue, 22 Jul 2025 17:37:41 +0000 (GMT)
+Received: by mail-pg1-f200.google.com with SMTP id
+ 41be03b00d2f7-b3beafa8d60so7186484a12.3
+ for <qemu-arm@nongnu.org>; Tue, 22 Jul 2025 10:37:41 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1753205888; x=1753810688;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=fWiNpI4sQ9CEWLe68Mec0P4x7LZOJJJIxJQ/jJX/Eb8=;
- b=NGguLBBGudwOGVAx1XiUH2TDj+1L/hV9Kh1FR3G8vCO2W87/bMbJpqn2A1XPjDjBMk
- XGqZ86IMUo7V6WASW/I4gFF+hVhwjr1BzRt+rMhyCcrbt4EIwHj1uByyF/wa08D82A+Y
- ceMfKtxt+4yRG2ueL90m1/DODTkCs/wlJqYKI39sYvXiLd21i308AXqMqOIBw/yHO3BO
- 61G5FXDhvFXiCjpY58JPUGfGTjLc1UKbqvQIvfy4Z5cw6PVR9ioyFj/OGsHbgU2awta/
- kCYiQ6CaC+flGORRs9EveBpzJW6AHJ7BXpjiNmVwTXSut16b1cW6OMRaaL6kTWBA7iNS
- 4cHw==
+ d=1e100.net; s=20230601; t=1753205860; x=1753810660;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=obCClsJcQMc052y7t2akKepUi0DGGNqD8BY6lnSGTo4=;
+ b=Iu+IGYByaHf+2Cyr7TSd/YA06cQOTKF/bZwPI6YqZDwBiKGlqSPEwpMAwd9TFXrW7M
+ Or9izwLvC3KmhuC9VnStQdWQ8Lrqgo5UcJ8Z7S0v1SdkiDHgjiEjMqUHf2qpmhLO9RmV
+ H7XhZzEanRFmlK+1eH6n/4cRK/fwyqeEMfQRF6qDHJDtJhZT8646TAomSi5ysLcgDyYh
+ PtHm3EcMr6VvgblWyqgF8rQje7gkRFlNto/FqBh+J1m0q1riIEeak/feC4nzP3ZqpwV4
+ 8u/TWz9IrekFig6Tgwoc6BP6xB1yQtlK+v812Waqc4d3Qlia+K2vglFWjEKhnfKZR9IW
+ qsug==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWR4jsqttKiM5hyLdUNJRF8iI3pXVh2WcI0sxSs8MnqB9ni0cL72GY82LUcFjLqNoPk7pN/qfZUtg==@nongnu.org
-X-Gm-Message-State: AOJu0YyySsIV9v/2RkeHfAZQFXeMA9RJiz82w+GX8ThEzSjIU6tYN2kw
- nPfoaM715cjW3VQBW99rr9zfGGAVAMZdkl58Unu4a6DLq3emP59K2AJ/RnnuMZe5be8Wjrzx1Nq
- FxlO2ewUNcBr7qmdbeB4qeoer0wrsJGpL9DGd5aTWsweOlgJtWEbCm2/U9SK2MA/bUzLjns7FtS
- LzFEzkTrY/Xr+sdX1Pnh6hmcS8nEGp6A==
-X-Gm-Gg: ASbGncssqK01LO4rD9uv+48zfEVZF+Jym5U6ixC6hR931UuH9yMJhglG2NXnuD4gHZB
- hCms8psgovPW560CGyYopUQU+oba+F5pPcTiNYV24rTihAFuGB/EK1Rl03fZQfQp2jqktUXjRUj
- lrRJnVsKJQfflwW2i+KipJBA==
-X-Received: by 2002:a05:6902:200d:b0:e8b:bece:b4c5 with SMTP id
- 3f1490d57ef6-e8dc594c716mr178282276.20.1753205888092; 
- Tue, 22 Jul 2025 10:38:08 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEr1T3FG7yfXPc2hnG4rIvPII63tndvYhJZAVvN8Bq83na/KVspVrNaKPVcbVQpesWQNK0/uZ6eST5dqrlqRH0=
-X-Received: by 2002:a05:6902:200d:b0:e8b:bece:b4c5 with SMTP id
- 3f1490d57ef6-e8dc594c716mr178254276.20.1753205887546; Tue, 22 Jul 2025
- 10:38:07 -0700 (PDT)
-MIME-Version: 1.0
-References: <20250721211952.2239714-1-vacha.bhavsar@oss.qualcomm.com>
- <20250721211952.2239714-2-vacha.bhavsar@oss.qualcomm.com>
- <9eeee985-0df8-4e88-8ebc-00e20399fe95@linaro.org>
-In-Reply-To: <9eeee985-0df8-4e88-8ebc-00e20399fe95@linaro.org>
+ AJvYcCX9G+fBJifCOIT7oFFaLVRbVogxNRV/PJteV5JEo3F3pdz2IXBpeKtbuOOoJPczU2bbY7xvLekgiQ==@nongnu.org
+X-Gm-Message-State: AOJu0YyEtUBYnUJ2dOtVZFNkoaeyd6dFUAlzFh8pQoxO0VH2GMt8E3vU
+ McSk+VsnFmFouA3uy8MttEizhGQJ/UjhOSr1eSVuIxmWG75VWV7InBrxNLtqzdvoWH9yoMLGWlX
+ Q6I1PmLVM5Nz6mKFnd1X3zt4ZgkU61LBri5vcGFQu67gJOpFJXkuHPyM=
+X-Gm-Gg: ASbGncvp8Od/FnA6UrdFKhDFC0GNnM1kv2duIYHduvUVMYoJyHDfX+JJEJOL/E0SLUH
+ cFqF5N18O9rwnNRWAvRvlDli1KTn48qdzH5Q4sTAVEkmNfJjuN1PcXe91n6X60IUdATHpQ8D/OZ
+ 1Lh+Dz9a03itV0nXyjGN2WTQAQRaaeV78/VR/mdJ0UoZFcMiIGLUyQ9L4VpPoYuZaSbk2f3Zl5L
+ CdyhOUf8B6TUpyuMz6dKl5GiVIuEtZbcFK6FF9TWU99WI86VTQeJSHOep81sWoVnzr+d90WpoW5
+ st5FBYl7WdxYNVvF9f6NgrKj6IzbBF9hXgS8rl81dNZeFRj3T2eVN9IbagglBJExAC9Pe2dcl3i
+ jcEP362bS0ghV7lU=
+X-Received: by 2002:a17:90b:2885:b0:311:f99e:7f4b with SMTP id
+ 98e67ed59e1d1-31e507ce490mr148982a91.28.1753205860288; 
+ Tue, 22 Jul 2025 10:37:40 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGYlm3VuL+wL06ZHfokI+fHHJVWcmjTlW2ak3xoOyfjkiYsf5LiO6T2WZWxFTbVtcu2uGFcBA==
+X-Received: by 2002:a17:90b:2885:b0:311:f99e:7f4b with SMTP id
+ 98e67ed59e1d1-31e507ce490mr148957a91.28.1753205859836; 
+ Tue, 22 Jul 2025 10:37:39 -0700 (PDT)
+Received: from admin15.qualcomm.com (i-global254.qualcomm.com.
+ [199.106.103.254]) by smtp.gmail.com with ESMTPSA id
+ 98e67ed59e1d1-31cb5c5da0csm10081180a91.25.2025.07.22.10.37.39
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 22 Jul 2025 10:37:39 -0700 (PDT)
 From: Vacha Bhavsar <vacha.bhavsar@oss.qualcomm.com>
-Date: Tue, 22 Jul 2025 13:37:56 -0400
-X-Gm-Features: Ac12FXxH0ESnt3iQzTvPpDTAcad2G5Si_vyDaIPxXz6PvLF01GTcYg6M63-9I0c
-Message-ID: <CAEWVDmsJPq47pZgwXRZzhwQYgkuUQn4ZHWk8X36S0Fzk-tz=yQ@mail.gmail.com>
-Subject: Re: [PATCH 1/2] target/arm: Fix big-endian handling of NEON gdb
- remote debugging
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org
-Content-Type: multipart/alternative; boundary="00000000000025505c063a880e1f"
-X-Proofpoint-ORIG-GUID: NEtDT9xLWUgKK13jI5O97rHSFxxweAG-
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwNzIyMDE0OSBTYWx0ZWRfXxDZqnIT/hrry
- O9owZSmWJX1PMqEbMrAaLrD7efBSfKI5D5jqo7YGHryslyMIodRj+nm6UTwEgjIcP3Woe5Mp08j
- KIfOwQeZlah9oO4QMUfVNWVZjSfMkgCJQfFh3f+z42QXSp14ilAlIpOQ1KYTmnET99PFkb+Hx5/
- B7PiJui+UePDjbxFW8wNhluyOh2YniMfoDlMnUljfsP656ZWnnJcriEgFyPLGrnKdCjDHFby5Mu
- oymxeokdhQALLFqM8fUHCrTJIDS9MysqqfTGqKZaeAxIQgjzsgxfZpMeCXr9T1huqOOvmE06fUO
- v+0J4GZfTpriqY+fPTuVJKM+Sm0tDbn4k4e8xY78JuulL957qAQyCjiV/IeBHPudoDmxGRcJbv8
- Mm9JynYOvIwieT1xQDpu26KZ/LSrxS/G5YL7jTGxhpY4JGse5Q1PoBLZAZVuV/T5PEeYHbBW
-X-Authority-Analysis: v=2.4 cv=Q+fS452a c=1 sm=1 tr=0 ts=687fcc81 cx=c_pps
- a=0mLRTIufkjop4KoA/9S1MA==:117 a=Wb1JkmetP80A:10 a=KKAkSRfTAAAA:8
- a=EUspDBNiAAAA:8 a=W__LxpSxGxo44iX2rtMA:9 a=QEXdDO2ut3YA:10
- a=FL2y2Ow5dUcLyCVka2oA:9 a=x0wGDgfKR-FBRejI:21 a=lqcHg5cX4UMA:10
- a=WgItmB6HBUc_1uVUp3mg:22 a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-GUID: NEtDT9xLWUgKK13jI5O97rHSFxxweAG-
+To: qemu-devel@nongnu.org, vacha.bhavsar@oss.qualcomm.com
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
+Subject: [PATCH v2 2/2] target/arm: Fix big-endian handling of SVE gdb remote
+ debugging
+Date: Tue, 22 Jul 2025 17:37:36 +0000
+Message-Id: <20250722173736.2332529-3-vacha.bhavsar@oss.qualcomm.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20250722173736.2332529-1-vacha.bhavsar@oss.qualcomm.com>
+References: <20250722173736.2332529-1-vacha.bhavsar@oss.qualcomm.com>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+X-Proofpoint-GUID: R78CNjZg9Tur7he9utKvocnOLD9NHUd8
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwNzIyMDE0OCBTYWx0ZWRfX28wiO3CWuCJa
+ nAmhnfBM519MlyC+3zC5Ve4sAcjPVkBjHiUFZnhwA8vCofJ4oFSf/VqLEdgBp+lxB+79zPeXR78
+ AOGZv9baZKrklZZ0lZ+bFp9MdyR52OU7FGK5YTjIG/S3MV+fRwVj1F1TSDQUBGceIb3tikP3ahu
+ stAfhvAkOUCQQGJR5VCe5SC4zuzJdKoXZzETcipacevIIYTvRRgGjsskGDqr+ma9t/g3Qi3xrNW
+ qQJVIpKhElVMCG/aKC9z2UTTmgdkhN9Dqx/DsKTR/ZvYyWI02OTpH1UpEZR49OfROK6bG8/8SvN
+ vwNkoTA89qmsNWYfCPwAdFKZhxlKwGlgkpZoYuFgC1MDp2Kq7U7Ev0RRkJMtOzKchmOhDkodBGN
+ GIBY1Y8PUmSX627UQvkdajfopyvrJp8NVeD1N1TNCD1lilwENDRVmCH1c6b63b72kJgpa1ns
+X-Authority-Analysis: v=2.4 cv=E8/Npbdl c=1 sm=1 tr=0 ts=687fcc65 cx=c_pps
+ a=oF/VQ+ItUULfLr/lQ2/icg==:117 a=JYp8KDb2vCoCEuGobkYCKw==:17
+ a=Wb1JkmetP80A:10 a=EUspDBNiAAAA:8 a=zyzssM-dKFwhFTZ1wpsA:9
+ a=3WC7DwWrALyhR5TkjVHa:22
+X-Proofpoint-ORIG-GUID: R78CNjZg9Tur7he9utKvocnOLD9NHUd8
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.9,FMLib:17.12.80.40
  definitions=2025-07-22_02,2025-07-21_02,2025-03-28_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- clxscore=1015 adultscore=0 phishscore=0 mlxscore=0 lowpriorityscore=0
- mlxlogscore=856 suspectscore=0 spamscore=0 priorityscore=1501 malwarescore=0
- bulkscore=0 impostorscore=0 classifier=spam authscore=0 authtc=n/a authcc=
+ impostorscore=0 malwarescore=0 spamscore=0 bulkscore=0 lowpriorityscore=0
+ priorityscore=1501 adultscore=0 suspectscore=0 clxscore=1015 phishscore=0
+ mlxlogscore=717 mlxscore=0 classifier=spam authscore=0 authtc=n/a authcc=
  route=outbound adjust=0 reason=mlx scancount=1 engine=8.19.0-2505280000
- definitions=main-2507220149
-Received-SPF: pass client-ip=205.220.168.131;
- envelope-from=vacha.bhavsar@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
+ definitions=main-2507220148
+Received-SPF: pass client-ip=205.220.180.131;
+ envelope-from=vacha.bhavsar@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
 X-Spam_score_int: -26
 X-Spam_score: -2.7
 X-Spam_bar: --
 X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, HTML_MESSAGE=0.001,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_LOW=-0.7,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -131,171 +133,58 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
---00000000000025505c063a880e1f
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+This patch adds big endian support for SVE GDB
+remote debugging. It replaces the use of pointer dereferencing with the use
+of ldq_p(). Additionally, it checks the target endianness to ensure the most
+significant bits are always in second element.
 
-Hi Philippe,
+Signed-off-by: Vacha Bhavsar <vacha.bhavsar@oss.qualcomm.com>
+---
+Changes since v1:
+- corrected styling error in if-else block
+- correct commit message to no longer refer to patch "series" notion
 
-Noted! Edits have been made and another version sent over.
+ target/arm/gdbstub64.c | 17 ++++++++++++-----
+ 1 file changed, 12 insertions(+), 5 deletions(-)
 
-Thanks,
-Vacha
+diff --git a/target/arm/gdbstub64.c b/target/arm/gdbstub64.c
+index c9d8012907..f276522af7 100644
+--- a/target/arm/gdbstub64.c
++++ b/target/arm/gdbstub64.c
+@@ -199,10 +199,17 @@ int aarch64_gdb_set_sve_reg(CPUState *cs, uint8_t *buf, int reg)
+     case 0 ... 31:
+     {
+         int vq, len = 0;
+-        uint64_t *p = (uint64_t *) buf;
+         for (vq = 0; vq < cpu->sve_max_vq; vq++) {
+-            env->vfp.zregs[reg].d[vq * 2 + 1] = *p++;
+-            env->vfp.zregs[reg].d[vq * 2] = *p++;
++            if (target_big_endian()){
++                env->vfp.zregs[reg].d[vq * 2 + 1] = ldq_p(buf);
++                buf += 8;
++                env->vfp.zregs[reg].d[vq * 2] = ldq_p(buf);
++            } else{
++                env->vfp.zregs[reg].d[vq * 2] = ldq_p(buf);
++                buf += 8;
++                env->vfp.zregs[reg].d[vq * 2 + 1] = ldq_p(buf);
++            }
++            buf += 8;
+             len += 16;
+         }
+         return len;
+@@ -217,9 +224,9 @@ int aarch64_gdb_set_sve_reg(CPUState *cs, uint8_t *buf, int reg)
+     {
+         int preg = reg - 34;
+         int vq, len = 0;
+-        uint64_t *p = (uint64_t *) buf;
+         for (vq = 0; vq < cpu->sve_max_vq; vq = vq + 4) {
+-            env->vfp.pregs[preg].p[vq / 4] = *p++;
++            env->vfp.pregs[preg].p[vq/4] = ldq_p(buf);
++            buf += 8;
+             len += 8;
+         }
+         return len;
+-- 
+2.34.1
 
-On Tue, Jul 22, 2025 at 2:05=E2=80=AFAM Philippe Mathieu-Daud=C3=A9 <philmd=
-@linaro.org>
-wrote:
-
-> Hi,
->
-> On 21/7/25 23:19, Vacha Bhavsar wrote:
-> > This patch adds big endian support for NEON GDB remote
-> > debugging. It replaces the use of ldq_le_p() with the use of ldq_p() as
-> > explained in the first part of this patch series. Additionally, the
-> order in
-> > which the buffer content is loaded into the CPU struct is switched
-> depending
-> > on target endianness to ensure the most significant bits are always in
-> second
-> > element.
->
-> This patch description is what will be committed in the git history.
->
-> What do you mean by "as explained in the first part of this patch
-> series"? This is already the first patch of the series. The "series"
-> notion will be lost in the git history, so we don't understand what
-> you meant / referred to.
->
-> Anyway, maybe the description can be simplified as:
->
-> "Check target endianness and always store the most significant bits
->   in the second element."
->
-> > Signed-off-by: Vacha Bhavsar <vacha.bhavsar@oss.qualcomm.com>
-> > ---
-> >   target/arm/gdbstub64.c | 12 ++++++++++--
-> >   1 file changed, 10 insertions(+), 2 deletions(-)
-> >
-> > diff --git a/target/arm/gdbstub64.c b/target/arm/gdbstub64.c
-> > index 64ee9b3b56..8b7f15b920 100644
-> > --- a/target/arm/gdbstub64.c
-> > +++ b/target/arm/gdbstub64.c
-> > @@ -115,8 +115,16 @@ int aarch64_gdb_set_fpu_reg(CPUState *cs, uint8_t
-> *buf, int reg)
-> >           /* 128 bit FP register */
-> >           {
-> >               uint64_t *q =3D aa64_vfp_qreg(env, reg);
-> > -            q[0] =3D ldq_le_p(buf);
-> > -            q[1] =3D ldq_le_p(buf + 8);
-> > +
-> > +            if (target_big_endian()){
-> > +                q[1] =3D ldq_p(buf);
-> > +                q[0] =3D ldq_p(buf + 8);
-> > +            }
-> > +            else{
->
-> Per our docs/devel/style.rst:
->
->                 } else {
->
-> > +                q[0] =3D ldq_p(buf);
-> > +                q[1] =3D ldq_p(buf + 8);
-> > +            }
-> > +
-> >               return 16;
-> >           }
-> >       case 32:
->
->
-
---00000000000025505c063a880e1f
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">Hi=C2=A0Philippe,<div><br></div><div>Noted! Edits have bee=
-n made and another version sent over.</div><div><br></div><div>Thanks,</div=
-><div>Vacha<br><table cellpadding=3D"0" style=3D"font-family:&quot;Google S=
-ans&quot;,Roboto,RobotoDraft,Helvetica,Arial,sans-serif;font-size:14px;bord=
-er-collapse:collapse;table-layout:fixed;width:805.365px"><tbody></tbody></t=
-able><table cellpadding=3D"0" style=3D"border-collapse:collapse;margin-top:=
-0px;width:auto;font-family:&quot;Google Sans&quot;,Roboto,RobotoDraft,Helve=
-tica,Arial,sans-serif;font-size:14px;display:block"></table></div></div><br=
-><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Tue, J=
-ul 22, 2025 at 2:05=E2=80=AFAM Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"m=
-ailto:philmd@linaro.org" target=3D"_blank">philmd@linaro.org</a>&gt; wrote:=
-<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8=
-ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">Hi,<br>
-<br>
-On 21/7/25 23:19, Vacha Bhavsar wrote:<br>
-&gt; This patch adds big endian support for NEON GDB remote<br>
-&gt; debugging. It replaces the use of ldq_le_p() with the use of ldq_p() a=
-s<br>
-&gt; explained in the first part of this patch series. Additionally, the or=
-der in<br>
-&gt; which the buffer content is loaded into the CPU struct is switched dep=
-ending<br>
-&gt; on target endianness to ensure the most significant bits are always in=
- second<br>
-&gt; element.<br>
-<br>
-This patch description is what will be committed in the git history.<br>
-<br>
-What do you mean by &quot;as explained in the first part of this patch<br>
-series&quot;? This is already the first patch of the series. The &quot;seri=
-es&quot;<br>
-notion will be lost in the git history, so we don&#39;t understand what<br>
-you meant / referred to.<br>
-<br>
-Anyway, maybe the description can be simplified as:<br>
-<br>
-&quot;Check target endianness and always store the most significant bits<br=
->
-=C2=A0 in the second element.&quot;<br>
-<br>
-&gt; Signed-off-by: Vacha Bhavsar &lt;<a href=3D"mailto:vacha.bhavsar@oss.q=
-ualcomm.com" target=3D"_blank">vacha.bhavsar@oss.qualcomm.com</a>&gt;<br>
-&gt; ---<br>
-&gt;=C2=A0 =C2=A0target/arm/gdbstub64.c | 12 ++++++++++--<br>
-&gt;=C2=A0 =C2=A01 file changed, 10 insertions(+), 2 deletions(-)<br>
-&gt; <br>
-&gt; diff --git a/target/arm/gdbstub64.c b/target/arm/gdbstub64.c<br>
-&gt; index 64ee9b3b56..8b7f15b920 100644<br>
-&gt; --- a/target/arm/gdbstub64.c<br>
-&gt; +++ b/target/arm/gdbstub64.c<br>
-&gt; @@ -115,8 +115,16 @@ int aarch64_gdb_set_fpu_reg(CPUState *cs, uint8_t=
- *buf, int reg)<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0/* 128 bit FP register */<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0{<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0uint64_t *q =3D =
-aa64_vfp_qreg(env, reg);<br>
-&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 q[0] =3D ldq_le_p(buf);<br>
-&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 q[1] =3D ldq_le_p(buf + 8);=
-<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 if (target_big_endian()){<b=
-r>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 q[1] =3D ldq_=
-p(buf);<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 q[0] =3D ldq_=
-p(buf + 8);<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 else{<br>
-<br>
-Per our docs/devel/style.rst:<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 } else {<br>
-<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 q[0] =3D ldq_=
-p(buf);<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 q[1] =3D ldq_=
-p(buf + 8);<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
-&gt; +<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0return 16;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0}<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0case 32:<br>
-<br>
-</blockquote></div>
-
---00000000000025505c063a880e1f--
 

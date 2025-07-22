@@ -4,91 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B1F6C83F27
-	for <qemu-arm@archiver.kernel.org>; Tue, 22 Jul 2025 06:09:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09369C83F25
+	for <qemu-arm@archiver.kernel.org>; Tue, 22 Jul 2025 09:31:16 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ue6Bb-0001Mk-KI; Tue, 22 Jul 2025 02:09:11 -0400
+	id 1ue9Kv-0004L4-Kr; Tue, 22 Jul 2025 05:31:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ue6BY-0001Jq-3U
- for qemu-arm@nongnu.org; Tue, 22 Jul 2025 02:09:08 -0400
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ue6BW-0006ce-1R
- for qemu-arm@nongnu.org; Tue, 22 Jul 2025 02:09:07 -0400
-Received: by mail-wr1-x430.google.com with SMTP id
- ffacd0b85a97d-3a54690d369so4181096f8f.3
- for <qemu-arm@nongnu.org>; Mon, 21 Jul 2025 23:09:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1753164544; x=1753769344; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=rHi5AoTZKxgE1b905lgbLvWxvaelygagiP7bhh1leBo=;
- b=GonkqLLtsiXASdgvpCKKfD9YDTxgfO+BqPJ5Ku565aVEztns5ySn/HKxocGBbDG6Rq
- UNInXxcyMxOfXonT3vA1AJLEBMJV+QQOMXTi3o0WyfSkAbiWPhJBcSeDkbHuO4Kv1GQK
- G2Cb3DpINKlKVQSEEclwsCeWrXq8JzMESti3cR+JUitrde0t9FPj7qsCgb+XX/ncKxsn
- s7s6SxGST7hq0r6EX038B2991uTqtseKK6O30sbXTqsIgfwadPXjxDiF1juBfekM7HYZ
- 9iIVFUy1RtfMcxs3zo4brKjsCJnIhpQXm81Gk20UeH9MB/3cqXO6YiRrtY/oFUA6BnRU
- s/RA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1753164544; x=1753769344;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=rHi5AoTZKxgE1b905lgbLvWxvaelygagiP7bhh1leBo=;
- b=Vu3NVW9sIEdTAxlHtH3p/1ToF9sHRfkSIX3VhW9gX4ClcAKlbTLL1nf5hisHgWtazW
- x+tkxiLJ8adBCSVl3nHMqC4jNEVXI6MApuLVX8dz5doJCM0VLCA85tOmtQobEnAMbHG1
- fcUaB6YqM4ZpZScYYHa0iKcaVrdRMq0OpIjp9AjFDaAObPPBq9xVhDPxxlhMLtplzMzM
- sIpVH//usoSErJHcqxPx/PEK2rLGn6CxxPLW4TLBR/3pJG+D9ErTOdl5zACnK7KkaP9e
- R3Njh1YYMwY7tdG311LAOL1TyFFkyPbdafiYoOwN97sf9eFARrI/lRCwpJqMNIHdbbLb
- /XQA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWo+2+E99QUsY8wbWdVoay7rvKmsnOV8fv0H2Htm8ZI3sDT4pa4qfD8cCAr9qIwes8i7YXLUlMaaQ==@nongnu.org
-X-Gm-Message-State: AOJu0YyZceCIR4Sj3CHQzfOexbedSIXhKdMIUE/OwFJ5pjdswFmefEjK
- sgQZxD9MiLaaamAmnB13oPhMGPBiJFH9WphW06zRYHPAS4/zHiRQ55NxndoSbS8/xBE=
-X-Gm-Gg: ASbGncuVie+YPEUDCyab2YWAZ+D2JR2S32Hjm+B/qtvNhtxUkL1O9vTwltwXtrT0MxO
- WBL3sZPcNUf+LP0Rua067uLfFEbV84QRE22gnPEndSEDARjN69vQcZX7URL4+5v7KL5tLH/KiA+
- HFNRvAWSbPVV0wdGF3VYghmHEzQRYaW7JFTMzK6kYqZThCcYRxPq9qDuxQSuIzzF3eUvzpUvGvx
- YDRXg76NmiT3G2wD5MX0JsiXTiBoF+Vw95hA0dZJAesAOf0wigvgYj64RFcs9OZG+dSxaFeGJxo
- YhHY+9S1pyQ+qk///8GpKwgojDhSF2MLQC7b8zSvUWtvIzyYmZs5HM4lqyRzJ5/FdZezaobg7s3
- vETtl8MiBefeesVCUqxqsegs4y37Rm7dgAfQGrLZwDC5T24uk0XrgZguDNE8JtRoVKsevklI=
-X-Google-Smtp-Source: AGHT+IGWfSkPQGSRXrP/753q1NjFbpWSvPS62sJhnMx8803vuTwAbqImOPH/SbPolgjITygjpH7PEQ==
-X-Received: by 2002:a5d:59c5:0:b0:3a4:e502:81e1 with SMTP id
- ffacd0b85a97d-3b60e5181dbmr16014708f8f.52.1753164544026; 
- Mon, 21 Jul 2025 23:09:04 -0700 (PDT)
-Received: from [192.168.69.209] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3b76455e57asm1043751f8f.21.2025.07.21.23.09.03
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 21 Jul 2025 23:09:03 -0700 (PDT)
-Message-ID: <3aa0c603-7acd-4802-9a32-80e183ef01eb@linaro.org>
-Date: Tue, 22 Jul 2025 08:09:02 +0200
+ (Exim 4.90_1) (envelope-from <SRS0=A8BM=2D=kaod.org=clg@ozlabs.org>)
+ id 1ue9Kk-0004I7-3V; Tue, 22 Jul 2025 05:30:50 -0400
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=A8BM=2D=kaod.org=clg@ozlabs.org>)
+ id 1ue9Kh-0003ag-2Z; Tue, 22 Jul 2025 05:30:49 -0400
+Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4bmX4F30tCz4x6q;
+ Tue, 22 Jul 2025 19:27:57 +1000 (AEST)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (Client did not present a certificate)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4bmX495jQVz4x5Z;
+ Tue, 22 Jul 2025 19:27:53 +1000 (AEST)
+Message-ID: <0c5fe3ad-ea9f-4569-9546-b773f7781d58@kaod.org>
+Date: Tue, 22 Jul 2025 11:30:29 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/2] target/arm: Fix big-endian handling of SVE gdb remote
- debugging
-To: Vacha Bhavsar <vacha.bhavsar@oss.qualcomm.com>, qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-References: <20250721211952.2239714-1-vacha.bhavsar@oss.qualcomm.com>
- <20250721211952.2239714-3-vacha.bhavsar@oss.qualcomm.com>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20250721211952.2239714-3-vacha.bhavsar@oss.qualcomm.com>
+Subject: Re: [SPAM] [PATCH v4 1/5] hw/misc/aspeed_otp: Add ASPEED OTP memory
+ device model
+To: Kane Chen <kane_chen@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+Cc: troy_lee@aspeedtech.com
+References: <20250708055810.2868680-1-kane_chen@aspeedtech.com>
+ <20250708055810.2868680-2-kane_chen@aspeedtech.com>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <20250708055810.2868680-2-kane_chen@aspeedtech.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::430;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x430.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+ envelope-from=SRS0=A8BM=2D=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
+X-Spam_score_int: -39
+X-Spam_score: -4.0
+X-Spam_bar: ----
+X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.157, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -104,63 +113,194 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 21/7/25 23:19, Vacha Bhavsar wrote:
-> This patch adds big endian support for SVE GDB remote
-> debugging. It replaces the use of pointer dereferencing with the use of
-> ldq_p() as explained in the first part of this patch series. Additionally,
-> the order in which the buffer content is loaded into the CPU struct is
-> switched depending on target endianness to ensure the most significant bits
-> are always in second element.
+On 7/8/25 07:57, Kane Chen wrote:
+> From: Kane-Chen-AS <kane_chen@aspeedtech.com>
 > 
-> Signed-off-by: Vacha Bhavsar <vacha.bhavsar@oss.qualcomm.com>
+> Introduce a QEMU device model for ASPEED's One-Time Programmable (OTP)
+> memory.
+> 
+> This model simulates a word-addressable OTP region used for secure
+> fuse storage. The OTP memory can operate with an internal memory
+> buffer.
+> 
+> The OTP model provides a memory-like interface through a dedicated
+> AddressSpace, allowing other device models (e.g., SBC) to issue
+> transactions as if accessing a memory-mapped region.
+> 
+> Signed-off-by: Kane-Chen-AS <kane_chen@aspeedtech.com>
+
+
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
+
+Thanks,
+
+C.
+
+
 > ---
->   target/arm/gdbstub64.c | 18 +++++++++++++-----
->   1 file changed, 13 insertions(+), 5 deletions(-)
+>   include/hw/nvram/aspeed_otp.h | 33 ++++++++++++
+>   hw/nvram/aspeed_otp.c         | 99 +++++++++++++++++++++++++++++++++++
+>   hw/nvram/meson.build          |  4 ++
+>   3 files changed, 136 insertions(+)
+>   create mode 100644 include/hw/nvram/aspeed_otp.h
+>   create mode 100644 hw/nvram/aspeed_otp.c
 > 
-> diff --git a/target/arm/gdbstub64.c b/target/arm/gdbstub64.c
-> index 8b7f15b920..cd61d946bb 100644
-> --- a/target/arm/gdbstub64.c
-> +++ b/target/arm/gdbstub64.c
-> @@ -200,10 +200,18 @@ int aarch64_gdb_set_sve_reg(CPUState *cs, uint8_t *buf, int reg)
-
-Alex,
-
-Why is there a disconnection with gdb_register_coprocessor() and
-"gdbstub/helpers.h" APIs? The former is older? Should we unify
-using the latter API with GByteArray?
-
->       case 0 ... 31:
->       {
->           int vq, len = 0;
-> -        uint64_t *p = (uint64_t *) buf;
->           for (vq = 0; vq < cpu->sve_max_vq; vq++) {
-> -            env->vfp.zregs[reg].d[vq * 2 + 1] = *p++;
-> -            env->vfp.zregs[reg].d[vq * 2] = *p++;
-> +            if (target_big_endian()){
-> +                env->vfp.zregs[reg].d[vq * 2 + 1] = ldq_p(buf);
-> +                buf += 8;
-> +                env->vfp.zregs[reg].d[vq * 2] = ldq_p(buf);
-> +            }
-> +            else{
-> +                env->vfp.zregs[reg].d[vq * 2] = ldq_p(buf);
-> +                buf += 8;
-> +                env->vfp.zregs[reg].d[vq * 2 + 1] = ldq_p(buf);
-> +            }
-> +            buf += 8;
->               len += 16;
->           }
->           return len;
-> @@ -218,9 +226,9 @@ int aarch64_gdb_set_sve_reg(CPUState *cs, uint8_t *buf, int reg)
->       {
->           int preg = reg - 34;
->           int vq, len = 0;
-> -        uint64_t *p = (uint64_t *) buf;
->           for (vq = 0; vq < cpu->sve_max_vq; vq = vq + 4) {
-> -            env->vfp.pregs[preg].p[vq / 4] = *p++;
-> +            env->vfp.pregs[preg].p[vq/4] = ldq_p(buf);
-> +            buf += 8;
->               len += 8;
->           }
->           return len;
+> diff --git a/include/hw/nvram/aspeed_otp.h b/include/hw/nvram/aspeed_otp.h
+> new file mode 100644
+> index 0000000000..3752353860
+> --- /dev/null
+> +++ b/include/hw/nvram/aspeed_otp.h
+> @@ -0,0 +1,33 @@
+> +/*
+> + *  ASPEED OTP (One-Time Programmable) memory
+> + *
+> + *  Copyright (C) 2025 Aspeed
+> + *
+> + *  SPDX-License-Identifier: GPL-2.0-or-later
+> + */
+> +
+> +#ifndef ASPEED_OTP_H
+> +#define ASPEED_OTP_H
+> +
+> +#include "system/memory.h"
+> +#include "hw/block/block.h"
+> +#include "system/address-spaces.h"
+> +
+> +#define TYPE_ASPEED_OTP "aspeed-otp"
+> +OBJECT_DECLARE_SIMPLE_TYPE(AspeedOTPState, ASPEED_OTP)
+> +
+> +typedef struct AspeedOTPState {
+> +    DeviceState parent_obj;
+> +
+> +    BlockBackend *blk;
+> +
+> +    uint64_t size;
+> +
+> +    AddressSpace as;
+> +
+> +    MemoryRegion mmio;
+> +
+> +    uint8_t *storage;
+> +} AspeedOTPState;
+> +
+> +#endif /* ASPEED_OTP_H */
+> diff --git a/hw/nvram/aspeed_otp.c b/hw/nvram/aspeed_otp.c
+> new file mode 100644
+> index 0000000000..e41481d9bb
+> --- /dev/null
+> +++ b/hw/nvram/aspeed_otp.c
+> @@ -0,0 +1,99 @@
+> +/*
+> + *  ASPEED OTP (One-Time Programmable) memory
+> + *
+> + *  Copyright (C) 2025 Aspeed
+> + *
+> + *  SPDX-License-Identifier: GPL-2.0-or-later
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "qemu/log.h"
+> +#include "qapi/error.h"
+> +#include "system/block-backend-io.h"
+> +#include "hw/qdev-properties.h"
+> +#include "hw/nvram/aspeed_otp.h"
+> +
+> +static uint64_t aspeed_otp_read(void *opaque, hwaddr offset, unsigned size)
+> +{
+> +    AspeedOTPState *s = opaque;
+> +    uint64_t val = 0;
+> +
+> +    memcpy(&val, s->storage + offset, size);
+> +
+> +    return val;
+> +}
+> +
+> +static void aspeed_otp_write(void *opaque, hwaddr offset,
+> +                                uint64_t val, unsigned size)
+> +{
+> +    AspeedOTPState *s = opaque;
+> +
+> +    memcpy(s->storage + offset, &val, size);
+> +}
+> +
+> +static bool aspeed_otp_init_storage(AspeedOTPState *s, Error **errp)
+> +{
+> +    uint32_t *p;
+> +    int i, num;
+> +
+> +        num = s->size / sizeof(uint32_t);
+> +        p = (uint32_t *)s->storage;
+> +        for (i = 0; i < num; i++) {
+> +            p[i] = (i % 2 == 0) ? 0x00000000 : 0xFFFFFFFF;
+> +        }
+> +
+> +    return true;
+> +}
+> +
+> +static const MemoryRegionOps aspeed_otp_ops = {
+> +    .read = aspeed_otp_read,
+> +    .write = aspeed_otp_write,
+> +    .endianness = DEVICE_LITTLE_ENDIAN,
+> +    .valid.min_access_size = 1,
+> +    .valid.max_access_size = 4,
+> +};
+> +
+> +static void aspeed_otp_realize(DeviceState *dev, Error **errp)
+> +{
+> +    AspeedOTPState *s = ASPEED_OTP(dev);
+> +
+> +    if (s->size == 0) {
+> +        error_setg(errp, "aspeed.otp: 'size' property must be set");
+> +        return;
+> +    }
+> +
+> +    s->storage = blk_blockalign(s->blk, s->size);
+> +
+> +    if (!aspeed_otp_init_storage(s, errp)) {
+> +        return;
+> +    }
+> +
+> +    memory_region_init_io(&s->mmio, OBJECT(dev), &aspeed_otp_ops,
+> +                          s, "aspeed.otp", s->size);
+> +    address_space_init(&s->as, &s->mmio, NULL);
+> +}
+> +
+> +static const Property aspeed_otp_properties[] = {
+> +    DEFINE_PROP_UINT64("size", AspeedOTPState, size, 0),
+> +};
+> +
+> +static void aspeed_otp_class_init(ObjectClass *klass, const void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(klass);
+> +    dc->realize = aspeed_otp_realize;
+> +    device_class_set_props(dc, aspeed_otp_properties);
+> +}
+> +
+> +static const TypeInfo aspeed_otp_info = {
+> +    .name          = TYPE_ASPEED_OTP,
+> +    .parent        = TYPE_DEVICE,
+> +    .instance_size = sizeof(AspeedOTPState),
+> +    .class_init    = aspeed_otp_class_init,
+> +};
+> +
+> +static void aspeed_otp_register_types(void)
+> +{
+> +    type_register_static(&aspeed_otp_info);
+> +}
+> +
+> +type_init(aspeed_otp_register_types)
+> diff --git a/hw/nvram/meson.build b/hw/nvram/meson.build
+> index 10f3639db6..b66f23605b 100644
+> --- a/hw/nvram/meson.build
+> +++ b/hw/nvram/meson.build
+> @@ -19,3 +19,7 @@ system_ss.add(when: 'CONFIG_XLNX_BBRAM', if_true: files('xlnx-bbram.c'))
+>   
+>   specific_ss.add(when: 'CONFIG_PSERIES', if_true: files('spapr_nvram.c'))
+>   specific_ss.add(when: 'CONFIG_ACPI', if_true: files('fw_cfg-acpi.c'))
+> +
+> +system_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
+> +  'aspeed_otp.c',
+> +  ))
+> \ No newline at end of file
 
 

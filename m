@@ -4,57 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 290BDC83F1A
-	for <qemu-arm@archiver.kernel.org>; Tue, 22 Jul 2025 14:40:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49DF9C83F27
+	for <qemu-arm@archiver.kernel.org>; Tue, 22 Jul 2025 15:18:39 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ueE9o-0001yT-VT; Tue, 22 Jul 2025 10:39:53 -0400
+	id 1ueEke-0000hh-Um; Tue, 22 Jul 2025 11:18:04 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <smail.aider@huawei.com>)
- id 1ueD9U-0002sg-AJ; Tue, 22 Jul 2025 09:35:29 -0400
-Received: from [185.176.79.56] (helo=frasgout.his.huawei.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <smail.aider@huawei.com>)
- id 1ueD9O-0005Yl-IP; Tue, 22 Jul 2025 09:35:27 -0400
-Received: from mail.maildlp.com (unknown [172.18.186.231])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bmd745WGVz6L4t1;
- Tue, 22 Jul 2025 21:15:44 +0800 (CST)
-Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
- by mail.maildlp.com (Postfix) with ESMTPS id 0295914038F;
- Tue, 22 Jul 2025 21:19:35 +0800 (CST)
-Received: from china (7.182.10.167) by frapeml500008.china.huawei.com
- (7.182.85.71) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Tue, 22 Jul
- 2025 15:19:30 +0200
-To: <qemu-devel@nongnu.org>
-CC: <alexander.spyridakis@huawei.com>, <zhangyue165@huawei.com>,
- <qemu-arm@nongnu.org>, Peter Maydell <peter.maydell@linaro.org>,
- <liuyutao2@huawei.com>, <qemu-stable@nongnu.org>
-Subject: [PATCH] target/arm: Trap PMCR when MDCR_EL2.TPMCR is set
-Date: Tue, 22 Jul 2025 21:19:25 +0800
-Message-ID: <20250722131925.2119169-1-smail.aider@huawei.com>
-X-Mailer: git-send-email 2.34.1
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1ueEM6-0002qX-V4
+ for qemu-arm@nongnu.org; Tue, 22 Jul 2025 10:52:45 -0400
+Received: from mail-yw1-x112e.google.com ([2607:f8b0:4864:20::112e])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1ueELz-0005H3-Gu
+ for qemu-arm@nongnu.org; Tue, 22 Jul 2025 10:52:33 -0400
+Received: by mail-yw1-x112e.google.com with SMTP id
+ 00721157ae682-71841a48502so45672687b3.2
+ for <qemu-arm@nongnu.org>; Tue, 22 Jul 2025 07:52:26 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1753195945; x=1753800745; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=9tMAznd+1SsHvYjdRnM6O8GnkwB4nBWumHqcRmHHHUA=;
+ b=W+9ftDjFJDFQxsmM/JXv6Lndv8oYNkq4NAdTDxMCSonhYed2MOPYxnPdqEAfSeHsFr
+ A2Hkj1A9g0FJiI+vWOAJfsWgJGR+FHxgT55iiPsqM2ibhyPAGpcJ+x6dNbuyGt26Q+qv
+ y/WhHXuJ7lZEBoNAmkigJRjpB4NrFfoEaIgU/Xr4lO3bsfNdgsOFQfrhsCdOvRtYr56n
+ DwftzpwUhyps+BERvW+9D2NdUY5e8X7lWPR/oyX8tUzftxeFRkQCkAGPzbrrydSEBcnX
+ 4s0SyfyDUOPEfKGfEdzGGhBqy2qsje2dRUzjQxm0F+lrPEz852R4snShK8cVhHRbDP0/
+ QF/A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1753195945; x=1753800745;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=9tMAznd+1SsHvYjdRnM6O8GnkwB4nBWumHqcRmHHHUA=;
+ b=aCc8xyvxML6IeJCR+bgSTUv5PTQ3QPBLdhqgtT6NLY78YKFvSgadfbajS9iddMd6YF
+ XrZO/+ZM6qGQfGSVBx4es5uM+NaAYAXW8NHlh9/SkzwhTh/HXsMl3QAMPSOh9nAVuQEB
+ ebIPoQ/7v9epYeuHntrfiofcCtWJgJOwSk8wG7gNR7IK6Vq4hxAKpf9oSwv+vdL2R6Dz
+ A32hIFRh5AY1NoNx3SwRptlJj2QWyGD43Ela8+lhb2Ven/an3QBu0kU5D++Wg3JnowIc
+ ZobgMez6TwZ1n3GcrZqizTErQSAITYV6J+a0NB/2UqF+ofeS/hpVYraEzRgmbP4g4AQH
+ /SkA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCX3mvmtTMm4+3Gw2rC78k6Bs5NrzwWFWI2jPZaeIZm3eXb/zuBl6mfRGZaPHm65JXnlQ+00VOKAbg==@nongnu.org
+X-Gm-Message-State: AOJu0YxC+ZJ+XS5PrYOgW3isMZsKeUNEWej+TUITKdshw3JR5lzHvQ6F
+ XvLJV3m+z0Cw7rJzxtsg94nAPrX2+0Erk4LstSehvmJBGb43eZyzxw1OmvwGbPXL+U5xHwKK42d
+ zqE6DVxqZ6RNiAPFlF6KQo7AxyobaSf+IVfxUInwYxg==
+X-Gm-Gg: ASbGnct0QsBwg2smbuDOSi0xg+W4OMomgs5NRtT/qBgrygYz3mh7cAuWhShnyCJLkam
+ tcl/mJwMmuv7MUzPxIlkg0gR8vjVoG1+KNTz7VmJc3oUa/0fYcXZfbBngYiKFyIYaMaEWIXP6wD
+ CIpPbNbAVPGHgxXfL8CXvEHl3DGRiKMEqQEnoOnPfDRocOh06Qg7rhKycUFx8Peu1yBQ7VcKqvj
+ WrUxgx3
+X-Google-Smtp-Source: AGHT+IE5qFIMbwaYuUH6u/BvpN09BOrsZRQzHQ8BAYN3YdC6l5JN7M81YtapWCKTezMTckW/wWefj9qxC3hxFRFuV8w=
+X-Received: by 2002:a05:690c:6d0b:b0:712:c325:2965 with SMTP id
+ 00721157ae682-7183747ce76mr353740877b3.20.1753195945033; Tue, 22 Jul 2025
+ 07:52:25 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [7.182.10.167]
-X-ClientProxiedBy: kwepems500001.china.huawei.com (7.221.188.70) To
- frapeml500008.china.huawei.com (7.182.85.71)
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 185.176.79.56 (deferred)
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=smail.aider@huawei.com; helo=frasgout.his.huawei.com
-X-Spam_score_int: -33
-X-Spam_score: -3.4
-X-Spam_bar: ---
-X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20250722142358.253998-1-richard.henderson@linaro.org>
+In-Reply-To: <20250722142358.253998-1-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 22 Jul 2025 15:52:13 +0100
+X-Gm-Features: Ac12FXwclOsTNjETPBBoCIuEyrGEguFgbyDYjcT2w3BtTlWm0EO7eqpNtQc6_uE
+Message-ID: <CAFEAcA-_pYcxD+rCocqGJ5LpvE4S7dzf55wW8Nn=ggEDek9FEw@mail.gmail.com>
+Subject: Re: [PATCH 0/2] target/arm: Fix sve2p1 mtedesc assertion
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Tue, 22 Jul 2025 10:39:06 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,69 +91,69 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Smail AIDER <smail.aider@huawei.com>
-From:  Smail AIDER via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Trap PMCR_EL0 or PMCR accesses to EL2 when MDCR_EL2.TPMCR is set.
-Similar to MDCR_EL2.TPM, MDCR_EL2.TPMCR allows trapping EL0 and EL1
-accesses to the PMCR register to EL2.
+On Tue, 22 Jul 2025 at 15:24, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> Hi Peter,
+>
+> Sadly, I couldn't reorg mtedesc as I hypothesized, because of
+> different usage within AdvSIMD.  So I decided to expand the
+> mtedesc from 17 to 32 bits, and then pack the gvec desc and
+> mtedesc into a 64-bit argument.
 
-Signed-off-by: Smail AIDER <smail.aider@huawei.com>
----
- target/arm/cpregs-pmu.c | 24 ++++++++++++++++++++++--
- 1 file changed, 22 insertions(+), 2 deletions(-)
+I was playing around with this today as well, and I
+did manage to get something that seems to work with an
+msz/nregs split. I opted to just re-encode the byte
+length back into a fake msz/nregs combo in gen_mte_checkN,
+which is the main place we don't already have an actual msz/nregs:
 
-diff --git a/target/arm/cpregs-pmu.c b/target/arm/cpregs-pmu.c
-index 0f295b1376..3aacd4f652 100644
---- a/target/arm/cpregs-pmu.c
-+++ b/target/arm/cpregs-pmu.c
-@@ -252,6 +252,26 @@ static CPAccessResult pmreg_access(CPUARMState *env, const ARMCPRegInfo *ri,
-     return CP_ACCESS_OK;
- }
- 
-+/*
-+ * Check for traps to PMCR register, which are controlled by PMUSERENR.EN
-+ * for EL1, MDCR_EL2.TPM/TPMCR for EL2 and MDCR_EL3.TPM for EL3.
-+ */
-+static CPAccessResult pmreg_access_pmcr(CPUARMState *env, const ARMCPRegInfo *ri,
-+                                   bool isread)
-+{
-+    int el = arm_current_el(env);
-+    uint64_t mdcr_el2 = arm_mdcr_el2_eff(env);
++    /*
++     * Encode the total_size into how we fit it into an MTEDESC
++     * and assert that it fits, whether MTE is enabled or not.
++     */
++    uint32_t nregs;
 +
-+    CPAccessResult ret = pmreg_access(env, ri, isread);
-+
-+    /* Check MDCR_TPMCR if not already trapped to EL1 */
-+    if (ret != CP_ACCESS_TRAP_EL1 && el < 2 && (mdcr_el2 & MDCR_TPMCR)) {
-+        ret = CP_ACCESS_TRAP_EL2;
++    if (((total_size / 3) * 3) == total_size) {
++        /* If this is a multiple of 3, we need to use that for nregs */
++        total_size /= 3;
++        nregs = 3;
++    } else {
++        /* Use the highest of nregs = 4 / 2 / 1 that we can */
++        switch (ctz32(total_size)) {
++        case 0:
++            nregs = 1;
++            break;
++        case 1:
++            total_size >>= 1;
++            nregs = 2;
++            break;
++        default:
++            total_size >>= 2;
++            nregs = 4;
++            break;
++        }
 +    }
-+
-+    return ret;
-+}
-+
- static CPAccessResult pmreg_access_xevcntr(CPUARMState *env,
-                                            const ARMCPRegInfo *ri,
-                                            bool isread)
-@@ -1192,14 +1212,14 @@ void define_pm_cpregs(ARMCPU *cpu)
-             .fgt = FGT_PMCR_EL0,
-             .type = ARM_CP_IO | ARM_CP_ALIAS,
-             .fieldoffset = offsetoflow32(CPUARMState, cp15.c9_pmcr),
--            .accessfn = pmreg_access,
-+            .accessfn = pmreg_access_pmcr,
-             .readfn = pmcr_read, .raw_readfn = raw_read,
-             .writefn = pmcr_write, .raw_writefn = raw_write,
-         };
-         const ARMCPRegInfo pmcr64 = {
-             .name = "PMCR_EL0", .state = ARM_CP_STATE_AA64,
-             .opc0 = 3, .opc1 = 3, .crn = 9, .crm = 12, .opc2 = 0,
--            .access = PL0_RW, .accessfn = pmreg_access,
-+            .access = PL0_RW, .accessfn = pmreg_access_pmcr,
-             .fgt = FGT_PMCR_EL0,
-             .type = ARM_CP_IO,
-             .fieldoffset = offsetof(CPUARMState, cp15.c9_pmcr),
--- 
-2.34.1
++    /* Now we've divided by our chosen nregs we must have a valid MO_* */
++    assert(is_power_of_2(total_size));
++    assert(total_size >= 1 && total_size <= (1 << MO_SIZE));
 
+
+But I think your approach is better because it's more
+straightforward, and it means we will have space space in
+MTEDESC for future purposes.
+
+> Lightly tested so far, but it does fix the LD3Q/LD4Q assert.
+
+There's also a bug we have at the moment where gen_sve_ldr()
+and gen_sve_str() call gen_mte_checkN() with a length value
+which is the SVE vector length and can be up to 256 bytes.
+We don't assert there, so we just fail to do the MTE checks
+on the right length of memory. I assume these patches will
+fix that too.
+
+thanks
+-- PMM
 

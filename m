@@ -4,97 +4,119 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E0E5C83F27
-	for <qemu-arm@archiver.kernel.org>; Tue, 22 Jul 2025 16:57:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34E55C83F1A
+	for <qemu-arm@archiver.kernel.org>; Tue, 22 Jul 2025 17:58:34 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ueGJ3-0001fe-9C; Tue, 22 Jul 2025 12:57:33 -0400
+	id 1ueHFv-0004Bc-Fn; Tue, 22 Jul 2025 13:58:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sebott@redhat.com>) id 1ueFc6-0001lh-Cg
- for qemu-arm@nongnu.org; Tue, 22 Jul 2025 12:13:13 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <vacha.bhavsar@oss.qualcomm.com>)
+ id 1ueGvw-0000Eo-T8
+ for qemu-arm@nongnu.org; Tue, 22 Jul 2025 13:37:45 -0400
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sebott@redhat.com>) id 1ueFc1-0001dT-Jc
- for qemu-arm@nongnu.org; Tue, 22 Jul 2025 12:13:09 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1753200783;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=l4x3D/i4GIz6o492rp7lytt11dFe77FgBTZxGlV4fUg=;
- b=D18DQ30Gp5V2Gi0+Qenxv3h9YYodDKCK8pP8AtiM+/GfdK2+I6OgnoBhlhIdTyy8F4HoQi
- hV9JBaVnCQhVWS9ytXkx3iBtDEOKrZYYnhtNxq9UA89Rn2oO9i+JTcgFVNNyjzBmX17cdK
- x0ScBurbhREwzPbEv0Grv+TCwJpxCd0=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-152-9QxeUb1gNE-6-pewajAAXg-1; Tue, 22 Jul 2025 12:11:05 -0400
-X-MC-Unique: 9QxeUb1gNE-6-pewajAAXg-1
-X-Mimecast-MFC-AGG-ID: 9QxeUb1gNE-6-pewajAAXg_1753200664
-Received: by mail-wm1-f71.google.com with SMTP id
- 5b1f17b1804b1-45639e6a320so29333285e9.3
- for <qemu-arm@nongnu.org>; Tue, 22 Jul 2025 09:11:05 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <vacha.bhavsar@oss.qualcomm.com>)
+ id 1ueGvu-00009X-9F
+ for qemu-arm@nongnu.org; Tue, 22 Jul 2025 13:37:44 -0400
+Received: from pps.filterd (m0279873.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 56MAioOc005716
+ for <qemu-arm@nongnu.org>; Tue, 22 Jul 2025 17:37:40 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+ cc:content-transfer-encoding:content-type:date:from:message-id
+ :mime-version:subject:to; s=qcppdkim1; bh=dHs8tb4QrSbF6tDEooFm2g
+ 9UWQtBZdHNloTXeKbtrdo=; b=UTvV9usAiwIWHqRwgQdTOT08C9CXW7vdVXuiql
+ KMBm5hMSewYuYiYBatOIi760Q7tgW24DfhbK+Siz8wR54hBShARq9JQx/NZQ17zj
+ nnFQKQsYBb2YKyJVRD926Vbz6M6PM9w69Sq7HukhOBNvoaLMb8JWAXKPCQLvyvAZ
+ pVf7QKftBPJJaWBusk+EQJbBNdMGfpujzUochbachqqxIgaZfj5U1yzjI20qb4U0
+ HocGzDYOLWOc23cE62AhvYWajF/+Th1Yp8K0Mri1odQSZnmVHHszD4cf3yeAGjAC
+ bDhKWZXG7o68fSNLVe56cs8GX9wN6DTdxiWYd7IZrjFtEHpA==
+Received: from mail-pj1-f70.google.com (mail-pj1-f70.google.com
+ [209.85.216.70])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 48047qadmt-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
+ for <qemu-arm@nongnu.org>; Tue, 22 Jul 2025 17:37:40 +0000 (GMT)
+Received: by mail-pj1-f70.google.com with SMTP id
+ 98e67ed59e1d1-313ff01d2a6so4645041a91.3
+ for <qemu-arm@nongnu.org>; Tue, 22 Jul 2025 10:37:40 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1753200664; x=1753805464;
- h=mime-version:references:message-id:in-reply-to:subject:cc:to:from
- :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=l4x3D/i4GIz6o492rp7lytt11dFe77FgBTZxGlV4fUg=;
- b=xQAoIvpfAhcgU2qZTW0surTX2ofvJOQL3IlA0mw41LE0WUSogLny47vWOLAzHJLcbu
- X8gEI0nZg+huFbVZakdQkZ2fpVv2n8+jZS8WrKX8pArGsHMsw5r3IAg0EbbJ1HZU+jq+
- 4Wj5eB99L8ZnNKOsikFBYd2DLjk5a5xBAiIXR6YLQksgu8NL/WoGGtqPaPrjwTfYZbB4
- 0oz7udNh6uRK/qWvLJkg4AF8a98gU4Em+CJzBnTxHQsny8Vf2Kp5SKY3NRQp2IzTwX9a
- X0l94oVb6XRbomFOD8+1iL7y1cAtvQwAFyThXAWrKpmJu5wgizeyxJtTrfDBDlSRVi3N
- As6Q==
-X-Gm-Message-State: AOJu0YzMJFLnDTSB4jHSdHRiMz7foDtMHKeMyn2WkcstGt1z4IGi7zre
- Ku8d5aQkwDJlvnhFRT/cuDjRaxwdTqlnXrV2JeISKRzgUkXAHVQEvFStgEj/4fKkZ9fpSdGHHek
- d82QfUkZzVerngeu/1WuFlpN8CGnqNtje/jwTFjFN3k0P4/Wv40N5TQ==
-X-Gm-Gg: ASbGncsyI19hXqAYpp82WNtMOzURumovx5bBCEiUYU+HgmelZjaYhl4BRuOPCE9g1Wn
- lGTf9aznmcvPIWKzHDh1XaVBwb9huP7Mx+9SdvpHgnZHkt2VUn+BdA6x0Gbtca50u0grLrJembB
- X3aPyYKx6qQOYwp/OFOlaLBgEbVfl2sOQP59xETau4js/ezqdOJo5ojCB2p9fm730RtKVsvwr3S
- 0jrNTJ9oDIt6NocmzhAtWfC8e7UM5CxJ2KB0GgdYmy2kVfx7IghLck9AH617dEy+7Zyq96rvQ1g
- OfnvTsA5tlyHfyarocUEMYs4hJpQOOydUwaxEikmC3rYwvjFf3vSQ//d6Z8WyvyKREvCmMV4bzH
- 6gAgkZRUarLb7
-X-Received: by 2002:a5d:6f0e:0:b0:3a6:d92d:9f7c with SMTP id
- ffacd0b85a97d-3b60e4c5212mr22421824f8f.9.1753200664283; 
- Tue, 22 Jul 2025 09:11:04 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHCHXaFJIN6wZg9she9zBMcbIAxjluYAG5+RDzJu/soPI3BPkblYjBQVwzQ5OQHCDZNtibTYg==
-X-Received: by 2002:a5d:6f0e:0:b0:3a6:d92d:9f7c with SMTP id
- ffacd0b85a97d-3b60e4c5212mr22421797f8f.9.1753200663812; 
- Tue, 22 Jul 2025 09:11:03 -0700 (PDT)
-Received: from rh (p200300f6af1bce00e6fe5f11c0a7f4a1.dip0.t-ipconnect.de.
- [2003:f6:af1b:ce00:e6fe:5f11:c0a7:f4a1])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3b61ca4d807sm14005725f8f.73.2025.07.22.09.11.03
+ d=1e100.net; s=20230601; t=1753205859; x=1753810659;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=dHs8tb4QrSbF6tDEooFm2g9UWQtBZdHNloTXeKbtrdo=;
+ b=dFqVF3ZBMfh/KW/csNsrQ11vMIjaOD56r4I0QT/Jy7JyyEpSGIawOgGYIQCn1DxEAs
+ qhcxIIZ5U0rdSVtNe/Er3ePJLqUrrvIOlek/mTZGLHzeka+SX6qE98Vqg2niyDQZ7t9k
+ m/BelWiUXroLPjU4mBlTmXUWkey23LJt35U3TO9qFLAuK81Y41rZdpZ8cKvVm2keU5O0
+ baG1fl3pEnG/jFmNteC5jiCUmNxgOaOC/YqDPyZW8/pJki6MpNiYpH2NvDzQrfASigG2
+ j3C6jiD+pCjFDD5fsYBbFaHKCbyi45emtPTpOwi/iHSVquXEZsUmmse5NFVryLwnga7S
+ /4FQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWRzZJsJcg7sTC0N96jPvwmlKIqDnRbizlzUL/ixvUwOlx7gKg9XnmqmtbSmrpHt+M54z6a2QjS9Q==@nongnu.org
+X-Gm-Message-State: AOJu0Yx9grJ5C7I78G93g20ZcHyvL8w8Kp+PNqdTGcbMvv+ZKE3aMqSF
+ 21CASA7APdnOQiFzpKN8JvwIaxXzqHhFy7jQAIAvszWvwePLYNtrwU51oJMKB4LrczCQbmZbvlB
+ KkeVaNfOLsvFZFqguRTkw2H9sNcyVt4O0V1m1eoUMB9PYXU9zfzbeyWMDRqD/1kdLmA==
+X-Gm-Gg: ASbGncuB1ZbOsF6e68pKppI8otcrFO3VVO+Sg+1aPGY4qGVFRvT25gFNatU6n2Fb4bm
+ oWRH2r0ou1eFI1BXbA1yv8Wj1+tJK7np2RBdVsUr+uoIKZjTE4ULnxAoLElf8i62h4xw6wxOFvf
+ XWZqUUajRWtJh8n6cv0W2cutjzYcnY+nTYQgBAzYPsH4joGBMdlsWLFvOJGXnn0u30xUsKV1Yfi
+ ESvihPxEJunUkk4GEohp4rP5X7Lk3J5l2w1qJr94vzyTIF9zTVlJ3JiB5hWh4sJstGP9JjL9+RG
+ 3mpDxHQGAjyVObuJMqQECXUqn3QGuJR5qnx/vG4W2z8IRJdOCzv9/Bw+Sn4F+QZ4kazjO3xW8BR
+ G7VmHNl3S3UgjcHE=
+X-Received: by 2002:a17:90b:164f:b0:313:2adc:b4c4 with SMTP id
+ 98e67ed59e1d1-31e507dbdcbmr165758a91.24.1753205858704; 
+ Tue, 22 Jul 2025 10:37:38 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFB7Yd1OLAaaaLwCg/j/N6badbNHgXn0SvI8ZbYDGNvW7YUBaDXes03e729RdDR9j2udxIxJw==
+X-Received: by 2002:a17:90b:164f:b0:313:2adc:b4c4 with SMTP id
+ 98e67ed59e1d1-31e507dbdcbmr165720a91.24.1753205858183; 
+ Tue, 22 Jul 2025 10:37:38 -0700 (PDT)
+Received: from admin15.qualcomm.com (i-global254.qualcomm.com.
+ [199.106.103.254]) by smtp.gmail.com with ESMTPSA id
+ 98e67ed59e1d1-31cb5c5da0csm10081180a91.25.2025.07.22.10.37.37
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 22 Jul 2025 09:11:03 -0700 (PDT)
-Date: Tue, 22 Jul 2025 18:11:02 +0200 (CEST)
-From: Sebastian Ott <sebott@redhat.com>
-To: Cornelia Huck <cohuck@redhat.com>
-cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
- Peter Maydell <peter.maydell@linaro.org>, 
- Eric Auger <eric.auger@redhat.com>
-Subject: Re: [PATCH RFC] arm/kvm: report registers we failed to set
-In-Reply-To: <20250721161932.548668-1-cohuck@redhat.com>
-Message-ID: <b1f7bb67-070f-da38-369b-51ed1962fd2d@redhat.com>
-References: <20250721161932.548668-1-cohuck@redhat.com>
+ Tue, 22 Jul 2025 10:37:37 -0700 (PDT)
+From: Vacha Bhavsar <vacha.bhavsar@oss.qualcomm.com>
+To: qemu-devel@nongnu.org, vacha.bhavsar@oss.qualcomm.com
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
+Subject: [PATCH v2 0/2] target/arm: Fix big-endian handling for NEON and SVE
+ gdb remote debugging
+Date: Tue, 22 Jul 2025 17:37:34 +0000
+Message-Id: <20250722173736.2332529-1-vacha.bhavsar@oss.qualcomm.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 3pgMb-vpHfqF75stOjgwbHa2uDlhHNhAU_YEVscAz5U_1753200664
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII; format=flowed
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=sebott@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwNzIyMDE0OCBTYWx0ZWRfX5m2WU2YlqPiR
+ Be2tdyVvWNEQiBk8dD+nrnMrYsVjpACxsblDXepnDthgrXDhGZ8+CICQT85J480PNOh8eU2/pOs
+ oMRc7PloFiIHv6EVc9+8zyd6AZZ/MphZk6r0yaL9Rn8d35JrHhq29k62XLi9Mp8CA9jjzbVswfp
+ PbObgO6rDBBrHoNWDksKYmOYJ8mbBRGJPoOKsOCGAzd3h1c2P0iXIyJgb+lnFzgJ5r3+VxnHe2P
+ tfLByQmr3NmA3ypcx8OirDqLiXb9xt9L8Pct9E6GNeWYEI2g69Yj+aFx2UlFFePqsMqGl5DnT2q
+ pLRJPIugfJ/P8+N480et3wUyOp+I96SohT/KHjAz8S0lXWpsNQDj5r2v9BSbpYSgPzXoQm8wRhW
+ Q78nto4cir9Oi3QmE7oIJLVTbv8AZ6wxMslHI2WaDrkaDnPxiUloaX9f4eHPnfBu/b236pZk
+X-Proofpoint-ORIG-GUID: N3DMEjlYqzXSaOMDoI5F2jFi5epE2IfA
+X-Proofpoint-GUID: N3DMEjlYqzXSaOMDoI5F2jFi5epE2IfA
+X-Authority-Analysis: v=2.4 cv=IrMecK/g c=1 sm=1 tr=0 ts=687fcc64 cx=c_pps
+ a=0uOsjrqzRL749jD1oC5vDA==:117 a=JYp8KDb2vCoCEuGobkYCKw==:17
+ a=IkcTkHD0fZMA:10 a=Wb1JkmetP80A:10 a=DOH25g8fJlTivxquR3cA:9
+ a=QEXdDO2ut3YA:10 a=mQ_c8vxmzFEMiUWkPHU9:22
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.9,FMLib:17.12.80.40
+ definitions=2025-07-22_02,2025-07-21_02,2025-03-28_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ suspectscore=0 lowpriorityscore=0 malwarescore=0 adultscore=0 clxscore=1015
+ priorityscore=1501 spamscore=0 mlxscore=0 mlxlogscore=999 phishscore=0
+ impostorscore=0 bulkscore=0 classifier=spam authscore=0 authtc=n/a authcc=
+ route=outbound adjust=0 reason=mlx scancount=1 engine=8.19.0-2505280000
+ definitions=main-2507220148
+Received-SPF: pass client-ip=205.220.180.131;
+ envelope-from=vacha.bhavsar@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
 X-Spam_score_int: -26
 X-Spam_score: -2.7
 X-Spam_bar: --
-X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.633,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_LOW=-0.7,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001,
- T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -110,73 +132,255 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, 21 Jul 2025, Cornelia Huck wrote:
-> If we fail migration because of a mismatch of some registers between
-> source and destination, the error message is not very informative:
->
-> qemu-system-aarch64: error while loading state for instance 0x0 ofdevice 'cpu'
-> qemu-system-aarch64: Failed to put registers after init: Invalid argument
->
-> At least try to give the user a hint which registers had a problem,
-> even if they cannot really do anything about it right now.
->
-> Sample output:
->
-> Could not set register op0:3 op1:0 crn:0 crm:0 op2:0 to c00fac31 (is 413fd0c1)
->
-> We could be even more helpful once we support writable ID registers,
-> at which point the user might actually be able to configure something
-> that is migratable.
+Upon examining the current implementation for getting/setting SIMD
+and SVE registers via remote GDB, there is a concern about mixed
+endian support. This patch series aims to address this concern and
+allow getting and setting the values of NEON and SVE registers via
+remote GDB regardless of the target endianness.
 
-That message will be even more helpful once we have the stuff in place
-to actually print a reg name here (and be able to change the values for
-the guest) - but I agree this would already be a great improvement over
-the current message!
+Consider the following snippet from a GDB session in which a SIMD
+register's value is set via remote GDB where the QEMU host is little
+endian and the target is big endian:
 
->
-> Suggested-by: Eric Auger <eric.auger@redhat.com>
-> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
-> ---
->
-> Notes:
-> - This currently prints the list of failing registers for every call to
->  write_list_to_kvmstate(), in particular for every cpu -- we might want
->  to reduce that.
-> - If the macros aren't too ugly (or we manage to improve them), there
->  might be other places where they could be useful.
->
-> ---
-> target/arm/kvm.c | 53 ++++++++++++++++++++++++++++++++++++++++++++++++
-> 1 file changed, 53 insertions(+)
->
-> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-> index 667234485547..ac6502e0c78f 100644
-> --- a/target/arm/kvm.c
-> +++ b/target/arm/kvm.c
-> @@ -900,6 +900,24 @@ bool write_kvmstate_to_list(ARMCPU *cpu)
->     return ok;
-> }
->
-> +/* pretty-print a KVM register */
-> +#define CP_REG_ARM64_SYSREG_OP(_reg, _op)                       \
-> +    ((uint8_t)((_reg & CP_REG_ARM64_SYSREG_ ## _op ## _MASK) >> \
-> +               CP_REG_ARM64_SYSREG_ ## _op ## _SHIFT))
-> +
-> +#define PRI_CP_REG_ARM64_SYSREG(_reg)                    \
-> +    ({                                                   \
-> +        char _out[32];                                   \
-> +        snprintf(_out, sizeof(_out),                     \
-> +                 "op0:%d op1:%d crn:%d crm:%d op2:%d",   \
-> +                 CP_REG_ARM64_SYSREG_OP(_reg, OP0),      \
-> +                 CP_REG_ARM64_SYSREG_OP(_reg, OP1),      \
-> +                 CP_REG_ARM64_SYSREG_OP(_reg, CRN),      \
-> +                 CP_REG_ARM64_SYSREG_OP(_reg, CRM),      \
-> +                 CP_REG_ARM64_SYSREG_OP(_reg, OP2));     \
-> +        _out;                                            \
-> +    })
+(gdb) p/x $v0
+$1 = {d = {f = {0x0, 0x0}, u = {0x0, 0x0}, s = {0x0, 0x0}}, s = {f =
+{0x0, 0x0, 0x0, 0x0}, u = {0x0, 0x0, 0x0, 0x0}, s = {0x0, 0x0,
+0x0, 0x0}}, h = {bf = {0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0,
+0x0}, f = {0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0}, u = {
+         0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0}, s = {0x0, 0x0, 0x0,
+0x0, 0x0, 0x0, 0x0, 0x0}}, b = {u = {0x0 <repeats 16 times>},
+s = {0x0 <repeats 16 times>}}, q = {u = {0x0}, s = {0x0}}}
+(gdb) set $v0.d.u[0] = 0x010203
+(gdb) p/x $v0
+$2 = {d = {f = {0x302010000000000, 0x0}, u = {0x302010000000000, 0x0},
+s = {0x302010000000000, 0x0}}, s = {f = {0x3020100, 0x0, 0x0,
+0x0}, u = {0x3020100, 0x0, 0x0, 0x0}, s = {0x3020100, 0x0, 0x0,
+0x0}}, h = {bf = {0x302, 0x100, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0},
+f = {0x302, 0x100, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0}, u = {0x302,
+0x100, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0}, s = {0x302, 0x100, 0x0,
+0x0, 0x0, 0x0, 0x0, 0x0}}, b = {u = {0x3, 0x2, 0x1, 0x0
+<repeats 13 times>}, s = {0x3, 0x2, 0x1, 0x0 <repeats 13 times>}},
+q = {u = {0x3020100000000000000000000000000}, s = {
+      0x3020100000000000000000000000000}}}
 
-Gcc correctly complains about a dangling pointer here.
+The above snippet exemplifies an issue with how the SIMD register value
+is set when the target endianness differs from the host endianness. A
+similar issue is evident when setting SVE registers, as is shown by the
+snippet below where the QEMU host is little endian and the target is big
+endian:
 
-Sebastian
+(gdb) p/x $z0
+$1 = {q = {u = {0x0 <repeats 16 times>}, s = {0x0 <repeats 16 times>}},
+d = {f = {0x0 <repeats 32 times>}, u = {0x0 <repeats 32 times>},
+s = {0x0 <repeats 32 times>}}, s = {f = {0x0 <repeats 64 times>},
+u = {0x0 <repeats 64 times>}, s = {0x0 <repeats 64 times>}},
+h = {f = {0x0 <repeats 128 times>}, u = {0x0 <repeats 128 times>},
+s = {0x0 <repeats 128 times>}}, b = {u = {0x0 <repeats 256 times>},
+s = {0x0 <repeats 256 times>}}}
+(gdb) set $z0.q.u[0] = 0x010203
+(gdb) p/x $z0
+$2 = {q = {u = {0x302010000000000, 0x0 <repeats 15 times>}, s =
+{0x302010000000000, 0x0 <repeats 15 times>}}, d = {f = {0x0,
+0x302010000000000, 0x0 <repeats 30 times>}, u = {0x0, 0x302010000000000,
+0x0 <repeats 30 times>}, s = {0x0, 0x302010000000000,
+0x0 <repeats 30 times>}}, s = {f = {0x0, 0x0, 0x3020100, 0x0
+<repeats 61 times>}, u = {0x0, 0x0, 0x3020100, 0x0 <repeats 61 times>},
+s = {0x0, 0x0, 0x3020100, 0x0 <repeats 61 times>}}, h = {f = {0x0, 0x0,
+0x0, 0x0, 0x302, 0x100, 0x0 <repeats 122 times>}, u = {0x0, 0x0, 0x0,
+      0x0, 0x302, 0x100, 0x0 <repeats 122 times>}, s = {0x0, 0x0, 0x0, 0x0,
+0x302, 0x100, 0x0 <repeats 122 times>}}, b = {u = {0x0, 0x0, 0x0, 0x0,
+0x0, 0x0, 0x0, 0x0, 0x3, 0x2, 0x1, 0x0 <repeats 245 times>}, s = {0x0,
+0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x3, 0x2, 0x1, 0x0 <repeats 245 times>
+}}}
+
+Note, in the case of SVE, this issue is also present when the host
+and target are both little endian. Consider the GDB remote session snippet below
+showcasing this:
+
+(gdb) p/x $z0
+$6 = {q = {u = {0x0 <repeats 16 times>}, s = {0x0 <repeats 16 times>}}, d =
+{f = {0x0 <repeats 32 times>}, u = {0x0 <repeats 32 times>}, s = {
+      0x0 <repeats 32 times>}}, s = {f = {0x0 <repeats 64 times>}, u = {
+      0x0 <repeats 64 times>}, s = {0x0 <repeats 64 times>}}, h = {f = {
+      0x0 <repeats 128 times>}, u = {0x0 <repeats 128 times>}, s = {
+      0x0 <repeats 128 times>}}, b = {u = {0x0 <repeats 256 times>}, s = {
+      0x0 <repeats 256 times>}}}
+(gdb) set $z0.q.u[0] = 0x010203
+(gdb) p/x $z0
+$7 = {q = {u = {0x102030000000000000000, 0x0 <repeats 15 times>}, s = {
+      0x102030000000000000000, 0x0 <repeats 15 times>}}, d = {f = {0x0,
+0x10203,
+      0x0 <repeats 30 times>}, u = {0x0, 0x10203, 0x0 <repeats 30 times>},
+s = {0x0,
+      0x10203, 0x0 <repeats 30 times>}}, s = {f = {0x0, 0x0, 0x10203,
+      0x0 <repeats 61 times>}, u = {0x0, 0x0, 0x10203, 0x0
+<repeats 61 times>}, s = {0x0, 0x0, 0x10203, 0x0 <repeats 61 times>}},
+h = {f = {0x0, 0x0, 0x0, 0x0, 0x203, 0x1, 0x0 <repeats 122 times>},
+u = {0x0, 0x0, 0x0, 0x0, 0x203, 0x1, 0x0 <repeats 122 times>},
+s = {0x0, 0x0, 0x0, 0x0, 0x203, 0x1, 0x0 <repeats 122 times>}},
+b = {u = {0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x3, 0x2, 0x1,
+0x0 <repeats 245 times>}, s = {0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0,
+0x3, 0x2, 0x1, 0x0 <repeats 245 times>}}}
+
+In all scenarios, the value returning on getting the register after setting it
+to 0x010203 is not preserved in appropriate byte order and hence does not
+print 0x010203 as expected.
+
+The current implementation for the SIMD functionality for getting and setting
+registers via the gdbstub is implemented as follows:
+
+aarch64_gdb_set_fpu_reg:
+<omitted code>
+uint64_t *q = aa64_vfp_qreg(env, reg);
+q[0] = ldq_le_p(buf);
+q[1] = ldq_le_p(buf + 8);
+return 16;
+<omitted code>
+
+The following code is a suggested fix for the current implementation that
+should allow for mixed endian support for getting/setting SIMD registers
+via the remote GDB protocol.
+
+aarch64_gdb_set_fpu_reg:
+<omitted code>
+// case 0...31
+uint64_t *q = aa64_vfp_qreg(env, reg);
+if (target_big_endian()){
+	q[1] = ldq_p(buf);
+        q[0] = ldq_p(buf + 8);
+}
+else{
+	q[0] = ldq_p(buf);
+        q[1] = ldq_p(buf + 8);
+}
+return 16;
+<omitted code>
+
+This use of ldq_p rather than ldq_le_p (which the current implementation
+uses) to load bytes into host endian struct is inspired by the current
+implementation for getting/setting general purpose registers via remote
+GDB (which works appropriately regardless of target endianness), as well
+as the current implementation for getting/setting gprs via GDB with ppc
+as a target (refer to ppc_cpu_gdb_write_register() for example). Note the
+the order of setting q[0] and q[1] is suggested to be swapped for big
+endian targets to ensure that q[1] always holds the most significant half
+and q[0] always holds the least significant half (refer to the comment
+in target/arm/cpu.h, line 155).
+
+For SVE, the current implementation is as follows for the zregs:
+
+aarch64_gdb_set_sve_reg:
+<omitted code>
+// case 0...31
+int vq, len = 0;
+uint64_t *p = (uint64_t *) buf;
+for (vq = 0; vq < cpu->sve_max_vq; vq++) {
+env->vfp.zregs[reg].d[vq * 2 + 1] = *p++;
+        env->vfp.zregs[reg].d[vq * 2] = *p++;
+        len += 16;
+}
+return len;
+
+The suggestion here is similar to the one above for SIMD, that ldq_p
+should be used rather than simple pointer dereferencing. This suggestion
+aims to allow the QEMU gdbstub to support getting/setting register values
+correctly regardless of the target endianness. This suggestion aims to
+yield results such as the following from a remote GDB session, regardless
+of target endianness:
+
+(gdb) p/x $z0
+$1 = {q = {u = {0x0 <repeats 16 times>}, s = {0x0 <repeats 16 times>}},
+d = {f = {0x0 <repeats 32 times>}, u = {0x0 <repeats 32 times>},
+s = {0x0 <repeats 32 times>}}, s = {f = {0x0 <repeats 64 times>},
+u = {0x0 <repeats 64 times>}, s = {0x0 <repeats 64 times>}}, h = {f = {
+      0x0 <repeats 128 times>}, u = {0x0 <repeats 128 times>}, s = {
+      0x0 <repeats 128 times>}}, b = {u = {0x0 <repeats 256 times>}, s = {
+      0x0 <repeats 256 times>}}}
+(gdb) set $z0.q.u[0] = 0x010203
+(gdb) p/x $z0
+$2 = {q = {u = {0x10203, 0x0 <repeats 15 times>}, s = {0x10203,
+      0x0 <repeats 15 times>}}, d = {f = {0x10203, 0x0
+<repeats 31 times>},u = {0x10203, 0x0 <repeats 31 times>},
+s = {0x10203, 0x0 <repeats 31 times>}}, s = {f = {0x10203,
+0x0 <repeats 63 times>}, u = {0x10203, 0x0 <repeats 63 times>},
+s = {0x10203, 0x0 <repeats 63 times>}}, h = {f = {0x203, 0x1,
+0x0 <repeats 126 times>}, u = {0x203, 0x1, 0x0 <repeats 126 times>},
+s = {0x203, 0x1, 0x0 <repeats 126 times>}}, b = {u = {0x3, 0x2, 0x1,
+0x0 <repeats 253 times>}, s = {0x3, 0x2, 0x1, 0x0 <repeats 253 times>}}}
+
+The first patch will implement this change for NEON registers,
+and the second patch will do so for SVE registers.
+
+Glenn Miles (12):
+  ppc/xive2: Fix calculation of END queue sizes
+  ppc/xive2: Use fair irq target search algorithm
+  ppc/xive2: Fix irq preempted by lower priority group irq
+  ppc/xive2: Fix treatment of PIPR in CPPR update
+  pnv/xive2: Support ESB Escalation
+  ppc/xive2: add interrupt priority configuration flags
+  ppc/xive2: Support redistribution of group interrupts
+  ppc/xive: Add more interrupt notification tracing
+  ppc/xive2: Improve pool regs variable name
+  ppc/xive2: Implement "Ack OS IRQ to even report line" TIMA op
+  ppc/xive2: Redistribute group interrupt precluded by CPPR update
+  ppc/xive2: redistribute irqs for pool and phys ctx pull
+
+Michael Kowal (4):
+  ppc/xive2: Remote VSDs need to match on forwarding address
+  ppc/xive2: Reset Generation Flipped bit on END Cache Watch
+  pnv/xive2: Print value in invalid register write logging
+  pnv/xive2: Permit valid writes to VC/PC Flush Control registers
+
+Nicholas Piggin (34):
+  ppc/xive: Fix xive trace event output
+  ppc/xive: Report access size in XIVE TM operation error logs
+  ppc/xive2: fix context push calculation of IPB priority
+  ppc/xive: Fix PHYS NSR ring matching
+  ppc/xive2: Do not present group interrupt on OS-push if precluded by
+    CPPR
+  ppc/xive2: Set CPPR delivery should account for group priority
+  ppc/xive: tctx_notify should clear the precluded interrupt
+  ppc/xive: Explicitly zero NSR after accepting
+  ppc/xive: Move NSR decoding into helper functions
+  ppc/xive: Fix pulling pool and phys contexts
+  pnv/xive2: VC_ENDC_WATCH_SPEC regs should read back WATCH_FULL
+  ppc/xive: Change presenter .match_nvt to match not present
+  ppc/xive2: Redistribute group interrupt preempted by higher priority
+    interrupt
+  ppc/xive: Add xive_tctx_pipr_present() to present new interrupt
+  ppc/xive: Fix high prio group interrupt being preempted by low prio VP
+  ppc/xive: Split xive recompute from IPB function
+  ppc/xive: tctx signaling registers rework
+  ppc/xive: tctx_accept only lower irq line if an interrupt was
+    presented
+  ppc/xive: Add xive_tctx_pipr_set() helper function
+  ppc/xive2: split tctx presentation processing from set CPPR
+  ppc/xive2: Consolidate presentation processing in context push
+  ppc/xive2: Avoid needless interrupt re-check on CPPR set
+  ppc/xive: Assert group interrupts were redistributed
+  ppc/xive2: implement NVP context save restore for POOL ring
+  ppc/xive2: Prevent pulling of pool context losing phys interrupt
+  ppc/xive: Redistribute phys after pulling of pool context
+  ppc/xive: Check TIMA operations validity
+  ppc/xive2: Implement pool context push TIMA op
+  ppc/xive2: redistribute group interrupts on context push
+  ppc/xive2: Implement set_os_pending TIMA op
+  ppc/xive2: Implement POOL LGS push TIMA op
+  ppc/xive2: Implement PHYS ring VP push TIMA op
+  ppc/xive: Split need_resend into restore_nvp
+  ppc/xive2: Enable lower level contexts on VP push
+
+Vacha Bhavsar (2):
+  This patch adds big endian support for NEON GDB remote debugging. It
+    replaces the use of ldq_le_p() with the use of ldq_p().
+    Additionally, it checks the target endianness to ensure the most
+    significant bits are always in second element.
+  This patch adds big endian support for SVE GDB remote debugging. It
+    replaces the use of pointer dereferencing with the use of ldq_p().
+    Additionally, it checks the target endianness to ensure the most
+    significant bits are always in second element.
+
+-- 
+2.34.1
 
 

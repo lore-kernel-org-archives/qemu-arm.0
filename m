@@ -4,79 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC050C83F1A
-	for <qemu-arm@archiver.kernel.org>; Wed, 23 Jul 2025 16:55:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 679F2C83F1A
+	for <qemu-arm@archiver.kernel.org>; Wed, 23 Jul 2025 16:55:26 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ueckE-0005rE-Tw; Wed, 23 Jul 2025 12:55:06 -0400
+	id 1ueckJ-0006J6-Od; Wed, 23 Jul 2025 12:55:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ueckC-0005oy-OK
- for qemu-arm@nongnu.org; Wed, 23 Jul 2025 12:55:04 -0400
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+ id 1ueckI-0006C9-Eb
+ for qemu-arm@nongnu.org; Wed, 23 Jul 2025 12:55:10 -0400
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ueckB-0006ym-1L
- for qemu-arm@nongnu.org; Wed, 23 Jul 2025 12:55:04 -0400
-Received: by mail-wm1-x32c.google.com with SMTP id
- 5b1f17b1804b1-4561ed868b5so417875e9.0
- for <qemu-arm@nongnu.org>; Wed, 23 Jul 2025 09:55:02 -0700 (PDT)
+ id 1ueckF-0007B9-TC
+ for qemu-arm@nongnu.org; Wed, 23 Jul 2025 12:55:10 -0400
+Received: by mail-wr1-x431.google.com with SMTP id
+ ffacd0b85a97d-3a6d77b43c9so61479f8f.3
+ for <qemu-arm@nongnu.org>; Wed, 23 Jul 2025 09:55:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1753289701; x=1753894501; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=F/Asf+Y1MknVy76NZ7DRn/3ApqUbhXVRqNzukmfWwdg=;
- b=cg2hXZoOrud4EzNPljt68S6b0Q+RyGXNstzb8X8AB/m9SLGWhzm+mnKgvUHMe1ncuR
- 4R2ee0oeXbO79xEoxRDWVZR6owBIqDs0mdbApQBQjXUfBpaHwtVYGtSgQf0UHC724ptE
- 1qxXoBEaJlFPtphVgKxT8wQuXTgOqda2yZy9qlNYZwJ4riZH+xNX37x4lPq1tiesxJYm
- gl2yQuCr9E/LOVZvowZ9WK8FRPCKrWPvcp1YJiIsnWDFHNDvIcAHg8MJYioFJukVjQNd
- 84S+mI8KSc0cs5VH+HESbzSS4SQ8VtUsFuKwxjF8JzBHXOrMAR4JLJpg5rwr4Mr8qJnw
- nTUg==
+ d=linaro.org; s=google; t=1753289706; x=1753894506; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=oTa5bJfW6USK2ct/VcofbmOwW3MIZVXHypfzQrDk0DU=;
+ b=bkyOXIJ+zVMLHRnneSJagn7OqUHaa7ooWsjud0L4Xmk4QNr05M1lvJiRY5u77GtM5F
+ pKR8aGcebU8e4DCwtg6loAr/rFY+nwAoDuen/dygtbPS2gcxzu83sDc/iI0hN3pKAew7
+ Gp5A9H1QHkJm1ZQp5UkoOBvxNdNyyG7UK49Bo+1XvCkpwI40Ip57swEBf2mSwzcBb6zh
+ 7zksBNCnZ6F/n7HQrlwmurShiuUOPuMwOsKUZSs5M1zabVe2Vmevd04E/jf4mG7GXcxP
+ v8f0WP4CVilWUpDZYiiQMw6dHJLPPMvduSL7IRuugEZedCseV5cA/OW3LKIt0gmNYWwu
+ gJEg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1753289701; x=1753894501;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=F/Asf+Y1MknVy76NZ7DRn/3ApqUbhXVRqNzukmfWwdg=;
- b=SiFc/NUZ1Fgzy954Qh5Lok9X6B32MY7U4BlKlDaL4Hp66AZ2zsUc2LfLCqSHnunakQ
- noFzRHpV8xOElzI6NZD8WltbDOC6CkMZf7jQMlvyDFI8NsdpQes2gT7K343p/tFAHtTE
- fQKj3x0ZRoNMUxj7QQokxY7DvnlgmXnwFApQQtdClHZbsGYlf5+pcduSPI+8XN/lW6kf
- cvPoRlZV9pdAPwTOR6oZEpc3kba4cvryR3HhkK2Mze8O7vgK7SjQ3ISnLdT/2skMRKxG
- SaEgVjwBcUxxef1jm74WMsys03R4Ovs82xqvGX8A+5SSxjXjV7dXTnVro5Fkh1Tmxt8x
- OJAQ==
-X-Gm-Message-State: AOJu0YzxONriSCmsu5pO6VJlPgTqL0HIhrWKAPbLy+xfdghthy/b0Q7E
- 8L7Sd+XEyfM4RiTrvt2Swjtcnag6bTyqkN43LbfFTYC5ppGG3scuM5P39vLmmdtEeTXnaJqX2p4
- tn1zk
-X-Gm-Gg: ASbGncs+Rf+mNCOYO/3cnE/vx1dW7286GoxRSDoNH06EvbhUUuPcCM2eyYjp+O00KpV
- ZKuDP0x/KTTEU8V7eg5iq/rYKVRii82o+SMYL1zAaCGYGQtqVUWW5E+wIJCGu33Cg+RWEm7DCZ3
- dPO+oaVAUc9EB2CC6CXqhME5d1ZpchQyeyjZyu3sim6qrF2QKIXKVg0H2dj9oHcO4f1ykQxNbz4
- Ntr32RZ9Bz195STKqxrxyCrNEiA4QeGagKzn11M7gjgC4Jx2CG75HTA5S72nU+BUMkTRv+d9kJu
- tpN9QQbTaVmPfIBFOIMIbEwrVQum0NyFddAPoKiaNRtF5r0XpK2i2+M+KBRDjB26+pn4+WIgH1K
- MdEBb9WYqIGgY8B5K70b4zdg1QQJv
-X-Google-Smtp-Source: AGHT+IEFwcpZVT1O6S9eVy0VN456dxjprFjeusjJm/SsFs0RYOJHbHRumON3voPNpCzeHX2WlIDiaA==
-X-Received: by 2002:a05:600c:8b30:b0:458:6733:fb69 with SMTP id
- 5b1f17b1804b1-45868c9dbb1mr36277575e9.14.1753289700901; 
- Wed, 23 Jul 2025 09:55:00 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1753289706; x=1753894506;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=oTa5bJfW6USK2ct/VcofbmOwW3MIZVXHypfzQrDk0DU=;
+ b=ebJyxCnqaEQI3FkJ96ov2DMSPNVrSBImXGNA4JcmButvvWxQwaTu43s8ytbAdkj7Ph
+ /UZEjG87KEsUorRNviW/lccZILT0vhm3nEzfm+b6yPreW239QMzFzyb80NQLt3PzONkk
+ HeDyT37w9EhqumgP1UOlUv2nvSsE21vEPb/pbXMUUpdp9aPRVSJOjpKSxoYaHFwFskYk
+ ah0PyVsvxtW+wzggE/wVrMHRi7Z5laJrlC4hi8cFh0ik8jJjr3OeM9Nki/B3mef1lLUL
+ qMLvdteqgfdgbvRymXmQB7D+X4LkWRyseZlJPW6Tp9z36bi+XIcCQ4aC2tva2pk4K/x2
+ Z26w==
+X-Gm-Message-State: AOJu0YyGWMNGrPWA0lzlt888nGeIxpRJU406qoKNPf5kfA/3pcQbQMRu
+ P+efmkvxUCzDDG8feKsnP7lWVyfXn4xqsHx867TbokKVVdsw0qKUWFw/ShRVD8r5aQt1zBBTgnT
+ 8P58j
+X-Gm-Gg: ASbGncttxnhOT80xTzuKu3M5PA3Q8vOu1TddHoKyliR8tSBKTgJlsVKE/9GEAPt8Pzv
+ 3yga3T43gsPXHC79S/qD2UQN13R+68htrGy1Ri/1114lucY/skd0zE6YKmLWEx4O/RT0EPk9cL/
+ 07r+XY6Ekopqfpozp+/mvkz9PDiPFNKRE1S3+cTeUCm0B0qLYfDLp3w4X3OT9xcIqt03L1DFAyG
+ 9p89FxN7/NkjcyLshXdzLoE2q8oQz4BXNBM8a5o2+7LE7JxTKbH8IuadMl8p82nL+mSqci9mcab
+ eWzPQUirhOYx2zZ2KDC8AIp8uSo5vic3jDusDRarhVIEa0CjKOthnbTK21HPgurQRihuJK+kA/8
+ DHcRrla3jwCV+8MA2W4LtH5APnbkY
+X-Google-Smtp-Source: AGHT+IE0NI5dDL3SkJf2nXd84sp+2Ge0MP+FPE34xGi/l29G2rljJv6OIF7nJh8xWS0qVaM5F4MWQQ==
+X-Received: by 2002:a05:6000:2dca:b0:3b5:f7a3:3960 with SMTP id
+ ffacd0b85a97d-3b768ef9510mr3229499f8f.33.1753289706228; 
+ Wed, 23 Jul 2025 09:55:06 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-458693cd224sm28559825e9.21.2025.07.23.09.54.59
+ 5b1f17b1804b1-458693cd224sm28559825e9.21.2025.07.23.09.55.05
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 23 Jul 2025 09:55:00 -0700 (PDT)
+ Wed, 23 Jul 2025 09:55:05 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>
-Subject: [PATCH for-10.1 0/6] target/arm: Fix various SVE2p1 load/store bugs
-Date: Wed, 23 Jul 2025 17:54:52 +0100
-Message-ID: <20250723165458.3509150-1-peter.maydell@linaro.org>
+Subject: [PATCH for-10.1 2/6] target/arm: Pack mtedesc into upper 32 bits of
+ descriptor
+Date: Wed, 23 Jul 2025 17:54:54 +0100
+Message-ID: <20250723165458.3509150-3-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250723165458.3509150-1-peter.maydell@linaro.org>
+References: <20250723165458.3509150-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::431;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x431.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -99,41 +102,284 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This patchset fixes some bugs in the load/store insns newly
-introduced with SVE2p1.  The first three patches are all from Richard
-and have already appeared on the list: I gathered them up here since
-they're hard dependencies for this (and for patch 2 expanded the
-commit message to say which bugs it's fixing).  The last three
-patches are from me, and are fairly straightforward bug fixes.
+From: Richard Henderson <richard.henderson@linaro.org>
 
-thanks
--- PMM
+Instead of trying to pack mtedesc into the upper 17 bits of a 32-bit
+gvec descriptor, pass the gvec descriptor in the lower 32 bits and
+the mte descriptor in the upper 32 bits of a 64-bit operand.
 
-Peter Maydell (3):
-  target/arm: LD1Q, ST1Q are vector + scalar, not scalar + vector
-  target/arm: Pass correct esize to sve_st1_z() for LD1Q, ST1Q
-  target/arm: Fix LD1W, LD1D to 128-bit elements
+This fixes two bugs:
+ (1) in gen_sve_ldr() and gen_sve_str() call gen_mte_checkN() with a
+ length value which is the SVE vector length and can be up to 256
+ bytes. We don't assert there that it fits in the descriptor, so
+ we would just fail to do the MTE checks on the right length of memory
+ if the VL is more than 32 bytes
 
-Richard Henderson (3):
-  target/arm: Expand the descriptor for SME/SVE memory ops to i64
-  target/arm: Pack mtedesc into upper 32 bits of descriptor
-  decodetree: Infer argument set before inferring format
+ (2) the new-in-SVE2p1 insns LD3Q, LD4Q, ST3Q, ST4Q also involve
+ transfers of more than 32 bytes of memory. In this case we would
+ assert at translate time.
 
- target/arm/internals.h          |    8 +-
- target/arm/tcg/helper-sme.h     |  144 ++--
- target/arm/tcg/helper-sve.h     | 1196 +++++++++++++++----------------
- target/arm/tcg/translate-a64.h  |    2 +-
- target/arm/tcg/sve.decode       |   12 +-
- tests/decode/succ_infer1.decode |    4 +
- target/arm/tcg/sme_helper.c     |   30 +-
- target/arm/tcg/sve_helper.c     |  185 ++---
- target/arm/tcg/translate-sme.c  |    6 +-
- target/arm/tcg/translate-sve.c  |  103 ++-
- scripts/decodetree.py           |    7 +-
- tests/decode/meson.build        |    1 +
- 12 files changed, 872 insertions(+), 826 deletions(-)
- create mode 100644 tests/decode/succ_infer1.decode
+(Note for potential backporting: this commit depends on the previous
+"target/arm: Expand the descriptor for SME/SVE memory ops to i64".)
 
+Fixes: 7b1613a1020d2942 ("target/arm: Enable FEAT_SME2p1 on -cpu max")
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+[PMM: expand commit message to clarify that we are fixing bugs here]
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ target/arm/internals.h         |  8 +-----
+ target/arm/tcg/sme_helper.c    | 14 +++-------
+ target/arm/tcg/sve_helper.c    | 49 +++++++++++++---------------------
+ target/arm/tcg/translate-sve.c |  5 ++--
+ 4 files changed, 25 insertions(+), 51 deletions(-)
+
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index c4765e44893..1b3d0244fd6 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -1623,19 +1623,13 @@ FIELD(PREDDESC, OPRSZ, 0, 6)
+ FIELD(PREDDESC, ESZ, 6, 2)
+ FIELD(PREDDESC, DATA, 8, 24)
+ 
+-/*
+- * The SVE simd_data field, for memory ops, contains either
+- * rd (5 bits) or a shift count (2 bits).
+- */
+-#define SVE_MTEDESC_SHIFT 5
+-
+ /* Bits within a descriptor passed to the helper_mte_check* functions. */
+ FIELD(MTEDESC, MIDX,  0, 4)
+ FIELD(MTEDESC, TBI,   4, 2)
+ FIELD(MTEDESC, TCMA,  6, 2)
+ FIELD(MTEDESC, WRITE, 8, 1)
+ FIELD(MTEDESC, ALIGN, 9, 3)
+-FIELD(MTEDESC, SIZEM1, 12, SIMD_DATA_BITS - SVE_MTEDESC_SHIFT - 12)  /* size - 1 */
++FIELD(MTEDESC, SIZEM1, 12, 32 - 12)  /* size - 1 */
+ 
+ bool mte_probe(CPUARMState *env, uint32_t desc, uint64_t ptr);
+ uint64_t mte_check(CPUARMState *env, uint32_t desc, uint64_t ptr, uintptr_t ra);
+diff --git a/target/arm/tcg/sme_helper.c b/target/arm/tcg/sme_helper.c
+index 0b55f13f8c5..075360d8b8a 100644
+--- a/target/arm/tcg/sme_helper.c
++++ b/target/arm/tcg/sme_helper.c
+@@ -666,19 +666,16 @@ void sme_ld1(CPUARMState *env, void *za, uint64_t *vg,
+ 
+ static inline QEMU_ALWAYS_INLINE
+ void sme_ld1_mte(CPUARMState *env, void *za, uint64_t *vg,
+-                 target_ulong addr, uint32_t desc, uintptr_t ra,
++                 target_ulong addr, uint64_t desc, uintptr_t ra,
+                  const int esz, bool vertical,
+                  sve_ldst1_host_fn *host_fn,
+                  sve_ldst1_tlb_fn *tlb_fn,
+                  ClearFn *clr_fn,
+                  CopyFn *cpy_fn)
+ {
+-    uint32_t mtedesc = desc >> (SIMD_DATA_SHIFT + SVE_MTEDESC_SHIFT);
++    uint32_t mtedesc = desc >> 32;
+     int bit55 = extract64(addr, 55, 1);
+ 
+-    /* Remove mtedesc from the normal sve descriptor. */
+-    desc = extract32(desc, 0, SIMD_DATA_SHIFT + SVE_MTEDESC_SHIFT);
+-
+     /* Perform gross MTE suppression early. */
+     if (!tbi_check(mtedesc, bit55) ||
+         tcma_check(mtedesc, bit55, allocation_tag_from_addr(addr))) {
+@@ -854,16 +851,13 @@ void sme_st1(CPUARMState *env, void *za, uint64_t *vg,
+ 
+ static inline QEMU_ALWAYS_INLINE
+ void sme_st1_mte(CPUARMState *env, void *za, uint64_t *vg, target_ulong addr,
+-                 uint32_t desc, uintptr_t ra, int esz, bool vertical,
++                 uint64_t desc, uintptr_t ra, int esz, bool vertical,
+                  sve_ldst1_host_fn *host_fn,
+                  sve_ldst1_tlb_fn *tlb_fn)
+ {
+-    uint32_t mtedesc = desc >> (SIMD_DATA_SHIFT + SVE_MTEDESC_SHIFT);
++    uint32_t mtedesc = desc >> 32;
+     int bit55 = extract64(addr, 55, 1);
+ 
+-    /* Remove mtedesc from the normal sve descriptor. */
+-    desc = extract32(desc, 0, SIMD_DATA_SHIFT + SVE_MTEDESC_SHIFT);
+-
+     /* Perform gross MTE suppression early. */
+     if (!tbi_check(mtedesc, bit55) ||
+         tcma_check(mtedesc, bit55, allocation_tag_from_addr(addr))) {
+diff --git a/target/arm/tcg/sve_helper.c b/target/arm/tcg/sve_helper.c
+index 9fc2c05879b..d0fb4138d21 100644
+--- a/target/arm/tcg/sve_helper.c
++++ b/target/arm/tcg/sve_helper.c
+@@ -6362,17 +6362,14 @@ void sve_ldN_r(CPUARMState *env, uint64_t *vg, const target_ulong addr,
+ 
+ static inline QEMU_ALWAYS_INLINE
+ void sve_ldN_r_mte(CPUARMState *env, uint64_t *vg, target_ulong addr,
+-                   uint32_t desc, const uintptr_t ra,
++                   uint64_t desc, const uintptr_t ra,
+                    const int esz, const int msz, const int N,
+                    sve_ldst1_host_fn *host_fn,
+                    sve_ldst1_tlb_fn *tlb_fn)
+ {
+-    uint32_t mtedesc = desc >> (SIMD_DATA_SHIFT + SVE_MTEDESC_SHIFT);
++    uint32_t mtedesc = desc >> 32;
+     int bit55 = extract64(addr, 55, 1);
+ 
+-    /* Remove mtedesc from the normal sve descriptor. */
+-    desc = extract32(desc, 0, SIMD_DATA_SHIFT + SVE_MTEDESC_SHIFT);
+-
+     /* Perform gross MTE suppression early. */
+     if (!tbi_check(mtedesc, bit55) ||
+         tcma_check(mtedesc, bit55, allocation_tag_from_addr(addr))) {
+@@ -6727,17 +6724,14 @@ void sve_ldnfff1_r(CPUARMState *env, void *vg, const target_ulong addr,
+ 
+ static inline QEMU_ALWAYS_INLINE
+ void sve_ldnfff1_r_mte(CPUARMState *env, void *vg, target_ulong addr,
+-                       uint32_t desc, const uintptr_t retaddr,
++                       uint64_t desc, const uintptr_t retaddr,
+                        const int esz, const int msz, const SVEContFault fault,
+                        sve_ldst1_host_fn *host_fn,
+                        sve_ldst1_tlb_fn *tlb_fn)
+ {
+-    uint32_t mtedesc = desc >> (SIMD_DATA_SHIFT + SVE_MTEDESC_SHIFT);
++    uint32_t mtedesc = desc >> 32;
+     int bit55 = extract64(addr, 55, 1);
+ 
+-    /* Remove mtedesc from the normal sve descriptor. */
+-    desc = extract32(desc, 0, SIMD_DATA_SHIFT + SVE_MTEDESC_SHIFT);
+-
+     /* Perform gross MTE suppression early. */
+     if (!tbi_check(mtedesc, bit55) ||
+         tcma_check(mtedesc, bit55, allocation_tag_from_addr(addr))) {
+@@ -6985,17 +6979,14 @@ void sve_stN_r(CPUARMState *env, uint64_t *vg, target_ulong addr,
+ 
+ static inline QEMU_ALWAYS_INLINE
+ void sve_stN_r_mte(CPUARMState *env, uint64_t *vg, target_ulong addr,
+-                   uint32_t desc, const uintptr_t ra,
++                   uint64_t desc, const uintptr_t ra,
+                    const int esz, const int msz, const int N,
+                    sve_ldst1_host_fn *host_fn,
+                    sve_ldst1_tlb_fn *tlb_fn)
+ {
+-    uint32_t mtedesc = desc >> (SIMD_DATA_SHIFT + SVE_MTEDESC_SHIFT);
++    uint32_t mtedesc = desc >> 32;
+     int bit55 = extract64(addr, 55, 1);
+ 
+-    /* Remove mtedesc from the normal sve descriptor. */
+-    desc = extract32(desc, 0, SIMD_DATA_SHIFT + SVE_MTEDESC_SHIFT);
+-
+     /* Perform gross MTE suppression early. */
+     if (!tbi_check(mtedesc, bit55) ||
+         tcma_check(mtedesc, bit55, allocation_tag_from_addr(addr))) {
+@@ -7183,14 +7174,12 @@ void sve_ld1_z(CPUARMState *env, void *vd, uint64_t *vg, void *vm,
+ 
+ static inline QEMU_ALWAYS_INLINE
+ void sve_ld1_z_mte(CPUARMState *env, void *vd, uint64_t *vg, void *vm,
+-                   target_ulong base, uint32_t desc, uintptr_t retaddr,
++                   target_ulong base, uint64_t desc, uintptr_t retaddr,
+                    int esize, int msize, zreg_off_fn *off_fn,
+                    sve_ldst1_host_fn *host_fn,
+                    sve_ldst1_tlb_fn *tlb_fn)
+ {
+-    uint32_t mtedesc = desc >> (SIMD_DATA_SHIFT + SVE_MTEDESC_SHIFT);
+-    /* Remove mtedesc from the normal sve descriptor. */
+-    desc = extract32(desc, 0, SIMD_DATA_SHIFT + SVE_MTEDESC_SHIFT);
++    uint32_t mtedesc = desc >> 32;
+ 
+     /*
+      * ??? TODO: For the 32-bit offset extractions, base + ofs cannot
+@@ -7395,15 +7384,13 @@ void sve_ldff1_z(CPUARMState *env, void *vd, uint64_t *vg, void *vm,
+ 
+ static inline QEMU_ALWAYS_INLINE
+ void sve_ldff1_z_mte(CPUARMState *env, void *vd, uint64_t *vg, void *vm,
+-                     target_ulong base, uint32_t desc, uintptr_t retaddr,
++                     target_ulong base, uint64_t desc, uintptr_t retaddr,
+                      const int esz, const int msz,
+                      zreg_off_fn *off_fn,
+                      sve_ldst1_host_fn *host_fn,
+                      sve_ldst1_tlb_fn *tlb_fn)
+ {
+-    uint32_t mtedesc = desc >> (SIMD_DATA_SHIFT + SVE_MTEDESC_SHIFT);
+-    /* Remove mtedesc from the normal sve descriptor. */
+-    desc = extract32(desc, 0, SIMD_DATA_SHIFT + SVE_MTEDESC_SHIFT);
++    uint32_t mtedesc = desc >> 32;
+ 
+     /*
+      * ??? TODO: For the 32-bit offset extractions, base + ofs cannot
+@@ -7600,14 +7587,12 @@ void sve_st1_z(CPUARMState *env, void *vd, uint64_t *vg, void *vm,
+ 
+ static inline QEMU_ALWAYS_INLINE
+ void sve_st1_z_mte(CPUARMState *env, void *vd, uint64_t *vg, void *vm,
+-                   target_ulong base, uint32_t desc, uintptr_t retaddr,
++                   target_ulong base, uint64_t desc, uintptr_t retaddr,
+                    int esize, int msize, zreg_off_fn *off_fn,
+                    sve_ldst1_host_fn *host_fn,
+                    sve_ldst1_tlb_fn *tlb_fn)
+ {
+-    uint32_t mtedesc = desc >> (SIMD_DATA_SHIFT + SVE_MTEDESC_SHIFT);
+-    /* Remove mtedesc from the normal sve descriptor. */
+-    desc = extract32(desc, 0, SIMD_DATA_SHIFT + SVE_MTEDESC_SHIFT);
++    uint32_t mtedesc = desc >> 32;
+ 
+     /*
+      * ??? TODO: For the 32-bit offset extractions, base + ofs cannot
+@@ -7853,14 +7838,15 @@ static void sve2p1_cont_ldst_mte_check(SVEContLdSt *info, CPUARMState *env,
+ 
+ static inline QEMU_ALWAYS_INLINE
+ void sve2p1_ld1_c(CPUARMState *env, ARMVectorReg *zd, const vaddr addr,
+-                  uint32_t png, uint32_t desc,
++                  uint32_t png, uint64_t desc64,
+                   const uintptr_t ra, const MemOp esz,
+                   sve_ldst1_host_fn *host_fn,
+                   sve_ldst1_tlb_fn *tlb_fn)
+ {
++    uint32_t mtedesc = desc64 >> 32;
++    uint32_t desc = desc64;
+     const unsigned N = (desc >> SIMD_DATA_SHIFT) & 1 ? 4 : 2;
+     const unsigned rstride = 1 << ((desc >> (SIMD_DATA_SHIFT + 1)) % 4);
+-    uint32_t mtedesc = desc >> (SIMD_DATA_SHIFT + SVE_MTEDESC_SHIFT);
+     const intptr_t reg_max = simd_oprsz(desc);
+     const unsigned esize = 1 << esz;
+     intptr_t count_off, count_last;
+@@ -8025,14 +8011,15 @@ DO_LD1_2(ld1dd, MO_64)
+ 
+ static inline QEMU_ALWAYS_INLINE
+ void sve2p1_st1_c(CPUARMState *env, ARMVectorReg *zd, const vaddr addr,
+-                  uint32_t png, uint32_t desc,
++                  uint32_t png, uint64_t desc64,
+                   const uintptr_t ra, const int esz,
+                   sve_ldst1_host_fn *host_fn,
+                   sve_ldst1_tlb_fn *tlb_fn)
+ {
++    uint32_t mtedesc = desc64 >> 32;
++    uint32_t desc = desc64;
+     const unsigned N = (desc >> SIMD_DATA_SHIFT) & 1 ? 4 : 2;
+     const unsigned rstride = 1 << ((desc >> (SIMD_DATA_SHIFT + 1)) % 4);
+-    uint32_t mtedesc = desc >> (SIMD_DATA_SHIFT + SVE_MTEDESC_SHIFT);
+     const intptr_t reg_max = simd_oprsz(desc);
+     const unsigned esize = 1 << esz;
+     intptr_t count_off, count_last;
+diff --git a/target/arm/tcg/translate-sve.c b/target/arm/tcg/translate-sve.c
+index 849151826e2..5cba7b87bdc 100644
+--- a/target/arm/tcg/translate-sve.c
++++ b/target/arm/tcg/translate-sve.c
+@@ -4893,7 +4893,6 @@ uint64_t make_svemte_desc(DisasContext *s, unsigned vsz, uint32_t nregs,
+     assert(nregs >= 1 && nregs <= 4);
+     sizem1 = (nregs << msz) - 1;
+     assert(sizem1 <= R_MTEDESC_SIZEM1_MASK >> R_MTEDESC_SIZEM1_SHIFT);
+-    assert(data < 1u << SVE_MTEDESC_SHIFT);
+ 
+     if (s->mte_active[0]) {
+         desc = FIELD_DP32(desc, MTEDESC, MIDX, get_mem_index(s));
+@@ -4901,9 +4900,9 @@ uint64_t make_svemte_desc(DisasContext *s, unsigned vsz, uint32_t nregs,
+         desc = FIELD_DP32(desc, MTEDESC, TCMA, s->tcma);
+         desc = FIELD_DP32(desc, MTEDESC, WRITE, is_write);
+         desc = FIELD_DP32(desc, MTEDESC, SIZEM1, sizem1);
+-        desc <<= SVE_MTEDESC_SHIFT;
++        desc <<= 32;
+     }
+-    return simd_desc(vsz, vsz, desc | data);
++    return simd_desc(vsz, vsz, data) | desc;
+ }
+ 
+ static void do_mem_zpa(DisasContext *s, int zt, int pg, TCGv_i64 addr,
 -- 
 2.43.0
 

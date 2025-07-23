@@ -4,75 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91816C83F17
-	for <qemu-arm@archiver.kernel.org>; Wed, 23 Jul 2025 10:00:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6693BC83F17
+	for <qemu-arm@archiver.kernel.org>; Wed, 23 Jul 2025 11:54:42 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ueWGj-0005WF-2F; Wed, 23 Jul 2025 06:00:13 -0400
+	id 1ueY3K-0002YE-7u; Wed, 23 Jul 2025 07:54:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1ueWGc-0005Sb-Sv
- for qemu-arm@nongnu.org; Wed, 23 Jul 2025 06:00:07 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1ueWGV-0004LL-HF
- for qemu-arm@nongnu.org; Wed, 23 Jul 2025 06:00:06 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1753264793;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=ef2bHE+IJ4RJTBKfXUAAnI+DFaqzUKpW2msjx0XNFYQ=;
- b=iFIuYYlYWgY4/kC3d3Qm0J8F34Exx4OCTzbj/KAu01jz65eHaoDYC5LOvSiJNSSZLf7Ewl
- /WfBV62ckOt4yYBLUK8sOXSpSLrWmY551AneNH6A+xJnEmR3McIxMwtC/098y6o+NuLgWR
- 0Dhe4x0CX59WUBFFwPk5IABnuwGyS5I=
-Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-663-mLCVnTtRP_KqgR-EA_Hgpg-1; Wed,
- 23 Jul 2025 05:59:49 -0400
-X-MC-Unique: mLCVnTtRP_KqgR-EA_Hgpg-1
-X-Mimecast-MFC-AGG-ID: mLCVnTtRP_KqgR-EA_Hgpg_1753264788
-Received: from mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.15])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 6ADDC19560AA; Wed, 23 Jul 2025 09:59:48 +0000 (UTC)
-Received: from localhost (pixel-6a.str.redhat.com [10.33.192.205])
- by mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 4FE5F19560AF; Wed, 23 Jul 2025 09:59:46 +0000 (UTC)
-From: Cornelia Huck <cohuck@redhat.com>
-To: Sebastian Ott <sebott@redhat.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, Peter Maydell
- <peter.maydell@linaro.org>, Eric Auger <eric.auger@redhat.com>
-Subject: Re: [PATCH RFC] arm/kvm: report registers we failed to set
-In-Reply-To: <b1f7bb67-070f-da38-369b-51ed1962fd2d@redhat.com>
-Organization: "Red Hat GmbH, Sitz: Werner-von-Siemens-Ring 12, D-85630
- Grasbrunn, Handelsregister: Amtsgericht =?utf-8?Q?M=C3=BCnchen=2C?= HRB
- 153243,
- =?utf-8?Q?Gesch=C3=A4ftsf=C3=BChrer=3A?= Ryan Barnhart, Charles Cachera,
- Avril Crosse O'Flaherty"
-References: <20250721161932.548668-1-cohuck@redhat.com>
- <b1f7bb67-070f-da38-369b-51ed1962fd2d@redhat.com>
-User-Agent: Notmuch/0.38.3 (https://notmuchmail.org)
-Date: Wed, 23 Jul 2025 11:59:45 +0200
-Message-ID: <87jz3z5isu.fsf@redhat.com>
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ueY3F-0002IQ-Qo
+ for qemu-arm@nongnu.org; Wed, 23 Jul 2025 07:54:26 -0400
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ueY3B-0003pf-Hi
+ for qemu-arm@nongnu.org; Wed, 23 Jul 2025 07:54:25 -0400
+Received: by mail-wr1-x42f.google.com with SMTP id
+ ffacd0b85a97d-3a6e8b1fa37so4682099f8f.2
+ for <qemu-arm@nongnu.org>; Wed, 23 Jul 2025 04:54:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1753271658; x=1753876458; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=F5UYc63R13I0sB8gTeo4oXt3OJ3GV8nT4O74lNv6kpk=;
+ b=CuDtv8gLDp3Xt6sid1gEqb9lf5P+CyrKyRKLnCyncVUa+Qz6VC3b1dUsm55xG7+EJE
+ 60GE6ZddKVj5n2Gsujebp0GTkz731+2Uu7Uo6EH05IOzzSiZU+ZC4gXIw3Elh507yI6C
+ p1qhIcx3jKia5oI7egj0FSv6fO5i+uNazgvrzVgSZhkhBiJ2nATHULZeNAqM6dCsAHbc
+ N4IJqMSD81KzwKjphWxv9c+Umvx0/kvmU7dbfyHgTrHvGUe/kh259odPCwI1ILS9/NUa
+ Qw2Cj0juGpX9Rnw1Qm61XBu+b/kc9ljqby7uk70d5bJnr7FLgJzkVjIOhJO+5Zm114AS
+ OTOg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1753271658; x=1753876458;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=F5UYc63R13I0sB8gTeo4oXt3OJ3GV8nT4O74lNv6kpk=;
+ b=f75zJ1WdlkaTHp5tO58GUKGL5fxKgrlRUJTtrFXS5Iz5qlRUNq2utuIpCc+6IcY6rj
+ KGZGmB2cvD6kcmA489XiW90bPUOzKD14jQL3yQOLGwdNYE3YAGiNPVNFEHFnFcpHdST0
+ nsdAaiGIYSGOoN0h2tZpq8yEBrjXfXFveRaTpttBxyt1WHOBjiKkdxD6M8z3C1u4CL9c
+ H13KYaCoAy3jqNgbZaGyOgF3T4Baf2F8+u1ItWEgeiAd/dpJkCYKSoMT9Lhw8G9GP4cG
+ Or3ErqQkftW7fNLWZWOp5kmTNhuMa0xai5B0P4Q+poUn2mWyTinHIHurrmNDqfzZGM3Z
+ a7dg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUOoGcb6avv7cpE40y6+FSRha0lbX46YrY1vWkmQGp7o1JOIQXc1bB34rDubIJESdIeGjEs6xFfdA==@nongnu.org
+X-Gm-Message-State: AOJu0YxrGqlqKpKOYmi6PJBpUCX9R+gC4l8EocKyYw32EVabLY/YG9OG
+ ZyPIql0e9cZxoQjjJhdmWIUbH98Hptoyvnt9NPzv26c06tmTm4muiFQ9i6DMwCT5+nk=
+X-Gm-Gg: ASbGncsrz3RfCqBTon3i/4nBfa5s4oxJ6cKL2iPRMLjEyvNV6UkhZRe907jeLHYwSs4
+ D5Zo10aZ1WDyldKEilLZ7OOXFhC31I/2b6IhXQERPSCGhN+TsXb2LEze+q5AOsrlVGJFxAjjMss
+ Cpj7h0232JJ/3sX740sZ+EbkLQ0WVLx65QrnoOw42gBUQ3dsS6FtdZ9MigCRAKa7P4pcVL2LG+U
+ stJ7beyO+kW8uuHf8cFeGASL4CuEMqkYFhJ2aoXMvg9tFB3rr1f3kb7xX8hagP1tkgy8z9mnWpr
+ PdPkmdzBuE3LKwb0rheAqHqlTLtbXwi9J+y1K5KSJBYf8PNUhDVtd/fUBGuhf9TJwqSI5d/6WWS
+ BorVJXirO692JcQWphnwG1G7bPXAS5TZNSqAAPC4lQKLEAVsoBbZ0m9gKudOLhCf6YIsbAJmYrv
+ 86x1Oc0A==
+X-Google-Smtp-Source: AGHT+IGwOaP8SmdEP7ecmG77ADFCHnid9q77WuZNuuzN/3/fLElZr1moowBIkbq3LgFmVkBGKMdnow==
+X-Received: by 2002:a5d:584a:0:b0:3b3:9cc4:21ce with SMTP id
+ ffacd0b85a97d-3b768f07c8amr2054389f8f.50.1753271657788; 
+ Wed, 23 Jul 2025 04:54:17 -0700 (PDT)
+Received: from [192.168.69.209] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-458693e2ddesm21292615e9.29.2025.07.23.04.54.16
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 23 Jul 2025 04:54:17 -0700 (PDT)
+Message-ID: <78f613a6-dd60-4f76-bbb4-8ba4fb91a7a2@linaro.org>
+Date: Wed, 23 Jul 2025 13:54:16 +0200
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.15
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=cohuck@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
- DKIM_SIGNED=0.1, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
- RCVD_IN_MSPIKE_WL=0.001, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 0/2] target/arm: Added support for SME register
+ exposure to GDB
+To: Vacha Bhavsar <vacha.bhavsar@oss.qualcomm.com>, qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Gustavo Romero <gustavo.romero@linaro.org>
+References: <20250722201404.2368507-1-vacha.bhavsar@oss.qualcomm.com>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20250722201404.2368507-1-vacha.bhavsar@oss.qualcomm.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42f.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -88,30 +104,29 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, Jul 22 2025, Sebastian Ott <sebott@redhat.com> wrote:
+Cc'ing Gustavo.
 
-> On Mon, 21 Jul 2025, Cornelia Huck wrote:
->> +/* pretty-print a KVM register */
->> +#define CP_REG_ARM64_SYSREG_OP(_reg, _op)                       \
->> +    ((uint8_t)((_reg & CP_REG_ARM64_SYSREG_ ## _op ## _MASK) >> \
->> +               CP_REG_ARM64_SYSREG_ ## _op ## _SHIFT))
->> +
->> +#define PRI_CP_REG_ARM64_SYSREG(_reg)                    \
->> +    ({                                                   \
->> +        char _out[32];                                   \
->> +        snprintf(_out, sizeof(_out),                     \
->> +                 "op0:%d op1:%d crn:%d crm:%d op2:%d",   \
->> +                 CP_REG_ARM64_SYSREG_OP(_reg, OP0),      \
->> +                 CP_REG_ARM64_SYSREG_OP(_reg, OP1),      \
->> +                 CP_REG_ARM64_SYSREG_OP(_reg, CRN),      \
->> +                 CP_REG_ARM64_SYSREG_OP(_reg, CRM),      \
->> +                 CP_REG_ARM64_SYSREG_OP(_reg, OP2));     \
->> +        _out;                                            \
->> +    })
->
-> Gcc correctly complains about a dangling pointer here.
-
-Hum, I maybe should switch to a system with a less ancient
-compiler... thanks for testing.
+On 22/7/25 22:14, Vacha Bhavsar wrote:
+> The QEMU GDB stub does not expose the ZA storage SME register to GDB via
+> the remote serial protocol, which can be a useful functionality to debug SME
+> code. To provide this functionality in Aarch64 target, this patch registers the
+> SME register set with the GDB stub. To do so, this patch implements the
+> aarch64_gdb_get_sme_reg() and aarch64_gdb_set_sme_reg() functions to
+> specify how to get and set the SME registers, and the
+> arm_gen_dynamic_smereg_feature() function to generate the target
+> description in XML format to indicate the target architecture supports SME.
+> Finally, this patch includes a dyn_smereg_feature structure to hold this
+> GDB XML description of the SME registers for each CPU.
+> 
+> Furthermore, this patch series increases the value of MAX_PACKET_LENGTH
+> to allow for remote GDB debugging of the ZA register when the vector
+> length is maximal.
+> 
+> Signed-off-by: Vacha Bhavsar <vacha.bhavsar@oss.qualcomm.com>
+> 
+> Vacha Bhavsar (2):
+>    target/arm: Increase MAX_PACKET_LENGTH for SME ZA remote gdb debugging
+>    target/arm: Added support for SME register exposure to GDB
+> 
 
 

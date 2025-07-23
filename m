@@ -4,89 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC166C83F1A
-	for <qemu-arm@archiver.kernel.org>; Wed, 23 Jul 2025 16:57:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73040C83F17
+	for <qemu-arm@archiver.kernel.org>; Wed, 23 Jul 2025 17:14:48 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ueckN-0006ZW-Km; Wed, 23 Jul 2025 12:55:15 -0400
+	id 1ued30-0000hx-Qk; Wed, 23 Jul 2025 13:14:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ueckL-0006Tm-V6
- for qemu-arm@nongnu.org; Wed, 23 Jul 2025 12:55:14 -0400
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1ued2u-0000gH-DE
+ for qemu-arm@nongnu.org; Wed, 23 Jul 2025 13:14:24 -0400
+Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ueckI-0007Br-V3
- for qemu-arm@nongnu.org; Wed, 23 Jul 2025 12:55:13 -0400
-Received: by mail-wm1-x32a.google.com with SMTP id
- 5b1f17b1804b1-4563cfac19cso293525e9.2
- for <qemu-arm@nongnu.org>; Wed, 23 Jul 2025 09:55:10 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1ued2s-0005xG-Tv
+ for qemu-arm@nongnu.org; Wed, 23 Jul 2025 13:14:24 -0400
+Received: by mail-pl1-x62e.google.com with SMTP id
+ d9443c01a7336-23aeac7d77aso353735ad.3
+ for <qemu-arm@nongnu.org>; Wed, 23 Jul 2025 10:14:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1753289709; x=1753894509; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=YgGqaIHsbVQXAi+NjeZQAHrhXcK+K5i9LycDUSR887M=;
- b=uLdsifBTi37lDOpnNB3v0oUBdOa3htt0vMZNP2dUv7xMLZJBnw17a8H8hCqlk1Sb0M
- Er4dGz0/GnzzD872dvdmCN/cvEHuhcK9y9pGSuoC+FRld0Eo3nyJC6cBITO/kfI4jUzT
- qMhoEFnRn3cBZ9cuGEe4+87MiA1v8UX0qTaWuRCG31hKTRuknPR8CGgiG/7eIDDTSfsP
- 63Ysi82+05vqO9zEILaOZuFE2Z+qTcUVfpOaMEQDWzReSoec7EqBKxv2SNxuZRaLYKxP
- GYyJPdnT+5vea2mGBmU8Nuy/cl4dmrWJplKwTGoRuu0c2YU8r9nx/FKxRaBijFrY6bbw
- t0dg==
+ d=linaro.org; s=google; t=1753290861; x=1753895661; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:to:subject:user-agent:mime-version:date:message-id:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=e885qokl/Dj5nbKl/OsX10/+RB/c22InHOgrvFRoTQE=;
+ b=t1AiNPHauxqyqTI1M1aUBGb6F1nYGcCa6b3TJtIMTbqKHw+t3ZxyJvcujzwlUZGiqo
+ s6eRzR2eHsCwbBl0oDFX7w8PqCvz5JWLx7MbaaW7U2TJrQ3kUbB229SKVWJxLlqJb2yc
+ 5TMDqJ8StO3uEsoyEnRgY29nqOYTmGA4C8By6F2LpnMPKXIGYSxlFUDMwKLbHz1DcA6r
+ bfqZ7dBM9jOvIehS6EaKgGftraDjNapwoT9EQFC6mIJQ7Ac2wODtHjWabT6ZiQxjDoM3
+ gOXnILJfPNFc1+MQN5xk/rviX/rUUIlUP7mCmYG/+AsJKrGWLRrcVqcXBszSqgrdWkQ7
+ hDtg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1753289709; x=1753894509;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=YgGqaIHsbVQXAi+NjeZQAHrhXcK+K5i9LycDUSR887M=;
- b=QSXRtaR5klWrzApeoKWP+R7muH3buFrSoqfjSQk0gRMbeOx3bu3u1ubeHHafbno0Gp
- ij1lKYjKOgaovYlhNUtrzi2SvFHlSYFULCiEJxeIkeZ4O5KW7xwdjLYzpcnACgeAYCgJ
- 0Sk1sT0voKVKeJ1OFYY4bTA/30bYuIRI0gC34e4E819TjeO/Ls96KifWYv57LjCjnHy/
- mc3qTNC2AiYU8oPx/DjX6inUWvIBNoybrf0xQ7gj8VTUYAzIqlF4V4lirDKbNCn6fNve
- wao8B0xkrGhkzgWLeRKIJwpyw68lHU5mC6hvGKC4mdNAr+qP3K0vsvg2Z4j0Gc1j2U7q
- 9Tig==
-X-Gm-Message-State: AOJu0Yx3N+Np+m7wtwrAIIFD+LhGTVWOAX/A5DgyfoTpnGZ24jHbUgkE
- ZvGil+Mo6cwwbC4AY9Gs2hnLxm75ybKtXVCujtUvbwmRSrAFgwP/vqM5uDRM5fK9WHka5k23V6S
- CHNAU
-X-Gm-Gg: ASbGncuu3Oz6vlZIT9r+gpNMrRcLyasWwXhSBU44eoy9couXrBh5H8NvJ5m81/F1PRR
- YJHnz9q5wneJj2BTqLb4DRXLnIlQHdM47a3blwyKjl0ATa66yr3LdkZsi6GJLgBQhhLOJd7NEOx
- k607csbiez2F7XVuFQZx/80ex/tv440yG5Fq+Ak9iZSLetrM3bKdPXr1QR3A+ru+dKKRp2QbZrE
- 83T8HStcf0Vfupef0sq0YJxPYD1XW+aKe6uirSuBxRR7TMgtyw8dPD1ass2HwjigXxYFVba8rCi
- Bc8lxj9WtO+jvioboWmWL7KFGU2o+zaHmDrbFsG7QdI6abZv5Cp9rxvfSehDHN8WpmtvuZvYNgK
- Vy8oZpNg5P6wICM6gR5M0JTueGXOO
-X-Google-Smtp-Source: AGHT+IGUHzp2t14xcxnogL5suHHHiFaBprX6aNR7y2fQPnsvlhfssAORLHkjuyMjJHzWNmI86vLlcA==
-X-Received: by 2002:a05:600c:6307:b0:456:1923:7549 with SMTP id
- 5b1f17b1804b1-4586d6db9e7mr10451365e9.26.1753289709078; 
- Wed, 23 Jul 2025 09:55:09 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+ d=1e100.net; s=20230601; t=1753290861; x=1753895661;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=e885qokl/Dj5nbKl/OsX10/+RB/c22InHOgrvFRoTQE=;
+ b=jKCxFlZpqMh8F9d7kCAaqtb+UBBpL+XlZZo5dy4XwreE+f9li4DnZGIqeUXh83sO/q
+ RhMOCMKJyu9/QXT3+1FWmhuEnDquwC0fhkdzWhB5ha5e3T5dBUu8GbWmanYnTco0iMTm
+ mGldnJnbcTxg3Wq7FbopTMN6CZ4hhnL4RM8z20vSd4ZFrY5gQnspnT+E42ilLQsOlGWp
+ 8fSGhJwc96RTc97fuoyx/xZiwYqDydS9iHvjCFT96PBdLc4u784WLnHNoBeFElUgZii2
+ cOuUfN6g4RMuDAqD0e1Vz5KEd/al2W4G/DROw+tscshLJkYIDL8VgN2By9BmiAtaC+df
+ 2kzg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWT9MyMzDIk/J3l0RdQRBqXPoySG41Qmp7Zm62vOgPf8CRLvErjpx4Agndr9nrKOwaotqnCfj8j3Q==@nongnu.org
+X-Gm-Message-State: AOJu0YzNUOD/MKWxztjLU3wWEpTH2DuRc3y/mBERthqP3xIeiOXNL5wN
+ jQujy9gooUqSmKAEMUildSoWBXGySzDNz5YWMw4oaCzIWmUZ73qloWXdVF/rANqTB4Y=
+X-Gm-Gg: ASbGncuAbtaXJ9XW1/43JtE9q7WrXnBVvWTuooOgSMEL6Zx+M+ZaCp96XMhwh36oBHI
+ l0TLqijQDD2x9tLpz375pGzYRW6BkZGPkcsvNLw+yIOosjL0tzH3XQa4dUCLFjLbM+M/JGmjqYu
+ QoD1ZCGe34rWYU2DPuz4hwpwuxMERzxK0YIOD1XqkaIa8Qj2h3gvv4dV0qYaUKQzhZEG8u75auH
+ YURYjc7n7WFGxp1rmJzwwe3ez3RT56KGyQS0RcdXx63nAqEXV/cau0K5x9lBkmvctHvgEeaq8fR
+ QMif1B10vcs5Uv2hAIhF6iaSJ1auj504JiWAizlyVVlY8Oz3SUwwS9k7+9bRohHqYRe/hklCBqA
+ tkmtMzqXJoBB4UOHjW1DewfW5olJDF76162C2
+X-Google-Smtp-Source: AGHT+IEBWmhyBzoe395q2/+evgAb/inFstpQzHziCz6yunVelrQGjZYFK8EOCpeAqYcI2s823Hsjhw==
+X-Received: by 2002:a17:903:230c:b0:224:26fd:82e5 with SMTP id
+ d9443c01a7336-23f9823502fmr54125655ad.48.1753290860764; 
+ Wed, 23 Jul 2025 10:14:20 -0700 (PDT)
+Received: from [192.168.0.4] ([71.212.157.132])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-458693cd224sm28559825e9.21.2025.07.23.09.55.08
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 23 Jul 2025 09:55:08 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: Richard Henderson <richard.henderson@linaro.org>
-Subject: [PATCH for-10.1 4/6] target/arm: LD1Q, ST1Q are vector + scalar,
- not scalar + vector
-Date: Wed, 23 Jul 2025 17:54:56 +0100
-Message-ID: <20250723165458.3509150-5-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250723165458.3509150-1-peter.maydell@linaro.org>
-References: <20250723165458.3509150-1-peter.maydell@linaro.org>
+ d9443c01a7336-23e3b6d723dsm99793845ad.166.2025.07.23.10.14.19
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 23 Jul 2025 10:14:20 -0700 (PDT)
+Message-ID: <4a887ef2-6ecb-4311-9aa7-45002dfe2fe8@linaro.org>
+Date: Wed, 23 Jul 2025 10:14:18 -0700
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32a.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH for-10.1 4/6] target/arm: LD1Q, ST1Q are vector + scalar, 
+ not scalar + vector
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20250723165458.3509150-1-peter.maydell@linaro.org>
+ <20250723165458.3509150-5-peter.maydell@linaro.org>
+Content-Language: en-US
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20250723165458.3509150-5-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62e;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -102,171 +105,33 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Unlike the "LD1D (scalar + vector)" etc instructions, LD1Q is
-vector + scalar. This means that:
- * the vector and the scalar register are in opposite fields
-   in the encoding
- * 31 in the scalar register field is XZR, not XSP
+On 7/23/25 09:54, Peter Maydell wrote:
+> Unlike the "LD1D (scalar + vector)" etc instructions, LD1Q is
+> vector + scalar. This means that:
+>   * the vector and the scalar register are in opposite fields
+>     in the encoding
+>   * 31 in the scalar register field is XZR, not XSP
+> 
+> The same applies for ST1Q.
+> 
+> This means we can't reuse the trans_LD1_zprz() and trans_ST1_zprz()
+> functions for LD1Q and ST1Q. Split them out to use their own
+> trans functions.
+> 
+> Note that the change made here to sve.decode requires the decodetree
+> bugfix "decodetree: Infer argument set before inferring format" to
+> avoid a spurious compile-time error about "dtype".
+> 
+> Fixes: d2aa9a804ee678f ("target/arm: Implement LD1Q, ST1Q for SVE2p1")
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>   target/arm/tcg/sve.decode      | 12 +++----
+>   target/arm/tcg/translate-sve.c | 65 ++++++++++++++++++++++++++--------
+>   2 files changed, 57 insertions(+), 20 deletions(-)
 
-The same applies for ST1Q.
 
-This means we can't reuse the trans_LD1_zprz() and trans_ST1_zprz()
-functions for LD1Q and ST1Q. Split them out to use their own
-trans functions.
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-Note that the change made here to sve.decode requires the decodetree
-bugfix "decodetree: Infer argument set before inferring format" to
-avoid a spurious compile-time error about "dtype".
 
-Fixes: d2aa9a804ee678f ("target/arm: Implement LD1Q, ST1Q for SVE2p1")
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- target/arm/tcg/sve.decode      | 12 +++----
- target/arm/tcg/translate-sve.c | 65 ++++++++++++++++++++++++++--------
- 2 files changed, 57 insertions(+), 20 deletions(-)
-
-diff --git a/target/arm/tcg/sve.decode b/target/arm/tcg/sve.decode
-index aea7f519730..ab63cfaa0f0 100644
---- a/target/arm/tcg/sve.decode
-+++ b/target/arm/tcg/sve.decode
-@@ -1343,9 +1343,9 @@ LD1_zprz        1100010 10 1. ..... 1.. ... ..... ..... \
- LD1_zprz        1100010 11 1. ..... 11. ... ..... ..... \
-                 @rprr_g_load_sc esz=3 msz=3 u=1
- 
--# LD1Q
--LD1_zprz        1100 0100 000 rm:5 101 pg:3 rn:5 rd:5 \
--                &rprr_gather_load u=1 ff=0 xs=2 esz=4 msz=4 scale=0
-+# LD1Q. Note that this is subtly different from LD1_zprz because
-+# it is vector + scalar, not scalar + vector.
-+LD1Q            1100 0100 000 rm:5 101 pg:3 rn:5 rd:5
- 
- # SVE 64-bit gather load (vector plus immediate)
- LD1_zpiz        1100010 .. 01 ..... 1.. ... ..... ..... \
-@@ -1450,9 +1450,9 @@ ST1_zprz        1110010 .. 01 ..... 101 ... ..... ..... \
- ST1_zprz        1110010 .. 00 ..... 101 ... ..... ..... \
-                 @rprr_scatter_store xs=2 esz=3 scale=0
- 
--# ST1Q
--ST1_zprz        1110 0100 001 rm:5 001 pg:3 rn:5 rd:5 \
--                &rprr_scatter_store xs=2 msz=4 esz=4 scale=0
-+# ST1Q. Note that this is subtly different from ST1_zprz because
-+# it is vector + scalar, not scalar + vector.
-+ST1Q            1110 0100 001 rm:5 001 pg:3 rn:5 rd:5
- 
- # SVE 64-bit scatter store (vector plus immediate)
- ST1_zpiz        1110010 .. 10 ..... 101 ... ..... ..... \
-diff --git a/target/arm/tcg/translate-sve.c b/target/arm/tcg/translate-sve.c
-index 5cba7b87bdc..07b827fa8e8 100644
---- a/target/arm/tcg/translate-sve.c
-+++ b/target/arm/tcg/translate-sve.c
-@@ -6179,9 +6179,7 @@ static bool trans_LD1_zprz(DisasContext *s, arg_LD1_zprz *a)
-     bool be = s->be_data == MO_BE;
-     bool mte = s->mte_active[0];
- 
--    if (a->esz < MO_128
--        ? !dc_isar_feature(aa64_sve, s)
--        : !dc_isar_feature(aa64_sve2p1, s)) {
-+    if (!dc_isar_feature(aa64_sve, s)) {
-         return false;
-     }
-     s->is_nonstreaming = true;
-@@ -6196,10 +6194,6 @@ static bool trans_LD1_zprz(DisasContext *s, arg_LD1_zprz *a)
-     case MO_64:
-         fn = gather_load_fn64[mte][be][a->ff][a->xs][a->u][a->msz];
-         break;
--    case MO_128:
--        assert(!a->ff && a->u && a->xs == 2 && a->msz == MO_128);
--        fn = gather_load_fn128[mte][be];
--        break;
-     default:
-         g_assert_not_reached();
-     }
-@@ -6210,6 +6204,32 @@ static bool trans_LD1_zprz(DisasContext *s, arg_LD1_zprz *a)
-     return true;
- }
- 
-+static bool trans_LD1Q(DisasContext *s, arg_LD1Q *a)
-+{
-+    gen_helper_gvec_mem_scatter *fn = NULL;
-+    bool be = s->be_data == MO_BE;
-+    bool mte = s->mte_active[0];
-+
-+    if (!dc_isar_feature(aa64_sve2p1, s)) {
-+        return false;
-+    }
-+    s->is_nonstreaming = true;
-+    if (!sve_access_check(s)) {
-+        return true;
-+    }
-+
-+    fn = gather_load_fn128[mte][be];
-+    assert(fn != NULL);
-+
-+    /*
-+     * Unlike LD1_zprz, a->rm is the scalar register and it can be XZR, not XSP.
-+     * a->rn is the vector register.
-+     */
-+    do_mem_zpz(s, a->rd, a->pg, a->rn, 0,
-+               cpu_reg(s, a->rm), MO_128, false, fn);
-+    return true;
-+}
-+
- static bool trans_LD1_zpiz(DisasContext *s, arg_LD1_zpiz *a)
- {
-     gen_helper_gvec_mem_scatter *fn = NULL;
-@@ -6386,9 +6406,7 @@ static bool trans_ST1_zprz(DisasContext *s, arg_ST1_zprz *a)
-     if (a->esz < a->msz || (a->msz == 0 && a->scale)) {
-         return false;
-     }
--    if (a->esz < MO_128
--        ? !dc_isar_feature(aa64_sve, s)
--        : !dc_isar_feature(aa64_sve2p1, s)) {
-+    if (!dc_isar_feature(aa64_sve, s)) {
-         return false;
-     }
-     s->is_nonstreaming = true;
-@@ -6402,10 +6420,6 @@ static bool trans_ST1_zprz(DisasContext *s, arg_ST1_zprz *a)
-     case MO_64:
-         fn = scatter_store_fn64[mte][be][a->xs][a->msz];
-         break;
--    case MO_128:
--        assert(a->xs == 2 && a->msz == MO_128);
--        fn = scatter_store_fn128[mte][be];
--        break;
-     default:
-         g_assert_not_reached();
-     }
-@@ -6414,6 +6428,29 @@ static bool trans_ST1_zprz(DisasContext *s, arg_ST1_zprz *a)
-     return true;
- }
- 
-+static bool trans_ST1Q(DisasContext *s, arg_ST1Q *a)
-+{
-+    gen_helper_gvec_mem_scatter *fn;
-+    bool be = s->be_data == MO_BE;
-+    bool mte = s->mte_active[0];
-+
-+    if (!dc_isar_feature(aa64_sve2p1, s)) {
-+        return false;
-+    }
-+    s->is_nonstreaming = true;
-+    if (!sve_access_check(s)) {
-+        return true;
-+    }
-+    fn = scatter_store_fn128[mte][be];
-+    /*
-+     * Unlike ST1_zprz, a->rm is the scalar register, and it
-+     * can be XZR, not XSP. a->rn is the vector register.
-+     */
-+    do_mem_zpz(s, a->rd, a->pg, a->rn, 0,
-+               cpu_reg(s, a->rm), MO_128, true, fn);
-+    return true;
-+}
-+
- static bool trans_ST1_zpiz(DisasContext *s, arg_ST1_zpiz *a)
- {
-     gen_helper_gvec_mem_scatter *fn = NULL;
--- 
-2.43.0
-
+r~
 

@@ -4,92 +4,113 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19499C83F1A
-	for <qemu-arm@archiver.kernel.org>; Wed, 23 Jul 2025 17:16:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B4E1C83F17
+	for <qemu-arm@archiver.kernel.org>; Wed, 23 Jul 2025 22:21:34 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ued3r-0001HN-Fv; Wed, 23 Jul 2025 13:15:23 -0400
+	id 1uehpf-0008Rb-9s; Wed, 23 Jul 2025 18:21:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ued3J-0000tA-Dk
- for qemu-arm@nongnu.org; Wed, 23 Jul 2025 13:14:49 -0400
-Received: from mail-pl1-x62d.google.com ([2607:f8b0:4864:20::62d])
+ (Exim 4.90_1) (envelope-from <farosas@suse.de>) id 1uehpe-0008QS-6j
+ for qemu-arm@nongnu.org; Wed, 23 Jul 2025 18:21:02 -0400
+Received: from smtp-out1.suse.de ([2a07:de40:b251:101:10:150:64:1])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ued3F-00064h-O0
- for qemu-arm@nongnu.org; Wed, 23 Jul 2025 13:14:48 -0400
-Received: by mail-pl1-x62d.google.com with SMTP id
- d9443c01a7336-234c5b57557so432325ad.3
- for <qemu-arm@nongnu.org>; Wed, 23 Jul 2025 10:14:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1753290884; x=1753895684; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:to:subject:user-agent:mime-version:date:message-id:from
- :to:cc:subject:date:message-id:reply-to;
- bh=b3NQ66Lm4+2LuFm+m6Dwy1BQvFbQAqY356PRByRv0oE=;
- b=dhzOdRWINIJwx63WYToMlc5nr5ZmxuHO4bsrLGEzWBY8v2KczQVfEFCRkUUIfaP79l
- kp+FQJtwptipbo/NDQ868EwdM9sff9Zbo/w0hEenT4V+oPkxJ3HwrCsC5yIeiTIe1pqx
- hyCtbCE7mZQ4wAIr3TUQcgn8WS82u2DuOp51QnSfl4CMQnXnVcPvAPQMj5z2jOrU4fMR
- it+AG5I0nT38m0HRPBHLbtEFSrZnOBgvhW9XCjHW6Vu32E7/o2zvWPpE2lmCp/gDnf6g
- bYab3Z44LaXodtcfM+WRTUWltPBYEcV5tMmu7nR+BFkHGip4EEjLVqFyEuWUDLZ6QvzA
- 1kSQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1753290884; x=1753895684;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=b3NQ66Lm4+2LuFm+m6Dwy1BQvFbQAqY356PRByRv0oE=;
- b=hsDYCbeVL86kYEDR3PVE+c6YcEwK/HGr2BmymS2TWx7KJsZsTFDnNPBlZ24zV21K6j
- 0ZVJl/xN041xWS4Is+hmx5fRQ+YK8ShbWfac2KMbYEzqehbLSBr8nmvz456BskbwbRCK
- k50nBrUwbJ1A7DDSU0UkiStTS24BbmFSgO1Ty61WO3mAbQe5i1OeRyV3aMf9o69QisSp
- rGf9IDqkwYU5UI4ja+2vbU0NW+o+Z7UnRFdPESwNhBAI+4B4RbzHAyNozU1+n7SWOjUy
- 3+tABUEYYl3swOKyQXS83w+NW0K8C9VwfRv5M57t7SWh0of7ZBghoQaJ8tEZQhXRpUwK
- 9Nhg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXeDyVIKFAPqXQ/NK4Jo2Xl5sbK4dlODGxZuu20vnhVt7oqMYwY/LXHLBscj01/lf22+zkG421cjg==@nongnu.org
-X-Gm-Message-State: AOJu0Yw/fFdK++ZDxJrUBRSvJwhWk20je12U+K81tobyx1RpWG5LaSPd
- u+MrBVsmJEvBpe3z9nQ1JRLMZ1naGnBG9QQ5hCxTDwHRPbxFdfghhdiQElUdCFBx+VM=
-X-Gm-Gg: ASbGncvwHS+36PtgL33PDq02fDYc2qiSrTvSZapjCUAKH24mUmy+q4dFbrxI41RrkM/
- czMc1j3XTGQSV08/cqqjUX5n0cS+IEIrNpSVwkVL1btBcJq0uyr0DGw41Z8FIEEdS6vrgKkdFU1
- 8BXFL8ereje4x0CmAlWV5pcf45LMeJLe1oXh8N2UXXy4XvYSmr8TGJO+iJ7cT23YqEkUn+PD5ev
- +O9ileegqF7181sEOGRJyvp5gpqqRHqyRooaiVP7JCYiNamXiuwB1cHKZUKWnIQm5SGuOhWwLMb
- hl/n4nx9e1A7jirMDTdt3jDsMBYuOWwbJcba1GcsjJczXLo/m9/5cghzosFXJWdNUEOjGrvCQtB
- E0LmzVmh1zbJrcTo0tVGyJiZLeWXB7OhySOlf
-X-Google-Smtp-Source: AGHT+IE8wxLIfp3rAQjBzSMqfX2Xq529U895go12B6ppt6wIiSAHXgQzqRzhrhEO76Asbs0rliXADA==
-X-Received: by 2002:a17:903:46ce:b0:234:c5c1:9b7a with SMTP id
- d9443c01a7336-23f9816414dmr43298435ad.8.1753290884390; 
- Wed, 23 Jul 2025 10:14:44 -0700 (PDT)
-Received: from [192.168.0.4] ([71.212.157.132])
- by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-23e3b6b4ae8sm100469745ad.95.2025.07.23.10.14.43
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 23 Jul 2025 10:14:44 -0700 (PDT)
-Message-ID: <a534ea08-1f3b-4dff-9544-303342b20f49@linaro.org>
-Date: Wed, 23 Jul 2025 10:14:42 -0700
+ (Exim 4.90_1) (envelope-from <farosas@suse.de>) id 1uehpb-0003SS-KE
+ for qemu-arm@nongnu.org; Wed, 23 Jul 2025 18:21:01 -0400
+Received: from imap1.dmz-prg2.suse.org (imap1.dmz-prg2.suse.org
+ [IPv6:2a07:de40:b281:104:10:150:64:97])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by smtp-out1.suse.de (Postfix) with ESMTPS id F3E1A219F3;
+ Wed, 23 Jul 2025 22:20:55 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+ t=1753309256; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=d7Q2cK7oQ45kcos80OvlJtsq8OxV7bl1HvbJKk9uba4=;
+ b=oPb4g66/+4Tzw9Avo1p0G4p3crtcJkyQvV1MX81wup/5ZYzzELIRgwRurFmEzr1eouQfna
+ oRP0qe6x1igXgA4am2UutDnxy9wYtKOrIybvZNIf/DJWMseqyAoyznjPbtABNcfuc0NB2b
+ 1bJUGZ5NVClJyLAwP48z2ChIpukJbIg=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+ s=susede2_ed25519; t=1753309256;
+ h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=d7Q2cK7oQ45kcos80OvlJtsq8OxV7bl1HvbJKk9uba4=;
+ b=8k+w9hH+YTcvVy/1vzPN+Hd4yPMzSo5HQql1VLgU42VR6Ini3SlolDR979Y6lZ1162j5Vm
+ wLZuQCFjWF1PjLDg==
+Authentication-Results: smtp-out1.suse.de;
+ dkim=pass header.d=suse.de header.s=susede2_rsa header.b="oPb4g66/";
+ dkim=pass header.d=suse.de header.s=susede2_ed25519 header.b=8k+w9hH+
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+ t=1753309256; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=d7Q2cK7oQ45kcos80OvlJtsq8OxV7bl1HvbJKk9uba4=;
+ b=oPb4g66/+4Tzw9Avo1p0G4p3crtcJkyQvV1MX81wup/5ZYzzELIRgwRurFmEzr1eouQfna
+ oRP0qe6x1igXgA4am2UutDnxy9wYtKOrIybvZNIf/DJWMseqyAoyznjPbtABNcfuc0NB2b
+ 1bJUGZ5NVClJyLAwP48z2ChIpukJbIg=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+ s=susede2_ed25519; t=1753309256;
+ h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=d7Q2cK7oQ45kcos80OvlJtsq8OxV7bl1HvbJKk9uba4=;
+ b=8k+w9hH+YTcvVy/1vzPN+Hd4yPMzSo5HQql1VLgU42VR6Ini3SlolDR979Y6lZ1162j5Vm
+ wLZuQCFjWF1PjLDg==
+Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id 7DBBE13ABE;
+ Wed, 23 Jul 2025 22:20:55 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
+ by imap1.dmz-prg2.suse.org with ESMTPSA id XLAYEUdggWjILQAAD6G6ig
+ (envelope-from <farosas@suse.de>); Wed, 23 Jul 2025 22:20:55 +0000
+From: Fabiano Rosas <farosas@suse.de>
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
+Subject: Re: [PULL 02/20] target/arm: Correct encoding of Debug
+ Communications Channel registers
+In-Reply-To: <20250721132718.2835729-3-peter.maydell@linaro.org>
+References: <20250721132718.2835729-1-peter.maydell@linaro.org>
+ <20250721132718.2835729-3-peter.maydell@linaro.org>
+CC: Thomas Huth <thuth@redhat.com>, Peter Xu <peterx@redhat.com>, qemu-arm
+ <qemu-arm@nongnu.org>
+Date: Wed, 23 Jul 2025 19:20:52 -0300
+Message-ID: <87ms8uh7ln.fsf@suse.de>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH for-10.1 6/6] target/arm: Fix LD1W, LD1D to 128-bit
- elements
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20250723165458.3509150-1-peter.maydell@linaro.org>
- <20250723165458.3509150-7-peter.maydell@linaro.org>
-Content-Language: en-US
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20250723165458.3509150-7-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62d;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62d.google.com
+Content-Type: text/plain
+X-Rspamd-Queue-Id: F3E1A219F3
+X-Rspamd-Action: no action
+X-Rspamd-Server: rspamd1.dmz-prg2.suse.org
+X-Spamd-Result: default: False [-4.51 / 50.00]; BAYES_HAM(-3.00)[100.00%];
+ NEURAL_HAM_LONG(-1.00)[-1.000];
+ R_DKIM_ALLOW(-0.20)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
+ NEURAL_HAM_SHORT(-0.20)[-1.000]; MIME_GOOD(-0.10)[text/plain];
+ MX_GOOD(-0.01)[];
+ RBL_SPAMHAUS_BLOCKED_OPENRESOLVER(0.00)[2a07:de40:b281:104:10:150:64:97:from]; 
+ RCVD_VIA_SMTP_AUTH(0.00)[]; ARC_NA(0.00)[];
+ MIME_TRACE(0.00)[0:+]; MISSING_XM_UA(0.00)[];
+ SPAMHAUS_XBL(0.00)[2a07:de40:b281:104:10:150:64:97:from];
+ TO_DN_SOME(0.00)[]; RCVD_TLS_ALL(0.00)[];
+ MID_RHS_MATCH_FROM(0.00)[];
+ DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
+ FUZZY_RATELIMITED(0.00)[rspamd.com]; FROM_EQ_ENVFROM(0.00)[];
+ FROM_HAS_DN(0.00)[]; RCPT_COUNT_FIVE(0.00)[5];
+ RCVD_COUNT_TWO(0.00)[2]; TO_MATCH_ENVRCPT_ALL(0.00)[];
+ DBL_BLOCKED_OPENRESOLVER(0.00)[imap1.dmz-prg2.suse.org:rdns,imap1.dmz-prg2.suse.org:helo,suse.de:dkim,suse.de:mid];
+ DNSWL_BLOCKED(0.00)[2a07:de40:b281:104:10:150:64:97:from,2a07:de40:b281:106:10:150:64:167:received];
+ DKIM_TRACE(0.00)[suse.de:+]
+Received-SPF: pass client-ip=2a07:de40:b251:101:10:150:64:1;
+ envelope-from=farosas@suse.de; helo=smtp-out1.suse.de
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -105,29 +126,116 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 7/23/25 09:54, Peter Maydell wrote:
-> In our implementation of the SVE2p1 contiguous load to 128-bit
-> element insns such as LD1D (scalar plus scalar, single register), we
-> got the order of the arguments to the DO_LD1_2() macro wrong.  Here
-> the first argument is the element size and the second is the memory
-> size, and the element size is always the same size or larger than
-> the memory size.
-> 
-> For the 128-bit versions, we want to load either 32-bit or 64-bit
-> values from memory and extend them to the 128-bit vector element, but
-> were trying to load 128 bit values and then stuff them into 32-bit or
-> 64-bit vector elements.  Correct the macro ordering.
-> 
-> Fixes: fc5f060bcb7b ("target/arm: Implement {LD1, ST1}{W, D} (128-bit element) for SVE2p1")
-> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
+Peter Maydell <peter.maydell@linaro.org> writes:
+
+> We don't implement the Debug Communications Channel (DCC), but
+> we do attempt to provide dummy versions of its system registers
+> so that software that tries to access them doesn't fall over.
+>
+> However, we got the tx/rx register definitions wrong. These
+> should be:
+>
+> AArch32:
+>   DBGDTRTX   p14 0 c0 c5 0  (on writes)
+>   DBGDTRRX   p14 0 c0 c5 0  (on reads)
+>
+> AArch64:
+>   DBGDTRTX_EL0  2 3 0 5 0 (on writes)
+>   DBGDTRRX_EL0  2 3 0 5 0 (on reads)
+>   DBGDTR_EL0    2 3 0 4 0 (reads and writes)
+>
+> where DBGDTRTX and DBGDTRRX are effectively different names for the
+> same 32-bit register, which has tx behaviour on writes and rx
+> behaviour on reads.  The AArch64-only DBGDTR_EL0 is a 64-bit wide
+> register whose top and bottom halves map to the DBGDTRRX and DBGDTRTX
+> registers.
+>
+> Currently we have just one cpreg struct, which:
+>  * calls itself DBGDTR_EL0
+>  * uses the DBGDTRTX_EL0/DBGDTRRX_EL0 encoding
+>  * is marked as ARM_CP_STATE_BOTH but has the wrong opc1
+>    value for AArch32
+>  * is implemented as RAZ/WI
+>
+> Correct the encoding so:
+>  * we name the DBGDTRTX/DBGDTRRX register correctly
+>  * we split it into AA64 and AA32 versions so we can get the
+>    AA32 encoding right
+>  * we implement DBGDTR_EL0 at its correct encoding
+>
+> Cc: qemu-stable@nongnu.org
+> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2986
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+> Message-id: 20250708141049.778361-1-peter.maydell@linaro.org
 > ---
->   target/arm/tcg/sve_helper.c | 4 ++--
->   1 file changed, 2 insertions(+), 2 deletions(-)
+>  target/arm/debug_helper.c | 13 +++++++++++--
+>  1 file changed, 11 insertions(+), 2 deletions(-)
+>
+> diff --git a/target/arm/debug_helper.c b/target/arm/debug_helper.c
+> index 69fb1d0d9ff..aee06d4d426 100644
+> --- a/target/arm/debug_helper.c
+> +++ b/target/arm/debug_helper.c
+> @@ -988,11 +988,20 @@ static const ARMCPRegInfo debug_cp_reginfo[] = {
+>        .opc0 = 2, .opc1 = 0, .crn = 0, .crm = 3, .opc2 = 2,
+>        .access = PL1_RW, .accessfn = access_tdcc,
+>        .type = ARM_CP_CONST, .resetvalue = 0 },
+> -    /* DBGDTRTX_EL0/DBGDTRRX_EL0 depend on direction */
+> -    { .name = "DBGDTR_EL0", .state = ARM_CP_STATE_BOTH, .cp = 14,
+> +    /* Architecturally DBGDTRTX is named DBGDTRRX when used for reads */
+> +    { .name = "DBGDTRTX_EL0", .state = ARM_CP_STATE_AA64,
+>        .opc0 = 2, .opc1 = 3, .crn = 0, .crm = 5, .opc2 = 0,
+>        .access = PL0_RW, .accessfn = access_tdcc,
+>        .type = ARM_CP_CONST, .resetvalue = 0 },
+> +    { .name = "DBGDTRTX", .state = ARM_CP_STATE_AA32, .cp = 14,
+> +      .opc1 = 0, .crn = 0, .crm = 5, .opc2 = 0,
+> +      .access = PL0_RW, .accessfn = access_tdcc,
+> +      .type = ARM_CP_CONST, .resetvalue = 0 },
+> +    /* This is AArch64-only and is a combination of DBGDTRTX and DBGDTRRX */
+> +    { .name = "DBGDTR_EL0", .state = ARM_CP_STATE_AA64,
+> +      .opc0 = 2, .opc1 = 3, .crn = 0, .crm = 4, .opc2 = 0,
+> +      .access = PL0_RW, .accessfn = access_tdcc,
+> +      .type = ARM_CP_CONST, .resetvalue = 0 },
+>      /*
+>       * OSECCR_EL1 provides a mechanism for an operating system
+>       * to access the contents of EDECCR. EDECCR is not implemented though,
 
-Double oops.
+Hi, this patch breaks migration. I'm leaving for the day and will take a
+closer look in the morning. But since we have timezones, here it is:
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+$ cd build
 
+$ sed -i 's/-cpu max/-cpu neoverse-n1/' ../tests/qtest/migration/framework.c
+(sorry about this^, I just now got around to looking into it)
 
-r~
+$ make
+
+# v10.0.0 -> v10.1.0-rc0
+$ QTEST_QEMU_BINARY=./build-10.0.0/qemu-system-aarch64 \
+QTEST_QEMU_BINARY_DST=./qemu-system-aarch64 \
+./tests/qtest/migration-test -p /aarch64/migration/precopy/file
+...
+
+# starting QEMU: exec build-10.0.0/qemu-system-aarch64 -qtest
+  unix:/tmp/qtest-4328.sock -qtest-log /dev/null -chardev
+  socket,path=/tmp/qtest-4328.qmp,id=char0 -mon
+  chardev=char0,mode=control -display none -audio none -accel kvm -accel
+  tcg -machine virt-10.0,gic-version=3 -name source,debug-threads=on -m
+  150M -serial file:/tmp/migration-test-GXLFA3/src_serial -cpu
+  neoverse-n1 -kernel /tmp/migration-test-GXLFA3/bootsect -accel qtest
+
+# starting QEMU: exec ./qemu-system-aarch64 -qtest
+  unix:/tmp/qtest-4328.sock -qtest-log /dev/null -chardev
+  socket,path=/tmp/qtest-4328.qmp,id=char0 -mon
+  chardev=char0,mode=control -display none -audio none -accel kvm -accel
+  tcg -machine virt-10.0,gic-version=3 -name target,debug-threads=on -m
+  150M -serial file:/tmp/migration-test-GXLFA3/dest_serial -incoming
+  defer -cpu neoverse-n1 -kernel /tmp/migration-test-GXLFA3/bootsect
+  -accel qtest
+
+qemu-system-aarch64: error while loading state for instance 0x0 of device 'cpu'
+qemu-system-aarch64: load of migration failed: Operation not permitted
+Broken pipe
+../tests/qtest/libqtest.c:199: kill_qemu() tried to terminate QEMU process but encountered exit status 1 (expected 0)
+Aborted (core dumped)
 

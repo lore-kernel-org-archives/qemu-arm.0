@@ -4,84 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6693BC83F17
-	for <qemu-arm@archiver.kernel.org>; Wed, 23 Jul 2025 11:54:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26299C83F1A
+	for <qemu-arm@archiver.kernel.org>; Wed, 23 Jul 2025 13:55:36 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ueY3K-0002YE-7u; Wed, 23 Jul 2025 07:54:30 -0400
+	id 1ueZwJ-000466-06; Wed, 23 Jul 2025 09:55:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ueY3F-0002IQ-Qo
- for qemu-arm@nongnu.org; Wed, 23 Jul 2025 07:54:26 -0400
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ueZt6-0002of-Rn
+ for qemu-arm@nongnu.org; Wed, 23 Jul 2025 09:52:10 -0400
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ueY3B-0003pf-Hi
- for qemu-arm@nongnu.org; Wed, 23 Jul 2025 07:54:25 -0400
-Received: by mail-wr1-x42f.google.com with SMTP id
- ffacd0b85a97d-3a6e8b1fa37so4682099f8f.2
- for <qemu-arm@nongnu.org>; Wed, 23 Jul 2025 04:54:19 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ueZt4-0002oK-Dd
+ for qemu-arm@nongnu.org; Wed, 23 Jul 2025 09:52:04 -0400
+Received: by mail-wm1-x32f.google.com with SMTP id
+ 5b1f17b1804b1-45618ddd62fso69540415e9.3
+ for <qemu-arm@nongnu.org>; Wed, 23 Jul 2025 06:52:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1753271658; x=1753876458; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=F5UYc63R13I0sB8gTeo4oXt3OJ3GV8nT4O74lNv6kpk=;
- b=CuDtv8gLDp3Xt6sid1gEqb9lf5P+CyrKyRKLnCyncVUa+Qz6VC3b1dUsm55xG7+EJE
- 60GE6ZddKVj5n2Gsujebp0GTkz731+2Uu7Uo6EH05IOzzSiZU+ZC4gXIw3Elh507yI6C
- p1qhIcx3jKia5oI7egj0FSv6fO5i+uNazgvrzVgSZhkhBiJ2nATHULZeNAqM6dCsAHbc
- N4IJqMSD81KzwKjphWxv9c+Umvx0/kvmU7dbfyHgTrHvGUe/kh259odPCwI1ILS9/NUa
- Qw2Cj0juGpX9Rnw1Qm61XBu+b/kc9ljqby7uk70d5bJnr7FLgJzkVjIOhJO+5Zm114AS
- OTOg==
+ d=linaro.org; s=google; t=1753278719; x=1753883519; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=WzSVwRjlmLr6uY4Fxwa1RWwINPFTTiRXdeHymvaEdJs=;
+ b=doVvQgxUA5EP5fW3U9XuygcdqOMdElXcXKPYHWrKSni46S2TW1qoolysg7vrBy8fv4
+ qmEEWVH30jGpSjnysE0b17sOfgOo6aDuMDdSIe1UuXgLm2J7tnxcchGikq02nMGc6MP3
+ 05V9LyUhDL4/TkmK1x7JMsIMrroTj6Oc+A9sptBnK/LxAZnpdP//ZzD/K67206wrgOOM
+ M75NroSrC3wMKy4FzPhxm7S4OD69345jEb8f863qtDHUqcDGGKxriyyz/jFk4Qefo2a6
+ AHMK7LcqXX92x0cj6Yc280N2PEZnIO5wSw021hRCiceOOV0V6rCNMmkj2soUesyEsHSf
+ tPyw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1753271658; x=1753876458;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=F5UYc63R13I0sB8gTeo4oXt3OJ3GV8nT4O74lNv6kpk=;
- b=f75zJ1WdlkaTHp5tO58GUKGL5fxKgrlRUJTtrFXS5Iz5qlRUNq2utuIpCc+6IcY6rj
- KGZGmB2cvD6kcmA489XiW90bPUOzKD14jQL3yQOLGwdNYE3YAGiNPVNFEHFnFcpHdST0
- nsdAaiGIYSGOoN0h2tZpq8yEBrjXfXFveRaTpttBxyt1WHOBjiKkdxD6M8z3C1u4CL9c
- H13KYaCoAy3jqNgbZaGyOgF3T4Baf2F8+u1ItWEgeiAd/dpJkCYKSoMT9Lhw8G9GP4cG
- Or3ErqQkftW7fNLWZWOp5kmTNhuMa0xai5B0P4Q+poUn2mWyTinHIHurrmNDqfzZGM3Z
- a7dg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUOoGcb6avv7cpE40y6+FSRha0lbX46YrY1vWkmQGp7o1JOIQXc1bB34rDubIJESdIeGjEs6xFfdA==@nongnu.org
-X-Gm-Message-State: AOJu0YxrGqlqKpKOYmi6PJBpUCX9R+gC4l8EocKyYw32EVabLY/YG9OG
- ZyPIql0e9cZxoQjjJhdmWIUbH98Hptoyvnt9NPzv26c06tmTm4muiFQ9i6DMwCT5+nk=
-X-Gm-Gg: ASbGncsrz3RfCqBTon3i/4nBfa5s4oxJ6cKL2iPRMLjEyvNV6UkhZRe907jeLHYwSs4
- D5Zo10aZ1WDyldKEilLZ7OOXFhC31I/2b6IhXQERPSCGhN+TsXb2LEze+q5AOsrlVGJFxAjjMss
- Cpj7h0232JJ/3sX740sZ+EbkLQ0WVLx65QrnoOw42gBUQ3dsS6FtdZ9MigCRAKa7P4pcVL2LG+U
- stJ7beyO+kW8uuHf8cFeGASL4CuEMqkYFhJ2aoXMvg9tFB3rr1f3kb7xX8hagP1tkgy8z9mnWpr
- PdPkmdzBuE3LKwb0rheAqHqlTLtbXwi9J+y1K5KSJBYf8PNUhDVtd/fUBGuhf9TJwqSI5d/6WWS
- BorVJXirO692JcQWphnwG1G7bPXAS5TZNSqAAPC4lQKLEAVsoBbZ0m9gKudOLhCf6YIsbAJmYrv
- 86x1Oc0A==
-X-Google-Smtp-Source: AGHT+IGwOaP8SmdEP7ecmG77ADFCHnid9q77WuZNuuzN/3/fLElZr1moowBIkbq3LgFmVkBGKMdnow==
-X-Received: by 2002:a5d:584a:0:b0:3b3:9cc4:21ce with SMTP id
- ffacd0b85a97d-3b768f07c8amr2054389f8f.50.1753271657788; 
- Wed, 23 Jul 2025 04:54:17 -0700 (PDT)
-Received: from [192.168.69.209] (88-187-86-199.subs.proxad.net.
+ d=1e100.net; s=20230601; t=1753278719; x=1753883519;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=WzSVwRjlmLr6uY4Fxwa1RWwINPFTTiRXdeHymvaEdJs=;
+ b=voUGkHPQJWZj8fVcMjXeNdamrs9hnCGaF9oIDGxyAHGmqt+aq+56Z0HoX9yYmxSjWh
+ d/F+QTawHRoEkDO+rBK1/vudAPadVS9rNj/ZeHA309cIW2HuP8n9UuxLUsVujysq32IW
+ q27UvNwqpZo4J0xTCPqW45r3qhAuTqv7X1DLUIB+t7CWp43pg+tbkkU1dVT7M8y5FQMY
+ 6MeMANNnCp58J5086hFhQ750cVG0mA7FpU96OGr2SWeBQFSqW1zBexKeZGCrWUe/SC43
+ zHMeCKtgiPpMGjcSshH9fnt1X5WZWj6j8uVWCnV5mfO8rXVOSUR03CobQrBQgYstEMjH
+ v/Sw==
+X-Gm-Message-State: AOJu0Yz9LCjQhOuA5WbQeqslRL5Ir2jNESwc7yRaKkeIIqgyjpYV3Kce
+ LAbtIoPtR/zZQSBLYa6K6OUvpwatkGtbRcCfiFDlB+NgbSI8Ard0Q2Rm3EambJtVh/g=
+X-Gm-Gg: ASbGncuQLdCAmcLaru4c5nBGZCKQdBONk0NB/vfX0aBtG4wjIFsDegOhnMNozMKOxKW
+ vUaYk1jzzJzTMtlXdfymgbcJUogZJtyrBqfc4e9tjpYbiznNVzGH9y+JaCy5xa+cHzNUVEap43Y
+ G7umtXI5K/boesz6xPC4jj9BI4oXQNjy8YzbYDVCM0RKVUJjpBQwWu97XruarklMcTMzcSM1znn
+ H2CBu9JMv07ajhN1yrwaxrGtmCD6ncmnAKM/DyUzs8CDAMcLLRVVYOPR3XVZR6MYzM4+uqPfKzR
+ NVe6VJyiAMFBSUN5I6SNoubVAwWE2M4w4xwGae2kVZrKsYgk9buPS42SYEzYpjRcChfVzHY2kV9
+ VAJA/Ez6X5L4Q2Hz2cDx6uxABkvKroOQh5/fEkfbeEB2v/dl1ZsQNJmB/GX3k2AJoQ7K/hRyOfm
+ 2Vo+EEUtQ=
+X-Google-Smtp-Source: AGHT+IEc93Ma6j0dB6V2FLi8g/Nh9GU0+I9wCbsnl2XWN0vm4qaw4eqC/NRvzL2FxnRDdEM9Mmq2Dw==
+X-Received: by 2002:a05:600c:540e:b0:453:6b3a:6c06 with SMTP id
+ 5b1f17b1804b1-4586bddfd36mr17214885e9.29.1753278718833; 
+ Wed, 23 Jul 2025 06:51:58 -0700 (PDT)
+Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-458693e2ddesm21292615e9.29.2025.07.23.04.54.16
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 23 Jul 2025 04:54:17 -0700 (PDT)
-Message-ID: <78f613a6-dd60-4f76-bbb4-8ba4fb91a7a2@linaro.org>
-Date: Wed, 23 Jul 2025 13:54:16 +0200
+ ffacd0b85a97d-3b61ca48a2esm16505085f8f.51.2025.07.23.06.51.57
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Wed, 23 Jul 2025 06:51:58 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Mohamed Mediouni <mohamed@unpredictable.fr>,
+ Phil Dennis-Jordan <phil@philjordan.eu>,
+ Roman Bolshakov <rbolshakov@ddn.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Alexander Graf <agraf@csgraf.de>,
+ Mads Ynddal <mads@ynddal.dk>, Cameron Esfahani <dirty@apple.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH-for-10.1 v4 0/4] target/arm/hvf: Correctly set Generic Timer
+ frequency
+Date: Wed, 23 Jul 2025 15:51:52 +0200
+Message-ID: <20250723135156.85426-1-philmd@linaro.org>
+X-Mailer: git-send-email 2.49.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 0/2] target/arm: Added support for SME register
- exposure to GDB
-To: Vacha Bhavsar <vacha.bhavsar@oss.qualcomm.com>, qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- Gustavo Romero <gustavo.romero@linaro.org>
-References: <20250722201404.2368507-1-vacha.bhavsar@oss.qualcomm.com>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20250722201404.2368507-1-vacha.bhavsar@oss.qualcomm.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42f.google.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -104,29 +104,36 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Cc'ing Gustavo.
+(Series fully reviewed)
 
-On 22/7/25 22:14, Vacha Bhavsar wrote:
-> The QEMU GDB stub does not expose the ZA storage SME register to GDB via
-> the remote serial protocol, which can be a useful functionality to debug SME
-> code. To provide this functionality in Aarch64 target, this patch registers the
-> SME register set with the GDB stub. To do so, this patch implements the
-> aarch64_gdb_get_sme_reg() and aarch64_gdb_set_sme_reg() functions to
-> specify how to get and set the SME registers, and the
-> arm_gen_dynamic_smereg_feature() function to generate the target
-> description in XML format to indicate the target architecture supports SME.
-> Finally, this patch includes a dyn_smereg_feature structure to hold this
-> GDB XML description of the SME registers for each CPU.
-> 
-> Furthermore, this patch series increases the value of MAX_PACKET_LENGTH
-> to allow for remote GDB debugging of the ZA register when the vector
-> length is maximal.
-> 
-> Signed-off-by: Vacha Bhavsar <vacha.bhavsar@oss.qualcomm.com>
-> 
-> Vacha Bhavsar (2):
->    target/arm: Increase MAX_PACKET_LENGTH for SME ZA remote gdb debugging
->    target/arm: Added support for SME register exposure to GDB
-> 
+When using HVF, the accelerator gets the host Generic Timer
+frequency and update cpu->gt_cntfrq_hz; it is however too
+late, as the timers have been created in arm_cpu_realizefn()
+using the default frequency. Then guest virtualization code
+depending on timers ends very slow (experienced on Silicon M1,
+timer running at 24MHz but QEMU timer a 1GHz, ~70x slower).
+
+This series fixes that by introducing a cpu_target_realize()
+callback for accelerators, creating ARM timers *after* calling
+this callback, and correctly setting the per-cpu timer freq
+there.
+
+Philippe Mathieu-Daudé (4):
+  accel: Introduce AccelOpsClass::cpu_target_realize() hook
+  accel/hvf: Add hvf_arch_cpu_realize() stubs
+  target/arm: Create GTimers *after* features finalized / accel realized
+  target/arm/hvf: Really set Generic Timer counter frequency
+
+ include/accel/accel-cpu-ops.h |  1 +
+ include/system/hvf_int.h      |  2 ++
+ accel/accel-common.c          |  5 +++
+ accel/hvf/hvf-accel-ops.c     |  2 ++
+ target/arm/cpu.c              | 65 ++++++++++++++++++-----------------
+ target/arm/hvf/hvf.c          | 20 ++++++++++-
+ target/i386/hvf/hvf.c         |  5 +++
+ 7 files changed, 67 insertions(+), 33 deletions(-)
+
+-- 
+2.49.0
 
 

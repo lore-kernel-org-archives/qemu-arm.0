@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2DC9C83F1A
-	for <qemu-arm@archiver.kernel.org>; Wed, 23 Jul 2025 13:57:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7B0AC83F17
+	for <qemu-arm@archiver.kernel.org>; Wed, 23 Jul 2025 13:58:26 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ueZxn-0004ob-46; Wed, 23 Jul 2025 09:56:55 -0400
+	id 1ueZxn-0004oi-UR; Wed, 23 Jul 2025 09:56:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ueZtA-0002qM-Qk
- for qemu-arm@nongnu.org; Wed, 23 Jul 2025 09:52:16 -0400
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ueZtL-0002u8-7z
+ for qemu-arm@nongnu.org; Wed, 23 Jul 2025 09:52:19 -0400
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ueZt8-0002ou-8k
- for qemu-arm@nongnu.org; Wed, 23 Jul 2025 09:52:07 -0400
-Received: by mail-wm1-x32b.google.com with SMTP id
- 5b1f17b1804b1-45611a6a706so36134905e9.1
- for <qemu-arm@nongnu.org>; Wed, 23 Jul 2025 06:52:05 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ueZtI-0002qV-CN
+ for qemu-arm@nongnu.org; Wed, 23 Jul 2025 09:52:18 -0400
+Received: by mail-wr1-x434.google.com with SMTP id
+ ffacd0b85a97d-3a536ecbf6fso3928676f8f.2
+ for <qemu-arm@nongnu.org>; Wed, 23 Jul 2025 06:52:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1753278724; x=1753883524; darn=nongnu.org;
+ d=linaro.org; s=google; t=1753278734; x=1753883534; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=sErIHNuJGiieHnnNTlL18cbjNP1n0Jf/eJ1sooLpLjw=;
- b=xm7z/JsADWjEQDpEBhuQpOUmA2SbWJeEa/gBol++/EowxFirh9Au6w0v247ifhqU9B
- RCB9afHVG6IGrd5e99JkuS67KbfBU/JKPvqw0YvGBLMjnqHFhRAKCtKqy/bq7AsCYx0k
- Uyq9LEznP7gYXN8x/mOBZIfhPn2KNLKG2V4USGQTOP3xfnDo6bod+f7tlX0v7mda2r8m
- gLbtAO9d3ipbxz4VNd634uOQcDx9XlAeYoHouRJ8rx/xt7o8YOHRFTMRp5zKWbmRCBsX
- lEFrfYBI+iNhP3tFGIB4gHrMYFBhpwXUUDtUjXqL4k6powwEOPI2yymytj0BZOgW2ztj
- /a1A==
+ bh=WiARY+eRyGpj1UCxkCuj/Q44h4QzLd4Og99m8x5oSqA=;
+ b=uGPGDRiJgJW1Ri8NI0SiF3R9RoFiekE5OxoYU/wvTCsLNPu2TPSq8bXYNdLGoX3sM/
+ WaX50YtTEP8NWdm54cSZ/jWPTJzJM5KjFAERwgMvH7S2+F25cgYofQgprOPYJH6OgxLl
+ OevAsgmG85WiSvk80FRlzDgL3l9+hMcVYYFiG1RzQ2htGS2G0Lzld3p9OqBitaVgfE0w
+ nXKQReRAdoc0mtypcABjdk7HkRrV7VvWy06iHZJMFtTUaWHnHUS7SE0RA055W8j7B+yK
+ 3gxAO/9/erq4cbKEWxcJ+2sVPEmxE9WQO+pmX+TZHkpQ/HVjBIDQAwK9LjlM35ZFWNAJ
+ N//g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1753278724; x=1753883524;
+ d=1e100.net; s=20230601; t=1753278734; x=1753883534;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=sErIHNuJGiieHnnNTlL18cbjNP1n0Jf/eJ1sooLpLjw=;
- b=fD/XTmYiDZmfQSC4hm+gF74+9eMhq4jPhuR1vCtkg5nusFGLCbpqa0Y+kNFsOIpxcM
- sqr9aMtz/m58YqT9PIXMAgLQWJkngRpFcf1e/Veu0VBotJQO4/ScLGFO2pRt1+MVrs04
- Cpmrvozghi0tu+YWezBSZQMEVlPLEbWbq8Ap34jEIZrmShnhUHDlVr+No0q6koblo+ph
- 5PJgaI3iGxbX0Lcp6EbYO6xyt46r3Ow5am52SZTPtzgW1+NV1EhIc1O7YkTjT4w0QM6F
- oxwmZDRCZrztQtevAhHwr0UEkbWE6l+ht9GLujlPp1zZSsk3yXD0V/6EGxK+d+KKjUZ1
- t5dg==
-X-Gm-Message-State: AOJu0YwTVuk/6OuRhAWvJLyI2MNUus6vzHWKkXxRjHTP2L0h22kdnDh/
- iW6RbaXf0jf93eabir0kihm+0KcwBcz/5y5Gb1+Xh0AzngwUGyPt0rb5P36ahNIeQjE=
-X-Gm-Gg: ASbGncvSm5yTpkXmCTJ/RiUO97LPGgkf/oWKbK4yeKk5c3ShYZk1pJLGF4hyhVo8zq+
- pzJW5feQEBXtDzxtRPFLGb0QTonsTLKd3nouZ6LPMCPyIJG9ertFiZi0V9uUi5aO0EIsWaAzao8
- XV600xldum0pAU8vA/XHEFX4GeibkJrn8aQsgHxtYx5o1Hhxp1710tB9RyO6xpTUQF7KYmQwJ/3
- Cf306LUXQG7IYI0cjqHa7k2v68Ifr7iHv1GSzmtM4ZJHx3Mx6DLdDwlwv9ObDCYKGKC+pzoww6f
- YrR5eyjLpSppdCuyGnByLFhFC+yTsJbuVFAbNc0T6tRzrybDFw7ZNRodOEXF0nj3NQJzk+oFftN
- aHAlN53Y63+eaX5qlQVFDJ8t8PnJqAoMxldV++c39qSuNT9BF98lWnx7TLgEwKqZbsmlVCqE7
-X-Google-Smtp-Source: AGHT+IF2jLSlL/5bD5PGYKMnCSdo/K8e84jAX+hhADjVLT//YWG4YzDSSig2sL12YCHZyVOjxUOlSw==
-X-Received: by 2002:a05:600c:4509:b0:456:133f:a02d with SMTP id
- 5b1f17b1804b1-45868d2dd64mr27706105e9.17.1753278723806; 
- Wed, 23 Jul 2025 06:52:03 -0700 (PDT)
+ bh=WiARY+eRyGpj1UCxkCuj/Q44h4QzLd4Og99m8x5oSqA=;
+ b=jmoPFEcOlm562dv7Lw8kd/AUSN/WH0NQblbvDRCW4zqO9cOgZpZGhfQHbhvRyu7oXW
+ dFwd05GTmiAJB59Pv8m/kAGPFCQgmAP2+BY2bOXtEiZC8XFl2htRJOoV7bLqu4WEopPQ
+ WJRmxdaVARNq6CW5tpvtgRhuf7iLGOdKu76Ds63SegPAJwtlhFi9EU91e8JRcWr0lzVI
+ lROskF2W5z2JHKaZuV/J8/SUSz7WrXg1N7+Mf23+JtEBQABDjYB0SGMpX1pBIxEqJVs/
+ gEVLf7KN55UJvwCQs44vtOvgMEyUsoeUpRo4POJXtGSzcSZPy/6+bYk35e9j38pFlgwR
+ QpIg==
+X-Gm-Message-State: AOJu0YyDoV/rgxONOMl4+ZudLXzDjqP8eKn7Z4yOnxDWERds+B6+Rmc8
+ OdTn6AHnoagtYPpTl5lMnbut2fQN95kyLoPJdV1g5VAleCLelAl2zCbgQ5rHM4bcy88=
+X-Gm-Gg: ASbGncsHsCj59zmH7VA98WU3daKEUGSuVpgB9JSkoxsBsaA6dl94NbsWX1H+JqAODIF
+ +zV9/RDAiwm/61EoHFHVzy6FA0SQIlNJxG0S0qYwhqf3NYGOtB4z48FmvWpbSkRM1ID/FiDxkZZ
+ SI53hVQ9Q0etx9voJW5QMfX3DR5dzqqnIisoDXZLD0ekT9DwtsXqLmtwotMpjV5sCww2pSxR9wr
+ 8A/08RlJPgbvGGY4mXBnuR4SjRUhnv/nWCnDabI6qS3HA70w8K9uoh9sCcrd597otkCVoTF6Q0H
+ N1R9N+mOwqBD9bH53IKCWUGpVF+R/0HcxHddHlMZN87b8p39qzf57+D5Ynjh0kPUrFPLYWfsvKT
+ MpDP6jFKS1RfqafRIVAcXDxGPnDgydg35T7WwxipT1LTKeQ0ePaGoiwSJ5IZ1UVdydBGOUwvp
+X-Google-Smtp-Source: AGHT+IGOGeaNpp/3rjwqSfe7zdH2Up3/bgh9seutQ6iWn2IBT0XPLD6MPpsDf4oznKcs0iaK81+G4A==
+X-Received: by 2002:a05:6000:2c0c:b0:3b6:333:256f with SMTP id
+ ffacd0b85a97d-3b768f27e15mr2455163f8f.58.1753278733653; 
+ Wed, 23 Jul 2025 06:52:13 -0700 (PDT)
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3b61ca5c9edsm16632337f8f.88.2025.07.23.06.52.02
+ ffacd0b85a97d-3b61ca2bf4bsm16292187f8f.31.2025.07.23.06.52.12
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 23 Jul 2025 06:52:03 -0700 (PDT)
+ Wed, 23 Jul 2025 06:52:13 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Mohamed Mediouni <mohamed@unpredictable.fr>,
@@ -72,18 +72,18 @@ Cc: qemu-arm@nongnu.org, Mohamed Mediouni <mohamed@unpredictable.fr>,
  Mads Ynddal <mads@ynddal.dk>, Cameron Esfahani <dirty@apple.com>,
  Richard Henderson <richard.henderson@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH-for-10.1 v4 1/4] accel: Introduce
- AccelOpsClass::cpu_target_realize() hook
-Date: Wed, 23 Jul 2025 15:51:53 +0200
-Message-ID: <20250723135156.85426-2-philmd@linaro.org>
+Subject: [PATCH-for-10.1 v4 3/4] target/arm: Create GTimers *after* features
+ finalized / accel realized
+Date: Wed, 23 Jul 2025 15:51:55 +0200
+Message-ID: <20250723135156.85426-4-philmd@linaro.org>
 X-Mailer: git-send-email 2.49.0
 In-Reply-To: <20250723135156.85426-1-philmd@linaro.org>
 References: <20250723135156.85426-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::434;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x434.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -106,43 +106,106 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Allow accelerators to set vCPU properties before its realization.
+Call generic (including accelerator) cpu_realize() handlers
+*before* setting @gt_cntfrq_hz default
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- include/accel/accel-cpu-ops.h | 1 +
- accel/accel-common.c          | 5 +++++
- 2 files changed, 6 insertions(+)
+ target/arm/cpu.c | 65 ++++++++++++++++++++++++------------------------
+ 1 file changed, 33 insertions(+), 32 deletions(-)
 
-diff --git a/include/accel/accel-cpu-ops.h b/include/accel/accel-cpu-ops.h
-index 0674764914f..9c07a903ea0 100644
---- a/include/accel/accel-cpu-ops.h
-+++ b/include/accel/accel-cpu-ops.h
-@@ -34,6 +34,7 @@ struct AccelOpsClass {
-     /* initialization function called when accel is chosen */
-     void (*ops_init)(AccelClass *ac);
- 
-+    bool (*cpu_target_realize)(CPUState *cpu, Error **errp);
-     bool (*cpus_are_resettable)(void);
-     void (*cpu_reset_hold)(CPUState *cpu);
- 
-diff --git a/accel/accel-common.c b/accel/accel-common.c
-index 850c5ab4b8e..eecb2a292af 100644
---- a/accel/accel-common.c
-+++ b/accel/accel-common.c
-@@ -106,6 +106,11 @@ bool accel_cpu_common_realize(CPUState *cpu, Error **errp)
-     if (acc->cpu_common_realize && !acc->cpu_common_realize(cpu, errp)) {
-         return false;
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index e2b2337399c..70755fc7e87 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -1992,26 +1992,6 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+         return;
      }
-+    if (acc->ops
-+        && acc->ops->cpu_target_realize
-+        && !acc->ops->cpu_target_realize(cpu, errp)) {
-+        return false;
-+    }
  
-     return true;
- }
+-    if (!cpu->gt_cntfrq_hz) {
+-        /*
+-         * 0 means "the board didn't set a value, use the default". (We also
+-         * get here for the CONFIG_USER_ONLY case.)
+-         * ARMv8.6 and later CPUs architecturally must use a 1GHz timer; before
+-         * that it was an IMPDEF choice, and QEMU initially picked 62.5MHz,
+-         * which gives a 16ns tick period.
+-         *
+-         * We will use the back-compat value:
+-         *  - for QEMU CPU types added before we standardized on 1GHz
+-         *  - for versioned machine types with a version of 9.0 or earlier
+-         */
+-        if (arm_feature(env, ARM_FEATURE_BACKCOMPAT_CNTFRQ) ||
+-            cpu->backcompat_cntfrq) {
+-            cpu->gt_cntfrq_hz = GTIMER_BACKCOMPAT_HZ;
+-        } else {
+-            cpu->gt_cntfrq_hz = GTIMER_DEFAULT_HZ;
+-        }
+-    }
+-
+ #ifndef CONFIG_USER_ONLY
+     /* The NVIC and M-profile CPU are two halves of a single piece of
+      * hardware; trying to use one without the other is a command line
+@@ -2058,7 +2038,40 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+             return;
+         }
+     }
++#endif
+ 
++    cpu_exec_realizefn(cs, &local_err);
++    if (local_err != NULL) {
++        error_propagate(errp, local_err);
++        return;
++    }
++
++    arm_cpu_finalize_features(cpu, &local_err);
++    if (local_err != NULL) {
++        error_propagate(errp, local_err);
++        return;
++    }
++
++    if (!cpu->gt_cntfrq_hz) {
++        /*
++         * 0 means "the board didn't set a value, use the default". (We also
++         * get here for the CONFIG_USER_ONLY case.)
++         * ARMv8.6 and later CPUs architecturally must use a 1GHz timer; before
++         * that it was an IMPDEF choice, and QEMU initially picked 62.5MHz,
++         * which gives a 16ns tick period.
++         *
++         * We will use the back-compat value:
++         *  - for QEMU CPU types added before we standardized on 1GHz
++         *  - for versioned machine types with a version of 9.0 or earlier
++         */
++        if (arm_feature(env, ARM_FEATURE_BACKCOMPAT_CNTFRQ) ||
++            cpu->backcompat_cntfrq) {
++            cpu->gt_cntfrq_hz = GTIMER_BACKCOMPAT_HZ;
++        } else {
++            cpu->gt_cntfrq_hz = GTIMER_DEFAULT_HZ;
++        }
++    }
++#ifndef CONFIG_USER_ONLY
+     {
+         uint64_t scale = gt_cntfrq_period_ns(cpu);
+ 
+@@ -2079,18 +2092,6 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+     }
+ #endif
+ 
+-    cpu_exec_realizefn(cs, &local_err);
+-    if (local_err != NULL) {
+-        error_propagate(errp, local_err);
+-        return;
+-    }
+-
+-    arm_cpu_finalize_features(cpu, &local_err);
+-    if (local_err != NULL) {
+-        error_propagate(errp, local_err);
+-        return;
+-    }
+-
+ #ifdef CONFIG_USER_ONLY
+     /*
+      * User mode relies on IC IVAU instructions to catch modification of
 -- 
 2.49.0
 

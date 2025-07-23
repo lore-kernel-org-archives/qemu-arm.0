@@ -4,85 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73040C83F17
-	for <qemu-arm@archiver.kernel.org>; Wed, 23 Jul 2025 17:14:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1D1FC83F1A
+	for <qemu-arm@archiver.kernel.org>; Wed, 23 Jul 2025 17:15:52 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ued30-0000hx-Qk; Wed, 23 Jul 2025 13:14:37 -0400
+	id 1ued3F-0000rv-9Z; Wed, 23 Jul 2025 13:14:45 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ued2u-0000gH-DE
- for qemu-arm@nongnu.org; Wed, 23 Jul 2025 13:14:24 -0400
-Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
+ id 1ued37-0000jt-Nu
+ for qemu-arm@nongnu.org; Wed, 23 Jul 2025 13:14:39 -0400
+Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ued2s-0005xG-Tv
- for qemu-arm@nongnu.org; Wed, 23 Jul 2025 13:14:24 -0400
-Received: by mail-pl1-x62e.google.com with SMTP id
- d9443c01a7336-23aeac7d77aso353735ad.3
- for <qemu-arm@nongnu.org>; Wed, 23 Jul 2025 10:14:22 -0700 (PDT)
+ id 1ued35-00062z-Fz
+ for qemu-arm@nongnu.org; Wed, 23 Jul 2025 13:14:37 -0400
+Received: by mail-pj1-x102c.google.com with SMTP id
+ 98e67ed59e1d1-3190fbe8536so61438a91.3
+ for <qemu-arm@nongnu.org>; Wed, 23 Jul 2025 10:14:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1753290861; x=1753895661; darn=nongnu.org;
+ d=linaro.org; s=google; t=1753290873; x=1753895673; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:to:subject:user-agent:mime-version:date:message-id:from
  :to:cc:subject:date:message-id:reply-to;
- bh=e885qokl/Dj5nbKl/OsX10/+RB/c22InHOgrvFRoTQE=;
- b=t1AiNPHauxqyqTI1M1aUBGb6F1nYGcCa6b3TJtIMTbqKHw+t3ZxyJvcujzwlUZGiqo
- s6eRzR2eHsCwbBl0oDFX7w8PqCvz5JWLx7MbaaW7U2TJrQ3kUbB229SKVWJxLlqJb2yc
- 5TMDqJ8StO3uEsoyEnRgY29nqOYTmGA4C8By6F2LpnMPKXIGYSxlFUDMwKLbHz1DcA6r
- bfqZ7dBM9jOvIehS6EaKgGftraDjNapwoT9EQFC6mIJQ7Ac2wODtHjWabT6ZiQxjDoM3
- gOXnILJfPNFc1+MQN5xk/rviX/rUUIlUP7mCmYG/+AsJKrGWLRrcVqcXBszSqgrdWkQ7
- hDtg==
+ bh=kbRr8ZA2EjCUA6EE3b54G5lnVxCkG1fe3hlQb5DbJHg=;
+ b=ECXhtfnB2X1nTgY148UdpMV6HB1wLwFN2ECHBKBlkC3JcKUBprkVhT7NrkqUgk1bNv
+ e7binsfFL22sESKgG+Sh0XyvKD/dirGXQT8NDvi89KpcKhjH+C/urtWU6nYiNu/3iQKx
+ PtjXl76/q6huG32O7WSP/ZQwVK1fpRxjXCbTXffFEzH0ZrAHcr33j0TyE7ArAxXV6iZh
+ Wa9chjFTxKwQAZLJAMMj66Iot/4RnJzWXXoU0vEwZOZfTsi+eBIqc2pSoBvwTMJbsBMU
+ 6ugpJ7jm8n/qBQcLiB5TAUY36MdTB4MtptFz+/KfJXx5PYX4oVvinjZAgNbmEfvoUGk/
+ DqBA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1753290861; x=1753895661;
+ d=1e100.net; s=20230601; t=1753290873; x=1753895673;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=e885qokl/Dj5nbKl/OsX10/+RB/c22InHOgrvFRoTQE=;
- b=jKCxFlZpqMh8F9d7kCAaqtb+UBBpL+XlZZo5dy4XwreE+f9li4DnZGIqeUXh83sO/q
- RhMOCMKJyu9/QXT3+1FWmhuEnDquwC0fhkdzWhB5ha5e3T5dBUu8GbWmanYnTco0iMTm
- mGldnJnbcTxg3Wq7FbopTMN6CZ4hhnL4RM8z20vSd4ZFrY5gQnspnT+E42ilLQsOlGWp
- 8fSGhJwc96RTc97fuoyx/xZiwYqDydS9iHvjCFT96PBdLc4u784WLnHNoBeFElUgZii2
- cOuUfN6g4RMuDAqD0e1Vz5KEd/al2W4G/DROw+tscshLJkYIDL8VgN2By9BmiAtaC+df
- 2kzg==
+ bh=kbRr8ZA2EjCUA6EE3b54G5lnVxCkG1fe3hlQb5DbJHg=;
+ b=Re1scRi8SeW4FmFJrkL3+ZHLy7wj4WdnZ+ekdd3lKALejHUi1ThrhR9RnFsmQZ/WGV
+ TW55shHUlgrnluMz4rD+0IFhAUfH+Q0tba6qooSphgJz86Q/+KmWkjbnIganXy5I1nFi
+ 0CWPyBYtIirWdX17vVQUnfjAGETzHTN3rUxgX8WcyeBrkvUoR3FNZq7AMowVAA02aq+E
+ 9BjMleWQPiU9Jce/qgO2oyvbFv0OfKJQURSMyrpj33lFD/9D4ocMfC+mWdLWCkFnQkwX
+ SJCM9N5Q5oT8IH3xqfLE6Y4IHw6eRCBsW6EYFBmf9YTXTWt4nSt5RnHrN+Mn2UlCtf4r
+ /mAw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWT9MyMzDIk/J3l0RdQRBqXPoySG41Qmp7Zm62vOgPf8CRLvErjpx4Agndr9nrKOwaotqnCfj8j3Q==@nongnu.org
-X-Gm-Message-State: AOJu0YzNUOD/MKWxztjLU3wWEpTH2DuRc3y/mBERthqP3xIeiOXNL5wN
- jQujy9gooUqSmKAEMUildSoWBXGySzDNz5YWMw4oaCzIWmUZ73qloWXdVF/rANqTB4Y=
-X-Gm-Gg: ASbGncuAbtaXJ9XW1/43JtE9q7WrXnBVvWTuooOgSMEL6Zx+M+ZaCp96XMhwh36oBHI
- l0TLqijQDD2x9tLpz375pGzYRW6BkZGPkcsvNLw+yIOosjL0tzH3XQa4dUCLFjLbM+M/JGmjqYu
- QoD1ZCGe34rWYU2DPuz4hwpwuxMERzxK0YIOD1XqkaIa8Qj2h3gvv4dV0qYaUKQzhZEG8u75auH
- YURYjc7n7WFGxp1rmJzwwe3ez3RT56KGyQS0RcdXx63nAqEXV/cau0K5x9lBkmvctHvgEeaq8fR
- QMif1B10vcs5Uv2hAIhF6iaSJ1auj504JiWAizlyVVlY8Oz3SUwwS9k7+9bRohHqYRe/hklCBqA
- tkmtMzqXJoBB4UOHjW1DewfW5olJDF76162C2
-X-Google-Smtp-Source: AGHT+IEBWmhyBzoe395q2/+evgAb/inFstpQzHziCz6yunVelrQGjZYFK8EOCpeAqYcI2s823Hsjhw==
-X-Received: by 2002:a17:903:230c:b0:224:26fd:82e5 with SMTP id
- d9443c01a7336-23f9823502fmr54125655ad.48.1753290860764; 
- Wed, 23 Jul 2025 10:14:20 -0700 (PDT)
+ AJvYcCUn4lfIkOc4OeAKwrWtrcXinDMDZjhMmjhO5XZoXtONqvTQTg0uJliysDIvA3sP8ZkeVgVDxshJDw==@nongnu.org
+X-Gm-Message-State: AOJu0YxNutw4/DtS1vaQAct99GES7M7Rs76cRMXgEVF/aOZXK+ltnsLp
+ VWxHrHcPFa+sq8g5ngD5WSxmVq+FXRFgI2wLFFCbE8H6hWjZiUQvmfnO6Z01WgcPfa0=
+X-Gm-Gg: ASbGncv0ZUW5tDs1Sg24C2tYyxba6bmyT3pV1tvv/TD31vS10SJIgZdZteYFxQR8D6y
+ n/dckKvBCMBi96v4OyXFaizD6xIVsmn4VJxmz8ac+3pnMfAV5RkQnlMcItx7QpQOIZ9pZIm7IfC
+ erVvO7tvpaswUEwVhVmllbW+U5JNKcSk7oYJOeHterVX1igMJxwPflUpBTwZXuX9KhYL0v4uane
+ k/aN0M7i8wMbUo3+YAjiulkr+WmnXjtyFMlEq2gian6LftYhav+ioRTwgkuyVN2c7VanEXu78zR
+ hPj+4vOZriemDd+MefmLHR+T0cC1vg8wilg3p0NUgI077oGq7vv0/LlcIUnb7XH735N1hS0CcLO
+ iDI5mcAVudocn3p0EQ+cdtoAB9no/qZbSvnRbC36wJWfXYVk=
+X-Google-Smtp-Source: AGHT+IEN5IQe0yPHBi9wCCAfm0Xz1F1Z2hqAOoHd9xzLbcyfhy792LLocp3YyT5kNWHLw66ew2XYvA==
+X-Received: by 2002:a17:90b:3e89:b0:311:f99e:7f57 with SMTP id
+ 98e67ed59e1d1-31e5082ce7dmr5039272a91.23.1753290873410; 
+ Wed, 23 Jul 2025 10:14:33 -0700 (PDT)
 Received: from [192.168.0.4] ([71.212.157.132])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-23e3b6d723dsm99793845ad.166.2025.07.23.10.14.19
+ 98e67ed59e1d1-31e609617aasm26405a91.0.2025.07.23.10.14.32
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 23 Jul 2025 10:14:20 -0700 (PDT)
-Message-ID: <4a887ef2-6ecb-4311-9aa7-45002dfe2fe8@linaro.org>
-Date: Wed, 23 Jul 2025 10:14:18 -0700
+ Wed, 23 Jul 2025 10:14:33 -0700 (PDT)
+Message-ID: <fe69fc88-ffca-41ae-a44f-0e68a407c205@linaro.org>
+Date: Wed, 23 Jul 2025 10:14:31 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH for-10.1 4/6] target/arm: LD1Q, ST1Q are vector + scalar, 
- not scalar + vector
+Subject: Re: [PATCH for-10.1 5/6] target/arm: Pass correct esize to
+ sve_st1_z() for LD1Q, ST1Q
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 References: <20250723165458.3509150-1-peter.maydell@linaro.org>
- <20250723165458.3509150-5-peter.maydell@linaro.org>
+ <20250723165458.3509150-6-peter.maydell@linaro.org>
 Content-Language: en-US
 From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20250723165458.3509150-5-peter.maydell@linaro.org>
+In-Reply-To: <20250723165458.3509150-6-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62e;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62e.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102c;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -106,32 +106,23 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 7/23/25 09:54, Peter Maydell wrote:
-> Unlike the "LD1D (scalar + vector)" etc instructions, LD1Q is
-> vector + scalar. This means that:
->   * the vector and the scalar register are in opposite fields
->     in the encoding
->   * 31 in the scalar register field is XZR, not XSP
+> Our implementation of the helper functions for the LD1Q and ST1Q
+> insns reused the existing DO_LD1_ZPZ_D and DO_ST1_ZPZ_D macros.  This
+> passes the wrong esize (8, not 16) to sve_ldl_z().
 > 
-> The same applies for ST1Q.
+> Create new macros DO_LD1_ZPZ_Q and DO_ST1_ZPZ_Q which pass the
+> correct esize, and use them for the LD1Q and ST1Q helpers.
 > 
-> This means we can't reuse the trans_LD1_zprz() and trans_ST1_zprz()
-> functions for LD1Q and ST1Q. Split them out to use their own
-> trans functions.
-> 
-> Note that the change made here to sve.decode requires the decodetree
-> bugfix "decodetree: Infer argument set before inferring format" to
-> avoid a spurious compile-time error about "dtype".
-> 
-> Fixes: d2aa9a804ee678f ("target/arm: Implement LD1Q, ST1Q for SVE2p1")
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> Fixes: d2aa9a804ee ("target/arm: Implement LD1Q, ST1Q for SVE2p1")
+> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
 > ---
->   target/arm/tcg/sve.decode      | 12 +++----
->   target/arm/tcg/translate-sve.c | 65 ++++++++++++++++++++++++++--------
->   2 files changed, 57 insertions(+), 20 deletions(-)
+>   target/arm/tcg/sve_helper.c | 36 ++++++++++++++++++++++++++++++++----
+>   1 file changed, 32 insertions(+), 4 deletions(-)
 
+Oops.
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-
 r~
+
 

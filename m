@@ -4,79 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B8BCC87FC5
-	for <qemu-arm@archiver.kernel.org>; Fri, 25 Jul 2025 00:10:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A96FDC87FCD
+	for <qemu-arm@archiver.kernel.org>; Fri, 25 Jul 2025 01:48:48 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uf60B-00065w-Hl; Thu, 24 Jul 2025 20:09:31 -0400
+	id 1uf7YB-0000Xr-7R; Thu, 24 Jul 2025 21:48:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from
- <3LsuCaA4KCBs1C5OI9381I4JFE7FF7C5.3FDH5DL-1IDEFE7EL.FI7@flex--alexrichardson.bounces.google.com>)
- id 1uf603-00061G-8I
- for qemu-arm@nongnu.org; Thu, 24 Jul 2025 20:09:23 -0400
-Received: from mail-pl1-x64a.google.com ([2607:f8b0:4864:20::64a])
+ (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
+ id 1uf7Xj-0008PG-UM
+ for qemu-arm@nongnu.org; Thu, 24 Jul 2025 21:48:16 -0400
+Received: from mail-pf1-x42c.google.com ([2607:f8b0:4864:20::42c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from
- <3LsuCaA4KCBs1C5OI9381I4JFE7FF7C5.3FDH5DL-1IDEFE7EL.FI7@flex--alexrichardson.bounces.google.com>)
- id 1uf601-0004SD-LQ
- for qemu-arm@nongnu.org; Thu, 24 Jul 2025 20:09:23 -0400
-Received: by mail-pl1-x64a.google.com with SMTP id
- d9443c01a7336-235eefe6a8fso11509125ad.1
- for <qemu-arm@nongnu.org>; Thu, 24 Jul 2025 17:09:19 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
+ id 1uf7Xg-0005Ca-Vc
+ for qemu-arm@nongnu.org; Thu, 24 Jul 2025 21:48:15 -0400
+Received: by mail-pf1-x42c.google.com with SMTP id
+ d2e1a72fcca58-749068b9b63so1153340b3a.0
+ for <qemu-arm@nongnu.org>; Thu, 24 Jul 2025 18:48:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1753402158; x=1754006958; darn=nongnu.org;
- h=cc:to:from:subject:message-id:mime-version:date:from:to:cc:subject
- :date:message-id:reply-to;
- bh=xeTKs6Akw7bNbP9o2V9XNUY70Fjt6JXSC9NzDIMyQ08=;
- b=o+yB0WINm8+cV5fJ21dpTBH/YIn80cMNKsuLQ1IhWZz5Her9kn9NmKkphPmxKcCOgP
- kQqtdrX062r5rpHqp6DkiksxOdVJrY2y1TEv/eFxJh1ZaH3b4NKyQNTayrJzSMRb6seb
- 7uJyTLDoLRXePTFYM+z6WKQ5eU7E7CkKEWD/r0cnMYWbK8jhaJEhQdGQSRkMR2NC1wSJ
- vhXzB44YUrCtQ57BCKOYF7zGEe92vG3dHkhyRiASI0VLO21npzpNpcXWpRDyuplVmoYy
- +QMdtO663CN6/z7kLkvimQCVqRxW6hbCQvYQwC6tL83n9CZF4Cv8D9+wRPTQCCEoYoZM
- A2xQ==
+ d=linaro.org; s=google; t=1753408090; x=1754012890; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=WG/Kul4H8+j0Y0ibAl3jfG5UIT+TCusCzNUpV85n7WM=;
+ b=FjOGEBnsZ281PDi16TUZKW4n8xrYwQrNmvdU+I0CNcieJie9RU58Iu+IS2PycAFpsB
+ EgUGXbYKp3ok2HFdVLEkrx6ndstXHroWjfXLGf+5ahygc0H13+Uld12SA3lvDqvjGVUi
+ SVHhCJNplGt2RRjOLUPRC9k+263WolMkMj0414spHmX4uEhsH0E37yoBWVeCiL8BD0Vo
+ VmuCjKyhYnL5PBq+7TLTmUOJLvHvSt5iezl6DijJxGvix8djPN8p54b4oM+qvzkJmoby
+ 8rLthjK89dhR9Kk/cf0qXJQTqK1O1XZLEiRHIfcv+0axeQBk0sl8xkwY0HeOIJHEeBxP
+ B6Nw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1753402158; x=1754006958;
- h=cc:to:from:subject:message-id:mime-version:date:x-gm-message-state
- :from:to:cc:subject:date:message-id:reply-to;
- bh=xeTKs6Akw7bNbP9o2V9XNUY70Fjt6JXSC9NzDIMyQ08=;
- b=bi9I9QVBtuyGO5W60JbfjVsKvAy97FglrvB/vtZiI6sHFk1roS7J1K5tOYmzkO+Jrd
- q1UlaBw6drVQ6w56Vrp/zmuWfplA3xdF6PFXQ7ygrVVPML/RJDK57aFtF27jZoGPkzEC
- SZnTyQ1B9GCKDZ6nFPoJ2bsuhUHKGkJRVgL1hoIoYUtXSF/VkgTHjcG/p7xTRdcHSeZe
- YHiQ0yOpEGQaYrKfCQU+nqJ82bmYEn+AI3fdop2J+hq2OQhmB/lEJMfM7EdjRmdkoyPp
- bTHE5ROrs74PlClwjop5HdPNKAUJ3IedN8i/MPslF/vnfdpRJdJMlq/GHW+WNRTP/xLI
- yOpw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCV49jLF1LwmsDz2asHWL5/soZjePZuSkIk0W/AdG8+E9S8ZzJrEwK1/q2hqRL1bG3+xMyOFOgdlyQ==@nongnu.org
-X-Gm-Message-State: AOJu0YxN7QEd5oFGsTR/34g+U3TEd8QwRVV90PsIhdx3ISsbgygIr9TJ
- ctyZuSAXNdUqN82beI3cYQ5mVACmsd/BgiNX/IAEl9uiFWAwNFy3dqjvj71SJEbgjcVYPuMrJXK
- kYRNDL69QfvPWLJjejYjWKpnTw274ldetDACDkw==
-X-Google-Smtp-Source: AGHT+IFAqppbpPB5ofki4xRY8Z1XFXJIf0rWhTkJoX4YHi6ECIy4dOTHH5KSbOCNN/bpOvVxxZFV1ulo0CCFvim6IclZQQ==
-X-Received: from plhd15.prod.google.com ([2002:a17:903:230f:b0:234:a0aa:5b34])
- (user=alexrichardson job=prod-delivery.src-stubby-dispatcher) by
- 2002:a17:903:b87:b0:235:f45f:ed2b with SMTP id
- d9443c01a7336-23f981619c9mr118846055ad.1.1753402158302; 
- Thu, 24 Jul 2025 17:09:18 -0700 (PDT)
-Date: Thu, 24 Jul 2025 17:09:01 -0700
-Mime-Version: 1.0
-X-Mailer: git-send-email 2.50.1.470.g6ba607880d-goog
-Message-ID: <20250725000901.1204536-1-alexrichardson@google.com>
-Subject: [PATCH v2] target/arm: add support for 64-bit PMCCNTR in AArch32 mode
-From: Alex Richardson <alexrichardson@google.com>
-To: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Cc: Alex Richardson <alexrichardson@google.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::64a;
- envelope-from=3LsuCaA4KCBs1C5OI9381I4JFE7FF7C5.3FDH5DL-1IDEFE7EL.FI7@flex--alexrichardson.bounces.google.com;
- helo=mail-pl1-x64a.google.com
-X-Spam_score_int: -95
-X-Spam_score: -9.6
-X-Spam_bar: ---------
-X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
+ d=1e100.net; s=20230601; t=1753408090; x=1754012890;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=WG/Kul4H8+j0Y0ibAl3jfG5UIT+TCusCzNUpV85n7WM=;
+ b=Hxa2x/n3d2Ee7p3QtYZArtgnIGx4+gbU18gKLOIRxIAKJpiGdJJapHAULtSkGq92YA
+ 5lYeSh7KR9WkUbbD6ROhpThJJIT05Js7ZpejkAVJyt2KNenVCYH4VndFEsi31ZOqa0Kw
+ pyKVhII+EvcuehDSJ4UX+T+xX7d0h3GymsoD3DE0mppCxDL/c03jmTKlhYGQJiPynhno
+ YXsrgdrk4sLGT6ujDi/BM82I3K0crdd8LNKcfsxM1PXlInTcOad//iUOK0uozZ9NIype
+ sEry5HqwVKIsVVocOXTPOiLvDlENUm5w+2YSJEW9mM1Cc0N4soE/oTfzSGFbxJA7sO6t
+ /MDw==
+X-Gm-Message-State: AOJu0YwmlwxUvu4WjcPV/A1RcHtmLfcH//cho+r2O6h7Zk15JkZRFF8j
+ wetaH7r6PDdgXb8W9tJbqJbZxJZ0oDcWE5T7hFNddTNrMd+O0m7GkndTJpL6kqwjZjw=
+X-Gm-Gg: ASbGnctQXaHpA6XwbIyh9RjI3ucIxuezP59A1j6+JYO2KNiRUyMFiGfe91TOz/K+D3k
+ ofBlDhEGBC8pV0oc2Fo1dBywumh6yxUrwkalGPTl7DSR8EcDE385MwQroXJP7DHlW+evWelohnz
+ 0PFxNJiYS2BFpgXlvrvTbaCXkIFKLwyOMle30yi7y+saHRBh2bP7RW3eS7dpL7xYIZdb2a6KLP1
+ x5IH1XhtYD+DK51xy0cz+St+pZGkH6Xvu8AbYCDzvVo8lnSCrjWqS84R8P96v/pbMsuaqCKC3Lc
+ WlEb4l9BzTBtihsehvycCy2dOlHYxBWgkScNF7NpbR//HhXZb9ew5BVfQSIPIg/fwB7iIPz8aXt
+ hMfesNBg6pk4Ef88pAhHM6UC3YFs=
+X-Google-Smtp-Source: AGHT+IECvzIqbZ66dt6nCn2Nm4AX8tesdbb4NnUurVBZ3Ok2u9ScUefHytt0bsK5JEVxJs5ycooEoQ==
+X-Received: by 2002:a05:6a00:464f:b0:749:112:c172 with SMTP id
+ d2e1a72fcca58-763345cd65amr386538b3a.16.1753408089802; 
+ Thu, 24 Jul 2025 18:48:09 -0700 (PDT)
+Received: from gromero0.. ([187.75.37.236]) by smtp.gmail.com with ESMTPSA id
+ d2e1a72fcca58-761adc70799sm2662258b3a.12.2025.07.24.18.48.07
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 24 Jul 2025 18:48:09 -0700 (PDT)
+From: Gustavo Romero <gustavo.romero@linaro.org>
+To: qemu-devel@nongnu.org,
+	peter.maydell@linaro.org
+Cc: qemu-arm@nongnu.org,
+	alex.bennee@linaro.org,
+	gustavo.romero@linaro.org
+Subject: [PATCH] target/arm: Clean up of register field definitions
+Date: Fri, 25 Jul 2025 01:47:55 +0000
+Message-Id: <20250725014755.2122579-1-gustavo.romero@linaro.org>
+X-Mailer: git-send-email 2.34.1
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42c;
+ envelope-from=gustavo.romero@linaro.org; helo=mail-pf1-x42c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -92,48 +98,73 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-In the PMUv3, a new AArch32 64-bit (MCRR/MRRC) accessor for the
-PMCCNTR was added. In QEMU we forgot to implement this, so only
-provide the 32-bit accessor. Since we have a 64-bit PMCCNTR
-sysreg for AArch64, adding the 64-bit AArch32 version is easy.
+Clean up the definitions of NSW and NSA fields in the VTCR register.
+These two fields are already defined properly using FIELD() so they are
+actually duplications. Also, define the NSW and NSA fields in the
+VSTCR register using FIELD() and remove their definitions based on VTCR
+fields.
 
-We add the PMCCNTR to the v8_cp_reginfo because PMUv3 was added
-in the ARMv8 architecture. This is consistent with how we
-handle the existing PMCCNTR support, where we always implement
-it for all v7 CPUs. This is arguably something we should
-clean up so it is gated on ARM_FEATURE_PMU and/or an ID
-register check for the relevant PMU version, but we should
-do that as its own tidyup rather than being inconsistent between
-this PMCCNTR accessor and the others.
-
-Since the register name is the same as the 32-bit PMCCNTR, we set
-ARM_CP_NO_GDB to avoid generating an invalid GDB XML.
-
-See https://developer.arm.com/documentation/ddi0601/2024-06/AArch32-Registers/PMCCNTR--Performance-Monitors-Cycle-Count-Register?lang=en
-
-Signed-off-by: Alex Richardson <alexrichardson@google.com>
+Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
 ---
- target/arm/cpregs-pmu.c | 6 ++++++
- 1 file changed, 6 insertions(+)
+ target/arm/internals.h | 8 +++-----
+ target/arm/ptw.c       | 8 ++++----
+ 2 files changed, 7 insertions(+), 9 deletions(-)
 
-diff --git a/target/arm/cpregs-pmu.c b/target/arm/cpregs-pmu.c
-index 0f295b1376..ef176e4045 100644
---- a/target/arm/cpregs-pmu.c
-+++ b/target/arm/cpregs-pmu.c
-@@ -1276,6 +1276,12 @@ void define_pm_cpregs(ARMCPU *cpu)
-               .access = PL0_R, .accessfn = pmreg_access, .type = ARM_CP_CONST,
-               .fgt = FGT_PMCEIDN_EL0,
-               .resetvalue = cpu->pmceid1 },
-+            { .name = "PMCCNTR", .state = ARM_CP_STATE_AA32,
-+              .cp = 15, .crm = 9, .opc1 = 0,
-+              .access = PL0_RW, .accessfn = pmreg_access_ccntr, .resetvalue = 0,
-+              .type = ARM_CP_ALIAS | ARM_CP_IO | ARM_CP_64BIT | ARM_CP_NO_GDB,
-+              .fgt = FGT_PMCCNTR_EL0, .readfn = pmccntr_read,
-+              .writefn = pmccntr_write,  },
-         };
-         define_arm_cp_regs(cpu, v8_pm_reginfo);
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index c4765e4489..052f7b641c 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -113,11 +113,6 @@ FIELD(DBGWCR, WT, 20, 1)
+ FIELD(DBGWCR, MASK, 24, 5)
+ FIELD(DBGWCR, SSCE, 29, 1)
+ 
+-#define VTCR_NSW (1u << 29)
+-#define VTCR_NSA (1u << 30)
+-#define VSTCR_SW VTCR_NSW
+-#define VSTCR_SA VTCR_NSA
+-
+ /* Bit definitions for CPACR (AArch32 only) */
+ FIELD(CPACR, CP10, 20, 2)
+ FIELD(CPACR, CP11, 22, 2)
+@@ -220,6 +215,9 @@ FIELD(VTCR, NSA, 30, 1)
+ FIELD(VTCR, DS, 32, 1)
+ FIELD(VTCR, SL2, 33, 1)
+ 
++FIELD(VSTCR, SW, 29, 1)
++FIELD(VSTCR, SA, 30, 1)
++
+ #define HCRX_ENAS0    (1ULL << 0)
+ #define HCRX_ENALS    (1ULL << 1)
+ #define HCRX_ENASR    (1ULL << 2)
+diff --git a/target/arm/ptw.c b/target/arm/ptw.c
+index 561bf2678e..ed5c728eab 100644
+--- a/target/arm/ptw.c
++++ b/target/arm/ptw.c
+@@ -193,9 +193,9 @@ static ARMMMUIdx ptw_idx_for_stage_2(CPUARMState *env, ARMMMUIdx stage2idx)
+         return ARMMMUIdx_Phys_Realm;
+     case ARMSS_Secure:
+         if (stage2idx == ARMMMUIdx_Stage2_S) {
+-            s2walk_secure = !(env->cp15.vstcr_el2 & VSTCR_SW);
++            s2walk_secure = !(env->cp15.vstcr_el2 & R_VSTCR_SW_MASK);
+         } else {
+-            s2walk_secure = !(env->cp15.vtcr_el2 & VTCR_NSW);
++            s2walk_secure = !(env->cp15.vtcr_el2 & R_VTCR_NSW_MASK);
+         }
+         return s2walk_secure ? ARMMMUIdx_Phys_S : ARMMMUIdx_Phys_NS;
+     default:
+@@ -3372,9 +3372,9 @@ static bool get_phys_addr_twostage(CPUARMState *env, S1Translate *ptw,
+      */
+     if (in_space == ARMSS_Secure) {
+         result->f.attrs.secure =
+-            !(env->cp15.vstcr_el2 & (VSTCR_SA | VSTCR_SW))
++            !(env->cp15.vstcr_el2 & (R_VSTCR_SA_MASK | R_VSTCR_SW_MASK))
+             && (ipa_secure
+-                || !(env->cp15.vtcr_el2 & (VTCR_NSA | VTCR_NSW)));
++                || !(env->cp15.vtcr_el2 & (R_VTCR_NSA_MASK | R_VTCR_NSW_MASK)));
+         result->f.attrs.space = arm_secure_to_space(result->f.attrs.secure);
      }
+ 
 -- 
-2.50.1.470.g6ba607880d-goog
+2.34.1
 
 

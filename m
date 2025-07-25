@@ -4,83 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0E97C87FCE
-	for <qemu-arm@archiver.kernel.org>; Fri, 25 Jul 2025 20:23:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C270FC87FCA
+	for <qemu-arm@archiver.kernel.org>; Fri, 25 Jul 2025 20:25:21 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ufOwR-00010M-Mq; Fri, 25 Jul 2025 16:22:55 -0400
+	id 1ufOyM-0004LZ-Rg; Fri, 25 Jul 2025 16:24:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1ufOsy-0006l9-6u
- for qemu-arm@nongnu.org; Fri, 25 Jul 2025 16:19:20 -0400
-Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c])
+ id 1ufOsu-0006gM-6J
+ for qemu-arm@nongnu.org; Fri, 25 Jul 2025 16:19:16 -0400
+Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1ufOsu-0000w3-K2
- for qemu-arm@nongnu.org; Fri, 25 Jul 2025 16:19:19 -0400
-Received: by mail-pj1-x102c.google.com with SMTP id
- 98e67ed59e1d1-3122368d7c4so2159631a91.1
- for <qemu-arm@nongnu.org>; Fri, 25 Jul 2025 13:19:16 -0700 (PDT)
+ id 1ufOss-0000vX-HI
+ for qemu-arm@nongnu.org; Fri, 25 Jul 2025 16:19:15 -0400
+Received: by mail-pl1-x633.google.com with SMTP id
+ d9443c01a7336-237311f5a54so21392745ad.2
+ for <qemu-arm@nongnu.org>; Fri, 25 Jul 2025 13:19:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1753474755; x=1754079555; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=BzMe8v8+D/ZJwDaUmFXie+iwsXeeiiuU9F5B/tUc6Sk=;
- b=TkrMmPyH76Pr1CTTKWv6NJTZLmoA3i2ruRA1kyeRL8VGBB5QJ9STkttKQGv8Uxkz1B
- eEHSvkLPZ5wmt7fVbfQCRSbqq9bLuaHlsn546e00uY8RCsK0MS5XowWgayVVqkZSUAzK
- BzpZoyJ4AxJtDnJZYaUZlJSzVH38gvgF/8aVu8x8O5QdJoW5imvlCnJ3DmChBFQPdkkx
- W9SR3aPGA6KlLATEF/4FeRzW7sJGqM5JJhcXw3HAdeLEdv2aDiGdOTFzzcjBBcJTJWBX
- dznqatsCj+pKbu2dhHrvo7uBUwCtfeCDKZBK6nz9bhp4JyZEXo54kdFUbnbOcgI3nFHx
- xuBw==
+ d=linaro.org; s=google; t=1753474753; x=1754079553; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=5K1qtAriFHoDI4vOaduYpqQ8oUEBiN45bpDENPmumJY=;
+ b=SwxqZTJ08jpc/Eqg5qVNU4WZMuFFJeUqCJQxSOY3KCREmRRAdj82CPqhvVQNte5i9Z
+ wJxWUMg3Mk4N+hm3JQMPewSHteXEboab1/7IAABvYMBQP/WFs39DOGi0MVo9ZxcStVDr
+ ivrd/G/Ebq5wx4Ev/wNQBBCuoEwwI4oorT9Ozb4QuSfjbBrhffLx/pIGPPq2BTwnGJYl
+ /HwZuN5bWSn5wLkJmXE8DGcusTfRHFwzdnfm3JRyCqMKNnyr7sbpDwckT/j5l8dBAAaf
+ Gf0sKaFuBJYMfCaZaQaBhAChgF+EScY07EZeyfLD0FZA3VEpqOGtkdw12d/EXeROOd/n
+ 7kfQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1753474755; x=1754079555;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=BzMe8v8+D/ZJwDaUmFXie+iwsXeeiiuU9F5B/tUc6Sk=;
- b=uBx1IhIOvd8z5cK8vgdl0ghTdRG5OM0rU7N7M+8Fl4Gg/hJdhQezbZU6fVSmifyBEO
- k87kIo1XZ7R046psW46C+M8M3SBDS+bCkBoQNSO+VplsSSaGgZsYcLcsg5rXij3aIOsB
- tuKGnYW4YXotfYA27SvH/YHhrPupvO2EHKefPckP6Zz6gi0VhXvjmePp/wmKYQvjmDEo
- vSnh+fsCENjjeXi68sIGYU1vica4bFTkSZQLQfRs+SQWsSAnBQ1pp2gM2NnfxhSXjG6x
- 6nzySqHmC2m1et7nRMFsgbM/Iph6PKCEhSk1kaW0uK/tEYzOh5BX0QuezzqAMc+S85FG
- nWgA==
+ d=1e100.net; s=20230601; t=1753474753; x=1754079553;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=5K1qtAriFHoDI4vOaduYpqQ8oUEBiN45bpDENPmumJY=;
+ b=G8SkOoqAnS7d8yKk4yq1r/ZoOJxRHgYlVUChAxpu3f2SlguJWNfRRtTu86qafiQtNK
+ Ki44x9EYcrN85iKw7BmebhvDSsve+HIerHJ3UO+JsIIWZ/TeZJiEnmNGZiW5xSTsKji4
+ NsfjHdm7wf2TeWpQGQHYxHTD93drhBQaS2O9AZgej48F1xpfVrDawdpbnHPiPttq0pZR
+ 5011ehKmIyCHEA1OvpMLWIL7zjCL+c5Aq+1BWxjaqs4YCxer9sb71j8vw+IwN0sUThYC
+ wOX6128TSeWuD4Tyn3TseUuVHyAd79iB5Sp9e2q9tR4FMspHRIu+3qpxaM6oQ7fY5+q8
+ 3oCA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWzSXpc9uGebdPszAdJILqbfqG3O3Hc6mv76+Z0TwvFsSOymr/g9jThRcOSJLWI52m9XC5e+nzj3g==@nongnu.org
-X-Gm-Message-State: AOJu0YwHWqhr+4YrnLwBsRhiXYoBfULu0UbyJHYgWr/0bzoJHjoNerE/
- YzRx6Q8/nttJlLSf4JOU11W+psOOk5iDrqYxc2i3Pl0toSOxcnAGyui42nuimHu9S2hYEp4Z+2+
- HLjv5
-X-Gm-Gg: ASbGncsg7+LfcwdwElsGIuZy+vLCLNjj2T33dc9zS0OQpNfVnCIk/5AJZau4xyRR/Z9
- 6u603QR+YeiWe02l7hh+54uewLBXC5aJr0x3uJvU1iOqEFKdJ/xuagsKIoxpyHhDVL5Y94moAVF
- Ai5Wt1piAn4EHTI7PZbHCitf35pCI11SF+BmZ5biK3TxYchkqOey8f4gEXarbS8NO5Y27EgR+1z
- 2uMWqqWU5u2gNxWfkFKX28KatE7rWTi58Y0aTTaqciKA2vUf09B1JRRcKD1/kEPHq6SMl7GEJlJ
- 1pFvLgqnGK5SLJVuBhc9TsdoXws6iOzYaMB8sg+x5yMsuCRzLv2ld1ZVH9E7bqAfc7HEDv78Mhd
- jrgqZNcyQ8eWxPZoWCKYA/w==
-X-Google-Smtp-Source: AGHT+IGH/EuKqatNwjYkseoEwCr6nkLbARrg5AfrtW50R+rXb57JK3pceP27ZjJ5pWpuZq5kRFJQaA==
-X-Received: by 2002:a17:90a:c886:b0:311:d258:3473 with SMTP id
- 98e67ed59e1d1-31e77a44dc7mr4180921a91.13.1753474755117; 
- Fri, 25 Jul 2025 13:19:15 -0700 (PDT)
+ AJvYcCVWdYv6ibouBFRC8LiPgKks/5TgimsJB2vYj9kmaGnhnJUS3kExpsrFJI0HOiW57ZKvSqYDixE9yQ==@nongnu.org
+X-Gm-Message-State: AOJu0YyuWegWPhKmHuoNuv6/PuFaOzQkGjAOAP63swxf63JaTKm5B66n
+ 7/GoKLrDortPhQ4M0K9zWetho4JCKdp+jAvaMreYqgaDaFVD+Q/GqbTVG2EBVJyfI8E=
+X-Gm-Gg: ASbGncs76dIb24HuFdm0NJ4Z392RkTnvw3WkVoZs8Zv89daP0mxsCNlHeLiV28A8Pne
+ FwYBEv/Td2Ai2p/9Xzic25/dtUv1VBD/Zo+wDy/TUHJTnBdtvCdcYAHex1wSYcIzazOfKBK4Av6
+ OFrahE2p4qDePT5Tm+0uQv1a392yHmuerM1FdNq3edhlNIeKmGekDZ1Ox4yLEzjFVxLW75++pCt
+ uq6V7q5IovZN7C6TgwESAEaOw14SsKnX9fZtI4+ak8jB1lmHlGMnTn6Oq/WgMqb2ujuxZ5CyNDz
+ YVvYsR7OtZpDulx1pIVBDP9+4tjZwFU/cNQ0v7M3258bzYZBfUGkF2ADem5nm92XkdnVLcLQk5y
+ TMd5j0JvSIaHYUrbRJmunk5hiokcouv6S
+X-Google-Smtp-Source: AGHT+IFUxwD/snBE4ljS+0QN/557jbRNFw2KOEoNBB2wTCbbuq+V+o1vyzhWlugVy8o0+7ckdQojXA==
+X-Received: by 2002:a17:903:41d1:b0:234:b735:dca8 with SMTP id
+ d9443c01a7336-23fb307afd9mr40344335ad.6.1753474752771; 
+ Fri, 25 Jul 2025 13:19:12 -0700 (PDT)
 Received: from pc.. ([38.41.223.211]) by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-31e6635f0a0sm4143309a91.24.2025.07.25.13.19.14
+ 98e67ed59e1d1-31e6635f0a0sm4143309a91.24.2025.07.25.13.19.12
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 25 Jul 2025 13:19:14 -0700 (PDT)
+ Fri, 25 Jul 2025 13:19:12 -0700 (PDT)
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH 3/3] hw/arm/armv7m_nvic: move to hw/arm and compile only once
-Date: Fri, 25 Jul 2025 13:19:06 -0700
-Message-ID: <20250725201906.19533-4-pierrick.bouvier@linaro.org>
+Subject: [PATCH 0/3] single-binary: compile hw/intc/arm* files once
+Date: Fri, 25 Jul 2025 13:19:03 -0700
+Message-ID: <20250725201906.19533-1-pierrick.bouvier@linaro.org>
 X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20250725201906.19533-1-pierrick.bouvier@linaro.org>
-References: <20250725201906.19533-1-pierrick.bouvier@linaro.org>
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102c;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pj1-x102c.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::633;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pl1-x633.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -103,102 +100,25 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This file needs definition of ARMCPU, and thus, belongs to hw/arm.
+Move those files to hw/arm, as they depend on arm target code.
 
-Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
----
- hw/{intc => arm}/armv7m_nvic.c |  0
- hw/arm/meson.build             |  1 +
- hw/arm/trace-events            | 17 +++++++++++++++++
- hw/intc/meson.build            |  1 -
- hw/intc/trace-events           | 17 -----------------
- 5 files changed, 18 insertions(+), 18 deletions(-)
+Pierrick Bouvier (3):
+  hw/arm/arm_gicv3_cpuif_common: move to hw/arm and compile only once
+  hw/arm/arm_gicv3_cpuif: move to hw/arm and compile only once
+  hw/arm/armv7m_nvic: move to hw/arm and compile only once
+
+ hw/{intc => arm}/arm_gicv3_cpuif.c        |  2 +-
+ hw/{intc => arm}/arm_gicv3_cpuif_common.c |  2 +-
+ hw/{intc => arm}/armv7m_nvic.c            |  0
+ hw/arm/meson.build                        |  3 +
+ hw/arm/trace-events                       | 79 +++++++++++++++++++++++
+ hw/intc/meson.build                       |  3 -
+ hw/intc/trace-events                      | 79 -----------------------
+ 7 files changed, 84 insertions(+), 84 deletions(-)
+ rename hw/{intc => arm}/arm_gicv3_cpuif.c (99%)
+ rename hw/{intc => arm}/arm_gicv3_cpuif_common.c (92%)
  rename hw/{intc => arm}/armv7m_nvic.c (100%)
 
-diff --git a/hw/intc/armv7m_nvic.c b/hw/arm/armv7m_nvic.c
-similarity index 100%
-rename from hw/intc/armv7m_nvic.c
-rename to hw/arm/armv7m_nvic.c
-diff --git a/hw/arm/meson.build b/hw/arm/meson.build
-index 25b6bb438a2..68dbdd3e913 100644
---- a/hw/arm/meson.build
-+++ b/hw/arm/meson.build
-@@ -84,6 +84,7 @@ arm_common_ss.add(when: 'CONFIG_VEXPRESS', if_true: files('vexpress.c'))
- arm_common_ss.add(files('boot.c'))
- arm_common_ss.add(when: 'CONFIG_ARM_GIC', if_true: files('arm_gicv3_cpuif_common.c'))
- arm_common_ss.add(when: 'CONFIG_ARM_GICV3', if_true: files('arm_gicv3_cpuif.c'))
-+arm_common_ss.add(when: 'CONFIG_ARM_V7M', if_true: files('armv7m_nvic.c'))
- 
- hw_arch += {'arm': arm_ss}
- hw_common_arch += {'arm': arm_common_ss}
-diff --git a/hw/arm/trace-events b/hw/arm/trace-events
-index 250ad116186..e25fa32668c 100644
---- a/hw/arm/trace-events
-+++ b/hw/arm/trace-events
-@@ -62,6 +62,23 @@ gicv3_cpuif_virt_update(uint32_t cpuid, int idx, int hppvlpi, int grp, int prio)
- gicv3_cpuif_virt_set_irqs(uint32_t cpuid, int fiqlevel, int irqlevel) "GICv3 CPU i/f 0x%x virt HPPI update: setting FIQ %d IRQ %d"
- gicv3_cpuif_virt_set_maint_irq(uint32_t cpuid, int maintlevel) "GICv3 CPU i/f 0x%x virt HPPI update: setting maintenance-irq %d"
- 
-+# armv7m_nvic.c
-+nvic_recompute_state(int vectpending, int vectpending_prio, int exception_prio) "NVIC state recomputed: vectpending %d vectpending_prio %d exception_prio %d"
-+nvic_recompute_state_secure(int vectpending, bool vectpending_is_s_banked, int vectpending_prio, int exception_prio) "NVIC state recomputed: vectpending %d is_s_banked %d vectpending_prio %d exception_prio %d"
-+nvic_set_prio(int irq, bool secure, uint8_t prio) "NVIC set irq %d secure-bank %d priority %d"
-+nvic_irq_update(int vectpending, int pendprio, int exception_prio, int level) "NVIC vectpending %d pending prio %d exception_prio %d: setting irq line to %d"
-+nvic_escalate_prio(int irq, int irqprio, int runprio) "NVIC escalating irq %d to HardFault: insufficient priority %d >= %d"
-+nvic_escalate_disabled(int irq) "NVIC escalating irq %d to HardFault: disabled"
-+nvic_set_pending(int irq, bool secure, bool targets_secure, bool derived, int en, int prio) "NVIC set pending irq %d secure-bank %d targets_secure %d derived %d (enabled: %d priority %d)"
-+nvic_clear_pending(int irq, bool secure, int en, int prio) "NVIC clear pending irq %d secure-bank %d (enabled: %d priority %d)"
-+nvic_acknowledge_irq(int irq, int prio) "NVIC acknowledge IRQ: %d now active (prio %d)"
-+nvic_get_pending_irq_info(int irq, bool secure) "NVIC next IRQ %d: targets_secure: %d"
-+nvic_complete_irq(int irq, bool secure) "NVIC complete IRQ %d (secure %d)"
-+nvic_set_irq_level(int irq, int level) "NVIC external irq %d level set to %d"
-+nvic_set_nmi_level(int level) "NVIC external NMI level set to %d"
-+nvic_sysreg_read(uint64_t addr, uint32_t value, unsigned size) "NVIC sysreg read addr 0x%" PRIx64 " data 0x%" PRIx32 " size %u"
-+nvic_sysreg_write(uint64_t addr, uint32_t value, unsigned size) "NVIC sysreg write addr 0x%" PRIx64 " data 0x%" PRIx32 " size %u"
-+
- # omap1.c
- omap1_pwl_clocking_scheme(const char *scheme) "omap1 CLKM: clocking scheme set to %s"
- omap1_pwl_backlight(int output) "omap1 PWL: backlight now at %d/256"
-diff --git a/hw/intc/meson.build b/hw/intc/meson.build
-index 22814893cbe..dc857833dcb 100644
---- a/hw/intc/meson.build
-+++ b/hw/intc/meson.build
-@@ -40,7 +40,6 @@ endif
- specific_ss.add(when: 'CONFIG_APIC', if_true: files('apic.c', 'apic_common.c'))
- specific_ss.add(when: 'CONFIG_ARM_GIC_KVM', if_true: files('arm_gic_kvm.c'))
- specific_ss.add(when: ['CONFIG_ARM_GIC_KVM', 'TARGET_AARCH64'], if_true: files('arm_gicv3_kvm.c', 'arm_gicv3_its_kvm.c'))
--specific_ss.add(when: 'CONFIG_ARM_V7M', if_true: files('armv7m_nvic.c'))
- specific_ss.add(when: 'CONFIG_GRLIB', if_true: files('grlib_irqmp.c'))
- specific_ss.add(when: 'CONFIG_IOAPIC', if_true: files('ioapic.c'))
- specific_ss.add(when: 'CONFIG_LOONGSON_LIOINTC', if_true: files('loongson_liointc.c'))
-diff --git a/hw/intc/trace-events b/hw/intc/trace-events
-index 4d6c886b794..aa9d65fdc25 100644
---- a/hw/intc/trace-events
-+++ b/hw/intc/trace-events
-@@ -165,23 +165,6 @@ gicv3_its_vte_read(uint32_t vpeid, int valid, uint32_t vptsize, uint64_t vptaddr
- gicv3_its_vte_read_fault(uint32_t vpeid) "GICv3 ITS: vPE Table read for vPEID 0x%x: faulted"
- gicv3_its_vte_write(uint32_t vpeid, int valid, uint32_t vptsize, uint64_t vptaddr, uint32_t rdbase) "GICv3 ITS: vPE Table write for vPEID 0x%x: valid %d VPTsize 0x%x VPTaddr 0x%" PRIx64 " RDbase 0x%x"
- 
--# armv7m_nvic.c
--nvic_recompute_state(int vectpending, int vectpending_prio, int exception_prio) "NVIC state recomputed: vectpending %d vectpending_prio %d exception_prio %d"
--nvic_recompute_state_secure(int vectpending, bool vectpending_is_s_banked, int vectpending_prio, int exception_prio) "NVIC state recomputed: vectpending %d is_s_banked %d vectpending_prio %d exception_prio %d"
--nvic_set_prio(int irq, bool secure, uint8_t prio) "NVIC set irq %d secure-bank %d priority %d"
--nvic_irq_update(int vectpending, int pendprio, int exception_prio, int level) "NVIC vectpending %d pending prio %d exception_prio %d: setting irq line to %d"
--nvic_escalate_prio(int irq, int irqprio, int runprio) "NVIC escalating irq %d to HardFault: insufficient priority %d >= %d"
--nvic_escalate_disabled(int irq) "NVIC escalating irq %d to HardFault: disabled"
--nvic_set_pending(int irq, bool secure, bool targets_secure, bool derived, int en, int prio) "NVIC set pending irq %d secure-bank %d targets_secure %d derived %d (enabled: %d priority %d)"
--nvic_clear_pending(int irq, bool secure, int en, int prio) "NVIC clear pending irq %d secure-bank %d (enabled: %d priority %d)"
--nvic_acknowledge_irq(int irq, int prio) "NVIC acknowledge IRQ: %d now active (prio %d)"
--nvic_get_pending_irq_info(int irq, bool secure) "NVIC next IRQ %d: targets_secure: %d"
--nvic_complete_irq(int irq, bool secure) "NVIC complete IRQ %d (secure %d)"
--nvic_set_irq_level(int irq, int level) "NVIC external irq %d level set to %d"
--nvic_set_nmi_level(int level) "NVIC external NMI level set to %d"
--nvic_sysreg_read(uint64_t addr, uint32_t value, unsigned size) "NVIC sysreg read addr 0x%" PRIx64 " data 0x%" PRIx32 " size %u"
--nvic_sysreg_write(uint64_t addr, uint32_t value, unsigned size) "NVIC sysreg write addr 0x%" PRIx64 " data 0x%" PRIx32 " size %u"
--
- # heathrow_pic.c
- heathrow_write(uint64_t addr, unsigned int n, uint64_t value) "0x%"PRIx64" %u: 0x%"PRIx64
- heathrow_read(uint64_t addr, unsigned int n, uint64_t value) "0x%"PRIx64" %u: 0x%"PRIx64
 -- 
 2.47.2
 

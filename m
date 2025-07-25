@@ -4,78 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3896C87FCA
-	for <qemu-arm@archiver.kernel.org>; Fri, 25 Jul 2025 22:36:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D301C87FCA
+	for <qemu-arm@archiver.kernel.org>; Fri, 25 Jul 2025 23:09:30 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ufQyI-0007Qw-2r; Fri, 25 Jul 2025 18:32:58 -0400
+	id 1ufRX9-0002qD-WB; Fri, 25 Jul 2025 19:09:00 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1ufQx0-0006fp-0m
- for qemu-arm@nongnu.org; Fri, 25 Jul 2025 18:31:39 -0400
-Received: from p-east3-cluster2-host1-snip4-10.eps.apple.com ([57.103.87.141]
- helo=outbound.qs.icloud.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1ufQwc-0003ll-TJ
- for qemu-arm@nongnu.org; Fri, 25 Jul 2025 18:31:19 -0400
-Received: from outbound.qs.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-east-2d-100-percent-4 (Postfix) with ESMTPS id
- 17D8E18000B8; Fri, 25 Jul 2025 22:30:55 +0000 (UTC)
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; bh=sTkhAREw5qzfUMDqzzGfU9wJ1Et+5aYd4xmkFKWmcl8=;
- h=From:To:Subject:Date:Message-Id:MIME-Version:x-icloud-hme;
- b=GzqeUNdBagpxwqDnymQT4vZZWi1upqyvoOmpyJS+kqARrBdKBU1A1pkxI3Nk0EtzYzweKNYdMzSkB3QeTbURs8G2yMlX3Di17B44tp+AvdOsu8XxOvVhReqhJvEftVkbN9ky3LMwxo5x0u7C+JHqjgruYJtCz6iuclsWMpIAatIOAVd1mh91aTlJSGhM7u+BviGeVcUre7Nwbpz+vfM6GEdhGjxEywZhmnNsYVYKy739Q2CEMFaQ0a+Oj4bd1WTGlCBw3w2z6r0NKGxa/T7ikg0pfkeCz0JpgudY0uhxzhUu5G/yOZhj8wlbaBSQH0CL0FZ5XNshWjO7/Z7oZBQ8sQ==
-X-Client-IP: 46.189.47.18
-Received: from localhost.localdomain (qs-asmtp-me-k8s.p00.prod.me.com
- [17.57.155.37])
- by p00-icloudmta-asmtp-us-east-2d-100-percent-4 (Postfix) with ESMTPSA id
- 19F0F180015E; Fri, 25 Jul 2025 22:30:53 +0000 (UTC)
-From: Mohamed Mediouni <mohamed@unpredictable.fr>
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1ufRX8-0002od-7W
+ for qemu-arm@nongnu.org; Fri, 25 Jul 2025 19:08:58 -0400
+Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1ufRX6-0001oR-NI
+ for qemu-arm@nongnu.org; Fri, 25 Jul 2025 19:08:57 -0400
+Received: by mail-pl1-x62c.google.com with SMTP id
+ d9443c01a7336-235f9e87f78so29120755ad.2
+ for <qemu-arm@nongnu.org>; Fri, 25 Jul 2025 16:08:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1753484935; x=1754089735; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=rJjiNpYq8k65ULjdI+KSiLvLZ8E6sNk39U16k7ksgyI=;
+ b=yzoFoXS4nmpOL1Zlus7gsXJXKxeMO6dI8e5xnFmBDXw1iIA2ebOeRlt7nMGM81t9dK
+ sWOJz17UXWmA/vnbirmi0GkhtEK2O85yBSyFx1Tgd0Htqf5kxcy+Uy3Q5f/ZsMLTSrYF
+ XtdCLBXz2GrTMO/b+pXXtiEMpAhB+8a3a1yxi6Y2UtptZ0nRxeEkwEUuJ3qpB0iHusbB
+ pURI/H7BbL1Hok+dZulzVxSlOabeCHIgGF36J2fTMs2c7SBfXPEGB6exbBmD7NCANTFw
+ GrmEcMNlII/RWC/k3NeeVYZDo/L8KrSxqmqwXcunTgQnJKS66V5WaYeWPbkV73jbtZKY
+ paMw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1753484935; x=1754089735;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=rJjiNpYq8k65ULjdI+KSiLvLZ8E6sNk39U16k7ksgyI=;
+ b=X5ffToUW/WZHTesKAwXy8m3Urh1BFcEGtNV0H3X3rtPizH0UFk+uvcb0rod6G8j5kO
+ KAosCtTugdrDBCce0YzzZY6XvM9gkbCeO7DDoj9d/ae9O6tuqzL37uW0X9C874Hg8ALo
+ aG/foXgxSDmZDlyeL1CtWi6O15fvPnUL+Y+DcYtEkv70pmzW8wvFH1KkvpkG99EX/Vry
+ 0Rpp3bMNIZU0fuT0ckkS1I61OWl4mCatWpxnUCa0t8PECQAEtHKgM3S4HWwbj0/9h1YK
+ 6LRaCKFmT4+cOf5xzsvCesTyrd0QuKbRoFWAR4sSsu4Id2jscNsRFQ0CKck6CVeT2BBu
+ dnDQ==
+X-Gm-Message-State: AOJu0Yy+X007AZCN+ISQ1y8+yIBC8FqNdP3twZzOjgoWvdsfqhlWlDfp
+ Tuc0bc2m9Ogg6LEeEXDFkdtPbfo72zHZg9ZouA/Y7DXwo3pzt+e4q219iNX64tWpu84KxVbwMs3
+ A5FAH
+X-Gm-Gg: ASbGncvYHPZENYC454sna6RyllqfemLI0MYiwa36TBoqZ7zaukIpMReMPzkdaz1SzMm
+ kWM4rCWnEKavvMyBZJW7wcPoyKLFiefCP7c3zUZNnAEQgO48c1W8WLELHrBJqHUPID6s43raQGc
+ bhLlBImZ+YyfLOngYB+n5OrnwRwOhwloNuATsRkiPqDiyAzwl7C4j3bXxv2fskE6vyO0vnc7Heq
+ leDhHYxllKOYdeuQTrsG8LRqE23P5U7PeyxcYVIeySbk92rvnFcalW5C10lrpS5d5F5Dhzzl1lf
+ rtu9CPRWraRV65gyK5ml6F4/sTtqRj2PNBYcTYEjUJrgp9FeTqaJCX2s1cx0SWZoNjXSU7pSjH5
+ 1pBFnGXp3Iw0AwRA69ryB1zpUHwqI8/AlzLsntIgnu3ywdtqApwkKyO+C2a95huSvfIlbu+Dv9K
+ neG6lHQ6wAWw==
+X-Google-Smtp-Source: AGHT+IHUEBrbl3psdfb+myW3R4/QoFWBrmQbFt1jEQMS9VoeCCfzNhtZqJajGeAkWnotcQSdAfrf+Q==
+X-Received: by 2002:a17:903:1b05:b0:234:b743:c7a4 with SMTP id
+ d9443c01a7336-23fb30e42a3mr62942525ad.38.1753484934859; 
+ Fri, 25 Jul 2025 16:08:54 -0700 (PDT)
+Received: from localhost.localdomain (syn-098-150-199-049.res.spectrum.com.
+ [98.150.199.49]) by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-23fbe545368sm5033375ad.172.2025.07.25.16.08.52
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 25 Jul 2025 16:08:53 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: Phil Dennis-Jordan <phil@philjordan.eu>, Mads Ynddal <mads@ynddal.dk>,
- Cameron Esfahani <dirty@apple.com>, Ani Sinha <anisinha@redhat.com>,
- qemu-arm@nongnu.org, Igor Mammedov <imammedo@redhat.com>,
- Alexander Graf <agraf@csgraf.de>, Shannon Zhao <shannon.zhaosl@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Roman Bolshakov <rbolshakov@ddn.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Mohamed Mediouni <mohamed@unpredictable.fr>
-Subject: [PATCH v3 8/9] target/arm: hvf: use LOG_UNIMP for
- CNTP_CVAL_EL0/SYSREG_CNTP_CTL_EL0
-Date: Sat, 26 Jul 2025 00:30:34 +0200
-Message-Id: <20250725223035.52284-9-mohamed@unpredictable.fr>
-X-Mailer: git-send-email 2.39.5 (Apple Git-154)
-In-Reply-To: <20250725223035.52284-1-mohamed@unpredictable.fr>
-References: <20250725223035.52284-1-mohamed@unpredictable.fr>
+Cc: qemu-arm@nongnu.org
+Subject: [PATCH for-10.2 v2 0/3] linux-user/aarch64: Syndrome fixes and
+ enhancements
+Date: Fri, 25 Jul 2025 13:08:46 -1000
+Message-ID: <20250725230849.13026-1-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-ORIG-GUID: Y3Nwe5gY6Y-EMt-2ujlJ2JI8Qi5WF2fL
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwNzI1MDE5NSBTYWx0ZWRfX2u5tg4EbuCmw
- 5haT47H/nH0JuMCSFAw8UgbKMVV5XitHC5f1UmuKlP4iJZLdIxshkmMQYTBjIMNYzfznxPogGG3
- PapFfs28q/F2ArQAFi4XoapOL5xI8yn1HkePptCjPog790tBdhQp2PFJQiJN90RRxJ0dWj+kmTX
- cKg6l4Ypxxz9kbCzazzKzWB1dK2ERJvgrWfZEAh7ep40f6MRty17/kTKjJMemJhQrVRncXzKixk
- uZ+qYTE+zLVhBfzD93JNJM1B/h1YWKujqTb5s2dlSs77qgZJU9wD4MuYHg/RlKOsi6jAKQxgY=
-X-Proofpoint-GUID: Y3Nwe5gY6Y-EMt-2ujlJ2JI8Qi5WF2fL
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.9,FMLib:17.12.80.40
- definitions=2025-07-25_06,2025-07-24_01,2025-03-28_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 clxscore=1030
- mlxlogscore=618 mlxscore=0 suspectscore=0 phishscore=0 bulkscore=0
- adultscore=0 malwarescore=0 spamscore=0 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.22.0-2506270000 definitions=main-2507250195
-Received-SPF: pass client-ip=57.103.87.141;
- envelope-from=mohamed@unpredictable.fr; helo=outbound.qs.icloud.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62c;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -91,51 +99,30 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Instead of considering reads there to be fatal, mark it as unimplemented.
+Based-on: 20250725175510.3864231-1-peter.maydell@linaro.org
+("[PATCH v2 for-10.1 0/3] linux-user/aarch64: Fix SME/SME2 signal frame handling")
 
-This is to allow experimentation on using configurations other than the Apple vGIC.
+Changes for v2:
+  - Split out syndrome handling from cpu_loop (pbo)
+  - Enumerate all exception codes and document them.
+    Include code for several cases missed by v1.
 
-Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
----
- target/arm/hvf/hvf.c | 10 ++++++++++
- 1 file changed, 10 insertions(+)
+The FIXME in patch 2 suggests the whole patch set wait for 10.2.
 
-diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index f5b82cdce1..c3df7e07e8 100644
---- a/target/arm/hvf/hvf.c
-+++ b/target/arm/hvf/hvf.c
-@@ -299,6 +299,7 @@ void hvf_arm_init_debug(void)
- /* EL2 registers */
- #define SYSREG_CNTHCTL_EL2    SYSREG(3, 4, 14, 1, 0)
- #define SYSREG_MDCCINT_EL1    SYSREG(2, 0, 0, 2, 0)
-+#define SYSREG_CNTP_CVAL_EL0   SYSREG(3, 3, 14, 2, 2)
- 
- #define WFX_IS_WFE (1 << 0)
- 
-@@ -1398,6 +1399,12 @@ static int hvf_sysreg_read(CPUState *cpu, uint32_t reg, uint64_t *val)
-     case SYSREG_CNTHCTL_EL2:
-         assert_hvf_ok(hv_vcpu_get_sys_reg(cpu->accel->fd, HV_SYS_REG_CNTHCTL_EL2, val));
-         return 0;
-+    case SYSREG_CNTP_CTL_EL0:
-+        qemu_log_mask(LOG_UNIMP, "Unsupported read from CNTP_CTL_EL0\n");
-+        return 0;
-+    case SYSREG_CNTP_CVAL_EL0:
-+        qemu_log_mask(LOG_UNIMP, "Unsupported read from CNTP_CVAL_EL0\n");
-+        return 0;
-     case SYSREG_MDCCINT_EL1:
-         assert_hvf_ok(hv_vcpu_get_sys_reg(cpu->accel->fd, HV_SYS_REG_MDCCINT_EL1, val));
-         return 0;
-@@ -1718,6 +1725,9 @@ static int hvf_sysreg_write(CPUState *cpu, uint32_t reg, uint64_t val)
-          */
-         qemu_log_mask(LOG_UNIMP, "Unsupported write to CNTP_CTL_EL0\n");
-         return 0;
-+    case SYSREG_CNTP_CVAL_EL0:
-+        qemu_log_mask(LOG_UNIMP, "Unsupported write to CNTP_CVAL_EL0\n");
-+        return 0;
-     case SYSREG_OSDLR_EL1:
-         /* Dummy register */
-         return 0;
+
+r~
+
+
+Richard Henderson (3):
+  linux-user/aarch64: Split out signal_for_exception
+  linux-user/aarch64: Check syndrome for EXCP_UDEF
+  linux-user/aarch64: Generate ESR signal records
+
+ linux-user/aarch64/cpu_loop.c | 153 +++++++++++++++++++++++++---------
+ linux-user/aarch64/signal.c   |  34 +++++++-
+ 2 files changed, 148 insertions(+), 39 deletions(-)
+
 -- 
-2.39.5 (Apple Git-154)
+2.43.0
 
 

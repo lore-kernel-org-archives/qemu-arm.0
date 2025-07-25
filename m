@@ -4,76 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83028C87FCE
-	for <qemu-arm@archiver.kernel.org>; Fri, 25 Jul 2025 17:22:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B1A0C87FCE
+	for <qemu-arm@archiver.kernel.org>; Fri, 25 Jul 2025 17:41:38 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ufM7O-0005oH-Kv; Fri, 25 Jul 2025 13:22:02 -0400
+	id 1ufMPw-0000Sf-I4; Fri, 25 Jul 2025 13:41:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ufM5B-0002nQ-1y
- for qemu-arm@nongnu.org; Fri, 25 Jul 2025 13:19:45 -0400
-Received: from mail-yb1-xb32.google.com ([2607:f8b0:4864:20::b32])
+ id 1ufMPq-0000Pl-OI
+ for qemu-arm@nongnu.org; Fri, 25 Jul 2025 13:41:06 -0400
+Received: from mail-yb1-xb35.google.com ([2607:f8b0:4864:20::b35])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ufM59-0006oT-3f
- for qemu-arm@nongnu.org; Fri, 25 Jul 2025 13:19:44 -0400
-Received: by mail-yb1-xb32.google.com with SMTP id
- 3f1490d57ef6-e8d7122c3a5so2059640276.1
- for <qemu-arm@nongnu.org>; Fri, 25 Jul 2025 10:19:42 -0700 (PDT)
+ id 1ufMPm-0005cL-JA
+ for qemu-arm@nongnu.org; Fri, 25 Jul 2025 13:41:06 -0400
+Received: by mail-yb1-xb35.google.com with SMTP id
+ 3f1490d57ef6-e8d707b9bc2so1938134276.3
+ for <qemu-arm@nongnu.org>; Fri, 25 Jul 2025 10:41:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1753463981; x=1754068781; darn=nongnu.org;
+ d=linaro.org; s=google; t=1753465260; x=1754070060; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=+AOLPPXVd4dLYqDyvaOFlS8EsXEms8ZuY+ijCYuOb4Y=;
- b=LZxsraRxBMlamMGOl8mXYTpzMuf4aDahtBM/tzCvRG7/KySSjDEGHELcIwqomJ5tzK
- ge3PXfeLL4Va/WfkTHeakK6Fnhf8Rc25O0CxZBVBrl9H1zqWSDYkbDcF47VpYYmUH4xn
- hjPhtddZXPT+e5xSbyHE9Ny3lzPpX426GDaYsCsl3LtQwRj5jNDKdKuAwRy1+ox91wPJ
- Uk+kgQzhCaTNQwr58Z3KnEJ3OtRRk97id11AH4gApa6/uyefOyTHLvWObPdMKhtg9CZ4
- gRmy6BKWSugyJ7tFVLhX7pNkTXaucsAnNlS11NBDOZqmIMpnOrv/8fWDoNDb8pO0F+TD
- TgfQ==
+ bh=6ptGeKefNfVsGvOWbsC6afkNZAVEXj4XDKjGFCrdbOI=;
+ b=mXdeAOt68U4lrpbqzEHWDel/YQ/Oudud9FN87XVngWDuVIk41sRs44SdnqbJ+mgBYi
+ 9KHFVYFNUb4Pq/5uGsIJKN9usxJFxs/dbJ3Z+tOv5pb+VWtvQSII0aTyfIHkx9bkF82n
+ Am0itTrTizDDFlvdmx9bTq4fmjQaNDfQRXPKwax6cLQ/iLKSvAwEHh86cjNXbbU0rg8d
+ VX2ME4xrmgV8ROmRBZZVrFfuUTXZc9l0ksvAQFTLXJgq6Ymx6jeHxoO0CEtwc4wIUN32
+ jGARXzGi/vTtEjGllfApUkob0SoVEKLMwMnfXEv9h4AQZGqGFwhBjmr3nbUZyi9HFwtX
+ hOeQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1753463981; x=1754068781;
+ d=1e100.net; s=20230601; t=1753465260; x=1754070060;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=+AOLPPXVd4dLYqDyvaOFlS8EsXEms8ZuY+ijCYuOb4Y=;
- b=TDHpL2tCQRzRjF0j3+/m6sCTN1A6OcaSH1VH36GciyoDoZDymLwFDIUqFrVd6Z+2aW
- QqxSklUE/GbhAHZS17Whsz7Jf+5lJmRSGbw4XqNov9Wc4rm/qYgkrBVlmr0yIZWY8HAR
- 5dnERg7X3QIxMolc7D//bzplEhDJJg6GCHsNHUr6kyqJKS+QpgytjaJfBAW9NHiHkGui
- K8x3JPvW1o25N3j1+3fdijE2qPT9dU3m2Bd6gSVlNz4wj7/C8A8GMHD63UuiCPF0dM5o
- d772wr51PCeYHlVHA+sOsHci6p0IWN5shmbzHPYqG+BA5cCbW9ThV17DMfZQBacGqB/j
- B0Vg==
-X-Gm-Message-State: AOJu0YyryGKzc7G0+V5KBXZzluWrFYVv4mWoQ03/IEq3J2Zm5VA+vdq+
- +IOLwd76kJgXcx5L2y3odChM3FdYdPQHuHQJAmElB23le5j5X+77oZwRhQE7kvHQMS8e7waMpEZ
- 6woVE6WKU0u4jKjvgaKstHq4TN7RhFuCHddXRYNC8vQ==
-X-Gm-Gg: ASbGncvzNguUAAd1RwQ5Tk1AORyKbi6a3rpPfh7xKSPnZ0HnKIoWgb5dZG1Z6I6KMaT
- /R/bcURwcVccoJav3P7UkzeqtZxIw6PpiacQKZbJveJ1GDfmpN6rrawKa5tmnr36vwDEscPSzf0
- yjvTQ+U7i3qjhbNy43wYTT88jWW8eAZdAD9McAtO3sj40ez7bISZeSX5UpaXgUT92kwqGGGXbgY
- fNb6yZw
-X-Google-Smtp-Source: AGHT+IGy6sG9fpW3pNh1viVVOXDpIU8CFgNZJDEMW8s8lIj71W9SG2GPe10Rop+ZzT3DhI96mha3lQbv6Wdk+Jy6nRg=
-X-Received: by 2002:a05:6902:4810:b0:e8d:cf0d:2d2c with SMTP id
- 3f1490d57ef6-e8df0fbc67dmr3160531276.0.1753463981462; Fri, 25 Jul 2025
- 10:19:41 -0700 (PDT)
+ bh=6ptGeKefNfVsGvOWbsC6afkNZAVEXj4XDKjGFCrdbOI=;
+ b=EFn2NYhVh5avg01yolehi4GgAIgPtlZGwOs75xsAtqT5PsNlUAWBMWO3l0B5wsJC2D
+ qJJ8lZs9YzVA3IHGP3m27J9LGd8v6D6NMm/X6Ly14hQhHpjLGXLT8lXGyi4MHnIxo+JY
+ Tmmac+Waq800vTKFD7YviQ/Cq6lvIp/vGhd2Ki/o6MJCkZx3fIFR4G1tRZ0P6C7tx0t3
+ YMDWdQve6Gz7rb8QVJh8hb3/WwdHa/jApv9xTHxqMJ+N0LUVerfxRlLdW/0CoUkqufgy
+ QzgRZY/0PypYXEsWnKTc2V+GNzwPHWnjHF6JStmtTZnk7eRMMRKJjcvfpXrwci81OvJa
+ ltxA==
+X-Gm-Message-State: AOJu0Yz5n8sfeMa2KrJhrYrS18CktJOHR+MBIHfyqmwI9Ubu3oIcFAMN
+ 7PYYops8R/JKyz7VckOloSnd5xoe8na7RFU0fMwLzOd2kEvyMOkoNL5gTMKL89XabRdSi7QC6ml
+ zk1cqqLW/tqy75E493eILcRm7TIpo55mac4NkIaH12Q==
+X-Gm-Gg: ASbGncsHaQZ1B4lNwrVFWh8kq4R4EqfgNPgsCmYlolE59LteM1Wr1k7X6eFJxFzfI4K
+ lvRzqzhZXP9E02SI777k54xbU5NiDRatIJ6QPyAv/pmRf2vP+2m0IQBu7nOR//2apmiD+SiD5dC
+ WmBWO+1H1c10hh6V+NWPxy2HeZgEhz+r0kFQ3JXUJPdE0whfJHCYzoiNTlCvBy9qdzrTy4H4p/2
+ hS79CLo
+X-Google-Smtp-Source: AGHT+IHESCqJn1NoZf6mIydjYRdyvvCbq6mHxkbsJ6RuQt3AbFAtMuX3hjsjmeHAYS8azB/BqiJ0uPalEl3lwwndAls=
+X-Received: by 2002:a05:690c:688e:b0:70e:7503:1180 with SMTP id
+ 00721157ae682-719e329b188mr34111057b3.1.1753465260377; Fri, 25 Jul 2025
+ 10:41:00 -0700 (PDT)
 MIME-Version: 1.0
 References: <20250725142240.3760452-1-peter.maydell@linaro.org>
- <20250725142240.3760452-3-peter.maydell@linaro.org>
- <f747d280-6d43-4672-9ebe-14151c852cdb@linaro.org>
-In-Reply-To: <f747d280-6d43-4672-9ebe-14151c852cdb@linaro.org>
+ <20250725142240.3760452-2-peter.maydell@linaro.org>
+ <0b0882e6-906e-4a76-98cf-91c9284c4a52@linaro.org>
+In-Reply-To: <0b0882e6-906e-4a76-98cf-91c9284c4a52@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 25 Jul 2025 18:19:29 +0100
-X-Gm-Features: Ac12FXyGu9JueBu34DDmehDlbAaDhzXyK3OvKXUIeLrlG6_hfrnaVkNqX_kTwcw
-Message-ID: <CAFEAcA_h6p12cZ3xKYVUC7JASRRd4j1H8mMVbmqMk8ApeYdCuA@mail.gmail.com>
-Subject: Re: [PATCH for-10.1 2/3] linux-user/aarch64: Support TPIDR2_MAGIC
- signal frame record
+Date: Fri, 25 Jul 2025 18:40:48 +0100
+X-Gm-Features: Ac12FXyVw8GKj3FuuJbg2CNAIghMs0ewFNXOhAsFMRQ9FjKUq8LonAj-_NUMKzM
+Message-ID: <CAFEAcA9eH=n+uR2EupfUFNa5TacMHL=8XdSPdQ1nGw5ctuFaQA@mail.gmail.com>
+Subject: Re: [PATCH for-10.1 1/3] linux-user/aarch64: Clear TPIDR2_EL0 when
+ delivering signals
 To: Richard Henderson <richard.henderson@linaro.org>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
  Laurent Vivier <laurent@vivier.eu>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b32;
- envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb32.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b35;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb35.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -96,79 +96,36 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, 25 Jul 2025 at 17:39, Richard Henderson
+On Fri, 25 Jul 2025 at 17:46, Richard Henderson
 <richard.henderson@linaro.org> wrote:
 >
 > On 7/25/25 04:22, Peter Maydell wrote:
-> > FEAT_SME adds the TPIDR2 userspace-accessible system register, which
-> > is used as part of the procedure calling standard's lazy saving
-> > scheme for the ZA registers:
-> >   https://github.com/ARM-software/abi-aa/blob/main/aapcs64/aapcs64.rst#66the-za-lazy-saving-scheme
-> >
-> > The Linux kernel has a signal frame record for saving
-> > and restoring this value when calling signal handlers, but
-> > we forgot to implement this. The result is that code which
-> > tries to unwind an exception out of a signal handler will
-> > not work correctly.
-> >
-> > Add support for the missing record.
-> >
-> > Cc: qemu-stable@nongnu.org
-> > Fixes: 78011586b90d1 ("target/arm: Enable SME for user-only")
-> > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> > ---
-> >   linux-user/aarch64/signal.c | 46 +++++++++++++++++++++++++++++++++++--
-> >   1 file changed, 44 insertions(+), 2 deletions(-)
+> > A recent change to the kernel (Linux commit b376108e1f88
+> > "arm64/fpsimd: signal: Clear TPIDR2 when delivering signals") updated
+> > the signal-handler entry code to always clear TPIDR2_EL0.
 >
-> Oh my.  I spent yesterday working on this and other signal handling fixes.  Though from a
-> FEAT_GCS starting point, so I still hadn't seen the clear tpidr2 on signal delivery change.
+> Ah, I missed seeing that.
 >
->
-> > +static void target_setup_tpidr2_record(struct target_tpidr2_context *tpidr2,
-> > +                                       CPUARMState *env, int size)
-> > +{
-> > +    __put_user(TARGET_TPIDR2_MAGIC, &tpidr2->head.magic);
-> > +    __put_user(sizeof(struct target_tpidr2_context), &tpidr2->head.size);
-> > +    __put_user(env->cp15.tpidr2_el0, &tpidr2->tpidr2);
-> > +}
->
-> Drop the unused size argument.
->
-> > +static bool target_restore_tpidr2_record(CPUARMState *env,
-> > +                                         struct target_tpidr2_context *tpidr2)
-> > +{
-> > +    if (!cpu_isar_feature(aa64_sme, env_archcpu(env))) {
-> > +        return false;
-> > +    }
-> > +    __get_user(env->cp15.tpidr2_el0, &tpidr2->tpidr2);
-> > +    return true;
-> > +}
->
-> The sme check is better placed in target_restore_sigframe ...
->
-> > +        case TARGET_TPIDR2_MAGIC:
-> > +            if (tpidr2 || size != sizeof(struct target_tpidr2_context)) {
-> > +                goto err;
-> > +            }
->
-> ... here.  Then target_restore_tpidr2_record has no failure modes and can return void ...
->
-> > @@ -497,6 +530,9 @@ static int target_restore_sigframe(CPUARMState *env,
-> >       if (za && !target_restore_za_record(env, za, za_size, &svcr)) {
-> >           goto err;
-> >       }
-> > +    if (tpidr2 && !target_restore_tpidr2_record(env, tpidr2)) {
-> > +        goto err;
+> >       /* Invoke the signal handler with both SM and ZA disabled. */
+> >       aarch64_set_svcr(env, 0, R_SVCR_SM_MASK | R_SVCR_ZA_MASK);
+> > +    if (cpu_isar_feature(aa64_sme, env_archcpu(env))) {
+> > +        env->cp15.tpidr2_el0 = 0;
 > > +    }
 >
-> ... which simplifies this.
+> You can omit the IF and unconditionally clear the memory.
+>
+>
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-Mmm. I wasn't sure to what extent we were trying to follow the
-kernel signal.c (which defers essentially all error checks including
-sizes to its restore_*_context functions, so that the "switch on
-type of record" function is pretty much the same code for each
-block, whether it's a complicated variable size one or a simple
-fixed record.
+Thanks -- just noticed also that it would be reasonable to
+update the comment:
+
++    /*
++     * Invoke the signal handler with a clean SME state: both SM and ZA
++     * disabled and TPIDR2_EL0 cleared.
++     */
+
+since all three things are SME related.
 
 -- PMM
 

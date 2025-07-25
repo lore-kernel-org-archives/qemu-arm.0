@@ -4,83 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E06B2C87FCA
-	for <qemu-arm@archiver.kernel.org>; Fri, 25 Jul 2025 14:24:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9ABDC87FCA
+	for <qemu-arm@archiver.kernel.org>; Fri, 25 Jul 2025 14:38:52 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ufJKH-0000nr-3P; Fri, 25 Jul 2025 10:23:09 -0400
+	id 1ufJZ0-0004sy-TT; Fri, 25 Jul 2025 10:38:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ufJJv-0000Mp-UK
- for qemu-arm@nongnu.org; Fri, 25 Jul 2025 10:22:48 -0400
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+ (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
+ id 1ufJYu-0004hv-6v
+ for qemu-arm@nongnu.org; Fri, 25 Jul 2025 10:38:16 -0400
+Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ufJJt-0006Rc-Mm
- for qemu-arm@nongnu.org; Fri, 25 Jul 2025 10:22:47 -0400
-Received: by mail-wr1-x42b.google.com with SMTP id
- ffacd0b85a97d-3a4fd1ba177so1448691f8f.0
- for <qemu-arm@nongnu.org>; Fri, 25 Jul 2025 07:22:45 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
+ id 1ufJYs-0002Ch-Ga
+ for qemu-arm@nongnu.org; Fri, 25 Jul 2025 10:38:15 -0400
+Received: by mail-pl1-x629.google.com with SMTP id
+ d9443c01a7336-23c8a505177so18407075ad.2
+ for <qemu-arm@nongnu.org>; Fri, 25 Jul 2025 07:38:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1753453364; x=1754058164; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=ykNmFy+pOc7x1JD04m7Jgyqi4BaE5vw5X8kVsc3ZDDI=;
- b=NRfrj/u6WOBAYCVNqaAWrvQ9q6spfYV/ytYcDcWXgsvBJCN4T+hFojwyvcrZN+/aO/
- Es89r1IKBxC9su4VGZcmKRcn+KiiFRa1z/IW/J0PfYTlz8hJuGnBHeSlRe8JT1P7hgm5
- rp+N3heU4fFwtC90iN54ha+b7Epvoqi9pa56AWBRjOQNrF/vuojelOPpGXNY3Khql0Xl
- C7kkNbxnoqPmsEK73/17QCT9j/+zPWPdTU3quivwt4bFthkT7Ouz1qafiXNNAOfaNt3m
- exD/WT0c4Pmjybyw3oomwP9XI9TiLrVxGSAlAtPKH0CEOAajOPVevh/b5DyTOji2yovt
- WRjw==
+ d=linaro.org; s=google; t=1753454292; x=1754059092; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=/Wz2BNiYoiP5762BvBbM2ntZFH1GD69odO+hoPGRlsI=;
+ b=UCVIViausw6fnuZkhCYhVBBLt0O77JU1uQoEnHb94NqS/1+/vVWHkagkhHySngV0KQ
+ X5VplObF3jB1pIO+dVCbj3IVwv5cBXI8MHnh//axEyyENp+r8+HmAXj/wmNBxbzMHYKL
+ pHmNkZCNB40K+rz5qSk2Z3eZesgxOAb9FN/BM0josIV5Bl9zCgAQgQ1jZv52lPZinfOr
+ 1vBahPWzj58anIgyjEFpnUOzVufEKq4uAtLy6KWJpbZklxcNnzfRbsP7TFNnsbnM3Not
+ j0ajdNDaR+o5x2FSfsTV0vnjZLUcWajp+R/y/wu1IkQH5ytnMa/WVhzIyR7oTQLG0ehr
+ ra2g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1753453364; x=1754058164;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=ykNmFy+pOc7x1JD04m7Jgyqi4BaE5vw5X8kVsc3ZDDI=;
- b=gWwl3YjW86gW6TNHujY7diwd75esufTQBekLj5nVj3UBLJ50D1W032iZUoghTnuoNC
- WCT47RkeEnRxvtXcEKIhz9pBkL+T5Y1ZggTicIdBMS9pQ1Gf09izavW8VEAL8k90AL6l
- L4VNsEDj6DRfTV1GhSd6nayaUDm/6rL+fDz8D13owAq3A8UJWpZm8rl5jcC0GHLdcEPY
- 44rpLGqB4Qi9lHFToKBCA96jXallOUST4PAqsOOTPiXWgJlFT9pwJXYhO6WaSIeFc3jV
- m8k6HoZiuzqxTC9paabFLq+BKedHgcgokgASJ6mVgIa8mnjrSr1qZf+jDn2Pr4VeXkoz
- YzPQ==
-X-Gm-Message-State: AOJu0YyO0Gdx7U0ufVC4BxXfxoXEz0OcJPMyBvYBQ+LaZmsV1sjAIfDm
- sJmDkALr9kxPBZ8bKoW/9kfeVze3UxlasXwoCG50Aes8IJxJcXfr+lURIwom+JZZChKhvphYoDG
- 6I0aC
-X-Gm-Gg: ASbGncudPZb5HN0WNKueNkUOKzEaWqIAksXszjYsD7/cXJgDTDqDiKen4fTItPXZRbd
- 785jCP6pm8/d9fF1Q5ybt1ZG97T/EIEHNjd0uQ75+BlPMoKLp8VOCvI+jljMbyAHCbfhQBYXu0C
- WUQXjci2Kuu5GxpzDIkmNcsOQTWTU+Xo6J4MtOA6DJdkmh78x4ljOTBbj8CtpLTLX2VLYd5Q8bS
- y4DXaC3rpcMdllZ3xtdbKOXEkQwp/TfrNK+DfaNQU2d1cRuQro/+3Dvk0zBM4qKSOgyNnwfGVuY
- Wo73IXKz8X8rOTnjMkgjIFG3kIZBmpqrd/NspzmsPHiFpwERN457QxGJdl7hXh7VncNPquQEoBi
- wGLln8WCX3G8ZSkWL1diPctCKGxny
-X-Google-Smtp-Source: AGHT+IE5ha+ioBRABL/EzlXJGYoKgf5uPNcbCCSMyuv9hxhXtm6enS92ojhAlrs7TmkYBU/M6oT7NA==
-X-Received: by 2002:a05:6000:40ca:b0:3b6:162a:8e08 with SMTP id
- ffacd0b85a97d-3b77123f244mr5341767f8f.12.1753453363895; 
- Fri, 25 Jul 2025 07:22:43 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+ d=1e100.net; s=20230601; t=1753454292; x=1754059092;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=/Wz2BNiYoiP5762BvBbM2ntZFH1GD69odO+hoPGRlsI=;
+ b=bFDkcPtTQy2f754tabyBbtrVPGwd/SuzsL4Md3g3KgYrpuxNFWNvGTF+tUV1ZKWFHE
+ nwOqugvTdLBajES2JFPRlWYvl7hwEoknPBjtTrPQoD8A1f+y6HodJCiEouR6LRmHotA6
+ 3KMaSpX7l3heGqYhQZuJ/g/lvOsHTZEUaL/V+8yI/ITMG46bZ+IjBAYW53xHPsM9WZQZ
+ FVS2rRpJJQaKG+H7KoDB4jtBauM5BGEpWPaI5tGYv5bmfo7fzjm1Y0A6P1pcqH9IIXHA
+ MhJflJUWcZEj7KJhHvzg/w5GeurYNFt2jonZbSLIlEPVFl34QtiOKDAFlVap98ZnAU7N
+ jerw==
+X-Gm-Message-State: AOJu0YzqwxezpmPvHljgJXNCPaU2K0bc1aA7nQkWeWEE8cxqbmcwA/qe
+ T/bKQWGBpYODVSDB/xCnMjgSvJabExERpz671bpX1zt6xRFptWiKr8bRrHH/lRLG+Uc=
+X-Gm-Gg: ASbGncuFlUqEpv/hv5cNni4HJ8pcbQZe8ZMCYTcS42SxUdft2daURSnVSuOpGYc017V
+ 3AOeqpj75I92uWIEzkiT3RJDTD1V9/wtPte3dPk72R/fzZVYCnvALN0OBnmNLk2J73mHP8UABa9
+ dqRiUDGYyHJ1uoZuKyBDuuswf+zxIQQ8E0g1vKz/FtEhhFuc/x4wnxZp21TQZOR8eI2+E6Obw/M
+ k0JZYIXrbSHkxEibxcT4X207h6Zlw2w2LPBASb/eW9LUXC/8mu4ID3SLvT/V7lrex96oB68FKK4
+ M5PCVSizi6yr+7dISw7GwRWeGBKDPfIHBFg6FUBUsqRIUO5zGQ0jnpxmmb3Fhux3K2TvJ8UWpAg
+ VPAH9PFkY7WXg92l9AP8Jr0wObY1Pm4fBDg==
+X-Google-Smtp-Source: AGHT+IHXqgdV1VBd7n3lEXtGGNKU6MxbLxfcrfdGyogWou0f57/FPlDAqqqnmKNAeFvScFwg6Mu5Wg==
+X-Received: by 2002:a17:903:1aee:b0:236:6fbb:a5f3 with SMTP id
+ d9443c01a7336-23fb30e8023mr33117895ad.40.1753454292454; 
+ Fri, 25 Jul 2025 07:38:12 -0700 (PDT)
+Received: from [192.168.0.102] ([187.75.37.236])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3b778eb2bccsm67065f8f.7.2025.07.25.07.22.42
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 25 Jul 2025 07:22:43 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: Richard Henderson <richard.henderson@linaro.org>,
- Laurent Vivier <laurent@vivier.eu>
-Subject: [PATCH for-10.1 1/3] linux-user/aarch64: Clear TPIDR2_EL0 when
- delivering signals
-Date: Fri, 25 Jul 2025 15:22:38 +0100
-Message-ID: <20250725142240.3760452-2-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250725142240.3760452-1-peter.maydell@linaro.org>
-References: <20250725142240.3760452-1-peter.maydell@linaro.org>
+ d9443c01a7336-23fa475f3a6sm39036565ad.6.2025.07.25.07.38.10
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 25 Jul 2025 07:38:12 -0700 (PDT)
+Message-ID: <aad0c640-b736-4f5a-a6cf-e5459f60630d@linaro.org>
+Date: Fri, 25 Jul 2025 11:39:09 -0300
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] target/arm: Clean up of register field definitions
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org, peter.maydell@linaro.org
+Cc: qemu-arm@nongnu.org, alex.bennee@linaro.org
+References: <20250725014755.2122579-1-gustavo.romero@linaro.org>
+ <17254b66-4902-4ee0-8c9a-4082146255e3@linaro.org>
+Content-Language: en-US
+From: Gustavo Romero <gustavo.romero@linaro.org>
+In-Reply-To: <17254b66-4902-4ee0-8c9a-4082146255e3@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42b.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::629;
+ envelope-from=gustavo.romero@linaro.org; helo=mail-pl1-x629.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -103,51 +103,71 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-A recent change to the kernel (Linux commit b376108e1f88
-"arm64/fpsimd: signal: Clear TPIDR2 when delivering signals") updated
-the signal-handler entry code to always clear TPIDR2_EL0.
+Hi Phil,
 
-This is necessary for the userspace ZA lazy saving scheme to work
-correctly when unwinding exceptions across a signal boundary.
-(For the essay-length description of the incorrect behaviour and
-why this is the correct fix, see the commit message for the
-kernel commit.)
+On 7/25/25 10:18, Philippe Mathieu-Daudé wrote:
+> Hi Gustavo,
+> 
+> On 25/7/25 03:47, Gustavo Romero wrote:
+>> Clean up the definitions of NSW and NSA fields in the VTCR register.
+>> These two fields are already defined properly using FIELD() so they are
+>> actually duplications. Also, define the NSW and NSA fields in the
+>> VSTCR register using FIELD() and remove their definitions based on VTCR
+>> fields.
+>>
+>> Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
+>> ---
+>>   target/arm/internals.h | 8 +++-----
+>>   target/arm/ptw.c       | 8 ++++----
+>>   2 files changed, 7 insertions(+), 9 deletions(-)
+>>
+>> diff --git a/target/arm/internals.h b/target/arm/internals.h
+>> index c4765e4489..052f7b641c 100644
+>> --- a/target/arm/internals.h
+>> +++ b/target/arm/internals.h
+>> @@ -113,11 +113,6 @@ FIELD(DBGWCR, WT, 20, 1)
+>>   FIELD(DBGWCR, MASK, 24, 5)
+>>   FIELD(DBGWCR, SSCE, 29, 1)
+>> -#define VTCR_NSW (1u << 29)
+>> -#define VTCR_NSA (1u << 30)
+>> -#define VSTCR_SW VTCR_NSW
+>> -#define VSTCR_SA VTCR_NSA
+>> -
+>>   /* Bit definitions for CPACR (AArch32 only) */
+>>   FIELD(CPACR, CP10, 20, 2)
+>>   FIELD(CPACR, CP11, 22, 2)
+>> @@ -220,6 +215,9 @@ FIELD(VTCR, NSA, 30, 1)
+>>   FIELD(VTCR, DS, 32, 1)
+>>   FIELD(VTCR, SL2, 33, 1)
+>> +FIELD(VSTCR, SW, 29, 1)
+>> +FIELD(VSTCR, SA, 30, 1)
+>> +
+>>   #define HCRX_ENAS0    (1ULL << 0)
+>>   #define HCRX_ENALS    (1ULL << 1)
+>>   #define HCRX_ENASR    (1ULL << 2)
+>> diff --git a/target/arm/ptw.c b/target/arm/ptw.c
+>> index 561bf2678e..ed5c728eab 100644
+>> --- a/target/arm/ptw.c
+>> +++ b/target/arm/ptw.c
+>> @@ -193,9 +193,9 @@ static ARMMMUIdx ptw_idx_for_stage_2(CPUARMState *env, ARMMMUIdx stage2idx)
+>>           return ARMMMUIdx_Phys_Realm;
+>>       case ARMSS_Secure:
+>>           if (stage2idx == ARMMMUIdx_Stage2_S) {
+>> -            s2walk_secure = !(env->cp15.vstcr_el2 & VSTCR_SW);
+>> +            s2walk_secure = !(env->cp15.vstcr_el2 & R_VSTCR_SW_MASK);
+> 
+> FYI register API provides helper macros:
+> 
+>              s2walk_secure = !FIELD_EX32(env->cp15.vstcr_el2, VSTCR, SW);
+> 
 
-Make QEMU also clear TPIDR2_EL0 on signal entry, applying the
-equivalent bugfix to our implementation.
+Do you know which form is currently preferred? I see that R_<REGNAME>_<FIELD>_MASK is used a lot, .e.g, in helper.c.
 
-Note that getting this unwinding to work correctly also requires
-changes to the userspace code, e.g.  as implemented in gcc in
-https://gcc.gnu.org/git/?p=gcc.git;a=commit;h=b5ffc8e75a8
+Also, even tho the SW field in VSTCR is <= 31, VSTCR is a 64-bit register, so should I really use FIELD_EX32 (which works) or FIELD_EX64 (my first thought would be to use it, i.e. based on the register size, not the field)?
 
-This change is technically an ABI change; from the kernel's
-point of view SME was never enabled (it was hidden behind
-CONFIG_BROKEN) before the change. From QEMU's point of view
-our SME-related signal handling was broken anyway as we weren't
-saving and restoring TPIDR2_EL0.
+Thanks.
 
-Cc: qemu-stable@nongnu.org
-Fixes: 78011586b90d1 ("target/arm: Enable SME for user-only")
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- linux-user/aarch64/signal.c | 3 +++
- 1 file changed, 3 insertions(+)
 
-diff --git a/linux-user/aarch64/signal.c b/linux-user/aarch64/signal.c
-index d50cab78d83..b4bab7c040d 100644
---- a/linux-user/aarch64/signal.c
-+++ b/linux-user/aarch64/signal.c
-@@ -668,6 +668,9 @@ static void target_setup_frame(int usig, struct target_sigaction *ka,
- 
-     /* Invoke the signal handler with both SM and ZA disabled. */
-     aarch64_set_svcr(env, 0, R_SVCR_SM_MASK | R_SVCR_ZA_MASK);
-+    if (cpu_isar_feature(aa64_sme, env_archcpu(env))) {
-+        env->cp15.tpidr2_el0 = 0;
-+    }
- 
-     if (info) {
-         frame->info = *info;
--- 
-2.43.0
-
+Cheers,
+Gustavo
 

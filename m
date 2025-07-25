@@ -4,95 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB38FC87FCA
-	for <qemu-arm@archiver.kernel.org>; Fri, 25 Jul 2025 16:46:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3351BC87FCE
+	for <qemu-arm@archiver.kernel.org>; Fri, 25 Jul 2025 16:47:00 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ufLYA-0007u4-Dl; Fri, 25 Jul 2025 12:45:39 -0400
+	id 1ufLZK-0001N6-Fb; Fri, 25 Jul 2025 12:46:50 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ufLY4-0007pe-BV
- for qemu-arm@nongnu.org; Fri, 25 Jul 2025 12:45:32 -0400
-Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436])
+ id 1ufLZJ-0001MV-NY
+ for qemu-arm@nongnu.org; Fri, 25 Jul 2025 12:46:49 -0400
+Received: from mail-pf1-x42f.google.com ([2607:f8b0:4864:20::42f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ufLY1-0007Z7-3U
- for qemu-arm@nongnu.org; Fri, 25 Jul 2025 12:45:31 -0400
-Received: by mail-pf1-x436.google.com with SMTP id
- d2e1a72fcca58-7490cb9a892so1633213b3a.0
- for <qemu-arm@nongnu.org>; Fri, 25 Jul 2025 09:45:28 -0700 (PDT)
+ id 1ufLZH-0007mZ-Ui
+ for qemu-arm@nongnu.org; Fri, 25 Jul 2025 12:46:49 -0400
+Received: by mail-pf1-x42f.google.com with SMTP id
+ d2e1a72fcca58-7490acf57b9so1736989b3a.2
+ for <qemu-arm@nongnu.org>; Fri, 25 Jul 2025 09:46:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1753461927; x=1754066727; darn=nongnu.org;
+ d=linaro.org; s=google; t=1753462006; x=1754066806; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=HqMiNDfkvMYOuomvAPL/wjINCW5poUXOI2FNYtKyvgw=;
- b=BJ25IwIxHFXEuH0JbWuplr58/K+Byu4qAZjST+5aHtotAdwRZmZ3Lbe+fYBfdFX3cI
- jhQujJvjrKkWbFtXw4HpoTT2xXjPeY2KktNOn+BLEjfG8OTzD10vJzVj7XpDxzBak/8Z
- qw5V29QOtIQaGGZ9LiCAJ2H1q3RBQoiKLhjuLbRqWKrFD+pSl3A/4qGq4LZ6TmMow14a
- ybL0Ad4FW8XXVaGrbefY3gfEeDlFSsPmx936xyVeg52ODy8nvncvd13ZIb0rDGlrxg6O
- bl65sh7db2Bsl9jUqa1aY0bir0LoVPKNSTPMzB6gBf8SxgGc45E7vylEExmNjow8QSMu
- xLDA==
+ bh=BAxqerVC4EqnCfTP/KWr8tsu58fPn536wCloR/aHCng=;
+ b=Ld5cJ4S1ekC08ND3r+xShVFnAdbH00+EzXWK7x2aWzOziUy1aaR8VZ1KXc5ZzYlep8
+ JkCoPjVH++IXyNebWLK0Q1N5jIHoJcB/GEKMKC0Bwuesu8v3ebdsD9qd6wnRRGb1rHeE
+ 0wrU+IAH+a5veLHIeQXbtSoVGZDio8Rg8FeXqWMZfyVPlv7wk0/6rGqUl9jJmN1fW38s
+ cuNrXR+reDDMa4wjNDOJkA7Wa6lYJhPeJ1IeajFy1ImYeBTQftKvChopYh2NVj9K2Nvf
+ uDmAth/rxV+M9Sx4YIFT55e0Av4+CPVuwYgFKYuHAOI3hZnoBQXiCqrlbC5Z0WceV9wp
+ PG3g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1753461927; x=1754066727;
+ d=1e100.net; s=20230601; t=1753462006; x=1754066806;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=HqMiNDfkvMYOuomvAPL/wjINCW5poUXOI2FNYtKyvgw=;
- b=UtM7KGvAp+uEiYj9/WP2zYFdfe42oWycCSpQicDzg8AVmuqpyaS19tq+y59W49ayVt
- PaTyGedsFcZ5f3mewBFos2/qpAp7sDGgAhZ3zGxRLQ5a6Yl7RDYJIOQjAqO9OHgb2tMf
- zPQ4HGctmWJXrBLdELInm6fxW5yK7v5s8H7Uzc1u8+D4OeR2c0bF7+aYZKLdVt3xKV0Q
- CdB2Y7EWdk+dOzSo475C5Osg3U1IRxZ2SjBmYTgn/9+Qnn8Yn4QPNTTiY3M45R2E+25Y
- TuAd7baAbauBiashsz9yaKWLf+ypo9GjSg9MaAQMTv5IWsF2dm0QFO3Cl0aWVnxb3OLh
- GN1w==
+ bh=BAxqerVC4EqnCfTP/KWr8tsu58fPn536wCloR/aHCng=;
+ b=suBsGngz6fEbVd6yhhDVxI4UTdQI7gzndz4v4+nmAnS2QG3w5jhY0+zomG1zGCLKiO
+ ubnS9s37lWsGcjCPwSjCF0A8I7/PEYbRS3oEz2Ov4rvYkAC2QYy3pa02vEdJVkPF/67f
+ RxjprG04tq4fXuyzwdL9JKQ3HsOX21MsO68+m5izCZX6bn+aVMTp1BnOdkEukSP8HQyZ
+ dk2iz0hcjTq86nZzXzeAQ8ECTgR/pA+tyhN64z4+jJ45PUfzfH+jy6ESwQskstZ9Dh8z
+ FX8BEZlqixATsYiZILBbZm30nTts1ReMH6r/v3JDopyPSiLiObzGcl2hIpA3mkGYw0oB
+ mTww==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVkssYsjdNPXa6GIa5lK1CbmbyJMOD3jln4XDMCTUiHO1wPd8lHCGBtxD5+gnX15ZRxbEvmFUsRbg==@nongnu.org
-X-Gm-Message-State: AOJu0YwYh7lQzOHyq7vkKWgAPxE7deoNaMNMmO66xHY5pUfBYyBfgVjp
- WqNWFCR8ttbkVDwQCLZGb+zNYLJfrOcPqjuZeb201zEY7l0x5ps5CnnkiTCfoVnZe+Jp2yOWDIv
- SoX7A
-X-Gm-Gg: ASbGncvO/+mGfPqDKejmqaMfxiALJPaTKBK34pI9ObdRXGaj61GjYUCjBweBM2Fnf9y
- tQbF8AWCSz7EwVr5oiSovT4OP8k/6JHs0GlPQwX80Kr0eaC3c/DCPIBtnV4CsL8/CLOgyH/lQD+
- uWijCUozpZl8FErWyOW5tUO4QpjDZ+Yv9L5AsPyeTcfehTxgL+NudggCTc0npxohWmd+BkQX6VX
- GarmlBzPnhzCXV7GzKy1yRmrznFDlVncIb6544KdhyxEFawgmdZU6pE77nVCRS8LT65WZ1Bo65G
- pbaDekcuYdCwDjQbNiWlfiYSyxI+xQ9RPf2tfcYwg9vwjfmN6r+tct9iHGXyMVLJl9P/jncWikF
- qeNS2S0MV6AiUJ8b+bE37loXeTtCd05K+WDinM0MnU7yc3SFBwI9XnqJoHq0+9rWSX5D5d2cRqO
- xBrw==
-X-Google-Smtp-Source: AGHT+IHCLjKrdzORXPbZl9RJ0qC6P9MAhci2Y8MqN6UofFavBT6+yszssqBk+tHirgxaqr6iAdX2mQ==
-X-Received: by 2002:a05:6a00:2383:b0:74d:247f:fae4 with SMTP id
- d2e1a72fcca58-7633636aef3mr4303963b3a.4.1753461927019; 
- Fri, 25 Jul 2025 09:45:27 -0700 (PDT)
+ AJvYcCUd2/tBwUx5dN4wPiYq/kMi5BOjm97NLLNskD4mXJuNKQvDupUAHkOw88ycLMJ/EJKCewV6hSqoUg==@nongnu.org
+X-Gm-Message-State: AOJu0Yy/BTzqKSonjZ9nsUpd/bYwEoHMguIK30IXibI+Y3yV8+KCpICX
+ nS43MUaD6JiJ766LG8TgvGMB0D3uDQd68TOzifm6dLEfKwhxO63yYKNrx4bhDi72lS8=
+X-Gm-Gg: ASbGncssGYX7wq+Xtm9IcpPC8EUjW1vcauF9ap/iTHjmev9JfoItT8+6TxImCxknNa2
+ nx2Tb3JC6fmnuQ+TPPFOSFy2Orc4dEuR6LPq4JV3IvkVERYY940bbz6j18ZkEXEaM3/yvUdz7L4
+ 9k7UsuB8RQOnFoKNB25ETuQ3l157Oi/ZGYsdyrM+JsyBKLbUCtnYRTCMDy5Gihob1kOrIzEQpc8
+ bQXdDZYe5bubpruCfcn1nmNcXh/vW6MT1tuW3abCRgOILT/6IOvuf2nFo/9MmWBXWykYeuY7dYh
+ ELKIdCPtIEgj5RihWvhWU7vHO+Bg9EEh5t5nUWvQ/xGzPZVVmnUhYqwZtvHUAU6SxSWr6eqwFh+
+ 49nQLd/BXARgjHiX+LoaEynvTQnM7ACKpk7ec0+QYFig5TDvgPd1ahdqW9hIB2IT1G1j/TQBm+W
+ 4hMA==
+X-Google-Smtp-Source: AGHT+IHsB4gST/hazShvbATqvfVKOxqQO5Sx5qIX2L/eohoa/VwQhtI7CfbhLFedNmFK7n9JpNoXTQ==
+X-Received: by 2002:a05:6a20:7285:b0:215:df90:b298 with SMTP id
+ adf61e73a8af0-23d7015a371mr4381918637.26.1753462006465; 
+ Fri, 25 Jul 2025 09:46:46 -0700 (PDT)
 Received: from [192.168.4.112] (syn-098-150-199-049.res.spectrum.com.
  [98.150.199.49]) by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-7640b4c86afsm110007b3a.115.2025.07.25.09.45.25
+ 41be03b00d2f7-b3f7f67d84esm190985a12.42.2025.07.25.09.46.44
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 25 Jul 2025 09:45:26 -0700 (PDT)
-Message-ID: <13da0e27-1775-48d9-a458-08d18e09b984@linaro.org>
-Date: Fri, 25 Jul 2025 06:45:23 -1000
+ Fri, 25 Jul 2025 09:46:45 -0700 (PDT)
+Message-ID: <0b0882e6-906e-4a76-98cf-91c9284c4a52@linaro.org>
+Date: Fri, 25 Jul 2025 06:46:42 -1000
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH for-10.1 3/3] linux-user/aarch64: Support ZT_MAGIC signal
- frame record
+Subject: Re: [PATCH for-10.1 1/3] linux-user/aarch64: Clear TPIDR2_EL0 when
+ delivering signals
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>
 References: <20250725142240.3760452-1-peter.maydell@linaro.org>
- <20250725142240.3760452-4-peter.maydell@linaro.org>
+ <20250725142240.3760452-2-peter.maydell@linaro.org>
 Content-Language: en-US
 From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20250725142240.3760452-4-peter.maydell@linaro.org>
+In-Reply-To: <20250725142240.3760452-2-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::436;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x436.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42f;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -109,27 +108,22 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 7/25/25 04:22, Peter Maydell wrote:
-> @@ -428,6 +467,33 @@ static bool target_restore_tpidr2_record(CPUARMState *env,
->       return true;
->   }
->   
-> +static bool target_restore_zt_record(CPUARMState *env,
-> +                                     struct target_zt_context *zt, int size,
-> +                                     int svcr)
-> +{
-> +    uint16_t nregs;
-> +    uint64_t *z;
-> +
-> +    if (!cpu_isar_feature(aa64_sme2, env_archcpu(env))) {
-> +        return false;
+> A recent change to the kernel (Linux commit b376108e1f88
+> "arm64/fpsimd: signal: Clear TPIDR2 when delivering signals") updated
+> the signal-handler entry code to always clear TPIDR2_EL0.
+
+Ah, I missed seeing that.
+
+>       /* Invoke the signal handler with both SM and ZA disabled. */
+>       aarch64_set_svcr(env, 0, R_SVCR_SM_MASK | R_SVCR_ZA_MASK);
+> +    if (cpu_isar_feature(aa64_sme, env_archcpu(env))) {
+> +        env->cp15.tpidr2_el0 = 0;
 > +    }
 
-I think this is better placed with case TARGET_ZT_MAGIC.
+You can omit the IF and unconditionally clear the memory.
 
-> +    if (!(FIELD_EX64(env->svcr, SVCR, ZA))) {
 
-Need to check svcr the argument, which has not yet been stored to env.
-You even knew that from the comment before calling this function.  :-)
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
 
 r~

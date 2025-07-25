@@ -4,90 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79F22C87FCE
-	for <qemu-arm@archiver.kernel.org>; Fri, 25 Jul 2025 14:24:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E06B2C87FCA
+	for <qemu-arm@archiver.kernel.org>; Fri, 25 Jul 2025 14:24:30 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ufJKH-0000qW-Gx; Fri, 25 Jul 2025 10:23:09 -0400
+	id 1ufJKH-0000nr-3P; Fri, 25 Jul 2025 10:23:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ufJJx-0000QO-90
- for qemu-arm@nongnu.org; Fri, 25 Jul 2025 10:22:52 -0400
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+ id 1ufJJv-0000Mp-UK
+ for qemu-arm@nongnu.org; Fri, 25 Jul 2025 10:22:48 -0400
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ufJJv-0006Rz-2c
- for qemu-arm@nongnu.org; Fri, 25 Jul 2025 10:22:48 -0400
-Received: by mail-wr1-x42c.google.com with SMTP id
- ffacd0b85a97d-3a6cd1a6fecso1946447f8f.3
- for <qemu-arm@nongnu.org>; Fri, 25 Jul 2025 07:22:46 -0700 (PDT)
+ id 1ufJJt-0006Rc-Mm
+ for qemu-arm@nongnu.org; Fri, 25 Jul 2025 10:22:47 -0400
+Received: by mail-wr1-x42b.google.com with SMTP id
+ ffacd0b85a97d-3a4fd1ba177so1448691f8f.0
+ for <qemu-arm@nongnu.org>; Fri, 25 Jul 2025 07:22:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1753453365; x=1754058165; darn=nongnu.org;
+ d=linaro.org; s=google; t=1753453364; x=1754058164; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=qvG0fxUvz8Y62ReZMLVv2RqS5GQS2D6eRWB6o9INM7U=;
- b=TkbifmxVnGNctKutmms261OHM96jFnlne8IRJYCPotU8C/qBIsDrRc1EYk6ymYJ+vJ
- L8TN6m8n5ZPe1eyE9icCFnvmBw0zwmy772iLoyYlOvo7DEcTqr/q4HbmLvgSiLTqGB1Q
- Xdd8Eo/Ff4R/4e0DTqT2oKdZTsonYivFdfw3uXhxOy8DEOQwibIg6+c9Op8chtt7Mahb
- cV5tvZfhQBpL6UemUG73IocJMY7mYUjUR7aqaIWqtAEUaXKrDwf6ZhPHhf5CaugY/+k+
- Q/FeRuNWbzS/FRDBhjM+mTzNMGKCbtmuniOu9qzcnfkc+QvxsundpeFmW55TuT2Mkoev
- lWjQ==
+ bh=ykNmFy+pOc7x1JD04m7Jgyqi4BaE5vw5X8kVsc3ZDDI=;
+ b=NRfrj/u6WOBAYCVNqaAWrvQ9q6spfYV/ytYcDcWXgsvBJCN4T+hFojwyvcrZN+/aO/
+ Es89r1IKBxC9su4VGZcmKRcn+KiiFRa1z/IW/J0PfYTlz8hJuGnBHeSlRe8JT1P7hgm5
+ rp+N3heU4fFwtC90iN54ha+b7Epvoqi9pa56AWBRjOQNrF/vuojelOPpGXNY3Khql0Xl
+ C7kkNbxnoqPmsEK73/17QCT9j/+zPWPdTU3quivwt4bFthkT7Ouz1qafiXNNAOfaNt3m
+ exD/WT0c4Pmjybyw3oomwP9XI9TiLrVxGSAlAtPKH0CEOAajOPVevh/b5DyTOji2yovt
+ WRjw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1753453365; x=1754058165;
+ d=1e100.net; s=20230601; t=1753453364; x=1754058164;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=qvG0fxUvz8Y62ReZMLVv2RqS5GQS2D6eRWB6o9INM7U=;
- b=jEVYm5iA9TMpV/TKZgcGs9LLtYZMp/xoWX4bJC7uoegs4DmSZjmhm+NAOlfHmeivrp
- Ymt+3vSsvdUOHmB/5NNbnt3Zc3Eqbnxlq52vVAfNoNvsvAHqtjVQiUFp1280sb1T74sR
- F7taOuk/Jy+P2WXhh8ZlCzk1e0O+GPwQqKyvG0BI5PZxiII1qCEFAoGJWluJnu28/xKx
- NkcxQ8gwwR55HEqPIaVHhJjaziq+cZl9jBrOda38oW7jHUjwUr+vsvJz1EsuJqul9QVQ
- XkzKmw5iBbsGP4agGjef61zJQBZeE8ENNMAObt9wH3gG6cStnLDsVTxs+KEm6HalppO5
- Z+rA==
-X-Gm-Message-State: AOJu0YwvtnoR2ZCqajbHT3jEuXjZGkbLz59emW/iFSkLFc7vgduC7623
- EF/PzBqCzL1LYcAc553+1ptegHdE/AdXWnce6wSkIH3I1itPFJ90zyMjriKmUCQPgMkWQFHkZd5
- P3dhn
-X-Gm-Gg: ASbGncuYlVzfps//bq8z0lTS2cW85Rr4UjQAmkXdL4hYvrD6SoCbaWBm5hELa23aoN4
- U51rxmzbo3U5EluLujVlrok0rml4WtH7gGAETJO+3XzEaUinosGruCTt7iNMOkazdlNG8u8iUr0
- OCwcDrVfSBBeXZSQ5L9tUJxJ6nH6lUiOXQlMrhkuIu8FON+qqF6dHqPb6uRvn9r1/BgSF/inFIU
- xtq7ue9QI37/HSGjCMZBpW7Od7OlOKgjKcRsxxvbvuUNYeUhANPONeK2MaOMtUzPEC12O+up/Y0
- kMGD7plt2Rz/D1FEmiENngjjpLZ80BOwM33B9F+L5VpTO2nAorhdCK9YHxKsOxuf0p2y10sJsCm
- ZXvlGuCCm+2Sltg4wYinUCo0yBur8fQGHjyafzow=
-X-Google-Smtp-Source: AGHT+IGtNffQ0vrEuFFyrbMzAASfuzQ/HNGc4JPqRujCOqVLeMAa9cfR4GSR1lp1iqmqlNIiUBNIoQ==
-X-Received: by 2002:a05:6000:1887:b0:3b1:9259:3ead with SMTP id
- ffacd0b85a97d-3b776642745mr1792785f8f.28.1753453365150; 
- Fri, 25 Jul 2025 07:22:45 -0700 (PDT)
+ bh=ykNmFy+pOc7x1JD04m7Jgyqi4BaE5vw5X8kVsc3ZDDI=;
+ b=gWwl3YjW86gW6TNHujY7diwd75esufTQBekLj5nVj3UBLJ50D1W032iZUoghTnuoNC
+ WCT47RkeEnRxvtXcEKIhz9pBkL+T5Y1ZggTicIdBMS9pQ1Gf09izavW8VEAL8k90AL6l
+ L4VNsEDj6DRfTV1GhSd6nayaUDm/6rL+fDz8D13owAq3A8UJWpZm8rl5jcC0GHLdcEPY
+ 44rpLGqB4Qi9lHFToKBCA96jXallOUST4PAqsOOTPiXWgJlFT9pwJXYhO6WaSIeFc3jV
+ m8k6HoZiuzqxTC9paabFLq+BKedHgcgokgASJ6mVgIa8mnjrSr1qZf+jDn2Pr4VeXkoz
+ YzPQ==
+X-Gm-Message-State: AOJu0YyO0Gdx7U0ufVC4BxXfxoXEz0OcJPMyBvYBQ+LaZmsV1sjAIfDm
+ sJmDkALr9kxPBZ8bKoW/9kfeVze3UxlasXwoCG50Aes8IJxJcXfr+lURIwom+JZZChKhvphYoDG
+ 6I0aC
+X-Gm-Gg: ASbGncudPZb5HN0WNKueNkUOKzEaWqIAksXszjYsD7/cXJgDTDqDiKen4fTItPXZRbd
+ 785jCP6pm8/d9fF1Q5ybt1ZG97T/EIEHNjd0uQ75+BlPMoKLp8VOCvI+jljMbyAHCbfhQBYXu0C
+ WUQXjci2Kuu5GxpzDIkmNcsOQTWTU+Xo6J4MtOA6DJdkmh78x4ljOTBbj8CtpLTLX2VLYd5Q8bS
+ y4DXaC3rpcMdllZ3xtdbKOXEkQwp/TfrNK+DfaNQU2d1cRuQro/+3Dvk0zBM4qKSOgyNnwfGVuY
+ Wo73IXKz8X8rOTnjMkgjIFG3kIZBmpqrd/NspzmsPHiFpwERN457QxGJdl7hXh7VncNPquQEoBi
+ wGLln8WCX3G8ZSkWL1diPctCKGxny
+X-Google-Smtp-Source: AGHT+IE5ha+ioBRABL/EzlXJGYoKgf5uPNcbCCSMyuv9hxhXtm6enS92ojhAlrs7TmkYBU/M6oT7NA==
+X-Received: by 2002:a05:6000:40ca:b0:3b6:162a:8e08 with SMTP id
+ ffacd0b85a97d-3b77123f244mr5341767f8f.12.1753453363895; 
+ Fri, 25 Jul 2025 07:22:43 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3b778eb2bccsm67065f8f.7.2025.07.25.07.22.44
+ ffacd0b85a97d-3b778eb2bccsm67065f8f.7.2025.07.25.07.22.42
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 25 Jul 2025 07:22:44 -0700 (PDT)
+ Fri, 25 Jul 2025 07:22:43 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
  Laurent Vivier <laurent@vivier.eu>
-Subject: [PATCH for-10.1 2/3] linux-user/aarch64: Support TPIDR2_MAGIC signal
- frame record
-Date: Fri, 25 Jul 2025 15:22:39 +0100
-Message-ID: <20250725142240.3760452-3-peter.maydell@linaro.org>
+Subject: [PATCH for-10.1 1/3] linux-user/aarch64: Clear TPIDR2_EL0 when
+ delivering signals
+Date: Fri, 25 Jul 2025 15:22:38 +0100
+Message-ID: <20250725142240.3760452-2-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250725142240.3760452-1-peter.maydell@linaro.org>
 References: <20250725142240.3760452-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -103,139 +103,50 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-FEAT_SME adds the TPIDR2 userspace-accessible system register, which
-is used as part of the procedure calling standard's lazy saving
-scheme for the ZA registers:
- https://github.com/ARM-software/abi-aa/blob/main/aapcs64/aapcs64.rst#66the-za-lazy-saving-scheme
+A recent change to the kernel (Linux commit b376108e1f88
+"arm64/fpsimd: signal: Clear TPIDR2 when delivering signals") updated
+the signal-handler entry code to always clear TPIDR2_EL0.
 
-The Linux kernel has a signal frame record for saving
-and restoring this value when calling signal handlers, but
-we forgot to implement this. The result is that code which
-tries to unwind an exception out of a signal handler will
-not work correctly.
+This is necessary for the userspace ZA lazy saving scheme to work
+correctly when unwinding exceptions across a signal boundary.
+(For the essay-length description of the incorrect behaviour and
+why this is the correct fix, see the commit message for the
+kernel commit.)
 
-Add support for the missing record.
+Make QEMU also clear TPIDR2_EL0 on signal entry, applying the
+equivalent bugfix to our implementation.
+
+Note that getting this unwinding to work correctly also requires
+changes to the userspace code, e.g.  as implemented in gcc in
+https://gcc.gnu.org/git/?p=gcc.git;a=commit;h=b5ffc8e75a8
+
+This change is technically an ABI change; from the kernel's
+point of view SME was never enabled (it was hidden behind
+CONFIG_BROKEN) before the change. From QEMU's point of view
+our SME-related signal handling was broken anyway as we weren't
+saving and restoring TPIDR2_EL0.
 
 Cc: qemu-stable@nongnu.org
 Fixes: 78011586b90d1 ("target/arm: Enable SME for user-only")
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- linux-user/aarch64/signal.c | 46 +++++++++++++++++++++++++++++++++++--
- 1 file changed, 44 insertions(+), 2 deletions(-)
+ linux-user/aarch64/signal.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
 diff --git a/linux-user/aarch64/signal.c b/linux-user/aarch64/signal.c
-index b4bab7c040d..9a903576add 100644
+index d50cab78d83..b4bab7c040d 100644
 --- a/linux-user/aarch64/signal.c
 +++ b/linux-user/aarch64/signal.c
-@@ -121,6 +121,13 @@ struct target_za_context {
- #define TARGET_ZA_SIG_CONTEXT_SIZE(VQ) \
-     TARGET_ZA_SIG_ZAV_OFFSET(VQ, VQ * TARGET_SVE_VQ_BYTES)
+@@ -668,6 +668,9 @@ static void target_setup_frame(int usig, struct target_sigaction *ka,
  
-+#define TARGET_TPIDR2_MAGIC 0x54504902
-+
-+struct target_tpidr2_context {
-+    struct target_aarch64_ctx head;
-+    uint64_t tpidr2;
-+};
-+
- struct target_rt_sigframe {
-     struct target_siginfo info;
-     struct target_ucontext uc;
-@@ -253,6 +260,14 @@ static void target_setup_za_record(struct target_za_context *za,
-     }
- }
- 
-+static void target_setup_tpidr2_record(struct target_tpidr2_context *tpidr2,
-+                                       CPUARMState *env, int size)
-+{
-+    __put_user(TARGET_TPIDR2_MAGIC, &tpidr2->head.magic);
-+    __put_user(sizeof(struct target_tpidr2_context), &tpidr2->head.size);
-+    __put_user(env->cp15.tpidr2_el0, &tpidr2->tpidr2);
-+}
-+
- static void target_restore_general_frame(CPUARMState *env,
-                                          struct target_rt_sigframe *sf)
- {
-@@ -403,6 +418,16 @@ static bool target_restore_za_record(CPUARMState *env,
-     return true;
- }
- 
-+static bool target_restore_tpidr2_record(CPUARMState *env,
-+                                         struct target_tpidr2_context *tpidr2)
-+{
-+    if (!cpu_isar_feature(aa64_sme, env_archcpu(env))) {
-+        return false;
-+    }
-+    __get_user(env->cp15.tpidr2_el0, &tpidr2->tpidr2);
-+    return true;
-+}
-+
- static int target_restore_sigframe(CPUARMState *env,
-                                    struct target_rt_sigframe *sf)
- {
-@@ -410,6 +435,7 @@ static int target_restore_sigframe(CPUARMState *env,
-     struct target_fpsimd_context *fpsimd = NULL;
-     struct target_sve_context *sve = NULL;
-     struct target_za_context *za = NULL;
-+    struct target_tpidr2_context *tpidr2 = NULL;
-     uint64_t extra_datap = 0;
-     bool used_extra = false;
-     int sve_size = 0;
-@@ -460,6 +486,13 @@ static int target_restore_sigframe(CPUARMState *env,
-             za_size = size;
-             break;
- 
-+        case TARGET_TPIDR2_MAGIC:
-+            if (tpidr2 || size != sizeof(struct target_tpidr2_context)) {
-+                goto err;
-+            }
-+            tpidr2 = (struct target_tpidr2_context *)ctx;
-+            break;
-+
-         case TARGET_EXTRA_MAGIC:
-             if (extra || size != sizeof(struct target_extra_context)) {
-                 goto err;
-@@ -497,6 +530,9 @@ static int target_restore_sigframe(CPUARMState *env,
-     if (za && !target_restore_za_record(env, za, za_size, &svcr)) {
-         goto err;
-     }
-+    if (tpidr2 && !target_restore_tpidr2_record(env, tpidr2)) {
-+        goto err;
-+    }
-     if (env->svcr != svcr) {
-         env->svcr = svcr;
-         arm_rebuild_hflags(env);
-@@ -568,8 +604,8 @@ static void target_setup_frame(int usig, struct target_sigaction *ka,
-         .total_size = offsetof(struct target_rt_sigframe,
-                                uc.tuc_mcontext.__reserved),
-     };
--    int fpsimd_ofs, fr_ofs, sve_ofs = 0, za_ofs = 0;
--    int sve_size = 0, za_size = 0;
-+    int fpsimd_ofs, fr_ofs, sve_ofs = 0, za_ofs = 0, tpidr2_ofs = 0;
-+    int sve_size = 0, za_size = 0, tpidr2_size = 0;
-     struct target_rt_sigframe *frame;
-     struct target_rt_frame_record *fr;
-     abi_ulong frame_addr, return_addr;
-@@ -585,6 +621,8 @@ static void target_setup_frame(int usig, struct target_sigaction *ka,
-         sve_ofs = alloc_sigframe_space(sve_size, &layout);
-     }
-     if (cpu_isar_feature(aa64_sme, env_archcpu(env))) {
-+        tpidr2_size = sizeof(struct target_tpidr2_context);
-+        tpidr2_ofs = alloc_sigframe_space(tpidr2_size, &layout);
-         /* ZA state needs saving only if it is enabled.  */
-         if (FIELD_EX64(env->svcr, SVCR, ZA)) {
-             za_size = TARGET_ZA_SIG_CONTEXT_SIZE(sme_vq(env));
-@@ -644,6 +682,10 @@ static void target_setup_frame(int usig, struct target_sigaction *ka,
-     if (za_ofs) {
-         target_setup_za_record((void *)frame + za_ofs, env, za_size);
-     }
-+    if (tpidr2_ofs) {
-+        target_setup_tpidr2_record((void *)frame + tpidr2_ofs,
-+                                   env, tpidr2_size);
+     /* Invoke the signal handler with both SM and ZA disabled. */
+     aarch64_set_svcr(env, 0, R_SVCR_SM_MASK | R_SVCR_ZA_MASK);
++    if (cpu_isar_feature(aa64_sme, env_archcpu(env))) {
++        env->cp15.tpidr2_el0 = 0;
 +    }
  
-     /* Set up the stack frame for unwinding.  */
-     fr = (void *)frame + fr_ofs;
+     if (info) {
+         frame->info = *info;
 -- 
 2.43.0
 

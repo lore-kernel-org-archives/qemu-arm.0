@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1A91C83F26
-	for <qemu-arm@archiver.kernel.org>; Fri, 25 Jul 2025 08:35:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 992D6C87FCD
+	for <qemu-arm@archiver.kernel.org>; Fri, 25 Jul 2025 08:36:34 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ufDtF-0005Sl-6e; Fri, 25 Jul 2025 04:34:53 -0400
+	id 1ufDtt-0006Rz-Gp; Fri, 25 Jul 2025 04:35:33 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1ufDtC-0005OV-7D
- for qemu-arm@nongnu.org; Fri, 25 Jul 2025 04:34:50 -0400
-Received: from p-west3-cluster5-host6-snip4-10.eps.apple.com ([57.103.72.63]
+ id 1ufDtV-0005wf-GK
+ for qemu-arm@nongnu.org; Fri, 25 Jul 2025 04:35:10 -0400
+Received: from p-west3-cluster6-host3-snip4-10.eps.apple.com ([57.103.75.13]
  helo=outbound.ms.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1ufDt9-0003LL-ND
- for qemu-arm@nongnu.org; Fri, 25 Jul 2025 04:34:49 -0400
+ id 1ufDtT-0003TL-HF
+ for qemu-arm@nongnu.org; Fri, 25 Jul 2025 04:35:09 -0400
 Received: from outbound.ms.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-west-3a-100-percent-2 (Postfix) with ESMTPS id
- 2DC0B180017A; Fri, 25 Jul 2025 08:34:39 +0000 (UTC)
+ 4F5CB1800140; Fri, 25 Jul 2025 08:35:02 +0000 (UTC)
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; bh=d6Y0v3JmhbVH8a1yrcqq1A0CM6+1c1neXJ8NeseTam0=;
- h=From:To:Subject:Date:Message-Id:Content-Type:MIME-Version:x-icloud-hme;
- b=RhNYDcV37W91JHdoglLYE3nG5qqeQxGNKbk1ckZ62QiZOP5HpaVfj+Sq6WcfTToyS9n25K0lGh/92NYc2HO4C4wmpHpPTgWCbJwfkLC21oAoJYdosgN9tTbBRh2g2/N1Djl+ukc7uFZpI/xFRBiGoXJOdVgy6u5at6n9NwGgvsKhO03l+eSMYUv1v4Q6YnF1deLsPlQj8Kswtyz7NhrWsb93MSy+5JyCht6mtSWVwJNoUNQOQvyNGZrehbm0gIAp5i+4KfDZCUXCvyzWhPDOPSA4JdVPc3nw5m7Z9kyOOD4fGjdMbUPbT981StxyGjcawKPi6uPLYApnWD8j7XlZOw==
+ s=sig1; bh=5NVn3yLv2ZDRyxSu/Q1jby3kMsDzW8ip8jJEBOb/zSY=;
+ h=From:To:Subject:Date:Message-Id:MIME-Version:x-icloud-hme;
+ b=A7v1FnshsdoRYu6SVNw931YBq0Of7sc55nBGCSEQfcJW4qo9L6JkHo6fuMlwsCtEQ45NsK8fFMUE/EUhRV1Mm0D1zY3wpaKlufwmQkdAO6Zr+jInp0K3h8ZZks2rCgMX+y6l9TIRuhhMnPWJgVHXItWzfywb3Rynxtn0cp3AfzH2y0UoELshVJvxUCqODe9VcNQOF0cfDBK6TSTE6xOAw0hfD5hFciD4wRBAlbNcGTiwZq6CCgdQA2rtRqJqWO5xDAk7hnDJdIIAIkD/ybhKzXMJ3KIsZVmuFnYx4oXDllx4j/M+4H52ucqwt61y+sAeNq82mnJsJTQpTB9lrLcjNg==
 X-Client-IP: 46.189.47.18
 Received: from localhost.localdomain (ms-asmtp-me-k8s.p00.prod.me.com
  [17.57.154.37])
  by p00-icloudmta-asmtp-us-west-3a-100-percent-2 (Postfix) with ESMTPSA id
- EFF0F180030D; Fri, 25 Jul 2025 08:34:34 +0000 (UTC)
+ 64A1518000B4; Fri, 25 Jul 2025 08:34:59 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
@@ -44,29 +44,30 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
  Phil Dennis-Jordan <phil@philjordan.eu>, qemu-arm@nongnu.org,
  Ani Sinha <anisinha@redhat.com>,
  Mohamed Mediouni <mohamed@unpredictable.fr>
-Subject: [PATCH 0/9] HVF: Add support for platform vGIC and nested
- virtualisation
-Date: Fri, 25 Jul 2025 10:34:22 +0200
-Message-Id: <20250725083431.91450-1-mohamed@unpredictable.fr>
+Subject: [PATCH 8/9] hw/arm: virt: add GICv2m for the case when ITS is not
+ available
+Date: Fri, 25 Jul 2025 10:34:30 +0200
+Message-Id: <20250725083431.91450-9-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.39.5 (Apple Git-154)
-Content-Type: text/plain; charset="utf-8"
+In-Reply-To: <20250725083431.91450-1-mohamed@unpredictable.fr>
+References: <20250725083431.91450-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-GUID: k3HL4L1UKtPHbkD4MF3qEouoDQK11pPk
-X-Proofpoint-ORIG-GUID: k3HL4L1UKtPHbkD4MF3qEouoDQK11pPk
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwNzI1MDA3MiBTYWx0ZWRfX2To1LoNDqCtu
- XswwVwbr/B/JdKwludFe2/mcJj/RuRnP6tXpu3xWPTnzGL2hFTgh1J4T+4o9gEcFLH74i7u3CH5
- L6e2kjR1D/J40cTOt4a2d9MxzUc13Bfjl5MQ//C5hn82b8SKVGvfHKW6PEUEjk3s9O4qrCFfm1d
- pOHK6mcaPa3WO2JfAgc0MHy7eM5ID4w9kVIFdgv3+yYTjGA0PecMfaedIHw/jCbEiYoyHI9kjvE
- M6pwbAe3KWf/ZDWBVAWZ6x5CsFbGHf3lN+Ocr4GJjJ8UEpA+6nfKMqTCgC0mhysF+cPkKP9VM=
+X-Proofpoint-GUID: uLxWsWDEbXRdj8uUN57sHYsQfWKKgnnr
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwNzI1MDA3MiBTYWx0ZWRfX3AhXq4XQjvov
+ pJWry/ZF/G7k8Xe/I+RBAHO9SwqS6GYVN0WkroS9RkdaOxOwM1d57uKXKwie7Ow3FFIP0lwLYAp
+ 6zAUgoh9kBSlzGGtNfJJsUFaWaEjqs5MDmm81Z8378mfumSNLkfyAQgMuuHLz5QEhJaQ1gibFjr
+ 6VcXN4U3jukL3TEpgW0Row+MFIupEIcKHOpsWV3AFOlUFi7x7BL2NUL3MlwbSwm32nZeDXc3Ff8
+ tQmzFhc/XucDNFHvJ434b/bvZ6gjoybpMYJ1Q7GDe1ImfJTV6uomkRGuQh4D7CdvxiC88u7WE=
+X-Proofpoint-ORIG-GUID: uLxWsWDEbXRdj8uUN57sHYsQfWKKgnnr
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.9,FMLib:17.12.80.40
  definitions=2025-07-25_02,2025-07-24_01,2025-03-28_01
 X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0
- clxscore=1030 malwarescore=0 mlxlogscore=770 phishscore=0 spamscore=0
- adultscore=0 suspectscore=0 bulkscore=0 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.22.0-2506270000 definitions=main-2507250072
-Received-SPF: pass client-ip=57.103.72.63;
+ bulkscore=0 clxscore=1030 adultscore=0 phishscore=0 malwarescore=0
+ mlxlogscore=999 spamscore=0 suspectscore=0 classifier=spam adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2506270000 definitions=main-2507250072
+Received-SPF: pass client-ip=57.103.75.13;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.ms.icloud.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
@@ -75,7 +76,7 @@ X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -91,50 +92,94 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Early series.
+On Hypervisor.framework for macOS and WHPX for Windows, the provided environment is a GICv3 without ITS.
 
-Known issues:
-- when nested virt is enabled, no UI response within EDK2
-and a permanent wait. Workaround: -boot menu=on,splash-time=0
-- Save/restore of GIC state isn't complete yet.
-- Save/restore of HVF state when EL2 is enabled isn't complete yet.
-- This series doesn't contain EL2 physical timer emulation, which is
-needed if not leveraging the Apple vGIC.
+As such, support a GICv3 w/ GICv2m for that scenario.
 
-However, this is usable and there seems to be some interest for it. Hopefully
-it'll be at least somewhat useful.
+Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+---
+ hw/arm/virt-acpi-build.c | 4 +++-
+ hw/arm/virt.c            | 8 ++++++++
+ include/hw/arm/virt.h    | 2 ++
+ 3 files changed, 13 insertions(+), 1 deletion(-)
 
-PS: I can step up to maintain HVF support if needed. WHPX arm64 patch series
-is coming soon too.
-
-Mohamed Mediouni (9):
-  target/arm: hvf: stubbing writes to LORC_EL1
-  accel, hw/arm, include/system/hvf: plumbing changes for HVF vGIC
-  target/arm: hvf: instantiate GIC early
-  target/arm: add asserts for code paths not leveraged when using the
-    vGIC
-  hw/intc: Add hvf vGIC interrupt controller support
-  hw/arm, target/arm: nested virtualisation on HVF
-  target/arm: hvf: pass through CNTHCTL_EL2 and MDCCINT_EL1
-  hw/arm: virt: add GICv2m for the case when ITS is not available
-  target/arm: hvf: use LOG_UNIMP for CNTP_CVAL_EL0/SYSREG_CNTP_CTL_EL0
-
- accel/hvf/hvf-all.c        |  44 +++
- accel/stubs/hvf-stub.c     |   1 +
- hw/arm/virt-acpi-build.c   |   4 +-
- hw/arm/virt.c              |  31 +-
- hw/intc/arm_gicv3_common.c |   3 +
- hw/intc/arm_gicv3_hvf.c    | 624 +++++++++++++++++++++++++++++++++++++
- hw/intc/meson.build        |   1 +
- include/hw/arm/virt.h      |   2 +
- include/system/hvf.h       |   3 +
- system/vl.c                |   2 +
- target/arm/hvf-stub.c      |  15 +
- target/arm/hvf/hvf.c       |  91 ++++++
- target/arm/hvf_arm.h       |   3 +
- 13 files changed, 814 insertions(+), 10 deletions(-)
- create mode 100644 hw/intc/arm_gicv3_hvf.c
-
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index b01fc4f8ef..969fa3f686 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -848,7 +848,9 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+             build_append_int_noprefix(table_data, memmap[VIRT_GIC_ITS].base, 8);
+             build_append_int_noprefix(table_data, 0, 4);    /* Reserved */
+         }
+-    } else {
++    }
++
++    if (!vms->its && !vms->no_gicv3_with_gicv2m) {
+         const uint16_t spi_base = vms->irqmap[VIRT_GIC_V2M] + ARM_SPI_BASE;
+ 
+         /* 5.2.12.16 GIC MSI Frame Structure */
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index df77a1d911..3ac1e129b5 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -952,6 +952,8 @@ static void create_gic(VirtMachineState *vms, MemoryRegion *mem)
+ 
+     if (vms->gic_version != VIRT_GIC_VERSION_2 && vms->its) {
+         create_its(vms);
++    } else if (vms->gic_version != VIRT_GIC_VERSION_2 && !vms->no_gicv3_with_gicv2m) {
++        create_v2m(vms);
+     } else if (vms->gic_version == VIRT_GIC_VERSION_2) {
+         create_v2m(vms);
+     }
+@@ -2407,6 +2409,8 @@ static void machvirt_init(MachineState *machine)
+     vms->ns_el2_virt_timer_irq = ns_el2_virt_timer_present() &&
+         !vmc->no_ns_el2_virt_timer_irq;
+ 
++    vms->no_gicv3_with_gicv2m = vmc->no_gicv3_with_gicv2m;
++
+     fdt_add_timer_nodes(vms);
+     fdt_add_cpu_nodes(vms);
+ 
+@@ -3415,6 +3419,7 @@ static void virt_instance_init(Object *obj)
+     vms->its = true;
+     /* Allow ITS emulation if the machine version supports it */
+     vms->tcg_its = !vmc->no_tcg_its;
++    vms->no_gicv3_with_gicv2m = false;
+ 
+     /* Default disallows iommu instantiation */
+     vms->iommu = VIRT_IOMMU_NONE;
+@@ -3467,8 +3472,11 @@ DEFINE_VIRT_MACHINE_AS_LATEST(10, 1)
+ 
+ static void virt_machine_10_0_options(MachineClass *mc)
+ {
++    VirtMachineClass *vmc = VIRT_MACHINE_CLASS(OBJECT_CLASS(mc));
++
+     virt_machine_10_1_options(mc);
+     compat_props_add(mc->compat_props, hw_compat_10_0, hw_compat_10_0_len);
++    vmc->no_gicv3_with_gicv2m = true;
+ }
+ DEFINE_VIRT_MACHINE(10, 0)
+ 
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index 365a28b082..725ec18fd2 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -131,6 +131,7 @@ struct VirtMachineClass {
+     bool no_cpu_topology;
+     bool no_tcg_lpa2;
+     bool no_ns_el2_virt_timer_irq;
++    bool no_gicv3_with_gicv2m;
+     bool no_nested_smmu;
+ };
+ 
+@@ -178,6 +179,7 @@ struct VirtMachineState {
+     char *oem_id;
+     char *oem_table_id;
+     bool ns_el2_virt_timer_irq;
++    bool no_gicv3_with_gicv2m;
+     CXLState cxl_devices_state;
+ };
+ 
 -- 
 2.39.5 (Apple Git-154)
 

@@ -4,78 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C0C8C87FCD
-	for <qemu-arm@archiver.kernel.org>; Fri, 25 Jul 2025 09:28:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7269FC87FCD
+	for <qemu-arm@archiver.kernel.org>; Fri, 25 Jul 2025 09:43:34 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ufEiK-00043o-3t; Fri, 25 Jul 2025 05:27:40 -0400
+	id 1ufEw8-0008Bc-3p; Fri, 25 Jul 2025 05:41:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mads@ynddal.dk>) id 1ufEiE-0003zj-44
- for qemu-arm@nongnu.org; Fri, 25 Jul 2025 05:27:36 -0400
-Received: from p-east1-cluster4-host9-snip4-10.eps.apple.com ([57.103.89.93]
- helo=outbound.ci.icloud.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mads@ynddal.dk>) id 1ufEi8-0002cD-Il
- for qemu-arm@nongnu.org; Fri, 25 Jul 2025 05:27:32 -0400
-Received: from outbound.ci.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-central-1k-20-percent-2 (Postfix) with ESMTPS id
- 5DF681800B17; Fri, 25 Jul 2025 09:27:23 +0000 (UTC)
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ynddal.dk; s=sig1;
- bh=vZzp+8SYqnoPIS5lJhgmB+JFs0JghYM9gs1dDIxZiio=;
- h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To:x-icloud-hme;
- b=tvMoLc1NLKgb+m5JM9RX+e7aKhZeLW8/iS3BTzc9kVrE7U2fthaYx3BBz2GUYiZJcXWo70qRJWK974Mtl0gbaIieuAaKiO3LQt9zJK2wjQBfg81vO6Gl4JO/MKcVAVXIpvnV/VHbpaC0Pl26Je0BhCiyC65lrQaUnnaA1hKDWczNwBJvkfkZ+pm63EN7h5CSaRbQkJsv1qu8rBX2mHidoQYzc287otWOybcHaWpzipN2t3WxIq3JnoZ71qLJ/Lw/8hdMOknQX6Ig2JiaH7MqClqFmqBSDYS5gE7l2wMKQHLG7QS7xh9Sq7xjWK1K7/lHbhjAEJ+opjfu8KerMnCqfA==
-X-Client-IP: 212.60.126.184
-Received: from smtpclient.apple (ci-asmtp-me-k8s.p00.prod.me.com
- [17.57.156.36])
- by p00-icloudmta-asmtp-us-central-1k-20-percent-2 (Postfix) with ESMTPSA id
- 30DC81800090; Fri, 25 Jul 2025 09:27:21 +0000 (UTC)
-Content-Type: text/plain;
-	charset=us-ascii
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3826.600.51.1.1\))
-Subject: Re: [PATCH v2 0/9] HVF: Add support for platform vGIC and nested
- virtualisation
-From: Mads Ynddal <mads@ynddal.dk>
-In-Reply-To: <20250725085545.93619-1-mohamed@unpredictable.fr>
-Date: Fri, 25 Jul 2025 11:27:06 +0200
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Ani Sinha <anisinha@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- Cameron Esfahani <dirty@apple.com>,
- Phil Dennis-Jordan <phil@philjordan.eu>,
- Peter Maydell <peter.maydell@linaro.org>, Alexander Graf <agraf@csgraf.de>,
- Shannon Zhao <shannon.zhaosl@gmail.com>,
- Roman Bolshakov <rbolshakov@ddn.com>
-Content-Transfer-Encoding: quoted-printable
-Message-Id: <36579635-89D1-4177-BECC-0A2DB170395E@ynddal.dk>
-References: <20250725085545.93619-1-mohamed@unpredictable.fr>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1ufEvz-0007zM-Vq
+ for qemu-arm@nongnu.org; Fri, 25 Jul 2025 05:41:49 -0400
+Received: from mail-yb1-xb2a.google.com ([2607:f8b0:4864:20::b2a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1ufEvx-0006Og-3E
+ for qemu-arm@nongnu.org; Fri, 25 Jul 2025 05:41:46 -0400
+Received: by mail-yb1-xb2a.google.com with SMTP id
+ 3f1490d57ef6-e8d906ab993so1642012276.2
+ for <qemu-arm@nongnu.org>; Fri, 25 Jul 2025 02:41:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1753436504; x=1754041304; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=t/X0zMlCDAT7v/LtDcwSLg38D8Mdzkgsr5SMpu5YQBs=;
+ b=K5Fg+rtRPTVSEm9j8B+FZPhothqXcsvu5ek/48gFGq4lACQN58Jp3Vr0PjlJlLitIz
+ pkvNIr3V6MswhM6d90RhdSl6JjwtoelBEsPM1XGl2Ao5bTS1yXe2ZVYG2FKUP4t8srVW
+ LYbijLGdemlrShpBGl1nQcisQDIvv9maJlA8qGLpTLtrVFwfH9pp4WnQvfec04JctbMQ
+ DmFN/cmWAYk47e6X2NxxVcr1SYhcciFm/3PFMYdMr/wQP9IIdCEjXGlkyNSDW6DOIv8e
+ /ZfsNRFfSntZh+4dmBtmgkR4oQRPsPDBsABizmLkDVioSjVGemnqMU8iaogYh9W21JVH
+ eNsA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1753436504; x=1754041304;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=t/X0zMlCDAT7v/LtDcwSLg38D8Mdzkgsr5SMpu5YQBs=;
+ b=UTlROJ6jReRW8DSeVJo/x3x1A26+2o5RoqRB8HHtzVZBPC1KR5yxOhwsDp6PAPN/zk
+ bt4YMOyhF028XUJrH2nXts6IOUtSgtITE4TVrrIVtjr10VOh3BKGKgcHN79scTyosejO
+ 9cz5FQaxJ4arA0MLChbUZOMOUEfR78X2b6XMAvJFoiTTrML5yg0XcgMxSIATMUycOvSO
+ 9TRFZMJQFyrBTf+l8FDekIVAnf0eJPzm2oxTYnzYDBDPUcQii/DKF7YpvvPUwXc6O6GE
+ 0aMwaCvGT6JtEnC20+Fub5UgccFIxKo6ZdaEK9IwFokTQAeG4nRESu8bv/p3lrpdOlR3
+ 0XMQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVTVcd2cph1R7YKxrpkOUBCq8qbxTlY3AQlrp9X5NAN/9vBBPaHMxYusZJniXSkyz3BEgF0eAYmYA==@nongnu.org
+X-Gm-Message-State: AOJu0YwZL5Zs2gkHC+kzbjeGaA67SmrV068hDyzPyCk1VerCyfVHHUGj
+ WTpimpWuqp3niwWUaGv5L6mK4Iwj8NpzUHni/Qa/OPtq0NhqjdX8zy6uOr5IiUoNhKObDDKtgfc
+ PnYiYlmpOKRgMSUPVD4gFmPoKY8lsEVKGZnbenW+CVMgYwT6ttxJ7
+X-Gm-Gg: ASbGncvf6/gW2pmpGwY/fMRRYHVF6c9YbNERwI3mSZhbr3wZRewCW0OW3EGIdxTeIkm
+ cgp3ujRzuJ4bZ4vHVPKcwgRGlCInSact5NJAp+32h2rJVQmKKVj4mjC4gm1GFj2HFS6gY8koTwx
+ bAE1WUYUeKI/lFM5B8D1fJZXLzhPuAqDHBpYR/FwtA7qOhO3JrJ3Nc1rsPBz4LHzUf+zX9W9SBU
+ VsY8bLp
+X-Google-Smtp-Source: AGHT+IFi/6HpTwevulilYzkC9MtcWn6bv4XEayflcv4zhFHtdQW5nHCmVBNqsHfhBahvP3Ln5P4FDhpqCVIUY4PVmhg=
+X-Received: by 2002:a05:6902:228c:b0:e8b:9340:aa13 with SMTP id
+ 3f1490d57ef6-e8df1018055mr1180641276.0.1753436503798; Fri, 25 Jul 2025
+ 02:41:43 -0700 (PDT)
+MIME-Version: 1.0
+References: <20250721152902.38671-1-mohamed@unpredictable.fr>
+ <20250721152902.38671-3-mohamed@unpredictable.fr>
+In-Reply-To: <20250721152902.38671-3-mohamed@unpredictable.fr>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 25 Jul 2025 10:41:31 +0100
+X-Gm-Features: Ac12FXy-LO3CFVKq_T43PrimfDcvryg8fkcNZ17pQpdgAnV0XmKKzkNCWlSs9x8
+Message-ID: <CAFEAcA8ngZzx8hk30YO6Si9cp8UMWSiZ-tZYfpuvfYLQG5Nkrg@mail.gmail.com>
+Subject: Re: [PATCH 2/2] target/arm: hvf: stubbing reads to LORC_EL1
 To: Mohamed Mediouni <mohamed@unpredictable.fr>
-X-Mailer: Apple Mail (2.3826.600.51.1.1)
-X-Proofpoint-GUID: dNqIHK3YnKeYxAI0UfZeMXiDQBXIF78b
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwNzI1MDA4MCBTYWx0ZWRfX1AhS+ea78lEF
- m7Esj6OM0K4roZPSc3YTbHNLWF1Q7x0ZUFGhBX7/Cih08xSCbf/byoZ7zL4Mv+F6aZFja2qwYzK
- ISR6kxZ1cr4gZ79ONzlnrIAJ1WJQsNwerdtQ6xgYwRR1jMNmKr3FIdy9MhoU07GuAZSV1y3Hf4x
- bBEZaJAgyu8LUBIFfj7gNdd/5EwKXRioCsF5aARNXNLK+A3LE9xNLqJfz4uSIvZHDEbCurxz/UP
- 92vdvqemqqIIJmfgbrP/KPTdRE1y+wHYcT9etcKi8ZZ/WEgwcWDPSPzKh+UyB1r1AYhprInzg=
-X-Proofpoint-ORIG-GUID: dNqIHK3YnKeYxAI0UfZeMXiDQBXIF78b
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.9,FMLib:17.12.80.40
- definitions=2025-07-25_02,2025-07-24_01,2025-03-28_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0
- bulkscore=0 spamscore=0 suspectscore=0 phishscore=0 mlxlogscore=999
- clxscore=1030 malwarescore=0 adultscore=0 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.22.0-2506270000 definitions=main-2507250080
-Received-SPF: pass client-ip=57.103.89.93; envelope-from=mads@ynddal.dk;
- helo=outbound.ci.icloud.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+Cc: qemu-devel@nongnu.org, Alexander Graf <agraf@csgraf.de>,
+ Mads Ynddal <mads@ynddal.dk>, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b2a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb2a.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -91,67 +96,20 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+On Mon, 21 Jul 2025 at 16:29, Mohamed Mediouni <mohamed@unpredictable.fr> wrote:
+>
+> Linux zeroes LORC_EL1 on boot at EL2, without further interaction with FEAT_LOR afterwards.
+>
+> Stub out LORC_EL1 accesses as FEAT_LOR is a mandatory extension on Armv8.1+.
+>
+> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+> ---
+>  target/arm/hvf/hvf.c | 4 ++++
+>  1 file changed, 4 insertions(+)
 
-> On 25 Jul 2025, at 10.55, Mohamed Mediouni <mohamed@unpredictable.fr> =
-wrote:
->=20
-> Early series.
->=20
-> Known issues:
-> - when nested virt is enabled, no UI response within EDK2
-> and a permanent wait. Workaround: -boot menu=3Don,splash-time=3D0
-> - Save/restore of GIC state isn't complete yet.
-> - Save/restore of HVF state when EL2 is enabled isn't complete yet.
-> - This series doesn't contain EL2 physical timer emulation, which is
-> needed if not leveraging the Apple vGIC.
->=20
-> However, this is usable and there seems to be some interest for it. =
-Hopefully
-> it'll be at least somewhat useful.
->=20
-> PS: I can step up to maintain HVF support if needed. WHPX arm64 patch =
-series
-> is coming soon too.
->=20
-> v1->v2:
-> Oops. I did a mistake when preparing my patches.
->=20
-> - Add hvf_arm_el2_enable(_) call to virt_set_virt
-> - Fix nested virt support check to add HVF
->=20
-> Mohamed Mediouni (9):
->  target/arm: hvf: stubbing writes to LORC_EL1
->  accel, hw/arm, include/system/hvf: plumbing changes for HVF vGIC
->  target/arm: hvf: instantiate GIC early
->  target/arm: add asserts for code paths not leveraged when using the
->    vGIC
->  hw/intc: Add hvf vGIC interrupt controller support
->  hw/arm, target/arm: nested virtualisation on HVF
->  target/arm: hvf: pass through CNTHCTL_EL2 and MDCCINT_EL1
->  hw/arm: virt: add GICv2m for the case when ITS is not available
->  target/arm: hvf: use LOG_UNIMP for CNTP_CVAL_EL0/SYSREG_CNTP_CTL_EL0
->=20
-> accel/hvf/hvf-all.c        |  44 +++
-> accel/stubs/hvf-stub.c     |   1 +
-> hw/arm/virt-acpi-build.c   |   4 +-
-> hw/arm/virt.c              |  34 +-
-> hw/intc/arm_gicv3_common.c |   3 +
-> hw/intc/arm_gicv3_hvf.c    | 624 +++++++++++++++++++++++++++++++++++++
-> hw/intc/meson.build        |   1 +
-> include/hw/arm/virt.h      |   2 +
-> include/system/hvf.h       |   3 +
-> system/vl.c                |   2 +
-> target/arm/hvf-stub.c      |  15 +
-> target/arm/hvf/hvf.c       |  91 ++++++
-> target/arm/hvf_arm.h       |   3 +
-> 13 files changed, 817 insertions(+), 10 deletions(-)
-> create mode 100644 hw/intc/arm_gicv3_hvf.c
->=20
-> --=20
-> 2.39.5 (Apple Git-154)
->=20
+Applied to target-arm.next, thanks (since it's a bugfix
+even if it happens not to be triggered by Linux in normal
+booting-into-EL1 config).
 
-Great patch set to see! I was working on the same functionality before
-going on vacation. If you give me a bit of time, then I'll make sure to
-review it.=
+-- PMM
 

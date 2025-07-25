@@ -4,87 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D9FCC87FCE
-	for <qemu-arm@archiver.kernel.org>; Fri, 25 Jul 2025 15:07:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0EAEC87FCE
+	for <qemu-arm@archiver.kernel.org>; Fri, 25 Jul 2025 16:40:25 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ufK14-0002pg-1X; Fri, 25 Jul 2025 11:07:22 -0400
+	id 1ufLSd-0006wK-Jn; Fri, 25 Jul 2025 12:39:55 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
- id 1ufK0b-00029l-VJ
- for qemu-arm@nongnu.org; Fri, 25 Jul 2025 11:06:54 -0400
-Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1ufLSY-0006la-Hz
+ for qemu-arm@nongnu.org; Fri, 25 Jul 2025 12:39:50 -0400
+Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
- id 1ufK0a-0001Vo-BO
- for qemu-arm@nongnu.org; Fri, 25 Jul 2025 11:06:53 -0400
-Received: by mail-pl1-x633.google.com with SMTP id
- d9443c01a7336-234b440afa7so20251145ad.0
- for <qemu-arm@nongnu.org>; Fri, 25 Jul 2025 08:06:51 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1ufLSW-0006K6-MF
+ for qemu-arm@nongnu.org; Fri, 25 Jul 2025 12:39:50 -0400
+Received: by mail-pl1-x629.google.com with SMTP id
+ d9443c01a7336-236377f00a1so21557395ad.3
+ for <qemu-arm@nongnu.org>; Fri, 25 Jul 2025 09:39:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1753456010; x=1754060810; darn=nongnu.org;
+ d=linaro.org; s=google; t=1753461587; x=1754066387; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=z6Py8ZwS0kfqeDhym1u+VYnJ4E+KS3P82qJoNRkABKk=;
- b=O9Luj0goe15UWMH9/lQpVzWA29OMVDbnf+jS9eKs4WkrCPBLi/rYl7P7nhGejCv5Qp
- XproAf2b2H57mW1SRuctET4OSOD9L87OvNRQTd5EQWYk+7Fw1GUj0nJIv6t5xYZ9CTZZ
- /I4SHxpL8VGNXL8lDCRwcA6RmJQ/okwF2EU75/1I8Ff/Np2jsCo8zKyc1MvnKnMO9mnn
- 27BlGNzl2Ru1d2Uib4NZylSCFbIBVR5mtzaVQD/0F0XtFDGX764YnNxGGiAp/xDf/DrE
- J4JEHF3Ejr8MQ+izQg0M1NI7Wr3YUEC7CzOzN6FAhOynNVOBIjxAVTd3ja4DlgvXvzmq
- 2wRQ==
+ bh=JfjDVeNjaULSh7UaTSUhYvK9n1gRTeU1CePdo/RNE6k=;
+ b=lNyLql6y8AZtaZ9sH8qIorCi0y0mlgsEG8fm8N/3TFphNfioUhvgqg5a40jLOZSr6F
+ xMkx79dRPDQBor3lBUMPni7dg0djqoVKbflmhY/+moBvRlQYsFKu52qBLOK9tDAwooVK
+ BeQKpJNd6RD1BC7WWZDI6X6yUh1mnYb7GxTDwh7D5O2U5oEoyc/kyU34BPT3zJ4FrPTo
+ /2cfxQLyCtL4ee1sZAXwIyvD2C7dM6cQgY6MzCKWTwtrNDTzRy+hVDddgfWEO8yeuIXZ
+ k+xnkUXr8pWwgTIkB59X9QEhdfKfWzDaVUUq9a+PglfNKtdQIs9tm3NPFCVy/xLjgyyq
+ M1XQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1753456010; x=1754060810;
+ d=1e100.net; s=20230601; t=1753461587; x=1754066387;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=z6Py8ZwS0kfqeDhym1u+VYnJ4E+KS3P82qJoNRkABKk=;
- b=wt6AhabdEXWq4RyJh+78tpnbvZ/vxC1FHvhWhUrbbMZA9QpROoywrFL37qFlDv9DBw
- +kgF33f1DIyBWfWl6c92zUhHsmaUWX7b4QJUDdFYkzCLI1wJSUJCnZpMxtOwuTSVHd+R
- BuYEAoI/U8LFEApqr+Y7QTbW797ezcUuRJ0biysTYDBgkYdCe3NAadw0NgrGHLzVj3vT
- 1uQurBinNrQM5JzeETKPoT/3bRBurOzywTzEsw1Wtqd8/VEQzzoI8r5S4ZQhhzIi6hHu
- Igyvnt5FzMjzt/bwbKYyf57UxgGfPUv/KmnsTeCSP4s7wcx1thw6VbINJz2FTRD5tquw
- JZDw==
+ bh=JfjDVeNjaULSh7UaTSUhYvK9n1gRTeU1CePdo/RNE6k=;
+ b=QDuGaTyExVDjT1kJAG1fYXfTEFYoTtUeKe95yY1SzM1SYktVr7+uU8dtKv7KfyUbvU
+ Kw1x8P5nczL0OYoBShFSCSMtZqqQX0A8JtuZ7Cm/BlUyrqR6SUihDQzc6+jYZJLcVSO7
+ qVvk6TEhva+40M+2Hcy53lZtUYUh81khYhiKKu+d3ZD2ikxFQovrhMme5+ykd93xaxqC
+ +AI/P/7I+e6Y3V71MvtG4OBwXGfnsyKv2YjFb3VbhxrYSrCx+99c4yjLMEQkSXioncZK
+ 1s18gQ7AwJnCYvgvHH7lqTl7M0AaTyzO909CXG05MVUdHBD6rk6ZS2C07FzKY/2tvVKT
+ rBZQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXIuYHDKSkdQ1TWVkyL4E5Vqfbh8Bjvulhcsjg+OsxzhN2T3EBghEYhtmUXEMO5nnmLfr3ll3Yubw==@nongnu.org
-X-Gm-Message-State: AOJu0YwCMlEtw9inek+fTTW0ZX/3mYSXqR58P6EsQTjmxCze9W3mwvB2
- l9ZyCQXbjZoRYMxOuMxWv3mysLWbuGTqBS4KnPyCxEaqFc1dnBwh91WFR1s8HPCpqwM=
-X-Gm-Gg: ASbGnctaaxQ9Wrg8mp2cGrWT6+CUOG8sDc5eHLMq91yLQgTYoDj1cAfdBTMkFCRyNCE
- i/A65ifkyG8HX77THJfx8KytelmiCMiTU9PWlmDmd5Ymm5DxWnN9DNmCfDwEhNhnR03PeNvNojs
- iX9P8T6xqv9eKkoEuD812spCc3On1Z7aqfS63pP5lo3zvTYsGUrtbyxfwxZYiSihaXFNEIFYu1k
- vcCKA3DOwgyajNGcvG51jPqXP3cjZoN8eLNThaPSMyni0suKEoiiCS1Xlmpg4fhzJkXyY3NLmf/
- RYC04WMe9V3MX52hQyDty+jKocwZ1z+rz1cm2xyi4vpvbxqyZIbFwRmi90Ez6OlqodlFMNMcMjN
- pOztu692ucyIXg1gO1RjlPhgygaMnFmGarQ==
-X-Google-Smtp-Source: AGHT+IHP69mvkV6J1NoYGMnKr/W4aNwIS8AKl897sDFXRo/m5F6BIEskvMxCmP4+rHJxasf6FE2aiQ==
-X-Received: by 2002:a17:903:246:b0:235:ed01:18cd with SMTP id
- d9443c01a7336-23fb317ae95mr32840655ad.44.1753456010440; 
- Fri, 25 Jul 2025 08:06:50 -0700 (PDT)
-Received: from [192.168.0.102] ([187.75.37.236])
- by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-23fa491804bsm39106985ad.206.2025.07.25.08.06.48
+ AJvYcCU2ygUIdcRBeEYH0o78hXec7XZzswLOkx9lXV0/gguApofz1xN42CMfe/GRotyyN02t2blELs0M3Q==@nongnu.org
+X-Gm-Message-State: AOJu0YxG2E98gc1Oq1ntktvF1LZp6xCDfAZYxZ9n1tIdV8DUP3cUiSbM
+ 1R41MNxJT1QO+SvGmP1Lj/oEumIfeLjtuOUzQPZbkgC9cTjcJ6VJ32Ebyur4zXpWYiA=
+X-Gm-Gg: ASbGnctwpLYFzDbQlSq6p5eAWAn3ZWgqqZOM5TZv4Or119Ndwm7qh48fYF3sz5zMVY+
+ YLPmhDwRjiMcSMdmcDqzj2FnEMzoyjQp0bhgXp/02aWPg9x5b/M5mJEba6E79E9DVGp0z/LBLRK
+ 1hj9C/OlIU+CxjUsxVezMjUJEiEk+ZpJtqL49p8/LC24sZYY8YfB412xdVYUXX15ST4ELOS4FVK
+ 9qUUK1V9FUPSc3jdZiW9C1lhDGPJEXuA27CY1cFubP+pf9vyARxpwhYLRU4i4OBrITjg5M1TKhQ
+ dY9sJestrIij0OfuzUVMMrR16bMFJaV1t/jGgRKDL8nAb775FgwZ2+Qlx/yHbLRDGDXpiNWIlAV
+ GTIuUNN+XCLDU8ZpBji9xPDDBjU6nMqufiaMFyEcr9P5JmtqgMAW5hXxINxIklyTLkA1htQij8x
+ 25XQ==
+X-Google-Smtp-Source: AGHT+IF8epbljUDDAhCzwvD6lTp0HeEtnOANzt/L9WHDaQXhB+zPQ7cQ7KYo4K5Iu2OBgyKLxMZzLg==
+X-Received: by 2002:a17:902:f711:b0:23c:8f13:1381 with SMTP id
+ d9443c01a7336-23fb3041006mr37388005ad.19.1753461586865; 
+ Fri, 25 Jul 2025 09:39:46 -0700 (PDT)
+Received: from [192.168.4.112] (syn-098-150-199-049.res.spectrum.com.
+ [98.150.199.49]) by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-23fbe4fc732sm986735ad.90.2025.07.25.09.39.45
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 25 Jul 2025 08:06:50 -0700 (PDT)
-Message-ID: <29a7b7ac-831d-4124-9f93-427bec6205ff@linaro.org>
-Date: Fri, 25 Jul 2025 12:07:48 -0300
+ Fri, 25 Jul 2025 09:39:46 -0700 (PDT)
+Message-ID: <f747d280-6d43-4672-9ebe-14151c852cdb@linaro.org>
+Date: Fri, 25 Jul 2025 06:39:43 -1000
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] target/arm: Clean up of register field definitions
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, alex.bennee@linaro.org
-References: <20250725014755.2122579-1-gustavo.romero@linaro.org>
- <17254b66-4902-4ee0-8c9a-4082146255e3@linaro.org>
- <aad0c640-b736-4f5a-a6cf-e5459f60630d@linaro.org>
- <CAFEAcA8CN2GEGGrPZGweFHffSsBLF5Q-kfHwYhiRXfrgqGJ_Mg@mail.gmail.com>
+Subject: Re: [PATCH for-10.1 2/3] linux-user/aarch64: Support TPIDR2_MAGIC
+ signal frame record
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: Laurent Vivier <laurent@vivier.eu>
+References: <20250725142240.3760452-1-peter.maydell@linaro.org>
+ <20250725142240.3760452-3-peter.maydell@linaro.org>
 Content-Language: en-US
-From: Gustavo Romero <gustavo.romero@linaro.org>
-In-Reply-To: <CAFEAcA8CN2GEGGrPZGweFHffSsBLF5Q-kfHwYhiRXfrgqGJ_Mg@mail.gmail.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20250725142240.3760452-3-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::633;
- envelope-from=gustavo.romero@linaro.org; helo=mail-pl1-x633.google.com
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::629;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x629.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -107,65 +107,70 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Peter,
-
-On 7/25/25 11:47, Peter Maydell wrote:
-> On Fri, 25 Jul 2025 at 15:38, Gustavo Romero <gustavo.romero@linaro.org> wrote:
->>
->> Hi Phil,
->>
->> On 7/25/25 10:18, Philippe Mathieu-Daudé wrote:
->>> Hi Gustavo,
->>>
->>> On 25/7/25 03:47, Gustavo Romero wrote:
->>>>            if (stage2idx == ARMMMUIdx_Stage2_S) {
->>>> -            s2walk_secure = !(env->cp15.vstcr_el2 & VSTCR_SW);
->>>> +            s2walk_secure = !(env->cp15.vstcr_el2 & R_VSTCR_SW_MASK);
->>>
->>> FYI register API provides helper macros:
->>>
->>>               s2walk_secure = !FIELD_EX32(env->cp15.vstcr_el2, VSTCR, SW);
->>>
->>
->> Do you know which form is currently preferred? I see that R_<REGNAME>_<FIELD>_MASK is used a lot, .e.g, in helper.c.
+On 7/25/25 04:22, Peter Maydell wrote:
+> FEAT_SME adds the TPIDR2 userspace-accessible system register, which
+> is used as part of the procedure calling standard's lazy saving
+> scheme for the ZA registers:
+>   https://github.com/ARM-software/abi-aa/blob/main/aapcs64/aapcs64.rst#66the-za-lazy-saving-scheme
 > 
-> Where a mask is the most simple or useful way to get what
-> you want, it's fine to use R_*_MASK directly; for instance
-> in this patch
->   (env->cp15.vstcr_el2 & (R_VSTCR_SA_MASK | R_VSTCR_SW_MASK)
-> is better than
->   (FIELD_EX64(env->cp15.vstcr_el2, VSTCR, SA) ||
->    FIELD_EX64(env->cp15.vstcr_el2, VSTCR, SW))
-> and
->    value |= R_FOO_BAR_MASK;
-> seems simpler than
->    value = FIELD_DP64(value, FOO, BAR, 1);
+> The Linux kernel has a signal frame record for saving
+> and restoring this value when calling signal handlers, but
+> we forgot to implement this. The result is that code which
+> tries to unwind an exception out of a signal handler will
+> not work correctly.
 > 
-> I think (though this is to some extent a matter of personal taste).
-
-I also prefer the mask for the most simple cases, like in 1 bit masks and where the code becomes more succinct.
-
-
-> Where we're using the mask to test whether a single bit field
-> is set or not, you could do it either way. I think in new code
-> I would probably use the FIELD_EX64 macro, but a test against
-> the mask value is fine too.
+> Add support for the missing record.
 > 
->> Also, even tho the SW field in VSTCR is <= 31, VSTCR is a 64-bit register, so should I really use FIELD_EX32 (which works) or FIELD_EX64 (my first thought would be to use it, i.e. based on the register size, not the field)?
-> 
-> Use FIELD_EX64 for working on 64-bit values, yes.
+> Cc: qemu-stable@nongnu.org
+> Fixes: 78011586b90d1 ("target/arm: Enable SME for user-only")
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>   linux-user/aarch64/signal.c | 46 +++++++++++++++++++++++++++++++++++--
+>   1 file changed, 44 insertions(+), 2 deletions(-)
 
-Thanks for the clarifications.
-
-
-> Personally I don't feel strongly about any of this, so I
-> would be happy taking this patch the way it is.
-> 
-> -- PMM
-
-OK, thanks.
+Oh my.  I spent yesterday working on this and other signal handling fixes.  Though from a 
+FEAT_GCS starting point, so I still hadn't seen the clear tpidr2 on signal delivery change.
 
 
-Cheers,
-Gustavo
+> +static void target_setup_tpidr2_record(struct target_tpidr2_context *tpidr2,
+> +                                       CPUARMState *env, int size)
+> +{
+> +    __put_user(TARGET_TPIDR2_MAGIC, &tpidr2->head.magic);
+> +    __put_user(sizeof(struct target_tpidr2_context), &tpidr2->head.size);
+> +    __put_user(env->cp15.tpidr2_el0, &tpidr2->tpidr2);
+> +}
+
+Drop the unused size argument.
+
+> +static bool target_restore_tpidr2_record(CPUARMState *env,
+> +                                         struct target_tpidr2_context *tpidr2)
+> +{
+> +    if (!cpu_isar_feature(aa64_sme, env_archcpu(env))) {
+> +        return false;
+> +    }
+> +    __get_user(env->cp15.tpidr2_el0, &tpidr2->tpidr2);
+> +    return true;
+> +}
+
+The sme check is better placed in target_restore_sigframe ...
+
+> +        case TARGET_TPIDR2_MAGIC:
+> +            if (tpidr2 || size != sizeof(struct target_tpidr2_context)) {
+> +                goto err;
+> +            }
+
+... here.  Then target_restore_tpidr2_record has no failure modes and can return void ...
+
+> @@ -497,6 +530,9 @@ static int target_restore_sigframe(CPUARMState *env,
+>       if (za && !target_restore_za_record(env, za, za_size, &svcr)) {
+>           goto err;
+>       }
+> +    if (tpidr2 && !target_restore_tpidr2_record(env, tpidr2)) {
+> +        goto err;
+> +    }
+
+... which simplifies this.
+
+
+r~
 

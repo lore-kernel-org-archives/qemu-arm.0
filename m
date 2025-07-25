@@ -4,79 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 847DEC87FCA
-	for <qemu-arm@archiver.kernel.org>; Fri, 25 Jul 2025 17:02:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 689F8C87FCE
+	for <qemu-arm@archiver.kernel.org>; Fri, 25 Jul 2025 17:03:49 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ufLoJ-0003ek-IO; Fri, 25 Jul 2025 13:02:19 -0400
+	id 1ufLp5-0004po-61; Fri, 25 Jul 2025 13:03:07 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from
- <3e7iDaA4KCEYitm5zqkpizl0wvowwotm.kwuymu2-izuvwvov2.wzo@flex--alexrichardson.bounces.google.com>)
- id 1ufLnr-0002nt-So
- for qemu-arm@nongnu.org; Fri, 25 Jul 2025 13:01:52 -0400
-Received: from mail-pf1-x449.google.com ([2607:f8b0:4864:20::449])
+ (Exim 4.90_1) (envelope-from <alexrichardson@google.com>)
+ id 1ufLni-0002Eu-UC
+ for qemu-arm@nongnu.org; Fri, 25 Jul 2025 13:01:44 -0400
+Received: from mail-pg1-x52a.google.com ([2607:f8b0:4864:20::52a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from
- <3e7iDaA4KCEYitm5zqkpizl0wvowwotm.kwuymu2-izuvwvov2.wzo@flex--alexrichardson.bounces.google.com>)
- id 1ufLnp-0002xY-PO
- for qemu-arm@nongnu.org; Fri, 25 Jul 2025 13:01:51 -0400
-Received: by mail-pf1-x449.google.com with SMTP id
- d2e1a72fcca58-74913385dd8so3798756b3a.0
- for <qemu-arm@nongnu.org>; Fri, 25 Jul 2025 10:01:48 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <alexrichardson@google.com>)
+ id 1ufLng-0002ur-NZ
+ for qemu-arm@nongnu.org; Fri, 25 Jul 2025 13:01:42 -0400
+Received: by mail-pg1-x52a.google.com with SMTP id
+ 41be03b00d2f7-b31f0ef5f7aso1420118a12.3
+ for <qemu-arm@nongnu.org>; Fri, 25 Jul 2025 10:01:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1753462907; x=1754067707; darn=nongnu.org;
- h=cc:to:from:subject:message-id:mime-version:date:from:to:cc:subject
- :date:message-id:reply-to;
- bh=Ev4Mo5hPC03skGFlEQroGFdqhlWLKbqp5bRMUSJzt1I=;
- b=1motN1A3PEviEHQQNvjD7JTohS3RTkqGCIYT/SPW+IkOTmeCalvkr+qdvRmV0tVN6X
- a2t8Y+ynaU0QCTq0am055wTobs5WuR9msm2+H8UW1c3+RSXn2WBrytHROBRr+5tytTTa
- h9Fn8493oDqxKvntXBiCQM/TIh4gK5YYZRbglYkLZWrrKyTCKfvFqqQ5+bAKAa0z404M
- mv8mYknMaR8RVTBnmZd5PiPueLwn4d9KzjIHxMNFb7qA03MvviP6wZIBOnSYbGwvbjF4
- 2DhA9Cx9Jhy8VUC+4AxBV8UuGwngRV4oSOUUE3Y95js+3WYqLvnKprGs7mU+3mUaMA2P
- lk9A==
+ d=google.com; s=20230601; t=1753462898; x=1754067698; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=czidO6Am4Z96jlZFx+HNmUy9fnaLQamiQGCCwR8yFWk=;
+ b=heFtRuBij2pf1O5WvlXd4aR+Bzz4Lc1XsLf8uQS2d5/FMDtLypfX1uAMg30J+rkCIN
+ Q4awKi3IjzAsytn2kMvsjuWiXP4HJm4+hlmF0R77RMPLuek2jPsUETnDw8kl0BvoFWm4
+ LQpHpWRj7VlvYnsb0mZQQletSqunawL3ynn4mjcFWeUl4FV3LcB+XwRC6BfJsmHo22av
+ henVafucu4quds7RarVQqX1JbCh/jteU0JmUO705N+FlLE/YPp7Nfo4i8Y0iOb9O45yX
+ WdOsTTCIag4Q5lAH1HYyyDlYpox1MokUJWAZPE0edYnTxVbsKrp88KTIZuE04JcVFOuZ
+ pVUQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1753462907; x=1754067707;
- h=cc:to:from:subject:message-id:mime-version:date:x-gm-message-state
- :from:to:cc:subject:date:message-id:reply-to;
- bh=Ev4Mo5hPC03skGFlEQroGFdqhlWLKbqp5bRMUSJzt1I=;
- b=GKpBm6KBahnYubjcqJFWdrOB3QrNkRFA41p9+01Cd5TUFRfujLaf4jPHn/aY2j4mad
- 1ndCfYjlL/2KASb3nK6soR7PrQsHJmB67Dx+r+ZFOQeDDHoGBaYuTLB/LNScSp4oZklz
- DFu0dcAJ2lNpmnGnbSoTQ4vH5Ys8H9JeLXcLYJr0LdIDfR2VPs+ERKWb3wrcipuN92fa
- /vuh6guliBkqfBYYJjKBPEbWQV/SZSvwKvepBNz7J+kgMri3+rcJq6j8+RtsKns/hjUE
- wu/ldLP9nsH9PoRTonwBrMGrJGRrXCIGobYtSTbLpsy2fx0qKNU+9dyzZCpRkspRJVcm
- e7vw==
+ d=1e100.net; s=20230601; t=1753462898; x=1754067698;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=czidO6Am4Z96jlZFx+HNmUy9fnaLQamiQGCCwR8yFWk=;
+ b=Oc9f50xhunUilyR19ZDdYqA60Ld7Z43fLAbcLt4AJPX22KDT8dAo2dAQc5ciig/Fim
+ 0PjrXBID2MokLTCELs0QZ56bBEOqn9wyxCJ3ZkjV8N7NRbJqjsoRoVZB5NoLnIUdwVCk
+ ZlYiT7tXL1+zGCQL5RoZ6ir+t0bxbIRq8eQ0U1eqDG264XWlLO/qSrN9n7VhIMw29qvr
+ +VZ14yVw8aps8WHnLBLQA9hjCbeTGmqhX0/vh0/slXUUYuu0No5imdrmOu1j6TBNJtot
+ m4/S3fLOFbYo7N6jtIGSyi/K8q6ib7YADqni8Ys+AmhOd42filFp/IOenunqSeCE5gvq
+ kEIw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWCG6YVIqwMv+nzJXLdHPTgbRywBjlTvm7VI5iGNyCOHg8AcHvlBntpmIvZ2nfcm83NeUPSbBcLyw==@nongnu.org
-X-Gm-Message-State: AOJu0Yz4ql9Y6bv/aM2r1enHqKRNHcopAnzm8mXURMn3i/RfwsKQPwRp
- jkkAsgU2skqxe3nmty11Gs9+BYJux1Bx8vZBi1Xir7ftGsjm4H2AR6qoiYQIxSMmXuMTx0W0CEf
- tsIDi0JQRt6fAtv7Xz+/kRH+3DuQpLBfW9IZKcg==
-X-Google-Smtp-Source: AGHT+IFTkG77MgtxnoWE9eqBEOdJ+e8DRQgjDtXJ3MVG50PRmCT9qeYZqjuk02bheFy0Gjx1b7BnuOBZU9QEXzzSCY/gzA==
-X-Received: from pfra5.prod.google.com ([2002:aa7:8e85:0:b0:746:2e5d:3e6a])
- (user=alexrichardson job=prod-delivery.src-stubby-dispatcher) by
- 2002:a05:6a00:1a8c:b0:746:24c9:c92e with SMTP id
- d2e1a72fcca58-76332b4ffe8mr5066814b3a.8.1753462907077; 
- Fri, 25 Jul 2025 10:01:47 -0700 (PDT)
-Date: Fri, 25 Jul 2025 10:01:36 -0700
-Mime-Version: 1.0
-X-Mailer: git-send-email 2.50.1.470.g6ba607880d-goog
-Message-ID: <20250725170136.145116-1-alexrichardson@google.com>
-Subject: [PATCH v3] target/arm: add support for 64-bit PMCCNTR in AArch32 mode
+ AJvYcCVkfVeg6GqgMG5qU6n1hHWufqSDzwZPdXpA1ApWFkqSY5HwCh3c73fB8/rgTzisJriDXoSi2fnivg==@nongnu.org
+X-Gm-Message-State: AOJu0YxG7uMZIlq/10/h//1Qyi+ezNr+H1G6ds3+mS4DZwATJctkqPgg
+ ASKNcK0mb2PLrcAWyUjaVuMe8iByBd0mVnxMAZ5/ESD1VpIlwHUX363x+Ktj2Huemct05TDhXgK
+ 0X95d2WG0632p/D2QUrgXzM7ynAlV50dwa4MX7NKM
+X-Gm-Gg: ASbGnctfpD31Q+mj+wDlnWEkQEYMry0lbAE4/u88JA9dWVKBIR5vXwp/zNdxNGyOg6t
+ DjdX4Js2AzH4mI08drFCShpL0UX9p2McCaYuMx5iH/Ys4GONuBfNeac4iDQBPCuOzTrMhFzkLnh
+ 5/3KVq3BtIfW386y8ni0qb7Ya6u2V+xwQqtGFnf1Fvg3bjztiJyCaTavku1piBTe1vT8sX1c/bJ
+ gsPYXApmyIKnfIZfB8P7WMP+8wY4/1rIyhK8rQb8k+dQehzsw4=
+X-Google-Smtp-Source: AGHT+IH39YOW32t7kZX2YfZzOYpQja4jIi3ovtMlAS4tYBI1urk3Q0yArskXoAS4WzWA1+CRQJacRbw10C2aETGIJPY=
+X-Received: by 2002:a17:90b:53cb:b0:312:1ac5:c7c7 with SMTP id
+ 98e67ed59e1d1-31e77a0a59bmr3854367a91.2.1753462897579; Fri, 25 Jul 2025
+ 10:01:37 -0700 (PDT)
+MIME-Version: 1.0
+References: <20250725000901.1204536-1-alexrichardson@google.com>
+ <CAFEAcA-T+fBvN=jZS7C3H7feD4N8uufy98_PhdS=eA9EHw8CRg@mail.gmail.com>
+In-Reply-To: <CAFEAcA-T+fBvN=jZS7C3H7feD4N8uufy98_PhdS=eA9EHw8CRg@mail.gmail.com>
 From: Alex Richardson <alexrichardson@google.com>
-To: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Cc: Alex Richardson <alexrichardson@google.com>
+Date: Fri, 25 Jul 2025 10:01:26 -0700
+X-Gm-Features: Ac12FXxiQCpxFZR-0O0F-XTWrBB0hGpOl8KI1UGt-fUH5VV8YudV0kWAxpaK91g
+Message-ID: <CADXcZJtVOYVfiJxvSdUuu0zRU81Unvg2QE=d+deMfk5i58zq9w@mail.gmail.com>
+Subject: Re: [PATCH v2] target/arm: add support for 64-bit PMCCNTR in AArch32
+ mode
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::449;
- envelope-from=3e7iDaA4KCEYitm5zqkpizl0wvowwotm.kwuymu2-izuvwvov2.wzo@flex--alexrichardson.bounces.google.com;
- helo=mail-pf1-x449.google.com
-X-Spam_score_int: -95
-X-Spam_score: -9.6
-X-Spam_bar: ---------
-X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+Received-SPF: pass client-ip=2607:f8b0:4864:20::52a;
+ envelope-from=alexrichardson@google.com; helo=mail-pg1-x52a.google.com
+X-Spam_score_int: -175
+X-Spam_score: -17.6
+X-Spam_bar: -----------------
+X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
+ ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -92,88 +97,71 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-In the PMUv3, a new AArch32 64-bit (MCRR/MRRC) accessor for the
-PMCCNTR was added. In QEMU we forgot to implement this, so only
-provide the 32-bit accessor. Since we have a 64-bit PMCCNTR
-sysreg for AArch64, adding the 64-bit AArch32 version is easy.
+On Fri, 25 Jul 2025 at 02:19, Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> On Fri, 25 Jul 2025 at 01:10, Alex Richardson <alexrichardson@google.com> wrote:
+> >
+> > In the PMUv3, a new AArch32 64-bit (MCRR/MRRC) accessor for the
+> > PMCCNTR was added. In QEMU we forgot to implement this, so only
+> > provide the 32-bit accessor. Since we have a 64-bit PMCCNTR
+> > sysreg for AArch64, adding the 64-bit AArch32 version is easy.
+> >
+> > We add the PMCCNTR to the v8_cp_reginfo because PMUv3 was added
+> > in the ARMv8 architecture. This is consistent with how we
+> > handle the existing PMCCNTR support, where we always implement
+> > it for all v7 CPUs. This is arguably something we should
+> > clean up so it is gated on ARM_FEATURE_PMU and/or an ID
+> > register check for the relevant PMU version, but we should
+> > do that as its own tidyup rather than being inconsistent between
+> > this PMCCNTR accessor and the others.
+> >
+> > Since the register name is the same as the 32-bit PMCCNTR, we set
+> > ARM_CP_NO_GDB to avoid generating an invalid GDB XML.
+>
+> This is the wrong way around, I think. We should prefer to expose
+> to GDB the 64-bit view of it, not the 32-bit view, because
+> it's more comprehensive. Compare handling of the "PAR" definition
+> in target/arm/helper.c.
+>
+Thanks for the reference to the existing code, will send out v3 shortly.
 
-We add the PMCCNTR to the v8_cp_reginfo because PMUv3 was added
-in the ARMv8 architecture. This is consistent with how we
-handle the existing PMCCNTR support, where we always implement
-it for all v7 CPUs. This is arguably something we should
-clean up so it is gated on ARM_FEATURE_PMU and/or an ID
-register check for the relevant PMU version, but we should
-do that as its own tidyup rather than being inconsistent between
-this PMCCNTR accessor and the others.
+> >
+> > See https://developer.arm.com/documentation/ddi0601/2024-06/AArch32-Registers/PMCCNTR--Performance-Monitors-Cycle-Count-Register?lang=en
+> >
+> > Signed-off-by: Alex Richardson <alexrichardson@google.com>
+> > ---
+>
+> It would have been helpful to mention here what the changes
+> from v1 were -- I had to go and look up the list archives to
+> remind myself of why we had to drop v1.
 
-Since the register name is the same as the 32-bit PMCCNTR, we set
-ARM_CP_NO_GDB on the 32-bit one to avoid generating an invalid GDB XML.
+Apologies, I usually contribute via code review systems that track
+changes and am new to contributing to email-based workflows.
 
-See https://developer.arm.com/documentation/ddi0601/2024-06/AArch32-Registers/PMCCNTR--Performance-Monitors-Cycle-Count-Register?lang=en
-
-Change v2->v3:
-- Moved ARM_CP_NO_GDB to the 32-bit register if Armv8 is supported
-
-Changes v1->v2:
-- Moved to new file
-- Updated commit message
-- Added ARM_CP_NO_GDB
-
-Signed-off-by: Alex Richardson <alexrichardson@google.com>
----
- target/arm/cpregs-pmu.c | 24 +++++++++++++++++++-----
- 1 file changed, 19 insertions(+), 5 deletions(-)
-
-diff --git a/target/arm/cpregs-pmu.c b/target/arm/cpregs-pmu.c
-index 0f295b1376..144e339c76 100644
---- a/target/arm/cpregs-pmu.c
-+++ b/target/arm/cpregs-pmu.c
-@@ -1067,11 +1067,6 @@ static const ARMCPRegInfo v7_pm_reginfo[] = {
-       .fgt = FGT_PMSELR_EL0,
-       .fieldoffset = offsetof(CPUARMState, cp15.c9_pmselr),
-       .writefn = pmselr_write, .raw_writefn = raw_write, },
--    { .name = "PMCCNTR", .cp = 15, .crn = 9, .crm = 13, .opc1 = 0, .opc2 = 0,
--      .access = PL0_RW, .resetvalue = 0, .type = ARM_CP_ALIAS | ARM_CP_IO,
--      .fgt = FGT_PMCCNTR_EL0,
--      .readfn = pmccntr_read, .writefn = pmccntr_write32,
--      .accessfn = pmreg_access_ccntr },
-     { .name = "PMCCNTR_EL0", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 3, .crn = 9, .crm = 13, .opc2 = 0,
-       .access = PL0_RW, .accessfn = pmreg_access_ccntr,
-@@ -1211,6 +1206,19 @@ void define_pm_cpregs(ARMCPU *cpu)
-         define_one_arm_cp_reg(cpu, &pmcr);
-         define_one_arm_cp_reg(cpu, &pmcr64);
-         define_arm_cp_regs(cpu, v7_pm_reginfo);
-+        /* When Armv8 is supported, PMCCNTR aliases the new 64-bit version */
-+        ARMCPRegInfo pmccntr = {
-+            .name = "PMCCNTR",
-+            .cp = 15, .crn = 9, .crm = 13, .opc1 = 0, .opc2 = 0,
-+            .access = PL0_RW, .accessfn = pmreg_access_ccntr,
-+            .resetvalue = 0, .type = ARM_CP_ALIAS | ARM_CP_IO,
-+            .fgt = FGT_PMCCNTR_EL0,
-+            .readfn = pmccntr_read, .writefn = pmccntr_write32,
-+        };
-+        if (arm_feature(env, ARM_FEATURE_V8)) {
-+            pmccntr.type |= ARM_CP_NO_GDB;
-+        }
-+        define_one_arm_cp_reg(cpu, &pmccntr);
- 
-         for (unsigned i = 0, pmcrn = pmu_num_counters(env); i < pmcrn; i++) {
-             g_autofree char *pmevcntr_name = g_strdup_printf("PMEVCNTR%d", i);
-@@ -1276,6 +1284,12 @@ void define_pm_cpregs(ARMCPU *cpu)
-               .access = PL0_R, .accessfn = pmreg_access, .type = ARM_CP_CONST,
-               .fgt = FGT_PMCEIDN_EL0,
-               .resetvalue = cpu->pmceid1 },
-+            { .name = "PMCCNTR", .state = ARM_CP_STATE_AA32,
-+              .cp = 15, .crm = 9, .opc1 = 0,
-+              .access = PL0_RW, .accessfn = pmreg_access_ccntr, .resetvalue = 0,
-+              .type = ARM_CP_ALIAS | ARM_CP_IO | ARM_CP_64BIT,
-+              .fgt = FGT_PMCCNTR_EL0, .readfn = pmccntr_read,
-+              .writefn = pmccntr_write,  },
-         };
-         define_arm_cp_regs(cpu, v8_pm_reginfo);
-     }
--- 
-2.50.1.470.g6ba607880d-goog
-
+>
+> >  target/arm/cpregs-pmu.c | 6 ++++++
+> >  1 file changed, 6 insertions(+)
+> >
+> > diff --git a/target/arm/cpregs-pmu.c b/target/arm/cpregs-pmu.c
+> > index 0f295b1376..ef176e4045 100644
+> > --- a/target/arm/cpregs-pmu.c
+> > +++ b/target/arm/cpregs-pmu.c
+> > @@ -1276,6 +1276,12 @@ void define_pm_cpregs(ARMCPU *cpu)
+> >                .access = PL0_R, .accessfn = pmreg_access, .type = ARM_CP_CONST,
+> >                .fgt = FGT_PMCEIDN_EL0,
+> >                .resetvalue = cpu->pmceid1 },
+> > +            { .name = "PMCCNTR", .state = ARM_CP_STATE_AA32,
+> > +              .cp = 15, .crm = 9, .opc1 = 0,
+> > +              .access = PL0_RW, .accessfn = pmreg_access_ccntr, .resetvalue = 0,
+> > +              .type = ARM_CP_ALIAS | ARM_CP_IO | ARM_CP_64BIT | ARM_CP_NO_GDB,
+> > +              .fgt = FGT_PMCCNTR_EL0, .readfn = pmccntr_read,
+> > +              .writefn = pmccntr_write,  },
+> >          };
+> >          define_arm_cp_regs(cpu, v8_pm_reginfo);
+> >      }
+> > --
+> > 2.50.1.470.g6ba607880d-goog
+>
+> thanks
+> -- PMM
 

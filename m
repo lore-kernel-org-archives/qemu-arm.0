@@ -4,82 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F30DCC83F26
-	for <qemu-arm@archiver.kernel.org>; Fri, 25 Jul 2025 09:19:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C0C8C87FCD
+	for <qemu-arm@archiver.kernel.org>; Fri, 25 Jul 2025 09:28:10 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ufEa1-0007XV-Ty; Fri, 25 Jul 2025 05:19:05 -0400
+	id 1ufEiK-00043o-3t; Fri, 25 Jul 2025 05:27:40 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ufEa0-0007V8-9T
- for qemu-arm@nongnu.org; Fri, 25 Jul 2025 05:19:04 -0400
-Received: from mail-yb1-xb31.google.com ([2607:f8b0:4864:20::b31])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ufEZy-0000Vl-7R
- for qemu-arm@nongnu.org; Fri, 25 Jul 2025 05:19:04 -0400
-Received: by mail-yb1-xb31.google.com with SMTP id
- 3f1490d57ef6-e8bd3fbd9f7so1568606276.3
- for <qemu-arm@nongnu.org>; Fri, 25 Jul 2025 02:19:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1753435140; x=1754039940; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=J9nFLBb7yNtVSXyuiWlQpZx4fdmgsTg2BI1WsQru/4k=;
- b=V5GkcfWZL6UCEkF3PwD8++jGVRuzIR1aU+0sgeoCBhpjdM+Iz/8xvoA1QhTK7kDkbE
- nnV07keR6Ucsn04gYAWD3TW2Nnw2aS3HU2j8VA3+z1YQh7+/6Oz2pOaXXzXn14Dso2VI
- QtXUgzBa6McbhNuIQ2rISAVnYwcK0Xv3do2Z0T6FUEMIyqKTBsR8fPxiH9ivCF26u30j
- vVirx9Dh7FLXv+pLL+pTVgT+xCG2DFDmqnzjn4XrhZ26AMNl8mWaqR0oMKBDJzGi9KwI
- AbnfbSuqWI/a+XUx/hzyGNoQf0xwDlSgI7joybG4+2NfKW0rWj97S/BT+Uz1Nq6SMZd8
- +KZw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1753435140; x=1754039940;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=J9nFLBb7yNtVSXyuiWlQpZx4fdmgsTg2BI1WsQru/4k=;
- b=QDPKoFKUlSWBnGfSFM7n0wUCLniKP4dRJ2ZRYzA4tS8T+xmEnCRqrQIVS/bc2gg198
- 8Gw/nAasaOqoDCRSSY+KNP1gaPoqVAyK3UGRemdiuD8vTqJGGaC4wqjGW2HZl1B408Mz
- iFqx4ACYtmKj/6uIgLO6Wm4VqEcL5pJ0vqu1LnKdBjx4sYTCyxqcpI/2SuTabDF97jAH
- 99QjImNRIjN/1JrKsqbrDUtkY5+RoXRvYrNl005CfsxfmrjDOHqg3MHssl29UQgtinyt
- MIR7nwKnvSfIDTKmEN3dQLh2Q91Gu/ZGWqLbXHn47tuqMoixtDdtp5uhQmvSRkmaPmxC
- C4Lg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCW+Qqt397JaPkcqWCAB/uHJOD4P03Qa5jCx7w6lFtCr1vlFhQXXtVMtgC0alRoMv0ru4mw/FKWn5g==@nongnu.org
-X-Gm-Message-State: AOJu0Yzha+Z357CJh9J1o24XzfqJX+wlYuBmEQcDaxeNXsDsK6gbEfN0
- LIPlmjowewarIC7jvXjgZ7FJoyp2hepCk2taY9U/kKtbScypLQXD/cKxGuze2j3y+4QLLDiPQWE
- o22i3WIM2FrkM8Sfc2ptSCPIRFTBfWkZsLkE/4Q8bnA==
-X-Gm-Gg: ASbGnctsANGFu9tM1oUHb51kO1bvpUcWk6JoD/mfSEcuBpr45+oOKh14PZeidlbyagO
- eI2Uqq1NXhKoWNlRVqLXxVqpbMLcxj1Z7g/NEqy8oA46EEAZfqR0R8eStKM06YnaS6l7AHzDB91
- ER8EP3R2JUYT4jql0bPpfRVGVayFplwqE1ScKd/Vy13PihAUUoiCHfsyEjekabkpDimPTouskKk
- jq3wQ0a
-X-Google-Smtp-Source: AGHT+IG0vTEzifkHK+90bRvTaTQr4aa2jfdS5nKO71C15Pgp+bVY7N+7jL39J6TOOnfYpH//T2EDmuwA3uuo0o7xkbw=
-X-Received: by 2002:a05:690c:9a09:b0:719:e179:b508 with SMTP id
- 00721157ae682-719e39a0ec9mr14025287b3.39.1753435140148; Fri, 25 Jul 2025
- 02:19:00 -0700 (PDT)
-MIME-Version: 1.0
-References: <20250725000901.1204536-1-alexrichardson@google.com>
-In-Reply-To: <20250725000901.1204536-1-alexrichardson@google.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 25 Jul 2025 10:18:48 +0100
-X-Gm-Features: Ac12FXyylrH9mZJmkGth1DcptNKIDXxKPzb_XcRylv7XT0k5ZJXc3hacGL1Bahw
-Message-ID: <CAFEAcA-T+fBvN=jZS7C3H7feD4N8uufy98_PhdS=eA9EHw8CRg@mail.gmail.com>
-Subject: Re: [PATCH v2] target/arm: add support for 64-bit PMCCNTR in AArch32
- mode
-To: Alex Richardson <alexrichardson@google.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b31;
- envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb31.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+ (Exim 4.90_1) (envelope-from <mads@ynddal.dk>) id 1ufEiE-0003zj-44
+ for qemu-arm@nongnu.org; Fri, 25 Jul 2025 05:27:36 -0400
+Received: from p-east1-cluster4-host9-snip4-10.eps.apple.com ([57.103.89.93]
+ helo=outbound.ci.icloud.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mads@ynddal.dk>) id 1ufEi8-0002cD-Il
+ for qemu-arm@nongnu.org; Fri, 25 Jul 2025 05:27:32 -0400
+Received: from outbound.ci.icloud.com (unknown [127.0.0.2])
+ by p00-icloudmta-asmtp-us-central-1k-20-percent-2 (Postfix) with ESMTPS id
+ 5DF681800B17; Fri, 25 Jul 2025 09:27:23 +0000 (UTC)
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ynddal.dk; s=sig1;
+ bh=vZzp+8SYqnoPIS5lJhgmB+JFs0JghYM9gs1dDIxZiio=;
+ h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To:x-icloud-hme;
+ b=tvMoLc1NLKgb+m5JM9RX+e7aKhZeLW8/iS3BTzc9kVrE7U2fthaYx3BBz2GUYiZJcXWo70qRJWK974Mtl0gbaIieuAaKiO3LQt9zJK2wjQBfg81vO6Gl4JO/MKcVAVXIpvnV/VHbpaC0Pl26Je0BhCiyC65lrQaUnnaA1hKDWczNwBJvkfkZ+pm63EN7h5CSaRbQkJsv1qu8rBX2mHidoQYzc287otWOybcHaWpzipN2t3WxIq3JnoZ71qLJ/Lw/8hdMOknQX6Ig2JiaH7MqClqFmqBSDYS5gE7l2wMKQHLG7QS7xh9Sq7xjWK1K7/lHbhjAEJ+opjfu8KerMnCqfA==
+X-Client-IP: 212.60.126.184
+Received: from smtpclient.apple (ci-asmtp-me-k8s.p00.prod.me.com
+ [17.57.156.36])
+ by p00-icloudmta-asmtp-us-central-1k-20-percent-2 (Postfix) with ESMTPSA id
+ 30DC81800090; Fri, 25 Jul 2025 09:27:21 +0000 (UTC)
+Content-Type: text/plain;
+	charset=us-ascii
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3826.600.51.1.1\))
+Subject: Re: [PATCH v2 0/9] HVF: Add support for platform vGIC and nested
+ virtualisation
+From: Mads Ynddal <mads@ynddal.dk>
+In-Reply-To: <20250725085545.93619-1-mohamed@unpredictable.fr>
+Date: Fri, 25 Jul 2025 11:27:06 +0200
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Ani Sinha <anisinha@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+ Cameron Esfahani <dirty@apple.com>,
+ Phil Dennis-Jordan <phil@philjordan.eu>,
+ Peter Maydell <peter.maydell@linaro.org>, Alexander Graf <agraf@csgraf.de>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>,
+ Roman Bolshakov <rbolshakov@ddn.com>
+Content-Transfer-Encoding: quoted-printable
+Message-Id: <36579635-89D1-4177-BECC-0A2DB170395E@ynddal.dk>
+References: <20250725085545.93619-1-mohamed@unpredictable.fr>
+To: Mohamed Mediouni <mohamed@unpredictable.fr>
+X-Mailer: Apple Mail (2.3826.600.51.1.1)
+X-Proofpoint-GUID: dNqIHK3YnKeYxAI0UfZeMXiDQBXIF78b
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwNzI1MDA4MCBTYWx0ZWRfX1AhS+ea78lEF
+ m7Esj6OM0K4roZPSc3YTbHNLWF1Q7x0ZUFGhBX7/Cih08xSCbf/byoZ7zL4Mv+F6aZFja2qwYzK
+ ISR6kxZ1cr4gZ79ONzlnrIAJ1WJQsNwerdtQ6xgYwRR1jMNmKr3FIdy9MhoU07GuAZSV1y3Hf4x
+ bBEZaJAgyu8LUBIFfj7gNdd/5EwKXRioCsF5aARNXNLK+A3LE9xNLqJfz4uSIvZHDEbCurxz/UP
+ 92vdvqemqqIIJmfgbrP/KPTdRE1y+wHYcT9etcKi8ZZ/WEgwcWDPSPzKh+UyB1r1AYhprInzg=
+X-Proofpoint-ORIG-GUID: dNqIHK3YnKeYxAI0UfZeMXiDQBXIF78b
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.9,FMLib:17.12.80.40
+ definitions=2025-07-25_02,2025-07-24_01,2025-03-28_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0
+ bulkscore=0 spamscore=0 suspectscore=0 phishscore=0 mlxlogscore=999
+ clxscore=1030 malwarescore=0 adultscore=0 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.22.0-2506270000 definitions=main-2507250080
+Received-SPF: pass client-ip=57.103.89.93; envelope-from=mads@ynddal.dk;
+ helo=outbound.ci.icloud.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -95,63 +91,67 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, 25 Jul 2025 at 01:10, Alex Richardson <alexrichardson@google.com> wrote:
->
-> In the PMUv3, a new AArch32 64-bit (MCRR/MRRC) accessor for the
-> PMCCNTR was added. In QEMU we forgot to implement this, so only
-> provide the 32-bit accessor. Since we have a 64-bit PMCCNTR
-> sysreg for AArch64, adding the 64-bit AArch32 version is easy.
->
-> We add the PMCCNTR to the v8_cp_reginfo because PMUv3 was added
-> in the ARMv8 architecture. This is consistent with how we
-> handle the existing PMCCNTR support, where we always implement
-> it for all v7 CPUs. This is arguably something we should
-> clean up so it is gated on ARM_FEATURE_PMU and/or an ID
-> register check for the relevant PMU version, but we should
-> do that as its own tidyup rather than being inconsistent between
-> this PMCCNTR accessor and the others.
->
-> Since the register name is the same as the 32-bit PMCCNTR, we set
-> ARM_CP_NO_GDB to avoid generating an invalid GDB XML.
 
-This is the wrong way around, I think. We should prefer to expose
-to GDB the 64-bit view of it, not the 32-bit view, because
-it's more comprehensive. Compare handling of the "PAR" definition
-in target/arm/helper.c.
+> On 25 Jul 2025, at 10.55, Mohamed Mediouni <mohamed@unpredictable.fr> =
+wrote:
+>=20
+> Early series.
+>=20
+> Known issues:
+> - when nested virt is enabled, no UI response within EDK2
+> and a permanent wait. Workaround: -boot menu=3Don,splash-time=3D0
+> - Save/restore of GIC state isn't complete yet.
+> - Save/restore of HVF state when EL2 is enabled isn't complete yet.
+> - This series doesn't contain EL2 physical timer emulation, which is
+> needed if not leveraging the Apple vGIC.
+>=20
+> However, this is usable and there seems to be some interest for it. =
+Hopefully
+> it'll be at least somewhat useful.
+>=20
+> PS: I can step up to maintain HVF support if needed. WHPX arm64 patch =
+series
+> is coming soon too.
+>=20
+> v1->v2:
+> Oops. I did a mistake when preparing my patches.
+>=20
+> - Add hvf_arm_el2_enable(_) call to virt_set_virt
+> - Fix nested virt support check to add HVF
+>=20
+> Mohamed Mediouni (9):
+>  target/arm: hvf: stubbing writes to LORC_EL1
+>  accel, hw/arm, include/system/hvf: plumbing changes for HVF vGIC
+>  target/arm: hvf: instantiate GIC early
+>  target/arm: add asserts for code paths not leveraged when using the
+>    vGIC
+>  hw/intc: Add hvf vGIC interrupt controller support
+>  hw/arm, target/arm: nested virtualisation on HVF
+>  target/arm: hvf: pass through CNTHCTL_EL2 and MDCCINT_EL1
+>  hw/arm: virt: add GICv2m for the case when ITS is not available
+>  target/arm: hvf: use LOG_UNIMP for CNTP_CVAL_EL0/SYSREG_CNTP_CTL_EL0
+>=20
+> accel/hvf/hvf-all.c        |  44 +++
+> accel/stubs/hvf-stub.c     |   1 +
+> hw/arm/virt-acpi-build.c   |   4 +-
+> hw/arm/virt.c              |  34 +-
+> hw/intc/arm_gicv3_common.c |   3 +
+> hw/intc/arm_gicv3_hvf.c    | 624 +++++++++++++++++++++++++++++++++++++
+> hw/intc/meson.build        |   1 +
+> include/hw/arm/virt.h      |   2 +
+> include/system/hvf.h       |   3 +
+> system/vl.c                |   2 +
+> target/arm/hvf-stub.c      |  15 +
+> target/arm/hvf/hvf.c       |  91 ++++++
+> target/arm/hvf_arm.h       |   3 +
+> 13 files changed, 817 insertions(+), 10 deletions(-)
+> create mode 100644 hw/intc/arm_gicv3_hvf.c
+>=20
+> --=20
+> 2.39.5 (Apple Git-154)
+>=20
 
->
-> See https://developer.arm.com/documentation/ddi0601/2024-06/AArch32-Registers/PMCCNTR--Performance-Monitors-Cycle-Count-Register?lang=en
->
-> Signed-off-by: Alex Richardson <alexrichardson@google.com>
-> ---
-
-It would have been helpful to mention here what the changes
-from v1 were -- I had to go and look up the list archives to
-remind myself of why we had to drop v1.
-
->  target/arm/cpregs-pmu.c | 6 ++++++
->  1 file changed, 6 insertions(+)
->
-> diff --git a/target/arm/cpregs-pmu.c b/target/arm/cpregs-pmu.c
-> index 0f295b1376..ef176e4045 100644
-> --- a/target/arm/cpregs-pmu.c
-> +++ b/target/arm/cpregs-pmu.c
-> @@ -1276,6 +1276,12 @@ void define_pm_cpregs(ARMCPU *cpu)
->                .access = PL0_R, .accessfn = pmreg_access, .type = ARM_CP_CONST,
->                .fgt = FGT_PMCEIDN_EL0,
->                .resetvalue = cpu->pmceid1 },
-> +            { .name = "PMCCNTR", .state = ARM_CP_STATE_AA32,
-> +              .cp = 15, .crm = 9, .opc1 = 0,
-> +              .access = PL0_RW, .accessfn = pmreg_access_ccntr, .resetvalue = 0,
-> +              .type = ARM_CP_ALIAS | ARM_CP_IO | ARM_CP_64BIT | ARM_CP_NO_GDB,
-> +              .fgt = FGT_PMCCNTR_EL0, .readfn = pmccntr_read,
-> +              .writefn = pmccntr_write,  },
->          };
->          define_arm_cp_regs(cpu, v8_pm_reginfo);
->      }
-> --
-> 2.50.1.470.g6ba607880d-goog
-
-thanks
--- PMM
+Great patch set to see! I was working on the same functionality before
+going on vacation. If you give me a bit of time, then I'll make sure to
+review it.=
 

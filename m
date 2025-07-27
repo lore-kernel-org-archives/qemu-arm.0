@@ -4,39 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB783C87FCE
-	for <qemu-arm@archiver.kernel.org>; Sun, 27 Jul 2025 11:49:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5871C87FCC
+	for <qemu-arm@archiver.kernel.org>; Sun, 27 Jul 2025 19:52:49 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ufzrv-0003ey-JJ; Sun, 27 Jul 2025 07:48:43 -0400
+	id 1ug7PQ-0002KU-EP; Sun, 27 Jul 2025 15:51:50 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1ufzrt-0003ek-Jn; Sun, 27 Jul 2025 07:48:41 -0400
+ id 1ug7PD-0002JU-12; Sun, 27 Jul 2025 15:51:35 -0400
 Received: from isrv.corpit.ru ([212.248.84.144])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1ufzrr-0003RM-CO; Sun, 27 Jul 2025 07:48:41 -0400
+ id 1ug7PA-0004Lu-Vg; Sun, 27 Jul 2025 15:51:34 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 9A80513A8AB;
- Sun, 27 Jul 2025 14:48:18 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id 487F413A940;
+ Sun, 27 Jul 2025 22:51:20 +0300 (MSK)
 Received: from [192.168.177.146] (mjtthink.wg.tls.msk.ru [192.168.177.146])
- by tsrv.corpit.ru (Postfix) with ESMTP id EBA6E250F26;
- Sun, 27 Jul 2025 14:48:23 +0300 (MSK)
-Message-ID: <ddf6f9e3-daaa-4ea1-a5e6-d402a75524c8@tls.msk.ru>
-Date: Sun, 27 Jul 2025 14:48:23 +0300
+ by tsrv.corpit.ru (Postfix) with ESMTP id 3A2F6251100;
+ Sun, 27 Jul 2025 22:51:26 +0300 (MSK)
+Message-ID: <7e5dc89a-7b74-4a5e-8f51-55f587a4896b@tls.msk.ru>
+Date: Sun, 27 Jul 2025 22:51:26 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v7 09/36] hw/pci-host/gpex-acpi: Use
- build_pci_host_bridge_osc_method
-To: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
- imammedo@redhat.com, Jonathan.Cameron@huawei.com, gustavo.romero@linaro.org,
- anisinha@redhat.com, mst@redhat.com, shannon.zhaosl@gmail.com
-Cc: pbonzini@redhat.com, philmd@linaro.org, alex.bennee@linaro.org
-References: <20250714080639.2525563-1-eric.auger@redhat.com>
- <20250714080639.2525563-10-eric.auger@redhat.com>
+Subject: Re: [PATCH v1 19/21] pc-bios: Update AST27x0 vBootrom with SSP/TSP
+ SCU initialization support
+To: Jamin Lin <jamin_lin@aspeedtech.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
+ <clg@kaod.org>, Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+Cc: troy_lee@aspeedtech.com, Hao Wu <wuhaotsh@google.com>,
+ Havard Skinnemoen <hskinnemoen@google.com>
+References: <20250717034054.1903991-1-jamin_lin@aspeedtech.com>
+ <20250717034054.1903991-20-jamin_lin@aspeedtech.com>
 Content-Language: en-US, ru-RU
 From: Michael Tokarev <mjt@tls.msk.ru>
 Autocrypt: addr=mjt@tls.msk.ru; keydata=
@@ -82,7 +85,7 @@ Autocrypt: addr=mjt@tls.msk.ru; keydata=
  YPkzzso6HT7rlapB5nulYmplJZSZ4RmE1ATZKf+wUPocDu6N10LtBNbwHWTT5NLtxNJAJAvl
  ojis6H1kRWZE/n5buyPY2NYeyWfjjrerOYt3er55n4C1I88RSCTGeejVmXWuo65QD2epvzE6
  3GgKngeVm7shlp7+d3D3+fAAHTvulQQqV3jOodz+B4yzuZ7WljkNrmrWrH8aI4uA98c=
-In-Reply-To: <20250714080639.2525563-10-eric.auger@redhat.com>
+In-Reply-To: <20250717034054.1903991-20-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=212.248.84.144; envelope-from=mjt@tls.msk.ru;
@@ -108,73 +111,20 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 14.07.2025 11:04, Eric Auger wrote:
-> gpex build_host_bridge_osc() and x86 originated
-> build_pci_host_bridge_osc_method() are mostly identical.
+On 17.07.2025 06:40, Jamin Lin via wrote:
+> The updated boot ROM includes logic to initialize and enable SSP/TSP using SCU
+> registers, based on reserved-memory regions defined in the device tree.
 > 
-> In GPEX, SUPP is set to CDW2 but is not further used. CTRL
-> is same as Local0.
-> 
-> So let gpex code reuse build_pci_host_bridge_osc_method()
-> and remove build_host_bridge_osc().
-> 
-> Also add an imply ACPI_PCI clause along with
-> PCI_EXPRESS_GENERIC_BRIDGE to compile hw/acpi/pci.c
-> when its dependency is resolved (ie. CONFIG_ACPI_PCI).
-> This is requested to link qemu-system-mips64el.
+> Its source code is available at:
+> https://github.com/google/vbootrom/commit/f9eb0bb57decbab860a81712c56132c2102fa98e
 
-This patch somehow broke microvm-only build which is used
-by debian.
+How to (re)build this one?
 
-configure options used (trimmed a bit):
+Please add build instructions to roms/Makefile.  I dunno how this one is
+related to roms/vbootrom which is already used for npcmxxx_bootrom.bin
+files - maybe all the 3 bootroms should be kept in sync.
 
-../configure \
-  --without-default-features \
-  --target-list=x86_64-softmmu \
-  --enable-kvm --disable-tcg \
-  --enable-pixman \
-  --enable-vnc \
-  --audio-drv-list="" \
-  --without-default-devices \
-  --with-devices-x86_64=microvm \
-  --enable-vhost-user
-
-configs/devices/x86_64-softmmu/microvm.mak:
----- cut ----
-# see configs/devices/i386-softmmu/default.mak
-# for additional devices which can be disabled
-#
-CONFIG_PCI_DEVICES=n
-
-CONFIG_MICROVM=y
-
-CONFIG_VIRTIO_BLK=y
-CONFIG_VIRTIO_SERIAL=y
-CONFIG_VIRTIO_INPUT=y
-CONFIG_VIRTIO_INPUT_HOST=y
-CONFIG_VHOST_USER_INPUT=y
-CONFIG_VIRTIO_NET=y
-CONFIG_VIRTIO_SCSI=y
-CONFIG_VIRTIO_RNG=y
-CONFIG_VIRTIO_CRYPTO=y
-CONFIG_VIRTIO_BALLOON=y
-CONFIG_VIRTIO_GPU=y
-CONFIG_VHOST_USER_GPU=y
----- cut ----
-
-The result:
-FAILED: qemu-system-x86_64
-cc -m64 @qemu-system-x86_64.rsp
-/usr/bin/ld: libsystem.a.p/hw_pci-host_gpex-acpi.c.o: in function 
-`acpi_dsdt_add_host_bridge_methods':
-hw/pci-host/gpex-acpi.c:83:(.text+0x274): undefined reference to 
-`build_pci_host_bridge_osc_method'
-collect2: error: ld returned 1 exit status
-
-Is it because my devices file wrong now, or some `select FOO` kconfig
-is missing?
-
-Should this code be enabled with this configuration anyway?
+Right now, with no instructions in roms/Makefile, it's problematic.
 
 
 Thanks,

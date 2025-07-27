@@ -4,81 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B141FC87FCE
-	for <qemu-arm@archiver.kernel.org>; Sun, 27 Jul 2025 08:04:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 864B3C87FCC
+	for <qemu-arm@archiver.kernel.org>; Sun, 27 Jul 2025 08:04:02 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ufwLx-0005fN-7l; Sun, 27 Jul 2025 04:03:29 -0400
+	id 1ufwMM-0007BF-B8; Sun, 27 Jul 2025 04:03:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ufwLe-0005AF-5e
- for qemu-arm@nongnu.org; Sun, 27 Jul 2025 04:03:11 -0400
-Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c])
+ id 1ufwLq-0005I1-AD
+ for qemu-arm@nongnu.org; Sun, 27 Jul 2025 04:03:22 -0400
+Received: from mail-pl1-x631.google.com ([2607:f8b0:4864:20::631])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ufwLc-00042r-Kh
- for qemu-arm@nongnu.org; Sun, 27 Jul 2025 04:03:09 -0400
-Received: by mail-pl1-x62c.google.com with SMTP id
- d9443c01a7336-2350fc2591dso39842335ad.1
- for <qemu-arm@nongnu.org>; Sun, 27 Jul 2025 01:03:08 -0700 (PDT)
+ id 1ufwLn-00046V-Ud
+ for qemu-arm@nongnu.org; Sun, 27 Jul 2025 04:03:22 -0400
+Received: by mail-pl1-x631.google.com with SMTP id
+ d9443c01a7336-24014cd385bso1420215ad.0
+ for <qemu-arm@nongnu.org>; Sun, 27 Jul 2025 01:03:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1753603387; x=1754208187; darn=nongnu.org;
+ d=linaro.org; s=google; t=1753603399; x=1754208199; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=8A2p50fg2lrocPlTL2vHTdYXWv0sBXWf3nT/JIz8EKA=;
- b=C87E6EkqCknoLZoMSb/v9s4gIXy2tX1480zD183lDNVHer1rg/H9/LVMCdrVw/TVHw
- scavmGM+Ha/pLPZ4T0SicJxIxkD2RF+lETqCjAC97cBmBh34CTttRkYQ7dsCqi08eeTq
- L/gICFChno/HPXgBmDfK/15QidlYlctb6/OHfQD5aMAcz9QzyMm5HIH2MtZ/Av3yGnsH
- tldHlgYqExOwQrQ/u2QQ+C0R96dS3vR5dyE6aQyRE+aDnII2kfYdCXvXB2qa1IPGco7w
- dq+JmfThMV6fnIr4HooHzz+GFwcDzE/8TzT2bx/s/Vtqat48N6U28KgZnKo3rk2KEG2a
- z0xA==
+ bh=DL9CLJOUFdaWACxBCMgH+zFAs5kXtrfa05dzoIG9m4s=;
+ b=scZJR1jpTVyexWRgNKBVnGOWnBmHvcw6ee7+N2Joj/aZsz4NStydfsdur3LOcuz8Sn
+ DqV7aHqsB8RplC7l4vHD00+sWYJjgKEVcFBdw7nmkFbMe9Hhy86HAsc8PefzmitKDsMF
+ KgQM0alUzfmMRQpYFhoEMkEev0D7diVP6++ZS/yBY85wjmcJ5IxQjEFnjFMQ/mZK8w4F
+ EgGRDAGTDuaz99TavqY0oypbdC927+mk060YHvBo+LsP3piVQY1uJ2xaaZNSh2vgu5Rz
+ coBU5Hw0U/dIA2J5D0A1q67I9Ok0IZ1s7G9/m3oRbc8luDX6niEqLWSlVCHfQauFzxF8
+ yIlg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1753603387; x=1754208187;
+ d=1e100.net; s=20230601; t=1753603399; x=1754208199;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=8A2p50fg2lrocPlTL2vHTdYXWv0sBXWf3nT/JIz8EKA=;
- b=IRzRlm5rZRXCJPxdby9BBAsYd0T7ArjQyI9CTqcraWCAtw61RSgiRWNndKwt/uEqq6
- 8Aa3HgDYrtQd0RpyFPrFwrxx7C0FwRCFgHmERGCmU5+/Pdg5raJl1J1q7Q/KuC9MDiZn
- 3d/jjKj88AIZv1YAizT81+aF4/S2SYg4qgo95IuYz078XvJ0B73vjCCcs1+FYVBYlRd4
- fd0LdywzqxHFwTxZVhN6UhDGTk9sIyDoy4dAL7SEKz1mHmq/fCYABiFU4b+RWXnVwM5O
- FN3YFqL18amTcrmlX8V44z7ar7D3yMvGt0G5IkAb41C6M5iwg7lJMIqWm3QqXYtpaVvE
- /3WA==
-X-Gm-Message-State: AOJu0Yye+VjekHlUtAx5EoQdvSrSiJUsRsJxoYdbfZOdukwbP55sWQSn
- 5umRQ72sA1y13hE4H6OS7TtTD7dYhm/nUXQghCLe7V/ee9ZQ24YP4YZo3APJaHGvGyqHhQzBp7p
- amMXc
-X-Gm-Gg: ASbGnctLXQ9sGGVDfHRZ5X3wDeNw3YP8vsFqpXw8UMtrXurmZ4nP5a84IuNxPr/JLEu
- Al4MAPxIhGxIoVHg5CsRXmuSdgWTyFMdCblhCOm8K5SYVvFv2Cewlax8Pex6xlNJtDytTzSfir3
- P+5yZpmRX7ZHcheZlkkYMai1qFOzOXuyMBkMgjrE6EVGDFWmbTeZch/77MsJ/KdLe6+o6iosnWj
- PXlLWqd1oPcchaDELkoOkAVoi1JImnFtWtrOWxGfMZRlJI3R8P9iU8uDxBfC34SA0YtiCbShlsz
- gquHT19fm2+RZPeU/v2PrSQ6T7A56SlBIdQblSBxC5+6iJHHZ4HptffVJ/J+w/a92bunDc9jxne
- krO2ilbdpE9geQ/ECoSfjZc38QkevvFvNTOn3iItQWpcb2VujpNAqJptiOPJH5Qzb/8DIZE/EOb
- x9k+NvGpS7b1qEYG3FQDMV
-X-Google-Smtp-Source: AGHT+IHf3wJsHXONbsv6Uf4y5Yowp0JbTdoHUBtuq5S5db/3aMTJ1/U4pGseHJ2GiebRIvyL4dEnZQ==
-X-Received: by 2002:a17:902:dacc:b0:231:fd73:f8e5 with SMTP id
- d9443c01a7336-23fb2cc0818mr114605865ad.24.1753603387243; 
- Sun, 27 Jul 2025 01:03:07 -0700 (PDT)
+ bh=DL9CLJOUFdaWACxBCMgH+zFAs5kXtrfa05dzoIG9m4s=;
+ b=RB97QZYLbNC1oTIKM96g9ScRJpMaaZIwbCNsAusOEKOEGanGy4mi+woTZXW9ytzFUi
+ 40Ftb+k/IKZINkllvKdD6FZydTqARf6roZZGnjMQLlV8EXTkmMEiOBUhs9fAfR7tx7PB
+ mW7k0DYB0DB3SXAXkStrESwuaD3IxdaWcZLnt0XOuYO3zZHvDJkwNzcvk0Qjlb3BnpmF
+ yqNze0L+savP98mOs4YLntm3t8Izdu0aew/1lggwMB3Dzw/Fe4D/CsQq7j8u7lg0Njo8
+ pl+qf1MXdJuDa+GmCUMueo9LOcTWWOLpLwV9xQ1/9A/qfn5vdqNEdQ+VIKrH68yZaia2
+ pwMg==
+X-Gm-Message-State: AOJu0YzatViZCwlgq3wmGF5lNNiz/bRo7bopAhKd21nEvboQSkR7kOyS
+ R99Wn5jfaQbRh2/V8NwNXiR8b6peuTV909uyasJQRIRrZDI57Z2bisZQo6QHccksh/CK2VZxKEN
+ bvtAQ
+X-Gm-Gg: ASbGncvKgu6uXcT8rKsZKhIAAkYshXhGS8dDmPLuF/XQQ0/Pb0HEP7q0k5+IgKeNR3u
+ xnsp/8MozYg3YjwfTQfQSd+xLuvCX8pTh9kbic9MzswUyfgNQwogJtgKIBfXE0w5So2yWsWPFQ+
+ ol07yt4ZNHfV2ynvuqA4LH4OPvhvNhcU3LowZe5lwyqbJ+3yhQukiSL6OikWz+pWKAKIkHLenr2
+ s8VyeFeju5GsG1roPpRQtBQMeG/jlyElFfwP2WiwEfxNnTnM20Q14thGLEzZNVu84qeXqMVNqE5
+ tSynV8dw560GrUzwPBnop7Jb8y9AY3Z2Q8IL+K3sNvtH3HM/SnKWDL83z3bgBfjeQFFjWYL615o
+ VCqB6t/VXOJDzOBlxEdNUlBenpm6/h24FgDpd+QS7r4axKzjkJLmyBO32KQQWnoKw+O5er70G5I
+ iQ8j2K7isyuQ==
+X-Google-Smtp-Source: AGHT+IE+lQz/NXMBFH8NUBwLwA4+Enx3kN9Mz4zJESXm652yImrSPGkku3jZKzomWsXStNwwdqxZrg==
+X-Received: by 2002:a17:902:cf03:b0:235:e942:cb9d with SMTP id
+ d9443c01a7336-23fb30cb4bdmr131589495ad.17.1753603398778; 
+ Sun, 27 Jul 2025 01:03:18 -0700 (PDT)
 Received: from localhost.localdomain (syn-098-150-199-049.res.spectrum.com.
  [98.150.199.49]) by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-23fbe333efesm30016415ad.65.2025.07.27.01.03.06
+ d9443c01a7336-23fbe333efesm30016415ad.65.2025.07.27.01.03.17
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 27 Jul 2025 01:03:06 -0700 (PDT)
+ Sun, 27 Jul 2025 01:03:18 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH 08/82] target/arm: Remove outdated comment for ZCR_EL12
-Date: Sat, 26 Jul 2025 22:01:40 -1000
-Message-ID: <20250727080254.83840-9-richard.henderson@linaro.org>
+Subject: [PATCH 18/82] target/arm: Do not migrate env->exception
+Date: Sat, 26 Jul 2025 22:01:50 -1000
+Message-ID: <20250727080254.83840-19-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250727080254.83840-1-richard.henderson@linaro.org>
 References: <20250727080254.83840-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62c;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62c.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::631;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x631.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -101,30 +101,31 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The comment about not being included in the summary table
-has been out of date for quite a while.
+These are not architectural state, only placeholders
+between identifying the exception and delivering it.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/helper.c | 5 -----
- 1 file changed, 5 deletions(-)
+ target/arm/machine.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 20b69a12df..dc6c82b7e2 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -4566,11 +4566,6 @@ static void define_arm_vh_e2h_redirects_aliases(ARMCPU *cpu)
-         { K(3, 0, 14, 1, 0), K(3, 4, 14, 1, 0), K(3, 5, 14, 1, 0),
-           "CNTKCTL", "CNTHCTL_EL2", "CNTKCTL_EL12" },
- 
--        /*
--         * Note that redirection of ZCR is mentioned in the description
--         * of ZCR_EL2, and aliasing in the description of ZCR_EL1, but
--         * not in the summary table.
--         */
-         { K(3, 0,  1, 2, 0), K(3, 4,  1, 2, 0), K(3, 5, 1, 2, 0),
-           "ZCR_EL1", "ZCR_EL2", "ZCR_EL12", isar_feature_aa64_sve },
-         { K(3, 0,  1, 2, 6), K(3, 4,  1, 2, 6), K(3, 5, 1, 2, 6),
+diff --git a/target/arm/machine.c b/target/arm/machine.c
+index 6986915bee..8dbeca2867 100644
+--- a/target/arm/machine.c
++++ b/target/arm/machine.c
+@@ -1085,9 +1085,9 @@ const VMStateDescription vmstate_arm_cpu = {
+         VMSTATE_UINT64(env.exclusive_val, ARMCPU),
+         VMSTATE_UINT64(env.exclusive_high, ARMCPU),
+         VMSTATE_UNUSED(sizeof(uint64_t)),
+-        VMSTATE_UINT32(env.exception.syndrome, ARMCPU),
+-        VMSTATE_UINT32(env.exception.fsr, ARMCPU),
+-        VMSTATE_UINT64(env.exception.vaddress, ARMCPU),
++        VMSTATE_UNUSED(sizeof(uint32_t)),
++        VMSTATE_UNUSED(sizeof(uint32_t)),
++        VMSTATE_UNUSED(sizeof(uint64_t)),
+         VMSTATE_TIMER_PTR(gt_timer[GTIMER_PHYS], ARMCPU),
+         VMSTATE_TIMER_PTR(gt_timer[GTIMER_VIRT], ARMCPU),
+         {
 -- 
 2.43.0
 

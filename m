@@ -4,88 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6393C87FCE
-	for <qemu-arm@archiver.kernel.org>; Sun, 27 Jul 2025 08:21:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 154ABC87FCE
+	for <qemu-arm@archiver.kernel.org>; Sun, 27 Jul 2025 08:21:56 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ufwTh-0000rG-9T; Sun, 27 Jul 2025 04:11:35 -0400
+	id 1ufwQP-0005Zv-Kz; Sun, 27 Jul 2025 04:08:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ufwSu-0000C0-SG
- for qemu-arm@nongnu.org; Sun, 27 Jul 2025 04:10:41 -0400
-Received: from mail-pf1-x42d.google.com ([2607:f8b0:4864:20::42d])
+ id 1ufwPN-0001ga-UV
+ for qemu-arm@nongnu.org; Sun, 27 Jul 2025 04:07:02 -0400
+Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ufwSq-0005R8-Pp
- for qemu-arm@nongnu.org; Sun, 27 Jul 2025 04:10:40 -0400
-Received: by mail-pf1-x42d.google.com with SMTP id
- d2e1a72fcca58-7600271f3e9so2997028b3a.0
- for <qemu-arm@nongnu.org>; Sun, 27 Jul 2025 01:10:35 -0700 (PDT)
+ id 1ufwPL-0004kN-MZ
+ for qemu-arm@nongnu.org; Sun, 27 Jul 2025 04:07:01 -0400
+Received: by mail-pl1-x62f.google.com with SMTP id
+ d9443c01a7336-2352400344aso30525535ad.2
+ for <qemu-arm@nongnu.org>; Sun, 27 Jul 2025 01:06:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1753603835; x=1754208635; darn=nongnu.org;
+ d=linaro.org; s=google; t=1753603618; x=1754208418; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=mAfnYZFojtklCwJRxymdFpeNN7gNQpULrXmCsUVIRjI=;
- b=w3tlnSnCioUiLKwALz9I5PlL8rT0RgExpLGitYUDQQAsRh+K7pECDT7sccDXKFPyf2
- cRjlJIeFZ6mF81P8MHduIoSvPSxnMK2FQOgmxHVxlwbjUfuzaKSHI6yVBTkBp9XwkeoP
- EK/xRhe0nl231p3yPo1H8FUTNvdB1MRVgjrtuSj2KVJfzwM8ehVwPX3vwmWa6h34/OFu
- MVXv3bV6cvWWVHEtOTyrTYdjkIhXYFbGgcjfSRim5BGPwkHbIXkC4kgsZg9vsLKnwz8K
- eNMWZj/kGaVq6YjP4WOSG0B+x34P5ykCa6BV/ShO0YR0u6L/sXuwIrM4W2jCbM+/YQia
- Z/Zw==
+ bh=+JapRuQj/rYjZd7QW4g+JSnFIid1K0Vna/nY4R0gHLQ=;
+ b=oSEpP2m9QeyR3C/LWCGjZjnAHy7pSFcrlaJ+yAIBNDLa8/Fy6RozqNtrq1KVVsmC+y
+ 90tTjoO7l+9g/TsqofyuxgjSM0i9j/OMJB28ayc0EWvtR71sCHmwrS+nP6GilSVC6+xH
+ AKGxeU12I0/LbrSDK51Zbr2lZwBd8ndzQ29BFCwhuLfttdLIdg0SjiOAAMicoozhGcIY
+ CVhe4c2FS07+uyG653knXCnsCVlLK70cp+PK+vR7vhSe8Zhn8e7aOcUMdqVvcFHcN8zY
+ 09MGTluF5kA1dlvp1cyRXCOz1Z7VVASP+r/luUzXcjQPh6NSvKoh52kyDKs4HCgdXJ5s
+ mHJQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1753603835; x=1754208635;
+ d=1e100.net; s=20230601; t=1753603618; x=1754208418;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=mAfnYZFojtklCwJRxymdFpeNN7gNQpULrXmCsUVIRjI=;
- b=XTJrWd5eFq/P+f4mYbwCy35XGM/IYtIEGDVwSsZMtm/cNBu+tZvG1sPv+0wUY9+6Zn
- wqVlQL8ImcPeSeF0sQyDzNfJM8Q7tZQ/vPnhMf3h7d5cjHNw0UQkUj6nyH4Q/iPIBUNE
- N6QnZr8KkWpcL8fEOK6+rm8UqpFM58LN2DqD+xOjNxCwwuMPLaaK1pIhhDPUr89m39a+
- u0idx+LLiDnS4Uoac4J4lRhtcP3xOTBYLmm6vRmcEa5O/XU1putmmDu59aA/nwlOrr5K
- TQDjGEPu7BeL0kHR8CaZxA0ZJk+C6yBcv9L0CSS0bRsAqT9lBu99LTVnosak0eDkE1Pe
- UAaA==
-X-Gm-Message-State: AOJu0YwGMlKv3v2HLqfyiKw4g/7KrFGEQMkqd1XCcaLVenQiXUHWc38X
- Gb0QvnqT7VRzPNwMlyWZkhCqZIsAHmGyEyOtlxTpeA1H8p5MJZN4n1xvb605oz44UIr/2lxxWpd
- Lqlbj
-X-Gm-Gg: ASbGncspI2YlsQFNZhQo/1Z0/92pkSr3J/dhxm+HPtI5786y0W3agRl/TCyoLjI9IeD
- wuHIa8NUXwvX5idhzdCixtXAbImN2ceWKNouODCL4zNVuufN9Jb0TKXz4HOvwZ54nS661r2kwNL
- Btlt2NebesBHz5z+4uJhi5eZmiQQ882lHmeYrixbPrtuq7NbTpbvJBXS9zZ1Akw4dlXHgR/3qZs
- sI0KGLXJMCg10JL2ciEIrarLfKlOZSqgTCGfKsiy5gLR1gxdz1U/0DKeaGOEyk5pqpcId4C7GsT
- m1rkWJcluaIRBGKMA0QLcVVR/DMWzJNf/xx9XL8i1cR+MGBCz79Xrd+NOk6DPOlZO4E65KQVYIB
- fG0/uwFUe7vdEj9Ikp3WWK5JoCg7oMNtcS3W5wxKKtgAl5QOTSiieqJrYm+2qmvWMvi3yRU+8L5
- RqFx6bB+uHnQ==
-X-Google-Smtp-Source: AGHT+IGEDv1rKx+ii9+DsUIH0u3zZgy2AbMLB5Sk/qBDzZpLvN5BKGULoBO4iBDaWkaloNky4Q1Tmw==
-X-Received: by 2002:a05:6a20:914c:b0:21f:53e4:1919 with SMTP id
- adf61e73a8af0-23d6df7ea1dmr12511667637.3.1753603834878; 
- Sun, 27 Jul 2025 01:10:34 -0700 (PDT)
+ bh=+JapRuQj/rYjZd7QW4g+JSnFIid1K0Vna/nY4R0gHLQ=;
+ b=GsKJkM829kfzDcFdzQKTTnnhguGs0rAZafIRkxZZsafGQTNdX/GirUKUgjpZgrqgX/
+ NNRV5V3KkCvrS0v4vVkO6JN0vgkhnCicYYR4JBKfb47m2MIfzkDxT2bxXfNVwrHs8tMF
+ WIspwbd7lmH6T9diWY+e8x0fadD4c/PTKnN5f95qGB8euI4Xrf1E4pVRsWpM/uH06Pwy
+ OBehOhDSJoHBDpkbQwzwGIsHlJrm0DyFA4dIjRx0N0Q8xjye955E1KvXI73X16otDIRd
+ CC84l5CpMmwYy7IMxovkZbq624fPXO1mKYQpHC849iW6KcihrOlkVR5FiFGdQqzuFOoU
+ GFTg==
+X-Gm-Message-State: AOJu0Yzfz38yJr8zW7zVVIU6Vjj6tXmE9cPIesJrsoLVwovaPVL9qqlr
+ CtMOHdi+z+axc45Rckj5DsI/GcP6GInGPj7oUVSZ/z+YNbuyjek4puMzh4X/3ZetnTr1o0DOZv4
+ HmTSh
+X-Gm-Gg: ASbGncuBG1RHXwPa+gEMobxPKG3m8oXlnE2Ms6N8bItnUvOpp3YlTuRKkNCfPnNZzCD
+ 9wFqk/rhGshP2HI+RYW+ZP5clknjcgMvD+PFGXkiaRGIe91Jg+kyY+YgrINfub+YyJAV/kyQC0X
+ 81TeIyd/UlFmU+bI/EmTgOUTEY7Gjf8p8G7CFjQnBXiqpxlmEc+0cLcHhBQhbeJ3NqmeonqJLhh
+ epZLLUFaEDUoH/V75UJ4/j37D26UXo9wW+ag8M7VyoztEQp2ZMGcQNPiwgxNGMVNObVXvX0IoXs
+ nA6jfQMCZR8m9BgQDEqN4+trO0wpYmTE3kJbVTSj77cSPaQ2OISJogbqlxLOJIpAj6xktg6CrZF
+ 8gNICT76LaCu7qoll8EH88HBhiNNj+JnOH7Cz4BtzyZ+0PYE6kJDNrjA7HCTfN0QEJIFd6mSK47
+ VbNhMCfW19qw==
+X-Google-Smtp-Source: AGHT+IG0uzV56S+Q3O8b+sX45ycBAFUkQ8fuad9Y6UGFaJ2Q+JT3p1XWOZCznNjuH7Cj9oTmYkn8AA==
+X-Received: by 2002:a17:903:22cf:b0:23f:f707:f97e with SMTP id
+ d9443c01a7336-23ff707feaemr37050175ad.17.1753603618312; 
+ Sun, 27 Jul 2025 01:06:58 -0700 (PDT)
 Received: from localhost.localdomain (syn-098-150-199-049.res.spectrum.com.
  [98.150.199.49]) by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-76408c0271csm3085491b3a.49.2025.07.27.01.10.34
+ d9443c01a7336-24011d5bcbesm3908065ad.10.2025.07.27.01.06.57
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 27 Jul 2025 01:10:34 -0700 (PDT)
+ Sun, 27 Jul 2025 01:06:58 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH 81/82] tests/tcg/aarch64: Add gcspushm
-Date: Sat, 26 Jul 2025 22:02:53 -1000
-Message-ID: <20250727080254.83840-82-richard.henderson@linaro.org>
+Subject: [PATCH 50/82] target/arm: Split {arm,core}_user_mem_index
+Date: Sat, 26 Jul 2025 22:02:22 -1000
+Message-ID: <20250727080254.83840-51-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250727080254.83840-1-richard.henderson@linaro.org>
 References: <20250727080254.83840-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42d;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42d.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62f;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -101,111 +101,98 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Validate successful and trapped executions of GCSPUSHM, GCSPOPM.
+Separate current to unpriv and arm to core mmu conversions
+into two separate functions.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- tests/tcg/aarch64/gcspushm.c      | 77 +++++++++++++++++++++++++++++++
- tests/tcg/aarch64/Makefile.target |  2 +-
- 2 files changed, 78 insertions(+), 1 deletion(-)
- create mode 100644 tests/tcg/aarch64/gcspushm.c
+ target/arm/tcg/translate-a64.c | 24 +++++++++++++++---------
+ 1 file changed, 15 insertions(+), 9 deletions(-)
 
-diff --git a/tests/tcg/aarch64/gcspushm.c b/tests/tcg/aarch64/gcspushm.c
-new file mode 100644
-index 0000000000..0c7cc09065
---- /dev/null
-+++ b/tests/tcg/aarch64/gcspushm.c
-@@ -0,0 +1,77 @@
-+/* SPDX-License-Identifier: GPL-2.0-or-later */
-+
-+#include "gcs.h"
-+
-+
-+#define GCSPUSHM  "sys #3, c7, c7, #0, %[push]"
-+#define GCSPOPM   "sysl %[pop], #3, c7, c7, #1"
-+
-+static volatile uint64_t test_pc;
-+
-+static void test_sigsegv(int sig, siginfo_t *info, void *vuc)
-+{
-+    ucontext_t *uc = vuc;
-+
-+    assert(uc->uc_mcontext.pc == test_pc);
-+    assert(info->si_code == SEGV_CPERR);
-+    /* TODO: Dig for ESR and verify syndrome. */
-+    uc->uc_mcontext.pc += 4;
-+}
-+
-+static void test_sigill(int sig, siginfo_t *info, void *vuc)
-+{
-+    ucontext_t *uc = vuc;
-+
-+    assert(uc->uc_mcontext.pc == test_pc);
-+    assert(info->si_code == ILL_ILLOPC);
-+    uc->uc_mcontext.pc += 4;
-+}
-+
-+int main()
-+{
-+    struct sigaction sa = { .sa_flags = SA_SIGINFO };
-+    uint64_t tmp, old, new;
-+
-+    enable_gcs(PR_SHADOW_STACK_PUSH);
-+
-+    /* Valid value -- low 2 bits clear */
-+    old = 0xdeadbeeffeedcaec;
-+    asm volatile(GCSPUSHM "\n\t" GCSPOPM
-+                 : [pop] "=r" (new)
-+                 : [push] "r" (old));
-+    assert(old == new);
-+
-+    sa.sa_sigaction = test_sigsegv;
-+    if (sigaction(SIGSEGV, &sa, NULL) < 0) {
-+        perror("sigaction");
-+        exit(1);
-+    }
-+
-+    /* Invalid value -- SIGSEGV via EC_GCS */
-+    asm volatile("adr %[tmp], 0f\n\t"
-+                 "str %[tmp], %[test]\n\t"
-+                 GCSPUSHM "\n"
-+                 "0:" GCSPOPM
-+                 : [tmp] "=&r" (tmp),
-+                   [test] "=m" (test_pc),
-+                   [pop] "=r" (new)
-+                 : [push] "r" (1));
-+
-+    enable_gcs(0);
-+
-+    sa.sa_sigaction = test_sigill;
-+    if (sigaction(SIGILL, &sa, NULL) < 0) {
-+        perror("sigaction");
-+        exit(1);
-+    }
-+
-+    /* Pushm is disabled -- SIGILL via EC_SYSTEMREGISTERTRAP */
-+    asm volatile("adr %[tmp], 0f\n\t"
-+                 "str %[tmp], %[test]\n"
-+                 "0:\t" GCSPUSHM
-+                 : [tmp] "=&r" (tmp),
-+                   [test] "=m" (test_pc)
-+                 : [push] "r" (1));
-+
-+    exit(0);
-+}
-diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
-index 0347a36e8d..c6f401c317 100644
---- a/tests/tcg/aarch64/Makefile.target
-+++ b/tests/tcg/aarch64/Makefile.target
-@@ -76,7 +76,7 @@ $(SME_TESTS): CFLAGS += $(CROSS_AS_HAS_ARMV9_SME)
- endif
+diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
+index 34d22cac8a..eaeafdf138 100644
+--- a/target/arm/tcg/translate-a64.c
++++ b/target/arm/tcg/translate-a64.c
+@@ -93,7 +93,7 @@ void a64_translate_init(void)
+ }
  
- # GCS Tests
--GCS_TESTS += gcsstr
-+GCS_TESTS += gcsstr gcspushm
- AARCH64_TESTS += $(GCS_TESTS)
- $(GCS_TESTS): gcs.h
+ /*
+- * Return the core mmu_idx to use for A64 load/store insns which
++ * Return the full arm mmu_idx to use for A64 load/store insns which
+  * have a "unprivileged load/store" variant. Those insns access
+  * EL0 if executed from an EL which has control over EL0 (usually
+  * EL1) but behave like normal loads and stores if executed from
+@@ -103,7 +103,7 @@ void a64_translate_init(void)
+  *           normal encoding (in which case we will return the same
+  *           thing as get_mem_index().
+  */
+-static int get_a64_user_mem_index(DisasContext *s, bool unpriv)
++static ARMMMUIdx arm_user_mem_index(DisasContext *s, bool unpriv)
+ {
+     /*
+      * If AccType_UNPRIV is not used, the insn uses AccType_NORMAL,
+@@ -130,7 +130,13 @@ static int get_a64_user_mem_index(DisasContext *s, bool unpriv)
+             g_assert_not_reached();
+         }
+     }
+-    return arm_to_core_mmu_idx(useridx);
++    return useridx;
++}
++
++/* Return the core mmu_idx per above. */
++static int core_user_mem_index(DisasContext *s, bool unpriv)
++{
++    return arm_to_core_mmu_idx(arm_user_mem_index(s, unpriv));
+ }
  
+ static void set_btype_raw(int val)
+@@ -3539,7 +3545,7 @@ static void op_addr_ldst_imm_pre(DisasContext *s, arg_ldst_imm *a,
+     if (!a->p) {
+         tcg_gen_addi_i64(*dirty_addr, *dirty_addr, offset);
+     }
+-    memidx = get_a64_user_mem_index(s, a->unpriv);
++    memidx = core_user_mem_index(s, a->unpriv);
+     *clean_addr = gen_mte_check1_mmuidx(s, *dirty_addr, is_store,
+                                         a->w || a->rn != 31,
+                                         mop, a->unpriv, memidx);
+@@ -3560,7 +3566,7 @@ static bool trans_STR_i(DisasContext *s, arg_ldst_imm *a)
+ {
+     bool iss_sf, iss_valid = !a->w;
+     TCGv_i64 clean_addr, dirty_addr, tcg_rt;
+-    int memidx = get_a64_user_mem_index(s, a->unpriv);
++    int memidx = core_user_mem_index(s, a->unpriv);
+     MemOp mop = finalize_memop(s, a->sz + a->sign * MO_SIGN);
+ 
+     op_addr_ldst_imm_pre(s, a, &clean_addr, &dirty_addr, a->imm, true, mop);
+@@ -3578,7 +3584,7 @@ static bool trans_LDR_i(DisasContext *s, arg_ldst_imm *a)
+ {
+     bool iss_sf, iss_valid = !a->w;
+     TCGv_i64 clean_addr, dirty_addr, tcg_rt;
+-    int memidx = get_a64_user_mem_index(s, a->unpriv);
++    int memidx = core_user_mem_index(s, a->unpriv);
+     MemOp mop = finalize_memop(s, a->sz + a->sign * MO_SIGN);
+ 
+     op_addr_ldst_imm_pre(s, a, &clean_addr, &dirty_addr, a->imm, false, mop);
+@@ -4427,7 +4433,7 @@ static bool do_SET(DisasContext *s, arg_set *a, bool is_epilogue,
+         return false;
+     }
+ 
+-    memidx = get_a64_user_mem_index(s, a->unpriv);
++    memidx = core_user_mem_index(s, a->unpriv);
+ 
+     /*
+      * We pass option_a == true, matching our implementation;
+@@ -4481,8 +4487,8 @@ static bool do_CPY(DisasContext *s, arg_cpy *a, bool is_epilogue, CpyFn fn)
+         return false;
+     }
+ 
+-    rmemidx = get_a64_user_mem_index(s, runpriv);
+-    wmemidx = get_a64_user_mem_index(s, wunpriv);
++    rmemidx = core_user_mem_index(s, runpriv);
++    wmemidx = core_user_mem_index(s, wunpriv);
+ 
+     /*
+      * We pass option_a == true, matching our implementation;
 -- 
 2.43.0
 

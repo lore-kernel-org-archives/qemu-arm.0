@@ -4,82 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02BCFC87FCC
-	for <qemu-arm@archiver.kernel.org>; Sun, 27 Jul 2025 07:43:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9D02C87FCE
+	for <qemu-arm@archiver.kernel.org>; Sun, 27 Jul 2025 07:43:34 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ufw1U-0006Tk-Ea; Sun, 27 Jul 2025 03:42:20 -0400
+	id 1ufw1b-0007NC-Ct; Sun, 27 Jul 2025 03:42:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ufw1M-0006HE-TE
- for qemu-arm@nongnu.org; Sun, 27 Jul 2025 03:42:13 -0400
-Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
+ id 1ufw1S-0006JL-Lf
+ for qemu-arm@nongnu.org; Sun, 27 Jul 2025 03:42:18 -0400
+Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ufw1K-00014k-QC
- for qemu-arm@nongnu.org; Sun, 27 Jul 2025 03:42:12 -0400
-Received: by mail-pl1-x633.google.com with SMTP id
- d9443c01a7336-23636167afeso29800585ad.3
- for <qemu-arm@nongnu.org>; Sun, 27 Jul 2025 00:42:09 -0700 (PDT)
+ id 1ufw1Q-00016F-KK
+ for qemu-arm@nongnu.org; Sun, 27 Jul 2025 03:42:18 -0400
+Received: by mail-pl1-x636.google.com with SMTP id
+ d9443c01a7336-234f17910d8so29599825ad.3
+ for <qemu-arm@nongnu.org>; Sun, 27 Jul 2025 00:42:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1753602128; x=1754206928; darn=nongnu.org;
+ d=linaro.org; s=google; t=1753602135; x=1754206935; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=XNubQwhHjekWcdPAePqyJsttCoxvHncnRgRs+UUfMAk=;
- b=k6JsM4eMC1iaoXT/C1fTGJUWLWHvYMLrvmRybUKZmkVBuWffqOXteRWRYXrG4QZ6pb
- fDY+/734KL7hRZfHfX/fMZCtTlDJHWfe3Cw8qW07LplQBsoku/6tySxau2t8OhgAh5EW
- wBTIypzS1ymjf3gw75j0o3ngrKB1SccVk1QpN15l9h9HPMS4bLbUIEjHMLMFcC8aRz2f
- q6mrvIw7hZSoDr4Hfqtok8+hZaAjtZ8YAv32yIjwv0vD9/6mRbFimYAvttq73gIs3ChG
- wIsfTLoZywqTzLFm8Y1TvqIt53jl+xk1sFUl04vicyuV4uUt1n9b0b9Ifl7PhK43UOjX
- gEXg==
+ bh=ZZEiredJhDqkeFwlGWRs9PoM2IRfxTwE098IMi+CROg=;
+ b=Ieogk1CU26FotQWi6k0KO91QMTswGgwiQNHzYu/QNDP7uAZnjNKoqEzUqwYuM8dkF2
+ M7QrZ2/+fcmo05IyvAhZuYKwropQBF4a0XxkutawT4JCHoSifGbZKa7pWD3G+iyHMpCm
+ no6ahfGyJNgiJK1x4/OZZH/xFl+FWSgw1urxKfWwou9XKrm8lsAZtmtHYvDx0V5tC01s
+ endK9T4oiIoI6k+EnPLNeu4q+I7r0NgvEZJv/srKicT8SPWRuVm1sp7/wihnzn0gMm3m
+ umG9wEqWzR0JaVnENb1P/xanFEY6FSc0JeoXS1RhPo6kK0kVaa/PC9UnWQZx4wnexofK
+ oTHw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1753602128; x=1754206928;
+ d=1e100.net; s=20230601; t=1753602135; x=1754206935;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=XNubQwhHjekWcdPAePqyJsttCoxvHncnRgRs+UUfMAk=;
- b=BPYpHtSlh4hoUpAlngXBGweLq07Pqmw8kZOV8fzvCGlWdcutJQdXvSKIaMmrKDmS6J
- nGODZ3pJO8FNXLx4KluxnLKn8SW9/mAEP9DCcb8208cKlxQgKPVqzOeLL85xvwJgK13X
- 4+dUiF5TfsfL4Q70oiug6r9t0R1xA65ke4EN+YaSjLfb3BcqPNc2PxthFzJFxOXWE/ID
- A8zBwag1I761kysQ4hUqkc8OfLL1wXh22TAnc8mVjAVYUy1kTheK1XC7VYXl7vcEK9Be
- amc8UWnOHONQsFHnbP3GAVc4xnlshDQEzTer7S+Kh2o3apLbbZ6mLvtebcx2GGww96I+
- YZ+w==
-X-Gm-Message-State: AOJu0Yy27BiRzwiLGypXX/rg4TRw/QiiyhIMzA6haAd79fdNsPb2wBFO
- SudSWRtYtBWuKasbk7oXSyozuRvx2h2wIQR7B/ueVH/SdVMgZKJQ9g7tHEYkUXvWlRA=
-X-Gm-Gg: ASbGncsNfwrtymhL84kgY0RrnBdzn5rSBemaiciGViVkvLxcpiTMeCdXPhZmL2UL/IB
- D9KhJXGiUoxMAJFvhgrv6aMrcpip5fLxHP4mtbzFoQTa5TlqUFdWYeTwvYE1w3Yv3qk8Pzxr4FC
- ora/LecCurNieauiL+PHkbJQv4LomUABQRWC0KQ2X3slv/mgdsQutU+YSTSSLH1A5UOoJU00thS
- XSg3sD0pg4dzAQZs/5sCXRC3drwQdEot5PrUoJVbMlt2IwfubVzKlpsP359ezMLwjlbOfiChfsP
- loMvi6gtXmMSmSzDS0DK//PAERTn/PIU78ZT6B8Un1nCujXlBEiGU2LAyKi9E45rliQFNT/WX/I
- U7vryOyseDVdkbwmChvK9dTcL0j/cw/X2+a0hmpnYC/ONcCqPTdskPUZX2K1YUm2QDo4WLuripd
- WIV2y3A98/XA==
-X-Google-Smtp-Source: AGHT+IHBB4zlTMZ3rLRelmgvt/+6G9eF+jrUElzNVihq1WOHfeBvgx+4GIro0XahLQmnhrnyfZpsoA==
-X-Received: by 2002:a17:903:46c6:b0:236:6f5f:cab4 with SMTP id
- d9443c01a7336-23fb307c150mr108722485ad.5.1753602128605; 
- Sun, 27 Jul 2025 00:42:08 -0700 (PDT)
+ bh=ZZEiredJhDqkeFwlGWRs9PoM2IRfxTwE098IMi+CROg=;
+ b=U0rsvub5dZstDgdVRx4etaHXjceqrgWgEdWZ7KfBojdS4H/y/ha516l3sZ1rgzxPFI
+ W/i325Sa3gXOLoUaH6neDmici3kD6PIczhYZ+ntFbD/1kjNWJZ/clEqnFKYchDxcomfT
+ pxUzm28oAjiYF1FIdEF4JcnziU3xwAg7/asYA3SIqp/A/jgsuyyOi8zHbLHwuPpv/TKT
+ VLiWY9C5XNfnd78c9Cpnba1vbXWrDtPUR7US0A6uoQIfbcATxXBjse+vCyfVg4wbkpR3
+ qoAhz3lD4afXL7hpOdsnWu0i0QG+GG6lu4Qk053cRHiyLuYv8F0YfYq9eIwlakuFG3a3
+ pObA==
+X-Gm-Message-State: AOJu0YyiAcaw2UsKU6N5iSwA5yrwgPNQePdjpSVRvOek6GyKcPg/WD6W
+ 2Qcl4lvxhpX6VoC7uTRu9HVs2FKPgl9TRkh42LU6TDWpwIkOx4NGq5Ut0oF2nZA64nzucJRherI
+ 4q5nT
+X-Gm-Gg: ASbGncu+Wa+eHdFdexmaK+D7ZKbVv8A0hmf+Fv1n5AsrKiRp9+6lW2kUBq9gy+h8Y/O
+ 7kyTClBDp7r7Tbz6TcIZ1PpCNKRib1w0sJG56dNgiissPBU0Cxx2s4NbX3hOdPqleknxrCpvWU1
+ MNJOgCJKNFXa0fK7uCxCJmVajVTbXamENOVZei6b9uVB54l2G1/4kxEftT/13fx+Pfc7z57l9uL
+ mpIVStpJBWxoAjI4E/oa8F9meM1zLFvcJb5POeNNKRa1y5jDZUxcKU68G0ROfCTXzUfj7gmSvF7
+ Wqq2HfM7SseaPIgY8MuKnJ3kL9hnuo4jcUwvhY0IOpzu7VMzk60ltChDJwOi1lwCE3agqQzKHwj
+ YVgU3Ttg0pLawBEqOEueVxTyUsfSSWovdCVRzb37MqAnspQYvkyTNETbrPGHv1P+G34UQv3ATDO
+ 5beB1c1cuSdQ==
+X-Google-Smtp-Source: AGHT+IHlnv3cRavrG/Z+dmdJIbWIeUqVaf/04dVWIjo/GK8lSsQasIEfOjU6+ZkzrLZyZWdTBOeeuQ==
+X-Received: by 2002:a17:903:32d1:b0:234:ef42:5d75 with SMTP id
+ d9443c01a7336-23fb3032327mr109497715ad.20.1753602135264; 
+ Sun, 27 Jul 2025 00:42:15 -0700 (PDT)
 Received: from localhost.localdomain (syn-098-150-199-049.res.spectrum.com.
  [98.150.199.49]) by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-23fbe53b546sm29633055ad.177.2025.07.27.00.42.07
+ d9443c01a7336-23fbe53b546sm29633055ad.177.2025.07.27.00.42.13
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 27 Jul 2025 00:42:08 -0700 (PDT)
+ Sun, 27 Jul 2025 00:42:14 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
-	Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v9 1/6] tests/functional/test_aarch64_device_passthrough:
- update image
-Date: Sat, 26 Jul 2025 21:41:57 -1000
-Message-ID: <20250727074202.83141-2-richard.henderson@linaro.org>
+	Gustavo Romero <gustavo.romero@linaro.org>
+Subject: [PATCH v9 5/6] target/arm: Implement FEAT_MEC registers
+Date: Sat, 26 Jul 2025 21:42:01 -1000
+Message-ID: <20250727074202.83141-6-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250727074202.83141-1-richard.henderson@linaro.org>
 References: <20250727074202.83141-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::633;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x633.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::636;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x636.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -102,77 +102,247 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+From: Gustavo Romero <gustavo.romero@linaro.org>
 
-TF-A needs to be patched to enable support for FEAT_TCR2 and
-FEAT_SCTLR2. This new image contains updated firmware.
+Add all FEAT_MEC registers.  Enable access to the registers via the
+SCTLR2 and TCR2 control bits.  Add the two new cache management
+instructions, which are nops in QEMU because we do not model caches.
 
-Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
+Message-ID: <20250711140828.1714666-3-gustavo.romero@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+[rth: Squash 3 patches to add all registers at once.]
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <20250719035838.2284029-2-pierrick.bouvier@linaro.org>
 ---
- .../test_aarch64_device_passthrough.py        | 27 ++++++++++---------
- 1 file changed, 14 insertions(+), 13 deletions(-)
+ target/arm/cpu-features.h |   5 ++
+ target/arm/cpu.h          |  10 ++++
+ target/arm/internals.h    |   3 ++
+ target/arm/cpu.c          |   3 ++
+ target/arm/helper.c       | 106 ++++++++++++++++++++++++++++++++++++++
+ 5 files changed, 127 insertions(+)
 
-diff --git a/tests/functional/test_aarch64_device_passthrough.py b/tests/functional/test_aarch64_device_passthrough.py
-index 1f3f158a9f..17437784bb 100755
---- a/tests/functional/test_aarch64_device_passthrough.py
-+++ b/tests/functional/test_aarch64_device_passthrough.py
-@@ -9,7 +9,7 @@
- #
- # SPDX-License-Identifier: GPL-2.0-or-later
+diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
+index 8ec8c3feb3..9579d93cec 100644
+--- a/target/arm/cpu-features.h
++++ b/target/arm/cpu-features.h
+@@ -914,6 +914,11 @@ static inline bool isar_feature_aa64_sctlr2(const ARMISARegisters *id)
+     return FIELD_EX64_IDREG(id, ID_AA64MMFR3, SCTLRX) != 0;
+ }
  
--import os
-+from os.path import join
++static inline bool isar_feature_aa64_mec(const ARMISARegisters *id)
++{
++    return FIELD_EX64_IDREG(id, ID_AA64MMFR3, MEC) != 0;
++}
++
+ static inline bool isar_feature_aa64_pmuv3p1(const ARMISARegisters *id)
+ {
+     return FIELD_EX64_IDREG(id, ID_AA64DFR0, PMUVER) >= 4 &&
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index c15d79a106..defe2852f2 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -578,6 +578,15 @@ typedef struct CPUArchState {
  
- from qemu_test import QemuSystemTest, Asset
- from qemu_test import exec_command, wait_for_console_pattern
-@@ -77,15 +77,16 @@
+         /* NV2 register */
+         uint64_t vncr_el2;
++
++        /* MEC registers */
++        uint64_t mecid_p0_el2;
++        uint64_t mecid_a0_el2;
++        uint64_t mecid_p1_el2;
++        uint64_t mecid_a1_el2;
++        uint64_t mecid_rl_a_el3;
++        uint64_t vmecid_p_el2;
++        uint64_t vmecid_a_el2;
+     } cp15;
  
- class Aarch64DevicePassthrough(QemuSystemTest):
+     struct {
+@@ -1730,6 +1739,7 @@ static inline void xpsr_write(CPUARMState *env, uint32_t val, uint32_t mask)
+ #define SCR_TCR2EN            (1ULL << 43)
+ #define SCR_SCTLR2EN          (1ULL << 44)
+ #define SCR_GPF               (1ULL << 48)
++#define SCR_MECEN             (1ULL << 49)
+ #define SCR_NSE               (1ULL << 62)
  
--    # https://github.com/pbo-linaro/qemu-linux-stack
-+    # https://github.com/pbo-linaro/qemu-linux-stack/tree/device_passthrough
-+    # $ ./build.sh && ./archive_artifacts.sh out.tar.xz
-     #
-     # Linux kernel is compiled with defconfig +
-     # IOMMUFD + VFIO_DEVICE_CDEV + ARM_SMMU_V3_IOMMUFD
-     # https://docs.kernel.org/driver-api/vfio.html#vfio-device-cde
-     ASSET_DEVICE_PASSTHROUGH_STACK = Asset(
--        ('https://fileserver.linaro.org/s/fx5DXxBYme8dw2G/'
--         'download/device_passthrough.tar.xz'),
--         '812750b664d61c2986f2b149939ae28cafbd60d53e9c7e4b16e97143845e196d')
-+        ('https://github.com/pbo-linaro/qemu-linux-stack/'
-+         'releases/download/build/device_passthrough-c3fb84a.tar.xz'),
-+         '15ac2b02bed0c0ea8e3e007de0bcfdaf6fd51c1ba98213f841dc7d01d6f72f04')
+ /* Return the current FPSCR value.  */
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index ffc981c3b6..118659815f 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -2001,4 +2001,7 @@ void vfp_clear_float_status_exc_flags(CPUARMState *env);
+ void vfp_set_fpcr_to_host(CPUARMState *env, uint32_t val, uint32_t mask);
+ bool arm_pan_enabled(CPUARMState *env);
  
-     # This tests the device passthrough implementation, by booting a VM
-     # supporting it with two nvme disks attached, and launching a nested VM
-@@ -96,16 +97,16 @@ def test_aarch64_device_passthrough(self):
++/* Used in FEAT_MEC to set the MECIDWidthm1 field in the MECIDR_EL2 register. */
++#define MECID_WIDTH 16
++
+ #endif
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 27a4610da5..f0545a276e 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -650,6 +650,9 @@ void arm_emulate_firmware_reset(CPUState *cpustate, int target_el)
+             if (cpu_isar_feature(aa64_sctlr2, cpu)) {
+                 env->cp15.scr_el3 |= SCR_SCTLR2EN;
+             }
++            if (cpu_isar_feature(aa64_mec, cpu)) {
++                env->cp15.scr_el3 |= SCR_MECEN;
++            }
+         }
  
-         self.vm.set_console()
+         if (target_el == 2) {
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 5a219703ae..20b69a12df 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -747,6 +747,9 @@ static void scr_write(CPUARMState *env, const ARMCPRegInfo *ri, uint64_t value)
+         if (cpu_isar_feature(aa64_sctlr2, cpu)) {
+             valid_mask |= SCR_SCTLR2EN;
+         }
++        if (cpu_isar_feature(aa64_mec, cpu)) {
++            valid_mask |= SCR_MECEN;
++        }
+     } else {
+         valid_mask &= ~(SCR_RW | SCR_ST);
+         if (cpu_isar_feature(aa32_ras, cpu)) {
+@@ -5215,6 +5218,93 @@ static const ARMCPRegInfo nmi_reginfo[] = {
+       .resetfn = arm_cp_reset_ignore },
+ };
  
--        stack_path_tar_gz = self.ASSET_DEVICE_PASSTHROUGH_STACK.fetch()
--        self.archive_extract(stack_path_tar_gz, format="tar")
-+        stack_path_tar = self.ASSET_DEVICE_PASSTHROUGH_STACK.fetch()
-+        self.archive_extract(stack_path_tar, format="tar")
++static CPAccessResult mecid_access(CPUARMState *env,
++                                   const ARMCPRegInfo *ri, bool isread)
++{
++    int el = arm_current_el(env);
++
++    if (el == 2) {
++        if (arm_security_space(env) != ARMSS_Realm) {
++            return CP_ACCESS_UNDEFINED;
++        }
++
++        if (!(env->cp15.scr_el3 & SCR_MECEN)) {
++            return CP_ACCESS_TRAP_EL3;
++        }
++    }
++
++    return CP_ACCESS_OK;
++}
++
++static void mecid_write(CPUARMState *env, const ARMCPRegInfo *ri,
++                        uint64_t value)
++{
++    value = extract64(value, 0, MECID_WIDTH);
++    raw_write(env, ri, value);
++}
++
++static CPAccessResult cipae_access(CPUARMState *env, const ARMCPRegInfo *ri,
++                                   bool isread)
++{
++    switch (arm_security_space(env)) {
++    case ARMSS_Root:  /* EL3 */
++    case ARMSS_Realm: /* Realm EL2 */
++        return CP_ACCESS_OK;
++    default:
++        return CP_ACCESS_UNDEFINED;
++    }
++}
++
++static const ARMCPRegInfo mec_reginfo[] = {
++    { .name = "MECIDR_EL2", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 4, .opc2 = 7, .crn = 10, .crm = 8,
++      .access = PL2_R, .type = ARM_CP_CONST, .resetvalue = MECID_WIDTH - 1 },
++    { .name = "MECID_P0_EL2", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 4, .opc2 = 0, .crn = 10, .crm = 8,
++      .access = PL2_RW, .accessfn = mecid_access,
++      .writefn = mecid_write,
++      .fieldoffset = offsetof(CPUARMState, cp15.mecid_p0_el2) },
++    { .name = "MECID_A0_EL2", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 4, .opc2 = 1, .crn = 10, .crm = 8,
++      .access = PL2_RW, .accessfn = mecid_access,
++      .writefn = mecid_write,
++      .fieldoffset = offsetof(CPUARMState, cp15.mecid_a0_el2) },
++    { .name = "MECID_P1_EL2", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 4, .opc2 = 2, .crn = 10, .crm = 8,
++      .access = PL2_RW, .accessfn = mecid_access,
++      .writefn = mecid_write,
++      .fieldoffset = offsetof(CPUARMState, cp15.mecid_p1_el2) },
++    { .name = "MECID_A1_EL2", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 4, .opc2 = 3, .crn = 10, .crm = 8,
++      .access = PL2_RW, .accessfn = mecid_access,
++      .writefn = mecid_write,
++      .fieldoffset = offsetof(CPUARMState, cp15.mecid_a1_el2) },
++    { .name = "MECID_RL_A_EL3", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 6, .opc2 = 1, .crn = 10, .crm = 10,
++      .access = PL3_RW, .accessfn = mecid_access,
++      .writefn = mecid_write,
++      .fieldoffset = offsetof(CPUARMState, cp15.mecid_rl_a_el3) },
++    { .name = "VMECID_P_EL2", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 4, .opc2 = 0, .crn = 10, .crm = 9,
++      .access = PL2_RW, .accessfn = mecid_access,
++      .writefn = mecid_write,
++      .fieldoffset = offsetof(CPUARMState, cp15.vmecid_p_el2) },
++    { .name = "VMECID_A_EL2", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 4, .opc2 = 1, .crn = 10, .crm = 9,
++      .access = PL2_RW, .accessfn = mecid_access,
++      .writefn = mecid_write,
++      .fieldoffset = offsetof(CPUARMState, cp15.vmecid_a_el2) },
++    { .name = "DC_CIPAE", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 4, .crn = 7, .crm = 14, .opc2 = 0,
++      .access = PL2_W, .accessfn = cipae_access, .type = ARM_CP_NOP },
++};
++
++static const ARMCPRegInfo mec_mte_reginfo[] = {
++    { .name = "DC_CIGDPAE", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 4, .crn = 7, .crm = 14, .opc2 = 7,
++      .access = PL2_W, .accessfn = cipae_access, .type = ARM_CP_NOP },
++};
++
+ #ifndef CONFIG_USER_ONLY
+ /*
+  * We don't know until after realize whether there's a GICv3
+@@ -6053,6 +6143,9 @@ static void sctlr2_el2_write(CPUARMState *env, const ARMCPRegInfo *ri,
+ {
+     uint64_t valid_mask = 0;
  
-         stack = self.scratch_file('out')
--        kernel = os.path.join(stack, 'Image.gz')
--        rootfs_host = os.path.join(stack, 'host.ext4')
--        disk_vfio = os.path.join(stack, 'disk_vfio')
--        disk_iommufd = os.path.join(stack, 'disk_iommufd')
--        guest_cmd = os.path.join(stack, 'guest.sh')
--        nested_guest_cmd = os.path.join(stack, 'nested_guest.sh')
-+        kernel = join(stack, 'Image.gz')
-+        rootfs_host = join(stack, 'host.ext4')
-+        disk_vfio = join(stack, 'disk_vfio')
-+        disk_iommufd = join(stack, 'disk_iommufd')
-+        guest_cmd = join(stack, 'guest.sh')
-+        nested_guest_cmd = join(stack, 'nested_guest.sh')
-         # we generate two random disks
-         with open(disk_vfio, "wb") as d: d.write(randbytes(512))
-         with open(disk_iommufd, "wb") as d: d.write(randbytes(1024))
++    if (cpu_isar_feature(aa64_mec, env_archcpu(env))) {
++        valid_mask |= SCTLR2_EMEC;
++    }
+     value &= valid_mask;
+     raw_write(env, ri, value);
+ }
+@@ -6062,6 +6155,9 @@ static void sctlr2_el3_write(CPUARMState *env, const ARMCPRegInfo *ri,
+ {
+     uint64_t valid_mask = 0;
+ 
++    if (cpu_isar_feature(aa64_mec, env_archcpu(env))) {
++        valid_mask |= SCTLR2_EMEC;
++    }
+     value &= valid_mask;
+     raw_write(env, ri, value);
+ }
+@@ -6122,6 +6218,9 @@ static void tcr2_el2_write(CPUARMState *env, const ARMCPRegInfo *ri,
+ {
+     uint64_t valid_mask = 0;
+ 
++    if (cpu_isar_feature(aa64_mec, env_archcpu(env))) {
++        valid_mask |= TCR2_AMEC0 | TCR2_AMEC1;
++    }
+     value &= valid_mask;
+     raw_write(env, ri, value);
+ }
+@@ -7377,6 +7476,13 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+         define_arm_cp_regs(cpu, tcr2_reginfo);
+     }
+ 
++    if (cpu_isar_feature(aa64_mec, cpu)) {
++        define_arm_cp_regs(cpu, mec_reginfo);
++        if (cpu_isar_feature(aa64_mte, cpu)) {
++            define_arm_cp_regs(cpu, mec_mte_reginfo);
++        }
++    }
++
+     if (cpu_isar_feature(any_predinv, cpu)) {
+         define_arm_cp_regs(cpu, predinv_reginfo);
+     }
 -- 
 2.43.0
 

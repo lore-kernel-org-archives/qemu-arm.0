@@ -4,81 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70032C87FCC
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 780CFC87FCF
 	for <qemu-arm@archiver.kernel.org>; Sun, 27 Jul 2025 08:09:07 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ufwMO-0007ea-Vq; Sun, 27 Jul 2025 04:03:57 -0400
+	id 1ufwLX-0004W5-1I; Sun, 27 Jul 2025 04:03:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ufwLn-0005G7-06
- for qemu-arm@nongnu.org; Sun, 27 Jul 2025 04:03:20 -0400
-Received: from mail-pg1-x529.google.com ([2607:f8b0:4864:20::529])
+ id 1ufwLV-0004Kf-OK
+ for qemu-arm@nongnu.org; Sun, 27 Jul 2025 04:03:01 -0400
+Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ufwLk-00045O-HR
- for qemu-arm@nongnu.org; Sun, 27 Jul 2025 04:03:18 -0400
-Received: by mail-pg1-x529.google.com with SMTP id
- 41be03b00d2f7-b3be5c0eb99so2980990a12.1
- for <qemu-arm@nongnu.org>; Sun, 27 Jul 2025 01:03:16 -0700 (PDT)
+ id 1ufwLT-0003xl-CW
+ for qemu-arm@nongnu.org; Sun, 27 Jul 2025 04:03:01 -0400
+Received: by mail-pl1-x635.google.com with SMTP id
+ d9443c01a7336-2363616a1a6so27448165ad.3
+ for <qemu-arm@nongnu.org>; Sun, 27 Jul 2025 01:02:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1753603395; x=1754208195; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=iLtDIjPQLDZompmk/Ugn11Kk3KXRHr/yrDqwQ7AVJX4=;
- b=L8SLf3uQ1WIN7VqZQsI5YDrp7VK/Xuv8GZfk7ceC8amLA3aSqEFq0ODj2N9MPkvXcQ
- fJrkMmEMmjOXrIg0qSy1ToGrwqiWIa1XyBwTwiRENzHSXUUS6tVBztJWkiLx+iMKFFpx
- DBFZfAUZAoanjszrooZ++1pJt0CRyPnuD6igbK46DAv1SQQO2wWISn2AwCSS5Phenn8f
- Y8ofivuWLUsv9F2a/0YoN413GtnVIMsaSBjz7Kx4EqdEIaRi1fesvRn1tVx6px/nyW+o
- cRkMqbwhGNo7COFIQbeXXZiQNsmzB4N1CmRFsHnAtEQ75Mq4mxwHbq30Tlzk31W0DtcA
- j1Rg==
+ d=linaro.org; s=google; t=1753603378; x=1754208178; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=kGrFKsLSwAq589UJRt8AQw5NA54l8v/cnUUsIGEtovA=;
+ b=Njeje02ttSAOnaXYjdYs05k+k6Z3pzWirRof1jZ78ZIyIuTA1/sLzG+1HI6awdoWn+
+ 3DXtEzksxyv94ngZREdQ3c/nEiPj7D9ld4nauU4gvE2Y2EQdLHodfr9CLBgDPpTbWnTp
+ hVZt31h/Kj4yS2QtrKAYUC2fIG9a/w6STEsvkWIKiofl3k6R4pCc9eUwHlD+xGh13Rv6
+ kCsyv6mnto6NRM2gd73XTWEKc3r9xexqrJNWUh7rWp4XpKn+UH9U1LXMiSQLsCv0gtfZ
+ GDuyK553CSB9jBbtjIaPlStzjC3vd2rr0MTQBrg1MbX+CK5FNHls0qWmQKo/DJOlL082
+ 74vA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1753603395; x=1754208195;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=iLtDIjPQLDZompmk/Ugn11Kk3KXRHr/yrDqwQ7AVJX4=;
- b=vBRx2bbFt9c4bJ4+ZP121qeTh3S07jdM3ZGXgQvYQ7hQ2KiY8ICA+hHMxXN8sjzWdH
- GLk85BgnDNsMNdVH0Xf3Xlh9EunBO+H2G/2DnRhMhkTNHkPJWgBoeQ7yQ93FrsLuTYJl
- tGqumFB+lqjIC7G1zFwOsqCEhoY6H4rxlgARTMLbOWFzcqy3V3aMBslJ008/2Kv8cEIA
- Cy3WsCFm7x0dItUjksBs7q2tbeNM6udTNYHDhA+QHH7dgIrj67uBj9lK30+xSLVTAbGe
- 4svg4TmKJdE86mzuOkKofnerIpMQuz5Zp5iNhTCziWsGz46v0YPmcdjnHfRaWPGQtPAA
- /WEg==
-X-Gm-Message-State: AOJu0YzmJpGJ6gFjJw1sCri0twsCJ604/DOH/PoRhVu3L626QjBP3lxW
- DbgWCIHVvT2HXaYSI2oDy16OeqYk/eQsw0JjgdcaNiwC37tKmI4yDWRXoLMX12qSwRQrIOBA04I
- wB2qT
-X-Gm-Gg: ASbGncsNGxZlHsX5EiQapxIlCbZNVbQNtQ5Gwk2wEhAn8Rhf59nn22V9PAp665Tk0zk
- XaXzuwIXF2XNrJHOEgLhzq6Rg5a3yNhoz4gyzcb6k30ejEnrQUnG+67LXcvgLEEkB+B3kW0rR8w
- NxAbD5vB1GIfpJhK5Lh30J348E9CngNVU6l0Hhus6sKVWejlMagDtriUvqbSjCtc6UPir+E8iQt
- EBANjLOZPHE1AjjboKOVsb1pOGJJUmmvA27KriTA9aRT7hpSXnMH4l2PK1XOru2z2tgXYBiLCBL
- Cu0VOuL0qP4GZAf1+DI45MoyiIorGXO9UzFq5avOK2vP3nQ1+X+UMFxqIJSheVVuuEI1RzhdwHu
- 6vTsjirllXoZqVQnIzqVRw/MpPfhoLgcveJRhY7xXs/Zz6kR75I2DdpqpKcK4jYQS4ag3c5rmwW
- FFR5CoBDX2Sw==
-X-Google-Smtp-Source: AGHT+IHUzhaK5+Wrx07Y+uyJBuZ19no1gmSavZADSHHojq2Mt4rkaYYvgDW63hOSLFOJVvW2zFfhjA==
-X-Received: by 2002:a17:902:c94f:b0:23f:f6e0:b3c7 with SMTP id
- d9443c01a7336-23ff6e0b6a4mr40035955ad.45.1753603395214; 
- Sun, 27 Jul 2025 01:03:15 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1753603378; x=1754208178;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=kGrFKsLSwAq589UJRt8AQw5NA54l8v/cnUUsIGEtovA=;
+ b=ihEJOzY4c390+Os8uuOnHktcbEd0lycc8npmHfaxkFg41ZiNqgrqpN+VJjkDTtCl38
+ yeqVAirhadX2i+AlX3gVCi8K1CAOqqytwNRHf0vc6HNIlFEw0y36ag8yL3xMO/aLWlZK
+ dtDT8BqlkqDdroAki8xXBTPiGUPYKX+x2TZMzMEGHsNSmaifGmGAw5Hv8zuA8NyIaVbS
+ +U7X1cFIgdUTSsUfkYwtNqGONU7MdaAnKD8qJ+HiVNccqvd3YE1f3nKm1jxyGaWpLxGp
+ TUra7ig5GKhqqPlyTgqbccZEqj66e0pCgnUAFCH/A7gxxgQwvakw5HEd4Tp1JoJWUP4x
+ sbZQ==
+X-Gm-Message-State: AOJu0Yy4yRrzVzUCMB/KlSRQo6K84wRHyBP4sOVZDurr61ajdYdI93f6
+ bidoZuUlk+K2lCRWKNmSAFjfz+ruW66enK2SNUM0yhgh1Cp56Wx4+JCcffry8LzSR/I=
+X-Gm-Gg: ASbGncvYUnfymQEMK8Mb4SaylnzZTjrlpb15zI7b0L//oG+ndVLdrqNVFmRYX8A/ZiW
+ eJQJlibnVPpCDiwhHuQIH5TFeEE8TrfQQ8d+W0MZEc0L5Coxqjc6doPWRugGa6ChomLSYgYp4Yn
+ Iez2bFprZFkFPsI3f5eaXNMap+VUzx6RcJ61VW3beEXKRWFfifxZ+/QyLmoiRDP/G+UPqvoro3n
+ jin+7pKa4m8BqViyizt0QGH4EvAVJvof4jfPDJ9QFJXoPMXbablAeZkTZbpX9m03LOXcLPvHhly
+ yNXCmQ6xH9wMgLCe8OyGvgE9N+pS6jzlioM4NTJ/bv8DjdyIOieRVRB2kKIc4nFnUwzhR8fGWVB
+ 46XJomlwLdCdDBlzADyiAGNkvakPsv5YxVgx3/FEIrlhA1SSnyMqWs/T2K0leP0Ygy7kKDzAb/E
+ eXfewQFvYu8w==
+X-Google-Smtp-Source: AGHT+IGUsm0tPeK7LAhWC5aukN0Gov22/7Lw0Aqw/eVUr+AQ4h0IEB0AEZuGywtJgiw88Fv8aflt8A==
+X-Received: by 2002:a17:903:3b88:b0:235:ef67:b5a0 with SMTP id
+ d9443c01a7336-23fb3155715mr112070665ad.36.1753603377821; 
+ Sun, 27 Jul 2025 01:02:57 -0700 (PDT)
 Received: from localhost.localdomain (syn-098-150-199-049.res.spectrum.com.
  [98.150.199.49]) by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-23fbe333efesm30016415ad.65.2025.07.27.01.03.14
+ d9443c01a7336-23fbe333efesm30016415ad.65.2025.07.27.01.02.56
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 27 Jul 2025 01:03:14 -0700 (PDT)
+ Sun, 27 Jul 2025 01:02:57 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH 15/82] target/arm: Populate PIE in aa64_va_parameters
-Date: Sat, 26 Jul 2025 22:01:47 -1000
-Message-ID: <20250727080254.83840-16-richard.henderson@linaro.org>
+Subject: [PATCH for-10.2 00/82] target/arm: Implement FEAT_GCS
+Date: Sat, 26 Jul 2025 22:01:32 -1000
+Message-ID: <20250727080254.83840-1-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250727080254.83840-1-richard.henderson@linaro.org>
-References: <20250727080254.83840-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::529;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x529.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::635;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x635.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -101,94 +97,181 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Select the PIE bit for the translation regime.
-With PIE, the PTE layout changes, forcing HPD.
+Based-on: 20250727074202.83141-1-richard.henderson@linaro.org
+("[PATCH for-10.2 v9 0/6] target/arm: Add FEAT_MEC to max cpu")
+Based-on: 20250725230849.13026-1-richard.henderson@linaro.org
+("[PATCH for-10.2 v2 0/3] linux-user/aarch64: Syndrome fixes and enhancements")
 
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/internals.h |  3 ++-
- target/arm/helper.c    | 19 ++++++++++++++++++-
- 2 files changed, 20 insertions(+), 2 deletions(-)
+Tree: https://gitlab.com/rth7680/qemu/-/tree/tgt-arm-gcs
 
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 0dd1b214c8..d5f501bb30 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -1488,7 +1488,7 @@ static inline int arm_granule_bits(ARMGranuleSize gran)
- 
- /*
-  * Parameters of a given virtual address, as extracted from the
-- * translation control register (TCR) for a given regime.
-+ * translation controls for a given regime.
-  */
- typedef struct ARMVAParameters {
-     unsigned tsz    : 8;
-@@ -1503,6 +1503,7 @@ typedef struct ARMVAParameters {
-     bool ha         : 1;
-     bool hd         : 1;
-     ARMGranuleSize gran : 2;
-+    bool pie        : 1;
- } ARMVAParameters;
- 
- /**
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index a6130f7dcd..ecce93fb97 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -9628,11 +9628,12 @@ ARMVAParameters aa64_va_parameters(CPUARMState *env, uint64_t va,
-                                    bool el1_is_aa32)
- {
-     uint64_t tcr = regime_tcr(env, mmu_idx);
--    bool epd, hpd, tsz_oob, ds, ha, hd;
-+    bool epd, hpd, tsz_oob, ds, ha, hd, pie = false;
-     int select, tsz, tbi, max_tsz, min_tsz, ps, sh;
-     ARMGranuleSize gran;
-     ARMCPU *cpu = env_archcpu(env);
-     bool stage2 = regime_is_stage2(mmu_idx);
-+    int r_el = regime_el(env, mmu_idx);
- 
-     if (!regime_has_2_ranges(mmu_idx)) {
-         select = 0;
-@@ -9644,8 +9645,17 @@ ARMVAParameters aa64_va_parameters(CPUARMState *env, uint64_t va,
-              * Thus disabling them makes things easier during ptw.
-              */
-             hpd = true;
-+            pie = extract64(tcr, 36, 1) && cpu_isar_feature(aa64_s2pie, cpu);
-         } else {
-             hpd = extract32(tcr, 24, 1);
-+            if (r_el == 3) {
-+                pie = (extract64(tcr, 35, 1)
-+                       && cpu_isar_feature(aa64_s1pie, cpu));
-+            } else {
-+                pie = ((env->cp15.tcr2_el[2] & TCR2_PIE)
-+                       && (!arm_feature(env, ARM_FEATURE_EL3)
-+                           || (env->cp15.scr_el3 & SCR_TCR2EN)));
-+        }
-         }
-         epd = false;
-         sh = extract32(tcr, 12, 2);
-@@ -9685,7 +9695,13 @@ ARMVAParameters aa64_va_parameters(CPUARMState *env, uint64_t va,
-             regime_is_user(env, mmu_idx)) {
-             epd = true;
-         }
-+
-+        pie = ((env->cp15.tcr2_el[r_el] & TCR2_PIE)
-+               && (!arm_feature(env, ARM_FEATURE_EL3)
-+                   || (env->cp15.scr_el3 & SCR_TCR2EN))
-+               && (r_el == 2 || arm_hcrx_el2_eff(env) & HCRX_TCR2EN));
-     }
-+    hpd |= pie;
- 
-     gran = sanitize_gran_size(cpu, gran, stage2);
- 
-@@ -9764,6 +9780,7 @@ ARMVAParameters aa64_va_parameters(CPUARMState *env, uint64_t va,
-         .ha = ha,
-         .hd = ha && hd,
-         .gran = gran,
-+        .pie = pie,
-     };
- }
- 
+This includes the prerequisite features, ATS1A and S1PIE, and
+not a prerequisite but closely related, S2PIE.
+
+This passes the linux kselftests for gcs, with a 48-bit VA.
+I also include a few smoke tests in tests/tcg/.
+
+There's something subtly wrong with a 52-bit VA.  Most everything
+works fine, but the first GCS lookup faults on a missing level 3
+page table entry: a Translation fault, not a Permission fault.
+The kernel then panics.  Either there's something amiss with our
+implementation of FEAT_LPA2, or there's a kernel bug.
+
+This includes a best-effort linux-user implementation.  Since we
+don't have softmmu in user-only (yet), gcs stack pages get normal
+read/write access.  This means we cannot write-protect the pages
+in the same way the system implementation can.  But all of the
+other parts of GCS work fine, which is good enough for testing.
+
+
+r~
+
+
+Richard Henderson (82):
+  target/arm: Add prot_check parameter to pmsav8_mpu_lookup
+  target/arm: Add in_prot_check to S1Translate
+  target/arm: Skip permission check from
+    arm_cpu_get_phys_page_attrs_debug
+  target/arm: Introduce get_phys_addr_for_at
+  target/arm: Skip AF and DB updates for AccessType_AT
+  target/arm: Add prot_check parameter to do_ats_write
+  target/arm: Fill in HFG[RWI]TR_EL2 bits for Arm v9.5
+  target/arm: Remove outdated comment for ZCR_EL12
+  target/arm: Implement FEAT_ATS1A
+  target/arm: Add isar feature test for FEAT_S1PIE, FEAT_S2PIE
+  target/arm: Enable TCR2_ELx.PIE
+  target/arm: Implement PIR_ELx, PIRE0_ELx, S2PIR_EL2 registers
+  target/arm: Force HPD for stage2 translations
+  target/arm: Cache NV1 early in get_phys_addr_lpae
+  target/arm: Populate PIE in aa64_va_parameters
+  target/arm: Implement get_S1prot_indirect
+  target/arm: Implement get_S2prot_indirect
+  target/arm: Do not migrate env->exception
+  target/arm: Expand CPUARMState.exception.syndrome to 64 bits
+  target/arm: Expand syndrome parameter to raise_exception*
+  target/arm: Implement dirtybit check for PIE
+  target/arm: Enable FEAT_S1PIE and FEAT_S2PIE on -cpu max
+  include/hw/core/cpu: Introduce MMUIdxMap
+  include/hw/core/cpu: Introduce cpu_tlb_fast
+  include/hw/core/cpu: Invert the indexing into CPUTLBDescFast
+  target/hppa: Adjust mmu indexes to begin with 0
+  include/exec/memopidx: Adjust for 32 mmu indexes
+  include/hw/core/cpu: Widen MMUIdxMap
+  target/arm: Split out mmuidx.h from cpu.h
+  target/arm: Convert arm_mmu_idx_to_el from switch to table
+  target/arm: Remove unused env argument from regime_el
+  target/arm: Convert regime_el from switch to table
+  target/arm: Convert regime_has_2_ranges from switch to table
+  target/arm: Remove unused env argument from regime_is_pan
+  target/arm: Convert regime_is_pan from switch to table
+  target/arm: Remove unused env argument from regime_is_user
+  target/arm: Convert regime_is_user from switch to table
+  target/arm: Convert arm_mmu_idx_is_stage1_of_2 from switch to table
+  target/arm: Convert regime_is_stage2 to table
+  target/arm: Introduce mmu indexes for GCS
+  target/arm: Introduce regime_to_gcs
+  target/arm: Support page protections for GCS mmu indexes
+  target/arm: Implement gcs bit for data abort
+  target/arm: Add GCS cpregs
+  target/arm: Add GCS enable and trap levels to DisasContext
+  target/arm: Implement FEAT_CHK
+  target/arm: Expand pstate to 64 bits
+  target/arm: Add syndrome data for EC_GCS
+  target/arm: Implement EXLOCKException for ELR_ELx and SPSR_ELx
+  target/arm: Split {arm,core}_user_mem_index
+  target/arm: Introduce delay_exception{_el}
+  target/arm: Emit HSTR trap exception out of line
+  target/arm: Emit v7m LTPSIZE exception out of line
+  target/arm: Implement GCSSTR, GCSSTTR
+  target/arm: Implement GCSB
+  target/arm: Implement GCSPUSHM
+  target/arm: Implement GCSPOPM
+  target/arm: Implement GCSPUSHX
+  target/arm: Implement GCSPOPX
+  target/arm: Implement GCSPOPCX
+  target/arm: Implement GCSSS1
+  target/arm: Implement GCSSS2
+  target/arm: Add gcs record for BL
+  target/arm: Add gcs record for BLR
+  target/arm: Add gcs record for BLR with PAuth
+  target/arm: Load gcs record for RET
+  target/arm: Load gcs record for RET with PAuth
+  target/arm: Copy EXLOCKEn to EXLOCK on exception to the same EL
+  target/arm: Implement EXLOCK check during exception return
+  target/arm: Enable FEAT_GCS with -cpu max
+  linux-user/aarch64: Implement prctls for GCS
+  linux-user/aarch64: Allocate new gcs stack on clone
+  linux-user/aarch64: Release gcs stack on thread exit
+  linux-user/aarch64: Implement map_shadow_stack syscall
+  target/arm: Enable GCSPR_EL0 for read in user-mode
+  linux-user/aarch64: Inject SIGSEGV for GCS faults
+  linux-user/aarch64: Generate GCS signal records
+  linux-user: Change exported get_elf_hwcap to abi_ulong
+  linux-user/aarch64: Enable GCS in HWCAP
+  tests/tcg/aarch64: Add gcsstr
+  tests/tcg/aarch64: Add gcspushm
+  tests/tcg/aarch64: Add gcsss
+
+ include/exec/cputlb.h              |  32 +--
+ include/exec/memopidx.h            |   9 +-
+ include/hw/core/cpu.h              |  20 +-
+ linux-user/aarch64/gcs-internal.h  |  38 +++
+ linux-user/aarch64/target_prctl.h  |  96 +++++++
+ linux-user/aarch64/target_signal.h |   1 +
+ linux-user/loader.h                |   2 +-
+ linux-user/qemu.h                  |   5 +
+ target/arm/cpregs.h                |  46 ++-
+ target/arm/cpu-features.h          |  20 ++
+ target/arm/cpu.h                   | 242 ++--------------
+ target/arm/internals.h             | 170 ++---------
+ target/arm/mmuidx-internal.h       | 111 ++++++++
+ target/arm/mmuidx.h                | 241 ++++++++++++++++
+ target/arm/syndrome.h              |  35 +++
+ target/arm/tcg/translate.h         |  46 ++-
+ target/hppa/cpu.h                  |  28 +-
+ tests/tcg/aarch64/gcs.h            |  80 ++++++
+ accel/tcg/cputlb.c                 |  49 ++--
+ linux-user/aarch64/cpu_loop.c      |   5 +
+ linux-user/aarch64/signal.c        | 129 ++++++++-
+ linux-user/elfload.c               |  11 +-
+ linux-user/syscall.c               | 114 ++++++++
+ target/arm/cpregs-gcs.c            | 141 ++++++++++
+ target/arm/cpu.c                   |  17 +-
+ target/arm/gdbstub64.c             |   1 +
+ target/arm/helper.c                | 270 ++++++++++++++----
+ target/arm/machine.c               |  62 +++-
+ target/arm/mmuidx.c                |  66 +++++
+ target/arm/ptw.c                   | 430 +++++++++++++++++++++-------
+ target/arm/tcg-stubs.c             |   2 +-
+ target/arm/tcg/cpregs-at.c         |  69 +++--
+ target/arm/tcg/cpu64.c             |   4 +
+ target/arm/tcg/helper-a64.c        |  13 +-
+ target/arm/tcg/hflags.c            |  38 +++
+ target/arm/tcg/m_helper.c          |   4 +-
+ target/arm/tcg/mte_helper.c        |   2 +-
+ target/arm/tcg/op_helper.c         |   8 +-
+ target/arm/tcg/tlb-insns.c         |  47 +++-
+ target/arm/tcg/tlb_helper.c        |  13 +-
+ target/arm/tcg/translate-a64.c     | 437 ++++++++++++++++++++++++++---
+ target/arm/tcg/translate.c         |  78 +++--
+ tcg/tcg.c                          |   3 +-
+ tests/tcg/aarch64/gcspushm.c       |  77 +++++
+ tests/tcg/aarch64/gcsss.c          |  74 +++++
+ tests/tcg/aarch64/gcsstr.c         |  48 ++++
+ docs/system/arm/emulation.rst      |   5 +
+ target/arm/meson.build             |   9 +-
+ target/arm/tcg/a64.decode          |   5 +
+ tests/tcg/aarch64/Makefile.target  |   5 +
+ 50 files changed, 2764 insertions(+), 694 deletions(-)
+ create mode 100644 linux-user/aarch64/gcs-internal.h
+ create mode 100644 target/arm/mmuidx-internal.h
+ create mode 100644 target/arm/mmuidx.h
+ create mode 100644 tests/tcg/aarch64/gcs.h
+ create mode 100644 target/arm/cpregs-gcs.c
+ create mode 100644 target/arm/mmuidx.c
+ create mode 100644 tests/tcg/aarch64/gcspushm.c
+ create mode 100644 tests/tcg/aarch64/gcsss.c
+ create mode 100644 tests/tcg/aarch64/gcsstr.c
+
 -- 
 2.43.0
 

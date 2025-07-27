@@ -4,81 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1CC2C87FCC
-	for <qemu-arm@archiver.kernel.org>; Sun, 27 Jul 2025 08:19:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE4A2C87FCC
+	for <qemu-arm@archiver.kernel.org>; Sun, 27 Jul 2025 08:19:44 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ufwNq-0004GP-8d; Sun, 27 Jul 2025 04:05:27 -0400
+	id 1ufwRO-0001zb-IL; Sun, 27 Jul 2025 04:09:06 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ufwM9-0006VI-9l
- for qemu-arm@nongnu.org; Sun, 27 Jul 2025 04:03:42 -0400
-Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
+ id 1ufwPZ-0002gP-8p
+ for qemu-arm@nongnu.org; Sun, 27 Jul 2025 04:07:15 -0400
+Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ufwM6-0004C1-7j
- for qemu-arm@nongnu.org; Sun, 27 Jul 2025 04:03:40 -0400
-Received: by mail-pl1-x636.google.com with SMTP id
- d9443c01a7336-23fe9a5e5e8so4652475ad.0
- for <qemu-arm@nongnu.org>; Sun, 27 Jul 2025 01:03:37 -0700 (PDT)
+ id 1ufwPX-0004oE-8v
+ for qemu-arm@nongnu.org; Sun, 27 Jul 2025 04:07:13 -0400
+Received: by mail-pl1-x62b.google.com with SMTP id
+ d9443c01a7336-23dea2e01e4so45488295ad.1
+ for <qemu-arm@nongnu.org>; Sun, 27 Jul 2025 01:07:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1753603417; x=1754208217; darn=nongnu.org;
+ d=linaro.org; s=google; t=1753603630; x=1754208430; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=eEH28c0nOz2sg6VGDpoRkYxKKUtdldOAh0qxcYe2kKI=;
- b=SbfAR38DiPlSV7SNbRt1ingsSWfShHikeht48rafiWGmkIBgEuL6Yd22BKYgq/cOx8
- bs8J2TAr7rbTA6xwKlbMdXvC/F8vF2ftEObGAQ2n8Tgl0Yve0LkFQNyv5rLerFQHeQjP
- uetOzL3k1hBwfSxW/kinKyvb4Jy84U+mTRTw/CAM+fqwiTdwxnCu4bP/DEh6vQCa50Y6
- 4JfySFCxhSN9AHXwrbdlTtrIlJIfmIyfMW7S/591kZLLx+5WRrZC7I0IJWYWaeSBTuBd
- 35k59OcOrNHCUXvdnh3nOpKPqrwYY+e4SKnsmoPDGXOWwOjvi37ifjylGd0ORHfztfbe
- Bsug==
+ bh=ZAD+04FqwSKw8DLKNS0UP167F5/dokMNRY9qi0ztYmk=;
+ b=zZHzihO/ttgj20/+f5jSBFQwspvFgMtNBettLdEMsuGfB+MMYj2ZMDfV7JhZEsqCqK
+ sBDVlt/AFMEW4aMYNv/Mg505KlwhuYU7jtRudDWPCds/gZW86hUVWQuZ6rlOD104Htry
+ ZzKqEryRIW5W1YrI7bKNQz1JK0afCcXKF2z3Z5ekUdIdG89+CgxOeyWMGJ3CkfQ6MmNp
+ Zms5rzfslgmkr4UkyeNUBEmfs8Smy1ZA0temM9Is6Tzb0nVjNe//bp4vs8pUawxioolR
+ 3PwhV4rL14/+PKWx3kZcfyBj16kyT70qVwhMtNCuGtMJPdyU8VmKiAAy8oxPg99Yrphc
+ R4AQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1753603417; x=1754208217;
+ d=1e100.net; s=20230601; t=1753603630; x=1754208430;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=eEH28c0nOz2sg6VGDpoRkYxKKUtdldOAh0qxcYe2kKI=;
- b=iUY93mblQ9CK4yC4AZ2KEOYKK+r3stqZvaBvlXWPgSAZhV8Uh0XjZillhqQD01rUbf
- 65OrRkopJMNy427xjs9HlksM081N9YY+uMND/g2FtEc1wnUBP6K8CLzFVH1tdOynUNsT
- rJvEKlE59kPXpLejqMW6Fi4oJ34Y/LoPA2um7bd2a9E8ANRKt7QvQO63Vv8KBBM2Pk/U
- Z4BPmuHh5PrKYJty+naEvu6pK/n4F0zj9J1jWgk3IREVpi+pZV9NT8q06GHjwElfFINH
- 0Ox9UrcFliaWE5KDD4CabQZD508ZUGDHFhr9eG8NgrWpbzrUZireiTb+uZe8kOcvwCm5
- E8BA==
-X-Gm-Message-State: AOJu0Yz3cYhXdYNKOO/N46FD+T/JHy3dVt/GP+rc1Vfh4zc+bqUXtmK0
- T8ss2RwDkkUZVQFlb7rHQIZ8R9nJflHS2sw8UaZnRhfmKtzcDYYDiG+OcezH1syeoYo=
-X-Gm-Gg: ASbGncsO7O7I5VTOAGSxWFBgMw0HdU2bvRTORTbbFrCLm6dkLr4H0VHRQjJAtOIjRwD
- STderGhrQeXbcKAXFXHDFGDFkWynpVq4g1H8pUywiqpzHBiMoFGulyrPETB7UFUCajq4dCQ1Jp5
- yQvGxMf6PcjKTByKv1ZRMV3rSZEE8vkVzcw2d0dDmlMPDhb9X+4E3bdAIRHToH/Z7WPogv03JhH
- pzitTNCD9zHXQcPGIo2/dU7JljcGG8mey8j+lTjjPk7S7Y0dlJT4IIn7kOFRO1hsjqQapwIao/a
- jp6XTggWqLAnKn2Xt0tndNAQvXzYglwa1taKqq1+0XdW3eycJrH9otPTnYnnYipgKEJ3LDELhVA
- yy3roiZP683rWwPmGO2Nz4OZqfPHQOg5Sq05X8/dbw6VqPVgOTKJ1TgS8e+4JE+3r17qDmK3PEo
- xg9HQ9B6t512nwVTwaWFdH
-X-Google-Smtp-Source: AGHT+IHWDTap+O0qoUFA2BjGu7zbECg6lodgNHKPTJoDBav6hcH3QMu67IUmIrhMmOY7l7a8fEwumw==
-X-Received: by 2002:a17:902:ccc4:b0:23d:dd04:28d4 with SMTP id
- d9443c01a7336-23fb3165099mr122608635ad.43.1753603416914; 
- Sun, 27 Jul 2025 01:03:36 -0700 (PDT)
+ bh=ZAD+04FqwSKw8DLKNS0UP167F5/dokMNRY9qi0ztYmk=;
+ b=hzTFozYG98yeK4+3PbTxMKoXkvsEvk0V0PQMobBFscGKAqpe/DhIkOzdy1wtjyGKky
+ WJ6Cy2FC9HkZqXVx7VI+9rtK9qtsdUfE5LcHGoPQDqi4ckF3P0CPsM34VB7f2zLQtHSb
+ CGXEa0507sudXh/5N66tl4Q63BQxmoNWPL1BV8/AKEFv/cbzdZd/jwtNwiic4ua1dXF4
+ XHNtSARau1pn0dt5sW+sGw0LNwr68Cz5vg4Wpe8kn3QU5wsQWZ0qP+K2FxXJcrJxeYFA
+ uBM9kckBOURRH5PJDrFEA+kGm2YHxZvgGyAAjUJEiamyOVZEl5FpF1tRVtijzsU2ieCM
+ 47zw==
+X-Gm-Message-State: AOJu0Yx5upuH/3mXROW0ANNKiTvGFT9n30URmn/cRJskL8XdXs+VIHdW
+ xmQ5D3TfzHb/Ik2Rf2meZNTzUZHNcYmeP3+MGCIExzxqpdgAy1YlsO14kgWvXzduUZmPvixRrXz
+ qVo6w
+X-Gm-Gg: ASbGncvjyg0UakSsPW+jy9/xBFJqbGH6uAhh1Pjh/9gEHPVx0U1xTcC6w2n7jo6i3F1
+ Nw1QL6PM9kn/ozDl0+ydyq1chwxjHfj0aKK+IycgOi0h1eKtl8vLCXs7z6J/D3qB+L/usBOp4/5
+ q2tLbgxhWfhGBZnQhZ1mc9AAnFtPiWi/yXDDUpthKryoa1yCvx+9w/GG3rluGzu+XcBVJBB9yUc
+ 7Yl4J07yLHvmp9cGevHLAL+2mhQsPxnOSQ5q/YLWvdUtK3q8QbzK9IPmnL2go4Hnwe6rOE6sVM8
+ voW+L5WJ/Vbxrbd7G4WaHCdBSSGA8E9rKHNRlI/JvQVw60SbQ971nkkzeCwM1AIR1KoFZ9P6mG8
+ Gj4S859WSfKRyNRxehZoWDMOmtYgUhDHGJou9uikUCmV8oKu3NcL7/AlE34nIapxg9FProv5l/E
+ 7gp6pM+6aIAw==
+X-Google-Smtp-Source: AGHT+IGRGVkSQcbbDZejA4BH7Qq5Pd+P3cDd1yiNrCv4EzHOiV0dfvrfmb856jYel1ryf48cjsmTcA==
+X-Received: by 2002:a17:902:f114:b0:23f:df69:af50 with SMTP id
+ d9443c01a7336-23fdf69b14bmr34451645ad.34.1753603629908; 
+ Sun, 27 Jul 2025 01:07:09 -0700 (PDT)
 Received: from localhost.localdomain (syn-098-150-199-049.res.spectrum.com.
  [98.150.199.49]) by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-23fbe333efesm30016415ad.65.2025.07.27.01.03.36
+ d9443c01a7336-24011d5bcbesm3908065ad.10.2025.07.27.01.07.09
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 27 Jul 2025 01:03:36 -0700 (PDT)
+ Sun, 27 Jul 2025 01:07:09 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH 33/82] target/arm: Convert regime_has_2_ranges from switch to
- table
-Date: Sat, 26 Jul 2025 22:02:05 -1000
-Message-ID: <20250727080254.83840-34-richard.henderson@linaro.org>
+Subject: [PATCH 60/82] target/arm: Implement GCSPOPCX
+Date: Sat, 26 Jul 2025 22:02:32 -1000
+Message-ID: <20250727080254.83840-61-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250727080254.83840-1-richard.henderson@linaro.org>
 References: <20250727080254.83840-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::636;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x636.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62b;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -103,126 +103,134 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/internals.h       | 28 ----------------------------
- target/arm/mmuidx-internal.h | 17 +++++++++++++++++
- target/arm/mmuidx.c          | 19 ++++++++++---------
- 3 files changed, 27 insertions(+), 37 deletions(-)
+ target/arm/cpregs.h            |  1 +
+ target/arm/cpregs-gcs.c        | 17 ++++++++++
+ target/arm/tcg/translate-a64.c | 58 ++++++++++++++++++++++++++++++++++
+ 3 files changed, 76 insertions(+)
 
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 3b730a5d81..0322646753 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -1029,34 +1029,6 @@ static inline void arm_call_el_change_hook(ARMCPU *cpu)
-     }
+diff --git a/target/arm/cpregs.h b/target/arm/cpregs.h
+index 084ea00e51..392a0a264f 100644
+--- a/target/arm/cpregs.h
++++ b/target/arm/cpregs.h
+@@ -51,6 +51,7 @@ enum {
+     ARM_CP_GCSPOPM               = 0x0009,
+     ARM_CP_GCSPUSHX              = 0x000a,
+     ARM_CP_GCSPOPX               = 0x000b,
++    ARM_CP_GCSPOPCX              = 0x000c,
+ 
+     /* Flag: reads produce resetvalue; writes ignored. */
+     ARM_CP_CONST                 = 1 << 4,
+diff --git a/target/arm/cpregs-gcs.c b/target/arm/cpregs-gcs.c
+index 2bdd41c796..ab53a4314f 100644
+--- a/target/arm/cpregs-gcs.c
++++ b/target/arm/cpregs-gcs.c
+@@ -57,6 +57,19 @@ static CPAccessResult access_gcspushx(CPUARMState *env, const ARMCPRegInfo *ri,
+     return CP_ACCESS_OK;
  }
  
--/*
-- * Return true if this address translation regime has two ranges.
-- * Note that this will not return the correct answer for AArch32
-- * Secure PL1&0 (i.e. mmu indexes E3, E30_0, E30_3_PAN), but it is
-- * never called from a context where EL3 can be AArch32. (The
-- * correct return value for ARMMMUIdx_E3 would be different for
-- * that case, so we can't just make the function return the
-- * correct value anyway; we would need an extra "bool e3_is_aarch32"
-- * argument which all the current callsites would pass as 'false'.)
-- */
--static inline bool regime_has_2_ranges(ARMMMUIdx mmu_idx)
--{
--    switch (mmu_idx) {
--    case ARMMMUIdx_Stage1_E0:
--    case ARMMMUIdx_Stage1_E1:
--    case ARMMMUIdx_Stage1_E1_PAN:
--    case ARMMMUIdx_E10_0:
--    case ARMMMUIdx_E10_1:
--    case ARMMMUIdx_E10_1_PAN:
--    case ARMMMUIdx_E20_0:
--    case ARMMMUIdx_E20_2:
--    case ARMMMUIdx_E20_2_PAN:
--        return true;
--    default:
--        return false;
--    }
--}
--
- static inline bool regime_is_pan(CPUARMState *env, ARMMMUIdx mmu_idx)
- {
-     switch (mmu_idx) {
-diff --git a/target/arm/mmuidx-internal.h b/target/arm/mmuidx-internal.h
-index 1a4770401b..76d50a0645 100644
---- a/target/arm/mmuidx-internal.h
-+++ b/target/arm/mmuidx-internal.h
-@@ -15,6 +15,7 @@ FIELD(MMUIDXINFO, EL, 0, 2)
- FIELD(MMUIDXINFO, ELVALID, 2, 1)
- FIELD(MMUIDXINFO, REL, 3, 2)
- FIELD(MMUIDXINFO, RELVALID, 5, 1)
-+FIELD(MMUIDXINFO, 2RANGES, 6, 1)
- 
- extern const uint32_t arm_mmuidx_table[ARM_MMU_IDX_M + 8];
- 
-@@ -37,4 +38,20 @@ static inline uint32_t regime_el(ARMMMUIdx idx)
-     return FIELD_EX32(arm_mmuidx_table[idx], MMUIDXINFO, REL);
- }
- 
-+/*
-+ * Return true if this address translation regime has two ranges.
-+ * Note that this will not return the correct answer for AArch32
-+ * Secure PL1&0 (i.e. mmu indexes E3, E30_0, E30_3_PAN), but it is
-+ * never called from a context where EL3 can be AArch32. (The
-+ * correct return value for ARMMMUIdx_E3 would be different for
-+ * that case, so we can't just make the function return the
-+ * correct value anyway; we would need an extra "bool e3_is_aarch32"
-+ * argument which all the current callsites would pass as 'false'.)
-+ */
-+static inline bool regime_has_2_ranges(ARMMMUIdx idx)
++static CPAccessResult access_gcspopcx(CPUARMState *env, const ARMCPRegInfo *ri,
++                                      bool isread)
 +{
-+    tcg_debug_assert((unsigned)idx < ARRAY_SIZE(arm_mmuidx_table));
-+    return FIELD_EX32(arm_mmuidx_table[idx], MMUIDXINFO, 2RANGES);
++    /* Trap if lock not taken, and enabled. */
++    if (env->pstate & PSTATE_EXLOCK) {
++        int el = arm_current_el(env);
++        if (env->cp15.gcscr_el[el] & GCSCR_EXLOCKEN) {
++            return CP_ACCESS_EXLOCK;
++        }
++    }
++    return CP_ACCESS_OK;
 +}
 +
- #endif /* TARGET_ARM_MMUIDX_INTERNAL_H */
-diff --git a/target/arm/mmuidx.c b/target/arm/mmuidx.c
-index 6dfefa56c2..f880d21606 100644
---- a/target/arm/mmuidx.c
-+++ b/target/arm/mmuidx.c
-@@ -9,18 +9,19 @@
+ static const ARMCPRegInfo gcs_reginfo[] = {
+     { .name = "GCSCRE0_EL1", .state = ARM_CP_STATE_AA64,
+       .opc0 = 3, .opc1 = 0, .crn = 2, .crm = 5, .opc2 = 2,
+@@ -105,6 +118,10 @@ static const ARMCPRegInfo gcs_reginfo[] = {
+       .opc0 = 1, .opc1 = 0, .crn = 7, .crm = 7, .opc2 = 4,
+       .access = PL1_W, .accessfn = access_gcspushx, .fgt = FGT_NGCSEPP,
+       .type = ARM_CP_GCSPUSHX },
++    { .name = "GCSPOPCX", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 0, .crn = 7, .crm = 7, .opc2 = 5,
++      .access = PL1_W, .accessfn = access_gcspopcx, .fgt = FGT_NGCSEPP,
++      .type = ARM_CP_GCSPOPCX },
+     { .name = "GCSPOPX", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 0, .crn = 7, .crm = 7, .opc2 = 6,
+       .access = PL1_W, .type = ARM_CP_GCSPOPX },
+diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
+index 773ed3044d..af91b7f95f 100644
+--- a/target/arm/tcg/translate-a64.c
++++ b/target/arm/tcg/translate-a64.c
+@@ -2555,6 +2555,56 @@ static void gen_gcspushx(DisasContext *s)
+     clear_pstate_bits(PSTATE_EXLOCK);
+ }
  
- #define EL(X)  ((X << R_MMUIDXINFO_EL_SHIFT) | R_MMUIDXINFO_ELVALID_MASK)
- #define REL(X) ((X << R_MMUIDXINFO_REL_SHIFT) | R_MMUIDXINFO_RELVALID_MASK)
-+#define R2     R_MMUIDXINFO_2RANGES_MASK
- 
- const uint32_t arm_mmuidx_table[ARM_MMU_IDX_M + 8] = {
-     /*
-      * A-profile.
-      */
--    [ARMMMUIdx_E10_0]           = EL(0) | REL(1),
--    [ARMMMUIdx_E10_1]           = EL(1) | REL(1),
--    [ARMMMUIdx_E10_1_PAN]       = EL(1) | REL(1),
-+    [ARMMMUIdx_E10_0]           = EL(0) | REL(1) | R2,
-+    [ARMMMUIdx_E10_1]           = EL(1) | REL(1) | R2,
-+    [ARMMMUIdx_E10_1_PAN]       = EL(1) | REL(1) | R2,
- 
--    [ARMMMUIdx_E20_0]           = EL(0) | REL(2),
--    [ARMMMUIdx_E20_2]           = EL(2) | REL(2),
--    [ARMMMUIdx_E20_2_PAN]       = EL(2) | REL(2),
-+    [ARMMMUIdx_E20_0]           = EL(0) | REL(2) | R2,
-+    [ARMMMUIdx_E20_2]           = EL(2) | REL(2) | R2,
-+    [ARMMMUIdx_E20_2_PAN]       = EL(2) | REL(2) | R2,
- 
-     [ARMMMUIdx_E2]              = EL(2) | REL(2),
- 
-@@ -31,9 +32,9 @@ const uint32_t arm_mmuidx_table[ARM_MMU_IDX_M + 8] = {
-     [ARMMMUIdx_Stage2_S]        = REL(2),
-     [ARMMMUIdx_Stage2]          = REL(2),
- 
--    [ARMMMUIdx_Stage1_E0]       = REL(1),
--    [ARMMMUIdx_Stage1_E1]       = REL(1),
--    [ARMMMUIdx_Stage1_E1_PAN]   = REL(1),
-+    [ARMMMUIdx_Stage1_E0]       = REL(1) | R2,
-+    [ARMMMUIdx_Stage1_E1]       = REL(1) | R2,
-+    [ARMMMUIdx_Stage1_E1_PAN]   = REL(1) | R2,
- 
-     /*
-      * M-profile.
++static void gen_gcspopcx(DisasContext *s)
++{
++    int sp_off = offsetof(CPUARMState, cp15.gcspr_el[s->current_el]);
++    int spsr_idx = aarch64_banked_spsr_index(s->current_el);
++    int spsr_off = offsetof(CPUARMState, banked_spsr[spsr_idx]);
++    int elr_off = offsetof(CPUARMState, elr_el[s->current_el]);
++    int gcscr_off = offsetof(CPUARMState, cp15.gcscr_el[s->current_el]);
++    int pstate_off = offsetof(CPUARMState, pstate);
++    int mmuidx = core_gcs_mem_index(s->mmu_idx);
++    MemOp mop = finalize_memop(s, MO_64 | MO_ALIGN);
++    TCGv_i64 addr = tcg_temp_new_i64();
++    TCGv_i64 tmp1 = tcg_temp_new_i64();
++    TCGv_i64 tmp2 = tcg_temp_new_i64();
++    TCGLabel *fail_label =
++        delay_exception(s, EXCP_UDEF, syn_gcs_data_check(GCS_IT_GCSPOPCX, 31));
++
++    /* The value at top-of-stack must be an exception token. */
++    tcg_gen_ld_i64(addr, tcg_env, sp_off);
++    tcg_gen_qemu_ld_i64(tmp1, addr, mmuidx, mop);
++    tcg_gen_brcondi_i64(TCG_COND_NE, tmp1, 0b1001, fail_label);
++
++    /* Validate in turn, ELR ... */
++    tcg_gen_addi_i64(addr, addr, 8);
++    tcg_gen_qemu_ld_i64(tmp1, addr, mmuidx, mop);
++    tcg_gen_ld_i64(tmp2, tcg_env, elr_off);
++    tcg_gen_brcond_i64(TCG_COND_NE, tmp1, tmp2, fail_label);
++
++    /* ... SPSR ... */
++    tcg_gen_addi_i64(addr, addr, 8);
++    tcg_gen_qemu_ld_i64(tmp1, addr, mmuidx, mop);
++    tcg_gen_ld_i64(tmp2, tcg_env, spsr_off);
++    tcg_gen_brcond_i64(TCG_COND_NE, tmp1, tmp2, fail_label);
++
++    /* ... and LR. */
++    tcg_gen_addi_i64(addr, addr, 8);
++    tcg_gen_qemu_ld_i64(tmp1, addr, mmuidx, mop);
++    tcg_gen_brcond_i64(TCG_COND_NE, tmp1, cpu_reg(s, 30), fail_label);
++
++    /* Writeback stack pointer after pop. */
++    tcg_gen_addi_i64(addr, addr, 8);
++    tcg_gen_st_i64(addr, tcg_env, sp_off);
++
++    /* PSTATE.EXLOCK = GetCurrentEXLOCKEN(). */
++    tcg_gen_ld_i64(tmp1, tcg_env, gcscr_off);
++    tcg_gen_ld_i64(tmp2, tcg_env, pstate_off);
++    tcg_gen_shri_i64(tmp1, tmp1, ctz64(GCSCR_EXLOCKEN));
++    tcg_gen_deposit_i64(tmp2, tmp2, tmp1, ctz64(PSTATE_EXLOCK), 1);
++    tcg_gen_st_i64(tmp2, tcg_env, pstate_off);
++}
++
+ static void gen_gcspopx(DisasContext *s)
+ {
+     int sp_off = offsetof(CPUARMState, cp15.gcspr_el[s->current_el]);
+@@ -2879,6 +2929,14 @@ static void handle_sys(DisasContext *s, bool isread,
+             gen_gcspushx(s);
+         }
+         return;
++    case ARM_CP_GCSPOPCX:
++        /* Choose the CONSTRAINED UNPREDICTABLE for UNDEF. */
++        if (rt != 31) {
++            unallocated_encoding(s);
++        } else if (s->gcs_en) {
++            gen_gcspopcx(s);
++        }
++        return;
+     case ARM_CP_GCSPOPX:
+         /* Choose the CONSTRAINED UNPREDICTABLE for UNDEF. */
+         if (rt != 31) {
 -- 
 2.43.0
 

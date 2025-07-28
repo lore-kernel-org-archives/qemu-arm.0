@@ -4,82 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7BC05C87FC9
-	for <qemu-arm@archiver.kernel.org>; Mon, 28 Jul 2025 11:19:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C61E8C87FC9
+	for <qemu-arm@archiver.kernel.org>; Mon, 28 Jul 2025 12:53:32 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ugLsf-0005b8-N8; Mon, 28 Jul 2025 07:18:57 -0400
+	id 1ugNLE-00082G-BY; Mon, 28 Jul 2025 08:52:32 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1ugLO0-0004CB-4F
- for qemu-arm@nongnu.org; Mon, 28 Jul 2025 06:47:16 -0400
-Received: from p-east3-cluster3-host8-snip4-1.eps.apple.com ([57.103.86.74]
- helo=outbound.qs.icloud.com)
+ (Exim 4.90_1) (envelope-from <mads@ynddal.dk>) id 1ugMlx-0005I5-1e
+ for qemu-arm@nongnu.org; Mon, 28 Jul 2025 08:16:14 -0400
+Received: from p-east1-cluster3-host6-snip4-1.eps.apple.com ([57.103.91.182]
+ helo=outbound.ci.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1ugLNw-00071E-Oq
- for qemu-arm@nongnu.org; Mon, 28 Jul 2025 06:47:15 -0400
-Received: from outbound.qs.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-east-2d-60-percent-1 (Postfix) with ESMTPS id
- AC7CF180011E; Mon, 28 Jul 2025 10:47:09 +0000 (UTC)
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; bh=cLjPuPYOUhuKvBEn7VsnYOUTHfuyTb1QdxC9mu+H5xE=;
+ (Exim 4.90_1) (envelope-from <mads@ynddal.dk>) id 1ugMlp-0008BB-VH
+ for qemu-arm@nongnu.org; Mon, 28 Jul 2025 08:16:02 -0400
+Received: from outbound.ci.icloud.com (unknown [127.0.0.2])
+ by p00-icloudmta-asmtp-us-central-1k-100-percent-11 (Postfix) with ESMTPS id
+ 87AE01805908; Mon, 28 Jul 2025 12:15:47 +0000 (UTC)
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ynddal.dk; s=sig1;
+ bh=dx9iNuCXde9aI1tiGl0SdyHKxu//3jAepAe8xuGXnJU=;
  h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To:x-icloud-hme;
- b=MGlnssf7xZvnO1dlJ6psg1njvC4WHSjsthp8F8w10hGLQ+emwdv6bI8EbGj3N8nZ98a1wWVofXtrK58K9V4hVXn1cR8dfNoqpJPUT4Jjpyg+kDz7OKMhVN+TAVt7KOFXh0klb2kV6Uf/6d1zVtLjX8Ki0bNQdMktdUx3wtyogfhdnzX2lN7dlzasF8MqTKsb5qccK9jfn5JIbQ5ENYIdcNBnChDxxyVeahqbtLxhJygBI59SSQVRgCfqePHTxsq8adkPmSyYabF56yS96NdfvT12D6OxlgzI9Y1hrxduFR8NqRxHD28OErrNTB/k8cS8RHaeoYhTtre3DgvYov5pPw==
-X-Client-IP: 46.189.47.18
-Received: from smtpclient.apple (qs-asmtp-me-k8s.p00.prod.me.com
- [17.57.155.37])
- by p00-icloudmta-asmtp-us-east-2d-60-percent-1 (Postfix) with ESMTPSA id
- B0EB71802086; Mon, 28 Jul 2025 10:47:07 +0000 (UTC)
+ b=yAHi2+WugsgkHUZHNi3aYi/OWR5zfqg1t92wrMteDBpO+RpaxGgS6X8OWnruRj5EXkI31DtzRxkPiVNWoZfU62OFuKNu6ODS6mxbMIRuBVz0T/anfXofNyb5jy79JRnMXUeqWoPxfDO/E16GEJwkOjApAnONYVbDYyJlVwypHvyQuD0Qrh2LZMoOQvZq4lYdUR8KRqDxpnaVK2o8d60Q/YGT5rTFfNGAGD6prqx2rNZek0xoUMrp9DNhfHBr4UtDQW76qAZoaF4glpqPykQr5Wqx0x6YtCqhnEl4EmTX9P0UrBP8XJYLmo4EHEQMHgdqhXql5LHOjxa9uRZEEWG0iA==
+X-Client-IP: 212.60.126.184
+Received: from smtpclient.apple (ci-asmtp-me-k8s.p00.prod.me.com
+ [17.57.156.36])
+ by p00-icloudmta-asmtp-us-central-1k-100-percent-11 (Postfix) with ESMTPSA id
+ 7CED4180591F; Mon, 28 Jul 2025 12:15:45 +0000 (UTC)
 Content-Type: text/plain;
-	charset=utf-8
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3860.100.5.1.1\))
-Subject: Re: [PATCH v3 3/9] target/arm: add asserts for code paths not
- leveraged when using the vGIC
-From: Mohamed Mediouni <mohamed@unpredictable.fr>
-In-Reply-To: <e9afdf9e-b357-43a5-acc6-f4839c539585@linaro.org>
-Date: Mon, 28 Jul 2025 12:46:56 +0200
-Cc: qemu-devel@nongnu.org, Phil Dennis-Jordan <phil@philjordan.eu>,
- Mads Ynddal <mads@ynddal.dk>, Cameron Esfahani <dirty@apple.com>,
- Ani Sinha <anisinha@redhat.com>, qemu-arm@nongnu.org,
- Igor Mammedov <imammedo@redhat.com>, Alexander Graf <agraf@csgraf.de>,
- Shannon Zhao <shannon.zhaosl@gmail.com>,
+	charset=us-ascii
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3826.600.51.1.1\))
+Subject: Re: [PATCH v4 04/15] hw/intc: Add hvf vGIC interrupt controller
+ support
+From: Mads Ynddal <mads@ynddal.dk>
+In-Reply-To: <20250728055701.38975-5-mohamed@unpredictable.fr>
+Date: Mon, 28 Jul 2025 14:15:33 +0200
+Cc: qemu-devel@nongnu.org, Alexander Graf <agraf@csgraf.de>,
  Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Cameron Esfahani <dirty@apple.com>,
+ Ani Sinha <anisinha@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
  Roman Bolshakov <rbolshakov@ddn.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
+ Shannon Zhao <shannon.zhaosl@gmail.com>,
+ Phil Dennis-Jordan <phil@philjordan.eu>,
+ Igor Mammedov <imammedo@redhat.com>, qemu-arm@nongnu.org
 Content-Transfer-Encoding: quoted-printable
-Message-Id: <5F11EE68-0CC5-4A41-A89D-48CF789196A9@unpredictable.fr>
-References: <20250725223035.52284-1-mohamed@unpredictable.fr>
- <20250725223035.52284-4-mohamed@unpredictable.fr>
- <e9afdf9e-b357-43a5-acc6-f4839c539585@linaro.org>
-To: =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-X-Mailer: Apple Mail (2.3860.100.5.1.1)
-X-Proofpoint-ORIG-GUID: dBwgEYyZD97qbZmm8MkYVF7EeQlH-Uy2
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwNzI4MDA3OSBTYWx0ZWRfX7aQpdsSyosPl
- jlxsXCQkhuFsipOpXbtq2a+g4aSTyyB3q00q+Ss9LdCOCi3CjU870TV8708mX9bNw8ZOhpOlfbN
- AlShZaWwnIZib1Wy4WB+A36Yh4DLXI4yEoiYCrs24/PKU0mnAb/f4OPqkubsjz+9s3TrYg2C99o
- 3Bdf3xkGlrSPpfkBfjLaMxchaKVTDwCwVbRq+vqIVlUFMYLN/++smERUG5jl2+lvubnfR8gDlmJ
- +OxdHxxlcjGrB0r73M63A8Nm1FN9OH/FhS6CR4sYsVM0I0FHH1+yyUnEuOb3y8S8IOy731WBI=
-X-Proofpoint-GUID: dBwgEYyZD97qbZmm8MkYVF7EeQlH-Uy2
+Message-Id: <1F4C322B-8D95-43D0-96EF-66B0C4C5E55E@ynddal.dk>
+References: <20250728055701.38975-1-mohamed@unpredictable.fr>
+ <20250728055701.38975-5-mohamed@unpredictable.fr>
+To: Mohamed Mediouni <mohamed@unpredictable.fr>
+X-Mailer: Apple Mail (2.3826.600.51.1.1)
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwNzI4MDA5MCBTYWx0ZWRfXxTc3XBufyFSn
+ jvbhnz8olQNMEfa9gE3okmIg24GwXmctbhworkzsxQgYQHRB+8oT2Lh1JNfQvC6ubdxHTJARcwf
+ Pnf8Z9H1vMjAK25l2rLZV1ekCLXzIrhL06VGf1/7g/KRnH2WOoqCB5Q5rQQVISDQWdRI0fBn0NT
+ uI9j0teb4pQP6MX/0dM8dE3LFHyZ7pQIyaAlWWKKgAk3+1ClhqIC4LjeQtFgCDhZwu8X5a1p7zB
+ 52KONrpipzNKdSGib+Zd3dx2+c7gZBjhwX43T6IRcXBwBU7o68vwpSpcJU/v/P09tZeLnEk+0=
+X-Proofpoint-GUID: tNSVMNe2o3ZpgqID28LlT5lGvDL_m3CL
+X-Proofpoint-ORIG-GUID: tNSVMNe2o3ZpgqID28LlT5lGvDL_m3CL
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.9,FMLib:17.12.80.40
- definitions=2025-07-28_03,2025-07-24_01,2025-03-28_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
- suspectscore=0 bulkscore=0 adultscore=0
- mlxlogscore=865 clxscore=1030
- phishscore=0 spamscore=0 mlxscore=0 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.22.0-2506270000 definitions=main-2507280079
-Received-SPF: pass client-ip=57.103.86.74;
- envelope-from=mohamed@unpredictable.fr; helo=outbound.qs.icloud.com
+ definitions=2025-07-28_03,2025-07-28_01,2025-03-28_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0
+ adultscore=0 clxscore=1030 mlxlogscore=999 malwarescore=0 mlxscore=0
+ suspectscore=0 spamscore=0 bulkscore=0 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.22.0-2506270000 definitions=main-2507280090
+Received-SPF: pass client-ip=57.103.91.182; envelope-from=mads@ynddal.dk;
+ helo=outbound.ci.icloud.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -95,47 +92,26 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi,
 
-> On 28. Jul 2025, at 12:18, Philippe Mathieu-Daud=C3=A9 =
-<philmd@linaro.org> wrote:
->=20
-> Hi Mohamed,
->=20
-> On 26/7/25 00:30, Mohamed Mediouni wrote:
->> When using the vGIC, timers are directly handled by the platform, so =
-no vmexits ought to happen in that case.
->> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
->> ---
->>  target/arm/hvf/hvf.c | 10 ++++++++++
->>  1 file changed, 10 insertions(+)
->=20
->=20
->> @@ -1965,6 +1971,10 @@ int hvf_vcpu_exec(CPUState *cpu)
->>          /* This is the main one, handle below. */
->>          break;
->>      case HV_EXIT_REASON_VTIMER_ACTIVATED:
->> +        /* This is only for when a user-mode irqchip is used. */
->> +        if (hvf_irqchip_in_kernel()) {
->> +            assert("vtimer activated vmexit when using platform =
-GIC");
->=20
-> This line does nothing (not firing), is that what you intended to?
-It=E2=80=99s specifically so that if this trips, I know that I really =
-screwed things up. Helped me a bit in developing this.
+> +    /* Redistributor state (one per CPU) */
+> +
+> +    for (ncpu =3D 0; ncpu < s->num_cpu; ncpu++) {
+> +        GICv3CPUState *c =3D &s->cpu[ncpu];
+> +        hv_vcpu_t vcpu =3D c->cpu->accel->fd;
+> +
+> +        reg =3D c->gicr_waker;
+> +        hv_gic_set_redistributor_reg(vcpu, =
+HV_GIC_REDISTRIBUTOR_REG_GICR_IGROUPR0, reg);
+> +
 
-However, this whole patch isn=E2=80=99t expected to ever trigger irl, so =
-would be fine to drop from that perspective.
+Sorry if I'm belaboring the obvious, but I think you need to call these
+from the owning thread of the CPU. This is also stated in Apple's docs
+(some are documented; some are not!).
 
-HV_EXIT_REASON_VTIMER_ACTIVATED will never be returned by =
-Hypervisor.framework when the vGIC is enabled.
+I had to do that in the branch I was working on. You should check the
+return of the functions 'hv_gic_...'. They give an error when called
+from the wrong thread.
 
-Thank you,
--Mohamed
->> +        }
->>          qemu_set_irq(arm_cpu->gt_timer_outputs[GTIMER_VIRT], 1);
->>          cpu->accel->vtimer_masked =3D true;
->>          return 0;
->=20
-
+Could this be related to commit "hw/intc: hvf: add migration blocker
+when using multiple vCPUs with the Apple GIC"?=
 

@@ -4,114 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 644E0C87FC9
-	for <qemu-arm@archiver.kernel.org>; Mon, 28 Jul 2025 15:34:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D51C4C83F26
+	for <qemu-arm@archiver.kernel.org>; Mon, 28 Jul 2025 16:11:45 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ugPsF-0006kZ-Qk; Mon, 28 Jul 2025 11:34:47 -0400
+	id 1ugQRd-0006pE-Qn; Mon, 28 Jul 2025 12:11:25 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1ugPrp-0005jG-8k
- for qemu-arm@nongnu.org; Mon, 28 Jul 2025 11:34:26 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1ugQRL-0006kq-AT; Mon, 28 Jul 2025 12:11:06 -0400
+Received: from isrv.corpit.ru ([212.248.84.144])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1ugPrl-0001RJ-93
- for qemu-arm@nongnu.org; Mon, 28 Jul 2025 11:34:19 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1753716855;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Sdt/9Ejlns4XKo+Lq+bhSxUAc8h7hmaymcXwIZo2vIg=;
- b=KQiaycxhxzuDI2jI3PRP5inlCiKJv9eAGO6Fm8zwFOCK6pgm5kz9T3Lh32EklhCToHpOdC
- RWbIer1gzgHEFMHjchJfxoPon9wuGbm2tSGkh/kIPqVHKe9G6sxurGWCmwbrMt6+u9/ZMZ
- 8ExSG3FxVYlcN+Fw4mlNMHU1pwXqrhY=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-403-E4Tmo75MOEmkOi0-IKfbsA-1; Mon, 28 Jul 2025 11:34:14 -0400
-X-MC-Unique: E4Tmo75MOEmkOi0-IKfbsA-1
-X-Mimecast-MFC-AGG-ID: E4Tmo75MOEmkOi0-IKfbsA_1753716853
-Received: by mail-wm1-f70.google.com with SMTP id
- 5b1f17b1804b1-456175dba68so27306775e9.2
- for <qemu-arm@nongnu.org>; Mon, 28 Jul 2025 08:34:14 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1753716853; x=1754321653;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=Sdt/9Ejlns4XKo+Lq+bhSxUAc8h7hmaymcXwIZo2vIg=;
- b=kSPM4q5EYUNjpJRyFCMeHh/rDNu/+MVIAJ5pPRVLcr2cagH4tzat5BhMXHQKZdZOom
- 5p4IzKKLhTqgdydyTIUahmyEgrX1Jo6nTvs/A2lDv288nyfU7vqiQHWZF0xNsggXclIx
- lFyBnDRQ73j+RU94jhFtHEg2KGcfdT30sPkjq/Lxw7SkQ3KT7FD8gPnuAklTE6kWpez5
- 6G0vFv/fPI+EmLOhI8QShyht8MpafooYmjZSbgZDrUs4LWlhmZExtMsO2wmnu0air0fI
- nlHpO4eyip15KZZCQE/WS/L8xcHfecAb7+dvYxFyRfzwJo0QNry7nlGRJhbmh4poBwVU
- Ed7g==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUAxE5BuW9vtrvm2+PBCGPlil02tjqKj48HXbUSPAtdPDFiFDtAQr/9vW4UJ0vx7qRq0QmhSyGqUA==@nongnu.org
-X-Gm-Message-State: AOJu0YzfEnhIbh1DHKsKP/wKqndNse5k1aTA9D5cFhbrqnRM+nvt3JkO
- vXZtFn0H/XXu0OtRnJ+ZnJO1elwu7E4KLkzxRl1F3YMcGSgjF2Ahg4d3RwCuhLoFAEFzfUkuSOi
- oZ/IIWpkMadGMxam7+gcI/ay8nCSctc4hd9z6ERGEptCv/uybC3ICdg==
-X-Gm-Gg: ASbGncts9JtlrJ0glvEN9Eg/SSnv5fpKo8Gu1RSeGccdRX7VMUAXQQWSGGB0AmWt/zg
- e6tX1irXzrwI+c0CsDiYWEyYUJCmmeinuU7FCFyOp4jldLKZ3PGpHTp1KNf6QPpnfzBDtWIXhve
- p9qtLElHIwgwn1I/fqGQd6svPkkkPbHRR8xd6p5rxtYANVB5wFvLEff0BQf9nKsv3lUOyKCtqhV
- DJoPyyrmlC6eTNQCQWZHRPf9m/DM2eztDOzKK+N1jh6KHup0N8UY/MwUCl1L8IC+sEE5Al5Yd8Q
- UPwlQtoBdYUWa/hCJcG73vlKRpowL5tNOd7NGj5eXwhyr6cddowaHN0qQE+BtkJckJIWN9i9AA=
- =
-X-Received: by 2002:a05:600c:1907:b0:456:1d93:4365 with SMTP id
- 5b1f17b1804b1-458762fb73emr101470505e9.5.1753716853053; 
- Mon, 28 Jul 2025 08:34:13 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFDBj7HeNJtjL1zliTzj//Vg8dtNx8e3sNk1h3JKiRJhk/Al8cyrFzpGHzh+ZiABP9GuhOR2w==
-X-Received: by 2002:a05:600c:1907:b0:456:1d93:4365 with SMTP id
- 5b1f17b1804b1-458762fb73emr101469925e9.5.1753716852407; 
- Mon, 28 Jul 2025 08:34:12 -0700 (PDT)
-Received: from [192.168.3.191] (228.246.150.77.rev.sfr.net. [77.150.246.228])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3b7816e3641sm7384490f8f.73.2025.07.28.08.34.09
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 28 Jul 2025 08:34:11 -0700 (PDT)
-Message-ID: <df529eec-8987-4b32-a421-3ba63a368619@redhat.com>
-Date: Mon, 28 Jul 2025 17:34:09 +0200
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1ugQRG-0005fZ-MH; Mon, 28 Jul 2025 12:11:00 -0400
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+ by isrv.corpit.ru (Postfix) with ESMTP id 6539D13AF9D;
+ Mon, 28 Jul 2025 19:10:45 +0300 (MSK)
+Received: from [192.168.177.146] (mjtthink.wg.tls.msk.ru [192.168.177.146])
+ by tsrv.corpit.ru (Postfix) with ESMTP id E2F08251803;
+ Mon, 28 Jul 2025 19:10:52 +0300 (MSK)
+Message-ID: <12d5df5f-7fb1-4665-aa10-621505a4a44b@tls.msk.ru>
+Date: Mon, 28 Jul 2025 19:10:52 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v7 09/36] hw/pci-host/gpex-acpi: Use
- build_pci_host_bridge_osc_method
-To: Michael Tokarev <mjt@tls.msk.ru>, eric.auger.pro@gmail.com,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
- imammedo@redhat.com, Jonathan.Cameron@huawei.com, gustavo.romero@linaro.org,
- anisinha@redhat.com, mst@redhat.com, shannon.zhaosl@gmail.com,
- Gerd Hoffmann <kraxel@redhat.com>
-Cc: pbonzini@redhat.com, philmd@linaro.org, alex.bennee@linaro.org
-References: <20250714080639.2525563-1-eric.auger@redhat.com>
- <20250714080639.2525563-10-eric.auger@redhat.com>
- <ddf6f9e3-daaa-4ea1-a5e6-d402a75524c8@tls.msk.ru>
- <914677f4-07ba-45fe-9dc2-dea40940e789@tls.msk.ru>
- <53971ad6-9f50-45b0-80c4-eeedb24e53db@redhat.com>
- <46f08bce-7176-4332-9764-6999fd655bdf@tls.msk.ru>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <46f08bce-7176-4332-9764-6999fd655bdf@tls.msk.ru>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 1dGmmdgjL6uUJW3fW8a5sxp6htf1B4ud4FgISBNAWlA_1753716853
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+Subject: Re: [PATCH v2 for-10.1 1/3] linux-user/aarch64: Clear TPIDR2_EL0 when
+ delivering signals
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: Richard Henderson <richard.henderson@linaro.org>
+References: <20250725175510.3864231-1-peter.maydell@linaro.org>
+ <20250725175510.3864231-2-peter.maydell@linaro.org>
+Content-Language: en-US, ru-RU
+From: Michael Tokarev <mjt@tls.msk.ru>
+Autocrypt: addr=mjt@tls.msk.ru; keydata=
+ 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
+In-Reply-To: <20250725175510.3864231-2-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: permerror client-ip=212.248.84.144; envelope-from=mjt@tls.msk.ru;
+ helo=isrv.corpit.ru
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_NONE=0.001, T_SPF_PERMERROR=0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -124,70 +103,40 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Michael,
-On 7/28/25 5:17 PM, Michael Tokarev wrote:
-> On 28.07.2025 17:56, Eric Auger wrote:
->> Hi Michael,
->
-> Hi!
->
->> This commit added an imply ACPI_PCI to the PCI_EXPRESS_GENERIC_BRIDGE
->> config in hw/pci-host/Kconfig:
->>
->> config PCI_EXPRESS_GENERIC_BRIDGE
->>      bool
->>      select PCI_EXPRESS  -> selects PCI
->>      imply ACPI_PCI
->>
->> In hw/acpi/Kconfig we have:
->>
->> config ACPI_PCI
->>      bool
->>      depends on ACPI && PCI
->>
->> ACPI is selected by ACPI_HW_REDUCED
->>
->> config ACPI_HW_REDUCED
->>      bool
->>      select ACPI
->>      select ACPI_MEMORY_HOTPLUG
->>      select ACPI_NVDIMM
->>
->> so logically the ACPI && PCI dependencies for ACPI_PCI should be
->> resolved. What do I miss?
->
-> I think it should be "select" not "imply", which seems to be stricter.
-> With a devices file like I'm using - it looks like - only things which
-> are selected gets enabled.  But this commit brings hard dependency
-> between the bridge device and ACPI_PCI, as demonstrated by my example.
-> So when the bridge selects ACPI_PCI instead of implying it, whole thing
-> works (I just verified it)
+On 25.07.2025 20:55, Peter Maydell wrote:
+> A recent change to the kernel (Linux commit b376108e1f88
+> "arm64/fpsimd: signal: Clear TPIDR2 when delivering signals") updated
+> the signal-handler entry code to always clear TPIDR2_EL0.
+> 
+> This is necessary for the userspace ZA lazy saving scheme to work
+> correctly when unwinding exceptions across a signal boundary.
+> (For the essay-length description of the incorrect behaviour and
+> why this is the correct fix, see the commit message for the
+> kernel commit.)
+> 
+> Make QEMU also clear TPIDR2_EL0 on signal entry, applying the
+> equivalent bugfix to our implementation.
+> 
+> Note that getting this unwinding to work correctly also requires
+> changes to the userspace code, e.g.  as implemented in gcc in
+> https://gcc.gnu.org/git/?p=gcc.git;a=commit;h=b5ffc8e75a8
+> 
+> This change is technically an ABI change; from the kernel's
+> point of view SME was never enabled (it was hidden behind
+> CONFIG_BROKEN) before the change. From QEMU's point of view
+> our SME-related signal handling was broken anyway as we weren't
+> saving and restoring TPIDR2_EL0.
+> 
+> Cc: qemu-stable@nongnu.org
+> Fixes: 78011586b90d1 ("target/arm: Enable SME for user-only")
 
-build_pci_host_bridge_osc_method() is called from gpex-acpi.c
+Is it worth the efforts to apply this one to qemu 7.2.x branch?
+If yes, I'd love to have it back-ported to that one :)
 
-pci_ss.add(when: ['CONFIG_PCI_EXPRESS_GENERIC_BRIDGE', 'CONFIG_ACPI'],
-if_true: files('gpex-acpi.c'))
+Thanks,
 
-so the hard dependency exists only if ACPI is selected.
-
-If you use "select" you will force ACPI_PCI even if ACPI is not set
-which does not sound what we want?
-
-regards
-
-Eric
->
-> I wonder why we build microvm-only executable in debian...  Initially
-> it was a small binary aimed at very fast startup and light runtime.
-> But with time it grew quite a lot of things...
->
-> Thanks,
->
-> /mjt
->
-
+/mjt
 

@@ -4,32 +4,33 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86FEAC87FC9
-	for <qemu-arm@archiver.kernel.org>; Mon, 28 Jul 2025 15:17:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02C61C83F17
+	for <qemu-arm@archiver.kernel.org>; Mon, 28 Jul 2025 15:30:35 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ugPbU-0004Gi-Nl; Mon, 28 Jul 2025 11:17:29 -0400
+	id 1ugPnz-0003j7-MW; Mon, 28 Jul 2025 11:30:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1ugPbS-0004EC-9n; Mon, 28 Jul 2025 11:17:26 -0400
+ id 1ugPnR-0002gJ-Bh; Mon, 28 Jul 2025 11:29:57 -0400
 Received: from isrv.corpit.ru ([212.248.84.144])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1ugPbQ-000819-7b; Mon, 28 Jul 2025 11:17:26 -0400
+ id 1ugPnO-0000yg-G4; Mon, 28 Jul 2025 11:29:48 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 851BA13AF67;
- Mon, 28 Jul 2025 18:17:00 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id 1647113AF79;
+ Mon, 28 Jul 2025 18:29:37 +0300 (MSK)
 Received: from [192.168.177.146] (mjtthink.wg.tls.msk.ru [192.168.177.146])
- by tsrv.corpit.ru (Postfix) with ESMTP id E075D2517C8;
- Mon, 28 Jul 2025 18:17:07 +0300 (MSK)
-Message-ID: <46f08bce-7176-4332-9764-6999fd655bdf@tls.msk.ru>
-Date: Mon, 28 Jul 2025 18:17:07 +0300
+ by tsrv.corpit.ru (Postfix) with ESMTP id 7F6612517D3;
+ Mon, 28 Jul 2025 18:29:44 +0300 (MSK)
+Message-ID: <ca0f8747-e315-4ae5-8f48-912e17be987e@tls.msk.ru>
+Date: Mon, 28 Jul 2025 18:29:44 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v7 09/36] hw/pci-host/gpex-acpi: Use
  build_pci_host_bridge_osc_method
+From: Michael Tokarev <mjt@tls.msk.ru>
 To: eric.auger@redhat.com, eric.auger.pro@gmail.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, peter.maydell@linaro.org, imammedo@redhat.com,
  Jonathan.Cameron@huawei.com, gustavo.romero@linaro.org, anisinha@redhat.com,
@@ -40,8 +41,8 @@ References: <20250714080639.2525563-1-eric.auger@redhat.com>
  <ddf6f9e3-daaa-4ea1-a5e6-d402a75524c8@tls.msk.ru>
  <914677f4-07ba-45fe-9dc2-dea40940e789@tls.msk.ru>
  <53971ad6-9f50-45b0-80c4-eeedb24e53db@redhat.com>
+ <46f08bce-7176-4332-9764-6999fd655bdf@tls.msk.ru>
 Content-Language: en-US, ru-RU
-From: Michael Tokarev <mjt@tls.msk.ru>
 Autocrypt: addr=mjt@tls.msk.ru; keydata=
  xsFNBGYpLkcBEACsajkUXU2lngbm6RyZuCljo19q/XjZTMikctzMoJnBGVSmFV66kylUghxs
  HDQQF2YZJbnhSVt/mP6+V7gG6MKR5gYXYxLmypgu2lJdqelrtGf1XtMrobG6kuKFiD8OqV6l
@@ -85,7 +86,7 @@ Autocrypt: addr=mjt@tls.msk.ru; keydata=
  YPkzzso6HT7rlapB5nulYmplJZSZ4RmE1ATZKf+wUPocDu6N10LtBNbwHWTT5NLtxNJAJAvl
  ojis6H1kRWZE/n5buyPY2NYeyWfjjrerOYt3er55n4C1I88RSCTGeejVmXWuo65QD2epvzE6
  3GgKngeVm7shlp7+d3D3+fAAHTvulQQqV3jOodz+B4yzuZ7WljkNrmrWrH8aI4uA98c=
-In-Reply-To: <53971ad6-9f50-45b0-80c4-eeedb24e53db@redhat.com>
+In-Reply-To: <46f08bce-7176-4332-9764-6999fd655bdf@tls.msk.ru>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 Received-SPF: permerror client-ip=212.248.84.144; envelope-from=mjt@tls.msk.ru;
@@ -111,46 +112,19 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 28.07.2025 17:56, Eric Auger wrote:
-> Hi Michael,
+On 28.07.2025 18:17, Michael Tokarev wrote:
 
-Hi!
+> I think it should be "select" not "imply", which seems to be stricter.
+> With a devices file like I'm using - it looks like - only things which
+> are selected gets enabled.  But this commit brings hard dependency
+> between the bridge device and ACPI_PCI, as demonstrated by my example.
+> So when the bridge selects ACPI_PCI instead of implying it, whole thing
+> works (I just verified it)
 
-> This commit added an imply ACPI_PCI to the PCI_EXPRESS_GENERIC_BRIDGE
-> config in hw/pci-host/Kconfig:
-> 
-> config PCI_EXPRESS_GENERIC_BRIDGE
->      bool
->      select PCI_EXPRESS  -> selects PCI
->      imply ACPI_PCI
-> 
-> In hw/acpi/Kconfig we have:
-> 
-> config ACPI_PCI
->      bool
->      depends on ACPI && PCI
-> 
-> ACPI is selected by ACPI_HW_REDUCED
-> 
-> config ACPI_HW_REDUCED
->      bool
->      select ACPI
->      select ACPI_MEMORY_HOTPLUG
->      select ACPI_NVDIMM
-> 
-> so logically the ACPI && PCI dependencies for ACPI_PCI should be
-> resolved. What do I miss?
+I just sent a patch doing exactly that.
 
-I think it should be "select" not "imply", which seems to be stricter.
-With a devices file like I'm using - it looks like - only things which
-are selected gets enabled.  But this commit brings hard dependency
-between the bridge device and ACPI_PCI, as demonstrated by my example.
-So when the bridge selects ACPI_PCI instead of implying it, whole thing
-works (I just verified it)
-
-I wonder why we build microvm-only executable in debian...  Initially
-it was a small binary aimed at very fast startup and light runtime.
-But with time it grew quite a lot of things...
+Alternatively this can be #ifdef ACPI_PCI in the code, - I dunno if
+that's possible now.
 
 Thanks,
 

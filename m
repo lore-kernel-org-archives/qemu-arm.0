@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9980C87FCE
-	for <qemu-arm@archiver.kernel.org>; Mon, 28 Jul 2025 06:06:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B75F2C87FCE
+	for <qemu-arm@archiver.kernel.org>; Mon, 28 Jul 2025 06:06:27 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ugGtD-0000zP-1I; Mon, 28 Jul 2025 01:59:11 -0400
+	id 1ugGtI-00018i-7i; Mon, 28 Jul 2025 01:59:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1ugGrV-0007Gn-IV
- for qemu-arm@nongnu.org; Mon, 28 Jul 2025 01:57:28 -0400
-Received: from p-east3-cluster2-host4-snip4-3.eps.apple.com ([57.103.87.164]
+ id 1ugGri-0007P4-Fe
+ for qemu-arm@nongnu.org; Mon, 28 Jul 2025 01:57:41 -0400
+Received: from p-east3-cluster2-host12-snip4-4.eps.apple.com ([57.103.87.245]
  helo=outbound.qs.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1ugGrT-0007E8-6D
- for qemu-arm@nongnu.org; Mon, 28 Jul 2025 01:57:24 -0400
+ id 1ugGrf-0007HO-EG
+ for qemu-arm@nongnu.org; Mon, 28 Jul 2025 01:57:36 -0400
 Received: from outbound.qs.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-east-2d-100-percent-7 (Postfix) with ESMTPS id
- B988C180014B; Mon, 28 Jul 2025 05:57:19 +0000 (UTC)
+ DBEDC180009A; Mon, 28 Jul 2025 05:57:33 +0000 (UTC)
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; bh=jrmZ0i47Zumykg1iaYLmSw24rDFj8w2MAZBY8ywB+lY=;
+ s=sig1; bh=+KR+AMbaWt7Dx4BYurEMHPtPRCgp9lEz5QbIz2+1RBM=;
  h=From:To:Subject:Date:Message-Id:MIME-Version:x-icloud-hme;
- b=B4t4EqNaCRLCl6hG00r3VQfzNa/vJzaYNh6BbOKVlkSGp75GRjvuR+Y2kO8PFAlf3MovERGtDfIL1dO49120s4V+Uks4AhO7wBxHiPmQB4kJEbJ+5iHE9cCkAUmlzKB4Wd0/14eH3j5eTjw3IfODd1V1ReDhVBaWKEo0GSbNYIbPTClnBw5VQVib8em7cRTAn8e6PwSvQl8JF7dXVnPNNFhuYGTvI7CzLgdVaCGtZTjJOqcmAYBpMhat5qWLOB76jPulnoD4K4IcBXnlc7ccVUKiuP7nmqkbaRIRgzueh4iJ08LzR6ZUDuI5JP0a7OfhtNJmUMJGWPFlTapcMRnyVw==
+ b=ciLaMX871hDh2TTvWEayGPvLmpH9HCIbP7O5wEvp2PKPnrnX+h+dykKJdQwXG/qi9Z3ShFPGkPekXOatpBtD4Ncj/mgVJomlx4mRFt04ISNFd6LlFMi09nWVyTeNodKkM9peSBGP7eEQaERKxMcdHuxVYWEzL8g0WTtUZqfd0IODikS38rxm8W7jpS4iNntV0wqnM4d+3SNxtTr3PjyIF7eYrn/HUIbIX+jbjhYFBUqSoozhqG4s/9NP5JEVXRGMFUr1+viYyCJ7l1L7WeBaMo0bT30HDAnI/mFmEI/yuU7PmNFadoQl4ebQqPz0dEU2o5Bh1n0YQ7dJXcj0MrqwUw==
 X-Client-IP: 46.189.47.18
 Received: from localhost.localdomain (qs-asmtp-me-k8s.p00.prod.me.com
  [17.57.155.37])
  by p00-icloudmta-asmtp-us-east-2d-100-percent-7 (Postfix) with ESMTPSA id
- 752A51800144; Mon, 28 Jul 2025 05:57:17 +0000 (UTC)
+ 01EC31800139; Mon, 28 Jul 2025 05:57:31 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: qemu-devel@nongnu.org
 Cc: Alexander Graf <agraf@csgraf.de>, Peter Maydell <peter.maydell@linaro.org>,
@@ -43,30 +43,31 @@ Cc: Alexander Graf <agraf@csgraf.de>, Peter Maydell <peter.maydell@linaro.org>,
  Phil Dennis-Jordan <phil@philjordan.eu>,
  Igor Mammedov <imammedo@redhat.com>, qemu-arm@nongnu.org,
  Mohamed Mediouni <mohamed@unpredictable.fr>
-Subject: [PATCH v4 07/15] target/arm: hvf: pass through CNTHCTL_EL2 and
- MDCCINT_EL1
-Date: Mon, 28 Jul 2025 07:56:53 +0200
-Message-Id: <20250728055701.38975-8-mohamed@unpredictable.fr>
+Subject: [PATCH v4 15/15] hw/intc: hvf: add migration blocker when using
+ multiple vCPUs with the Apple GIC
+Date: Mon, 28 Jul 2025 07:57:01 +0200
+Message-Id: <20250728055701.38975-16-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.39.5 (Apple Git-154)
 In-Reply-To: <20250728055701.38975-1-mohamed@unpredictable.fr>
 References: <20250728055701.38975-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwNzI4MDA0MyBTYWx0ZWRfXwfFC5Uxw4ZIG
- jts1X3AyoTCSUEs2t7wYEvXbBGfXE6aNKCpJxad1uKjzBZHbqZ/KUwIcf/WcxuVoMkftG2rYCGe
- PEIfBkZ+8/ArhoWvn53GGorHcNTrjOK3frDd5tsAbkKgEeNQuWlkho0BWeVrP2Wwdg22AcYeBJX
- FGbaWdyiGdjBo96V92K2N64+bA4Iv+xaB4HyY8clOQsqJ0YSlSUx60FLcSwoFHw9ZuBbWz2173+
- XdDUHdlhpMgHnL+BmXM1Lt9yegqIwsQa/fHdnHaL8c6QvG3luPPdID+8E4709sDWw3OR11Xfw=
-X-Proofpoint-ORIG-GUID: iuyx2U-TI4x5mjG90OO6J3ir_dC07rDQ
-X-Proofpoint-GUID: iuyx2U-TI4x5mjG90OO6J3ir_dC07rDQ
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwNzI4MDA0MyBTYWx0ZWRfXza1e44twkMYv
+ 0FkTlbOr46B6dC+zyRCroqHHkJA3kCPmFa6lowguCYpS+MD8dYQSA+jCVJwwPkHYgdCXLP7HTj9
+ rl4xBRYOoOWA42PHdCrI05t4qQ4n7WkQrLZyOD26RZTV2D38QLfxAu/fPo42AC8Bizm+v2atiaE
+ N/lLLk2UbDQ9m5KSqjl6klbj8Etpmu2M0c0XxkUFUoKlMiyF+3FOWG5LRR0cI14UzGb2Sk6CSIZ
+ dwwe2hSkoLmWu1FmeZB17HKUF7YQVtJ4inOlQQ4kJISn5qcqGb9AP5Ih28z0/B+oGNIz7/Tdo=
+X-Proofpoint-GUID: hPGQXMacA3npR4211D55ZO7dYyxNLADF
+X-Proofpoint-ORIG-GUID: hPGQXMacA3npR4211D55ZO7dYyxNLADF
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.9,FMLib:17.12.80.40
  definitions=2025-07-28_02,2025-07-24_01,2025-03-28_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0
- clxscore=1030 bulkscore=0 adultscore=0 mlxlogscore=676 suspectscore=0
- spamscore=0 phishscore=0 malwarescore=0 classifier=spam adjust=0 reason=mlx
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=999
+ suspectscore=0 phishscore=0 clxscore=1030
+ malwarescore=0 spamscore=0
+ adultscore=0 mlxscore=0 bulkscore=0 classifier=spam adjust=0 reason=mlx
  scancount=1 engine=8.22.0-2506270000 definitions=main-2507280043
-Received-SPF: pass client-ip=57.103.87.164;
+Received-SPF: pass client-ip=57.103.87.245;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.qs.icloud.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -90,55 +91,43 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-HVF traps accesses to CNTHCTL_EL2. For nested guests, HVF traps accesses to MDCCINT_EL1.
-Pass through those accesses to the Hypervisor.framework library.
+Current state known to be broken, still figuring things out...
 
 Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 ---
- target/arm/hvf/hvf.c | 16 ++++++++++++++++
- 1 file changed, 16 insertions(+)
+ hw/intc/arm_gicv3_hvf.c | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
 
-diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index 5b9865b569..63b7967053 100644
---- a/target/arm/hvf/hvf.c
-+++ b/target/arm/hvf/hvf.c
-@@ -297,6 +297,10 @@ void hvf_arm_init_debug(void)
- #define SYSREG_DBGWVR15_EL1   SYSREG(2, 0, 0, 15, 6)
- #define SYSREG_DBGWCR15_EL1   SYSREG(2, 0, 0, 15, 7)
- 
-+/* EL2 registers */
-+#define SYSREG_CNTHCTL_EL2    SYSREG(3, 4, 14, 1, 0)
-+#define SYSREG_MDCCINT_EL1    SYSREG(2, 0, 0, 2, 0)
+diff --git a/hw/intc/arm_gicv3_hvf.c b/hw/intc/arm_gicv3_hvf.c
+index 30362540f2..151020edd6 100644
+--- a/hw/intc/arm_gicv3_hvf.c
++++ b/hw/intc/arm_gicv3_hvf.c
+@@ -18,6 +18,7 @@
+ #include "hvf_arm.h"
+ #include "gicv3_internal.h"
+ #include "vgic_common.h"
++#include "migration/blocker.h"
+ #include "qom/object.h"
+ #include "target/arm/cpregs.h"
+ #include <Hypervisor/Hypervisor.h>
+@@ -703,6 +704,17 @@ static void hvf_gicv3_realize(DeviceState *dev, Error **errp)
+         error_setg(errp, "vGIC maintenance IRQ mismatch with the hardcoded one in HVF.");
+         return;
+     }
 +
- #define WFX_IS_WFE (1 << 0)
++    /* Temporary: current state known to be incomplete. */
++    if (s->num_cpu > 1) {
++        Error *hvf_mcpu_migration_blocker = NULL;
++        error_setg(&hvf_mcpu_migration_blocker,
++           "Live migration disabled because multiple CPUs are exposed.");
++        if (migrate_add_blocker(&hvf_mcpu_migration_blocker, errp)) {
++            error_free(hvf_mcpu_migration_blocker);
++            return;
++        }
++    }
+ }
  
- #define TMR_CTL_ENABLE  (1 << 0)
-@@ -1392,6 +1396,12 @@ static int hvf_sysreg_read(CPUState *cpu, uint32_t reg, uint64_t *val)
-     case SYSREG_OSDLR_EL1:
-         /* Dummy register */
-         return 0;
-+    case SYSREG_CNTHCTL_EL2:
-+        assert_hvf_ok(hv_vcpu_get_sys_reg(cpu->accel->fd, HV_SYS_REG_CNTHCTL_EL2, val));
-+        return 0;
-+    case SYSREG_MDCCINT_EL1:
-+        assert_hvf_ok(hv_vcpu_get_sys_reg(cpu->accel->fd, HV_SYS_REG_MDCCINT_EL1, val));
-+        return 0;
-     case SYSREG_ICC_AP0R0_EL1:
-     case SYSREG_ICC_AP0R1_EL1:
-     case SYSREG_ICC_AP0R2_EL1:
-@@ -1712,6 +1722,12 @@ static int hvf_sysreg_write(CPUState *cpu, uint32_t reg, uint64_t val)
-     case SYSREG_OSDLR_EL1:
-         /* Dummy register */
-         return 0;
-+    case SYSREG_CNTHCTL_EL2:
-+        assert_hvf_ok(hv_vcpu_set_sys_reg(cpu->accel->fd, HV_SYS_REG_CNTHCTL_EL2, val));
-+        return 0;
-+    case SYSREG_MDCCINT_EL1:
-+        assert_hvf_ok(hv_vcpu_set_sys_reg(cpu->accel->fd, HV_SYS_REG_MDCCINT_EL1, val));
-+        return 0;
-     case SYSREG_LORC_EL1:
-         /* Dummy register */
-         return 0;
+ static void hvf_gicv3_class_init(ObjectClass *klass, const void *data)
 -- 
 2.39.5 (Apple Git-154)
 

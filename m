@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E44B6C87FC9
-	for <qemu-arm@archiver.kernel.org>; Mon, 28 Jul 2025 13:48:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3E29C87FC9
+	for <qemu-arm@archiver.kernel.org>; Mon, 28 Jul 2025 13:48:05 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ugO7N-00085X-Je; Mon, 28 Jul 2025 09:42:17 -0400
+	id 1ugO7L-0007sx-Dx; Mon, 28 Jul 2025 09:42:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1ugO6q-0004wK-9k
- for qemu-arm@nongnu.org; Mon, 28 Jul 2025 09:41:45 -0400
-Received: from p-east3-cluster4-host2-snip4-9.eps.apple.com ([57.103.84.22]
+ id 1ugO6s-0005BR-Bj
+ for qemu-arm@nongnu.org; Mon, 28 Jul 2025 09:41:46 -0400
+Received: from p-east3-cluster4-host11-snip4-5.eps.apple.com ([57.103.84.108]
  helo=outbound.qs.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1ugO6n-0004JK-15
- for qemu-arm@nongnu.org; Mon, 28 Jul 2025 09:41:43 -0400
+ id 1ugO6p-0004KE-PF
+ for qemu-arm@nongnu.org; Mon, 28 Jul 2025 09:41:46 -0400
 Received: from outbound.qs.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-east-2d-100-percent-3 (Postfix) with ESMTPS id
- 28ACD1819D2F; Mon, 28 Jul 2025 13:41:35 +0000 (UTC)
+ 7373B1819D0A; Mon, 28 Jul 2025 13:41:40 +0000 (UTC)
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; bh=L1qOyHhqDgGsOLJo1zy700C7fqSb1OJFMO/RUzccOn4=;
+ s=sig1; bh=Ssd6YNHgtSnjqPta+M8MbDoQ9g9wz27kHCDbsfNdBos=;
  h=From:To:Subject:Date:Message-Id:MIME-Version:x-icloud-hme;
- b=ZuTTVaxp8kHsEq8tTgLNLAmptYgfD73kLEF5is7Hf1afV5OKTL/4ujtwv+1+S5oV/iJ8r5J6zZ7VP+KKo1Gm5a7LgkzyuL04D+VYR/98FDjGJw+OtKQKnBHWlL54HGeTAaFWvgFXhzbPLFEWRai3PQ0/bEfjJJwOUhwLH5phis+IlBx0IIcoqnhukIzhviRYr/KS7ekL+rhtpOixYTU1u3v/4Bvt4fP1ro3wF6m/gh1xvBdYDzedSxwcpMce3xHuuApa5aBXCbsQsww/rXPX0cI8UYXVJS1Kl+qx548MoxN0P/dLlB1ixJcULDQdcSOFHdIhSX10kB45KQHqNu1GaQ==
+ b=HGBLiUl3GNb6k0GKTObw46HDSgexxFwvbCHXzkV/tugo0tqDR2zNJrFKsccxXW65EyBBcq0EfyaljydJ/OwVhXP7D2QBBlzTS41AywPpu4OFhN7WYNoFgO03ncPXj+VHi+ZLEpb83tIJVmrlw1rPuCxjruzRrSt6+uGCtiPIZPDSxvAEMmsUMMtIVcO+/mNmMFyJ20/POBOmKkULW5Kzn4l7FhcGqF39NOo56oi9EAIMFGOBrNCuRRmY3kEDKNHMNB6/xxdbLbJSWSfmpq64IwCoelX5UDWxR45wIp8bHJdSZTMvNtkuvbj9RtIw6iGBXfGpWIWV+pQpaXBxa3qWBA==
 X-Client-IP: 46.189.47.18
 Received: from localhost.localdomain (qs-asmtp-me-k8s.p00.prod.me.com
  [17.57.155.37])
  by p00-icloudmta-asmtp-us-east-2d-100-percent-3 (Postfix) with ESMTPSA id
- EA34B1819D0A; Mon, 28 Jul 2025 13:41:32 +0000 (UTC)
+ 43FD81800219; Mon, 28 Jul 2025 13:41:38 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: qemu-devel@nongnu.org
 Cc: Mads Ynddal <mads@ynddal.dk>, Paolo Bonzini <pbonzini@redhat.com>,
@@ -44,30 +44,29 @@ Cc: Mads Ynddal <mads@ynddal.dk>, Paolo Bonzini <pbonzini@redhat.com>,
  "Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha <anisinha@redhat.com>,
  Cameron Esfahani <dirty@apple.com>,
  Mohamed Mediouni <mohamed@unpredictable.fr>
-Subject: [PATCH v5 09/13] hvf: only call hvf_sync_vtimer() when running
- without the platform vGIC
-Date: Mon, 28 Jul 2025 15:41:10 +0200
-Message-Id: <20250728134114.77545-10-mohamed@unpredictable.fr>
+Subject: [PATCH v5 12/13] target/arm: hvf: instantiate GIC early
+Date: Mon, 28 Jul 2025 15:41:13 +0200
+Message-Id: <20250728134114.77545-13-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.39.5 (Apple Git-154)
 In-Reply-To: <20250728134114.77545-1-mohamed@unpredictable.fr>
 References: <20250728134114.77545-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-ORIG-GUID: yFMkwnrESG6E3MH_tkeOfzhdOZas7QsF
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwNzI4MDEwMSBTYWx0ZWRfXx1FN1qOTI1ZX
- NTJGotKEKYmMMkwC/xfgWmTN0aOyg6mIuGeqSrn1NIhT5/hrhdq6QyGjARVRmw/YkprQg++IM1H
- sAot1VqD2t0dSlBQ9AukiSEbIicbGgrAgHsba9GUaAEI3EI3xxf8QwzLODJYBpRFwOl1/H3OvOs
- RaARoTQRtnDOv/kSxEc+IqWVQ4xIunmS5AzSM3qcL3VIOZIv/JdJYq9ltwWXSkh2YyCvEwkPlgr
- 8q10Wu9nnzLmo9k3I7Lhj1zAIRoL3gdLe1k7BuDVtxtTZHGRDQ558xXuZQHKj8kl3v6BaDRhY=
-X-Proofpoint-GUID: yFMkwnrESG6E3MH_tkeOfzhdOZas7QsF
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwNzI4MDEwMSBTYWx0ZWRfX4RDHg2TP2nZg
+ WnrkzLeAgJ0FgxIydcgsCyet69GE/MRmqa4TPb4U+Nbg5LuOmZXwxGQRiafig1NXb59vMn4XiZr
+ FSwCPFJlYJbt3p1pQ1mbhd++VFjHNdB56DOwifH2w0g+cEg4Fj47hTiTN+CcKFis6nNfIBai9Iy
+ ETfHiX4Vn6CFpwv8DsOhlDU6hp4u6WRax2DpO6hI2oJabZ0cXNBiIHfGOlP+SGQ8KVPcQlSzcZ3
+ fbPY3hNTPvon7d5yG9O5hC0wauhaQME879IGyP3m1SkJOS548au6a3MVJssZHzeDQoKRtwyng=
+X-Proofpoint-GUID: a7O7H2l8ysik6BdoXL8lHuvV0RJ-z63x
+X-Proofpoint-ORIG-GUID: a7O7H2l8ysik6BdoXL8lHuvV0RJ-z63x
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.9,FMLib:17.12.80.40
  definitions=2025-07-28_03,2025-07-28_01,2025-03-28_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0
- mlxlogscore=890 phishscore=0 adultscore=0 suspectscore=0 bulkscore=0
- clxscore=1030 spamscore=0 malwarescore=0 classifier=spam adjust=0 reason=mlx
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 clxscore=1030
+ mlxscore=0 phishscore=0 bulkscore=0 mlxlogscore=732 suspectscore=0
+ malwarescore=0 spamscore=0 adultscore=0 classifier=spam adjust=0 reason=mlx
  scancount=1 engine=8.22.0-2506270000 definitions=main-2507280101
-Received-SPF: pass client-ip=57.103.84.22;
+Received-SPF: pass client-ip=57.103.84.108;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.qs.icloud.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -91,27 +90,42 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-When running with the Apple vGIC, the EL1 vtimer is handled by the platform.
+While figuring out a better spot for it, put it in hv_arch_vm_create().
+
+After hv_vcpu_create is documented as too late, and deferring
+vCPU initialization isn't enough either.
 
 Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 ---
- target/arm/hvf/hvf.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ target/arm/hvf/hvf.c | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
 
 diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index eefae3069f..7699669e73 100644
+index f70870fb62..1fd9517f3e 100644
 --- a/target/arm/hvf/hvf.c
 +++ b/target/arm/hvf/hvf.c
-@@ -2007,7 +2007,8 @@ int hvf_vcpu_exec(CPUState *cpu)
-         g_assert_not_reached();
+@@ -1083,6 +1083,21 @@ hv_return_t hvf_arch_vm_create(MachineState *ms, uint32_t pa_range)
      }
  
--    hvf_sync_vtimer(cpu);
-+    if (!hvf_irqchip_in_kernel())
-+        hvf_sync_vtimer(cpu);
+     ret = hv_vm_create(config);
++    if (hvf_irqchip_in_kernel()) {
++        /*
++         * Instantiate GIC.
++         * This must be done prior to the creation of any vCPU
++         * but past hv_vm_create()
++         */
++        hv_gic_config_t cfg = hv_gic_config_create();
++        hv_gic_config_set_distributor_base(cfg, 0x08000000);
++        hv_gic_config_set_redistributor_base(cfg, 0x080A0000);
++        hv_return_t err = hv_gic_create(cfg);
++        if (err != HV_SUCCESS) {
++            error_report("error creating platform VGIC");
++            goto cleanup;
++         }
++    }
  
-     switch (ec) {
-     case EC_SOFTWARESTEP: {
+ cleanup:
+     os_release(config);
 -- 
 2.39.5 (Apple Git-154)
 

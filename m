@@ -4,97 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 960ACC87FC9
-	for <qemu-arm@archiver.kernel.org>; Mon, 28 Jul 2025 11:14:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7BC05C87FC9
+	for <qemu-arm@archiver.kernel.org>; Mon, 28 Jul 2025 11:19:12 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ugLoW-0001iu-SY; Mon, 28 Jul 2025 07:14:40 -0400
+	id 1ugLsf-0005b8-N8; Mon, 28 Jul 2025 07:18:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ugLCn-0006X5-Pv
- for qemu-arm@nongnu.org; Mon, 28 Jul 2025 06:35:43 -0400
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ugLCZ-0005JH-QO
- for qemu-arm@nongnu.org; Mon, 28 Jul 2025 06:35:32 -0400
-Received: by mail-wr1-x433.google.com with SMTP id
- ffacd0b85a97d-3a50956e5d3so2850110f8f.1
- for <qemu-arm@nongnu.org>; Mon, 28 Jul 2025 03:35:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1753698925; x=1754303725; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=m95VFUGib0NpZG8VWEe3xtFFBGJsxBRh2pSLO4LmoRM=;
- b=cMwCivMwqPOtPLyG+WJ7/Ig75m/Bix1Pc9THa8xNtB9BMzb4irSlPoBtwv/bwii/W5
- 3IraOEvCyKbOuOQwTT5pJNf1zWHHeG/iTWdMZCkaB84RVmA3vdjKhX19WCaqQYxUNqgl
- e7MxeDNJwGLev5V3a+YO2qZUHra7Gq9UXbAmZ3ELYqAqx+9ydxCsYAbaCUls4IlqW2Yf
- i6c/yl1ji4tOMtwXeKfZf9E6TlN2Hu1igr986WMG5Ez0AXGjwmiYl0akEokROz4JZTOx
- du3lhh6bsWNzJb9OjqtKz2qc2WyX/pJwoRCiwkLqMf1m1r7i9YC+I1zGNlG3HbH0dfwm
- UvWg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1753698925; x=1754303725;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=m95VFUGib0NpZG8VWEe3xtFFBGJsxBRh2pSLO4LmoRM=;
- b=kHWF67DIFPIcJZz5c0kkrJH3eeLBxCGCyRooYUtxHQxBwrc1ZideLIGIIhSKNTqf4o
- 0H6phig72KcHiYVe4nVPyWYFmC2RilvXCSMa0joUEBt1OmeWQHmKjxZqNLEUXC9NmOWG
- QYVJdSU3OprbTtbl5rupeYos1NcvSEO3wuZaF6xe670r51my7s+w2P5hMNAUXauvFO1p
- QIVVa/C7YuGKTA3v6F+RsbE9MYHzuSgAp/Jyv0D/O8oR+oe8DHI/xr0Bqc07DGMK0vFq
- Xhvnopc7Kfx2IZz5fPWGg3U1gy31k6L71x64s0Lo2avrHe8OiYldj/KE0I4Rk0gKon58
- CXOQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUI8HBSnDJe38np43RgIYOURuzWCcFbR5iMu25Lo7jbpPu/zSPKzy4G/o5xd/kOMsCaDNRVp9E2pw==@nongnu.org
-X-Gm-Message-State: AOJu0YwXX7pmI90/9lCfqx70BCv0+REgfmJJu0DsMsthWIvrceRvy9Il
- VIApUQjXV1mtW/SbwtSJOjR1zHZQgLa/KfeTLpkmNNmsriayVUyLrEM+Acs9Yh5xFl8=
-X-Gm-Gg: ASbGnct8t+B5S26JgRkt1DMdpaanmpPx7AtdDa0MUEMNBggOSXo2oXqK6vLdhwzs4aN
- xLL5OsdZQ3EC/nml5yiowvmD3PrRmIwdksw7BwmEHgA3+/3/vk3RgQt5OQpuQKNm90E7+MdpsBH
- xwq3GWO5EhacxmP6oDjhWEGNBGa8VHaEiM8rzByLeHd7X6AAfycEHSvtZPUWgBO6kgl2Y4B/ugk
- O8IVtL/xeg7TXAasuo8dnbgCnnQqUbZmUdQ7rVPMqu6u8fqr8lv3SZgXboNvWS7s9YjiSi/SZ/C
- DO5WkJU2oB1C1YFYGDNMuv8MjBA46hbOtEWZIR8wz4H6gWV1E8LcUd+qRg9uzFL5AQOadO0B2nD
- 1vd/R+gwl6XzKnZK07mESqZMVPhgnX0nMLrWCIdNGAkbYTJtt8HpL32rwR/OjoG1+izShH0760V
- Mw
-X-Google-Smtp-Source: AGHT+IHofaA21vS+S+C+2knGRsAiCluJ1EAbEyNNslyC66ft+L8dYZESj+WOLRPBkZgm7zjEMwrP8Q==
-X-Received: by 2002:a05:6000:381:b0:3a6:ec41:b9df with SMTP id
- ffacd0b85a97d-3b776679a0cmr7916574f8f.49.1753698925049; 
- Mon, 28 Jul 2025 03:35:25 -0700 (PDT)
-Received: from [192.168.69.209] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4587ac584d8sm96948235e9.21.2025.07.28.03.35.22
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 28 Jul 2025 03:35:24 -0700 (PDT)
-Message-ID: <aa27f93f-5591-4a6d-879a-991004ee5db5@linaro.org>
-Date: Mon, 28 Jul 2025 12:35:22 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 8/9] target/arm: hvf: use LOG_UNIMP for
- CNTP_CVAL_EL0/SYSREG_CNTP_CTL_EL0
-To: Mohamed Mediouni <mohamed@unpredictable.fr>, qemu-devel@nongnu.org
-Cc: Phil Dennis-Jordan <phil@philjordan.eu>, Mads Ynddal <mads@ynddal.dk>,
- Cameron Esfahani <dirty@apple.com>, Ani Sinha <anisinha@redhat.com>,
- qemu-arm@nongnu.org, Igor Mammedov <imammedo@redhat.com>,
- Alexander Graf <agraf@csgraf.de>, Shannon Zhao <shannon.zhaosl@gmail.com>,
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1ugLO0-0004CB-4F
+ for qemu-arm@nongnu.org; Mon, 28 Jul 2025 06:47:16 -0400
+Received: from p-east3-cluster3-host8-snip4-1.eps.apple.com ([57.103.86.74]
+ helo=outbound.qs.icloud.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1ugLNw-00071E-Oq
+ for qemu-arm@nongnu.org; Mon, 28 Jul 2025 06:47:15 -0400
+Received: from outbound.qs.icloud.com (unknown [127.0.0.2])
+ by p00-icloudmta-asmtp-us-east-2d-60-percent-1 (Postfix) with ESMTPS id
+ AC7CF180011E; Mon, 28 Jul 2025 10:47:09 +0000 (UTC)
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
+ s=sig1; bh=cLjPuPYOUhuKvBEn7VsnYOUTHfuyTb1QdxC9mu+H5xE=;
+ h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To:x-icloud-hme;
+ b=MGlnssf7xZvnO1dlJ6psg1njvC4WHSjsthp8F8w10hGLQ+emwdv6bI8EbGj3N8nZ98a1wWVofXtrK58K9V4hVXn1cR8dfNoqpJPUT4Jjpyg+kDz7OKMhVN+TAVt7KOFXh0klb2kV6Uf/6d1zVtLjX8Ki0bNQdMktdUx3wtyogfhdnzX2lN7dlzasF8MqTKsb5qccK9jfn5JIbQ5ENYIdcNBnChDxxyVeahqbtLxhJygBI59SSQVRgCfqePHTxsq8adkPmSyYabF56yS96NdfvT12D6OxlgzI9Y1hrxduFR8NqRxHD28OErrNTB/k8cS8RHaeoYhTtre3DgvYov5pPw==
+X-Client-IP: 46.189.47.18
+Received: from smtpclient.apple (qs-asmtp-me-k8s.p00.prod.me.com
+ [17.57.155.37])
+ by p00-icloudmta-asmtp-us-east-2d-60-percent-1 (Postfix) with ESMTPSA id
+ B0EB71802086; Mon, 28 Jul 2025 10:47:07 +0000 (UTC)
+Content-Type: text/plain;
+	charset=utf-8
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3860.100.5.1.1\))
+Subject: Re: [PATCH v3 3/9] target/arm: add asserts for code paths not
+ leveraged when using the vGIC
+From: Mohamed Mediouni <mohamed@unpredictable.fr>
+In-Reply-To: <e9afdf9e-b357-43a5-acc6-f4839c539585@linaro.org>
+Date: Mon, 28 Jul 2025 12:46:56 +0200
+Cc: qemu-devel@nongnu.org, Phil Dennis-Jordan <phil@philjordan.eu>,
+ Mads Ynddal <mads@ynddal.dk>, Cameron Esfahani <dirty@apple.com>,
+ Ani Sinha <anisinha@redhat.com>, qemu-arm@nongnu.org,
+ Igor Mammedov <imammedo@redhat.com>, Alexander Graf <agraf@csgraf.de>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>,
  Peter Maydell <peter.maydell@linaro.org>,
- Roman Bolshakov <rbolshakov@ddn.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>
+ Roman Bolshakov <rbolshakov@ddn.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
+Content-Transfer-Encoding: quoted-printable
+Message-Id: <5F11EE68-0CC5-4A41-A89D-48CF789196A9@unpredictable.fr>
 References: <20250725223035.52284-1-mohamed@unpredictable.fr>
- <20250725223035.52284-9-mohamed@unpredictable.fr>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20250725223035.52284-9-mohamed@unpredictable.fr>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::433;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x433.google.com
+ <20250725223035.52284-4-mohamed@unpredictable.fr>
+ <e9afdf9e-b357-43a5-acc6-f4839c539585@linaro.org>
+To: =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+X-Mailer: Apple Mail (2.3860.100.5.1.1)
+X-Proofpoint-ORIG-GUID: dBwgEYyZD97qbZmm8MkYVF7EeQlH-Uy2
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwNzI4MDA3OSBTYWx0ZWRfX7aQpdsSyosPl
+ jlxsXCQkhuFsipOpXbtq2a+g4aSTyyB3q00q+Ss9LdCOCi3CjU870TV8708mX9bNw8ZOhpOlfbN
+ AlShZaWwnIZib1Wy4WB+A36Yh4DLXI4yEoiYCrs24/PKU0mnAb/f4OPqkubsjz+9s3TrYg2C99o
+ 3Bdf3xkGlrSPpfkBfjLaMxchaKVTDwCwVbRq+vqIVlUFMYLN/++smERUG5jl2+lvubnfR8gDlmJ
+ +OxdHxxlcjGrB0r73M63A8Nm1FN9OH/FhS6CR4sYsVM0I0FHH1+yyUnEuOb3y8S8IOy731WBI=
+X-Proofpoint-GUID: dBwgEYyZD97qbZmm8MkYVF7EeQlH-Uy2
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.9,FMLib:17.12.80.40
+ definitions=2025-07-28_03,2025-07-24_01,2025-03-28_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
+ suspectscore=0 bulkscore=0 adultscore=0
+ mlxlogscore=865 clxscore=1030
+ phishscore=0 spamscore=0 mlxscore=0 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.22.0-2506270000 definitions=main-2507280079
+Received-SPF: pass client-ip=57.103.86.74;
+ envelope-from=mohamed@unpredictable.fr; helo=outbound.qs.icloud.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -110,54 +95,47 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 26/7/25 00:30, Mohamed Mediouni wrote:
-> Instead of considering reads there to be fatal, mark it as unimplemented.
-> 
-> This is to allow experimentation on using configurations other than the Apple vGIC.
+Hi,
 
-FYI 
-https://lore.kernel.org/qemu-devel/20250623121845.7214-11-philmd@linaro.org/.
+> On 28. Jul 2025, at 12:18, Philippe Mathieu-Daud=C3=A9 =
+<philmd@linaro.org> wrote:
+>=20
+> Hi Mohamed,
+>=20
+> On 26/7/25 00:30, Mohamed Mediouni wrote:
+>> When using the vGIC, timers are directly handled by the platform, so =
+no vmexits ought to happen in that case.
+>> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+>> ---
+>>  target/arm/hvf/hvf.c | 10 ++++++++++
+>>  1 file changed, 10 insertions(+)
+>=20
+>=20
+>> @@ -1965,6 +1971,10 @@ int hvf_vcpu_exec(CPUState *cpu)
+>>          /* This is the main one, handle below. */
+>>          break;
+>>      case HV_EXIT_REASON_VTIMER_ACTIVATED:
+>> +        /* This is only for when a user-mode irqchip is used. */
+>> +        if (hvf_irqchip_in_kernel()) {
+>> +            assert("vtimer activated vmexit when using platform =
+GIC");
+>=20
+> This line does nothing (not firing), is that what you intended to?
+It=E2=80=99s specifically so that if this trips, I know that I really =
+screwed things up. Helped me a bit in developing this.
 
-> 
-> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
-> ---
->   target/arm/hvf/hvf.c | 10 ++++++++++
->   1 file changed, 10 insertions(+)
-> 
-> diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-> index f5b82cdce1..c3df7e07e8 100644
-> --- a/target/arm/hvf/hvf.c
-> +++ b/target/arm/hvf/hvf.c
-> @@ -299,6 +299,7 @@ void hvf_arm_init_debug(void)
->   /* EL2 registers */
->   #define SYSREG_CNTHCTL_EL2    SYSREG(3, 4, 14, 1, 0)
->   #define SYSREG_MDCCINT_EL1    SYSREG(2, 0, 0, 2, 0)
-> +#define SYSREG_CNTP_CVAL_EL0   SYSREG(3, 3, 14, 2, 2)
->   
->   #define WFX_IS_WFE (1 << 0)
->   
-> @@ -1398,6 +1399,12 @@ static int hvf_sysreg_read(CPUState *cpu, uint32_t reg, uint64_t *val)
->       case SYSREG_CNTHCTL_EL2:
->           assert_hvf_ok(hv_vcpu_get_sys_reg(cpu->accel->fd, HV_SYS_REG_CNTHCTL_EL2, val));
->           return 0;
-> +    case SYSREG_CNTP_CTL_EL0:
-> +        qemu_log_mask(LOG_UNIMP, "Unsupported read from CNTP_CTL_EL0\n");
-> +        return 0;
-> +    case SYSREG_CNTP_CVAL_EL0:
-> +        qemu_log_mask(LOG_UNIMP, "Unsupported read from CNTP_CVAL_EL0\n");
-> +        return 0;
->       case SYSREG_MDCCINT_EL1:
->           assert_hvf_ok(hv_vcpu_get_sys_reg(cpu->accel->fd, HV_SYS_REG_MDCCINT_EL1, val));
->           return 0;
-> @@ -1718,6 +1725,9 @@ static int hvf_sysreg_write(CPUState *cpu, uint32_t reg, uint64_t val)
->            */
->           qemu_log_mask(LOG_UNIMP, "Unsupported write to CNTP_CTL_EL0\n");
->           return 0;
-> +    case SYSREG_CNTP_CVAL_EL0:
-> +        qemu_log_mask(LOG_UNIMP, "Unsupported write to CNTP_CVAL_EL0\n");
-> +        return 0;
->       case SYSREG_OSDLR_EL1:
->           /* Dummy register */
->           return 0;
+However, this whole patch isn=E2=80=99t expected to ever trigger irl, so =
+would be fine to drop from that perspective.
+
+HV_EXIT_REASON_VTIMER_ACTIVATED will never be returned by =
+Hypervisor.framework when the vGIC is enabled.
+
+Thank you,
+-Mohamed
+>> +        }
+>>          qemu_set_irq(arm_cpu->gt_timer_outputs[GTIMER_VIRT], 1);
+>>          cpu->accel->vtimer_masked =3D true;
+>>          return 0;
+>=20
 
 

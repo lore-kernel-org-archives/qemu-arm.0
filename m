@@ -4,93 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D020C83F26
-	for <qemu-arm@archiver.kernel.org>; Mon, 28 Jul 2025 22:04:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9456CC83F26
+	for <qemu-arm@archiver.kernel.org>; Tue, 29 Jul 2025 09:12:58 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ugVx2-0006pe-HP; Mon, 28 Jul 2025 18:04:10 -0400
+	id 1uggNu-00084E-LC; Tue, 29 Jul 2025 05:12:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1ugVwz-0006kR-Bl
- for qemu-arm@nongnu.org; Mon, 28 Jul 2025 18:04:05 -0400
-Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1ugVwx-00020A-7I
- for qemu-arm@nongnu.org; Mon, 28 Jul 2025 18:04:04 -0400
-Received: by mail-pf1-x429.google.com with SMTP id
- d2e1a72fcca58-74264d1832eso5782331b3a.0
- for <qemu-arm@nongnu.org>; Mon, 28 Jul 2025 15:04:02 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1753740241; x=1754345041; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=fI+Qhb5lyK6qCqmX8xSsOM+1RYsyQ1ZWf3PKH+ULSbE=;
- b=yw008zwz2gpY7fNDaxnGAIt4l2pavniP4sZl/qluPPYJY2h1dc8nr6xRkapFgTm9ws
- R0RTP2QsGRhgzDnl7wI0pPQJkKlqmow5rJYJ0IUrD4N/fMYJWs7AoxVMqR0qaxOsWS/p
- Q7N0uedrGg3N63vpKJ3DpRcSbYUg0F8JG0GLbh3Lxs3Blgjzx+wYLyJ4Bu47Hgul8Uji
- 9H3iSIFWtXGt3VltreMggR8hG3GnQLvNVtyd4j1T6A6o6URqJ1eSsO7hUCLzum85qiUf
- WotdpDJWmgwFBkGfQ1I3QY1W4KCgCzK6bkPjUx2ui84aZcgm3ekSjnDgrZEOSlhMchtw
- qnLQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1753740241; x=1754345041;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=fI+Qhb5lyK6qCqmX8xSsOM+1RYsyQ1ZWf3PKH+ULSbE=;
- b=gNVSS39iEjYxshA7ByIlOmpaMk/5OFCQcf0bDoH5igw4DBv30LLX5lUieOcPU9WMFe
- 7dOiCqVsblMOzfqJY8YmE+rGeKoTTzYwQtENhLIs4ex2lK8pZ2JKSMnFqG4quch8+Rk2
- tKmY8rDdnCrK7zsM3cqNpbswc0tmnFTdQEpanGpHiS4EyoVMpe2i+iN3wK0/E5xtppav
- gYwMa7aSRPGRWsJhElSo5B7rWKcB1DJmuTGehYGMqHvzDpow92x/q8ciOzONsL92SgtM
- 4govsYIfIOah4O2Ev7+Oc5kqvGoIVbog88KBo1a07fZXXeACRzJ39eEjJgC/zN5uC3Ac
- luDg==
-X-Gm-Message-State: AOJu0Yym4Ms2DJGAEw/ZRrYjA8njs6W5t/jI1d4nVOlq89tM6EAygTop
- vi5PVEpgSfKFZxYa52/nRHfMs0CctBaLNyMefpy0TOCjlL+evjkOcXrBILQeGJ7Pt9w=
-X-Gm-Gg: ASbGncvWQ/tyFECHMXKF/Qft/+eMv4/WVJkhMMmiY6g0CgO02uddIi7snlYUNlFUF8s
- WkBNbD6ydCJaE7hX956lSpN0nPbVUPC1PvmAYPhlN+kz9VxTuTsSwvF2wuPI76xz27XkDREXamU
- RMQ54giQS8aSzTBQjOf4vXUinjwUOAJx7QAgtZVk2NCc7FYO/PxmOMjQtdpcobFXatO41wmi493
- sdZL3W0qqotv0AwfhRqkC+0cTf66HoxUlaMAWg7qyy8Ftniewh7g8Lia01I379Kh1+cJIcIQowk
- BKRqdY6mV14Z3zTe2iz02NAx3J81wOyX1HWyT481kN1j5rBi86U8kJ4EDL1Y0YOvv+vnsrbBx84
- Kp8TNPNF3X/ILXhWg9d1fWP2f+p5YlKNphxg=
-X-Google-Smtp-Source: AGHT+IFpKbVjXizWzBX2Q93FMwhmxCrxmRu7YIW7ziGOZwiEfIWUMC0KYYjdFHmlOMrDbD4jpha5ZA==
-X-Received: by 2002:a05:6a00:430f:b0:769:999c:eec0 with SMTP id
- d2e1a72fcca58-769999cef2amr623588b3a.7.1753740241387; 
- Mon, 28 Jul 2025 15:04:01 -0700 (PDT)
-Received: from [192.168.1.87] ([38.41.223.211])
- by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-7640adfc111sm6258148b3a.63.2025.07.28.15.04.00
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 28 Jul 2025 15:04:00 -0700 (PDT)
-Message-ID: <09d56dc3-76f6-4186-822e-fcb338e2cddd@linaro.org>
-Date: Mon, 28 Jul 2025 15:04:00 -0700
+ (Exim 4.90_1) (envelope-from <SRS0=9eAv=2K=kaod.org=clg@ozlabs.org>)
+ id 1uggNr-0007fi-Vy; Tue, 29 Jul 2025 05:12:32 -0400
+Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=9eAv=2K=kaod.org=clg@ozlabs.org>)
+ id 1uggNp-0001Ld-80; Tue, 29 Jul 2025 05:12:31 -0400
+Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4brqJw100Xz4w2S;
+ Tue, 29 Jul 2025 19:08:48 +1000 (AEST)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (Client did not present a certificate)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4brqJl4YGpz4w2J;
+ Tue, 29 Jul 2025 19:08:39 +1000 (AEST)
+Message-ID: <b90552f9-e707-4430-b5ee-4a98f4c05734@kaod.org>
+Date: Tue, 29 Jul 2025 11:12:05 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 0/3] single-binary: compile hw/intc/arm* files once
-Content-Language: en-US
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>
-References: <20250725201906.19533-1-pierrick.bouvier@linaro.org>
- <bfdd8821-a7f7-4648-a389-124426da6d15@linaro.org>
- <144f0930-af30-42b0-849c-99242d3f09ee@linaro.org>
- <62c947c3-0e16-4484-83cc-3aff3a694041@linaro.org>
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-In-Reply-To: <62c947c3-0e16-4484-83cc-3aff3a694041@linaro.org>
+Subject: Re: [PATCH v1 19/21] pc-bios: Update AST27x0 vBootrom with SSP/TSP
+ SCU initialization support
+To: Jamin Lin <jamin_lin@aspeedtech.com>, Michael Tokarev <mjt@tls.msk.ru>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+Cc: Troy Lee <troy_lee@aspeedtech.com>, Hao Wu <wuhaotsh@google.com>,
+ Havard Skinnemoen <hskinnemoen@google.com>
+References: <20250717034054.1903991-1-jamin_lin@aspeedtech.com>
+ <20250717034054.1903991-20-jamin_lin@aspeedtech.com>
+ <7e5dc89a-7b74-4a5e-8f51-55f587a4896b@tls.msk.ru>
+ <364b86f6-6147-4e63-bcfa-932c39072130@kaod.org>
+ <SEYPR06MB50372F288CD26111DD6E0D81FC5AA@SEYPR06MB5037.apcprd06.prod.outlook.com>
+ <4e5dcd10-4f61-482f-b232-f29952294d46@tls.msk.ru>
+ <SEYPR06MB50373BF4F61F85E10DAC6E01FC5AA@SEYPR06MB5037.apcprd06.prod.outlook.com>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <SEYPR06MB50373BF4F61F85E10DAC6E01FC5AA@SEYPR06MB5037.apcprd06.prod.outlook.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::429;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pf1-x429.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=150.107.74.76;
+ envelope-from=SRS0=9eAv=2K=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -106,97 +119,68 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 7/28/25 2:57 PM, Philippe Mathieu-Daudé wrote:
-> On 28/7/25 21:34, Pierrick Bouvier wrote:
->> On 7/28/25 2:39 AM, Philippe Mathieu-Daudé wrote:
->>> On 25/7/25 22:19, Pierrick Bouvier wrote:
->>>> Move those files to hw/arm, as they depend on arm target code.
->>>>
->>>> Pierrick Bouvier (3):
->>>>      hw/arm/arm_gicv3_cpuif_common: move to hw/arm and compile only once
->>>>      hw/arm/arm_gicv3_cpuif: move to hw/arm and compile only once
->>>>      hw/arm/armv7m_nvic: move to hw/arm and compile only once
->>>>
->>>>     hw/{intc => arm}/arm_gicv3_cpuif.c        |  2 +-
->>>>     hw/{intc => arm}/arm_gicv3_cpuif_common.c |  2 +-
->>>>     hw/{intc => arm}/armv7m_nvic.c            |  0
->>>
->>> Alternatively add arm_common_ss in hw/intc/meson.build?
->>>
->>>      arm_common_ss = ss.source_set()
->>>      arm_common_ss.add(when: 'CONFIG_ARM_GIC',
->>>                        if_true: files('arm_gicv3_cpuif_common.c'))
->>>      arm_common_ss.add(when: 'CONFIG_ARM_GICV3',
->>>                        if_true: files('arm_gicv3_cpuif.c'))
->>>      arm_common_ss.add(when: 'CONFIG_ARM_V7M',
->>>                        if_true: files('armv7m_nvic.c'))
->>>      hw_common_arch += {'arm': arm_common_ss}
->>>
->>
->> The problem with this approach is that we need to aggregate hw/arm and
->> hw/intc arm related source sets, and the last line in your proposed
->> change does not have this semantic.
->> Regarding meson, hw/intc subfolder is parsed *before* hw/arm (see hw/
->> meson.build), so we can't reuse the same source set, defined in hw/arm/
->> meson.build.
->>
->> This old commit (7702e47c2) was the origin of having interrupt related
->> code in a generic folder, but I don't really understand the rationale
->> behind it to be honest. It seems to be an exception regarding all the
->> rest of the codebase, thus the idea to bring back things where they belong.
-> 
-> Yeah, you are right. What was suggested once was to move them to
-> target/arm/hw/, being architecture dependent / specific.
-> 
-> $ ls -l hw/arm | wc -l
->         97
-> 
-> hw/arm/ contains board / soc / arm-specific hw and helpers (such
-> code loaders). Nothing wrong, I'm just wondering there is room for
-> improvements.
->
+Michael, Jamin,
 
-Sure, that makes sense.
-GIC is a bit in the middle, as it's definitely an arm specific 
-controller, and not a classical device. SMMU is directly in hw/arm for 
-instance.
-
-I'm really open to any structure Arm related developers would think is 
-the best. It's just that moving a lot of files is always a pain for 
-everyone, as it creates a lot of conflicts for people working on them 
-currently, so I tried to minimize it here to target the strictly needed 
-set of files only.
-
-As well, I would prefer having a clean build system more than a clear 
-filesystem structure, considering it's quite easy to jump into any 
-definition automatically with your work editor nowadays, vs understand a 
-meson.build file full of tricks and implicit dependencies where no tool 
-can help you.
-
-> Personally I'd rather keep hw/arm/ for boards / soc, and move
-> ARM specific components (like GIC, NVIC, SMMU, timers to target/arm/hw/.
+On 7/28/25 09:41, Jamin Lin wrote:
+> Hi Michael, Cédric
 > 
-> Anyhow, I don't object to your approach :) For this series:
-> Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> 
+>> From: Michael Tokarev <mjt@tls.msk.ru>
+>> Sent: Monday, July 28, 2025 3:12 PM
+>> To: Jamin Lin <jamin_lin@aspeedtech.com>; Cédric Le Goater <clg@kaod.org>;
+>> Peter Maydell <peter.maydell@linaro.org>; Steven Lee
+>> <steven_lee@aspeedtech.com>; Troy Lee <leetroy@gmail.com>; Andrew
+>> Jeffery <andrew@codeconstruct.com.au>; Joel Stanley <joel@jms.id.au>; open
+>> list:ASPEED BMCs <qemu-arm@nongnu.org>; open list:All patches CC here
+>> <qemu-devel@nongnu.org>
+>> Cc: Troy Lee <troy_lee@aspeedtech.com>; Hao Wu <wuhaotsh@google.com>;
+>> Havard Skinnemoen <hskinnemoen@google.com>
+>> Subject: Re: [PATCH v1 19/21] pc-bios: Update AST27x0 vBootrom with SSP/TSP
+>> SCU initialization support
 >>
->> I'm open to any other idea someone would have. Peter, without
->> necessarily a working solution, do you have any preference on where
->> those things should be?
+>> On 28.07.2025 10:02, Jamin Lin wrote:
 >>
->>>>     hw/arm/meson.build                        |  3 +
->>>>     hw/arm/trace-events                       | 79 +++++++++++++++++++
->>>> ++++
->>>>     hw/intc/meson.build                       |  3 -
->>>>     hw/intc/trace-events                      | 79
->>>> -----------------------
->>>>     7 files changed, 84 insertions(+), 84 deletions(-)
->>>>     rename hw/{intc => arm}/arm_gicv3_cpuif.c (99%)
->>>>     rename hw/{intc => arm}/arm_gicv3_cpuif_common.c (92%)
->>>>     rename hw/{intc => arm}/armv7m_nvic.c (100%)
->>>>
+>>> It seems this patch fix this issue,
+>>> https://patchwork.kernel.org/project/qemu-devel/patch/607a943a587248fb
+>>> e0ff0897de80aee98a093caa.1753654515.git.mjt@tls.msk.ru/
+>>
+>> Yeah, I posted that patch yesterday after realizing our roms/vbootrom
+>> submodule is outdated.
+>>
+>>> Do I need to update vbootrom/ast27x0/Makefile?
+>>> I set "?=" to make user able to set variables in the command line.
+>>
+>> The prob with `CC ?=` construct is that CC variable is always set by make, so
+>> this line becomes useless.  The question mark should be removed, that's all.
+>>
+>>> 1.
+>>> export CC=aarch64-linux-gnu-gcc
+>>> make
+>>> 2. make CC=aarch64-linux-gnu-gcc
 >>>
+>>> 3. Update Make file and user only need to issue "make"
 >>
+>> See how it's done in other subdirs of vbootrom.  You only need to remove ?
+>> from CC variable assignment.
+>>
+>> Distinction between 1 and 2 is `make -e` command-line switch.
+>>
+>> Thanks
+>>
+> Thanks for your help and support.
+> I created a new pull request in google/vbootrom and waiting for google team review.
+> Hao,
+> Could you please help to review it?
+> https://github.com/google/vbootrom/pull/10
 > 
+The vbootrom PR was merged (commit 183c9ff8056b).
+
+Could you please update and resend :
+
+   https://lore.kernel.org/qemu-devel/2a89ad4c8f5665d07952a4f1749caa6ec0cd3d9c.1753654515.git.mjt@tls.msk.ru/
+
+Thanks,
+
+C.
+
 
 

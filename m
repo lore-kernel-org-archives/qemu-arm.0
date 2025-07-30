@@ -4,92 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50B28C87FC9
-	for <qemu-arm@archiver.kernel.org>; Wed, 30 Jul 2025 21:32:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81E09C87FCB
+	for <qemu-arm@archiver.kernel.org>; Wed, 30 Jul 2025 21:34:31 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uhEOz-0004Kh-Tj; Wed, 30 Jul 2025 17:31:57 -0400
+	id 1uhERB-0006dc-Sp; Wed, 30 Jul 2025 17:34:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1uhEOy-0004JS-5g
- for qemu-arm@nongnu.org; Wed, 30 Jul 2025 17:31:56 -0400
-Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
+ id 1uhEQz-0006TS-B4
+ for qemu-arm@nongnu.org; Wed, 30 Jul 2025 17:34:04 -0400
+Received: from mail-pf1-x434.google.com ([2607:f8b0:4864:20::434])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1uhEOw-0003hl-Gi
- for qemu-arm@nongnu.org; Wed, 30 Jul 2025 17:31:55 -0400
-Received: by mail-pl1-x630.google.com with SMTP id
- d9443c01a7336-2407235722bso3105405ad.1
- for <qemu-arm@nongnu.org>; Wed, 30 Jul 2025 14:31:53 -0700 (PDT)
+ id 1uhEQx-00049F-R2
+ for qemu-arm@nongnu.org; Wed, 30 Jul 2025 17:34:01 -0400
+Received: by mail-pf1-x434.google.com with SMTP id
+ d2e1a72fcca58-76a3374b143so379361b3a.0
+ for <qemu-arm@nongnu.org>; Wed, 30 Jul 2025 14:33:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1753911112; x=1754515912; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:references:cc:to:from
+ d=linaro.org; s=google; t=1753911238; x=1754516038; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=HisPCa4SbEM30SJKmKzqMEC0GL2CtIf+jsJv/qKp070=;
- b=NWho7GToRDl+jwWFYN/mYiYGPOpKEUqc+Ir2AhjPh65seqSfqAmsitcJO+bx2NLkrV
- jd8pRXnDyZQG/DWvtobQOkuvIGw2s7bndjClihMx8JU4+6tn1WeaI2VdSiKUi8SRRzCb
- f1YKhw16nQC8wJ7Xmn1/ZIF3V9gPjoIU9TI/c7p2bVxfT+6IR07dIcaeH13QlhHqEVaF
- XXjym9hd5UvZEdoLjdpHv7+O/MNSCwyZ2Y4WPID7ycWBERCsyW+UyjEzr5Iw5urlvqow
- dwQo3tFESg4ka2ExVEDOnc1krtlnkxTOVm/EkgtwPX9sD08GA0Ty5u5NXTOLPFt7FD1a
- yJIQ==
+ bh=mMHx34O4NsGw9UH79Et5gZ4bJQMTwO/qHQ9U7UMQRWk=;
+ b=s7W74Dx2LK9PsMg+x2GbGNwJknxqEkNOeuSMVSlE6Z0uxzjuzLiajIKvSEATEVqgz0
+ 6sfUU8sqWtcidnIdMJ2gATWr9yTSTT4HkI8Wipss0HRct2OcOyMFjlxWIfbG3/p4/fEy
+ EKqkAkZQOlcDf5tV6GXapxZywH3ecOMvxr6+LFoArNFdHJf/ZcirApWqTDbnpIwy7sHw
+ /gxwSY0v7owdtdxLk5ujir451cRr2mT4ZybPOqTeEM85QxN0fXUZBA969eimP6dz4u8o
+ dYanBdmHZw4LcVbniDnmqnQZqTx6dS+MSwhgNOl0iroWJLGf1ZAcKnRYRnm1+BI23M2O
+ pmOg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1753911112; x=1754515912;
- h=content-transfer-encoding:in-reply-to:references:cc:to:from
+ d=1e100.net; s=20230601; t=1753911238; x=1754516038;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=HisPCa4SbEM30SJKmKzqMEC0GL2CtIf+jsJv/qKp070=;
- b=A19cD947o9+ArLbJRXVlGisu6cvkaB/5DGTpprkF3Qdk2wcZIts+2bm6LVNnDzLbNr
- Fc4FiDyS8Teymz7+kIFE9P7B6rit9XarxFtM4Dh6mSkt07jowPuYN6Fev9ylLXwBnuBv
- SXz9kiVUT+fKHuRhPCn9v3SCDGz718cjrHgIpY0HKXyqebXWApwujXEnOgLsdEpaQQ7p
- QMZNYfDOgf3QQbhUe3K4AFTjB0t82NhDLn79ilQm0mztirDIuMfwZ85XNfDUfKbkNf7L
- 3Y2KNr3Hln+Glf72IRC8K3FBrEu34bPd6UGrhQmxYjDK7LmftxzePT+9HigqL6DrqW4d
- A5cQ==
-X-Gm-Message-State: AOJu0YwBkVt4JFMKFgmjZOcUY7DggFJ8t3FVTeK2XaCNSId0XBpfCsQ0
- G4K/qaR4DbufCSpzhJdC9hgSNVDSBbCS8FkzwJAf44jOkglm91+6wUu66z17Up6foFA=
-X-Gm-Gg: ASbGncvHFDTcD3tYiEpcDk7oz22xmWLPZtwtHn4PkCxuhDNOhu2NsBGtR+zREljES53
- 5lnZYVU0dFX0LfLYtL6D9Ph6AfeacRyprZOyApMa+tNybwrIbDCkFAC58Yxh9viOyQ4cXI3gvzi
- WdPa3GoOUhqF9MEvAc7wUtQZCfjKH5lx6pFOVJEr/HA8/9AFEXefkj4dvZdy0h5sMFRqzFFRB5g
- sByjUYZPzNduVK4VhS2U2WsJ2q+9HHSacPBx5xtQBtYHnBC5wxNMYwjoC1KcqNKKP5tgJ3qmpLB
- O24saww7CUBhorRoszFJg7sjFx9D7TSeglovraDqEaL3NS8BQl18zh1GR9Rlike525kQumqGIBA
- RCbkRb19B0nD4/Pv9+BMIa9Ubo69MSMn/dEMhCz8jbhGf6g==
-X-Google-Smtp-Source: AGHT+IEL7LTccitvo6TLsiIm7ptVSx5ZHOdlDhM6QRVh0bZCgi4j6Rq/X0wZ+I9GRyG2mVZgjWkC0Q==
-X-Received: by 2002:a17:902:e78e:b0:235:ed01:18cd with SMTP id
- d9443c01a7336-24096b2f89dmr79371745ad.44.1753911112648; 
- Wed, 30 Jul 2025 14:31:52 -0700 (PDT)
+ bh=mMHx34O4NsGw9UH79Et5gZ4bJQMTwO/qHQ9U7UMQRWk=;
+ b=cf7fXELNfaX0z2zR/ojDJspRa/aSyt3IW35YjWCmg0ShinIuemU7Ds2uWQx0Q9Rtgk
+ utmUxOzyrjKsCuH7xX/Ek9a+GHAuf0NZVCVJL9kXWoeZKsBZJ1gJIBpvW1XpVT4oi+LF
+ 7zWXJ90fsrG29uOTPGqQ3TltU0pmEPYWSBWZePoR7vnVbkrppo3HHKeyf5vyGZ38Mv60
+ o/czHBpcEEs8l2q3n5HZILqDjkmxesyZ5Nj11xttJznhAnn43zpElHEf65O2RtcGkizf
+ HUJS0lGIQ/oQp9PIyE30WFNLARSpkfKQDacAwlPDYGniH9JkXO+eRM/bsiUjI9ZRFrmi
+ F+BA==
+X-Gm-Message-State: AOJu0YzHBPZAtloOhB032SlVuVZyu3ofx6wWIbsRwsZYBYcUtFAT5GOa
+ LiWVjHECG67nuDqp9b4EukGhf62eRsuHSwMKw/o5OJf3UTMRfdYPgdf+sM7liZvsEyKvA+vpzAs
+ WFmlR
+X-Gm-Gg: ASbGnctAoDbtDLAxz+Y4fzX3S7SKBRvOj6y13By6c0lITVDTMFhblBmnGg9BJ52x1ec
+ 0YTYZtoNInwpawizpiKVSXOUbhCJK9NaRNyZIHlPSoa+DS6pbu/sydk8KmzGYBhhD5oD0QWid/F
+ HOTfj1ub8KtFF38GZKmg6afbRC8BnvUPQw0jaKNLacm8OeByo0sZIDKqlEkxFW1Nbq6bZ2V/ZCW
+ fOGUvAI1EEf8ailf+PbtPU2++9F2Qr0mIqDacQhk6EJLxbxTDRNoGuit8b55xb1J94Tw/Z5z+Vh
+ OFd27pPDOmw+25NRuEQUIavMhvNsYnIdSgvtoPegAV6FkqRGzWcqWxv+fxKxmqGe8CuneNBczu6
+ VGvusMknh+kimYqBziHYm9f1osH92fcgj69yVx/6++gLQDQ==
+X-Google-Smtp-Source: AGHT+IG+q4m1W4ROGBqq6QPWhh6uQgEw59VufiFJrMfBCpHDx2Q3qKO8ju3Bg7B8wndk9w6MNttY0w==
+X-Received: by 2002:a05:6a21:3299:b0:21a:b78b:e916 with SMTP id
+ adf61e73a8af0-23dc0e99a32mr8229520637.27.1753911238263; 
+ Wed, 30 Jul 2025 14:33:58 -0700 (PDT)
 Received: from [192.168.1.87] ([38.41.223.211])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-241e8977114sm611925ad.102.2025.07.30.14.31.51
+ 41be03b00d2f7-b422bb1133fsm10892a12.56.2025.07.30.14.33.57
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 30 Jul 2025 14:31:52 -0700 (PDT)
-Message-ID: <897f6b21-77c8-4323-a26d-943db178b77b@linaro.org>
-Date: Wed, 30 Jul 2025 14:31:51 -0700
+ Wed, 30 Jul 2025 14:33:57 -0700 (PDT)
+Message-ID: <656b2c0d-bc87-41d4-bdef-38ce27d43e13@linaro.org>
+Date: Wed, 30 Jul 2025 14:33:57 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 30/82] target/arm: Convert arm_mmu_idx_to_el from switch
- to table
+Subject: Re: [PATCH 41/82] target/arm: Introduce regime_to_gcs
 Content-Language: en-US
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
 References: <20250727080254.83840-1-richard.henderson@linaro.org>
- <20250727080254.83840-31-richard.henderson@linaro.org>
- <6963c11f-ed15-42f5-9110-9516ceb64662@linaro.org>
- <ee5e730f-9bda-4d66-a055-9346e5a18ecd@linaro.org>
-In-Reply-To: <ee5e730f-9bda-4d66-a055-9346e5a18ecd@linaro.org>
+ <20250727080254.83840-42-richard.henderson@linaro.org>
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+In-Reply-To: <20250727080254.83840-42-richard.henderson@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::630;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pl1-x630.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::434;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pf1-x434.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -105,44 +103,16 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 7/30/25 2:12 PM, Pierrick Bouvier wrote:
-> On 7/30/25 2:10 PM, Pierrick Bouvier wrote:
->> On 7/27/25 1:02 AM, Richard Henderson wrote:
->>> In an effort to keep all ARMMMUIdx data in one place, begin construction
->>> of an info table describing all of the properties of the mmu_idx.  Begin
->>> with the access EL.
->>>
->>> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
->>> ---
->>>     target/arm/internals.h       |  3 +--
->>>     target/arm/mmuidx-internal.h | 27 ++++++++++++++++++++++++
->>>     target/arm/helper.c          | 27 ------------------------
->>>     target/arm/mmuidx.c          | 41 ++++++++++++++++++++++++++++++++++++
->>>     target/arm/meson.build       |  7 +++++-
->>>     5 files changed, 75 insertions(+), 30 deletions(-)
->>>     create mode 100644 target/arm/mmuidx-internal.h
->>>     create mode 100644 target/arm/mmuidx.c
->>
->> What's the benefit to explicitely size arm_mmuidx_table on declaration
->> and definition?
->>
+On 7/27/25 1:02 AM, Richard Henderson wrote:
+> Add a lookup from any a64 mmu index to the gcs mmu index
+> within the same translation regime.
 > 
-> I missed the:
-> tcg_debug_assert((unsigned)idx < ARRAY_SIZE(arm_mmuidx_table)), which
-> does not see definition of the table.
-> 
-> Maybe it would be easier to declare size in the header, and reuse it on
-> both sides (declaration, definition instead of ARM_MMU_IDX_M + 8).
->
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>   target/arm/mmuidx-internal.h | 10 ++++++++++
+>   target/arm/mmuidx.c          | 24 +++++++++++++-----------
+>   2 files changed, 23 insertions(+), 11 deletions(-)
 
-Finally, the ARM_MMU_IDX_M + 8 is not a problem.
-That said, given how much we repeat
-(unsigned)idx < ARRAY_SIZE(arm_mmuidx_table),
-it's definitely worth having a 'arm_mmuidx_is_valid' static inline 
-function for that.
-
->> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
->>
-> 
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 
 

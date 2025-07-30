@@ -4,83 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 628D5C87FCB
-	for <qemu-arm@archiver.kernel.org>; Wed, 30 Jul 2025 20:56:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B996C87FCB
+	for <qemu-arm@archiver.kernel.org>; Wed, 30 Jul 2025 20:57:04 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uhDqf-0007Or-7x; Wed, 30 Jul 2025 16:56:29 -0400
+	id 1uhDqq-000884-H4; Wed, 30 Jul 2025 16:56:40 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1uhDOO-0003dD-4G
- for qemu-arm@nongnu.org; Wed, 30 Jul 2025 16:27:16 -0400
-Received: from mail-pj1-x1032.google.com ([2607:f8b0:4864:20::1032])
+ id 1uhDiM-0007KW-QO
+ for qemu-arm@nongnu.org; Wed, 30 Jul 2025 16:47:54 -0400
+Received: from mail-pl1-x631.google.com ([2607:f8b0:4864:20::631])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1uhDOM-00046U-4D
- for qemu-arm@nongnu.org; Wed, 30 Jul 2025 16:27:15 -0400
-Received: by mail-pj1-x1032.google.com with SMTP id
- 98e67ed59e1d1-3137c20213cso338725a91.3
- for <qemu-arm@nongnu.org>; Wed, 30 Jul 2025 13:27:13 -0700 (PDT)
+ id 1uhDiK-00017G-Kk
+ for qemu-arm@nongnu.org; Wed, 30 Jul 2025 16:47:54 -0400
+Received: by mail-pl1-x631.google.com with SMTP id
+ d9443c01a7336-2400f746440so2707825ad.2
+ for <qemu-arm@nongnu.org>; Wed, 30 Jul 2025 13:47:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1753907232; x=1754512032; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
+ d=linaro.org; s=google; t=1753908471; x=1754513271; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=ydqOzYMSiTHrp0lzxlkXWJp5kp4/hOFIM1kFanwyZso=;
- b=LPV61eS4GJWJfJ1YICn/K3ggjCsBgSmuoVvExrBS+QzAbeCVfwe+JoRUDi7XhU5d6c
- fvIEOKbj09HOH5IwpgEoHNSCrkFxz1RUXD7drh0PNx3KEDe+ibw4aMZ3WtnGj7c9fQbr
- ElxP2nbxn2XToUj8BKmz5baiMZwHdu+aHhCG8oFkDlSG28+FweVfqhRwMogwlBCf/0ba
- fzbrHOUQysyVLsR9dOScCOBzgkUIGh3ygbf/0klAUiWRJTP1JFasawL4xqqRh1yFtQ+z
- BRmwlmDGWUXwzAwnrZIqv9NXs2xz3oSBaCUaRmLMN5ClkyVpb5oo9MAmY46HXFqoo6B0
- msIA==
+ bh=xDcHaXRDHxuv8RcTViw5pgusysHDdhneyUp+Yjz2rdI=;
+ b=xK3cuzqohpPzj2qqr2F+JOY9FvQs1pyMFFl3CouBYGvcM29ENWybkj/GhneCgHiP1u
+ BMyDMu12aZO6xo18UD1lNh9tc44D0czk51LF0J7Y7mnynig0CawgKvWaDdaE+AQYhLNG
+ 2MaRY/V17usRR959jyWCdn9jXGxaoejZ9dK1vhcczU7GWzERWNbmzOjjzTDibUV3rKse
+ bM/Na2I+scQ1HKLIEY1Zf7TRBaheEYKogc9mcO67A43AUTUpYsHmb5iX96kV3J6OXLjq
+ UXfxl0DXzDaby7xGERc9wzy45N9c6vOQD+uNdPgqdoeY0zhaIGirukK2ByWysiQYZmnl
+ D5AQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1753907232; x=1754512032;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
+ d=1e100.net; s=20230601; t=1753908471; x=1754513271;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=ydqOzYMSiTHrp0lzxlkXWJp5kp4/hOFIM1kFanwyZso=;
- b=RKxLCCdf19Lsob/8oiA80E4mvY3yoFPXyPJHqQ05VKj2gLjFSlBhc3FDQJrlWVUupT
- g1ohgWejtgpJAe4IbNKix0O2yFEwalS1pmty7YZzqA+zXwM/nNKJ9FGKAxfvz5DUFxJ1
- f5mIlL58x5AbyV3EPu7QRml8AYBwZ1QHTBlmu0lsSmYZl4qicDqW6tkeU4oT6CAqG22m
- tFPb43QRlRija2t8BmawcUihriuZeS7FWdpP5OqwZ0+e2aRdn4YvNb+/TTJkEFjtLuYY
- EYDq4ps4AcnAOEPqHql2kMR3DdaXdKHydz4ErW1YMFL2NFh67xbqqkTr4SmaLcN4jwCs
- 4VWQ==
-X-Gm-Message-State: AOJu0YzUKJ0tal7QDhFh4hL1IG3dvU5w0cyeGZckLcsSiZRknKCMDCYO
- 6mraZXUisFjbhCsbjbnDNbc4bMcUT97aPJimZsZ68/vOBLjNDjIs+JlbaJ73VxBlq8U=
-X-Gm-Gg: ASbGncv5hQ2ejBvBtVA6FxDyE5Yjgp6RF0O3iNNtFskO8KAx084wh4FdKDaKzcCaCyN
- fOCFj+7SNXRiEhYMbbn7xMwSMQQlvLcJcT7Xs40fdPJve+Kc7teqWTqY3G0RY/Cixa13isrWySv
- slwHch++iXj9g8P3EX9iW1MrTDoHUzfzgg0daQf8j/zFuQc12+V83SUWHPGckAB2mWpM2dBA9oH
- CxKUDb+boJ0mRnC7YT3hY8esBq0k7DxVcmS/uyhqTxNDXT2isNBxiIgQgxXAYMIcJvxcYR/XAyS
- F2O9CcYwbGNYUhoDSsmoW9hoWFMNyfpCNI3M977CgOoOk2TnYbZ0aubsEvi+9KabaHS9jCXhOm/
- Y5Y4CY0woq+HOE+s4H1y/mxeh8/b5PcJb39w=
-X-Google-Smtp-Source: AGHT+IFHWGyAfmwFkwcWa01z05pk4zj6sQJlEBLGOegfOMd58w/BdPtC8nsuNPYB+iv6U/nRLYaP/w==
-X-Received: by 2002:a17:90a:dfc6:b0:313:1e60:584e with SMTP id
- 98e67ed59e1d1-31f5dde8749mr6024408a91.9.1753907232251; 
- Wed, 30 Jul 2025 13:27:12 -0700 (PDT)
+ bh=xDcHaXRDHxuv8RcTViw5pgusysHDdhneyUp+Yjz2rdI=;
+ b=L7yA0YPE+1hs3HA5XrtcVV7CLp87RSOO3JL+pjZZB/dKXtal3lVP5+xDsDx1sDm9J0
+ JwsfZ7GOZdD3egWoKcanc0Jt6/wn91k/6WziJn/Yw1V/EVZwIVrqruz4ssjZfy2iTmXQ
+ aKP+MkPw3VBrCZtQjv1oQDCvlp0ejWGt4uQ8ta5MpnW1+g94IfuNYfxs+CaE2eYS+DZ9
+ N76cPlZGy+J1G/JbSDQ0GVSMFSO3SMsjSPSaiefPUJPWVvYK9PYQceOSxyuZ3+ybUI3o
+ iiwfK6lI04cnDqInGMsFXKBFI+gKBLBnZ7U+S0yJDed3QEAv6asPTFrAK2ElpcgGjkva
+ 3CLA==
+X-Gm-Message-State: AOJu0Yy7jUNzpeGiUMf9hf5/nmZCZdF+xLyEfybscY4kLdd+IW4I1/RU
+ tAqIEo2qqy5NUTO/GW29aGtuVhn5MVbPO3UOaaIYcK4ofjMVERZ/l1kAxWoe5V0mX9Y=
+X-Gm-Gg: ASbGncsyDovkfVRNVUeCHm35llAMSrvoI7tPpIKdePfDXO2WQq/Ft3Sb9J3WKT17YC7
+ eZME5fscrSRlSF51XEuaA9QS7xhH+ftPdP7zuZLzkTOW13LXTyuHTonRh67lAqgmclkxpYJt6r8
+ J8f+Czxk8X06qTwWch1hfE//ERkAXonyoFTzqCyyY2UU01Wdv86FwvZNLj3Aj+a4grhoVFPGuG+
+ AOYvTzLgh/GsdCe+UF8GJwtqsdDM+Kqz47AnXGLnKaGZcqDEdIcifegJq56c0jDmwq+obisBaMM
+ kpIbd1C10amk3kHuOMdMzNCmu0o8ERmT3bm1XMLzLOGPGxrRDaoGQB2+OT5Av0769Ba5cxqv88d
+ 8yEzEumR5DyI5KnW1NDtY0f9zfsqN9NckGbo=
+X-Google-Smtp-Source: AGHT+IFq6nqm4Ma7XDB4v1EKiDkqAGvDIghVGeAfT6tGurzVV+5uITvjSqyZdpXgUHvAwcnRMt/fxA==
+X-Received: by 2002:a17:902:b489:b0:235:15f3:ef16 with SMTP id
+ d9443c01a7336-24096aa37b2mr55787335ad.13.1753908471226; 
+ Wed, 30 Jul 2025 13:47:51 -0700 (PDT)
 Received: from [192.168.1.87] ([38.41.223.211])
  by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-3207eca6e9asm27898a91.18.2025.07.30.13.27.11
+ d9443c01a7336-241e8976f08sm119075ad.103.2025.07.30.13.47.50
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 30 Jul 2025 13:27:11 -0700 (PDT)
-Message-ID: <68054553-a60e-4e10-a32e-322395691201@linaro.org>
-Date: Wed, 30 Jul 2025 13:27:10 -0700
+ Wed, 30 Jul 2025 13:47:50 -0700 (PDT)
+Message-ID: <5ea42392-4cc8-4c4e-9de9-9ed3a165d173@linaro.org>
+Date: Wed, 30 Jul 2025 13:47:50 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 01/82] target/arm: Add prot_check parameter to
- pmsav8_mpu_lookup
+Subject: Re: [PATCH 20/82] target/arm: Expand syndrome parameter to
+ raise_exception*
+Content-Language: en-US
 To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
 References: <20250727080254.83840-1-richard.henderson@linaro.org>
- <20250727080254.83840-2-richard.henderson@linaro.org>
-Content-Language: en-US
+ <20250727080254.83840-21-richard.henderson@linaro.org>
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-In-Reply-To: <20250727080254.83840-2-richard.henderson@linaro.org>
+In-Reply-To: <20250727080254.83840-21-richard.henderson@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1032;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pj1-x1032.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::631;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pl1-x631.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -104,14 +104,14 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 7/27/25 1:01 AM, Richard Henderson wrote:
-> Separate the access_type from the protection check.
+> Prepare for raising exceptions with 64-bit syndromes.
 > 
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
->   target/arm/internals.h    |  5 +++--
->   target/arm/ptw.c          | 11 ++++++-----
->   target/arm/tcg/m_helper.c |  4 ++--
->   3 files changed, 11 insertions(+), 9 deletions(-)
+>   target/arm/internals.h     | 6 +++---
+>   target/arm/tcg-stubs.c     | 2 +-
+>   target/arm/tcg/op_helper.c | 4 ++--
+>   3 files changed, 6 insertions(+), 6 deletions(-)
 
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 

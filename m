@@ -4,115 +4,167 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52E58C83F26
-	for <qemu-arm@archiver.kernel.org>; Wed, 30 Jul 2025 13:49:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F33AC83F26
+	for <qemu-arm@archiver.kernel.org>; Wed, 30 Jul 2025 15:43:20 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uh7Bg-0002ST-Tk; Wed, 30 Jul 2025 09:49:45 -0400
+	id 1uh8xK-0001Cx-8K; Wed, 30 Jul 2025 11:43:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1uh5ok-0003Cr-Nh
- for qemu-arm@nongnu.org; Wed, 30 Jul 2025 08:21:59 -0400
-Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1uh5oe-0004GO-Pi
- for qemu-arm@nongnu.org; Wed, 30 Jul 2025 08:21:58 -0400
-Received: by mail-ej1-x629.google.com with SMTP id
- a640c23a62f3a-ae0b2ead33cso155651466b.0
- for <qemu-arm@nongnu.org>; Wed, 30 Jul 2025 05:21:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1753878108; x=1754482908; darn=nongnu.org;
- h=cc:to:message-id:content-transfer-encoding:mime-version:subject
- :date:from:from:to:cc:subject:date:message-id:reply-to;
- bh=aPloQKoJKhmykFUH0A159LjCUhMDkiKM4yVqkPp23N8=;
- b=kecEmSPciZsqYxZ5Kh52LvYjlQc8HyDfmfiay5l7JkUm7dHXsYbPw9ezLGLzsDotm3
- 37WFBhKNpl2ZM0lT17QK6oPOcB8KLznxnCr3lybgYwXDBmWO08sqBq26+5CrlI1uWvgX
- v/O0kYAsoLCE9b43z/pWrnWCInJ6gcnPqLlRkdj7CVCS8sLVP3leFLFOeAWzltveOksm
- gn/Nbahd8qs7xh29ApV6PC82TsWTOntSNZKGvHCjTOh90dFEHXQ7xSsIX5IZa5zOyg4D
- IS5MYp4XapO8sisDBPPYJVDjF6tGFgARaRa4AXBsDNkFcfkeyynQeoGiG7w+YiGe9NLm
- Y8pA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1753878108; x=1754482908;
- h=cc:to:message-id:content-transfer-encoding:mime-version:subject
- :date:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=aPloQKoJKhmykFUH0A159LjCUhMDkiKM4yVqkPp23N8=;
- b=tq+82zZ0/PjB39hQaE5pv0sZkP0rCMkA5xSps88HLvEI7nb3pwflES6MXJQ386JMGn
- RknIT5BwHSj/cqQ8yVH3GZ18Brni6DtR0Kq/folOsicFN+euAhto8aUFHUKcf/kWy7lV
- YqoTKfwXfVrja4HTXgeHRFy+MI/S3o2P1j/cA9pX9uBeA7EWPorcoxJmaQHWmWzE+jTD
- 0Hc8JUYnIVbQqchv4hdgLmqsJtushA+RfxiIbtGo438WQRSVUo4/sq8R4UR311q6q93X
- 7tMdyAtmGG1Yc/HEox7qfjtQCxZjiCSXBlgaRpMA4hNCBBSKLIbBVCFw4fbDFfyz+/sS
- BCVg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVTFI3SYhGYouckuaXK/h5ygnVYCrF0vBcF5U/g7+yQnK36KB9tJDZ3eGRubJebk9nZ/o7ZHqw69g==@nongnu.org
-X-Gm-Message-State: AOJu0YwsqPPqpGxaahXxmh9Eu6lc5XGoG2UGqbRol9EcCdDqBoYNzWEh
- 288sQF2vlaCVcdRfQuA7D3DpcO2s7dgofArQY/YDFzT9W/gSXzJGYR5i2pwrt5OpRmw=
-X-Gm-Gg: ASbGnct5dJkexWq2++UIndWbzp0mfjh90Z9vc3nW5mEGKJ12Yp59Q3zLykBIY5dGu25
- y733fG/4zHj7AZU9m5EguHEnSPTFtYvJ4UilvY6iJlGhpsAxyRxT8XLDlNdf8STCP9GGt9NvdSH
- FlHDNBg0faWRJ79CADmeSZimi/eDAlsO8wx4ohsdhl5SAec2SIOlx/G2fFaAcWzfEH4jMbnnV16
- tkn4g4rjNo74m18qz+yJBvE3d1UJaTryLuG5lvXpvybPuYgIPlmypDfifDmOt8TNnN9POQ0LUu6
- kh9/V9UTBGPeh5kfM8fvWKx0UVA6Lv82JPe1Jj0bu4wFrApzRU0+NP3mYEcIOxaW25YzKPBEp/5
- v17CDAqVO1E07paT3rf+wWWFGgrihHEK7M/uxyPcYgXWCnQuou8yOYH+KBsGuQoMCaRAREOJxV8
- Y8bw==
-X-Google-Smtp-Source: AGHT+IEpDzybs2xOOOtpEMQ+RYQUvTWdfUUhnse6AvP7EyeaJGOlFPW8cScrD8Se5bTZ0ZgqRJN2RQ==
-X-Received: by 2002:a17:907:970b:b0:ae8:8d00:76c3 with SMTP id
- a640c23a62f3a-af8fd3af905mr355385466b.29.1753878108265; 
- Wed, 30 Jul 2025 05:21:48 -0700 (PDT)
-Received: from [127.0.1.1] (athedsl-4441708.home.otenet.gr. [79.129.182.92])
- by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-af635b0836csm718395866b.139.2025.07.30.05.21.45
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 30 Jul 2025 05:21:47 -0700 (PDT)
-From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-Date: Wed, 30 Jul 2025 15:21:41 +0300
-Subject: [PATCH] hw/arm: add static NVDIMMs in device tree
+ (Exim 4.90_1) (envelope-from <francisco.iglesias@amd.com>)
+ id 1uh7qk-0007kZ-IT; Wed, 30 Jul 2025 10:32:12 -0400
+Received: from mail-bn8nam11on2065.outbound.protection.outlook.com
+ ([40.107.236.65] helo=NAM11-BN8-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <francisco.iglesias@amd.com>)
+ id 1uh7qg-0002Bg-Sg; Wed, 30 Jul 2025 10:32:10 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=rfP5qu5dJvbfALIGbqnF2x0z4MPzMa8CIIu7vc/qruiUnnwGZKWbWD9wk/zZkNqzWIJweO8oLWifD/VdCtDZ8hxT8HcwXrXcMbTOBIZ+IVXT9CpWrvSaFhp8SYNYAkzcmUH2pexj/q1CBVPkZnngWey8k6N9OEI6Ltk7JgYCA6leS+bskAk9KEOeuz0abpeb4VTE5pokmt/e1tufJX+QUR/JXf/R8oO6sr+SkD5voSRibJx8vFg+ojNWrJ8UWL/3nIT6wLsIJmXjsawPDdPMxh3iU/odZmr1CbJ7+IeacOa8YSbhIYfK4hogRfp6UYLh8iyZ05Js9vtGxkpTRZK3ww==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=PVUSQXOc3gcM4ToooCisdnX+hDCXQmrOF5sw62bvMhU=;
+ b=iJJdVZe9U7+wn39hN7upLlGB3p1wLweIrTJGHQtd/gIO5M5gM3l9PYNAU991iRL/OG3rpVbAqNQ6lq9nRA1IhzuWyjIbZTM036CbE9fjiMei4ScT3t8W1YSr1KZthpWWPJvPzVXI+3vQwLoGoQfDyopJKSmJCezPY8YIXwAB00YKaZkifiI8Y2FLHhO6yz2N00axY8tvF9RAZCDOEjiKQfeuKiVr9qfGsdv6U/Fbu+ugOIqApJ1zp0r6/olk6VJzHZO7dB7fkvNyE/5rhxAMHmV3WjkOmiC2kZGpIo9BGxqDcdm7ltJUQ7NZMT5+C15TA+6XG5uUkhtkQtTLksIoIQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=amd.com; dmarc=pass action=none header.from=amd.com; dkim=pass
+ header.d=amd.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1; 
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=PVUSQXOc3gcM4ToooCisdnX+hDCXQmrOF5sw62bvMhU=;
+ b=ILHPghHlDcGKc7kj+nLfwvlyJrCjal6A/ULYpoqRiGBpALYRNlhg/8mxC0koZPdyUkCUE5moixgc2VUiFImY9PWWm8uZ1D4WHKlP451yW7oCdayxC52m7x7yGa2Xsydb2o/pDj91KuCXDXqs5ca77wjdr/fJrHgS1r0JcSlt6dg=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=amd.com;
+Received: from SJ2PR12MB8739.namprd12.prod.outlook.com (2603:10b6:a03:549::10)
+ by PH7PR12MB6955.namprd12.prod.outlook.com (2603:10b6:510:1b8::7)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8989.11; Wed, 30 Jul
+ 2025 14:26:59 +0000
+Received: from SJ2PR12MB8739.namprd12.prod.outlook.com
+ ([fe80::29bb:9aa:2a72:df1b]) by SJ2PR12MB8739.namprd12.prod.outlook.com
+ ([fe80::29bb:9aa:2a72:df1b%7]) with mapi id 15.20.8989.010; Wed, 30 Jul 2025
+ 14:26:59 +0000
+Date: Wed, 30 Jul 2025 16:26:53 +0200
+From: Francisco Iglesias <francisco.iglesias@amd.com>
+To: Luc Michel <luc.michel@amd.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>,
+ "Edgar E . Iglesias" <edgar.iglesias@amd.com>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Alistair Francis <alistair@alistair23.me>,
+ Frederic Konrad <frederic.konrad@amd.com>,
+ Sai Pavan Boddu <sai.pavan.boddu@amd.com>
+Subject: Re: [PATCH 25/48] hw/arm/xlnx-versal: add support for multiple GICs
+Message-ID: <aIorrXAfFFPj9nto@xse-figlesia-l2.amd.com>
+References: <20250716095432.81923-1-luc.michel@amd.com>
+ <20250716095432.81923-26-luc.michel@amd.com>
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20250716095432.81923-26-luc.michel@amd.com>
+X-ClientProxiedBy: PA7P264CA0217.FRAP264.PROD.OUTLOOK.COM
+ (2603:10a6:102:374::18) To SJ2PR12MB8739.namprd12.prod.outlook.com
+ (2603:10b6:a03:549::10)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Message-Id: <20250730-nvdimm_arm64_virt-v1-1-f843596ab995@linaro.org>
-X-B4-Tracking: v=1; b=H4sIAFQOimgC/x3MTQqAIBBA4avErBPsz6irRITmVLPQYgwJwrsnL
- b/Fey8EZMIAY/ECY6RAp8+oygLWQ/sdBdlsqGXdyb6RwkdLzi2anWqXSHyLoal0r1pjUK6Qu4t
- xo+d/TnNKH8EdQJBjAAAA
-X-Change-ID: 20250730-nvdimm_arm64_virt-931a764bbe0c
-To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
- Gustavo Romero <gustavo.romero@linaro.org>, 
- Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=4894;
- i=manos.pitsidianakis@linaro.org; h=from:subject:message-id;
- bh=uqr4bPUxgx3ulK3GB21Yqggoxduhk6FHW7F6lItjBDU=;
- b=LS0tLS1CRUdJTiBQR1AgTUVTU0FHRS0tLS0tCgpvd0VCYlFLUy9aQU5Bd0FLQVhjcHgzQi9mZ
- 25RQWNzbVlnQm9pZzVaQ2owTnIzRTJrZDZwRXEwMkNxVFBZVXNkClZtS1ZWaEUxenBHNnBJaTJD
- TjJKQWpNRUFBRUtBQjBXSVFUTVhCdE9SS0JXODRkd0hSQjNLY2R3ZjM0SjBBVUMKYUlvT1dRQUt
- DUkIzS2Nkd2YzNEowSXovRUFDVUpKQ0FrVmNNS3lrbktiSzhvSkJNR1E4bmpLRnorRjVRdmozVA
- puSkpHcERTSE1ZWFNnRytwSFpYMWpIUWZWREh4TXV5UjduQjM4Z0IxbnVGZmNVdkdBYmNYbVEwT
- EhGdzZaREJQCkhNOE04Y3NkaFhaMkVIZURYekN6Sll1Q1Z5QkVQK1d4MkVSRSttUzZmNWs5Q1Fy
- M3NIdEJTUzFoUHB2SWZrSGcKQWp4M1ZCbVJmTjU5ZWU0aCt2UExzZ3pZUE9pNmljLzR2Ky9PUkN
- 6Z1UweFYrdEhjaTVHQjVEazVPbldwRTk5MApYTDdFYU45cGExOUVtT2JuYjltWnUxaEZqRUxyam
- ExRU1YSEFXS3U2eWlhL3FPV2RNZ3poYktVT2RYb2l2V0NjCkNyUkpGMGRkVkl4cnJ1dUM1R2tkQ
- 202U1MydEZxM05Nd2tiWE5CVTRuQVNPN0szNlk2WTRQZlZma3dub3JNaUkKNjJML0crak85RWNw
- aGtHMlVOREJ3S29ZQXRiU2pvMk1EY1ZUbnBCblFZU3hzS29ZSkF4b1g0Zy8yQzRMNmNmTApkbEZ
- 4a212MzJTaGt0TGNUajA1WlhNUzBldWlHYWI0VlJTYTFnSXRIMFdXeWFMRElVK25kWWtzRncyTU
- FBZEluCnE5bW1xNDc1SDBHcDBmTit5eGFTQVRjc01pQ0ZHNlRCditFbHA0MUN0ZXZvYUtWOEU4b
- kFwVGJ5bnozeHZ2L2cKWW9WdGh1NVZsVGlGNTZZY1VFbDUzekxwc1dWWkU1RWtYQkt3WEhTVXZ2
- YkpEL29DVzViSDJ1R1I0aHZhMWVQdwp4T3N1Z3p0RUxBL21aQWdkdFpwK2NvdTJWM0dkQUFRN3J
- CdVVJWVhuTWpBZEtXTmlRSW5nekx0aFQ2QTJjc0FrCnJIRGFWdz09Cj02b2VrCi0tLS0tRU5EIF
- BHUCBNRVNTQUdFLS0tLS0K
-X-Developer-Key: i=manos.pitsidianakis@linaro.org; a=openpgp;
- fpr=7C721DF9DB3CC7182311C0BF68BC211D47B421E1
-Received-SPF: pass client-ip=2a00:1450:4864:20::629;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-ej1-x629.google.com
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: SJ2PR12MB8739:EE_|PH7PR12MB6955:EE_
+X-MS-Office365-Filtering-Correlation-Id: 7441891c-8911-44b1-c1ab-08ddcf7524d2
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|376014|366016;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?SDBQcE9IYjc1RTJtN043cnNkSVV4NUtRdWM1QVBwYVJjMDdzdS9ObWtuSlY4?=
+ =?utf-8?B?a2x2QWpGQ1N4OHVRVWMyUkM4ZHF4bG9QUkNLbVJQMnR1Qkw4eXFUR3lmYTBo?=
+ =?utf-8?B?WTZ2OFdRZUlIWE4wU1pEQXhDbjdoaGVaWHVqY1A3SjJhOEtucjFWQzhIZVU5?=
+ =?utf-8?B?L3hQbG1EanNYWmF0dUVmRG9LMWFwR3ZTUkJoNGZlWDUra1F4VWMvQ0hBMjBG?=
+ =?utf-8?B?WUUzaGd4WWJqcm1iTmNETjdndlcvaUwyQ285T2NoZUJPOTBrU0NYVmNRc0d6?=
+ =?utf-8?B?dmxvK1hXQUZiQlBtSnk3cS95YTM1dlBlSWZhTzI1ZjNKMnhYcndFNU9DSE84?=
+ =?utf-8?B?VWhCNWhlaDNhcThpZHp4bHBRR3pnNmNpZDBIZWc0dXUrZC9nUG9oNTdSSzJ4?=
+ =?utf-8?B?dHVRRnVsMzZxN3RQbW84bng4dENPc1FiL3VUcE5GanBMRFd3T2l2SVFRQUIz?=
+ =?utf-8?B?RW5ONi9QYlVXKzd5UU0xaEhDL29zKzJ1TEZYOUIzS3pHZ1REaVNQais3a0dS?=
+ =?utf-8?B?ck9OMFN4Nk9idEMxbzljSERMSWwxUGdhRVpCNzdzM0x6NmxLcmFnb3dUaWRD?=
+ =?utf-8?B?d0lTUnB3a2dHZnNadmEvWHRaUkUzRFlWR0MrNjh4akxIVDFyQUM0L3VPaENq?=
+ =?utf-8?B?Mkx2OTkvSFd6M1BpWE1tSVpXUitCNUVFSDRyTjNwaVVjQVZLeit0aEJYR0tN?=
+ =?utf-8?B?R1l1OGc4K3NKVW1FZkx2VXN0aEdvb3o3NDRvZEpmSXVHWWNSb1VWQUtGcm1P?=
+ =?utf-8?B?TUtGQjk4cTB4MytwVktobjRJclpmOVI4aW8ydEZRWVhBNEo1ZGpCMGJOMFU0?=
+ =?utf-8?B?ZGJHeXg1aTNEaGdBQjMyREFWaHorRE9sVWNxUVdma2JWYjd5VXZ2U2ZBdnJ1?=
+ =?utf-8?B?QjBHRTFqTkU0czIzckd4UWxjUWI3VWREQ3pXb3lBOW9wcS95VlN6L3BFeHU2?=
+ =?utf-8?B?a3BVbTNGb0ROTzdKMG8xZ0NTL1Rlcm13dlBHY3ZYOGxnRnlvc0gzOHhOcWh5?=
+ =?utf-8?B?MGRZYzBKN1NTVEpOVUo0TktBRU1IeGJDZS9vTlNrUkhLdFlhaWdBYVhXYjZC?=
+ =?utf-8?B?S2t5RjlDMkUxb21MODczenptN1IxNzJTdzZNcE5ib0tqQXFVSU0zMDJ2a3dL?=
+ =?utf-8?B?UU04NDVIamJTMzVYY01LVFdxbGZjOUxVZ3F4Y2plODg5L2dpVFFWL01mME4z?=
+ =?utf-8?B?UkNHWXdEMlRnVGtTdUIxUnhjK3VIeEhPRy9xcW1jK28rVGJQWlh6d2RqOVNP?=
+ =?utf-8?B?ZDJxUVNFOWZXb1JMS01NMllwUTE5R3ZxR3o2NjlqNGNuWDdrRW5WUG1BL2J2?=
+ =?utf-8?B?Skx2QkQwRWZTb3RTNEt0WFRrQmRMNTRsdDlMbHlwTXRMeUVhSmxmMVcxY2Rp?=
+ =?utf-8?B?cm9WQXcyUGxiaVVOSnlsZXN3SUgvWjEreWpVSUpKRUc1NG44NnJzejRUTVRF?=
+ =?utf-8?B?VUFhUk9CVmk1MC9UTGgxa0JWMVZUQ1FEck5nQ09lZ0o5UEo2V1YzYXNaYTZH?=
+ =?utf-8?B?MERmMVlEbGlRdUwrV0lWUWV0WFVxWGFnUlZvTGNYcUVKUTFGMHlKS3JBdzhs?=
+ =?utf-8?B?NWJpdWZKYjhqL3R1SjlNMWh5UjhzUlhjRXNCVFF2ZUtGcUNJTFFWNkJvRXRR?=
+ =?utf-8?B?VWMzaGJ1YnlSZ3dTVDc4VkdmcUc2TXk5YStFdEtjNDJldWkyU3hRMGl6czhp?=
+ =?utf-8?B?c1BoSjRqTU93bWxmNDNqWlcrTXhnVlNra29MUkVXa1BNSFJuMWdhS3JaRGJP?=
+ =?utf-8?B?aW92ak5LZEFvRFQ4OFo5SlBHb2FrVEw5TUFNZjZBREVMcUNCUEtsYzdEZG9M?=
+ =?utf-8?B?ZWEvUVpGVHBGbWxtckZmNW9MUU5RS09ETEdzUkRSWFJ1TjI3VSs2M0RDNUdL?=
+ =?utf-8?B?RzZibVRlU3lHQzBGUnJSR0d4R2FpUWJONHlCQVlOdkxnZkJ1VjB3YjQ3eFo5?=
+ =?utf-8?Q?25o/5kku3NQ=3D?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SJ2PR12MB8739.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(1800799024)(376014)(366016); DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?RmhsOHE3OWxGVW1pSS9SWURaSDNlRXBQbnlUdUxZaG9lNjhMNkRIMW1wRkZ3?=
+ =?utf-8?B?T0xtQU00TlJxc0MrVXFhMHhTak12RjlXaDN0amdaMUVNWDdLS0JQM0JzRTh3?=
+ =?utf-8?B?TnJXZUJSSTE5UVJaa2NRNlFiS1JIa0laVjc1cFRkSXlqTDhlL0NDTVBvYkhj?=
+ =?utf-8?B?TTFaaUVCdlVKZGxoN2JzMjNENkhjVFZWWGtwLy9ZUE5jbjAxenpLbisrN0E3?=
+ =?utf-8?B?V2NmcGxXUVIvRnRYc1psbGZjaEl1SGVDTkFtblFtc1MrMG5hM1RKdzZqMGJu?=
+ =?utf-8?B?SVlOL3R6VVJQK1lFRWxXN0hMRTkwZjJnZFJVbTMvK0dkVDgwa0dibWZXT0lV?=
+ =?utf-8?B?UUp1SmdNeGZtMENZRVFnSlExblg1M0J4dk1zSzAwTEFDZmJBeXNUd2djdWNK?=
+ =?utf-8?B?azJiazh5cFh6Q0ExT3pJeENSeFhJWkhZTHNKZzJSam5ZYjFVdS9ObGZaQzNW?=
+ =?utf-8?B?cXJtck9XY0NucDhzR3o4Z0F2cU9QdjZnaGpBUkE3dlRnMUJvSDEreml2RUp3?=
+ =?utf-8?B?TWREUlVuaVBkeGJTYjV6ZmJzQno0RDcyUFBYdzJnUUdNNGdOeUJHNkFxdDBG?=
+ =?utf-8?B?RjRYU3Rtc2ZNcnc0djFzRTVld2xhTHErQldvaENON3h0U25QYVphdHI5VVM1?=
+ =?utf-8?B?byticTFoVTF2QUdWSVM4cVZ2bnJyNHp2Y29zRWZTODV2VU5QQzRhWUJLcllR?=
+ =?utf-8?B?TnFLU1RiR0lITUticFd3YUNaMUNkRm5nK09Kc1BLVmNqd3JaVUFCVnBwR0tw?=
+ =?utf-8?B?ZStDczVNM2lSd0pZVDFSZmFycGlSR0ViQnRJdXYxYVRoRk5rUC9BRk0xOXVj?=
+ =?utf-8?B?UXBPVE5oWUJxTmVETmhOZUNwTTNJTHVPNmtIb3B2b0pNcEhvT0Q2OGJQSG13?=
+ =?utf-8?B?L3NublNSVkFObDNQeURJbllzQkg5cSsvRlUwWnppTnltTEJEbTR1VlpGNXlv?=
+ =?utf-8?B?M2ExQ2VlRUJqaThYRWpVcmhWcXdNOGZmM21pV0QvK1RzeVdRai8wdUJDWGFK?=
+ =?utf-8?B?a0dIMEoza1pFTlhEdENEeDRWQXJXZXUwV2NoZ2ovNlJGbU5mY0Y3cmV6QlVI?=
+ =?utf-8?B?YkJ4TWlqU0trTk5laTRLTk9jVTlJaitrWnR1RDRNemNsRVY4a2l1YWFCQW1I?=
+ =?utf-8?B?dC9nb1FxclRUalpmS1RhVkJWYU9RZHFXMTEvdGtaSHJUOU1ML0JSNHF1Z1Ew?=
+ =?utf-8?B?SWxDVk9EREZobGd4VnE1WEREU3V6a2hzdUdPN1Z4aUZVMWJhQUpVdytEbGpF?=
+ =?utf-8?B?L3d6TlRIbmpMSkI5YUtFdk4rQVBPTjQwTXZDVjJHd1RpYmFKNm5DaFkxSWwz?=
+ =?utf-8?B?SEJyRUw5NnVxV2JWVmsybFRvVEphbFhUYjRXYjJjVkQwekFoVWpONjJhODMz?=
+ =?utf-8?B?V3RUV05kTXhXYnorWDEwV1FsN1k4V2ZzNEZUVC9ucUpPYWg4UzgyWnQzdUMz?=
+ =?utf-8?B?dGJjK2tpeGg3bDFKNGxsb0JBNFllakkwTjJ0WEEra0VTSGFTNlF1ZXBQMDdE?=
+ =?utf-8?B?WWF1cVBhcXh0RnUrUEtudFNJbVZKZklMMHRydW4vNDE1ZjNtY2ZqSmtMRWt5?=
+ =?utf-8?B?OEh4SWNCR3QzVDNoMUg0bHlGMlFXL2w0UE00RWhWT0VyMzhaUDExcm1sQ2NY?=
+ =?utf-8?B?UWVtRThGLytGcnhyZjd6N3d4UVAweWlpK1VYQkNwbTRkaEJaV0VtZEJaY3lh?=
+ =?utf-8?B?NUwycWMyMXkvc2hVK3VobW1VOUx0eS83WVl5cERJdHh6bjQrMyswRCthZzY4?=
+ =?utf-8?B?MVdzandmTWFGa0ZsZXdUV1BiMnE5MTZUWlRXQXoxQmhPSVphSWU4MDRsTkFY?=
+ =?utf-8?B?RFNZdGFReHk0U1ZjMWdheFdSVldZVTliV1hPb0Z1NDJ3dzdPaElDTmdHOWJL?=
+ =?utf-8?B?Y29VV0pnT1JoQmlYaWtKTmluV3lEY25vQzNMZmhHdnlnSEEvWDNNVzZSbjhs?=
+ =?utf-8?B?MVh0a2tXbjZaNDRKQjk4aHBSVjRxbzVaOTg3d0N0MDFIanQxejFMMjZtbTVo?=
+ =?utf-8?B?eG94eldHc2VZekpzQ0lEM0lCMGhqR0ZSWXlwemdzUnBXZWJNcnowSnIyNTE1?=
+ =?utf-8?B?anN4YVZuenlUUHF2R3ZER2d0Mk9xNFY4dWUzenVOUnlueSt0UjhtMDFrV3l0?=
+ =?utf-8?Q?HLm7oWh6RA7v+6GN2IOCnJ8mE?=
+X-OriginatorOrg: amd.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 7441891c-8911-44b1-c1ab-08ddcf7524d2
+X-MS-Exchange-CrossTenant-AuthSource: SJ2PR12MB8739.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 30 Jul 2025 14:26:59.6011 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: Afff9nXv0sH1FmhwvIpXZ06P82vgHgvft8QUj0RxFGThX7RLvVS68D91+YdQ7zrSX76gUQAEOBuguI0m3w5a+w==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH7PR12MB6955
+Received-SPF: permerror client-ip=40.107.236.65;
+ envelope-from=francisco.iglesias@amd.com;
+ helo=NAM11-BN8-obe.outbound.protection.outlook.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -128,137 +180,206 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-NVDIMM is used for fast rootfs with EROFS, for example by kata
-containers. To allow booting with static NVDIMM memory, add them to the
-device tree in arm virt machine.
+On Wed, Jul 16, 2025 at 11:54:07AM +0200, Luc Michel wrote:
+> The Versal SoC contains two GICs: one GICv3 in the APU and one GICv2 in
+> the RPU (currently not instantiated). To prepare for the GICv2
+> instantiation, add support for multiple GICs when connecting interrupts.
+> 
+> When a GIC is created, the first-cpu-index property is set on it, and a
+> pointer to the GIC is stored in the intc array. When connecting an IRQ,
+> a TYPE_SPLIT_IRQ device is created with its num-lines property set to
+> the number of GICs in the SoC. The split device is used to fan out the
+> IRQ to all the GICs.
+> 
+> Signed-off-by: Luc Michel <luc.michel@amd.com>
 
-This allows users to boot directly with nvdimm memory devices without
-having to rely on ACPI and hotplug.
+Reviewed-by: Francisco Iglesias <francisco.iglesias@amd.com>
 
-Verified to work with command invocation:
-
-./qemu-system-aarch64 \
-  -M virt,nvdimm=on \
-  -cpu cortex-a57 \
-  -m 4G,slots=2,maxmem=8G \
-  -object memory-backend-file,id=mem1,share=on,mem-path=/tmp/nvdimm,size=4G,readonly=off \
-  -device nvdimm,id=nvdimm1,memdev=mem1,unarmed=off \
-  -drive file=./debian-12-nocloud-arm64-commited.qcow2,format=qcow2 \
-  -kernel ./vmlinuz-6.1.0-13-arm64 \
-  -append "root=/dev/vda1 console=ttyAMA0,115200 acpi=off"
-  -initrd ./initrd.img-6.1.0-13-arm64 \
-  -nographic \
-  -serial mon:stdio
-
-Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
----
- hw/arm/boot.c | 39 +++++++++++++++++++++++++++++++++++++++
- hw/arm/virt.c |  8 +++++---
- 2 files changed, 44 insertions(+), 3 deletions(-)
-
-diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-index d391cd01bb1b92ff213e69b84e5a69413b36c4f8..a0c1bcdf946ca98bb5da63f1a518018eb578dd81 100644
---- a/hw/arm/boot.c
-+++ b/hw/arm/boot.c
-@@ -25,6 +25,7 @@
- #include "hw/boards.h"
- #include "system/reset.h"
- #include "hw/loader.h"
-+#include "hw/mem/memory-device.h"
- #include "elf.h"
- #include "system/device_tree.h"
- #include "qemu/config-file.h"
-@@ -515,6 +516,26 @@ static void fdt_add_psci_node(void *fdt, ARMCPU *armcpu)
-     qemu_fdt_setprop_cell(fdt, "/psci", "migrate", migrate_fn);
- }
- 
-+static int fdt_add_pmem_node(void *fdt, uint32_t acells, uint32_t scells,
-+                             int64_t mem_base, int64_t size, int64_t node)
-+{
-+    int ret;
-+
-+    g_autofree char *nodename = g_strdup_printf("/pmem@%" PRIx64, mem_base);
-+
-+    qemu_fdt_add_subnode(fdt, nodename);
-+    qemu_fdt_setprop_string(fdt, nodename, "compatible", "pmem-region");
-+    ret = qemu_fdt_setprop_sized_cells(fdt, nodename, "reg", acells,
-+                                       mem_base, scells, size);
-+    /* only set the NUMA ID if it is specified */
-+    if (!ret && node >= 0) {
-+        ret = qemu_fdt_setprop_cell(fdt, nodename, "numa-node-id",
-+                                    node);
-+    }
-+
-+    return ret;
-+}
-+
- int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
-                  hwaddr addr_limit, AddressSpace *as, MachineState *ms,
-                  ARMCPU *cpu)
-@@ -525,6 +546,7 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
-     unsigned int i;
-     hwaddr mem_base, mem_len;
-     char **node_path;
-+    g_autofree MemoryDeviceInfoList *md_list = NULL;
-     Error *err = NULL;
- 
-     if (binfo->dtb_filename) {
-@@ -628,6 +650,23 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
-         }
-     }
- 
-+    md_list = qmp_memory_device_list();
-+    for (MemoryDeviceInfoList *m = md_list; m != NULL; m = m->next) {
-+        MemoryDeviceInfo *mi = m->value;
-+
-+        if (mi->type == MEMORY_DEVICE_INFO_KIND_NVDIMM) {
-+            PCDIMMDeviceInfo *di = mi->u.nvdimm.data;
-+
-+            rc = fdt_add_pmem_node(fdt, acells, scells,
-+                                   di->addr, di->size, di->node);
-+            if (rc < 0) {
-+                fprintf(stderr, "couldn't add NVDIMM /pmem@%"PRIx64" node\n",
-+                        di->addr);
-+                goto fail;
-+            }
-+        }
-+    }
-+
-     rc = fdt_path_offset(fdt, "/chosen");
-     if (rc < 0) {
-         qemu_fdt_add_subnode(fdt, "/chosen");
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index ef6be3660f5fb38da84235c32dc2d13a5c61889c..910f5bb5f66ee217a9140f9128804a5b9f69b5b6 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -2917,7 +2917,7 @@ static void virt_memory_pre_plug(HotplugHandler *hotplug_dev, DeviceState *dev,
-     const MachineState *ms = MACHINE(hotplug_dev);
-     const bool is_nvdimm = object_dynamic_cast(OBJECT(dev), TYPE_NVDIMM);
- 
--    if (!vms->acpi_dev) {
-+    if (!vms->acpi_dev && !(is_nvdimm && !dev->hotplugged)) {
-         error_setg(errp,
-                    "memory hotplug is not enabled: missing acpi-ged device");
-         return;
-@@ -2949,8 +2949,10 @@ static void virt_memory_plug(HotplugHandler *hotplug_dev,
-         nvdimm_plug(ms->nvdimms_state);
-     }
- 
--    hotplug_handler_plug(HOTPLUG_HANDLER(vms->acpi_dev),
--                         dev, &error_abort);
-+    if (vms->acpi_dev) {
-+        hotplug_handler_plug(HOTPLUG_HANDLER(vms->acpi_dev),
-+                             dev, &error_abort);
-+    }
- }
- 
- static void virt_machine_device_pre_plug_cb(HotplugHandler *hotplug_dev,
-
----
-base-commit: 9b80226ece693197af8a981b424391b68b5bc38e
-change-id: 20250730-nvdimm_arm64_virt-931a764bbe0c
-
---
-γαῖα πυρί μιχθήτω
-
+> ---
+>  include/hw/arm/xlnx-versal.h |  1 +
+>  hw/arm/xlnx-versal.c         | 55 +++++++++++++++++++++++++++++++++---
+>  2 files changed, 52 insertions(+), 4 deletions(-)
+> 
+> diff --git a/include/hw/arm/xlnx-versal.h b/include/hw/arm/xlnx-versal.h
+> index ba5719d80f5..9b11ffb845d 100644
+> --- a/include/hw/arm/xlnx-versal.h
+> +++ b/include/hw/arm/xlnx-versal.h
+> @@ -40,10 +40,11 @@ OBJECT_DECLARE_TYPE(Versal, VersalClass, XLNX_VERSAL_BASE)
+>  struct Versal {
+>      /*< private >*/
+>      SysBusDevice parent_obj;
+>  
+>      /*< public >*/
+> +    GArray *intc;
+>      MemoryRegion mr_ps;
+>  
+>      struct {
+>          /* 4 ranges to access DDR.  */
+>          MemoryRegion mr_ddr_ranges[4];
+> diff --git a/hw/arm/xlnx-versal.c b/hw/arm/xlnx-versal.c
+> index ba8c69bd435..58cd874f81f 100644
+> --- a/hw/arm/xlnx-versal.c
+> +++ b/hw/arm/xlnx-versal.c
+> @@ -43,10 +43,11 @@
+>  #include "hw/misc/xlnx-versal-cframe-reg.h"
+>  #include "hw/or-irq.h"
+>  #include "hw/misc/xlnx-versal-crl.h"
+>  #include "hw/intc/arm_gicv3_common.h"
+>  #include "hw/intc/arm_gicv3_its_common.h"
+> +#include "hw/core/split-irq.h"
+>  
+>  #define XLNX_VERSAL_ACPU_TYPE ARM_CPU_TYPE_NAME("cortex-a72")
+>  #define XLNX_VERSAL_RCPU_TYPE ARM_CPU_TYPE_NAME("cortex-r5f")
+>  #define GEM_REVISION        0x40070106
+>  
+> @@ -318,10 +319,47 @@ static inline Object *versal_get_child_idx(Versal *s, const char *child,
+>      g_autofree char *n = g_strdup_printf("%s[%zu]", child, idx);
+>  
+>      return versal_get_child(s, n);
+>  }
+>  
+> +/*
+> + * The SoC embeds multiple GICs. They all receives the same IRQ lines at the
+> + * same index. This function creates a TYPE_SPLIT_IRQ device to fan out the
+> + * given IRQ input to all the GICs.
+> + *
+> + * The TYPE_SPLIT_IRQ devices lie in the /soc/irq-splits QOM container
+> + */
+> +static qemu_irq versal_get_gic_irq(Versal *s, int irq_idx)
+> +{
+> +    DeviceState *split;
+> +    Object *container = versal_get_child(s, "irq-splits");
+> +    int idx = FIELD_EX32(irq_idx, VERSAL_IRQ, IRQ);
+> +    g_autofree char *name = g_strdup_printf("irq[%d]", idx);
+> +
+> +    split = DEVICE(object_resolve_path_at(container, name));
+> +
+> +    if (split == NULL) {
+> +        size_t i;
+> +
+> +        split = qdev_new(TYPE_SPLIT_IRQ);
+> +        qdev_prop_set_uint16(split, "num-lines", s->intc->len);
+> +        object_property_add_child(container, name, OBJECT(split));
+> +        qdev_realize_and_unref(split, NULL, &error_abort);
+> +
+> +        for (i = 0; i < s->intc->len; i++) {
+> +            DeviceState *gic;
+> +
+> +            gic = g_array_index(s->intc, DeviceState *, i);
+> +            qdev_connect_gpio_out(split, i, qdev_get_gpio_in(gic, idx));
+> +        }
+> +    } else {
+> +        g_assert(FIELD_EX32(irq_idx, VERSAL_IRQ, ORED));
+> +    }
+> +
+> +    return qdev_get_gpio_in(split, 0);
+> +}
+> +
+>  /*
+>   * When the R_VERSAL_IRQ_ORED flag is set on an IRQ descriptor, this function is
+>   * used to return the corresponding or gate input IRQ. The or gate is created if
+>   * not already existant.
+>   *
+> @@ -354,16 +392,14 @@ static qemu_irq versal_get_irq_or_gate_in(Versal *s, int irq_idx,
+>  
+>  static qemu_irq versal_get_irq(Versal *s, int irq_idx)
+>  {
+>      qemu_irq irq;
+>      bool ored;
+> -    DeviceState *gic;
+>  
+>      ored = FIELD_EX32(irq_idx, VERSAL_IRQ, ORED);
+>  
+> -    gic = DEVICE(versal_get_child_idx(s, "apu-gic", 0));
+> -    irq = qdev_get_gpio_in(gic, irq_idx);
+> +    irq = versal_get_gic_irq(s, irq_idx);
+>  
+>      if (ored) {
+>          irq = versal_get_irq_or_gate_in(s, irq_idx, irq);
+>      }
+>  
+> @@ -502,10 +538,11 @@ static void versal_create_gic_its(Versal *s,
+>  }
+>  
+>  static DeviceState *versal_create_gic(Versal *s,
+>                                        const VersalCpuClusterMap *map,
+>                                        MemoryRegion *mr,
+> +                                      int first_cpu_idx,
+>                                        size_t num_cpu)
+>  {
+>      DeviceState *dev;
+>      SysBusDevice *sbd;
+>      QList *redist_region_count;
+> @@ -526,10 +563,11 @@ static DeviceState *versal_create_gic(Versal *s,
+>      qdev_prop_set_array(dev, "redist-region-count", redist_region_count);
+>  
+>      qdev_prop_set_bit(dev, "has-security-extensions", true);
+>      qdev_prop_set_bit(dev, "has-lpi", map->gic.has_its);
+>      object_property_set_link(OBJECT(dev), "sysmem", OBJECT(mr), &error_abort);
+> +    qdev_prop_set_uint32(dev, "first-cpu-index", first_cpu_idx);
+>  
+>      sysbus_realize_and_unref(sbd, &error_fatal);
+>  
+>      memory_region_add_subregion(mr, map->gic.dist,
+>                                  sysbus_mmio_get_region(sbd, 0));
+> @@ -552,10 +590,12 @@ static DeviceState *versal_create_gic(Versal *s,
+>          qemu_fdt_setprop(s->cfg.fdt, node, "interrupt-controller", NULL, 0);
+>      }
+>  
+>      versal_create_gic_its(s, map, dev, mr, node);
+>  
+> +    g_array_append_val(s->intc, dev);
+> +
+>      return dev;
+>  }
+>  
+>  static void connect_gic_to_cpu(const VersalCpuClusterMap *map,
+>                                 DeviceState *gic, DeviceState *cpu, size_t idx,
+> @@ -609,13 +649,15 @@ static inline void versal_create_and_connect_gic(Versal *s,
+>                                                   MemoryRegion *mr,
+>                                                   DeviceState **cpus,
+>                                                   size_t num_cpu)
+>  {
+>      DeviceState *gic;
+> +    int first_cpu_idx;
+>      size_t i;
+>  
+> -    gic = versal_create_gic(s, map, mr, num_cpu);
+> +    first_cpu_idx = CPU(cpus[0])->cpu_index;
+> +    gic = versal_create_gic(s, map, mr, first_cpu_idx, num_cpu);
+>  
+>      for (i = 0; i < num_cpu; i++) {
+>          connect_gic_to_cpu(map, gic, cpus[i], i, num_cpu);
+>      }
+>  }
+> @@ -1540,10 +1582,14 @@ static void versal_realize(DeviceState *dev, Error **errp)
+>  
+>      s->phandle.clk_25mhz = fdt_add_clk_node(s, "/clk25", 25 * 1000 * 1000);
+>      s->phandle.clk_125mhz = fdt_add_clk_node(s, "/clk125", 125 * 1000 * 1000);
+>      s->phandle.gic = qemu_fdt_alloc_phandle(s->cfg.fdt);
+>  
+> +    container = object_new(TYPE_CONTAINER);
+> +    object_property_add_child(OBJECT(s), "irq-splits", container);
+> +    object_unref(container);
+> +
+>      container = object_new(TYPE_CONTAINER);
+>      object_property_add_child(OBJECT(s), "irq-or-gates", container);
+>      object_unref(container);
+>  
+>      qemu_fdt_setprop_cell(s->cfg.fdt, "/", "interrupt-parent", s->phandle.gic);
+> @@ -1710,10 +1756,11 @@ static void versal_base_init(Object *obj)
+>  
+>      memory_region_init(&s->lpd.rpu.mr, obj, "mr-rpu", UINT64_MAX);
+>      memory_region_init(&s->mr_ps, obj, "mr-ps-switch", UINT64_MAX);
+>      memory_region_init_alias(&s->lpd.rpu.mr_ps_alias, OBJECT(s),
+>                               "mr-rpu-ps-alias", &s->mr_ps, 0, UINT64_MAX);
+> +    s->intc = g_array_new(false, false, sizeof(DeviceState *));
+>  
+>      num_can = versal_get_map(s)->num_canfd;
+>      s->cfg.canbus = g_new0(CanBusState *, num_can);
+>  
+>      for (i = 0; i < num_can; i++) {
+> -- 
+> 2.50.0
+> 
 

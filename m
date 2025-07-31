@@ -4,97 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52B2DC87FD2
-	for <qemu-arm@archiver.kernel.org>; Thu, 31 Jul 2025 21:50:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBB66C87FD2
+	for <qemu-arm@archiver.kernel.org>; Thu, 31 Jul 2025 21:50:52 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uhb8l-0008JV-2W; Thu, 31 Jul 2025 17:48:43 -0400
+	id 1uhbAp-0005wA-9U; Thu, 31 Jul 2025 17:50:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uhapN-0001A9-4Q
- for qemu-arm@nongnu.org; Thu, 31 Jul 2025 17:28:41 -0400
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
+ id 1uhaxZ-0005k5-8Q
+ for qemu-arm@nongnu.org; Thu, 31 Jul 2025 17:37:09 -0400
+Received: from mail-pg1-x52f.google.com ([2607:f8b0:4864:20::52f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uhapL-0007vY-6M
- for qemu-arm@nongnu.org; Thu, 31 Jul 2025 17:28:40 -0400
-Received: by mail-wr1-x42a.google.com with SMTP id
- ffacd0b85a97d-3b7848df30cso1463352f8f.0
- for <qemu-arm@nongnu.org>; Thu, 31 Jul 2025 14:28:38 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
+ id 1uhaxX-0000g8-LS
+ for qemu-arm@nongnu.org; Thu, 31 Jul 2025 17:37:08 -0400
+Received: by mail-pg1-x52f.google.com with SMTP id
+ 41be03b00d2f7-b4229326f89so1065153a12.1
+ for <qemu-arm@nongnu.org>; Thu, 31 Jul 2025 14:37:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1753997317; x=1754602117; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=oWBEps/IHV7G68SkGN78QP86K/TyIINFKInszR+1c2o=;
- b=ebP6tiO3DCPWhK3zfDIkjAx1NVyv/gK+Kr/A6bHbsG1pQbshgbKkN7e1KDaI9657IE
- Bf2L9Gb5//z2LgBv5RgAGBYWlbPOgYdwgHUiQyFq0c2BalSuMHc5wIRiNPXcZCyH6Yc3
- 7XH670+7oVrxA4KmEACxd9viJ/b0jWlhL36q46Mxd72KzVYsmnyP/QTo75rmZ9jhkX+l
- 84gTdAoavOEJw1i7IIICXu0xiY5R2X3SeqULydLX3XCIp34awFIGVb+MVJ+7oJa01gQX
- u2fpU47MT5lEkZAjqvw4EzkQRW4Yks9w273B4I26+t6TfXuAVBn6R3dEOmcI5c9hP2PR
- Xbqw==
+ d=linaro.org; s=google; t=1753997826; x=1754602626; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=4lyau6g7ZS2X5dhFoC647e0I5kJk8G+2Y7odzEKMVBY=;
+ b=iNAX1zi20Ih8nux4NqW4ZEHY/Ykn+yHXC94MGpilZmQDdyjFmDB0TVjuLVt+FSlaFT
+ DyfAWVaXW9jRezyqNyX+Fu+PGVTHdJ2D8KPaEX9tyWoPWxvzqDuxz9Cw+Tw77nRguL+i
+ jKrmMEuEAYTqzaJStTpjSQYOa569gC8z5989FQobSugihAd/ogqxSSwWvXi/qqDGbHIx
+ xPy0VxA7sFFaN+gJdQFimB9653Ihq9noyW35o7chlB6ejsuVMiZPsCUNVapgW1v/5ysk
+ 5yyh+MMoLcNCPtEHBfuq2Okox9eoqg++LrUeQ/LsBdSADYw+sMj6IDl4RfieCq8qGJ1o
+ ZGTw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1753997317; x=1754602117;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=oWBEps/IHV7G68SkGN78QP86K/TyIINFKInszR+1c2o=;
- b=I4yJcPOpkbj61Io58QpI6+YevwHBx4H0eXG06C2fU3hwvjihajWAi2maEEwu8ogI4n
- lhzMkPf6uAyK/jJL9wtmgemz/0vmAJt87yFeJXDNtQq+2oYHMp1qxrfcucgFarhi7TQi
- 24+aL7j7r38A5I7yPamO2baKiqqVHDGVpEs+JfhQBZfSjHhQkbjlikVQXfk1zhuMa+rN
- BTeSLbkodOPWj2uReEmD0tlRaAFas9YyDGXaj+t+H1a3l937Vkgea5qfNUgmC7OHWZPV
- dzvHiNr1Bygz20A69ZeH75C0JKn0sj5W0Ztu4MagOCzGUkgUZLJzIGXhdmxuqHhb1ZTA
- 1bwA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUbpK5qTzjKTqQvZ8oSVA4L12+hOzJMyVanjHNkz5hFje8veAeIHurNJhESkjKpMrNhf7nt8+li+w==@nongnu.org
-X-Gm-Message-State: AOJu0YzrzoSfSdwIApbqNdBN7K6Zqdip+RdJ9LCOQQPxg5AI0uKSV2Ai
- MGCyWTMjYU2peNmaAiFueIC35uM+znDycC1zVXsIlN43gLvScyptuDWkYChERX5tevo=
-X-Gm-Gg: ASbGncuvLFC6TrU81B60xnyQ2l5mN6eSnIoff0dyJFU9KoyxNEmjHuj3HzronLTL1HT
- y2ElsY6uDN+nYQqxpCb7daNNd7g1tKZBcbxW/EbG0aX1FJdGdBi3ldwblf4rrBzZLTzbTf4vtlq
- BIo42X5yAj5VaTeWgsnvY9ytTK1Pgy3RVkAhgUkXxDnt+IM0Qh9zKuq7bOP6qcR+eR/IDuPNn3H
- hy1CXO2/LegivmHZ1eOH2GvZxylW4RGRDGRAh+Hbgcl0P3oQ9woeVlwjEbMAGL6MGZYT+ELIh04
- NngGkzgvXG6JI3N8nYxYnU2W5IB61QO4H9461vjD5CEEbt6D85aHDPEtIz5ufEC/Xzr7EIxRMLu
- FSE2RKs9NXwqOIeK4ed5uEZT6LuGBzjnLRb2kXChOLfvD4ntzAnEn7DQHbMwAdESHuU8+rYhc
-X-Google-Smtp-Source: AGHT+IFjFXvvqb59RVjZVs8PSLccxOE6ccsUXrudgefeE44V5UyNFjtIJexdbtBY1GGye27mxbtnug==
-X-Received: by 2002:a05:6000:2004:b0:3b7:882c:778 with SMTP id
- ffacd0b85a97d-3b79d4e38b5mr2767800f8f.17.1753997317444; 
- Thu, 31 Jul 2025 14:28:37 -0700 (PDT)
-Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3b79c467994sm3569009f8f.50.2025.07.31.14.28.36
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 31 Jul 2025 14:28:36 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>
-Cc: Guenter Roeck <linux@roeck-us.net>, Palmer Dabbelt <palmer@dabbelt.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Strahinja Jankovic <strahinja.p.jankovic@gmail.com>, qemu-riscv@nongnu.org,
- qemu-arm@nongnu.org, Bin Meng <bmeng.cn@gmail.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- Beniamino Galvani <b.galvani@gmail.com>,
- Ben Dooks <ben.dooks@codethink.co.uk>, Weiwei Li <liwei1518@gmail.com>,
- qemu-block@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH-for-10.1 05/11] hw/sd/sdcard: Implement SPI R2 return value
-Date: Thu, 31 Jul 2025 23:28:00 +0200
-Message-ID: <20250731212807.2706-6-philmd@linaro.org>
-X-Mailer: git-send-email 2.49.0
-In-Reply-To: <20250731212807.2706-1-philmd@linaro.org>
-References: <20250731212807.2706-1-philmd@linaro.org>
+ d=1e100.net; s=20230601; t=1753997826; x=1754602626;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=4lyau6g7ZS2X5dhFoC647e0I5kJk8G+2Y7odzEKMVBY=;
+ b=RpVyFiE/fTx2f69Mx5eyokvYU+GMyxgGpPDnyP5xLONNbI1rvyxo63N6YhCRsO9tfb
+ ETB5Oi613coA474DCfyD1sQIyOA6PwRng52u03BJn0bYd4Yj2kSx8zB+ASbIA3c/5Hay
+ 4YIjcFmRVhuuY8eKB8mTb+YvUyDYOt47Wziv2gmyGQ+/1B6HY+k0E8N5SMdyA4NaYz0c
+ 1zWgS/MsDk3Q08SAl67+DnlhFrc+QCH6BfurhIrYRvLuprO/nlj1cgrRbLUjecrBnCnG
+ 1i+bUezvIN0xDCLSZfp4AwaXp+flf7Bsb80wmutCuJsapY0qw5xZ+Lfho0ou8N1LNSN5
+ R4yA==
+X-Gm-Message-State: AOJu0Yzcwxc3BQ4q9QqlbRMtLaTqG904vBVgfS6tufvJ/4r6lGH3jpl1
+ hjQWtaN2sXk2NjroSLepmRTbjpdZmoSIZW5H7wmNEvRf0FHibiD4yPNCzx7Qul8B3+k=
+X-Gm-Gg: ASbGncvg3XtURpX8D7WZkr2h/c7VxHAsVVPOizgQU0FjfVkfTaAZJvC3+8F47GA2LoC
+ Oclf6mpuBAhoYzwTHuueAgY6CTr0qoFqzi97033CspNkq0gB0mg/ug8dl311Mxx2bb/rQZH0sv/
+ 7b7iahbuo2sQzCnkCfTlykOhcZSeFyfW5ICz1Tvfn7jxfDvjpB5//HEMu2QZQp0AGR+A4omk2g5
+ Gpvmv/yp2anrAdml6En/H6h0ZA+Lsu2PbtZCsfPL62SPMLNQ4/uKiTdm/+q88xjW3nbYkpzFL3H
+ e4wuXUhIFqOi4vm5dURzWDZtxi3Q6Y0tLfGIIbmQg8IzEe73kuV90erzYmqa32shhrZUWINlMer
+ xn5knNSb+WH8cyhHUFSx56dVnxT2ktGxd6eyvl6ZhH0hfIQ==
+X-Google-Smtp-Source: AGHT+IGuOKDF7frtcqHVLz9Q7TXc7FtHCMDBdUjiwRNjOXduin/2qLPwGEsSfeZA2ROEP4gc2IjmHA==
+X-Received: by 2002:a17:903:2345:b0:240:3f43:260 with SMTP id
+ d9443c01a7336-24200d2c79cmr51136015ad.17.1753997826190; 
+ Thu, 31 Jul 2025 14:37:06 -0700 (PDT)
+Received: from [192.168.1.87] ([38.41.223.211])
+ by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-241e899d21dsm26003825ad.139.2025.07.31.14.37.05
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 31 Jul 2025 14:37:05 -0700 (PDT)
+Message-ID: <509aa5b1-d2bf-4e07-b3f7-97366f4abcfc@linaro.org>
+Date: Thu, 31 Jul 2025 14:37:05 -0700
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42a.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 59/82] target/arm: Implement GCSPOPX
+Content-Language: en-US
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org
+References: <20250727080254.83840-1-richard.henderson@linaro.org>
+ <20250727080254.83840-60-richard.henderson@linaro.org>
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+In-Reply-To: <20250727080254.83840-60-richard.henderson@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::52f;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pg1-x52f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -110,115 +102,14 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-In SPI mode, R2 is a 2-byte value.
-Implement in spi_response_r2_make() and
-return SPI R2 in the SEND_STATUS commands.
+On 7/27/25 1:02 AM, Richard Henderson wrote:
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>   target/arm/cpregs.h            |  1 +
+>   target/arm/cpregs-gcs.c        |  3 +++
+>   target/arm/tcg/translate-a64.c | 37 ++++++++++++++++++++++++++++++++++
+>   3 files changed, 41 insertions(+)
 
-Reported-by: Guenter Roeck <linux@roeck-us.net>
-Fixes: 775616c3ae8 ("Partial SD card SPI mode support")
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- hw/sd/sd.c     | 36 +++++++++++++++++++++++++++++++++---
- hw/sd/ssi-sd.c |  3 ---
- 2 files changed, 33 insertions(+), 6 deletions(-)
-
-diff --git a/hw/sd/sd.c b/hw/sd/sd.c
-index f7c231d9f30..078bc5ef091 100644
---- a/hw/sd/sd.c
-+++ b/hw/sd/sd.c
-@@ -61,6 +61,7 @@
- typedef enum {
-     sd_r0 = 0,    /* no response */
-     sd_r1,        /* normal response command */
-+    spi_r2,       /* STATUS */
-     sd_r2_i,      /* CID register */
-     sd_r2_s,      /* CSD register */
-     sd_r3,        /* OCR register */
-@@ -247,6 +248,7 @@ static const char *sd_response_name(sd_rsp_type_t rsp)
-     static const char *response_name[] = {
-         [sd_r0]     = "RESP#0 (no response)",
-         [sd_r1]     = "RESP#1 (normal cmd)",
-+        [spi_r2]    = "RESP#2 (STATUS reg)",
-         [sd_r2_i]   = "RESP#2 (CID reg)",
-         [sd_r2_s]   = "RESP#2 (CSD reg)",
-         [sd_r3]     = "RESP#3 (OCR reg)",
-@@ -757,6 +759,24 @@ static size_t sd_response_r1_make(SDState *sd, uint8_t *response, size_t respsz)
-     return rsplen;
- }
- 
-+static size_t spi_response_r2_make(SDState *sd, uint8_t *resp, size_t respsz)
-+{
-+    sd_response_r1_make(sd, resp, respsz);
-+
-+    assert(respsz >= 2);
-+    resp[1]  = FIELD_EX32(sd->card_status, CSR, CARD_IS_LOCKED) << 0;
-+    resp[1] |= (FIELD_EX32(sd->card_status, CSR, LOCK_UNLOCK_FAILED)
-+                || FIELD_EX32(sd->card_status, CSR, WP_ERASE_SKIP)) << 1;
-+    resp[1] |= FIELD_EX32(sd->card_status, CSR, ERROR) << 2;
-+    resp[1] |= FIELD_EX32(sd->card_status, CSR, CC_ERROR) << 3;
-+    resp[1] |= FIELD_EX32(sd->card_status, CSR, CARD_ECC_FAILED) << 4;
-+    resp[1] |= FIELD_EX32(sd->card_status, CSR, WP_VIOLATION) << 5;
-+    resp[1] |= FIELD_EX32(sd->card_status, CSR, ERASE_PARAM) << 6;
-+    resp[1] |= FIELD_EX32(sd->card_status, CSR, OUT_OF_RANGE) << 7;
-+
-+    return 2;
-+}
-+
- static size_t sd_response_r3_make(SDState *sd, uint8_t *response, size_t respsz)
- {
-     size_t rsplen = 4;
-@@ -1633,7 +1653,7 @@ static sd_rsp_type_t sd_cmd_SEND_STATUS(SDState *sd, SDRequest req)
-     }
- 
-     if (sd_is_spi(sd)) {
--        return sd_r2_s;
-+        return spi_r2;
-     }
- 
-     return sd_req_rca_same(sd, req) ? sd_r1 : sd_r0;
-@@ -1947,8 +1967,14 @@ static sd_rsp_type_t sd_acmd_SET_BUS_WIDTH(SDState *sd, SDRequest req)
- /* ACMD13 */
- static sd_rsp_type_t sd_acmd_SD_STATUS(SDState *sd, SDRequest req)
- {
--    return sd_cmd_to_sendingdata(sd, req, 0,
--                                 sd->sd_status, sizeof(sd->sd_status));
-+    sd_rsp_type_t rsp;
-+
-+    rsp = sd_cmd_to_sendingdata(sd, req, 0,
-+                                sd->sd_status, sizeof(sd->sd_status));
-+    if (sd_is_spi(sd) && rsp != sd_illegal) {
-+        return spi_r2;
-+    }
-+    return rsp;
- }
- 
- /* ACMD22 */
-@@ -2251,6 +2277,10 @@ send_response:
-         rsplen = sd_response_r1_make(sd, response, respsz);
-         break;
- 
-+    case spi_r2:
-+        rsplen = spi_response_r2_make(sd, response, respsz);
-+        break;
-+
-     case sd_r2_i:
-         assert(respsz >= 16);
-         memcpy(response, sd->cid, sizeof(sd->cid));
-diff --git a/hw/sd/ssi-sd.c b/hw/sd/ssi-sd.c
-index 79b6d34a489..ace155186cf 100644
---- a/hw/sd/ssi-sd.c
-+++ b/hw/sd/ssi-sd.c
-@@ -158,9 +158,6 @@ static uint32_t ssi_sd_transfer(SSIPeripheral *dev, uint32_t val)
-                                          longresp, sizeof(longresp));
-             DPRINTF("CMD%d arg 0x%08x = %d\n", s->cmd, request.arg, s->arglen);
-             assert(s->arglen > 0);
--                /* CMD13 returns a 2-byte statuse work. Other commands
--                   only return the first byte.  */
--                s->arglen = (s->cmd == 13) ? 2 : 1;
-             memcpy(s->response, longresp, s->arglen);
- 
-             /* handle R1b (busy signal) */
--- 
-2.49.0
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 
 

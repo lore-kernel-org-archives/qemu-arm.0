@@ -4,66 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D024C87FCA
-	for <qemu-arm@archiver.kernel.org>; Thu, 31 Jul 2025 21:42:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC6F2C87FD3
+	for <qemu-arm@archiver.kernel.org>; Thu, 31 Jul 2025 21:43:30 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uhb1x-0005su-P7; Thu, 31 Jul 2025 17:41:41 -0400
+	id 1uhb3f-0002u4-FX; Thu, 31 Jul 2025 17:43:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uhapI-0000r3-6L
- for qemu-arm@nongnu.org; Thu, 31 Jul 2025 17:28:37 -0400
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uhapy-0002jy-3R
+ for qemu-arm@nongnu.org; Thu, 31 Jul 2025 17:29:18 -0400
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uhapG-0007ub-2S
- for qemu-arm@nongnu.org; Thu, 31 Jul 2025 17:28:35 -0400
-Received: by mail-wr1-x433.google.com with SMTP id
- ffacd0b85a97d-3b77b8750acso855821f8f.0
- for <qemu-arm@nongnu.org>; Thu, 31 Jul 2025 14:28:33 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uhapu-00081w-Hq
+ for qemu-arm@nongnu.org; Thu, 31 Jul 2025 17:29:17 -0400
+Received: by mail-wm1-x331.google.com with SMTP id
+ 5b1f17b1804b1-4560cdf235cso7716485e9.1
+ for <qemu-arm@nongnu.org>; Thu, 31 Jul 2025 14:29:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1753997312; x=1754602112; darn=nongnu.org;
+ d=linaro.org; s=google; t=1753997352; x=1754602152; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=6t4dl7I3YR65XFWp3ATfpWTUnCa6FCBH5piCnGFOEbA=;
- b=hcLRFd7LG5LdT8pYLlh8Duhk5IWGe4LDY6uzAvrL2ThIoWDPIslUof7ZGbWNFRmJHt
- hZDBS267Wo0+/wXx2hOEygGggy5gthro0lM9DDnL1MShaHfcik8bs/Ks19zlxC3OYjOM
- QzxVYwwKqwUnJ6BYmYEFo1u3gDpjyd6SsAd7DDqOjziVvzOeBFaFf3jISLzLfFkvgWJD
- yT/pXd1vLOhOlZQ/AZnSPGzweSEVn3lIh7AgVrZcr3AD/bTzhgJEg88XaUGnwvFCUvOs
- mBCR4+bjc2dWbvDiC7u3ciW3ttNloEl+W1LShTaMXFmW0ZVkebZzRmdz4vWJ90fCscLX
- 0DEA==
+ bh=G2FIRUMDpl11/+6iqYUzz4llQoL/Y4stMiRg59uk/HY=;
+ b=nI5aWwBbgS4/3jj4QclFp4DPnG9nlqDlDl4PptZzoX5cPAAnxU1y1JP9wIRQhAVy96
+ 0di5d87KF7tQ9z9CssVTygRZi6Wi1yaFtRPHKzMAKGUJIUOf7tC3lzfGkz3Ij6fMC7v+
+ lpOAnDYrULItqi1NHfjVg2ll+MPE5hS8WenZkauvblvqd10j+e444zAZqFqYz/jNuELc
+ UUtFgDg+p+XWdUJS0CQAEN5sxayI1dvz89+pHAm/C7CCBH/Wlbh910YTATaZ/bPY3Jff
+ UobuwfoP5soClhSusZHt2zskv5b/QTH/h0bFboV2LhyRW7klZgW+R+kieZwxjUAb5z8e
+ RWoA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1753997312; x=1754602112;
+ d=1e100.net; s=20230601; t=1753997352; x=1754602152;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=6t4dl7I3YR65XFWp3ATfpWTUnCa6FCBH5piCnGFOEbA=;
- b=D6CmwS6X+b5xQkZKhZ9voOq1mizErTEcvv1fVpbmn7RlJTcKC9AFGQ31T8LiqkVbt4
- Fpsc/346yBfpPnmBp+FzXfO66Anj9juDhNlZbYMKwoHBnoEmaPBOQYq2OI1T2oRKHFv3
- Ou6T9Z4HJg907RlS24eUp5TGq+ooUrQqObV8lW30hpiBHMQ3lwHtSjR9eovSdmJRSkHC
- 5WVoYrWyoHQjg+ZCKIx7/taddTiUJu3FvhlKMALMPRHZsVFFRATcXCiDAbM94UdY/Zwj
- /Ukmazi91VlMLoOiPOPih2gY1XrnrygPDYZOywlF2/mSXOqX9HkwVFKQVE54e0+28Ybu
- 0omQ==
+ bh=G2FIRUMDpl11/+6iqYUzz4llQoL/Y4stMiRg59uk/HY=;
+ b=lWnMV/TSzHjeZbSNgJMsxc3UqFomXib/+DczBAS+cJrt5UvtaMaE3UUHuwYqJu2mi3
+ rtEUWJR5pUuCjlJZxuvk3Bprh/LsoqLaNbvAK2J+NAK+PIaPz73EXXHgr1r0LOd9NHe+
+ gzyH9ysP87DZ/NGl2haG0YByhA5tXL6BtwDuaKC0uaCWGYwNBPr3s1IK8PQBBoNGbxXU
+ OquNgkcztn+DcKl6x+N8XuJncIMnk74KxWTew/A2lpyH0TOshkCG2iiFmMEmKlTrcEMz
+ s3BnTQO22N76oGISMqWH3P6jVyEmLNdlmaArdnm+ie3aZzCwEN1uxK84uXRnF7p4t3nR
+ Gu8A==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWP5ZTxuaMdL6//A9EWunOevyakqyuVXkZbDawW1vKw8YTsLK6xd76WGRa/w7lEyQG4VcDmqf6Cvw==@nongnu.org
-X-Gm-Message-State: AOJu0YzWC7Jb1bUaaov7jLrot8FgCBHbOg+T9JkKMZr8eqUQ8x677E3T
- trF5dbgKXKFbNte29XdyzyshPiIRTBgkXSnqMOkvv7xXbv3BqiSwwOw4aHWS6yQ2kHc=
-X-Gm-Gg: ASbGncuWXtvdo5o0EeZ20ybauNe1sz/92MwJFPCZ5YEV2BS7VSrM4l2kK1tnspA3Ol0
- CWztyOj8L+dEpgPbRvE8sgxZ4IY20gpyWy15pP470Pxtx91x9CGunG5j6Wh0uYpHqrZAzGzFNc9
- RkMO4+wE3xr1Q7Joz0Ej1BfH4Cemcsb2E+SmbbdDx8w2rdCUM9Ar0t0Tigs/H9z8vIq8vSPtH9b
- M+vRa3wxHr/O5FfkNLNePeNP0al4ASjSMjXvaq27XhGt+rPMr0XKiz90zvYX3O+qUib9Et0WLRW
- vZU5SkB7Z1FughSdZT3WoZucLpXE6PMq+rEQ+w0JFcqRq9gJb9UO3trp4t+EJ/8z3vVSR2N9XXj
- jxtbn+GVycqqJ7G28NlJoHuamFLIaAyt3x/kcSA5TeUHwqOyqspRolL0NliLWvaZvHeXtHkEA
-X-Google-Smtp-Source: AGHT+IGM+QiNhY0H45ZaQRrmD89B5BwUhnmLFBeQd7WGDM/NkhjCE7ccuf/oqIrRdRrJt9Ep5Af0Ow==
-X-Received: by 2002:a5d:5f52:0:b0:3b7:8ed8:1c80 with SMTP id
- ffacd0b85a97d-3b79d41deaemr2663579f8f.3.1753997312008; 
- Thu, 31 Jul 2025 14:28:32 -0700 (PDT)
+ AJvYcCXF3H4Hj0OGimavcMZwfJQfx/S8pD6WBWXJga0sFRHgMUIoEB8L+1sq+y1KgIDdulGvpLKtaYcYJg==@nongnu.org
+X-Gm-Message-State: AOJu0Yy6P+OUQ124Nl6cWg6FdgINZzA0OD8s9romaoIx9DVOKn8bhBty
+ QmcW/ftE0dvqOfEzyFxszI9bj+MwDXIuFPhTo9rxzb1apdeDCF7SLWwHDYrwNmftj88=
+X-Gm-Gg: ASbGncsmjR9lRgQqXsMj1sw516nlBpge/UEC3cBX/1xS8S7nWZx7oCTB72b/sbuCGpP
+ 3+KJHeUt+RSjPj2FpH3gOGo9gPxbqDlqFa8jmWevakDFRjATmr7un95iJJI+N/BJAtzDppN731D
+ bnI190U4CjuW79OTLOn88MVP9mB2tz+5pUpOFF545yvAm5ZJkbchOvF6s8vvw7iDHIvTK9cTD80
+ 1RhXnH0Di6cRkTVsdYIvkteSOPcC4Ls/Peyh1iccnqFz/n1Rq/i4u9BPNp+ESqupRvc03EZsRts
+ s0Dmy4xoTGHtbbiL6oItYjZLVxbIIdrTs7AwrPGObhtgmKfvuutEpcxU1r11fUYrgpfVOKmsdYe
+ yDONarYjjJc4KWa5U+86dNy7s46gnrBiYkX6JI6P75ZhBEH/fiS7AKovdDQdeqXnl2q4NF9fYKG
+ VSJNTCAoY=
+X-Google-Smtp-Source: AGHT+IGSxKGjIkWomQpPZ+Q2oiTHoCOtsF8wM+sVIizuyr27pSTSNaZMdLadjcbbAE+YlD76mrFYaQ==
+X-Received: by 2002:a05:600c:1c8d:b0:456:496:2100 with SMTP id
+ 5b1f17b1804b1-45892ce7477mr79287005e9.31.1753997352454; 
+ Thu, 31 Jul 2025 14:29:12 -0700 (PDT)
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3b79c4534b3sm3532176f8f.47.2025.07.31.14.28.30
+ 5b1f17b1804b1-4589edfc930sm40383785e9.8.2025.07.31.14.29.09
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 31 Jul 2025 14:28:31 -0700 (PDT)
+ Thu, 31 Jul 2025 14:29:10 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org,
 	Peter Maydell <peter.maydell@linaro.org>
@@ -76,19 +77,20 @@ Cc: Guenter Roeck <linux@roeck-us.net>, Palmer Dabbelt <palmer@dabbelt.com>,
  Beniamino Galvani <b.galvani@gmail.com>,
  Ben Dooks <ben.dooks@codethink.co.uk>, Weiwei Li <liwei1518@gmail.com>,
  qemu-block@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH-for-10.1 04/11] hw/sd/sdcard: Fill SPI response bits in card
- code
-Date: Thu, 31 Jul 2025 23:27:59 +0200
-Message-ID: <20250731212807.2706-5-philmd@linaro.org>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Alistair Francis <Alistair.Francis@wdc.com>
+Subject: [PATCH-for-10.1 11/11] tests/functional: Test SD cards in SPI mode
+ (using sifive_u machine)
+Date: Thu, 31 Jul 2025 23:28:06 +0200
+Message-ID: <20250731212807.2706-12-philmd@linaro.org>
 X-Mailer: git-send-email 2.49.0
 In-Reply-To: <20250731212807.2706-1-philmd@linaro.org>
 References: <20250731212807.2706-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::433;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x433.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::331;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x331.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -111,202 +113,104 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-ssi-sd.c contains the SPI link layer adaptation,
-while sd.c contains all the SD card internal details.
+Add a test which uses the sifive_u machine to boot a Linux
+kernel from a SD card connected via a SPI interface.
 
-We already handle the response values in sd.c, but
-missed the SPI case. Complete them (fill R1, prepend
-R1 in R3/R7 and always return something in SPI mode).
-Remove all the duplication in ssi-sd.c.
+Inspired from the command provided in:
+- https://lore.kernel.org/qemu-devel/94b2c5bf-53d0-4c74-8264-f3021916f38c@roeck-us.net/
+- https://lore.kernel.org/qemu-devel/840016d0-0d49-4ef4-8372-b62b3bcd0ac6@codethink.co.uk/
 
+Inspired-by: Guenter Roeck <linux@roeck-us.net>
+Inspired-by: Ben Dooks <ben.dooks@codethink.co.uk>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/sd/sd.c     | 31 +++++++++++++++---
- hw/sd/ssi-sd.c | 87 ++++----------------------------------------------
- 2 files changed, 34 insertions(+), 84 deletions(-)
+ MAINTAINERS                               |  1 +
+ tests/functional/meson.build              |  1 +
+ tests/functional/test_riscv64_sifive_u.py | 51 +++++++++++++++++++++++
+ 3 files changed, 53 insertions(+)
+ create mode 100755 tests/functional/test_riscv64_sifive_u.py
 
-diff --git a/hw/sd/sd.c b/hw/sd/sd.c
-index 22bdb4ca3ab..f7c231d9f30 100644
---- a/hw/sd/sd.c
-+++ b/hw/sd/sd.c
-@@ -731,10 +731,25 @@ static int sd_req_crc_validate(SDRequest *req)
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 069d77f2f80..25ee0eb3b0d 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -1695,6 +1695,7 @@ S: Supported
+ F: docs/system/riscv/sifive_u.rst
+ F: hw/*/*sifive*.c
+ F: include/hw/*/*sifive*.h
++F: tests/functional/test_riscv64_sifive_u.py
  
- static size_t sd_response_r1_make(SDState *sd, uint8_t *response, size_t respsz)
- {
--    size_t rsplen = 4;
-+    size_t rsplen;
+ AMD Microblaze-V Generic Board
+ M: Sai Pavan Boddu <sai.pavan.boddu@amd.com>
+diff --git a/tests/functional/meson.build b/tests/functional/meson.build
+index ecf965adc6c..311c6f18065 100644
+--- a/tests/functional/meson.build
++++ b/tests/functional/meson.build
+@@ -274,6 +274,7 @@ tests_riscv64_system_quick = [
+ ]
  
--    assert(respsz >= 4);
--    stl_be_p(response, sd->card_status);
-+    if (sd_is_spi(sd)) {
-+        assert(respsz >= 1);
-+        response[0] = sd->state == sd_idle_state
-+                   && !FIELD_EX32(sd->ocr, OCR, CARD_POWER_UP);
-+        response[0] |= FIELD_EX32(sd->card_status, CSR, ERASE_RESET) << 1;
-+        response[0] |= FIELD_EX32(sd->card_status, CSR, ILLEGAL_COMMAND) << 2;
-+        response[0] |= FIELD_EX32(sd->card_status, CSR, COM_CRC_ERROR) << 3;
-+        response[0] |= FIELD_EX32(sd->card_status, CSR, ERASE_SEQ_ERROR) << 4;
-+        response[0] |= FIELD_EX32(sd->card_status, CSR, ADDRESS_ERROR) << 5;
-+        response[0] |= FIELD_EX32(sd->card_status, CSR, BLOCK_LEN_ERROR) << 6;
-+        response[0] |= 0 << 7;
-+        rsplen = 1;
-+    } else {
-+        assert(respsz >= 4);
-+        stl_be_p(response, sd->card_status);
-+        rsplen = 4;
-+    }
+ tests_riscv64_system_thorough = [
++  'riscv64_sifive_u',
+   'riscv64_tuxrun',
+ ]
  
-     /* Clear the "clear on read" status bits */
-     sd->card_status &= ~CARD_STATUS_C;
-@@ -746,6 +761,10 @@ static size_t sd_response_r3_make(SDState *sd, uint8_t *response, size_t respsz)
- {
-     size_t rsplen = 4;
- 
-+    if (sd_is_spi(sd)) {
-+        rsplen += sd_response_r1_make(sd, response, respsz);
-+        response++;
-+    }
-     assert(respsz >= rsplen);
-     stl_be_p(response, sd->ocr & ACMD41_R3_MASK);
- 
-@@ -771,6 +790,10 @@ static size_t sd_response_r7_make(SDState *sd, uint8_t *response, size_t respsz)
- {
-     size_t rsplen = 4;
- 
-+    if (sd_is_spi(sd)) {
-+        rsplen += sd_response_r1_make(sd, response, respsz);
-+        response++;
-+    }
-     assert(respsz >= rsplen);
-     stl_be_p(response, sd->vhs);
- 
-@@ -2261,7 +2284,7 @@ send_response:
-         sd->data_offset = 0;
-         /* fall-through */
-     case sd_illegal:
--        rsplen = 0;
-+        rsplen = sd_is_spi(sd) ? sd_response_r1_make(sd, response, respsz) : 0;
-         break;
-     default:
-         g_assert_not_reached();
-diff --git a/hw/sd/ssi-sd.c b/hw/sd/ssi-sd.c
-index 3aba0e08ffe..79b6d34a489 100644
---- a/hw/sd/ssi-sd.c
-+++ b/hw/sd/ssi-sd.c
-@@ -70,23 +70,6 @@ struct ssi_sd_state {
- #define TYPE_SSI_SD "ssi-sd"
- OBJECT_DECLARE_SIMPLE_TYPE(ssi_sd_state, SSI_SD)
- 
--/* State word bits.  */
--#define SSI_SDR_LOCKED          0x0001
--#define SSI_SDR_WP_ERASE        0x0002
--#define SSI_SDR_ERROR           0x0004
--#define SSI_SDR_CC_ERROR        0x0008
--#define SSI_SDR_ECC_FAILED      0x0010
--#define SSI_SDR_WP_VIOLATION    0x0020
--#define SSI_SDR_ERASE_PARAM     0x0040
--#define SSI_SDR_OUT_OF_RANGE    0x0080
--#define SSI_SDR_IDLE            0x0100
--#define SSI_SDR_ERASE_RESET     0x0200
--#define SSI_SDR_ILLEGAL_COMMAND 0x0400
--#define SSI_SDR_COM_CRC_ERROR   0x0800
--#define SSI_SDR_ERASE_SEQ_ERROR 0x1000
--#define SSI_SDR_ADDRESS_ERROR   0x2000
--#define SSI_SDR_PARAMETER_ERROR 0x4000
--
- /* multiple block write */
- #define SSI_TOKEN_MULTI_WRITE   0xfc
- /* terminate multiple block write */
-@@ -104,7 +87,7 @@ static uint32_t ssi_sd_transfer(SSIPeripheral *dev, uint32_t val)
- {
-     ssi_sd_state *s = SSI_SD(dev);
-     SDRequest request;
--    uint8_t longresp[16];
-+    uint8_t longresp[5];
- 
-     /*
-      * Special case: allow CMD12 (STOP TRANSMISSION) while reading data.
-@@ -171,74 +154,18 @@ static uint32_t ssi_sd_transfer(SSIPeripheral *dev, uint32_t val)
-             /* FIXME: Check CRC.  */
-             request.cmd = s->cmd;
-             request.arg = ldl_be_p(s->cmdarg);
--            DPRINTF("CMD%d arg 0x%08x\n", s->cmd, request.arg);
-             s->arglen = sdbus_do_command(&s->sdbus, &request,
-                                          longresp, sizeof(longresp));
--            if (s->arglen == 0) {
--                s->arglen = 1;
--                s->response[0] = 4;
--                DPRINTF("SD command failed\n");
--            } else if (s->cmd == 8 || s->cmd == 58) {
--                /* CMD8/CMD58 returns R3/R7 response */
--                DPRINTF("Returned R3/R7\n");
--                s->arglen = 5;
--                s->response[0] = 1;
--                memcpy(&s->response[1], longresp, 4);
--            } else if (s->arglen != 4) {
--                BADF("Unexpected response to cmd %d\n", s->cmd);
--                /* Illegal command is about as near as we can get.  */
--                s->arglen = 1;
--                s->response[0] = 4;
--            } else {
--                /* All other commands return status.  */
--                uint32_t cardstatus;
--                uint16_t status;
-+            DPRINTF("CMD%d arg 0x%08x = %d\n", s->cmd, request.arg, s->arglen);
-+            assert(s->arglen > 0);
-                 /* CMD13 returns a 2-byte statuse work. Other commands
-                    only return the first byte.  */
-                 s->arglen = (s->cmd == 13) ? 2 : 1;
-+            memcpy(s->response, longresp, s->arglen);
- 
--                /* handle R1b */
--                if (s->cmd == 28 || s->cmd == 29 || s->cmd == 38) {
--                    s->stopping = 1;
--                }
--
--                cardstatus = ldl_be_p(longresp);
--                status = 0;
--                if (((cardstatus >> 9) & 0xf) < 4)
--                    status |= SSI_SDR_IDLE;
--                if (cardstatus & ERASE_RESET)
--                    status |= SSI_SDR_ERASE_RESET;
--                if (cardstatus & ILLEGAL_COMMAND)
--                    status |= SSI_SDR_ILLEGAL_COMMAND;
--                if (cardstatus & COM_CRC_ERROR)
--                    status |= SSI_SDR_COM_CRC_ERROR;
--                if (cardstatus & ERASE_SEQ_ERROR)
--                    status |= SSI_SDR_ERASE_SEQ_ERROR;
--                if (cardstatus & ADDRESS_ERROR)
--                    status |= SSI_SDR_ADDRESS_ERROR;
--                if (cardstatus & CARD_IS_LOCKED)
--                    status |= SSI_SDR_LOCKED;
--                if (cardstatus & (LOCK_UNLOCK_FAILED | WP_ERASE_SKIP))
--                    status |= SSI_SDR_WP_ERASE;
--                if (cardstatus & SD_ERROR)
--                    status |= SSI_SDR_ERROR;
--                if (cardstatus & CC_ERROR)
--                    status |= SSI_SDR_CC_ERROR;
--                if (cardstatus & CARD_ECC_FAILED)
--                    status |= SSI_SDR_ECC_FAILED;
--                if (cardstatus & WP_VIOLATION)
--                    status |= SSI_SDR_WP_VIOLATION;
--                if (cardstatus & ERASE_PARAM)
--                    status |= SSI_SDR_ERASE_PARAM;
--                if (cardstatus & (OUT_OF_RANGE | CID_CSD_OVERWRITE))
--                    status |= SSI_SDR_OUT_OF_RANGE;
--                /* ??? Don't know what Parameter Error really means, so
--                   assume it's set if the second byte is nonzero.  */
--                if (status & 0xff)
--                    status |= SSI_SDR_PARAMETER_ERROR;
--                s->response[0] = status >> 8;
--                s->response[1] = status;
--                DPRINTF("Card status 0x%02x\n", status);
-+            /* handle R1b (busy signal) */
-+            if (s->cmd == 28 || s->cmd == 29 || s->cmd == 38) {
-+                s->stopping = 1;
-             }
-             s->mode = SSI_SD_PREP_RESP;
-             s->response_pos = 0;
+diff --git a/tests/functional/test_riscv64_sifive_u.py b/tests/functional/test_riscv64_sifive_u.py
+new file mode 100755
+index 00000000000..dc4cb8a4a96
+--- /dev/null
++++ b/tests/functional/test_riscv64_sifive_u.py
+@@ -0,0 +1,51 @@
++#!/usr/bin/env python3
++#
++# Functional test that boots a Linux kernel on a Sifive U machine
++# and checks the console
++#
++# Copyright (c) Linaro Ltd.
++#
++# Author:
++#  Philippe Mathieu-Daudé
++#
++# SPDX-License-Identifier: GPL-2.0-or-later
++
++import os
++
++from qemu_test import Asset, LinuxKernelTest
++from qemu_test import skipIfMissingCommands
++
++
++class SifiveU(LinuxKernelTest):
++
++    ASSET_KERNEL = Asset(
++        'https://storage.tuxboot.com/buildroot/20241119/riscv64/Image',
++        '2bd8132a3bf21570290042324fff48c987f42f2a00c08de979f43f0662ebadba')
++    ASSET_ROOTFS = Asset(
++        ('https://github.com/groeck/linux-build-test/raw/'
++         '9819da19e6eef291686fdd7b029ea00e764dc62f/rootfs/riscv64/'
++         'rootfs.ext2.gz'),
++        'b6ed95610310b7956f9bf20c4c9c0c05fea647900df441da9dfe767d24e8b28b')
++
++    def test_riscv64_sifive_u_mmc_spi(self):
++        self.set_machine('sifive_u')
++        kernel_path = self.ASSET_KERNEL.fetch()
++        rootfs_path = self.uncompress(self.ASSET_ROOTFS)
++
++        self.vm.set_console()
++        kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
++                               'root=/dev/mmcblk0 rootwait '
++                               'earlycon=sbi console=ttySIF0 '
++                               'panic=-1 noreboot')
++        self.vm.add_args('-kernel', kernel_path,
++                         '-drive', f'file={rootfs_path},if=sd,format=raw',
++                         '-append', kernel_command_line,
++                         '-no-reboot')
++        self.vm.launch()
++        self.wait_for_console_pattern('Boot successful.')
++
++        os.remove(rootfs_path)
++
++
++if __name__ == '__main__':
++    LinuxKernelTest.main()
 -- 
 2.49.0
 

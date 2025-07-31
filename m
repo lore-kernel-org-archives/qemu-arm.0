@@ -4,96 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0544FC87FD2
-	for <qemu-arm@archiver.kernel.org>; Thu, 31 Jul 2025 22:27:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 091F8C87FD3
+	for <qemu-arm@archiver.kernel.org>; Thu, 31 Jul 2025 23:14:10 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uhbjb-000398-2f; Thu, 31 Jul 2025 18:26:47 -0400
+	id 1uhcTL-0001H4-JT; Thu, 31 Jul 2025 19:14:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1uhbhI-0000jt-77
- for qemu-arm@nongnu.org; Thu, 31 Jul 2025 18:24:24 -0400
-Received: from mail-pf1-x435.google.com ([2607:f8b0:4864:20::435])
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1uhcTK-0001FI-Ba
+ for qemu-arm@nongnu.org; Thu, 31 Jul 2025 19:14:02 -0400
+Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1uhbhA-0007sm-0T
- for qemu-arm@nongnu.org; Thu, 31 Jul 2025 18:24:22 -0400
-Received: by mail-pf1-x435.google.com with SMTP id
- d2e1a72fcca58-76bddb92dc1so66008b3a.0
- for <qemu-arm@nongnu.org>; Thu, 31 Jul 2025 15:24:12 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1uhcTI-0006rq-Jq
+ for qemu-arm@nongnu.org; Thu, 31 Jul 2025 19:14:02 -0400
+Received: by mail-pl1-x633.google.com with SMTP id
+ d9443c01a7336-240b3335c20so7028025ad.3
+ for <qemu-arm@nongnu.org>; Thu, 31 Jul 2025 16:13:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1754000651; x=1754605451; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
+ d=linaro.org; s=google; t=1754003639; x=1754608439; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=h1XTAZmQ9Z9hWX/51etGJMmVHUV3OyDs+oeAAYHV6CY=;
- b=rPJ42wvnp0HALdi4DrNoTBnIqnnqQZCZ7XfzlIdxihA1TpKYU0UkowlSZ5jCAdnHZ0
- Kd4QWYZ2IYEwJHOxN0Ge1G6lcYXSjvc6aM4dtG750H0sPx0HpAj4OFMTCIf12yHrhdNy
- OvAAfTl45T/NfUIr3l5VuMX9XKCn3XEBOEhK88FLfVOZdarLfXU2n2K75ahUM2ELJo9H
- 0lMnLuBj/gGpK8EDaxHwZUjrZTB/+mEtN12YFOrkcqjhL6TR2IBPO9j7XXKNCFjQq3To
- TyzyO7EdCs+zzqDUDtPzbxQRF0HJc+smSLHSc87RsNSpsS1nbaSckY3/+Qrf4Mz7jwfv
- VWpw==
+ bh=cYPTbDjzEaWCey+wtOHfHEESLmZnJDv+3cu464DH5HI=;
+ b=rsxNZNb7TSWHIyfPauqQhyLejWWLoS1IVtKl5MxEJl001AiFvRcxPzbzBtzCdGvAYw
+ auvekX1SozHzLAKDEqneF5eKTBkXSHtmUonO4ByjmCHCa1PNhQ/aGntswCM2hCzrQRT6
+ 6aQqLmeEmdMlgjboUCeO4X1+7Xl8VBfLDGGDM9xOXwQcfn+4y8/fPEHTZB7tECQwLAlr
+ wwn2qCA0GtLECfvC261KIdCUvmD/otKBL/YeE08HWgQEhE3m0jueMYydN+fxGKfDe7HA
+ HCSIHTZE/VHHPK50yvOADo6FCBnXPNqnqn2rNrN/QtSh2pcaitTdObHsJ/7gGk/tXoRC
+ 55DA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1754000651; x=1754605451;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
+ d=1e100.net; s=20230601; t=1754003639; x=1754608439;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=h1XTAZmQ9Z9hWX/51etGJMmVHUV3OyDs+oeAAYHV6CY=;
- b=lsuwffpqLT3ZKTNPNZgEFSZkHkvR0I+gKaL6vzGqTHzME4Ri/GmqpkTKu5AuZ/nOJQ
- /O+RuDBh8iRatO0IR9IExbuuskgUR3o/UQR7EMf5VnUgsFHC2vyzblDsfLInkuNr/X1l
- gtqwM8k63q2qsPIl1ati3pWwU+yNC1lU2fwFVFKbN4a9/G06HH/2FefKrInJl4opHILH
- d/C4zmpseV6MVaaGg3YQ8e26TweNZ8T8L+YgtMG2zRfm/bx0/MndF/hhpW6Bt9JCveUG
- VHXEDuaqdydsgYarN/haZeOJ1saNpV54BiDgvG/zwIvUsNQZVFVSJGpohuRNhfgXB0tP
- H3vA==
+ bh=cYPTbDjzEaWCey+wtOHfHEESLmZnJDv+3cu464DH5HI=;
+ b=GiL3oyyvHpXswSgZZjSKln9lB321qm6ACarSyiVvTrhfcF6uzqgXrcAQZftr1ENlbE
+ JTIqRCEd9wH7Wn6PYPhjFcspF7AitJePYoIkPINx2+JfsJXHa7kLMdgpLrPt49Wgt37A
+ xIPyTtDNJarvObgveaef5F/cvXNHn7yv9SZOthqghbhfiiZQYBZaZ4ajcvw9EJc6uu04
+ /0u8Cc/W0ZhPuxgQCya99f9plRffwwm+xyk5gyCRJIV9xqWUSuuuyV4Yiozmr+jT5biF
+ SCTHmoWLWvGGKWbVFn+2HfbAcaWn4+59635IfqkIvPhpXBq8iaYzd344g7u2SwS9W4tn
+ KQzQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUYv4YGZuNXnyg8K8bw519G14+NZwRfFAG7RNMxoQrQC+y52XyzKM+sTiufDMkgy00+fKOJ6ELvaA==@nongnu.org
-X-Gm-Message-State: AOJu0YysJeFLVbzhVQeqF2Hq/iRQSD7q99fDrKM4exoVcyZxfM7V/ZP0
- YtuROYa9CVxGIuANgozc5YEU4GMGOUE4hPYzGtzalf96xbbJuwuljUCtXZveFPT2rU0=
-X-Gm-Gg: ASbGncuoz7p/hWlAxsF/72dH/xkUwvcSNU0UgVggz2Zd+lTG1rXQzJ/ttdFyTPlxKez
- 0++dUoXKbFJ8oNIXfgOB69SoaXZaGXZrFqkrSV5oLcu786xAy1o9C34vV5K58AdPoRyePAK3R2o
- rQMmGmfleYFfaa9j8SfUYQ7YPOVnqilzO3miIamtzO1BbXDBiwgcdV/qKP1fE1BFWW9RG77HdPa
- 0wFsuzYUhNTxA9xaWEK5ZzAU6MCKnoHbLaVDSphH72dAvuAPQzNfhczC/+XV/heB4ordpCz4zoo
- GJQMF8Kt/lSXCKyIhIt0C+7csPZpo/428ivQnyPlIXKNqnzx6RoCA+PHfrPldR8vhNC7fCyMhYk
- zi3gl14X54hF3GCrTyMXcpOY6eAacl4AdNQY=
-X-Google-Smtp-Source: AGHT+IHcOvx4GGDL5U1HJR9YfOssv4B27HQuzOzHPs7a29XQxQBdfVwWMbD2S/tYUm061H2jTHCM1A==
-X-Received: by 2002:a05:6a00:1954:b0:76b:d791:42e5 with SMTP id
- d2e1a72fcca58-76bd79148e2mr2692816b3a.17.1754000651217; 
- Thu, 31 Jul 2025 15:24:11 -0700 (PDT)
-Received: from [192.168.1.87] ([38.41.223.211])
+ AJvYcCVVruWO7aK8m+fXbPlBvbvo1b41Fj2Spr1YXA+4O9kcp7GIuj8fvHL6WctmrP9/k6QMt0nnKUfM2A==@nongnu.org
+X-Gm-Message-State: AOJu0Yxpxbug+CjVnf0yJ+nIVoHaQHJbxRJCbxTz3tkyIUyiMJBBg+kF
+ eFLKdNGfsJ9cgUIxSYzosbEzt6NHlcPhUq1FoMzGcxAA05DzkSKh0r4BdIjPSAmb68U=
+X-Gm-Gg: ASbGncsA6bEj39fi0BYEQb8rX1jSO4isdQuIuEBQXin3lNvBcsl4cpq9EZQkNizHPGd
+ tJQo1WwsVipgEAgtcImTFsnTycs50TKobzDEoe4v5GJs1hPuq1tOEvbNVf7yoQ4vSNm/AEoH1Or
+ 9wzdvb9Osxpl97BI/vx7Yo4ha7FkmgJsS4qsuTBDFY/i7L878ZSie8B+JlpOnMfA03UgWxRZZoJ
+ fCplpIzoB2XvlHj+CvJu5amBsdiCVJQIl78mUKTtBRb9E3j81gSQOoJZ6cMlaOOBY+wXcKx7eHL
+ wse2CRNRIPZsCs7SnUi+WoRkPNZMvolgbnO+XxrRbwxt77YiNLp8oT+6TxQj284FkZO030mh9c8
+ SzmQi04wbaeFfkg+ifVfv07RzdSB7BfhSQhWJb1h2
+X-Google-Smtp-Source: AGHT+IGsRN98CLR/SnSeHPdzeX2G5JVsxXGdzEJ1R4aa9XDZtz9oWR739MAwjppOBRU5wik98J5g1Q==
+X-Received: by 2002:a17:903:291:b0:23f:f68b:fa1d with SMTP id
+ d9443c01a7336-24096b41b12mr122088465ad.39.1754003638658; 
+ Thu, 31 Jul 2025 16:13:58 -0700 (PDT)
+Received: from [192.168.4.112] ([180.233.125.160])
  by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-76bccfd4c1dsm2466492b3a.100.2025.07.31.15.24.09
+ d9443c01a7336-241e8976c40sm27705755ad.84.2025.07.31.16.13.52
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 31 Jul 2025 15:24:10 -0700 (PDT)
-Message-ID: <16a2b79e-63fa-41d8-81f2-b3cbae094343@linaro.org>
-Date: Thu, 31 Jul 2025 15:24:09 -0700
+ Thu, 31 Jul 2025 16:13:58 -0700 (PDT)
+Message-ID: <eac843f3-e920-4c6d-9c45-45087b41fb78@linaro.org>
+Date: Fri, 1 Aug 2025 09:13:48 +1000
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 0/3] single-binary: compile hw/intc/arm* files once
+Subject: Re: [PATCH 01/10] semihosting/syscalls: compile once in system and
+ per target for user mode
+To: Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-devel@nongnu.org
+Cc: Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Weiwei Li <liwei1518@gmail.com>, philmd@linaro.org,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>, qemu-riscv@nongnu.org,
+ Alistair Francis <alistair.francis@wdc.com>
+References: <20250730220621.1142496-1-pierrick.bouvier@linaro.org>
+ <20250730220621.1142496-2-pierrick.bouvier@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
 Content-Language: en-US
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-References: <20250725201906.19533-1-pierrick.bouvier@linaro.org>
- <bfdd8821-a7f7-4648-a389-124426da6d15@linaro.org>
- <144f0930-af30-42b0-849c-99242d3f09ee@linaro.org>
- <CAFEAcA-ycO=AO8UO+X3f6pw34J=iFwW3dpPyMXKm5BzJ11dt5Q@mail.gmail.com>
- <25fe9c70-be00-4884-8d91-53dfff745cb6@linaro.org>
- <7cc71966-5165-430d-80ec-6de6d5e6dc1b@linaro.org>
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-In-Reply-To: <7cc71966-5165-430d-80ec-6de6d5e6dc1b@linaro.org>
+In-Reply-To: <20250730220621.1142496-2-pierrick.bouvier@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::435;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pf1-x435.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::633;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x633.google.com
+X-Spam_score_int: 12
+X-Spam_score: 1.2
+X-Spam_bar: +
+X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -109,73 +111,24 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 7/31/25 2:27 PM, Philippe Mathieu-Daudé wrote:
-> On 31/7/25 20:30, Pierrick Bouvier wrote:
->> On 7/31/25 9:23 AM, Peter Maydell wrote:
->>> On Mon, 28 Jul 2025 at 20:34, Pierrick Bouvier
->>> <pierrick.bouvier@linaro.org> wrote:
->>>> This old commit (7702e47c2) was the origin of having interrupt related
->>>> code in a generic folder, but I don't really understand the rationale
->>>> behind it to be honest. It seems to be an exception regarding all the
->>>> rest of the codebase, thus the idea to bring back things where they
->>>> belong.
->>>
->>> Most devices are both (a) architecture specific and (b) a particular
->>> kind of device (UART, ethernet controller, interrupt controller, etc).
->>> The nature of a filesystem hierarchy is that we can't file them
->>> in both ways at once. We picked "sort them by kind", which is why
->>> all the interrupt controllers live in hw/intc, all the UARTS in
->>> hw/char, ethernet controllers in hw/net, and so on. In this
->>> breakdown of the world, hw/$ARCH is supposed to be for board models
->>> and SoC models only.
->>>
->>> The GICv3 and the NVIC are odd, because they are very closely
->>> coupled to the CPU. (A few other interrupt controllers are also
->>> like this, but many are not: for instance the GICv2 is a distinct
->>> bit of hardware that communicates with the CPU over the IRQ and
->>> FIQ lines only.)
->>>
->>> One of my post-implementation regrets about GICv3 is that we
->>> didn't really get the split between the GICv3 proper and its
->>> CPU interface right. In hardware the GICv3 is an external device
->>> and the CPU interface is part of the CPU, with a defined
->>> protocol for talking between them. In QEMU we put all the
->>> implementation of this in hw/intc/, and the code in arm_gicv3_cpuif.c
->>> does some ad-hoc installing of hooks into the CPU.
->>>
->>> For the GICv5 I'm trying to structure this in a cleaner way that
->>> is closer to the hardware structure, so the CPU interface
->>> will be code in target/arm/, with a clearly defined set of
->>> functions that it calls to talk to the rest of the GIC that
->>> lives in hw/intc/. (This would be too much upheaval to
->>> retrofit to GICv3 though, I think.)
->>>
->>> In a green-field design of M-profile we might have made
->>> the NVIC be code in target/arm, and instead of a separate
->>> device have the CPU object itself do this code. But at the
->>> time it was written we didn't have the same QOM device
->>> class setup we did at the time, and IIRC CPU objects
->>> weren't a subclass of device.
+On 7/31/25 08:06, Pierrick Bouvier wrote:
+> We replace target_ulong mechanically by uint64_t.
+> We can't compile (easily) this code once for user, as it relies on
+> various target/function types, so leave it in specific_ss for user mode.
 > 
-> 
->> Coming back to our issue, I can see two ways to solve it in a short term:
->> - On build system: define target hw before generic ones, so we can reuse
->> all the source sets defined there. This has the advantage to be usable
->> by all others architectures.
-> 
-> That seems the cheaper / quicker way, isn't it?
->
+> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+> ---
+>   include/semihosting/syscalls.h | 29 ++++++-----
+>   semihosting/arm-compat-semi.c  |  1 +
+>   semihosting/syscalls.c         | 89 +++++++++++++++++-----------------
+>   semihosting/meson.build        |  4 +-
+>   4 files changed, 62 insertions(+), 61 deletions(-)
 
-Yes, and beyond cpu->* usage, there is a lot of cpregs involved too.
-I'll try this option then (build system one).
+We can at least use vaddr for the pointers, like fname.
 
->> - Move gic related fields to a substructure in arm cpu, and provide a
->> simple accessor to it, like "cpu_gicv3(cpu)", breaking the dependency to
->> cpu.h. Concerned fields would be: gic_num_lrs, gic_vpribits,
->> gic_vprebits, gic_pribits.
-> 
-> FYI a previous attempt to disentangle GIC vs CPU with QOM:
-> https://lore.kernel.org/qemu-devel/20231212162935.42910-1-philmd@linaro.org/
-> 
+I see syscalls.c already uses uint64_t in many of those places, but that can be a separate 
+cleanup -- we don't need to add more.
 
+
+r~
 

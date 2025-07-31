@@ -4,67 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46437C87FD2
-	for <qemu-arm@archiver.kernel.org>; Thu, 31 Jul 2025 21:49:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C63EC87FD2
+	for <qemu-arm@archiver.kernel.org>; Thu, 31 Jul 2025 21:50:22 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uhb9H-0001MM-G3; Thu, 31 Jul 2025 17:49:16 -0400
+	id 1uhb9f-0002GD-7B; Thu, 31 Jul 2025 17:49:40 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uhapf-0002Ck-Pc
- for qemu-arm@nongnu.org; Thu, 31 Jul 2025 17:29:05 -0400
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uhapr-0002PG-0C
+ for qemu-arm@nongnu.org; Thu, 31 Jul 2025 17:29:14 -0400
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uhapc-0007ys-6R
- for qemu-arm@nongnu.org; Thu, 31 Jul 2025 17:28:58 -0400
-Received: by mail-wr1-x434.google.com with SMTP id
- ffacd0b85a97d-3b7892609a5so1060353f8f.1
- for <qemu-arm@nongnu.org>; Thu, 31 Jul 2025 14:28:55 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uhapn-00080s-AP
+ for qemu-arm@nongnu.org; Thu, 31 Jul 2025 17:29:10 -0400
+Received: by mail-wr1-x42a.google.com with SMTP id
+ ffacd0b85a97d-3a588da60dfso542608f8f.1
+ for <qemu-arm@nongnu.org>; Thu, 31 Jul 2025 14:29:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1753997334; x=1754602134; darn=nongnu.org;
+ d=linaro.org; s=google; t=1753997345; x=1754602145; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=sBV+uzJ1KXdLFqT+HlvZO+Zs0JU9P9tlvSCNA6c7IfA=;
- b=PlfSriAvvRpSbuh5wpaUfY+9+u3z/JpKwLB5379d/w4fvdEmfF34RaMPsAZ1CufcES
- loY2vSXsxJD446nev10I7bAXSkkBzLefRezyY3gWePZf7jUS7DQ80mYFvmcslCSCCWYf
- N+BUVPJNHBpmSIO75ZhQj1+ssQAjY5I3/Vn9ejLCAtS0SeASIodNX0gni/RaPLZq1O54
- b/M4gmfKHE9hffoCri6wQftZZPAfWUE+EngkGVfsq8ofsLkXFgOZVpU85c6hTojrbyH+
- 747uT8l5JnnUNWudNyrp9hgmABBPbfpVedLHYiwV0VQVFSebaDzkgZLm5Y9t2V9I1PTO
- 4T0w==
+ bh=jkfojtDXr6zwonVIseoNjUuQeq8ucsw9ORq6akfX5/M=;
+ b=OWg/+3+0R1P8mFX5Zf2GngkiPgG6h5086aj8l9mmvkaDo1ICccDswyTpbOeVxVF49L
+ 7q6VEiRozLk6hTYKeVU8hW+WBW7PcUw45kywgDaetyUCoP3ykkr5rbuQmlZlQx0koCpi
+ Kw9AplVdiIH0x3NoEWsCr9e0meOwQtBG5rIEfqXnxtLDm+8UWflT83mt2FbnArTR1xSF
+ lDHKAN1cSxNd0pzovMHmJu1ZnDRqhVzw3FcHXIYVA67vv+M4aVt+tw7A2DsEDkdN6KjL
+ HPkywPwqObGTecwpcNyND6GFmCOWSGf+xZGNjh3n39905tOebvpiwKMh5On0KPPl7sIR
+ eRhA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1753997334; x=1754602134;
+ d=1e100.net; s=20230601; t=1753997345; x=1754602145;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=sBV+uzJ1KXdLFqT+HlvZO+Zs0JU9P9tlvSCNA6c7IfA=;
- b=eDkaJa5U2fCEDYOyw2XlD8JBuujaCLM2Ebmwb+91s42oua40ny2I6BjeqgBY7J3eR3
- TE+9bPw844oekT74MVpsMeYUOg2cIE88hf1NHxASfondgoLHXb5yTRzJxm+FHvgvFshn
- Bec3llCzqJfxiPRTNPejcCrmLsLC1JSwMD4ceXCdxdQh04xFhLERkDJ1CnIlznj075gE
- qDSGNHyRhqZlrDrsVYKesOYYZ2lOaOX2+I3RvfMdUjZGekR/MvuD4yN2R5l9ytof8eW5
- l9xIh70vjOLVrqVfZihMpXjEkd3VE5wZ8IaWjUmhbmnVV7tXu6iaoGqvNfcHRGzFSL9y
- G9Dw==
+ bh=jkfojtDXr6zwonVIseoNjUuQeq8ucsw9ORq6akfX5/M=;
+ b=jbAYbXLiGohF+cCNF4pJX0RgfGvEc6LCM3zE/iVYQcCKiFu1SUNgJ+mwDfN49qrKQb
+ eec3GYC5JUT0xuo3+KRUPk2I0opD3SZ4RG1V+ELkraMPiNePbf0Tmi2/iMorPqCDQ+8c
+ dUbwgR8EuARZl2Y0iDf9J+TRxyAcqhI7202J3mJVMzcjom5Nz4emTkONk+BMLlxzxRN/
+ l4fH+bfgQnr/+PPXlIyFmvCQIf8ST05xUY3mauWpYQQP8799dgyCL939WH5mZD9XYc47
+ Kixr0CGMNxlNpH8lMMb2r8b22PlkVUgeWSubmnUxayGzmtylgyBtp2tbEyGs+zsbK9V0
+ E5zw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVjGgmY9W5y1ny1hV5/B+1CtVj3w5cjXNVfWmwSU1uZBg5xybhP7yUtCvIXo46fgrg0Szwr4TCSLw==@nongnu.org
-X-Gm-Message-State: AOJu0YxkhUWv1aE9BT+oWAwstvktfqBvHsYLstx+lib3IuXvv/y8IJ86
- jpVHaXVMGnqP5mzgL1BtmJbw6avZjqq3992Cqo7o/l1R6p1kU8hn6nT0pBg54gnWqMA=
-X-Gm-Gg: ASbGncvmqGWyIKOSNk49SEVpix5/foFfRD7wnb+kh3j19NQBndAWX+w0p7tvNWXVoFZ
- R6r6+fZKPWVe9GpOnuQ4TIObDe444WKUTrtVclmDFvrHpbQ2FsFn+M95eD9BJZBLYkAgSqjxs+Z
- wRem7/lKlvxIVBlM16B3d/AOxPrak2DFaSj7YEdOWx94jxVaE85m5BIhKBarLucvqFDOgpBQDQw
- arKPazUmsy0jVsrf+FohkxL5zzvwq5/oMYVEIjOZlJ/e/xmFraNgoLoB/cmeAJv+LE/PeKzWwLv
- xaFwFhCQiQC6BdGLJItiwQ6+6ce4ikHL1/Mbt/J3rWu77yLrNcNABjTPPnEr2VLkOzbhw3jxKx2
- WmSaHMk7Hbad+/mhRIJ0VDuqm9wuysdTP8SZYVt7M6j3KJucXjT/QxSE0M7/WyZ0mVBstNIpDrs
- 8kDOyvsM8=
-X-Google-Smtp-Source: AGHT+IHO4HikjPZVpifbu6NuUKtGd2+RYTWDmPJ0XDxxx1BabiJc8mK25TDq7amE/f6P8BgxOR5Exw==
-X-Received: by 2002:a05:6000:2289:b0:3b7:89a3:80a5 with SMTP id
- ffacd0b85a97d-3b795029a90mr7217951f8f.45.1753997334344; 
- Thu, 31 Jul 2025 14:28:54 -0700 (PDT)
+ AJvYcCW+7LXoYdKD5f90W7ZuQGuEFTppZMmEWL4wFFco45RUTWLkBBCTD12biVe72RzT2mN/7KRdQ7QHZg==@nongnu.org
+X-Gm-Message-State: AOJu0Yy1ycJy4G1OQKAOerPzQFQUP8zdS5VQPUfYj6W9ok1eHsx+w4o6
+ A684415llsn11T1M6bmoEyHV2IpdWQxZPwX0ITqw2cfj4ip8JOqVaxdc9uhHRM9HkMc=
+X-Gm-Gg: ASbGncvnAMaP8P7xfY8uwNio5TjNtvEn959osDkGfB/KweJ8PH0eNTQxInAiwVj6M7f
+ +lm/pND74FKleZkyKBVaggykDf1KOcCbZKfe0KNUMybtsld8tpkjkXAPwmCSWHlFyhoH1T8NeIK
+ bEA1dNityGz7MN8mfif/ZOmGUb4PfqsxaNOYpijX7W8jh2lGUy0CU6HNWB/BCEnP9wb30VAI4jO
+ SOEtw37NfTyCfZH8/LQinw25EgATgQm5X22IJaCIfzr0KELArgluhf+1wp25beNap96PWd3oeaW
+ 2bSUiL4DS1YAtaiwCR9638VbIr6Vki02dIzKZbtQxqQjJRTOrQOnEybvDPKqbRj8QP0tetVLqb0
+ P3mIRCQjS9QDJ68I18LDnAMHZ0zdIIAOB8e/6Wc4mQ9JTIVbFYgV1T364hlNsoEVqhuhPOyST
+X-Google-Smtp-Source: AGHT+IFTg5TVHjqICL1gUuWHychv/Y2cIfzg20vD3ayHi+07K+yPwnhHsov8RNS0EkC7qS1XHW3N6A==
+X-Received: by 2002:a5d:649a:0:b0:3b8:d3b4:2c4a with SMTP id
+ ffacd0b85a97d-3b8d3b42e23mr51514f8f.17.1753997345292; 
+ Thu, 31 Jul 2025 14:29:05 -0700 (PDT)
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3b79c3abec8sm3743136f8f.8.2025.07.31.14.28.53
+ ffacd0b85a97d-3b79c3c51e2sm3482337f8f.32.2025.07.31.14.29.03
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 31 Jul 2025 14:28:53 -0700 (PDT)
+ Thu, 31 Jul 2025 14:29:04 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org,
 	Peter Maydell <peter.maydell@linaro.org>
@@ -78,17 +77,17 @@ Cc: Guenter Roeck <linux@roeck-us.net>, Palmer Dabbelt <palmer@dabbelt.com>,
  Ben Dooks <ben.dooks@codethink.co.uk>, Weiwei Li <liwei1518@gmail.com>,
  qemu-block@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH-for-10.1 08/11] hw/sd/sdcard: Factor spi_cmd_SEND_CxD() out
-Date: Thu, 31 Jul 2025 23:28:03 +0200
-Message-ID: <20250731212807.2706-9-philmd@linaro.org>
+Subject: [PATCH-for-10.1 10/11] hw/sd/sdcard: Remove SDState::mode field
+Date: Thu, 31 Jul 2025 23:28:05 +0200
+Message-ID: <20250731212807.2706-11-philmd@linaro.org>
 X-Mailer: git-send-email 2.49.0
 In-Reply-To: <20250731212807.2706-1-philmd@linaro.org>
 References: <20250731212807.2706-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::434;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x434.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -111,55 +110,154 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-spi_cmd_SEND_CSD() and spi_cmd_SEND_CID() are very
-similar. Factor the common code as spi_cmd_SEND_CxD().
+SD card mode is a superset of its state (SDState::state),
+no need to migrate it.
 
+Use sd_mode() to get the SDCardModes from the SDCardStates.
+
+Fixes: 50a5be6c3d5 ("hw/sd.c: add SD card save/load support")
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/sd/sd.c | 19 ++++++++++---------
- 1 file changed, 10 insertions(+), 9 deletions(-)
+ hw/sd/sd.c         | 35 +++++++++++++++++------------------
+ hw/sd/trace-events |  4 ++--
+ 2 files changed, 19 insertions(+), 20 deletions(-)
 
 diff --git a/hw/sd/sd.c b/hw/sd/sd.c
-index 04b3a1651c0..ef72ce717b8 100644
+index 79395f7c5bb..42bf286b64a 100644
 --- a/hw/sd/sd.c
 +++ b/hw/sd/sd.c
-@@ -1576,14 +1576,19 @@ static sd_rsp_type_t emmc_cmd_SEND_EXT_CSD(SDState *sd, SDRequest req)
-                                  sd->ext_csd, sizeof(sd->ext_csd));
- }
+@@ -147,7 +147,6 @@ struct SDState {
  
--/* CMD9 */
--static sd_rsp_type_t spi_cmd_SEND_CSD(SDState *sd, SDRequest req)
-+static sd_rsp_type_t spi_cmd_SEND_CxD(SDState *sd, SDRequest req,
-+                                      const void *data, size_t size)
- {
-     if (sd->state != sd_standby_state) {
-         return sd_invalid_state_for_cmd(sd, req);
+     /* Runtime changeables */
+ 
+-    uint32_t mode;    /* current card mode, one of SDCardModes */
+     int32_t state;    /* current card state, one of SDCardStates */
+     uint32_t vhs;
+     bool wp_switch;
+@@ -315,27 +314,24 @@ static void sd_set_voltage(SDState *sd, uint16_t millivolts)
      }
--    return sd_cmd_to_sendingdata(sd, req, sd_req_get_address(sd, req),
--                                 sd->csd, 16);
-+    return sd_cmd_to_sendingdata(sd, req, 0, data, size);
-+}
-+
-+/* CMD9 */
-+static sd_rsp_type_t spi_cmd_SEND_CSD(SDState *sd, SDRequest req)
-+{
-+    return spi_cmd_SEND_CxD(sd, req, sd->csd, sizeof(sd->csd));
  }
  
- static sd_rsp_type_t sd_cmd_SEND_CSD(SDState *sd, SDRequest req)
-@@ -1598,11 +1603,7 @@ static sd_rsp_type_t sd_cmd_SEND_CSD(SDState *sd, SDRequest req)
- /* CMD10 */
- static sd_rsp_type_t spi_cmd_SEND_CID(SDState *sd, SDRequest req)
+-static void sd_set_mode(SDState *sd)
++static enum SDCardModes sd_mode(SDState *sd)
  {
--    if (sd->state != sd_standby_state) {
--        return sd_invalid_state_for_cmd(sd, req);
--    }
--    return sd_cmd_to_sendingdata(sd, req, sd_req_get_address(sd, req),
--                                 sd->cid, 16);
-+    return spi_cmd_SEND_CxD(sd, req, sd->cid, sizeof(sd->cid));
+     switch (sd->state) {
+     case sd_inactive_state:
+-        sd->mode = sd_inactive;
+-        break;
+-
++        return sd_inactive;
+     case sd_idle_state:
+     case sd_ready_state:
+     case sd_identification_state:
+-        sd->mode = sd_card_identification_mode;
+-        break;
+-
++        return sd_card_identification_mode;
+     case sd_standby_state:
+     case sd_transfer_state:
+     case sd_sendingdata_state:
+     case sd_receivingdata_state:
+     case sd_programming_state:
+     case sd_disconnect_state:
+-        sd->mode = sd_data_transfer_mode;
+-        break;
++        return sd_data_transfer_mode;
++    default:
++        g_assert_not_reached();
+     }
  }
  
- static sd_rsp_type_t sd_cmd_SEND_CID(SDState *sd, SDRequest req)
+@@ -1013,7 +1009,7 @@ static const VMStateDescription sd_vmstate = {
+     .minimum_version_id = 2,
+     .pre_load = sd_vmstate_pre_load,
+     .fields = (const VMStateField[]) {
+-        VMSTATE_UINT32(mode, SDState),
++        VMSTATE_UNUSED(4),
+         VMSTATE_INT32(state, SDState),
+         VMSTATE_UINT8_ARRAY(cid, SDState, 16),
+         VMSTATE_UINT8_ARRAY(csd, SDState, 16),
+@@ -1313,7 +1309,7 @@ static sd_rsp_type_t sd_invalid_state_for_cmd(SDState *sd, SDRequest req)
+ static sd_rsp_type_t sd_invalid_mode_for_cmd(SDState *sd, SDRequest req)
+ {
+     qemu_log_mask(LOG_GUEST_ERROR, "%s: CMD%i in a wrong mode: %s (spec %s)\n",
+-                  sd->proto->name, req.cmd, sd_mode_name(sd->mode),
++                  sd->proto->name, req.cmd, sd_mode_name(sd_mode(sd)),
+                   sd_version_str(sd->spec_version));
+ 
+     return sd_illegal;
+@@ -1473,7 +1469,7 @@ static sd_rsp_type_t emmc_cmd_sleep_awake(SDState *sd, SDRequest req)
+ /* CMD6 */
+ static sd_rsp_type_t sd_cmd_SWITCH_FUNCTION(SDState *sd, SDRequest req)
+ {
+-    if (sd->mode != sd_data_transfer_mode) {
++    if (sd_mode(sd) != sd_data_transfer_mode) {
+         return sd_invalid_mode_for_cmd(sd, req);
+     }
+     if (sd_is_spi(sd)) {
+@@ -1646,7 +1642,7 @@ static sd_rsp_type_t sd_cmd_STOP_TRANSMISSION(SDState *sd, SDRequest req)
+ /* CMD13 */
+ static sd_rsp_type_t sd_cmd_SEND_STATUS(SDState *sd, SDRequest req)
+ {
+-    if (sd->mode != sd_data_transfer_mode) {
++    if (sd_mode(sd) != sd_data_transfer_mode) {
+         return sd_invalid_mode_for_cmd(sd, req);
+     }
+ 
+@@ -1672,7 +1668,7 @@ static sd_rsp_type_t sd_cmd_SEND_STATUS(SDState *sd, SDRequest req)
+ /* CMD15 */
+ static sd_rsp_type_t sd_cmd_GO_INACTIVE_STATE(SDState *sd, SDRequest req)
+ {
+-    if (sd->mode != sd_data_transfer_mode) {
++    if (sd_mode(sd) != sd_data_transfer_mode) {
+         return sd_invalid_mode_for_cmd(sd, req);
+     }
+     switch (sd->state) {
+@@ -2078,7 +2074,9 @@ static sd_rsp_type_t sd_normal_command(SDState *sd, SDRequest req)
+     if (req.cmd != 55 || sd->expecting_acmd) {
+         trace_sdcard_normal_command(sd->proto->name,
+                                     sd->last_cmd_name, req.cmd,
+-                                    req.arg, sd_state_name(sd->state));
++                                    req.arg,
++                                    sd_mode_name(sd_mode(sd)),
++                                    sd_state_name(sd->state));
+     }
+ 
+     /* Not interpreting this as an app command */
+@@ -2164,7 +2162,9 @@ static sd_rsp_type_t sd_app_command(SDState *sd,
+ {
+     sd->last_cmd_name = sd_acmd_name(sd, req.cmd);
+     trace_sdcard_app_command(sd->proto->name, sd->last_cmd_name,
+-                             req.cmd, req.arg, sd_state_name(sd->state));
++                             req.cmd, req.arg,
++                             sd_mode_name(sd_mode(sd)),
++                             sd_state_name(sd->state));
+     sd->card_status |= APP_CMD;
+ 
+     if (sd->proto->acmd[req.cmd].handler) {
+@@ -2264,7 +2264,6 @@ static size_t sd_do_command(SDState *sd, SDRequest *req,
+     }
+ 
+     last_state = sd->state;
+-    sd_set_mode(sd);
+ 
+     if (sd->expecting_acmd) {
+         sd->expecting_acmd = false;
+diff --git a/hw/sd/trace-events b/hw/sd/trace-events
+index db0644256d9..8d49840917e 100644
+--- a/hw/sd/trace-events
++++ b/hw/sd/trace-events
+@@ -37,8 +37,8 @@ sdhci_write_dataport(uint16_t data_count) "write buffer filled with %u bytes of
+ sdhci_capareg(const char *desc, uint16_t val) "%s: %u"
+ 
+ # sd.c
+-sdcard_normal_command(const char *proto, const char *cmd_desc, uint8_t cmd, uint32_t arg, const char *state) "%s %20s/ CMD%02d arg 0x%08x (state %s)"
+-sdcard_app_command(const char *proto, const char *acmd_desc, uint8_t acmd, uint32_t arg, const char *state) "%s %23s/ACMD%02d arg 0x%08x (state %s)"
++sdcard_normal_command(const char *proto, const char *cmd_desc, uint8_t cmd, uint32_t arg, const char *mode, const char *state) "%s %20s/ CMD%02d arg 0x%08x (mode %s, state %s)"
++sdcard_app_command(const char *proto, const char *acmd_desc, uint8_t acmd, uint32_t arg, const char *mode, const char *state) "%s %23s/ACMD%02d arg 0x%08x (mode %s, state %s)"
+ sdcard_response(const char *rspdesc, int rsplen) "%s (sz:%d)"
+ sdcard_powerup(void) ""
+ sdcard_inquiry_cmd41(void) ""
 -- 
 2.49.0
 

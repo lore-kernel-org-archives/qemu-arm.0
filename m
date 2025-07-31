@@ -4,89 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE4C0C87FD2
-	for <qemu-arm@archiver.kernel.org>; Thu, 31 Jul 2025 21:54:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB983C87FD2
+	for <qemu-arm@archiver.kernel.org>; Thu, 31 Jul 2025 21:54:59 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uhbDw-0001MG-5h; Thu, 31 Jul 2025 17:54:04 -0400
+	id 1uhbEk-0003Jd-Ml; Thu, 31 Jul 2025 17:54:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1uhaur-0002kb-G8
- for qemu-arm@nongnu.org; Thu, 31 Jul 2025 17:34:32 -0400
-Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
+ id 1uhawo-0004rq-It
+ for qemu-arm@nongnu.org; Thu, 31 Jul 2025 17:36:22 -0400
+Received: from mail-pg1-x531.google.com ([2607:f8b0:4864:20::531])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1uhauo-0000By-PD
- for qemu-arm@nongnu.org; Thu, 31 Jul 2025 17:34:21 -0400
-Received: by mail-pl1-x630.google.com with SMTP id
- d9443c01a7336-240418cbb8bso9853335ad.2
- for <qemu-arm@nongnu.org>; Thu, 31 Jul 2025 14:34:18 -0700 (PDT)
+ id 1uhawm-0000Zu-Vb
+ for qemu-arm@nongnu.org; Thu, 31 Jul 2025 17:36:22 -0400
+Received: by mail-pg1-x531.google.com with SMTP id
+ 41be03b00d2f7-af51596da56so202839a12.0
+ for <qemu-arm@nongnu.org>; Thu, 31 Jul 2025 14:36:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1753997657; x=1754602457; darn=nongnu.org;
+ d=linaro.org; s=google; t=1753997779; x=1754602579; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=OkHzUj8X79poqHM+hzx90X+R9KktHZvKdEgw3SZPIgI=;
- b=DgsAznLBY9LIoPk/e6wF9gkWG0EBgeslm1Gc6DxrCjAoDFHXg0t2/KzAmjr10A1Zya
- 4uijoSYTWTNiIrXE+zdi6/beDr60/w+q3B09UBB6QpAzg28isV96izjv/eTIuslY+Ee+
- neMu2fI3MaXyAnwaYYkZzqWjZKYWqD/mHS821RB4KUkbZpKyFvOHBQPp10EXkw5a63AR
- p49C/8PVi1M6+oAWOHeW53uLkrkdy8eoaNsjhhnVTYOeyMZtAideYBM60WvoYRc78M5F
- WvhLWCDnxwsvtzNRJDzdMjKekzdXrrFdU9/BRlOMZ90BimD1VeLxCNwxrCZovuU+OY+i
- wTCQ==
+ bh=h0ZilKvKVhq0857pyhEypm1KW4DqhYhYQhWzilQTJ2c=;
+ b=pdeQCsCTEKd0efs3MtJVCVz6c/h8vfPjw6nLfmysopYU8gQrlwHdWNWz+z9DBxzjPs
+ +h8t1p5l5fOeFKEcnKNXZFWkZSL6RxX+p+rZgyeIs1fbOuAS6qMOFCoZTsndXeEaWFAB
+ qFufqUTX67sNfSUMDas/6mBLyVMzettJ/J5X32FzQIAb+6ns+FBv7XSwEXHqKF8ZXcAF
+ cA2ldt4zuwObXb10ySM64FCODuMrsWDDaKKOLpOHsYTkI9xXEobFRwv5H7QO+lSOMA4C
+ 3wsCSBM115yPgVEbUMMehhJRQyLBOA5LQi9U/Io+DN2UU4bB+s8lE9QOIO9cZC1pKM/U
+ 7AUA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1753997657; x=1754602457;
+ d=1e100.net; s=20230601; t=1753997779; x=1754602579;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=OkHzUj8X79poqHM+hzx90X+R9KktHZvKdEgw3SZPIgI=;
- b=VAucYtk0qk2q0pf7314Xx4J0w7P0JBuJPVfedPh6osTY0iy1P/DNLsjDMtEsZqyKiV
- uAdbaCRG8L7nX+R4gwIYWeXPeFf5lvMpYnyQqly0uSbEPCyVqdjvmVYCadXOmE709ioZ
- ZYIfEd3k+icCbFFKT1IMvekhrWz80iNYr6LstMcG6Q6qferQKrA7RJA2HEMyINjsc1j7
- TMUl2IZv8gjeka0wrVL3kW+0sWs8ssqAzF6en2tAaepp8d5PBwJVWJwQEkl1M9tM0D8X
- Xz6aVeo6LBGY1lL23qsR/2LiJ9Gliq69GFJ7gKJMoHz2AQmykqyERLy1YCDIPBxEmdfF
- tdJA==
-X-Gm-Message-State: AOJu0YzRwVyfDRLpf/xRzGFHk4+Pqeu9gTBOk9tcCgVb1RJc9Qat24M+
- QgrCLmLJJ3qmCdO7UW8DjKp6E8fowfU3Zlzsr62yGIsCaIXyo67lezq0zcdY0e2F6Ew=
-X-Gm-Gg: ASbGnctUfw1unYqSiYK58ak2NaMdCCm/DlhsFWG55HPGei2RMM/JUPR4skXNv+wsBON
- 58tNlEd9IcuXtEkUIo/TOqXbFxdXegGGkKOqg2Pj5kQIAQoa1wceZOLkL+J6beATjMlAcPOwVCo
- GQYr1ATb9ESDRjPMLeVd9e5tvx12Xvce74N3Vj8LnZYTQuAromDXSZfm51PX+ieGN604xKAlZS2
- 58a3nXyu1Vha3f//X6iwbT+ICzDx8XVbJIaTi/lwewdy1GJ0Ue2r0mvPj8WgcWwcG2Cbd1BGL4W
- ZHTBRPs2O2loqFGrBn6LFRMzHpGmQJTK7Dfw6XAnUaNePCDFX0ieSnrXx+YJGsWDwXFpeLeS9Ot
- czV/6AD6F2/rfL8zxfE1RJu35vifnmCH5qvQ=
-X-Google-Smtp-Source: AGHT+IHZ360Q8T/eiSiBjjdE5U160O8+dEt35gndVQ31UV+2uknGw2jI5W9YDpH8j6JdOWjP5+u8mg==
-X-Received: by 2002:a17:902:ebc7:b0:240:8cdf:f933 with SMTP id
- d9443c01a7336-24096a9dd25mr126814195ad.22.1753997657007; 
- Thu, 31 Jul 2025 14:34:17 -0700 (PDT)
+ bh=h0ZilKvKVhq0857pyhEypm1KW4DqhYhYQhWzilQTJ2c=;
+ b=lvesxLpuqM/c0Uer2cvtNPcYj6WLx8aRLqygWitfUFG1Q2jPemoiFtKu/+9uOCSjg3
+ K21mleHJu0R0oQQ5d/MImeGkDh5OyYjCqnEnB5VPWOY8NRqhIPsdAV+A4x3UML1lfwPL
+ XEKMWnWPwN5tye8oVx9yzlfhS/XQc6SVwJRyP5UpWP14S5XfkvTVXKoFOfnL9/yryUku
+ 2I00z0OcDPG/RCCoCBSKlOsr9161O3I+ZXFBeLDQZCVU8AXBRzc7icS2AN3MT4s6Xi/s
+ kAbkSj+j8iK8k0iuAANQ2qZslhXovSv6P4SL2rBOgdhAFRAXFre6F3nXZ/KhmJ9v0EB6
+ REBA==
+X-Gm-Message-State: AOJu0YwlAds4XuCqDf5dqs0VYn8PlVUzL7iR+HRtnsqA8fswsPGDVKMd
+ Sth59MGkuh1a0C6Vd0owAXSPh/Z8vDuWG0xRPQEY87G2r6LaakJzhkBVEXcGMxEVrOQ=
+X-Gm-Gg: ASbGnctzxkortBAxk7ZxkifBfWJ4qECQFOD0+p6nGJ8hxBNR8330jYScFmcMf6INjta
+ aJofVbXqcP9mrnRaZC4Iv83GEsg6G90/L5weaSKXCE5Fk1HBRKt11ehTzjvLm/gagaLinXfMvcj
+ ub4rqtrntJ9VIVomnJgpL2ZHmTBcvjoq5UuKg3ojqPRgH89VCC5DyrNVVov2c1pYJ97eoa/pvDR
+ TB+QtD89vAum1NEmVIZGQJDiSNO3aAptLO0Hv9/Qc6dbmjimgG5qdlq0WdkgeLTVwOVesyKw35Y
+ uggoi/jPJeSLmrHlwG35UBQJ4Upii2MBVctoFz0Ic6CSSTWDRmDwNocpgZgawPaRQDzJGN8H1AO
+ 8Uzlj67cKX6tWrR1oDDBH3gSPDwdyKhWBEqU=
+X-Google-Smtp-Source: AGHT+IEfVgXE40G/RJeHgYZmeoxDi9QZkMqCGd19fEWLDWqZ4Y9WxkfAmgp4lnT/9BMem3AsJ2s9Xw==
+X-Received: by 2002:a17:902:f70a:b0:240:1f19:d35c with SMTP id
+ d9443c01a7336-24096bc750amr111074605ad.39.1753997779261; 
+ Thu, 31 Jul 2025 14:36:19 -0700 (PDT)
 Received: from [192.168.1.87] ([38.41.223.211])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-241e8976ca5sm26007085ad.100.2025.07.31.14.34.16
+ d9443c01a7336-241e8975ad9sm26222755ad.98.2025.07.31.14.36.18
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 31 Jul 2025 14:34:16 -0700 (PDT)
-Message-ID: <c46e1960-7727-42af-a75c-4a74043cd6e8@linaro.org>
-Date: Thu, 31 Jul 2025 14:34:16 -0700
+ Thu, 31 Jul 2025 14:36:18 -0700 (PDT)
+Message-ID: <1b1e9694-a1b9-4689-ac8f-1772b16523d3@linaro.org>
+Date: Thu, 31 Jul 2025 14:36:18 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 57/82] target/arm: Implement GCSPOPM
+Subject: Re: [PATCH 58/82] target/arm: Implement GCSPUSHX
 Content-Language: en-US
 To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
 References: <20250727080254.83840-1-richard.henderson@linaro.org>
- <20250727080254.83840-58-richard.henderson@linaro.org>
+ <20250727080254.83840-59-richard.henderson@linaro.org>
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-In-Reply-To: <20250727080254.83840-58-richard.henderson@linaro.org>
+In-Reply-To: <20250727080254.83840-59-richard.henderson@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::630;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pl1-x630.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::531;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pg1-x531.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -105,10 +105,10 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 On 7/27/25 1:02 AM, Richard Henderson wrote:
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
->   target/arm/cpregs.h            |  1 +
->   target/arm/cpregs-gcs.c        |  3 +++
->   target/arm/tcg/translate-a64.c | 27 +++++++++++++++++++++++++++
->   3 files changed, 31 insertions(+)
+>   target/arm/cpregs.h            |  2 ++
+>   target/arm/cpregs-gcs.c        | 17 +++++++++++++++
+>   target/arm/tcg/translate-a64.c | 40 ++++++++++++++++++++++++++++++++++
+>   3 files changed, 59 insertions(+)
 
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 

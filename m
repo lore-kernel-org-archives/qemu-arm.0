@@ -4,86 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5607BC87FCA
-	for <qemu-arm@archiver.kernel.org>; Thu, 31 Jul 2025 14:49:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB07DC87FCC
+	for <qemu-arm@archiver.kernel.org>; Thu, 31 Jul 2025 15:54:18 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uhUbF-0001tl-V1; Thu, 31 Jul 2025 10:49:41 -0400
+	id 1uhVbO-0006kU-Pq; Thu, 31 Jul 2025 11:53:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uhTZS-0007CP-3d
- for qemu-arm@nongnu.org; Thu, 31 Jul 2025 09:43:46 -0400
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uhTZP-0004OQ-8F
- for qemu-arm@nongnu.org; Thu, 31 Jul 2025 09:43:45 -0400
-Received: by mail-wr1-x434.google.com with SMTP id
- ffacd0b85a97d-3a588da60dfso246660f8f.1
- for <qemu-arm@nongnu.org>; Thu, 31 Jul 2025 06:43:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1753969421; x=1754574221; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=gC/sYbZmuKXxQePBVZ1P3dDnE7e4TeVo5Iiow384Kq4=;
- b=Q6vqknAYGjAF0LJPVi7uGkiSubkoaDLwvEOnLpO+NBw+o/sCA6iYPQwuSCk0puXc4b
- 8YUaqsQOZelQ/rlH1iKrj3l0NgMYcbDUax7PPxkULcrSrfq13IRr5CeJwpmn2794BHnn
- IRPFfsegJYcxuWnYf0o9thV7DJ0BsX2nfBeEOgx5Of8v/OB8yTZBro3Gv/v0wtGtyyAq
- LJ4RfOgjSkpuKbH9JdaUuGxOQMRhBiJvzyL1IA8oJ8y6AMDZv//13KVZiqcQQ2PUbmNK
- A+N0S1wSyPJj012R3fON2XPzOp8JIX+AHT20cWf3LNZ4SBKp5qt09WLQmDrEv5gCcL8t
- 2snw==
+ (Exim 4.90_1) (envelope-from <alex.williamson@redhat.com>)
+ id 1uhUL4-0000tz-8C
+ for qemu-arm@nongnu.org; Thu, 31 Jul 2025 10:32:58 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <alex.williamson@redhat.com>)
+ id 1uhUL1-0001QW-84
+ for qemu-arm@nongnu.org; Thu, 31 Jul 2025 10:32:58 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1753972372;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=GS58p15v4LEFq1xCqc+ivjhqpqgBtFNMAu+jgQ/nfmw=;
+ b=JZkJZaxGn/gugnpHYpf09SSvu56tto+l7hVh+AvEph49PgJcZ5lqjTNjb51Th6M7/E84uj
+ Jdu86wEEFirP2gcRt3aM5MnYC5WV4CItMTXMPTAuqBiXWjKGxjZcAUV5SJ912bUYtH/O5J
+ kGduv7FnWUhC5E8tqB1AamWQb7799hA=
+Received: from mail-il1-f199.google.com (mail-il1-f199.google.com
+ [209.85.166.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-671-toOdAKbuMhykeNbbb6u2mQ-1; Thu, 31 Jul 2025 10:32:50 -0400
+X-MC-Unique: toOdAKbuMhykeNbbb6u2mQ-1
+X-Mimecast-MFC-AGG-ID: toOdAKbuMhykeNbbb6u2mQ_1753972370
+Received: by mail-il1-f199.google.com with SMTP id
+ e9e14a558f8ab-3e40b854187so363115ab.1
+ for <qemu-arm@nongnu.org>; Thu, 31 Jul 2025 07:32:50 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1753969421; x=1754574221;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=gC/sYbZmuKXxQePBVZ1P3dDnE7e4TeVo5Iiow384Kq4=;
- b=au0E0y1YqMMM3fOdMArOeNFkDtEotZM5k9+T33J258tQm8l+SltPV2GePWFdncipP+
- GytMfpuQnYHa7Ib4jxDo+8wc/RcP1xAzv20TxE2dQltz1XQZC3qWu6JCEylBzu+nOdNI
- x1DywcwvSPW2jjh/yAsRlu5jGByCOYK0ilxh66hwOBEJrhGWRfaTra+I1dm1NqGxX+NI
- R5XRGDHRlm2J5MqL6j2ksWWW4mgDKTBoYH3x6gokNh8lyAgRjIqfrqn+zwa8WpVBXl2a
- +xmWoNwSe3i6cYNuRzTGI88dWotMX00Dppb5VPnhti2zAmH16Upt/mb5wxcBfxw+m7w3
- MIog==
-X-Gm-Message-State: AOJu0YyWk9dTC5F8puwc78CwDYVw76rJiVS4i/hSy8iHurKvFL4/hvVh
- BFpDUCdqC0uT7F3pbO9Lydco7o2oHvOXOM40yjetTj47ffEhNwCRWpnrDbNvfVcbpa3Y1jrPjTa
- p9Zci
-X-Gm-Gg: ASbGnct/VlKMFZwD7M1E8iM+3YYxKXzfOO2Mqsxc7pL1XSLeuzVR6fOSAFGgXnTmuF4
- BZ61B/vkkhSVXd7Q7I8YQZANhZbbLZ2TDxpr1VWMtYREgCz8dtdK1RyDmwSKomdX6fx9mRqq1a7
- hoQ7wh3/KVBtAkm+qRbwz/VmQ0HXKX2OQLtp2+aldVTQxoXwH2XZ9IPypyghReSIX3qWKLEonGK
- Qp46S8pXhy7ZPrIWXHkp07cpohbEDZJgNAmvW453GF326hqB9JDjeF1uF4pV6NbaVTRFGenZddP
- nYI3aMe0NdZZ8fKB1EMT61LXWUgUj+TQ//8daDEigTOLxKvANQSZOFB7iFIoB9JZqiLTYaDUFmh
- tNDHXutgcbrOW/2bted458qNmDhzXv66XHyFWlHk=
-X-Google-Smtp-Source: AGHT+IEqZg4cs9sTLJ3JYU9PNQwQr9qbByszo2WLdtkf6M+3NQ3GNWNWiqetuVRL637LMprd0afG9Q==
-X-Received: by 2002:a05:6000:26ca:b0:3b7:76ac:8b72 with SMTP id
- ffacd0b85a97d-3b794fb5719mr5905784f8f.12.1753969420910; 
- Thu, 31 Jul 2025 06:43:40 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3b79c3ac115sm2486249f8f.12.2025.07.31.06.43.39
+ d=1e100.net; s=20230601; t=1753972370; x=1754577170;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=GS58p15v4LEFq1xCqc+ivjhqpqgBtFNMAu+jgQ/nfmw=;
+ b=hdNVAIDT5zQgmyYoCpL8ZfBm7H9jQqY4CQVDzviwzvDl87Lm0mZh0PkI+deDK2YwUU
+ X71gGorhkX87lN5PmmwnfwEExKD+3adNSBEslBAvFm9qubP+Ot4PHX8Fgg/z/Nxz/hLv
+ NcYs2yT7GymAIN2j/yPuoomoCG6GFLvSr42MDG5h0tm/BMOGmmPtiwcPuGS1z2tiFcN2
+ ReoNPkk6qtiikf0zp7dLTI0f+8yXYW4eaSWslXhlVSm/XxtjHpoajFiQZADYuTUvhf7B
+ bU/0CDV4UPppREWmKKxC2iUMeI6E+ojFIRaOBQzYpkPK3jyDvqaYzG9h1jwo4iZg8kNG
+ t+RA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCU7DCU+pVKdpZYAyUrVsbQ/5Vl35bK/KIbVAMmFlAM0cYiAsRMluzeG8Xy3Ot9G+sc8Kni0x3iWXg==@nongnu.org
+X-Gm-Message-State: AOJu0YwHg8PM381o0QdmhEzgCD5m2i6/qukCZBU8ABjDRiMQC5hlt88N
+ bxMnBt+Vu/5fkSQ9NdY1UK7vhEErb/m21cuUsUOMMcj+VibDBnlPjAj7bFioQDlNNc9xwrsZB+E
+ fhYODSskkA/ab5CDCAF6OmrQt798UqYC5qzvKQumfsXnwKLD4y0/qxQ==
+X-Gm-Gg: ASbGncvbKtG2157+vjbILCXlhUPn3M6mXy/ozaZ3duOyWCsd8ukjI+hVPEqHQfM676r
+ ASSOxMPLGjaSe5rNSR3qeT2GBSYKClgXfYjHO/ZcWqW6OcK4TT07Nj9u1NM5Y2dHLUxKKEqzDmS
+ ZOws1RhIEjYuoeohdvbFMw2elxTrQ7Y83JT7M4rgqbzL/FRMGK2QNicd06pfYkl+SO79u+n7Krp
+ 7FlR31Yqn0Lapt8YGqE/R58+k2CLAcn3xEXHWFqOLvTZEZ0cg2RDcSEu11GM8qXa/pArA3oIleE
+ W46myXc0vf+YCsdmVOt4zjRNWSs9efergbYWZbgp5JM=
+X-Received: by 2002:a05:6e02:4407:10b0:3e3:d517:d29d with SMTP id
+ e9e14a558f8ab-3e3f629ccf7mr24134455ab.5.1753972369687; 
+ Thu, 31 Jul 2025 07:32:49 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEzgCXpVq9Gtf3sxxi1PC+Tl5R64QIGk0mtbDiiNBrerbYdB+2oT3xeFIWqEK3AM1vj9gvzxw==
+X-Received: by 2002:a05:6e02:4407:10b0:3e3:d517:d29d with SMTP id
+ e9e14a558f8ab-3e3f629ccf7mr24134315ab.5.1753972369321; 
+ Thu, 31 Jul 2025 07:32:49 -0700 (PDT)
+Received: from redhat.com ([38.15.36.11]) by smtp.gmail.com with ESMTPSA id
+ 8926c6da1cb9f-50a55dbb039sm520356173.94.2025.07.31.07.32.48
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 31 Jul 2025 06:43:40 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: Fabiano Rosas <farosas@suse.de>
-Subject: [PATCH for-10.1] target/arm: Reinstate bogus AArch32 DBGDTRTX
- register for migration compat
-Date: Thu, 31 Jul 2025 14:43:38 +0100
-Message-ID: <20250731134338.250203-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.43.0
+ Thu, 31 Jul 2025 07:32:48 -0700 (PDT)
+Date: Thu, 31 Jul 2025 08:32:45 -0600
+From: Alex Williamson <alex.williamson@redhat.com>
+To: =?UTF-8?B?Q8OpZHJpYw==?= Le Goater <clg@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, Eric Auger
+ <eric.auger@redhat.com>, Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: [PATCH for-10.2 0/4] vfio: Remove 'vfio-platform'
+Message-ID: <20250731083245.0aa1c6e4.alex.williamson@redhat.com>
+In-Reply-To: <20250731121947.1346927-1-clg@redhat.com>
+References: <20250731121947.1346927-1-clg@redhat.com>
+X-Mailer: Claws Mail 4.3.1 (GTK 3.24.43; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::434;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x434.google.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: u6zpFcsB006gR2LoyhtTo61c7K6MBKIzFd2d02vQuEc_1753972370
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=alex.williamson@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -99,82 +114,55 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-In commit 655659a74a we fixed some bugs in the encoding of the
-Debug Communications Channel registers, including that we were
-incorrectly exposing an AArch32 register at p14, 3, c0, c5, 0.
+On Thu, 31 Jul 2025 14:19:43 +0200
+C=C3=A9dric Le Goater <clg@redhat.com> wrote:
 
-Unfortunately removing a register is a break of forwards migration
-compatibility for TCG, because we will fail the migration if the
-source QEMU passes us a cpreg which the destination QEMU does not
-have.  We don't have a mechanism for saying "it's OK to ignore this
-sysreg in the inbound data", so for the 10.1 release reinstate the
-incorrect AArch32 register.
+> Hello,=20
+>=20
+> The VFIO_PLATFORM device type has been deprecated in the QEMU 10.0
+> timeframe. QEMU 10.2 is the time for removal.
+>=20
+> The last patch moves vfio-region.h under hw/vfio since it no longer
+> needs to be a public VFIO interface.
+>=20
+> Thanks,
+>=20
+> C.
+>=20
+>=20
+> C=C3=A9dric Le Goater (4):
+>   vfio: Remove 'vfio-amd-xgbe' device
+>   vfio: Remove 'vfio-calxeda-xgmac' device
+>   vfio: Remove 'vfio-platform'
+>   vfio: Move vfio-region.h under hw/vfio/
+>=20
+>  docs/about/deprecated.rst             |  25 -
+>  docs/about/removed-features.rst       |  25 +
+>  docs/devel/kconfig.rst                |   2 -
+>  {include/hw =3D> hw}/vfio/vfio-region.h |   0
+>  include/hw/vfio/vfio-amd-xgbe.h       |  46 --
+>  include/hw/vfio/vfio-calxeda-xgmac.h  |  43 --
+>  include/hw/vfio/vfio-device.h         |   2 +-
+>  include/hw/vfio/vfio-platform.h       |  78 ---
+>  hw/arm/virt.c                         |   5 -
+>  hw/core/sysbus-fdt.c                  | 383 --------------
+>  hw/vfio/amd-xgbe.c                    |  61 ---
+>  hw/vfio/calxeda-xgmac.c               |  61 ---
+>  hw/vfio/platform.c                    | 716 --------------------------
+>  hw/arm/Kconfig                        |   3 -
+>  hw/vfio/Kconfig                       |  16 -
+>  hw/vfio/meson.build                   |   3 -
+>  hw/vfio/trace-events                  |  11 -
+>  17 files changed, 26 insertions(+), 1454 deletions(-)
+>  rename {include/hw =3D> hw}/vfio/vfio-region.h (100%)
+>  delete mode 100644 include/hw/vfio/vfio-amd-xgbe.h
+>  delete mode 100644 include/hw/vfio/vfio-calxeda-xgmac.h
+>  delete mode 100644 include/hw/vfio/vfio-platform.h
+>  delete mode 100644 hw/vfio/amd-xgbe.c
+>  delete mode 100644 hw/vfio/calxeda-xgmac.c
+>  delete mode 100644 hw/vfio/platform.c
+>=20
 
-(We probably have had other cases in the past of breaking migration
-compatibility like this, but we didn't notice because we didn't test
-and in any case not that many people care about TCG migration
-compatibility.  KVM migration compat is not affected because for KVM
-we treat the kernel as the source of truth for what system registers
-are present.)
-
-Fixes: 655659a74a36b ("target/arm: Correct encoding of Debug Communications Channel registers")
-Reported-by: Fabiano Rosas <farosas@suse.de>
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
-Fabiano's suggestion for a migration compat mechanism is
-https://patchew.org/QEMU/20250730205245.2118-1-farosas@suse.de/20250730205245.2118-2-farosas@suse.de/
----
- target/arm/debug_helper.c | 29 +++++++++++++++++++++++++++++
- 1 file changed, 29 insertions(+)
-
-diff --git a/target/arm/debug_helper.c b/target/arm/debug_helper.c
-index aee06d4d426..579516e1541 100644
---- a/target/arm/debug_helper.c
-+++ b/target/arm/debug_helper.c
-@@ -940,6 +940,13 @@ static void dbgclaimclr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-     env->cp15.dbgclaim &= ~(value & 0xFF);
- }
- 
-+static CPAccessResult access_bogus(CPUARMState *env, const ARMCPRegInfo *ri,
-+                                   bool isread)
-+{
-+    /* Always UNDEF, as if this cpreg didn't exist */
-+    return CP_ACCESS_UNDEFINED;
-+}
-+
- static const ARMCPRegInfo debug_cp_reginfo[] = {
-     /*
-      * DBGDRAR, DBGDSAR: always RAZ since we don't implement memory mapped
-@@ -1002,6 +1009,28 @@ static const ARMCPRegInfo debug_cp_reginfo[] = {
-       .opc0 = 2, .opc1 = 3, .crn = 0, .crm = 4, .opc2 = 0,
-       .access = PL0_RW, .accessfn = access_tdcc,
-       .type = ARM_CP_CONST, .resetvalue = 0 },
-+    /*
-+     * This is not a real AArch32 register. We used to incorrectly expose
-+     * this due to a QEMU bug; to avoid breaking migration compatibility we
-+     * need to continue to provide it so that we don't fail the inbound
-+     * migration when it tells us about a sysreg that we don't have.
-+     * We set an always-fails .accessfn, which means that the guest doesn't
-+     * actually see this register (it will always UNDEF, identically to if
-+     * there were no cpreg definition for it other than that we won't print
-+     * a LOG_UNIMP message about it), and we set the ARM_CP_NO_GDB flag so the
-+     * gdbstub won't see it either.
-+     * (We can't just set .access = 0, because add_cpreg_to_hashtable()
-+     * helpfully ignores cpregs which aren't accessible to the highest
-+     * implemented EL.)
-+     *
-+     * TODO: implement a system for being able to describe "this register
-+     * can be ignored if it appears in the inbound stream"; then we can
-+     * remove this temporary hack.
-+     */
-+    { .name = "BOGUS_DBGDTR_EL0", .state = ARM_CP_STATE_AA32,
-+      .cp = 14, .opc1 = 3, .crn = 0, .crm = 5, .opc2 = 0,
-+      .access = PL0_RW, .accessfn = access_bogus,
-+      .type = ARM_CP_CONST | ARM_CP_NO_GDB, .resetvalue = 0 },
-     /*
-      * OSECCR_EL1 provides a mechanism for an operating system
-      * to access the contents of EDECCR. EDECCR is not implemented though,
--- 
-2.43.0
+Reviewed-by: Alex Williamson <alex.williamson@redhat.com>
 
 

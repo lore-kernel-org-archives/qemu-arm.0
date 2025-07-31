@@ -4,73 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA672C87FCC
-	for <qemu-arm@archiver.kernel.org>; Thu, 31 Jul 2025 19:22:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC0A4C87FCC
+	for <qemu-arm@archiver.kernel.org>; Thu, 31 Jul 2025 20:13:28 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uhYrF-0007cR-Dj; Thu, 31 Jul 2025 15:22:29 -0400
+	id 1uhZeO-0007xP-Ro; Thu, 31 Jul 2025 16:13:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uhWof-00074B-R0
- for qemu-arm@nongnu.org; Thu, 31 Jul 2025 13:11:41 -0400
-Received: from mail-yb1-xb36.google.com ([2607:f8b0:4864:20::b36])
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
+ id 1uhY2s-00080I-I6
+ for qemu-arm@nongnu.org; Thu, 31 Jul 2025 14:30:26 -0400
+Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uhWod-0002np-SG
- for qemu-arm@nongnu.org; Thu, 31 Jul 2025 13:11:41 -0400
-Received: by mail-yb1-xb36.google.com with SMTP id
- 3f1490d57ef6-e8e2b50f8f1so1308456276.0
- for <qemu-arm@nongnu.org>; Thu, 31 Jul 2025 10:11:39 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
+ id 1uhY2q-0004KW-2o
+ for qemu-arm@nongnu.org; Thu, 31 Jul 2025 14:30:26 -0400
+Received: by mail-pf1-x429.google.com with SMTP id
+ d2e1a72fcca58-7682560a2f2so1404994b3a.1
+ for <qemu-arm@nongnu.org>; Thu, 31 Jul 2025 11:30:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1753981898; x=1754586698; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=437EfaWyAbws1fUTE8ezyQL7R2lax3qYd8TnsU763SA=;
- b=F+HmG3a9vsVIOyXYH28vXXiJxUHEU9L1+wz7eMALW+XpLSoPWDy1YoPElMdwQhjeLf
- AvAWWERS/0WbyFWQ53rgJQjUsuUG94irS/U8YfCsVXIZN4ZxheXv3xSZx14hxeeKdXVM
- /kh/m4jj6p6y5MUPPoFc37mr3UKnd5/Y3LZvKHG99AwgKBLl9o0623CnM7MMBIQ7tKs0
- HCScew90oxE8IBsZ9VkMFk34sUq2NybBOeFJqmXCwqEPmzW6cxeRBml6nstyo9pOt6NY
- RLXj/WXIIqds/SDAOX07zV33g60BW40+QmCdE8eKxi5yMByqRqciZ8u7Jh/AcJ9q+j27
- 27OQ==
+ d=linaro.org; s=google; t=1753986621; x=1754591421; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=B+t1EESDFAbGOqAdEQWLaXG6wL7K4P09+fmZeZbGBSg=;
+ b=rldRbzaDQHeX+3JsJjilsIvaE80iw9aDHyK9lsh04RIBwGVz8jbH9DlkhRDFMiqvUq
+ gyF9Ae4E1jqt4xNF/A0/mjDrSq+A2XEUF5SbOnfEZU8qbgG1+UEAl5iEDR3Fr/HscNDd
+ MgOzqtVnPSa3eRQjK2SwucEroL+a3ZE5YA2d1+9TbWHrvHTZhEE9+TnukUrZtjlQIo0N
+ 7JE69GcpkGaCnmntOzViVmA+KpgvIGBoczSTLL1a+dK7u6BP51OvAEtsgSTE46Uh+HKK
+ stUqFdPL7wytPa8x2q8veHckpiDx7sZKdAYKR5D6e94kbvu+5XEmEk7b44y8bEXnA8EB
+ owhg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1753981898; x=1754586698;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=437EfaWyAbws1fUTE8ezyQL7R2lax3qYd8TnsU763SA=;
- b=veXLzmcjRjkHFnkEAxFpCCytY4rY9CwGeFOOM9OCB7d71uXic9cqrQY72TtyBc4MMn
- BTQUOySO66gls/oTmlqKNS03iANdwA9TSzbjXDTnRoUFAh9RpkYU7t9d7On09+aR75XH
- gnm91DLxdzLIpmXfRa2OqZUR2YrQ8cVRDIjDUWQ28ozlolMGVmwFTTsCyifPdBicUvqx
- y23iZKB6nFUorHsqSsx1bxIT9sTE+t04cro52fnoJ6AcXteM7OlqEyHBn2jQ9UyuCxuu
- oqc5UGp1OPzGuSlGtMhUL0mJ2yLgivYYnX+rH3Vh7Y9ee7+H7rFh2VIdtj1XhFtI+D8b
- gF/w==
-X-Gm-Message-State: AOJu0Yz4kFKKGV6acUFLzz8tuDi6leXsLWQGqk5nFoMJW1l9r0GxhJ26
- dvn5mpVobDPbjyDzF1i5LsPhCWTZ9Dh6iDHeqspEx9ygwIpRola20nLOey7sPXkA+dS0OVuekdr
- SzS02UiNhVk9P0Rne4xJvMUzj9sxUjw+HU1GKboPcFw==
-X-Gm-Gg: ASbGncuoCf7EO9+IgJCIED+JmHOH1C3hV8q+hQtmlVlV00j8NU2lN0YL6lCPWzQ8pyo
- sCzOMGEFXNtIf8FkNyM+cEFNiZiibTAjxIwsb4DtOhpEyUnI06Vx24hFUt/nl91aP2VRuBKrgPQ
- /lTjmux9LmxYIeeorC1CzwdvUSKDVm9Fr+H9iR0JMz0kSszSD2V51XMYERdr4I+yQsM/9CtKLTr
- OhfBdco
-X-Google-Smtp-Source: AGHT+IHaoyIgnDImdZj5451kF7XQGbW3EIfnRo8vHYw3SlJY8UcWyVte8JhrZ+emmvrNXOZvMMprn5DDS2GPPM2ppPA=
-X-Received: by 2002:a05:690c:640d:b0:71a:251e:36ee with SMTP id
- 00721157ae682-71a4696dc39mr105768417b3.39.1753981898059; Thu, 31 Jul 2025
- 10:11:38 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1753986621; x=1754591421;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=B+t1EESDFAbGOqAdEQWLaXG6wL7K4P09+fmZeZbGBSg=;
+ b=qlJbsThj9lkQOPKr2+3qJTvQqPBIfDjZrrGXmYKYlM5Wru3pvOvCuYg4ZX85lJbCEz
+ Hf/ZLVALHOrez6aTXWz7PIqQ9crmOnhWzFoJsKI9WezvWpFk9o/6Lr2i0Mpkv2NG14yr
+ o5jtva3CCs0ypw3PTqGu+oEwWI/crlMIB+H1cCLWSB8HyyFafdNj+o460mPJoyOcE+S8
+ KCkuqrq1xUhD5/LbQhdE3BvRNL/1ESi2zYcrN/9DRoaxGfL6BHL+a/NbJuitD6I9uhsP
+ w/r2sUHkhA097iJT0UzrbZFqGLUOljHkem3ebxsPwOmzie4K/9OpBVsqeaIKWLzfXPLD
+ cxOQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCV1BgSRh/CV/XhVnyEDPqLTuhiWF3wmzbqmBaEUKcBhp8LXZQKoBjB5+DlvyjcDXK+5f0wyXMKTzQ==@nongnu.org
+X-Gm-Message-State: AOJu0YwnFKs8KNyXPNYM1mlHcWm9ymHtY+37BrOxCw8/JC8zl9m4Di9x
+ lO7T1WT84RxBez5OOBLRktq4AbIWHBjw+eFync6aGHlXqKj8rcAiyjxJ/t0sU7Iy45o=
+X-Gm-Gg: ASbGncsmnDEcvZEoxu/DnXyxaz8ByItHBO3AheU2LISqYR4lNwo3My4ogWvhTktjriS
+ QTfEasaawqSuVmmJgjN+HG1PulZ6Ckn3OS9CNcmHwHtgv6Op59UyFvjnDY7u/1RKkcLmLAxFA59
+ vS1zJ+k+IYgebtCKQ7FYczXnOGeWgKCA38IOMonB/Zd1uYwlfKkcMn/CiQVD6EgXDP3AVhMCNG7
+ IoDu/k5kRiUgbk1pid0frTz/6FS4dEO44/t5jdQADzENc6QW9Z2h3zlCK862gkYWrMeTJH1oKCx
+ phkEoRWsf5GceUk6UearF9rXUPG5mcLMnvV+T5iwEp+tpYn1I1XPMZcOqE5ky7p+Yc6W6p/Xn8a
+ l66BAOag7OGTMclKFX0WZppkcDRUaq+1jT3c=
+X-Google-Smtp-Source: AGHT+IFRNdkBVeQRtr/IbDbG8Y6h9rmkiWtkGEkY3lZz9y2BXurDo+SC2a9hE+V2Ahu9VWIAVap5OQ==
+X-Received: by 2002:a05:6a00:2382:b0:736:4e14:8ec5 with SMTP id
+ d2e1a72fcca58-76bcd398e77mr3946064b3a.11.1753986620990; 
+ Thu, 31 Jul 2025 11:30:20 -0700 (PDT)
+Received: from [192.168.1.87] ([38.41.223.211])
+ by smtp.gmail.com with ESMTPSA id
+ d2e1a72fcca58-76bccfea38csm2203147b3a.128.2025.07.31.11.30.20
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 31 Jul 2025 11:30:20 -0700 (PDT)
+Message-ID: <25fe9c70-be00-4884-8d91-53dfff745cb6@linaro.org>
+Date: Thu, 31 Jul 2025 11:30:19 -0700
 MIME-Version: 1.0
-References: <20250729161650.43758-1-zenghui.yu@linux.dev>
-In-Reply-To: <20250729161650.43758-1-zenghui.yu@linux.dev>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 31 Jul 2025 18:11:26 +0100
-X-Gm-Features: Ac12FXyCjxHGcxU3b0lInW5pSCJ6upqutpBN4ZWL-U213zkJ7YtcTibg5DA0wyg
-Message-ID: <CAFEAcA-dRAViFBSvmYS+FSMKPhP_ej5Sv90n6+WLaR=jeQeiAg@mail.gmail.com>
-Subject: Re: [PATCH 0/2] hw/intc/arm_gicv3_kvm: two small fixes about register
- accesses
-To: Zenghui Yu <zenghui.yu@linux.dev>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b36;
- envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb36.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 0/3] single-binary: compile hw/intc/arm* files once
+Content-Language: en-US
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org
+References: <20250725201906.19533-1-pierrick.bouvier@linaro.org>
+ <bfdd8821-a7f7-4648-a389-124426da6d15@linaro.org>
+ <144f0930-af30-42b0-849c-99242d3f09ee@linaro.org>
+ <CAFEAcA-ycO=AO8UO+X3f6pw34J=iFwW3dpPyMXKm5BzJ11dt5Q@mail.gmail.com>
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+In-Reply-To: <CAFEAcA-ycO=AO8UO+X3f6pw34J=iFwW3dpPyMXKm5BzJ11dt5Q@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::429;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pf1-x429.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -93,19 +107,121 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, 29 Jul 2025 at 17:17, Zenghui Yu <zenghui.yu@linux.dev> wrote:
+On 7/31/25 9:23 AM, Peter Maydell wrote:
+> On Mon, 28 Jul 2025 at 20:34, Pierrick Bouvier
+> <pierrick.bouvier@linaro.org> wrote:
+>> This old commit (7702e47c2) was the origin of having interrupt related
+>> code in a generic folder, but I don't really understand the rationale
+>> behind it to be honest. It seems to be an exception regarding all the
+>> rest of the codebase, thus the idea to bring back things where they belong.
+> 
+> Most devices are both (a) architecture specific and (b) a particular
+> kind of device (UART, ethernet controller, interrupt controller, etc).
+> The nature of a filesystem hierarchy is that we can't file them
+> in both ways at once. We picked "sort them by kind", which is why
+> all the interrupt controllers live in hw/intc, all the UARTS in
+> hw/char, ethernet controllers in hw/net, and so on. In this
+> breakdown of the world, hw/$ARCH is supposed to be for board models
+> and SoC models only.
+> 
+> The GICv3 and the NVIC are odd, because they are very closely
+> coupled to the CPU. (A few other interrupt controllers are also
+> like this, but many are not: for instance the GICv2 is a distinct
+> bit of hardware that communicates with the CPU over the IRQ and
+> FIQ lines only.)
+> 
+> One of my post-implementation regrets about GICv3 is that we
+> didn't really get the split between the GICv3 proper and its
+> CPU interface right. In hardware the GICv3 is an external device
+> and the CPU interface is part of the CPU, with a defined
+> protocol for talking between them. In QEMU we put all the
+> implementation of this in hw/intc/, and the code in arm_gicv3_cpuif.c
+> does some ad-hoc installing of hooks into the CPU.
+> 
+> For the GICv5 I'm trying to structure this in a cleaner way that
+> is closer to the hardware structure, so the CPU interface
+> will be code in target/arm/, with a clearly defined set of
+> functions that it calls to talk to the rest of the GIC that
+> lives in hw/intc/. (This would be too much upheaval to
+> retrofit to GICv3 though, I think.)
+> 
+> In a green-field design of M-profile we might have made
+> the NVIC be code in target/arm, and instead of a separate
+> device have the CPU object itself do this code. But at the
+> time it was written we didn't have the same QOM device
+> class setup we did at the time, and IIRC CPU objects
+> weren't a subclass of device.
+> 
+
+Thanks for your answer Peter, it makes more clear for me what is the 
+rationale between sorting the devices this way. It seems the root issue 
+is the lack of proper interfacing between target cpu, and devices 
+relying on it.
+
+I don't expect any silver bullet to solve this, but we still need to 
+move forward, so I'll share some options below.
+
+>> As well, I would prefer having a clean build system more than a clear
+>> filesystem structure, considering it's quite easy to jump into any
+>> definition automatically with your work editor nowadays, vs understand a
+>> meson.build file full of tricks and implicit dependencies where no tool
+>> can help you.
+> 
+> On the other hand, I prefer to have the source files in
+> a clear structure, because then you know where to find
+> things, and command line tools like grep etc are easier
+> to use. (I don't use editor jump-to-definition: I've never
+> felt the need to try to set it up.) Build system files on the
+> other hand are things that most people don't need to look at
+> or do more than very simple "add another file in the same pattern
+> as the existing ones", so it's not too bad if they accumulate
+> a little complexity.
 >
-> Zenghui Yu (2):
->   hw/intc/arm_gicv3_kvm: Remove writes to ICPENDR registers
->   hw/intc/arm_gicv3_kvm: Write all 1's to clear enable/active
->
->  hw/intc/arm_gicv3_kvm.c | 6 ++----
->  1 file changed, 2 insertions(+), 4 deletions(-)
 
-Did this cause any visible bugs, or did you just notice it
-by code inspection ?
+This maybe explains why QEMU is a bit messy regarding its build system 
+architecture, because people are not interested into it. IMHO it's a 
+mistake, because a clean build system architecture will usually force a 
+clean software architecture, at least in terms of components and 
+interfacing. This is what we see right now, with some of the fixes from 
+the single binary being to extract proper API with fixed types, that 
+allow components to communicate in a proper way.
+Complexity does not help neither, because it makes meson build files 
+hard to understand, and probably push back a lot of people from looking 
+at this. It's sad considering meson first objective is precisely to 
+limit the complexity of build systems.
 
-Applied to target-arm.next, thanks.
+Regarding the "modern" completion support, I recommend you take a look 
+at it. Even though you wrote or reviewed most of the code you navigate 
+in everyday, and thus don't need it, it has become a standard tool for 
+any developer, like sanitizers or omniscient debugging. It's especially 
+interesting since those tools are based on compilers (clangd is the 
+standard for C/C++ nowadays) and not a bunch of clunky regexps.
+It's even more interesting when you learn a new language, like Rust.
 
--- PMM
+> Looking at hw/intc, there is a lot of use of specific_ss
+> here, so I suspect that these Arm interrupt controllers are
+> not going to be the only ones that are using target-dependent
+> code (there are 25 files which use CPUState, for instance).
+> So I think it's worth figuring out how to build these in
+> the right way where they are rather than saying that
+> various interrupt controller models should move to
+> a place where they don't logically belong because that happens
+> to be a folder where we have the build machinery for it.
+> 
+
+Coming back to our issue, I can see two ways to solve it in a short term:
+- On build system: define target hw before generic ones, so we can reuse 
+all the source sets defined there. This has the advantage to be usable 
+by all others architectures.
+- Move gic related fields to a substructure in arm cpu, and provide a 
+simple accessor to it, like "cpu_gicv3(cpu)", breaking the dependency to 
+cpu.h. Concerned fields would be: gic_num_lrs, gic_vpribits, 
+gic_vprebits, gic_pribits.
+
+As you'll be the one having the final word and merging this, which 
+option would you prefer to see?
+
+> thanks
+> -- PMM
+
 

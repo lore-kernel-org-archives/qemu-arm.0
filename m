@@ -4,85 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A84AC87FCA
-	for <qemu-arm@archiver.kernel.org>; Fri,  1 Aug 2025 08:36:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6719C87FDA
+	for <qemu-arm@archiver.kernel.org>; Fri,  1 Aug 2025 09:13:24 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uhlEf-0002RJ-HX; Fri, 01 Aug 2025 04:35:30 -0400
+	id 1uhlnr-0000aM-Oj; Fri, 01 Aug 2025 05:11:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uhlDu-0002AC-Fi
- for qemu-arm@nongnu.org; Fri, 01 Aug 2025 04:34:44 -0400
-Received: from mail-yw1-x112e.google.com ([2607:f8b0:4864:20::112e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uhlDs-0000yk-Dn
- for qemu-arm@nongnu.org; Fri, 01 Aug 2025 04:34:42 -0400
-Received: by mail-yw1-x112e.google.com with SMTP id
- 00721157ae682-71b6ab52e8cso6929237b3.0
- for <qemu-arm@nongnu.org>; Fri, 01 Aug 2025 01:34:39 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1754037278; x=1754642078; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=7YsHZyiE2Lx2Jze+gaY6HgB0NnAHU4eokx9mTEwqGBQ=;
- b=uYbWfbZ+4EYuVgytIxFmm67ukkSm1IF1N2tQyMhj/e2pCBvqoYI8ynfRGMLpcYDzcS
- dCcICVZFwHSweSqEG4wUUVEBvEvdpe9T+TgLDRTMA0sPfJJYQrq0nSCwoUA3KCPoswFl
- rTGWHRZmNJzBnH27r0TIDaqWosgmicvrGxAtk/B7tHY+Eahr8JtGIhwhm4hW8dltVzBO
- SvkubDU8vqQw0FTn9oqOBMHux+8Rom7Vac7DCx/++t/qR9D462zxO1NJpcyotD1/3Jqk
- c8skr5hzQb60LYl6c24J4dhlHNKdy3uuUKgejgyKllibFRGW7PAEw8jSi1RaU01XQZca
- /4Nw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1754037278; x=1754642078;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=7YsHZyiE2Lx2Jze+gaY6HgB0NnAHU4eokx9mTEwqGBQ=;
- b=JclHIcc5NYMv4FBe9xXlSVe//dERYv85Ktb6cBy9ILHNTyrs/xvfCIvdQbuuTjstsJ
- ZAQyA/xOs7Jggj8WIQps1thXCtDMM3k6nxkpgh3R39Cj1qbg4DYoswIg6mJcirVtanLh
- ahIu3CqIytSBb259DHTS1UECvNtd/BDcD1jdEBWKW+W1l1g+XRTY7HAmB1RERKze2NaE
- 5+o9l9ObM4VPXRi3HohbuAePA2zvIUsCVfOPm560helprPjiNGPmgmI9j5Xtmr/RZQ2d
- aCodWTD4lfgX4/F/v3CgCbANQgOgMDjJHoe+7K0Qfubx/aHv/nvx8aS372oaLiVW6mBq
- MhAg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWjgSkg+zAPMCbJ6KOGSrNRW+xhdWkzYs39lgcVLq/u9lR197zaLdqAMVTR8Osj+PvfdfSHNDadbA==@nongnu.org
-X-Gm-Message-State: AOJu0Yz7hnsJ+U5NhevvhuUyMljWGayWACxz3s+RQlo+UVBRNeP02MIJ
- ye1tSZKjHk4ZYxlmp4/eoTHvszbDfSjnw2DuU/g8ioRgCGlNrHI/5vqFcIWqqQekh27cUphZBVq
- IrbYr/CDoXoQmMYiaiP8eqkV6yvsxBs+Wq1ZqWd6/VQ==
-X-Gm-Gg: ASbGncvXANXwGWGJTJYhTwOJs8z+FOCJUrvy3Ebo8TraG05hygSiXARepJa4tcw/Iil
- x7LAPl/Q3FAKMbCBw13D/di4F4d/X9/PmSAUClwgIpjHn5yzc0wTsF88l4Du5u/Cm3AQqX5wy9r
- ZbYxWK12SjzawB6QOZwXcPYavjILT+aHl76pS/ABZEyYy9mu7uOH+waTCmxiyb3QCnAEqaSgDRY
- elZnVR/
-X-Google-Smtp-Source: AGHT+IE/sNYNYLWEP3QI5jW2RfXUXK2vyKQO49O10NElRWtJzF3L+C9AeKY/zgqcWpP3aZFRK/GzYzYFueLC72dKCA4=
-X-Received: by 2002:a05:690c:d96:b0:70d:f420:7ab4 with SMTP id
- 00721157ae682-71a466bf17dmr152978847b3.29.1754037278446; Fri, 01 Aug 2025
- 01:34:38 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <smail.aider@huawei.com>)
+ id 1uhljY-00057y-GB; Fri, 01 Aug 2025 05:07:24 -0400
+Received: from [185.176.79.56] (helo=frasgout.his.huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <smail.aider@huawei.com>)
+ id 1uhljV-000766-AS; Fri, 01 Aug 2025 05:07:24 -0400
+Received: from mail.maildlp.com (unknown [172.18.186.31])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4btg2V6rTDz6L5Jq;
+ Fri,  1 Aug 2025 17:02:42 +0800 (CST)
+Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
+ by mail.maildlp.com (Postfix) with ESMTPS id 1ECB21402EB;
+ Fri,  1 Aug 2025 17:07:01 +0800 (CST)
+Received: from china (7.182.10.167) by frapeml500008.china.huawei.com
+ (7.182.85.71) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Fri, 1 Aug
+ 2025 11:06:56 +0200
+To: <qemu-devel@nongnu.org>
+CC: <alexander.spyridakis@huawei.com>, <qemu-arm@nongnu.org>, Peter Maydell
+ <peter.maydell@linaro.org>, <zhangyue165@huawei.com>,
+ <richard.henderson@linaro.org>, <liuyutao2@huawei.com>,
+ <smail.aider@huawei.com>
+Subject: [PATCH v2 1/2] target/arm: Trap PMCR when MDCR_EL2.TPMCR is set
+Date: Fri, 1 Aug 2025 17:06:44 +0800
+Message-ID: <20250801090645.2205449-2-smail.aider@huawei.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20250801090645.2205449-1-smail.aider@huawei.com>
+References: <20250801090645.2205449-1-smail.aider@huawei.com>
 MIME-Version: 1.0
-References: <20250725201906.19533-1-pierrick.bouvier@linaro.org>
- <bfdd8821-a7f7-4648-a389-124426da6d15@linaro.org>
- <144f0930-af30-42b0-849c-99242d3f09ee@linaro.org>
- <CAFEAcA-ycO=AO8UO+X3f6pw34J=iFwW3dpPyMXKm5BzJ11dt5Q@mail.gmail.com>
- <25fe9c70-be00-4884-8d91-53dfff745cb6@linaro.org>
-In-Reply-To: <25fe9c70-be00-4884-8d91-53dfff745cb6@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 1 Aug 2025 09:34:26 +0100
-X-Gm-Features: Ac12FXwkhCRV7862qOZMU63eG5MFFnYfvpUQjYI8FvlW2QYCmy56ba-hN4GYsWA
-Message-ID: <CAFEAcA8qHUT-0k6chAFZ61J=YZ7xLvhYgqsgtQiCgkfaxfFRxg@mail.gmail.com>
-Subject: Re: [PATCH 0/3] single-binary: compile hw/intc/arm* files once
-To: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112e;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [7.182.10.167]
+X-ClientProxiedBy: kwepems200001.china.huawei.com (7.221.188.67) To
+ frapeml500008.china.huawei.com (7.182.85.71)
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 185.176.79.56 (deferred)
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=smail.aider@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -33
+X-Spam_score: -3.4
+X-Spam_bar: ---
+X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -96,28 +68,72 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Smail AIDER <smail.aider@huawei.com>
+From:  Smail AIDER via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, 31 Jul 2025 at 19:30, Pierrick Bouvier
-<pierrick.bouvier@linaro.org> wrote:
-> Regarding the "modern" completion support, I recommend you take a look
-> at it. Even though you wrote or reviewed most of the code you navigate
-> in everyday, and thus don't need it, it has become a standard tool for
-> any developer, like sanitizers or omniscient debugging. It's especially
-> interesting since those tools are based on compilers (clangd is the
-> standard for C/C++ nowadays) and not a bunch of clunky regexps.
-> It's even more interesting when you learn a new language, like Rust.
+From: Smail AIDER via <qemu-devel@nongnu.org>
 
-I do actually have clangd enabled at the moment in emacs:
-but my experience is not good, because typically what happens
-is that clangd runs itself out of memory and falls over
-fairly frequently, or it produces obscure error messages like
-"LSP :: Error from the Language Server: trying to get AST for
-non-added document (Invalid Parameter)"...
+Trap PMCR_EL0 or PMCR accesses to EL2 when MDCR_EL2.TPMCR is set.
+Similar to MDCR_EL2.TPM, MDCR_EL2.TPMCR allows trapping EL0 and EL1
+accesses to the PMCR register to EL2.
 
-So I mostly continue to investigate code the way I always have
-done, with grep.
+Signed-off-by: Smail AIDER <smail.aider@huawei.com>
+Message-Id: <20250722131925.2119169-1-smail.aider@huawei.com>
+---
+ target/arm/cpregs-pmu.c | 24 ++++++++++++++++++++++--
+ 1 file changed, 22 insertions(+), 2 deletions(-)
 
--- PMM
+diff --git a/target/arm/cpregs-pmu.c b/target/arm/cpregs-pmu.c
+index 0f295b1376..3aacd4f652 100644
+--- a/target/arm/cpregs-pmu.c
++++ b/target/arm/cpregs-pmu.c
+@@ -252,6 +252,26 @@ static CPAccessResult pmreg_access(CPUARMState *env, const ARMCPRegInfo *ri,
+     return CP_ACCESS_OK;
+ }
+ 
++/*
++ * Check for traps to PMCR register, which are controlled by PMUSERENR.EN
++ * for EL1, MDCR_EL2.TPM/TPMCR for EL2 and MDCR_EL3.TPM for EL3.
++ */
++static CPAccessResult pmreg_access_pmcr(CPUARMState *env, const ARMCPRegInfo *ri,
++                                   bool isread)
++{
++    int el = arm_current_el(env);
++    uint64_t mdcr_el2 = arm_mdcr_el2_eff(env);
++
++    CPAccessResult ret = pmreg_access(env, ri, isread);
++
++    /* Check MDCR_TPMCR if not already trapped to EL1 */
++    if (ret != CP_ACCESS_TRAP_EL1 && el < 2 && (mdcr_el2 & MDCR_TPMCR)) {
++        ret = CP_ACCESS_TRAP_EL2;
++    }
++
++    return ret;
++}
++
+ static CPAccessResult pmreg_access_xevcntr(CPUARMState *env,
+                                            const ARMCPRegInfo *ri,
+                                            bool isread)
+@@ -1192,14 +1212,14 @@ void define_pm_cpregs(ARMCPU *cpu)
+             .fgt = FGT_PMCR_EL0,
+             .type = ARM_CP_IO | ARM_CP_ALIAS,
+             .fieldoffset = offsetoflow32(CPUARMState, cp15.c9_pmcr),
+-            .accessfn = pmreg_access,
++            .accessfn = pmreg_access_pmcr,
+             .readfn = pmcr_read, .raw_readfn = raw_read,
+             .writefn = pmcr_write, .raw_writefn = raw_write,
+         };
+         const ARMCPRegInfo pmcr64 = {
+             .name = "PMCR_EL0", .state = ARM_CP_STATE_AA64,
+             .opc0 = 3, .opc1 = 3, .crn = 9, .crm = 12, .opc2 = 0,
+-            .access = PL0_RW, .accessfn = pmreg_access,
++            .access = PL0_RW, .accessfn = pmreg_access_pmcr,
+             .fgt = FGT_PMCR_EL0,
+             .type = ARM_CP_IO,
+             .fieldoffset = offsetof(CPUARMState, cp15.c9_pmcr),
+-- 
+2.34.1
+
 

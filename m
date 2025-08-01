@@ -4,84 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89206C87FD2
-	for <qemu-arm@archiver.kernel.org>; Fri,  1 Aug 2025 03:54:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E734DC87FCB
+	for <qemu-arm@archiver.kernel.org>; Fri,  1 Aug 2025 04:24:18 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uhgqQ-0006mU-Bh; Thu, 31 Jul 2025 23:54:10 -0400
+	id 1uhhJT-0002lA-IH; Fri, 01 Aug 2025 00:24:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1uhgqO-0006jl-Hf
- for qemu-arm@nongnu.org; Thu, 31 Jul 2025 23:54:08 -0400
-Received: from mail-pg1-x529.google.com ([2607:f8b0:4864:20::529])
+ id 1uhhJQ-0002gd-IO
+ for qemu-arm@nongnu.org; Fri, 01 Aug 2025 00:24:09 -0400
+Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1uhgqM-0008Gj-IX
- for qemu-arm@nongnu.org; Thu, 31 Jul 2025 23:54:08 -0400
-Received: by mail-pg1-x529.google.com with SMTP id
- 41be03b00d2f7-b3aa2a0022cso1272874a12.1
- for <qemu-arm@nongnu.org>; Thu, 31 Jul 2025 20:54:05 -0700 (PDT)
+ id 1uhhJO-0004Et-Ut
+ for qemu-arm@nongnu.org; Fri, 01 Aug 2025 00:24:08 -0400
+Received: by mail-pl1-x630.google.com with SMTP id
+ d9443c01a7336-24063eac495so3740445ad.0
+ for <qemu-arm@nongnu.org>; Thu, 31 Jul 2025 21:24:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1754020444; x=1754625244; darn=nongnu.org;
+ d=linaro.org; s=google; t=1754022245; x=1754627045; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:content-language:from
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=AA8gho/6YRVQoMeS73oZsIiDVQKycI7A7Y+em8lGyeY=;
- b=LiJmJv2lwAqU4cvfHKmdW40909YHtROs5dFB2sdAGizeXwKvzUmrnG28sTJimV+Box
- Bk/E01b/upL5HZ+mOJWkDLm2f6hZURP9ZseiY8rO2GJfs44o76IT8vUxxTgd40lvlzcf
- LcEJ2WwelRz5HpO4mGFOElLIvK3RKqCQ3GIi0acIo1krNqfBOOrCYYp3ntGtL/D/9TSL
- wpaJYQEQ3Gcr5UkB2rtfw7ht+sHBRsAuzKsOQv+4xUgrUooXIYb1PAvZoLZm1iHaDysD
- oHZIXz8eHjKgd+/6NBGpb+eDZqOLvrn0P3831yLvxKm8KpEmZRA3sn+Kh5CKpcxnyyHZ
- CERA==
+ bh=QrcjdRn4FoXk91gllSNnJ6FARMuaVOS6lz2+WKkXkSo=;
+ b=TgUViCAXdcq+Mg6Ey2xOinuKS0Q4lzzXJToYx90YQ5h/+nycqR0ofiFwIbjS8ZO6+9
+ PuTccV4Rnwz1F2lyDYF5YTVreOOltufZs4dLkih8FTYbslkb47yxwsVAZ4BE3+XmfM7M
+ gany4grbOdUQTzfPZcyL61O3sasFajki413F1pXd3k3Ha3WOFEhj5JmbvZddPRLq8sCx
+ XuW6ssUhGgpGimu3gX7P1zYz+NOWxFG8/GpEbJGtyOo+epTF+6/08ShQx1SnbA3rw6BA
+ uD03JgKo/sebJMB4tZEaxiUuOPIJq1SfozNxVsuObYPpel06J0XaMlwZFM9rlI2hF8Qo
+ 6XoA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1754020444; x=1754625244;
+ d=1e100.net; s=20230601; t=1754022245; x=1754627045;
  h=content-transfer-encoding:in-reply-to:content-language:from
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=AA8gho/6YRVQoMeS73oZsIiDVQKycI7A7Y+em8lGyeY=;
- b=ueTPYpwMsY/sz6PTGsgVJT16kc1IpW16HluoCwJp5aHoVKUZYy0lb2sGjmBCpGiofY
- E5+gPCKJkoJ3nk3nqKBOz8wIZyjz4AcCQWH6lvfb2xv32pNpSPu5YHYuugkmHCEkhU7O
- rS84EAgcEoKJTJ3LxjK2/scnDV+o41GhTaQlMuNoIbZAC1Ly6zumBjIIStaqPzlORcYf
- NC4N0jJStXHsm+lOUfiiUAr45L0e09Ue1X3CaCdo1B9PrtkTROD8NjF36sWLPOI2iyIs
- v4rjHrTA1Q17zuzaRYEyIdMPNzfg41MgzGthNDcZqKGHNRt/lLv0m/k/9+d9EC0TRse+
- vdnA==
-X-Gm-Message-State: AOJu0YzoJQEakOrweLDKq56UAcCFDlmtihp5c3cWLNMOXSmQ2t1ZvNx2
- tKucnVnq55+MRwOML6oQdxsxxe31UMTgz8Vt+Lc6B5knQaUDPn3eSwTqrHMgEfxv/Qs=
-X-Gm-Gg: ASbGncuUxdzUUpTgBXo4XxUnqg/evuvHpUqaZDG28I9OoxVPqW1cunmIF94Lh9dimup
- c2KYt7EcVjBKP8AM4t+LDhA0+NDfDIIZZMVFkItrOun61xS+eks5pz3DCdeapvHulvomoGTPfL7
- fnQfyNjDLG67Y6UEIQ8qYSIh5DYus8USirh77gR2YCxrs3b+QwYii1TDo4F4daQ2GRt7JHduzL2
- D6N2VGM6PfSTUwE1AzLW5h8bq/p3+CHYcDJGNXeE77PgAyVdhF4zetApnLQqa8Jsr92MROWr3O7
- 2sCr52DrvwhzYzwaOb11Q06EeYcb4CKA4lysIcnmj/Du583ZoHCJ7Z2Aaq+irUmOtmuAXrbS9kP
- urZlMtB/CvSFi0XNCaAs9pQDnYXc7ULGK/2kspluZ
-X-Google-Smtp-Source: AGHT+IFEn8ORgcp/BvoBWZW0v5k9AiJMpdy5nv4LdaxNRiLf6vOT3C0KC6fJO6x+/C712SqqdCKotw==
-X-Received: by 2002:a05:6300:210b:b0:23d:9dd0:b2e5 with SMTP id
- adf61e73a8af0-23de8226cd0mr1818300637.41.1754020444471; 
- Thu, 31 Jul 2025 20:54:04 -0700 (PDT)
+ bh=QrcjdRn4FoXk91gllSNnJ6FARMuaVOS6lz2+WKkXkSo=;
+ b=sOiddJMrH5wB0iZdHrh+gEY87GgwaL+2rZpcrFFSRoXF36/jbLXZsSnNu/tzJf/kLG
+ eaFyaVDiigeXY0mHgUhzDbyIQ/GIvv3xD1GGSiy7Vi1B/tIz42KbZdadbMD7t/cVyJZx
+ Wy6zVZk16s156DxUVbaBVBxXLlE2DKPATGwI6O/3iv+topJ4k0iYluKRx5ED25WrEvJb
+ jfB59DsP96kAHcB987h/g0wmLQrV8WWypaLHr8EPtY1yuhim9N4bbdeFLSZ4kyzIZYoB
+ kvoqXd6thwu+6k9m7Bv82BZ+nzsCDTb7za9Gej+BkAwGnxJuEel7QBgsatbnkRv1WHOw
+ uXYg==
+X-Gm-Message-State: AOJu0Yz/zRB3QmpBUo/aTMHJhkXVg9TdHp9tfTq4s/kf6boBWOIXfZui
+ KCDKY4tDa3Gz9z6XTebaDIr5F/xt6V4SygE004parZEL2ElTrJ3tNZCLESrRn0Tpudr0h7heeDj
+ ZNuozppI=
+X-Gm-Gg: ASbGnctGDc0i1VWxXAISH0A73uDny4gt1OafuxBjV1hsPTxE3iUFZ/oITZZRmJSehfC
+ 2GjQzYcwsxR2P91S6fVAgKhyEbCWyByzj5nBmi4HH6AY5cxs4jNVivUDIG/pbCJVFUSJVVzJ0Ud
+ ez/I/7+1qGusFOmbLMOIMIpUFzWqMcFwS4lx25oJBvOQquDrXTiNeKed9r2gSLyyUWo+E+o1Rbk
+ eUtnOvZab+7FZ1A+pssqkNrX5CDS+ew2zTtaSA3eTBNj+/5nmGq47RnXzoqOpf/TnETOFcAuCAH
+ AAjevrXnXrTfIxnsT5mHWWuV7NzCzodriNhGOykNRYjwLCcl3nqhz18nqTPc7Mjclw1HltJt9VT
+ q7KwyFPtbZSEeIbofIksaQG98x5K7NKdd9p9q1bNBFAxrCjC4xoI=
+X-Google-Smtp-Source: AGHT+IG7OP2f/nirxrxZChsgzNbFhBkC+fOSlnVpCGK1uQLwW9CU/TKTdAJa+tmw2+GaCoF6SlqXZw==
+X-Received: by 2002:a17:903:1b67:b0:23f:8bcc:e4e9 with SMTP id
+ d9443c01a7336-24096b103b9mr144220575ad.23.1754022245143; 
+ Thu, 31 Jul 2025 21:24:05 -0700 (PDT)
 Received: from [192.168.4.112] ([180.233.125.160])
  by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-76bcce6f92bsm2957720b3a.21.2025.07.31.20.54.01
+ d9443c01a7336-241e8ab38b4sm31085455ad.181.2025.07.31.21.24.02
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 31 Jul 2025 20:54:04 -0700 (PDT)
-Message-ID: <e275dc71-2d48-4b48-9b7f-dae2c8934d64@linaro.org>
-Date: Fri, 1 Aug 2025 13:53:59 +1000
+ Thu, 31 Jul 2025 21:24:04 -0700 (PDT)
+Message-ID: <f198153f-088c-4196-9ee2-ed1e8e4fc92f@linaro.org>
+Date: Fri, 1 Aug 2025 14:24:00 +1000
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 37/82] target/arm: Convert regime_is_user from switch to
- table
+Subject: Re: [PATCH 47/82] target/arm: Expand pstate to 64 bits
 To: Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org
+Cc: qemu-arm@nongnu.org, Thiago Jung Bauermann <thiago.bauermann@linaro.org>
 References: <20250727080254.83840-1-richard.henderson@linaro.org>
- <20250727080254.83840-38-richard.henderson@linaro.org>
- <0128c452-8bde-4bdd-b73c-330a7bd619a1@linaro.org>
+ <20250727080254.83840-48-richard.henderson@linaro.org>
+ <b2e40787-6043-4d4c-9cbb-731d0e92e25c@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
 Content-Language: en-US
-In-Reply-To: <0128c452-8bde-4bdd-b73c-330a7bd619a1@linaro.org>
+In-Reply-To: <b2e40787-6043-4d4c-9cbb-731d0e92e25c@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::529;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x529.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::630;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x630.google.com
 X-Spam_score_int: 12
 X-Spam_score: 1.2
 X-Spam_bar: +
@@ -104,34 +104,43 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 7/31/25 07:21, Pierrick Bouvier wrote:
->>   #include "mmuidx-internal.h"
->> -#define EL(X)  ((X << R_MMUIDXINFO_EL_SHIFT) | R_MMUIDXINFO_ELVALID_MASK)
->> +#define EL(X)  ((X << R_MMUIDXINFO_EL_SHIFT) | R_MMUIDXINFO_ELVALID_MASK | \
->> +                ((X == 0) << R_MMUIDXINFO_USER_SHIFT))
->>   #define REL(X) ((X << R_MMUIDXINFO_REL_SHIFT) | R_MMUIDXINFO_RELVALID_MASK)
->>   #define R2     R_MMUIDXINFO_2RANGES_MASK
->>   #define PAN    R_MMUIDXINFO_PAN_MASK
->> +#define USER   R_MMUIDXINFO_USER_MASK
->>   const uint32_t arm_mmuidx_table[ARM_MMU_IDX_M + 8] = {
->>       /*
->> @@ -33,7 +35,7 @@ const uint32_t arm_mmuidx_table[ARM_MMU_IDX_M + 8] = {
->>       [ARMMMUIdx_Stage2_S]        = REL(2),
->>       [ARMMMUIdx_Stage2]          = REL(2),
->> -    [ARMMMUIdx_Stage1_E0]       = REL(1) | R2,
->> +    [ARMMMUIdx_Stage1_E0]       = REL(1) | R2 | USER,
->>       [ARMMMUIdx_Stage1_E1]       = REL(1) | R2,
->>       [ARMMMUIdx_Stage1_E1_PAN]   = REL(1) | R2 | PAN,
+On 8/1/25 05:13, Pierrick Bouvier wrote:
+> On 7/27/25 1:02 AM, Richard Henderson wrote:
+>> The ARM now defines 36 bits in SPSR_ELx in aarch64 mode, so
+>> it's time to bite the bullet and extend PSTATE to match.
+>>
+>> Most changes are straightforward, adjusting printf formats,
+>> changing local variable types.  More complex is migration,
+>> where to maintain backward compatibility a new pstate64
+>> record is introduced, and only when one of the extensions
+>> that sets bits 32-35 are active.
+>>
+>> The fate of gdbstub is left undecided for the moment.
+...
+>> diff --git a/target/arm/gdbstub64.c b/target/arm/gdbstub64.c
+>> index 64ee9b3b56..3cef47281a 100644
+>> --- a/target/arm/gdbstub64.c
+>> +++ b/target/arm/gdbstub64.c
+>> @@ -47,6 +47,7 @@ int aarch64_cpu_gdb_read_register(CPUState *cs, GByteArray *mem_buf, 
+>> int n)
+>>       case 32:
+>>           return gdb_get_reg64(mem_buf, env->pc);
+>>       case 33:
+>> +        /* pstate is now a 64-bit value; can we simply adjust the xml? */
+>>           return gdb_get_reg32(mem_buf, pstate_read(env));
+>>       }
 > 
-> Maybe I missed something, but what about other entries that were initially treated in the 
-> switch?
-> - ARMMMUIdx_E.0_0
-> - ARMMMUIdx_M*User
+> If I'm correct, we currently don't expose PSTATE through gdbstub, but only CPSR. This was 
+> a bit confusing for me, considering that CPSR is not even supposed to exist in Aarch64.
 
-See the change to EL().
+Correct.  An old error, for sure.
 
-I'm not sure why ARMMMUIdx_Stage1_* is excluded from arm_mmu_idx_to_el(), but I don't 
-change that in this patch series.
+
+> Maybe it's a good opportunity to expose PSTATE instead, which could have a 64 bits size. 
+> This way, we don't break any workflow.
+
+Hmm, perhaps adding a "org.gnu.gdb.aarch64.pstate" xml with just one 64-bit value is the 
+best solution.  Thiago?
 
 
 r~

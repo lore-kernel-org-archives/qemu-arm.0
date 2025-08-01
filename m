@@ -4,41 +4,39 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1E6CC87FCA
-	for <qemu-arm@archiver.kernel.org>; Fri,  1 Aug 2025 09:13:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D543CC87FCA
+	for <qemu-arm@archiver.kernel.org>; Fri,  1 Aug 2025 09:14:29 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uhlnu-0000ez-4l; Fri, 01 Aug 2025 05:11:54 -0400
+	id 1uhlns-0000cf-T2; Fri, 01 Aug 2025 05:11:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <smail.aider@huawei.com>)
- id 1uhljZ-0005Ai-Ue; Fri, 01 Aug 2025 05:07:25 -0400
+ id 1uhljZ-00059z-Jx; Fri, 01 Aug 2025 05:07:25 -0400
 Received: from [185.176.79.56] (helo=frasgout.his.huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <smail.aider@huawei.com>)
- id 1uhljV-00076y-Pb; Fri, 01 Aug 2025 05:07:25 -0400
-Received: from mail.maildlp.com (unknown [172.18.186.31])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4btg5D2nCvz6K5Zc;
- Fri,  1 Aug 2025 17:05:04 +0800 (CST)
+ id 1uhljV-000757-Pa; Fri, 01 Aug 2025 05:07:25 -0400
+Received: from mail.maildlp.com (unknown [172.18.186.216])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4btg523lFxz6K5bn;
+ Fri,  1 Aug 2025 17:04:54 +0800 (CST)
 Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
- by mail.maildlp.com (Postfix) with ESMTPS id 063F31402EB;
- Fri,  1 Aug 2025 17:07:06 +0800 (CST)
+ by mail.maildlp.com (Postfix) with ESMTPS id 2760C1402EB;
+ Fri,  1 Aug 2025 17:06:56 +0800 (CST)
 Received: from china (7.182.10.167) by frapeml500008.china.huawei.com
  (7.182.85.71) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Fri, 1 Aug
- 2025 11:07:01 +0200
+ 2025 11:06:51 +0200
 To: <qemu-devel@nongnu.org>
 CC: <alexander.spyridakis@huawei.com>, <qemu-arm@nongnu.org>, Peter Maydell
  <peter.maydell@linaro.org>, <zhangyue165@huawei.com>,
  <richard.henderson@linaro.org>, <liuyutao2@huawei.com>,
  <smail.aider@huawei.com>
-Subject: [PATCH v2 2/2] target/arm: Code refactoring of pmreg_access/pmcr
-Date: Fri, 1 Aug 2025 17:06:45 +0800
-Message-ID: <20250801090645.2205449-3-smail.aider@huawei.com>
+Subject: [PATCH v2 0/2] ARM_PMU: Trap PMCR when MDCR_EL2.TPMCR is set
+Date: Fri, 1 Aug 2025 17:06:43 +0800
+Message-ID: <20250801090645.2205449-1-smail.aider@huawei.com>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20250801090645.2205449-1-smail.aider@huawei.com>
-References: <20250801090645.2205449-1-smail.aider@huawei.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
@@ -73,85 +71,19 @@ From:  Smail AIDER via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Create a common helper for pmreg_access and pmreg_access_pmcr to improve
-readability.
+Trap PMCR_EL0 or PMCR accesses to EL2 when MDCR_EL2.TPMCR is set.
+Similar to MDCR_EL2.TPM, MDCR_EL2.TPMCR allows trapping EL0 and EL1
+accesses to the PMCR register to EL2.
 
-Signed-off-by: Smail AIDER <smail.aider@huawei.com>
----
- target/arm/cpregs-pmu.c | 40 +++++++++++++++++++---------------------
- 1 file changed, 19 insertions(+), 21 deletions(-)
+Smail AIDER (1):
+  target/arm: Code refactoring of pmreg_access/pmcr
 
-diff --git a/target/arm/cpregs-pmu.c b/target/arm/cpregs-pmu.c
-index 3aacd4f652..adaaaf2517 100644
---- a/target/arm/cpregs-pmu.c
-+++ b/target/arm/cpregs-pmu.c
-@@ -228,22 +228,28 @@ static bool event_supported(uint16_t number)
-     return supported_event_map[number] != UNSUPPORTED_EVENT;
- }
- 
--static CPAccessResult pmreg_access(CPUARMState *env, const ARMCPRegInfo *ri,
--                                   bool isread)
-+static CPAccessResult do_pmreg_access(CPUARMState *env, bool is_pmcr)
- {
-     /*
-      * Performance monitor registers user accessibility is controlled
--     * by PMUSERENR. MDCR_EL2.TPM and MDCR_EL3.TPM allow configurable
-+     * by PMUSERENR. MDCR_EL2.TPM/TPMCR and MDCR_EL3.TPM allow configurable
-      * trapping to EL2 or EL3 for other accesses.
-      */
-     int el = arm_current_el(env);
--    uint64_t mdcr_el2 = arm_mdcr_el2_eff(env);
-+    uint64_t mdcr_el2;
- 
-     if (el == 0 && !(env->cp15.c9_pmuserenr & 1)) {
-         return CP_ACCESS_TRAP_EL1;
-     }
--    if (el < 2 && (mdcr_el2 & MDCR_TPM)) {
--        return CP_ACCESS_TRAP_EL2;
-+    if (el < 2) {
-+        mdcr_el2 = arm_mdcr_el2_eff(env);
-+
-+        if (mdcr_el2 & MDCR_TPM) {
-+            return CP_ACCESS_TRAP_EL2;
-+        }
-+        if (is_pmcr && (mdcr_el2 & MDCR_TPMCR)) {
-+            return CP_ACCESS_TRAP_EL2;
-+        }
-     }
-     if (el < 3 && (env->cp15.mdcr_el3 & MDCR_TPM)) {
-         return CP_ACCESS_TRAP_EL3;
-@@ -252,24 +258,16 @@ static CPAccessResult pmreg_access(CPUARMState *env, const ARMCPRegInfo *ri,
-     return CP_ACCESS_OK;
- }
- 
--/*
-- * Check for traps to PMCR register, which are controlled by PMUSERENR.EN
-- * for EL1, MDCR_EL2.TPM/TPMCR for EL2 and MDCR_EL3.TPM for EL3.
-- */
--static CPAccessResult pmreg_access_pmcr(CPUARMState *env, const ARMCPRegInfo *ri,
-+static CPAccessResult pmreg_access(CPUARMState *env, const ARMCPRegInfo *ri,
-                                    bool isread)
- {
--    int el = arm_current_el(env);
--    uint64_t mdcr_el2 = arm_mdcr_el2_eff(env);
--
--    CPAccessResult ret = pmreg_access(env, ri, isread);
--
--    /* Check MDCR_TPMCR if not already trapped to EL1 */
--    if (ret != CP_ACCESS_TRAP_EL1 && el < 2 && (mdcr_el2 & MDCR_TPMCR)) {
--        ret = CP_ACCESS_TRAP_EL2;
--    }
-+    return do_pmreg_access(env, false);
-+}
- 
--    return ret;
-+static CPAccessResult pmreg_access_pmcr(CPUARMState *env, const ARMCPRegInfo *ri,
-+                                   bool isread)
-+{
-+    return do_pmreg_access(env, true);
- }
- 
- static CPAccessResult pmreg_access_xevcntr(CPUARMState *env,
+Smail AIDER via (1):
+  target/arm: Trap PMCR when MDCR_EL2.TPMCR is set
+
+ target/arm/cpregs-pmu.c | 34 ++++++++++++++++++++++++++--------
+ 1 file changed, 26 insertions(+), 8 deletions(-)
+
 -- 
 2.34.1
 

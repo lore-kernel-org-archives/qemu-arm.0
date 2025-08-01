@@ -4,103 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5CD3CC87FCA
-	for <qemu-arm@archiver.kernel.org>; Fri,  1 Aug 2025 21:06:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7ADE1C87FCA
+	for <qemu-arm@archiver.kernel.org>; Fri,  1 Aug 2025 21:07:34 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uhwwz-0002jQ-NK; Fri, 01 Aug 2025 17:06:01 -0400
+	id 1uhwyS-0004zF-U9; Fri, 01 Aug 2025 17:07:32 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1uhw55-0004G3-0d
- for qemu-arm@nongnu.org; Fri, 01 Aug 2025 16:10:19 -0400
-Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1uhwDu-0003uM-Hr
+ for qemu-arm@nongnu.org; Fri, 01 Aug 2025 16:19:26 -0400
+Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1uhw52-0000Pb-Qa
- for qemu-arm@nongnu.org; Fri, 01 Aug 2025 16:10:18 -0400
-Received: by mail-pl1-x636.google.com with SMTP id
- d9443c01a7336-24022261323so40313945ad.1
- for <qemu-arm@nongnu.org>; Fri, 01 Aug 2025 13:10:16 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1uhwDs-000257-SR
+ for qemu-arm@nongnu.org; Fri, 01 Aug 2025 16:19:26 -0400
+Received: by mail-pf1-x429.google.com with SMTP id
+ d2e1a72fcca58-7682560a2f2so2691330b3a.1
+ for <qemu-arm@nongnu.org>; Fri, 01 Aug 2025 13:19:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1754079015; x=1754683815; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
+ d=linaro.org; s=google; t=1754079562; x=1754684362; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:content-language:from
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=LAW+KjLMxuovELpknzitcIQLW6jGverTBxr5p6lwhAQ=;
- b=b5i8Y3+PlZYJoLWV9OaDFjm2hgZI0L4O8BmALj1aEn80GRGrzOynbN7VXgtOiSAKrK
- xH7FBpyVA/EhW3X4eqsrt3LAUVOEOEfPaUfI2amC2NvfuyrzsXAoEFdsK507y15VMA97
- bGHAehjEuzOVcwbtpid8IVzEG0zPkPfyOwdtkybV8iC5kuuZbJov4VEkJKi/+a9FQyBV
- BtR7JsErIWu/v2zsgke6wf3bdX7PmXnXrc9n1KTxXqT/FLiJFQVZcDV5FkA3y05ePwmW
- lA7USVCdYRdrfFx6PXBzLNS6H5x7oYhQdU0lyBVjt8YCEyX6slJY+TsL/COprg+V9wYr
- srJA==
+ bh=CptNeUlPmzJxhRSJy4CfQx61s83a/WcunKZ6vxtsxjk=;
+ b=T4HAbsNG172Ddtkq3uGh1InlirySy8FMpP8zdCF9UnJZ6q/3+zaEfoSwnBag7qfirI
+ zyo1/auHFGxM3ahlg0iQskTPWlkWwAiClTkGHioBc0zgKnNBu4chuPW1aG7/lhV6R5JF
+ B9iKNDVHUdvw+ZHs/bXq5DexiI+/XHnp4HEiZUe4wwySZRjZ20UDaRw8CcaS3sYcOhne
+ m6JMIoGM5Cp88d3LNGIW3+1lGllD/TcFlAYrWbnJ/v+PGQQs8feoedHZ7NPKimSVjG52
+ Dgkw9t3K802Q9YwQWKNwE/DPg7NAdZUNIAloOznle52J67YU+a8CKKiNm+FNEMfdr0Py
+ M2lQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1754079015; x=1754683815;
- h=content-transfer-encoding:in-reply-to:from:content-language
+ d=1e100.net; s=20230601; t=1754079562; x=1754684362;
+ h=content-transfer-encoding:in-reply-to:content-language:from
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=LAW+KjLMxuovELpknzitcIQLW6jGverTBxr5p6lwhAQ=;
- b=wE8cuaKz6rlHb5BIaXKmLeTaohZC9kgze3x6MBsp/g0uJm4FXHSg5JeNJLop2i8lta
- S+S9pAMH4jn29lThNzDTZ6jS5bFuMiQEPl1Z1oKiKiPINJ7xIWlvLfCFvMcjf18/Y874
- ogoMxs8jmybhDT3s6ES0TLZajZLoxTiUyUsYx6v+cyCrG695Y3SUDOJtRW9SKixbN2D3
- PlugzUBwBev2nGwTrW0yvX/iOpL5plL3V/fjNcq0jvHHwOiJSaBIvpgy7G9HC2ZTFHC5
- gTtVhoPIDfImxJNrik6TL/RZFNf1zRdKiYSyY73Q9jJqWxaXa4j6m3NphADH2SFUxy7U
- 7qtw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXmkqogRyvpw1lVxJsico1IJtK47wyygmp2Zw6NOjS4bx/zC/JXFHtdkaT4QFr85Y49EfyekZ48Uw==@nongnu.org
-X-Gm-Message-State: AOJu0YyFiJhVi4AbUmhOo3UHFnF0Nb2k9mw/woHlfmMngjBxbC25tylR
- zQ6Rjfafy52g7uyO85YixjbI+1M9v3dnFTQ9FXvFm4+3TT7ZDZs5lwSGN5Lq9FLQIRE=
-X-Gm-Gg: ASbGncu13bzkc5wyPAzt77KFJ4GbL5N+kIYVZOud471FqB0rEy8/FmximFO20epnE7l
- bNKSDfzffV751wm3BvO1FWXFcRhi4zvAK+vM4TQDyZvyWISQP022S7Sfjt6ggkQvWdvGIPDsyN2
- s7IEJZI8+BseoL08C2+zKQ94heSK5SM3qhX7SD8kYmLs+PrE50VnLWsPYrC5bbCwfERucrmdzWw
- 3Wk6gBNh686nD2DhFV9k2mIEIp7zLLFclLfi9y2GKviA496MfPzdixvI0N77Z57b7sibhOyTQAM
- chuD2Zzc7gFReAAkvWVSvZ6FFKx71n0WikfeJm+PoGKfKjuJuHfWqRYnQrZ8wC4ZOI9yDU/HBd3
- nMeN7sHQF5vQQOK/l2Cjgrk69+3/rVasvOo4=
-X-Google-Smtp-Source: AGHT+IEqTO/wfj4p0UwrRfjFlp+QhXV2GT8qDs6e1zrzObKXrwu9FYK7FFtTWW1jEZ81KCSGLk/+hg==
-X-Received: by 2002:a17:902:dac2:b0:240:b3b3:872a with SMTP id
- d9443c01a7336-242461c2aecmr12383505ad.6.1754079015022; 
- Fri, 01 Aug 2025 13:10:15 -0700 (PDT)
-Received: from [192.168.1.87] ([38.41.223.211])
+ bh=CptNeUlPmzJxhRSJy4CfQx61s83a/WcunKZ6vxtsxjk=;
+ b=LI9vQz40pEwFLL8lauJqWS8US368SLXsW5mcfMt3jvFwZnnsTGyBjqpaqvYl/b8j8Q
+ MZrywFDSFMpbtJEz/AHSO81J17xBA+K715NrY+x25Q1iny9nJs1f2tOBjpgykHesvs2T
+ jbpK2hV10lPLnvED0tJ1INCKxuHnF182KL+/QugFjxjGiJb1HI5u+PiHVX66Lj+Krykl
+ ffMXy53QEj0h6Afj3LVtlqYriDn1mx7evy8LZo6FzK/R0DDdT7DN0mM2kYjSrD0nh7gB
+ wB4+TyNHE81O96EurBoL9lZk1unJZJR81XuRqbAPSSv31lNQv16ftg6fc+QAwX2CATek
+ xuPw==
+X-Gm-Message-State: AOJu0YwTyrgvlfTFxGTTDBY0fxk8qcX5o8+vz1y1Q5vNAqxeM3sPt8L2
+ R2gWS7baj2cHCiJovthislJvbqPTrojROCQF5Po6b6OR5u6ZVzq8OQbioqvrzIzGxjZNM4LJdc0
+ RlFRe87k=
+X-Gm-Gg: ASbGnctbyW/EQUkd12TPEr8lmOxNQZJuYJZPnMiJoCpNVKulQy3JX+y/31fDMuN70IV
+ OySCbKXWxNzt/ZDIMj48qlTI83hi80sXd5Ubu6Y3lkV/214kOh4H3qhzzvDhMPF3x3YNLhH34BT
+ a8ZW1X/ogEJc2eAedu5KweclMINWbAqvfkM9DhhOTK3NebXf6OqkywupYrHsYuBoFEx8Tjifu+d
+ orndgTwHzc3RJHCRa3VC/mwF2x/TzVi51UXBhga29dR1WcPGEKImrTsxH5RlbeY9w6YrCiDz4Ra
+ nxPxq8J/hXXt7HLMW6SI5ssdK/tJxNGZ1iqI+RmbKxyJNm5mSlYwnRkZ6MMEjub97hghqNZWTHe
+ 5E6pZY6taL/ank4RbWoPJ9zlAxiEwuAp84ysUfn/r3xR8hmtAhkc=
+X-Google-Smtp-Source: AGHT+IENmDtsjaMEUtyKwuN4Oqxn8s67iHVaD29mCGEEetaPoizsmt5U4P6yio5n7Wl6C8zBEtonIA==
+X-Received: by 2002:a05:6a00:240d:b0:73b:ac3d:9d6b with SMTP id
+ d2e1a72fcca58-76bea8c3e72mr1089194b3a.4.1754079562546; 
+ Fri, 01 Aug 2025 13:19:22 -0700 (PDT)
+Received: from [192.168.4.112] ([180.233.125.160])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-241e8aaaf1bsm51000465ad.159.2025.08.01.13.10.14
+ d2e1a72fcca58-76bccfbd05dsm4697688b3a.81.2025.08.01.13.19.20
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 01 Aug 2025 13:10:14 -0700 (PDT)
-Message-ID: <25a6dd9c-a435-4f2e-9c7c-b92daf5128c1@linaro.org>
-Date: Fri, 1 Aug 2025 13:10:13 -0700
+ Fri, 01 Aug 2025 13:19:22 -0700 (PDT)
+Message-ID: <383bbb24-3b38-412a-8036-b29f88374cf4@linaro.org>
+Date: Sat, 2 Aug 2025 06:19:16 +1000
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC 0/9] WHPX support for Arm
-To: Mohamed Mediouni <mohamed@unpredictable.fr>
-Cc: qemu-devel@nongnu.org, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
- <berrange@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Sunil Muthuswamy <sunilmut@microsoft.com>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
-References: <20250731052753.93255-1-mohamed@unpredictable.fr>
- <8af5e691-da19-4141-8874-51ca685288ac@linaro.org>
- <864AC97D-2C45-402A-92AF-D0FDDB72C40E@unpredictable.fr>
- <21266cf2-887d-4bf3-8c9a-7633bffd8cd2@linaro.org>
- <17413DE3-C53B-4DA6-9777-3E772D2C2C2D@unpredictable.fr>
- <d495bae3-d252-4b79-883a-3f5f815c5feb@linaro.org>
- <5A71E199-4C6E-467D-9E9B-04DE9EF1A9CC@unpredictable.fr>
- <b613245f-dfba-4f9b-8914-7c1e73c9dba5@linaro.org>
- <5133CBA1-A4FA-4789-AA7D-2FDBBFDF2470@unpredictable.fr>
+Subject: Re: [PATCH 47/82] target/arm: Expand pstate to 64 bits
+To: Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org
+References: <20250727080254.83840-1-richard.henderson@linaro.org>
+ <20250727080254.83840-48-richard.henderson@linaro.org>
+ <b2e40787-6043-4d4c-9cbb-731d0e92e25c@linaro.org>
+ <f398a65b-7b1f-492d-a612-eb3d6322ae4a@linaro.org>
+ <afb60f16-5ed1-4612-ba78-d849d9fa3998@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
 Content-Language: en-US
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-In-Reply-To: <5133CBA1-A4FA-4789-AA7D-2FDBBFDF2470@unpredictable.fr>
+In-Reply-To: <afb60f16-5ed1-4612-ba78-d849d9fa3998@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::636;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pl1-x636.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::429;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x429.google.com
+X-Spam_score_int: 12
+X-Spam_score: 1.2
+X-Spam_bar: +
+X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -116,46 +106,23 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 8/1/25 12:57 PM, Mohamed Mediouni wrote:
+On 8/2/25 02:12, Pierrick Bouvier wrote:
+> My comment was related to vmstate_pstate64. Sorry it was confusing as I left the last 
+> change concerning helper-a64.c, which was not related at all.
 > 
-> 
->> On 1. Aug 2025, at 21:42, Pierrick Bouvier <pierrick.bouvier@linaro.org> wrote:
->>
->> On 8/1/25 12:31 PM, Mohamed Mediouni wrote:
->>>>> I didn’t test anything on the stable branch for now but only on Canary so far.
->>>>> Just cursorily tested (EDK2 only) an X Elite device on prod (26100.4652) and this issue doesn’t appear.
->>>>> I have 8cx Gen 3 and 8cx Gen 1 (SQ1) devices around, will test on those older SoCs later and see.
->>>>> Random idea for testing: what if you put -M highmem=off, does that change anything?
->>>>>
->>>>
->>>> Good guess, it solves the problem with edk2, and direct boots linux kernel successfully now.
->>>>
->>> If you don’t mind, could you please test the latest commit I just put on the Git repo (whpx branch)? It should address this properly.
->>
->> Sure.
->> Without highmem=off, I get a new error:
->> Physical address width: 36
->> C:\msys64\home\tcwg\qemu\build\qemu-system-aarch64.exe: VCPU supports less PA bits (36) than requested by the memory map (40)
->>
-> Oh this confirms what I thought, just pushed a new commit which should be a complete fix. :)
->
+> So the comment was that vmstate_cpsr already contains the lower 32 bits of pstate, and 
+> thus we could save only the upper part in the new field.
 
-It works fine now, on top of c6e3d4d.
-Excellent work!
+That was part laziness.  By saving the lower half twice, I can simply do
 
-> And accessorily is also a good thing for Snapdragon X too, as 40 VA bits were used there despite the hardware having 39.
->
+   pstate_write(env, val)
 
-Yes.
+to load the data, rather than
 
-> Thank you,
-> -Mohamed
+   pstate_write(env, (val << 32) | pstate_read(env));
 
-This seems like a good time for cleaning up, address the few comments 
-that have been made, and send a v2.
-Feel free to add the gic related patches in it, so we have a "complete" 
-series to review.
+or something, to merge the halves.
 
-Thanks,
-Pierrick
+
+r~
 

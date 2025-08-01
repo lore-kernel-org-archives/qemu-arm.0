@@ -4,92 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1F5CC87FCB
-	for <qemu-arm@archiver.kernel.org>; Fri,  1 Aug 2025 18:31:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76A90C87FCB
+	for <qemu-arm@archiver.kernel.org>; Fri,  1 Aug 2025 18:34:55 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uhuWh-00010V-L8; Fri, 01 Aug 2025 14:30:43 -0400
+	id 1uhuaf-000144-DD; Fri, 01 Aug 2025 14:34:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1uht0u-0000Nf-Iv
- for qemu-arm@nongnu.org; Fri, 01 Aug 2025 12:53:55 -0400
-Received: from mail-pf1-x432.google.com ([2607:f8b0:4864:20::432])
+ id 1uht6o-0001r0-3I
+ for qemu-arm@nongnu.org; Fri, 01 Aug 2025 12:59:54 -0400
+Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1uht0s-0005kc-P4
- for qemu-arm@nongnu.org; Fri, 01 Aug 2025 12:53:48 -0400
-Received: by mail-pf1-x432.google.com with SMTP id
- d2e1a72fcca58-76bd2b11f80so1883486b3a.3
- for <qemu-arm@nongnu.org>; Fri, 01 Aug 2025 09:53:45 -0700 (PDT)
+ id 1uht6m-0006rM-5n
+ for qemu-arm@nongnu.org; Fri, 01 Aug 2025 12:59:53 -0400
+Received: by mail-pj1-x1030.google.com with SMTP id
+ 98e67ed59e1d1-31f53b3b284so3673492a91.1
+ for <qemu-arm@nongnu.org>; Fri, 01 Aug 2025 09:59:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1754067225; x=1754672025; darn=nongnu.org;
+ d=linaro.org; s=google; t=1754067590; x=1754672390; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=RdgW7c2eroL9g4iq9Ekphc8v95mGb3W34QRHwdPUOdw=;
- b=etkCOYKEep73vpCz3guwwNyeotZu0F3IRbSaTLvajk6GSFwFSBCVPzlingYIA4driz
- mQiX7e/HWsAQoVJbeFsU7R2sZvQt7Lq1aEP4nWBpbuj1O7rbv+dLcU3hl2L2EAXuARlL
- MBoh16IG+gsJkb+sbpgXs6D3R6w9W/DJwFrtbtLYlRcLQbGbBojo1/kV73zf7Y96TuYI
- SiHL0vDNPkd4Fi9jEdIJdqdKXFi4o+9ksRK9k0GtwNYUy2Pi23ZYVhTqi/mu+NlPQrPD
- RS9+0oKup60YyBGfD+ffNy6PpCetQh9iImzNvxyFbBq5T31rvQXT+sqCC1CCZkK10hEh
- CmXw==
+ bh=5VAZ4XoaTRapKmm6L4RCNYvG/OA4d9eoLUWvP4rbKHc=;
+ b=Wuq+xss+QLsFo8QBzlzpBsYY3D9P0+KtExoIuqz10Dx3Xto3LUDjetM9bA1tEDRPdG
+ c++70CdAJo7v7EfKwwpdwN8H2FSGD1r+11+i0JiphfcZH+a7awbwN4p6Snofa3unYsEX
+ h/43MU3E78xTq1+yiol8kHjW9yCDzly99qMTIvlaiy6Sx5KJzW6qaQXZVpkQOktImU0N
+ XaulGXaIIGfHUMklVfIOQ661xFlZrgOvzOKoynJgJV2n1ylKJsnGzas8t653gdwyJlpc
+ yUjg5rh3A8p3pPdMI4YInup1vSkuFC5LvhZeq0bEI/gNIfdQ7T0OwDfOl3dDV1XxdMkW
+ rLrw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1754067225; x=1754672025;
+ d=1e100.net; s=20230601; t=1754067590; x=1754672390;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=RdgW7c2eroL9g4iq9Ekphc8v95mGb3W34QRHwdPUOdw=;
- b=FRs1JsGl6qGx9buk/hOLXFNMn1arLT7QdAg/C0D42Q19C6/yaZ/D+qOaxoI4tm1Q8O
- Y5IjRuGpZ2PQBM0CbWWDOaSL7UYUN1oTrhC9O+BjCOb8UQNY9WNBimudpcHZsmo5VPwJ
- z8ejOIetCMdblt+0XQ87ESXlnwCWsYQtwu/yYrpiNZytQGLEO3OuN32kllNj9XNlGVQR
- j7nSTAe4+N0xWct/5g4wV1zSgy0v82IE85p4yjX8zaysI2pIRyNYbKq2+qLQznc/D7Sl
- pw2iWLVLAhv+RPDyVvY3XTGavjjNY3OHEJPc8IuQkxtTJFptOmWTTLgyh4qprPpDu6Mn
- uyWA==
+ bh=5VAZ4XoaTRapKmm6L4RCNYvG/OA4d9eoLUWvP4rbKHc=;
+ b=Zd9IXotzSF+X2eUsRSpusLYswg3gls1Dj54ovB7Ap+5jVwIofKuRNqv9RJm+eKuXLj
+ 3XuJ2jmJXCWUb2nzBxmgMU5wcePi6sBQiZkEwMH/xLQmyCkQ2ThKj3OVkxwK88LcvOdT
+ 5P9Rymgg6lfQ3l8EYlXja18JWJX8hI3oB6ZqgD9ssu1oRG6dDDpFFpHk+om0wMTmUP/o
+ 2c6M4pxQYFb40bbiFIto9+3JpIDolqVO2xos7TfHxMWvpG6kjYKpHdpdKdeBXIm8myuC
+ EDvTfPXUy/bz3sT98EX6/NUI5SruYlwSyQDs0qLCr1NoWF9fYgJ3uXWc1B1STvigpb25
+ T35Q==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWB8NdQ2ZewmYejcG9YHCXaqd496g1xc3VBIGM+kFMBEmVxor1mNunq7bff2bM9qJDCTBMG6IcaZg==@nongnu.org
-X-Gm-Message-State: AOJu0YwxVDoFH4J1by9QYOluCtfT1riETxAoSClDPIB45jpgo8dWmFEn
- OIxV3MCZBGoS/1jEWpK4l4mklRKR1HT1W5AKu8OKgLStixZ4xokn5kldeOi2SKV1mQz90I5teA9
- uO9oDy9A=
-X-Gm-Gg: ASbGncuIQlMtnb4Yg3bQE/4jyFOJ+luYfrxGLnE4HfDStvNRn2BKhaAOIn5OmQ6PWwS
- EqEzE6UCGKCL1wrF8VUuXZMplBV/oK9SajUyhukMsWdTbWwHoyAxFFh12eHsHdUknHF+MYuoGdt
- lbq7hC+D45qZlCbhFMFMmd5xGVMJTHTQFkN2MKfXDIdj5Y8YIgMa4m2EBd1EO013rV96F48Aamp
- dRhhibimoI4PoVtyckUH6FwvgRhkayPb1P9Id7CdD6d2LQ/BnlIkAlJZwzdSZt8euuuWNdOy11i
- soT7FIaOYW9W1ehdNROQHD5hHchqdNzeFUxjgQmSXcbDTRUhTvRvXd1e1NCbLtQoPAga7N3q0dS
- Kh7+1FI0zpEQ6u6Hg1elNe+7M+Q5d8vYt2hU=
-X-Google-Smtp-Source: AGHT+IH1dp6cL2w8xYX+B6GrGB/3vHDERha/bl+iTTGg6uvKQNsyEjMwv1c9eDxqx6sHnl39Uycq8g==
-X-Received: by 2002:a17:902:f304:b0:235:c9a7:d5f5 with SMTP id
- d9443c01a7336-24246f667acmr2140435ad.13.1754067224847; 
- Fri, 01 Aug 2025 09:53:44 -0700 (PDT)
+ AJvYcCXXgMirVxgk84B1dxF00ssMyvZ/uzxvu+RIzo74BBKpelevZb7rs7tST/SRpcLBwCml1xo5YzcmGQ==@nongnu.org
+X-Gm-Message-State: AOJu0YyH4YqqtdEmMuyPSfNfbMXGcZfxt/p9UECeIIjr9wmhlo7buBHz
+ WRmjS25aWfX2+F/MoXMXVrFaOueP+TmgIiPJSfPlxZVEXLZjzrrzGxAE+ucOYR9aiRg=
+X-Gm-Gg: ASbGnctrH3lEOB5mQuKNU76HOITU7+n5jePpLMB9F9WqLouWbK2vVTkQRxjde6meJzk
+ HiSz6E5dsYUAppHfszN6TArpmowQynPMTgNAjs/wYjm45VYY/7Kixv0kliQoArCcvkflZk9JxKo
+ Xhi08AKKoJ+V9sF985P1/rjd/WcbjNaH4GcUZsCkP/vayQd7kjB5kT8l38YQv4ZlU8Y1WcIyDkr
+ HVnC+6zmd0k2N/u9wVVG+iA223QTIr1OR+dxLEvnMwniIosV6i9iiqZfHbw1xo9hHjS7m4Jtb/y
+ iPHvbNTIK78Ad9g33qLCGFpnGvlZYpsZ0rvnRTK35KcFJQa6hs+bABdl3lFd0YAcDTPvjmyDEi1
+ XAD2Mv8Ypeb8f/u4pX/73mBY5MWniwEeW2mOabheWMk8aqQ==
+X-Google-Smtp-Source: AGHT+IFa1zmKmt/7JQvvBQhtm+VAozO4d4iAODHIhqKjwxec5hT/Rr/eWGKQ50uofO/uji9ylyCKrg==
+X-Received: by 2002:a17:90b:1645:b0:30e:e9f1:8447 with SMTP id
+ 98e67ed59e1d1-320da596a1fmr8856493a91.4.1754067590475; 
+ Fri, 01 Aug 2025 09:59:50 -0700 (PDT)
 Received: from [192.168.1.87] ([38.41.223.211])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-241e8ac02c9sm47460505ad.184.2025.08.01.09.53.43
+ 98e67ed59e1d1-32102a77576sm1346454a91.2.2025.08.01.09.59.49
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 01 Aug 2025 09:53:44 -0700 (PDT)
-Message-ID: <cf097501-98b4-453e-9d89-e4af8d0e192a@linaro.org>
-Date: Fri, 1 Aug 2025 09:53:43 -0700
+ Fri, 01 Aug 2025 09:59:50 -0700 (PDT)
+Message-ID: <9790a6fe-1f5b-4d4c-a40f-6188b17d05c5@linaro.org>
+Date: Fri, 1 Aug 2025 09:59:49 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 47/82] target/arm: Expand pstate to 64 bits
+Subject: Re: [PATCH 0/3] single-binary: compile hw/intc/arm* files once
 Content-Language: en-US
 To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org
-References: <20250727080254.83840-1-richard.henderson@linaro.org>
- <20250727080254.83840-48-richard.henderson@linaro.org>
- <b2e40787-6043-4d4c-9cbb-731d0e92e25c@linaro.org>
- <CAFEAcA_9tkv1EoM33=G=zW6Pw0gBirvjs-SsDaC8ar8feyH_8g@mail.gmail.com>
- <2c337408-5caa-4e24-a8dd-d947203a1dc3@linaro.org>
- <CAFEAcA-LmS0dus5ZW6P+-VXkw=m4K3MaE6O+Qtj5i3H7ULJFFQ@mail.gmail.com>
- <cedc5b94-78e3-4d9a-bdd8-60c82673c136@linaro.org>
- <CAFEAcA8j7S6qVxmd8dairF=4kpn2=uBeFFxY22M5FgyTnjcJ+Q@mail.gmail.com>
+Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org
+References: <20250725201906.19533-1-pierrick.bouvier@linaro.org>
+ <bfdd8821-a7f7-4648-a389-124426da6d15@linaro.org>
+ <144f0930-af30-42b0-849c-99242d3f09ee@linaro.org>
+ <CAFEAcA-ycO=AO8UO+X3f6pw34J=iFwW3dpPyMXKm5BzJ11dt5Q@mail.gmail.com>
+ <25fe9c70-be00-4884-8d91-53dfff745cb6@linaro.org>
+ <CAFEAcA8qHUT-0k6chAFZ61J=YZ7xLvhYgqsgtQiCgkfaxfFRxg@mail.gmail.com>
+ <034c953f-dce6-4068-8f93-05e758e67703@linaro.org>
+ <CAFEAcA9H4WtVUuEX8kf8LiHQ3Z421Fq3ukbLnCRRfUKLyRF6QA@mail.gmail.com>
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-In-Reply-To: <CAFEAcA8j7S6qVxmd8dairF=4kpn2=uBeFFxY22M5FgyTnjcJ+Q@mail.gmail.com>
+In-Reply-To: <CAFEAcA9H4WtVUuEX8kf8LiHQ3Z421Fq3ukbLnCRRfUKLyRF6QA@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::432;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pf1-x432.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1030;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pj1-x1030.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -112,32 +111,47 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 8/1/25 9:44 AM, Peter Maydell wrote:
-> On Fri, 1 Aug 2025 at 17:41, Pierrick Bouvier
+On 8/1/25 9:38 AM, Peter Maydell wrote:
+> On Fri, 1 Aug 2025 at 17:31, Pierrick Bouvier
 > <pierrick.bouvier@linaro.org> wrote:
 >>
->> On 8/1/25 9:37 AM, Peter Maydell wrote:
->>> We do at least define the fields so you get a nice view of it:
+>> On 8/1/25 1:34 AM, Peter Maydell wrote:
+>>> On Thu, 31 Jul 2025 at 19:30, Pierrick Bouvier
+>>> <pierrick.bouvier@linaro.org> wrote:
+>>>> Regarding the "modern" completion support, I recommend you take a look
+>>>> at it. Even though you wrote or reviewed most of the code you navigate
+>>>> in everyday, and thus don't need it, it has become a standard tool for
+>>>> any developer, like sanitizers or omniscient debugging. It's especially
+>>>> interesting since those tools are based on compilers (clangd is the
+>>>> standard for C/C++ nowadays) and not a bunch of clunky regexps.
+>>>> It's even more interesting when you learn a new language, like Rust.
 >>>
->>> (gdb) print $cpsr
->>> $4 = [ EL=0 BTYPE=0 Z ]
+>>> I do actually have clangd enabled at the moment in emacs:
+>>> but my experience is not good, because typically what happens
+>>> is that clangd runs itself out of memory and falls over
+>>> fairly frequently, or it produces obscure error messages like
+>>> "LSP :: Error from the Language Server: trying to get AST for
+>>> non-added document (Invalid Parameter)"...
+>>>
+>>> So I mostly continue to investigate code the way I always have
+>>> done, with grep.
 >>>
 >>
->> Do you have specific pretty printers installed? On my debian trixie (gdb
->> 16.3), there is no pretty printer for cpsr by default.
+>> By any chance, are you using an old version of clangd (or an old
+>> distro)? It has been a few years since I didn't run into any issue with
+>> it, and it's quite easy to update it using llvm apt repositories without
+>> updating your whole system [1].
 > 
-> I'm not aware of having installed any. This is
-> GNU gdb (Ubuntu 15.0.50.20240403-0ubuntu1) 15.0.50.20240403-git
-> 
+> I use the Ubuntu 24.04 version. In general I try to avoid
+> using tooling that isn't packaged by the distro: it
+> tends to result in headaches later on.
+>
 
-Trying with a ubuntu 24.04 container, I don't see it neither. Maybe 
-something is missing in my gdbinit.
+You should be good with it I think.
+Maybe you can try to delete clangd caches, in case there is a problem there:
+- ~/.cache/clangd/index/
+- (in qemu build folder): build/.cache/clangd/index
 
-> I was assuming that this was just plain gdb doing something
-> useful because the xml defines the field names and bitpositions
-> (at least if your QEMU has commit 63070ce368e1a where Manos
-> synced our xml to upstream gdb's to add these).
-> 
 > -- PMM
 
 

@@ -4,97 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8289BC87FD2
-	for <qemu-arm@archiver.kernel.org>; Fri,  1 Aug 2025 05:44:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B122C87FCB
+	for <qemu-arm@archiver.kernel.org>; Fri,  1 Aug 2025 08:32:44 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uhiZD-0001fX-Og; Fri, 01 Aug 2025 01:44:32 -0400
+	id 1uhlBX-0007nu-T3; Fri, 01 Aug 2025 04:32:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1uhiZB-0001ct-Hm
- for qemu-arm@nongnu.org; Fri, 01 Aug 2025 01:44:29 -0400
-Received: from mail-pg1-x52c.google.com ([2607:f8b0:4864:20::52c])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1uhiZ9-000100-MA
- for qemu-arm@nongnu.org; Fri, 01 Aug 2025 01:44:29 -0400
-Received: by mail-pg1-x52c.google.com with SMTP id
- 41be03b00d2f7-b2c4331c50eso1357427a12.3
- for <qemu-arm@nongnu.org>; Thu, 31 Jul 2025 22:44:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1754027065; x=1754631865; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=9C/JkD5xbEvtgoXo6+u+Rabvz3jyfICkFaWw0p1jZcw=;
- b=RrGHwrjbXqtModaTQQMLHprLk00vckBYlll/kUANzr1XDqQnj0cbZE4PKO+oUR/ZGU
- 4Hvdo/g82lJZrfVbjnA9ckCQ91TyNnxZHqD4GLzspTsLGZFA9RsfhJ/LJg4ir2CQaYWV
- XuDAwLOwOhxOqYcVi+SBZri8OOMYJOOn8U4aC5izvDF9MU8LfTWqhPY7uw5Ok/lTXx+N
- kzHXJiOSUJwkboOSUEb3KSixzKMmOdHIV2NEtNK4DFI4Zz43YDTyBejAaUQMRhzG7+iw
- p/4Xfea6a+g/TsREc/k0nEPrwktF1oYVfozHskvccBl6dRVMCysbQVC+AJSaKlyW61dp
- 8ZgQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1754027065; x=1754631865;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=9C/JkD5xbEvtgoXo6+u+Rabvz3jyfICkFaWw0p1jZcw=;
- b=Y5OyG84BjwHbqbaa/papuC34Vs0p+f5rKFevoB5z8Ld/2yifVA649hEvGVj0/2x39P
- QgXa49Z946mgtkj1Awbzsq5Qa2tXxme+tzNpF6lTEnvN8ElKwpDrpa1QQmVvH2g2uRhj
- QYXnwsQBeQCoMLMD4M5t54DezACUXLWJb1V9R/i366IyqykLsDnOi/EWOssaJPknayMa
- Fmbwe2Qhe9MXZX2Sw3gwsBZByhMoDUSXw6S14LmKYO/xlGJwuiawBqsYn+fTNoXZ2sQb
- 6Es5fb6fjzZYKyxHkkMPiA2fcH38N6UzkhlGgZBgyNWijq5hO1MAEgBE9s2cheiaXs6a
- HjaA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXtc52eAdGgaCUDGbAmTX3U2y5rADN/xKjJ5UVdvwOm6JM6mDpXp4LheTGnr9ajV+NpGDCmjXvgXw==@nongnu.org
-X-Gm-Message-State: AOJu0YxYepQ5TWmYU3RAHmRZttjC3gqzATUnsEIE7jEPVfrOcyWHSeY+
- 2SBZrL7T2pAKzl2Wt03ooBli57/Fvz4qV8GvN5+5swV+cYMoyAGA1xXsIWzb9Au+PzM=
-X-Gm-Gg: ASbGncu/eHN9+IPrXnaSrUbZZ5LTbxmqh/gajer/NJyjZx5cXJH+SQ8UE9bZHHOi1sx
- +i6elN51EzFokSHKTOuyi4tG5WGQ0XobYKpyPHtGHTHx1TehRH27BCYHZoTB7csip93C/jodqWP
- uTzt1FH1BBawYHV7qXdrb/nzGpQOq9nNndaZ3voPVP7xnzbCJhW+jYEyn26Ex73EKDXrxV4A+mq
- MRh70O3ueL4KlWjc5Lid+aDBo299nW0DkMxVDdMfVC55ZjeB42NZnaj8ol0f4Kmg4Kydp/zg+j5
- sC/9Mqpcj4PibdeZQF9vPWnccx+D8UkCPYDvdu4befbkycsB+z0aKeaJpUsjns9WGlNwUW3TYPF
- snjsGUl4rF2H7KaTZAZEzV/jDBRES7h98WhhxWAqCjA3BxubUofM=
-X-Google-Smtp-Source: AGHT+IGiWOs8I1nsNzA7C9xFXckCp3vuXjp6ZwthbYWySM12XSP8tRS/SRCwl2V+OJJKKWOi3/1TXg==
-X-Received: by 2002:a17:903:903:b0:240:3e72:efb3 with SMTP id
- d9443c01a7336-24096b3cfcdmr146630135ad.43.1754027065496; 
- Thu, 31 Jul 2025 22:44:25 -0700 (PDT)
-Received: from [192.168.4.112] ([180.233.125.160])
- by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-241e89769e9sm33495525ad.111.2025.07.31.22.44.21
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 31 Jul 2025 22:44:24 -0700 (PDT)
-Message-ID: <4ea65cb8-f916-4cbf-9540-a2af7548dd09@linaro.org>
-Date: Fri, 1 Aug 2025 15:44:18 +1000
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1uhlBU-0007l0-UT
+ for qemu-arm@nongnu.org; Fri, 01 Aug 2025 04:32:12 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1uhlBR-0000n1-8H
+ for qemu-arm@nongnu.org; Fri, 01 Aug 2025 04:32:12 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1754037126;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=uZI2Zc4X0XkpaY0Ev3aUpR8Gjtsi7WiqIHtlSAleBW8=;
+ b=S5crpO1ERNF8QoHwSTcWeiOM64aurJrQqHm7iILTMKLcXsLkDy2hgXNO81MY/mxEdlZy8o
+ f91sCS3bkBHDYbTlhtSxbFyaVO4htQL469Pkv/CoKuHd7o5lSMoA9cHgGubPXn3iaAICqc
+ MMZJjTM/RvQnWNe+89ScO37GQghxInI=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-151-OmVkWA4-OY-UPtuhR9E30A-1; Fri,
+ 01 Aug 2025 04:32:00 -0400
+X-MC-Unique: OmVkWA4-OY-UPtuhR9E30A-1
+X-Mimecast-MFC-AGG-ID: OmVkWA4-OY-UPtuhR9E30A_1754037118
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 9460E1800876; Fri,  1 Aug 2025 08:31:56 +0000 (UTC)
+Received: from localhost (pixel-6a.str.redhat.com [10.33.192.205])
+ by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 174E719373D9; Fri,  1 Aug 2025 08:31:53 +0000 (UTC)
+From: Cornelia Huck <cohuck@redhat.com>
+To: Shameer Kolothum <shameerkolothum@gmail.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: eric.auger@redhat.com, peter.maydell@linaro.org, sebott@redhat.com,
+ berrange@redhat.com, maz@kernel.org, oliver.upton@linux.dev,
+ armbru@redhat.com, linuxarm@huawei.com, wangzhou1@hisilicon.com,
+ jiangkunkun@huawei.com, jonathan.cameron@huawei.com,
+ salil.mehta@huawei.com, yangjinqian1@huawei.com,
+ shameerkolothum@gmail.com, shameerali.kolothum.thodi@huawei.com
+Subject: Re: [RFC PATCH RESEND 0/4] hw/arm/virt: Add support for Target
+ Implementation CPUs
+In-Reply-To: <20250801074730.28329-1-shameerkolothum@gmail.com>
+Organization: "Red Hat GmbH, Sitz: Werner-von-Siemens-Ring 12, D-85630
+ Grasbrunn, Handelsregister: Amtsgericht =?utf-8?Q?M=C3=BCnchen=2C?= HRB
+ 153243,
+ =?utf-8?Q?Gesch=C3=A4ftsf=C3=BChrer=3A?= Ryan Barnhart, Charles Cachera,
+ Avril Crosse O'Flaherty"
+References: <20250801074730.28329-1-shameerkolothum@gmail.com>
+User-Agent: Notmuch/0.38.3 (https://notmuchmail.org)
+Date: Fri, 01 Aug 2025 10:31:51 +0200
+Message-ID: <87freb4f48.fsf@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC 1/9] whpx: Move around files before introducing AArch64
- support
-To: Mohamed Mediouni <mohamed@unpredictable.fr>, qemu-devel@nongnu.org
-Cc: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Sunil Muthuswamy <sunilmut@microsoft.com>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
-References: <20250731052753.93255-1-mohamed@unpredictable.fr>
- <20250731052753.93255-2-mohamed@unpredictable.fr>
-From: Richard Henderson <richard.henderson@linaro.org>
-Content-Language: en-US
-In-Reply-To: <20250731052753.93255-2-mohamed@unpredictable.fr>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::52c;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x52c.google.com
-X-Spam_score_int: 12
-X-Spam_score: 1.2
-X-Spam_bar: +
-X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=cohuck@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -110,84 +95,144 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 7/31/25 15:27, Mohamed Mediouni wrote:
-> --- /dev/null
-> +++ b/accel/whpx/meson.build
-> @@ -0,0 +1,6 @@
-> +whpx_ss = ss.source_set()
-> +whpx_ss.add(files(
-> +  'whpx-accel-ops.c',
-> +))
-> +
-> +specific_ss.add_all(when: 'CONFIG_WHPX', if_true: whpx_ss)
-> \ No newline at end of file
+On Fri, Aug 01 2025, Shameer Kolothum <shameerkolothum@gmail.com> wrote:
 
-Add the newline.
+> From: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+>
+> (This is my third attempt to send this series to qemu-devel / qemu-arm.
+> Previous attempts failed with the following errors:
+>
+> qemu-arm@nongnu.org: connect to eggs.gnu.org[209.51.188.92]:25: Connectio=
+n timed out=20=20
+> qemu-devel@nongnu.org: connect to eggs.gnu.org[209.51.188.92]:25: Connect=
+ion timed out=20=20
+>
+> I'm not sure if the issue is related to my setup, so I'm now trying to se=
+nd the
+> patches via my Gmail account.
+>
+> Apologies if you=E2=80=99ve already received this series individually, an=
+d thank you
+> for your patience.)
 
-> diff --git a/target/i386/whpx/whpx-accel-ops.c b/accel/whpx/whpx-accel-ops.c
-> similarity index 96%
-> rename from target/i386/whpx/whpx-accel-ops.c
-> rename to accel/whpx/whpx-accel-ops.c
-> index da58805b1a..364d99b660 100644
-> --- a/target/i386/whpx/whpx-accel-ops.c
-> +++ b/accel/whpx/whpx-accel-ops.c
-> @@ -16,8 +16,8 @@
->   #include "qemu/guest-random.h"
->   
->   #include "system/whpx.h"
-> -#include "whpx-internal.h"
-> -#include "whpx-accel-ops.h"
-> +#include "system/whpx-internal.h"
-> +#include "system/whpx-accel-ops.h"
->   
->   static void *whpx_cpu_thread_fn(void *arg)
->   {
-> @@ -80,7 +80,11 @@ static void whpx_kick_vcpu_thread(CPUState *cpu)
->   
->   static bool whpx_vcpu_thread_is_idle(CPUState *cpu)
->   {
-> +#ifndef __aarch64__
->       return !whpx_apic_in_platform();
-> +#else
-> +    return 0;
-> +#endif
->   }
+FWIW, all of your mails have made it into my inbox -- let's see if at
+least my reply shows up on the lists :/
 
-Better as code movement only.
-Save new code for a subsequent patch.
+>
+> Hi,
+>
+> On ARM64 platforms, many errata workarounds are based on CPU identificati=
+on
+> registers, particularly MIDR_EL1 and REVIDR_EL1. Some of these errata
+> require corresponding fixes in the guest kernel as well. This becomes a
+> challenge during guest migration between hosts with different MIDR/REVIDR
+> values, even when the VMM provides a common baseline feature set using
+> the recently introduced writable ID register support.
+>
+> To address this, the Linux kernel now provides:
+>
+>  -A mechanism to expose implementation CPU data to guests via KVM
+>   hypercalls [0]:
+>
+>   ARM_SMCCC_VENDOR_HYP_KVM_DISCOVER_IMPL_VER_FUNC_ID
+>   ARM_SMCCC_VENDOR_HYP_KVM_DISCOVER_IMPL_CPUS_FUNC_ID
+>
+>  -A way to override implementation ID registers (MIDR, REVIDR, AIDR),
+>   which were previously treated as invariant [1].
+>
+> What this RFC does:
+>
+> This RFC enables the virt machine to specify Target Implementation CPUs
+> via QEMU command-line, exposing them to the guest via KVM hypercalls.
+>
+> Example use case (hosts with differing MIDRs):
+>
+> ./qemu-system-aarch64 -machine virt,gic-version=3D3 \
+>   -enable-kvm \
+>   -bios QEMU_EFI.fd \
+>   -m 1G -smp cpus=3D4,maxcpus=3D4 \
+>   -cpu host \
+>   -M impl-cpu.0.midr=3D0x481fd010,impl-cpu.0.revidr=3D0,impl-cpu.0.aidr=
+=3D0x551,\
+>    impl-cpu.1.midr=3D0x481fd011,impl-cpu.1.revidr=3D0,impl-cpu.1.aidr=3D0=
+x551 \
+>   -kernel Image-6.16-rc2 \
+>   -initrd rootfs-iperf.cpio \
+>   -append "rdinit=3Dinit console=3DttyAMA0 root=3D/dev/vda rw earlycon=3D=
+pl011,0x9000000 kpti=3Doff" \
+>   -net none \
+>   -nographic
+>
+> Highlights and Notes:
+>
+>  -This is based on Connie=E2=80=99s series[2] =E2=80=9Ckvm/arm: Introduce=
+ a customizable
+>   aarch64 KVM host model=E2=80=9D.
 
-> --- a/target/i386/whpx/whpx-internal.h
-> +++ b/include/system/whpx-internal.h
-> @@ -3,8 +3,9 @@
->   
->   #include <windows.h>
->   #include <winhvplatform.h>
-> +#ifdef __x86_64__
->   #include <winhvemulation.h>
-> -
-> +#endif
->   typedef enum WhpxBreakpointState {
->       WHPX_BP_CLEARED = 0,
->       WHPX_BP_SET_PENDING,
-> @@ -97,12 +98,16 @@ void whpx_apic_get(DeviceState *s);
->   
->   /* Define function typedef */
->   LIST_WINHVPLATFORM_FUNCTIONS(WHP_DEFINE_TYPE)
-> +#ifdef __x86_64__
->   LIST_WINHVEMULATION_FUNCTIONS(WHP_DEFINE_TYPE)
-> +#endif
->   LIST_WINHVPLATFORM_FUNCTIONS_SUPPLEMENTAL(WHP_DEFINE_TYPE)
->   
->   struct WHPDispatch {
->       LIST_WINHVPLATFORM_FUNCTIONS(WHP_DECLARE_MEMBER)
-> +#ifdef __x86_64__
->       LIST_WINHVEMULATION_FUNCTIONS(WHP_DECLARE_MEMBER)
-> +#endif
->       LIST_WINHVPLATFORM_FUNCTIONS_SUPPLEMENTAL(WHP_DECLARE_MEMBER)
->   };
+Hm, I *really* need to do a respin of that one, at least to bring it up
+to date with the code that changed underneath...
 
-Likewise.
+>=20=20=20
+>  -Currently, no validation is performed on user-specified implementation =
+CPU
+>   data. It=E2=80=99s assumed that one of the entries reflects the actual =
+host CPU.
+>   If needed, a check can be added to enforce this. All other target CPU
+>   definitions are treated as user-driven with no internal verification.
 
+Should that check rather be done by management software on top? Although
+I assume that this is the part that in practice will come up with the
+list of possible target cpus.
 
-r~
+>
+>  -For now, only the DISCOVER_IMPL_* hypercalls are supported on the QEMU =
+side.
+>   See patches 1 and 3 for implementation details. These are loosely inspi=
+red
+>   by Salil's vCPU hotplug series patch here [3]. This may require a more
+>   generic approach if we have to support other SMCCC hyper calls.
+>
+>  -This series uses macros and definitions from the kernel's
+>   include/linux/arm-smccc.h. I am not sure whether these should be duplic=
+ated=20
+>   in QEMU or moved to a UAPI header in the kernel. For now I am carrying
+>   it in the test branch here,
+>   https://github.com/hisilicon/qemu/commit/8f583c76a2a5f60cf0f9616d61d086=
+3e524ef388
+>
+> This is lightly tested on HiSilicon ARM platforms. A complete test branch
+> can be found here,
+> https://github.com/hisilicon/qemu/tree/arm-cpu-model-rfcv3-tgt-impl-cpu-r=
+fcv1
+>
+> Please take a look and let me know.
+>
+> Thanks,
+> Shameer
+>
+> [0] https://lore.kernel.org/all/20250221140229.12588-1-shameerali.kolothu=
+m.thodi@huawei.com/
+> [1] https://lore.kernel.org/all/20250225005401.679536-1-oliver.upton@linu=
+x.dev/
+> [2] https://lore.kernel.org/qemu-devel/20250414163849.321857-1-cohuck@red=
+hat.com/
+> [3] https://lore.kernel.org/qemu-devel/20240614001510.202991-1-salil.meht=
+a@huawei.com/
+>
+> Shameer Kolothum (4):
+>   target/arm/kvm: Introduce helper to check target impl CPU support
+>   target/arm/kvm: Add QAPI struct ArmTargetImplCPU
+>   target/arm/kvm: Handle KVM Target Imp CPU hypercalls
+>   hw/arm/virt: Add Target Implementation CPU support
+>
+>  hw/arm/virt.c         |  66 +++++++++++++++
+>  include/hw/arm/virt.h |   3 +
+>  qapi/machine.json     |  34 ++++++++
+>  target/arm/kvm.c      | 187 ++++++++++++++++++++++++++++++++++++++++++
+>  target/arm/kvm_arm.h  |  20 +++++
+>  5 files changed, 310 insertions(+)
+>
+> --=20
+> 2.34.1
+
 

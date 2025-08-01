@@ -4,74 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E734DC87FCB
-	for <qemu-arm@archiver.kernel.org>; Fri,  1 Aug 2025 04:24:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D69E5C87FD2
+	for <qemu-arm@archiver.kernel.org>; Fri,  1 Aug 2025 04:30:05 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uhhJT-0002lA-IH; Fri, 01 Aug 2025 00:24:11 -0400
+	id 1uhhOw-0008Ec-Jc; Fri, 01 Aug 2025 00:29:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1uhhJQ-0002gd-IO
- for qemu-arm@nongnu.org; Fri, 01 Aug 2025 00:24:09 -0400
-Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
+ id 1uhhOQ-0007wq-Ay
+ for qemu-arm@nongnu.org; Fri, 01 Aug 2025 00:29:22 -0400
+Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1uhhJO-0004Et-Ut
- for qemu-arm@nongnu.org; Fri, 01 Aug 2025 00:24:08 -0400
-Received: by mail-pl1-x630.google.com with SMTP id
- d9443c01a7336-24063eac495so3740445ad.0
- for <qemu-arm@nongnu.org>; Thu, 31 Jul 2025 21:24:06 -0700 (PDT)
+ id 1uhhON-00055r-Tb
+ for qemu-arm@nongnu.org; Fri, 01 Aug 2025 00:29:18 -0400
+Received: by mail-pl1-x62a.google.com with SMTP id
+ d9443c01a7336-240763b322fso11874675ad.0
+ for <qemu-arm@nongnu.org>; Thu, 31 Jul 2025 21:29:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1754022245; x=1754627045; darn=nongnu.org;
+ d=linaro.org; s=google; t=1754022554; x=1754627354; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:content-language:from
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=QrcjdRn4FoXk91gllSNnJ6FARMuaVOS6lz2+WKkXkSo=;
- b=TgUViCAXdcq+Mg6Ey2xOinuKS0Q4lzzXJToYx90YQ5h/+nycqR0ofiFwIbjS8ZO6+9
- PuTccV4Rnwz1F2lyDYF5YTVreOOltufZs4dLkih8FTYbslkb47yxwsVAZ4BE3+XmfM7M
- gany4grbOdUQTzfPZcyL61O3sasFajki413F1pXd3k3Ha3WOFEhj5JmbvZddPRLq8sCx
- XuW6ssUhGgpGimu3gX7P1zYz+NOWxFG8/GpEbJGtyOo+epTF+6/08ShQx1SnbA3rw6BA
- uD03JgKo/sebJMB4tZEaxiUuOPIJq1SfozNxVsuObYPpel06J0XaMlwZFM9rlI2hF8Qo
- 6XoA==
+ bh=4w656GvqylV+9bxKFYy2Q5NDSd7DHanbKvKxgqxW1Mo=;
+ b=p/3K/eEKnXEkMC+93HjX3nbIIf+GilooKwMYGUovNvzsbKGCtX8De8RWg1sOnZoek8
+ hvtJIj3MQLNUhTl0mboQBfMFgCYAbf2rKr3N00DKr5NEujC3hoTQY/Pcgac3PrwvS9jQ
+ st7d2gI8eDBYOq+7l+67zLhZfz5tvZZb2q3JD3zz9Hc3fe/UPM7O7WO1sYo2/7IRLx3j
+ OSm7Qb8cc2tb6jysX54oMI60GqmHv69HuYjQtT0AK/h0YGPIrgmnNCiNa8Yp72iMYoph
+ /4cf8TrFeMAQk6/dNrjg7KxASWUgTqzm8QkMq8R2Glfiw+0DR6BqPG2FskAtt/OSYVi/
+ 4TUg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1754022245; x=1754627045;
+ d=1e100.net; s=20230601; t=1754022554; x=1754627354;
  h=content-transfer-encoding:in-reply-to:content-language:from
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=QrcjdRn4FoXk91gllSNnJ6FARMuaVOS6lz2+WKkXkSo=;
- b=sOiddJMrH5wB0iZdHrh+gEY87GgwaL+2rZpcrFFSRoXF36/jbLXZsSnNu/tzJf/kLG
- eaFyaVDiigeXY0mHgUhzDbyIQ/GIvv3xD1GGSiy7Vi1B/tIz42KbZdadbMD7t/cVyJZx
- Wy6zVZk16s156DxUVbaBVBxXLlE2DKPATGwI6O/3iv+topJ4k0iYluKRx5ED25WrEvJb
- jfB59DsP96kAHcB987h/g0wmLQrV8WWypaLHr8EPtY1yuhim9N4bbdeFLSZ4kyzIZYoB
- kvoqXd6thwu+6k9m7Bv82BZ+nzsCDTb7za9Gej+BkAwGnxJuEel7QBgsatbnkRv1WHOw
- uXYg==
-X-Gm-Message-State: AOJu0Yz/zRB3QmpBUo/aTMHJhkXVg9TdHp9tfTq4s/kf6boBWOIXfZui
- KCDKY4tDa3Gz9z6XTebaDIr5F/xt6V4SygE004parZEL2ElTrJ3tNZCLESrRn0Tpudr0h7heeDj
- ZNuozppI=
-X-Gm-Gg: ASbGnctGDc0i1VWxXAISH0A73uDny4gt1OafuxBjV1hsPTxE3iUFZ/oITZZRmJSehfC
- 2GjQzYcwsxR2P91S6fVAgKhyEbCWyByzj5nBmi4HH6AY5cxs4jNVivUDIG/pbCJVFUSJVVzJ0Ud
- ez/I/7+1qGusFOmbLMOIMIpUFzWqMcFwS4lx25oJBvOQquDrXTiNeKed9r2gSLyyUWo+E+o1Rbk
- eUtnOvZab+7FZ1A+pssqkNrX5CDS+ew2zTtaSA3eTBNj+/5nmGq47RnXzoqOpf/TnETOFcAuCAH
- AAjevrXnXrTfIxnsT5mHWWuV7NzCzodriNhGOykNRYjwLCcl3nqhz18nqTPc7Mjclw1HltJt9VT
- q7KwyFPtbZSEeIbofIksaQG98x5K7NKdd9p9q1bNBFAxrCjC4xoI=
-X-Google-Smtp-Source: AGHT+IG7OP2f/nirxrxZChsgzNbFhBkC+fOSlnVpCGK1uQLwW9CU/TKTdAJa+tmw2+GaCoF6SlqXZw==
-X-Received: by 2002:a17:903:1b67:b0:23f:8bcc:e4e9 with SMTP id
- d9443c01a7336-24096b103b9mr144220575ad.23.1754022245143; 
- Thu, 31 Jul 2025 21:24:05 -0700 (PDT)
+ bh=4w656GvqylV+9bxKFYy2Q5NDSd7DHanbKvKxgqxW1Mo=;
+ b=AN6/PYZdnsxQo7++54xJwX6Y41dVJR/1b3iz4GebJdL3mXPvHpEoK6csZHGC1Frf/6
+ 1Tcv4URFVBTjJXKygl/hnv97K/1ZyN8baFJoVk7+hNxA0ASuh4QYQ244c5indvm03s1q
+ Pv/kIPw1DIPejfkL62+son3hVpEdtbnfsxZhyhf9mCk7oNgudWnedT7kVTfZg3yNsw9K
+ iJs5Ty3l4dOZirt5i/qpM+eYQQX1d0BBh1tYlmZceVf3IHMNeyzEgAWbwT44WxtpBKAy
+ OgowndLcCsp3W9Adm8+FYfrWtlkNLPMO585uVQPrBE1rUb0Y0HxeBCJFFS+JLCvXLScf
+ T4lA==
+X-Gm-Message-State: AOJu0Yyjb+Bmfvh8cuVmfTU3kTZxHPMDa2nX74EUoesDjHgzFGaXLwPf
+ KwfJ4gNs7qVNPcwPXUwMTtlmC8/zMkNDIcuzPwvO01PkfJ+uXWWCak/eNdmcxj63V38=
+X-Gm-Gg: ASbGnctqzybVRsnleWZ2WOs8g8ZB13XYBbAsckc7NFXr2QEIZ0+ZsPrJdF+9BRD7n/c
+ J8OYL1RMpVEB2Bf7oZo35bK3PdIGK2fNcGEGOX5uZ6LI5JfWi2rGEV7GZnJmHoi8B6a5jrQGl12
+ A5rmQgdwjRNngVPzdz4PU0FUEq99sZyoaDpONSkahrklPvHSil2cOhIWM7ldf/9eb/9rtAQWLok
+ aoMNhU9rHRDvHCtNjT1p9FUv9REvx5qYbT7oSOGGF9qG4Zo0npipkb0XG2iMNucQwlrZOaSgYnK
+ tfTVFwHHbMlXvIMfdhs+YchKLqsQ0/+R9WjA9iQiuxkiZUdcqimiq/mcwT1OdJUAwAJsbhqdH8H
+ TS712FYmdiC+Alku8CmAkdJ0he2WNiQePEK9qrK6ZmSptV7CMJBs=
+X-Google-Smtp-Source: AGHT+IEXtbYpVpMS/nVuY6AEFIoFYrPk2yO0MzdxBCEVv9D10EWeM51VOmVfSRVtXtHDhqp01sNpYw==
+X-Received: by 2002:a17:902:d50e:b0:240:1831:eede with SMTP id
+ d9443c01a7336-24096b1784amr155507975ad.32.1754022553741; 
+ Thu, 31 Jul 2025 21:29:13 -0700 (PDT)
 Received: from [192.168.4.112] ([180.233.125.160])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-241e8ab38b4sm31085455ad.181.2025.07.31.21.24.02
+ d9443c01a7336-241e8aaadadsm31781955ad.156.2025.07.31.21.29.11
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 31 Jul 2025 21:24:04 -0700 (PDT)
-Message-ID: <f198153f-088c-4196-9ee2-ed1e8e4fc92f@linaro.org>
-Date: Fri, 1 Aug 2025 14:24:00 +1000
+ Thu, 31 Jul 2025 21:29:13 -0700 (PDT)
+Message-ID: <f398a65b-7b1f-492d-a612-eb3d6322ae4a@linaro.org>
+Date: Fri, 1 Aug 2025 14:29:08 +1000
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH 47/82] target/arm: Expand pstate to 64 bits
 To: Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Thiago Jung Bauermann <thiago.bauermann@linaro.org>
+Cc: qemu-arm@nongnu.org
 References: <20250727080254.83840-1-richard.henderson@linaro.org>
  <20250727080254.83840-48-richard.henderson@linaro.org>
  <b2e40787-6043-4d4c-9cbb-731d0e92e25c@linaro.org>
@@ -80,8 +79,8 @@ Content-Language: en-US
 In-Reply-To: <b2e40787-6043-4d4c-9cbb-731d0e92e25c@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::630;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x630.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62a;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62a.google.com
 X-Spam_score_int: 12
 X-Spam_score: 1.2
 X-Spam_bar: +
@@ -105,42 +104,29 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 8/1/25 05:13, Pierrick Bouvier wrote:
-> On 7/27/25 1:02 AM, Richard Henderson wrote:
->> The ARM now defines 36 bits in SPSR_ELx in aarch64 mode, so
->> it's time to bite the bullet and extend PSTATE to match.
->>
->> Most changes are straightforward, adjusting printf formats,
->> changing local variable types.  More complex is migration,
->> where to maintain backward compatibility a new pstate64
->> record is introduced, and only when one of the extensions
->> that sets bits 32-35 are active.
->>
->> The fate of gdbstub is left undecided for the moment.
-...
->> diff --git a/target/arm/gdbstub64.c b/target/arm/gdbstub64.c
->> index 64ee9b3b56..3cef47281a 100644
->> --- a/target/arm/gdbstub64.c
->> +++ b/target/arm/gdbstub64.c
->> @@ -47,6 +47,7 @@ int aarch64_cpu_gdb_read_register(CPUState *cs, GByteArray *mem_buf, 
->> int n)
->>       case 32:
->>           return gdb_get_reg64(mem_buf, env->pc);
->>       case 33:
->> +        /* pstate is now a 64-bit value; can we simply adjust the xml? */
->>           return gdb_get_reg32(mem_buf, pstate_read(env));
->>       }
+>> diff --git a/target/arm/tcg/helper-a64.c b/target/arm/tcg/helper-a64.c
+>> index 71c6c44ee8..f61adf1f80 100644
+>> --- a/target/arm/tcg/helper-a64.c
+>> +++ b/target/arm/tcg/helper-a64.c
+>> @@ -639,7 +639,7 @@ void HELPER(exception_return)(CPUARMState *env, uint64_t new_pc)
+>>       ARMCPU *cpu = env_archcpu(env);
+>>       int cur_el = arm_current_el(env);
+>>       unsigned int spsr_idx = aarch64_banked_spsr_index(cur_el);
+>> -    uint32_t spsr = env->banked_spsr[spsr_idx];
+>> +    uint64_t spsr = env->banked_spsr[spsr_idx];
+>>       int new_el;
+>>       bool return_to_aa64 = (spsr & PSTATE_nRW) == 0;
 > 
-> If I'm correct, we currently don't expose PSTATE through gdbstub, but only CPSR. This was 
-> a bit confusing for me, considering that CPSR is not even supposed to exist in Aarch64.
+> Would that be better or worse to simply save the upper 32 bits, considering that cpsr 
+> already holds the lower ones in Aarch64 mode?
 
-Correct.  An old error, for sure.
+I don't understand this comment.
 
-
-> Maybe it's a good opportunity to expose PSTATE instead, which could have a 64 bits size. 
-> This way, we don't break any workflow.
-
-Hmm, perhaps adding a "org.gnu.gdb.aarch64.pstate" xml with just one 64-bit value is the 
-best solution.  Thiago?
+(1) banked_spsr[] is already uint64_t
+(2) SPSR_ELx is supposed to be uint64_t
+(3) We were accidentally dropping the high bits of spsr here
+     because the local variable had the wrong type, before it
+     gets sent to pstate_write().
 
 
 r~

@@ -4,75 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD7F5C87FCA
-	for <qemu-arm@archiver.kernel.org>; Fri,  1 Aug 2025 18:28:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1F5CC87FCB
+	for <qemu-arm@archiver.kernel.org>; Fri,  1 Aug 2025 18:31:25 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uhuUd-0007MU-RA; Fri, 01 Aug 2025 14:28:35 -0400
+	id 1uhuWh-00010V-L8; Fri, 01 Aug 2025 14:30:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1uht2q-0006KF-Dx
- for qemu-arm@nongnu.org; Fri, 01 Aug 2025 12:56:05 -0400
-Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
+ id 1uht0u-0000Nf-Iv
+ for qemu-arm@nongnu.org; Fri, 01 Aug 2025 12:53:55 -0400
+Received: from mail-pf1-x432.google.com ([2607:f8b0:4864:20::432])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1uht2o-00065F-Ce
- for qemu-arm@nongnu.org; Fri, 01 Aug 2025 12:55:47 -0400
-Received: by mail-pl1-x630.google.com with SMTP id
- d9443c01a7336-24049d16515so10442845ad.1
- for <qemu-arm@nongnu.org>; Fri, 01 Aug 2025 09:55:45 -0700 (PDT)
+ id 1uht0s-0005kc-P4
+ for qemu-arm@nongnu.org; Fri, 01 Aug 2025 12:53:48 -0400
+Received: by mail-pf1-x432.google.com with SMTP id
+ d2e1a72fcca58-76bd2b11f80so1883486b3a.3
+ for <qemu-arm@nongnu.org>; Fri, 01 Aug 2025 09:53:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1754067345; x=1754672145; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:references:cc:to:from
+ d=linaro.org; s=google; t=1754067225; x=1754672025; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=igTYcD4woXv5oELF2muuSvmoerjndIGWZFTXS3apbbE=;
- b=NiJEhLkKF6v0p8Xf7bw1beyizu2qjcy1VEhnwA+qt/ckDflYJdZ3KIOlaedD569Vdf
- PsdGP9StVuQdIjbOBgCF9KwC9KkALD4B+EJrZQ2ouOEU0SQQgaA8BYvBR9+9mZddquyR
- G+R33NbicUELSv4xRAdD3ylWTGOB+x3fI4ms+7pocNYLbwXeO308vj5hQ2c+JerILV/g
- WLgfJoz+SOMKT9N2J3Oj7H+L2bFjT/w+b3WMFddwMP48nhec8vNbW036nZKLqPkgJc8s
- dJQlJGhQ9utS3/MMQ7tdx/lsnRgdDCOJrtVEejO7S05ZUPlmNJf0FNSnpVTuTnD926/d
- 7LGQ==
+ bh=RdgW7c2eroL9g4iq9Ekphc8v95mGb3W34QRHwdPUOdw=;
+ b=etkCOYKEep73vpCz3guwwNyeotZu0F3IRbSaTLvajk6GSFwFSBCVPzlingYIA4driz
+ mQiX7e/HWsAQoVJbeFsU7R2sZvQt7Lq1aEP4nWBpbuj1O7rbv+dLcU3hl2L2EAXuARlL
+ MBoh16IG+gsJkb+sbpgXs6D3R6w9W/DJwFrtbtLYlRcLQbGbBojo1/kV73zf7Y96TuYI
+ SiHL0vDNPkd4Fi9jEdIJdqdKXFi4o+9ksRK9k0GtwNYUy2Pi23ZYVhTqi/mu+NlPQrPD
+ RS9+0oKup60YyBGfD+ffNy6PpCetQh9iImzNvxyFbBq5T31rvQXT+sqCC1CCZkK10hEh
+ CmXw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1754067345; x=1754672145;
- h=content-transfer-encoding:in-reply-to:references:cc:to:from
+ d=1e100.net; s=20230601; t=1754067225; x=1754672025;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=igTYcD4woXv5oELF2muuSvmoerjndIGWZFTXS3apbbE=;
- b=oCG0nH3x1Lj9NcwZUnmPx2M5QtWZ2F1JVQ/4YJwGFQl/9GJZHpf3BLBr4GpJWLFP0l
- UOQQQUxL50VAhjueJUmX6zqRN1TWe89WC9Plgv/bQs4yqBLzgL4EhYv+2a96yDijESq6
- W5ai6Gplktv6w0jhS3LHiBo1fDO4ZFQ66x8e081Z1vDkR/2L1pB15ECBfmYZPBZEAKaW
- 7E3YdVCVTR2RsXXaj20weR+fL81KQKiC2u7upwNuPc9+rU0YZ5A2ip4Mz5oJY1TURkCn
- quIQApX+b8Tr4lYRWX0rp0pHqUYnNMEXKR/nzfsQABE2QpMsttnTXlLacq5zTtpdlZi2
- A3mQ==
+ bh=RdgW7c2eroL9g4iq9Ekphc8v95mGb3W34QRHwdPUOdw=;
+ b=FRs1JsGl6qGx9buk/hOLXFNMn1arLT7QdAg/C0D42Q19C6/yaZ/D+qOaxoI4tm1Q8O
+ Y5IjRuGpZ2PQBM0CbWWDOaSL7UYUN1oTrhC9O+BjCOb8UQNY9WNBimudpcHZsmo5VPwJ
+ z8ejOIetCMdblt+0XQ87ESXlnwCWsYQtwu/yYrpiNZytQGLEO3OuN32kllNj9XNlGVQR
+ j7nSTAe4+N0xWct/5g4wV1zSgy0v82IE85p4yjX8zaysI2pIRyNYbKq2+qLQznc/D7Sl
+ pw2iWLVLAhv+RPDyVvY3XTGavjjNY3OHEJPc8IuQkxtTJFptOmWTTLgyh4qprPpDu6Mn
+ uyWA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUirGcM5zGkFk+5BfQ0XhnnGobXVbs+TKGYDJwrARQLYDZTq1LwvfQO4V82w2i0SzgKqGCZkUt+DA==@nongnu.org
-X-Gm-Message-State: AOJu0Ywny/JAOe4PgaJY3YVx6LdQk61V4kmDEKtlAZ9GHceGWNfqDTeR
- +KHo1U4bEJL4Q1Q6jnw49cXe2K1plA7ArmcBZUUygW1drhYC6qJUlosbINhh3VSwxq0=
-X-Gm-Gg: ASbGnct79ePGvf9fhS01jTKCC5JPo7R2M6AvuCjqSr/Oc07P0DmE4FJSFvtyc8Ctu3T
- P4kEgjYuY2ubEHjOjC0P02bhB/3maU9cBrInVbESxnFdnvxxQicdO0R7nUGv7L8jZ4lzVjUFBuO
- I5x89TIjvhzduUbR8VUW2pcDlcvuYwz42iJF2m9ru8JNA2BFc1dogUPpBJFN9k1zAquPJotdQ+f
- ARH4LR4enBSDqjobys/S8mvBcLQZZgdJoPCuWCMwOJ1s1km+XzRhv3CGTlnfcrUjd4qa/Gw6wKr
- xsedUrCgV50z/sVg5gCE5dyHGelTGgifPTy3Wm75PgAFI6Sxz3cSKR/qINBWFsnZkpEQ9gu6NdA
- ZY6Y5DcPZgoi5GqnZHtp1P+Xt3Im8eRG+Obg=
-X-Google-Smtp-Source: AGHT+IHHuJKesoKdzmVk5LwNivEvdJnemizspWRhYNEW+opb27Da1DCPtPCHXg/Vdv1R02uztlvv1w==
-X-Received: by 2002:a17:902:e84f:b0:240:58a7:8938 with SMTP id
- d9443c01a7336-24246f2e598mr2794735ad.7.1754067344664; 
- Fri, 01 Aug 2025 09:55:44 -0700 (PDT)
+ AJvYcCWB8NdQ2ZewmYejcG9YHCXaqd496g1xc3VBIGM+kFMBEmVxor1mNunq7bff2bM9qJDCTBMG6IcaZg==@nongnu.org
+X-Gm-Message-State: AOJu0YwxVDoFH4J1by9QYOluCtfT1riETxAoSClDPIB45jpgo8dWmFEn
+ OIxV3MCZBGoS/1jEWpK4l4mklRKR1HT1W5AKu8OKgLStixZ4xokn5kldeOi2SKV1mQz90I5teA9
+ uO9oDy9A=
+X-Gm-Gg: ASbGncuIQlMtnb4Yg3bQE/4jyFOJ+luYfrxGLnE4HfDStvNRn2BKhaAOIn5OmQ6PWwS
+ EqEzE6UCGKCL1wrF8VUuXZMplBV/oK9SajUyhukMsWdTbWwHoyAxFFh12eHsHdUknHF+MYuoGdt
+ lbq7hC+D45qZlCbhFMFMmd5xGVMJTHTQFkN2MKfXDIdj5Y8YIgMa4m2EBd1EO013rV96F48Aamp
+ dRhhibimoI4PoVtyckUH6FwvgRhkayPb1P9Id7CdD6d2LQ/BnlIkAlJZwzdSZt8euuuWNdOy11i
+ soT7FIaOYW9W1ehdNROQHD5hHchqdNzeFUxjgQmSXcbDTRUhTvRvXd1e1NCbLtQoPAga7N3q0dS
+ Kh7+1FI0zpEQ6u6Hg1elNe+7M+Q5d8vYt2hU=
+X-Google-Smtp-Source: AGHT+IH1dp6cL2w8xYX+B6GrGB/3vHDERha/bl+iTTGg6uvKQNsyEjMwv1c9eDxqx6sHnl39Uycq8g==
+X-Received: by 2002:a17:902:f304:b0:235:c9a7:d5f5 with SMTP id
+ d9443c01a7336-24246f667acmr2140435ad.13.1754067224847; 
+ Fri, 01 Aug 2025 09:53:44 -0700 (PDT)
 Received: from [192.168.1.87] ([38.41.223.211])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-241e8aaaf1bsm48291115ad.159.2025.08.01.09.55.43
+ d9443c01a7336-241e8ac02c9sm47460505ad.184.2025.08.01.09.53.43
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 01 Aug 2025 09:55:44 -0700 (PDT)
-Message-ID: <ea451ccf-1e18-4689-ab2b-89cb4b53d66d@linaro.org>
-Date: Fri, 1 Aug 2025 09:55:43 -0700
+ Fri, 01 Aug 2025 09:53:44 -0700 (PDT)
+Message-ID: <cf097501-98b4-453e-9d89-e4af8d0e192a@linaro.org>
+Date: Fri, 1 Aug 2025 09:53:43 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH 47/82] target/arm: Expand pstate to 64 bits
 Content-Language: en-US
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 To: Peter Maydell <peter.maydell@linaro.org>
 Cc: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org
@@ -84,12 +84,12 @@ References: <20250727080254.83840-1-richard.henderson@linaro.org>
  <CAFEAcA-LmS0dus5ZW6P+-VXkw=m4K3MaE6O+Qtj5i3H7ULJFFQ@mail.gmail.com>
  <cedc5b94-78e3-4d9a-bdd8-60c82673c136@linaro.org>
  <CAFEAcA8j7S6qVxmd8dairF=4kpn2=uBeFFxY22M5FgyTnjcJ+Q@mail.gmail.com>
- <cf097501-98b4-453e-9d89-e4af8d0e192a@linaro.org>
-In-Reply-To: <cf097501-98b4-453e-9d89-e4af8d0e192a@linaro.org>
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+In-Reply-To: <CAFEAcA8j7S6qVxmd8dairF=4kpn2=uBeFFxY22M5FgyTnjcJ+Q@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::630;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pl1-x630.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::432;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pf1-x432.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -112,38 +112,32 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 8/1/25 9:53 AM, Pierrick Bouvier wrote:
-> On 8/1/25 9:44 AM, Peter Maydell wrote:
->> On Fri, 1 Aug 2025 at 17:41, Pierrick Bouvier
->> <pierrick.bouvier@linaro.org> wrote:
+On 8/1/25 9:44 AM, Peter Maydell wrote:
+> On Fri, 1 Aug 2025 at 17:41, Pierrick Bouvier
+> <pierrick.bouvier@linaro.org> wrote:
+>>
+>> On 8/1/25 9:37 AM, Peter Maydell wrote:
+>>> We do at least define the fields so you get a nice view of it:
 >>>
->>> On 8/1/25 9:37 AM, Peter Maydell wrote:
->>>> We do at least define the fields so you get a nice view of it:
->>>>
->>>> (gdb) print $cpsr
->>>> $4 = [ EL=0 BTYPE=0 Z ]
->>>>
+>>> (gdb) print $cpsr
+>>> $4 = [ EL=0 BTYPE=0 Z ]
 >>>
->>> Do you have specific pretty printers installed? On my debian trixie (gdb
->>> 16.3), there is no pretty printer for cpsr by default.
 >>
->> I'm not aware of having installed any. This is
->> GNU gdb (Ubuntu 15.0.50.20240403-0ubuntu1) 15.0.50.20240403-git
->>
+>> Do you have specific pretty printers installed? On my debian trixie (gdb
+>> 16.3), there is no pretty printer for cpsr by default.
 > 
-> Trying with a ubuntu 24.04 container, I don't see it neither. Maybe
-> something is missing in my gdbinit.
->
-
-My fault, I was using my system wide qemu binary. Using master branch it 
-works well indeed.
-
->> I was assuming that this was just plain gdb doing something
->> useful because the xml defines the field names and bitpositions
->> (at least if your QEMU has commit 63070ce368e1a where Manos
->> synced our xml to upstream gdb's to add these).
->>
->> -- PMM
+> I'm not aware of having installed any. This is
+> GNU gdb (Ubuntu 15.0.50.20240403-0ubuntu1) 15.0.50.20240403-git
 > 
+
+Trying with a ubuntu 24.04 container, I don't see it neither. Maybe 
+something is missing in my gdbinit.
+
+> I was assuming that this was just plain gdb doing something
+> useful because the xml defines the field names and bitpositions
+> (at least if your QEMU has commit 63070ce368e1a where Manos
+> synced our xml to upstream gdb's to add these).
+> 
+> -- PMM
 
 

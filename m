@@ -4,87 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B2CAC87FCB
-	for <qemu-arm@archiver.kernel.org>; Fri,  1 Aug 2025 13:01:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 073C5C87FCB
+	for <qemu-arm@archiver.kernel.org>; Fri,  1 Aug 2025 13:17:07 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uhpMm-0003tC-8O; Fri, 01 Aug 2025 09:00:09 -0400
+	id 1uhpd1-0001ip-9E; Fri, 01 Aug 2025 09:17:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1uhozA-00082I-3x
- for qemu-arm@nongnu.org; Fri, 01 Aug 2025 08:35:44 -0400
-Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1uhoz7-0006DP-Pv
- for qemu-arm@nongnu.org; Fri, 01 Aug 2025 08:35:43 -0400
-Received: by mail-ed1-x52f.google.com with SMTP id
- 4fb4d7f45d1cf-6154655c8aeso2242460a12.3
- for <qemu-arm@nongnu.org>; Fri, 01 Aug 2025 05:35:39 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1754051738; x=1754656538; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=CT1PMrz4B6Io7IHxrrXB1D/jUOE0VZNJTRC4BpMLJfQ=;
- b=p41XfD9Bg2oAG/n1Ykb2z3AFexeJW6p4i1l6z8b39EYzx/mQkRcCXDNRiMt3UBsBGK
- qvpAu4Rk2VaUIFkQ2f+WSlMBx8Wk9S1j4uD8llQnnxEImCCzykWel04ySZ7teTBFNRKV
- yfxMLogLPwg2w5bmisEPg1sqWeLK0LRyNrcr2quDmZ2TNREVNe5JurtL6xsSS9w2n77s
- u6UMYKpEwgKeP6br7bwsrb5hDW3uJzKvlK3EJWGLYcAXxlQ/HnNmrzJol7MCf6LHlRJu
- otuUU3gx4wRenkiK8QOt6g3kB+bzCf51EmxzYLsuDW1myxW2ULMhPrpBBeKSIXhZhVc4
- l+Ew==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1754051738; x=1754656538;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=CT1PMrz4B6Io7IHxrrXB1D/jUOE0VZNJTRC4BpMLJfQ=;
- b=LybZV80ywxOkXVhkuieO9dwSz9Q17Jx0+pZbzXc+PfEzS5oq1uqs77L0EvaTDX6mM8
- Fa5lTkS4oVuVTZ9nRKDuvdWJXOxF1fviKSMyTtFeGqE430hy9KyeN83p3Hda1BhNM1QD
- ioZN3wwPRNUiqBg8ltL8JSMCa1UX2mrVHF4yvzVDlVW5dwt+HoVjTE0+8vM6FhLd1ZzZ
- 9jQutQtKxGdqhcSC1J6/ngCPqC1AskVHIAndXcULsKAibRzivMBS0ss4JHy30etrlb1F
- EaCv4f2a9X59YHGZ/ykBefh4bjJ1GAKsnhZj/6IsmalMMWWvNJyHGs731Wm4wSVHOSpK
- TFsw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUwfdhcfDTUiB19p/eRo7Ij/Ibfz2uKi0MTVVr3TWVjmgtUqoYS8mx3xMX8Eb/3Sqn+YAPDt+s4Ig==@nongnu.org
-X-Gm-Message-State: AOJu0Yyt6XsYhVCIK2/dJ5onAf65BAmwvkjTLbdFHfBpBFPyzMUGIe1C
- cXL/ITK/U/n1BxSDu2cFqrLXtzmIEhXRPfnPXX+OfOyg+CbzQMPDtDFu2ff3X2kaCEtW0b4MxRn
- thUCKZFKEME4BxW8lui5qJPWxZCpSEKpjaybRlu+pzg==
-X-Gm-Gg: ASbGncsQf7bbH29iaI7bJZft1KyL7XSEaYCrKPKqajK4apSDP/d5K+jEut72Qhuv0Su
- wDk2RgBNcLXmbhdzr+WDwTY3Iv2T9gw9BzRlP1UPrPAQPg4kxzUHMtx6+ODIcySsuxRQZflOGkg
- RFlpJXb1HDzZuVU26afjiCZyVXqi4V6ZNZu6lS8tWuW0lEfEnzEqd2miyZ5lnPC8M8OJ6R9oSBz
- OVCAxhPHMXVHgXiYQ==
-X-Google-Smtp-Source: AGHT+IFqRa6oJ+pwx3XYtHNNxqPfFmo41SZ0yGU3QmyWAVaenGaFm9TL8p7SS0BHsMQbyK4fArHiMNZ/FhDODDubd7Y=
-X-Received: by 2002:a17:906:ef0b:b0:ade:409c:2cb6 with SMTP id
- a640c23a62f3a-af93196cf84mr302253966b.59.1754051738096; Fri, 01 Aug 2025
- 05:35:38 -0700 (PDT)
-MIME-Version: 1.0
-References: <20250727080254.83840-1-richard.henderson@linaro.org>
- <20250727080254.83840-48-richard.henderson@linaro.org>
- <b2e40787-6043-4d4c-9cbb-731d0e92e25c@linaro.org>
- <f198153f-088c-4196-9ee2-ed1e8e4fc92f@linaro.org>
-In-Reply-To: <f198153f-088c-4196-9ee2-ed1e8e4fc92f@linaro.org>
-From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-Date: Fri, 1 Aug 2025 15:35:11 +0300
-X-Gm-Features: Ac12FXxO5CfGPBoAxm3AyJ38bWWFz7PMPhG6csPzhc5qFaePF48uMXRC8i2QldI
-Message-ID: <CAAjaMXZvwq=gikvqrEQCZWFnU9mt5cYn84uxuLyCAbQqEEnXag@mail.gmail.com>
-Subject: Re: [PATCH 47/82] target/arm: Expand pstate to 64 bits
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, Thiago Jung Bauermann <thiago.bauermann@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1uhp7O-0007Kf-W1
+ for qemu-arm@nongnu.org; Fri, 01 Aug 2025 08:44:23 -0400
+Received: from p-east3-cluster1-host1-snip4-1.eps.apple.com ([57.103.87.4]
+ helo=outbound.qs.icloud.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1uhp7K-0007Y1-Pr
+ for qemu-arm@nongnu.org; Fri, 01 Aug 2025 08:44:12 -0400
+Received: from outbound.qs.icloud.com (unknown [127.0.0.2])
+ by p00-icloudmta-asmtp-us-east-2d-20-percent-0 (Postfix) with ESMTPS id
+ D38351800388; Fri,  1 Aug 2025 12:44:01 +0000 (UTC)
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
+ s=sig1; bh=Ig5FUx53rIxaYHvKqq5JbmxF3Pt6fGzEa61QzozIUkc=;
+ h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To:x-icloud-hme;
+ b=Od1mnefQdnMZiAD+fgYvzOJletwcgphgQQuGdEnBf2MdfBQxfYsGal3k6ouBALLicWPYRgrgF+G2wrDxy/GqUYnbsgPgG2DAUdZFXzMfEWt335zckBSwZIiW+5+WkGeV70dfGfXf+ab3hVidZGRq5dHtpRngLAM4cYvJrTuW/o7TLh6o+m1+P/IxkHn87PVHq6DqjyY3uX1Vfw1qT3olYVArep9A/pcHYPGvRL5gs/xBmSoQLvt+KfpvEwBR0OmmHQdyfmX4k9Bqrgn7RyVEtFib7HRIb7oNvpYCuK2JlmeRMJkBptIJRJHrXn7OltJxjPRrNZOjz/jM098Ev6j7WA==
+X-Client-IP: 46.189.47.18
+Received: from smtpclient.apple (qs-asmtp-me-k8s.p00.prod.me.com
+ [17.57.155.37])
+ by p00-icloudmta-asmtp-us-east-2d-20-percent-0 (Postfix) with ESMTPSA id
+ D71271800153; Fri,  1 Aug 2025 12:43:59 +0000 (UTC)
+Content-Type: text/plain;
+	charset=utf-8
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3860.100.5.1.1\))
+Subject: Re: [RFC 0/9] WHPX support for Arm
+From: Mohamed Mediouni <mohamed@unpredictable.fr>
+In-Reply-To: <8af5e691-da19-4141-8874-51ca685288ac@linaro.org>
+Date: Fri, 1 Aug 2025 14:43:48 +0200
+Cc: qemu-devel@nongnu.org,
+ =?utf-8?B?IkRhbmllbCBQLiBCZXJyYW5nw6ki?= <berrange@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Sunil Muthuswamy <sunilmut@microsoft.com>,
+ =?utf-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::52f;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-ed1-x52f.google.com
+Message-Id: <864AC97D-2C45-402A-92AF-D0FDDB72C40E@unpredictable.fr>
+References: <20250731052753.93255-1-mohamed@unpredictable.fr>
+ <8af5e691-da19-4141-8874-51ca685288ac@linaro.org>
+To: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+X-Mailer: Apple Mail (2.3860.100.5.1.1)
+X-Proofpoint-GUID: caS-lB2uvxxiT7S2FFAVsbzO-WATyl3O
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwODAxMDA5NiBTYWx0ZWRfXzlEHa88k5Ql5
+ ocAilHEKQTr5Mu+zHswJy+2ajmEvo22M90+kJrcCk+lCM7pfSAflHzHXRfDLK/LeZOYQv68ny59
+ M3vdwm/D5vCvZSyhczp3yFX3cCmhQMldQ103BIPOaqRlMUCN56mRNjUjVFB+9mWNQKyOWWphpjR
+ 6crscNN96Zi3quvYuVIiWRxC/vbFyTLLCcWSltoie89/J2+bSMQ2A8EeuLDXHsuGS25Cgl77BlE
+ 5b8yd1MZbBC5D1x4bwnD64MPmvN9PfpssOE027ztPT+so2cdj73ftP8j5bG2ZhTYMjpo+16Vo=
+X-Proofpoint-ORIG-GUID: caS-lB2uvxxiT7S2FFAVsbzO-WATyl3O
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.9,FMLib:17.12.80.40
+ definitions=2025-08-01_04,2025-07-31_03,2025-03-28_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0
+ mlxscore=0 suspectscore=0 bulkscore=0 spamscore=0 malwarescore=0
+ mlxlogscore=999 clxscore=1030 adultscore=0 classifier=spam adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2506270000 definitions=main-2508010096
+Received-SPF: pass client-ip=57.103.87.4;
+ envelope-from=mohamed@unpredictable.fr; helo=outbound.qs.icloud.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -100,75 +91,86 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, Aug 1, 2025 at 7:25=E2=80=AFAM Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> On 8/1/25 05:13, Pierrick Bouvier wrote:
-> > On 7/27/25 1:02 AM, Richard Henderson wrote:
-> >> The ARM now defines 36 bits in SPSR_ELx in aarch64 mode, so
-> >> it's time to bite the bullet and extend PSTATE to match.
-> >>
-> >> Most changes are straightforward, adjusting printf formats,
-> >> changing local variable types.  More complex is migration,
-> >> where to maintain backward compatibility a new pstate64
-> >> record is introduced, and only when one of the extensions
-> >> that sets bits 32-35 are active.
-> >>
-> >> The fate of gdbstub is left undecided for the moment.
-> ...
-> >> diff --git a/target/arm/gdbstub64.c b/target/arm/gdbstub64.c
-> >> index 64ee9b3b56..3cef47281a 100644
-> >> --- a/target/arm/gdbstub64.c
-> >> +++ b/target/arm/gdbstub64.c
-> >> @@ -47,6 +47,7 @@ int aarch64_cpu_gdb_read_register(CPUState *cs, GByt=
-eArray *mem_buf,
-> >> int n)
-> >>       case 32:
-> >>           return gdb_get_reg64(mem_buf, env->pc);
-> >>       case 33:
-> >> +        /* pstate is now a 64-bit value; can we simply adjust the xml=
-? */
-> >>           return gdb_get_reg32(mem_buf, pstate_read(env));
-> >>       }
-> >
-> > If I'm correct, we currently don't expose PSTATE through gdbstub, but o=
-nly CPSR. This was
-> > a bit confusing for me, considering that CPSR is not even supposed to e=
-xist in Aarch64.
->
-> Correct.  An old error, for sure.
->
->
-> > Maybe it's a good opportunity to expose PSTATE instead, which could hav=
-e a 64 bits size.
-> > This way, we don't break any workflow.
->
-> Hmm, perhaps adding a "org.gnu.gdb.aarch64.pstate" xml with just one 64-b=
-it value is the
-> best solution.  Thiago?
 
-A single line in gdb-xml/aarch64-core.xml should be enough:
 
-  <reg name=3D"PSTATE" bitsize=3D"64" />
+> On 1. Aug 2025, at 03:15, Pierrick Bouvier =
+<pierrick.bouvier@linaro.org> wrote:
+>=20
+> Hi Mohamed,
+>=20
+> On 7/30/25 10:27 PM, Mohamed Mediouni wrote:
+>> This one took way longer for me to publish than I should have.
+>> There are a number of lingering bugs in this one including u-boot not =
+working.
+>> Interrupt controller save/restore is entirely missing in this RFC, =
+and some other state
+>> bits are likely still missing too.
+>> ITS not blocked by default yet, remember to use its=3Doff when =
+testing this series.
+>> You might also want the GICv3 + GICv2m support patch as part of the =
+HVF vGIC patch series, which
+>> is not duplicated here.
+>> PS: on both this and HVF, interrupt controller initialisation needs =
+to be done early so I ended
+>> up with hardcoded addresses. Wonder if the right way to go might be =
+to defer virt and vCPU initialisation
+>> until late in the process post-gic_realize...
+>> Other than that, this boots both EDK2 and Linux in SMP, when using =
+devicetree or ACPI.
+>=20
+> thanks for posting this, that's an exciting series!
+>=20
+> I applied it on top of your other series =
+(20250728134114.77545-1-mohamed@unpredictable.fr) and solved the =
+conflicts.
+> However, it would really help if you could push that exact branch =
+somewhere, so people can easily pull it and try.
+> I'm fine if you want to duplicate gic patches in this series as well.
+Hello,
 
-I'd keep cpsr even if it's now effectively duplicated. It comes from
-gdb's upstream aarch64 schema so it's deeply ingrained by now.
+My branches are at https://github.com/mediouni-m/qemu
 
-Then you can do `info registers $PSTATE` in gdb after adding the reg
-getter in gdbstub.
+whpx-v1 corresponding to this RFC, but latest rev of the whpx branch has =
+some fixes
 
-I think it could be possible to define a
+Have some additional notes and binaries here too: =
+https://github.com/mediouni-m/qemu/releases/tag/whpx-v1.1
 
-<flags id=3D"pstate_flags" size=3D"8">
- ...
-</flags>
+Thank you,
+-Mohamed
 
-type that re-uses the cpsr_flags type definition by setting a field
-<field start=3D"0" end=3D"31" type =3D "cpsr_flags" /> but I haven't tried
-it.
+> I tried to direct boot a kernel (6.15 defconfig) and ran into this =
+error [1]:
+> $ ./build/qemu-system-aarch64.exe -M virt,its=3Doff -cpu cortex-a76 -m =
+2G -nographic -accel whpx -kernel out/Image.gz out/host.ext4
 
->
->
-> r~
->
+Syntax that I use is -M virt,accel=3Dwhpx,its=3Doff -m 2048-cpu =
+cortex-a72 -bios share/edk2-aarch64-code.fd.
+
+And on some kernel versions, you=E2=80=99ll also need =
+irqchip.gicv3_nolpi=3D1.
+
+> Could you please share your exact command line?
+> Does it work with direct kernel boot also?
+>=20
+> Kind Regards,
+> Pierrick
+>=20
+> [1] Error when booting:
+> [    1.381525] Internal error: Oops: 0000000096000002 [#1]  SMP
+> [    1.458060] Modules linked in:
+> [    1.461172] CPU: 0 UID: 0 PID: 1 Comm: swapper/0 Not tainted =
+6.15.0-00001-g7797e43a2520 #1 PREEMPT
+> [    1.470502] Hardware name: linux,dummy-virt (DT)
+> [    1.475102] pstate: 204000c5 (nzCv daIF +PAN -UAO -TCO -DIT -SSBS =
+BTYPE=3D--)
+> [    1.482023] pc : pci_generic_config_read+0x38/0xb8
+> [    1.486970] lr : pci_generic_config_read+0x24/0xb8
+I don=E2=80=99t think I saw this particular one before=E2=80=A6 which =
+Windows version and hardware are you testing this on?
+
+(Message was sent from the wrong email alias on mobile, resending)
+Thank you,
+-Mohamed
+
 

@@ -4,97 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8E40C87FCB
-	for <qemu-arm@archiver.kernel.org>; Fri,  1 Aug 2025 13:38:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3535C87FCA
+	for <qemu-arm@archiver.kernel.org>; Fri,  1 Aug 2025 14:02:09 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uhpw4-0005vD-PS; Fri, 01 Aug 2025 09:36:37 -0400
+	id 1uhqKW-00018q-MX; Fri, 01 Aug 2025 10:01:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shameerkolothum@gmail.com>)
- id 1uhkUW-0004zU-WF; Fri, 01 Aug 2025 03:47:49 -0400
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1uhqKC-0000qU-Tj
+ for qemu-arm@nongnu.org; Fri, 01 Aug 2025 10:01:44 -0400
+Received: from mail-yw1-x112b.google.com ([2607:f8b0:4864:20::112b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shameerkolothum@gmail.com>)
- id 1uhkUU-0007mb-SI; Fri, 01 Aug 2025 03:47:48 -0400
-Received: by mail-wr1-x42c.google.com with SMTP id
- ffacd0b85a97d-3b783d851e6so649086f8f.0; 
- Fri, 01 Aug 2025 00:47:46 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1uhqKA-0006NS-JO
+ for qemu-arm@nongnu.org; Fri, 01 Aug 2025 10:01:32 -0400
+Received: by mail-yw1-x112b.google.com with SMTP id
+ 00721157ae682-71b4fc462ddso13728687b3.1
+ for <qemu-arm@nongnu.org>; Fri, 01 Aug 2025 07:01:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1754034464; x=1754639264; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=gOwwy3GLPQ6ST7xJTOCyOyJnsV2gNoteuopM4onEoIE=;
- b=DF7erN5HQ1s6TYlMk6uSUrN6GYri7XrgiLPQbJLaIT+roRPvgjiiCv6EsdOc9tLkSn
- gUYnLD02lG6fQoYXx2SGyq8bZH4I//4BdaahbedrXsOPdTpfTawtW9FDPLdSgyL6E/9y
- R6KIGEvCtcgaANtoEfQuzmg6twwc3THpi73bCkiMT92WimvLdyqI548/5MYpTHDNK22F
- KlKwtPHeiMR5SYiIC7BOz+kOsWxLmDOTfHM29/mfJsTHXYR8J3WunyGERYW0S0c58/qa
- HtXzjm+c5i8VRuxt+p6sH2XEFZVuTMF1HK3BfUT6njX6Ta+TVSDyzaY+sBjEMq2on0in
- nEjA==
+ d=linaro.org; s=google; t=1754056889; x=1754661689; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=S7nN585j+6dnpyyFLpPNGlhyr7gwvW8TXy3XpaaAmkU=;
+ b=N1lFie9NPe8tGUiTxxoC56kKdd1XnvTZhcL5g2AbziMEkHkZwwZ3NXmU0Do2COZo8k
+ yRea4daFRaCN/ntJ1Xt4Q7NvPpjKa2YnuAZh5JREJqddkm6I7ynZu1vlRsOwrbXAvxU9
+ J6E+S8ElhbaDTG+nNUzAZiKLMr2kAvwSsLyBQOCCmW8jhLeJseVWQej4AN8il6T4Nb57
+ 3WC6xdNMDQ2063Sb+9aUpCjLK40bgE+ShJqUE6JM5TTipOjHslsT3iFPmjPURR2i/voJ
+ G5IfKedOfNco91Ap/XmnL2UvxfBCJQBsWgCIA6HLcZOVaDUGW853ZrHby1yGikGAXfcK
+ OiqQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1754034464; x=1754639264;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=gOwwy3GLPQ6ST7xJTOCyOyJnsV2gNoteuopM4onEoIE=;
- b=biUYbbM7LSP+4qJo/BwG6PDe4me855fXQjg0MGoqm0srL5ciYJ0Izp69tBbaoXAOqp
- uNzE8W3cnKc7lbSzFpc8wirNzfzkyw3HCOSgdNajCgSxYyaP1D6ylnAqFREe3gynd6O/
- MpFfLczDb4GPVh8/JMSdYaAQngFM/bqmF7Elw5nGk8cM1VfA6l0IqUoNA2IRaA/z7mO3
- qwFO23fAosX6sFn2yignLj+YtfFqCs1rE7xgA5rxUiL9hJfztlPpKBxbqxzCO4xCDIOY
- h6gkt0KgKe8peIiEcS2YHujbUD5TfQls0kGV98bIbBrEPfnR2PIBfG6ZSPaEE/fKvELe
- HBDQ==
+ d=1e100.net; s=20230601; t=1754056889; x=1754661689;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=S7nN585j+6dnpyyFLpPNGlhyr7gwvW8TXy3XpaaAmkU=;
+ b=aGzHd4zxIcS9jChEHRky/Yja/uLS2YgyG5rUJUZeabhk168sMRjrCNI3XymJ7PEmzJ
+ 5aQB+1Y4S1/0Jaw3k6QJvp15EJroXvX4xea9y+LGPajOSpeeOeS4Qo0RitTlfGDQZ83D
+ crSomxOH0mcX/mnAOR1Lsa5FgT0N7WI+4EB0G7JaXlk1sj3x/sBdbePw69eOxSwL+iTT
+ ucaQ5de7KYzDMHAA29wqyGRBt2VWWG+EEJZOTE+U2e79FXAauB3O8L/6/ZuUWVDgTU++
+ h7V/zZXo9l+3pNhb6WxgmyrlhrgebhB8tY5jLamVBqY+ybBBtfitKZC/WB+pXAaAFRPZ
+ g3+Q==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWGdbnRhrLzqL/1IAcvuxKjqmyeSECE5NMdId14TATPzevSJF+p84pSIAx2pJQWEOYoHxfqhZy6ELVq@nongnu.org
-X-Gm-Message-State: AOJu0Ywv4SgGLwVKlqYY/kAzosd6KkPsdDGwnasVyQuPAvNtDppIuUbz
- Jnzp91JkRfgk308L/k7pKh3NjE77CHUtlNWo9fDICWMMsKKIGDIb85+VLWnWLg==
-X-Gm-Gg: ASbGncvz3djQped6tOzXBtJGajs//K0TVCKrr7DdJxnTyU2yI3fjuuX7zhw2sjRgG6/
- GcFwG/H56W93odOREHwzPjsNPZVba9Rcg8/JgwV0Y09ZmLm/5aR4mnchvS/96Y533I2OnV6dIRJ
- QcGpO4wONQmzVrPKG6mal/ytH7XCkA7mGtpyeAFhzQWANTlIGEb9VxhF9VAKF4Q48ikhksUj9AN
- eTPpAzwAhAP/p1xB6ajsjazhMihpYT+Hx8/+E7brij9JgBYKief9Me5Fl6JDs3sVc2Y8GB0s/LM
- 9IJrYsWlLo0S/WDj/wp+nKDUeaiD1PLSl0BR/zwfMg+902Vl6pMPbrrzAreDINUJQolK1QtGJvF
- Dxkzb7FFMU7A+UGhxcW8y4aGatDonC2C5gw==
-X-Google-Smtp-Source: AGHT+IE543fvfeJI9GhypQTiBCwSXnt7jJx8MHoitAqUiMxp4JU0t74VjvCQZ6I7aX3quxRWjJBDGg==
-X-Received: by 2002:a05:6000:144b:b0:3b8:d32e:9231 with SMTP id
- ffacd0b85a97d-3b8d32e9730mr1358500f8f.29.1754034464033; 
- Fri, 01 Aug 2025 00:47:44 -0700 (PDT)
-Received: from shameer-ubuntu ([195.11.233.227])
- by smtp.googlemail.com with ESMTPSA id
- ffacd0b85a97d-3b79c453ab0sm5049185f8f.44.2025.08.01.00.47.43
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 01 Aug 2025 00:47:43 -0700 (PDT)
-From: Shameer Kolothum <shameerkolothum@gmail.com>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: eric.auger@redhat.com, peter.maydell@linaro.org, cohuck@redhat.com,
- sebott@redhat.com, berrange@redhat.com, maz@kernel.org,
- oliver.upton@linux.dev, armbru@redhat.com, linuxarm@huawei.com,
- wangzhou1@hisilicon.com, jiangkunkun@huawei.com,
- jonathan.cameron@huawei.com, salil.mehta@huawei.com,
- yangjinqian1@huawei.com, shameerkolothum@gmail.com,
- shameerali.kolothum.thodi@huawei.com
-Subject: [RFC PATCH RESEND 2/4] target/arm/kvm: Add QAPI struct
- ArmTargetImplCPU
-Date: Fri,  1 Aug 2025 08:47:28 +0100
-Message-ID: <20250801074730.28329-3-shameerkolothum@gmail.com>
-X-Mailer: git-send-email 2.50.1
-In-Reply-To: <20250801074730.28329-1-shameerkolothum@gmail.com>
-References: <20250801074730.28329-1-shameerkolothum@gmail.com>
+ AJvYcCWlXJ05AXA9+qusaSNoepnFMNbn2ej/paVldIAIpOz3B/EvmI4Ry5X3dKbXyDWRqbBFBuCQBtx3kA==@nongnu.org
+X-Gm-Message-State: AOJu0YzUwTQ7pdYfpgPoLqEOSdukUyS+AjiqWWP8EIPBTYEDiYy00f4p
+ N5Y4+KMZJczFnpL5tP0ibNd6cH8yOPBCAWMCYoCuwbWBGHgM04C9Kcmbxz/Ocz9EzPPANIqI80h
+ tze0IKwh3sAvNQ6qJVUNGqX/ortI2yeYX1RZpwQTwDg==
+X-Gm-Gg: ASbGncuX4/3QLWvfcXuSh2Ue0w7W4OsyhVSmpgyjsy1PSQ9Yj7Jh2lN2pXpJez1MnqV
+ S2WyD7vSqhjbrrplfW+8beJf+NKS6SjqS7upVNKmhbihcTeZzMVoL5RgwZ/Uac/ywNJUGldqTus
+ lG6xcKhmmT64IL/JMiIEXGutNHYw1uVniIbOwlShtM5p68Kz/C07zzKo41u/CcOQHMfwG+ICoRk
+ VrUK+6JtnLHEJWL4qw=
+X-Google-Smtp-Source: AGHT+IH/deJo7yuxOzNzwa/PGK4jWcprNX1TSiCVB0z/mulY26kgHSXpzAHCKppZnbBs2Xq3V/C5WT7f5B71tnmOaVU=
+X-Received: by 2002:a05:690c:6903:b0:71b:6bec:7f23 with SMTP id
+ 00721157ae682-71b6d802729mr35888667b3.32.1754056888729; Fri, 01 Aug 2025
+ 07:01:28 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
- envelope-from=shameerkolothum@gmail.com; helo=mail-wr1-x42c.google.com
+References: <20250722173736.2332529-1-vacha.bhavsar@oss.qualcomm.com>
+In-Reply-To: <20250722173736.2332529-1-vacha.bhavsar@oss.qualcomm.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 1 Aug 2025 15:01:17 +0100
+X-Gm-Features: Ac12FXz5pkLWBVblD9zAC_qgBHzbspl1y2mXBaktih8OjnOh1z4Mg2iYFbe8uVA
+Message-ID: <CAFEAcA8DqD+iBOaQu0M1_-1AiWna0pgf+gD39+x+nNx+9c45LA@mail.gmail.com>
+Subject: Re: [PATCH v2 0/2] target/arm: Fix big-endian handling for NEON and
+ SVE gdb remote debugging
+To: Vacha Bhavsar <vacha.bhavsar@oss.qualcomm.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Fri, 01 Aug 2025 09:35:16 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -109,129 +95,29 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+On Tue, 22 Jul 2025 at 18:37, Vacha Bhavsar
+<vacha.bhavsar@oss.qualcomm.com> wrote:
+>
+> Upon examining the current implementation for getting/setting SIMD
+> and SVE registers via remote GDB, there is a concern about mixed
+> endian support. This patch series aims to address this concern and
+> allow getting and setting the values of NEON and SVE registers via
+> remote GDB regardless of the target endianness.
 
-Introduce a QAPI‐defined struct (and its array) for target implementation
-CPUs. This enables specifying target implementation CPU parameters
-via -machine, for example:
+Thanks; I've applied these patches to target-arm.next (with
+a bit of tweaking of the commit messages).
 
--M virt, \
-  impl-cpu.0.midr=1,impl-cpu.0.revidr=1,impl-cpu.0.aidr=1, \
-  impl-cpu.1.midr=2,impl-cpu.1.revidr=2,impl-cpu.1.aidr=0
+Something seems to have gone wrong with the creation of
+this cover letter, by the way: it lists a lot of
+patches that aren't in it.
 
-Subsequent patch will make use of this by using object_property_add(),
-allowing users to configure each target CPU’s midr, revidr, and aidr
-fields directly from the command line.
+> Glenn Miles (12):
+>   ppc/xive2: Fix calculation of END queue sizes
+>   ppc/xive2: Use fair irq target search algorithm
+>   ppc/xive2: Fix irq preempted by lower priority group irq
 
-While at it, also provide a helper function to set the target CPUs.
+[etc]
 
-Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
----
- qapi/machine.json    | 34 ++++++++++++++++++++++++++++++++++
- target/arm/kvm.c     | 16 ++++++++++++++++
- target/arm/kvm_arm.h |  8 ++++++++
- 3 files changed, 58 insertions(+)
-
-diff --git a/qapi/machine.json b/qapi/machine.json
-index a6b8795b09..d6e0e3b2e3 100644
---- a/qapi/machine.json
-+++ b/qapi/machine.json
-@@ -1898,3 +1898,37 @@
- { 'command': 'x-query-interrupt-controllers',
-   'returns': 'HumanReadableText',
-   'features': [ 'unstable' ]}
-+
-+##
-+# @ArmTargetImplCPU:
-+#
-+# Info for a single target implementation CPU.
-+#
-+# @midr: MIDR value
-+# @revidr: REVIDR value
-+# @aidr: AIDR value
-+#
-+# Since: 10.2
-+##
-+{ 'struct': 'ArmTargetImplCPU',
-+  'data': {
-+    'midr': 'uint64',
-+    'revidr': 'uint64',
-+    'aidr': 'uint64'
-+  }
-+}
-+
-+##
-+# @ArmTargetImplCPUs:
-+#
-+# List of target implementation CPUs.
-+#
-+# @target-cpus: List of ArmTargetImplCPU entries.
-+#
-+# Since: 10.2
-+##
-+{ 'struct': 'ArmTargetImplCPUs',
-+  'data': {
-+    'target-cpus': ['ArmTargetImplCPU']
-+  }
-+}
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index eb04640b50..8f325c4ca4 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -66,6 +66,9 @@ typedef struct ARMHostCPUFeatures {
- 
- static ARMHostCPUFeatures arm_host_cpu_features;
- 
-+static uint64_t target_impl_cpus_num;
-+static ArmTargetImplCPU *target_impl_cpus;
-+
- /**
-  * kvm_arm_vcpu_init:
-  * @cpu: ARMCPU
-@@ -2816,3 +2819,16 @@ void kvm_arm_enable_mte(Object *cpuobj, Error **errp)
-         cpu->kvm_mte = true;
-     }
- }
-+
-+bool kvm_arm_set_target_impl_cpus(uint64_t num, ArmTargetImplCPU *cpus)
-+{
-+
-+    if (target_impl_cpus_num) {
-+        return false;
-+    }
-+
-+    target_impl_cpus_num = num;
-+    target_impl_cpus = cpus;
-+
-+    return true;
-+}
-diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
-index 3cd6447901..8754302333 100644
---- a/target/arm/kvm_arm.h
-+++ b/target/arm/kvm_arm.h
-@@ -244,6 +244,8 @@ void kvm_arm_enable_mte(Object *cpuobj, Error **errp);
- 
- int kvm_arm_get_writable_id_regs(ARMCPU *cpu, IdRegMap *idregmap);
- 
-+bool kvm_arm_set_target_impl_cpus(uint64_t num, ArmTargetImplCPU *cpus);
-+
- #else
- 
- /*
-@@ -280,6 +282,12 @@ static inline int kvm_arm_get_writable_id_regs(ARMCPU *cpu, IdRegMap *idregmap)
-     return -ENOSYS;
- }
- 
-+static inline
-+bool kvm_arm_set_target_impl_cpus(uint64_t num, ArmTargetImplCPU *cpus)
-+{
-+    return false;
-+}
-+
- /*
-  * These functions should never actually be called without KVM support.
-  */
--- 
-2.34.1
-
+thanks
+-- PMM
 

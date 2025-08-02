@@ -4,87 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38BD5C87FD3
-	for <qemu-arm@archiver.kernel.org>; Sat,  2 Aug 2025 23:36:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6C3CC87FC9
+	for <qemu-arm@archiver.kernel.org>; Sat,  2 Aug 2025 23:36:31 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uiLiQ-0001S6-Da; Sat, 02 Aug 2025 19:32:38 -0400
+	id 1uiLlK-0000Kp-R3; Sat, 02 Aug 2025 19:35:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1uiLgX-0006fU-N7
- for qemu-arm@nongnu.org; Sat, 02 Aug 2025 19:30:42 -0400
-Received: from mail-oa1-x29.google.com ([2001:4860:4864:20::29])
+ id 1uiLlD-0008Hs-B1
+ for qemu-arm@nongnu.org; Sat, 02 Aug 2025 19:35:31 -0400
+Received: from mail-oa1-x2d.google.com ([2001:4860:4864:20::2d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1uiLgV-0004su-V0
- for qemu-arm@nongnu.org; Sat, 02 Aug 2025 19:30:41 -0400
-Received: by mail-oa1-x29.google.com with SMTP id
- 586e51a60fabf-30174a93186so2672194fac.3
- for <qemu-arm@nongnu.org>; Sat, 02 Aug 2025 16:30:39 -0700 (PDT)
+ id 1uiLlB-0005dX-Lp
+ for qemu-arm@nongnu.org; Sat, 02 Aug 2025 19:35:31 -0400
+Received: by mail-oa1-x2d.google.com with SMTP id
+ 586e51a60fabf-2e95f0b6cb7so1217401fac.3
+ for <qemu-arm@nongnu.org>; Sat, 02 Aug 2025 16:35:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1754177438; x=1754782238; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=FnUxL1l7S/Ogxnuq3Rb6QT2pyV+tUJh+XdG2c+057PU=;
- b=qYnjF8iwUZd+22UOyM/LPOOz3R6DTwT4qypIf+7F0o5EoE3cZukr2PmFqsUIWAO0kr
- MAJs39QszrvARlcXlNq/H+IlcYDTtVj9CEFBZvAVjzfmOT4X6KbdArCnlDdFWS3eOk/K
- YNXfzIcS0nX6ECXXXVg4HSO1LjMXIQPhEbxSn9i7MQoB0tlWPXUQ74bwG3/1MPcrObC7
- GI9wIZxmWRzHiMGtKvFFOTCE+6QP+ipNn643qGNZ/kapd1NU1cB8j8CPF3LGiGNl0DEK
- KO5btQmwOg8RJKUaIIdG3n4sdwYO9dkLopYD8/LAHKYPGLjbJmOonJeFaEKIiYNTSx/L
- 5n1g==
+ d=linaro.org; s=google; t=1754177728; x=1754782528; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=5XTpRLabasFGIFX0ncth0L9jgGIA/Ho4PN64mD2Jcm8=;
+ b=biyjLhVd/qFZZ1PfLJ0xES8tg2UPNeWMKrMAuMP+fN58KCKXhqL0gUemV23geFqdTA
+ VS2yi7jBtr2eemXzDuYz4Ao7aXb9yx6OjM9L6wm5z9fg8xXDS272/eUZN8StBnJO1djO
+ wDfWS86XThjk5ynNWFJT2uaW8RLDKhjr/HUhoAZLSGGtOxiCH8bE/6Zr893srb+ipDpk
+ H4mBA/DO47SCMc/+96bnzHvdzxiV1KzzXXE6w5c0MbQnEPGqz4u6j6tHIZMQaDHuTQvv
+ FsDIN+90Lt5RJQMLHb9GnmVdyu8MqIfTRMnizUbxUcznFODqdGhBGjtvCl9KgJc36FTz
+ STQw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1754177438; x=1754782238;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=FnUxL1l7S/Ogxnuq3Rb6QT2pyV+tUJh+XdG2c+057PU=;
- b=Vq6tCBjQwyGrRUtdjIP6IYYX18qhtU7qi/G7VXdRHvbFUU5OqEMm59fDT8vcsmbHe+
- d/EV2JUjuKOt8Y4V4GYr78KVeZPv2RGrvMIoStMQTVVWotuZ6NU2G3owXNW9x+vUzWI9
- 3MUB5pS4WFUquw5AXJpq49voFiIk3gfjp4p+yUimGyWlx5UhUFChFXWguO1jEj54g3LB
- L79BsiP2/HZAwy7GifkYoFRHQilm6WDykaLXei/DAI1dvXuKwYoq8MgaAL62XFSPYjl2
- y6u4UtkVDhrstNJ2uyW12ocMv6bJeSrOcwnGlkWnzQCto1mTosT/EnhCrQRIYwoKJ17T
- vSSw==
-X-Gm-Message-State: AOJu0YzFKKtHWP5loSTlVhKoW1KJmTz0KNv7Y/k1xy8/lbhx9MsFxREO
- Xx5Q3cRYh1JPJ9WFTAjW7zfd0VNvtpOvkyJUAHZea5hTFIzyDTebm1I4H3k8L38k+h5szlURtSo
- U3AMhzZE=
-X-Gm-Gg: ASbGncuqIbubj/bSDEhfzofGMrBJTFPTtQEyCvCSWar6wQo+z3s0OKTLMJc696NDqhz
- DyD37Xogfm11adDfD3VoWuhF3oH54bpOB/87LPSNgQh7BXrcWMd8durEq3cfZriQ83wxbeAQQeI
- mEtbjFwWVPcMnfuZMN/L1ztoC+mnR7G4ZCjfgyV0YImSVv4q49D+/4rC/gsU36F44/3ERHtkS7M
- 1EoJydRoBKBwF8lqgdCfKxpRZ/C+IXUX6OfIgolTIM85qco3sdZeLtEfZhRm/H2eN3yGuRdqFfm
- Gg9sdrfY0Ki2T0KbkzHCov+fBX0jWrTMmt4iUKEbZQ49hFzIIdU8CIT4E+BbPQC8e06AVxrsUNP
- dEnop7yi9n/uKa9r3KRzNc0ED/gP+mmon1D6sMBDPKQR842Nlxbsv4NBmMmFAAxg=
-X-Google-Smtp-Source: AGHT+IHoiu6XO5QRvLVQQTNGMtzF4JzaCSclU5xAcnXUA2FCeurFHBRdoFP9byfWuBF8Evciwx1obg==
-X-Received: by 2002:a05:6871:a701:b0:30b:85a0:eb66 with SMTP id
- 586e51a60fabf-30b85a14575mr529391fac.12.1754177438431; 
- Sat, 02 Aug 2025 16:30:38 -0700 (PDT)
-Received: from stoup.. ([172.58.111.133]) by smtp.gmail.com with ESMTPSA id
- 586e51a60fabf-30b8e3c9b32sm71031fac.24.2025.08.02.16.30.34
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 02 Aug 2025 16:30:37 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v2 08/85] target/arm: Skip AF and DB updates for AccessType_AT
-Date: Sun,  3 Aug 2025 09:28:36 +1000
-Message-ID: <20250802232953.413294-9-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250802232953.413294-1-richard.henderson@linaro.org>
-References: <20250802232953.413294-1-richard.henderson@linaro.org>
+ d=1e100.net; s=20230601; t=1754177728; x=1754782528;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=5XTpRLabasFGIFX0ncth0L9jgGIA/Ho4PN64mD2Jcm8=;
+ b=PYQWq0P4kM+j5y5eV5zd1fOklHF9yJq+ybibZEGrLAcGwiOqzrWuPLM6i3UjBZqQUU
+ ey86t1uiKsGTrTqfk8W11mElgLe0LD93OnP4lVXORZVu3vsyubDEZR1O/h8oyOB+v9uJ
+ 7BntjfZEpuXyz2z7ls5jlyh1Hp1/n6SXHMlvkVcTI147sIQHiTM7cC3SurXfEilTwcPZ
+ 0JG9KCoKTOWtmon5vNVCnkv5qQ/t16638URisEE8gFwZZSWBj1uTUpMfAD84vBM0gZlJ
+ r3b94afw8gVqN8QgKwyRPFFt8n5m0zjCZAMtzZ84ju3U8n56cy67C7Vs4Y+gGjMZnoKk
+ NB9w==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWLsqOe7ccMPUh5zkaAaWzqiJn35OzP69PY3lVFCTm/y3nn+A3hbKDxxDC/KtMiZapN5tS5ov5m7A==@nongnu.org
+X-Gm-Message-State: AOJu0YzvbgbtWvxeP1IED7mJZAb66+5ijdse4/sCzpRlZrrlQfvL+sUF
+ 0yKhAM/SasE/tEkCEpceBhsLm+7ploUeNlKvQYm5P2sM2FdXwdzocX/s4cnEM/0r2M8=
+X-Gm-Gg: ASbGnctNyuYVo0nKiN9okujjbrPtTVj0XGDPG3TUkC1sKfZiU7tByTfzSJ0VhbWlO/Z
+ oX4uXD0NdWt0TYTk43+A1mL4Thb2bFnmr4n+Y0k4RJ4YTZmDZKef63v9LzOj7cZta4idGICSNeg
+ 943i0M0tagY+ey7wr9X5t+OQymWwlw2ynrxbuErj7JX/9R9y39OdJ8hc+la0XXfhkNuZz5snFAi
+ xA99IccV6znJPGPGfIMQEq3N1IZSTzY4SHL0D0d45EUIshpZVzKtcXV3/Md531CEj4y2zSJBRNk
+ X4m4BbVVdGLPgIVmMEgL3D/TxQREGKBuxenLoV4CMlmKcP8hdKAi7/yV5Ii8LRaNQkVqtSe8jda
+ VIg3EQh6hdu7s7FwmKSGBkyf/tSZHTATV2qY2Q8YN2N/GxEWi0F4POhkk4ZHzi7T5
+X-Google-Smtp-Source: AGHT+IHrXZv2S0toFcObVwLoDDCHgP3u3zz6UnLINerYEHkTo4rPuceXuYxdG5I3KohP3eaEQwhwDQ==
+X-Received: by 2002:a05:6871:7a16:b0:29e:5de2:cffb with SMTP id
+ 586e51a60fabf-30b6768d4fbmr2578002fac.17.1754177728286; 
+ Sat, 02 Aug 2025 16:35:28 -0700 (PDT)
+Received: from [10.153.194.227] ([172.58.111.133])
+ by smtp.gmail.com with ESMTPSA id
+ 586e51a60fabf-307a748b451sm1725618fac.38.2025.08.02.16.35.20
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sat, 02 Aug 2025 16:35:27 -0700 (PDT)
+Message-ID: <5b0c0d73-5da7-476b-b297-ea6642c5af92@linaro.org>
+Date: Sun, 3 Aug 2025 09:35:15 +1000
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2001:4860:4864:20::29;
- envelope-from=richard.henderson@linaro.org; helo=mail-oa1-x29.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 01/11] semihosting/syscalls: compile once in system and
+ per target for user mode
+To: Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-devel@nongnu.org
+Cc: Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>, qemu-riscv@nongnu.org,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Weiwei Li <liwei1518@gmail.com>, qemu-arm@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>, philmd@linaro.org,
+ =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Alistair Francis <alistair.francis@wdc.com>
+References: <20250801232609.2744557-1-pierrick.bouvier@linaro.org>
+ <20250801232609.2744557-2-pierrick.bouvier@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Content-Language: en-US
+In-Reply-To: <20250801232609.2744557-2-pierrick.bouvier@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2001:4860:4864:20::2d;
+ envelope-from=richard.henderson@linaro.org; helo=mail-oa1-x2d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -100,63 +111,24 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-We are required to skip DB update for AT instructions, and
-we are allowed to skip AF updates.  Choose to skip both.
+On 8/2/25 09:25, Pierrick Bouvier wrote:
+> We replace target_ulong mechanically by uint64_t.
+> We can't compile (easily) this code once for user, as it relies on
+> various target/function types, so leave it in specific_ss for user mode.
+> 
+> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+> ---
+>   include/semihosting/syscalls.h | 30 ++++++------
+>   semihosting/arm-compat-semi.c  |  1 +
+>   semihosting/syscalls.c         | 89 +++++++++++++++++-----------------
+>   semihosting/meson.build        |  4 +-
+>   4 files changed, 63 insertions(+), 61 deletions(-)
 
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/ptw.c | 15 ++++++++++++++-
- 1 file changed, 14 insertions(+), 1 deletion(-)
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-index 1866c494ef..efbad7af1f 100644
---- a/target/arm/ptw.c
-+++ b/target/arm/ptw.c
-@@ -58,6 +58,12 @@ typedef struct S1Translate {
-      * and will not change the state of the softmmu TLBs.
-      */
-     bool in_debug;
-+    /*
-+     * in_at: is this AccessType_AT?
-+     * This is also set for debug, because at heart that is also
-+     * an address translation, and simplifies a test.
-+     */
-+    bool in_at;
-     /*
-      * If this is stage 2 of a stage 1+2 page table walk, then this must
-      * be true if stage 1 is an EL0 access; otherwise this is ignored.
-@@ -1929,7 +1935,12 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
-     descaddr &= ~(hwaddr)(page_size - 1);
-     descaddr |= (address & (page_size - 1));
- 
--    if (likely(!ptw->in_debug)) {
-+    /*
-+     * For AccessType_AT, DB is not updated (AArch64.SetDirtyFlag),
-+     * and it is IMPLEMENTATION DEFINED whether AF is updated
-+     * (AArch64.SetAccessFlag; qemu chooses to not update).
-+     */
-+    if (likely(!ptw->in_at)) {
-         /*
-          * Access flag.
-          * If HA is enabled, prepare to update the descriptor below.
-@@ -3553,6 +3564,7 @@ bool get_phys_addr_for_at(CPUARMState *env, vaddr address,
-     S1Translate ptw = {
-         .in_mmu_idx = mmu_idx,
-         .in_space = space,
-+        .in_at = true,
-         .in_prot_check = prot_check,
-     };
-     /*
-@@ -3653,6 +3665,7 @@ static hwaddr arm_cpu_get_phys_page(CPUARMState *env, vaddr addr,
-         .in_mmu_idx = mmu_idx,
-         .in_space = arm_mmu_idx_to_security_space(env, mmu_idx),
-         .in_debug = true,
-+        .in_at = true,
-         .in_prot_check = 0,
-     };
-     GetPhysAddrResult res = {};
--- 
-2.43.0
+Thanks for the syscalls.h changes.
+Other addresses can be cleaned to vaddr later.
 
+
+r~
 

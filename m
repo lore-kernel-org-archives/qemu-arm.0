@@ -4,86 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62673C87FD3
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E0B2C87FD2
 	for <qemu-arm@archiver.kernel.org>; Sat,  2 Aug 2025 23:47:25 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uiLrG-00033X-F1; Sat, 02 Aug 2025 19:41:48 -0400
+	id 1uiLol-0006Ol-EX; Sat, 02 Aug 2025 19:39:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1uiLnf-0004tq-3p
- for qemu-arm@nongnu.org; Sat, 02 Aug 2025 19:38:03 -0400
-Received: from mail-ot1-x32b.google.com ([2607:f8b0:4864:20::32b])
+ id 1uiLmV-00038x-Aw
+ for qemu-arm@nongnu.org; Sat, 02 Aug 2025 19:36:51 -0400
+Received: from mail-ot1-x32e.google.com ([2607:f8b0:4864:20::32e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1uiLnX-00065X-Fz
- for qemu-arm@nongnu.org; Sat, 02 Aug 2025 19:37:56 -0400
-Received: by mail-ot1-x32b.google.com with SMTP id
- 46e09a7af769-72c47631b4cso1765271a34.1
- for <qemu-arm@nongnu.org>; Sat, 02 Aug 2025 16:37:54 -0700 (PDT)
+ id 1uiLmT-0005kx-Bh
+ for qemu-arm@nongnu.org; Sat, 02 Aug 2025 19:36:51 -0400
+Received: by mail-ot1-x32e.google.com with SMTP id
+ 46e09a7af769-741b1fe0d48so61474a34.3
+ for <qemu-arm@nongnu.org>; Sat, 02 Aug 2025 16:36:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1754177874; x=1754782674; darn=nongnu.org;
+ d=linaro.org; s=google; t=1754177808; x=1754782608; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=KUfIu25DnJupV1Db/3EipBIrM+Ws30vdyubQzMZmUk4=;
- b=v7XNIWFaM19gOBoXAnq2aLciuW0nVb4Rtka8tTkZUjfdXDDNaf1kiAHOigERhINAb9
- 5Am+uJXC992CSICxIkOxoc5hCLGO1ezTaYcjntp8BxsYvEZ/7f4UYd6qOMfVgToSFG9G
- 3GtxzIMgAIcVBuwvofeBMr6bKgjJSsrOlkI1+Y85jxhdd87R+y9igW8ETTu/6qCxiePG
- I8Oe44ZzmnGHmDGpiglYnSNzsQ8S4n9mbZCCo301H4szE6vQ+6Su99bDYr+uyh1p4Y/p
- 5+jSWo6SKyVPb9Z+NXDDJYxrWc6u4HDo5r3uhDPqxWQqtjsxdroHVezGUQgFG1zQ1dUK
- 7eLg==
+ bh=pPOkQLbvkqPVPEJfSSp8FNRSZcEhCTwT9zh6ylUUUcE=;
+ b=mKTmhvD2i3axDnt3++MlgTaY1iyD93I8zDBvzxov26ZgzILwFwDIg5aDm4MbJGiOil
+ GFn6V+lCbMCR3IdlWVRsdztfLDfJCbjMG3nw6zYgFc8uC+9so8X4TjplCYobrS4wlYKh
+ He3ezYWduafAZg0MhzsRPuEaTFTV8oC8P6Gw9WFItM9ZHGHS26MfB/7QHvMWfNr9NtHD
+ xkH0LkU+0KuOYEPKqukeACTUGsy6DIpnGeeVjTBqtI+wmiY0JOQbQVZQX51rS0q+yG52
+ W6wSC8mRoPjU4wCddJjdGfE4yiEd45BaF2H0VxbX0xIpCB+YQGOF2sAhvGzngAKzgs/m
+ iHWQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1754177874; x=1754782674;
+ d=1e100.net; s=20230601; t=1754177808; x=1754782608;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=KUfIu25DnJupV1Db/3EipBIrM+Ws30vdyubQzMZmUk4=;
- b=OpRlSQhXvsDe9ozUvpXM6h2lkjQ+2qwjZ11N9UlER5Qa4e9KnQltO+V8E3BTJd1pqZ
- 1Riyx4tjj73VM3qjCRc7y+ZCpI4gBR0/YAGB5bmbrYVG/MrWfftYrT2XGLAenV078txw
- PZ3NqD54svIJt8DH7CldNVyc0l/x0tBHS0LX89qC21ZG3rVqY9AVL9DKktvuqo2dniI3
- Yh9przAj0Jm6bIyR+4B2orEzJPEeOWqxPe4wV/VZ/Jcz1VZbbAptl/jnrQOTb7VKo72F
- M50Kb69IYN5hacIi2OdRXg5oM6xznCLCqR4DO8BIeQgB+A73qxlhawRQH7/068KFS8sO
- Lq8Q==
-X-Gm-Message-State: AOJu0YzUZ8qWZ8+/LCOXzyP8c1F/qTOnaIBXRnGtqYTqOEa6uNEaKCZv
- fBhtR41PGdQeg/uozm0Dq6HO3AGLxvDzjgYUvsvNweqdryNkQq35ibRprT5B1/7ExLI=
-X-Gm-Gg: ASbGncvv1ASZhHRL8oLpFm9ggS5AiXSgC0fd8npdbOojMhNJQmvmLa8+3AA+AUHcw87
- h2izx4IhsALhMdTNpZdBk6Hnw6zainuieNxImsGWYd7kPBDLTps0Siut2keW0pmotnSFb1mxDOt
- BBpjak4HA1VHnPmXN+b9AS4l0rd5OM89+t6ZjTjIE2DpYoZnYbzKvPIHH71AQ3vakDAIH3nrSTX
- Zkt8qEAapfzuGBRLnIuSnvkXGNa5zXU3UUHCRUOWGMDLrOUs/TeeuY9h9k/sPzNB2M3VsJpORrB
- otOctM+MeXmbh8L6xWmaKIoMprMr5C/jneBmFIZuM23+mYURqpezvDuCYkHiNwWz3aFC/zpiO7M
- L24ygNQTi2Hkfq0qNSrAbtj+dpCfi2fAUhiZ5pp9UZnOrXsWUyrPg9hqhSANq8Go=
-X-Google-Smtp-Source: AGHT+IFewyR+NKTxigr57KKZtJeEIDW4hl7Ge1LzWxNDgYZ8i8NeO1XFaJUo7A+HpnIc9eSgo2efMw==
-X-Received: by 2002:a05:6830:60c1:10b0:739:f3b2:80f6 with SMTP id
- 46e09a7af769-7419d284cabmr1592006a34.14.1754177874063; 
- Sat, 02 Aug 2025 16:37:54 -0700 (PDT)
+ bh=pPOkQLbvkqPVPEJfSSp8FNRSZcEhCTwT9zh6ylUUUcE=;
+ b=BCWoZZhI9XOQhortuXO9gafHvo/ydbVrX9DrrZNsFVfT0OrnHXt3Zrkd/zOGaZJUEi
+ zfolu0GnEw/DSmEdRouTSZu4s4/HXPdGLkBo6AvcBejxpd6yrjNywCJzfe438Fa2IAC/
+ i24oARawar1ffT8Re8zTva4BquGkq2jwM3BeL6MB4anYMP5Nw0taf4PZc8x428GOQpHr
+ cuJCKE/SEWyqifYfFvYoGWvHElWApnsnM6ZBOD+yKkLJAstMOXZHRHIQcUB+N7JWxnN3
+ 0UoZIGT0N1X1aDH3fL0+dNIYdrTaL2mt87I1SbUxe6ByMKsz32t+Swws/tWU2Y8t62Tb
+ +pwA==
+X-Gm-Message-State: AOJu0Yxe05YsoG/zEN1PqNqvUKMiM/HLNFy/4/RaeVLzEM98qntRRDw9
+ kN08NPxpxJti7D8CiQhcaiuwtCUeBB/Ymejmy6G1WVSptsjZ69DrzKSWx2WulCs8N3Uygn1ZyVz
+ HzHrA19Q=
+X-Gm-Gg: ASbGncv70GopI8V8doC1tz3s7+jcumkf49QsqyNsFEvsdhrOwwbPzuyvb1zKM8dR6B2
+ UDY4w6qvz9ACm6fEDk5bZI09CmCqYWywkyZhrfgOzP6Q404yRcZq0wM7mxvbe6B5ta4ZS3S0XiE
+ HEwxiwO+bFM8EYFiTBCilaxa6fizoRuGyOm2NVvufPLTJQScCtiwQ+nsRWM0lVGw1HacUgsZhHz
+ A9D+rIjnX3+PBKjMmDZmssVRDCKDA1aHiwzhVlurCS6CeSc0SF2qG2S5qRB5upqGvpv14GrLaLu
+ ZF6lS7jbjjQacc25eBGS3LF8rfq+1DGLDLkyzglhQ9p9OPSPqmkLhJAeVTlp5dJ5ATcAy+SZX09
+ LBgKC3VtrOWHXbkewV1P9IH35mjziNme69ACTFl19iq8+LX8vLdGIZeN+z3CMd7w=
+X-Google-Smtp-Source: AGHT+IHG1ISxY0xlxMUVz+SdWzgFLkkxUCfeT1YpjCd72I1UHDfLz+A6e3SBm4UTqm2z0u47fh5jpg==
+X-Received: by 2002:a05:6830:927:b0:73c:e29c:3fdc with SMTP id
+ 46e09a7af769-7419d27d146mr2249149a34.18.1754177808001; 
+ Sat, 02 Aug 2025 16:36:48 -0700 (PDT)
 Received: from stoup.. ([172.58.111.133]) by smtp.gmail.com with ESMTPSA id
- 46e09a7af769-741a71dc78asm380409a34.30.2025.08.02.16.37.50
+ 46e09a7af769-741a71dc78asm380409a34.30.2025.08.02.16.36.44
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 02 Aug 2025 16:37:53 -0700 (PDT)
+ Sat, 02 Aug 2025 16:36:47 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v2 61/85] target/arm: Implement GCSPUSHX
-Date: Sun,  3 Aug 2025 09:29:29 +1000
-Message-ID: <20250802232953.413294-62-richard.henderson@linaro.org>
+Subject: [PATCH v2 47/85] target/arm: Add GCS cpregs
+Date: Sun,  3 Aug 2025 09:29:15 +1000
+Message-ID: <20250802232953.413294-48-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250802232953.413294-1-richard.henderson@linaro.org>
 References: <20250802232953.413294-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::32b;
- envelope-from=richard.henderson@linaro.org; helo=mail-ot1-x32b.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::32e;
+ envelope-from=richard.henderson@linaro.org; helo=mail-ot1-x32e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -99,127 +100,274 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+Add isar_feature_aa64_gcs.
+Enable SCR_GCSEN in scr_write.
+Enable HCRX_GCSEN in hcrx_write.
+Default HCRX_GCSEN on if EL2 disabled.
+Add the GCSCR* and GCSPR* registers.
+
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/cpregs.h            |  2 ++
- target/arm/cpregs-gcs.c        | 17 +++++++++++++++
- target/arm/tcg/translate-a64.c | 40 ++++++++++++++++++++++++++++++++++
- 3 files changed, 59 insertions(+)
+ target/arm/cpregs.h       |  2 +
+ target/arm/cpu-features.h |  5 +++
+ target/arm/cpu.h          | 12 ++++++
+ target/arm/internals.h    |  3 ++
+ target/arm/cpregs-gcs.c   | 79 +++++++++++++++++++++++++++++++++++++++
+ target/arm/cpu.c          |  3 ++
+ target/arm/helper.c       | 10 +++++
+ target/arm/meson.build    |  2 +
+ 8 files changed, 116 insertions(+)
+ create mode 100644 target/arm/cpregs-gcs.c
 
 diff --git a/target/arm/cpregs.h b/target/arm/cpregs.h
-index 9b19520346..3d76afd20b 100644
+index 9efe9238c1..bc6adf5956 100644
 --- a/target/arm/cpregs.h
 +++ b/target/arm/cpregs.h
-@@ -49,6 +49,7 @@ enum {
-     /* Special: gcs instructions */
-     ARM_CP_GCSPUSHM              = 0x0008,
-     ARM_CP_GCSPOPM               = 0x0009,
-+    ARM_CP_GCSPUSHX              = 0x000a,
- 
-     /* Flag: reads produce resetvalue; writes ignored. */
-     ARM_CP_CONST                 = 1 << 4,
-@@ -865,6 +866,7 @@ typedef enum FGTBit {
-     DO_BIT(HFGITR, CPPRCTX),
-     DO_BIT(HFGITR, DCCVAC),
-     DO_REV_BIT(HFGITR, NGCSPUSHM_EL1),
-+    DO_REV_BIT(HFGITR, NGCSEPP),
-     DO_BIT(HFGITR, ATS1E1A),
- } FGTBit;
- 
-diff --git a/target/arm/cpregs-gcs.c b/target/arm/cpregs-gcs.c
-index 74a1697840..6f25543426 100644
---- a/target/arm/cpregs-gcs.c
-+++ b/target/arm/cpregs-gcs.c
-@@ -44,6 +44,19 @@ static CPAccessResult access_gcspushm(CPUARMState *env, const ARMCPRegInfo *ri,
-     return CP_ACCESS_OK;
+@@ -774,6 +774,8 @@ typedef enum FGTBit {
+     DO_BIT(HFGRTR, VBAR_EL1),
+     DO_BIT(HFGRTR, ICC_IGRPENN_EL1),
+     DO_BIT(HFGRTR, ERRIDR_EL1),
++    DO_REV_BIT(HFGRTR, NGCS_EL0),
++    DO_REV_BIT(HFGRTR, NGCS_EL1),
+     DO_REV_BIT(HFGRTR, NSMPRI_EL1),
+     DO_REV_BIT(HFGRTR, NTPIDR2_EL0),
+     DO_REV_BIT(HFGRTR, NPIRE0_EL1),
+diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
+index 83875c06bb..e3754df786 100644
+--- a/target/arm/cpu-features.h
++++ b/target/arm/cpu-features.h
+@@ -719,6 +719,11 @@ static inline bool isar_feature_aa64_nmi(const ARMISARegisters *id)
+     return FIELD_EX64_IDREG(id, ID_AA64PFR1, NMI) != 0;
  }
  
-+static CPAccessResult access_gcspushx(CPUARMState *env, const ARMCPRegInfo *ri,
-+                                      bool isread)
++static inline bool isar_feature_aa64_gcs(const ARMISARegisters *id)
 +{
-+    /* Trap if lock taken, and enabled. */
-+    if (!(env->pstate & PSTATE_EXLOCK)) {
-+        int el = arm_current_el(env);
-+        if (env->cp15.gcscr_el[el] & GCSCR_EXLOCKEN) {
-+            return CP_ACCESS_EXLOCK;
-+        }
++    return FIELD_EX64_IDREG(id, ID_AA64PFR1, GCS) != 0;
++}
++
+ static inline bool isar_feature_aa64_tgran4_lpa2(const ARMISARegisters *id)
+ {
+     return FIELD_SEX64_IDREG(id, ID_AA64MMFR0, TGRAN4) >= 1;
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index da42bd4466..1da73196f0 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -591,6 +591,9 @@ typedef struct CPUArchState {
+         uint64_t mecid_rl_a_el3;
+         uint64_t vmecid_p_el2;
+         uint64_t vmecid_a_el2;
++
++        uint64_t gcscr_el[4];   /* GCSCRE0_EL1, GCSCR_EL[123] */
++        uint64_t gcspr_el[4];   /* GCSPR_EL[0123] */
+     } cp15;
+ 
+     struct {
+@@ -1735,6 +1738,7 @@ static inline void xpsr_write(CPUARMState *env, uint32_t val, uint32_t mask)
+ #define SCR_ENAS0             (1ULL << 36)
+ #define SCR_ADEN              (1ULL << 37)
+ #define SCR_HXEN              (1ULL << 38)
++#define SCR_GCSEN             (1ULL << 39)
+ #define SCR_TRNDR             (1ULL << 40)
+ #define SCR_ENTP2             (1ULL << 41)
+ #define SCR_TCR2EN            (1ULL << 43)
+@@ -1744,6 +1748,14 @@ static inline void xpsr_write(CPUARMState *env, uint32_t val, uint32_t mask)
+ #define SCR_MECEN             (1ULL << 49)
+ #define SCR_NSE               (1ULL << 62)
+ 
++/* GCSCR_ELx fields */
++#define GCSCR_PCRSEL    (1ULL << 0)
++#define GCSCR_RVCHKEN   (1ULL << 5)
++#define GCSCR_EXLOCKEN  (1ULL << 6)
++#define GCSCR_PUSHMEN   (1ULL << 8)
++#define GCSCR_STREN     (1ULL << 9)
++#define GCSCRE0_NTR     (1ULL << 10)
++
+ /* Return the current FPSCR value.  */
+ uint32_t vfp_get_fpscr(CPUARMState *env);
+ void vfp_set_fpscr(CPUARMState *env, uint32_t val);
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index 7a42f8be0b..350b8bc678 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -253,6 +253,7 @@ FIELD(VTCR, SL2, 33, 1)
+ #define HCRX_MSCEN    (1ULL << 11)
+ #define HCRX_TCR2EN   (1ULL << 14)
+ #define HCRX_SCTLR2EN (1ULL << 15)
++#define HCRX_GCSEN    (1ULL << 22)
+ 
+ #define HPFAR_NS      (1ULL << 63)
+ 
+@@ -1778,6 +1779,8 @@ void define_tlb_insn_regs(ARMCPU *cpu);
+ void define_at_insn_regs(ARMCPU *cpu);
+ /* Add the cpreg definitions for PM cpregs */
+ void define_pm_cpregs(ARMCPU *cpu);
++/* Add the cpreg definitions for GCS cpregs */
++void define_gcs_cpregs(ARMCPU *cpu);
+ 
+ /* Effective value of MDCR_EL2 */
+ static inline uint64_t arm_mdcr_el2_eff(CPUARMState *env)
+diff --git a/target/arm/cpregs-gcs.c b/target/arm/cpregs-gcs.c
+new file mode 100644
+index 0000000000..9c06100d2b
+--- /dev/null
++++ b/target/arm/cpregs-gcs.c
+@@ -0,0 +1,79 @@
++/*
++ * QEMU ARM CP Register GCS regiters and instructions
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "qemu/osdep.h"
++#include "qemu/timer.h"
++#include "exec/icount.h"
++#include "hw/irq.h"
++#include "cpu.h"
++#include "cpu-features.h"
++#include "cpregs.h"
++#include "internals.h"
++
++
++static CPAccessResult access_gcs(CPUARMState *env, const ARMCPRegInfo *ri,
++                                 bool isread)
++{
++    if (arm_current_el(env) < 3
++        && arm_feature(env, ARM_FEATURE_EL3)
++        && !(env->cp15.scr_el3 & SCR_GCSEN)) {
++        return CP_ACCESS_TRAP_EL3;
 +    }
 +    return CP_ACCESS_OK;
 +}
 +
- static const ARMCPRegInfo gcs_reginfo[] = {
-     { .name = "GCSCRE0_EL1", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 0, .crn = 2, .crm = 5, .opc2 = 2,
-@@ -88,6 +101,10 @@ static const ARMCPRegInfo gcs_reginfo[] = {
-     { .name = "GCSPOPM", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 3, .crn = 7, .crm = 7, .opc2 = 1,
-       .access = PL0_R, .type = ARM_CP_GCSPOPM },
-+    { .name = "GCSPUSHX", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 0, .crn = 7, .crm = 7, .opc2 = 4,
-+      .access = PL1_W, .accessfn = access_gcspushx, .fgt = FGT_NGCSEPP,
-+      .type = ARM_CP_GCSPUSHX },
- };
- 
- void define_gcs_cpregs(ARMCPU *cpu)
-diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-index 0279111cd2..732d65f54e 100644
---- a/target/arm/tcg/translate-a64.c
-+++ b/target/arm/tcg/translate-a64.c
-@@ -2523,6 +2523,38 @@ static void gen_gcspopm(DisasContext *s, int rt)
-     tcg_gen_mov_i64(cpu_reg(s, rt), value);
- }
- 
-+static void gen_gcspushx(DisasContext *s)
++static CPAccessResult access_gcs_el0(CPUARMState *env, const ARMCPRegInfo *ri,
++                                     bool isread)
 +{
-+    int sp_off = offsetof(CPUARMState, cp15.gcspr_el[s->current_el]);
-+    int spsr_idx = aarch64_banked_spsr_index(s->current_el);
-+    int spsr_off = offsetof(CPUARMState, banked_spsr[spsr_idx]);
-+    int elr_off = offsetof(CPUARMState, elr_el[s->current_el]);
-+    int mmuidx = core_gcs_mem_index(s->mmu_idx);
-+    MemOp mop = finalize_memop(s, MO_64 | MO_ALIGN);
-+    TCGv_i64 addr = tcg_temp_new_i64();
-+    TCGv_i64 tmp = tcg_temp_new_i64();
-+
-+    tcg_gen_ld_i64(addr, tcg_env, sp_off);
-+
-+    tcg_gen_addi_i64(addr, addr, -8);
-+    tcg_gen_qemu_st_i64(cpu_reg(s, 30), addr, mmuidx, mop);
-+
-+    tcg_gen_ld_i64(tmp, tcg_env, spsr_off);
-+    tcg_gen_addi_i64(addr, addr, -8);
-+    tcg_gen_qemu_st_i64(tmp, addr, mmuidx, mop);
-+
-+    tcg_gen_ld_i64(tmp, tcg_env, elr_off);
-+    tcg_gen_addi_i64(addr, addr, -8);
-+    tcg_gen_qemu_st_i64(tmp, addr, mmuidx, mop);
-+
-+    tcg_gen_addi_i64(addr, addr, -8);
-+    tcg_gen_qemu_st_i64(tcg_constant_i64(0b1001), addr, mmuidx, mop);
-+
-+    tcg_gen_st_i64(addr, tcg_env, sp_off);
-+
-+    clear_pstate_bits(PSTATE_EXLOCK);
++    if (arm_current_el(env) == 0 && !(env->cp15.gcscr_el[0] & GCSCRE0_NTR)) {
++        return CP_ACCESS_TRAP_EL1;
++    }
++    return access_gcs(env, ri, isread);
 +}
 +
- /* MRS - move from system register
-  * MSR (register) - move to system register
-  * SYS
-@@ -2810,6 +2842,14 @@ static void handle_sys(DisasContext *s, bool isread,
-             gen_gcspopm(s, rt);
++static const ARMCPRegInfo gcs_reginfo[] = {
++    { .name = "GCSCRE0_EL1", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 0, .crn = 2, .crm = 5, .opc2 = 2,
++      .access = PL1_RW, .accessfn = access_gcs, .fgt = FGT_NGCS_EL0,
++      .fieldoffset = offsetof(CPUARMState, cp15.gcscr_el[0]) },
++    { .name = "GCSCR_EL1", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 0, .crn = 2, .crm = 5, .opc2 = 0,
++      .access = PL1_RW, .accessfn = access_gcs, .fgt = FGT_NGCS_EL1,
++      .nv2_redirect_offset = 0x8d0 | NV2_REDIR_NV1,
++      .fieldoffset = offsetof(CPUARMState, cp15.gcscr_el[1]) },
++    { .name = "GCSCR_EL2", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 4, .crn = 2, .crm = 5, .opc2 = 0,
++      .access = PL2_RW, .accessfn = access_gcs,
++      .fieldoffset = offsetof(CPUARMState, cp15.gcscr_el[2]) },
++    { .name = "GCSCR_EL3", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 6, .crn = 2, .crm = 5, .opc2 = 0,
++      .access = PL3_RW,
++      .fieldoffset = offsetof(CPUARMState, cp15.gcscr_el[3]) },
++
++    { .name = "GCSPR_EL0", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 3, .crn = 2, .crm = 5, .opc2 = 1,
++      .access = PL0_R | PL1_W, .accessfn = access_gcs_el0, .fgt = FGT_NGCS_EL0,
++      .fieldoffset = offsetof(CPUARMState, cp15.gcspr_el[0]) },
++    { .name = "GCSPR_EL1", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 0, .crn = 2, .crm = 5, .opc2 = 1,
++      .access = PL1_RW, .accessfn = access_gcs, .fgt = FGT_NGCS_EL1,
++      .nv2_redirect_offset = 0x8c0 | NV2_REDIR_NV1,
++      .fieldoffset = offsetof(CPUARMState, cp15.gcspr_el[1]) },
++    { .name = "GCSPR_EL2", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 4, .crn = 2, .crm = 5, .opc2 = 1,
++      .access = PL2_RW, .accessfn = access_gcs,
++      .fieldoffset = offsetof(CPUARMState, cp15.gcspr_el[2]) },
++    { .name = "GCSPR_EL3", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 6, .crn = 2, .crm = 5, .opc2 = 1,
++      .access = PL3_RW,
++      .fieldoffset = offsetof(CPUARMState, cp15.gcspr_el[2]) },
++};
++
++void define_gcs_cpregs(ARMCPU *cpu)
++{
++    if (cpu_isar_feature(aa64_gcs, cpu)) {
++        define_arm_cp_regs(cpu, gcs_reginfo);
++    }
++}
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index b472992b4a..d9318c5325 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -644,6 +644,9 @@ void arm_emulate_firmware_reset(CPUState *cpustate, int target_el)
+             if (cpu_isar_feature(aa64_fgt, cpu)) {
+                 env->cp15.scr_el3 |= SCR_FGTEN;
+             }
++            if (cpu_isar_feature(aa64_gcs, cpu)) {
++               env->cp15.scr_el3 |= SCR_GCSEN;
++            }
+             if (cpu_isar_feature(aa64_tcr2, cpu)) {
+                 env->cp15.scr_el3 |= SCR_TCR2EN;
+             }
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 1b21ae5d8e..14f7129607 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -743,6 +743,9 @@ static void scr_write(CPUARMState *env, const ARMCPRegInfo *ri, uint64_t value)
+         if (cpu_isar_feature(aa64_ecv, cpu)) {
+             valid_mask |= SCR_ECVEN;
          }
-         return;
-+    case ARM_CP_GCSPUSHX:
-+        /* Choose the CONSTRAINED UNPREDICTABLE for UNDEF. */
-+        if (rt != 31) {
-+            unallocated_encoding(s);
-+        } else if (s->gcs_en) {
-+            gen_gcspushx(s);
++        if (cpu_isar_feature(aa64_gcs, cpu)) {
++            valid_mask |= SCR_GCSEN;
 +        }
-+        return;
-     default:
-         g_assert_not_reached();
+         if (cpu_isar_feature(aa64_tcr2, cpu)) {
+             valid_mask |= SCR_TCR2EN;
+         }
+@@ -3947,6 +3950,9 @@ static void hcrx_write(CPUARMState *env, const ARMCPRegInfo *ri,
+     if (cpu_isar_feature(aa64_sctlr2, cpu)) {
+         valid_mask |= HCRX_SCTLR2EN;
      }
++    if (cpu_isar_feature(aa64_gcs, cpu)) {
++        valid_mask |= HCRX_GCSEN;
++    }
+ 
+     /* Clear RES0 bits.  */
+     env->cp15.hcrx_el2 = value & valid_mask;
+@@ -4017,6 +4023,9 @@ uint64_t arm_hcrx_el2_eff(CPUARMState *env)
+         if (cpu_isar_feature(aa64_sctlr2, cpu)) {
+             hcrx |= HCRX_SCTLR2EN;
+         }
++        if (cpu_isar_feature(aa64_gcs, cpu)) {
++            hcrx |= HCRX_GCSEN;
++        }
+         return hcrx;
+     }
+     if (arm_feature(env, ARM_FEATURE_EL3) && !(env->cp15.scr_el3 & SCR_HXEN)) {
+@@ -7574,6 +7583,7 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+     }
+ 
+     define_pm_cpregs(cpu);
++    define_gcs_cpregs(cpu);
+ 
+ #ifndef CONFIG_USER_ONLY
+     /*
+diff --git a/target/arm/meson.build b/target/arm/meson.build
+index 91630a1f72..8c82304fde 100644
+--- a/target/arm/meson.build
++++ b/target/arm/meson.build
+@@ -27,6 +27,7 @@ arm_user_ss.add(when: 'TARGET_AARCH64', if_false: files(
+   'cpu32-stubs.c',
+ ))
+ arm_user_ss.add(files(
++  'cpregs-gcs.c',
+   'cpregs-pmu.c',
+   'debug_helper.c',
+   'helper.c',
+@@ -42,6 +43,7 @@ arm_common_system_ss.add(files(
+   'arch_dump.c',
+   'arm-powerctl.c',
+   'cortex-regs.c',
++  'cpregs-gcs.c',
+   'cpregs-pmu.c',
+   'debug_helper.c',
+   'helper.c',
 -- 
 2.43.0
 

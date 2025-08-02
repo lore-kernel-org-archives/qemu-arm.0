@@ -4,80 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF5DEC87FD3
-	for <qemu-arm@archiver.kernel.org>; Sun,  3 Aug 2025 00:05:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E965DC87FD2
+	for <qemu-arm@archiver.kernel.org>; Sun,  3 Aug 2025 00:06:26 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uiLx1-0004A3-C5; Sat, 02 Aug 2025 19:47:43 -0400
+	id 1uiLtM-0006sd-HP; Sat, 02 Aug 2025 19:43:59 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1uiLs1-0004V5-1U
- for qemu-arm@nongnu.org; Sat, 02 Aug 2025 19:42:38 -0400
-Received: from mail-yb1-xb33.google.com ([2607:f8b0:4864:20::b33])
+ id 1uiLoc-00060Z-Fo
+ for qemu-arm@nongnu.org; Sat, 02 Aug 2025 19:39:03 -0400
+Received: from mail-ot1-x32a.google.com ([2607:f8b0:4864:20::32a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1uiLrz-0006sa-LE
- for qemu-arm@nongnu.org; Sat, 02 Aug 2025 19:42:32 -0400
-Received: by mail-yb1-xb33.google.com with SMTP id
- 3f1490d57ef6-e8e014c1d19so1659115276.3
- for <qemu-arm@nongnu.org>; Sat, 02 Aug 2025 16:42:31 -0700 (PDT)
+ id 1uiLoZ-0006Sc-G1
+ for qemu-arm@nongnu.org; Sat, 02 Aug 2025 19:39:00 -0400
+Received: by mail-ot1-x32a.google.com with SMTP id
+ 46e09a7af769-741ad8d0c15so191311a34.1
+ for <qemu-arm@nongnu.org>; Sat, 02 Aug 2025 16:38:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1754178150; x=1754782950; darn=nongnu.org;
+ d=linaro.org; s=google; t=1754177938; x=1754782738; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=vVlQwNjtMgvAbm23dBCZDYeq1xNwwku3Aggvwl5C6uU=;
- b=ukx/UYgqmTymtJCnoJ6CvQi7G98zgUZKUz6C1DlXgr/x/u9JiEMZTsRk2uUbRT65UH
- 80Shw2xIiDCzqmJS6hOGd9oHHjEj3+IsoFWqcmeFqb8wKT1FWbPgikUDyxFHPbKM7Eo5
- UF/jMDjW9EfQmNUvHb9pSHsj+7Sham8EiA5jl03lArgLHxKdERKguVlhimkVyr06dPm9
- 5kzlIENZ1+uGWhtTt3eYyT1HLZ4CRxC8dBK3q7JDUh/WbHfGwodchblrzW47psniV5qo
- wXCzrsEgprk18u43PO1G3r6C4amLeXUia0paNmM5bDV1iMIIXxDXHu5dMDniQOBZQsUf
- FaCw==
+ bh=Bac99cWBoODM0lZjzPV8FafpKsc60jTDKb6XVoHXo24=;
+ b=bFIi8dMk6OPSVq6xjeSi6zKmtZ+Wh9uUsmbiZ/woS4hYBrv7pnDhGfGqRU638FnLED
+ bYORC45c1tgvByKKXA15UZkNwLTsNkR5iGLJTSFCF68q7kxsoH7gIZI9bRjjni4Dqnjd
+ QDZi3hWiDuIEyjDfRmI1tG/zCIJ0aZlMVuY1YYUmtfrYh76ze0Zy8Q/GCsk1ijom27KV
+ Z5ntaYVWuWa/3EycP0Wl+T2Qsha9fPPsQWysWd367Xq/eX4BLUa+Lxpadr/EZfMARgWu
+ e7HKO2teqccoypnXugimTnL46gyInkUlBVzeZ8IRs9J/v28xVI69IIJWOluZizGkq+su
+ cPKw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1754178150; x=1754782950;
+ d=1e100.net; s=20230601; t=1754177938; x=1754782738;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=vVlQwNjtMgvAbm23dBCZDYeq1xNwwku3Aggvwl5C6uU=;
- b=dc4mHkJiOjzPoxEiFzltXI8H6jANluYct7oGR101/ABL46bXNZ4m3zCxo9LU0qzfhl
- xCGLy+0EUr3idhY59t3EXqmzJ2NHlMl2zb1MBNJby0nqab0V2R1ZIpWNNR2vJ5mwLg9u
- yiL6F8GaA1vtcXvpC7+Jf7l6n3BHj6NcmO45gdWk7PY9dPppjw0SlZIxsBWpS5uW+X89
- FHhcj7bNHTl++N085B5tfhQClhLU1GP/u40D7Kxd+XyV/f2yfc5K8HXU+O/lZMQ1x1iM
- jBd9vYPeQYQ6lf9ovTUdidMqMaO54Iunu4fkOeoyFZRPGeLV4dpMY/Oy7yNMA6mFbkVm
- 0Oug==
-X-Gm-Message-State: AOJu0YxIk4Zal7bRsAIblYPdu7Uot5HjhIxP5WM3/WEYV2GQrDOGguxl
- o/YoO4/uaHYRLZrpbnp8yxzH28Uf5AmYnxtKtpcYsilHG/km1y0yveto64w2N6U4Y40oxXjRqW+
- d4oSBUyo=
-X-Gm-Gg: ASbGncvOWa8/XOu+3VoGbigG9uno2ifmsfyLIF52rG14cwKJoWVt5P08tfqWK/5IDWy
- +UYmAbHb2pSk0FyK+shLD45wbckhTrWdfaQjAXj1Et87cnikXprQCn2JT6Vq9MZKgVcXZPJsv8m
- uL1GxZ62eqzo1bUHHaY9CST+inoTsCs3jDY5wt19B6uJpTr68ODn/WUDLNImbTNOm/67Pa1IMxF
- QRDF7ddit3sze31vwMvL/vUz7facCe9ZEciZSBNPb175a/+5uAfyVnosAAKh+ZeciqPhYVNsbIz
- xEBAY/j36NggWlGyF9fu+fC9fWPSvnsV3N6N5wztP+anw7/XqJI1fumuv88Aqr4ffBUaXr8ErT4
- RCUgpK1oaiQLEgGoR1PUVkMZ4OTpCQVw3SVU34zJQUzYaTqMlySh2
-X-Google-Smtp-Source: AGHT+IF5iQbg12HR9p2AMt8U1Te7fBcbAkW3+9V7bHxGML+WczUYQ8QtzRGrLfRZvZDoKQdtTJblNw==
-X-Received: by 2002:a05:690c:17:b0:71a:1f26:5d1a with SMTP id
- 00721157ae682-71b7ed84355mr49527207b3.11.1754178150515; 
- Sat, 02 Aug 2025 16:42:30 -0700 (PDT)
+ bh=Bac99cWBoODM0lZjzPV8FafpKsc60jTDKb6XVoHXo24=;
+ b=pUN67QHAhk+wzfbu40GMMlIT3Y9qvoDROH6GsKvkOhO2pWBhXwb/AIgPtwPU4uu2OS
+ 7rlvw+ZJKqYDVNtGwaFENt4ozwctVYKi7T5dwGiPIjru0CbsyG44EntmDh8obTQMPDU6
+ 8vMLL1HIHvHKj+CFULhZhvaP+nvsnOB3sOIo1ZfAqhc1+0sBs+b4hxefjDFDLZNpMLBe
+ NaSO6bTQJJ7zFcknXhd4hkm/NDXw68u4OmWFLPdyjUCtrs0tJHKzdXEZd4pCHaGRzdf/
+ 9ZEAOBfYO8yL+oMaUxFE+X/tCx7FmZSXZ7RltbNSiXk/I3AwCxxib4Hrlp09saTj8e4c
+ Fbtg==
+X-Gm-Message-State: AOJu0Yxqax+t1iaGqjE7sKP3wQgjshBigaedUbF0m4clPbKrPnoyy/OC
+ 7zn/gNcJYtGsqDnwfIrHrewZAaALysverPHfqguFnIP4WeHqWBgCp9lPYTK0uPuXEAg=
+X-Gm-Gg: ASbGncsz/eK0pFmUeO+9VPhq+GSKWzAEP9Xs5AIHkQnoQ7fOEBnZV2qNl1xPeiFqkTz
+ gndX+kklRu7MKUNFAlg21i1TC9tfF8w6Z8huTZwbpD6mFokvPhMmgKfXhRpq4VhwFppS2s2vG1g
+ E7vNbNNWVWHO8q5KkFEBB5CEedN5GnPV/6JHCEp2VQwRYngPLXUwl+COgyVBM1v+sH9CMbu2DNM
+ 2d69V76Wg27goReyBr/tBjV081L1ivbY+LyTg9kMwpyivuwLZ5mKlyyEW5mHvi493p3atDJn+c/
+ 4j2sHncTW9mI4C2MpjJHLN3pEClEbHUVCJyRohWyqXzL+6YEobW1ZrWj7Bg8cZj7rgDLFuebKPP
+ pNr1GvUSoytHr8Kr9lFJA4MWda3JLkoWIaH1jI9G35jDkIo3M00Ex
+X-Google-Smtp-Source: AGHT+IFd12Afo8QLFxyH/ZRsIH+89fl14VFvq+w7cMHvbMzfQ9zIJGF7ErYF9J5a6uxYhzuZOijjdQ==
+X-Received: by 2002:a05:6830:448c:b0:741:afb2:7ad0 with SMTP id
+ 46e09a7af769-741afb27de7mr357618a34.17.1754177938449; 
+ Sat, 02 Aug 2025 16:38:58 -0700 (PDT)
 Received: from stoup.. ([172.58.111.133]) by smtp.gmail.com with ESMTPSA id
- 00721157ae682-71b5a423f38sm18461527b3.40.2025.08.02.16.42.26
+ 46e09a7af769-741a71dc78asm380409a34.30.2025.08.02.16.38.54
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 02 Aug 2025 16:42:30 -0700 (PDT)
+ Sat, 02 Aug 2025 16:38:58 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v2 82/85] linux-user/aarch64: Enable GCS in HWCAP
-Date: Sun,  3 Aug 2025 09:29:50 +1000
-Message-ID: <20250802232953.413294-83-richard.henderson@linaro.org>
+Subject: [PATCH v2 76/85] linux-user/aarch64: Release gcs stack on thread exit
+Date: Sun,  3 Aug 2025 09:29:44 +1000
+Message-ID: <20250802232953.413294-77-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250802232953.413294-1-richard.henderson@linaro.org>
 References: <20250802232953.413294-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b33;
- envelope-from=richard.henderson@linaro.org; helo=mail-yb1-xb33.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::32a;
+ envelope-from=richard.henderson@linaro.org; helo=mail-ot1-x32a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -103,21 +102,26 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- linux-user/elfload.c | 1 +
- 1 file changed, 1 insertion(+)
+ linux-user/syscall.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-diff --git a/linux-user/elfload.c b/linux-user/elfload.c
-index d87d1a16e0..e71dcdec1b 100644
---- a/linux-user/elfload.c
-+++ b/linux-user/elfload.c
-@@ -877,6 +877,7 @@ abi_ulong get_elf_hwcap(void)
-     GET_FEATURE_ID(aa64_dcpop, ARM_HWCAP_A64_DCPOP);
-     GET_FEATURE_ID(aa64_rcpc_8_3, ARM_HWCAP_A64_LRCPC);
-     GET_FEATURE_ID(aa64_rcpc_8_4, ARM_HWCAP_A64_ILRCPC);
-+    GET_FEATURE_ID(aa64_gcs, ARM_HWCAP_A64_GCS);
+diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+index 91210775ed..dfe114ceb3 100644
+--- a/linux-user/syscall.c
++++ b/linux-user/syscall.c
+@@ -9309,6 +9309,12 @@ static abi_long do_syscall1(CPUArchState *cpu_env, int num, abi_long arg1,
+                              FUTEX_WAKE, INT_MAX, NULL, NULL, 0);
+             }
  
-     return hwcaps;
- }
++#ifdef TARGET_AARCH64
++            if (ts->gcs_base) {
++                target_munmap(ts->gcs_base, ts->gcs_size);
++            }
++#endif
++
+             object_unparent(OBJECT(cpu));
+             object_unref(OBJECT(cpu));
+             /*
 -- 
 2.43.0
 

@@ -4,95 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13974C87FCA
-	for <qemu-arm@archiver.kernel.org>; Sat,  2 Aug 2025 03:14:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A7A9C87FD3
+	for <qemu-arm@archiver.kernel.org>; Sat,  2 Aug 2025 05:42:07 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ui2ho-0002OU-Bk; Fri, 01 Aug 2025 23:14:45 -0400
+	id 1ui4zi-0008AL-DR; Sat, 02 Aug 2025 01:41:22 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thiago.bauermann@linaro.org>)
- id 1ui2hh-0002L4-Ib
- for qemu-arm@nongnu.org; Fri, 01 Aug 2025 23:14:37 -0400
-Received: from mail-pf1-x42b.google.com ([2607:f8b0:4864:20::42b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <thiago.bauermann@linaro.org>)
- id 1ui2he-0002Bn-5n
- for qemu-arm@nongnu.org; Fri, 01 Aug 2025 23:14:35 -0400
-Received: by mail-pf1-x42b.google.com with SMTP id
- d2e1a72fcca58-76bdc73f363so1340818b3a.3
- for <qemu-arm@nongnu.org>; Fri, 01 Aug 2025 20:14:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1754104471; x=1754709271; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:user-agent
- :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=Jc8dOkR6guV3MbEoeAmUiuprRgYTSlFsQL1OZa8lKA8=;
- b=ocH3/jYTMjfz1zo3MUzVUeNbnshC1IrXaRZBby6jb8QECvl0vv+SkioELPQf47O9y/
- QX1bJyp9avjiszm5RlkBgvyELZKuKK89DVWyBq3hozr05jkFFN+N8LlqVYLh80IzwPpo
- i+UFQIZGxLwff/eClf9EQ2Vwk69tPi3yqeVeNQUubmzMEsoX4Hj7FV7JyCPXshzKyPMi
- /NeS+OYVNNtoQNrcIDeClXzaloGW0v+jcNyU0GejJRcFN8SWgTUbywAzxMXyWoPwcW+P
- jwwM2KJ19IiiaxMXGkwG0Tgl4CYxUbeuMEFqw56bqy+QfHg7C9S9mNKVz72K0J+qUL0O
- 8blw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1754104471; x=1754709271;
- h=content-transfer-encoding:mime-version:message-id:date:user-agent
- :references:in-reply-to:subject:cc:to:from:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=Jc8dOkR6guV3MbEoeAmUiuprRgYTSlFsQL1OZa8lKA8=;
- b=qwfAE+bUk0KO5rc3CwB4HvhMMFhXUOFgnj1JkjiNV23+Im4nzqNzR6Dec17jBbMCoS
- +jJHHgoiGNprIcGGvPymJmdiB+7K3y/XWhwa/BwjZJVTO1iilqfWYdjK4vWTLkiAQ5uj
- rtSVEUK9gPzV0g66s873vFRpviQiVsE0SyGZz5xx7RtrbjeCqd6UWwwa3PmDbSRJnIHG
- F+/H/cI+NayL8oT7J47WsKTiFnqsEfHa+OkWDD2F5v+RQ51D65bYYtWVFjcv33PPGCcH
- H0t1cZXQgM8Knle7vhk9ERrazDDS7WPIbOnY5fc7eq4VmxMyf2tmNgGkd3AZkUy6cKKV
- D/uQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUbxVuczN4NspOryuPKF3dcCeGRtZg1MEWNrz4+quG3VvriEHsgFAQ1AL+LYJN1bId7s2Y8pjkGPA==@nongnu.org
-X-Gm-Message-State: AOJu0Yyawq1kmdx8QceJpsSizjbWfb5DVmx7L56acX1O1Cwxu/LjzodX
- 4ZFO5Q+Mal82BY8/9uhWG12xdh9uifQrrCJmtRPXFv75mGXETVZ610Mx/j9dp7KMuRQ=
-X-Gm-Gg: ASbGncuBO7y4HixzF7FG8rG03maaj3zTFgYDdiYi3brRucnOF/adsilN+nQSi1tQO85
- Xm5EHGaJN2MW8pWARIoL76VlvsdDryqLqunXfAzfeR1Szytlox9jj6/vnf/woh8lqRB4HAP+xXw
- uNTTw8NwrLeREP6gq1ekGZrR0FPj1AxlbHUQfCyv3jPYVTY303L7T9C7wJZFOU7IeZEimqknDTK
- Wj5o0U0lelIh3BWQxhn2GnMW0s4LE5FF0URrmyfG6jvFgTSI3o2BVLXTcfCisV52ep90IESLeun
- Ka7NFe+D7fzyljR/HVwOo8c67yFjYfRX9NzkZfOKfsCMdT8N+y2L54M+KGTXj4kQJTMWT05PmED
- PC7KVurIHLuqD2ZLWAdAubQFzwZM=
-X-Google-Smtp-Source: AGHT+IFxcqdlzmz4tJTQ0fYTHjOp/OBsvCyg75PBQ2QedZnVeJqCqUaxjjsrqpF31jJINTr+3mer9g==
-X-Received: by 2002:a05:6a20:2445:b0:23d:74a2:cdd with SMTP id
- adf61e73a8af0-23df8fa1df2mr3193403637.15.1754104470640; 
- Fri, 01 Aug 2025 20:14:30 -0700 (PDT)
-Received: from localhost ([177.124.15.5]) by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-31f63f0b04dsm8780101a91.25.2025.08.01.20.14.29
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 01 Aug 2025 20:14:30 -0700 (PDT)
-From: Thiago Jung Bauermann <thiago.bauermann@linaro.org>
-To: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-Cc: Peter Maydell <peter.maydell@linaro.org>,  Pierrick Bouvier
- <pierrick.bouvier@linaro.org>,  Richard Henderson
- <richard.henderson@linaro.org>,  qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Subject: Re: [PATCH 47/82] target/arm: Expand pstate to 64 bits
-In-Reply-To: <CAAjaMXbd6TF1x13h-N=F+kBL8=+0K+gyVzh6zk-65LjeqqDVSA@mail.gmail.com>
- (Manos Pitsidianakis's message of "Fri, 1 Aug 2025 21:45:55 +0300")
-References: <20250727080254.83840-1-richard.henderson@linaro.org>
- <20250727080254.83840-48-richard.henderson@linaro.org>
- <b2e40787-6043-4d4c-9cbb-731d0e92e25c@linaro.org>
- <CAFEAcA_9tkv1EoM33=G=zW6Pw0gBirvjs-SsDaC8ar8feyH_8g@mail.gmail.com>
- <CAAjaMXbd6TF1x13h-N=F+kBL8=+0K+gyVzh6zk-65LjeqqDVSA@mail.gmail.com>
-User-Agent: mu4e 1.12.11; emacs 30.1
-Date: Sat, 02 Aug 2025 00:14:25 -0300
-Message-ID: <878qk2h0tq.fsf@linaro.org>
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1ui4zY-00084l-OD
+ for qemu-arm@nongnu.org; Sat, 02 Aug 2025 01:41:13 -0400
+Received: from p-east3-cluster2-host9-snip4-2.eps.apple.com ([57.103.87.213]
+ helo=outbound.qs.icloud.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1ui4zV-00062C-3Q
+ for qemu-arm@nongnu.org; Sat, 02 Aug 2025 01:41:11 -0400
+Received: from outbound.qs.icloud.com (unknown [127.0.0.2])
+ by p00-icloudmta-asmtp-us-east-2d-60-percent-0 (Postfix) with ESMTPS id
+ 944F9180088B; Sat,  2 Aug 2025 05:41:05 +0000 (UTC)
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
+ s=sig1; bh=z5mW0D1aCUW8ApV2qQGOarjGPb+KzAkXkkUUsBU7ezU=;
+ h=From:To:Subject:Date:Message-Id:MIME-Version:Content-Type:x-icloud-hme;
+ b=MjemytRGCP1ggWEUWuQ41hfwq4tT9AEkxefTYk7ihs1RtFy2kb/sCyg6JWCW64/+NhSr5Afa/dh3ywXB+mOEyG6kplpCvsjs1zvBhEOA3lvjE0ZRgGZNQn/66IJW8JLngnaHC+MJYmw/AkF1LHWz0vCUV08VNKoJwzVLIZg0iFaBbuOIQ5OsO1NUa7g1Ozdm5OQVLCF5XabUoz/+Mf5kCpQP5gGhBmq1VQjZtOVJOSU3LaOHUeTjRDKCEJjn2T2gOK4Ft+xFJZYo3CFnHouRM1R0wnrIImK/6XiPTfeIp/AiYhlf2ySJv9wb7b61dDEZxniAtxf021WpHR4f4QHd6A==
+X-Client-IP: 46.189.47.18
+Received: from localhost.localdomain (qs-asmtp-me-k8s.p00.prod.me.com
+ [17.57.155.37])
+ by p00-icloudmta-asmtp-us-east-2d-60-percent-0 (Postfix) with ESMTPSA id
+ 4FFD218008A5; Sat,  2 Aug 2025 05:40:58 +0000 (UTC)
+From: Mohamed Mediouni <mohamed@unpredictable.fr>
+To: qemu-devel@nongnu.org
+Cc: "Michael S. Tsirkin" <mst@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ Igor Mammedov <imammedo@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ qemu-arm@nongnu.org, Shannon Zhao <shannon.zhaosl@gmail.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Yanan Wang <wangyanan55@huawei.com>,
+ Sunil Muthuswamy <sunilmut@microsoft.com>,
+ Mohamed Mediouni <mohamed@unpredictable.fr>,
+ Zhao Liu <zhao1.liu@intel.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Ani Sinha <anisinha@redhat.com>
+Subject: [PATCH v2 00/14] WHPX support for Arm
+Date: Sat,  2 Aug 2025 07:40:41 +0200
+Message-Id: <20250802054055.74013-1-mohamed@unpredictable.fr>
+X-Mailer: git-send-email 2.39.5 (Apple Git-154)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42b;
- envelope-from=thiago.bauermann@linaro.org; helo=mail-pf1-x42b.google.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-Proofpoint-GUID: HNZLXMqgCu0eJ4qwkqlDaujYi2ps2gy1
+X-Proofpoint-ORIG-GUID: HNZLXMqgCu0eJ4qwkqlDaujYi2ps2gy1
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwODAyMDA0NyBTYWx0ZWRfXxzWCHC1ZdbJY
+ x6688UUkevGGZguNAiqZymLIv5ibGHecg1fBh/fV8sybK9Ri5PzwAt6flaF5z3pvEeF9WCXT1UO
+ i5L7Oz8f/YNNB/3k43mffFJxDVgYWdhD7fEMJZxM4GIONwSQsXmwXwmnDT9ntluFYErzmIzjr1y
+ NN3sG10tTElPMmaGsI+uaGhG9XRX5pVB8Sh6aFwOv2qk0GF+XgRqIQuipdvfyJuC1IWxptI9SyJ
+ CxU8Fvtsvl4eIL7Mz5nnktXk0IbPT50zw1a7W7L6dtqvxMPH8toOkzlkKB8E+E+fn9TsSVIM0=
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.9,FMLib:17.12.80.40
+ definitions=2025-08-01_08,2025-08-01_01,2025-03-28_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=870
+ clxscore=1030 phishscore=0 suspectscore=0
+ mlxscore=0 adultscore=0 bulkscore=0
+ spamscore=0 malwarescore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.22.0-2506270000 definitions=main-2508020047
+Received-SPF: pass client-ip=57.103.87.213;
+ envelope-from=mohamed@unpredictable.fr; helo=outbound.qs.icloud.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -108,84 +96,85 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Manos Pitsidianakis <manos.pitsidianakis@linaro.org> writes:
+Link to branch: https://github.com/mediouni-m/qemu whpx (tag for this submission: whpx-v2)
 
-> On Fri, Aug 1, 2025 at 4:33=E2=80=AFPM Peter Maydell <peter.maydell@linar=
-o.org> wrote:
->>
->> On Thu, 31 Jul 2025 at 21:34, Pierrick Bouvier
->> <pierrick.bouvier@linaro.org> wrote:
->> >
->> > On 7/27/25 1:02 AM, Richard Henderson wrote:
->> > > diff --git a/target/arm/gdbstub64.c b/target/arm/gdbstub64.c
->> > > index 64ee9b3b56..3cef47281a 100644
->> > > --- a/target/arm/gdbstub64.c
->> > > +++ b/target/arm/gdbstub64.c
->> > > @@ -47,6 +47,7 @@ int aarch64_cpu_gdb_read_register(CPUState *cs, GB=
-yteArray *mem_buf, int n)
->> > >       case 32:
->> > >           return gdb_get_reg64(mem_buf, env->pc);
->> > >       case 33:
->> > > +        /* pstate is now a 64-bit value; can we simply adjust the x=
-ml? */
->> > >           return gdb_get_reg32(mem_buf, pstate_read(env));
->> > >       }
->> >
->> > If I'm correct, we currently don't expose PSTATE through gdbstub, but
->> > only CPSR. This was a bit confusing for me, considering that CPSR is n=
-ot
->> > even supposed to exist in Aarch64.
->> > Maybe it's a good opportunity to expose PSTATE instead, which could ha=
-ve
->> > a 64 bits size. This way, we don't break any workflow.
->>
->> Architecturally, PSTATE is simply an abstract bundling together of
->> different information: it is not a particular format of a value,
->> whether 32 or 64 bit or otherwise. (This makes it different to
->> AArch32 CPSR, which really is a guest-visible register.)
->>
->> The thing that *is* defined architecturally is the SPSR_ELx format, which
->> is where various bits of PSTATE get saved when reporting an exception up
->> to a higher exception level (and which is pretty much the AArch32 CPSR
->> format when the lower EL is AArch32). (Note that not *all* of PSTATE
->> appears in the SPSR_ELx: for example the SME SM and ZA bits are
->> considered part of PSTATE but they aren't saved into SPSR_ELx.)
->>
->> For convenience, various pieces of software pass around information
->> in that SPSR_ELx format. Calling this either "CPSR" or "PSTATE"
->> is not really correct, but either is perhaps less confusing than
->> calling it SPSR when the context is that of the code running at the
->> lower EL rather than the higher.
->>
->> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/=
-arch/arm64/include/asm/kgdb.h#n41
->> suggests that expanding the existing pstate to 64 bits is probably
->> likely to produce problems. Perhaps we should define a pstate_high
->> or something for the top 32 bits?
->>
->
-> IIUC, this is only a problem if you use the default gdb architecture
-> register map, but QEMU ships its own as part of gdbstub, so it's free
-> to change register definition of cspr. Or add a new PSTATE register.
+Missing features:
+- PSCI state sync with Hyper-V: notably breaks reboots when multiple cores are enabled
+- Interrupt controller save-restore
+- Debug register sync
+- SVE register sync
+- Adding a migration blocker because of the items above.
 
-That is correct. The kgdb.h comment also mentions this:
+Updates since v1:
+- Shutdowns and reboots
+- MPIDR_EL1 register sync
+- Fixing GICD_TYPER_LPIS value
+- IPA size clamping
+- -cpu host now implemented
 
- * Note that if you are using one of the versions of gdb that supports
- * the gdb-7.7 version of the protocol you cannot use kgdb directly
- * without providing a custom register description (gdb can load new
- * protocol descriptions at runtime).
+Mohamed Mediouni (14):
+  hw/arm: virt: add GICv2m for the case when ITS is not available
+  whpx: Move around files before introducing AArch64 support
+  whpx: reshuffle common code
+  whpx: ifdef out some x86-only code paths
+  hw, target, accel: whpx: change apic_in_platform to kernel_irqchip
+  whpx: interrupt controller support
+  whpx: add arm64 support
+  whpx: copy over memory management logic from hvf
+  target/arm: cpu: mark WHPX as supporting PSCI 1.1
+  hw/arm: virt: cleanly fail on attempt to use the platform vGIC
+    together with ITS
+  whpx: arm64: clamp down IPA size
+  whpx: arm64: implement -cpu host
+  target/arm: whpx: instantiate GIC early
+  MAINTAINERS: Add myself as a maintainer for WHPX
 
-"providing a custom register description" is the manual procedure the
-user can perform that is equivalent to the gdbstub sending its own
-register map XML ("target description" in GDB parlance) to GDB, as the
-QEMU gdbstub does.
+ MAINTAINERS                                   |    9 +-
+ accel/meson.build                             |    1 +
+ accel/whpx/meson.build                        |    7 +
+ {target/i386 => accel}/whpx/whpx-accel-ops.c  |    6 +-
+ accel/whpx/whpx-common.c                      |  674 +++++++++++
+ hw/arm/virt-acpi-build.c                      |    4 +-
+ hw/arm/virt.c                                 |   55 +-
+ hw/i386/x86-cpu.c                             |    4 +-
+ hw/intc/arm_gicv3_common.c                    |    3 +
+ hw/intc/arm_gicv3_whpx.c                      |  261 +++++
+ hw/intc/meson.build                           |    1 +
+ include/hw/arm/virt.h                         |    2 +
+ include/hw/boards.h                           |    1 +
+ include/hw/intc/arm_gicv3_common.h            |    3 +
+ .../whpx => include/system}/whpx-accel-ops.h  |    4 +-
+ include/system/whpx-all.h                     |   14 +
+ include/system/whpx-common.h                  |   23 +
+ .../whpx => include/system}/whpx-internal.h   |   14 +-
+ include/system/whpx.h                         |    4 +-
+ meson.build                                   |   21 +-
+ target/arm/cpu.c                              |    3 +-
+ target/arm/cpu64.c                            |   14 +-
+ target/arm/meson.build                        |    1 +
+ target/arm/whpx/meson.build                   |    5 +
+ target/arm/whpx/whpx-all.c                    | 1029 +++++++++++++++++
+ target/arm/whpx/whpx-stub.c                   |   15 +
+ target/arm/whpx_arm.h                         |   17 +
+ target/i386/cpu-apic.c                        |    2 +-
+ target/i386/whpx/meson.build                  |    1 -
+ target/i386/whpx/whpx-all.c                   |  540 +--------
+ target/i386/whpx/whpx-apic.c                  |    2 +-
+ 31 files changed, 2183 insertions(+), 557 deletions(-)
+ create mode 100644 accel/whpx/meson.build
+ rename {target/i386 => accel}/whpx/whpx-accel-ops.c (96%)
+ create mode 100644 accel/whpx/whpx-common.c
+ create mode 100644 hw/intc/arm_gicv3_whpx.c
+ rename {target/i386/whpx => include/system}/whpx-accel-ops.h (92%)
+ create mode 100644 include/system/whpx-all.h
+ create mode 100644 include/system/whpx-common.h
+ rename {target/i386/whpx => include/system}/whpx-internal.h (96%)
+ create mode 100644 target/arm/whpx/meson.build
+ create mode 100644 target/arm/whpx/whpx-all.c
+ create mode 100644 target/arm/whpx/whpx-stub.c
+ create mode 100644 target/arm/whpx_arm.h
 
-I checked and the only places where GDB hardcodes the CPSR size is in
-Linux and FreeBSD specific code, when reading or writing a core file
-because in that case the size is defined by the OS.
+-- 
+2.39.5 (Apple Git-154)
 
-Note that the CPSR position in the register map is hardcoded, defining
-its register number as 33.
---=20
-Thiago
 

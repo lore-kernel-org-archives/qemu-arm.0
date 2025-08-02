@@ -4,80 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA198C87FDA
-	for <qemu-arm@archiver.kernel.org>; Sat,  2 Aug 2025 23:48:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20E2FC87FD3
+	for <qemu-arm@archiver.kernel.org>; Sat,  2 Aug 2025 23:49:41 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uiLpO-00083s-D3; Sat, 02 Aug 2025 19:39:50 -0400
+	id 1uiLt7-00067X-Gl; Sat, 02 Aug 2025 19:43:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1uiLmf-0003DP-2k
- for qemu-arm@nongnu.org; Sat, 02 Aug 2025 19:37:02 -0400
-Received: from mail-ot1-x32c.google.com ([2607:f8b0:4864:20::32c])
+ id 1uiLoK-0005xM-Dm
+ for qemu-arm@nongnu.org; Sat, 02 Aug 2025 19:39:00 -0400
+Received: from mail-ot1-x32b.google.com ([2607:f8b0:4864:20::32b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1uiLmd-0005nP-EX
- for qemu-arm@nongnu.org; Sat, 02 Aug 2025 19:37:00 -0400
-Received: by mail-ot1-x32c.google.com with SMTP id
- 46e09a7af769-741b1fe0d48so61550a34.3
- for <qemu-arm@nongnu.org>; Sat, 02 Aug 2025 16:36:59 -0700 (PDT)
+ id 1uiLoI-0006PT-4S
+ for qemu-arm@nongnu.org; Sat, 02 Aug 2025 19:38:43 -0400
+Received: by mail-ot1-x32b.google.com with SMTP id
+ 46e09a7af769-741ae696663so93334a34.0
+ for <qemu-arm@nongnu.org>; Sat, 02 Aug 2025 16:38:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1754177818; x=1754782618; darn=nongnu.org;
+ d=linaro.org; s=google; t=1754177921; x=1754782721; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=17nAzkO3yEHAvK6PxJmaLfoSw+fDYNwVzEXoZ0CbSlE=;
- b=MP+EdUn3FiwqRuFPcIt9vfzqoI/1OLofvtnDwxuF+/d+g1MH+MLXqFC0lEIAUS/1DW
- O2d0X40iO73GduSV7wCARsRGQbSxi59u8f2+vcr4rwt5e9yd/nzBZiHaa6qcBX/pJ68D
- f9cF3kSr65cEp2xbUX7S6tn+J89B+r1sLFgb+smFd1DM8G7JQ2cyuYpy9MO/pTOwCKmy
- GjRBcgb+sslfSLxUGBxh6IFfCGXnPVoX6zokD7wliGrQ3I1vuKvyQy8d3xAa2A6LOAwr
- x0+AZ7rgU2Q9pxTmSae38jsIxXDZIkrzFZYBs+oRFAwmakGqpyeUEbGIKbM9bAyAT1dq
- RAyw==
+ bh=52VfTzYDSgjyTkCxi2KMOJnfbsQ5A6/k4xx3za3L80c=;
+ b=ZlYkBCKgG8koU5DxEEJdIRXmYBmgJH/ns9lrpFyMkzqgZXpClcQfdO+BVej89tNtoj
+ Ckt9oEPXNwgWeES+ztta04CRvqGx+a4LcEvAhpFj+rL5KbIU4QU7dOuzu2VZ2szlnUJT
+ 4y/u/jcWYhMFFhGiOTPCW63Hb1Ap67AP6fd4PksYdrcchrvRUqX1jIqFSSrCSbmilPBN
+ yFtCsmrRblim4MR/Ph/HWj/hc+Pkl6vUvUeHDvFEAIFBpZQq2YTjuyNxR87IEciTT89/
+ aDjVCwfkaCR8cKbBPfm2euKdiD+/Tk3E1Ohq45eTs32etVDp2MmYz65RhHahhP7DjFCP
+ MVTg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1754177818; x=1754782618;
+ d=1e100.net; s=20230601; t=1754177921; x=1754782721;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=17nAzkO3yEHAvK6PxJmaLfoSw+fDYNwVzEXoZ0CbSlE=;
- b=GZEiJTqZk4EVt3TgQDEh3jlY0PN3IsuVBzHLFnh/UfAMAMR1r6BkM658Ims65EaEzp
- CR3yvV3WaOudc4eO8UG+aTLHYCZtaVWxhKkzZ3lbQLiUSRohun7RQskrYZuy/MA5l8nT
- nZixc3RamuOu8AuqvhxnGGtuAsmAumKhAXZ+113psUpwwhGx9Bf7rCJp8shkALLG6bTJ
- t2ugI+X6cmxVsGDgESANBGo+g6ykmbKEdO2N4XfK2RanFZFL3JUHjdi6iBEZlCIUIo02
- uRKOwsSOBunfTxSlgnEOcnWuOvv88xniSxH/AhyS31IXdAghcxckVzn111h/vInTKV/P
- Hu+Q==
-X-Gm-Message-State: AOJu0YzAetEpnMaXebzs6olI/BAfPOxerVa4Rul79aRoxQvcnXaeryoD
- VewnfhrfWdW5WcY2ruy1rT/oA329ecC5ntWr6kpkCcQGTTurMhXMbnJTN/jGT1qkaEjH5TfxJQB
- 9PYR7eBQ=
-X-Gm-Gg: ASbGncvo+O0SDHVJgjyPszoOq70mdQQRpKepVC1dSmaSAyOGiAR/T6vGVP9R+Mv1dsH
- KyA/SA1m9Gy7ZzFaHYaLOmk16ZO15SGYffFdrUFebU/vOSUJWnZlQh6EGakfgv38bVBuyCCFp9Z
- KhhDevgy4yPpLLNCFejv5+ZZlWvrpSqijBU3XzlMP6foJf/C/5E8PFy2y5m/5X+N3fMOo/34pDb
- nr9/sPLGzdthX4xKzM77EfTlubt81bF/GJ60BcXia99agN0ZGYow4wL06p41sKXx97av5mdZMEG
- TgJyML+Zhuixd5dxZBMaa/VGQqfUNTFV3YH+QQXvswicgsAg0LQmu0VnncQe4ULH+KiOuc2/xqF
- nfR6p1vOlpTVLeOGwBCwFD82eBmNN80wouPh1MQ84fDPAmvG/cMGz
-X-Google-Smtp-Source: AGHT+IGNEoZQRBSkKLRdE+bqDlOwx7EMMpp1hV1yn3I20OGToewTUSmXvTjn8nwD5qqaHCPTjubGZQ==
-X-Received: by 2002:a05:6830:4489:b0:741:b197:514b with SMTP id
- 46e09a7af769-741b197596fmr191017a34.6.1754177818256; 
- Sat, 02 Aug 2025 16:36:58 -0700 (PDT)
+ bh=52VfTzYDSgjyTkCxi2KMOJnfbsQ5A6/k4xx3za3L80c=;
+ b=pgHfLb9NHN/KftrNHHeh2ntOFkF/sYO/GrZfSZu3JfRkmejuemC6tRImq80HE5Knz/
+ ivD3/9UNa1JM6A9yxI8YgcBCExTa+Tuqq6TTGQkQvT5T6XMw/T1KKUidqea4KJis6cw/
+ IPzGVWGhUHECWSTU/RiD0nX9y/mQDaxH15LulqoDGwU7ho+7pr0M8ttAlXLP3LrqEjGE
+ sL+6oD8U+sJojre1DbXZB57Z5AINJaU1/a7Nmeb3XJDbClCkwWK8pbjPoIYbsr8uv284
+ qnWwy11c448S85a724LlW206AfOtu82Muk6KBJH9a2nCpHz4TnW7nAdWHk0HWEQOKBuM
+ /4Iw==
+X-Gm-Message-State: AOJu0YwzculUAET5SRVZnHWZEI1daczrvodr0gLA1xGHHv9nzQbrUoFq
+ /1HW6vLChDNcEFhgqDozPXyF7MbVrBK1Utg+nE8VyGvftYTKA/3VROy+iU9O8iUDMc8USaIsUxA
+ tdKdKvtA=
+X-Gm-Gg: ASbGncth/4CQUIiYrfqXCQjh8snSEolbP40/c0u4p4liVf+W0VuFH6XoBR/38Hq5RQN
+ TFkf7YGlzIoahYbZHtRDIxrrEGf/8qDau0Ez8HAit5eN6UXb2il5cqnkxkm9zahESm2re27DbEu
+ vLfW8pEjuMI7ECnUqpm9LoxTPGbzSHvspaWvtQ3VszNeIEgkAj1LLPHZeRM+4aoeBX2viGVynTJ
+ Hxd/85Co9XWv1KadJeWAwHaNf6LqOLfPLVpUNiyqo1zzJLGX1u+TTwrhVWLAIYLO+lEPNZH3kfA
+ zGWNGz8Lt6j0YPLybzsmhaUB3oOwB8vBRwkm1cYKhEMxcil9Hr0OM1r1Frn2cfeLpanbWE4Wa9b
+ 0bdAO2Vvy36MRJ30zQ/jNeAwbXPHjvzxkB2HNj6nGyO9LRK7ZdU0U
+X-Google-Smtp-Source: AGHT+IHY5Yif+IvfbKW28B3C6m3Kjri8XCaeK9q2Zy1SptcBJ6C3vm8+u6ATT05tOPsOwM7VqUpUyA==
+X-Received: by 2002:a05:6830:264c:b0:73e:a0ab:39bd with SMTP id
+ 46e09a7af769-7419d0e1115mr3008697a34.8.1754177921044; 
+ Sat, 02 Aug 2025 16:38:41 -0700 (PDT)
 Received: from stoup.. ([172.58.111.133]) by smtp.gmail.com with ESMTPSA id
- 46e09a7af769-741a71dc78asm380409a34.30.2025.08.02.16.36.53
+ 46e09a7af769-741a71dc78asm380409a34.30.2025.08.02.16.38.37
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 02 Aug 2025 16:36:57 -0700 (PDT)
+ Sat, 02 Aug 2025 16:38:40 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Gustavo Romero <gustavo.romero@linaro.org>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v2 49/85] target/arm: Implement FEAT_CHK
-Date: Sun,  3 Aug 2025 09:29:17 +1000
-Message-ID: <20250802232953.413294-50-richard.henderson@linaro.org>
+Cc: qemu-arm@nongnu.org,
+	Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Subject: [PATCH v2 72/85] target/arm: Implement EXLOCK check during exception
+ return
+Date: Sun,  3 Aug 2025 09:29:40 +1000
+Message-ID: <20250802232953.413294-73-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250802232953.413294-1-richard.henderson@linaro.org>
 References: <20250802232953.413294-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::32c;
- envelope-from=richard.henderson@linaro.org; helo=mail-ot1-x32c.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::32b;
+ envelope-from=richard.henderson@linaro.org; helo=mail-ot1-x32b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -100,67 +101,34 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This feature contains only the CHKFEAT instruction.  It has
-no ID enable, being back-allocated into the hint nop space.
-
-Reviewed-by: Gustavo Romero <gustavo.romero@linaro.org>
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/tcg/translate-a64.c | 14 ++++++++++++++
- docs/system/arm/emulation.rst  |  1 +
- target/arm/tcg/a64.decode      |  1 +
- 3 files changed, 16 insertions(+)
+ target/arm/tcg/helper-a64.c | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
 
-diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-index 7831b3dab3..34d22cac8a 100644
---- a/target/arm/tcg/translate-a64.c
-+++ b/target/arm/tcg/translate-a64.c
-@@ -2124,6 +2124,20 @@ static bool trans_AUTIBSP(DisasContext *s, arg_AUTIBSP *a)
-     return true;
- }
+diff --git a/target/arm/tcg/helper-a64.c b/target/arm/tcg/helper-a64.c
+index f61adf1f80..7ab7ddf7c4 100644
+--- a/target/arm/tcg/helper-a64.c
++++ b/target/arm/tcg/helper-a64.c
+@@ -694,6 +694,17 @@ void HELPER(exception_return)(CPUARMState *env, uint64_t new_pc)
+         goto illegal_return;
+     }
  
-+static bool trans_CHKFEAT(DisasContext *s, arg_CHKFEAT *a)
-+{
-+    uint64_t feat_en = 0;
-+
-+    if (s->gcs_en) {
-+        feat_en |= 1 << 0;
++    /*
++     * If GetCurrentEXLOCKEN, the exception return path must use GCSPOPCX,
++     * which will set PSTATE.EXLOCK.  We need not explicitly check FEAT_GCS,
++     * because GCSCR_ELx cannot be set without it.
++     */
++    if (new_el == cur_el &&
++        (env->cp15.gcscr_el[cur_el] & GCSCR_EXLOCKEN) &&
++        !(env->pstate & PSTATE_EXLOCK)) {
++        goto illegal_return;
 +    }
-+    if (feat_en) {
-+        TCGv_i64 x16 = cpu_reg(s, 16);
-+        tcg_gen_andi_i64(x16, x16, ~feat_en);
-+    }
-+    return true;
-+}
 +
- static bool trans_CLREX(DisasContext *s, arg_CLREX *a)
- {
-     tcg_gen_movi_i64(cpu_exclusive_addr, -1);
-diff --git a/docs/system/arm/emulation.rst b/docs/system/arm/emulation.rst
-index 6ebf9c9ce9..b894aced89 100644
---- a/docs/system/arm/emulation.rst
-+++ b/docs/system/arm/emulation.rst
-@@ -28,6 +28,7 @@ the following architecture extensions:
- - FEAT_BF16 (AArch64 BFloat16 instructions)
- - FEAT_BTI (Branch Target Identification)
- - FEAT_CCIDX (Extended cache index)
-+- FEAT_CHK (Check Feature Status)
- - FEAT_CMOW (Control for cache maintenance permission)
- - FEAT_CRC32 (CRC32 instructions)
- - FEAT_Crypto (Cryptographic Extension)
-diff --git a/target/arm/tcg/a64.decode b/target/arm/tcg/a64.decode
-index 8c798cde2b..4315ed8dab 100644
---- a/target/arm/tcg/a64.decode
-+++ b/target/arm/tcg/a64.decode
-@@ -246,6 +246,7 @@ ERETA           1101011 0100 11111 00001 m:1 11111 11111 &reta  # ERETAA, ERETAB
-     AUTIASP     1101 0101 0000 0011 0010 0011 101 11111
-     AUTIBZ      1101 0101 0000 0011 0010 0011 110 11111
-     AUTIBSP     1101 0101 0000 0011 0010 0011 111 11111
-+    CHKFEAT     1101 0101 0000 0011 0010 0101 000 11111
-   ]
-   # The canonical NOP has CRm == op2 == 0, but all of the space
-   # that isn't specifically allocated to an instruction must NOP
+     bql_lock();
+     arm_call_pre_el_change_hook(cpu);
+     bql_unlock();
 -- 
 2.43.0
 

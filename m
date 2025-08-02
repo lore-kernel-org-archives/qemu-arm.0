@@ -4,87 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C09E2C87FC9
-	for <qemu-arm@archiver.kernel.org>; Sat,  2 Aug 2025 23:34:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACF37C87FD2
+	for <qemu-arm@archiver.kernel.org>; Sat,  2 Aug 2025 23:34:15 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uiLi3-0000fD-V4; Sat, 02 Aug 2025 19:32:16 -0400
+	id 1uiLig-0001tT-61; Sat, 02 Aug 2025 19:32:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1uiLgf-0006sg-Uo
- for qemu-arm@nongnu.org; Sat, 02 Aug 2025 19:30:50 -0400
-Received: from mail-ot1-x331.google.com ([2607:f8b0:4864:20::331])
+ id 1uiLgo-00075a-I2
+ for qemu-arm@nongnu.org; Sat, 02 Aug 2025 19:30:59 -0400
+Received: from mail-ot1-x32b.google.com ([2607:f8b0:4864:20::32b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1uiLge-0004uz-1f
- for qemu-arm@nongnu.org; Sat, 02 Aug 2025 19:30:49 -0400
-Received: by mail-ot1-x331.google.com with SMTP id
- 46e09a7af769-741b1fe0e00so43258a34.1
- for <qemu-arm@nongnu.org>; Sat, 02 Aug 2025 16:30:47 -0700 (PDT)
+ id 1uiLgm-0004wt-Sl
+ for qemu-arm@nongnu.org; Sat, 02 Aug 2025 19:30:58 -0400
+Received: by mail-ot1-x32b.google.com with SMTP id
+ 46e09a7af769-741aeba62ccso40937a34.0
+ for <qemu-arm@nongnu.org>; Sat, 02 Aug 2025 16:30:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1754177447; x=1754782247; darn=nongnu.org;
+ d=linaro.org; s=google; t=1754177455; x=1754782255; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=kEj8duxAu1Pam82WhtcHKlYlFMg89KDGm3ClOoILo48=;
- b=u7PBaoiLD00XkhOppNWpjHjYFoa2x8Q3sjGjVTN+W3tPfwIB6Dzpaqpu0CnDuK57QK
- a1j6IfTkwBu4HYBTVzz7Pym0ZNeBbN7pLx1EbA7S6uyBDoidgXdm+NFrqp667jo+PQub
- 8CYUKPP6vvz2GbHusZrk994/MFoQGlSeE259+GTTQHELBFiNBQXIAsDQdByA/QNcTKLA
- EJgNw/RTEgT30+Rf+QGHwqnkMrR1cFSA2m8Erv67yauxqfiRB3wGm8Fx5A7F6KvA03QH
- NFxraefxvutlar6pVzISmiEwog6vOQ8qyJIxiG42FZHVgDlehGrfyRf6p6kOjWxkWpIM
- QA5A==
+ bh=sHSDdWTCh8t1tRyRbP9Lg4R3+bQUPTmxLzxlpsJeaKQ=;
+ b=NHITojqfyD/7JuKhBWMqS4uh+l54mM4s7KCmnVGGXaP84NKXNO7+V4DpX6A6KFci+T
+ gVasqipFyZ+pahRAuyC9UuxorNTYIxhf8IpgFUWlyLN1cltgdAJYqDVwUA4cvibwZcDS
+ apN/2wQW/GFTSfkTvJCqMw9lvXWwDUJDOcCYMYgoOZL2AQia7zl3+oa/UMLGUGWY209z
+ RtRttZ26MLi/L9+l7ya1zax7wuLu7fQIQ2WZieRY+GQw0axH3Nt5QYEmv39tgwGp4uea
+ puBNcWGyXUUVBjWeMICAnxxQpZd5Wih4q6FrfWloyyg7LNV3OyCgsDZE08H+kSytWvbQ
+ eiyQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1754177447; x=1754782247;
+ d=1e100.net; s=20230601; t=1754177455; x=1754782255;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=kEj8duxAu1Pam82WhtcHKlYlFMg89KDGm3ClOoILo48=;
- b=GsRKib3lLiRDPP8KO7Sb/eUcE8k4j7emOLBZpi/EMgJNU3DkjnMQX7wZ09Fu+JacyF
- iro+hZ0L5a0x86ka5VXhlyOPhq5HOokhiFhcXmVGzvoCmZz8+YoaYDK8FIw8DlV56ee0
- kW30vE59G6bs0VQ70R2PIzt+Uh498pe9w+aA6QoKPDf5A21+tnxh/yy27eB+714ghOdV
- 8DMXYgzZF7DX/2v//rYNoXUeCgiCEx8sH8KY/s3CTiR1iUvl/uKwJrchBkebusSrwFzV
- SSXtKAlEVaQ6XBZva6nNo7rNg2NWmxV6V5QcGRo2vC2T4DYeOtnAxffJdfgd9xMfaaXD
- CwfA==
-X-Gm-Message-State: AOJu0YyQzmpA6vsUvkPtz6V927M+tKx2RRxg6xilwx5/WZzzJwNZxotA
- U0tq7Oc82+ex/YlMrNxMs2UH5AR/xYh/oG62yo468cSEKdJTNsI9Je8oBiLwawnftzGhIhtJaFL
- Jq+GV0XM=
-X-Gm-Gg: ASbGncuH0kuvIkK2b3bI5xSGCWCI2glTq4y3di/pSBKgw1zIxl48aiBvzUIGgoWVfRB
- WqrULgfEv7ZAfYvpoXDwPcmLk2P2N4fyTFMSFEHPpOBG5EA+5JJeeNUEQNZUI/4EGqk8UDtAFsa
- 1QBAJ6fH/DhqCUSgCYOvdzmRrvFRsSGw3J0GGx/tbxix9Sy8aaL8ApHkJMtMBIrhPxpD+FLRrf+
- VrBxgXPOO4jHtWmx0lx/fHCD88lMljhQIcJi8mXcpdaRwpqTcR6/HsQmXfXs53pWThJk6U9jFf2
- iSQ6Gt9U/h/4trK3Kvi7dhTrMd1M+jHYyvgtSAUJ88mjf4GahWaUtXS7GPCSpLE0MZuluoRBL3W
- lMq8cPD9XyP5l+nXIwXEF150Cufi+CFSBxJkF5niwrWoyMdEuyo4s
-X-Google-Smtp-Source: AGHT+IHiqSeqoSJmoQQLzg0b/R7VSK1wiFSdieYogDifbx+Txeh56HuZ5yxKRJR46OjPVimEzix7SQ==
-X-Received: by 2002:a05:6830:600f:b0:73e:5540:730e with SMTP id
- 46e09a7af769-741879d7295mr7675745a34.4.1754177446714; 
- Sat, 02 Aug 2025 16:30:46 -0700 (PDT)
+ bh=sHSDdWTCh8t1tRyRbP9Lg4R3+bQUPTmxLzxlpsJeaKQ=;
+ b=IMuWVZjrCiyz1adpqWUnBP054yYtdc8eyQMjjYAQwzFkwEbAwaaCWwTIs8V04jr3+o
+ Xl6PX7MpVS49Vui+TSxH8p0fsVjzDMF482VVmCvfH8FWSApYL5gy1YvD1GBGTiCT87Tz
+ ip9xnTUkn5kLZxdrXcfGvIZETw48HNlfdek+ir/roxTtJhcCd4DzRPEb1Zg7WfONshWW
+ JXxDUurwj+3p7abTvdnQPUd0F506pOQyotlrLT92adFX8Cwg+3QMRcqf5F4PAwE33/5A
+ /ORQlEg+33Mc/QzrMLtB6cvC/mbb+KenfjFMElj5iAeDzoW6DgnCpsPhzIWN3XeZ/SXx
+ Q3Fg==
+X-Gm-Message-State: AOJu0YzDEn+cGAr714ObH6AHXM1vbp5LOtf9qdaPUNbxOAxS62ySDVTB
+ XyeqXwjEGDWdOfweS7U9Joe1+vdG7HNRjAgWW6OndN9gjteivPkE4g+xnz1KdVaqXCM=
+X-Gm-Gg: ASbGncvuoXX5pLDQI2sPpdXaSgGCy2pZqf1EIE7vnM3EsTiLLR2Pm+ljPaqKVV6ZpNO
+ 3cGhqXoCN1aW0kJ5CJZEVYDFwbUQecRbyhjIoEOS3ZJduCcEPArBN5oMi9zcgBoOap11EVnhAx7
+ bmuaE0vQEfDTpQF7kEEXiK4Pk1yuD4+duQkaTTR4RRHvlNQRp9bj4LAkWZoQgQVJ1mFJPdJbUCB
+ Aru1C88ieOz1uAJotG1J5G5zN3EIlB5Duee3aEw3tsyrVPMsUFo3In75pBJTOcuGxSxLIqdUS7d
+ 6/vsmZ4BDdiTqU6qBH9n9jX+0xBbqVZX9HvE4rPv9RYuRkbhzPwmOAFLDevIuj5FLIka8Zhy2hO
+ ttH7SQTWs4i5kksw/m7EzckPVtnGZMM+4YxNovBSs8KCBTr2XxdVkWL4sqSCb748=
+X-Google-Smtp-Source: AGHT+IELt0Oz9KTDk+skBjyGwaYpTxm/F5fV5PMbq2QMVVKUg9W/yGstx+UoIJfXjW+xJyw2crovjQ==
+X-Received: by 2002:a05:6871:522a:b0:306:a149:f4c0 with SMTP id
+ 586e51a60fabf-30b6780dc5amr2706607fac.23.1754177455512; 
+ Sat, 02 Aug 2025 16:30:55 -0700 (PDT)
 Received: from stoup.. ([172.58.111.133]) by smtp.gmail.com with ESMTPSA id
- 586e51a60fabf-30b8e3c9b32sm71031fac.24.2025.08.02.16.30.43
+ 586e51a60fabf-30b8e3c9b32sm71031fac.24.2025.08.02.16.30.51
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 02 Aug 2025 16:30:46 -0700 (PDT)
+ Sat, 02 Aug 2025 16:30:55 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v2 10/85] target/arm: Fill in HFG[RWI]TR_EL2 bits for Arm v9.5
-Date: Sun,  3 Aug 2025 09:28:38 +1000
-Message-ID: <20250802232953.413294-11-richard.henderson@linaro.org>
+Subject: [PATCH v2 12/85] target/arm: Implement FEAT_ATS1A
+Date: Sun,  3 Aug 2025 09:28:40 +1000
+Message-ID: <20250802232953.413294-13-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250802232953.413294-1-richard.henderson@linaro.org>
 References: <20250802232953.413294-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::331;
- envelope-from=richard.henderson@linaro.org; helo=mail-ot1-x331.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::32b;
+ envelope-from=richard.henderson@linaro.org; helo=mail-ot1-x32b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- UPPERCASE_50_75=0.008 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -100,69 +99,130 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+Implement FEAT_ATS1A and enable for -cpu max.
+
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/cpregs.h | 28 ++++++++++++++++++++++++++--
- 1 file changed, 26 insertions(+), 2 deletions(-)
+ target/arm/cpregs.h           |  1 +
+ target/arm/cpu-features.h     |  5 ++++
+ target/arm/tcg/cpregs-at.c    | 44 +++++++++++++++++++++++++++++++++++
+ target/arm/tcg/cpu64.c        |  1 +
+ docs/system/arm/emulation.rst |  1 +
+ 5 files changed, 52 insertions(+)
 
 diff --git a/target/arm/cpregs.h b/target/arm/cpregs.h
-index c9506aa6d5..1d103b577f 100644
+index 1d103b577f..2a4826f5c4 100644
 --- a/target/arm/cpregs.h
 +++ b/target/arm/cpregs.h
-@@ -408,10 +408,19 @@ FIELD(HFGRTR_EL2, ERXPFGCTL_EL1, 47, 1)
- FIELD(HFGRTR_EL2, ERXPFGCDN_EL1, 48, 1)
- FIELD(HFGRTR_EL2, ERXADDR_EL1, 49, 1)
- FIELD(HFGRTR_EL2, NACCDATA_EL1, 50, 1)
--/* 51-53: RES0 */
-+/* 51: RES0 */
-+FIELD(HFGRTR_EL2, NGCS_EL0, 52, 1)
-+FIELD(HFGRTR_EL2, NGCS_EL1, 53, 1)
- FIELD(HFGRTR_EL2, NSMPRI_EL1, 54, 1)
- FIELD(HFGRTR_EL2, NTPIDR2_EL0, 55, 1)
--/* 56-63: RES0 */
-+FIELD(HFGRTR_EL2, NRCWMASK_EL1, 56, 1)
-+FIELD(HFGRTR_EL2, NPIRE0_EL1, 57, 1)
-+FIELD(HFGRTR_EL2, NPIR_EL1, 58, 1)
-+FIELD(HFGRTR_EL2, NPOR_EL0, 59, 1)
-+FIELD(HFGRTR_EL2, NPOR_EL1, 60, 1)
-+FIELD(HFGRTR_EL2, NS2POR_EL1, 61, 1)
-+FIELD(HFGRTR_EL2, NMAIR2_EL1, 62, 1)
-+FIELD(HFGRTR_EL2, NAMAIR2_EL1, 63, 1)
+@@ -854,6 +854,7 @@ typedef enum FGTBit {
+     DO_BIT(HFGITR, DVPRCTX),
+     DO_BIT(HFGITR, CPPRCTX),
+     DO_BIT(HFGITR, DCCVAC),
++    DO_BIT(HFGITR, ATS1E1A),
+ } FGTBit;
  
- /* These match HFGRTR but bits for RO registers are RES0 */
- FIELD(HFGWTR_EL2, AFSR0_EL1, 0, 1)
-@@ -452,8 +461,18 @@ FIELD(HFGWTR_EL2, ERXPFGCTL_EL1, 47, 1)
- FIELD(HFGWTR_EL2, ERXPFGCDN_EL1, 48, 1)
- FIELD(HFGWTR_EL2, ERXADDR_EL1, 49, 1)
- FIELD(HFGWTR_EL2, NACCDATA_EL1, 50, 1)
-+FIELD(HFGWTR_EL2, NGCS_EL0, 52, 1)
-+FIELD(HFGWTR_EL2, NGCS_EL1, 53, 1)
- FIELD(HFGWTR_EL2, NSMPRI_EL1, 54, 1)
- FIELD(HFGWTR_EL2, NTPIDR2_EL0, 55, 1)
-+FIELD(HFGWTR_EL2, NRCWMASK_EL1, 56, 1)
-+FIELD(HFGWTR_EL2, NPIRE0_EL1, 57, 1)
-+FIELD(HFGWTR_EL2, NPIR_EL1, 58, 1)
-+FIELD(HFGWTR_EL2, NPOR_EL0, 59, 1)
-+FIELD(HFGWTR_EL2, NPOR_EL1, 60, 1)
-+FIELD(HFGWTR_EL2, NS2POR_EL1, 61, 1)
-+FIELD(HFGWTR_EL2, NMAIR2_EL1, 62, 1)
-+FIELD(HFGWTR_EL2, NAMAIR2_EL1, 63, 1)
+ #undef DO_BIT
+diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
+index 9579d93cec..7f2ca51b4c 100644
+--- a/target/arm/cpu-features.h
++++ b/target/arm/cpu-features.h
+@@ -609,6 +609,11 @@ static inline bool isar_feature_aa64_lut(const ARMISARegisters *id)
+     return FIELD_EX64_IDREG(id, ID_AA64ISAR2, LUT);
+ }
  
- FIELD(HFGITR_EL2, ICIALLUIS, 0, 1)
- FIELD(HFGITR_EL2, ICIALLU, 1, 1)
-@@ -512,6 +531,11 @@ FIELD(HFGITR_EL2, SVC_EL1, 53, 1)
- FIELD(HFGITR_EL2, DCCVAC, 54, 1)
- FIELD(HFGITR_EL2, NBRBINJ, 55, 1)
- FIELD(HFGITR_EL2, NBRBIALL, 56, 1)
-+FIELD(HFGITR_EL2, NGCSPUSHM_EL1, 57, 1)
-+FIELD(HFGITR_EL2, NGCSSTR_EL1, 58, 1)
-+FIELD(HFGITR_EL2, NGCSEPP, 59, 1)
-+FIELD(HFGITR_EL2, COSPRCTX, 60, 1)
-+FIELD(HFGITR_EL2, ATS1E1A, 62, 1)
++static inline bool isar_feature_aa64_ats1a(const ARMISARegisters *id)
++{
++    return FIELD_EX64_IDREG(id, ID_AA64ISAR2, ATS1A);
++}
++
+ static inline bool isar_feature_aa64_fp_simd(const ARMISARegisters *id)
+ {
+     /* We always set the AdvSIMD and FP fields identically.  */
+diff --git a/target/arm/tcg/cpregs-at.c b/target/arm/tcg/cpregs-at.c
+index bebf168997..0e8f229aa7 100644
+--- a/target/arm/tcg/cpregs-at.c
++++ b/target/arm/tcg/cpregs-at.c
+@@ -488,6 +488,47 @@ static const ARMCPRegInfo ats1cp_reginfo[] = {
+       .writefn = ats_write },
+ };
  
- FIELD(HDFGRTR_EL2, DBGBCRN_EL1, 0, 1)
- FIELD(HDFGRTR_EL2, DBGBVRN_EL1, 1, 1)
++static void ats_s1e1a(CPUARMState *env, const ARMCPRegInfo *ri, uint64_t value)
++{
++    uint64_t hcr_el2 = arm_hcr_el2_eff(env);
++    bool regime_e20 = (hcr_el2 & (HCR_E2H | HCR_TGE)) == (HCR_E2H | HCR_TGE);
++    ARMMMUIdx mmu_idx = regime_e20 ? ARMMMUIdx_E20_2 : ARMMMUIdx_Stage1_E1;
++    ARMSecuritySpace ss = arm_security_space_below_el3(env);
++
++    env->cp15.par_el[1] = do_ats_write(env, value, 0, mmu_idx, ss);
++}
++
++static void ats_s1e2a(CPUARMState *env, const ARMCPRegInfo *ri, uint64_t value)
++{
++    uint64_t hcr_el2 = arm_hcr_el2_eff(env);
++    ARMMMUIdx mmu_idx = hcr_el2 & HCR_E2H ? ARMMMUIdx_E20_2 : ARMMMUIdx_E2;
++    ARMSecuritySpace ss = arm_security_space_below_el3(env);
++
++    env->cp15.par_el[1] = do_ats_write(env, value, 0, mmu_idx, ss);
++}
++
++static void ats_s1e3a(CPUARMState *env, const ARMCPRegInfo *ri, uint64_t value)
++{
++    env->cp15.par_el[1] = do_ats_write(env, value, 0, ARMMMUIdx_E3,
++                                       arm_security_space(env));
++}
++
++static const ARMCPRegInfo ats1a_reginfo[] = {
++    { .name = "AT_S1E1A", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 0, .crn = 7, .crm = 9, .opc2 = 2,
++      .access = PL1_W, .type = ARM_CP_NO_RAW | ARM_CP_RAISES_EXC,
++      .fgt = FGT_ATS1E1A,
++      .accessfn = at_s1e01_access, .writefn = ats_s1e1a },
++    { .name = "AT_S1E2A", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 4, .crn = 7, .crm = 9, .opc2 = 2,
++      .access = PL2_W, .type = ARM_CP_NO_RAW | ARM_CP_RAISES_EXC,
++      .accessfn = at_s1e2_access, .writefn = ats_s1e2a },
++    { .name = "AT_S1E3A", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 6, .crn = 7, .crm = 9, .opc2 = 2,
++      .access = PL3_W, .type = ARM_CP_NO_RAW | ARM_CP_RAISES_EXC,
++      .writefn = ats_s1e3a },
++};
++
+ void define_at_insn_regs(ARMCPU *cpu)
+ {
+     CPUARMState *env = &cpu->env;
+@@ -509,4 +550,7 @@ void define_at_insn_regs(ARMCPU *cpu)
+     if (cpu_isar_feature(aa32_ats1e1, cpu)) {
+         define_arm_cp_regs(cpu, ats1cp_reginfo);
+     }
++    if (cpu_isar_feature(aa64_ats1a, cpu)) {
++        define_arm_cp_regs(cpu, ats1a_reginfo);
++    }
+ }
+diff --git a/target/arm/tcg/cpu64.c b/target/arm/tcg/cpu64.c
+index c54aa528c6..22ccc4f697 100644
+--- a/target/arm/tcg/cpu64.c
++++ b/target/arm/tcg/cpu64.c
+@@ -1178,6 +1178,7 @@ void aarch64_max_tcg_initfn(Object *obj)
+     t = FIELD_DP64(t, ID_AA64ISAR2, MOPS, 1);     /* FEAT_MOPS */
+     t = FIELD_DP64(t, ID_AA64ISAR2, BC, 1);       /* FEAT_HBC */
+     t = FIELD_DP64(t, ID_AA64ISAR2, WFXT, 2);     /* FEAT_WFxT */
++    t = FIELD_DP64(t, ID_AA64ISAR2, ATS1A, 1);    /* FEAT_ATS1A */
+     SET_IDREG(isar, ID_AA64ISAR2, t);
+ 
+     t = GET_IDREG(isar, ID_AA64PFR0);
+diff --git a/docs/system/arm/emulation.rst b/docs/system/arm/emulation.rst
+index d207a9f266..1489c262b8 100644
+--- a/docs/system/arm/emulation.rst
++++ b/docs/system/arm/emulation.rst
+@@ -23,6 +23,7 @@ the following architecture extensions:
+ - FEAT_AFP (Alternate floating-point behavior)
+ - FEAT_Armv9_Crypto (Armv9 Cryptographic Extension)
+ - FEAT_ASID16 (16 bit ASID)
++- FEAT_ATS1A (Address Translation operations that ignore stage 1 permissions)
+ - FEAT_BBM at level 2 (Translation table break-before-make levels)
+ - FEAT_BF16 (AArch64 BFloat16 instructions)
+ - FEAT_BTI (Branch Target Identification)
 -- 
 2.43.0
 

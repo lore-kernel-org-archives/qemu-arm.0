@@ -4,79 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 441E7C87FD2
-	for <qemu-arm@archiver.kernel.org>; Sat,  2 Aug 2025 23:38:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C8C0C87FD2
+	for <qemu-arm@archiver.kernel.org>; Sat,  2 Aug 2025 23:39:06 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uiLkH-0006ee-0D; Sat, 02 Aug 2025 19:34:33 -0400
+	id 1uiLlC-0008Eu-R9; Sat, 02 Aug 2025 19:35:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1uiLhb-0008Ky-0U
- for qemu-arm@nongnu.org; Sat, 02 Aug 2025 19:31:48 -0400
-Received: from mail-oo1-xc2f.google.com ([2607:f8b0:4864:20::c2f])
+ id 1uiLiJ-0001Mg-HP
+ for qemu-arm@nongnu.org; Sat, 02 Aug 2025 19:32:33 -0400
+Received: from mail-oa1-x35.google.com ([2001:4860:4864:20::35])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1uiLhZ-00055i-1E
- for qemu-arm@nongnu.org; Sat, 02 Aug 2025 19:31:46 -0400
-Received: by mail-oo1-xc2f.google.com with SMTP id
- 006d021491bc7-6195f7f9ad6so1224525eaf.3
- for <qemu-arm@nongnu.org>; Sat, 02 Aug 2025 16:31:44 -0700 (PDT)
+ id 1uiLiH-0005Ci-Q1
+ for qemu-arm@nongnu.org; Sat, 02 Aug 2025 19:32:31 -0400
+Received: by mail-oa1-x35.google.com with SMTP id
+ 586e51a60fabf-2e95ab2704fso2742718fac.3
+ for <qemu-arm@nongnu.org>; Sat, 02 Aug 2025 16:32:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1754177504; x=1754782304; darn=nongnu.org;
+ d=linaro.org; s=google; t=1754177548; x=1754782348; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=BgqEOYuQ75vNcJCSdrIzICkpbTEEoH2jCjP3tSq0CeU=;
- b=vYEPDy8ymaISDKW/roe8jb9kHAWtBxutjcnXWm9DklnZmPc52jEhhYxJT64nCvhV1e
- MWjzmAzRbb+IgiQR2OlKOXBdGC7PlofElNIRkO1IGUgOpfYwLQwTeal4remoDEh03b29
- dHuBEF6JGphffKfLr4ck0BflZQ8Jhl8RYrywx3Lja1oDd9ida4BJNXlFkPUdtBu3YWdc
- 3ERrEPVCPjUOcmTSPhEQTfytOG/hBfIHTaBGp9RJTf/zY+YRd8edABml2pBGovilu59S
- HBvfA7jhgh6o11uXOceY6eQvXcFgDofztVCbgGC1xzMYglf1ojs83CTbls6NheDXaV+U
- RTbQ==
+ bh=7+ER0bRwaWJSVZXuKMTaNBSXf4hbZ3aeU4lFfN33xP8=;
+ b=I2Sp/inoXJ5XeQHTqbMSgu6IUvuZvSJa0IZJs0j2r0Ul/hlECcxUK4G2Aygz5xQCVl
+ XqQkjxgITDvJY6Wqj13VALGaIvYxEk/Hlj6kFty7U1cN2/TgUWd+o4HcUYaAd1DMZHi+
+ +7loMcdcIApE1pa0z48ibkTZ/9gBq9uYAmBHilHnoFFcS6AdUdTEF55mby3IBSHje/bq
+ W92t2aDLzsqzgBy9lj9rzIuTZyHyOOTBiBfkSBMXfQusyVaq2FGPr+Kgr/Bg3bprRBE5
+ t1xgLfgMSMgSlzvM431DAtTAqrYClLScAMouWXwj2/8REoBsG4M/yrieGe8foOUEwRSV
+ TvnA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1754177504; x=1754782304;
+ d=1e100.net; s=20230601; t=1754177548; x=1754782348;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=BgqEOYuQ75vNcJCSdrIzICkpbTEEoH2jCjP3tSq0CeU=;
- b=vsHTC3wPNRlWIepOGbcbQlee1m5upGQ3qG8XWxbk6cR9OYA/iwBQJRN5CDJqEmGmx5
- ggONIrvB5Fw/SqbMlhKGihQMc1JMzF6+9u95W2TTTSMD92En3V0BclZW+Vw+Ch07y97S
- oUySxdsoOwJVYzOg9NUpz5ymHCCn+72W0Xf6q/ecwR2VCx97T2BtfthEhI/9zb4cw0zd
- j+MHTyds2V/O4MCg0CpRWGBSDkGxaEQbfgGzpUzWZzzOFwUNlB4pzT1+Y9csmYbIqVBF
- TlztS32D29RmHSmWvuS3kY60yYBL+ZhuVlM80z07Avc1s/FJWdHTJzIp5y3bsdgvPrXd
- 9BAA==
-X-Gm-Message-State: AOJu0YxEX0QTvKiCwG8o6PqhN9beLzN1aI4eVF0GImhBWgrODNrtffGm
- O+cegZt4qsMQLMmdt7l8Jp9xJYFBU2+KP82OCe3b96ZN5DdpJI7aRcCI0PpmVkq/HS8=
-X-Gm-Gg: ASbGncsQVYwYCKaBKEK29wVTurNrf5GMSKiLc2unqTe4Xx+21fOx1u7GLSjg8EbQghu
- KYs1/WuZXx2TG8JDujy0Z5DXwROoEaHm+XD+YFryvzcNJicimL+nYr0I+lxnzP/IZwRKogmbYKx
- TU2aOM79excpgtywPOMKOMkfvWCo1qdeYaZBgXIV8Y4+4jfzibNkiwwn507HTWb9DEaF1pCJTtF
- gxpdDharkMW5AXVqhuU9NSlr8O4/hYtz4ox0m64A0mS3cqgxYENAs703SzBPQM0/MXpUP2gLVjt
- oEM9DmWLbyU2GzUs+UP35Qv/XczUqTGscBNOW0vuWJwiWZbtHZ9NzV6zyVjOwAIdokkGvO9Oamr
- 1dI1GfwlOmnsTdWlSqur+A670AwBnVyXtuYn0HmW7BVEZ8K3LmdMm
-X-Google-Smtp-Source: AGHT+IHtEOUAuUbj++75YcgF7NQQy2YnkbT0alq4xC5LV8Vs6/iw7qXg1Z2gSOyFd7RPZl8FM8oeAQ==
-X-Received: by 2002:a05:6870:b027:b0:307:b2c9:9f99 with SMTP id
- 586e51a60fabf-30b679b882fmr2242587fac.39.1754177503826; 
- Sat, 02 Aug 2025 16:31:43 -0700 (PDT)
+ bh=7+ER0bRwaWJSVZXuKMTaNBSXf4hbZ3aeU4lFfN33xP8=;
+ b=OtyMSqvicHzHI/v+7TjTLNLBDNGBylW4ZHp5TqVoO2cg8E87hIwYRomNiIGxl+Gaw1
+ QNIFH/NNQv4EbWJTENuxOFowiASholjMk5yCzGV9UwEN9FLkRWTBrCFVIUVQwSiZH7bl
+ lTS5s4qZxAmwwkd+hu5pxPWteq7usOsJndX+T9SZ5p8jpwxHcIPO4Ps9wabJdClMauzu
+ tVYlL4vP+AsMBmIo3T7exxqCqeQUj7VnfZZUW1KiwsyTseERODFqF1PdooIl4n2pMB/K
+ /EI6jw9fOZhUsE7xYa5WAJJrja6oy8O7cJixwTJZ9gLP5Xsb/O7oYueuCURk2lSb6AsY
+ PRMQ==
+X-Gm-Message-State: AOJu0YymGAruaI3+V4rUqtpAQYvtekMw//eQfaUj+Aop7k0UWNIhJxQ9
+ UY88Tb26M1gl8XWPgbnFCJIUz3chn0TxJkQbw6dBEgugl/OifFM3WhS/W40rizIYFIQ=
+X-Gm-Gg: ASbGncsMlnofUnal/FQXe40yMI1mVr+6O4jllypw8KuWwJ8FQbFiWCELxFr4MEG/jlN
+ fWo0bjoFKIBMqxQ2ilxRztQMsS6xuWt5Y9V0smNi/LfNDFKrJ0udEC0RYi85cpDdFlTbwcWMe9w
+ pyV1fu5f9d0daYo7xHD7YBqKsjmQHYuxKatX2V+BA6HuCgnZkTEJcjN54o1/85kshAvfPunPkNX
+ PkXQwGgpi82SD+iGBxVlo3X4oyD+Zr2myQ8Gxch/AtEZkGL41H0JEeZKuD8cEO2BIJyacurfv0U
+ YCuF3ymIfJbppD5PCEMYzybAT8ki/p7KwhQGD+BJvRy67I63Oig23gmOAh1fvu+aL/XebxCN8sG
+ tA4ZPeIDl7PjmjXaikj6yhnSPzfFWASphXZuYRZqPW5hrNcMcPBhv
+X-Google-Smtp-Source: AGHT+IFJhpavev8tmCsno0hhsspVnsNFKxZqLAejzQxySeJtzBiiomFYZ2XygFfoD4LgIJjxIqNOGQ==
+X-Received: by 2002:a05:6870:7041:10b0:30b:6a26:5193 with SMTP id
+ 586e51a60fabf-30b6a2652bfmr1588619fac.37.1754177548694; 
+ Sat, 02 Aug 2025 16:32:28 -0700 (PDT)
 Received: from stoup.. ([172.58.111.133]) by smtp.gmail.com with ESMTPSA id
- 586e51a60fabf-30b8e3c9b32sm71031fac.24.2025.08.02.16.31.40
+ 586e51a60fabf-30b8e3c9b32sm71031fac.24.2025.08.02.16.32.24
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 02 Aug 2025 16:31:43 -0700 (PDT)
+ Sat, 02 Aug 2025 16:32:28 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v2 21/85] target/arm: Do not migrate env->exception
-Date: Sun,  3 Aug 2025 09:28:49 +1000
-Message-ID: <20250802232953.413294-22-richard.henderson@linaro.org>
+Subject: [PATCH v2 31/85] include/hw/core/cpu: Widen MMUIdxMap
+Date: Sun,  3 Aug 2025 09:28:59 +1000
+Message-ID: <20250802232953.413294-32-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250802232953.413294-1-richard.henderson@linaro.org>
 References: <20250802232953.413294-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::c2f;
- envelope-from=richard.henderson@linaro.org; helo=mail-oo1-xc2f.google.com
+Received-SPF: pass client-ip=2001:4860:4864:20::35;
+ envelope-from=richard.henderson@linaro.org; helo=mail-oa1-x35.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -99,32 +99,43 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-These are not architectural state, only placeholders
-between identifying the exception and delivering it.
+Widen MMUIdxMap to 32 bits.  Do not yet expand NB_MMU_MODES,
+but widen the map type in preparation.
 
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/machine.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ include/hw/core/cpu.h | 2 +-
+ accel/tcg/cputlb.c    | 3 ---
+ 2 files changed, 1 insertion(+), 4 deletions(-)
 
-diff --git a/target/arm/machine.c b/target/arm/machine.c
-index 6986915bee..8dbeca2867 100644
---- a/target/arm/machine.c
-+++ b/target/arm/machine.c
-@@ -1085,9 +1085,9 @@ const VMStateDescription vmstate_arm_cpu = {
-         VMSTATE_UINT64(env.exclusive_val, ARMCPU),
-         VMSTATE_UINT64(env.exclusive_high, ARMCPU),
-         VMSTATE_UNUSED(sizeof(uint64_t)),
--        VMSTATE_UINT32(env.exception.syndrome, ARMCPU),
--        VMSTATE_UINT32(env.exception.fsr, ARMCPU),
--        VMSTATE_UINT64(env.exception.vaddress, ARMCPU),
-+        VMSTATE_UNUSED(sizeof(uint32_t)),
-+        VMSTATE_UNUSED(sizeof(uint32_t)),
-+        VMSTATE_UNUSED(sizeof(uint64_t)),
-         VMSTATE_TIMER_PTR(gt_timer[GTIMER_PHYS], ARMCPU),
-         VMSTATE_TIMER_PTR(gt_timer[GTIMER_VIRT], ARMCPU),
-         {
+diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+index 23eb849a9b..fc9a2291d5 100644
+--- a/include/hw/core/cpu.h
++++ b/include/hw/core/cpu.h
+@@ -201,7 +201,7 @@ struct CPUClass {
+  * Fix the number of mmu modes to 16.
+  */
+ #define NB_MMU_MODES 16
+-typedef uint16_t MMUIdxMap;
++typedef uint32_t MMUIdxMap;
+ 
+ /* Use a fully associative victim tlb of 8 entries. */
+ #define CPU_VTLB_SIZE 8
+diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c
+index 2a6aa01c57..416aaa1040 100644
+--- a/accel/tcg/cputlb.c
++++ b/accel/tcg/cputlb.c
+@@ -89,9 +89,6 @@
+  */
+ QEMU_BUILD_BUG_ON(sizeof(vaddr) > sizeof(run_on_cpu_data));
+ 
+-/* We currently can't handle more than 16 bits in the MMUIDX bitmask.
+- */
+-QEMU_BUILD_BUG_ON(NB_MMU_MODES > 16);
+ #define ALL_MMUIDX_BITS ((1 << NB_MMU_MODES) - 1)
+ 
+ static inline size_t tlb_n_entries(CPUTLBDescFast *fast)
 -- 
 2.43.0
 

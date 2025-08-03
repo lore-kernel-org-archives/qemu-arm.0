@@ -4,128 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A127CC87FCB
-	for <qemu-arm@archiver.kernel.org>; Sun,  3 Aug 2025 12:31:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F224C87FCA
+	for <qemu-arm@archiver.kernel.org>; Sun,  3 Aug 2025 16:52:52 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uiXs7-0007Ys-QF; Sun, 03 Aug 2025 08:31:27 -0400
+	id 1uibwv-0001dm-Tf; Sun, 03 Aug 2025 12:52:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1uiXs6-0007Ws-KL
- for qemu-arm@nongnu.org; Sun, 03 Aug 2025 08:31:26 -0400
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1uibtm-000872-DQ
+ for qemu-arm@nongnu.org; Sun, 03 Aug 2025 12:49:32 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1uiXs4-0007s4-8g
- for qemu-arm@nongnu.org; Sun, 03 Aug 2025 08:31:26 -0400
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1uibtg-0003Ih-FH
+ for qemu-arm@nongnu.org; Sun, 03 Aug 2025 12:49:23 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1754224281;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ s=mimecast20190719; t=1754239756;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=pYG0zn0eu35RTJiu0y1wMB/J9vN8Pa5vh1SY2uLhDOs=;
- b=MWCKM1OTjrDfdzNiAC/jR4hBF7Fk1tY2fwQWRMDKw9GrTe+w6p9tSKR3Eq92PAUFEWO+P0
- w9g53pzSWeP0J/BPrdbW/yQ+6czZxEpYMwTHjqeWVduBqVe6jIahv8c/KUBviGfE4DUnd/
- VVgOPok9H7bmaKc0Fbx8rA54NQmf1Gc=
+ in-reply-to:in-reply-to:references:references;
+ bh=bldPOmhW+tpVLm4p4wnYqA2Lty4/GhuNrJNOHtese9k=;
+ b=XuDI0P2S8V332TBAxNOEDeBObbPNzoTkIbhrSoLD3PvhRphgK9JCCufC+WzuGkpK+KbrTr
+ 5oxpDp9KbKUzfNA/Vvk/y1QJSLZ3mYByqNB2Lyf1NjYMocsCuPFGs0azuICMLaIKvSNAxP
+ 5IZAKJmUV3fxpyocO4rNu/HDMv4WYBE=
 Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
  [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-433-iYAq320BPpmmjIfXxusf5g-1; Sun, 03 Aug 2025 08:31:20 -0400
-X-MC-Unique: iYAq320BPpmmjIfXxusf5g-1
-X-Mimecast-MFC-AGG-ID: iYAq320BPpmmjIfXxusf5g_1754224279
+ us-mta-317-8yzweqGFP7CBLuCcTiQanQ-1; Sun, 03 Aug 2025 12:49:13 -0400
+X-MC-Unique: 8yzweqGFP7CBLuCcTiQanQ-1
+X-Mimecast-MFC-AGG-ID: 8yzweqGFP7CBLuCcTiQanQ_1754239752
 Received: by mail-wr1-f70.google.com with SMTP id
- ffacd0b85a97d-3b8d62a680bso1102524f8f.0
- for <qemu-arm@nongnu.org>; Sun, 03 Aug 2025 05:31:20 -0700 (PDT)
+ ffacd0b85a97d-3b79c28f8ceso2699803f8f.3
+ for <qemu-arm@nongnu.org>; Sun, 03 Aug 2025 09:49:13 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1754224279; x=1754829079;
- h=content-transfer-encoding:in-reply-to:autocrypt:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
+ d=1e100.net; s=20230601; t=1754239752; x=1754844552;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:reply-to:user-agent:mime-version:date
  :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=pYG0zn0eu35RTJiu0y1wMB/J9vN8Pa5vh1SY2uLhDOs=;
- b=mIYJNwIvYV56cxLgVkJ01PNT4+HXEo6Y/+HOkiQQO9pc/Yb3hjrM7VLAHahOHm3U7z
- CmSwM0ztnd2spmf/utX6uvPb3trWdSUhEaDPPAMxZ2kuUBmQevasQcRu8wtKMxVUepzu
- 51ABzfaqr6dPbKA6XhucVlmYP5J6tGssbxyr7foGn4gde9jzqtTBOy6KeIlYgX45exof
- rMfAIaB81qPB8L3KGRdsqyCyCmqI/3cGdjRu+z4o6bwQxufHzApSVn2FpROk6yihKusJ
- QnrxEsfY7AWpLxYIXJw/c769pGo5WjNuHgVBPcAWpoNfkHryuOwe+BTgUTnlCnXZJ2jf
- 5XOQ==
-X-Gm-Message-State: AOJu0YwyBO422SQemxhvdeWoVtk2bdTauLgPHetr4x1apgO2L+L54Fk2
- stqeGqvc45bw2t/MuUT5OnyVGxAdtIN7sDdMnHeDfRTeCtR9SXmFewKmCRYxNWVhLy+0AyluY31
- kDVbLYaFYaVIxqQkLyrTkFtX3Juru8pxmd6GEjYNAcpH/bm6EJHU7fQ==
-X-Gm-Gg: ASbGncv+rY38qvFoA623fqqYpOQGR7NDNeR34sdHVFtehNNA217vmKFIUqobSJOriEd
- QESKEjdzUnNymjyaLhAxe/u8/wxBLwdMprIuhXpQvvhK4pQMs1T9j+36p3oAShpU4tN6e0NGV5o
- VsRXuqleGkFVEC3g/CnD3SenZgcIDxZxPeFum74rV+2yf1tCwtxeGxOpvAjA3y/ON3BVcssZCeG
- dRlqVs9HfzQf5y8sY8AlsIIXaJawwF3aR9sJ5ymRpIV2o3TAcb0RKjoQ/roovdhZrbNBQ0nYksd
- XJEhSFfpWUCZOhLH6fWbbcVpjnojS6Y8fn8bIGQt7+wy
-X-Received: by 2002:a5d:64ed:0:b0:3b7:590d:ac7d with SMTP id
- ffacd0b85a97d-3b8d9561d86mr4966346f8f.1.1754224278977; 
- Sun, 03 Aug 2025 05:31:18 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHPJMb4WPlVrMsdcTmVdaJdH7TwDWjf5gAW8kmkLYYvox4fRs3exgsI+oVENqwML+Lek5HPqA==
-X-Received: by 2002:a5d:64ed:0:b0:3b7:590d:ac7d with SMTP id
- ffacd0b85a97d-3b8d9561d86mr4966329f8f.1.1754224278601; 
- Sun, 03 Aug 2025 05:31:18 -0700 (PDT)
-Received: from [192.168.10.48] ([151.49.253.173])
- by smtp.googlemail.com with ESMTPSA id
- ffacd0b85a97d-3b79c48a05bsm12221985f8f.69.2025.08.03.05.31.17
+ bh=bldPOmhW+tpVLm4p4wnYqA2Lty4/GhuNrJNOHtese9k=;
+ b=W0yuDZuMQJW/IBW5iA3dsW3mGuB53jz8LZjk7DLLsHLSUVBvMVmL+dzg+xSDKPqx79
+ DbZEkujvZA25hYKoqxucOdWcjvDxfpK43SukuVQTtVL43j/RRwT4hgyxvcYy/3c5sxhQ
+ cRq51FTt/JtkQlQfOtVudzNNZLChGsB6eMM7Y0VAbUUuFA20bV0qrsIpYbHUKo7j5H2O
+ A4WTVuphN8ZKbv2zdYp+VYXsQ0XtOZHwPKdH8AbFUfNFOw3ST3sHAokK6SX2HxR/5BOK
+ R7kAXxwuTcLnBKBaiYbPANT1xBys43ksXsZVeWJ+bXRJBN1QKXm5/194udfiPJ67dq3v
+ NXGw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVwU8d9GxMqH2ZusC4eYHbPMbLioN2dlc7S+zO61gzGWMKmtoNYRLwsJtpexQR9tyGuhc7bWY5loQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yzex3UEISIcm1xldaChieIncCnQcnrKnK/ousRMSEQ4C58YBsiL
+ JTFxU+nLoMeMoAt9/BNnZBB2bLGFBjOT74TTWpv7MLHdTMUfiFwUSgR4B10i/dLHPc/7KQvvMNs
+ VRZOSuo9xrNN5bPqdxSg6ZvaUsPO1zMtgOvaGGXwfmN6BB0F7dNOSEw==
+X-Gm-Gg: ASbGnctwysnFSpW5LuOl7a3zbXxzmV9io2sOLpbGDbKk8e41sEFUWIdpKqe5OPINE1G
+ De44uWLi2J+4WUtvjEhPsP+D3fxlKOMyGAjrWZSPNZx1eL9a7N2dD00/cmN2NqpEZM1KSwK2jve
+ ABJT4567uEskwnAgHc2Yr6bVl2O5GH+xgv3vB+BbE5lOaUU6XPFS75hPDouuQdcISpPFOWymBS+
+ nZH7jum/8FKF7FZJ2GngMDmJfWIe+tpAhA+ywptio/yoRV5PDw0kbGlPYgBO89gloe6YW541S6M
+ KqzkD9rwqRgrDtryWqr/OmD+nVWLlMnnCVOkTSR+v2EmA0LxtbWYzXVXkyAC54oTwevnYmoAKJT
+ 0ej3bnUK4e2Q=
+X-Received: by 2002:a5d:64cb:0:b0:3b7:83c0:a9ab with SMTP id
+ ffacd0b85a97d-3b8d94ce6damr5104628f8f.55.1754239752155; 
+ Sun, 03 Aug 2025 09:49:12 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEgue15/fVGcaS5KxenImh/2PbNT+qmScxmhnHLAoXI1EfKWBFLhVfvKMlo1ntzZOOECwIKrA==
+X-Received: by 2002:a5d:64cb:0:b0:3b7:83c0:a9ab with SMTP id
+ ffacd0b85a97d-3b8d94ce6damr5104610f8f.55.1754239751650; 
+ Sun, 03 Aug 2025 09:49:11 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-3b79c453328sm13272666f8f.46.2025.08.03.09.49.09
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 03 Aug 2025 05:31:17 -0700 (PDT)
-Message-ID: <c101dbc2-9431-4633-8a91-d5d85ce02082@redhat.com>
-Date: Sun, 3 Aug 2025 14:31:16 +0200
+ Sun, 03 Aug 2025 09:49:10 -0700 (PDT)
+Message-ID: <2f2bc1e5-22fd-4cea-82fa-6be6bc82ad2c@redhat.com>
+Date: Sun, 3 Aug 2025 18:49:08 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 08/11] target/arm: Implement CB, CBB, CBH
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org
-References: <20250803014019.416797-1-richard.henderson@linaro.org>
- <20250803014019.416797-9-richard.henderson@linaro.org>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Autocrypt: addr=pbonzini@redhat.com; keydata=
- xsEhBFRCcBIBDqDGsz4K0zZun3jh+U6Z9wNGLKQ0kSFyjN38gMqU1SfP+TUNQepFHb/Gc0E2
- CxXPkIBTvYY+ZPkoTh5xF9oS1jqI8iRLzouzF8yXs3QjQIZ2SfuCxSVwlV65jotcjD2FTN04
- hVopm9llFijNZpVIOGUTqzM4U55sdsCcZUluWM6x4HSOdw5F5Utxfp1wOjD/v92Lrax0hjiX
- DResHSt48q+8FrZzY+AUbkUS+Jm34qjswdrgsC5uxeVcLkBgWLmov2kMaMROT0YmFY6A3m1S
- P/kXmHDXxhe23gKb3dgwxUTpENDBGcfEzrzilWueOeUWiOcWuFOed/C3SyijBx3Av/lbCsHU
- Vx6pMycNTdzU1BuAroB+Y3mNEuW56Yd44jlInzG2UOwt9XjjdKkJZ1g0P9dwptwLEgTEd3Fo
- UdhAQyRXGYO8oROiuh+RZ1lXp6AQ4ZjoyH8WLfTLf5g1EKCTc4C1sy1vQSdzIRu3rBIjAvnC
- tGZADei1IExLqB3uzXKzZ1BZ+Z8hnt2og9hb7H0y8diYfEk2w3R7wEr+Ehk5NQsT2MPI2QBd
- wEv1/Aj1DgUHZAHzG1QN9S8wNWQ6K9DqHZTBnI1hUlkp22zCSHK/6FwUCuYp1zcAEQEAAc0j
- UGFvbG8gQm9uemluaSA8cGJvbnppbmlAcmVkaGF0LmNvbT7CwU0EEwECACMFAlRCcBICGwMH
- CwkIBwMCAQYVCAIJCgsEFgIDAQIeAQIXgAAKCRB+FRAMzTZpsbceDp9IIN6BIA0Ol7MoB15E
- 11kRz/ewzryFY54tQlMnd4xxfH8MTQ/mm9I482YoSwPMdcWFAKnUX6Yo30tbLiNB8hzaHeRj
- jx12K+ptqYbg+cevgOtbLAlL9kNgLLcsGqC2829jBCUTVeMSZDrzS97ole/YEez2qFpPnTV0
- VrRWClWVfYh+JfzpXmgyhbkuwUxNFk421s4Ajp3d8nPPFUGgBG5HOxzkAm7xb1cjAuJ+oi/K
- CHfkuN+fLZl/u3E/fw7vvOESApLU5o0icVXeakfSz0LsygEnekDbxPnE5af/9FEkXJD5EoYG
- SEahaEtgNrR4qsyxyAGYgZlS70vkSSYJ+iT2rrwEiDlo31MzRo6Ba2FfHBSJ7lcYdPT7bbk9
- AO3hlNMhNdUhoQv7M5HsnqZ6unvSHOKmReNaS9egAGdRN0/GPDWr9wroyJ65ZNQsHl9nXBqE
- AukZNr5oJO5vxrYiAuuTSd6UI/xFkjtkzltG3mw5ao2bBpk/V/YuePrJsnPFHG7NhizrxttB
- nTuOSCMo45pfHQ+XYd5K1+Cv/NzZFNWscm5htJ0HznY+oOsZvHTyGz3v91pn51dkRYN0otqr
- bQ4tlFFuVjArBZcapSIe6NV8C4cEiSTOwE0EVEJx7gEIAMeHcVzuv2bp9HlWDp6+RkZe+vtl
- KwAHplb/WH59j2wyG8V6i33+6MlSSJMOFnYUCCL77bucx9uImI5nX24PIlqT+zasVEEVGSRF
- m8dgkcJDB7Tps0IkNrUi4yof3B3shR+vMY3i3Ip0e41zKx0CvlAhMOo6otaHmcxr35sWq1Jk
- tLkbn3wG+fPQCVudJJECvVQ//UAthSSEklA50QtD2sBkmQ14ZryEyTHQ+E42K3j2IUmOLriF
- dNr9NvE1QGmGyIcbw2NIVEBOK/GWxkS5+dmxM2iD4Jdaf2nSn3jlHjEXoPwpMs0KZsgdU0pP
- JQzMUMwmB1wM8JxovFlPYrhNT9MAEQEAAcLBMwQYAQIACQUCVEJx7gIbDAAKCRB+FRAMzTZp
- sadRDqCctLmYICZu4GSnie4lKXl+HqlLanpVMOoFNnWs9oRP47MbE2wv8OaYh5pNR9VVgyhD
- OG0AU7oidG36OeUlrFDTfnPYYSF/mPCxHttosyt8O5kabxnIPv2URuAxDByz+iVbL+RjKaGM
- GDph56ZTswlx75nZVtIukqzLAQ5fa8OALSGum0cFi4ptZUOhDNz1onz61klD6z3MODi0sBZN
- Aj6guB2L/+2ZwElZEeRBERRd/uommlYuToAXfNRdUwrwl9gRMiA0WSyTb190zneRRDfpSK5d
- usXnM/O+kr3Dm+Ui+UioPf6wgbn3T0o6I5BhVhs4h4hWmIW7iNhPjX1iybXfmb1gAFfjtHfL
- xRUr64svXpyfJMScIQtBAm0ihWPltXkyITA92ngCmPdHa6M1hMh4RDX+Jf1fiWubzp1voAg0
- JBrdmNZSQDz0iKmSrx8xkoXYfA3bgtFN8WJH2xgFL28XnqY4M6dLhJwV3z08tPSRqYFm4NMP
- dRsn0/7oymhneL8RthIvjDDQ5ktUjMe8LtHr70OZE/TT88qvEdhiIVUogHdo4qBrk41+gGQh
- b906Dudw5YhTJFU3nC6bbF2nrLlB4C/XSiH76ZvqzV0Z/cAMBo5NF/w=
-In-Reply-To: <20250803014019.416797-9-richard.henderson@linaro.org>
+Subject: Re: [PATCH v7 09/36] hw/pci-host/gpex-acpi: Use
+ build_pci_host_bridge_osc_method
+To: "Michael S. Tsirkin" <mst@redhat.com>
+Cc: Michael Tokarev <mjt@tls.msk.ru>, eric.auger.pro@gmail.com,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
+ imammedo@redhat.com, Jonathan.Cameron@huawei.com, gustavo.romero@linaro.org,
+ anisinha@redhat.com, shannon.zhaosl@gmail.com,
+ Gerd Hoffmann <kraxel@redhat.com>, pbonzini@redhat.com, philmd@linaro.org,
+ alex.bennee@linaro.org
+References: <20250714080639.2525563-1-eric.auger@redhat.com>
+ <20250714080639.2525563-10-eric.auger@redhat.com>
+ <ddf6f9e3-daaa-4ea1-a5e6-d402a75524c8@tls.msk.ru>
+ <914677f4-07ba-45fe-9dc2-dea40940e789@tls.msk.ru>
+ <53971ad6-9f50-45b0-80c4-eeedb24e53db@redhat.com>
+ <20250801082904-mutt-send-email-mst@kernel.org>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <20250801082904-mutt-send-email-mst@kernel.org>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: Nl5-Lda7zueyieSjajUKTr9ynFt2o8Td0n3gzifO7ck_1754224279
+X-Mimecast-MFC-PROC-ID: eAwqOAoIA1mQEQ-EIPjAcRWyIOU1Rd_XOnXkc54Hyos_1754239752
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=pbonzini@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -30
 X-Spam_score: -3.1
 X-Spam_bar: ---
@@ -133,7 +113,7 @@ X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=-1, RCVD_IN_MSPIKE_WL=-0.01,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -146,35 +126,120 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 8/3/25 03:40, Richard Henderson wrote:
-> +static bool do_cb_cond(DisasContext *s, int cc, int imm,
-> +                       int rt, int rm, MemOp mop)
+Hi Michael,
 
-This is a memop...
+On 8/1/25 2:29 PM, Michael S. Tsirkin wrote:
+> On Mon, Jul 28, 2025 at 04:56:37PM +0200, Eric Auger wrote:
+>> Hi Michael,
+>>
+>> On 7/28/25 11:07 AM, Michael Tokarev wrote:
+>>> On 27.07.2025 14:48, Michael Tokarev wrote:
+>>>> On 14.07.2025 11:04, Eric Auger wrote:
+>>>>> gpex build_host_bridge_osc() and x86 originated
+>>>>> build_pci_host_bridge_osc_method() are mostly identical.
+>>>>>
+>>>>> In GPEX, SUPP is set to CDW2 but is not further used. CTRL is
+>>>>> same as Local0.
+>>>>>
+>>>>> So let gpex code reuse build_pci_host_bridge_osc_method() and remove
+>>>>> build_host_bridge_osc().
+>>>>>
+>>>>> Also add an imply ACPI_PCI clause along with
+>>>>> PCI_EXPRESS_GENERIC_BRIDGE to compile hw/acpi/pci.c when its
+>>>>> dependency is resolved (ie. CONFIG_ACPI_PCI). This is requested
+>>>>> to link qemu-system-mips64el.
+>>>> This patch somehow broke microvm-only build which is used by debian.
+>>>>
+>>>> configure options used (trimmed a bit):
+>>>>
+>>>> ../configure \ --without-default-features \ --target-list=x86_64-
+>>>> softmmu \ --enable-kvm --disable-tcg \ --enable-pixman \ --enable-
+>>>> vnc \ --audio-drv-list="" \ --without-default-devices \ --with-
+>>>> devices-x86_64=microvm \ --enable-vhost-user
+>>>>
+>>>> configs/devices/x86_64-softmmu/microvm.mak: ---- cut ---- # see
+>>>> configs/devices/i386-softmmu/default.mak # for additional devices
+>>>> which can be disabled # CONFIG_PCI_DEVICES=n
+>>>>
+>>>> CONFIG_MICROVM=y
+>>>>
+>>>> CONFIG_VIRTIO_BLK=y CONFIG_VIRTIO_SERIAL=y CONFIG_VIRTIO_INPUT=y
+>>>> CONFIG_VIRTIO_INPUT_HOST=y CONFIG_VHOST_USER_INPUT=y
+>>>> CONFIG_VIRTIO_NET=y CONFIG_VIRTIO_SCSI=y CONFIG_VIRTIO_RNG=y
+>>>> CONFIG_VIRTIO_CRYPTO=y CONFIG_VIRTIO_BALLOON=y CONFIG_VIRTIO_GPU=y
+>>>> CONFIG_VHOST_USER_GPU=y ---- cut ----
+>>>>
+>>>> The result: FAILED: qemu-system-x86_64 cc -m64 @qemu-system-
+>>>> x86_64.rsp /usr/bin/ld: libsystem.a.p/hw_pci-host_gpex-acpi.c.o: in
+>>>> function `acpi_dsdt_add_host_bridge_methods': hw/pci-host/gpex-
+>>>> acpi.c:83:(.text+0x274): undefined reference to
+>>>> `build_pci_host_bridge_osc_method' collect2: error: ld returned 1
+>>>> exit status
+>>> In hw/i386/Kconfig, MICROVM selects ACPI_HW_REDUCED (not ACPI or
+>>> ACPI_PCI), *and* PCI_EXPRESS_GENERIC_BRIDGE.  But in hw/pci/meson.build,
+>>> pci.c (where the function in question is defined) is built when
+>>> ACPI_PCI is enabled.  Something's not right here.
+>> This commit added an imply ACPI_PCI to the PCI_EXPRESS_GENERIC_BRIDGE
+>> config in hw/pci-host/Kconfig:
+>>
+>> config PCI_EXPRESS_GENERIC_BRIDGE
+>>     bool
+>>     select PCI_EXPRESS  -> selects PCI
+>>     imply ACPI_PCI
+>>
+>> In hw/acpi/Kconfig we have:
+>>
+>> config ACPI_PCI
+>>     bool
+>>     depends on ACPI && PCI
+>>
+>> ACPI is selected by ACPI_HW_REDUCED
+>>
+>> config ACPI_HW_REDUCED
+>>     bool
+>>     select ACPI
+>>     select ACPI_MEMORY_HOTPLUG
+>>     select ACPI_NVDIMM
+>>
+>> so logically the ACPI && PCI dependencies for ACPI_PCI should be
+>> resolved. What do I miss?
+>> regards
+>>
+>> Eric
+>>
+>
+> Not sure I get what are you proposing?
+I have not proposed anything ;-) - sorry I am on vacation - I was trying
+to enumerate the various config settings and to me dependencies should
+be resolved so I fail to understand. Unfortunately I cannot test because
+the problem happens with a custom microvm.mak. I would need this latter
+to reproduce and try to fix.
 
-> +static bool trans_CB_cond(DisasContext *s, arg_CB_cond *a)
-> +{
-> +    return do_cb_cond(s, a->cc, a->imm, a->rt, a->rm, a->sf ? 64 : 32);
-> +}
-> +
-> +static bool trans_CBB_cond(DisasContext *s, arg_CBB_cond *a)
-> +{
-> +    return do_cb_cond(s, a->cc, a->imm, a->rt, a->rm, 8);
-> +}
-
-... but these use bits
-
-> +static bool trans_CBH_cond(DisasContext *s, arg_CBH_cond *a)
-> +{
-> +    return do_cb_cond(s, a->cc, a->imm, 16, a->rt, a->rm);
-> +}
-> +
-
-... and this one also has arguments in the wrong order.
-
-Paolo
+if the microvm.mak selects PCI_EXPRESS_GENERIC_BRIDGE (which selects
+PCI_EXPRESS which itself selects PCI) and ACPI_HW_REDUCED (which selects
+ACPI), the imply ACPI_PCI should end up as a selection because PCI and
+ACPI are resolved. At least that's my understanding. Reading it again,
+please can you check whether ACPI_HW_REDUCED is selected *before*
+PCI_EXPRESS_GENERIC_BRIDGE in the custom microvm.mak. Depending on the
+order of dependency resolution it might make a difference. Otherwise
+please can you send the full microvm.mak and configure command so that I
+can try reproducing. Thanks Eric
+>
+>>
+>>
+>>
+>>
+>>
+>>
+>>> Addig kraxel for 24db877ab6e6 "microvm: add pcie support".
+>>>
+>>> Thanks
+>>>
+>>> /mjt
+>>>
 
 

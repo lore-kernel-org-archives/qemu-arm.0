@@ -4,85 +4,136 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 543F5C87FD3
-	for <qemu-arm@archiver.kernel.org>; Sun,  3 Aug 2025 01:43:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A127CC87FCB
+	for <qemu-arm@archiver.kernel.org>; Sun,  3 Aug 2025 12:31:51 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uiNiq-0007Qh-Me; Sat, 02 Aug 2025 21:41:12 -0400
+	id 1uiXs7-0007Ys-QF; Sun, 03 Aug 2025 08:31:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1uiNii-0007Hk-CQ
- for qemu-arm@nongnu.org; Sat, 02 Aug 2025 21:41:04 -0400
-Received: from mail-yb1-xb29.google.com ([2607:f8b0:4864:20::b29])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1uiNig-0004fJ-Sd
- for qemu-arm@nongnu.org; Sat, 02 Aug 2025 21:41:04 -0400
-Received: by mail-yb1-xb29.google.com with SMTP id
- 3f1490d57ef6-e8da9b7386dso3594933276.1
- for <qemu-arm@nongnu.org>; Sat, 02 Aug 2025 18:41:02 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1754185261; x=1754790061; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=wMxc6fiRC/TSWaDb+UxvoNbCW0f32j2TXZfWROF6WOU=;
- b=wQcNqSPt3un/SFnjVAa31fQz96RT7o9DQae9fSat3t0t/AzLXIveQo+G+ZYcObwXio
- TzNFPYVZSvzrZ0+CAR520JWOP+gVTfbFRTVbndBFXFb5/gfuHu0/oeseknsKBEZx0XZI
- vrnY2wRxCyEdWo5qkkjEhFfo86cThDcEzJMdWh+jBnlfDE8pxCMOEh51rqyBU4cnr5fr
- 7ugYPD/fNNTEfO3AgHkd33H75CdBtqTyEQq883ijYNvX5fGeg4v0O/orvtT/j2WXxOuS
- SjKzam2NZbErqz41zLUKW1Z0cvl1AC2I1xkPyQeGsjR5EIKPAk60qMksry64/x/IKAtO
- fkVg==
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1uiXs6-0007Ws-KL
+ for qemu-arm@nongnu.org; Sun, 03 Aug 2025 08:31:26 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1uiXs4-0007s4-8g
+ for qemu-arm@nongnu.org; Sun, 03 Aug 2025 08:31:26 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1754224281;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=pYG0zn0eu35RTJiu0y1wMB/J9vN8Pa5vh1SY2uLhDOs=;
+ b=MWCKM1OTjrDfdzNiAC/jR4hBF7Fk1tY2fwQWRMDKw9GrTe+w6p9tSKR3Eq92PAUFEWO+P0
+ w9g53pzSWeP0J/BPrdbW/yQ+6czZxEpYMwTHjqeWVduBqVe6jIahv8c/KUBviGfE4DUnd/
+ VVgOPok9H7bmaKc0Fbx8rA54NQmf1Gc=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-433-iYAq320BPpmmjIfXxusf5g-1; Sun, 03 Aug 2025 08:31:20 -0400
+X-MC-Unique: iYAq320BPpmmjIfXxusf5g-1
+X-Mimecast-MFC-AGG-ID: iYAq320BPpmmjIfXxusf5g_1754224279
+Received: by mail-wr1-f70.google.com with SMTP id
+ ffacd0b85a97d-3b8d62a680bso1102524f8f.0
+ for <qemu-arm@nongnu.org>; Sun, 03 Aug 2025 05:31:20 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1754185261; x=1754790061;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=wMxc6fiRC/TSWaDb+UxvoNbCW0f32j2TXZfWROF6WOU=;
- b=a/N+YDeGjWV5RyUMZR1ouH+HPd/EGigH79YiXLKNHySy0mRWR6OOuLjUs1HcqE4uks
- M21j0wAf9xjP3qot6FapjBs/AY1DGJ7/PGdlFQ1tvDJ4ZiAGscrZm3Xti3IupXT69Y7/
- OP4xNul3HOhPm0KSMdMJbPSaM2jZPbSpos2gvpAyiwBfkSydBP1hGUWATIbBtlsCfroJ
- NvB+9nVAc6akl5uxRykVx8xtgOWa/FWU+47GXLExxS5nadBj5rKK4UIUCXF0eMm8Zc5i
- d/vys8C6erwIKlWhYJZsEN5K8j2gRnrQxuU0Fw4lPl4OdSpPeC5nXLPeIwdFQy6PY9Hv
- PHNg==
-X-Gm-Message-State: AOJu0YyWaz1vNRcO7mzuT9Y27WTEjR3K0lhmuQspw8mpkq5/0P/6x2NC
- vufI7pbRiwh1sX5wGnKH0cMbWkEw6Omb11b/jBS9ur005GbCc8gC9lWlsVCWkTz+k1o=
-X-Gm-Gg: ASbGncuW+eUaM5ouyKe/XhnXlMPlIbiQvDRuOdM0qkmAUkIh8X/TagOkyZUmjVGOiJ+
- DIkzD0SeOJ8KB2yxfdxTZ5J/MFFDGxJaf9k0mnrOQzjq7q50zTXrKY2jkfrQX7f93PKn6ul09pa
- uHgQf2W2Ay67lynwfLPBYq7g1kOj1/uEA+H8bwolDBsF7NddYb6WXZ0aueyaIfAzBnNvsreP31R
- pme/RI2hCsWu3cEAfwF7leQzk0Uo5R64Q6cHOWTxLsIDEqz3S9osREX9vxvV/lGPQkrUY3mY7az
- LyW/1wRBYiETCNlhuhat/tmuAWAkpE/brrksj7TBs/jQze5QCRqNUPlmgGiz1VZBVLC/4bjLLhe
- 9yr1gtDxqSb8tvYd3PzP1fhlXsBliltt8KJBam6D+sGiFmaC6IrK3M3uwg0xYFFM=
-X-Google-Smtp-Source: AGHT+IE7LTXFZXxRSjSbqziM+GlJjcZbOlYWM91f63DAI3WlHcfiFrh6LoDq8hABhe/qIFUDdsLsXg==
-X-Received: by 2002:a25:7e07:0:b0:e8e:1983:668a with SMTP id
- 3f1490d57ef6-e8fd5308f2dmr10188122276.1.1754185261473; 
- Sat, 02 Aug 2025 18:41:01 -0700 (PDT)
-Received: from stoup.. ([172.58.111.133]) by smtp.gmail.com with ESMTPSA id
- 00721157ae682-71b5a6031a1sm18753227b3.86.2025.08.02.18.40.58
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 02 Aug 2025 18:41:01 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org
-Subject: [PATCH 08/11] target/arm: Implement CB, CBB, CBH
-Date: Sun,  3 Aug 2025 11:40:16 +1000
-Message-ID: <20250803014019.416797-9-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250803014019.416797-1-richard.henderson@linaro.org>
-References: <20250803014019.416797-1-richard.henderson@linaro.org>
+ d=1e100.net; s=20230601; t=1754224279; x=1754829079;
+ h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=pYG0zn0eu35RTJiu0y1wMB/J9vN8Pa5vh1SY2uLhDOs=;
+ b=mIYJNwIvYV56cxLgVkJ01PNT4+HXEo6Y/+HOkiQQO9pc/Yb3hjrM7VLAHahOHm3U7z
+ CmSwM0ztnd2spmf/utX6uvPb3trWdSUhEaDPPAMxZ2kuUBmQevasQcRu8wtKMxVUepzu
+ 51ABzfaqr6dPbKA6XhucVlmYP5J6tGssbxyr7foGn4gde9jzqtTBOy6KeIlYgX45exof
+ rMfAIaB81qPB8L3KGRdsqyCyCmqI/3cGdjRu+z4o6bwQxufHzApSVn2FpROk6yihKusJ
+ QnrxEsfY7AWpLxYIXJw/c769pGo5WjNuHgVBPcAWpoNfkHryuOwe+BTgUTnlCnXZJ2jf
+ 5XOQ==
+X-Gm-Message-State: AOJu0YwyBO422SQemxhvdeWoVtk2bdTauLgPHetr4x1apgO2L+L54Fk2
+ stqeGqvc45bw2t/MuUT5OnyVGxAdtIN7sDdMnHeDfRTeCtR9SXmFewKmCRYxNWVhLy+0AyluY31
+ kDVbLYaFYaVIxqQkLyrTkFtX3Juru8pxmd6GEjYNAcpH/bm6EJHU7fQ==
+X-Gm-Gg: ASbGncv+rY38qvFoA623fqqYpOQGR7NDNeR34sdHVFtehNNA217vmKFIUqobSJOriEd
+ QESKEjdzUnNymjyaLhAxe/u8/wxBLwdMprIuhXpQvvhK4pQMs1T9j+36p3oAShpU4tN6e0NGV5o
+ VsRXuqleGkFVEC3g/CnD3SenZgcIDxZxPeFum74rV+2yf1tCwtxeGxOpvAjA3y/ON3BVcssZCeG
+ dRlqVs9HfzQf5y8sY8AlsIIXaJawwF3aR9sJ5ymRpIV2o3TAcb0RKjoQ/roovdhZrbNBQ0nYksd
+ XJEhSFfpWUCZOhLH6fWbbcVpjnojS6Y8fn8bIGQt7+wy
+X-Received: by 2002:a5d:64ed:0:b0:3b7:590d:ac7d with SMTP id
+ ffacd0b85a97d-3b8d9561d86mr4966346f8f.1.1754224278977; 
+ Sun, 03 Aug 2025 05:31:18 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHPJMb4WPlVrMsdcTmVdaJdH7TwDWjf5gAW8kmkLYYvox4fRs3exgsI+oVENqwML+Lek5HPqA==
+X-Received: by 2002:a5d:64ed:0:b0:3b7:590d:ac7d with SMTP id
+ ffacd0b85a97d-3b8d9561d86mr4966329f8f.1.1754224278601; 
+ Sun, 03 Aug 2025 05:31:18 -0700 (PDT)
+Received: from [192.168.10.48] ([151.49.253.173])
+ by smtp.googlemail.com with ESMTPSA id
+ ffacd0b85a97d-3b79c48a05bsm12221985f8f.69.2025.08.03.05.31.17
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 03 Aug 2025 05:31:17 -0700 (PDT)
+Message-ID: <c101dbc2-9431-4633-8a91-d5d85ce02082@redhat.com>
+Date: Sun, 3 Aug 2025 14:31:16 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b29;
- envelope-from=richard.henderson@linaro.org; helo=mail-yb1-xb29.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 08/11] target/arm: Implement CB, CBB, CBH
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org
+References: <20250803014019.416797-1-richard.henderson@linaro.org>
+ <20250803014019.416797-9-richard.henderson@linaro.org>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Autocrypt: addr=pbonzini@redhat.com; keydata=
+ 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
+In-Reply-To: <20250803014019.416797-9-richard.henderson@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: Nl5-Lda7zueyieSjajUKTr9ynFt2o8Td0n3gzifO7ck_1754224279
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=pbonzini@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=-1, RCVD_IN_MSPIKE_WL=-0.01,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -98,102 +149,32 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Compare and branch instructions, with various operand widths.
+On 8/3/25 03:40, Richard Henderson wrote:
+> +static bool do_cb_cond(DisasContext *s, int cc, int imm,
+> +                       int rt, int rm, MemOp mop)
 
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/tcg/translate-a64.c | 60 ++++++++++++++++++++++++++++++++++
- target/arm/tcg/a64.decode      |  5 +++
- 2 files changed, 65 insertions(+)
+This is a memop...
 
-diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-index 0c78d4bb79..f3970ac599 100644
---- a/target/arm/tcg/translate-a64.c
-+++ b/target/arm/tcg/translate-a64.c
-@@ -1706,6 +1706,66 @@ static bool trans_B_cond(DisasContext *s, arg_B_cond *a)
-     return true;
- }
- 
-+static bool do_cb_cond(DisasContext *s, int cc, int imm,
-+                       int rt, int rm, MemOp mop)
-+{
-+    static const TCGCond cb_cond[8] = {
-+        [0] = TCG_COND_GT,
-+        [1] = TCG_COND_GE,
-+        [2] = TCG_COND_GTU,
-+        [3] = TCG_COND_GEU,
-+        [4] = TCG_COND_NEVER,  /* reserved */
-+        [5] = TCG_COND_NEVER,  /* reserved */
-+        [6] = TCG_COND_EQ,
-+        [7] = TCG_COND_NE,
-+    };
-+    TCGCond cond = cb_cond[cc];
-+    TCGv_i64 t, m;
-+
-+    if (!dc_isar_feature(aa64_cmpbr, s) || cond == TCG_COND_NEVER) {
-+        return false;
-+    }
-+
-+    t = cpu_reg(s, rt);
-+    m = cpu_reg(s, rm);
-+    if (mop != MO_64) {
-+        TCGv_i64 tt = tcg_temp_new_i64();
-+        TCGv_i64 tm = tcg_temp_new_i64();
-+
-+        if (is_signed_cond(cond)) {
-+            mop |= MO_SIGN;
-+        }
-+        tcg_gen_ext_i64(tt, t, mop);
-+        tcg_gen_ext_i64(tm, m, mop);
-+        t = tt;
-+        m = tm;
-+    }
-+
-+    reset_btype(s);
-+    DisasLabel match = gen_disas_label(s);
-+
-+    tcg_gen_brcond_i64(cond, t, m, match.label);
-+    gen_goto_tb(s, 0, 4);
-+    set_disas_label(s, match);
-+    gen_goto_tb(s, 1, imm);
-+    return true;
-+}
-+
-+static bool trans_CB_cond(DisasContext *s, arg_CB_cond *a)
-+{
-+    return do_cb_cond(s, a->cc, a->imm, a->rt, a->rm, a->sf ? 64 : 32);
-+}
-+
-+static bool trans_CBB_cond(DisasContext *s, arg_CBB_cond *a)
-+{
-+    return do_cb_cond(s, a->cc, a->imm, a->rt, a->rm, 8);
-+}
-+
-+static bool trans_CBH_cond(DisasContext *s, arg_CBH_cond *a)
-+{
-+    return do_cb_cond(s, a->cc, a->imm, 16, a->rt, a->rm);
-+}
-+
- static void set_btype_for_br(DisasContext *s, int rn)
- {
-     if (dc_isar_feature(aa64_bti, s)) {
-diff --git a/target/arm/tcg/a64.decode b/target/arm/tcg/a64.decode
-index 766c610c01..fa94631123 100644
---- a/target/arm/tcg/a64.decode
-+++ b/target/arm/tcg/a64.decode
-@@ -208,6 +208,11 @@ TBZ             . 011011 nz:1 ..... .............. rt:5 &tbz  imm=%imm14 bitpos=
- # B.cond and BC.cond
- B_cond          0101010 0 ................... c:1 cond:4 imm=%imm19
- 
-+%imm9           5:s9   !function=times_4
-+CB_cond         sf:1 1110100 cc:3 rm:5 00 ......... rt:5    imm=%imm9
-+CBB_cond        0    1110100 cc:3 rm:5 10 ......... rt:5    imm=%imm9
-+CBH_cond        0    1110100 cc:3 rm:5 11 ......... rt:5    imm=%imm9
-+
- BR              1101011 0000 11111 000000 rn:5 00000 &r
- BLR             1101011 0001 11111 000000 rn:5 00000 &r
- RET             1101011 0010 11111 000000 rn:5 00000 &r
--- 
-2.43.0
+> +static bool trans_CB_cond(DisasContext *s, arg_CB_cond *a)
+> +{
+> +    return do_cb_cond(s, a->cc, a->imm, a->rt, a->rm, a->sf ? 64 : 32);
+> +}
+> +
+> +static bool trans_CBB_cond(DisasContext *s, arg_CBB_cond *a)
+> +{
+> +    return do_cb_cond(s, a->cc, a->imm, a->rt, a->rm, 8);
+> +}
+
+... but these use bits
+
+> +static bool trans_CBH_cond(DisasContext *s, arg_CBH_cond *a)
+> +{
+> +    return do_cb_cond(s, a->cc, a->imm, 16, a->rt, a->rm);
+> +}
+> +
+
+... and this one also has arguments in the wrong order.
+
+Paolo
 
 

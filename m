@@ -4,116 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F224C87FCA
-	for <qemu-arm@archiver.kernel.org>; Sun,  3 Aug 2025 16:52:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 496A9C87FDA
+	for <qemu-arm@archiver.kernel.org>; Sun,  3 Aug 2025 20:29:26 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uibwv-0001dm-Tf; Sun, 03 Aug 2025 12:52:41 -0400
+	id 1uifKP-0003Ij-Pe; Sun, 03 Aug 2025 16:29:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uibtm-000872-DQ
- for qemu-arm@nongnu.org; Sun, 03 Aug 2025 12:49:32 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uibtg-0003Ih-FH
- for qemu-arm@nongnu.org; Sun, 03 Aug 2025 12:49:23 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1754239756;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=bldPOmhW+tpVLm4p4wnYqA2Lty4/GhuNrJNOHtese9k=;
- b=XuDI0P2S8V332TBAxNOEDeBObbPNzoTkIbhrSoLD3PvhRphgK9JCCufC+WzuGkpK+KbrTr
- 5oxpDp9KbKUzfNA/Vvk/y1QJSLZ3mYByqNB2Lyf1NjYMocsCuPFGs0azuICMLaIKvSNAxP
- 5IZAKJmUV3fxpyocO4rNu/HDMv4WYBE=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-317-8yzweqGFP7CBLuCcTiQanQ-1; Sun, 03 Aug 2025 12:49:13 -0400
-X-MC-Unique: 8yzweqGFP7CBLuCcTiQanQ-1
-X-Mimecast-MFC-AGG-ID: 8yzweqGFP7CBLuCcTiQanQ_1754239752
-Received: by mail-wr1-f70.google.com with SMTP id
- ffacd0b85a97d-3b79c28f8ceso2699803f8f.3
- for <qemu-arm@nongnu.org>; Sun, 03 Aug 2025 09:49:13 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1uifK6-0003Bf-6o
+ for qemu-arm@nongnu.org; Sun, 03 Aug 2025 16:28:55 -0400
+Received: from mail-pf1-x42c.google.com ([2607:f8b0:4864:20::42c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1uifK4-00005W-LQ
+ for qemu-arm@nongnu.org; Sun, 03 Aug 2025 16:28:49 -0400
+Received: by mail-pf1-x42c.google.com with SMTP id
+ d2e1a72fcca58-76a3818eb9bso2089457b3a.3
+ for <qemu-arm@nongnu.org>; Sun, 03 Aug 2025 13:28:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1754252927; x=1754857727; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=FUCui5stuYhzGDKnvafV04f2kDXoqo1oZdCyKJNvZOU=;
+ b=FJFv0o07YTiQuIvArHM8odAmE4bSe8r+3Jx9NvluNedfByamHg5j6tWNhNiIIB/Iij
+ 0L9q/WIcW10TvLvTCZBtGcqYjRiFb5YrRax7FISU4JUMHgWCRnydU9dzpLVzYNOHD/Cd
+ i3rYK9cTvj9RRCxFeFwfH8fXn7YZ3Vy7add4erS/yzpL0DH5tur/JFkDNFpMo1Lepop5
+ BtWjJw5XCp/ddvCl94atDKO9AVhX/s2+ZQaP8nBBKuJCLNovINWZguFIYR7Cd99pfPjr
+ qZbsCFrYMsI2ddFxQ1ulVE7dkYUsU2h/GVEQel+t1VVZjNJ/bneoekbvMjOoXZyBvEeh
+ 6QCw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1754239752; x=1754844552;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=bldPOmhW+tpVLm4p4wnYqA2Lty4/GhuNrJNOHtese9k=;
- b=W0yuDZuMQJW/IBW5iA3dsW3mGuB53jz8LZjk7DLLsHLSUVBvMVmL+dzg+xSDKPqx79
- DbZEkujvZA25hYKoqxucOdWcjvDxfpK43SukuVQTtVL43j/RRwT4hgyxvcYy/3c5sxhQ
- cRq51FTt/JtkQlQfOtVudzNNZLChGsB6eMM7Y0VAbUUuFA20bV0qrsIpYbHUKo7j5H2O
- A4WTVuphN8ZKbv2zdYp+VYXsQ0XtOZHwPKdH8AbFUfNFOw3ST3sHAokK6SX2HxR/5BOK
- R7kAXxwuTcLnBKBaiYbPANT1xBys43ksXsZVeWJ+bXRJBN1QKXm5/194udfiPJ67dq3v
- NXGw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVwU8d9GxMqH2ZusC4eYHbPMbLioN2dlc7S+zO61gzGWMKmtoNYRLwsJtpexQR9tyGuhc7bWY5loQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yzex3UEISIcm1xldaChieIncCnQcnrKnK/ousRMSEQ4C58YBsiL
- JTFxU+nLoMeMoAt9/BNnZBB2bLGFBjOT74TTWpv7MLHdTMUfiFwUSgR4B10i/dLHPc/7KQvvMNs
- VRZOSuo9xrNN5bPqdxSg6ZvaUsPO1zMtgOvaGGXwfmN6BB0F7dNOSEw==
-X-Gm-Gg: ASbGnctwysnFSpW5LuOl7a3zbXxzmV9io2sOLpbGDbKk8e41sEFUWIdpKqe5OPINE1G
- De44uWLi2J+4WUtvjEhPsP+D3fxlKOMyGAjrWZSPNZx1eL9a7N2dD00/cmN2NqpEZM1KSwK2jve
- ABJT4567uEskwnAgHc2Yr6bVl2O5GH+xgv3vB+BbE5lOaUU6XPFS75hPDouuQdcISpPFOWymBS+
- nZH7jum/8FKF7FZJ2GngMDmJfWIe+tpAhA+ywptio/yoRV5PDw0kbGlPYgBO89gloe6YW541S6M
- KqzkD9rwqRgrDtryWqr/OmD+nVWLlMnnCVOkTSR+v2EmA0LxtbWYzXVXkyAC54oTwevnYmoAKJT
- 0ej3bnUK4e2Q=
-X-Received: by 2002:a5d:64cb:0:b0:3b7:83c0:a9ab with SMTP id
- ffacd0b85a97d-3b8d94ce6damr5104628f8f.55.1754239752155; 
- Sun, 03 Aug 2025 09:49:12 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEgue15/fVGcaS5KxenImh/2PbNT+qmScxmhnHLAoXI1EfKWBFLhVfvKMlo1ntzZOOECwIKrA==
-X-Received: by 2002:a5d:64cb:0:b0:3b7:83c0:a9ab with SMTP id
- ffacd0b85a97d-3b8d94ce6damr5104610f8f.55.1754239751650; 
- Sun, 03 Aug 2025 09:49:11 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ d=1e100.net; s=20230601; t=1754252927; x=1754857727;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=FUCui5stuYhzGDKnvafV04f2kDXoqo1oZdCyKJNvZOU=;
+ b=YXUCZ2jlm0VMf9j3Z/asUa5J6z4uOd6Et3ObAmBgmdLM/fTCR/4qYg3EuOdRAnfN8j
+ Rn9farZpo7nxvqIJvDWOt0226ctv4oXZLsMmrpf2poA1DmTNdTN/zSQst7B9SggrgoMk
+ 5sRVdkKOyVU2DcBRl3DAAzc8akZCQkjHV4OtVYXvEpIBwb9fo6t7TUAAl/ES+Cj85Q/q
+ OmEhw0VJ5aU+CWWnSXbCRpOB+Bu8Yw6ELkLd3H2OkhmOSwI3vtjZMmls+C/pJRBXhSRm
+ Jnh8SdE62MS2F+fp/cLk4045cEY394J7p4omTzxxwO/1IFwacweBO7JdvTBlcjbmGuPb
+ REXQ==
+X-Gm-Message-State: AOJu0Yx7ZXZNkLeBl4XFB2iHPwqsDuZg6Q2J2YzxdahGIDNFSpss1k+A
+ vmBHa0dogZQgEI8cYCBGvandmpFkAuOcEziwpE7cB/xFI5nGLw5tYldnN44f08mzFDU=
+X-Gm-Gg: ASbGncsbD8fhJ/NEhuBZ4lHhE/+ye9Bdzd3h1d6lZvba+8IzQejMx5iuE7CxiBz1VxL
+ 5VUK26zBNwJ25ZS5joVHqG46B2zfSlGXoi6EfZbM7ruuA4VpU4MDCy0mn2xBDJ7QR3X0utPRir2
+ VX+VRogwYUTGaaMFJa8gTsyNiIfT2elMHNrI6e3/WcPqVhPrYzB0bhSAmzNTLvdxSgcgVmArFGl
+ +aLv8AFa/b3sp7Fx+X82+ElJ+16wMdznD5+DZTWMwTmu3X2QLExAJHtJ0OG369f4/6HvdhpJwXX
+ RkOYNujrIMrKDUndgck7P/nv4nD0rUwV2XPQtdsU33Yvl7k64klhe+EOAJAzHKWB3Fm+YIGirgX
+ S9YQJaHKqru/pi5Le6nwr9I2iVBqj2TpMp+H6NpdoyppmghpsABc=
+X-Google-Smtp-Source: AGHT+IG7rTMq8lUncssGn/rlsAtbF2eEeDcdxlEVQZtIC/aUq0cJ5MNNq5gFI00QaegRw52ALFL0UA==
+X-Received: by 2002:a05:6a20:7d86:b0:233:c703:d4bf with SMTP id
+ adf61e73a8af0-23df8fd290cmr9535122637.19.1754252926709; 
+ Sun, 03 Aug 2025 13:28:46 -0700 (PDT)
+Received: from [192.168.4.112] ([180.233.125.160])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3b79c453328sm13272666f8f.46.2025.08.03.09.49.09
+ 41be03b00d2f7-b422b77f33asm7585125a12.5.2025.08.03.13.28.44
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 03 Aug 2025 09:49:10 -0700 (PDT)
-Message-ID: <2f2bc1e5-22fd-4cea-82fa-6be6bc82ad2c@redhat.com>
-Date: Sun, 3 Aug 2025 18:49:08 +0200
+ Sun, 03 Aug 2025 13:28:46 -0700 (PDT)
+Message-ID: <2a2e6a67-07d5-4bf5-87c6-282867076201@linaro.org>
+Date: Mon, 4 Aug 2025 06:28:41 +1000
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v7 09/36] hw/pci-host/gpex-acpi: Use
- build_pci_host_bridge_osc_method
-To: "Michael S. Tsirkin" <mst@redhat.com>
-Cc: Michael Tokarev <mjt@tls.msk.ru>, eric.auger.pro@gmail.com,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
- imammedo@redhat.com, Jonathan.Cameron@huawei.com, gustavo.romero@linaro.org,
- anisinha@redhat.com, shannon.zhaosl@gmail.com,
- Gerd Hoffmann <kraxel@redhat.com>, pbonzini@redhat.com, philmd@linaro.org,
- alex.bennee@linaro.org
-References: <20250714080639.2525563-1-eric.auger@redhat.com>
- <20250714080639.2525563-10-eric.auger@redhat.com>
- <ddf6f9e3-daaa-4ea1-a5e6-d402a75524c8@tls.msk.ru>
- <914677f4-07ba-45fe-9dc2-dea40940e789@tls.msk.ru>
- <53971ad6-9f50-45b0-80c4-eeedb24e53db@redhat.com>
- <20250801082904-mutt-send-email-mst@kernel.org>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20250801082904-mutt-send-email-mst@kernel.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: eAwqOAoIA1mQEQ-EIPjAcRWyIOU1Rd_XOnXkc54Hyos_1754239752
-X-Mimecast-Originator: redhat.com
+Subject: Re: [PATCH 08/11] target/arm: Implement CB, CBB, CBH
+To: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org
+References: <20250803014019.416797-1-richard.henderson@linaro.org>
+ <20250803014019.416797-9-richard.henderson@linaro.org>
+ <c101dbc2-9431-4633-8a91-d5d85ce02082@redhat.com>
+From: Richard Henderson <richard.henderson@linaro.org>
 Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <c101dbc2-9431-4633-8a91-d5d85ce02082@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=-1, RCVD_IN_MSPIKE_WL=-0.01,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42c;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42c.google.com
+X-Spam_score_int: 12
+X-Spam_score: 1.2
+X-Spam_bar: +
+X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -126,120 +100,40 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Michael,
+On 8/3/25 22:31, Paolo Bonzini wrote:
+> On 8/3/25 03:40, Richard Henderson wrote:
+>> +static bool do_cb_cond(DisasContext *s, int cc, int imm,
+>> +                       int rt, int rm, MemOp mop)
+> 
+> This is a memop...
+> 
+>> +static bool trans_CB_cond(DisasContext *s, arg_CB_cond *a)
+>> +{
+>> +    return do_cb_cond(s, a->cc, a->imm, a->rt, a->rm, a->sf ? 64 : 32);
+>> +}
+>> +
+>> +static bool trans_CBB_cond(DisasContext *s, arg_CBB_cond *a)
+>> +{
+>> +    return do_cb_cond(s, a->cc, a->imm, a->rt, a->rm, 8);
+>> +}
+> 
+> ... but these use bits
+> 
+>> +static bool trans_CBH_cond(DisasContext *s, arg_CBH_cond *a)
+>> +{
+>> +    return do_cb_cond(s, a->cc, a->imm, 16, a->rt, a->rm);
+>> +}
+>> +
+> 
+> ... and this one also has arguments in the wrong order.
 
-On 8/1/25 2:29 PM, Michael S. Tsirkin wrote:
-> On Mon, Jul 28, 2025 at 04:56:37PM +0200, Eric Auger wrote:
->> Hi Michael,
->>
->> On 7/28/25 11:07 AM, Michael Tokarev wrote:
->>> On 27.07.2025 14:48, Michael Tokarev wrote:
->>>> On 14.07.2025 11:04, Eric Auger wrote:
->>>>> gpex build_host_bridge_osc() and x86 originated
->>>>> build_pci_host_bridge_osc_method() are mostly identical.
->>>>>
->>>>> In GPEX, SUPP is set to CDW2 but is not further used. CTRL is
->>>>> same as Local0.
->>>>>
->>>>> So let gpex code reuse build_pci_host_bridge_osc_method() and remove
->>>>> build_host_bridge_osc().
->>>>>
->>>>> Also add an imply ACPI_PCI clause along with
->>>>> PCI_EXPRESS_GENERIC_BRIDGE to compile hw/acpi/pci.c when its
->>>>> dependency is resolved (ie. CONFIG_ACPI_PCI). This is requested
->>>>> to link qemu-system-mips64el.
->>>> This patch somehow broke microvm-only build which is used by debian.
->>>>
->>>> configure options used (trimmed a bit):
->>>>
->>>> ../configure \ --without-default-features \ --target-list=x86_64-
->>>> softmmu \ --enable-kvm --disable-tcg \ --enable-pixman \ --enable-
->>>> vnc \ --audio-drv-list="" \ --without-default-devices \ --with-
->>>> devices-x86_64=microvm \ --enable-vhost-user
->>>>
->>>> configs/devices/x86_64-softmmu/microvm.mak: ---- cut ---- # see
->>>> configs/devices/i386-softmmu/default.mak # for additional devices
->>>> which can be disabled # CONFIG_PCI_DEVICES=n
->>>>
->>>> CONFIG_MICROVM=y
->>>>
->>>> CONFIG_VIRTIO_BLK=y CONFIG_VIRTIO_SERIAL=y CONFIG_VIRTIO_INPUT=y
->>>> CONFIG_VIRTIO_INPUT_HOST=y CONFIG_VHOST_USER_INPUT=y
->>>> CONFIG_VIRTIO_NET=y CONFIG_VIRTIO_SCSI=y CONFIG_VIRTIO_RNG=y
->>>> CONFIG_VIRTIO_CRYPTO=y CONFIG_VIRTIO_BALLOON=y CONFIG_VIRTIO_GPU=y
->>>> CONFIG_VHOST_USER_GPU=y ---- cut ----
->>>>
->>>> The result: FAILED: qemu-system-x86_64 cc -m64 @qemu-system-
->>>> x86_64.rsp /usr/bin/ld: libsystem.a.p/hw_pci-host_gpex-acpi.c.o: in
->>>> function `acpi_dsdt_add_host_bridge_methods': hw/pci-host/gpex-
->>>> acpi.c:83:(.text+0x274): undefined reference to
->>>> `build_pci_host_bridge_osc_method' collect2: error: ld returned 1
->>>> exit status
->>> In hw/i386/Kconfig, MICROVM selects ACPI_HW_REDUCED (not ACPI or
->>> ACPI_PCI), *and* PCI_EXPRESS_GENERIC_BRIDGE.  But in hw/pci/meson.build,
->>> pci.c (where the function in question is defined) is built when
->>> ACPI_PCI is enabled.  Something's not right here.
->> This commit added an imply ACPI_PCI to the PCI_EXPRESS_GENERIC_BRIDGE
->> config in hw/pci-host/Kconfig:
->>
->> config PCI_EXPRESS_GENERIC_BRIDGE
->>     bool
->>     select PCI_EXPRESS  -> selects PCI
->>     imply ACPI_PCI
->>
->> In hw/acpi/Kconfig we have:
->>
->> config ACPI_PCI
->>     bool
->>     depends on ACPI && PCI
->>
->> ACPI is selected by ACPI_HW_REDUCED
->>
->> config ACPI_HW_REDUCED
->>     bool
->>     select ACPI
->>     select ACPI_MEMORY_HOTPLUG
->>     select ACPI_NVDIMM
->>
->> so logically the ACPI && PCI dependencies for ACPI_PCI should be
->> resolved. What do I miss?
->> regards
->>
->> Eric
->>
->
-> Not sure I get what are you proposing?
-I have not proposed anything ;-) - sorry I am on vacation - I was trying
-to enumerate the various config settings and to me dependencies should
-be resolved so I fail to understand. Unfortunately I cannot test because
-the problem happens with a custom microvm.mak. I would need this latter
-to reproduce and try to fix.
+Gah.  Thanks.  I've reorganized the code to avoid this entirely.
 
-if the microvm.mak selects PCI_EXPRESS_GENERIC_BRIDGE (which selects
-PCI_EXPRESS which itself selects PCI) and ACPI_HW_REDUCED (which selects
-ACPI), the imply ACPI_PCI should end up as a selection because PCI and
-ACPI are resolved. At least that's my understanding. Reading it again,
-please can you check whether ACPI_HW_REDUCED is selected *before*
-PCI_EXPRESS_GENERIC_BRIDGE in the custom microvm.mak. Depending on the
-order of dependency resolution it might make a difference. Otherwise
-please can you send the full microvm.mak and configure command so that I
-can try reproducing. Thanks Eric
->
->>
->>
->>
->>
->>
->>
->>> Addig kraxel for 24db877ab6e6 "microvm: add pcie support".
->>>
->>> Thanks
->>>
->>> /mjt
->>>
+Now to fix a gcc crash when emitting code for cmpbr...  :-)
 
+
+r~
 

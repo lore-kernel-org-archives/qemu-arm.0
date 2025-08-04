@@ -4,217 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7AD3C87FCF
-	for <qemu-arm@archiver.kernel.org>; Mon,  4 Aug 2025 15:57:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ECAEAC87FCF
+	for <qemu-arm@archiver.kernel.org>; Mon,  4 Aug 2025 15:58:36 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uixYq-00066G-R9; Mon, 04 Aug 2025 11:57:16 -0400
+	id 1uixYi-0004q3-EZ; Mon, 04 Aug 2025 11:57:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <steven.sistare@oracle.com>)
- id 1uiw6y-0005gw-1p; Mon, 04 Aug 2025 10:24:29 -0400
-Received: from mx0a-00069f02.pphosted.com ([205.220.165.32])
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1uiw6h-0005WK-To
+ for qemu-arm@nongnu.org; Mon, 04 Aug 2025 10:24:22 -0400
+Received: from p-east3-cluster7-host5-snip4-5.eps.apple.com ([57.103.84.176]
+ helo=outbound.qs.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <steven.sistare@oracle.com>)
- id 1uiw6f-0000OB-Mq; Mon, 04 Aug 2025 10:24:19 -0400
-Received: from pps.filterd (m0333521.ppops.net [127.0.0.1])
- by mx0b-00069f02.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 574D6m6j021877;
- Mon, 4 Aug 2025 14:23:56 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=cc
- :content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=
- corp-2025-04-25; bh=RXEvZ5LmmfQ+eD0D+ElyswX46YmPSnKdjl3JRzyT/5M=; b=
- LclgiH0JVheyUgEhlO9c5KCRnVUhuKRTVcheV25EWe4FGgI9SbE7SIY/y7FlXmpk
- pX9qBpy+UPqfx3lx/UaLGwkAfvM6jRc6EPndDDPwqTcH78+2effjxNvL/AAZ0Qkg
- Kg3fXxT+/PbNgN/WTJHWceifw6B00DlLoUMX0emkp/Hp4D9KqvXGymERKXE9byX+
- 2zoG7/42ZXcfYBAHp/3acvKrNm1c7+Qx9fJSYT3WiHam8y04PIb/11duz1rwknG3
- itb70y6rmD2V9uUcnjjx8YCestVeU7UsCHiswDkxHto4SHKs/9lJHo60PjGbdBtP
- oozts440728kNOMH+qJTtA==
-Received: from phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com
- (phxpaimrmta03.appoci.oracle.com [138.1.37.129])
- by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 4899kfat1m-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 04 Aug 2025 14:23:56 +0000 (GMT)
-Received: from pps.filterd
- (phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
- by phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com (8.18.1.2/8.18.1.2)
- with ESMTP id 574EMeRK032075; Mon, 4 Aug 2025 14:23:55 GMT
-Received: from nam12-dm6-obe.outbound.protection.outlook.com
- (mail-dm6nam12on2040.outbound.protection.outlook.com [40.107.243.40])
- by phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTPS id
- 48a7jupa9s-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 04 Aug 2025 14:23:54 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=PIU1AlZE6qJlUAlcVwYgWEu4bjPV+pIu79OxZtAYfrxrCS/TPtJXQb+CaBuEN5A8oImOb+ksD1dEr4TT+H9Qe7b5pxNTix292/RmNhKza6WHFNzUzAznb7yVX4la7h+7sIASvamgT2AvJsV3dIhKrE8OClGxe7dwEjjoINlDVITLMvNkwd2n1JT4gA9tg8MidN4fbqemxOWhhZOSGmdlzIvGnY/u/NEAfa0XH1b0n5GsDRJw8l2RooQsWqIXmjivDm93EAmKuwOEuaO4Cf5Hdxa+Zw3f28MOCv1MSmOLTiC9shBacPa5EgLwKykmcWHuSOjPLZpJ6zCSVtaZ5uIjSA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=RXEvZ5LmmfQ+eD0D+ElyswX46YmPSnKdjl3JRzyT/5M=;
- b=sGQk21cbFpyfHoHeQGKLUFQfuj5sJHY+aKUe/NcuqzEUxnyww9PUc1FO2rUY4dKo6L01kb14oNFeblYbp0EO5efCVed61nWWVaWFUaw2sjE4gbQOV6QOLlWpMCkWqtnPVSxJJJJd3FaIqOgX4nE5vpryQik2PvziQVB6QD511wB7uAF8jBtiKx7lUy/GIzIbI4PyXuAr7neWRz0+rB9zZIcadZiwT+/7lmcCZqpffbwr4quTwYH6oZgNTYprnZ/V8yy9L72QmhO/0XoRxIY/+OvEgplnnYAa9QPmxt2JC6FRnNvdugl7zrwdZBCyW5AWHhL4ZMoo+7kkfv7J4hbV7w==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
- dkim=pass header.d=oracle.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=RXEvZ5LmmfQ+eD0D+ElyswX46YmPSnKdjl3JRzyT/5M=;
- b=ohiW82no6+/ak+diXTdwKDW9r2DAMXxusFruDLdyBbSvmJ6RAQDRl6gh1EfJgdZhhjyh+MXFXjG7WzGn2OAksgCESH/J3KPWIYTWNpZggtJXyCikO8KoFPiHQx6lP6u902zyc4Y/dTUryE5cmyzAd47l1Tp3jRnRWZsx/zP6ozA=
-Received: from IA1PR10MB7447.namprd10.prod.outlook.com (2603:10b6:208:44c::10)
- by BN0PR10MB4933.namprd10.prod.outlook.com (2603:10b6:408:125::7)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8989.21; Mon, 4 Aug
- 2025 14:23:42 +0000
-Received: from IA1PR10MB7447.namprd10.prod.outlook.com
- ([fe80::f2fe:d6c6:70c4:4572]) by IA1PR10MB7447.namprd10.prod.outlook.com
- ([fe80::f2fe:d6c6:70c4:4572%7]) with mapi id 15.20.8989.018; Mon, 4 Aug 2025
- 14:23:41 +0000
-Message-ID: <63d52f3e-5d29-45be-986c-3827a5c0cb5c@oracle.com>
-Date: Mon, 4 Aug 2025 10:23:37 -0400
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH V2 1/1] hw/intc/arm_gicv3_kvm: preserve pending interrupts
- during cpr
-To: Peter Maydell <peter.maydell@linaro.org>, Fabiano Rosas <farosas@suse.de>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Cedric Le Goater <clg@redhat.com>, Zhenzhong Duan
- <zhenzhong.duan@intel.com>, Alex Williamson <alex.williamson@redhat.com>
-References: <1752689274-233526-1-git-send-email-steven.sistare@oracle.com>
- <CAFEAcA8P4H7n=uXe3qredxVMwB4QtDfZtVyuuTWBLwa6enGR3g@mail.gmail.com>
-Content-Language: en-US
-From: Steven Sistare <steven.sistare@oracle.com>
-In-Reply-To: <CAFEAcA8P4H7n=uXe3qredxVMwB4QtDfZtVyuuTWBLwa6enGR3g@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: PH0PR07CA0090.namprd07.prod.outlook.com
- (2603:10b6:510:f::35) To IA1PR10MB7447.namprd10.prod.outlook.com
- (2603:10b6:208:44c::10)
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1uiw6W-0000Lw-V8
+ for qemu-arm@nongnu.org; Mon, 04 Aug 2025 10:24:07 -0400
+Received: from outbound.qs.icloud.com (unknown [127.0.0.2])
+ by p00-icloudmta-asmtp-us-east-2d-10-percent-0 (Postfix) with ESMTPS id
+ 628341801376; Mon,  4 Aug 2025 14:23:53 +0000 (UTC)
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
+ s=sig1; bh=z7XiESJO1uj7bu4CyusbvcQjySumN6C5MdqFioCgUrA=;
+ h=From:To:Subject:Date:Message-Id:MIME-Version:x-icloud-hme;
+ b=BZJCF60XcSOBevitstejGZehE8AyHsWXzh4DyyXmm1hzKhofmVWPzZUIObuwats1ZjFhT0Qte1dCQON1Ut9AUyrYOS6aeMN0LK+oYwI2+gG5kaU+pbhTFHgtR6mtj1N31i1DcmAzlWWd4KMExhsOwm/eBGCkaJ0tQ1rxPy4zMhR4HAkGTki9IplnbWQQ7ZAqzmY+E7fX74eaWpQ3BYHyfoFxe+FLcoN4oLHYAWEMK8SnodWHJIWu6To28TuxmT/BaUDw+kSIOaqE2pBBwSfxKYQfSBFsr07h4eEbH7IzscndnnWtZXMTSrlFAuJlL2wXnyhQIZd5PnPW4UINQpWm2Q==
+X-Client-IP: 46.189.47.18
+Received: from localhost.localdomain (qs-asmtp-me-k8s.p00.prod.me.com
+ [17.57.155.37])
+ by p00-icloudmta-asmtp-us-east-2d-10-percent-0 (Postfix) with ESMTPSA id
+ 9EDE8180135E; Mon,  4 Aug 2025 14:23:50 +0000 (UTC)
+From: Mohamed Mediouni <mohamed@unpredictable.fr>
+To: qemu-devel@nongnu.org
+Cc: Shannon Zhao <shannon.zhaosl@gmail.com>, Ani Sinha <anisinha@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Phil Dennis-Jordan <phil@philjordan.eu>,
+ Roman Bolshakov <rbolshakov@ddn.com>, Igor Mammedov <imammedo@redhat.com>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Mohamed Mediouni <mohamed@unpredictable.fr>, Mads Ynddal <mads@ynddal.dk>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Sunil Muthuswamy <sunilmut@microsoft.com>, Zhao Liu <zhao1.liu@intel.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Alexander Graf <agraf@csgraf.de>,
+ qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Yanan Wang <wangyanan55@huawei.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Cameron Esfahani <dirty@apple.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
+Subject: [PATCH v4 08/17] whpx: interrupt controller support
+Date: Mon,  4 Aug 2025 16:23:17 +0200
+Message-Id: <20250804142326.72947-9-mohamed@unpredictable.fr>
+X-Mailer: git-send-email 2.39.5 (Apple Git-154)
+In-Reply-To: <20250804142326.72947-1-mohamed@unpredictable.fr>
+References: <20250804142326.72947-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: IA1PR10MB7447:EE_|BN0PR10MB4933:EE_
-X-MS-Office365-Filtering-Correlation-Id: b90c9be0-607d-4567-19a9-08ddd362830a
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|366016|376014;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?bGpXZDhsdHhQbkdQTVFsNlNhdXhoaGRvTGVmaW9HVCtCc3dzVU9mbGpBbyt0?=
- =?utf-8?B?RXFTb1NjM3VMeEJaVmVzRG9ydFJTOGdicktvRDNnbllJVSt4S0Fqc1JxQU5i?=
- =?utf-8?B?ZkFWRXRvbThWdkZzWjlYK1MvcXpLRVVXYktON015Q08vUFEwaFVWRno3YThs?=
- =?utf-8?B?MTVJMDhIQ0t4Ykd3V3dWaU1VQU91NnQ4c0MybWdPUGRRbG9ZNjRjR2RCSG4r?=
- =?utf-8?B?UWZKMmlJKzZlQzdWOVhBMzZnZkRLeHpja0dDNjdDVmRFQ0IxZjNGRXBVRUFN?=
- =?utf-8?B?THdrQmxBMkQrdHFMV0lEbEZBNm1hL1J4UEZlaTArYzViS0ErR0xZMHF2MzJ0?=
- =?utf-8?B?MFpoSEJXQ0J3RmExWjZiKzdPYXB4K1BwanFqOTk4dGVxbFcxSWZaVk10emtS?=
- =?utf-8?B?VE5jRG1za3FJZ0YvVjBMVmRxNndITXB4U3kvdEtMcm1kcGpJUUROY2R6U1Rz?=
- =?utf-8?B?QlBCeXNTbmFUME1OdjVlamFHRm42eUlmWW9Yb3QrajNRMndKWExoWkEwdHBs?=
- =?utf-8?B?SGQ3bHdacTNJMHdWd05VN1pzNkd6bitjZFhEbXFwUVJ0cDVaOWQ1N0NSZDk3?=
- =?utf-8?B?T0JTdnZlZ1FzeXRTZGFibVVxcGpyQVlPZExRR3RDeVp6aVVqK3VKME5XbUl5?=
- =?utf-8?B?bEtUOXNuUERaZTdjTzY1Mks5L1hjaThPUGVVKzNVVk9OQWZqVXpJSzdnUG5l?=
- =?utf-8?B?MDYybkY1U29oRFp6SFF2YjEybGtHM0Z2R2FnWEpkRHdYOWdEbHhaREdxQlJU?=
- =?utf-8?B?UTJablMvV3NJTmNRUVhMblFsNW1JdmdVVkNrdTVCNlpHb1A1cFpyY1AyeFdL?=
- =?utf-8?B?K2FaSWtnRmhOZU9yanMwczRld09yaDBTalF2ZHo5YjVoYW1pTGRSODFWQU1M?=
- =?utf-8?B?YmRvL0NWRCtVMG5uSStUU3J2SEhYbGdOV3VmY0tic0lwZytkWTRNSG4zbDF6?=
- =?utf-8?B?S3JPSmZleTBobGlzU2xERjdhRzl0R1hmN3Awbkd5ZUR4eWdjSlovL0JyYnN4?=
- =?utf-8?B?a1hHVzh0aHRWcW5EblpxbEFIUWJrb0xZNnh3K0IwN01TWm9zQlU4czZNMDNs?=
- =?utf-8?B?ZkVudVJQREczTEllV3BlUStKWGgvRlhmWTV5Q0xvb1ZYWnN6TkR1UGgvNDIz?=
- =?utf-8?B?UzRqd3FXYTVEbHY2dk10TUNBREh4WUtUWjRzcmw4aHZDaHVWaVg3RWs1YVg4?=
- =?utf-8?B?QXNiWjB0M2xFa2FFVHAwZnpHMnVZMUdnVjc3MDJLQ1VoRlViY2RMS3czRkFy?=
- =?utf-8?B?OWFHV0pFMk03Q1hOeGtuWUpwNFZLQUhyZzVzb3dRYlhpOVBMK05FcXh3MkI5?=
- =?utf-8?B?MTU4bllMSmdwYWxQUDNGWmFtSGFqb08wdlFDc01rNnlLTHowVEtBWlZhTDNV?=
- =?utf-8?B?dzAxTkhjWHFRazlIUnFPVmJmbENRL0dWZllZcS81M2VlbXgyUnBteFFSQUhl?=
- =?utf-8?B?QnkyaGx4U0FXTDJUakVwazE0ZUNrSHliRytIZUc5QjUyeUwxMHRlSXFYbmZ3?=
- =?utf-8?B?b09tOHM3Y25GT3Y0N3EvcTJoM2VHSkwwdnRsUkxua0Y5ZEh1TE8wRVN2TWVh?=
- =?utf-8?B?MERVczJ5RnNMWVJ4eU1KRVpHczVLWUd3UWFRSCt0Y1JkZmJ5bWNwSFNwNmp5?=
- =?utf-8?B?a2JtS3hPSUJ6TXVEbFRuRi9NQXdxUlBnSDNhbHhXUm1EdGM4ZU1meTFOc21P?=
- =?utf-8?B?VDhZSWRYZzFqTmF3d2thRkpiS084M2w3czZUR3ZjYmV6WVVzWXJjQTFUQWZ5?=
- =?utf-8?B?WFFPM3pxZHBEWHYrZjdPM3BqT0NoNUVzYjNaOG92b3JIN3hMa3V2ckk5cytG?=
- =?utf-8?B?MWVqMWsvdFcvUVdRdjJDSE1hSkl3YUZyR1ZuTHFGMDZTTDE0U2JHVDMwSVdQ?=
- =?utf-8?B?M1ZmU3lnSCtYL1ZUZ05CQ3FoQ21JRTVoQWgrQURDNHFXKzBUaUlib2lTTkpE?=
- =?utf-8?Q?ZVpt6bAtS20=3D?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:IA1PR10MB7447.namprd10.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(1800799024)(366016)(376014); DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?OUN4NEtVQWZpSC9hbVpxbjR6T1F6bm8zKy9vR3ozQzM2b1ZqSm5pdE1rZi9s?=
- =?utf-8?B?aUNLc1ZuRGZGWS9KaDdOd1p6dFIrZ1JDSjFLbUNGNFVuMDRDZ1BleWZ0U1ZG?=
- =?utf-8?B?eDltWGxIazIyenNhWFY2cEpUY2pBRkltUGJmYkpla2h0ZWVZcG5jd2RnTTgr?=
- =?utf-8?B?aCtPRlVrKzNzM0JHMmdEMXBZZG9ZMzZzUHBNaEo4d0h5M0MraTFRZC8vUU5l?=
- =?utf-8?B?MUhoQzhGcEdEL0xhbmtyb09NTUxBSHZOY2xUQ3BHMDlweWZDYjF4bUU2bVpU?=
- =?utf-8?B?dmlLMzlLZHF4Q3drUlI2bFJGWktyWlkrbGRRSkNwSHphei9JVzRjSGZRN0xQ?=
- =?utf-8?B?NGVYVmNLbldZdWh5SklWTDJOalpuWlVFRldqM09waDJVc2NLTmw0enBJMjJQ?=
- =?utf-8?B?QmZnY2NlZEhKRmVJVmJtUng4OWlqZWhnby9mcWJGTmZzVUVoZ1lRMXlIeEti?=
- =?utf-8?B?MFpZY0tFenQ5Y0JmWFJlY0hQNzBtZzdJaXNreXNDc1ZnRHNrNDE4WnFRS29E?=
- =?utf-8?B?OUp5SFVialkyZnV2OTFsWGk2NTFzZElNUzhjdWNlajhxTzRUSlRPR1VmSUw2?=
- =?utf-8?B?d1ZxUUtSQUVCSGpWOEs3M0l6Uk45bG8yTStNaHJFM3IvL0owZ0E1Mmx5aFlt?=
- =?utf-8?B?OUVYY0NvUjVtRUhuc0dOZjlXRVdLeHJaZ3RSNlNHUENwWk4wb0k0NXhGRVJl?=
- =?utf-8?B?MWZkcmNrRlptb2JCdEpjLzVZNlFtSXFVYWlPVnNmZnROd2IzbEF0Y2ZZWVlJ?=
- =?utf-8?B?bHRJZ2ZLY3BmL2tXTFRFOE5QSWlWUzhhNWRoaHY5bTg3WDJOM2U5UUNBM3Zy?=
- =?utf-8?B?K0tHRjByRWc1dTlXaUsvZnEwcm44d2hUUE41ZDQxdVdPclA0R3E4KzNoZG5s?=
- =?utf-8?B?Y0Q0dlp1bEh2Qi83SGh4cTdVOWJlZkxzQUMxZngyUzJRb1BPaWx1TUd1VVpp?=
- =?utf-8?B?ZGVsRWhoaVdJcjRSbFNkUkIxTFV5c2JqSHBaeTBDQXZzcFA3dXo4MzQ5ZEZC?=
- =?utf-8?B?aC9HRXowUXpWNEpkQkJ2Ymt0Rm1HNzFiUU1oeGF0TWhlRnRBUDVkZlUrSDIv?=
- =?utf-8?B?UHZNWndhdmYrL2tHaFdGNkJGSkMxVDVUZWszZnUxTWpNcGtsSWdSWnRMMzhu?=
- =?utf-8?B?T2ZtTlFVTjh3Wk1udFFiNUJadFZHNE8rMUFiRWxuZGYyQitkUGc4d2ZLL1Ew?=
- =?utf-8?B?UFJtV1Eza1dYU0FReE1jcUloc2FhR2JDb3U3dEEvanpQVURSTGIrOXkrRW1R?=
- =?utf-8?B?Z2IyT0NyYVFPdVI0UXRjOFB3blFMYTVyZmE3NFQraHg0R0xHQTR6TE9uV3VF?=
- =?utf-8?B?WjhOY2lVSWJBOXVLVWxOMHZwUkNOSC80cUF6dHp5OEtiQjV6NzFqOGNHM1BE?=
- =?utf-8?B?QmFRb290dTBlUTZqRVRtWG4yNjYxeUVqZkZpQnhIVXFCVDdGMytXc3FHQjdv?=
- =?utf-8?B?aWluN1hST040eUJ2TGg0bFpqcGo0WGw1bFh3aVVOV3pmNGhRemsyNU9HL2tP?=
- =?utf-8?B?MG54dVBzM0JaRWphcERJRFlFSWFNMzAySHMyVisrL2tEU2p3ZnlTNVBqSUlu?=
- =?utf-8?B?WUxaaGlCMDBPMXRHcHZBekdGRzdqTU95c3JzMzdlbitXY0RhWlpHTjNIejhX?=
- =?utf-8?B?eGZUVDgyMXVHdkJTZS9RREI5NDhwNjJwZzZPWXJnV09SM0FPT290U1k5anN6?=
- =?utf-8?B?OVpROTBXdFRmejlmQy9KaXk5MWZRNGU0QW83dlVvRlBPV3UwWGRXYTUwN0x2?=
- =?utf-8?B?aFhWQ3NjdXRBcFNzWmNPSmRzVldQeVFDWCt1QjhGWkFZQW9VVmpEWEhuY1NP?=
- =?utf-8?B?YlFXbTVrZGJ2TENkZ1Mxa3orYUFldVYrdkp1dDVSVUxTMGp0ZGFtcnl4MEE5?=
- =?utf-8?B?ZUhvK0xXK0J5S3NiMGVadHNlWkUvUlRhR1BpTjllZFVQMEJLMWluNW1abzNW?=
- =?utf-8?B?ZklROE40QWREcHRkZmJYZ2FDaDl2U2hjdGovb0dDL2tTSHpBZzA1UXFiRVVa?=
- =?utf-8?B?cTVVWWxYV2RyUDhYbGJvN2tlSmRxN3RZck0zcHlOMUE1b0YwZWZ3c2QzVnRZ?=
- =?utf-8?B?UkRydldqRUMrSnZRODhGT3pKNmUzT0ZnUk9xS2JyVitiMGhnYlcyUTdpU2l3?=
- =?utf-8?B?S3JiZkdSSlRYb3JxVXhqUjFoS2xGMGQ3RmhhQ3lUVUNuR1dHdTNZMnZYdmFH?=
- =?utf-8?B?Mmc9PQ==?=
-X-MS-Exchange-AntiSpam-ExternalHop-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-ExternalHop-MessageData-0: yYqkhVK0BI0Kq4EaExnUMWtKmbIPoYRuoYNpp54Dd/0V/x8XVo0qQ7r8GasWZyYJQZK+QeEWp2+az6WNdID44pniDDt0u3od1+s8rL5enbYSGVmwroTvyFdB3eFSe68Hw8saC3rIO2kax1m5XB6JDF/u1GKbXNh1Nk7EVRFm2xbR+72XMNEEukboQqvK9SxkzyYSEuzyBcLUbaitChGSUD219yZTlkN7GIDJra6OrHTlouvpGRasZUfcXys8fdZdRXap3isUO/z67I9KPWnYW5D/hGNhNu9cK5oIyb2gR29sZfbVAcmR3TigZX05M0nFpzordA8AxVma9EoWh9tv6AKoiCX5lpdOIHcJCem32+gSRQm2KMxhIYPqcLDFO4MGIy8gvldFa6eFXBFbmEpYoeYszgn7is8bFG9mb6Ke9FvZE/U5E2zCDB2VnICGmti8JIvXNo0inEl1YvMN79yhlgg6VqbwW9zUCmBFZ/ufWLGXjvLeLf7dvvOAddfj9cmtK2UMLFwovpV8YWLqijf56KqpZGAQgxY6kPBH7c67HXPH5e2hWoePy78MyHvwsTOQnVqsAQkpzXZnH0ABbGtyNjiblQ1r4wc+i9KCu+Rib5g=
-X-OriginatorOrg: oracle.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: b90c9be0-607d-4567-19a9-08ddd362830a
-X-MS-Exchange-CrossTenant-AuthSource: IA1PR10MB7447.namprd10.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 04 Aug 2025 14:23:41.7485 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: Kj8Y5mr4tFbKwGDYUR1gYXhPH166UXb5MY6raoaT77eMpXy/dO5tZf2omIBUqn0DvXj8ly9lS4w++Pw+GNtBln88XD4YJboO0+J0w0+E9Do=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN0PR10MB4933
+Content-Transfer-Encoding: 8bit
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwODA0MDA4MCBTYWx0ZWRfX0W592N66Zerr
+ PSm+F7LR3PcxiehBtYv5dJ2zem/jQ16/qRvUinddw1smkqJLHboCnj2aj4X6kDsdTfRuV+Ggfbo
+ f4OJNMBeXoMeGNixB32DctLDA6IofeZv0ju1WeBIRa4hh8nmiCdvtYnEWAMl6pe1NkW/y5BXINN
+ GvdvI8AAd+oFJzfS+4sfbOOTDWzvt51zO/9H4Hjmy88JNLURlvwIRW/QB0pgA7kOHPJS55kSH77
+ uHxbGT1/IwfRc6klNNN5bOicbyzRE3CwBjfOhH1Nn1/oLmKbYuu8bC4w8ROHuKg56tEPfrRYY=
+X-Proofpoint-GUID: fFHkKXAZ8xISXSeYbPCMB8koB2ucg3F0
+X-Proofpoint-ORIG-GUID: fFHkKXAZ8xISXSeYbPCMB8koB2ucg3F0
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.9,FMLib:17.12.80.40
  definitions=2025-08-04_06,2025-08-04_01,2025-03-28_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
- mlxscore=0 suspectscore=0
- malwarescore=0 mlxlogscore=999 phishscore=0 bulkscore=0 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2505160000
- definitions=main-2508040080
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwODA0MDA3OSBTYWx0ZWRfX1/7KPk4noVmT
- EjOmcTHRdzDO6+EhfOYf/kOGqGtwLy4oC1V9Nd/Vg3BIV+ypbczk77zH4I+QHKV2f4CC12ubicH
- Ozp921X1A3HZ/ZY3PVZspaX/8Y5rFuH8ZHU9IMVauT/pII79teQZ+RBCZwnVHGHhdp5MUV7nKiT
- Qg4Bs2nBw26eCxpyd44LUn3yM3r2uRDnX9ayrYCBzUgP1ToNumsK9WwlMGoWf19da/DcnGHYBeY
- uKwlrtBSm8YvInrDYnLpj6fKTUdp8Ri+BRHXoW+T8lx4Rudz5/qXfZyrUtlbl2V/1XzmFhiPW8i
- wwLAxIUMJeU40wsiJpTRI7Fo9UWI7+4wTWVn5AOkMBgcja7YN2narNrru0xdpiWOK0afAsTIXe7
- B6nKydSZ9Y+pvXw4AhD+cSje5cX/+OT/4XTL0AVvakWpwebNqG/KHtjhIR7lTg5cwW667NJN
-X-Proofpoint-GUID: _jo1zREO2QpmrBEv2yKAhlUROOMWf5So
-X-Proofpoint-ORIG-GUID: _jo1zREO2QpmrBEv2yKAhlUROOMWf5So
-X-Authority-Analysis: v=2.4 cv=VMvdn8PX c=1 sm=1 tr=0 ts=6890c27c b=1 cx=c_pps
- a=WeWmnZmh0fydH62SvGsd2A==:117
- a=WeWmnZmh0fydH62SvGsd2A==:17
- a=6eWqkTHjU83fiwn7nKZWdM+Sl24=:19 a=z/mQ4Ysz8XfWz/Q5cLBRGdckG28=:19
- a=lCpzRmAYbLLaTzLvsPZ7Mbvzbb8=:19 a=wKuvFiaSGQ0qltdbU6+NXLB8nM8=:19
- a=Ol13hO9ccFRV9qXi2t6ftBPywas=:19 a=xqWC_Br6kY4A:10 a=IkcTkHD0fZMA:10
- a=2OwXVqhp2XgA:10 a=GoEa3M9JfhUA:10 a=yPCof4ZbAAAA:8 a=HvWwsLQvtK_Our9jDwUA:9
- a=QEXdDO2ut3YA:10
-Received-SPF: pass client-ip=205.220.165.32;
- envelope-from=steven.sistare@oracle.com; helo=mx0a-00069f02.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
+ suspectscore=0 spamscore=0 mlxscore=0 phishscore=0 adultscore=0
+ mlxlogscore=999 malwarescore=0 clxscore=1030 classifier=spam adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2506270000 definitions=main-2508040080
+Received-SPF: pass client-ip=57.103.84.176;
+ envelope-from=mohamed@unpredictable.fr; helo=outbound.qs.icloud.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -232,75 +96,352 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Fabiano, could you sanity check this patch? Thanks!
+Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+---
+ hw/arm/virt.c                      |   3 +
+ hw/intc/arm_gicv3_common.c         |   3 +
+ hw/intc/arm_gicv3_whpx.c           | 261 +++++++++++++++++++++++++++++
+ hw/intc/meson.build                |   1 +
+ include/hw/intc/arm_gicv3_common.h |   3 +
+ 5 files changed, 271 insertions(+)
+ create mode 100644 hw/intc/arm_gicv3_whpx.c
 
-Peter, more below:
-
-On 7/21/2025 6:24 AM, Peter Maydell wrote:
-> On Wed, 16 Jul 2025 at 19:07, Steve Sistare <steven.sistare@oracle.com> wrote:
->>
->> Close a race condition that causes cpr-transfer to lose VFIO
->> interrupts on ARM.
->>
->> CPR stops VCPUs but does not disable VFIO interrupts, which may continue
->> to arrive throughout the transition to new QEMU.
->>
->> CPR calls kvm_irqchip_remove_irqfd_notifier_gsi in old QEMU to force
->> future interrupts to the producer eventfd, where they are preserved.
->> Old QEMU then destroys the old KVM instance.  However, interrupts may
->> already be pending in KVM state.  To preserve them, call ioctl
->> KVM_DEV_ARM_VGIC_SAVE_PENDING_TABLES to flush them to guest RAM, where
->> they will be picked up when the new KVM+VCPU instance is created.
->>
->> Signed-off-by: Steve Sistare <steven.sistare@oracle.com>
-> 
->> +static int kvm_arm_gicv3_notifier(NotifierWithReturn *notifier,
->> +                                  MigrationEvent *e, Error **errp)
->> +{
->> +    if (e->type == MIG_EVENT_PRECOPY_DONE) {
->> +        GICv3State *s = container_of(notifier, GICv3State, cpr_notifier);
->> +        return kvm_device_access(s->dev_fd, KVM_DEV_ARM_VGIC_GRP_CTRL,
->> +                                 KVM_DEV_ARM_VGIC_SAVE_PENDING_TABLES,
->> +                                 NULL, true, errp);
->> +    }
->> +    return 0;
->> +}
->>
->>   static void kvm_arm_gicv3_realize(DeviceState *dev, Error **errp)
->>   {
->> @@ -883,13 +895,17 @@ static void kvm_arm_gicv3_realize(DeviceState *dev, Error **errp)
->>                                  GICD_CTLR)) {
->>           error_setg(&s->migration_blocker, "This operating system kernel does "
->>                                             "not support vGICv3 migration");
->> -        if (migrate_add_blocker(&s->migration_blocker, errp) < 0) {
->> +        if (migrate_add_blocker_modes(&s->migration_blocker, MIG_MODE_NORMAL,
->> +                                      MIG_MODE_CPR_TRANSFER, errp) < 0) {
-> 
-> Why did you change this? It's the general "if no support, can't
-> migrate at all" check, which seems unrelated to cpr-transfer.
-
-"If no support", then cpr-transfer should also be blocked.
-It should have been added earlier.
-
-- Steve
-
->>               return;
->>           }
->>       }
->>       if (kvm_device_check_attr(s->dev_fd, KVM_DEV_ARM_VGIC_GRP_CTRL,
->>                                 KVM_DEV_ARM_VGIC_SAVE_PENDING_TABLES)) {
->>           qemu_add_vm_change_state_handler(vm_change_state_handler, s);
->> +        migration_add_notifier_mode(&s->cpr_notifier,
->> +                                    kvm_arm_gicv3_notifier,
->> +                                    MIG_MODE_CPR_TRANSFER);
->>       }
->>   }
-> 
-> Otherwise the patch looks OK in general shape, but I know
-> nothing about cpr-transfer so a review from somebody on the
-> migration side would be helpful.
-> 
-> thanks
-> -- PMM
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 5951b331f3..98a1c74c42 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -49,6 +49,7 @@
+ #include "system/tcg.h"
+ #include "system/kvm.h"
+ #include "system/hvf.h"
++#include "system/whpx.h"
+ #include "system/qtest.h"
+ #include "hw/loader.h"
+ #include "qapi/error.h"
+@@ -2060,6 +2061,8 @@ static void finalize_gic_version(VirtMachineState *vms)
+         /* KVM w/o kernel irqchip can only deal with GICv2 */
+         gics_supported |= VIRT_GIC_VERSION_2_MASK;
+         accel_name = "KVM with kernel-irqchip=off";
++    } else if (whpx_enabled()) {
++        gics_supported |= VIRT_GIC_VERSION_3_MASK;
+     } else if (tcg_enabled() || hvf_enabled() || qtest_enabled())  {
+         gics_supported |= VIRT_GIC_VERSION_2_MASK;
+         if (module_object_class_by_name("arm-gicv3")) {
+diff --git a/hw/intc/arm_gicv3_common.c b/hw/intc/arm_gicv3_common.c
+index e438d8c042..8b85b60c9b 100644
+--- a/hw/intc/arm_gicv3_common.c
++++ b/hw/intc/arm_gicv3_common.c
+@@ -32,6 +32,7 @@
+ #include "gicv3_internal.h"
+ #include "hw/arm/linux-boot-if.h"
+ #include "system/kvm.h"
++#include "system/whpx.h"
+ 
+ 
+ static void gicv3_gicd_no_migration_shift_bug_post_load(GICv3State *cs)
+@@ -662,6 +663,8 @@ const char *gicv3_class_name(void)
+ {
+     if (kvm_irqchip_in_kernel()) {
+         return "kvm-arm-gicv3";
++    } else if (whpx_enabled()) {
++        return TYPE_WHPX_GICV3;
+     } else {
+         if (kvm_enabled()) {
+             error_report("Userspace GICv3 is not supported with KVM");
+diff --git a/hw/intc/arm_gicv3_whpx.c b/hw/intc/arm_gicv3_whpx.c
+new file mode 100644
+index 0000000000..ead4e167c5
+--- /dev/null
++++ b/hw/intc/arm_gicv3_whpx.c
+@@ -0,0 +1,261 @@
++/* SPDX-License-Identifier: GPL-2.0-or-later */
++/*
++ * ARM Generic Interrupt Controller using HVF platform support
++ *
++ * Copyright (c) 2025 Mohamed Mediouni
++ * Based on vGICv3 KVM code by Pavel Fedin
++ *
++ */
++
++#include "qemu/osdep.h"
++#include "qapi/error.h"
++#include "hw/intc/arm_gicv3_common.h"
++#include "qemu/error-report.h"
++#include "qemu/module.h"
++#include "system/runstate.h"
++#include "system/whpx.h"
++#include "system/whpx-internal.h"
++#include "gicv3_internal.h"
++#include "vgic_common.h"
++#include "qom/object.h"
++#include "target/arm/cpregs.h"
++
++#include "hw/arm/bsa.h"
++#include <winhvplatform.h>
++#include <winhvplatformdefs.h>
++#include <winnt.h>
++
++struct WHPXARMGICv3Class {
++    ARMGICv3CommonClass parent_class;
++    DeviceRealize parent_realize;
++    ResettablePhases parent_phases;
++};
++
++typedef struct WHPXARMGICv3Class WHPXARMGICv3Class;
++
++/* This is reusing the GICv3State typedef from ARM_GICV3_ITS_COMMON */
++DECLARE_OBJ_CHECKERS(GICv3State, WHPXARMGICv3Class,
++                     WHPX_GICV3, TYPE_WHPX_GICV3);
++
++static void whpx_gicv3_check(GICv3State *s)
++{
++}
++
++static void whpx_gicv3_put_cpu(CPUState *cpu_state, run_on_cpu_data arg)
++{
++}
++
++static void whpx_gicv3_put(GICv3State *s)
++{
++    int ncpu;
++
++    whpx_gicv3_check(s);
++
++    for (ncpu = 0; ncpu < s->num_cpu; ncpu++) {
++        run_on_cpu_data data;
++        data.host_ptr = &s->cpu[ncpu];
++        run_on_cpu(s->cpu[ncpu].cpu, whpx_gicv3_put_cpu, data);
++    }
++}
++
++static void whpx_gicv3_get_cpu(CPUState *cpu_state, run_on_cpu_data arg)
++{
++}
++
++static void whpx_gicv3_get(GICv3State *s)
++{
++    int ncpu;
++
++    for (ncpu = 0; ncpu < s->num_cpu; ncpu++) {
++        run_on_cpu_data data;
++        data.host_ptr = &s->cpu[ncpu];
++        run_on_cpu(s->cpu[ncpu].cpu, whpx_gicv3_get_cpu, data);
++    }
++}
++
++static void whpx_gicv3_set_irq(void *opaque, int irq, int level)
++{
++    struct whpx_state *whpx = &whpx_global;
++
++    GICv3State *s = (GICv3State *)opaque;
++    if (irq > s->num_irq) {
++        return;
++    }
++    WHV_INTERRUPT_TYPE interrupt_type = WHvArm64InterruptTypeFixed;
++    WHV_INTERRUPT_CONTROL interrupt_control = {
++    interrupt_type = WHvArm64InterruptTypeFixed,
++    .RequestedVector = GIC_INTERNAL + irq, .InterruptControl.Asserted = level};
++
++    whp_dispatch.WHvRequestInterrupt(whpx->partition, &interrupt_control,
++         sizeof(interrupt_control));
++}
++
++static void whpx_gicv3_icc_reset(CPUARMState *env, const ARMCPRegInfo *ri)
++{
++    GICv3State *s;
++    GICv3CPUState *c;
++
++    c = (GICv3CPUState *)env->gicv3state;
++    s = c->gic;
++
++    c->icc_pmr_el1 = 0;
++    /*
++     * Architecturally the reset value of the ICC_BPR registers
++     * is UNKNOWN. We set them all to 0 here; when the kernel
++     * uses these values to program the ICH_VMCR_EL2 fields that
++     * determine the guest-visible ICC_BPR register values, the
++     * hardware's "writing a value less than the minimum sets
++     * the field to the minimum value" behaviour will result in
++     * them effectively resetting to the correct minimum value
++     * for the host GIC.
++     */
++    c->icc_bpr[GICV3_G0] = 0;
++    c->icc_bpr[GICV3_G1] = 0;
++    c->icc_bpr[GICV3_G1NS] = 0;
++
++    c->icc_sre_el1 = 0x7;
++    memset(c->icc_apr, 0, sizeof(c->icc_apr));
++    memset(c->icc_igrpen, 0, sizeof(c->icc_igrpen));
++
++    if (s->migration_blocker) {
++        return;
++    }
++
++    c->icc_ctlr_el1[GICV3_S] = c->icc_ctlr_el1[GICV3_NS];
++}
++
++static void whpx_gicv3_reset_hold(Object *obj, ResetType type)
++{
++    GICv3State *s = ARM_GICV3_COMMON(obj);
++    WHPXARMGICv3Class *kgc = WHPX_GICV3_GET_CLASS(s);
++
++    if (kgc->parent_phases.hold) {
++        kgc->parent_phases.hold(obj, type);
++    }
++
++    whpx_gicv3_put(s);
++}
++
++
++/*
++ * CPU interface registers of GIC needs to be reset on CPU reset.
++ * For the calling arm_gicv3_icc_reset() on CPU reset, we register
++ * below ARMCPRegInfo. As we reset the whole cpu interface under single
++ * register reset, we define only one register of CPU interface instead
++ * of defining all the registers.
++ */
++static const ARMCPRegInfo gicv3_cpuif_reginfo[] = {
++    { .name = "ICC_CTLR_EL1", .state = ARM_CP_STATE_BOTH,
++      .opc0 = 3, .opc1 = 0, .crn = 12, .crm = 12, .opc2 = 4,
++      /*
++       * If ARM_CP_NOP is used, resetfn is not called,
++       * So ARM_CP_NO_RAW is appropriate type.
++       */
++      .type = ARM_CP_NO_RAW,
++      .access = PL1_RW,
++      .readfn = arm_cp_read_zero,
++      .writefn = arm_cp_write_ignore,
++      /*
++       * We hang the whole cpu interface reset routine off here
++       * rather than parcelling it out into one little function
++       * per register
++       */
++      .resetfn = whpx_gicv3_icc_reset,
++    },
++};
++
++static void whpx_set_reg(CPUState *cpu, WHV_REGISTER_NAME reg, WHV_REGISTER_VALUE val)
++{
++    struct whpx_state *whpx = &whpx_global;
++    HRESULT hr;
++    hr = whp_dispatch.WHvSetVirtualProcessorRegisters(whpx->partition, cpu->cpu_index,
++         &reg, 1, &val);
++
++    if (FAILED(hr)) {
++        error_report("WHPX: Failed to set register %08x, hr=%08lx", reg, hr);
++    }
++}
++
++static void whpx_gicv3_realize(DeviceState *dev, Error **errp)
++{
++    GICv3State *s = WHPX_GICV3(dev);
++    WHPXARMGICv3Class *kgc = WHPX_GICV3_GET_CLASS(s);
++    Error *local_err = NULL;
++    int i;
++
++    kgc->parent_realize(dev, &local_err);
++    if (local_err) {
++        error_propagate(errp, local_err);
++        return;
++    }
++
++    if (s->revision != 3) {
++        error_setg(errp, "unsupported GIC revision %d for platform GIC",
++                   s->revision);
++    }
++
++    if (s->security_extn) {
++        error_setg(errp, "the platform vGICv3 does not implement the "
++                   "security extensions");
++        return;
++    }
++
++    if (s->nmi_support) {
++        error_setg(errp, "NMI is not supported with the platform GIC");
++        return;
++    }
++
++    if (s->nb_redist_regions > 1) {
++        error_setg(errp, "Multiple VGICv3 redistributor regions are not "
++                   "supported by WHPX");
++        error_append_hint(errp, "A maximum of %d VCPUs can be used",
++                          s->redist_region_count[0]);
++        return;
++    }
++
++    gicv3_init_irqs_and_mmio(s, whpx_gicv3_set_irq, NULL);
++
++    for (i = 0; i < s->num_cpu; i++) {
++        CPUState *cpu_state = qemu_get_cpu(i);
++        ARMCPU *cpu = ARM_CPU(cpu_state);
++        WHV_REGISTER_VALUE val = {.Reg64 = 0x080A0000 + (GICV3_REDIST_SIZE * i)};
++        whpx_set_reg(cpu_state, WHvArm64RegisterGicrBaseGpa, val);
++        define_arm_cp_regs(cpu, gicv3_cpuif_reginfo);
++    }
++
++    if (s->maint_irq) {
++        error_setg(errp, "Nested virtualisation not currently supported by WHPX.");
++        return;
++    }
++}
++
++static void whpx_gicv3_class_init(ObjectClass *klass, const void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    ResettableClass *rc = RESETTABLE_CLASS(klass);
++    ARMGICv3CommonClass *agcc = ARM_GICV3_COMMON_CLASS(klass);
++    WHPXARMGICv3Class *kgc = WHPX_GICV3_CLASS(klass);
++
++    agcc->pre_save = whpx_gicv3_get;
++    agcc->post_load = whpx_gicv3_put;
++
++    device_class_set_parent_realize(dc, whpx_gicv3_realize,
++                                    &kgc->parent_realize);
++    resettable_class_set_parent_phases(rc, NULL, whpx_gicv3_reset_hold, NULL,
++                                       &kgc->parent_phases);
++}
++
++static const TypeInfo whpx_arm_gicv3_info = {
++    .name = TYPE_WHPX_GICV3,
++    .parent = TYPE_ARM_GICV3_COMMON,
++    .instance_size = sizeof(GICv3State),
++    .class_init = whpx_gicv3_class_init,
++    .class_size = sizeof(WHPXARMGICv3Class),
++};
++
++static void whpx_gicv3_register_types(void)
++{
++    type_register_static(&whpx_arm_gicv3_info);
++}
++
++type_init(whpx_gicv3_register_types)
+diff --git a/hw/intc/meson.build b/hw/intc/meson.build
+index 3137521a4a..4fc6b78a04 100644
+--- a/hw/intc/meson.build
++++ b/hw/intc/meson.build
+@@ -41,6 +41,7 @@ specific_ss.add(when: 'CONFIG_APIC', if_true: files('apic.c', 'apic_common.c'))
+ specific_ss.add(when: 'CONFIG_ARM_GIC', if_true: files('arm_gicv3_cpuif_common.c'))
+ specific_ss.add(when: 'CONFIG_ARM_GICV3', if_true: files('arm_gicv3_cpuif.c'))
+ specific_ss.add(when: 'CONFIG_ARM_GIC_KVM', if_true: files('arm_gic_kvm.c'))
++specific_ss.add(when: ['CONFIG_WHPX', 'TARGET_AARCH64'], if_true: files('arm_gicv3_whpx.c'))
+ specific_ss.add(when: ['CONFIG_ARM_GIC_KVM', 'TARGET_AARCH64'], if_true: files('arm_gicv3_kvm.c', 'arm_gicv3_its_kvm.c'))
+ specific_ss.add(when: 'CONFIG_ARM_V7M', if_true: files('armv7m_nvic.c'))
+ specific_ss.add(when: 'CONFIG_GRLIB', if_true: files('grlib_irqmp.c'))
+diff --git a/include/hw/intc/arm_gicv3_common.h b/include/hw/intc/arm_gicv3_common.h
+index c18503869f..7776558a0e 100644
+--- a/include/hw/intc/arm_gicv3_common.h
++++ b/include/hw/intc/arm_gicv3_common.h
+@@ -306,6 +306,9 @@ typedef struct ARMGICv3CommonClass ARMGICv3CommonClass;
+ DECLARE_OBJ_CHECKERS(GICv3State, ARMGICv3CommonClass,
+                      ARM_GICV3_COMMON, TYPE_ARM_GICV3_COMMON)
+ 
++/* Types for GICv3 kernel-irqchip */
++#define TYPE_WHPX_GICV3 "whpx-arm-gicv3"
++
+ struct ARMGICv3CommonClass {
+     /*< private >*/
+     SysBusDeviceClass parent_class;
+-- 
+2.39.5 (Apple Git-154)
 
 

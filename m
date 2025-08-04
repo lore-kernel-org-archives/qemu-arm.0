@@ -4,88 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B48CC87FCF
-	for <qemu-arm@archiver.kernel.org>; Mon,  4 Aug 2025 19:34:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B638C87FCB
+	for <qemu-arm@archiver.kernel.org>; Mon,  4 Aug 2025 19:36:03 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uj0wx-0004xS-HU; Mon, 04 Aug 2025 15:34:24 -0400
+	id 1uj0yV-0008US-VX; Mon, 04 Aug 2025 15:36:00 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1uj06W-0001B4-3l
- for qemu-arm@nongnu.org; Mon, 04 Aug 2025 14:40:13 -0400
-Received: from mail-pf1-x434.google.com ([2607:f8b0:4864:20::434])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1uj0Ag-0007pm-Nh
+ for qemu-arm@nongnu.org; Mon, 04 Aug 2025 14:44:33 -0400
+Received: from mail-yw1-x1131.google.com ([2607:f8b0:4864:20::1131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1uj06Q-00019X-40
- for qemu-arm@nongnu.org; Mon, 04 Aug 2025 14:40:10 -0400
-Received: by mail-pf1-x434.google.com with SMTP id
- d2e1a72fcca58-76bc68cc9e4so4018728b3a.2
- for <qemu-arm@nongnu.org>; Mon, 04 Aug 2025 11:40:05 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1uj0Af-0001ih-9Q
+ for qemu-arm@nongnu.org; Mon, 04 Aug 2025 14:44:30 -0400
+Received: by mail-yw1-x1131.google.com with SMTP id
+ 00721157ae682-71a34087749so29379447b3.2
+ for <qemu-arm@nongnu.org>; Mon, 04 Aug 2025 11:44:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1754332804; x=1754937604; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=l2zHTZ6BcoGUiKxWVAKTw6l3A4hCrK5GgqF5hsYKgdc=;
- b=aJfPubW9xDlrTiLUdg34kSLT30m8u6bSj7CmttNDD/rVhiq6ZHpQPCd1eC5+lECY6K
- R0oErYx8jtKiD+8kXuZo7lgUUF6zoMVDh/xpMvP7yj13Nh+NAat6JoM+KsutoN87Vy/Y
- WgXqHvcWZShj/heBij0B02nXuaIPlz4kpWl+c9DBN+bWmXvY0SXwFJhD8JZtqsdGtOKo
- xt/EjM6ONGy6EZhSPjV2lHRzgBM+1Ypfz0f7Fq5I8eivjRgB5hQc3hHoc/PoScP76q0C
- 1okuWNYDVEylzn6J6K/xpwRE7HA6Oy/oZFlCDUPORtqavyAmx+qBT2EUdrmyDH2wxaGj
- kssg==
+ d=linaro.org; s=google; t=1754333068; x=1754937868; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=LYfDK2WoBDzVxhHbT0YQl1jcG3OnJa9W81AJVrD6zGE=;
+ b=d+scO/NCUYm/d0UbyoOOKfFGrfzCJXZWVEz92bilxtuH0ir31LraAbG2I6CEfSkb6J
+ +USpQn6RDp6p9IYNejYN1B2bo+pIhV7r6qqKX7HoRBblEe8PPHPTAHRo23kkQ/b2hX+h
+ 8N8WJCaNeg4t6NZfuyTiRaMb+iV6z0vjqRTCZmecBgotbIha4Z5T0ZonnvoL8Sg2MPwW
+ Xt+6y3lzK71hf+jturAeHouaMyIZAvvqCxwjG3wfIF/Hf3xz+8D4sDhNG9ENxTYknuJ5
+ xIkSeauDLdq9UxhqA1thdPwUTp7VT8nDoe1tDMNnbP7gjFuKhrI94cauKZtngF1hNBzn
+ 8rOg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1754332804; x=1754937604;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=l2zHTZ6BcoGUiKxWVAKTw6l3A4hCrK5GgqF5hsYKgdc=;
- b=thZGNnf4fV6qigO1A+RlEmyIZ7vC8URI5wABvOkCM/D0VsnAnlG9tYV5YupfD0DBKB
- arhng2aL1BNG/tspmAU69IDBI6fziYpygm3xl76W1QZQHYy9Ggmc9l9/8F9rlvWgIBtK
- MPXublxp09FnVHFdfOTvj1OPxhGh/tbAWq0xNi9LKXrVXNL9ppDjjvYSp6Z8hxBG+0JM
- Wu/BqvOWthG1ZYDDM1Y220hP6eglMyUdkIV1n05tRjQcLfb2MQg1rMGEeFspG2MQM/q4
- Q0qsAse4CY+GTx89YEITwEF/2/EMh4ra/86SA8PAa6eEMDbLJqRPw3BeR/WrXUTOOyuQ
- az8w==
+ d=1e100.net; s=20230601; t=1754333068; x=1754937868;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=LYfDK2WoBDzVxhHbT0YQl1jcG3OnJa9W81AJVrD6zGE=;
+ b=pGSZJaRH2dpUxcYCBnlbjFGxpZ/Pv6cd6e8h0oC+N3F73gRl3sr/nrkKwkSPf1icxt
+ Kk6+hgZTd99Jd5Qrdpyu7YBnURGYZohMC5XTPBFkSzGtbgW3SJq5MGFJhFUxkO8vlG6w
+ kwwPT9fyWWxsIIvhL4uFVAG0YLES32927vDanxdGW4vDQPoUhijccBUT0fBM4dgVa87c
+ UzyPZ/HUnabRibdep8XUPI75eS8mxuTE2P8w4oeh5/GwtIOE5FaZCU4OIRe7VfzyE1hV
+ apRqV94kcCEiZG/JKVnyxUADuq2f5wCRp4uAGbfjdfQTfY5U1OQagY3m18ldy4eTQHBq
+ o1UA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVDtmKcSOLc1nsi5w1MBZGZ7HrauFuzWXK0Yk3NTlD9gyMSxkiTDC1jZ71EGfNrKuzN3qZdTymwDw==@nongnu.org
-X-Gm-Message-State: AOJu0Yzya+MNJsXDOOJ2mAbhUoxkdt4IOQRRCZuICSDs7I/ZKL31VqoT
- DC5vHQm7VxzZfYomgZsFrDu6tzRnvs90TfJLI1ZBXJda9eorufSBAHKwUHsQLfJRDfk=
-X-Gm-Gg: ASbGncu1f4rcovhvdzw7fWQPhGld2yrix62oi2mefKKPtAxYFYg2GXFxv1Cgg2FEKpv
- 8PLP1vkL3j4r5IhIVoSb+EewJNf7Rxnl9c49cl5e7wwsQDTOIqha/keNvgD5b9h3kHbT8YG4DKN
- 5xANlDsDP6ZtwnRP9ZTASrgzosDKBlWQ6ntwnh/m/NaALB/q/SMj+HKAyJnRy+2+XK9zDXamUef
- h3bmvELs+CIk2LMNCbP50qxIOoI2iG+Z4PsNlkc90ZVeP0WDjpGrzINIMCQMELEL6nkUlSdUz2h
- ZNZCP+IPVXsb635tZNwPzNcoTd8p20H/C6/8YOZIIuO/5q1Y4y3Urdj7iDltmRq98jepUOSSyO7
- GuUDDCiZ2vzI9vwOmpA0sDw==
-X-Google-Smtp-Source: AGHT+IGDIiDvwkp07Cl3q9p2tPrnYkh/KID/Apb+z9tDpROIyRYMrq93rK7+HyYmg53wUZ8dfa16Lg==
-X-Received: by 2002:a05:6a00:114b:b0:75f:914e:1972 with SMTP id
- d2e1a72fcca58-76bec4b7d16mr11669416b3a.17.1754332804529; 
- Mon, 04 Aug 2025 11:40:04 -0700 (PDT)
-Received: from pc.. ([38.41.223.211]) by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-76bd78875cesm9940171b3a.15.2025.08.04.11.40.03
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 04 Aug 2025 11:40:04 -0700 (PDT)
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-riscv@nongnu.org, philmd@linaro.org, Weiwei Li <liwei1518@gmail.com>,
- Palmer Dabbelt <palmer@dabbelt.com>, richard.henderson@linaro.org,
- =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, qemu-arm@nongnu.org,
- Alistair Francis <alistair.francis@wdc.com>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v3 08/12] semihosting/arm-compat-semi: eradicate
- sizeof(target_ulong)
-Date: Mon,  4 Aug 2025 11:39:46 -0700
-Message-ID: <20250804183950.3147154-9-pierrick.bouvier@linaro.org>
-X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20250804183950.3147154-1-pierrick.bouvier@linaro.org>
-References: <20250804183950.3147154-1-pierrick.bouvier@linaro.org>
+ AJvYcCVCz+oE1+BRXPjonEZ11qqsRbnXu6++LzbELAM+iynMtoz3MjnIhWJBUkLUN8XM01+Mn8RY+gYd9w==@nongnu.org
+X-Gm-Message-State: AOJu0YyIMLDLKSpM/UYKJEOJKrErpRugeOdexouWxdsFHFFhYqxn0MEb
+ Uk1s1hmtiR/mjpERfW8jOMFnScDOS/PJZDVb3lt7+pvjyaJmjJNVzQy3yqtN554uJMH6YxaXDSy
+ B8gO2cpp10rBgzdpFBSmEGR+l5NnK//HeW9s6dkL4RA==
+X-Gm-Gg: ASbGncsW35YQJbcfwksjdmN8xy0zK3LNDJsFUVpZjMjHqL7Ewz0DwG78VmgZgWxuivl
+ eawVbLtJghqWnru56nXE/ukSDkBMhWSHb7bWcTmCSbbNZxhe7EWuFgZvOqmS8TA3SeXcFVkll9m
+ wkYij6qkdZJfEwpZdWDGry/3FytIdc0A1N07QggIroEDsZz5XYb3wtlXnznsKI3pO9OI8huflNO
+ jneY2d9
+X-Google-Smtp-Source: AGHT+IEVLmTRrExs+lKMpI/JYCkYjKe+NnsznfAGHHVbVMggRdIY6kseJHwL5LZX8ekoaFDwzD4yrjWm41UeAWQ8G7o=
+X-Received: by 2002:a05:690c:48c8:b0:71a:f22:28ea with SMTP id
+ 00721157ae682-71b7f924854mr138636837b3.40.1754333068008; Mon, 04 Aug 2025
+ 11:44:28 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::434;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pf1-x434.google.com
+References: <20250716095432.81923-1-luc.michel@amd.com>
+ <20250716095432.81923-41-luc.michel@amd.com>
+ <CAFEAcA_WAAUeLe9Kee4cmCC9NsDnHTOgwmiGvHje0Po+SGW6mw@mail.gmail.com>
+In-Reply-To: <CAFEAcA_WAAUeLe9Kee4cmCC9NsDnHTOgwmiGvHje0Po+SGW6mw@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 4 Aug 2025 19:44:15 +0100
+X-Gm-Features: Ac12FXxIYtgZ5CUdB59OyesDftY2zH1N3QHXKf4jLTx9qejzu4aW9FPZnGM2AY8
+Message-ID: <CAFEAcA-8_589P9PBfSh15iPj+T05MyEQ56QJ1=wfy_X+8aqBPA@mail.gmail.com>
+Subject: Re: [PATCH 40/48] target/arm/tcg/cpu64: add the cortex-a78ae CPU
+To: Luc Michel <luc.michel@amd.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+ Francisco Iglesias <francisco.iglesias@amd.com>,
+ "Edgar E . Iglesias" <edgar.iglesias@amd.com>, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ Alistair Francis <alistair@alistair23.me>,
+ Frederic Konrad <frederic.konrad@amd.com>, 
+ Sai Pavan Boddu <sai.pavan.boddu@amd.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1131;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1131.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -108,28 +102,32 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-No semantic change.
+On Mon, 4 Aug 2025 at 13:44, Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> On Wed, 16 Jul 2025 at 10:56, Luc Michel <luc.michel@amd.com> wrote:
+> >
+> > Add support for the ARM Cortex-A78AE CPU.
+>
+>
+>
+> >  static const ARMCPUInfo aarch64_cpus[] = {
+> >      { .name = "cortex-a35",         .initfn = aarch64_a35_initfn },
+> >      { .name = "cortex-a55",         .initfn = aarch64_a55_initfn },
+> >      { .name = "cortex-a72",         .initfn = aarch64_a72_initfn },
+> >      { .name = "cortex-a76",         .initfn = aarch64_a76_initfn },
+> > +    { .name = "cortex-a78ae",       .initfn = aarch64_a78ae_initfn },
+>
+> Do we really need to specifically call this the Cortex-A78AE ?
+> Is there anything we would model differently between this and
+> the Cortex-A78 ?
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
----
- semihosting/arm-compat-semi.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Looking a bit more closely at the TRMs, although they're quite
+similar they're not identical -- for example the 78AE has
+FEAT_FlagM (as advertised in ID_AA64ISAR0_EL1.TS) and the 78
+does not. So we should keep this "cortex-a78ae" name, with
+a comment something like "This is not quite the same as the
+plain Cortex-A78; we don't currently model the latter".
 
-diff --git a/semihosting/arm-compat-semi.c b/semihosting/arm-compat-semi.c
-index 5877214c47d..c03096b253d 100644
---- a/semihosting/arm-compat-semi.c
-+++ b/semihosting/arm-compat-semi.c
-@@ -786,7 +786,7 @@ void do_common_semihosting(CPUState *cs)
- 
-     case TARGET_SYS_ELAPSED:
-         elapsed = get_clock() - clock_start;
--        if (sizeof(target_ulong) == 8) {
-+        if (is_64bit_semihosting(env)) {
-             if (SET_ARG(0, elapsed)) {
-                 goto do_fault;
-             }
--- 
-2.47.2
-
+thanks
+-- PMM
 

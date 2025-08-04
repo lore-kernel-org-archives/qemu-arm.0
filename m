@@ -4,66 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BE41C87FCF
-	for <qemu-arm@archiver.kernel.org>; Mon,  4 Aug 2025 15:09:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A9A7C87FCB
+	for <qemu-arm@archiver.kernel.org>; Mon,  4 Aug 2025 15:09:38 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uiwoG-0008Tq-3g; Mon, 04 Aug 2025 11:09:08 -0400
+	id 1uiwoL-0000aj-CR; Mon, 04 Aug 2025 11:09:13 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uivKb-0000Gr-3E
- for qemu-arm@nongnu.org; Mon, 04 Aug 2025 09:34:26 -0400
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uivKp-0000aj-9c
+ for qemu-arm@nongnu.org; Mon, 04 Aug 2025 09:34:44 -0400
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uivKX-0008Tj-SA
- for qemu-arm@nongnu.org; Mon, 04 Aug 2025 09:34:24 -0400
-Received: by mail-wm1-x332.google.com with SMTP id
- 5b1f17b1804b1-45618ddd62fso35583985e9.3
- for <qemu-arm@nongnu.org>; Mon, 04 Aug 2025 06:34:19 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uivKm-00005z-0Z
+ for qemu-arm@nongnu.org; Mon, 04 Aug 2025 09:34:38 -0400
+Received: by mail-wm1-x334.google.com with SMTP id
+ 5b1f17b1804b1-459d4d7c745so13240725e9.1
+ for <qemu-arm@nongnu.org>; Mon, 04 Aug 2025 06:34:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1754314459; x=1754919259; darn=nongnu.org;
+ d=linaro.org; s=google; t=1754314474; x=1754919274; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=2dyOWVcvS3LHGs+IU0J1k6trHAqIIeSYFGpWKRpV7ZE=;
- b=ssdNjGLcVL8I5cXX/AV3QQm7oQAQzlhepEoeEhjogOboqVA/xIZQBdwoAoC/nWnU8o
- bGVsqbchzS4sx1649mBY4PnNaFkRvKb5i/IyxsCqhirhZQdG7L3qFVYLH5eodP0W9ZVO
- FOnwegRVQdJXKXkVhhBqETeqLU+wwe6rSiibnVILqTc5XoI/2JmaIKu8ZiyzIRKwS+mM
- K1DwCCpG37R+jzvbA5Gwm2euWZi7pZ6Ppv7G03aItCKYvR1Ms7c0S3xMWOT8BFSB0/hg
- Pa3hwe2McUxdqhd8SF2dkV1DZK3Hou3DqQ4GWkzIwR8qU/+OlIahpMsayngUCXeMNig+
- +oEw==
+ bh=1FuF7hehb7w0/1XQAyoYKQHd5iUS7qur1XCWnAxr71Q=;
+ b=cykoYVwlvGTANHkWz9TDQbUNBTUlmefFUkDIcV1HaLw/nzWeIzNaVrEM4n1Dp9OIHf
+ CEVCV8QnJZJTlFSmaBvJ0sW6TK1LKvlBGWi0bhAimMLaZb8MeubVY2p9fKUMvw31iZ15
+ m26BUPF6snt0huX8plVLnHyBe0pz9NS/nAqPvWWSDt0QYllI6Rnq3RrIeKsWaWbvjcrR
+ Wlq10hlCdbH1615wFztSQEc3NhZX3CoAav6NoAgS/gOUarhzdjY3+DdyhIh28mtdBXX2
+ 95BWZomc16yMWkcaJ8p3KPINfkUbpdlvdj+TXKsivD3ssM0m8HtlqP0gdvjZjEWp/LcK
+ UVRw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1754314459; x=1754919259;
+ d=1e100.net; s=20230601; t=1754314474; x=1754919274;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=2dyOWVcvS3LHGs+IU0J1k6trHAqIIeSYFGpWKRpV7ZE=;
- b=DfMu5s9LMCrngGSDmu7n/U7fXgsY1V59aOW44kB2Fu9MaZeDOAtyZc8QBsT/0r2UT8
- v+RL04Zy948Ex+RJlb8Wts3hKFBWlbXACYnku4Ki/RHOkuqwZWH4F1vHH7g5FivjEfQI
- PNQ9tsmXAtdCvAVCDhTsRDME5Qvp2pGUUJK2EobeQRARfuIAlPRh0wp+nDPssVi+8nlR
- z5CrVXT2YLtQMHd6SqmRZE/UG4T83bwuBBQBiMdzB3lXh+bw777sHw3KMWFRfGntTAv9
- 6u1m5h83kkuxm+6CZO6wz6i6R/L3QRaHwyPPeJFnVP2Sdx5KJyQLWTkaIDlcqHef3sFP
- 5Bqw==
+ bh=1FuF7hehb7w0/1XQAyoYKQHd5iUS7qur1XCWnAxr71Q=;
+ b=ui/E382ddeVAIYqusXvFt9D1F0eb2Ud4Nklb3hgibLRMaKJvvWOwZclOK6IHKxLMci
+ 8yPatkSMWNOARN/LrJOakA6e82+r9hxlRBJm0S42TvIn31RBW0wJE0q5uysaOG6yW8C9
+ Q3Y2Uwved/DnwRgovyKGqMBjuKJLxGFzEICu3vQP8QUTDRNT5/T28kof5thMOtls+uwf
+ KZICBfN8BcVAV/KZMOGtzVgH/umgRmuVumRjnChoyMN9Bq+C7w4uXZ1PLiTngzcUUNt+
+ /Oo7eCAsvS+oSZUKigY4Grzce+oGNOLkqKczXRdRwyQqWozitNGGwfYGezmKeHTiFFlA
+ wokQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXXKDXFIgW1Pfh+rwTSzxyHMNNujBlO2Zb/eyeNxulVrl72qOj1X6k2ZCoXqSh9iayBg4XWPlmggQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yzy8GChl4njZ89ORmi4kr4xKOByu+FGleng3OIjuU/vDTwHvbdg
- l+wVf5PuAawk6JJb0GJxfSbJNCoNVORCIjbiGg6FbLZzDULYyRugo3UxVk7dz3GyS8o=
-X-Gm-Gg: ASbGncsDAFqwA1/7t2M4uOReAMLKcGpI+OFcjo1GsbF4OmLJslejCmAJHhaYhc0heAJ
- b1cOJgcRCdiZ+KKN/m6r0S6tpsn2hyCEQw9/EAzGZxQk4PvSyTT+xvC9Sihww74f26oyZss6DQm
- QHok7mzFj8sYsSnPXUGiVlGsh+S1FEBwsQn1D33OWcWCyfQHBAsIiCPCIlJbfuGySDlujOyZ68v
- sqMeNLm3gbGvl2RRazm2xdxAE7FMRPJHP3oKLDKjkvMFG8mhtp/8J64SnT/58RmCijU1rrHk4/R
- umOsl4XFdKoIkK+ra9XQXqpyBqOQOgKVvotS5dwbjKy/edOSSZrlraAoCEoQPyJrUH6hrC5vIIU
- 6ynUULCAkiD5xBM7Js7XYvB5lwUV5TRvGfb3qb6oa5JOJoJZ4x4z0KmtACk/DfqoXHeiK/zkn
-X-Google-Smtp-Source: AGHT+IF2KSgYGdZZejzrzoBG1FoE1yKJ/f3fzqhvBSqheXfFyuhXczZxBAmPLG53oyZtIFsfjZfoBw==
-X-Received: by 2002:a05:600c:181d:b0:458:bbed:a827 with SMTP id
- 5b1f17b1804b1-458bbedaab7mr44599235e9.1.1754314458838; 
- Mon, 04 Aug 2025 06:34:18 -0700 (PDT)
+ AJvYcCV+L+i/jd6cbv4Kox7jRBlnUJcb7BFosSBfkfHWingbspV8nUeELwm0TeHrr7AMFKKi8meEk4VZ/w==@nongnu.org
+X-Gm-Message-State: AOJu0YxyFpY7jKC/ZC8pst9ERMWh4RdX+syWjnxdyTrpBb8FeG3EgI7f
+ MRs4wgWbVLl1jLCGFRkpugoqop1Ag0rQ9HuWP6fXwKuj/PfGreNYMYfFN/0BlFnO7I0=
+X-Gm-Gg: ASbGnct15Lsg3QOLJXHmne2fwg1RPGBFRXhjiAp/oRZDcNMqqWsyw+OSEDxaQk5fPr4
+ gsEby1DKMHCrNu+pUgL/rwMhUpj93Sk8T5/tz7iv4nmVl3qVU9kp4moCzrKEIm5sKnS1wklu+It
+ R2nund+Y7NOUnLUvs1NhvRCvGLcyOUj0Kv2faf82Ps0X2sKKm0HFs4kkRASw6KOHcNsng7Xz23m
+ V5kYO6EF0s8SVZ6WLOmORLHxAKntfKRBcRWZlQzfJS5eRXkbO53+/83cS36aYEOMvJ4U9d8L6Tl
+ 64SAhkAknK7+JdHVf7BoRXjE8WCqr0hZeCSpcdLKc9zBamMkvEfgwAoiMs4c8mYAOgdaqMrb/Ud
+ LoJ3/0doQVsWK3L5lgtq/LkM6xdF6IoVhU5oNw0j6Af81bw9bEivSc8GGQWLE88DgcyOYP7OL
+X-Google-Smtp-Source: AGHT+IFYOu7nkG9F0StsOdErlwB5/2xT9FL21rdulKc4Wh711KsDc2fRPP3zVgs9vlBrMxgKqMoHYg==
+X-Received: by 2002:a05:600c:1e8c:b0:456:11cc:360d with SMTP id
+ 5b1f17b1804b1-458b69de114mr73189625e9.9.1754314474211; 
+ Mon, 04 Aug 2025 06:34:34 -0700 (PDT)
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3b79c3abedesm15737999f8f.3.2025.08.04.06.34.17
+ ffacd0b85a97d-3b79c338c7dsm15702306f8f.0.2025.08.04.06.34.33
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Mon, 04 Aug 2025 06:34:18 -0700 (PDT)
+ Mon, 04 Aug 2025 06:34:33 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: Peter Maydell <peter.maydell@linaro.org>,
 	qemu-devel@nongnu.org
@@ -71,17 +71,17 @@ Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Ben Dooks <ben.dooks@codethink.co.uk>, qemu-riscv@nongnu.org,
  qemu-block@nongnu.org, qemu-arm@nongnu.org,
  Guenter Roeck <linux@roeck-us.net>, Bin Meng <bmeng.cn@gmail.com>
-Subject: [PATCH-for-10.1 v2 02/11] hw/sd/sdcard: Factor sd_response_size() out
-Date: Mon,  4 Aug 2025 15:33:56 +0200
-Message-ID: <20250804133406.17456-3-philmd@linaro.org>
+Subject: [PATCH-for-10.1 v2 05/11] hw/sd/sdcard: Implement SPI R2 return value
+Date: Mon,  4 Aug 2025 15:33:59 +0200
+Message-ID: <20250804133406.17456-6-philmd@linaro.org>
 X-Mailer: git-send-email 2.49.0
 In-Reply-To: <20250804133406.17456-1-philmd@linaro.org>
 References: <20250804133406.17456-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::332;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x332.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::334;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x334.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -104,100 +104,123 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Set @rsplen once before switching to fill the response buffer.
-This will allow to assert in a single place that the buffer is
-big enough to be filled with the response.
+In SPI mode, R2 is a 2-byte value.
+Implement in spi_response_r2_make() and
+return SPI R2 in the SEND_STATUS commands.
 
+Reported-by: Guenter Roeck <linux@roeck-us.net>
+Fixes: 775616c3ae8 ("Partial SD card SPI mode support")
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/sd/sd.c | 36 +++++++++++++++++++++++++++++-------
- 1 file changed, 29 insertions(+), 7 deletions(-)
+ hw/sd/sd.c     | 38 +++++++++++++++++++++++++++++++++++---
+ hw/sd/ssi-sd.c |  3 ---
+ 2 files changed, 35 insertions(+), 6 deletions(-)
 
 diff --git a/hw/sd/sd.c b/hw/sd/sd.c
-index 0bb385268ed..76ce54664f2 100644
+index cbcc180f6a4..01ec6d951c8 100644
 --- a/hw/sd/sd.c
 +++ b/hw/sd/sd.c
-@@ -729,6 +729,33 @@ static int sd_req_crc_validate(SDRequest *req)
-     return sd_crc7(buffer, 5) != req->crc;  /* TODO */
+@@ -61,6 +61,7 @@
+ typedef enum {
+     sd_r0 = 0,    /* no response */
+     sd_r1,        /* normal response command */
++    spi_r2,       /* STATUS */
+     sd_r2_i,      /* CID register */
+     sd_r2_s,      /* CSD register */
+     sd_r3,        /* OCR register */
+@@ -247,6 +248,7 @@ static const char *sd_response_name(sd_rsp_type_t rsp)
+     static const char *response_name[] = {
+         [sd_r0]     = "RESP#0 (no response)",
+         [sd_r1]     = "RESP#1 (normal cmd)",
++        [spi_r2]    = "RESP#2 (STATUS reg)",
+         [sd_r2_i]   = "RESP#2 (CID reg)",
+         [sd_r2_s]   = "RESP#2 (CSD reg)",
+         [sd_r3]     = "RESP#3 (OCR reg)",
+@@ -736,6 +738,10 @@ static size_t sd_response_size(SDState *sd, sd_rsp_type_t rtype)
+     case sd_r1b:
+         return sd_is_spi(sd) ? 1 : 4;
+ 
++    case spi_r2:
++        assert(sd_is_spi(sd));
++        return 2;
++
+     case sd_r2_i:
+     case sd_r2_s:
+         assert(!sd_is_spi(sd));
+@@ -778,6 +784,22 @@ static void sd_response_r1_make(SDState *sd, uint8_t *response)
+     sd->card_status &= ~CARD_STATUS_C;
  }
  
-+static size_t sd_response_size(SDState *sd, sd_rsp_type_t rtype)
++static void spi_response_r2_make(SDState *sd, uint8_t *resp)
 +{
-+    switch (rtype) {
-+    case sd_r1:
-+    case sd_r1b:
-+        return 4;
++    /* Prepend R1 */
++    sd_response_r1_make(sd, resp);
 +
-+    case sd_r2_i:
-+    case sd_r2_s:
-+        return 16;
-+
-+    case sd_r3:
-+    case sd_r7:
-+        return 4;
-+
-+    case sd_r6:
-+        return 4;
-+
-+    case sd_r0:
-+    case sd_illegal:
-+        return 0;
-+
-+    default:
-+        g_assert_not_reached();
-+    }
++    resp[1]  = FIELD_EX32(sd->card_status, CSR, CARD_IS_LOCKED) << 0;
++    resp[1] |= (FIELD_EX32(sd->card_status, CSR, LOCK_UNLOCK_FAILED)
++                || FIELD_EX32(sd->card_status, CSR, WP_ERASE_SKIP)) << 1;
++    resp[1] |= FIELD_EX32(sd->card_status, CSR, ERROR) << 2;
++    resp[1] |= FIELD_EX32(sd->card_status, CSR, CC_ERROR) << 3;
++    resp[1] |= FIELD_EX32(sd->card_status, CSR, CARD_ECC_FAILED) << 4;
++    resp[1] |= FIELD_EX32(sd->card_status, CSR, WP_VIOLATION) << 5;
++    resp[1] |= FIELD_EX32(sd->card_status, CSR, ERASE_PARAM) << 6;
++    resp[1] |= FIELD_EX32(sd->card_status, CSR, OUT_OF_RANGE) << 7;
 +}
 +
- static void sd_response_r1_make(SDState *sd, uint8_t *response)
+ static void sd_response_r3_make(SDState *sd, uint8_t *response)
  {
-     stl_be_p(response, sd->card_status);
-@@ -2203,36 +2230,32 @@ static int sd_do_command(SDState *sd, SDRequest *req,
+     if (sd_is_spi(sd)) {
+@@ -1643,7 +1665,7 @@ static sd_rsp_type_t sd_cmd_SEND_STATUS(SDState *sd, SDRequest req)
      }
  
- send_response:
-+    rsplen = sd_response_size(sd, rtype);
+     if (sd_is_spi(sd)) {
+-        return sd_r2_s;
++        return spi_r2;
+     }
+ 
+     return sd_req_rca_same(sd, req) ? sd_r1 : sd_r0;
+@@ -1957,8 +1979,14 @@ static sd_rsp_type_t sd_acmd_SET_BUS_WIDTH(SDState *sd, SDRequest req)
+ /* ACMD13 */
+ static sd_rsp_type_t sd_acmd_SD_STATUS(SDState *sd, SDRequest req)
+ {
+-    return sd_cmd_to_sendingdata(sd, req, 0,
+-                                 sd->sd_status, sizeof(sd->sd_status));
++    sd_rsp_type_t rsp;
 +
-     switch (rtype) {
-     case sd_r1:
-     case sd_r1b:
++    rsp = sd_cmd_to_sendingdata(sd, req, 0,
++                                sd->sd_status, sizeof(sd->sd_status));
++    if (sd_is_spi(sd) && rsp != sd_illegal) {
++        return spi_r2;
++    }
++    return rsp;
+ }
+ 
+ /* ACMD22 */
+@@ -2264,6 +2292,10 @@ send_response:
          sd_response_r1_make(sd, response);
--        rsplen = 4;
          break;
  
++    case spi_r2:
++        spi_response_r2_make(sd, response);
++        break;
++
      case sd_r2_i:
          memcpy(response, sd->cid, sizeof(sd->cid));
--        rsplen = 16;
          break;
+diff --git a/hw/sd/ssi-sd.c b/hw/sd/ssi-sd.c
+index 2d5c0ad5016..594dead19ee 100644
+--- a/hw/sd/ssi-sd.c
++++ b/hw/sd/ssi-sd.c
+@@ -158,9 +158,6 @@ static uint32_t ssi_sd_transfer(SSIPeripheral *dev, uint32_t val)
+                                          longresp, sizeof(longresp));
+             DPRINTF("CMD%d arg 0x%08x = %d\n", s->cmd, request.arg, s->arglen);
+             assert(s->arglen > 0);
+-                /* CMD13 returns a 2-byte statuse work. Other commands
+-                   only return the first byte.  */
+-                s->arglen = (s->cmd == 13) ? 2 : 1;
+             memcpy(s->response, longresp, s->arglen);
  
-     case sd_r2_s:
-         memcpy(response, sd->csd, sizeof(sd->csd));
--        rsplen = 16;
-         break;
- 
-     case sd_r3:
-         sd_response_r3_make(sd, response);
--        rsplen = 4;
-         break;
- 
-     case sd_r6:
-         sd_response_r6_make(sd, response);
--        rsplen = 4;
-         break;
- 
-     case sd_r7:
-         sd_response_r7_make(sd, response);
--        rsplen = 4;
-         break;
- 
-     case sd_r0:
-@@ -2244,7 +2267,6 @@ send_response:
-         sd->data_offset = 0;
-         /* fall-through */
-     case sd_illegal:
--        rsplen = 0;
-         break;
-     default:
-         g_assert_not_reached();
+             /* handle R1b (busy signal) */
 -- 
 2.49.0
 

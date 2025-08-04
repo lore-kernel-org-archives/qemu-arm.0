@@ -4,82 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B638C87FCB
-	for <qemu-arm@archiver.kernel.org>; Mon,  4 Aug 2025 19:36:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E28BFC87FCF
+	for <qemu-arm@archiver.kernel.org>; Mon,  4 Aug 2025 19:41:21 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uj0yV-0008US-VX; Mon, 04 Aug 2025 15:36:00 -0400
+	id 1uj13Y-0005ld-95; Mon, 04 Aug 2025 15:41:13 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uj0Ag-0007pm-Nh
- for qemu-arm@nongnu.org; Mon, 04 Aug 2025 14:44:33 -0400
-Received: from mail-yw1-x1131.google.com ([2607:f8b0:4864:20::1131])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uj0Nz-0008LH-5H
+ for qemu-arm@nongnu.org; Mon, 04 Aug 2025 14:58:15 -0400
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uj0Af-0001ih-9Q
- for qemu-arm@nongnu.org; Mon, 04 Aug 2025 14:44:30 -0400
-Received: by mail-yw1-x1131.google.com with SMTP id
- 00721157ae682-71a34087749so29379447b3.2
- for <qemu-arm@nongnu.org>; Mon, 04 Aug 2025 11:44:28 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uj0Nw-0004Fp-Mg
+ for qemu-arm@nongnu.org; Mon, 04 Aug 2025 14:58:14 -0400
+Received: by mail-wr1-x42f.google.com with SMTP id
+ ffacd0b85a97d-3b79bd3b1f7so2600647f8f.1
+ for <qemu-arm@nongnu.org>; Mon, 04 Aug 2025 11:58:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1754333068; x=1754937868; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=LYfDK2WoBDzVxhHbT0YQl1jcG3OnJa9W81AJVrD6zGE=;
- b=d+scO/NCUYm/d0UbyoOOKfFGrfzCJXZWVEz92bilxtuH0ir31LraAbG2I6CEfSkb6J
- +USpQn6RDp6p9IYNejYN1B2bo+pIhV7r6qqKX7HoRBblEe8PPHPTAHRo23kkQ/b2hX+h
- 8N8WJCaNeg4t6NZfuyTiRaMb+iV6z0vjqRTCZmecBgotbIha4Z5T0ZonnvoL8Sg2MPwW
- Xt+6y3lzK71hf+jturAeHouaMyIZAvvqCxwjG3wfIF/Hf3xz+8D4sDhNG9ENxTYknuJ5
- xIkSeauDLdq9UxhqA1thdPwUTp7VT8nDoe1tDMNnbP7gjFuKhrI94cauKZtngF1hNBzn
- 8rOg==
+ d=linaro.org; s=google; t=1754333890; x=1754938690; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=aINB0QOVgM33xiDkDtdEK7Zj4ssFbn5yVZBBPivr7uQ=;
+ b=fiOAB+d9Dwys+FDe3v+4uE+kjgMDV6uVIWBtmlkJZCocL7rTs6f8NT4ksBuvBXO5oI
+ ZrupmlsvdM8sJzq99JIXpVuIGs8aphLgP4CcgzK/Wh1b4fOD0UNoawW2CkcPINCcZ9vU
+ WisAKM7KMZCtRteqcV+kJlI64VDUHVcz/whuxE84GxQrHVdDO6onSgDNcoJ3ilXwbvCR
+ TveysHERoaeLjuLlKNH3gp0P+3eWGR8cOiumFpebNvZGfqRb9SnGBES0gMQRQatcfTxf
+ qNJVaYqIrsUaReWOOqrnrgxoEY470ggnx+7UTRDfCE7fJfaC2AhDQ+7UanKin8bJDRT2
+ Y5FQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1754333068; x=1754937868;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=LYfDK2WoBDzVxhHbT0YQl1jcG3OnJa9W81AJVrD6zGE=;
- b=pGSZJaRH2dpUxcYCBnlbjFGxpZ/Pv6cd6e8h0oC+N3F73gRl3sr/nrkKwkSPf1icxt
- Kk6+hgZTd99Jd5Qrdpyu7YBnURGYZohMC5XTPBFkSzGtbgW3SJq5MGFJhFUxkO8vlG6w
- kwwPT9fyWWxsIIvhL4uFVAG0YLES32927vDanxdGW4vDQPoUhijccBUT0fBM4dgVa87c
- UzyPZ/HUnabRibdep8XUPI75eS8mxuTE2P8w4oeh5/GwtIOE5FaZCU4OIRe7VfzyE1hV
- apRqV94kcCEiZG/JKVnyxUADuq2f5wCRp4uAGbfjdfQTfY5U1OQagY3m18ldy4eTQHBq
- o1UA==
+ d=1e100.net; s=20230601; t=1754333890; x=1754938690;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=aINB0QOVgM33xiDkDtdEK7Zj4ssFbn5yVZBBPivr7uQ=;
+ b=K8Fz0erCVF1sWss1ykm+upDDHLZ9eg9kkRaTfplz/tClIpZtUBS3rdp+IGHkRAOTo2
+ uz/NZ6j1dOt0hGh5BHhi5X25/ddTZXz7WG42YuBGTuAL39I7Hi8Ej21qFD6hssbmj1LT
+ xSYeVWb8VxlatnOkawD9rgGJ1NNT4sr1nZX+aZGoPtPXwY1SQP+JbZdY44hs4FX9foIa
+ xwnVMGk78W1CqA4HGs/X+ZD3N3mQYRQnzICyq/tysIPcIHm/Q5I2YS7jqQW8OzE0iT/d
+ Zx1SEo6942ywmEzJjdUBDGQsKBiyHYZO4FD7WihbZI8kNKM3EzqQ0I8EogvnR+a6GuZ+
+ LkEA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVCz+oE1+BRXPjonEZ11qqsRbnXu6++LzbELAM+iynMtoz3MjnIhWJBUkLUN8XM01+Mn8RY+gYd9w==@nongnu.org
-X-Gm-Message-State: AOJu0YyIMLDLKSpM/UYKJEOJKrErpRugeOdexouWxdsFHFFhYqxn0MEb
- Uk1s1hmtiR/mjpERfW8jOMFnScDOS/PJZDVb3lt7+pvjyaJmjJNVzQy3yqtN554uJMH6YxaXDSy
- B8gO2cpp10rBgzdpFBSmEGR+l5NnK//HeW9s6dkL4RA==
-X-Gm-Gg: ASbGncsW35YQJbcfwksjdmN8xy0zK3LNDJsFUVpZjMjHqL7Ewz0DwG78VmgZgWxuivl
- eawVbLtJghqWnru56nXE/ukSDkBMhWSHb7bWcTmCSbbNZxhe7EWuFgZvOqmS8TA3SeXcFVkll9m
- wkYij6qkdZJfEwpZdWDGry/3FytIdc0A1N07QggIroEDsZz5XYb3wtlXnznsKI3pO9OI8huflNO
- jneY2d9
-X-Google-Smtp-Source: AGHT+IEVLmTRrExs+lKMpI/JYCkYjKe+NnsznfAGHHVbVMggRdIY6kseJHwL5LZX8ekoaFDwzD4yrjWm41UeAWQ8G7o=
-X-Received: by 2002:a05:690c:48c8:b0:71a:f22:28ea with SMTP id
- 00721157ae682-71b7f924854mr138636837b3.40.1754333068008; Mon, 04 Aug 2025
- 11:44:28 -0700 (PDT)
+ AJvYcCW6q/o+RT31PDIDfZMASg8byTZlLq7dd7PpFqa8GGEXnh3XUniUePk0DaORaGk8F1R0ydy4qG49nA==@nongnu.org
+X-Gm-Message-State: AOJu0YyxvdbJi+NPzqLPZ22+ajGQ+RipWHWNypfp7+zyUGAGQb/Fd55U
+ rexmz8Mqj3bqtCXmEGSUpLu2OMhTYDcnaLEgqqy+7I82xgHMXVfi+eHeFmNk8PrI6ck=
+X-Gm-Gg: ASbGncvJeGZwx9N5qDz3inJ+1MTF9aTTsh1x3Ck8Ffmv+v698YP1vBhpJlzHZYsqDSQ
+ 96tkgJ58uwlnFjs/Ygy/dhpaI5XIRSIw5NqHjMIyvpaEvHgfBzK/aNxOO5u60gTyvc5MGHECWi5
+ 95gCdA1aA8aIexR8pmcXOVEr6b/ORyXaClU/n9yaWrNVrwQGhptBYD2zNlCghI/slCurCyNseUR
+ /iIhT1t3GU3k8Z94bfOqlmhqth+znWPl/WAH8P7nzJ7XBipS8uKqlvbre2zWjFzklSA3FtKj4Zj
+ w/5uN/GYndWYCwmn48oAm5P6ppLDoCwLoYoz+kDur/Un935jo/XY5OMCtuZSdIrnGKe01OJx32K
+ kGkdNYn3SejWJbL2DsXGFXYCm3BEen6w7gDh0pSqezsQ74VLfWUEefmO3GZsKgWZ2jQ==
+X-Google-Smtp-Source: AGHT+IFE9L8xp684iBaG0lgYWTBK2Pkue3NA3EWZX+vLXyy39soDe6/jHeaWoiSPwZ9ZS8YqBL/EOg==
+X-Received: by 2002:adf:a30e:0:b0:3b8:dabe:bd78 with SMTP id
+ ffacd0b85a97d-3b8dabebeb6mr4694686f8f.54.1754333890092; 
+ Mon, 04 Aug 2025 11:58:10 -0700 (PDT)
+Received: from [192.168.69.201] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-458953eaeeesm233071245e9.25.2025.08.04.11.58.07
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 04 Aug 2025 11:58:09 -0700 (PDT)
+Message-ID: <18978892-cff3-48ab-9322-0227c8719517@linaro.org>
+Date: Mon, 4 Aug 2025 20:58:06 +0200
 MIME-Version: 1.0
-References: <20250716095432.81923-1-luc.michel@amd.com>
- <20250716095432.81923-41-luc.michel@amd.com>
- <CAFEAcA_WAAUeLe9Kee4cmCC9NsDnHTOgwmiGvHje0Po+SGW6mw@mail.gmail.com>
-In-Reply-To: <CAFEAcA_WAAUeLe9Kee4cmCC9NsDnHTOgwmiGvHje0Po+SGW6mw@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 4 Aug 2025 19:44:15 +0100
-X-Gm-Features: Ac12FXxIYtgZ5CUdB59OyesDftY2zH1N3QHXKf4jLTx9qejzu4aW9FPZnGM2AY8
-Message-ID: <CAFEAcA-8_589P9PBfSh15iPj+T05MyEQ56QJ1=wfy_X+8aqBPA@mail.gmail.com>
-Subject: Re: [PATCH 40/48] target/arm/tcg/cpu64: add the cortex-a78ae CPU
-To: Luc Michel <luc.michel@amd.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
- Francisco Iglesias <francisco.iglesias@amd.com>,
- "Edgar E . Iglesias" <edgar.iglesias@amd.com>, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- Alistair Francis <alistair@alistair23.me>,
- Frederic Konrad <frederic.konrad@amd.com>, 
- Sai Pavan Boddu <sai.pavan.boddu@amd.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1131;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1131.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 01/17] accel/system: Introduce hwaccel_enabled() helper
+To: Mohamed Mediouni <mohamed@unpredictable.fr>,
+ Claudio Fontana <cfontana@suse.de>
+Cc: qemu-devel@nongnu.org, Shannon Zhao <shannon.zhaosl@gmail.com>,
+ Ani Sinha <anisinha@redhat.com>, Phil Dennis-Jordan <phil@philjordan.eu>,
+ Roman Bolshakov <rbolshakov@ddn.com>, Igor Mammedov <imammedo@redhat.com>,
+ Eduardo Habkost <eduardo@habkost.net>, Mads Ynddal <mads@ynddal.dk>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ Sunil Muthuswamy <sunilmut@microsoft.com>, Zhao Liu <zhao1.liu@intel.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Alexander Graf <agraf@csgraf.de>,
+ qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Yanan Wang <wangyanan55@huawei.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Cameron Esfahani <dirty@apple.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
+References: <20250804142326.72947-1-mohamed@unpredictable.fr>
+ <20250804142326.72947-2-mohamed@unpredictable.fr>
+ <d18fc5c3-b68a-4afe-86b7-e1687780b67c@suse.de>
+ <59A4FF62-384F-4D43-BD56-60AA93733580@unpredictable.fr>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <59A4FF62-384F-4D43-BD56-60AA93733580@unpredictable.fr>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -102,32 +117,34 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, 4 Aug 2025 at 13:44, Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> On Wed, 16 Jul 2025 at 10:56, Luc Michel <luc.michel@amd.com> wrote:
-> >
-> > Add support for the ARM Cortex-A78AE CPU.
->
->
->
-> >  static const ARMCPUInfo aarch64_cpus[] = {
-> >      { .name = "cortex-a35",         .initfn = aarch64_a35_initfn },
-> >      { .name = "cortex-a55",         .initfn = aarch64_a55_initfn },
-> >      { .name = "cortex-a72",         .initfn = aarch64_a72_initfn },
-> >      { .name = "cortex-a76",         .initfn = aarch64_a76_initfn },
-> > +    { .name = "cortex-a78ae",       .initfn = aarch64_a78ae_initfn },
->
-> Do we really need to specifically call this the Cortex-A78AE ?
-> Is there anything we would model differently between this and
-> the Cortex-A78 ?
+On 4/8/25 18:12, Mohamed Mediouni wrote:
+> 
+>> On 4. Aug 2025, at 18:00, Claudio Fontana <cfontana@suse.de> wrote:
+>>
+>> On 8/4/25 16:23, Mohamed Mediouni wrote:
+>>> From: Philippe Mathieu-Daudé <philmd@linaro.org>
+>>>
+>>> hwaccel_enabled() return whether any hardware accelerator
+>>> is available.
+>>
+>> Available or enabled?
+> enabled
 
-Looking a bit more closely at the TRMs, although they're quite
-similar they're not identical -- for example the 78AE has
-FEAT_FlagM (as advertised in ID_AA64ISAR0_EL1.TS) and the 78
-does not. So we should keep this "cortex-a78ae" name, with
-a comment something like "This is not quite the same as the
-plain Cortex-A78; we don't currently model the latter".
+Oops indeed.
 
-thanks
--- PMM
+Orthogonal, but still not trivial to follow available (built in?) /
+loaded (as module) / enabled (selected?) / usable (permissions OK)
+logic (there is also another state, but I don't remember right now).
+
+> 
+> Took the patch from https://lore.kernel.org/qemu- 
+> devel/20250703105540.67664-47-philmd@linaro.org/ <https:// 
+> lore.kernel.org/qemu-devel/20250703105540.67664-47-philmd@linaro.org/>
+> 
+> Should I edit the commit message locally or will be taken care of when 
+> it gets merged on that series?
+
+I'll do it.
+
+Thanks!
 

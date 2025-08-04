@@ -4,86 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02901C87FCB
-	for <qemu-arm@archiver.kernel.org>; Mon,  4 Aug 2025 14:59:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9560C87FCB
+	for <qemu-arm@archiver.kernel.org>; Mon,  4 Aug 2025 14:59:46 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uiwee-0003gJ-RJ; Mon, 04 Aug 2025 10:59:12 -0400
+	id 1uiwes-0005Fs-4h; Mon, 04 Aug 2025 10:59:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uivKv-0000jZ-0A
- for qemu-arm@nongnu.org; Mon, 04 Aug 2025 09:34:47 -0400
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uivLN-0001HN-4c
+ for qemu-arm@nongnu.org; Mon, 04 Aug 2025 09:35:15 -0400
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uivKq-00007S-Jr
- for qemu-arm@nongnu.org; Mon, 04 Aug 2025 09:34:43 -0400
-Received: by mail-wm1-x333.google.com with SMTP id
- 5b1f17b1804b1-459d62184c9so7701295e9.1
- for <qemu-arm@nongnu.org>; Mon, 04 Aug 2025 06:34:40 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uivLG-0000KK-UQ
+ for qemu-arm@nongnu.org; Mon, 04 Aug 2025 09:35:11 -0400
+Received: by mail-wr1-x430.google.com with SMTP id
+ ffacd0b85a97d-3b786421e36so2536069f8f.3
+ for <qemu-arm@nongnu.org>; Mon, 04 Aug 2025 06:35:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1754314479; x=1754919279; darn=nongnu.org;
+ d=linaro.org; s=google; t=1754314504; x=1754919304; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=3Uzbc/9L5Pzkd4K6o0zmm99krPdgkAOBzf5hBdRfajU=;
- b=UbqGDXIcpJluEzFdOg505sxM49p0GdbFz6afW+XE25/GFxW1dAZY+Bni+f8POrZ0dK
- lppaCeJcQRL+Zph2/iNPw+z9k8QvpiLsRw3ZSSuE8oIHaxd80VBh4Pm+/SRnb7yc+RUy
- G7GebPGjiSJYYPvlia8RShDgALPdAv68ffQwNGJHLy7R9WZ/s3hvzWow3gT3Bzm//I40
- 5ZxCWruZxOtAViiCMoZV/SkJ/ckR6p8x8CLWyZAl/39g1uSl9VSWXgO4ZWNPR+4Df9gd
- gdM/RA6l+VvYfzdShvoMJ3k48wPAaIFyzDp+AtE1AC2T6YQFQ+woZbNHwwaKaHG7MSZq
- vgDQ==
+ bh=AmAgMWToY4+su5olx/EK5AlpIDPmCEY+1rTl/kaiArI=;
+ b=cZzTcnC3sMbU2sziZI6uRFBCvesf4CoCwSnKDOo7l/fJqDyu2rGClx+4YH6ex4pZs1
+ sXMenYEAwfQrL2LvS2ozEc7l7pmRpOdkVJvBVOjR4M/kaiwN0eISGEo7cqJ2oUS5SXpx
+ QU8GCqqX/pteNrEtswAnOFO/EsTR0SNxUmuu2QyhXOTx8GIscXmijn/QvJ7wbFMIE+62
+ HdjYeMOA3G0E/wy5z9PR1C6iKbqdpjxVTQQ5GpTfq+2RIRL5ZGhz8i8a+3yDFAnrriIi
+ wJL6Ee4tZ/4lfn/na36PejloQ8XUfYeU9Kcdtt1HgDRceMiLhYTRNbC5dxt2T9cCmDJe
+ sLMQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1754314479; x=1754919279;
+ d=1e100.net; s=20230601; t=1754314504; x=1754919304;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=3Uzbc/9L5Pzkd4K6o0zmm99krPdgkAOBzf5hBdRfajU=;
- b=rmwW+dep7QEqfQTvYxW1KCtb72QA6dSVqWGSs380+nIKu9qC7RNOUB/sOLMSpi/v7Z
- 2u6c7tVw8gqe+rYAqlHFymiQaGpkKvbL93kdYcnL/+VMOzmdqLrmMyZVJwU7LUPpbjBu
- zku2gQnSEX3mXw+0qG0WJUFGd3iUsSt0f9DQ7WbLcO7uQQacukxGJ9tn0ZpfmGyCLbfr
- WyTEk6AqQFNPOvYFvOT5/YlWTX6p0l2pPIbVFV7XBAfBBYq60AsFPfSQKBPHZzSPHVm/
- 25agVB0jPu7PQKhLMhDQPRlLR4B/2rgweSZfSvlymvXUMJiK0dzrbMNyXbRsE06u+Bkd
- RZ2A==
+ bh=AmAgMWToY4+su5olx/EK5AlpIDPmCEY+1rTl/kaiArI=;
+ b=r7WgBESj8jWRR7bDU7+kEgpHDYAQjcAbSoXKut5IDVXzpUxfgkf6lR1oFICuWyH0AZ
+ ZtvGNhC1TrFnDc0y7l1puGGAvywA/3jqdwIrA/raVql+6BViB70A38nTfzuuqwUnGszn
+ 0gbxjj8jmx14FA4B9c/jjS7lVxsg+5rve3Kwup7GaymyKfvdP8xNiEfEvCgHTAtXK2ny
+ VSl0Yf5LeA54ZVr4AaSLtBXS4aj2uATzF+gGP/+x1mBlrhopimrKLPDoSYoJ9eVoII7o
+ Du/oFjiNX5Kgw3RWeUOytOXMhYttvunBSG72bXzDl11DQ+myC4lRty6hcdLhRlBfcfW9
+ TMLA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCX8PnZQzp8pQzwutCYivnZrTGUPaSYfKS2Qmz66NNjJ0UspZqaT4jWv13yXBuoEflVQ6ECUPimSMQ==@nongnu.org
-X-Gm-Message-State: AOJu0YxDVvtWsP4MChdphDAMBKuiOhsk84IyahOrlKogK7YCUtFaJa5G
- 2L26Qjl+wHarGmM+Moq28IQi+zcBHbNASyEZwQATZzl5OXGR+BQy7NIfC3dnIVv7TgY=
-X-Gm-Gg: ASbGnctN/010SOgG1uRkeAdtBfK4B5QRepSdGaDtaId0YH2Z0JwK3beImEdcKviORkH
- RMMWNAd1IUT+TqkI0RISHRmQ76AynTd1U6HFWEFmWM7B1VnCexqcHC/LmnK8RDUBCEYiuLjc4vP
- es9WbyOVtTwuhGozsve14BFCrjwAgcwyzVtVBY/4ISdDXgqYWAR4jaPwtyM0EbxigO0NicXDuGg
- BGTsWgBu/CvU7doEXSJPrHcT9fHmFVUWWG5IMxGU6dGBh76T3Hx3kfOF5rpPlm2a+2C0R17W923
- 5K3uvMyyGIU8WfUnwdwkAgH1cE9yTjCxvlbC9vYT9d7NHE6tvhKP+gvZWGFARLHeNyJR9Tvo5/s
- MocE6Avzuy6LHtHOFcqFw1pq8FiYsMRudDnYwqZtqoJDoI9hoh9ClMka47H+VuipD4+H2zvQoCz
- Co97DVdJU=
-X-Google-Smtp-Source: AGHT+IHdQV3ZZ7y0hcsW5s0sE6REmong0zZ6FpRzcsHdqr0+Z8yx2mEad8dQ6KedYSuApn3+hceRpw==
-X-Received: by 2002:a05:600c:1554:b0:456:1514:5b04 with SMTP id
- 5b1f17b1804b1-458b6b316a2mr72524415e9.21.1754314478960; 
- Mon, 04 Aug 2025 06:34:38 -0700 (PDT)
+ AJvYcCUSLDSo4cVVTU5YgPhpSv2ikb7f9JL5QPDlVjXVaSWzlO/Q8ICqkCJHHqkxFzGqOpN3Z11ps5tQnQ==@nongnu.org
+X-Gm-Message-State: AOJu0YxDikMrBG4KsnDv/KPA4h/NUvQg9I6H65P0izDl4aUz1jOfMGJ3
+ Uj7FNjH1Wr7ilpu1S0XGaIfn1a/9MEmDpjD8SjVIXx+MY32PZKitE/3SKYFPgDuulC8=
+X-Gm-Gg: ASbGnctARNsXLehSHSze0Fm/Bmz2fXlP3nb+6f44kilSMpkj8aiABymy8IHVdV3AGYj
+ IWUk1WA3VhBiNtUOPlYt/Lc4gwPSKkzOl0hJT3axkS8J3wCnB1j6xIuJ9VVHHqcy4wq6/6RzaQ7
+ TzneYZSW0LTD1bkJx/P+CSemfoJOURK9v1T+Baiz5yKRleQtW2VxCNqKtZsQffedzJNSyP3lnsZ
+ vNW6SkmzjkqLbCnGn6PCIftkSQ+wV0JgzXsF0mWIxk7VLgjR712yYJ9004R6IGYmLytkFSq7Zxb
+ L7NpxZc0AxyDtWY0MF64LWsUHiMnqrT9QXCJe2skgT9No4nNaFJ29W44YDx8B+XmJb25HpE+LSL
+ SbgiTTt76KMBcfovOVHrp4NtlZt+BRIl1DfpoYkcGqR1sL/jjv1I+WvppCBbnA3FHRempEWK6
+X-Google-Smtp-Source: AGHT+IGxNG5Ow1nr5+sFQch0aLzlqqprX0lPY7GoGdyWTrgDl0zWy2hE3QfFq5v9SQuq2n7nGQJ+dw==
+X-Received: by 2002:a5d:5f87:0:b0:3b8:d360:3383 with SMTP id
+ ffacd0b85a97d-3b8d94c9ff5mr7236289f8f.46.1754314503580; 
+ Mon, 04 Aug 2025 06:35:03 -0700 (PDT)
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-458f713eb44sm69385015e9.14.2025.08.04.06.34.38
+ 5b1f17b1804b1-4589edfcdd0sm167480675e9.10.2025.08.04.06.35.02
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Mon, 04 Aug 2025 06:34:38 -0700 (PDT)
+ Mon, 04 Aug 2025 06:35:02 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: Peter Maydell <peter.maydell@linaro.org>,
 	qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Ben Dooks <ben.dooks@codethink.co.uk>, qemu-riscv@nongnu.org,
  qemu-block@nongnu.org, qemu-arm@nongnu.org,
- Guenter Roeck <linux@roeck-us.net>, Bin Meng <bmeng.cn@gmail.com>
-Subject: [PATCH-for-10.1 v2 06/11] hw/sd/sdcard: Use complete SEND_OP_COND
- implementation in SPI mode
-Date: Mon,  4 Aug 2025 15:34:00 +0200
-Message-ID: <20250804133406.17456-7-philmd@linaro.org>
+ Guenter Roeck <linux@roeck-us.net>, Bin Meng <bmeng.cn@gmail.com>,
+ Alistair Francis <Alistair.Francis@wdc.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Weiwei Li <liwei1518@gmail.com>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>
+Subject: [PATCH-for-10.1 v2 11/11] tests/functional: Test SD cards in SPI mode
+ (using sifive_u machine)
+Date: Mon,  4 Aug 2025 15:34:05 +0200
+Message-ID: <20250804133406.17456-12-philmd@linaro.org>
 X-Mailer: git-send-email 2.49.0
 In-Reply-To: <20250804133406.17456-1-philmd@linaro.org>
 References: <20250804133406.17456-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::333;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x333.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::430;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x430.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -106,63 +109,104 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-While spi_cmd_SEND_OP_COND() is incomplete, sd_cmd_SEND_OP_COND()
-is, except it doesn't return the correct value in SPI mode.
-Correct and use, removing the need for spi_cmd_SEND_OP_COND().
+Add a test which uses the sifive_u machine to boot a Linux
+kernel from a SD card connected via a SPI interface.
 
-Fixes: 775616c3ae8 ("Partial SD card SPI mode support")
+Inspired from the command provided in:
+- https://lore.kernel.org/qemu-devel/94b2c5bf-53d0-4c74-8264-f3021916f38c@roeck-us.net/
+- https://lore.kernel.org/qemu-devel/840016d0-0d49-4ef4-8372-b62b3bcd0ac6@codethink.co.uk/
+
+Inspired-by: Guenter Roeck <linux@roeck-us.net>
+Inspired-by: Ben Dooks <ben.dooks@codethink.co.uk>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/sd/sd.c | 15 +++++----------
- 1 file changed, 5 insertions(+), 10 deletions(-)
+ MAINTAINERS                               |  1 +
+ tests/functional/meson.build              |  1 +
+ tests/functional/test_riscv64_sifive_u.py | 51 +++++++++++++++++++++++
+ 3 files changed, 53 insertions(+)
+ create mode 100755 tests/functional/test_riscv64_sifive_u.py
 
-diff --git a/hw/sd/sd.c b/hw/sd/sd.c
-index 01ec6d951c8..df2a272c6a2 100644
---- a/hw/sd/sd.c
-+++ b/hw/sd/sd.c
-@@ -1414,14 +1414,6 @@ static sd_rsp_type_t sd_cmd_GO_IDLE_STATE(SDState *sd, SDRequest req)
-     return sd_is_spi(sd) ? sd_r1 : sd_r0;
- }
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 28cea342718..a07086ed762 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -1695,6 +1695,7 @@ S: Supported
+ F: docs/system/riscv/sifive_u.rst
+ F: hw/*/*sifive*.c
+ F: include/hw/*/*sifive*.h
++F: tests/functional/test_riscv64_sifive_u.py
  
--/* CMD1 */
--static sd_rsp_type_t spi_cmd_SEND_OP_COND(SDState *sd, SDRequest req)
--{
--    sd->state = sd_transfer_state;
--
--    return sd_r1;
--}
--
- /* CMD2 */
- static sd_rsp_type_t sd_cmd_ALL_SEND_CID(SDState *sd, SDRequest req)
- {
-@@ -2046,6 +2038,9 @@ static sd_rsp_type_t sd_cmd_SEND_OP_COND(SDState *sd, SDRequest req)
-         sd->state = sd_ready_state;
-     }
+ AMD Microblaze-V Generic Board
+ M: Sai Pavan Boddu <sai.pavan.boddu@amd.com>
+diff --git a/tests/functional/meson.build b/tests/functional/meson.build
+index ecf965adc6c..311c6f18065 100644
+--- a/tests/functional/meson.build
++++ b/tests/functional/meson.build
+@@ -274,6 +274,7 @@ tests_riscv64_system_quick = [
+ ]
  
-+    if (sd_is_spi(sd)) {
-+        return sd_r1;
-+    }
-     return sd_r3;
- }
+ tests_riscv64_system_thorough = [
++  'riscv64_sifive_u',
+   'riscv64_tuxrun',
+ ]
  
-@@ -2590,7 +2585,7 @@ static const SDProto sd_proto_spi = {
-     .name = "SPI",
-     .cmd = {
-         [0]  = {0,  sd_spi, "GO_IDLE_STATE", sd_cmd_GO_IDLE_STATE},
--        [1]  = {0,  sd_spi, "SEND_OP_COND", spi_cmd_SEND_OP_COND},
-+        [1]  = {0,  sd_spi, "SEND_OP_COND", sd_cmd_SEND_OP_COND},
-         [5]  = {9,  sd_spi, "IO_SEND_OP_COND", sd_cmd_optional},
-         [6]  = {10, sd_spi, "SWITCH_FUNCTION", sd_cmd_SWITCH_FUNCTION},
-         [8]  = {0,  sd_spi, "SEND_IF_COND", sd_cmd_SEND_IF_COND},
-@@ -2626,7 +2621,7 @@ static const SDProto sd_proto_spi = {
-         [13] = {8,  sd_spi, "SD_STATUS", sd_acmd_SD_STATUS},
-         [22] = {8,  sd_spi, "SEND_NUM_WR_BLOCKS", sd_acmd_SEND_NUM_WR_BLOCKS},
-         [23] = {8,  sd_spi, "SET_WR_BLK_ERASE_COUNT", sd_acmd_SET_WR_BLK_ERASE_COUNT},
--        [41] = {8,  sd_spi, "SEND_OP_COND", spi_cmd_SEND_OP_COND},
-+        [41] = {8,  sd_spi, "SEND_OP_COND", sd_cmd_SEND_OP_COND},
-         [42] = {8,  sd_spi, "SET_CLR_CARD_DETECT", sd_acmd_SET_CLR_CARD_DETECT},
-         [51] = {8,  sd_spi, "SEND_SCR", sd_acmd_SEND_SCR},
-     },
+diff --git a/tests/functional/test_riscv64_sifive_u.py b/tests/functional/test_riscv64_sifive_u.py
+new file mode 100755
+index 00000000000..dc4cb8a4a96
+--- /dev/null
++++ b/tests/functional/test_riscv64_sifive_u.py
+@@ -0,0 +1,51 @@
++#!/usr/bin/env python3
++#
++# Functional test that boots a Linux kernel on a Sifive U machine
++# and checks the console
++#
++# Copyright (c) Linaro Ltd.
++#
++# Author:
++#  Philippe Mathieu-Daudé
++#
++# SPDX-License-Identifier: GPL-2.0-or-later
++
++import os
++
++from qemu_test import Asset, LinuxKernelTest
++from qemu_test import skipIfMissingCommands
++
++
++class SifiveU(LinuxKernelTest):
++
++    ASSET_KERNEL = Asset(
++        'https://storage.tuxboot.com/buildroot/20241119/riscv64/Image',
++        '2bd8132a3bf21570290042324fff48c987f42f2a00c08de979f43f0662ebadba')
++    ASSET_ROOTFS = Asset(
++        ('https://github.com/groeck/linux-build-test/raw/'
++         '9819da19e6eef291686fdd7b029ea00e764dc62f/rootfs/riscv64/'
++         'rootfs.ext2.gz'),
++        'b6ed95610310b7956f9bf20c4c9c0c05fea647900df441da9dfe767d24e8b28b')
++
++    def test_riscv64_sifive_u_mmc_spi(self):
++        self.set_machine('sifive_u')
++        kernel_path = self.ASSET_KERNEL.fetch()
++        rootfs_path = self.uncompress(self.ASSET_ROOTFS)
++
++        self.vm.set_console()
++        kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
++                               'root=/dev/mmcblk0 rootwait '
++                               'earlycon=sbi console=ttySIF0 '
++                               'panic=-1 noreboot')
++        self.vm.add_args('-kernel', kernel_path,
++                         '-drive', f'file={rootfs_path},if=sd,format=raw',
++                         '-append', kernel_command_line,
++                         '-no-reboot')
++        self.vm.launch()
++        self.wait_for_console_pattern('Boot successful.')
++
++        os.remove(rootfs_path)
++
++
++if __name__ == '__main__':
++    LinuxKernelTest.main()
 -- 
 2.49.0
 

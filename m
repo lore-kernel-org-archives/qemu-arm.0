@@ -4,73 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B647BC87FCB
-	for <qemu-arm@archiver.kernel.org>; Mon,  4 Aug 2025 11:24:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6220C87FCB
+	for <qemu-arm@archiver.kernel.org>; Mon,  4 Aug 2025 13:12:41 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uitGe-0004HV-TE; Mon, 04 Aug 2025 07:22:13 -0400
+	id 1uiuzI-0004Od-DV; Mon, 04 Aug 2025 09:12:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1uiswe-0007OH-ED
- for qemu-arm@nongnu.org; Mon, 04 Aug 2025 07:01:59 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1uiswZ-0008Eb-9j
- for qemu-arm@nongnu.org; Mon, 04 Aug 2025 07:01:30 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1754305284;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=b0RsbnEN+2/XOOVv70f4RByBB9Er+SDqlRSFzhu9Mlc=;
- b=jFxBPBgyLygTmBX8ChBBcOrRIZ+OA24KzDjVn1tuTB1GvgqrDqBS4/TXgm8oUiR6mqC7hS
- DeuVuVvDAQRcEguT6UydHgCOjtkMtSAhXAG7nZqVwkJNSDLjEDaI+g5GDI1nXPIYJmXnUE
- Fvys5HzQiqx/D4ESo0fM5tlsGbw4i5M=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-517-xwvRd7-vPj-XhUJAgKjVPQ-1; Mon,
- 04 Aug 2025 07:01:22 -0400
-X-MC-Unique: xwvRd7-vPj-XhUJAgKjVPQ-1
-X-Mimecast-MFC-AGG-ID: xwvRd7-vPj-XhUJAgKjVPQ_1754305281
-Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 65D7B18002B2; Mon,  4 Aug 2025 11:01:21 +0000 (UTC)
-Received: from corto.redhat.com (unknown [10.44.32.225])
- by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 19B701800EED; Mon,  4 Aug 2025 11:01:17 +0000 (UTC)
-From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: Michael Tokarev <mjt@tls.msk.ru>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Jamin Lin <jamin_lin@aspeedtech.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 2/4] roms/Makefile: build ast27x0_bootrom
-Date: Mon,  4 Aug 2025 13:01:06 +0200
-Message-ID: <20250804110108.2414355-3-clg@redhat.com>
-In-Reply-To: <20250804110108.2414355-1-clg@redhat.com>
-References: <20250804110108.2414355-1-clg@redhat.com>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1uiuFZ-0004zL-Gy
+ for qemu-arm@nongnu.org; Mon, 04 Aug 2025 08:25:15 -0400
+Received: from mail-yw1-x1132.google.com ([2607:f8b0:4864:20::1132])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1uiuFX-0002Af-1r
+ for qemu-arm@nongnu.org; Mon, 04 Aug 2025 08:25:08 -0400
+Received: by mail-yw1-x1132.google.com with SMTP id
+ 00721157ae682-71a34087749so25507157b3.2
+ for <qemu-arm@nongnu.org>; Mon, 04 Aug 2025 05:25:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1754310305; x=1754915105; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=jkpMkCEFN+3DuTId4gdEnuPVXQJW+IwhbmJ4dhsWCGk=;
+ b=udSF+aY9IxryhJnuw/w0l4CtEYl8zsw0DHeonMail4GkjH8gh0VHHQGG5OK3AX1o4T
+ MpMrqKaUr8XnoNIP7KPD8cZQnFkmUh5/a44mnVv4D2xCYb4UYrtYT1wVNYVU2hwfRt8j
+ 277DzqGTwb5byKp3DSJsgaEoPV+owJSwE7guLO27f1PIp0gUFe00GEmTwwAHa0h3HAYQ
+ 3J49p0ej/1K3/eGqUsyuXRRcRK1TzmIkGRPDDwD+Zl88dPUNUb/rjZQOZKhHUXA1L67p
+ vZxAZf0wmecsDIQ+y4JtKAHKWhB3XKhJWE5A8yy4sGx3IKCJIUKHbj2FykP7h7M+yakE
+ yxEg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1754310305; x=1754915105;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=jkpMkCEFN+3DuTId4gdEnuPVXQJW+IwhbmJ4dhsWCGk=;
+ b=wqIeRvsD3iu3+27eRZjB+DiL7MY415DyynZ7/273XiXvp6Aw1Y4IkRGe1/IORjBifi
+ KcQFbPBMPQnHgbczgmA8TBwDPuF5Q7FFHtuXdnvY1/oQ/ftqQURnQqqlvjNGjPhznyzG
+ LXLGQSfFvPYiMnPbWVBywvVf+vxRRJbxzdE6dxVR+YuPaDPN9DFovWX3QSDkpDkrqQyS
+ MntgYra8pLpT3+Mq4OnFQRWyQuoUO4+U/WnfNn07OhLWWPSv7WGSRKZmNtUemGfpPahb
+ BukKZcItxp4dASpw9Bo2xRtxA0/V/RNi7dXrajCx3YXlnnsyu40OwUY/sMomBZ+0IOes
+ rzgw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCU8aDg+QOL9Sm5oW2rdyPGoTmYmBcrNvzcQ7QRr1kNjDFqbVqL00mBCZrMcXtwMbVYzu7rsEm1vqQ==@nongnu.org
+X-Gm-Message-State: AOJu0YxyRIbEhi9s6yZAhxR/W7XesdYa47THY15P/nANccISUwVC7/zQ
+ djyCGoJOApdY6RCrVUjPFU0lgIayyubXpZRZQ+bvRakstFMhiXBjTYzARmXLV7LvUldMDoz4pUt
+ 6JpL7nxnXW9FKVVEvEck+dU1r0biTsNRBGSWgUkus8A==
+X-Gm-Gg: ASbGncuDumFV1G7uKAsXpsKw63GSZj1TuTBtsnscvpekHWpefXxWmwYwmg4bFFcIjY8
+ MdH8MQEbpoSkRTadEM5C3P4UT7l8lDD6ZYRwMJa4S5flN/+fr56eTnkVJUym3h7wUqE4g5aboVS
+ kkcgReBqzALz8rJq+nMmonfalPNHY35tGmhvCHhNKtDNQeOb16KdwIk0Rh4IVjwUj4hoM2jr+lQ
+ R8duhZ8ybithJwJbQk=
+X-Google-Smtp-Source: AGHT+IFQJ/znbxOONyTl16/C5Y1S38EA1I1UHM+snittR/zNCN1qWA14pSG/LppCgM/JgYh0IY9TgapUcry0e7At/ck=
+X-Received: by 2002:a05:690c:660f:b0:71a:2d5f:49ae with SMTP id
+ 00721157ae682-71b7f5e1304mr111743697b3.6.1754310304938; Mon, 04 Aug 2025
+ 05:25:04 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+References: <20250716095432.81923-1-luc.michel@amd.com>
+ <20250716095432.81923-14-luc.michel@amd.com>
+In-Reply-To: <20250716095432.81923-14-luc.michel@amd.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 4 Aug 2025 13:24:52 +0100
+X-Gm-Features: Ac12FXw5hYM7S5lWY_h5eG6eAXt1iHL4O7ekcFpHEI3ZjoR5UJQi607sHGae1XQ
+Message-ID: <CAFEAcA-x_CYWPM2TeGSTLjCj==3JY_uyvfFmR=nLi4pRLw-P2Q@mail.gmail.com>
+Subject: Re: [PATCH 13/48] hw/arm/xlnx-versal: VersalMap: add support for
+ OR'ed IRQs
+To: Luc Michel <luc.michel@amd.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+ Francisco Iglesias <francisco.iglesias@amd.com>,
+ "Edgar E . Iglesias" <edgar.iglesias@amd.com>, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ Alistair Francis <alistair@alistair23.me>,
+ Frederic Konrad <frederic.konrad@amd.com>, 
+ Sai Pavan Boddu <sai.pavan.boddu@amd.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1132;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1132.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -86,44 +102,61 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Michael Tokarev <mjt@tls.msk.ru>
+On Wed, 16 Jul 2025 at 10:55, Luc Michel <luc.michel@amd.com> wrote:
+>
+> Improve the IRQ index in the VersalMap structure to turn it into a
+> descriptor:
+>    - the lower 16 bits still represent the IRQ index
+>    - bit 18 is used to indicate a shared IRQ connected to a OR gate
+>    - bits 19 to 22 indicate the index on the OR gate.
+>
+> This allows to share an IRQ among multiple devices. An OR gate is
+> created to connect the devices to the actual IRQ pin.
 
-Resolves: https://gitlab.com/qemu-project/qemu/-/issues/3052
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Tested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Link: https://lore.kernel.org/qemu-devel/607a943a587248fbe0ff0897de80aee98a093caa.1753654515.git.mjt@tls.msk.ru
-[ clg: Removed make CC= workaround ]
-Reviewed-by: Jamin Lin <jamin_lin@aspeedtech.com>
-Signed-off-by: Cédric Le Goater <clg@redhat.com>
----
- roms/Makefile | 5 +++++
- 1 file changed, 5 insertions(+)
 
-diff --git a/roms/Makefile b/roms/Makefile
-index 6af68a922f30..4c8793c5bd45 100644
---- a/roms/Makefile
-+++ b/roms/Makefile
-@@ -68,6 +68,7 @@ default help:
- 	@echo "  u-boot.sam460      -- update u-boot.sam460"
- 	@echo "  npcm7xx_bootrom    -- update vbootrom for npcm7xx"
- 	@echo "  npcm8xx_bootrom    -- update vbootrom for npcm8xx"
-+	@echo "  ast27x0_bootrom    -- update vbootrom for ast27x0"
- 	@echo "  efi                -- update UEFI (edk2) platform firmware"
- 	@echo "  opensbi32-generic  -- update OpenSBI for 32-bit generic machine"
- 	@echo "  opensbi64-generic  -- update OpenSBI for 64-bit generic machine"
-@@ -200,6 +201,10 @@ npcm8xx_bootrom:
- 	$(MAKE) -C vbootrom/npcm8xx CROSS_COMPILE=$(aarch64_cross_prefix)
- 	cp vbootrom/npcm8xx/npcm8xx_bootrom.bin ../pc-bios/npcm8xx_bootrom.bin
- 
-+ast27x0_bootrom:
-+	$(MAKE) -C vbootrom/ast27x0 CROSS_COMPILE=$(aarch64_cross_prefix)
-+	cp vbootrom/ast27x0/ast27x0_bootrom.bin ../pc-bios/ast27x0_bootrom.bin
-+
- hppa-firmware:
- 	$(MAKE) -C seabios-hppa parisc
- 	cp seabios-hppa/out/hppa-firmware.img      ../pc-bios/
--- 
-2.50.1
+> +/*
+> + * When the R_VERSAL_IRQ_ORED flag is set on an IRQ descriptor, this function is
+> + * used to return the corresponding or gate input IRQ. The or gate is created if
+> + * not already existant.
+> + *
+> + * Or gates are placed under the /soc/irq-or-gates QOM container.
+> + */
+> +static qemu_irq versal_get_irq_or_gate_in(Versal *s, int irq_idx,
+> +                                          qemu_irq target_irq)
+> +{
+> +    Object *container = versal_get_child(s, "irq-or-gates");
+> +    DeviceState *dev;
+> +    g_autofree char *name;
+> +    int idx, or_idx;
+> +
+> +    idx = FIELD_EX32(irq_idx, VERSAL_IRQ, IRQ);
+> +    or_idx = FIELD_EX32(irq_idx, VERSAL_IRQ, OR_IDX);
+> +
+> +    name = g_strdup_printf("irq[%d]", idx);
+> +    dev = DEVICE(object_resolve_path_at(container, name));
+> +
+> +    if (dev == NULL) {
+> +        dev = qdev_new(TYPE_OR_IRQ);
 
+Here we create a device...
+
+> +        object_property_add_child(container, name, OBJECT(dev));
+> +        qdev_prop_set_uint16(dev, "num-lines", 1 << R_VERSAL_IRQ_OR_IDX_LENGTH);
+> +        qdev_realize_and_unref(dev, NULL, &error_abort);
+> +        qdev_connect_gpio_out(dev, 0, target_irq);
+> +    }
+> +
+> +    return qdev_get_gpio_in(dev, or_idx);
+
+...but then we don't save the pointer to it, so the only
+thing still hanging onto it is the QOM tree.
+
+If you want to change "embedded device struct" into
+"allocate memory to create devices" that's fine, but the
+SoC should still keep track of everything it's creating,
+so that (at least in theory) it could clean it up on
+unrealize.
+
+thanks
+-- PMM
 

@@ -4,82 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78F75C87FCF
-	for <qemu-arm@archiver.kernel.org>; Mon,  4 Aug 2025 23:10:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58858C87FCB
+	for <qemu-arm@archiver.kernel.org>; Mon,  4 Aug 2025 23:53:45 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uj4Jk-00016C-IO; Mon, 04 Aug 2025 19:10:08 -0400
+	id 1uj4zn-0004Uj-Mc; Mon, 04 Aug 2025 19:53:35 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1uj4Jh-0000wt-AF
- for qemu-arm@nongnu.org; Mon, 04 Aug 2025 19:10:05 -0400
-Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1uj4Jf-0003nf-NN
- for qemu-arm@nongnu.org; Mon, 04 Aug 2025 19:10:05 -0400
-Received: by mail-pl1-x62f.google.com with SMTP id
- d9443c01a7336-23fe2be6061so36581445ad.0
- for <qemu-arm@nongnu.org>; Mon, 04 Aug 2025 16:10:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1754349002; x=1754953802; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=6V4vtIAJUGkVz2NDjj+4q+393KbmH3gkt7cZX/an5X4=;
- b=FWvP3iC1B/YEmqTkX0RJOjAiRX+pJz5xa3aV/GkT8y9YOdT0WeEtWvxhvfYeDFeOkG
- s6z5/2PFoSP40cLv+4KDSVsSJOmARXGNAZqZCmlTOaaeSKdkvLD0vfJ6fyFc9fEaFRej
- 1G9AC3iCeQQrG4/wgnH1o54EBJ5vCrE8xFLHx/Rh6HMVWzMvl7RdsQF/h3zgd/YZqpQS
- x5yUfbn8ttBLP61FgltAu4zadphMLvSkqCuQZUc2ayZLL+slRKPOL8Wfvx8DbUjZBaix
- OfLFIzTNiohzPx0B5hXdJb+5Ez1KBt6pOV81K7WIxaaCbhwkT4eFqjKpFHo+uYMdODZr
- Ixig==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1754349002; x=1754953802;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=6V4vtIAJUGkVz2NDjj+4q+393KbmH3gkt7cZX/an5X4=;
- b=mGcSuBuzMrRPCAdEJmBU5dXdBTJQatlX4OgwMDLGN4+921YzTtrYp12umsbkXUoqjw
- Nik/wcgnbAer+vBYROSP3tXNN+AaU1aV2FqyBm+A5ppFjUhVe8eOOQdYpvUjqmrzyllQ
- adAC3bmBDv8QjatZX9krDWkWDpsDraIsMKliYGVXFTIwuOsNBcLJB1b/aUis2LS6Fk8j
- feYVuUPnqnMZB/bPHoOLTmFImJhXTOeVvQRvSF1T/5U9Ua5Mk3UvihX+4LfdEwTqn1Kp
- Jsi7+EEHTXLFPDTwfc+w3TXTV1Xc4EtH5CvEtt21uHTz/eqs1HbIQvGdTdUqZBGFll23
- hSmA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVMnMoz8+c5AfzZ9EHldqJN9zWOjGXukf7uCJKvynvI2n4f9N8XTxJINiayMqC+FO9zLG5VdWWWyQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yw1KL7BhIh4cqIGsXnGxh+9DQWQJZZxPCzPe/23qMp3Y2pLkIjg
- CTrvNRcJUjA5zw8LkHuyAjCMJTJSrarXiLnjY8zxDb1DNc6cW2VqQ980i8nJbBcaG9A=
-X-Gm-Gg: ASbGncucr7xxBqIuDBQ+/jycMwd2BK8kw0Ew4oG7MWX1mGN2ekedVFn9pQ9Ae61DLD1
- N68nCc2DRQol4cgMBS2TUHRmQkM6eU0ShcBTPf6q3ab3omI9OB6azvQh0sX9qMZsccvIhco7GRA
- 2+7Om4Nbdp8T7b+FKsXWhRwoxgCdTZysufSbZ/ezcSY4EeQOBMjfj7rZQ7JkXm4bzNeKizXWJvj
- g16XcdOD/wdF15BAn81WDKfMgzdLJtFmoJw4Zw2eD+0bP2yiP2kMBHHMlKJ1nyUgRW5LulvXJdR
- MkbZsxa5LZSLHIxgx+/ucgopxv32mMZJvY1wJNDjRbYyg97ddgsMnlrm9uYNcWZSD6bLpo3mEVM
- V4tMFUqqt/WqWqmXytkT5Vp4iZg+EhF43JWssb5FRGsWCTg==
-X-Google-Smtp-Source: AGHT+IEcUGx7deBhZe/fAE1U6ip0i0HO9ktQMN91h4SHP7F4dFgQIq1WLdnZ0oF+DBudiz7jp1jYwA==
-X-Received: by 2002:a17:902:d4c1:b0:23f:b94d:7da7 with SMTP id
- d9443c01a7336-24288ddfb38mr16816215ad.14.1754349001521; 
- Mon, 04 Aug 2025 16:10:01 -0700 (PDT)
-Received: from [192.168.1.87] ([38.41.223.211])
- by smtp.gmail.com with ESMTPSA id
- 41be03b00d2f7-b422b785696sm9502773a12.9.2025.08.04.16.10.00
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 04 Aug 2025 16:10:01 -0700 (PDT)
-Message-ID: <0973c013-72c5-443f-bcb4-69bb3707974f@linaro.org>
-Date: Mon, 4 Aug 2025 16:10:00 -0700
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 14/17] hw/arm, accel/hvf, whpx: unify
- get_physical_address_range between WHPX and HVF
-Content-Language: en-US
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Mohamed Mediouni <mohamed@unpredictable.fr>, qemu-devel@nongnu.org
-Cc: Shannon Zhao <shannon.zhaosl@gmail.com>, Ani Sinha <anisinha@redhat.com>, 
- Phil Dennis-Jordan <phil@philjordan.eu>, Roman Bolshakov
- <rbolshakov@ddn.com>, Igor Mammedov <imammedo@redhat.com>,
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1uj4zc-0004RD-4R
+ for qemu-arm@nongnu.org; Mon, 04 Aug 2025 19:53:25 -0400
+Received: from p-east3-cluster5-host3-snip4-5.eps.apple.com ([57.103.86.156]
+ helo=outbound.qs.icloud.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1uj4za-0006nT-69
+ for qemu-arm@nongnu.org; Mon, 04 Aug 2025 19:53:23 -0400
+Received: from outbound.qs.icloud.com (unknown [127.0.0.2])
+ by p00-icloudmta-asmtp-us-east-2d-100-percent-7 (Postfix) with ESMTPS id
+ E24FF18000BF; Mon,  4 Aug 2025 23:53:15 +0000 (UTC)
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
+ s=sig1; bh=cTJquXsPjv4ShE+qEC2i5SuDDtudEwPpzptwV611svM=;
+ h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To:x-icloud-hme;
+ b=ey0ltUWGrB53pDCA6ZSpJf3wMgWcWCIzxbSzEGAg1E4tkTQCOkcY1Vl31py8LGp9OY/CfUetGKQX7Y9SU2msQY66rehBJ9MuCLEKz9lILBBoGyJMNiXdulMhVUfeftk8X9weIyDl1Y6PDT5Si1cQlydMjaN8gFEC3mFW+UxN2KW5oL5saC/IFWA5jGz7Y1wGlrqeLwKyqLel7q2IEl5vmaph5WeztEdgfZdAjHolAJwrpGU8N/OjT7aHjUdxJrSn10kNQR49Re6DYYb0A6zfm6GhG0o8BGRl+d+V/9tmsZlmcuePcwdr8HshNyNtFvHJj6omcVDh2c0m0sOh5CpE9w==
+X-Client-IP: 109.40.242.215
+Received: from smtpclient.apple (qs-asmtp-me-k8s.p00.prod.me.com
+ [17.57.155.37])
+ by p00-icloudmta-asmtp-us-east-2d-100-percent-7 (Postfix) with ESMTPSA id
+ ED10018000A1; Mon,  4 Aug 2025 23:53:10 +0000 (UTC)
+Content-Type: text/plain;
+	charset=utf-8
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3860.100.5.1.1\))
+Subject: Re: [PATCH v4 12/17] hw/arm: virt: cleanly fail on attempt to use the
+ platform vGIC together with ITS
+From: Mohamed Mediouni <mohamed@unpredictable.fr>
+In-Reply-To: <395a77c2-53c3-436b-b46f-b301dc8e619b@linaro.org>
+Date: Tue, 5 Aug 2025 01:52:57 +0200
+Cc: qemu-devel@nongnu.org, Shannon Zhao <shannon.zhaosl@gmail.com>,
+ Ani Sinha <anisinha@redhat.com>, Phil Dennis-Jordan <phil@philjordan.eu>,
+ Roman Bolshakov <rbolshakov@ddn.com>, Igor Mammedov <imammedo@redhat.com>,
  Eduardo Habkost <eduardo@habkost.net>, Mads Ynddal <mads@ynddal.dk>,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ =?utf-8?B?IkRhbmllbCBQLiBCZXJyYW5nw6ki?= <berrange@redhat.com>,
  Sunil Muthuswamy <sunilmut@microsoft.com>, Zhao Liu <zhao1.liu@intel.com>,
  "Michael S. Tsirkin" <mst@redhat.com>, Alexander Graf <agraf@csgraf.de>,
  qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
@@ -87,23 +53,37 @@ Cc: Shannon Zhao <shannon.zhaosl@gmail.com>, Ani Sinha <anisinha@redhat.com>,
  Yanan Wang <wangyanan55@huawei.com>,
  Richard Henderson <richard.henderson@linaro.org>,
  Cameron Esfahani <dirty@apple.com>, Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
+ =?utf-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
+Content-Transfer-Encoding: quoted-printable
+Message-Id: <62287B84-98BB-4E97-B43C-9ED31DB0C113@unpredictable.fr>
 References: <20250804142326.72947-1-mohamed@unpredictable.fr>
- <20250804142326.72947-15-mohamed@unpredictable.fr>
- <e5bfbc26-de3d-4f4c-b15d-6c7ea1b29e49@linaro.org>
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-In-Reply-To: <e5bfbc26-de3d-4f4c-b15d-6c7ea1b29e49@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62f;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pl1-x62f.google.com
+ <20250804142326.72947-13-mohamed@unpredictable.fr>
+ <395a77c2-53c3-436b-b46f-b301dc8e619b@linaro.org>
+To: =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+X-Mailer: Apple Mail (2.3860.100.5.1.1)
+X-Proofpoint-GUID: OPLyPOtWT-uH6_8C6qoqUC-hIyRvMJ97
+X-Proofpoint-ORIG-GUID: OPLyPOtWT-uH6_8C6qoqUC-hIyRvMJ97
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwODA0MDE0NiBTYWx0ZWRfX8ALeT3KsLrli
+ hdYghQemZXACNm+cmGtE4XoIv+1OblVc12qtOM25U2MCbi+bPpd4F9gPrTqddNJ0epAgp/C6ROb
+ oB+YFL/UcFCmW7PWt5IYCsXuSXgCJ+KcMy9AL8Xwzuzog4YHCGVPL/YMyLfZxKyclQbOwjLbO0+
+ tpbE0jN0fmHb5gYQQVbO0Hq/xQVINpOQiVJ2fmIADSfPLgstuYT372tZoAkkq5lfkEfxVIfzhwf
+ CwVr4u5w1xddpt39k0fNWtTBN/Gxjgldc0nBzEX5p47cuzzZ1pdwFN8Bk8guhutoA+hSbkZwo=
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.9,FMLib:17.12.80.40
+ definitions=2025-08-04_10,2025-08-04_01,2025-03-28_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0
+ adultscore=0 phishscore=0 suspectscore=0 bulkscore=0 spamscore=0
+ mlxlogscore=999 malwarescore=0 clxscore=1030 classifier=spam adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2506270000 definitions=main-2508040146
+Received-SPF: pass client-ip=57.103.86.156;
+ envelope-from=mohamed@unpredictable.fr; helo=outbound.qs.icloud.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,52 +99,49 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 8/4/25 4:03 PM, Philippe Mathieu-Daudé wrote:
+
+
+> On 5. Aug 2025, at 00:59, Philippe Mathieu-Daud=C3=A9 =
+<philmd@linaro.org> wrote:
+>=20
 > On 4/8/25 16:23, Mohamed Mediouni wrote:
+>> Windows Hypervisor Platform's vGIC doesn't support ITS.
+>> Deal with this by reporting to the user and not creating the ITS =
+device.
 >> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 >> ---
->>    accel/hvf/hvf-all.c        |  7 +++++--
->>    hw/arm/virt.c              | 41 ++++----------------------------------
->>    include/hw/boards.h        |  4 ++--
->>    include/system/hvf_int.h   |  2 ++
->>    target/arm/hvf-stub.c      | 20 -------------------
->>    target/arm/hvf/hvf.c       |  6 +++---
->>    target/arm/hvf_arm.h       |  3 ---
->>    target/arm/meson.build     |  1 -
->>    target/arm/whpx/whpx-all.c |  5 +++--
->>    target/i386/hvf/hvf.c      | 10 ++++++++++
->>    10 files changed, 29 insertions(+), 70 deletions(-)
->>    delete mode 100644 target/arm/hvf-stub.c
-> 
-> 
->> diff --git a/target/i386/hvf/hvf.c b/target/i386/hvf/hvf.c
->> index 818b50419f..fa06e3b815 100644
->> --- a/target/i386/hvf/hvf.c
->> +++ b/target/i386/hvf/hvf.c
->> @@ -225,6 +225,16 @@ int hvf_arch_init(void)
->>        return 0;
->>    }
->>    
->> +uint32_t hvf_arch_get_default_ipa_bit_size(void)
->> +{
->> +    return 48;
->> +}
+>>  hw/arm/virt.c | 10 ++++++++++
+>>  1 file changed, 10 insertions(+)
+>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+>> index 98a1c74c42..0039f6a12b 100644
+>> --- a/hw/arm/virt.c
+>> +++ b/hw/arm/virt.c
+>> @@ -741,6 +741,16 @@ static void create_its(VirtMachineState *vms)
+>>          return;
+>>      }
+>>  +    if (whpx_enabled() && vms->tcg_its) {
+>> +        /*
+>> +         * Signal to the user when ITS is neither supported by the =
+host
+>> +         * nor emulated by the machine.
+>> +         */
+>> +        info_report("ITS not supported on WHPX.");
+>> +        info_report("To support MSIs, use its=3Doff to enable GICv3 =
++ GICv2m.");
+>=20
+> So if the users deliberately asks for its=3Don, we ignore the request =
+and
+> keep going. Shouldn't we just exit so the user adapts its command =
+line?
+Maybe that=E2=80=99s the best way to go=E2=80=A6 what makes me a bit =
+hesitant on that one though is that the default is its=3Don.
+>> +        return;
+>> +    }
 >> +
->> +uint32_t hvf_arch_get_max_ipa_bit_size(void)
->> +{
->> +    return 48;
-> 
-> These don't make much sense on x86...
-> 
-
-Common path in accel/hvf/hvf-all.c makes use of it, so it's not a bad 
-idea to have an architecture agnostic function for it, instead of:
-if (arm_function) {...}.
-
-It happens that on x64, VA space is 48 bits.
-
->> +}
-> 
-> 
+>>      dev =3D qdev_new(its_class_name());
+>>        object_property_set_link(OBJECT(dev), "parent-gicv3", =
+OBJECT(vms->gic),
+>=20
+>=20
 
 

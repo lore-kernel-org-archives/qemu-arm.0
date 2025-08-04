@@ -4,84 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F103C87FD1
-	for <qemu-arm@archiver.kernel.org>; Mon,  4 Aug 2025 16:00:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 130EEC87FCB
+	for <qemu-arm@archiver.kernel.org>; Mon,  4 Aug 2025 16:25:30 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uixYr-0006Ak-Ef; Mon, 04 Aug 2025 11:57:17 -0400
+	id 1uixyt-0008MZ-TC; Mon, 04 Aug 2025 12:24:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1uiw76-0005rf-FG
- for qemu-arm@nongnu.org; Mon, 04 Aug 2025 10:24:32 -0400
-Received: from p-east3-cluster6-host11-snip4-4.eps.apple.com ([57.103.85.235]
- helo=outbound.qs.icloud.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1uiw6t-0000T2-CE
- for qemu-arm@nongnu.org; Mon, 04 Aug 2025 10:24:26 -0400
-Received: from outbound.qs.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-east-2d-10-percent-0 (Postfix) with ESMTPS id
- 91D4F180015B; Mon,  4 Aug 2025 14:24:09 +0000 (UTC)
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; bh=ZQG1PZXAHD0ePF2OTqqGz/5xuJKUUkaES4V/IPGscoc=;
- h=From:To:Subject:Date:Message-Id:MIME-Version:x-icloud-hme;
- b=YZNeY1cn/ivU/KdjdQbiip54rGAaAdFDMJPNqd2zkuNn7D9kK44ijzZa0/Z5KqJUZeQSZJmwXp5eXwhcF9D9fWNEY2u067rKZjS6znCeyZ1VWOlCXg3jAAH6bkTeeGIOyaCmoA74Kh/tv0kfL1HIAKFfXNwGJSBWCUAeNRfMET42RFYcAWhJjYksIId6gI0dvvDtILszCBvn78pA1oq+ppBy7vRidPsqUY6z3FiBbYTmo+4/+/Xd1rHinEx2fXrfH0VdLfO+Cqb/UraqRa0uxEcMlwAv+aOTeoUIfZTOzXBTTZ1KuZQdoedhD96xT3i2NXrXTj1m77gikXGci7u1iw==
-X-Client-IP: 46.189.47.18
-Received: from localhost.localdomain (qs-asmtp-me-k8s.p00.prod.me.com
- [17.57.155.37])
- by p00-icloudmta-asmtp-us-east-2d-10-percent-0 (Postfix) with ESMTPSA id
- 6AA67180009B; Mon,  4 Aug 2025 14:24:06 +0000 (UTC)
-From: Mohamed Mediouni <mohamed@unpredictable.fr>
-To: qemu-devel@nongnu.org
-Cc: Shannon Zhao <shannon.zhaosl@gmail.com>, Ani Sinha <anisinha@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Phil Dennis-Jordan <phil@philjordan.eu>,
- Roman Bolshakov <rbolshakov@ddn.com>, Igor Mammedov <imammedo@redhat.com>,
- Eduardo Habkost <eduardo@habkost.net>,
- Mohamed Mediouni <mohamed@unpredictable.fr>, Mads Ynddal <mads@ynddal.dk>,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- Sunil Muthuswamy <sunilmut@microsoft.com>, Zhao Liu <zhao1.liu@intel.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Alexander Graf <agraf@csgraf.de>,
- qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Yanan Wang <wangyanan55@huawei.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Cameron Esfahani <dirty@apple.com>, Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
-Subject: [PATCH v4 14/17] hw/arm, accel/hvf,
- whpx: unify get_physical_address_range between WHPX and HVF
-Date: Mon,  4 Aug 2025 16:23:23 +0200
-Message-Id: <20250804142326.72947-15-mohamed@unpredictable.fr>
-X-Mailer: git-send-email 2.39.5 (Apple Git-154)
-In-Reply-To: <20250804142326.72947-1-mohamed@unpredictable.fr>
-References: <20250804142326.72947-1-mohamed@unpredictable.fr>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1uiwTK-0005EY-E2
+ for qemu-arm@nongnu.org; Mon, 04 Aug 2025 10:47:30 -0400
+Received: from mail-yw1-x112b.google.com ([2607:f8b0:4864:20::112b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1uiwTI-00046R-SM
+ for qemu-arm@nongnu.org; Mon, 04 Aug 2025 10:47:30 -0400
+Received: by mail-yw1-x112b.google.com with SMTP id
+ 00721157ae682-71b6703ba32so33952887b3.3
+ for <qemu-arm@nongnu.org>; Mon, 04 Aug 2025 07:47:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1754318847; x=1754923647; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=vnOItkwa0NpGVik8f5+eZnRpbTsAXB3mb4U3hx/tGW4=;
+ b=mgMDBvAws2LrbSCOHXSpKXXvJ4L1k04F0Dk2SnUOnuKQKRvS5fAAhzsrYvhTk2E69S
+ EjNxmFyAHL7INZ40Mtwdr/BaX40sKCNeyJBoj2ccUYjWHZqBv0c7mk3uu3Zwoyrsb4tx
+ FX9gwsddWzvygFnllkiHAzKvdK/M5ATozTBHFD9DWSw9Pw+X5LuBIdt6auqBjkjoLlBc
+ gLoS2BAn3b//unP4IKhWoNbDsz3PN8craPt1dcXmaoRA0FTTko2xb9Voe+KfpYq2wWwy
+ W/xMfIBExlkPfJoGm1xqhy2j7AT1JWK9/fIcw1fbD+Poqqn4xcFw1es3wKNo2RMryXfq
+ 0G8A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1754318847; x=1754923647;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=vnOItkwa0NpGVik8f5+eZnRpbTsAXB3mb4U3hx/tGW4=;
+ b=GSkDe9xKWjBXRXCFxw2W0J4v/oXEZGoePf/1HSL/kNmf8BugObANce0qCVry3//Gle
+ O2Hl2uedaiBiTXx8re2D1xMsE2PR6bqnZuTMJcdw9ZZVyIlCBfEcnTnNKWL+GJP7mpEc
+ LJE7V4NgECsuW6GY9PqOJgk8E5euTZewL6Xxt28uCEu5MOsNRqSk4/6YFAI0grTPWlaM
+ FHrUJMz151hi/jbVYc2ZcOG2bXElkkMB7UgIr5IL5iiMEFvgyjwRZsDMg80GzWxYs2yp
+ PUoJ1tkQ0zAcJy0jDDrhaoNn7Y78D/vp+fjR7M7aBFPkT1vRVLq5DhJMvNGhdjEPhmp2
+ 2EGQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCW736hsNem8VHH4L/Pr1dBF6xl1ArVIGyVRO5vVXT8j3adAidWsdXEhUQbRz6n9cOxgtjphZeLNRA==@nongnu.org
+X-Gm-Message-State: AOJu0YyTJsE9mDQLjbYEXAuwLo/Lch0XOCPkrA5tk/YC7vqD+HPwZfnI
+ Ptebszi4TD1mreyrLVVufnOsKaGs9QgTf9A9hbY0h7/wETMdiRw+hwrTSFelnZqO12e9znmfMdR
+ 8/VnHZqPR5oWJhscx+9Q4IgmapbV7AAZbihmjNwaxnQ==
+X-Gm-Gg: ASbGncslDXo7yANYqMrebT4QNu22j3Qgu+0MIqIC58Keli0xU+BXEtFRmGlJWVN+TQ+
+ a9Ko+0pDkjmtIxZojVk+OrXPw3TJmL8TdBfVt9a5vUNCL10hsxkjKJFUyJLiTDBQTT1TeLkgqR7
+ GPFo/y1XWPeDDXulrJ4V3JRl1/iOHLIY6tsX5pg9alDtoOYKXLE2d9HX31/E4a6csUhNdmqvFh9
+ rL7l1Gy
+X-Google-Smtp-Source: AGHT+IHGZaIJ/J5S5vmVcEupG0Y7mmsuq4UIDQPeJTV9gJ0vKwwO8MjEBAhKyMOzbj63KEfm0HHLhAW0arh64REJIiQ=
+X-Received: by 2002:a05:690c:7010:b0:71a:41e2:b553 with SMTP id
+ 00721157ae682-71b7f5958fbmr120891627b3.26.1754318847480; Mon, 04 Aug 2025
+ 07:47:27 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Proofpoint-GUID: SLT5sXqjWkf9KZuGyLOXssAQc4Q3r-7P
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwODA0MDA4MCBTYWx0ZWRfXwdpF01+TA/SQ
- cTsBKFeH0j+78wuZvXn2dAwrytajRmYALeSneJhuZtmKtKeat1VnhrGpv43nnbwfb8qTe7L216r
- 1w/yih/Dv/31RRVb4CULP27SjDjU1Uyt4WlUJbsMDpf/lhFU8RVrUwpPfu4MnLXwZMAlbC48rp8
- oL7ALZUMxaJilKkUr3rr/ujfGb0s4O5wppqET2Rf+BpG4SC22GwxITGSm0tdiyEC/1yIixdZFAi
- fkrKr+hbMybPMA8KhTbbNFHF5BrVOR+ztAJZnT+Iwws71Undy22OWu5GMo9QdVKM6iQo/1CPY=
-X-Proofpoint-ORIG-GUID: SLT5sXqjWkf9KZuGyLOXssAQc4Q3r-7P
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.9,FMLib:17.12.80.40
- definitions=2025-08-04_06,2025-08-04_01,2025-03-28_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0
- malwarescore=0 mlxlogscore=999 suspectscore=0 spamscore=0 adultscore=0
- clxscore=1030 phishscore=0 bulkscore=0 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.22.0-2506270000 definitions=main-2508040080
-Received-SPF: pass client-ip=57.103.85.235;
- envelope-from=mohamed@unpredictable.fr; helo=outbound.qs.icloud.com
+References: <1752689274-233526-1-git-send-email-steven.sistare@oracle.com>
+ <CAFEAcA8P4H7n=uXe3qredxVMwB4QtDfZtVyuuTWBLwa6enGR3g@mail.gmail.com>
+ <63d52f3e-5d29-45be-986c-3827a5c0cb5c@oracle.com>
+In-Reply-To: <63d52f3e-5d29-45be-986c-3827a5c0cb5c@oracle.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 4 Aug 2025 15:47:15 +0100
+X-Gm-Features: Ac12FXxBGpizn3NDRauqSak9sjOrl2poQlYt6m6UONoha_qzMfWz5ArQIwLoxv0
+Message-ID: <CAFEAcA-TsQdFt7S=qyd14gxW095t=Nx2skaxnmxtGUhR9pubtA@mail.gmail.com>
+Subject: Re: [PATCH V2 1/1] hw/intc/arm_gicv3_kvm: preserve pending interrupts
+ during cpr
+To: Steven Sistare <steven.sistare@oracle.com>
+Cc: Fabiano Rosas <farosas@suse.de>, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Cedric Le Goater <clg@redhat.com>, Zhenzhong Duan <zhenzhong.duan@intel.com>, 
+ Alex Williamson <alex.williamson@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -97,262 +99,38 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
----
- accel/hvf/hvf-all.c        |  7 +++++--
- hw/arm/virt.c              | 41 ++++----------------------------------
- include/hw/boards.h        |  4 ++--
- include/system/hvf_int.h   |  2 ++
- target/arm/hvf-stub.c      | 20 -------------------
- target/arm/hvf/hvf.c       |  6 +++---
- target/arm/hvf_arm.h       |  3 ---
- target/arm/meson.build     |  1 -
- target/arm/whpx/whpx-all.c |  5 +++--
- target/i386/hvf/hvf.c      | 10 ++++++++++
- 10 files changed, 29 insertions(+), 70 deletions(-)
- delete mode 100644 target/arm/hvf-stub.c
+On Mon, 4 Aug 2025 at 15:23, Steven Sistare <steven.sistare@oracle.com> wrote:
+>
+> Fabiano, could you sanity check this patch? Thanks!
+>
+> Peter, more below:
+>
+> On 7/21/2025 6:24 AM, Peter Maydell wrote:
+> >> @@ -883,13 +895,17 @@ static void kvm_arm_gicv3_realize(DeviceState *dev, Error **errp)
+> >>                                  GICD_CTLR)) {
+> >>           error_setg(&s->migration_blocker, "This operating system kernel does "
+> >>                                             "not support vGICv3 migration");
+> >> -        if (migrate_add_blocker(&s->migration_blocker, errp) < 0) {
+> >> +        if (migrate_add_blocker_modes(&s->migration_blocker, MIG_MODE_NORMAL,
+> >> +                                      MIG_MODE_CPR_TRANSFER, errp) < 0) {
+> >
+> > Why did you change this? It's the general "if no support, can't
+> > migrate at all" check, which seems unrelated to cpr-transfer.
+>
+> "If no support", then cpr-transfer should also be blocked.
 
-diff --git a/accel/hvf/hvf-all.c b/accel/hvf/hvf-all.c
-index 0a4b498e83..8229ad8640 100644
---- a/accel/hvf/hvf-all.c
-+++ b/accel/hvf/hvf-all.c
-@@ -17,6 +17,7 @@
- #include "system/hvf_int.h"
- #include "hw/core/cpu.h"
- #include "hw/boards.h"
-+#include "target/arm/hvf_arm.h"
- #include "trace.h"
- 
- bool hvf_allowed;
-@@ -256,8 +257,10 @@ static int hvf_accel_init(AccelState *as, MachineState *ms)
-     int pa_range = 36;
-     MachineClass *mc = MACHINE_GET_CLASS(ms);
- 
--    if (mc->hvf_get_physical_address_range) {
--        pa_range = mc->hvf_get_physical_address_range(ms);
-+
-+    if (mc->get_physical_address_range) {
-+        pa_range = mc->get_physical_address_range(ms,
-+            hvf_arch_get_default_ipa_bit_size(), hvf_arch_get_max_ipa_bit_size());
-         if (pa_range < 0) {
-             return -EINVAL;
-         }
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index f90c3fc113..c980f59e82 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -3163,43 +3163,11 @@ static int virt_kvm_type(MachineState *ms, const char *type_str)
-     return fixed_ipa ? 0 : requested_pa_size;
- }
- 
--static int virt_whpx_get_physical_address_range(MachineState *ms)
-+static int virt_get_physical_address_range(MachineState *ms, 
-+    int default_ipa_size, int max_ipa_size)
- {
-     VirtMachineState *vms = VIRT_MACHINE(ms);
- 
--    int max_ipa_size = whpx_arm_get_ipa_bit_size();
--
--    /* We freeze the memory map to compute the highest gpa */
--    virt_set_memmap(vms, max_ipa_size);
--
--    int requested_ipa_size = 64 - clz64(vms->highest_gpa);
--
--    /*
--     * If we're <= the default IPA size just use the default.
--     * If we're above the default but below the maximum, round up to
--     * the maximum. hvf_arm_get_max_ipa_bit_size() conveniently only
--     * returns values that are valid ARM PARange values.
--     */
--    if (requested_ipa_size <= max_ipa_size) {
--        requested_ipa_size = max_ipa_size;
--    } else {
--        error_report("-m and ,maxmem option values "
--                     "require an IPA range (%d bits) larger than "
--                     "the one supported by the host (%d bits)",
--                     requested_ipa_size, max_ipa_size);
--        return -1;
--    }
--
--    return requested_ipa_size;
--}
--
--static int virt_hvf_get_physical_address_range(MachineState *ms)
--{
--    VirtMachineState *vms = VIRT_MACHINE(ms);
--
--    int default_ipa_size = hvf_arm_get_default_ipa_bit_size();
--    int max_ipa_size = hvf_arm_get_max_ipa_bit_size();
--
-     /* We freeze the memory map to compute the highest gpa */
-     virt_set_memmap(vms, max_ipa_size);
- 
-@@ -3208,7 +3176,7 @@ static int virt_hvf_get_physical_address_range(MachineState *ms)
-     /*
-      * If we're <= the default IPA size just use the default.
-      * If we're above the default but below the maximum, round up to
--     * the maximum. hvf_arm_get_max_ipa_bit_size() conveniently only
-+     * the maximum. hvf_arch_get_max_ipa_bit_size() conveniently only
-      * returns values that are valid ARM PARange values.
-      */
-     if (requested_ipa_size <= default_ipa_size) {
-@@ -3286,8 +3254,7 @@ static void virt_machine_class_init(ObjectClass *oc, const void *data)
-     mc->valid_cpu_types = valid_cpu_types;
-     mc->get_default_cpu_node_id = virt_get_default_cpu_node_id;
-     mc->kvm_type = virt_kvm_type;
--    mc->hvf_get_physical_address_range = virt_hvf_get_physical_address_range;
--    mc->whpx_get_physical_address_range = virt_whpx_get_physical_address_range;
-+    mc->get_physical_address_range = virt_get_physical_address_range;
-     assert(!mc->get_hotplug_handler);
-     mc->get_hotplug_handler = virt_machine_get_hotplug_handler;
-     hc->pre_plug = virt_machine_device_pre_plug_cb;
-diff --git a/include/hw/boards.h b/include/hw/boards.h
-index dde8013bd7..fa3843a11b 100644
---- a/include/hw/boards.h
-+++ b/include/hw/boards.h
-@@ -275,8 +275,8 @@ struct MachineClass {
-     void (*reset)(MachineState *state, ResetType type);
-     void (*wakeup)(MachineState *state);
-     int (*kvm_type)(MachineState *machine, const char *arg);
--    int (*hvf_get_physical_address_range)(MachineState *machine);
--    int (*whpx_get_physical_address_range)(MachineState *machine);
-+    int (*get_physical_address_range)(MachineState *machine,
-+        int default_ipa_size, int max_ipa_size);
- 
-     BlockInterfaceType block_default_type;
-     int units_per_default_bus;
-diff --git a/include/system/hvf_int.h b/include/system/hvf_int.h
-index a3b06a3e75..8b6447c238 100644
---- a/include/system/hvf_int.h
-+++ b/include/system/hvf_int.h
-@@ -71,6 +71,8 @@ void assert_hvf_ok_impl(hv_return_t ret, const char *file, unsigned int line,
- const char *hvf_return_string(hv_return_t ret);
- int hvf_arch_init(void);
- hv_return_t hvf_arch_vm_create(MachineState *ms, uint32_t pa_range);
-+uint32_t hvf_arch_get_default_ipa_bit_size(void);
-+uint32_t hvf_arch_get_max_ipa_bit_size(void);
- int hvf_arch_init_vcpu(CPUState *cpu);
- void hvf_arch_vcpu_destroy(CPUState *cpu);
- int hvf_vcpu_exec(CPUState *);
-diff --git a/target/arm/hvf-stub.c b/target/arm/hvf-stub.c
-deleted file mode 100644
-index ff137267a0..0000000000
---- a/target/arm/hvf-stub.c
-+++ /dev/null
-@@ -1,20 +0,0 @@
--/*
-- * QEMU Hypervisor.framework (HVF) stubs for ARM
-- *
-- *  Copyright (c) Linaro
-- *
-- * SPDX-License-Identifier: GPL-2.0-or-later
-- */
--
--#include "qemu/osdep.h"
--#include "hvf_arm.h"
--
--uint32_t hvf_arm_get_default_ipa_bit_size(void)
--{
--    g_assert_not_reached();
--}
--
--uint32_t hvf_arm_get_max_ipa_bit_size(void)
--{
--    g_assert_not_reached();
--}
-diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index 47b0cd3a35..58135d1e18 100644
---- a/target/arm/hvf/hvf.c
-+++ b/target/arm/hvf/hvf.c
-@@ -850,7 +850,7 @@ static uint64_t hvf_get_reg(CPUState *cpu, int rt)
- static void clamp_id_aa64mmfr0_parange_to_ipa_size(ARMISARegisters *isar)
- {
-     uint32_t ipa_size = chosen_ipa_bit_size ?
--            chosen_ipa_bit_size : hvf_arm_get_max_ipa_bit_size();
-+            chosen_ipa_bit_size : hvf_arch_get_max_ipa_bit_size();
-     uint64_t id_aa64mmfr0;
- 
-     /* Clamp down the PARange to the IPA size the kernel supports. */
-@@ -940,7 +940,7 @@ static bool hvf_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
-     return r == HV_SUCCESS;
- }
- 
--uint32_t hvf_arm_get_default_ipa_bit_size(void)
-+uint32_t hvf_arch_get_default_ipa_bit_size(void)
- {
-     uint32_t default_ipa_size;
-     hv_return_t ret = hv_vm_config_get_default_ipa_size(&default_ipa_size);
-@@ -949,7 +949,7 @@ uint32_t hvf_arm_get_default_ipa_bit_size(void)
-     return default_ipa_size;
- }
- 
--uint32_t hvf_arm_get_max_ipa_bit_size(void)
-+uint32_t hvf_arch_get_max_ipa_bit_size(void)
- {
-     uint32_t max_ipa_size;
-     hv_return_t ret = hv_vm_config_get_max_ipa_size(&max_ipa_size);
-diff --git a/target/arm/hvf_arm.h b/target/arm/hvf_arm.h
-index ea82f2691d..5d19d82e5d 100644
---- a/target/arm/hvf_arm.h
-+++ b/target/arm/hvf_arm.h
-@@ -22,7 +22,4 @@ void hvf_arm_init_debug(void);
- 
- void hvf_arm_set_cpu_features_from_host(ARMCPU *cpu);
- 
--uint32_t hvf_arm_get_default_ipa_bit_size(void);
--uint32_t hvf_arm_get_max_ipa_bit_size(void);
--
- #endif
-diff --git a/target/arm/meson.build b/target/arm/meson.build
-index e28bd3f8e2..f0f1b55e43 100644
---- a/target/arm/meson.build
-+++ b/target/arm/meson.build
-@@ -32,7 +32,6 @@ arm_common_system_ss.add(files('cpu.c'))
- arm_common_system_ss.add(when: 'TARGET_AARCH64', if_false: files(
-   'cpu32-stubs.c'))
- arm_common_system_ss.add(when: 'CONFIG_KVM', if_false: files('kvm-stub.c'))
--arm_common_system_ss.add(when: 'CONFIG_HVF', if_false: files('hvf-stub.c'))
- arm_common_system_ss.add(files(
-   'arch_dump.c',
-   'arm-powerctl.c',
-diff --git a/target/arm/whpx/whpx-all.c b/target/arm/whpx/whpx-all.c
-index ed447bf014..7f76c9d52e 100644
---- a/target/arm/whpx/whpx-all.c
-+++ b/target/arm/whpx/whpx-all.c
-@@ -805,8 +805,9 @@ int whpx_accel_init(AccelState *as, MachineState *ms)
-         goto error;
-     }
- 
--    if (mc->whpx_get_physical_address_range) {
--        pa_range = mc->whpx_get_physical_address_range(ms);
-+    if (mc->get_physical_address_range) {
-+        pa_range = mc->get_physical_address_range(ms,
-+            whpx_arm_get_ipa_bit_size(), whpx_arm_get_ipa_bit_size());
-         if (pa_range < 0) {
-             return -EINVAL;
-         }
-diff --git a/target/i386/hvf/hvf.c b/target/i386/hvf/hvf.c
-index 818b50419f..fa06e3b815 100644
---- a/target/i386/hvf/hvf.c
-+++ b/target/i386/hvf/hvf.c
-@@ -225,6 +225,16 @@ int hvf_arch_init(void)
-     return 0;
- }
- 
-+uint32_t hvf_arch_get_default_ipa_bit_size(void)
-+{
-+    return 48;
-+}
-+
-+uint32_t hvf_arch_get_max_ipa_bit_size(void)
-+{
-+    return 48;
-+}
-+
- hv_return_t hvf_arch_vm_create(MachineState *ms, uint32_t pa_range)
- {
-     return hv_vm_create(HV_VM_DEFAULT);
--- 
-2.39.5 (Apple Git-154)
+But migrate_add_blocker() is a wrapper for
+migrate_add_blocker_modes(..., MIG_MODE_ALL). So doesn't
+this change go from "block migration for normal, and cpr-transfer,
+and everything else" to "block migration for normal and
+cpr-transfer but let the rest through"?
 
+That doesn't seem like the right thing; if it *is* the right
+thing then it should be a separate patch with a commit message
+that explains why we do it; and we would probably want to
+audit all the other uses of plain migrate_add_blocker() and/or
+change that function's name or API...
+
+thanks
+-- PMM
 

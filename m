@@ -4,91 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A9A7C87FCB
-	for <qemu-arm@archiver.kernel.org>; Mon,  4 Aug 2025 15:09:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE657C87FCB
+	for <qemu-arm@archiver.kernel.org>; Mon,  4 Aug 2025 15:48:42 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uiwoL-0000aj-CR; Mon, 04 Aug 2025 11:09:13 -0400
+	id 1uixQT-0005SG-7B; Mon, 04 Aug 2025 11:48:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uivKp-0000aj-9c
- for qemu-arm@nongnu.org; Mon, 04 Aug 2025 09:34:44 -0400
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uivKm-00005z-0Z
- for qemu-arm@nongnu.org; Mon, 04 Aug 2025 09:34:38 -0400
-Received: by mail-wm1-x334.google.com with SMTP id
- 5b1f17b1804b1-459d4d7c745so13240725e9.1
- for <qemu-arm@nongnu.org>; Mon, 04 Aug 2025 06:34:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1754314474; x=1754919274; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=1FuF7hehb7w0/1XQAyoYKQHd5iUS7qur1XCWnAxr71Q=;
- b=cykoYVwlvGTANHkWz9TDQbUNBTUlmefFUkDIcV1HaLw/nzWeIzNaVrEM4n1Dp9OIHf
- CEVCV8QnJZJTlFSmaBvJ0sW6TK1LKvlBGWi0bhAimMLaZb8MeubVY2p9fKUMvw31iZ15
- m26BUPF6snt0huX8plVLnHyBe0pz9NS/nAqPvWWSDt0QYllI6Rnq3RrIeKsWaWbvjcrR
- Wlq10hlCdbH1615wFztSQEc3NhZX3CoAav6NoAgS/gOUarhzdjY3+DdyhIh28mtdBXX2
- 95BWZomc16yMWkcaJ8p3KPINfkUbpdlvdj+TXKsivD3ssM0m8HtlqP0gdvjZjEWp/LcK
- UVRw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1754314474; x=1754919274;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=1FuF7hehb7w0/1XQAyoYKQHd5iUS7qur1XCWnAxr71Q=;
- b=ui/E382ddeVAIYqusXvFt9D1F0eb2Ud4Nklb3hgibLRMaKJvvWOwZclOK6IHKxLMci
- 8yPatkSMWNOARN/LrJOakA6e82+r9hxlRBJm0S42TvIn31RBW0wJE0q5uysaOG6yW8C9
- Q3Y2Uwved/DnwRgovyKGqMBjuKJLxGFzEICu3vQP8QUTDRNT5/T28kof5thMOtls+uwf
- KZICBfN8BcVAV/KZMOGtzVgH/umgRmuVumRjnChoyMN9Bq+C7w4uXZ1PLiTngzcUUNt+
- /Oo7eCAsvS+oSZUKigY4Grzce+oGNOLkqKczXRdRwyQqWozitNGGwfYGezmKeHTiFFlA
- wokQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCV+L+i/jd6cbv4Kox7jRBlnUJcb7BFosSBfkfHWingbspV8nUeELwm0TeHrr7AMFKKi8meEk4VZ/w==@nongnu.org
-X-Gm-Message-State: AOJu0YxyFpY7jKC/ZC8pst9ERMWh4RdX+syWjnxdyTrpBb8FeG3EgI7f
- MRs4wgWbVLl1jLCGFRkpugoqop1Ag0rQ9HuWP6fXwKuj/PfGreNYMYfFN/0BlFnO7I0=
-X-Gm-Gg: ASbGnct15Lsg3QOLJXHmne2fwg1RPGBFRXhjiAp/oRZDcNMqqWsyw+OSEDxaQk5fPr4
- gsEby1DKMHCrNu+pUgL/rwMhUpj93Sk8T5/tz7iv4nmVl3qVU9kp4moCzrKEIm5sKnS1wklu+It
- R2nund+Y7NOUnLUvs1NhvRCvGLcyOUj0Kv2faf82Ps0X2sKKm0HFs4kkRASw6KOHcNsng7Xz23m
- V5kYO6EF0s8SVZ6WLOmORLHxAKntfKRBcRWZlQzfJS5eRXkbO53+/83cS36aYEOMvJ4U9d8L6Tl
- 64SAhkAknK7+JdHVf7BoRXjE8WCqr0hZeCSpcdLKc9zBamMkvEfgwAoiMs4c8mYAOgdaqMrb/Ud
- LoJ3/0doQVsWK3L5lgtq/LkM6xdF6IoVhU5oNw0j6Af81bw9bEivSc8GGQWLE88DgcyOYP7OL
-X-Google-Smtp-Source: AGHT+IFYOu7nkG9F0StsOdErlwB5/2xT9FL21rdulKc4Wh711KsDc2fRPP3zVgs9vlBrMxgKqMoHYg==
-X-Received: by 2002:a05:600c:1e8c:b0:456:11cc:360d with SMTP id
- 5b1f17b1804b1-458b69de114mr73189625e9.9.1754314474211; 
- Mon, 04 Aug 2025 06:34:34 -0700 (PDT)
-Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3b79c338c7dsm15702306f8f.0.2025.08.04.06.34.33
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Mon, 04 Aug 2025 06:34:33 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: Peter Maydell <peter.maydell@linaro.org>,
-	qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Ben Dooks <ben.dooks@codethink.co.uk>, qemu-riscv@nongnu.org,
- qemu-block@nongnu.org, qemu-arm@nongnu.org,
- Guenter Roeck <linux@roeck-us.net>, Bin Meng <bmeng.cn@gmail.com>
-Subject: [PATCH-for-10.1 v2 05/11] hw/sd/sdcard: Implement SPI R2 return value
-Date: Mon,  4 Aug 2025 15:33:59 +0200
-Message-ID: <20250804133406.17456-6-philmd@linaro.org>
-X-Mailer: git-send-email 2.49.0
-In-Reply-To: <20250804133406.17456-1-philmd@linaro.org>
-References: <20250804133406.17456-1-philmd@linaro.org>
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1uiw6N-0005D9-GT
+ for qemu-arm@nongnu.org; Mon, 04 Aug 2025 10:23:54 -0400
+Received: from p-east3-cluster2-host12-snip4-10.eps.apple.com ([57.103.87.251]
+ helo=outbound.qs.icloud.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1uiw6J-0000Fz-P0
+ for qemu-arm@nongnu.org; Mon, 04 Aug 2025 10:23:47 -0400
+Received: from outbound.qs.icloud.com (unknown [127.0.0.2])
+ by p00-icloudmta-asmtp-us-east-2d-10-percent-0 (Postfix) with ESMTPS id
+ C43301800333; Mon,  4 Aug 2025 14:23:38 +0000 (UTC)
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
+ s=sig1; bh=d/z0LdtJsZ0X4SZniRSWzKSzcqx6k2mthXNU/xLsNUA=;
+ h=From:To:Subject:Date:Message-Id:MIME-Version:x-icloud-hme;
+ b=b7/brlxTCPs94bR6gZHEw4vzFH7S951hR0/bzhk01Jv0DgD7MItNGFI17ePTyczi+x/ZNJ4Mq/F9QJTXRuYIrdqJDtQ8O/rnKG+JcLdNFYV55ahu2xXGEDkulb6HLwt9CigBk48WGJPi9egGCa0C6eHV7HpteG7wK2q6IBbjeM7979BQHG7FQcm3XvpGtPYQ9OlbffChCZkiYAKx1C1QZsJEZf5W2BYD0fTzaOXniqA7BNaJfDIsMB0WYMnZWwF3FzbIbA1Ek6xgSB2m1mx/Hbp0dWpFdYKvBL8lBnxV2+HavTpnTLk46Ln944CulwFlRxARs15qMWXP9Ax5RG9uMw==
+X-Client-IP: 46.189.47.18
+Received: from localhost.localdomain (qs-asmtp-me-k8s.p00.prod.me.com
+ [17.57.155.37])
+ by p00-icloudmta-asmtp-us-east-2d-10-percent-0 (Postfix) with ESMTPSA id
+ CBE1D1800127; Mon,  4 Aug 2025 14:23:34 +0000 (UTC)
+From: Mohamed Mediouni <mohamed@unpredictable.fr>
+To: qemu-devel@nongnu.org
+Cc: Shannon Zhao <shannon.zhaosl@gmail.com>, Ani Sinha <anisinha@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Phil Dennis-Jordan <phil@philjordan.eu>,
+ Roman Bolshakov <rbolshakov@ddn.com>, Igor Mammedov <imammedo@redhat.com>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Mohamed Mediouni <mohamed@unpredictable.fr>, Mads Ynddal <mads@ynddal.dk>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Sunil Muthuswamy <sunilmut@microsoft.com>, Zhao Liu <zhao1.liu@intel.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Alexander Graf <agraf@csgraf.de>,
+ qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Yanan Wang <wangyanan55@huawei.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Cameron Esfahani <dirty@apple.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
+Subject: [PATCH v4 02/17] hw/arm: virt: add GICv2m for the case when ITS is
+ not available
+Date: Mon,  4 Aug 2025 16:23:11 +0200
+Message-Id: <20250804142326.72947-3-mohamed@unpredictable.fr>
+X-Mailer: git-send-email 2.39.5 (Apple Git-154)
+In-Reply-To: <20250804142326.72947-1-mohamed@unpredictable.fr>
+References: <20250804142326.72947-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::334;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x334.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwODA0MDA4MCBTYWx0ZWRfXyBP1m2F4NOP8
+ WnDkeMy8p3bAw8n3d9NLYqNL+xJegjLI9He8jvqe4uHXhTXNOWWJtRaFDxsNc5vTclWlvCgPMvJ
+ eYN484Z6xnDmSHfN6jW6/nHOwc1wRV47JNR38eMTRk99wUzXh6MkjFhqxUsJmpuNmbG7czQQtMz
+ QjE7wDXASoa5nrlraVM+bng1X9sGPe/3TWloEOIGhowPVo8pcKEzqEo0bbbMXMi3TyBMt1kcItD
+ VLS/1qzwN2dJf7B0WdFWtaf5duXF4VCrUB3AzXlfN+kwoTI3Fjuf0HXBiBIu6IqgBUMwVHkAA=
+X-Proofpoint-GUID: keQVTa29zxvo_KUxV60XV_ITKgGHmstV
+X-Proofpoint-ORIG-GUID: keQVTa29zxvo_KUxV60XV_ITKgGHmstV
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.9,FMLib:17.12.80.40
+ definitions=2025-08-04_06,2025-08-04_01,2025-03-28_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
+ spamscore=0 mlxlogscore=999 malwarescore=0 suspectscore=0 adultscore=0
+ phishscore=0 mlxscore=0 clxscore=1030 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.22.0-2506270000 definitions=main-2508040080
+Received-SPF: pass client-ip=57.103.87.251;
+ envelope-from=mohamed@unpredictable.fr; helo=outbound.qs.icloud.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -104,124 +98,95 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-In SPI mode, R2 is a 2-byte value.
-Implement in spi_response_r2_make() and
-return SPI R2 in the SEND_STATUS commands.
+On Hypervisor.framework for macOS and WHPX for Windows, the provided environment is a GICv3 without ITS.
 
-Reported-by: Guenter Roeck <linux@roeck-us.net>
-Fixes: 775616c3ae8 ("Partial SD card SPI mode support")
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+As such, support a GICv3 w/ GICv2m for that scenario.
+
+Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 ---
- hw/sd/sd.c     | 38 +++++++++++++++++++++++++++++++++++---
- hw/sd/ssi-sd.c |  3 ---
- 2 files changed, 35 insertions(+), 6 deletions(-)
+ hw/arm/virt-acpi-build.c | 4 +++-
+ hw/arm/virt.c            | 8 ++++++++
+ include/hw/arm/virt.h    | 2 ++
+ 3 files changed, 13 insertions(+), 1 deletion(-)
 
-diff --git a/hw/sd/sd.c b/hw/sd/sd.c
-index cbcc180f6a4..01ec6d951c8 100644
---- a/hw/sd/sd.c
-+++ b/hw/sd/sd.c
-@@ -61,6 +61,7 @@
- typedef enum {
-     sd_r0 = 0,    /* no response */
-     sd_r1,        /* normal response command */
-+    spi_r2,       /* STATUS */
-     sd_r2_i,      /* CID register */
-     sd_r2_s,      /* CSD register */
-     sd_r3,        /* OCR register */
-@@ -247,6 +248,7 @@ static const char *sd_response_name(sd_rsp_type_t rsp)
-     static const char *response_name[] = {
-         [sd_r0]     = "RESP#0 (no response)",
-         [sd_r1]     = "RESP#1 (normal cmd)",
-+        [spi_r2]    = "RESP#2 (STATUS reg)",
-         [sd_r2_i]   = "RESP#2 (CID reg)",
-         [sd_r2_s]   = "RESP#2 (CSD reg)",
-         [sd_r3]     = "RESP#3 (OCR reg)",
-@@ -736,6 +738,10 @@ static size_t sd_response_size(SDState *sd, sd_rsp_type_t rtype)
-     case sd_r1b:
-         return sd_is_spi(sd) ? 1 : 4;
- 
-+    case spi_r2:
-+        assert(sd_is_spi(sd));
-+        return 2;
-+
-     case sd_r2_i:
-     case sd_r2_s:
-         assert(!sd_is_spi(sd));
-@@ -778,6 +784,22 @@ static void sd_response_r1_make(SDState *sd, uint8_t *response)
-     sd->card_status &= ~CARD_STATUS_C;
- }
- 
-+static void spi_response_r2_make(SDState *sd, uint8_t *resp)
-+{
-+    /* Prepend R1 */
-+    sd_response_r1_make(sd, resp);
-+
-+    resp[1]  = FIELD_EX32(sd->card_status, CSR, CARD_IS_LOCKED) << 0;
-+    resp[1] |= (FIELD_EX32(sd->card_status, CSR, LOCK_UNLOCK_FAILED)
-+                || FIELD_EX32(sd->card_status, CSR, WP_ERASE_SKIP)) << 1;
-+    resp[1] |= FIELD_EX32(sd->card_status, CSR, ERROR) << 2;
-+    resp[1] |= FIELD_EX32(sd->card_status, CSR, CC_ERROR) << 3;
-+    resp[1] |= FIELD_EX32(sd->card_status, CSR, CARD_ECC_FAILED) << 4;
-+    resp[1] |= FIELD_EX32(sd->card_status, CSR, WP_VIOLATION) << 5;
-+    resp[1] |= FIELD_EX32(sd->card_status, CSR, ERASE_PARAM) << 6;
-+    resp[1] |= FIELD_EX32(sd->card_status, CSR, OUT_OF_RANGE) << 7;
-+}
-+
- static void sd_response_r3_make(SDState *sd, uint8_t *response)
- {
-     if (sd_is_spi(sd)) {
-@@ -1643,7 +1665,7 @@ static sd_rsp_type_t sd_cmd_SEND_STATUS(SDState *sd, SDRequest req)
-     }
- 
-     if (sd_is_spi(sd)) {
--        return sd_r2_s;
-+        return spi_r2;
-     }
- 
-     return sd_req_rca_same(sd, req) ? sd_r1 : sd_r0;
-@@ -1957,8 +1979,14 @@ static sd_rsp_type_t sd_acmd_SET_BUS_WIDTH(SDState *sd, SDRequest req)
- /* ACMD13 */
- static sd_rsp_type_t sd_acmd_SD_STATUS(SDState *sd, SDRequest req)
- {
--    return sd_cmd_to_sendingdata(sd, req, 0,
--                                 sd->sd_status, sizeof(sd->sd_status));
-+    sd_rsp_type_t rsp;
-+
-+    rsp = sd_cmd_to_sendingdata(sd, req, 0,
-+                                sd->sd_status, sizeof(sd->sd_status));
-+    if (sd_is_spi(sd) && rsp != sd_illegal) {
-+        return spi_r2;
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index b01fc4f8ef..969fa3f686 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -848,7 +848,9 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+             build_append_int_noprefix(table_data, memmap[VIRT_GIC_ITS].base, 8);
+             build_append_int_noprefix(table_data, 0, 4);    /* Reserved */
+         }
+-    } else {
 +    }
-+    return rsp;
- }
- 
- /* ACMD22 */
-@@ -2264,6 +2292,10 @@ send_response:
-         sd_response_r1_make(sd, response);
-         break;
- 
-+    case spi_r2:
-+        spi_response_r2_make(sd, response);
-+        break;
 +
-     case sd_r2_i:
-         memcpy(response, sd->cid, sizeof(sd->cid));
-         break;
-diff --git a/hw/sd/ssi-sd.c b/hw/sd/ssi-sd.c
-index 2d5c0ad5016..594dead19ee 100644
---- a/hw/sd/ssi-sd.c
-+++ b/hw/sd/ssi-sd.c
-@@ -158,9 +158,6 @@ static uint32_t ssi_sd_transfer(SSIPeripheral *dev, uint32_t val)
-                                          longresp, sizeof(longresp));
-             DPRINTF("CMD%d arg 0x%08x = %d\n", s->cmd, request.arg, s->arglen);
-             assert(s->arglen > 0);
--                /* CMD13 returns a 2-byte statuse work. Other commands
--                   only return the first byte.  */
--                s->arglen = (s->cmd == 13) ? 2 : 1;
-             memcpy(s->response, longresp, s->arglen);
++    if (!vms->its && !vms->no_gicv3_with_gicv2m) {
+         const uint16_t spi_base = vms->irqmap[VIRT_GIC_V2M] + ARM_SPI_BASE;
  
-             /* handle R1b (busy signal) */
+         /* 5.2.12.16 GIC MSI Frame Structure */
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index ef6be3660f..5951b331f3 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -953,6 +953,8 @@ static void create_gic(VirtMachineState *vms, MemoryRegion *mem)
+ 
+     if (vms->gic_version != VIRT_GIC_VERSION_2 && vms->its) {
+         create_its(vms);
++    } else if (vms->gic_version != VIRT_GIC_VERSION_2 && !vms->no_gicv3_with_gicv2m) {
++        create_v2m(vms);
+     } else if (vms->gic_version == VIRT_GIC_VERSION_2) {
+         create_v2m(vms);
+     }
+@@ -2402,6 +2404,8 @@ static void machvirt_init(MachineState *machine)
+     vms->ns_el2_virt_timer_irq = ns_el2_virt_timer_present() &&
+         !vmc->no_ns_el2_virt_timer_irq;
+ 
++    vms->no_gicv3_with_gicv2m = vmc->no_gicv3_with_gicv2m;
++
+     fdt_add_timer_nodes(vms);
+     fdt_add_cpu_nodes(vms);
+ 
+@@ -3410,6 +3414,7 @@ static void virt_instance_init(Object *obj)
+     vms->its = true;
+     /* Allow ITS emulation if the machine version supports it */
+     vms->tcg_its = !vmc->no_tcg_its;
++    vms->no_gicv3_with_gicv2m = false;
+ 
+     /* Default disallows iommu instantiation */
+     vms->iommu = VIRT_IOMMU_NONE;
+@@ -3462,8 +3467,11 @@ DEFINE_VIRT_MACHINE_AS_LATEST(10, 1)
+ 
+ static void virt_machine_10_0_options(MachineClass *mc)
+ {
++    VirtMachineClass *vmc = VIRT_MACHINE_CLASS(OBJECT_CLASS(mc));
++
+     virt_machine_10_1_options(mc);
+     compat_props_add(mc->compat_props, hw_compat_10_0, hw_compat_10_0_len);
++    vmc->no_gicv3_with_gicv2m = true;
+ }
+ DEFINE_VIRT_MACHINE(10, 0)
+ 
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index 365a28b082..725ec18fd2 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -131,6 +131,7 @@ struct VirtMachineClass {
+     bool no_cpu_topology;
+     bool no_tcg_lpa2;
+     bool no_ns_el2_virt_timer_irq;
++    bool no_gicv3_with_gicv2m;
+     bool no_nested_smmu;
+ };
+ 
+@@ -178,6 +179,7 @@ struct VirtMachineState {
+     char *oem_id;
+     char *oem_table_id;
+     bool ns_el2_virt_timer_irq;
++    bool no_gicv3_with_gicv2m;
+     CXLState cxl_devices_state;
+ };
+ 
 -- 
-2.49.0
+2.39.5 (Apple Git-154)
 
 

@@ -4,50 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92E07C87FCF
-	for <qemu-arm@archiver.kernel.org>; Mon,  4 Aug 2025 18:09:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1BAE8C87FCB
+	for <qemu-arm@archiver.kernel.org>; Mon,  4 Aug 2025 18:22:45 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uizc4-00040s-9H; Mon, 04 Aug 2025 14:08:44 -0400
+	id 1uizpG-0006eF-NP; Mon, 04 Aug 2025 14:22:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1uixo3-0005Ct-E5
- for qemu-arm@nongnu.org; Mon, 04 Aug 2025 12:13:00 -0400
-Received: from p-east3-cluster1-host7-snip4-2.eps.apple.com ([57.103.87.65]
- helo=outbound.qs.icloud.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1uixo0-0000lb-GS
- for qemu-arm@nongnu.org; Mon, 04 Aug 2025 12:12:58 -0400
-Received: from outbound.qs.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-east-2d-60-percent-7 (Postfix) with ESMTPS id
- E8726180086B; Mon,  4 Aug 2025 16:12:52 +0000 (UTC)
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; bh=IkSU93jV9FS1GDWYWwJgNYuHfU7uKpyXDP0V+TcXxKk=;
- h=From:Message-Id:Content-Type:Mime-Version:Subject:Date:To:x-icloud-hme;
- b=RTea5JqrDYwVRal6uMogOWig8EfcRGkyzXVtfhVyk9P6DLxbJTf/1US0XfuL6d6C5EeDdG8BOV43Hv1rYPrNmjgafGvxW4oWAVykIAu7se7cctCkP5f+HZ5u5EWycU7xQiKk+W6djv54LFR/XJIbEOJpYDebav3LBz3UUNxM04OiR9Fhu9N04MJJD85IHG2zXWmiiTY0uJejqYQvwotK6JcjH1HijIiohkoFgLBIt92RwYgOPEjSwE0XLRfn9nq6IzsTkheKN2fS7qCS1qXv1Kt+1otfrB7j2/eKZVx7Wfa/b17Pg+VRs1BpPh5frOqxqi3s10+qF4xfEqxenl3Heg==
-X-Client-IP: 46.189.47.18
-Received: from smtpclient.apple (qs-asmtp-me-k8s.p00.prod.me.com
- [17.57.155.37])
- by p00-icloudmta-asmtp-us-east-2d-60-percent-7 (Postfix) with ESMTPSA id
- 8A2A9180012A; Mon,  4 Aug 2025 16:12:49 +0000 (UTC)
-From: Mohamed Mediouni <mohamed@unpredictable.fr>
-Message-Id: <59A4FF62-384F-4D43-BD56-60AA93733580@unpredictable.fr>
-Content-Type: multipart/alternative;
- boundary="Apple-Mail=_0D194A2C-DD9F-4A27-BC0C-8FEF1BE86DD4"
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3860.100.5.1.1\))
+ (Exim 4.90_1) (envelope-from <cfontana@suse.de>) id 1uixbl-0007zy-J7
+ for qemu-arm@nongnu.org; Mon, 04 Aug 2025 12:00:28 -0400
+Received: from smtp-out1.suse.de ([195.135.223.130])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <cfontana@suse.de>) id 1uixbj-0007MR-W2
+ for qemu-arm@nongnu.org; Mon, 04 Aug 2025 12:00:17 -0400
+Received: from imap1.dmz-prg2.suse.org (imap1.dmz-prg2.suse.org
+ [IPv6:2a07:de40:b281:104:10:150:64:97])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by smtp-out1.suse.de (Postfix) with ESMTPS id C573B211D1;
+ Mon,  4 Aug 2025 16:00:10 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+ t=1754323212; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=/Zrkiu1M01Uabe/lgUNlKN7ug6w86sIQZ6avW71bVBI=;
+ b=SeW9EhtRaUDznDUE8cNvwZUNzN/fs42cij+mAjFDx6/mPICDn/cMgHnm1RrzzxAq5jw4kh
+ Ui277He2o8aAvy8hvYNMvOo8aVOtR9EivN8tnw/Df5FKWfvsOMuPnqs4cOu07Gig9cdJLt
+ HfH3iKZz09QDuUEN3ZF0i+7aGyQ1MVo=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+ s=susede2_ed25519; t=1754323212;
+ h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=/Zrkiu1M01Uabe/lgUNlKN7ug6w86sIQZ6avW71bVBI=;
+ b=CO/R2bHezdyaznXOmgV4MSrdDN3HoLFHlOL0qsBXIwFtIUvduztgVCTQUJSxDkTFT6dl4z
+ Aw321tb6trd6KAAQ==
+Authentication-Results: smtp-out1.suse.de;
+ dkim=pass header.d=suse.de header.s=susede2_rsa header.b=GQ4MJm5p;
+ dkim=pass header.d=suse.de header.s=susede2_ed25519 header.b=NF41KGU3
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+ t=1754323210; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=/Zrkiu1M01Uabe/lgUNlKN7ug6w86sIQZ6avW71bVBI=;
+ b=GQ4MJm5plqkUWA3qoZl/9l1Z0Qo1l4tkJwQs/eFD1znTsoBxzympPqLmLl1N0MPhIK6hHh
+ 02gCMpOEhy//CAaK/Y+kgzULDnZk2lGS4Ttt6dFhfKpU63UFuiOsiZef8/VgwfENtA/Dfa
+ bgnxJa5OaF1otEH8J918Tx2rZBH8++I=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+ s=susede2_ed25519; t=1754323210;
+ h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=/Zrkiu1M01Uabe/lgUNlKN7ug6w86sIQZ6avW71bVBI=;
+ b=NF41KGU3k2MRtIR3JXbFnDRVkOAH9QxNmbbd+9uYWhKc0RFy3/aIrq0tipiYNZfn1Q3J+R
+ OngcTyfZ0qPrrGDQ==
+Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id 9F536133D1;
+ Mon,  4 Aug 2025 16:00:09 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
+ by imap1.dmz-prg2.suse.org with ESMTPSA id QMg5JAnZkGjFAQAAD6G6ig
+ (envelope-from <cfontana@suse.de>); Mon, 04 Aug 2025 16:00:09 +0000
+Message-ID: <d18fc5c3-b68a-4afe-86b7-e1687780b67c@suse.de>
+Date: Mon, 4 Aug 2025 18:00:04 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v4 01/17] accel/system: Introduce hwaccel_enabled() helper
-Date: Mon, 4 Aug 2025 18:12:37 +0200
-In-Reply-To: <d18fc5c3-b68a-4afe-86b7-e1687780b67c@suse.de>
-Cc: qemu-devel@nongnu.org, Shannon Zhao <shannon.zhaosl@gmail.com>,
- Ani Sinha <anisinha@redhat.com>,
- =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Phil Dennis-Jordan <phil@philjordan.eu>,
- Roman Bolshakov <rbolshakov@ddn.com>, Igor Mammedov <imammedo@redhat.com>,
+To: Mohamed Mediouni <mohamed@unpredictable.fr>, qemu-devel@nongnu.org
+Cc: Shannon Zhao <shannon.zhaosl@gmail.com>, Ani Sinha <anisinha@redhat.com>, 
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Phil Dennis-Jordan <phil@philjordan.eu>, Roman Bolshakov
+ <rbolshakov@ddn.com>, Igor Mammedov <imammedo@redhat.com>,
  Eduardo Habkost <eduardo@habkost.net>, Mads Ynddal <mads@ynddal.dk>,
- =?utf-8?B?IkRhbmllbCBQLiBCZXJyYW5nw6ki?= <berrange@redhat.com>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
  Sunil Muthuswamy <sunilmut@microsoft.com>, Zhao Liu <zhao1.liu@intel.com>,
  "Michael S. Tsirkin" <mst@redhat.com>, Alexander Graf <agraf@csgraf.de>,
  qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
@@ -55,35 +92,43 @@ Cc: qemu-devel@nongnu.org, Shannon Zhao <shannon.zhaosl@gmail.com>,
  Yanan Wang <wangyanan55@huawei.com>,
  Richard Henderson <richard.henderson@linaro.org>,
  Cameron Esfahani <dirty@apple.com>, Paolo Bonzini <pbonzini@redhat.com>,
- =?utf-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-To: Claudio Fontana <cfontana@suse.de>
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
 References: <20250804142326.72947-1-mohamed@unpredictable.fr>
  <20250804142326.72947-2-mohamed@unpredictable.fr>
- <d18fc5c3-b68a-4afe-86b7-e1687780b67c@suse.de>
-X-Mailer: Apple Mail (2.3860.100.5.1.1)
-X-Proofpoint-GUID: t0F52muVijaGYVC1nueDfv8r7Lg4KMQl
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwODA0MDA4OSBTYWx0ZWRfX5YWKfNFnRDfN
- hY8ZftRdpqyzoB8bjLyrk8j+EGAvdelvj27qqbUr0sHvM+VwDRm6dbryCz2EijVHIZR3qXwthT6
- MZxDkX/o/7g9b5Iki2XVZ0oCCqKh3yPEqMpPwMwvSw5GRJe7i20vlPSkcr9y2fBz9E+1Sal5wvq
- GrXfFkBwSGez/6j+TFhLO7sYI4NRd4pF/ziit2QzK2hziJ2bmJPloxZMXgVKc+Eqqx1BMMdhDes
- tGqS3X6zuNPz5Z/f2RQbq7Dls0Knx2C0wwmxXwLj5kcZ6342LP37XFL9LhEE8EIFstQfOfFiU=
-X-Proofpoint-ORIG-GUID: t0F52muVijaGYVC1nueDfv8r7Lg4KMQl
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.9,FMLib:17.12.80.40
- definitions=2025-08-04_06,2025-08-04_01,2025-03-28_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 clxscore=1030
- mlxscore=0 spamscore=0 phishscore=0 mlxlogscore=999 malwarescore=0
- suspectscore=0 bulkscore=0 adultscore=0 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.22.0-2506270000 definitions=main-2508040089
-Received-SPF: pass client-ip=57.103.87.65;
- envelope-from=mohamed@unpredictable.fr; helo=outbound.qs.icloud.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, HTML_MESSAGE=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Language: en-US
+From: Claudio Fontana <cfontana@suse.de>
+In-Reply-To: <20250804142326.72947-2-mohamed@unpredictable.fr>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Rspamd-Queue-Id: C573B211D1
+X-Rspamd-Action: no action
+X-Rspamd-Server: rspamd1.dmz-prg2.suse.org
+X-Spamd-Result: default: False [-2.99 / 50.00]; BAYES_HAM(-2.98)[99.92%];
+ SUSPICIOUS_RECIPS(1.50)[]; NEURAL_HAM_LONG(-1.00)[-1.000];
+ R_DKIM_ALLOW(-0.20)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
+ NEURAL_HAM_SHORT(-0.20)[-1.000]; MIME_GOOD(-0.10)[text/plain];
+ MX_GOOD(-0.01)[]; TO_MATCH_ENVRCPT_ALL(0.00)[];
+ FUZZY_RATELIMITED(0.00)[rspamd.com]; ARC_NA(0.00)[];
+ DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
+ RCPT_COUNT_TWELVE(0.00)[23]; MIME_TRACE(0.00)[0:+];
+ FREEMAIL_ENVRCPT(0.00)[gmail.com]; RCVD_TLS_ALL(0.00)[];
+ TO_DN_SOME(0.00)[]; RCVD_COUNT_TWO(0.00)[2];
+ FROM_EQ_ENVFROM(0.00)[]; FROM_HAS_DN(0.00)[];
+ FREEMAIL_CC(0.00)[gmail.com,redhat.com,linaro.org,philjordan.eu,ddn.com,habkost.net,ynddal.dk,microsoft.com,intel.com,csgraf.de,nongnu.org,huawei.com,apple.com];
+ MID_RHS_MATCH_FROM(0.00)[]; TAGGED_RCPT(0.00)[];
+ RECEIVED_SPAMHAUS_BLOCKED_OPENRESOLVER(0.00)[2a07:de40:b281:106:10:150:64:167:received];
+ DKIM_TRACE(0.00)[suse.de:+]; RCVD_VIA_SMTP_AUTH(0.00)[];
+ DBL_BLOCKED_OPENRESOLVER(0.00)[linaro.org:email]
+Received-SPF: pass client-ip=195.135.223.130; envelope-from=cfontana@suse.de;
+ helo=smtp-out1.suse.de
+X-Spam_score_int: -43
+X-Spam_score: -4.4
+X-Spam_bar: ----
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -99,58 +144,17 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+On 8/4/25 16:23, Mohamed Mediouni wrote:
+> From: Philippe Mathieu-Daudé <philmd@linaro.org>
+> 
+> hwaccel_enabled() return whether any hardware accelerator
+> is available.
 
---Apple-Mail=_0D194A2C-DD9F-4A27-BC0C-8FEF1BE86DD4
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain;
-	charset=utf-8
+Available or enabled?
 
+Ciao,
 
-> On 4. Aug 2025, at 18:00, Claudio Fontana <cfontana@suse.de> wrote:
->=20
-> On 8/4/25 16:23, Mohamed Mediouni wrote:
->> From: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
->>=20
->> hwaccel_enabled() return whether any hardware accelerator
->> is available.
->=20
-> Available or enabled?
-enabled
-
-Took the patch from =
-https://lore.kernel.org/qemu-devel/20250703105540.67664-47-philmd@linaro.o=
-rg/
-
-Should I edit the commit message locally or will be taken care of when =
-it gets merged on that series?
-
-Thank you,
+Claudio
 
 
---Apple-Mail=_0D194A2C-DD9F-4A27-BC0C-8FEF1BE86DD4
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/html;
-	charset=utf-8
-
-<html aria-label=3D"message body"><head><meta http-equiv=3D"content-type" =
-content=3D"text/html; charset=3Dutf-8"></head><body =
-style=3D"overflow-wrap: break-word; -webkit-nbsp-mode: space; =
-line-break: after-white-space;"><div><br><blockquote type=3D"cite"><div>On=
- 4. Aug 2025, at 18:00, Claudio Fontana &lt;cfontana@suse.de&gt; =
-wrote:</div><br class=3D"Apple-interchange-newline"><div><div>On 8/4/25 =
-16:23, Mohamed Mediouni wrote:<br><blockquote type=3D"cite">From: =
-Philippe Mathieu-Daud=C3=A9 =
-&lt;philmd@linaro.org&gt;<br><br>hwaccel_enabled() return whether any =
-hardware accelerator<br>is available.<br></blockquote><br>Available or =
-enabled?<br></div></div></blockquote>enabled<div><br></div><div>Took the =
-patch from&nbsp;<a =
-href=3D"https://lore.kernel.org/qemu-devel/20250703105540.67664-47-philmd@=
-linaro.org/">https://lore.kernel.org/qemu-devel/20250703105540.67664-47-ph=
-ilmd@linaro.org/</a><br =
-id=3D"lineBreakAtBeginningOfMessage"></div><div><br></div><div>Should I =
-edit the commit message locally or will be taken care of when it gets =
-merged on that series?</div><div><br></div><div>Thank =
-you,</div><div><br></div></div></body></html>=
-
---Apple-Mail=_0D194A2C-DD9F-4A27-BC0C-8FEF1BE86DD4--
 

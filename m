@@ -4,131 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1BAE8C87FCB
-	for <qemu-arm@archiver.kernel.org>; Mon,  4 Aug 2025 18:22:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 148A4C87FCF
+	for <qemu-arm@archiver.kernel.org>; Mon,  4 Aug 2025 18:41:07 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uizpG-0006eF-NP; Mon, 04 Aug 2025 14:22:34 -0400
+	id 1uj07C-0002TO-48; Mon, 04 Aug 2025 14:40:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cfontana@suse.de>) id 1uixbl-0007zy-J7
- for qemu-arm@nongnu.org; Mon, 04 Aug 2025 12:00:28 -0400
-Received: from smtp-out1.suse.de ([195.135.223.130])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1uiyNN-0006mO-3C
+ for qemu-arm@nongnu.org; Mon, 04 Aug 2025 12:49:29 -0400
+Received: from mail-yw1-x1129.google.com ([2607:f8b0:4864:20::1129])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <cfontana@suse.de>) id 1uixbj-0007MR-W2
- for qemu-arm@nongnu.org; Mon, 04 Aug 2025 12:00:17 -0400
-Received: from imap1.dmz-prg2.suse.org (imap1.dmz-prg2.suse.org
- [IPv6:2a07:de40:b281:104:10:150:64:97])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by smtp-out1.suse.de (Postfix) with ESMTPS id C573B211D1;
- Mon,  4 Aug 2025 16:00:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
- t=1754323212; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=/Zrkiu1M01Uabe/lgUNlKN7ug6w86sIQZ6avW71bVBI=;
- b=SeW9EhtRaUDznDUE8cNvwZUNzN/fs42cij+mAjFDx6/mPICDn/cMgHnm1RrzzxAq5jw4kh
- Ui277He2o8aAvy8hvYNMvOo8aVOtR9EivN8tnw/Df5FKWfvsOMuPnqs4cOu07Gig9cdJLt
- HfH3iKZz09QDuUEN3ZF0i+7aGyQ1MVo=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
- s=susede2_ed25519; t=1754323212;
- h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=/Zrkiu1M01Uabe/lgUNlKN7ug6w86sIQZ6avW71bVBI=;
- b=CO/R2bHezdyaznXOmgV4MSrdDN3HoLFHlOL0qsBXIwFtIUvduztgVCTQUJSxDkTFT6dl4z
- Aw321tb6trd6KAAQ==
-Authentication-Results: smtp-out1.suse.de;
- dkim=pass header.d=suse.de header.s=susede2_rsa header.b=GQ4MJm5p;
- dkim=pass header.d=suse.de header.s=susede2_ed25519 header.b=NF41KGU3
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
- t=1754323210; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=/Zrkiu1M01Uabe/lgUNlKN7ug6w86sIQZ6avW71bVBI=;
- b=GQ4MJm5plqkUWA3qoZl/9l1Z0Qo1l4tkJwQs/eFD1znTsoBxzympPqLmLl1N0MPhIK6hHh
- 02gCMpOEhy//CAaK/Y+kgzULDnZk2lGS4Ttt6dFhfKpU63UFuiOsiZef8/VgwfENtA/Dfa
- bgnxJa5OaF1otEH8J918Tx2rZBH8++I=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
- s=susede2_ed25519; t=1754323210;
- h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=/Zrkiu1M01Uabe/lgUNlKN7ug6w86sIQZ6avW71bVBI=;
- b=NF41KGU3k2MRtIR3JXbFnDRVkOAH9QxNmbbd+9uYWhKc0RFy3/aIrq0tipiYNZfn1Q3J+R
- OngcTyfZ0qPrrGDQ==
-Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id 9F536133D1;
- Mon,  4 Aug 2025 16:00:09 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
- by imap1.dmz-prg2.suse.org with ESMTPSA id QMg5JAnZkGjFAQAAD6G6ig
- (envelope-from <cfontana@suse.de>); Mon, 04 Aug 2025 16:00:09 +0000
-Message-ID: <d18fc5c3-b68a-4afe-86b7-e1687780b67c@suse.de>
-Date: Mon, 4 Aug 2025 18:00:04 +0200
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1uiyNH-0006bM-Jj
+ for qemu-arm@nongnu.org; Mon, 04 Aug 2025 12:49:25 -0400
+Received: by mail-yw1-x1129.google.com with SMTP id
+ 00721157ae682-70a57a8ffc3so43265747b3.0
+ for <qemu-arm@nongnu.org>; Mon, 04 Aug 2025 09:49:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1754326160; x=1754930960; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=LHMbwbeqIzxTyN7shnF13cJi5T+fpLlIgLnsBA8bwtw=;
+ b=epzH7tG0rkXW25Fdl4/X14DB6Xwo5yJiTSyQ2IwCc0wxkIAzVqa+1LXJZOMUwEBP1Y
+ Q7L5wgwY6pnsRvnfCvpw3OVMTIwZFNmabnN0kZLrubCDStgF7kPUU/3BLl0xOtdJJ9bG
+ B1k9xAJUQ3i59Zvy4PyNVFZW7C8AFNp/sG27eNUaiOGWl2wpOUTPsmRs9Ek6ygrdq49b
+ 45AYkfZs4TW/qcBnVBrMQoyTTq5dxdHIN5uiWuz9VMOn1K4ls94WPEHolWQEIXdD9rfF
+ RWbOGXqRMOJmhlmZcTl2RP2GZLtqtVsnPnthCtJe/uNsnnY2r6FuB8HXSJWM9mxx+wMA
+ Sf/A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1754326160; x=1754930960;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=LHMbwbeqIzxTyN7shnF13cJi5T+fpLlIgLnsBA8bwtw=;
+ b=wbvphDw24/DlTY3QBsyuy5L4qc6SCpzaR1iOQ9msi78h4ISG7heX4m4cUa8UNBvfxs
+ R/JOKI0V79V4N1S/V1hfyhO70TYrSnucxHJWKGGOaGG2zZj3o08MqBnUscBUo39IGKFA
+ Q/hZOSNrBaT1rIdVIelMc4beCBQidxyQJ/+C/K8KSCx0jBwoZlxhudKJzRBljFiulXH4
+ i9PfGqLbv1imiHFyGsLl4YxI65pIAAeeW00CCLNui3byK/B2zAuAeHpeAPhrKGAfmHgo
+ pxWCKa0K+BJbsQNZMINeEruoTU5zgzGOSKxBYS4SxYaduK8BCKnPptFdXJGa0cbFcDzH
+ a2Wg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVAZrUgwyLgvKviLNUP4ZSJij1ID/KUR+m7SWl9Rc+KPdItQ038sxAxEN2OSOj55FiPrqBD/M54Iw==@nongnu.org
+X-Gm-Message-State: AOJu0Yy/anotp+A11iE2RYPvuJG42wsPTzYcZR59p4NpzaWifMO+ltlL
+ +jfVpkbHggm6HcuVpsEKnuhq/M1bRY/cJ0yIZk0byAwhMywXslJ/Z7F7fiqU1Z6BCxcOvg0B5pF
+ KNn9KxZuiv0P/+yrLRh3VW1jewv/tueToptXEKnrATA==
+X-Gm-Gg: ASbGncv6fzsSrmTsExxf2vKoibpqqmN+89wnM7eHkvkF15HauVe/8USfqbRZWg6znXz
+ 90hUiV0aw6PMSGh/7z+cKfKYUb3nimv7VArl4VeUs9yvRAZemGv3zqFmJnIPW5AlYhm9ePGfrAo
+ be1KZtFN5t+oTo4OoVyAQeVcbohK2QfADXDxDMdF/1vTbIP6ZEmjpEd7ZYt8Co/2eVeWVwMMJS4
+ pbKyBS6
+X-Google-Smtp-Source: AGHT+IEytZrLcNOb629dFgWQFPhTpDboow//5emefKHC9esAVBQKb9nj54USy/fb8uEX0f5NCsBKIzzY0mA4g+rQ6fs=
+X-Received: by 2002:a05:690c:6085:b0:712:d54e:2209 with SMTP id
+ 00721157ae682-71b7f5f743fmr126036997b3.14.1754326160642; Mon, 04 Aug 2025
+ 09:49:20 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 01/17] accel/system: Introduce hwaccel_enabled() helper
-To: Mohamed Mediouni <mohamed@unpredictable.fr>, qemu-devel@nongnu.org
-Cc: Shannon Zhao <shannon.zhaosl@gmail.com>, Ani Sinha <anisinha@redhat.com>, 
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Phil Dennis-Jordan <phil@philjordan.eu>, Roman Bolshakov
- <rbolshakov@ddn.com>, Igor Mammedov <imammedo@redhat.com>,
- Eduardo Habkost <eduardo@habkost.net>, Mads Ynddal <mads@ynddal.dk>,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- Sunil Muthuswamy <sunilmut@microsoft.com>, Zhao Liu <zhao1.liu@intel.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Alexander Graf <agraf@csgraf.de>,
- qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Yanan Wang <wangyanan55@huawei.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Cameron Esfahani <dirty@apple.com>, Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-References: <20250804142326.72947-1-mohamed@unpredictable.fr>
- <20250804142326.72947-2-mohamed@unpredictable.fr>
-Content-Language: en-US
-From: Claudio Fontana <cfontana@suse.de>
-In-Reply-To: <20250804142326.72947-2-mohamed@unpredictable.fr>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Rspamd-Queue-Id: C573B211D1
-X-Rspamd-Action: no action
-X-Rspamd-Server: rspamd1.dmz-prg2.suse.org
-X-Spamd-Result: default: False [-2.99 / 50.00]; BAYES_HAM(-2.98)[99.92%];
- SUSPICIOUS_RECIPS(1.50)[]; NEURAL_HAM_LONG(-1.00)[-1.000];
- R_DKIM_ALLOW(-0.20)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
- NEURAL_HAM_SHORT(-0.20)[-1.000]; MIME_GOOD(-0.10)[text/plain];
- MX_GOOD(-0.01)[]; TO_MATCH_ENVRCPT_ALL(0.00)[];
- FUZZY_RATELIMITED(0.00)[rspamd.com]; ARC_NA(0.00)[];
- DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
- RCPT_COUNT_TWELVE(0.00)[23]; MIME_TRACE(0.00)[0:+];
- FREEMAIL_ENVRCPT(0.00)[gmail.com]; RCVD_TLS_ALL(0.00)[];
- TO_DN_SOME(0.00)[]; RCVD_COUNT_TWO(0.00)[2];
- FROM_EQ_ENVFROM(0.00)[]; FROM_HAS_DN(0.00)[];
- FREEMAIL_CC(0.00)[gmail.com,redhat.com,linaro.org,philjordan.eu,ddn.com,habkost.net,ynddal.dk,microsoft.com,intel.com,csgraf.de,nongnu.org,huawei.com,apple.com];
- MID_RHS_MATCH_FROM(0.00)[]; TAGGED_RCPT(0.00)[];
- RECEIVED_SPAMHAUS_BLOCKED_OPENRESOLVER(0.00)[2a07:de40:b281:106:10:150:64:167:received];
- DKIM_TRACE(0.00)[suse.de:+]; RCVD_VIA_SMTP_AUTH(0.00)[];
- DBL_BLOCKED_OPENRESOLVER(0.00)[linaro.org:email]
-Received-SPF: pass client-ip=195.135.223.130; envelope-from=cfontana@suse.de;
- helo=smtp-out1.suse.de
-X-Spam_score_int: -43
-X-Spam_score: -4.4
-X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+References: <20250722201404.2368507-1-vacha.bhavsar@oss.qualcomm.com>
+ <20250722201404.2368507-2-vacha.bhavsar@oss.qualcomm.com>
+ <875xf36qyk.fsf@draig.linaro.org>
+In-Reply-To: <875xf36qyk.fsf@draig.linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 4 Aug 2025 17:49:09 +0100
+X-Gm-Features: Ac12FXxLH5JBEv4mi3jhv3N-qKFHNnhDB6EHmh_9YCNACtpaF8Y4Q-e_FdO_qIU
+Message-ID: <CAFEAcA8o4wEHHDXVj0Fcc3i8g+49psY7YSf1AqGiGe9vNuXiQA@mail.gmail.com>
+Subject: Re: [PATCH v4 1/2] target/arm: Increase MAX_PACKET_LENGTH for SME ZA
+ remote gdb debugging
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: Vacha Bhavsar <vacha.bhavsar@oss.qualcomm.com>, qemu-devel@nongnu.org, 
+ qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1129;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1129.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -144,17 +100,59 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 8/4/25 16:23, Mohamed Mediouni wrote:
-> From: Philippe Mathieu-Daudé <philmd@linaro.org>
-> 
-> hwaccel_enabled() return whether any hardware accelerator
-> is available.
+On Mon, 4 Aug 2025 at 16:34, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrot=
+e:
+>
+> Vacha Bhavsar <vacha.bhavsar@oss.qualcomm.com> writes:
+>
+> > This patch increases the value of the MAX_PACKET_LEGNTH to
+> > 131100 from 4096 to allow the GDBState.line_buf to be large enough
+> > to accommodate the full contents of the SME ZA storage when the
+> > vector length is maximal. This is in preparation for a related
+> > patch that allows SME register visibility through remote GDB
+> > debugging.
+> >
+> > Signed-off-by: Vacha Bhavsar <vacha.bhavsar@oss.qualcomm.com>
+> > ---
+> > Changes since v3:
+> > - this patch was not present in version 3
+> >
+> >  gdbstub/internals.h | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> >
+> > diff --git a/gdbstub/internals.h b/gdbstub/internals.h
+> > index bf5a5c6302..b58a66c201 100644
+> > --- a/gdbstub/internals.h
+> > +++ b/gdbstub/internals.h
+> > @@ -11,7 +11,7 @@
+> >
+> >  #include "exec/cpu-common.h"
+> >
+> > -#define MAX_PACKET_LENGTH 4096
+> > +#define MAX_PACKET_LENGTH 131100
+>
+> This is a rather large expansion for something that ends up in a static a=
+t:
+>
+>     char line_buf[MAX_PACKET_LENGTH];
+>
+> I think maybe its time to get rid of this hardcoded define and make line_=
+buf a
+> dynamically re-sizeable buffer along the lines of str_buf and mem_buf.
+> In fact make it a GString and we can get rid of line_buf_index as well.
 
-Available or enabled?
+What exactly is the packet/response where MAX_PACKET_LENGTH is
+causing problems? The commit message doesn't say.
 
-Ciao,
+In general I thought the gdbstub protocol was supposed to handle a
+fixed packet length (e.g. in handle_query_xfer_features() the response
+packet indicates truncation via "l" vs "m" so the gdb end knows it needs
+to send another request to get the rest of the data). So if we run
+into something which seems to be fixed by raising MAX_PACKET_LENGTH
+I would first want to look at whether the underlying problem is
+that we're not indicating to gdb "this data is incomplete, you'll
+need to ask for more of it" or something of that nature.
 
-Claudio
-
-
+thanks
+-- PMM
 

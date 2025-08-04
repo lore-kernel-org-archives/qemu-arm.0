@@ -4,91 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67985C87FCF
-	for <qemu-arm@archiver.kernel.org>; Mon,  4 Aug 2025 19:01:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE30AC87FCB
+	for <qemu-arm@archiver.kernel.org>; Mon,  4 Aug 2025 19:20:58 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uj0Ql-0006yi-Dd; Mon, 04 Aug 2025 15:01:07 -0400
+	id 1uj0jN-00029A-66; Mon, 04 Aug 2025 15:20:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1uizFi-0003HC-VC
- for qemu-arm@nongnu.org; Mon, 04 Aug 2025 13:45:39 -0400
-Received: from mail-pg1-x52d.google.com ([2607:f8b0:4864:20::52d])
+ id 1uj06R-00018S-0e
+ for qemu-arm@nongnu.org; Mon, 04 Aug 2025 14:40:09 -0400
+Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1uizFg-00078u-S9
- for qemu-arm@nongnu.org; Mon, 04 Aug 2025 13:45:38 -0400
-Received: by mail-pg1-x52d.google.com with SMTP id
- 41be03b00d2f7-b34a6d0c9a3so4539504a12.3
- for <qemu-arm@nongnu.org>; Mon, 04 Aug 2025 10:45:34 -0700 (PDT)
+ id 1uj06M-0000vY-2q
+ for qemu-arm@nongnu.org; Mon, 04 Aug 2025 14:40:06 -0400
+Received: by mail-pf1-x42a.google.com with SMTP id
+ d2e1a72fcca58-7682560a2f2so4679584b3a.1
+ for <qemu-arm@nongnu.org>; Mon, 04 Aug 2025 11:40:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1754329533; x=1754934333; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=QULKk5VRg6vYTt6QR41gbigymrUk/XulFP8x2GxxytU=;
- b=EBVx4TDCeyPvOzna+38Pa0NFftdahe3PopCQnxwMoXR2nPM7gXHqK2GhCyKp6lQI3T
- yz01/KxOwixop4KPe0JU9F+ZS3X9NINoEmBoG82iMlOYIxrLCMQ42kvyMEAASJmjldFc
- klzriPDfiU4AR+Ne5JvFVwnc0Zk2uTYXflrped9J6Z0TleTAvX/Ka06glAkVaqNLUewQ
- GGO8xBuhit3PhFp6Vei8BynoufsBbuouveJFvXYsi2F1efxu4KRxFd1eA5pIS0kWLsbq
- O8j3Y6DAZ2QCMVHa4BVDqPAT2JnP7GUSAYPOk+aslVj+wDTufEvkYdU2vtijt1uk5+Mc
- o7Qg==
+ d=linaro.org; s=google; t=1754332800; x=1754937600; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=4Q4dcWPl9MBqqc8IwHAkUcZ6ENPKqu7XF6ON8ISL2zo=;
+ b=UidgLR5DaTqqVXqBxwqy3og5YtWUwHJEv+1FtRcg/+di3jZo9hj135eJxJhHHj+p6H
+ 9RKx7xk2s8qlVJZxJUtcDMnNKh3rP7MQzQkQV8/j0XpcmPqs723VTZ8LRn0slaj1UMQ3
+ x03mqW6zmnQeFBJfHEdJwS9wpna2MnbvsbHE7oVAJNjyAuKoL9tZDIeK29EO8lr46CjK
+ K+SZ7Y5SsAMLDiFLJHnWfZozkBvy9R/ebs7c4CNMDlY3v1grfhjcdM6is8Bj3gKzYTh/
+ GmCsEetcqnXiCyuAem++zcMoJMJEb+GIysm7x/pJ/SsKDrThqkcOH7a6yH6cPagb+Ajr
+ 1JHQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1754329533; x=1754934333;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=QULKk5VRg6vYTt6QR41gbigymrUk/XulFP8x2GxxytU=;
- b=eVPxGdXTuRR3rG/SdwIKx/ZQP8BTJtAa+rBZ5OJ/AcZKfOarwwEkFDPfQ8vwPdwFUW
- HlEKRHTMyr4RTV3FRzI+hV1iUmhbNSQXq9ooDfV3S+st5LoJbAA3uX/2yNGX7GJlKlEJ
- j+qFUXRT4ccVSrd7q/dm7lCZpUjRakIfhg/fo7yg8BGoOoeq1jsPmZhF1M8Xt+obYndN
- XnLIi385gNqdHQUaAiLMKAmtY6Ka64QKpEZLRG3aqC4deWW0kbdKKgucmu2OATJHyTWF
- 1zMSQ14ux4OfQ8xUZUeYk3IplfLg3qzFQHbAUU3VL2Mdjc8MvZbHAqAZRbMyfyK6LOTq
- RVEg==
-X-Gm-Message-State: AOJu0YzNdVVF62GXixJNZbC90O61jTjyNT3VtToMbiZhh0Yj860Tdz1R
- EB1y2XtWFlyHIfm+/4RHHOIABQjlI6FOsTm6wiilA4QIn6o89A3+RFakJJ3ZmBcfPHy4+VbAnoR
- HSQaT
-X-Gm-Gg: ASbGncuPWzbmezUvhwXhVdG4s+sUbcQUKzhVjZqPSYGLXiMw3aAgopbAjc+LmjxgGU7
- 8CJDhBvLQoF01uX/HuTahp0NpIb5ddxfI+Ft+DMhU3i9tOZ0Ia+GL3IBUNFxMzRZu8SCWpoG0nn
- Ji/4oruh/2ExxclhjGP7jC5f+BMaok1MFWkTbVNTDM/eEEVCTZELg4hcqo+2leg7mI1mPeIxac8
- OdWtHf/40IMAD8M4JGY/R0MgYQcQynO1mFjj4naTj4GsYVWvG23qj9x/GdDftqhEUxrqMwzM7j1
- M0TXmW2kyDDZOcXsjWtDNBjLYmHWYEB6htzl9RFQO8utM9HnZyXHRrKxLb4bWOp4Qadt3iDBQHk
- /WbKLFLyyOU7sBwzz3VZf0avVbl5Jz2F8aO4=
-X-Google-Smtp-Source: AGHT+IEcsjx3vy6mOGfSElPa84rxzX0M8DU56PbwvGi/iNOJPbGOsWy3SWYLXmEOTNll0dPbm4zPyw==
-X-Received: by 2002:a17:902:f612:b0:240:92f9:7b85 with SMTP id
- d9443c01a7336-24246e5fb31mr124019635ad.0.1754329533106; 
- Mon, 04 Aug 2025 10:45:33 -0700 (PDT)
-Received: from [192.168.1.87] ([38.41.223.211])
- by smtp.gmail.com with ESMTPSA id
- 41be03b00d2f7-b422bac16c9sm9499161a12.36.2025.08.04.10.45.32
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 04 Aug 2025 10:45:32 -0700 (PDT)
-Message-ID: <c69d2467-01fa-45d0-8d12-5dbbf2d4e793@linaro.org>
-Date: Mon, 4 Aug 2025 10:45:31 -0700
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 33/85] target/arm: Convert arm_mmu_idx_to_el from
- switch to table
-Content-Language: en-US
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org
-References: <20250802232953.413294-1-richard.henderson@linaro.org>
- <20250802232953.413294-34-richard.henderson@linaro.org>
+ d=1e100.net; s=20230601; t=1754332800; x=1754937600;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=4Q4dcWPl9MBqqc8IwHAkUcZ6ENPKqu7XF6ON8ISL2zo=;
+ b=EWIHn3CeDJCgK2Rdy/RCmhPiLqVVBuHTfkGLrZLFUkfxfXNQNst2rW8d+V+sRbAFwI
+ U2n++vHHdy6BPre3n9kIV5vbDfu3NENSSD4FN288uu1rNv8pifFcnqoWDd/t+ciDUcRg
+ XxBzBTjEluHk+vhCdfmxEZr/PBB0zVF8iAPFt9DxahYuNeckOa1Satpm+DfLkBb/5ZRs
+ UCoeQkio2HnMuWv/Lg9laoeByLCpbnktnIc8Ji1lna0GRQEnpMapNiO+MYtR9ovLWddm
+ YGmkV1AtJRaYl3AqXS7pdAEVRcnuVmIdzBEanWqRmQMHpzp5e3bFIHMe5r/VaSVFxNVK
+ /rIQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXE/Auw2K0g2eVDaylnwYudcQTHrR8L4viKbNiDQNksksVskY4uo1rsrh28kKkPu+Qsr3MaRjYnCQ==@nongnu.org
+X-Gm-Message-State: AOJu0YyB0gXq9a7deQPf1rTltxVdzfdSLtoCzeGpDsOLm/wILvGA2Qu0
+ JGnWayu6AdikeT9mktn1AhlGusEgrU80So3QCeT3WuhGUM2sro2z2p66bnnqKgShXLU=
+X-Gm-Gg: ASbGncubJSCufsMbeUud1SwS7d257LTJhcorwm8ww+gkWygi/syUePz+V/2oT/3frVL
+ dofV4HXXMlVvrZJnzLoSZIhijB16OYQN3YTbe8IoRzpxGzfEfrpjMV10W69F0gLiirqrqnk1r6X
+ 06DnC2ZwQ9Xx8+v6G81TXXjQOxgIZmrgZbg7JXlqZ8xk87BUihw5Q+40Y+TrzswLmVtM6sEFrfy
+ GFsSJCnnMd7fSFJibyhgOSDbzCw4Ua7ML4JrrahXbqtL1r00CgLKcFmzImfsvxzYc3wkaxObfMT
+ 7cgLECV4nK9ELjQLHH9Pr7BoV6x0hJDnUsUBfksKgu+a2+RtcRh42lq/Nhz4Jjf1bAejmwltHhi
+ 0JNNTkuOZCN74pQaUVznCSw==
+X-Google-Smtp-Source: AGHT+IFhIzYzyLyq54TrG5CiHKFw1ZxpDWNpDOgO8eEtf99d5440BU3vSVekKo+UB3Dhk/l6LOBA6g==
+X-Received: by 2002:a05:6a00:3909:b0:748:a0b9:f873 with SMTP id
+ d2e1a72fcca58-76c1939300dmr676548b3a.9.1754332800423; 
+ Mon, 04 Aug 2025 11:40:00 -0700 (PDT)
+Received: from pc.. ([38.41.223.211]) by smtp.gmail.com with ESMTPSA id
+ d2e1a72fcca58-76bd78875cesm9940171b3a.15.2025.08.04.11.39.59
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 04 Aug 2025 11:40:00 -0700 (PDT)
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-In-Reply-To: <20250802232953.413294-34-richard.henderson@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::52d;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pg1-x52d.google.com
+To: qemu-devel@nongnu.org
+Cc: qemu-riscv@nongnu.org, philmd@linaro.org, Weiwei Li <liwei1518@gmail.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>, richard.henderson@linaro.org,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, qemu-arm@nongnu.org,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Subject: [PATCH v3 04/12] semihosting/arm-compat-semi: change
+ common_semi_sys_exit_extended
+Date: Mon,  4 Aug 2025 11:39:42 -0700
+Message-ID: <20250804183950.3147154-5-pierrick.bouvier@linaro.org>
+X-Mailer: git-send-email 2.47.2
+In-Reply-To: <20250804183950.3147154-1-pierrick.bouvier@linaro.org>
+References: <20250804183950.3147154-1-pierrick.bouvier@linaro.org>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42a;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pf1-x42a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -104,22 +108,64 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 8/2/25 4:29 PM, Richard Henderson wrote:
-> In an effort to keep all ARMMMUIdx data in one place, begin construction
-> of an info table describing all of the properties of the mmu_idx.  Begin
-> with the access EL.
-> 
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->   target/arm/internals.h       |  3 +--
->   target/arm/mmuidx-internal.h | 29 +++++++++++++++++++++++++
->   target/arm/helper.c          | 27 ------------------------
->   target/arm/mmuidx.c          | 41 ++++++++++++++++++++++++++++++++++++
->   target/arm/meson.build       |  7 +++++-
->   5 files changed, 77 insertions(+), 30 deletions(-)
->   create mode 100644 target/arm/mmuidx-internal.h
->   create mode 100644 target/arm/mmuidx.c
+We now check only is sys_exit is extended.
+This allows to break dependency to TARGET_SYS_EXIT_EXTENDED which will
+not be available anymore from this code.
 
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+---
+ target/arm/common-semi-target.h   | 4 ++--
+ target/riscv/common-semi-target.h | 4 ++--
+ semihosting/arm-compat-semi.c     | 3 ++-
+ 3 files changed, 6 insertions(+), 5 deletions(-)
+
+diff --git a/target/arm/common-semi-target.h b/target/arm/common-semi-target.h
+index da51f2d7f54..7bb442f24ca 100644
+--- a/target/arm/common-semi-target.h
++++ b/target/arm/common-semi-target.h
+@@ -34,9 +34,9 @@ static inline void common_semi_set_ret(CPUState *cs, target_ulong ret)
+     }
+ }
+ 
+-static inline bool common_semi_sys_exit_extended(CPUState *cs, int nr)
++static inline bool common_semi_sys_exit_is_extended(CPUState *cs)
+ {
+-    return nr == TARGET_SYS_EXIT_EXTENDED || is_a64(cpu_env(cs));
++    return is_a64(cpu_env(cs));
+ }
+ 
+ static inline bool is_64bit_semihosting(CPUArchState *env)
+diff --git a/target/riscv/common-semi-target.h b/target/riscv/common-semi-target.h
+index 7c8a59e0cc3..ba40e794dcc 100644
+--- a/target/riscv/common-semi-target.h
++++ b/target/riscv/common-semi-target.h
+@@ -25,9 +25,9 @@ static inline void common_semi_set_ret(CPUState *cs, target_ulong ret)
+     env->gpr[xA0] = ret;
+ }
+ 
+-static inline bool common_semi_sys_exit_extended(CPUState *cs, int nr)
++static inline bool common_semi_sys_exit_is_extended(CPUState *cs)
+ {
+-    return (nr == TARGET_SYS_EXIT_EXTENDED || sizeof(target_ulong) == 8);
++    return sizeof(target_ulong) == 8;
+ }
+ 
+ static inline bool is_64bit_semihosting(CPUArchState *env)
+diff --git a/semihosting/arm-compat-semi.c b/semihosting/arm-compat-semi.c
+index 3f653c6e7a9..1c593d5e0dc 100644
+--- a/semihosting/arm-compat-semi.c
++++ b/semihosting/arm-compat-semi.c
+@@ -755,7 +755,8 @@ void do_common_semihosting(CPUState *cs)
+     {
+         uint32_t ret;
+ 
+-        if (common_semi_sys_exit_extended(cs, nr)) {
++        if (nr == TARGET_SYS_EXIT_EXTENDED ||
++            common_semi_sys_exit_is_extended(cs)) {
+             /*
+              * The A64 version of SYS_EXIT takes a parameter block,
+              * so the application-exit type can return a subcode which
+-- 
+2.47.2
 
 

@@ -4,90 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 496A9C87FDA
-	for <qemu-arm@archiver.kernel.org>; Sun,  3 Aug 2025 20:29:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4D10C87FCB
+	for <qemu-arm@archiver.kernel.org>; Mon,  4 Aug 2025 01:48:36 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uifKP-0003Ij-Pe; Sun, 03 Aug 2025 16:29:09 -0400
+	id 1uikJK-0001EN-RG; Sun, 03 Aug 2025 21:48:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1uifK6-0003Bf-6o
- for qemu-arm@nongnu.org; Sun, 03 Aug 2025 16:28:55 -0400
-Received: from mail-pf1-x42c.google.com ([2607:f8b0:4864:20::42c])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1uifK4-00005W-LQ
- for qemu-arm@nongnu.org; Sun, 03 Aug 2025 16:28:49 -0400
-Received: by mail-pf1-x42c.google.com with SMTP id
- d2e1a72fcca58-76a3818eb9bso2089457b3a.3
- for <qemu-arm@nongnu.org>; Sun, 03 Aug 2025 13:28:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1754252927; x=1754857727; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=FUCui5stuYhzGDKnvafV04f2kDXoqo1oZdCyKJNvZOU=;
- b=FJFv0o07YTiQuIvArHM8odAmE4bSe8r+3Jx9NvluNedfByamHg5j6tWNhNiIIB/Iij
- 0L9q/WIcW10TvLvTCZBtGcqYjRiFb5YrRax7FISU4JUMHgWCRnydU9dzpLVzYNOHD/Cd
- i3rYK9cTvj9RRCxFeFwfH8fXn7YZ3Vy7add4erS/yzpL0DH5tur/JFkDNFpMo1Lepop5
- BtWjJw5XCp/ddvCl94atDKO9AVhX/s2+ZQaP8nBBKuJCLNovINWZguFIYR7Cd99pfPjr
- qZbsCFrYMsI2ddFxQ1ulVE7dkYUsU2h/GVEQel+t1VVZjNJ/bneoekbvMjOoXZyBvEeh
- 6QCw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1754252927; x=1754857727;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=FUCui5stuYhzGDKnvafV04f2kDXoqo1oZdCyKJNvZOU=;
- b=YXUCZ2jlm0VMf9j3Z/asUa5J6z4uOd6Et3ObAmBgmdLM/fTCR/4qYg3EuOdRAnfN8j
- Rn9farZpo7nxvqIJvDWOt0226ctv4oXZLsMmrpf2poA1DmTNdTN/zSQst7B9SggrgoMk
- 5sRVdkKOyVU2DcBRl3DAAzc8akZCQkjHV4OtVYXvEpIBwb9fo6t7TUAAl/ES+Cj85Q/q
- OmEhw0VJ5aU+CWWnSXbCRpOB+Bu8Yw6ELkLd3H2OkhmOSwI3vtjZMmls+C/pJRBXhSRm
- Jnh8SdE62MS2F+fp/cLk4045cEY394J7p4omTzxxwO/1IFwacweBO7JdvTBlcjbmGuPb
- REXQ==
-X-Gm-Message-State: AOJu0Yx7ZXZNkLeBl4XFB2iHPwqsDuZg6Q2J2YzxdahGIDNFSpss1k+A
- vmBHa0dogZQgEI8cYCBGvandmpFkAuOcEziwpE7cB/xFI5nGLw5tYldnN44f08mzFDU=
-X-Gm-Gg: ASbGncsbD8fhJ/NEhuBZ4lHhE/+ye9Bdzd3h1d6lZvba+8IzQejMx5iuE7CxiBz1VxL
- 5VUK26zBNwJ25ZS5joVHqG46B2zfSlGXoi6EfZbM7ruuA4VpU4MDCy0mn2xBDJ7QR3X0utPRir2
- VX+VRogwYUTGaaMFJa8gTsyNiIfT2elMHNrI6e3/WcPqVhPrYzB0bhSAmzNTLvdxSgcgVmArFGl
- +aLv8AFa/b3sp7Fx+X82+ElJ+16wMdznD5+DZTWMwTmu3X2QLExAJHtJ0OG369f4/6HvdhpJwXX
- RkOYNujrIMrKDUndgck7P/nv4nD0rUwV2XPQtdsU33Yvl7k64klhe+EOAJAzHKWB3Fm+YIGirgX
- S9YQJaHKqru/pi5Le6nwr9I2iVBqj2TpMp+H6NpdoyppmghpsABc=
-X-Google-Smtp-Source: AGHT+IG7rTMq8lUncssGn/rlsAtbF2eEeDcdxlEVQZtIC/aUq0cJ5MNNq5gFI00QaegRw52ALFL0UA==
-X-Received: by 2002:a05:6a20:7d86:b0:233:c703:d4bf with SMTP id
- adf61e73a8af0-23df8fd290cmr9535122637.19.1754252926709; 
- Sun, 03 Aug 2025 13:28:46 -0700 (PDT)
-Received: from [192.168.4.112] ([180.233.125.160])
- by smtp.gmail.com with ESMTPSA id
- 41be03b00d2f7-b422b77f33asm7585125a12.5.2025.08.03.13.28.44
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 03 Aug 2025 13:28:46 -0700 (PDT)
-Message-ID: <2a2e6a67-07d5-4bf5-87c6-282867076201@linaro.org>
-Date: Mon, 4 Aug 2025 06:28:41 +1000
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1uikHl-0000Q7-1B; Sun, 03 Aug 2025 21:46:46 -0400
+Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1uikHi-0001wX-GU; Sun, 03 Aug 2025 21:46:44 -0400
+Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
+ (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Mon, 4 Aug
+ 2025 09:46:33 +0800
+Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
+ (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
+ Transport; Mon, 4 Aug 2025 09:46:33 +0800
+To: Alistair Francis <alistair@alistair23.me>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
+ <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
+ <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
+ Stanley" <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>
+Subject: [PATCH v1] hw/ssi/aspeed_smc: Fix incorrect FMC_WDT2 register read on
+ AST1030
+Date: Mon, 4 Aug 2025 09:46:33 +0800
+Message-ID: <20250804014633.512737-1-jamin_lin@aspeedtech.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 08/11] target/arm: Implement CB, CBB, CBH
-To: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org
-References: <20250803014019.416797-1-richard.henderson@linaro.org>
- <20250803014019.416797-9-richard.henderson@linaro.org>
- <c101dbc2-9431-4633-8a91-d5d85ce02082@redhat.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Content-Language: en-US
-In-Reply-To: <c101dbc2-9431-4633-8a91-d5d85ce02082@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42c;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42c.google.com
-X-Spam_score_int: 12
-X-Spam_score: 1.2
-X-Spam_bar: +
-X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Content-Type: text/plain
+Received-SPF: pass client-ip=211.20.114.72;
+ envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX01.aspeed.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -100,40 +60,39 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
+From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 8/3/25 22:31, Paolo Bonzini wrote:
-> On 8/3/25 03:40, Richard Henderson wrote:
->> +static bool do_cb_cond(DisasContext *s, int cc, int imm,
->> +                       int rt, int rm, MemOp mop)
-> 
-> This is a memop...
-> 
->> +static bool trans_CB_cond(DisasContext *s, arg_CB_cond *a)
->> +{
->> +    return do_cb_cond(s, a->cc, a->imm, a->rt, a->rm, a->sf ? 64 : 32);
->> +}
->> +
->> +static bool trans_CBB_cond(DisasContext *s, arg_CBB_cond *a)
->> +{
->> +    return do_cb_cond(s, a->cc, a->imm, a->rt, a->rm, 8);
->> +}
-> 
-> ... but these use bits
-> 
->> +static bool trans_CBH_cond(DisasContext *s, arg_CBH_cond *a)
->> +{
->> +    return do_cb_cond(s, a->cc, a->imm, 16, a->rt, a->rm);
->> +}
->> +
-> 
-> ... and this one also has arguments in the wrong order.
+On AST1030, reading the FMC_WDT2 register always returns 0xFFFFFFFF.
+This issue is due to the aspeed_smc_read function, which checks for the
+ASPEED_SMC_FEATURE_WDT_CONTROL feature. Since AST1030 was missing this
+feature flag, the read operation fails and returns -1.
 
-Gah.  Thanks.  I've reorganized the code to avoid this entirely.
+To resolve this, add the WDT_CONTROL feature to AST1030's feature set
+so that FMC_WDT2 can be correctly accessed by firmware.
 
-Now to fix a gcc crash when emitting code for cmpbr...  :-)
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+---
+ hw/ssi/aspeed_smc.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
+diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
+index 614528b8ef..e33496f502 100644
+--- a/hw/ssi/aspeed_smc.c
++++ b/hw/ssi/aspeed_smc.c
+@@ -1857,7 +1857,8 @@ static void aspeed_1030_fmc_class_init(ObjectClass *klass, const void *data)
+     asc->resets            = aspeed_1030_fmc_resets;
+     asc->flash_window_base = 0x80000000;
+     asc->flash_window_size = 0x10000000;
+-    asc->features          = ASPEED_SMC_FEATURE_DMA;
++    asc->features          = ASPEED_SMC_FEATURE_DMA |
++                             ASPEED_SMC_FEATURE_WDT_CONTROL;
+     asc->dma_flash_mask    = 0x0FFFFFFC;
+     asc->dma_dram_mask     = 0x000BFFFC;
+     asc->dma_start_length  = 1;
+-- 
+2.43.0
 
-r~
 

@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D009C87FCF
-	for <qemu-arm@archiver.kernel.org>; Mon,  4 Aug 2025 19:22:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 376B7C87FCB
+	for <qemu-arm@archiver.kernel.org>; Mon,  4 Aug 2025 19:24:32 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uj0k8-0002lg-Qk; Mon, 04 Aug 2025 15:21:08 -0400
+	id 1uj0nL-0007OU-V1; Mon, 04 Aug 2025 15:24:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1uj06Y-0001EX-7c
- for qemu-arm@nongnu.org; Mon, 04 Aug 2025 14:40:17 -0400
-Received: from mail-pf1-x430.google.com ([2607:f8b0:4864:20::430])
+ id 1uj06Z-0001F7-Ow
+ for qemu-arm@nongnu.org; Mon, 04 Aug 2025 14:40:19 -0400
+Received: from mail-pf1-x434.google.com ([2607:f8b0:4864:20::434])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1uj06R-0001Au-TF
- for qemu-arm@nongnu.org; Mon, 04 Aug 2025 14:40:12 -0400
-Received: by mail-pf1-x430.google.com with SMTP id
- d2e1a72fcca58-76a3818eb9bso3068586b3a.3
- for <qemu-arm@nongnu.org>; Mon, 04 Aug 2025 11:40:07 -0700 (PDT)
+ id 1uj06R-0001AP-41
+ for qemu-arm@nongnu.org; Mon, 04 Aug 2025 14:40:15 -0400
+Received: by mail-pf1-x434.google.com with SMTP id
+ d2e1a72fcca58-76bc5e68e26so4768565b3a.0
+ for <qemu-arm@nongnu.org>; Mon, 04 Aug 2025 11:40:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1754332806; x=1754937606; darn=nongnu.org;
+ d=linaro.org; s=google; t=1754332805; x=1754937605; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=bB7IRnB2X72HyfFQdO8pk3Ty2DGMB4Kj1UdkMvzsUlw=;
- b=q4leUAtVs4wFdbHZDmDHGyTpxED5lmYCXwUWji3kUuqojVManVqTHwjxaM05zR4Kt+
- wWtrk2m6Q94CuGGfOyPwimI+gcHt6VFXxx6QTJy5cm8fDkTo3qGH8YUqDKYwF/6keraG
- S7D6pZwjBJeIP4KrdR1MxqdYIrUW9tLp83BowV/6rYoTzhVpbTvl3i3vTRnDyFfp/ScM
- 7vDRvYs73gWdbwpDPECzVuA3+I+1C0lJMjM9Sxxx1g1YJYOWEh0/ZVCvVWCUuEYr9rsy
- KnW/C0YkfKSDtz3qRx9Jzt650V+kXb6w5L9/y9bFrTvakAY7J5l0gTUCNL35Xf3qr2NH
- O9oA==
+ bh=Gb/ReADUnlzi9AcO287uTsxkJfdtQt0rAfW8KkqAbww=;
+ b=zMCNFRfAHmjl0d+ocNOY1g0YWXUbbL16gYhgW3z6jhfbivBloSIPft+57mgZmRZM1K
+ 2kfFkobctO7HAPQepWiumqs0WlX70Iu8h6SzZE6xkaXs0EIGxLn+R+H76/5bkm9fBqWz
+ lWM8apa1uIlEKYF2YH065q5Xf8viv20YNAiSekFn3zWJmpgHu4KrJO4XiK+K6cVkuKLQ
+ 28eCE2fWbxsaUqq3qXrjGnfq7837JnSV+7OgbHKnwEakBQk0epHzz3g3+scWMNWwjVew
+ cyTVODzHoknUNt5Uy/j62wQtnXro7LlM3eaD10iivxX4ffbbsiOVl+gMQWeh4CBPQPts
+ HKvA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1754332806; x=1754937606;
+ d=1e100.net; s=20230601; t=1754332805; x=1754937605;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=bB7IRnB2X72HyfFQdO8pk3Ty2DGMB4Kj1UdkMvzsUlw=;
- b=OXqB4EgQMLdSHiD7JFCXj5I/7iOCpLasJJHF9V4OxkGj5p0oGxMcUQhIK48niohgcv
- tVTJYoPUMOg5TS0qIGNiwqU9//SFighG3ne0qOUL6KozlPDKJ1UEtg8aAaP9AT8/35XQ
- zsivk1dsJYlLbq/jVZMtWNGptW7/dZ8uzxj//TR59hGf3hn/xoHTvAMYbshqWlmehwGA
- LIblMraxX8QU8ozSHo93XowOtEZSNpK7Rf0UUc4y00yPURlrlf+AFJ7fVo1HInNncyeC
- BtSA975UEDh9uioQnx5FpWF+e+rj28Pq9Pur+dnKlOpOxPi7x6QdLuB+gpikX0tgciWz
- evzw==
+ bh=Gb/ReADUnlzi9AcO287uTsxkJfdtQt0rAfW8KkqAbww=;
+ b=ePjz6YwFDQRqDtMDNYv9VTmQ0gr35V4qrsV4VTG3P+fnqVDgbB5iJOP46GXYaBQsRh
+ iIGK76VYCE2Rt7iHZkq2vw3s6bJNOjcz2V6Uwi4ZV2G9smVRp41pN8x2XtZ7C6DYd5/x
+ 6hxRlyQB5tCMDt1mPKfESTq6LrEp/ixmGvx9yGGEwPfDQfiTJWbylpN0BeDJZqGjwHAT
+ goT85BkoJ+rYA0F+SHJ55UgLxXeq92I8nYa2ZhbjhmnoTfoQ369qz8tqjzuNy0pd/YWS
+ HLuExzouIJz7Qv1QYKKSqU2nWtsAHbtlSHNCzrGWVHa2mTEhn3KSaENa0kA+OYKh0gZP
+ Lc9w==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVNYuXGJIKIauOSxj6QV0Jfk/e2Zxy6Pp73KcYD+jODfKtVms1oq9+8ju6bciYsj3E8Rx7m9MmS5A==@nongnu.org
-X-Gm-Message-State: AOJu0YzV4RWSxHWzBBgE+q9CwotZRGw2gtC7WsKBq6Kc1dDXpdH3+kGI
- WFxLaukuFh6sf+u3Fx+kq3INh5AbnSQ/ErKuSUErbqM0HBnpjT7YWgZqtxDXQK0NvPc=
-X-Gm-Gg: ASbGncsyeBAXqYZu+WCB4bi83BotASpiarkl4YmMAh/lzQbfJ1WtDxKDweD6SED5ipg
- AbUx6+diX8zAoeNtd1heDD4eg8A6P8FyHgyEFWyHazSVadPquihYR9Bt6BP9OefmAJ2ZtxqKTpJ
- qo2KfhluJHzKV5R0EdusdWB9huLPQCGBnkxcQZkCP4KJyiOqjH806bF2bXW7l2O8Nw36ynsSPMo
- k5+aAbzGgor2tFOMJws/91050BPRvvh2nHBnqCe3/KgPjKvZ700zLgHSdJqn666zIdPZKGx9h6K
- 2kd6OuiapE3exA1UBBkOXxQfauiuRscUjcuvwEE2oMPB4W2dW58JHN96qiN/N54NsNfZt8bLGjF
- L9ZD+tJbke6yMb/0yQIOfuw==
-X-Google-Smtp-Source: AGHT+IEYkGZM3k0ctQRWy6R3Zit6AC8O84fNQgxm3FWYumeodaFHzn1yK2QVOBU5TXfjz31HO9n39g==
-X-Received: by 2002:a05:6a00:2d11:b0:76c:503:180d with SMTP id
- d2e1a72fcca58-76c05031c1fmr7477209b3a.8.1754332806414; 
- Mon, 04 Aug 2025 11:40:06 -0700 (PDT)
+ AJvYcCVGlxeNBSkdRSqhhi2/OHNMrGjG+gRKxCXlN1Sxu/z+1dG2oc1u1r3sn2iA/cjPrcps6fFp5qVHMQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yx/G9lh2Vg4E4oMLCHQimxiIUjzf17b++xi1qFcVbU5XEHjWuMc
+ 9tPA2yQ1lyG959jazzY/DB+xuTLmiAVEQmRdV967zgAts5rTjVWGwaNXb3cwG3wCXcY=
+X-Gm-Gg: ASbGnctzq2YBHim/QEYGR7iKJ4rWhSOOiHeARwLxhCrTxCWpnrvkDR3MFMFLMNq3dxA
+ SlwyU7OdXaR5EdKTmbezI/sIC64Z2aq0erW1ZudB/s0hoKa2ERryQgxozbphWpURbx9Sre0GGLR
+ POSxG+5ZrhVeqX2ejKNml/fLjjLxTibkerx+RLvkhssXd9NkIBxp0hZc4ChHLqnvdbMSyTViq3M
+ vhnxa2a46obs818zzrNclwYGoKEbzmQYn9TfHPZl6s0J0bq62z+f4iF5g9ugqrwYcD1VCi+EDxW
+ uP4uKnnex3n7DYeXpEjtQEEApASts14A//Hbo52OCWAyED+/wr92WTPgdpVn9ElvvkhzErMHai+
+ HNm/hR4bKmgdc1TilUXqoIw==
+X-Google-Smtp-Source: AGHT+IEhJ+hm/7krgWViWU9aVO/jARZNpLglTpvpKZedP0Ul0dkFCAHuQxR/Mdswcm/e9dY0lU1myQ==
+X-Received: by 2002:a05:6a00:14d3:b0:76b:f9c9:2160 with SMTP id
+ d2e1a72fcca58-76bf9c93355mr9373241b3a.6.1754332805490; 
+ Mon, 04 Aug 2025 11:40:05 -0700 (PDT)
 Received: from pc.. ([38.41.223.211]) by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-76bd78875cesm9940171b3a.15.2025.08.04.11.40.05
+ d2e1a72fcca58-76bd78875cesm9940171b3a.15.2025.08.04.11.40.04
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 04 Aug 2025 11:40:06 -0700 (PDT)
+ Mon, 04 Aug 2025 11:40:05 -0700 (PDT)
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-riscv@nongnu.org, philmd@linaro.org, Weiwei Li <liwei1518@gmail.com>,
@@ -75,23 +75,24 @@ Cc: qemu-riscv@nongnu.org, philmd@linaro.org, Weiwei Li <liwei1518@gmail.com>,
  Alistair Francis <alistair.francis@wdc.com>,
  Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v3 10/12] semihosting/arm-compat-semi: eradicate target_long
-Date: Mon,  4 Aug 2025 11:39:48 -0700
-Message-ID: <20250804183950.3147154-11-pierrick.bouvier@linaro.org>
+Subject: [PATCH v3 09/12] semihosting/arm-compat-semi: replace target_ulong
+ with uint64_t
+Date: Mon,  4 Aug 2025 11:39:47 -0700
+Message-ID: <20250804183950.3147154-10-pierrick.bouvier@linaro.org>
 X-Mailer: git-send-email 2.47.2
 In-Reply-To: <20250804183950.3147154-1-pierrick.bouvier@linaro.org>
 References: <20250804183950.3147154-1-pierrick.bouvier@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::430;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pf1-x430.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::434;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pf1-x434.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -107,34 +108,93 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-We use int64_t or int32_t depending on ret size.
-
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 ---
- semihosting/arm-compat-semi.c | 7 +++++--
- 1 file changed, 5 insertions(+), 2 deletions(-)
+ semihosting/arm-compat-semi.c | 24 ++++++++++++------------
+ 1 file changed, 12 insertions(+), 12 deletions(-)
 
 diff --git a/semihosting/arm-compat-semi.c b/semihosting/arm-compat-semi.c
-index f593239cc9a..55d7bf29ad6 100644
+index c03096b253d..f593239cc9a 100644
 --- a/semihosting/arm-compat-semi.c
 +++ b/semihosting/arm-compat-semi.c
-@@ -501,10 +501,13 @@ void do_common_semihosting(CPUState *cs)
-         break;
+@@ -123,7 +123,7 @@ static GuestFD console_out_gf;
+  */
  
-     case TARGET_SYS_ISERROR:
-+    {
-         GET_ARG(0);
--        common_semi_set_ret(cs, (target_long)arg0 < 0);
-+        bool ret = is_64bit_semihosting(env) ?
-+                   (int64_t)arg0 < 0 : (int32_t)arg0 < 0;
-+        common_semi_set_ret(cs, ret);
-         break;
--
-+    }
-     case TARGET_SYS_ISTTY:
-         GET_ARG(0);
-         semihost_sys_isatty(cs, common_semi_istty_cb, arg0);
+ typedef struct LayoutInfo {
+-    target_ulong rambase;
++    vaddr rambase;
+     size_t ramsize;
+     hwaddr heapbase;
+     hwaddr heaplimit;
+@@ -214,7 +214,7 @@ static LayoutInfo common_semi_find_bases(CPUState *cs)
+  * global, and we assume that the guest takes care of avoiding any races.
+  */
+ #ifndef CONFIG_USER_ONLY
+-static target_ulong syscall_err;
++static uint64_t syscall_err;
+ 
+ #include "semihosting/uaccess.h"
+ #endif
+@@ -260,8 +260,8 @@ static void common_semi_rw_cb(CPUState *cs, uint64_t ret, int err)
+ {
+     /* Recover the original length from the third argument. */
+     CPUArchState *env G_GNUC_UNUSED = cpu_env(cs);
+-    target_ulong args = common_semi_arg(cs, 1);
+-    target_ulong arg2;
++    uint64_t args = common_semi_arg(cs, 1);
++    uint64_t arg2;
+     GET_ARG(2);
+ 
+     if (err) {
+@@ -300,9 +300,9 @@ static void common_semi_seek_cb(CPUState *cs, uint64_t ret, int err)
+  * is defined by GDB's remote protocol and is not target-specific.)
+  * We put this on the guest's stack just below SP.
+  */
+-static target_ulong common_semi_flen_buf(CPUState *cs)
++static uint64_t common_semi_flen_buf(CPUState *cs)
+ {
+-    target_ulong sp = common_semi_stack_bottom(cs);
++    vaddr sp = common_semi_stack_bottom(cs);
+     return sp - 64;
+ }
+ 
+@@ -389,9 +389,9 @@ void semihosting_arm_compatible_init(void)
+ void do_common_semihosting(CPUState *cs)
+ {
+     CPUArchState *env = cpu_env(cs);
+-    target_ulong args;
+-    target_ulong arg0, arg1, arg2, arg3;
+-    target_ulong ul_ret;
++    uint64_t args;
++    uint64_t arg0, arg1, arg2, arg3;
++    uint64_t ul_ret;
+     char * s;
+     int nr;
+     int64_t elapsed;
+@@ -462,7 +462,7 @@ void do_common_semihosting(CPUState *cs)
+ 
+     case TARGET_SYS_WRITEC:
+         /*
+-         * FIXME: the byte to be written is in a target_ulong slot,
++         * FIXME: the byte to be written is in a uint64_t slot,
+          * which means this is wrong for a big-endian guest.
+          */
+         semihost_sys_write_gf(cs, common_semi_dead_cb,
+@@ -688,11 +688,11 @@ void do_common_semihosting(CPUState *cs)
+ 
+     case TARGET_SYS_HEAPINFO:
+         {
+-            target_ulong retvals[4];
++            uint64_t retvals[4];
+             int i;
+ #ifdef CONFIG_USER_ONLY
+             TaskState *ts = get_task_state(cs);
+-            target_ulong limit;
++            uint64_t limit;
+ #else
+             LayoutInfo info = common_semi_find_bases(cs);
+ #endif
 -- 
 2.47.2
 

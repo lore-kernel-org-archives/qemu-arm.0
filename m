@@ -4,89 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25ACCC87FCB
-	for <qemu-arm@archiver.kernel.org>; Mon,  4 Aug 2025 19:31:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C56F7C87FCF
+	for <qemu-arm@archiver.kernel.org>; Mon,  4 Aug 2025 19:32:15 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uj0uL-0001Sm-Ds; Mon, 04 Aug 2025 15:31:41 -0400
+	id 1uj0uR-0001ce-Sc; Mon, 04 Aug 2025 15:31:48 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uj056-0007Zs-Ds
- for qemu-arm@nongnu.org; Mon, 04 Aug 2025 14:38:44 -0400
-Received: from mail-yw1-x1134.google.com ([2607:f8b0:4864:20::1134])
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
+ id 1uj06M-00013a-H0
+ for qemu-arm@nongnu.org; Mon, 04 Aug 2025 14:40:05 -0400
+Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uj053-0000iP-TG
- for qemu-arm@nongnu.org; Mon, 04 Aug 2025 14:38:44 -0400
-Received: by mail-yw1-x1134.google.com with SMTP id
- 00721157ae682-7086dcab64bso34882637b3.1
- for <qemu-arm@nongnu.org>; Mon, 04 Aug 2025 11:38:41 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
+ id 1uj06K-0000rZ-65
+ for qemu-arm@nongnu.org; Mon, 04 Aug 2025 14:40:02 -0400
+Received: by mail-pf1-x436.google.com with SMTP id
+ d2e1a72fcca58-76bed310fa1so1870021b3a.2
+ for <qemu-arm@nongnu.org>; Mon, 04 Aug 2025 11:39:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1754332720; x=1754937520; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=8TelzPIIR0uGAyTMRfXmevN7KXZsDtz4mcaw499tzek=;
- b=mqKiud2IRPnj98Wrk5IowGhn6/oy1wmC54jHMA5/wcDFwwMhoA3c2p8oKueY5XE56e
- Azefy6r9V4KVPUCXcpDzi0aylPU1+HfXQYYMF2E3QhCmjQzz886kil75gKsvNtWwMWJU
- mD6hsqPshgHE4crB8Y7KdI/MCf85zg0cMM+wzGBfzaCYw3U6KRw4amRnTFUkMSpYXdjs
- 7aJnt0k9AHxNLA+PEdCiyAI8bJ/bXFWOMhuhSEjiDTKV+q93bOwf01NO3D/u8A28pNkH
- wIMHAu9llGhSHSKKKyRPuyMXlNBGUPNOV+xZ6XexgLeOqmphaL2q1DRYKYnnIYR8mtky
- swNg==
+ d=linaro.org; s=google; t=1754332796; x=1754937596; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=/YP7H+skmVEbiTBDchbdeF2EpV3qFqgl9BUJ7WkvewA=;
+ b=cn3Ysu3bIOUP9ITJfz5JZJyBwJUKjLVAefKuKrf1++CBp7SLX1ssDAGnY981D7AWB0
+ ao9/cjtsxs9krXmn6IINNxXEGv5Iq+pNBM7zUUjBj/BKWKl4cdOxV53EN6Ntpjvy0qxq
+ JUkpER0+ShJuyiC5SP1pS0cptdCGCDsaYFY+u/IuZXcaCTjTDJfel1il6fH3GzwkDh+v
+ Y9q84SybRBs/WNP5YJ4SZDtGGQasQCCKzmv+8hN8PO1ZP6hEq1ugYY19bBtKgYxHHl3s
+ LQSpd0XjS0oxX+Hl3FkcExriaZ2MpgvLsXyvVgWl0iyJMdltbvLLSz00seXm2ExHrGji
+ mJKA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1754332720; x=1754937520;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=8TelzPIIR0uGAyTMRfXmevN7KXZsDtz4mcaw499tzek=;
- b=TT8ib/PoqkxlRLqGKiRJ5zQKwMPc8C+UTGhZcRUZiBo6ILkcdVNw7WT8z6ouu4sNeN
- 1TWrWCbx8oIN48lvsGeRZHv5S7PvSpXwy1uLy2XGK+dO8urMUOTz3F9od6OtvcC3mEtC
- J5BLyDStCkvQWhf30VrdD4dBFgoOjRflZXyxxM5uxLvoPCD0kJ45cZwiGVZbOMC0qEfB
- t2vZ4Ec0ejfu0WuLdWxICpxvfs/ZOe9UF/7z4Qxu0jFB5DKjpO2CBMkFXqu8iEHnmwPG
- U4oyJvYhhLWOb+QqZvtt8pZ8/Ufl/ZTiZ68/EcLJkDlC347DJJHxVbPDKjP0C75YAbM1
- SLMQ==
+ d=1e100.net; s=20230601; t=1754332796; x=1754937596;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=/YP7H+skmVEbiTBDchbdeF2EpV3qFqgl9BUJ7WkvewA=;
+ b=Ho05Y6KMSztE0REfsfq5ybs/zyAXpBlOvibq3QjZE30vyCpreXqyCLh4fOskzE+46N
+ TUr1MzlqMOFemmt3M88QB3U1Q6UfQdsuN6TFnikZ2FlL2KhSsovai8ZLLb5JMY7VoJXE
+ vEUIlwnzbfjinaU9Y/9uFL7XT2DVjrxEj8WGuYz0jCy61S8MIaWl1M07OAIFHuU3AIrl
+ 7NFwjQ0L53Oo9dQV//6Rr6lSHPSaOsFx0YN2I7BBoVmqSKZZsjuyiSIR8aPN6cGBmwgR
+ IKaPKl26FMAf/mw4cxzyeNYUW4qZam45s2ITWsUFhnJP6OqlUrb3DKX7Nx5CNSb6obXF
+ shpw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCX8Dg6bVKcoM0he955w4hjDUjTh4qNMc0NWr06HdyPiM0Rwv6bu1Jwu9liBXf/61AG0whbnw4Kskw==@nongnu.org
-X-Gm-Message-State: AOJu0YxiXDX/GBoJN0q4KX5jtEfn21ZXJ7nQJlt3QteJJ46XjbeXVHcV
- mRs6KKmeGqGFUuXJMXZ2Ut4nO10BKyPlKCPGF//m72rSj7nzqN5Q+M1OO6K3LtXA+CXpHeEhalC
- y1E8KuIQeRfULct5aqfIPxkeA4IoUOq2SXJ+63d+Y0A==
-X-Gm-Gg: ASbGnct+t/j8Bc8TzGw9QM9BDlAmcpdg39J75cZ/8EdcF8QQCQF6LwTWN1hmC9ZJxB7
- Aqju/H42ixVp9fAMi83uW8tA/4Qo6LQ8hZdYp5cHz3z0SpApJ9fil+Q1dBjJLxxn4CJGZoLmkrF
- /Ffx3w3Qpgf0zyzrC0dk/A/4KDmYr939aweDOU9VpUcWXYtH76L2cvV2XYEMdl/MXalvFmsxkrZ
- EMrcsJF
-X-Google-Smtp-Source: AGHT+IGC9LNasoDJIVV5QaFqHdbxzsNdf9JdffgfJFpD42WwszXsXWVUi+AkkWOJHZJi6rXXY9Id0XykwA1Jpu3IHXQ=
-X-Received: by 2002:a05:690c:110:b0:71a:1e72:84c3 with SMTP id
- 00721157ae682-71b7ecda924mr127241487b3.9.1754332720287; Mon, 04 Aug 2025
- 11:38:40 -0700 (PDT)
+ AJvYcCWTYeJ0FS2gj2zh5A3utzxrWDzLp7XXKFOHuIRNIPSAen9ojDgro6l54RSJpmlXyDl3VdPrqpCLqw==@nongnu.org
+X-Gm-Message-State: AOJu0YwU1lpH7cRk/gpP7f0RefnuXs4Hr3A8Joh/C2/nzeYJjCyoh9w5
+ 3+H2/F1aKwP1hFfXiU6bJcNF8wlkZxPsZqtZ1Mv2/xCo49WjA1et3+UTA8bQBvUEjX8=
+X-Gm-Gg: ASbGncsWsvzouOrSco1mf6tl13VYxzzMZgiFlNUVUfWlgJux+Y2i4RdMDJunVAs5/Bc
+ je2AX3+fTves3WzfIX6CCw2gCU+yU3YOpJQPb3Bw1AyHXZxGL+K91Yb72a7XnDhnZuy7C2roM9Z
+ nnLq0J9Yaq9EpkVle8CmNXzf7eLSpEq7tskOpGevAYgAZ/9P6zbtLsa1A6UbEBIy5r9IvzWLjMO
+ SsF4aCH57KBcsp7ttlz6G6jxUhWGCidSYeKemBcaAh6ECJeXiR2YzhUF9+dH8L/31kyXf5jrymP
+ 5OADyGibeGrZbfrbCEds1o2lGxCD71fJO3BRs/IFOEko5b5tEvRmeO+hSXRpUxl54AuA7MnASCt
+ xDWAWUBFraZXmyETt174eTA==
+X-Google-Smtp-Source: AGHT+IE9V5Ru91u8rQ7ca+11wT1UPMlrUkY4HZYosPbz4vMnLM626AX2Y/XVCXlVupbXYvRzG+b0eA==
+X-Received: by 2002:a05:6a21:32a8:b0:240:af8:1784 with SMTP id
+ adf61e73a8af0-2400af81b60mr6514471637.1.1754332796394; 
+ Mon, 04 Aug 2025 11:39:56 -0700 (PDT)
+Received: from pc.. ([38.41.223.211]) by smtp.gmail.com with ESMTPSA id
+ d2e1a72fcca58-76bd78875cesm9940171b3a.15.2025.08.04.11.39.55
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 04 Aug 2025 11:39:56 -0700 (PDT)
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-riscv@nongnu.org, philmd@linaro.org, Weiwei Li <liwei1518@gmail.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>, richard.henderson@linaro.org,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, qemu-arm@nongnu.org,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Subject: [PATCH v3 00/12] single-binary: compile once semihosting
+Date: Mon,  4 Aug 2025 11:39:38 -0700
+Message-ID: <20250804183950.3147154-1-pierrick.bouvier@linaro.org>
+X-Mailer: git-send-email 2.47.2
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-References: <20250722201404.2368507-1-vacha.bhavsar@oss.qualcomm.com>
- <20250722201404.2368507-2-vacha.bhavsar@oss.qualcomm.com>
- <875xf36qyk.fsf@draig.linaro.org>
- <CAFEAcA8o4wEHHDXVj0Fcc3i8g+49psY7YSf1AqGiGe9vNuXiQA@mail.gmail.com>
- <87ikj3545v.fsf@draig.linaro.org>
-In-Reply-To: <87ikj3545v.fsf@draig.linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 4 Aug 2025 19:38:28 +0100
-X-Gm-Features: Ac12FXwm0pbL-VXCfd3cuR8gqXlvKMN1Z6IooKxLIQsuAJHiPnnx1fxVuCB7r1w
-Message-ID: <CAFEAcA-Y7utLb9cciGJOVAPF8Y0W4RxcOLDnNS7ptpHtYVG_EQ@mail.gmail.com>
-Subject: Re: [PATCH v4 1/2] target/arm: Increase MAX_PACKET_LENGTH for SME ZA
- remote gdb debugging
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: Vacha Bhavsar <vacha.bhavsar@oss.qualcomm.com>, qemu-devel@nongnu.org, 
- qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1134;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1134.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::436;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pf1-x436.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -102,88 +105,58 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, 4 Aug 2025 at 19:32, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrot=
-e:
->
-> Peter Maydell <peter.maydell@linaro.org> writes:
->
-> > On Mon, 4 Aug 2025 at 16:34, Alex Benn=C3=A9e <alex.bennee@linaro.org> =
-wrote:
-> >>
-> >> Vacha Bhavsar <vacha.bhavsar@oss.qualcomm.com> writes:
-> >>
-> >> > This patch increases the value of the MAX_PACKET_LEGNTH to
-> >> > 131100 from 4096 to allow the GDBState.line_buf to be large enough
-> >> > to accommodate the full contents of the SME ZA storage when the
-> >> > vector length is maximal. This is in preparation for a related
-> >> > patch that allows SME register visibility through remote GDB
-> >> > debugging.
-> >> >
-> >> > Signed-off-by: Vacha Bhavsar <vacha.bhavsar@oss.qualcomm.com>
-> >> > ---
-> >> > Changes since v3:
-> >> > - this patch was not present in version 3
-> >> >
-> >> >  gdbstub/internals.h | 2 +-
-> >> >  1 file changed, 1 insertion(+), 1 deletion(-)
-> >> >
-> >> > diff --git a/gdbstub/internals.h b/gdbstub/internals.h
-> >> > index bf5a5c6302..b58a66c201 100644
-> >> > --- a/gdbstub/internals.h
-> >> > +++ b/gdbstub/internals.h
-> >> > @@ -11,7 +11,7 @@
-> >> >
-> >> >  #include "exec/cpu-common.h"
-> >> >
-> >> > -#define MAX_PACKET_LENGTH 4096
-> >> > +#define MAX_PACKET_LENGTH 131100
-> >>
-> >> This is a rather large expansion for something that ends up in a stati=
-c at:
-> >>
-> >>     char line_buf[MAX_PACKET_LENGTH];
-> >>
-> >> I think maybe its time to get rid of this hardcoded define and make li=
-ne_buf a
-> >> dynamically re-sizeable buffer along the lines of str_buf and mem_buf.
-> >> In fact make it a GString and we can get rid of line_buf_index as well=
-.
-> >
-> > What exactly is the packet/response where MAX_PACKET_LENGTH is
-> > causing problems? The commit message doesn't say.
->
-> I assume it would be the g/G or p/P packets. The docs don't seem to say
-> anything about them splitting them across multiple packets.
+This series compiles once semihosting files in system mode.
+The most complicated file was semihosting/arm-compat-semi.c, which was carefully
+cleaned in easy to understand steps.
 
-Probably because nobody thought about the possibility of enormous
-registers. This sounds like something to query with the gdb devs
-about what they expect the handling of the SME ZA storage should be.
+v2
+--
 
-> > In general I thought the gdbstub protocol was supposed to handle a
-> > fixed packet length (e.g. in handle_query_xfer_features() the response
-> > packet indicates truncation via "l" vs "m" so the gdb end knows it need=
-s
-> > to send another request to get the rest of the data). So if we run
-> > into something which seems to be fixed by raising MAX_PACKET_LENGTH
-> > I would first want to look at whether the underlying problem is
-> > that we're not indicating to gdb "this data is incomplete, you'll
-> > need to ask for more of it" or something of that nature.
->
-> The docs reference "bulk transfers":
->
->   =E2=80=98PacketSize=3Dbytes=E2=80=99
->
->       The remote stub can accept packets up to at least bytes in length.
->       GDB will send packets up to this size for bulk transfers, and will
->       never send larger packets. This is a limit on the data characters
->       in the packet, not including the frame and checksum. There is no
->       trailing NUL byte in a remote protocol packet; if the stub stores
->       packets in a NUL-terminated format, it should allow an extra byte
->       in its buffer for the NUL. If this stub feature is not supported,
->       GDB guesses based on the size of the =E2=80=98g=E2=80=99 packet res=
-ponse.
+- use vaddr for syscalls.c/.h
+- static qualifier for console_{in,out}_gf
+- use vaddr for arm-compat-semi.c
+- semihosting/arm-compat-semi: fix cast for common_semi_set_ret
 
-We do advertise this.
+v3
+--
 
--- PMM
+- keep common_semi_sys_exit_extended (Peter)
+
+Pierrick Bouvier (12):
+  semihosting/syscalls: compile once in system and per target for user
+    mode
+  semihosting/syscalls: replace uint64_t with vaddr where appropriate
+  semihosting/guestfd: compile once for system/user
+  semihosting/arm-compat-semi: change common_semi_sys_exit_extended
+  target/riscv/common-semi-target: remove sizeof(target_ulong)
+  target/{arm,riscv}/common-semi-target: eradicate target_ulong
+  include/semihosting/common-semi: extract common_semi API
+  semihosting/arm-compat-semi: eradicate sizeof(target_ulong)
+  semihosting/arm-compat-semi: replace target_ulong with uint64_t
+  semihosting/arm-compat-semi: eradicate target_long
+  semihosting/arm-compat-semi: remove dependency on cpu.h
+  semihosting/arm-compat-semi: compile once in system and per target for
+    user mode
+
+ include/semihosting/common-semi.h             |   6 +
+ include/semihosting/guestfd.h                 |   7 --
+ include/semihosting/semihost.h                |   2 +
+ include/semihosting/syscalls.h                |  30 ++---
+ semihosting/arm-compat-semi-stub.c            |  19 +++
+ semihosting/arm-compat-semi.c                 |  65 ++++++++---
+ semihosting/guestfd.c                         |  26 +----
+ semihosting/syscalls.c                        | 109 +++++++++---------
+ ...mon-semi-target.h => common-semi-target.c} |  22 ++--
+ ...mon-semi-target.h => common-semi-target.c} |  27 +++--
+ semihosting/meson.build                       |  18 +--
+ target/arm/meson.build                        |   4 +
+ target/riscv/meson.build                      |   4 +
+ 13 files changed, 190 insertions(+), 149 deletions(-)
+ create mode 100644 semihosting/arm-compat-semi-stub.c
+ rename target/arm/{common-semi-target.h => common-semi-target.c} (59%)
+ rename target/riscv/{common-semi-target.h => common-semi-target.c} (53%)
+
+-- 
+2.47.2
+
 

@@ -4,84 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58858C87FCB
-	for <qemu-arm@archiver.kernel.org>; Mon,  4 Aug 2025 23:53:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69EFCC87FCB
+	for <qemu-arm@archiver.kernel.org>; Tue,  5 Aug 2025 07:45:37 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uj4zn-0004Uj-Mc; Mon, 04 Aug 2025 19:53:35 -0400
+	id 1ujCMN-0002O3-U0; Tue, 05 Aug 2025 03:45:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1uj4zc-0004RD-4R
- for qemu-arm@nongnu.org; Mon, 04 Aug 2025 19:53:25 -0400
-Received: from p-east3-cluster5-host3-snip4-5.eps.apple.com ([57.103.86.156]
- helo=outbound.qs.icloud.com)
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1ujCME-0002Io-Cv; Tue, 05 Aug 2025 03:45:22 -0400
+Received: from isrv.corpit.ru ([212.248.84.144])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1uj4za-0006nT-69
- for qemu-arm@nongnu.org; Mon, 04 Aug 2025 19:53:23 -0400
-Received: from outbound.qs.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-east-2d-100-percent-7 (Postfix) with ESMTPS id
- E24FF18000BF; Mon,  4 Aug 2025 23:53:15 +0000 (UTC)
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; bh=cTJquXsPjv4ShE+qEC2i5SuDDtudEwPpzptwV611svM=;
- h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To:x-icloud-hme;
- b=ey0ltUWGrB53pDCA6ZSpJf3wMgWcWCIzxbSzEGAg1E4tkTQCOkcY1Vl31py8LGp9OY/CfUetGKQX7Y9SU2msQY66rehBJ9MuCLEKz9lILBBoGyJMNiXdulMhVUfeftk8X9weIyDl1Y6PDT5Si1cQlydMjaN8gFEC3mFW+UxN2KW5oL5saC/IFWA5jGz7Y1wGlrqeLwKyqLel7q2IEl5vmaph5WeztEdgfZdAjHolAJwrpGU8N/OjT7aHjUdxJrSn10kNQR49Re6DYYb0A6zfm6GhG0o8BGRl+d+V/9tmsZlmcuePcwdr8HshNyNtFvHJj6omcVDh2c0m0sOh5CpE9w==
-X-Client-IP: 109.40.242.215
-Received: from smtpclient.apple (qs-asmtp-me-k8s.p00.prod.me.com
- [17.57.155.37])
- by p00-icloudmta-asmtp-us-east-2d-100-percent-7 (Postfix) with ESMTPSA id
- ED10018000A1; Mon,  4 Aug 2025 23:53:10 +0000 (UTC)
-Content-Type: text/plain;
-	charset=utf-8
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3860.100.5.1.1\))
-Subject: Re: [PATCH v4 12/17] hw/arm: virt: cleanly fail on attempt to use the
- platform vGIC together with ITS
-From: Mohamed Mediouni <mohamed@unpredictable.fr>
-In-Reply-To: <395a77c2-53c3-436b-b46f-b301dc8e619b@linaro.org>
-Date: Tue, 5 Aug 2025 01:52:57 +0200
-Cc: qemu-devel@nongnu.org, Shannon Zhao <shannon.zhaosl@gmail.com>,
- Ani Sinha <anisinha@redhat.com>, Phil Dennis-Jordan <phil@philjordan.eu>,
- Roman Bolshakov <rbolshakov@ddn.com>, Igor Mammedov <imammedo@redhat.com>,
- Eduardo Habkost <eduardo@habkost.net>, Mads Ynddal <mads@ynddal.dk>,
- =?utf-8?B?IkRhbmllbCBQLiBCZXJyYW5nw6ki?= <berrange@redhat.com>,
- Sunil Muthuswamy <sunilmut@microsoft.com>, Zhao Liu <zhao1.liu@intel.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Alexander Graf <agraf@csgraf.de>,
- qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Yanan Wang <wangyanan55@huawei.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Cameron Esfahani <dirty@apple.com>, Paolo Bonzini <pbonzini@redhat.com>,
- =?utf-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-Content-Transfer-Encoding: quoted-printable
-Message-Id: <62287B84-98BB-4E97-B43C-9ED31DB0C113@unpredictable.fr>
-References: <20250804142326.72947-1-mohamed@unpredictable.fr>
- <20250804142326.72947-13-mohamed@unpredictable.fr>
- <395a77c2-53c3-436b-b46f-b301dc8e619b@linaro.org>
-To: =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-X-Mailer: Apple Mail (2.3860.100.5.1.1)
-X-Proofpoint-GUID: OPLyPOtWT-uH6_8C6qoqUC-hIyRvMJ97
-X-Proofpoint-ORIG-GUID: OPLyPOtWT-uH6_8C6qoqUC-hIyRvMJ97
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwODA0MDE0NiBTYWx0ZWRfX8ALeT3KsLrli
- hdYghQemZXACNm+cmGtE4XoIv+1OblVc12qtOM25U2MCbi+bPpd4F9gPrTqddNJ0epAgp/C6ROb
- oB+YFL/UcFCmW7PWt5IYCsXuSXgCJ+KcMy9AL8Xwzuzog4YHCGVPL/YMyLfZxKyclQbOwjLbO0+
- tpbE0jN0fmHb5gYQQVbO0Hq/xQVINpOQiVJ2fmIADSfPLgstuYT372tZoAkkq5lfkEfxVIfzhwf
- CwVr4u5w1xddpt39k0fNWtTBN/Gxjgldc0nBzEX5p47cuzzZ1pdwFN8Bk8guhutoA+hSbkZwo=
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.9,FMLib:17.12.80.40
- definitions=2025-08-04_10,2025-08-04_01,2025-03-28_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0
- adultscore=0 phishscore=0 suspectscore=0 bulkscore=0 spamscore=0
- mlxlogscore=999 malwarescore=0 clxscore=1030 classifier=spam adjust=0
- reason=mlx scancount=1 engine=8.22.0-2506270000 definitions=main-2508040146
-Received-SPF: pass client-ip=57.103.86.156;
- envelope-from=mohamed@unpredictable.fr; helo=outbound.qs.icloud.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1ujCM9-0000ih-Ve; Tue, 05 Aug 2025 03:45:12 -0400
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+ by isrv.corpit.ru (Postfix) with ESMTP id 8217913E847;
+ Tue, 05 Aug 2025 10:44:33 +0300 (MSK)
+Received: from [192.168.177.146] (mjtthink.wg.tls.msk.ru [192.168.177.146])
+ by tsrv.corpit.ru (Postfix) with ESMTP id B139E256F14;
+ Tue,  5 Aug 2025 10:44:54 +0300 (MSK)
+Message-ID: <befab3c0-024c-43ca-8d5f-bddf960e9a21@tls.msk.ru>
+Date: Tue, 5 Aug 2025 10:44:54 +0300
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3] target/arm: add support for 64-bit PMCCNTR in AArch32
+ mode
+To: Alex Richardson <alexrichardson@google.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>
+References: <20250725170136.145116-1-alexrichardson@google.com>
+Content-Language: en-US, ru-RU
+From: Michael Tokarev <mjt@tls.msk.ru>
+Autocrypt: addr=mjt@tls.msk.ru; keydata=
+ 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
+In-Reply-To: <20250725170136.145116-1-alexrichardson@google.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=212.248.84.144; envelope-from=mjt@tls.msk.ru;
+ helo=isrv.corpit.ru
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -99,49 +105,79 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+On 25.07.2025 20:01, Alex Richardson wrote:
+> In the PMUv3, a new AArch32 64-bit (MCRR/MRRC) accessor for the
+> PMCCNTR was added. In QEMU we forgot to implement this, so only
+> provide the 32-bit accessor. Since we have a 64-bit PMCCNTR
+> sysreg for AArch64, adding the 64-bit AArch32 version is easy.
+> 
+> We add the PMCCNTR to the v8_cp_reginfo because PMUv3 was added
+> in the ARMv8 architecture. This is consistent with how we
+> handle the existing PMCCNTR support, where we always implement
+> it for all v7 CPUs. This is arguably something we should
+> clean up so it is gated on ARM_FEATURE_PMU and/or an ID
+> register check for the relevant PMU version, but we should
+> do that as its own tidyup rather than being inconsistent between
+> this PMCCNTR accessor and the others.
+> 
+> Since the register name is the same as the 32-bit PMCCNTR, we set
+> ARM_CP_NO_GDB on the 32-bit one to avoid generating an invalid GDB XML.
+> 
+> See https://developer.arm.com/documentation/ddi0601/2024-06/AArch32-Registers/PMCCNTR--Performance-Monitors-Cycle-Count-Register?lang=en
+> 
+> Change v2->v3:
+> - Moved ARM_CP_NO_GDB to the 32-bit register if Armv8 is supported
+> 
+> Changes v1->v2:
+> - Moved to new file
+> - Updated commit message
+> - Added ARM_CP_NO_GDB
+> 
+> Signed-off-by: Alex Richardson <alexrichardson@google.com>
+> ---
+>   target/arm/cpregs-pmu.c | 24 +++++++++++++++++++-----
+>   1 file changed, 19 insertions(+), 5 deletions(-)
 
+Hi!
 
-> On 5. Aug 2025, at 00:59, Philippe Mathieu-Daud=C3=A9 =
-<philmd@linaro.org> wrote:
->=20
-> On 4/8/25 16:23, Mohamed Mediouni wrote:
->> Windows Hypervisor Platform's vGIC doesn't support ITS.
->> Deal with this by reporting to the user and not creating the ITS =
-device.
->> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
->> ---
->>  hw/arm/virt.c | 10 ++++++++++
->>  1 file changed, 10 insertions(+)
->> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
->> index 98a1c74c42..0039f6a12b 100644
->> --- a/hw/arm/virt.c
->> +++ b/hw/arm/virt.c
->> @@ -741,6 +741,16 @@ static void create_its(VirtMachineState *vms)
->>          return;
->>      }
->>  +    if (whpx_enabled() && vms->tcg_its) {
->> +        /*
->> +         * Signal to the user when ITS is neither supported by the =
-host
->> +         * nor emulated by the machine.
->> +         */
->> +        info_report("ITS not supported on WHPX.");
->> +        info_report("To support MSIs, use its=3Doff to enable GICv3 =
-+ GICv2m.");
->=20
-> So if the users deliberately asks for its=3Don, we ignore the request =
-and
-> keep going. Shouldn't we just exit so the user adapts its command =
-line?
-Maybe that=E2=80=99s the best way to go=E2=80=A6 what makes me a bit =
-hesitant on that one though is that the default is its=3Don.
->> +        return;
->> +    }
->> +
->>      dev =3D qdev_new(its_class_name());
->>        object_property_set_link(OBJECT(dev), "parent-gicv3", =
-OBJECT(vms->gic),
->=20
->=20
+This patch is marked as to back-port to stable series, with
+the commit message tweak by Peter:
 
+     Note for potential backporting:
+      * this code in cpregs-pmu.c will be in helper.c on stable
+        branches that don't have commit ae2086426d37
+
+The mentioned commit:
+
+commit ae2086426d3784cf66e5b0b7ac823c08e87b4c57
+Author: Richard Henderson <richard.henderson@linaro.org>
+Date:   Mon Jul 7 09:15:47 2025 -0600
+
+     target/arm: Split out performance monitor regs to cpregs-pmu.c
+
+     Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+     Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+     Message-id: 20250707151547.196393-4-richard.henderson@linaro.org
+     Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+     Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+
+The thing is that this commit not only split out parts of helper.c
+to cpregs-pmu.c, but it also modified the code quite significantly,
+which is not even mentioned in the commit message.
+
+This makes back-porting of the changes more difficult, which is okay, -
+for this I'm asking for help (provided this fix is really needed for
+10.0.x stable branch).
+
+But this also brings a more general question, or a suggestion.  When
+splitting stuff into a separate file, *and* modifying it in process,
+can't we do it in 2 stages, - first is to modify it, and next is to
+move it without modifications?  I think this makes review process
+significantly easier.  And I wonder how Philippe and Peter reviewed
+this whole thing, as the changes in ae2086426d37 are rather large.
+If it were me, I'd had a difficult time reviewing this change.
+
+Thanks,
+
+/mjt
 

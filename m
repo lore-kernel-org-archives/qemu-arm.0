@@ -4,92 +4,145 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6992AC87FCB
-	for <qemu-arm@archiver.kernel.org>; Tue,  5 Aug 2025 17:35:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42B25C87FD1
+	for <qemu-arm@archiver.kernel.org>; Tue,  5 Aug 2025 20:01:41 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ujLWC-0008Mn-Mq; Tue, 05 Aug 2025 13:32:08 -0400
+	id 1ujNqU-0006Fc-CA; Tue, 05 Aug 2025 16:01:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ujLW1-0008EV-3H
- for qemu-arm@nongnu.org; Tue, 05 Aug 2025 13:32:02 -0400
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ujLVy-0004sh-OL
- for qemu-arm@nongnu.org; Tue, 05 Aug 2025 13:31:56 -0400
-Received: by mail-wr1-x42c.google.com with SMTP id
- ffacd0b85a97d-3b78a034f17so4090912f8f.2
- for <qemu-arm@nongnu.org>; Tue, 05 Aug 2025 10:31:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1754415112; x=1755019912; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=nyJb13ApUF6CgkPoqne7lt0/hxjnBW7a66LB5bEyxpQ=;
- b=kI2geFed/kIxgR+q1CjGX1hDL8rIWCKwK4kSGC/qFUaNfMINQYKMTroVacmM6IOAWz
- KjyNjaW5v1VYf2LyBV/iJvzyzIiIPIAfhkcX7zNqmuEl6p9m4pSlw1Stjk8jm2u5dmBr
- JxxPqLp/igBT/yBjLSNMQvmR+VYLLepIliX18u984Eye8Z37293TtYxOE6rKtnmyXrQa
- WF23JYbKNYtLm+1xmZB9mxdl6gwNT2sNWRcgw1YLJ96t8Blh8sAODHDDoYyTHdf9b1oS
- 5kCG3XrM2gNAhFDbvaFw+7/eJK2wvfYnEbqqgv1gsvY3r+7+PJ6n8TKX89cyC2l4Ql0/
- CvBg==
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1ujNqR-0006Cl-NI
+ for qemu-arm@nongnu.org; Tue, 05 Aug 2025 16:01:12 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1ujNqO-0003UL-79
+ for qemu-arm@nongnu.org; Tue, 05 Aug 2025 16:01:11 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1754424063;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=zShoLhc7QdLofb7EBM16GdCEn/h1ODh8peITA4SPWeA=;
+ b=Y0+F2KsKHlEMFLbWCPJq7HrNyyfcYoGE8fAChvFFBBy1Zpdnlk8eqYE7mn6sLKuaaNDc+/
+ hgtABYwHMJJFdrtXc/F3XhOTZmsdak/tfTqV9/H+rFxCqLahvo0Y84GIWMZMNZssMh3ZU/
+ TTM6bh4W01v/LhHDgjw7HI4zc8djfOs=
+Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com
+ [209.85.222.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-170-tvVZVY9hPD6yWXPjhKuiVg-1; Tue, 05 Aug 2025 16:01:01 -0400
+X-MC-Unique: tvVZVY9hPD6yWXPjhKuiVg-1
+X-Mimecast-MFC-AGG-ID: tvVZVY9hPD6yWXPjhKuiVg_1754424061
+Received: by mail-qk1-f199.google.com with SMTP id
+ af79cd13be357-7e69a0a8bcbso682841185a.0
+ for <qemu-arm@nongnu.org>; Tue, 05 Aug 2025 13:01:01 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1754415112; x=1755019912;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=nyJb13ApUF6CgkPoqne7lt0/hxjnBW7a66LB5bEyxpQ=;
- b=IM5ptuGVgvOG20Jq3wpCF/56EsXcgCl8MzbVwx4wZjFparo3mZ/LjDixBgSQ/g9QDl
- /7fI9NbWZu9qEF/KXVCBSiJ9vCqkOsuuBxvDNffk8GYsP4Lsc7+x2ltgtIKPo5W59Klu
- L3NN/+isQfLwq36gRdp+52GqrynGCjLFZvT7X9Km7V2mbFBm9a36uzTnbhD9DFfkTtCj
- MqQc8UkXQZfik4JAsaDTHQ5g0wY1tGI+W2n1E/8WD229BQ2VF/p4gu91wUci/urDh3as
- IOO3+a/wCE5VJQCaqAjwa8KfJMfwRJ2ZgGwACEj+CtzPjF5Zy2oravOGycl8wyOAvAfe
- jEJQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWsB1/PoGYy9qxpHiB1UZNOHnFtMDY9Ck+rJIp6GMj96TayiGXsnW0+bu4JAG5u/Hu9wmpU+oCt6Q==@nongnu.org
-X-Gm-Message-State: AOJu0YyZ3k8HJnpQjsVHyTsvl1KrNU7M8nVzQu/OEXMjUmrgS1Nb/pi2
- Gqi9J+w57iB2n3+dPnsczyrkAho4I/uiCAgZBNAsJOF0jkCHgM1v0HmQbFPJjJZcGIU=
-X-Gm-Gg: ASbGncvOuw7NJTezJmKHqvaowtoH3X9eyWlEk4GIDdkdvAQAFoVCdrH4UtK9u4/dGy9
- WGgPy8ZA3je/l089ESYQyNiQz5yk3zPyrr3ZBXqztM4QHlgtXCNaWSMQvfz6RxaOMtMB5GBnCPZ
- TH5VYWOIdkQLMSTtd4jCf6yH4/v3ASKU1H7q4BH5BnmG5IdjWugJ2pvhZgtt6D7v1PrCfqSM6ni
- hnoJAAJX4maOWURMutDYpQO7FHR1GTU0vkgWV7Owb/SIHf6je5RUmM3BJ+kuv+HZh+R/SeLqjGm
- bo8JDzsZG5a48EI7Ew7tnWrgmCejI1UitFCzbXh2/bnTMX3Cr8wW11GMRNUj7QEBCrbDQUnqg9r
- OxEq5cVChpirVExaTGpL1WcsLiN8nR19FnkEoTEKdmVquOXRkf4sAdbRKxsBP2MeGCjZ6MJSF
-X-Google-Smtp-Source: AGHT+IFxhPw1C4EaM2WRXR38iNdDbrsPPv+WYXwo9islqjuMwXaHY6QZdx6mTgNI1wMXzsDg59F1rQ==
-X-Received: by 2002:a05:6000:2912:b0:3b8:d32e:9231 with SMTP id
- ffacd0b85a97d-3b8d94ba936mr9946361f8f.29.1754415111715; 
- Tue, 05 Aug 2025 10:31:51 -0700 (PDT)
-Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-459e586eef8sm12038175e9.21.2025.08.05.10.31.50
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 05 Aug 2025 10:31:51 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Beniamino Galvani <b.galvani@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
- Bin Meng <bmeng.cn@gmail.com>, qemu-arm@nongnu.org, qemu-block@nongnu.org
-Subject: [PULL 03/13] hw/sd/sdbus: Provide buffer size to sdbus_do_command()
-Date: Tue,  5 Aug 2025 19:31:24 +0200
-Message-ID: <20250805173135.38045-4-philmd@linaro.org>
-X-Mailer: git-send-email 2.49.0
-In-Reply-To: <20250805173135.38045-1-philmd@linaro.org>
-References: <20250805173135.38045-1-philmd@linaro.org>
+ d=1e100.net; s=20230601; t=1754424061; x=1755028861;
+ h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=zShoLhc7QdLofb7EBM16GdCEn/h1ODh8peITA4SPWeA=;
+ b=Wg5HUAzx4TN8xWWtbdK/iGFRLX3UM/GZuiLkqoyO1EM85X7Kk6e3dTcCPCb2e7ff3V
+ 8Hbp94zcfvaxkHxJuGvKIKNAgnRMwummG2KbGtrfqu25KEQ5xjD8o8A5cEgtvFmEzBYD
+ FLBNqn5C7LzawzVqkvbSuvHglim537uYmfCsT5mkSgobLvofsyTPgH7N0qS6lzcKT7oY
+ smQIb9jzZuCjS8B9nuAADVJoySkrtUJm0oIe7VpCCNquF3qY3kFZRK5O7SMb8hPx7hEQ
+ ndyNCfO6FlzKWuKtXgPEFiOpRium7a9CYhT/HMHrSzkf6GAm3NNDQWiELmLWzKTuviLD
+ jsfw==
+X-Gm-Message-State: AOJu0YzXmbIzmihEpubiL/PPu+nqoFCuVcaTDZPKCEWkw2e5JgpCwLCP
+ 6WYCsieGrZU9V7HI8ZvFGl34OMoFAOxJr4guHDibJi4+s5wU27t7W3/65nzeSvHGD4Go6XJEuDp
+ FhcVIVFd66+aqg/9JT883doFUAHxR9XlN+yWqraYw5Qx8/4BrhUdOvQ==
+X-Gm-Gg: ASbGncvtpfh8GmQ0RTwGrGSwosrHqTPjkj+QLyVzumTIkJm0EjXTH6mqVKwMWdnPiGR
+ X2UHP0+LIc+AbeILCZ2UVIlUguRytSmsXtYZKylxWeMZp0D76y8VQtJroqKaMa1T1gTQ8lV9B5B
+ QbhXy4mBgHwxzD7zMmtdCyqKPvOHO7qnvvzi5L7DCT8VsFSE9MOB1On3vrOsxJk3JeyRyI7SI8E
+ eEKk6SS3qyTu4CrP8ozIGZ7ef9T0kVX4cQRKugNVResDvuhsQ2SHabOuKHH9TmdSeY5x234kQNH
+ cmYkjZ+a1TZalmpGHPcHXFk28FUvilUXO6eK+QfbrQhj5iGjcGGwoDth3lPLTUqRv/Kgq7HaGgE
+ =
+X-Received: by 2002:a05:620a:aa13:b0:7e3:49b5:d53f with SMTP id
+ af79cd13be357-7e814eec6ddmr63987385a.34.1754424061399; 
+ Tue, 05 Aug 2025 13:01:01 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGgU3KGaF9lAXhF99U5wF/pQEmwfbpPx2Br1IGWuW8nwc1mWumfrd6/vkQrUAEw1GW69sG3HQ==
+X-Received: by 2002:a05:620a:aa13:b0:7e3:49b5:d53f with SMTP id
+ af79cd13be357-7e814eec6ddmr63983385a.34.1754424060861; 
+ Tue, 05 Aug 2025 13:01:00 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:165:d60:bbdd:3c5e:7d8b:3f72?
+ ([2a01:e0a:165:d60:bbdd:3c5e:7d8b:3f72])
+ by smtp.gmail.com with ESMTPSA id
+ af79cd13be357-7e67f753489sm717889285a.77.2025.08.05.13.00.59
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 05 Aug 2025 13:01:00 -0700 (PDT)
+Message-ID: <82833ff9-1f78-4929-82d6-f59a3b056626@redhat.com>
+Date: Tue, 5 Aug 2025 22:00:58 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH for-10.2] hw/arm/virt: Include 'system/system.h'
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
+References: <20250731144019.1403591-1-clg@redhat.com>
+ <f9a79dda-83a8-4cbf-9a3d-dde4fcc0eb48@linaro.org>
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
+Autocrypt: addr=clg@redhat.com; keydata=
+ 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
+ uVKe8BVz4atMOoktmt0GWTOC8P4=
+In-Reply-To: <f9a79dda-83a8-4cbf-9a3d-dde4fcc0eb48@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: rmhB-S9MxB5m5Y8gwJhgY2QrtQfHiMNKdazljf6KqbQ_1754424061
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US, fr
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42c.google.com
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -105,280 +158,25 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-We provide to sdbus_do_command() a pointer to a buffer to be
-filled with a varying number of bytes. By not providing the
-buffer size, the callee can not check the buffer is big enough.
-Pass the buffer size as argument to follow good practices.
+On 8/5/25 16:16, Philippe Mathieu-Daudé wrote:
+> On 31/7/25 16:40, Cédric Le Goater wrote:
+>> hw/arm/virt.c should include 'system/system.h' for :
+>>
+>>    serial_hd()
+> 
+> 3 other files miss it:
+> 
+> $ git grep -L system/system $(git grep -wl serial_hd)
+> hw/arm/virt.c
+> hw/isa/isa-superio.c
+> hw/mips/loongson3_virt.c
+> hw/mips/malta.c
+> include/system/system.h
 
-sdbus_do_command() doesn't return any error, only the size filled
-in the buffer. Convert the returned type to unsigned and remove
-the few unreachable lines in callers.
+OK. This deserves a v2. Will work on it.
 
-This allow to check for possible overflow in sd_do_command().
+Thanks,
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <20250804133406.17456-4-philmd@linaro.org>
----
- include/hw/sd/sd.h       | 23 +++++++++++++++++++++--
- hw/sd/allwinner-sdhost.c |  7 ++-----
- hw/sd/bcm2835_sdhost.c   |  7 ++-----
- hw/sd/core.c             |  5 +++--
- hw/sd/omap_mmc.c         |  5 +++--
- hw/sd/pl181.c            |  6 ++----
- hw/sd/sd.c               |  6 ++++--
- hw/sd/sdhci.c            |  6 +++---
- hw/sd/ssi-sd.c           | 12 +++++++-----
- 9 files changed, 47 insertions(+), 30 deletions(-)
-
-diff --git a/include/hw/sd/sd.h b/include/hw/sd/sd.h
-index d6bad175131..55d363f58fb 100644
---- a/include/hw/sd/sd.h
-+++ b/include/hw/sd/sd.h
-@@ -96,7 +96,17 @@ struct SDCardClass {
-     DeviceClass parent_class;
-     /*< public >*/
- 
--    int (*do_command)(SDState *sd, SDRequest *req, uint8_t *response);
-+    /**
-+     * Process a SD command request.
-+     * @sd: card
-+     * @req: command request
-+     * @resp: buffer to receive the command response
-+     * @respsz: size of @resp buffer
-+     *
-+     * Return: size of the response
-+     */
-+    size_t (*do_command)(SDState *sd, SDRequest *req,
-+                         uint8_t *resp, size_t respsz);
-     /**
-      * Write a byte to a SD card.
-      * @sd: card
-@@ -153,7 +163,16 @@ struct SDBusClass {
- void sdbus_set_voltage(SDBus *sdbus, uint16_t millivolts);
- uint8_t sdbus_get_dat_lines(SDBus *sdbus);
- bool sdbus_get_cmd_line(SDBus *sdbus);
--int sdbus_do_command(SDBus *sd, SDRequest *req, uint8_t *response);
-+/**
-+ * sdbus_do_command: Process a SD command request
-+ * @sd: card
-+ * @req: command request
-+ * @resp: buffer to receive the command response
-+ * @respsz: size of @resp buffer
-+ *
-+ * Return: size of the response
-+ */
-+size_t sdbus_do_command(SDBus *sd, SDRequest *req, uint8_t *resp, size_t respsz);
- /**
-  * Write a byte to a SD bus.
-  * @sd: bus
-diff --git a/hw/sd/allwinner-sdhost.c b/hw/sd/allwinner-sdhost.c
-index b31da5c399c..9d61b372e70 100644
---- a/hw/sd/allwinner-sdhost.c
-+++ b/hw/sd/allwinner-sdhost.c
-@@ -233,7 +233,7 @@ static void allwinner_sdhost_send_command(AwSdHostState *s)
- {
-     SDRequest request;
-     uint8_t resp[16];
--    int rlen;
-+    size_t rlen;
- 
-     /* Auto clear load flag */
-     s->command &= ~SD_CMDR_LOAD;
-@@ -246,10 +246,7 @@ static void allwinner_sdhost_send_command(AwSdHostState *s)
-         request.arg = s->command_arg;
- 
-         /* Send request to SD bus */
--        rlen = sdbus_do_command(&s->sdbus, &request, resp);
--        if (rlen < 0) {
--            goto error;
--        }
-+        rlen = sdbus_do_command(&s->sdbus, &request, resp, sizeof(resp));
- 
-         /* If the command has a response, store it in the response registers */
-         if ((s->command & SD_CMDR_RESPONSE)) {
-diff --git a/hw/sd/bcm2835_sdhost.c b/hw/sd/bcm2835_sdhost.c
-index 29debdf59e4..f7cef7bb1cd 100644
---- a/hw/sd/bcm2835_sdhost.c
-+++ b/hw/sd/bcm2835_sdhost.c
-@@ -113,15 +113,12 @@ static void bcm2835_sdhost_send_command(BCM2835SDHostState *s)
- {
-     SDRequest request;
-     uint8_t rsp[16];
--    int rlen;
-+    size_t rlen;
- 
-     request.cmd = s->cmd & SDCMD_CMD_MASK;
-     request.arg = s->cmdarg;
- 
--    rlen = sdbus_do_command(&s->sdbus, &request, rsp);
--    if (rlen < 0) {
--        goto error;
--    }
-+    rlen = sdbus_do_command(&s->sdbus, &request, rsp, sizeof(rsp));
-     if (!(s->cmd & SDCMD_NO_RESPONSE)) {
-         if (rlen == 0 || (rlen == 4 && (s->cmd & SDCMD_LONG_RESPONSE))) {
-             goto error;
-diff --git a/hw/sd/core.c b/hw/sd/core.c
-index 4b30218b520..d3c9017445e 100644
---- a/hw/sd/core.c
-+++ b/hw/sd/core.c
-@@ -90,7 +90,8 @@ void sdbus_set_voltage(SDBus *sdbus, uint16_t millivolts)
-     }
- }
- 
--int sdbus_do_command(SDBus *sdbus, SDRequest *req, uint8_t *response)
-+size_t sdbus_do_command(SDBus *sdbus, SDRequest *req,
-+                        uint8_t *resp, size_t respsz)
- {
-     SDState *card = get_card(sdbus);
- 
-@@ -98,7 +99,7 @@ int sdbus_do_command(SDBus *sdbus, SDRequest *req, uint8_t *response)
-     if (card) {
-         SDCardClass *sc = SDMMC_COMMON_GET_CLASS(card);
- 
--        return sc->do_command(card, req, response);
-+        return sc->do_command(card, req, resp, respsz);
-     }
- 
-     return 0;
-diff --git a/hw/sd/omap_mmc.c b/hw/sd/omap_mmc.c
-index b7648d41cc5..5a1d25defaa 100644
---- a/hw/sd/omap_mmc.c
-+++ b/hw/sd/omap_mmc.c
-@@ -130,7 +130,8 @@ static void omap_mmc_command(OMAPMMCState *host, int cmd, int dir,
-                              sd_rsp_type_t resptype, int init)
- {
-     uint32_t rspstatus, mask;
--    int rsplen, timeout;
-+    size_t rsplen;
-+    int timeout;
-     SDRequest request;
-     uint8_t response[16];
- 
-@@ -157,7 +158,7 @@ static void omap_mmc_command(OMAPMMCState *host, int cmd, int dir,
-     request.arg = host->arg;
-     request.crc = 0; /* FIXME */
- 
--    rsplen = sdbus_do_command(&host->sdbus, &request, response);
-+    rsplen = sdbus_do_command(&host->sdbus, &request, response, sizeof(response));
- 
-     /* TODO: validate CRCs */
-     switch (resptype) {
-diff --git a/hw/sd/pl181.c b/hw/sd/pl181.c
-index b8fc9f86f13..5d56ead4d91 100644
---- a/hw/sd/pl181.c
-+++ b/hw/sd/pl181.c
-@@ -173,14 +173,12 @@ static void pl181_do_command(PL181State *s)
- {
-     SDRequest request;
-     uint8_t response[16];
--    int rlen;
-+    size_t rlen;
- 
-     request.cmd = s->cmd & PL181_CMD_INDEX;
-     request.arg = s->cmdarg;
-     trace_pl181_command_send(request.cmd, request.arg);
--    rlen = sdbus_do_command(&s->sdbus, &request, response);
--    if (rlen < 0)
--        goto error;
-+    rlen = sdbus_do_command(&s->sdbus, &request, response, sizeof(response));
-     if (s->cmd & PL181_CMD_RESPONSE) {
-         if (rlen == 0 || (rlen == 4 && (s->cmd & PL181_CMD_LONGRESP)))
-             goto error;
-diff --git a/hw/sd/sd.c b/hw/sd/sd.c
-index 76ce54664f2..069107a2e70 100644
---- a/hw/sd/sd.c
-+++ b/hw/sd/sd.c
-@@ -2166,8 +2166,9 @@ static bool cmd_valid_while_locked(SDState *sd, unsigned cmd)
-     return cmd_class == 0 || cmd_class == 7;
- }
- 
--static int sd_do_command(SDState *sd, SDRequest *req,
--                         uint8_t *response) {
-+static size_t sd_do_command(SDState *sd, SDRequest *req,
-+                            uint8_t *response, size_t respsz)
-+{
-     int last_state;
-     sd_rsp_type_t rtype;
-     int rsplen;
-@@ -2231,6 +2232,7 @@ static int sd_do_command(SDState *sd, SDRequest *req,
- 
- send_response:
-     rsplen = sd_response_size(sd, rtype);
-+    assert(rsplen <= respsz);
- 
-     switch (rtype) {
-     case sd_r1:
-diff --git a/hw/sd/sdhci.c b/hw/sd/sdhci.c
-index 226ff133ff9..3c897e54b72 100644
---- a/hw/sd/sdhci.c
-+++ b/hw/sd/sdhci.c
-@@ -337,7 +337,7 @@ static void sdhci_send_command(SDHCIState *s)
- {
-     SDRequest request;
-     uint8_t response[16];
--    int rlen;
-+    size_t rlen;
-     bool timeout = false;
- 
-     s->errintsts = 0;
-@@ -346,7 +346,7 @@ static void sdhci_send_command(SDHCIState *s)
-     request.arg = s->argument;
- 
-     trace_sdhci_send_command(request.cmd, request.arg);
--    rlen = sdbus_do_command(&s->sdbus, &request, response);
-+    rlen = sdbus_do_command(&s->sdbus, &request, response, sizeof(response));
- 
-     if (s->cmdreg & SDHC_CMD_RESPONSE) {
-         if (rlen == 4) {
-@@ -400,7 +400,7 @@ static void sdhci_end_transfer(SDHCIState *s)
-         request.cmd = 0x0C;
-         request.arg = 0;
-         trace_sdhci_end_transfer(request.cmd, request.arg);
--        sdbus_do_command(&s->sdbus, &request, response);
-+        sdbus_do_command(&s->sdbus, &request, response, sizeof(response));
-         /* Auto CMD12 response goes to the upper Response register */
-         s->rspreg[3] = ldl_be_p(response);
-     }
-diff --git a/hw/sd/ssi-sd.c b/hw/sd/ssi-sd.c
-index 6c90a86ab41..3025f8f15f4 100644
---- a/hw/sd/ssi-sd.c
-+++ b/hw/sd/ssi-sd.c
-@@ -146,8 +146,9 @@ static uint32_t ssi_sd_transfer(SSIPeripheral *dev, uint32_t val)
-             /* manually issue cmd12 to stop the transfer */
-             request.cmd = 12;
-             request.arg = 0;
--            s->arglen = sdbus_do_command(&s->sdbus, &request, longresp);
--            if (s->arglen <= 0) {
-+            s->arglen = sdbus_do_command(&s->sdbus, &request,
-+                                         longresp, sizeof(longresp));
-+            if (s->arglen == 0) {
-                 s->arglen = 1;
-                 /* a zero value indicates the card is busy */
-                 s->response[0] = 0;
-@@ -171,8 +172,9 @@ static uint32_t ssi_sd_transfer(SSIPeripheral *dev, uint32_t val)
-             request.cmd = s->cmd;
-             request.arg = ldl_be_p(s->cmdarg);
-             DPRINTF("CMD%d arg 0x%08x\n", s->cmd, request.arg);
--            s->arglen = sdbus_do_command(&s->sdbus, &request, longresp);
--            if (s->arglen <= 0) {
-+            s->arglen = sdbus_do_command(&s->sdbus, &request,
-+                                         longresp, sizeof(longresp));
-+            if (s->arglen == 0) {
-                 s->arglen = 1;
-                 s->response[0] = 4;
-                 DPRINTF("SD command failed\n");
-@@ -333,7 +335,7 @@ static int ssi_sd_post_load(void *opaque, int version_id)
-         return -EINVAL;
-     }
-     if (s->mode == SSI_SD_CMDARG &&
--        (s->arglen < 0 || s->arglen >= ARRAY_SIZE(s->cmdarg))) {
-+        (s->arglen >= ARRAY_SIZE(s->cmdarg))) {
-         return -EINVAL;
-     }
-     if (s->mode == SSI_SD_RESPONSE &&
--- 
-2.49.0
+C.
 
 

@@ -4,93 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9ADDC87FCB
-	for <qemu-arm@archiver.kernel.org>; Tue,  5 Aug 2025 08:04:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68089C87FD1
+	for <qemu-arm@archiver.kernel.org>; Tue,  5 Aug 2025 08:36:33 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ujCei-0002Vb-2r; Tue, 05 Aug 2025 04:04:20 -0400
+	id 1ujD9O-00024S-Iv; Tue, 05 Aug 2025 04:36:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ujCeg-0002Qc-Cy
- for qemu-arm@nongnu.org; Tue, 05 Aug 2025 04:04:18 -0400
-Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ujCee-0001u1-6L
- for qemu-arm@nongnu.org; Tue, 05 Aug 2025 04:04:17 -0400
-Received: by mail-pl1-x636.google.com with SMTP id
- d9443c01a7336-2405c0c431cso54118785ad.1
- for <qemu-arm@nongnu.org>; Tue, 05 Aug 2025 01:04:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1754381054; x=1754985854; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:to:subject:user-agent:mime-version:date:message-id:from
- :to:cc:subject:date:message-id:reply-to;
- bh=LXMDaEo4BJL2dMLIAuzlGj21wSzNnwv+TLEJtelUu68=;
- b=Zmwq+i2noHHVhZ8qSSp/6kbMes9ph13R78PNzEmryIsk9gyfsDrelas/ex/sCi1rbW
- pYJG7MDbX3DycFkowIm7g9lHvypPe3Trb2Wje1njY8OxMDwn3vfjFnW6v8vlgQkp7yFc
- GlrQyaTqmd8OUdni4t4hxV98gcnhD5jcfhzabJ/tb2bNtAs6e1y3EmNUVfvwXBDR23En
- oMDLOEZDsV5hewqUFzrYgW2pyf1q68q4QBXIqaKple/IOVNogJtvCjsZ24bCcL0FOnyC
- y4mWXIoQiMaXOgrxFwP+kAjB0hyGiMhUdZMOyWXP3zdS2yo1IwTjy/MsoBs5jF3Pje44
- LRSQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1754381054; x=1754985854;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=LXMDaEo4BJL2dMLIAuzlGj21wSzNnwv+TLEJtelUu68=;
- b=UZFKd52c+J47RBKqYlQKlB/X3bEUBtdddODRXQBBo2LJbGnBgNRuQAju6mKnc/2FuB
- 05LGS3gel8FCE8FaiWZrDjYYyevRb4VKT/QOmRRs+6tImH6PeRb3KTwVdZeikVQ6y5QA
- +9etL0tpa784we/srZ55kzvhSGf3cjPGyEyRuEaM2jju41uCtSjFUjVn9hEtjIot7vEu
- JNUDqdo+7Zkwr39mBeNP15Dl9H7hz/ws2t/8REgCwAI5GpeWICKERUyjCs4lRPC5WfV4
- 6YSvWO82b6MGUyMXRtuGjxF0TCVovj7rtfD4dP7Fv4fB917buydt+a7B2ihl3oRtgYcm
- Colw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCV3M4Ib8uQLxh3cgWcJgw6/IsKVTN7+d91HZMtNPeHvwKnEwwFpKfS5sccvujqd+/yVj9idtBENig==@nongnu.org
-X-Gm-Message-State: AOJu0Yw06x8EOj8+zoqNAoGD3bIN4IG5RCb64/BWv1pGSghHDdtmZHg5
- HgraFHQ5Sk0Jy20t1EwQuueF9b2SEf4eM9o5/lx+/2705L5ohiHYffjHRQ/BZgd2JQg=
-X-Gm-Gg: ASbGnctzPR5cW/jyzCCszyURd5on9QTwVewnHjkwDlH2esmLHVsVi82qxIdb7fYl64F
- +9vIK3LRuafQHQStVP5hwcLnkGY1zLnmaLBz7BblzrYGVXMtyebCEleNkJDO7AI3zwHGWNQOxu/
- q/+wuw/T6GpWe1zQDqhBbG2/nt/X45CzymUwjliUWpSmQ49rtR0idGAoW9yGO5tqTxK2LubAZFi
- Qek/xmoGA+7ppveV5eR68VDQ5CIRyOtLYrA+kg2VFKY2cQI6kBb+42dhPVqnLVuMd4XeAZrp6C4
- CPfDu1O9Lj674A0yxL45SZoRL3o5guEntivLCr0MSszJ+/o+YdozYNkzYdzYYqIRLEhkR0Nn7xB
- ilT7IG8Vs22TncBHQTBNOIwKvXqVeST3lqbxxvL9P
-X-Google-Smtp-Source: AGHT+IGAXeoDZ2NToANIfJRp3IRm4yxeS4ipJBIVjWzOEWeNguDh+WIVPVKj2mr7Mk64fSsYkKAU/Q==
-X-Received: by 2002:a17:903:2111:b0:240:a21c:89a6 with SMTP id
- d9443c01a7336-24246f58785mr129071695ad.12.1754381053907; 
- Tue, 05 Aug 2025 01:04:13 -0700 (PDT)
-Received: from [192.168.4.112] ([180.233.125.160])
- by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-241e899b5f2sm125967755ad.125.2025.08.05.01.04.11
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 05 Aug 2025 01:04:13 -0700 (PDT)
-Message-ID: <a38ce19f-7520-41c4-b6e9-54d4ba8c14cd@linaro.org>
-Date: Tue, 5 Aug 2025 18:04:08 +1000
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1ujD9L-0001uZ-B2; Tue, 05 Aug 2025 04:35:59 -0400
+Received: from isrv.corpit.ru ([212.248.84.144])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1ujD9D-0000wB-Fi; Tue, 05 Aug 2025 04:35:53 -0400
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+ by isrv.corpit.ru (Postfix) with ESMTP id 7B7C813E88B;
+ Tue, 05 Aug 2025 11:35:23 +0300 (MSK)
+Received: from [192.168.177.146] (mjtthink.wg.tls.msk.ru [192.168.177.146])
+ by tsrv.corpit.ru (Postfix) with ESMTP id B9F4F257184;
+ Tue,  5 Aug 2025 11:35:44 +0300 (MSK)
+Message-ID: <8ecda01b-8bbb-4c08-834f-de50d18b41d5@tls.msk.ru>
+Date: Tue, 5 Aug 2025 11:35:44 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v3] target/arm: add support for 64-bit PMCCNTR in AArch32
  mode
-To: Michael Tokarev <mjt@tls.msk.ru>,
+To: Richard Henderson <richard.henderson@linaro.org>,
  Alex Richardson <alexrichardson@google.com>, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
 References: <20250725170136.145116-1-alexrichardson@google.com>
  <befab3c0-024c-43ca-8d5f-bddf960e9a21@tls.msk.ru>
-From: Richard Henderson <richard.henderson@linaro.org>
-Content-Language: en-US
-In-Reply-To: <befab3c0-024c-43ca-8d5f-bddf960e9a21@tls.msk.ru>
+ <a38ce19f-7520-41c4-b6e9-54d4ba8c14cd@linaro.org>
+Content-Language: en-US, ru-RU
+From: Michael Tokarev <mjt@tls.msk.ru>
+Autocrypt: addr=mjt@tls.msk.ru; keydata=
+ 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
+In-Reply-To: <a38ce19f-7520-41c4-b6e9-54d4ba8c14cd@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::636;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x636.google.com
-X-Spam_score_int: 12
-X-Spam_score: 1.2
-X-Spam_bar: +
-X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=212.248.84.144; envelope-from=mjt@tls.msk.ru;
+ helo=isrv.corpit.ru
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -106,28 +107,62 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 8/5/25 17:44, Michael Tokarev wrote:
-> The mentioned commit:
+On 05.08.2025 11:04, Richard Henderson wrote:
+> On 8/5/25 17:44, Michael Tokarev wrote:
+>> The mentioned commit:
+>>
+>> commit ae2086426d3784cf66e5b0b7ac823c08e87b4c57
+>> Author: Richard Henderson <richard.henderson@linaro.org>
+>> Date:   Mon Jul 7 09:15:47 2025 -0600
+>>
+>>      target/arm: Split out performance monitor regs to cpregs-pmu.c
+>>
+>>      Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+>>      Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>>      Message-id: 20250707151547.196393-4-richard.henderson@linaro.org
+>>      Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+>>      Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+>>
+>> The thing is that this commit not only split out parts of helper.c
+>> to cpregs-pmu.c, but it also modified the code quite significantly,
+>> which is not even mentioned in the commit message.
 > 
-> commit ae2086426d3784cf66e5b0b7ac823c08e87b4c57
-> Author: Richard Henderson <richard.henderson@linaro.org>
-> Date:   Mon Jul 7 09:15:47 2025 -0600
-> 
->      target/arm: Split out performance monitor regs to cpregs-pmu.c
-> 
->      Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
->      Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->      Message-id: 20250707151547.196393-4-richard.henderson@linaro.org
->      Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
->      Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> 
-> The thing is that this commit not only split out parts of helper.c
-> to cpregs-pmu.c, but it also modified the code quite significantly,
-> which is not even mentioned in the commit message.
+> I most certainly did not modify the code significantly.
+> The code was moved from several discontiguous blocks, but that's it.
 
-I most certainly did not modify the code significantly.
-The code was moved from several discontiguous blocks, but that's it.
+Maybe "significantly" is an over-statement, but there are quite some
+additional changes.  Take a look at this commit, and see, for example,
+v7_pm_reginfo definition, - it does not exist in the code deleted from
+helper.c.  Or the code near the usage of v7_pm_reginfo --
 
+-    define_one_arm_cp_reg(cpu, &pmcr);
+-    define_one_arm_cp_reg(cpu, &pmcr64);
+-    for (i = 0; i < pmcrn; i++) {
+-        char *pmevcntr_name = g_strdup_printf("PMEVCNTR%d", i);
+..
++        define_one_arm_cp_reg(cpu, &pmcr);
++        define_one_arm_cp_reg(cpu, &pmcr64);
++        define_arm_cp_regs(cpu, v7_pm_reginfo);
++
++        for (unsigned i = 0, pmcrn = pmu_num_counters(env); i < pmcrn; 
+i++) {
++            g_autofree char *pmevcntr_name = 
+g_strdup_printf("PMEVCNTR%d", i);
+...
 
-r~
+To me, this is not just moving code around.  Yes, I understand the
+consolidation (taken a few pieces from various places and put them
+into a single function).  But the above change does more than that.
+
+-    for (i = 0; i < pmcrn; i++) {
++    for (unsigned i = 0, pmcrn = pmu_num_counters(env); i < pmcrn; i++)
+
+heh. now I see how to back-port this PMCCNTR change to 10.0.  Please see
+https://gitlab.com/mjt0k/qemu/-/commit/8cd2995c1b0cda0a86ffa4e20a49372e5d30dc5d
+for the current backport.  I'm not sure about the order of "define_*_reg"
+function calls here though - does it look sane?
+
+Thanks,
+
+/mjt
 

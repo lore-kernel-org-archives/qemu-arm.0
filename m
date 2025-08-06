@@ -4,88 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9CC3C87FD3
-	for <qemu-arm@archiver.kernel.org>; Wed,  6 Aug 2025 12:54:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82A8CC87FDA
+	for <qemu-arm@archiver.kernel.org>; Wed,  6 Aug 2025 14:58:14 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ujdeg-0003pU-KB; Wed, 06 Aug 2025 08:54:07 -0400
+	id 1ujfa3-0000Z4-Vf; Wed, 06 Aug 2025 10:57:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1ujdcY-00024o-8T
- for qemu-arm@nongnu.org; Wed, 06 Aug 2025 08:51:59 -0400
+ id 1ujfV7-0000LE-SQ
+ for qemu-arm@nongnu.org; Wed, 06 Aug 2025 10:52:27 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1ujdcV-0005eD-Dh
- for qemu-arm@nongnu.org; Wed, 06 Aug 2025 08:51:53 -0400
+ id 1ujfV3-0003Vg-Ex
+ for qemu-arm@nongnu.org; Wed, 06 Aug 2025 10:52:20 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1754484709;
+ s=mimecast20190719; t=1754491934;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=YuUqgpXkbfQmUNwcuuyFyjahQwng9IDgxtlUsAQd7ZA=;
- b=GEWkkqbCMuusSoftX75iI4Xi97VJM88xk90mARnXfxlVWAdpKPIAWg3qiJgFnyLXGyZAZg
- FinWicJxJoZC1a/71XAKKpEqvfxoAXFzz8oug78XV/iZNkd5ZXTvdmlYkYSJmtf679Djs3
- wU52zgXtL5PWfmMMzBd0LBUSGVN0bWU=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=z2wK6AiPyKv08FJzPWpurHFIn9wtxmnKmzmwqHY9WTI=;
+ b=AwNSagH/kg65dI9wx9N7tnGpFqyLgSktsWERz96cerS+0B+HkP+GAOHI/NHI1peiI5Vuwf
+ dROVpCZWAK1FiXpBC3sLC4k+xjgzDSrdwSZfjNqw1tlhAHFbzqm+ZyrrcAd1Idp2OyKP8o
+ FEJKLNyKXvVGfFT1E+LCX6NddhfsI8Q=
+Received: from mail-qv1-f71.google.com (mail-qv1-f71.google.com
+ [209.85.219.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-502-8MzpUuDIOQi2h5_qVGp_vg-1; Wed, 06 Aug 2025 08:51:46 -0400
-X-MC-Unique: 8MzpUuDIOQi2h5_qVGp_vg-1
-X-Mimecast-MFC-AGG-ID: 8MzpUuDIOQi2h5_qVGp_vg_1754484705
-Received: by mail-wr1-f69.google.com with SMTP id
- ffacd0b85a97d-3b7891afb31so3524460f8f.2
- for <qemu-arm@nongnu.org>; Wed, 06 Aug 2025 05:51:46 -0700 (PDT)
+ us-mta-88-u2m--Dv8Njq30RCp0xEMJw-1; Wed, 06 Aug 2025 10:52:12 -0400
+X-MC-Unique: u2m--Dv8Njq30RCp0xEMJw-1
+X-Mimecast-MFC-AGG-ID: u2m--Dv8Njq30RCp0xEMJw_1754491932
+Received: by mail-qv1-f71.google.com with SMTP id
+ 6a1803df08f44-70734e02839so416396d6.2
+ for <qemu-arm@nongnu.org>; Wed, 06 Aug 2025 07:52:12 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1754484705; x=1755089505;
+ d=1e100.net; s=20230601; t=1754491932; x=1755096732;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:reply-to:user-agent:mime-version:date
  :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=YuUqgpXkbfQmUNwcuuyFyjahQwng9IDgxtlUsAQd7ZA=;
- b=K8FcBzIiMmUZR6pASvjPsfcNJ82KY9Va8Zgla+qGdb7XrkzqQfvIYPl5OS/bc2E0ZX
- FLQ6yB6F9Xhb78ro6FsYaeNC2tGM2VWDsm+ovnS3YvLsEVIRaN4fHqaXKeyIY0YjozDy
- PXtDDcvDl3ZVoln1EAJIOpawl2P9RpcU8qJ6jlrmnfwwETuOioF4F96fail1xienUf2B
- 0+JJxAUdCh0VxpC5Yo8/qK7/e69c2sAJlG1unt/Kx2rKh4OIFHrGtpyQW976Rxkw+oi5
- Eday0wfzT/AM8csu9vex+THeMm9746c6grFoA3AfRrzNeBNVLa2W0i/w8GPhAvDpHDIm
- Rn6w==
-X-Gm-Message-State: AOJu0Yy9BtgU0AURF0XsuXU7n9Q7Uw0sEh9uF5IGDFPZk8Ft36h+JXux
- VGMFZatN01GzYXCDYC8YlhZtMarsC/QqXLa7HopF4GQRsqIY01Cs2tuxdDcLyb1XRDapycYUwxV
- HjslvRLtRTiTZvYgFwVsqYKjei4cPqyDHgLJmffj1xw4KeRpmW6LdLg==
-X-Gm-Gg: ASbGncski1+7PzlFReEQ1X49CwnW22SFmwUho185nC0PFs6YkA3eposHiwKvsCEF00O
- 8v5328Vt1oaVFdx49HGLUQJ9A1sdWX/bG16xX0JiPOXss4ca6xqxGgTccasuH3B5NAjnkqWVBLo
- FbhFal06xTbdmdmLyN84ODBVO194DScLlDlxcUph4Nxvz4CivaQHbt/40Wq6BasLRHjaKQoZ5kN
- M785FXeVWdXSfeEHiVr9svTFjZOKxcVpSB1wsZCfD0npTnx8hQ7rOM7JuJv0G5Qa8PLa/3UlzTT
- 4YTIufRdPgI1avqaeTSJhVuZtlZ7IZv+PUZfsNoJQ611
-X-Received: by 2002:a5d:64c7:0:b0:3b7:9350:44d4 with SMTP id
- ffacd0b85a97d-3b8f48cd130mr2023568f8f.11.1754484704924; 
- Wed, 06 Aug 2025 05:51:44 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IG+oXlK9a92qIBV/Yb3ISOQjkWX+9UQFeAczkBCJm9a2F7YQEZppPlpCOvr4pgWURcW+VaPHA==
-X-Received: by 2002:a5d:64c7:0:b0:3b7:9350:44d4 with SMTP id
- ffacd0b85a97d-3b8f48cd130mr2023546f8f.11.1754484704489; 
- Wed, 06 Aug 2025 05:51:44 -0700 (PDT)
+ bh=z2wK6AiPyKv08FJzPWpurHFIn9wtxmnKmzmwqHY9WTI=;
+ b=UYm4BzvaPkbX7ULVKQ7oQvv1d0VcyEtHjpXMbHW4tcmBM64Y71P1ujLdW622yuS0RA
+ VmsDG3LNsgg39e/oiqfjdGeN/vHw24IlLpibvwwToY3ofaZ08bQT6NpP+SQJNuA8gTPc
+ WbVBdrNdXMB+SdL5LH9V5KtLidF7iTOnrQErOpG3gDc/ZE0KJnY4JxzifGpDdBHmXq2G
+ 0jKG/VTyApTkoG+JxgXiqLEavHqeNHjVSYz/KwdzdQLcJ2SoeBDzf2E5GZz2Qj59Rju3
+ 89U7uG1lPeyxwMMA3xK1FexxBJxyXkYcZzuzk0ZRW1/xSOz3gNZnEzunTTvE5hdaO9op
+ WLnw==
+X-Gm-Message-State: AOJu0YyfknhGQLwgN6YH4fa//CmciBdM7YxyVmGVke/BQG0J1eXrHOm1
+ swM7LvGaN1ah3TVVCq3mja+OorH8UYbdoI4vlff9BeGM/c241c9/DhxLNHT/VrkwExr6qQe8tvp
+ kI9wStyHEFy6XgO5TgIkRTZddxDFB5dQ2nB+wyIQidqytGlM+B4b54Q==
+X-Gm-Gg: ASbGncvnpzJjXWhCncwyNnfqTJvo0z6ZpR0lazr+Fr7EQu+8ip9uBtwHjB6Q8eWmdLi
+ 4DGRJuHvYY/qhRmIFTUpKa6nev+m3xNM9+KaGcVm/mgsZrD/CmwMzRpc2NTIgmcE2MfoZW9y1DM
+ RrKn+q42CozSQJlhV+eHW5zViF80raOSrHq+/6UQe87Gm1vc/zxyBies8aw56hKOq0d0Ni5iwlW
+ TH7/Gfv+8nOJteb4DI83d9uiNFUgwGb1Zkst2wg8/qZA1iiADZaI36TkhzmG6a3LQr818+jjtqr
+ rAPxV+1JmbEvKtuVMIZh3xs+noWqw7FtbIyKKNTY4rJR
+X-Received: by 2002:a05:6214:c62:b0:707:885:758e with SMTP id
+ 6a1803df08f44-7097966dad1mr41678316d6.24.1754491931200; 
+ Wed, 06 Aug 2025 07:52:11 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFzZhKmXo8hkAAaC4xMXI17tJcOoa7REt4vCs+MDzh6/SakRnKnix+Rv3o0hrCyurASk1yrbg==
+X-Received: by 2002:a05:6214:c62:b0:707:885:758e with SMTP id
+ 6a1803df08f44-7097966dad1mr41677666d6.24.1754491930358; 
+ Wed, 06 Aug 2025 07:52:10 -0700 (PDT)
 Received: from [192.168.43.95] ([37.166.28.57])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3b79c470102sm22785068f8f.53.2025.08.06.05.51.42
+ 6a1803df08f44-7077ce39fb3sm86601196d6.82.2025.08.06.07.52.07
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 06 Aug 2025 05:51:43 -0700 (PDT)
-Message-ID: <22bb66b6-998c-4cb9-a16b-386ff88bb197@redhat.com>
-Date: Wed, 6 Aug 2025 14:51:41 +0200
+ Wed, 06 Aug 2025 07:52:09 -0700 (PDT)
+Message-ID: <3841525e-eef9-4cf3-a7b5-b7cc11e9d702@redhat.com>
+Date: Wed, 6 Aug 2025 16:52:05 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH for-10.2 0/4] vfio: Remove 'vfio-platform'
+Subject: Re: [PATCH for-10.2 3/4] vfio: Remove 'vfio-platform'
 To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>, qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  Alex Williamson <alex.williamson@redhat.com>
 References: <20250731121947.1346927-1-clg@redhat.com>
+ <20250731121947.1346927-4-clg@redhat.com>
 From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20250731121947.1346927-1-clg@redhat.com>
+In-Reply-To: <20250731121947.1346927-4-clg@redhat.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 8RYPP4Tj3t_pB-c5K7pfEoRkgQPh7DZB6FipriqetNw_1754484705
+X-Mimecast-MFC-PROC-ID: rq2Sx68J8y--mO24gbhNNFdf5HMV9KOqn8TNlwEtbvg_1754491932
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
@@ -116,57 +117,983 @@ Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Cédric,
+
 
 On 7/31/25 2:19 PM, Cédric Le Goater wrote:
-> Hello, 
->
 > The VFIO_PLATFORM device type has been deprecated in the QEMU 10.0
-> timeframe. QEMU 10.2 is the time for removal.
+> timeframe. All dependent devices have been removed. Now remove the
+> core vfio platform framework.
 >
-> The last patch moves vfio-region.h under hw/vfio since it no longer
-> needs to be a public VFIO interface.
-"tout ça... pour ça!" as we say in french ;-)
-
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
-
-Eric
-> Thanks,
+> Rename VFIO_DEVICE_TYPE_PLATFORM enum to VFIO_DEVICE_TYPE_UNUSED to
+> maintain the same index for the CCW and AP VFIO device types.
 >
-> C.
->
->
-> Cédric Le Goater (4):
->   vfio: Remove 'vfio-amd-xgbe' device
->   vfio: Remove 'vfio-calxeda-xgmac' device
->   vfio: Remove 'vfio-platform'
->   vfio: Move vfio-region.h under hw/vfio/
->
->  docs/about/deprecated.rst             |  25 -
->  docs/about/removed-features.rst       |  25 +
->  docs/devel/kconfig.rst                |   2 -
->  {include/hw => hw}/vfio/vfio-region.h |   0
->  include/hw/vfio/vfio-amd-xgbe.h       |  46 --
->  include/hw/vfio/vfio-calxeda-xgmac.h  |  43 --
->  include/hw/vfio/vfio-device.h         |   2 +-
->  include/hw/vfio/vfio-platform.h       |  78 ---
->  hw/arm/virt.c                         |   5 -
->  hw/core/sysbus-fdt.c                  | 383 --------------
->  hw/vfio/amd-xgbe.c                    |  61 ---
->  hw/vfio/calxeda-xgmac.c               |  61 ---
->  hw/vfio/platform.c                    | 716 --------------------------
->  hw/arm/Kconfig                        |   3 -
->  hw/vfio/Kconfig                       |  16 -
->  hw/vfio/meson.build                   |   3 -
->  hw/vfio/trace-events                  |  11 -
->  17 files changed, 26 insertions(+), 1454 deletions(-)
->  rename {include/hw => hw}/vfio/vfio-region.h (100%)
->  delete mode 100644 include/hw/vfio/vfio-amd-xgbe.h
->  delete mode 100644 include/hw/vfio/vfio-calxeda-xgmac.h
+> Signed-off-by: Cédric Le Goater <clg@redhat.com>
+> ---
+>  docs/about/deprecated.rst       |  12 -
+>  docs/about/removed-features.rst |   9 +
+>  include/hw/vfio/vfio-device.h   |   2 +-
+>  include/hw/vfio/vfio-platform.h |  78 ----
+>  hw/arm/virt.c                   |   2 -
+>  hw/vfio/platform.c              | 716 --------------------------------
+>  hw/arm/Kconfig                  |   1 -
+>  hw/vfio/Kconfig                 |   6 -
+>  hw/vfio/meson.build             |   1 -
+>  hw/vfio/trace-events            |  11 -
+>  10 files changed, 10 insertions(+), 828 deletions(-)
 >  delete mode 100644 include/hw/vfio/vfio-platform.h
->  delete mode 100644 hw/vfio/amd-xgbe.c
->  delete mode 100644 hw/vfio/calxeda-xgmac.c
 >  delete mode 100644 hw/vfio/platform.c
 >
+> diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
+> index 0df97eb2b72cb1e851fc47a0059d49cdbbc0a407..fc422acc3e15e903fe0233eae4cc6830e5e789cd 100644
+> --- a/docs/about/deprecated.rst
+> +++ b/docs/about/deprecated.rst
+> @@ -516,18 +516,6 @@ Stream ``reconnect`` (since 9.2)
+>  The ``reconnect`` option only allows specifying second granularity timeouts,
+>  which is not enough for all types of use cases, use ``reconnect-ms`` instead.
+>  
+> -VFIO device options
+> -'''''''''''''''''''
+> -
+> -``-device vfio-platform`` (since 10.0)
+> -^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> -The vfio-platform device allows to assign a host platform device
+> -to a guest in a generic manner. Integrating a new device into
+> -the vfio-platform infrastructure requires some adaptation at
+> -both kernel and qemu level. No such attempt has been done for years
+> -and the conclusion is that vfio-platform has not got any traction.
+> -PCIe passthrough shall be the mainline solution.
+> -
+>  CPU device properties
+>  '''''''''''''''''''''
+>  
+> diff --git a/docs/about/removed-features.rst b/docs/about/removed-features.rst
+> index 47e632b4ac1db9267f8ad7fe97e1fc66beeff298..177128812dc71b302b6ac98a638b3d9c86c6955e 100644
+> --- a/docs/about/removed-features.rst
+> +++ b/docs/about/removed-features.rst
+> @@ -1278,6 +1278,15 @@ The vfio-amd-xgbe device allows to assign a host AMD 10GbE controller
+>  to a guest ("amd,xgbe-seattle-v1a" compatibility string). AMD "Seattle"
+>  is not supported anymore and there is no point keeping that device.
+>  
+> +``-device vfio-platform`` (since 10.2)
+> +''''''''''''''''''''''''''''''''''''''
+> +The vfio-platform device allows to assign a host platform device
+> +to a guest in a generic manner. Integrating a new device into
+> +the vfio-platform infrastructure requires some adaptation at
+> +both kernel and qemu level. No such attempt has been done for years
+> +and the conclusion is that vfio-platform has not got any traction.
+> +PCIe passthrough shall be the mainline solution.
+> +
+>  Tools
+>  -----
+>  
+> diff --git a/include/hw/vfio/vfio-device.h b/include/hw/vfio/vfio-device.h
+> index 00df40d99721d2b45cb71c0e11f4d7e0571fbb3c..17dac903ca5dc2c8066cc5da4176dd24e81f96a5 100644
+> --- a/include/hw/vfio/vfio-device.h
+> +++ b/include/hw/vfio/vfio-device.h
+> @@ -36,7 +36,7 @@
+>  
+>  enum {
+>      VFIO_DEVICE_TYPE_PCI = 0,
+> -    VFIO_DEVICE_TYPE_PLATFORM = 1,
+> +    VFIO_DEVICE_TYPE_UNUSED = 1,
+>      VFIO_DEVICE_TYPE_CCW = 2,
+>      VFIO_DEVICE_TYPE_AP = 3,
+>  };
+> diff --git a/include/hw/vfio/vfio-platform.h b/include/hw/vfio/vfio-platform.h
+> deleted file mode 100644
+> index 256d8500b70a2e985e975b0895e3cfca435ed8ed..0000000000000000000000000000000000000000
+> --- a/include/hw/vfio/vfio-platform.h
+> +++ /dev/null
+> @@ -1,78 +0,0 @@
+> -/*
+> - * vfio based device assignment support - platform devices
+> - *
+> - * Copyright Linaro Limited, 2014
+> - *
+> - * Authors:
+> - *  Kim Phillips <kim.phillips@linaro.org>
+> - *
+> - * This work is licensed under the terms of the GNU GPL, version 2.  See
+> - * the COPYING file in the top-level directory.
+> - *
+> - * Based on vfio based PCI device assignment support:
+> - *  Copyright Red Hat, Inc. 2012
+> - */
+> -
+> -#ifndef HW_VFIO_VFIO_PLATFORM_H
+> -#define HW_VFIO_VFIO_PLATFORM_H
+> -
+> -#include "hw/sysbus.h"
+> -#include "hw/vfio/vfio-device.h"
+> -#include "qemu/event_notifier.h"
+> -#include "qemu/queue.h"
+> -#include "qom/object.h"
+> -
+> -#define TYPE_VFIO_PLATFORM "vfio-platform"
+> -
+> -enum {
+> -    VFIO_IRQ_INACTIVE = 0,
+> -    VFIO_IRQ_PENDING = 1,
+> -    VFIO_IRQ_ACTIVE = 2,
+> -    /* VFIO_IRQ_ACTIVE_AND_PENDING cannot happen with VFIO */
+> -};
+> -
+> -typedef struct VFIOINTp {
+> -    QLIST_ENTRY(VFIOINTp) next; /* entry for IRQ list */
+> -    QSIMPLEQ_ENTRY(VFIOINTp) pqnext; /* entry for pending IRQ queue */
+> -    EventNotifier *interrupt; /* eventfd triggered on interrupt */
+> -    EventNotifier *unmask; /* eventfd for unmask on QEMU bypass */
+> -    qemu_irq qemuirq;
+> -    struct VFIOPlatformDevice *vdev; /* back pointer to device */
+> -    int state; /* inactive, pending, active */
+> -    uint8_t pin; /* index */
+> -    uint32_t flags; /* IRQ info flags */
+> -    bool kvm_accel; /* set when QEMU bypass through KVM enabled */
+> -} VFIOINTp;
+> -
+> -/* function type for user side eventfd handler */
+> -typedef void (*eventfd_user_side_handler_t)(VFIOINTp *intp);
+> -
+> -typedef struct VFIORegion VFIORegion;
+> -
+> -struct VFIOPlatformDevice {
+> -    SysBusDevice sbdev;
+> -    VFIODevice vbasedev; /* not a QOM object */
+> -    VFIORegion **regions;
+> -    QLIST_HEAD(, VFIOINTp) intp_list; /* list of IRQs */
+> -    /* queue of pending IRQs */
+> -    QSIMPLEQ_HEAD(, VFIOINTp) pending_intp_queue;
+> -    char *compat; /* DT compatible values, separated by NUL */
+> -    unsigned int num_compat; /* number of compatible values */
+> -    uint32_t mmap_timeout; /* delay to re-enable mmaps after interrupt */
+> -    QEMUTimer *mmap_timer; /* allows fast-path resume after IRQ hit */
+> -    QemuMutex intp_mutex; /* protect the intp_list IRQ state */
+> -    bool irqfd_allowed; /* debug option to force irqfd on/off */
+> -};
+> -typedef struct VFIOPlatformDevice VFIOPlatformDevice;
+> -
+> -struct VFIOPlatformDeviceClass {
+> -    /*< private >*/
+> -    SysBusDeviceClass parent_class;
+> -    /*< public >*/
+> -};
+> -typedef struct VFIOPlatformDeviceClass VFIOPlatformDeviceClass;
+> -
+> -DECLARE_OBJ_CHECKERS(VFIOPlatformDevice, VFIOPlatformDeviceClass,
+> -                     VFIO_PLATFORM_DEVICE, TYPE_VFIO_PLATFORM)
+> -
+> -#endif /* HW_VFIO_VFIO_PLATFORM_H */
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 48a561202d7c9817e8b33491dd6810bc7d51f893..131ac16596c66ed052a99566a59302889c5fe6c4 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -38,7 +38,6 @@
+>  #include "hw/arm/primecell.h"
+>  #include "hw/arm/virt.h"
+>  #include "hw/block/flash.h"
+> -#include "hw/vfio/vfio-platform.h"
+removal of this header causes the compilation to fail.
+#include "system/system.h" needs to be added
+
+Thanks
+
+Eric
+
+>  #include "hw/display/ramfb.h"
+>  #include "net/net.h"
+>  #include "system/device_tree.h"
+> @@ -3216,7 +3215,6 @@ static void virt_machine_class_init(ObjectClass *oc, const void *data)
+>       */
+>      mc->max_cpus = 512;
+>      machine_class_allow_dynamic_sysbus_dev(mc, TYPE_RAMFB_DEVICE);
+> -    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_VFIO_PLATFORM);
+>      machine_class_allow_dynamic_sysbus_dev(mc, TYPE_UEFI_VARS_SYSBUS);
+>  #ifdef CONFIG_TPM
+>      machine_class_allow_dynamic_sysbus_dev(mc, TYPE_TPM_TIS_SYSBUS);
+> diff --git a/hw/vfio/platform.c b/hw/vfio/platform.c
+> deleted file mode 100644
+> index 5c1795a26fe79b98a9886e15f365fa7a921409a4..0000000000000000000000000000000000000000
+> --- a/hw/vfio/platform.c
+> +++ /dev/null
+> @@ -1,716 +0,0 @@
+> -/*
+> - * vfio based device assignment support - platform devices
+> - *
+> - * Copyright Linaro Limited, 2014
+> - *
+> - * Authors:
+> - *  Kim Phillips <kim.phillips@linaro.org>
+> - *  Eric Auger <eric.auger@linaro.org>
+> - *
+> - * This work is licensed under the terms of the GNU GPL, version 2.  See
+> - * the COPYING file in the top-level directory.
+> - *
+> - * Based on vfio based PCI device assignment support:
+> - *  Copyright Red Hat, Inc. 2012
+> - */
+> -
+> -#include "qemu/osdep.h"
+> -#include CONFIG_DEVICES /* CONFIG_IOMMUFD */
+> -#include "qapi/error.h"
+> -#include <sys/ioctl.h>
+> -#include <linux/vfio.h>
+> -
+> -#include "hw/vfio/vfio-platform.h"
+> -#include "system/iommufd.h"
+> -#include "migration/vmstate.h"
+> -#include "qemu/error-report.h"
+> -#include "qemu/lockable.h"
+> -#include "qemu/main-loop.h"
+> -#include "qemu/module.h"
+> -#include "qemu/range.h"
+> -#include "system/memory.h"
+> -#include "system/address-spaces.h"
+> -#include "qemu/queue.h"
+> -#include "hw/sysbus.h"
+> -#include "trace.h"
+> -#include "hw/irq.h"
+> -#include "hw/platform-bus.h"
+> -#include "hw/qdev-properties.h"
+> -#include "system/kvm.h"
+> -#include "hw/vfio/vfio-region.h"
+> -
+> -/*
+> - * Functions used whatever the injection method
+> - */
+> -
+> -static inline bool vfio_irq_is_automasked(VFIOINTp *intp)
+> -{
+> -    return intp->flags & VFIO_IRQ_INFO_AUTOMASKED;
+> -}
+> -
+> -/**
+> - * vfio_init_intp - allocate, initialize the IRQ struct pointer
+> - * and add it into the list of IRQs
+> - * @vbasedev: the VFIO device handle
+> - * @info: irq info struct retrieved from VFIO driver
+> - * @errp: error object
+> - */
+> -static VFIOINTp *vfio_init_intp(VFIODevice *vbasedev,
+> -                                struct vfio_irq_info info, Error **errp)
+> -{
+> -    int ret;
+> -    VFIOPlatformDevice *vdev =
+> -        container_of(vbasedev, VFIOPlatformDevice, vbasedev);
+> -    SysBusDevice *sbdev = SYS_BUS_DEVICE(vdev);
+> -    VFIOINTp *intp;
+> -
+> -    intp = g_malloc0(sizeof(*intp));
+> -    intp->vdev = vdev;
+> -    intp->pin = info.index;
+> -    intp->flags = info.flags;
+> -    intp->state = VFIO_IRQ_INACTIVE;
+> -    intp->kvm_accel = false;
+> -
+> -    sysbus_init_irq(sbdev, &intp->qemuirq);
+> -
+> -    /* Get an eventfd for trigger */
+> -    intp->interrupt = g_new0(EventNotifier, 1);
+> -    ret = event_notifier_init(intp->interrupt, 0);
+> -    if (ret) {
+> -        g_free(intp->interrupt);
+> -        g_free(intp);
+> -        error_setg_errno(errp, -ret,
+> -                         "failed to initialize trigger eventfd notifier");
+> -        return NULL;
+> -    }
+> -    if (vfio_irq_is_automasked(intp)) {
+> -        /* Get an eventfd for resample/unmask */
+> -        intp->unmask = g_new0(EventNotifier, 1);
+> -        ret = event_notifier_init(intp->unmask, 0);
+> -        if (ret) {
+> -            g_free(intp->interrupt);
+> -            g_free(intp->unmask);
+> -            g_free(intp);
+> -            error_setg_errno(errp, -ret,
+> -                             "failed to initialize resample eventfd notifier");
+> -            return NULL;
+> -        }
+> -    }
+> -
+> -    QLIST_INSERT_HEAD(&vdev->intp_list, intp, next);
+> -    return intp;
+> -}
+> -
+> -/**
+> - * vfio_set_trigger_eventfd - set VFIO eventfd handling
+> - *
+> - * @intp: IRQ struct handle
+> - * @handler: handler to be called on eventfd signaling
+> - *
+> - * Setup VFIO signaling and attach an optional user-side handler
+> - * to the eventfd
+> - */
+> -static int vfio_set_trigger_eventfd(VFIOINTp *intp,
+> -                                    eventfd_user_side_handler_t handler)
+> -{
+> -    VFIODevice *vbasedev = &intp->vdev->vbasedev;
+> -    int32_t fd = event_notifier_get_fd(intp->interrupt);
+> -    Error *err = NULL;
+> -
+> -    qemu_set_fd_handler(fd, (IOHandler *)handler, NULL, intp);
+> -
+> -    if (!vfio_device_irq_set_signaling(vbasedev, intp->pin, 0,
+> -                                       VFIO_IRQ_SET_ACTION_TRIGGER, fd, &err)) {
+> -        error_reportf_err(err, VFIO_MSG_PREFIX, vbasedev->name);
+> -        qemu_set_fd_handler(fd, NULL, NULL, NULL);
+> -        return -EINVAL;
+> -    }
+> -
+> -    return 0;
+> -}
+> -
+> -/*
+> - * Functions only used when eventfds are handled on user-side
+> - * ie. without irqfd
+> - */
+> -
+> -/**
+> - * vfio_mmap_set_enabled - enable/disable the fast path mode
+> - * @vdev: the VFIO platform device
+> - * @enabled: the target mmap state
+> - *
+> - * enabled = true ~ fast path = MMIO region is mmaped (no KVM TRAP);
+> - * enabled = false ~ slow path = MMIO region is trapped and region callbacks
+> - * are called; slow path enables to trap the device IRQ status register reset
+> -*/
+> -
+> -static void vfio_mmap_set_enabled(VFIOPlatformDevice *vdev, bool enabled)
+> -{
+> -    int i;
+> -
+> -    for (i = 0; i < vdev->vbasedev.num_regions; i++) {
+> -        vfio_region_mmaps_set_enabled(vdev->regions[i], enabled);
+> -    }
+> -}
+> -
+> -/**
+> - * vfio_intp_mmap_enable - timer function, restores the fast path
+> - * if there is no more active IRQ
+> - * @opaque: actually points to the VFIO platform device
+> - *
+> - * Called on mmap timer timeout, this function checks whether the
+> - * IRQ is still active and if not, restores the fast path.
+> - * by construction a single eventfd is handled at a time.
+> - * if the IRQ is still active, the timer is re-programmed.
+> - */
+> -static void vfio_intp_mmap_enable(void *opaque)
+> -{
+> -    VFIOINTp *tmp;
+> -    VFIOPlatformDevice *vdev = (VFIOPlatformDevice *)opaque;
+> -
+> -    QEMU_LOCK_GUARD(&vdev->intp_mutex);
+> -    QLIST_FOREACH(tmp, &vdev->intp_list, next) {
+> -        if (tmp->state == VFIO_IRQ_ACTIVE) {
+> -            trace_vfio_platform_intp_mmap_enable(tmp->pin);
+> -            /* re-program the timer to check active status later */
+> -            timer_mod(vdev->mmap_timer,
+> -                      qemu_clock_get_ms(QEMU_CLOCK_VIRTUAL) +
+> -                          vdev->mmap_timeout);
+> -            return;
+> -        }
+> -    }
+> -    vfio_mmap_set_enabled(vdev, true);
+> -}
+> -
+> -/**
+> - * vfio_intp_inject_pending_lockheld - Injects a pending IRQ
+> - * @opaque: opaque pointer, in practice the VFIOINTp handle
+> - *
+> - * The function is called on a previous IRQ completion, from
+> - * vfio_platform_eoi, while the intp_mutex is locked.
+> - * Also in such situation, the slow path already is set and
+> - * the mmap timer was already programmed.
+> - */
+> -static void vfio_intp_inject_pending_lockheld(VFIOINTp *intp)
+> -{
+> -    trace_vfio_platform_intp_inject_pending_lockheld(intp->pin,
+> -                              event_notifier_get_fd(intp->interrupt));
+> -
+> -    intp->state = VFIO_IRQ_ACTIVE;
+> -
+> -    /* trigger the virtual IRQ */
+> -    qemu_set_irq(intp->qemuirq, 1);
+> -}
+> -
+> -/**
+> - * vfio_intp_interrupt - The user-side eventfd handler
+> - * @opaque: opaque pointer which in practice is the VFIOINTp handle
+> - *
+> - * the function is entered in event handler context:
+> - * the vIRQ is injected into the guest if there is no other active
+> - * or pending IRQ.
+> - */
+> -static void vfio_intp_interrupt(VFIOINTp *intp)
+> -{
+> -    int ret;
+> -    VFIOINTp *tmp;
+> -    VFIOPlatformDevice *vdev = intp->vdev;
+> -    bool delay_handling = false;
+> -
+> -    QEMU_LOCK_GUARD(&vdev->intp_mutex);
+> -    if (intp->state == VFIO_IRQ_INACTIVE) {
+> -        QLIST_FOREACH(tmp, &vdev->intp_list, next) {
+> -            if (tmp->state == VFIO_IRQ_ACTIVE ||
+> -                tmp->state == VFIO_IRQ_PENDING) {
+> -                delay_handling = true;
+> -                break;
+> -            }
+> -        }
+> -    }
+> -    if (delay_handling) {
+> -        /*
+> -         * the new IRQ gets a pending status and is pushed in
+> -         * the pending queue
+> -         */
+> -        intp->state = VFIO_IRQ_PENDING;
+> -        trace_vfio_intp_interrupt_set_pending(intp->pin);
+> -        QSIMPLEQ_INSERT_TAIL(&vdev->pending_intp_queue,
+> -                             intp, pqnext);
+> -        event_notifier_test_and_clear(intp->interrupt);
+> -        return;
+> -    }
+> -
+> -    trace_vfio_platform_intp_interrupt(intp->pin,
+> -                              event_notifier_get_fd(intp->interrupt));
+> -
+> -    ret = event_notifier_test_and_clear(intp->interrupt);
+> -    if (!ret) {
+> -        error_report("Error when clearing fd=%d (ret = %d)",
+> -                     event_notifier_get_fd(intp->interrupt), ret);
+> -    }
+> -
+> -    intp->state = VFIO_IRQ_ACTIVE;
+> -
+> -    /* sets slow path */
+> -    vfio_mmap_set_enabled(vdev, false);
+> -
+> -    /* trigger the virtual IRQ */
+> -    qemu_set_irq(intp->qemuirq, 1);
+> -
+> -    /*
+> -     * Schedule the mmap timer which will restore fastpath when no IRQ
+> -     * is active anymore
+> -     */
+> -    if (vdev->mmap_timeout) {
+> -        timer_mod(vdev->mmap_timer,
+> -                  qemu_clock_get_ms(QEMU_CLOCK_VIRTUAL) +
+> -                      vdev->mmap_timeout);
+> -    }
+> -}
+> -
+> -/**
+> - * vfio_platform_eoi - IRQ completion routine
+> - * @vbasedev: the VFIO device handle
+> - *
+> - * De-asserts the active virtual IRQ and unmasks the physical IRQ
+> - * (effective for level sensitive IRQ auto-masked by the  VFIO driver).
+> - * Then it handles next pending IRQ if any.
+> - * eoi function is called on the first access to any MMIO region
+> - * after an IRQ was triggered, trapped since slow path was set.
+> - * It is assumed this access corresponds to the IRQ status
+> - * register reset. With such a mechanism, a single IRQ can be
+> - * handled at a time since there is no way to know which IRQ
+> - * was completed by the guest (we would need additional details
+> - * about the IRQ status register mask).
+> - */
+> -static void vfio_platform_eoi(VFIODevice *vbasedev)
+> -{
+> -    VFIOINTp *intp;
+> -    VFIOPlatformDevice *vdev =
+> -        container_of(vbasedev, VFIOPlatformDevice, vbasedev);
+> -
+> -    QEMU_LOCK_GUARD(&vdev->intp_mutex);
+> -    QLIST_FOREACH(intp, &vdev->intp_list, next) {
+> -        if (intp->state == VFIO_IRQ_ACTIVE) {
+> -            trace_vfio_platform_eoi(intp->pin,
+> -                                event_notifier_get_fd(intp->interrupt));
+> -            intp->state = VFIO_IRQ_INACTIVE;
+> -
+> -            /* deassert the virtual IRQ */
+> -            qemu_set_irq(intp->qemuirq, 0);
+> -
+> -            if (vfio_irq_is_automasked(intp)) {
+> -                /* unmasks the physical level-sensitive IRQ */
+> -                vfio_device_irq_unmask(vbasedev, intp->pin);
+> -            }
+> -
+> -            /* a single IRQ can be active at a time */
+> -            break;
+> -        }
+> -    }
+> -    /* in case there are pending IRQs, handle the first one */
+> -    if (!QSIMPLEQ_EMPTY(&vdev->pending_intp_queue)) {
+> -        intp = QSIMPLEQ_FIRST(&vdev->pending_intp_queue);
+> -        vfio_intp_inject_pending_lockheld(intp);
+> -        QSIMPLEQ_REMOVE_HEAD(&vdev->pending_intp_queue, pqnext);
+> -    }
+> -}
+> -
+> -/**
+> - * vfio_start_eventfd_injection - starts the virtual IRQ injection using
+> - * user-side handled eventfds
+> - * @sbdev: the sysbus device handle
+> - * @irq: the qemu irq handle
+> - */
+> -
+> -static void vfio_start_eventfd_injection(SysBusDevice *sbdev, qemu_irq irq)
+> -{
+> -    VFIOPlatformDevice *vdev = VFIO_PLATFORM_DEVICE(sbdev);
+> -    VFIOINTp *intp;
+> -
+> -    QLIST_FOREACH(intp, &vdev->intp_list, next) {
+> -        if (intp->qemuirq == irq) {
+> -            break;
+> -        }
+> -    }
+> -    assert(intp);
+> -
+> -    if (vfio_set_trigger_eventfd(intp, vfio_intp_interrupt)) {
+> -        abort();
+> -    }
+> -}
+> -
+> -/*
+> - * Functions used for irqfd
+> - */
+> -
+> -/**
+> - * vfio_set_resample_eventfd - sets the resamplefd for an IRQ
+> - * @intp: the IRQ struct handle
+> - * programs the VFIO driver to unmask this IRQ when the
+> - * intp->unmask eventfd is triggered
+> - */
+> -static int vfio_set_resample_eventfd(VFIOINTp *intp)
+> -{
+> -    int32_t fd = event_notifier_get_fd(intp->unmask);
+> -    VFIODevice *vbasedev = &intp->vdev->vbasedev;
+> -    Error *err = NULL;
+> -
+> -    qemu_set_fd_handler(fd, NULL, NULL, NULL);
+> -    if (!vfio_device_irq_set_signaling(vbasedev, intp->pin, 0,
+> -                                       VFIO_IRQ_SET_ACTION_UNMASK, fd, &err)) {
+> -        error_reportf_err(err, VFIO_MSG_PREFIX, vbasedev->name);
+> -        return -EINVAL;
+> -    }
+> -    return 0;
+> -}
+> -
+> -/**
+> - * vfio_start_irqfd_injection - starts the virtual IRQ injection using
+> - * irqfd
+> - *
+> - * @sbdev: the sysbus device handle
+> - * @irq: the qemu irq handle
+> - *
+> - * In case the irqfd setup fails, we fallback to userspace handled eventfd
+> - */
+> -static void vfio_start_irqfd_injection(SysBusDevice *sbdev, qemu_irq irq)
+> -{
+> -    VFIOPlatformDevice *vdev = VFIO_PLATFORM_DEVICE(sbdev);
+> -    VFIOINTp *intp;
+> -
+> -    if (!kvm_irqfds_enabled() || !kvm_resamplefds_enabled() ||
+> -        !vdev->irqfd_allowed) {
+> -        goto fail_irqfd;
+> -    }
+> -
+> -    QLIST_FOREACH(intp, &vdev->intp_list, next) {
+> -        if (intp->qemuirq == irq) {
+> -            break;
+> -        }
+> -    }
+> -    assert(intp);
+> -
+> -    if (kvm_irqchip_add_irqfd_notifier(kvm_state, intp->interrupt,
+> -                                   intp->unmask, irq) < 0) {
+> -        goto fail_irqfd;
+> -    }
+> -
+> -    if (vfio_set_trigger_eventfd(intp, NULL) < 0) {
+> -        goto fail_vfio;
+> -    }
+> -    if (vfio_irq_is_automasked(intp)) {
+> -        if (vfio_set_resample_eventfd(intp) < 0) {
+> -            goto fail_vfio;
+> -        }
+> -        trace_vfio_platform_start_level_irqfd_injection(intp->pin,
+> -                                    event_notifier_get_fd(intp->interrupt),
+> -                                    event_notifier_get_fd(intp->unmask));
+> -    } else {
+> -        trace_vfio_platform_start_edge_irqfd_injection(intp->pin,
+> -                                    event_notifier_get_fd(intp->interrupt));
+> -    }
+> -
+> -    intp->kvm_accel = true;
+> -
+> -    return;
+> -fail_vfio:
+> -    kvm_irqchip_remove_irqfd_notifier(kvm_state, intp->interrupt, irq);
+> -    abort();
+> -fail_irqfd:
+> -    vfio_start_eventfd_injection(sbdev, irq);
+> -}
+> -
+> -/* VFIO skeleton */
+> -
+> -static void vfio_platform_compute_needs_reset(VFIODevice *vbasedev)
+> -{
+> -    vbasedev->needs_reset = true;
+> -}
+> -
+> -/* not implemented yet */
+> -static int vfio_platform_hot_reset_multi(VFIODevice *vbasedev)
+> -{
+> -    return -1;
+> -}
+> -
+> -/**
+> - * vfio_populate_device - Allocate and populate MMIO region
+> - * and IRQ structs according to driver returned information
+> - * @vbasedev: the VFIO device handle
+> - * @errp: error object
+> - *
+> - */
+> -static bool vfio_populate_device(VFIODevice *vbasedev, Error **errp)
+> -{
+> -    VFIOINTp *intp, *tmp;
+> -    int i, ret = -1;
+> -    VFIOPlatformDevice *vdev =
+> -        container_of(vbasedev, VFIOPlatformDevice, vbasedev);
+> -
+> -    if (!(vbasedev->flags & VFIO_DEVICE_FLAGS_PLATFORM)) {
+> -        error_setg(errp, "this isn't a platform device");
+> -        return false;
+> -    }
+> -
+> -    vdev->regions = g_new0(VFIORegion *, vbasedev->num_regions);
+> -
+> -    for (i = 0; i < vbasedev->num_regions; i++) {
+> -        char *name = g_strdup_printf("VFIO %s region %d\n", vbasedev->name, i);
+> -
+> -        vdev->regions[i] = g_new0(VFIORegion, 1);
+> -        ret = vfio_region_setup(OBJECT(vdev), vbasedev,
+> -                                vdev->regions[i], i, name);
+> -        g_free(name);
+> -        if (ret) {
+> -            error_setg_errno(errp, -ret, "failed to get region %d info", i);
+> -            goto reg_error;
+> -        }
+> -    }
+> -
+> -    vdev->mmap_timer = timer_new_ms(QEMU_CLOCK_VIRTUAL,
+> -                                    vfio_intp_mmap_enable, vdev);
+> -
+> -    QSIMPLEQ_INIT(&vdev->pending_intp_queue);
+> -
+> -    for (i = 0; i < vbasedev->num_irqs; i++) {
+> -        struct vfio_irq_info irq;
+> -
+> -        ret = vfio_device_get_irq_info(vbasedev, i, &irq);
+> -
+> -        if (ret) {
+> -            error_setg_errno(errp, -ret, "failed to get device irq info");
+> -            goto irq_err;
+> -        } else {
+> -            trace_vfio_platform_populate_interrupts(irq.index,
+> -                                                    irq.count,
+> -                                                    irq.flags);
+> -            intp = vfio_init_intp(vbasedev, irq, errp);
+> -            if (!intp) {
+> -                goto irq_err;
+> -            }
+> -        }
+> -    }
+> -    return true;
+> -irq_err:
+> -    timer_del(vdev->mmap_timer);
+> -    QLIST_FOREACH_SAFE(intp, &vdev->intp_list, next, tmp) {
+> -        QLIST_REMOVE(intp, next);
+> -        g_free(intp);
+> -    }
+> -reg_error:
+> -    for (i = 0; i < vbasedev->num_regions; i++) {
+> -        if (vdev->regions[i]) {
+> -            vfio_region_finalize(vdev->regions[i]);
+> -        }
+> -        g_free(vdev->regions[i]);
+> -    }
+> -    g_free(vdev->regions);
+> -    return false;
+> -}
+> -
+> -/* specialized functions for VFIO Platform devices */
+> -static VFIODeviceOps vfio_platform_ops = {
+> -    .vfio_compute_needs_reset = vfio_platform_compute_needs_reset,
+> -    .vfio_hot_reset_multi = vfio_platform_hot_reset_multi,
+> -    .vfio_eoi = vfio_platform_eoi,
+> -};
+> -
+> -/**
+> - * vfio_base_device_init - perform preliminary VFIO setup
+> - * @vbasedev: the VFIO device handle
+> - * @errp: error object
+> - *
+> - * Implement the VFIO command sequence that allows to discover
+> - * assigned device resources: group extraction, device
+> - * fd retrieval, resource query.
+> - * Precondition: the device name must be initialized
+> - */
+> -static bool vfio_base_device_init(VFIODevice *vbasedev, Error **errp)
+> -{
+> -    /* @fd takes precedence over @sysfsdev which takes precedence over @host */
+> -    if (vbasedev->fd < 0 && vbasedev->sysfsdev) {
+> -        vfio_device_free_name(vbasedev);
+> -        vbasedev->name = g_path_get_basename(vbasedev->sysfsdev);
+> -    } else if (vbasedev->fd < 0) {
+> -        if (!vbasedev->name || strchr(vbasedev->name, '/')) {
+> -            error_setg(errp, "wrong host device name");
+> -            return false;
+> -        }
+> -
+> -        vbasedev->sysfsdev = g_strdup_printf("/sys/bus/platform/devices/%s",
+> -                                             vbasedev->name);
+> -    }
+> -
+> -    if (!vfio_device_get_name(vbasedev, errp)) {
+> -        return false;
+> -    }
+> -
+> -    if (!vfio_device_attach(vbasedev->name, vbasedev,
+> -                            &address_space_memory, errp)) {
+> -        return false;
+> -    }
+> -
+> -    if (vfio_populate_device(vbasedev, errp)) {
+> -        return true;
+> -    }
+> -
+> -    vfio_device_detach(vbasedev);
+> -    return false;
+> -}
+> -
+> -/**
+> - * vfio_platform_realize  - the device realize function
+> - * @dev: device state pointer
+> - * @errp: error
+> - *
+> - * initialize the device, its memory regions and IRQ structures
+> - * IRQ are started separately
+> - */
+> -static void vfio_platform_realize(DeviceState *dev, Error **errp)
+> -{
+> -    ERRP_GUARD();
+> -    VFIOPlatformDevice *vdev = VFIO_PLATFORM_DEVICE(dev);
+> -    SysBusDevice *sbdev = SYS_BUS_DEVICE(dev);
+> -    VFIODevice *vbasedev = &vdev->vbasedev;
+> -    int i;
+> -
+> -    warn_report("-device vfio-platform is deprecated");
+> -    qemu_mutex_init(&vdev->intp_mutex);
+> -
+> -    trace_vfio_platform_realize(vbasedev->sysfsdev ?
+> -                                vbasedev->sysfsdev : vbasedev->name,
+> -                                vdev->compat);
+> -
+> -    if (!vfio_base_device_init(vbasedev, errp)) {
+> -        goto init_err;
+> -    }
+> -
+> -    if (!vdev->compat) {
+> -        GError *gerr = NULL;
+> -        gchar *contents;
+> -        gsize length;
+> -        char *path;
+> -
+> -        path = g_strdup_printf("%s/of_node/compatible", vbasedev->sysfsdev);
+> -        if (!g_file_get_contents(path, &contents, &length, &gerr)) {
+> -            error_setg(errp, "%s", gerr->message);
+> -            g_error_free(gerr);
+> -            g_free(path);
+> -            return;
+> -        }
+> -        g_free(path);
+> -        vdev->compat = contents;
+> -        for (vdev->num_compat = 0; length; vdev->num_compat++) {
+> -            size_t skip = strlen(contents) + 1;
+> -            contents += skip;
+> -            length -= skip;
+> -        }
+> -    }
+> -
+> -    for (i = 0; i < vbasedev->num_regions; i++) {
+> -        if (vfio_region_mmap(vdev->regions[i])) {
+> -            warn_report("%s mmap unsupported, performance may be slow",
+> -                        memory_region_name(vdev->regions[i]->mem));
+> -        }
+> -        sysbus_init_mmio(sbdev, vdev->regions[i]->mem);
+> -    }
+> -    return;
+> -
+> -init_err:
+> -    if (vdev->vbasedev.name) {
+> -        error_prepend(errp, VFIO_MSG_PREFIX, vdev->vbasedev.name);
+> -    } else {
+> -        error_prepend(errp, "vfio error: ");
+> -    }
+> -}
+> -
+> -static const VMStateDescription vfio_platform_vmstate = {
+> -    .name = "vfio-platform",
+> -    .unmigratable = 1,
+> -};
+> -
+> -static const Property vfio_platform_dev_properties[] = {
+> -    DEFINE_PROP_STRING("host", VFIOPlatformDevice, vbasedev.name),
+> -    DEFINE_PROP_STRING("sysfsdev", VFIOPlatformDevice, vbasedev.sysfsdev),
+> -    DEFINE_PROP_BOOL("x-no-mmap", VFIOPlatformDevice, vbasedev.no_mmap, false),
+> -    DEFINE_PROP_UINT32("mmap-timeout-ms", VFIOPlatformDevice,
+> -                       mmap_timeout, 1100),
+> -    DEFINE_PROP_BOOL("x-irqfd", VFIOPlatformDevice, irqfd_allowed, true),
+> -#ifdef CONFIG_IOMMUFD
+> -    DEFINE_PROP_LINK("iommufd", VFIOPlatformDevice, vbasedev.iommufd,
+> -                     TYPE_IOMMUFD_BACKEND, IOMMUFDBackend *),
+> -#endif
+> -};
+> -
+> -static void vfio_platform_instance_init(Object *obj)
+> -{
+> -    VFIOPlatformDevice *vdev = VFIO_PLATFORM_DEVICE(obj);
+> -    VFIODevice *vbasedev = &vdev->vbasedev;
+> -
+> -    vfio_device_init(vbasedev, VFIO_DEVICE_TYPE_PLATFORM, &vfio_platform_ops,
+> -                     DEVICE(vdev), false);
+> -}
+> -
+> -#ifdef CONFIG_IOMMUFD
+> -static void vfio_platform_set_fd(Object *obj, const char *str, Error **errp)
+> -{
+> -    vfio_device_set_fd(&VFIO_PLATFORM_DEVICE(obj)->vbasedev, str, errp);
+> -}
+> -#endif
+> -
+> -static void vfio_platform_class_init(ObjectClass *klass, const void *data)
+> -{
+> -    DeviceClass *dc = DEVICE_CLASS(klass);
+> -    SysBusDeviceClass *sbc = SYS_BUS_DEVICE_CLASS(klass);
+> -
+> -    dc->realize = vfio_platform_realize;
+> -    device_class_set_props(dc, vfio_platform_dev_properties);
+> -#ifdef CONFIG_IOMMUFD
+> -    object_class_property_add_str(klass, "fd", NULL, vfio_platform_set_fd);
+> -#endif
+> -    dc->vmsd = &vfio_platform_vmstate;
+> -    dc->desc = "VFIO-based platform device assignment";
+> -    sbc->connect_irq_notifier = vfio_start_irqfd_injection;
+> -    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
+> -
+> -    object_class_property_set_description(klass, /* 2.4 */
+> -                                          "host",
+> -                                          "Host device name of assigned device");
+> -    object_class_property_set_description(klass, /* 2.4 and 2.5 */
+> -                                          "x-no-mmap",
+> -                                          "Disable MMAP for device. Allows to trace MMIO "
+> -                                          "accesses (DEBUG)");
+> -    object_class_property_set_description(klass, /* 2.4 */
+> -                                          "mmap-timeout-ms",
+> -                                          "When EOI is not provided by KVM/QEMU, wait time "
+> -                                          "(milliseconds) to re-enable device direct access "
+> -                                          "after level interrupt (DEBUG)");
+> -    object_class_property_set_description(klass, /* 2.4 */
+> -                                          "x-irqfd",
+> -                                          "Allow disabling irqfd support (DEBUG)");
+> -    object_class_property_set_description(klass, /* 2.6 */
+> -                                          "sysfsdev",
+> -                                          "Host sysfs path of assigned device");
+> -#ifdef CONFIG_IOMMUFD
+> -    object_class_property_set_description(klass, /* 9.0 */
+> -                                          "iommufd",
+> -                                          "Set host IOMMUFD backend device");
+> -#endif
+> -}
+> -
+> -static const TypeInfo vfio_platform_dev_info = {
+> -    .name = TYPE_VFIO_PLATFORM,
+> -    .parent = TYPE_DYNAMIC_SYS_BUS_DEVICE,
+> -    .instance_size = sizeof(VFIOPlatformDevice),
+> -    .instance_init = vfio_platform_instance_init,
+> -    .class_init = vfio_platform_class_init,
+> -    .class_size = sizeof(VFIOPlatformDeviceClass),
+> -};
+> -
+> -static void register_vfio_platform_dev_type(void)
+> -{
+> -    type_register_static(&vfio_platform_dev_info);
+> -}
+> -
+> -type_init(register_vfio_platform_dev_type)
+> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+> index 3fca48349ade97002597c866fa6457a784c3219d..3baa6c6c74778683de25ea1349eccace1275cedd 100644
+> --- a/hw/arm/Kconfig
+> +++ b/hw/arm/Kconfig
+> @@ -5,7 +5,6 @@ config ARM_VIRT
+>      depends on TCG || KVM || HVF
+>      imply PCI_DEVICES
+>      imply TEST_DEVICES
+> -    imply VFIO_PLATFORM
+>      imply TPM_TIS_SYSBUS
+>      imply TPM_TIS_I2C
+>      imply NVDIMM
+> diff --git a/hw/vfio/Kconfig b/hw/vfio/Kconfig
+> index 9a1dbe29267ea61709c3e28e4f8c25be01c3aa33..27de24e4db1f080d94be8d666e56812e1e904f1a 100644
+> --- a/hw/vfio/Kconfig
+> +++ b/hw/vfio/Kconfig
+> @@ -17,12 +17,6 @@ config VFIO_CCW
+>      select VFIO
+>      depends on LINUX && S390_CCW_VIRTIO
+>  
+> -config VFIO_PLATFORM
+> -    bool
+> -    default y
+> -    select VFIO
+> -    depends on LINUX && PLATFORM_BUS
+> -
+>  config VFIO_AP
+>      bool
+>      default y
+> diff --git a/hw/vfio/meson.build b/hw/vfio/meson.build
+> index 06473a078990eab9ec5ce76a6d9897326280dc03..d3ed3cb7ac19931f95f60057c3d9d290bc48c07c 100644
+> --- a/hw/vfio/meson.build
+> +++ b/hw/vfio/meson.build
+> @@ -13,7 +13,6 @@ vfio_ss.add(when: 'CONFIG_VFIO_PCI', if_true: files(
+>    'pci.c',
+>  ))
+>  vfio_ss.add(when: 'CONFIG_VFIO_CCW', if_true: files('ccw.c'))
+> -vfio_ss.add(when: 'CONFIG_VFIO_PLATFORM', if_true: files('platform.c'))
+>  vfio_ss.add(when: 'CONFIG_VFIO_AP', if_true: files('ap.c'))
+>  vfio_ss.add(when: 'CONFIG_VFIO_IGD', if_true: files('igd.c'))
+>  
+> diff --git a/hw/vfio/trace-events b/hw/vfio/trace-events
+> index fc6ed230d0c89d4b94e5878043bc23d94dcfe737..e3d571f8c845dad85de5738f8ca768bdfc336252 100644
+> --- a/hw/vfio/trace-events
+> +++ b/hw/vfio/trace-events
+> @@ -127,17 +127,6 @@ vfio_region_unmap(const char *name, unsigned long offset, unsigned long end) "Re
+>  vfio_region_sparse_mmap_header(const char *name, int index, int nr_areas) "Device %s region %d: %d sparse mmap entries"
+>  vfio_region_sparse_mmap_entry(int i, unsigned long start, unsigned long end) "sparse entry %d [0x%lx - 0x%lx]"
+>  
+> -# platform.c
+> -vfio_platform_realize(char *name, char *compat) "vfio device %s, compat = %s"
+> -vfio_platform_eoi(int pin, int fd) "EOI IRQ pin %d (fd=%d)"
+> -vfio_platform_intp_mmap_enable(int pin) "IRQ #%d still active, stay in slow path"
+> -vfio_platform_intp_interrupt(int pin, int fd) "Inject IRQ #%d (fd = %d)"
+> -vfio_platform_intp_inject_pending_lockheld(int pin, int fd) "Inject pending IRQ #%d (fd = %d)"
+> -vfio_platform_populate_interrupts(int pin, int count, int flags) "- IRQ index %d: count %d, flags=0x%x"
+> -vfio_intp_interrupt_set_pending(int index) "irq %d is set PENDING"
+> -vfio_platform_start_level_irqfd_injection(int index, int fd, int resamplefd) "IRQ index=%d, fd = %d, resamplefd = %d"
+> -vfio_platform_start_edge_irqfd_injection(int index, int fd) "IRQ index=%d, fd = %d"
+> -
+>  # spapr.c
+>  vfio_prereg_listener_region_add_skip(uint64_t start, uint64_t end) "0x%"PRIx64" - 0x%"PRIx64
+>  vfio_prereg_listener_region_del_skip(uint64_t start, uint64_t end) "0x%"PRIx64" - 0x%"PRIx64
 
 

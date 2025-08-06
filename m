@@ -4,72 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A10EC87FD1
-	for <qemu-arm@archiver.kernel.org>; Wed,  6 Aug 2025 11:22:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 745F9C87FCB
+	for <qemu-arm@archiver.kernel.org>; Wed,  6 Aug 2025 11:37:13 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ujcDX-0000rY-MV; Wed, 06 Aug 2025 07:22:02 -0400
+	id 1ujcRl-0005a3-9y; Wed, 06 Aug 2025 07:36:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ujcDH-0000dm-LU
- for qemu-arm@nongnu.org; Wed, 06 Aug 2025 07:21:45 -0400
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ujcNq-0002W6-Kx
+ for qemu-arm@nongnu.org; Wed, 06 Aug 2025 07:32:39 -0400
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ujcDG-0006gv-1z
- for qemu-arm@nongnu.org; Wed, 06 Aug 2025 07:21:43 -0400
-Received: by mail-wr1-x431.google.com with SMTP id
- ffacd0b85a97d-3b8d0f1fb49so3380072f8f.2
- for <qemu-arm@nongnu.org>; Wed, 06 Aug 2025 04:21:41 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ujcNo-0000Ab-LZ
+ for qemu-arm@nongnu.org; Wed, 06 Aug 2025 07:32:38 -0400
+Received: by mail-wr1-x42a.google.com with SMTP id
+ ffacd0b85a97d-3b790dbb112so3678024f8f.3
+ for <qemu-arm@nongnu.org>; Wed, 06 Aug 2025 04:32:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1754479300; x=1755084100; darn=nongnu.org;
+ d=linaro.org; s=google; t=1754479954; x=1755084754; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=NeONzXVcpGLWC773oWhdvssn0MHhWt4lmYUy/kVuZFE=;
- b=mijXWHXyqbmkjmTvzl3RMkkatfReWMTC1jOYV4vsp7A4KSE/PAGyf0gvPFbgsZGk5a
- 1u2kniSECDK8WtWW4UDuR/+80RsURo5vOAapusD9xxqvHJDYqSnA7/WrgLYOFUJWj/7L
- temI8nZunjvHV8iRQyrr7JP5qlfkaLnqDU5eG2shy5w9jri7mDsn3BnvM9hJZTAobLLF
- t9O7EHK3t5pnKUu4hkx7Gso0GH8xQWUQaVTfK0fXbTu32oaknNHid50T6m8DD6V9E0ZC
- i6AYXppxCNfD6ZgV7az9zw7HimHJt6Befpa9QtYLeYHm0d0oRxQLuX61biYOzzETb7sS
- v7sQ==
+ bh=N41CPXk6KyWRQrYKEY9IeLXQoYbkGzLpS42kYyNwKAk=;
+ b=RrQydYf8EweJiurtQgGui41+z+Cm9bFk1YQ+hDCAoFiBV7LZAU4gWUG6fUlAzfYt5L
+ +KGXFTC+pIEN1tTtFGAP8rD/iupmITCuq/hLIOOF1uBlzqwZA1UEwvbBnTv1TY4wcKf6
+ Cbz0CkxpD2bnPU2CUtSKTJXuG8BdehO8XR7OntXKXNxlRc/Oz82W3UKapee9BclMit9w
+ 6zDTkALleTeQXet99CL2MPdAmOX9tMjH1EF9Ttx+sJOgh9fQfW/a0dar8oCv0SK1Ifo8
+ s+M1hDs7KN+/lwTorryQlrqyroU0tV37FugOUhUOGYmrwQwbQZZy63XEnt1zqnPVXnZh
+ L5vg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1754479300; x=1755084100;
+ d=1e100.net; s=20230601; t=1754479954; x=1755084754;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=NeONzXVcpGLWC773oWhdvssn0MHhWt4lmYUy/kVuZFE=;
- b=rtM9yipTz7bynazZZ2PhWaMBmRen2AKZhTnM00k9JVDLi95OvW/6lxu9lIXqpxD9sJ
- ZhtSdHIcQeljBa2HzLmfphL0mk4ZNiCl7al7jD5J/hJfhEgJiJZqlaXkyVZ55dyiCO+7
- U0SnV1jgRxDYuO3Lu6Q+GOunfaIpP4iNSnnbl/Yd1UuDHlXneQ2YLkPVXZkAri4ES3B6
- Ubd7E2VHeC4PIyXDouyA1+DV4YFejgZkodRCfmJeQGUinXNdZAt+yOg2UwCuVVUUMXhN
- cIgPso9KnmXvUOwlZ8I+Oyj+CF4E8JvE+UWLneZ0Ljtu9Gqgkd1Ezeqnm449HVhO9SRv
- bnkg==
+ bh=N41CPXk6KyWRQrYKEY9IeLXQoYbkGzLpS42kYyNwKAk=;
+ b=YkoVBwUQhmGeFPG7Xn2lZe/AAXHmD3YvImBowdFNQ2YXDxIQRfcyJgrixs486xrgsY
+ GNNcKiY46VkRN0Q7exC18J15kHxazcslUZMHQzjOFh6XFFCEC37ETWrWgDp9x+n8GdRj
+ gE8dbOrIu5uxguES/ZZF0zqHmWx2oYkGKNv/z2Nw5XaZXCQJTzZ0jIJeeRIUA5eeoBot
+ twUoLMhnNTuN+j4VbyWxYMkb46Skys629S4nHwGG0SaGMjuEuRio4kYThzjJfPv4U6TV
+ HNcGq4GBRiSRrgT3tRWtAUkyCUNS2ojwYUdlReAJQ+KZQdBkjE/znCMWS9rz/w3K+gaJ
+ UUEg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXe0R+YBFn0IUxT55aJgHRf66YJITXLNh5AocGUm7yR5qYOZ8pOb5CrSHUodJAOM9vGxn5BIbkhKA==@nongnu.org
-X-Gm-Message-State: AOJu0YwsNU4wYKkq2oIHVNtO91U3PridJc3Vmn34JugMMoe2MYKx+GwB
- W6eh4h4h0vLs6B0fdSwYagiDYWB0CUTe/RBpfaFaeymtCZ2FQk+orxCrd6HR+HJkGFM=
-X-Gm-Gg: ASbGncsx0UyoyHUrEirdokZGjcuzurYbi6Xs6enVjT8YE0jPoSn6BKtmViZij5Jv6KK
- m1+OI+K0DYHoPjCTEg7pjEo1IQI/Ol3mV2d35n0haR0IWndilixcz0KBP70/yw4tZovfGrdXbBL
- ozMQAhyb80aqPy7Kdh29nw2oJmgHIzcXze5o6fhAGMzSQPwdS3Rjii8ZGXQu50y3m3J1cSkcGG0
- 1/gj4N2tHK4vYlPgIstSToyXxKI5kNoIqQqueAo/CY5cI9uP7G95pBE0L9ni4YicAfai9USInMG
- jVwRisal0zh3GS5HTb0KikBBAWEFzfmFvnqtdnMsqiadTaoeKcPa2l4YhByRRnh5LlSdIwTb/Ny
- //uJiv5tHEogBFkCh9/Q9QiWeb1ysk17Ip0HxbT01w/Z9f5PmVH1RgprlnBOpU8LB2w==
-X-Google-Smtp-Source: AGHT+IHeGNx8BTdME2A4MoKHpIl//6W4DW5/qMlf8En9lPUDcGKaUrtVgyufmMtQZlDiSJiW5ZuIeA==
-X-Received: by 2002:a05:6000:24c6:b0:3b8:d1a4:bab9 with SMTP id
- ffacd0b85a97d-3b8f41f3109mr2066663f8f.45.1754479300381; 
- Wed, 06 Aug 2025 04:21:40 -0700 (PDT)
+ AJvYcCWNB3jxmWPTE0ugEYdwvWENIvyedzEw3TzXO1F9APqJc4J0nQ+5N4gBLAJu4yZx8TocNXoEA+laeQ==@nongnu.org
+X-Gm-Message-State: AOJu0YyYjRYFf0KxzA6vhS7BJjND3fTPDCELDrjhhbYAj63VDpkYrrIY
+ +A3o4U/qDq6Rf8HmpA5P7OVBnXEjSLinVxm0+zrNKJci0PE8EZ2rqGpTWxldnmz4BUg=
+X-Gm-Gg: ASbGncvFW8OZdTQBZcoBKR/ndRKXg6C1EV0h703dV1QcRHbnbObjvnmqgytFNm5X6Wk
+ 2CnueQgmZspOpemlxJzJ47pwhvjtb43iqWtREEqHDHEPWFCa7N1d64ZxglgNGMhMsSkdu5t0wt9
+ L+m37COI5ql8Pc91FOIDJtK+JqqTa8mDb/3eojHho0PUO+1pe8cO16KvH2oo5HGW0ObLWKDKs47
+ qczMV892MtmLz598+sYF+JKsCqoR9OV3lLizhcjoyrNB2Fx2oSfT2Q3nQZmrfy3TM6uZ3C74upe
+ 6LugHUiGdD3N1BSF4W7B+kAsN+DNUnNJBGBkBmjSbiyykRDD7T43zpTbFfB9hWJC9bhGg3xN9Yl
+ HxZRD8RNeTXUi5PKhK+/yKcUCly+jmvQgMtXloEK5LHJDJUpktPO9A2Uf2Co5iq341Q==
+X-Google-Smtp-Source: AGHT+IFMM3Ypr+FRs3yfml80pD85anfq5qGiocHLdnQ/RelWnX9QyYRq/dI7NfZnwh005FDrGgeunQ==
+X-Received: by 2002:a05:6000:2482:b0:3b7:951c:aef3 with SMTP id
+ ffacd0b85a97d-3b8f41c8213mr2148352f8f.38.1754479954504; 
+ Wed, 06 Aug 2025 04:32:34 -0700 (PDT)
 Received: from [192.168.69.210] (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3b79c3bc12csm23149635f8f.28.2025.08.06.04.21.39
+ ffacd0b85a97d-3b79c47ca5fsm22343078f8f.63.2025.08.06.04.32.33
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 06 Aug 2025 04:21:39 -0700 (PDT)
-Message-ID: <9a445a3b-df8d-4cfd-8561-5295ad6fd30b@linaro.org>
-Date: Wed, 6 Aug 2025 13:21:38 +0200
+ Wed, 06 Aug 2025 04:32:33 -0700 (PDT)
+Message-ID: <32928301-9db8-4003-84fc-82f3129bb8c3@linaro.org>
+Date: Wed, 6 Aug 2025 13:32:32 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 11/13] hvf: gate ARM_FEATURE_PMU register emulation
- behind not being at EL2
+Subject: Re: [PATCH v5 02/13] accel, hw/arm, include/system/hvf:
+ infrastructure changes for HVF vGIC
 To: Mohamed Mediouni <mohamed@unpredictable.fr>, qemu-devel@nongnu.org
 Cc: Mads Ynddal <mads@ynddal.dk>, Paolo Bonzini <pbonzini@redhat.com>,
  Shannon Zhao <shannon.zhaosl@gmail.com>,
@@ -80,14 +80,14 @@ Cc: Mads Ynddal <mads@ynddal.dk>, Paolo Bonzini <pbonzini@redhat.com>,
  <mst@redhat.com>, Ani Sinha <anisinha@redhat.com>,
  Cameron Esfahani <dirty@apple.com>
 References: <20250728134114.77545-1-mohamed@unpredictable.fr>
- <20250728134114.77545-12-mohamed@unpredictable.fr>
+ <20250728134114.77545-3-mohamed@unpredictable.fr>
 Content-Language: en-US
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20250728134114.77545-12-mohamed@unpredictable.fr>
+In-Reply-To: <20250728134114.77545-3-mohamed@unpredictable.fr>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::431;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x431.google.com
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -111,25 +111,123 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 28/7/25 15:41, Mohamed Mediouni wrote:
->  From Apple documentation:
-> 
->> When EL2 is disabled, PMU register accesses trigger "Trapped MSR, MRS, or
->> System Instruction" exceptions. When this happens, hv_vcpu_run() returns, and the
->>  hv_vcpu_exit_t object contains the information about this exception.
-> 
->> When EL2 is enabled, the handling of PMU register accesses is determined by the PMUVer
->> field of ID_AA64DFR0_EL1 register.
->> If the PMUVer field value is zero or is invalid, PMU register accesses generate "Undefined"
->> exceptions, which are sent to the guest.
->> If the PMUVer field value is non-zero and valid, PMU register accesses are emulated by the framework.
->> The ID_AA64DFR0_EL1 register can be modified via hv_vcpu_set_sys_reg API.
+> Misc changes needed for HVF vGIC enablement.
 > 
 > Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 > ---
->   target/arm/hvf/hvf.c | 4 ++--
->   1 file changed, 2 insertions(+), 2 deletions(-)
+>   accel/hvf/hvf-all.c        | 44 ++++++++++++++++++++++++++++++++++++++
+>   accel/stubs/hvf-stub.c     |  1 +
+>   hw/arm/virt.c              | 16 +++++++++-----
+>   hw/intc/arm_gicv3_common.c |  3 +++
+>   include/system/hvf.h       |  3 +++
+>   system/vl.c                |  2 ++
+>   6 files changed, 64 insertions(+), 5 deletions(-)
+> 
+> diff --git a/accel/hvf/hvf-all.c b/accel/hvf/hvf-all.c
+> index 0a4b498e83..5af76ba7a6 100644
+> --- a/accel/hvf/hvf-all.c
+> +++ b/accel/hvf/hvf-all.c
+> @@ -10,6 +10,8 @@
+>   
+>   #include "qemu/osdep.h"
+>   #include "qemu/error-report.h"
+> +#include "qapi/error.h"
+> +#include "qapi/qapi-visit-common.h"
+>   #include "accel/accel-ops.h"
+>   #include "system/address-spaces.h"
+>   #include "system/memory.h"
+> @@ -20,6 +22,7 @@
+>   #include "trace.h"
+>   
+>   bool hvf_allowed;
+> +bool hvf_kernel_irqchip;
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Tested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+OK.
+
+>   
+>   struct mac_slot {
+>       int present;
+> @@ -290,6 +293,41 @@ static int hvf_gdbstub_sstep_flags(AccelState *as)
+>       return SSTEP_ENABLE | SSTEP_NOIRQ;
+>   }
+>   
+> +static void hvf_set_kernel_irqchip(Object *obj, Visitor *v,
+> +                                   const char *name, void *opaque,
+> +                                   Error **errp)
+> +{
+> +#ifdef __aarch64__
+
+We try to avoid such #ifdef'ry...
+
+> +    OnOffSplit mode;
+> +    if (!visit_type_OnOffSplit(v, name, &mode, errp)) {
+> +        return;
+> +    }
+> +
+> +    switch (mode) {
+> +    case ON_OFF_SPLIT_ON:
+> +        hvf_kernel_irqchip = true;
+> +        break;
+> +
+> +    case ON_OFF_SPLIT_OFF:
+> +        hvf_kernel_irqchip = false;
+> +        break;
+> +
+> +    case ON_OFF_SPLIT_SPLIT:
+> +        error_setg(errp, "HVF: split irqchip is not supported on Arm.");
+> +        break;
+> +
+> +    default:
+> +        /*
+> +         * The value was checked in visit_type_OnOffSplit() above. If
+> +         * we get here, then something is wrong in QEMU.
+> +         */
+> +        abort();
+> +    }
+> +#else
+> +    error_setg(errp, "HVF: setting irqchip configuration not supported on x86_64.");
+> +#endif
+> +}
+> +
+>   static void hvf_accel_class_init(ObjectClass *oc, const void *data)
+>   {
+>       AccelClass *ac = ACCEL_CLASS(oc);
+> @@ -297,6 +335,12 @@ static void hvf_accel_class_init(ObjectClass *oc, const void *data)
+>       ac->init_machine = hvf_accel_init;
+>       ac->allowed = &hvf_allowed;
+>       ac->gdbstub_supported_sstep_flags = hvf_gdbstub_sstep_flags;
+... better add hvf_arch_register_class_properties(), empty stub
+on x86 and filled in aarch64.
+
+> +    hvf_kernel_irqchip = true;
+> +    object_class_property_add(oc, "kernel-irqchip", "on|off|split",
+> +        NULL, hvf_set_kernel_irqchip,
+> +        NULL, NULL);
+> +    object_class_property_set_description(oc, "kernel-irqchip",
+> +        "Configure HVF irqchip");
+>   }
+
+
+> diff --git a/system/vl.c b/system/vl.c
+> index 3b7057e6c6..1c072d15a4 100644
+> --- a/system/vl.c
+> +++ b/system/vl.c
+> @@ -1773,6 +1773,8 @@ static void qemu_apply_legacy_machine_options(QDict *qdict)
+>                                      false);
+>           object_register_sugar_prop(ACCEL_CLASS_NAME("whpx"), "kernel-irqchip", value,
+>                                      false);
+> +        object_register_sugar_prop(ACCEL_CLASS_NAME("hvf"), "kernel-irqchip", value,
+> +                                   false);
+
+Discussing about this object_register_sugar_prop() call on IRC, Paolo
+said:
+
+  > It's okay the property already exists for KVM so it's okay to add
+  > the synonym for HVF as well
+  > Maybe make sure it's not registered for x86?
+
+>           qdict_del(qdict, "kernel-irqchip");
+>       }
+>   
 
 

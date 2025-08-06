@@ -4,86 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F50CC87FD3
-	for <qemu-arm@archiver.kernel.org>; Wed,  6 Aug 2025 16:58:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B96B4C87FD3
+	for <qemu-arm@archiver.kernel.org>; Wed,  6 Aug 2025 17:05:52 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ujhSm-00019H-W6; Wed, 06 Aug 2025 12:58:05 -0400
+	id 1ujhZQ-0002Yg-LD; Wed, 06 Aug 2025 13:04:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1ujgCJ-0001Jz-VR
- for qemu-arm@nongnu.org; Wed, 06 Aug 2025 11:37:01 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1ujgTZ-00039l-4t
+ for qemu-arm@nongnu.org; Wed, 06 Aug 2025 11:54:52 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1ujgCI-0001MK-J4
- for qemu-arm@nongnu.org; Wed, 06 Aug 2025 11:36:59 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1ujgTW-0003Nz-5X
+ for qemu-arm@nongnu.org; Wed, 06 Aug 2025 11:54:48 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1754494616;
+ s=mimecast20190719; t=1754495684;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=X1OfTK+xp6uoBKk7dbSzEQQ9dnkclv0FGtzOH68TVpI=;
- b=MaWRxL2FUbLrdNBMYvogYPfjasRSGkkU2qFpYI1rpmyJdjVqHVB/d5HrIyPndk/uCs2nyz
- HTSC8GC9GrQokHScUSxqKCX+wjqMWkIfnwLJzUjtbPpzTAUyjXP3gzMnPdkh3pZheocNHB
- pfvP0lnf8eS1i/TK9MWHOwjuINy5VF8=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=EIEji9Eqki5ALEg2qh1z0G+6HF4P5wC1eIhCXQwtZus=;
+ b=QHaDnXpQJgGGGsyjrgcLryZ5gBcRX30cdTVBSGEeJmJJ2wqg4YgucfBfeup4IraL9ej4+R
+ lOjBFYzPWhe+nCRU6+AIc1HdTpucN7FCYGa2vRCLjFKQwzAxMcI5FZG4VOLlEpLrPzmm3N
+ PQS59ZpNn+u05r0XzaKPY4Q9VfJzNUE=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-552-VFQnTGdtOUy1lIK1LvsEhg-1; Wed, 06 Aug 2025 11:36:54 -0400
-X-MC-Unique: VFQnTGdtOUy1lIK1LvsEhg-1
-X-Mimecast-MFC-AGG-ID: VFQnTGdtOUy1lIK1LvsEhg_1754494614
-Received: by mail-wr1-f72.google.com with SMTP id
- ffacd0b85a97d-3b7889c8d2bso3016148f8f.3
- for <qemu-arm@nongnu.org>; Wed, 06 Aug 2025 08:36:54 -0700 (PDT)
+ us-mta-465-Ntx8lc8oOrCa_m0WexjQyw-1; Wed, 06 Aug 2025 11:54:41 -0400
+X-MC-Unique: Ntx8lc8oOrCa_m0WexjQyw-1
+X-Mimecast-MFC-AGG-ID: Ntx8lc8oOrCa_m0WexjQyw_1754495680
+Received: by mail-wm1-f69.google.com with SMTP id
+ 5b1f17b1804b1-458c0c8d169so267125e9.3
+ for <qemu-arm@nongnu.org>; Wed, 06 Aug 2025 08:54:41 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1754494613; x=1755099413;
+ d=1e100.net; s=20230601; t=1754495680; x=1755100480;
  h=content-transfer-encoding:in-reply-to:autocrypt:content-language
  :from:references:cc:to:subject:user-agent:mime-version:date
  :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=X1OfTK+xp6uoBKk7dbSzEQQ9dnkclv0FGtzOH68TVpI=;
- b=txvcgOGOJMIExpolGtWSFmNccACaQ5fwiwjaQ1v9OkaPWd+WUK+jHWlMb3+fvU9srd
- PCi7xgKjWz8Vvx1xNoHIo5idwrqYW8GMbog0O1weDwFEnUkWirIY1bB55W52m6QTuPty
- FUrmY6ovYqQxjaZOA1A3q7ZTVWhlIx+KDVM7DcrCueFcr1jX+4DA5QFZFMCjuXlvnkOO
- ZzTkmMhqu+TLdzkSQC1Olc49lk3mODyJe2tMNmLdkUEG4396Jd4GVavwSis3UGvMEINS
- TqmaEfEJdh4uojqiIlH0CCu9tSr2krE7chRVolIMXxQT0nKVCiAyKtbYeozWd6xoRDj1
- MhjQ==
-X-Gm-Message-State: AOJu0YzbzSOqnRsAv8vV2ehiqFRQNPa9N6k/ecFXw2+omHGh9d//G1Hb
- WBZx5qNYEJprOJJk22L98mZtTz4U62W72Xd2iDAjhnpCqWb1xMjHDt2hdKUJOoQcoRlQQHWSpr7
- 427chHgaiZTBaNeOSRYSuk/pwE8Ey4zmpCVJ/Pkmty5gdm7gvYH3URw==
-X-Gm-Gg: ASbGncubZHf+neSykia/kP54JrCTtAQ8XH6IUnrwvoETN9nomBjOrHOWNlXQnw+Bo09
- TuKEpFEW4oC2viMpVreWtFNh3qxj/xOzq9+hs91l/kAQHwC+1scs0vHMTd6r6MaBMOzB+1sx+Me
- Gws4b8axCB8tU08i6HTnQLcGmO+Ecq7+Ecf/uHXrIdCUCqnF8nEoS3qpbpSsJuYhdUzy1G2udOl
- 7WyFpwwtdEJZp3nONj/ev01lhi9Xs3pfogwkq6mjuDNrwxuY0Nx8nT4y1OjQhpQtu4dknZF8SEr
- oEfWgU1wG3X3E4+cn2lTjkAlMMqt+OefCc8aE0iaAIUgWXU6iPY276XiX1REZJcrtvgBNFpco3H
- EMXo34QsbStVa5XqlYRN/XH104erheIaa6HF5pckZFaCzSBN4NuivG4+/ISwsKOpFTQ==
-X-Received: by 2002:a05:6000:2003:b0:3b8:d0bb:754d with SMTP id
- ffacd0b85a97d-3b8f41d3e78mr2746084f8f.37.1754494613609; 
- Wed, 06 Aug 2025 08:36:53 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFJBRnmx36yMkuMovK02H/FDLnXVexJSqFOgXqEw/YwAdXAPzWamzYKoKdrUCJKWosaOyMdaw==
-X-Received: by 2002:a05:6000:2003:b0:3b8:d0bb:754d with SMTP id
- ffacd0b85a97d-3b8f41d3e78mr2746060f8f.37.1754494613126; 
- Wed, 06 Aug 2025 08:36:53 -0700 (PDT)
+ bh=EIEji9Eqki5ALEg2qh1z0G+6HF4P5wC1eIhCXQwtZus=;
+ b=gFEJjqTFPqAP5UXoRFFa3t/MzCi70IKOmKI2KYuONpD7Vm8iTeYVp6d3lebIrWxnAW
+ W7oT4Nlz8hXTa57CxAP1pxJaibHR2kXA0PfHBxsUp6/DNZGp8Pjjywh148dkn/K8PvkR
+ 5iBVGWiEOj7aAnClHJbzewzDcXbLlRN26/CjqpQrav4SFmU2eVSj8tx78wwgjulikYMw
+ tg4EuBopDxFoGBbfVYQru095Ce9v7vV7NVOUf8RojhrUE7xgEbvnzYCztfg67d2pzfzu
+ iQK00JY+j4o/TN6fLJUc8V5xkM4hT4d4ByY9wBcNhdHAeaz99H0yCSoNVUXntx0Cyyxd
+ 4u7A==
+X-Gm-Message-State: AOJu0YylcG9U+FLuZbWURiu76tu5ykQWr8elynUmazTDT36LkKKrdccS
+ 2HLLqCOjYPfnj+Fsk4my2y/D83ZwKo+A3Z8uNR0F/8czjlk0YVw2kNiQf5AygftjNYiwg+wbn3A
+ H7iSqlLgOgjnl9TOcYGLy8IwLDKE3rVhJRWngNaIlQ9XCGkFIrWDBBg==
+X-Gm-Gg: ASbGncv6MSE4jFIi87JwI/wTlXq/PeuItL8HSt9Kaf5c0yq+YR+x47b2jN0cW3G1wc8
+ M+WzD4oc4sl9V8GvaWqUR0/BCw6seowfxvLkUqSXMXOXlPydxdKMt0F+M725DR4plqHHsOx4bOp
+ aJnPFim3R7ucc37hQNizae6ePwHA7Vi32itNao9K93Sj4JkON3CQcvbSZh+tTnEvEf1stFpBVkJ
+ Sh4IWSd2tds0bT+Hq1pRMPgyfhGf5qYZE+shd7aA9t9uQnB3r/HnPpAcO2BUUzFdEvW74PxKapc
+ lxpUOdY6z3e8r2W7UwGwTcDnhujtzthq7hCcAaPUE5rLAM3Y59YkPjkTYlX166DTMWiRird3OaX
+ Kon44OZhL1eZgvIyxGbnzW3ZMYOOxL7pccH23ItBN/a1ANfeGZXamnYQjPoajHUHdnw==
+X-Received: by 2002:a05:600c:828f:b0:450:d30e:ff96 with SMTP id
+ 5b1f17b1804b1-459e92c38d3mr26933805e9.0.1754495680036; 
+ Wed, 06 Aug 2025 08:54:40 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IG19szrNjTaOGDyRJz5R0orRkPYvA40KmDB+SLidKfDN7lk8B94unxT2sfnKmrZ9QAVy7F7sA==
+X-Received: by 2002:a05:600c:828f:b0:450:d30e:ff96 with SMTP id
+ 5b1f17b1804b1-459e92c38d3mr26933515e9.0.1754495679576; 
+ Wed, 06 Aug 2025 08:54:39 -0700 (PDT)
 Received: from ?IPV6:2a01:cb01:833:e4a9:b423:d450:c87f:f1f0?
  (2a01cb010833e4a9b423d450c87ff1f0.ipv6.abo.wanadoo.fr.
  [2a01:cb01:833:e4a9:b423:d450:c87f:f1f0])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3b79c4530a8sm23462951f8f.38.2025.08.06.08.36.51
+ 5b1f17b1804b1-459e5869cccsm61110435e9.17.2025.08.06.08.54.37
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 06 Aug 2025 08:36:52 -0700 (PDT)
-Message-ID: <e3b520ca-4b67-4880-82f0-c464f9182b67@redhat.com>
-Date: Wed, 6 Aug 2025 17:36:51 +0200
+ Wed, 06 Aug 2025 08:54:39 -0700 (PDT)
+Message-ID: <0a634c90-847a-4b75-b36a-bca923527060@redhat.com>
+Date: Wed, 6 Aug 2025 17:54:37 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH for-10.2 3/4] vfio: Remove 'vfio-platform'
+Subject: Re: [PATCH for-10.2 0/4] vfio: Remove 'vfio-platform'
 To: eric.auger@redhat.com, qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  Alex Williamson <alex.williamson@redhat.com>
 References: <20250731121947.1346927-1-clg@redhat.com>
- <20250731121947.1346927-4-clg@redhat.com>
- <3841525e-eef9-4cf3-a7b5-b7cc11e9d702@redhat.com>
+ <22bb66b6-998c-4cb9-a16b-386ff88bb197@redhat.com>
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
 Autocrypt: addr=clg@redhat.com; keydata=
  xsFNBFu8o3UBEADP+oJVJaWm5vzZa/iLgpBAuzxSmNYhURZH+guITvSySk30YWfLYGBWQgeo
@@ -128,14 +127,14 @@ Autocrypt: addr=clg@redhat.com; keydata=
  HQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4PlsZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQ
  izDiU6iOrUzBThaMhZO3i927SG2DwWDVzZltKrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gD
  uVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <3841525e-eef9-4cf3-a7b5-b7cc11e9d702@redhat.com>
+In-Reply-To: <22bb66b6-998c-4cb9-a16b-386ff88bb197@redhat.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: an62J1PBX1eGc4j1alpLYVe19nQy5DxZBMI75O1yrYA_1754494614
+X-Mimecast-MFC-PROC-ID: vPTKxtdN1xh_Ryb2prgpXVtkgYcfO5Gaj9WSNAQh-IE_1754495680
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US, fr
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -162,23 +161,32 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 Hello Eric,
 
-On 8/6/25 16:52, Eric Auger wrote:
->> --- a/hw/arm/virt.c
->> +++ b/hw/arm/virt.c
->> @@ -38,7 +38,6 @@
->>   #include "hw/arm/primecell.h"
->>   #include "hw/arm/virt.h"
->>   #include "hw/block/flash.h"
->> -#include "hw/vfio/vfio-platform.h"
-> removal of this header causes the compilation to fail.
-> #include "system/system.h" needs to be added
+On 8/6/25 14:51, Eric Auger wrote:
+> Hi Cédric,
+> 
+> On 7/31/25 2:19 PM, Cédric Le Goater wrote:
+>> Hello,
+>>
+>> The VFIO_PLATFORM device type has been deprecated in the QEMU 10.0
+>> timeframe. QEMU 10.2 is the time for removal.
+>>
+>> The last patch moves vfio-region.h under hw/vfio since it no longer
+>> needs to be a public VFIO interface.
+> "tout ça... pour ça!" as we say in french ;-)
 
-yes. I sent this patch separately :
+It was not for nothing !
 
-   https://lore.kernel.org/qemu-devel/20250731144019.1403591-1-clg@redhat.com/
+vfio-platform explored device passthrough on DT platforms.
+It had limitations which were difficult to address without
+common FW specifications to expose devices. The result is
+neither good or bad, it had its time.
 
-but it needs a v2 to address other files which have a similar
-issue. I will resend the whole when the QEMU 10.2 cycle opens.
+However, the wrong choice would be to keep unused code in an
+upstream project. This would be a burden for the maintainer
+and the overall community.
+
+> Reviewed-by: Eric Auger <eric.auger@redhat.com>
+
 
 Thanks,
 

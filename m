@@ -4,65 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC8D3C87FD3
-	for <qemu-arm@archiver.kernel.org>; Wed,  6 Aug 2025 08:50:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 453D7C87FCB
+	for <qemu-arm@archiver.kernel.org>; Wed,  6 Aug 2025 10:37:11 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ujZqN-0002M2-OP; Wed, 06 Aug 2025 04:49:56 -0400
+	id 1ujbVt-0001Xq-HC; Wed, 06 Aug 2025 06:36:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1ujZqL-0002JE-9v; Wed, 06 Aug 2025 04:49:53 -0400
-Received: from www3579.sakura.ne.jp ([49.212.243.89])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1ujZqG-0003md-GZ; Wed, 06 Aug 2025 04:49:52 -0400
-Received: from h205.csg.ci.i.u-tokyo.ac.jp (h205.csg.ci.i.u-tokyo.ac.jp
- [133.11.54.205]) (authenticated bits=0)
- by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 5768mqW0098507
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
- Wed, 6 Aug 2025 17:49:06 +0900 (JST)
- (envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
-DKIM-Signature: a=rsa-sha256; bh=WLF/L6fgTCzFt+haK6Eq3Htky80jMkJDx/lrXfxmmRg=; 
- c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
- h=From:Date:Subject:Message-Id:To;
- s=rs20250326; t=1754470146; v=1;
- b=hQhHqmmzEIw/YFxlQ0FFvuUNviA1ncKivKVlpRE3YHIG71/uhfpnwOTgApk4JQJN
- N5yNheJ1muMkIXgRVV9tCtcl26+W0DiNppIVrNp4cdlHG0T06TU2WQpWhNiRxR4b
- MfMoncaHlhJ00WKp7vfUKnfmqu6JjUQ/IO4Pv2qvklnQhGtlGU8MDNXsBkuZlis+
- DFtu7D4oxqj80d7XKmbiwC4u1qOabo4imKUczwtoZH054vTIAo+ogft8L2hgH7IX
- xZ4kwc2ScYVvau9SUpuZJcMqJSnflAPbMwRSeBZLT2D/7RxquxtWD+Alww6r8/5R
- 3z1lYlhrFbfTr2kTx+Plig==
-From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-Date: Wed, 06 Aug 2025 17:48:40 +0900
-Subject: [PATCH RFC] target/arm/kvm: Choose PMU backend
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ujbRw-00074G-9C
+ for qemu-arm@nongnu.org; Wed, 06 Aug 2025 06:32:48 -0400
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ujbRt-0005U6-9A
+ for qemu-arm@nongnu.org; Wed, 06 Aug 2025 06:32:48 -0400
+Received: by mail-wm1-x329.google.com with SMTP id
+ 5b1f17b1804b1-459e20ec1d9so16146195e9.3
+ for <qemu-arm@nongnu.org>; Wed, 06 Aug 2025 03:32:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1754476363; x=1755081163; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=Oq97atyfe17sFbv+TGi9c5SZ9An6vPWxEggaVaOLTNY=;
+ b=BZZAcp23YxmrhMHne76UTOg67oD34p9+oIOfjwaLJOKOMpjqsy/QRB6lSjb8nGCMp7
+ 1AvhlFUEKmOZI+iafBG86/hx/25KISXE2WVs5QO1BQKWNOFh4YO27JqCOpg/BS3CEi08
+ 8X1axXYh5831dWe3/4dlYp76TB5gxUvYXl/7R6C0lZLyf0x7Aw2p58ouCGnmBE40GHGS
+ 4iAf8zWdZJ9Xg0o4OEu9ZQG1Wj8+IUjRh4l9WwUWtduBMnSD9ABZfitZxbNppXoNOmQe
+ dOqfvtqgYoafUoeGAdqQ3LKT265ooI3Hg5m3LxWs5gwJvmrwFeRwnyqPSA9M2zHraWbw
+ MyXQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1754476363; x=1755081163;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=Oq97atyfe17sFbv+TGi9c5SZ9An6vPWxEggaVaOLTNY=;
+ b=ha0XlKqat6R61dKv/jQdUDx5uaE+Ms9LtcLu2Ww4RAkphTAF5ZkvZ4wdums33fseRo
+ HXtsNrjnN2KYOJzSyF1x1740LHfiCygBYkqH2H52m3W3okVbwGz3ejoOMrO3N+tWwsxU
+ CzDpUe2D6TlmyszjWzWjqaWKYXtKX0aQVm6axwSL4982IWuAe1LPjgm6O5OQkw49MmsU
+ ZKDBmYS/67ZGTAn6ah2kxGICKzdsoYkGNlayVLhYRLQYV8VFmKSTwnWdK2a/xio5QZ03
+ MSvdLCsvlXtnw0386eiorbrZvhb2QU+JGH0j6vjrlyjIRok2HGa18Q9vs2jAY+Q++38f
+ y48g==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCV/eJ6w3OvLUmZuVrHGSMy9OHZzrDboL7Lp5zE72rAOI8xerxDL6TSK1TruOAO97EV5H9On6r4IeA==@nongnu.org
+X-Gm-Message-State: AOJu0Yx4Rsytv30jdv5d65t5qDMcu/givlZu+QDXwNiBC+Pk+6SIbqIr
+ Ht3Dn5m5dAzkjlii9kNXrrKBpEPfVOH3JBPH/imIBDZ5PEZsXdhJmClwR07J0/a8XoM=
+X-Gm-Gg: ASbGncvj502osOnMHS0g5bpFyr1GRJN4DANCmhneDjX5EIlrueFrOLRVxf5TdkJSGdP
+ en/3MxdFUYpnr+AZaVNwezTwe0Sr0T/NbUK7lmosrMlJWWs9oFekbPkHlrHbmIFK00lMqsbMwzo
+ E03iB7iN2N6K0vwW6YX0wM7aWD9/juOfigEUpI+KFtMFThR7DBJf6btzFzBCx3xRKNf//KFrZz8
+ 9D+Eqwen+yq4OzTogfxN8McjISJz6/5oeFLcP3gn7sXJ5UHftjjR3wk1XHWAEcXzYMokKL7Y/Dw
+ EkEZl3bLFoZ9IlqYc/pRk6Kju4EBWxnOBboLjik4Eb8I71Vf2OlQGVRD8BqP3FimjmumHu80TS6
+ /4NGpAUyBHsg33DkEmR5AjOJrMAHr9TYiPn+xLTu029uDJHqiaf8i+m1ZCK8XhF0HPA==
+X-Google-Smtp-Source: AGHT+IHpG72cixa3eZVOvVGmGyThvrLNXesJDdOZeWVVlNxC54s1FK4c12lR8BrtMJrzANgqhTaO6A==
+X-Received: by 2002:a05:600c:1554:b0:459:4441:1c07 with SMTP id
+ 5b1f17b1804b1-459e745cf68mr16902525e9.20.1754476363024; 
+ Wed, 06 Aug 2025 03:32:43 -0700 (PDT)
+Received: from [192.168.69.210] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-459e5868fd7sm46814795e9.18.2025.08.06.03.32.41
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 06 Aug 2025 03:32:42 -0700 (PDT)
+Message-ID: <2a3bc971-828a-4e56-bba9-cc3dbc152b0e@linaro.org>
+Date: Wed, 6 Aug 2025 12:32:41 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 03/13] hw/intc: Add hvf vGIC interrupt controller
+ support
+To: Mohamed Mediouni <mohamed@unpredictable.fr>, qemu-devel@nongnu.org
+Cc: Mads Ynddal <mads@ynddal.dk>, Paolo Bonzini <pbonzini@redhat.com>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>,
+ Phil Dennis-Jordan <phil@philjordan.eu>, Igor Mammedov
+ <imammedo@redhat.com>, qemu-arm@nongnu.org, Alexander Graf
+ <agraf@csgraf.de>, Roman Bolshakov <rbolshakov@ddn.com>,
+ Peter Maydell <peter.maydell@linaro.org>, "Michael S. Tsirkin"
+ <mst@redhat.com>, Ani Sinha <anisinha@redhat.com>,
+ Cameron Esfahani <dirty@apple.com>
+References: <20250728134114.77545-1-mohamed@unpredictable.fr>
+ <20250728134114.77545-4-mohamed@unpredictable.fr>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20250728134114.77545-4-mohamed@unpredictable.fr>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250806-kvm-v1-1-d1d50b7058cd@rsg.ci.i.u-tokyo.ac.jp>
-X-B4-Tracking: v=1; b=H4sIAOcWk2gC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
- vPSU3UzU4B8JSMDI1MDc2MD3eyyXF2LtGQDs2SLNHMjo0QloMqCotS0zAqwKdFKQW7OSrG1tQA
- 7r8fXWgAAAA==
-X-Change-ID: 20250730-kvm-8fc06c8f722a
-To: qemu-devel@nongnu.org
-Cc: Eduardo Habkost <eduardo@habkost.net>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Yanan Wang <wangyanan55@huawei.com>, Zhao Liu <zhao1.liu@intel.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, kvm@vger.kernel.org,
- qemu-arm@nongnu.org, Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-X-Mailer: b4 0.14.2
-Received-SPF: pass client-ip=49.212.243.89;
- envelope-from=odaki@rsg.ci.i.u-tokyo.ac.jp; helo=www3579.sakura.ne.jp
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
- DKIM_SIGNED=0.1, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::329;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x329.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -78,621 +110,157 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Commit 6ee7fca2a4a0 ("KVM: arm64: Add KVM_ARM_VCPU_PMU_V3_SET_PMU
-attribute") of Linux describes the KVM_ARM_VCPU_PMU_V3_SET_PMU
-attribute, which allows choosing a PMU backend, and its motivation:
-> KVM: arm64: Add KVM_ARM_VCPU_PMU_V3_SET_PMU attribute
->
-> When KVM creates an event and there are more than one PMUs present on
-> the system, perf_init_event() will go through the list of available
-> PMUs and will choose the first one that can create the event. The
-> order of the PMUs in this list depends on the probe order, which can
-> change under various circumstances, for example if the order of the
-> PMU nodes change in the DTB or if asynchronous driver probing is
-> enabled on the kernel command line (with the
-> driver_async_probe=armv8-pmu option).
->
-> Another consequence of this approach is that on heteregeneous systems
-> all virtual machines that KVM creates will use the same PMU. This
-> might cause unexpected behaviour for userspace: when a VCPU is
-> executing on the physical CPU that uses this default PMU, PMU events
-> in the guest work correctly; but when the same VCPU executes on
-> another CPU, PMU events in the guest will suddenly stop counting.
->
-> Fortunately, perf core allows user to specify on which PMU to create
-> an event by using the perf_event_attr->type field, which is used by
-> perf_init_event() as an index in the radix tree of available PMUs.
->
-> Add the KVM_ARM_VCPU_PMU_V3_CTRL(KVM_ARM_VCPU_PMU_V3_SET_PMU) VCPU
-> attribute to allow userspace to specify the arm_pmu that KVM will use
-> when creating events for that VCPU. KVM will make no attempt to run
-> the VCPU on the physical CPUs that share the PMU, leaving it up to
-> userspace to manage the VCPU threads' affinity accordingly.
->
-> To ensure that KVM doesn't expose an asymmetric system to the guest,
-> the PMU set for one VCPU will be used by all other VCPUs. Once a VCPU
-> has run, the PMU cannot be changed in order to avoid changing the
-> list of available events for a VCPU, or to change the semantics of
-> existing events.
+On 28/7/25 15:41, Mohamed Mediouni wrote:
+> This opens up the door to nested virtualisation support.
+> 
+> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+> ---
+>   hw/intc/arm_gicv3_hvf.c | 722 ++++++++++++++++++++++++++++++++++++++++
+>   hw/intc/meson.build     |   1 +
+>   2 files changed, 723 insertions(+)
+>   create mode 100644 hw/intc/arm_gicv3_hvf.c
 
-Choose a PMU backend with the following priority order:
 
-1. The event source specified with the kvm-pmu property. It is a user's
-   responsibility to ensure that the VCPUs runs on PCPUs associated with
-   the event source.
+> +static void hvf_gicv3_put_cpu(CPUState *cpu_state, run_on_cpu_data arg)
+> +{
+> +    uint32_t reg;
+> +    uint64_t reg64;
+> +    int i, num_pri_bits;
+> +
+> +    /* Redistributor state */
+> +    GICv3CPUState *c = arg.host_ptr;
+> +    hv_vcpu_t vcpu = c->cpu->accel->fd;
+> +
+> +    reg = c->gicr_waker;
+> +    hv_gic_set_redistributor_reg(vcpu, HV_GIC_REDISTRIBUTOR_REG_GICR_IGROUPR0, reg);
+> +
+> +    reg = c->gicr_igroupr0;
+> +    hv_gic_set_redistributor_reg(vcpu, HV_GIC_REDISTRIBUTOR_REG_GICR_IGROUPR0, reg);
+> +
+> +    reg = ~0;
+> +    hv_gic_set_redistributor_reg(vcpu, HV_GIC_REDISTRIBUTOR_REG_GICR_ICENABLER0, reg);
+> +    reg = c->gicr_ienabler0;
+> +    hv_gic_set_redistributor_reg(vcpu, HV_GIC_REDISTRIBUTOR_REG_GICR_ISENABLER0, reg);
+> +
+> +    /* Restore config before pending so we treat level/edge correctly */
+> +    reg = half_shuffle32(c->edge_trigger >> 16) << 1;
+> +    hv_gic_set_redistributor_reg(vcpu, HV_GIC_REDISTRIBUTOR_REG_GICR_ICFGR1, reg);
+> +
+> +    reg = ~0;
+> +    hv_gic_set_redistributor_reg(vcpu, HV_GIC_REDISTRIBUTOR_REG_GICR_ICPENDR0, reg);
+> +    reg = c->gicr_ipendr0;
+> +    hv_gic_set_redistributor_reg(vcpu, HV_GIC_REDISTRIBUTOR_REG_GICR_ISPENDR0, reg);
+> +
+> +    reg = ~0;
+> +    hv_gic_set_redistributor_reg(vcpu, HV_GIC_REDISTRIBUTOR_REG_GICR_ICACTIVER0, reg);
+> +    reg = c->gicr_iactiver0;
+> +    hv_gic_set_redistributor_reg(vcpu, HV_GIC_REDISTRIBUTOR_REG_GICR_ISACTIVER0, reg);
+> +
+> +    for (i = 0; i < GIC_INTERNAL; i += 4) {
+> +        reg = c->gicr_ipriorityr[i] |
+> +            (c->gicr_ipriorityr[i + 1] << 8) |
+> +            (c->gicr_ipriorityr[i + 2] << 16) |
+> +            (c->gicr_ipriorityr[i + 3] << 24);
+> +        hv_gic_set_redistributor_reg(vcpu,
+> +            HV_GIC_REDISTRIBUTOR_REG_GICR_IPRIORITYR0 + i, reg);
+> +    }
+> +
+> +    /* CPU interface state */
+> +    hv_gic_set_icc_reg(vcpu, HV_GIC_ICC_REG_SRE_EL1, c->icc_sre_el1);
+> +
+> +    hv_gic_set_icc_reg(vcpu, HV_GIC_ICC_REG_CTLR_EL1,
+> +                    c->icc_ctlr_el1[GICV3_NS]);
+> +    hv_gic_set_icc_reg(vcpu, HV_GIC_ICC_REG_IGRPEN0_EL1,
+> +                    c->icc_igrpen[GICV3_G0]);
+> +    hv_gic_set_icc_reg(vcpu, HV_GIC_ICC_REG_IGRPEN1_EL1,
+> +                    c->icc_igrpen[GICV3_G1NS]);
+> +    hv_gic_set_icc_reg(vcpu, HV_GIC_ICC_REG_PMR_EL1, c->icc_pmr_el1);
+> +    hv_gic_set_icc_reg(vcpu, HV_GIC_ICC_REG_BPR0_EL1, c->icc_bpr[GICV3_G0]);
+> +    hv_gic_set_icc_reg(vcpu, HV_GIC_ICC_REG_BPR1_EL1, c->icc_bpr[GICV3_G1NS]);
+> +
+> +    num_pri_bits = ((c->icc_ctlr_el1[GICV3_NS] &
+> +                    ICC_CTLR_EL1_PRIBITS_MASK) >>
+> +                    ICC_CTLR_EL1_PRIBITS_SHIFT) + 1;
+> +
+> +    switch (num_pri_bits) {
+> +    case 7:
+> +           reg64 = c->icc_apr[GICV3_G0][3];
+> +        hv_gic_set_icc_reg(vcpu, HV_GIC_ICC_REG_AP0R0_EL1 + 3, reg64);
+> +        reg64 = c->icc_apr[GICV3_G0][2];
+> +        hv_gic_set_icc_reg(vcpu, HV_GIC_ICC_REG_AP0R0_EL1 + 2, reg64);
+> +        /* fall through */
+> +    case 6:
+> +        reg64 = c->icc_apr[GICV3_G0][1];
+> +        hv_gic_set_icc_reg(vcpu, HV_GIC_ICC_REG_AP0R0_EL1 + 1, reg64);
+> +        /* fall through */
+> +    default:
+> +        reg64 = c->icc_apr[GICV3_G0][0];
+> +        hv_gic_set_icc_reg(vcpu, HV_GIC_ICC_REG_AP0R0_EL1, reg64);
+> +    }
+> +
+> +    switch (num_pri_bits) {
+> +    case 7:
+> +        reg64 = c->icc_apr[GICV3_G1NS][3];
+> +        hv_gic_set_icc_reg(vcpu, HV_GIC_ICC_REG_AP1R0_EL1 + 3, reg64);
+> +        reg64 = c->icc_apr[GICV3_G1NS][2];
+> +        hv_gic_set_icc_reg(vcpu, HV_GIC_ICC_REG_AP1R0_EL1 + 2, reg64);
+> +        /* fall through */
+> +    case 6:
+> +        reg64 = c->icc_apr[GICV3_G1NS][1];
+> +        hv_gic_set_icc_reg(vcpu, HV_GIC_ICC_REG_AP1R0_EL1 + 1, reg64);
+> +        /* fall through */
+> +    default:
+> +        reg64 = c->icc_apr[GICV3_G1NS][0];
+> +        hv_gic_set_icc_reg(vcpu, HV_GIC_ICC_REG_AP1R0_EL1, reg64);
+> +    }
+> +
+> +    if (!hvf_arm_el2_enabled()) {
 
-2. The default backend if the machine version is old. This ensures
-   backward compatibility but the resulting PMU may or may not work.
+This method is added in the next patch.
 
-3. An event source that covers all PCPUs. This exposes its full feature
-   set to the guest. If multiple such physical PMUs exist, selection is
-   deterministic, based on device hierarchy.
-
-4. The composite PMU if composing all compatible event sources can cover
-   all PCPUs. It will expose only a single cycle counter.
-
-Disable PMU if no backend can be chosen.
-
-Signed-off-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
----
-Based-on: <20250531-pmu-v6-1-2bb6c828ade3@rsg.ci.i.u-tokyo.ac.jp>
-("[PATCH v6] target/arm: Always add pmu property for host")
-
-This is an RFC patch to demonstrate the usage of a new device attribute
-which will be added with a new version of the following series:
-https://lore.kernel.org/r/20250319-hybrid-v1-1-4d1ada10e705@daynix.com/
-("[PATCH RFC] KVM: arm64: PMU: Use multiple host PMUs")
----
- include/system/kvm_int.h |   2 +
- hw/core/machine.c        |   2 +
- target/arm/kvm.c         | 342 +++++++++++++++++++++++++++++++++++++++++++++--
- qemu-options.hx          |  20 +++
- target/arm/trace-events  |   2 +
- 5 files changed, 357 insertions(+), 11 deletions(-)
-
-diff --git a/include/system/kvm_int.h b/include/system/kvm_int.h
-index 9247493b029912547e284c5177fe9b6ee10e6b04..dd925565d4fa64b132d7e81c32cdb7eaaab53146 100644
---- a/include/system/kvm_int.h
-+++ b/include/system/kvm_int.h
-@@ -157,6 +157,8 @@ struct KVMState
-     uint64_t kvm_dirty_ring_bytes;  /* Size of the per-vcpu dirty ring */
-     uint32_t kvm_dirty_ring_size;   /* Number of dirty GFNs per ring */
-     bool kvm_dirty_ring_with_bitmap;
-+    bool backcompat_pmu;
-+    uint64_t pmu;
-     uint64_t kvm_eager_split_size;  /* Eager Page Splitting chunk size */
-     struct KVMDirtyRingReaper reaper;
-     struct KVMMsrEnergy msr_energy;
-diff --git a/hw/core/machine.c b/hw/core/machine.c
-index bd47527479a7947ca293a47c9a6f49916d24bad3..b2d67a068c39336fbd3fceb3b0afbaaf8d7de959 100644
---- a/hw/core/machine.c
-+++ b/hw/core/machine.c
-@@ -23,6 +23,7 @@
- #include "qemu/madvise.h"
- #include "qom/object_interfaces.h"
- #include "system/cpus.h"
-+#include "system/kvm.h"
- #include "system/system.h"
- #include "system/reset.h"
- #include "system/runstate.h"
-@@ -38,6 +39,7 @@
- #include "audio/audio.h"
- 
- GlobalProperty hw_compat_10_0[] = {
-+    { TYPE_KVM_ACCEL, "backcompat-pmu", "true" },
-     { "scsi-hd", "dpofua", "off" },
-     { "vfio-pci", "x-migration-load-config-after-iter", "off" },
-     { "ramfb", "use-legacy-x86-rom", "true"},
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index 667234485547a71c3da72c197629c45b215e6408..a604880699a6ac4bee53c7f23a44b93a160dcbe2 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -15,6 +15,7 @@
- 
- #include <linux/kvm.h>
- 
-+#include "qemu/cutils.h"
- #include "qemu/timer.h"
- #include "qemu/error-report.h"
- #include "qemu/main-loop.h"
-@@ -42,6 +43,8 @@
- #include "target/arm/gtimer.h"
- #include "migration/blocker.h"
- 
-+#define KVM_ARM_VCPU_PMU_V3_COMPOSITION 5
-+
- const KVMCapabilityInfo kvm_arch_required_capabilities[] = {
-     KVM_CAP_INFO(DEVICE_CTRL),
-     KVM_CAP_LAST_INFO
-@@ -51,12 +54,21 @@ static bool cap_has_mp_state;
- static bool cap_has_inject_serror_esr;
- static bool cap_has_inject_ext_dabt;
- 
-+typedef enum PMU {
-+    PMU_NONE,
-+    PMU_DEFAULT,
-+    PMU_SINGLE,
-+    PMU_COMPOSITE
-+} PMU;
-+
- /**
-  * ARMHostCPUFeatures: information about the host CPU (identified
-  * by asking the host kernel)
-  */
- typedef struct ARMHostCPUFeatures {
-     ARMISARegisters isar;
-+    PMU pmu;
-+    uint32_t pmu_single_type;
-     uint64_t features;
-     uint32_t target;
-     const char *dtb_compatible;
-@@ -219,6 +231,251 @@ static bool kvm_arm_pauth_supported(void)
-             kvm_check_extension(kvm_state, KVM_CAP_ARM_PTRAUTH_GENERIC));
- }
- 
-+static bool read_pmu_attr(int fd, const struct dirent *ent, const char *name,
-+                          char **buf, size_t *n)
-+{
-+    FILE *attr_file;
-+    g_autofree char *rel_name = g_build_filename(ent->d_name, name, NULL);
-+    int attr_fd = openat(fd, rel_name, O_RDONLY);
-+    bool ret;
-+
-+    if (attr_fd < 0) {
-+        return false;
-+    }
-+
-+    attr_file = fdopen(attr_fd, "r");
-+    assert(attr_file);
-+    ret = getline(buf, n, attr_file) >= 0;
-+    assert(!fclose(attr_file));
-+
-+    return ret;
-+}
-+
-+static bool parse_cpus(const char *list, unsigned long **bitmap,
-+                       unsigned long *nr)
-+{
-+    unsigned long start, end;
-+
-+    bitmap_clear(*bitmap, 0, *nr);
-+
-+    while (*list && *list != '\n') {
-+        if (qemu_strtoul(list, &list, 0, &start) == -EINVAL) {
-+            return false;
-+        }
-+
-+        if (*list == '-') {
-+            if (qemu_strtoul(list + 1, &list, 0, &end) == -EINVAL) {
-+                return false;
-+            }
-+
-+            if (end < start) {
-+                return false;
-+            }
-+        } else {
-+            end = start;
-+        }
-+
-+        if (end > *nr) {
-+            unsigned long new_nr = ROUND_UP(end, BITS_PER_LONG);
-+            *bitmap = g_realloc(*bitmap, new_nr / BITS_PER_BYTE);
-+            bitmap_clear(*bitmap, *nr, new_nr);
-+            *nr = new_nr;
-+        }
-+
-+        bitmap_set(*bitmap, start, end - start + 1);
-+
-+        if (*list == ',') {
-+            list++;
-+        }
-+    }
-+
-+    return true;
-+}
-+
-+static int set_pmu(int fd, uint32_t type)
-+{
-+    int ret = kvm_device_access(fd, KVM_ARM_VCPU_PMU_V3_CTRL,
-+                                KVM_ARM_VCPU_PMU_V3_SET_PMU, &type, true, NULL);
-+    trace_kvm_arm_set_pmu(type, ret);
-+    return ret;
-+}
-+
-+static PMU choose_pmu(uint32_t *single_type, bool backcompat)
-+{
-+    DIR *devices = NULL;
-+    FILE *file;
-+    PMU pmu = PMU_NONE;
-+    size_t n = 64;
-+    g_autofree char *buf = g_malloc(n);
-+    g_autofree unsigned long *possible_cpus = NULL;
-+    g_autofree unsigned long *pmu_cpus = NULL;
-+    int devices_fd;
-+    int fdarray[3];
-+    struct dirent *ent;
-+    unsigned long npossible_cpus = 0;
-+    unsigned long npmu_cpus;
-+    ssize_t ret;
-+
-+    struct kvm_vcpu_init init = {
-+        .target = -1,
-+        .features[0] = BIT(KVM_ARM_VCPU_PMU_V3),
-+    };
-+
-+    if (backcompat) {
-+        return PMU_DEFAULT;
-+    }
-+
-+    file = fopen("/sys/devices/system/cpu/possible", "r");
-+    if (!file) {
-+        goto out;
-+    }
-+
-+    ret = getline(&buf, &n, file);
-+    assert(!fclose(file));
-+    if (ret < 0) {
-+        goto out;
-+    }
-+
-+    if (!parse_cpus(buf, &possible_cpus, &npossible_cpus)) {
-+        goto out;
-+    }
-+
-+    npmu_cpus = npossible_cpus;
-+    pmu_cpus = bitmap_new(npmu_cpus);
-+
-+    if (!kvm_arm_create_scratch_host_vcpu(fdarray, &init)) {
-+        goto out;
-+    }
-+
-+    if (kvm_device_check_attr(fdarray[2], KVM_ARM_VCPU_PMU_V3_CTRL,
-+                              KVM_ARM_VCPU_PMU_V3_SET_PMU)) {
-+        g_autofree char *link = NULL;
-+        g_autofree unsigned long *uncovered_cpus = bitmap_new(npossible_cpus);
-+
-+        bitmap_copy(uncovered_cpus, possible_cpus, npossible_cpus);
-+
-+        devices = opendir("/sys/bus/event_source/devices");
-+        if (!devices) {
-+            goto out;
-+        }
-+
-+        devices_fd = dirfd(devices);
-+        if (devices_fd < 0) {
-+            goto out;
-+        }
-+
-+        while ((ent = readdir(devices))) {
-+            unsigned long new_type = ULONG_MAX;
-+            const char *endptr;
-+
-+            /*
-+             * Check if this event source exposes type and cpus and
-+             * KVM can use it.
-+             */
-+            if (!read_pmu_attr(devices_fd, ent, "type", &buf, &n) ||
-+                qemu_strtoul(buf, &endptr, 0, &new_type) == -EINVAL ||
-+                (*endptr && *endptr != '\n') ||
-+                !read_pmu_attr(devices_fd, ent, "cpus", &buf, &n) ||
-+                !parse_cpus(buf, &pmu_cpus, &npmu_cpus) ||
-+                set_pmu(fdarray[2], new_type)) {
-+                continue;
-+            }
-+
-+            bitmap_andnot(uncovered_cpus, uncovered_cpus,
-+                          pmu_cpus, npossible_cpus);
-+
-+            if (bitmap_andnot(pmu_cpus, possible_cpus, pmu_cpus,
-+                              npossible_cpus)) {
-+                continue;
-+            }
-+
-+            /* Order by the device location to ensure stable selection. */
-+            while (true) {
-+                ret = readlinkat(devices_fd, ent->d_name, buf, n);
-+                if (ret < n) {
-+                    break;
-+                }
-+
-+                n *= 2;
-+                buf = g_realloc(buf, n);
-+            }
-+
-+            if (ret < 0) {
-+                continue;
-+            }
-+
-+            buf[ret] = 0;
-+
-+            if (link && strcmp(link, buf) <= 0) {
-+                continue;
-+            }
-+
-+            *single_type = new_type;
-+            link = g_realloc(link, ret + 1);
-+            strcpy(link, buf);
-+        }
-+
-+        /* Choose an event source covers all PCPUs if available. */
-+        if (link) {
-+            pmu = PMU_SINGLE;
-+            goto out;
-+        }
-+
-+        /*
-+         * Choose the composite PMU if all PCPUs are covered by the available
-+         * event sources and composition is supported.
-+         */
-+        if (bitmap_empty(uncovered_cpus, npossible_cpus) &&
-+            kvm_device_check_attr(fdarray[2], KVM_ARM_VCPU_PMU_V3_CTRL,
-+                                  KVM_ARM_VCPU_PMU_V3_COMPOSITION)) {
-+            pmu = PMU_COMPOSITE;
-+            goto out;
-+        }
-+
-+        /* No event source that covers all PCPUs was found. */
-+        goto out;
-+    }
-+
-+    /*
-+     * The old kernels that lack KVM_ARM_VCPU_PMU_V3_SET_PMU only support
-+     * armv8-pmu for KVM so inspect it.
-+     */
-+    devices = opendir("/sys/bus/platform/drivers/armv8-pmu");
-+    if (!devices) {
-+        goto out;
-+    }
-+
-+    devices_fd = dirfd(devices);
-+    if (devices_fd < 0) {
-+        goto out;
-+    }
-+
-+    while ((ent = readdir(devices))) {
-+        if (!read_pmu_attr(devices_fd, ent, "cpus", &buf, &n) ||
-+            !parse_cpus(buf, &pmu_cpus, &npossible_cpus)) {
-+            continue;
-+        }
-+
-+        /*
-+         * This device is the only available armv8-pmu device if it covers
-+         * all PCPUs because an armv8-pmu device occupies fixed system
-+         * registers.
-+         */
-+        if (!bitmap_andnot(pmu_cpus, possible_cpus, pmu_cpus,
-+                            npossible_cpus)) {
-+            pmu = PMU_DEFAULT;
-+            break;
-+        }
-+    }
-+
-+out:
-+    if (devices) {
-+        assert(!closedir(devices));
-+    }
-+
-+    return pmu;
-+}
-+
- 
- static uint64_t idregs_sysreg_to_kvm_reg(ARMSysRegs sysreg)
- {
-@@ -242,7 +499,8 @@ static int get_host_cpu_reg(int fd, ARMHostCPUFeatures *ahcf,
-     return ret;
- }
- 
--static bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
-+static bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf,
-+                                          bool backcompat_pmu)
- {
-     /* Identify the feature bits corresponding to the host CPU, and
-      * fill out the ARMHostCPUClass fields accordingly. To do this
-@@ -291,13 +549,19 @@ static bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
-     if (kvm_arm_pmu_supported()) {
-         init.features[0] |= 1 << KVM_ARM_VCPU_PMU_V3;
-         pmu_supported = true;
--        features |= 1ULL << ARM_FEATURE_PMU;
-     }
- 
-     if (!kvm_arm_create_scratch_host_vcpu(fdarray, &init)) {
-         return false;
-     }
- 
-+    if (pmu_supported) {
-+        ahcf->pmu = choose_pmu(&ahcf->pmu_single_type, backcompat_pmu);
-+        if (ahcf->pmu != PMU_NONE) {
-+            features |= 1ULL << ARM_FEATURE_PMU;
-+        }
-+    }
-+
-     ahcf->target = init.target;
-     ahcf->dtb_compatible = "arm,armv8";
-     int fd = fdarray[2];
-@@ -398,12 +662,6 @@ static bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
-             ahcf->isar.dbgdidr = dbgdidr;
-         }
- 
--        if (pmu_supported) {
--            /* PMCR_EL0 is only accessible if the vCPU has feature PMU_V3 */
--            err |= read_sys_reg64(fd, &ahcf->isar.reset_pmcr_el0,
--                                  ARM64_SYS_REG(3, 3, 9, 12, 0));
--        }
--
-         if (sve_supported) {
-             /*
-              * There is a range of kernels between kernel commit 73433762fcae
-@@ -447,7 +705,8 @@ void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu)
- 
-     if (!arm_host_cpu_features.dtb_compatible) {
-         if (!kvm_enabled() ||
--            !kvm_arm_get_host_cpu_features(&arm_host_cpu_features)) {
-+            !kvm_arm_get_host_cpu_features(&arm_host_cpu_features,
-+                                           kvm_state->backcompat_pmu)) {
-             /* We can't report this error yet, so flag that we need to
-              * in arm_cpu_realizefn().
-              */
-@@ -1622,8 +1881,53 @@ static void kvm_arch_set_eager_split_size(Object *obj, Visitor *v,
-     s->kvm_eager_split_size = value;
- }
- 
-+static bool kvm_arch_get_backcompat_pmu(Object *obj, Error **errp)
-+{
-+    KVMState *s = KVM_STATE(obj);
-+
-+    return s->backcompat_pmu;
-+}
-+
-+static void kvm_arch_set_backcompat_pmu(Object *obj, bool value, Error **errp)
-+{
-+    KVMState *s = KVM_STATE(obj);
-+
-+    s->backcompat_pmu = value;
-+}
-+
-+static void kvm_arch_get_pmu(Object *obj, Visitor *v, const char *name,
-+                             void *opaque, Error **errp)
-+{
-+    KVMState *s = KVM_STATE(obj);
-+    visit_type_uint64(v, name, &s->pmu, errp);
-+}
-+
-+static void kvm_arch_set_pmu(Object *obj, Visitor *v, const char *name,
-+                             void *opaque, Error **errp)
-+{
-+    KVMState *s = KVM_STATE(obj);
-+    uint64_t value;
-+
-+    if (!visit_type_uint64(v, name, &value, errp)) {
-+        return;
-+    }
-+
-+    s->pmu = value;
-+}
-+
- void kvm_arch_accel_class_init(ObjectClass *oc)
- {
-+    ObjectProperty *property;
-+
-+    object_class_property_add_bool(oc, "backcompat-pmu",
-+                                   kvm_arch_get_backcompat_pmu,
-+                                   kvm_arch_set_backcompat_pmu);
-+
-+    property = object_class_property_add(oc, "pmu", "uint64", kvm_arch_get_pmu,
-+                                         kvm_arch_set_pmu, NULL, NULL);
-+    object_property_set_default_uint(property, UINT64_MAX);
-+    object_class_property_set_description(oc, "pmu", "KVM PMU event type");
-+
-     object_class_property_add(oc, "eager-split-size", "size",
-                               kvm_arch_get_eager_split_size,
-                               kvm_arch_set_eager_split_size, NULL, NULL);
-@@ -1693,12 +1997,13 @@ static bool kvm_arm_set_device_attr(ARMCPU *cpu, struct kvm_device_attr *attr,
- 
- void kvm_arm_pmu_init(ARMCPU *cpu)
- {
-+    CPUARMState *env = &cpu->env;
-     struct kvm_device_attr attr = {
-         .group = KVM_ARM_VCPU_PMU_V3_CTRL,
-         .attr = KVM_ARM_VCPU_PMU_V3_INIT,
-     };
- 
--    if (!cpu->has_pmu) {
-+    if (!arm_feature(env, ARM_FEATURE_PMU)) {
-         return;
-     }
-     if (!kvm_arm_set_device_attr(cpu, &attr, "PMU")) {
-@@ -1709,13 +2014,14 @@ void kvm_arm_pmu_init(ARMCPU *cpu)
- 
- void kvm_arm_pmu_set_irq(ARMCPU *cpu, int irq)
- {
-+    CPUARMState *env = &cpu->env;
-     struct kvm_device_attr attr = {
-         .group = KVM_ARM_VCPU_PMU_V3_CTRL,
-         .addr = (intptr_t)&irq,
-         .attr = KVM_ARM_VCPU_PMU_V3_IRQ,
-     };
- 
--    if (!cpu->has_pmu) {
-+    if (!arm_feature(env, ARM_FEATURE_PMU)) {
-         return;
-     }
-     if (!kvm_arm_set_device_attr(cpu, &attr, "PMU")) {
-@@ -1911,6 +2217,20 @@ int kvm_arch_init_vcpu(CPUState *cs)
-         return ret;
-     }
- 
-+    if (cs->kvm_state->pmu <= UINT32_MAX) {
-+        ret = set_pmu(cs->kvm_fd, cs->kvm_state->pmu);
-+    } else if (arm_host_cpu_features.pmu == PMU_SINGLE) {
-+        ret = set_pmu(cs->kvm_fd, arm_host_cpu_features.pmu_single_type);
-+    } else if (arm_host_cpu_features.pmu == PMU_COMPOSITE) {
-+        ret = kvm_device_access(cs->kvm_fd, KVM_ARM_VCPU_PMU_V3_CTRL,
-+                                KVM_ARM_VCPU_PMU_V3_COMPOSITION, NULL, true,
-+                                NULL);
-+        trace_kvm_arm_set_pmu_composition(ret);
-+    }
-+    if (ret) {
-+        return ret;
-+    }
-+
-     if (cpu_isar_feature(aa64_sve, cpu)) {
-         ret = kvm_arm_sve_set_vls(cpu);
-         if (ret) {
-diff --git a/qemu-options.hx b/qemu-options.hx
-index ab23f14d21782764c591c58efcb2d881c713c56d..0020a5ae8467eab3a3c3c250f48d05fe164cf0de 100644
---- a/qemu-options.hx
-+++ b/qemu-options.hx
-@@ -235,6 +235,7 @@ DEF("accel", HAS_ARG, QEMU_OPTION_accel,
-     "                tb-size=n (TCG translation block cache size)\n"
-     "                dirty-ring-size=n (KVM dirty ring GFN count, default 0)\n"
-     "                eager-split-size=n (KVM Eager Page Split chunk size, default 0, disabled. ARM only)\n"
-+    "                pmu=n (KVM PMU event type. ARM only)\n"
-     "                notify-vmexit=run|internal-error|disable,notify-window=n (enable notify VM exit and set notify window, x86 only)\n"
-     "                thread=single|multi (enable multi-threaded TCG)\n"
-     "                device=path (KVM device path, default /dev/kvm)\n", QEMU_ARCH_ALL)
-@@ -308,6 +309,25 @@ SRST
-         impact on the memory. By default, this feature is disabled
-         (eager-split-size=0).
- 
-+    ``pmu=n``
-+        Specifies the event source to be used for Arm PMUv3 emulation. The value
-+        specified here is identical to the one used in perf_event_open(2), but
-+        not all event sources are compatible.
-+
-+        Since QEMU 10.1, the default behavior is to select a backend that
-+        supports all host CPUs. The emulation cannot be enabled if there is no
-+        such backend exists. Use this property to choose a specific event source
-+        when there are several such event sources or to choose one that only
-+        supports a subset of the host CPUs. If you specify an event source that
-+        only supports a subset of host CPUs, you must ensure that guest CPUs run
-+        exclusively on those supported host CPUs.
-+
-+        Prior to 10.1, KVM chose an arbitrary host PMU that supports at least
-+        one CPU in the process's affinity.
-+
-+        Ensure that the CPU's ``pmu`` property is also set to ``on`` to enable
-+        the emulation when setting this property.
-+
-     ``notify-vmexit=run|internal-error|disable,notify-window=n``
-         Enables or disables notify VM exit support on x86 host and specify
-         the corresponding notify window to trigger the VM exit if enabled.
-diff --git a/target/arm/trace-events b/target/arm/trace-events
-index 4438dce7becc27be0c366631610dd79aafdd5359..3264283b8c4391c03e000e0e83e0805273679019 100644
---- a/target/arm/trace-events
-+++ b/target/arm/trace-events
-@@ -13,3 +13,5 @@ arm_gt_update_irq(int timer, int irqstate) "gt_update_irq: timer %d irqstate %d"
- 
- # kvm.c
- kvm_arm_fixup_msi_route(uint64_t iova, uint64_t gpa) "MSI iova = 0x%"PRIx64" is translated into 0x%"PRIx64
-+kvm_arm_set_pmu(uint32_t type, int ret) "type %" PRIu32 " ret %d"
-+kvm_arm_set_pmu_composition(int ret) "ret %d"
-
----
-base-commit: 91b5d79fd6eb230a1af5cf74cf8236bca5d1256d
-change-id: 20250730-kvm-8fc06c8f722a
-
-Best regards,
--- 
-Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
+> +        return;
+> +    }
+> +
+> +    hv_gic_set_ich_reg(vcpu, HV_GIC_ICH_REG_VMCR_EL2, c->ich_vmcr_el2);
+> +    hv_gic_set_ich_reg(vcpu, HV_GIC_ICH_REG_HCR_EL2, c->ich_hcr_el2);
+> +
+> +    for (int i = 0; i < GICV3_LR_MAX; i++) {
+> +        hv_gic_set_ich_reg(vcpu, HV_GIC_ICH_REG_LR0_EL2, c->ich_lr_el2[i]);
+> +    }
+> +
+> +    num_pri_bits = c->vpribits;
+> +
+> +    switch (num_pri_bits) {
+> +    case 7:
+> +      hv_gic_set_ich_reg(vcpu, HV_GIC_ICH_REG_AP0R0_EL2 + 3,
+> +                         c->ich_apr[GICV3_G0][3]);
+> +      hv_gic_set_ich_reg(vcpu, HV_GIC_ICH_REG_AP0R0_EL2 + 2,
+> +                         c->ich_apr[GICV3_G0][2]);
+> +      /* fall through */
+> +    case 6:
+> +      hv_gic_set_ich_reg(vcpu, HV_GIC_ICH_REG_AP0R0_EL2 + 1,
+> +                         c->ich_apr[GICV3_G0][1]);
+> +      /* fall through */
+> +    default:
+> +      hv_gic_set_ich_reg(vcpu, HV_GIC_ICH_REG_AP0R0_EL2,
+> +                         c->ich_apr[GICV3_G0][0]);
+> +    }
+> +
+> +    switch (num_pri_bits) {
+> +    case 7:
+> +      hv_gic_set_ich_reg(vcpu, HV_GIC_ICH_REG_AP1R0_EL2 + 3,
+> +                         c->ich_apr[GICV3_G1NS][3]);
+> +      hv_gic_set_ich_reg(vcpu, HV_GIC_ICH_REG_AP1R0_EL2 + 2,
+> +                         c->ich_apr[GICV3_G1NS][2]);
+> +      /* fall through */
+> +    case 6:
+> +      hv_gic_set_ich_reg(vcpu, HV_GIC_ICH_REG_AP1R0_EL2 + 1,
+> +                         c->ich_apr[GICV3_G1NS][1]);
+> +      /* fall through */
+> +    default:
+> +      hv_gic_set_ich_reg(vcpu, HV_GIC_ICH_REG_AP1R0_EL2,
+> +                         c->ich_apr[GICV3_G1NS][0]);
+> +    }
+> +}
 
 

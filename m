@@ -4,94 +4,122 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65049C87FD3
-	for <qemu-arm@archiver.kernel.org>; Wed,  6 Aug 2025 21:12:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF7B8C87FCB
+	for <qemu-arm@archiver.kernel.org>; Wed,  6 Aug 2025 21:19:00 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ujlQP-0002UL-7F; Wed, 06 Aug 2025 17:11:53 -0400
+	id 1ujlWv-0007bM-7b; Wed, 06 Aug 2025 17:18:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1ujlQN-0002Tk-Uc
- for qemu-arm@nongnu.org; Wed, 06 Aug 2025 17:11:51 -0400
-Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1ujlQL-0007tl-Tn
- for qemu-arm@nongnu.org; Wed, 06 Aug 2025 17:11:51 -0400
-Received: by mail-pj1-x1030.google.com with SMTP id
- 98e67ed59e1d1-31f02b6cd37so436907a91.1
- for <qemu-arm@nongnu.org>; Wed, 06 Aug 2025 14:11:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1754514708; x=1755119508; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=uMJSDt1rAyo9w2W4p4vtHSUmSMVzzkBvM5M9e2jR6pQ=;
- b=DzzabK0IHdFBRWuh58nVIY3pp/bVUOkXjMvNueqV87ryzloPdlfszDOBZuU760Mv9z
- eZlLmkYjApLbUPREWXRmX9CAka3ems6nJl3oeHDAAxgC47NFmMaFxciBUmHJFTeO9uJl
- eJjFcq8nqPAPe+KgtrLGlaBa86VbUt2lyafsrasQnB1cSDXxQsI9cV2nytn63In+qPjD
- 4MOiS/qlwzO6+nmdEfMTNBo85dpWHuqytFMcH9DZKW6ZFDkMLVlsCc2O0HPwE1t5HYY8
- 89m7lJsuDlSI3f76i73ocQvwIGBkvTXi88JYNkMkHRhYfw4OofL0XXEXqNQsItD0thMc
- G08w==
+ (Exim 4.90_1) (envelope-from <vacha.bhavsar@oss.qualcomm.com>)
+ id 1ujlWs-0007Wx-Pz
+ for qemu-arm@nongnu.org; Wed, 06 Aug 2025 17:18:34 -0400
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <vacha.bhavsar@oss.qualcomm.com>)
+ id 1ujlWn-0000kN-Tn
+ for qemu-arm@nongnu.org; Wed, 06 Aug 2025 17:18:34 -0400
+Received: from pps.filterd (m0279867.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 576Dj0uu022390
+ for <qemu-arm@nongnu.org>; Wed, 6 Aug 2025 21:18:27 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+ cc:content-type:date:from:in-reply-to:message-id:mime-version
+ :references:subject:to; s=qcppdkim1; bh=019fvAfvY61ubdLK+MJRK4Rc
+ N/o8mBYoD+QUQMNohWs=; b=kevslk3mc+zK2YrcJL5PMQ6BYrPeWXoia8t3sbwy
+ zHCw1W4zhSWgykRnnzlvk+YD9krnfOrN0eQCiGJT9dU7Oux8WZ1UrapOPyQcW/Zs
+ YefJctcJs77ePz8t0r7DCbScKpdLaAi87TltRVjKWsL8TcGDFTHSRAh0Db2hkN6i
+ DyqxhewdrXkXa8rTJMsTYhZWr5cyp1ad5QLxrWmS3twO0XCw0fSEmMtommuraCgW
+ cf272DahODU2w58EZjyukJMzrdAlQQZ6EhrWNqRiORPXQqAMDqLO6vs3p4wpKq7H
+ C2jYxiZ6znbXdlPtppFzTtWBNg1OF6fz3Cu85D1RFyjQWA==
+Received: from mail-yw1-f198.google.com (mail-yw1-f198.google.com
+ [209.85.128.198])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 48bpy8c1vw-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
+ for <qemu-arm@nongnu.org>; Wed, 06 Aug 2025 21:18:26 +0000 (GMT)
+Received: by mail-yw1-f198.google.com with SMTP id
+ 00721157ae682-714052e5103so3790367b3.3
+ for <qemu-arm@nongnu.org>; Wed, 06 Aug 2025 14:18:26 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1754514708; x=1755119508;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=uMJSDt1rAyo9w2W4p4vtHSUmSMVzzkBvM5M9e2jR6pQ=;
- b=wXKmAzCu4VoO69SsritNkHqu4g7/h5eN/At/DtWRJg5UkSvAfhvftBefz0Q0ilZE2g
- vwbFWv5Ii2zmSy+aHGA//JSO9t7BqK3Hk16TZAZoZr0K0ck1dq651iZQpDY9Vb7CsIJB
- c0EAbsYPEwIEY5fRgAPQw0Dio0UYflnXVOEuKW+mhJJRd/A8iaYesi5Fff8mhH2W/dn8
- DpEDtuD7eyD0Wj0S0qBWMAF53bTrJnL+Hng80NcPc5QJUa0i438dKX7AFrltTk1u6oVJ
- qawcIwiiVSvOQPjYbwRNibtf/bWaqzYzbGLmAQl6uxzCqjc3xeESpZ5Vix3s5ml47wC9
- SfNA==
+ d=1e100.net; s=20230601; t=1754515105; x=1755119905;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=019fvAfvY61ubdLK+MJRK4RcN/o8mBYoD+QUQMNohWs=;
+ b=njBpo8ZAwaA3idZDD5LIae2PLrxEQcJ+Gx3Wjm+bqZqdUbJOoFW1Ufn3BLQrWbSR1Y
+ /Cs4nSgn5WNBE7/urdnkhAJM0z/MyxdeOgq4lbQpTz06rRkH9lbNevB51Qz+sdQGVssZ
+ MBCn4hDXfLtCppYiA0iAZwwz9eVCyLvSe4nljbWtovMbbu23/SyvT39om8aOvEVTp+wG
+ +k/yHI8x0nYsJ8+BTPLJZwcxbbKvGkx6ueYHAAMKhRlfI6YsHr2RYQqZaKepU785QT2k
+ eIJdQf0jYt7nnhQIsfedsXw/T0EJ9GVLy0ujYWMkzWXwtkhebWxicIaNzVD9PBcEKHjq
+ JPRA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXQJdpz6dVzAoV8DB80goOwivQIt/+sVhrZu4XFvC3vT74H2/fzao8YAXr18wFkKI3nu6c5+NDeqA==@nongnu.org
-X-Gm-Message-State: AOJu0YzQIbEj3UMcFXprIFiJrAd6mwc4K8XUcGw/RNSD2Ttwq3A7vPLj
- 9Emsv8S9PY+RKUF0Ze7o6VtqLo0FSssp0OvrZLm6VsXn0aZAO/ToARNz77oufPBf8Ow=
-X-Gm-Gg: ASbGncsvNMgVPBrUwol9VLJcw+ne58cYiYgbkfN0F24BbAewEiiZK8Ab5ODbtNQewzU
- OyB/tuDagrbBAlFPWUzoTP4ad2Z05e+V5hC4KCITib12SPed4ARG6rJ5KpMMB8p/dUk0DXsMxBc
- gKPlMEkJDCapWz1mV3h9L1j8gBXcdqBBJZ+7yMRnlQuoDyRZQOqUs+T7Sfg8ZvgNxJjN/8FJGhq
- A8LAdoGXqm42RPlA6I2YeqiZPnucYPf2e3eJwMGGEGFi2zETuDG3XUQu7wkiaWeRfzXCjVebTf9
- AKupyuO2dwPwyVv6ecIrsawtevB3YpLHjprDL7YhP29F4Eg3p3SqWXL3eqG4iDfFdgU78jn1Vnp
- F7YyS6ool4UvTJ3G2DLzJZq0tw7KvPXhFtMzZj/WFx/JbmQ==
-X-Google-Smtp-Source: AGHT+IFCWbRWGnLF0k2DFkxcC2feyF2LgD5zIA8ltKMP6d6WKLzqvZi2FhyyjsDTpaCAFbLnyA3Pqw==
-X-Received: by 2002:a17:90b:38cc:b0:313:1769:eb49 with SMTP id
- 98e67ed59e1d1-32166e23ee4mr5946485a91.8.1754514707881; 
- Wed, 06 Aug 2025 14:11:47 -0700 (PDT)
-Received: from [192.168.1.87] ([38.41.223.211])
- by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-321612864b5sm3657298a91.28.2025.08.06.14.11.46
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 06 Aug 2025 14:11:47 -0700 (PDT)
-Message-ID: <cd59ac60-fd55-4aa0-a22e-f92676342bbc@linaro.org>
-Date: Wed, 6 Aug 2025 14:11:46 -0700
+ AJvYcCWaMN2MpiTAXHui5aY0/N6Fw67F1uQkZYtoCHTPWSPeY/+msDq7lo3A3m7lr6tdeaqILbyeLelZCA==@nongnu.org
+X-Gm-Message-State: AOJu0YwFIGzKbVw3CKVmLr0lX3iNEa21xb2RAfP5yH3n6StllZvEBWex
+ qbZ0sTO7VtQVcbaJgvPNpVDzChaqIDhjqwYXuO+F/G8j5eQORStdDTVZozM4tjYaonX07ClPnh4
+ twS0TQ/mWLFM4Oc3ykqALqtsV9O+m6If76yQNJyX3vnu3Nz80F36P5LaR4+8pixnY9Yf5jvsvng
+ /u+dcjSgo5qua1QQxJwr3+L9bLpqG952LMtqWAjqZZ
+X-Gm-Gg: ASbGnctqZZomlyTdPBPecK0kXb7xtz/+XsgU1Aa1uTXHUL27u9iazwe9N4orDYdf/56
+ plM9bSQ/k9weGCwsVBCtyjDG7mJE42NBSOpfFllSOrDYUorV8XlVTIvv4lIQ3pM+XwvMrl8RFRx
+ EpfgT2q8OHEXV5eKd/5r8xEQ==
+X-Received: by 2002:a05:690c:4987:b0:71a:3f0:b474 with SMTP id
+ 00721157ae682-71bdbbadd27mr12415707b3.15.1754515105271; 
+ Wed, 06 Aug 2025 14:18:25 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEnQflGgEZMxrZPbFjhLzji/pQbl8kO3gUHh5rBfDffWO9e+HfwkWLJaDR7mxwTO0K6VPU4mWTjYc+Z3GuExks=
+X-Received: by 2002:a05:690c:4987:b0:71a:3f0:b474 with SMTP id
+ 00721157ae682-71bdbbadd27mr12415437b3.15.1754515104829; Wed, 06 Aug 2025
+ 14:18:24 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC 00/11] hw/arm/smmuv3: Add initial support for Secure State
-Content-Language: en-US
-To: Tao Tang <tangtao1634@phytium.com.cn>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: Eric Auger <eric.auger@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Chen Baozi <chenbaozi@phytium.com.cn>, Mostafa Saleh <smostafa@google.com>,
- Jean-Philippe Brucker <jean-philippe@linaro.org>
-References: <20250806151134.365755-1-tangtao1634@phytium.com.cn>
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-In-Reply-To: <20250806151134.365755-1-tangtao1634@phytium.com.cn>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1030;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pj1-x1030.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+References: <20250722201404.2368507-1-vacha.bhavsar@oss.qualcomm.com>
+ <20250722201404.2368507-2-vacha.bhavsar@oss.qualcomm.com>
+ <875xf36qyk.fsf@draig.linaro.org>
+ <CAFEAcA8o4wEHHDXVj0Fcc3i8g+49psY7YSf1AqGiGe9vNuXiQA@mail.gmail.com>
+ <87ikj3545v.fsf@draig.linaro.org>
+ <CAFEAcA-Y7utLb9cciGJOVAPF8Y0W4RxcOLDnNS7ptpHtYVG_EQ@mail.gmail.com>
+ <CAEWVDmsOD-vNc6YbwfND9yzfz-G8kEsFfpEtJ5A+duhUzGU2Pg@mail.gmail.com>
+In-Reply-To: <CAEWVDmsOD-vNc6YbwfND9yzfz-G8kEsFfpEtJ5A+duhUzGU2Pg@mail.gmail.com>
+From: Vacha Bhavsar <vacha.bhavsar@oss.qualcomm.com>
+Date: Wed, 6 Aug 2025 17:18:13 -0400
+X-Gm-Features: Ac12FXwSfH4n5PBuAfjP9UUy97IRpdxM2D-l9v0gBb_X0rw7fqmasLFY_ETNXY8
+Message-ID: <CAEWVDms3R+_dv79GTdmzbJBJ3rb=hSi7rRj=f4rzRFwsHnzXJg@mail.gmail.com>
+Subject: Re: [PATCH v4 1/2] target/arm: Increase MAX_PACKET_LENGTH for SME ZA
+ remote gdb debugging
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Content-Type: multipart/alternative; boundary="00000000000093a458063bb8e113"
+X-Proofpoint-GUID: Of9epZ00eIb2H8DfWG-k1rpkkpF1WM3M
+X-Proofpoint-ORIG-GUID: Of9epZ00eIb2H8DfWG-k1rpkkpF1WM3M
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwODA2MDAwOSBTYWx0ZWRfX3hgW/k/3zfB/
+ uleZCYCvvu8U5Wed0mIYvmTQZZ7KsAS03GiVJhyhaC70OcEOOkEq5YZP0M5Brr7GGrWsJVCTNkD
+ Jdoq9ucYZqE2kVoVjqYgTp7jtDRKLwZ9WihYHN/69oYxFCQYxMNQPoycVhZhgvYVBp1jN0chx5S
+ SwudcjbK1qJTWkJUT6YDawgH+R2soXwHUlyCtgVpgyIB1+U7lXS6e07VqKK8/OPpf40kuvq8jew
+ 34qgE5qBfcaSkS0f/V9t1rnlVoyZCWsZoLA4sq/5L9cilXCeViAyKF0X+nRSabn5m1GA7xis8sl
+ 5DD2G6ov3dtye2ivXh++QHrrbK+4/42hM5nNWNoIPptYq0KxFQuyIjVc7F9JsEJPAOwCElXE+xR
+ OUM7qtly
+X-Authority-Analysis: v=2.4 cv=GrlC+l1C c=1 sm=1 tr=0 ts=6893c6a2 cx=c_pps
+ a=g1v0Z557R90hA0UpD/5Yag==:117 a=2OwXVqhp2XgA:10 a=CCpqsmhAAAAA:8
+ a=EUspDBNiAAAA:8 a=KKAkSRfTAAAA:8 a=Y5IoXRAQ5wbCVYA3_6sA:9 a=QEXdDO2ut3YA:10
+ a=cDrPwn1pVi0A:10 a=lfHhwvipLn8A:10 a=ysKjdEX-O2Rk5GybrLIA:9
+ a=MDqUclHctDd_E8tH:21 a=lqcHg5cX4UMA:10 a=NcDAMoJu9mMA:10 a=u7sVq0hHrSIA:10
+ a=MFSWADHSvvjO3QEy5MdX:22 a=ul9cdbp4aOFLsgKbc677:22 a=cvBusfyB2V15izCimMoJ:22
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.9,FMLib:17.12.80.40
+ definitions=2025-08-06_04,2025-08-06_01,2025-03-28_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ spamscore=0 malwarescore=0 clxscore=1015 suspectscore=0 priorityscore=1501
+ phishscore=0 adultscore=0 bulkscore=0 impostorscore=0 classifier=typeunknown
+ authscore=0 authtc= authcc= route=outbound adjust=0 reason=mlx scancount=1
+ engine=8.19.0-2507300000 definitions=main-2508060009
+Received-SPF: pass client-ip=205.220.168.131;
+ envelope-from=vacha.bhavsar@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
+X-Spam_score_int: -26
+X-Spam_score: -2.7
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, HTML_MESSAGE=0.001,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -107,156 +135,394 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Tao,
+--00000000000093a458063bb8e113
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-sharing this with Jean-Philippe and Mostafa, who might be interested to 
-review.
+Hi,
 
-On 8/6/25 8:11 AM, Tao Tang wrote:
-> Hi all,
-> 
-> This patch series introduces initial support for emulating the Arm SMMUv3
-> Secure State.
-> 
-> As Pierrick pointed out in a previous discussion [1], full Secure SMMUv3
-> emulation is a notable missing piece in QEMU. While the FVP model has
-> some support, its limited PCIe capabilities make it challenging for
-> complex use cases. The ability to properly manage device DMA from a
-> secure context is a critical prerequisite for enabling device assignment
-> (passthrough) for confidential computing solutions like Arm CCA and
-> related research such as virtCCA [2]. This series aims to build that
-> foundational support in QEMU.
-> 
-> This work is being proposed as an RFC. It introduces a significant amount
-> of new logic, including the core concept of modeling parallel secure and
-> non-secure contexts within a single SMMUv3 device. I am seeking feedback
-> on the overall approach, the core refactoring, and the implementation
-> details before proceeding further.
-> 
-> The series begins by implementing the components of the secure programming
-> interface, then progressively refactors the core SMMU logic to handle
-> secure and non-secure contexts in parallel.
-> 
-> Secure Interface Implementation: The initial patches add the
-> secure-side registers, implement their read/write logic, and enable
-> the secure command and event queues. This includes the S_INIT
-> mechanism and the new secure TLB invalidation commands.
-> 
-> Core Logic Refactoring: The next set of patches makes the core SMMU
-> functions security-state aware. This involves plumbing an is_secure
-> context flag through the main code paths and adding logic to route
-> SMMU-originated memory accesses to the correct (Secure or Non-secure)
-> address space.
-> 
-> Cache Isolation: With the core logic now aware of security states,
-> the following patches refactor the configuration and translation
-> lookup caches. The cache keys are modified to include the security
-> context, ensuring that secure and non-secure entries for the same
-> device or address are properly isolated and preventing aliasing.
-> 
-> Framework Integration: The final patch connects the SMMU's internal
-> security context to the generic QEMU IOMMU framework by using the
-> iommu_index to represent the architectural SEC_SID.
-> 
-> To validate this work, I performed the following tests:
-> 
-> Non-Secure Regression: To ensure that existing functionality remains
-> intact, I ran a nested virtualization test. A TCG guest was created on
-> the host, with iommu=smmuv3 and with an emulated PCIe NVMe device assigned.
-> Command line of TCG VM is below:
-> 
-> qemu-system-aarch64 \
-> -machine virt,virtualization=on,gic-version=3,iommu=smmuv3 \
-> -cpu max -smp 1 -m 4080M \
-> -accel tcg,thread=single,tb-size=512 \
-> -kernel Image \
-> -append 'nokaslr root=/dev/vda rw rootfstype=ext4 iommu.passthrough=on' \
-> -device pcie-root-port,bus=pcie.0,id=rp0,addr=0x4.0,chassis=1,port=0x10 \
-> -device pcie-root-port,bus=pcie.0,id=rp1,addr=0x5.0,chassis=2,port=0x11 \
-> -drive if=none,file=u2204fs.img.qcow2,format=qcow2,id=hd0 \
-> -device virtio-blk-device,drive=hd0 \
-> -qmp unix:/tmp/qmp-sock12,server=on,wait=off \
-> -netdev user,id=eth0,hostfwd=tcp::10022-:22,hostfwd=tcp::59922-:5922 \
-> -device virtio-net-device,netdev=eth0 \
-> -drive if=none,file=nvme.img,format=raw,id=nvme0 \
-> -device nvme,drive=nvme0,serial=deadbeef \
-> -d unimp,guest_errors -trace events=smmu-events.txt -D qemu.log -nographic
-> 
-> Inside this TCG VM, a KVM guest was launched, and the same NVMe device was
-> re-assigned to it via VFIO.
-> Command line of KVM VM inside TCG VM is below:
-> 
-> sudo qemu-system-aarch64  \
-> -enable-kvm  -m 1024  -cpu host  -M virt \
-> -machine virt,gic-version=3 \
-> -cpu max -append "nokaslr" -smp 1 \
-> -monitor stdio \
-> -kernel 5.15.Image \
-> -initrd rootfs.cpio.gz \
-> -display vnc=:22,id=primary \
-> -device vfio-pci,host=00:01.0
-> 
-> The KVM guest was able to perform I/O on the device
-> correctly, confirming that the non-secure path is not broken.
-> 
-> Secure Register/Command Interface: I set up an OP-TEE + Hafnium
-> environment. Hafnium's smmuv3_driver_init function was used to test
-> the secure register I/O and command queue functionality (excluding
-> translation). As Hafnium assumes larger queue and StreamID sizes than
-> are practical without TTST support, I temporarily patched Hafnium to
-> use smaller values, allowing its driver to initialize the emulated
-> secure SMMU successfully.
-> 
-> Secure Translation Path: Since the TF-A SMMUv3 Test Engine does not
-> support QEMU, and no secure device assignment feature exists yet, I
-> created a custom platform device to test the secure translation flow.
-> To trigger the translation logic, I initiated MMIO writes to this
-> device from within Hafnium. The device's MMIO callback handler then
-> performed DMA accesses via its IOMMU region, exercising the secure
-> translation path. While SMMUv3 is typically used for PCIe on
-> physical SoCs, the architecture allows its use with platform devices
-> via a stream-id binding in the device tree. The test harness
-> required some non-standard modifications to decouple the SMMU from
-> its tight integration with PCIe. The code for this test device is
-> available for review at [3]. README.md with detailed instructions is
-> also provided.
-> 
-> I've attempted to follow all of the guidance in the "Submitting a Patch"
-> guide, but as this is my first series of this scale, I apologize if I
-> missed anything and welcome all feedback.
-> 
+I reached out to the gdb dev team regarding these questions
+on how to correctly handle the SME za storage. This discussion
+can be found here:
+
+https://sourceware.org/pipermail/gdb/2025-August/051858.html
+https://sourceware.org/pipermail/gdb/2025-August/051860.html
+
+It seems this approach of increasing the buffer size to above
+131100 has also been applied to gdbserver as there currently
+isn't support for partial data transfers.
+
+
+
+Thanks,
+
+Vacha
+
+On Tue, Aug 5, 2025 at 5:21=E2=80=AFPM Vacha Bhavsar <vacha.bhavsar@oss.qua=
+lcomm.com>
+wrote:
+
+> Hi,
+>
+>
+>
+> Thank you for your comments!
+>
+>
+>
+> What exactly is the packet/response where MAX_PACKET_LENGTH is
+> causing problems? The commit message doesn't say.
+>
+>
+>
+> The issue is that when we run something like set $za[0][0] =3D 0x01
+> in the gdb client, the client sends the entire contents on the new
+> expected za register value, at which point the client side gets stuck
+> and does not return the gdb prompt. The issue is found to be the followin=
+g
+> code (line 2396 of gdbstub/gdbstub.c):
+>
+>
+>
+> else if (gdbserver_state.line_buf_index >=3D
+> sizeof(gdbserver_state.line_buf) - 1) {
+>                 trace_gdbstub_err_overrun();
+>                 gdbserver_state.state =3D RS_IDLE;
+>
+>
+>
+> Since the current value of sizeof(gdbserver_state.line_buf) is 4096
+> whereas the
+> entire contents of the P packet coming in from the gdb client is at least
+> 131072
+> (twice the number of bytes in the za storage at max svl), the above
+> statement
+> eventually evaluates to true, causing the state machine to reset to
+> RS_IDLE and
+> treat the rest of the packet as if it's looking for a new command. This i=
+s
+> why
+> the client side gets stuck until there is a timeout and then debugging
+> continues
+> as usual.
+>
+>
+>
+> For this reason, the MAX_PACKET_LENGTH value was increased in an effort t=
+o
+> increase
+> the size of gdbserver_state.line_buf and avoid entering the above
+> mentioned clause.
+>
+>
+>
+>
+>
+> This sounds like something to query with the gdb devs
+> about what they expect the handling of the SME ZA storage should be.
+>
+>
+>
+> Will do!
+>
+>
+>
 > Thanks,
-> Tang
-> 
-> [1] https://lists.nongnu.org/archive/html/qemu-devel/2025-06/msg02940.html
-> [2] https://arxiv.org/abs/2306.11011
-> [3] https://github.com/hnusdr/qemu
-> 
-> Tao Tang (11):
->    hw/arm/smmuv3: Introduce secure registers and commands
->    hw/arm/smmuv3: Implement read/write logic for secure registers
->    hw/arm/smmuv3: Implement S_INIT for secure initialization
->    hw/arm/smmuv3: Enable command processing for the Secure state
->    hw/arm/smmuv3: Support secure event queue and error handling
->    hw/arm/smmuv3: Plumb security state through core functions
->    hw/arm/smmuv3: Add separate address space for secure SMMU accesses
->    hw/arm/smmuv3: Enable secure-side stage 2 TLB invalidations
->    hw/arm/smmuv3: Make the configuration cache security-state aware
->    hw/arm/smmuv3: Differentiate secure TLB entries via keying
->    hw/arm/smmuv3: Use iommu_index to represent SEC_SID
-> 
->   hw/arm/smmu-common.c         |  74 ++-
->   hw/arm/smmuv3-internal.h     | 128 +++++-
->   hw/arm/smmuv3.c              | 844 ++++++++++++++++++++++++++++++-----
->   hw/arm/trace-events          |   7 +-
->   hw/arm/virt.c                |   5 +
->   include/hw/arm/smmu-common.h |  23 +-
->   include/hw/arm/smmuv3.h      |  27 ++
->   7 files changed, 968 insertions(+), 140 deletions(-)
-> 
-> --
-> 2.34.1
-> 
-> 
+> Vacha
+>
+> On Mon, Aug 4, 2025 at 2:38=E2=80=AFPM Peter Maydell <peter.maydell@linar=
+o.org>
+> wrote:
+>
+>> On Mon, 4 Aug 2025 at 19:32, Alex Benn=C3=A9e <alex.bennee@linaro.org> w=
+rote:
+>> >
+>> > Peter Maydell <peter.maydell@linaro.org> writes:
+>> >
+>> > > On Mon, 4 Aug 2025 at 16:34, Alex Benn=C3=A9e <alex.bennee@linaro.or=
+g>
+>> wrote:
+>> > >>
+>> > >> Vacha Bhavsar <vacha.bhavsar@oss.qualcomm.com> writes:
+>> > >>
+>> > >> > This patch increases the value of the MAX_PACKET_LEGNTH to
+>> > >> > 131100 from 4096 to allow the GDBState.line_buf to be large enoug=
+h
+>> > >> > to accommodate the full contents of the SME ZA storage when the
+>> > >> > vector length is maximal. This is in preparation for a related
+>> > >> > patch that allows SME register visibility through remote GDB
+>> > >> > debugging.
+>> > >> >
+>> > >> > Signed-off-by: Vacha Bhavsar <vacha.bhavsar@oss.qualcomm.com>
+>> > >> > ---
+>> > >> > Changes since v3:
+>> > >> > - this patch was not present in version 3
+>> > >> >
+>> > >> >  gdbstub/internals.h | 2 +-
+>> > >> >  1 file changed, 1 insertion(+), 1 deletion(-)
+>> > >> >
+>> > >> > diff --git a/gdbstub/internals.h b/gdbstub/internals.h
+>> > >> > index bf5a5c6302..b58a66c201 100644
+>> > >> > --- a/gdbstub/internals.h
+>> > >> > +++ b/gdbstub/internals.h
+>> > >> > @@ -11,7 +11,7 @@
+>> > >> >
+>> > >> >  #include "exec/cpu-common.h"
+>> > >> >
+>> > >> > -#define MAX_PACKET_LENGTH 4096
+>> > >> > +#define MAX_PACKET_LENGTH 131100
+>> > >>
+>> > >> This is a rather large expansion for something that ends up in a
+>> static at:
+>> > >>
+>> > >>     char line_buf[MAX_PACKET_LENGTH];
+>> > >>
+>> > >> I think maybe its time to get rid of this hardcoded define and make
+>> line_buf a
+>> > >> dynamically re-sizeable buffer along the lines of str_buf and
+>> mem_buf.
+>> > >> In fact make it a GString and we can get rid of line_buf_index as
+>> well.
+>> > >
+>> > > What exactly is the packet/response where MAX_PACKET_LENGTH is
+>> > > causing problems? The commit message doesn't say.
+>> >
+>> > I assume it would be the g/G or p/P packets. The docs don't seem to sa=
+y
+>> > anything about them splitting them across multiple packets.
+>>
+>> Probably because nobody thought about the possibility of enormous
+>> registers. This sounds like something to query with the gdb devs
+>> about what they expect the handling of the SME ZA storage should be.
+>>
+>> > > In general I thought the gdbstub protocol was supposed to handle a
+>> > > fixed packet length (e.g. in handle_query_xfer_features() the respon=
+se
+>> > > packet indicates truncation via "l" vs "m" so the gdb end knows it
+>> needs
+>> > > to send another request to get the rest of the data). So if we run
+>> > > into something which seems to be fixed by raising MAX_PACKET_LENGTH
+>> > > I would first want to look at whether the underlying problem is
+>> > > that we're not indicating to gdb "this data is incomplete, you'll
+>> > > need to ask for more of it" or something of that nature.
+>> >
+>> > The docs reference "bulk transfers":
+>> >
+>> >   =E2=80=98PacketSize=3Dbytes=E2=80=99
+>> >
+>> >       The remote stub can accept packets up to at least bytes in lengt=
+h.
+>> >       GDB will send packets up to this size for bulk transfers, and wi=
+ll
+>> >       never send larger packets. This is a limit on the data character=
+s
+>> >       in the packet, not including the frame and checksum. There is no
+>> >       trailing NUL byte in a remote protocol packet; if the stub store=
+s
+>> >       packets in a NUL-terminated format, it should allow an extra byt=
+e
+>> >       in its buffer for the NUL. If this stub feature is not supported=
+,
+>> >       GDB guesses based on the size of the =E2=80=98g=E2=80=99 packet =
+response.
+>>
+>> We do advertise this.
+>>
+>> -- PMM
+>>
+>
 
+--00000000000093a458063bb8e113
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><p>Hi,</p><p>I reached out to the gdb dev team regarding t=
+hese questions<br>
+on how to correctly handle the SME za storage. This discussion<br>
+can be found here:</p><p><a aria-label=3D"Link https://sourceware.org/piper=
+mail/gdb/2025-August/051858.html" id=3D"gmail-menurb2l" href=3D"https://sou=
+rceware.org/pipermail/gdb/2025-August/051858.html" rel=3D"noreferrer noopen=
+er" target=3D"_blank" class=3D"gmail-fui-Link gmail-___1q1shib gmail-f2hkw1=
+w gmail-f3rmtva gmail-f1ewtqcl gmail-fyind8e gmail-f1k6fduh gmail-f1w7gpdv =
+gmail-fk6fouc gmail-fjoy568 gmail-figsok6 gmail-f1s184ao gmail-f1mk8lai gma=
+il-fnbmjn9 gmail-f1o700av gmail-f13mvf36 gmail-f1cmlufx gmail-f9n3di6 gmail=
+-f1ids18y gmail-f1tx3yz7 gmail-f1deo86v gmail-f1eh06m1 gmail-f1iescvh gmail=
+-fhgqx19 gmail-f1olyrje gmail-f1p93eir gmail-f1nev41a gmail-f1h8hb77 gmail-=
+f1lqvz6u gmail-f10aw75t gmail-fsle3fq gmail-f17ae5zn" title=3D"https://sour=
+ceware.org/pipermail/gdb/2025-august/051858.html">https://sourceware.org/pi=
+permail/gdb/2025-August/051858.html</a><br><a aria-label=3D"Link https://so=
+urceware.org/pipermail/gdb/2025-August/051860.html" id=3D"gmail-menurb2n" h=
+ref=3D"https://sourceware.org/pipermail/gdb/2025-August/051860.html" rel=3D=
+"noreferrer noopener" target=3D"_blank" class=3D"gmail-fui-Link gmail-___1q=
+1shib gmail-f2hkw1w gmail-f3rmtva gmail-f1ewtqcl gmail-fyind8e gmail-f1k6fd=
+uh gmail-f1w7gpdv gmail-fk6fouc gmail-fjoy568 gmail-figsok6 gmail-f1s184ao =
+gmail-f1mk8lai gmail-fnbmjn9 gmail-f1o700av gmail-f13mvf36 gmail-f1cmlufx g=
+mail-f9n3di6 gmail-f1ids18y gmail-f1tx3yz7 gmail-f1deo86v gmail-f1eh06m1 gm=
+ail-f1iescvh gmail-fhgqx19 gmail-f1olyrje gmail-f1p93eir gmail-f1nev41a gma=
+il-f1h8hb77 gmail-f1lqvz6u gmail-f10aw75t gmail-fsle3fq gmail-f17ae5zn" tit=
+le=3D"https://sourceware.org/pipermail/gdb/2025-august/051860.html">https:/=
+/sourceware.org/pipermail/gdb/2025-August/051860.html</a></p><p>It seems th=
+is approach of increasing the buffer size to above<br>
+131100 has also been applied to gdbserver as there currently<br>
+isn&#39;t support for partial data transfers.</p><p>=C2=A0</p><p>Thanks,</p=
+><p>Vacha</p></div><br><div class=3D"gmail_quote gmail_quote_container"><di=
+v dir=3D"ltr" class=3D"gmail_attr">On Tue, Aug 5, 2025 at 5:21=E2=80=AFPM V=
+acha Bhavsar &lt;<a href=3D"mailto:vacha.bhavsar@oss.qualcomm.com">vacha.bh=
+avsar@oss.qualcomm.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_q=
+uote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,2=
+04);padding-left:1ex"><div dir=3D"ltr"><p>Hi,</p><p>=C2=A0</p><p>Thank you =
+for your comments!</p><p>=C2=A0</p><p>What exactly is the packet/response w=
+here MAX_PACKET_LENGTH is<br>
+causing problems? The commit message doesn&#39;t say.</p><p>=C2=A0</p><p>Th=
+e issue is that when we run something like set $za[0][0] =3D 0x01<br>
+in the gdb client, the client sends the entire contents on the new<br>
+expected za register value, at which point the client side gets stuck<br>
+and does not return the gdb prompt. The issue is found to be the following<=
+br>
+code (line 2396 of gdbstub/gdbstub.c):</p><p>=C2=A0</p><p>else if (gdbserve=
+r_state.line_buf_index &gt;=3D sizeof(gdbserver_state.line_buf) - 1) {<br>
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0 trace_gdbstub_err_overrun();<br>
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0 gdbserver_state.state =3D RS_IDLE;</p><p>=C2=A0</p><p>Since=
+ the current value of sizeof(gdbserver_state.line_buf) is 4096 whereas the<=
+br>
+entire contents of the P packet coming in from the gdb client is at least 1=
+31072<br>
+(twice the number of bytes in the za storage at max svl), the above stateme=
+nt<br>
+eventually evaluates to true, causing the state machine to reset to RS_IDLE=
+ and<br>
+treat the rest of the packet as if it&#39;s looking for a new command. This=
+ is why<br>
+the client side gets stuck until there is a timeout and then debugging cont=
+inues<br>
+as usual.</p><p>=C2=A0</p><p>For this reason, the MAX_PACKET_LENGTH value w=
+as increased in an effort to increase<br>
+the size of gdbserver_state.line_buf and avoid entering the above mentioned=
+ clause.</p><p>=C2=A0</p><p>=C2=A0</p><p>This sounds like something to quer=
+y with the gdb devs<br>
+about what they expect the handling of the SME ZA storage should be.</p><p>=
+=C2=A0</p><p>Will do!</p><p>=C2=A0</p><p>Thanks,<br>
+Vacha</p></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gma=
+il_attr">On Mon, Aug 4, 2025 at 2:38=E2=80=AFPM Peter Maydell &lt;<a href=
+=3D"mailto:peter.maydell@linaro.org" target=3D"_blank">peter.maydell@linaro=
+.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"mar=
+gin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1=
+ex">On Mon, 4 Aug 2025 at 19:32, Alex Benn=C3=A9e &lt;<a href=3D"mailto:ale=
+x.bennee@linaro.org" target=3D"_blank">alex.bennee@linaro.org</a>&gt; wrote=
+:<br>
+&gt;<br>
+&gt; Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org" target=
+=3D"_blank">peter.maydell@linaro.org</a>&gt; writes:<br>
+&gt;<br>
+&gt; &gt; On Mon, 4 Aug 2025 at 16:34, Alex Benn=C3=A9e &lt;<a href=3D"mail=
+to:alex.bennee@linaro.org" target=3D"_blank">alex.bennee@linaro.org</a>&gt;=
+ wrote:<br>
+&gt; &gt;&gt;<br>
+&gt; &gt;&gt; Vacha Bhavsar &lt;<a href=3D"mailto:vacha.bhavsar@oss.qualcom=
+m.com" target=3D"_blank">vacha.bhavsar@oss.qualcomm.com</a>&gt; writes:<br>
+&gt; &gt;&gt;<br>
+&gt; &gt;&gt; &gt; This patch increases the value of the MAX_PACKET_LEGNTH =
+to<br>
+&gt; &gt;&gt; &gt; 131100 from 4096 to allow the GDBState.line_buf to be la=
+rge enough<br>
+&gt; &gt;&gt; &gt; to accommodate the full contents of the SME ZA storage w=
+hen the<br>
+&gt; &gt;&gt; &gt; vector length is maximal. This is in preparation for a r=
+elated<br>
+&gt; &gt;&gt; &gt; patch that allows SME register visibility through remote=
+ GDB<br>
+&gt; &gt;&gt; &gt; debugging.<br>
+&gt; &gt;&gt; &gt;<br>
+&gt; &gt;&gt; &gt; Signed-off-by: Vacha Bhavsar &lt;<a href=3D"mailto:vacha=
+.bhavsar@oss.qualcomm.com" target=3D"_blank">vacha.bhavsar@oss.qualcomm.com=
+</a>&gt;<br>
+&gt; &gt;&gt; &gt; ---<br>
+&gt; &gt;&gt; &gt; Changes since v3:<br>
+&gt; &gt;&gt; &gt; - this patch was not present in version 3<br>
+&gt; &gt;&gt; &gt;<br>
+&gt; &gt;&gt; &gt;=C2=A0 gdbstub/internals.h | 2 +-<br>
+&gt; &gt;&gt; &gt;=C2=A0 1 file changed, 1 insertion(+), 1 deletion(-)<br>
+&gt; &gt;&gt; &gt;<br>
+&gt; &gt;&gt; &gt; diff --git a/gdbstub/internals.h b/gdbstub/internals.h<b=
+r>
+&gt; &gt;&gt; &gt; index bf5a5c6302..b58a66c201 100644<br>
+&gt; &gt;&gt; &gt; --- a/gdbstub/internals.h<br>
+&gt; &gt;&gt; &gt; +++ b/gdbstub/internals.h<br>
+&gt; &gt;&gt; &gt; @@ -11,7 +11,7 @@<br>
+&gt; &gt;&gt; &gt;<br>
+&gt; &gt;&gt; &gt;=C2=A0 #include &quot;exec/cpu-common.h&quot;<br>
+&gt; &gt;&gt; &gt;<br>
+&gt; &gt;&gt; &gt; -#define MAX_PACKET_LENGTH 4096<br>
+&gt; &gt;&gt; &gt; +#define MAX_PACKET_LENGTH 131100<br>
+&gt; &gt;&gt;<br>
+&gt; &gt;&gt; This is a rather large expansion for something that ends up i=
+n a static at:<br>
+&gt; &gt;&gt;<br>
+&gt; &gt;&gt;=C2=A0 =C2=A0 =C2=A0char line_buf[MAX_PACKET_LENGTH];<br>
+&gt; &gt;&gt;<br>
+&gt; &gt;&gt; I think maybe its time to get rid of this hardcoded define an=
+d make line_buf a<br>
+&gt; &gt;&gt; dynamically re-sizeable buffer along the lines of str_buf and=
+ mem_buf.<br>
+&gt; &gt;&gt; In fact make it a GString and we can get rid of line_buf_inde=
+x as well.<br>
+&gt; &gt;<br>
+&gt; &gt; What exactly is the packet/response where MAX_PACKET_LENGTH is<br=
+>
+&gt; &gt; causing problems? The commit message doesn&#39;t say.<br>
+&gt;<br>
+&gt; I assume it would be the g/G or p/P packets. The docs don&#39;t seem t=
+o say<br>
+&gt; anything about them splitting them across multiple packets.<br>
+<br>
+Probably because nobody thought about the possibility of enormous<br>
+registers. This sounds like something to query with the gdb devs<br>
+about what they expect the handling of the SME ZA storage should be.<br>
+<br>
+&gt; &gt; In general I thought the gdbstub protocol was supposed to handle =
+a<br>
+&gt; &gt; fixed packet length (e.g. in handle_query_xfer_features() the res=
+ponse<br>
+&gt; &gt; packet indicates truncation via &quot;l&quot; vs &quot;m&quot; so=
+ the gdb end knows it needs<br>
+&gt; &gt; to send another request to get the rest of the data). So if we ru=
+n<br>
+&gt; &gt; into something which seems to be fixed by raising MAX_PACKET_LENG=
+TH<br>
+&gt; &gt; I would first want to look at whether the underlying problem is<b=
+r>
+&gt; &gt; that we&#39;re not indicating to gdb &quot;this data is incomplet=
+e, you&#39;ll<br>
+&gt; &gt; need to ask for more of it&quot; or something of that nature.<br>
+&gt;<br>
+&gt; The docs reference &quot;bulk transfers&quot;:<br>
+&gt;<br>
+&gt;=C2=A0 =C2=A0=E2=80=98PacketSize=3Dbytes=E2=80=99<br>
+&gt;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0The remote stub can accept packets up to at =
+least bytes in length.<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0GDB will send packets up to this size for bu=
+lk transfers, and will<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0never send larger packets. This is a limit o=
+n the data characters<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0in the packet, not including the frame and c=
+hecksum. There is no<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0trailing NUL byte in a remote protocol packe=
+t; if the stub stores<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0packets in a NUL-terminated format, it shoul=
+d allow an extra byte<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0in its buffer for the NUL. If this stub feat=
+ure is not supported,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0GDB guesses based on the size of the =E2=80=
+=98g=E2=80=99 packet response.<br>
+<br>
+We do advertise this.<br>
+<br>
+-- PMM<br>
+</blockquote></div>
+</blockquote></div>
+
+--00000000000093a458063bb8e113--
 

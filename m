@@ -4,59 +4,148 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE8BBC87FD3
-	for <qemu-arm@archiver.kernel.org>; Wed,  6 Aug 2025 16:05:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F50CC87FD3
+	for <qemu-arm@archiver.kernel.org>; Wed,  6 Aug 2025 16:58:56 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ujge7-0006Pe-0l; Wed, 06 Aug 2025 12:05:43 -0400
+	id 1ujhSm-00019H-W6; Wed, 06 Aug 2025 12:58:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tangtao1634@phytium.com.cn>)
- id 1ujfqW-0002Mn-Ot; Wed, 06 Aug 2025 11:14:28 -0400
-Received: from zg8tmtyylji0my4xnjqumte4.icoremail.net ([162.243.164.118])
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <tangtao1634@phytium.com.cn>)
- id 1ujfqU-0006Ly-U1; Wed, 06 Aug 2025 11:14:28 -0400
-Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
- by hzbj-icmmx-6 (Coremail) with SMTP id AQAAfwB3DWFQcZNoSlVLBA--.45959S2;
- Wed, 06 Aug 2025 23:14:24 +0800 (CST)
-Received: from phytium.com.cn (unknown [218.76.62.144])
- by mail (Coremail) with SMTP id AQAAfwC3QgpOcZNo6PoJAA--.18473S3;
- Wed, 06 Aug 2025 23:14:22 +0800 (CST)
-From: Tao Tang <tangtao1634@phytium.com.cn>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: Eric Auger <eric.auger@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Chen Baozi <chenbaozi@phytium.com.cn>,
- Tao Tang <tangtao1634@phytium.com.cn>
-Subject: [RFC 11/11] hw/arm/smmuv3: Use iommu_index to represent SEC_SID
-Date: Wed,  6 Aug 2025 23:14:20 +0800
-Message-Id: <20250806151420.368359-1-tangtao1634@phytium.com.cn>
-X-Mailer: git-send-email 2.34.1
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1ujgCJ-0001Jz-VR
+ for qemu-arm@nongnu.org; Wed, 06 Aug 2025 11:37:01 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1ujgCI-0001MK-J4
+ for qemu-arm@nongnu.org; Wed, 06 Aug 2025 11:36:59 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1754494616;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=X1OfTK+xp6uoBKk7dbSzEQQ9dnkclv0FGtzOH68TVpI=;
+ b=MaWRxL2FUbLrdNBMYvogYPfjasRSGkkU2qFpYI1rpmyJdjVqHVB/d5HrIyPndk/uCs2nyz
+ HTSC8GC9GrQokHScUSxqKCX+wjqMWkIfnwLJzUjtbPpzTAUyjXP3gzMnPdkh3pZheocNHB
+ pfvP0lnf8eS1i/TK9MWHOwjuINy5VF8=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-552-VFQnTGdtOUy1lIK1LvsEhg-1; Wed, 06 Aug 2025 11:36:54 -0400
+X-MC-Unique: VFQnTGdtOUy1lIK1LvsEhg-1
+X-Mimecast-MFC-AGG-ID: VFQnTGdtOUy1lIK1LvsEhg_1754494614
+Received: by mail-wr1-f72.google.com with SMTP id
+ ffacd0b85a97d-3b7889c8d2bso3016148f8f.3
+ for <qemu-arm@nongnu.org>; Wed, 06 Aug 2025 08:36:54 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1754494613; x=1755099413;
+ h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=X1OfTK+xp6uoBKk7dbSzEQQ9dnkclv0FGtzOH68TVpI=;
+ b=txvcgOGOJMIExpolGtWSFmNccACaQ5fwiwjaQ1v9OkaPWd+WUK+jHWlMb3+fvU9srd
+ PCi7xgKjWz8Vvx1xNoHIo5idwrqYW8GMbog0O1weDwFEnUkWirIY1bB55W52m6QTuPty
+ FUrmY6ovYqQxjaZOA1A3q7ZTVWhlIx+KDVM7DcrCueFcr1jX+4DA5QFZFMCjuXlvnkOO
+ ZzTkmMhqu+TLdzkSQC1Olc49lk3mODyJe2tMNmLdkUEG4396Jd4GVavwSis3UGvMEINS
+ TqmaEfEJdh4uojqiIlH0CCu9tSr2krE7chRVolIMXxQT0nKVCiAyKtbYeozWd6xoRDj1
+ MhjQ==
+X-Gm-Message-State: AOJu0YzbzSOqnRsAv8vV2ehiqFRQNPa9N6k/ecFXw2+omHGh9d//G1Hb
+ WBZx5qNYEJprOJJk22L98mZtTz4U62W72Xd2iDAjhnpCqWb1xMjHDt2hdKUJOoQcoRlQQHWSpr7
+ 427chHgaiZTBaNeOSRYSuk/pwE8Ey4zmpCVJ/Pkmty5gdm7gvYH3URw==
+X-Gm-Gg: ASbGncubZHf+neSykia/kP54JrCTtAQ8XH6IUnrwvoETN9nomBjOrHOWNlXQnw+Bo09
+ TuKEpFEW4oC2viMpVreWtFNh3qxj/xOzq9+hs91l/kAQHwC+1scs0vHMTd6r6MaBMOzB+1sx+Me
+ Gws4b8axCB8tU08i6HTnQLcGmO+Ecq7+Ecf/uHXrIdCUCqnF8nEoS3qpbpSsJuYhdUzy1G2udOl
+ 7WyFpwwtdEJZp3nONj/ev01lhi9Xs3pfogwkq6mjuDNrwxuY0Nx8nT4y1OjQhpQtu4dknZF8SEr
+ oEfWgU1wG3X3E4+cn2lTjkAlMMqt+OefCc8aE0iaAIUgWXU6iPY276XiX1REZJcrtvgBNFpco3H
+ EMXo34QsbStVa5XqlYRN/XH104erheIaa6HF5pckZFaCzSBN4NuivG4+/ISwsKOpFTQ==
+X-Received: by 2002:a05:6000:2003:b0:3b8:d0bb:754d with SMTP id
+ ffacd0b85a97d-3b8f41d3e78mr2746084f8f.37.1754494613609; 
+ Wed, 06 Aug 2025 08:36:53 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFJBRnmx36yMkuMovK02H/FDLnXVexJSqFOgXqEw/YwAdXAPzWamzYKoKdrUCJKWosaOyMdaw==
+X-Received: by 2002:a05:6000:2003:b0:3b8:d0bb:754d with SMTP id
+ ffacd0b85a97d-3b8f41d3e78mr2746060f8f.37.1754494613126; 
+ Wed, 06 Aug 2025 08:36:53 -0700 (PDT)
+Received: from ?IPV6:2a01:cb01:833:e4a9:b423:d450:c87f:f1f0?
+ (2a01cb010833e4a9b423d450c87ff1f0.ipv6.abo.wanadoo.fr.
+ [2a01:cb01:833:e4a9:b423:d450:c87f:f1f0])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-3b79c4530a8sm23462951f8f.38.2025.08.06.08.36.51
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 06 Aug 2025 08:36:52 -0700 (PDT)
+Message-ID: <e3b520ca-4b67-4880-82f0-c464f9182b67@redhat.com>
+Date: Wed, 6 Aug 2025 17:36:51 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: AQAAfwC3QgpOcZNo6PoJAA--.18473S3
-X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQAOBWiSXH8HMgAAsm
-Authentication-Results: hzbj-icmmx-6; spf=neutral smtp.mail=tangtao163
- 4@phytium.com.cn;
-X-Coremail-Antispam: 1Uk129KBjvJXoWxXry7Ary8Gw4UCFyDAFW8JFb_yoW5urW5pr
- 4DWr4rKw4xGF13AF4fJa1kuF4Yg397WFW7Ja9rKan5AF18Awn7Zr9akFy5KryDtFW8Za17
- Xa1j9rZrW3WjyrJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
- DUYxn0WfASr-VFAU7a7-sFnT9fnUUIcSsGvfJ3UbIYCTnIWIevJa73UjIFyTuYvj4RJUUU
- UUUUU
-Received-SPF: pass client-ip=162.243.164.118;
- envelope-from=tangtao1634@phytium.com.cn;
- helo=zg8tmtyylji0my4xnjqumte4.icoremail.net
-X-Spam_score_int: -25
-X-Spam_score: -2.6
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH for-10.2 3/4] vfio: Remove 'vfio-platform'
+To: eric.auger@redhat.com, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Alex Williamson <alex.williamson@redhat.com>
+References: <20250731121947.1346927-1-clg@redhat.com>
+ <20250731121947.1346927-4-clg@redhat.com>
+ <3841525e-eef9-4cf3-a7b5-b7cc11e9d702@redhat.com>
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
+Autocrypt: addr=clg@redhat.com; keydata=
+ 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
+ uVKe8BVz4atMOoktmt0GWTOC8P4=
+In-Reply-To: <3841525e-eef9-4cf3-a7b5-b7cc11e9d702@redhat.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: an62J1PBX1eGc4j1alpLYVe19nQy5DxZBMI75O1yrYA_1754494614
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US, fr
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Wed, 06 Aug 2025 11:26:54 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,94 +160,28 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The Arm SMMUv3 architecture uses a SEC_SID (Secure StreamID) flag to
-select between two distinct programming interfaces: Secure and
-Non-secure. The QEMU model must reflect this fundamental hardware
-separation for all memory operations, including TLB lookups.
+Hello Eric,
 
-This commit leverages the generic iommu_index to represent this
-security context. The core IOMMU layer now uses the SMMU's .attrs_to_index
-callback to map a transaction's secure attribute to an index (1 for
-secure, 0 for non-secure).
+On 8/6/25 16:52, Eric Auger wrote:
+>> --- a/hw/arm/virt.c
+>> +++ b/hw/arm/virt.c
+>> @@ -38,7 +38,6 @@
+>>   #include "hw/arm/primecell.h"
+>>   #include "hw/arm/virt.h"
+>>   #include "hw/block/flash.h"
+>> -#include "hw/vfio/vfio-platform.h"
+> removal of this header causes the compilation to fail.
+> #include "system/system.h" needs to be added
 
-This index is then passed down to smmuv3_translate. Inside the
-translate function, the local is_secure flag is now derived directly
-from the iommu_index. This makes the iommu_index the clear QEMU
-equivalent of the architectural SEC_SID, cleanly separating the
-contexts for all subsequent lookups.
+yes. I sent this patch separately :
 
-Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
----
- hw/arm/smmuv3.c | 34 +++++++++++++++++++++++++++++++---
- 1 file changed, 31 insertions(+), 3 deletions(-)
+   https://lore.kernel.org/qemu-devel/20250731144019.1403591-1-clg@redhat.com/
 
-diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index 972cbc872f..1a2e795985 100644
---- a/hw/arm/smmuv3.c
-+++ b/hw/arm/smmuv3.c
-@@ -1137,6 +1137,33 @@ static void smmuv3_fixup_event(SMMUEventInfo *event, hwaddr iova)
-     }
- }
- 
-+/*
-+ * ARM SMMU IOMMU index mapping (implements SEC_SID from ARM SMMU):
-+ * iommu_idx = 0: Non-secure transactions
-+ * iommu_idx = 1: Secure transactions
-+ *
-+ * The iommu_idx parameter effectively implements the SEC_SID
-+ * (Security Stream ID) attribute from the ARM SMMU architecture
-+ * specification, which allows the SMMU to differentiate between
-+ * secure and non-secure transactions at the hardware level.
-+ */
-+static int smmuv3_attrs_to_index(IOMMUMemoryRegion *iommu, MemTxAttrs attrs)
-+{
-+    /*
-+     * Map transaction attributes to IOMMU index:
-+     * - Secure transactions (attrs.secure = 1) -> iommu_idx = 1
-+     * - Non-secure transactions (attrs.secure = 0) -> iommu_idx = 0
-+     * - Unspecified attributes are treated as non-secure for compat
-+     */
-+    return attrs.secure ? 1 : 0;
-+}
-+
-+static int smmuv3_num_indexes(IOMMUMemoryRegion *iommu)
-+{
-+    /* ARM SMMU supports 2 IOMMU indexes: non-secure (0) and secure (1) */
-+    return 2;
-+}
-+
- /* Entry point to SMMU, does everything. */
- static IOMMUTLBEntry smmuv3_translate(IOMMUMemoryRegion *mr, hwaddr addr,
-                                       IOMMUAccessFlags flag, int iommu_idx)
-@@ -1149,16 +1176,15 @@ static IOMMUTLBEntry smmuv3_translate(IOMMUMemoryRegion *mr, hwaddr addr,
-                            .inval_ste_allowed = false};
-     SMMUTranslationStatus status;
-     SMMUTransCfg *cfg = NULL;
-+    bool is_secure = (iommu_idx == 1);
-     IOMMUTLBEntry entry = {
--        .target_as = smmu_get_address_space(false),
-+        .target_as = smmu_get_address_space(is_secure),
-         .iova = addr,
-         .translated_addr = addr,
-         .addr_mask = ~(hwaddr)0,
-         .perm = IOMMU_NONE,
-     };
-     SMMUTLBEntry *cached_entry = NULL;
--    /* We don't support secure translation for now */
--    bool is_secure = false;
- 
-     qemu_mutex_lock(&s->mutex);
- 
-@@ -2639,6 +2665,8 @@ static void smmuv3_iommu_memory_region_class_init(ObjectClass *klass,
- 
-     imrc->translate = smmuv3_translate;
-     imrc->notify_flag_changed = smmuv3_notify_flag_changed;
-+    imrc->attrs_to_index = smmuv3_attrs_to_index;
-+    imrc->num_indexes = smmuv3_num_indexes;
- }
- 
- static const TypeInfo smmuv3_type_info = {
--- 
-2.34.1
+but it needs a v2 to address other files which have a similar
+issue. I will resend the whole when the QEMU 10.2 cycle opens.
+
+Thanks,
+
+C.
 
 

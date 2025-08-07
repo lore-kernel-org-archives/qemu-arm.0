@@ -4,82 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B2D4C87FCB
-	for <qemu-arm@archiver.kernel.org>; Thu,  7 Aug 2025 02:04:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0DBCBC87FCA
+	for <qemu-arm@archiver.kernel.org>; Thu,  7 Aug 2025 09:43:46 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ujpz6-0006Dh-7V; Wed, 06 Aug 2025 22:04:00 -0400
+	id 1ujx9R-0006gq-CQ; Thu, 07 Aug 2025 05:43:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1ujpz4-0006Cn-RA
- for qemu-arm@nongnu.org; Wed, 06 Aug 2025 22:03:59 -0400
-Received: from p-east3-cluster7-host3-snip4-9.eps.apple.com ([57.103.84.160]
- helo=outbound.qs.icloud.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1ujpz3-0001cX-5t
- for qemu-arm@nongnu.org; Wed, 06 Aug 2025 22:03:58 -0400
-Received: from outbound.qs.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-east-2d-20-percent-1 (Postfix) with ESMTPS id
- EE2B618000AC; Thu,  7 Aug 2025 02:03:49 +0000 (UTC)
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; bh=e/mO29Vn1/6qZpVxxklJ5nPaP1FzzlSf1Oy41vIuyzA=;
- h=From:Message-Id:Content-Type:Mime-Version:Subject:Date:To:x-icloud-hme;
- b=eCuCWesqRa4C56pptd9dqPlBvlIiCZP+ScabfwX0fXb3OjDd5eqrh6JnVw5edG8RvelC7+Tot1mlYvn8juHZZLfvnbeCYj1d0H0E0CTfcuCSqagAR0s//KODZFB2mih/UbWgU5HH1mOTT3LpGQYFEr81KYIvQqeSoaSN3i2ailrQxEwHWfpSFQu4fMwVmWUHeEf+jOX2y8ZrNP2tx5in0N9oyhahio1HFVLoKoFK5Ctymt64XrzlOv/hnwEKFEd+3KWrObEVPmhe1h+Eoo8o7FJ/oBh83OANt9o+MIr5BWK735sTWRI0J7LQXROYYXOtF+TY0kd6oxDso3wXSs0m8Q==
-X-Client-IP: 46.189.47.18
-Received: from smtpclient.apple (qs-asmtp-me-k8s.p00.prod.me.com
- [17.57.155.37])
- by p00-icloudmta-asmtp-us-east-2d-20-percent-1 (Postfix) with ESMTPSA id
- 6DB4218000A0; Thu,  7 Aug 2025 02:03:47 +0000 (UTC)
-From: Mohamed Mediouni <mohamed@unpredictable.fr>
-Message-Id: <C4D5D2CF-64BF-400A-831C-903F4730BC9B@unpredictable.fr>
-Content-Type: multipart/alternative;
- boundary="Apple-Mail=_A7450463-3FF0-435C-9A6E-EE6B63A5FCFA"
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3863.100.1\))
-Subject: Re: [PATCH v5 02/13] accel, hw/arm, include/system/hvf:
- infrastructure changes for HVF vGIC
-Date: Thu, 7 Aug 2025 04:03:35 +0200
-In-Reply-To: <32928301-9db8-4003-84fc-82f3129bb8c3@linaro.org>
-Cc: qemu-devel@nongnu.org, Mads Ynddal <mads@ynddal.dk>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Shannon Zhao <shannon.zhaosl@gmail.com>,
- Phil Dennis-Jordan <phil@philjordan.eu>,
- Igor Mammedov <imammedo@redhat.com>, qemu-arm@nongnu.org,
- Alexander Graf <agraf@csgraf.de>, Roman Bolshakov <rbolshakov@ddn.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha <anisinha@redhat.com>,
- Cameron Esfahani <dirty@apple.com>
-To: =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-References: <20250728134114.77545-1-mohamed@unpredictable.fr>
- <20250728134114.77545-3-mohamed@unpredictable.fr>
- <32928301-9db8-4003-84fc-82f3129bb8c3@linaro.org>
-X-Mailer: Apple Mail (2.3863.100.1)
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwODA3MDAxNCBTYWx0ZWRfX4LBNJvbztwnD
- WuOb7hZ6lpuTebPjKB7HUbdePTZ7qUpzWMmOxHlKpD9X03AJ1hXeEX+vCcaCaeda6jbAqW6ZQtx
- N3TTuLJla8CoU027R4Y8tjI9d1ptutJzHtK0DUf9cBlGnXmxvVjrBxT41FO8t7IPxobfS3N7Icp
- woTJ4Zx1vgm5i/OGUnbdYcI2D0WNsJlwX7P2GcfbdIAOhWBisZu2dlsLqeG0nvsrkUWwPFXCapg
- 1dLW+ftfmbDuWcZdFoOOTFZrA4l00Q7T7CUiMrvNPZXay4j5HB0mso8fVRY+aIBr16SyVQqEw=
-X-Proofpoint-ORIG-GUID: j6AoxJ-ODZ_aYJe1eBDZUHvNsdllyqhb
-X-Proofpoint-GUID: j6AoxJ-ODZ_aYJe1eBDZUHvNsdllyqhb
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.9,FMLib:17.12.80.40
- definitions=2025-08-06_05,2025-08-06_01,2025-03-28_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 clxscore=1030
- malwarescore=0 mlxscore=0 bulkscore=0 suspectscore=0 phishscore=0 spamscore=0
- mlxlogscore=999 adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.22.0-2506270000 definitions=main-2508070014
-Received-SPF: pass client-ip=57.103.84.160;
- envelope-from=mohamed@unpredictable.fr; helo=outbound.qs.icloud.com
-X-Spam_score_int: -7
-X-Spam_score: -0.8
-X-Spam_bar: /
-X-Spam_report: (-0.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, HTML_MESSAGE=0.001,
- RCVD_IN_BL_SPAMCOP_NET=1.347, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1ujx9P-0006bv-Ps
+ for qemu-arm@nongnu.org; Thu, 07 Aug 2025 05:43:07 -0400
+Received: from mail-yw1-x112c.google.com ([2607:f8b0:4864:20::112c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1ujx9O-0002RQ-1D
+ for qemu-arm@nongnu.org; Thu, 07 Aug 2025 05:43:07 -0400
+Received: by mail-yw1-x112c.google.com with SMTP id
+ 00721157ae682-712be7e034cso7933967b3.0
+ for <qemu-arm@nongnu.org>; Thu, 07 Aug 2025 02:43:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1754559784; x=1755164584; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=nNOj+Fog91d5AhklEuu/5oGoMorQcoVZ9r41Ehy9MHM=;
+ b=SknZsAMIgPIvJu0i3YZwAboWj9uybjbngjedc8H5Uu2nB3nkvcth4YsWMfwTUSXbep
+ L+skYUlCQtvEkhSF9ApDlAw/WIi0EG6rCyOJxC7j/dQpSio3MY39e4MQMTmB0vKCQVOK
+ BEG/Z1Oz1J0D0yTQ5Aa7Ywjp7s2Zmqb2Xr1L8TbIpcxh1Cz1BiFUj03ZdwRtCfgk/6rz
+ GbWfZAP4yIz/1GRY8EyEj7dpz9fGiF4qGjFwX2GgE3M8fVo5XgUgX2t0EoQ7B1dTm2Ly
+ ZkB13vkM8zqWxSwjDdGLKE4cO28KdpOvg0o1Oz/garz+yw/ut0tT+10x3QqsqQizT5Ll
+ l76g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1754559784; x=1755164584;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=nNOj+Fog91d5AhklEuu/5oGoMorQcoVZ9r41Ehy9MHM=;
+ b=Zr3OoK5nNbfyvSfU/pyN9yeFGeHWDVaMMYhQ5IORbx+eut7EWGJZeap05KijPdG1FM
+ oEXjWi+hOg2S8on3735517iSt5DYrjVrOcOnb2LG5iOAbDIv7tHJmmUGZQJVKJidz6ym
+ VbS7C747hwpWrwyvD+m5eAiACUqVNe8AEzRVKKUw3aNeBVJKa4yazj/rwGrLTG4vwrS/
+ XpiD5neOLPMkm1D++QR9XbrEKETxSYhqmNX8bY8nf3j1x5Enlv14xGU3UCQEtI48vEzy
+ tywmoBJtCeS1NGikgsdS+Y0CZVSc+LSyIs9w08iMH8rQuOP61jUcwJs8ZjHkfrBmPq5b
+ f1KA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCW01BYWp2ZEWLJZAgf/fICw1P9ru6ZfseANAJdjtK4WwkETUflxIy4t6mmyS6ZxB0a/XoOV882inA==@nongnu.org
+X-Gm-Message-State: AOJu0Yw+pBSqpra3mp+mINZeJjULhflMlWnaRZTKdsc1xZ5q2UYm3ffu
+ 6JeSnOhAsFTRjKB8BWVVlYj4whBS9cNM4gw0fb52noRBdS5t2WmZ4/gPv3kL9TRbm7CJJoEqjlF
+ FHG/sb5yN4R3AbbOJVONlbouUgQEAKvOR4uJA1IvuWw==
+X-Gm-Gg: ASbGncvFh8Ifk2/8jm6nu/UJ2cFG/ldyxY+ywLAqCLzduc5X1YBamtcSAzlQntuziae
+ WBChFex6Ld10KBIKchv/eapEcMoAPaO6kBil1U3vke/GeCT4qtNxPkXXCqgo870Zqsz0yJtejkP
+ QhvotZlMsDP4rBd7EkJfdSFsHBjnyYJ5KRrU4UwvrrjYdLo5AJ5Eta2rVCEujUZJh5iqeUMjjEr
+ MYCMyD9
+X-Google-Smtp-Source: AGHT+IGyMYNRHQzSHhgea7B4Jb2jf7My4wczQ3l+DmQ8quU3P+6Rc3KAEvzClY3BD+QplutJOOFhmj2pPIVqozloLr8=
+X-Received: by 2002:a05:690c:968a:b0:718:17b1:40d with SMTP id
+ 00721157ae682-71bc973985bmr85378337b3.7.1754559784091; Thu, 07 Aug 2025
+ 02:43:04 -0700 (PDT)
+MIME-Version: 1.0
+References: <20250722201404.2368507-1-vacha.bhavsar@oss.qualcomm.com>
+ <20250722201404.2368507-2-vacha.bhavsar@oss.qualcomm.com>
+ <875xf36qyk.fsf@draig.linaro.org>
+ <CAFEAcA8o4wEHHDXVj0Fcc3i8g+49psY7YSf1AqGiGe9vNuXiQA@mail.gmail.com>
+ <87ikj3545v.fsf@draig.linaro.org>
+ <CAFEAcA-Y7utLb9cciGJOVAPF8Y0W4RxcOLDnNS7ptpHtYVG_EQ@mail.gmail.com>
+ <CAEWVDmsOD-vNc6YbwfND9yzfz-G8kEsFfpEtJ5A+duhUzGU2Pg@mail.gmail.com>
+ <CAEWVDms3R+_dv79GTdmzbJBJ3rb=hSi7rRj=f4rzRFwsHnzXJg@mail.gmail.com>
+In-Reply-To: <CAEWVDms3R+_dv79GTdmzbJBJ3rb=hSi7rRj=f4rzRFwsHnzXJg@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 7 Aug 2025 10:42:52 +0100
+X-Gm-Features: Ac12FXziHR0QgX7Lu1Vbwgf3rgW2LXJfit-0IrvjmFBIDgH3Odju9jUtVI78Hws
+Message-ID: <CAFEAcA_Q-MhmFNvXUwUXF2_MJqHxujPL7C3=PxC8=hMprerDxA@mail.gmail.com>
+Subject: Re: [PATCH v4 1/2] target/arm: Increase MAX_PACKET_LENGTH for SME ZA
+ remote gdb debugging
+To: Vacha Bhavsar <vacha.bhavsar@oss.qualcomm.com>
+Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -95,69 +103,46 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+On Wed, 6 Aug 2025 at 22:18, Vacha Bhavsar
+<vacha.bhavsar@oss.qualcomm.com> wrote:
+>
+> Hi,
+>
+> I reached out to the gdb dev team regarding these questions
+> on how to correctly handle the SME za storage. This discussion
+> can be found here:
+>
+> https://sourceware.org/pipermail/gdb/2025-August/051858.html
+> https://sourceware.org/pipermail/gdb/2025-August/051860.html
+>
+> It seems this approach of increasing the buffer size to above
+> 131100 has also been applied to gdbserver as there currently
+> isn't support for partial data transfers.
 
---Apple-Mail=_A7450463-3FF0-435C-9A6E-EE6B63A5FCFA
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain;
-	charset=utf-8
+Thanks for chasing that up.
 
+(1) I note that gdb bumped this to 131104, and we only
+have 131100. We should check what the worst-case is and
+make sure our number is big enough (maybe we count different
+things in our buffer size than gdbstub does?)
 
+(2) We should add a comment to MAX_PACKET_LENGTH, something
+like:
 
-> On 6. Aug 2025, at 13:32, Philippe Mathieu-Daud=C3=A9 =
-<philmd@linaro.org> wrote:
->=20
-> ... better add hvf_arch_register_class_properties(), empty stub
-> on x86 and filled in aarch64.
-Would it be fine to have the setting still without it doing anything =
-right now?
+/*
+ * Most "large" transfers (e.g. memory reads, feature XML
+ * transfer) have mechanisms in the gdb protocol for splitting
+ * them. However, register values in particular cannot currently
+ * be split. This packet size must therefore be at least big enough
+ * for the worst-case register size. Currently that is Arm SME
+ * ZA storage with a 256x256 byte value. We also must account
+ * for the conversion from raw data to hex in gdb_memtohex(),
+ * which writes 2*size + 1 bytes, and for other overhead like
+ * the command itself or the checksum.
+ */
 
-(For reference, Apple added APIC APIs in macOS 12 on x86 - which we =
-might possibly want to add later or not=E2=80=A6)
+(but ideally check the figures and be a bit less vague about
+the "other overhead" :-))
 
-Or might as well implement support for the HVF APIC in the same series =
-(?)=
-
---Apple-Mail=_A7450463-3FF0-435C-9A6E-EE6B63A5FCFA
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/html;
-	charset=utf-8
-
-<html aria-label=3D"message body"><head><meta http-equiv=3D"content-type" =
-content=3D"text/html; charset=3Dutf-8"></head><body =
-style=3D"overflow-wrap: break-word; -webkit-nbsp-mode: space; =
-line-break: after-white-space;"><br =
-id=3D"lineBreakAtBeginningOfMessage"><div><br><blockquote =
-type=3D"cite"><div>On 6. Aug 2025, at 13:32, Philippe Mathieu-Daud=C3=A9 =
-&lt;philmd@linaro.org&gt; wrote:</div><br =
-class=3D"Apple-interchange-newline"><div><span style=3D"caret-color: =
-rgb(0, 0, 0); font-family: Helvetica; font-size: 12px; font-style: =
-normal; font-variant-caps: normal; font-weight: 400; letter-spacing: =
-normal; text-align: start; text-indent: 0px; text-transform: none; =
-white-space: normal; word-spacing: 0px; -webkit-text-stroke-width: 0px; =
-text-decoration: none; float: none; display: inline !important;">... =
-better add hvf_arch_register_class_properties(), empty stub</span><br =
-style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
-12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
-letter-spacing: normal; text-align: start; text-indent: 0px; =
-text-transform: none; white-space: normal; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration: none;"><span =
-style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
-12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
-letter-spacing: normal; text-align: start; text-indent: 0px; =
-text-transform: none; white-space: normal; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
-display: inline !important;">on x86 and filled in aarch64.</span><br =
-style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
-12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
-letter-spacing: normal; text-align: start; text-indent: 0px; =
-text-transform: none; white-space: normal; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration: =
-none;"></div></blockquote></div>Would it be fine to have the setting =
-still without it doing anything right now?<div><br></div><div>(For =
-reference, Apple added APIC APIs in macOS 12 on x86 - which we might =
-possibly want to add later or not=E2=80=A6)</div><div><br></div><div>Or =
-might as well implement support for the HVF APIC in the same series =
-(?)</div></body></html>=
-
---Apple-Mail=_A7450463-3FF0-435C-9A6E-EE6B63A5FCFA--
+-- PMM
 

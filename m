@@ -4,91 +4,134 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8106C87FD2
-	for <qemu-arm@archiver.kernel.org>; Fri,  8 Aug 2025 12:27:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35FD8C87FD3
+	for <qemu-arm@archiver.kernel.org>; Fri,  8 Aug 2025 13:13:28 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ukMBY-0007M6-77; Fri, 08 Aug 2025 08:27:02 -0400
+	id 1ukMuP-0001Cv-Nr; Fri, 08 Aug 2025 09:13:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1ukMBT-0007LB-Ja
- for qemu-arm@nongnu.org; Fri, 08 Aug 2025 08:26:55 -0400
-Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1ukMBR-00037E-Bt
- for qemu-arm@nongnu.org; Fri, 08 Aug 2025 08:26:55 -0400
-Received: by mail-ed1-x52b.google.com with SMTP id
- 4fb4d7f45d1cf-615c29fc31eso3896506a12.0
- for <qemu-arm@nongnu.org>; Fri, 08 Aug 2025 05:26:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1754656011; x=1755260811; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=MHkclpiD8YC6oyRY7ajOLzf14SPFUCjolM10wDvyHMg=;
- b=w3P/214dOh1vdj++EpoiMqGJYZgJFko0YngnG45+wfz0s0B4jlS5yLWosTrurn1i9g
- oPf/qgxEiQyHXmB6XubXoVEu2G67Z7CTjEhz6gHXYdnBDY2X4zDmn3XWcMIrOzhkW6XP
- 86+Btzgf9RWJ9OgQTPm21MuSvJiF1PNk5nTy9WPYEBmFdx6JnNDjU5jqbEbpQEppi0Eg
- o2HYwdvQnzaZgVoynasx8ou6UOFatUlB3jiIUCE4WgmIJMrzSPxI2p+70fsjdXfvPNdo
- aO3CFZkF2Lw2RLTQx/7TluGY6ftM0PdAVDj6TODDFkhyUwLXGI8Lv1lSfsGXS/CHtg8I
- U0SA==
+ (Exim 4.90_1) (envelope-from <armenon@redhat.com>)
+ id 1ukHKm-0006hi-JX
+ for qemu-arm@nongnu.org; Fri, 08 Aug 2025 03:16:13 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armenon@redhat.com>)
+ id 1ukHKd-0007Gp-Rj
+ for qemu-arm@nongnu.org; Fri, 08 Aug 2025 03:16:12 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1754637356;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=674/Cf6toA/OKPIbAxIkqVYnsPnsPyHvnVzOFE9af/o=;
+ b=hsi2OxKBywL13HvJB7M0TxKpSfddkapmiLuwW7dwktCLvVGJ4rCONeszfsxFdv32Z207CU
+ 5R/AOSDjvaUeVR/msK8h0/i1BqRpzrhzABxWnJtJNQo0ROQMMhJ3jvvsGN9u/x89c9OACa
+ Y/yNDjFACiz4M2TGnOQUWVWckkUKs1w=
+Received: from mail-pl1-f200.google.com (mail-pl1-f200.google.com
+ [209.85.214.200]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-599-xSByiy4XOSCC6Z7Ph5TwdQ-1; Fri, 08 Aug 2025 03:15:52 -0400
+X-MC-Unique: xSByiy4XOSCC6Z7Ph5TwdQ-1
+X-Mimecast-MFC-AGG-ID: xSByiy4XOSCC6Z7Ph5TwdQ_1754637352
+Received: by mail-pl1-f200.google.com with SMTP id
+ d9443c01a7336-23fe28867b7so23573105ad.2
+ for <qemu-arm@nongnu.org>; Fri, 08 Aug 2025 00:15:52 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1754656011; x=1755260811;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ d=1e100.net; s=20230601; t=1754637352; x=1755242152;
+ h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+ :mime-version:subject:date:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=MHkclpiD8YC6oyRY7ajOLzf14SPFUCjolM10wDvyHMg=;
- b=aZ7C7kPkm09LOvlh5UZhrPsbO0np8eo28NFkKDILGZAz+n98CrLkt6e74j7O5oTNUQ
- k8o9dUAW5rcXMW2zbglyxy3W3Oowe28wahX9rXFaVXphv41X6ssl/YtVOW7D7hY0iBEL
- MtDtg1II0E/ILkm23Yz+kc9GktHk/4f5BvvrHF78KdsYcois+Dpcju77bpcuwCmafvta
- 40/RBXuVhtv2NLmZZ3nFCmK2obqGgpH+1MdhRUJ093IEhtziwej+FSl1plj/ZacHEZkF
- dIXBqXm/+11CrSYth82LYQj09A1LThpizf3hUtafsWyRdpCOqFBvF6fVA8gkR6n8xPs8
- xACw==
+ bh=674/Cf6toA/OKPIbAxIkqVYnsPnsPyHvnVzOFE9af/o=;
+ b=SaKr4In9WqJTgCf/sme4aIFR5Kagusu60rlbcD0lFu/2WU89MtnbdkwxPZKk1jhsug
+ kGWWGwy/qP0cO04Wc+xeDPNX3VygATNoejrOsBT/qfLmHRCDx+gjgN0pjGJOZFryUZtl
+ ncez6QaVu6AqPK4HEFew918lMfyc2zeAx/J1EGyU4WZaruxxKgobsxUqkL/KMgW9bX7U
+ tEKgg62as46uNpQMeU2Q5lVNFtny9FhKxOmvwa1EjHNrWXMKjoNjzYNfvtNthtLN2tgs
+ S+wWNG3OjWNZTdZK7tw3p1kL1JNVj1CHuZciE/GW7gbX/Bm3HngMccSZ3GEIQCo/gHNF
+ rLvw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXTlu9y5TzKIcAKhf7iPjmIZARAcsLJZ2nJJF5aAhFBD+GowTx/aIj82dblNnLxX6Rf2WS1/cmuGA==@nongnu.org
-X-Gm-Message-State: AOJu0YwaArN1/dZjhWAgX4enmHl+9/nZQth3j3aQRO6ZSrJ+KG8iJpI2
- 1+iGge+s3PSquKYTLM4ZZHKh1YVFIjYEeWzylOq0qR1OXUjqq2UkacfKUD7NlCg4M2CzKaMqrGO
- EpNfr27Dskbz/C3yH85RoKLbzV5tpMn4PWknTTpeq8Q==
-X-Gm-Gg: ASbGncsTcO3xD0FH66dkv/VfFeirBn6GcnoGFB9CMgM3/zfb7swQw3SP/4bTKNVpj/E
- TYdN9fmEGrU80QUR/63VC+mc4yqjE35mLtQ9y5cU6EYhZEtk1ecDYS4GpC2iVFNaqUc77q9LXYI
- F46u7PAjhfH8TGS/WDqDX+MorgsCRpME3nAF9J3IOf4hcJu/e9jFoUZTKlNCmilJsMScBvChxes
- IWjqCx1
-X-Google-Smtp-Source: AGHT+IH6UoqUnU/QpUShLGftP7CdVKHxQa5bhFp5H4j2FM0T7zV7TRg9lzO7HiG8QMMkmeLuEFuHeaP6H3WnYEXA6D0=
-X-Received: by 2002:a05:6402:3485:b0:617:bb83:99a0 with SMTP id
- 4fb4d7f45d1cf-617e2e7c16dmr2266350a12.30.1754656011113; Fri, 08 Aug 2025
- 05:26:51 -0700 (PDT)
+ AJvYcCVXXPiOgRMLJpFpwwImfBovA3A2iawsgaW5KxdbU0vWhMK0BivSVooZKdUujfiniF29CWwoJb0X0A==@nongnu.org
+X-Gm-Message-State: AOJu0YwoC4rco7CYLD8Q0P68g9s0vYBG8NNpdR47ZnfaE+EILAmKPqDE
+ kKgNQHXQqNztWrRppN9q3mdONi/Xb+k6NIgtSM+WsZwEA7R7bzU43FzP1Ja3G1y2C0zQXyS9QUb
+ LHjaH/thffkpRJLCh9pRr7EIRpNRwQAeMe67BP9ronjwLI1epCUwmfg==
+X-Gm-Gg: ASbGnct7URJ/ai6vsmQAiNQesASW1h0Pc1CeEhpaRvr8wM6ygt99p5V2m8HM+rYJH1t
+ k7uBpjjQPwNPFqXnZ0izV3YwKrmzyRW4syGJxutNC3b7ehycVe7FrF6SPNx5oDkYJ+PUe2LpiTL
+ 4duByHfJcFx87oa/jg2dsSK74EQMmDQE6Fd+Kg0ovA9UcMhoaZ080IS0jLQo/QGfuF6bogSDkH4
+ kWcdHf0+3C+I4+yjFIK/RsOpzG3rAs5QL+tupoAbPdTrQjVLmX5q8vfCq02ZKsug0Ze+tBhjnxm
+ AU+0R5FLBofZi9eJ1hmWIYBIPXWkXrUOOPLmWjeePcHjeG/841EJAA==
+X-Received: by 2002:a17:903:1106:b0:240:3f4d:b9b1 with SMTP id
+ d9443c01a7336-242c21fe5e9mr29386925ad.29.1754637351692; 
+ Fri, 08 Aug 2025 00:15:51 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFzaXDhUkp8uaAIKJYAIHTJ7m/BlrYP3t6Ym5xHEMHtCt98P77XwcBU5znFqIPSWAGq4YPElw==
+X-Received: by 2002:a17:903:1106:b0:240:3f4d:b9b1 with SMTP id
+ d9443c01a7336-242c21fe5e9mr29386375ad.29.1754637351236; 
+ Fri, 08 Aug 2025 00:15:51 -0700 (PDT)
+Received: from armenon-kvm.bengluru.csb ([49.36.101.237])
+ by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-241e899d347sm199659385ad.140.2025.08.08.00.15.42
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 08 Aug 2025 00:15:50 -0700 (PDT)
+From: Arun Menon <armenon@redhat.com>
+Date: Fri, 08 Aug 2025 12:43:34 +0530
+Subject: [PATCH v10 08/27] migration: push Error **errp into
+ qemu_load_device_state()
 MIME-Version: 1.0
-References: <20250808-gdbstub-aarch64-pstate-regs-v1-0-14ba70be1b3d@linaro.org>
- <20250808-gdbstub-aarch64-pstate-regs-v1-1-14ba70be1b3d@linaro.org>
- <CAFEAcA-2Zt7HTDX_bdBHjJyQS7o=csE1x6eDymyEPkV3K+pXrg@mail.gmail.com>
-In-Reply-To: <CAFEAcA-2Zt7HTDX_bdBHjJyQS7o=csE1x6eDymyEPkV3K+pXrg@mail.gmail.com>
-From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-Date: Fri, 8 Aug 2025 15:26:25 +0300
-X-Gm-Features: Ac12FXxb_WNFiQ0jXr-R33ezBkmA_j-8G9JPQ6q5lo7r9GQ5a6tc-KGIMngASXk
-Message-ID: <CAAjaMXbZK=n_HJGrmuGv1DZZ3AeaX7-fK-soFto4J=w-9=vdmQ@mail.gmail.com>
-Subject: Re: [PATCH 1/4] gdbstub/aarch64: add CurrentEL register
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org,
- =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- Gustavo Romero <gustavo.romero@linaro.org>, 
- Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::52b;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-ed1-x52b.google.com
+Message-Id: <20250808-propagate_tpm_error-v10-8-3e81a1d419b2@redhat.com>
+References: <20250808-propagate_tpm_error-v10-0-3e81a1d419b2@redhat.com>
+In-Reply-To: <20250808-propagate_tpm_error-v10-0-3e81a1d419b2@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Peter Xu <peterx@redhat.com>, Fabiano Rosas <farosas@suse.de>, 
+ =?utf-8?q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>, 
+ Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>, 
+ Dmitry Osipenko <dmitry.osipenko@collabora.com>, 
+ "Michael S. Tsirkin" <mst@redhat.com>, 
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
+ Cornelia Huck <cohuck@redhat.com>, Halil Pasic <pasic@linux.ibm.com>, 
+ Eric Farman <farman@linux.ibm.com>, Thomas Huth <thuth@redhat.com>, 
+ Christian Borntraeger <borntraeger@linux.ibm.com>, 
+ Matthew Rosato <mjrosato@linux.ibm.com>, 
+ Richard Henderson <richard.henderson@linaro.org>, 
+ David Hildenbrand <david@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>, 
+ Nicholas Piggin <npiggin@gmail.com>, 
+ Harsh Prateek Bora <harshpb@linux.ibm.com>, 
+ Paolo Bonzini <pbonzini@redhat.com>, Fam Zheng <fam@euphon.net>, 
+ Alex Williamson <alex.williamson@redhat.com>, 
+ =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>, 
+ Steve Sistare <steven.sistare@oracle.com>, 
+ =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>, 
+ qemu-s390x@nongnu.org, qemu-ppc@nongnu.org, 
+ Hailiang Zhang <zhanghailiang@xfusion.com>, 
+ Stefan Berger <stefanb@linux.vnet.ibm.com>, 
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
+ Arun Menon <armenon@redhat.com>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2682; i=armenon@redhat.com;
+ h=from:subject:message-id; bh=FTU2QK1xtHVGrbgg6clW9lVV6renoihKHbOJ3mkz6GY=;
+ b=owGbwMvMwCWWVaVqcZPfqI/xtFoSQ8bUxVd1+iwnseUpTpuwOFHyZeGrqTmSzDl+Ico8elE8g
+ ezdP3I7SlkYxLgYZMUUWRq+Bsg2BRRGRNq+vA4zh5UJZAgDF6cATGTnRUaG44GTf7w/9/pJcN4G
+ /TqL5UujfOQfCnw4u/WPY+7iacvvNjH8034x09BmR3SdvCdDUFCFWBr7w//Vi3c+WDDZ1/3LzP4
+ X3AA=
+X-Developer-Key: i=armenon@redhat.com; a=openpgp;
+ fpr=80F5501D82507158593DE9D76A7A2538D90F328E
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: 5Dlo_ngSFH35DfFj5ohQihgXnfwrSclU3sMonP1dFsc_1754637352
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=armenon@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Fri, 08 Aug 2025 09:13:19 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -103,85 +146,74 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, Aug 8, 2025 at 3:21=E2=80=AFPM Peter Maydell <peter.maydell@linaro.=
-org> wrote:
->
-> On Fri, 8 Aug 2025 at 12:30, Manos Pitsidianakis
-> <manos.pitsidianakis@linaro.org> wrote:
-> >
-> > Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-> > ---
-> >  gdb-xml/aarch64-core.xml | 5 +++++
-> >  target/arm/cpu.h         | 1 +
-> >  target/arm/gdbstub64.c   | 6 ++++++
-> >  3 files changed, 12 insertions(+)
-> >
-> > diff --git a/gdb-xml/aarch64-core.xml b/gdb-xml/aarch64-core.xml
-> > index b8046510b9a085d30463d37b3ecc8d435f5fb7a4..19ad743dc5607b4021fb795=
-bfb9b8e9cf0adef68 100644
-> > --- a/gdb-xml/aarch64-core.xml
-> > +++ b/gdb-xml/aarch64-core.xml
-> > @@ -91,4 +91,9 @@
-> >    </flags>
-> >    <reg name=3D"cpsr" bitsize=3D"32" type=3D"cpsr_flags"/>
-> >
-> > +  <flags id=3D"current_el_flags" size=3D"8">
-> > +    <!-- Exception Level.  -->
-> > +    <field name=3D"EL" start=3D"2" end=3D"3"/>
-> > +  </flags>
-> > +  <reg name=3D"CurrentEL" bitsize=3D"64" type=3D"current_el"/>
-> >  </feature>
-> > diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> > index dc9b6dce4c92297b2636d0d7c0dce580f1806d5b..c3070cd9863381fac40f564=
-0e0a7a84dfa1c6e06 100644
-> > --- a/target/arm/cpu.h
-> > +++ b/target/arm/cpu.h
-> > @@ -1473,6 +1473,7 @@ void pmu_init(ARMCPU *cpu);
-> >   * AArch32 mode SPSRs are basically CPSR-format.
-> >   */
-> >  #define PSTATE_SP (1U)
-> > +#define PSTATE_EL (3U << 2)
-> >  #define PSTATE_M (0xFU)
-> >  #define PSTATE_nRW (1U << 4)
-> >  #define PSTATE_F (1U << 6)
-> > diff --git a/target/arm/gdbstub64.c b/target/arm/gdbstub64.c
-> > index 08e28585396816ab90d6d8e460ff8171892fe8da..16b564e1a970cb5e854a705=
-619f71ffc61545a73 100644
-> > --- a/target/arm/gdbstub64.c
-> > +++ b/target/arm/gdbstub64.c
-> > @@ -48,6 +48,9 @@ int aarch64_cpu_gdb_read_register(CPUState *cs, GByte=
-Array *mem_buf, int n)
-> >          return gdb_get_reg64(mem_buf, env->pc);
-> >      case 33:
-> >          return gdb_get_reg32(mem_buf, pstate_read(env));
-> > +    case 34:
-> > +        /* CurrentEL */
-> > +        return gdb_get_reg64(mem_buf, env->pstate & PSTATE_EL);
-> >      }
->
-> The debugger already has this information in the 'cpsr'
-> register, so it could implement convenience views of
-> the subfields itself if it liked.
+This is an incremental step in converting vmstate loading
+code to report error via Error objects instead of directly
+printing it to console/monitor.
+It is ensured that qemu_load_device_state() must report an error
+in errp, in case of failure.
 
-Yep, but consider: it is a register, architecturally, so it's nice to
-include it for consistency. It's redundant only because gdb has cpsr
-which is not a register. So this is about more about being technically
-correct than correcting an actual problem.
+Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Signed-off-by: Arun Menon <armenon@redhat.com>
+---
+ migration/colo.c   | 4 ++--
+ migration/savevm.c | 5 +++--
+ migration/savevm.h | 2 +-
+ 3 files changed, 6 insertions(+), 5 deletions(-)
 
+diff --git a/migration/colo.c b/migration/colo.c
+index e0f713c837f5da25d67afbd02ceb6c54024ca3af..0ba22ee76a13e313793f653f43a728e3c433bbc1 100644
+--- a/migration/colo.c
++++ b/migration/colo.c
+@@ -729,9 +729,9 @@ static void colo_incoming_process_checkpoint(MigrationIncomingState *mis,
+     bql_lock();
+     vmstate_loading = true;
+     colo_flush_ram_cache();
+-    ret = qemu_load_device_state(fb);
++    ret = qemu_load_device_state(fb, errp);
+     if (ret < 0) {
+-        error_setg(errp, "COLO: load device state failed");
++        error_prepend(errp, "COLO: load device state failed: ");
+         vmstate_loading = false;
+         bql_unlock();
+         return;
+diff --git a/migration/savevm.c b/migration/savevm.c
+index 8c107fb5b89dea4d1b9a27466247c5d7c6b63bec..8557cef35eaf834166ed05ef8b39d79ead47b78f 100644
+--- a/migration/savevm.c
++++ b/migration/savevm.c
+@@ -3255,15 +3255,16 @@ int qemu_loadvm_state(QEMUFile *f, Error **errp)
+     return ret;
+ }
+ 
+-int qemu_load_device_state(QEMUFile *f)
++int qemu_load_device_state(QEMUFile *f, Error **errp)
+ {
++    ERRP_GUARD();
+     MigrationIncomingState *mis = migration_incoming_get_current();
+     int ret;
+ 
+     /* Load QEMU_VM_SECTION_FULL section */
+     ret = qemu_loadvm_state_main(f, mis);
+     if (ret < 0) {
+-        error_report("Failed to load device state: %d", ret);
++        error_setg(errp, "Failed to load device state: %d", ret);
+         return ret;
+     }
+ 
+diff --git a/migration/savevm.h b/migration/savevm.h
+index b80770b7461a60e2ad6ba5e24a7baeae73d90955..b12681839f0b1afa3255e45215d99c13a224b19f 100644
+--- a/migration/savevm.h
++++ b/migration/savevm.h
+@@ -67,7 +67,7 @@ int qemu_save_device_state(QEMUFile *f);
+ int qemu_loadvm_state(QEMUFile *f, Error **errp);
+ void qemu_loadvm_state_cleanup(MigrationIncomingState *mis);
+ int qemu_loadvm_state_main(QEMUFile *f, MigrationIncomingState *mis);
+-int qemu_load_device_state(QEMUFile *f);
++int qemu_load_device_state(QEMUFile *f, Error **errp);
+ int qemu_loadvm_approve_switchover(void);
+ int qemu_savevm_state_complete_precopy_non_iterable(QEMUFile *f,
+         bool in_postcopy);
 
->
-> If we're going to do this I would prefer it to be because
-> we've gained some consensus with e.g. the gdb maintainers
-> that this is the "preferred" way to expose the CPU state.
-> The XML config stuff lets us do it in our own way if we
-> want to, but I think there is value in consistency across
-> stubs here.
+-- 
+2.50.1
 
-I plan to upstream the XML patches to gdb as well, separately. But
-since we use custom target xml it's not like we depend on gdb to
-change it.
-
->
-> thanks
-> -- PMM
 

@@ -4,82 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D695C87FD3
-	for <qemu-arm@archiver.kernel.org>; Fri,  8 Aug 2025 07:05:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8DEFDC87FD3
+	for <qemu-arm@archiver.kernel.org>; Fri,  8 Aug 2025 08:31:06 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ukH70-00061A-DW; Fri, 08 Aug 2025 03:01:58 -0400
+	id 1ukIV4-000184-RH; Fri, 08 Aug 2025 04:30:55 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1ukH6q-0005s8-8D
- for qemu-arm@nongnu.org; Fri, 08 Aug 2025 03:01:54 -0400
-Received: from p-east3-cluster7-host7-snip4-10.eps.apple.com ([57.103.84.201]
- helo=outbound.qs.icloud.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1ukH6n-0005CF-WD
- for qemu-arm@nongnu.org; Fri, 08 Aug 2025 03:01:47 -0400
-Received: from outbound.qs.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-east-2d-100-percent-5 (Postfix) with ESMTPS id
- 2E3EA1800109; Fri,  8 Aug 2025 07:01:42 +0000 (UTC)
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; bh=e1qt2xIm6hFNGN+Bn3h90BoxPwxyvt7Tg+aWyda3+q8=;
- h=From:To:Subject:Date:Message-Id:MIME-Version:Content-Type:x-icloud-hme;
- b=bfcBUjKPYuzXnl65qyArmHntvuPzgxzI/RZo6vinUdGnpcRp5lYjfMPsrFWU6/n02ziK4nNPw3S/5tM45f/+I4P10upMaDp1sD1cdGUCxzVyqffRXOLJqseDy3jbCeziBLZHGs8Z/8rS1sCXm2AlJPElwWPYJ34fLuHh4071UJKNhUEcjP+N2MJpj2e2a7zNkZLkW/1UKL3u6J4OgO8UBAHAZrnP2YXlW2PyfHPBLI7j1btVvAWiJZA3mnQ4zeZ8v8BBnCznosLKHWWflwFrUrqCukpZe3YYHuSV3KND+8QxkJxo39EXn7Zc4PuGW594FU63JSYlInNMDF5h/Q48DA==
-X-Client-IP: 46.189.47.18
-Received: from localhost.localdomain (qs-asmtp-me-k8s.p00.prod.me.com
- [17.57.155.37])
- by p00-icloudmta-asmtp-us-east-2d-100-percent-5 (Postfix) with ESMTPSA id
- EE0DA1800121; Fri,  8 Aug 2025 07:01:39 +0000 (UTC)
-From: Mohamed Mediouni <mohamed@unpredictable.fr>
-To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Shannon Zhao <shannon.zhaosl@gmail.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha <anisinha@redhat.com>,
- qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- Roman Bolshakov <rbolshakov@ddn.com>, Igor Mammedov <imammedo@redhat.com>,
- Phil Dennis-Jordan <phil@philjordan.eu>, Alexander Graf <agraf@csgraf.de>,
- Mads Ynddal <mads@ynddal.dk>, Cameron Esfahani <dirty@apple.com>,
- Mohamed Mediouni <mohamed@unpredictable.fr>
-Subject: [PATCH v6 00/13] HVF: Add support for platform vGIC and nested
- virtualisation
-Date: Fri,  8 Aug 2025 09:01:24 +0200
-Message-Id: <20250808070137.48716-1-mohamed@unpredictable.fr>
-X-Mailer: git-send-email 2.39.5 (Apple Git-154)
-MIME-Version: 1.0
+ (Exim 4.90_1) (envelope-from <wangyuquan1236@phytium.com.cn>)
+ id 1ukIUy-00012X-Lj; Fri, 08 Aug 2025 04:30:48 -0400
+Received: from zg8tmja5ljk3lje4ms43mwaa.icoremail.net ([209.97.181.73])
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <wangyuquan1236@phytium.com.cn>)
+ id 1ukIUt-0001ZZ-7B; Fri, 08 Aug 2025 04:30:48 -0400
+Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
+ by hzbj-icmmx-6 (Coremail) with SMTP id AQAAfwDHJeKntZVo2nb9BA--.49389S2;
+ Fri, 08 Aug 2025 16:30:31 +0800 (CST)
+Received: from phytium.com.cn (unknown [218.76.62.144])
+ by mail (Coremail) with SMTP id AQAAfwBH0gmNtZVoag0NAA--.18908S11;
+ Fri, 08 Aug 2025 16:30:26 +0800 (CST)
+From: wangyuquan <wangyuquan1236@phytium.com.cn>
+To: tangtao1634@phytium.com.cn, qemu-devel@nongnu.org,
+ Fan Ni <fan.ni@samsung.com>, Peter Maydell <peter.maydell@linaro.org>,
+ mst@redhat.com
+Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>, linux-cxl@vger.kernel.org,
+ linuxarm@huawei.com, qemu-arm@nongnu.org,
+ Yuquan Wang <wangyuquan1236@phytium.com.cn>,
+ Itaru Kitayama <itaru.kitayama@linux.dev>,
+ =?utf-8?q?Philippe_Mathieu-Daud?= =?utf-8?q?=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH v13 1/5] hw/cxl-host: Add an index field to
+ CXLFixedMemoryWindow
+Date: Fri,  8 Aug 2025 16:29:57 +0800
+Message-ID: <20250513111455.128266-2-Jonathan.Cameron@huawei.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20250513111455.128266-1-Jonathan.Cameron@huawei.com>
+References: <20250513111455.128266-1-Jonathan.Cameron@huawei.com>
 Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+X-Patchwork-Submitter: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+X-Patchwork-Id: 14086646
+Received: from frasgout.his.huawei.com (frasgout.his.huawei.com
+ [185.176.79.56]) (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384
+ (256/256 bits)) (No client certificate requested) by smtp.subspace.kernel.org
+ (Postfix) with ESMTPS id 73AE9244669 for <linux-cxl@vger.kernel.org>;
+ Tue, 13 May 2025 11:15:30 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+ t=1747134932; cv=none;
+ b=RFQozbWnCG4HgYZ1BY9ZHb5+wk6od07pH8/tOW19WAKPs6Wsl4Tx97jaoQ18naqZ0bBDD48qlGIV5MfUfP5cLMTMvQGDt1CF3keZYJxpgRbjy1o5oW1NG8c0s/McNXSQO9xNHppIJOGXazLSE/yDXQ/eiNJ8tDKcdNuC4K8Kx88=
+ARC-Message-Signature: i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+ t=1747134932; c=relaxed/simple;
+ bh=QrlUL6ksvmHFzyBFbponr1B6MIoULBZBLeJlHSYQf8I=;
+ h=From:To:CC:Subject:Date:Message-ID:In-Reply-To:References: MIME-Version:Content-Type;
+ b=hULxJVWtnNPbo75dEmcwuFxBEUTZCR4BW0IJLAxYAVqHr0puqFR0aOxx6Qy9Ur7VHWSled98FAIBD3ZuAjPJIC4fpQPE3u0xjtnhhBYXRU+fvEfLZC2Dm4Zy8/5+CZXd4WREA44d5CTvcE46DXhxWYGM+bgst1jI/JdnySmBDGI=
+ARC-Authentication-Results: i=1; smtp.subspace.kernel.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=huawei.com; spf=pass smtp.mailfrom=huawei.com;
+ arc=none smtp.client-ip=185.176.79.56
+Received: from mail.maildlp.com (unknown [172.18.186.31]) by
+ frasgout.his.huawei.com (SkyGuard) with ESMTP id 4ZxYm15Khsz6GD81;
+ Tue, 13 May 2025 19:14:57 +0800 (CST)
+Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71]) by
+ mail.maildlp.com (Postfix) with ESMTPS id 1854E1402A5;
+ Tue, 13 May 2025 19:15:28 +0800 (CST)
+Received: from SecurePC-101-06.china.huawei.com (10.122.19.247) by
+ frapeml500008.china.huawei.com (7.182.85.71) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Tue, 13 May 2025 13:15:27 +0200
+X-Mailer: git-send-email 2.43.0
+Precedence: bulk
+X-Mailing-List: linux-cxl@vger.kernel.org
+MIME-Version: 1.0
+X-ClientProxiedBy: lhrpeml100012.china.huawei.com (7.191.174.184) To
+ frapeml500008.china.huawei.com (7.182.85.71)
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-GUID: q4bR-Sh1gsd6G58QDT2FmG2uipmSUdpK
-X-Proofpoint-ORIG-GUID: q4bR-Sh1gsd6G58QDT2FmG2uipmSUdpK
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwODA4MDA1NyBTYWx0ZWRfX0S3DwgWa+rRS
- vMWbQLSchG79fGaeJ5NkaEv/29yYWHYfiNKQ/uqgo+XRq28T8Va8bztsnV5MqMSlqE8ljBeyE62
- ZAWRvmLgTij/iS4O9ApHJIZ2z2xk3ukH+EWHX8npklv/zzFIGBFc0pbXSwBuuXet99SZHrzF37M
- v8Nh+qkNExvICR7Nn7zaVHdfiuyWmafBQvm2owD8oF0rtE4W1WElnKf7kLT6TcICMpD6sekidRo
- 4OKr47MGN+7OC4fvFIOIkHWASE9bRjsRORXW1j2bzd1R26gGCUBO3Ts6D5yPTgIOP7Wk17Zt8=
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.9,FMLib:17.12.80.40
- definitions=2025-08-08_01,2025-08-06_01,2025-03-28_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- malwarescore=0 bulkscore=0 mlxscore=0
- mlxlogscore=999 spamscore=0
- adultscore=0 clxscore=1030 phishscore=0 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.22.0-2506270000 definitions=main-2508080057
-Received-SPF: pass client-ip=57.103.84.201;
- envelope-from=mohamed@unpredictable.fr; helo=outbound.qs.icloud.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+X-CM-TRANSID: AQAAfwBH0gmNtZVoag0NAA--.18908S11
+X-CM-SenderInfo: 5zdqw5pxtxt0arstlqxsk13x1xpou0fpof0/1tbiAQAQAWiU-30C6wAEsD
+Authentication-Results: hzbj-icmmx-6; spf=neutral smtp.mail=wangyuquan
+ 1236@phytium.com.cn;
+X-Coremail-Antispam: 1Uk129KBjvJXoW7ur43Cw4DtFWDXw1UZFyDGFg_yoW8Cw1kpF
+ 4kurW2gF18GrZYkF40qa9rtwn5Ww4DWFsxCrZxuwn5A3WUtrW7tFnxKa9rAa48CrZ5KF1r
+ GF1S9rn0qa1UtrUanT9S1TB71UUUUUDqnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
+ DUYxn0WfASr-VFAU7a7-sFnT9fnUUIcSsGvfJ3UbIYCTnIWIevJa73UjIFyTuYvj4RJUUU
+ UUUUU
+Received-SPF: pass client-ip=209.97.181.73;
+ envelope-from=wangyuquan1236@phytium.com.cn;
+ helo=zg8tmja5ljk3lje4ms43mwaa.icoremail.net
+X-Spam_score_int: -28
+X-Spam_score: -2.9
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
+X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, MAILING_LIST_MULTI=-1,
+ MSGID_FROM_MTA_HEADER=0.001, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ T_SPF_TEMPERROR=0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
-Precedence: list
 List-Id: <qemu-arm.nongnu.org>
 List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
@@ -90,91 +110,70 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
+Message-ID: <20250808082957.vHpYIyTubuONPz03XR98J28_t6LuSw1hbl-LfyBpNRA@z>
 
-Link to branch: https://github.com/mediouni-m/qemu hvf-irqchip-and-nested
-(tag for this submission: hvf-irqchip-and-nested-v6)
+From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
 
-This series adds supports for nested virtualisation when using HVF on arm64 Macs.
+To enable these to be found in a fixed order, that order needs
+to be known.  This will later be used to sort a list of these
+structures that address map and ACPI table entries are predictable.
 
-It has three parts:
-- Apple vGICv3 support and necessary infrastructure changes for it
-- support for MSI interrupts in GICv3 + GICv2m configurations, which is independent
-from Apple platforms and can be merged independently.
-- Nested virtualisation support. Note that the nested virtualisation implementation
-shipping as of macOS 26.0 is nVHE only, and does not leverage VNCR (FEAT_NV1-style).
+Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+---
+ include/hw/cxl/cxl.h | 1 +
+ hw/cxl/cxl-host.c    | 9 ++++++---
+ 2 files changed, 7 insertions(+), 3 deletions(-)
 
-Known issues:
-- when nested virt is enabled, no UI response within EDK2
-and a permanent wait. Workaround: -boot menu=on,splash-time=0. Interrupts do
-work later on in Linux.
-- This series doesn't contain EL2 physical timer emulation, which is
-needed if not leveraging the Apple vGIC.
-
-To do:
-- Switching ITS to off by default when using HVF w/ vGIC or WHPX (will probably do when both the series are merged)
-- After that, perhaps exit if ITS is explicitly enabled.
-
-PS: I can step up to maintain HVF support if needed.
-
-v1->v2:
-Oops. I did a mistake when preparing my patches.
-
-- Add hvf_arm_el2_enable(_) call to virt_set_virt
-- Fix nested virt support check to add HVF
-
-v2->v3:
-- LORC_EL1 patch was merged separately, remove from this series.
-- fix LPIs when kernel-irqchip disabled and using TCG
-- remove spurious if case in vGIC supported version detection (inapplicable now)
-- Add hvf_enabled() check in combination with hvf kernel-irqchip checks
-- cleanly fail on attempt to use the platform vGIC together with ITS
-
-v3->v4:
-- GIC state save improvements, including saving the opaque Apple-specific state
-- Saving HVF system register state when using the vGIC and/or EL2
-
-v5:
-- oops, fixed up save/restore to be functional
-- misc changes otherwise
-
-v6:
-- Addressing review comments
-
-Mohamed Mediouni (13):
-  hw/arm: virt: add GICv2m for the case when ITS is not available
-  hvf: switch hvf_arm_get_host_cpu_features to not create a vCPU
-  accel, hw/arm, include/system/hvf: infrastructure changes for HVF vGIC
-  hw/intc: Add hvf vGIC interrupt controller support
-  hw/arm, target/arm: nested virtualisation on HVF
-  hvf: save/restore Apple GIC state
-  target/arm: hvf: pass through CNTHCTL_EL2 and MDCCINT_EL1
-  hw/arm: virt: cleanly fail on attempt to use the platform vGIC
-    together with ITS
-  hvf: only call hvf_sync_vtimer() when running without the platform
-    vGIC
-  hvf: sync registers used at EL2
-  hvf: gate ARM_FEATURE_PMU register emulation behind not being at EL2
-  target/arm: hvf: instantiate GIC early
-  target/arm: hvf: add asserts for code paths not leveraged when using
-    the vGIC
-
- accel/hvf/hvf-all.c        |  50 +++
- accel/stubs/hvf-stub.c     |   1 +
- hw/arm/virt-acpi-build.c   |   4 +-
- hw/arm/virt.c              |  43 ++-
- hw/intc/arm_gicv3_common.c |   3 +
- hw/intc/arm_gicv3_hvf.c    | 723 +++++++++++++++++++++++++++++++++++++
- hw/intc/meson.build        |   1 +
- include/hw/arm/virt.h      |   2 +
- include/system/hvf.h       |   3 +
- system/vl.c                |   2 +
- target/arm/hvf-stub.c      |  15 +
- target/arm/hvf/hvf.c       | 240 ++++++++++--
- target/arm/hvf_arm.h       |   3 +
- 13 files changed, 1057 insertions(+), 33 deletions(-)
- create mode 100644 hw/intc/arm_gicv3_hvf.c
-
--- 
-2.39.5 (Apple Git-154)
+diff --git a/include/hw/cxl/cxl.h b/include/hw/cxl/cxl.h
+index 75e47b6864..b2bcce7ed6 100644
+--- a/include/hw/cxl/cxl.h
++++ b/include/hw/cxl/cxl.h
+@@ -27,6 +27,7 @@
+ typedef struct PXBCXLDev PXBCXLDev;
+ 
+ typedef struct CXLFixedWindow {
++    int index;
+     uint64_t size;
+     char **targets;
+     PXBCXLDev *target_hbs[16];
+diff --git a/hw/cxl/cxl-host.c b/hw/cxl/cxl-host.c
+index e010163174..b7aa429ddf 100644
+--- a/hw/cxl/cxl-host.c
++++ b/hw/cxl/cxl-host.c
+@@ -24,13 +24,15 @@
+ 
+ static void cxl_fixed_memory_window_config(CXLState *cxl_state,
+                                            CXLFixedMemoryWindowOptions *object,
+-                                           Error **errp)
++                                           int index, Error **errp)
+ {
+     ERRP_GUARD();
+     g_autofree CXLFixedWindow *fw = g_malloc0(sizeof(*fw));
+     strList *target;
+     int i;
+ 
++    fw->index = index;
++
+     for (target = object->targets; target; target = target->next) {
+         fw->num_targets++;
+     }
+@@ -325,14 +327,15 @@ static void machine_set_cfmw(Object *obj, Visitor *v, const char *name,
+     CXLState *state = opaque;
+     CXLFixedMemoryWindowOptionsList *cfmw_list = NULL;
+     CXLFixedMemoryWindowOptionsList *it;
++    int index;
+ 
+     visit_type_CXLFixedMemoryWindowOptionsList(v, name, &cfmw_list, errp);
+     if (!cfmw_list) {
+         return;
+     }
+ 
+-    for (it = cfmw_list; it; it = it->next) {
+-        cxl_fixed_memory_window_config(state, it->value, errp);
++    for (it = cfmw_list, index = 0; it; it = it->next, index++) {
++        cxl_fixed_memory_window_config(state, it->value, index, errp);
+     }
+     state->cfmw_list = cfmw_list;
+ }
 
 

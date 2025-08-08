@@ -4,90 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9650C87FCB
-	for <qemu-arm@archiver.kernel.org>; Fri,  8 Aug 2025 16:11:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6283C87FCB
+	for <qemu-arm@archiver.kernel.org>; Fri,  8 Aug 2025 16:14:42 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ukPgh-0007TM-T6; Fri, 08 Aug 2025 12:11:24 -0400
+	id 1ukPjg-0002vj-6O; Fri, 08 Aug 2025 12:14:32 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1ukPgf-0007Rc-TJ
- for qemu-arm@nongnu.org; Fri, 08 Aug 2025 12:11:21 -0400
-Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433])
+ id 1ukPjZ-0002u5-Pz
+ for qemu-arm@nongnu.org; Fri, 08 Aug 2025 12:14:25 -0400
+Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1ukPgd-0000bk-Q6
- for qemu-arm@nongnu.org; Fri, 08 Aug 2025 12:11:21 -0400
-Received: by mail-pf1-x433.google.com with SMTP id
- d2e1a72fcca58-76bd041c431so2291074b3a.2
- for <qemu-arm@nongnu.org>; Fri, 08 Aug 2025 09:11:19 -0700 (PDT)
+ id 1ukPjW-00016t-RN
+ for qemu-arm@nongnu.org; Fri, 08 Aug 2025 12:14:21 -0400
+Received: by mail-pl1-x629.google.com with SMTP id
+ d9443c01a7336-24099fade34so17375525ad.0
+ for <qemu-arm@nongnu.org>; Fri, 08 Aug 2025 09:14:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1754669478; x=1755274278; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
+ d=linaro.org; s=google; t=1754669657; x=1755274457; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=oy8fGZgz5czm6m7hc2lpWMbnjzGx0NfUtBl03J+qjEk=;
- b=hRvPjwrIYQjAoahJcrjvOifkANe/onxfavDfByEDJ6gfGN4/FWxgeONYkBcCvdYlnK
- k4hi1ZybX+h77hcvQrw6Y/SATCGefAbei/0XsYYRCELo0UV2vUZHpo3fY3NG8yGNY6ZY
- oAIGmHovDNiCOvm0FaW9gmUV96VAqhzIpu6jDK9obsLLX2T7OJnPSg+8CU63pQ1jdYuF
- l541N2Fd7O+FgzQGGbgXTk5CFhUEmXmZRXY5slhlzvIUoIflChbakU7fDBBo7j+Lroxb
- lTpaugdmbFpn9uwzj5D6A33dTpVNo/i/Q7QkH8tJRDR7Ga7shOJDqQDyOtoYBt6uU1rn
- A6Ug==
+ bh=beb9Jvn6Yhwrz3bSjpv5nzdM6y4rkfmDjig7WL8gsg4=;
+ b=rvlAOzrlOl1jsajR79oiVjxE7eFKRFAxphhQS5u5FsMSbJ2ShOrh/ECJs9To6Wg4cQ
+ c6ZkDqCh3RBzFVssiVOpeEA6BupZ7mJtIz/VZq2joryGQeYYGjyeLm3fsYeic3I3di1P
+ vDb6y/+HRyYOfy4xGdiJWQDHikb91GD6xMwLpcWPKUvc9DQN1Nn+rrU6dvvIjbWQKiTw
+ yIsVPENSts/Xe6Vm4sDPYcOXVZWi9vQEqci2hNPnj9VsEuhJLrSMxpFl8QFqNcdFV8hv
+ yvtT10MSTGLG+ICH2s1gAyMM2zrFk70pTEuuHi6uidT6FYBmyIPpyifb2p/HT1h9S0mJ
+ uRFg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1754669478; x=1755274278;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
+ d=1e100.net; s=20230601; t=1754669657; x=1755274457;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=oy8fGZgz5czm6m7hc2lpWMbnjzGx0NfUtBl03J+qjEk=;
- b=WhjaE/gl3Ur+H5Zx8nr5j5HfS1pfBgEiXvbn3MGtBUaGFCfwq3nrc/c3tOLeeEI0zV
- 1N984Mfe2NWfNonoWM/AhDzkW1mPPvBuY0EQMt6FKuccZcKc7fqm07vEoZq1V/SgL5qt
- 3GLDvgwQgjRk5SlBqqn3/mKt8fH8y4vPe0+/E5mXvys7L4eDKieIlee699pS9W7if2E+
- GNUpG+m3/GIedNZnAHcjgKD7HRRuxTFohS7gg7Hf6PlKyb+xKV1mswoNdaGP4HJdVcMm
- 28DGuwiuJoCzZ3GWFSPIMg+a+FUkpJn4tQaX0PHr/yANgnnRSYqceLa+8CuG150pilhv
- 5Tkw==
+ bh=beb9Jvn6Yhwrz3bSjpv5nzdM6y4rkfmDjig7WL8gsg4=;
+ b=nVQMh91F15xKv5XZF6zP3rOut+hrUQMzwd0wl0XXi/M4+eRUNsx5GI5xcK29Habbgj
+ APSfcEpQOf5R3UA2KNMAZwo4IYuN8ES8b/4RBHgacpIQGQBhCYYkpgXq/1LEDf5ipbtW
+ jCfcJ18XAmGpCtPVY+Wyus2VMrY3gZWFETM4ul5YBZFb8WTnSHShhbL3B6MH2qDRQ3b6
+ ecWvP3FcuZUZVSG9NHtGYC7odMyeKBXdl/FooAJkoJMpj1vrDGIs46cpFpMsQ+8LFzTb
+ pjaKgp62888B8jqmCNh5dOJ5J3Jwq6C3MOudb3B4fcbWZGzpO9MfzXP6a6LNDw+3Adbj
+ acQw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUlPtIjS7vJmmJVi5Dzm3jCqFHfIn7EAsQUe8y/HeDeLDcEJ3B/hIsDKya6rKuZ1osLI3xx3ZbIOg==@nongnu.org
-X-Gm-Message-State: AOJu0YyxSuxGqolVQSkmjQP6hnF9tDeRWYMSQt/5vUPGZJgwBtpWI3hP
- xigOUqlDsXG++fiN7lX7H+XVJBZlXkP4yAQEDg/fGaqzoNWfc2Rdg0CfZ0uNAMej+qk=
-X-Gm-Gg: ASbGncuc+PIJO3gNeLCl+03fgBgydAowHQcQsGNsfwczQI7mEDPh3kCir2xOazZLRCV
- CbTYYuyj3Nk+kMhJm6slcM3lOXGwW9T47E3xfjftz/nwWW6ahwtUj+18u5yQCkTT0z9w6IoyN5f
- vIqOSLjlnc0WffdG8dRclkQaFuCiLhIqYGBO1QiPPR1D1bmU9MKv4s4p1Fh8+bIDROkgm7u5tXv
- Nla/fDwgMgy3vDc/E5Q3xSIhLA/mcSpWtamMzoMZaU1RdVSG11BassV6S6rUmHB+Y1qGw0Wmi5q
- 4im5mp8fDXpD0bQiVqXMIH95Dah/vCYQ+Vy5hlgKd6gefM8Evf4z+dj2amDVuxZHJSaoh7IJ6oN
- MyOPASmgslpSCjkh/gD/x2JVD2R1+847T4Ls=
-X-Google-Smtp-Source: AGHT+IGx/y52mouG4lsErVttNo3EJdka0Se0YFszE34++m+vyYXuagFz8REM/OfiVmieFG3hGj49xQ==
-X-Received: by 2002:a05:6a20:3d8b:b0:23f:f659:a0ef with SMTP id
- adf61e73a8af0-240551adbd9mr5801495637.25.1754669478180; 
- Fri, 08 Aug 2025 09:11:18 -0700 (PDT)
+ AJvYcCXkFqgsSOrvnl4hbH6l8kSzg3HKpp2GrJbre2v2rXE4mm31XrjlvR9cG/lM1cFxLXYy/cKmNJFLqg==@nongnu.org
+X-Gm-Message-State: AOJu0Yyly0bOBXKeO/Wp2JdCobzf9ns1GMayfppMony+xteJEtjZplHK
+ /NURf3UxAuMhMxqGNJpX95e2i9OGC4CWpQ5Xzq+puKM1yanMSqCsLPGvfskm0PF9xf0=
+X-Gm-Gg: ASbGncsmpulPAZH2XHk0BJbNIO69k/JFX0mAuEgJO1nbspQ/PegtpqukmvNoqP1sHZY
+ yd0cKWXuP+9sJ4fY+imhOmek+KfSL5/dCmlsrZqH0Uljc0hW92bq6/3yavzZtFM5RvD2iHKiKr8
+ ByAJiKv2CrfH0wisebHrlDez4ei8dlkdfY18H/I/Bj2sYIu+Rgd5wxMLa5QRSoekqUxj2VpC4te
+ xUW0Y4Ymv5SvUBfPRpsMNSESI+5+b05/H3Rd3W2pNLJsKOXdjOZLGFJYvc3/3PGVbtEhcVLtBlR
+ aTZiOM5v85CzmEs0kxl+rolowORQgW5KMugqPs92sGdNUG3q2V6+XFdvoBcNfCe3BJIegFqc78A
+ eE3wB0Y8C/yf0NB/hZ9nFpQbUwvM2CleuxKSENa15qP6l7A==
+X-Google-Smtp-Source: AGHT+IFdtcFpVQtfia5Y19J5hFX4ExR3n5Da5rtLa2hb3BCNesVDaPR8R16diSV223tV0grYofgVmg==
+X-Received: by 2002:a17:903:247:b0:240:3eb9:5363 with SMTP id
+ d9443c01a7336-242c21e082fmr44637545ad.27.1754669657119; 
+ Fri, 08 Aug 2025 09:14:17 -0700 (PDT)
 Received: from [192.168.1.87] ([38.41.223.211])
  by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-76bcceab691sm20638770b3a.55.2025.08.08.09.11.17
+ d9443c01a7336-241e8aaaa75sm214085415ad.154.2025.08.08.09.14.16
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 08 Aug 2025 09:11:17 -0700 (PDT)
-Message-ID: <6190716c-09da-4abe-94e5-2b713855f0e9@linaro.org>
-Date: Fri, 8 Aug 2025 09:11:17 -0700
+ Fri, 08 Aug 2025 09:14:16 -0700 (PDT)
+Message-ID: <9ebe5c4a-b88c-4622-b809-a9085787d841@linaro.org>
+Date: Fri, 8 Aug 2025 09:14:16 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/4] gdbstub/aarch64: add CurrentEL register
-To: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, =?UTF-8?Q?Alex_Benn=C3=A9e?=
- <alex.bennee@linaro.org>, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>, Gustavo Romero <gustavo.romero@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org
-References: <20250808-gdbstub-aarch64-pstate-regs-v1-0-14ba70be1b3d@linaro.org>
- <20250808-gdbstub-aarch64-pstate-regs-v1-1-14ba70be1b3d@linaro.org>
- <CAFEAcA-2Zt7HTDX_bdBHjJyQS7o=csE1x6eDymyEPkV3K+pXrg@mail.gmail.com>
- <CAAjaMXbZK=n_HJGrmuGv1DZZ3AeaX7-fK-soFto4J=w-9=vdmQ@mail.gmail.com>
+Subject: Re: [PATCH v5 17/18] whpx: arm64: gicv3: add migration blocker
 Content-Language: en-US
+To: Mohamed Mediouni <mohamed@unpredictable.fr>, qemu-devel@nongnu.org
+Cc: =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Igor Mammedov <imammedo@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Roman Bolshakov <rbolshakov@ddn.com>, Phil Dennis-Jordan
+ <phil@philjordan.eu>, Ani Sinha <anisinha@redhat.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Alexander Graf <agraf@csgraf.de>,
+ Peter Maydell <peter.maydell@linaro.org>, Mads Ynddal <mads@ynddal.dk>,
+ Sunil Muthuswamy <sunilmut@microsoft.com>, Zhao Liu <zhao1.liu@intel.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Eduardo Habkost <eduardo@habkost.net>, Cameron Esfahani <dirty@apple.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
+ <berrange@redhat.com>, Shannon Zhao <shannon.zhaosl@gmail.com>,
+ qemu-arm@nongnu.org, Yanan Wang <wangyanan55@huawei.com>
+References: <20250808065419.47415-1-mohamed@unpredictable.fr>
+ <20250808065419.47415-18-mohamed@unpredictable.fr>
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-In-Reply-To: <CAAjaMXbZK=n_HJGrmuGv1DZZ3AeaX7-fK-soFto4J=w-9=vdmQ@mail.gmail.com>
+In-Reply-To: <20250808065419.47415-18-mohamed@unpredictable.fr>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::433;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pf1-x433.google.com
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::629;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pl1-x629.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -110,89 +117,43 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 8/8/25 5:26 AM, Manos Pitsidianakis wrote:
-> On Fri, Aug 8, 2025 at 3:21 PM Peter Maydell <peter.maydell@linaro.org> wrote:
->>
->> On Fri, 8 Aug 2025 at 12:30, Manos Pitsidianakis
->> <manos.pitsidianakis@linaro.org> wrote:
->>>
->>> Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
->>> ---
->>>   gdb-xml/aarch64-core.xml | 5 +++++
->>>   target/arm/cpu.h         | 1 +
->>>   target/arm/gdbstub64.c   | 6 ++++++
->>>   3 files changed, 12 insertions(+)
->>>
->>> diff --git a/gdb-xml/aarch64-core.xml b/gdb-xml/aarch64-core.xml
->>> index b8046510b9a085d30463d37b3ecc8d435f5fb7a4..19ad743dc5607b4021fb795bfb9b8e9cf0adef68 100644
->>> --- a/gdb-xml/aarch64-core.xml
->>> +++ b/gdb-xml/aarch64-core.xml
->>> @@ -91,4 +91,9 @@
->>>     </flags>
->>>     <reg name="cpsr" bitsize="32" type="cpsr_flags"/>
->>>
->>> +  <flags id="current_el_flags" size="8">
->>> +    <!-- Exception Level.  -->
->>> +    <field name="EL" start="2" end="3"/>
->>> +  </flags>
->>> +  <reg name="CurrentEL" bitsize="64" type="current_el"/>
->>>   </feature>
->>> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
->>> index dc9b6dce4c92297b2636d0d7c0dce580f1806d5b..c3070cd9863381fac40f5640e0a7a84dfa1c6e06 100644
->>> --- a/target/arm/cpu.h
->>> +++ b/target/arm/cpu.h
->>> @@ -1473,6 +1473,7 @@ void pmu_init(ARMCPU *cpu);
->>>    * AArch32 mode SPSRs are basically CPSR-format.
->>>    */
->>>   #define PSTATE_SP (1U)
->>> +#define PSTATE_EL (3U << 2)
->>>   #define PSTATE_M (0xFU)
->>>   #define PSTATE_nRW (1U << 4)
->>>   #define PSTATE_F (1U << 6)
->>> diff --git a/target/arm/gdbstub64.c b/target/arm/gdbstub64.c
->>> index 08e28585396816ab90d6d8e460ff8171892fe8da..16b564e1a970cb5e854a705619f71ffc61545a73 100644
->>> --- a/target/arm/gdbstub64.c
->>> +++ b/target/arm/gdbstub64.c
->>> @@ -48,6 +48,9 @@ int aarch64_cpu_gdb_read_register(CPUState *cs, GByteArray *mem_buf, int n)
->>>           return gdb_get_reg64(mem_buf, env->pc);
->>>       case 33:
->>>           return gdb_get_reg32(mem_buf, pstate_read(env));
->>> +    case 34:
->>> +        /* CurrentEL */
->>> +        return gdb_get_reg64(mem_buf, env->pstate & PSTATE_EL);
->>>       }
->>
->> The debugger already has this information in the 'cpsr'
->> register, so it could implement convenience views of
->> the subfields itself if it liked.
+On 8/7/25 11:54 PM, Mohamed Mediouni wrote:
+> GICv3 state save-restore is currently not implemented yet.
 > 
-> Yep, but consider: it is a register, architecturally, so it's nice to
-> include it for consistency. It's redundant only because gdb has cpsr
-> which is not a register. So this is about more about being technically
-> correct than correcting an actual problem.
+> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+> ---
+>   hw/intc/arm_gicv3_whpx.c | 10 ++++++++++
+>   1 file changed, 10 insertions(+)
 > 
+> diff --git a/hw/intc/arm_gicv3_whpx.c b/hw/intc/arm_gicv3_whpx.c
+> index 35dc5ac531..700b2a1a2f 100644
+> --- a/hw/intc/arm_gicv3_whpx.c
+> +++ b/hw/intc/arm_gicv3_whpx.c
+> @@ -17,6 +17,7 @@
+>   #include "system/whpx-internal.h"
+>   #include "gicv3_internal.h"
+>   #include "vgic_common.h"
+> +#include "migration/blocker.h"
+>   #include "qom/object.h"
+>   #include "target/arm/cpregs.h"
+>   
+> @@ -228,6 +229,15 @@ static void whpx_gicv3_realize(DeviceState *dev, Error **errp)
+>           error_setg(errp, "Nested virtualisation not currently supported by WHPX.");
+>           return;
+>       }
+> +
+> +    Error *whpx_migration_blocker = NULL;
+> +
+> +    error_setg(&whpx_migration_blocker,
+> +        "Live migration disabled because GIC state save/restore not supported on WHPX");
+> +    if (migrate_add_blocker(&whpx_migration_blocker, errp)) {
+> +        error_free(whpx_migration_blocker);
+> +        return;
+> +    }
+>   }
+>   
+>   static void whpx_gicv3_class_init(ObjectClass *klass, const void *data)
 
-I agree with Manos on this.
-As mentioned on a previous thread, cpsr is not even supposed to exist 
-for aarch64. So adding architecturally defined registers, even if data 
-is redundant with cpsr, should not be a problem.
-I'm sure gdb folks can understand this too.
-
-> 
->>
->> If we're going to do this I would prefer it to be because
->> we've gained some consensus with e.g. the gdb maintainers
->> that this is the "preferred" way to expose the CPU state.
->> The XML config stuff lets us do it in our own way if we
->> want to, but I think there is value in consistency across
->> stubs here.
-> 
-> I plan to upstream the XML patches to gdb as well, separately. But
-> since we use custom target xml it's not like we depend on gdb to
-> change it.
-> 
->>
->> thanks
->> -- PMM
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 
 

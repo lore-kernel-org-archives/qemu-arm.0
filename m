@@ -4,79 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A8B8C87FD3
-	for <qemu-arm@archiver.kernel.org>; Fri,  8 Aug 2025 11:33:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05A99C87FDA
+	for <qemu-arm@archiver.kernel.org>; Fri,  8 Aug 2025 11:33:47 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ukLJw-0000IL-6Y; Fri, 08 Aug 2025 07:31:36 -0400
+	id 1ukLJw-0000IK-5u; Fri, 08 Aug 2025 07:31:36 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1ukLIx-0008Fb-1m
- for qemu-arm@nongnu.org; Fri, 08 Aug 2025 07:30:36 -0400
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+ id 1ukLJ2-0008Mr-76
+ for qemu-arm@nongnu.org; Fri, 08 Aug 2025 07:30:44 -0400
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1ukLIs-0002xz-3V
- for qemu-arm@nongnu.org; Fri, 08 Aug 2025 07:30:34 -0400
-Received: by mail-wm1-x329.google.com with SMTP id
- 5b1f17b1804b1-459ebb6bbdfso13324395e9.0
- for <qemu-arm@nongnu.org>; Fri, 08 Aug 2025 04:30:29 -0700 (PDT)
+ id 1ukLIu-0002yS-63
+ for qemu-arm@nongnu.org; Fri, 08 Aug 2025 07:30:37 -0400
+Received: by mail-wr1-x435.google.com with SMTP id
+ ffacd0b85a97d-3b780bdda21so1517800f8f.3
+ for <qemu-arm@nongnu.org>; Fri, 08 Aug 2025 04:30:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1754652628; x=1755257428; darn=nongnu.org;
- h=cc:to:content-transfer-encoding:mime-version:message-id:date
- :subject:from:from:to:cc:subject:date:message-id:reply-to;
- bh=lrF3xfwhZvsgde9LRbw3CH8R8zsZFMrB75SHxCEtqMg=;
- b=iWxv3oe9APdM89Ne40hBprArq00NaXlP+kCK2dGI7YG6K/RCA0ANYsPwiVRvjDVSmw
- LD2lbIsodbPhX5PV7yVeuCqEbW0yu1ep1+/ymr574++eusyExb0sDiso08j8OCQx1DQt
- GSKjLyoFqZPGdpK7JrTUcQW8zMKjmNCCHJOEA+fv7LFkaYWpAgOlHVmDzJifmbkgKr3O
- Q7JseVpcOk5lvYd5yomesEDcSqzyp+fCXCUNPGnsLZhrSZrL5gcQqguc3vWvQatoa7ri
- 0OYJQeGtgKgP6gb2OrCqRQ1mEwkB9BDsCsQtH1sAdj5F8PB3sucVtNZYECzKwfmbNqsm
- gvFA==
+ d=linaro.org; s=google; t=1754652631; x=1755257431; darn=nongnu.org;
+ h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+ :mime-version:subject:date:from:from:to:cc:subject:date:message-id
+ :reply-to; bh=GwpFYhGeznRr6+q3T7zVU58Gdck7R9DYOTkt4rNGfxc=;
+ b=sxAiBhqpmJ8/xw+pHBy9cHVjwpjfAncvY43ban8iiOqPNZrSMiNeffoRWvPV+xTldR
+ gGMsDjcg9ihCge1EkzCvZwr5tFn+SFBop24HeVbrC8NRIXPLgC7vadiwfPdWW4gJrf97
+ ackskI6T8zAjmHOfWhbEB9qUR2meJpfn+HuCFQ8tHPHxNbni+2X9k6TiNoCaREtYG8IT
+ bb1r7YYPB+PkV3TpakwXYR3+HuRyUhx6PsGUuXVFpEs1l28QT4fA33QTGgcSKNPZrwhI
+ pH5l7r167+wOOfUH45kT0JOqPWRVz+LCMvi0X/54FYxRP/vn7fr07w6IyGjxGOCUMTvW
+ LoaQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1754652628; x=1755257428;
- h=cc:to:content-transfer-encoding:mime-version:message-id:date
- :subject:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=lrF3xfwhZvsgde9LRbw3CH8R8zsZFMrB75SHxCEtqMg=;
- b=BC+weq9VScN3sa5qiu7/91GnIRhTMLrwhPJXG/5U+web7csQihWujaYf3xoGcCNhBl
- 0g4uEI/33GCfPy/ntIpoh8fGJ+vp//YxAJschf/ZO3qCSYnHeX6SqxI2oDMKP/D34hGM
- yrKhquVlqaI7uqg3bjvMmWjg9M9Oq08zFjNyY3yf8ktaYm6/HHLdWOIrvCHDDPfHpi+S
- tYCeN9ve46a2beJpYPYxps1MFnFAS1cS+/QF6StpCqIvDLhsksk0Qp08c+HmW4PL1bCo
- Q3d2B+qA/nIVo2mIojcrgGAZswAVjaGRcnyzXSIHwrXM4QZ97JJ8XAa58tp87FNkqzgG
- mgxA==
+ d=1e100.net; s=20230601; t=1754652631; x=1755257431;
+ h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+ :mime-version:subject:date:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=GwpFYhGeznRr6+q3T7zVU58Gdck7R9DYOTkt4rNGfxc=;
+ b=mI/QWiE1PQ9SNYe9SM1Z6HhrZXAmkcImxyoCw1SCUOumZ/fqCfJbEUQm5iC/ouqXYi
+ BRs0ZAFJvjnbtkpGp74T7Cd3DgnG5SZOnKe2RRdLokw33wACm4MehFq1P72Vsz6TvhC5
+ FedxHSfltJI28QvZS+d5g8Fn5O3hn7netLA5ziMDjmhQmNEtQw8LKcxd+i/k7XfbHU9v
+ O/Bi5nqMNShK0UF1HcoCzcUAc6OSPXjEQr0vyDb+3Q6pbeiOuPRuEELzjWCQjP353+5d
+ dWH6aMj9W75Ctnsp3us7anaKiUw+JGduKknEHi7z6NSeTCs+2Z5ElUIyaJkyctrZi1PQ
+ l+iA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVYAFZO1dhrmWEhsd7FkLInyyduZyBLGxFShDNu3koz+giPHY5j+h+AAoEERzOm8XFrRh4raAxWUw==@nongnu.org
-X-Gm-Message-State: AOJu0YzE+s0/L63kKuPq6mErykqCTekrftGtLWHNUpg91jTM7dF8q6mq
- MwibADvFV6x6scRruv86Z+QKYBDyW3nacZzEwMaXmyCiwfKwX5T8HfXH+Kx3fQoGPfs=
-X-Gm-Gg: ASbGnctIYe07IJkN0T7aYc/vSsKwTqFQA76bfFCbVklw0efvMfvyN0yAKrNp2Eu0dYC
- 0FF7ASuwjYPY2l1B8kZSrgLBEaRt+TSBkadeUwMqIgPaU7r0yjclQHCm0LpclwmG03WdnXbtHxB
- gaSX+IpAWPZPcixFGk11TPnE/QiA9iybkffCNfsFTxBt8mJmhvwzUr/5qVHXCtBdpXbutMV3p3t
- AjwgSm7JCjYY81ZH9XyfvtAaHAug/aJxe3vA4B7RF1VHoocj9+GYKTH3zwDzfmpY4yTEIsqPgnn
- pKwDe9blTn5hyYTCpU5TI36Dx9F1zO9MyDQ9OItP71hkdV8FlFO2V/2/yE9VOhHBar2TKh1vskl
- mv3Xxq/20qwmrYrYP+dSWB0wc5M3UbJp6KHwZUxH2Dg8BqBQF7OqSo97ImKaA2JDy2faC
-X-Google-Smtp-Source: AGHT+IHV1Tn6k/k7yY/oBu36czyrL/9lX0OLbBajlno/BZv2QHbqjB7KLle7evdk+fXtmJKgQX1WUg==
-X-Received: by 2002:a05:600c:1ca8:b0:458:bc3f:6a72 with SMTP id
- 5b1f17b1804b1-459f4f3f38cmr24149625e9.4.1754652627782; 
- Fri, 08 Aug 2025 04:30:27 -0700 (PDT)
+ AJvYcCXC6uwqgIl/btvrELp4REQhfstncXPStt9bfwNYRnu7DoMJTVKB9J2SS22ierV1qxVXtqF33CyTSQ==@nongnu.org
+X-Gm-Message-State: AOJu0YyKwRTtoK6O4LYnYoMIEVTEaYKQ/E1NS5QNmgAML2pzrmWqrz4Q
+ 5ohFJDQhJqQsoqKGHIwhSMNERDCiGru0IY3Q26LlAvUhTvKzKr5Hyq8j8QJWfPdIcx8=
+X-Gm-Gg: ASbGncuV/KJ64om0JMSowDs+FtDssq/dgYF/NBmhjpiocIlF4ZAflU7o7Ilecg80Hke
+ wNzHVILTf5uiVxhhIV9cDQZKlBMeEywDsiLP7qbQ8ltHsFsmVAtIstV6oBRH5JOahGZAN2HiNoq
+ ukeroyFZAVGn/Hne3Vetv+SuQ/EVR1BS8bG5tJOQsmUn7EPS6Qtbs81/TiIAxscVOqsiXzk9Rhe
+ uDfGe4xdbsrKJ2Cv930iEwgvcw9FRB9RI+TsEQ+DIRkD9Ev/PAIgAHsv1Z5xpfwKqSFEktV83/n
+ oFwDjsHneOGNTZGStLMOwLLnd4C2Zf6Y+Npx4CLC/RXJSS3FJ1q/EQvCT8M5N2D8w1wqGZwvL0f
+ m/72j3dWh3w7JKds5Egu26LzFgG3ZrdyUKaQoLbHma6ZgdZ8uEO3zJ7rNmm7d5VUXu26Z
+X-Google-Smtp-Source: AGHT+IGN4QUS09lseJvhZXQxtEUb+QSmc/a4dzcpZQQ1cjD+ioi62Zx0FFDz0cunx1K+Nv2Vdd+zwg==
+X-Received: by 2002:a05:6000:288b:b0:3b5:f0aa:b1e5 with SMTP id
+ ffacd0b85a97d-3b900b4dac6mr1936506f8f.19.1754652630524; 
+ Fri, 08 Aug 2025 04:30:30 -0700 (PDT)
 Received: from [127.0.1.1] (athedsl-4440194.home.otenet.gr. [79.129.176.114])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3b79c3b9386sm30034248f8f.18.2025.08.08.04.30.26
+ ffacd0b85a97d-3b79c3b9386sm30034248f8f.18.2025.08.08.04.30.29
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 08 Aug 2025 04:30:27 -0700 (PDT)
+ Fri, 08 Aug 2025 04:30:29 -0700 (PDT)
 From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-Subject: [PATCH 0/4] arm: Add PSTATE field registers CurrentEL, NZCV, DAIF,
- SPSel to gdbstub
-Date: Fri, 08 Aug 2025 14:30:12 +0300
-Message-Id: <20250808-gdbstub-aarch64-pstate-regs-v1-0-14ba70be1b3d@linaro.org>
+Date: Fri, 08 Aug 2025 14:30:14 +0300
+Subject: [PATCH 2/4] gdbstub/aarch64: add NZCV register
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-X-B4-Tracking: v=1; b=H4sIAMTflWgC/x3MwQqDMAwA0F+RnBdoRKXbr8gOtc1qLk6SKoL47
- xaP7/JOMFZhg09zgvIuJv+lgl4NxDksmVFSNbSu7Z13HnOarGwThqBxHjpcrYTCqJwN2Q0U6U2
- UfA91WJV/cjz7+L2uG3VOl/ptAAAA
-X-Change-ID: 20250808-gdbstub-aarch64-pstate-regs-e061c1911d85
+Content-Transfer-Encoding: 7bit
+Message-Id: <20250808-gdbstub-aarch64-pstate-regs-v1-2-14ba70be1b3d@linaro.org>
+References: <20250808-gdbstub-aarch64-pstate-regs-v1-0-14ba70be1b3d@linaro.org>
+In-Reply-To: <20250808-gdbstub-aarch64-pstate-regs-v1-0-14ba70be1b3d@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: =?utf-8?q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>, 
  =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>, 
@@ -86,30 +83,30 @@ Cc: =?utf-8?q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
  Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org, 
  Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1483;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2101;
  i=manos.pitsidianakis@linaro.org; h=from:subject:message-id;
- bh=PuccmVGBVsrZiT/EprjAfRqCdyHFk1+JbXGERGfIDfg=;
- b=LS0tLS1CRUdJTiBQR1AgTUVTU0FHRS0tLS0tCgprQTBEQUFvQmR5bkhjSDkrQ2RBQnl5WmlBR
- 2lWMzlISXA1eDNIZzlEdFl6YThNRmppRDZCbHdOSVU4U0NZemVzCktLMWVNZXFWTzRrQ013UUFB
- UW9BSFJZaEJNeGNHMDVFb0ZiemgzQWRFSGNweDNCL2ZnblFCUUpvbGQvUkFBb0oKRUhjcHgzQi9
- mZ25Rc2prUC9qS0RXK1RWd0xNUGNjZHpndENndG5VcXhEY0NlQzNMb1k0OGF0S0Y1enZMN3A5eA
- o5YXhBSlVBKy9BeWl3eUpweXllOWU1ZzFFSTFQaGxpMDdIdWwwTHZsNHdsamZCSEptaC8vWTA1b
- kdVeGNuVnBSCkkwazZEM1l4MmY4YUFYaElxay9IN09rb3kxN2dnZVBKUXRKVmd3NldWL1VaYkR4
- cTM4MytaeXpDUWRHL3JUS0IKSG42SkRQMzgvYlFRTHQ1ZjNrWWpoK0pUd2xLY1poK25zNHZXMHJ
- 0T1RjTzFWcExwN2Vaa1Jna3pFeTUvd1lZUQpObnh3ZEh2YXl5ODUyMHFqVFVUbnZpSTZYTnRPb0
- xkUVBEVWVldnViSTNsdFYwMTJGZCtlZ0NqZkNrT0RPOG9OCkxGSk9abVh5SXJyL1R1U2luVnpmN
- E92eUxKbzJSWm9EblJkcHMwV0ZDSno3ZjBEV0dtZ3ZqUVFzWmQ0WXF5YmIKL1VldTcrelU0WmJs
- aFQ1U0pOSTJ5QWdVYk9YT3A5NU5ZbzRGUHR1RnFvUXlWV3oxMmtGNlpMUFRoRXpqSHliSgpuTTN
- 5MHNtc2JDamdGREhsMCt4UFY3SWFsRkxmWkNVT3h4RCtjaGQ2eDU1RFZEd0t6OXdhQWVlaHhhWX
- NrZit2CnIxOG5TeGlQSWx4L3VBQ0dzay9udzlrNE9TZ3ZtZE9QWlNabVc0TjBzM0trdklsYk44N
- WhBdXNpN0VYVk5YWVIKU0FPaDYraUZuUklreUdXWVo2L0pXNnBiOGFMZTRzRVJOaHN5d0dLYzVY
- V21hY014Y3dBVFNtWkNLZ1M0UDVQNgpYemZmWC9Ec0phRmYxODlnYks3OHdBNEliU0hTK0tWelN
- MeGErS1pIa05WODBrSGVkbWpZR0RaUzFGaTUKPTNIR2sKLS0tLS1FTkQgUEdQIE1FU1NBR0UtLS
- 0tLQo=
+ bh=M+o0NxtbVX/WeQLjyp8sVxOp2zp/MN1L8BDmz068olY=;
+ b=LS0tLS1CRUdJTiBQR1AgTUVTU0FHRS0tLS0tCgpvd0VCYlFLUy9aQU5Bd0FLQVhjcHgzQi9mZ
+ 25RQWNzbVlnQm9sZC9SYkFDZy9qRVFKMTl5WTVoc0VINmVwV1ZWClBiMkZidm1heG5hSEtyUnBN
+ T1NKQWpNRUFBRUtBQjBXSVFUTVhCdE9SS0JXODRkd0hSQjNLY2R3ZjM0SjBBVUMKYUpYZjBRQUt
+ DUkIzS2Nkd2YzNEowSVB2RC85VHVUSGRLZ2FneFc4czJzaFRaSUlBZE5iTnZrZHM3YVZiM24xbw
+ p6a0Z0VXhhcVBrWnBwR0dUaXIySlVQcnZRSk8ybmNaM0JMZWJENEFHUlp1MmFuQzF4VGhlNGxXa
+ XRoQ3hNbEtsCnNnbkhZaEtOOWpjalNTclVLWi8wMlVTRWlqdzdId0d1b3ZNV1oxS0Y5UTVrK0lE
+ eDZDU0RyVkdRL1pNLzVMakoKeGMvaXF6WDU2RHJhenhVaE41YUdvWkJpQjNzdnZJWkhEL2RhTFR
+ OWXhKSmEvL21TR01CT2lUS2piSExYZXQyMgp1RVNhUXY0Q3ptTFdLNEIrQnk3TktObjVuZEtXQ2
+ 5Ua3VrWElZZFZ5L1NmQVROamVjWVpRUHN1dlRNVStwM2xsCkpvVytrWjdvemUrTW1xRWtHSTQyM
+ DFkWk5DQ3RWZjlJTVBiaFFsVHMrUmFpSndha2VHOEgxV2dDTHNYR29ZWHoKY3YyeWZzaFhONkox
+ bitlbW5maWRwdVJ0bnhMc3U0RXU3dTlGZmxjM1Zwd1JZUzRmUm4rS0NDTFZub0Z6aXlnaAphQlF
+ nRG1Kd29LeldJTm1aLyt4TEFwNjVETG5kYnBIU09paG1xU0JqNUMzNnM0cXNoVW1nWHVKTkFuU0
+ YvQzZ1CklGWmcrd2pqTEI0cWRzVEUvbzJGVzl1ZytpQVl2ekdxaEpwckVEMTU3Um9Fa2JMQTFtS
+ 1RKOVZ2QlB2b2lneUgKZ1VsY3M5aFJCVzA4WEJlKzBpZWY4S3l6bVBnWURFdTRPOTkyTVhUYW1y
+ MmFhOUpYMFlCWUJrR213U0hYQ3hvTgp3T1o3V05aRDMzWjJBYTUvYTVSRDZiN3ZROEVQRldFL0c
+ 0RlRLckN6dFBFaXB3Mm51NWZUNUEwMURBWXR0dnBBCkgrZFk3QT09Cj1WMUxPCi0tLS0tRU5EIF
+ BHUCBNRVNTQUdFLS0tLS0K
 X-Developer-Key: i=manos.pitsidianakis@linaro.org; a=openpgp;
  fpr=7C721DF9DB3CC7182311C0BF68BC211D47B421E1
-Received-SPF: pass client-ip=2a00:1450:4864:20::329;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wm1-x329.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::435;
+ envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wr1-x435.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -132,45 +129,63 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Expose PSTATE field registers to gdbstub:
-
-  (gdb) info registers
-  <- snip ->
-  sp             0x0                 0x0
-  pc             0x40000000          0x40000000
-  cpsr           0x400003c5          [ SP EL=1 F I A D BTYPE=0 Z ]
-  fpsr           0x0                 0
-  fpcr           0x0                 0
-  vg             0x2                 2
-  pauth_dmask    0xffff000000000000  -281474976710656
-  pauth_cmask    0xffff000000000000  -281474976710656
-  pauth_dmask_high 0xffff000000000000 -281474976710656
-  pauth_cmask_high 0xffff000000000000 -281474976710656
-  CurrentEL      0x4                 [ EL=1 ]
-  NZCV           0x40000000          [ Z ]
-  DAIF           0x3c0               [ F I A D ]
-  SPSel          0x1                 [ SP ]
-  <-snip->
-
-This also would allow plugins to access those registers.
-
 Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 ---
-Manos Pitsidianakis (4):
-      gdbstub/aarch64: add CurrentEL register
-      gdbstub/aarch64: add NZCV register
-      gdbstub/aarch64: add DAIF register
-      gdbstub/aarch64: add SPSel register
+ gdb-xml/aarch64-core.xml | 14 +++++++++++++-
+ target/arm/gdbstub64.c   |  8 ++++++++
+ 2 files changed, 21 insertions(+), 1 deletion(-)
 
- gdb-xml/aarch64-core.xml | 35 +++++++++++++++++++++++++++++++++++
- target/arm/cpu.h         |  1 +
- target/arm/gdbstub64.c   | 29 +++++++++++++++++++++++++++++
- 3 files changed, 65 insertions(+)
----
-base-commit: cd21ee5b27b22ae66c103d36516aa5077881aa3d
-change-id: 20250808-gdbstub-aarch64-pstate-regs-e061c1911d85
+diff --git a/gdb-xml/aarch64-core.xml b/gdb-xml/aarch64-core.xml
+index 19ad743dc5607b4021fb795bfb9b8e9cf0adef68..2b74b87f908f792c24f76f212e4f7eaf335ddbc2 100644
+--- a/gdb-xml/aarch64-core.xml
++++ b/gdb-xml/aarch64-core.xml
+@@ -95,5 +95,17 @@
+     <!-- Exception Level.  -->
+     <field name="EL" start="2" end="3"/>
+   </flags>
+-  <reg name="CurrentEL" bitsize="64" type="current_el"/>
++  <reg name="CurrentEL" bitsize="64" type="current_el_flags"/>
++
++  <flags id="nzcv_flags" size="8">
++    <!-- Overflow Condition flag.  -->
++    <field name="V" start="28" end="28"/>
++    <!-- Carry Condition flag.  -->
++    <field name="C" start="29" end="29"/>
++    <!-- Zero Condition flag.  -->
++    <field name="Z" start="30" end="30"/>
++    <!-- Negative Condition flag.  -->
++    <field name="N" start="31" end="31"/>
++  </flags>
++  <reg name="NZCV" bitsize="64" type="nzcv_flags"/>
+ </feature>
+diff --git a/target/arm/gdbstub64.c b/target/arm/gdbstub64.c
+index 16b564e1a970cb5e854a705619f71ffc61545a73..dd3c6222a577efa03753cf07371afdedeefdb771 100644
+--- a/target/arm/gdbstub64.c
++++ b/target/arm/gdbstub64.c
+@@ -51,6 +51,9 @@ int aarch64_cpu_gdb_read_register(CPUState *cs, GByteArray *mem_buf, int n)
+     case 34:
+         /* CurrentEL */
+         return gdb_get_reg64(mem_buf, env->pstate & PSTATE_EL);
++    case 35:
++        /* NZCV */
++        return gdb_get_reg64(mem_buf, pstate_read(env) & PSTATE_NZCV);
+     }
+     /* Unknown register.  */
+     return 0;
+@@ -83,6 +86,11 @@ int aarch64_cpu_gdb_write_register(CPUState *cs, uint8_t *mem_buf, int n)
+     case 34:
+         /* CurrentEL */
+         return 0;
++    case 35:
++        /* NZCV */
++        tmp = (pstate_read(env) & ~PSTATE_NZCV) | (tmp & PSTATE_NZCV);
++        pstate_write(env, tmp);
++        return 8;
+     }
+     /* Unknown register.  */
+     return 0;
 
---
-γαῖα πυρί μιχθήτω
+-- 
+2.47.2
 
 

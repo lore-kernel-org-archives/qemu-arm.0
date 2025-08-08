@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57990C87FCB
-	for <qemu-arm@archiver.kernel.org>; Fri,  8 Aug 2025 06:55:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC18BC87FCB
+	for <qemu-arm@archiver.kernel.org>; Fri,  8 Aug 2025 06:55:24 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ukGzz-00015w-Ro; Fri, 08 Aug 2025 02:54:43 -0400
+	id 1ukH09-0001DZ-4m; Fri, 08 Aug 2025 02:54:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1ukGzu-00013w-MW
- for qemu-arm@nongnu.org; Fri, 08 Aug 2025 02:54:40 -0400
-Received: from p-east3-cluster4-host5-snip4-4.eps.apple.com ([57.103.84.47]
+ id 1ukH05-0001AM-0b
+ for qemu-arm@nongnu.org; Fri, 08 Aug 2025 02:54:49 -0400
+Received: from p-east3-cluster4-host9-snip4-2.eps.apple.com ([57.103.84.85]
  helo=outbound.qs.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1ukGzs-000417-O3
- for qemu-arm@nongnu.org; Fri, 08 Aug 2025 02:54:38 -0400
+ id 1ukH03-00043e-2Y
+ for qemu-arm@nongnu.org; Fri, 08 Aug 2025 02:54:48 -0400
 Received: from outbound.qs.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-east-2d-100-percent-10 (Postfix) with ESMTPS id
- 91C51180011D; Fri,  8 Aug 2025 06:54:28 +0000 (UTC)
+ 18205180012B; Fri,  8 Aug 2025 06:54:42 +0000 (UTC)
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; bh=eux8A162gCUKuwCpfQp4vYFkIMTV0b1q1aRT54wsJOE=;
- h=From:To:Subject:Date:Message-Id:MIME-Version:Content-Type:x-icloud-hme;
- b=Kko4Ox3NI6bZTU/vxKnT67rmZO29usXudbpKJKA28yzDErFIKgwahdUiwPPV3ktBAaWb5U1RtceecyR59x0X1rsYC464psah4PSduMsNqnDZLuuUnQ66jReQ3kmw+ZMHEeON5b0bUd9nbb8vYiE48ySuMqjInz5PbVh9Wh/3rWraiJNvYJ3vMeVHLe4C8Y3Se3Od/rOfSPnzAVsxMSqlz1FgBhXVfdtiCHj1pOlyfuoIUscm4XBo0slfSutP428imTgjXtISdGAZ9+HDRbV/wVQdNJnqp9AfFMNrEsVYdAIteR6kk2jJCYqXB6Be7pf5+smwu7XO2y9Dvw2n0qDWOA==
+ s=sig1; bh=iQ3TVXPKkyYCckoEHfHW5WGMl0C9BPtHVBT6EEzqMgE=;
+ h=From:To:Subject:Date:Message-Id:MIME-Version:x-icloud-hme;
+ b=QhzlZp47K+TFHiBKttHv18V3Tfw7B4EtahAWtvN7fT9JIffO2qownX28ZY2nCBRbKn7wPxoiyknqYkICw3qh9m60tf9KzWVhnPS8T4U4liU+0lqLC3+G0efJMmDwxpTlaMM/CeWHPUEf7N+azmC0k56o3JyWXLWdbM0PVhbkLNilTOrM1rXBX0Ml5RmmpWQ6Ak9myjOhqXwjxeyXUEqc4QPjJPtQ6tGLrw+uHaTnQVyIAS86utsf4dDn58YS5OuS1wo0X76wXgmarRDO4UOwfMoXhe27HyrLZqdS0ML5qdCpcykqPCJnW874sj28hHZEPz3+PJA07rcmzhjzgOwqdQ==
 X-Client-IP: 46.189.47.18
 Received: from localhost.localdomain (qs-asmtp-me-k8s.p00.prod.me.com
  [17.57.155.37])
  by p00-icloudmta-asmtp-us-east-2d-100-percent-10 (Postfix) with ESMTPSA id
- DB25E1800117; Fri,  8 Aug 2025 06:54:24 +0000 (UTC)
+ DBCC11800124; Fri,  8 Aug 2025 06:54:39 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
@@ -50,32 +50,32 @@ Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  Shannon Zhao <shannon.zhaosl@gmail.com>,
  Mohamed Mediouni <mohamed@unpredictable.fr>, qemu-arm@nongnu.org,
- Yanan Wang <wangyanan55@huawei.com>
-Subject: [PATCH v5 01/18] accel/system: Introduce hwaccel_enabled() helper
-Date: Fri,  8 Aug 2025 08:54:02 +0200
-Message-Id: <20250808065419.47415-2-mohamed@unpredictable.fr>
+ Yanan Wang <wangyanan55@huawei.com>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Subject: [PATCH v5 06/18] whpx: common: add WHPX_INTERCEPT_DEBUG_TRAPS define
+Date: Fri,  8 Aug 2025 08:54:07 +0200
+Message-Id: <20250808065419.47415-7-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.39.5 (Apple Git-154)
 In-Reply-To: <20250808065419.47415-1-mohamed@unpredictable.fr>
 References: <20250808065419.47415-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwODA4MDA1NiBTYWx0ZWRfX8O9fBa8nxipY
- H+QaLqrgEUhLmLPOR1IQbky0LA154MQ4j94uOTFxKT8xpGsXqA+QkDoMQ/naIKqDtdUicGNyYbk
- 0qtiqvFrNLpQiKUwJwoAp9ZR/NxMfLXQ136SetciJrrAWyL81R9jqX/IZfAG6rBUpyEM6OO4idD
- msnIVMzMmk3sR3iJmU4Vzk79CL3offHpKQ7J/XHXrt+IF5LjLsfq0Bs+Wws9IA/4zMCQXgnFp3K
- b5NMbZoaxhxmNygQ52RAchxf4c/udi6NTJeKobg9uCa/CKfG32magm9GTwpaHvv+1I8OD7uag=
-X-Proofpoint-GUID: 1QSUM9SE-Hk53vvnH0BB4INtgJ1CNxgA
-X-Proofpoint-ORIG-GUID: 1QSUM9SE-Hk53vvnH0BB4INtgJ1CNxgA
+X-Proofpoint-GUID: 56HByCUNDtnz2HkHuVwfmID4eA65sS2M
+X-Proofpoint-ORIG-GUID: 56HByCUNDtnz2HkHuVwfmID4eA65sS2M
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwODA4MDA1NiBTYWx0ZWRfXzezscCfpBppw
+ y/j7H/S2mSDmQl22ESwF41UOqIU2fZBy7/TmVnoMtle8eaKSroIe3UtnNI1aBYmaFrwX7Y8maQp
+ yjyEQRPe94xWgypDJwuIuL3JZaLTlBHjyTlG92nR2i6XoEAE08jaBC1YcOZUZv3W4Fn7/t0vOwk
+ D+WswzUiHVjFz3u6tuXiOQQAXnqhkaxR2BCMLuf8UVEB1Yv6RU4Ehzer2A9I0M6tCW9qJl8yKNV
+ 6HIFKf2g6yzPydul5fshkz+REGwnWnZ9KQ245hkgY4wt3oWZ/bv1IQfibRVNN66IDCuFc5xC0=
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.9,FMLib:17.12.80.40
  definitions=2025-08-08_01,2025-08-06_01,2025-03-28_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=999
- suspectscore=0 clxscore=1030 spamscore=0
- phishscore=0 adultscore=0
- malwarescore=0 bulkscore=0 mlxscore=0 classifier=spam adjust=0 reason=mlx
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ malwarescore=0 bulkscore=0 mlxscore=0
+ mlxlogscore=999 spamscore=0
+ adultscore=0 clxscore=1030 phishscore=0 classifier=spam adjust=0 reason=mlx
  scancount=1 engine=8.22.0-2506270000 definitions=main-2508080056
-Received-SPF: pass client-ip=57.103.84.47;
+Received-SPF: pass client-ip=57.103.84.85;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.qs.icloud.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -99,39 +99,43 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Philippe Mathieu-Daudé <philmd@linaro.org>
+As of why: WHPX on arm64 doesn't have debug trap support as of today.
 
-hwaccel_enabled() return whether any hardware accelerator
-is enabled.
+Keep the exception bitmap interface for now - despite that being entirely unavailable on arm64 too.
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 ---
- include/system/hw_accel.h | 13 +++++++++++++
- 1 file changed, 13 insertions(+)
+ accel/whpx/whpx-common.c     | 2 +-
+ include/system/whpx-common.h | 3 +++
+ 2 files changed, 4 insertions(+), 1 deletion(-)
 
-diff --git a/include/system/hw_accel.h b/include/system/hw_accel.h
-index fa9228d5d2..49556b026e 100644
---- a/include/system/hw_accel.h
-+++ b/include/system/hw_accel.h
-@@ -39,4 +39,17 @@ void cpu_synchronize_pre_loadvm(CPUState *cpu);
- void cpu_synchronize_post_reset(CPUState *cpu);
- void cpu_synchronize_post_init(CPUState *cpu);
- 
-+/**
-+ * hwaccel_enabled:
-+ *
-+ * Returns: %true if a hardware accelerator is enabled, %false otherwise.
-+ */
-+static inline bool hwaccel_enabled(void)
-+{
-+    return hvf_enabled()
-+        || kvm_enabled()
-+        || nvmm_enabled()
-+        || whpx_enabled();
-+}
+diff --git a/accel/whpx/whpx-common.c b/accel/whpx/whpx-common.c
+index e2d692126a..5c2da9de4d 100644
+--- a/accel/whpx/whpx-common.c
++++ b/accel/whpx/whpx-common.c
+@@ -123,7 +123,7 @@ int whpx_first_vcpu_starting(CPUState *cpu)
+          * have one or more breakpoints enabled. Both require intercepting
+          * the WHvX64ExceptionTypeBreakpointTrap exception.
+          */
+-        exception_mask = 1UL << WHvX64ExceptionTypeDebugTrapOrFault;
++        exception_mask = 1UL << WHPX_INTERCEPT_DEBUG_TRAPS;
+     } else {
+         /* Let the guest handle all exceptions. */
+         exception_mask = 0;
+diff --git a/include/system/whpx-common.h b/include/system/whpx-common.h
+index 7a7c607e0a..73b9f7c119 100644
+--- a/include/system/whpx-common.h
++++ b/include/system/whpx-common.h
+@@ -20,4 +20,7 @@ int whpx_first_vcpu_starting(CPUState *cpu);
+ int whpx_last_vcpu_stopping(CPUState *cpu);
+ void whpx_memory_init(void);
+ struct whpx_breakpoint *whpx_lookup_breakpoint_by_addr(uint64_t address);
 +
- #endif /* QEMU_HW_ACCEL_H */
++/* On x64: same as WHvX64ExceptionTypeDebugTrapOrFault */
++#define WHPX_INTERCEPT_DEBUG_TRAPS 1
+ #endif
 -- 
 2.39.5 (Apple Git-154)
 

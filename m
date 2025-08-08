@@ -4,66 +4,116 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E069C87FD3
-	for <qemu-arm@archiver.kernel.org>; Fri,  8 Aug 2025 08:45:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59F70C87FD3
+	for <qemu-arm@archiver.kernel.org>; Fri,  8 Aug 2025 11:32:00 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ukIiq-0001fR-0w; Fri, 08 Aug 2025 04:45:08 -0400
+	id 1ukLJw-0000JK-RY; Fri, 08 Aug 2025 07:31:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wangyuquan1236@phytium.com.cn>)
- id 1ukIid-0001cE-4w; Fri, 08 Aug 2025 04:44:55 -0400
-Received: from sgoci-sdnproxy-4.icoremail.net ([129.150.39.64])
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <wangyuquan1236@phytium.com.cn>)
- id 1ukIiW-00038M-IG; Fri, 08 Aug 2025 04:44:54 -0400
-Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
- by hzbj-icmmx-6 (Coremail) with SMTP id AQAAfwAHZ+P3uJVo46_+BA--.31662S2;
- Fri, 08 Aug 2025 16:44:39 +0800 (CST)
-Received: from wangyuquan1236$phytium.com.cn ( [218.76.62.144] ) by
- ajax-webmail-mail (Coremail) ; Fri, 8 Aug 2025 16:44:34 +0800 (GMT+08:00)
-X-Originating-IP: [218.76.62.144]
-Date: Fri, 8 Aug 2025 16:44:34 +0800 (GMT+08:00)
-X-CM-HeaderCharset: UTF-8
-From: "Yuquan Wang" <wangyuquan1236@phytium.com.cn>
-To: tangtao1634@phytium.com.cn, qemu-devel@nongnu.org
-Cc: "Jonathan Cameron" <Jonathan.Cameron@huawei.com>, qemu-arm@nongnu.org
-Subject: Re: [PATCH v13 1/5] hw/cxl-host: Add an index field to
- CXLFixedMemoryWindow
-X-Priority: 3
-X-Mailer: Coremail Webmail Server Version 2024.3-cmXT6 build
- 20250512(e7b47ee3) Copyright (c) 2002-2025 www.mailtech.cn
- mispb-8dfce572-2f24-404d-b59d-0dd2e304114c-icoremail.cn
-In-Reply-To: <20250513111455.128266-2-Jonathan.Cameron@huawei.com>
-References: <20250513111455.128266-1-Jonathan.Cameron@huawei.com>
- <20250513111455.128266-2-Jonathan.Cameron@huawei.com>
-Content-Transfer-Encoding: base64
-X-CM-CTRLDATA: JShZGWZvb3Rlcl90eHQ9Mjg5NzozODM=
-Content-Type: text/plain; charset=UTF-8
+ (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
+ id 1ukLIy-0008L6-Qr
+ for qemu-arm@nongnu.org; Fri, 08 Aug 2025 07:30:40 -0400
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
+ id 1ukLIw-0002yi-Kl
+ for qemu-arm@nongnu.org; Fri, 08 Aug 2025 07:30:36 -0400
+Received: by mail-wm1-x32e.google.com with SMTP id
+ 5b1f17b1804b1-459d44d286eso13824345e9.0
+ for <qemu-arm@nongnu.org>; Fri, 08 Aug 2025 04:30:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1754652632; x=1755257432; darn=nongnu.org;
+ h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+ :mime-version:subject:date:from:from:to:cc:subject:date:message-id
+ :reply-to; bh=+wacFuJvSwCjdGK+yHs0J/J5a0AOT1HDGQitNzCH8BM=;
+ b=iI1aKK16JmS5vGwDTTYZ3IplbFMPjf+qZK4uMsv14amhl5zQ19aFNfjIKf7jirhYbr
+ FFUoP4OKgNfLmhMPoupxJVOvCNloSvgkua2Kqr5y7sBKzud+0xdaJLwfLvJ+e9msZeww
+ eTdLlpaD5ucu8cgW3lD2O71Nmav4Lpr2GApzKStrapg5r3qJ6c/lYsiYJnihCQ9aN6+7
+ WjWLG0b9A76u7wqrJqRmqG1MfbYFD7AVDL29l7yT08AR6JkYEEJ8TpfnCxmqx4qodjYZ
+ X51w1Gigf0pZBFdzi3oXFqnM1j1GBpyN0jfKSJPBhQ7E+SKH5ryXSkYyqdzCvqg5x57P
+ Vgow==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1754652632; x=1755257432;
+ h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+ :mime-version:subject:date:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=+wacFuJvSwCjdGK+yHs0J/J5a0AOT1HDGQitNzCH8BM=;
+ b=cdpbPlrRMjSkNlUEEX1ge8iWpsvgwIBRXaOrXMQskxBsRR23WLmT8nHswRMJFt0aJP
+ bF/8O15GBj8+BUlcUDabJgKn/R50UIMGCzHznDZVL+wDyNiOcDntowMzC9t1uz+idmNk
+ UU5C0yj/wDweovEAW9zZgLnz2np5aneO5qcdrzgNEWbfxB/Um9FbPBQjUOxFu/IAA80C
+ E0OdKm87yZ/56Dcvs3vZmaMRACiXBsewOmh1h6OyGVn37FCahtXCPSlU4Wh4JKqpsfad
+ DL+ToAGYHFx+lKCVy+WAJtu3cJZF4gr2IAekDNzjJYeM9HWMT+sX34ofqcTeDe14JNoM
+ 54AQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWEG2DuyNRVvQQDV3uWDa5/pAt/IjqY8ovzk9wiY8fFt7tGTn81JarWBBmyWdcc5dngtIoci7o2lw==@nongnu.org
+X-Gm-Message-State: AOJu0Yx9rLfS2d0MfwITWIuvP6tfVmV0vd2uEmbF6flPE1J86ExF4NBw
+ gSKazi3oDHTSdRftV8kXlk+DnathDOpC0HFMwF1AWSi7jArbc0md6pAm5eFrhpe+F7A=
+X-Gm-Gg: ASbGncv+Kd5dxsYoIVyzs2ir169oGHO31KV1C3kT6YXoBYy9PXknzu1KBO33t6LWNTl
+ l932Hgf11e5gsYNphga8pJjbybvwijIzify+LYZD5BJR5dpeKAHCJKLA6hj7JHeNrYanZnuRExF
+ Li1IIDe0SOVEonDoWxdtvtwQuz3BSpoeepGm6KpRaOUYpCuUNcTvYB3MbpwkEqs3tAqmQD4eFIe
+ orQvvc9FrrVpcR7Ev3S5mIn+6R6yHYHS1u3XNRbyw/lQX3pmFJ3ZiFPXIu5EIzsSNH2rU++x5tS
+ 37eBghBb8jUExLRCB1tBBnF07epiCy0BUH5CAdKqu4MTMzLHd+jR/lGm8wsT5MK0mbT2lb53fwF
+ sFzHM5jO3DMIAmQdRDJBZk49umPHcOrV9dgwjb1FRHH/boM1o+1QYvTijtelUOm0zzKNR
+X-Google-Smtp-Source: AGHT+IFeJ8yRkBe3aeVWRlJSj7l0WY3ou+kv2a1em8V/MmfBMa1mOfVdSINeuxXWNj9CiylFHFCe/g==
+X-Received: by 2002:a5d:5f8b:0:b0:3b7:8f3b:1726 with SMTP id
+ ffacd0b85a97d-3b900fc84camr2130737f8f.7.1754652631914; 
+ Fri, 08 Aug 2025 04:30:31 -0700 (PDT)
+Received: from [127.0.1.1] (athedsl-4440194.home.otenet.gr. [79.129.176.114])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-3b79c3b9386sm30034248f8f.18.2025.08.08.04.30.30
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 08 Aug 2025 04:30:31 -0700 (PDT)
+From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+Date: Fri, 08 Aug 2025 14:30:15 +0300
+Subject: [PATCH 3/4] gdbstub/aarch64: add DAIF register
 MIME-Version: 1.0
-Message-ID: <2883bf9d.17a0.19888da7214.Coremail.wangyuquan1236@phytium.com.cn>
-X-Coremail-Locale: zh_CN
-X-CM-TRANSID: AQAAfwAXoAfyuJVoBhINAA--.3982W
-X-CM-SenderInfo: 5zdqw5pxtxt0arstlqxsk13x1xpou0fpof0/1tbiAQAQAWiU-30C8
-	AAPsT
-Authentication-Results: hzbj-icmmx-6; spf=neutral smtp.mail=wangyuquan
- 1236@phytium.com.cn;
-X-Coremail-Antispam: 1Uk129KBjvJXoWxtw47uFyDZrWDuFy8Ww4fuFg_yoW3GFW8p3
- WxJ34UAw1UKw17J3yxCr18ArW8ArWUGr47Jw1xtayYvr17Jr4DWrnxKFWUA3Wjga4jgrn8
- tw1UWrs8Xr1jqrUanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
- DUYxn0WfASr-VFAU7a7-sFnT9fnUUIcSsGvfJ3UbIYCTnIWIevJa73UjIFyTuYvj4RJUUU
- UUUUU
-Received-SPF: pass client-ip=129.150.39.64;
- envelope-from=wangyuquan1236@phytium.com.cn;
- helo=sgoci-sdnproxy-4.icoremail.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20250808-gdbstub-aarch64-pstate-regs-v1-3-14ba70be1b3d@linaro.org>
+References: <20250808-gdbstub-aarch64-pstate-regs-v1-0-14ba70be1b3d@linaro.org>
+In-Reply-To: <20250808-gdbstub-aarch64-pstate-regs-v1-0-14ba70be1b3d@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: =?utf-8?q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>, 
+ =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>, 
+ Peter Maydell <peter.maydell@linaro.org>, 
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>, 
+ Gustavo Romero <gustavo.romero@linaro.org>, 
+ Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org, 
+ Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1948;
+ i=manos.pitsidianakis@linaro.org; h=from:subject:message-id;
+ bh=pdsXwnZTWgdqtptBVXPmXR1JF3tTkJfujnXQK7E62KQ=;
+ b=LS0tLS1CRUdJTiBQR1AgTUVTU0FHRS0tLS0tCgpvd0VCYlFLUy9aQU5Bd0FLQVhjcHgzQi9mZ
+ 25RQWNzbVlnQm9sZC9TYkl4eWdRNDJOaEdZNFF4a2Z1M3ZBMmhxCmFmVHZSNVI0eTZ0cStXcGtJ
+ clNKQWpNRUFBRUtBQjBXSVFUTVhCdE9SS0JXODRkd0hSQjNLY2R3ZjM0SjBBVUMKYUpYZjBnQUt
+ DUkIzS2Nkd2YzNEowS1RpRC80cVJXbVZ3ZFp1ckk2bmhRSXBYV0d4U2tnU21wdGhNeXRLUlVKVA
+ pDcDdVVk80SFFoNjVHNElqVVRvMkt2dmdJdjhqOGJMd2tKS2hwZ2MxTGlYMTZVbVh5VTQvUnROa
+ Gd2blVXbCtFClN5SmlZZWtNVnY3TjhnSFRsU3ZUNXN1MEczN1RSRjZZRkdFTjNicE5wVnF2VHpX
+ TnJyR0VWWFlZeFA5c3pCR3QKQTN1Z0IzVWJFZDcwT3VvTndGak05ZUkyTEg4UmFiaUM2ek1DUVp
+ ocXdlT2tDVGZ1R3B5ZytoZzhITXpxc2g1TAo3ZkxvNURiK1AvTms5M0hOY0VLeGh5TnBjQW03Yk
+ FlNklsVkowTXN4cWtJVHNSd2Z4dnZGeEFmQTFNZGcxUmg3CjBWOEhXTnVsc0E1VWtxOUtrUGhxM
+ GZueDRoTEdxbjJhbVMxaE55R3JyRXhBa3VBa2FIWVVXRXR5SE5CaWhYeEUKM1lzeDEzMkIxRDRk
+ dU4xTXdNRzZpTnJUeFpMRlE4ZGlsNHRRWTJHdlVmTnpwSisycFNnWVBwUUh4aVZ0Vm0vbwpCd2J
+ nWFowd3RWclZsVzYwcE0zUXhrbDBBZFNWeWI3M3BhRGZvWGFFejJoQzJXYTloNkNzci9jVHFhel
+ VLaG9qClNuR1A4RkNPamVUbWM1TndiR2JOVGpiNFJZRU02c2QxRXV3dGdnYXNDYW5VanFxQVdZV
+ Dk3VUJZNlJnQW1NYk8KWlpGcnlENlphSnZScHJVUmlFL3hhQlMrWG9Sb1Y0U2k1YmJxU05PYWt4
+ MUNpKytSRVFFMWNnU25HTG5KNWZORAo0ZGxHWWxHdGpPRHFvbWNEVmNWdzBSSVQyM0piMWxuZ1l
+ mMXRLam41UlFaUEdkaUhSYy9KVEt3U3VGWE0rUjljCjlJaERWUT09Cj1YZEhXCi0tLS0tRU5EIF
+ BHUCBNRVNTQUdFLS0tLS0K
+X-Developer-Key: i=manos.pitsidianakis@linaro.org; a=openpgp;
+ fpr=7C721DF9DB3CC7182311C0BF68BC211D47B421E1
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wm1-x32e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -79,67 +129,60 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-U29ycnkgZm9yIGRpc3R1cmJpbmchIEkgdHJpZWQgdG8gdGVzdCBzZW5kIG1vcmUgdGhhbiAxMCBl
-bWFpbHMgb24gbXkgc210cCBzZXJ2ZXLvvIEKCgo+IC0tLS0t5Y6f5aeL6YKu5Lu2LS0tLS0KPiDl
-j5Hku7bkuro6IHdhbmd5dXF1YW4gPHdhbmd5dXF1YW4xMjM2QHBoeXRpdW0uY29tLmNuPgo+IOWP
-kemAgeaXtumXtDoyMDI1LTA4LTA4IDE2OjI5OjU3ICjmmJ/mnJ/kupQpCj4g5pS25Lu25Lq6OiB0
-YW5ndGFvMTYzNEBwaHl0aXVtLmNvbS5jbiwgcWVtdS1kZXZlbEBub25nbnUub3JnLCAiRmFuIE5p
-IiA8ZmFuLm5pQHNhbXN1bmcuY29tPiwgIlBldGVyIE1heWRlbGwiIDxwZXRlci5tYXlkZWxsQGxp
-bmFyby5vcmc+LCBtc3RAcmVkaGF0LmNvbQo+IOaKhOmAgTogIkpvbmF0aGFuIENhbWVyb24iIDxK
-b25hdGhhbi5DYW1lcm9uQGh1YXdlaS5jb20+LCBsaW51eC1jeGxAdmdlci5rZXJuZWwub3JnLCBs
-aW51eGFybUBodWF3ZWkuY29tLCBxZW11LWFybUBub25nbnUub3JnLCAiWXVxdWFuIFdhbmciIDx3
-YW5neXVxdWFuMTIzNkBwaHl0aXVtLmNvbS5jbj4sICJJdGFydSBLaXRheWFtYSIgPGl0YXJ1Lmtp
-dGF5YW1hQGxpbnV4LmRldj4sICJQaGlsaXBwZSBNYXRoaWV1LURhdWTDqSIgPHBoaWxtZEBsaW5h
-cm8ub3JnPgo+IOS4u+mimDogW1BBVENIIHYxMyAxLzVdIGh3L2N4bC1ob3N0OiBBZGQgYW4gaW5k
-ZXggZmllbGQgdG8gQ1hMRml4ZWRNZW1vcnlXaW5kb3cKPiAKPiBGcm9tOiBKb25hdGhhbiBDYW1l
-cm9uIDxKb25hdGhhbi5DYW1lcm9uQGh1YXdlaS5jb20+Cj4gCj4gVG8gZW5hYmxlIHRoZXNlIHRv
-IGJlIGZvdW5kIGluIGEgZml4ZWQgb3JkZXIsIHRoYXQgb3JkZXIgbmVlZHMKPiB0byBiZSBrbm93
-bi4gIFRoaXMgd2lsbCBsYXRlciBiZSB1c2VkIHRvIHNvcnQgYSBsaXN0IG9mIHRoZXNlCj4gc3Ry
-dWN0dXJlcyB0aGF0IGFkZHJlc3MgbWFwIGFuZCBBQ1BJIHRhYmxlIGVudHJpZXMgYXJlIHByZWRp
-Y3RhYmxlLgo+IAo+IFNpZ25lZC1vZmYtYnk6IEpvbmF0aGFuIENhbWVyb24gPEpvbmF0aGFuLkNh
-bWVyb25AaHVhd2VpLmNvbT4KPiAtLS0KPiAgaW5jbHVkZS9ody9jeGwvY3hsLmggfCAxICsKPiAg
-aHcvY3hsL2N4bC1ob3N0LmMgICAgfCA5ICsrKysrKy0tLQo+ICAyIGZpbGVzIGNoYW5nZWQsIDcg
-aW5zZXJ0aW9ucygrKSwgMyBkZWxldGlvbnMoLSkKPiAKPiBkaWZmIC0tZ2l0IGEvaW5jbHVkZS9o
-dy9jeGwvY3hsLmggYi9pbmNsdWRlL2h3L2N4bC9jeGwuaAo+IGluZGV4IDc1ZTQ3YjY4NjQuLmIy
-YmNjZTdlZDYgMTAwNjQ0Cj4gLS0tIGEvaW5jbHVkZS9ody9jeGwvY3hsLmgKPiArKysgYi9pbmNs
-dWRlL2h3L2N4bC9jeGwuaAo+IEBAIC0yNyw2ICsyNyw3IEBACj4gIHR5cGVkZWYgc3RydWN0IFBY
-QkNYTERldiBQWEJDWExEZXY7Cj4gIAo+ICB0eXBlZGVmIHN0cnVjdCBDWExGaXhlZFdpbmRvdyB7
-Cj4gKyAgICBpbnQgaW5kZXg7Cj4gICAgICB1aW50NjRfdCBzaXplOwo+ICAgICAgY2hhciAqKnRh
-cmdldHM7Cj4gICAgICBQWEJDWExEZXYgKnRhcmdldF9oYnNbMTZdOwo+IGRpZmYgLS1naXQgYS9o
-dy9jeGwvY3hsLWhvc3QuYyBiL2h3L2N4bC9jeGwtaG9zdC5jCj4gaW5kZXggZTAxMDE2MzE3NC4u
-YjdhYTQyOWRkZiAxMDA2NDQKPiAtLS0gYS9ody9jeGwvY3hsLWhvc3QuYwo+ICsrKyBiL2h3L2N4
-bC9jeGwtaG9zdC5jCj4gQEAgLTI0LDEzICsyNCwxNSBAQAo+ICAKPiAgc3RhdGljIHZvaWQgY3hs
-X2ZpeGVkX21lbW9yeV93aW5kb3dfY29uZmlnKENYTFN0YXRlICpjeGxfc3RhdGUsCj4gICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBDWExGaXhlZE1lbW9yeVdpbmRv
-d09wdGlvbnMgKm9iamVjdCwKPiAtICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgIEVycm9yICoqZXJycCkKPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgIGludCBpbmRleCwgRXJyb3IgKiplcnJwKQo+ICB7Cj4gICAgICBFUlJQX0dVQVJE
-KCk7Cj4gICAgICBnX2F1dG9mcmVlIENYTEZpeGVkV2luZG93ICpmdyA9IGdfbWFsbG9jMChzaXpl
-b2YoKmZ3KSk7Cj4gICAgICBzdHJMaXN0ICp0YXJnZXQ7Cj4gICAgICBpbnQgaTsKPiAgCj4gKyAg
-ICBmdy0+aW5kZXggPSBpbmRleDsKPiArCj4gICAgICBmb3IgKHRhcmdldCA9IG9iamVjdC0+dGFy
-Z2V0czsgdGFyZ2V0OyB0YXJnZXQgPSB0YXJnZXQtPm5leHQpIHsKPiAgICAgICAgICBmdy0+bnVt
-X3RhcmdldHMrKzsKPiAgICAgIH0KPiBAQCAtMzI1LDE0ICszMjcsMTUgQEAgc3RhdGljIHZvaWQg
-bWFjaGluZV9zZXRfY2ZtdyhPYmplY3QgKm9iaiwgVmlzaXRvciAqdiwgY29uc3QgY2hhciAqbmFt
-ZSwKPiAgICAgIENYTFN0YXRlICpzdGF0ZSA9IG9wYXF1ZTsKPiAgICAgIENYTEZpeGVkTWVtb3J5
-V2luZG93T3B0aW9uc0xpc3QgKmNmbXdfbGlzdCA9IE5VTEw7Cj4gICAgICBDWExGaXhlZE1lbW9y
-eVdpbmRvd09wdGlvbnNMaXN0ICppdDsKPiArICAgIGludCBpbmRleDsKPiAgCj4gICAgICB2aXNp
-dF90eXBlX0NYTEZpeGVkTWVtb3J5V2luZG93T3B0aW9uc0xpc3QodiwgbmFtZSwgJmNmbXdfbGlz
-dCwgZXJycCk7Cj4gICAgICBpZiAoIWNmbXdfbGlzdCkgewo+ICAgICAgICAgIHJldHVybjsKPiAg
-ICAgIH0KPiAgCj4gLSAgICBmb3IgKGl0ID0gY2Ztd19saXN0OyBpdDsgaXQgPSBpdC0+bmV4dCkg
-ewo+IC0gICAgICAgIGN4bF9maXhlZF9tZW1vcnlfd2luZG93X2NvbmZpZyhzdGF0ZSwgaXQtPnZh
-bHVlLCBlcnJwKTsKPiArICAgIGZvciAoaXQgPSBjZm13X2xpc3QsIGluZGV4ID0gMDsgaXQ7IGl0
-ID0gaXQtPm5leHQsIGluZGV4KyspIHsKPiArICAgICAgICBjeGxfZml4ZWRfbWVtb3J5X3dpbmRv
-d19jb25maWcoc3RhdGUsIGl0LT52YWx1ZSwgaW5kZXgsIGVycnApOwo+ICAgICAgfQo+ICAgICAg
-c3RhdGUtPmNmbXdfbGlzdCA9IGNmbXdfbGlzdDsKPiAgfQoNCg0K5L+h5oGv5a6J5YWo5aOw5piO
-77ya5pys6YKu5Lu25YyF5ZCr5L+h5oGv5b2S5Y+R5Lu25Lq65omA5Zyo57uE57uH5omA5pyJLOWP
-keS7tuS6uuaJgOWcqOe7hOe7h+WvueivpemCruS7tuaLpeacieaJgOacieadg+WIqeOAguivt+aO
-peaUtuiAheazqOaEj+S/neWvhizmnKrnu4/lj5Hku7bkurrkuabpnaLorrjlj68s5LiN5b6X5ZCR
-5Lu75L2V56ys5LiJ5pa557uE57uH5ZKM5Liq5Lq66YCP6Zyy5pys6YKu5Lu25omA5ZCr5L+h5oGv
-44CCDQpJbmZvcm1hdGlvbiBTZWN1cml0eSBOb3RpY2U6IFRoZSBpbmZvcm1hdGlvbiBjb250YWlu
-ZWQgaW4gdGhpcyBtYWlsIGlzIHNvbGVseSBwcm9wZXJ0eSBvZiB0aGUgc2VuZGVyJ3Mgb3JnYW5p
-emF0aW9uLlRoaXMgbWFpbCBjb21tdW5pY2F0aW9uIGlzIGNvbmZpZGVudGlhbC5SZWNpcGllbnRz
-IG5hbWVkIGFib3ZlIGFyZSBvYmxpZ2F0ZWQgdG8gbWFpbnRhaW4gc2VjcmVjeSBhbmQgYXJlIG5v
-dCBwZXJtaXR0ZWQgdG8gZGlzY2xvc2UgdGhlIGNvbnRlbnRzIG9mIHRoaXMgY29tbXVuaWNhdGlv
-biB0byBvdGhlcnMu
+Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+---
+ gdb-xml/aarch64-core.xml | 12 ++++++++++++
+ target/arm/gdbstub64.c   |  7 +++++++
+ 2 files changed, 19 insertions(+)
+
+diff --git a/gdb-xml/aarch64-core.xml b/gdb-xml/aarch64-core.xml
+index 2b74b87f908f792c24f76f212e4f7eaf335ddbc2..dffc92303fc7b7e8221cf6afd6009101f34352ed 100644
+--- a/gdb-xml/aarch64-core.xml
++++ b/gdb-xml/aarch64-core.xml
+@@ -108,4 +108,16 @@
+     <field name="N" start="31" end="31"/>
+   </flags>
+   <reg name="NZCV" bitsize="64" type="nzcv_flags"/>
++
++  <flags id="daif_flags" size="8">
++    <!-- FIQ interrupt mask.  -->
++    <field name="F" start="6" end="6"/>
++    <!-- IRQ interrupt mask.  -->
++    <field name="I" start="7" end="7"/>
++    <!-- SError interrupt mask.  -->
++    <field name="A" start="8" end="8"/>
++    <!-- Debug exception mask.  -->
++    <field name="D" start="9" end="9"/>
++  </flags>
++  <reg name="DAIF" bitsize="64" type="daif_flags"/>
+ </feature>
+diff --git a/target/arm/gdbstub64.c b/target/arm/gdbstub64.c
+index dd3c6222a577efa03753cf07371afdedeefdb771..6c424ed361e32e12836c6ef00a06397bd684bac4 100644
+--- a/target/arm/gdbstub64.c
++++ b/target/arm/gdbstub64.c
+@@ -54,6 +54,9 @@ int aarch64_cpu_gdb_read_register(CPUState *cs, GByteArray *mem_buf, int n)
+     case 35:
+         /* NZCV */
+         return gdb_get_reg64(mem_buf, pstate_read(env) & PSTATE_NZCV);
++    case 36:
++        /* DAIF */
++        return gdb_get_reg64(mem_buf, env->daif);
+     }
+     /* Unknown register.  */
+     return 0;
+@@ -91,6 +94,10 @@ int aarch64_cpu_gdb_write_register(CPUState *cs, uint8_t *mem_buf, int n)
+         tmp = (pstate_read(env) & ~PSTATE_NZCV) | (tmp & PSTATE_NZCV);
+         pstate_write(env, tmp);
+         return 8;
++    case 36:
++        /* DAIF */
++        env->daif = tmp & PSTATE_DAIF;
++        return 8;
+     }
+     /* Unknown register.  */
+     return 0;
+
+-- 
+2.47.2
 
 

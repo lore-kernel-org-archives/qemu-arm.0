@@ -4,81 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D93F2C87FD2
-	for <qemu-arm@archiver.kernel.org>; Fri,  8 Aug 2025 13:15:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C71EC87FD3
+	for <qemu-arm@archiver.kernel.org>; Fri,  8 Aug 2025 13:15:27 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ukMuQ-0001DJ-Oh; Fri, 08 Aug 2025 09:13:22 -0400
+	id 1ukMuQ-0001DL-QO; Fri, 08 Aug 2025 09:13:22 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <armenon@redhat.com>)
- id 1ukHLR-0007At-8S
- for qemu-arm@nongnu.org; Fri, 08 Aug 2025 03:16:56 -0400
+ id 1ukHMW-0002YD-Rh
+ for qemu-arm@nongnu.org; Fri, 08 Aug 2025 03:18:00 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <armenon@redhat.com>)
- id 1ukHLN-0007Nw-T4
- for qemu-arm@nongnu.org; Fri, 08 Aug 2025 03:16:52 -0400
+ id 1ukHMQ-0007Ye-99
+ for qemu-arm@nongnu.org; Fri, 08 Aug 2025 03:18:00 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1754637408;
+ s=mimecast20190719; t=1754637472;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=uRhybXxEqTNSGknAGEpHdFP2njDEP5BIaNiXDB4HopY=;
- b=dbiW18SqJ8UYK1ra7lOYDtHLXmtcb+3jMiRvvqGfbJEa+8IWyA+vtLoFXk6iuyAg543G0a
- hLTxGs7Zk0YtXjbxdkwQdFyk6WjhMp8vbwX+Fe/erKAgeuyHOeF2tQLBoNrXWMDlLwXonm
- PIHW8wEmWg7xrUfBna0vERJ6IVajrh0=
-Received: from mail-pl1-f197.google.com (mail-pl1-f197.google.com
- [209.85.214.197]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=Zc6KGC9gLPRi6q/fK9uTYSORlFiBhURFQtRCjdrDpz8=;
+ b=aqPmIanzhVocScPmRH4LKxyqnNEDNf8gZMbIx4OCi63TzjSHtUJX2fpm+IidCe6S3Hs+lJ
+ UcAyPosSBMYxSxnvOQi9qQFptWp4/rKTRJz9nkBy3CdQrGuaGYiuXac3W5VnmwYqK3n5j2
+ 4HWK74rpfNcEU4khmXICvDvVSdO46sQ=
+Received: from mail-pl1-f198.google.com (mail-pl1-f198.google.com
+ [209.85.214.198]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-155-I8CoHcPgMl6CIXTVO84BQA-1; Fri, 08 Aug 2025 03:16:46 -0400
-X-MC-Unique: I8CoHcPgMl6CIXTVO84BQA-1
-X-Mimecast-MFC-AGG-ID: I8CoHcPgMl6CIXTVO84BQA_1754637406
-Received: by mail-pl1-f197.google.com with SMTP id
- d9443c01a7336-2400117dd80so14342405ad.2
- for <qemu-arm@nongnu.org>; Fri, 08 Aug 2025 00:16:46 -0700 (PDT)
+ us-mta-77-Ixgc2hqgNNq4gNfAV7PtvQ-1; Fri, 08 Aug 2025 03:17:49 -0400
+X-MC-Unique: Ixgc2hqgNNq4gNfAV7PtvQ-1
+X-Mimecast-MFC-AGG-ID: Ixgc2hqgNNq4gNfAV7PtvQ_1754637468
+Received: by mail-pl1-f198.google.com with SMTP id
+ d9443c01a7336-24011ceafc8so16025685ad.3
+ for <qemu-arm@nongnu.org>; Fri, 08 Aug 2025 00:17:49 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1754637406; x=1755242206;
+ d=1e100.net; s=20230601; t=1754637468; x=1755242268;
  h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
  :mime-version:subject:date:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=uRhybXxEqTNSGknAGEpHdFP2njDEP5BIaNiXDB4HopY=;
- b=M7t5rF6Sj2sh9dSUrMkWWUah6n6XxsHzPAMy45k+g54VrOegubqwI3asaPddXgeFjq
- aT6X29wdn0RJAoKfS4K8pECZbIpQuZge+qGDgpCGkDv9ND+M2V/+/kUZgkz9cc+s+Twi
- jac9KDW1Jw8owZvH9x7rKFsDfXGyWVfIyv4+MXt7Gyp3r8axM+ZJWFrcw2jUpMzBGkqq
- K7Mm0wQUrpTo0qveX4GxqCg/pHiAudOYDgDXZOalI/uUqhiKCdgGKPoMo3Lk3oqmiNUr
- y0IKhJ31kHwQl94eW+Hr2AnexWWt+tXmHSVv4Fo+lNROvEZ84Bj0Rj7JBvwSaDBIJtnT
- 0qAQ==
+ bh=Zc6KGC9gLPRi6q/fK9uTYSORlFiBhURFQtRCjdrDpz8=;
+ b=iHyF/B9HKqgQJVqi8aTdyQ+j82mKJYSJQbOQ/qwMYVUWmrug7yobTEVkh7lkAlEuvk
+ qe0Gatd2D2uY4nMfPkA8LWdN28zbRCzhDPcARX/pNOb4bwqC/+3SJXeQEwdU+548dfKz
+ pijdaFQ34MyaQmG1TBXHObWSCabZtIlMo7Vv4Hu+FRf3kwdpVtC0B55GGLE/xec8Lb13
+ LTNTBNruky9gm5+nDHtKjxZNV2ngwz+0RJePdx3nXygXXfUSgJEZdz6kBnsOzTYSJ6QS
+ nP9SKRl3zuFadwnGpaUvYwHS9nqZP87EWowcmRJcMVKjMN1XJo9SqxfvoOs0rSuRcJYN
+ xLSg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVNzR5lX0lcKSLtTiQL6vzNbeF2pM+Tu3bJvzPBwWzPO0dDBUXW0NTED8Jv/x3Gm9YQAgLbf2fA9A==@nongnu.org
-X-Gm-Message-State: AOJu0YyayQFw35gxTwHA0xASba+Lgd4TQGEZKwDmBrlx5ERuP3V2Z2q1
- h5ltz4uUlfBFnAQfPM1VtOWh9AFdWDrVG8ZCJTw4vtrJujBRVNY+94isJ1l4OrLkTz3rmchzGEu
- G1ph9dmXKSMvsA3QznYUKh2JpzUhYfkFsDFyxQAB/zzxX3T6K3SXb5g==
-X-Gm-Gg: ASbGncvPjAxiDMOB25abkMUXFRiUiclfVheDZT50VbGBVrjhIT8z5EHy2Q3l/5DyPjY
- nLLEy/qQyiV+r2JQYs2wI4McAfiL1uiuC2Jn+mLKwjXqyOIegYc+lRxn7hxvZjS1qbkn/AllJjV
- SR4Qi4Uthvd7cgx+PIq7EjCCo6fX4MCKcycZuiKYAdRzSqjtUOsKs3yXPiqBnGxk3cRaP5hMYBf
- Tm2QB5P+jZqsJntyfD1rtOsY8Xt3+eSs7GIZuqrHwx77GnrJwzraU05ksts2O+ymujeijgg5Qs2
- HeKyM1gsBGHWnP1P/bejBDPQXcgRoc52fgsqtCzRPVHsGxhOvol/+g==
-X-Received: by 2002:a17:902:ebc9:b0:240:725d:c396 with SMTP id
- d9443c01a7336-242c21e05a1mr32390235ad.34.1754637405756; 
- Fri, 08 Aug 2025 00:16:45 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHLOOBpjDoreP0dpbddEaI9CzViqDCnoE442ya1v4t76/Oms4vfMFSorxmi9/JXWFzJ9Qj1dQ==
-X-Received: by 2002:a17:902:ebc9:b0:240:725d:c396 with SMTP id
- d9443c01a7336-242c21e05a1mr32389665ad.34.1754637405300; 
- Fri, 08 Aug 2025 00:16:45 -0700 (PDT)
+ AJvYcCUeZyZ7Tsfz/qeaOSaZ+ce5AUU1A8/I4jt77q6aT4PBhnh3rUltYT/AuX9XelXz3AQSc2e+gVeuoQ==@nongnu.org
+X-Gm-Message-State: AOJu0YyhxuJcCwnNmti+ST9EHn2tUw1yal2Se8f/O3fE5avXUCe2MbGA
+ 57hyOarIvs9OQ+trff4CqsRoCqKVu+u6Hoe60VfNrtSs5lqPjRFcDde1/AfixT5COjB1NWHOFy5
+ XpwpuUJxpEy6sMsVlGPbU+akvLOWqfZGCjtx3JvyboOAp7B2c8Zv2jw==
+X-Gm-Gg: ASbGncugEUhV0nzla0H+tLyzZ/kxBJxw9+Y5fwy5y+1cRZrLc0tAV2UNrhcJeFqIBZE
+ UlXUT0NmoapxyCB6WYcbL3DMhPL673qLm6EGErIzGAu98v3CK1FsvQhyYPcFG4oChLTw0bYTXDX
+ t7FkSaHMhOMZFvZPrb+t3JlEMtbwZxlPcUE2JUYeYKwSa4ac9rgAVg9Txm8mP9iSklj5v5BNyvi
+ XfzyYB5M83LqRYNj7zKhlMxq4XnltlBJmEl+VdTDqCg2jA4x4zmKkTW52893WfDx/9/9JSDT49/
+ Cb4eLZ34MRARoWRhPPq+7Urc0o5jjhGoU63MB7U05sEE1Tmpj8SGgQ==
+X-Received: by 2002:a17:903:19ce:b0:240:cd3e:d860 with SMTP id
+ d9443c01a7336-242c220df9cmr27244155ad.41.1754637468276; 
+ Fri, 08 Aug 2025 00:17:48 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IE9KAVLpGwFNYG2bSaShhaR1b2jiMAmB+ahxcRFnGIfTjtpcMTK9FVy0HLkfyyV55PczCDEjA==
+X-Received: by 2002:a17:903:19ce:b0:240:cd3e:d860 with SMTP id
+ d9443c01a7336-242c220df9cmr27243575ad.41.1754637467836; 
+ Fri, 08 Aug 2025 00:17:47 -0700 (PDT)
 Received: from armenon-kvm.bengluru.csb ([49.36.101.237])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-241e899d347sm199659385ad.140.2025.08.08.00.16.36
+ d9443c01a7336-241e899d347sm199659385ad.140.2025.08.08.00.17.39
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 08 Aug 2025 00:16:45 -0700 (PDT)
+ Fri, 08 Aug 2025 00:17:47 -0700 (PDT)
 From: Arun Menon <armenon@redhat.com>
-Date: Fri, 08 Aug 2025 12:43:40 +0530
-Subject: [PATCH v10 14/27] migration: push Error **errp into
- ram_postcopy_incoming_init()
+Date: Fri, 08 Aug 2025 12:43:47 +0530
+Subject: [PATCH v10 21/27] migration: push Error **errp into
+ loadvm_process_enable_colo()
 MIME-Version: 1.0
-Message-Id: <20250808-propagate_tpm_error-v10-14-3e81a1d419b2@redhat.com>
+Message-Id: <20250808-propagate_tpm_error-v10-21-3e81a1d419b2@redhat.com>
 References: <20250808-propagate_tpm_error-v10-0-3e81a1d419b2@redhat.com>
 In-Reply-To: <20250808-propagate_tpm_error-v10-0-3e81a1d419b2@redhat.com>
 To: qemu-devel@nongnu.org
@@ -107,16 +107,16 @@ Cc: Peter Xu <peterx@redhat.com>, Fabiano Rosas <farosas@suse.de>,
  Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
  Arun Menon <armenon@redhat.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=4760; i=armenon@redhat.com;
- h=from:subject:message-id; bh=HJd1s9ppefA7shhe6hHIGrJaOm2mh/5lDOnqNO64hYM=;
- b=owGbwMvMwCWWVaVqcZPfqI/xtFoSQ8bUxVfztjRMu7xT9siiW4YiJsn27RveHVHu/Hjk4lpmm
- z+LSvS/d5SyMIhxMciKKbI0fA2QbQoojIi0fXkdZg4rE8gQBi5OAZjImw+MDI+Yr3nOtxSXV9MQ
- /+piuEnLt569eMOXkMn2Aud/PZTM/8rIsKFKdaqbaUjshv3xE+5+4Zq4W/bQG6VVute98u7ODjn
- 7lRUA
+X-Developer-Signature: v=1; a=openpgp-sha256; l=5954; i=armenon@redhat.com;
+ h=from:subject:message-id; bh=LREnjd+zirEQOcTJ5PyBLt5tOajL0klZWFfTSsXGi5Q=;
+ b=owGbwMvMwCWWVaVqcZPfqI/xtFoSQ8bUxdcE9vzL4P+WufD6cZWdqhnlvOkPW9RjJyztd7Gck
+ Krcvz6zo5SFQYyLQVZMkaXha4BsU0BhRKTty+swc1iZQIYwcHEKwET4RRj+OyTPspbZ+nwvD0uq
+ pr/4rQDjf48EegtXbJLtUoz6laRzgJFhwYe2s3s+PW6ZenxD0eZlBW1XPr4//+VzRc2FbfPq/D5
+ 95wYA
 X-Developer-Key: i=armenon@redhat.com; a=openpgp;
  fpr=80F5501D82507158593DE9D76A7A2538D90F328E
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: bOMgb7Y8vtIr_e3fRbFrBVoeBysPOTfgiH_cWrxwtmk_1754637406
+X-Mimecast-MFC-PROC-ID: ChH00_q-QJCQDJgY4mIHWt9txmhTgOa5THvzH1WJvbs_1754637468
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
@@ -149,116 +149,150 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 This is an incremental step in converting vmstate loading
 code to report error via Error objects instead of directly
 printing it to console/monitor.
-It is ensured that ram_postcopy_incoming_init() must report an error
+It is ensured that loadvm_process_enable_colo() must report an error
 in errp, in case of failure.
 
 Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 Signed-off-by: Arun Menon <armenon@redhat.com>
 ---
- migration/postcopy-ram.c | 9 ++++++---
- migration/postcopy-ram.h | 2 +-
- migration/ram.c          | 4 ++--
- migration/ram.h          | 2 +-
- migration/savevm.c       | 2 +-
- 5 files changed, 11 insertions(+), 8 deletions(-)
+ include/migration/colo.h |  2 +-
+ migration/migration.c    | 12 ++++++------
+ migration/ram.c          |  8 ++++----
+ migration/ram.h          |  2 +-
+ migration/savevm.c       | 26 ++++++++++++++------------
+ 5 files changed, 26 insertions(+), 24 deletions(-)
 
-diff --git a/migration/postcopy-ram.c b/migration/postcopy-ram.c
-index 45af9a361e8eacaad0fb217a5da2c5004416c1da..05617e5fbcad62226a54fe17d9f7d9a316baf1e4 100644
---- a/migration/postcopy-ram.c
-+++ b/migration/postcopy-ram.c
-@@ -681,6 +681,7 @@ out:
-  */
- static int init_range(RAMBlock *rb, void *opaque)
- {
-+    Error **errp = opaque;
-     const char *block_name = qemu_ram_get_idstr(rb);
-     void *host_addr = qemu_ram_get_host_addr(rb);
-     ram_addr_t offset = qemu_ram_get_offset(rb);
-@@ -701,6 +702,8 @@ static int init_range(RAMBlock *rb, void *opaque)
-      * (Precopy will just overwrite this data, so doesn't need the discard)
-      */
-     if (ram_discard_range(block_name, 0, length)) {
-+        error_setg(errp, "failed to discard RAM block %s len=%zu",
-+                   block_name, length);
-         return -1;
-     }
+diff --git a/include/migration/colo.h b/include/migration/colo.h
+index 43222ef5ae6adc3f7d8aa6a48bef79af33d09208..d4fe422e4d335d3bef4f860f56400fcd73287a0e 100644
+--- a/include/migration/colo.h
++++ b/include/migration/colo.h
+@@ -25,7 +25,7 @@ void migrate_start_colo_process(MigrationState *s);
+ bool migration_in_colo_state(void);
  
-@@ -749,9 +752,9 @@ static int cleanup_range(RAMBlock *rb, void *opaque)
-  * postcopy later; must be called prior to any precopy.
-  * called from arch_init's similarly named ram_postcopy_incoming_init
-  */
--int postcopy_ram_incoming_init(MigrationIncomingState *mis)
-+int postcopy_ram_incoming_init(MigrationIncomingState *mis, Error **errp)
- {
--    if (foreach_not_ignored_block(init_range, NULL)) {
-+    if (foreach_not_ignored_block(init_range, errp)) {
-         return -1;
-     }
- 
-@@ -1703,7 +1706,7 @@ bool postcopy_ram_supported_by_host(MigrationIncomingState *mis, Error **errp)
-     return false;
+ /* loadvm */
+-int migration_incoming_enable_colo(void);
++int migration_incoming_enable_colo(Error **errp);
+ void migration_incoming_disable_colo(void);
+ bool migration_incoming_colo_enabled(void);
+ bool migration_incoming_in_colo_state(void);
+diff --git a/migration/migration.c b/migration/migration.c
+index 35f769bc55c235134abb5554ed01b94787d4bf78..39d6142abccf90c3a35e6c2df3df245052eb0bcf 100644
+--- a/migration/migration.c
++++ b/migration/migration.c
+@@ -623,22 +623,22 @@ void migration_incoming_disable_colo(void)
+     migration_colo_enabled = false;
  }
  
--int postcopy_ram_incoming_init(MigrationIncomingState *mis)
-+int postcopy_ram_incoming_init(MigrationIncomingState *mis, Error **errp)
+-int migration_incoming_enable_colo(void)
++int migration_incoming_enable_colo(Error **errp)
  {
-     error_report("postcopy_ram_incoming_init: No OS support");
-     return -1;
-diff --git a/migration/postcopy-ram.h b/migration/postcopy-ram.h
-index 3852141d7e37ab18bada4b46c137fef0969d0070..ca19433b246893fa5105bcebffb442c58a9a4f48 100644
---- a/migration/postcopy-ram.h
-+++ b/migration/postcopy-ram.h
-@@ -30,7 +30,7 @@ int postcopy_ram_incoming_setup(MigrationIncomingState *mis);
-  * postcopy later; must be called prior to any precopy.
-  * called from ram.c's similarly named ram_postcopy_incoming_init
-  */
--int postcopy_ram_incoming_init(MigrationIncomingState *mis);
-+int postcopy_ram_incoming_init(MigrationIncomingState *mis, Error **errp);
+ #ifndef CONFIG_REPLICATION
+-    error_report("ENABLE_COLO command come in migration stream, but the "
+-                 "replication module is not built in");
++    error_setg(errp, "ENABLE_COLO command come in migration stream, but the "
++               "replication module is not built in");
+     return -ENOTSUP;
+ #endif
  
- /*
-  * At the end of a migration where postcopy_ram_incoming_init was called.
+     if (!migrate_colo()) {
+-        error_report("ENABLE_COLO command come in migration stream, but x-colo "
+-                     "capability is not set");
++        error_setg(errp, "ENABLE_COLO command come in migration stream"
++                   ", but x-colo capability is not set");
+         return -EINVAL;
+     }
+ 
+     if (ram_block_discard_disable(true)) {
+-        error_report("COLO: cannot disable RAM discard");
++        error_setg(errp, "COLO: cannot disable RAM discard");
+         return -EBUSY;
+     }
+     migration_colo_enabled = true;
 diff --git a/migration/ram.c b/migration/ram.c
-index 7208bc114fb5c366740db380ee6956a91b3871a0..6a0dcc04f436524a37672c41c38f201f06773374 100644
+index 163265a57f26fb1dc88d9797629d58c278e9afb7..a8e8d2cc6790336625de626fee070ecc51327200 100644
 --- a/migration/ram.c
 +++ b/migration/ram.c
-@@ -3716,9 +3716,9 @@ static int ram_load_cleanup(void *opaque)
-  * postcopy-ram. postcopy-ram's similarly names
-  * postcopy_ram_incoming_init does the work.
+@@ -3578,7 +3578,7 @@ static void colo_init_ram_state(void)
+  *
+  * Returns zero to indicate success or -1 on error.
   */
--int ram_postcopy_incoming_init(MigrationIncomingState *mis)
-+int ram_postcopy_incoming_init(MigrationIncomingState *mis, Error **errp)
+-int colo_init_ram_cache(void)
++int colo_init_ram_cache(Error **errp)
  {
--    return postcopy_ram_incoming_init(mis);
-+    return postcopy_ram_incoming_init(mis, errp);
- }
+     RAMBlock *block;
  
- /**
+@@ -3587,9 +3587,9 @@ int colo_init_ram_cache(void)
+             block->colo_cache = qemu_anon_ram_alloc(block->used_length,
+                                                     NULL, false, false);
+             if (!block->colo_cache) {
+-                error_report("%s: Can't alloc memory for COLO cache of block %s,"
+-                             "size 0x" RAM_ADDR_FMT, __func__, block->idstr,
+-                             block->used_length);
++                error_setg(errp, "Can't alloc memory for COLO cache of "
++                           "block %s, size 0x" RAM_ADDR_FMT,
++                           block->idstr, block->used_length);
+                 RAMBLOCK_FOREACH_NOT_IGNORED(block) {
+                     if (block->colo_cache) {
+                         qemu_anon_ram_free(block->colo_cache, block->used_length);
 diff --git a/migration/ram.h b/migration/ram.h
-index 921c39a2c5c45bc2344be80854c46e4c10c09aeb..275709a99187f9429ccb4111e05281ec268ba0db 100644
+index 275709a99187f9429ccb4111e05281ec268ba0db..24cd0bf585762cfa1e86834dc03c6baeea2f0627 100644
 --- a/migration/ram.h
 +++ b/migration/ram.h
-@@ -86,7 +86,7 @@ void ram_postcopy_migrated_memory_release(MigrationState *ms);
- void ram_postcopy_send_discard_bitmap(MigrationState *ms);
- /* For incoming postcopy discard */
- int ram_discard_range(const char *block_name, uint64_t start, size_t length);
--int ram_postcopy_incoming_init(MigrationIncomingState *mis);
-+int ram_postcopy_incoming_init(MigrationIncomingState *mis, Error **errp);
- int ram_load_postcopy(QEMUFile *f, int channel);
+@@ -109,7 +109,7 @@ void ramblock_set_file_bmap_atomic(RAMBlock *block, ram_addr_t offset,
+                                    bool set);
  
- void ram_handle_zero(void *host, uint64_t size);
+ /* ram cache */
+-int colo_init_ram_cache(void);
++int colo_init_ram_cache(Error **errp);
+ void colo_flush_ram_cache(void);
+ void colo_release_ram_cache(void);
+ void colo_incoming_start_dirty_log(void);
 diff --git a/migration/savevm.c b/migration/savevm.c
-index 41e9533f985b0b9d69fb704d957938e2dae4781f..1f502f1cb15c951a0845dd27a4dee34fcea3f753 100644
+index a7aede1b3df9164e322e68f3889df7c4166876f5..c5566199d00893c4e083ecd27a55da832e2df574 100644
 --- a/migration/savevm.c
 +++ b/migration/savevm.c
-@@ -1989,7 +1989,7 @@ static int loadvm_postcopy_handle_advise(MigrationIncomingState *mis,
-         return -1;
-     }
+@@ -2519,15 +2519,21 @@ static int loadvm_handle_recv_bitmap(MigrationIncomingState *mis,
+     return 0;
+ }
  
--    if (ram_postcopy_incoming_init(mis)) {
-+    if (ram_postcopy_incoming_init(mis, NULL) < 0) {
-         return -1;
-     }
+-static int loadvm_process_enable_colo(MigrationIncomingState *mis)
++static int loadvm_process_enable_colo(MigrationIncomingState *mis,
++                                      Error **errp)
+ {
+-    int ret = migration_incoming_enable_colo();
++    ERRP_GUARD();
++    int ret;
  
+-    if (!ret) {
+-        ret = colo_init_ram_cache();
+-        if (ret) {
+-            migration_incoming_disable_colo();
+-        }
++    ret = migration_incoming_enable_colo(errp);
++    if (ret < 0) {
++        return ret;
++    }
++
++    ret = colo_init_ram_cache(errp);
++    if (ret) {
++        error_prepend(errp, "failed to init colo RAM cache: %d: ", ret);
++        migration_incoming_disable_colo();
+     }
+     return ret;
+ }
+@@ -2648,11 +2654,7 @@ static int loadvm_process_command(QEMUFile *f, Error **errp)
+         return loadvm_handle_recv_bitmap(mis, len, errp);
+ 
+     case MIG_CMD_ENABLE_COLO:
+-        ret = loadvm_process_enable_colo(mis);
+-        if (ret < 0) {
+-            error_setg(errp, "Failed to load device state command: %d", ret);
+-        }
+-        return ret;
++        return loadvm_process_enable_colo(mis, errp);
+ 
+     case MIG_CMD_SWITCHOVER_START:
+         ret = loadvm_postcopy_handle_switchover_start();
 
 -- 
 2.50.1

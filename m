@@ -4,81 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35FD8C87FD3
-	for <qemu-arm@archiver.kernel.org>; Fri,  8 Aug 2025 13:13:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C1C8C87FD3
+	for <qemu-arm@archiver.kernel.org>; Fri,  8 Aug 2025 13:13:35 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ukMuP-0001Cv-Nr; Fri, 08 Aug 2025 09:13:21 -0400
+	id 1ukMuR-0001DP-BG; Fri, 08 Aug 2025 09:13:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <armenon@redhat.com>)
- id 1ukHKm-0006hi-JX
- for qemu-arm@nongnu.org; Fri, 08 Aug 2025 03:16:13 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ id 1ukHL8-00070K-0x
+ for qemu-arm@nongnu.org; Fri, 08 Aug 2025 03:16:40 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <armenon@redhat.com>)
- id 1ukHKd-0007Gp-Rj
- for qemu-arm@nongnu.org; Fri, 08 Aug 2025 03:16:12 -0400
+ id 1ukHL6-0007Lg-6Y
+ for qemu-arm@nongnu.org; Fri, 08 Aug 2025 03:16:33 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1754637356;
+ s=mimecast20190719; t=1754637391;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=674/Cf6toA/OKPIbAxIkqVYnsPnsPyHvnVzOFE9af/o=;
- b=hsi2OxKBywL13HvJB7M0TxKpSfddkapmiLuwW7dwktCLvVGJ4rCONeszfsxFdv32Z207CU
- 5R/AOSDjvaUeVR/msK8h0/i1BqRpzrhzABxWnJtJNQo0ROQMMhJ3jvvsGN9u/x89c9OACa
- Y/yNDjFACiz4M2TGnOQUWVWckkUKs1w=
+ bh=x1eMFN91bkPJ9opz18JD2ZG/30haYOSJYxe/Rl0M8C8=;
+ b=CokL+u/y00SJ4HBJQfn6lRaIbRfzAR9Fb0ViV+LXSSYLtFgnIcbkQdUfpT6CEPJLZX177z
+ Wgr0NqjzbUaSTRHlhLF5R/DHv272dqlbCGgcudukTdDQDAT9ddLIrZrrozVVCuWfRzwfVE
+ fXMGCxm/bAsAUT02wHBCLdBvJU/hD04=
 Received: from mail-pl1-f200.google.com (mail-pl1-f200.google.com
  [209.85.214.200]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-599-xSByiy4XOSCC6Z7Ph5TwdQ-1; Fri, 08 Aug 2025 03:15:52 -0400
-X-MC-Unique: xSByiy4XOSCC6Z7Ph5TwdQ-1
-X-Mimecast-MFC-AGG-ID: xSByiy4XOSCC6Z7Ph5TwdQ_1754637352
+ us-mta-486-gQtinfc-NNOT1hOG2IdhRA-1; Fri, 08 Aug 2025 03:16:27 -0400
+X-MC-Unique: gQtinfc-NNOT1hOG2IdhRA-1
+X-Mimecast-MFC-AGG-ID: gQtinfc-NNOT1hOG2IdhRA_1754637386
 Received: by mail-pl1-f200.google.com with SMTP id
- d9443c01a7336-23fe28867b7so23573105ad.2
- for <qemu-arm@nongnu.org>; Fri, 08 Aug 2025 00:15:52 -0700 (PDT)
+ d9443c01a7336-2407248a180so16370515ad.3
+ for <qemu-arm@nongnu.org>; Fri, 08 Aug 2025 00:16:27 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1754637352; x=1755242152;
+ d=1e100.net; s=20230601; t=1754637386; x=1755242186;
  h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
  :mime-version:subject:date:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=674/Cf6toA/OKPIbAxIkqVYnsPnsPyHvnVzOFE9af/o=;
- b=SaKr4In9WqJTgCf/sme4aIFR5Kagusu60rlbcD0lFu/2WU89MtnbdkwxPZKk1jhsug
- kGWWGwy/qP0cO04Wc+xeDPNX3VygATNoejrOsBT/qfLmHRCDx+gjgN0pjGJOZFryUZtl
- ncez6QaVu6AqPK4HEFew918lMfyc2zeAx/J1EGyU4WZaruxxKgobsxUqkL/KMgW9bX7U
- tEKgg62as46uNpQMeU2Q5lVNFtny9FhKxOmvwa1EjHNrWXMKjoNjzYNfvtNthtLN2tgs
- S+wWNG3OjWNZTdZK7tw3p1kL1JNVj1CHuZciE/GW7gbX/Bm3HngMccSZ3GEIQCo/gHNF
- rLvw==
+ bh=x1eMFN91bkPJ9opz18JD2ZG/30haYOSJYxe/Rl0M8C8=;
+ b=nny7Sb1kdLWXcGHQmRLGaMP2ZAMqafUiZxy1ktiRiCU69yll6rdm4hbwiu4t13oizK
+ doz/JS0HPF1Fd8On8+aAgzxnXqNsx1szv2hjKLZJNDiiNyQGgLFuxd+5r1y9OmUYVULX
+ S2+oQp2amHEMxhgBI2dC7jxuShi7Hc2jiDCpdmeMFQy2eclSxCXOL0NZtzOfdWjtmyUj
+ N8QyQuylT5pA51BqZ9fUN6uHBqXWzpyyEo+nfzNJvWROORC4SQ2zG7kRIBDGTy8wuMU1
+ wJGld69HgfwxWp9v7Bionapv2ffqdjGx48ELiWJ38ZSn3cDSt8SV5QyCdggVT00Ix6GE
+ alCw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVXXPiOgRMLJpFpwwImfBovA3A2iawsgaW5KxdbU0vWhMK0BivSVooZKdUujfiniF29CWwoJb0X0A==@nongnu.org
-X-Gm-Message-State: AOJu0YwoC4rco7CYLD8Q0P68g9s0vYBG8NNpdR47ZnfaE+EILAmKPqDE
- kKgNQHXQqNztWrRppN9q3mdONi/Xb+k6NIgtSM+WsZwEA7R7bzU43FzP1Ja3G1y2C0zQXyS9QUb
- LHjaH/thffkpRJLCh9pRr7EIRpNRwQAeMe67BP9ronjwLI1epCUwmfg==
-X-Gm-Gg: ASbGnct7URJ/ai6vsmQAiNQesASW1h0Pc1CeEhpaRvr8wM6ygt99p5V2m8HM+rYJH1t
- k7uBpjjQPwNPFqXnZ0izV3YwKrmzyRW4syGJxutNC3b7ehycVe7FrF6SPNx5oDkYJ+PUe2LpiTL
- 4duByHfJcFx87oa/jg2dsSK74EQMmDQE6Fd+Kg0ovA9UcMhoaZ080IS0jLQo/QGfuF6bogSDkH4
- kWcdHf0+3C+I4+yjFIK/RsOpzG3rAs5QL+tupoAbPdTrQjVLmX5q8vfCq02ZKsug0Ze+tBhjnxm
- AU+0R5FLBofZi9eJ1hmWIYBIPXWkXrUOOPLmWjeePcHjeG/841EJAA==
-X-Received: by 2002:a17:903:1106:b0:240:3f4d:b9b1 with SMTP id
- d9443c01a7336-242c21fe5e9mr29386925ad.29.1754637351692; 
- Fri, 08 Aug 2025 00:15:51 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFzaXDhUkp8uaAIKJYAIHTJ7m/BlrYP3t6Ym5xHEMHtCt98P77XwcBU5znFqIPSWAGq4YPElw==
-X-Received: by 2002:a17:903:1106:b0:240:3f4d:b9b1 with SMTP id
- d9443c01a7336-242c21fe5e9mr29386375ad.29.1754637351236; 
- Fri, 08 Aug 2025 00:15:51 -0700 (PDT)
+ AJvYcCVbFzs/QBWxlr+3e7RvV7MZGycDk+fThtNYak3txP994lFM2kyKKFyDyZZpl1aqVcjRxGLjrB9vrA==@nongnu.org
+X-Gm-Message-State: AOJu0YyBc4fG9lPbcnJ9WOLbemR5Pw9uh/axfAIuxMDibh68tClcSeGX
+ X+5UtKwciKfcmcqUQYouRDjOcQmD/QKf6SsozDm93LeETHAx1Q6q/rZq2+3JQK56c2HW3c6EA2J
+ F4Bux9skscTD+3bi82U7DqNCs8crQxNfi8yI+yM7BfAPb0bk2XHKtoA==
+X-Gm-Gg: ASbGncvbTcnu7FcjvBCEp3ws5IPH/7o7lirr6Aga5OGzIaGT8HTcq695Gc4x4OMsT/Z
+ Y03GqUKF1eo4BfVF1LrjEpTK2/QU70w7gPUgqQ3KmXHfDCXJ4eobyS1xR39MTRhzmoXha1h/m5a
+ c7RigtU8ZH0aVQKbw/lTr/Tqc9hFQLT1DRKvR30niuGV0adCbQzmZzAv3FthO/Jtlwtv1JcKR7z
+ K+IGRq4z4MPdO9IbzIMFoqiFYBocQb7dDXIBxN4Q3DFBewRhBgzEs63M2q+ZCez/JeAvGT5RgPa
+ MYQAARZubMxdyxYCcsgmuEXt9/m2t2cOb09s8Le7GStmC2oHmVxEtQ==
+X-Received: by 2002:a17:902:f70c:b0:235:f143:9b16 with SMTP id
+ d9443c01a7336-242c2240276mr27924845ad.41.1754637386465; 
+ Fri, 08 Aug 2025 00:16:26 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHNW3SnXvDaeDtDDX5OUsfGRkmd+Wq4Z8hJPWlseW4LPgO2lOAw0xi+TTGF2v5i8EgDKl0UIg==
+X-Received: by 2002:a17:902:f70c:b0:235:f143:9b16 with SMTP id
+ d9443c01a7336-242c2240276mr27924565ad.41.1754637386097; 
+ Fri, 08 Aug 2025 00:16:26 -0700 (PDT)
 Received: from armenon-kvm.bengluru.csb ([49.36.101.237])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-241e899d347sm199659385ad.140.2025.08.08.00.15.42
+ d9443c01a7336-241e899d347sm199659385ad.140.2025.08.08.00.16.17
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 08 Aug 2025 00:15:50 -0700 (PDT)
+ Fri, 08 Aug 2025 00:16:25 -0700 (PDT)
 From: Arun Menon <armenon@redhat.com>
-Date: Fri, 08 Aug 2025 12:43:34 +0530
-Subject: [PATCH v10 08/27] migration: push Error **errp into
- qemu_load_device_state()
+Date: Fri, 08 Aug 2025 12:43:38 +0530
+Subject: [PATCH v10 12/27] migration: Update qemu_file_get_return_path()
+ docs and remove dead checks
 MIME-Version: 1.0
-Message-Id: <20250808-propagate_tpm_error-v10-8-3e81a1d419b2@redhat.com>
+Message-Id: <20250808-propagate_tpm_error-v10-12-3e81a1d419b2@redhat.com>
 References: <20250808-propagate_tpm_error-v10-0-3e81a1d419b2@redhat.com>
 In-Reply-To: <20250808-propagate_tpm_error-v10-0-3e81a1d419b2@redhat.com>
 To: qemu-devel@nongnu.org
@@ -105,22 +105,23 @@ Cc: Peter Xu <peterx@redhat.com>, Fabiano Rosas <farosas@suse.de>,
  Hailiang Zhang <zhanghailiang@xfusion.com>, 
  Stefan Berger <stefanb@linux.vnet.ibm.com>, 
  Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
- Arun Menon <armenon@redhat.com>
+ Arun Menon <armenon@redhat.com>, 
+ =?utf-8?q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2682; i=armenon@redhat.com;
- h=from:subject:message-id; bh=FTU2QK1xtHVGrbgg6clW9lVV6renoihKHbOJ3mkz6GY=;
- b=owGbwMvMwCWWVaVqcZPfqI/xtFoSQ8bUxVd1+iwnseUpTpuwOFHyZeGrqTmSzDl+Ico8elE8g
- ezdP3I7SlkYxLgYZMUUWRq+Bsg2BRRGRNq+vA4zh5UJZAgDF6cATGTnRUaG44GTf7w/9/pJcN4G
- /TqL5UujfOQfCnw4u/WPY+7iacvvNjH8034x09BmR3SdvCdDUFCFWBr7w//Vi3c+WDDZ1/3LzP4
- X3AA=
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3858; i=armenon@redhat.com;
+ h=from:subject:message-id; bh=2DVEmxxtErqxySrYa+Ux2h1Cq14PJ7w1dCm0qxcYpfU=;
+ b=owGbwMvMwCWWVaVqcZPfqI/xtFoSQ8bUxVcrL07V5eRb8ezPvt/lWx9t6bFZ0P2NjVvKe/Gy2
+ MOlV2+86ChlYRDjYpAVU2Rp+Bog2xRQGBFp+/I6zBxWJpAhDFycAjCRBekM/2OE1kgc3jy3Mbx6
+ UkQjf+rtgt8qnxNndpfEfpn1rf1M7m2Gf2p1CrGZTSzLi1h9MjRq3K3z8+8JThGc4nSg+rrWvMN
+ bOAA=
 X-Developer-Key: i=armenon@redhat.com; a=openpgp;
  fpr=80F5501D82507158593DE9D76A7A2538D90F328E
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 5Dlo_ngSFH35DfFj5ohQihgXnfwrSclU3sMonP1dFsc_1754637352
+X-Mimecast-MFC-PROC-ID: crnWjYStoPfhcYR8dRXcVVTZwpDrQv74LIhR3nmX_90_1754637386
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=armenon@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=armenon@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -146,72 +147,106 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This is an incremental step in converting vmstate loading
-code to report error via Error objects instead of directly
-printing it to console/monitor.
-It is ensured that qemu_load_device_state() must report an error
-in errp, in case of failure.
+The documentation of qemu_file_get_return_path() states that it can
+return NULL on failure. However, a review of the current implementation
+reveals that it is guaranteed that it will always succeed and will never
+return NULL.
 
+As a result, the NULL checks post calling the function become redundant.
+This commit updates the documentation for the function and removes all
+NULL checks throughout the migration code.
+
+Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
 Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 Signed-off-by: Arun Menon <armenon@redhat.com>
 ---
- migration/colo.c   | 4 ++--
- migration/savevm.c | 5 +++--
- migration/savevm.h | 2 +-
- 3 files changed, 6 insertions(+), 5 deletions(-)
+ migration/colo.c      |  4 ----
+ migration/migration.c | 12 ++----------
+ migration/qemu-file.c |  1 -
+ migration/savevm.c    |  4 ----
+ 4 files changed, 2 insertions(+), 19 deletions(-)
 
 diff --git a/migration/colo.c b/migration/colo.c
-index e0f713c837f5da25d67afbd02ceb6c54024ca3af..0ba22ee76a13e313793f653f43a728e3c433bbc1 100644
+index a96e4dba15516b71d1b315c736c3b4879ff04e58..71842c798a1dbbea6a7ccf8cb64e2c836c0f574c 100644
 --- a/migration/colo.c
 +++ b/migration/colo.c
-@@ -729,9 +729,9 @@ static void colo_incoming_process_checkpoint(MigrationIncomingState *mis,
-     bql_lock();
-     vmstate_loading = true;
-     colo_flush_ram_cache();
--    ret = qemu_load_device_state(fb);
-+    ret = qemu_load_device_state(fb, errp);
-     if (ret < 0) {
--        error_setg(errp, "COLO: load device state failed");
-+        error_prepend(errp, "COLO: load device state failed: ");
-         vmstate_loading = false;
-         bql_unlock();
-         return;
-diff --git a/migration/savevm.c b/migration/savevm.c
-index 8c107fb5b89dea4d1b9a27466247c5d7c6b63bec..8557cef35eaf834166ed05ef8b39d79ead47b78f 100644
---- a/migration/savevm.c
-+++ b/migration/savevm.c
-@@ -3255,15 +3255,16 @@ int qemu_loadvm_state(QEMUFile *f, Error **errp)
-     return ret;
+@@ -850,10 +850,6 @@ static void *colo_process_incoming_thread(void *opaque)
+     failover_init_state();
+ 
+     mis->to_src_file = qemu_file_get_return_path(mis->from_src_file);
+-    if (!mis->to_src_file) {
+-        error_report("COLO incoming thread: Open QEMUFile to_src_file failed");
+-        goto out;
+-    }
+     /*
+      * Note: the communication between Primary side and Secondary side
+      * should be sequential, we set the fd to unblocked in migration incoming
+diff --git a/migration/migration.c b/migration/migration.c
+index c6768d88f45c870c7fad9b9957300766ff69effc..35f769bc55c235134abb5554ed01b94787d4bf78 100644
+--- a/migration/migration.c
++++ b/migration/migration.c
+@@ -2647,12 +2647,9 @@ out:
+     return NULL;
  }
  
--int qemu_load_device_state(QEMUFile *f)
-+int qemu_load_device_state(QEMUFile *f, Error **errp)
+-static int open_return_path_on_source(MigrationState *ms)
++static void open_return_path_on_source(MigrationState *ms)
  {
-+    ERRP_GUARD();
-     MigrationIncomingState *mis = migration_incoming_get_current();
-     int ret;
+     ms->rp_state.from_dst_file = qemu_file_get_return_path(ms->to_dst_file);
+-    if (!ms->rp_state.from_dst_file) {
+-        return -1;
+-    }
  
-     /* Load QEMU_VM_SECTION_FULL section */
-     ret = qemu_loadvm_state_main(f, mis);
-     if (ret < 0) {
--        error_report("Failed to load device state: %d", ret);
-+        error_setg(errp, "Failed to load device state: %d", ret);
-         return ret;
+     trace_open_return_path_on_source();
+ 
+@@ -2661,8 +2658,6 @@ static int open_return_path_on_source(MigrationState *ms)
+     ms->rp_state.rp_thread_created = true;
+ 
+     trace_open_return_path_on_source_continue();
+-
+-    return 0;
+ }
+ 
+ /* Return true if error detected, or false otherwise */
+@@ -4011,10 +4006,7 @@ void migration_connect(MigrationState *s, Error *error_in)
+      * QEMU uses the return path.
+      */
+     if (migrate_postcopy_ram() || migrate_return_path()) {
+-        if (open_return_path_on_source(s)) {
+-            error_setg(&local_err, "Unable to open return-path for postcopy");
+-            goto fail;
+-        }
++        open_return_path_on_source(s);
      }
  
-diff --git a/migration/savevm.h b/migration/savevm.h
-index b80770b7461a60e2ad6ba5e24a7baeae73d90955..b12681839f0b1afa3255e45215d99c13a224b19f 100644
---- a/migration/savevm.h
-+++ b/migration/savevm.h
-@@ -67,7 +67,7 @@ int qemu_save_device_state(QEMUFile *f);
- int qemu_loadvm_state(QEMUFile *f, Error **errp);
- void qemu_loadvm_state_cleanup(MigrationIncomingState *mis);
- int qemu_loadvm_state_main(QEMUFile *f, MigrationIncomingState *mis);
--int qemu_load_device_state(QEMUFile *f);
-+int qemu_load_device_state(QEMUFile *f, Error **errp);
- int qemu_loadvm_approve_switchover(void);
- int qemu_savevm_state_complete_precopy_non_iterable(QEMUFile *f,
-         bool in_postcopy);
+     /*
+diff --git a/migration/qemu-file.c b/migration/qemu-file.c
+index b6ac190034f777dbde0da1598483a892089d7538..f9ccee9a1091ecbd37e6b7d2081a4446442b544d 100644
+--- a/migration/qemu-file.c
++++ b/migration/qemu-file.c
+@@ -125,7 +125,6 @@ static QEMUFile *qemu_file_new_impl(QIOChannel *ioc, bool is_writable)
+ 
+ /*
+  * Result: QEMUFile* for a 'return path' for comms in the opposite direction
+- *         NULL if not available
+  */
+ QEMUFile *qemu_file_get_return_path(QEMUFile *f)
+ {
+diff --git a/migration/savevm.c b/migration/savevm.c
+index ff2e4f75e070d0f452414f28435905928b1480a7..ce5be8f0b95c798d3740d0949d468d7cbadf7020 100644
+--- a/migration/savevm.c
++++ b/migration/savevm.c
+@@ -2590,10 +2590,6 @@ static int loadvm_process_command(QEMUFile *f, Error **errp)
+             return 0;
+         }
+         mis->to_src_file = qemu_file_get_return_path(f);
+-        if (!mis->to_src_file) {
+-            error_report("CMD_OPEN_RETURN_PATH failed");
+-            return -1;
+-        }
+ 
+         /*
+          * Switchover ack is enabled but no device uses it, so send an ACK to
 
 -- 
 2.50.1

@@ -4,92 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A80F7C87FCB
-	for <qemu-arm@archiver.kernel.org>; Fri,  8 Aug 2025 17:15:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CBA19C87FDA
+	for <qemu-arm@archiver.kernel.org>; Fri,  8 Aug 2025 20:46:25 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ukQg7-0007Nf-Ss; Fri, 08 Aug 2025 13:14:51 -0400
+	id 1ukTya-0000oc-La; Fri, 08 Aug 2025 16:46:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1ukQg5-0007Am-IR
- for qemu-arm@nongnu.org; Fri, 08 Aug 2025 13:14:49 -0400
-Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ukTyS-0000bx-Sn
+ for qemu-arm@nongnu.org; Fri, 08 Aug 2025 16:46:01 -0400
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1ukQg3-0002Sk-TP
- for qemu-arm@nongnu.org; Fri, 08 Aug 2025 13:14:49 -0400
-Received: by mail-pf1-x429.google.com with SMTP id
- d2e1a72fcca58-747e41d5469so2735278b3a.3
- for <qemu-arm@nongnu.org>; Fri, 08 Aug 2025 10:14:47 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ukTyR-0003en-6E
+ for qemu-arm@nongnu.org; Fri, 08 Aug 2025 16:46:00 -0400
+Received: by mail-wm1-x32f.google.com with SMTP id
+ 5b1f17b1804b1-459e20ec1d9so24667075e9.3
+ for <qemu-arm@nongnu.org>; Fri, 08 Aug 2025 13:45:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1754673286; x=1755278086; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
+ d=linaro.org; s=google; t=1754685957; x=1755290757; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=PC7pyqqca3zOKfWHTrtPy17QNkLEZYu1x4vHEZfjDzU=;
- b=UJqmV/mMrj78ZNcQ6a6l+QoXMTRqNGDzdmKZhnOFpYMr7tTArnld/D9sCSZKv6KvCG
- xg7B402Y2ULwtLrMr2RTiT5FQPAcFSPdiUEKeR4MFcIfbSW01N38aoqQK4In9YJkUDQw
- fJS4EoNQgBZsFLJUFpPZhDfKULwHWb4jBlCV5Lfy46BSjx+IxIAfVkU6df1lfwFE+mRb
- U/hSmeNbAfSqFEE07s9SFEmjMiifoRktpOmw94zrSkwIPkClNBdYt7AzEKx/vk6VZ1kz
- Jk+wMPNJHMMEU3WvYfw0810O9G2dUg4SGuA0peWMVMw5ThRrkb+EmOvsloAa/vor/Hic
- iEyg==
+ bh=DWbHVPSnx3zBRESkWw4iY6+p9DQAd5CJqsRJ0vGzSSs=;
+ b=Rs0pF6O4HWaNjs58+EFLCZNHwQgOVhjIWKnjPiS4crBD2vgQptfe1zjP9hN4JHsNRE
+ eBx7Q2TaoTpLh8mus4y15AGEUWfNvsnn1HgTVK2IMPbFwX1kSAnfkIKMgq1Job7GK04g
+ jgCiieY7Hu3mgHkBK/K4xRd0UYk55a4yB0pAQiuNMa8EobpdZ0aI9a0ClMxjFp+VKhNa
+ PfzuaZMozfbVWicJCmexFm2kA5ixhklGlPOcJAZdtzerFUxSwgXL7zqB5efiYNM1XF5S
+ ruZNVMandWYn0D7oJWOUgfpvIsrkYPtvAiQJu19wAtvmtYfqTHh1ecQUe5SQXApnflFT
+ 1jQA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1754673286; x=1755278086;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
+ d=1e100.net; s=20230601; t=1754685957; x=1755290757;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=PC7pyqqca3zOKfWHTrtPy17QNkLEZYu1x4vHEZfjDzU=;
- b=dC+gXgrfsrwUyYiMkjvlDjlBfn3gFJDWapFgPwazf0QTR+M0RG5REYlF3b0HQVlDmQ
- 04Ki67xk4lN49QjrTQNyLirJWALgrRxKg7NSRXzMurnk9zpuBrzanniwB8lltAfays3U
- MkstAKwHIK4WhzMyi6hYk+uLUu3CnYjp+9MlUHEmCosYG6xhtQlmOr8EqEq05WaMJ5Av
- Ltx5keSVc+drWqtn+abSD7jKWfX2mUWLLGNBge32FqhiqlxfvmGtvq0FKIL9zh847+7N
- Ac9xGTjfSXFFNbRUn4ZTuNu5yb1oHl/DW/g4vqrY5Z6PtWF2mnc1MSj+Ebpq+HZIJMb8
- tg6A==
+ bh=DWbHVPSnx3zBRESkWw4iY6+p9DQAd5CJqsRJ0vGzSSs=;
+ b=xDCq4HhQ90wQUZP7rdGvZCDyfovqlv5iVOAGJAGnbVwrGDug104CRl6srotc2mpDhU
+ tMi+MijicYwQu4TQX0Ceip5icC2SPGvhpAnHKIekufapMwCVPaFrfEA/L/1brgdv59vk
+ 9Rd6ASc52M5OtLd2kEts3zqEKTBbZEincivU8AAxsGGk6W0YyY27ZB748hN9sapYLDuk
+ lIZr29fuSesjzaa8eKx90U+GDcm6PXHXm1aAIC9tf0lFyMR7V6iPp7XDc+COd3gYnC1H
+ sjjF+FrHwufM7F8yThTFcN27fyhNm5/rp1zUlBoCoVXrj+1bxujsX+DORLL5q25wwOth
+ w6qA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWToNMdgP7FBIB5r08GmZsEHuXIK6JzznR9+PcrVDs2uSRmRi6dUgGH9SEkSzOniF5LALkG9D0aTQ==@nongnu.org
-X-Gm-Message-State: AOJu0YyhO7K69BE7meWsyf7GK+ZbJkfY3JHmQQ3lNFn8Psfx9WDl8MEP
- zGOLv5ICBUh8gmMVYCJvXMRyZs+8SngqUj5O7ADGtak45nA+9InkHMmwHMLisST965o=
-X-Gm-Gg: ASbGncvpHFr0ungAAv9x5X5N7rA0s6Kd+gAFSreYDdLg9jBpdTFbKEtWSLcLgb3MHnA
- uMHB4Wk+l0wSUCFsH4+Cx2iv12IIUh6tLtzcYUcv2fjKpR3aPRhFVrJ8j4T+QK8hGaE7yYfFIHw
- +VxDcG41rNAWfJsLEflYFKoM7n8xk2xWBnT6ohLekq/lInUZ63EKX+k2TBWhvVWedX7Fl+bkBxd
- qNHA4fFymetmBXIsndT8rwexY2V9xKnSEQDDKaPf1aP+/hVLwWMhhsuriyFdtYtUBP1MFX9I5K2
- QjeV5CCEdW6HGEXsunfi490c4qWin860hona59HPvWKiZQ7CUNSC44EzjNNKx3P40wjraYZWJnd
- hdeTuXRfkwCsyn4p4B0H+4tWnCtaMZiOMmWA=
-X-Google-Smtp-Source: AGHT+IF5E6Q38WsetPX4vGjTIp7+4v4tQn9kBod1/eK/qLw8gXZApqPEHPs5n/x6eUB0m0t0AU9H6g==
-X-Received: by 2002:a17:902:dacd:b0:240:5549:7094 with SMTP id
- d9443c01a7336-242c200e82emr56046905ad.18.1754673286061; 
- Fri, 08 Aug 2025 10:14:46 -0700 (PDT)
-Received: from [192.168.1.87] ([38.41.223.211])
- by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-241e8ab3da8sm213752765ad.175.2025.08.08.10.14.45
+ AJvYcCV338KoRdygss8d/enIpRqY+gJhL1kV48MNtOIqkxvDMNcBVqXMsGJA7ppFljhvFCq/R+C7YRYMVw==@nongnu.org
+X-Gm-Message-State: AOJu0Yx+Zl5PuOmg4GDB3wCvNUeql3VrjFL8fl6snij8buFeEJ976Ea6
+ RU4irnQDqB9MerXpEIeDZda8CgZDTxDL4ooi+xeQgNytJ0FvK/7jD9GaNxldI4jM8vk=
+X-Gm-Gg: ASbGncvkhn3Zg9TAS/q4hh28do9ovu6JpkDqr5t7MAny48ij9ApjgRb2lIy3tP809zB
+ SOiN2FvLlD1K/JRUDTJYghSG4lmKNFx1YIEQK8uL4DOsmKQlm6E/9tzlW9h1ybbzylTLP9NKT1+
+ yAVvQ0GZfQoE2NYa99srMZw5zwPiSrV6LrWmb7X/Lk/tWnO8W1RsHWq2RLFUemaRHjhbTawjGvJ
+ goirQh4DV5GEo6apGL24ShCh+QpJhTTX0OX8n34Skfm2s6vWTXVWWNRvI3xC9Ovlwf4nVO0g/y8
+ PpHxnWxd2wC7NMVtSd3NxJHRdQA4JcFV7XzL0QT4wAbTsCrbvKp4BN+Fi3ax+hF6EH+3FC6zDDL
+ GCzb/9muGiMmYzB0pNWNtJ34DNI3Utb/WyHQqPF0Jagp7NAteR36zUJmZ/VrjHVHK9g==
+X-Google-Smtp-Source: AGHT+IEhLJ2welCu6ohViBY86RDdco6ICImm1tGHosw1q+JqBz/RI6BeqmpYLcX57zPq/NKnTagcig==
+X-Received: by 2002:a05:600c:474f:b0:459:db54:5f34 with SMTP id
+ 5b1f17b1804b1-459f4fc273dmr45806025e9.31.1754685956783; 
+ Fri, 08 Aug 2025 13:45:56 -0700 (PDT)
+Received: from [192.168.69.210] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-458be70c5f7sm273777125e9.26.2025.08.08.13.45.55
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 08 Aug 2025 10:14:45 -0700 (PDT)
-Message-ID: <96a27883-e02e-4d76-9dde-41ae1a19e0c3@linaro.org>
-Date: Fri, 8 Aug 2025 10:14:44 -0700
+ Fri, 08 Aug 2025 13:45:56 -0700 (PDT)
+Message-ID: <ae58547f-79f2-4bde-a3ac-46bea847b37d@linaro.org>
+Date: Fri, 8 Aug 2025 22:45:54 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/4] gdbstub/aarch64: add CurrentEL register
+Subject: Re: [PATCH v5 07/18] hw, target, accel: whpx: change apic_in_platform
+ to kernel_irqchip
+To: Mohamed Mediouni <mohamed@unpredictable.fr>, qemu-devel@nongnu.org
+Cc: =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ Igor Mammedov <imammedo@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Roman Bolshakov <rbolshakov@ddn.com>, Phil Dennis-Jordan
+ <phil@philjordan.eu>, Ani Sinha <anisinha@redhat.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Alexander Graf <agraf@csgraf.de>,
+ Peter Maydell <peter.maydell@linaro.org>, Mads Ynddal <mads@ynddal.dk>,
+ Sunil Muthuswamy <sunilmut@microsoft.com>, Zhao Liu <zhao1.liu@intel.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Eduardo Habkost <eduardo@habkost.net>, Cameron Esfahani <dirty@apple.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
+ <berrange@redhat.com>, Shannon Zhao <shannon.zhaosl@gmail.com>,
+ qemu-arm@nongnu.org, Yanan Wang <wangyanan55@huawei.com>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>
+References: <20250808065419.47415-1-mohamed@unpredictable.fr>
+ <20250808065419.47415-8-mohamed@unpredictable.fr>
 Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
- qemu-devel@nongnu.org, =?UTF-8?Q?Alex_Benn=C3=A9e?=
- <alex.bennee@linaro.org>, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>, Gustavo Romero <gustavo.romero@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org
-References: <20250808-gdbstub-aarch64-pstate-regs-v1-0-14ba70be1b3d@linaro.org>
- <20250808-gdbstub-aarch64-pstate-regs-v1-1-14ba70be1b3d@linaro.org>
- <CAFEAcA-2Zt7HTDX_bdBHjJyQS7o=csE1x6eDymyEPkV3K+pXrg@mail.gmail.com>
- <CAAjaMXbZK=n_HJGrmuGv1DZZ3AeaX7-fK-soFto4J=w-9=vdmQ@mail.gmail.com>
- <6190716c-09da-4abe-94e5-2b713855f0e9@linaro.org>
- <CAFEAcA-QcjtkAUUUGVvaUVrJBqP3NvSX0DuXQ==MGcPrjNtGQw@mail.gmail.com>
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-In-Reply-To: <CAFEAcA-QcjtkAUUUGVvaUVrJBqP3NvSX0DuXQ==MGcPrjNtGQw@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20250808065419.47415-8-mohamed@unpredictable.fr>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::429;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pf1-x429.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -112,51 +116,23 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 8/8/25 9:14 AM, Peter Maydell wrote:
-> On Fri, 8 Aug 2025 at 17:11, Pierrick Bouvier
-> <pierrick.bouvier@linaro.org> wrote:
->>
->> On 8/8/25 5:26 AM, Manos Pitsidianakis wrote:
->>> On Fri, Aug 8, 2025 at 3:21 PM Peter Maydell <peter.maydell@linaro.org> wrote:
->>>>
->>>> On Fri, 8 Aug 2025 at 12:30, Manos Pitsidianakis
->>>> <manos.pitsidianakis@linaro.org> wrote:
->>>> The debugger already has this information in the 'cpsr'
->>>> register, so it could implement convenience views of
->>>> the subfields itself if it liked.
->>>
->>> Yep, but consider: it is a register, architecturally, so it's nice to
->>> include it for consistency. It's redundant only because gdb has cpsr
->>> which is not a register. So this is about more about being technically
->>> correct than correcting an actual problem.
->>>
->>
->> I agree with Manos on this.
->> As mentioned on a previous thread, cpsr is not even supposed to exist
->> for aarch64. So adding architecturally defined registers, even if data
->> is redundant with cpsr, should not be a problem.
->> I'm sure gdb folks can understand this too.
+On 8/8/25 08:54, Mohamed Mediouni wrote:
+> Change terminology to match the KVM one, as APIC is x86-specific.
 > 
-> I'm not saying this is the wrong way to represent this.
-> I'm just saying we're not the only gdbstub in the world,
-> and it would be nice to have a wider discussion than just
-> QEMU folks so we are consistent about how we represent
-> PSTATE (including what we want to do about the new
-> bits that appear in the high 32 bits of an SPSR), before
-> we commit to any particular direction.
->
+> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+> 
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+> ---
+>   accel/whpx/whpx-accel-ops.c    |  2 +-
+>   accel/whpx/whpx-common.c       |  4 ++--
+>   hw/i386/x86-cpu.c              |  4 ++--
+>   include/system/whpx-internal.h |  2 +-
+>   include/system/whpx.h          |  4 ++--
+>   target/i386/cpu-apic.c         |  2 +-
+>   target/i386/whpx/whpx-all.c    | 14 +++++++-------
+>   7 files changed, 16 insertions(+), 16 deletions(-)
 
-Considering we have our own set of gdb xml, is that really important to 
-agree on pstate layout before we simply make those registers visible on 
-our side?
-The new registers added in this series on gdb/kgdb side at the moment, 
-so we don't really break anything.
-
-I agree it would be good to see this on gdb side, but my point is that 
-we are not necessarily stuck and we can make this visible without 
-waiting two releases. As well, it would be a good motivation to add this 
-on gdb showing QEMU already exposes this.
-
-> -- PMM
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
 

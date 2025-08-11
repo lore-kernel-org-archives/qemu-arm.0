@@ -4,94 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF22CC87FD2
-	for <qemu-arm@archiver.kernel.org>; Mon, 11 Aug 2025 10:41:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80636C87FDB
+	for <qemu-arm@archiver.kernel.org>; Mon, 11 Aug 2025 10:44:23 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ulPxq-0008RF-16; Mon, 11 Aug 2025 06:41:14 -0400
+	id 1ulQ0I-0000yM-Rc; Mon, 11 Aug 2025 06:43:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ulPxo-0008Q7-0b
- for qemu-arm@nongnu.org; Mon, 11 Aug 2025 06:41:12 -0400
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ulQ0F-0000xg-Vm
+ for qemu-arm@nongnu.org; Mon, 11 Aug 2025 06:43:45 -0400
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ulPxl-0004rG-6l
- for qemu-arm@nongnu.org; Mon, 11 Aug 2025 06:41:11 -0400
-Received: by mail-wm1-x32d.google.com with SMTP id
- 5b1f17b1804b1-459ddf8acf1so35156085e9.0
- for <qemu-arm@nongnu.org>; Mon, 11 Aug 2025 03:41:08 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ulQ09-00052F-Se
+ for qemu-arm@nongnu.org; Mon, 11 Aug 2025 06:43:43 -0400
+Received: by mail-wm1-x329.google.com with SMTP id
+ 5b1f17b1804b1-45a0dc77a15so2235695e9.2
+ for <qemu-arm@nongnu.org>; Mon, 11 Aug 2025 03:43:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1754908865; x=1755513665; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=f3242HSrf+maEBiFnxIJjp/97eu1oUsjXSoH1Q/0ZCc=;
- b=cQIvqt7PAA2gzD+G1SsRFWMses9hLTXZX8LUL3YlhGV4WwqvNj04GVqs2M7I/KwjMA
- opkznuakxSH1O2Z4rMC9yihlMZIe1RWfgVoNZWJjv7pAX+kIQUWqKLKIJ9edH+ESOP1Q
- 4bj+QX0ug6IH3erFtXif1G3S7xFxyhICNpRs6Y47RtpUn2YUQYMg+0eruGCkCrkMa6ce
- OEl1K/IhVW6L2Q0OvPZQ3pDhLJD0KNcNvJqu/lPWww3VBktWMxNAZfRg2iUYmSYnrhL6
- KffxtR1UMAxYTfntZZAhe+CKG2hkO/mOMVv2r8+tho4T64Tuq2ilw6bWrsUL+8EcmdzM
- aQzA==
+ d=linaro.org; s=google; t=1754909015; x=1755513815; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:content-language:references
+ :cc:to:from:subject:user-agent:mime-version:date:message-id:from:to
+ :cc:subject:date:message-id:reply-to;
+ bh=jfrrc7H7hZ2+obci5h5j3ABYnou1j9TfJEJZPevGjx4=;
+ b=GSm2y4z260I87IEw1QtmcGHFd6t9dQKYAHQ2L/1c8ElKPa/0qUe/siDc+9flKNTdFG
+ lGvJpNp5OvtJTfkeoEJezjJeU3BZuje+mD/2TZE3nui5mYfCHbWgtO/LlD2yJf7c8XS6
+ bWgA7d7/sPm2aV1gcoNht2lagrAgW4xs4GP9xp4XKr12WC6Uhp3k/Y9q80HIMNAwe4mn
+ vZFAd4zzkOnD+5pKmxCMM/OHAHkTo0V5g147nkxED4ryDhtv+g62z/YLNxkqp5+FfLzz
+ e8P5kaYEFNrbexrLxE/x9P89bHFwdZsudN10vozRvn2mZljo5UZeEIr7BVjxzuVHJK+G
+ 5ggg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1754908865; x=1755513665;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
+ d=1e100.net; s=20230601; t=1754909015; x=1755513815;
+ h=content-transfer-encoding:in-reply-to:content-language:references
+ :cc:to:from:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=f3242HSrf+maEBiFnxIJjp/97eu1oUsjXSoH1Q/0ZCc=;
- b=tPK0+gobNnt/vzFGaWUrb/FINDvcoQs/AMgB1MK1geDW1cymk2nmSHHd2kdGwlQW5I
- 5TaSRHfBiFh2Ad70Em57sOrUQayeEXZi/DScSgv2YNpEDgclV8DCwYWAanNB1rDVzUC3
- Gfg/SZbrm7BDfoVvrCnD+JibKkwE8QEU3z7wMa7KpjRJqmvbYI4EPVamRbJj5K79m/7g
- 7KzENQu/ULdwxxRC2aJCkrThULremIzQcTUMTyQXrKgwXytOvzm+aieSzsqGYdy0/LDl
- 0SmHTeoyoUphcW+yO4ZG2PA5tHQ2Ii59cvKzoV0ENFOrLDp4HnzIqfnsNwEWtAovU+MT
- SLpQ==
+ bh=jfrrc7H7hZ2+obci5h5j3ABYnou1j9TfJEJZPevGjx4=;
+ b=D6B7ZXuM2OPrRMyItPVv8O/agV9HcQzU/wMK2wAYacADpwNpjtjq6HQrh0UX+LWNpZ
+ JQlqKH+7ptLBqyRhzXoL6eG2rA9WGpAFv41pXRn0ogQ2lDvLHwFO2uWXyDlBUP25Hb9Y
+ stUUW2AIotTu7YbVDH2emkqxutdvluC6V1dk7Cj0IMC3DqHq+FpDtCkYWo+pZ9tUzyvA
+ hF3bsyxAoqhF2x5M0N5koSzBuArbUS0QKsyXvUMRLlgnqRAqoEzVcf9pO32fblEZNAoY
+ xLrsJF7gysEmUHoQGZ7yFHPS3h/tETBLdQMOjsEKhyC1eR2Vb2ik2AatO7efq3rEbvWv
+ TNNA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCW8R/hI4m+NLu3ziAIz8CkuOjeZyob4Gv/61SlgYjq82nBogcDPzqqCoI6V98IQJwxJKONgtJggOw==@nongnu.org
-X-Gm-Message-State: AOJu0YyPyov9TzC3kWsBTezZaNlViyd+UKNhDRllnhVvAFqaAOr4P7wa
- 9l1Gn8KT4ldTDWupOUDudBaupB0kXd1tVAbIqf16hTLlnVCjF41VHtn/0XvUPQITSZA4Jg/1Jf9
- HZUWm
-X-Gm-Gg: ASbGncuP4RITpnI3ka1CKn6/KvxW7WAtidqf06xzgXvYlwBRMNn8h2rfky8tKZHVZd+
- kLZHSiEpj+/o62nmaQ/MV+FWmajRv//+Ru8WpPIu2a2MCDau6jimuxIfr/5qzv2rxlY6dSrMHbJ
- A4zGDR/p7OhKxTkN6FrdcNTCQtsLIHnzfB6EOMJtS+leuUzxVQ6fHFQn/2fG9nb5vDRGI++Gert
- +g816HPnn3az2xufGZL75s/pB8vkU2TpkggH3tjP6WASd/RfYOYLrhxu0so6LcIziEwn8M3rEep
- afH3wvmfHN00PiykU3yBCX+SkpE3EPxWzqoQG9HkHV2oou35o4zm+tjGuU4VRBgObtEjrcEbpzv
- JL9T+d7YDV4h8kCbFizu7A4nr5+jV0o9P0cSuTCE8cLx0VgKr9DEJxnNmbZ/0X/JIPQ==
-X-Google-Smtp-Source: AGHT+IHDOfv8bk13Er32V5qJi5p0Tev/TKIgt77Rqllo3oJoK7O2WDdGr0qNDpSoeeJ+eeK6nr5wbA==
-X-Received: by 2002:a05:600c:354a:b0:43c:f8fe:dd82 with SMTP id
- 5b1f17b1804b1-459f4f0f57fmr116790005e9.18.1754908865308; 
- Mon, 11 Aug 2025 03:41:05 -0700 (PDT)
+ AJvYcCW8/L3lVmKlt6d+A8NVhF3xc/o7coHbOqQd2K7HdFfV6oKlJ1tuCFAhIxGSzqGc91na56e5POF0jw==@nongnu.org
+X-Gm-Message-State: AOJu0YzG+UAXRB1VBPhMV7gOxG5EJsGtcvLr+6PSGfAwr3+3oLq1ksTP
+ 2lAYoir9L6iZUqXDC5ti6l4SV8KK32umM9D44v8OczXzZEiIzWVAJ9Lo8za9ZvhhuaM=
+X-Gm-Gg: ASbGncvMWcXqKnw4DOjRuezPe1xLws5H1vG8y2ZZC7XwwwEtw3Fc5uXgmT6xAa99A9P
+ BcVMWjwWWvVikcbNwP57vvNV6xc6m9ZJovBOdmQ25EN7+HnC7Hf+cSoAtCKDRNrh+k6Mu1Qd/Xs
+ uKJHjUnsOYCVRZ3V0P5nZOaUUZr6OG55QXemuNahEsLdcOvgPaj/qZLMiSMYmWt5Bl5yt6loN3u
+ nm6jvtEJQJqDKZdqOWxS8XjX6pDjaR/+08pLXRRzBhLnRl86ghOiSgEuuw0Th4CoQU3UJ0sRRPm
+ elWIjaJZHSAA4p22XxhmgS7casMMM5mGtsaT1SDstuadGLezfVPF5iV2opbAWr2BkYrVPWZs7zG
+ h2XWU+TuMtmDAqn+4sXQ8mhZ/QPpgsmSr1q0QthDmGxuIMK4DTepoDGDnv/ssfcpkYg==
+X-Google-Smtp-Source: AGHT+IH+Vp4QK0Mzumzj5M1Rq3qZbOzWZ1NlBJtPKIZWmtscc8S3zsmngHT9y8ZpcbRCYwWTLAVntA==
+X-Received: by 2002:a05:600c:3b8a:b0:456:8eb:a36a with SMTP id
+ 5b1f17b1804b1-459f4eb5717mr106659475e9.13.1754909014639; 
+ Mon, 11 Aug 2025 03:43:34 -0700 (PDT)
 Received: from [192.168.69.210] (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-459e0cd2c90sm296408435e9.17.2025.08.11.03.41.04
+ 5b1f17b1804b1-458be70c5f7sm374843235e9.26.2025.08.11.03.43.33
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 11 Aug 2025 03:41:04 -0700 (PDT)
-Message-ID: <61a78e65-4164-49a2-8ce4-d95730b10eaa@linaro.org>
-Date: Mon, 11 Aug 2025 12:41:03 +0200
+ Mon, 11 Aug 2025 03:43:33 -0700 (PDT)
+Message-ID: <64fd72ef-8405-4406-8a12-607f060033af@linaro.org>
+Date: Mon, 11 Aug 2025 12:43:33 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC 05/11] hw/arm/smmuv3: Support secure event queue and error
- handling
+Subject: Re: [RFC 01/11] hw/arm/smmuv3: Introduce secure registers and commands
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: Tao Tang <tangtao1634@phytium.com.cn>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 Cc: Eric Auger <eric.auger@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Chen Baozi <chenbaozi@phytium.com.cn>
 References: <20250806151134.365755-1-tangtao1634@phytium.com.cn>
- <20250806151134.365755-6-tangtao1634@phytium.com.cn>
+ <20250806151134.365755-2-tangtao1634@phytium.com.cn>
+ <5a955f10-88bc-4590-9887-ec0f95af3e17@linaro.org>
 Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20250806151134.365755-6-tangtao1634@phytium.com.cn>
+In-Reply-To: <5a955f10-88bc-4590-9887-ec0f95af3e17@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32d.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::329;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x329.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -107,45 +106,87 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 6/8/25 17:11, Tao Tang wrote:
-> Following the implementation of the secure command queue, this commit
-> introduces the infrastructure for reporting faults and events back to
-> secure software.
+On 11/8/25 12:22, Philippe Mathieu-Daudé wrote:
+> Hi,
 > 
-> The secure event queue is now enabled, serving as the primary mechanism
-> for the SMMU to report translation faults and other architected events.
+> On 6/8/25 17:11, Tao Tang wrote:
+>> The Arm SMMUv3 architecture defines a set of registers and commands for
+>> managing secure transactions and context.
+>>
+>> This patch introduces the definitions for these secure registers and
+>> commands within the SMMUv3 device model internal header.
+>>
+>> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
+>> ---
+>>   hw/arm/smmuv3-internal.h | 57 ++++++++++++++++++++++++++++++++++++++++
+>>   include/hw/arm/smmuv3.h  | 23 ++++++++++++++++
+>>   2 files changed, 80 insertions(+)
 > 
-> For more critical failures, such as an abort on an event queue write,
-> the SMMU_S_GERROR registers are also added. Finally, SMMU_S_IRQ_CTRL
-> is wired up to control interrupt notifications for both the event
-> queue and these global errors.
 > 
-> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
-> ---
->   hw/arm/smmuv3-internal.h | 38 ++++++++++++++-----
->   hw/arm/smmuv3.c          | 82 +++++++++++++++++++++++++---------------
->   hw/arm/trace-events      |  2 +-
->   3 files changed, 81 insertions(+), 41 deletions(-)
+>> diff --git a/include/hw/arm/smmuv3.h b/include/hw/arm/smmuv3.h
+>> index d183a62766..72ad042514 100644
+>> --- a/include/hw/arm/smmuv3.h
+>> +++ b/include/hw/arm/smmuv3.h
+>> @@ -63,6 +63,29 @@ struct SMMUv3State {
+>>       qemu_irq     irq[4];
+>>       QemuMutex mutex;
+>>       char *stage;
+>> +
+>> +    /* Secure state */
+>> +    uint32_t secure_idr[5];
+>> +    uint32_t secure_cr[3];
+>> +    uint32_t secure_cr0ack;
+>> +    uint32_t secure_init;
+>> +    uint32_t secure_gbpa;
+>> +    uint32_t secure_irq_ctrl;
+>> +    uint32_t secure_gerror;
+>> +    uint32_t secure_gerrorn;
+>> +    uint64_t secure_gerror_irq_cfg0;
+>> +    uint32_t secure_gerror_irq_cfg1;
+>> +    uint32_t secure_gerror_irq_cfg2;
+>> +    uint64_t secure_strtab_base;
+>> +    uint32_t secure_strtab_base_cfg;
+>> +    uint8_t  secure_sid_split;
+>> +    uint32_t secure_features;
+>> +
+>> +    uint64_t secure_eventq_irq_cfg0;
+>> +    uint32_t secure_eventq_irq_cfg1;
+>> +    uint32_t secure_eventq_irq_cfg2;
+>> +
+>> +    SMMUQueue secure_eventq, secure_cmdq;
+> 
+> Note, we could also add these fields as
+> 
+>        struct {
+>            uint32_t idr[5];
+>            ...
+> 
+>        } secure;
+> 
+> With some IDEs it allows to only expand which set you are
+> interested in when debugging.
+> 
+> I then since it is mostly the same banked set, I wonder why we
+> don't extract the state and bank it:
+> 
+>        struct {
+>            uint32_t idr[5];
+>            ...
+> 
+>        } state[REG_NUM_BANKS];
+> 
+> I haven't looked at the rest, but this might simplify the
+> implementation.
+> 
+> Then maybe we can use the ARMASIdx enum as index.
 
+After looking at the rest of the series, ARMASIdx seems appropriate.
 
-> -static inline bool smmuv3_eventq_irq_enabled(SMMUv3State *s)
-> +static inline bool smmuv3_eventq_irq_enabled(SMMUv3State *s, bool is_secure)
->   {
-> -    return FIELD_EX32(s->irq_ctrl, IRQ_CTRL, EVENTQ_IRQEN);
-> +    if (is_secure) {
-> +        return FIELD_EX32(s->secure_irq_ctrl, S_IRQ_CTRL, EVENTQ_IRQEN);
-> +    } else {
-> +        return FIELD_EX32(s->irq_ctrl, IRQ_CTRL, EVENTQ_IRQEN);
-> +    }
->   }
+I'd use:
 
-Or using bank as suggested in patch #1:
+         struct {
+             uint32_t idr[6];
+             ...
 
-    static inline bool smmuv3_eventq_irq_enabled(SMMUv3State *s,
-                                                 unsigned idx)
-    {
-        return FIELD_EX32(s->bank[idx].irq_ctrl, IRQ_CTRL, EVENTQ_IRQEN);
-    }
-
-
+         } bank[2]; /* ARMASIdx_NS and ARMASIdx_S */
 

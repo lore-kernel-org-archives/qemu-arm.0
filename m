@@ -4,121 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 966F8CA0EC4
-	for <qemu-arm@archiver.kernel.org>; Mon, 11 Aug 2025 19:39:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26E75CA0ED1
+	for <qemu-arm@archiver.kernel.org>; Mon, 11 Aug 2025 20:46:20 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ulYLD-0007KB-HN; Mon, 11 Aug 2025 15:37:55 -0400
+	id 1ulZPE-0000jJ-F7; Mon, 11 Aug 2025 16:46:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <vacha.bhavsar@oss.qualcomm.com>)
- id 1ulYKz-0007Ih-3N
- for qemu-arm@nongnu.org; Mon, 11 Aug 2025 15:37:41 -0400
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <vacha.bhavsar@oss.qualcomm.com>)
- id 1ulYKr-0003yU-7g
- for qemu-arm@nongnu.org; Mon, 11 Aug 2025 15:37:40 -0400
-Received: from pps.filterd (m0279872.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 57BIwXtd008762
- for <qemu-arm@nongnu.org>; Mon, 11 Aug 2025 19:37:30 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-type:date:from:in-reply-to:message-id:mime-version
- :references:subject:to; s=qcppdkim1; bh=MyOgHjBYYMKt9HMvenjZWbkT
- C9+ScgzNIWdSuMydwfY=; b=Rgf213w76ynB3um7vMlJnfcfej/d9xJY3K+JuMzP
- TCN1GI/GAuwSbtPX7dfAJ/DjLCOI9EbrnDcuNJZ6yW7Zm4WX9iQPA3XHWQDFPe1w
- zb7f5o62lLe4czdxAe2bYcNxY3P70pHq48G2PSG7+goOtsWmlixNUi4YcW5l+uLx
- acj/xlp568N7VYfJ6RdwrFYfT0Q7pzZG7rg1jVVRIl2QozrEWjNzcV1uh7ohdOS1
- 2QuEzFgzp1BkGEfXgFEEvKUWLE254/zA5C2QXzB6ed27vyktUQ8/qi+xh0EID+W7
- nRq0C5si6Fq0odWKZUFsOTHdSAsitrLOe1sbPEqtSYSgdA==
-Received: from mail-yb1-f197.google.com (mail-yb1-f197.google.com
- [209.85.219.197])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 48ffhjhewd-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Mon, 11 Aug 2025 19:37:29 +0000 (GMT)
-Received: by mail-yb1-f197.google.com with SMTP id
- 3f1490d57ef6-e90697d44e4so1975038276.2
- for <qemu-arm@nongnu.org>; Mon, 11 Aug 2025 12:37:29 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <stefanha@gmail.com>)
+ id 1ulZPC-0000b4-9q; Mon, 11 Aug 2025 16:46:06 -0400
+Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <stefanha@gmail.com>)
+ id 1ulZP4-0007ng-Rj; Mon, 11 Aug 2025 16:46:05 -0400
+Received: by mail-ed1-x532.google.com with SMTP id
+ 4fb4d7f45d1cf-61813e2fc73so3729610a12.0; 
+ Mon, 11 Aug 2025 13:45:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1754945149; x=1755549949; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=tLfl/wDNQKUH1jBMtnf+lOEzYOlhTB6w+Ki1awZSPm4=;
+ b=hjsVYZCmSNnNWG0JSZPs9g0yCX7YKLHpPlDaTp0yATnmqXGyYDV9IL2VubmlVz10nh
+ KfQAi4PdtoQ8VAURljisIPxBKvjtuqcDaBq6IFOVw/pBxiEmuQZjlav+TVfm6bTUAxb4
+ fkIe7VprCsjR0lQQD58IszWyw1ExeUh2xiEhBcuTDx2JXytTRQQVzfeVQCZK3u7nom5y
+ ochqjcng323xqfiCjRAU8JMEC3OSt0Z5OvmY6HpamZiR6GmZ6PDm5lJf+JJ6ZBx0Jo6E
+ v++0rHpH6DA+UdEFvc9DCYNatcuD3SjfosvsdcrzNsJ2Bx76IB79Hkb+61e/YHZ2Na6z
+ Lc4Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1754941049; x=1755545849;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=MyOgHjBYYMKt9HMvenjZWbkTC9+ScgzNIWdSuMydwfY=;
- b=cfqFnHPV+QgBRi5+u74Tj9/bZTNJ0oefGzB0/xZg9+QC8+IDtH2Zd/GwrwZAR7G4wV
- My0AoWGdJQgf/U8U5v2ua7iZEjHvPH6Bv/0vnWgtK3x02MRvgwdkXNgcc+gDs8NeqLJ/
- 0PnIp+xR13A7ayE8kIXbptex/k1mOzjMKbsj+Ot3PC8k82KXkJyrYb9tpCmywir6kX1a
- g2YMr9jL71laHhUu203z3vJblAY1jjs8ijFsdp3qPV5sauNvuer92yPrqazav+AeyuFl
- 6fhFPhvEq71ISYm6MOxNtlE5/dAEAngvykRhEZ/cbuwZQpQURzScOI4fKr2YKrdlhTfS
- t9xw==
+ d=1e100.net; s=20230601; t=1754945149; x=1755549949;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=tLfl/wDNQKUH1jBMtnf+lOEzYOlhTB6w+Ki1awZSPm4=;
+ b=FhSawV+6AOoaQZ417Wzu/d4XuSygCB8eIGVo8E+x/z5H3It6kkdxDsjQRjikexGHMR
+ OkCDl1NzvmepfghD09l/Rye4uV6ewWbEG0ubWNDMsL0T6vPKiYjSljkP2KQqWy00c3SL
+ lO/Gw26xE3jDugyaNWd94Godj+1144zpizeK81T+qnk56CAPrFDGrWjS4ULkXXht2dF+
+ Y26q6T6OYVEExOlQjk7QxQYXnFnNnnmdCaOHw/7rx8LbQ3RdkGv1GTWorF2aF57RSN6O
+ n7vXhffHr/IFfpRRNMY5J76Md2Xwg9KYl8d8XP8rvoIp55+qkbtMl2+XL+57G0KkKQDq
+ QWhA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWKNKM3yL6jgaif5U92wzmVOH23PmU2aq1NGmhj+V28WdNDX5cF1vnU9TWN62jRAfD0CZvAAxbHTw==@nongnu.org
-X-Gm-Message-State: AOJu0YyemjtGAVVM16KXnzAi5ylcCxsm8lIuM32u+vN9+ROONAaN8qlZ
- earkrBbCC03oitCE5WzcPnlQUARxh/xGJPlZHfa8E1pYNgrjs31lLaNcWc5Dpr08gzkiLbEJcnk
- Snz+2OPT02v+rekJ+Y3Ety8/vmd19sHfYTYkT82SkrbrzLklUewWXUINiICFnEHB/Encw7hIOgI
- vUXN/R5+hBRcVljuA6rkh9fH+ySbgCxA==
-X-Gm-Gg: ASbGncsKZN0seu4yN8i+VFR2E6GGDCIhtauNaTGq159eUZU12uvBE4PzX0t1+GqisGg
- t+yZMwu+h77b1hPIEJpYAel3gYGDxiGo6ky5tSlAykObnfyIMxayRCvJxhoy65wdn9KJ+5m5eI7
- w9tICqhjN0BPbwRjCnP37wYJI=
-X-Received: by 2002:a05:6902:e04:b0:e90:69a1:1799 with SMTP id
- 3f1490d57ef6-e917a263991mr1340437276.32.1754941049225; 
- Mon, 11 Aug 2025 12:37:29 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHTNToA+ZCADla3FaB1yevm9lcgeRsr5CFijkpJHKu1ww3BP+GfaGbWTUgD3TEnPQh7G3OiQd5UP5/osfVLwIA=
-X-Received: by 2002:a05:6902:e04:b0:e90:69a1:1799 with SMTP id
- 3f1490d57ef6-e917a263991mr1340118276.32.1754941044044; Mon, 11 Aug 2025
- 12:37:24 -0700 (PDT)
+ AJvYcCUkHCzj8bfAopbb1EL6+e5on98hAAYU2RM4WKVx1pItbj+dgoVCdlbzgugXYQ6VaDTQz6fygG+flA==@nongnu.org
+X-Gm-Message-State: AOJu0YzzsEYCrBnGgWNnKbt1R1p11V4Xt96Wq7SHvN78/Unkz+QZIk1y
+ 5eAn/I3ulvAqAqN38xlpZ9ceya4kfRZS32pBa7vviPvz1AbdNfcDXc/+L/pqDe9xd6PdUFvo0xC
+ 18VyO4Fj3iPs4sXUKA6DaZp38Sf9KV08=
+X-Gm-Gg: ASbGnctcPoV3lO2pYnl6YB0o7Eiz3pw6Q9xXs21qHRQDPlFI5OfMaaTUqHKtR9InP/E
+ cfGnnnzxv+SvbjT6pyCRiDHnCiUh6G4paZfEosWLtLbV3uW46Mk6aiicohlMFEAxbC8iIwFHpFa
+ AW7kQqcratYpJjC2+ibRex6NIEhzwRnD67gp6A8KzLQUdxaJEQnUn4ZG1Qtd4RQ+5LRO9NA6ZSa
+ kN35g==
+X-Google-Smtp-Source: AGHT+IG3R/VcNlv5Ekuq1OKa3qi/RIq/2YfFZ87ucDKX5aohcviFjAmUmPyLrAhBfsHIZgq/6ut4mFLvRoX5bTNnmiM=
+X-Received: by 2002:a05:6402:3489:b0:618:1554:a6bc with SMTP id
+ 4fb4d7f45d1cf-6184ea115e5mr561669a12.3.1754945148990; Mon, 11 Aug 2025
+ 13:45:48 -0700 (PDT)
 MIME-Version: 1.0
-References: <20250722201404.2368507-1-vacha.bhavsar@oss.qualcomm.com>
- <20250722201404.2368507-2-vacha.bhavsar@oss.qualcomm.com>
- <875xf36qyk.fsf@draig.linaro.org>
- <CAFEAcA8o4wEHHDXVj0Fcc3i8g+49psY7YSf1AqGiGe9vNuXiQA@mail.gmail.com>
- <87ikj3545v.fsf@draig.linaro.org>
- <CAFEAcA-Y7utLb9cciGJOVAPF8Y0W4RxcOLDnNS7ptpHtYVG_EQ@mail.gmail.com>
- <CAEWVDmsOD-vNc6YbwfND9yzfz-G8kEsFfpEtJ5A+duhUzGU2Pg@mail.gmail.com>
- <CAEWVDms3R+_dv79GTdmzbJBJ3rb=hSi7rRj=f4rzRFwsHnzXJg@mail.gmail.com>
- <CAFEAcA_Q-MhmFNvXUwUXF2_MJqHxujPL7C3=PxC8=hMprerDxA@mail.gmail.com>
-In-Reply-To: <CAFEAcA_Q-MhmFNvXUwUXF2_MJqHxujPL7C3=PxC8=hMprerDxA@mail.gmail.com>
-From: Vacha Bhavsar <vacha.bhavsar@oss.qualcomm.com>
-Date: Mon, 11 Aug 2025 15:37:13 -0400
-X-Gm-Features: Ac12FXzkirCQSzrqBa8EGJFIE1R_sCI49lZB169IkkBVUMG83req9LEARYgGmNs
-Message-ID: <CAEWVDmv3ZCs8tW0pzH0sX_SUOdj-fyFwVz0uSRowziga=hCF1Q@mail.gmail.com>
-Subject: Re: [PATCH v4 1/2] target/arm: Increase MAX_PACKET_LENGTH for SME ZA
- remote gdb debugging
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Content-Type: multipart/alternative; boundary="000000000000884853063c1c0dc0"
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwODExMDA3NCBTYWx0ZWRfX0SeEh29tOlrE
- X0u68uMRJMZPOszuvIHdIYjXklbYKH/vGIThiPUGPs8RqpVXXxm0mR14VS/PJllAJd7HV2X9i7B
- TkdTwaphlfajtdbzSSUlid5uo0Oyr2jPRwESNjjBnKd1X9EIskz0MIbKvQ07neelK1AG290OHsI
- FrSG7s1+eRDswO0/uT6u7gd2/DQsyyyeY4p6FZhy5wz+SScBm4/5c5TtzWnVNpGVKvvMJ+hFvFm
- 6lWmuVDMOyullBI+eXN7lnWe3KXwzKyP7a4zn4CFe46//h1Of7HT463+X9FwXC55KW1Z7azzcom
- JMI2Zv+0Dg/j2W5rAA1uAvCwy5Nf1Q2T4aNoEqAeGOtBGIvWFoZH2uAkNZrQjdvMGIC6IUXRr8z
- HkgdxgJh
-X-Proofpoint-GUID: Q-BHm319OMxIWonNyXnyMDhdutpYneAr
-X-Authority-Analysis: v=2.4 cv=TJFFS0la c=1 sm=1 tr=0 ts=689a4679 cx=c_pps
- a=5rZgxjGdQ1phXw1xqkF1vg==:117 a=2OwXVqhp2XgA:10 a=tk1fAI5CypgQKhaZt9gA:9
- a=QEXdDO2ut3YA:10 a=VWM_7Ik0QpPsEaYKe28A:9 a=FvMT9AR2qkiEEVpopuB7:22
-X-Proofpoint-ORIG-GUID: Q-BHm319OMxIWonNyXnyMDhdutpYneAr
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.9,FMLib:17.12.80.40
- definitions=2025-08-11_04,2025-08-11_01,2025-03-28_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- priorityscore=1501 suspectscore=0 adultscore=0 impostorscore=0 malwarescore=0
- phishscore=0 clxscore=1015 spamscore=0 bulkscore=0 classifier=typeunknown
- authscore=0 authtc= authcc= route=outbound adjust=0 reason=mlx scancount=1
- engine=8.19.0-2507300000 definitions=main-2508110074
-Received-SPF: pass client-ip=205.220.180.131;
- envelope-from=vacha.bhavsar@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
-X-Spam_score_int: -26
-X-Spam_score: -2.7
+References: <20250811162315.59997-1-stefanha@redhat.com>
+In-Reply-To: <20250811162315.59997-1-stefanha@redhat.com>
+From: Stefan Hajnoczi <stefanha@gmail.com>
+Date: Mon, 11 Aug 2025 16:45:37 -0400
+X-Gm-Features: Ac12FXwryuHCHbB-O7WJH1_qES1xALMDX9i37hw-nbc20S53ufvhrQGVwT7OAso
+Message-ID: <CAJSP0QUYLbBuk+Kc-Y3K9sC6GmutBcQ-Rbrxd7dbO2RcCkz9TQ@mail.gmail.com>
+Subject: Re: [PATCH] tests/functional: fix URLs in PCI hotplug test for aarch64
+To: Stefan Hajnoczi <stefanha@redhat.com>
+Cc: qemu-devel@nongnu.org, Gustavo Romero <gustavo.romero@linaro.org>,
+ qemu-arm@nongnu.org, 
+ =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+ Peter Maydell <peter.maydell@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::532;
+ envelope-from=stefanha@gmail.com; helo=mail-ed1-x532.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, HTML_MESSAGE=0.001,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
+ T_SPF_HELO_TEMPERROR=0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -134,46 +97,59 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
---000000000000884853063c1c0dc0
-Content-Type: text/plain; charset="UTF-8"
+On Mon, Aug 11, 2025 at 12:24=E2=80=AFPM Stefan Hajnoczi <stefanha@redhat.c=
+om> wrote:
+>
+> Debian trixie has been released. The "stable" alias no longer refers to
+> the Debian bookworm release, so URLs referring to bookworm artifacts via
+> the "stable" alias no longer work.
+>
+> Switch to explicit release naming ("bookworm") to make a permalink so
+> the test passes again.
+>
+> Suggested-by: Peter Maydell <peter.maydell@linaro.org>
+> Fixes: 374a245573b8 ("tests/functional: Add PCI hotplug test for aarch64"=
+)
+> Resolves: #3073 ("PCI hotplug test for aarch64 fails due to broken Debian=
+ installer URL")
+> Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
+> ---
+>  tests/functional/test_aarch64_hotplug_pci.py | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 
-Hi,
+Applied to master.
 
-From testing with a max vector length, the minimum size the buffer needs to
-be is 131077 to survive the worst case of a P packet with the ZA register.
-This is enough to fit the whole ZA register plus the overhead for the P
-packet (command + register number, the checksum is not stored in line_buf)
-and the null terminator. I had overshot and rounded it safely to 131100,
-and it seems gdbserver has done the same thing but they specifically
-counted 32 bytes for overhead, it's not specified why. So the 131100 is
-large enough, however I have changed it to 131104 just to stay consistent
-with gdbserver and have added this note to the comment you've suggested to
-be placed above MAX_PACKET_LENGTH. I've also changed line_buf to be a
-GString as Alex suggested.
-
-I have sent a new version with these changes. Looking forward to your
-feedback!
-
-Thanks,
-Vacha
-
---000000000000884853063c1c0dc0
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">Hi,<br><br>From testing with a max vector length, the mini=
-mum size the buffer needs to be is 131077 to survive the worst case of a P =
-packet with the ZA register. This is enough to fit the whole ZA register pl=
-us the overhead for the P packet (command + register number, the checksum i=
-s not stored in line_buf) and the null terminator. I had overshot and round=
-ed it safely to 131100, and it seems gdbserver has done the same thing but =
-they specifically counted 32 bytes for overhead, it&#39;s not specified why=
-. So the 131100 is large enough, however I have changed it to 131104 just t=
-o stay consistent with gdbserver and have added this note to the comment yo=
-u&#39;ve suggested to be placed above MAX_PACKET_LENGTH. I&#39;ve also chan=
-ged line_buf to be a GString as Alex suggested.<div><br></div><div>I have s=
-ent a new version with these changes. Looking forward to your feedback!</di=
-v><div><br></div><div>Thanks,</div><div>Vacha</div></div>
-
---000000000000884853063c1c0dc0--
+>
+> diff --git a/tests/functional/test_aarch64_hotplug_pci.py b/tests/functio=
+nal/test_aarch64_hotplug_pci.py
+> index c9bb7f1d97..0c67991b89 100755
+> --- a/tests/functional/test_aarch64_hotplug_pci.py
+> +++ b/tests/functional/test_aarch64_hotplug_pci.py
+> @@ -15,12 +15,12 @@
+>  class HotplugPCI(LinuxKernelTest):
+>
+>      ASSET_KERNEL =3D Asset(
+> -        ('https://ftp.debian.org/debian/dists/stable/main/installer-arm6=
+4/'
+> +        ('https://ftp.debian.org/debian/dists/bookworm/main/installer-ar=
+m64/'
+>           '20230607+deb12u11/images/netboot/debian-installer/arm64/linux'=
+),
+>           'd92a60392ce1e379ca198a1a820899f8f0d39a62d047c41ab79492f81541a9=
+d9')
+>
+>      ASSET_INITRD =3D Asset(
+> -        ('https://ftp.debian.org/debian/dists/stable/main/installer-arm6=
+4/'
+> +        ('https://ftp.debian.org/debian/dists/bookworm/main/installer-ar=
+m64/'
+>           '20230607+deb12u11/images/netboot/debian-installer/arm64/initrd=
+.gz'),
+>           '9f817f76951f3237bca8216bee35267bfb826815687f4b2fcdd5e6c2a91779=
+0c')
+>
+> --
+> 2.50.1
+>
+>
 

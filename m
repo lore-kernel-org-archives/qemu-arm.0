@@ -4,84 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26E75CA0ED1
-	for <qemu-arm@archiver.kernel.org>; Mon, 11 Aug 2025 20:46:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1CC8CA0ED1
+	for <qemu-arm@archiver.kernel.org>; Mon, 11 Aug 2025 21:37:34 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ulZPE-0000jJ-F7; Mon, 11 Aug 2025 16:46:08 -0400
+	id 1ulaCP-0007H3-Pg; Mon, 11 Aug 2025 17:36:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanha@gmail.com>)
- id 1ulZPC-0000b4-9q; Mon, 11 Aug 2025 16:46:06 -0400
-Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
+ (Exim 4.90_1) (envelope-from
+ <3Y2KaaAgKCNw9FGJJGCPEMMEJC.AMKOCKS-8PKLMLELS.MPE@flex--bhillier.bounces.google.com>)
+ id 1ulaCN-0007Ge-5H
+ for qemu-arm@nongnu.org; Mon, 11 Aug 2025 17:36:55 -0400
+Received: from mail-pf1-x44a.google.com ([2607:f8b0:4864:20::44a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <stefanha@gmail.com>)
- id 1ulZP4-0007ng-Rj; Mon, 11 Aug 2025 16:46:05 -0400
-Received: by mail-ed1-x532.google.com with SMTP id
- 4fb4d7f45d1cf-61813e2fc73so3729610a12.0; 
- Mon, 11 Aug 2025 13:45:52 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from
+ <3Y2KaaAgKCNw9FGJJGCPEMMEJC.AMKOCKS-8PKLMLELS.MPE@flex--bhillier.bounces.google.com>)
+ id 1ulaCB-0001SB-OF
+ for qemu-arm@nongnu.org; Mon, 11 Aug 2025 17:36:54 -0400
+Received: by mail-pf1-x44a.google.com with SMTP id
+ d2e1a72fcca58-76bfab12672so9687779b3a.0
+ for <qemu-arm@nongnu.org>; Mon, 11 Aug 2025 14:36:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1754945149; x=1755549949; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=tLfl/wDNQKUH1jBMtnf+lOEzYOlhTB6w+Ki1awZSPm4=;
- b=hjsVYZCmSNnNWG0JSZPs9g0yCX7YKLHpPlDaTp0yATnmqXGyYDV9IL2VubmlVz10nh
- KfQAi4PdtoQ8VAURljisIPxBKvjtuqcDaBq6IFOVw/pBxiEmuQZjlav+TVfm6bTUAxb4
- fkIe7VprCsjR0lQQD58IszWyw1ExeUh2xiEhBcuTDx2JXytTRQQVzfeVQCZK3u7nom5y
- ochqjcng323xqfiCjRAU8JMEC3OSt0Z5OvmY6HpamZiR6GmZ6PDm5lJf+JJ6ZBx0Jo6E
- v++0rHpH6DA+UdEFvc9DCYNatcuD3SjfosvsdcrzNsJ2Bx76IB79Hkb+61e/YHZ2Na6z
- Lc4Q==
+ d=google.com; s=20230601; t=1754948195; x=1755552995; darn=nongnu.org;
+ h=cc:to:from:subject:message-id:mime-version:date:from:to:cc:subject
+ :date:message-id:reply-to;
+ bh=eZmDu3jdm85zT/kkoUu6drjP5lcoEw7fmNxr6cvxvOc=;
+ b=FfsWSXzUG1lpk611EoPBjJjYzGrVHCOL3qzOs4/QQCQ7esVEKilhrCHCvjiUb4QfAm
+ ZuHwqSAEvUM/+EvAqsS1Lo6lDWAidI0aUqQssr/1r0E6qFrRP032OwFhkQWi6yP3k4xX
+ Fq3BPaPAKfXQl4cgQmJ0GmRGGiOJxls5xJAMH/5YBj+VataiAEhiZlslJFBEwstdN0/e
+ /3zFrzFVGJPKxah3wzsaAhoc4Ux+WeOeoPofPvnANx/XOjJs5Y5ViVQL9vtwf5MspJ83
+ /jYWNEVDydEUHogb01k6mAg5Iz2lWet5vN5ATNwCkGrBFy0wbK4pOT7H3sgbr9VeGeZP
+ S3cw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1754945149; x=1755549949;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=tLfl/wDNQKUH1jBMtnf+lOEzYOlhTB6w+Ki1awZSPm4=;
- b=FhSawV+6AOoaQZ417Wzu/d4XuSygCB8eIGVo8E+x/z5H3It6kkdxDsjQRjikexGHMR
- OkCDl1NzvmepfghD09l/Rye4uV6ewWbEG0ubWNDMsL0T6vPKiYjSljkP2KQqWy00c3SL
- lO/Gw26xE3jDugyaNWd94Godj+1144zpizeK81T+qnk56CAPrFDGrWjS4ULkXXht2dF+
- Y26q6T6OYVEExOlQjk7QxQYXnFnNnnmdCaOHw/7rx8LbQ3RdkGv1GTWorF2aF57RSN6O
- n7vXhffHr/IFfpRRNMY5J76Md2Xwg9KYl8d8XP8rvoIp55+qkbtMl2+XL+57G0KkKQDq
- QWhA==
+ d=1e100.net; s=20230601; t=1754948195; x=1755552995;
+ h=cc:to:from:subject:message-id:mime-version:date:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=eZmDu3jdm85zT/kkoUu6drjP5lcoEw7fmNxr6cvxvOc=;
+ b=EDc/UD1a2zcI81VzJAekfl+FU+dN1Rrur7mi3hytmmw2tlhXB1/c10+GsIMf8x2HK9
+ b2LjVARlZIpTRKbFXMQzx5n4+d+r53VHFwllu/kgAl2uW62t5ZSVq6aLPudaJrRX+n37
+ 9gEdbCLpKhOLlKufDQc0kfs+V7JVubTbvr4P3Ran8lyEG4+P/crM1gd8lL+YYZWeyBKO
+ kKW5PA8IDJs/x6+73EOd8P46RIYzTlcj+vtqq/73lwxje88E/rnUXP8darbfUlIBvSwZ
+ 9127AJHkLmeyymdrgU5OZrEp52bGZNpReiISMgG2OL7DmGZ77FitYY86nCdFR0j/C1ez
+ BQNw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUkHCzj8bfAopbb1EL6+e5on98hAAYU2RM4WKVx1pItbj+dgoVCdlbzgugXYQ6VaDTQz6fygG+flA==@nongnu.org
-X-Gm-Message-State: AOJu0YzzsEYCrBnGgWNnKbt1R1p11V4Xt96Wq7SHvN78/Unkz+QZIk1y
- 5eAn/I3ulvAqAqN38xlpZ9ceya4kfRZS32pBa7vviPvz1AbdNfcDXc/+L/pqDe9xd6PdUFvo0xC
- 18VyO4Fj3iPs4sXUKA6DaZp38Sf9KV08=
-X-Gm-Gg: ASbGnctcPoV3lO2pYnl6YB0o7Eiz3pw6Q9xXs21qHRQDPlFI5OfMaaTUqHKtR9InP/E
- cfGnnnzxv+SvbjT6pyCRiDHnCiUh6G4paZfEosWLtLbV3uW46Mk6aiicohlMFEAxbC8iIwFHpFa
- AW7kQqcratYpJjC2+ibRex6NIEhzwRnD67gp6A8KzLQUdxaJEQnUn4ZG1Qtd4RQ+5LRO9NA6ZSa
- kN35g==
-X-Google-Smtp-Source: AGHT+IG3R/VcNlv5Ekuq1OKa3qi/RIq/2YfFZ87ucDKX5aohcviFjAmUmPyLrAhBfsHIZgq/6ut4mFLvRoX5bTNnmiM=
-X-Received: by 2002:a05:6402:3489:b0:618:1554:a6bc with SMTP id
- 4fb4d7f45d1cf-6184ea115e5mr561669a12.3.1754945148990; Mon, 11 Aug 2025
- 13:45:48 -0700 (PDT)
-MIME-Version: 1.0
-References: <20250811162315.59997-1-stefanha@redhat.com>
-In-Reply-To: <20250811162315.59997-1-stefanha@redhat.com>
-From: Stefan Hajnoczi <stefanha@gmail.com>
-Date: Mon, 11 Aug 2025 16:45:37 -0400
-X-Gm-Features: Ac12FXwryuHCHbB-O7WJH1_qES1xALMDX9i37hw-nbc20S53ufvhrQGVwT7OAso
-Message-ID: <CAJSP0QUYLbBuk+Kc-Y3K9sC6GmutBcQ-Rbrxd7dbO2RcCkz9TQ@mail.gmail.com>
-Subject: Re: [PATCH] tests/functional: fix URLs in PCI hotplug test for aarch64
-To: Stefan Hajnoczi <stefanha@redhat.com>
-Cc: qemu-devel@nongnu.org, Gustavo Romero <gustavo.romero@linaro.org>,
- qemu-arm@nongnu.org, 
- =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
- Peter Maydell <peter.maydell@linaro.org>
+ AJvYcCVNrI079pCEWznUavViVojs753iVZ/TJLJPNROrFNPPokt5nQ2IJuVJWJMX1PIx4aljmAqVc1uVWQ==@nongnu.org
+X-Gm-Message-State: AOJu0YyFqPjg43gns1mgULLAALR/fNQ6tJt8kefp5AlF78WQem0tuTUX
+ FN5DouP9jcPhrjkwU6vhMN4Hjp1CEU0xXEy8En6afrM9fa1rVIWyFYGWBE2eXBHQjvcHJNvCN1K
+ eSMiTvW/B6wJBdQ==
+X-Google-Smtp-Source: AGHT+IG94lKLP9Y8GMEv/VHbQbhw3MdTobj5no2b5qJW7sNIP6qpEjibOgqGlj2zML+Gk9MXsX71uxcrhuoXyA==
+X-Received: from pfbmy9-n2.prod.google.com
+ ([2002:a05:6a00:6d49:20b0:76c:4298:869f])
+ (user=bhillier job=prod-delivery.src-stubby-dispatcher) by
+ 2002:a05:6a00:4fce:b0:748:ed51:1305 with SMTP id
+ d2e1a72fcca58-76c460906b2mr17113212b3a.5.1754948195094; 
+ Mon, 11 Aug 2025 14:36:35 -0700 (PDT)
+Date: Mon, 11 Aug 2025 21:36:31 +0000
+Mime-Version: 1.0
+X-Mailer: git-send-email 2.51.0.rc0.155.g4a0f42376b-goog
+Message-ID: <20250811213631.2197063-1-bhillier@google.com>
+Subject: [PATCH v2] hw/sensor: add stub for ADM1266 blackbox
+From: Ben Hillier <bhillier@google.com>
+To: wuhaotsh@google.com, kfting@nuvoton.com
+Cc: philmd@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
+ Titus Rwantare <titusr@google.com>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::532;
- envelope-from=stefanha@gmail.com; helo=mail-ed1-x532.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
- T_SPF_HELO_TEMPERROR=0.01 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2607:f8b0:4864:20::44a;
+ envelope-from=3Y2KaaAgKCNw9FGJJGCPEMMEJC.AMKOCKS-8PKLMLELS.MPE@flex--bhillier.bounces.google.com;
+ helo=mail-pf1-x44a.google.com
+X-Spam_score_int: -95
+X-Spam_score: -9.6
+X-Spam_bar: ---------
+X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, T_SPF_HELO_TEMPERROR=0.01, T_SPF_TEMPERROR=0.01,
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -97,59 +94,61 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, Aug 11, 2025 at 12:24=E2=80=AFPM Stefan Hajnoczi <stefanha@redhat.c=
-om> wrote:
->
-> Debian trixie has been released. The "stable" alias no longer refers to
-> the Debian bookworm release, so URLs referring to bookworm artifacts via
-> the "stable" alias no longer work.
->
-> Switch to explicit release naming ("bookworm") to make a permalink so
-> the test passes again.
->
-> Suggested-by: Peter Maydell <peter.maydell@linaro.org>
-> Fixes: 374a245573b8 ("tests/functional: Add PCI hotplug test for aarch64"=
-)
-> Resolves: #3073 ("PCI hotplug test for aarch64 fails due to broken Debian=
- installer URL")
-> Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
-> ---
->  tests/functional/test_aarch64_hotplug_pci.py | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+From: Titus Rwantare <titusr@google.com>
 
-Applied to master.
+This patch fixes a bug that causes a kernel panic when calling ADM1266_BLACKBOX_INFORMATION.
 
->
-> diff --git a/tests/functional/test_aarch64_hotplug_pci.py b/tests/functio=
-nal/test_aarch64_hotplug_pci.py
-> index c9bb7f1d97..0c67991b89 100755
-> --- a/tests/functional/test_aarch64_hotplug_pci.py
-> +++ b/tests/functional/test_aarch64_hotplug_pci.py
-> @@ -15,12 +15,12 @@
->  class HotplugPCI(LinuxKernelTest):
->
->      ASSET_KERNEL =3D Asset(
-> -        ('https://ftp.debian.org/debian/dists/stable/main/installer-arm6=
-4/'
-> +        ('https://ftp.debian.org/debian/dists/bookworm/main/installer-ar=
-m64/'
->           '20230607+deb12u11/images/netboot/debian-installer/arm64/linux'=
-),
->           'd92a60392ce1e379ca198a1a820899f8f0d39a62d047c41ab79492f81541a9=
-d9')
->
->      ASSET_INITRD =3D Asset(
-> -        ('https://ftp.debian.org/debian/dists/stable/main/installer-arm6=
-4/'
-> +        ('https://ftp.debian.org/debian/dists/bookworm/main/installer-ar=
-m64/'
->           '20230607+deb12u11/images/netboot/debian-installer/arm64/initrd=
-.gz'),
->           '9f817f76951f3237bca8216bee35267bfb826815687f4b2fcdd5e6c2a91779=
-0c')
->
-> --
-> 2.50.1
->
->
+Log Message:
+
+adm1266 5-0042: Could not read blackbox!
+Kernel panic - not syncing: stack-protector: Kernel stack is corrupted in: adm1266_nvmem_read+0x168/0x170
+
+Signed-off-by: Titus Rwantare <titusr@google.com>
+---
+ hw/sensor/adm1266.c | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
+
+diff --git a/hw/sensor/adm1266.c b/hw/sensor/adm1266.c
+index 9017ce6116..cd11526c2b 100644
+--- a/hw/sensor/adm1266.c
++++ b/hw/sensor/adm1266.c
+@@ -75,6 +75,7 @@ typedef struct ADM1266State {
+ static const uint8_t adm1266_ic_device_id[] = {0x03, 0x41, 0x12, 0x66};
+ static const uint8_t adm1266_ic_device_rev[] = {0x08, 0x01, 0x08, 0x07, 0x0,
+                                                 0x0, 0x07, 0x41, 0x30};
++static const uint8_t adm1266_blackbox_info[] = {0x04, 0x00, 0x00, 0x00, 0x00};
+ 
+ static void adm1266_exit_reset(Object *obj, ResetType type)
+ {
+@@ -125,6 +126,17 @@ static uint8_t adm1266_read_byte(PMBusDevice *pmdev)
+         pmbus_send(pmdev, adm1266_ic_device_rev, sizeof(adm1266_ic_device_rev));
+         break;
+ 
++    case ADM1266_BLACKBOX_CONFIG:
++        return 0;
++
++    case ADM1266_READ_BLACKBOX:
++        return 0;
++
++    case ADM1266_BLACKBOX_INFORMATION:
++        pmbus_send(pmdev, adm1266_blackbox_info,
++                   sizeof(adm1266_blackbox_info));
++        break;
++
+     default:
+         qemu_log_mask(LOG_UNIMP,
+                       "%s: reading from unimplemented register: 0x%02x\n",
+@@ -154,6 +166,9 @@ static int adm1266_write_data(PMBusDevice *pmdev, const uint8_t *buf,
+         pmbus_receive_block(pmdev, (uint8_t *)s->mfr_rev, sizeof(s->mfr_rev));
+         break;
+ 
++    case ADM1266_BLACKBOX_CONFIG:
++    case ADM1266_READ_BLACKBOX:
++    case ADM1266_BLACKBOX_INFORMATION:
+     case ADM1266_SET_RTC:   /* do nothing */
+         break;
+ 
+-- 
+2.51.0.rc0.155.g4a0f42376b-goog
+
 

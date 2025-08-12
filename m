@@ -4,45 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5EF9CCA0EDA
-	for <qemu-arm@archiver.kernel.org>; Tue, 12 Aug 2025 09:41:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE13ECA0EC4
+	for <qemu-arm@archiver.kernel.org>; Tue, 12 Aug 2025 09:41:55 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ullUh-0007Pd-Re; Tue, 12 Aug 2025 05:40:36 -0400
+	id 1ullVX-0007v6-B1; Tue, 12 Aug 2025 05:41:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kane_chen@aspeedtech.com>)
- id 1ullUf-0007On-JY; Tue, 12 Aug 2025 05:40:33 -0400
+ id 1ullVM-0007cL-Gq; Tue, 12 Aug 2025 05:41:16 -0400
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kane_chen@aspeedtech.com>)
- id 1ullUc-0000Yh-Su; Tue, 12 Aug 2025 05:40:33 -0400
+ id 1ullVK-0000lv-Lt; Tue, 12 Aug 2025 05:41:16 -0400
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Tue, 12 Aug
- 2025 17:40:12 +0800
+ 2025 17:40:15 +0800
 Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
- Transport; Tue, 12 Aug 2025 17:40:12 +0800
+ Transport; Tue, 12 Aug 2025 17:40:15 +0800
 To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
  <leetroy@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>, Andrew Jeffery
  <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, "open
  list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
  <qemu-devel@nongnu.org>
-CC: <troy_lee@aspeedtech.com>, Kane-Chen-AS <kane_chen@aspeedtech.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PATCH v5 01/10] hw/nvram/aspeed_otp: Add ASPEED OTP memory device
- model
-Date: Tue, 12 Aug 2025 17:39:58 +0800
-Message-ID: <20250812094011.2617526-2-kane_chen@aspeedtech.com>
+CC: <troy_lee@aspeedtech.com>, Kane-Chen-AS <kane_chen@aspeedtech.com>
+Subject: [PATCH v5 07/10] hw/misc/aspeed_sbc: Add CAMP2 support for OTP data
+ reads
+Date: Tue, 12 Aug 2025 17:40:04 +0800
+Message-ID: <20250812094011.2617526-8-kane_chen@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250812094011.2617526-1-kane_chen@aspeedtech.com>
 References: <20250812094011.2617526-1-kane_chen@aspeedtech.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 Received-SPF: pass client-ip=211.20.114.72;
  envelope-from=kane_chen@aspeedtech.com; helo=TWMBX01.aspeed.com
 X-Spam_score_int: -18
@@ -70,184 +69,79 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Kane-Chen-AS <kane_chen@aspeedtech.com>
 
-Introduce a QEMU device model for ASPEED's One-Time Programmable (OTP)
-memory.
+The OTP space contains three types of entries: data, conf, and strap.
+Data entries consist of two DWORDs, while the other types contain
+only one DWORD. This change adds the R_CAMP2 register (0x024 / 4) to
+store the second DWORD when reading from the OTP data region.
 
-This model simulates a word-addressable OTP region used for secure
-fuse storage. The OTP memory can operate with an internal memory
-buffer.
-
-The OTP model provides a memory-like interface through a dedicated
-AddressSpace, allowing other device models (e.g., SBC) to issue
-transactions as if accessing a memory-mapped region.
+With this enhancement, OTP reads now correctly return both DWORDs for
+data entries via the CAMP registers, along with improved address
+validation and error handling.
 
 Signed-off-by: Kane-Chen-AS <kane_chen@aspeedtech.com>
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
 ---
- include/hw/nvram/aspeed_otp.h | 33 ++++++++++++
- hw/nvram/aspeed_otp.c         | 99 +++++++++++++++++++++++++++++++++++
- hw/nvram/meson.build          |  4 ++
- 3 files changed, 136 insertions(+)
- create mode 100644 include/hw/nvram/aspeed_otp.h
- create mode 100644 hw/nvram/aspeed_otp.c
+ hw/misc/aspeed_sbc.c | 27 +++++++++++++++++++++++++++
+ 1 file changed, 27 insertions(+)
 
-diff --git a/include/hw/nvram/aspeed_otp.h b/include/hw/nvram/aspeed_otp.h
-new file mode 100644
-index 0000000000..3752353860
---- /dev/null
-+++ b/include/hw/nvram/aspeed_otp.h
-@@ -0,0 +1,33 @@
-+/*
-+ *  ASPEED OTP (One-Time Programmable) memory
-+ *
-+ *  Copyright (C) 2025 Aspeed
-+ *
-+ *  SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#ifndef ASPEED_OTP_H
-+#define ASPEED_OTP_H
-+
-+#include "system/memory.h"
-+#include "hw/block/block.h"
-+#include "system/address-spaces.h"
-+
-+#define TYPE_ASPEED_OTP "aspeed-otp"
-+OBJECT_DECLARE_SIMPLE_TYPE(AspeedOTPState, ASPEED_OTP)
-+
-+typedef struct AspeedOTPState {
-+    DeviceState parent_obj;
-+
-+    BlockBackend *blk;
-+
-+    uint64_t size;
-+
-+    AddressSpace as;
-+
-+    MemoryRegion mmio;
-+
-+    uint8_t *storage;
-+} AspeedOTPState;
-+
-+#endif /* ASPEED_OTP_H */
-diff --git a/hw/nvram/aspeed_otp.c b/hw/nvram/aspeed_otp.c
-new file mode 100644
-index 0000000000..e5b7ca9676
---- /dev/null
-+++ b/hw/nvram/aspeed_otp.c
-@@ -0,0 +1,99 @@
-+/*
-+ *  ASPEED OTP (One-Time Programmable) memory
-+ *
-+ *  Copyright (C) 2025 Aspeed
-+ *
-+ *  SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qemu/log.h"
-+#include "qapi/error.h"
-+#include "system/block-backend.h"
-+#include "hw/qdev-properties.h"
-+#include "hw/nvram/aspeed_otp.h"
-+
-+static uint64_t aspeed_otp_read(void *opaque, hwaddr offset, unsigned size)
-+{
-+    AspeedOTPState *s = opaque;
-+    uint64_t val = 0;
-+
-+    memcpy(&val, s->storage + offset, size);
-+
-+    return val;
-+}
-+
-+static void aspeed_otp_write(void *opaque, hwaddr otp_addr,
-+                                uint64_t val, unsigned size)
-+{
-+    AspeedOTPState *s = opaque;
-+
-+    memcpy(s->storage + otp_addr, &val, size);
-+}
-+
-+static bool aspeed_otp_init_storage(AspeedOTPState *s, Error **errp)
-+{
-+    uint32_t *p;
-+    int i, num;
-+
-+        num = s->size / sizeof(uint32_t);
-+        p = (uint32_t *)s->storage;
-+        for (i = 0; i < num; i++) {
-+            p[i] = (i % 2 == 0) ? 0x00000000 : 0xFFFFFFFF;
-+        }
-+
-+    return true;
-+}
-+
-+static const MemoryRegionOps aspeed_otp_ops = {
-+    .read = aspeed_otp_read,
-+    .write = aspeed_otp_write,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+    .valid.min_access_size = 1,
-+    .valid.max_access_size = 4,
-+};
-+
-+static void aspeed_otp_realize(DeviceState *dev, Error **errp)
-+{
-+    AspeedOTPState *s = ASPEED_OTP(dev);
-+
-+    if (s->size == 0) {
-+        error_setg(errp, "aspeed.otp: 'size' property must be set");
-+        return;
-+    }
-+
-+    s->storage = blk_blockalign(s->blk, s->size);
-+
-+    if (!aspeed_otp_init_storage(s, errp)) {
-+        return;
-+    }
-+
-+    memory_region_init_io(&s->mmio, OBJECT(dev), &aspeed_otp_ops,
-+                          s, "aspeed.otp", s->size);
-+    address_space_init(&s->as, &s->mmio, NULL);
-+}
-+
-+static const Property aspeed_otp_properties[] = {
-+    DEFINE_PROP_UINT64("size", AspeedOTPState, size, 0),
-+};
-+
-+static void aspeed_otp_class_init(ObjectClass *klass, const void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+    dc->realize = aspeed_otp_realize;
-+    device_class_set_props(dc, aspeed_otp_properties);
-+}
-+
-+static const TypeInfo aspeed_otp_info = {
-+    .name          = TYPE_ASPEED_OTP,
-+    .parent        = TYPE_DEVICE,
-+    .instance_size = sizeof(AspeedOTPState),
-+    .class_init    = aspeed_otp_class_init,
-+};
-+
-+static void aspeed_otp_register_types(void)
-+{
-+    type_register_static(&aspeed_otp_info);
-+}
-+
-+type_init(aspeed_otp_register_types)
-diff --git a/hw/nvram/meson.build b/hw/nvram/meson.build
-index 10f3639db6..b66f23605b 100644
---- a/hw/nvram/meson.build
-+++ b/hw/nvram/meson.build
-@@ -19,3 +19,7 @@ system_ss.add(when: 'CONFIG_XLNX_BBRAM', if_true: files('xlnx-bbram.c'))
+diff --git a/hw/misc/aspeed_sbc.c b/hw/misc/aspeed_sbc.c
+index 052c70fd42..787e2d0489 100644
+--- a/hw/misc/aspeed_sbc.c
++++ b/hw/misc/aspeed_sbc.c
+@@ -22,6 +22,7 @@
+ #define R_ADDR          (0x010 / 4)
+ #define R_STATUS        (0x014 / 4)
+ #define R_CAMP1         (0x020 / 4)
++#define R_CAMP2         (0x024 / 4)
+ #define R_QSR           (0x040 / 4)
  
- specific_ss.add(when: 'CONFIG_PSERIES', if_true: files('spapr_nvram.c'))
- specific_ss.add(when: 'CONFIG_ACPI', if_true: files('fw_cfg-acpi.c'))
+ /* R_STATUS */
+@@ -50,6 +51,8 @@
+ #define SBC_OTP_CMD_READ 0x23b1e361
+ #define SBC_OTP_CMD_PROG 0x23b1e364
+ 
++#define OTP_DATA_DWORD_COUNT        (0x800)
++#define OTP_TOTAL_DWORD_COUNT       (0x1000)
+ static uint64_t aspeed_sbc_read(void *opaque, hwaddr addr, unsigned int size)
+ {
+     AspeedSBCState *s = ASPEED_SBC(opaque);
+@@ -72,6 +75,16 @@ static bool aspeed_sbc_otp_read(AspeedSBCState *s,
+     MemTxResult ret;
+     AspeedOTPState *otp = &s->otp;
+     uint32_t value, otp_offset;
++    bool is_data = false;
 +
-+system_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
-+  'aspeed_otp.c',
-+  ))
-\ No newline at end of file
++    if (otp_addr < OTP_DATA_DWORD_COUNT) {
++        is_data = true;
++    } else if (otp_addr >= OTP_TOTAL_DWORD_COUNT) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "Invalid OTP addr 0x%x\n",
++                      otp_addr);
++        return false;
++    }
+ 
+     otp_offset = otp_addr << 2;
+     ret = address_space_read(&otp->as, otp_offset, MEMTXATTRS_UNSPECIFIED,
+@@ -85,6 +98,20 @@ static bool aspeed_sbc_otp_read(AspeedSBCState *s,
+     s->regs[R_CAMP1] = value;
+     trace_aspeed_sbc_otp_read(otp_addr, value);
+ 
++    if (is_data) {
++        ret = address_space_read(&otp->as, otp_offset + 4,
++                                 MEMTXATTRS_UNSPECIFIED,
++                                 &value, sizeof(value));
++        if (ret != MEMTX_OK) {
++            qemu_log_mask(LOG_GUEST_ERROR,
++                          "Failed to read OTP memory, addr = %x\n",
++                          otp_addr);
++            return false;
++        }
++        s->regs[R_CAMP2] = value;
++        trace_aspeed_sbc_otp_read(otp_addr + 1, value);
++    }
++
+     return true;
+ }
+ 
 -- 
 2.43.0
 

@@ -4,73 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54B7AC87FCB
-	for <qemu-arm@archiver.kernel.org>; Tue, 12 Aug 2025 17:40:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2983DC87FCB
+	for <qemu-arm@archiver.kernel.org>; Tue, 12 Aug 2025 17:51:34 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ulsyp-0004Da-JR; Tue, 12 Aug 2025 13:40:11 -0400
+	id 1ult9P-0007nR-7M; Tue, 12 Aug 2025 13:51:07 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ulsyo-0004CW-4a
- for qemu-arm@nongnu.org; Tue, 12 Aug 2025 13:40:10 -0400
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
+ id 1ult9L-0007m2-BY
+ for qemu-arm@nongnu.org; Tue, 12 Aug 2025 13:51:03 -0400
+Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ulsyj-00059R-Qj
- for qemu-arm@nongnu.org; Tue, 12 Aug 2025 13:40:09 -0400
-Received: by mail-wr1-x433.google.com with SMTP id
- ffacd0b85a97d-3b79bd3b1f7so2723824f8f.1
- for <qemu-arm@nongnu.org>; Tue, 12 Aug 2025 10:40:02 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
+ id 1ult9G-00071M-Al
+ for qemu-arm@nongnu.org; Tue, 12 Aug 2025 13:51:02 -0400
+Received: by mail-pl1-x636.google.com with SMTP id
+ d9443c01a7336-24307977420so8273975ad.2
+ for <qemu-arm@nongnu.org>; Tue, 12 Aug 2025 10:50:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1755020400; x=1755625200; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
+ d=linaro.org; s=google; t=1755021055; x=1755625855; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=54Y7ecwCX1DQuE+WdBnur410o07WRJgqBKRhN5gF/vM=;
- b=CnKiFa4dTpqKN+aOd9s0XDEex87DXgWTs4Op93RIA7r2X9LFz1RgWXfrdvcc4QhX2P
- sYCMC3Nwvv2WYf1Ghwv9tFmjrZXEOjL7kBbgtmIb1Ygcwb9/uHeETFN85BwIkz9LvCEz
- GrxAmcz8lwdofi43QBgv5EESSFOdIcH/eF+PSyZP+zb29UUvCQ0fgcjRHko3rY8A0ifb
- spyUNSaFy4Yxg9/yG8GZQxhlmdhDMb4X9fxYPnyEWOz42GYqwcDGZ5J6+JKgWJ/c01gB
- pn9rYF/O36Lb6W6uks3BKrcq1x42lo4Eox3MTzISFp0ObSsltaM4PmS1FPA4z5EjitQf
- BzTQ==
+ bh=n0TVrgvas1SgmCGOwnRZ4AumkWT3T/fTUtggJNzOQWM=;
+ b=XA4kYK1jL335ULknMLMfe2NnDr7S6Ih2DCoi1WyBIHSK5YcBPqAhzshPyrrC7Hp8Nr
+ GactDhrhfwWJnURdMKRE/BOL7MLiVjaQuxOyrT93DbdUjecLN53HXPm/c+VSX6lgmrlv
+ TO+yTBAPbBKs6cEJ/w+MY/kZyIsLswY0gk6kM16exGyeXMdhezw18OwKmxnQ2B+5SSYI
+ 5Ke3FiWUoimYVrhCaGacSELCk4aR2uUhabbFC5/Nk1KkPDqdYa0n4YYdmNYioB6ZTCW/
+ nDwf43VPVQkbOf/bmXQhsayWDJlHm+FGtWU5nEDYLAP1UIiLXHPThIP332pUADYcoybE
+ ei1Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1755020400; x=1755625200;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
+ d=1e100.net; s=20230601; t=1755021055; x=1755625855;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=54Y7ecwCX1DQuE+WdBnur410o07WRJgqBKRhN5gF/vM=;
- b=Yvl4XyN/1IsqyYtDlM5bLmjHT2n4OmF0O29jC0/HB/ZQY2JdsiOxHlfg1sQKomeRBZ
- eYr8zEmw5C9a411t5oWgjcarlX0ozb3UjCth8XyIbew0dCaVhvZbuRpsty+PNizIQsqz
- fClnlAlOddtTEmEc3l43G+/Tx4wBUpD5S91i4mpw8IGy0AQe1KlzL1o0ZIopXBQRjhZz
- UXNqlrFnuLXBcuOgyFrXdjr1cadxvBEjlmNZ98sow8o8Gav2YG/JEIfmms8MeqB45tm2
- hhFPypn2FdG1UZ3BnaSnNbzGZIQny4gZy54ycppAqKLexIfZRbmnghWR0XIC0jIkNV4V
- Eu1A==
+ bh=n0TVrgvas1SgmCGOwnRZ4AumkWT3T/fTUtggJNzOQWM=;
+ b=Q6d51Ir1XUFt1RoR6lRVNnodP2obUG9F8SFL9qZaAHoa6UQ+LF5cxKT8bAk0CU0yNK
+ pKn4YntBqr/OPGii7Nmsck+I5S36ZrZt2+nyr7AduPJKRcXvcrPYVa5g91YRItcCXSXl
+ vCr4DLfYiQy6faTRvZWXoxW3aVQidr+ksqSNx3/sG/PjUkaIR6p1vdQuO11vlCgzfseQ
+ xXIhN9x3TON37tcram1qpMM4QGGPxiBdv5KHpwCk9f7kgo2OO009BVSdZziTu5LNVgdq
+ FigUDkblgcU9ZJVXNbSOQeOUd+QGI3iI2P3GFN/J2fDaDueUim5f9k5Ha33vON8432Fy
+ oFiA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUm4+khke+CM6TgU5oIiG7MwN3NQvpdXdYHtq90VYB/AZcj2oL+KqB1qMMXm2w1pr140fn3nH6CLA==@nongnu.org
-X-Gm-Message-State: AOJu0Yz+o1bf4ryM7berLuE0/CpgxcZNQL+PDhw1lpqcc27Q5Zi2GqFT
- Oiv8cIwOd6eWUbQIbRTtyZXBMVrC9PAVm+80PCawSQUhv36S6L56TmyUQ7sHEm4F09Y=
-X-Gm-Gg: ASbGncvzBDV9HklWr0JGA1hBRCjByzZFzgIrENzSln1CeNkvoI164ymHihxofbzkxv1
- a6bDnKW3zTAIT+TylqI5VhlBEfHcnjKDNjy+7AFJ/zm0lex7gjJWpPEOWvy/s/aaSNxANlgpd8q
- /qB95BrT3xQ4y1+55IqtJLV1HWLpObhmmo3gRCa7l1EocSDqW8VrV49I7Xn/iIcc0ddtjJ+T6qn
- gqlEvC+zEuezEPHv8vica5/P2V7G9BHqJb/vlODh6S+XXCLEt/CxSlERacYQviwI3DG4tBDVPGK
- 8Xk/1k2u5gNr/T7laz34zOzFDSpQ73s2hxc64nhIPCa6JvQGjVef8X0SAYIsHqLKAo0betYOCZw
- 4Ex21zHtpEhMusnH9Q94l6hTR2KhI2sfOR+3TIVT/LYKwBBPr2kXMQYzZxxo+N/19Kg==
-X-Google-Smtp-Source: AGHT+IHbM77TKgvDRA1+zpAxaEdnN+pIynh8fTQOmmcfplC+fAQK8RdB9uOvzZ6If0riUOS18U2nBw==
-X-Received: by 2002:a05:6000:3111:b0:3b7:78c8:937f with SMTP id
- ffacd0b85a97d-3b917241097mr251794f8f.20.1755020400206; 
- Tue, 12 Aug 2025 10:40:00 -0700 (PDT)
-Received: from [192.168.69.210] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3b79c485444sm45516784f8f.66.2025.08.12.10.39.59
+ AJvYcCWZlqv/t6Ah8nnjOxXSoKktCO2NNw3Bx5kyTxcLm8hshZ/Ew5s+sRdkBSehUm/76NMrv9lCh1PIyw==@nongnu.org
+X-Gm-Message-State: AOJu0YwShMmbPcSwLJaw8tmled/JZk8w3nEDQKdb7YTikm17KHoVYcUH
+ jMyMC+FDqEKJt8gb6TJV5B6UEAyRiE9Ae5nuSDZ3DIo/w6KIQTn+itLLNmKZA2wp6UM=
+X-Gm-Gg: ASbGnctNnpL40cVPgwMHkiXZsIon98aMhFaM36457IPK/W8vxpENLev9rt1/9ZKcTXK
+ TXQWvPIGd4vd5QE4A2yzMFmvta0dWcoliYf1M4PLRSv/OBATAP0KsXLjwPJ7PyFRaF83PrErehZ
+ nog9Xrn5lKalI+K/WBO4qYt8J9NEnjESToe40X1y+3NdNCX6PTAeBUSYzlBD4nPy889IouG5kVC
+ lkNRkUU2ceKUGHVDkcCn5f1FB4bgbFw1ag0uaYrZw7pOp+5F7IcPQD37j2s+uLFAkV+eJT/Q6FZ
+ hRlZnoX4GcRiCUt5Rt2LM3s5LWPwkERTlKKScvPzpI4P2VZRwvLjA+pEdPPTugDNq3LkGE0c9tV
+ +Xx+PWG1tHqRqH9gTl5Nzcf+x1Ywr52USQ2E=
+X-Google-Smtp-Source: AGHT+IEn+qdVb4ytVYHQ8vl3dj8L06K8nGqkBvh3x+XdGDlFFDXkQn4QFkBnX1WI4IdcNVv+L/k9FA==
+X-Received: by 2002:a17:902:e542:b0:240:2bb6:d4ae with SMTP id
+ d9443c01a7336-2430d1a1154mr837025ad.30.1755021055210; 
+ Tue, 12 Aug 2025 10:50:55 -0700 (PDT)
+Received: from [192.168.1.87] ([38.41.223.211])
+ by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-241d1ef8204sm305776035ad.34.2025.08.12.10.50.54
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 12 Aug 2025 10:39:59 -0700 (PDT)
-Message-ID: <c775c856-277a-4a55-9fda-5516e1e8a414@linaro.org>
-Date: Tue, 12 Aug 2025 19:39:58 +0200
+ Tue, 12 Aug 2025 10:50:54 -0700 (PDT)
+Message-ID: <49d2568d-8f15-4cc5-8295-b02540890be9@linaro.org>
+Date: Tue, 12 Aug 2025 10:50:54 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC 04/11] hw/arm/smmuv3: Enable command processing for the
- Secure state
-To: Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+Subject: Re: [RFC 00/11] hw/arm/smmuv3: Add initial support for Secure State
+Content-Language: en-US
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Tao Tang <tangtao1634@phytium.com.cn>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 Cc: Eric Auger <eric.auger@redhat.com>,
@@ -78,18 +80,15 @@ Cc: Eric Auger <eric.auger@redhat.com>,
  Chen Baozi <chenbaozi@phytium.com.cn>, smostafa@google.com,
  jean-philippe@linaro.org
 References: <20250806151134.365755-1-tangtao1634@phytium.com.cn>
- <20250806151134.365755-5-tangtao1634@phytium.com.cn>
- <0b38d386-9d8b-46bd-a981-718cc7281eb6@linaro.org>
- <f74b4d64-893f-4b39-aa95-4e9ff52edebd@phytium.com.cn>
- <4ff26d30-3b0d-4392-8bac-698ecb0fbdde@linaro.org>
- <2cb0e32f-6660-4fcd-8a37-52cdeaf9dc19@linaro.org>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <2cb0e32f-6660-4fcd-8a37-52cdeaf9dc19@linaro.org>
+ <d4fcf3a2-6789-4926-882e-1abac4c07843@linaro.org>
+ <2169e4b1-97d1-43c9-a512-5e6e25a562ad@phytium.com.cn>
+ <805a9a58-df34-4a0c-8613-1c7f22310170@linaro.org>
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+In-Reply-To: <805a9a58-df34-4a0c-8613-1c7f22310170@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::433;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x433.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::636;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pl1-x636.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -112,107 +111,59 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 12/8/25 19:27, Pierrick Bouvier wrote:
-> On 8/11/25 3:34 AM, Philippe Mathieu-Daudé wrote:
->> Hi,
+On 8/11/25 3:26 AM, Philippe Mathieu-Daudé wrote:
+> On 10/8/25 18:11, Tao Tang wrote:
 >>
->> On 10/8/25 18:59, Tao Tang wrote:
->>> On 2025/8/7 05:55, Pierrick Bouvier wrote:
->>>> On 8/6/25 8:11 AM, Tao Tang wrote:
->>>>> This patch enables the secure command queue, providing a dedicated
->>>>> interface for secure software to issue commands to the SMMU. Based on
->>>>> the SMMU_S_CMDQ_BASE configuration, the SMMU now fetches command
->>>>> entries directly from the Secure PA space so that we need to pass the
->>>>> memory transaction attributes when reading the command queue.
->>>>>
->>>>> This provides a parallel command mechanism to the non-secure world.
->>>>>
->>>>> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
->>>>> ---
->>>>>    hw/arm/smmuv3-internal.h |  8 ++++--
->>>>>    hw/arm/smmuv3.c          | 55 ++++++++++++++++++++++++ 
->>>>> +---------------
->>>>>    hw/arm/trace-events      |  2 +-
->>>>>    3 files changed, 41 insertions(+), 24 deletions(-)
->>>>>
->>>>> diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
->>>>> index 1a8b1cb204..5b2ca00832 100644
->>>>> --- a/hw/arm/smmuv3-internal.h
->>>>> +++ b/hw/arm/smmuv3-internal.h
->>>>> @@ -319,9 +319,13 @@ static inline void queue_cons_incr(SMMUQueue *q)
->>>>>        q->cons = deposit32(q->cons, 0, q->log2size + 1, q->cons + 1);
->>>>>    }
->>>>>    -static inline bool smmuv3_cmdq_enabled(SMMUv3State *s)
->>>>> +static inline bool smmuv3_cmdq_enabled(SMMUv3State *s, bool 
->>>>> is_secure)
->>>>>    {
->>>>> -    return FIELD_EX32(s->cr[0], CR0, CMDQEN);
->>>>> +    if (is_secure) {
->>>>> +        return FIELD_EX32(s->secure_cr[0], S_CR0, CMDQEN);
->>>>> +    } else {
->>>>> +        return FIELD_EX32(s->cr[0], CR0, CMDQEN);
->>>>> +    }
->>>>>    }
->>
->>
->>>> This looks like a reasonable and readable approach to support secure
->>>> and non secure accesses.
->>>
->>> Hi Pierrick,
->>>
->>> Thank you so much for taking the time to review and for the very
->>> positive feedback.
->>>
->>> I'm very relieved to hear you find the approach "reasonable and
->>> readable". I was hoping that explicitly passing the parameter was the
->>> right way to avoid issues with global state or code duplication, and
->>> your confirmation is the best encouragement I could ask for.
->>
->> An alternative (also suggested in patch #1) is to use index for banked
->> registers.
->>
->> For example we use M_REG_NS with Cortex-M cores (target/arm/cpu-qom.h):
->>
->>       /* For M profile, some registers are banked secure vs non-secure;
->>        * these are represented as a 2-element array where the first
->>        * element is the non-secure copy and the second is the secure 
->> copy.
->>        * When the CPU does not have implement the security extension then
->>        * only the first element is used.
->>        * This means that the copy for the current security state can be
->>        * accessed via env->registerfield[env->v7m.secure] (whether the
->>        * security extension is implemented or not).
->>        */
->>       enum {
->>           M_REG_NS = 0,
->>           M_REG_S = 1,
->>           M_REG_NUM_BANKS = 2,
->>       };
->>
->> And generally for address spaces (target/arm/cpu.h):
->>
->>       typedef enum ARMASIdx {
->>           ARMASIdx_NS = 0,
->>           ARMASIdx_S = 1,
->>           ARMASIdx_TagNS = 2,
->>           ARMASIdx_TagS = 3,
->>       } ARMASIdx;
->>
->> (not sure this one is appropriate here).
->>
+>> On 2025/8/7 05:28, Pierrick Bouvier wrote:
+>>> On 8/6/25 8:11 AM, Tao Tang wrote:
 > 
-> This could be useful, especially to not duplicate register definitions.
 > 
-> However, for now, we only have two indexes (secure vs non-secure) and 
-> it's not clear if we'll need something more than that in a close future.
-> I think the current approach (a simple bool) is quite readable, and the 
-> boilerplate is limited, especially versus changing all existing code to 
-> support the new Idx approach.
-> As well, it can always be refactored easily later, when we'll need it.
+>>>> Secure Translation Path: Since the TF-A SMMUv3 Test Engine does not
+>>>> support QEMU, and no secure device assignment feature exists yet, I
+>>>> created a custom platform device to test the secure translation flow.
+>>>> To trigger the translation logic, I initiated MMIO writes to this
+>>>> device from within Hafnium. The device's MMIO callback handler then
+>>>> performed DMA accesses via its IOMMU region, exercising the secure
+>>>> translation path. While SMMUv3 is typically used for PCIe on
+>>>> physical SoCs, the architecture allows its use with platform devices
+>>>> via a stream-id binding in the device tree. The test harness
+>>>> required some non-standard modifications to decouple the SMMU from
+>>>> its tight integration with PCIe. The code for this test device is
+>>>> available for review at [3]. README.md with detailed instructions is
+>>>> also provided.
+>>>>
+>>>
+>>> I am not sure about the current policy in QEMU for test oriented
+>>> devices, but it would be really useful to have something similar
+>>> upstream (Note: it's out of the scope of this series).
+>>> One challenge working with SMMU emulation is that reproducing setups
+>>> and triggering specific code paths is hard to achieve, due to the
+>>> indirect use of SMMU feature (through DMA) and the complex software
+>>> stack usually involved.
+>>> Having something upstream available to work on SMMU emulation, at
+>>> least on device side, would be a great addition.
+>>>
+>>> Eric, Peter, is this something that would be acceptable to merge?
 > 
-> That said, I will let the maintainers decide which approach they want to 
-> see implemented, to avoid Tao jumping between different people opinions.
+> 
+> This shouldn't be an issue, we already have some:
+> 
+> $ git ls-files|fgrep testdev
+> chardev/testdev.c
+> docs/specs/pci-testdev.rst
+> hw/hyperv/hyperv_testdev.c
+> hw/misc/pc-testdev.c
+> hw/misc/pci-testdev.c
+> hw/tricore/tricore_testdevice.c
+> 
 
-Sure, no problem.
+Looks good indeed, and we have the TEST_DEVICES category for that.
+
+> 
+>> Looking ahead, my plan is to refactor the smmuv3-test platform device.
+>> The goal is to make it self-contained within QEMU, removing the current
+>> dependency on Hafnium to trigger its operations. I plan to submit this
+>> as a separate RFC patch series in the next few days.
+> 
 
 

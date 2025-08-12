@@ -4,65 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF6B9CA0EC4
-	for <qemu-arm@archiver.kernel.org>; Tue, 12 Aug 2025 17:28:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E79A7CA0EC4
+	for <qemu-arm@archiver.kernel.org>; Tue, 12 Aug 2025 17:29:00 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ulsnc-0003sa-Mm; Tue, 12 Aug 2025 13:28:36 -0400
+	id 1ulsnk-0003vC-NC; Tue, 12 Aug 2025 13:28:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ulsnb-0003sM-BT
- for qemu-arm@nongnu.org; Tue, 12 Aug 2025 13:28:35 -0400
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ulsni-0003uU-Si
+ for qemu-arm@nongnu.org; Tue, 12 Aug 2025 13:28:42 -0400
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ulsnT-0003RS-Ur
- for qemu-arm@nongnu.org; Tue, 12 Aug 2025 13:28:35 -0400
-Received: by mail-wm1-x330.google.com with SMTP id
- 5b1f17b1804b1-45a0dc77a15so13177325e9.2
- for <qemu-arm@nongnu.org>; Tue, 12 Aug 2025 10:28:27 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ulsna-0003Ru-R0
+ for qemu-arm@nongnu.org; Tue, 12 Aug 2025 13:28:42 -0400
+Received: by mail-wm1-x32d.google.com with SMTP id
+ 5b1f17b1804b1-459e39ee7ccso56101455e9.2
+ for <qemu-arm@nongnu.org>; Tue, 12 Aug 2025 10:28:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1755019705; x=1755624505; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=XFVNnbRTiRKENsM+2C3XPaOJ9QN/hot7cxFumXFNznY=;
- b=wP4H7AWCz/8eFOIfO8ab33hK7rWHdXzEzcgJtjIo5QgYemRtDAKEH3KGIb+dEqbNFc
- NSYLeH5TfyxoBI2ZYCcgxkYXDEl6Ym7RlG723QZV1JxZbeA7ABOsfuPLPIdNWCZko+qc
- /17ZynL5dJqx8nO6awYywkQJen4ySPAc+qb14+pBIuZTT9Hod+AmeedDefkzoOmddae5
- YLEVmR77QSERdJLOSWNn3k0hMVBhsUJtMdd6CcYT6fRYPbEsBNZmaiHID30G2pDh5boT
- a2539LMN7P4IvooeMbM5/edCmeQk3ofWgpU5kMikvWEG40afUzpn/2rl0rc53z06A61U
- kDBg==
+ d=linaro.org; s=google; t=1755019711; x=1755624511; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=hbl7ajSiNJK7b98o2AX/9HHrEnoB7DYhJ//FpfdP6jM=;
+ b=u9NhJHUCeUCuIDAVsXYKdi6UDFRxaSuwt9FOwMvauvClqqPAlL8dU2GllHqb+hJreg
+ QZLwta/8vayWRloeZRJ1RyJJWLcvLAwITj+/BnydNakKoHWap1qBuA42VdHb7an5DhzH
+ uMjII+KW+sWEMeMRqNUpMKWQL8hY4B93xX+C8vk5gNxW3VejlfOtKq3Pj/IErHKO3oen
+ MUVnk5ra98AItyygnoxQ+6Tb2ARnsVt7ZJZDmhXk6TZeJhs5s9TXI82l1QYPoihWRq2P
+ +JaAnEr/fn+ydwT0t4nk+X6gpW43pJWVE47KFSVJb72hA01tNsT3P5BE8AQVezoTdqs9
+ tURg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1755019705; x=1755624505;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=XFVNnbRTiRKENsM+2C3XPaOJ9QN/hot7cxFumXFNznY=;
- b=bZ8lcDTEmNrQi1A3TVk/kWJuW+fB0QOxF3n9+EPumH7AKRHUgOASqOr2S5JgFXqR/N
- OZwD6io0bVQ6MxUuC/NLgSiFq3SSAe3REqnoF9iNPUhJWvAtOG7S/9MHiVb3T8PbzpS5
- sDezSMMJdCpaq9cJJURHLVPizFQudpFl2BxPgibSbVszgCKHTyIuhiA05Wz0Hh4Lm9CS
- vQv+aPxz/eBcLWiCTv4WY55oBwyzepL5W+zRpopp/7CTTlmooc3x01uURAnge/3mut3T
- KlyVYTlwg8nC4N/tk93oEzfDU+BUwXTGXTVryL//mcmYabBJqqAPN/ZF/jol7QOZWD+M
- /pnQ==
+ d=1e100.net; s=20230601; t=1755019711; x=1755624511;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=hbl7ajSiNJK7b98o2AX/9HHrEnoB7DYhJ//FpfdP6jM=;
+ b=opIDZ+gES7RK2WQoBI9kiI44MgSnwG9TB+KQ3B+DePMIdwr1CWkOud0H75HGw/szsM
+ fmJOESkwuc6DR9dcet7JBoOafrm3eJJ2I8zDS2xt8Uk0jiaYZGMRKsBoFPin1LTmfxL0
+ nhCcZigBXrhM05RdgexOqq12K0ym/jeqKLh8CqqGjDInAdj32Cni8JpuLlI8M9/u+Hma
+ NClYB6OvBNcQQ58gXK+/FjmmfVJQaZ/VyKc2OSjejRJgRHtGUZp3QbdxwanxerEWFCEW
+ 5opUF6+p1vVMUPL59E2ExLc9cP4wyiDNHfi74zFgI4wItZylRTMHG9tKzPeGzaoTCkX+
+ 1IZw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXOsi+Kg+HJvIZfeQKW8+FCmpb8L34KnY1Nn0I2/aUgCPsJ+Q8JRNhmM6IUZqROcH00fbd7o+8qAg==@nongnu.org
-X-Gm-Message-State: AOJu0YynGAWRKwxLTr3dYr/XCkaM3tl5yyc29X/TaipRF9TAvVEcNwcc
- wmOXG+e0Nk9+2UWf2U1/5CYc/0OQFzI4frHsTKTcG3lapvgwIiMD7EFpsHQfiXkmvlE=
-X-Gm-Gg: ASbGncv4/yCZB1p/tV4LCCMrR6D4/pekA+0B5UjUibxRtgy9mYqbdedMYzI+BnM5Ox/
- MA3KS5jCmZj3yTiEVKdRW/oyqMwDkFHcYfOub8xG18gFRmrp4NiQIajlsFG3EqdXGOtbcwJWvvG
- tgN2KPbtndVY4ogHssYvm/ZwG0bJtndTc9tqPBTseF2cp8HR1Q5but+R87QcwJtnlO3F9WDH9Lt
- VxGadZGPUXoFuJf3LPkgJ52y7oo5D/Em+mqP4CvTvLRp+7rA2rCNUf7FMgI7HAW10g0/Ox+D8hX
- WOulSRIuE6WrL0pgsG0UFIY/Vn3rx8HCjkv9PUjf0sUh0Ug8frdo5lAe/WlmKDVMlumkkQJIjr1
- R5rXE42Bs3NyT9HE5n/+VNfVN/6Rwwz3wlqI/q6fQsowbNaux0CoCAMdXuxIO9Z2uKbmVAD8J
-X-Google-Smtp-Source: AGHT+IHI5EUxCSAWZav2b9OslDPFbrZnQR5htR3M/42qqK2THZHZuDHrsCp7cbtbdmGtB2r63VUeXg==
-X-Received: by 2002:a05:600c:310d:b0:456:475b:7af6 with SMTP id
- 5b1f17b1804b1-45a16596597mr231935e9.7.1755019705430; 
- Tue, 12 Aug 2025 10:28:25 -0700 (PDT)
+ AJvYcCWF9VA+eAIvoFkpdCLe+W9uhe7GdVnqxkeMHpWwglP0uQC/rBVf+/NewN6VJaMmeF/ROLdl4Zp6bA==@nongnu.org
+X-Gm-Message-State: AOJu0YzbkDdGqaEin9cX2FM4oqlPGJRvEnp/gbsB8f2drsEIIbDiC8qo
+ g4PNpS+2x6uYndq0qHWPMWaa2cSbdpLL7jn8NQv8CCQQjb6cz8IqpJMUldWPQSXZJss=
+X-Gm-Gg: ASbGnctDcjU1AG0YE/kKfdBvBc8XkWssu/4abb3P27Jh2HxECAa3lhx0kBKruTwYrAy
+ PIPr31FzocJWX5PzG07+MzUQ3wpuHqLPOc6DM0F5bajAsNgTGunAy2vu6bIXLGUJMtT2iwEZWaE
+ +BxsR6HmqqrfICXMaovFyAbYK4EjIAK+jek7OeJLTVFc1XxPWSTOVm+0EacEDuKkUinlpwY/cNO
+ 6yLevBDCrNVzybPAzUQ/m+7g7++UpaBivlYnDOzrqZNzp9RRC1R3TLwwt1HCMlOauyN6EqmWzsR
+ dUtZJ2Zvuao4dLqqHjQQF0C3NB3CSxctCY5hiyQQoKYHHjsT1vtvSTYaPqPXR0Ydmv/G+tyE6I7
+ HvMjnWq+uiMDGGidIvzyhoejtD2hCYQx9LQICMsJPQaArVMjfvs8dxYOMYBcg27lyuBczzkLu
+X-Google-Smtp-Source: AGHT+IFWwbaQHe23BReftsVg783iD02j6Cp/qQHnk8XrfTKXBUvofgvLXMly9n8OdcFF/Pl/0k18wQ==
+X-Received: by 2002:a05:600c:45cc:b0:458:f70d:ebdd with SMTP id
+ 5b1f17b1804b1-45a165dc8dcmr54605e9.16.1755019710554; 
+ Tue, 12 Aug 2025 10:28:30 -0700 (PDT)
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-459e586eef8sm301292465e9.21.2025.08.12.10.28.24
+ 5b1f17b1804b1-458b4f9e952sm444632735e9.9.2025.08.12.10.28.29
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 12 Aug 2025 10:28:24 -0700 (PDT)
+ Tue, 12 Aug 2025 10:28:30 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Claudio Fontana <cfontana@suse.de>, Cameron Esfahani <dirty@apple.com>,
@@ -75,23 +76,24 @@ Cc: Claudio Fontana <cfontana@suse.de>, Cameron Esfahani <dirty@apple.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Miguel Luis <miguel.luis@oracle.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [RFC PATCH v2 00/10] target/arm: Introduce
- host_cpu_feature_supported() API
-Date: Tue, 12 Aug 2025 19:28:12 +0200
-Message-ID: <20250812172823.86329-1-philmd@linaro.org>
+Subject: [PATCH v2 01/10] accel/system: Introduce hwaccel_enabled() helper
+Date: Tue, 12 Aug 2025 19:28:13 +0200
+Message-ID: <20250812172823.86329-2-philmd@linaro.org>
 X-Mailer: git-send-email 2.49.0
+In-Reply-To: <20250812172823.86329-1-philmd@linaro.org>
+References: <20250812172823.86329-1-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -107,63 +109,37 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Since v1:
-- Addressed Richard's review comments removing 'can_emulate' arg
+hwaccel_enabled() return whether any hardware accelerator
+is enabled.
 
-Hi,
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ include/system/hw_accel.h | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
 
-Mohamed and myself are working on adding nested virtualization
-support to HVF Aarch64. Mohamed approach leverages the latest
-hardware features of the Apple M3+ Silicon chips [1], while mine
-falls back to emulation [2] when features are not available, as
-it happens with the M1 and M2 chipsets.
-
-We want to support both methods long term, as they solve different
-use cases. Therefore I'm looking for a common API for methods
-added in both series.
-
-In this series we propose the host_cpu_feature_supported() method
-to check if a feature is supported by the host, allowing fall back
-to TCG. KVM uses are converted, and an example -- while not really
-usable without other patch applied -- is provided for HVF.
-
-Does this look reasonable enough to pursue in that direction?
-
-Thanks,
-
-Phil.
-
-[1] https://lore.kernel.org/qemu-devel/20250808070137.48716-1-mohamed@unpredictable.fr/
-[2] https://lore.kernel.org/qemu-devel/20250620172751.94231-1-philmd@linaro.org/
-
-Mohamed Mediouni (2):
-  target/arm: Factor hvf_psci_get_target_el() out
-  target/arm/hvf: Sync registers used at EL2
-
-Philippe Mathieu-Daudé (8):
-  accel/system: Introduce hwaccel_enabled() helper
-  target/arm: Use generic hwaccel_enabled() to check 'host' cpu type
-  target/arm: Restrict PMU to system mode
-  target/arm: Introduce host_cpu_feature_supported()
-  target/arm: Replace kvm_arm_pmu_supported by
-    host_cpu_feature_supported
-  target/arm: Replace kvm_arm_el2_supported by
-    host_cpu_feature_supported
-  target/arm/hvf: Consider EL2 acceleration for Silicon M3+ chipsets
-  target/arm/hvf: Allow EL2/EL3 emulation on Silicon M1 / M2
-
- include/system/hw_accel.h | 13 ++++++++
- target/arm/internals.h    |  8 +++++
- target/arm/kvm_arm.h      | 24 --------------
- hw/arm/virt.c             |  8 +----
- target/arm/arm-qmp-cmds.c |  5 +--
- target/arm/cpu.c          | 16 +++++----
- target/arm/cpu64.c        | 11 ++++---
- target/arm/hvf/hvf.c      | 69 +++++++++++++++++++++++++++++++++++++--
- target/arm/kvm-stub.c     | 10 ------
- target/arm/kvm.c          | 33 ++++++++++++++-----
- 10 files changed, 133 insertions(+), 64 deletions(-)
-
+diff --git a/include/system/hw_accel.h b/include/system/hw_accel.h
+index fa9228d5d2d..49556b026e0 100644
+--- a/include/system/hw_accel.h
++++ b/include/system/hw_accel.h
+@@ -39,4 +39,17 @@ void cpu_synchronize_pre_loadvm(CPUState *cpu);
+ void cpu_synchronize_post_reset(CPUState *cpu);
+ void cpu_synchronize_post_init(CPUState *cpu);
+ 
++/**
++ * hwaccel_enabled:
++ *
++ * Returns: %true if a hardware accelerator is enabled, %false otherwise.
++ */
++static inline bool hwaccel_enabled(void)
++{
++    return hvf_enabled()
++        || kvm_enabled()
++        || nvmm_enabled()
++        || whpx_enabled();
++}
++
+ #endif /* QEMU_HW_ACCEL_H */
 -- 
 2.49.0
 

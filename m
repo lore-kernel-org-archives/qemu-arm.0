@@ -4,27 +4,27 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1ACC1CA0EC4
-	for <qemu-arm@archiver.kernel.org>; Tue, 12 Aug 2025 09:41:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7DB4CA0EC4
+	for <qemu-arm@archiver.kernel.org>; Tue, 12 Aug 2025 09:42:23 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ullVW-0007uB-Nk; Tue, 12 Aug 2025 05:41:26 -0400
+	id 1ullVf-00084Z-7y; Tue, 12 Aug 2025 05:41:35 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kane_chen@aspeedtech.com>)
- id 1ullVF-0007WQ-Qa; Tue, 12 Aug 2025 05:41:12 -0400
+ id 1ullVd-00082g-UK; Tue, 12 Aug 2025 05:41:33 -0400
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kane_chen@aspeedtech.com>)
- id 1ullVB-0000Yh-Eh; Tue, 12 Aug 2025 05:41:09 -0400
+ id 1ullVa-0000lv-UW; Tue, 12 Aug 2025 05:41:33 -0400
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Tue, 12 Aug
- 2025 17:40:14 +0800
+ 2025 17:40:16 +0800
 Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
- Transport; Tue, 12 Aug 2025 17:40:14 +0800
+ Transport; Tue, 12 Aug 2025 17:40:16 +0800
 To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
  <leetroy@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>, Andrew Jeffery
@@ -32,10 +32,9 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
  <qemu-devel@nongnu.org>
 CC: <troy_lee@aspeedtech.com>, Kane-Chen-AS <kane_chen@aspeedtech.com>
-Subject: [PATCH v5 06/10] hw/arm: Integrate ASPEED OTP memory support into
- AST1030 SoCs
-Date: Tue, 12 Aug 2025 17:40:03 +0800
-Message-ID: <20250812094011.2617526-7-kane_chen@aspeedtech.com>
+Subject: [PATCH v5 10/10] docs/system/arm/aspeed: Document OTP memory options
+Date: Tue, 12 Aug 2025 17:40:07 +0800
+Message-ID: <20250812094011.2617526-11-kane_chen@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250812094011.2617526-1-kane_chen@aspeedtech.com>
 References: <20250812094011.2617526-1-kane_chen@aspeedtech.com>
@@ -69,70 +68,57 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Kane-Chen-AS <kane_chen@aspeedtech.com>
 
-The has_otp attribute is enabled in the SBC subclasses for AST1030 to
-control the presence of OTP support per SoC type.
+Add documentation for the OTP memory module used by AST2600 and AST1030
+SoCs, and describe options for using a pre-generated image or an
+internal buffer. Include example commands for configuration and image
+generation.
 
 Signed-off-by: Kane-Chen-AS <kane_chen@aspeedtech.com>
 ---
- include/hw/misc/aspeed_sbc.h |  1 +
- hw/arm/aspeed_ast10x0.c      |  2 +-
- hw/misc/aspeed_sbc.c         | 16 ++++++++++++++++
- 3 files changed, 18 insertions(+), 1 deletion(-)
+ docs/system/arm/aspeed.rst | 31 +++++++++++++++++++++++++++++++
+ 1 file changed, 31 insertions(+)
 
-diff --git a/include/hw/misc/aspeed_sbc.h b/include/hw/misc/aspeed_sbc.h
-index 0c2746d392..7d640a022e 100644
---- a/include/hw/misc/aspeed_sbc.h
-+++ b/include/hw/misc/aspeed_sbc.h
-@@ -14,6 +14,7 @@
+diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
+index bf18c56347..6317c0e910 100644
+--- a/docs/system/arm/aspeed.rst
++++ b/docs/system/arm/aspeed.rst
+@@ -243,6 +243,37 @@ under Linux), use :
  
- #define TYPE_ASPEED_SBC "aspeed.sbc"
- #define TYPE_ASPEED_AST2600_SBC TYPE_ASPEED_SBC "-ast2600"
-+#define TYPE_ASPEED_AST10X0_SBC TYPE_ASPEED_SBC "-ast10x0"
- OBJECT_DECLARE_TYPE(AspeedSBCState, AspeedSBCClass, ASPEED_SBC)
+   -M ast2500-evb,bmc-console=uart3
  
- #define ASPEED_SBC_NR_REGS (0x93c >> 2)
-diff --git a/hw/arm/aspeed_ast10x0.c b/hw/arm/aspeed_ast10x0.c
-index e6e1ee63c1..c446e70b24 100644
---- a/hw/arm/aspeed_ast10x0.c
-+++ b/hw/arm/aspeed_ast10x0.c
-@@ -154,7 +154,7 @@ static void aspeed_soc_ast1030_init(Object *obj)
- 
-     object_initialize_child(obj, "peci", &s->peci, TYPE_ASPEED_PECI);
- 
--    object_initialize_child(obj, "sbc", &s->sbc, TYPE_ASPEED_SBC);
-+    object_initialize_child(obj, "sbc", &s->sbc, TYPE_ASPEED_AST10X0_SBC);
- 
-     for (i = 0; i < sc->wdts_num; i++) {
-         snprintf(typename, sizeof(typename), "aspeed.wdt-%s", socname);
-diff --git a/hw/misc/aspeed_sbc.c b/hw/misc/aspeed_sbc.c
-index b56a8b7678..052c70fd42 100644
---- a/hw/misc/aspeed_sbc.c
-+++ b/hw/misc/aspeed_sbc.c
-@@ -285,9 +285,25 @@ static const TypeInfo aspeed_ast2600_sbc_info = {
-     .class_init = aspeed_ast2600_sbc_class_init,
- };
- 
-+static void aspeed_ast10x0_sbc_class_init(ObjectClass *klass, const void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+    AspeedSBCClass *sc = ASPEED_SBC_CLASS(klass);
++OTP Option
++^^^^^^^^^^
 +
-+    dc->desc = "AST10X0 Secure Boot Controller";
-+    sc->has_otp = true;
-+}
++Both the AST2600 and AST1030 chips use the same One Time Programmable
++(OTP) memory module, which is utilized for configuration, key storage,
++and storing user-programmable data. This OTP memory module is managed
++by the Secure Boot Controller (SBC). The following options can be
++specified or omitted based on your needs.
 +
-+static const TypeInfo aspeed_ast10x0_sbc_info = {
-+    .name = TYPE_ASPEED_AST10X0_SBC,
-+    .parent = TYPE_ASPEED_SBC,
-+    .class_init = aspeed_ast10x0_sbc_class_init,
-+};
++  * When the options are specified, the pre-generated configuration
++    file will be used as the OTP memory storage.
 +
- static void aspeed_sbc_register_types(void)
- {
-     type_register_static(&aspeed_ast2600_sbc_info);
-+    type_register_static(&aspeed_ast10x0_sbc_info);
-     type_register_static(&aspeed_sbc_info);
- }
++  * When the options are omitted, an internal memory buffer will be
++    used to store the OTP memory data.
++
++.. code-block:: bash
++
++  -blockdev driver=file,filename=otpmem.img,node-name=otp \
++  -global aspeed-otp.drive=otp \
++
++The following bash command can be used to generate a default
++configuration file for OTP memory:
++
++.. code-block:: bash
++
++  if [ ! -f otpmem.img ]; then
++    for i in $(seq 1 2048); do
++      printf '\x00\x00\x00\x00\xff\xff\xff\xff'
++    done > otpmem.img
++  fi
++
+ Aspeed 2700 family boards (``ast2700-evb``)
+ ==================================================================
  
 -- 
 2.43.0

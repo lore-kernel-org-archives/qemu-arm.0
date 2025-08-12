@@ -4,101 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D3F0C87FCB
-	for <qemu-arm@archiver.kernel.org>; Tue, 12 Aug 2025 07:33:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E1F9CA0EC4
+	for <qemu-arm@archiver.kernel.org>; Tue, 12 Aug 2025 09:41:08 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uljVY-0006sA-O3; Tue, 12 Aug 2025 03:33:21 -0400
+	id 1ullUs-0007RC-Nz; Tue, 12 Aug 2025 05:40:48 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uljVW-0006rK-66
- for qemu-arm@nongnu.org; Tue, 12 Aug 2025 03:33:18 -0400
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uljVT-0001iW-LN
- for qemu-arm@nongnu.org; Tue, 12 Aug 2025 03:33:17 -0400
-Received: by mail-wm1-x32a.google.com with SMTP id
- 5b1f17b1804b1-458b49c98a7so32660105e9.1
- for <qemu-arm@nongnu.org>; Tue, 12 Aug 2025 00:33:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1754983992; x=1755588792; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:content-language:references
- :cc:to:from:subject:user-agent:mime-version:date:message-id:from:to
- :cc:subject:date:message-id:reply-to;
- bh=U46tZm3WdCz9s6+s67rjcVFpZgOy6vILPUGATvBzyns=;
- b=e5HVMp37XQymM6wOUuhjfg611WecI3nOVYItTEUisMnuIuCTrV3MHJcv6U3BtGZ3Kl
- lhduFwdCFZrcb8SHsnjvENAK9tV7PJs1lhhdrVoAR62cC8zBCveVTUC+zjKlwR7lVYpp
- MZuSxjYNr9yQ2NBntrNWT/7MSZ/k/MX8hQTLg04cpDEftEdj6bwpTuJUhiOpSoT6X5qQ
- 7yr621/xWH1jVoAqAGqA+LaeZGB8aA5I5KHAhnwDL7P3eRt71eizTrVxjvNCZsVy17YR
- qMstJOJ76zhTmvHebixL9E5zRFzIJ4gzN/GqKHTD2o4y/+eUrHuIjVsDd1pwh1LUaL0W
- R7Gg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1754983992; x=1755588792;
- h=content-transfer-encoding:in-reply-to:content-language:references
- :cc:to:from:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=U46tZm3WdCz9s6+s67rjcVFpZgOy6vILPUGATvBzyns=;
- b=klxhos2vS7M/dXjZ1LtQWAJLBtlPoaO2Y+U89MoG87CLLvMeMrjLpiTXZR6Y2ewOca
- P6joMCdsoulG2T/k3ZNCgICBhUpQyJhHGjkiFED0jurEgLu+h51NKuI0FlknOAeCCg+K
- FnhbwmgYpGvI/s64Tnmlxh8uOkBM1YBYgkRDsKF/cFOUUDQt959U7geqVeVsCY51C2aN
- TZyWewzNncC1e8Ve+1lc8F0PkT5IlXHBsETyoBtb3afXyTmEf+979oLeFIwiJiJZ8o/Z
- qaVxjUF/qdOlkD+wOD8FnBA20N+n4dpnfuHQx3IB8DIXnojmHluOyRzj81or8RDnFwoI
- 9tWw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCU+mlv6DpPUIIj1wYoACkurgQTxg3RocFlYv+dMG8O7z36yYSgeTBfEVBfcZEkaPl0K5YFc0FM6PQ==@nongnu.org
-X-Gm-Message-State: AOJu0YyV1s8XNBPAqGHf0qDeGcZgO1C1aWhYol5zT7UEINvOiiMljPoK
- 9NAhKwV0MlPqmjPNU38a129QW7FiLeGf6q5SVnD3fGZVjP76mSOd5gYeL3XRFxMFb/0=
-X-Gm-Gg: ASbGncuU2R7AXbDWCIZU0hSq6jgB+0Gx5nfaKw8WAaHIHqBIsTnYQnWER+cf+X+Yxld
- slo7U9uSiNMaSCCTKp4yK7vLlj2PflXKQ/nqw0ImAyjc2sFcssvUPvSwvDsejDauTnffer9DfLe
- NhOmUjjOtFVkXBzR82cy5EZ+RaKzM8rQ4MU2/h5zHzS5DN8fjhwBItghdcxOxbVjcVviSSmmbDm
- 4bZntcH7d3vRiPxS5MZPzPiPKzDI9azoYuja/6/6tkOLK5XC3SgEAnEgnt3wNu2EvY9V61cy36z
- VmsRhSqvMEnVLD3w3IvFVcMjkNtuM4U45vIvHGDWXBU+s+jyUU7CH7fr4YCYEZH4HuBGpa7vDE9
- rV/fkoBMinAEtt9ewciVeGuZk9nzl/w298M0TA5nFAENnpwcbi0akwLhR/WLuPozqhcnbqO4=
-X-Google-Smtp-Source: AGHT+IFenbOYBYYL8rtdP5NhvlPx6gH97dvDDxCUDEfprak8jMg7i9COL3O/U+STX2Nwjj//F6/Vtw==
-X-Received: by 2002:a05:600c:4e46:b0:456:173c:8a53 with SMTP id
- 5b1f17b1804b1-45a10e135b6mr21112745e9.2.1754983992162; 
- Tue, 12 Aug 2025 00:33:12 -0700 (PDT)
-Received: from [192.168.69.210] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-458953eb7acsm525015225e9.28.2025.08.12.00.33.10
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 12 Aug 2025 00:33:11 -0700 (PDT)
-Message-ID: <cb6e02cc-1959-419a-bafa-5bb43818c159@linaro.org>
-Date: Tue, 12 Aug 2025 09:33:10 +0200
+ (Exim 4.90_1) (envelope-from <kane_chen@aspeedtech.com>)
+ id 1ullUl-0007QW-M5; Tue, 12 Aug 2025 05:40:40 -0400
+Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <kane_chen@aspeedtech.com>)
+ id 1ullUh-0000Yh-Aa; Tue, 12 Aug 2025 05:40:39 -0400
+Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
+ (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Tue, 12 Aug
+ 2025 17:40:13 +0800
+Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
+ (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
+ Transport; Tue, 12 Aug 2025 17:40:13 +0800
+To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
+ <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
+ <leetroy@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>, Andrew Jeffery
+ <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, "open
+ list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
+ <qemu-devel@nongnu.org>
+CC: <troy_lee@aspeedtech.com>, Kane-Chen-AS <kane_chen@aspeedtech.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+Subject: [PATCH v5 02/10] hw/misc/aspeed_sbc: Connect ASPEED OTP memory device
+ to SBC
+Date: Tue, 12 Aug 2025 17:39:59 +0800
+Message-ID: <20250812094011.2617526-3-kane_chen@aspeedtech.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250812094011.2617526-1-kane_chen@aspeedtech.com>
+References: <20250812094011.2617526-1-kane_chen@aspeedtech.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH 07/11] target/arm: Replace kvm_arm_pmu_supported by
- host_cpu_feature_supported
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-Cc: Miguel Luis <miguel.luis@oracle.com>, kvm@vger.kernel.org,
- Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini
- <pbonzini@redhat.com>, Haibo Xu <haibo.xu@linaro.org>,
- Mohamed Mediouni <mohamed@unpredictable.fr>,
- Mark Burton <mburton@qti.qualcomm.com>, Alexander Graf <agraf@csgraf.de>,
- Claudio Fontana <cfontana@suse.de>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
- <alex.bennee@linaro.org>, Mads Ynddal <mads@ynddal.dk>,
- Eric Auger <eric.auger@redhat.com>, qemu-arm@nongnu.org,
- Cameron Esfahani <dirty@apple.com>
-References: <20250811170611.37482-1-philmd@linaro.org>
- <20250811170611.37482-8-philmd@linaro.org>
- <8efcc809-f548-4383-b742-e435d622da73@linaro.org>
- <14d7d948-e840-4ae7-ae93-122755d6a421@linaro.org>
- <3d88ea9c-9cfe-4cd4-a282-2f467f2a502f@linaro.org>
-Content-Language: en-US
-In-Reply-To: <3d88ea9c-9cfe-4cd4-a282-2f467f2a502f@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32a.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=211.20.114.72;
+ envelope-from=kane_chen@aspeedtech.com; helo=TWMBX01.aspeed.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -111,76 +63,241 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Kane Chen <kane_chen@aspeedtech.com>
+From:  Kane Chen via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 12/8/25 08:03, Philippe Mathieu-Daudé wrote:
-> On 12/8/25 06:49, Philippe Mathieu-Daudé wrote:
->> On 12/8/25 02:48, Richard Henderson wrote:
->>> On 8/12/25 03:06, Philippe Mathieu-Daudé wrote:
->>>> +++ b/target/arm/kvm.c
->>>> @@ -288,7 +288,7 @@ static bool 
->>>> kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
->>>>                                1 << KVM_ARM_VCPU_PTRAUTH_GENERIC);
->>>>       }
->>>> -    if (kvm_arm_pmu_supported()) {
->>>> +    if (host_cpu_feature_supported(ARM_FEATURE_PMU, false)) {
->>>
->>> Why is false correct here?  Alternately, in the next patch, why is it 
->>> correct to pass true for the EL2 test?
->>
->> I think I copied to KVM the HVF use, adapted on top of:
->> https://lore.kernel.org/qemu-devel/20250808070137.48716-12- 
->> mohamed@unpredictable.fr/
->>
->>>
->>> What is the purpose of the can_emulate parameter at all?
->>
->> When using split-accel on pre-M3, we might emulate EL2:
->>
->>         |   feat            |    can_emulate   |    retval
->>         +   ----            +      -----       +     ----
->  > M1/M2  |  ARM_FEATURE_EL2         false            false> M1/M2  | 
-> ARM_FEATURE_EL2         true             true
->> M3/M4  |  ARM_FEATURE_EL2         any              true
-> 
-> For example in hvf.c:
-> 
-> static bool hvf_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
-> {
->      ...
->      if (host_cpu_feature_supported(ARM_FEATURE_EL2, true)) {
->          ahcf->features |= 1ULL << ARM_FEATURE_EL2;
->      }
-> 
-> and then only when split-accel is not enabled:
-> 
-> hv_return_t hvf_arch_vm_create(MachineState *ms, uint32_t pa_range)
-> {
->      ...
->      if (host_cpu_feature_supported(ARM_FEATURE_EL2, false)) {
->          ret = hv_vm_config_set_el2_enabled(config, true);
->          if (ret != HV_SUCCESS) {
->              goto cleanup;
->          }
->      }
-> 
+From: Kane-Chen-AS <kane_chen@aspeedtech.com>
 
-What I'm looking for:
+This patch connects the aspeed.otp device to the ASPEED Secure Boot
+Controller (SBC) model. It implements OTP memory access via the SBC's
+command interface and enables emulation of secure fuse programming
+flows.
 
-- Is this feature supported BY HW?
+The following OTP commands are supported:
+  - READ: reads a 32-bit word from OTP memory into internal registers
+  - PROG: programs a 32-bit word value to the specified OTP address
 
-   -> hw_init_feature
+Trace events are added to observe read/program operations and command
+handling flow.
 
-- Is this feature supported BY SW?
+Signed-off-by: Kane-Chen-AS <kane_chen@aspeedtech.com>
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
+---
+ include/hw/misc/aspeed_sbc.h |   5 ++
+ hw/misc/aspeed_sbc.c         | 111 +++++++++++++++++++++++++++++++++++
+ hw/misc/trace-events         |   5 ++
+ 3 files changed, 121 insertions(+)
 
-   -> sw_init_feature
+diff --git a/include/hw/misc/aspeed_sbc.h b/include/hw/misc/aspeed_sbc.h
+index 405e6782b9..0c2746d392 100644
+--- a/include/hw/misc/aspeed_sbc.h
++++ b/include/hw/misc/aspeed_sbc.h
+@@ -10,6 +10,7 @@
+ #define ASPEED_SBC_H
+ 
+ #include "hw/sysbus.h"
++#include "hw/nvram/aspeed_otp.h"
+ 
+ #define TYPE_ASPEED_SBC "aspeed.sbc"
+ #define TYPE_ASPEED_AST2600_SBC TYPE_ASPEED_SBC "-ast2600"
+@@ -36,10 +37,14 @@ struct AspeedSBCState {
+     MemoryRegion iomem;
+ 
+     uint32_t regs[ASPEED_SBC_NR_REGS];
++
++    AspeedOTPState otp;
+ };
+ 
+ struct AspeedSBCClass {
+     SysBusDeviceClass parent_class;
++
++    bool has_otp;
+ };
+ 
+ #endif /* ASPEED_SBC_H */
+diff --git a/hw/misc/aspeed_sbc.c b/hw/misc/aspeed_sbc.c
+index a7d101ba71..46a038337c 100644
+--- a/hw/misc/aspeed_sbc.c
++++ b/hw/misc/aspeed_sbc.c
+@@ -15,9 +15,13 @@
+ #include "hw/misc/aspeed_sbc.h"
+ #include "qapi/error.h"
+ #include "migration/vmstate.h"
++#include "trace.h"
+ 
+ #define R_PROT          (0x000 / 4)
++#define R_CMD           (0x004 / 4)
++#define R_ADDR          (0x010 / 4)
+ #define R_STATUS        (0x014 / 4)
++#define R_CAMP1         (0x020 / 4)
+ #define R_QSR           (0x040 / 4)
+ 
+ /* R_STATUS */
+@@ -41,6 +45,11 @@
+ #define QSR_RSA_MASK           (0x3 << 12)
+ #define QSR_HASH_MASK          (0x3 << 10)
+ 
++#define OTP_MEMORY_SIZE 0x4000
++/* OTP command */
++#define SBC_OTP_CMD_READ 0x23b1e361
++#define SBC_OTP_CMD_PROG 0x23b1e364
++
+ static uint64_t aspeed_sbc_read(void *opaque, hwaddr addr, unsigned int size)
+ {
+     AspeedSBCState *s = ASPEED_SBC(opaque);
+@@ -57,6 +66,84 @@ static uint64_t aspeed_sbc_read(void *opaque, hwaddr addr, unsigned int size)
+     return s->regs[addr];
+ }
+ 
++static bool aspeed_sbc_otp_read(AspeedSBCState *s,
++                                   uint32_t otp_addr)
++{
++    MemTxResult ret;
++    AspeedOTPState *otp = &s->otp;
++    uint32_t value, otp_offset;
++
++    otp_offset = otp_addr << 2;
++    ret = address_space_read(&otp->as, otp_offset, MEMTXATTRS_UNSPECIFIED,
++                             &value, sizeof(value));
++    if (ret != MEMTX_OK) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "Failed to read OTP memory, addr = %x\n",
++                      otp_addr);
++        return false;
++    }
++    s->regs[R_CAMP1] = value;
++    trace_aspeed_sbc_otp_read(otp_addr, value);
++
++    return true;
++}
++
++static bool aspeed_sbc_otp_prog(AspeedSBCState *s,
++                                   uint32_t otp_addr)
++{
++    MemTxResult ret;
++    AspeedOTPState *otp = &s->otp;
++    uint32_t value = s->regs[R_CAMP1];
++
++    ret = address_space_write(&otp->as, otp_addr, MEMTXATTRS_UNSPECIFIED,
++                        &value, sizeof(value));
++    if (ret != MEMTX_OK) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "Failed to write OTP memory, addr = %x\n",
++                      otp_addr);
++        return false;
++    }
++
++    trace_aspeed_sbc_otp_prog(otp_addr, value);
++
++    return true;
++}
++
++static void aspeed_sbc_handle_command(void *opaque, uint32_t cmd)
++{
++    AspeedSBCState *s = ASPEED_SBC(opaque);
++    AspeedSBCClass *sc = ASPEED_SBC_GET_CLASS(opaque);
++    bool ret = false;
++    uint32_t otp_addr;
++
++    if (!sc->has_otp) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: OTP memory is not supported\n",
++                      __func__);
++        return;
++    }
++
++    s->regs[R_STATUS] &= ~(OTP_MEM_IDLE | OTP_IDLE);
++    otp_addr = s->regs[R_ADDR];
++
++    switch (cmd) {
++    case SBC_OTP_CMD_READ:
++        ret = aspeed_sbc_otp_read(s, otp_addr);
++        break;
++    case SBC_OTP_CMD_PROG:
++        ret = aspeed_sbc_otp_prog(s, otp_addr);
++        break;
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: Unknown command 0x%x\n",
++                      __func__, cmd);
++        break;
++    }
++
++    trace_aspeed_sbc_handle_cmd(cmd, otp_addr, ret);
++    s->regs[R_STATUS] |= (OTP_MEM_IDLE | OTP_IDLE);
++}
++
+ static void aspeed_sbc_write(void *opaque, hwaddr addr, uint64_t data,
+                               unsigned int size)
+ {
+@@ -78,6 +165,9 @@ static void aspeed_sbc_write(void *opaque, hwaddr addr, uint64_t data,
+                       "%s: write to read only register 0x%" HWADDR_PRIx "\n",
+                       __func__, addr << 2);
+         return;
++    case R_CMD:
++        aspeed_sbc_handle_command(opaque, data);
++        return;
+     default:
+         break;
+     }
+@@ -115,10 +205,30 @@ static void aspeed_sbc_reset(DeviceState *dev)
+     s->regs[R_QSR] = s->signing_settings;
+ }
+ 
++static void aspeed_sbc_instance_init(Object *obj)
++{
++    AspeedSBCClass *sc = ASPEED_SBC_GET_CLASS(obj);
++    AspeedSBCState *s = ASPEED_SBC(obj);
++
++    if (sc->has_otp) {
++        object_initialize_child(OBJECT(s), "otp", &s->otp,
++                                TYPE_ASPEED_OTP);
++    }
++}
++
+ static void aspeed_sbc_realize(DeviceState *dev, Error **errp)
+ {
+     AspeedSBCState *s = ASPEED_SBC(dev);
+     SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
++    AspeedSBCClass *sc = ASPEED_SBC_GET_CLASS(dev);
++
++    if (sc->has_otp) {
++        object_property_set_int(OBJECT(&s->otp), "size",
++                                OTP_MEMORY_SIZE, &error_abort);
++        if (!qdev_realize(DEVICE(&s->otp), NULL, errp)) {
++            return;
++        }
++    }
+ 
+     memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_sbc_ops, s,
+             TYPE_ASPEED_SBC, 0x1000);
+@@ -155,6 +265,7 @@ static const TypeInfo aspeed_sbc_info = {
+     .name = TYPE_ASPEED_SBC,
+     .parent = TYPE_SYS_BUS_DEVICE,
+     .instance_size = sizeof(AspeedSBCState),
++    .instance_init = aspeed_sbc_instance_init,
+     .class_init = aspeed_sbc_class_init,
+     .class_size = sizeof(AspeedSBCClass)
+ };
+diff --git a/hw/misc/trace-events b/hw/misc/trace-events
+index e3f64c0ff6..9e05b82f37 100644
+--- a/hw/misc/trace-events
++++ b/hw/misc/trace-events
+@@ -90,6 +90,11 @@ slavio_sysctrl_mem_readl(uint32_t ret) "Read system control 0x%08x"
+ slavio_led_mem_writew(uint32_t val) "Write diagnostic LED 0x%04x"
+ slavio_led_mem_readw(uint32_t ret) "Read diagnostic LED 0x%04x"
+ 
++# aspeed_sbc.c
++aspeed_sbc_handle_cmd(uint32_t cmd, uint32_t addr, bool ret) "Handling command 0x%" PRIx32 " for OTP addr 0x%" PRIx32 " Result: %d"
++aspeed_sbc_otp_read(uint32_t addr, uint32_t value) "OTP Memory read: addr 0x%" PRIx32 " value 0x%" PRIx32
++aspeed_sbc_otp_prog(uint32_t addr, uint32_t value) "OTP Memory write: addr 0x%" PRIx32 " value 0x%" PRIx32
++
+ # aspeed_scu.c
+ aspeed_scu_write(uint64_t offset, unsigned size, uint32_t data) "To 0x%" PRIx64 " of size %u: 0x%" PRIx32
+ aspeed_scu_read(uint64_t offset, unsigned size, uint32_t data) "To 0x%" PRIx64 " of size %u: 0x%" PRIx32
+-- 
+2.43.0
 
-- Is this feature supported BY ANY?
-
-   -> do smth with feature
-
-With split-accel, this isn't specific to HVF/ARM.
-
-I can use a tri-state enum { ANY, HW, SW }.
 

@@ -4,91 +4,117 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59CDECA0EC4
-	for <qemu-arm@archiver.kernel.org>; Tue, 12 Aug 2025 18:43:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E97CCA0EC4
+	for <qemu-arm@archiver.kernel.org>; Tue, 12 Aug 2025 19:32:08 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ultxu-0003W3-2O; Tue, 12 Aug 2025 14:43:18 -0400
+	id 1uluix-0004QI-9H; Tue, 12 Aug 2025 15:31:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ultxs-0003Ve-Hp
- for qemu-arm@nongnu.org; Tue, 12 Aug 2025 14:43:16 -0400
-Received: from mail-yb1-xb2b.google.com ([2607:f8b0:4864:20::b2b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ultxp-0005KU-Pm
- for qemu-arm@nongnu.org; Tue, 12 Aug 2025 14:43:16 -0400
-Received: by mail-yb1-xb2b.google.com with SMTP id
- 3f1490d57ef6-e7311e66a8eso5457687276.2
- for <qemu-arm@nongnu.org>; Tue, 12 Aug 2025 11:43:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1755024188; x=1755628988; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=ASu/EcgNo0PPrgDbUsAm/4oXgjrYVlPdG6h39Z6aCtc=;
- b=U9ptFhqjZiBMZ5BD0rG8fSaZnFvDWfWQPHD/OIHcULo/rCCSXJ0IXY2J3q/hz+kecT
- J7R245QhTwC9URp3N6spFkBJiBHTkIkavEOBga6gyRNkc9n1hTa+MPIEZl/mqRWLTjWk
- 0LGeGATXD7JBDZ6g8pq3lhgvrk8hjhGLvBQg4mXCuDDlHwucIFY33FY/KzJoiKlJCoP1
- HbwcNQyu1Dp3TGDaCHb6JE+/Wi15mzkl6VFkf1agic2VsIhtDbssS1Q6Ea7PKLHXwmLg
- h2GyliZtJjV00JyhhsXFm3aHuU0/13WzwskjJuRoVkEOwZh3Yt0nTEUINT2oNc/OzvGs
- 94aw==
+ (Exim 4.90_1) (envelope-from <vacha.bhavsar@oss.qualcomm.com>)
+ id 1uluiv-0004Py-4S
+ for qemu-arm@nongnu.org; Tue, 12 Aug 2025 15:31:53 -0400
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <vacha.bhavsar@oss.qualcomm.com>)
+ id 1uluio-0003LR-OW
+ for qemu-arm@nongnu.org; Tue, 12 Aug 2025 15:31:52 -0400
+Received: from pps.filterd (m0279865.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 57CJT0mj025655
+ for <qemu-arm@nongnu.org>; Tue, 12 Aug 2025 19:31:42 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+ cc:content-type:date:from:in-reply-to:message-id:mime-version
+ :references:subject:to; s=qcppdkim1; bh=YYaasBngXKjjx1M6VasJ697+
+ mhkQU7i8Wd4wpoSGpnI=; b=pH9a3QywK5a+kit/IgGhSaabjmO9hXLD2suxSka+
+ TVpYKPTCWjSK+7ZpaDvPMOSy6TD2gBLUxaAu6yUgzy3OPMnQjbTYfZNJUEEGilTI
+ kf0f2gP6pbw60W7KM1FImj/nV14Lq8pNQhAxdti20HobBtnC2mY/dk1yODfVDcq7
+ WUIiU8GNwrBrA1WZxadaJCP5j61jHRYJoefv1c3ESlsvMOQkSUCoM09jOtj6rN+D
+ 5NSO9DYJaXRn2TitF/gq+59swHxUT4aH9wWT2UvMvC0iWgEtbWb7gnEugAabERA1
+ nI8nwm/cBfRwwV72F7tPyYhhi/1hS3rcb1ZPeSJ+LOFmpQ==
+Received: from mail-yw1-f200.google.com (mail-yw1-f200.google.com
+ [209.85.128.200])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 48dw9sshe2-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
+ for <qemu-arm@nongnu.org>; Tue, 12 Aug 2025 19:31:41 +0000 (GMT)
+Received: by mail-yw1-f200.google.com with SMTP id
+ 00721157ae682-70e4269de4fso84338087b3.0
+ for <qemu-arm@nongnu.org>; Tue, 12 Aug 2025 12:31:41 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1755024188; x=1755628988;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=ASu/EcgNo0PPrgDbUsAm/4oXgjrYVlPdG6h39Z6aCtc=;
- b=ialPN7YIdkR/R+UVlUAAg4GjAm7e3qfYzp+J2aPkNc7A9PMBW7WVcggas9nyQcTfjZ
- gbL3G5ESv1ewn0JmPe3PlM+suNpChBb7jQXunZwPmwqv5JdZg+HD8QO9lCAZ5SH2tzw3
- 9Ys2NPYXKNDlT8TDV8rSz9Zn+ih23lStQwZFL/M0VGkIyi6ZYnnDZ6zMykbr9m8oP9hk
- PCPJwY7qoD97Qgpbuan8ctDZNPFYKBAXgZnWMGbvSwTJQ07h6maAypAPIkh1FN8isSf5
- 4CE/NS2y9X9cLFOWzKQLZTWcvOCtA+54MI2lEg/9oSZ/FOiU2W99gaRJD9/5UtBUGwb4
- RvTQ==
+ d=1e100.net; s=20230601; t=1755027100; x=1755631900;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=YYaasBngXKjjx1M6VasJ697+mhkQU7i8Wd4wpoSGpnI=;
+ b=CsU/NksgSwRJbjSSojKaNboJvgd1vDXQlv7SerQdutZXD/jS5u9MX3nVmPHKuRJwm/
+ 5eUh6wuMot7iSAqnZ27ye8JSOU1/ZwTY4Gu2rpmHpxnPhj67gluZbKcIWlQowSp41iBA
+ j/8ZzNaTl2irAt3FP+Lak4xlUkZEErodJAOcdM86KiWAGxOYQc0P3jMNW4Yt3gAw/tC5
+ m/JxiFFXTfIMrCk8wGBaNkY7rJkSKtmFLzshZjZ8YyWsmvIQ7qMYGqkyUz0JO/j82HYi
+ Vx/T2Yx0Cjye86A9b2p0fP2Jj4k7lefM19g0JBMEng71QlUPOvb4MwI3tkOzffvQBpxf
+ jILw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVNas9CVX/8Cpuysgv8V/0Jrt4G27f2ffNtenw1w8UzjI4GJfxCZ82EdWWOJnoQnoEF+2J/m/fMiw==@nongnu.org
-X-Gm-Message-State: AOJu0YyA7ZN7eHptFbp417JQ5UZTdfU/murcESCngVYZrSJXuMa/5iQz
- Palk2V8K3oxnJPw/kr5LZXjL8z7dqH/XtcGZfVy9nO2n9JRH0tvjElkwZEnnAZpZxgi2yxLVWkQ
- Sdud2Za8FGw2TAveYubuLcXqf5OwUZJNBWcqB6jJGrA==
-X-Gm-Gg: ASbGncsWWv5c/lbPiSjCrVm5JwjsiCj83jRn3VnrdRVD2Yscd2l0PLfjAaUXztmKnz3
- qdO5F/jjTDmhEPhHmbRgWgDDastvd2hdlUTUHps3dpl2H+YW+FnHmF3JYpkTVmD8W0BzXbf25vv
- 4Vpu+KNtYKHtshULqYG1s+K7vlfqn7reSdXnh0bw1YFRE62sMIrqdydqJcFZk5v8pXF37DQbykQ
- NCG5NF8
-X-Google-Smtp-Source: AGHT+IG5fBhgDj5GIBdKf+D3E62Fl95jLpMspYa6rd2qzXdpmJcf7yc/UCkF4Z3tKKo1N6qdZGLrURE3Lg47X4iUOqs=
-X-Received: by 2002:a05:690c:64c9:b0:71c:1142:f9ba with SMTP id
- 00721157ae682-71d4e3f3955mr2813937b3.4.1755024188350; Tue, 12 Aug 2025
- 11:43:08 -0700 (PDT)
+ AJvYcCUo4fQ7NqvPys8bUwnW0RWXonm7whilrZApC4Xw0iMOKN36eS0jpfe8y1LTkzm4EfqO+HlHtqk64g==@nongnu.org
+X-Gm-Message-State: AOJu0Yxi+oQJ43Q16DnsGmg0YizlUXWSjDM25hapfci+Tox99WrPfKFF
+ 5ARG3ZZelIEVqmr8TY+DIewOBedPdrg19mJ7fA8KNbZCMZcm8prdkR6eKEHmT0T+/C7IptIAy1h
+ aPQnKCNlPpziB//oYnvy+CXjUtCnM60IuQIDGEaoc39YfC4LtQxm1ekG0E7S4sGfrsXH5fdX3lV
+ mSnBzqH0kkGGY5yTsyVsRZv8Cg+Jrg5g==
+X-Gm-Gg: ASbGncswSmv4zlLeQ4iWuYqBXBF197xmySFuseQzRgzpQwt1+92Ay1/tql9VqslFQY0
+ c6Ea59Jx+/ItZ0QzOIXvGqK3vXGr5Ktz/oQZMt3E7o/6rneokgW4P42NHVo/vyNyfnnld2dXy/p
+ RASHoaD1vt9cYTObzstGOzKg==
+X-Received: by 2002:a05:690c:64c6:b0:71b:f755:bbab with SMTP id
+ 00721157ae682-71d4e44c6e1mr4675117b3.14.1755027100606; 
+ Tue, 12 Aug 2025 12:31:40 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IH635BmBnLElSUA4UIMuFSrd1ufSJQbCuiM45+CJV5kjGOEL5rMcQOGeU5F4Ov1GFW2BjrLICdbkk6li1OwlZk=
+X-Received: by 2002:a05:690c:64c6:b0:71b:f755:bbab with SMTP id
+ 00721157ae682-71d4e44c6e1mr4674787b3.14.1755027100060; Tue, 12 Aug 2025
+ 12:31:40 -0700 (PDT)
 MIME-Version: 1.0
-References: <20250806151134.365755-1-tangtao1634@phytium.com.cn>
- <20250806151134.365755-5-tangtao1634@phytium.com.cn>
- <0b38d386-9d8b-46bd-a981-718cc7281eb6@linaro.org>
- <f74b4d64-893f-4b39-aa95-4e9ff52edebd@phytium.com.cn>
- <4ff26d30-3b0d-4392-8bac-698ecb0fbdde@linaro.org>
-In-Reply-To: <4ff26d30-3b0d-4392-8bac-698ecb0fbdde@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 12 Aug 2025 19:42:57 +0100
-X-Gm-Features: Ac12FXw8S2eKy3NNE7LqpBxSg8Fp_hjo_dW78xP0Okb2fZqEX_H-WlwB-wpsGsg
-Message-ID: <CAFEAcA-imgF9NLPWeXfE1JRL0gaKpVyfbbNKxojHDVz0t7EBKw@mail.gmail.com>
-Subject: Re: [RFC 04/11] hw/arm/smmuv3: Enable command processing for the
- Secure state
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: Tao Tang <tangtao1634@phytium.com.cn>, 
- Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, 
- Eric Auger <eric.auger@redhat.com>, Chen Baozi <chenbaozi@phytium.com.cn>,
- smostafa@google.com, jean-philippe@linaro.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b2b;
- envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb2b.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+References: <20250811193654.4012878-1-vacha.bhavsar@oss.qualcomm.com>
+ <20250811193654.4012878-3-vacha.bhavsar@oss.qualcomm.com>
+ <CAFEAcA9PXtsj5nAZ47Fv3h5gDdir_QT5pavUF6-Yc1tZZP26ag@mail.gmail.com>
+In-Reply-To: <CAFEAcA9PXtsj5nAZ47Fv3h5gDdir_QT5pavUF6-Yc1tZZP26ag@mail.gmail.com>
+From: Vacha Bhavsar <vacha.bhavsar@oss.qualcomm.com>
+Date: Tue, 12 Aug 2025 15:31:29 -0400
+X-Gm-Features: Ac12FXxsZQ9N_2v0hfqET1SRiQYZq2Z5tNmHPDID2f8XbIdaNxC6WtxIOtUrrd0
+Message-ID: <CAEWVDmtNm+AZs_+YvXvOFn37nNJ1GDwo-9mEEbynsdPT-bTD0g@mail.gmail.com>
+Subject: Re: [PATCH v5 2/4] target/arm: Change GDBState's line_buf to a GString
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>,
+ =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>
+Content-Type: multipart/alternative; boundary="000000000000dee974063c301616"
+X-Authority-Analysis: v=2.4 cv=J+Wq7BnS c=1 sm=1 tr=0 ts=689b969d cx=c_pps
+ a=NMvoxGxYzVyQPkMeJjVPKg==:117 a=2OwXVqhp2XgA:10 a=KKAkSRfTAAAA:8
+ a=EUspDBNiAAAA:8 a=G6NPWgVwcJKO82ZUuSAA:9 a=QEXdDO2ut3YA:10
+ a=tDyR_WS0kGeW7OT8YLMA:9 a=Z44rsDyPwT4x3bYm:21 a=lqcHg5cX4UMA:10
+ a=kLokIza1BN8a-hAJ3hfR:22 a=cvBusfyB2V15izCimMoJ:22
+X-Proofpoint-ORIG-GUID: RsnKLKTLENOGDCvBEEK1nE46bJjAOUca
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwODA5MDAxNSBTYWx0ZWRfX1cGPXz7+XQxx
+ FwwRQAWbC/lmGAqBhgYI2wuopv2G6f/CJ66u/ZD3VEDhuV43T8mHce/b0XFxbN6gpxW9rQKeGps
+ a8Y32IJ3dquRsy6OtY6kGZzt2CYHpZ1JIArVCiZUt0Bv03KKaL0qHuIIpT0TZV6+QglXlBviAXX
+ WKV94G/rQUdE9f1U6iaT/XNZVC7eOmnzmmclwYMsq0RGGORRQb3m6+pRgAZYXd90nJhqnw9qjSH
+ U9tP+7k4ARNNxhvdImr28A5smhegBfoXcOOJGP4tmVaz+tDENpS/VGJMnzbURizM29O3Gf/YTkn
+ cvslBXI5V2+gxaR6DxncjrG1Cv9gz22+WxJGP9xaizba19G207+Vn5mk1HnmZxlglT8ffxUw96t
+ GFe83aWH
+X-Proofpoint-GUID: RsnKLKTLENOGDCvBEEK1nE46bJjAOUca
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.9,FMLib:17.12.80.40
+ definitions=2025-08-12_07,2025-08-11_01,2025-03-28_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ priorityscore=1501 adultscore=0 malwarescore=0 impostorscore=0 bulkscore=0
+ phishscore=0 suspectscore=0 spamscore=0 clxscore=1015 classifier=typeunknown
+ authscore=0 authtc= authcc= route=outbound adjust=0 reason=mlx scancount=1
+ engine=8.19.0-2507300000 definitions=main-2508090015
+Received-SPF: pass client-ip=205.220.168.131;
+ envelope-from=vacha.bhavsar@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
+X-Spam_score_int: -26
+X-Spam_score: -2.7
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, HTML_MESSAGE=0.001,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -105,109 +131,128 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, 11 Aug 2025 at 11:34, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.or=
-g> wrote:
->
-> Hi,
->
-> On 10/8/25 18:59, Tao Tang wrote:
-> > On 2025/8/7 05:55, Pierrick Bouvier wrote:
-> >> On 8/6/25 8:11 AM, Tao Tang wrote:
-> >>> This patch enables the secure command queue, providing a dedicated
-> >>> interface for secure software to issue commands to the SMMU. Based on
-> >>> the SMMU_S_CMDQ_BASE configuration, the SMMU now fetches command
-> >>> entries directly from the Secure PA space so that we need to pass the
-> >>> memory transaction attributes when reading the command queue.
-> >>>
-> >>> This provides a parallel command mechanism to the non-secure world.
-> >>>
-> >>> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
-> >>> ---
-> >>>   hw/arm/smmuv3-internal.h |  8 ++++--
-> >>>   hw/arm/smmuv3.c          | 55 +++++++++++++++++++++++++------------=
----
-> >>>   hw/arm/trace-events      |  2 +-
-> >>>   3 files changed, 41 insertions(+), 24 deletions(-)
-> >>>
-> >>> diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
-> >>> index 1a8b1cb204..5b2ca00832 100644
-> >>> --- a/hw/arm/smmuv3-internal.h
-> >>> +++ b/hw/arm/smmuv3-internal.h
-> >>> @@ -319,9 +319,13 @@ static inline void queue_cons_incr(SMMUQueue *q)
-> >>>       q->cons =3D deposit32(q->cons, 0, q->log2size + 1, q->cons + 1)=
-;
-> >>>   }
-> >>>   -static inline bool smmuv3_cmdq_enabled(SMMUv3State *s)
-> >>> +static inline bool smmuv3_cmdq_enabled(SMMUv3State *s, bool is_secur=
-e)
-> >>>   {
-> >>> -    return FIELD_EX32(s->cr[0], CR0, CMDQEN);
-> >>> +    if (is_secure) {
-> >>> +        return FIELD_EX32(s->secure_cr[0], S_CR0, CMDQEN);
-> >>> +    } else {
-> >>> +        return FIELD_EX32(s->cr[0], CR0, CMDQEN);
-> >>> +    }
-> >>>   }
->
->
-> >> This looks like a reasonable and readable approach to support secure
-> >> and non secure accesses.
+--000000000000dee974063c301616
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hi,
+
+
+
+Since this change does not directly impact the original concern
+
+for adding SME register exposure to remote GDB (for which
+
+the resizing of MAX_PACKET_LENGTH is sufficient), may we leave
+
+this patch open to further discussion while the others go through
+
+with review?
+
+
+
+Thanks,
+
+Vacha
+
+On Tue, Aug 12, 2025 at 7:33=E2=80=AFAM Peter Maydell <peter.maydell@linaro=
+.org>
+wrote:
+
+> On Mon, 11 Aug 2025 at 20:37, Vacha Bhavsar
+> <vacha.bhavsar@oss.qualcomm.com> wrote:
 > >
-> > Hi Pierrick,
+> > This patch changes GDBState's line_buf from a character
+> > array to a GString. This allows line_buf to be dynamically
+> > re-sizeable.
 > >
-> > Thank you so much for taking the time to review and for the very
-> > positive feedback.
-> >
-> > I'm very relieved to hear you find the approach "reasonable and
-> > readable". I was hoping that explicitly passing the parameter was the
-> > right way to avoid issues with global state or code duplication, and
-> > your confirmation is the best encouragement I could ask for.
+> > Signed-off-by: Vacha Bhavsar <vacha.bhavsar@oss.qualcomm.com>
+> > ---
+> > Changes since v4:
+> > - this patch was not present in v4, it has been added as
+> > suggested during review of v4
+> > ---
 >
-> An alternative (also suggested in patch #1) is to use index for banked
-> registers.
+> Note that since the GDBState is a file-local variable,
+> not allocated on the stack, it's not an issue that
+> line_buf[MAX_PACKET_LENGTH] is large. So whether we
+> make this change I think should be based on whether
+> it makes the code easier to read and less likely to
+> contain string buffer manipulation bugs.
+>
+>
+> > -                if (gdbserver_state.line_buf_index + repeat >=3D >
+> sizeof(gdbserver_state.line_buf) - 1) {
+> > +                if (gdbserver_state.line_buf->len + repeat >=3D
+> MAX_PACKET_LENGTH) {
+> >                      /* that many repeats would overrun the command
+> buffer */
+>
+> This comment no longer makes sense if we don't have a
+> fixed command buffer. In general, if we're moving away
+> from a fixed-sized buffer we should consider what we
+> want to do in all the various places that are currently
+> doing checks against MAX_PACKET_LENGTH.
+>
+> thanks
+> -- PMM
+>
 
-This is often how we handle S/NS banked registers, yes.
-Other examples:
+--000000000000dee974063c301616
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-include/hw/intc/arm_gicv3_common.h: the S/NS banked registers
-ICC_CTLR_EL1, GICD_STATUSR, GICR_STATUSR are implemented as
-uint32_t icc_ctlr_el1[2] etc. (The GICv3 also has some
-group-related registers which is why it also has 3-element arrays)
+<div dir=3D"ltr"><p>Hi,</p><p>=C2=A0</p><p>Since this change does not direc=
+tly impact the original concern</p><p>for adding SME register exposure to r=
+emote GDB (for which</p><p>the resizing of MAX_PACKET_LENGTH is sufficient)=
+, may we leave</p><p>this patch open to further discussion while the others=
+ go through</p><p>with review?</p><p>=C2=A0</p><p>Thanks,</p><p>Vacha</p></=
+div><br><div class=3D"gmail_quote gmail_quote_container"><div dir=3D"ltr" c=
+lass=3D"gmail_attr">On Tue, Aug 12, 2025 at 7:33=E2=80=AFAM Peter Maydell &=
+lt;<a href=3D"mailto:peter.maydell@linaro.org">peter.maydell@linaro.org</a>=
+&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px =
+0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">On M=
+on, 11 Aug 2025 at 20:37, Vacha Bhavsar<br>
+&lt;<a href=3D"mailto:vacha.bhavsar@oss.qualcomm.com" target=3D"_blank">vac=
+ha.bhavsar@oss.qualcomm.com</a>&gt; wrote:<br>
+&gt;<br>
+&gt; This patch changes GDBState&#39;s line_buf from a character<br>
+&gt; array to a GString. This allows line_buf to be dynamically<br>
+&gt; re-sizeable.<br>
+&gt;<br>
+&gt; Signed-off-by: Vacha Bhavsar &lt;<a href=3D"mailto:vacha.bhavsar@oss.q=
+ualcomm.com" target=3D"_blank">vacha.bhavsar@oss.qualcomm.com</a>&gt;<br>
+&gt; ---<br>
+&gt; Changes since v4:<br>
+&gt; - this patch was not present in v4, it has been added as<br>
+&gt; suggested during review of v4<br>
+&gt; ---<br>
+<br>
+Note that since the GDBState is a file-local variable,<br>
+not allocated on the stack, it&#39;s not an issue that<br>
+line_buf[MAX_PACKET_LENGTH] is large. So whether we<br>
+make this change I think should be based on whether<br>
+it makes the code easier to read and less likely to<br>
+contain string buffer manipulation bugs.<br>
+<br>
+<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 if (gdbserver=
+_state.line_buf_index + repeat &gt;=3D &gt; sizeof(gdbserver_state.line_buf=
+) - 1) {<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 if (gdbserver=
+_state.line_buf-&gt;len + repeat &gt;=3D MAX_PACKET_LENGTH) {<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 /* that many repeats would overrun the command buffer */<br>
+<br>
+This comment no longer makes sense if we don&#39;t have a<br>
+fixed command buffer. In general, if we&#39;re moving away<br>
+from a fixed-sized buffer we should consider what we<br>
+want to do in all the various places that are currently<br>
+doing checks against MAX_PACKET_LENGTH.<br>
+<br>
+thanks<br>
+-- PMM<br>
+</blockquote></div>
 
-The banked AArch32 system registers in cpu.h are a bit
-more complicated, and there we have some macros
-A32_BANKED_REG_GET/SET which access the right fields.
-This lets us define the mapping between the NS and S
-registers and the AArch32 ELx views. (I'm not sure I'd
-go down this path again if we did it now: our AArch32
-design here pre-dates AArch64. The AArch64 views use
-an array that they index by EL.)
-
-Sometimes when there are only a few registers that need
-to be banked S/NS we give them names, as with the
-GICv2 where we have separate apr[][] and nsapr[][] arrays.
-
-I think I would say that it depends mostly on how many
-registers there are, and whether you wind up wanting to do
-a lot of "the logic is the same for both S and NS, it
-just operates on the other register in the bank". It
-can make the code a lot easier to read in that case if
-you have functions that take the is_secure parameter
-and just use it all the way through to index into the
-register array. Even in the simple example above of
-smmuv3_cmdq_enabled(), you can see that
-
-  return FIELD_EX32(s->cr[is_secure][0], CR0, CMDQEN);
-
-is more succinct than the if-else version.
-
-I have not looked closely enough the SMMUv3 code or spec to
-be certain which side of the line it falls, but a glance
-at the register overview does suggest that the design
-has registers for all of normal, secure, realm and root.
-Using an array will probably make our lives easier
-if/when we have to implement the RME support in the SMMU.
-
-thanks
--- PMM
+--000000000000dee974063c301616--
 

@@ -4,81 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1CC8CA0ED1
-	for <qemu-arm@archiver.kernel.org>; Mon, 11 Aug 2025 21:37:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3AAD3CA0EC4
+	for <qemu-arm@archiver.kernel.org>; Tue, 12 Aug 2025 00:49:31 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ulaCP-0007H3-Pg; Mon, 11 Aug 2025 17:36:57 -0400
+	id 1uldCL-0006bF-Jm; Mon, 11 Aug 2025 20:49:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from
- <3Y2KaaAgKCNw9FGJJGCPEMMEJC.AMKOCKS-8PKLMLELS.MPE@flex--bhillier.bounces.google.com>)
- id 1ulaCN-0007Ge-5H
- for qemu-arm@nongnu.org; Mon, 11 Aug 2025 17:36:55 -0400
-Received: from mail-pf1-x44a.google.com ([2607:f8b0:4864:20::44a])
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1uldCF-0006ak-Km
+ for qemu-arm@nongnu.org; Mon, 11 Aug 2025 20:49:01 -0400
+Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from
- <3Y2KaaAgKCNw9FGJJGCPEMMEJC.AMKOCKS-8PKLMLELS.MPE@flex--bhillier.bounces.google.com>)
- id 1ulaCB-0001SB-OF
- for qemu-arm@nongnu.org; Mon, 11 Aug 2025 17:36:54 -0400
-Received: by mail-pf1-x44a.google.com with SMTP id
- d2e1a72fcca58-76bfab12672so9687779b3a.0
- for <qemu-arm@nongnu.org>; Mon, 11 Aug 2025 14:36:37 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1uldC6-0002hb-U4
+ for qemu-arm@nongnu.org; Mon, 11 Aug 2025 20:48:58 -0400
+Received: by mail-pl1-x633.google.com with SMTP id
+ d9443c01a7336-240418cbb8bso31643775ad.2
+ for <qemu-arm@nongnu.org>; Mon, 11 Aug 2025 17:48:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1754948195; x=1755552995; darn=nongnu.org;
- h=cc:to:from:subject:message-id:mime-version:date:from:to:cc:subject
- :date:message-id:reply-to;
- bh=eZmDu3jdm85zT/kkoUu6drjP5lcoEw7fmNxr6cvxvOc=;
- b=FfsWSXzUG1lpk611EoPBjJjYzGrVHCOL3qzOs4/QQCQ7esVEKilhrCHCvjiUb4QfAm
- ZuHwqSAEvUM/+EvAqsS1Lo6lDWAidI0aUqQssr/1r0E6qFrRP032OwFhkQWi6yP3k4xX
- Fq3BPaPAKfXQl4cgQmJ0GmRGGiOJxls5xJAMH/5YBj+VataiAEhiZlslJFBEwstdN0/e
- /3zFrzFVGJPKxah3wzsaAhoc4Ux+WeOeoPofPvnANx/XOjJs5Y5ViVQL9vtwf5MspJ83
- /jYWNEVDydEUHogb01k6mAg5Iz2lWet5vN5ATNwCkGrBFy0wbK4pOT7H3sgbr9VeGeZP
- S3cw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1754948195; x=1755552995;
- h=cc:to:from:subject:message-id:mime-version:date:x-gm-message-state
+ d=linaro.org; s=google; t=1754959726; x=1755564526; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=eZmDu3jdm85zT/kkoUu6drjP5lcoEw7fmNxr6cvxvOc=;
- b=EDc/UD1a2zcI81VzJAekfl+FU+dN1Rrur7mi3hytmmw2tlhXB1/c10+GsIMf8x2HK9
- b2LjVARlZIpTRKbFXMQzx5n4+d+r53VHFwllu/kgAl2uW62t5ZSVq6aLPudaJrRX+n37
- 9gEdbCLpKhOLlKufDQc0kfs+V7JVubTbvr4P3Ran8lyEG4+P/crM1gd8lL+YYZWeyBKO
- kKW5PA8IDJs/x6+73EOd8P46RIYzTlcj+vtqq/73lwxje88E/rnUXP8darbfUlIBvSwZ
- 9127AJHkLmeyymdrgU5OZrEp52bGZNpReiISMgG2OL7DmGZ77FitYY86nCdFR0j/C1ez
- BQNw==
+ bh=surpJ98tRaESk7K6ewenyJUSlUpmPKhBVFvRz3srkwU=;
+ b=a+y9mFI5FOWO2I/iYq3cp3T/Bzq9fQPJhGQbfBwSaVw7WiYbsgLh+GYVSeXckEJtfJ
+ eqhxwhBRJPs8i94er9VH/jDNJMRWsfhcXB6NZFt8QiwrHNwCl5VZywHFQcTZ6Gz9gd1N
+ YS5l9Qjq61cCDd9oho6r1R3qKO9/57yuo13ovR+/jt+LyzhtR1g2jKPWR+XPrlAcewOp
+ VWxoQ13qMLflk26ibc3C7C5b4ZQSuHVGAvlt6gt0dmWiSUbgh+bXIzVq2l7KHZX8f9Px
+ Lylrup3nwnr6RwDXDm+CWUTkvm/300yV24DzsIHEIbAOWV6ydZGIMVkcz5tTz/dKieye
+ M1tQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1754959726; x=1755564526;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=surpJ98tRaESk7K6ewenyJUSlUpmPKhBVFvRz3srkwU=;
+ b=b02KcSBwhQRJIGgrEuOvGMMFUimzGXhypidwnATYeq+DRMyA5e1kfIbQcQ8O9lPQmJ
+ g77Jfu3CsA2VVszLoB8NVxnAZg6m0hvqgkUS1FMCujuRWSP1RIAADMmPsuPefwQJ7zwC
+ b2y+3a/dXHcvRlAEJNsXZTyN4naj/c9KlEBqhUEzCdhlVWz1SC3vTk4sKamXUXPq9Wid
+ 5lHYJH92nhM4unDpalDEaPl9gVS7xeFvYOYlwED6PZ3tHDhsC+aMM+wwbYNGef2QqEK4
+ 7r0btp+YOCexu1AckAgMdd8JE6i7j9CLxvC7M37QrjVedzUrahXlC82apuiDubujXIDU
+ rp2A==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVNrI079pCEWznUavViVojs753iVZ/TJLJPNROrFNPPokt5nQ2IJuVJWJMX1PIx4aljmAqVc1uVWQ==@nongnu.org
-X-Gm-Message-State: AOJu0YyFqPjg43gns1mgULLAALR/fNQ6tJt8kefp5AlF78WQem0tuTUX
- FN5DouP9jcPhrjkwU6vhMN4Hjp1CEU0xXEy8En6afrM9fa1rVIWyFYGWBE2eXBHQjvcHJNvCN1K
- eSMiTvW/B6wJBdQ==
-X-Google-Smtp-Source: AGHT+IG94lKLP9Y8GMEv/VHbQbhw3MdTobj5no2b5qJW7sNIP6qpEjibOgqGlj2zML+Gk9MXsX71uxcrhuoXyA==
-X-Received: from pfbmy9-n2.prod.google.com
- ([2002:a05:6a00:6d49:20b0:76c:4298:869f])
- (user=bhillier job=prod-delivery.src-stubby-dispatcher) by
- 2002:a05:6a00:4fce:b0:748:ed51:1305 with SMTP id
- d2e1a72fcca58-76c460906b2mr17113212b3a.5.1754948195094; 
- Mon, 11 Aug 2025 14:36:35 -0700 (PDT)
-Date: Mon, 11 Aug 2025 21:36:31 +0000
-Mime-Version: 1.0
-X-Mailer: git-send-email 2.51.0.rc0.155.g4a0f42376b-goog
-Message-ID: <20250811213631.2197063-1-bhillier@google.com>
-Subject: [PATCH v2] hw/sensor: add stub for ADM1266 blackbox
-From: Ben Hillier <bhillier@google.com>
-To: wuhaotsh@google.com, kfting@nuvoton.com
-Cc: philmd@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
- Titus Rwantare <titusr@google.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::44a;
- envelope-from=3Y2KaaAgKCNw9FGJJGCPEMMEJC.AMKOCKS-8PKLMLELS.MPE@flex--bhillier.bounces.google.com;
- helo=mail-pf1-x44a.google.com
-X-Spam_score_int: -95
-X-Spam_score: -9.6
-X-Spam_bar: ---------
-X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, T_SPF_HELO_TEMPERROR=0.01, T_SPF_TEMPERROR=0.01,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
+ AJvYcCUU0xKB2nnXdonVfvdEe79BSjFgXnVY2ewtKH6D8imSHdECB4/RBi6dHDba6wzwWDDIV9+UTINh8Q==@nongnu.org
+X-Gm-Message-State: AOJu0YzZhkPOXi1P9B95KQ0LGkwHWzEszpi2Q1mj/vy1LTPpv/XmXq9Y
+ GiF8PzuhM4C73ZVSovszzaJRuVo5ZDvIH3jOuAgHc8vraIoxFwtMWUMwKftg5YLYjTw=
+X-Gm-Gg: ASbGncsxlbpmCtr+ztQrUMz5dt4ovnq+Fcm/Eihozkraucp43cIDeg6ET+8KoFqwqae
+ /rT64yXdsOVAZeU0C1dHJExzkTA+iwJdFxgwdCED1uozvW54Llbg4stKX2n4P+74+rjEaPei4/R
+ critVCUxIqhUKWFkt4YssQ6IbPijOg+cJff7AmspwlJvyM6DSlzHRbZupSKrF7T3dn0TZcMinJT
+ 7fpx4lZz+n1HKsjy63akYtB6mEMPwxBW6QfUUE2i27c+azmBtfZsmisnwaFB5badr1OtvxYaMrA
+ PLxMV/PdFWes3m4lT3rM659CPO3nfP67yJIkhuRyWxRgCbqKQnaV7yHGPWbkW0QirRTpzdrpTS2
+ Nt3pQN0oGy6YUecpthQh54yybRWpA7n9Hbb6XXEMVuA==
+X-Google-Smtp-Source: AGHT+IH36nv5aftkZHvXUnHZVxdwgQ0piS8gs8U6mo1ksuQEVDfYmd+B+94Lg+Gbueb2VGnIBsgn6Q==
+X-Received: by 2002:a17:903:1aac:b0:235:6aa:1675 with SMTP id
+ d9443c01a7336-242fc371057mr20701975ad.52.1754959726287; 
+ Mon, 11 Aug 2025 17:48:46 -0700 (PDT)
+Received: from [192.168.10.140] ([180.233.125.160])
+ by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-241e8aab53dsm283244775ad.170.2025.08.11.17.48.40
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 11 Aug 2025 17:48:45 -0700 (PDT)
+Message-ID: <8efcc809-f548-4383-b742-e435d622da73@linaro.org>
+Date: Tue, 12 Aug 2025 10:48:37 +1000
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RFC PATCH 07/11] target/arm: Replace kvm_arm_pmu_supported by
+ host_cpu_feature_supported
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Miguel Luis <miguel.luis@oracle.com>, kvm@vger.kernel.org,
+ Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini
+ <pbonzini@redhat.com>, Haibo Xu <haibo.xu@linaro.org>,
+ Mohamed Mediouni <mohamed@unpredictable.fr>,
+ Mark Burton <mburton@qti.qualcomm.com>, Alexander Graf <agraf@csgraf.de>,
+ Claudio Fontana <cfontana@suse.de>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
+ <alex.bennee@linaro.org>, Mads Ynddal <mads@ynddal.dk>,
+ Eric Auger <eric.auger@redhat.com>, qemu-arm@nongnu.org,
+ Cameron Esfahani <dirty@apple.com>
+References: <20250811170611.37482-1-philmd@linaro.org>
+ <20250811170611.37482-8-philmd@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Content-Language: en-US
+In-Reply-To: <20250811170611.37482-8-philmd@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::633;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x633.google.com
+X-Spam_score_int: 16
+X-Spam_score: 1.6
+X-Spam_bar: +
+X-Spam_report: (1.6 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
+ DKIM_SIGNED=0.1, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_SBL_CSS=3.335,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -94,61 +113,20 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Titus Rwantare <titusr@google.com>
+On 8/12/25 03:06, Philippe Mathieu-Daudé wrote:
+> +++ b/target/arm/kvm.c
+> @@ -288,7 +288,7 @@ static bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+>                                1 << KVM_ARM_VCPU_PTRAUTH_GENERIC);
+>       }
+>   
+> -    if (kvm_arm_pmu_supported()) {
+> +    if (host_cpu_feature_supported(ARM_FEATURE_PMU, false)) {
 
-This patch fixes a bug that causes a kernel panic when calling ADM1266_BLACKBOX_INFORMATION.
+Why is false correct here?  Alternately, in the next patch, why is it correct to pass true 
+for the EL2 test?
 
-Log Message:
+What is the purpose of the can_emulate parameter at all?
 
-adm1266 5-0042: Could not read blackbox!
-Kernel panic - not syncing: stack-protector: Kernel stack is corrupted in: adm1266_nvmem_read+0x168/0x170
 
-Signed-off-by: Titus Rwantare <titusr@google.com>
----
- hw/sensor/adm1266.c | 15 +++++++++++++++
- 1 file changed, 15 insertions(+)
-
-diff --git a/hw/sensor/adm1266.c b/hw/sensor/adm1266.c
-index 9017ce6116..cd11526c2b 100644
---- a/hw/sensor/adm1266.c
-+++ b/hw/sensor/adm1266.c
-@@ -75,6 +75,7 @@ typedef struct ADM1266State {
- static const uint8_t adm1266_ic_device_id[] = {0x03, 0x41, 0x12, 0x66};
- static const uint8_t adm1266_ic_device_rev[] = {0x08, 0x01, 0x08, 0x07, 0x0,
-                                                 0x0, 0x07, 0x41, 0x30};
-+static const uint8_t adm1266_blackbox_info[] = {0x04, 0x00, 0x00, 0x00, 0x00};
- 
- static void adm1266_exit_reset(Object *obj, ResetType type)
- {
-@@ -125,6 +126,17 @@ static uint8_t adm1266_read_byte(PMBusDevice *pmdev)
-         pmbus_send(pmdev, adm1266_ic_device_rev, sizeof(adm1266_ic_device_rev));
-         break;
- 
-+    case ADM1266_BLACKBOX_CONFIG:
-+        return 0;
-+
-+    case ADM1266_READ_BLACKBOX:
-+        return 0;
-+
-+    case ADM1266_BLACKBOX_INFORMATION:
-+        pmbus_send(pmdev, adm1266_blackbox_info,
-+                   sizeof(adm1266_blackbox_info));
-+        break;
-+
-     default:
-         qemu_log_mask(LOG_UNIMP,
-                       "%s: reading from unimplemented register: 0x%02x\n",
-@@ -154,6 +166,9 @@ static int adm1266_write_data(PMBusDevice *pmdev, const uint8_t *buf,
-         pmbus_receive_block(pmdev, (uint8_t *)s->mfr_rev, sizeof(s->mfr_rev));
-         break;
- 
-+    case ADM1266_BLACKBOX_CONFIG:
-+    case ADM1266_READ_BLACKBOX:
-+    case ADM1266_BLACKBOX_INFORMATION:
-     case ADM1266_SET_RTC:   /* do nothing */
-         break;
- 
--- 
-2.51.0.rc0.155.g4a0f42376b-goog
-
+r~
 

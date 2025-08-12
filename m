@@ -4,83 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4EAEFC87FCB
-	for <qemu-arm@archiver.kernel.org>; Tue, 12 Aug 2025 11:30:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61DDDCA0EC4
+	for <qemu-arm@archiver.kernel.org>; Tue, 12 Aug 2025 11:33:26 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ulnCs-0004dn-00; Tue, 12 Aug 2025 07:30:18 -0400
+	id 1ulnFf-000662-NC; Tue, 12 Aug 2025 07:33:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mads@ynddal.dk>) id 1ulnCp-0004dM-UY
- for qemu-arm@nongnu.org; Tue, 12 Aug 2025 07:30:15 -0400
-Received: from p-east1-cluster7-host12-snip4-1.eps.apple.com ([57.103.88.114]
- helo=outbound.ci.icloud.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mads@ynddal.dk>) id 1ulnCj-0004ii-PV
- for qemu-arm@nongnu.org; Tue, 12 Aug 2025 07:30:15 -0400
-Received: from outbound.ci.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-central-1k-60-percent-0 (Postfix) with ESMTPS id
- 66B221800198; Tue, 12 Aug 2025 11:30:01 +0000 (UTC)
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ynddal.dk; s=sig1;
- bh=9V/Qi0Vyf2p/OIULlNa2Xuvyf8y0LvDbfTFTT+2jd94=;
- h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To:x-icloud-hme;
- b=WjlLZWNN8BHGdVUuglSJq5z6go0uFPSSrAGvmSbLByeD7F5MVtljBsKmuonkShoJh4Sa2DAmLpX+gEfJ9aKg6PTIcf6u7EuQ03GmY1ZyOEx57ULXcUmKagrZtE1hVzfIJ2fwMaM9xjFdSH8om9Vw6/ExYfX/Nw+DeyIJwpNS5z0IMfDbYAYHX+xe6b3VRf0UfYBD2WP0u3lIW5zj15nKjHDoUKvemHxfX0T+prAQnMRErNjwuPvaB92jXa+boTL9eUyW3BjWYgZ08CSLrRncuv5aObuUbszCOoVbKaJEfoi+b8bNkzOxNGwFg5tO9f2eSNI/NIDHa9oEtRv/ivT+fw==
-X-Client-IP: 194.62.217.67
-Received: from smtpclient.apple (ci-asmtp-me-k8s.p00.prod.me.com
- [17.57.156.36])
- by p00-icloudmta-asmtp-us-central-1k-60-percent-0 (Postfix) with ESMTPSA id
- D06161800191; Tue, 12 Aug 2025 11:29:58 +0000 (UTC)
-Content-Type: text/plain;
-	charset=utf-8
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3826.700.81\))
-Subject: Re: [PATCH v5 06/13] target/arm: hvf: pass through CNTHCTL_EL2 and
- MDCCINT_EL1
-From: Mads Ynddal <mads@ynddal.dk>
-In-Reply-To: <CAFEAcA-TKwH2pnvK8YcwXnZ56eX-dOpzb8Q9e9HN8BoebjJ+WA@mail.gmail.com>
-Date: Tue, 12 Aug 2025 13:29:47 +0200
-Cc: =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Mohamed Mediouni <mohamed@unpredictable.fr>, qemu-devel@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>,
- Shannon Zhao <shannon.zhaosl@gmail.com>,
- Phil Dennis-Jordan <phil@philjordan.eu>,
- Igor Mammedov <imammedo@redhat.com>, qemu-arm@nongnu.org,
- Alexander Graf <agraf@csgraf.de>, Roman Bolshakov <rbolshakov@ddn.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha <anisinha@redhat.com>,
- Cameron Esfahani <dirty@apple.com>
-Content-Transfer-Encoding: quoted-printable
-Message-Id: <6617003D-BE18-4642-BE40-7B1CE7DE041D@ynddal.dk>
-References: <20250728134114.77545-1-mohamed@unpredictable.fr>
- <20250728134114.77545-7-mohamed@unpredictable.fr>
- <d2e93df6-bbb4-427b-828e-b6f5466ae2be@linaro.org>
- <5CB6CE7B-B122-4BE1-B031-EF44D0A79B63@ynddal.dk>
- <CAFEAcA-TKwH2pnvK8YcwXnZ56eX-dOpzb8Q9e9HN8BoebjJ+WA@mail.gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-X-Mailer: Apple Mail (2.3826.700.81)
-X-Proofpoint-GUID: C5_18-_mNBXrYEb4TOSXVQNC8f06_ZlQ
-X-Proofpoint-ORIG-GUID: C5_18-_mNBXrYEb4TOSXVQNC8f06_ZlQ
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwODEyMDExMCBTYWx0ZWRfXyTIiu/4Zqulw
- aO1rbWmzY5Lit7rEcaY7rrQCPfJDZmvrx9uzFU5it2ObEwHLPv2f40URH6yODYyoIyBpK4jEOM1
- nCH+otzDufIbqGPDv712KcX6pI3jFasN8UM89pMSxd1D7IFI9Eg37BVffngmuTTuUEXE6otLVQQ
- q+10GnfPOgCV6zn714xaFySfyskckMpvIQvPwpP6776MjxbPQFl8vbqiJyCD4Ieml6slYa3cz1q
- r+01LBsJ28C9hynMHiRr7veeXaxCgXdeU2dIONZFtX5Z0x9LB7ALH/AX8qXHwalZ3J+Y1Wzh0=
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.9,FMLib:17.12.80.40
- definitions=2025-08-12_06,2025-08-11_01,2025-03-28_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0
- phishscore=0 malwarescore=0 adultscore=0 mlxlogscore=999 clxscore=1030
- suspectscore=0 bulkscore=0 spamscore=0 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.22.0-2506270000 definitions=main-2508120110
-Received-SPF: pass client-ip=57.103.88.114; envelope-from=mads@ynddal.dk;
- helo=outbound.ci.icloud.com
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1ulnFd-00064t-Cg
+ for qemu-arm@nongnu.org; Tue, 12 Aug 2025 07:33:09 -0400
+Received: from mail-yb1-xb30.google.com ([2607:f8b0:4864:20::b30])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1ulnFX-00053x-5g
+ for qemu-arm@nongnu.org; Tue, 12 Aug 2025 07:33:08 -0400
+Received: by mail-yb1-xb30.google.com with SMTP id
+ 3f1490d57ef6-e9028e13bb4so4384783276.2
+ for <qemu-arm@nongnu.org>; Tue, 12 Aug 2025 04:33:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1754998379; x=1755603179; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=F8uLajb8uVosRY+r+zfXatqPbpvh5W7ipv3kpoiMKMk=;
+ b=ftuXbseD06BUJy20flZlRSz0PrD4IhSFCcl+gECaJT800R54JrE7vbJKcJ8a/zvSpu
+ zgwRX3Oew4/I5968JUeau9NK2TmmzPFykCnHo2s0aCXTaf1Lgk746dg76mUs0Op5dF3b
+ 888QiUtxtr+otX/QR6nsghC0QfgaUK/Ic/SFJyiE/ZGQgTdecpaf3jkYPdJ51wnD7l8L
+ 5izndtLBz6kVD05MxC3KXtONj9ehv30YaFmteXo1z5QWopDIhI+Fa6rTxxLjeNm+EJ8l
+ N7YDqZfmgorDJhwCt741JIkrL2SwDcQWNVDwU/1pZ8sL+rco68pXxPnxyax4dXKWB31o
+ n8Lg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1754998379; x=1755603179;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=F8uLajb8uVosRY+r+zfXatqPbpvh5W7ipv3kpoiMKMk=;
+ b=AUXr8+y5g7PFAhVz0ZWOmVY1AyTKlyP4hyYlilWsmL1DKYg3K0IpVo6bYSB2VRCR2e
+ yzCrTjYjc+5gzxWQHDx1n9/Lr3OZsquCTgz1Y2guENtgly/XReO8GqFEuVPwXBYOI8fu
+ deSaXK7Swj6cwAC9X2na5FebyxA+jpn8qVZznppidy1aKWgo9j2I23f9GYelkyU+pQ0s
+ hVo/xOz0IHyNC3hwjMpN3krM77f4a0ou0b6oJc+lc6ZJKHW4wPuN4q+akd65PC/sQbzF
+ ShlmmBVmM+puCfVdHiTlyqo7svNCPslKPJH7IL7gWTPGv3YSNEG4WGbmskyQAfNxkz5L
+ 6ktw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUNZD1vH459Vh4FCPFHtle7EVj7gP/1ixCe8MseEvmCmsVc6Q8TEECSusRijLug0rUodFVw1oR2jw==@nongnu.org
+X-Gm-Message-State: AOJu0YwMCvODMvauXoJxGLLJHoEPy1IW5zhBYZJse9Y15s2SdcNzJzuA
+ rGsD+ErxfBmmqPdIGgoX1jpeqPSd3noilN0fcERjAnjmHO/v28tRAjaF1r69ehzcBhewczALkGo
+ ixz08IrTtW1WxyPaAYEtUHSh7PpFOD+mRo9jzzIDG/w==
+X-Gm-Gg: ASbGnctsPjzwdtZn0xfUyMFx7M2sGZQ12fdcbIYlo/37kC8LRtZiJfKWG7AZf39EI24
+ frq4V3T7hgq7fFljE0BixO/hiCc0RMNHRT9IsC6f5Pfema82IJT7yBhIHI/LOFPFChkGoI6anZN
+ +XcRx/dhCXRvVmGVZRR0DqgVsT+v765nCf/mScJ0S6i3W3/yGiHodKpRjOvbSA6JuSvo1Q0+vtH
+ iuuaKDu
+X-Google-Smtp-Source: AGHT+IEaMmkBLkXtKtdQAV6kTvridDv5HJMBbFCG2K39nPYqGSDfMjviQqYzGKCJKlw/753l+GCNB989zMMHh4vBxwg=
+X-Received: by 2002:a05:690c:308a:b0:71b:f755:bbab with SMTP id
+ 00721157ae682-71c429869e6mr38360597b3.14.1754998379214; Tue, 12 Aug 2025
+ 04:32:59 -0700 (PDT)
+MIME-Version: 1.0
+References: <20250811193654.4012878-1-vacha.bhavsar@oss.qualcomm.com>
+ <20250811193654.4012878-3-vacha.bhavsar@oss.qualcomm.com>
+In-Reply-To: <20250811193654.4012878-3-vacha.bhavsar@oss.qualcomm.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 12 Aug 2025 12:32:47 +0100
+X-Gm-Features: Ac12FXxFaR0YL4PCWIlp6U0rDb4lfqZWUiDcEfYktpFfwqmCLcG__JCjlZMZWak
+Message-ID: <CAFEAcA9PXtsj5nAZ47Fv3h5gDdir_QT5pavUF6-Yc1tZZP26ag@mail.gmail.com>
+Subject: Re: [PATCH v5 2/4] target/arm: Change GDBState's line_buf to a GString
+To: Vacha Bhavsar <vacha.bhavsar@oss.qualcomm.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+ Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b30;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb30.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -96,63 +98,38 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+On Mon, 11 Aug 2025 at 20:37, Vacha Bhavsar
+<vacha.bhavsar@oss.qualcomm.com> wrote:
+>
+> This patch changes GDBState's line_buf from a character
+> array to a GString. This allows line_buf to be dynamically
+> re-sizeable.
+>
+> Signed-off-by: Vacha Bhavsar <vacha.bhavsar@oss.qualcomm.com>
+> ---
+> Changes since v4:
+> - this patch was not present in v4, it has been added as
+> suggested during review of v4
+> ---
 
->>> We'd like to remove the assert_hvf_ok() calls, so adding more isn't
->>> really helping. Anyhow,
->>>=20
->>> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
->>> Tested-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
->>=20
->> What is the preferred method going forward?
->>=20
->> Apple designed the HV API to be able to fail at every function, and =
-it's
->> rarely something that can be recovered from.
->>=20
->> In [PATCH v4 04/15] of this series, we saw an issue that was hidden
->> because the return code was not properly checked (not calling from =
-the
->> owning thread). Previously, I submitted a patch (d5bd8d8267) for the
->> same issue, because Apple had changed a function's behavior. This was
->> caught by an assert_hvf_ok.
->>=20
->> I agree with you, that generally adding asserts is a bad design, but =
-at
->> the same time, HV is designed in a way, that the code would be =
-littered
->> with checks otherwise.
->=20
-> This suggestion was I think mine, and I think partly I was
-> misled by the name of assert_hvf_ok(), because in fact it
-> isn't an assert(). (assert() should be specifically "if we
-> hit this this is a bug in QEMU", and "hvf returned an error"
-> is generally not that. It does call abort(), though, which
-> isn't much better.)
->=20
-> But also I think the existence of assert_hvf_ok() encourages
-> it to be used in cases where actually we should be doing
-> something more sensible with an error return. For instance,
-> in hvf_accel_init() if we can't init HVF then we should
-> return an error code to the caller, which might fall back
-> to the TCG accelerator -- but instead we have an assert_hvf_ok(),
-> so fallback won't work because we'll just bomb out.
->=20
-> The KVM API is also one where any API call (ioctl) can return an
-> error, but we don't generally assert() that they succeeded, except
-> in a few cases of "given where we are, for this to fail would
-> mean the kernel was broken". Instead we propagate error values
-> upwards when the function has a mechanism to do that,
-> and where appropriate we print an error message that's
-> hopefully reasonably comprehensible to the user and exit.
->=20
-> -- PMM
+Note that since the GDBState is a file-local variable,
+not allocated on the stack, it's not an issue that
+line_buf[MAX_PACKET_LENGTH] is large. So whether we
+make this change I think should be based on whether
+it makes the code easier to read and less likely to
+contain string buffer manipulation bugs.
 
-Thanks for the clarification. I think I understand the sentiment.
-Propagating the error codes when possible, is much preferred. But
-letting the calls go unchecked is problematic too, so I don't know if we
-can get around assert_hvf_ok in some shape or form.
 
-You're right, that it might encourage use as an easy fix. I'll keep an
-eye on it in my reviews.
+> -                if (gdbserver_state.line_buf_index + repeat >= > sizeof(gdbserver_state.line_buf) - 1) {
+> +                if (gdbserver_state.line_buf->len + repeat >= MAX_PACKET_LENGTH) {
+>                      /* that many repeats would overrun the command buffer */
 
+This comment no longer makes sense if we don't have a
+fixed command buffer. In general, if we're moving away
+from a fixed-sized buffer we should consider what we
+want to do in all the various places that are currently
+doing checks against MAX_PACKET_LENGTH.
+
+thanks
+-- PMM
 

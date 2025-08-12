@@ -4,45 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4482CA0EC4
-	for <qemu-arm@archiver.kernel.org>; Tue, 12 Aug 2025 09:42:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BABDACA0EC4
+	for <qemu-arm@archiver.kernel.org>; Tue, 12 Aug 2025 09:43:35 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ullV1-0007Tk-S0; Tue, 12 Aug 2025 05:40:58 -0400
+	id 1ullVa-0007yz-79; Tue, 12 Aug 2025 05:41:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kane_chen@aspeedtech.com>)
- id 1ullUs-0007R7-DE; Tue, 12 Aug 2025 05:40:47 -0400
+ id 1ullVS-0007mC-7K; Tue, 12 Aug 2025 05:41:22 -0400
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kane_chen@aspeedtech.com>)
- id 1ullUo-0000Yh-HX; Tue, 12 Aug 2025 05:40:46 -0400
+ id 1ullVO-0000lv-6y; Tue, 12 Aug 2025 05:41:21 -0400
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Tue, 12 Aug
- 2025 17:40:13 +0800
+ 2025 17:40:15 +0800
 Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
- Transport; Tue, 12 Aug 2025 17:40:13 +0800
+ Transport; Tue, 12 Aug 2025 17:40:15 +0800
 To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
  <leetroy@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>, Andrew Jeffery
  <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, "open
  list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
  <qemu-devel@nongnu.org>
-CC: <troy_lee@aspeedtech.com>, Kane-Chen-AS <kane_chen@aspeedtech.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PATCH v5 03/10] hw/arm: Integrate ASPEED OTP memory support into
- AST2600 SoCs
-Date: Tue, 12 Aug 2025 17:40:00 +0800
-Message-ID: <20250812094011.2617526-4-kane_chen@aspeedtech.com>
+CC: <troy_lee@aspeedtech.com>, Kane-Chen-AS <kane_chen@aspeedtech.com>
+Subject: [PATCH v5 08/10] hw/misc/aspeed_sbc: Handle OTP write command for
+ voltage mode registers
+Date: Tue, 12 Aug 2025 17:40:05 +0800
+Message-ID: <20250812094011.2617526-9-kane_chen@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250812094011.2617526-1-kane_chen@aspeedtech.com>
 References: <20250812094011.2617526-1-kane_chen@aspeedtech.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 Received-SPF: pass client-ip=211.20.114.72;
  envelope-from=kane_chen@aspeedtech.com; helo=TWMBX01.aspeed.com
 X-Spam_score_int: -18
@@ -70,44 +69,102 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Kane-Chen-AS <kane_chen@aspeedtech.com>
 
-The has_otp attribute is enabled in the SBC subclasses for AST2600 to
-control the presence of OTP support per SoC type.
+Extend OTP command handling to recognize specific voltage mode register
+addresses and emulate the expected hardware behavior. Without this
+change, legitimate voltage mode change requests would be incorrectly
+reported as "Unknown command" and logged as an error.
+
+This implementation does not perform actual mode changes, but ensures
+that valid requests are accepted and ignored as per hardware behavior.
 
 Signed-off-by: Kane-Chen-AS <kane_chen@aspeedtech.com>
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
 ---
- hw/arm/aspeed_ast2600.c | 2 +-
- hw/misc/aspeed_sbc.c    | 2 ++
- 2 files changed, 3 insertions(+), 1 deletion(-)
+ hw/misc/aspeed_sbc.c | 41 +++++++++++++++++++++++++++++++++++++++++
+ hw/misc/trace-events |  1 +
+ 2 files changed, 42 insertions(+)
 
-diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-index d12707f0ab..59ffd41a4a 100644
---- a/hw/arm/aspeed_ast2600.c
-+++ b/hw/arm/aspeed_ast2600.c
-@@ -261,7 +261,7 @@ static void aspeed_soc_ast2600_init(Object *obj)
- 
-     object_initialize_child(obj, "i3c", &s->i3c, TYPE_ASPEED_I3C);
- 
--    object_initialize_child(obj, "sbc", &s->sbc, TYPE_ASPEED_SBC);
-+    object_initialize_child(obj, "sbc", &s->sbc, TYPE_ASPEED_AST2600_SBC);
- 
-     object_initialize_child(obj, "iomem", &s->iomem, TYPE_UNIMPLEMENTED_DEVICE);
-     object_initialize_child(obj, "video", &s->video, TYPE_UNIMPLEMENTED_DEVICE);
 diff --git a/hw/misc/aspeed_sbc.c b/hw/misc/aspeed_sbc.c
-index 46a038337c..b56a8b7678 100644
+index 787e2d0489..2fc5db749d 100644
 --- a/hw/misc/aspeed_sbc.c
 +++ b/hw/misc/aspeed_sbc.c
-@@ -273,8 +273,10 @@ static const TypeInfo aspeed_sbc_info = {
- static void aspeed_ast2600_sbc_class_init(ObjectClass *klass, const void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(klass);
-+    AspeedSBCClass *sc = ASPEED_SBC_CLASS(klass);
+@@ -49,10 +49,17 @@
+ #define OTP_MEMORY_SIZE 0x4000
+ /* OTP command */
+ #define SBC_OTP_CMD_READ 0x23b1e361
++#define SBC_OTP_CMD_WRITE 0x23b1e362
+ #define SBC_OTP_CMD_PROG 0x23b1e364
  
-     dc->desc = "AST2600 Secure Boot Controller";
-+    sc->has_otp = true;
+ #define OTP_DATA_DWORD_COUNT        (0x800)
+ #define OTP_TOTAL_DWORD_COUNT       (0x1000)
++
++/* Voltage mode */
++#define MODE_REGISTER               (0x1000)
++#define MODE_REGISTER_A             (0x3000)
++#define MODE_REGISTER_B             (0x5000)
++
+ static uint64_t aspeed_sbc_read(void *opaque, hwaddr addr, unsigned int size)
+ {
+     AspeedSBCState *s = ASPEED_SBC(opaque);
+@@ -115,6 +122,37 @@ static bool aspeed_sbc_otp_read(AspeedSBCState *s,
+     return true;
  }
  
- static const TypeInfo aspeed_ast2600_sbc_info = {
++static bool mode_handler(uint32_t otp_addr)
++{
++    switch (otp_addr) {
++    case MODE_REGISTER:
++    case MODE_REGISTER_A:
++    case MODE_REGISTER_B:
++        /* HW behavior, do nothing here */
++        return true;
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "Unsupported address 0x%x\n",
++                      otp_addr);
++        return false;
++    }
++}
++
++static bool aspeed_sbc_otp_write(AspeedSBCState *s,
++                                    uint32_t otp_addr)
++{
++    if (otp_addr == 0) {
++        trace_aspeed_sbc_ignore_cmd(otp_addr);
++        return true;
++    } else {
++        if (mode_handler(otp_addr) == false) {
++            return false;
++        }
++    }
++
++    return true;
++}
++
+ static bool aspeed_sbc_otp_prog(AspeedSBCState *s,
+                                    uint32_t otp_addr)
+ {
+@@ -157,6 +195,9 @@ static void aspeed_sbc_handle_command(void *opaque, uint32_t cmd)
+     case SBC_OTP_CMD_READ:
+         ret = aspeed_sbc_otp_read(s, otp_addr);
+         break;
++    case SBC_OTP_CMD_WRITE:
++        ret = aspeed_sbc_otp_write(s, otp_addr);
++        break;
+     case SBC_OTP_CMD_PROG:
+         ret = aspeed_sbc_otp_prog(s, otp_addr);
+         break;
+diff --git a/hw/misc/trace-events b/hw/misc/trace-events
+index 9e05b82f37..eeb9243898 100644
+--- a/hw/misc/trace-events
++++ b/hw/misc/trace-events
+@@ -91,6 +91,7 @@ slavio_led_mem_writew(uint32_t val) "Write diagnostic LED 0x%04x"
+ slavio_led_mem_readw(uint32_t ret) "Read diagnostic LED 0x%04x"
+ 
+ # aspeed_sbc.c
++aspeed_sbc_ignore_cmd(uint32_t cmd) "Ignoring command 0x%" PRIx32
+ aspeed_sbc_handle_cmd(uint32_t cmd, uint32_t addr, bool ret) "Handling command 0x%" PRIx32 " for OTP addr 0x%" PRIx32 " Result: %d"
+ aspeed_sbc_otp_read(uint32_t addr, uint32_t value) "OTP Memory read: addr 0x%" PRIx32 " value 0x%" PRIx32
+ aspeed_sbc_otp_prog(uint32_t addr, uint32_t value) "OTP Memory write: addr 0x%" PRIx32 " value 0x%" PRIx32
 -- 
 2.43.0
 

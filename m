@@ -4,42 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18B5DC87FCB
-	for <qemu-arm@archiver.kernel.org>; Tue, 12 Aug 2025 09:41:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57F3BCA0EDA
+	for <qemu-arm@archiver.kernel.org>; Tue, 12 Aug 2025 09:41:31 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ullVF-0007Vu-4U; Tue, 12 Aug 2025 05:41:11 -0400
+	id 1ullUb-0007NN-Jp; Tue, 12 Aug 2025 05:40:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kane_chen@aspeedtech.com>)
- id 1ullUw-0007SE-R5; Tue, 12 Aug 2025 05:40:51 -0400
+ id 1ullUa-0007Mq-RK; Tue, 12 Aug 2025 05:40:28 -0400
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kane_chen@aspeedtech.com>)
- id 1ullUu-0000Yh-9V; Tue, 12 Aug 2025 05:40:50 -0400
+ id 1ullUU-0000Yh-Cz; Tue, 12 Aug 2025 05:40:28 -0400
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Tue, 12 Aug
- 2025 17:40:13 +0800
+ 2025 17:40:12 +0800
 Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
- Transport; Tue, 12 Aug 2025 17:40:13 +0800
+ Transport; Tue, 12 Aug 2025 17:40:12 +0800
 To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
  <leetroy@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>, Andrew Jeffery
  <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, "open
  list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
  <qemu-devel@nongnu.org>
-CC: <troy_lee@aspeedtech.com>, Kane-Chen-AS <kane_chen@aspeedtech.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PATCH v5 04/10] hw/nvram/aspeed_otp: Add 'drive' property to support
- block backend
-Date: Tue, 12 Aug 2025 17:40:01 +0800
-Message-ID: <20250812094011.2617526-5-kane_chen@aspeedtech.com>
+CC: <troy_lee@aspeedtech.com>, Kane-Chen-AS <kane_chen@aspeedtech.com>
+Subject: [PATCH v5 00/10] aspeed: OTP model, SBC integration, tests, and docs
+Date: Tue, 12 Aug 2025 17:39:57 +0800
+Message-ID: <20250812094011.2617526-1-kane_chen@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250812094011.2617526-1-kane_chen@aspeedtech.com>
-References: <20250812094011.2617526-1-kane_chen@aspeedtech.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
@@ -70,64 +66,90 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Kane-Chen-AS <kane_chen@aspeedtech.com>
 
-This patch introduces a 'drive' property to the Aspeed OTP device,
-allowing it to be backed by a block device. Users can now preload
-OTP data via QEMU CLI using a block backend.
+This patch series extends the QEMU model for the ASPEED OTP (One-Time
+Programmable) memory device with block backend support and tighter
+integration with the SoC and machine configuration.
+
+The OTP model simulates a simple fuse array used in ASPEED SoCs for
+secure boot, configuration, key storage, and user-programmable data.
+The updated model adds support for loading initial OTP content from a
+file via the QEMU CLI.
 
 Example usage:
   ./qemu-system-arm \
+    -machine ast2600-evb \
     -blockdev driver=file,filename=otpmem.img,node-name=otp \
     -global aspeed-otp.drive=otp \
     ...
 
-If the drive is provided, its content will be loaded as the initial OTP
-state. Otherwise, an internal memory buffer will be used.
+Any feedback or suggestions are appreciated!
 
-Signed-off-by: Kane-Chen-AS <kane_chen@aspeedtech.com>
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
+Kane
 ---
- hw/nvram/aspeed_otp.c | 15 ++++++++++++++-
- 1 file changed, 14 insertions(+), 1 deletion(-)
 
-diff --git a/hw/nvram/aspeed_otp.c b/hw/nvram/aspeed_otp.c
-index e5b7ca9676..abb3731823 100644
---- a/hw/nvram/aspeed_otp.c
-+++ b/hw/nvram/aspeed_otp.c
-@@ -35,13 +35,25 @@ static bool aspeed_otp_init_storage(AspeedOTPState *s, Error **errp)
- {
-     uint32_t *p;
-     int i, num;
-+    uint64_t perm;
- 
-+    if (s->blk) {
-+        perm = BLK_PERM_CONSISTENT_READ |
-+               (blk_supports_write_perm(s->blk) ? BLK_PERM_WRITE : 0);
-+        if (blk_set_perm(s->blk, perm, BLK_PERM_ALL, errp) < 0) {
-+            return false;
-+        }
-+        if (blk_pread(s->blk, 0, s->size, s->storage, 0) < 0) {
-+            error_setg(errp, "Failed to read the initial flash content");
-+            return false;
-+        }
-+    } else {
-         num = s->size / sizeof(uint32_t);
-         p = (uint32_t *)s->storage;
-         for (i = 0; i < num; i++) {
-             p[i] = (i % 2 == 0) ? 0x00000000 : 0xFFFFFFFF;
-         }
--
-+    }
-     return true;
- }
- 
-@@ -75,6 +87,7 @@ static void aspeed_otp_realize(DeviceState *dev, Error **errp)
- 
- static const Property aspeed_otp_properties[] = {
-     DEFINE_PROP_UINT64("size", AspeedOTPState, size, 0),
-+    DEFINE_PROP_DRIVE("drive", AspeedOTPState, blk),
- };
- 
- static void aspeed_otp_class_init(ObjectClass *klass, const void *data)
+ChangeLog
+---------
+v5:
+- Add OTP programming semantics and tracing
+- Integrate OTP into AST1030 SoC
+- Add CAMP2 register support for reading both DWORDs of OTP data
+  entries
+- Handle voltage mode write commands to avoid misreporting valid
+  requests as "Unknown command"
+- Add functional test to verify firmware boot with a pre-configured
+  OTP image
+- Add documentation for OTP memory options in QEMU
+
+v4:
+- Add a 'drive' property to allow backing OTP data with a block device
+- Expose a machine parameter (`-machine otpmem=XXX`) for convenient
+  aliasing of the OTP drive via QOM path
+
+v3:
+- Switched to object_property_set_int() for setting "size"
+- Simplified qdev_realize() error handling by passing errp directly
+- Added "drive" property to OTP model for future extensibility
+
+v2:
+- Rename device from 'aspeed_otpmem' to 'aspeed_otp' and move it to hw/nvram/
+- Move OTP device realization from instance_init to the realize function
+- Improve error logging with qemu_log_mask() and remove unused error propagation
+
+v1:
+- Initial version
+
+---
+
+Kane-Chen-AS (10):
+  hw/nvram/aspeed_otp: Add ASPEED OTP memory device model
+  hw/misc/aspeed_sbc: Connect ASPEED OTP memory device to SBC
+  hw/arm: Integrate ASPEED OTP memory support into AST2600 SoCs
+  hw/nvram/aspeed_otp: Add 'drive' property to support block backend
+  hw/nvram/aspeed_otp: Add OTP programming semantics and tracing
+  hw/arm: Integrate ASPEED OTP memory support into AST1030 SoCs
+  hw/misc/aspeed_sbc: Add CAMP2 support for OTP data reads
+  hw/misc/aspeed_sbc: Handle OTP write command for voltage mode
+    registers
+  tests/function/aspeed: Add OTP functional test
+  docs/system/arm/aspeed: Document OTP memory options
+
+ docs/system/arm/aspeed.rst              |  31 ++++
+ include/hw/misc/aspeed_sbc.h            |   6 +
+ include/hw/nvram/aspeed_otp.h           |  33 ++++
+ hw/arm/aspeed_ast10x0.c                 |   2 +-
+ hw/arm/aspeed_ast2600.c                 |   2 +-
+ hw/misc/aspeed_sbc.c                    | 196 ++++++++++++++++++++++++
+ hw/nvram/aspeed_otp.c                   | 190 +++++++++++++++++++++++
+ hw/misc/trace-events                    |   6 +
+ hw/nvram/meson.build                    |   4 +
+ hw/nvram/trace-events                   |   5 +
+ tests/functional/meson.build            |   2 +
+ tests/functional/test_arm_aspeed_otp.py |  55 +++++++
+ 12 files changed, 530 insertions(+), 2 deletions(-)
+ create mode 100644 include/hw/nvram/aspeed_otp.h
+ create mode 100644 hw/nvram/aspeed_otp.c
+ create mode 100644 tests/functional/test_arm_aspeed_otp.py
+
 -- 
 2.43.0
 

@@ -4,93 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25373CA0EC4
-	for <qemu-arm@archiver.kernel.org>; Tue, 12 Aug 2025 17:27:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF6B9CA0EC4
+	for <qemu-arm@archiver.kernel.org>; Tue, 12 Aug 2025 17:28:46 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ulsmP-0003Up-LD; Tue, 12 Aug 2025 13:27:21 -0400
+	id 1ulsnc-0003sa-Mm; Tue, 12 Aug 2025 13:28:36 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1ulsmL-0003UG-D5
- for qemu-arm@nongnu.org; Tue, 12 Aug 2025 13:27:18 -0400
-Received: from mail-pf1-x435.google.com ([2607:f8b0:4864:20::435])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ulsnb-0003sM-BT
+ for qemu-arm@nongnu.org; Tue, 12 Aug 2025 13:28:35 -0400
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1ulsmE-0003JY-4z
- for qemu-arm@nongnu.org; Tue, 12 Aug 2025 13:27:16 -0400
-Received: by mail-pf1-x435.google.com with SMTP id
- d2e1a72fcca58-76b77a97a04so5285747b3a.1
- for <qemu-arm@nongnu.org>; Tue, 12 Aug 2025 10:27:06 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ulsnT-0003RS-Ur
+ for qemu-arm@nongnu.org; Tue, 12 Aug 2025 13:28:35 -0400
+Received: by mail-wm1-x330.google.com with SMTP id
+ 5b1f17b1804b1-45a0dc77a15so13177325e9.2
+ for <qemu-arm@nongnu.org>; Tue, 12 Aug 2025 10:28:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1755019625; x=1755624425; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=embRryYeQhQDioX2+pvo4ABUk00N28+mDWN9zPMYAVA=;
- b=swvgwwv4E0eMGwbGZvsm0IZe/MYF0E+0wn19VycVVM63iYu2o/Z8b6EHMmEnu6ukAc
- 3qygYCoJGlOlLlA+Myh31eWbPe19+o4xz5ynOMe7CghDBrGC/3hUS5NW0RpEty1elwxw
- 3mVA5EhZjZWQr3zD+p3mDD9kZ4cWJ8RRj8fnpQ3m6rXkt0bqiCSLSD3pb+F5IBpyPQNE
- KVgj1Oigf3eJg6ciBCNA3wSDY+42otpTXKtA1H2gTrTZLy5B4Q48mN4EHFMse+qoKRTS
- OhMJarvSDsGkNpwLcyaDWbBizf6Ey3BXodBQHejUCRCGQ4wf1Gk6oZ7VyOLA9Ymn0hRF
- nOCw==
+ d=linaro.org; s=google; t=1755019705; x=1755624505; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=XFVNnbRTiRKENsM+2C3XPaOJ9QN/hot7cxFumXFNznY=;
+ b=wP4H7AWCz/8eFOIfO8ab33hK7rWHdXzEzcgJtjIo5QgYemRtDAKEH3KGIb+dEqbNFc
+ NSYLeH5TfyxoBI2ZYCcgxkYXDEl6Ym7RlG723QZV1JxZbeA7ABOsfuPLPIdNWCZko+qc
+ /17ZynL5dJqx8nO6awYywkQJen4ySPAc+qb14+pBIuZTT9Hod+AmeedDefkzoOmddae5
+ YLEVmR77QSERdJLOSWNn3k0hMVBhsUJtMdd6CcYT6fRYPbEsBNZmaiHID30G2pDh5boT
+ a2539LMN7P4IvooeMbM5/edCmeQk3ofWgpU5kMikvWEG40afUzpn/2rl0rc53z06A61U
+ kDBg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1755019625; x=1755624425;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=embRryYeQhQDioX2+pvo4ABUk00N28+mDWN9zPMYAVA=;
- b=ORMNKW1mC5jZH9H1x2E/GQ/+EB7L02SSvAFGm4r8FZUAdU7g6YAQl5W6e+lsgaqubq
- 66uj1suZadhLLUhTVhDsGgCiG0VBFV9F/0lhvKPdTcNmCWiZVJX4qagTbvtjLgAHnldI
- HxGgPhX9yoJXMqS6dhavHjZGgSCEeE70KEfuxZNu7664cxqGYyWApGPgmZrJogFC3Vd3
- 7en4ZKtv+vVMq3TeLI+xZyAtU7XjXgReuEvt6/deP9ZZkbncFEq6abHvJBQ/MR6pRjRv
- 6dJ02voa0oDvJRXArulfiBaC8vDc6PCW8ZHFn1uVHV2zWempEKnrAHlDUw2XsX0ui+dB
- zyzg==
+ d=1e100.net; s=20230601; t=1755019705; x=1755624505;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=XFVNnbRTiRKENsM+2C3XPaOJ9QN/hot7cxFumXFNznY=;
+ b=bZ8lcDTEmNrQi1A3TVk/kWJuW+fB0QOxF3n9+EPumH7AKRHUgOASqOr2S5JgFXqR/N
+ OZwD6io0bVQ6MxUuC/NLgSiFq3SSAe3REqnoF9iNPUhJWvAtOG7S/9MHiVb3T8PbzpS5
+ sDezSMMJdCpaq9cJJURHLVPizFQudpFl2BxPgibSbVszgCKHTyIuhiA05Wz0Hh4Lm9CS
+ vQv+aPxz/eBcLWiCTv4WY55oBwyzepL5W+zRpopp/7CTTlmooc3x01uURAnge/3mut3T
+ KlyVYTlwg8nC4N/tk93oEzfDU+BUwXTGXTVryL//mcmYabBJqqAPN/ZF/jol7QOZWD+M
+ /pnQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCW6SLsvUS5Dz63IyYFKJwHTVLtK7p0lc2FmtqoZmWO8/E3vdtoRBixhUTLDaNzpg2fwxfkHsCHJ9w==@nongnu.org
-X-Gm-Message-State: AOJu0Yx1SaNNpDIGdURB4J1iP+czdtwuIC9m1zMyvT715053HF/WUejZ
- NAnsrF/WranW6l9sNO/O5+HI23OYPJXm47LADQYH1Pm2P9M27Jwu6Wr4tQPKzDRw1v0=
-X-Gm-Gg: ASbGncv8CqC0K8o58KFrZmOGYerF+wvBUhaV5QDkeMy5yXtcTZctoCzG1d6okZ4Q5ZK
- 2WnIBNnUXqSdtCFGuId5utrnOKgTr8+Xevo46LWBLQA53Nao9y6jZrJ3PeKNY1K20OmnnuTgmSU
- 5yb0Akv0POjWzWMcf7vGYhQHCNKh4XNfZ0EyFC7ReQ3WG0LRfJ6EnaH0W/fNeYt7UAkQRHrIcEE
- nY+POCWvESItg1mTHOHZrujpd4i0fh9PSZZBfB56l0juww8Jqlx9df+d5MGo48xM0cSo83N+8vO
- de8s6JPQAqeheeJLJuq+i2peyDnXuyhq0WP7fpIUeJadIOHCY6dtKsBO+9qpqx55kVIfZ3hAGRV
- eWt8u94YYe8XcsluxtOMD9z2VzgQfXFZPH5Y=
-X-Google-Smtp-Source: AGHT+IED0GTnLWMRrqxom56II30N7PQ+deFgpbhTCElrAV9znqPB5iY7rwJvEnUJUDPBrDwrFX5T8Q==
-X-Received: by 2002:a05:6a00:3c94:b0:76b:fab4:6456 with SMTP id
- d2e1a72fcca58-76e1fe6147bmr516550b3a.21.1755019624609; 
- Tue, 12 Aug 2025 10:27:04 -0700 (PDT)
-Received: from [192.168.1.87] ([38.41.223.211])
- by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-76bcce8fa10sm29914204b3a.52.2025.08.12.10.27.03
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 12 Aug 2025 10:27:04 -0700 (PDT)
-Message-ID: <2cb0e32f-6660-4fcd-8a37-52cdeaf9dc19@linaro.org>
-Date: Tue, 12 Aug 2025 10:27:03 -0700
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC 04/11] hw/arm/smmuv3: Enable command processing for the
- Secure state
-Content-Language: en-US
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Tao Tang <tangtao1634@phytium.com.cn>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: Eric Auger <eric.auger@redhat.com>,
+ AJvYcCXOsi+Kg+HJvIZfeQKW8+FCmpb8L34KnY1Nn0I2/aUgCPsJ+Q8JRNhmM6IUZqROcH00fbd7o+8qAg==@nongnu.org
+X-Gm-Message-State: AOJu0YynGAWRKwxLTr3dYr/XCkaM3tl5yyc29X/TaipRF9TAvVEcNwcc
+ wmOXG+e0Nk9+2UWf2U1/5CYc/0OQFzI4frHsTKTcG3lapvgwIiMD7EFpsHQfiXkmvlE=
+X-Gm-Gg: ASbGncv4/yCZB1p/tV4LCCMrR6D4/pekA+0B5UjUibxRtgy9mYqbdedMYzI+BnM5Ox/
+ MA3KS5jCmZj3yTiEVKdRW/oyqMwDkFHcYfOub8xG18gFRmrp4NiQIajlsFG3EqdXGOtbcwJWvvG
+ tgN2KPbtndVY4ogHssYvm/ZwG0bJtndTc9tqPBTseF2cp8HR1Q5but+R87QcwJtnlO3F9WDH9Lt
+ VxGadZGPUXoFuJf3LPkgJ52y7oo5D/Em+mqP4CvTvLRp+7rA2rCNUf7FMgI7HAW10g0/Ox+D8hX
+ WOulSRIuE6WrL0pgsG0UFIY/Vn3rx8HCjkv9PUjf0sUh0Ug8frdo5lAe/WlmKDVMlumkkQJIjr1
+ R5rXE42Bs3NyT9HE5n/+VNfVN/6Rwwz3wlqI/q6fQsowbNaux0CoCAMdXuxIO9Z2uKbmVAD8J
+X-Google-Smtp-Source: AGHT+IHI5EUxCSAWZav2b9OslDPFbrZnQR5htR3M/42qqK2THZHZuDHrsCp7cbtbdmGtB2r63VUeXg==
+X-Received: by 2002:a05:600c:310d:b0:456:475b:7af6 with SMTP id
+ 5b1f17b1804b1-45a16596597mr231935e9.7.1755019705430; 
+ Tue, 12 Aug 2025 10:28:25 -0700 (PDT)
+Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-459e586eef8sm301292465e9.21.2025.08.12.10.28.24
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Tue, 12 Aug 2025 10:28:24 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Claudio Fontana <cfontana@suse.de>, Cameron Esfahani <dirty@apple.com>,
+ Mohamed Mediouni <mohamed@unpredictable.fr>,
+ Alexander Graf <agraf@csgraf.de>, Paolo Bonzini <pbonzini@redhat.com>,
+ kvm@vger.kernel.org, Eric Auger <eric.auger@redhat.com>,
+ qemu-arm@nongnu.org, Mads Ynddal <mads@ynddal.dk>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
  Peter Maydell <peter.maydell@linaro.org>,
- Chen Baozi <chenbaozi@phytium.com.cn>, smostafa@google.com,
- jean-philippe@linaro.org
-References: <20250806151134.365755-1-tangtao1634@phytium.com.cn>
- <20250806151134.365755-5-tangtao1634@phytium.com.cn>
- <0b38d386-9d8b-46bd-a981-718cc7281eb6@linaro.org>
- <f74b4d64-893f-4b39-aa95-4e9ff52edebd@phytium.com.cn>
- <4ff26d30-3b0d-4392-8bac-698ecb0fbdde@linaro.org>
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-In-Reply-To: <4ff26d30-3b0d-4392-8bac-698ecb0fbdde@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+ Miguel Luis <miguel.luis@oracle.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [RFC PATCH v2 00/10] target/arm: Introduce
+ host_cpu_feature_supported() API
+Date: Tue, 12 Aug 2025 19:28:12 +0200
+Message-ID: <20250812172823.86329-1-philmd@linaro.org>
+X-Mailer: git-send-email 2.49.0
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::435;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pf1-x435.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::330;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -113,103 +107,64 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 8/11/25 3:34 AM, Philippe Mathieu-Daudé wrote:
-> Hi,
-> 
-> On 10/8/25 18:59, Tao Tang wrote:
->> On 2025/8/7 05:55, Pierrick Bouvier wrote:
->>> On 8/6/25 8:11 AM, Tao Tang wrote:
->>>> This patch enables the secure command queue, providing a dedicated
->>>> interface for secure software to issue commands to the SMMU. Based on
->>>> the SMMU_S_CMDQ_BASE configuration, the SMMU now fetches command
->>>> entries directly from the Secure PA space so that we need to pass the
->>>> memory transaction attributes when reading the command queue.
->>>>
->>>> This provides a parallel command mechanism to the non-secure world.
->>>>
->>>> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
->>>> ---
->>>>    hw/arm/smmuv3-internal.h |  8 ++++--
->>>>    hw/arm/smmuv3.c          | 55 +++++++++++++++++++++++++---------------
->>>>    hw/arm/trace-events      |  2 +-
->>>>    3 files changed, 41 insertions(+), 24 deletions(-)
->>>>
->>>> diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
->>>> index 1a8b1cb204..5b2ca00832 100644
->>>> --- a/hw/arm/smmuv3-internal.h
->>>> +++ b/hw/arm/smmuv3-internal.h
->>>> @@ -319,9 +319,13 @@ static inline void queue_cons_incr(SMMUQueue *q)
->>>>        q->cons = deposit32(q->cons, 0, q->log2size + 1, q->cons + 1);
->>>>    }
->>>>    -static inline bool smmuv3_cmdq_enabled(SMMUv3State *s)
->>>> +static inline bool smmuv3_cmdq_enabled(SMMUv3State *s, bool is_secure)
->>>>    {
->>>> -    return FIELD_EX32(s->cr[0], CR0, CMDQEN);
->>>> +    if (is_secure) {
->>>> +        return FIELD_EX32(s->secure_cr[0], S_CR0, CMDQEN);
->>>> +    } else {
->>>> +        return FIELD_EX32(s->cr[0], CR0, CMDQEN);
->>>> +    }
->>>>    }
-> 
-> 
->>> This looks like a reasonable and readable approach to support secure
->>> and non secure accesses.
->>
->> Hi Pierrick,
->>
->> Thank you so much for taking the time to review and for the very
->> positive feedback.
->>
->> I'm very relieved to hear you find the approach "reasonable and
->> readable". I was hoping that explicitly passing the parameter was the
->> right way to avoid issues with global state or code duplication, and
->> your confirmation is the best encouragement I could ask for.
-> 
-> An alternative (also suggested in patch #1) is to use index for banked
-> registers.
-> 
-> For example we use M_REG_NS with Cortex-M cores (target/arm/cpu-qom.h):
-> 
->       /* For M profile, some registers are banked secure vs non-secure;
->        * these are represented as a 2-element array where the first
->        * element is the non-secure copy and the second is the secure copy.
->        * When the CPU does not have implement the security extension then
->        * only the first element is used.
->        * This means that the copy for the current security state can be
->        * accessed via env->registerfield[env->v7m.secure] (whether the
->        * security extension is implemented or not).
->        */
->       enum {
->           M_REG_NS = 0,
->           M_REG_S = 1,
->           M_REG_NUM_BANKS = 2,
->       };
-> 
-> And generally for address spaces (target/arm/cpu.h):
-> 
->       typedef enum ARMASIdx {
->           ARMASIdx_NS = 0,
->           ARMASIdx_S = 1,
->           ARMASIdx_TagNS = 2,
->           ARMASIdx_TagS = 3,
->       } ARMASIdx;
-> 
-> (not sure this one is appropriate here).
-> 
+Since v1:
+- Addressed Richard's review comments removing 'can_emulate' arg
 
-This could be useful, especially to not duplicate register definitions.
+Hi,
 
-However, for now, we only have two indexes (secure vs non-secure) and 
-it's not clear if we'll need something more than that in a close future.
-I think the current approach (a simple bool) is quite readable, and the 
-boilerplate is limited, especially versus changing all existing code to 
-support the new Idx approach.
-As well, it can always be refactored easily later, when we'll need it.
+Mohamed and myself are working on adding nested virtualization
+support to HVF Aarch64. Mohamed approach leverages the latest
+hardware features of the Apple M3+ Silicon chips [1], while mine
+falls back to emulation [2] when features are not available, as
+it happens with the M1 and M2 chipsets.
 
-That said, I will let the maintainers decide which approach they want to 
-see implemented, to avoid Tao jumping between different people opinions.
+We want to support both methods long term, as they solve different
+use cases. Therefore I'm looking for a common API for methods
+added in both series.
 
-Regards,
-Pierrick
+In this series we propose the host_cpu_feature_supported() method
+to check if a feature is supported by the host, allowing fall back
+to TCG. KVM uses are converted, and an example -- while not really
+usable without other patch applied -- is provided for HVF.
+
+Does this look reasonable enough to pursue in that direction?
+
+Thanks,
+
+Phil.
+
+[1] https://lore.kernel.org/qemu-devel/20250808070137.48716-1-mohamed@unpredictable.fr/
+[2] https://lore.kernel.org/qemu-devel/20250620172751.94231-1-philmd@linaro.org/
+
+Mohamed Mediouni (2):
+  target/arm: Factor hvf_psci_get_target_el() out
+  target/arm/hvf: Sync registers used at EL2
+
+Philippe Mathieu-Daudé (8):
+  accel/system: Introduce hwaccel_enabled() helper
+  target/arm: Use generic hwaccel_enabled() to check 'host' cpu type
+  target/arm: Restrict PMU to system mode
+  target/arm: Introduce host_cpu_feature_supported()
+  target/arm: Replace kvm_arm_pmu_supported by
+    host_cpu_feature_supported
+  target/arm: Replace kvm_arm_el2_supported by
+    host_cpu_feature_supported
+  target/arm/hvf: Consider EL2 acceleration for Silicon M3+ chipsets
+  target/arm/hvf: Allow EL2/EL3 emulation on Silicon M1 / M2
+
+ include/system/hw_accel.h | 13 ++++++++
+ target/arm/internals.h    |  8 +++++
+ target/arm/kvm_arm.h      | 24 --------------
+ hw/arm/virt.c             |  8 +----
+ target/arm/arm-qmp-cmds.c |  5 +--
+ target/arm/cpu.c          | 16 +++++----
+ target/arm/cpu64.c        | 11 ++++---
+ target/arm/hvf/hvf.c      | 69 +++++++++++++++++++++++++++++++++++++--
+ target/arm/kvm-stub.c     | 10 ------
+ target/arm/kvm.c          | 33 ++++++++++++++-----
+ 10 files changed, 133 insertions(+), 64 deletions(-)
+
+-- 
+2.49.0
+
 

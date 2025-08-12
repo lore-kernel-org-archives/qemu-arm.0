@@ -4,20 +4,20 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E1F9CA0EC4
-	for <qemu-arm@archiver.kernel.org>; Tue, 12 Aug 2025 09:41:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18B5DC87FCB
+	for <qemu-arm@archiver.kernel.org>; Tue, 12 Aug 2025 09:41:30 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ullUs-0007RC-Nz; Tue, 12 Aug 2025 05:40:48 -0400
+	id 1ullVF-0007Vu-4U; Tue, 12 Aug 2025 05:41:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kane_chen@aspeedtech.com>)
- id 1ullUl-0007QW-M5; Tue, 12 Aug 2025 05:40:40 -0400
+ id 1ullUw-0007SE-R5; Tue, 12 Aug 2025 05:40:51 -0400
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kane_chen@aspeedtech.com>)
- id 1ullUh-0000Yh-Aa; Tue, 12 Aug 2025 05:40:39 -0400
+ id 1ullUu-0000Yh-9V; Tue, 12 Aug 2025 05:40:50 -0400
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Tue, 12 Aug
@@ -33,10 +33,10 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <qemu-devel@nongnu.org>
 CC: <troy_lee@aspeedtech.com>, Kane-Chen-AS <kane_chen@aspeedtech.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PATCH v5 02/10] hw/misc/aspeed_sbc: Connect ASPEED OTP memory device
- to SBC
-Date: Tue, 12 Aug 2025 17:39:59 +0800
-Message-ID: <20250812094011.2617526-3-kane_chen@aspeedtech.com>
+Subject: [PATCH v5 04/10] hw/nvram/aspeed_otp: Add 'drive' property to support
+ block backend
+Date: Tue, 12 Aug 2025 17:40:01 +0800
+Message-ID: <20250812094011.2617526-5-kane_chen@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250812094011.2617526-1-kane_chen@aspeedtech.com>
 References: <20250812094011.2617526-1-kane_chen@aspeedtech.com>
@@ -70,233 +70,64 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Kane-Chen-AS <kane_chen@aspeedtech.com>
 
-This patch connects the aspeed.otp device to the ASPEED Secure Boot
-Controller (SBC) model. It implements OTP memory access via the SBC's
-command interface and enables emulation of secure fuse programming
-flows.
+This patch introduces a 'drive' property to the Aspeed OTP device,
+allowing it to be backed by a block device. Users can now preload
+OTP data via QEMU CLI using a block backend.
 
-The following OTP commands are supported:
-  - READ: reads a 32-bit word from OTP memory into internal registers
-  - PROG: programs a 32-bit word value to the specified OTP address
+Example usage:
+  ./qemu-system-arm \
+    -blockdev driver=file,filename=otpmem.img,node-name=otp \
+    -global aspeed-otp.drive=otp \
+    ...
 
-Trace events are added to observe read/program operations and command
-handling flow.
+If the drive is provided, its content will be loaded as the initial OTP
+state. Otherwise, an internal memory buffer will be used.
 
 Signed-off-by: Kane-Chen-AS <kane_chen@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
 ---
- include/hw/misc/aspeed_sbc.h |   5 ++
- hw/misc/aspeed_sbc.c         | 111 +++++++++++++++++++++++++++++++++++
- hw/misc/trace-events         |   5 ++
- 3 files changed, 121 insertions(+)
+ hw/nvram/aspeed_otp.c | 15 ++++++++++++++-
+ 1 file changed, 14 insertions(+), 1 deletion(-)
 
-diff --git a/include/hw/misc/aspeed_sbc.h b/include/hw/misc/aspeed_sbc.h
-index 405e6782b9..0c2746d392 100644
---- a/include/hw/misc/aspeed_sbc.h
-+++ b/include/hw/misc/aspeed_sbc.h
-@@ -10,6 +10,7 @@
- #define ASPEED_SBC_H
- 
- #include "hw/sysbus.h"
-+#include "hw/nvram/aspeed_otp.h"
- 
- #define TYPE_ASPEED_SBC "aspeed.sbc"
- #define TYPE_ASPEED_AST2600_SBC TYPE_ASPEED_SBC "-ast2600"
-@@ -36,10 +37,14 @@ struct AspeedSBCState {
-     MemoryRegion iomem;
- 
-     uint32_t regs[ASPEED_SBC_NR_REGS];
-+
-+    AspeedOTPState otp;
- };
- 
- struct AspeedSBCClass {
-     SysBusDeviceClass parent_class;
-+
-+    bool has_otp;
- };
- 
- #endif /* ASPEED_SBC_H */
-diff --git a/hw/misc/aspeed_sbc.c b/hw/misc/aspeed_sbc.c
-index a7d101ba71..46a038337c 100644
---- a/hw/misc/aspeed_sbc.c
-+++ b/hw/misc/aspeed_sbc.c
-@@ -15,9 +15,13 @@
- #include "hw/misc/aspeed_sbc.h"
- #include "qapi/error.h"
- #include "migration/vmstate.h"
-+#include "trace.h"
- 
- #define R_PROT          (0x000 / 4)
-+#define R_CMD           (0x004 / 4)
-+#define R_ADDR          (0x010 / 4)
- #define R_STATUS        (0x014 / 4)
-+#define R_CAMP1         (0x020 / 4)
- #define R_QSR           (0x040 / 4)
- 
- /* R_STATUS */
-@@ -41,6 +45,11 @@
- #define QSR_RSA_MASK           (0x3 << 12)
- #define QSR_HASH_MASK          (0x3 << 10)
- 
-+#define OTP_MEMORY_SIZE 0x4000
-+/* OTP command */
-+#define SBC_OTP_CMD_READ 0x23b1e361
-+#define SBC_OTP_CMD_PROG 0x23b1e364
-+
- static uint64_t aspeed_sbc_read(void *opaque, hwaddr addr, unsigned int size)
+diff --git a/hw/nvram/aspeed_otp.c b/hw/nvram/aspeed_otp.c
+index e5b7ca9676..abb3731823 100644
+--- a/hw/nvram/aspeed_otp.c
++++ b/hw/nvram/aspeed_otp.c
+@@ -35,13 +35,25 @@ static bool aspeed_otp_init_storage(AspeedOTPState *s, Error **errp)
  {
-     AspeedSBCState *s = ASPEED_SBC(opaque);
-@@ -57,6 +66,84 @@ static uint64_t aspeed_sbc_read(void *opaque, hwaddr addr, unsigned int size)
-     return s->regs[addr];
- }
+     uint32_t *p;
+     int i, num;
++    uint64_t perm;
  
-+static bool aspeed_sbc_otp_read(AspeedSBCState *s,
-+                                   uint32_t otp_addr)
-+{
-+    MemTxResult ret;
-+    AspeedOTPState *otp = &s->otp;
-+    uint32_t value, otp_offset;
-+
-+    otp_offset = otp_addr << 2;
-+    ret = address_space_read(&otp->as, otp_offset, MEMTXATTRS_UNSPECIFIED,
-+                             &value, sizeof(value));
-+    if (ret != MEMTX_OK) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "Failed to read OTP memory, addr = %x\n",
-+                      otp_addr);
-+        return false;
-+    }
-+    s->regs[R_CAMP1] = value;
-+    trace_aspeed_sbc_otp_read(otp_addr, value);
-+
-+    return true;
-+}
-+
-+static bool aspeed_sbc_otp_prog(AspeedSBCState *s,
-+                                   uint32_t otp_addr)
-+{
-+    MemTxResult ret;
-+    AspeedOTPState *otp = &s->otp;
-+    uint32_t value = s->regs[R_CAMP1];
-+
-+    ret = address_space_write(&otp->as, otp_addr, MEMTXATTRS_UNSPECIFIED,
-+                        &value, sizeof(value));
-+    if (ret != MEMTX_OK) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "Failed to write OTP memory, addr = %x\n",
-+                      otp_addr);
-+        return false;
-+    }
-+
-+    trace_aspeed_sbc_otp_prog(otp_addr, value);
-+
-+    return true;
-+}
-+
-+static void aspeed_sbc_handle_command(void *opaque, uint32_t cmd)
-+{
-+    AspeedSBCState *s = ASPEED_SBC(opaque);
-+    AspeedSBCClass *sc = ASPEED_SBC_GET_CLASS(opaque);
-+    bool ret = false;
-+    uint32_t otp_addr;
-+
-+    if (!sc->has_otp) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: OTP memory is not supported\n",
-+                      __func__);
-+        return;
-+    }
-+
-+    s->regs[R_STATUS] &= ~(OTP_MEM_IDLE | OTP_IDLE);
-+    otp_addr = s->regs[R_ADDR];
-+
-+    switch (cmd) {
-+    case SBC_OTP_CMD_READ:
-+        ret = aspeed_sbc_otp_read(s, otp_addr);
-+        break;
-+    case SBC_OTP_CMD_PROG:
-+        ret = aspeed_sbc_otp_prog(s, otp_addr);
-+        break;
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: Unknown command 0x%x\n",
-+                      __func__, cmd);
-+        break;
-+    }
-+
-+    trace_aspeed_sbc_handle_cmd(cmd, otp_addr, ret);
-+    s->regs[R_STATUS] |= (OTP_MEM_IDLE | OTP_IDLE);
-+}
-+
- static void aspeed_sbc_write(void *opaque, hwaddr addr, uint64_t data,
-                               unsigned int size)
- {
-@@ -78,6 +165,9 @@ static void aspeed_sbc_write(void *opaque, hwaddr addr, uint64_t data,
-                       "%s: write to read only register 0x%" HWADDR_PRIx "\n",
-                       __func__, addr << 2);
-         return;
-+    case R_CMD:
-+        aspeed_sbc_handle_command(opaque, data);
-+        return;
-     default:
-         break;
-     }
-@@ -115,10 +205,30 @@ static void aspeed_sbc_reset(DeviceState *dev)
-     s->regs[R_QSR] = s->signing_settings;
- }
- 
-+static void aspeed_sbc_instance_init(Object *obj)
-+{
-+    AspeedSBCClass *sc = ASPEED_SBC_GET_CLASS(obj);
-+    AspeedSBCState *s = ASPEED_SBC(obj);
-+
-+    if (sc->has_otp) {
-+        object_initialize_child(OBJECT(s), "otp", &s->otp,
-+                                TYPE_ASPEED_OTP);
-+    }
-+}
-+
- static void aspeed_sbc_realize(DeviceState *dev, Error **errp)
- {
-     AspeedSBCState *s = ASPEED_SBC(dev);
-     SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
-+    AspeedSBCClass *sc = ASPEED_SBC_GET_CLASS(dev);
-+
-+    if (sc->has_otp) {
-+        object_property_set_int(OBJECT(&s->otp), "size",
-+                                OTP_MEMORY_SIZE, &error_abort);
-+        if (!qdev_realize(DEVICE(&s->otp), NULL, errp)) {
-+            return;
++    if (s->blk) {
++        perm = BLK_PERM_CONSISTENT_READ |
++               (blk_supports_write_perm(s->blk) ? BLK_PERM_WRITE : 0);
++        if (blk_set_perm(s->blk, perm, BLK_PERM_ALL, errp) < 0) {
++            return false;
 +        }
++        if (blk_pread(s->blk, 0, s->size, s->storage, 0) < 0) {
++            error_setg(errp, "Failed to read the initial flash content");
++            return false;
++        }
++    } else {
+         num = s->size / sizeof(uint32_t);
+         p = (uint32_t *)s->storage;
+         for (i = 0; i < num; i++) {
+             p[i] = (i % 2 == 0) ? 0x00000000 : 0xFFFFFFFF;
+         }
+-
 +    }
+     return true;
+ }
  
-     memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_sbc_ops, s,
-             TYPE_ASPEED_SBC, 0x1000);
-@@ -155,6 +265,7 @@ static const TypeInfo aspeed_sbc_info = {
-     .name = TYPE_ASPEED_SBC,
-     .parent = TYPE_SYS_BUS_DEVICE,
-     .instance_size = sizeof(AspeedSBCState),
-+    .instance_init = aspeed_sbc_instance_init,
-     .class_init = aspeed_sbc_class_init,
-     .class_size = sizeof(AspeedSBCClass)
+@@ -75,6 +87,7 @@ static void aspeed_otp_realize(DeviceState *dev, Error **errp)
+ 
+ static const Property aspeed_otp_properties[] = {
+     DEFINE_PROP_UINT64("size", AspeedOTPState, size, 0),
++    DEFINE_PROP_DRIVE("drive", AspeedOTPState, blk),
  };
-diff --git a/hw/misc/trace-events b/hw/misc/trace-events
-index e3f64c0ff6..9e05b82f37 100644
---- a/hw/misc/trace-events
-+++ b/hw/misc/trace-events
-@@ -90,6 +90,11 @@ slavio_sysctrl_mem_readl(uint32_t ret) "Read system control 0x%08x"
- slavio_led_mem_writew(uint32_t val) "Write diagnostic LED 0x%04x"
- slavio_led_mem_readw(uint32_t ret) "Read diagnostic LED 0x%04x"
  
-+# aspeed_sbc.c
-+aspeed_sbc_handle_cmd(uint32_t cmd, uint32_t addr, bool ret) "Handling command 0x%" PRIx32 " for OTP addr 0x%" PRIx32 " Result: %d"
-+aspeed_sbc_otp_read(uint32_t addr, uint32_t value) "OTP Memory read: addr 0x%" PRIx32 " value 0x%" PRIx32
-+aspeed_sbc_otp_prog(uint32_t addr, uint32_t value) "OTP Memory write: addr 0x%" PRIx32 " value 0x%" PRIx32
-+
- # aspeed_scu.c
- aspeed_scu_write(uint64_t offset, unsigned size, uint32_t data) "To 0x%" PRIx64 " of size %u: 0x%" PRIx32
- aspeed_scu_read(uint64_t offset, unsigned size, uint32_t data) "To 0x%" PRIx64 " of size %u: 0x%" PRIx32
+ static void aspeed_otp_class_init(ObjectClass *klass, const void *data)
 -- 
 2.43.0
 

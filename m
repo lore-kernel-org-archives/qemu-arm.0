@@ -4,90 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DFD22C87FCB
-	for <qemu-arm@archiver.kernel.org>; Tue, 12 Aug 2025 12:16:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C027CCA0EC4
+	for <qemu-arm@archiver.kernel.org>; Tue, 12 Aug 2025 12:30:10 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ulnud-0005Hu-3F; Tue, 12 Aug 2025 08:15:31 -0400
+	id 1ulo8G-0007ve-M3; Tue, 12 Aug 2025 08:29:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ulnuY-0005Gw-7Z
- for qemu-arm@nongnu.org; Tue, 12 Aug 2025 08:15:26 -0400
-Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ulnuQ-0004Fg-DU
- for qemu-arm@nongnu.org; Tue, 12 Aug 2025 08:15:25 -0400
-Received: by mail-pl1-x634.google.com with SMTP id
- d9443c01a7336-24099fade34so38713345ad.0
- for <qemu-arm@nongnu.org>; Tue, 12 Aug 2025 05:15:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1755000911; x=1755605711; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=/Bxrg56B2/1q5rYYI/G2b6ZimfDVJ2Y7Pz0uWdUj5Bg=;
- b=GVsUaD9TEisCJuuJ5Tv1ZGgMnXWcwlBtAy3VaDNqrfvWW8cNNmSmMoqD0N4gtZNZHW
- VsnVR4k1DnDRzoJZ2n6mPzyWiJ90XJLeHB9U+hooMJtbIDlSSmE0y9JBpKUDqcRAsHbL
- WURXKrGX9A2sRVKEX4dmLnQqJSCU24rA+UwU0tgxpPrNhxe0xiKNh4i/y3NsC2lVhYFS
- 8GOqGVPh5KdY5W7TCUy8xgkFHlvVUUQss1U81SGJ+J/879XuR37E9QzTROEcRO+KfDiZ
- xpkNUtW9taJW1CcDeHAK1IhJFxAvJ7L28BgB+C5ROg/a+LjgKA74TLgnhziHT6PZ2QA/
- nB6g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1755000911; x=1755605711;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=/Bxrg56B2/1q5rYYI/G2b6ZimfDVJ2Y7Pz0uWdUj5Bg=;
- b=d7K1QTRuNCkjHLQaQ0FwCBuJQvtqEnpnDg0z3NsyfaDOroqfqx/lm9HP0Sdd58TEg1
- BPsl1ZQBMNIa+KOFVwMVruOISeuBB6y/ECORTryl2NKPFZy+9rzwFHMzF1QkDdvs1qu/
- 2v+TIW9z2JdHssw6gN3mPeijWSCIqgPhRbACwKkYKno6WaliG7XZ557UKll/GzVtsAXk
- 6xgKXEXb/L3ofjd9MYQPfOy4i/mtWU/TAvdpH/0OdO7HXCUsGRZGuJZyJrTrZYWQKY3q
- oQ+9dPAPmE5lolPyj3qn6z2Db0PObfeu1Cyd5GUUiEkB7Rq493Mgd6CXtQ2uI6yMiLpM
- /L2Q==
-X-Gm-Message-State: AOJu0Yy+xx3GxwQ+brWlqWPYj+nLlwPQiTCQr4+kNZnVMSFhgharqAXP
- 52YoulYvNHSStbk5Buu4EX2TCd11qgkF6Axj42Ai0UmnHPAIBI77Y5uOHOixV5oez/4=
-X-Gm-Gg: ASbGncvsK2VoQRqqBAaLRZzLhUFuR+pFhOHdigAcyJtoczsmVJwymyQf537b++THPGC
- Q1Z/m7QLTUWGiIzvbAkPsIf8Zr7aOx1Ugk9MB/VSYFTPyRrKEncwPiWCxXwThp+DEchvYluurfJ
- ZjGcRSq6sXtvznTsja4vekl91veRVT0gy/HSCU3jZQw8ZFruVd+ZQee3ijpuVCN+VbRS1mQz86N
- 41gQoW0NZb4k/L7vzhrVZhUBhmyhi2V2EvZmR9Tlnx33sMEh4i5uE1kKMHAAuM+it/lO6iu77Ed
- oJRWx/gPGOEL9NcbE5abgqHpFl0Ag9OAssSEC4wNX6UFdE2VRBNNWyyBehHY70ZKNLKGyrwdTPq
- hVCSg8tjmY9D/NI/hRy/8OXekbNHZchnIvbPGDIXF
-X-Google-Smtp-Source: AGHT+IFgEEPe1PYImXF6BdjNXMF+vuKs+96kB+FXLsF9hCy3+s8nYPHK1OoZI08fRo0TXTkFhTwKaQ==
-X-Received: by 2002:a17:902:f78b:b0:240:66ff:b276 with SMTP id
- d9443c01a7336-242fc315e6amr49899765ad.31.1755000911106; 
- Tue, 12 Aug 2025 05:15:11 -0700 (PDT)
-Received: from [192.168.4.112] ([168.140.255.211])
- by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-241e8976a48sm297685785ad.104.2025.08.12.05.15.08
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 12 Aug 2025 05:15:10 -0700 (PDT)
-Message-ID: <d7e55a44-03ef-4d13-9705-a743921138be@linaro.org>
-Date: Tue, 12 Aug 2025 22:15:05 +1000
+ (Exim 4.90_1) (envelope-from <alireza.sanaee@huawei.com>)
+ id 1ulo8E-0007vM-Ro; Tue, 12 Aug 2025 08:29:35 -0400
+Received: from [185.176.79.56] (helo=frasgout.his.huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <alireza.sanaee@huawei.com>)
+ id 1ulo88-0006yN-QJ; Tue, 12 Aug 2025 08:29:33 -0400
+Received: from mail.maildlp.com (unknown [172.18.186.216])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4c1W3R22b5z6M4KD;
+ Tue, 12 Aug 2025 20:27:15 +0800 (CST)
+Received: from frapeml500003.china.huawei.com (unknown [7.182.85.28])
+ by mail.maildlp.com (Postfix) with ESMTPS id 7D05E140371;
+ Tue, 12 Aug 2025 20:29:11 +0800 (CST)
+Received: from a2303103017.china.huawei.com (10.47.65.66) by
+ frapeml500003.china.huawei.com (7.182.85.28) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Tue, 12 Aug 2025 14:29:10 +0200
+To: <qemu-devel@nongnu.org>
+CC: <anisinha@redhat.com>, <armbru@redhat.com>, <berrange@redhat.com>,
+ <dapeng1.mi@linux.intel.com>, <eric.auger@redhat.com>,
+ <farman@linux.ibm.com>, <gustavo.romero@linaro.org>, <imammedo@redhat.com>,
+ <jiangkunkun@huawei.com>, <jonathan.cameron@huawei.com>,
+ <linuxarm@huawei.com>, <maobibo@loongson.cn>, <mst@redhat.com>,
+ <mtosatti@redhat.com>, <peter.maydell@linaro.org>, <philmd@linaro.org>,
+ <qemu-arm@nongnu.org>, <richard.henderson@linaro.org>,
+ <shameerali.kolothum.thodi@huawei.com>, <shannon.zhaosl@gmail.com>,
+ <yangyicong@hisilicon.com>, <zhao1.liu@intel.com>
+Subject: [PATCH v15 1/8] target/arm/tcg: increase cache level for cpu=max
+Date: Tue, 12 Aug 2025 13:28:22 +0100
+Message-ID: <20250812122829.204-2-alireza.sanaee@huawei.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20250812122829.204-1-alireza.sanaee@huawei.com>
+References: <20250812122829.204-1-alireza.sanaee@huawei.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 23/85] target/arm: Expand syndrome parameter to
- raise_exception*
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Pierrick Bouvier <pierrick.bouvier@linaro.org>
-References: <20250802232953.413294-1-richard.henderson@linaro.org>
- <20250802232953.413294-24-richard.henderson@linaro.org>
- <3abbb8de-bbe6-4404-9714-50b487c46a8d@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Content-Language: en-US
-In-Reply-To: <3abbb8de-bbe6-4404-9714-50b487c46a8d@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::634;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x634.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+Content-Type: text/plain
+X-Originating-IP: [10.47.65.66]
+X-ClientProxiedBy: lhrpeml500004.china.huawei.com (7.191.163.9) To
+ frapeml500003.china.huawei.com (7.182.85.28)
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 185.176.79.56 (deferred)
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=alireza.sanaee@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -33
+X-Spam_score: -3.4
+X-Spam_bar: ---
+X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -101,29 +73,46 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Alireza Sanaee <alireza.sanaee@huawei.com>
+From:  Alireza Sanaee via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 8/12/25 16:26, Philippe Mathieu-Daudé wrote:
-> On 3/8/25 01:28, Richard Henderson wrote:
->> Prepare for raising exceptions with 64-bit syndromes.
->>
->> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
->> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
->> ---
->>   target/arm/internals.h     | 6 +++---
->>   target/arm/tcg-stubs.c     | 2 +-
->>   target/arm/tcg/op_helper.c | 4 ++--
->>   3 files changed, 6 insertions(+), 6 deletions(-)
-> 
-> Maybe re-order with previous patch?
+This patch addresses cache description in the `aarch64_max_tcg_initfn`
+function for cpu=max. It introduces three layers of caches and modifies
+the cache description registers accordingly.
 
-No.  With this order, the destination is never smaller than the source.
+Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Signed-off-by: Alireza Sanaee <alireza.sanaee@huawei.com>
+---
+ target/arm/tcg/cpu64.c | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
 
-(1) Widen env->exception.syndrome
-(2) Widen raise_exception syndrome
-(3) Generate a 64-bit syndrome during translate.
+diff --git a/target/arm/tcg/cpu64.c b/target/arm/tcg/cpu64.c
+index 35cddbafa4..bf1372ecdf 100644
+--- a/target/arm/tcg/cpu64.c
++++ b/target/arm/tcg/cpu64.c
+@@ -1093,6 +1093,19 @@ void aarch64_max_tcg_initfn(Object *obj)
+     uint64_t t;
+     uint32_t u;
+ 
++    /*
++     * Expanded cache set
++     */
++    SET_IDREG(isar, CLIDR, 0x8200123); /* 4 4 3 in 3 bit fields */
++    /* 64KB L1 dcache */
++    cpu->ccsidr[0] = make_ccsidr(CCSIDR_FORMAT_LEGACY, 4, 64, 64 * KiB, 7);
++    /* 64KB L1 icache */
++    cpu->ccsidr[1] = make_ccsidr(CCSIDR_FORMAT_LEGACY, 4, 64, 64 * KiB, 2);
++    /* 1MB L2 unified cache */
++    cpu->ccsidr[2] = make_ccsidr(CCSIDR_FORMAT_LEGACY, 8, 64, 1 * MiB, 7);
++    /* 2MB L3 unified cache */
++    cpu->ccsidr[4] = make_ccsidr(CCSIDR_FORMAT_LEGACY, 8, 64, 2 * MiB, 7);
++
+     /*
+      * Unset ARM_FEATURE_BACKCOMPAT_CNTFRQ, which we would otherwise default
+      * to because we started with aarch64_a57_initfn(). A 'max' CPU might
+-- 
+2.43.0
 
-
-r~
 

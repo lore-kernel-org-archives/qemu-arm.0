@@ -4,100 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3AAD3CA0EC4
-	for <qemu-arm@archiver.kernel.org>; Tue, 12 Aug 2025 00:49:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8347CA0ED1
+	for <qemu-arm@archiver.kernel.org>; Tue, 12 Aug 2025 03:47:39 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uldCL-0006bF-Jm; Mon, 11 Aug 2025 20:49:09 -0400
+	id 1ulfyW-0005Pz-Tk; Mon, 11 Aug 2025 23:47:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1uldCF-0006ak-Km
- for qemu-arm@nongnu.org; Mon, 11 Aug 2025 20:49:01 -0400
-Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
+ (Exim 4.90_1) (envelope-from <thiago.bauermann@linaro.org>)
+ id 1ulfyT-0005MC-BY
+ for qemu-arm@nongnu.org; Mon, 11 Aug 2025 23:46:57 -0400
+Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1uldC6-0002hb-U4
- for qemu-arm@nongnu.org; Mon, 11 Aug 2025 20:48:58 -0400
-Received: by mail-pl1-x633.google.com with SMTP id
- d9443c01a7336-240418cbb8bso31643775ad.2
- for <qemu-arm@nongnu.org>; Mon, 11 Aug 2025 17:48:48 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <thiago.bauermann@linaro.org>)
+ id 1ulfyL-0008RA-UM
+ for qemu-arm@nongnu.org; Mon, 11 Aug 2025 23:46:56 -0400
+Received: by mail-pf1-x42a.google.com with SMTP id
+ d2e1a72fcca58-7426c44e014so4175683b3a.3
+ for <qemu-arm@nongnu.org>; Mon, 11 Aug 2025 20:46:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1754959726; x=1755564526; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=surpJ98tRaESk7K6ewenyJUSlUpmPKhBVFvRz3srkwU=;
- b=a+y9mFI5FOWO2I/iYq3cp3T/Bzq9fQPJhGQbfBwSaVw7WiYbsgLh+GYVSeXckEJtfJ
- eqhxwhBRJPs8i94er9VH/jDNJMRWsfhcXB6NZFt8QiwrHNwCl5VZywHFQcTZ6Gz9gd1N
- YS5l9Qjq61cCDd9oho6r1R3qKO9/57yuo13ovR+/jt+LyzhtR1g2jKPWR+XPrlAcewOp
- VWxoQ13qMLflk26ibc3C7C5b4ZQSuHVGAvlt6gt0dmWiSUbgh+bXIzVq2l7KHZX8f9Px
- Lylrup3nwnr6RwDXDm+CWUTkvm/300yV24DzsIHEIbAOWV6ydZGIMVkcz5tTz/dKieye
- M1tQ==
+ d=linaro.org; s=google; t=1754970405; x=1755575205; darn=nongnu.org;
+ h=mime-version:message-id:date:user-agent:references:in-reply-to
+ :subject:cc:to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=wTTfVfNn2jNYere0UA8MeKK5TYdApHf+rQhpWOua2NU=;
+ b=WhPMEVaIDLfyp4vKYJs4CveslD/kUvYtJskBbWxSslrW6kyRd57tc9v7K2WEKaRGlN
+ +deehxpL+djCbNFueKYbgiKB9IDg4Sy6E/AKAcvDZyYJxlg3g5NoAoB7djm9vzut89W5
+ 3naztvbALsH160PAzkZVRwpt7xbq3p+xjk2OeL6hVJYWhm1atI1KU1iwwL68m8juJ3tR
+ ACxJD9Rq7Y/gserFeM2iapJFttN3ieGU2uTkx6m9SCJoeELFLRQxF59/BR12akdU1B4f
+ k6zzqhTbJq/MymLYNvW8tAN7X/HX2/YCq9f2CjdDZxIM1vSMOpOgtuyJXMBags35OD8i
+ XqiQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1754959726; x=1755564526;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=surpJ98tRaESk7K6ewenyJUSlUpmPKhBVFvRz3srkwU=;
- b=b02KcSBwhQRJIGgrEuOvGMMFUimzGXhypidwnATYeq+DRMyA5e1kfIbQcQ8O9lPQmJ
- g77Jfu3CsA2VVszLoB8NVxnAZg6m0hvqgkUS1FMCujuRWSP1RIAADMmPsuPefwQJ7zwC
- b2y+3a/dXHcvRlAEJNsXZTyN4naj/c9KlEBqhUEzCdhlVWz1SC3vTk4sKamXUXPq9Wid
- 5lHYJH92nhM4unDpalDEaPl9gVS7xeFvYOYlwED6PZ3tHDhsC+aMM+wwbYNGef2QqEK4
- 7r0btp+YOCexu1AckAgMdd8JE6i7j9CLxvC7M37QrjVedzUrahXlC82apuiDubujXIDU
- rp2A==
+ d=1e100.net; s=20230601; t=1754970405; x=1755575205;
+ h=mime-version:message-id:date:user-agent:references:in-reply-to
+ :subject:cc:to:from:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=wTTfVfNn2jNYere0UA8MeKK5TYdApHf+rQhpWOua2NU=;
+ b=qPFIZApMTTixeWHP2C0AxCPRE+uMJ0iZaAiM48cFbsvs/5Dt3xAVAqjpCTdhz4G955
+ ROJsvbMrpDb4y4ptu3F2iMqiuZQLR7vOukCAkZ6nZ98vDWIGaoZFpNSRsonqSVppIiQq
+ z8aEhfGYOBqTxiw9tggT6i3Lr1+UVr59IN2J4YsTjgNfgGM5buxrAlrZpfws0hpTuUcS
+ o0MuPMF0MRqEHozWHEwUwwYuba3iiQNicv5LYnSEc/olUiIv7sVnTYz4kEQXPCw47uOF
+ WGYP8Uk5dMYsgDBP7jglETSEjmACL06XfNy8O52Xi0Rwp323Zk+gdZnbC4tRL2HI/LVw
+ RlQQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUU0xKB2nnXdonVfvdEe79BSjFgXnVY2ewtKH6D8imSHdECB4/RBi6dHDba6wzwWDDIV9+UTINh8Q==@nongnu.org
-X-Gm-Message-State: AOJu0YzZhkPOXi1P9B95KQ0LGkwHWzEszpi2Q1mj/vy1LTPpv/XmXq9Y
- GiF8PzuhM4C73ZVSovszzaJRuVo5ZDvIH3jOuAgHc8vraIoxFwtMWUMwKftg5YLYjTw=
-X-Gm-Gg: ASbGncsxlbpmCtr+ztQrUMz5dt4ovnq+Fcm/Eihozkraucp43cIDeg6ET+8KoFqwqae
- /rT64yXdsOVAZeU0C1dHJExzkTA+iwJdFxgwdCED1uozvW54Llbg4stKX2n4P+74+rjEaPei4/R
- critVCUxIqhUKWFkt4YssQ6IbPijOg+cJff7AmspwlJvyM6DSlzHRbZupSKrF7T3dn0TZcMinJT
- 7fpx4lZz+n1HKsjy63akYtB6mEMPwxBW6QfUUE2i27c+azmBtfZsmisnwaFB5badr1OtvxYaMrA
- PLxMV/PdFWes3m4lT3rM659CPO3nfP67yJIkhuRyWxRgCbqKQnaV7yHGPWbkW0QirRTpzdrpTS2
- Nt3pQN0oGy6YUecpthQh54yybRWpA7n9Hbb6XXEMVuA==
-X-Google-Smtp-Source: AGHT+IH36nv5aftkZHvXUnHZVxdwgQ0piS8gs8U6mo1ksuQEVDfYmd+B+94Lg+Gbueb2VGnIBsgn6Q==
-X-Received: by 2002:a17:903:1aac:b0:235:6aa:1675 with SMTP id
- d9443c01a7336-242fc371057mr20701975ad.52.1754959726287; 
- Mon, 11 Aug 2025 17:48:46 -0700 (PDT)
-Received: from [192.168.10.140] ([180.233.125.160])
+ AJvYcCWIYdNh1/q2Dcs3zvkPKTLDIMk8DLEwks7oqsZFWv4QVKhb8uOEGKaeFXSf5jdVdSeaizLyQ4GVBQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yx3h+N1kAudMSahc74ybpfBv2g0A0Ishu+El41VVCvYKDMH5fRl
+ 4HLdcDUqBUKmTEfYEtvqgD1Y61oth1Dot/ddVq9uLGN0JA5zQAhMLwTas+qS3ybhN2o=
+X-Gm-Gg: ASbGnctF//Uv0Plxp6bf+m+U4B8JPVecUn6h78BnKAZoWKzQsdZH3KTnB6torg3/mc6
+ 5dNQdp6A4VktB+ZViAT9maI+cZmYF91pypjYisodlwxxS7qz7tyxzyFd2UgReDWhTkJT0fEiwRb
+ RRmaXV15rHzWSP9rhXR+3+yTj0pjHUmZfVK+Gk8zm0cJp+f3tPLPVcdVDpf38Diovc7/JO8BGHt
+ QruAl5zbMdF78ag+W4d2uZdPu3hIiTYFnELvO1ZP27/IHKanUScFsMl+zuGTx6QVTK4ohJXUk7w
+ Gheqya+oUqzAicmtmK1gjfh9JSXKPoMXxDFDQ2poiIPbvNXDV3OZMgPxLTh1hvaDSsnZiEGPGkQ
+ gAPOCK3wd983AAqCMjwM+xjE90H6QuCr8brP50ZpUEFE=
+X-Google-Smtp-Source: AGHT+IHLGR6W5lTshcA2v0sdZBIZIztOfS1YCMlZwtW8wYCj/wlgwWvUyoMy/+6rwC/CLu+ByiaLEw==
+X-Received: by 2002:a05:6a00:1ad1:b0:748:ff39:a0f7 with SMTP id
+ d2e1a72fcca58-76e0de1be98mr2699934b3a.9.1754970404991; 
+ Mon, 11 Aug 2025 20:46:44 -0700 (PDT)
+Received: from localhost ([2804:14c:87d5:567d:588b:eb7d:58f7:a07e])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-241e8aab53dsm283244775ad.170.2025.08.11.17.48.40
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 11 Aug 2025 17:48:45 -0700 (PDT)
-Message-ID: <8efcc809-f548-4383-b742-e435d622da73@linaro.org>
-Date: Tue, 12 Aug 2025 10:48:37 +1000
+ d2e1a72fcca58-76bcce93da5sm27890219b3a.50.2025.08.11.20.46.43
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 11 Aug 2025 20:46:44 -0700 (PDT)
+From: Thiago Jung Bauermann <thiago.bauermann@linaro.org>
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org,  qemu-arm@nongnu.org
+Subject: Re: [PATCH v2 00/85] target/arm: Implement FEAT_GCS
+In-Reply-To: <20250802232953.413294-1-richard.henderson@linaro.org> (Richard
+ Henderson's message of "Sun, 3 Aug 2025 09:28:28 +1000")
+References: <20250802232953.413294-1-richard.henderson@linaro.org>
+User-Agent: mu4e 1.12.11; emacs 30.1
+Date: Tue, 12 Aug 2025 00:46:41 -0300
+Message-ID: <87jz39mcbi.fsf@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH 07/11] target/arm: Replace kvm_arm_pmu_supported by
- host_cpu_feature_supported
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Miguel Luis <miguel.luis@oracle.com>, kvm@vger.kernel.org,
- Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini
- <pbonzini@redhat.com>, Haibo Xu <haibo.xu@linaro.org>,
- Mohamed Mediouni <mohamed@unpredictable.fr>,
- Mark Burton <mburton@qti.qualcomm.com>, Alexander Graf <agraf@csgraf.de>,
- Claudio Fontana <cfontana@suse.de>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
- <alex.bennee@linaro.org>, Mads Ynddal <mads@ynddal.dk>,
- Eric Auger <eric.auger@redhat.com>, qemu-arm@nongnu.org,
- Cameron Esfahani <dirty@apple.com>
-References: <20250811170611.37482-1-philmd@linaro.org>
- <20250811170611.37482-8-philmd@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Content-Language: en-US
-In-Reply-To: <20250811170611.37482-8-philmd@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::633;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x633.google.com
-X-Spam_score_int: 16
-X-Spam_score: 1.6
-X-Spam_bar: +
-X-Spam_report: (1.6 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
- DKIM_SIGNED=0.1, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_SBL_CSS=3.335,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Content-Type: text/plain
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42a;
+ envelope-from=thiago.bauermann@linaro.org; helo=mail-pf1-x42a.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -113,20 +101,70 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 8/12/25 03:06, Philippe Mathieu-Daudé wrote:
-> +++ b/target/arm/kvm.c
-> @@ -288,7 +288,7 @@ static bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
->                                1 << KVM_ARM_VCPU_PTRAUTH_GENERIC);
->       }
->   
-> -    if (kvm_arm_pmu_supported()) {
-> +    if (host_cpu_feature_supported(ARM_FEATURE_PMU, false)) {
+Hello,
 
-Why is false correct here?  Alternately, in the next patch, why is it correct to pass true 
-for the EL2 test?
+Richard Henderson <richard.henderson@linaro.org> writes:
 
-What is the purpose of the can_emulate parameter at all?
+> Based-on: 20250727074202.83141-1-richard.henderson@linaro.org
+> ("[PATCH for-10.2 v9 0/6] target/arm: Add FEAT_MEC to max cpu")
+>
+> Tree: https://gitlab.com/rth7680/qemu/-/tree/tgt-arm-gcs
+>
+> This includes the prerequisite features, ATS1A and S1PIE, and
+> not a prerequisite but closely related, S2PIE.
+>
+> This passes the linux kselftests for gcs, with a 48-bit VA.
+> I also include a few smoke tests in tests/tcg/.
+>
+> There's something subtly wrong with a 52-bit VA.  Most everything
+> works fine, but the first GCS lookup faults on a missing level 3
+> page table entry: a Translation fault, not a Permission fault.
+> The kernel then panics.  Either there's something amiss with our
+> implementation of FEAT_LPA2, or there's a kernel bug.
+>
+> This includes a best-effort linux-user implementation.  Since we
+> don't have softmmu in user-only (yet), gcs stack pages get normal
+> read/write access.  This means we cannot write-protect the pages
+> in the same way the system implementation can.  But all of the
+> other parts of GCS work fine, which is good enough for testing.
+>
+> Changes for v2:
+>   - Add arm_mmuidx_is_valid
+>   - Revise and merge back the linux-user/aarch64 changes for
+>     syndromes and ESR records.
 
+I finally managed to test your branch with my GDB patches for GCS
+support in Linux userspace.
 
-r~
+Most of the GDB tests pass. The only failure is in a test which sets the
+GCSPR in a process to a bogus value. This causes the process to get a
+SIGBUS:
+
+(gdb) set $gcspr = 0xbadc0ffee
+(gdb) continue
+Continuing.
+
+Program received signal SIGBUS, Bus error.
+normal_function0 () at /path/to/gdb/testsuite/gdb.arch/aarch64-gcs.c:121
+121	  __asm__ volatile ("ret\n");
+
+In the FVP emulator, the process gets a SIGSEGV instead, so that is what
+my test expects:
+
+(gdb) set $gcspr = 0xbadc0ffee
+(gdb) continue
+Continuing.
+
+Program received signal SIGSEGV, Segmentation fault.
+normal_function0 () at /path/to/gdb/testsuite/gdb.arch/aarch64-gcs.c:121
+121	  __asm__ volatile ("ret\n");
+
+I don't know whether this is a bug or just a different permissible
+behaviour, in which case I can easily adjust my test to expect either
+signal.
+
+I'm using Linux v6.16.0-rc7.
+
+-- 
+Thiago
 

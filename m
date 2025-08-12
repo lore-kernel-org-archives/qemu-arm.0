@@ -4,118 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E97CCA0EC4
-	for <qemu-arm@archiver.kernel.org>; Tue, 12 Aug 2025 19:32:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9543CA0EDC
+	for <qemu-arm@archiver.kernel.org>; Tue, 12 Aug 2025 22:32:58 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uluix-0004QI-9H; Tue, 12 Aug 2025 15:31:56 -0400
+	id 1ulxXZ-00030c-Hr; Tue, 12 Aug 2025 18:32:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <vacha.bhavsar@oss.qualcomm.com>)
- id 1uluiv-0004Py-4S
- for qemu-arm@nongnu.org; Tue, 12 Aug 2025 15:31:53 -0400
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <vacha.bhavsar@oss.qualcomm.com>)
- id 1uluio-0003LR-OW
- for qemu-arm@nongnu.org; Tue, 12 Aug 2025 15:31:52 -0400
-Received: from pps.filterd (m0279865.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 57CJT0mj025655
- for <qemu-arm@nongnu.org>; Tue, 12 Aug 2025 19:31:42 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-type:date:from:in-reply-to:message-id:mime-version
- :references:subject:to; s=qcppdkim1; bh=YYaasBngXKjjx1M6VasJ697+
- mhkQU7i8Wd4wpoSGpnI=; b=pH9a3QywK5a+kit/IgGhSaabjmO9hXLD2suxSka+
- TVpYKPTCWjSK+7ZpaDvPMOSy6TD2gBLUxaAu6yUgzy3OPMnQjbTYfZNJUEEGilTI
- kf0f2gP6pbw60W7KM1FImj/nV14Lq8pNQhAxdti20HobBtnC2mY/dk1yODfVDcq7
- WUIiU8GNwrBrA1WZxadaJCP5j61jHRYJoefv1c3ESlsvMOQkSUCoM09jOtj6rN+D
- 5NSO9DYJaXRn2TitF/gq+59swHxUT4aH9wWT2UvMvC0iWgEtbWb7gnEugAabERA1
- nI8nwm/cBfRwwV72F7tPyYhhi/1hS3rcb1ZPeSJ+LOFmpQ==
-Received: from mail-yw1-f200.google.com (mail-yw1-f200.google.com
- [209.85.128.200])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 48dw9sshe2-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Tue, 12 Aug 2025 19:31:41 +0000 (GMT)
-Received: by mail-yw1-f200.google.com with SMTP id
- 00721157ae682-70e4269de4fso84338087b3.0
- for <qemu-arm@nongnu.org>; Tue, 12 Aug 2025 12:31:41 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1ulxXW-0002zU-OP
+ for qemu-arm@nongnu.org; Tue, 12 Aug 2025 18:32:18 -0400
+Received: from mail-pf1-x42d.google.com ([2607:f8b0:4864:20::42d])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1ulxXM-0007qP-0L
+ for qemu-arm@nongnu.org; Tue, 12 Aug 2025 18:32:18 -0400
+Received: by mail-pf1-x42d.google.com with SMTP id
+ d2e1a72fcca58-76b36e6b9ddso5168683b3a.1
+ for <qemu-arm@nongnu.org>; Tue, 12 Aug 2025 15:32:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1755037922; x=1755642722; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=7NcA2ibZA6OD/D3dyrnG+kVDrjyeC84AhvKY/xmgzcY=;
+ b=DMr3dsTXc6uuzpeQ7CvVk6IthgleGyTDuvSYAOgjnf6+lXgHpmGMFFaDISO++unvzT
+ VJglC/tJoViQtssBt/gzWEUmfgxpxz4mi7ZZ7N7Un52vmDMqQ//XBMGKNeYCCWtvEOjQ
+ i007UyxQuMatAoZXWs2BIEGEG32B8+SlgN1UI9ZWL6y52DuJu/HS8dULwRZ8pfoY9rQ8
+ 2NpYoOcdWeCjEDJfmRIey4MOs4bym92tMmPQMFER4+QMvLL9c9gRVVEMFTVlNMg2YGO3
+ 5VSq5s5n7SfwTi0mNCGl8Pxd0QH0hhkDHH3J+ti6BlDg1b1WPuBqGMMx6r8I9+gV7Zjn
+ zWyg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1755027100; x=1755631900;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=YYaasBngXKjjx1M6VasJ697+mhkQU7i8Wd4wpoSGpnI=;
- b=CsU/NksgSwRJbjSSojKaNboJvgd1vDXQlv7SerQdutZXD/jS5u9MX3nVmPHKuRJwm/
- 5eUh6wuMot7iSAqnZ27ye8JSOU1/ZwTY4Gu2rpmHpxnPhj67gluZbKcIWlQowSp41iBA
- j/8ZzNaTl2irAt3FP+Lak4xlUkZEErodJAOcdM86KiWAGxOYQc0P3jMNW4Yt3gAw/tC5
- m/JxiFFXTfIMrCk8wGBaNkY7rJkSKtmFLzshZjZ8YyWsmvIQ7qMYGqkyUz0JO/j82HYi
- Vx/T2Yx0Cjye86A9b2p0fP2Jj4k7lefM19g0JBMEng71QlUPOvb4MwI3tkOzffvQBpxf
- jILw==
+ d=1e100.net; s=20230601; t=1755037922; x=1755642722;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=7NcA2ibZA6OD/D3dyrnG+kVDrjyeC84AhvKY/xmgzcY=;
+ b=vt5HHUExZfYonwZx2tZ5sMquVuO67FoDI7YdxexhsBtJm4u5XyTLfIRuEOfX7Rh81T
+ TII4pmWux1IhqZDr0ObSgxVQ65fplSqPqaAuQw2aD6bC1HQb27L8+K6VnOYD9ppJidcR
+ 8QQuL0iOdcZ5k4Jr4ier5a3W8DjAnU15vSHYUFCCw+jQZYELYGoIbgAoB6vjQr82xMXy
+ MpOziXYAajIU+8aHcHyVUDsOE/y3xBTg32KHwsYi46BgkemYYDRVob0TNsydAo+6qiUL
+ H0/5zWTxUirAQi0045e6h4rsTtF19khUSbDe1Wj/lGVQL2kGulB1QuLdoMYkKmpFpOxy
+ P1mQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUo4fQ7NqvPys8bUwnW0RWXonm7whilrZApC4Xw0iMOKN36eS0jpfe8y1LTkzm4EfqO+HlHtqk64g==@nongnu.org
-X-Gm-Message-State: AOJu0Yxi+oQJ43Q16DnsGmg0YizlUXWSjDM25hapfci+Tox99WrPfKFF
- 5ARG3ZZelIEVqmr8TY+DIewOBedPdrg19mJ7fA8KNbZCMZcm8prdkR6eKEHmT0T+/C7IptIAy1h
- aPQnKCNlPpziB//oYnvy+CXjUtCnM60IuQIDGEaoc39YfC4LtQxm1ekG0E7S4sGfrsXH5fdX3lV
- mSnBzqH0kkGGY5yTsyVsRZv8Cg+Jrg5g==
-X-Gm-Gg: ASbGncswSmv4zlLeQ4iWuYqBXBF197xmySFuseQzRgzpQwt1+92Ay1/tql9VqslFQY0
- c6Ea59Jx+/ItZ0QzOIXvGqK3vXGr5Ktz/oQZMt3E7o/6rneokgW4P42NHVo/vyNyfnnld2dXy/p
- RASHoaD1vt9cYTObzstGOzKg==
-X-Received: by 2002:a05:690c:64c6:b0:71b:f755:bbab with SMTP id
- 00721157ae682-71d4e44c6e1mr4675117b3.14.1755027100606; 
- Tue, 12 Aug 2025 12:31:40 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IH635BmBnLElSUA4UIMuFSrd1ufSJQbCuiM45+CJV5kjGOEL5rMcQOGeU5F4Ov1GFW2BjrLICdbkk6li1OwlZk=
-X-Received: by 2002:a05:690c:64c6:b0:71b:f755:bbab with SMTP id
- 00721157ae682-71d4e44c6e1mr4674787b3.14.1755027100060; Tue, 12 Aug 2025
- 12:31:40 -0700 (PDT)
+ AJvYcCWVC0vZ4SnCyNx/w4modjiXjJWLrep3QL8vCGP4uNu+L/28xKrq9bY+Ev22YwW01jRUgHhsTRqzsA==@nongnu.org
+X-Gm-Message-State: AOJu0Yzm1BUKLl2ln8nkvZLv7iXtcdHT23A/yIzOtZlQdiqxGPiahMHS
+ e7qqbAdkWswriO1DyweR/H9DA+qcORR+oV06Nu0O/UTEfQiGmYcWYMWuXmejKvziU5Y=
+X-Gm-Gg: ASbGnctbiPNHBvJkA3m5uNAg7Osmk0qPQpw+z5trImYED4yd50wN4bD0ksuMdjf+qxy
+ xkdTO7uQj4QZsFuW9BrXx+i1UGG/ExfIZO6j9bot+teqzb3ORely6iXmJiLF5uvun/XX+An+YOL
+ VCJ6f28Irzmjis0D8bW9Xcg+sz/72QiAiui+NGLwJXQVSpQnebtgyLm3XXGW9LlTKrKPta/kJVd
+ Lb1esCW1pHgyBXJJkqFAU62w8Q8dvl1K3LAd1G7qWj8spDtGIpMjE7OEd5na06DEKY92aUYbrZ/
+ arigH3f71TdTm+NxA8tnqHwM/MWyou8XtULbf8HbvsllKsT6MH+v3GeOIaMRTwFshg9jvCY6O75
+ XPsnLtHdQJyVuA6b7TAZu2CGwdQGDWlNpxW+FUmCr
+X-Google-Smtp-Source: AGHT+IEQH6BfqWsI8lNloCKE73bFye1ZrAElGm4359xfNS3q8cKGA/6QPyQ4QxHqiW5daRyNOeszMQ==
+X-Received: by 2002:a05:6a00:bc3:b0:76b:f06f:3bca with SMTP id
+ d2e1a72fcca58-76e20f75393mr969654b3a.11.1755037922034; 
+ Tue, 12 Aug 2025 15:32:02 -0700 (PDT)
+Received: from [192.168.4.112] ([168.140.255.211])
+ by smtp.gmail.com with ESMTPSA id
+ d2e1a72fcca58-76c61705bd7sm9367042b3a.31.2025.08.12.15.31.57
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 12 Aug 2025 15:32:01 -0700 (PDT)
+Message-ID: <30f26e53-9976-4826-a25c-9cb7bb551280@linaro.org>
+Date: Wed, 13 Aug 2025 08:31:54 +1000
 MIME-Version: 1.0
-References: <20250811193654.4012878-1-vacha.bhavsar@oss.qualcomm.com>
- <20250811193654.4012878-3-vacha.bhavsar@oss.qualcomm.com>
- <CAFEAcA9PXtsj5nAZ47Fv3h5gDdir_QT5pavUF6-Yc1tZZP26ag@mail.gmail.com>
-In-Reply-To: <CAFEAcA9PXtsj5nAZ47Fv3h5gDdir_QT5pavUF6-Yc1tZZP26ag@mail.gmail.com>
-From: Vacha Bhavsar <vacha.bhavsar@oss.qualcomm.com>
-Date: Tue, 12 Aug 2025 15:31:29 -0400
-X-Gm-Features: Ac12FXxsZQ9N_2v0hfqET1SRiQYZq2Z5tNmHPDID2f8XbIdaNxC6WtxIOtUrrd0
-Message-ID: <CAEWVDmtNm+AZs_+YvXvOFn37nNJ1GDwo-9mEEbynsdPT-bTD0g@mail.gmail.com>
-Subject: Re: [PATCH v5 2/4] target/arm: Change GDBState's line_buf to a GString
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>,
- =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>
-Content-Type: multipart/alternative; boundary="000000000000dee974063c301616"
-X-Authority-Analysis: v=2.4 cv=J+Wq7BnS c=1 sm=1 tr=0 ts=689b969d cx=c_pps
- a=NMvoxGxYzVyQPkMeJjVPKg==:117 a=2OwXVqhp2XgA:10 a=KKAkSRfTAAAA:8
- a=EUspDBNiAAAA:8 a=G6NPWgVwcJKO82ZUuSAA:9 a=QEXdDO2ut3YA:10
- a=tDyR_WS0kGeW7OT8YLMA:9 a=Z44rsDyPwT4x3bYm:21 a=lqcHg5cX4UMA:10
- a=kLokIza1BN8a-hAJ3hfR:22 a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-ORIG-GUID: RsnKLKTLENOGDCvBEEK1nE46bJjAOUca
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwODA5MDAxNSBTYWx0ZWRfX1cGPXz7+XQxx
- FwwRQAWbC/lmGAqBhgYI2wuopv2G6f/CJ66u/ZD3VEDhuV43T8mHce/b0XFxbN6gpxW9rQKeGps
- a8Y32IJ3dquRsy6OtY6kGZzt2CYHpZ1JIArVCiZUt0Bv03KKaL0qHuIIpT0TZV6+QglXlBviAXX
- WKV94G/rQUdE9f1U6iaT/XNZVC7eOmnzmmclwYMsq0RGGORRQb3m6+pRgAZYXd90nJhqnw9qjSH
- U9tP+7k4ARNNxhvdImr28A5smhegBfoXcOOJGP4tmVaz+tDENpS/VGJMnzbURizM29O3Gf/YTkn
- cvslBXI5V2+gxaR6DxncjrG1Cv9gz22+WxJGP9xaizba19G207+Vn5mk1HnmZxlglT8ffxUw96t
- GFe83aWH
-X-Proofpoint-GUID: RsnKLKTLENOGDCvBEEK1nE46bJjAOUca
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.9,FMLib:17.12.80.40
- definitions=2025-08-12_07,2025-08-11_01,2025-03-28_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- priorityscore=1501 adultscore=0 malwarescore=0 impostorscore=0 bulkscore=0
- phishscore=0 suspectscore=0 spamscore=0 clxscore=1015 classifier=typeunknown
- authscore=0 authtc= authcc= route=outbound adjust=0 reason=mlx scancount=1
- engine=8.19.0-2507300000 definitions=main-2508090015
-Received-SPF: pass client-ip=205.220.168.131;
- envelope-from=vacha.bhavsar@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
-X-Spam_score_int: -26
-X-Spam_score: -2.7
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RFC PATCH v2 08/10] target/arm/hvf: Sync registers used at EL2
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Mohamed Mediouni <mohamed@unpredictable.fr>,
+ Alexander Graf <agraf@csgraf.de>, Mads Ynddal <mads@ynddal.dk>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
+References: <20250812172823.86329-1-philmd@linaro.org>
+ <20250812173157.86934-1-philmd@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Content-Language: en-US
+In-Reply-To: <20250812173157.86934-1-philmd@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42d;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, HTML_MESSAGE=0.001,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ UPPERCASE_50_75=0.008 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -131,128 +107,41 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
---000000000000dee974063c301616
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+On 8/13/25 03:31, Philippe Mathieu-Daudé wrote:
+> +    { HV_SYS_REG_CPTR_EL2, HVF_SYSREG(1, 1, 3, 4, 2), .el2 = true },
+> +    { HV_SYS_REG_ELR_EL2, HVF_SYSREG(4, 0, 3, 4, 1), .el2 = true },
+> +    { HV_SYS_REG_ESR_EL2, HVF_SYSREG(5, 2, 3, 4, 0), .el2 = true },
+> +    { HV_SYS_REG_FAR_EL2, HVF_SYSREG(6, 0, 3, 4, 0), .el2 = true },
+> +    { HV_SYS_REG_HCR_EL2, HVF_SYSREG(1, 1, 3, 4, 0), .el2 = true },
+> +    { HV_SYS_REG_HPFAR_EL2, HVF_SYSREG(6, 0, 3, 4, 4), .el2 = true },
+> +    { HV_SYS_REG_MAIR_EL2, HVF_SYSREG(10, 2, 3, 4, 0), .el2 = true },
+> +    { HV_SYS_REG_MDCR_EL2, HVF_SYSREG(1, 1, 3, 4, 1), .el2 = true },
+> +    { HV_SYS_REG_SCTLR_EL2, HVF_SYSREG(1, 0, 3, 4, 0), .el2 = true },
+> +    { HV_SYS_REG_SPSR_EL2, HVF_SYSREG(4, 0, 3, 4, 0), .el2 = true },
+> +    { HV_SYS_REG_SP_EL2, HVF_SYSREG(4, 1, 3, 6, 0), .el2 = true},
+> +    { HV_SYS_REG_TCR_EL2, HVF_SYSREG(2, 0, 3, 4, 2), .el2 = true },
+> +    { HV_SYS_REG_TPIDR_EL2, HVF_SYSREG(13, 0, 3, 4, 2), .el2 = true },
+> +    { HV_SYS_REG_TTBR0_EL2, HVF_SYSREG(2, 0, 3, 4, 0), .el2 = true },
+> +    { HV_SYS_REG_TTBR1_EL2, HVF_SYSREG(2, 0, 3, 4, 1), .el2 = true },
+> +    { HV_SYS_REG_VBAR_EL2, HVF_SYSREG(12, 0, 3, 4, 0), .el2 = true },
+> +    { HV_SYS_REG_VMPIDR_EL2, HVF_SYSREG(0, 0, 3, 4, 5), .el2 = true },
+> +    { HV_SYS_REG_VPIDR_EL2, HVF_SYSREG(0, 0, 3, 4, 0), .el2 = true },
+> +    { HV_SYS_REG_VTCR_EL2, HVF_SYSREG(2, 1, 3, 4, 2), .el2 = true },
+> +    { HV_SYS_REG_VTTBR_EL2, HVF_SYSREG(2, 1, 3, 4, 0), .el2 = true },
 
-Hi,
+Again, el2 = op2 == 4.
+
+> @@ -608,6 +630,11 @@ int hvf_get_registers(CPUState *cpu)
+>               continue;
+>           }
+>   
+> +        if (hvf_sreg_match[i].el2
+> +            && !host_cpu_feature_supported(ARM_FEATURE_EL2)) {
+> +            continue;
+> +        }
+
+I thought you were going to change this to arm_feature(&cpu->env, ARM_FEATURE_EL2).
 
 
-
-Since this change does not directly impact the original concern
-
-for adding SME register exposure to remote GDB (for which
-
-the resizing of MAX_PACKET_LENGTH is sufficient), may we leave
-
-this patch open to further discussion while the others go through
-
-with review?
-
-
-
-Thanks,
-
-Vacha
-
-On Tue, Aug 12, 2025 at 7:33=E2=80=AFAM Peter Maydell <peter.maydell@linaro=
-.org>
-wrote:
-
-> On Mon, 11 Aug 2025 at 20:37, Vacha Bhavsar
-> <vacha.bhavsar@oss.qualcomm.com> wrote:
-> >
-> > This patch changes GDBState's line_buf from a character
-> > array to a GString. This allows line_buf to be dynamically
-> > re-sizeable.
-> >
-> > Signed-off-by: Vacha Bhavsar <vacha.bhavsar@oss.qualcomm.com>
-> > ---
-> > Changes since v4:
-> > - this patch was not present in v4, it has been added as
-> > suggested during review of v4
-> > ---
->
-> Note that since the GDBState is a file-local variable,
-> not allocated on the stack, it's not an issue that
-> line_buf[MAX_PACKET_LENGTH] is large. So whether we
-> make this change I think should be based on whether
-> it makes the code easier to read and less likely to
-> contain string buffer manipulation bugs.
->
->
-> > -                if (gdbserver_state.line_buf_index + repeat >=3D >
-> sizeof(gdbserver_state.line_buf) - 1) {
-> > +                if (gdbserver_state.line_buf->len + repeat >=3D
-> MAX_PACKET_LENGTH) {
-> >                      /* that many repeats would overrun the command
-> buffer */
->
-> This comment no longer makes sense if we don't have a
-> fixed command buffer. In general, if we're moving away
-> from a fixed-sized buffer we should consider what we
-> want to do in all the various places that are currently
-> doing checks against MAX_PACKET_LENGTH.
->
-> thanks
-> -- PMM
->
-
---000000000000dee974063c301616
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><p>Hi,</p><p>=C2=A0</p><p>Since this change does not direc=
-tly impact the original concern</p><p>for adding SME register exposure to r=
-emote GDB (for which</p><p>the resizing of MAX_PACKET_LENGTH is sufficient)=
-, may we leave</p><p>this patch open to further discussion while the others=
- go through</p><p>with review?</p><p>=C2=A0</p><p>Thanks,</p><p>Vacha</p></=
-div><br><div class=3D"gmail_quote gmail_quote_container"><div dir=3D"ltr" c=
-lass=3D"gmail_attr">On Tue, Aug 12, 2025 at 7:33=E2=80=AFAM Peter Maydell &=
-lt;<a href=3D"mailto:peter.maydell@linaro.org">peter.maydell@linaro.org</a>=
-&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px =
-0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">On M=
-on, 11 Aug 2025 at 20:37, Vacha Bhavsar<br>
-&lt;<a href=3D"mailto:vacha.bhavsar@oss.qualcomm.com" target=3D"_blank">vac=
-ha.bhavsar@oss.qualcomm.com</a>&gt; wrote:<br>
-&gt;<br>
-&gt; This patch changes GDBState&#39;s line_buf from a character<br>
-&gt; array to a GString. This allows line_buf to be dynamically<br>
-&gt; re-sizeable.<br>
-&gt;<br>
-&gt; Signed-off-by: Vacha Bhavsar &lt;<a href=3D"mailto:vacha.bhavsar@oss.q=
-ualcomm.com" target=3D"_blank">vacha.bhavsar@oss.qualcomm.com</a>&gt;<br>
-&gt; ---<br>
-&gt; Changes since v4:<br>
-&gt; - this patch was not present in v4, it has been added as<br>
-&gt; suggested during review of v4<br>
-&gt; ---<br>
-<br>
-Note that since the GDBState is a file-local variable,<br>
-not allocated on the stack, it&#39;s not an issue that<br>
-line_buf[MAX_PACKET_LENGTH] is large. So whether we<br>
-make this change I think should be based on whether<br>
-it makes the code easier to read and less likely to<br>
-contain string buffer manipulation bugs.<br>
-<br>
-<br>
-&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 if (gdbserver=
-_state.line_buf_index + repeat &gt;=3D &gt; sizeof(gdbserver_state.line_buf=
-) - 1) {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 if (gdbserver=
-_state.line_buf-&gt;len + repeat &gt;=3D MAX_PACKET_LENGTH) {<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 /* that many repeats would overrun the command buffer */<br>
-<br>
-This comment no longer makes sense if we don&#39;t have a<br>
-fixed command buffer. In general, if we&#39;re moving away<br>
-from a fixed-sized buffer we should consider what we<br>
-want to do in all the various places that are currently<br>
-doing checks against MAX_PACKET_LENGTH.<br>
-<br>
-thanks<br>
--- PMM<br>
-</blockquote></div>
-
---000000000000dee974063c301616--
+r~
 

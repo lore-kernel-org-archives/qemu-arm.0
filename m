@@ -4,99 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41933C87FCF
-	for <qemu-arm@archiver.kernel.org>; Wed, 13 Aug 2025 07:36:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A2EACA0EE0
+	for <qemu-arm@archiver.kernel.org>; Wed, 13 Aug 2025 10:02:29 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1um629-0005JP-PV; Wed, 13 Aug 2025 03:36:30 -0400
+	id 1um8J9-0002Ao-Ms; Wed, 13 Aug 2025 06:02:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1um621-0005HM-VZ
- for qemu-arm@nongnu.org; Wed, 13 Aug 2025 03:36:22 -0400
-Received: from mail-pf1-x42b.google.com ([2607:f8b0:4864:20::42b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1um61x-00012w-Sp
- for qemu-arm@nongnu.org; Wed, 13 Aug 2025 03:36:21 -0400
-Received: by mail-pf1-x42b.google.com with SMTP id
- d2e1a72fcca58-76bdc73f363so5650997b3a.3
- for <qemu-arm@nongnu.org>; Wed, 13 Aug 2025 00:36:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1755070570; x=1755675370; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=ZNmtQya06ImRyytAVRG7qqulngvluV25Ko4jiw2QxWc=;
- b=AOScuL6nM8UlEGglt9OlxkNZLO6w0VXJpexVq0OuaAxuiy2nt0STkIiM1/vUWsb3eQ
- XV2mqQbAFWTYWnmy/x9rMQfeL9lxBz/kUinQkK14QtrNW9JWU5rC/W0fHaEF+qXDGSf3
- gvpGQnfIXnvqAnmrLva2gtnJ+fvgdTnRKiKF4MWab9RFgKz5wd3tujHJpYDZ678dH8ex
- CCs3apXqGwkG/2m6VaRhdr4O6GFOucnVklnUcqjOIQR5gqELsQG1Pnf10GVws0BGLAHu
- qHhnwRm7yR0VZmzVAeHkfS/2d3cWQI6YruLMy9EO4M/bFGvHNwjDxMTO1PiCDHsqnynO
- B2lw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1755070570; x=1755675370;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=ZNmtQya06ImRyytAVRG7qqulngvluV25Ko4jiw2QxWc=;
- b=uno2hx+Gsff+VhzvLvwk8ue/XQUDZBPof6LEMYN7yvdnnNcB3dzOnkinoVg8akq85X
- mhki/AEJuWS3xpoOuiUd0Izh106k9SfE/FFSNdPV/WIih/BiY0WDWe7La0pCgQi2aKzF
- nXKOk2Q7sw3j5dIiOx5817XXgUN9p2OTPTJU4rWnd7Kp+BU5PSgYES1lDPkivtfsd5de
- D60S15llM9iAe1qmoW3FdvVBRB5uXEi81uk6CPts5VMirh43tGLHI+fhjOzZbevprXlV
- Bz0MbjgjOTFZ8HXEyDwXndceEzo1qPC83JaJAhslv4XQXWdzf/26G6rkYpCrAPOjKTj8
- LkbA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCULDzC24Ih+9OJ76RffCLm108vpNRi5sUWmv5kyhWX1ryxBgQwa7jqk8kp45c4KWi/iLeiuYgD8Kg==@nongnu.org
-X-Gm-Message-State: AOJu0YyV3dvNRLKeO0niwZKxlp5Ac+3rON26S+E4GFn42mPsOkK2qPU+
- MLugYiIFCjzCq1vex1fIF95mlA9iDBZ9O4ADUHXAoZat1+fVphCE0QU07orSAkyr56E=
-X-Gm-Gg: ASbGncsFXGI/Umx34kQG345yDdCAfXRrLwX70GKdQg1GJUbFGk8WIYjUtI+2YWf8pq9
- wjv4hLFw+axZmsSNVswACugOYXTx8WAACYd7U2bgtoNU68sB4cTekUoPrRmYkIe8HRyXOkbuL96
- hWIgl+cDRFFjFR+95lNupoiXKpzngzXTDI7OiBzNSn6KvOcFPR6rG+bhFbTFHqASG/aDhZz3cW+
- p8y5VB1fbgr/BFxSP/Stebl5bxKJqK3wdlVMv5AZEMCblYh7VZvrvZTQ43rLsbqxkc8gcIg2o2D
- JYuS83ci7OS1coM7w5RazQZxPcBu4Sdgus4o1DU53xqnKnYxgtwBY9leB/vqI1XGY5sN+3YD24A
- JR8MuGXr2pL9sXyaITOHWSRfYszdDeA0TXgffpFufQG7lP7ztESCbV3d5rprfa1xq99LORkGvX9
- 43kYCAjO4GNgqFoUTkb0j5rehChsjpaBgZVtVeCGkfTmyAN2Qo0yaGkuBw45Z9TFlu
-X-Google-Smtp-Source: AGHT+IEQELrD0C7Rp7hYXifDb/+etN3oMHhBszhf39fFtaJI20c5SixqCx/5RZgiTwmroOmEfS8ZHg==
-X-Received: by 2002:a05:6a20:7f9a:b0:232:3141:588e with SMTP id
- adf61e73a8af0-240a8c23ee1mr3754012637.37.1755070570096; 
- Wed, 13 Aug 2025 00:36:10 -0700 (PDT)
-Received: from ?IPV6:2401:d006:5c08:e100:7feb:3696:717e:2ff8?
- (19r3hzjrscck598x80dk.ipv6.originbroadband.com.au.
- [2401:d006:5c08:e100:7feb:3696:717e:2ff8])
- by smtp.gmail.com with ESMTPSA id
- 41be03b00d2f7-b470262afc4sm1731243a12.49.2025.08.13.00.36.06
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 13 Aug 2025 00:36:09 -0700 (PDT)
-Message-ID: <29d8c44e-2386-47bc-bbcd-2f56b1deb9fc@linaro.org>
-Date: Wed, 13 Aug 2025 17:35:59 +1000
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1um8J8-0002AV-JJ
+ for qemu-arm@nongnu.org; Wed, 13 Aug 2025 06:02:10 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1um8J3-0004AC-BF
+ for qemu-arm@nongnu.org; Wed, 13 Aug 2025 06:02:10 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1755079322;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=O8CNuR+QnjfIx82z9oQ6zipAfF/tBTWho/+2yiPk7vk=;
+ b=jAMWlW2Ht5/xEE/5C1XbHI6+8wqqvzf5AKbmmCKhXJK/5Rbs8tweKQSKIiv+aTrVTLXL4l
+ ZSQht+0V0wh/x3jXbmj3NYhZTIXxoFTuuYoVUZ/axRuxfzf4KyLD4t0joopa7BxFlmNdva
+ noLeOAyGdlDeuOy2NXJqiXPs+nYSrhQ=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-184-vI8OGwcWMIOKixQC35z4PA-1; Wed,
+ 13 Aug 2025 06:01:59 -0400
+X-MC-Unique: vI8OGwcWMIOKixQC35z4PA-1
+X-Mimecast-MFC-AGG-ID: vI8OGwcWMIOKixQC35z4PA_1755079318
+Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id D4155195608E; Wed, 13 Aug 2025 10:01:57 +0000 (UTC)
+Received: from localhost (dhcp-192-236.str.redhat.com [10.33.192.236])
+ by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 23B20180047F; Wed, 13 Aug 2025 10:01:56 +0000 (UTC)
+From: Cornelia Huck <cohuck@redhat.com>
+To: eric.auger@redhat.com, qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: [PATCH RFC] arm/kvm: report registers we failed to set
+In-Reply-To: <88812eea-08e3-48f5-b2f8-75ab0fff573b@redhat.com>
+Organization: "Red Hat GmbH, Sitz: Werner-von-Siemens-Ring 12, D-85630
+ Grasbrunn, Handelsregister: Amtsgericht =?utf-8?Q?M=C3=BCnchen=2C?= HRB
+ 153243,
+ =?utf-8?Q?Gesch=C3=A4ftsf=C3=BChrer=3A?= Ryan Barnhart, Charles Cachera,
+ Avril Crosse O'Flaherty"
+References: <20250721161932.548668-1-cohuck@redhat.com>
+ <88812eea-08e3-48f5-b2f8-75ab0fff573b@redhat.com>
+User-Agent: Notmuch/0.38.3 (https://notmuchmail.org)
+Date: Wed, 13 Aug 2025 12:01:54 +0200
+Message-ID: <875xerfskt.fsf@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH v2 08/10] target/arm/hvf: Sync registers used at EL2
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Mohamed Mediouni <mohamed@unpredictable.fr>,
- Alexander Graf <agraf@csgraf.de>, Mads Ynddal <mads@ynddal.dk>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
-References: <20250812172823.86329-1-philmd@linaro.org>
- <20250812173157.86934-1-philmd@linaro.org>
- <30f26e53-9976-4826-a25c-9cb7bb551280@linaro.org>
- <94eab92c-9b55-404f-8e61-f9e80dc49703@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Content-Language: en-US
-In-Reply-To: <94eab92c-9b55-404f-8e61-f9e80dc49703@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42b;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42b.google.com
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=cohuck@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -112,26 +87,94 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 8/13/25 17:20, Philippe Mathieu-Daudé wrote:
->>> @@ -608,6 +630,11 @@ int hvf_get_registers(CPUState *cpu)
->>>               continue;
->>>           }
->>> +        if (hvf_sreg_match[i].el2
->>> +            && !host_cpu_feature_supported(ARM_FEATURE_EL2)) {
->>> +            continue;
->>> +        }
+On Tue, Aug 12 2025, Eric Auger <eric.auger@redhat.com> wrote:
+
+> Hi Connie,
+>
+> On 7/21/25 6:19 PM, Cornelia Huck wrote:
+>> If we fail migration because of a mismatch of some registers between
+>> source and destination, the error message is not very informative:
 >>
->> I thought you were going to change this to arm_feature(&cpu->env, ARM_FEATURE_EL2).
-> 
-> Replied in v1:
-> https://lore.kernel.org/qemu-devel/08f2c3ff-a509-4a96-a515-b3ceae2ea9ea@linaro.org/
+>> qemu-system-aarch64: error while loading state for instance 0x0 ofdevice 'cpu'
+>> qemu-system-aarch64: Failed to put registers after init: Invalid argument
+>>
+>> At least try to give the user a hint which registers had a problem,
+>> even if they cannot really do anything about it right now.
+>>
+>> Sample output:
+>>
+>> Could not set register op0:3 op1:0 crn:0 crm:0 op2:0 to c00fac31 (is 413fd0c1)
+>>
+>> We could be even more helpful once we support writable ID registers,
+>> at which point the user might actually be able to configure something
+>> that is migratable.
+>>
+>> Suggested-by: Eric Auger <eric.auger@redhat.com>
+>> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
+>> ---
+>>
+>> Notes:
+>> - This currently prints the list of failing registers for every call to
+>>   write_list_to_kvmstate(), in particular for every cpu -- we might want
+>>   to reduce that.
+>> - If the macros aren't too ugly (or we manage to improve them), there
+>>   might be other places where they could be useful.
+>>
+>> ---
+>>  target/arm/kvm.c | 53 ++++++++++++++++++++++++++++++++++++++++++++++++
+>>  1 file changed, 53 insertions(+)
+>>
+>> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+>> index 667234485547..ac6502e0c78f 100644
+>> --- a/target/arm/kvm.c
+>> +++ b/target/arm/kvm.c
+>> @@ -900,6 +900,24 @@ bool write_kvmstate_to_list(ARMCPU *cpu)
+>>      return ok;
+>>  }
+>>  
+>> +/* pretty-print a KVM register */
+>> +#define CP_REG_ARM64_SYSREG_OP(_reg, _op)                       \
+>> +    ((uint8_t)((_reg & CP_REG_ARM64_SYSREG_ ## _op ## _MASK) >> \
+>> +               CP_REG_ARM64_SYSREG_ ## _op ## _SHIFT))
+>> +
+>> +#define PRI_CP_REG_ARM64_SYSREG(_reg)                    \
+>> +    ({                                                   \
+>> +        char _out[32];                                   \
+>> +        snprintf(_out, sizeof(_out),                     \
+>> +                 "op0:%d op1:%d crn:%d crm:%d op2:%d",   \
+>> +                 CP_REG_ARM64_SYSREG_OP(_reg, OP0),      \
+>> +                 CP_REG_ARM64_SYSREG_OP(_reg, OP1),      \
+>> +                 CP_REG_ARM64_SYSREG_OP(_reg, CRN),      \
+>> +                 CP_REG_ARM64_SYSREG_OP(_reg, CRM),      \
+>> +                 CP_REG_ARM64_SYSREG_OP(_reg, OP2));     \
+>> +        _out;                                            \
+>> +    })
+>> +
+> I am afraid this is too simplistic.
+> Refering to linux/Documentation/virt/kvm/api.rst 4.68 KVM_SET_ONE_REG
+> ARM registers section
+> there are different groups of registers (upper 16b) and not all regs are
+> further identified by op0-2, crn, crm.
+> I think it would be valuable to output the group type and then the
+> formatted lower 16b, depending on the group type.
+>
+> For instance 64b ARM FW pseudo reg is formatted as
+> 0x6030 0000 0014 <regno:16>
+>
+> a diff on reg 0 results in
+> qemu-system-aarch64: Could not set register op0:0 op1:0 crn:0 crm:0
+> op2:0 to 10003 (is 10001)
+> qemu-system-aarch64: error while loading state for instance 0x0 of
+> device 'cpu'
+> qemu-system-aarch64: Could not set register op0:0 op1:0 crn:0 crm:0
+> op2:0 to 10003 (is 10001)
+> qemu-system-aarch64: Failed to put registers after init: Invalid argument
 
-Hmm, missed this somehow.
+You mean smth like
 
-In which case you are going to want to cache this particular value, because you don't want 
-the syscall for every read/write.  It need not be more complicated than a file-scope 
-'static bool'.
+Could not set FW pseudo register <regno> to <val> (is <val>)
+Could not set ID register <decoding> to <val> (is <val>)
 
+?
 
-r~
 

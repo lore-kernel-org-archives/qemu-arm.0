@@ -4,83 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C906CA0EDC
-	for <qemu-arm@archiver.kernel.org>; Thu, 14 Aug 2025 13:23:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85100CA0EDC
+	for <qemu-arm@archiver.kernel.org>; Thu, 14 Aug 2025 13:23:36 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1umXZL-0003wC-U5; Thu, 14 Aug 2025 09:00:36 -0400
+	id 1umXi1-0002T3-5b; Thu, 14 Aug 2025 09:09:35 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1umXZ9-00032v-7j
- for qemu-arm@nongnu.org; Thu, 14 Aug 2025 09:00:23 -0400
-Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035])
+ id 1umXhN-0000tx-Ei
+ for qemu-arm@nongnu.org; Thu, 14 Aug 2025 09:08:54 -0400
+Received: from mail-pg1-x52c.google.com ([2607:f8b0:4864:20::52c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1umXYx-0004UL-Tz
- for qemu-arm@nongnu.org; Thu, 14 Aug 2025 09:00:19 -0400
-Received: by mail-pj1-x1035.google.com with SMTP id
- 98e67ed59e1d1-321cfa7ad29so1526323a91.1
- for <qemu-arm@nongnu.org>; Thu, 14 Aug 2025 06:00:05 -0700 (PDT)
+ id 1umXhC-0005xQ-Hb
+ for qemu-arm@nongnu.org; Thu, 14 Aug 2025 09:08:52 -0400
+Received: by mail-pg1-x52c.google.com with SMTP id
+ 41be03b00d2f7-b4716f46a2eso583198a12.0
+ for <qemu-arm@nongnu.org>; Thu, 14 Aug 2025 06:08:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1755176402; x=1755781202; darn=nongnu.org;
+ d=linaro.org; s=google; t=1755176914; x=1755781714; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=W/0IpRgg6t34zaimtrRMdlDr3oUmrGBXYyd7BxUgZh4=;
- b=Ytsj21XNAg+1gqn6o9VdkWHnuX35807UqFGg+HqdlO2V3zuwTfnYnbNoQQVkn1PwQG
- TmQXJslYzBBBYZJUKLdafqbssk+tChuaQTK9aD6VkX+MOqgACKfQxTF4hFV3Alyb9WbA
- hiF+il1xZzldiJIeIvfKArgQS5sl2soWnolNkJITnDHgaudef2d7PC44ef4kKMsxIiMx
- d38UZj4TvHc9koMQS49iK/7ADRNrvsGHemiZ5CMzQPcEkXMtethX/F7JL4LKd1IKF61q
- jbxggA6Yu1clhoYA74znY1UXHUet/cZNtQl8MKLLvagBV9+JT2Japd9n8M+JM9lXRyG9
- ILXA==
+ bh=vVlQwNjtMgvAbm23dBCZDYeq1xNwwku3Aggvwl5C6uU=;
+ b=NTTT/aZnd7i0YwAaOmJbwE7As6j8BXQIgcJJDezrZp26ZhoT0wIuflMzmfitnf8ZEU
+ 1zPXeWByQ0V3vD3ydZil4DTuDkL6VbFqHkU2zyMWguSuYYLcQYQ/pzXScpz1PMU53S81
+ wnwhw4bKDbtQvrfJt3n0Nh8pvrSpWN0JYyd4FbwUKH2gLdO/RRXd7Uaf5gwPh1LWUgPB
+ Kq9I3BLDbxiskT4/icM7PaS6K5KKs1+/GMI2481yAY/yWNZKR5XhaPqyp7DYE4Ay0/8o
+ Y61O0SmK+dqjCeX6u+wG2z5JqfJotv98kEq10L3QE2/3BK75DpnOzlAAeVHKLRT0OtwS
+ iDcQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1755176402; x=1755781202;
+ d=1e100.net; s=20230601; t=1755176914; x=1755781714;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=W/0IpRgg6t34zaimtrRMdlDr3oUmrGBXYyd7BxUgZh4=;
- b=lUUhycMkbPxBzJ3LrgqKvSOEd+nzp/fjnw/zRmlUyrpauwbeljLsOQ5Bu752E6TwUz
- 4XBSG1UPveD9ki87y35iIo7y1i00cZr8rr46DdSe9aNrYxK5g9L2bfH1rE9UBJOGtXgc
- vrMx+woReehXc6kWi+TFzKhGNKlSog1wd0pUuZk67aIIcFuyyOblnP/zz0x3wyvq8WC9
- ymXe7H8KHeFgNi6G53FgCSH/juGC4NvYV46Ic6AgOcf/uimy72WtSHTrGd0Jy3Zh6vo1
- yK0s5KQlXxlEtNucstV5cggeIcRSYUmltlJne3eKw/AMGskz8gratAOkDdR/E1v+UmFJ
- DmjA==
-X-Gm-Message-State: AOJu0YxHYUHv9nSjixyhrnStZZfCYWvwwqdgXzeCzwz3kxswMB0jpr3q
- 2oUrosfn6r/zaOIcq+lHUJhtdzV2urA2UOorTyvOchhw1y9ITTT5WEdM0upcQ94mOpc=
-X-Gm-Gg: ASbGnctafATcnSWTOHJ1f1IG34DQeu+KvPpog74qUj7Qp6fdYBWZtYiOKQz70KJzO1P
- ZH+/LaEvwyY1OoQs4syL0X9TtB+uLHIDyhEXLXKXoJEZHk3sIJ7URWVfS7GTsib4OKhk20GpZs9
- +U4S5D+te+42E7e9aPj+xwyGsADVUO0WD5QXtcVxdAD/B6AfrimggWMvZSSR6Bw8tm6HjVMLPmU
- ULP/ERwFQXx9WIOcZ/cfvOZULzMrZieTQEzY46HE5xSxOqkVphm6eZQetEIqkmjS90CZ8oc/c/j
- X9zpFeEdHW6fukYzcJ1XpcU6xVbiwZv8L7vvcjj9qTI5dv0SO163dSAkAt+jGawhfkeCB4U6e6l
- QRZ8u8q16FnVsrMNrBfptGTYlOIhEOVYxwlkhg0KBnT7LFOQ=
-X-Google-Smtp-Source: AGHT+IGt5QpqCa5lWoGezXXfy9akMqbB1GCv3xNXn4zTk2H/Ex+69winOrS5ok6KAIb1OjAMal08XA==
-X-Received: by 2002:a17:90a:c2cd:b0:312:dbcd:b94f with SMTP id
- 98e67ed59e1d1-32329ab24f7mr4201738a91.11.1755176402488; 
- Thu, 14 Aug 2025 06:00:02 -0700 (PDT)
+ bh=vVlQwNjtMgvAbm23dBCZDYeq1xNwwku3Aggvwl5C6uU=;
+ b=gVsDMnobDXQ7I417Y/0CM482tI7zcP87aXiMGITH++SBXaQma1mKU7dGbIIAOde3IM
+ 3fCMPH1Q2EWzI4lE+1iYTFbZrN2Zdl1WlegIH6y1hcB9gwn7bfn8/WxSBVCkGdLfLvbA
+ +hTe5d/aXfoqVBjL5uXhRYETbLUuxK+ERaz05WqMJQnWmC0PS1mwovQUuTm5nwsxgPfE
+ /6T6ELInO2jilRMNATLvPhAK+KM2mE/z2BfOc7gca09nNHiFVDDrvZrkRevG1Zfan9g+
+ sjMnWEzG4M2YLjJzA3sQc2MbQbZtZ/ex6icBePPIHIvYA3e7pBpXeN6ilW8rAh4DCvX8
+ GmLA==
+X-Gm-Message-State: AOJu0YzB+dOcWkCtpIVS1mUvX3ScNyZLUVC4/6UtIrKG3FGqLlnQiFWZ
+ ALG6DGzC0/WA7+JQTqCavEmvhRkanEfI70AjCoaBJxQbcVhKxI+DTHgY1MO3q1ZFDIM=
+X-Gm-Gg: ASbGncuGiq/tUWYdENQXoI7ijXloXwg7j1jWuJ10yWbwtZc8JOBL5Y2QNbyzGxeJ+oX
+ LLcbLHN1GnLN34Wot6yvEKrOGfJ+MBPVPgEa6dPkY/BNGNhxWyDuz+rYEXEBBHhCQ1pe8Td5yIo
+ n8yuMERpznGplZ+NU5Dpa+67xmLjH467mNhrv8zgs2ib27mrrdsbApypracB/g66DYOTSHWXX+7
+ pIksbtwLj+9mh87pfeIVDlI8KAIWyfgQUtuYsvqVOmZ+ZwPdt9FpRvsN8zR1FuOXJxFNP544YHX
+ ns+6kTg5uP8YLoQxjst13SfeuPvOjzTILLR02JNAtnwhT9sR2lZVRJVXT8dGNy5a8Ejspn7Q6xr
+ F9Q1/cO240O9yZx3ezrcF1nJO2rvzIPn2XErzzTjDksu03KM=
+X-Google-Smtp-Source: AGHT+IHCYUly2xq/OiPBQ3pX2EGmQuu77FfAvzsezay08YhbrR/4DnKVfu4eiWMoh5O8fJ/8uRmUxQ==
+X-Received: by 2002:a17:903:22c4:b0:234:986c:66bf with SMTP id
+ d9443c01a7336-244584c2da5mr43248005ad.11.1755176914428; 
+ Thu, 14 Aug 2025 06:08:34 -0700 (PDT)
 Received: from localhost.localdomain ([206.83.105.236])
  by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-3233100c994sm1766256a91.21.2025.08.14.05.59.59
+ d9443c01a7336-24304c2943asm64438335ad.30.2025.08.14.06.08.32
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 14 Aug 2025 06:00:02 -0700 (PDT)
+ Thu, 14 Aug 2025 06:08:34 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v3 37/85] target/arm: Remove unused env argument from
- regime_is_pan
-Date: Thu, 14 Aug 2025 22:57:04 +1000
-Message-ID: <20250814125752.164107-38-richard.henderson@linaro.org>
+	Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Subject: [PATCH v3 82/85] linux-user/aarch64: Enable GCS in HWCAP
+Date: Thu, 14 Aug 2025 22:57:49 +1000
+Message-ID: <20250814125752.164107-83-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250814125752.164107-1-richard.henderson@linaro.org>
 References: <20250814125752.164107-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1035;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1035.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::52c;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x52c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -103,53 +100,24 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/internals.h | 2 +-
- target/arm/ptw.c       | 6 +++---
- 2 files changed, 4 insertions(+), 4 deletions(-)
+ linux-user/elfload.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 0322646753..962fc423a6 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -1029,7 +1029,7 @@ static inline void arm_call_el_change_hook(ARMCPU *cpu)
-     }
- }
+diff --git a/linux-user/elfload.c b/linux-user/elfload.c
+index d87d1a16e0..e71dcdec1b 100644
+--- a/linux-user/elfload.c
++++ b/linux-user/elfload.c
+@@ -877,6 +877,7 @@ abi_ulong get_elf_hwcap(void)
+     GET_FEATURE_ID(aa64_dcpop, ARM_HWCAP_A64_DCPOP);
+     GET_FEATURE_ID(aa64_rcpc_8_3, ARM_HWCAP_A64_LRCPC);
+     GET_FEATURE_ID(aa64_rcpc_8_4, ARM_HWCAP_A64_ILRCPC);
++    GET_FEATURE_ID(aa64_gcs, ARM_HWCAP_A64_GCS);
  
--static inline bool regime_is_pan(CPUARMState *env, ARMMMUIdx mmu_idx)
-+static inline bool regime_is_pan(ARMMMUIdx mmu_idx)
- {
-     switch (mmu_idx) {
-     case ARMMMUIdx_Stage1_E1_PAN:
-diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-index 30c83334b6..c75b15b263 100644
---- a/target/arm/ptw.c
-+++ b/target/arm/ptw.c
-@@ -1394,10 +1394,10 @@ static int get_S1prot(CPUARMState *env, ARMMMUIdx mmu_idx, bool is_aa64,
-          * We make the IMPDEF choices that SCR_EL3.SIF and Realm EL2&0
-          * do not affect EPAN.
-          */
--        if (user_rw && regime_is_pan(env, mmu_idx)) {
-+        if (user_rw && regime_is_pan(mmu_idx)) {
-             prot_rw = 0;
-         } else if (cpu_isar_feature(aa64_pan3, cpu) && is_aa64 &&
--                   regime_is_pan(env, mmu_idx) &&
-+                   regime_is_pan(mmu_idx) &&
-                    (regime_sctlr(env, mmu_idx) & SCTLR_EPAN) && !xn) {
-             prot_rw = 0;
-         }
-@@ -1536,7 +1536,7 @@ static int get_S1prot_indirect(CPUARMState *env, S1Translate *ptw,
-             p_perm &= ~(PAGE_RWX | PAGE_GCS);
-             u_perm &= ~(PAGE_RWX | PAGE_GCS);
-         }
--        if ((u_perm & (PAGE_RWX | PAGE_GCS)) && regime_is_pan(env, mmu_idx)) {
-+        if ((u_perm & (PAGE_RWX | PAGE_GCS)) && regime_is_pan(mmu_idx)) {
-             p_perm &= ~(PAGE_READ | PAGE_WRITE);
-         }
-         perm = regime_is_user(env, mmu_idx) ? u_perm : p_perm;
+     return hwcaps;
+ }
 -- 
 2.43.0
 

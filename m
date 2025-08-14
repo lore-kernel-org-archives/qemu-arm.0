@@ -4,78 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22F87CA0EDC
-	for <qemu-arm@archiver.kernel.org>; Thu, 14 Aug 2025 12:58:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF219CA0EE4
+	for <qemu-arm@archiver.kernel.org>; Thu, 14 Aug 2025 12:58:59 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1umXX3-0001BT-1q; Thu, 14 Aug 2025 08:58:13 -0400
+	id 1umXXF-0001Hb-CL; Thu, 14 Aug 2025 08:58:25 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mads@ynddal.dk>) id 1umXX0-0001An-4Q
- for qemu-arm@nongnu.org; Thu, 14 Aug 2025 08:58:10 -0400
-Received: from p-west2-cluster3-host2-snip4-4.eps.apple.com ([57.103.69.117]
- helo=outbound.mr.icloud.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mads@ynddal.dk>) id 1umXWq-00045N-EI
- for qemu-arm@nongnu.org; Thu, 14 Aug 2025 08:58:08 -0400
-Received: from outbound.mr.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-west-2a-100-percent-11 (Postfix) with ESMTPS id
- 97F711800212; Thu, 14 Aug 2025 12:57:34 +0000 (UTC)
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ynddal.dk; s=sig1;
- bh=HNADxR8s6utf4HepPrVf3YVfoL+tnSikU2SoCAMdg6c=;
- h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To:x-icloud-hme;
- b=G4ijT7JK+SNLJlO033yfz9QhvC6JW57Noji1ZasNyvlYEPlGYn8NZgOGECv+xrOmZ5BT/kJGF8tiKywZX+FqwKippy2C69p2APwb9Y/w3sQsNW6iIMatqXTatx1W+xIdxcIoz2psJTLWQto4dF9qduVzYyYh5vvWhKQDHhaakB3Z8J3TbiOK7BZUve0D5uyXSxFb0Nrg0QZTcV45dFpgFUGVdEth2gD4tOl1/lMF92d6S1Izs0KgVVARrFJ1ko+29QWRf9yzcIg1FPIdJrqMXF/R8Wft41OMom8QA3vuDpWccwdeBePs6HXj8Pbb3fDsyLhsXNOxCHxLagznVLfOXQ==
-X-Client-IP: 212.60.126.184
-Received: from smtpclient.apple (mr-asmtp-me-k8s.p00.prod.me.com
- [17.57.152.38])
- by p00-icloudmta-asmtp-us-west-2a-100-percent-11 (Postfix) with ESMTPSA id
- D2BAF18000A6; Thu, 14 Aug 2025 12:57:31 +0000 (UTC)
-Content-Type: text/plain;
-	charset=us-ascii
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3826.700.81\))
-Subject: Re: [PATCH v6 04/13] hw/intc: Add hvf vGIC interrupt controller
- support
-From: Mads Ynddal <mads@ynddal.dk>
-In-Reply-To: <20250808070137.48716-5-mohamed@unpredictable.fr>
-Date: Thu, 14 Aug 2025 14:57:18 +0200
-Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- Shannon Zhao <shannon.zhaosl@gmail.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha <anisinha@redhat.com>,
- qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- Roman Bolshakov <rbolshakov@ddn.com>, Igor Mammedov <imammedo@redhat.com>,
- Phil Dennis-Jordan <phil@philjordan.eu>, Alexander Graf <agraf@csgraf.de>,
- Cameron Esfahani <dirty@apple.com>
-Content-Transfer-Encoding: quoted-printable
-Message-Id: <40259CA2-A38D-41C1-A726-5144FB9EA166@ynddal.dk>
-References: <20250808070137.48716-1-mohamed@unpredictable.fr>
- <20250808070137.48716-5-mohamed@unpredictable.fr>
-To: Mohamed Mediouni <mohamed@unpredictable.fr>
-X-Mailer: Apple Mail (2.3826.700.81)
-X-Proofpoint-GUID: Q69cHdScBdiRdeFfgLPgif6LY_VO_RjW
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwODE0MDEwOCBTYWx0ZWRfX1x7hYDt4nmNi
- XEvr2JlGqD/E1Tl5gEKUmlmNrHjZkz4XKlLG7wIk4iLh/8l/XfjIPVoMOak4nLy9YpcDFfL0srb
- 81+gqnWHV2oIN6RU8A0QDX1wYMdLpb/mf4BhyBa+B0YOOaawkKNDMZ11RHmUtWdqj1k9zpMtqPY
- +oksTp1OINeevt35p/ZEgoQA8bBAOmsTtyjqo7cVmCWLYaLSKbLW8GcjDpNQPM2XyRJf4al7vLT
- 4EG1dmhuBkY9f1pvfoB5e87f3Bj2gf4HR5lCnx0szW9cBdgUfz2auyXrLokVEHeohFNND1VBg=
-X-Proofpoint-ORIG-GUID: Q69cHdScBdiRdeFfgLPgif6LY_VO_RjW
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.9,FMLib:17.12.80.40
- definitions=2025-08-13_02,2025-08-14_01,2025-03-28_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
- bulkscore=0 mlxscore=0 mlxlogscore=999 malwarescore=0 phishscore=0
- suspectscore=0 spamscore=0 clxscore=1030 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.22.0-2506270000 definitions=main-2508140108
-Received-SPF: pass client-ip=57.103.69.117; envelope-from=mads@ynddal.dk;
- helo=outbound.mr.icloud.com
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1umXXD-0001Gp-KN
+ for qemu-arm@nongnu.org; Thu, 14 Aug 2025 08:58:24 -0400
+Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1umXX7-0004AG-RQ
+ for qemu-arm@nongnu.org; Thu, 14 Aug 2025 08:58:23 -0400
+Received: by mail-pj1-x102c.google.com with SMTP id
+ 98e67ed59e1d1-323266baa22so793137a91.0
+ for <qemu-arm@nongnu.org>; Thu, 14 Aug 2025 05:58:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1755176294; x=1755781094; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=81S2M/79YurLIilhsbyfpTd1bD3tCzQZKOlyAZGCKkc=;
+ b=mNBvnfrrfy4LRmw81z3r4ay8YAzjpIUsO9b7wUNWO9M6teGWNXpuUl8f7SnKgYoNGO
+ b3nBl0DdRYGoRxIeI78cBDHYg9uhHKleXnebwTInkNvMfy5xhUbluidLpMyQpNL7FlJY
+ 22rs8HQKySqbZD5RjhGGbWScDq7OpGt8Tt5JqEjWUKnCv8adwfXpG5Y49awTTgr+w+U0
+ 5Vz992+j+T9jEJHiR7JpTC3dWFJPaf2USj/EsFLev58uvUjwGcGhaLo48UokOCJ8m0kh
+ JdwSSg/T1nrd2H+SmYvamxEn9N2ITyKlQvRQX8WlnE9PWDLcWcsELgls5QpBTZbJCWHG
+ Jobg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1755176294; x=1755781094;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=81S2M/79YurLIilhsbyfpTd1bD3tCzQZKOlyAZGCKkc=;
+ b=cVkyvuqQlZbgYrMn+2t4G2dDcTLdUPZxFJa9YZgtxmn/1S26BCqGmnaiwvfe8egmjm
+ TkuVTtmpG/ySTi0kRtCxnfO9OS5kCKek0FcaBM8rKm2GdVz3CZ2Vll8tccNIh/A1iDAJ
+ r4wgc4nfpxo/310PLnKcN448v8lQLXJU3iWX5XFmoz3seHFhCfUZTpVYQi2B7U/CB70v
+ 8aAZLiXpX8XhVfhR46Kyd+Ezr3SVjr4f/qEPQWjIOr0bA2TcRmkJP1lWDbOv6l3MY088
+ mC2cxbGkyhlT6C7iRCiulRpbed2Kgtm3pebKxpMr5+sF0WzKmAxkGmeem+bzypyRAoWd
+ ZJFw==
+X-Gm-Message-State: AOJu0Yy4TxnMAzKVcnjkaOHQp2DkBZHxs3GjI7C97w+8djnC1px0d39u
+ h+8Oyvg0/+FSnZUONAi/Rwe3J/BCEw9s9MSWIOEsWPvkgE0zPPJMEdo/jz4mgIUdUWc=
+X-Gm-Gg: ASbGnctJVKdGHAe/ZdRMVYKyikoJ7miApdyrIl6r8LZdD1WYijlCWHdvslaI4QLH7kW
+ EntT+Pnmo5gp+WbwnhmcJIU41WVY1Chf1AOemd3Z6SxcSIv0z0eJ5N0xOI/hB1P5xb8fCaeApne
+ 89Yo+pktZWaYmzRZuAihkhkGg2CMTpe6cf+O19q1kHe8dd707izCNW5Boap9aRPbTnQObKb4XXt
+ BUtm29G/nVv0OK8+L43cSi6AeDd1/X8x0SkZ6onxwGVMqSy9LNWQJi61GPD/Kzqs8UZP4clRqYJ
+ WOA1bClUOU/GGYW1+HRtJS+rQo9Ch0PGQ04FYInwKBRhUQKlASdjMuimoxFbzRSs6irgw2/BZPC
+ hqA5AJiuXei2tEvh3KVhq9WU0i119NPAnkbZ9KMb1EoxoaxQ=
+X-Google-Smtp-Source: AGHT+IFN6cCenHOTgCeQUsKMztGXpIJf1BUxGjvLzlMSZNTxOUVsFQSPTym1V7e0Yd7alZVE8lfc9A==
+X-Received: by 2002:a17:90b:2891:b0:31e:8203:4b9d with SMTP id
+ 98e67ed59e1d1-32327b49c7fmr5034867a91.29.1755176294145; 
+ Thu, 14 Aug 2025 05:58:14 -0700 (PDT)
+Received: from localhost.localdomain ([206.83.105.236])
+ by smtp.gmail.com with ESMTPSA id
+ 98e67ed59e1d1-3233100c994sm1766256a91.21.2025.08.14.05.58.11
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 14 Aug 2025 05:58:13 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Subject: [PATCH v3 04/85] target/arm: Add prot_check parameter to
+ pmsav8_mpu_lookup
+Date: Thu, 14 Aug 2025 22:56:31 +1000
+Message-ID: <20250814125752.164107-5-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250814125752.164107-1-richard.henderson@linaro.org>
+References: <20250814125752.164107-1-richard.henderson@linaro.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102c;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001,
- T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -91,27 +103,85 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+Separate the access_type from the protection check.
 
-> +static void hvf_gicv3_put(GICv3State *s)
-> +{
-> +    uint32_t reg;
-> +    uint64_t redist_typer;
-> +    int ncpu, i;
-> +
-> +    hvf_gicv3_check(s);
-> +
-> +    hv_vcpu_t vcpu0 =3D s->cpu[0].cpu->accel->fd;
-> +    hv_gic_get_redistributor_reg(vcpu0, =
-HV_GIC_REDISTRIBUTOR_REG_GICR_TYPER
-> +        , &redist_typer);
-> +
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ target/arm/internals.h    |  5 +++--
+ target/arm/ptw.c          | 11 ++++++-----
+ target/arm/tcg/m_helper.c |  4 ++--
+ 3 files changed, 11 insertions(+), 9 deletions(-)
 
-I think you should go through all your "hv_" calls and do error handling
-where it's possible, and if not, at least check it with assert_hvf_ok.
-This call to hv_gic_get_redistributor_reg is failing on my setup. I
-don't know if there could be others.
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index 118659815f..326b5a73cf 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -1626,8 +1626,9 @@ bool get_phys_addr_with_space_nogpc(CPUARMState *env, vaddr address,
+     __attribute__((nonnull));
+ 
+ bool pmsav8_mpu_lookup(CPUARMState *env, uint32_t address,
+-                       MMUAccessType access_type, ARMMMUIdx mmu_idx,
+-                       bool is_secure, GetPhysAddrResult *result,
++                       MMUAccessType access_type, unsigned prot_check,
++                       ARMMMUIdx mmu_idx, bool is_secure,
++                       GetPhysAddrResult *result,
+                        ARMMMUFaultInfo *fi, uint32_t *mregion);
+ 
+ void arm_log_exception(CPUState *cs);
+diff --git a/target/arm/ptw.c b/target/arm/ptw.c
+index 561bf2678e..a914e7e23c 100644
+--- a/target/arm/ptw.c
++++ b/target/arm/ptw.c
+@@ -2561,8 +2561,9 @@ static uint32_t *regime_rlar(CPUARMState *env, ARMMMUIdx mmu_idx,
+ }
+ 
+ bool pmsav8_mpu_lookup(CPUARMState *env, uint32_t address,
+-                       MMUAccessType access_type, ARMMMUIdx mmu_idx,
+-                       bool secure, GetPhysAddrResult *result,
++                       MMUAccessType access_type, unsigned prot_check,
++                       ARMMMUIdx mmu_idx, bool secure,
++                       GetPhysAddrResult *result,
+                        ARMMMUFaultInfo *fi, uint32_t *mregion)
+ {
+     /*
+@@ -2750,7 +2751,7 @@ bool pmsav8_mpu_lookup(CPUARMState *env, uint32_t address,
+     if (arm_feature(env, ARM_FEATURE_M)) {
+         fi->level = 1;
+     }
+-    return !(result->f.prot & (1 << access_type));
++    return (prot_check & ~result->f.prot) != 0;
+ }
+ 
+ static bool v8m_is_sau_exempt(CPUARMState *env,
+@@ -2952,8 +2953,8 @@ static bool get_phys_addr_pmsav8(CPUARMState *env,
+         }
+     }
+ 
+-    ret = pmsav8_mpu_lookup(env, address, access_type, mmu_idx, secure,
+-                            result, fi, NULL);
++    ret = pmsav8_mpu_lookup(env, address, access_type, 1 << access_type,
++                            mmu_idx, secure, result, fi, NULL);
+     if (sattrs.subpage) {
+         result->f.lg_page_size = 0;
+     }
+diff --git a/target/arm/tcg/m_helper.c b/target/arm/tcg/m_helper.c
+index 28307b5615..d856e3bc8e 100644
+--- a/target/arm/tcg/m_helper.c
++++ b/target/arm/tcg/m_helper.c
+@@ -2829,8 +2829,8 @@ uint32_t HELPER(v7m_tt)(CPUARMState *env, uint32_t addr, uint32_t op)
+         ARMMMUFaultInfo fi = {};
+ 
+         /* We can ignore the return value as prot is always set */
+-        pmsav8_mpu_lookup(env, addr, MMU_DATA_LOAD, mmu_idx, targetsec,
+-                          &res, &fi, &mregion);
++        pmsav8_mpu_lookup(env, addr, MMU_DATA_LOAD, PAGE_READ, mmu_idx,
++                          targetsec, &res, &fi, &mregion);
+         if (mregion == -1) {
+             mrvalid = false;
+             mregion = 0;
+-- 
+2.43.0
 
-I've configured my VM like this:
--machine virt,kernel-irqchip=3Don,its=3Doff
--boot menu=3Don,splash-time=3D0=
 

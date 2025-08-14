@@ -4,87 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80596CA0EE4
-	for <qemu-arm@archiver.kernel.org>; Thu, 14 Aug 2025 13:00:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37CF5CA0EDC
+	for <qemu-arm@archiver.kernel.org>; Thu, 14 Aug 2025 13:01:40 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1umXXi-0001UM-2V; Thu, 14 Aug 2025 08:58:54 -0400
+	id 1umXZn-0004dB-Nj; Thu, 14 Aug 2025 09:01:06 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1umXXf-0001Tk-R1
- for qemu-arm@nongnu.org; Thu, 14 Aug 2025 08:58:51 -0400
-Received: from mail-pj1-x1031.google.com ([2607:f8b0:4864:20::1031])
+ id 1umXYw-0002rK-TV
+ for qemu-arm@nongnu.org; Thu, 14 Aug 2025 09:00:14 -0400
+Received: from mail-pj1-x102a.google.com ([2607:f8b0:4864:20::102a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1umXXY-0004FU-QU
- for qemu-arm@nongnu.org; Thu, 14 Aug 2025 08:58:50 -0400
-Received: by mail-pj1-x1031.google.com with SMTP id
- 98e67ed59e1d1-323266b1d1aso558984a91.0
- for <qemu-arm@nongnu.org>; Thu, 14 Aug 2025 05:58:42 -0700 (PDT)
+ id 1umXYd-0004R4-Cx
+ for qemu-arm@nongnu.org; Thu, 14 Aug 2025 09:00:03 -0400
+Received: by mail-pj1-x102a.google.com with SMTP id
+ 98e67ed59e1d1-32326de9f4eso811076a91.2
+ for <qemu-arm@nongnu.org>; Thu, 14 Aug 2025 05:59:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1755176320; x=1755781120; darn=nongnu.org;
+ d=linaro.org; s=google; t=1755176389; x=1755781189; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=sHSDdWTCh8t1tRyRbP9Lg4R3+bQUPTmxLzxlpsJeaKQ=;
- b=PQTzIHM1X7puemPNKrcLyET4wfCzQIvhZ/hvEVqnexxFj9Jw6060EMeTquIsRu/upv
- oYJKXo2LdH0y84/ZRUcoWmGgaMi3i6leC7Q8dzZyJDpmRqYc7GJJoi10I5ruL0YSuUp4
- pQM9i94COp+Sxx0f5BrmxNHeQZKzvz9wG3KsNkPxZjM1eV5l+WI7VXrovH0vLVX9OXzM
- 39JFoPz4KpD1twMRHNyHBwFdaq6aZ+BSCSUksdkK23EYwRj1cA2kipsqtM5XzuvPAtGs
- 5KB0XtitDw2lupvh6kcawJoy9dHCGfrEkkI0mClM4B3x0PhEM3OnjSAP2ftWOfhJfGFh
- Q+UQ==
+ bh=EbyUERQdqYPEwnGqMNfJLK0fIa1Qiwxd4WxE3mzFNtc=;
+ b=JSxIoEUzv8ZGonhUfBd6NHUemLK2Z5TwPPCeBsb9lu8Z0DhfmtFNuCVypHwBqDp05N
+ 2X65KyKwL7Y6dE30px6BY1qGhlkS0KkXAWdRyfWM5rYSr+ipsa3wVEIC1425LD3Yi5Ji
+ u3xRn3PhnY474MnjlmYHHR6aD2fDLlhUPIJMnC9V723ueB6BFGYVneOtDeSBxPBVgTh0
+ 3jVetbQsjVmLB7ksZUyTibVxXAUn5Kaw9lF2HDEQw9gv0jIHzBcjgP0YyUrQlKDtB3GR
+ Hn2RdgCZMUDveIh5sAwZ7VpVTg9/LeOBpahvZAuHvKCBJydg0v3Ime9Tw0Cc/XxFWvBJ
+ aBNA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1755176320; x=1755781120;
+ d=1e100.net; s=20230601; t=1755176389; x=1755781189;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=sHSDdWTCh8t1tRyRbP9Lg4R3+bQUPTmxLzxlpsJeaKQ=;
- b=FumJ/Qz/QENCqX9DryKA+ZD9+3pmayszNVNhdFJtiYaVpxduEFMzdcn0AiR4/rmYYq
- pInQUk3SiKzOy7r2aFFO8RkU2BgXt5Oz7cnDlf9BqNXWSsk6LofchmPgcJ4PL7beJRk/
- jrXG32o2uQRYopeaLTG10A+SAQeza1jYooMNxLvjUHhJfXX72KLZGZ+A/1zLxKF8kgKV
- 8P0xUQ2HFM+3yrxjVk/QPdzJTt8Vr1mpAP54ahqg5I1NqpTLA6pA20yXqj0P9I5lSWve
- F6TXIEEYHN4qzggIr4jNHFruUc/GLvQc5B53PzQY22iSY0W9G0wQloIOQuBGdLA8QdaR
- LVyg==
-X-Gm-Message-State: AOJu0YwwHT72xRpYndMDMRWJv9T51cRYTEt0VRyWzLI7IbVjX3DDvmB1
- WkHb1TQabUwt9J7zhnzy2Eg73/+ru2Ko5f7Grh1w9jKBcfCcQQmUHc9FujuChJaMUlE=
-X-Gm-Gg: ASbGnctYSWKslGbyrNiCnJ9CljpRuIJLO5S4QfMB8tP+t6WJnj1zNGvSzIisr++nOIT
- 6k+KXEzkg88fXxlHRUiFwjO42Q1rmrF/mKSOUPHQX+/iT+IcIfwxnGSuKOJQ0Lijfb//ZQOqLwd
- HtsGsLozbwKpcefyCix2yowzPZWZsX+pT5fpTKdkIa2E0ehPUJJhYdXRBneId1W9Nx/4cKCpmn+
- Fpjo8Nict6I5HfXBPncCwN5Em8O690x/Gemtx0cKCekukhhAlwpoURxyrBaRbLYVCt1u5oeoIRW
- ShWq+nfmKJyGZElH8vXjXDDgb0Kuw5PzTsbTDO2lp5w59DeQ+dRm5s931jAFEFboIOn5AUNL6Iz
- MuykFYqjeCk4kFR5+OBm4BuEItzVtIV/MrDFCMLoaMyuNtY4=
-X-Google-Smtp-Source: AGHT+IFGW6z2+qhpPP18yxumJxky4jsPk1WbluDtVucS3hjxYl3kze5/axHu1yqLi/XJyjupWOt/WQ==
-X-Received: by 2002:a17:90b:17cc:b0:321:4182:2b9e with SMTP id
- 98e67ed59e1d1-32327ab2df2mr4999422a91.12.1755176320026; 
- Thu, 14 Aug 2025 05:58:40 -0700 (PDT)
+ bh=EbyUERQdqYPEwnGqMNfJLK0fIa1Qiwxd4WxE3mzFNtc=;
+ b=XbLA2d7POGTLSU570V+Ujjers9jOxZKmNmE6zqxxRNkMuKq8/1c3uJ99J0hAcxQO3T
+ ERQQ5zYYQKOojy6ltEJBxTF6U/PlwfLFs6M0w38/7Ry+A8hU/vm7ImSuQyHM4Q3VTFOD
+ OEtegH02LPcQpkY5rc8LXhtvjFxCFCK85mNwvkZuPGHo+ZeSRXbgFyCFTvS2lslQKOOw
+ txvvWeSyW+tHSfkn4EaluTSPyKuAhgjzZ5DCrZjWph52EjvV52CV929U3i6lZjjIGZdo
+ 5OaG9XCCIa0++T4D9mNCqrB85to9QeZtUsSr/AnsFzy4iK0tUsfBqT4HSEZ0ImcFWmy3
+ ux3A==
+X-Gm-Message-State: AOJu0YwAGMdt19nzc0ZIJMWjgCsvPAUXI4tgs6m2dh2przbmZtHdwVuT
+ Ri5+1l+JK0wrcUB33XqJ6+KShw3tT4Eoi3Gh2jmk1X2aNt5jxduiWOHTt4tgstjntyU=
+X-Gm-Gg: ASbGncs7t3cEwu2XXezJ6EDYd8+XGUKlC8Qj9hrdV9oO14Ro0TAPf7WNhQxJIw8+cUT
+ tSDxnOzTQ4frMjWwyT/Pwrw67fPvUG8nzVR9z7eWGbZ5nQJOwoSzhDHbCGsQFMVv9LuMb6aQqQ4
+ /4SZMdP1VXAPxp3dcxgljidsR4kXruV6Fi1Dlu5nX/r6t8Hnxte4SqsV3bV1z5l9awYKMfBQi/H
+ nl/7ISF//xbyBtauwtYLiEHELg0heFH64isf8nai3zXwh97GIyNqdj0nnwjrtFXNVmTNF3QWFRp
+ DqLbMBwA6t6uqf3Cf1sp5JlOGF0cveT1f5YlCcrF8EoMoYXxYsVwPJWIA+y0E3dXUyLLOjii1yL
+ 9IKk+UM0zwvP8YhEPDunFFB+v5MA0LRFaZ2WDktWxkqZp4zY=
+X-Google-Smtp-Source: AGHT+IFiLuG6/Oe1FbBltvAHS+HmHdriAAvjLDp8GmJWUSvEJDiNOV9W1v/9qRHo5NPCNp//w6BF5A==
+X-Received: by 2002:a17:90b:4e8e:b0:31e:6f0a:6a1a with SMTP id
+ 98e67ed59e1d1-32327a71564mr3865759a91.3.1755176389030; 
+ Thu, 14 Aug 2025 05:59:49 -0700 (PDT)
 Received: from localhost.localdomain ([206.83.105.236])
  by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-3233100c994sm1766256a91.21.2025.08.14.05.58.37
+ 98e67ed59e1d1-3233100c994sm1766256a91.21.2025.08.14.05.59.46
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 14 Aug 2025 05:58:39 -0700 (PDT)
+ Thu, 14 Aug 2025 05:59:48 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
-	Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v3 12/85] target/arm: Implement FEAT_ATS1A
-Date: Thu, 14 Aug 2025 22:56:39 +1000
-Message-ID: <20250814125752.164107-13-richard.henderson@linaro.org>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Subject: [PATCH v3 33/85] target/arm: Convert arm_mmu_idx_to_el from switch to
+ table
+Date: Thu, 14 Aug 2025 22:57:00 +1000
+Message-ID: <20250814125752.164107-34-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250814125752.164107-1-richard.henderson@linaro.org>
 References: <20250814125752.164107-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1031;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1031.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102a;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -100,130 +103,182 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Implement FEAT_ATS1A and enable for -cpu max.
+In an effort to keep all ARMMMUIdx data in one place, begin construction
+of an info table describing all of the properties of the mmu_idx.  Begin
+with the access EL.
 
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/cpregs.h           |  1 +
- target/arm/cpu-features.h     |  5 ++++
- target/arm/tcg/cpregs-at.c    | 44 +++++++++++++++++++++++++++++++++++
- target/arm/tcg/cpu64.c        |  1 +
- docs/system/arm/emulation.rst |  1 +
- 5 files changed, 52 insertions(+)
+ target/arm/internals.h       |  3 +--
+ target/arm/mmuidx-internal.h | 29 +++++++++++++++++++++++++
+ target/arm/helper.c          | 27 ------------------------
+ target/arm/mmuidx.c          | 41 ++++++++++++++++++++++++++++++++++++
+ target/arm/meson.build       |  7 +++++-
+ 5 files changed, 77 insertions(+), 30 deletions(-)
+ create mode 100644 target/arm/mmuidx-internal.h
+ create mode 100644 target/arm/mmuidx.c
 
-diff --git a/target/arm/cpregs.h b/target/arm/cpregs.h
-index 1d103b577f..2a4826f5c4 100644
---- a/target/arm/cpregs.h
-+++ b/target/arm/cpregs.h
-@@ -854,6 +854,7 @@ typedef enum FGTBit {
-     DO_BIT(HFGITR, DVPRCTX),
-     DO_BIT(HFGITR, CPPRCTX),
-     DO_BIT(HFGITR, DCCVAC),
-+    DO_BIT(HFGITR, ATS1E1A),
- } FGTBit;
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index b6499683cc..2dc82330ec 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -34,6 +34,7 @@
+ #include "system/memory.h"
+ #include "syndrome.h"
+ #include "cpu-features.h"
++#include "mmuidx-internal.h"
  
- #undef DO_BIT
-diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
-index 9579d93cec..7f2ca51b4c 100644
---- a/target/arm/cpu-features.h
-+++ b/target/arm/cpu-features.h
-@@ -609,6 +609,11 @@ static inline bool isar_feature_aa64_lut(const ARMISARegisters *id)
-     return FIELD_EX64_IDREG(id, ID_AA64ISAR2, LUT);
+ /* register banks for CPU modes */
+ #define BANK_USRSYS 0
+@@ -986,8 +987,6 @@ static inline ARMMMUIdx core_to_aa64_mmu_idx(int mmu_idx)
+     return mmu_idx | ARM_MMU_IDX_A;
  }
  
-+static inline bool isar_feature_aa64_ats1a(const ARMISARegisters *id)
-+{
-+    return FIELD_EX64_IDREG(id, ID_AA64ISAR2, ATS1A);
-+}
-+
- static inline bool isar_feature_aa64_fp_simd(const ARMISARegisters *id)
- {
-     /* We always set the AdvSIMD and FP fields identically.  */
-diff --git a/target/arm/tcg/cpregs-at.c b/target/arm/tcg/cpregs-at.c
-index bebf168997..0e8f229aa7 100644
---- a/target/arm/tcg/cpregs-at.c
-+++ b/target/arm/tcg/cpregs-at.c
-@@ -488,6 +488,47 @@ static const ARMCPRegInfo ats1cp_reginfo[] = {
-       .writefn = ats_write },
- };
+-int arm_mmu_idx_to_el(ARMMMUIdx mmu_idx);
+-
+ /* Return the MMU index for a v7M CPU in the specified security state */
+ ARMMMUIdx arm_v7m_mmu_idx_for_secstate(CPUARMState *env, bool secstate);
  
-+static void ats_s1e1a(CPUARMState *env, const ARMCPRegInfo *ri, uint64_t value)
-+{
-+    uint64_t hcr_el2 = arm_hcr_el2_eff(env);
-+    bool regime_e20 = (hcr_el2 & (HCR_E2H | HCR_TGE)) == (HCR_E2H | HCR_TGE);
-+    ARMMMUIdx mmu_idx = regime_e20 ? ARMMMUIdx_E20_2 : ARMMMUIdx_Stage1_E1;
-+    ARMSecuritySpace ss = arm_security_space_below_el3(env);
+diff --git a/target/arm/mmuidx-internal.h b/target/arm/mmuidx-internal.h
+new file mode 100644
+index 0000000000..29bba4ecb5
+--- /dev/null
++++ b/target/arm/mmuidx-internal.h
+@@ -0,0 +1,29 @@
++/*
++ * QEMU Arm software mmu index internal definitions
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
 +
-+    env->cp15.par_el[1] = do_ats_write(env, value, 0, mmu_idx, ss);
++#ifndef TARGET_ARM_MMUIDX_INTERNAL_H
++#define TARGET_ARM_MMUIDX_INTERNAL_H
++
++#include "mmuidx.h"
++#include "tcg/debug-assert.h"
++#include "hw/registerfields.h"
++
++
++FIELD(MMUIDXINFO, EL, 0, 2)
++FIELD(MMUIDXINFO, ELVALID, 2, 1)
++
++extern const uint32_t arm_mmuidx_table[ARM_MMU_IDX_M + 8];
++
++#define arm_mmuidx_is_valid(x)  ((unsigned)(x) < ARRAY_SIZE(arm_mmuidx_table))
++
++/* Return the exception level associated with this mmu index. */
++static inline int arm_mmu_idx_to_el(ARMMMUIdx idx)
++{
++    tcg_debug_assert(arm_mmuidx_is_valid(idx));
++    tcg_debug_assert(FIELD_EX32(arm_mmuidx_table[idx], MMUIDXINFO, ELVALID));
++    return FIELD_EX32(arm_mmuidx_table[idx], MMUIDXINFO, EL);
 +}
 +
-+static void ats_s1e2a(CPUARMState *env, const ARMCPRegInfo *ri, uint64_t value)
-+{
-+    uint64_t hcr_el2 = arm_hcr_el2_eff(env);
-+    ARMMMUIdx mmu_idx = hcr_el2 & HCR_E2H ? ARMMMUIdx_E20_2 : ARMMMUIdx_E2;
-+    ARMSecuritySpace ss = arm_security_space_below_el3(env);
++#endif /* TARGET_ARM_MMUIDX_INTERNAL_H */
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 9447d7ba59..8985ad8c8a 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -9895,33 +9895,6 @@ int fp_exception_el(CPUARMState *env, int cur_el)
+     return 0;
+ }
+ 
+-/* Return the exception level we're running at if this is our mmu_idx */
+-int arm_mmu_idx_to_el(ARMMMUIdx mmu_idx)
+-{
+-    if (mmu_idx & ARM_MMU_IDX_M) {
+-        return mmu_idx & ARM_MMU_IDX_M_PRIV;
+-    }
+-
+-    switch (mmu_idx) {
+-    case ARMMMUIdx_E10_0:
+-    case ARMMMUIdx_E20_0:
+-    case ARMMMUIdx_E30_0:
+-        return 0;
+-    case ARMMMUIdx_E10_1:
+-    case ARMMMUIdx_E10_1_PAN:
+-        return 1;
+-    case ARMMMUIdx_E2:
+-    case ARMMMUIdx_E20_2:
+-    case ARMMMUIdx_E20_2_PAN:
+-        return 2;
+-    case ARMMMUIdx_E3:
+-    case ARMMMUIdx_E30_3_PAN:
+-        return 3;
+-    default:
+-        g_assert_not_reached();
+-    }
+-}
+-
+ #ifndef CONFIG_TCG
+ ARMMMUIdx arm_v7m_mmu_idx_for_secstate(CPUARMState *env, bool secstate)
+ {
+diff --git a/target/arm/mmuidx.c b/target/arm/mmuidx.c
+new file mode 100644
+index 0000000000..309b1d68df
+--- /dev/null
++++ b/target/arm/mmuidx.c
+@@ -0,0 +1,41 @@
++/*
++ * QEMU Arm software mmu index definitions
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
 +
-+    env->cp15.par_el[1] = do_ats_write(env, value, 0, mmu_idx, ss);
-+}
++#include "qemu/osdep.h"
++#include "mmuidx-internal.h"
 +
-+static void ats_s1e3a(CPUARMState *env, const ARMCPRegInfo *ri, uint64_t value)
-+{
-+    env->cp15.par_el[1] = do_ats_write(env, value, 0, ARMMMUIdx_E3,
-+                                       arm_security_space(env));
-+}
 +
-+static const ARMCPRegInfo ats1a_reginfo[] = {
-+    { .name = "AT_S1E1A", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 0, .crn = 7, .crm = 9, .opc2 = 2,
-+      .access = PL1_W, .type = ARM_CP_NO_RAW | ARM_CP_RAISES_EXC,
-+      .fgt = FGT_ATS1E1A,
-+      .accessfn = at_s1e01_access, .writefn = ats_s1e1a },
-+    { .name = "AT_S1E2A", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 4, .crn = 7, .crm = 9, .opc2 = 2,
-+      .access = PL2_W, .type = ARM_CP_NO_RAW | ARM_CP_RAISES_EXC,
-+      .accessfn = at_s1e2_access, .writefn = ats_s1e2a },
-+    { .name = "AT_S1E3A", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 6, .crn = 7, .crm = 9, .opc2 = 2,
-+      .access = PL3_W, .type = ARM_CP_NO_RAW | ARM_CP_RAISES_EXC,
-+      .writefn = ats_s1e3a },
++#define EL(X)  ((X << R_MMUIDXINFO_EL_SHIFT) | R_MMUIDXINFO_ELVALID_MASK)
++
++const uint32_t arm_mmuidx_table[ARM_MMU_IDX_M + 8] = {
++    /*
++     * A-profile.
++     */
++    [ARMMMUIdx_E10_0]           = EL(0),
++    [ARMMMUIdx_E10_1]           = EL(1),
++    [ARMMMUIdx_E10_1_PAN]       = EL(1),
++
++    [ARMMMUIdx_E20_0]           = EL(0),
++    [ARMMMUIdx_E20_2]           = EL(2),
++    [ARMMMUIdx_E20_2_PAN]       = EL(2),
++
++    [ARMMMUIdx_E2]              = EL(2),
++
++    [ARMMMUIdx_E3]              = EL(3),
++    [ARMMMUIdx_E30_0]           = EL(0),
++    [ARMMMUIdx_E30_3_PAN]       = EL(3),
++
++    /*
++     * M-profile.
++     */
++    [ARMMMUIdx_MUser]           = EL(0),
++    [ARMMMUIdx_MPriv]           = EL(1),
++    [ARMMMUIdx_MUserNegPri]     = EL(0),
++    [ARMMMUIdx_MPrivNegPri]     = EL(1),
++    [ARMMMUIdx_MSUser]          = EL(0),
++    [ARMMMUIdx_MSPriv]          = EL(1),
++    [ARMMMUIdx_MSUserNegPri]    = EL(0),
++    [ARMMMUIdx_MSPrivNegPri]    = EL(1),
 +};
-+
- void define_at_insn_regs(ARMCPU *cpu)
- {
-     CPUARMState *env = &cpu->env;
-@@ -509,4 +550,7 @@ void define_at_insn_regs(ARMCPU *cpu)
-     if (cpu_isar_feature(aa32_ats1e1, cpu)) {
-         define_arm_cp_regs(cpu, ats1cp_reginfo);
-     }
-+    if (cpu_isar_feature(aa64_ats1a, cpu)) {
-+        define_arm_cp_regs(cpu, ats1a_reginfo);
-+    }
- }
-diff --git a/target/arm/tcg/cpu64.c b/target/arm/tcg/cpu64.c
-index c54aa528c6..22ccc4f697 100644
---- a/target/arm/tcg/cpu64.c
-+++ b/target/arm/tcg/cpu64.c
-@@ -1178,6 +1178,7 @@ void aarch64_max_tcg_initfn(Object *obj)
-     t = FIELD_DP64(t, ID_AA64ISAR2, MOPS, 1);     /* FEAT_MOPS */
-     t = FIELD_DP64(t, ID_AA64ISAR2, BC, 1);       /* FEAT_HBC */
-     t = FIELD_DP64(t, ID_AA64ISAR2, WFXT, 2);     /* FEAT_WFxT */
-+    t = FIELD_DP64(t, ID_AA64ISAR2, ATS1A, 1);    /* FEAT_ATS1A */
-     SET_IDREG(isar, ID_AA64ISAR2, t);
+diff --git a/target/arm/meson.build b/target/arm/meson.build
+index 07d9271aa4..91630a1f72 100644
+--- a/target/arm/meson.build
++++ b/target/arm/meson.build
+@@ -6,7 +6,12 @@ arm_ss.add(files(
  
-     t = GET_IDREG(isar, ID_AA64PFR0);
-diff --git a/docs/system/arm/emulation.rst b/docs/system/arm/emulation.rst
-index d207a9f266..1489c262b8 100644
---- a/docs/system/arm/emulation.rst
-+++ b/docs/system/arm/emulation.rst
-@@ -23,6 +23,7 @@ the following architecture extensions:
- - FEAT_AFP (Alternate floating-point behavior)
- - FEAT_Armv9_Crypto (Armv9 Cryptographic Extension)
- - FEAT_ASID16 (16 bit ASID)
-+- FEAT_ATS1A (Address Translation operations that ignore stage 1 permissions)
- - FEAT_BBM at level 2 (Translation table break-before-make levels)
- - FEAT_BF16 (AArch64 BFloat16 instructions)
- - FEAT_BTI (Branch Target Identification)
+ arm_ss.add(when: 'TARGET_AARCH64', if_true: files(
+   'cpu64.c',
+-  'gdbstub64.c'))
++  'gdbstub64.c'
++))
++
++arm_common_ss.add(files(
++  'mmuidx.c',
++))
+ 
+ arm_system_ss = ss.source_set()
+ arm_common_system_ss = ss.source_set()
 -- 
 2.43.0
 

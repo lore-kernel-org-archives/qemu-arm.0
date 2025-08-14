@@ -4,83 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37CF5CA0EDC
-	for <qemu-arm@archiver.kernel.org>; Thu, 14 Aug 2025 13:01:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77E90CA0EE6
+	for <qemu-arm@archiver.kernel.org>; Thu, 14 Aug 2025 13:01:47 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1umXZn-0004dB-Nj; Thu, 14 Aug 2025 09:01:06 -0400
+	id 1umXXD-0001GU-7B; Thu, 14 Aug 2025 08:58:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1umXYw-0002rK-TV
- for qemu-arm@nongnu.org; Thu, 14 Aug 2025 09:00:14 -0400
-Received: from mail-pj1-x102a.google.com ([2607:f8b0:4864:20::102a])
+ id 1umXXC-0001Fv-0o
+ for qemu-arm@nongnu.org; Thu, 14 Aug 2025 08:58:22 -0400
+Received: from mail-pf1-x42e.google.com ([2607:f8b0:4864:20::42e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1umXYd-0004R4-Cx
- for qemu-arm@nongnu.org; Thu, 14 Aug 2025 09:00:03 -0400
-Received: by mail-pj1-x102a.google.com with SMTP id
- 98e67ed59e1d1-32326de9f4eso811076a91.2
- for <qemu-arm@nongnu.org>; Thu, 14 Aug 2025 05:59:50 -0700 (PDT)
+ id 1umXX1-00048V-Ta
+ for qemu-arm@nongnu.org; Thu, 14 Aug 2025 08:58:21 -0400
+Received: by mail-pf1-x42e.google.com with SMTP id
+ d2e1a72fcca58-76e2e88c6a6so857849b3a.1
+ for <qemu-arm@nongnu.org>; Thu, 14 Aug 2025 05:58:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1755176389; x=1755781189; darn=nongnu.org;
+ d=linaro.org; s=google; t=1755176287; x=1755781087; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=EbyUERQdqYPEwnGqMNfJLK0fIa1Qiwxd4WxE3mzFNtc=;
- b=JSxIoEUzv8ZGonhUfBd6NHUemLK2Z5TwPPCeBsb9lu8Z0DhfmtFNuCVypHwBqDp05N
- 2X65KyKwL7Y6dE30px6BY1qGhlkS0KkXAWdRyfWM5rYSr+ipsa3wVEIC1425LD3Yi5Ji
- u3xRn3PhnY474MnjlmYHHR6aD2fDLlhUPIJMnC9V723ueB6BFGYVneOtDeSBxPBVgTh0
- 3jVetbQsjVmLB7ksZUyTibVxXAUn5Kaw9lF2HDEQw9gv0jIHzBcjgP0YyUrQlKDtB3GR
- Hn2RdgCZMUDveIh5sAwZ7VpVTg9/LeOBpahvZAuHvKCBJydg0v3Ime9Tw0Cc/XxFWvBJ
- aBNA==
+ bh=we2kBP9OJLrPPGq7QOJ6TSid+ia1Le92lE2F6Wh2Zjg=;
+ b=iDWZ1IGNvEB7gRGXOU7o781uyTKmw7Cv0irBoLyNVipTZs7JDma6XtfeivDYHvpnou
+ XqPaQFsIocSzW8flOGEILwMnUypTCVfhz+pawz+FaisGAtQYiTo+AtAQU7yZprp2rts3
+ SdSe4UH3dOWJUIaK3I/7w9OkibpIITKqUobg2poWCa8jK/SkS8J2hW6v0s5TUmazlt6D
+ Zgq1kOsO05WsvGPXETcZ5QB5+UtI0IQTM2XfWZ7wFqN5iPHLDeOxqdX9s/4oQ4HSxqnq
+ tHBwGXU8Wf7h9zGK8x60tpvVUy7uHWtcjypsEVszoXBqRO1al6JIweaJN7z8hmnM8RGo
+ jHUg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1755176389; x=1755781189;
+ d=1e100.net; s=20230601; t=1755176287; x=1755781087;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=EbyUERQdqYPEwnGqMNfJLK0fIa1Qiwxd4WxE3mzFNtc=;
- b=XbLA2d7POGTLSU570V+Ujjers9jOxZKmNmE6zqxxRNkMuKq8/1c3uJ99J0hAcxQO3T
- ERQQ5zYYQKOojy6ltEJBxTF6U/PlwfLFs6M0w38/7Ry+A8hU/vm7ImSuQyHM4Q3VTFOD
- OEtegH02LPcQpkY5rc8LXhtvjFxCFCK85mNwvkZuPGHo+ZeSRXbgFyCFTvS2lslQKOOw
- txvvWeSyW+tHSfkn4EaluTSPyKuAhgjzZ5DCrZjWph52EjvV52CV929U3i6lZjjIGZdo
- 5OaG9XCCIa0++T4D9mNCqrB85to9QeZtUsSr/AnsFzy4iK0tUsfBqT4HSEZ0ImcFWmy3
- ux3A==
-X-Gm-Message-State: AOJu0YwAGMdt19nzc0ZIJMWjgCsvPAUXI4tgs6m2dh2przbmZtHdwVuT
- Ri5+1l+JK0wrcUB33XqJ6+KShw3tT4Eoi3Gh2jmk1X2aNt5jxduiWOHTt4tgstjntyU=
-X-Gm-Gg: ASbGncs7t3cEwu2XXezJ6EDYd8+XGUKlC8Qj9hrdV9oO14Ro0TAPf7WNhQxJIw8+cUT
- tSDxnOzTQ4frMjWwyT/Pwrw67fPvUG8nzVR9z7eWGbZ5nQJOwoSzhDHbCGsQFMVv9LuMb6aQqQ4
- /4SZMdP1VXAPxp3dcxgljidsR4kXruV6Fi1Dlu5nX/r6t8Hnxte4SqsV3bV1z5l9awYKMfBQi/H
- nl/7ISF//xbyBtauwtYLiEHELg0heFH64isf8nai3zXwh97GIyNqdj0nnwjrtFXNVmTNF3QWFRp
- DqLbMBwA6t6uqf3Cf1sp5JlOGF0cveT1f5YlCcrF8EoMoYXxYsVwPJWIA+y0E3dXUyLLOjii1yL
- 9IKk+UM0zwvP8YhEPDunFFB+v5MA0LRFaZ2WDktWxkqZp4zY=
-X-Google-Smtp-Source: AGHT+IFiLuG6/Oe1FbBltvAHS+HmHdriAAvjLDp8GmJWUSvEJDiNOV9W1v/9qRHo5NPCNp//w6BF5A==
-X-Received: by 2002:a17:90b:4e8e:b0:31e:6f0a:6a1a with SMTP id
- 98e67ed59e1d1-32327a71564mr3865759a91.3.1755176389030; 
- Thu, 14 Aug 2025 05:59:49 -0700 (PDT)
+ bh=we2kBP9OJLrPPGq7QOJ6TSid+ia1Le92lE2F6Wh2Zjg=;
+ b=qnaH3aNSOZodeTzFWOAcFPU82dKhqrrBThcW4NPLOyfXl/SaSz5KMSp/a5sKrUy5vc
+ SXiGHMLaWzPTyCI6bDd0a3qUOft7Dz2VrILP0e94U8EYi9E/Plb5eudOxQdicDN5QjgC
+ GbFGbYsAZQGb2mm6DJ6M5ct/DipZ4ar684J+vVcADZqzkE4QhBCfrVZ5NTC37/DRYPs1
+ DlvKLc1cPYZPuFyN7qdvR6mqaLr2pFd6rn9iAoOj/d1XeEAs1cKI6btIaxtU/sHmpAEe
+ ZHQ5JjmROYaQ+ylw+MoE09MCGr/pdSlXADJb9udrEex4TWG2R3Qz3xZ15YwridVpN1og
+ eehQ==
+X-Gm-Message-State: AOJu0YwWg0WhMJpYK9AQtd90wa0cCxZAJN1h7B+4DIxaksfNFGrXuzc7
+ /vKety9zIpLzscUA5Uawa09Gd0EdC8VirSK5wiGfiODTBE2PMVHjF3NXBEAzfF/TAxU=
+X-Gm-Gg: ASbGnctqjKOrBaOuFUFxKKxDPvXwcMwMuNixzkfnBeNMd4oGAa9LFpdfrB1d3z2Hzcv
+ e0+giU0NxhV+jbvH03IWZexTUO/q2WggxYQB9IVXr75oRVATEy4oBlrnuBRmS1sPv8JUsUsHHsC
+ N+TVYrP5Ojqb9UoMbCsYh6yoi9SpNsJyldzaIWiEhikIUolGySlpCJSnlo2YkJuSfjP9fDHrh3n
+ 8pDMXJwRm3vXUtp2j0mVIuW7H5kPIjJeN0ETgSxEZmzQhb7THSIKOmqOPUt5++PfNmKmUmedX4B
+ 034LEFMlUxnlJ0mG9/ytxVzsIvk3VBU64XP7gdxlzD6gg+HEyNT5uBIT9I73pL0d88ZBGtepjXz
+ P26+gQDqfk/1to68jWm4uspE1AmXe2xiwPo4yRsneUiXoR8A=
+X-Google-Smtp-Source: AGHT+IHMUxnQ4jnW83NGm4cUAtCXOwkEMFLQAShZOd+Ym4yKsYbUm9PxxqPxFk36q1Hm6+OwyQjWpg==
+X-Received: by 2002:a17:903:240b:b0:243:12d5:db5f with SMTP id
+ d9443c01a7336-244586d9dedmr49353575ad.48.1755176287439; 
+ Thu, 14 Aug 2025 05:58:07 -0700 (PDT)
 Received: from localhost.localdomain ([206.83.105.236])
  by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-3233100c994sm1766256a91.21.2025.08.14.05.59.46
+ 98e67ed59e1d1-3233100c994sm1766256a91.21.2025.08.14.05.58.04
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 14 Aug 2025 05:59:48 -0700 (PDT)
+ Thu, 14 Aug 2025 05:58:07 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v3 33/85] target/arm: Convert arm_mmu_idx_to_el from switch to
- table
-Date: Thu, 14 Aug 2025 22:57:00 +1000
-Message-ID: <20250814125752.164107-34-richard.henderson@linaro.org>
+	Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Subject: [PATCH v3 02/85] linux-user/aarch64: Check syndrome for EXCP_UDEF
+Date: Thu, 14 Aug 2025 22:56:29 +1000
+Message-ID: <20250814125752.164107-3-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250814125752.164107-1-richard.henderson@linaro.org>
 References: <20250814125752.164107-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102a;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42e;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -103,182 +100,117 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-In an effort to keep all ARMMMUIdx data in one place, begin construction
-of an info table describing all of the properties of the mmu_idx.  Begin
-with the access EL.
+Note that we have been passing the incorrect code for most
+exception codes: uncategorized (do_el0_undef),
+systemregistertrap (do_el0_sys), smetrap (do_sme_acc),
+btitrap (do_el0_bti) and illegalstate (bad_el0_sync).
+Only pacfail uses ILL_ILLOPN (do_el0_fpac).
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Note that EC_MOP (do_el0_mops) ought not signal at all.
+For now, preserve existing behavior signalling ILL_ILLOPN.
+
+List all other exception codes and document why they do
+not apply to user-only.
+
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/internals.h       |  3 +--
- target/arm/mmuidx-internal.h | 29 +++++++++++++++++++++++++
- target/arm/helper.c          | 27 ------------------------
- target/arm/mmuidx.c          | 41 ++++++++++++++++++++++++++++++++++++
- target/arm/meson.build       |  7 +++++-
- 5 files changed, 77 insertions(+), 30 deletions(-)
- create mode 100644 target/arm/mmuidx-internal.h
- create mode 100644 target/arm/mmuidx.c
+ linux-user/aarch64/cpu_loop.c | 75 ++++++++++++++++++++++++++++++++++-
+ 1 file changed, 74 insertions(+), 1 deletion(-)
 
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index b6499683cc..2dc82330ec 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -34,6 +34,7 @@
- #include "system/memory.h"
- #include "syndrome.h"
- #include "cpu-features.h"
-+#include "mmuidx-internal.h"
+diff --git a/linux-user/aarch64/cpu_loop.c b/linux-user/aarch64/cpu_loop.c
+index 85d455d018..deb45eaa73 100644
+--- a/linux-user/aarch64/cpu_loop.c
++++ b/linux-user/aarch64/cpu_loop.c
+@@ -65,6 +65,79 @@ static void signal_for_exception(CPUARMState *env, vaddr addr)
+         si_code = TARGET_BUS_ADRALN;
+         break;
  
- /* register banks for CPU modes */
- #define BANK_USRSYS 0
-@@ -986,8 +987,6 @@ static inline ARMMMUIdx core_to_aa64_mmu_idx(int mmu_idx)
-     return mmu_idx | ARM_MMU_IDX_A;
- }
- 
--int arm_mmu_idx_to_el(ARMMMUIdx mmu_idx);
--
- /* Return the MMU index for a v7M CPU in the specified security state */
- ARMMMUIdx arm_v7m_mmu_idx_for_secstate(CPUARMState *env, bool secstate);
- 
-diff --git a/target/arm/mmuidx-internal.h b/target/arm/mmuidx-internal.h
-new file mode 100644
-index 0000000000..29bba4ecb5
---- /dev/null
-+++ b/target/arm/mmuidx-internal.h
-@@ -0,0 +1,29 @@
-+/*
-+ * QEMU Arm software mmu index internal definitions
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
++    case EC_UNCATEGORIZED:         /* E.g. undefined instruction */
++    case EC_SYSTEMREGISTERTRAP:    /* E.g. inaccessible register */
++    case EC_SMETRAP:               /* E.g. invalid insn in streaming state */
++    case EC_BTITRAP:               /* E.g. invalid guarded branch target */
++    case EC_ILLEGALSTATE:
++        /*
++         * Illegal state happens via an ERET from a privileged mode,
++         * so is not normally possible from user-only.  However, gdbstub
++         * is not prevented from writing CPSR_IL, aka PSTATE.IL, which
++         * would generate a trap from the next translated block.
++         * In the kernel, default case -> el0_inv -> bad_el0_sync.
++         */
++        si_signo = TARGET_SIGILL;
++        si_code = TARGET_ILL_ILLOPC;
++        break;
 +
-+#ifndef TARGET_ARM_MMUIDX_INTERNAL_H
-+#define TARGET_ARM_MMUIDX_INTERNAL_H
++    case EC_PACFAIL:
++        si_signo = TARGET_SIGILL;
++        si_code = TARGET_ILL_ILLOPN;
++        break;
 +
-+#include "mmuidx.h"
-+#include "tcg/debug-assert.h"
-+#include "hw/registerfields.h"
++    case EC_MOP:
++        /*
++         * FIXME: The kernel fixes up wrong-option exceptions.
++         * For QEMU linux-user mode, you can only get these if
++         * the process is doing something silly (not executing
++         * the MOPS instructions in the required P/M/E sequence),
++         * so it is not a problem in practice that we do not.
++         *
++         * We ought ideally to implement the same "rewind to the
++         * start of the sequence" logic that the kernel does in
++         * arm64_mops_reset_regs(). In the meantime, deliver
++         * the guest a SIGILL, with the same ILLOPN si_code
++         * we've always used for this.
++         */
++        si_signo = TARGET_SIGILL;
++        si_code = TARGET_ILL_ILLOPN;
++        break;
 +
-+
-+FIELD(MMUIDXINFO, EL, 0, 2)
-+FIELD(MMUIDXINFO, ELVALID, 2, 1)
-+
-+extern const uint32_t arm_mmuidx_table[ARM_MMU_IDX_M + 8];
-+
-+#define arm_mmuidx_is_valid(x)  ((unsigned)(x) < ARRAY_SIZE(arm_mmuidx_table))
-+
-+/* Return the exception level associated with this mmu index. */
-+static inline int arm_mmu_idx_to_el(ARMMMUIdx idx)
-+{
-+    tcg_debug_assert(arm_mmuidx_is_valid(idx));
-+    tcg_debug_assert(FIELD_EX32(arm_mmuidx_table[idx], MMUIDXINFO, ELVALID));
-+    return FIELD_EX32(arm_mmuidx_table[idx], MMUIDXINFO, EL);
-+}
-+
-+#endif /* TARGET_ARM_MMUIDX_INTERNAL_H */
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 9447d7ba59..8985ad8c8a 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -9895,33 +9895,6 @@ int fp_exception_el(CPUARMState *env, int cur_el)
-     return 0;
- }
- 
--/* Return the exception level we're running at if this is our mmu_idx */
--int arm_mmu_idx_to_el(ARMMMUIdx mmu_idx)
--{
--    if (mmu_idx & ARM_MMU_IDX_M) {
--        return mmu_idx & ARM_MMU_IDX_M_PRIV;
--    }
--
--    switch (mmu_idx) {
--    case ARMMMUIdx_E10_0:
--    case ARMMMUIdx_E20_0:
--    case ARMMMUIdx_E30_0:
--        return 0;
--    case ARMMMUIdx_E10_1:
--    case ARMMMUIdx_E10_1_PAN:
--        return 1;
--    case ARMMMUIdx_E2:
--    case ARMMMUIdx_E20_2:
--    case ARMMMUIdx_E20_2_PAN:
--        return 2;
--    case ARMMMUIdx_E3:
--    case ARMMMUIdx_E30_3_PAN:
--        return 3;
--    default:
--        g_assert_not_reached();
--    }
--}
--
- #ifndef CONFIG_TCG
- ARMMMUIdx arm_v7m_mmu_idx_for_secstate(CPUARMState *env, bool secstate)
- {
-diff --git a/target/arm/mmuidx.c b/target/arm/mmuidx.c
-new file mode 100644
-index 0000000000..309b1d68df
---- /dev/null
-+++ b/target/arm/mmuidx.c
-@@ -0,0 +1,41 @@
-+/*
-+ * QEMU Arm software mmu index definitions
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "mmuidx-internal.h"
-+
-+
-+#define EL(X)  ((X << R_MMUIDXINFO_EL_SHIFT) | R_MMUIDXINFO_ELVALID_MASK)
-+
-+const uint32_t arm_mmuidx_table[ARM_MMU_IDX_M + 8] = {
-+    /*
-+     * A-profile.
-+     */
-+    [ARMMMUIdx_E10_0]           = EL(0),
-+    [ARMMMUIdx_E10_1]           = EL(1),
-+    [ARMMMUIdx_E10_1_PAN]       = EL(1),
-+
-+    [ARMMMUIdx_E20_0]           = EL(0),
-+    [ARMMMUIdx_E20_2]           = EL(2),
-+    [ARMMMUIdx_E20_2_PAN]       = EL(2),
-+
-+    [ARMMMUIdx_E2]              = EL(2),
-+
-+    [ARMMMUIdx_E3]              = EL(3),
-+    [ARMMMUIdx_E30_0]           = EL(0),
-+    [ARMMMUIdx_E30_3_PAN]       = EL(3),
-+
-+    /*
-+     * M-profile.
-+     */
-+    [ARMMMUIdx_MUser]           = EL(0),
-+    [ARMMMUIdx_MPriv]           = EL(1),
-+    [ARMMMUIdx_MUserNegPri]     = EL(0),
-+    [ARMMMUIdx_MPrivNegPri]     = EL(1),
-+    [ARMMMUIdx_MSUser]          = EL(0),
-+    [ARMMMUIdx_MSPriv]          = EL(1),
-+    [ARMMMUIdx_MSUserNegPri]    = EL(0),
-+    [ARMMMUIdx_MSPrivNegPri]    = EL(1),
-+};
-diff --git a/target/arm/meson.build b/target/arm/meson.build
-index 07d9271aa4..91630a1f72 100644
---- a/target/arm/meson.build
-+++ b/target/arm/meson.build
-@@ -6,7 +6,12 @@ arm_ss.add(files(
- 
- arm_ss.add(when: 'TARGET_AARCH64', if_true: files(
-   'cpu64.c',
--  'gdbstub64.c'))
-+  'gdbstub64.c'
-+))
-+
-+arm_common_ss.add(files(
-+  'mmuidx.c',
-+))
- 
- arm_system_ss = ss.source_set()
- arm_common_system_ss = ss.source_set()
++    case EC_WFX_TRAP:              /* user-only WFI implemented as NOP */
++    case EC_CP15RTTRAP:            /* AArch32 */
++    case EC_CP15RRTTRAP:           /* AArch32 */
++    case EC_CP14RTTRAP:            /* AArch32 */
++    case EC_CP14DTTRAP:            /* AArch32 */
++    case EC_ADVSIMDFPACCESSTRAP:   /* user-only does not disable fpu */
++    case EC_FPIDTRAP:              /* AArch32 */
++    case EC_PACTRAP:               /* user-only does not disable pac regs */
++    case EC_BXJTRAP:               /* AArch32 */
++    case EC_CP14RRTTRAP:           /* AArch32 */
++    case EC_AA32_SVC:              /* AArch32 */
++    case EC_AA32_HVC:              /* AArch32 */
++    case EC_AA32_SMC:              /* AArch32 */
++    case EC_AA64_SVC:              /* generates EXCP_SWI */
++    case EC_AA64_HVC:              /* user-only generates EC_UNCATEGORIZED */
++    case EC_AA64_SMC:              /* user-only generates EC_UNCATEGORIZED */
++    case EC_SVEACCESSTRAP:         /* user-only does not disable sve */
++    case EC_ERETTRAP:              /* user-only generates EC_UNCATEGORIZED */
++    case EC_GPC:                   /* user-only has no EL3 gpc tables */
++    case EC_INSNABORT_SAME_EL:     /* el0 cannot trap to el0 */
++    case EC_DATAABORT_SAME_EL:     /* el0 cannot trap to el0 */
++    case EC_SPALIGNMENT:           /* sp alignment checks not implemented */
++    case EC_AA32_FPTRAP:           /* fp exceptions not implemented */
++    case EC_AA64_FPTRAP:           /* fp exceptions not implemented */
++    case EC_SERROR:                /* user-only does not have hw faults */
++    case EC_BREAKPOINT:            /* user-only does not have hw debug */
++    case EC_BREAKPOINT_SAME_EL:    /* user-only does not have hw debug */
++    case EC_SOFTWARESTEP:          /* user-only does not have hw debug */
++    case EC_SOFTWARESTEP_SAME_EL:  /* user-only does not have hw debug */
++    case EC_WATCHPOINT:            /* user-only does not have hw debug */
++    case EC_WATCHPOINT_SAME_EL:    /* user-only does not have hw debug */
++    case EC_AA32_BKPT:             /* AArch32 */
++    case EC_VECTORCATCH:           /* AArch32 */
++    case EC_AA64_BKPT:             /* generates EXCP_BKPT */
+     default:
+         g_assert_not_reached();
+     }
+@@ -108,7 +181,7 @@ void cpu_loop(CPUARMState *env)
+             /* just indicate that signals should be handled asap */
+             break;
+         case EXCP_UDEF:
+-            force_sig_fault(TARGET_SIGILL, TARGET_ILL_ILLOPN, env->pc);
++            signal_for_exception(env, env->pc);
+             break;
+         case EXCP_PREFETCH_ABORT:
+         case EXCP_DATA_ABORT:
 -- 
 2.43.0
 

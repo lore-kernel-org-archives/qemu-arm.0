@@ -4,83 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13708CA0EE4
-	for <qemu-arm@archiver.kernel.org>; Thu, 14 Aug 2025 13:04:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9A93CA0EDC
+	for <qemu-arm@archiver.kernel.org>; Thu, 14 Aug 2025 13:04:58 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1umXcJ-0001iW-Qi; Thu, 14 Aug 2025 09:03:39 -0400
+	id 1umXYf-0002aP-Tf; Thu, 14 Aug 2025 08:59:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1umXcH-0001bq-VC
- for qemu-arm@nongnu.org; Thu, 14 Aug 2025 09:03:38 -0400
-Received: from mail-pf1-x430.google.com ([2607:f8b0:4864:20::430])
+ id 1umXYG-0001xf-6H
+ for qemu-arm@nongnu.org; Thu, 14 Aug 2025 08:59:31 -0400
+Received: from mail-pj1-x102b.google.com ([2607:f8b0:4864:20::102b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1umXc5-00052p-N6
- for qemu-arm@nongnu.org; Thu, 14 Aug 2025 09:03:37 -0400
-Received: by mail-pf1-x430.google.com with SMTP id
- d2e1a72fcca58-76e2e89e89fso1205448b3a.1
- for <qemu-arm@nongnu.org>; Thu, 14 Aug 2025 06:03:23 -0700 (PDT)
+ id 1umXYA-0004M1-Ty
+ for qemu-arm@nongnu.org; Thu, 14 Aug 2025 08:59:27 -0400
+Received: by mail-pj1-x102b.google.com with SMTP id
+ 98e67ed59e1d1-321cfa7ad29so1525934a91.1
+ for <qemu-arm@nongnu.org>; Thu, 14 Aug 2025 05:59:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1755176601; x=1755781401; darn=nongnu.org;
+ d=linaro.org; s=google; t=1755176358; x=1755781158; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=ufhXOkFFiQ9xg40jDZ1CMA8qL889kDviEVXXcrUgfT0=;
- b=BUyUOkOPLXTJ3rY5Z/f5iGEb42YeZWbwOncEfoYcbYBcI0P++30m1tW2KJvyH0Gxv8
- Z/qKmHJIUW6oXXVrKf/P64i7Rnhq0chpdD5pxwZ4Vq2Kt5CbLNW7s6qqFE/7+RtstJ+P
- 0VG9Wv9b+ENEkCZ+iN5ha40yEglu5y9XOLF4ks1AlS0E6yzOGMryUvvFfVVbnCO/qVu7
- BoYKpdEE9nHKf2KsAHfIXJ0m+UnFojcgIM4j90cKrZ7zeboCLUyogpEDrY4oeFk7G3mF
- bZAiby0mqciWVknHzvq0DhsC9Co2PAAFCdNMTTnwP3R8O8PZdOkEg14eiHQZeigC3lr5
- fgSA==
+ bh=TtfdJAKHkhBXVVur9KnTeJdEj0NKkUPLOFyccsCQyeU=;
+ b=u6Wj8GbZjd7NG2WsqcDGmtczA2EVdZ7lKtYcglKN8Gn9xPmkUnXPT0z2T4+WDnCKYV
+ qCPbcNP6Qg+e9zB1nSMwoFEWW035op+XbRhWHYmi47A+G6tFuBibkCTCejSnC2cbiCwy
+ 1KWlOgEKhKtlSzHtNvdTLgLdiCf+pjUEGRpHukHLI0Is8WyoFwue29GfOTs+w1bdxigh
+ huU8fS4Zd1Rt4hecxCk6xBpLvbdeTE0FlBefSHQnPiJn74PB8lO5chGHRLOvxj46adwW
+ Ent1otspFQ6IRQJ3EDGWJR6wh/cropbGDV5qQPRZJ4uwL9qauveORK+29CxH3kIhThy8
+ xPEQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1755176601; x=1755781401;
+ d=1e100.net; s=20230601; t=1755176358; x=1755781158;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=ufhXOkFFiQ9xg40jDZ1CMA8qL889kDviEVXXcrUgfT0=;
- b=cyj+uHyPqv9hlkWZR2SRDRadCQYSjWnjHtIfhW/4P1cdapqmdxM6MZ47nkjL33HrZe
- PJ8ADx1y+OyctsdIl616SYjK2M+EXfwrqNKSPf0dnSdTv6I33vIW+DE0Js9cUWmEXVIP
- axEe3qONdohAKSNWJvuwF8/eQpQVjo1/K7hT+Xhb8eGbh6Q4S7ei+PVOcDBjKsHEm8Rt
- nx4WIAs5t46UL7p8wMmsu1fSVkdECjU2axUHxOQKN46G2I5gKRqIE8+77wmSHeXMGV9d
- gUojzFl+MvNOO0ds9OfuqynlINSjwOow1M4vkVHlAMf8DGAMGJ1jjYh31wovFpxj2I+w
- JkfA==
-X-Gm-Message-State: AOJu0YwjZE7mZAVzJeuWjH1+fp+L8k4u4y3aFyEszLbtocqc4pUHnqyT
- AdOLWWDmztrkrU9J2MyaacCcDhEdCfG/rIlSnY1QGrQIHp0vLmOMjR6mjaJyQonnioE=
-X-Gm-Gg: ASbGncv8DfnyGNC8xnafNxI4AEBz/rmRBat2SaYvJmy71gAIqyc4vd0FJoBy5VdWeVb
- FM2qhYU0+VtTul49AkLehm5GctFbRzKpE94IAl7bpmFeuBa8nN9sdw0EzlQJFXKKuCEOOhg3lM8
- nIUmLIVxp1iN5W448ljjnvW/ZPTle0ZqabWu0CYa+RQmqBZPjeTxjWi0AUBIXmgK0NFv4XHodqU
- p9/COuZ5cDQi8ga9pkqnxO9EANPSGVSGdqny0rxwpX4FcynxTsxYZuWNa8HzALAvsSSFpTyBLnL
- 0y+/4AQOGfhmSHosD3mL53+wkVZLOSdTH106zGlZn6Y7SspXKos15WQ3K+oSiKzxvF2GoTYcj4n
- Orp6XqAzpuxF2Tou7CFBT8BvJ044vTZxri7BjQMbaoDTL0ys=
-X-Google-Smtp-Source: AGHT+IFmDrAyz88bKgSQd69skwtjmu65pDol5AX9IISn7CYdR34qURYraJqH1MtuX1XvsnU1COb+qg==
-X-Received: by 2002:a05:6a00:180e:b0:736:2a73:6756 with SMTP id
- d2e1a72fcca58-76e2fdcf721mr3909277b3a.21.1755176600777; 
- Thu, 14 Aug 2025 06:03:20 -0700 (PDT)
+ bh=TtfdJAKHkhBXVVur9KnTeJdEj0NKkUPLOFyccsCQyeU=;
+ b=Xa2uoGf6v6dAwVMYQQM7trFHGarndUF+BL3CGgy8g0mUJrky/G8tgpl/1uUN4vaFEn
+ 3S9bjLk6/lDg63Y9OiJ1QhqNHTwwN8sHhLPtA6NVD3zkPGLFhqUMGRO0FN8bCoK2txrp
+ tPE4dF9pF/rGin4Dx1fB2u8kSnILc8zWiXDQ6b7cpqzmU56YAnD+yvLLW+HGgF4Dvc7T
+ Vi/5IVXe9MueMD8ZGaTFXZg/0jGAvgqipNx6y1OxZlDrBZJ+AwAjdjr3MLI6b/1pG3pg
+ rgF5TQdAsi40nnUZJiui2b/SCZWVbmTRZ+kMSa3r8+2hwVOWZIPdj8vdttetsJw0Aj5D
+ FiBg==
+X-Gm-Message-State: AOJu0YxlvejFNn2KzIKT5hogs3TKP0j4RvpPNq5GK7FzyEfvVBNuSI9V
+ JF9UsW7ZC+cNvyBR2U5koO6JLecaU1V1pQmrKOgHASYXuM5LYa/NeJCW5fJY/bIIjl8=
+X-Gm-Gg: ASbGncufp4xggB9zsddJxd4bc6Xcam3hTAbHeWPrKiCidSz4zGLxJPG1dgXGnl9RZ4p
+ CpDFVP/ldG+sS/WdpoZ3p5IglfV+bCRrPriEuvTo2bOwlFn2ejN0b1UKnzCEILUEp5Paqsrb48T
+ NwOiwnIAzwBch0yDi9PIN6+T9KXDBtZMA18050SVMGEsnkZk5xXjPeW13SebtU7L1vRlwRRAy/h
+ I8603XR0rt0vwgqGzY1plqCYmYhs8+9DqkQR+lwPn81Hvnzv3rcxXUydJJfpNcws4eOpIRhTGBh
+ 8LfFkk08COXOnxIYBrCGovfudXP6/PkEb3CoS4tfIG1RuXrgIqwc/dC+qFiMAMT2IkmY0+33ard
+ knA9ME95AXtscX5gN0bJbYf6hvsE8vRup0qCUF5Qw6VM6ATE=
+X-Google-Smtp-Source: AGHT+IHUu2SKS6s2twlsSDcYkb1o2jT1mppq37RTXokyeHNTId+wXbr6ypQy3cDGYWATr6Qh3lLSVQ==
+X-Received: by 2002:a17:90b:1e01:b0:321:d5e8:ec9a with SMTP id
+ 98e67ed59e1d1-323297ac230mr3513698a91.16.1755176358111; 
+ Thu, 14 Aug 2025 05:59:18 -0700 (PDT)
 Received: from localhost.localdomain ([206.83.105.236])
  by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-76bcce6f6fesm34480631b3a.26.2025.08.14.06.03.17
+ 98e67ed59e1d1-3233100c994sm1766256a91.21.2025.08.14.05.59.15
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 14 Aug 2025 06:03:20 -0700 (PDT)
+ Thu, 14 Aug 2025 05:59:17 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v3 41/85] target/arm: Convert arm_mmu_idx_is_stage1_of_2 from
- switch to table
-Date: Thu, 14 Aug 2025 22:57:08 +1000
-Message-ID: <20250814125752.164107-42-richard.henderson@linaro.org>
+	Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Subject: [PATCH v3 24/85] target/arm: Implement dirtybit check for PIE
+Date: Thu, 14 Aug 2025 22:56:51 +1000
+Message-ID: <20250814125752.164107-25-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250814125752.164107-1-richard.henderson@linaro.org>
 References: <20250814125752.164107-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::430;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x430.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102b;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -103,94 +100,98 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Both S1PIE and S2PIE have a bit to make software tracking
+of dirty pages easier.
+
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/internals.h       | 19 -------------------
- target/arm/mmuidx-internal.h |  8 ++++++++
- target/arm/mmuidx.c          |  7 ++++---
- 3 files changed, 12 insertions(+), 22 deletions(-)
+ target/arm/internals.h      |  1 +
+ target/arm/ptw.c            | 16 ++++++++++++++++
+ target/arm/tcg/tlb_helper.c | 12 +++++++++---
+ 3 files changed, 26 insertions(+), 3 deletions(-)
 
 diff --git a/target/arm/internals.h b/target/arm/internals.h
-index c6f3ae470b..4f99ec69f8 100644
+index fc82dd65e8..b6499683cc 100644
 --- a/target/arm/internals.h
 +++ b/target/arm/internals.h
-@@ -1282,25 +1282,6 @@ ARMMMUIdx stage_1_mmu_idx(ARMMMUIdx mmu_idx);
- ARMMMUIdx arm_stage1_mmu_idx(CPUARMState *env);
- #endif
+@@ -754,6 +754,7 @@ struct ARMMMUFaultInfo {
+     bool s1ptw;
+     bool s1ns;
+     bool ea;
++    bool dirtybit;  /* FEAT_S1PIE, FEAT_S2PIE */
+ };
  
--/**
-- * arm_mmu_idx_is_stage1_of_2:
-- * @mmu_idx: The ARMMMUIdx to test
-- *
-- * Return true if @mmu_idx is a NOTLB mmu_idx that is the
-- * first stage of a two stage regime.
-- */
--static inline bool arm_mmu_idx_is_stage1_of_2(ARMMMUIdx mmu_idx)
--{
--    switch (mmu_idx) {
--    case ARMMMUIdx_Stage1_E0:
--    case ARMMMUIdx_Stage1_E1:
--    case ARMMMUIdx_Stage1_E1_PAN:
--        return true;
--    default:
--        return false;
--    }
--}
--
- static inline uint32_t aarch32_cpsr_valid_mask(uint64_t features,
-                                                const ARMISARegisters *id)
- {
-diff --git a/target/arm/mmuidx-internal.h b/target/arm/mmuidx-internal.h
-index 3e51c0f579..55fba4aae2 100644
---- a/target/arm/mmuidx-internal.h
-+++ b/target/arm/mmuidx-internal.h
-@@ -18,6 +18,7 @@ FIELD(MMUIDXINFO, RELVALID, 5, 1)
- FIELD(MMUIDXINFO, 2RANGES, 6, 1)
- FIELD(MMUIDXINFO, PAN, 7, 1)
- FIELD(MMUIDXINFO, USER, 8, 1)
-+FIELD(MMUIDXINFO, STAGE1, 9, 1)
+ /**
+diff --git a/target/arm/ptw.c b/target/arm/ptw.c
+index 323fc8052d..820d5e65a0 100644
+--- a/target/arm/ptw.c
++++ b/target/arm/ptw.c
+@@ -2306,6 +2306,22 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
+         goto do_fault;
+     }
  
- extern const uint32_t arm_mmuidx_table[ARM_MMU_IDX_M + 8];
- 
-@@ -76,4 +77,11 @@ static inline bool regime_is_user(ARMMMUIdx idx)
-     return FIELD_EX32(arm_mmuidx_table[idx], MMUIDXINFO, USER);
++    /* S1PIE and S2PIE both have a bit for software dirty page tracking. */
++    if (access_type == MMU_DATA_STORE && param.pie) {
++        /*
++         * For S1PIE, bit 7 is nDirty and both HA and HD are checked.
++         * For S2PIE, bit 7 is Dirty and only HD is checked.
++         */
++        bool bit7 = extract64(attrs, 7, 1);
++        if (regime_is_stage2(mmu_idx)
++            ? !bit7 && !param.hd
++            : bit7 && !(param.ha && param.hd)) {
++            fi->type = ARMFault_Permission;
++            fi->dirtybit = true;
++            goto do_fault;
++        }
++    }
++
+     /* If FEAT_HAFDBS has made changes, update the PTE. */
+     if (new_descriptor != descriptor) {
+         new_descriptor = arm_casq_ptw(env, descriptor, new_descriptor, ptw, fi);
+diff --git a/target/arm/tcg/tlb_helper.c b/target/arm/tcg/tlb_helper.c
+index 23c72a99f5..ae2acd6727 100644
+--- a/target/arm/tcg/tlb_helper.c
++++ b/target/arm/tcg/tlb_helper.c
+@@ -24,13 +24,13 @@ bool arm_s1_regime_using_lpae_format(CPUARMState *env, ARMMMUIdx mmu_idx)
+     return regime_using_lpae_format(env, mmu_idx);
  }
  
-+/* Return true if this mmu index is stage 1 of a 2-stage translation. */
-+static inline bool arm_mmu_idx_is_stage1_of_2(ARMMMUIdx idx)
-+{
-+    tcg_debug_assert(arm_mmuidx_is_valid(idx));
-+    return FIELD_EX32(arm_mmuidx_table[idx], MMUIDXINFO, STAGE1);
-+}
+-static inline uint32_t merge_syn_data_abort(uint32_t template_syn,
++static inline uint64_t merge_syn_data_abort(uint32_t template_syn,
+                                             ARMMMUFaultInfo *fi,
+                                             unsigned int target_el,
+                                             bool same_el, bool is_write,
+                                             int fsc)
+ {
+-    uint32_t syn;
++    uint64_t syn;
+ 
+     /*
+      * ISV is only set for stage-2 data aborts routed to EL2 and
+@@ -75,6 +75,10 @@ static inline uint32_t merge_syn_data_abort(uint32_t template_syn,
+         /* Merge the runtime syndrome with the template syndrome.  */
+         syn |= template_syn;
+     }
 +
- #endif /* TARGET_ARM_MMUIDX_INTERNAL_H */
-diff --git a/target/arm/mmuidx.c b/target/arm/mmuidx.c
-index 1c1e062bfe..c5b43a5932 100644
---- a/target/arm/mmuidx.c
-+++ b/target/arm/mmuidx.c
-@@ -13,6 +13,7 @@
- #define R2     R_MMUIDXINFO_2RANGES_MASK
- #define PAN    R_MMUIDXINFO_PAN_MASK
- #define USER   R_MMUIDXINFO_USER_MASK
-+#define S1     R_MMUIDXINFO_STAGE1_MASK
++    /* Form ISS2 at the top of the syndrome. */
++    syn |= (uint64_t)fi->dirtybit << 37;
++
+     return syn;
+ }
  
- const uint32_t arm_mmuidx_table[ARM_MMU_IDX_M + 8] = {
+@@ -176,7 +180,9 @@ void arm_deliver_fault(ARMCPU *cpu, vaddr addr,
+     int target_el = exception_target_el(env);
+     int current_el = arm_current_el(env);
+     bool same_el;
+-    uint32_t syn, exc, fsr, fsc;
++    uint32_t exc, fsr, fsc;
++    uint64_t syn;
++
      /*
-@@ -35,9 +36,9 @@ const uint32_t arm_mmuidx_table[ARM_MMU_IDX_M + 8] = {
-     [ARMMMUIdx_Stage2_S]        = REL(2),
-     [ARMMMUIdx_Stage2]          = REL(2),
- 
--    [ARMMMUIdx_Stage1_E0]       = REL(1) | R2 | USER,
--    [ARMMMUIdx_Stage1_E1]       = REL(1) | R2,
--    [ARMMMUIdx_Stage1_E1_PAN]   = REL(1) | R2 | PAN,
-+    [ARMMMUIdx_Stage1_E0]       = REL(1) | R2 | S1 | USER,
-+    [ARMMMUIdx_Stage1_E1]       = REL(1) | R2 | S1,
-+    [ARMMMUIdx_Stage1_E1_PAN]   = REL(1) | R2 | S1 | PAN,
- 
-     /*
-      * M-profile.
+      * We know this must be a data or insn abort, and that
+      * env->exception.syndrome contains the template syndrome set
 -- 
 2.43.0
 

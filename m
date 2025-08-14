@@ -4,88 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03319CA0EE6
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B64BFCA0EE4
 	for <qemu-arm@archiver.kernel.org>; Thu, 14 Aug 2025 13:17:37 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1umXXt-0001a4-JP; Thu, 14 Aug 2025 08:59:06 -0400
+	id 1umXiN-00031N-K4; Thu, 14 Aug 2025 09:09:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1umXXq-0001Y5-0o
- for qemu-arm@nongnu.org; Thu, 14 Aug 2025 08:59:02 -0400
-Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1umXXk-0004Gu-0b
- for qemu-arm@nongnu.org; Thu, 14 Aug 2025 08:59:01 -0400
-Received: by mail-pj1-x102f.google.com with SMTP id
- 98e67ed59e1d1-323266d6f57so1062620a91.0
- for <qemu-arm@nongnu.org>; Thu, 14 Aug 2025 05:58:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1755176329; x=1755781129; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=L0ihX/6NjLJeiAV+rHpWXFChl+HIpT5VNQEwKbT4BfA=;
- b=S+RWeGqKCn3pfJaj/sIAya6Os7/7YbeGuMRp4sV1f9Blkvt+ULfv1D9B/6jnk/dGBZ
- P5tQmoEEwlgN3rGENZpw2Zy4z2Yht5Sks4S97dLxn70cNfKEZRRCeyT/PXBp7fy+arDw
- 2KOdMGdsA5eijFhRw3oLAXdbSm+xc5CTh4/phywpu96P0iuSOSK3I5J06i71Ao6qOnN6
- s4uP3bfTCXQWRXsI8+ZG1JqGUmsZIUUnZOP9Xj0Cb3C5gyDhE4iN2DkwONuwnWn5h+45
- /ayxO+H0H+tEbTLQhetdzPRydBPgIYUSMxu3cx80fMO6XSE+RGA3Q+FFELJl9AIYPaS6
- PJCg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1755176329; x=1755781129;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=L0ihX/6NjLJeiAV+rHpWXFChl+HIpT5VNQEwKbT4BfA=;
- b=cpj29qQTutk8NB6fS/9tX5EmHUqXajc38qrLKUuyCO8Ud0TJFrEekHl/uxXrnsI38K
- NbC3jGPZlddqws4z19s1hISlDEX7KUj4vPtDiddpd8ihI0+T9G7Kvmu/yQ5SfzF0TGdf
- jixbZ+Xti4EuKVcoaXXRYqxynveeY0JyWxMviIPKOJrG6866UmT4G+VdkVdo75vvt3R5
- sHNc19UUNZqpXU1bEaIkUDwE+gbGTTDo4xzHSORAMrPqfwpzBlF30fIna5n15TuOfFtp
- BoxTbh7kKI/y8PjFjS0H3Pkd3VgYsvrUlioaP2RylwOddqvwtKU87zR2lPP9YbEZdLxo
- T2zA==
-X-Gm-Message-State: AOJu0Yyq5qtvxoi97+3595tY55g4rk+Txp0k/M6O01pgHRstYz5prvEn
- u/aDk0QndIPXyri/Sv3Cb2gsdItkLDQ5R5WEoWcZX6WqA/cFrgjXtsagWDkJGILykKQ=
-X-Gm-Gg: ASbGncs65WZBzN2FpM/cTmGGql2jlxg0jSYiWfYpfqJiU3PvLbtMDGDqRZt9oCQ4sZ+
- i28vFmCznu6h2x4uvHZNmunXC+CKnci24oJsd13LGhkZlpZZPk7FcTJdujgdnWQ45TIFd8ydXJc
- U5+U0KkRglIRs2lmpPrK6+e4Q2ojpYL/AktfyZWhU2mZnaEkwnNkC8hl4DolNCwLRYZCuQIdo6s
- mcwHffCvpqgnqDLm3gT6xf++T6sjWYMFcR6iPST5xSJ7gYirKQWnD3U6WLWPK/aBL+F1oeJncis
- GRdw9eWzVt2aXDS/rdL7NHBQu22TLH6Gw7FHWNxG9Jcatbxb+QZBnzgay+gyZqG3afHeqg/9X/d
- y3U/ApdKlGuBgdu0N3QYU0DbtfNW70VOHNz7cMeqtrFOzl6w=
-X-Google-Smtp-Source: AGHT+IF7ixE7gr+nynLlPYG7ZbMSXM8AQtGolV790Hz3ZjrRZFKFUo5Mg7BJTTjNTdjIoso3HCB0ng==
-X-Received: by 2002:a17:90b:264b:b0:321:1682:2d49 with SMTP id
- 98e67ed59e1d1-32327cc148dmr4016860a91.32.1755176329156; 
- Thu, 14 Aug 2025 05:58:49 -0700 (PDT)
-Received: from localhost.localdomain ([206.83.105.236])
- by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-3233100c994sm1766256a91.21.2025.08.14.05.58.46
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 14 Aug 2025 05:58:48 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v3 15/85] target/arm: Implement PIR_ELx, PIRE0_ELx,
- S2PIR_EL2 registers
-Date: Thu, 14 Aug 2025 22:56:42 +1000
-Message-ID: <20250814125752.164107-16-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250814125752.164107-1-richard.henderson@linaro.org>
-References: <20250814125752.164107-1-richard.henderson@linaro.org>
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102f;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102f.google.com
+ (Exim 4.90_1) (envelope-from <mads@ynddal.dk>) id 1umXiJ-0002qK-8i
+ for qemu-arm@nongnu.org; Thu, 14 Aug 2025 09:09:51 -0400
+Received: from p-east1-cluster7-host9-snip4-10.eps.apple.com ([57.103.88.93]
+ helo=outbound.ci.icloud.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mads@ynddal.dk>) id 1umXiE-00067D-Jt
+ for qemu-arm@nongnu.org; Thu, 14 Aug 2025 09:09:50 -0400
+Received: from outbound.ci.icloud.com (unknown [127.0.0.2])
+ by p00-icloudmta-asmtp-us-central-1k-20-percent-1 (Postfix) with ESMTPS id
+ AFE411800195; Thu, 14 Aug 2025 13:09:40 +0000 (UTC)
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ynddal.dk; s=sig1;
+ bh=w2CjkhliRfAUzMGtjsGF2RwoF2pCByth6J1Vhgg6ddo=;
+ h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To:x-icloud-hme;
+ b=jT3Whi09pKUZydcLOnzwiDB+3KcKr0WrS+MDq7cHXqM9qVIjLSjt+CVFwjueZ9/a4RlGAwFF3j9o3GGCDf6i/kvHloawSsa+ygL5PNN+FHFXC79RMbltzcK1VN+1lzq3999Qntekw7YsxwLQXsrvUC4ug64Lqq2YD2wQlqlxGqBMC33RcXls+COuGPieahGqApNdhJKNCZX0CNAqKVqTop9+QhDjEsSsmiCmY98pDN3JqFGCrnHzvTvtprLbL9BAI+llu/cGn++xJaA3n6A3QOGQzalo6oUKQpa5x0I3dgXvt1i+rSXdNpo/yIx54wJkW/UbFgP7Qm469+hK1yg0Cg==
+X-Client-IP: 212.60.126.184
+Received: from smtpclient.apple (ci-asmtp-me-k8s.p00.prod.me.com
+ [17.57.156.36])
+ by p00-icloudmta-asmtp-us-central-1k-20-percent-1 (Postfix) with ESMTPSA id
+ 3BF1B1804E16; Thu, 14 Aug 2025 13:06:56 +0000 (UTC)
+Content-Type: text/plain;
+	charset=us-ascii
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3826.700.81\))
+Subject: Re: [PATCH v6 12/13] target/arm: hvf: instantiate GIC early
+From: Mads Ynddal <mads@ynddal.dk>
+In-Reply-To: <20250808070137.48716-13-mohamed@unpredictable.fr>
+Date: Thu, 14 Aug 2025 15:06:44 +0200
+Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha <anisinha@redhat.com>,
+ qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ Roman Bolshakov <rbolshakov@ddn.com>, Igor Mammedov <imammedo@redhat.com>,
+ Phil Dennis-Jordan <phil@philjordan.eu>, Alexander Graf <agraf@csgraf.de>,
+ Cameron Esfahani <dirty@apple.com>
+Content-Transfer-Encoding: quoted-printable
+Message-Id: <FB7A9640-30C1-47FD-A1B7-73A7333BDB23@ynddal.dk>
+References: <20250808070137.48716-1-mohamed@unpredictable.fr>
+ <20250808070137.48716-13-mohamed@unpredictable.fr>
+To: Mohamed Mediouni <mohamed@unpredictable.fr>
+X-Mailer: Apple Mail (2.3826.700.81)
+X-Proofpoint-GUID: XVFlJKab-qIt-4RmFc5HXcLpoDqQ8vvL
+X-Proofpoint-ORIG-GUID: XVFlJKab-qIt-4RmFc5HXcLpoDqQ8vvL
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwODE0MDExMCBTYWx0ZWRfX2LZeA7mRVYqs
+ 5mfFKvnu4hE3q3/NF7ybH4bpLlEb1dxehlZWtIESXwauW3WxmoULO1wmZKDUyKaidEKxf3kp2Mk
+ F6oL6oBpp0ncpFqDrEV6FutpsNlhRMStC5uNeAZaqJRa0+YZ+vcJMtapqLNp1IDmQokIn1SGxKh
+ BgdAKUQfXqa3xsf6l7gAqO1EOv87CXbQQVYO7kMNQuZzfg9fMqGcAP/NV5ozMn6Tvy9v67sKKVX
+ f7thq9g5rVOWtC8SMQBitY1D4NkSdgQIdQByz3huLbyzl/9pxnNFPvpzVt9LDwBBRu4Yo3noQ=
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.9,FMLib:17.12.80.40
+ definitions=2025-08-13_02,2025-08-14_01,2025-03-28_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=892
+ malwarescore=0 mlxscore=0 spamscore=0
+ suspectscore=0 clxscore=1030
+ phishscore=0 bulkscore=0 adultscore=0 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.22.0-2506270000 definitions=main-2508140110
+Received-SPF: pass client-ip=57.103.88.93; envelope-from=mads@ynddal.dk;
+ helo=outbound.ci.icloud.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -101,168 +91,58 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/cpregs.h |  2 ++
- target/arm/cpu.h    |  4 +++
- target/arm/cpu.c    |  4 +++
- target/arm/helper.c | 70 +++++++++++++++++++++++++++++++++++++++++++++
- 4 files changed, 80 insertions(+)
 
-diff --git a/target/arm/cpregs.h b/target/arm/cpregs.h
-index 2a4826f5c4..9efe9238c1 100644
---- a/target/arm/cpregs.h
-+++ b/target/arm/cpregs.h
-@@ -776,6 +776,8 @@ typedef enum FGTBit {
-     DO_BIT(HFGRTR, ERRIDR_EL1),
-     DO_REV_BIT(HFGRTR, NSMPRI_EL1),
-     DO_REV_BIT(HFGRTR, NTPIDR2_EL0),
-+    DO_REV_BIT(HFGRTR, NPIRE0_EL1),
-+    DO_REV_BIT(HFGRTR, NPIR_EL1),
- 
-     /* Trap bits in HDFGRTR_EL2 / HDFGWTR_EL2, starting from bit 0. */
-     DO_BIT(HDFGRTR, DBGBCRN_EL1),
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index defe2852f2..fb87fcc3e6 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -369,6 +369,9 @@ typedef struct CPUArchState {
-         uint64_t tcr2_el[3];
-         uint64_t vtcr_el2; /* Virtualization Translation Control.  */
-         uint64_t vstcr_el2; /* Secure Virtualization Translation Control. */
-+        uint64_t pir_el[4]; /* PIRE0_EL1, PIR_EL1, PIR_EL2, PIR_EL3 */
-+        uint64_t pire0_el2;
-+        uint64_t s2pir_el2;
-         uint32_t c2_data; /* MPU data cacheable bits.  */
-         uint32_t c2_insn; /* MPU instruction cacheable bits.  */
-         union { /* MMU domain access control register
-@@ -1738,6 +1741,7 @@ static inline void xpsr_write(CPUARMState *env, uint32_t val, uint32_t mask)
- #define SCR_ENTP2             (1ULL << 41)
- #define SCR_TCR2EN            (1ULL << 43)
- #define SCR_SCTLR2EN          (1ULL << 44)
-+#define SCR_PIEN              (1ULL << 45)
- #define SCR_GPF               (1ULL << 48)
- #define SCR_MECEN             (1ULL << 49)
- #define SCR_NSE               (1ULL << 62)
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index f0545a276e..b472992b4a 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -650,6 +650,10 @@ void arm_emulate_firmware_reset(CPUState *cpustate, int target_el)
-             if (cpu_isar_feature(aa64_sctlr2, cpu)) {
-                 env->cp15.scr_el3 |= SCR_SCTLR2EN;
-             }
-+            if (cpu_isar_feature(aa64_s1pie, cpu) ||
-+                cpu_isar_feature(aa64_s2pie, cpu)) {
-+                env->cp15.scr_el3 |= SCR_PIEN;
-+            }
-             if (cpu_isar_feature(aa64_mec, cpu)) {
-                 env->cp15.scr_el3 |= SCR_MECEN;
-             }
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 61ba9ba5b2..6353b2dea1 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -747,6 +747,10 @@ static void scr_write(CPUARMState *env, const ARMCPRegInfo *ri, uint64_t value)
-         if (cpu_isar_feature(aa64_sctlr2, cpu)) {
-             valid_mask |= SCR_SCTLR2EN;
-         }
-+        if (cpu_isar_feature(aa64_s1pie, cpu) ||
-+            cpu_isar_feature(aa64_s2pie, cpu)) {
-+            valid_mask |= SCR_PIEN;
-+        }
-         if (cpu_isar_feature(aa64_mec, cpu)) {
-             valid_mask |= SCR_MECEN;
-         }
-@@ -4578,6 +4582,11 @@ static void define_arm_vh_e2h_redirects_aliases(ARMCPU *cpu)
-           "SCXTNUM_EL1", "SCXTNUM_EL2", "SCXTNUM_EL12",
-           isar_feature_aa64_scxtnum },
- 
-+        { K(3, 0, 10, 2, 3), K(3, 4, 10, 2, 3), K(3, 5, 10, 2, 3),
-+          "PIR_EL1", "PIR_EL2", "PIR_EL12", isar_feature_aa64_s1pie },
-+        { K(3, 0, 10, 2, 2), K(3, 4, 10, 2, 2), K(3, 5, 10, 2, 2),
-+          "PIRE0_EL1", "PIRE0_EL2", "PIRE0_EL12", isar_feature_aa64_s1pie },
-+
-         /* TODO: ARMv8.2-SPE -- PMSCR_EL2 */
-         /* TODO: ARMv8.4-Trace -- TRFCR_EL2 */
-     };
-@@ -6242,6 +6251,60 @@ static const ARMCPRegInfo tcr2_reginfo[] = {
-       .fieldoffset = offsetof(CPUARMState, cp15.tcr2_el[2]) },
- };
- 
-+static CPAccessResult pien_access(CPUARMState *env, const ARMCPRegInfo *ri,
-+                                  bool isread)
-+{
-+    if (arm_feature(env, ARM_FEATURE_EL3)
-+        && !(env->cp15.scr_el3 & SCR_PIEN)
-+        && arm_current_el(env) < 3) {
-+        return CP_ACCESS_TRAP_EL3;
-+    }
-+    return CP_ACCESS_OK;
-+}
-+
-+static CPAccessResult pien_el1_access(CPUARMState *env, const ARMCPRegInfo *ri,
-+                                      bool isread)
-+{
-+    CPAccessResult ret = access_tvm_trvm(env, ri, isread);
-+    if (ret == CP_ACCESS_OK) {
-+        ret = pien_access(env, ri, isread);
-+    }
-+    return ret;
-+}
-+
-+static const ARMCPRegInfo s1pie_reginfo[] = {
-+    { .name = "PIR_EL1", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 0, .opc2 = 3, .crn = 10, .crm = 2,
-+      .access = PL1_RW, .accessfn = pien_el1_access,
-+      .fgt = FGT_NPIR_EL1, .nv2_redirect_offset = 0x2a0 | NV2_REDIR_NV1,
-+      .fieldoffset = offsetof(CPUARMState, cp15.pir_el[1]) },
-+    { .name = "PIR_EL2", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 4, .opc2 = 3, .crn = 10, .crm = 2,
-+      .access = PL2_RW, .accessfn = pien_access,
-+      .fieldoffset = offsetof(CPUARMState, cp15.pir_el[2]) },
-+    { .name = "PIR_EL3", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 6, .opc2 = 3, .crn = 10, .crm = 2,
-+      .access = PL3_RW,
-+      .fieldoffset = offsetof(CPUARMState, cp15.pir_el[3]) },
-+    { .name = "PIRE0_EL1", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 0, .opc2 = 2, .crn = 10, .crm = 2,
-+      .access = PL1_RW, .accessfn = pien_el1_access,
-+      .fgt = FGT_NPIRE0_EL1, .nv2_redirect_offset = 0x290 | NV2_REDIR_NV1,
-+      .fieldoffset = offsetof(CPUARMState, cp15.pir_el[0]) },
-+    { .name = "PIRE0_EL2", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 4, .opc2 = 2, .crn = 10, .crm = 2,
-+      .access = PL2_RW, .accessfn = pien_access,
-+      .fieldoffset = offsetof(CPUARMState, cp15.pire0_el2) },
-+};
-+
-+static const ARMCPRegInfo s2pie_reginfo[] = {
-+    { .name = "S2PIR_EL2", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 4, .opc2 = 5, .crn = 10, .crm = 2,
-+      .access = PL2_RW, .accessfn = pien_access,
-+      .nv2_redirect_offset = 0x2b0,
-+      .fieldoffset = offsetof(CPUARMState, cp15.s2pir_el2) },
-+};
-+
- void register_cp_regs_for_features(ARMCPU *cpu)
- {
-     /* Register all the coprocessor registers based on feature bits */
-@@ -7479,6 +7542,13 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-         define_arm_cp_regs(cpu, tcr2_reginfo);
-     }
- 
-+    if (cpu_isar_feature(aa64_s1pie, cpu)) {
-+        define_arm_cp_regs(cpu, s1pie_reginfo);
-+    }
-+    if (cpu_isar_feature(aa64_s2pie, cpu)) {
-+        define_arm_cp_regs(cpu, s2pie_reginfo);
-+    }
-+
-     if (cpu_isar_feature(aa64_mec, cpu)) {
-         define_arm_cp_regs(cpu, mec_reginfo);
-         if (cpu_isar_feature(aa64_mte, cpu)) {
--- 
-2.43.0
+> On 8 Aug 2025, at 09.01, Mohamed Mediouni <mohamed@unpredictable.fr> =
+wrote:
+>=20
+> While figuring out a better spot for it, put it in =
+hv_arch_vm_create().
+>=20
+> After hv_vcpu_create is documented as too late, and deferring
+> vCPU initialization isn't enough either.
+>=20
+> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+> ---
+> target/arm/hvf/hvf.c | 15 +++++++++++++++
+> 1 file changed, 15 insertions(+)
+>=20
+> diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+> index 6da636724b..bb7b84ff35 100644
+> --- a/target/arm/hvf/hvf.c
+> +++ b/target/arm/hvf/hvf.c
+> @@ -1084,6 +1084,21 @@ hv_return_t hvf_arch_vm_create(MachineState =
+*ms, uint32_t pa_range)
+>     }
+>=20
+>     ret =3D hv_vm_create(config);
+> +    if (hvf_irqchip_in_kernel()) {
+> +        /*
+> +         * Instantiate GIC.
+> +         * This must be done prior to the creation of any vCPU
+> +         * but past hv_vm_create()
+> +         */
+> +        hv_gic_config_t cfg =3D hv_gic_config_create();
+> +        hv_gic_config_set_distributor_base(cfg, 0x08000000);
+> +        hv_gic_config_set_redistributor_base(cfg, 0x080A0000);
+> +        hv_return_t err =3D hv_gic_create(cfg);
+> +        if (err !=3D HV_SUCCESS) {
+> +            error_report("error creating platform VGIC");
+> +            goto cleanup;
+> +         }
+> +    }
+>=20
+> cleanup:
+>     os_release(config);
+> --=20
+> 2.39.5 (Apple Git-154)
+>=20
 
+It is difficult to find a place to initialize the GIC config, so I don't
+know if it gets better than this.
+
+Should the values 0x08000000 and 0x080A0000 be defined somewhere, or
+found through a look up? I see hw/arm/virt.c has them in the
+base_memmap.
+
+You can do os_release(cfg) after hv_gic_create.=
 

@@ -4,88 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9A2FCA0EE4
-	for <qemu-arm@archiver.kernel.org>; Thu, 14 Aug 2025 13:13:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6333CA0EDC
+	for <qemu-arm@archiver.kernel.org>; Thu, 14 Aug 2025 13:13:42 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1umXXW-0001Q7-Co; Thu, 14 Aug 2025 08:58:42 -0400
+	id 1umXeL-00040Y-9b; Thu, 14 Aug 2025 09:05:45 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1umXXU-0001Ov-P3
- for qemu-arm@nongnu.org; Thu, 14 Aug 2025 08:58:40 -0400
-Received: from mail-pj1-x102d.google.com ([2607:f8b0:4864:20::102d])
+ id 1umXd5-0002S7-Fi
+ for qemu-arm@nongnu.org; Thu, 14 Aug 2025 09:04:28 -0400
+Received: from mail-pf1-x42c.google.com ([2607:f8b0:4864:20::42c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1umXXQ-0004EA-7u
- for qemu-arm@nongnu.org; Thu, 14 Aug 2025 08:58:40 -0400
-Received: by mail-pj1-x102d.google.com with SMTP id
- 98e67ed59e1d1-323267bc0a8so1526126a91.1
- for <qemu-arm@nongnu.org>; Thu, 14 Aug 2025 05:58:34 -0700 (PDT)
+ id 1umXd0-0005DI-De
+ for qemu-arm@nongnu.org; Thu, 14 Aug 2025 09:04:26 -0400
+Received: by mail-pf1-x42c.google.com with SMTP id
+ d2e1a72fcca58-76e2ea933b7so931745b3a.1
+ for <qemu-arm@nongnu.org>; Thu, 14 Aug 2025 06:04:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1755176313; x=1755781113; darn=nongnu.org;
+ d=linaro.org; s=google; t=1755176659; x=1755781459; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=kEj8duxAu1Pam82WhtcHKlYlFMg89KDGm3ClOoILo48=;
- b=hMscfo7bcA81xcf0jJ3cJ8fo5Bu/x0+wH6rmYzZ5mkr2vJGmwTJI7f5TgLXGtRIcEI
- idBji1EgF/KxKp4M6Tjej9FbcF3iwGNMRzZaUX3SbXgEwZ1idRqysdkaxeM/42EV5rgR
- rtl2nS4+Rk2SwbLQC+jR79VoqjcnnitkTJyiPY3hhxh+XBGhupkUWH9gzr0PwzXKLDsw
- D51n1ydtH6gRdghedUxvhMSNOGhwQubzbIKoO+a6Gs34J1mbIUPbC9SpnOLFpkod5z4C
- L1HB/60hLhDSL5lrqgnIIEqtQwNJNKj/5pVABacTzXADO5JWxXLf5qFSlgOH9DnISptR
- ibgw==
+ bh=ry0ZsXjHszKipidyoRWNoHHhZAabsET+1FA/mv45g1c=;
+ b=PL8v9ZUCMtpYMeclbrcetE3gygjgd2cxLLttp45cdTW/mBYoM+lSrEPOULPDgSXXu8
+ dZDCtBcKmCNZoEtJrKingU7vrgXs5SKN6z1gF52t+J08ZItfh73VBXakBWYc4tUxPv0a
+ FvObcCLVrbibeYglYmDp3vD3KFRzL6Ff5KDnPpaUEQxGRpmkSMK5C+giiG3jq9Tf18ag
+ vQjC7ybwHwGw1E11cqmQ9w1Xqe7WBBPKqZIbB308ylKjUwX6Huaz6wdZdJK33M0Be+6W
+ 8HyOHlltF2KNHWEuO+IKDIy2a4UsE6U04zN7upOxOlWLJmlEiZQD6QCbWz8EgDmYS9SU
+ d8ug==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1755176313; x=1755781113;
+ d=1e100.net; s=20230601; t=1755176659; x=1755781459;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=kEj8duxAu1Pam82WhtcHKlYlFMg89KDGm3ClOoILo48=;
- b=flHcnp0Xuy/a3gMqNLQmapbrnjXmobkmyW/WPJU8I/l6fqLbt9/nm3xjcwRBz0ueSw
- 9EU4/SJEifBCERBz2GMgpKGyZL5auMOP7eosNEesl7ZU2McJL8oFjVaEGfh4ZLI8ZIrE
- Lbt/4fkq5oiuWRVaq4UdRQ6dd8xoG+Fnth2NsU7tAOk2qpMvwPVBnkMd+ifGvaBz1lyw
- cveAMu2xybYbTvTSpctY19CHOBKrZmVSivCfGiBeYXCQY+Q92O4puArzhU4Ex0IvpwSk
- zuxWDayEzXJsU0VtlRsJY2xvT+iTa4XTGUApzLP1lUWZw3OGQ5g8JEWQxJ6fCw0d/GbQ
- z+0Q==
-X-Gm-Message-State: AOJu0YzkX3j4kMZymDLF3xzq8Te57LmBk5YO/hj1LctAhzu6VIzOZQ7s
- oWpkPtLEcLQm7MgFmfaZ3yyAB5bAv9Lj8crCzgaLVBFKnoX93DgM+sWrfON+ziiYMiXgJeHoQoy
- bU+SzuhQ=
-X-Gm-Gg: ASbGncuTUoxIlJP6EiceL6+eg9bO1sSn5jNzlQM8yQaa7RYliNiWV64dAhyNzq1DJ+g
- TNnk706Xq1k1SOAW9ulGr51fCzhn6vuFaTCDvv7IgrNYlO/N+TJiwGN44KCNAbrGoFBaMTDNaj/
- DwzXKAvOqvje6AghAJ4zMoUDREUsAWSxkDsu1/8DtsO6bEWqsOSNFumXgGxPBueF2Iv8bdLs1Jz
- h4/WBZXdMXoHmWrvCItRNpSnFJf56m2TsaH0W3CHFyE8ZCzWTXl9pdwCghEFa48LI18tXWKRFMR
- 04/D2NQNIafeAswB/NpoB0wCTOvVvIJVCBPYbKzYoUcjwFue7JvaWkmNPJBnR8rEIHfVrDuKNlM
- DQ5rm5EoQ3oVy24GYfQzmVfU+jQM1tIfcRDnUm/xyD9f57rI29QSLcut0mg==
-X-Google-Smtp-Source: AGHT+IFRJUfoCzm3PtL2k4jQEUZ3CSNgU83jsQX7Qd3e1UnzTBACi0q7w71dAOK4Cl6HgJ1ThTAR1A==
-X-Received: by 2002:a17:90a:d00c:b0:31e:ec02:229b with SMTP id
- 98e67ed59e1d1-32327a4e21cmr5178322a91.20.1755176313324; 
- Thu, 14 Aug 2025 05:58:33 -0700 (PDT)
+ bh=ry0ZsXjHszKipidyoRWNoHHhZAabsET+1FA/mv45g1c=;
+ b=RpZLMWRELS+ep9Nkj/3pnHsws/4zhcD53PSInBd/ISOaZUdspVo4hGuOG/QTqHf0Tz
+ Tx9Ekx3/l8nXRJC6NMov8aUkr2Q0K1BHx06fkcPwp4oYMryg5G0QIceCuAAbWADAfzVZ
+ H6eQPST8nWh9zFuIAniTzkVZUzpSus6v2pHkzlB2gC7EkhCU8PB3e9oNVO9RqN8m11Cn
+ oQuGpsL+lA8dv2uQv3nzHqnixNoMtFZmm1dQQtHMBXEqRZQPv78vCRpPgFi+IgXhrEgW
+ JYFpZGDGXetXYr7259H6RyHBOS+O2+ZpZVFa5I4uH9DBLW6NagNfMBAasjGaYXvjK2U1
+ /+6g==
+X-Gm-Message-State: AOJu0YzQ/MAg8UW1I9Rz28nvNdA93OhIG+XrZDhtT5Wys8r2LRUw4tSY
+ stvvQsiBrTHBZd4lKwz95HM2sk+toQQ1Fw8PyyKIgl/hgcrUrJCywnUFJ0DkKoZBel2Oux1WQbx
+ Z2O3lFi0=
+X-Gm-Gg: ASbGnct/wjPZJUwed3YNZeZECMD5AagYDCAIkK6Um2Od9cNfGwvMkEBXBxqBDOZAIcl
+ CIyJshS2EN7rzZzXglZccKafxZJwv56sdfF7efe+Ykcw3KN5xUWcVmG7X0VbNHHzh9VTxvGLW8f
+ nB/HlyD5IxiYCtvj/6qkrEMR3dMa7jc2IGvyl28vPTQ0Fs6YZBuczJF55URQraFKXPXdBeOG/cD
+ ZMzELnnWLDpEbIdTXC/Xuf/lxhOGrNtXmHX1bKGGfzIxYXtnol7PaAXn6fPbUAdGXAD/UQrvjwe
+ QHwExDEiP4H7c5AYXFnoMUosg1FxmikD0YFV8hinu78XD9Ssrc+VM6QinK7FcgysRajQ8OV/3iN
+ oTgSd0FvO2r/oAR8s+JGOMFxxFtSi3fU5IsWDnKbmrCRxlL0=
+X-Google-Smtp-Source: AGHT+IHcUiiGTiysj4DynzgleZ5bTP7cBa2fpAenTIDd1mKdI7UGnsVF2PmBzHEPTB7JGW7tEdHBjQ==
+X-Received: by 2002:a05:6a20:914d:b0:240:177:e820 with SMTP id
+ adf61e73a8af0-240bdfad251mr4230479637.13.1755176659166; 
+ Thu, 14 Aug 2025 06:04:19 -0700 (PDT)
 Received: from localhost.localdomain ([206.83.105.236])
  by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-3233100c994sm1766256a91.21.2025.08.14.05.58.30
+ d2e1a72fcca58-76bcce6f6fesm34480631b3a.26.2025.08.14.06.04.16
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 14 Aug 2025 05:58:32 -0700 (PDT)
+ Thu, 14 Aug 2025 06:04:18 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v3 10/85] target/arm: Fill in HFG[RWI]TR_EL2 bits for Arm v9.5
-Date: Thu, 14 Aug 2025 22:56:37 +1000
-Message-ID: <20250814125752.164107-11-richard.henderson@linaro.org>
+Cc: qemu-arm@nongnu.org
+Subject: [PATCH v3 59/85] target/arm: Implement GCSPUSHM
+Date: Thu, 14 Aug 2025 22:57:26 +1000
+Message-ID: <20250814125752.164107-60-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250814125752.164107-1-richard.henderson@linaro.org>
 References: <20250814125752.164107-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102d;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102d.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42c;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- UPPERCASE_50_75=0.008 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -101,69 +100,135 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/cpregs.h | 28 ++++++++++++++++++++++++++--
- 1 file changed, 26 insertions(+), 2 deletions(-)
+ target/arm/cpregs.h            |  3 +++
+ target/arm/cpregs-gcs.c        | 15 +++++++++++++++
+ target/arm/tcg/translate-a64.c | 29 +++++++++++++++++++++++++++++
+ 3 files changed, 47 insertions(+)
 
 diff --git a/target/arm/cpregs.h b/target/arm/cpregs.h
-index c9506aa6d5..1d103b577f 100644
+index 15894332b2..93358e6123 100644
 --- a/target/arm/cpregs.h
 +++ b/target/arm/cpregs.h
-@@ -408,10 +408,19 @@ FIELD(HFGRTR_EL2, ERXPFGCTL_EL1, 47, 1)
- FIELD(HFGRTR_EL2, ERXPFGCDN_EL1, 48, 1)
- FIELD(HFGRTR_EL2, ERXADDR_EL1, 49, 1)
- FIELD(HFGRTR_EL2, NACCDATA_EL1, 50, 1)
--/* 51-53: RES0 */
-+/* 51: RES0 */
-+FIELD(HFGRTR_EL2, NGCS_EL0, 52, 1)
-+FIELD(HFGRTR_EL2, NGCS_EL1, 53, 1)
- FIELD(HFGRTR_EL2, NSMPRI_EL1, 54, 1)
- FIELD(HFGRTR_EL2, NTPIDR2_EL0, 55, 1)
--/* 56-63: RES0 */
-+FIELD(HFGRTR_EL2, NRCWMASK_EL1, 56, 1)
-+FIELD(HFGRTR_EL2, NPIRE0_EL1, 57, 1)
-+FIELD(HFGRTR_EL2, NPIR_EL1, 58, 1)
-+FIELD(HFGRTR_EL2, NPOR_EL0, 59, 1)
-+FIELD(HFGRTR_EL2, NPOR_EL1, 60, 1)
-+FIELD(HFGRTR_EL2, NS2POR_EL1, 61, 1)
-+FIELD(HFGRTR_EL2, NMAIR2_EL1, 62, 1)
-+FIELD(HFGRTR_EL2, NAMAIR2_EL1, 63, 1)
+@@ -46,6 +46,8 @@ enum {
+     ARM_CP_DC_ZVA                = 0x0005,
+     ARM_CP_DC_GVA                = 0x0006,
+     ARM_CP_DC_GZVA               = 0x0007,
++    /* Special: gcs instructions */
++    ARM_CP_GCSPUSHM              = 0x0008,
  
- /* These match HFGRTR but bits for RO registers are RES0 */
- FIELD(HFGWTR_EL2, AFSR0_EL1, 0, 1)
-@@ -452,8 +461,18 @@ FIELD(HFGWTR_EL2, ERXPFGCTL_EL1, 47, 1)
- FIELD(HFGWTR_EL2, ERXPFGCDN_EL1, 48, 1)
- FIELD(HFGWTR_EL2, ERXADDR_EL1, 49, 1)
- FIELD(HFGWTR_EL2, NACCDATA_EL1, 50, 1)
-+FIELD(HFGWTR_EL2, NGCS_EL0, 52, 1)
-+FIELD(HFGWTR_EL2, NGCS_EL1, 53, 1)
- FIELD(HFGWTR_EL2, NSMPRI_EL1, 54, 1)
- FIELD(HFGWTR_EL2, NTPIDR2_EL0, 55, 1)
-+FIELD(HFGWTR_EL2, NRCWMASK_EL1, 56, 1)
-+FIELD(HFGWTR_EL2, NPIRE0_EL1, 57, 1)
-+FIELD(HFGWTR_EL2, NPIR_EL1, 58, 1)
-+FIELD(HFGWTR_EL2, NPOR_EL0, 59, 1)
-+FIELD(HFGWTR_EL2, NPOR_EL1, 60, 1)
-+FIELD(HFGWTR_EL2, NS2POR_EL1, 61, 1)
-+FIELD(HFGWTR_EL2, NMAIR2_EL1, 62, 1)
-+FIELD(HFGWTR_EL2, NAMAIR2_EL1, 63, 1)
+     /* Flag: reads produce resetvalue; writes ignored. */
+     ARM_CP_CONST                 = 1 << 4,
+@@ -861,6 +863,7 @@ typedef enum FGTBit {
+     DO_BIT(HFGITR, DVPRCTX),
+     DO_BIT(HFGITR, CPPRCTX),
+     DO_BIT(HFGITR, DCCVAC),
++    DO_REV_BIT(HFGITR, NGCSPUSHM_EL1),
+     DO_BIT(HFGITR, ATS1E1A),
+ } FGTBit;
  
- FIELD(HFGITR_EL2, ICIALLUIS, 0, 1)
- FIELD(HFGITR_EL2, ICIALLU, 1, 1)
-@@ -512,6 +531,11 @@ FIELD(HFGITR_EL2, SVC_EL1, 53, 1)
- FIELD(HFGITR_EL2, DCCVAC, 54, 1)
- FIELD(HFGITR_EL2, NBRBINJ, 55, 1)
- FIELD(HFGITR_EL2, NBRBIALL, 56, 1)
-+FIELD(HFGITR_EL2, NGCSPUSHM_EL1, 57, 1)
-+FIELD(HFGITR_EL2, NGCSSTR_EL1, 58, 1)
-+FIELD(HFGITR_EL2, NGCSEPP, 59, 1)
-+FIELD(HFGITR_EL2, COSPRCTX, 60, 1)
-+FIELD(HFGITR_EL2, ATS1E1A, 62, 1)
+diff --git a/target/arm/cpregs-gcs.c b/target/arm/cpregs-gcs.c
+index 1a64acd584..d17c17dcb7 100644
+--- a/target/arm/cpregs-gcs.c
++++ b/target/arm/cpregs-gcs.c
+@@ -43,6 +43,16 @@ static void gcspr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+     raw_write(env, ri, value & ~7);
+ }
  
- FIELD(HDFGRTR_EL2, DBGBCRN_EL1, 0, 1)
- FIELD(HDFGRTR_EL2, DBGBVRN_EL1, 1, 1)
++static CPAccessResult access_gcspushm(CPUARMState *env, const ARMCPRegInfo *ri,
++                                      bool isread)
++{
++    int el = arm_current_el(env);
++    if (!(env->cp15.gcscr_el[el] & GCSCR_PUSHMEN)) {
++        return CP_ACCESS_TRAP_BIT | (el ? el : 1);
++    }
++    return CP_ACCESS_OK;
++}
++
+ static const ARMCPRegInfo gcs_reginfo[] = {
+     { .name = "GCSCRE0_EL1", .state = ARM_CP_STATE_AA64,
+       .opc0 = 3, .opc1 = 0, .crn = 2, .crm = 5, .opc2 = 2,
+@@ -81,6 +91,11 @@ static const ARMCPRegInfo gcs_reginfo[] = {
+       .opc0 = 3, .opc1 = 6, .crn = 2, .crm = 5, .opc2 = 1,
+       .access = PL3_RW, .writefn = gcspr_write,
+       .fieldoffset = offsetof(CPUARMState, cp15.gcspr_el[2]) },
++
++    { .name = "GCSPUSHM", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 3, .crn = 7, .crm = 7, .opc2 = 0,
++      .access = PL0_W, .accessfn = access_gcspushm,
++      .fgt = FGT_NGCSPUSHM_EL1, .type = ARM_CP_GCSPUSHM },
+ };
+ 
+ void define_gcs_cpregs(ARMCPU *cpu)
+diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
+index 45ff7bb0b2..39b91eac6d 100644
+--- a/target/arm/tcg/translate-a64.c
++++ b/target/arm/tcg/translate-a64.c
+@@ -26,6 +26,7 @@
+ #include "cpregs.h"
+ 
+ static TCGv_i64 cpu_X[32];
++static TCGv_i64 cpu_gcspr[32];
+ static TCGv_i64 cpu_pc;
+ 
+ /* Load/store exclusive handling */
+@@ -77,6 +78,10 @@ static int scale_by_log2_tag_granule(DisasContext *s, int x)
+ /* initialize TCG globals.  */
+ void a64_translate_init(void)
+ {
++    static const char gcspr_names[4][12] = {
++        "gcspr_el0", "gcspr_el1", "gcspr_el2", "gcspr_el3"
++    };
++
+     int i;
+ 
+     cpu_pc = tcg_global_mem_new_i64(tcg_env,
+@@ -90,6 +95,13 @@ void a64_translate_init(void)
+ 
+     cpu_exclusive_high = tcg_global_mem_new_i64(tcg_env,
+         offsetof(CPUARMState, exclusive_high), "exclusive_high");
++
++    for (i = 0; i < 4; i++) {
++        cpu_gcspr[i] =
++            tcg_global_mem_new_i64(tcg_env,
++                                   offsetof(CPUARMState, cp15.gcspr_el[i]),
++                                   gcspr_names[i]);
++    }
+ }
+ 
+ /*
+@@ -420,6 +432,18 @@ static MemOp check_ordered_align(DisasContext *s, int rn, int imm,
+     return finalize_memop(s, mop);
+ }
+ 
++static void gen_add_gcs_record(DisasContext *s, TCGv_i64 value)
++{
++    TCGv_i64 addr = tcg_temp_new_i64();
++    TCGv_i64 gcspr = cpu_gcspr[s->current_el];
++    int mmuidx = core_gcs_mem_index(s->mmu_idx);
++    MemOp mop = finalize_memop(s, MO_64 | MO_ALIGN);
++
++    tcg_gen_addi_i64(addr, gcspr, -8);
++    tcg_gen_qemu_st_i64(value, clean_data_tbi(s, addr), mmuidx, mop);
++    tcg_gen_mov_i64(gcspr, addr);
++}
++
+ typedef struct DisasCompare64 {
+     TCGCond cond;
+     TCGv_i64 value;
+@@ -2765,6 +2789,11 @@ static void handle_sys(DisasContext *s, bool isread,
+             }
+         }
+         return;
++    case ARM_CP_GCSPUSHM:
++        if (s->gcs_en) {
++            gen_add_gcs_record(s, cpu_reg(s, rt));
++        }
++        return;
+     default:
+         g_assert_not_reached();
+     }
 -- 
 2.43.0
 

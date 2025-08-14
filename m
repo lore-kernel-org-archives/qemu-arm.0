@@ -4,81 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B2FECA0EDC
-	for <qemu-arm@archiver.kernel.org>; Thu, 14 Aug 2025 13:12:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 321CACA0EE4
+	for <qemu-arm@archiver.kernel.org>; Thu, 14 Aug 2025 13:13:29 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1umXcn-0002Ch-SD; Thu, 14 Aug 2025 09:04:11 -0400
+	id 1umXcA-0001BW-Hv; Thu, 14 Aug 2025 09:03:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1umXcV-0001z7-LS
- for qemu-arm@nongnu.org; Thu, 14 Aug 2025 09:03:52 -0400
-Received: from mail-pf1-x434.google.com ([2607:f8b0:4864:20::434])
+ id 1umXc5-000148-C0
+ for qemu-arm@nongnu.org; Thu, 14 Aug 2025 09:03:25 -0400
+Received: from mail-pf1-x432.google.com ([2607:f8b0:4864:20::432])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1umXcR-00056q-Bx
- for qemu-arm@nongnu.org; Thu, 14 Aug 2025 09:03:51 -0400
-Received: by mail-pf1-x434.google.com with SMTP id
- d2e1a72fcca58-76e2eb20a64so1119820b3a.3
- for <qemu-arm@nongnu.org>; Thu, 14 Aug 2025 06:03:46 -0700 (PDT)
+ id 1umXc1-00051t-4V
+ for qemu-arm@nongnu.org; Thu, 14 Aug 2025 09:03:23 -0400
+Received: by mail-pf1-x432.google.com with SMTP id
+ d2e1a72fcca58-76e2ea94c7cso874260b3a.2
+ for <qemu-arm@nongnu.org>; Thu, 14 Aug 2025 06:03:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1755176625; x=1755781425; darn=nongnu.org;
+ d=linaro.org; s=google; t=1755176597; x=1755781397; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=c9sc0ZUHCkfd2ykNLWaRo5wL6kxQj6o6jh7+7rjjEiA=;
- b=WOkrIQzB0IAjYLDaN7oIXAPSeDyy83m8Y1KTUw0ksMl8iuMEmFj+rtkSlhWhzNMsys
- z5jCQqgINkI3Tzq6PhtoM9IRU4ThIWHDyjsUWtbdVvSqWT0R8201ZGd6RVTPFQlhAmB/
- TUX4QWdstFDe4yNOT8O2lv9roAnN3mUzEYZNPbaU0ULcbfIRjass2W0LKe6nrF/ha0TK
- /oeU2I5j9HKlMLVTWnwcLVdPnXPPxy/bAt1fXf2iUf18udlLwtgB7fEb+9GGJ8pOviy1
- GksbjLIteDezzcIyC8v8/bHE1ulNrRf8ct+32qZtKuoV4ilCfIkNXHCqtNdJu7Rr57MD
- A17A==
+ bh=+pIUQoqIgDqvDhrh04QrLTmJNySBZbca5o7+NnmcCMU=;
+ b=u9FM4XTHlW/SsDwTk6H2ECKaVd+GHWNHqumi/nbbSzEuKoiNKj6JW9HdWdcObGK1Zw
+ cb38RjE31zfiO832tybvNuqPIWOCIkSnKpohGcdTUw4O5IQcGoc3svnWjhiI4fGm1xtj
+ LefUT2Dfp1lbMthe6dxPWt/k7viU33kCzLJx0pyVduqXUjTHvRiGqXyCKZW6Ki0/YqRh
+ vPXKY6dvSpx8CUvySlhPRoA84u7kJE+zxhpET0wiNIpfE9nUI5rOo141zlNnh+4IP6BQ
+ Wc9omnIZU2k+SLChO3mWr+X9m/vyYcbWxIssiBqXhTLZQSn1Imv2JYkrI3OWRm89UnDQ
+ kzxw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1755176625; x=1755781425;
+ d=1e100.net; s=20230601; t=1755176597; x=1755781397;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=c9sc0ZUHCkfd2ykNLWaRo5wL6kxQj6o6jh7+7rjjEiA=;
- b=sXpzekX/eKVdiie3DHAhLqSyNPr0E+Xrc3i/jYgbcEWeh2+Yea8fZm4y45ef/tttAU
- BLyPnRR4wealmsagRTW1raBeNUFWeYYSlt5VLEudl+7YhyKTN6vi3YyLrB/yL48rmMZC
- p/LdVhstQkzznqP2zyzsBpyMa2IUGfZvdWvxmA5BPG8tVI9+dXlj42/tUXZXGlH7d62E
- OVinqpAYdDDVhgshIzzP57WH2iyqxm8Q1664pgUMAJfbAjYsL0T6AYLB5Kc4Oos544lj
- yNLhKIyiK+TI+8ie16w09uztYhgw8mWSMOriHmtejD5pZzIyxCkfGkirHHhcj+lnsof1
- kj3Q==
-X-Gm-Message-State: AOJu0YxJjd0xUAH6bIDOvQTzG/iOs+ZLvFn4wynwIXFzO7WcNa8IHXNo
- D4aMVQU7Z38eCeo0EKughzPtMvRFwZulF0yPP4Iawq5qCSezkN8NJonpdpjgCvMiYYU=
-X-Gm-Gg: ASbGncvCoBvvGaaM8L8dZUp3D0Y6z7HwynOTDig7k5R38d1t7xYAz02lrNIUcN5Jvkb
- BlQ3N0CPQ7PmrGIqpS8aZZnb2ol7RqzY12ObQkKsVrArVk6kr+ZBpki/Q7cxAo+LW83vi6iAwL9
- ilhY2FPVjSII4DdV+Sgip3nzSm0a9Nvd6NBBC7N0T2KeP0vwkgRsSJWnmvj9yMuRWPsmvLC7s7L
- TLdQsYY5mfxWhuNoU2lJsabuEzIVsVxU6vbAFk8p2Uc4CG4pd8SHebX40BIkEpIyzl4romJb3+h
- bNdwjCLG4tipLiHPgQ11d9pqqgr6nQaaIWxS5P7OoB3vq16wgMkMbbJBUVBKa+jbI6vukvLkSKq
- QhlYD4olLAcAWZhzalrGGY7oi4U+g/HP0/cdU4kPuEjD7xCc=
-X-Google-Smtp-Source: AGHT+IGbyl2ibAjZX4aJX5cD0X2aJjoxo7/VCEseCnPTSGoYGCX+53Njtgo33ezzLhoLIOUEzZh9iw==
-X-Received: by 2002:a05:6a00:180e:b0:736:2a73:6756 with SMTP id
- d2e1a72fcca58-76e2fdcf721mr3912129b3a.21.1755176624532; 
- Thu, 14 Aug 2025 06:03:44 -0700 (PDT)
+ bh=+pIUQoqIgDqvDhrh04QrLTmJNySBZbca5o7+NnmcCMU=;
+ b=Td9cxO8iZeuVCyvZgU98VkZuduoXEgQKTb555STV5RF/Uo5wErvXaXvzhiMS+dFM8E
+ UU3/UhegYc09tQikGiAScHqLNV030Nnvb+h/MvnaEImx8mZEjWa6/JiSgG/v4cKCIkUr
+ hrnYYOs3qjR/WJN4dHyMr2soPE9SmqwPpR+3BhVoVhAHgWJ18CzYccpoJ3klMLqiXTc5
+ aG+2Df9F2qkGFIeraEz7nbnzV8gueBjfJRJmNYJ9PDspSDyJPSBj2dyiXJCvQ4e0YlUj
+ Sge0N/YDFPiVELYZOxfO0BVTDacPowqTIlqzD9xk1eu8HBmZ9A704tZgMYuNFt+YcT0Y
+ mi/g==
+X-Gm-Message-State: AOJu0YyX+YsnvOqndnrg622J8ldzLoeoB9V0hnOzyxvK6aPxHmzc8B22
+ AXeQzdJPT/SMmAjS6f+0v5SPAEFhIbDFJtTnpCIGyoaL4aVp8pUZCJ8NBwjqNUY/aFk=
+X-Gm-Gg: ASbGnctW2TZpN5WOFBSGP36lwuqvA6DXUWkdt+6qbWCZFu8yla35OzHA9OdPaLB2Via
+ Do+AXyALHejurK4sAT4mR+AbtOBz6EeqCa18zpWqBOuULnm8dsLW8e2nqu07hKYVPDVCv75fyeI
+ wqg44KjK5HLzwefJGM7r8oq27iGZeG5X4zXN87eo69HzbA1UByGnFW4UbYFcq8VZpg8LsJz0vN5
+ tfkILhzhcZpgrLuMOyF2LngXkJ2iwcjjOZgYIB1eUgZMOT6VUCLzd4UTDIcPVNK7YLursp9mDdO
+ 1Kl6U/S0nKIDv3nqMhv1zIbxJg4CqVm205/SMx5Gi8OaGS5NjowB1Dwm47PFdrAl/HaFWk1Leqs
+ woCUt2rObDm8Xm1GtDKfeKijb2o8Fesf73JrvLdPKCNYXZNc=
+X-Google-Smtp-Source: AGHT+IERID6z8JeVXdbJdrFkGDYo1qDrLz1HxbvTDZ6AFlzHYl+QLndd1KLK9PP4ClqTHOH3ZFLVPw==
+X-Received: by 2002:a05:6a00:1a89:b0:76b:ed75:81a with SMTP id
+ d2e1a72fcca58-76e2fbe363cmr3510973b3a.5.1755176596922; 
+ Thu, 14 Aug 2025 06:03:16 -0700 (PDT)
 Received: from localhost.localdomain ([206.83.105.236])
  by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-76bcce6f6fesm34480631b3a.26.2025.08.14.06.03.41
+ d2e1a72fcca58-76bcce6f6fesm34480631b3a.26.2025.08.14.06.03.14
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 14 Aug 2025 06:03:43 -0700 (PDT)
+ Thu, 14 Aug 2025 06:03:16 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
-	Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v3 48/85] target/arm: Add GCS enable and trap levels to
- DisasContext
-Date: Thu, 14 Aug 2025 22:57:15 +1000
-Message-ID: <20250814125752.164107-49-richard.henderson@linaro.org>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Subject: [PATCH v3 40/85] target/arm: Convert regime_is_user from switch to
+ table
+Date: Thu, 14 Aug 2025 22:57:07 +1000
+Message-ID: <20250814125752.164107-41-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250814125752.164107-1-richard.henderson@linaro.org>
 References: <20250814125752.164107-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::434;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x434.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::432;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x432.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -101,112 +103,98 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Pipe GCSEnabled, GCSReturnValueCheckEnabled, and CheckGCSSTREnabled
-through hflags to the translator.
-
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/cpu.h               |  3 +++
- target/arm/tcg/translate.h     |  6 ++++++
- target/arm/tcg/hflags.c        | 38 ++++++++++++++++++++++++++++++++++
- target/arm/tcg/translate-a64.c |  3 +++
- 4 files changed, 50 insertions(+)
+ target/arm/internals.h       | 17 -----------------
+ target/arm/mmuidx-internal.h | 12 ++++++++++++
+ target/arm/mmuidx.c          |  6 ++++--
+ 3 files changed, 16 insertions(+), 19 deletions(-)
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 1da73196f0..98360b70b8 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -2918,6 +2918,9 @@ FIELD(TBFLAG_A64, NV2_MEM_BE, 36, 1)
- FIELD(TBFLAG_A64, AH, 37, 1)   /* FPCR.AH */
- FIELD(TBFLAG_A64, NEP, 38, 1)   /* FPCR.NEP */
- FIELD(TBFLAG_A64, ZT0EXC_EL, 39, 2)
-+FIELD(TBFLAG_A64, GCS_EN, 41, 1)
-+FIELD(TBFLAG_A64, GCS_RVCEN, 42, 1)
-+FIELD(TBFLAG_A64, GCSSTR_EL, 43, 2)
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index ea210c7179..c6f3ae470b 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -1034,23 +1034,6 @@ static inline bool regime_is_stage2(ARMMMUIdx mmu_idx)
+     return mmu_idx == ARMMMUIdx_Stage2 || mmu_idx == ARMMMUIdx_Stage2_S;
+ }
  
- /*
-  * Helpers for using the above. Note that only the A64 accessors use
-diff --git a/target/arm/tcg/translate.h b/target/arm/tcg/translate.h
-index f974996f3f..3e63dad2b6 100644
---- a/target/arm/tcg/translate.h
-+++ b/target/arm/tcg/translate.h
-@@ -164,6 +164,12 @@ typedef struct DisasContext {
-     bool fpcr_ah;
-     /* True if FPCR.NEP is 1 (FEAT_AFP scalar upper-element result handling) */
-     bool fpcr_nep;
-+    /* True if GCSEnabled. */
-+    bool gcs_en;
-+    /* True if GCSReturnValueCheckEnabled. */
-+    bool gcs_rvcen;
-+    /* GCSSTR exception EL or 0 if enabled */
-+    uint8_t gcsstr_el;
+-static inline bool regime_is_user(ARMMMUIdx mmu_idx)
+-{
+-    switch (mmu_idx) {
+-    case ARMMMUIdx_E10_0:
+-    case ARMMMUIdx_E20_0:
+-    case ARMMMUIdx_E30_0:
+-    case ARMMMUIdx_Stage1_E0:
+-    case ARMMMUIdx_MUser:
+-    case ARMMMUIdx_MSUser:
+-    case ARMMMUIdx_MUserNegPri:
+-    case ARMMMUIdx_MSUserNegPri:
+-        return true;
+-    default:
+-        return false;
+-    }
+-}
+-
+ /* Return the SCTLR value which controls this address translation regime */
+ static inline uint64_t regime_sctlr(CPUARMState *env, ARMMMUIdx mmu_idx)
+ {
+diff --git a/target/arm/mmuidx-internal.h b/target/arm/mmuidx-internal.h
+index 41baf1a003..3e51c0f579 100644
+--- a/target/arm/mmuidx-internal.h
++++ b/target/arm/mmuidx-internal.h
+@@ -17,6 +17,7 @@ FIELD(MMUIDXINFO, REL, 3, 2)
+ FIELD(MMUIDXINFO, RELVALID, 5, 1)
+ FIELD(MMUIDXINFO, 2RANGES, 6, 1)
+ FIELD(MMUIDXINFO, PAN, 7, 1)
++FIELD(MMUIDXINFO, USER, 8, 1)
+ 
+ extern const uint32_t arm_mmuidx_table[ARM_MMU_IDX_M + 8];
+ 
+@@ -64,4 +65,15 @@ static inline bool regime_is_pan(ARMMMUIdx idx)
+     return FIELD_EX32(arm_mmuidx_table[idx], MMUIDXINFO, PAN);
+ }
+ 
++/*
++ * Return true if the exception level associated with this mmu index is 0.
++ * Differs from arm_mmu_idx_to_el(idx) == 0 in that this allows querying
++ * Stage1 and Stage2 mmu indexes.
++ */
++static inline bool regime_is_user(ARMMMUIdx idx)
++{
++    tcg_debug_assert(arm_mmuidx_is_valid(idx));
++    return FIELD_EX32(arm_mmuidx_table[idx], MMUIDXINFO, USER);
++}
++
+ #endif /* TARGET_ARM_MMUIDX_INTERNAL_H */
+diff --git a/target/arm/mmuidx.c b/target/arm/mmuidx.c
+index 98db02b8e5..1c1e062bfe 100644
+--- a/target/arm/mmuidx.c
++++ b/target/arm/mmuidx.c
+@@ -7,10 +7,12 @@
+ #include "mmuidx-internal.h"
+ 
+ 
+-#define EL(X)  ((X << R_MMUIDXINFO_EL_SHIFT) | R_MMUIDXINFO_ELVALID_MASK)
++#define EL(X)  ((X << R_MMUIDXINFO_EL_SHIFT) | R_MMUIDXINFO_ELVALID_MASK | \
++                ((X == 0) << R_MMUIDXINFO_USER_SHIFT))
+ #define REL(X) ((X << R_MMUIDXINFO_REL_SHIFT) | R_MMUIDXINFO_RELVALID_MASK)
+ #define R2     R_MMUIDXINFO_2RANGES_MASK
+ #define PAN    R_MMUIDXINFO_PAN_MASK
++#define USER   R_MMUIDXINFO_USER_MASK
+ 
+ const uint32_t arm_mmuidx_table[ARM_MMU_IDX_M + 8] = {
      /*
-      * >= 0, a copy of PSTATE.BTYPE, which will be 0 without v8.5-BTI.
-      *  < 0, set by the current instruction.
-diff --git a/target/arm/tcg/hflags.c b/target/arm/tcg/hflags.c
-index 59ab526375..2e3a9cf0d3 100644
---- a/target/arm/tcg/hflags.c
-+++ b/target/arm/tcg/hflags.c
-@@ -449,6 +449,44 @@ static CPUARMTBFlags rebuild_hflags_a64(CPUARMState *env, int el, int fp_el,
-         DP_TBFLAG_A64(flags, TCMA, aa64_va_parameter_tcma(tcr, mmu_idx));
-     }
+@@ -33,7 +35,7 @@ const uint32_t arm_mmuidx_table[ARM_MMU_IDX_M + 8] = {
+     [ARMMMUIdx_Stage2_S]        = REL(2),
+     [ARMMMUIdx_Stage2]          = REL(2),
  
-+    if (cpu_isar_feature(aa64_gcs, env_archcpu(env))) {
-+        /* C.f. GCSEnabled */
-+        if (env->cp15.gcscr_el[el] & GCSCR_PCRSEL) {
-+            switch (el) {
-+            default:
-+                if (!el_is_in_host(env, el)
-+                    && !(arm_hcrx_el2_eff(env) & HCRX_GCSEN)) {
-+                    break;
-+                }
-+                /* fall through */
-+            case 2:
-+                if (arm_feature(env, ARM_FEATURE_EL3)
-+                    && !(env->cp15.scr_el3 & SCR_GCSEN)) {
-+                    break;
-+                }
-+                /* fall through */
-+            case 3:
-+                DP_TBFLAG_A64(flags, GCS_EN, 1);
-+                break;
-+            }
-+        }
-+
-+        /* C.f. GCSReturnValueCheckEnabled */
-+        if (env->cp15.gcscr_el[el] & GCSCR_RVCHKEN) {
-+            DP_TBFLAG_A64(flags, GCS_RVCEN, 1);
-+        }
-+
-+        /* C.f. CheckGCSSTREnabled */
-+        if (!(env->cp15.gcscr_el[el] & GCSCR_STREN)) {
-+            DP_TBFLAG_A64(flags, GCSSTR_EL, el ? el : 1);
-+        } else if (el == 1
-+                   && EX_TBFLAG_ANY(flags, FGT_ACTIVE)
-+                   && !FIELD_EX64(env->cp15.fgt_exec[FGTREG_HFGITR],
-+                                  HFGITR_EL2, NGCSSTR_EL1)) {
-+            DP_TBFLAG_A64(flags, GCSSTR_EL, 2);
-+        }
-+    }
-+
-     if (env->vfp.fpcr & FPCR_AH) {
-         DP_TBFLAG_A64(flags, AH, 1);
-     }
-diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-index dbf47595db..7831b3dab3 100644
---- a/target/arm/tcg/translate-a64.c
-+++ b/target/arm/tcg/translate-a64.c
-@@ -10162,6 +10162,9 @@ static void aarch64_tr_init_disas_context(DisasContextBase *dcbase,
-     dc->nv2_mem_be = EX_TBFLAG_A64(tb_flags, NV2_MEM_BE);
-     dc->fpcr_ah = EX_TBFLAG_A64(tb_flags, AH);
-     dc->fpcr_nep = EX_TBFLAG_A64(tb_flags, NEP);
-+    dc->gcs_en = EX_TBFLAG_A64(tb_flags, GCS_EN);
-+    dc->gcs_rvcen = EX_TBFLAG_A64(tb_flags, GCS_RVCEN);
-+    dc->gcsstr_el = EX_TBFLAG_A64(tb_flags, GCSSTR_EL);
-     dc->vec_len = 0;
-     dc->vec_stride = 0;
-     dc->cp_regs = arm_cpu->cp_regs;
+-    [ARMMMUIdx_Stage1_E0]       = REL(1) | R2,
++    [ARMMMUIdx_Stage1_E0]       = REL(1) | R2 | USER,
+     [ARMMMUIdx_Stage1_E1]       = REL(1) | R2,
+     [ARMMMUIdx_Stage1_E1_PAN]   = REL(1) | R2 | PAN,
+ 
 -- 
 2.43.0
 

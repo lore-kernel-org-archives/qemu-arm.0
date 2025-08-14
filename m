@@ -4,87 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B2CDCA0EDC
-	for <qemu-arm@archiver.kernel.org>; Thu, 14 Aug 2025 13:10:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4ACA6CA0EE4
+	for <qemu-arm@archiver.kernel.org>; Thu, 14 Aug 2025 13:10:41 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1umXXN-0001Lq-NB; Thu, 14 Aug 2025 08:58:33 -0400
+	id 1umXeh-0004T8-AZ; Thu, 14 Aug 2025 09:06:07 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1umXXI-0001Ia-1A
- for qemu-arm@nongnu.org; Thu, 14 Aug 2025 08:58:28 -0400
-Received: from mail-pj1-x1036.google.com ([2607:f8b0:4864:20::1036])
+ id 1umXe2-0003Ug-9Z
+ for qemu-arm@nongnu.org; Thu, 14 Aug 2025 09:05:27 -0400
+Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1umXXA-0004Af-6n
- for qemu-arm@nongnu.org; Thu, 14 Aug 2025 08:58:27 -0400
-Received: by mail-pj1-x1036.google.com with SMTP id
- 98e67ed59e1d1-323267b7dfcso894230a91.1
- for <qemu-arm@nongnu.org>; Thu, 14 Aug 2025 05:58:19 -0700 (PDT)
+ id 1umXdq-0005bJ-UQ
+ for qemu-arm@nongnu.org; Thu, 14 Aug 2025 09:05:26 -0400
+Received: by mail-pf1-x429.google.com with SMTP id
+ d2e1a72fcca58-76e2ea6ccb7so688957b3a.2
+ for <qemu-arm@nongnu.org>; Thu, 14 Aug 2025 06:05:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1755176297; x=1755781097; darn=nongnu.org;
+ d=linaro.org; s=google; t=1755176712; x=1755781512; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=tT719Yr1a9uhc93zITJ7bwqOfh29BbRAnDJiR12mnEI=;
- b=wU/UF/LtqXwxLwAAdGA0hYotCBfItlXvX92se0qYn7/6Dg8wZ4sA/mDgul8U8daD1k
- Jrc9aLbD1iCowuAftWRovDeCWU+t82R+kFK8/eqZaIH8N/taJj9uUY1+Mqurx6/QUaE9
- py5hKZjHKOi0HxW34/ROyBIfR4wVQL7zFvVb9LF6RKz5DFTKBtIM5f8nJty5mkeYkoVN
- d+BCp08Nz3LLcNk8mAydbcViT1ZDkZBeq6/X1MrcWhgFh3UFij5ZPQeJ1QJLFiNN0v6H
- iLsZD2ySmHD5BoLhvPf5NSnoAFoTR/8+AN7WQXLtlEqEB/+2UB4cN1EYJLCt07O1sZgg
- aPUQ==
+ bh=Bac99cWBoODM0lZjzPV8FafpKsc60jTDKb6XVoHXo24=;
+ b=xf89rY2RdSFQ4itg5aju4P6bh8iTqLFUL61PBoDij4U4gw7UxVUBAzQv9Q9We2uGeC
+ POnrl0RLD0nrRcFRlLTss+oAttu47MGWRmkii4SuqG5nmtX4VFaVjtKEvNevucuQgaHM
+ edUrnz7Cd/Ob+8Mxo1X01Rkd7GM7ewUV/OIKrESWUBu1WCIxdaDYp3MUb1roZhLyqWnp
+ CbBmbLDBAranYnCilnZFp+OobJkAapvTfBmHRStI///V9fHSErxQOKjSBrLNwhzX4Yew
+ GPU3hcflavru6MB+r1gb7ivP9X8wGL92IZ+xb3JnmnOmnZ1bJV7zNwFCms3clc4ktcNQ
+ tWyw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1755176297; x=1755781097;
+ d=1e100.net; s=20230601; t=1755176712; x=1755781512;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=tT719Yr1a9uhc93zITJ7bwqOfh29BbRAnDJiR12mnEI=;
- b=NqMtyDB4JPQct/lh/4GC8csiQ0h/dB5u+iMr+9hq9cqgEByTaRKU7X9VHerc+q6po4
- VDvzTiUTLnHyUMrd28HNytc2rou9KQJOmbZHuQP29YDYO52BPhK/W64BBQWru4LttQRB
- mG0zU7HAWQboPhSUIxrgNEii+ZFouW6jHTkMUtnm3HJuZ1RQQLL7p2knFA20JOF50ZwZ
- 1LAt2TEoGRuMaBkXk3D704bjLfO3S2v32/dsyVEl6TauaG5SU2GUCblHhkAFjrYTq0aj
- nlGTIPXkfTasAei0QunawIVJrEo7L1apxVhrrkk4BnO5KIyu0IW+I/eKEVwuX/FNbeRu
- ZZvw==
-X-Gm-Message-State: AOJu0YyIRCAMdEtwiecCO6QbBbX/kq28UOyzn5ER+W//P97fhVLf3LwI
- rSmn6LUehOiju6CaMvRIkhqWfQBA+vCJkjELl/i+UM1Jbjkvu1K2uh7H34PbtMa9BO4=
-X-Gm-Gg: ASbGncvUooXPZbUAKfP18Dja9cA5Nq1SDGdxS24o/ppPWbKNtuoGpJqjcjh6NSxybp1
- AbJ/Eyutr3/M31CmrIU35ir7lP0U9z9d9eI5GX+6cnKj+RKyRb4TXQ1mZEzJ40HjnYWRGndfIk1
- 9NoFn3AHnx3sbkNWRUSC3VHV9kwsayIcrJvAG/naAbv+DN8TT3IFOU0fE64xrLcJxhGgmmU1TeZ
- 8G428g7EuLJSukSfSjFsLgOQ9LuYw0FfMJkLroAp8X36R5ioy9S+fXcHsx5jCS+QU8SEFomqV8w
- IRg2zkp445cs5ZN8DNTpUbU1UDIsJsZhwojCYYqEsKzxSfqZpD9jkALHo7dtqPmy/KVphraWKUM
- Hhd92AQFv7wOex5jkm9XGc22XtvzZ/fZ4wnK0Uh5onyMfebw=
-X-Google-Smtp-Source: AGHT+IEEkDVwUeo+0flKhXVYEd0xWuYXNa9nYpOvcpzops/r3tb904L+7jb+0KLEwtrcUz1vXsJBJQ==
-X-Received: by 2002:a17:90b:224f:b0:31f:2bd7:a4d2 with SMTP id
- 98e67ed59e1d1-32327aa7402mr4464031a91.35.1755176297217; 
- Thu, 14 Aug 2025 05:58:17 -0700 (PDT)
+ bh=Bac99cWBoODM0lZjzPV8FafpKsc60jTDKb6XVoHXo24=;
+ b=IS8THHdd4O7AQokmVXdcy/9PamzNKFqNYMNY+T27rVclua2cHnvOPmQ+G938vsqhS2
+ G1n6bJ33wzSuT/bbxxksoWgqy0FCP3LMA21hh9z3T6H8AkEsVn2yxOtnnh8ibSq2WBjB
+ 6CzmmMV5NsqK0lZWcpZ50cbKXwOkC+ETFfj9lPW9NsQp7EERKyurNQsW0KTzCgm+PzUO
+ bZl15lal9BDdYtLfWw8JzGHzxmnO5bHW6dvVhg5+07K8wzIxmymQMgcqw7+yG/jSWCtS
+ T/8zqYCfLF5RnbfR1whXxozu0uJJdTZswhGQNnRvf22dn+1xjckkZ0mR5Sqs90/q9elY
+ RluA==
+X-Gm-Message-State: AOJu0YweydlO2AuOJIGc5/MIP6BrBn7JH+wGAy+b0QP/Vn/Gng6YC3RJ
+ BNNWp4qcoBSsQ/oNbpqwx5LKL7Aw7BcSJcta3/xTmdmdXGeXqqxpsR3gZU7NXUuHJy0=
+X-Gm-Gg: ASbGncswXhCabxdKGXHc5CDWrT/Sf8kysuz5h9fGDwDn90b5J40skfUuXfzUysxvg0i
+ CNO67rwu/iClin/isxNMTxB+/g8ut7E+IMyMRYyHdA1cy1jO2LJOyTl8USCADa06GdHOmCDSQPK
+ pbaLaRrEsDe2IEF8vUC4XvgE/ABpzXOA/tAbmnM86KkDT2bbkTuBCXdlf3D93EpU6MZAZVqLxoh
+ PNqQD+Mzo+UM9U6nJhlcTmQdUxAofW4gWtWG82EFAzTXAa7DwuhXro/PZiT9fAOhfzbVm5TEoxa
+ 8oQ08Xq3D+20YIcfEAhrqMl/UixxGWRYU+XLv0VzzsUDmhid1z0802ZWlKwKAu1wxFC6w/CNL5V
+ Xc9HCjlBq+GO9V4wS7wXNHQLFRDlORHz2gaJKiDbA8GSFWvU=
+X-Google-Smtp-Source: AGHT+IFz1rg3YKil1wGP212tKnjrHGzwXOCKqk0XWfiExwIIMX+0YzDe0O905cvhAAUGDJI+6bgPgg==
+X-Received: by 2002:a05:6a00:2311:b0:76b:ef44:1fa6 with SMTP id
+ d2e1a72fcca58-76e31eb9cb8mr4346246b3a.4.1755176711484; 
+ Thu, 14 Aug 2025 06:05:11 -0700 (PDT)
 Received: from localhost.localdomain ([206.83.105.236])
  by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-3233100c994sm1766256a91.21.2025.08.14.05.58.14
+ d2e1a72fcca58-76bcce6f6fesm34480631b3a.26.2025.08.14.06.05.09
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 14 Aug 2025 05:58:16 -0700 (PDT)
+ Thu, 14 Aug 2025 06:05:11 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v3 05/85] target/arm: Add in_prot_check to S1Translate
-Date: Thu, 14 Aug 2025 22:56:32 +1000
-Message-ID: <20250814125752.164107-6-richard.henderson@linaro.org>
+Subject: [PATCH v3 76/85] linux-user/aarch64: Release gcs stack on thread exit
+Date: Thu, 14 Aug 2025 22:57:43 +1000
+Message-ID: <20250814125752.164107-77-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250814125752.164107-1-richard.henderson@linaro.org>
 References: <20250814125752.164107-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1036;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1036.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::429;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x429.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -100,102 +100,29 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Separate the access_type from the protection check.
-Save the trouble of modifying all helper functions
-by passing the new data in the control structure.
-
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/ptw.c | 19 ++++++++++++++-----
- 1 file changed, 14 insertions(+), 5 deletions(-)
+ linux-user/syscall.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-index a914e7e23c..1b90e33f52 100644
---- a/target/arm/ptw.c
-+++ b/target/arm/ptw.c
-@@ -64,6 +64,12 @@ typedef struct S1Translate {
-      * Stage 2 is indicated by in_mmu_idx set to ARMMMUIdx_Stage2{,_S}.
-      */
-     bool in_s1_is_el0;
-+    /*
-+     * The set of PAGE_* bits to be use in the permission check.
-+     * This is normally directly related to the access_type, but
-+     * may be suppressed for debug or AT insns.
-+     */
-+    uint8_t in_prot_check;
-     bool out_rw;
-     bool out_be;
-     ARMSecuritySpace out_space;
-@@ -581,6 +587,7 @@ static bool S1_ptw_translate(CPUARMState *env, S1Translate *ptw,
-             .in_ptw_idx = ptw_idx_for_stage_2(env, s2_mmu_idx),
-             .in_space = s2_space,
-             .in_debug = true,
-+            .in_prot_check = PAGE_READ,
-         };
-         GetPhysAddrResult s2 = { };
+diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+index 91210775ed..dfe114ceb3 100644
+--- a/linux-user/syscall.c
++++ b/linux-user/syscall.c
+@@ -9309,6 +9309,12 @@ static abi_long do_syscall1(CPUArchState *cpu_env, int num, abi_long arg1,
+                              FUTEX_WAKE, INT_MAX, NULL, NULL, 0);
+             }
  
-@@ -1089,7 +1096,7 @@ static bool get_phys_addr_v5(CPUARMState *env, S1Translate *ptw,
-     }
-     result->f.prot = ap_to_rw_prot(env, ptw->in_mmu_idx, ap, domain_prot);
-     result->f.prot |= result->f.prot ? PAGE_EXEC : 0;
--    if (!(result->f.prot & (1 << access_type))) {
-+    if (ptw->in_prot_check & ~result->f.prot) {
-         /* Access permission fault.  */
-         fi->type = ARMFault_Permission;
-         goto do_fault;
-@@ -1243,7 +1250,7 @@ static bool get_phys_addr_v6(CPUARMState *env, S1Translate *ptw,
- 
-         result->f.prot = get_S1prot(env, mmu_idx, false, user_rw, prot_rw,
-                                     xn, pxn, result->f.attrs.space, out_space);
--        if (!(result->f.prot & (1 << access_type))) {
-+        if (ptw->in_prot_check & ~result->f.prot) {
-             /* Access permission fault.  */
-             fi->type = ARMFault_Permission;
-             goto do_fault;
-@@ -2123,7 +2130,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
-         result->f.tlb_fill_flags = 0;
-     }
- 
--    if (!(result->f.prot & (1 << access_type))) {
-+    if (ptw->in_prot_check & ~result->f.prot) {
-         fi->type = ARMFault_Permission;
-         goto do_fault;
-     }
-@@ -2537,7 +2544,7 @@ static bool get_phys_addr_pmsav7(CPUARMState *env,
- 
-     fi->type = ARMFault_Permission;
-     fi->level = 1;
--    return !(result->f.prot & (1 << access_type));
-+    return (ptw->in_prot_check & ~result->f.prot) != 0;
- }
- 
- static uint32_t *regime_rbar(CPUARMState *env, ARMMMUIdx mmu_idx,
-@@ -2953,7 +2960,7 @@ static bool get_phys_addr_pmsav8(CPUARMState *env,
-         }
-     }
- 
--    ret = pmsav8_mpu_lookup(env, address, access_type, 1 << access_type,
-+    ret = pmsav8_mpu_lookup(env, address, access_type, ptw->in_prot_check,
-                             mmu_idx, secure, result, fi, NULL);
-     if (sattrs.subpage) {
-         result->f.lg_page_size = 0;
-@@ -3625,6 +3632,7 @@ bool get_phys_addr(CPUARMState *env, vaddr address,
-     S1Translate ptw = {
-         .in_mmu_idx = mmu_idx,
-         .in_space = arm_mmu_idx_to_security_space(env, mmu_idx),
-+        .in_prot_check = 1 << access_type,
-     };
- 
-     return get_phys_addr_gpc(env, &ptw, address, access_type,
-@@ -3638,6 +3646,7 @@ static hwaddr arm_cpu_get_phys_page(CPUARMState *env, vaddr addr,
-         .in_mmu_idx = mmu_idx,
-         .in_space = arm_mmu_idx_to_security_space(env, mmu_idx),
-         .in_debug = true,
-+        .in_prot_check = PAGE_READ,
-     };
-     GetPhysAddrResult res = {};
-     ARMMMUFaultInfo fi = {};
++#ifdef TARGET_AARCH64
++            if (ts->gcs_base) {
++                target_munmap(ts->gcs_base, ts->gcs_size);
++            }
++#endif
++
+             object_unparent(OBJECT(cpu));
+             object_unref(OBJECT(cpu));
+             /*
 -- 
 2.43.0
 

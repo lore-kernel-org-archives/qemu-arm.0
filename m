@@ -4,78 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B64BFCA0EE4
-	for <qemu-arm@archiver.kernel.org>; Thu, 14 Aug 2025 13:17:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C0A0CA0EDC
+	for <qemu-arm@archiver.kernel.org>; Thu, 14 Aug 2025 13:17:44 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1umXiN-00031N-K4; Thu, 14 Aug 2025 09:09:56 -0400
+	id 1umXaA-0005aj-VE; Thu, 14 Aug 2025 09:01:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mads@ynddal.dk>) id 1umXiJ-0002qK-8i
- for qemu-arm@nongnu.org; Thu, 14 Aug 2025 09:09:51 -0400
-Received: from p-east1-cluster7-host9-snip4-10.eps.apple.com ([57.103.88.93]
- helo=outbound.ci.icloud.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mads@ynddal.dk>) id 1umXiE-00067D-Jt
- for qemu-arm@nongnu.org; Thu, 14 Aug 2025 09:09:50 -0400
-Received: from outbound.ci.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-central-1k-20-percent-1 (Postfix) with ESMTPS id
- AFE411800195; Thu, 14 Aug 2025 13:09:40 +0000 (UTC)
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ynddal.dk; s=sig1;
- bh=w2CjkhliRfAUzMGtjsGF2RwoF2pCByth6J1Vhgg6ddo=;
- h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To:x-icloud-hme;
- b=jT3Whi09pKUZydcLOnzwiDB+3KcKr0WrS+MDq7cHXqM9qVIjLSjt+CVFwjueZ9/a4RlGAwFF3j9o3GGCDf6i/kvHloawSsa+ygL5PNN+FHFXC79RMbltzcK1VN+1lzq3999Qntekw7YsxwLQXsrvUC4ug64Lqq2YD2wQlqlxGqBMC33RcXls+COuGPieahGqApNdhJKNCZX0CNAqKVqTop9+QhDjEsSsmiCmY98pDN3JqFGCrnHzvTvtprLbL9BAI+llu/cGn++xJaA3n6A3QOGQzalo6oUKQpa5x0I3dgXvt1i+rSXdNpo/yIx54wJkW/UbFgP7Qm469+hK1yg0Cg==
-X-Client-IP: 212.60.126.184
-Received: from smtpclient.apple (ci-asmtp-me-k8s.p00.prod.me.com
- [17.57.156.36])
- by p00-icloudmta-asmtp-us-central-1k-20-percent-1 (Postfix) with ESMTPSA id
- 3BF1B1804E16; Thu, 14 Aug 2025 13:06:56 +0000 (UTC)
-Content-Type: text/plain;
-	charset=us-ascii
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3826.700.81\))
-Subject: Re: [PATCH v6 12/13] target/arm: hvf: instantiate GIC early
-From: Mads Ynddal <mads@ynddal.dk>
-In-Reply-To: <20250808070137.48716-13-mohamed@unpredictable.fr>
-Date: Thu, 14 Aug 2025 15:06:44 +0200
-Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- Shannon Zhao <shannon.zhaosl@gmail.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha <anisinha@redhat.com>,
- qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- Roman Bolshakov <rbolshakov@ddn.com>, Igor Mammedov <imammedo@redhat.com>,
- Phil Dennis-Jordan <phil@philjordan.eu>, Alexander Graf <agraf@csgraf.de>,
- Cameron Esfahani <dirty@apple.com>
-Content-Transfer-Encoding: quoted-printable
-Message-Id: <FB7A9640-30C1-47FD-A1B7-73A7333BDB23@ynddal.dk>
-References: <20250808070137.48716-1-mohamed@unpredictable.fr>
- <20250808070137.48716-13-mohamed@unpredictable.fr>
-To: Mohamed Mediouni <mohamed@unpredictable.fr>
-X-Mailer: Apple Mail (2.3826.700.81)
-X-Proofpoint-GUID: XVFlJKab-qIt-4RmFc5HXcLpoDqQ8vvL
-X-Proofpoint-ORIG-GUID: XVFlJKab-qIt-4RmFc5HXcLpoDqQ8vvL
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwODE0MDExMCBTYWx0ZWRfX2LZeA7mRVYqs
- 5mfFKvnu4hE3q3/NF7ybH4bpLlEb1dxehlZWtIESXwauW3WxmoULO1wmZKDUyKaidEKxf3kp2Mk
- F6oL6oBpp0ncpFqDrEV6FutpsNlhRMStC5uNeAZaqJRa0+YZ+vcJMtapqLNp1IDmQokIn1SGxKh
- BgdAKUQfXqa3xsf6l7gAqO1EOv87CXbQQVYO7kMNQuZzfg9fMqGcAP/NV5ozMn6Tvy9v67sKKVX
- f7thq9g5rVOWtC8SMQBitY1D4NkSdgQIdQByz3huLbyzl/9pxnNFPvpzVt9LDwBBRu4Yo3noQ=
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.9,FMLib:17.12.80.40
- definitions=2025-08-13_02,2025-08-14_01,2025-03-28_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=892
- malwarescore=0 mlxscore=0 spamscore=0
- suspectscore=0 clxscore=1030
- phishscore=0 bulkscore=0 adultscore=0 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.22.0-2506270000 definitions=main-2508140110
-Received-SPF: pass client-ip=57.103.88.93; envelope-from=mads@ynddal.dk;
- helo=outbound.ci.icloud.com
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1umXYx-0002rT-9G
+ for qemu-arm@nongnu.org; Thu, 14 Aug 2025 09:00:14 -0400
+Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1umXYo-0004RZ-2v
+ for qemu-arm@nongnu.org; Thu, 14 Aug 2025 09:00:07 -0400
+Received: by mail-pj1-x1033.google.com with SMTP id
+ 98e67ed59e1d1-323267bc2eeso720971a91.1
+ for <qemu-arm@nongnu.org>; Thu, 14 Aug 2025 05:59:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1755176393; x=1755781193; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=LQ+8y37epe2XnhLdBmGfBFQy97VMfyMTxB36KkE7wvY=;
+ b=Gewqvjx2sCEVcS6YFSUmgzO/tpoEjZ8FuPF9uGkWW1MgUgCalyf3ZQo2G2KHWNKuUt
+ 1yZzyNT4Tc2TTUTLsanEE+VoA1lz5ELc7L+tb6tkaRCsBWq5UzYL5ZyO3CZu9mHcfmzi
+ UbcvsHaJWq5Ba8/9loSSMAiF1u9GIzoVDvJVlED2xBvVkNFhI+xko1KP/vS+lnXOprwt
+ 8hod3TF7v/gHR2vSh7kmeaHb3iZvDr6HFdjLR7Hl6g1uUr8qaiWlqelTusLEnHTKfsyJ
+ MnDYffKowRxZJ4Gz8LmLztr9SYC9Uua1UUS353ACUtuKoZIhGFRl/hkM7f83BCHBrpKb
+ zwGw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1755176393; x=1755781193;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=LQ+8y37epe2XnhLdBmGfBFQy97VMfyMTxB36KkE7wvY=;
+ b=LpNlB1flCmpXTGxNWX8F3ln86fEnJYOK2+1hJsrdOTJ5jhfWVBWJU634W/E7uJqdp5
+ sZPnRXPHbkGl/0rtWr22OMIOx58XdRlN0MJtpO7otNP+6XKX6OpOekAOgU2Khjvqyi9x
+ OZh0gwh8BWQb4lf5MOMDMQA/W0GuLxXb9mJm+JKAPwP83W1LQaqdyeTFjsEjCsYJMkQr
+ KbWVkxcm9JgLRAEzOEPRAH0Z0rsq55EXOTuXrWsSXTViAuCfbOmvwJXL9JNs3R/qq/ID
+ 3d7sgccCrh/NGEb6B/f5OzQB7zLOQhJH2HWQXwgiosb64sZro6lUkfIwKPFjGitInOuk
+ JH5w==
+X-Gm-Message-State: AOJu0YyPwV23MKDXHYSTT+r/884+wgy6UkdcQQBZYhL439qqV9+gRK1h
+ GEZ4aUum7kXu3hL2HktlGjITh4AdbEceMODbhFrB5qxO8W53JNjhkHr1TR0nhprGKpE=
+X-Gm-Gg: ASbGncsKAF5eV28rwtgO/fxiBxyvVUUXQH5b65yXk8CFU5S7se/YDie9TC7fuJFUgZ7
+ HraVlhq0rB6Vo0XVuErlqDBryrtU6htmTmuUJRCVPOouE1jE0TpIodNMFOZP9sV3LvJ26nhjnCo
+ o/4i6B400nKtMr+uQfEVEjCuLrgU6luwIjWJbPrMq4/jZGhdPOvhEz4l77Zo/ynQ2sW1oLlSmGd
+ rTe7Aqf7BBcwwJcMIVQRKerw44/FMksLZYr95R3r3xzU/7twerp2WLXCMCzuKkJH8QzE8oVv1AP
+ PRMEc1LTOh2J543RHwQwJrGUjJvQyJ0x4fZ2ykQ+epEJ8Tw/pj5UEUXoOicV/q2ixjbR9v6Cs6y
+ 7kRqPRW95FZIHlUH7hTEGF9isH1sPZsn+6ANX/yOVE47XCxQ=
+X-Google-Smtp-Source: AGHT+IE8V4EEeTq15gyskiIlRgJ+g7LmxSxMu1IcZUmz1XaZ0P0CgmCbvxtqbXRi/X74E+G0pm575Q==
+X-Received: by 2002:a17:90b:3d92:b0:321:38a:dd17 with SMTP id
+ 98e67ed59e1d1-32327a62f91mr4812417a91.20.1755176392677; 
+ Thu, 14 Aug 2025 05:59:52 -0700 (PDT)
+Received: from localhost.localdomain ([206.83.105.236])
+ by smtp.gmail.com with ESMTPSA id
+ 98e67ed59e1d1-3233100c994sm1766256a91.21.2025.08.14.05.59.49
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 14 Aug 2025 05:59:52 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Subject: [PATCH v3 34/85] target/arm: Remove unused env argument from regime_el
+Date: Thu, 14 Aug 2025 22:57:01 +1000
+Message-ID: <20250814125752.164107-35-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250814125752.164107-1-richard.henderson@linaro.org>
+References: <20250814125752.164107-1-richard.henderson@linaro.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1033;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1033.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -91,58 +102,232 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ target/arm/internals.h      |  8 ++++----
+ target/arm/helper.c         |  2 +-
+ target/arm/ptw.c            | 34 +++++++++++++++++-----------------
+ target/arm/tcg/mte_helper.c |  2 +-
+ 4 files changed, 23 insertions(+), 23 deletions(-)
 
-> On 8 Aug 2025, at 09.01, Mohamed Mediouni <mohamed@unpredictable.fr> =
-wrote:
->=20
-> While figuring out a better spot for it, put it in =
-hv_arch_vm_create().
->=20
-> After hv_vcpu_create is documented as too late, and deferring
-> vCPU initialization isn't enough either.
->=20
-> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
-> ---
-> target/arm/hvf/hvf.c | 15 +++++++++++++++
-> 1 file changed, 15 insertions(+)
->=20
-> diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-> index 6da636724b..bb7b84ff35 100644
-> --- a/target/arm/hvf/hvf.c
-> +++ b/target/arm/hvf/hvf.c
-> @@ -1084,6 +1084,21 @@ hv_return_t hvf_arch_vm_create(MachineState =
-*ms, uint32_t pa_range)
->     }
->=20
->     ret =3D hv_vm_create(config);
-> +    if (hvf_irqchip_in_kernel()) {
-> +        /*
-> +         * Instantiate GIC.
-> +         * This must be done prior to the creation of any vCPU
-> +         * but past hv_vm_create()
-> +         */
-> +        hv_gic_config_t cfg =3D hv_gic_config_create();
-> +        hv_gic_config_set_distributor_base(cfg, 0x08000000);
-> +        hv_gic_config_set_redistributor_base(cfg, 0x080A0000);
-> +        hv_return_t err =3D hv_gic_create(cfg);
-> +        if (err !=3D HV_SUCCESS) {
-> +            error_report("error creating platform VGIC");
-> +            goto cleanup;
-> +         }
-> +    }
->=20
-> cleanup:
->     os_release(config);
-> --=20
-> 2.39.5 (Apple Git-154)
->=20
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index 2dc82330ec..4991d6ab7f 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -1076,7 +1076,7 @@ static inline bool regime_is_stage2(ARMMMUIdx mmu_idx)
+ }
+ 
+ /* Return the exception level which controls this address translation regime */
+-static inline uint32_t regime_el(CPUARMState *env, ARMMMUIdx mmu_idx)
++static inline uint32_t regime_el(ARMMMUIdx mmu_idx)
+ {
+     switch (mmu_idx) {
+     case ARMMMUIdx_E20_0:
+@@ -1130,7 +1130,7 @@ static inline bool regime_is_user(CPUARMState *env, ARMMMUIdx mmu_idx)
+ /* Return the SCTLR value which controls this address translation regime */
+ static inline uint64_t regime_sctlr(CPUARMState *env, ARMMMUIdx mmu_idx)
+ {
+-    return env->cp15.sctlr_el[regime_el(env, mmu_idx)];
++    return env->cp15.sctlr_el[regime_el(mmu_idx)];
+ }
+ 
+ /*
+@@ -1162,13 +1162,13 @@ static inline uint64_t regime_tcr(CPUARMState *env, ARMMMUIdx mmu_idx)
+         v |= env->cp15.vtcr_el2 & VTCR_SHARED_FIELD_MASK;
+         return v;
+     }
+-    return env->cp15.tcr_el[regime_el(env, mmu_idx)];
++    return env->cp15.tcr_el[regime_el(mmu_idx)];
+ }
+ 
+ /* Return true if the translation regime is using LPAE format page tables */
+ static inline bool regime_using_lpae_format(CPUARMState *env, ARMMMUIdx mmu_idx)
+ {
+-    int el = regime_el(env, mmu_idx);
++    int el = regime_el(mmu_idx);
+     if (el == 2 || arm_el_is_aa64(env, el)) {
+         return true;
+     }
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 8985ad8c8a..78f670314d 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -9633,7 +9633,7 @@ ARMVAParameters aa64_va_parameters(CPUARMState *env, uint64_t va,
+     ARMGranuleSize gran;
+     ARMCPU *cpu = env_archcpu(env);
+     bool stage2 = regime_is_stage2(mmu_idx);
+-    int r_el = regime_el(env, mmu_idx);
++    int r_el = regime_el(mmu_idx);
+ 
+     if (!regime_has_2_ranges(mmu_idx)) {
+         select = 0;
+diff --git a/target/arm/ptw.c b/target/arm/ptw.c
+index 820d5e65a0..30c83334b6 100644
+--- a/target/arm/ptw.c
++++ b/target/arm/ptw.c
+@@ -232,9 +232,9 @@ static uint64_t regime_ttbr(CPUARMState *env, ARMMMUIdx mmu_idx, int ttbrn)
+         return env->cp15.vsttbr_el2;
+     }
+     if (ttbrn == 0) {
+-        return env->cp15.ttbr0_el[regime_el(env, mmu_idx)];
++        return env->cp15.ttbr0_el[regime_el(mmu_idx)];
+     } else {
+-        return env->cp15.ttbr1_el[regime_el(env, mmu_idx)];
++        return env->cp15.ttbr1_el[regime_el(mmu_idx)];
+     }
+ }
+ 
+@@ -1023,7 +1023,7 @@ static bool get_phys_addr_v5(CPUARMState *env, S1Translate *ptw,
+     }
+     type = (desc & 3);
+     domain = (desc >> 5) & 0x0f;
+-    if (regime_el(env, ptw->in_mmu_idx) == 1) {
++    if (regime_el(ptw->in_mmu_idx) == 1) {
+         dacr = env->cp15.dacr_ns;
+     } else {
+         dacr = env->cp15.dacr_s;
+@@ -1163,7 +1163,7 @@ static bool get_phys_addr_v6(CPUARMState *env, S1Translate *ptw,
+         /* Page or Section.  */
+         domain = (desc >> 5) & 0x0f;
+     }
+-    if (regime_el(env, mmu_idx) == 1) {
++    if (regime_el(mmu_idx) == 1) {
+         dacr = env->cp15.dacr_ns;
+     } else {
+         dacr = env->cp15.dacr_s;
+@@ -1454,7 +1454,7 @@ static int get_S1prot(CPUARMState *env, ARMMMUIdx mmu_idx, bool is_aa64,
+             xn = pxn || (user_rw & PAGE_WRITE);
+         }
+     } else if (arm_feature(env, ARM_FEATURE_V7)) {
+-        switch (regime_el(env, mmu_idx)) {
++        switch (regime_el(mmu_idx)) {
+         case 1:
+         case 3:
+             if (is_user) {
+@@ -1510,7 +1510,7 @@ static int get_S1prot_indirect(CPUARMState *env, S1Translate *ptw,
+         /* F */ 0,             /* reserved */
+     };
+ 
+-    uint32_t el = regime_el(env, mmu_idx);
++    uint32_t el = regime_el(mmu_idx);
+     uint64_t pir = env->cp15.pir_el[el];
+     uint64_t pire0 = 0;
+     int perm;
+@@ -1585,7 +1585,7 @@ static ARMVAParameters aa32_va_parameters(CPUARMState *env, uint32_t va,
+                                           ARMMMUIdx mmu_idx)
+ {
+     uint64_t tcr = regime_tcr(env, mmu_idx);
+-    uint32_t el = regime_el(env, mmu_idx);
++    uint32_t el = regime_el(mmu_idx);
+     int select, tsz;
+     bool epd, hpd;
+ 
+@@ -1811,7 +1811,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
+     int addrsize, inputsize, outputsize;
+     uint64_t tcr = regime_tcr(env, mmu_idx);
+     int ap, prot;
+-    uint32_t el = regime_el(env, mmu_idx);
++    uint32_t el = regime_el(mmu_idx);
+     uint64_t descaddrmask;
+     bool aarch64 = arm_el_is_aa64(env, el);
+     uint64_t descriptor, new_descriptor;
+@@ -2259,7 +2259,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
+ 
+         /* Index into MAIR registers for cache attributes */
+         attrindx = extract32(attrs, 2, 3);
+-        mair = env->cp15.mair_el[regime_el(env, mmu_idx)];
++        mair = env->cp15.mair_el[regime_el(mmu_idx)];
+         assert(attrindx <= 7);
+         result->cacheattrs.is_s2_format = false;
+         result->cacheattrs.attrs = extract64(mair, attrindx * 8, 8);
+@@ -2737,7 +2737,7 @@ static bool get_phys_addr_pmsav7(CPUARMState *env,
+ static uint32_t *regime_rbar(CPUARMState *env, ARMMMUIdx mmu_idx,
+                              uint32_t secure)
+ {
+-    if (regime_el(env, mmu_idx) == 2) {
++    if (regime_el(mmu_idx) == 2) {
+         return env->pmsav8.hprbar;
+     } else {
+         return env->pmsav8.rbar[secure];
+@@ -2747,7 +2747,7 @@ static uint32_t *regime_rbar(CPUARMState *env, ARMMMUIdx mmu_idx,
+ static uint32_t *regime_rlar(CPUARMState *env, ARMMMUIdx mmu_idx,
+                              uint32_t secure)
+ {
+-    if (regime_el(env, mmu_idx) == 2) {
++    if (regime_el(mmu_idx) == 2) {
+         return env->pmsav8.hprlar;
+     } else {
+         return env->pmsav8.rlar[secure];
+@@ -2779,7 +2779,7 @@ bool pmsav8_mpu_lookup(CPUARMState *env, uint32_t address,
+     uint32_t addr_page_limit = addr_page_base + (TARGET_PAGE_SIZE - 1);
+     int region_counter;
+ 
+-    if (regime_el(env, mmu_idx) == 2) {
++    if (regime_el(mmu_idx) == 2) {
+         region_counter = cpu->pmsav8r_hdregion;
+     } else {
+         region_counter = cpu->pmsav7_dregion;
+@@ -2905,7 +2905,7 @@ bool pmsav8_mpu_lookup(CPUARMState *env, uint32_t address,
+             xn = 1;
+         }
+ 
+-        if (regime_el(env, mmu_idx) == 2) {
++        if (regime_el(mmu_idx) == 2) {
+             result->f.prot = simple_ap_to_rw_prot_is_user(ap,
+                                             mmu_idx != ARMMMUIdx_E2);
+         } else {
+@@ -2914,7 +2914,7 @@ bool pmsav8_mpu_lookup(CPUARMState *env, uint32_t address,
+ 
+         if (!arm_feature(env, ARM_FEATURE_M)) {
+             uint8_t attrindx = extract32(matched_rlar, 1, 3);
+-            uint64_t mair = env->cp15.mair_el[regime_el(env, mmu_idx)];
++            uint64_t mair = env->cp15.mair_el[regime_el(mmu_idx)];
+             uint8_t sh = extract32(matched_rlar, 3, 2);
+ 
+             if (regime_sctlr(env, mmu_idx) & SCTLR_WXN &&
+@@ -2922,7 +2922,7 @@ bool pmsav8_mpu_lookup(CPUARMState *env, uint32_t address,
+                 xn = 0x1;
+             }
+ 
+-            if ((regime_el(env, mmu_idx) == 1) &&
++            if ((regime_el(mmu_idx) == 1) &&
+                 regime_sctlr(env, mmu_idx) & SCTLR_UWXN && ap == 0x1) {
+                 pxn = 0x1;
+             }
+@@ -3407,7 +3407,7 @@ static bool get_phys_addr_disabled(CPUARMState *env,
+         break;
+ 
+     default:
+-        r_el = regime_el(env, mmu_idx);
++        r_el = regime_el(mmu_idx);
+         if (arm_el_is_aa64(env, r_el)) {
+             int pamax = arm_pamax(env_archcpu(env));
+             uint64_t tcr = env->cp15.tcr_el[r_el];
+@@ -3659,7 +3659,7 @@ static bool get_phys_addr_nogpc(CPUARMState *env, S1Translate *ptw,
+      */
+     if (address < 0x02000000 && mmu_idx != ARMMMUIdx_Stage2
+         && !arm_feature(env, ARM_FEATURE_V8)) {
+-        if (regime_el(env, mmu_idx) == 3) {
++        if (regime_el(mmu_idx) == 3) {
+             address += env->cp15.fcseidr_s;
+         } else {
+             address += env->cp15.fcseidr_ns;
+diff --git a/target/arm/tcg/mte_helper.c b/target/arm/tcg/mte_helper.c
+index 0efc18a181..ed30026b7d 100644
+--- a/target/arm/tcg/mte_helper.c
++++ b/target/arm/tcg/mte_helper.c
+@@ -604,7 +604,7 @@ void mte_check_fail(CPUARMState *env, uint32_t desc,
+     int el, reg_el, tcf;
+     uint64_t sctlr;
+ 
+-    reg_el = regime_el(env, arm_mmu_idx);
++    reg_el = regime_el(arm_mmu_idx);
+     sctlr = env->cp15.sctlr_el[reg_el];
+ 
+     switch (arm_mmu_idx) {
+-- 
+2.43.0
 
-It is difficult to find a place to initialize the GIC config, so I don't
-know if it gets better than this.
-
-Should the values 0x08000000 and 0x080A0000 be defined somewhere, or
-found through a look up? I see hw/arm/virt.c has them in the
-base_memmap.
-
-You can do os_release(cfg) after hv_gic_create.=
 

@@ -4,75 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 159F0CA0ED1
-	for <qemu-arm@archiver.kernel.org>; Fri, 15 Aug 2025 16:06:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C843CA0EE4
+	for <qemu-arm@archiver.kernel.org>; Fri, 15 Aug 2025 16:08:44 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1umwwG-0004Qr-AZ; Fri, 15 Aug 2025 12:05:56 -0400
+	id 1umwyn-0005Fi-P8; Fri, 15 Aug 2025 12:08:33 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1umwwE-0004QD-OG
- for qemu-arm@nongnu.org; Fri, 15 Aug 2025 12:05:54 -0400
-Received: from mail-yb1-xb2a.google.com ([2607:f8b0:4864:20::b2a])
+ id 1umwyl-0005FK-DW
+ for qemu-arm@nongnu.org; Fri, 15 Aug 2025 12:08:32 -0400
+Received: from mail-yb1-xb31.google.com ([2607:f8b0:4864:20::b31])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1umww8-0002II-30
- for qemu-arm@nongnu.org; Fri, 15 Aug 2025 12:05:50 -0400
-Received: by mail-yb1-xb2a.google.com with SMTP id
- 3f1490d57ef6-e931cc4c9e4so2110672276.2
- for <qemu-arm@nongnu.org>; Fri, 15 Aug 2025 09:05:47 -0700 (PDT)
+ id 1umwyj-0002Tj-OD
+ for qemu-arm@nongnu.org; Fri, 15 Aug 2025 12:08:31 -0400
+Received: by mail-yb1-xb31.google.com with SMTP id
+ 3f1490d57ef6-e933460ee86so420716276.2
+ for <qemu-arm@nongnu.org>; Fri, 15 Aug 2025 09:08:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1755273946; x=1755878746; darn=nongnu.org;
+ d=linaro.org; s=google; t=1755274108; x=1755878908; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=nfuIy4XPjF2sZOs3zXjIofe0GTOnjTIVO8Kv2o0tcWQ=;
- b=WdPwSA0k4f5y1N3Y5ymLajTA7pVEgOCdeGtFl7lcNvYWm6YTCIlI7geMOM4+KFWAME
- x4Sgxl3xM17A0KfTYPwz8fOxDvHs4TaGIk5qETtJGY8QB/NvpeumdPNL9KE8vQbF6+gd
- /R8eJKKqED2w1UCmWEmgHCnb3+mHA7AC+MW4F/UiNN8VCoBkd75lNlz+7y4OKsgFOyUy
- eF2uF5yMQBvnZGuMmljgDquKeSDzEwDtR8KW3xL2tKoboQQM38cHhMWnJ6soqztcKPzU
- HAj+CE10ho3zgdiDbonbFM6keFRnrNpg8H1sqWyUR30OBYT+6DANFjXSpFNMP0zOZoLa
- e1zg==
+ bh=eY/Xd9SoGmOBtP6Y4PhgcXLlQ3bEJqzFHMhcJISIziA=;
+ b=zAwbZWtu80s/46I8qUXqTl6OQkjLa+kcThVo3wilwhuCMGlNDt7owHaOuUOYffmqmv
+ iU5KZclbXLhYF0aNQCMhSjJxWAG/eKsZ8k2KP/CLOLr6Io9Zk5TpJFiHq4uLucjYjc+N
+ H3v2NVn+OiiVL6ZjZ7pRaR1ufQJ3OiDxqCTKFxA6OOruZuZaoGi6lz9vrjFZ74+ehBqj
+ ZsYtB3V5QAfaYKCoek3ovoLUtPgTx9GTKNSj54Q4eojIzc22Xv+2tQYuDkXhcgXsvU5p
+ LRnN7O4I6RXeyrPXpO6uwUiy1qin8DzfzK6yB42E4q7++FLTawAhLpEX0sms8g42mpDk
+ zJkQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1755273946; x=1755878746;
+ d=1e100.net; s=20230601; t=1755274108; x=1755878908;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=nfuIy4XPjF2sZOs3zXjIofe0GTOnjTIVO8Kv2o0tcWQ=;
- b=og58eEqWayPTu3xyiXVlqQOUtRGEtBhThxFpKz9tzQHf62GayIeCmK24YVT2i1Mx7G
- Z2oFLpTwMCT1SIqzSY4gwA6hz6A7jMLXP0MnbmpPZXrxUT6KUkPyWjYzePzvbt9z1Rpw
- I7GhihoWRFKrHRI3fmJKER/xCcYlY2s8vcqpW+G1tzylq91sK+lPd/H9IQDY6opVpaEE
- Rm4c/NJbJFRuA4UAHM65/aR4HjDa/kz7wqRTQmiJXRDkVARQfJ6xKZui4Uv5nkebx50m
- zaRFmot4YKZjcFF7/IZJp3bttI4awKVZ2s5C3/hqIhxBIhvxTnv023/x3FKPHJM9vZmI
- Tfiw==
+ bh=eY/Xd9SoGmOBtP6Y4PhgcXLlQ3bEJqzFHMhcJISIziA=;
+ b=eZ+lKDNsyhpD2+lbMOI1tAigBUoFpW0eUVuiD4XZwkUVSCkcgOjsOE9WQa2it2dzdJ
+ cz8ay/j5iqZJ7CQGjvvpLcZi2SEBfYhP5FMJqUE72amLxcVmtbCei6RGMhUelf9scJLX
+ 2flS3wjtyFM0R5XQ3TUbb3jjMCG9CZy0XAWY0UzCm2Aneie8fJMYPW0Byp+MmWE/LbQW
+ oURTFa83wLQoWmuZrvDq/E3AzrUvtAY8ivsAwNjEHC2/38xyblKgrBZe40HF1ltd2FJ7
+ XcLagjuzBX0Gwawycpx4cOM9h4jGIOEdmhwcpDxaX4AEb84ZxOB9j4aAKvhLkGHiBYK4
+ llPw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVIoO91p14x0pBg4RrGfKfut6BYgbmXdVCYlBOxv0Roo6RJAr72oXS77k5zBHzZlO8KEoQulNPkGw==@nongnu.org
-X-Gm-Message-State: AOJu0YyuxCZwLvcYqz40LgXXYphtBJ9FQV6ltdTXCvJC5QzPx0Y2On7v
- Gs7wVGkUJ+uAvnlgcy/lkbY7eV1UplgICiNai4mIxdJHGz3+8ttW1vXhZxVvjw52XRHL8l0AdXF
- q9zNWQo76c68B9zEi7ln3Jd5XkKozWwtNfaXGCxwp+Q==
-X-Gm-Gg: ASbGncvok6HHeesTcuaRqcdYO0TNDNsr5P3Vvldhh6CDspLqaU5N0n7DtuHqJp9uxhg
- qHPKzzTPD/VYV6BUzngLmQ15VW2iT3pL3q624Db6gLakHWz1qOMC9gOkwcDMYQMM4PhGdGvPbB+
- Z6X7pHFtf4737W6FJqbYVWASUpMtsbzkS6QrCTcwUkQQKYsya+h3mPVatwYmsKO/DC0l9Rfvlhd
- CYmPTOCG+Bbn1A7Ibs=
-X-Google-Smtp-Source: AGHT+IFr7JZEGfVTwkm5kk4DVl5JP9WkWCKWmlDWcp3f1mbw0IOkEw36sa94FgXXvWDYxiLksd51NenpIE0+b2Kl9aI=
-X-Received: by 2002:a05:6902:110d:b0:e90:8278:5ef7 with SMTP id
- 3f1490d57ef6-e93324d4f16mr3070085276.37.1755273946204; Fri, 15 Aug 2025
- 09:05:46 -0700 (PDT)
+ AJvYcCXEe76eX7QxdGWSyxnapdF60vdC2LqywM69Ef25fpszRHNyYzZzixa3AYulQfRFvyJyjTKJ1aWJZQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yzt9aavSSIH6Vk+EKV6il31xkgQHZiRVyMXN4VRTkpQNJH6yVsB
+ jDbjPwxfaN24j7Nvf/8siJcCn1z/o7FEPFqj4TFQUU4Qu0otvFVWG3XusiuXZeZrMe8BLoyfIj7
+ ERq8cCCVZsmuDkcsYAzXM9hybGQEen2LUngjGC/lqk/DBUaanZHc2
+X-Gm-Gg: ASbGncsiQGreMJy1h4xA6CKsZzeiupDe9N4ABHoCHa6JGS0LuNS00fh6NMleP263I+v
+ /oBoN5jIwprCLUuFv7MGuo14deahPKC0Nom/maIr8XZUoxocoHL8dR/+9SESmiE1nyheFgjp2gA
+ nUePF1+c/1aRwPEZd9mijww0Um+JmmmPZxPD+sZp+ms7SsS1ahYYYKkECCiPYSNUXUeyi0qD8p8
+ p1idtQA
+X-Google-Smtp-Source: AGHT+IHfWpKPqRSRXqpJGPyX+nNHM0+P8djUk1isJBydpoiMLJjjiuwVc0DkjZMo08V6MOMxY50XWvlOw2sn7DV5mK0=
+X-Received: by 2002:a05:6902:f86:b0:e8f:d7fc:dc with SMTP id
+ 3f1490d57ef6-e933237378emr3507765276.6.1755274108495; Fri, 15 Aug 2025
+ 09:08:28 -0700 (PDT)
 MIME-Version: 1.0
-References: <20250803014019.416797-1-richard.henderson@linaro.org>
- <20250803014019.416797-5-richard.henderson@linaro.org>
-In-Reply-To: <20250803014019.416797-5-richard.henderson@linaro.org>
+References: <20250727074202.83141-1-richard.henderson@linaro.org>
+ <20250727074202.83141-3-richard.henderson@linaro.org>
+In-Reply-To: <20250727074202.83141-3-richard.henderson@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 15 Aug 2025 17:05:34 +0100
-X-Gm-Features: Ac12FXzBo2zIgSoLYwaT2J9GVLQZ_n-Jgr-2fpNb6yVYmfPJaGDSHoXHitNBV4Q
-Message-ID: <CAFEAcA_tLzaqeHa7MFf58-h3f1VN4TCe+aavvazknVw0wWNU+w@mail.gmail.com>
-Subject: Re: [PATCH 04/11] target/arm: Split out gen_wrap2_i32 helper
+Date: Fri, 15 Aug 2025 17:08:16 +0100
+X-Gm-Features: Ac12FXxz3d56QEg4n0O5yvltQsoDgMvagSO7AHlsiDYGBd_6oGsShLmgMcLx5DE
+Message-ID: <CAFEAcA_ZQ13qMRUQsieJiEPV=ULrDbz8=EJaW4_kw=yEysob0w@mail.gmail.com>
+Subject: Re: [PATCH v9 2/6] tests/functional/test_aarch64_rme: update image
 To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b2a;
- envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb2a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b31;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb31.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -95,63 +96,42 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Sun, 3 Aug 2025 at 02:42, Richard Henderson
+On Sun, 27 Jul 2025 at 08:42, Richard Henderson
 <richard.henderson@linaro.org> wrote:
 >
-> Wrapper to extract the low 32 bits, perform an operation,
-> and zero-extend back to 64 bits.
+> From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 >
+> TF-A needs to be patched to enable support for FEAT_TCR2 and
+> FEAT_SCTLR2. This new image contains updated firmware.
+>
+> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->  target/arm/tcg/translate-a64.c | 21 +++++++++++----------
->  1 file changed, 11 insertions(+), 10 deletions(-)
->
-> diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-> index bb92bdc296..64a845d5fb 100644
-> --- a/target/arm/tcg/translate-a64.c
-> +++ b/target/arm/tcg/translate-a64.c
-> @@ -8231,13 +8231,18 @@ static bool gen_rr(DisasContext *s, int rd, int rn, ArithOneOp fn)
->      return true;
->  }
->
-> +static void gen_wrap2_i32(TCGv_i64 d, TCGv_i64 n, NeonGenOneOpFn fn)
-> +{
-> +    TCGv_i32 t = tcg_temp_new_i32();
-> +
-> +    tcg_gen_extrl_i64_i32(t, n);
-> +    fn(t, t);
-> +    tcg_gen_extu_i32_i64(d, t);
-> +}
-> +
->  static void gen_rbit32(TCGv_i64 tcg_rd, TCGv_i64 tcg_rn)
->  {
-> -    TCGv_i32 t32 = tcg_temp_new_i32();
-> -
-> -    tcg_gen_extrl_i64_i32(t32, tcg_rn);
-> -    gen_helper_rbit(t32, t32);
-> -    tcg_gen_extu_i32_i64(tcg_rd, t32);
-> +    gen_wrap2_i32(tcg_rn, tcg_rn, gen_helper_rbit);
+> Message-ID: <20250719035838.2284029-3-pierrick.bouvier@linaro.org>
 
-...should be (tcg_rd, tcg_rn, gen_helper_rbit);
+I see this test failing in local runs of 'make check-functional'
+sometimes, complaining that it can't create the scratch/out/EFI
+directory because it already exists:
+
+stderr:
+Traceback (most recent call last):
+  File "/mnt/nvmedisk/linaro/qemu-from-laptop/qemu/tests/functional/test_aarch64_rme_sbsaref.py",
+line 49, in test_aarch64_rme_sbsaref
+    os.mkdir(efi)
+FileExistsError: [Errno 17] File exists:
+'/mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-clang/tests/functional/aarch64/test_aarch64_rme_sbsaref.Aarch64RMESbsaRefMachine.test_aarch64_rme_sbsaref/scratch/out/EFI'
+
+More information on
+test_aarch64_rme_sbsaref.Aarch64RMESbsaRefMachine.test_aarch64_rme_sbsaref
+could be found here:
+ /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-clang/tests/functional/aarch64/test_aarch64_rme_sbsaref.Aarch64RMESbsaRefMachine.test_aarch64_rme_sbsaref/base.log
+ /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-clang/tests/functional/aarch64/test_aarch64_rme_sbsaref.Aarch64RMESbsaRefMachine.test_aarch64_rme_sbsaref/console.log
+
+(test program exited with status code 1)
 
 
->  }
->
->  static void gen_rev16_xx(TCGv_i64 tcg_rd, TCGv_i64 tcg_rn, TCGv_i64 mask)
-> @@ -8293,11 +8298,7 @@ static void gen_clz64(TCGv_i64 tcg_rd, TCGv_i64 tcg_rn)
->
->  static void gen_cls32(TCGv_i64 tcg_rd, TCGv_i64 tcg_rn)
->  {
-> -    TCGv_i32 t32 = tcg_temp_new_i32();
-> -
-> -    tcg_gen_extrl_i64_i32(t32, tcg_rn);
-> -    tcg_gen_clrsb_i32(t32, t32);
-> -    tcg_gen_extu_i32_i64(tcg_rd, t32);
-> +    gen_wrap2_i32(tcg_rn, tcg_rn, tcg_gen_clrsb_i32);
+Is this something where we need to blow away any old output
+directory for robustness ?
 
-Ditto.
-
-This caused the 'check-functional' tests to fail.
-
+thanks
 -- PMM
 

@@ -4,67 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56EB9CA0EE0
-	for <qemu-arm@archiver.kernel.org>; Fri, 15 Aug 2025 06:03:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95357CA0EE6
+	for <qemu-arm@archiver.kernel.org>; Fri, 15 Aug 2025 09:02:11 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1umnWj-0000qt-IV; Fri, 15 Aug 2025 02:03:01 -0400
+	id 1umqJP-0003Yi-JD; Fri, 15 Aug 2025 05:01:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tangtao1634@phytium.com.cn>)
- id 1umnWg-0000pR-Ur; Fri, 15 Aug 2025 02:02:54 -0400
-Received: from zg8tmja5ljk3lje4ms43mwaa.icoremail.net ([209.97.181.73])
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <tangtao1634@phytium.com.cn>)
- id 1umnWc-0003Ne-Ft; Fri, 15 Aug 2025 02:02:54 -0400
-Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
- by hzbj-icmmx-7 (Coremail) with SMTP id AQAAfwDX3Dx9zZ5o37i9Bg--.1226S2;
- Fri, 15 Aug 2025 14:02:37 +0800 (CST)
-Received: from [10.31.62.13] (unknown [218.76.62.144])
- by mail (Coremail) with SMTP id AQAAfwAHkglwzZ5om1MTAA--.27666S2;
- Fri, 15 Aug 2025 14:02:33 +0800 (CST)
-Message-ID: <0c95f7de-ffbe-4787-ae14-6039bc4f31a3@phytium.com.cn>
-Date: Fri, 15 Aug 2025 14:02:19 +0800
+ (Exim 4.90_1) (envelope-from <corvin.koehne@gmail.com>)
+ id 1umqJL-0003WS-QJ; Fri, 15 Aug 2025 05:01:19 -0400
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <corvin.koehne@gmail.com>)
+ id 1umqJJ-0005Yw-UJ; Fri, 15 Aug 2025 05:01:19 -0400
+Received: by mail-wm1-x32e.google.com with SMTP id
+ 5b1f17b1804b1-45a1b281d25so7284725e9.3; 
+ Fri, 15 Aug 2025 02:01:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1755248475; x=1755853275; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=2PbRyb6awW3kwqCeFDeQuAdnthWVGSx2eaw+EJCrits=;
+ b=BDxQtGvDDjfVuXR3b9dTd+ifOv3kRVzAgqYKCFS7MjwQrzuBW5QyoLnRIxUYyJh8nh
+ aXfPXmhXs9zYzR5u73SoCsYKwaHJXMh3jVjC+pZtxei9vedGDs+hyTK+H8pw8L3Xd1gV
+ rNfayl6pWMBtqEF8vsBcovziPtcqNO4Bxg8whuphxHujqhCYjQMgj+ppLanHYMA8gCGy
+ IuSEO/MBLzJU5rNxB9pkt3I41WnTuXXbgdXxY9WLcbMkgyz0DkYMUlumZzLW0dtWi9ja
+ L2hE02MJu7t/SFXSLH4CKwCmB8EUM/ZspMSO8zpI/38/wBshXXzMcUMtY/IpyMtBfhPr
+ E5NQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1755248475; x=1755853275;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=2PbRyb6awW3kwqCeFDeQuAdnthWVGSx2eaw+EJCrits=;
+ b=JsX4LO/jE8lYyKxids1FTrIOILEVsopEQkH91FTnWI6kIWSLsDs1kzcVEzR/WptfWG
+ 3SekhymRFQdfwl7+BU8P3gO+eThnaxxZh5eOXAhp8KkdFj0q1qey0kENFDb3qbeO9YqJ
+ vxDbLTZUt1bRt48KCOHTNreLPqbgocNz0w/5jc9lPr5E46at60QNYSzl756TiSzpirkS
+ BHexNNWjy23NyO1LtSMw2HT9dbCi8llpWKpALwT4/ZvkUwPAOeLCZQj4SHhOeksx0aJ8
+ 56UX9LjP+kOEMRpSSGfJGDf2vo3cNmP1VDnwnVE0jCMFUpf9UCKKg8nqLEaiFP+mqURo
+ 0WSg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCViBEt5QRv+8BhaLFOBkt5/NfSE0benw8OCMH6pbdZ4KwRRXdIVWacixl0/JumH93BnP6sVfhefjaT6ww==@nongnu.org,
+ AJvYcCWH6BrxI9KDPBvGH43ZSUi0bW55nmc7TNYupJc1VbnhyVlQ2bUAgNDyIsN0M+dDJOZXwcvYVVJ5VQ==@nongnu.org
+X-Gm-Message-State: AOJu0YwqetRgqOo5THR1FKoRzKwK0NnA1bdrENQYwOIr5Rg9p33YyBB6
+ 8Vk8aR3SjUp8Zr1zO6ekXIg/uP0ahzRPP/3cZ0dwc4M5rOlajI68vRZ/G1LI5OiY
+X-Gm-Gg: ASbGnctR/cFM/1DQLy0fcNRJLU4pBz552is/Zgu/B5G48q/P2zC/QPX7tELYnGzAmQh
+ Pats2rggHrtCTmp035vYWt2pdzJnJ8DhWsok2V74ih8r9CMqAWUW6+tIQldvxRwaO5Gi0+UIQl5
+ vobOE4i+pXIXgG5GwqvnnzuKkmzj4ipfI2Meogbv92R+tLMBIYOjXtZsWTPKmmTuGEUHHQwUo+G
+ P69SxZXkur5W3BLIsaKnn0lspBhqYzbK9wV3j49nWrRgcOC1kCVSbRKmbdWhbrQzBK/4B0BWJC2
+ eQxMdajTS5NL8ftMsTV3iDtDnsk2EaFYv7IS20eZjKkzVM9lt5X6uGO/Y2hlkAoId1FFKctnui2
+ LRAsnmR4rTU/xDB6sIJ9iy7CxskMDWFbk61wnn7wbK5z10pa9Do23uilL
+X-Google-Smtp-Source: AGHT+IE+4LR3txBHv1S6ystpw0uYUHl7vU5vSPcO0KaDqaNLgpWSkb6B0AcPDIy0GrIDY8FR/XPh0g==
+X-Received: by 2002:a05:600c:3b8c:b0:456:2698:d4d9 with SMTP id
+ 5b1f17b1804b1-45a217f161emr14399075e9.3.1755248474645; 
+ Fri, 15 Aug 2025 02:01:14 -0700 (PDT)
+Received: from corvink-nb.beckhoff.com
+ ([2001:9e8:dc31:6500:43b3:5eac:8d91:b512])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-45a22321a54sm10964045e9.18.2025.08.15.02.01.13
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 15 Aug 2025 02:01:14 -0700 (PDT)
+From: =?UTF-8?q?Corvin=20K=C3=B6hne?= <corvin.koehne@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?q?Corvin=20K=C3=B6hne?= <c.koehne@beckhoff.com>,
+ qemu-arm@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ =?UTF-8?q?Yannick=20Vo=C3=9Fen?= <y.vossen@beckhoff.com>,
+ Hanna Reitz <hreitz@redhat.com>, qemu-block@nongnu.org
+Subject: [PATCH v2 00/14] hw/arm: add Beckhoff CX7200 board
+Date: Fri, 15 Aug 2025 11:00:58 +0200
+Message-ID: <20250815090113.141641-1-corvin.koehne@gmail.com>
+X-Mailer: git-send-email 2.50.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC 04/11] hw/arm/smmuv3: Enable command processing for the
- Secure state
-To: Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Cc: Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, Eric Auger <eric.auger@redhat.com>,
- Chen Baozi <chenbaozi@phytium.com.cn>, smostafa@google.com,
- jean-philippe@linaro.org
-References: <20250806151134.365755-1-tangtao1634@phytium.com.cn>
- <20250806151134.365755-5-tangtao1634@phytium.com.cn>
- <0b38d386-9d8b-46bd-a981-718cc7281eb6@linaro.org>
- <f74b4d64-893f-4b39-aa95-4e9ff52edebd@phytium.com.cn>
- <4ff26d30-3b0d-4392-8bac-698ecb0fbdde@linaro.org>
- <CAFEAcA-imgF9NLPWeXfE1JRL0gaKpVyfbbNKxojHDVz0t7EBKw@mail.gmail.com>
-Content-Language: en-US
-From: Tao Tang <tangtao1634@phytium.com.cn>
-In-Reply-To: <CAFEAcA-imgF9NLPWeXfE1JRL0gaKpVyfbbNKxojHDVz0t7EBKw@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: AQAAfwAHkglwzZ5om1MTAA--.27666S2
-X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQADBWieOgABnAAGsQ
-Authentication-Results: hzbj-icmmx-7; spf=neutral smtp.mail=tangtao163
- 4@phytium.com.cn;
-X-Coremail-Antispam: 1Uk129KBjvJXoWxtF1xCFWxAw15Ar13WrWDCFg_yoW3XF1UpF
- Z5K3WYkrWDKF4Ivr1Iqw48Ja4Fv393JFWUur95Kr98Aws09rySqr1UKFyY9asrCrWxZw10
- vr4jyw4fuan8ArJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
- DUYxn0WfASr-VFAU7a7-sFnT9fnUUIcSsGvfJ3UbIYCTnIWIevJa73UjIFyTuYvj4RJUUU
- UUUUU
-Received-SPF: pass client-ip=209.97.181.73;
- envelope-from=tangtao1634@phytium.com.cn;
- helo=zg8tmja5ljk3lje4ms43mwaa.icoremail.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=corvin.koehne@gmail.com; helo=mail-wm1-x32e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -80,191 +106,68 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+From: Corvin Köhne <c.koehne@beckhoff.com>
 
-On 2025/8/13 02:42, Peter Maydell wrote:
-> On Mon, 11 Aug 2025 at 11:34, Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
->> Hi,
->>
->> On 10/8/25 18:59, Tao Tang wrote:
->>> On 2025/8/7 05:55, Pierrick Bouvier wrote:
->>>> On 8/6/25 8:11 AM, Tao Tang wrote:
->>>>> This patch enables the secure command queue, providing a dedicated
->>>>> interface for secure software to issue commands to the SMMU. Based on
->>>>> the SMMU_S_CMDQ_BASE configuration, the SMMU now fetches command
->>>>> entries directly from the Secure PA space so that we need to pass the
->>>>> memory transaction attributes when reading the command queue.
->>>>>
->>>>> This provides a parallel command mechanism to the non-secure world.
->>>>>
->>>>> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
->>>>> ---
->>>>>    hw/arm/smmuv3-internal.h |  8 ++++--
->>>>>    hw/arm/smmuv3.c          | 55 +++++++++++++++++++++++++---------------
->>>>>    hw/arm/trace-events      |  2 +-
->>>>>    3 files changed, 41 insertions(+), 24 deletions(-)
->>>>>
->>>>> diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
->>>>> index 1a8b1cb204..5b2ca00832 100644
->>>>> --- a/hw/arm/smmuv3-internal.h
->>>>> +++ b/hw/arm/smmuv3-internal.h
->>>>> @@ -319,9 +319,13 @@ static inline void queue_cons_incr(SMMUQueue *q)
->>>>>        q->cons = deposit32(q->cons, 0, q->log2size + 1, q->cons + 1);
->>>>>    }
->>>>>    -static inline bool smmuv3_cmdq_enabled(SMMUv3State *s)
->>>>> +static inline bool smmuv3_cmdq_enabled(SMMUv3State *s, bool is_secure)
->>>>>    {
->>>>> -    return FIELD_EX32(s->cr[0], CR0, CMDQEN);
->>>>> +    if (is_secure) {
->>>>> +        return FIELD_EX32(s->secure_cr[0], S_CR0, CMDQEN);
->>>>> +    } else {
->>>>> +        return FIELD_EX32(s->cr[0], CR0, CMDQEN);
->>>>> +    }
->>>>>    }
->>
->>>> This looks like a reasonable and readable approach to support secure
->>>> and non secure accesses.
->>> Hi Pierrick,
->>>
->>> Thank you so much for taking the time to review and for the very
->>> positive feedback.
->>>
->>> I'm very relieved to hear you find the approach "reasonable and
->>> readable". I was hoping that explicitly passing the parameter was the
->>> right way to avoid issues with global state or code duplication, and
->>> your confirmation is the best encouragement I could ask for.
->> An alternative (also suggested in patch #1) is to use index for banked
->> registers.
-> This is often how we handle S/NS banked registers, yes.
-> Other examples:
->
-> include/hw/intc/arm_gicv3_common.h: the S/NS banked registers
-> ICC_CTLR_EL1, GICD_STATUSR, GICR_STATUSR are implemented as
-> uint32_t icc_ctlr_el1[2] etc. (The GICv3 also has some
-> group-related registers which is why it also has 3-element arrays)
->
-> The banked AArch32 system registers in cpu.h are a bit
-> more complicated, and there we have some macros
-> A32_BANKED_REG_GET/SET which access the right fields.
-> This lets us define the mapping between the NS and S
-> registers and the AArch32 ELx views. (I'm not sure I'd
-> go down this path again if we did it now: our AArch32
-> design here pre-dates AArch64. The AArch64 views use
-> an array that they index by EL.)
->
-> Sometimes when there are only a few registers that need
-> to be banked S/NS we give them names, as with the
-> GICv2 where we have separate apr[][] and nsapr[][] arrays.
->
-> I think I would say that it depends mostly on how many
-> registers there are, and whether you wind up wanting to do
-> a lot of "the logic is the same for both S and NS, it
-> just operates on the other register in the bank". It
-> can make the code a lot easier to read in that case if
-> you have functions that take the is_secure parameter
-> and just use it all the way through to index into the
-> register array. Even in the simple example above of
-> smmuv3_cmdq_enabled(), you can see that
->
->    return FIELD_EX32(s->cr[is_secure][0], CR0, CMDQEN);
->
-> is more succinct than the if-else version.
->
-> I have not looked closely enough the SMMUv3 code or spec to
-> be certain which side of the line it falls, but a glance
-> at the register overview does suggest that the design
-> has registers for all of normal, secure, realm and root.
-> Using an array will probably make our lives easier
-> if/when we have to implement the RME support in the SMMU.
->
-> thanks
-> -- PMM
+Hi,
 
+Beckhoff has build a board, called CX7200, based on the Xilinx Zynq A9
+platform. This commit series adds the Beckhoff CX7200 as new board variant to
+QEMU.
 
-Hi Peter, and all,
+The emulation is able to successfully boot an CX7200 image. The image includes
+some self tests executed on every boot. Only the cache self test fails due to
+QEMU emulating the cache as always being coherent. The self tests include f.e.:
 
-Thank you all for the very helpful feedback and discussion on this 
-series. I will start refactoring the code to adopt the register banking 
-approach as suggested.
+* Network
+* Flash
+* CCAT DMA + EEPROM [1]
+* TwinCAT (Beckhoff's automation control software [2])
 
-While working on the design, I have some questions regarding the best 
-way to index these banks, especially looking ahead to RME support, and I 
-would appreciate your thoughts on them.
+[1] https://github.com/beckhoff/ccat
+[2] https://www.beckhoff.com/en-us/products/automation/
 
-Here is my understanding of the current situation:
-According to the ARM SMMUv3 specification (IHI 0070 G.b), the SEC_SID is 
-the ground truth for determining the security context of a transaction. 
-For an RME-capable SMMU, its encoding is:
+YannickV (14):
+  hw/timer: Make frequency configurable
+  hw/timer: Make PERIPHCLK period configurable
+  hw/dma/zynq-devcfg: Handle bitstream loading via DMA to 0xffffffff
+  hw/arm/zynq-devcfg: Prevent unintended unlock during initialization
+  hw/dma/zynq: Ensure PCFG_DONE bit remains set to indicate PL is in
+    user mode
+  hw/dma/zynq-devcfg: Simulate dummy PL reset
+  hw/dma/zynq-devcfg: Indicate power-up status of PL
+  hw/dma/zynq-devcfg: Fix register memory
+  hw/misc: Add dummy ZYNQ DDR controller
+  hw/misc/zynq_slcr: Add logic for DCI configuration
+  hw/misc: Add Beckhoff CCAT device
+  hw/block/m25p80: Add HAS_SR_TB flag for is25lp016d
+  hw/arm: Add new machine based on xilinx-zynq-a9 for Beckhoff CX7200
+  docs/system/arm: Add support for Beckhoff CX7200
 
-SEC_SID=0 <-> Non-secure
-SEC_SID=1 <-> Secure
-SEC_SID=2 <-> Realm
-SEC_SID=3 <-> Reserved
+ docs/system/arm/beckhoff-cx7200.rst |  57 ++++
+ docs/system/target-arm.rst          |   1 +
+ hw/arm/Kconfig                      |  18 ++
+ hw/arm/beckhoff_CX7200.c            | 440 ++++++++++++++++++++++++++++
+ hw/arm/meson.build                  |   1 +
+ hw/block/m25p80.c                   |   3 +-
+ hw/dma/xlnx-zynq-devcfg.c           |  29 +-
+ hw/misc/Kconfig                     |   6 +
+ hw/misc/beckhoff_ccat.c             | 365 +++++++++++++++++++++++
+ hw/misc/meson.build                 |   2 +
+ hw/misc/xlnx-zynq-ddrc.c            | 393 +++++++++++++++++++++++++
+ hw/misc/zynq_slcr.c                 |  31 ++
+ hw/timer/a9gtimer.c                 |  25 +-
+ hw/timer/arm_mptimer.c              |  33 ++-
+ include/hw/misc/xlnx-zynq-ddrc.h    | 140 +++++++++
+ include/hw/timer/a9gtimer.h         |   2 +
+ include/hw/timer/arm_mptimer.h      |   4 +
+ 17 files changed, 1538 insertions(+), 12 deletions(-)
+ create mode 100644 docs/system/arm/beckhoff-cx7200.rst
+ create mode 100644 hw/arm/beckhoff_CX7200.c
+ create mode 100644 hw/misc/beckhoff_ccat.c
+ create mode 100644 hw/misc/xlnx-zynq-ddrc.c
+ create mode 100644 include/hw/misc/xlnx-zynq-ddrc.h
 
-To accurately model the SMMU, our smmuv3_translate function must 
-ultimately use this SEC_SID value. Taking the translate callback 
-signature into consideration:
-
-IOMMUTLBEntry (*translate)(IOMMUMemoryRegion *iommu, hwaddr addr,
-                            IOMMUAccessFlags flags, int iommu_idx);
-
-My understanding is that we can use the iommu_idx parameter to carry the 
-SEC_SID value for each transaction. The SMMU model would then use this 
-index to select the correct programming interface, which in turn 
-corresponds to the bank index for its internal registers (e.g., 
-s->bank[iommu_idx]).
-
-The dilemma arises when choosing the enum for this bank index. 
-Philippe's suggestion to use ARMASIdx is great for the current S/NS 
-case. For future RME support, one might consider ARMSecuritySpace. 
-However, as Peter’s feedback highlighted, the SMMU architecture includes 
-four states. The problem is that the values of ARMSecuritySpace do not 
-match the SEC_SID encoding at all, so it cannot be used directly(e.g., 0 
-for Secure, 1 for Non-secure BUT for SEC_SID, 0 for NON-secure, 1 for 
-Secure ) .
-
-This leads me to two questions on the best path forward:
-
-1. How should the SEC_SID be propagated from the device? The only thing 
-that is certain is that the hardware transaction will carry a SEC_SID 
-value that is consistent with the manual. My initial thought was to 
-extend MemTxAttrs.secure to carry the four states, but I am unsure if 
-this is the best approach.
-
-typedef struct MemTxAttrs {
-     /*
-      * ARM/AMBA: TrustZone Secure access
-      * x86: System Management Mode access
-      */
-     unsigned int secure:1;
-     /*
-      * ARM: ArmSecuritySpace.  This partially overlaps secure, but it is
-      * easier to have both fields to assist code that does not understand
-      * ARMv9 RME, or no specific knowledge of ARM at all (e.g. pflash).
-      */
-     unsigned int space:2;
-
-...
-
-}
-
-
-2. What should we use as the internal bank index within the SMMUv3 
-model? I see two potential options:
-a) Use the existing ARMSecuritySpace as the internal index. This would 
-require conversions from the SEC_SID carried by each transaction.
-b) Define a new, SMMU-specific enum that perfectly matches the SEC_SID 
-hardware specification (e.g., enum SmmuSecSid { NS=0, S=1, REALM=2, 
-ROOT=3 }). We would use this new enum as our bank index internally.
-
-I am leaning towards option (2b) as it seems to offer better 
-encapsulation and fidelity to the hardware specification, but I would be 
-very grateful to hear your opinions and guidance on this architectural 
-choice.
-
-Thank you very much!
-
-Best regards,
-
-Tao
+-- 
+2.50.1
 
 

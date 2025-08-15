@@ -4,68 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCD21CA0EE6
-	for <qemu-arm@archiver.kernel.org>; Fri, 15 Aug 2025 09:03:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1B13CA0EE6
+	for <qemu-arm@archiver.kernel.org>; Fri, 15 Aug 2025 09:03:52 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1umqJf-0003iV-Qg; Fri, 15 Aug 2025 05:01:39 -0400
+	id 1umqJj-0003kE-ED; Fri, 15 Aug 2025 05:01:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <corvin.koehne@gmail.com>)
- id 1umqJa-0003fj-3q; Fri, 15 Aug 2025 05:01:34 -0400
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+ id 1umqJY-0003fQ-8R; Fri, 15 Aug 2025 05:01:33 -0400
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <corvin.koehne@gmail.com>)
- id 1umqJW-0005tH-OU; Fri, 15 Aug 2025 05:01:33 -0400
-Received: by mail-wm1-x32e.google.com with SMTP id
- 5b1f17b1804b1-45a1b00f23eso9588175e9.0; 
- Fri, 15 Aug 2025 02:01:28 -0700 (PDT)
+ id 1umqJU-0005sH-Ta; Fri, 15 Aug 2025 05:01:31 -0400
+Received: by mail-wm1-x336.google.com with SMTP id
+ 5b1f17b1804b1-45a1b05d252so11571845e9.1; 
+ Fri, 15 Aug 2025 02:01:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1755248488; x=1755853288; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1755248486; x=1755853286; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=j7zFtEhof/fPqe84pHFWwYVCgkcZBxKurmwcEoc0vuc=;
- b=bx47Qn/bdlt6aRmpxew4RT9bNxjl0K2rbwCNk5qR40jexgStdKBXFjd3AGiCme50kb
- 8XwebJh0nqWNpHXp1G8ZcknC3xRZteM+a82Pkmoh4iXNyfGU2SsFQQ8pFDD9nKWfkxhg
- IJeKF1By17ivNz4zQZZzXcygOnCnBT3weFE/EcZn4Hj4/bKowwzKYP7eqt5jv62TVnl9
- U+TJgX6/4oXsp5z7+R6Zhm6q5yiTB39RhW1DcDKf71UdoxZhOEg9LYRW4v18KTZdb1Kq
- Ht2O0IznnaWXMFJWwnLhGBPY3WfFIrawBw2K/RQ/P9Wf7brg1FZ+j47UqwezcLjvdgkq
- X/Ww==
+ bh=fA3ZKHNVPuqOj4lzHOhYgKjjrfguGgf30UjQHR6LMd0=;
+ b=lgb7WZxqG8xxlplsC8IlvBlL9S2L1Ff5jt42uXAGoXya2PxcgA74WU6XxHdCQMYXah
+ OkKYpgPHNw1s56vibBalVVdx7ou5F/8k7tWlJalC6bdZHtjJ/MLjTgpgP6H+9aCd6arc
+ E5r73fsY2dgrLzvRtcvUDpbhAVBVuvtcGTtxA5d9Va7QK8nuVh0u7GF3XR4ELKvtE/WE
+ 0XUardhCh5co4RRUIhqnIvw+LLiP4D9f+E1MFkNt7fJoBj/ls1hNdk6hEfvmRd7nAnM7
+ xBf7CI9rzIpKhdqfUXz/w3v+HOZ4raschlUXaNJzHaHYBuU3KgbbNBBz+tjuoAZzfsXt
+ K43w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1755248488; x=1755853288;
+ d=1e100.net; s=20230601; t=1755248486; x=1755853286;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=j7zFtEhof/fPqe84pHFWwYVCgkcZBxKurmwcEoc0vuc=;
- b=lzgANx+DsDFDGwFYBAcWEVTMHsw8LoDHjU8QW25NamkOby3PvQYHlhADLfwmhfssBV
- MfGtTQnlFlSWRqJD48byQckXa6fRWv6l5pVvdD5jqUQ1koE4deZxCCIOYz879IngcOWp
- CW1/rR/JKF1De9aS/Qvj4dZEw9XGHb4b7AklXqYu89dlwTi6STHHlomDV9E1kbAa/hZf
- oMKmufl0Q0+cWNfWvJUzVOrT9A6itrFBRSmz0tSgn3mBuRT2qfAcMqwhVfqD9hR3lAFc
- twwrGenmqn+26monlD8kZFSXi8mlLO5HNzZkugZClg292p2USgQRPKUDUfxzGJuYMT5I
- Wq8Q==
+ bh=fA3ZKHNVPuqOj4lzHOhYgKjjrfguGgf30UjQHR6LMd0=;
+ b=s8hXdaHOo51o/xw/JsQsCZwQb6LygSHbX29mE0yNurBRkKB1g1JccDOfTZCWr59vLa
+ hwjMHsG+egCKK0da7zdzgtWinW7o/qG9qvf/m9+EJHlnCY1XCYD4cVZi3zgpDWiDZfz4
+ D6SyO2+A+PN63m/VHYe8f6vEBTfYjvMW/0ubehc7fHBncruHxxXoaFjgqA9tW4REJYPP
+ LLmmfr2t1Hs/4a3L+CY23o3OUe909+lf5Fp6uSEDfhrPAoIqr47tMypQXSCCYyBC8/+0
+ DMYRWudUsl829i3HklOAURq4+XrqOCRO8GdZAKpVh/amo0fcizos9+FUJLDXnKI8/nrr
+ DHgw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCURVJHUIVerVNGCv+uqnFL53oONDUJ6D4RQxBDTAPKOVLz+tt4hmf9EWmV7mZQ4gYHw8vyXZa/JDA==@nongnu.org,
- AJvYcCXGVhM4Ja92+zqO14r+bRVIe1Ro23H0gINhYTG3ssq1c4Cum0EuUltANURyGS/Kz/KZM9FJ9QvO6y0w9Q==@nongnu.org
-X-Gm-Message-State: AOJu0YzAYUjcQxF0TMv738AB3TlW7pC4o55ExJYXGvgIJQNlOihWjovB
- zGcJQN6c4uZGH+kQ1VP2RJ2PJ05j5gV5GHUNmp9zYa6Oi2xQ7PEALIWb3OeC4fKC
-X-Gm-Gg: ASbGncskx3EjAllWJVpFlhsUFG4FnnxzOWV7HL7NViMUbdL61TG5FK3a+csGUldb7Hy
- pFtjFf8tmrX+M0fdQm52Z/zTsyjqbP+so3rbGuyNpeHoRou8AJXXtaGfwXLuxvtj83YjlgnHFxJ
- XTuLHxX7vcUb3u604619CfUmIkEGvQPjNUXyYlKxKgLvV3lbmZ2bpMIJcfJ2udxbvBqWAEXJ1ZN
- NhmCT8RjArRLAVfAPThbe75l4rocUXtuXwIbeeonga1pHHb7ooDmjiH4QyLVi2gkrpY3FvbRZJh
- 2gv3vhDgsAEHPwv6/9lXlevADFK2gQZGaDjw6uXzO5pJsRnudt5nfZKd3eC4+udSL+nik1oEM8c
- b/ThbXFlxj9YkP7khz93Y2/A5UMTJCgvcLzFA1YHbDbomOQ==
-X-Google-Smtp-Source: AGHT+IE4Jgcuark9gRpiwE8pT6VOcNRt7Y/o8+QXDU9hksn3F3doUvts2+wZltjSu3Bf3CPeeeEm6g==
-X-Received: by 2002:a05:600c:354b:b0:456:eb9:5236 with SMTP id
- 5b1f17b1804b1-45a21808b2bmr13975715e9.15.1755248487602; 
- Fri, 15 Aug 2025 02:01:27 -0700 (PDT)
+ AJvYcCUSb0BA/ruKhMcVa4SjdOm5siavg8W5s3tedTuaH1NXEJUlsq6ZoMwdC4DhOHxWoF1ijmzcLqbMag==@nongnu.org,
+ AJvYcCX6NS+a9T8QpF4pY4967SB6/tCyDZqeL29i/OyGZnrsekIlcZlbmz2T5dyDGGNblndgCIK2FM6zRv/6SQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yzsis+FbwPJpeTElyXiWILXwZ7YV1LJ0ZK3Dz/WUlcx199JP8+M
+ TvZsQdHtyJJxYUqnmvvviYcytmFlkszxrnzgN9q4W2opbOexopSxaeyIzqKHoLfL
+X-Gm-Gg: ASbGncse6WVnabNJJ1yhJCkzzHUG+eGCeQnGOCI4+5uTUwJDxiHHMblYA1FqmmAu8Vc
+ 9gqDGp0jMuZrYbJljXKcEL93s0FTx4KlIZRVxjkMv1ILuxJ8QJyKkFJg2cSJhEu3D24Qfc42Mh0
+ wkB6izFvQ2aBGxEZTTvLTTQtMA1JiF+DMg0QmsJa2izYW9pBsw2rBDot+KlzINixyZDZEZJaL16
+ 8WJY8Ann8VV0uJtRdUhHGqyLHK6URnhQCABo5Dkb2x/tSxnnmHQjGW6tiqsp2l6DKhQl6f2hsy5
+ CUeoRlCthOqAB2EP8QYtW+WttOryhY8AjkC4JtnxVyf7i7M7MsXh8cCNbxz/MPQsl6+oR0EQukX
+ kQWo53Kgee40WDt+5HPmo6z/YUB8u9i6fpzP9HCq0G6yUzw==
+X-Google-Smtp-Source: AGHT+IG0rfA9kCf8rmKcn7IU+1ebJmJbfuM+aTKEwcyQgBTWEggBMVkdntOxaIAVYxdHR23p96IN8A==
+X-Received: by 2002:a05:600c:1c20:b0:456:1c4a:82b2 with SMTP id
+ 5b1f17b1804b1-45a21803dcemr15371895e9.10.1755248485848; 
+ Fri, 15 Aug 2025 02:01:25 -0700 (PDT)
 Received: from corvink-nb.beckhoff.com
  ([2001:9e8:dc31:6500:43b3:5eac:8d91:b512])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-45a22321a54sm10964045e9.18.2025.08.15.02.01.26
+ 5b1f17b1804b1-45a22321a54sm10964045e9.18.2025.08.15.02.01.25
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 15 Aug 2025 02:01:27 -0700 (PDT)
+ Fri, 15 Aug 2025 02:01:25 -0700 (PDT)
 From: =?UTF-8?q?Corvin=20K=C3=B6hne?= <corvin.koehne@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -77,24 +77,24 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Yannick=20Vo=C3=9Fen?= <y.vossen@beckhoff.com>,
  Hanna Reitz <hreitz@redhat.com>, qemu-block@nongnu.org,
  YannickV <Y.Vossen@beckhoff.com>
-Subject: [PATCH v2 14/14] docs/system/arm: Add support for Beckhoff CX7200
-Date: Fri, 15 Aug 2025 11:01:12 +0200
-Message-ID: <20250815090113.141641-15-corvin.koehne@gmail.com>
+Subject: [PATCH v2 12/14] hw/block/m25p80: Add HAS_SR_TB flag for is25lp016d
+Date: Fri, 15 Aug 2025 11:01:10 +0200
+Message-ID: <20250815090113.141641-13-corvin.koehne@gmail.com>
 X-Mailer: git-send-email 2.50.1
 In-Reply-To: <20250815090113.141641-1-corvin.koehne@gmail.com>
 References: <20250815090113.141641-1-corvin.koehne@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
- envelope-from=corvin.koehne@gmail.com; helo=mail-wm1-x32e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=corvin.koehne@gmail.com; helo=mail-wm1-x336.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- WEIRD_QUOTING=0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -112,91 +112,29 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: YannickV <Y.Vossen@beckhoff.com>
 
-This commit offers some documentation on the Beckhoff CX7200
-qemu emulation.
+The is25lp016d has 4 Block Write Protect Bits. BP3 specifies
+whether the upper or lower range should be protected. Therefore,
+we add the HAS_SR_TB flag to the is25lp016d flags.
 
 Signed-off-by: Yannick Voßen <y.vossen@beckhoff.com>
 ---
- docs/system/arm/beckhoff-cx7200.rst | 57 +++++++++++++++++++++++++++++
- docs/system/target-arm.rst          |  1 +
- 2 files changed, 58 insertions(+)
- create mode 100644 docs/system/arm/beckhoff-cx7200.rst
+ hw/block/m25p80.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/docs/system/arm/beckhoff-cx7200.rst b/docs/system/arm/beckhoff-cx7200.rst
-new file mode 100644
-index 0000000000..f060319b0f
---- /dev/null
-+++ b/docs/system/arm/beckhoff-cx7200.rst
-@@ -0,0 +1,57 @@
-+Beckhoff CX7200 (``beckhoff-cx7200``)
-+======================================
-+The Beckhoff CX7200 is based on the same architecture as the Xilinx Zynq A9.
-+The Zynq 7000 family is based on the AMD SoC architecture. These products
-+integrate a feature-rich dual or single-core Arm Cortex-A9 MPCore based
-+processing system (PS) and AMD programmable logic (PL) in a single device.
-+The Beckhoff Communication Controller (CCAT) can be found in the PL of Zynq.
-+
-+More details here:
-+https://docs.amd.com/r/en-US/ug585-zynq-7000-SoC-TRM/Zynq-7000-SoC-Technical-Reference-Manual
-+https://www.beckhoff.com/de-de/produkte/ipc/embedded-pcs/cx7000-arm-r-cortex-r/cx7293.html
-+
-+The CX7200 supports following devices:
-+    - A9 MPCORE
-+        - cortex-a9
-+        - GIC v1
-+        - Generic timer
-+        - wdt
-+    - OCM 256KB
-+    - SMC SRAM@0xe2000000 64MB
-+    - Zynq SLCR
-+    - SPI x2
-+    - QSPI
-+    - UART
-+    - TTC x2
-+    - Gigabit Ethernet Controller
-+    - SD Controller
-+    - XADC
-+    - Arm PrimeCell DMA Controller
-+    - DDR Memory
-+    - DDR Controller
-+    - Beckhoff Communication Controller (CCAT)
-+        - EEPROM Interface
-+        - DMA Controller
-+
-+Following devices are not supported:
-+    - I2C
-+
-+Running
-+"""""""
-+Directly loading an ELF file to the CPU of the CX7200 to run f.e. TC/RTOS (based on FreeRTOS):
-+
-+.. code-block:: bash
-+
-+  $ qemu-system-arm -M beckhoff-cx7200 \
-+        -device loader,file=CX7200_Zynq_Fsbl.elf \
-+        -display none \
-+        -icount shift=auto \
-+
-+
-+For setting the EEPROM content of the CCAT provide the following on the command line:
-+
-+.. code-block:: bash
-+
-+        -drive file=eeprom.bin,format=raw,id=ccat-eeprom
-+
-+The size of eeprom.bin must be aligned to a power of 2 and bigger than 256 bytes.
-diff --git a/docs/system/target-arm.rst b/docs/system/target-arm.rst
-index 9aaa9c414c..db7707725d 100644
---- a/docs/system/target-arm.rst
-+++ b/docs/system/target-arm.rst
-@@ -106,6 +106,7 @@ Board-specific documentation
-    arm/xlnx-versal-virt
-    arm/xlnx-zynq
-    arm/xlnx-zcu102
-+   arm/beckhoff-cx7200
- 
- Emulated CPU architecture support
- =================================
+diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
+index b84c6afb32..4c9d79ec44 100644
+--- a/hw/block/m25p80.c
++++ b/hw/block/m25p80.c
+@@ -217,7 +217,8 @@ static const FlashPartInfo known_devices[] = {
+     /* ISSI */
+     { INFO("is25lq040b",  0x9d4013,      0,  64 << 10,   8, ER_4K) },
+     { INFO("is25lp080d",  0x9d6014,      0,  64 << 10,  16, ER_4K) },
+-    { INFO("is25lp016d",  0x9d6015,      0,  64 << 10,  32, ER_4K) },
++    { INFO("is25lp016d",  0x9d6015,      0,  64 << 10,  32,
++           ER_4K | HAS_SR_TB) },
+     { INFO("is25lp032",   0x9d6016,      0,  64 << 10,  64, ER_4K) },
+     { INFO("is25lp064",   0x9d6017,      0,  64 << 10, 128, ER_4K) },
+     { INFO("is25lp128",   0x9d6018,      0,  64 << 10, 256, ER_4K) },
 -- 
 2.50.1
 

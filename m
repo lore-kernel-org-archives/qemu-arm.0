@@ -4,142 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E183CA0ED1
-	for <qemu-arm@archiver.kernel.org>; Fri, 15 Aug 2025 20:07:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28A99CA0ED1
+	for <qemu-arm@archiver.kernel.org>; Sat, 16 Aug 2025 00:10:29 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1un0gv-00089f-Ly; Fri, 15 Aug 2025 16:06:21 -0400
+	id 1un4Up-0003kL-Kv; Fri, 15 Aug 2025 20:10:07 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <farosas@suse.de>) id 1un0gt-00086I-AU
- for qemu-arm@nongnu.org; Fri, 15 Aug 2025 16:06:19 -0400
-Received: from smtp-out2.suse.de ([195.135.223.131])
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
+ id 1un4Ui-0003ex-AF
+ for qemu-arm@nongnu.org; Fri, 15 Aug 2025 20:10:00 -0400
+Received: from mail-pl1-x631.google.com ([2607:f8b0:4864:20::631])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <farosas@suse.de>) id 1un0gr-0006Pl-09
- for qemu-arm@nongnu.org; Fri, 15 Aug 2025 16:06:19 -0400
-Received: from imap1.dmz-prg2.suse.org (imap1.dmz-prg2.suse.org
- [IPv6:2a07:de40:b281:104:10:150:64:97])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by smtp-out2.suse.de (Postfix) with ESMTPS id D8F511F79D;
- Fri, 15 Aug 2025 20:06:14 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
- t=1755288375; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=kG8wbPcmmQMWM0NxloXj9bs7gYoaH7Vx87LaBx2eLfk=;
- b=YXbnvPGDBqkbUyeXrn5D7fduE9RALOkdq5XwpS70ys5y0sfyT1LmHHj23jW7jk7kTFbtFC
- 9uyKoJVNY3sX1YdV+UN8Vx1iAci9RY2KTIm6FGzf40Q9PObMc6gW3VhVaV4gPEiatcHc7H
- p5Wj8OKirXfXWt+FzC6jjJhsD8ewmM0=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
- s=susede2_ed25519; t=1755288375;
- h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=kG8wbPcmmQMWM0NxloXj9bs7gYoaH7Vx87LaBx2eLfk=;
- b=HCoPD+CI7bnK7LjNBX19wwiYyC6X0d4RpQm6aQNCfh2oBgzS0WxaYBkvbUe9efBPimI/MJ
- E9zJ37YR9cqEE8DA==
-Authentication-Results: smtp-out2.suse.de;
- dkim=pass header.d=suse.de header.s=susede2_rsa header.b=XG7W+Po8;
- dkim=pass header.d=suse.de header.s=susede2_ed25519 header.b="/e7+4Eu+"
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
- t=1755288374; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=kG8wbPcmmQMWM0NxloXj9bs7gYoaH7Vx87LaBx2eLfk=;
- b=XG7W+Po8IDcG7flFEhdIW9JH9YrHsQ1PjdujtLADznK/M21+XOdjwMY89yAUbdk81V14F/
- RYAVad7GHW9Ym56KwbJD3DJNg3/WKej77h6hffQyl45DuI+BPphHAFBeiLnyFGDh22w3De
- CK+52P72OmvQoIILlu87fRAeHKu7IgA=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
- s=susede2_ed25519; t=1755288374;
- h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=kG8wbPcmmQMWM0NxloXj9bs7gYoaH7Vx87LaBx2eLfk=;
- b=/e7+4Eu+i6w3njJdtGG80h+gdk1rsmAOC/hhOZPC0I46iHGyrbunRQhKbzfdrYaDtT4a61
- 1EPXQk9hMrTMwyAg==
-Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id 0E16C13876;
- Fri, 15 Aug 2025 20:06:14 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
- by imap1.dmz-prg2.suse.org with ESMTPSA id r1dfAzaTn2gwXgAAD6G6ig
- (envelope-from <farosas@suse.de>); Fri, 15 Aug 2025 20:06:14 +0000
-From: Fabiano Rosas <farosas@suse.de>
-To: Arun Menon <armenon@redhat.com>, qemu-devel@nongnu.org
-Cc: Peter Xu <peterx@redhat.com>, Alex =?utf-8?Q?Benn=C3=A9e?=
- <alex.bennee@linaro.org>,
- Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>, Dmitry Osipenko
- <dmitry.osipenko@collabora.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Cornelia Huck
- <cohuck@redhat.com>, Halil Pasic <pasic@linux.ibm.com>, Eric Farman
- <farman@linux.ibm.com>, Thomas Huth <thuth@redhat.com>, Christian
- Borntraeger <borntraeger@linux.ibm.com>, Matthew Rosato
- <mjrosato@linux.ibm.com>, Richard Henderson
- <richard.henderson@linaro.org>, David Hildenbrand <david@redhat.com>, Ilya
- Leoshkevich <iii@linux.ibm.com>, Nicholas Piggin <npiggin@gmail.com>, Harsh
- Prateek Bora <harshpb@linux.ibm.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Fam Zheng <fam@euphon.net>, Alex Williamson <alex.williamson@redhat.com>,
- =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@redhat.com>, Steve
- Sistare <steven.sistare@oracle.com>, =?utf-8?Q?Marc-Andr=C3=A9?= Lureau
- <marcandre.lureau@redhat.com>, qemu-s390x@nongnu.org, qemu-ppc@nongnu.org,
- Hailiang Zhang <zhanghailiang@xfusion.com>, Stefan Berger
- <stefanb@linux.vnet.ibm.com>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org, Arun Menon <armenon@redhat.com>
-Subject: Re: [PATCH v11 01/27] migration: push Error **errp into
- vmstate_subsection_load()
-In-Reply-To: <87qzxczltd.fsf@suse.de>
-References: <20250813-propagate_tpm_error-v11-0-b470a374b42d@redhat.com>
- <20250813-propagate_tpm_error-v11-1-b470a374b42d@redhat.com>
- <87qzxczltd.fsf@suse.de>
-Date: Fri, 15 Aug 2025 17:06:11 -0300
-Message-ID: <87349sxscs.fsf@suse.de>
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
+ id 1un4Uf-0006Vs-Aa
+ for qemu-arm@nongnu.org; Fri, 15 Aug 2025 20:09:59 -0400
+Received: by mail-pl1-x631.google.com with SMTP id
+ d9443c01a7336-24458195495so15859475ad.2
+ for <qemu-arm@nongnu.org>; Fri, 15 Aug 2025 17:09:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1755302994; x=1755907794; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=WXwsAdoT+c2Spv1JkS7kJneaoND8aLvJH3TerPNRWl8=;
+ b=HYS19JhMFG++RJGPoIbACR9E9HWHUHV77pwaza73LTeBm4O/jp37bRTVtYjELg8kB3
+ yUz+E/l7XZlMuovqzaoTExx9NXl4bSXtKLhqgNID7a1izs1k0nLMfwMtedWii/JTKOEC
+ VtBZfB/+K/Zg8FqeWy4Q1D+pka2iz5o2APjc0H2OfRVIAzA02vgFoQRz1H/NidVxcZYB
+ AApL6ST0FFdZC5NbPmbYRfBb9oLAkcu7O8U9bm7KOKgCf/SLg7JETjmbOx+TyAu4RITH
+ bkn+S5DoCj+jQf76cMVxO/SzeZ0niPPeiZSF2XlB6u3hNuKxh6JsYcaMqqoysmR8kB/k
+ dqGQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1755302994; x=1755907794;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=WXwsAdoT+c2Spv1JkS7kJneaoND8aLvJH3TerPNRWl8=;
+ b=MG/9Wpeze9dbGuuxRz+T7n0lLtcFqgisCJOHd4WdcPBBCcjKGVqwF1K19QPXm2bSRs
+ yWuwNqrqLfHtbXxjA7erORZxRtOS0IOzSFNQi64M8vYXBCu3NetjHw25wqwFpOGc5ew2
+ dmJAFk8JnYJBDTLFjOyFv41xc2GbEbibhrV/ChfdEGwYmR8vQ0DJzXrqP4d5fE58zVAm
+ 7LWG6pOJQjLzquN8M3u2vvXKYW8UelOJR/2rbQFHYqvusDxw+bY9uJUSuURHhsaZEe0L
+ xKo9gBNkUdSOqX7pFVd7fikSEyW9AC2B3rjMfa7j9Kw4IH6nU7uMOX4JAjpO6kHFREob
+ R5MA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCU1411w3rp0+awB/KP8xXRyYSRArATp+nwtsFuyq9pAGzgILpuIQFDD+aMH/ZrOfDLQ9V5bAb7Yig==@nongnu.org
+X-Gm-Message-State: AOJu0Yw5oXnfJ55jNF5SuIwblG/jFIx/P7vI2bD8/CGlwxppvSXKrnO5
+ cGWZ7WW03YmTCxoKaOpu8TzbBjVlgQ5gAMmRE1xGYXZ1ylETDNP6aEaXIeKUc8iMIMA=
+X-Gm-Gg: ASbGnctQOQy0UtaPhzmSp62qzHRcpOa4jl6AinMQO49ZLmN8kwSIvQAoY83D+UJnd0F
+ VCF6J3mVwUS0VytqGezdFkuxVs+ctOyvaUTLXlbI8tO4Hm+a8CIdbngJz7P2jU/tc/W1surRpK9
+ dB9mi9R1T07OZ9BnywGMTC5JrIY/X1XNyqqVfjYFJYzpEROBIV2lkYREOM5Xzf0Fv+WBjI7yuP4
+ ezd+NYoF1wwP70g2/rJ4Jb+3EYdv2bv2kgWez+o2PmR8bu7X4bywR3/jJn3vjuP0E15DmjxA/9P
+ zET6qz/7VgaPE2bBUBcJ3pfy0ZwWt/5mRycrEYwjbFoAtRxWf2N5LfbzH1xmP+aZBzkYlFtljux
+ V0Ui6OVf/WVCz0UgjUvCdp83gUq86bYCnh64=
+X-Google-Smtp-Source: AGHT+IESwf6YI2+zbSymJiEA5NS+c9IGj/L1y7wyaRwaeclRkWVw7W78nhgEw65vl9xayLMGWh8njQ==
+X-Received: by 2002:a17:902:c409:b0:240:66ff:b253 with SMTP id
+ d9443c01a7336-24478fbf60cmr15036795ad.46.1755302993675; 
+ Fri, 15 Aug 2025 17:09:53 -0700 (PDT)
+Received: from [192.168.1.87] ([38.41.223.211])
+ by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-2446d5536c3sm23065695ad.137.2025.08.15.17.09.52
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 15 Aug 2025 17:09:53 -0700 (PDT)
+Message-ID: <3d59d45f-79f1-4701-ad3b-402513ce4e72@linaro.org>
+Date: Fri, 15 Aug 2025 17:09:53 -0700
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Rspamd-Queue-Id: D8F511F79D
-X-Rspamd-Action: no action
-X-Rspamd-Server: rspamd1.dmz-prg2.suse.org
-X-Spamd-Result: default: False [-3.01 / 50.00]; BAYES_HAM(-3.00)[100.00%];
- SUSPICIOUS_RECIPS(1.50)[]; NEURAL_HAM_LONG(-1.00)[-1.000];
- R_DKIM_ALLOW(-0.20)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
- NEURAL_HAM_SHORT(-0.20)[-1.000]; MIME_GOOD(-0.10)[text/plain];
- MX_GOOD(-0.01)[]; TO_MATCH_ENVRCPT_ALL(0.00)[];
- FREEMAIL_ENVRCPT(0.00)[gmail.com];
- FUZZY_RATELIMITED(0.00)[rspamd.com];
- RBL_SPAMHAUS_BLOCKED_OPENRESOLVER(0.00)[2a07:de40:b281:104:10:150:64:97:from]; 
- RCPT_COUNT_TWELVE(0.00)[32];
- DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
- MIME_TRACE(0.00)[0:+]; ARC_NA(0.00)[];
- FREEMAIL_CC(0.00)[redhat.com,linaro.org,rsg.ci.i.u-tokyo.ac.jp,collabora.com,gmail.com,linux.ibm.com,euphon.net,oracle.com,nongnu.org,xfusion.com,linux.vnet.ibm.com];
- DKIM_TRACE(0.00)[suse.de:+]; TO_DN_SOME(0.00)[];
- RCVD_COUNT_TWO(0.00)[2];
- DBL_BLOCKED_OPENRESOLVER(0.00)[imap1.dmz-prg2.suse.org:rdns,imap1.dmz-prg2.suse.org:helo];
- FROM_EQ_ENVFROM(0.00)[]; FROM_HAS_DN(0.00)[];
- RCVD_TLS_ALL(0.00)[]; MID_RHS_MATCH_FROM(0.00)[];
- TAGGED_RCPT(0.00)[];
- R_RATELIMIT(0.00)[to_ip_from(RLzasi9boc9ahn35s1z6tc8qwy)];
- RECEIVED_SPAMHAUS_BLOCKED_OPENRESOLVER(0.00)[2a07:de40:b281:106:10:150:64:167:received];
- MISSING_XM_UA(0.00)[]; RCVD_VIA_SMTP_AUTH(0.00)[];
- SPAMHAUS_XBL(0.00)[2a07:de40:b281:104:10:150:64:97:from]
-Received-SPF: pass client-ip=195.135.223.131; envelope-from=farosas@suse.de;
- helo=smtp-out2.suse.de
-X-Spam_score_int: -43
-X-Spam_score: -4.4
-X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v9 2/6] tests/functional/test_aarch64_rme: update image
+To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>
+Cc: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org
+References: <20250727074202.83141-1-richard.henderson@linaro.org>
+ <20250727074202.83141-3-richard.henderson@linaro.org>
+ <CAFEAcA_ZQ13qMRUQsieJiEPV=ULrDbz8=EJaW4_kw=yEysob0w@mail.gmail.com>
+ <87349s4kfz.fsf@draig.linaro.org>
+Content-Language: en-US
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+In-Reply-To: <87349s4kfz.fsf@draig.linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::631;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pl1-x631.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -155,96 +108,62 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Fabiano Rosas <farosas@suse.de> writes:
-
-> Arun Menon <armenon@redhat.com> writes:
->
->> This is an incremental step in converting vmstate loading
->> code to report error via Error objects instead of directly
->> printing it to console/monitor.
->> It is ensured that vmstate_subsection_load() must report an error
->> in errp, in case of failure.
+On 8/15/25 9:29 AM, Alex Bennée wrote:
+> Peter Maydell <peter.maydell@linaro.org> writes:
+> 
+>> On Sun, 27 Jul 2025 at 08:42, Richard Henderson
+>> <richard.henderson@linaro.org> wrote:
+>>>
+>>> From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+>>>
+>>> TF-A needs to be patched to enable support for FEAT_TCR2 and
+>>> FEAT_SCTLR2. This new image contains updated firmware.
+>>>
+>>> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+>>> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+>>> Message-ID: <20250719035838.2284029-3-pierrick.bouvier@linaro.org>
 >>
->> Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
->> Signed-off-by: Arun Menon <armenon@redhat.com>
->> ---
->>  migration/vmstate.c | 11 ++++++++---
->>  1 file changed, 8 insertions(+), 3 deletions(-)
+>> I see this test failing in local runs of 'make check-functional'
+>> sometimes, complaining that it can't create the scratch/out/EFI
+>> directory because it already exists:
 >>
->> diff --git a/migration/vmstate.c b/migration/vmstate.c
->> index 5feaa3244d259874f03048326b2497e7db32e47c..6108c7fe283a5013ce42ea99=
-87723c489aef26a2 100644
->> --- a/migration/vmstate.c
->> +++ b/migration/vmstate.c
->> @@ -25,7 +25,7 @@ static int vmstate_subsection_save(QEMUFile *f, const =
-VMStateDescription *vmsd,
->>                                     void *opaque, JSONWriter *vmdesc,
->>                                     Error **errp);
->>  static int vmstate_subsection_load(QEMUFile *f, const VMStateDescriptio=
-n *vmsd,
->> -                                   void *opaque);
->> +                                   void *opaque, Error **errp);
->>=20=20
->>  /* Whether this field should exist for either save or load the VM? */
->>  static bool
->> @@ -225,7 +225,7 @@ int vmstate_load_state(QEMUFile *f, const VMStateDes=
-cription *vmsd,
->>          field++;
->>      }
->>      assert(field->flags =3D=3D VMS_END);
->> -    ret =3D vmstate_subsection_load(f, vmsd, opaque);
->> +    ret =3D vmstate_subsection_load(f, vmsd, opaque, &error_fatal);
->>      if (ret !=3D 0) {
->>          qemu_file_set_error(f, ret);
->>          return ret;
->
-> This is now unreachable, no?
+>> stderr:
+>> Traceback (most recent call last):
+>>    File "/mnt/nvmedisk/linaro/qemu-from-laptop/qemu/tests/functional/test_aarch64_rme_sbsaref.py",
+>> line 49, in test_aarch64_rme_sbsaref
+>>      os.mkdir(efi)
+> 
+>    os.makedirs(efi, exist_ok=True)
+> 
+> would solve that.
 >
 
-Also, this temporary &error_fatal here and throughout the series will
-break bisect badly, won't it? Imagine we have a bug in the code past
-this point (once the future patch from this series removes the
-&error_fatal), now every time this commit shows up in bisect, it will
-abort earlier.
+Yes, probably safer to add that if we can't guarantee correctly that 
+scratch folder gets deleted everytime. I wrote the test assuming this 
+behaviour.
 
-I get that having error_fatal here helps ensure the series is correct,
-but maybe we should do without it.
+>> FileExistsError: [Errno 17] File exists:
+>> '/mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-clang/tests/functional/aarch64/test_aarch64_rme_sbsaref.Aarch64RMESbsaRefMachine.test_aarch64_rme_sbsaref/scratch/out/EFI'
+>>
+>> More information on
+>> test_aarch64_rme_sbsaref.Aarch64RMESbsaRefMachine.test_aarch64_rme_sbsaref
+>> could be found here:
+>>   /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-clang/tests/functional/aarch64/test_aarch64_rme_sbsaref.Aarch64RMESbsaRefMachine.test_aarch64_rme_sbsaref/base.log
+>>   /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-clang/tests/functional/aarch64/test_aarch64_rme_sbsaref.Aarch64RMESbsaRefMachine.test_aarch64_rme_sbsaref/console.log
+>>
+>> (test program exited with status code 1)
+>>
+>>
+>> Is this something where we need to blow away any old output
+>> directory for robustness ?
+> 
+> Generally scratch is cleaned out once a test finishes (unless you
+> preserve it via QEMU_TEST_KEEP_SCRATCH=1). But I guess there may be
+> cases when it isn't cleaned out properly - does Ctrl-c get caught?
+> 
+>>
+>> thanks
+>> -- PMM
+> 
 
-Do others have an opinion here?
-
->> @@ -566,7 +566,7 @@ vmstate_get_subsection(const VMStateDescription * co=
-nst *sub,
->>  }
->>=20=20
->>  static int vmstate_subsection_load(QEMUFile *f, const VMStateDescriptio=
-n *vmsd,
->> -                                   void *opaque)
->> +                                   void *opaque, Error **errp)
->>  {
->>      trace_vmstate_subsection_load(vmsd->name);
->>=20=20
->> @@ -598,6 +598,8 @@ static int vmstate_subsection_load(QEMUFile *f, cons=
-t VMStateDescription *vmsd,
->>          sub_vmsd =3D vmstate_get_subsection(vmsd->subsections, idstr);
->>          if (sub_vmsd =3D=3D NULL) {
->>              trace_vmstate_subsection_load_bad(vmsd->name, idstr, "(look=
-up)");
->> +            error_setg(errp, "VM subsection '%s' in '%s' does not exist=
-",
->> +                       idstr, vmsd->name);
->>              return -ENOENT;
->>          }
->>          qemu_file_skip(f, 1); /* subsection */
->> @@ -608,6 +610,9 @@ static int vmstate_subsection_load(QEMUFile *f, cons=
-t VMStateDescription *vmsd,
->>          ret =3D vmstate_load_state(f, sub_vmsd, opaque, version_id);
->>          if (ret) {
->>              trace_vmstate_subsection_load_bad(vmsd->name, idstr, "(chil=
-d)");
->> +            error_setg(errp,
->> +                       "Loading VM subsection '%s' in '%s' failed: %d",
->> +                       idstr, vmsd->name, ret);
->>              return ret;
->>          }
->>      }
 

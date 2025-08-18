@@ -4,82 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22F6BCA0ED1
-	for <qemu-arm@archiver.kernel.org>; Mon, 18 Aug 2025 13:45:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 608EBCA0ED1
+	for <qemu-arm@archiver.kernel.org>; Mon, 18 Aug 2025 15:16:35 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uo0Ac-0004Qd-CS; Mon, 18 Aug 2025 09:45:06 -0400
+	id 1uo1ae-0006kR-5m; Mon, 18 Aug 2025 11:16:04 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uo0Ab-0004Pj-Cg
- for qemu-arm@nongnu.org; Mon, 18 Aug 2025 09:45:05 -0400
-Received: from mail-yb1-xb2c.google.com ([2607:f8b0:4864:20::b2c])
+ id 1uo1aF-0006ib-3d
+ for qemu-arm@nongnu.org; Mon, 18 Aug 2025 11:15:59 -0400
+Received: from mail-yb1-xb2f.google.com ([2607:f8b0:4864:20::b2f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uo0AZ-00087I-Qa
- for qemu-arm@nongnu.org; Mon, 18 Aug 2025 09:45:05 -0400
-Received: by mail-yb1-xb2c.google.com with SMTP id
- 3f1490d57ef6-e933597bc2eso2464752276.2
- for <qemu-arm@nongnu.org>; Mon, 18 Aug 2025 06:45:03 -0700 (PDT)
+ id 1uo1aC-00022k-GC
+ for qemu-arm@nongnu.org; Mon, 18 Aug 2025 11:15:38 -0400
+Received: by mail-yb1-xb2f.google.com with SMTP id
+ 3f1490d57ef6-e931cddb0e2so3314249276.3
+ for <qemu-arm@nongnu.org>; Mon, 18 Aug 2025 08:15:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1755524703; x=1756129503; darn=nongnu.org;
+ d=linaro.org; s=google; t=1755530134; x=1756134934; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=B5zxMdUiJZoLLAH3MeBZgRIfGQ33xoY7R1O30qOfsLI=;
- b=rR5nF1s32J/MRrJ5qmqqnUmlNxC3Xg2V04h7Sr/7tVHIfpBeifRvcGdJmSHjZzCS+N
- u99taQbEcM1wWv+wcPUc1gnJqOYA45Pe9oXMtM+oIyR6U8uPfEjKkd7OFsUYNfweUEfU
- Xj6UkLqTCCumSOKhAcNkhCTYjXxABR0nkT7dRE8u0DjEu+VXoueOWAd3iF3202wnVa6w
- h6NnPlUELonW0NKSkURfaLMZwKrkbUkeUHLgxFCpZbgzYEFeOBmup+0Ra1pX3U8lIqRK
- 3B87YnCPqsLrVgBcMvWmRZ9a0Y0EEg1+/EqgtrGQfWWjfWg9vjRKFFRy106X90gBO/+/
- dtsA==
+ bh=zYjmHHxYxXFqB/8tmee0Z290/k/BPhB65OKRzelxvE8=;
+ b=E2LjE9+p3n1WmjGN9BSyE5BgMPnXa/MhfFjfEAre1tfqOfDT/sWwVsUNK6VGTqe0me
+ lHF2wNrCjnhRVO1LMRjLLQjLFUeV0yqG9X3ozxzlYGtVQ5s/ceFFAw2EImAPwQFOaZ1X
+ v6RrMnXZcUGJzn/KpGo7oHZI7GoYcmPwXWqOfuvmPB3sJglOsX5rffSo3F1BOkYt5xuD
+ jLaNsJnJJb069EJ7k/xUyoqWqkGY0epqFhv6e8pejGmLdoM3WTkRhx0T7ubVhYbn8wWR
+ ybn6jGM7o/UXohqz32tQaYK3j+Ui6ORco2H6fmuKPf9vh5AeVxegPysj/DHG41IC0Pce
+ tDHQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1755524703; x=1756129503;
+ d=1e100.net; s=20230601; t=1755530134; x=1756134934;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=B5zxMdUiJZoLLAH3MeBZgRIfGQ33xoY7R1O30qOfsLI=;
- b=p3qVKLhPm3TChhfPsDTGkh8/KAHg2V5HURIz1K0K998c+QoatI/+yKeoyjm2ZIymX/
- bqZbWv2GG5tDi1QmkRjulKGrDYG4fz1FSEg15WdHdQFurc8JMjILNZaJ7vay5mRtD8iY
- gtL0x6fmVAfapyHELwz5V6I5MpX0zWd5qUcJ7U3Y/lPphwdVuoUgsLD4JZjybfk3adKc
- AIYdDab0dL1SLi8Ykp1U4uEfVxtFODyGQetyPMwRLX5XmwnStdAGZlaOYI7qOwvEAHHT
- Fln+hbonci5Jd+dAWUm6meC2s/CIja0dNhgxMJhrYLM5mywpEj+NNGjbEC2lXP+cOUZk
- X7dw==
+ bh=zYjmHHxYxXFqB/8tmee0Z290/k/BPhB65OKRzelxvE8=;
+ b=raG9/KnEj2cJ1eBSxpRS1xgh2PNk+3vyHiYhPQ9YFx4fMnQxJmuY6SexLNmN1HGxVp
+ Pz3YHHTvejv7g1dybnBfpoKCojQJilTeLyc5Ex6XDdvo1Lpmczzs/2w4FkH5M0BkQ3KT
+ DgykC0J05CpOEsj4vgiwfjynlMA4DFzAIeGNj6fc1MwzcbZUhf2VZIAFOF9hdcYcZM97
+ NKGFU23PzAXBnasgTNVMVSlFIae0t+uz8u3tRq5TIghABose6V660TOqehsEHCEXZH8Z
+ 5N9aLeOlbQxb6WwgQXTUCsl1IUmSdtoKm8+sdgBMqIOI6xcolvOSlA+/LYIpKC0EN8IM
+ 2xJw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVu0azKrFXHzvl5W4c8uwldSU66typNaPBywRKYtgIAeAQ2TnzXunWTk1of6WXkYzXoalsHwhm0CQ==@nongnu.org
-X-Gm-Message-State: AOJu0YwXuHbZd1gVWUtiPGmUc475FaNfff6MOgEc18PVWaUrJcyeNsVt
- IzLgHr/vwOf8ALou69JwWtHTP+QJNrwUPUkoJxZY0hb6MjGv+x9CMKf+tcBdiyc3Rw5nTg7odQn
- u2lgeq/JBBLArlc2JRO9gIpYYPuCzW7Y/bej5QSSmRA==
-X-Gm-Gg: ASbGncu94t0gcrYcb6U7bMPmJMAWZxs0RbfmRxgTB5+n3xniFZ5GK9f/ldTLfwt4mCw
- MoXUBGQNbZQU8f9CAxMi+rSglH/uEGIdicrCntEOqdDz2fLvvTyx4iTvX6DXiy4h8B/r863RIRu
- YkNbgPh9VFnj6EvVPBn4t8vI+kg2WS5LNN7Rbg4025eyLPW/f58oeEkMmYkNGElr1SRxUVhFuzN
- Y1ZSD8a
-X-Google-Smtp-Source: AGHT+IErEBpGdZZ6BQuUNvaUQL8D/zvR3Uns3spJtAPbvWmXB35duS0x07n3Hn/mUfUGmRSrH5KnMW3/m2nFA8lMe4w=
-X-Received: by 2002:a05:6902:20c4:b0:e8f:e77b:a404 with SMTP id
- 3f1490d57ef6-e93323d628cmr14804693276.2.1755524702706; Mon, 18 Aug 2025
- 06:45:02 -0700 (PDT)
+ AJvYcCXC1p7F824mKUqb8DTOBVzI3M0IpSx1EZMIZMn9S1r/BnszmoawfeQ3+3BWeelDUbQZ3vib0ctYLw==@nongnu.org
+X-Gm-Message-State: AOJu0YyqXveVMfyyy1OMGu3i0xi2LZHFoM6OCjTlbJFs4nSCdDrIA8IJ
+ m/OzTct1uyPKYHWjRiQbjb04z7okA+7DCT5mOgGAKlgJpzoLbKSeWfMFe8aWWH5se/zO5grc+Ms
+ FGsirnwtyAQbPtwK6+NYgndp0gWbdQO3LePDDrzjf7w==
+X-Gm-Gg: ASbGncvk5Eop6S41kgfZ5z4aW/J73wUAZfxY1DR7/q93Mg2r425/r0jA1J0CxOIm9av
+ 4IL+qF3/X2dYNd3oOvHsGhDqQnR26sn5Do32aTUk2vVegOhjRdNkACZg5cit6dpxsbhopE2pWMO
+ ZmskY9hti5ws+RlO+Hx4Nn7zlbyTB6SvjXGux63Y6RS/XfoWsllMafDZ6Xyuuhl23I5s/4SNee3
+ QbRLkI6oi0Xmh6AZuo=
+X-Google-Smtp-Source: AGHT+IGf0JJ480OIFQa7S2de+oHD//5MEBdaPxcDJRC5bEPnFunuX5bCkvmq9SmeSloDyFGwNNo+ElKegLEWJDotY3M=
+X-Received: by 2002:a05:6902:2b8b:b0:e90:8a48:c3c3 with SMTP id
+ 3f1490d57ef6-e93324bb68bmr16259782276.34.1755530134640; Mon, 18 Aug 2025
+ 08:15:34 -0700 (PDT)
 MIME-Version: 1.0
 References: <20250727074202.83141-1-richard.henderson@linaro.org>
- <CAFEAcA-Cm6rn6N+H=v1aaeDZBeJVUQQ2v3XDVsTu=PeLpc76QQ@mail.gmail.com>
-In-Reply-To: <CAFEAcA-Cm6rn6N+H=v1aaeDZBeJVUQQ2v3XDVsTu=PeLpc76QQ@mail.gmail.com>
+ <20250727074202.83141-6-richard.henderson@linaro.org>
+ <CAFEAcA9gVv1-wwMQO0W5XMn6rTgS-WfeRAQszQ186K6Z_jbaLw@mail.gmail.com>
+In-Reply-To: <CAFEAcA9gVv1-wwMQO0W5XMn6rTgS-WfeRAQszQ186K6Z_jbaLw@mail.gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 18 Aug 2025 14:44:49 +0100
-X-Gm-Features: Ac12FXw3r2AhHhg7TToFSX5X3GgzwGq_hSDf3fLVtC05siOcRQlftEozsoYrJ28
-Message-ID: <CAFEAcA_sURdG7vafcPcxf-Qr6mc49j0+-26mxOsmTdxCT5PeAg@mail.gmail.com>
-Subject: Re: [PATCH for-10.2 v9 0/6] target/arm: Add FEAT_MEC to max cpu
+Date: Mon, 18 Aug 2025 16:15:22 +0100
+X-Gm-Features: Ac12FXx-pBJ0wS8eTRR7SUfdRM5LqwJuEau7f2B_YlwOREkzYCaxLpJeLwIkbLQ
+Message-ID: <CAFEAcA-EXkbB+8bo_ZS1w4MoFTi+qH_cNZHMsAcFSgSZn1Lf1A@mail.gmail.com>
+Subject: Re: [PATCH v9 5/6] target/arm: Implement FEAT_MEC registers
 To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+ Gustavo Romero <gustavo.romero@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b2c;
- envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb2c.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b2f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb2f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -95,23 +97,14 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, 15 Aug 2025 at 14:03, Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> On Sun, 27 Jul 2025 at 08:43, Richard Henderson
-> <richard.henderson@linaro.org> wrote:
-> >
-> > Changes for v9:
-> >   - Set bits in arm_hcrx_el2_eff has bits whose effective value
-> >     is 1 when EL2 is disabled.
-> >   - Include Pierrick's firmware updates.
-> >
->
-> Applied to target-arm.next for 10.2, thanks.
+On Mon, 18 Aug 2025 at 14:36, Peter Maydell <peter.maydell@linaro.org> wrote:
 
-I've just noticed a couple of late things about the FEAT_MEC
-parts of this patchset, so I'm going to drop patches 5 and 6
-from target-arm.next.
+> So we need to:
+>  * define a new ARM_CP_NV2_NO_TRAP ("This sysreg does not got
+>    trapped to EL2 by HCR_EL2.NV even though its opc1 is in {4, 5}")
 
-thanks
+Better name: ARM_CP_NV_NO_TRAP (the trap applies for NV and NV2),
+and matches that we don't have a 2 in arm_cpreg_traps_in_nv()).
+
 -- PMM
 

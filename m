@@ -4,85 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7B11CA0EE4
-	for <qemu-arm@archiver.kernel.org>; Mon, 18 Aug 2025 21:26:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5712CA0EE4
+	for <qemu-arm@archiver.kernel.org>; Mon, 18 Aug 2025 21:29:07 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uo7N2-0006Rq-L8; Mon, 18 Aug 2025 17:26:24 -0400
+	id 1uo7P1-0007CF-RV; Mon, 18 Aug 2025 17:28:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <smostafa@google.com>)
- id 1uo7N1-0006RY-0O
- for qemu-arm@nongnu.org; Mon, 18 Aug 2025 17:26:23 -0400
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+ id 1uo7Oz-0007Aa-4g
+ for qemu-arm@nongnu.org; Mon, 18 Aug 2025 17:28:25 -0400
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <smostafa@google.com>)
- id 1uo7Mz-00023N-9k
- for qemu-arm@nongnu.org; Mon, 18 Aug 2025 17:26:22 -0400
-Received: by mail-wm1-x329.google.com with SMTP id
- 5b1f17b1804b1-459fbca0c95so23525e9.0
- for <qemu-arm@nongnu.org>; Mon, 18 Aug 2025 14:26:20 -0700 (PDT)
+ id 1uo7Ow-0002GZ-7p
+ for qemu-arm@nongnu.org; Mon, 18 Aug 2025 17:28:24 -0400
+Received: by mail-wm1-x336.google.com with SMTP id
+ 5b1f17b1804b1-459fbca0c95so23675e9.0
+ for <qemu-arm@nongnu.org>; Mon, 18 Aug 2025 14:28:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1755552380; x=1756157180; darn=nongnu.org;
+ d=google.com; s=20230601; t=1755552501; x=1756157301; darn=nongnu.org;
  h=in-reply-to:content-transfer-encoding:content-disposition
  :mime-version:references:message-id:subject:cc:to:from:date:from:to
  :cc:subject:date:message-id:reply-to;
- bh=QPtaYCrro8X7cxSLunuaf0DNwBe7HkZQ6c0X8ZL1wNU=;
- b=K9q10TVr6Z5G8eT4L4ZdcokhkiXn3qvErY81BbUc/5tstRC1Pn0KrQzbCuGo2HT3th
- lGygEM6t4tWLb8aE8/8n9FCkl+PIYzIFCvMZRB9aIakhwcT5Pcb0bFuui/ZjrJMk2MtV
- lTtWn4aWm6wDZ6Vv/DVV3gXheUT9M/YB9kVZucK03IdBiwsMvhQQbZJE0iR4Lh3B/z9o
- LCmc+A+4pi2+vDK0ag//6L00IkTeNSB1i7SfEebJBly1NILORSVhLQSai7ywfuoASOGQ
- r/V6YMOiaE1UOnVlMSnr9b8MR2LKEwgjSM73Y6UhwEX9atfYB//QP9pXtE/WUQTwE4dE
- PPrg==
+ bh=K7qw9/37L0C+eKk7vz84mJaHhp6VbAO31/umUn5zMCs=;
+ b=ahevr+Iusu11vrGX4cby783OcBvyxG+YSme2NZkx3DcLdLYy7+1XXZxVyhXk+qqhL5
+ sjYry2kSRUe8a0/l4NF+nutVQHRDxLSmLcoOmjDtp+1mLHt8j6ewTWHt7cNw9B7UsLro
+ g+SQliMnQnByKuOp58QdCM/fI/euVIAriPM3oImebrM20Erk62UiPYg8HUjUaewhFbb7
+ 0lFsglbYrLep3jYoN5d0IVRBcJX67YrxGI/Ee1zkxx7Cf7U3pgI7A13zvvYB8fvy3ZqO
+ xfrEnjSxhmLFxEoW2WI3VA58pbhC614T5yT7o04kJr8o3O+StV+WWM2snrAVzTEx51L7
+ GXxg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1755552380; x=1756157180;
+ d=1e100.net; s=20230601; t=1755552501; x=1756157301;
  h=in-reply-to:content-transfer-encoding:content-disposition
  :mime-version:references:message-id:subject:cc:to:from:date
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=QPtaYCrro8X7cxSLunuaf0DNwBe7HkZQ6c0X8ZL1wNU=;
- b=WgRRRlj6ctYjZZsc+CRa5XjVvYY3B/630VpZWfRYGIEHnVDI0c+3X9kE+A6axxoYkB
- Ly8TiKQMkPnheJGQ/DoFxUUzhpLwNS3loTwWoPr1n2RZ2ew/gQIUsHfN6ISFpquhptgW
- iZWtiYVyvmQCWPyBmKdbRQ/GNwW+MWgRaIyncvDsNS9Bj09tnv6s2VogALU4QgpkcztB
- mo5q94IUFY7MxKEcC+1goGHtVd32awdikpRbHx/pd0V3Nfkbt5x/MkSqfA8SdCNR8PHb
- M7YcG+FDKKN+04welPmvODd6hvAoKIBKXZZX7nMZR8iZxPO4Qi8IABDHo/Hw+NIAMmmL
- jgnA==
-X-Gm-Message-State: AOJu0YwptQA11kJ4PQ4MP2s98nMnPka51nKOb4TQA5ndmSavXzHYQrlE
- 0gTHOAK+X+H+RYYj07VuWEpyBz1teovrMEuoKFIXAKGA/lVhu9InfzlYvN4q9HQWDQ==
-X-Gm-Gg: ASbGncvKL3pKHV5OCQjcHMAK4mREa5eY9WJBkd3hM1aVfAegvBkkg2gUD+eY7JlkuDO
- QJ08cSE3VbkW1EyXvJdn9buCnYdvB/XeNetsSgSuub1UfP/AkulYPmS6DaO/MTayX1kxn6v4GJ8
- YTxm65ma+pTB2PP50ov73YMRaouQwKCGCmik4/WTf2TTnvX973dB4HWCII1QEOq9HsO0I1L0qEk
- xGZiLi7mnwQfhLVGnGondiigtSRKwB3EXpJuf6mf+bidVXSRtMbC4hOF7jIEg6cgOY3gX4Sn3jS
- CMnAIAnpSsIt2ZdFn5QonEN65G8/33R4FgrgvbTH8EyU/aiURHhlb8eH1cc4LZKUWc768/NejUf
- wV8M4Tmo6yyRGI1Jhy7TqcRVsYjBDOzOn1J8k59trbHerfM9oPYA4NTNFJF92pcTP0KA31ZgP
-X-Google-Smtp-Source: AGHT+IGawUjiHtlKDmxz0HjBrDavlzvxLL1UNN1uGwbb/jEyaaiSso1OJRwKmMp3LpxnJLlZhkI3HQ==
-X-Received: by 2002:a05:600c:4314:b0:459:d7da:3179 with SMTP id
- 5b1f17b1804b1-45b43d67f31mr33455e9.5.1755552379622; 
- Mon, 18 Aug 2025 14:26:19 -0700 (PDT)
+ bh=K7qw9/37L0C+eKk7vz84mJaHhp6VbAO31/umUn5zMCs=;
+ b=MUKvhBOVRMnyf+Yd8sdvDySCmU0oO6ZX2q6EiX/YPdnwNGMlBOJuLBbtxJAigjJhai
+ 0/osRgzg1VcHfHDELXU8GMN8eVVYWXBIbu7Ma2hWk3Jo/XBxIcDCl6p5oR6tQf08UWK/
+ k8wWvbQr15GGSdn7Zok5j7wplxbxWGlSJW7k3LqW5Z3kLhPmSE1gxzY+XwTm6w/cSxoi
+ EJudM2y5BNkiv2oKK6vpk4YKU+KpsRs+Yro8ltKMW/imjB69u0+hrs3RfMLzrB26MvTi
+ iP0QWK1ootBBdBDABq0Ar3n77Zm/mPZ+9rJgNxxiXFr9+t6Qn3boUYpv75jwMqt3g0nO
+ Baew==
+X-Gm-Message-State: AOJu0YwXVyucBo0cOC7hlodvCFO48AKkHo074+xy4Im/OM/YWBT1nlyd
+ FbS03M+UBrlc/GgsRAhKTSm3X49d/mglT3QRnRNmmsXlgIs9ZdyLQukZuC+uRMocJg==
+X-Gm-Gg: ASbGncv5h21vdyoAhSpu1P5Zk6H0b+l/2BxqUV6BJINq+U+mVrvDWUXLn4rrFsfdiLq
+ blmwuE+D/e2FDY//FxQrGJH1KOfiCNjpZVul1LUiZYkzAfm5I9vpZSD8xnrmC2qLkGtAwf0jZGz
+ zrwu+IAihnFjedzJ60j1pKmJn0I8myy2M5mFxwJoaz856EKxLbE5mpMrgfvRziuTHhQEc0NRiTn
+ aasZRbFyfTxJpJL8t7wk0OzUeuDfJamWfIuWxla9RFCl3IjIigbXKNVrn5hGH+0/XEOhzB+2m6m
+ +9wiOC3ulVv3jDnEfQQjQxcnj+IL8zXJim+RgnnzO9gZWzfjG3TCTasgLePZgwD5vw3q2Qz8ezj
+ rdb9WKye9ajB8wOcm0lLtchOhtAYLbpssHuXlX3GSb8dlb/5R5eSQJbBx6LhF42D4fd/hWHGXL/
+ ufWyWvRGA=
+X-Google-Smtp-Source: AGHT+IFWYdyqbdwBW6Di43/EutMwNxKlWtpg2eSe6aRAiQT72xslK8aoHyxq/VRua14UjHQxz3g0qQ==
+X-Received: by 2002:a05:600c:4f4f:b0:453:65f4:f4c8 with SMTP id
+ 5b1f17b1804b1-45b43d4e361mr31355e9.3.1755552500319; 
+ Mon, 18 Aug 2025 14:28:20 -0700 (PDT)
 Received: from google.com (110.121.148.146.bc.googleusercontent.com.
  [146.148.121.110]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3c074d43626sm925362f8f.15.2025.08.18.14.26.18
+ ffacd0b85a97d-3c0777892basm918004f8f.56.2025.08.18.14.28.19
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 18 Aug 2025 14:26:19 -0700 (PDT)
-Date: Mon, 18 Aug 2025 21:26:15 +0000
+ Mon, 18 Aug 2025 14:28:19 -0700 (PDT)
+Date: Mon, 18 Aug 2025 21:28:16 +0000
 From: Mostafa Saleh <smostafa@google.com>
 To: Tao Tang <tangtao1634@phytium.com.cn>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
  Eric Auger <eric.auger@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Chen Baozi <chenbaozi@phytium.com.cn>
-Subject: Re: [RFC 03/11] hw/arm/smmuv3: Implement S_INIT for secure
- initialization
-Message-ID: <aKOad6FxdPB4r4Z1@google.com>
+Subject: Re: [RFC 06/11] hw/arm/smmuv3: Plumb security state through core
+ functions
+Message-ID: <aKOa8KwAcm6hhAXq@google.com>
 References: <20250806151134.365755-1-tangtao1634@phytium.com.cn>
- <20250806151134.365755-4-tangtao1634@phytium.com.cn>
+ <20250806151134.365755-7-tangtao1634@phytium.com.cn>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20250806151134.365755-4-tangtao1634@phytium.com.cn>
-Received-SPF: pass client-ip=2a00:1450:4864:20::329;
- envelope-from=smostafa@google.com; helo=mail-wm1-x329.google.com
+In-Reply-To: <20250806151134.365755-7-tangtao1634@phytium.com.cn>
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=smostafa@google.com; helo=mail-wm1-x336.google.com
 X-Spam_score_int: -175
 X-Spam_score: -17.6
 X-Spam_bar: -----------------
@@ -90,7 +91,7 @@ X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -106,102 +107,576 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Wed, Aug 06, 2025 at 11:11:26PM +0800, Tao Tang wrote:
-> This patch implements the S_INIT register, a secure-only register
-> with no non-secure counterpart. It provides a simple mechanism for
-> secure software to perform a global invalidation of all SMMU
-> configuration and translation caches.
+On Wed, Aug 06, 2025 at 11:11:29PM +0800, Tao Tang wrote:
+> To support parallel processing of secure and non-secure streams, the
+> SMMUv3 model needs to differentiate between the two contexts throughout
+> its core logic. This commit is the foundational step to make the code
+> security-state aware.
 > 
-> This is typically the final step in a SMMU's probe sequence, marking
-> the end of initialization for the SMMU's secure interface.
+> An is_secure flag, which will be used in subsequent patches to represent
+> the transaction's security state, is now plumbed through the main
+> processing paths.
 > 
-> With this and the previous change, a guest that is aware of the SMMUv3
-> secure extensions can probe the device's capabilities and perform basic
-> configuration of the secure interface, as is done by secure partition
-> managers like Hafnium in its smmuv3_driver_init function.
+> This change is purely preparatory and introduces no functional changes
+> for the existing non-secure path. All current call sites are updated
+> to pass is_secure = false.
 > 
-> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
-> ---
->  hw/arm/smmuv3.c     | 29 +++++++++++++++++++++++++++++
->  hw/arm/trace-events |  1 +
->  2 files changed, 30 insertions(+)
+> This refactoring paves the way for upcoming patches that will introduce
+> separate TLB entries for secure transactions and enable a fully
+> parallel secure/non-secure SMMU model.
 > 
-> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-> index 619180d204..0ea9d897af 100644
-> --- a/hw/arm/smmuv3.c
-> +++ b/hw/arm/smmuv3.c
-> @@ -920,6 +920,21 @@ static void smmuv3_flush_config(SMMUDevice *sdev)
->      g_hash_table_remove(bc->configs, sdev);
->  }
->  
-> +static void smmuv3_invalidate_all_caches(SMMUv3State *s)
-> +{
-> +    trace_smmuv3_invalidate_all_caches();
-> +    SMMUState *bs = &s->smmu_state;
-> +
-> +    /* Clear all cached configs including STE and CD*/
-> +    if (bs->configs) {
-> +        g_hash_table_remove_all(bs->configs);
-> +    }
-> +
-> +    /* Invalidate all SMMU IOTLB entries */
-> +    smmu_inv_notifiers_all(&s->smmu_state);
-> +    smmu_iotlb_inv_all(bs);
-> +}
-> +
->  /* Do translation with TLB lookup. */
->  static SMMUTranslationStatus smmuv3_do_translate(SMMUv3State *s, hwaddr addr,
->                                                   SMMUTransCfg *cfg,
-> @@ -1921,6 +1936,16 @@ static MemTxResult smmu_writel(SMMUv3State *s, hwaddr offset,
->          SMMU_CHECK_ATTRS_SECURE("S_EVENTQ_IRQ_CFG2");
->          s->secure_eventq_irq_cfg2 = data;
->          return MEMTX_OK;
-> +    case A_S_INIT:
-> +        SMMU_CHECK_SECURE_WRITE("S_INIT");
-> +        if (data & R_S_INIT_INV_ALL_MASK) {
-> +            /* write S_INIT and poll*/
-> +            s->secure_init = data & R_S_INIT_INV_ALL_MASK;
-> +            smmuv3_invalidate_all_caches(s);
 
-Do we need to check that the SMMU is enabled as the spec says?
-
-> +        }
-> +        /* initialization is completed and set to 0 to terminate the polling */
-> +        s->secure_init = 0;
-
-All access to SMMU registers are serialised, so it’s safe to drop this and
-just return zero on reads.
+I think it’s easier to review if this patch was split (STE parsing,
+page table handling and translation, TLB invalidation)
+Also based on my comment on patch 2, stage-2 handling doesn’t seem correct to me.
 
 Thanks,
 Mostafa
 
-> +        return MEMTX_OK;
->      default:
->          qemu_log_mask(LOG_UNIMP,
->                        "%s Unexpected 32-bit access to 0x%"PRIx64" (WI)\n",
-> @@ -2249,6 +2274,10 @@ static MemTxResult smmu_readl(SMMUv3State *s, hwaddr offset,
+> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
+> ---
+>  hw/arm/smmu-common.c         |  11 ++-
+>  hw/arm/smmuv3-internal.h     |  16 +++-
+>  hw/arm/smmuv3.c              | 160 ++++++++++++++++++++++++-----------
+>  hw/arm/trace-events          |   2 +-
+>  include/hw/arm/smmu-common.h |   1 +
+>  include/hw/arm/smmuv3.h      |   4 +
+>  6 files changed, 138 insertions(+), 56 deletions(-)
+> 
+> diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
+> index 0dcaf2f589..28d6d1bc7f 100644
+> --- a/hw/arm/smmu-common.c
+> +++ b/hw/arm/smmu-common.c
+> @@ -332,13 +332,16 @@ void smmu_iotlb_inv_vmid_s1(SMMUState *s, int vmid)
+>   * @base_addr[@index]
+>   */
+>  static int get_pte(dma_addr_t baseaddr, uint32_t index, uint64_t *pte,
+> -                   SMMUPTWEventInfo *info)
+> +                   SMMUPTWEventInfo *info, bool is_secure)
+>  {
+>      int ret;
+>      dma_addr_t addr = baseaddr + index * sizeof(*pte);
+> +    MemTxAttrs attrs = is_secure ?
+> +        (MemTxAttrs) { .secure = 1 } :
+> +        (MemTxAttrs) { .unspecified = true };
+>  
+>      /* TODO: guarantee 64-bit single-copy atomicity */
+> -    ret = ldq_le_dma(&address_space_memory, addr, pte, MEMTXATTRS_UNSPECIFIED);
+> +    ret = ldq_le_dma(&address_space_memory, addr, pte, attrs);
+>  
+>      if (ret != MEMTX_OK) {
+>          info->type = SMMU_PTW_ERR_WALK_EABT;
+> @@ -485,7 +488,7 @@ static int smmu_ptw_64_s1(SMMUState *bs, SMMUTransCfg *cfg,
+>          dma_addr_t pte_addr = baseaddr + offset * sizeof(pte);
+>          uint8_t ap;
+>  
+> -        if (get_pte(baseaddr, offset, &pte, info)) {
+> +        if (get_pte(baseaddr, offset, &pte, info, cfg->secure)) {
+>                  goto error;
 >          }
->          *data = s->secure_eventq.cons;
->          return MEMTX_OK;
-> +    case A_S_INIT:
-> +        SMMU_CHECK_SECURE_READ("S_INIT");
-> +        *data = s->secure_init;
-> +        return MEMTX_OK;
+>          trace_smmu_ptw_level(stage, level, iova, subpage_size,
+> @@ -621,7 +624,7 @@ static int smmu_ptw_64_s2(SMMUTransCfg *cfg,
+>          dma_addr_t pte_addr = baseaddr + offset * sizeof(pte);
+>          uint8_t s2ap;
+>  
+> -        if (get_pte(baseaddr, offset, &pte, info)) {
+> +        if (get_pte(baseaddr, offset, &pte, info, cfg->secure)) {
+>                  goto error;
+>          }
+>          trace_smmu_ptw_level(stage, level, ipa, subpage_size,
+> diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
+> index 720d21652c..852186cea4 100644
+> --- a/hw/arm/smmuv3-internal.h
+> +++ b/hw/arm/smmuv3-internal.h
+> @@ -243,9 +243,13 @@ REG64(S_EVENTQ_IRQ_CFG0,    0x80b0)
+>  REG32(S_EVENTQ_IRQ_CFG1,    0x80b8)
+>  REG32(S_EVENTQ_IRQ_CFG2,    0x80bc)
+>  
+> -static inline int smmu_enabled(SMMUv3State *s)
+> +static inline int smmu_enabled(SMMUv3State *s, bool is_secure)
+>  {
+> -    return FIELD_EX32(s->cr[0], CR0, SMMU_ENABLE);
+> +    if (is_secure) {
+> +        return FIELD_EX32(s->secure_cr[0], S_CR0, SMMUEN);
+> +    } else {
+> +        return FIELD_EX32(s->cr[0], CR0, SMMU_ENABLE);
+> +    }
+>  }
+>  
+>  /* Command Queue Entry */
+> @@ -661,6 +665,10 @@ typedef struct CD {
+>  #define STE_S2S(x)         extract32((x)->word[5], 25, 1)
+>  #define STE_S2R(x)         extract32((x)->word[5], 26, 1)
+>  
+> +#define STE_S_S2T0SZ(x)      extract32((x)->word[9], 0 , 6)
+> +#define STE_S_S2SL0(x)       extract32((x)->word[9], 6 , 2)
+> +#define STE_S_S2TG(x)        extract32((x)->word[9], 14, 2)
+> +
+>  #define STE_CTXPTR(x)                                   \
+>      ((extract64((x)->word[1], 0, 16) << 32) |           \
+>       ((x)->word[0] & 0xffffffc0))
+> @@ -669,6 +677,10 @@ typedef struct CD {
+>      ((extract64((x)->word[7], 0, 16) << 32) |           \
+>       ((x)->word[6] & 0xfffffff0))
+>  
+> +#define STE_S_S2TTB(x)                                  \
+> +    ((extract64((x)->word[13], 0, 16) << 32) |          \
+> +     ((x)->word[12] & 0xfffffff0))
+> +
+>  static inline int oas2bits(int oas_field)
+>  {
+>      switch (oas_field) {
+> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+> index 1f05cc983b..bcf06679e1 100644
+> --- a/hw/arm/smmuv3.c
+> +++ b/hw/arm/smmuv3.c
+> @@ -354,14 +354,14 @@ static void smmuv3_init_regs(SMMUv3State *s)
+>  }
+>  
+>  static int smmu_get_ste(SMMUv3State *s, dma_addr_t addr, STE *buf,
+> -                        SMMUEventInfo *event)
+> +                        SMMUEventInfo *event, MemTxAttrs attrs)
+>  {
+>      int ret, i;
+>  
+>      trace_smmuv3_get_ste(addr);
+>      /* TODO: guarantee 64-bit single-copy atomicity */
+>      ret = dma_memory_read(&address_space_memory, addr, buf, sizeof(*buf),
+> -                          MEMTXATTRS_UNSPECIFIED);
+> +                          attrs);
+>      if (ret != MEMTX_OK) {
+>          qemu_log_mask(LOG_GUEST_ERROR,
+>                        "Cannot fetch pte at address=0x%"PRIx64"\n", addr);
+> @@ -390,6 +390,9 @@ static int smmu_get_cd(SMMUv3State *s, STE *ste, SMMUTransCfg *cfg,
+>      int ret, i;
+>      SMMUTranslationStatus status;
+>      SMMUTLBEntry *entry;
+> +    MemTxAttrs attrs = cfg->secure ?
+> +        (MemTxAttrs) { .secure = 1 } :
+> +        (MemTxAttrs) { .unspecified = true };
+>  
+>      trace_smmuv3_get_cd(addr);
+>  
+> @@ -407,7 +410,7 @@ static int smmu_get_cd(SMMUv3State *s, STE *ste, SMMUTransCfg *cfg,
+>  
+>      /* TODO: guarantee 64-bit single-copy atomicity */
+>      ret = dma_memory_read(&address_space_memory, addr, buf, sizeof(*buf),
+> -                          MEMTXATTRS_UNSPECIFIED);
+> +                          attrs);
+>      if (ret != MEMTX_OK) {
+>          qemu_log_mask(LOG_GUEST_ERROR,
+>                        "Cannot fetch pte at address=0x%"PRIx64"\n", addr);
+> @@ -472,7 +475,8 @@ static int decode_ste_s2_cfg(SMMUv3State *s, SMMUTransCfg *cfg,
+>          g_assert_not_reached();
+>      }
+>  
+> -    switch (STE_S2TG(ste)) {
+> +    uint32_t s2tg = cfg->secure ? STE_S_S2TG(ste) : STE_S2TG(ste);
+> +    switch (s2tg) {
+>      case 0x0: /* 4KB */
+>          cfg->s2cfg.granule_sz = 12;
+>          break;
+> @@ -484,13 +488,13 @@ static int decode_ste_s2_cfg(SMMUv3State *s, SMMUTransCfg *cfg,
+>          break;
 >      default:
->          *data = 0;
->          qemu_log_mask(LOG_UNIMP,
+>          qemu_log_mask(LOG_GUEST_ERROR,
+> -                      "SMMUv3 bad STE S2TG: %x\n", STE_S2TG(ste));
+> +                      "SMMUv3 bad STE S2TG: %x\n", s2tg);
+>          goto bad_ste;
+>      }
+>  
+> -    cfg->s2cfg.vttb = STE_S2TTB(ste);
+> +    cfg->s2cfg.vttb = cfg->secure ? STE_S_S2TTB(ste) : STE_S2TTB(ste);
+>  
+> -    cfg->s2cfg.sl0 = STE_S2SL0(ste);
+> +    cfg->s2cfg.sl0 = cfg->secure ? STE_S_S2SL0(ste) : STE_S2SL0(ste);
+>      /* FEAT_TTST not supported. */
+>      if (cfg->s2cfg.sl0 == 0x3) {
+>          qemu_log_mask(LOG_UNIMP, "SMMUv3 S2SL0 = 0x3 has no meaning!\n");
+> @@ -519,7 +523,7 @@ static int decode_ste_s2_cfg(SMMUv3State *s, SMMUTransCfg *cfg,
+>          goto bad_ste;
+>      }
+>  
+> -    cfg->s2cfg.tsz = STE_S2T0SZ(ste);
+> +    cfg->s2cfg.tsz = cfg->secure ? STE_S_S2T0SZ(ste) : STE_S2T0SZ(ste);
+>  
+>      if (!s2t0sz_valid(cfg)) {
+>          qemu_log_mask(LOG_GUEST_ERROR, "SMMUv3 bad STE S2T0SZ = %d\n",
+> @@ -599,21 +603,52 @@ static int decode_ste(SMMUv3State *s, SMMUTransCfg *cfg,
+>      if (cfg->aborted || cfg->bypassed) {
+>          return 0;
+>      }
+> +    bool is_secure = cfg->secure;
+>  
+>      /*
+>       * If a stage is enabled in SW while not advertised, throw bad ste
+>       * according to user manual(IHI0070E) "5.2 Stream Table Entry".
+>       */
+> -    if (!STAGE1_SUPPORTED(s) && STE_CFG_S1_ENABLED(config)) {
+> -        qemu_log_mask(LOG_GUEST_ERROR, "SMMUv3 S1 used but not supported.\n");
+> -        goto bad_ste;
+> -    }
+> -    if (!STAGE2_SUPPORTED(s) && STE_CFG_S2_ENABLED(config)) {
+> -        qemu_log_mask(LOG_GUEST_ERROR, "SMMUv3 S2 used but not supported.\n");
+> -        goto bad_ste;
+> +    if (!is_secure) {
+> +        if (!STAGE1_SUPPORTED(s) && STE_CFG_S1_ENABLED(config)) {
+> +            qemu_log_mask(LOG_GUEST_ERROR,
+> +                          "SMMUv3 S1 used but not supported.\n");
+> +            goto bad_ste;
+> +        }
+> +        if (!STAGE2_SUPPORTED(s) && STE_CFG_S2_ENABLED(config)) {
+> +            qemu_log_mask(LOG_GUEST_ERROR,
+> +                          "SMMUv3 S2 used but not supported.\n");
+> +            goto bad_ste;
+> +        }
+> +    } else {
+> +        /*
+> +         * As described in user manual(IHI0070G.b) "3.10.2 Support for Secure
+> +         * state" , the SMMU supports stage 1 translation and might support
+> +         * stage 2 translation.
+> +         */
+> +        if (!SECURE_IMPLEMENTED(s) && STE_CFG_S1_ENABLED(config)) {
+> +            qemu_log_mask(LOG_GUEST_ERROR,
+> +                "SMMUv3 S1 used but not supported in secure state.\n");
+> +            goto bad_ste;
+> +        }
+> +
+> +        /*
+> +         * IHI0070G.b "6.3.53 SMMU_S_IDR1": SEL2 == 0 if SMMU_IDR0.S1P == 0 or
+> +         * if SMMU_IDR0.S2P == 0.
+> +         */
+> +        if (STE_CFG_S2_ENABLED(config)) {
+> +            if (!SECURE_S2_SUPPORTED(s) ||
+> +                (SECURE_S2_SUPPORTED(s) &&
+> +                (!STAGE1_SUPPORTED(s) || !STAGE2_SUPPORTED(s)))) {
+> +                qemu_log_mask(LOG_GUEST_ERROR,
+> +                    "SMMUv3 S2 used but not supported in secure state.\n");
+> +                goto bad_ste;
+> +            }
+> +        }
+>      }
+>  
+> -    if (STAGE2_SUPPORTED(s)) {
+> +    if ((!is_secure && STAGE2_SUPPORTED(s)) ||
+> +        (is_secure && SECURE_S2_SUPPORTED(s))) {
+>          /* VMID is considered even if s2 is disabled. */
+>          cfg->s2cfg.vmid = STE_S2VMID(ste);
+>      } else {
+> @@ -659,20 +694,29 @@ bad_ste:
+>   * @sid: stream ID
+>   * @ste: returned stream table entry
+>   * @event: handle to an event info
+> + * @is_secure: true if the translation is for a secure domain
+>   *
+>   * Supports linear and 2-level stream table
+>   * Return 0 on success, -EINVAL otherwise
+>   */
+>  static int smmu_find_ste(SMMUv3State *s, uint32_t sid, STE *ste,
+> -                         SMMUEventInfo *event)
+> +                         SMMUEventInfo *event, bool is_secure)
+>  {
+> -    dma_addr_t addr, strtab_base;
+> +    dma_addr_t addr;
+>      uint32_t log2size;
+>      int strtab_size_shift;
+>      int ret;
+> +    uint32_t features = is_secure ? s->secure_features : s->features;
+> +    dma_addr_t strtab_base = is_secure ? s->secure_strtab_base : s->strtab_base;
+> +    uint8_t sid_split = is_secure ? s->secure_sid_split : s->sid_split;
+> +    MemTxAttrs attrs = is_secure ?
+> +        (MemTxAttrs) { .secure = 1 } :
+> +        (MemTxAttrs) { .unspecified = true };
+>  
+> -    trace_smmuv3_find_ste(sid, s->features, s->sid_split);
+> -    log2size = FIELD_EX32(s->strtab_base_cfg, STRTAB_BASE_CFG, LOG2SIZE);
+> +    trace_smmuv3_find_ste(sid, features, sid_split, is_secure);
+> +    log2size = is_secure
+> +        ? FIELD_EX32(s->secure_strtab_base_cfg, S_STRTAB_BASE_CFG, LOG2SIZE)
+> +        : FIELD_EX32(s->strtab_base_cfg, STRTAB_BASE_CFG, LOG2SIZE);
+>      /*
+>       * Check SID range against both guest-configured and implementation limits
+>       */
+> @@ -680,7 +724,7 @@ static int smmu_find_ste(SMMUv3State *s, uint32_t sid, STE *ste,
+>          event->type = SMMU_EVT_C_BAD_STREAMID;
+>          return -EINVAL;
+>      }
+> -    if (s->features & SMMU_FEATURE_2LVL_STE) {
+> +    if (features & SMMU_FEATURE_2LVL_STE) {
+>          int l1_ste_offset, l2_ste_offset, max_l2_ste, span, i;
+>          dma_addr_t l1ptr, l2ptr;
+>          STEDesc l1std;
+> @@ -689,15 +733,15 @@ static int smmu_find_ste(SMMUv3State *s, uint32_t sid, STE *ste,
+>           * Align strtab base address to table size. For this purpose, assume it
+>           * is not bounded by SMMU_IDR1_SIDSIZE.
+>           */
+> -        strtab_size_shift = MAX(5, (int)log2size - s->sid_split - 1 + 3);
+> -        strtab_base = s->strtab_base & SMMU_BASE_ADDR_MASK &
+> +        strtab_size_shift = MAX(5, (int)log2size - sid_split - 1 + 3);
+> +        strtab_base = strtab_base & SMMU_BASE_ADDR_MASK &
+>                        ~MAKE_64BIT_MASK(0, strtab_size_shift);
+> -        l1_ste_offset = sid >> s->sid_split;
+> -        l2_ste_offset = sid & ((1 << s->sid_split) - 1);
+> +        l1_ste_offset = sid >> sid_split;
+> +        l2_ste_offset = sid & ((1 << sid_split) - 1);
+>          l1ptr = (dma_addr_t)(strtab_base + l1_ste_offset * sizeof(l1std));
+>          /* TODO: guarantee 64-bit single-copy atomicity */
+>          ret = dma_memory_read(&address_space_memory, l1ptr, &l1std,
+> -                              sizeof(l1std), MEMTXATTRS_UNSPECIFIED);
+> +                              sizeof(l1std), attrs);
+>          if (ret != MEMTX_OK) {
+>              qemu_log_mask(LOG_GUEST_ERROR,
+>                            "Could not read L1PTR at 0X%"PRIx64"\n", l1ptr);
+> @@ -722,7 +766,7 @@ static int smmu_find_ste(SMMUv3State *s, uint32_t sid, STE *ste,
+>          }
+>          max_l2_ste = (1 << span) - 1;
+>          l2ptr = l1std_l2ptr(&l1std);
+> -        trace_smmuv3_find_ste_2lvl(s->strtab_base, l1ptr, l1_ste_offset,
+> +        trace_smmuv3_find_ste_2lvl(strtab_base, l1ptr, l1_ste_offset,
+>                                     l2ptr, l2_ste_offset, max_l2_ste);
+>          if (l2_ste_offset > max_l2_ste) {
+>              qemu_log_mask(LOG_GUEST_ERROR,
+> @@ -734,12 +778,12 @@ static int smmu_find_ste(SMMUv3State *s, uint32_t sid, STE *ste,
+>          addr = l2ptr + l2_ste_offset * sizeof(*ste);
+>      } else {
+>          strtab_size_shift = log2size + 5;
+> -        strtab_base = s->strtab_base & SMMU_BASE_ADDR_MASK &
+> +        strtab_base = strtab_base & SMMU_BASE_ADDR_MASK &
+>                        ~MAKE_64BIT_MASK(0, strtab_size_shift);
+>          addr = strtab_base + sid * sizeof(*ste);
+>      }
+>  
+> -    if (smmu_get_ste(s, addr, ste, event)) {
+> +    if (smmu_get_ste(s, addr, ste, event, attrs)) {
+>          return -EINVAL;
+>      }
+>  
+> @@ -868,7 +912,7 @@ static int smmuv3_decode_config(IOMMUMemoryRegion *mr, SMMUTransCfg *cfg,
+>      /* ASID defaults to -1 (if s1 is not supported). */
+>      cfg->asid = -1;
+>  
+> -    ret = smmu_find_ste(s, sid, &ste, event);
+> +    ret = smmu_find_ste(s, sid, &ste, event, cfg->secure);
+>      if (ret) {
+>          return ret;
+>      }
+> @@ -897,12 +941,14 @@ static int smmuv3_decode_config(IOMMUMemoryRegion *mr, SMMUTransCfg *cfg,
+>   *
+>   * @sdev: SMMUDevice handle
+>   * @event: output event info
+> + * @is_secure: true if the translation is for a secure domain
+>   *
+>   * The configuration cache contains data resulting from both STE and CD
+>   * decoding under the form of an SMMUTransCfg struct. The hash table is indexed
+>   * by the SMMUDevice handle.
+>   */
+> -static SMMUTransCfg *smmuv3_get_config(SMMUDevice *sdev, SMMUEventInfo *event)
+> +static SMMUTransCfg *smmuv3_get_config(SMMUDevice *sdev, SMMUEventInfo *event,
+> +                                       bool is_secure)
+>  {
+>      SMMUv3State *s = sdev->smmu;
+>      SMMUState *bc = &s->smmu_state;
+> @@ -922,6 +968,7 @@ static SMMUTransCfg *smmuv3_get_config(SMMUDevice *sdev, SMMUEventInfo *event)
+>                              100 * sdev->cfg_cache_hits /
+>                              (sdev->cfg_cache_hits + sdev->cfg_cache_misses));
+>          cfg = g_new0(SMMUTransCfg, 1);
+> +        cfg->secure = is_secure;
+>  
+>          if (!smmuv3_decode_config(&sdev->iommu, cfg, event)) {
+>              g_hash_table_insert(bc->configs, sdev, cfg);
+> @@ -1103,19 +1150,25 @@ static IOMMUTLBEntry smmuv3_translate(IOMMUMemoryRegion *mr, hwaddr addr,
+>          .perm = IOMMU_NONE,
+>      };
+>      SMMUTLBEntry *cached_entry = NULL;
+> +    /* We don't support secure translation for now */
+> +    bool is_secure = false;
+>  
+>      qemu_mutex_lock(&s->mutex);
+>  
+> -    if (!smmu_enabled(s)) {
+> -        if (FIELD_EX32(s->gbpa, GBPA, ABORT)) {
+> -            status = SMMU_TRANS_ABORT;
+> +    if (!smmu_enabled(s, is_secure)) {
+> +        bool abort_flag;
+> +
+> +        if (is_secure) {
+> +            abort_flag = FIELD_EX32(s->secure_gbpa, S_GBPA, ABORT);
+>          } else {
+> -            status = SMMU_TRANS_DISABLE;
+> +            abort_flag = FIELD_EX32(s->gbpa, GBPA, ABORT);
+>          }
+> +
+> +        status = abort_flag ? SMMU_TRANS_ABORT : SMMU_TRANS_DISABLE;
+>          goto epilogue;
+>      }
+>  
+> -    cfg = smmuv3_get_config(sdev, &event);
+> +    cfg = smmuv3_get_config(sdev, &event, is_secure);
+>      if (!cfg) {
+>          status = SMMU_TRANS_ERROR;
+>          goto epilogue;
+> @@ -1167,7 +1220,7 @@ epilogue:
+>          qemu_log_mask(LOG_GUEST_ERROR,
+>                        "%s translation failed for iova=0x%"PRIx64" (%s)\n",
+>                        mr->parent_obj.name, addr, smmu_event_string(event.type));
+> -        smmuv3_record_event(s, &event, false);
+> +        smmuv3_record_event(s, &event, cfg->secure);
+>          break;
+>      }
+>  
+> @@ -1186,16 +1239,18 @@ epilogue:
+>   * @tg: translation granule (if communicated through range invalidation)
+>   * @num_pages: number of @granule sized pages (if tg != 0), otherwise 1
+>   * @stage: Which stage(1 or 2) is used
+> + * @is_secure: true if the translation is for a secure domain
+>   */
+>  static void smmuv3_notify_iova(IOMMUMemoryRegion *mr,
+>                                 IOMMUNotifier *n,
+>                                 int asid, int vmid,
+>                                 dma_addr_t iova, uint8_t tg,
+> -                               uint64_t num_pages, int stage)
+> +                               uint64_t num_pages, int stage,
+> +                               bool is_secure)
+>  {
+>      SMMUDevice *sdev = container_of(mr, SMMUDevice, iommu);
+>      SMMUEventInfo eventinfo = {.inval_ste_allowed = true};
+> -    SMMUTransCfg *cfg = smmuv3_get_config(sdev, &eventinfo);
+> +    SMMUTransCfg *cfg = smmuv3_get_config(sdev, &eventinfo, is_secure);
+>      IOMMUTLBEvent event;
+>      uint8_t granule;
+>  
+> @@ -1251,7 +1306,8 @@ static void smmuv3_notify_iova(IOMMUMemoryRegion *mr,
+>  /* invalidate an asid/vmid/iova range tuple in all mr's */
+>  static void smmuv3_inv_notifiers_iova(SMMUState *s, int asid, int vmid,
+>                                        dma_addr_t iova, uint8_t tg,
+> -                                      uint64_t num_pages, int stage)
+> +                                      uint64_t num_pages, int stage,
+> +                                      bool is_secure)
+>  {
+>      SMMUDevice *sdev;
+>  
+> @@ -1263,12 +1319,14 @@ static void smmuv3_inv_notifiers_iova(SMMUState *s, int asid, int vmid,
+>                                          iova, tg, num_pages, stage);
+>  
+>          IOMMU_NOTIFIER_FOREACH(n, mr) {
+> -            smmuv3_notify_iova(mr, n, asid, vmid, iova, tg, num_pages, stage);
+> +            smmuv3_notify_iova(mr, n, asid, vmid, iova, tg,
+> +                               num_pages, stage, is_secure);
+>          }
+>      }
+>  }
+>  
+> -static void smmuv3_range_inval(SMMUState *s, Cmd *cmd, SMMUStage stage)
+> +static void smmuv3_range_inval(SMMUState *s, Cmd *cmd, SMMUStage stage,
+> +                               bool is_secure)
+>  {
+>      dma_addr_t end, addr = CMD_ADDR(cmd);
+>      uint8_t type = CMD_TYPE(cmd);
+> @@ -1284,7 +1342,8 @@ static void smmuv3_range_inval(SMMUState *s, Cmd *cmd, SMMUStage stage)
+>      SMMUv3State *smmuv3 = ARM_SMMUV3(s);
+>  
+>      /* Only consider VMID if stage-2 is supported. */
+> -    if (STAGE2_SUPPORTED(smmuv3)) {
+> +    if (STAGE2_SUPPORTED(smmuv3) ||
+> +        (SECURE_IMPLEMENTED(smmuv3) && SECURE_S2_SUPPORTED(smmuv3))) {
+>          vmid = CMD_VMID(cmd);
+>      }
+>  
+> @@ -1294,7 +1353,7 @@ static void smmuv3_range_inval(SMMUState *s, Cmd *cmd, SMMUStage stage)
+>  
+>      if (!tg) {
+>          trace_smmuv3_range_inval(vmid, asid, addr, tg, 1, ttl, leaf, stage);
+> -        smmuv3_inv_notifiers_iova(s, asid, vmid, addr, tg, 1, stage);
+> +        smmuv3_inv_notifiers_iova(s, asid, vmid, addr, tg, 1, stage, is_secure);
+>          if (stage == SMMU_STAGE_1) {
+>              smmu_iotlb_inv_iova(s, asid, vmid, addr, tg, 1, ttl);
+>          } else {
+> @@ -1317,7 +1376,8 @@ static void smmuv3_range_inval(SMMUState *s, Cmd *cmd, SMMUStage stage)
+>          num_pages = (mask + 1) >> granule;
+>          trace_smmuv3_range_inval(vmid, asid, addr, tg, num_pages,
+>                                   ttl, leaf, stage);
+> -        smmuv3_inv_notifiers_iova(s, asid, vmid, addr, tg, num_pages, stage);
+> +        smmuv3_inv_notifiers_iova(s, asid, vmid, addr, tg,
+> +                                  num_pages, stage, is_secure);
+>          if (stage == SMMU_STAGE_1) {
+>              smmu_iotlb_inv_iova(s, asid, vmid, addr, tg, num_pages, ttl);
+>          } else {
+> @@ -1461,7 +1521,8 @@ static int smmuv3_cmdq_consume(SMMUv3State *s, bool is_secure)
+>               * VMID is only matched when stage 2 is supported, otherwise set it
+>               * to -1 as the value used for stage-1 only VMIDs.
+>               */
+> -            if (STAGE2_SUPPORTED(s)) {
+> +            if (STAGE2_SUPPORTED(s) ||
+> +                (SECURE_IMPLEMENTED(s) && SECURE_S2_SUPPORTED(s))) {
+>                  vmid = CMD_VMID(&cmd);
+>              }
+>  
+> @@ -1483,7 +1544,8 @@ static int smmuv3_cmdq_consume(SMMUv3State *s, bool is_secure)
+>               * If stage-2 is supported, invalidate for this VMID only, otherwise
+>               * invalidate the whole thing.
+>               */
+> -            if (STAGE2_SUPPORTED(s)) {
+> +            if (STAGE2_SUPPORTED(s) ||
+> +                (SECURE_IMPLEMENTED(s) && SECURE_S2_SUPPORTED(s))) {
+>                  vmid = CMD_VMID(&cmd);
+>                  trace_smmuv3_cmdq_tlbi_nh(vmid);
+>                  smmu_iotlb_inv_vmid_s1(bs, vmid);
+> @@ -1502,7 +1564,7 @@ static int smmuv3_cmdq_consume(SMMUv3State *s, bool is_secure)
+>                  cmd_error = SMMU_CERROR_ILL;
+>                  break;
+>              }
+> -            smmuv3_range_inval(bs, &cmd, SMMU_STAGE_1);
+> +            smmuv3_range_inval(bs, &cmd, SMMU_STAGE_1, false);
+>              break;
+>          case SMMU_CMD_TLBI_S12_VMALL:
+>          {
+> @@ -1527,7 +1589,7 @@ static int smmuv3_cmdq_consume(SMMUv3State *s, bool is_secure)
+>               * As currently only either s1 or s2 are supported
+>               * we can reuse same function for s2.
+>               */
+> -            smmuv3_range_inval(bs, &cmd, SMMU_STAGE_2);
+> +            smmuv3_range_inval(bs, &cmd, SMMU_STAGE_2, false);
+>              break;
+>          case SMMU_CMD_TLBI_EL3_ALL:
+>          case SMMU_CMD_TLBI_EL3_VA:
 > diff --git a/hw/arm/trace-events b/hw/arm/trace-events
-> index f3386bd7ae..019129ea43 100644
+> index 7bb0bd0cc5..92c87f0b9e 100644
 > --- a/hw/arm/trace-events
 > +++ b/hw/arm/trace-events
-> @@ -64,6 +64,7 @@ smmuv3_cmdq_tlbi_s12_vmid(int vmid) "vmid=%d"
->  smmuv3_notify_flag_add(const char *iommu) "ADD SMMUNotifier node for iommu mr=%s"
->  smmuv3_notify_flag_del(const char *iommu) "DEL SMMUNotifier node for iommu mr=%s"
->  smmuv3_inv_notifiers_iova(const char *name, int asid, int vmid, uint64_t iova, uint8_t tg, uint64_t num_pages, int stage) "iommu mr=%s asid=%d vmid=%d iova=0x%"PRIx64" tg=%d num_pages=0x%"PRIx64" stage=%d"
-> +smmuv3_invalidate_all_caches(void) "Invalidate all SMMU caches and TLBs"
->  smmu_reset_exit(void) ""
+> @@ -41,7 +41,7 @@ smmuv3_cmdq_consume_out(uint32_t prod, uint32_t cons, uint8_t prod_wrap, uint8_t
+>  smmuv3_cmdq_consume_error(const char *cmd_name, uint8_t cmd_error) "Error on %s command execution: %d"
+>  smmuv3_write_mmio(uint64_t addr, uint64_t val, unsigned size, uint32_t r) "addr: 0x%"PRIx64" val:0x%"PRIx64" size: 0x%x(%d)"
+>  smmuv3_record_event(const char *type, uint32_t sid, bool is_secure) "%s sid=0x%x is_secure=%d"
+> -smmuv3_find_ste(uint16_t sid, uint32_t features, uint16_t sid_split) "sid=0x%x features:0x%x, sid_split:0x%x"
+> +smmuv3_find_ste(uint16_t sid, uint32_t features, uint16_t sid_split, bool is_secure) "sid=0x%x features:0x%x, sid_split:0x%x is_secure=%d"
+>  smmuv3_find_ste_2lvl(uint64_t strtab_base, uint64_t l1ptr, int l1_ste_offset, uint64_t l2ptr, int l2_ste_offset, int max_l2_ste) "strtab_base:0x%"PRIx64" l1ptr:0x%"PRIx64" l1_off:0x%x, l2ptr:0x%"PRIx64" l2_off:0x%x max_l2_ste:%d"
+>  smmuv3_get_ste(uint64_t addr) "STE addr: 0x%"PRIx64
+>  smmuv3_translate_disable(const char *n, uint16_t sid, uint64_t addr, bool is_write) "%s sid=0x%x bypass (smmu disabled) iova:0x%"PRIx64" is_write=%d"
+> diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
+> index e5e2d09294..5d15a1212b 100644
+> --- a/include/hw/arm/smmu-common.h
+> +++ b/include/hw/arm/smmu-common.h
+> @@ -116,6 +116,7 @@ typedef struct SMMUTransCfg {
+>      SMMUTransTableInfo tt[2];
+>      /* Used by stage-2 only. */
+>      struct SMMUS2Cfg s2cfg;
+> +    bool secure;
+>  } SMMUTransCfg;
 >  
->  # strongarm.c
+>  typedef struct SMMUDevice {
+> diff --git a/include/hw/arm/smmuv3.h b/include/hw/arm/smmuv3.h
+> index 72ad042514..43c7289a43 100644
+> --- a/include/hw/arm/smmuv3.h
+> +++ b/include/hw/arm/smmuv3.h
+> @@ -110,4 +110,8 @@ OBJECT_DECLARE_TYPE(SMMUv3State, SMMUv3Class, ARM_SMMUV3)
+>  #define STAGE1_SUPPORTED(s)      FIELD_EX32(s->idr[0], IDR0, S1P)
+>  #define STAGE2_SUPPORTED(s)      FIELD_EX32(s->idr[0], IDR0, S2P)
+>  
+> +#define SECURE_IMPLEMENTED(s)  \
+> +    FIELD_DP32(s->secure_idr[1], S_IDR1, SECURE_IMPL, 1)
+> +#define SECURE_S2_SUPPORTED(s) \
+> +    FIELD_DP32(s->secure_idr[1], S_IDR1, SEL2, 1)
+>  #endif
 > -- 
 > 2.34.1
 > 

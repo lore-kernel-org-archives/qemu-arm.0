@@ -4,68 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96D53CA0EE4
-	for <qemu-arm@archiver.kernel.org>; Sun, 17 Aug 2025 03:47:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE014CA0ED1
+	for <qemu-arm@archiver.kernel.org>; Mon, 18 Aug 2025 04:14:31 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1unUMB-00060D-9w; Sat, 16 Aug 2025 23:46:56 -0400
+	id 1unrG8-0005nr-TC; Mon, 18 Aug 2025 00:14:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tangtao1634@phytium.com.cn>)
- id 1unUMA-000600-66; Sat, 16 Aug 2025 23:46:54 -0400
-Received: from zg8tmja5ljk3lje4ms43mwaa.icoremail.net ([209.97.181.73])
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <tangtao1634@phytium.com.cn>)
- id 1unUM6-0006jz-1W; Sat, 16 Aug 2025 23:46:53 -0400
-Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
- by hzbj-icmmx-6 (Coremail) with SMTP id AQAAfwBnblKZUKFoonVCBg--.44882S2;
- Sun, 17 Aug 2025 11:46:33 +0800 (CST)
-Received: from [192.168.31.34] (unknown [113.246.232.52])
- by mail (Coremail) with SMTP id AQAAfwCnMAiMUKFoHl8WAA--.4273S2;
- Sun, 17 Aug 2025 11:46:30 +0800 (CST)
-Message-ID: <99286e4b-7964-4e8a-858c-60b5776e40cd@phytium.com.cn>
-Date: Sun, 17 Aug 2025 11:46:13 +0800
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1unrG4-0005nD-1j
+ for qemu-arm@nongnu.org; Mon, 18 Aug 2025 00:14:08 -0400
+Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1unrG2-0002Bj-2o
+ for qemu-arm@nongnu.org; Mon, 18 Aug 2025 00:14:07 -0400
+Received: by mail-pj1-x102c.google.com with SMTP id
+ 98e67ed59e1d1-32372c05c5dso230399a91.0
+ for <qemu-arm@nongnu.org>; Sun, 17 Aug 2025 21:14:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1755490443; x=1756095243; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=o7DezmuwfjbPRIU2hYkSmLkMWVfXQ4fggw3uYW+YQzI=;
+ b=PqBztlNuM9xlaawq8px0u+vIMpvcys4JF5NhbyOrE/IuFTUV61qIJlavq9l2LTA0MH
+ cKNDWMIx+l3zX3wPhcm7Fp9bFLAzz9s1Tb/IQA9lXSMG266doMQa1epdLq8HacjlYHkl
+ Lk+k/gwlpAudkiol6TloXaQ+KxlCEOOhcYw1/xCnHbQ1kkFxzVpN9QhGbHn8FRGCpEfX
+ piW6urKQkhDeeqTSnGbe8wJx/Ir1wDPgXkWgdMvqLfPfPKiwhmrPq+/ag2ds6XF96gRt
+ UawRRHGC/SpWXA7jGPhcI1DY12XWVovSSozniTw9AlSOC1FQ/ZI88RuSajVmO9Vn/sUs
+ K9Ag==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1755490443; x=1756095243;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=o7DezmuwfjbPRIU2hYkSmLkMWVfXQ4fggw3uYW+YQzI=;
+ b=Dr989HZSFEJakcavVKgcgGy0h1mCj+54ccvDqEHfbKqM+9vkQp+D8Qrmj9WKqFhpkS
+ Btyc/yjcwGGpF3c7J/NyPt6+XmJXqyAdMVXGmCNQmZiHC5NeNd8yoTFGgg4cM2KpuTBu
+ ugwfTPsrOQiLIZRersCiA5uhUh7B7n2sDi23WleeWlwmD/2DPBJr8A3rc6jn6eMoktVC
+ 7VPA0FBKxh8vDB//rgWKxUm1x0GzfivtXjlPkC6OxcYh12DA1GN3kl7fSbBdSE0TRtgq
+ gcWdRVC81xeywBJ0tYzd4cV3ghxpjhqnz1TtPXUHfx56+C1BCybhNB0OaNh89nx8mML8
+ kBwQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXrC6yA3AAil6zqwGrebUKoW+VxPHgHOkLjzRUe96N90l/XX3KRuWrTBW7amBZU1MyqwnX2HE78RQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yx81+uR4bF7ESiSsI4bGh3GqIATsTh9TMR3VtybLiYL+v4WrJrE
+ 1GL5wMt1EKgD8+kN4ZP4P27bBLvgyl8liWpgNxMzQe0uRwjH6LoJV6irEhbJeUjw+qQ=
+X-Gm-Gg: ASbGncsLoS5OMRtEEAJYMRifWQ61zP08vu/1crYuOmbogR2NV8mX8O+IyhXuAh+PlJx
+ rMPq8zIYOCZUgY8OxGiF11ZBcP4BhCz9Orx0+8NI4zV7YfYud80UVna+I+bGXTRK7x5uByjnE6f
+ 2La/BoibTzlSYItmqA1JH6WOAt/DC2phNeFS2DwTJ67mqYE64gttJgKRo/PFSL1Af/ilTeR4kOG
+ lQlZ28UmcMwR+TL72kaFyaOr5sCn5Yw5Av58Xv/2BtjI/Ju4sNXJQquUaQ16okQmOK3lJOdAFR9
+ LEWvs4E3+6xQqT+VXqjDfB3dg5xvOfIXeBVPzgzUpVT+2ZOoJ2Ofn/7VxOluWGY0vO9fjORDsNE
+ t78R1R1dVcNDYDHTTTyISKiYjExQyA98cp+b5YoJoyo4ns9o=
+X-Google-Smtp-Source: AGHT+IGKjweePcn2HRKhrvWC2ZYQ1F5nagLzSElu/nDR/LZ6sLs3vN7iobRQjB/d/VBXNMWx3ikMFA==
+X-Received: by 2002:a17:90b:180f:b0:321:c567:44bf with SMTP id
+ 98e67ed59e1d1-323421849b3mr14035859a91.29.1755490442670; 
+ Sun, 17 Aug 2025 21:14:02 -0700 (PDT)
+Received: from localhost.localdomain ([206.83.122.207])
+ by smtp.gmail.com with ESMTPSA id
+ 98e67ed59e1d1-3232f8c8e4bsm5498344a91.2.2025.08.17.21.13.59
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 17 Aug 2025 21:14:02 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: mads@ynddal.dk, agraf@csgraf.de, qemu-arm@nongnu.org, philmd@linaro.org
+Subject: [PATCH 0/7] target/arm/hvf cleanups
+Date: Mon, 18 Aug 2025 14:13:47 +1000
+Message-ID: <20250818041354.2393041-1-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC 04/11] hw/arm/smmuv3: Enable command processing for the
- Secure state
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, Eric Auger <eric.auger@redhat.com>,
- Chen Baozi <chenbaozi@phytium.com.cn>, smostafa@google.com,
- jean-philippe@linaro.org
-References: <20250806151134.365755-1-tangtao1634@phytium.com.cn>
- <20250806151134.365755-5-tangtao1634@phytium.com.cn>
- <0b38d386-9d8b-46bd-a981-718cc7281eb6@linaro.org>
- <f74b4d64-893f-4b39-aa95-4e9ff52edebd@phytium.com.cn>
- <4ff26d30-3b0d-4392-8bac-698ecb0fbdde@linaro.org>
- <CAFEAcA-imgF9NLPWeXfE1JRL0gaKpVyfbbNKxojHDVz0t7EBKw@mail.gmail.com>
- <0c95f7de-ffbe-4787-ae14-6039bc4f31a3@phytium.com.cn>
- <CAFEAcA9MUhRX7yVx23Aw3FRPAnxNn1PifSjR3hJ2eK8KwFvXJw@mail.gmail.com>
-From: Tao Tang <tangtao1634@phytium.com.cn>
-In-Reply-To: <CAFEAcA9MUhRX7yVx23Aw3FRPAnxNn1PifSjR3hJ2eK8KwFvXJw@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-CM-TRANSID: AQAAfwCnMAiMUKFoHl8WAA--.4273S2
-X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQADBWieOgALvwAEs7
-Authentication-Results: hzbj-icmmx-6; spf=neutral smtp.mail=tangtao163
- 4@phytium.com.cn;
-X-Coremail-Antispam: 1Uk129KBjvJXoWxGF1fJFy7Aw47XF4fuw1kAFb_yoWrCFWUpF
- Z8uwn5Kr4DKF1akr1xXa18JF48A3yfJFy5Cr95Kwn8Aa1Ygw1vvFWjy3yY9F17Zw40q3W0
- vF40vrn8Xan8ArJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
- DUYxn0WfASr-VFAU7a7-sFnT9fnUUIcSsGvfJ3UbIYCTnIWIevJa73UjIFyTuYvj4RJUUU
- UUUUU
-Received-SPF: pass client-ip=209.97.181.73;
- envelope-from=tangtao1634@phytium.com.cn;
- helo=zg8tmja5ljk3lje4ms43mwaa.icoremail.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102c;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -81,102 +98,36 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+While working on other things cpregs related, I noticed that
+target/arm/hvf failed to produce a sorted cpreg_indexes[].
 
-On 2025/8/15 22:53, Peter Maydell wrote:
-> On Fri, 15 Aug 2025 at 07:02, Tao Tang <tangtao1634@phytium.com.cn> wrote:
->> This leads me to two questions on the best path forward:
->>
->> 1. How should the SEC_SID be propagated from the device? The only thing
->> that is certain is that the hardware transaction will carry a SEC_SID
->> value that is consistent with the manual. My initial thought was to
->> extend MemTxAttrs.secure to carry the four states, but I am unsure if
->> this is the best approach.
->>
-> The SEC_SID is the information in the transaction that tells
-> us whether the device that initiated the transaction is
-> NonSecure, Secure, or Realm, right? I think we can
-> straightforwardly use 'space' for this. (The mapping between
-> SEC_SID and space can be written "space = sec_sid ^ 1" but
-> that is perhaps being unnecessarily clever.)
->
-> "secure" is (as the comment notes) for the benefit of code
-> that doesn't understand Realm. It should be initialized to
-> arm_space_is_secure(space). (Currently that function is in
-> target/arm/cpu.h, which is an awkward place for it: we
-> should probably move it to somewhere that lets code that's
-> not tied to the CPU use it.)
->
->> To accurately model the SMMU, our smmuv3_translate function must
->> ultimately use this SEC_SID value. Taking the translate callback
->> signature into consideration:
->>
->> IOMMUTLBEntry (*translate)(IOMMUMemoryRegion *iommu, hwaddr addr,
->>                              IOMMUAccessFlags flags, int iommu_idx);
->>
->> My understanding is that we can use the iommu_idx parameter to carry the
->> SEC_SID value for each transaction.
-> Yes. You also will need to implement the attrs_to_index method,
-> which is what converts from the attrs in the MemTxAttrs to
-> the iommu_idx that the translate method gets passed.
->
-> (We do actually have hw/misc/tz-mpc.c that uses the IOMMU
-> APIs to handle Secure vs NonSecure transactions differently,
-> though it's such a long way from a real SMMU that I don't
-> know that it's a very useful thing to look at.)
->
->> 2. What should we use as the internal bank index within the SMMUv3
->> model? I see two potential options:
->> a) Use the existing ARMSecuritySpace as the internal index. This would
->> require conversions from the SEC_SID carried by each transaction.
->> b) Define a new, SMMU-specific enum that perfectly matches the SEC_SID
->> hardware specification (e.g., enum SmmuSecSid { NS=0, S=1, REALM=2,
->> ROOT=3 }). We would use this new enum as our bank index internally.
->>
->> I am leaning towards option (2b) as it seems to offer better
->> encapsulation and fidelity to the hardware specification, but I would be
->> very grateful to hear your opinions and guidance on this architectural
->> choice.
-> Yes, I like 2b here. This is what I am doing for the GICv5 --
-> there the architecture specifies various "interrupt domains",
-> and there's an obvious encoding from those to 0..3, which is
-> what I use to pick the register bank to use. The MemTxAttrs
-> don't quite line up with the domain index, and they are something
-> we need to figure out less often than "which register bank", so
-> it's OK for that to be something we do via a function or
-> whatever.
->
-> For the GICv5 in fact I have opted to create the MemTxAttrs
-> ahead of time at the point where the guest enables things
-> and we know what they should be (roughly, the device state
-> caches various bits of info about the configured state
-> in a struct, and one of those fields is a MemTxAttrs; so
-> you can pass cfg[domain]->txattrs as your attrs rather than
-> computing it on the spot every time -- especially since you
-> need to initialize both .space and .secure this seemed
-> nicer to me).
->
-> thanks
-> -- PMM
+I wondered if that explained the migration-test failure that
+we have, but no such luck.  (I have no idea how to debug that
+test, btw; so far it is still just a mysterious SIGSEGV.)
 
-Hi Peter,
 
-Thanks for the very clear and actionable feedback.
+r~
 
-I will refactor the code in V2 according to the plan you laid out. The 
-approach will be to use MemTxAttrs.space to carry the security state, 
-and I will be sure to set the legacy .secure field correctly for 
-compatibility as you pointed out. This will then be converted via the 
-attrs_to_index method, leading to the use of a new spec-compliant enum 
-for the internal bank index (your preferred option 2b).
 
-Your GICv5 analogy was very helpful for clarifying the design, and I'll 
-keep the MemTxAttrs caching tip in mind as an optimization method.
+Richard Henderson (7):
+  target/arm: Introduce KVMID_AA64_SYS_REG64
+  target/arm: Move compare_u64 to helper.c
+  target/arm/hvf: Split out sysreg.c.inc
+  target/arm/hvf: Add KVMID_TO_HVF, HVF_TO_KVMID
+  target/arm/hvf: Remove hvf_sreg_match.key
+  target/arm/hvf: Replace hvf_sreg_match with hvf_sreg_list
+  target/arm/hvf: Sort the cpreg_indexes array
 
-Thanks again for the excellent guidance.
+ target/arm/cpregs.h         |   3 +
+ target/arm/kvm-consts.h     |  11 ++
+ target/arm/helper.c         |  11 ++
+ target/arm/hvf/hvf.c        | 230 +++++++++---------------------------
+ target/arm/kvm.c            |  11 --
+ target/arm/hvf/sysreg.c.inc | 146 +++++++++++++++++++++++
+ 6 files changed, 224 insertions(+), 188 deletions(-)
+ create mode 100644 target/arm/hvf/sysreg.c.inc
 
-Best regards,
-
-Tao
-
+-- 
+2.43.0
 
 

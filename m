@@ -4,84 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 416A1CA0EE4
-	for <qemu-arm@archiver.kernel.org>; Mon, 18 Aug 2025 15:41:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1ED75CA0EE4
+	for <qemu-arm@archiver.kernel.org>; Mon, 18 Aug 2025 15:46:54 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uo1z4-0004KK-Lp; Mon, 18 Aug 2025 11:41:18 -0400
+	id 1uo248-0005yQ-VE; Mon, 18 Aug 2025 11:46:32 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uo1z1-0004Jy-QJ
- for qemu-arm@nongnu.org; Mon, 18 Aug 2025 11:41:16 -0400
-Received: from mail-yb1-xb2f.google.com ([2607:f8b0:4864:20::b2f])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uo243-0005xH-Th
+ for qemu-arm@nongnu.org; Mon, 18 Aug 2025 11:46:28 -0400
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uo1yz-0005Z8-Ju
- for qemu-arm@nongnu.org; Mon, 18 Aug 2025 11:41:15 -0400
-Received: by mail-yb1-xb2f.google.com with SMTP id
- 3f1490d57ef6-e934a3fa4f1so1317356276.1
- for <qemu-arm@nongnu.org>; Mon, 18 Aug 2025 08:41:13 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uo242-00064U-0s
+ for qemu-arm@nongnu.org; Mon, 18 Aug 2025 11:46:27 -0400
+Received: by mail-wr1-x433.google.com with SMTP id
+ ffacd0b85a97d-3b9e4193083so4061529f8f.3
+ for <qemu-arm@nongnu.org>; Mon, 18 Aug 2025 08:46:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1755531672; x=1756136472; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=NkV/Yr3CXZXc6brEYyJrAUVBIdanw4X2KVzFG5I/940=;
- b=SBmBllviNKLiFEmZe/KaKAxCzpiQmkrdbSuIgsjdYRzZOCZoCaxWc3/MbOkkz9gyge
- Apz8jlS9IyttKN45UAIWGzhGw1XxPU9gjMEYFdiW95lvFJr6kx7LwurlBIlhyORtCjpq
- VVR4aMeABLMiIG7FrJxDxBk2omqU+DskD5RXv9B/ql3Xt/Pnk/+hDsgPSzzdSfevBhHM
- L5qPjlf452qL2RSCDDtjr8GrwafS2AFlJqdLRYjzIYgfmgdv1wDq4C1dnL0E4M0roe4o
- 8qU40PGhUBEbxPE0VYDw59w6ygINdawjxOzZH+EMArw+edcMKAzu6FDCuXYZ2uu+nc6Z
- Ou0g==
+ d=linaro.org; s=google; t=1755531984; x=1756136784; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=Dds0tn6MRRRHYDemz5yb23FIvqxeCiaggXHXIfIXy/w=;
+ b=zZ052KzHOJHnT4RI27AheL7I43aSGoP/rgyaj/wREbxyLi30eHx3yer6b/w5+yBHjV
+ GlJIx7/TF6nzyk94ba1u73eKd5j0MJ6b3XiK1lPu0eUbXdomd4z/7GIoW0h8LfHEbjFQ
+ pn9rqZraXTKWLlKZ8bfdPTO8tkOPpeLf5cf/2SpZ9LiEi7Vu94fCWNi6VCP+n/8P4IMI
+ r4MpkJZcdDXCPAuJMoaMrRhkOLOVAyVIf1C8FxHwufI9da+1Op0ujF1zjMT9x1lS1V6U
+ PyM/ZcZufNzhy+Ymp4qrDNY0Wu33BiwFX5JwMCGIcLH8Vsbl6DlxOw7agdTMQHTyUVIi
+ YPMA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1755531672; x=1756136472;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=NkV/Yr3CXZXc6brEYyJrAUVBIdanw4X2KVzFG5I/940=;
- b=wnOxRId5Ybf3zrVcyu7wsmfCB8ddUt0RwO3rpIo83vOgAz7iMeqzJhtxZxuM9kOJGh
- GoszC/Egozlo9MrvrSgsoOL/hshET+JsKue5HKRn68835PzLeHlkHjMEOLFpW+vuo/OS
- 0j6jVNLfWLeaHU19dDaUoVSY1RqNmSYlJHp/sn7kJ/7SQb4eLF4/tEZzNxtrPlrbaO95
- gmtCMhtdjo7NJdZBpCAOOIyoqmHuKMr6xTup1Y3LnnDLXKvki/eGfc3rMxvIeJfTnX/X
- ry1cFAjJKaSBSAcb+Isueq5XCiBnoM2VtUFhnJg90bJYiFxzINlj9O6MexGPg9l99/AN
- nkMg==
+ d=1e100.net; s=20230601; t=1755531984; x=1756136784;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=Dds0tn6MRRRHYDemz5yb23FIvqxeCiaggXHXIfIXy/w=;
+ b=bQT9i/lo93uVfHa5FIsCIEo2+nl99+F9cHAswSNrooDwArDs7Chj/a4gqulNAUk0kp
+ Kxr5kBS7SdtzPjV48+zt5t10loUJ1FBXKo+DUpPU6UPJxz3TG48At4mqUT/zh6FE2jAe
+ C/gyVqslOcoujLlb/njCDZ4Y7Grz+AmJ7vBvPgf4CgOF++wAXP3WNcb8JQYXFDautBnT
+ BnlJhBGuOQrvNyXVD3s2T/+oOzFyxWGpRhjHsUAM+ztzwRstWyTUObTrLanSgkmmQV3C
+ QxbrWfAPCDgMA5Z3kl/6GA2orL+zp7zO6TqQW+4J6l52RDUqFzqUBu6fCUmdsbr+ZC3k
+ AmnQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVof/s+owRSdIUijF0r3/ig0L+hzWiEnk2A+rGHWgppDAADQqwWtpYLsExmSPHIS0h0pQgpQgGXtw==@nongnu.org
-X-Gm-Message-State: AOJu0Yyq4ALa5g9sZNAZqSyxFwSvaufq+OlE111jABVlmvcuOXvMc/74
- iHUY4HzL/yCs4Jm225iMwragCH1YFWaGzihxqHWS9mmM8GxAwSb6DLf65VlFTv5AJr/hLUg4Mne
- gwDsCUZKpIOkjDchJAJ9Knk0iKZVdF2LOP0wvu3B5ww==
-X-Gm-Gg: ASbGnctfUZ1vHSbC9oUtMS1wOc4XHPFeg1z5AECJzNfN2wfJNY/YMLQAkimvSrbnHXy
- z0UpZ9+BUtc1j1ot4ZH7sdXBvApUWyXiwiWS+Hq3srs4W4CPbyIx8xF3STum+f/ryScV3MtKtQZ
- CaQGPgZHwXWjZ5VscAlSrsnSNVBpp/D45+NE1ko35JsxeNBSgtgWL7EZgbXUG/axF5DyTIZppZd
- zU5nc5B
-X-Google-Smtp-Source: AGHT+IHsJOOmNxmwz8fl0TjTywThxhYSK2QWveFY2xXyZnboUJuRd6rtpeTHgG3hhcK4tg3V4BKios+78meEvB3UUp8=
-X-Received: by 2002:a05:6902:cc5:b0:e94:da97:ccad with SMTP id
- 3f1490d57ef6-e94da97d59bmr2102215276.32.1755531672223; Mon, 18 Aug 2025
- 08:41:12 -0700 (PDT)
+ AJvYcCXi/ZQthnwc7gi8rM0Gt+0NCYkWzD0I73snaaYVtzulniZbar3+ylEpSkKpHte+jpjlUZdWda7b4A==@nongnu.org
+X-Gm-Message-State: AOJu0YwlxpmeFNiSgR0C7RC4tJl214ssyPnLN+nweq5Dv8TmI2EC5yjO
+ qfZMqoHlb1asvlg48+fTCpnOolSSFUuVb0XqmvhPeeFMvCT5tM35758XXIyfNI9zFTg=
+X-Gm-Gg: ASbGnculg1PTa+j2x6RhOt3KELwt81exsawObuX+wsAcAT9qC0b0g1q4q+fpRE2xAM/
+ 0pjWF8SFp/kMnsTC9ljRuMdF3Gt3p7E3sNapBd2JzobmDbQIQ7fxwpR9Kq3K0zWPbPF0D3kw8Ju
+ 94tw5ClJxnUJUBuORnKQ2sMzl5RxmG3U2Ds/8QPRWe+3DExeJZjy0hSDR4cwsqv7XSCnRkdDwQr
+ CU6PmPdTLsXhUpRdCV4mZZNMMSMRw46zvjTLJpt95MMlfJ6QnMh4bEmHwEjtfjZ0fqlsHvWo2N4
+ ov0CJROP5zhbdZnso/PlGdUm2jtFLyCZHc7k5jDP/+IHHAvj7n4/5Zm2BWEkwVRm3Qq5URVrL0M
+ gYBMgLXFWG4irr4+hhMNKnAOB4biQcWtTveBonxOqrGJ9LBpaSi1pjkgYT/65l85EVw==
+X-Google-Smtp-Source: AGHT+IElxPhcBMub/KW7iLfcciicK1l0BKF/LNK+x+gtk96LRLCdB7szCsRnVi9zWAl+VQUUGSiFrA==
+X-Received: by 2002:a05:6000:4383:b0:3b8:dabe:bd8b with SMTP id
+ ffacd0b85a97d-3bb68a185bdmr10218004f8f.27.1755531984285; 
+ Mon, 18 Aug 2025 08:46:24 -0700 (PDT)
+Received: from [192.168.69.210] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-3c074d43bc6sm21410f8f.25.2025.08.18.08.46.22
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 18 Aug 2025 08:46:23 -0700 (PDT)
+Message-ID: <a4a4c7a8-df35-4bd3-9de1-b22ca7bcca22@linaro.org>
+Date: Mon, 18 Aug 2025 17:46:21 +0200
 MIME-Version: 1.0
-References: <20250809211051.68824-1-chichikalyuk@gmail.com>
- <20250809211051.68824-3-chichikalyuk@gmail.com>
-In-Reply-To: <20250809211051.68824-3-chichikalyuk@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 18 Aug 2025 16:41:00 +0100
-X-Gm-Features: Ac12FXxUUjlSHOdGrNbW6SMcmkpz1fflSKfWTLexGKzEh-lqE8u2S58XCzb57tM
-Message-ID: <CAFEAcA-XZ7g4iTKza7h8eDya2WQi4QwDL=YEWQcAsRFEaJK7nw@mail.gmail.com>
-Subject: Re: [PATCH v2 2/3] hw: arm: acpi: upgrade SPCR table to revision 4
-To: Vadim Chichikalyuk <chichikalyuk@gmail.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
- "Michael S. Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- Ani Sinha <anisinha@redhat.com>, Shannon Zhao <shannon.zhaosl@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b2f;
- envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb2f.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 4/7] target/arm/hvf: Add KVMID_TO_HVF, HVF_TO_KVMID
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
+Cc: mads@ynddal.dk, agraf@csgraf.de, qemu-arm@nongnu.org,
+ Mohamed Mediouni <mohamed@unpredictable.fr>,
+ Danny Canter <danny_canter@apple.com>, Cameron Esfahani <dirty@apple.com>,
+ Akihiko Odaki <akihiko.odaki@gmail.com>
+References: <20250818041354.2393041-1-richard.henderson@linaro.org>
+ <20250818041354.2393041-5-richard.henderson@linaro.org>
+ <4312974c-9b7e-48c2-a190-071ea72da33f@linaro.org>
+ <5b9e5f5a-b434-479c-8840-dbb4cda1365c@linaro.org>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <5b9e5f5a-b434-479c-8840-dbb4cda1365c@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::433;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x433.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -97,61 +107,31 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Sat, 9 Aug 2025 at 22:11, Vadim Chichikalyuk <chichikalyuk@gmail.com> wrote:
->
-> On the ARM virt machine, there is currently no way to programmatically
-> discover the frequency of the UART reference clock solely through the use of
-> UEFI/ACPI (without the DTB). The SPCR table can include this information
-> as of revision 4, but is currently at revision 2.
->
-> Bump the revision to 4, add the clock frequency of 24 MHz and
-> complete the other new fields.
+Cc'ing Apple folks hoping they can forward or directly help :)
 
-This commit message should say why we need to do this,
-i.e. why we can't continue to do what we've always done
-and not tell the guest about a clock frequency which is
-entirely imaginary in any case.
+On 18/8/25 15:21, Richard Henderson wrote:
+> On 8/18/25 22:41, Philippe Mathieu-Daudé wrote:
+>> Rebasing Mohamed's work I'm getting:
+>>
+>> In file included from ../../target/arm/hvf/hvf.c:413:
+>> ../../target/arm/hvf/sysreg.c.inc:156:1: error: static assertion 
+>> failed due to requirement '!(HV_SYS_REG_MDCR_EL2 != (((((1 << 28) | 
+>> (19 << 16) | ((3) << 14) | ((4) << 11) | ((1) << 7) | ((1) << 3) | 
+>> ((1) << 0)) | 13510798882111488ULL)) & 65535))': not expecting: 
+>> HV_SYS_REG_MDCR_EL2 != KVMID_TO_HVF(KVMID_AA64_SYS_REG64(1, 1, 3, 4, 1))
+>>    156 | DEF_SYSREG(HV_SYS_REG_MDCR_EL2, 1, 1, 3, 4, 1)
+>>        | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> 
+> 
+>>      HV_SYS_REG_MDCR_EL2 = 0xe019,   <----
+> 
+> How odd.  It should be e089, if it were encoded like all the others.
+> 
+> I wonder if this is a manual typo that's now baked into the api, or if 
+> it's an OS bug.
+> 
+> 
+> r~
+> 
 
-> Signed-off-by: Vadim Chichikalyuk <chichikalyuk@gmail.com>
-> ---
->  hw/arm/virt-acpi-build.c | 14 ++++++++------
->  1 file changed, 8 insertions(+), 6 deletions(-)
->
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index b01fc4f8ef..f685668c5e 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -536,6 +536,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->  static void
->  spcr_setup(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->  {
-> +    const char name[] = ".";
->      AcpiSpcrData serial = {
->          .interface_type = 3,       /* ARM PL011 UART */
->          .base_addr.id = AML_AS_SYSTEM_MEMORY,
-> @@ -559,13 +560,14 @@ spcr_setup(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->          .pci_function = 0,
->          .pci_flags = 0,
->          .pci_segment = 0,
-> +        .uart_clk_freq = 24000000,
-
-This is a number which ought to match the existing one in create_fdt()
-in hw/arm/virt.c. If we need it in two different files we should
-#define it as a constant in include/hw/arm/virt.h.
-
-> +        .precise_baudrate = 0,
-> +        .namespace_string_length = sizeof(name),
-> +        .namespace_string_offset = 88,
-
-What is this magic number 88 for? The spec says that it's
-the offset from the beginning of the structure to wherever
-the namespace string is put, but we don't decide that,
-the build_spcr() function does. The build_spcr() function
-knows what the offset of the name string is, so it should
-write this field; the callers shouldn't have to.
-
->      };
-
-thanks
--- PMM
 

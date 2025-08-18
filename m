@@ -4,76 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98A31CA0EE4
-	for <qemu-arm@archiver.kernel.org>; Mon, 18 Aug 2025 13:37:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 037BECA0EE4
+	for <qemu-arm@archiver.kernel.org>; Mon, 18 Aug 2025 13:43:19 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uo02l-0002Ih-0x; Mon, 18 Aug 2025 09:37:00 -0400
+	id 1uo08Y-0003jY-0G; Mon, 18 Aug 2025 09:42:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uo02f-0002IC-Ry
- for qemu-arm@nongnu.org; Mon, 18 Aug 2025 09:36:53 -0400
+ id 1uo08W-0003jE-FC
+ for qemu-arm@nongnu.org; Mon, 18 Aug 2025 09:42:56 -0400
 Received: from mail-yb1-xb2c.google.com ([2607:f8b0:4864:20::b2c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uo02e-0007FV-75
- for qemu-arm@nongnu.org; Mon, 18 Aug 2025 09:36:53 -0400
+ id 1uo08U-0007ob-Pj
+ for qemu-arm@nongnu.org; Mon, 18 Aug 2025 09:42:56 -0400
 Received: by mail-yb1-xb2c.google.com with SMTP id
- 3f1490d57ef6-e933de387b0so1651488276.1
- for <qemu-arm@nongnu.org>; Mon, 18 Aug 2025 06:36:51 -0700 (PDT)
+ 3f1490d57ef6-e933de3880bso1703276276.3
+ for <qemu-arm@nongnu.org>; Mon, 18 Aug 2025 06:42:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1755524210; x=1756129010; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=oAjH4Iyz3qDt02kIh6J38GNBf4Bwf/iOFclg5e8MRgc=;
- b=QGmmckx8NAXHy7RiZgfY5GPBXgAYrbrTyb1ggwPgTEbVr1CaL7el2ZAtvyi7TthDpw
- GH3e5Y9+PztjU0Yfr7FXkgNV2dyDr7jnNvg/TnuGP24+ua9dcxu725RaJMX9EqBjC/6Y
- 85kmvpKlw3jYyN+EC2m9vZKhEZrikaCJ9h2HfwLXYnVnn1I5feUNokNsjYZ3S4h4FdEK
- PUgKxlVeIsLSUuV5NBFbwOLRucW0Pb0F3d3WS7xtRtLdwG+xYVenm/qvV24MZJkGzTQ3
- XVmyFwvz/k7kIm3yUVkR1zTv/utWds6q2uzFQgLyl0up4v3rTMburejAdeEQ/i5Lbyzf
- mQvA==
+ d=linaro.org; s=google; t=1755524573; x=1756129373; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=7ZlF0xsqdfx4X0ii2cNYvb/8fAkYkWaG6q7RECZUaPw=;
+ b=ZxTeDMeT3zCKAWeCsrgTthxHlgnKCtx/Ljw5UE0rSnQlsu4V9xdZuHR2k0guI5FajT
+ XgmpUyVJdh6tHeYwHbrA7zp+GSydtbbRoO1ukxjCidGnuMmbqXpoKi2vejxr0Va0R8MS
+ WL3YCtSO7euLb3l3Vj7IMojbmTSiXuManDfngW1kS/RAPx7Ogc7UMd6soUmbvOkXs9eb
+ WLPFQktPUAJw0NFsmFAJSbZat8v/ldFihBIs6TJXvIrNJU61UW641G8KhBP9+n2SU9Wp
+ 5vfKkkAWthCGHqiohlTvSphNfL6qixi4C6JlU1ok5tvIVrlqy3fBOunZ9DBQzlLi546j
+ grqg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1755524210; x=1756129010;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=oAjH4Iyz3qDt02kIh6J38GNBf4Bwf/iOFclg5e8MRgc=;
- b=XEvntFAgBnpKQw9t3Ckr0Q6FTyCcmL0OIxVWvbqrafJ7KdIs5lN/ycC/cQipd4V/NI
- piWl4AhUqSu7POn5Ab+CVp8KUpQSS3XLt1kpLoB9a/eYLOdxAJ0ntEXxvziYqwUhDAF+
- YhZ8le7BviIBqUXyjiuD0234bS7swakUwSjt6Ka+bl6XsJZYhyUx8PJS9hoPaLU4DLAA
- +6mIXnMgXieaMvGXyJ4D+7EunYfSgGS2WOsPOW0uTXUw+LwLBGU7mx+xLJww3RlO3epr
- Sq3ooKYzltLtddo38g6URE4VZJ/m/fHIZYvEclOdIJgHh9dJ+cWlNMtAtiLXztiIXn8o
- 4F8A==
+ d=1e100.net; s=20230601; t=1755524573; x=1756129373;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=7ZlF0xsqdfx4X0ii2cNYvb/8fAkYkWaG6q7RECZUaPw=;
+ b=fCVECQjgq7fgvGsNe4AQmabHSarsozrN25XtKAo/k6kMrmnxwBKhqi6sxURv1JXwbq
+ Oe+oVuDfr4W0cwlK+pfUC+bi9RiIijtzswvjMPwUfun7TLTnOlTm5TsRRM1ux/oQSs/J
+ md2ETaHMxCLtdo/MIhwMg4E2qiLeiv0mRdKSZfls3bC0Kn+2W3vUM6EdiHa26houcsud
+ 8hqXqSxE+lpG0A2YNFX7d3mi6amVii4AZZ+PPolROPpXqGpFo6RQTmFqESe0J3Rv6H11
+ GoSUzAqFHmMUJQY3a864M5RIx1jTA+1NcpGec3ab4jdSR85xSdgvNmx4r/T8w9TgSZfe
+ +zTw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVxk8ZPOpb91qFPsyODXHuEcuyL0ARnA93IV+x5wyJhqNNovoHfV2VwxW8Nh5ZLWkzyFlTut2AvNg==@nongnu.org
-X-Gm-Message-State: AOJu0Yx9IHmrS3k+Ct3i/bKpcmTYFTEc2bQxM2cqNlkl9zr4DnqjISRi
- saUrplBDGNi9QCndjQsBhjVlsqzs+AhGsFMLsx1TiIIke4/EOvLtJUQAz8REjXv9W9+CGldiR3B
- X6Lp+++jXrMbEJnn7ltEXqgLrkPORpwHwUVgQLgYTEw==
-X-Gm-Gg: ASbGnctZ8ZXFWdugK8yfr/GpLAGTaEshv14SdzUMw5R8bZL85Xpu5boLGKaXFylN+m3
- rprN25dECYaK1PrKc0mjnL7+8WSIoiEt2we44I1h31ka+ZDHBtsccUVdUVWWgRwvba+do1Rxk+s
- /G9fnFKMlHVbnCwpoZG+2/QVT5WMAXSoW0vWwMvgWgdMlYQ9/jp7GNMGFkWd6GpNS7nuMDIhFwB
- dY5ikIP
-X-Google-Smtp-Source: AGHT+IF2ry/TZ7kdQPnfZWxv40FivnoHgOuYue8o+5V+so99GYxVdIUsq5lk2gmGNm/8Cu7kTga/zHl2qkuCJsqzsI0=
-X-Received: by 2002:a05:6902:12cc:b0:e90:526a:ac44 with SMTP id
- 3f1490d57ef6-e933200377fmr15205300276.21.1755524209934; Mon, 18 Aug 2025
- 06:36:49 -0700 (PDT)
+ AJvYcCVXBDDytOzSKjFSRmM2xHnEAhY2Oe7sA0Gn+Wu+/G8xTtocmGpXZKCdvenEh0Sz4SKHGN/doelBkg==@nongnu.org
+X-Gm-Message-State: AOJu0YztoOsmyYN19T4aqg6BAd4A0nPGROM8plS3KS6/l/L9MjMe2IkY
+ 61erFZ5j38NncJmUfes9YBvWYu3+0pq/LY9vEtgDL3J3wMfQPcTuvqDBI8Yln64ZkPa3JW5RBs4
+ DRfD0aCzFE4xw7DSU3Rq104nISveuBzOAZQafn2NfXw==
+X-Gm-Gg: ASbGnctbSCdpLZ1wXlxljmU4BQ6qDRcziMuVc27vKStVjZebyL6RoNkMNbQ+fP2pCg/
+ 9MNHOTDfXlMxlU23IIgbPkxRGhCkfHD2Oim9y1TiN2IsDZTc6Pgy8KzuJYLsEnYJWOpJRb0MH3a
+ e3p+gM0wZm1quznRqUPnaWX2B413iZ7V4HZSdBpp3PkYrgQZP+WhA8tGzWNepWGULX0KTzB7Tjo
+ lQ+G+Ae
+X-Google-Smtp-Source: AGHT+IGCJ77a4W/vfTe70AxEMz+oLEskgJypga3v9uUdcmRd9evb1iYqA6w6tSOdPJvM5t+sD51B+AsBSypNPE5wsg0=
+X-Received: by 2002:a05:6902:f84:b0:e93:3be4:9723 with SMTP id
+ 3f1490d57ef6-e933be4985cmr12967038276.9.1755524573228; Mon, 18 Aug 2025
+ 06:42:53 -0700 (PDT)
 MIME-Version: 1.0
 References: <20250727074202.83141-1-richard.henderson@linaro.org>
- <20250727074202.83141-6-richard.henderson@linaro.org>
-In-Reply-To: <20250727074202.83141-6-richard.henderson@linaro.org>
+ <20250727074202.83141-7-richard.henderson@linaro.org>
+In-Reply-To: <20250727074202.83141-7-richard.henderson@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 18 Aug 2025 14:36:38 +0100
-X-Gm-Features: Ac12FXxSkBbIouVsVUhf8wD7Ph2wZWqpecm627lQ5DcvKWO4rqiRMstXWxSH9P0
-Message-ID: <CAFEAcA9gVv1-wwMQO0W5XMn6rTgS-WfeRAQszQ186K6Z_jbaLw@mail.gmail.com>
-Subject: Re: [PATCH v9 5/6] target/arm: Implement FEAT_MEC registers
+Date: Mon, 18 Aug 2025 14:42:41 +0100
+X-Gm-Features: Ac12FXycgRhsdqgE59z8zuWn8OfIqGM2QsUOJ7cmvHeIC__K7sq_BJxOA8JHzV8
+Message-ID: <CAFEAcA8ez8XW9xn+Q=XwCFf+LObEZN9yQSEmEcy3hXTwYe2tCw@mail.gmail.com>
+Subject: Re: [PATCH v9 6/6] target/arm: Enable FEAT_MEC in -cpu max
 To: Richard Henderson <richard.henderson@linaro.org>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
  Gustavo Romero <gustavo.romero@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 Received-SPF: pass client-ip=2607:f8b0:4864:20::b2c;
  envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb2c.google.com
 X-Spam_score_int: -20
@@ -103,48 +101,47 @@ On Sun, 27 Jul 2025 at 08:42, Richard Henderson
 >
 > From: Gustavo Romero <gustavo.romero@linaro.org>
 >
-> Add all FEAT_MEC registers.  Enable access to the registers via the
-> SCTLR2 and TCR2 control bits.  Add the two new cache management
-> instructions, which are nops in QEMU because we do not model caches.
+> Advertise FEAT_MEC in AA64MMFR3 ID register for the Arm64 cpu max as a
+> first step to fully support FEAT_MEC.
+>
+> The FEAT_MEC is an extension to FEAT_RME that implements multiple
+> Memory Encryption Contexts (MEC) so the memory in a realm can be
+> encrypted and accessing it from the wrong encryption context is not
+> possible. An encryption context allow the selection of a memory
+> encryption engine.
+>
+> At this point, no real memory encryption is supported, but software
+> stacks that rely on FEAT_MEC should work properly.
 >
 > Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
-> Message-ID: <20250711140828.1714666-3-gustavo.romero@linaro.org>
 > Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-> [rth: Squash 3 patches to add all registers at once.]
+> Message-ID: <20250711140828.1714666-7-gustavo.romero@linaro.org>
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>  target/arm/tcg/cpu64.c        | 1 +
+>  docs/system/arm/emulation.rst | 3 +++
+>  2 files changed, 4 insertions(+)
+>
+> diff --git a/target/arm/tcg/cpu64.c b/target/arm/tcg/cpu64.c
+> index 4eb51420ef..c54aa528c6 100644
+> --- a/target/arm/tcg/cpu64.c
+> +++ b/target/arm/tcg/cpu64.c
+> @@ -1250,6 +1250,7 @@ void aarch64_max_tcg_initfn(Object *obj)
+>      t = GET_IDREG(isar, ID_AA64MMFR3);
+>      t = FIELD_DP64(t, ID_AA64MMFR3, TCRX, 1);       /* FEAT_TCR2 */
+>      t = FIELD_DP64(t, ID_AA64MMFR3, SCTLRX, 1);     /* FEAT_SCTLR2 */
+> +    t = FIELD_DP64(t, ID_AA64MMFR3, MEC, 1);        /* FEAT_MEC */
+>      t = FIELD_DP64(t, ID_AA64MMFR3, SPEC_FPACC, 1); /* FEAT_FPACC_SPEC */
+>      SET_IDREG(isar, ID_AA64MMFR3, t);
 
-Phil just mentioned something on IRC which reminded me that there's
-a quirk in the FEAT_MEC registers that we need to account for in
-our FEAT_NV handling. We wrote a note for ourselves for later about
-this in arm_cpreg_traps_in_nv():
+Looking at this again, I don't think we should set
+ID_AA64MMFR3_EL1.MEC if RME is not enabled.
 
-     * In particular, note that the released sysreg XML defines that
-     * the FEAT_MEC sysregs and instructions do not follow this FEAT_NV
-     * trapping rule, so we will need to add an ARM_CP_* flag to indicate
-     * "register does not trap on NV" to handle those if/when we implement
-     * FEAT_MEC.
-
-(the "rule" being "trap on opc1 =3D=3D 4 or 5"). This corresponds to
-the text in the description of the HCR_EL2.NV bit in the Arm ARM
-that says it traps:
-=E2=80=94 Registers accessed using MRS or MSR with a name ending in _EL2,
-  except the following:
-   =E2=80=94 SP_EL2.
-   =E2=80=94 If FEAT_MEC is implemented, MECID_A0_EL2, MECID_A1_EL2,
-     MECID_P0_EL2, MECID_P1_EL2, MECIDR_EL2, VMECID_A_EL2, and
-     VMECID_P_EL2.
-
-The system insns DC CIDGPAE and DC CIPAE also should not trap
-(though the Arm ARM text is more implicit in how it says this
-than it is for the registers).
-
-So we need to:
- * define a new ARM_CP_NV2_NO_TRAP ("This sysreg does not got
-   trapped to EL2 by HCR_EL2.NV even though its opc1 is in {4, 5}")
- * have arm_cpreg_traps_in_nv() return false if
-   ri->type has ARM_CP_NV2_NO_TRAP set (and update the comment)
- * add that to the type for all the sysregs defined by this
-   patch that have opc1 =3D=3D 4 or 5
+I guess the way to do this that fits in with how we
+already handle "user-facing property disabled feature X
+and that means we should also disable feature Y" is
+to put a check in arm_cpu_realizefn() for "if RME
+disabled then squash ID_AA64MMFR3.MEC to 0" ?
 
 thanks
 -- PMM

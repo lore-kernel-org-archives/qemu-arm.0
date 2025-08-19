@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAA81CA0EEB
-	for <qemu-arm@archiver.kernel.org>; Tue, 19 Aug 2025 12:23:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 332AECA0EEB
+	for <qemu-arm@archiver.kernel.org>; Tue, 19 Aug 2025 12:37:52 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uoLMl-0006P9-4R; Tue, 19 Aug 2025 08:23:03 -0400
+	id 1uoLas-0001PZ-LI; Tue, 19 Aug 2025 08:37:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mads@ynddal.dk>) id 1uoLMj-0006Oa-8s
- for qemu-arm@nongnu.org; Tue, 19 Aug 2025 08:23:01 -0400
-Received: from p-east1-cluster6-host9-snip4-4.eps.apple.com ([57.103.90.215]
+ (Exim 4.90_1) (envelope-from <mads@ynddal.dk>) id 1uoLap-0001Ob-DT
+ for qemu-arm@nongnu.org; Tue, 19 Aug 2025 08:37:35 -0400
+Received: from p-east1-cluster2-host1-snip4-4.eps.apple.com ([57.103.88.135]
  helo=outbound.ci.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mads@ynddal.dk>) id 1uoLMg-0006PB-84
- for qemu-arm@nongnu.org; Tue, 19 Aug 2025 08:23:01 -0400
+ (Exim 4.90_1) (envelope-from <mads@ynddal.dk>) id 1uoLan-0000Kx-Ke
+ for qemu-arm@nongnu.org; Tue, 19 Aug 2025 08:37:35 -0400
 Received: from outbound.ci.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-central-1k-60-percent-5 (Postfix) with ESMTPS id
- 1585918001BF; Tue, 19 Aug 2025 12:22:49 +0000 (UTC)
+ by p00-icloudmta-asmtp-us-central-1k-60-percent-6 (Postfix) with ESMTPS id
+ 258601801A55; Tue, 19 Aug 2025 12:37:28 +0000 (UTC)
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ynddal.dk; s=sig1;
- bh=H25lEFx3jpZ5j67JzjHMBzcGjUcRK3xA3JhFxZLrGVA=;
+ bh=hPFQz71XvwNHF2n1A9mBn3vtBW+PVAo3vbGwbvYnjf4=;
  h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To:x-icloud-hme;
- b=O5mqadboS97LEt6JNYeb9Dp5zTC5INAmrZ8Y6uRFCA++en38nECM5SJ1Sjx/e2n4C4z3S84eXwY7GeIaakAs2MAzBDl0QqXLE5HTlIMIDrYCVmTzezD7QJD807IleFOe2UDuwLlBvodpq2iBMSciuhYt5/oF9MWv0ABIsb6gjfHNCIhISFj39+AA5tFIkyqH3fP5myI15IFTsTV3Mx5nTZFomcufv4PXvyVB7Gi8xmz6wbE65wYd7R5PJ3V/urckCRku4JVhj9j4vSnk+fq6nI/Q16uKjTdvjJXXPt66zpgWLw63nDP4ylGwHfD2bf5ZkNjkMmdOoW3fyrTIq9cstQ==
+ b=maLT5LbdhOE0AKMAikB6NSiTOBMiGhf1ZW9OhSVPm+Ha64uOOcOEnF4yVE+PGD6sbYvCkDdsTpB7+f5QPHNn61+0I5xD8wxXDoV70W1K7nvALlP44hDYIEsEyNFP328tAq0bQ2mFDgztpweWf1tPoKmWf8supEun0X+tCTkASVNKaZnOI9IFplxnZ9wI9lB5Qnc7cp+feYDtAEc4wvPROyR72stoXony9XicM/hXLdGFiyz88ehXB8SWekpKjkfzslQia7/BwsAbY8SFcfl8iO1B14sRlrllFYiVzYkgX7gA8Xhc33xqm1VCRiz5NCQro9xLfgygqTFNBaghiASAPw==
 X-Client-IP: 194.62.217.67
 Received: from smtpclient.apple (ci-asmtp-me-k8s.p00.prod.me.com
  [17.57.156.36])
- by p00-icloudmta-asmtp-us-central-1k-60-percent-5 (Postfix) with ESMTPSA id
- 7B1C618000AF; Tue, 19 Aug 2025 12:22:47 +0000 (UTC)
+ by p00-icloudmta-asmtp-us-central-1k-60-percent-6 (Postfix) with ESMTPSA id
+ 9F2771800670; Tue, 19 Aug 2025 12:37:26 +0000 (UTC)
 Content-Type: text/plain;
 	charset=us-ascii
 Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3826.700.81\))
-Subject: Re: [PATCH v6 13/13] target/arm: hvf: add asserts for code paths not
- leveraged when using the vGIC
+Subject: Re: [PATCH v6 09/13] hvf: only call hvf_sync_vtimer() when running
+ without the platform vGIC
 From: Mads Ynddal <mads@ynddal.dk>
-In-Reply-To: <20250808070137.48716-14-mohamed@unpredictable.fr>
-Date: Tue, 19 Aug 2025 14:22:35 +0200
+In-Reply-To: <20250808070137.48716-10-mohamed@unpredictable.fr>
+Date: Tue, 19 Aug 2025 14:37:15 +0200
 Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  Shannon Zhao <shannon.zhaosl@gmail.com>,
  "Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha <anisinha@redhat.com>,
@@ -47,34 +47,33 @@ Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  Phil Dennis-Jordan <phil@philjordan.eu>, Alexander Graf <agraf@csgraf.de>,
  Cameron Esfahani <dirty@apple.com>
 Content-Transfer-Encoding: quoted-printable
-Message-Id: <AE220921-4154-4EC1-B675-C235585F841A@ynddal.dk>
+Message-Id: <DBF9B14F-707B-4CB0-8393-3150DC046E0F@ynddal.dk>
 References: <20250808070137.48716-1-mohamed@unpredictable.fr>
- <20250808070137.48716-14-mohamed@unpredictable.fr>
+ <20250808070137.48716-10-mohamed@unpredictable.fr>
 To: Mohamed Mediouni <mohamed@unpredictable.fr>
 X-Mailer: Apple Mail (2.3826.700.81)
-X-Proofpoint-GUID: _VFgiOvF7xkXNuj5RKtAqN-OgSfqV5ev
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwODE5MDExNyBTYWx0ZWRfX3DiRh5KcaM5I
- ONBGFETErmARvSrFd0dgTa0asgy6fqDpTv1EN6fjJ2Ruj6JAAENfHHIom36WLBsHqVid4x979gT
- kRI+etruse+1l6tAcIMQIpOp5mDEwPXYO/0dj0sEjE6aOwhSGER17csBM0b1KS2zLFdA63yrSok
- 3TCFfuGABQwozZ8lnCr2GVYocY+0kvK1S/3wkcf0FR62ICwYSJd60kvn/LHLyjBPwf/PuVPAH8t
- 2ibbsXmN6W9w5JX1tWIQUkEXnhu3x4RgW2Kh7Gy3+pnq5YeXKNOd4Xi+XDIivaMFeX3GYyR0E=
-X-Proofpoint-ORIG-GUID: _VFgiOvF7xkXNuj5RKtAqN-OgSfqV5ev
+X-Proofpoint-GUID: jkvz-53Bo77bzOjYH3Qcp2aVnL0mKnF2
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwODE5MDExOSBTYWx0ZWRfX7g7sLZVCvF3t
+ C1MRHduKX0/323lu+FIH7VRhIfpD7QRPy7hMtv3Kj2a14ykDNkGWlWM4dpFjv34Ol3w2i+T2h8P
+ YBFFR98Omjax14V/baF49BKgS1p4lqODKaFR1glO/O6XCsJiHhkmtkCM/MkYNoQFv/UKWUiC0uP
+ QE2gGi/7u5bimFm9g7+Uoym6ul9jFbgtrKlrYaVVaecGnes8qGGJMaN9bj2H++7whIRNGBDBGLU
+ lPwUF+93nKmceP4cO6oR298QBShRfb6UU/nwgyEjmmvmS5tmgwO0exMAjitrtQVLtRZmoeR1E=
+X-Proofpoint-ORIG-GUID: jkvz-53Bo77bzOjYH3Qcp2aVnL0mKnF2
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.9,FMLib:17.12.80.40
  definitions=2025-08-19_02,2025-08-14_01,2025-03-28_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 clxscore=1030
- phishscore=0 suspectscore=0 mlxlogscore=770 bulkscore=0 adultscore=0
- malwarescore=0 spamscore=0 mlxscore=0 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.22.0-2506270000 definitions=main-2508190117
-X-JNJ: AAAAAAABrmImtAAabBlX83xbb900CyxIvwgbyi/I0EieV8Lw7NsL1dD8z/Lwg1HRsyNg9Md9NsDKY5YjdZ6F1lJo1QV23rrZuwbh51USzYeBWpwRsLPwnKrDF5c16D0l81iTEhWAYwZoqO4xQ6i3qj4X7ls+aLnQBtMduMJFr7hvcXNvngl+fiC/MbP9ontZfxTDge9RdgYRsI4iR9jnsTgxPeF5sjdAYCAgmxkRLF+LNMQRcEzH0TBkLaWWelX1SvXl+ye2q2lTkicc2GegcTsmmZTauUfR/B1BQkZlCnRDh3753c/ViGTMYe9kn+mk1lKv5Nk1eXWkH34wL4vCA5f7rQ49WEuDwZ9n9UtT/q7X8tKNPJD/wG3CzWEZv+w6Yg6kZWAeYZkpXKM+6U8pC4p4T5UL19AVZNbOnvhno2NAupM+D7i5dfgTIbTcyV9vYxcfOUo4sp7lj/zblOKYNw88k7JtOH/qpi9MEEqtLx1p2wEItxC0rWWlYWUvyayAF4ylic7y1Am4uVJnH2ehZeFlOWkg8fyt2EJePurP8tWw+KzOzkaC3WOrp1t5ndI6XlEmUSNwjlx9hvbkPsDe/FvLQlZIaa495g==
-Received-SPF: pass client-ip=57.103.90.215; envelope-from=mads@ynddal.dk;
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0
+ suspectscore=0 adultscore=0 bulkscore=0 clxscore=1030 mlxscore=0
+ mlxlogscore=932 malwarescore=0 spamscore=0 classifier=spam adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2506270000 definitions=main-2508190119
+X-JNJ: AAAAAAABAmb7W6LoSzDePUPDSqkt9dMZL2qPv0ySZvFSGepdgBTOCgNxGfrF042sY7x8qnJKlfZ8JYf/AjkkR5Xsng/sjuzYuFyqfFdmZGQcXZquUaxWPj6DXIZ+Be5gAzfJQD+cvw61SwnaNssSWhA57n1r6Rr67uWSEzEkPhwEIFHO/Upvlxa8bewJvfwrfldhdjDoZBRI9DLqKaNWZpGdfVia0B6f74c4TSDnRl+7hgtRw1Yt21fU36E8dLoctrTCUkEEJNpaR9I3aVfEFl5/dNVgZ331svE2MrgCBXZi9665pjqKz6SfcfYB6JRtCJE38taPOv7SXNgCjP5PvpIm0838roKUAyg7eOmLZJ+2XeiDtHqgAYVw8GxTnNR68Pac0jeu0TCZLBOiCYAtr/H1JUFM32WR6B3zQ03joYUJRq12GW4ZmJTFjlIYevy4Voeu3LqYT4+aJ1AzUgqfBNrjiycgLdyrJxpv4UjHDixWxopcuLovKXukzk2ZwQOHlvEl8o8uYa32QM/Qn8IEpvujI7O+tgYpHIQ/7hQWJ3SVlrq0wB7tsIbNEz17OutUqkPoVJHvon5rM8XdPrIPRgrLTvSijxSu+g==
+Received-SPF: pass client-ip=57.103.88.135; envelope-from=mads@ynddal.dk;
  helo=outbound.ci.icloud.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
@@ -96,16 +95,14 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 > On 8 Aug 2025, at 09.01, Mohamed Mediouni <mohamed@unpredictable.fr> =
 wrote:
 >=20
-> When using the vGIC, timers are directly handled by the platform.
-> No vmexits ought to happen in that case. Abort if reaching those code =
-paths.
+> When running with the Apple vGIC, the EL1 vtimer is handled by the =
+platform.
 >=20
 > Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 > ---
-> target/arm/hvf/hvf.c | 3 +++
-> 1 file changed, 3 insertions(+)
-
-Makes good sense to verify this.
+> target/arm/hvf/hvf.c | 3 ++-
+> 1 file changed, 2 insertions(+), 1 deletion(-)
+>=20
 
 Reviewed-by: Mads Ynddal <mads@ynddal.dk>=
 

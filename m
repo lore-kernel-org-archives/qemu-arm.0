@@ -4,104 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79BECCA0EE6
-	for <qemu-arm@archiver.kernel.org>; Tue, 19 Aug 2025 16:26:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8980ECA0EE6
+	for <qemu-arm@archiver.kernel.org>; Tue, 19 Aug 2025 16:37:52 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uoP9e-0000Gp-73; Tue, 19 Aug 2025 12:25:46 -0400
+	id 1uoPKs-0004vB-Ak; Tue, 19 Aug 2025 12:37:22 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1uoP9O-00008J-RW
- for qemu-arm@nongnu.org; Tue, 19 Aug 2025 12:25:33 -0400
-Received: from mail-pj1-x1029.google.com ([2607:f8b0:4864:20::1029])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1uoPKq-0004t2-Bc
+ for qemu-arm@nongnu.org; Tue, 19 Aug 2025 12:37:20 -0400
+Received: from mail-yb1-xb31.google.com ([2607:f8b0:4864:20::b31])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1uoP9L-0002Ql-RW
- for qemu-arm@nongnu.org; Tue, 19 Aug 2025 12:25:30 -0400
-Received: by mail-pj1-x1029.google.com with SMTP id
- 98e67ed59e1d1-323267b7dfcso5117613a91.1
- for <qemu-arm@nongnu.org>; Tue, 19 Aug 2025 09:25:25 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1uoPKo-0004F3-DH
+ for qemu-arm@nongnu.org; Tue, 19 Aug 2025 12:37:20 -0400
+Received: by mail-yb1-xb31.google.com with SMTP id
+ 3f1490d57ef6-e9321ed5e5eso3873110276.3
+ for <qemu-arm@nongnu.org>; Tue, 19 Aug 2025 09:37:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1755620724; x=1756225524; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=T9pW//KrxQJg6uWS9DF6bgFeIcH/PuAXnmWOLCfcEmQ=;
- b=xe2uW9z5PkeF0LLbv0XRxRi2K6rYdwrYtwK0KkiipJYVCvZQBDlJvRJwecBQcFhjEE
- Vb6SwSrzECBv6Ql3ZBSq738oVBWL3JlTSc0J0yco73jmOcOAoKbQJ0+5NXlz2tB5n8vQ
- bhQZAx9xKN0YwcT8x4pvxjUApDHo0gNim6aIBtqPcEwbSedBBRVnv0riyz9wt7MwrjO1
- UEqCB5PzfqMuoL9dkWBHRoHsunqpPwXerrr42ARdvvJ9lsaJb1lsbHtLMtkCSsbikrKl
- gSCuoZukFQYMYs/MCFcoxf6cCyfd9GXwgTvX3OhThF4WZMzJHRsoBIi8ZutLk0Dh2I7j
- kTXQ==
+ d=linaro.org; s=google; t=1755621437; x=1756226237; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=jPbJtNIGuJmeIzk0bISBJpiUo0zbOAnZL91+3MTt5qI=;
+ b=Oh70uLNumK+No+VqlJNRnCRNhadTfsx/5lKF6HrQxu9mlpAOKGk43LkA/Q97SqF7hY
+ NVMKFZaRq813pLv0KS1+ifdovjBUe8opnhdSSznc7WYWq6CJBC+z2uhj675IGClH9WNr
+ ZlzdBATyV+uGueLxICLi0T5hjk0Wrsz5tyfF2RR2i+5UXeg518+RHpWM7bfBd+eILUOU
+ jteBp6XVppCdQiodpvEfnDvA3Xekana7V1A7h4EgBhmzo2121dpgO0leqcLm0qdktYkk
+ CJvywSoBXUlntxfRK2O6wHyViuoOCXI6OVJltB3s6eJiQRTbIXPAwCwZvvQFVxAbTyyq
+ MuRQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1755620724; x=1756225524;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=T9pW//KrxQJg6uWS9DF6bgFeIcH/PuAXnmWOLCfcEmQ=;
- b=PfPPHZ0TlUQyHYyGW01mIHs3LzuNKY21HUlgsdbOUe8jq7aksoiQ6xivKuOPJQ5635
- Y1Q7NdM/GC0doMrUGlMDc8vaN1hMD630+YT+2paVxuUJVUJ/kSO1VF6u9Y4Yp+KPQyxZ
- hPV1eyYvvt4pK6tSURXe4F2u9d9NIA2okrNhJonOK7/vqvjMBsH/8bIxHWzC9JwltZoa
- V+M5uwV/YEufoclMzqawOLBSgor/LIF8h1MxAMtwnfNEijm20pGZIrjc/A3k0YB1rdjo
- 8WcEpJfsFG+h8/srQU2679x2385QgdeTWhpdU47VBMcr2er5cg3GZr1O46579hbadaEu
- zEDQ==
+ d=1e100.net; s=20230601; t=1755621437; x=1756226237;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=jPbJtNIGuJmeIzk0bISBJpiUo0zbOAnZL91+3MTt5qI=;
+ b=r5YGskGxUOSJanSh3F0FGy+lLx/uX433q56zeKMeeTxHND5CTTskMLgO9jSQv8vkAz
+ 9pCOE9F9P6YJix5BmtFunkfXBiMxBQhOefKpJb9wrcfsq6UihnyyoXXGge3TvQDmk66z
+ bnPyZPu3F38DVxnd4LLCJuCh+tDYjPNZYHrhdycTDA8G+Aml8LTMJV0BOhyCSvaJazhO
+ OQECGOQON0ds8FgnUdakJp0JwDuXW9FT2AJTbb2NkyouXLxP365ncmYjkCKvjhGP/HwX
+ fmns5LVPCtoZjTHbN+GVLHsxRLC9h0DzoH5k+OfX//QY0DIkDgZM8Oipq67L2puQaLMc
+ RMjA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVblthDbHN3zBDut85mnSMSEt1LM/oYfnMn6wwCN4JB2XHY0CipQlIQKwQB3UmqTPMqSUYAG7gWSQ==@nongnu.org
-X-Gm-Message-State: AOJu0YyO4dqZyguMmwbye6r9FuDeRJi0Y2/kL6SKqm4XPFO8W+8SET7u
- L9jO9UYB1QKmT5u/sJ0jtUxcMN7fPKpsPsV5Vkw5toIdBr3oB1wtVZjFwJ/kHN5tG1s=
-X-Gm-Gg: ASbGncsVI5E+wxUVXgAWFiDBr1iBw23BkmKCdL8e+qxphqOQUf3zmR6piHBs56Y3OPu
- 1AWpZ3RC2MQPJkvXSCpsrz9nAtmBHCwt6n9h5lwU3B8lMDxWsrymeTO0jyyyfJR6uc8wrwGfhr/
- oEv3OOGwBo3VVo5vk1jCmbNdXtAhhJXPsQyz/g7kXC476T53jBxsy0MgdXQM4kUz9+XRDt6kV1a
- /azYiwVRtrJL4tKrY27zrsqI0JGAY4aWui45f1oWH8Gldj3geDzuA0/IegxzXw3bPrPWF0TrVHa
- ifJbwvVDcpWqKq/KIjCQLSDESGzrNEA1CmLzxKzSvei3FkHbpwCOE8sKfCEf1Xeq6xV7fzagSRC
- HYCvHAPBug4YJoFhAAc7ADiuxQH6aL7tnaWlcgATztEGd+Q==
-X-Google-Smtp-Source: AGHT+IGCnhS4KyTK7xqq6w781WHkGdUKBLX6TPfX7d23WEje40YuhaW2JkajL7LcmObgLWg1ip5UIg==
-X-Received: by 2002:a17:90a:ec86:b0:312:1c83:58fb with SMTP id
- 98e67ed59e1d1-3245e56ce40mr3781603a91.1.1755620724005; 
- Tue, 19 Aug 2025 09:25:24 -0700 (PDT)
-Received: from [192.168.1.87] ([38.41.223.211])
- by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-3237e3eef9asm3296885a91.19.2025.08.19.09.25.22
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 19 Aug 2025 09:25:23 -0700 (PDT)
-Message-ID: <3eefa4f1-56ae-40ed-9317-2a3e4e6983ea@linaro.org>
-Date: Tue, 19 Aug 2025 09:25:22 -0700
+ AJvYcCXj5kAO1iXtGI29JT8dnzWof6ozPlYBVxJoFkS7aO/+9p1Elm2dUgmVaAUys/QaXkcmHK8aV9ffDQ==@nongnu.org
+X-Gm-Message-State: AOJu0YzBFNCboIWtoYPN5SD4jlNW1htIH+rPSdNQT4wlFHXn/l3xosUF
+ 7qPL+X9BJgnRdJ7gPNQJbPqSw67/njgWNb9Ie7AHD8OeRJPT3ToK6XR+kPXswjkE9GL+FJPcWXq
+ P8XQU5izAX1BhCpdFNcSj3fL3OYOnA5WTQ4GAqZgpRg==
+X-Gm-Gg: ASbGncvpO48fFiWz7RS9FMZSgQMd0lKF2FKatQGTks0/wFA7nqksYXSul+vCasEoBV4
+ v5eh3uBX0B33JZ6HIRUrfVXF4PC//aN/FhmICKHd2M0kDKy3Ujjs+jFk1L0civLS9mZChPc4Pvs
+ V/3jYOnqX+GfIdtVOvMPLm76M762TXcL2hooHcC8xS4JIhPVKsCGjGVAHdScaLrDBmWjbnqJ7Jx
+ sO4ZniY
+X-Google-Smtp-Source: AGHT+IHU0PZOrNF+G6CogaiPvgUR2da6Yfk3aK1TtxrsEigdlLwed+dnkQ7qPa714VRqoyGCV9Uphl0IHU7ABopoJWw=
+X-Received: by 2002:a05:6902:240c:b0:e94:e1e5:377e with SMTP id
+ 3f1490d57ef6-e94e63ea925mr3537147276.52.1755621436699; Tue, 19 Aug 2025
+ 09:37:16 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 15/18] whpx: arm64: implement -cpu host
-Content-Language: en-US
-To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Mohamed Mediouni <mohamed@unpredictable.fr>, qemu-devel@nongnu.org,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Igor Mammedov <imammedo@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Roman Bolshakov <rbolshakov@ddn.com>, Phil Dennis-Jordan
- <phil@philjordan.eu>, Ani Sinha <anisinha@redhat.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Alexander Graf <agraf@csgraf.de>,
- Mads Ynddal <mads@ynddal.dk>, Sunil Muthuswamy <sunilmut@microsoft.com>,
- Zhao Liu <zhao1.liu@intel.com>, Marcel Apfelbaum
- <marcel.apfelbaum@gmail.com>, Eduardo Habkost <eduardo@habkost.net>,
- Cameron Esfahani <dirty@apple.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
- Yanan Wang <wangyanan55@huawei.com>
-References: <20250808065419.47415-1-mohamed@unpredictable.fr>
- <20250808065419.47415-16-mohamed@unpredictable.fr>
- <CAFEAcA9iQnrKWXPXw2wG3c6gmevOMFQtt48HsJdx8GZz2sd+4Q@mail.gmail.com>
- <8e64fd77-9969-42b3-bbcd-1ed8de910ff9@linaro.org>
- <CAFEAcA9OXu3=HuA9n+Oo0C5K5hTG+kLr9xsM=geBJ_UtCi4_-w@mail.gmail.com>
- <aKSUS2-JrMBX7JXo@redhat.com>
- <1396c8cf-fb2c-4b39-811a-7152bdbe976f@linaro.org>
- <aKShmdP3Pdn-wYgY@redhat.com>
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-In-Reply-To: <aKShmdP3Pdn-wYgY@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1029;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pj1-x1029.google.com
+References: <20250815090113.141641-1-corvin.koehne@gmail.com>
+ <20250815090113.141641-2-corvin.koehne@gmail.com>
+In-Reply-To: <20250815090113.141641-2-corvin.koehne@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 19 Aug 2025 17:37:04 +0100
+X-Gm-Features: Ac12FXxU1KiaO6nl9P_kPL-RDuDO0lX5HE7-V1qW95Svbphp6nil93_osFbPvBY
+Message-ID: <CAFEAcA8opzjChTA7UONEPtrUnQ-xayoMgxH5gK9Bi-_VnMXjUQ@mail.gmail.com>
+Subject: Re: [PATCH v2 01/14] hw/timer: Make frequency configurable
+To: =?UTF-8?Q?Corvin_K=C3=B6hne?= <corvin.koehne@gmail.com>
+Cc: qemu-devel@nongnu.org,
+ =?UTF-8?Q?Corvin_K=C3=B6hne?= <c.koehne@beckhoff.com>, 
+ qemu-arm@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, 
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>, 
+ =?UTF-8?Q?Yannick_Vo=C3=9Fen?= <y.vossen@beckhoff.com>, 
+ Hanna Reitz <hreitz@redhat.com>, qemu-block@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b31;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb31.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -124,118 +104,166 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 8/19/25 9:08 AM, Daniel P. Berrangé wrote:
-> On Tue, Aug 19, 2025 at 08:48:16AM -0700, Pierrick Bouvier wrote:
->> On 8/19/25 8:12 AM, Daniel P. Berrangé wrote:
->>> On Tue, Aug 19, 2025 at 04:06:45PM +0100, Peter Maydell wrote:
->>>> On Tue, 19 Aug 2025 at 16:04, Pierrick Bouvier
->>>> <pierrick.bouvier@linaro.org> wrote:
->>>>>
->>>>> On 8/19/25 6:24 AM, Peter Maydell wrote:
->>>>>> On Fri, 8 Aug 2025 at 07:55, Mohamed Mediouni <mohamed@unpredictable.fr> wrote:
->>>>>> Can you follow the QEMU coding style, please (here and elsewhere)?
->>>>>> Variables and function names should be all lower case,
->>>>>> and variable declarations go at the start of a C code
->>>>>> block, not in the middle of one.
->>>>>>
->>>>>
->>>>> In some cases, including in this function, I feel that the rule to
->>>>> declare variables at the start of a block is not really helpful, and is
->>>>> more related to legacy C than a real point nowadays.
->>>>> As well, it sometimes forces to reuse some variables between various sub
->>>>> blocks, which definitely can create bugs.
->>>>>
->>>>> Anyway, I'm not discussing the existing QEMU coding style, but just
->>>>> asking if for the current context, is it really a problem to declare
->>>>> variable here?
->>>>
->>>> The point of a coding style is to aim for consistency. QEMU
->>>> is pretty terrible at being consistent, but we should try.
->>>> The rule about variables at start of block is not because
->>>> some compilers fail to compile it, but because we think
->>>> it's overall more readable that way.
->>>
->>> There are also potential[1] functional problems with not declaring
->>> at the start of block, because if you have a "goto cleanup" which
->>> jumps over the line of the declaration, the variable will have
->>> undefined state when the 'cleanup:' block is running. This is
->>> something which is very subtle and easily missed when reading the
->>> code flow.
->>>
->>
->> This has nothing to do with where variables are declared, but where they are
->> assigned. The same issue can happen whether or not it's declared at the
->> start of a block.
->>
->> I suspect we use -ftrivial-auto-var-init precisely because we force
->> variables to be declared at start of the scope, i.e. where they don't have
->> any value yet. So, instead of forcing an explicit initialization or rely on
->> compiler warnings for uninitialized values, it was decided to initialize
->> them to 0 by default.
->>
->> If we declared them at the point where they have a defined semantic value,
->> this problem would not exist anyway, out of the goto_cleanup situation,
->> which has the same fundamental issue in both cases.
-> 
-> It really isn't the same issue when you compare
-> 
->    void bar(void) {
->      char *foo = NULL;
-> 
->      if (blah)
->         goto cleanup:
-> 
->    cleanup:
->      if (foo)
->         ....
->    }
-> 
-> vs
-> 
->    void bar(void) {
->      if (blah)
->         goto cleanup:
-> 
->      char *foo = NULL;
+On Fri, 15 Aug 2025 at 10:01, Corvin K=C3=B6hne <corvin.koehne@gmail.com> w=
+rote:
 >
->      ...some code...
+> From: YannickV <Y.Vossen@beckhoff.com>
 >
->    cleanup:>      if (foo)
->         ....
->    }
-> 
-> The late declaration of 'foo' is outright misleading to reviewers.
-> 
-> Its initialization at time of declaration gives the impression
-> that 'foo' has well defined value in the 'cleanup' block, when
-> that is not actually true. In big methods it is very easy to
-> overlook an earlier 'goto' that jumps across a variable declaration
-> and initialization.
+> The a9 global timer and arm mp timers rely on the PERIPHCLK as
+> their clock source. The current implementation does not take
+> that into account. That causes problems for applications assuming
+> other frequencies than 1 GHz.
 >
-
-"Big" method is probably the issue there. If it's not possible to follow 
-control flow in a given function, it's a strong hint there is a problem 
-with its size, independently of any standard. And even though 
-goto_cleanup is a legit pattern in C, I still don't get the argument 
-about declaring variable far from their definition point in this case.
-It seems that we are trying to solve the consequence without really 
-understanding the root cause issue.
-
-> Even if not all methods have this problem, the coding standards
-> guide us into the habit of writing code that is immune from this
-> kind of problem. That habit only forms reliably if we apply the
-> coding standards unconditionally, rather than selectively.
+> We can now configure frequencies for the a9 global timer and
+> arm mp timer. By allowing these values to be set according to
+> the application's needs, we ensure that the timers behave
+> consistently with the expected system configuration.
 >
+> The frequency can also be set via the command line, for example
+> for the a9 global timer:
+> -global driver=3Darm.cortex-a9-global-timer,
+>         property=3Dcpu-freq,value=3D1000000000
 
-That's right, but humanly enforced coding standard are usually a waste 
-of time for everyone (reviewers and developers).
+-global is a rare thing for special cases, you don't
+need to mention it here. The standard case should be
+"the SoC configures the device correctly".
 
-How many messages and exchanges on the mailing list could we save by 
-using something like clang-format on the codebase, and force it to be 
-"clean" as part of the CI? There would be no more discussion, as there 
-would be only one single and objective source of truth.
+> Information can be found in the Zynq 7000 SoC Technical
+> Reference Manual under Timers.
+> https://docs.amd.com/r/en-US/ug585-zynq-7000-SoC-TRM
+>
+> Signed-off-by: Yannick Vo=C3=9Fen <y.vossen@beckhoff.com>
+> ---
+>  hw/timer/a9gtimer.c            |  8 +++++---
+>  hw/timer/arm_mptimer.c         | 15 +++++++++++----
+>  include/hw/timer/a9gtimer.h    |  1 +
+>  include/hw/timer/arm_mptimer.h |  2 ++
+>  4 files changed, 19 insertions(+), 7 deletions(-)
+>
+> diff --git a/hw/timer/a9gtimer.c b/hw/timer/a9gtimer.c
+> index 9835c35483..a1f5540e75 100644
+> --- a/hw/timer/a9gtimer.c
+> +++ b/hw/timer/a9gtimer.c
+> @@ -63,9 +63,9 @@ static inline int a9_gtimer_get_current_cpu(A9GTimerSta=
+te *s)
+>  static inline uint64_t a9_gtimer_get_conv(A9GTimerState *s)
+>  {
+>      uint64_t prescale =3D extract32(s->control, R_CONTROL_PRESCALER_SHIF=
+T,
+> -                                  R_CONTROL_PRESCALER_LEN);
+> -
+> -    return (prescale + 1) * 10;
+> +                                  R_CONTROL_PRESCALER_LEN) + 1;
+> +    uint64_t ret =3D NANOSECONDS_PER_SECOND * prescale * 10;
+> +    return (uint32_t) (ret / s->cpu_clk_freq_hz);
 
-> With regards,
-> Daniel
+Why the cast to uint32_t here ?
 
+If you are doing an "x * NANOSECONDS_PER_SECOND / frequency"
+calculation, use muldiv64(). (This does the calculation with a
+96 bit intermediate result.)
+
+>  }
+>
+>  static A9GTimerUpdate a9_gtimer_get_update(A9GTimerState *s)
+> @@ -374,6 +374,8 @@ static const VMStateDescription vmstate_a9_gtimer =3D=
+ {
+>  };
+>
+>  static const Property a9_gtimer_properties[] =3D {
+> +    DEFINE_PROP_UINT64("cpu-freq", A9GTimerState, cpu_clk_freq_hz,
+> +                       NANOSECONDS_PER_SECOND),
+
+You could have a comment mentioning that this default is 1GHz.
+
+The modern way to do this is to have a Clock property, but
+we have enough existing timer devices that take an integer
+frequency that I don't object to another one.
+
+>      DEFINE_PROP_UINT32("num-cpu", A9GTimerState, num_cpu, 0),
+>  };
+>
+> diff --git a/hw/timer/arm_mptimer.c b/hw/timer/arm_mptimer.c
+> index 803dad1e8a..a748b6ab1a 100644
+> --- a/hw/timer/arm_mptimer.c
+> +++ b/hw/timer/arm_mptimer.c
+> @@ -59,9 +59,11 @@ static inline void timerblock_update_irq(TimerBlock *t=
+b)
+>  }
+>
+>  /* Return conversion factor from mpcore timer ticks to qemu timer ticks.=
+  */
+> -static inline uint32_t timerblock_scale(uint32_t control)
+> +static inline uint32_t timerblock_scale(TimerBlock *tb, uint32_t control=
+)
+>  {
+> -    return (((control >> 8) & 0xff) + 1) * 10;
+> +    uint64_t prescale =3D (((control >> 8) & 0xff) + 1);
+> +    uint64_t ret =3D NANOSECONDS_PER_SECOND * prescale * 10;
+> +    return (uint32_t) (ret / tb->freq_hz);
+>  }
+>
+>  /* Must be called within a ptimer transaction block */
+> @@ -155,7 +157,7 @@ static void timerblock_write(void *opaque, hwaddr add=
+r,
+>              ptimer_stop(tb->timer);
+>          }
+>          if ((control & 0xff00) !=3D (value & 0xff00)) {
+> -            ptimer_set_period(tb->timer, timerblock_scale(value));
+> +            ptimer_set_period(tb->timer, timerblock_scale(tb, value));
+>          }
+>          if (value & 1) {
+>              uint64_t count =3D ptimer_get_count(tb->timer);
+> @@ -222,7 +224,8 @@ static void timerblock_reset(TimerBlock *tb)
+>          ptimer_transaction_begin(tb->timer);
+>          ptimer_stop(tb->timer);
+>          ptimer_set_limit(tb->timer, 0, 1);
+> -        ptimer_set_period(tb->timer, timerblock_scale(0));
+> +        ptimer_set_period(tb->timer,
+> +            timerblock_scale(tb, tb->control));
+>          ptimer_transaction_commit(tb->timer);
+>      }
+>  }
+> @@ -269,6 +272,7 @@ static void arm_mptimer_realize(DeviceState *dev, Err=
+or **errp)
+>       */
+>      for (i =3D 0; i < s->num_cpu; i++) {
+>          TimerBlock *tb =3D &s->timerblock[i];
+> +        tb->freq_hz =3D s->clk_freq_hz;
+>          tb->timer =3D ptimer_init(timerblock_tick, tb, PTIMER_POLICY);
+>          sysbus_init_irq(sbd, &tb->irq);
+>          memory_region_init_io(&tb->iomem, OBJECT(s), &timerblock_ops, tb=
+,
+> @@ -283,6 +287,7 @@ static const VMStateDescription vmstate_timerblock =
+=3D {
+>      .minimum_version_id =3D 3,
+>      .fields =3D (const VMStateField[]) {
+>          VMSTATE_UINT32(control, TimerBlock),
+> +        VMSTATE_UINT64(freq_hz, TimerBlock),
+>          VMSTATE_UINT32(status, TimerBlock),
+>          VMSTATE_PTIMER(timer, TimerBlock),
+>          VMSTATE_END_OF_LIST()
+
+You cannot add fields to a VMStateDescription without doing
+something to handle migration compatibility. Fortunately,
+in this case you don't need to add the field at all -- freq_hz
+is a property value that cannot be updated by the guest at
+runtime, so it doesn't need to be saved for migration.
+
+> @@ -301,6 +306,8 @@ static const VMStateDescription vmstate_arm_mptimer =
+=3D {
+>  };
+>
+>  static const Property arm_mptimer_properties[] =3D {
+> +    DEFINE_PROP_UINT64("clk-freq", ARMMPTimerState, clk_freq_hz,
+> +                       NANOSECONDS_PER_SECOND),
+
+Can we be consistent about the property name and state struct
+field that we use, please?
+
+The one that seems to be most used in hw/timer/ is
+a property name "clock-frequency" and a field name freq_hz.
+
+thanks
+-- PMM
 

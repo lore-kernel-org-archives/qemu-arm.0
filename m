@@ -4,84 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A40CCA0EEB
-	for <qemu-arm@archiver.kernel.org>; Tue, 19 Aug 2025 15:26:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78B1DCA0EEB
+	for <qemu-arm@archiver.kernel.org>; Tue, 19 Aug 2025 15:44:58 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uoODw-0002Ek-OD; Tue, 19 Aug 2025 11:26:08 -0400
+	id 1uoOVO-0007Zs-F7; Tue, 19 Aug 2025 11:44:10 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uoODv-0002EF-P4
- for qemu-arm@nongnu.org; Tue, 19 Aug 2025 11:26:07 -0400
-Received: from mail-yb1-xb30.google.com ([2607:f8b0:4864:20::b30])
+ id 1uoOVM-0007V9-Us
+ for qemu-arm@nongnu.org; Tue, 19 Aug 2025 11:44:09 -0400
+Received: from mail-yb1-xb36.google.com ([2607:f8b0:4864:20::b36])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uoODt-0007c1-Sc
- for qemu-arm@nongnu.org; Tue, 19 Aug 2025 11:26:07 -0400
-Received: by mail-yb1-xb30.google.com with SMTP id
- 3f1490d57ef6-e933a69651dso3168638276.1
- for <qemu-arm@nongnu.org>; Tue, 19 Aug 2025 08:26:05 -0700 (PDT)
+ id 1uoOVK-0002se-Er
+ for qemu-arm@nongnu.org; Tue, 19 Aug 2025 11:44:08 -0400
+Received: by mail-yb1-xb36.google.com with SMTP id
+ 3f1490d57ef6-e933597bc2eso3775378276.2
+ for <qemu-arm@nongnu.org>; Tue, 19 Aug 2025 08:44:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1755617164; x=1756221964; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=r2QXCMIO4z0sNO0fyaO/mu9Yn7X4g6WvSYCK977bQks=;
- b=bt/It1fEznow/9ZED+4H7h+A1hxNSxCp4uyeDQL4OZGNGQmSNNrtujZK6c2PIk2TRE
- zg92CTVX7Nu70FbMf1Q5WrUOlJHmRl8VMVC7M8SJMBooccu+Omo/M+kliUjvhd2W4Fvp
- /32Yy1MKt6xt7dcmZmZyUlJYXkngpYDWaUw+mNzm3YDJ+ahWJLIlNKE2pNmGmOQIicEW
- GuQi+NoyHSxvjRrhle4vGXTQlsIHuI0MrEW9iOr8S5GrHylhGINpE71ERzrsdH5WqXj1
- pln6rVhj4AnYbrR1kg22XsQAt6Z67GQcItMpPgogG4xfWx/jXsR7ryz4gPul26rVIsvI
- 84Sw==
+ d=linaro.org; s=google; t=1755618245; x=1756223045; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=rSwH9TFUa1ySF0QKmDlMGXX9kVKy+ZxCiks3DHJtt/U=;
+ b=OWoyXG1ynLC3UL0Qnk/iwsaZkNktfokb6wnIRatvl++zWfNvBI488+7bBXyHffLYOK
+ 1aCtEQgVD4AOOUGnO/8FZS4O4AE2oQbTnrDpbc+piJ8UYzLeYqD1jAp2bJan6HUVGnLj
+ +clgzlERO+ApRa1hEHyzWyl02JefayQ2dsiTn6S163YeVom/fTr8AxcDQLn8bt9uV2+A
+ b4lIjHG7aPNN5FABrJASqRDyE/puTmZDoUje/WfA9zFWixTgBS8mBScm/PLSjv8SnZHJ
+ 66SW7dy4Os832vTTEjN2ttn6u+hm1KghV1S647s3AVV5vjYj9hOuYVfCfnV6UN212KOZ
+ 69Ag==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1755617164; x=1756221964;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=r2QXCMIO4z0sNO0fyaO/mu9Yn7X4g6WvSYCK977bQks=;
- b=B1vH/PexEFcb1LV7cuVdePdSgeznvfkm6ANqcfFGLTTJBnkxjq0yucTk+E8fwgxkp8
- LAkGLUKNnt0OabQ7vRS3WJD5IqdDiJjgDlvHVxi84/lzVlZlRpZ88SS/VlAYafeW5I78
- Nw9TzLlN6V+rU5oaSTMkB4Xi7jT7nftwQHryhM1Q/CxA3Rp3crS/TIBGxNvGOgy70fmM
- dGqwxrqUhff6GijSWO6gr+BTkol9M4Qwpxkl4ohbVPwUhPqLeHmSVFYhykVuBh611xYI
- Jw2SW8SlNKcCJKxlrNcFBF5bbPxosW+mpuiBYvyXQd6W2BgTelXT34xKDjIDFsyfO3mF
- Agjw==
+ d=1e100.net; s=20230601; t=1755618245; x=1756223045;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=rSwH9TFUa1ySF0QKmDlMGXX9kVKy+ZxCiks3DHJtt/U=;
+ b=E6ox/iIIZKuQ53vP6+AvG0whbNfSmyR4dFX3fQInlPR8JBON2jL5RMIdBX2TRBZ+p8
+ 1xs17inmzL0VDRVHiA917aNt3XLvE8El+vqeO9bw6eO19CzfwnFaRm7LhBGz8/wi/TeL
+ PvL6yUxXjEqgdO/N5X1nUX27NRVvWE/zb14RBJCdf7ePGyc2er5jVbQcQN7Duusft6G3
+ hcCl9dUGZi4rOfGJvaBNNnZ0GMg0ymkCzD7DhgBfyTREM/3YDKK0+q3YERTMWJ6Kr/m2
+ 5MUHFVPJLXsM8pgIbNy6+kza4R4/U3RkMywdsnPBpnMK8QKGjocR2kNn/nxeOUjNVX1p
+ iE/w==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXXj1jMx8o8Rxw9liqPaL2mlFpAsgcnKqh1B4g+oXlbYmUDc/uTL+IacjWwGVmLCerTQMkxGS5sSQ==@nongnu.org
-X-Gm-Message-State: AOJu0YzgqUrRFR1PeRuOloBPRJ73jvXQ9weO4bNth0jeJ9WgZ6jOtWhG
- 06wEVz97qu/39pDhTRTH4xlUMMCmEsfVIjpvYUjGG02voD8reIQxKVOH7Z3BMbUhVNCi17Qrt1l
- glGSzdJT7jN76eqD8c5OXb/Cn8YFLvO0WAGIa1g0Arg==
-X-Gm-Gg: ASbGnctbaasuU72EsgENbmW3HU0OY8PjRIhICHczdPCChYHjqV7pcY6AAOz4iRXY/xn
- CvKZ+6DmfQaLjcFKUXW9/yUzU+bK57DfyR1dGeYDmXIdHKngxQXYv8Jpa6v4HGdUPRy2eClMIhb
- FuGbjdE+S6lFFBXhBIDbhxji4prHjCY7eCpiO2FTGrGurW7fNxQm3oit1GpEnPbg1kmHeG8RXhD
- 0UK04J1
-X-Google-Smtp-Source: AGHT+IEt3XagP2Oi5KUl6Ld6I0idSNtE/A6jnBOP2p4uhrPCVpm8tIN1WrhebB4VD5E+HZMK5dFWt60K2lmADRjaV9s=
-X-Received: by 2002:a05:6902:6005:b0:e90:2ed6:3dd7 with SMTP id
- 3f1490d57ef6-e94e61bc94emr3303743276.17.1755617160608; Tue, 19 Aug 2025
- 08:26:00 -0700 (PDT)
+ AJvYcCXW7GeiuqSMBaGF0MLoU9vK5DCczT19BwSj67Tt+XEgo69AALik6835Sdq9qBhkMb+YOikrMDqeIw==@nongnu.org
+X-Gm-Message-State: AOJu0YyfY7L41XcEntLrMYNk3wEbO6mvxBJgadXgOaY2ROLqZnJRJb7D
+ bL/aMniDUTH8BeR4AyqXZyNqB/ZE3o0OEvDEf6PkiYM+e73M4Op2f+52stmvdS1Xgwvea8RqFQw
+ HpSfE9VjFnC88gh8A9HKOfdx7jPwhd0JsYGBOSsPz/Q==
+X-Gm-Gg: ASbGncumCHvlZJwKmc8iFyxxLxS0e8yc7rWgajDlzlci45t+II4zRFJUi7xDzsZrw2f
+ BMWS58/mBl1i7fmmVdabxU+P46d8Dt6ZPdvBRonytlexvOmu2xJPoSGEYgRzd14vg7YxI61OYHB
+ vpAoy6wEzLFhzY2YDqtZBmC1ygJvAodtWsXbABKXUrax9dIg/xbd9UY0VBr4aL1kzbpk6Na966z
+ YHqNOvs
+X-Google-Smtp-Source: AGHT+IEOzFm3e8ljQCWbVbH/3dQsdJS0F1jOYtJGOdPJmMkwBopzbtASQ6cMRfa+oslsbdAX6bniGil03D4SfCPYcMI=
+X-Received: by 2002:a05:6902:1888:b0:e93:3d8b:4e5f with SMTP id
+ 3f1490d57ef6-e94e5f4a590mr3647487276.0.1755618245039; Tue, 19 Aug 2025
+ 08:44:05 -0700 (PDT)
 MIME-Version: 1.0
-References: <20250716095432.81923-1-luc.michel@amd.com>
- <20250716095432.81923-14-luc.michel@amd.com>
- <CAFEAcA-x_CYWPM2TeGSTLjCj==3JY_uyvfFmR=nLi4pRLw-P2Q@mail.gmail.com>
- <aKMrBdNhtqHVHRYw@XFR-LUMICHEL-L2.amd.com>
-In-Reply-To: <aKMrBdNhtqHVHRYw@XFR-LUMICHEL-L2.amd.com>
+References: <20250815090113.141641-1-corvin.koehne@gmail.com>
+ <20250815090113.141641-10-corvin.koehne@gmail.com>
+In-Reply-To: <20250815090113.141641-10-corvin.koehne@gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 19 Aug 2025 16:25:48 +0100
-X-Gm-Features: Ac12FXwJcpCimU7_fBUTUlYbs3nMnxybwgP6YJH5S2_zc_mChZM0PFguK1x88SU
-Message-ID: <CAFEAcA8eop95ojfZw3YbDrWfrv1fZ5QYSmwx_oDThxMCiMMeDg@mail.gmail.com>
-Subject: Re: [PATCH 13/48] hw/arm/xlnx-versal: VersalMap: add support for
- OR'ed IRQs
-To: Luc Michel <luc.michel@amd.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
- Francisco Iglesias <francisco.iglesias@amd.com>,
- "Edgar E . Iglesias" <edgar.iglesias@amd.com>, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- Alistair Francis <alistair@alistair23.me>,
- Frederic Konrad <frederic.konrad@amd.com>, 
- Sai Pavan Boddu <sai.pavan.boddu@amd.com>
+Date: Tue, 19 Aug 2025 16:43:52 +0100
+X-Gm-Features: Ac12FXwKja-SnBY13NJ1bTLfweL6EDRt_uOQjtmsrDjBh7KP9_vPM7fp4eNmpNk
+Message-ID: <CAFEAcA-mTTLEtE72W=-R9O=m7zSUiL5bGf7TMXoFP=Xqvmq2OA@mail.gmail.com>
+Subject: Re: [PATCH v2 09/14] hw/misc: Add dummy ZYNQ DDR controller
+To: =?UTF-8?Q?Corvin_K=C3=B6hne?= <corvin.koehne@gmail.com>
+Cc: qemu-devel@nongnu.org,
+ =?UTF-8?Q?Corvin_K=C3=B6hne?= <c.koehne@beckhoff.com>, 
+ qemu-arm@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, 
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>, 
+ =?UTF-8?Q?Yannick_Vo=C3=9Fen?= <y.vossen@beckhoff.com>, 
+ Hanna Reitz <hreitz@redhat.com>, qemu-block@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b30;
- envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb30.google.com
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b36;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb36.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -104,67 +104,77 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, 18 Aug 2025 at 14:30, Luc Michel <luc.michel@amd.com> wrote:
+On Fri, 15 Aug 2025 at 10:01, Corvin K=C3=B6hne <corvin.koehne@gmail.com> w=
+rote:
 >
-> Hi Peter,
+> From: YannickV <Y.Vossen@beckhoff.com>
 >
-> On 13:24 Mon 04 Aug     , Peter Maydell wrote:
-> > On Wed, 16 Jul 2025 at 10:55, Luc Michel <luc.michel@amd.com> wrote:
-> > >
-> > > +static qemu_irq versal_get_irq_or_gate_in(Versal *s, int irq_idx,
-> > > +                                          qemu_irq target_irq)
-> > > +{
-> > > +    Object *container = versal_get_child(s, "irq-or-gates");
-> > > +    DeviceState *dev;
-> > > +    g_autofree char *name;
-> > > +    int idx, or_idx;
-> > > +
-> > > +    idx = FIELD_EX32(irq_idx, VERSAL_IRQ, IRQ);
-> > > +    or_idx = FIELD_EX32(irq_idx, VERSAL_IRQ, OR_IDX);
-> > > +
-> > > +    name = g_strdup_printf("irq[%d]", idx);
-> > > +    dev = DEVICE(object_resolve_path_at(container, name));
-> > > +
-> > > +    if (dev == NULL) {
-> > > +        dev = qdev_new(TYPE_OR_IRQ);
-> >
-> > Here we create a device...
-> >
-> > > +        object_property_add_child(container, name, OBJECT(dev));
-> > > +        qdev_prop_set_uint16(dev, "num-lines", 1 << R_VERSAL_IRQ_OR_IDX_LENGTH);
-> > > +        qdev_realize_and_unref(dev, NULL, &error_abort);
-> > > +        qdev_connect_gpio_out(dev, 0, target_irq);
-> > > +    }
-> > > +
-> > > +    return qdev_get_gpio_in(dev, or_idx);
-> >
-> > ...but then we don't save the pointer to it, so the only
-> > thing still hanging onto it is the QOM tree.
-> >
-> > If you want to change "embedded device struct" into
-> > "allocate memory to create devices" that's fine, but the
-> > SoC should still keep track of everything it's creating,
-> > so that (at least in theory) it could clean it up on
-> > unrealize.
+> A dummy DDR controller for ZYNQ has been added. While all registers are p=
+resent,
+> not all are functional. Read and write access is validated, and the user =
+mode
+> can be set. This provides a basic DDR controller initialization, preventi=
+ng
+> system hangs due to endless polling or similar issues.
 >
-> I'm not sure I fully understand your point:
+> Signed-off-by: Yannick Vo=C3=9Fen <y.vossen@beckhoff.com>
+> ---
+>  hw/misc/Kconfig                  |   3 +
+>  hw/misc/meson.build              |   1 +
+>  hw/misc/xlnx-zynq-ddrc.c         | 393 +++++++++++++++++++++++++++++++
+>  include/hw/misc/xlnx-zynq-ddrc.h | 140 +++++++++++
+>  4 files changed, 537 insertions(+)
+>  create mode 100644 hw/misc/xlnx-zynq-ddrc.c
+>  create mode 100644 include/hw/misc/xlnx-zynq-ddrc.h
 >
->    - The OR gate device is parented to the "irq-or-gates" container,
->      which is itself parented to the SoC. So finalizing (freeing) the
->      SoC would trigger a cascade of free calls to the children,
->      including those objects right?
+> diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
+> index 8f9ce2f68c..99548e146f 100644
+> --- a/hw/misc/Kconfig
+> +++ b/hw/misc/Kconfig
+> @@ -220,4 +220,7 @@ config IOSB
+>  config XLNX_VERSAL_TRNG
+>      bool
+>
+> +config XLNX_ZYNQ_DDRC
+> +    bool
+> +
+>  source macio/Kconfig
+> diff --git a/hw/misc/meson.build b/hw/misc/meson.build
+> index 55f493521b..6ee7b6c71d 100644
+> --- a/hw/misc/meson.build
+> +++ b/hw/misc/meson.build
+> @@ -89,6 +89,7 @@ system_ss.add(when: 'CONFIG_RASPI', if_true: files(
+>  ))
+>  system_ss.add(when: 'CONFIG_SLAVIO', if_true: files('slavio_misc.c'))
+>  system_ss.add(when: 'CONFIG_ZYNQ', if_true: files('zynq_slcr.c'))
+> +system_ss.add(when: 'CONFIG_ZYNQ', if_true: files('xlnx-zynq-ddrc.c'))
+>  system_ss.add(when: 'CONFIG_XLNX_ZYNQMP_ARM', if_true: files('xlnx-zynqm=
+p-crf.c'))
+>  system_ss.add(when: 'CONFIG_XLNX_ZYNQMP_ARM', if_true: files('xlnx-zynqm=
+p-apu-ctrl.c'))
+>  system_ss.add(when: 'CONFIG_XLNX_VERSAL', if_true: files(
+> diff --git a/hw/misc/xlnx-zynq-ddrc.c b/hw/misc/xlnx-zynq-ddrc.c
+> new file mode 100644
+> index 0000000000..8151a0e3ee
+> --- /dev/null
+> +++ b/hw/misc/xlnx-zynq-ddrc.c
 
-Ah, I hadn't noticed that we add the object as a QOM child
-of the SoC here.
+All new files must start with a comment which at least
+(a) says what the file is for and (b) has the SPDX
+license indicator. You can optionally also add an authorship
+or copyright line here if you/your employer need that.
 
-It does mean you can't ever get back to the OR gate object
-except by walking the QOM tree, but I suppose that's OK.
+Same applies to the .h file.
 
-It would be helpful if you could run "make check" under
-the clang leak sanitizer with your patches added, to see
-if it complains about anything. (Unfortunately it will
-definitely complain about at least some pre-existing
-leaks, I suspect.)
+> +static void zynq_ddrctrl_class_init(ObjectClass *klass, void *data)
+> +{
+> +    DeviceClass *dc =3D DEVICE_CLASS(klass);
+> +
+> +    device_class_set_legacy_reset(dc, zynq_ddrctrl_reset);
+> +}
+
+This looks like it's missing registration of a vmstate
+struct for state save/load.
 
 thanks
 -- PMM

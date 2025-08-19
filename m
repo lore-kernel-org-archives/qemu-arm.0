@@ -4,113 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8AFB1CA0EE6
-	for <qemu-arm@archiver.kernel.org>; Tue, 19 Aug 2025 16:59:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CBFA9CA0EE6
+	for <qemu-arm@archiver.kernel.org>; Tue, 19 Aug 2025 18:23:23 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uoPfg-0004Kh-Qk; Tue, 19 Aug 2025 12:58:52 -0400
+	id 1uoQzA-0004x8-26; Tue, 19 Aug 2025 14:23:04 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1uoPfe-0004Jm-Cq
- for qemu-arm@nongnu.org; Tue, 19 Aug 2025 12:58:50 -0400
-Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
+ (Exim 4.90_1) (envelope-from <ktokunaga.mail@gmail.com>)
+ id 1uoQz7-0004vT-Cc; Tue, 19 Aug 2025 14:23:01 -0400
+Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1uoPfc-0007je-4d
- for qemu-arm@nongnu.org; Tue, 19 Aug 2025 12:58:50 -0400
-Received: by mail-pl1-x62b.google.com with SMTP id
- d9443c01a7336-24458195495so35610225ad.2
- for <qemu-arm@nongnu.org>; Tue, 19 Aug 2025 09:58:47 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <ktokunaga.mail@gmail.com>)
+ id 1uoQz5-0003mh-Hy; Tue, 19 Aug 2025 14:23:01 -0400
+Received: by mail-pl1-x633.google.com with SMTP id
+ d9443c01a7336-24458263458so45862225ad.3; 
+ Tue, 19 Aug 2025 11:22:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1755622726; x=1756227526; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=LPjrAY+Xgo/RW0b6jwoHl/sfMChofkYDsp/7Kp6nPyk=;
- b=sL78Aoth/eimpqd7EY+tBAmxtAz1yJ9Av7RjrZN24tq8zu5QcvcmU5Ig0fti/Sp2cM
- QvRscpa8GrWF0SyKQx+QiYKVyWLfmQCGt3B5aDaUPhZHyz4Pe30VzeN8GZLJlBtDPMxV
- GsyNt8N7FHMlJEsqvo6mYdYTp8qncFT8lFLi7LJg7yqq3/bHdKgtlL8bopwHNzQaKUBL
- jPGqUVOxnG/LcFxnqhqVXVN0d39dC+L6B+yqIrCkZj5zL7PgJHqScopSq/guQjc1UGVP
- 2Y2M4VTlSUZS1vcpR7OhMd9jh5YH2EzRLIdg6nd6WnY7DcULtCUqumRZnrYlEm8sYuCS
- fpJw==
+ d=gmail.com; s=20230601; t=1755627777; x=1756232577; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=mnwM1NKHDi9Rdp/eRcwiDwz6kKklNhllSveakiPYS/g=;
+ b=SuZiL/le0pNdXBCetxuteCOVM6vTSzqw2E8XMe0czcxaONhP1eftGMZE7cnufhH/fj
+ okP2Ltl34SIqrG1jELFtf1aeKLhk3aCX4cRiyM8GSyeSkyF+wmtdC5tp44u/0zePaovT
+ HsY4mnJZwMuFcwuigEseYZ1xuT08vBwojNUGck1Ldtm95wz844uq78PQFnK/m5cv7a8x
+ LXyAOCl6IzLSpc36gfTw0w4L4retHR14EeJ9gWujK8pKaLJx167JAdawvxx9qtKjrMVW
+ HpnI2Ps7F8WQUYgbNLqrhroZJ+WR84/yzAPUyrJXi7E7PvdnywMh14Hn/STIwYIqS7LR
+ 09lg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1755622726; x=1756227526;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=LPjrAY+Xgo/RW0b6jwoHl/sfMChofkYDsp/7Kp6nPyk=;
- b=rqUWKmTlcSYkVaC9WU5PX9HoTSXdhcwU8Fv+10LOa0QOBAc+LZtq3z7PNukqY2Dl9A
- lMpwrdPdDRZclOa+IcH1Lbi0UaQlPeNBr7rMBOUNBviwZNC+iRbhAA4xz2Lv3QNlOpCU
- 6XrO0gdeBSvkQrCscggYk8GgUZ5+KFW4zSst1mMaJVW3R4GLdfKi5Rr/amzy6Mi7VUw5
- tevO3X2h8rJbrsnL1VzB8X+pe0sc0PDM2//Wr2dXv7qWA2gvpW9sQ1jCSlbdMW9cCGnY
- 9ISnYtpU9nJaVUml9JhJY008y0HyitxBv1ynLntjgyBY1g/xDCGsmvOcvYYzjLoI+9TZ
- yw0w==
+ d=1e100.net; s=20230601; t=1755627777; x=1756232577;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=mnwM1NKHDi9Rdp/eRcwiDwz6kKklNhllSveakiPYS/g=;
+ b=BCXlVG2FL0dVSMKDNlLHgfg/NRKQmQDqohN2n0qxlSM7XXDgb67FhYaxs4g0woBGpB
+ MtDPQCszFdMZN5rMlG4FWKgsVnsNNMcF7tRMbW5lpZJzKGATVFmslBNZruqBEHXGRE8A
+ VOxp5z2IqUzWYCNk9tSHNYuLZ6u9PyB5sbNSdrn8thIvIrsnncpkPBfNK0FupRmVqbDz
+ 9bp0NLz2NduzfalTL/f0DQdsme4MGr/nd2unPyXY11nZaS9GJxXZyS8kwLR2d/GY/74z
+ WbEsYDOuEryYrvdYdKNtGB3bmvuxHwBhf2LU/mBD9kyJ7hxfbC3NarDadDVt2UwANCfk
+ pIhw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWmLsKX9OYIt9TkROQGTbXX/c0DcAz0DFf8sNd0foowrUsaKZcYzTa5FaIMHBfKZ+cFOxXOKaKfUw==@nongnu.org
-X-Gm-Message-State: AOJu0YxuI4M1yqCqeJHK2L3Um8c/+pomnfaiVeTM7gCqH25bgMJf91zZ
- 1msMXdwwl6+tLzpTXgaD0KEsgT5neCEDyy/iwXwlwoV1B3uF8kQNR1hLHggXOv++dNc=
-X-Gm-Gg: ASbGncsxsq11a9jDxcqTE67nA0EgECdm3/dfpSMiOPym0vjcXqhw2p/2EBd7icqQS8t
- M8YCKt3QMA4dcDYRDgIZhtB4UbsNyHeUk7+QvmQS1b+jHtSp6+LIZpO9382Sy56EZtjzWf5WREk
- FTdWAqAO4JBxFexPO5zeGveIhCq9zUf8jnzyjlA9WNq3iqMJ1hlrhnqXeFH+pFfuyDN5WoeI15b
- EjWx00Ivi1Kt98cWeRNk1G7iINA+HnLhNOdhmpOYfxYHX0+aApDG850XuzeYafRE2f96Hb+wpR3
- /NKAsrpNzqAmPHYu0WUyehBI4bVHS0MTsWeQ8wE7yb4ukNRj4B4OkSBiW5SmLBaCS1QxPukVHnN
- CS02PxTZOucK9ECdfwzGLC7SF+dTfDm8TBXY=
-X-Google-Smtp-Source: AGHT+IHVlyp3A/azBmmg2yeQdAmw4SUp1PrqgkmNj+tG+CPVq92F9GsjaUnpinBqavb4VT0aJbBnMQ==
-X-Received: by 2002:a17:903:2308:b0:242:a0b0:3c11 with SMTP id
- d9443c01a7336-245e049b90fmr43918295ad.31.1755622726215; 
- Tue, 19 Aug 2025 09:58:46 -0700 (PDT)
-Received: from [192.168.1.87] ([38.41.223.211])
+ AJvYcCV/jvv7JRIgTihAh6PnPCRJc2nNMe7sL212WfqFMO4BF8dcU5/y+4HMdCveQt+hQFYqZMiZdB2rc7pY2g==@nongnu.org,
+ AJvYcCWPrxLi490RVTBnw0T1dzinetmNkWo4aA9+H0wkUkBnm0bbOeWQSHOyPgodmS92qyPq3k4UcYoK0A==@nongnu.org
+X-Gm-Message-State: AOJu0Yx2mziGM+TMAPbdOd8vxvYCZs54d/qUtfMnUuTYuw9MJWw91ykh
+ UPgYmTMOCe1Tim6N12CokMQIxsx22CZXQGBPI5dbUkBa0ISSNKyDVxiWc0QLD6tL
+X-Gm-Gg: ASbGncvMo7nM//NhFMQRe/nfwh/22oco7pv9vCA2/uZBaKFgyqwPgtm5v1AsxhxC4mG
+ UfDKgsQor+bNN6snDCClULITMFA/Z3OVLe+yJBud80xvH0WNpu6GZbev6GRhrLNNGz1s3Map/9n
+ k1z24mlePLsS8LCcBjrlUkjDB1eBEqmFBDJEoQrvbTtB40WlMf9hYzacgkODzQ/t2w/vu4kzLq0
+ lWe13abepJMvFDkeYZEq0Ke8T4MQTKefh+M7Ot3wI1UEMgagqTuusTRUOhwK5OjSpa199tiwCzq
+ 3I3lG7SrAmvM15swlB2lhHTaZmjOw0KmjzTlSsj80iKvHLi2r/ZewuXddgTDgYknPbHe2y/sq9n
+ Ktgf9kxCaTJESNtYyIlaXfqsvmgY9UvIp
+X-Google-Smtp-Source: AGHT+IFBsiEtnYUR+SskuxqrM1PYZdjvBSImy/uoMDx63y0gSjeoy+527k5Zq5vjFVAwnR57bFS7YA==
+X-Received: by 2002:a17:903:2ac5:b0:234:9656:7db9 with SMTP id
+ d9443c01a7336-245e04866a6mr49403075ad.32.1755627777331; 
+ Tue, 19 Aug 2025 11:22:57 -0700 (PDT)
+Received: from ktock.. ([240d:1a:3b6:8b00:29ce:ef58:c2c9:e52f])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-245ed4ec174sm1971095ad.109.2025.08.19.09.58.45
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 19 Aug 2025 09:58:45 -0700 (PDT)
-Message-ID: <bb46e699-cf29-4c61-ab7c-bd25338e4289@linaro.org>
-Date: Tue, 19 Aug 2025 09:58:44 -0700
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 15/18] whpx: arm64: implement -cpu host
-Content-Language: en-US
-To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Mohamed Mediouni <mohamed@unpredictable.fr>, qemu-devel@nongnu.org,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Igor Mammedov <imammedo@redhat.com>,
+ d9443c01a7336-245ed33b4c2sm3725125ad.25.2025.08.19.11.22.51
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 19 Aug 2025 11:22:56 -0700 (PDT)
+From: Kohei Tokunaga <ktokunaga.mail@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>,
- Roman Bolshakov <rbolshakov@ddn.com>, Phil Dennis-Jordan
- <phil@philjordan.eu>, Ani Sinha <anisinha@redhat.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Alexander Graf <agraf@csgraf.de>,
- Mads Ynddal <mads@ynddal.dk>, Sunil Muthuswamy <sunilmut@microsoft.com>,
- Zhao Liu <zhao1.liu@intel.com>, Marcel Apfelbaum
- <marcel.apfelbaum@gmail.com>, Eduardo Habkost <eduardo@habkost.net>,
- Cameron Esfahani <dirty@apple.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
- Yanan Wang <wangyanan55@huawei.com>
-References: <20250808065419.47415-1-mohamed@unpredictable.fr>
- <20250808065419.47415-16-mohamed@unpredictable.fr>
- <CAFEAcA9iQnrKWXPXw2wG3c6gmevOMFQtt48HsJdx8GZz2sd+4Q@mail.gmail.com>
- <8e64fd77-9969-42b3-bbcd-1ed8de910ff9@linaro.org>
- <CAFEAcA9OXu3=HuA9n+Oo0C5K5hTG+kLr9xsM=geBJ_UtCi4_-w@mail.gmail.com>
- <aKSUS2-JrMBX7JXo@redhat.com>
- <1396c8cf-fb2c-4b39-811a-7152bdbe976f@linaro.org>
- <aKShmdP3Pdn-wYgY@redhat.com>
- <3eefa4f1-56ae-40ed-9317-2a3e4e6983ea@linaro.org>
- <aKSo6aHNkUWwqock@redhat.com>
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-In-Reply-To: <aKSo6aHNkUWwqock@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ WANG Xuerui <git@xen0n.name>, Aurelien Jarno <aurelien@aurel32.net>,
+ Huacai Chen <chenhuacai@kernel.org>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Aleksandar Rikalo <arikalo@gmail.com>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <Alistair.Francis@wdc.com>, Stefan Weil <sw@weilnetz.de>,
+ qemu-arm@nongnu.org, qemu-riscv@nongnu.org,
+ Stefan Hajnoczi <stefanha@redhat.com>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>, ktokunaga.mail@gmail.com
+Subject: [PATCH 04/35] .gitlab-ci.d: Add build tests for wasm64
+Date: Wed, 20 Aug 2025 03:21:33 +0900
+Message-ID: <85c09a7c387d8fb9bbcd5b887c3d219c59a0807b.1755623521.git.ktokunaga.mail@gmail.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <cover.1755623521.git.ktokunaga.mail@gmail.com>
+References: <cover.1755623521.git.ktokunaga.mail@gmail.com>
+MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62b;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pl1-x62b.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::633;
+ envelope-from=ktokunaga.mail@gmail.com; helo=mail-pl1-x633.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -126,164 +112,110 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 8/19/25 9:40 AM, Daniel P. Berrangé wrote:
-> On Tue, Aug 19, 2025 at 09:25:22AM -0700, Pierrick Bouvier wrote:
->> On 8/19/25 9:08 AM, Daniel P. Berrangé wrote:
->>> On Tue, Aug 19, 2025 at 08:48:16AM -0700, Pierrick Bouvier wrote:
->>>> On 8/19/25 8:12 AM, Daniel P. Berrangé wrote:
->>>>> On Tue, Aug 19, 2025 at 04:06:45PM +0100, Peter Maydell wrote:
->>>>>> On Tue, 19 Aug 2025 at 16:04, Pierrick Bouvier
->>>>>> <pierrick.bouvier@linaro.org> wrote:
->>>>>>>
->>>>>>> On 8/19/25 6:24 AM, Peter Maydell wrote:
->>>>>>>> On Fri, 8 Aug 2025 at 07:55, Mohamed Mediouni <mohamed@unpredictable.fr> wrote:
->>>>>>>> Can you follow the QEMU coding style, please (here and elsewhere)?
->>>>>>>> Variables and function names should be all lower case,
->>>>>>>> and variable declarations go at the start of a C code
->>>>>>>> block, not in the middle of one.
->>>>>>>>
->>>>>>>
->>>>>>> In some cases, including in this function, I feel that the rule to
->>>>>>> declare variables at the start of a block is not really helpful, and is
->>>>>>> more related to legacy C than a real point nowadays.
->>>>>>> As well, it sometimes forces to reuse some variables between various sub
->>>>>>> blocks, which definitely can create bugs.
->>>>>>>
->>>>>>> Anyway, I'm not discussing the existing QEMU coding style, but just
->>>>>>> asking if for the current context, is it really a problem to declare
->>>>>>> variable here?
->>>>>>
->>>>>> The point of a coding style is to aim for consistency. QEMU
->>>>>> is pretty terrible at being consistent, but we should try.
->>>>>> The rule about variables at start of block is not because
->>>>>> some compilers fail to compile it, but because we think
->>>>>> it's overall more readable that way.
->>>>>
->>>>> There are also potential[1] functional problems with not declaring
->>>>> at the start of block, because if you have a "goto cleanup" which
->>>>> jumps over the line of the declaration, the variable will have
->>>>> undefined state when the 'cleanup:' block is running. This is
->>>>> something which is very subtle and easily missed when reading the
->>>>> code flow.
->>>>>
->>>>
->>>> This has nothing to do with where variables are declared, but where they are
->>>> assigned. The same issue can happen whether or not it's declared at the
->>>> start of a block.
->>>>
->>>> I suspect we use -ftrivial-auto-var-init precisely because we force
->>>> variables to be declared at start of the scope, i.e. where they don't have
->>>> any value yet. So, instead of forcing an explicit initialization or rely on
->>>> compiler warnings for uninitialized values, it was decided to initialize
->>>> them to 0 by default.
->>>>
->>>> If we declared them at the point where they have a defined semantic value,
->>>> this problem would not exist anyway, out of the goto_cleanup situation,
->>>> which has the same fundamental issue in both cases.
->>>
->>> It really isn't the same issue when you compare
->>>
->>>     void bar(void) {
->>>       char *foo = NULL;
->>>
->>>       if (blah)
->>>          goto cleanup:
->>>
->>>     cleanup:
->>>       if (foo)
->>>          ....
->>>     }
->>>
->>> vs
->>>
->>>     void bar(void) {
->>>       if (blah)
->>>          goto cleanup:
->>>
->>>       char *foo = NULL;
->>>
->>>       ...some code...
->>>
->>>     cleanup:>      if (foo)
->>>          ....
->>>     }
->>>
->>> The late declaration of 'foo' is outright misleading to reviewers.
->>>
->>> Its initialization at time of declaration gives the impression
->>> that 'foo' has well defined value in the 'cleanup' block, when
->>> that is not actually true. In big methods it is very easy to
->>> overlook an earlier 'goto' that jumps across a variable declaration
->>> and initialization.
->>>
->>
->> "Big" method is probably the issue there. If it's not possible to follow
->> control flow in a given function, it's a strong hint there is a problem with
->> its size, independently of any standard.
-> 
-> Certainly some methods are too big & deserve refactoring, but that's a
-> non-trivial investment, and it isn't always a clearcut win to split
-> code out into a bunch of arbitrarily short methods. You may solve the
-> goto/initialization problem, but make other things harder as you often
-> still have to fully page all the code into mind to understand it.
->
+The wasm builds are tested for 3 targets: wasm32, wasm64(-sMEMORY64=1) and
+wasm64(-sMEMORY64=2). The CI builds the containers using the same Dockerfile
+(emsdk-wasm-cross.docker) with different build args.
 
-I am still looking for an example of where breaking down a big function 
-in smaller logical chunks has reduced the readability for anyone, but I 
-never met one so far in my professional life.
-Usually it comes with the additional benefit that you need to *name* 
-things explicitely, which is usually better than add a comment about them.
-The point of breaking down code is explicitely to remove the need to 
-keep things in mind and assume functions do what they are named for.
+Signed-off-by: Kohei Tokunaga <ktokunaga.mail@gmail.com>
+---
+ .gitlab-ci.d/buildtest.yml          | 26 ++++++++++++++++++++++----
+ .gitlab-ci.d/container-cross.yml    | 20 ++++++++++++++++++--
+ .gitlab-ci.d/container-template.yml |  4 +++-
+ 3 files changed, 43 insertions(+), 7 deletions(-)
 
-I respect the difference about tastes concerning readability and code 
-structure, and I know the context and era from which QEMU codebase comes 
-from.
+V1:
+- This commit is under review in another patch series so please ignore it
+  here.
 
-However, arguing that variables should be at the start of a block 
-because of a potential goto_cleanup situation is not a good argument.
-
->>> Even if not all methods have this problem, the coding standards
->>> guide us into the habit of writing code that is immune from this
->>> kind of problem. That habit only forms reliably if we apply the
->>> coding standards unconditionally, rather than selectively.
->>>
->>
->> That's right, but humanly enforced coding standard are usually a waste of
->> time for everyone (reviewers and developers).
-> 
-> Human enforced standards are absolutely better than a free-for-all. Over
-> time contributors will gain familiarity with the project standards and
-> largely comply without enforcement being required. If contributors
-> repeatedly ignore coding standards, it will disincentivise reviewers
-> from looking at their patches.
->
-
-Sure.
-As well, incessant pushbacks and nitpicking from those same reviewers 
-can disincentivise people to send any patch.
-But maybe the whole point is simply to keep people out of their lawn, or 
-reduce the amount of patches they need to process daily, who knows.
-
->> How many messages and exchanges on the mailing list could we save by using
->> something like clang-format on the codebase, and force it to be "clean" as
->> part of the CI? There would be no more discussion, as there would be only
->> one single and objective source of truth.
-> 
-> I would really love if it we could apply clang-format to everything, but
-> that has a non-trivial impact on maint when done on a large pre-existing
-> codebase like QEMU. Cherry-picking to upstream stable or distros would
-> be immensely painful, verging on impossible, after a bulk reformat. For
-> any new codebase I'd go for clang-format every time.
->
-
-Maybe we could organize a conversation about this, because the benefits 
-are worth making cherry-picking a little bit harder. In this case, all 
-the community benefits from this, while blocking this penalizes everyone 
-except the stable maintenance part and downstream forks.
-As well, it would be a once in a lifetime price to pay.
-
-> With regards,
-> Daniel
+diff --git a/.gitlab-ci.d/buildtest.yml b/.gitlab-ci.d/buildtest.yml
+index d888a60063..77ae8f8281 100644
+--- a/.gitlab-ci.d/buildtest.yml
++++ b/.gitlab-ci.d/buildtest.yml
+@@ -787,11 +787,29 @@ coverity:
+     # Always manual on forks even if $QEMU_CI == "2"
+     - when: manual
+ 
+-build-wasm:
++build-wasm32-32bit:
+   extends: .wasm_build_job_template
+   timeout: 2h
+   needs:
+-    job: wasm-emsdk-cross-container
++    job: wasm32-32bit-emsdk-cross-container
+   variables:
+-    IMAGE: emsdk-wasm32-cross
+-    CONFIGURE_ARGS: --static --disable-tools --enable-debug --enable-tcg-interpreter
++    IMAGE: emsdk-wasm32-32bit-cross
++    CONFIGURE_ARGS: --static --cpu=wasm32 --disable-tools --enable-debug --enable-tcg-interpreter
++
++build-wasm64-64bit:
++  extends: .wasm_build_job_template
++  timeout: 2h
++  needs:
++    job: wasm64-64bit-emsdk-cross-container
++  variables:
++    IMAGE: emsdk-wasm64-64bit-cross
++    CONFIGURE_ARGS: --static --cpu=wasm64 --disable-tools --enable-debug --enable-tcg-interpreter
++
++build-wasm64-32bit:
++  extends: .wasm_build_job_template
++  timeout: 2h
++  needs:
++    job: wasm64-32bit-emsdk-cross-container
++  variables:
++    IMAGE: emsdk-wasm64-32bit-cross
++    CONFIGURE_ARGS: --static --cpu=wasm64 --wasm64-32bit-address-limit --disable-tools --enable-debug --enable-tcg-interpreter
+diff --git a/.gitlab-ci.d/container-cross.yml b/.gitlab-ci.d/container-cross.yml
+index 8d3be53b75..84c4be49f4 100644
+--- a/.gitlab-ci.d/container-cross.yml
++++ b/.gitlab-ci.d/container-cross.yml
+@@ -92,7 +92,23 @@ win64-fedora-cross-container:
+   variables:
+     NAME: fedora-win64-cross
+ 
+-wasm-emsdk-cross-container:
++wasm32-32bit-emsdk-cross-container:
+   extends: .container_job_template
+   variables:
+-    NAME: emsdk-wasm32-cross
++    NAME: emsdk-wasm32-32bit-cross
++    BUILD_ARGS: --build-arg TARGET_CPU=wasm32
++    DOCKERFILE: emsdk-wasm-cross
++
++wasm64-64bit-emsdk-cross-container:
++  extends: .container_job_template
++  variables:
++    NAME: emsdk-wasm64-64bit-cross
++    BUILD_ARGS: --build-arg TARGET_CPU=wasm64 --build-arg WASM64_MEMORY64=1
++    DOCKERFILE: emsdk-wasm-cross
++
++wasm64-32bit-emsdk-cross-container:
++  extends: .container_job_template
++  variables:
++    NAME: emsdk-wasm64-32bit-cross
++    BUILD_ARGS: --build-arg TARGET_CPU=wasm64 --build-arg WASM64_MEMORY64=2
++    DOCKERFILE: emsdk-wasm-cross
+diff --git a/.gitlab-ci.d/container-template.yml b/.gitlab-ci.d/container-template.yml
+index 4eec72f383..01ca840413 100644
+--- a/.gitlab-ci.d/container-template.yml
++++ b/.gitlab-ci.d/container-template.yml
+@@ -10,12 +10,14 @@
+     - export COMMON_TAG="$CI_REGISTRY/qemu-project/qemu/qemu/$NAME:latest"
+     - docker login $CI_REGISTRY -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD"
+     - until docker info; do sleep 1; done
++    - export DOCKERFILE_NAME=${DOCKERFILE:-$NAME}
+   script:
+     - echo "TAG:$TAG"
+     - echo "COMMON_TAG:$COMMON_TAG"
+     - docker build --tag "$TAG" --cache-from "$TAG" --cache-from "$COMMON_TAG"
+       --build-arg BUILDKIT_INLINE_CACHE=1
+-      -f "tests/docker/dockerfiles/$NAME.docker" "."
++      $BUILD_ARGS
++      -f "tests/docker/dockerfiles/$DOCKERFILE_NAME.docker" "."
+     - docker push "$TAG"
+   after_script:
+     - docker logout
+-- 
+2.43.0
 
 

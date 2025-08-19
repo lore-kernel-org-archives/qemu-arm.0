@@ -4,55 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B2D6CA0EF5
-	for <qemu-arm@archiver.kernel.org>; Tue, 19 Aug 2025 09:04:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A75C9CA0EED
+	for <qemu-arm@archiver.kernel.org>; Tue, 19 Aug 2025 09:05:22 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uoIEX-0005ZZ-Ns; Tue, 19 Aug 2025 05:02:23 -0400
+	id 1uoIHQ-0004fR-2e; Tue, 19 Aug 2025 05:05:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1uoIEK-0005Si-Lp; Tue, 19 Aug 2025 05:02:09 -0400
-Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1uoIEI-0003YB-Di; Tue, 19 Aug 2025 05:02:08 -0400
-Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Tue, 19 Aug
- 2025 17:01:42 +0800
-Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
- Transport; Tue, 19 Aug 2025 17:01:42 +0800
-To: Paolo Bonzini <pbonzini@redhat.com>, Peter Maydell
- <peter.maydell@linaro.org>, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?=
- <clg@kaod.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
- Stanley" <joel@jms.id.au>, "Michael S. Tsirkin" <mst@redhat.com>, "Marcel
- Apfelbaum" <marcel.apfelbaum@gmail.com>, "open list:ARM TCG CPUs"
- <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>
-CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
- <nabihestefan@google.com>, <wuhaotsh@google.com>, <titusr@google.com>
-Subject: [PATCH v1 04/11] hw/pci-host/aspeed: Add MSI support and per-RC IOMMU
- address space
-Date: Tue, 19 Aug 2025 17:01:25 +0800
-Message-ID: <20250819090141.3949136-5-jamin_lin@aspeedtech.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250819090141.3949136-1-jamin_lin@aspeedtech.com>
-References: <20250819090141.3949136-1-jamin_lin@aspeedtech.com>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1uoIHM-0004e8-Rp
+ for qemu-arm@nongnu.org; Tue, 19 Aug 2025 05:05:16 -0400
+Received: from mail-yw1-x1132.google.com ([2607:f8b0:4864:20::1132])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1uoIHK-000483-Ap
+ for qemu-arm@nongnu.org; Tue, 19 Aug 2025 05:05:16 -0400
+Received: by mail-yw1-x1132.google.com with SMTP id
+ 00721157ae682-71d6014810fso45249877b3.0
+ for <qemu-arm@nongnu.org>; Tue, 19 Aug 2025 02:05:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1755594305; x=1756199105; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=sIq2ds9Uv9nQ7HV1FXL86ykrtBBDGbFmNGBWN1V5mPw=;
+ b=IUlEqZlVcT64X5neRkDHjw/54FmBKzBhbq+jYWbqtqJLajwth7QNHLqUlfoxXtbONc
+ CYdibLOd5afKb+Zi/YTxaUHsInXw1Vh0xD0n4NHkihUN6b3y97kCsKdX+2IwWUGDaEMu
+ B8JUBSClIWGINKaU4N0gpjm1gfADULulLB7OsFzglJhTATQtwosUthBCs+CqyVvxtYEx
+ G31h0zxHts2HvQXdzi5QQd9mxuiSbpWMOkY/jNerNL+0Z0arpm7pV+2ro3sLUgza5czr
+ 9BZflTwnbsZ3sEDmvnd4+Z1EM7VsHXZCEdeyt/Zj7HL+ERi1C8Ib28Vz/EYn0GvWQCWa
+ v1Tw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1755594305; x=1756199105;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=sIq2ds9Uv9nQ7HV1FXL86ykrtBBDGbFmNGBWN1V5mPw=;
+ b=tVdH9OafvVC+D4XTAIFF1f8cJdJABnJp8cPrf7MTDUGSWXC24GjvkVyAvuaiVNpGYO
+ 2b+n0FYETJAwRGadjSo8Gv7FvgM/lFN3wMiiS/hb98DynjjEREpUqn05RLPUUckbINns
+ qOMMLwPaJNzb/ftAmDqPBPOwyqqY/GqW/eV4E98NNpg99OBEeuPbUm0HFO3iG2bymENm
+ FBExqfWnSwbWKzlK6+l/gegafNII2/tNqCOd/cYELUbWv/U3TlGgCECbtQ9Tc4711Smp
+ E5dxK8IuUYL/00y+CvPGcEMqY7EX0NnfpQKZmehOcbjA0ghvhRkCSEhKUhBiRDdYIpPi
+ vu8w==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWeb21mCpLt8l36c1zsIJip08ISbFzfD5uX3pzTzTa9nCQbGkR6Wbrm/WhQxYoy4VTiCEVtuuSdLA==@nongnu.org
+X-Gm-Message-State: AOJu0YzEEDt0MavGF6XurnjF6T18ypypLnAdxyWRT9oq3cSQHhL/ky8T
+ zErKLJ7TXjF7zq5dEZ3n4wfJ2qpyv5rW0swc+P96LlcoDJ5ipCxBV1hXj/RrZypl3OQ8bfEC98w
+ 4ZcDmcjJUM6ArL6OVv7FfUCkv72dvILwiOuiGXAHRjA==
+X-Gm-Gg: ASbGnct1HwKdqQSxg0J7ts6THeknnUfocQR9Kj2fFw4tLLuwjRTFwcx8keF7XsZ13Hs
+ 9htgDBu1C3/2kXev/UiesqmPKYMVFCZVah8Ce4+sKGI9enMJJvmFb0zVghD77zDu8jQgQUd1u/1
+ gE9e9gqTn2YoxiYomSn0POlFirhfXy5lSsJqopiJv94UOJpoWk7EnW41nRDVPlZlk7O7DF08umd
+ zCyNHLA
+X-Google-Smtp-Source: AGHT+IF7ZDwn4eiZElYI57f9iuECpVyOkhueqUSVLueO9BdZRBNS0D1iGiDdkEzAW7qVIRcuMvK5e4+mvOlmXjpAhzs=
+X-Received: by 2002:a05:690c:64ca:b0:71a:41e2:b553 with SMTP id
+ 00721157ae682-71f9d64e10dmr20335547b3.26.1755594304768; Tue, 19 Aug 2025
+ 02:05:04 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-Received-SPF: pass client-ip=211.20.114.72;
- envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX01.aspeed.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20250811193654.4012878-1-vacha.bhavsar@oss.qualcomm.com>
+ <20250811193654.4012878-4-vacha.bhavsar@oss.qualcomm.com>
+In-Reply-To: <20250811193654.4012878-4-vacha.bhavsar@oss.qualcomm.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 19 Aug 2025 10:04:52 +0100
+X-Gm-Features: Ac12FXzT_nUo_pc5DVSZe7MCVWetnVOe_MEf4xDVHG7HfLhnM0-h1hSJpvK2dfc
+Message-ID: <CAFEAcA9wQ8qh3Ah+QNNXY6u8ut6ZMVqaxFTvDDhvEGYrazFPsA@mail.gmail.com>
+Subject: Re: [PATCH v5 3/4] target/arm: Added support for SME register
+ exposure to
+To: Vacha Bhavsar <vacha.bhavsar@oss.qualcomm.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+ Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1132;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1132.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -65,299 +96,247 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
-From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Add MSI support to the ASPEED PCIe RC/Config model and introduce a per-RC
-"IOMMU root" address space to correctly route MSI writes.
+On Mon, 11 Aug 2025 at 20:37, Vacha Bhavsar
+<vacha.bhavsar@oss.qualcomm.com> wrote:
+>
+> The QEMU GDB stub does not expose the ZA storage SME register to GDB via
+> the remote serial protocol, which can be a useful functionality to debug SME
+> code. To provide this functionality in Aarch64 target, this patch registers the
+> SME register set with the GDB stub. To do so, this patch implements the
+> aarch64_gdb_get_sme_reg() and aarch64_gdb_set_sme_reg() functions to
+> specify how to get and set the SME registers, and the
+> arm_gen_dynamic_smereg_feature() function to generate the target
+> description in XML format to indicate the target architecture supports SME.
+> Finally, this patch includes a dyn_smereg_feature structure to hold this
+> GDB XML description of the SME registers for each CPU.
+>
+> Signed-off-by: Vacha Bhavsar <vacha.bhavsar@oss.qualcomm.com>
+> ---
+>  target/arm/cpu.h       |   1 +
+>  target/arm/gdbstub.c   |   6 ++
+>  target/arm/gdbstub64.c | 122 +++++++++++++++++++++++++++++++++++++++++
+>  target/arm/internals.h |   3 +
+>  4 files changed, 132 insertions(+)
+>
+> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> index dc9b6dce4c..8bd66d7049 100644
+> --- a/target/arm/cpu.h
+> +++ b/target/arm/cpu.h
+> @@ -933,6 +933,7 @@ struct ArchCPU {
+>
+>      DynamicGDBFeatureInfo dyn_sysreg_feature;
+>      DynamicGDBFeatureInfo dyn_svereg_feature;
+> +    DynamicGDBFeatureInfo dyn_smereg_feature;
+>      DynamicGDBFeatureInfo dyn_m_systemreg_feature;
+>      DynamicGDBFeatureInfo dyn_m_secextreg_feature;
+>
+> diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
+> index ce4497ad7c..4371a367a0 100644
+> --- a/target/arm/gdbstub.c
+> +++ b/target/arm/gdbstub.c
+> @@ -531,6 +531,12 @@ void arm_cpu_register_gdb_regs_for_features(ARMCPU *cpu)
+>              GDBFeature *feature = arm_gen_dynamic_svereg_feature(cs, cs->gdb_num_regs);
+>              gdb_register_coprocessor(cs, aarch64_gdb_get_sve_reg,
+>                                       aarch64_gdb_set_sve_reg, feature, 0);
+> +            if (isar_feature_aa64_sme(&cpu->isar)) {
+> +                GDBFeature *sme_feature = arm_gen_dynamic_smereg_feature(cs,
+> +                    cs->gdb_num_regs);
+> +                gdb_register_coprocessor(cs, aarch64_gdb_get_sme_reg,
+> +                    aarch64_gdb_set_sme_reg, sme_feature, 0);
+> +            }
 
-On AST2700 all RCs use the same MSI address, and the MSI target is PCI
-system memory (not normal DRAM). If the MSI window were mapped into real
-system RAM, an endpoint's write could be observed by other RCs and
-spuriously trigger their interrupts. To avoid this, each RC now owns an
-isolated IOMMU root AddressSpace that contains a small MSI window and a
-DRAM alias region for normal DMA.
+It's possible to have SME without SVE, so this should not be
+inside the "if we have SVE" check.
 
-The MSI window captures writes and asserts the RC IRQ. MSI status bits
-are tracked in new H2X RC_H registers (R_H2X_RC_H_MSI_EN{0,1} and
-R_H2X_RC_H_MSI_STS{0,1}). Clearing all status bits drops the IRQ. The
-default MSI address is set to 0x1e77005c and can be overridden via the
-msi-addr property.
+>          } else {
+>              gdb_register_coprocessor(cs, aarch64_gdb_get_fpu_reg,
+>                                       aarch64_gdb_set_fpu_reg,
+> diff --git a/target/arm/gdbstub64.c b/target/arm/gdbstub64.c
+> index 08e2858539..047b1f8133 100644
+> --- a/target/arm/gdbstub64.c
+> +++ b/target/arm/gdbstub64.c
+> @@ -249,6 +249,91 @@ int aarch64_gdb_set_sve_reg(CPUState *cs, uint8_t *buf, int reg)
+>      return 0;
+>  }
+>
+> +int aarch64_gdb_get_sme_reg(CPUState *cs, GByteArray *buf, int reg)
+> +{
+> +    ARMCPU *cpu = ARM_CPU(cs);
+> +    CPUARMState *env = &cpu->env;
+> +
+> +    switch (reg) {
+> +    /* Svg register */
+> +    case 0:
 
-This keeps MSI traffic contained within each RC while preserving normal
-DMA to system DRAM. It enables correct MSI/MSI-X interrupt delivery when
-multiple RCs use the same MSI target address.
+We should comment what all the cases here are; the usual ploce to
+put such a comment is either on the same line as the case, or else
+on the line immediately after the case if the comment would be
+too long to put on the same line.
 
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
----
- include/hw/pci-host/aspeed_pcie.h |  10 +++
- hw/pci-host/aspeed_pcie.c         | 132 ++++++++++++++++++++++++++++++
- hw/pci-host/trace-events          |   3 +
- 3 files changed, 145 insertions(+)
+The capitalization here is odd, too: the register is either "SVG" or "svg".
 
-diff --git a/include/hw/pci-host/aspeed_pcie.h b/include/hw/pci-host/aspeed_pcie.h
-index 8da9537207..6bc54659ee 100644
---- a/include/hw/pci-host/aspeed_pcie.h
-+++ b/include/hw/pci-host/aspeed_pcie.h
-@@ -36,6 +36,8 @@ typedef struct AspeedPCIECfgTxDesc {
- typedef struct AspeedPCIERcRegs {
-     uint32_t int_en_reg;
-     uint32_t int_sts_reg;
-+    uint32_t msi_sts0_reg;
-+    uint32_t msi_sts1_reg;
- } AspeedPCIERcRegs;
- 
- typedef struct AspeedPCIERegMap {
-@@ -55,11 +57,18 @@ OBJECT_DECLARE_SIMPLE_TYPE(AspeedPCIERcState, ASPEED_PCIE_RC);
- struct AspeedPCIERcState {
-     PCIExpressHost parent_obj;
- 
-+    MemoryRegion iommu_root;
-+    AddressSpace iommu_as;
-+    MemoryRegion dram_alias;
-+    MemoryRegion *dram_mr;
-     MemoryRegion mmio_window;
-+    MemoryRegion msi_window;
-     MemoryRegion io_window;
-     MemoryRegion mmio;
-     MemoryRegion io;
- 
-+    uint64_t dram_base;
-+    uint32_t msi_addr;
-     uint32_t bus_nr;
-     char name[16];
-     qemu_irq irq;
-@@ -87,6 +96,7 @@ struct AspeedPCIECfgClass {
-     const AspeedPCIERegMap *reg_map;
-     const MemoryRegionOps *reg_ops;
- 
-+    uint32_t rc_msi_addr;
-     uint64_t rc_bus_nr;
-     uint64_t nr_regs;
- };
-diff --git a/hw/pci-host/aspeed_pcie.c b/hw/pci-host/aspeed_pcie.c
-index b095375c7d..566feaebc7 100644
---- a/hw/pci-host/aspeed_pcie.c
-+++ b/hw/pci-host/aspeed_pcie.c
-@@ -65,6 +65,8 @@ static const TypeInfo aspeed_pcie_root_info = {
-  * PCIe Root Complex (RC)
-  */
- 
-+#define ASPEED_PCIE_CFG_RC_MAX_MSI 64
-+
- static void aspeed_pcie_rc_set_irq(void *opaque, int irq, int level)
- {
-     AspeedPCIERcState *rc = (AspeedPCIERcState *) opaque;
-@@ -94,6 +96,61 @@ static int aspeed_pcie_rc_map_irq(PCIDevice *pci_dev, int irq_num)
-     return irq_num % PCI_NUM_PINS;
- }
- 
-+static void aspeed_pcie_rc_msi_notify(AspeedPCIERcState *rc, uint64_t data)
-+{
-+    AspeedPCIECfgState *cfg =
-+           container_of(rc, AspeedPCIECfgState, rc);
-+    AspeedPCIECfgClass *apc = ASPEED_PCIE_CFG_GET_CLASS(cfg);
-+    const AspeedPCIERcRegs *rc_regs;
-+    uint32_t reg;
-+
-+    /* Written data is the HW IRQ number */
-+    assert(data < ASPEED_PCIE_CFG_RC_MAX_MSI);
-+
-+    rc_regs = &apc->reg_map->rc;
-+
-+    reg = (data < 32) ? rc_regs->msi_sts0_reg : rc_regs->msi_sts1_reg;
-+    cfg->regs[reg] |= BIT(data % 32);
-+
-+    trace_aspeed_pcie_rc_msi_set_irq(cfg->id, data, 1);
-+    qemu_set_irq(rc->irq, 1);
-+}
-+
-+static void aspeed_pcie_rc_msi_write(void *opaque, hwaddr addr, uint64_t data,
-+                                     unsigned int size)
-+{
-+    AspeedPCIERcState *rc = ASPEED_PCIE_RC(opaque);
-+    AspeedPCIECfgState *cfg =
-+           container_of(rc, AspeedPCIECfgState, rc);
-+
-+    trace_aspeed_pcie_rc_msi_notify(cfg->id, addr + rc->msi_addr, data);
-+    aspeed_pcie_rc_msi_notify(rc, data);
-+}
-+
-+static const MemoryRegionOps aspeed_pcie_rc_msi_ops = {
-+    .write = aspeed_pcie_rc_msi_write,
-+    .read = NULL,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+    .valid = {
-+        .min_access_size = 4,
-+        .max_access_size = 4,
-+    },
-+    .impl = {
-+        .min_access_size = 4,
-+        .max_access_size = 4,
-+    },
-+};
-+
-+static AddressSpace *aspeed_pcie_rc_get_as(PCIBus *bus, void *opaque, int devfn)
-+{
-+    AspeedPCIERcState *rc = ASPEED_PCIE_RC(opaque);
-+    return &rc->iommu_as;
-+}
-+
-+static const PCIIOMMUOps aspeed_pcie_rc_iommu_ops = {
-+    .get_address_space = aspeed_pcie_rc_get_as,
-+};
-+
- static void aspeed_pcie_rc_realize(DeviceState *dev, Error **errp)
- {
-     PCIExpressHost *pex = PCIE_HOST_BRIDGE(dev);
-@@ -130,6 +187,42 @@ static void aspeed_pcie_rc_realize(DeviceState *dev, Error **errp)
-                                      &rc->io, 0, 4, TYPE_PCIE_BUS);
-     pci->bus->flags |= PCI_BUS_EXTENDED_CONFIG_SPACE;
- 
-+   /*
-+    * PCIe memory view setup
-+    *
-+    * Background:
-+    * - On AST2700, all Root Complexes use the same MSI address. This MSI
-+    *   address is not normal system RAM - it is a PCI system memory address.
-+    *   If we map the MSI/MSI-X window into real system memory, a write from
-+    *   one EP can be seen by all RCs and wrongly trigger interrupts on them.
-+    *
-+    * Design:
-+    * - MSI/MSI-X here is just a placeholder address so RC and EP can talk.
-+    *   We make a separate MMIO space (iommu_root) for the MSI window so the
-+    *   writes stay local to each RC.
-+    *
-+    * DMA:
-+    * - EPs still need access to real system memory for DMA. We add a DRAM
-+    *   alias in the PCI space so DMA works as expected.
-+    */
-+    name = g_strdup_printf("pcie.%d.iommu_root", cfg->id);
-+    memory_region_init(&rc->iommu_root, OBJECT(rc), name, UINT64_MAX);
-+    address_space_init(&rc->iommu_as, &rc->iommu_root, name);
-+    /* setup MSI */
-+    memory_region_init_io(&rc->msi_window, OBJECT(rc),
-+                          &aspeed_pcie_rc_msi_ops, rc,
-+                          "msi_window", 4);
-+    memory_region_add_subregion(&rc->iommu_root, rc->msi_addr,
-+                                &rc->msi_window);
-+    /* setup DRAM for DMA */
-+    assert(rc->dram_mr != NULL);
-+    name = g_strdup_printf("pcie.%d.dram_alias", cfg->id);
-+    memory_region_init_alias(&rc->dram_alias, OBJECT(rc), name, rc->dram_mr,
-+                             0, memory_region_size(rc->dram_mr));
-+    memory_region_add_subregion(&rc->iommu_root, rc->dram_base,
-+                                &rc->dram_alias);
-+    pci_setup_iommu(pci->bus, &aspeed_pcie_rc_iommu_ops, rc);
-+
-     qdev_realize(DEVICE(&rc->root), BUS(pci->bus), &error_fatal);
- }
- 
-@@ -155,6 +248,10 @@ static void aspeed_pcie_rc_instance_init(Object *obj)
- 
- static const Property aspeed_pcie_rc_props[] = {
-     DEFINE_PROP_UINT32("bus-nr", AspeedPCIERcState, bus_nr, 0),
-+    DEFINE_PROP_UINT32("msi-addr", AspeedPCIERcState, msi_addr, 0),
-+    DEFINE_PROP_UINT64("dram-base", AspeedPCIERcState, dram_base, 0),
-+    DEFINE_PROP_LINK("dram", AspeedPCIERcState, dram_mr, TYPE_MEMORY_REGION,
-+                     MemoryRegion *),
- };
- 
- static void aspeed_pcie_rc_class_init(ObjectClass *klass, const void *data)
-@@ -215,6 +312,10 @@ REG32(H2X_RC_H_INT_STS,     0xC8)
-     SHARED_FIELD(H2X_RC_INT_INTDONE, 4, 1)
-     SHARED_FIELD(H2X_RC_INT_INTX, 0, 4)
- REG32(H2X_RC_H_RDATA,       0xCC)
-+REG32(H2X_RC_H_MSI_EN0,     0xE0)
-+REG32(H2X_RC_H_MSI_EN1,     0xE4)
-+REG32(H2X_RC_H_MSI_STS0,    0xE8)
-+REG32(H2X_RC_H_MSI_STS1,    0xEC)
- 
- #define TLP_FMTTYPE_CFGRD0  0x04 /* Configuration Read  Type 0 */
- #define TLP_FMTTYPE_CFGWR0  0x44 /* Configuration Write Type 0 */
-@@ -228,6 +329,8 @@ static const AspeedPCIERegMap aspeed_regmap = {
-     .rc = {
-         .int_en_reg     = R_H2X_RC_H_INT_EN,
-         .int_sts_reg    = R_H2X_RC_H_INT_STS,
-+        .msi_sts0_reg   = R_H2X_RC_H_MSI_STS0,
-+        .msi_sts1_reg   = R_H2X_RC_H_MSI_STS1,
-     },
- };
- 
-@@ -399,6 +502,29 @@ static void aspeed_pcie_cfg_write(void *opaque, hwaddr addr, uint64_t data,
-         }
-         s->regs[reg] &= ~data | H2X_RC_INT_INTX_MASK;
-         break;
-+    /*
-+     * These status registers are used for notify sources ISR are executed.
-+     * If one source ISR is executed, it will clear one bit.
-+     * If it clear all bits, it means to initialize this register status
-+     * rather than sources ISR are executed.
-+     */
-+    case R_H2X_RC_H_MSI_STS0:
-+    case R_H2X_RC_H_MSI_STS1:
-+        if (data == 0) {
-+            return ;
-+        }
-+
-+        s->regs[reg] &= ~data;
-+        if (data == 0xffffffff) {
-+            return;
-+        }
-+
-+        if (!s->regs[R_H2X_RC_H_MSI_STS0] &&
-+            !s->regs[R_H2X_RC_H_MSI_STS1]) {
-+            trace_aspeed_pcie_rc_msi_clear_irq(s->id, 0);
-+            qemu_set_irq(s->rc.irq, 0);
-+        }
-+        break;
-     default:
-         s->regs[reg] = data;
-         break;
-@@ -420,6 +546,8 @@ static void aspeed_pcie_cfg_instance_init(Object *obj)
-     AspeedPCIECfgState *s = ASPEED_PCIE_CFG(obj);
- 
-     object_initialize_child(obj, "rc", &s->rc, TYPE_ASPEED_PCIE_RC);
-+    object_property_add_alias(obj, "dram", OBJECT(&s->rc), "dram");
-+    object_property_add_alias(obj, "dram-base", OBJECT(&s->rc), "dram-base");
- 
-     return;
- }
-@@ -448,6 +576,9 @@ static void aspeed_pcie_cfg_realize(DeviceState *dev, Error **errp)
-     object_property_set_int(OBJECT(&s->rc), "bus-nr",
-                             apc->rc_bus_nr,
-                             &error_abort);
-+    object_property_set_int(OBJECT(&s->rc), "msi-addr",
-+                            apc->rc_msi_addr,
-+                            &error_abort);
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->rc), errp)) {
-         return;
-     }
-@@ -479,6 +610,7 @@ static void aspeed_pcie_cfg_class_init(ObjectClass *klass, const void *data)
-     apc->reg_ops = &aspeed_pcie_cfg_ops;
-     apc->reg_map = &aspeed_regmap;
-     apc->nr_regs = 0x100 >> 2;
-+    apc->rc_msi_addr = 0x1e77005C;
-     apc->rc_bus_nr = 0x80;
- }
- 
-diff --git a/hw/pci-host/trace-events b/hw/pci-host/trace-events
-index 2584ea56e2..a6fd88c2c4 100644
---- a/hw/pci-host/trace-events
-+++ b/hw/pci-host/trace-events
-@@ -2,6 +2,9 @@
- 
- # aspeed_pcie.c
- aspeed_pcie_rc_intx_set_irq(uint32_t id, int num, int level) "%d: num %d set IRQ leve %d"
-+aspeed_pcie_rc_msi_notify(uint32_t id, uint64_t addr, uint64_t data) "%d: 0x%" PRIx64 " data 0x%" PRIx64
-+aspeed_pcie_rc_msi_set_irq(uint32_t id, uint64_t unm, int level) "%d: num 0x%" PRIx64 " set IRQ level %d"
-+aspeed_pcie_rc_msi_clear_irq(uint32_t id, int level) "%d: clear IRQ level %d"
- aspeed_pcie_cfg_read(uint32_t id, uint64_t addr, uint32_t value) "%d: addr 0x%" PRIx64 " value 0x%" PRIx32
- aspeed_pcie_cfg_write(uint32_t id, uint64_t addr, uint32_t value) "%d: addr 0x%" PRIx64 " value 0x%" PRIx32
- aspeed_pcie_cfg_rw(uint32_t id, const char *dir, uint8_t bus, uint8_t devfn, uint64_t addr, uint64_t data) "%d: %s bus:0x%x devfn:0x%x addr 0x%" PRIx64 " data 0x%" PRIx64
--- 
-2.43.0
+> +    {
+> +        int vq = 0;
+> +        if (FIELD_EX64(env->svcr, SVCR, SM)) {
+> +            vq = sve_vqm1_for_el_sm(env, arm_current_el(env),
+> +                     FIELD_EX64(env->svcr, SVCR, SM)) + 1;
+> +        }
+> +        /* svg = vector granules (2 * vector quardwords) in streaming mode */
+> +        return gdb_get_reg64(buf, vq * 2);
+> +    }
+> +    case 1:
+> +        return gdb_get_reg64(buf, env->svcr);
+> +    case 2:
+> +    {
+> +        int len = 0;
+> +        int vq = cpu->sme_max_vq;
+> +        int svl = vq * 16;
+> +        for (int i = 0; i < svl; i++) {
+> +            for (int q = 0; q < vq; q++) {
+> +                len += gdb_get_reg128(buf,
+> +                           env->za_state.za[i].d[q * 2 + 1],
+> +                           env->za_state.za[i].d[q * 2]);
+> +            }
+> +        }
+> +        return len;
+> +    }
+> +    default:
+> +        /* gdbstub asked for something out of range */
+> +        qemu_log_mask(LOG_UNIMP, "%s: out of range register %d", __func__, reg);
+> +        break;
+> +    }
+> +
+> +    return 0;
+> +}
+> +
+> +int aarch64_gdb_set_sme_reg(CPUState *cs, uint8_t *buf, int reg)
+> +{
+> +    ARMCPU *cpu = ARM_CPU(cs);
+> +    CPUARMState *env = &cpu->env;
+> +
+> +    switch (reg) {
+> +    case 0:
+> +    {
+> +        /* cannot set svg via gdbstub */
+> +        return 8;
+> +    }
 
+You don't need braces here, because there are no local variables
+in this arm of the switch statement.
+
+> +    case 1:
+> +        aarch64_set_svcr(env, ldq_le_p(buf),
+> +            R_SVCR_SM_MASK | R_SVCR_ZA_MASK);
+> +        return 8;
+> +    case 2:
+> +        int len = 0;
+> +        int vq = cpu->sme_max_vq;
+> +        int svl = vq * 16;
+
+But you do need braces here, because there are local variables.
+This is (a) because our coding style requires that declarations
+go at the top of a block and (b) because clang will complain:
+
+../../target/arm/gdbstub64.c:310:9: error: label followed by a
+declaration is a C23 extension [-Werror,-Wc23-extensions]
+  310 |         int len = 0;
+      |         ^
+
+> +        for (int i = 0; i < svl; i++) {
+> +            for (int q = 0; q < vq; q++) {
+> +                if (target_big_endian()){
+
+Missing space before the {
+
+> +                    env->za_state.za[i].d[q * 2 + 1] = ldq_p(buf);
+> +                    buf += 8;
+> +                    env->za_state.za[i].d[q * 2] = ldq_p(buf);
+> +                } else{
+> +                    env->za_state.za[i].d[q * 2] = ldq_p(buf);
+> +                    buf += 8;
+> +                    env->za_state.za[i].d[q * 2 + 1] = ldq_p(buf);
+> +                }
+> +                buf += 8;
+> +                len += 16;
+> +            }
+> +        }
+> +        return len;
+> +    default:
+> +        /* gdbstub asked for something out of range */
+> +        break;
+> +    }
+> +
+> +    return 0;
+> +}
+> +
+>  int aarch64_gdb_get_pauth_reg(CPUState *cs, GByteArray *buf, int reg)
+>  {
+>      ARMCPU *cpu = ARM_CPU(cs);
+> @@ -413,6 +498,43 @@ GDBFeature *arm_gen_dynamic_svereg_feature(CPUState *cs, int base_reg)
+>      return &cpu->dyn_svereg_feature.desc;
+>  }
+>
+> +GDBFeature *arm_gen_dynamic_smereg_feature(CPUState *cs, int base_reg)
+> +{
+> +    ARMCPU *cpu = ARM_CPU(cs);
+> +    int vq = cpu->sme_max_vq;
+> +    int svl = vq * 16;
+> +    GDBFeatureBuilder builder;
+> +    int reg = 0;
+> +
+> +    gdb_feature_builder_init(&builder, &cpu->dyn_smereg_feature.desc,
+> +        "org.gnu.gdb.aarch64.sme", "sme-registers.xml", base_reg);
+> +
+> +
+> +    /* Create the sme_bv vector type. */
+> +    gdb_feature_builder_append_tag(&builder,
+> +        "<vector id=\"sme_bv\" type=\"uint8\" count=\"%d\"/>",
+> +        svl);
+> +
+> +    /* Create the sme_bvv vector type. */
+> +    gdb_feature_builder_append_tag(
+> +        &builder, "<vector id=\"sme_bvv\" type=\"sme_bv\" count=\"%d\"/>",
+> +        svl);
+> +
+> +    /* Define the svg, svcr, and za registers. */
+> +
+> +    /* fpscr & status registers */
+> +    gdb_feature_builder_append_reg(&builder, "svg", 64, reg++,
+> +        "int", NULL);
+> +    gdb_feature_builder_append_reg(&builder, "svcr", 64, reg++,
+> +        "int", NULL);
+> +    gdb_feature_builder_append_reg(&builder, "za", svl * svl * 8, reg++,
+> +        "sme_bvv", NULL);
+> +
+> +    gdb_feature_builder_end(&builder);
+> +
+> +    return &cpu->dyn_smereg_feature.desc;
+> +}
+> +
+>  #ifdef CONFIG_USER_ONLY
+>  int aarch64_gdb_get_tag_ctl_reg(CPUState *cs, GByteArray *buf, int reg)
+>  {
+> diff --git a/target/arm/internals.h b/target/arm/internals.h
+> index 1b3d0244fd..41e05066b9 100644
+> --- a/target/arm/internals.h
+> +++ b/target/arm/internals.h
+> @@ -1802,8 +1802,11 @@ static inline uint64_t pmu_counter_mask(CPUARMState *env)
+>  }
+>
+>  GDBFeature *arm_gen_dynamic_svereg_feature(CPUState *cpu, int base_reg);
+> +GDBFeature *arm_gen_dynamic_smereg_feature(CPUState *cpu, int base_reg);
+>  int aarch64_gdb_get_sve_reg(CPUState *cs, GByteArray *buf, int reg);
+>  int aarch64_gdb_set_sve_reg(CPUState *cs, uint8_t *buf, int reg);
+> +int aarch64_gdb_get_sme_reg(CPUState *cs, GByteArray *buf, int reg);
+> +int aarch64_gdb_set_sme_reg(CPUState *cs, uint8_t *buf, int reg);
+>  int aarch64_gdb_get_fpu_reg(CPUState *cs, GByteArray *buf, int reg);
+>  int aarch64_gdb_set_fpu_reg(CPUState *cs, uint8_t *buf, int reg);
+>  int aarch64_gdb_get_pauth_reg(CPUState *cs, GByteArray *buf, int reg);
+> --
+
+thanks
+-- PMM
 

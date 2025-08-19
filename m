@@ -4,72 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C9A4CA0EE6
-	for <qemu-arm@archiver.kernel.org>; Tue, 19 Aug 2025 15:04:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81F10CA0EEB
+	for <qemu-arm@archiver.kernel.org>; Tue, 19 Aug 2025 15:07:41 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uoNsw-0002MG-Tt; Tue, 19 Aug 2025 11:04:26 -0400
+	id 1uoNvc-0004RF-Db; Tue, 19 Aug 2025 11:07:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uoNsv-0002KL-4i
- for qemu-arm@nongnu.org; Tue, 19 Aug 2025 11:04:25 -0400
-Received: from mail-yb1-xb2e.google.com ([2607:f8b0:4864:20::b2e])
+ id 1uoNvT-0004PW-D0
+ for qemu-arm@nongnu.org; Tue, 19 Aug 2025 11:07:03 -0400
+Received: from mail-yb1-xb2f.google.com ([2607:f8b0:4864:20::b2f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uoNst-0003JU-0k
- for qemu-arm@nongnu.org; Tue, 19 Aug 2025 11:04:24 -0400
-Received: by mail-yb1-xb2e.google.com with SMTP id
- 3f1490d57ef6-e934bcb7623so2003719276.1
- for <qemu-arm@nongnu.org>; Tue, 19 Aug 2025 08:04:22 -0700 (PDT)
+ id 1uoNvQ-0003ud-0n
+ for qemu-arm@nongnu.org; Tue, 19 Aug 2025 11:07:02 -0400
+Received: by mail-yb1-xb2f.google.com with SMTP id
+ 3f1490d57ef6-e94eec0de32so441003276.0
+ for <qemu-arm@nongnu.org>; Tue, 19 Aug 2025 08:06:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1755615862; x=1756220662; darn=nongnu.org;
+ d=linaro.org; s=google; t=1755616018; x=1756220818; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=IGfn9RS1Bu04ZR6L8dA94ph9BmQBYpiMXe5Y+YWdxlI=;
- b=mESmMqyVKD/1+tarjAXZNI1NeYLA7xfhFVKGVC8R8R7g2UUBRuqvw6edx7eBxGVXWa
- ayAkWwF4msiGS+DQ5f5UtX5LKZeUOg4gdHcNgGRSW7gILVbbpRjAkQLNclxTGc2uWObg
- cUoRydw9nHn26u+FAICgpvD5bmPbUSpIMFtYLNUU4aePYOgMdlhrqmGXnMEc5GY+CmR3
- /McfEoEsl6z0AMSKELBpvtdG3tmFzlbxMPx/otB/Nn75yn/oezDK9bDQDZol1hlBW4+K
- UAzfXGSiN9CZf70hO5LCE+yxhp71fqvYvyqPDfY5uo9mC9HeudnIyx0NyW4sKgihPZ3U
- xeqQ==
+ bh=lGjB2DDXN91rgRPxeWknxQ33rBHPgYOM1OJPngJJmUI=;
+ b=gfgJkUaKPyFbJ3Bxmm2RRijkKHC+50Hz2+2++ek3csaIj0givjGREfrrhzczLnYAyk
+ Mhdx+oUwcRozrPLIK2qcXyfslEJhWBXk4xyzhziu+o6WuNA0Re1tgu91f9VIAiUjxMrF
+ FwhQQdVkKMwCVCuWztFUy9sS0RE/xtl2DN/wwkSYh9Sedtm3QAQxwPIM9eb2erPrwGop
+ uYkQqcWXzC4zwf4fmOQFVU6YqK9AcNl/goFryyxe/EkKwdNMc0gV15jrUvs73CQEWzRc
+ ru9TUbqC+qKS9qNA+llIJjB4B53oQua+JnxDa2UDrfDeevEik1xiqvBd3kzqNN5U3TNP
+ sfpw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1755615862; x=1756220662;
+ d=1e100.net; s=20230601; t=1755616018; x=1756220818;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=IGfn9RS1Bu04ZR6L8dA94ph9BmQBYpiMXe5Y+YWdxlI=;
- b=bYUPFv2fXlxQOdF7V6nf53Dw/IoEIc4b7HDtvIOohuDwl2weFNA5PUFcR/GAyAVikP
- nO7Uy4MzadGTwYkSKEZNU43fPdGvoLb69cOJvlOrO3JYqgo0GcJuvRibP+pMkeGAz8UF
- jTMdaccusRSXkMd6adV3xNm20AtTjkES0fLe2vVM0hYRl6L4cvp6MEQnO0OU3bWxNXZh
- zHamy6Q/QVj3Ib1GCqV3slAd1qXBqEaRYHupmcR67vFQyFpKOjNVEWnDW88Q3W4aVWU7
- zsAKiGa7Rc4LiTEDa57t1X40Z8ZN8UiP3F60XS1+Tz1grWYmDlPr2DeAWikLyJd7Xxj7
- Gx+Q==
+ bh=lGjB2DDXN91rgRPxeWknxQ33rBHPgYOM1OJPngJJmUI=;
+ b=E+Klq5T93JcI24QzY04eoLWlkSutwL13KBjJKeUIvS8Mmbul2+t026pHD44UORS6My
+ BCN3PpU6Uu/aa2HV2egKR1ZZqGCgpHnhgJXQED6uCA52ouiP9aoUoVEJW0sTkkjGcQWA
+ U3Ynv5R8X2gkYZYLBRAqlzsQj4A559TI7eDcg25kvl2y9uSy3Pqrn5mWmaZe9AvP8Q4h
+ iULy4sJ08Dp7OSq5sZo9OyYoqCURjF7oYoLQhkonAFKOZf375LYYtFhrqFdvoe601pIW
+ Wyolxz8RU2LF3VOX/+3YyChednsjjt2nzrasKNU3HxZ31tOG3awqDCffDV+Q5TiDsNgh
+ ddMg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCViZZclzKdCQCwqrT6Ey4J5noBJ72369djSibPr9MBXssyfOZ+BV/pDNG0h042DO5dRzOmMV2+FQA==@nongnu.org
-X-Gm-Message-State: AOJu0YyjHs1r3VmMxw5Sof/x62Erhc7zhUWT+xE/I+mcWqeqcM41z310
- l695zdQK9e3p4LUxKr5JvCMXEzgsjqIopd8Abs3M8d6+d/EEa6iltGJZzHyen435IZJtZh7AmKw
- /crdiM59CBspc2POGJ/an5ENT4Lci155fUL7hH6zs8w==
-X-Gm-Gg: ASbGncvFEsDUBZiYvO/cLdlkj04qmBgMDhmlwDS2NyaqwnY/jxv5Z5oMtNfatQBnO/8
- exgN2wl7xmvDnSjdeTBRaQ+hn3L97byQcK0jq1uZ1xSHUrOXOUL0Z85DyE/unWu1DWO51DLIZNW
- +GhDrQtmU8BGnCtIzjLuD1/ycz2PIECN2FPVZ4l3MfiD89PpJRINc1zFfbjh1n7LEEvBFLyHV12
- GctvrORqgQyGr2NQ1Q=
-X-Google-Smtp-Source: AGHT+IH9GLN3G7YILzmKcSzrFNCNy/Oe5I0Z0zjCrMTijTBTrUzhcs0i5wnIdGLCPRBVDpnJ+gyyiWxEXHaK7dxZskM=
-X-Received: by 2002:a05:6902:154d:b0:e93:47b2:752 with SMTP id
- 3f1490d57ef6-e94e62a4c16mr3666207276.34.1755615861581; Tue, 19 Aug 2025
- 08:04:21 -0700 (PDT)
+ AJvYcCUQg9h7zVke717Yg3VBqcoe4HiEKRdTGdWqpVq2twEJ2fXGY1EKH9blkqD5EP4U19DnDk5gg1d/xw==@nongnu.org
+X-Gm-Message-State: AOJu0YwHXK0uM82nb6guP+ecaU15A9tAKY7dBc3UKslcKZFRv9sXbd93
+ uWuS9jvpLyEnz0iKtC/KwUy5HFgKMspyxVLjCV3ut8SrkqJ3L+K211Iiajm+2c+V+Ui0bSqk8P/
+ 58q8dYbSUcfZ+B+eXa2JTQldCmWgztsWDJUIB/I3rqw==
+X-Gm-Gg: ASbGnctBm2AfpodiYfsJwm5q84p4XMLlIVc5Jw0pe6mjSDxBs5YVVXwMckBhfoqPQCJ
+ +dn7sEGSRdlyOBvUoe/74lJ/NPEZ81idCE+MU+WgpQpGwo01sHHoNP1gTqEQtjKexG9/Y8OvlOp
+ GuyuyYQ3GNSkp5ul2EWQljhkRn8RqnkgGQAWOCqIp+/WizeE5lXrd71xPgXevHBZqiQPqBNxxZP
+ 2jPWDWs
+X-Google-Smtp-Source: AGHT+IFEacLfEpsLPwL8RpIQaBKhz9WKuYQrybbHLgsUXEGDBbIpJ6uSC03YG2N60vf9y/Ix/KB5hHQFI6/31aN1lA4=
+X-Received: by 2002:a05:6902:4308:b0:e93:480b:5356 with SMTP id
+ 3f1490d57ef6-e94e632528fmr2971984276.47.1755616017889; Tue, 19 Aug 2025
+ 08:06:57 -0700 (PDT)
 MIME-Version: 1.0
 References: <20250808065419.47415-1-mohamed@unpredictable.fr>
- <20250808065419.47415-9-mohamed@unpredictable.fr>
-In-Reply-To: <20250808065419.47415-9-mohamed@unpredictable.fr>
+ <20250808065419.47415-16-mohamed@unpredictable.fr>
+ <CAFEAcA9iQnrKWXPXw2wG3c6gmevOMFQtt48HsJdx8GZz2sd+4Q@mail.gmail.com>
+ <8e64fd77-9969-42b3-bbcd-1ed8de910ff9@linaro.org>
+In-Reply-To: <8e64fd77-9969-42b3-bbcd-1ed8de910ff9@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 19 Aug 2025 16:04:09 +0100
-X-Gm-Features: Ac12FXzSBe1DHLCX_ytlkJ9BuV9ZQ4rc-mxnEGrgfcl1f9gTnywcpZ_XiLR_gmA
-Message-ID: <CAFEAcA_ZokV90NRuWY7PGgk_Jwh-ZfZfNO+Ubss0F8AWDBTwoQ@mail.gmail.com>
-Subject: Re: [PATCH v5 08/18] whpx: interrupt controller support
-To: Mohamed Mediouni <mohamed@unpredictable.fr>
-Cc: qemu-devel@nongnu.org,
+Date: Tue, 19 Aug 2025 16:06:45 +0100
+X-Gm-Features: Ac12FXy5JRRiJ81OjIWr7z9p2uyQ9l0Cz-RNNmpcll_HRaXOsoA8AhnGYU96-BU
+Message-ID: <CAFEAcA9OXu3=HuA9n+Oo0C5K5hTG+kLr9xsM=geBJ_UtCi4_-w@mail.gmail.com>
+Subject: Re: [PATCH v5 15/18] whpx: arm64: implement -cpu host
+To: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Cc: Mohamed Mediouni <mohamed@unpredictable.fr>, qemu-devel@nongnu.org, 
  =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
  =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
  Igor Mammedov <imammedo@redhat.com>,
@@ -84,11 +86,10 @@ Cc: qemu-devel@nongnu.org,
  Cameron Esfahani <dirty@apple.com>, Paolo Bonzini <pbonzini@redhat.com>, 
  =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
  Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org, 
- Yanan Wang <wangyanan55@huawei.com>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>
+ Yanan Wang <wangyanan55@huawei.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b2e;
- envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb2e.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b2f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb2f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -111,34 +112,32 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, 8 Aug 2025 at 07:54, Mohamed Mediouni <mohamed@unpredictable.fr> wrote:
+On Tue, 19 Aug 2025 at 16:04, Pierrick Bouvier
+<pierrick.bouvier@linaro.org> wrote:
 >
-> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+> On 8/19/25 6:24 AM, Peter Maydell wrote:
+> > On Fri, 8 Aug 2025 at 07:55, Mohamed Mediouni <mohamed@unpredictable.fr> wrote:
+> > Can you follow the QEMU coding style, please (here and elsewhere)?
+> > Variables and function names should be all lower case,
+> > and variable declarations go at the start of a C code
+> > block, not in the middle of one.
+> >
 >
-> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+> In some cases, including in this function, I feel that the rule to
+> declare variables at the start of a block is not really helpful, and is
+> more related to legacy C than a real point nowadays.
+> As well, it sometimes forces to reuse some variables between various sub
+> blocks, which definitely can create bugs.
+>
+> Anyway, I'm not discussing the existing QEMU coding style, but just
+> asking if for the current context, is it really a problem to declare
+> variable here?
 
-
-> +static void whpx_gicv3_put_cpu(CPUState *cpu_state, run_on_cpu_data arg)
-> +{
-> +}
-> +
-> +static void whpx_gicv3_put(GICv3State *s)
-> +{
-> +    int ncpu;
-> +
-> +    whpx_gicv3_check(s);
-> +
-> +    for (ncpu = 0; ncpu < s->num_cpu; ncpu++) {
-> +        run_on_cpu_data data;
-> +        data.host_ptr = &s->cpu[ncpu];
-> +        run_on_cpu(s->cpu[ncpu].cpu, whpx_gicv3_put_cpu, data);
-> +    }
-
-Why are we calling run_on_cpu() and telling it to do nothing?
-
-Also, run_on_cpu() implicitly drops the big kernel lock --
-I'm not sure that is valid to do from the pre-save/post-load
-routines or in a reset handler.
+The point of a coding style is to aim for consistency. QEMU
+is pretty terrible at being consistent, but we should try.
+The rule about variables at start of block is not because
+some compilers fail to compile it, but because we think
+it's overall more readable that way.
 
 thanks
 -- PMM

@@ -4,91 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78B1DCA0EEB
-	for <qemu-arm@archiver.kernel.org>; Tue, 19 Aug 2025 15:44:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92BCDCA0EEB
+	for <qemu-arm@archiver.kernel.org>; Tue, 19 Aug 2025 15:48:38 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uoOVO-0007Zs-F7; Tue, 19 Aug 2025 11:44:10 -0400
+	id 1uoOZT-0000kv-8N; Tue, 19 Aug 2025 11:48:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uoOVM-0007V9-Us
- for qemu-arm@nongnu.org; Tue, 19 Aug 2025 11:44:09 -0400
-Received: from mail-yb1-xb36.google.com ([2607:f8b0:4864:20::b36])
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
+ id 1uoOZR-0000kK-Sd
+ for qemu-arm@nongnu.org; Tue, 19 Aug 2025 11:48:21 -0400
+Received: from mail-pf1-x431.google.com ([2607:f8b0:4864:20::431])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uoOVK-0002se-Er
- for qemu-arm@nongnu.org; Tue, 19 Aug 2025 11:44:08 -0400
-Received: by mail-yb1-xb36.google.com with SMTP id
- 3f1490d57ef6-e933597bc2eso3775378276.2
- for <qemu-arm@nongnu.org>; Tue, 19 Aug 2025 08:44:05 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
+ id 1uoOZQ-0003Z6-71
+ for qemu-arm@nongnu.org; Tue, 19 Aug 2025 11:48:21 -0400
+Received: by mail-pf1-x431.google.com with SMTP id
+ d2e1a72fcca58-76e2ea79219so6260598b3a.2
+ for <qemu-arm@nongnu.org>; Tue, 19 Aug 2025 08:48:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1755618245; x=1756223045; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=rSwH9TFUa1ySF0QKmDlMGXX9kVKy+ZxCiks3DHJtt/U=;
- b=OWoyXG1ynLC3UL0Qnk/iwsaZkNktfokb6wnIRatvl++zWfNvBI488+7bBXyHffLYOK
- 1aCtEQgVD4AOOUGnO/8FZS4O4AE2oQbTnrDpbc+piJ8UYzLeYqD1jAp2bJan6HUVGnLj
- +clgzlERO+ApRa1hEHyzWyl02JefayQ2dsiTn6S163YeVom/fTr8AxcDQLn8bt9uV2+A
- b4lIjHG7aPNN5FABrJASqRDyE/puTmZDoUje/WfA9zFWixTgBS8mBScm/PLSjv8SnZHJ
- 66SW7dy4Os832vTTEjN2ttn6u+hm1KghV1S647s3AVV5vjYj9hOuYVfCfnV6UN212KOZ
- 69Ag==
+ d=linaro.org; s=google; t=1755618498; x=1756223298; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=j6BZc9SKK+UiaMRIB9B2dq1pyKcokINx0nKeKUuluMg=;
+ b=L6HtFln2DTHwN7GvRs5yaaoH8hk96Z2up2PbtU2rrLjr0XWyqTopNJgeOrrSUJoGa1
+ 9egeevewY4mmREwGiBn6Rwgf8CRWM6yduGjQ4Ms7qfYfmpkteXSYyaFF8ycwlEvgbY2v
+ iMNnYiVVsdNK/PWZs5JDfxxMVj3FQmZqVaPjajXaKhOOtcsjvxInbKWHlo2nFnsF+4xH
+ gMnTWgSpsIGU07lOeIDlcDS5vwJ/YC0+joq710bDeM5qbF7Mrs9XMZ8pXkr+3rNpzg4W
+ AIK4uhE+GF++aAIY+r4Uyy5fl4zpQr3YWPi4s1Ds/Qnyjb5pIGHku2f3QQJ7fqJln/sI
+ XdlQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1755618245; x=1756223045;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=rSwH9TFUa1ySF0QKmDlMGXX9kVKy+ZxCiks3DHJtt/U=;
- b=E6ox/iIIZKuQ53vP6+AvG0whbNfSmyR4dFX3fQInlPR8JBON2jL5RMIdBX2TRBZ+p8
- 1xs17inmzL0VDRVHiA917aNt3XLvE8El+vqeO9bw6eO19CzfwnFaRm7LhBGz8/wi/TeL
- PvL6yUxXjEqgdO/N5X1nUX27NRVvWE/zb14RBJCdf7ePGyc2er5jVbQcQN7Duusft6G3
- hcCl9dUGZi4rOfGJvaBNNnZ0GMg0ymkCzD7DhgBfyTREM/3YDKK0+q3YERTMWJ6Kr/m2
- 5MUHFVPJLXsM8pgIbNy6+kza4R4/U3RkMywdsnPBpnMK8QKGjocR2kNn/nxeOUjNVX1p
- iE/w==
+ d=1e100.net; s=20230601; t=1755618498; x=1756223298;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=j6BZc9SKK+UiaMRIB9B2dq1pyKcokINx0nKeKUuluMg=;
+ b=TSaajLaSgLslopl7W3mjolloVFbRoJB8wd1xOmYmGCDsFaCsw8Hg2Wq+OTW/iBFBbG
+ rtQI21L6ryhs7t1HOZhwi7yGZhGs/Oom4VkhyhBaJEnDLWVUue+VF4iUjO8nr9ygakA+
+ wR6rKj2P/WkP/TF70wMmnjtBQbRKPlk1A7Wvx0ddRodN3PjYft1l1LgOV9yI6AgZ+zAM
+ 5oueLatPDdctsmsHI4jc6LjmVTDo9PiMFFETk6H+88su/CnE0YSke8AdOQ/Qgie4J2i8
+ gqGk4rZjdj23I8b3K0C32G07ZJ9dn0Ev2AEJ/IkNvr39lttXB5MgrOfA4vNrofJD5eaH
+ APFA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXW7GeiuqSMBaGF0MLoU9vK5DCczT19BwSj67Tt+XEgo69AALik6835Sdq9qBhkMb+YOikrMDqeIw==@nongnu.org
-X-Gm-Message-State: AOJu0YyfY7L41XcEntLrMYNk3wEbO6mvxBJgadXgOaY2ROLqZnJRJb7D
- bL/aMniDUTH8BeR4AyqXZyNqB/ZE3o0OEvDEf6PkiYM+e73M4Op2f+52stmvdS1Xgwvea8RqFQw
- HpSfE9VjFnC88gh8A9HKOfdx7jPwhd0JsYGBOSsPz/Q==
-X-Gm-Gg: ASbGncumCHvlZJwKmc8iFyxxLxS0e8yc7rWgajDlzlci45t+II4zRFJUi7xDzsZrw2f
- BMWS58/mBl1i7fmmVdabxU+P46d8Dt6ZPdvBRonytlexvOmu2xJPoSGEYgRzd14vg7YxI61OYHB
- vpAoy6wEzLFhzY2YDqtZBmC1ygJvAodtWsXbABKXUrax9dIg/xbd9UY0VBr4aL1kzbpk6Na966z
- YHqNOvs
-X-Google-Smtp-Source: AGHT+IEOzFm3e8ljQCWbVbH/3dQsdJS0F1jOYtJGOdPJmMkwBopzbtASQ6cMRfa+oslsbdAX6bniGil03D4SfCPYcMI=
-X-Received: by 2002:a05:6902:1888:b0:e93:3d8b:4e5f with SMTP id
- 3f1490d57ef6-e94e5f4a590mr3647487276.0.1755618245039; Tue, 19 Aug 2025
- 08:44:05 -0700 (PDT)
+ AJvYcCXhsX4xUo15mTd16xFuM1qXqk34KqR++7vQAU5PfkZre8DWhGZjLkVCrTvXviZncClb2yR5Iwujyw==@nongnu.org
+X-Gm-Message-State: AOJu0Yx9OUmSOVH/9tjOLnb7nK7QP7a6p80jMQG0qj57cQ1cJRxgJS6z
+ v+uV+JjaUHgBUT9kNx+VxJCNFOHb4DDoXxSkQcDZAnWJmB6Tutkk6U2xR/GzHLISNyk=
+X-Gm-Gg: ASbGncv9GU/4NZL9soveVQTpO1TuuCVIMNW5CiBi4oGU7S+8x5UuVQ5XF4ZvMtF7CQI
+ oHXHwLMO6YLU3B5X2mboNdM5r49967uRQZ77/YG7wbaMJwJYpXgLYjyz7t5g1z+lP2Ensm41jXR
+ c4wHKnPGHc3HddIbO+iqKI6fKxuItX/NhVXSHebsdZmNFH+yQ8N7/CqPzjKtjASMKop7ZBtiGB2
+ LUtrNFInQaMiHr+s2vS1n0zn8k9A57qm0y2+rlMB+p2rn+HtZ5PlfFGrBr+HNPUAtRFpCgANpMl
+ BnWpH9gdekSUv+StID5PShODzGsEcAfcSRNHcr5+MhG8CRWxY3/WWGQ6UiRIrEB2RlO3TqnShza
+ vAGl/7irvXXxWtYyhSzKBHubbFWlD8kpcGQ8=
+X-Google-Smtp-Source: AGHT+IHzKdPGnuh5ePrXs3AayZneWjnAdZJOW/mYIOlKo26QEYHuf3tmWHItehL2YcRiWcVOicl7yg==
+X-Received: by 2002:a05:6a00:929c:b0:749:bb6:3a8e with SMTP id
+ d2e1a72fcca58-76e80eb487cmr3738344b3a.1.1755618498163; 
+ Tue, 19 Aug 2025 08:48:18 -0700 (PDT)
+Received: from [192.168.1.87] ([38.41.223.211])
+ by smtp.gmail.com with ESMTPSA id
+ d2e1a72fcca58-76e7d5242dasm2881479b3a.77.2025.08.19.08.48.17
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 19 Aug 2025 08:48:17 -0700 (PDT)
+Message-ID: <1396c8cf-fb2c-4b39-811a-7152bdbe976f@linaro.org>
+Date: Tue, 19 Aug 2025 08:48:16 -0700
 MIME-Version: 1.0
-References: <20250815090113.141641-1-corvin.koehne@gmail.com>
- <20250815090113.141641-10-corvin.koehne@gmail.com>
-In-Reply-To: <20250815090113.141641-10-corvin.koehne@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 19 Aug 2025 16:43:52 +0100
-X-Gm-Features: Ac12FXwKja-SnBY13NJ1bTLfweL6EDRt_uOQjtmsrDjBh7KP9_vPM7fp4eNmpNk
-Message-ID: <CAFEAcA-mTTLEtE72W=-R9O=m7zSUiL5bGf7TMXoFP=Xqvmq2OA@mail.gmail.com>
-Subject: Re: [PATCH v2 09/14] hw/misc: Add dummy ZYNQ DDR controller
-To: =?UTF-8?Q?Corvin_K=C3=B6hne?= <corvin.koehne@gmail.com>
-Cc: qemu-devel@nongnu.org,
- =?UTF-8?Q?Corvin_K=C3=B6hne?= <c.koehne@beckhoff.com>, 
- qemu-arm@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, 
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Alistair Francis <alistair@alistair23.me>, 
- =?UTF-8?Q?Yannick_Vo=C3=9Fen?= <y.vossen@beckhoff.com>, 
- Hanna Reitz <hreitz@redhat.com>, qemu-block@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b36;
- envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb36.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 15/18] whpx: arm64: implement -cpu host
+Content-Language: en-US
+To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>
+Cc: Mohamed Mediouni <mohamed@unpredictable.fr>, qemu-devel@nongnu.org,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Igor Mammedov <imammedo@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Roman Bolshakov <rbolshakov@ddn.com>, Phil Dennis-Jordan
+ <phil@philjordan.eu>, Ani Sinha <anisinha@redhat.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Alexander Graf <agraf@csgraf.de>,
+ Mads Ynddal <mads@ynddal.dk>, Sunil Muthuswamy <sunilmut@microsoft.com>,
+ Zhao Liu <zhao1.liu@intel.com>, Marcel Apfelbaum
+ <marcel.apfelbaum@gmail.com>, Eduardo Habkost <eduardo@habkost.net>,
+ Cameron Esfahani <dirty@apple.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
+ Yanan Wang <wangyanan55@huawei.com>
+References: <20250808065419.47415-1-mohamed@unpredictable.fr>
+ <20250808065419.47415-16-mohamed@unpredictable.fr>
+ <CAFEAcA9iQnrKWXPXw2wG3c6gmevOMFQtt48HsJdx8GZz2sd+4Q@mail.gmail.com>
+ <8e64fd77-9969-42b3-bbcd-1ed8de910ff9@linaro.org>
+ <CAFEAcA9OXu3=HuA9n+Oo0C5K5hTG+kLr9xsM=geBJ_UtCi4_-w@mail.gmail.com>
+ <aKSUS2-JrMBX7JXo@redhat.com>
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+In-Reply-To: <aKSUS2-JrMBX7JXo@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::431;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pf1-x431.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -104,78 +122,62 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, 15 Aug 2025 at 10:01, Corvin K=C3=B6hne <corvin.koehne@gmail.com> w=
-rote:
+On 8/19/25 8:12 AM, Daniel P. Berrangé wrote:
+> On Tue, Aug 19, 2025 at 04:06:45PM +0100, Peter Maydell wrote:
+>> On Tue, 19 Aug 2025 at 16:04, Pierrick Bouvier
+>> <pierrick.bouvier@linaro.org> wrote:
+>>>
+>>> On 8/19/25 6:24 AM, Peter Maydell wrote:
+>>>> On Fri, 8 Aug 2025 at 07:55, Mohamed Mediouni <mohamed@unpredictable.fr> wrote:
+>>>> Can you follow the QEMU coding style, please (here and elsewhere)?
+>>>> Variables and function names should be all lower case,
+>>>> and variable declarations go at the start of a C code
+>>>> block, not in the middle of one.
+>>>>
+>>>
+>>> In some cases, including in this function, I feel that the rule to
+>>> declare variables at the start of a block is not really helpful, and is
+>>> more related to legacy C than a real point nowadays.
+>>> As well, it sometimes forces to reuse some variables between various sub
+>>> blocks, which definitely can create bugs.
+>>>
+>>> Anyway, I'm not discussing the existing QEMU coding style, but just
+>>> asking if for the current context, is it really a problem to declare
+>>> variable here?
+>>
+>> The point of a coding style is to aim for consistency. QEMU
+>> is pretty terrible at being consistent, but we should try.
+>> The rule about variables at start of block is not because
+>> some compilers fail to compile it, but because we think
+>> it's overall more readable that way.
+> 
+> There are also potential[1] functional problems with not declaring
+> at the start of block, because if you have a "goto cleanup" which
+> jumps over the line of the declaration, the variable will have
+> undefined state when the 'cleanup:' block is running. This is
+> something which is very subtle and easily missed when reading the
+> code flow.
 >
-> From: YannickV <Y.Vossen@beckhoff.com>
->
-> A dummy DDR controller for ZYNQ has been added. While all registers are p=
-resent,
-> not all are functional. Read and write access is validated, and the user =
-mode
-> can be set. This provides a basic DDR controller initialization, preventi=
-ng
-> system hangs due to endless polling or similar issues.
->
-> Signed-off-by: Yannick Vo=C3=9Fen <y.vossen@beckhoff.com>
-> ---
->  hw/misc/Kconfig                  |   3 +
->  hw/misc/meson.build              |   1 +
->  hw/misc/xlnx-zynq-ddrc.c         | 393 +++++++++++++++++++++++++++++++
->  include/hw/misc/xlnx-zynq-ddrc.h | 140 +++++++++++
->  4 files changed, 537 insertions(+)
->  create mode 100644 hw/misc/xlnx-zynq-ddrc.c
->  create mode 100644 include/hw/misc/xlnx-zynq-ddrc.h
->
-> diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
-> index 8f9ce2f68c..99548e146f 100644
-> --- a/hw/misc/Kconfig
-> +++ b/hw/misc/Kconfig
-> @@ -220,4 +220,7 @@ config IOSB
->  config XLNX_VERSAL_TRNG
->      bool
->
-> +config XLNX_ZYNQ_DDRC
-> +    bool
-> +
->  source macio/Kconfig
-> diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-> index 55f493521b..6ee7b6c71d 100644
-> --- a/hw/misc/meson.build
-> +++ b/hw/misc/meson.build
-> @@ -89,6 +89,7 @@ system_ss.add(when: 'CONFIG_RASPI', if_true: files(
->  ))
->  system_ss.add(when: 'CONFIG_SLAVIO', if_true: files('slavio_misc.c'))
->  system_ss.add(when: 'CONFIG_ZYNQ', if_true: files('zynq_slcr.c'))
-> +system_ss.add(when: 'CONFIG_ZYNQ', if_true: files('xlnx-zynq-ddrc.c'))
->  system_ss.add(when: 'CONFIG_XLNX_ZYNQMP_ARM', if_true: files('xlnx-zynqm=
-p-crf.c'))
->  system_ss.add(when: 'CONFIG_XLNX_ZYNQMP_ARM', if_true: files('xlnx-zynqm=
-p-apu-ctrl.c'))
->  system_ss.add(when: 'CONFIG_XLNX_VERSAL', if_true: files(
-> diff --git a/hw/misc/xlnx-zynq-ddrc.c b/hw/misc/xlnx-zynq-ddrc.c
-> new file mode 100644
-> index 0000000000..8151a0e3ee
-> --- /dev/null
-> +++ b/hw/misc/xlnx-zynq-ddrc.c
 
-All new files must start with a comment which at least
-(a) says what the file is for and (b) has the SPDX
-license indicator. You can optionally also add an authorship
-or copyright line here if you/your employer need that.
+This has nothing to do with where variables are declared, but where they 
+are assigned. The same issue can happen whether or not it's declared at 
+the start of a block.
 
-Same applies to the .h file.
+I suspect we use -ftrivial-auto-var-init precisely because we force 
+variables to be declared at start of the scope, i.e. where they don't 
+have any value yet. So, instead of forcing an explicit initialization or 
+rely on compiler warnings for uninitialized values, it was decided to 
+initialize them to 0 by default.
 
-> +static void zynq_ddrctrl_class_init(ObjectClass *klass, void *data)
-> +{
-> +    DeviceClass *dc =3D DEVICE_CLASS(klass);
-> +
-> +    device_class_set_legacy_reset(dc, zynq_ddrctrl_reset);
-> +}
+If we declared them at the point where they have a defined semantic 
+value, this problem would not exist anyway, out of the goto_cleanup 
+situation, which has the same fundamental issue in both cases.
 
-This looks like it's missing registration of a vmstate
-struct for state save/load.
+> With regards,
+> Daniel
+> 
+> [1] I say "potential" because we unconditionally build with
+>      -ftrivial-auto-var-init=zero to mitigate this danger
+>      in practice.
 
-thanks
--- PMM
 

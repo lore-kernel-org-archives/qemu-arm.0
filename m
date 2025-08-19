@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9624ACA0EEB
-	for <qemu-arm@archiver.kernel.org>; Tue, 19 Aug 2025 13:04:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8363CA0EEB
+	for <qemu-arm@archiver.kernel.org>; Tue, 19 Aug 2025 13:11:12 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uoM0p-000134-DH; Tue, 19 Aug 2025 09:04:27 -0400
+	id 1uoM7D-0003sY-Q8; Tue, 19 Aug 2025 09:11:04 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uoM0o-00012U-0q
- for qemu-arm@nongnu.org; Tue, 19 Aug 2025 09:04:26 -0400
-Received: from mail-yb1-xb36.google.com ([2607:f8b0:4864:20::b36])
+ id 1uoM74-0003lo-AX
+ for qemu-arm@nongnu.org; Tue, 19 Aug 2025 09:11:00 -0400
+Received: from mail-yb1-xb2a.google.com ([2607:f8b0:4864:20::b2a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uoM0l-0005XI-FW
- for qemu-arm@nongnu.org; Tue, 19 Aug 2025 09:04:25 -0400
-Received: by mail-yb1-xb36.google.com with SMTP id
- 3f1490d57ef6-e94e40fd473so717756276.3
- for <qemu-arm@nongnu.org>; Tue, 19 Aug 2025 06:04:22 -0700 (PDT)
+ id 1uoM71-00072B-So
+ for qemu-arm@nongnu.org; Tue, 19 Aug 2025 09:10:54 -0400
+Received: by mail-yb1-xb2a.google.com with SMTP id
+ 3f1490d57ef6-e9321ed5e5eso3664857276.3
+ for <qemu-arm@nongnu.org>; Tue, 19 Aug 2025 06:10:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1755608662; x=1756213462; darn=nongnu.org;
+ d=linaro.org; s=google; t=1755609050; x=1756213850; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=TKb5ifCj9uuXxIjK+VdPqq69kyEQ2giNTh/2C1a4dcA=;
- b=XvnC8T5s2bTPIIBw/0gjRsngQgF3vH9EeitLAUz+fx5YJiNh7X7vrOOu6NDAL6N5rm
- s4Z2nX52Qukl6dNmVS3KEXttM9K98toJk5sgakMKDgAiUWPWwwyVC6Kj0IQg/9XA/evA
- N+eXJlf90fZmm6y/kog0a0n6wTbSDN8WVmSbtIhUV/LLVk1VlkNZt3mILpkvwj7FdYWv
- o7Yc7PC9yxUs7y7qsEqMJO9pTGKFgNmkRe5SQLUSG1xlcTDl9NGJL72WTN12yBW/yx9t
- 7Sghpgeo9/GcvTWXp5uIXCAq/TlJZY5+VUBQkKk1wS9tM5apvJzmPBjB2MbGg26yvdz9
- r+Eg==
+ bh=Oc7Rk+6COxnPyzGSwJO3j7uZvaYmy425hlkAZek3N0k=;
+ b=OSti5Xq0F0tOl3/KlFbTY5AUT9HYJF1df71hJdXaKael4iaXlECCyinqzBNHiO/8nI
+ 2Kfi+x22iJQUipXr2OC5GUvp1mLQQW0BNRkSiEuKIS1RtM5G3hFzI+LjOSxTLCxc6bI6
+ 7JajBcwvN7xvtZoXfy4HAC1KCihArAeHn28ziEuyfXoGswwLWhTQJF76W65NnbOtbXcp
+ 1/I8tJM710UGl3ka3Cl9T6djZSoReBmhXopLgcciWy99DYYw2ODYQwAJjMbi6y2aEP47
+ s49IzhLvxRUnTnfi7oqgeaZTr8gS2oGPnEftEDt10vICZioY4UlsFONXLA4EaRMwrAU5
+ kMDA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1755608662; x=1756213462;
+ d=1e100.net; s=20230601; t=1755609050; x=1756213850;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=TKb5ifCj9uuXxIjK+VdPqq69kyEQ2giNTh/2C1a4dcA=;
- b=VmSmrPbLvdVLc+5qkAGyuL1mnLMWMa3DCoe+sSdjkFVJ7WlqJ4wiCkN04go6s6aEYt
- DZR7JrqrXnzY61fjUGgyBOmTrrnOFyOqd53eCfshOGGnfyfhAWcn/BjAOCFsl5Vp5YNO
- S9/ImV9Qb7d3XxEV2h/L2T4EkjMYNdSa1NkrjfeuII+ntVOBEbsXa2jTaK3sKEmnaK5l
- PJDn5Ug2+gIMgb55svfICfFb2n/ksGlo17fi2tRbFoCsUPhwtZwAarJyWTnEFp1UIuak
- uzlgOEoHqWINmpWXXBHPRLaQrWtgSmoPfRzL0r0BjqK1iUuNf5AzJJDU9LiFcSKDZduf
- Fz2A==
+ bh=Oc7Rk+6COxnPyzGSwJO3j7uZvaYmy425hlkAZek3N0k=;
+ b=fTl4aTaob9fhfqZbWf+EMcTd81yeq6Fwg7ux5ysqUVAWtBeQ1wK0Ynf2p6J0yeG2Ql
+ LaXday2eORvVwsbaW8LEYvsrji+rSWYrMlub3AQ10f6hK+T+/0mNbIxk5j8X02wHaxWe
+ JBuSdG3MWb4dcnMNdkFDS8bgLvjCRnKpcJA0KsZN/RriEX2meVkXxXsrZW6hyExc0y6w
+ 3THuPgHZV5Ey38UpE9LEd5iaUsgIYQ5CVomObB7EMhFaEQeVz6+D9Hw0OtSWX+RiMxpT
+ Pj0n7Y+FdVZXqfCVLzt5yU0onx7pjpDccjFYjkKq7YhBA7a2/RcwYB4+GUkSr848VYXH
+ Dspw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXK3KqiZpE0+S2KqQZwQlO69B+Y84aQqC4CrrI1OyLbJfZAPqLg9sKpLhiYPYPn/q6JPiJ3/vzLZA==@nongnu.org
-X-Gm-Message-State: AOJu0YwyGzjedqOCKB48spg3QEIu/mfTkPMwXfIdxWGEH1BLqwNnTINz
- bRxKLzKBgCraAdN3AubgttOQZzdhn18Bbyb1thL2Hr0hc2W9rhXa1aEeg5UsDWb98bWXlha2Naq
- yZti7K+KKNPdDa9lxmCxFTF9iD/qZNhIVUi2gFhB12Q==
-X-Gm-Gg: ASbGncsJihMEli7epG6G1Hgs5dUYPtqClfhmTwoMSe8j7ienDG8LRNvdC2HAtOZAnma
- fq/u2FiQsMr0tK5kV1Ie/B12TgM3Q73fJ32it5e49hrmQhdrKrz06LgqbINiBtiPlshId6hlIdy
- mxPWhxBnyu2EOEEzlZGzLPfGjkcvc7azjCt0yOo2wbZqQukT1mez17XVMohcbbcqfjP/Rx5ADzH
- 9lZpFjj
-X-Google-Smtp-Source: AGHT+IG6sH6xvrOWm855Rmzpn4+yDFGPqf212PzkOE23uiw04fhNNFnpbz/fkAfJ3jaCXL64Mi7tQ3288hblhFp3hOE=
-X-Received: by 2002:a05:6902:6d09:b0:e93:4b5c:d50d with SMTP id
- 3f1490d57ef6-e94e6284bd7mr2925126276.25.1755608661629; Tue, 19 Aug 2025
- 06:04:21 -0700 (PDT)
+ AJvYcCUjwa/QFD8aaAOVOSyeOiEOSHG/Fs7eRtYytkxA8q8AsuBtQhZ/xftrg0ZZB1fpIxF6qpO84UeihA==@nongnu.org
+X-Gm-Message-State: AOJu0YwPmWH50xvtvwKISG7nKzJWXJfQGXeedW65DWvJ9u/nOAZmk4hp
+ vkNiPCHhSjOXy2iums0tXV3nb9rRk5ee+c1ivge1Nl5XsrHNX3PcK33GMXbST8Uc3KRZXZfwTjm
+ qDZsaDe19zDYMHKHtNSYt+rpAdGyWHT8Ugvs/5s6YZg==
+X-Gm-Gg: ASbGncvh49n2oRcmKwdSwGa1Le+W55pMkxSSZy5F8jcOOfxNAwZo3ZUcX3FpK7Bigbs
+ WCeCIIpkcooahYVF6qhxaM2Z7Sa3fyScAC5+HaoyxhGmNn3qp2Gck7Od04UNARP3a+bGS5TQkHh
+ jZO+fdwnM6mZ5oA6CerajY26Q2mEu60w1ExAyXYB3WKHc7+xmHeX9x8QjwnwvLxrToPNKGfj2u7
+ q/jXfNF
+X-Google-Smtp-Source: AGHT+IFh4hROarJMzawZgKqmQF51gcjih5nUdlEy0mWkJ7f1HjqUmhuouFSmMYuqD5UfILXKATk17fPzSEGGmYzOYDE=
+X-Received: by 2002:a05:6902:6d15:b0:e93:4556:8142 with SMTP id
+ 3f1490d57ef6-e94e62f3713mr2290424276.32.1755609049688; Tue, 19 Aug 2025
+ 06:10:49 -0700 (PDT)
 MIME-Version: 1.0
 References: <20250808065419.47415-1-mohamed@unpredictable.fr>
  <20250808065419.47415-3-mohamed@unpredictable.fr>
 In-Reply-To: <20250808065419.47415-3-mohamed@unpredictable.fr>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 19 Aug 2025 14:04:10 +0100
-X-Gm-Features: Ac12FXxK80mEuyo7WyK8Me7SjAMiQLCmGhaBx70oD8yBVCiLtEXx4lq77CVjSk0
-Message-ID: <CAFEAcA9KXrjPmMoHDg6zoAwUsWJzqU_BUQAzuiGX2uHgDx3q1g@mail.gmail.com>
+Date: Tue, 19 Aug 2025 14:10:38 +0100
+X-Gm-Features: Ac12FXwuWyV4BHVlk2_b6dQzYUAHOtsTqYeo9lw5QVYvBIEie6Jh3LYQWKzLhXc
+Message-ID: <CAFEAcA-BfSremW3BETfi5yFowAeyLxyCk2OBM29bQs=BGbLdGQ@mail.gmail.com>
 Subject: Re: [PATCH v5 02/18] hw/arm: virt: add GICv2m for the case when ITS
  is not available
 To: Mohamed Mediouni <mohamed@unpredictable.fr>
@@ -88,8 +88,8 @@ Cc: qemu-devel@nongnu.org,
  Yanan Wang <wangyanan55@huawei.com>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b36;
- envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb36.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b2a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb2a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -119,75 +119,21 @@ On Fri, 8 Aug 2025 at 07:54, Mohamed Mediouni <mohamed@unpredictable.fr> wrote:
 > As such, support a GICv3 w/ GICv2m for that scenario.
 >
 > Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
->
-> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 
-This breaks the bios-tables-test which is run as part of "make check",
-because the ACPI tables generated no longer match the golden reference
-output. If the ACPI table change here is intentional then the comment
-at the top of tests/qtest/bios-tables-test.c describes the process
-and sequence of patches you need to update the reference versions.
+We should also update the docs in docs/system/arm/virt.rst.
+These are already incorrect in that we never updated them
+when we implemented the ITS:
 
+- An MSI controller (GICv2M or ITS). GICv2M is selected by default along
+  with GICv2. ITS is selected by default with GICv3 (>= virt-2.7). Note
+  that ITS is not modeled in TCG mode.
 
-$ make -C build/arm-clang/ -j6 && (cd build/arm-clang/ &&
-QTEST_QEMU_BINARY=./qemu-system-aarch64
-./tests/qtest/bios-tables-test)
-make: Entering directory
-'/mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-clang'
-[1/28] Generating qemu-version.h with a custom command (wrapped by
-meson to capture output)
-[2/8] Compiling C object libsystem.a.p/hw_pci-host_gpex-acpi.c.o
-[3/8] Compiling C object libqemu-arm-softmmu.a.p/hw_arm_virt-acpi-build.c.o
-[4/8] Compiling C object libqemu-aarch64-softmmu.a.p/hw_arm_virt-acpi-build.c.o
-[5/8] Compiling C object libqemu-arm-softmmu.a.p/hw_arm_virt.c.o
-[6/8] Compiling C object libqemu-aarch64-softmmu.a.p/hw_arm_virt.c.o
-[7/8] Linking target qemu-system-arm
-[8/8] Linking target qemu-system-aarch64
-make: Leaving directory
-'/mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-clang'
-TAP version 13
-# random seed: R02Sbd44a41112c6e2df4635231a2a1f3510
-# starting QEMU: exec ./qemu-system-aarch64 -qtest
-unix:/tmp/qtest-2147871.sock -qtest-log /dev/null -chardev
-socket,path=/tmp/qtest-2147871.qmp,id=char0 -mon
-chardev=char0,mode=control -display none -audio none -machine none
--accel qtest
-# starting QEMU: exec ./qemu-system-aarch64 -qtest
-unix:/tmp/qtest-2147871.sock -qtest-log /dev/null -chardev
-socket,path=/tmp/qtest-2147871.qmp,id=char0 -mon
-chardev=char0,mode=control -display none -audio none -machine none
--accel qtest
-1..12
-# Start of aarch64 tests
-# Start of acpi tests
-# starting QEMU: exec ./qemu-system-aarch64 -qtest
-unix:/tmp/qtest-2147871.sock -qtest-log /dev/null -chardev
-socket,path=/tmp/qtest-2147871.qmp,id=char0 -mon
-chardev=char0,mode=control -display none -audio none -machine virt
--accel tcg -nodefaults -nographic -drive
-if=pflash,format=raw,file=pc-bios/edk2-aarch64-code.fd,readonly=on
--drive if=pflash,format=raw,file=pc-bios/edk2-arm-vars.fd,snapshot=on
--cdrom tests/data/uefi-boot-images/bios-tables-test.aarch64.iso.qcow2
--cpu cortex-a57 -machine ras=on -smbios
-type=4,max-speed=2900,current-speed=2700 -accel qtest
-acpi-test: Warning! APIC binary file mismatch. Actual
-[aml:/tmp/aml-0EHGB3], Expected
-[aml:tests/data/acpi/aarch64/virt/APIC].
-See source file tests/qtest/bios-tables-test.c for instructions on how
-to update expected files.
-acpi-test: Warning! APIC mismatch. Actual [asl:/tmp/asl-48FGB3.dsl,
-aml:/tmp/aml-0EHGB3], Expected [asl:/tmp/asl-D5NHB3.dsl,
-aml:tests/data/acpi/aarch64/virt/APIC].
-**
-ERROR:../../tests/qtest/bios-tables-test.c:554:test_acpi_asl:
-assertion failed: (all_tables_match)
-not ok /aarch64/acpi/virt -
-ERROR:../../tests/qtest/bios-tables-test.c:554:test_acpi_asl:
-assertion failed: (all_tables_match)
-Bail out!
-Aborted (core dumped)
+so we should update that bullet point to match current reality.
+(If it is looking a bit big then we can have the bullet point
+be just "An MSI controller (GICv2M or ITS)" and move the explanation
+of when we go with GICv2M vs ITS to a paragraph below the
+bullet list, in the same way we have for the explanation about
+the second NS UART.
 
-
-thanks
 -- PMM
 

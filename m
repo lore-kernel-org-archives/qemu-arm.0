@@ -4,72 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BBABCA0EE6
-	for <qemu-arm@archiver.kernel.org>; Tue, 19 Aug 2025 22:26:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8DD14CA0EE6
+	for <qemu-arm@archiver.kernel.org>; Tue, 19 Aug 2025 22:32:55 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uoUlj-0001Lh-Vm; Tue, 19 Aug 2025 18:25:29 -0400
+	id 1uoUse-0004Mc-D3; Tue, 19 Aug 2025 18:32:36 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1uoUlh-0001Jc-BA
- for qemu-arm@nongnu.org; Tue, 19 Aug 2025 18:25:25 -0400
-Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436])
+ id 1uoUsd-0004Lq-09
+ for qemu-arm@nongnu.org; Tue, 19 Aug 2025 18:32:35 -0400
+Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1uoUle-00063Y-29
- for qemu-arm@nongnu.org; Tue, 19 Aug 2025 18:25:24 -0400
-Received: by mail-pf1-x436.google.com with SMTP id
- d2e1a72fcca58-76e2eb9ae80so4667497b3a.3
- for <qemu-arm@nongnu.org>; Tue, 19 Aug 2025 15:25:20 -0700 (PDT)
+ id 1uoUsb-0006rA-8O
+ for qemu-arm@nongnu.org; Tue, 19 Aug 2025 18:32:34 -0400
+Received: by mail-pf1-x42a.google.com with SMTP id
+ d2e1a72fcca58-76e1ff326bbso272978b3a.1
+ for <qemu-arm@nongnu.org>; Tue, 19 Aug 2025 15:32:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1755642320; x=1756247120; darn=nongnu.org;
+ d=linaro.org; s=google; t=1755642751; x=1756247551; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:content-language:from
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=Hjm40C1Pz7jGioTUAXK4nGc8ovztYSjb3V5cdY26FwY=;
- b=xtLxwwBktBYo2nFbfvQqSAf09LeeY28faFZNOswwkL7cYDmZarcoGdpKzoMiJIfmlK
- cwJpaugS0+D6mnwaLWgiHk+FtvO9uqrXf0AFAu6vYLCtcSwVfHZP9pKu84jwvKzakaon
- j5axfL8q3/QRAHFDnylkCpFyrkBOrZc58w2IWMzYFQEuT3c7RVA6C9ZyNBpdqYxyGsal
- EwU+pojEkGPH3rhcw471n6mk8XqG7Mo2Vhtx7qKsOdd5cUvfFrC7uCYSDEJmRPhgdYV1
- qwHB5ZddcpZF8PtKYJsiI6XjiJEhMLTlITce2Jqt4QuwLW/ZkLUhRiAmHwQSmvmgxWo2
- y80A==
+ bh=0UG8bHYH9qhHIRwV5i1DVVt3dqKwyCbwf3bPUxBc7V4=;
+ b=Sr+z+4DNRelgDAZxhKgC0b46IkK6VOYDL3NpCizoNalzcq6HYL3T/odUB5ijwTxaPH
+ 8nOn2rEzT0yhaOBBFz/dMCbzFohdZP8jA19tXE9MgOJK2dlFEZzScYEvlNOvk/vtdHAM
+ +JZMAFkn/agtj5gSYogoMHGd2ceFkJmrcUXmIluGnTR3ql/jkOAAF0b9x+j4z2WM7QPm
+ IrEWMdjJ93UKHbRELEiBOiGNTejKA8rRHahm6ayBPoHU0hO46/RY6N2S7AxVo58Rxava
+ YnuJ1A9rd8N4qrFCxIDHphVN09FzweN+Uf5yQ40AGXmin3ZiJlZCpdy/B1SmXWJ9NLw/
+ jNJg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1755642320; x=1756247120;
+ d=1e100.net; s=20230601; t=1755642751; x=1756247551;
  h=content-transfer-encoding:in-reply-to:content-language:from
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=Hjm40C1Pz7jGioTUAXK4nGc8ovztYSjb3V5cdY26FwY=;
- b=DiSVun1l5mJ+Q1giIx/qGBnBpNehn03Q3ODVmYDDl3SJckOSgPWmW7zHOlrhu6Ht0r
- cjvWKnGEZXGZAmmBYRk3ib90DjogspTgVutdWIlotUxj/VSbZqrOWaJLxZ3zfFxGqJ+2
- ISjm10hP4sl3VJ6qUBew0Q2/YZu5lSXvcq5qV66g4ltKll5pMBUoG8QpJCaaoCxHfn63
- kcg74KoJRMxFmjeAEHKlU6BYDK3lzZ7/Z/WrZE2H2ZBPJnMJ1lEAGG2YqFc6J2wCIm2d
- ameaimM8zjzr2HGWTqmHIh4MP3ZJOigIuA2sdCz/vfkhA/F3MlSeXwI6uPooXM5g8i6z
- d3Og==
+ bh=0UG8bHYH9qhHIRwV5i1DVVt3dqKwyCbwf3bPUxBc7V4=;
+ b=ElIo67J+DSymVNUEQY3O1bAtz1ovrddPiaqmcu4Z92k90H+NRmeXjox4J6B/FJihR2
+ 3Uz3pUlGkLnu3aKOJYeGaW+gR8i8YLpNLoaxKI6OO+NdoqIFMgxcsyX7X+Yu1WCxKcV0
+ Nb20ELUy2GbYcWP4mO1lQ3BhKajjJC8OeMFkJzVUvdXbdHDkCQuClwAmBfm4eg3A1oHp
+ 7GHY2Jt25joh+TBE3mJWewdueSL3UnYvvIpL/M19Kr0Rq946AhZNBgzRvKee2PjLnVMv
+ HuRw7v0aRQ2wQZzoScRHaO9GEGU/ZdQyB2IXPTh70iK3koBlkSg1hpRhYz3TAfAnX6i9
+ h72Q==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVWeCTNCri5IgiJHP+Aw7fQySaOd+0hD6+XIkhQmEDNaNXeEG1xsAnecB0xkmHWQrLNq7gDRxY4lg==@nongnu.org
-X-Gm-Message-State: AOJu0YzYzQkuA34i/hqz/rTN5gNP0sO7ZQ/n6ulXwNFZUi+s3qYOoM+o
- 9Ge24udgIrF4hBHoCYsjofuPNeosgY4hi+tl6SKOdIJ2vlhyv0oKJ25MvpcZRdRjo9k=
-X-Gm-Gg: ASbGnctm6codfL0T4w81kiAAeAelB6fRR4pZsEoUcFPHBtlMl39Hy+pLmjnD/BoYe3x
- C9v1a3OGI8ls2nDnYLAa0HVosGapC097kqwHche2rxHQSfOgXGuLjvbcrun9x1/+cDyOK0ZBeod
- odfs8xn7e7lA9Tn78VuNskmayVGqCg3OhyOsCS6f2S4O95oDV5Rjt+Tk91r5fFwvvC05qNVeOM6
- IxTDjMmU8vnf5gqLWEkDYYUidkcpsn2JbACtziI5rq0xQRkJPw4QOYTzpQHpb8nv6gMFgiGSQ72
- Xi9lDa8k4Gau0DcRcskF95JBogZZqJXsHXLD29gIqrdhsHbIwvdaDI9/UpltDiYiNFoNWH6LOB8
- Nqme6zCtMxygMQsgKLwiSOoEERPa0o99JTw==
-X-Google-Smtp-Source: AGHT+IEWa784FsjfvJwCOwMy1uyJQNceVjQlNUvZoclauXM/4KB9ASwvuPW6Xk9+nyogr4JbacEBlw==
-X-Received: by 2002:a05:6a00:3a24:b0:76c:c48f:d7ab with SMTP id
- d2e1a72fcca58-76e8dc35cd0mr1032541b3a.13.1755642319598; 
- Tue, 19 Aug 2025 15:25:19 -0700 (PDT)
+ AJvYcCWaakcBxWq5ozOZd4/VzLsVsNPqDlF6vqG+5LJ4bq31thDbAsomJSubmJBtD1FktOHlifRqr8cW3g==@nongnu.org
+X-Gm-Message-State: AOJu0Yy99FA+sWTfifx1S5Tfie5uI7jVUc4G6hBReRsB4zUGrJABFL6s
+ EVwGWBqGaZ5hB4Y6JFj7wGljA2DXJNWSEsbNgd30oJq6Q2Xiyp1E0PBI3s2EYC6HU60=
+X-Gm-Gg: ASbGncuWW9pH8fTpeFV3z7Jm8BfiqQ4/7auj2CIp2ZPI7v9APynCxLTMYDYWEj14WmN
+ KQUQcd/jqurDw8uUQQDmdNgjIptvqtwbg5OMQHf2wqMY69QKeOwdN8HK5k4OpN8rQtiDX4jzLTF
+ mVPfjX3KrgddYlfnJ/4RLe26PGfb15CCybPR7LtePbueSLOvlHsHubdr2FB750u3kDZ3dAIlKoe
+ ZKAR6yqPGQLc8phZiHyHX7wuABZQxGT0pe7Ww1OWdQ1Cc4bFd+3WrDvx/Y1bRoVzkTSEdyqC68i
+ 8MRWGfPTmdKrI0XrMAlxVKsm8o8i9YjKGLrefZZn5k6McdhPlluiIK1Wqa9h6Cedc2b2P4uvFjn
+ LfgbO/0UYuTmhXrwN0Z6cfrl26Bd8NLgtKg==
+X-Google-Smtp-Source: AGHT+IHp8VTKG9Vpn6FAHdmy+mSnJ5GgTEl0qI+uay+ssgl1frq/JCQo7z7Y3bdVkLlZC9I8Uw3G3Q==
+X-Received: by 2002:a17:903:41c2:b0:23f:fa47:f933 with SMTP id
+ d9443c01a7336-245e0930050mr46957165ad.8.1755642751182; 
+ Tue, 19 Aug 2025 15:32:31 -0700 (PDT)
 Received: from [10.0.0.90] ([120.159.20.238]) by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-76e7d14e531sm3463541b3a.50.2025.08.19.15.25.12
+ 98e67ed59e1d1-324e251e891sm233987a91.5.2025.08.19.15.32.23
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 19 Aug 2025 15:25:19 -0700 (PDT)
-Message-ID: <eb741401-fbc2-4ffc-b3da-83fe5646a03b@linaro.org>
-Date: Wed, 20 Aug 2025 08:25:09 +1000
+ Tue, 19 Aug 2025 15:32:30 -0700 (PDT)
+Message-ID: <bcdcb0b0-3427-4c4e-b3cf-32b53b5e6c4e@linaro.org>
+Date: Wed, 20 Aug 2025 08:32:21 +1000
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 14/35] tcg/wasm: Add deposit/sextract/extract instrcutions
+Subject: Re: [PATCH 18/35] tcg/wasm: Add bswap instructions
 To: Kohei Tokunaga <ktokunaga.mail@gmail.com>, qemu-devel@nongnu.org
 Cc: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
  =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
@@ -84,14 +84,14 @@ Cc: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
  Stefan Hajnoczi <stefanha@redhat.com>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>
 References: <cover.1755623521.git.ktokunaga.mail@gmail.com>
- <c59e13b025fd8a631463ce6033c50b02d3906b38.1755623521.git.ktokunaga.mail@gmail.com>
+ <ceb5f4b3fb6a4c0f6c647a7e1b39c801144ac6af.1755623522.git.ktokunaga.mail@gmail.com>
 From: Richard Henderson <richard.henderson@linaro.org>
 Content-Language: en-US
-In-Reply-To: <c59e13b025fd8a631463ce6033c50b02d3906b38.1755623521.git.ktokunaga.mail@gmail.com>
+In-Reply-To: <ceb5f4b3fb6a4c0f6c647a7e1b39c801144ac6af.1755623522.git.ktokunaga.mail@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::436;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x436.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42a;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -115,89 +115,47 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 8/20/25 04:21, Kohei Tokunaga wrote:
-> The tcg_out_extract and tcg_out_sextract functions were used by several
-> other functions (e.g. tcg_out_ext*) and intended to emit TCI code. So they
-> have been renamed to tcg_tci_out_extract and tcg_tci_out_sextract.
-> 
-> Signed-off-by: Kohei Tokunaga <ktokunaga.mail@gmail.com>
-> ---
->   tcg/wasm/tcg-target.c.inc | 104 +++++++++++++++++++++++++++++++++-----
->   1 file changed, 91 insertions(+), 13 deletions(-)
-> 
-> diff --git a/tcg/wasm/tcg-target.c.inc b/tcg/wasm/tcg-target.c.inc
-> index 03cb3b2f46..6220b43f98 100644
-> --- a/tcg/wasm/tcg-target.c.inc
-> +++ b/tcg/wasm/tcg-target.c.inc
-> @@ -163,7 +163,10 @@ typedef enum {
->       OPC_I64_SHR_U = 0x88,
->   
->       OPC_I32_WRAP_I64 = 0xa7,
-> +    OPC_I64_EXTEND_I32_S = 0xac,
->       OPC_I64_EXTEND_I32_U = 0xad,
-> +    OPC_I64_EXTEND8_S = 0xc2,
-> +    OPC_I64_EXTEND16_S = 0xc3,
->   } WasmInsn;
->   
->   typedef enum {
-> @@ -380,6 +383,66 @@ static void tcg_wasm_out_movcond(TCGContext *s, TCGType type, TCGReg ret,
->       tcg_wasm_out_op_idx(s, OPC_GLOBAL_SET, REG_IDX(ret));
->   }
->   
-> +static void tcg_wasm_out_deposit(TCGContext *s,
-> +                                 TCGReg dest, TCGReg arg1, TCGReg arg2,
-> +                                 int pos, int len)
+> +static void tcg_wasm_out_bswap64(
+> +    TCGContext *s, TCGReg dest, TCGReg src)
 > +{
-> +    int64_t mask = (((int64_t)1 << len) - 1) << pos;
-> +    tcg_wasm_out_op_idx(s, OPC_GLOBAL_GET, REG_IDX(arg1));
-> +    tcg_wasm_out_op_const(s, OPC_I64_CONST, ~mask);
+> +    tcg_wasm_out_op_idx(s, OPC_GLOBAL_GET, REG_IDX(src));
+> +    tcg_wasm_out_op_const(s, OPC_I64_CONST, 32);
+> +    tcg_wasm_out_op(s, OPC_I64_ROTR);
+> +    tcg_wasm_out_op_idx(s, OPC_LOCAL_SET, TMP64_LOCAL_0_IDX);
+> +
+> +    tcg_wasm_out_op_idx(s, OPC_LOCAL_GET, TMP64_LOCAL_0_IDX);
+> +    tcg_wasm_out_op_const(s, OPC_I64_CONST, 0xff000000ff000000);
 > +    tcg_wasm_out_op(s, OPC_I64_AND);
-> +    tcg_wasm_out_op_idx(s, OPC_GLOBAL_GET, REG_IDX(arg2));
-> +    tcg_wasm_out_op_const(s, OPC_I64_CONST, pos);
+> +    tcg_wasm_out_op_const(s, OPC_I64_CONST, 24);
+> +    tcg_wasm_out_op(s, OPC_I64_SHR_U);
+> +
+> +    tcg_wasm_out_op_idx(s, OPC_LOCAL_GET, TMP64_LOCAL_0_IDX);
+> +    tcg_wasm_out_op_const(s, OPC_I64_CONST, 0x00ff000000ff0000);
+> +    tcg_wasm_out_op(s, OPC_I64_AND);
+> +    tcg_wasm_out_op_const(s, OPC_I64_CONST, 8);
+> +    tcg_wasm_out_op(s, OPC_I64_SHR_U);
+> +
+> +    tcg_wasm_out_op(s, OPC_I64_OR);
+> +
+> +    tcg_wasm_out_op_idx(s, OPC_LOCAL_GET, TMP64_LOCAL_0_IDX);
+> +    tcg_wasm_out_op_const(s, OPC_I64_CONST, 0x0000ff000000ff00);
+> +    tcg_wasm_out_op(s, OPC_I64_AND);
+> +    tcg_wasm_out_op_const(s, OPC_I64_CONST, 8);
 > +    tcg_wasm_out_op(s, OPC_I64_SHL);
-> +    tcg_wasm_out_op_const(s, OPC_I64_CONST, mask);
+> +
+> +    tcg_wasm_out_op_idx(s, OPC_LOCAL_GET, TMP64_LOCAL_0_IDX);
+> +    tcg_wasm_out_op_const(s, OPC_I64_CONST, 0x000000ff000000ff);
 > +    tcg_wasm_out_op(s, OPC_I64_AND);
+> +    tcg_wasm_out_op_const(s, OPC_I64_CONST, 24);
+> +    tcg_wasm_out_op(s, OPC_I64_SHL);
+> +
+> +    tcg_wasm_out_op(s, OPC_I64_OR);
+> +
 > +    tcg_wasm_out_op(s, OPC_I64_OR);
 > +    tcg_wasm_out_op_idx(s, OPC_GLOBAL_SET, REG_IDX(dest));
 > +}
-> +
-> +static void tcg_wasm_out_extract(TCGContext *s, TCGReg dest, TCGReg arg1,
-> +                                 int pos, int len)
-> +{
-> +    int64_t mask = ~0ULL >> (64 - len);
-> +    tcg_wasm_out_op_idx(s, OPC_GLOBAL_GET, REG_IDX(arg1));
-> +    if (pos > 0) {
-> +        tcg_wasm_out_op_const(s, OPC_I64_CONST, pos);
-> +        tcg_wasm_out_op(s, OPC_I64_SHR_U);
-> +    }
-> +    if ((pos + len) < 64) {
-> +        tcg_wasm_out_op_const(s, OPC_I64_CONST, mask);
-> +        tcg_wasm_out_op(s, OPC_I64_AND);
-> +    }
-> +    tcg_wasm_out_op_idx(s, OPC_GLOBAL_SET, REG_IDX(dest));
-> +}
 
-This is no better than the generic tcg expansion.
-You should omit it.
-
-> +
-> +static void tcg_wasm_out_sextract(TCGContext *s, TCGReg dest, TCGReg arg1,
-> +                                  int pos, int len)
-> +{
-> +    int discard = 64 - len;
-> +    int high = discard - pos;
-> +
-> +    tcg_wasm_out_op_idx(s, OPC_GLOBAL_GET, REG_IDX(arg1));
-> +
-> +    if ((pos == 0) && (len == 8)) {
-> +        tcg_wasm_out_op(s, OPC_I64_EXTEND8_S);
-> +    } else if ((pos == 0) && (len == 16)) {
-> +        tcg_wasm_out_op(s, OPC_I64_EXTEND16_S);
-> +    } else if ((pos == 0) && (len == 32)) {
-> +        tcg_wasm_out_op(s, OPC_I32_WRAP_I64);
-> +        tcg_wasm_out_op(s, OPC_I64_EXTEND_I32_S);
-
-This is worth keeping.
-Compare tcg/i386/tcg-target-has.h, tcg_target_sextract_valid.
+Is this any better than the default expansion?
 
 
 r~

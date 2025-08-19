@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3CA86CA0EE6
-	for <qemu-arm@archiver.kernel.org>; Tue, 19 Aug 2025 18:33:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F005CA0EF5
+	for <qemu-arm@archiver.kernel.org>; Tue, 19 Aug 2025 18:33:51 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uoR25-0003jc-LV; Tue, 19 Aug 2025 14:26:06 -0400
+	id 1uoQyt-0004ru-UE; Tue, 19 Aug 2025 14:22:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ktokunaga.mail@gmail.com>)
- id 1uoR1m-0002GO-Tq; Tue, 19 Aug 2025 14:25:49 -0400
-Received: from mail-pg1-x52b.google.com ([2607:f8b0:4864:20::52b])
+ id 1uoQyq-0004qE-JV; Tue, 19 Aug 2025 14:22:44 -0400
+Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <ktokunaga.mail@gmail.com>)
- id 1uoR1k-0004hg-6p; Tue, 19 Aug 2025 14:25:46 -0400
-Received: by mail-pg1-x52b.google.com with SMTP id
- 41be03b00d2f7-b47052620a6so138987a12.1; 
- Tue, 19 Aug 2025 11:25:42 -0700 (PDT)
+ id 1uoQyo-0003km-Dg; Tue, 19 Aug 2025 14:22:44 -0400
+Received: by mail-pl1-x633.google.com with SMTP id
+ d9443c01a7336-2449788923eso16448135ad.2; 
+ Tue, 19 Aug 2025 11:22:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1755627941; x=1756232741; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1755627760; x=1756232560; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=kBeoWpxMqpFxA4dbDYsLUVKeHSoVnPre/U93n/Il/C8=;
- b=OFi7aaFdRAC12q+NJ/v1A2a52rME61bGFudGIhXenI14dFdYnjFrpQtfPRfn4rueKP
- N1Tptg4MzUmFJmJ3POePnG3bWnZeL3/cT4nVddctcTi8K26LmCa1dEcZRxQXRkGvuq1z
- NHfjxYIYCCXfpyLemg7FPcrF1ifPAqkhboNMlvKBy5SdInrAiICYMb0EKfbCpDDZe40E
- +bopRRl9O3HA+8bdqjFXq5SatleEACvSG/pjH5OQ3glU78sq86IOEbKeyoGmnnwi69Iw
- Gnv1Mg9xD4sQUSA0Do17RYWlCnqpaeh/evntmj+3wKQWkhnG98CsYcXB1aqBxzze1iZu
- NK2Q==
+ bh=+FbK9ZmTXg2xQSJZsVexzLKV577HxgsyGAmP/Gwi0cg=;
+ b=Pu3YEvS8M+QWRbHejBl6Lg9oG2OhbT6LqbgUxD6m3bbfN5zDfQOSGqcSs9pjGafcCT
+ Wk5qBp0ZLBF/UgixEBXNH2g62tpJTBpV+6uz61AU20z1gzHgXwod87j40rUL13geaCS6
+ u9xDkbmL6CvdYR9XAFOk4XZx74c3S6M3PEVqMEdOrSEMJfjEczJoCGEz8buolOcRyzKk
+ 4T7v8J9UVLYFdKcPYGVaRDcJWIDm7/gDx2bgcqgNOkp3FEWtqwnjlDeq73xkyEoM9JDg
+ 2fxipDESxESQMQV2b147Nlu3aG+cd8pXKMPNVnvgodXKOpy4Izd5VZt8EtDbWwu6Z63v
+ JK5A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1755627941; x=1756232741;
+ d=1e100.net; s=20230601; t=1755627760; x=1756232560;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=kBeoWpxMqpFxA4dbDYsLUVKeHSoVnPre/U93n/Il/C8=;
- b=BPyt0RDUhhiAf65DHD8bVaBgBZ47k+76I8HFHOkHRthwHXdFXRLximNYqj+BysZOjw
- plSQ66UIO9r5YEptjETZPqX8l/sXrE5N3Fx+UJDTfCikpXmMobn0GsDc0fOvjImq1Jt9
- Ml4bJ70I/QR89dObhYJld64T4/aeGLzYvzI943LGceh6FmdRZiFXkmjY+Mfx2oCkI1M5
- +e9DpCvEHjhreD06hGjuZJzOQ8bV47MfaTt2aqaHQ/O2snzzVeuYzoZoQG9NKzxOYvux
- mUuGlmoV09CN2KftcZD/dIyBh+py+FsqE47Wt8PctaeqVf3H+UpoIKbE+dvkOGUTaqkK
- KE6g==
+ bh=+FbK9ZmTXg2xQSJZsVexzLKV577HxgsyGAmP/Gwi0cg=;
+ b=ItmKB1GIxSEcjmu3f+kb7FTo/xMbxHeI7rc7WX6hsgc56eFJm8KCumAjNrKPsHxVVI
+ MW8iCUmYOp61N02XeMGf4SKRiBDRBTo5hTp76zU7M+XmmInP8uthemmzpMkWLGm+3tg1
+ wtG+UlJj29Ppw7IxvZcXMsyWXPGCvo8P/gm0J+1zbj5J93BrBoGFL+YYAQfhBHm6PH/w
+ 6Q9mneri6Xz84p8sTsvyPNh+KCYZC3Hz10VwitNH4Fhms7JZjhCDF1BirpGp7bQ/8LMZ
+ GVt3LXi6713zFJhee1Jfd5idZKGBi31zonYh56/RROWsvjaMlGOFpOxFUcyOUlD2Is+i
+ wUWg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUNrKqwpRZ+9kHaNNbWcpT8r14PaLbl5jlIL+RwlVy4wdF3MvKgKbla6l5o91nKeaSkBYBzhERveg==@nongnu.org,
- AJvYcCW7hzTSUErJpm7BFWqeAmOoxs9Cip/KvEdew5c2NlDF2zvave5+hBRupvjCPdNiJ/JEy7eNxEk7953iNQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yx+15jCxqgpHHDMFSAdOyxdZMviHD1rYp1IA/WMxpi8a1ibj/8+
- L1FiT1NEItj5uA6tE2gn2mG6yGX6J//k8O9tG/e73qyl2ZZlMSrHa1jqO+MgRw==
-X-Gm-Gg: ASbGncuVDSEPK+wQA4b6oVRgwPXsNwkGLmZ4wAOMbqSevERkwI6n3ZiuekWn6yhkAEX
- RNC3fjp0Sn1Eo0R8dna1KizHWJLA4ajR9Pxwt/d6k0tYUTV56W4ps3G9jHRYU3uSfYpDQ7zpoQI
- 1mROeqzxb5Ag7pEeVUxcXkK3ey2tk6kg5wgYZx26TczYT+5FymhhrmlAamgqLIUQDOUNRoETqD2
- tZA1aAdnvXB5XXAYn7EJiSyTRHj5eS2ujQzJgN0Yf/POHrtbDFewYillWXaS4Al2UfVbvSLp7Zd
- 8qU+39nApcusOXrBKZhgqLslh6Jqo6/WioLwcihjWW93CO3xd/nsTWHJqontENMPJY6cf2vvUAj
- 08GqV6KUAxZp3G21scMPM29GAPj1DK23X
-X-Google-Smtp-Source: AGHT+IEg5BHR89mZpBj2A/kNyLiBp7nvUU6QGf4SO99SjEhDpzuRgb8WZEnZJ2Glii82GX34QIeeZw==
-X-Received: by 2002:a17:902:cecb:b0:240:8381:45b9 with SMTP id
- d9443c01a7336-245ee00fb33mr4780775ad.8.1755627941254; 
- Tue, 19 Aug 2025 11:25:41 -0700 (PDT)
+ AJvYcCUZSXII99Xz+rqH5PesdLbGpvVpau31gxZK2hJ1ZLDX5f0AeNKBzHBkMxV2jVOH8ikYqtd0PzAKsw==@nongnu.org,
+ AJvYcCVFkhJ3V1VRjDaTjjEHP9kQWI9+l8re0V225WhXC5rIYOKWjgfTGdJODnBp8v9UhqPv5C+1I5hzeDRs6Q==@nongnu.org
+X-Gm-Message-State: AOJu0YzpWwBMFBiv8bla+MZ6hRrZ4P4BHdOxRCh9A9/pIMctZuIMF86R
+ hyzppBxfz6GKDyvXAHBrDoHzi1vbz1N4wOGPVUxqCceMBJLyWoveG/Rw6R4g9lsY
+X-Gm-Gg: ASbGncs/W/8vl78xUmDya22B+VXTG2qlg1V7VJSScG/BlGVnizJxL21VCi5BTzEUS2V
+ ryv57xSZ9WIDNYjqGRmBO5+tBGHkeTP4p+6nFlC1cHgZ8baTwEJ4EdBClI0IJGBQKwQ84VJ11WS
+ on0zwRZvRZ7OSy7xa7sp6f0F/TUrvmnUBpU+dqtJeNRlki6+tgNmMx6/129AC8s6E4pPTrwkS1r
+ PB0y5hC3nQst7iK3NI+CMbbvQ2sZtNuv8oudvoPR1slj0t1XqXcHlp/SJ4QF/gPU5kxoP928G0l
+ s8Z/TbW4JoINqcqRs2S0fyUYUKdNa/A1JpJlUbyadXQYdM/zK81t0tXfR92ozuuVjBGhAViujvx
+ dxTePukelu3GKdrKSfL4/YcWXwQOl8HIW
+X-Google-Smtp-Source: AGHT+IEDH6izQI/U6+5s+QiG5ryEh4M4Zw+H4hvy/7aeTEr0e6FPH6hKsGVlP8FRZJvogGt+aAtfKA==
+X-Received: by 2002:a17:902:ef07:b0:235:f143:9b07 with SMTP id
+ d9443c01a7336-245e04347c9mr42010395ad.5.1755627760155; 
+ Tue, 19 Aug 2025 11:22:40 -0700 (PDT)
 Received: from ktock.. ([240d:1a:3b6:8b00:29ce:ef58:c2c9:e52f])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-245ed33b4c2sm3725125ad.25.2025.08.19.11.25.35
+ d9443c01a7336-245ed33b4c2sm3725125ad.25.2025.08.19.11.22.35
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 19 Aug 2025 11:25:40 -0700 (PDT)
+ Tue, 19 Aug 2025 11:22:39 -0700 (PDT)
 From: Kohei Tokunaga <ktokunaga.mail@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
@@ -80,16 +80,16 @@ Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
  qemu-arm@nongnu.org, qemu-riscv@nongnu.org,
  Stefan Hajnoczi <stefanha@redhat.com>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>, ktokunaga.mail@gmail.com
-Subject: [PATCH 33/35] tcg/wasm: Enable TLB lookup
-Date: Wed, 20 Aug 2025 03:22:02 +0900
-Message-ID: <6cb6e34d6699e050b65cd7938d127de38844da3b.1755623522.git.ktokunaga.mail@gmail.com>
+Subject: [PATCH 01/35] meson: Add wasm64 support to the --cpu flag
+Date: Wed, 20 Aug 2025 03:21:30 +0900
+Message-ID: <fcfdf0cc933aa46c4c3767bd8f23eadd31ab6865.1755623521.git.ktokunaga.mail@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <cover.1755623521.git.ktokunaga.mail@gmail.com>
 References: <cover.1755623521.git.ktokunaga.mail@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::52b;
- envelope-from=ktokunaga.mail@gmail.com; helo=mail-pg1-x52b.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::633;
+ envelope-from=ktokunaga.mail@gmail.com; helo=mail-pl1-x633.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -112,360 +112,80 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This commit enables qemu_ld and qemu_st to perform TLB lookups, following
-the approach used in other backends such as RISC-V. Unlike other backends,
-the Wasm backend cannot use ldst labels, as jumping to specific code
-addresses (e.g. raddr) is not possible in Wasm. Instead, each TLB lookup is
-followed by a if branch: if the lookup succeeds, the memory is accessed
-directly; otherwise, a fallback helper function is invoked. Support for
-MO_BSWAP is not yet implemented, so has_memory_bswap is set to false.
+wasm64 target enables 64bit pointers using Emscripten's -sMEMORY64=1
+flag[1]. This enables QEMU to run 64bit guests.
+
+Although the configure script uses "uname -m" as the fallback value when
+"cpu" is empty, this can't be used for Emscripten which targets to Wasm.
+So, in wasm build, this commit fixes configure to require --cpu flag to be
+explicitly specified by the user.
+
+[1] https://emscripten.org/docs/tools_reference/settings_reference.html#memory64
 
 Signed-off-by: Kohei Tokunaga <ktokunaga.mail@gmail.com>
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 ---
- tcg/tcg.c                 |   2 +-
- tcg/wasm/tcg-target.c.inc | 220 +++++++++++++++++++++++++++++++++++++-
- 2 files changed, 218 insertions(+), 4 deletions(-)
+ configure   | 6 +++++-
+ meson.build | 4 ++--
+ 2 files changed, 7 insertions(+), 3 deletions(-)
 
-diff --git a/tcg/tcg.c b/tcg/tcg.c
-index 8b44cd3078..6da7689711 100644
---- a/tcg/tcg.c
-+++ b/tcg/tcg.c
-@@ -1121,7 +1121,7 @@ typedef struct TCGOutOpSubtract {
+V1:
+- This commit is under review in another patch series so please ignore it
+  here.
+
+diff --git a/configure b/configure
+index 825057ebf1..7f3893a42f 100755
+--- a/configure
++++ b/configure
+@@ -365,7 +365,6 @@ elif check_define __APPLE__; then
+   host_os=darwin
+ elif check_define EMSCRIPTEN ; then
+   host_os=emscripten
+-  cpu=wasm32
+   cross_compile="yes"
+ else
+   # This is a fatal error, but don't report it yet, because we
+@@ -425,6 +424,8 @@ elif check_define __aarch64__ ; then
+   cpu="aarch64"
+ elif check_define __loongarch64 ; then
+   cpu="loongarch64"
++elif check_define EMSCRIPTEN ; then
++  error_exit "wasm32 or wasm64 must be specified to the cpu flag"
+ else
+   # Using uname is really broken, but it is just a fallback for architectures
+   # that are going to use TCI anyway
+@@ -535,6 +536,9 @@ case "$cpu" in
+   wasm32)
+     CPU_CFLAGS="-m32"
+     ;;
++  wasm64)
++    CPU_CFLAGS="-m64 -sMEMORY64=1"
++    ;;
+ esac
  
- #include "tcg-target.c.inc"
+ if test -n "$host_arch" && {
+diff --git a/meson.build b/meson.build
+index e53cd5b413..291fe3f0d0 100644
+--- a/meson.build
++++ b/meson.build
+@@ -52,7 +52,7 @@ qapi_trace_events = []
+ bsd_oses = ['gnu/kfreebsd', 'freebsd', 'netbsd', 'openbsd', 'dragonfly', 'darwin']
+ supported_oses = ['windows', 'freebsd', 'netbsd', 'openbsd', 'darwin', 'sunos', 'linux', 'emscripten']
+ supported_cpus = ['ppc', 'ppc64', 's390x', 'riscv32', 'riscv64', 'x86', 'x86_64',
+-  'arm', 'aarch64', 'loongarch64', 'mips', 'mips64', 'sparc64', 'wasm32']
++  'arm', 'aarch64', 'loongarch64', 'mips', 'mips64', 'sparc64', 'wasm32', 'wasm64']
  
--#if !defined(CONFIG_TCG_INTERPRETER) && !defined(EMSCRIPTEN)
-+#if !defined(CONFIG_TCG_INTERPRETER)
- /* Validate CPUTLBDescFast placement. */
- QEMU_BUILD_BUG_ON((int)(offsetof(CPUNegativeOffsetState, tlb.f[0]) -
-                         sizeof(CPUNegativeOffsetState))
-diff --git a/tcg/wasm/tcg-target.c.inc b/tcg/wasm/tcg-target.c.inc
-index cf84c3ca4f..b068257fe4 100644
---- a/tcg/wasm/tcg-target.c.inc
-+++ b/tcg/wasm/tcg-target.c.inc
-@@ -3,8 +3,12 @@
-  * Tiny Code Generator for QEMU
-  *
-  * Copyright (c) 2009, 2011 Stefan Weil
-+ * Copyright (c) 2018 SiFive, Inc
-+ * Copyright (c) 2008-2009 Arnaud Patard <arnaud.patard@rtp-net.org>
-+ * Copyright (c) 2009 Aurelien Jarno <aurelien@aurel32.net>
-+ * Copyright (c) 2008 Fabrice Bellard
-  *
-- * Based on tci/tcg-target.c.inc
-+ * Based on tci/tcg-target.c.inc and riscv/tcg-target.c.inc
-  *
-  * Permission is hereby granted, free of charge, to any person obtaining a copy
-  * of this software and associated documentation files (the "Software"), to deal
-@@ -135,6 +139,7 @@ static const uint8_t tcg_target_reg_index[TCG_TARGET_NB_REGS] = {
- /* Temporary local variables */
- #define TMP32_LOCAL_0_IDX 1
- #define TMP64_LOCAL_0_IDX 2
-+#define TMP64_LOCAL_1_IDX 3
+ cpu = host_machine.cpu_family()
  
- /* Function index */
- #define CHECK_UNWINDING_IDX 0 /* A function to check the Asyncify status */
-@@ -153,6 +158,7 @@ typedef enum {
-     OPC_CALL = 0x10,
-     OPC_LOCAL_GET = 0x20,
-     OPC_LOCAL_SET = 0x21,
-+    OPC_LOCAL_TEE = 0x22,
-     OPC_GLOBAL_GET = 0x23,
-     OPC_GLOBAL_SET = 0x24,
- 
-@@ -1387,11 +1393,156 @@ static void *qemu_ld_helper_ptr(uint32_t oi)
-     }
- }
- 
-+#define MIN_TLB_MASK_TABLE_OFS INT_MIN
-+
-+static uint8_t prepare_host_addr_wasm(TCGContext *s, uint8_t *hit_var,
-+                                      TCGReg addr_reg, MemOpIdx oi,
-+                                      bool is_ld)
-+{
-+    MemOp opc = get_memop(oi);
-+    TCGAtomAlign aa;
-+    unsigned a_mask;
-+    unsigned s_bits = opc & MO_SIZE;
-+    unsigned s_mask = (1u << s_bits) - 1;
-+    int mem_index = get_mmuidx(oi);
-+    int fast_ofs = tlb_mask_table_ofs(s, mem_index);
-+    int mask_ofs = fast_ofs + offsetof(CPUTLBDescFast, mask);
-+    int table_ofs = fast_ofs + offsetof(CPUTLBDescFast, table);
-+    int add_off = offsetof(CPUTLBEntry, addend);
-+    tcg_target_long compare_mask;
-+    int offset;
-+
-+    uint8_t tmp1 = TMP64_LOCAL_0_IDX;
-+    uint8_t tmp2 = TMP64_LOCAL_1_IDX;
-+
-+    if (!tcg_use_softmmu) {
-+        g_assert_not_reached();
-+    }
-+
-+    *hit_var = TMP32_LOCAL_0_IDX;
-+    tcg_wasm_out_op_const(s, OPC_I32_CONST, 0);
-+    tcg_wasm_out_op_idx(s, OPC_LOCAL_SET, *hit_var);
-+
-+    aa = atom_and_align_for_opc(s, opc, MO_ATOM_IFALIGN, false);
-+    a_mask = (1u << aa.align) - 1;
-+
-+    /* Get the CPUTLBEntry offset */
-+    tcg_wasm_out_op_idx(s, OPC_GLOBAL_GET, REG_IDX(addr_reg));
-+    tcg_wasm_out_op_const(s, OPC_I64_CONST,
-+                          TARGET_PAGE_BITS - CPU_TLB_ENTRY_BITS);
-+    tcg_wasm_out_op(s, OPC_I64_SHR_U);
-+
-+    tcg_wasm_out_op_idx(s, OPC_GLOBAL_GET, REG_IDX(TCG_AREG0));
-+    offset = tcg_wasm_out_norm_ptr(s, mask_ofs);
-+    tcg_wasm_out_op_ldst(s, OPC_I64_LOAD, 0, offset);
-+    tcg_wasm_out_op(s, OPC_I64_AND);
-+
-+    /* Get the pointer to the target CPUTLBEntry */
-+    tcg_wasm_out_op_idx(s, OPC_GLOBAL_GET, REG_IDX(TCG_AREG0));
-+    offset = tcg_wasm_out_norm_ptr(s, table_ofs);
-+    tcg_wasm_out_op_ldst(s, OPC_I64_LOAD, 0, offset);
-+    tcg_wasm_out_op(s, OPC_I64_ADD);
-+    tcg_wasm_out_op_idx(s, OPC_LOCAL_TEE, tmp1);
-+
-+    /* Load the tlb copmarator */
-+    offset = tcg_wasm_out_norm_ptr(s, is_ld ? offsetof(CPUTLBEntry, addr_read)
-+                                   : offsetof(CPUTLBEntry, addr_write));
-+    tcg_wasm_out_op_ldst(s, OPC_I64_LOAD, 0, offset);
-+
-+    /*
-+     * For aligned accesses, we check the first byte and include the
-+     * alignment bits within the address.  For unaligned access, we
-+     * check that we don't cross pages using the address of the last
-+     * byte of the access.
-+     */
-+    tcg_wasm_out_op_idx(s, OPC_GLOBAL_GET, REG_IDX(addr_reg));
-+    if (a_mask < s_mask) {
-+        tcg_wasm_out_op_const(s, OPC_I64_CONST, s_mask - a_mask);
-+        tcg_wasm_out_op(s, OPC_I64_ADD);
-+    }
-+    compare_mask = (uint64_t)TARGET_PAGE_MASK | a_mask;
-+    tcg_wasm_out_op_const(s, OPC_I64_CONST, compare_mask);
-+    tcg_wasm_out_op(s, OPC_I64_AND);
-+
-+    /* Compare masked address with the TLB entry. */
-+    tcg_wasm_out_op(s, OPC_I64_EQ);
-+
-+    tcg_wasm_out_op_block(s, OPC_IF, BLOCK_NORET);
-+
-+    /* TLB Hit - translate address using addend.  */
-+    tcg_wasm_out_op_idx(s, OPC_LOCAL_GET, tmp1);
-+    offset = tcg_wasm_out_norm_ptr(s, add_off);
-+    tcg_wasm_out_op_ldst(s, OPC_I64_LOAD, 0, offset);
-+    tcg_wasm_out_op_idx(s, OPC_GLOBAL_GET, REG_IDX(addr_reg));
-+    tcg_wasm_out_op(s, OPC_I64_ADD);
-+    tcg_wasm_out_op_idx(s, OPC_LOCAL_SET, tmp2);
-+    tcg_wasm_out_op_const(s, OPC_I32_CONST, 1);
-+    tcg_wasm_out_op_idx(s, OPC_LOCAL_SET, *hit_var);
-+
-+    tcg_wasm_out_op(s, OPC_END);
-+
-+    return tmp2;
-+}
-+
-+static void tcg_wasm_out_qemu_ld_direct(
-+    TCGContext *s, TCGReg r, uint8_t base, MemOp opc)
-+{
-+    intptr_t ofs;
-+    switch (opc & (MO_SSIZE)) {
-+    case MO_UB:
-+        tcg_wasm_out_op_idx(s, OPC_LOCAL_GET, base);
-+        ofs = tcg_wasm_out_norm_ptr(s, 0);
-+        tcg_wasm_out_op_ldst(s, OPC_I64_LOAD8_U, 0, ofs);
-+        tcg_wasm_out_op_idx(s, OPC_GLOBAL_SET, REG_IDX(r));
-+        break;
-+    case MO_SB:
-+        tcg_wasm_out_op_idx(s, OPC_LOCAL_GET, base);
-+        ofs = tcg_wasm_out_norm_ptr(s, 0);
-+        tcg_wasm_out_op_ldst(s, OPC_I64_LOAD8_S, 0, ofs);
-+        tcg_wasm_out_op_idx(s, OPC_GLOBAL_SET, REG_IDX(r));
-+        break;
-+    case MO_UW:
-+        tcg_wasm_out_op_idx(s, OPC_LOCAL_GET, base);
-+        ofs = tcg_wasm_out_norm_ptr(s, 0);
-+        tcg_wasm_out_op_ldst(s, OPC_I64_LOAD16_U, 0, ofs);
-+        tcg_wasm_out_op_idx(s, OPC_GLOBAL_SET, REG_IDX(r));
-+        break;
-+    case MO_SW:
-+        tcg_wasm_out_op_idx(s, OPC_LOCAL_GET, base);
-+        ofs = tcg_wasm_out_norm_ptr(s, 0);
-+        tcg_wasm_out_op_ldst(s, OPC_I64_LOAD16_S, 0, ofs);
-+        tcg_wasm_out_op_idx(s, OPC_GLOBAL_SET, REG_IDX(r));
-+        break;
-+    case MO_UL:
-+        tcg_wasm_out_op_idx(s, OPC_LOCAL_GET, base);
-+        ofs = tcg_wasm_out_norm_ptr(s, 0);
-+        tcg_wasm_out_op_ldst(s, OPC_I64_LOAD32_U, 0, ofs);
-+        tcg_wasm_out_op_idx(s, OPC_GLOBAL_SET, REG_IDX(r));
-+        break;
-+    case MO_SL:
-+        tcg_wasm_out_op_idx(s, OPC_LOCAL_GET, base);
-+        ofs = tcg_wasm_out_norm_ptr(s, 0);
-+        tcg_wasm_out_op_ldst(s, OPC_I64_LOAD32_S, 0, ofs);
-+        tcg_wasm_out_op_idx(s, OPC_GLOBAL_SET, REG_IDX(r));
-+        break;
-+    case MO_UQ:
-+        tcg_wasm_out_op_idx(s, OPC_LOCAL_GET, base);
-+        ofs = tcg_wasm_out_norm_ptr(s, 0);
-+        tcg_wasm_out_op_ldst(s, OPC_I64_LOAD, 0, ofs);
-+        tcg_wasm_out_op_idx(s, OPC_GLOBAL_SET, REG_IDX(r));
-+        break;
-+    default:
-+        g_assert_not_reached();
-+    }
-+}
-+
- static void tcg_wasm_out_qemu_ld(TCGContext *s, TCGReg data_reg,
-                                  TCGReg addr_reg, MemOpIdx oi)
- {
-     intptr_t helper_idx;
-     int64_t func_idx;
-+    MemOp mop = get_memop(oi);
-+    uint8_t base_var, hit_var;
- 
-     helper_idx = (intptr_t)qemu_ld_helper_ptr(oi);
-     func_idx = get_helper_idx(s, helper_idx);
-@@ -1400,6 +1551,14 @@ static void tcg_wasm_out_qemu_ld(TCGContext *s, TCGReg data_reg,
-         gen_func_type_qemu_ld(s, oi);
-     }
- 
-+    base_var = prepare_host_addr_wasm(s, &hit_var, addr_reg, oi, true);
-+    tcg_wasm_out_op_idx(s, OPC_LOCAL_GET, hit_var);
-+    tcg_wasm_out_op_const(s, OPC_I32_CONST, 1);
-+    tcg_wasm_out_op(s, OPC_I32_EQ);
-+    tcg_wasm_out_op_block(s, OPC_IF, BLOCK_NORET);
-+    tcg_wasm_out_qemu_ld_direct(s, data_reg, base_var, mop); /* fast path */
-+    tcg_wasm_out_op(s, OPC_END);
-+
-     /*
-      * update the block index so that the possible rewinding will
-      * skip this block
-@@ -1408,6 +1567,10 @@ static void tcg_wasm_out_qemu_ld(TCGContext *s, TCGReg data_reg,
-     tcg_wasm_out_op_idx(s, OPC_GLOBAL_SET, BLOCK_IDX);
-     tcg_wasm_out_new_block(s);
- 
-+    tcg_wasm_out_op_idx(s, OPC_LOCAL_GET, hit_var);
-+    tcg_wasm_out_op(s, OPC_I32_EQZ);
-+    tcg_wasm_out_op_block(s, OPC_IF, BLOCK_NORET);
-+
-     /* call the target helper */
-     tcg_wasm_out_op_idx(s, OPC_GLOBAL_GET, REG_IDX(TCG_AREG0));
-     tcg_wasm_out_op_idx(s, OPC_GLOBAL_GET, REG_IDX(addr_reg));
-@@ -1417,6 +1580,8 @@ static void tcg_wasm_out_qemu_ld(TCGContext *s, TCGReg data_reg,
-     tcg_wasm_out_op_idx(s, OPC_CALL, func_idx);
-     tcg_wasm_out_op_idx(s, OPC_GLOBAL_SET, REG_IDX(data_reg));
-     tcg_wasm_out_handle_unwinding(s);
-+
-+    tcg_wasm_out_op(s, OPC_END);
- }
- 
- static void *qemu_st_helper_ptr(uint32_t oi)
-@@ -1436,12 +1601,47 @@ static void *qemu_st_helper_ptr(uint32_t oi)
-     }
- }
- 
-+static void tcg_wasm_out_qemu_st_direct(
-+    TCGContext *s, TCGReg lo, uint8_t base, MemOp opc)
-+{
-+    intptr_t ofs;
-+    switch (opc & (MO_SSIZE)) {
-+    case MO_8:
-+        tcg_wasm_out_op_idx(s, OPC_LOCAL_GET, base);
-+        ofs = tcg_wasm_out_norm_ptr(s, 0);
-+        tcg_wasm_out_op_idx(s, OPC_GLOBAL_GET, REG_IDX(lo));
-+        tcg_wasm_out_op_ldst(s, OPC_I64_STORE8, 0, ofs);
-+        break;
-+    case MO_16:
-+        tcg_wasm_out_op_idx(s, OPC_LOCAL_GET, base);
-+        ofs = tcg_wasm_out_norm_ptr(s, 0);
-+        tcg_wasm_out_op_idx(s, OPC_GLOBAL_GET, REG_IDX(lo));
-+        tcg_wasm_out_op_ldst(s, OPC_I64_STORE16, 0, ofs);
-+        break;
-+    case MO_32:
-+        tcg_wasm_out_op_idx(s, OPC_LOCAL_GET, base);
-+        ofs = tcg_wasm_out_norm_ptr(s, 0);
-+        tcg_wasm_out_op_idx(s, OPC_GLOBAL_GET, REG_IDX(lo));
-+        tcg_wasm_out_op_ldst(s, OPC_I64_STORE32, 0, ofs);
-+        break;
-+    case MO_64:
-+        tcg_wasm_out_op_idx(s, OPC_LOCAL_GET, base);
-+        ofs = tcg_wasm_out_norm_ptr(s, 0);
-+        tcg_wasm_out_op_idx(s, OPC_GLOBAL_GET, REG_IDX(lo));
-+        tcg_wasm_out_op_ldst(s, OPC_I64_STORE, 0, ofs);
-+        break;
-+    default:
-+        g_assert_not_reached();
-+    }
-+}
-+
- static void tcg_wasm_out_qemu_st(TCGContext *s, TCGReg data_reg,
-                                  TCGReg addr_reg, MemOpIdx oi)
- {
-     intptr_t helper_idx;
-     int64_t func_idx;
-     MemOp mop = get_memop(oi);
-+    uint8_t base_var, hit_var;
- 
-     helper_idx = (intptr_t)qemu_st_helper_ptr(oi);
-     func_idx = get_helper_idx(s, helper_idx);
-@@ -1450,6 +1650,14 @@ static void tcg_wasm_out_qemu_st(TCGContext *s, TCGReg data_reg,
-         gen_func_type_qemu_st(s, oi);
-     }
- 
-+    base_var = prepare_host_addr_wasm(s, &hit_var, addr_reg, oi, false);
-+    tcg_wasm_out_op_idx(s, OPC_LOCAL_GET, hit_var);
-+    tcg_wasm_out_op_const(s, OPC_I32_CONST, 1);
-+    tcg_wasm_out_op(s, OPC_I32_EQ);
-+    tcg_wasm_out_op_block(s, OPC_IF, BLOCK_NORET);
-+    tcg_wasm_out_qemu_st_direct(s, data_reg, base_var, mop); /* fast path */
-+    tcg_wasm_out_op(s, OPC_END);
-+
-     /*
-      * update the block index so that the possible rewinding will
-      * skip this block
-@@ -1458,6 +1666,10 @@ static void tcg_wasm_out_qemu_st(TCGContext *s, TCGReg data_reg,
-     tcg_wasm_out_op_idx(s, OPC_GLOBAL_SET, BLOCK_IDX);
-     tcg_wasm_out_new_block(s);
- 
-+    tcg_wasm_out_op_idx(s, OPC_LOCAL_GET, hit_var);
-+    tcg_wasm_out_op(s, OPC_I32_EQZ);
-+    tcg_wasm_out_op_block(s, OPC_IF, BLOCK_NORET);
-+
-     /* call the target helper */
-     tcg_wasm_out_op_idx(s, OPC_GLOBAL_GET, REG_IDX(TCG_AREG0));
-     tcg_wasm_out_op_idx(s, OPC_GLOBAL_GET, REG_IDX(addr_reg));
-@@ -1475,6 +1687,8 @@ static void tcg_wasm_out_qemu_st(TCGContext *s, TCGReg data_reg,
- 
-     tcg_wasm_out_op_idx(s, OPC_CALL, func_idx);
-     tcg_wasm_out_handle_unwinding(s);
-+
-+    tcg_wasm_out_op(s, OPC_END);
- }
- 
- static bool patch_reloc(tcg_insn_unit *code_ptr_i, int type,
-@@ -2727,7 +2941,7 @@ static const uint8_t mod_3[] = {
-     0x80, 0x80, 0x80, 0x80, 0x00, /* placeholder for section size*/
-     1,                            /* num of codes */
-     0x80, 0x80, 0x80, 0x80, 0x00, /* placeholder for code size */
--    0x2, 0x1, 0x7f, 0x1, 0x7e,    /* local variables (32bit*1, 64bit*1) */
-+    0x2, 0x1, 0x7f, 0x2, 0x7e,    /* local variables (32bit*1, 64bit*2) */
- };
- 
- #define MOD_3_PH_EXPORT_START_FUNC_IDX 102
-@@ -2939,7 +3153,7 @@ static int tcg_out_tb_end(TCGContext *s)
- 
- bool tcg_target_has_memory_bswap(MemOp memop)
- {
--    return true;
-+    return false;
- }
- 
- static bool tcg_out_qemu_ld_slow_path(TCGContext *s, TCGLabelQemuLdst *l)
+@@ -916,7 +916,7 @@ if have_tcg
+     if not get_option('tcg_interpreter')
+       error('Unsupported CPU @0@, try --enable-tcg-interpreter'.format(cpu))
+     endif
+-  elif host_arch == 'wasm32'
++  elif host_arch == 'wasm32' or host_arch == 'wasm64'
+     if not get_option('tcg_interpreter')
+       error('WebAssembly host requires --enable-tcg-interpreter')
+     endif
 -- 
 2.43.0
 

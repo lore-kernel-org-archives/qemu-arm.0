@@ -4,91 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71B4FCA0EE4
-	for <qemu-arm@archiver.kernel.org>; Wed, 20 Aug 2025 12:22:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27CF8CA0EE4
+	for <qemu-arm@archiver.kernel.org>; Wed, 20 Aug 2025 12:24:11 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uohpE-0005Eg-Pj; Wed, 20 Aug 2025 08:21:57 -0400
+	id 1uohrF-0006b1-DN; Wed, 20 Aug 2025 08:24:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uohp8-0005Db-G8
- for qemu-arm@nongnu.org; Wed, 20 Aug 2025 08:21:51 -0400
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uohrC-0006aO-1B
+ for qemu-arm@nongnu.org; Wed, 20 Aug 2025 08:23:58 -0400
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uohp1-0001ok-H5
- for qemu-arm@nongnu.org; Wed, 20 Aug 2025 08:21:50 -0400
-Received: by mail-wm1-x32e.google.com with SMTP id
- 5b1f17b1804b1-45a1b001f55so30050495e9.0
- for <qemu-arm@nongnu.org>; Wed, 20 Aug 2025 05:21:43 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uohrA-00020V-9W
+ for qemu-arm@nongnu.org; Wed, 20 Aug 2025 08:23:57 -0400
+Received: by mail-wm1-x32f.google.com with SMTP id
+ 5b1f17b1804b1-45a286135c8so4601155e9.0
+ for <qemu-arm@nongnu.org>; Wed, 20 Aug 2025 05:23:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1755692501; x=1756297301; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:content-language:references
- :cc:to:from:subject:user-agent:mime-version:date:message-id:from:to
- :cc:subject:date:message-id:reply-to;
- bh=u1r13BgNYnzGSFdz6ZD9EK43s0oGmAYXrxfKeGUtfAw=;
- b=qBWwNo+ay0wTToOE/P71xERiVUKP1+nCXCmPe3qztz8zpgWjwtQ8uXmc2GGyR5yAHU
- 6cWfVk3Uxx06c65MHCTlzbDReVa2+Lw0t8KP8VmsMU6a1DXszCxJ5SvSSu6Vc+6lG6mG
- a1ZCXh3z1nbgyPucvWy2kfJoh94vlOX9KtB3OwqF5YrZzLaSPPMvzuQLTIhMZjaH9dib
- quVo567r1xqrg5PSpoIebxaIatdh+XwvT3M1FbafmCs4QVK6vWGlSAb1pYRRhJUYdn3x
- XbIQ4VORPL/YfN7p1qtnYWmwbbIDOKyDe3UOjoqAiAw/YaGkpcfgOlmyXwfkJlkg75Mz
- LC/w==
+ d=linaro.org; s=google; t=1755692634; x=1756297434; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=8HeI1uRcU/esmaTJY9hjzK554PMX4M+9+ftf1EGxeME=;
+ b=kl2zBosiA9K5eLnMhFpNHGvYXBRfuV1cr3C+pXr8bquujqdlrZO7i6pGtAZD6lPReH
+ 48Ygg/vXlarzZzUGrOdYRqkAtfG+RJ/Nb4lpCeJctX+Aj6/iN6+Pc367hhAbr2ilO4aP
+ BgEv5/ynaB1iljvueTTS1t4GqJoZJ3mGCZUHSIBPF0OgLLBllJWo1QaDZ0wc93ilbOeP
+ CYccddmGp/+sYVpzliKZY5mH8Y6sbZav/qc9wyWXMCTVbx4Of3l2wXO3jd/rjCoMCjLY
+ G70t8/ul4CxYGRoa1GXfyqib80PDwp4YtA2+kRu2i4bvOMv6ZcwnaVWm3fSvxVa6UiY4
+ jrlg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1755692501; x=1756297301;
- h=content-transfer-encoding:in-reply-to:content-language:references
- :cc:to:from:subject:user-agent:mime-version:date:message-id
+ d=1e100.net; s=20230601; t=1755692634; x=1756297434;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=u1r13BgNYnzGSFdz6ZD9EK43s0oGmAYXrxfKeGUtfAw=;
- b=DbYK26h7BDKpu+1PszFJrvG5JhBei8bFfcA6RszSDKO+eV5+YzvsRCve7h8L4Rd4qe
- 3pF33ApI3uqlM6tpTQr+z1yn5BbMw68Vz9TPANjAq3kAbN83uwreEO/8rkZNj1fk+D36
- Xqb76bFCwPhsRtT/K3VxbThSToGGvWXD7XCIg/+zjH3kAZy9CYJkGpT58oHpc0cLUrEy
- Pn22ZDsAKKKJrZLbbUBQh0eHP3YYwqPVfGLI4zYIQo8RIhItmaeN35CtgvYgBGIa6XQ6
- 9jYRyOzqi+gR+D/zT4LYT0mSSTzT+c9+ic9Rmh9BSgYka22lPKJgvHBtZ6ewf32TAsqj
- 4mdw==
+ bh=8HeI1uRcU/esmaTJY9hjzK554PMX4M+9+ftf1EGxeME=;
+ b=PGoC4ZT2u+XBrM5GmkHQ3EClkJRBHXquZ3kKQ9pelhTEUDbd8AadDR0tZUVfdKIZ9V
+ kpe/2IpAf+jNfee1IslZVsWK2mydDG4Jir2LUcv88dTgQHL6u16s151vZ9ufhCNn8wQ3
+ Z2pDV+QvvNfqG/znV3OoqJ4vc/68hQTzBB7eR2LpuGbBscP+vYIU39W98Z7IW2aymXNT
+ YJLWo/boTsaLGsCfU/K+B9nLhIAWyzIqYYZRunZ/JCjypGj/463dcH7iP55EZlkxSneN
+ /EH9znAitYWS6qpW6Fie5YuHwoT8VD5DikiD6oHiSGMTn6NUt+INjzdTD+Jrn/hNkMqZ
+ nmQQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXUwy0eNZaLDPafAtFjtxNDkZs63Hw4/oFvGN/7z8qdZIyuF5SeR45+Cv+gG9vx1wum7nfTGbPK8A==@nongnu.org
-X-Gm-Message-State: AOJu0Yx2jbupVyXh5jvb1SXzw/qdIn0U3JuABEkA00EncrJf1+hrgyPE
- wLMmWWYL2l76zTH4dYfxcYCps3a6mx1UDHIU2VdGt5VnqIl1XqNCF8v2KbC86/uYYLI=
-X-Gm-Gg: ASbGncvK7u4V1+xad1c0cfzWBRCx6HiGPZOSfzmqdk3evvSVyAfuqpOHnZ8s9CF/T2Y
- QEx/QOyubzAw7doZQT7NK2Gzp6Et7j/SMJZAa8Dqd4FzP3BpnmLPyWsNS6NMXtUuGnl6hNzRYGT
- zeDdtRsypJ1L4VpqWTdM9VhJPCAFOcNwnp8GWS+kkddHGIUuz/a6cRL+XlhMSjMKmmh+DhnZuXO
- Ff2OKSteGGOOms3+ffO7hV/+hW/x6JZ12M4Fy7i453SogumaiE3k5VP9bm/1GmRsANCNUhBzMqA
- 9l1233fc8yAAmMZeST6CE/dNCmxZ+6dbljE2cQ45mxK/WQl09iwIkUprH4EPg6WoYBH/vTyyuVJ
- lwyelgzbQ8Y+OphCcEfdXygYQdZcKhyx29zUovsOSqm04UIvp/WXIoaqKtFC7MWzLPomTEp2KFS
- A6MuHYfw==
-X-Google-Smtp-Source: AGHT+IFkByznBXg0kiMf0vWPgiFz/2B6WaUjDlzHARod1WxQSc5SXaLlulsQSlJtFj30V636+85leg==
-X-Received: by 2002:a05:600c:3511:b0:459:db71:74d7 with SMTP id
- 5b1f17b1804b1-45b47a03b3emr17894045e9.27.1755692501442; 
- Wed, 20 Aug 2025 05:21:41 -0700 (PDT)
+ AJvYcCU6TmqWuRQ5azsGMV3qMShHnuW3vr5utsCty6qMb6HBuL8G6iNSvrf9YnnbG3Zk57Mg/yvTeORh2w==@nongnu.org
+X-Gm-Message-State: AOJu0YyKuQPRxkFLs7xx4gBSv/lbkEtOooQCOuAaxI926nYdgvk7Afe4
+ hT2lNl4g0aG9LVeQPLIOXIR48L6G1zRdDFoSGgvtgFcF73X1sT5vT/ImkOdcSgoakLw=
+X-Gm-Gg: ASbGncvHwubaPp102JKDO8j70X9gYUYb7+Tuv1oucCM+HIGiZVEdNe05mMRmsmsOBZc
+ w9LbGoWp5wK/JR2kMUedhmat0wuGxd+2llrIaozhAk+bxJm8cqjX9tfd9iSWvMJ1W9iaxa6b2mp
+ m+ZFQcVUGneBttsklIw+wwpjUjUyPhHAm7uAQCNI0X9jWKVowBboi1iIeB+62Nse8IAqiSir3Yt
+ ppsyJbsX9NfAj8fB3r4L5TRvR4I28NON3XvG/A9gUk/OPcQjwfRLBA61KRDUeXBal82rXkv9KAS
+ ZtEaktEuS0gNt2UMxVF7/bHAfCxrOdm4UjV3XtsRo8Eu/o6l2J4K4vDBMhOjkV2MTiVCYzZ3Qvm
+ i7Iq8OfgqI+1zDJW98G5cvLE2P4WVR8OnMJj5S9vkktmuCHz+s3PYhwOkun4hs0cbtopuQzo=
+X-Google-Smtp-Source: AGHT+IGgPaxUHS+/LmoVQEweQHbJnnVyEhrOvNLz9iMHIeceRnv3Af1NP9JgI0S/ppmL69brV7F47g==
+X-Received: by 2002:a05:600c:3f16:b0:456:1146:5c01 with SMTP id
+ 5b1f17b1804b1-45b43e972abmr58129315e9.12.1755692634173; 
+ Wed, 20 Aug 2025 05:23:54 -0700 (PDT)
 Received: from [192.168.69.208] (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-45b47cb98b6sm32088625e9.26.2025.08.20.05.21.40
+ ffacd0b85a97d-3c0777884e8sm8201592f8f.45.2025.08.20.05.23.53
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 20 Aug 2025 05:21:40 -0700 (PDT)
-Message-ID: <e7090f12-ba40-4495-b80f-0f85b45a7434@linaro.org>
-Date: Wed, 20 Aug 2025 14:21:39 +0200
+ Wed, 20 Aug 2025 05:23:53 -0700 (PDT)
+Message-ID: <5f62e29c-ad26-43d5-a479-c862862e95be@linaro.org>
+Date: Wed, 20 Aug 2025 14:23:52 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 20/47] hw/arm/xlnx-versal: refactor CPU cluster creation
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: Re: [PATCH v2 34/47] hw/arm/xlnx-versal: use hw/arm/bsa.h for timer
+ IRQ indices
 To: Luc Michel <luc.michel@amd.com>, qemu-devel@nongnu.org, qemu-arm@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Francisco Iglesias <francisco.iglesias@amd.com>,
  "Edgar E . Iglesias" <edgar.iglesias@amd.com>,
  Alistair Francis <alistair@alistair23.me>,
  Frederic Konrad <frederic.konrad@amd.com>,
- Sai Pavan Boddu <sai.pavan.boddu@amd.com>,
- Markus Armbruster <armbru@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+ Sai Pavan Boddu <sai.pavan.boddu@amd.com>
 References: <20250820082549.69724-1-luc.michel@amd.com>
- <20250820082549.69724-21-luc.michel@amd.com>
- <9a47da92-1d12-4eda-9c18-235f93bca8b5@linaro.org>
+ <20250820082549.69724-35-luc.michel@amd.com>
 Content-Language: en-US
-In-Reply-To: <9a47da92-1d12-4eda-9c18-235f93bca8b5@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20250820082549.69724-35-luc.michel@amd.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -111,122 +108,17 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 20/8/25 14:16, Philippe Mathieu-Daudé wrote:
-> Hi Luc,
+On 20/8/25 10:25, Luc Michel wrote:
+> Use the bsa.h header for ARM timer and maintainance IRQ indices instead
+> of redefining our owns.
 > 
-> On 20/8/25 10:25, Luc Michel wrote:
->> Refactor the CPU cluster creation using the VersalMap structure. There
->> is no functional change. The clusters properties are now described in
->> the VersalMap structure. For now only the APU is converted. The RPU will
->> be taken care of by next commits.
->>
->> Signed-off-by: Luc Michel <luc.michel@amd.com>
->> Reviewed-by: Francisco Iglesias <francisco.iglesias@amd.com>
->> ---
->>   include/hw/arm/xlnx-versal.h |  11 +-
->>   hw/arm/xlnx-versal-virt.c    |  80 +-------
->>   hw/arm/xlnx-versal.c         | 346 ++++++++++++++++++++++++++---------
->>   3 files changed, 269 insertions(+), 168 deletions(-)
->>
->> diff --git a/include/hw/arm/xlnx-versal.h b/include/hw/arm/xlnx-versal.h
->> index af47acb288f..ba5719d80f5 100644
->> --- a/include/hw/arm/xlnx-versal.h
->> +++ b/include/hw/arm/xlnx-versal.h
-> 
-> 
->> @@ -41,19 +40,10 @@ OBJECT_DECLARE_TYPE(Versal, VersalClass, 
->> XLNX_VERSAL_BASE)
->>   struct Versal {
->>       /*< private >*/
->>       SysBusDevice parent_obj;
->>       /*< public >*/
->> -    struct {
->> -        struct {
->> -            MemoryRegion mr;
->> -            CPUClusterState cluster;
->> -            ARMCPU cpu[XLNX_VERSAL_NR_ACPUS];
->> -            GICv3State gic;
->> -        } apu;
->> -    } fpd;
-> 
-> 
->> @@ -427,11 +359,11 @@ static void versal_virt_init(MachineState *machine)
->>           /* Some boot-loaders (e.g u-boot) don't like blobs at 
->> address 0 (NULL).
->>            * Offset things by 4K.  */
->>           s->binfo.loader_start = 0x1000;
->>           s->binfo.dtb_limit = 0x1000000;
->>       }
->> -    arm_load_kernel(&s->soc.fpd.apu.cpu[0], machine, &s->binfo);
->> +    arm_load_kernel(ARM_CPU(qemu_get_cpu(0)), machine, &s->binfo);
-> 
-> We'd like to restrict qemu_get_cpu() to generic accelerator code, where
-> what type of scheduled vCPU doesn't matter. And forbid this API under
-> hw/, because it triggers odd bugs in heterogenous context (we can
-> instanciate vCPU in random order, and hot[un]plug them, changing their
-> id). Besides hw/ normally have knowledge of how to directly address a
-> CPU (how/where it is wired). So I'm not really keen on adding another
-> qemu_get_cpu() call here. Can't we keep references in VersalVirt (at
-> least for the booting cpu)?
+> Signed-off-by: Luc Michel <luc.michel@amd.com>
+> Reviewed-by: Francisco Iglesias <francisco.iglesias@amd.com>
+> ---
+>   include/hw/arm/xlnx-versal.h |  6 ------
+>   hw/arm/xlnx-versal.c         | 28 +++++++++++++++++-----------
+>   2 files changed, 17 insertions(+), 17 deletions(-)
 
-Otherwise simpler to use the constant QOM path:
-
-   booting_cpu = ARM_CPU(object_resolve_path("/machine/fpd/apu/cpu[0]"));
-
-> 
->>       for (i = 0; i < XLNX_VERSAL_NUM_OSPI_FLASH; i++) {
->>           ObjectClass *flash_klass;
->>           DriveInfo *dinfo = drive_get(IF_MTD, 0, i);
->>           BlockBackend *blk;
->> diff --git a/hw/arm/xlnx-versal.c b/hw/arm/xlnx-versal.c
->> index fe2c789a557..5a08ad07b28 100644
->> --- a/hw/arm/xlnx-versal.c
->> +++ b/hw/arm/xlnx-versal.c
->> @@ -41,10 +41,11 @@
->>   #include "hw/rtc/xlnx-zynqmp-rtc.h"
->>   #include "hw/misc/xlnx-versal-cfu.h"
->>   #include "hw/misc/xlnx-versal-cframe-reg.h"
->>   #include "hw/or-irq.h"
->>   #include "hw/misc/xlnx-versal-crl.h"
->> +#include "hw/intc/arm_gicv3_common.h"
->>   #define XLNX_VERSAL_ACPU_TYPE ARM_CPU_TYPE_NAME("cortex-a72")
->>   #define XLNX_VERSAL_RCPU_TYPE ARM_CPU_TYPE_NAME("cortex-r5f")
->>   #define GEM_REVISION        0x40070106
->> @@ -65,11 +66,38 @@ FIELD(VERSAL_IRQ, OR_IDX, 19, 4) /* input index on 
->> the IRQ OR gate */
->>   typedef struct VersalSimplePeriphMap {
->>       uint64_t addr;
->>       int irq;
->>   } VersalSimplePeriphMap;
->> +typedef struct VersalGicMap {
->> +    int version;
->> +    uint64_t dist;
->> +    uint64_t redist;
->> +    size_t num_irq;
->> +} VersalGicMap;
->> +
->> +enum StartPoweredOffMode {
->> +    SPO_SECONDARIES,
->> +    SPO_ALL,
->> +};
->> +
->> +typedef struct VersalCpuClusterMap {
->> +    VersalGicMap gic;
->> +
->> +    const char *name;
->> +    const char *cpu_model;
->> +    size_t num_core;
->> +    size_t num_cluster;
->> +    uint32_t qemu_cluster_id;
->> +    bool dtb_expose;
->> +
->> +    enum StartPoweredOffMode start_powered_off;
->> +} VersalCpuClusterMap;
->> +
->>   typedef struct VersalMap {
->> +    VersalCpuClusterMap apu;
->> +
->>       VersalSimplePeriphMap uart[2];
->>       size_t num_uart;
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
 

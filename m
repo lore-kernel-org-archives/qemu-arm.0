@@ -4,72 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E377CA0EDC
-	for <qemu-arm@archiver.kernel.org>; Wed, 20 Aug 2025 12:26:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 080C8CA0EE4
+	for <qemu-arm@archiver.kernel.org>; Wed, 20 Aug 2025 12:28:50 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uohtk-0007jC-4A; Wed, 20 Aug 2025 08:26:36 -0400
+	id 1uohvg-0001JJ-Gu; Wed, 20 Aug 2025 08:28:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uohti-0007is-Nu
- for qemu-arm@nongnu.org; Wed, 20 Aug 2025 08:26:34 -0400
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uohvQ-0001An-TP
+ for qemu-arm@nongnu.org; Wed, 20 Aug 2025 08:28:23 -0400
+Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uohtg-0002LY-MZ
- for qemu-arm@nongnu.org; Wed, 20 Aug 2025 08:26:34 -0400
-Received: by mail-wr1-x434.google.com with SMTP id
- ffacd0b85a97d-3b9e418ba08so3513790f8f.3
- for <qemu-arm@nongnu.org>; Wed, 20 Aug 2025 05:26:31 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uohvN-0002Uf-Fh
+ for qemu-arm@nongnu.org; Wed, 20 Aug 2025 08:28:19 -0400
+Received: by mail-ej1-x634.google.com with SMTP id
+ a640c23a62f3a-afcb7abfc5cso1076107766b.3
+ for <qemu-arm@nongnu.org>; Wed, 20 Aug 2025 05:28:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1755692790; x=1756297590; darn=nongnu.org;
+ d=linaro.org; s=google; t=1755692895; x=1756297695; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=k6hlG/Cy8SCZJ0b4vvcDF8WCN1yH1zPaJ1deIoM3Mak=;
- b=EZ19kGl8WRyaG/EZ+XWOosN3gE5mUb9de+8kma/zzVi8sLyrA/NTb8jyAK27WG/6he
- 7yUe19sFhskHyS3ltZrW3pHj+OAwsDyoCZRGDNXHv2QmllBfGvGfjisNxHxd1RBX02Gb
- iF8c6UGPT+1LII/Exz9hRWv+3KalJT9iED0plc5r57xOPszLZ/Kkujy4EmGA1RQFcWKW
- LoQw33uhTmP3o6F97cBPWCMBCwvLuf+2O5IBo3maLV9zGnqDTTxZFgd+h8DIrZtnt0LI
- NRxzb0IwYG0zqwRr9l7nR9j9ww5k7sp8hDixPni0FPtxBiH/eeDpXwL0GZjubm4FK7Vk
- Tifw==
+ bh=422PxAKD/2cNpjiawG2U3wC+OVjBawGc70AjvvnMmPI=;
+ b=Hf2yW+VXsqCu9Apdu1uf+0BHTOj37pTXqCfllrKbLAwvEgF7BeYJrZprm0IYE3YfvU
+ d7sbbcP1ht18DesixQyVep1AiA3QgtMquZKoTBvxkvQ84hin8fftcmSYQ+zbcm5hCjw6
+ Gi4lo3q2lpo3kuxtWCDvibbeKOeAQ1mL3FddpgfDkLFknAGvivdIVU1M6S0XGWgjxGi3
+ jROEtzKDe9w12qfUM7fcPMt1lMGOOlXLwTUcfpv8n4Jtcmh3y6iAeCGnwZIuxmofFEo6
+ Oh6mCVi3hJBv8H5ntMPq8v7eKlUhDd47fwgelpnLCSDXK6Sn6F4xV4PnsbVmIky4VXa8
+ /dCw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1755692790; x=1756297590;
+ d=1e100.net; s=20230601; t=1755692895; x=1756297695;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=k6hlG/Cy8SCZJ0b4vvcDF8WCN1yH1zPaJ1deIoM3Mak=;
- b=TpUIXPZsk+yeTgG1ZlrSTpRYcoZAwzYR51dUlm6FdKVVTRrKkQqXA1UaArQLd2BVpj
- 54bQ/Z8Iiui3H+88+YX4wiq2B+D+SGyrxl7jFSfFHY9OP8MYncEzvUuuzcRZ5yiSRRs6
- g94dvBraVq/yz0gOd8Ip6Q7Pq0Ak3oSEe+9Rvn2vsSSdu5UgJ6rdQ+p8rTaqcAPxnVbB
- d+swVxeEk8JqTKvy+BPbMag06APoUFnJFHtGSkvi4fxuhdVyhmQEbNDG6NMiwFnBf7LX
- kM/mVkRGugPcgu/giva20KAUS1OgsUJGwgfRDG36ScDWexzLkkkuQXvmoCskZjXdqUEI
- MZAQ==
+ bh=422PxAKD/2cNpjiawG2U3wC+OVjBawGc70AjvvnMmPI=;
+ b=vuFzOJ6QgY8WsErR7rmKsy1LYKnrMuzmog75sSC+4/vvOkeCGEJu51pls8Waz/hfdW
+ nxthHLwBc/a/UzJMxcoT/aAbcT2zJt9RT2Tf0EBhpGWx+reU387sDIftpVk3sgOWq03Y
+ L2KSMFmBYe7q9QyIPHyfhqZUZWNsBVVYGLYL7y1ByctaKSFhrKXTlH0zLb8zhgugukbg
+ y7rN84dRbgVfAtx3Gg/W5OIsouDSkRfznPtUIkWgCtbGb004lXyTSKRzVttFyY1U7dAs
+ en4YsWfW19JLmO1vaT5ql4/JWVEIoQJoeORd5yP8hbB7jmiqp9ho4cXOEsrcbsF3Siek
+ 67pw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXVdLTNa3vsovRaUSsMaLbsoaVDe1KJ8kB1xZZa223eEXFNafAqvWtkAcZO20jfqw6pu6B7HYErgA==@nongnu.org
-X-Gm-Message-State: AOJu0YykV6+6swvaOU5JS+zmdtKRUbKoM8eLdcu//EVrYwgwF5irN6J8
- yItlSWwydnPWZtjBlXw47podd3oGDnKxY2Cfdduf/kR8MdHON5s/8fr34f8IzksPwqc=
-X-Gm-Gg: ASbGnctm9Se0qE5s4OF9C4esTl8RgRoor3ReMagpFcMDutYLRl8Ft7jRfQRWg512grC
- tlQ4gRcA5MRjBM6zWxO7RHgCiQRiW1CmbI/Z5CyRwsqS4ZL0QRYC7wgubx5yrvg7cbpnDHzh12K
- cNAIEmgucRloB8i0VjAlU5s60iKY8Uy5H93+n2ZtWXUgMyrnsIu+sxr7AgU5HjqVQPkzPpEVlqg
- ah5bIf5kMYn/8nbXLRh0/RQe5MQu1LXK4JQh3FDDVYgMlfnB2XtQa4SKHeLfTfXRi7FKZ/4DPKT
- hhNkcvhhJnMVagjasjssUoXxMuGaaFSVvNBTenX7rDd2V+vvFcfU7xBYr8mPJWz8ios1V7UtbRM
- W8g5SxwvsQAcQkp814+OTc84hcy8b+/ZmQEVkpMXS+3mAs8iFSELCH+Bd5CL8Ri1vbtbNeY0=
-X-Google-Smtp-Source: AGHT+IHrtFF2KEJfVpiPBEv8AZsVTfQlVQCZDl8dZDiUPTkXXoe3EiYN+bGD1KVG+SqeFrcnHNu+3w==
-X-Received: by 2002:a05:6000:2c07:b0:3b7:92ca:2831 with SMTP id
- ffacd0b85a97d-3c32be67b83mr1846728f8f.12.1755692790244; 
- Wed, 20 Aug 2025 05:26:30 -0700 (PDT)
+ AJvYcCWWX4f3pn7EOIWwBAPMfkHE74KLzc7BwmLp2M04TMDJmPeiTB1bTqCbS3FScU3LJHo3hQudfhAutg==@nongnu.org
+X-Gm-Message-State: AOJu0Yy/biEepKhepFeFf7DdosvaZX/mRebVtzbkYssHlDL3V222XfiR
+ K4+cGGgJ89GLQnVSLjaeVGnMbsDh8ErgmWZrC6oDVIC8AqbkJZysoiGfANMSsLClJMY=
+X-Gm-Gg: ASbGncs2H0pfAowrGC4ZdxK8xHkUYrFE0pr3t89LK09+mnCYAGjIOtdB3zdtZroPZ8W
+ txz9keSJxLurpTjd2qpfZ+uYUPd4pjEaT/l4DvZLfkf6BiusDzQHEQQqkjH0WMHoo97y8zrFccA
+ xf2TWhpYxE+MfMheTLBkRJWUBnBQO+RgIWie2Q7/pr7o//hCG3WVE2XcZsaDR/j8/Yv0E37xuZN
+ vuo9J8mAt4Z46zcFCiFT5tV6zy3QCm6odqFDIE5tIYmFhr4vCvW6QkG5L/Bbeh5XzQFPjKSFHzC
+ FOKet+wHSyG4pdde6bVdg0L6Yem5xKEfYoVPmlAVmamvqF6QddESOZ3GAsoGp4Dui8+phsjZgs1
+ iFTj5yz3gLPBUrMHzRBYoHMMUROyOQcpDoHBBqZ6AcvdgV8B8hKt+MNxwv1vVxaHE5C87u2E=
+X-Google-Smtp-Source: AGHT+IGVhnfwEDOnKBzNjtgnGtsHoPR7hrtkQIZnD2av7P8oS8OrqwWd5PtrCMjtbbBEVmeL2ZaNkg==
+X-Received: by 2002:a17:907:d9f:b0:af9:a162:7fa8 with SMTP id
+ a640c23a62f3a-afdf0204dbbmr215899466b.50.1755692895179; 
+ Wed, 20 Aug 2025 05:28:15 -0700 (PDT)
 Received: from [192.168.69.208] (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-45b47c30dc1sm30367795e9.6.2025.08.20.05.26.29
+ a640c23a62f3a-afded2b9a98sm177748866b.3.2025.08.20.05.28.14
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 20 Aug 2025 05:26:29 -0700 (PDT)
-Message-ID: <b06e61ad-1019-46a5-b3d2-1973946241da@linaro.org>
-Date: Wed, 20 Aug 2025 14:26:28 +0200
+ Wed, 20 Aug 2025 05:28:14 -0700 (PDT)
+Message-ID: <9cd83bad-0146-4d20-bf04-769467732766@linaro.org>
+Date: Wed, 20 Aug 2025 14:28:13 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 41/47] hw/arm/xlnx-versal-virt: rename the machine to
- amd-versal-virt
+Subject: Re: [PATCH v2 46/47] hw/arm/xlnx-versal-virt: add the
+ xlnx-versal2-virt machine
 To: Luc Michel <luc.michel@amd.com>, qemu-devel@nongnu.org, qemu-arm@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Francisco Iglesias <francisco.iglesias@amd.com>,
@@ -78,14 +78,14 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Frederic Konrad <frederic.konrad@amd.com>,
  Sai Pavan Boddu <sai.pavan.boddu@amd.com>
 References: <20250820082549.69724-1-luc.michel@amd.com>
- <20250820082549.69724-42-luc.michel@amd.com>
+ <20250820082549.69724-47-luc.michel@amd.com>
 Content-Language: en-US
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20250820082549.69724-42-luc.michel@amd.com>
+In-Reply-To: <20250820082549.69724-47-luc.michel@amd.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::434;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x434.google.com
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::634;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x634.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -109,18 +109,43 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 20/8/25 10:25, Luc Michel wrote:
-> To align with current branding and ensure coherency with the upcoming
-> versal2 machine, rename the xlnx-versal-virt machine to amd-versal-virt.
-> Keep an alias of the old name to the new one for command-line backward
-> compatibility.
+> Add the Versal Gen 2 Virtual development machine embedding a
+> versal2 SoC. This machine follows the same principle than the
+> xlnx-versal-virt machine. It creates its own DTB and feeds it to the
+> software payload. This way only implemented devices are exposed to the
+> guest and the user does not need to provide a DTB.
 > 
 > Signed-off-by: Luc Michel <luc.michel@amd.com>
 > Reviewed-by: Francisco Iglesias <francisco.iglesias@amd.com>
 > ---
->   docs/system/arm/xlnx-versal-virt.rst | 26 +++++++++++++++-----------
->   hw/arm/xlnx-versal-virt.c            | 11 +++++++----
->   2 files changed, 22 insertions(+), 15 deletions(-)
+>   docs/system/arm/xlnx-versal-virt.rst | 49 ++++++++++++++++++++++++----
+>   hw/arm/xlnx-versal-virt.c            | 37 +++++++++++++++++++--
+>   2 files changed, 76 insertions(+), 10 deletions(-)
+> 
+> diff --git a/docs/system/arm/xlnx-versal-virt.rst b/docs/system/arm/xlnx-versal-virt.rst
+> index 5d7fa18592b..af56b275413 100644
+> --- a/docs/system/arm/xlnx-versal-virt.rst
+> +++ b/docs/system/arm/xlnx-versal-virt.rst
+> @@ -1,16 +1,18 @@
+> -AMD Versal Virt (``amd-versal-virt``)
+> -=====================================
+> +AMD Versal Virt (``amd-versal-virt``, ``amd-versal2-virt``)
+> +===========================================================
+>   
+>   AMD Versal is a family of heterogeneous multi-core SoCs
+>   (System on Chip) that combine traditional hardened CPUs and I/O
+>   peripherals in a Processing System (PS) with runtime programmable
+>   FPGA logic (PL) and an Artificial Intelligence Engine (AIE).
+>   
+> -QEMU implements the Versal Series variant of Versal SoCs, with the
+> -``amd-versal-virt`` machine. The alias ``xlnx-versal-virt`` is kept for
+> -backward compatibility.
+> +QEMU implements two variants of Versal SoCs:
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+"QEMU implements the following Versal SoCs:" in prevision of Gen 3?
 
+> +
+> +- Versal (the ``amd-versal-virt`` machine, the alias ``xlnx-versal-virt`` is
+> +  kept for backward compatibility)
+> +- Versal Gen 2 (the ``amd-versal2-virt`` machine)
 

@@ -4,125 +4,182 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F5FACA0EDC
-	for <qemu-arm@archiver.kernel.org>; Wed, 20 Aug 2025 13:43:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51831CA0EE4
+	for <qemu-arm@archiver.kernel.org>; Wed, 20 Aug 2025 14:30:17 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uoj61-0004eQ-0d; Wed, 20 Aug 2025 09:43:21 -0400
+	id 1uojpK-0008Lj-Qr; Wed, 20 Aug 2025 10:30:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armenon@redhat.com>)
- id 1uoj5z-0004du-M5
- for qemu-arm@nongnu.org; Wed, 20 Aug 2025 09:43:19 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <prvs=320342eca=Moritz.Haase@bmw.de>)
+ id 1uojpJ-0008LE-FR
+ for qemu-arm@nongnu.org; Wed, 20 Aug 2025 10:30:09 -0400
+Received: from esa7.hc324-48.eu.iphmx.com ([207.54.71.126])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armenon@redhat.com>)
- id 1uoj5w-0007Io-3S
- for qemu-arm@nongnu.org; Wed, 20 Aug 2025 09:43:19 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1755697394;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=NmcqK1w6R1WwnHel+AuN6RGw0xZeVwriVTH1nVmNFpo=;
- b=UPZUgYNoo0YFnJ/ZzzaPxInQh/vfp4WZzoTLinX2uU+VbhQlkf5xnTkD/ghVWbgpj7Hgbj
- 8CJ8sOgOXhWE+25K+3y+OwDnc48RUMHreCPUac04cMOXu8I10jT97jOwvZADBfz/s5z50e
- R7JSFUhGdgtYbqwXGSn6gW3LvzGZHSw=
-Received: from mail-pf1-f200.google.com (mail-pf1-f200.google.com
- [209.85.210.200]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-646-G8UA5HlHN5GOgvZJ6n4yBg-1; Wed, 20 Aug 2025 09:43:13 -0400
-X-MC-Unique: G8UA5HlHN5GOgvZJ6n4yBg-1
-X-Mimecast-MFC-AGG-ID: G8UA5HlHN5GOgvZJ6n4yBg_1755697392
-Received: by mail-pf1-f200.google.com with SMTP id
- d2e1a72fcca58-76e2eaecf8dso5045992b3a.2
- for <qemu-arm@nongnu.org>; Wed, 20 Aug 2025 06:43:12 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1755697391; x=1756302191;
- h=in-reply-to:content-transfer-encoding:content-disposition
- :mime-version:references:message-id:subject:cc:to:from:date
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=NmcqK1w6R1WwnHel+AuN6RGw0xZeVwriVTH1nVmNFpo=;
- b=qAy6Cqrlb/dd9yW3S4ihe9GuLhI7uiEM5O+HeqvhCLr9U+HIfJJlG29ZU4BZ97SWek
- 2pkfX1S89hXeP0ztYmueZbCWquyRFCqjUGysOSUNdpE5sDQcC2qt00j0tD1rpf1bw9ua
- nf9qL7u/mENZL2EmA90PQRZZljIw3pzfHtVX2gvyLf+p9L3yNQ7eU7RRRTnXZ2yCm0Gr
- sxnSptov2AybfDb/3Zw/gfblYZ5NptbvwSdulzoMJY+50J3tCoS5CUxOV6Tixc9P9uTK
- DyXMmB6YVHUT7MVxTnQCfZcJu7jep63Onw2Fi7+L9V7VHenhyivYIZ1Hw8bS4JYa4wwY
- vQEw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUBRIDKIf7Y7Jp2uhDkSawVxdKl/QtcVvSj55zFtblWCJShVkZbE1CECvgp0F9jqw84i7lqm6LPCQ==@nongnu.org
-X-Gm-Message-State: AOJu0YwMWH2BVdlxqBe/T4FjbaK977deAsAI6HF6UW01pUjwM1DuJDNH
- onX/3UXKiBdRRLV26DJFzopOffJZ7rYW63byZFmo+7hD8L7lXklZS7WPNDaPu3jluYoIEApv8AB
- YCmnsbm5BgimvhQRlme3yz/vpKytAhpneN6H89GPadNpQEOnvkH+qNA==
-X-Gm-Gg: ASbGncuxGFdtVTd20lo9xBvF+cmQyhzkdNojVH6zpOwbDlxY0dw9cFd/1lKqscUInx1
- 4rVXyLUTYRjEl9Cduo0Scch1zzQZ55AS78+EWvMYCSNxFiht+J+soGhxzwnmbQKASFBgSpJJo87
- 9MRq8eCQ/DM/k9GZHOigd+3v3ZiqFaRe07OqFReqTJrc5mh7mNBaDOSJD39cHCOxEdmP7XGz8zB
- t9Ie6VZEHuAh4kVdxgDgi3aacDKqWHY5zO98Ttefk4ce+ZASIMbZKf2JBMZ8OIJkWJzQ40hvskg
- /D1A1o3nXIldv0X4HfLgCHz8rayQ9ns8vm3s34L51yuX2VEEVT7s
-X-Received: by 2002:a05:6a00:13a8:b0:748:ff39:a0f7 with SMTP id
- d2e1a72fcca58-76e8dc817e1mr3525136b3a.9.1755697390588; 
- Wed, 20 Aug 2025 06:43:10 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEQIIWMT2FjEfVaJAR+uf/llw9G/OnMCaqy9CIZzkZxX6blhkuKbAGZrOA3g8VwOB6MVhaPwg==
-X-Received: by 2002:a05:6a00:13a8:b0:748:ff39:a0f7 with SMTP id
- d2e1a72fcca58-76e8dc817e1mr3525095b3a.9.1755697390119; 
- Wed, 20 Aug 2025 06:43:10 -0700 (PDT)
-Received: from armenon-kvm.bengluru.csb ([49.47.192.65])
- by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-76e7d54657bsm5333943b3a.97.2025.08.20.06.43.00
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 20 Aug 2025 06:43:09 -0700 (PDT)
-Date: Wed, 20 Aug 2025 19:12:57 +0530
-From: Arun Menon <armenon@redhat.com>
-To: Fabiano Rosas <farosas@suse.de>
-Cc: qemu-devel@nongnu.org, Peter Xu <peterx@redhat.com>,
- Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
- Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>,
- Dmitry Osipenko <dmitry.osipenko@collabora.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Cornelia Huck <cohuck@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
- Eric Farman <farman@linux.ibm.com>, Thomas Huth <thuth@redhat.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- Matthew Rosato <mjrosato@linux.ibm.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- David Hildenbrand <david@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
- Nicholas Piggin <npiggin@gmail.com>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Fam Zheng <fam@euphon.net>,
- Alex Williamson <alex.williamson@redhat.com>,
- =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@redhat.com>,
- Steve Sistare <steven.sistare@oracle.com>,
- =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
- qemu-s390x@nongnu.org, qemu-ppc@nongnu.org,
- Hailiang Zhang <zhanghailiang@xfusion.com>,
- Stefan Berger <stefanb@linux.vnet.ibm.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
-Subject: Re: [PATCH v11 05/27] migration: push Error **errp into
- loadvm_process_command()
-Message-ID: <aKXQ4TVT00mnirmX@armenon-kvm.bengluru.csb>
-References: <20250813-propagate_tpm_error-v11-0-b470a374b42d@redhat.com>
- <20250813-propagate_tpm_error-v11-5-b470a374b42d@redhat.com>
- <87frdszb43.fsf@suse.de>
+ (Exim 4.90_1) (envelope-from <prvs=320342eca=Moritz.Haase@bmw.de>)
+ id 1uojpG-0008FV-7X
+ for qemu-arm@nongnu.org; Wed, 20 Aug 2025 10:30:09 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=bmw.de; i=@bmw.de; q=dns/txt; s=mailing1;
+ t=1755700205; x=1787236205; h=from:to:subject:date:message-id:
+ content-transfer-encoding:mime-version;
+ bh=mhgaWx+W6BL2PNOuMjl6LbvqthlRhXYFjmVSXSZVukI=;
+ b=k9bsq6RyD7pLvD8CNDvQOZhDgWMx5xE+IL1bp29Q1RKxUvUMQnW9Uz/S
+ r2sGcJsHJcL6yEgR0S39p9TMars8d9NfOp5vbjjYHUrpnNVKHclibiClr
+ FMujagh9oxqiwjkblXsMQW288dpl7+/N341WYIxOIlnMYuxLMRAIkbpDO o=;
+X-CSE-ConnectionGUID: QEN0IkAJTXOpKtrtlM1aDw==
+X-CSE-MsgGUID: GIYNs6ItTk28miW1ItXrKg==
+Received: from 160.46.252.39.spf.bmwgroup.com (HELO esagw4.muc)
+ ([160.46.252.39]) by
+ esa7.hc324-48.eu.iphmx.com with ESMTP/TLS; 20 Aug 2025 16:29:58 +0200
+Received: from unknown (HELO esabb2.muc) ([10.31.187.133]) by esagw4.muc with
+ ESMTP/TLS; 20 Aug 2025 16:29:58 +0200
+Received: from smucmp11a.bmwgroup.net (HELO smucmp11a.europe.bmw.corp)
+ ([10.30.13.91])
+ by esabb2.muc with ESMTP/TLS; 20 Aug 2025 16:29:58 +0200
+Received: from smucmp17d.europe.bmw.corp (10.30.13.154) by
+ smucmp11a.europe.bmw.corp
+ (10.30.13.91) with Microsoft SMTP Server (version=TLS;
+ Wed, 20 Aug 2025 16:29:57 +0200
+Received: from smucdzmp11.europe.bmw.corp (192.109.190.46) by
+ smucmp17d.europe.bmw.corp (10.30.13.154) with Microsoft SMTP Server
+ (version=TLS; Wed, 20 Aug 2025 16:29:57 +0200
+Received: from MRWPR03CU001.outbound.protection.outlook.com (192.109.190.1) by
+ smtpedge.bmwgroup.net (192.109.190.46) with Microsoft SMTP Server
+ (version=TLS; Wed, 20 Aug 2025 16:29:57 +0200
+Received: from DBBPR09MB3143.eurprd09.prod.outlook.com (2603:10a6:10:d7::16) by
+ AS5PR09MB6841.eurprd09.prod.outlook.com (2603:10a6:20b:67e::9) with
+ Microsoft SMTP Server (version=TLS; Wed, 20 Aug 2025 14:29:51 +0000
+Received: from DBBPR09MB3143.eurprd09.prod.outlook.com
+ ([fe80::97f8:c4e9:10f0:459]) by DBBPR09MB3143.eurprd09.prod.outlook.com
+ ([fe80::97f8:c4e9:10f0:459%7]) with mapi id 15.20.9052.012; Wed, 20 Aug 2025
+ 14:29:51 +0000
+X-CSE-ConnectionGUID: FKuP9pTPRL2wNeTyAXaNTA==
+X-CSE-MsgGUID: tvzTErDYS/eubCCDk826ag==
+X-CSE-ConnectionGUID: +JfIpUe2RwOfNULLWrrMFQ==
+X-CSE-MsgGUID: +A2jTfoBRYWi/mJBhWO9tA==
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=gU2qUL220upTBSuVtOWDz95mJi7vnUhO18IDzNaTLWdoxibAfWbOj7yrXPZaoLHFnpNwmnF/hv5cgVSnKObVM5urhhnf09NrBzqg4oB/0aP/2RQB2951m76wawhC0ttZArrpQEve9xy5m3IX3rig8ULbkgQuedK0TwL1tlOyWaxYKAazWt5Uf4JKQjcdWnvarUum5G98SMr4CZ1QqZcvZxzY6OdMebW7Z4ZZW/U2PTVI6+XTP8P9DKaG1QCSt0+ERzJ9n8xMlKVeEzdqjhGzTW+FrAQOAzhAIK/kBlEab6v4hLyyu7dacQWguT3bnHX23FX2Rv/h04Z1cJDRP0lPQg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=mhgaWx+W6BL2PNOuMjl6LbvqthlRhXYFjmVSXSZVukI=;
+ b=q0kOYNf+8ZQ8qMxEx7c7hl1fqoLobU+euzBGAob92odim5AAIohQuYPNWvN4xsgOLmWNyPRCnOQD8fWJsax0cU9O8LxGR6rHcbQHTw4CFz/HupUutxZszPLZEoYBqp4atxSsGt81S2CNKc8EFizZEfr18MzkBR+PiwJ93oBb7IF8kSg7LgeYpfQws54KgQMAKrsPC0yuvP9Q3rV/eg+5N3/NSMa1Nw/Sx8c150l9aALuzhyF8bxpAfoncrkO62kR/IM9xwVzy0luSmSZV1fj5I3y/jz6I0kFnusShJ+iowodCQC9Eadj5T+NB9JASUiYIqzmOdk62PGUHSj3jfukNw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=bmw.de; dmarc=pass action=none header.from=bmw.de; dkim=pass
+ header.d=bmw.de; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bmw.de; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=mhgaWx+W6BL2PNOuMjl6LbvqthlRhXYFjmVSXSZVukI=;
+ b=myyYRn+RbPtQbvGeFOP0l1bIsu5NvyQfzNE4D45iM29iRcYpy8JvpYUYvBe3vcFa3SX9RF3w6GTznm2CHrmXuj3z2AmBHxnqWvWY36pr8MjPvekcElPS0BA5m8xkyGMwffHGvXhawICW4abErB7+PWV1h1jeNseLPlAg3+1ekfsA/6Pmk5d/jSs8zM2xpxr9pThwg9HU6VpblN1GbdpHnHD1RLet7D7pHWxXR2CtXCVhJwZ8hGi4RLWH6IAcxrDP2WDa1tMdDiOymMoTOLF+jcf3d6zuZULotHyvwXtAKJZi+9OjW5lhKlGd0WKiLxMa0nRm/+aZ6hbnYdwDT+8qnw==
+From: "Haase Moritz, JD-62" <Moritz.Haase@bmw.de>
+To: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
+Subject: [TSAN] Fatal "unsupported VMA range" when running aarch64 binaries
+ via qemu
+Thread-Topic: [TSAN] Fatal "unsupported VMA range" when running aarch64
+ binaries via qemu
+Thread-Index: AQHcEd2zgu4RlNWkj0aYWJpp0uyScA==
+Date: Wed, 20 Aug 2025 14:29:51 +0000
+Message-ID: <DBBPR09MB314311E9D531529DB410AF51EA33A@DBBPR09MB3143.eurprd09.prod.outlook.com>
+Accept-Language: de-DE, en-US
+Content-Language: de-DE
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+msip_labels: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=bmw.de;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: DBBPR09MB3143:EE_|AS5PR09MB6841:EE_
+x-ms-office365-filtering-correlation-id: 4eb6828f-fa38-4fe5-a977-08dddff60628
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|366016|376014|19092799006|1800799024|38070700018; 
+x-microsoft-antispam-message-info: =?iso-8859-1?Q?Wh3cD5E6xOZsYn81Wvl2v6jXGMg0iqS3xHG8sVOqdooxr3YD8Rm2S1418X?=
+ =?iso-8859-1?Q?bXZy8j4ye8hWELGjIBouyWQ9MD9eEChpSffQu6LP5MQSRnrnHexy4MsqIc?=
+ =?iso-8859-1?Q?1uFMdMNzP2CdT8sLdbLC87ivdwy9L7NsPa4J0+M3h+QD+Ohxq3Fu1VD/FG?=
+ =?iso-8859-1?Q?fsa/16IPgf9eLr1inh4R0Mr5MqOKs9cmTR21xgzaTxeZORu2Yp3oIW9SJL?=
+ =?iso-8859-1?Q?/DSYn0DaeQO0RIB+zlJv5ToTHXpQEwS/27Q8HoJ2sK7r3KCSacKiNiBD92?=
+ =?iso-8859-1?Q?Q1MzNQxIsKhjWrU7DcFIn4CYM+FLRIBkrwNAZJs8vOr8hfia+c7Fnf8vB9?=
+ =?iso-8859-1?Q?X2BuhxPVfZH3TQ+HZlCzEqUYWSOJHPovOk6mcBbhJGApyWfhdbAL5u6iVs?=
+ =?iso-8859-1?Q?6dr8aUR16qsB5N6deUi9Nu93etNd+YxppaGerDMn6TW/wo62FoInbporyU?=
+ =?iso-8859-1?Q?Q26F9HwOhsZu5yvtc7v412SdDo2iheEZUhoHjyYQ/Cjvfd7/kW07laRT14?=
+ =?iso-8859-1?Q?mngyLaMA8R3SaLJE7Od1msb+OJC0+9+dg+tEfnY7bwagee2C33bDGZ0LPP?=
+ =?iso-8859-1?Q?YauxqOApDvDyjVOdCGYITFakJqC/D7IFAJYIL0oxfya6fdRM2sn5Iu/BHh?=
+ =?iso-8859-1?Q?0i9VQhP5snqF6mfPy3oETsqf57u6tc7ddk7PjFRNBI+KWVxxlyDYa5rZBJ?=
+ =?iso-8859-1?Q?ug7XkafMkJKznYPl24wtoQe9cbdJGiNo/w0m/gwYOPvfxsYtlvZbR0H18n?=
+ =?iso-8859-1?Q?LXkJdkOVzhM1XHzW6IB6Oum2sjPPcaDV336ISmagyzvTOQ3QbHxFar23H9?=
+ =?iso-8859-1?Q?al65T6OSDoVVSL/izJtD6RMrMTurleprcNT+cy36RhiNFE7GL57DgcTvus?=
+ =?iso-8859-1?Q?kmqiK2maRTikb40HJe4ZmLoX9PBKwBrJ70tPtmN0UfJIDSqzMmykvj2qym?=
+ =?iso-8859-1?Q?S/r0EsOkvXGI7vpz/j6p6TaMpF96vwoeBrpBduRanxTcIR58ChK4oZdpHZ?=
+ =?iso-8859-1?Q?WY+9j5YhBAj3dkVbc/1KB4BdutEXXnnVcodh76HVdRHoA4X2+mmmF0fcIz?=
+ =?iso-8859-1?Q?6PQlIxqhQX794X0YJjJg+gDZ9OopRcLFjkUqUdXEMm9ZwRr3qrFSH/ECeg?=
+ =?iso-8859-1?Q?5le+KjJf+lE2E/2wH1Dv6sg+m36B78eCkT5BlupwLO4BopDOYn+hNYSVtu?=
+ =?iso-8859-1?Q?jBKV12kWNaM2lUthFmZUGfsWKMIylZNyPurlPGrFb2/8Nwqqfc/8S3afAk?=
+ =?iso-8859-1?Q?TGh4C5TKMiWSFBWTuGKx/3AhIJu2RKQPFpEUsGcs4J8TFOGq2zuJLbs2Er?=
+ =?iso-8859-1?Q?7IeWI1HLdw0Z8Ji9TGpLktF0mTMszRQni+rjMyhtIXhOkBIg5VY2X8Hosk?=
+ =?iso-8859-1?Q?0t5hch/t8ov92jjcluMJ/NhsRFT9upFRGzPXt0tjtnw+78dhaY4Bmuszvu?=
+ =?iso-8859-1?Q?cvvN1LuHeSmXIQphTDIRTW1JJlrusZa2jS4pEq0dUUxOQ7UTZ8kIIu6fGD?=
+ =?iso-8859-1?Q?kQU68+OVBA/rVcRM55fxxXcYxhjo2ZqTSNmz8M3SlM2KnMjK4VgkF9PrOH?=
+ =?iso-8859-1?Q?0HJZ434=3D?=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DBBPR09MB3143.eurprd09.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(366016)(376014)(19092799006)(1800799024)(38070700018); DIR:OUT;
+ SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?TabRcAy6ykEGKrEzYq30DS2YDXV957LokfYz34GaUJZm/EEqzgc0Reotpf?=
+ =?iso-8859-1?Q?a/OHA1ZqNgi1U1qG10RTih/zxiAJc7xYivTWe19ntANS37u7KGdi1Rz3bx?=
+ =?iso-8859-1?Q?hqS1aOxznXIPOY3wwN4jMtbPi7Hz2lQtwuGXEqLksy5WY/boHO8KTZ3bco?=
+ =?iso-8859-1?Q?wIHEpOmz/A7PQWHU+ptq1e/aNb12zO6/khJv4l39FmhrvfbaxPiiOlQXB2?=
+ =?iso-8859-1?Q?1hHPYjhL/Aaw3vuyDVJ9rAbBWYVZ1L7soTMtt5c89C2lJ9lTh6aQmBAoG9?=
+ =?iso-8859-1?Q?GzNTzy50b8Sray4BfOWjvMMi7skoatv//G5Qk1XBTmFHzvUVwERZKFPPP7?=
+ =?iso-8859-1?Q?XTVz/z1hCevDATSex6jcWorO0E2XqrhnOhQA3Y4So9z64WZ66mGsM2rAE7?=
+ =?iso-8859-1?Q?LTnLj0MqkKJ7bwyZiI0J8/WeX+lcmEYXQ/2RZJHZGDWtDknCDoabJKI4N+?=
+ =?iso-8859-1?Q?fj8tA+gcmT2AiMdUD3Tn++5xVygbc5ixz9aaAmGhDWD+f8yjZIblRr2wdT?=
+ =?iso-8859-1?Q?2yK4Mcn4OzQo0P7sX5cvy54OsB4ZF/+1iK1OS37hwMQ0bfwCzhE0LW4WNe?=
+ =?iso-8859-1?Q?xK41e8jcw+Ta3cY3nTgcCPz3zXKeC3g2aNT4KSS5DS90tsLA55wDMAaUk/?=
+ =?iso-8859-1?Q?4re0h3C4rBoqYZtmCHT3PjNUaDXxh8xeTBayMtEaeVYHGHhNSs0VHfqtGY?=
+ =?iso-8859-1?Q?V9WgDb+in6OcGstnumEL95e9P4g2jBvKxRNC+BZPEMYn0JpOiYSyUhPoqO?=
+ =?iso-8859-1?Q?PESWL/a9YpF4eP/WE5S7H0wHe/N3DNIbJ/tQu2ojbVVhMSTqRuxQZyNmBv?=
+ =?iso-8859-1?Q?O3/j0WV0JEW6ZUSxgEoUbw8jIvHxeCEGOaY+WIVyWia4s82pyANlNPaVaZ?=
+ =?iso-8859-1?Q?VNtoZ/DvgIlNv6TINZNL9rFCIxMn1cj5fKTikD9Kz3YP6v8s8I88+GmzmV?=
+ =?iso-8859-1?Q?GfLLx9ydlCGnoicgSnKL8yBnD/i06LnKx/WHmise+0SahMH/a0XWugqD/Q?=
+ =?iso-8859-1?Q?GRKO0gnCCSzFBZty241ZZqjUp93cAzs9BSWog38/4uZYS+YyXAn9rx1f+e?=
+ =?iso-8859-1?Q?ciz1bXVtMYp0whbNQnRejxaiRjqlsBn30oP7uo6apnDT2kqc/ir2CnNpto?=
+ =?iso-8859-1?Q?LWlEB3gzydOPr8CARdZrxL+NmIjc2ZFxJOCgyPw666tzMvi3eZbJSnszNN?=
+ =?iso-8859-1?Q?lzhlGRulcz1oVXucEpqEMPeb0ZIO6ZLMSLyaYLPfVoiqyUVQmv0yv1vff6?=
+ =?iso-8859-1?Q?ENRc1wlSrLzQ7d0ngSzdXSNBrnvXtTqDQG/KX6rtvBuplx2Bz85tYeonp/?=
+ =?iso-8859-1?Q?o1A1y0NB78wvmf18iMRMoxEAQLea76Y1oWInfmboMzRTfb8L9f/3D4TB4H?=
+ =?iso-8859-1?Q?NiZ6qsB0czHSiH0HnPPwFRj/sIPeoxdA3YKO0+ujmDvevH/luHdec27uJS?=
+ =?iso-8859-1?Q?ZZ6dpunggKJh9qQmnHjAfETSMfX8sya6uyvkY6tKLWocD6vjqZnmgRg7nj?=
+ =?iso-8859-1?Q?76oyFYYYllGa0a3QmN0RSwQjF3c1sTR90Y5khXSctR22KpBdQVzWYFho1a?=
+ =?iso-8859-1?Q?kUZxheQKjM28G/fwC5UpmjJrmXueH2fcmmdQyHqLMH955lAEGBi5bJINur?=
+ =?iso-8859-1?Q?5gkGFOrZYmnv5cHMAEnYTv03wGxr8mfxSK?=
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-In-Reply-To: <87frdszb43.fsf@suse.de>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: U3R6m-Zmd1ZMWbinExu4F36bvjFxl5F2BFohajFFfZk_1755697392
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=armenon@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: DBBPR09MB3143.eurprd09.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 4eb6828f-fa38-4fe5-a977-08dddff60628
+X-MS-Exchange-CrossTenant-originalarrivaltime: 20 Aug 2025 14:29:51.4616 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: ce849bab-cc1c-465b-b62e-18f07c9ac198
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: dicWIf/AQd+xTLBZGtTpWn5oeR31k9bkaW5Jv+hrsGwd25OoByU/MjdB85CNft1OnwaDmWtqJjXiu4IRXRDxww==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AS5PR09MB6841
+X-OriginatorOrg: bmw.de
+Received-SPF: pass client-ip=207.54.71.126;
+ envelope-from=prvs=320342eca=Moritz.Haase@bmw.de;
+ helo=esa7.hc324-48.eu.iphmx.com
+X-Spam_score_int: -43
+X-Spam_score: -4.4
+X-Spam_bar: ----
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -138,202 +195,38 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, Aug 15, 2025 at 03:35:40PM -0300, Fabiano Rosas wrote:
-> Arun Menon <armenon@redhat.com> writes:
-> 
-> > This is an incremental step in converting vmstate loading
-> > code to report error via Error objects instead of directly
-> > printing it to console/monitor.
-> > It is ensured that loadvm_process_command() must report an error
-> > in errp, in case of failure.
-> >
-> > Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-> > Signed-off-by: Arun Menon <armenon@redhat.com>
-> > ---
-> >  migration/savevm.c | 82 +++++++++++++++++++++++++++++++++++++++---------------
-> >  1 file changed, 60 insertions(+), 22 deletions(-)
-> >
-> > diff --git a/migration/savevm.c b/migration/savevm.c
-> > index 7f79461844105bf672314c3325caee9cdb654c27..715cc35394cac5fe225ef88cf448714a02321bd7 100644
-> > --- a/migration/savevm.c
-> > +++ b/migration/savevm.c
-> > @@ -2546,32 +2546,35 @@ static int loadvm_postcopy_handle_switchover_start(void)
-> >   * LOADVM_QUIT All good, but exit the loop
-> >   * <0          Error
-> >   */
-> > -static int loadvm_process_command(QEMUFile *f)
-> > +static int loadvm_process_command(QEMUFile *f, Error **errp)
-> >  {
-> >      MigrationIncomingState *mis = migration_incoming_get_current();
-> >      uint16_t cmd;
-> >      uint16_t len;
-> >      uint32_t tmp32;
-> > +    int ret;
-> >  
-> >      cmd = qemu_get_be16(f);
-> >      len = qemu_get_be16(f);
-> >  
-> >      /* Check validity before continue processing of cmds */
-> > -    if (qemu_file_get_error(f)) {
-> > -        return qemu_file_get_error(f);
-> > +    ret = qemu_file_get_error(f);
-> > +    if (ret) {
-> > +        error_setg(errp, "Failed to load VM process command: %d", ret);
-> 
-> "Failed to process command: stream error: %d"
-> 
-> > +        return ret;
-> >      }
-> >  
-> >      if (cmd >= MIG_CMD_MAX || cmd == MIG_CMD_INVALID) {
-> > -        error_report("MIG_CMD 0x%x unknown (len 0x%x)", cmd, len);
-> > +        error_setg(errp, "MIG_CMD 0x%x unknown (len 0x%x)", cmd, len);
-> >          return -EINVAL;
-> >      }
-> >  
-> >      trace_loadvm_process_command(mig_cmd_args[cmd].name, len);
-> >  
-> >      if (mig_cmd_args[cmd].len != -1 && mig_cmd_args[cmd].len != len) {
-> > -        error_report("%s received with bad length - expecting %zu, got %d",
-> > -                     mig_cmd_args[cmd].name,
-> > -                     (size_t)mig_cmd_args[cmd].len, len);
-> > +        error_setg(errp, "%s received with bad length - expecting %zu, got %d",
-> > +                   mig_cmd_args[cmd].name,
-> > +                   (size_t)mig_cmd_args[cmd].len, len);
-> >          return -ERANGE;
-> >      }
-> >  
-> 
-> Where's MIG_CMD_OPEN_RETURN_PATH?
-I see, you mean the qemu_file_get_return_path() failure to be reported.
-> 
-> > @@ -2594,11 +2597,10 @@ static int loadvm_process_command(QEMUFile *f)
-> >           * been created.
-> >           */
-> >          if (migrate_switchover_ack() && !mis->switchover_ack_pending_num) {
-> > -            int ret = migrate_send_rp_switchover_ack(mis);
-> > +            ret = migrate_send_rp_switchover_ack(mis);
-> >              if (ret) {
-> > -                error_report(
-> > -                    "Could not send switchover ack RP MSG, err %d (%s)", ret,
-> > -                    strerror(-ret));
-> > +                error_setg_errno(errp, -ret,
-> > +                                 "Could not send switchover ack RP MSG");
-> >                  return ret;
-> >              }
-> >          }
-> > @@ -2608,39 +2610,71 @@ static int loadvm_process_command(QEMUFile *f)
-> >          tmp32 = qemu_get_be32(f);
-> >          trace_loadvm_process_command_ping(tmp32);
-> >          if (!mis->to_src_file) {
-> > -            error_report("CMD_PING (0x%x) received with no return path",
-> > -                         tmp32);
-> > +            error_setg(errp, "CMD_PING (0x%x) received with no return path",
-> > +                       tmp32);
-> >              return -1;
-> >          }
-> >          migrate_send_rp_pong(mis, tmp32);
-> >          break;
-> >  
-> >      case MIG_CMD_PACKAGED:
-> > -        return loadvm_handle_cmd_packaged(mis);
-> > +        ret = loadvm_handle_cmd_packaged(mis);
-> 
-> I missed a lot of the discussion in this series, but I assume there's a
-> good reason to not put the conversion of each command first in the
-> series, so there's no need for temporary code in this patch.
-> 
-> > +        if (ret < 0) {
-> > +            error_setg(errp, "Failed to load device state command: %d", ret);
-> > +        }
-> > +        return ret;
-> >  
-> >      case MIG_CMD_POSTCOPY_ADVISE:
-> > -        return loadvm_postcopy_handle_advise(mis, len);
-> > +        ret = loadvm_postcopy_handle_advise(mis, len);
-> > +        if (ret < 0) {
-> > +            error_setg(errp, "Failed to load device state command: %d", ret);
-> > +        }
-> > +        return ret;
-> >  
-> >      case MIG_CMD_POSTCOPY_LISTEN:
-> > -        return loadvm_postcopy_handle_listen(mis);
-> > +        ret = loadvm_postcopy_handle_listen(mis);
-> > +        if (ret < 0) {
-> > +            error_setg(errp, "Failed to load device state command: %d", ret);
-> > +        }
-> > +        return ret;
-> >  
-> >      case MIG_CMD_POSTCOPY_RUN:
-> > -        return loadvm_postcopy_handle_run(mis);
-> > +        ret = loadvm_postcopy_handle_run(mis);
-> > +        if (ret < 0) {
-> > +            error_setg(errp, "Failed to load device state command: %d", ret);
-> > +        }
-> > +        return ret;
-> >  
-> >      case MIG_CMD_POSTCOPY_RAM_DISCARD:
-> > -        return loadvm_postcopy_ram_handle_discard(mis, len);
-> > +        ret = loadvm_postcopy_ram_handle_discard(mis, len);
-> > +        if (ret < 0) {
-> > +            error_setg(errp, "Failed to load device state command: %d", ret);
-> > +        }
-> > +        return ret;
-> >  
-> >      case MIG_CMD_POSTCOPY_RESUME:
-> >          return loadvm_postcopy_handle_resume(mis);
-> >  
-> >      case MIG_CMD_RECV_BITMAP:
-> > -        return loadvm_handle_recv_bitmap(mis, len);
-> > +        ret = loadvm_handle_recv_bitmap(mis, len);
-> > +        if (ret < 0) {
-> > +            error_setg(errp, "Failed to load device state command: %d", ret);
-> > +        }
-> > +        return ret;
-> >  
-> >      case MIG_CMD_ENABLE_COLO:
-> > -        return loadvm_process_enable_colo(mis);
-> > +        ret = loadvm_process_enable_colo(mis);
-> > +        if (ret < 0) {
-> > +            error_setg(errp, "Failed to load device state command: %d", ret);
-> > +        }
-> > +        return ret;
-> >  
-> >      case MIG_CMD_SWITCHOVER_START:
-> > -        return loadvm_postcopy_handle_switchover_start();
-> > +        ret = loadvm_postcopy_handle_switchover_start();
-> > +        if (ret < 0) {
-> > +            error_setg(errp, "Failed to load device state command: %d", ret);
-> > +        }
-> > +        return ret;
-> >      }
-> >  
-> >      return 0;
-> > @@ -3051,6 +3085,7 @@ int qemu_loadvm_state_main(QEMUFile *f, MigrationIncomingState *mis)
-> >  {
-> >      uint8_t section_type;
-> >      int ret = 0;
-> > +    Error *local_err = NULL;
-> >  
-> >  retry:
-> >      while (true) {
-> > @@ -3078,7 +3113,10 @@ retry:
-> >              }
-> >              break;
-> >          case QEMU_VM_COMMAND:
-> > -            ret = loadvm_process_command(f);
-> > +            ret = loadvm_process_command(f, &local_err);
-> > +            if (ret < 0) {
-> > +                warn_report_err(local_err);
-> 
-> Again, some throwaway code here. Commit message could have made this
-> clear: "For now, report the error with warn_report until all callers
-> have been converted to pass errp".
-> 
-> > +            }
-> >              trace_qemu_loadvm_state_section_command(ret);
-> >              if ((ret < 0) || (ret == LOADVM_QUIT)) {
-> >                  goto out;
-> 
-
+Hi,=0A=
+=0A=
+We are trying to execute binaries compiled with TSAN for aarch64 on an x86_=
+64=0A=
+host via 'qemu-aarch64' and encounter=0A=
+=0A=
+FATAL: ThreadSanitizer: unsupported VMA range=0A=
+FATAL: Found 47 - Supported 39, 42 and 48=0A=
+=0A=
+errors.=0A=
+=0A=
+Environment is an Alpine Linux based (privileged) Docker container running =
+on a=0A=
+Manjaro Linux host with Kernel 6.12, but the issue is seen on other systems=
+ as=0A=
+well. Behaviour is the same with qemu 8.2.7, 9.1.2 and 10.0.0.=0A=
+=0A=
+My understanding of the VMA issue is limited, but it seems to be related to=
+ the=0A=
+'-R size' (QEMU_RESERVED_V`) option for qemu, so I played around with that.=
+=0A=
+When setting it to a value that matches 39 or 42 bits, TSAN does indeed=0A=
+initalize, but still fails with a segfault.=0A=
+=0A=
+I filed an issue with LLVM upstream at [0] two weeks ago, which has some mo=
+re=0A=
+details, but sadly no replies yet - so I'm cross-posting here to ask whethe=
+r=0A=
+there is anything else we can try? Pointers would be highly appreciated, th=
+anks!=0A=
+=0A=
+Moritz=0A=
+=0A=
+[0]: https://github.com/llvm/llvm-project/issues/151931=0A=
 

@@ -4,101 +4,146 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C32ECA0EE6
-	for <qemu-arm@archiver.kernel.org>; Tue, 19 Aug 2025 22:36:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46E62CA0EDC
+	for <qemu-arm@archiver.kernel.org>; Wed, 20 Aug 2025 07:19:32 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uoUw1-0006In-S7; Tue, 19 Aug 2025 18:36:05 -0400
+	id 1uod6F-0004QW-K1; Wed, 20 Aug 2025 03:19:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1uoUw0-0006IN-Mm
- for qemu-arm@nongnu.org; Tue, 19 Aug 2025 18:36:04 -0400
-Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1uoUvy-0007en-30
- for qemu-arm@nongnu.org; Tue, 19 Aug 2025 18:36:04 -0400
-Received: by mail-pf1-x429.google.com with SMTP id
- d2e1a72fcca58-76e2e8bb2e5so6148292b3a.1
- for <qemu-arm@nongnu.org>; Tue, 19 Aug 2025 15:36:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1755642960; x=1756247760; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=oDCT8mF9Cljaxm5mZSyW4Sv46fruFce/2oF9ryX6O/o=;
- b=PeU3VaRMHrToWQhvx+hUWhCOq4AWGu7/G9CE027lI1eNjpcl9ny1rzR3131Bf+BFtY
- ubAQs4yb7x7Gks/iHX1a0D3lnOsqq3/ycQaH8MXWOEd2l2q7QDyWkGIzrMIHNey3b/1R
- jlZiEFaR8hc1nyOy7xUVDKaUEgjgphH79XP1IrYRVRNfLKHIJYk0s4qHsT8aXZUFpQfC
- NwVAqh/MX5ZmhPtvqXI8SIWug0TSx/Z0pvpaEJo9EGqsd3g1raDGvnq/PgN6j8382cP0
- DHfYvzXf07broqoSIC80U2vn7tBgmyefqq2Aj6UiozkmuH6y4sEF1aY0r+h34P4gHWn0
- Onig==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1755642960; x=1756247760;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=oDCT8mF9Cljaxm5mZSyW4Sv46fruFce/2oF9ryX6O/o=;
- b=hiKgFLZpJorOhd16q1pSl72BxtI7IlPwP7Muyw4RtGMIAd+QC3bCgVNuL1V47X5/Qn
- 6QNf+OY9kCzfowcrmtSxfz19wf74nBuQz5m+7hCFrYCZmdJjOf9wros3DwtRLiVPbN1J
- xbQnqF21K4P7LSEkvslLkARqEc7K1G53CFaeFXDJOCgEF564kls0W2+LrdwpKScQ14v9
- mMjRFIh/RGjGgqBjd5B21pzE69W2xZlfoqcrPnLdfWAmNMlmsZl4qtOswURXQVwh/G2G
- wUiLW19wFD0Kwu+Rm/60ztIxkPuDmLt1gsgBXY4+jx6Sudrqd73uloyAHCB2TSiSVPgC
- J3CQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUkCeUKdLTJ9+ARjbWTRhRu5lZbcv9gMF9epfKStI3Vi1hFId0AYgKie0DyI4uapBRM/HC9ZS3C3g==@nongnu.org
-X-Gm-Message-State: AOJu0YzubJe1ho/dS+jZ2cefcdH81gd1+QGDnwipx4HWu0XYt2/8B7zy
- 6K5v7MvCeU+f9zXtZhkrElMFKdGjIOl+0gRQC0ZoQBu8EA4o1TcMbIXfYkpasmrZaJQ=
-X-Gm-Gg: ASbGncvNGMDzhe1Gcx0HoX/0x/ry0CyKunppzPHK077J7O96ix4NEjcuzubF06Yv1n5
- kj0IY6fe2TwLVfB+ObC0xCCTytTHgweftaDxyFijqu0AMlezmm973AYT4s9ZZK/JNk/ruof8NDl
- KEA1q27OVvcp6uJzdpjRxFg0ktXkdqOuafkAdvuKhDwlzuPdMJP7ruJEJ2L2qKqq7+KPT7ZP2cT
- ouHFg0AfiO8FcXNLiGlmPy5DCVOSbGj+jABQ56ggEkWJnLXfUBRFOgRv3kSlVV94I3Oti5UABto
- VuDir9PrpNpTCM9y0nEQ7Mf2sGNzqdvS3qFLzoXsDkUjoYCmPe6IKsvzN649/Etz2tpIBzZJ+sw
- xgvPRtX0nUy1/AIi2YoPnVp18Gn8Jnj9obA==
-X-Google-Smtp-Source: AGHT+IHldYserH9m8PK7rEtVfOUVOQXLa9rsjM1enR4gVE01iq1AxGukyahjQ3zL+LvuJHbr92n1QQ==
-X-Received: by 2002:a05:6a21:9997:b0:240:16af:401a with SMTP id
- adf61e73a8af0-2431b939f00mr1362738637.32.1755642960015; 
- Tue, 19 Aug 2025 15:36:00 -0700 (PDT)
-Received: from [10.0.0.90] ([120.159.20.238]) by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-76e7d4f6ea2sm3475541b3a.62.2025.08.19.15.35.52
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 19 Aug 2025 15:35:59 -0700 (PDT)
-Message-ID: <d01829eb-48fc-40ca-b6cc-b3e8700c3c2c@linaro.org>
-Date: Wed, 20 Aug 2025 08:35:49 +1000
+ (Exim 4.90_1) (envelope-from <Luc.Michel@amd.com>)
+ id 1uod6B-0004Pd-Gv; Wed, 20 Aug 2025 03:19:07 -0400
+Received: from mail-bn8nam12on2062c.outbound.protection.outlook.com
+ ([2a01:111:f403:2418::62c]
+ helo=NAM12-BN8-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <Luc.Michel@amd.com>)
+ id 1uod68-0000zf-Ih; Wed, 20 Aug 2025 03:19:07 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=JCbA/ke6YlZT2AM6ZTuWLtl/uUFbb02NwDm2DIurqDIGec+GmTBAHlUNvGKEUIk+aTBGvZHdpN9vJC4BQcziCaCC15OOb2Z+Z2cfRQqsVfvx/onEyUMIkjsr86SnzVfswwgN98XJ28vhLyeCBh+rXa0Jzpj0whbne8pxsrUPqbV3e9I8xeT3xPlSU4yp33WZabN4mN355HdtlHWXyRCbDiSuim4YAUO1+AthIz0zHFd19SVRKqIggJ/MOaCf2g8Xfu40gYfmiCNCSHdZyYNm02DGqIWnmtSDQOKiYMhFasoaxQqaIMfHWhD6hVsBGLW4AmkSVUT0Ntc/gd3KSUDgqA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=/sQ0f+CJlFWVdvfk3U9YHHrK1XgNvtqFqlNtv0aOcag=;
+ b=XwOwZT9DqgbolQDakN7VGidOlOFZe5NaiFjzjBZNWy5SKQz5fxNWokTGuU/20m01wUlj7d3J7ezC+XEZzgG1VYH9sSceAEis/aj/BptEa03mVzutVQWlc39gqgMHblKaaT/TM4s2EYhoIDEJJuYdtsT8l5LNDtKEarnaBRawHN4Oi3JYWMvasTnxi6lGkldQKd6jwZT0sufFTnkwndJ6rv4OI4Up7sR2GsAUmXnDCbkuXU/0oDYwsh2KUSXqEho7jcXF1FsIAqkLrPQNXHY5VgoAD64km3G/FgQWgsIdBkHVXHBPdlyxvVEDegu6EIV9E2H+vjz5VPxUZ+8V5EOjfw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 165.204.84.17) smtp.rcpttodomain=linaro.org smtp.mailfrom=amd.com; dmarc=pass
+ (p=quarantine sp=quarantine pct=100) action=none header.from=amd.com;
+ dkim=none (message not signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1; 
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=/sQ0f+CJlFWVdvfk3U9YHHrK1XgNvtqFqlNtv0aOcag=;
+ b=4UjU/5bimo8saHARznfYF2ChVu1F290o/oaRWzcYG0r5TvAQFeqGKOa3R1xgm2VamFHrHGYxE2QJOqvDpdpcAoiFFJV1qX642h9DUaRVmpxIP2Kovj+nAnmJ1BNG44p4fxo1JbuSuY9brkLdvLPVbK/CjGGHmhUfOLy07mQD2l8=
+Received: from CH2PR05CA0003.namprd05.prod.outlook.com (2603:10b6:610::16) by
+ CH3PR12MB9147.namprd12.prod.outlook.com (2603:10b6:610:19a::9) with
+ Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.9031.18; Wed, 20 Aug 2025 07:18:54 +0000
+Received: from CH2PEPF00000143.namprd02.prod.outlook.com
+ (2603:10b6:610:0:cafe::af) by CH2PR05CA0003.outlook.office365.com
+ (2603:10b6:610::16) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.9052.13 via Frontend Transport; Wed,
+ 20 Aug 2025 07:18:54 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 165.204.84.17)
+ smtp.mailfrom=amd.com; dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=amd.com;
+Received-SPF: Pass (protection.outlook.com: domain of amd.com designates
+ 165.204.84.17 as permitted sender) receiver=protection.outlook.com;
+ client-ip=165.204.84.17; helo=SATLEXMB04.amd.com; pr=C
+Received: from SATLEXMB04.amd.com (165.204.84.17) by
+ CH2PEPF00000143.mail.protection.outlook.com (10.167.244.100) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.20.9052.8 via Frontend Transport; Wed, 20 Aug 2025 07:18:54 +0000
+Received: from SATLEXMB06.amd.com (10.181.40.147) by SATLEXMB04.amd.com
+ (10.181.40.145) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.39; Wed, 20 Aug
+ 2025 02:18:54 -0500
+Received: from SATLEXMB03.amd.com (10.181.40.144) by SATLEXMB06.amd.com
+ (10.181.40.147) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.39; Wed, 20 Aug
+ 2025 02:18:53 -0500
+Received: from XFR-LUMICHEL-L2.amd.com (10.180.168.240) by SATLEXMB03.amd.com
+ (10.181.40.144) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.39 via Frontend
+ Transport; Wed, 20 Aug 2025 02:18:52 -0500
+Date: Wed, 20 Aug 2025 09:18:45 +0200
+From: Luc Michel <luc.michel@amd.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+CC: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, Francisco Iglesias
+ <francisco.iglesias@amd.com>, "Edgar E . Iglesias" <edgar.iglesias@amd.com>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>, Alistair Francis
+ <alistair@alistair23.me>, Frederic Konrad <frederic.konrad@amd.com>, "Sai
+ Pavan Boddu" <sai.pavan.boddu@amd.com>
+Subject: Re: [PATCH 13/48] hw/arm/xlnx-versal: VersalMap: add support for
+ OR'ed IRQs
+Message-ID: <aKV21WpfZ8u054zc@XFR-LUMICHEL-L2.amd.com>
+References: <20250716095432.81923-1-luc.michel@amd.com>
+ <20250716095432.81923-14-luc.michel@amd.com>
+ <CAFEAcA-x_CYWPM2TeGSTLjCj==3JY_uyvfFmR=nLi4pRLw-P2Q@mail.gmail.com>
+ <aKMrBdNhtqHVHRYw@XFR-LUMICHEL-L2.amd.com>
+ <CAFEAcA8eop95ojfZw3YbDrWfrv1fZ5QYSmwx_oDThxMCiMMeDg@mail.gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 21/35] tcg/wasm: Add neg/not/ctpop instructions
-To: Kohei Tokunaga <ktokunaga.mail@gmail.com>, qemu-devel@nongnu.org
-Cc: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- WANG Xuerui <git@xen0n.name>, Aurelien Jarno <aurelien@aurel32.net>,
- Huacai Chen <chenhuacai@kernel.org>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Aleksandar Rikalo <arikalo@gmail.com>, Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <Alistair.Francis@wdc.com>, Stefan Weil <sw@weilnetz.de>,
- qemu-arm@nongnu.org, qemu-riscv@nongnu.org,
- Stefan Hajnoczi <stefanha@redhat.com>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>
-References: <cover.1755623521.git.ktokunaga.mail@gmail.com>
- <0eb3445353ddde2f34bac187bf8d3ecf02f106b4.1755623522.git.ktokunaga.mail@gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Content-Language: en-US
-In-Reply-To: <0eb3445353ddde2f34bac187bf8d3ecf02f106b4.1755623522.git.ktokunaga.mail@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::429;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x429.google.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <CAFEAcA8eop95ojfZw3YbDrWfrv1fZ5QYSmwx_oDThxMCiMMeDg@mail.gmail.com>
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: CH2PEPF00000143:EE_|CH3PR12MB9147:EE_
+X-MS-Office365-Filtering-Correlation-Id: 76dc5fe2-fba5-4340-3c75-08dddfb9d227
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|1800799024|36860700013|82310400026|376014; 
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?i5XuAQ0IiIihAOvqd+1ICLToP97ZhgA8KCyUNzEeNgs/wtx6AJSw6DfcY/II?=
+ =?us-ascii?Q?Z0GYQyNl2BjlvBQ/XynypDBtCyTy7fQBIr5BOESeUnO1D3vC2GgiCGTuQ95/?=
+ =?us-ascii?Q?WdjIfa1oC2mHia5It9a+iunnkjRx0nzvo7AMtyGEnWEN05pziRWTAtIhbTQQ?=
+ =?us-ascii?Q?qPFyiBPVnbdZEPSBaNeP8Wh1SuXqdcrIqvCO3Av0CO7nFB29+fNbLOXX3F6x?=
+ =?us-ascii?Q?MAeemKLprd3bMwSsP2/Fb7+hxTNAruKc0AKiPIeSa8Fw0awt7QGb3qxcMXhW?=
+ =?us-ascii?Q?XRUWosSQYLiioPdW8O6KPbh3XN/tU9Rbx/nxy4PIQfxZmtGBEfltKsvuSar2?=
+ =?us-ascii?Q?D78CyLsisvCFftLcjJREb6goC3MIjrYZ5nkZ9Fk+mXiB8C/zK1NmcJsEOdUs?=
+ =?us-ascii?Q?Y2JIND/AAlEFUIQKLb6QEn9Sz01pgPKup+8OGbgUyQh6SV0qmrNAsKa75whf?=
+ =?us-ascii?Q?WoCWLn1td6APBDdCP/N1w7ywBYBpc4k5ZBJs3D63pnxNOtsmVU/GprP4Qbrk?=
+ =?us-ascii?Q?oHFfsI4ag9CaikdzQ7Kmr8/cQ2vicOACYUZlfaWEKMJ6YgrNuDP61lFIJPYf?=
+ =?us-ascii?Q?Su2PHkugQKUtdPbixRFqV1ryBHgq8kZvWFykpMUzFdC6Fg1dZdoTgp43KIDC?=
+ =?us-ascii?Q?OM/Nx7rttBnO2HCLAEjjuNWUO5fZfflCFwYZreBbfMnCdcqEDXl4JDopMx72?=
+ =?us-ascii?Q?rOIv+G7fR5/drR1F88ffCLGoAlnsb40q7X5k4XbobOg2j3EEg02y55kEFp81?=
+ =?us-ascii?Q?ug/N0TP8JwLczZlNjsw53SF5uaFAFSpFvvmCsN8U2ZBQ/AWC/TvwwBqrSZia?=
+ =?us-ascii?Q?VqwkpuIGd7rrdAgZKQG212RpVXHNBRC+mLTw6GNLq8iqst+AKw9i2qyKWyGP?=
+ =?us-ascii?Q?unxmDAst93PHms/vRIrtX1W2ZMvAW4XFjMhF3TK6fxIgVa2EFmgm8FOa5qrD?=
+ =?us-ascii?Q?4VELQeI5kLHpqPKlx5zGR6iYlGUBdqp6ZkeEYZBXR6a1780C1T76Pz8jyfne?=
+ =?us-ascii?Q?J9P7LZhCccYbUdp6bCEJk/YwmjeFLDxwrgX8JxONOyNN2GbnrDIRyN2JPNMP?=
+ =?us-ascii?Q?TyHU/VOSBK1ALKSlfs1YnMtVvLKzPf6j2smju9kTuRGFQHjpQJY/sm88WFoU?=
+ =?us-ascii?Q?9l8BQ5Y3MCJBSxqa4QUDPEJK+f5MRXZFNJsmzgLrPfy0BonJCPw+G7xxPNts?=
+ =?us-ascii?Q?aV+7JYX///pk9n67sMUYUF6ycMbPe9K0C2iqBI6pJFJ5AKKALZ+ZWJuCXFfc?=
+ =?us-ascii?Q?56NS199s3R0ULWp4RP/Xcz9EkbszzC7MxR/skIR3hCeWG1moeODEZlvrbuK4?=
+ =?us-ascii?Q?adnB/06xfB9fY1UkXmDqjbmtUN0VC9mYSR9DPTrvLyS+RiVebwDdoAiisjCY?=
+ =?us-ascii?Q?KKnwwPS/JIlsQyQOwTjTy0sTOySo4lfXDNP5F050Z77MNFhpzWZ5yVjjaIhp?=
+ =?us-ascii?Q?Z7bxgDYhlSe7ToS5b7cfaJcsZaZRoUsXCpBgStW4tE+U1SjvIBsVwnGqlAx3?=
+ =?us-ascii?Q?3ys2+gLrQNhEMEvU9ZlidtR9dyICHbtifIc3?=
+X-Forefront-Antispam-Report: CIP:165.204.84.17; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:CAL; SFV:NSPM; H:SATLEXMB04.amd.com; PTR:InfoDomainNonexistent; CAT:NONE;
+ SFS:(13230040)(1800799024)(36860700013)(82310400026)(376014); DIR:OUT;
+ SFP:1101; 
+X-OriginatorOrg: amd.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Aug 2025 07:18:54.3676 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 76dc5fe2-fba5-4340-3c75-08dddfb9d227
+X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3dd8961f-e488-4e60-8e11-a82d994e183d; Ip=[165.204.84.17];
+ Helo=[SATLEXMB04.amd.com]
+X-MS-Exchange-CrossTenant-AuthSource: CH2PEPF00000143.namprd02.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH3PR12MB9147
+Received-SPF: permerror client-ip=2a01:111:f403:2418::62c;
+ envelope-from=Luc.Michel@amd.com;
+ helo=NAM12-BN8-obe.outbound.protection.outlook.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -114,18 +159,75 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 8/20/25 04:21, Kohei Tokunaga wrote:
-> +static void tcg_wasm_out_neg(TCGContext *s, TCGReg ret, TCGReg arg)
-> +{
-> +    tcg_wasm_out_op_idx(s, OPC_GLOBAL_GET, REG_IDX(arg));
-> +    tcg_wasm_out_op_not(s);
-> +    tcg_wasm_out_op_const(s, OPC_I64_CONST, 1);
-> +    tcg_wasm_out_op(s, OPC_I64_ADD);
-> +    tcg_wasm_out_op_idx(s, OPC_GLOBAL_SET, REG_IDX(ret));
-> +}
+On 16:25 Tue 19 Aug     , Peter Maydell wrote:
+> On Mon, 18 Aug 2025 at 14:30, Luc Michel <luc.michel@amd.com> wrote:
+> >
+> > Hi Peter,
+> >
+> > On 13:24 Mon 04 Aug     , Peter Maydell wrote:
+> > > On Wed, 16 Jul 2025 at 10:55, Luc Michel <luc.michel@amd.com> wrote:
+> > > >
+> > > > +static qemu_irq versal_get_irq_or_gate_in(Versal *s, int irq_idx,
+> > > > +                                          qemu_irq target_irq)
+> > > > +{
+> > > > +    Object *container = versal_get_child(s, "irq-or-gates");
+> > > > +    DeviceState *dev;
+> > > > +    g_autofree char *name;
+> > > > +    int idx, or_idx;
+> > > > +
+> > > > +    idx = FIELD_EX32(irq_idx, VERSAL_IRQ, IRQ);
+> > > > +    or_idx = FIELD_EX32(irq_idx, VERSAL_IRQ, OR_IDX);
+> > > > +
+> > > > +    name = g_strdup_printf("irq[%d]", idx);
+> > > > +    dev = DEVICE(object_resolve_path_at(container, name));
+> > > > +
+> > > > +    if (dev == NULL) {
+> > > > +        dev = qdev_new(TYPE_OR_IRQ);
+> > >
+> > > Here we create a device...
+> > >
+> > > > +        object_property_add_child(container, name, OBJECT(dev));
+> > > > +        qdev_prop_set_uint16(dev, "num-lines", 1 << R_VERSAL_IRQ_OR_IDX_LENGTH);
+> > > > +        qdev_realize_and_unref(dev, NULL, &error_abort);
+> > > > +        qdev_connect_gpio_out(dev, 0, target_irq);
+> > > > +    }
+> > > > +
+> > > > +    return qdev_get_gpio_in(dev, or_idx);
+> > >
+> > > ...but then we don't save the pointer to it, so the only
+> > > thing still hanging onto it is the QOM tree.
+> > >
+> > > If you want to change "embedded device struct" into
+> > > "allocate memory to create devices" that's fine, but the
+> > > SoC should still keep track of everything it's creating,
+> > > so that (at least in theory) it could clean it up on
+> > > unrealize.
+> >
+> > I'm not sure I fully understand your point:
+> >
+> >    - The OR gate device is parented to the "irq-or-gates" container,
+> >      which is itself parented to the SoC. So finalizing (freeing) the
+> >      SoC would trigger a cascade of free calls to the children,
+> >      including those objects right?
+> 
+> Ah, I hadn't noticed that we add the object as a QOM child
+> of the SoC here.
+> 
+> It does mean you can't ever get back to the OR gate object
+> except by walking the QOM tree, but I suppose that's OK.
+> 
+> It would be helpful if you could run "make check" under
+> the clang leak sanitizer with your patches added, to see
+> if it complains about anything. (Unfortunately it will
+> definitely complain about at least some pre-existing
+> leaks, I suspect.)
+Yes I did that before sending my series and fixed all my leaks. As you
+say there are some existing ones, mainly in the register API (IIRC it
+does create an object that is not correctly parented).
 
-This is an odd expansion.  I would have expected ret = 0 - arg.
+I'll send v2 with your other remarks addressed then.
 
+Thanks
 
-r~
+Luc
 

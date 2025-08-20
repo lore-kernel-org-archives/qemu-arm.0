@@ -4,85 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6072FCA0EDC
-	for <qemu-arm@archiver.kernel.org>; Wed, 20 Aug 2025 21:21:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B296CA0EF8
+	for <qemu-arm@archiver.kernel.org>; Wed, 20 Aug 2025 21:21:55 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uoqDz-0005M0-DX; Wed, 20 Aug 2025 17:20:03 -0400
+	id 1uoqE3-0005Oi-8n; Wed, 20 Aug 2025 17:20:07 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1uoqDv-0005Jk-Tw; Wed, 20 Aug 2025 17:19:59 -0400
-Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
+ id 1uoqE0-0005NK-Tk; Wed, 20 Aug 2025 17:20:04 -0400
+Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1uoqDu-00051J-AE; Wed, 20 Aug 2025 17:19:59 -0400
-Received: by mail-ed1-x531.google.com with SMTP id
- 4fb4d7f45d1cf-61a2a5b06cdso647554a12.1; 
- Wed, 20 Aug 2025 14:19:57 -0700 (PDT)
+ id 1uoqDz-00052a-A0; Wed, 20 Aug 2025 17:20:04 -0400
+Received: by mail-ed1-x52a.google.com with SMTP id
+ 4fb4d7f45d1cf-6188b73bef3so654856a12.3; 
+ Wed, 20 Aug 2025 14:20:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1755724796; x=1756329596; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1755724801; x=1756329601; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=8JUtot82YvSwyf3aXIjcJBWwXAuoQGNyUhMh8fZ0EZY=;
- b=KP4hnxjv78mMp71ZA8MKofgqCJPLZDwD3wcWMCEwgXH84kxqNM/wgca3rDe84DxTMa
- DaxilM/YBoYLt1fFDpOBhNquLrU5Nj9eLQ3V29REJj9zoYyqzYOnOwnvaTzF15TgpkgV
- ZTKs9+qQ+Vpo759VgCecnpd8NkicgVaNI4hNrjLYaUgjbYyggYOshyNxR6V0prduXfT2
- EXdJVFtW3z1eKFtdh+euWxRRQffdYtYh+SfiiA5DmVDJe2mR5H4rxwl+gRlgX8UGFjdI
- 96YoHMVaX0IHtirlP5n9SFYUnH/rVxKQVAkEkLMaCon5MDAuDRWgWY8NU5490FKnEOlf
- L7Xg==
+ bh=PeVRfk3VsZf+so/2hf9x9CGHxpMR/23OVPq3yUxSLhA=;
+ b=dRvLZOXAEa8SfZgzATNncEFryELaOnhuRm7seTHoOPzZmeUzTwefgRfobzgle6XMpx
+ KcMjeveqnFFmsSxfB2O9PpRbNaJWYAspFKFMIDrRFDqFWA5+36Wq0Nij+IiX4Y2RumgF
+ BizHGEszRrhyB7A5BpSiYuXQ8Ge77sDVF310DgF/oIMIjYMOZJVnEQi61lroYLs/832m
+ fUSa9ma7TSUtA25fvCQXe/Dm1mPBgq8Dw8BnnuKMpd6hh/8h0qkGbPHLQ8smVEbRhmdz
+ aFQ5JKYZqbmq4KenkBRHDagfoYpw8bye15jWRTEZ+aGggf3PDV6GJgSJGYL0ss5+xRHj
+ OfcA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1755724796; x=1756329596;
+ d=1e100.net; s=20230601; t=1755724801; x=1756329601;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=8JUtot82YvSwyf3aXIjcJBWwXAuoQGNyUhMh8fZ0EZY=;
- b=NNl/7lMEw+2fBkLYAKg6iKcU63eV6s3JDQ3AI0iSVyEGgDFi6nq4WByeZoJGKF5URC
- q4z5+x2/nnfiBeQKpoM/VIN0IsquFTVIHu6E7ZSbVuL5TtCjGupPNbOGZ931smbF5ewG
- a4IMIoxEgFa9pjl08fTJ8NeZ0lI1MHb+7YnWYHCcbPVjLQ49kb0y3c0AMMPzELQf4VXw
- NWOkADRMxpgJYwaDCr6yBRHXj7tEhQvAXIpnxkaw6TqjNOWV8RfXaK/w+jdD1PPUzL7I
- +1RmlNYyhvOBhzsGeulRhaM3dNdNIHFBhq57xSe38ZOYDKb1PI3HtiqWtE2IIzdOeGB+
- 60pg==
+ bh=PeVRfk3VsZf+so/2hf9x9CGHxpMR/23OVPq3yUxSLhA=;
+ b=hm217y+HHVakCQiaCom2m6aLIW+JjJdExsyKAEPnoLVAyR9gTJmzXY9NCsAM+iJ6Ye
+ JUOQpfZK4xEiWsSiMXSbXxqg+KjXAF9nmlcyDF1G6/Vb/D7Tz798FcqXxsXcUBdBnIAm
+ NeoUi4PA2pSeaDwCTTAe0n/6/Ia06HwP4F7TemsUXwhqnlqYVze3wWpRffZaq3xkAfvU
+ nlgJajb4Gooh+fc/skX3Id/aKVnJra7rI1djaJCl2lyyGG8BYhaUT1mKG8ZFualIgFR3
+ /cI/WPfgkt72HihPMe7XNhrGn6hrhQUssx/u3J4Tgt588xofIHFGKvmN3ZYAE9oy8LeV
+ jcMg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVg+TpB946OwDJtVZCxEsppShebMA8T5MFTeV3V9y5veE4FgiSt8+Bj+LK1O6vRbolF4N/A0rMujg==@nongnu.org
-X-Gm-Message-State: AOJu0Yx8dCbtD5spT1eUHZR0NisVi43z7rpuVRgdh5uQFkIXGtnFCZZx
- y2Vnu3ERVeCTQnm/NY+p006hGSjYJFDafsO+QOCWnRXBT12/3O/l66CTlHtKNAIl
-X-Gm-Gg: ASbGncvDZ5md26DpIXHTjLpsYNhSMZoR38KZqe9UCepsGrKBOKZza3VwYJu6cl6rSjs
- XTTRFrPLAMBmxY9gAdYOi4AcMxKIC+MlVaL/wjlSatpWKOCJj5bEKs4dUwzXuloRCa80hFjcAv/
- pOzoaRXwhLTnYYFWkVxJ5aHv76WberGoCBYkvW9oTVVlMzIjmazfhLnYTj1X+r+5+/pudVgnWQG
- ZqAny1OEDKotEOk0Ur7xcp4NNZykv87AbX404I24m3tDTCZDJoEooRqrcqhlsZuu03hdEvIFDNx
- tT2OOJDJsezTMQtzJbe8sb6erVmewDXj9YkiN6aAcjOrda+pD3RECP3h/SfAMovq4QZ7dWxhBWl
- QFLd/JQdebIB3qIucUFo3rt2Ci0NRPYhXOLluD50jX9hpJrP5m26pedkLi7DEnHJCqKeiFwcJww
- Iccq3iHizjEPfkWW1XeDrX3iTrN9zurMtQN88hfCIClBY=
-X-Google-Smtp-Source: AGHT+IFt58OrVR9gr38S9PgFLB8xA861Rr+G7Xsrqf4pF6NeMy4JJbmTpaxhffrkWfRt3MCCjraLBw==
-X-Received: by 2002:a05:6402:2551:b0:61a:8e5c:f4ef with SMTP id
- 4fb4d7f45d1cf-61bf872606cmr117418a12.18.1755724796135; 
- Wed, 20 Aug 2025 14:19:56 -0700 (PDT)
+ AJvYcCXLaMGU4hqvTsZLWCGVQlniIdo9RwausY8Ps2Sl/pH4kMwyBu3NmldVxkPtJVDfp1EWUjkFOq4NbA==@nongnu.org
+X-Gm-Message-State: AOJu0Yw7ZbkTgJPYFOVIuebV0RvxuopFh11HI9KRMpY3pRT3OJfeOloJ
+ 9hxw5t70cdaQnq4vVL/beYkEvx5yFC/Ge/s27M/BxAOYk/hCuqqf1/oYNlNoH/14
+X-Gm-Gg: ASbGncu8vnoouMs4vMHRWZpVH2pi+XFJM/N0+4byen+pFGKck/uBjjDHTM5JjU8T/ge
+ MXL+MhPJlFoz0jtXkXs+MHIa2lm4PbT+9X26irH4sjRpGJ06lrkLAul78EtzgVCG46HxOjQ8420
+ zfJsvO0dJf2Y435ONkRQSbws0FrfRdBLud1ZMOR7LD4q0gQ82cIoE76QBN9wPSs44XIFt44GnIg
+ YbeQupwCar+USQ4iNKyny+CVpqW/niL3c2BAkYs1XYsDI8CAQQcoaYyWdikJH6czcWTRzY98ocF
+ pcr6C3FzTqTG2vZtGntOxDpt+enHb544RDN3ZQVqttTOH+LqyrdYjV8JkCRCCqBFHmF/wodFEOL
+ iJfLhdbLTgoVL3SywemF0eRUMF9tDnkja3f9kI6hRsXL1Grg2xR6l3OkO4/YbfUVb9ENEXkluwt
+ iJ3ZWfscYONaS1Tr+BkgZeUIWi4kOgbMRFRggIKv/Xl6EQxDPphOC9OA==
+X-Google-Smtp-Source: AGHT+IGd6MFMtd+Deaef2YizMDx8hhPfbLZYMq+9A3+3dqqPiaX8bsIFq8g6eYFK67HFUAAmszoH/w==
+X-Received: by 2002:a05:6402:524d:b0:61a:87c8:1b2c with SMTP id
+ 4fb4d7f45d1cf-61bf87355aemr131371a12.27.1755724800973; 
+ Wed, 20 Aug 2025 14:20:00 -0700 (PDT)
 Received: from Provence.localdomain
  (dynamic-2a02-3100-249c-be00-0219-99ff-feb2-2458.310.pool.telefonica.de.
  [2a02:3100:249c:be00:219:99ff:feb2:2458])
  by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-61a755d9cfasm4161182a12.9.2025.08.20.14.19.54
+ 4fb4d7f45d1cf-61a755d9cfasm4161182a12.9.2025.08.20.14.20.00
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 20 Aug 2025 14:19:54 -0700 (PDT)
+ Wed, 20 Aug 2025 14:20:00 -0700 (PDT)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Andrey Smirnov <andrew.smirnov@gmail.com>, qemu-arm@nongnu.org,
  Bernhard Beschow <shentey@gmail.com>, Guenter Roeck <linux@roeck-us.net>
-Subject: [PATCH 07/10] hw/pci-host/designware: Don't map PCI memory space into
- PCI inbound window
-Date: Wed, 20 Aug 2025 23:19:29 +0200
-Message-ID: <20250820211932.27302-8-shentey@gmail.com>
+Subject: [PATCH 10/10] hw/arm/fsl-imx8mp: Do not map PCI window as
+ unimplemented
+Date: Wed, 20 Aug 2025 23:19:32 +0200
+Message-ID: <20250820211932.27302-11-shentey@gmail.com>
 X-Mailer: git-send-email 2.50.1
 In-Reply-To: <20250820211932.27302-1-shentey@gmail.com>
 References: <20250820211932.27302-1-shentey@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::531;
- envelope-from=shentey@gmail.com; helo=mail-ed1-x531.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52a;
+ envelope-from=shentey@gmail.com; helo=mail-ed1-x52a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -105,34 +105,29 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The real device has a default mapping which disappears as soon as an inbound
-iATU is configured. Furthermore, inbound and outbound mappings are entirely
-defined by iATUs. Remove the hardcoded mapping of PCI memory space to match
-real hardware.
-
-Note that the device model attempts to implement the default inbound mapping
-by reusing an inbound iATU. However, Linux clears all iATUs during boot,
-including the one purposefully set up by the device model, resulting in no
-default mapping. This will be fixed in the next patch.
+Now that populating the PCI window via iATUs is functional, it's no longer
+necessary to cover the PCI window with an unimplemented memory region.
+Previously, this workaround was required because the device model failed to map
+all configured memory regions, which caused Linux to emit backtraces during
+access attempts.
 
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 ---
- hw/pci-host/designware.c | 2 --
- 1 file changed, 2 deletions(-)
+ hw/arm/fsl-imx8mp.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/hw/pci-host/designware.c b/hw/pci-host/designware.c
-index 1e29b7e6be..2fd60a4817 100644
---- a/hw/pci-host/designware.c
-+++ b/hw/pci-host/designware.c
-@@ -703,8 +703,6 @@ static void designware_pcie_host_realize(DeviceState *dev, Error **errp)
-                        OBJECT(s),
-                        "pcie-bus-address-space-root",
-                        UINT64_MAX);
--    memory_region_add_subregion(&s->pci.address_space_root,
--                                0x0, &s->pci.memory);
-     address_space_init(&s->pci.address_space,
-                        &s->pci.address_space_root,
-                        "pcie-bus-address-space");
+diff --git a/hw/arm/fsl-imx8mp.c b/hw/arm/fsl-imx8mp.c
+index 866f4d1d74..d66783c101 100644
+--- a/hw/arm/fsl-imx8mp.c
++++ b/hw/arm/fsl-imx8mp.c
+@@ -669,6 +669,7 @@ static void fsl_imx8mp_realize(DeviceState *dev, Error **errp)
+         case FSL_IMX8MP_I2C1 ... FSL_IMX8MP_I2C6:
+         case FSL_IMX8MP_OCRAM:
+         case FSL_IMX8MP_PCIE1:
++        case FSL_IMX8MP_PCIE1_MEM:
+         case FSL_IMX8MP_PCIE_PHY1:
+         case FSL_IMX8MP_RAM:
+         case FSL_IMX8MP_SNVS_HP:
 -- 
 2.50.1
 

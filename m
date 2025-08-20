@@ -4,32 +4,32 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20B50CA0EDC
-	for <qemu-arm@archiver.kernel.org>; Wed, 20 Aug 2025 16:02:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A922CA0EE4
+	for <qemu-arm@archiver.kernel.org>; Wed, 20 Aug 2025 16:26:17 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uolGC-00036A-J0; Wed, 20 Aug 2025 12:02:04 -0400
+	id 1uoldR-0002yv-5K; Wed, 20 Aug 2025 12:26:04 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <tangtao1634@phytium.com.cn>)
- id 1uolFw-0002vT-Ru; Wed, 20 Aug 2025 12:01:50 -0400
-Received: from zg8tmja5ljk3lje4ms43mwaa.icoremail.net ([209.97.181.73])
+ id 1uoldP-0002y2-27; Wed, 20 Aug 2025 12:25:59 -0400
+Received: from sgoci-sdnproxy-4.icoremail.net ([129.150.39.64])
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <tangtao1634@phytium.com.cn>)
- id 1uolFu-0003mw-ER; Wed, 20 Aug 2025 12:01:44 -0400
+ id 1uoldI-0006sc-6d; Wed, 20 Aug 2025 12:25:58 -0400
 Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
- by hzbj-icmmx-6 (Coremail) with SMTP id AQAAfwAHnWBc8aVo3FSsBg--.7249S2;
- Thu, 21 Aug 2025 00:01:32 +0800 (CST)
+ by hzbj-icmmx-7 (Coremail) with SMTP id AQAAfwDHzdUJ96VoZDyDBw--.336S2;
+ Thu, 21 Aug 2025 00:25:45 +0800 (CST)
 Received: from [192.168.31.34] (unknown [113.246.119.62])
- by mail (Coremail) with SMTP id AQAAfwBn8Qhb8aVoWVEcAA--.39861S2;
- Thu, 21 Aug 2025 00:01:31 +0800 (CST)
-Message-ID: <c19380cc-0926-4a9c-99b4-c3b6aaf7bf0b@phytium.com.cn>
-Date: Thu, 21 Aug 2025 00:01:27 +0800
+ by mail (Coremail) with SMTP id AQAAfwDXXwcG96VoWlscAA--.12253S2;
+ Thu, 21 Aug 2025 00:25:44 +0800 (CST)
+Message-ID: <7b8acb9a-e3fe-461b-8495-42c7501a6a80@phytium.com.cn>
+Date: Thu, 21 Aug 2025 00:25:40 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC 03/11] hw/arm/smmuv3: Implement S_INIT for secure
- initialization
+Subject: Re: [RFC 06/11] hw/arm/smmuv3: Plumb security state through core
+ functions
 To: Mostafa Saleh <smostafa@google.com>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
  Eric Auger <eric.auger@redhat.com>, Peter Maydell
@@ -37,28 +37,28 @@ Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
  jean-philippe@linaro.org, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
  <philmd@linaro.org>, Pierrick Bouvier <pierrick.bouvier@linaro.org>
 References: <20250806151134.365755-1-tangtao1634@phytium.com.cn>
- <20250806151134.365755-4-tangtao1634@phytium.com.cn>
- <aKOad6FxdPB4r4Z1@google.com>
+ <20250806151134.365755-7-tangtao1634@phytium.com.cn>
+ <aKOa8KwAcm6hhAXq@google.com>
 From: Tao Tang <tangtao1634@phytium.com.cn>
-In-Reply-To: <aKOad6FxdPB4r4Z1@google.com>
+In-Reply-To: <aKOa8KwAcm6hhAXq@google.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: AQAAfwBn8Qhb8aVoWVEcAA--.39861S2
-X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQAIBWikxY4F6QAEsj
-Authentication-Results: hzbj-icmmx-6; spf=neutral smtp.mail=tangtao163
+X-CM-TRANSID: AQAAfwDXXwcG96VoWlscAA--.12253S2
+X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQAIBWikxY4F6QAGsh
+Authentication-Results: hzbj-icmmx-7; spf=neutral smtp.mail=tangtao163
  4@phytium.com.cn;
-X-Coremail-Antispam: 1Uk129KBjvJXoWxWFW7tw43Ar17ZFW7Jr47urg_yoW5Zr48pF
- WkGa15Kay5tF43Wr13Kw4xZF15Z397Kry7CrZxG3s3ZF1qkrySyF1DKayY9FWDCr18Ja17
- Z3y09Fs3urn8t3DanT9S1TB71UUUUUDqnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
+X-Coremail-Antispam: 1Uk129KBjvJXoWxCFy8XFW8AFW3Ww1fXFy7Jrb_yoW5XFy3pF
+ yvka4Fka1DGF48Jr92vr4kZFyxtrWrJ393Kr98Gry5J3W5C3WxKrWfK3yj9as3WrZ7u3WI
+ yryjvaykJr1DZa7anT9S1TB71UUUUUJqnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
  DUYxn0WfASr-VFAU7a7-sFnT9fnUUIcSsGvfJ3UbIYCTnIWIevJa73UjIFyTuYvj4RJUUU
  UUUUU
-Received-SPF: pass client-ip=209.97.181.73;
- envelope-from=tangtao1634@phytium.com.cn;
- helo=zg8tmja5ljk3lje4ms43mwaa.icoremail.net
+Received-SPF: pass client-ip=129.150.39.64;
+ envelope-from=tangtao1634@phytium.com.cn; helo=sgoci-sdnproxy-4.icoremail.net
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -77,96 +77,81 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 
-On 2025/8/19 05:26, Mostafa Saleh wrote:
-> On Wed, Aug 06, 2025 at 11:11:26PM +0800, Tao Tang wrote:
->> This patch implements the S_INIT register, a secure-only register
->> with no non-secure counterpart. It provides a simple mechanism for
->> secure software to perform a global invalidation of all SMMU
->> configuration and translation caches.
+On 2025/8/19 05:28, Mostafa Saleh wrote:
+> On Wed, Aug 06, 2025 at 11:11:29PM +0800, Tao Tang wrote:
+>> To support parallel processing of secure and non-secure streams, the
+>> SMMUv3 model needs to differentiate between the two contexts throughout
+>> its core logic. This commit is the foundational step to make the code
+>> security-state aware.
 >>
->> This is typically the final step in a SMMU's probe sequence, marking
->> the end of initialization for the SMMU's secure interface.
+>> An is_secure flag, which will be used in subsequent patches to represent
+>> the transaction's security state, is now plumbed through the main
+>> processing paths.
 >>
->> With this and the previous change, a guest that is aware of the SMMUv3
->> secure extensions can probe the device's capabilities and perform basic
->> configuration of the secure interface, as is done by secure partition
->> managers like Hafnium in its smmuv3_driver_init function.
+>> This change is purely preparatory and introduces no functional changes
+>> for the existing non-secure path. All current call sites are updated
+>> to pass is_secure = false.
 >>
->> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
->> ---
->>   hw/arm/smmuv3.c     | 29 +++++++++++++++++++++++++++++
->>   hw/arm/trace-events |  1 +
->>   2 files changed, 30 insertions(+)
+>> This refactoring paves the way for upcoming patches that will introduce
+>> separate TLB entries for secure transactions and enable a fully
+>> parallel secure/non-secure SMMU model.
 >>
->> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
->> index 619180d204..0ea9d897af 100644
->> --- a/hw/arm/smmuv3.c
->> +++ b/hw/arm/smmuv3.c
->> @@ -920,6 +920,21 @@ static void smmuv3_flush_config(SMMUDevice *sdev)
->>       g_hash_table_remove(bc->configs, sdev);
->>   }
->>   
->> +static void smmuv3_invalidate_all_caches(SMMUv3State *s)
->> +{
->> +    trace_smmuv3_invalidate_all_caches();
->> +    SMMUState *bs = &s->smmu_state;
->> +
->> +    /* Clear all cached configs including STE and CD*/
->> +    if (bs->configs) {
->> +        g_hash_table_remove_all(bs->configs);
->> +    }
->> +
->> +    /* Invalidate all SMMU IOTLB entries */
->> +    smmu_inv_notifiers_all(&s->smmu_state);
->> +    smmu_iotlb_inv_all(bs);
->> +}
->> +
->>   /* Do translation with TLB lookup. */
->>   static SMMUTranslationStatus smmuv3_do_translate(SMMUv3State *s, hwaddr addr,
->>                                                    SMMUTransCfg *cfg,
->> @@ -1921,6 +1936,16 @@ static MemTxResult smmu_writel(SMMUv3State *s, hwaddr offset,
->>           SMMU_CHECK_ATTRS_SECURE("S_EVENTQ_IRQ_CFG2");
->>           s->secure_eventq_irq_cfg2 = data;
->>           return MEMTX_OK;
->> +    case A_S_INIT:
->> +        SMMU_CHECK_SECURE_WRITE("S_INIT");
->> +        if (data & R_S_INIT_INV_ALL_MASK) {
->> +            /* write S_INIT and poll*/
->> +            s->secure_init = data & R_S_INIT_INV_ALL_MASK;
->> +            smmuv3_invalidate_all_caches(s);
-> Do we need to check that the SMMU is enabled as the spec says?
-
-
+> I think it’s easier to review if this patch was split (STE parsing,
+> page table handling and translation, TLB invalidation)
+> Also based on my comment on patch 2, stage-2 handling doesn’t seem correct to me.
+>
+> Thanks,
+> Mostafa
+>
 Hi Mostafa,
 
-Thanks for the feedback on this patch.
+Thank you your suggestion.
 
-You are right, I did miss that necessary check in v1. I will review the 
-specification and ensure that for the S_INIT register SMMUEN bit is 
-checked. Additionally, I will take this opportunity to audit whether 
-other registers also have dependencies on specific control bits before 
-they can be accessed.
+You've made a very good point. This patch is indeed too large and tries 
+to cover too many different areas. For the v2 series, I will break this 
+patch down into logical parts as you suggested (STE parsing, page table 
+handling, etc.).
 
+I also acknowledge your concern about the stage-2 handling logic from 
+your comment on patch 2. I have sent a separate, detailed reply to your 
+feedback on patch #2 that outlines my new understanding.
 
+And as you commented on patch #01:
+
+>> Inside this TCG VM, a KVM guest was launched, and the same NVMe device was
+>> re-assigned to it via VFIO.
+>> Command line of KVM VM inside TCG VM is below:
+>>
+>> sudo qemu-system-aarch64  \
+>> -enable-kvm  -m 1024  -cpu host  -M virt \
+>> -machine virt,gic-version=3 \
+>> -cpu max -append "nokaslr" -smp 1 \
+>> -monitor stdio \
+>> -kernel 5.15.Image \
+>> -initrd rootfs.cpio.gz \
+>> -display vnc=:22,id=primary \
+>> -device vfio-pci,host=00:01.0
+>>
+>> The KVM guest was able to perform I/O on the device
+>> correctly, confirming that the non-secure path is not broken.
+> I gave the patches a quick test and they seem to have broken my
+> nested setup, I will look more into it and let you know what I find.
 >
->> +        }
->> +        /* initialization is completed and set to 0 to terminate the polling */
->> +        s->secure_init = 0;
-> All access to SMMU registers are serialised, so it’s safe to drop this and
-> just return zero on reads.
+> Thanks,
+> Mostafa
 >
-This is a much cleaner way to model the Write-Only nature of this 
-register. In v2, I will remove the secure_init field from the state 
-structure and have the read handler for A_S_INIT always return zero.
+I'm sorry to hear that it has broken your environment. Please don't 
+hesitate to share any details, logs, or reproduction steps when you find 
+them. I am more than happy to help reproduce the issue on my end to get 
+it fixed as quickly as possible.
 
-Thanks again for the help.
 
-Best regards,
+I would be delighted to hear back from you on any of the topics we've 
+discussed, as any further guidance you can offer would be invaluable.
+
+Thanks,
 
 Tao
-
-
-
 
 
 

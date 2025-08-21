@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86DEFCA0EFC
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2FF47CA0FE1
 	for <qemu-arm@archiver.kernel.org>; Thu, 21 Aug 2025 13:19:13 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1up50U-0004aG-Su; Thu, 21 Aug 2025 09:07:07 -0400
+	id 1up4zj-0003Ie-5D; Thu, 21 Aug 2025 09:06:25 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <Luc.Michel@amd.com>)
- id 1up4zC-0002XK-SS; Thu, 21 Aug 2025 09:05:46 -0400
-Received: from mail-dm6nam10on20601.outbound.protection.outlook.com
- ([2a01:111:f403:2413::601]
- helo=NAM10-DM6-obe.outbound.protection.outlook.com)
+ id 1up4zA-0002Qx-22; Thu, 21 Aug 2025 09:05:44 -0400
+Received: from mail-dm6nam12on20622.outbound.protection.outlook.com
+ ([2a01:111:f403:2417::622]
+ helo=NAM12-DM6-obe.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <Luc.Michel@amd.com>)
- id 1up4z0-0003FA-Mo; Thu, 21 Aug 2025 09:05:46 -0400
+ id 1up4yw-0003EQ-Na; Thu, 21 Aug 2025 09:05:43 -0400
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=w7yoyS35HjfqgG+KdahoByEaMm1Cu0CRuTiXly2/Fr1rQOycp3/XLok37Vdkttj/0YdDKuUwAdsW/Q9jtpVT7QCjV2dqmHMvwd/hyFH5LwXbWOEBkNT5x5SpLL510EsnxZ1kp/q8VeZ0MTD3kIpy77N8EhTKsmEs0d0H80ObKupE2/IAPDE+KFbF0vE01tc067Jks0YyezNfajyFKh/VyEi2N36yL3te0VmsulBsQkCnbSzaGcTF7SzBNL3UVXMk24gb6zwqaXGsv1bsnNvO1IZgXj1jraLi5ZVpPtsHY66YVua84eANVH7V9t39Fru9J5tHJbo2H9ehqOz2cEJfvg==
+ b=TJO60vfBOjbbar+Xc/u9Ar10bsHhVeZ2j1yRf866V9P8xjSt1h5JwLN6yYkILWEUyb/a0rrjKN7QE0o8esQdmEg5F2JX+tEiaQv+YRtTimblVP2vE7nBA+MX5rioNGDx8de+J1GsqBH9nmQJ8sylbqWlQrMZwrL7cdf3rIKfK0ao0shMjvIkDbkxKUujyfgOKMEdBukCq8RtRc2E/+mjWTgnzCoDirDCq5RbzIfFeGWAS3EE+LAm2VQ2T+I9K3MZixGLkgqT5Pxb9JszXMMyYG/fmB1BH28R1Ahz09YPubUQwsPvSiPFmYmCMIhubxJf/kUH3hG29cB8gJueVyMXJA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=1LzqfNSwHpewpDtrWbQLAwBB2/ddDGiv4DslcBlmIPM=;
- b=q1Zc5HOMCifIaSIQOd/OkdUTLr5/norrhdeW7ckhyq6eifWhjx6D8fqeNPwoqCeMpASZL6fLExv5Glr+TcvKvq5uOtbXQzkjzKvnsNU61QJate/c68KpK4ZYPiA74f2FK1PgZYN58clWcdfjL0RSN+5ZXzFa2zPlPNkQFDk3ZD6JM7FE34y6pwHD13lDTxE2Q2GTLXpQkhlvcS6iL1fxjvOWIeKFJytcxq1UfGwSUoOadO8TRTp1OHTZT7cmuuO/J2cV3ruQDLdNCCOQolVX0WzLMpVsFhuN8MqXikCR0Ht0o90WAY5ojBpezKkTfmI/BnPW1MYUhjN6PP9E1WKPSw==
+ bh=jBrcGIi9g7dlVdXs0dxFhtF9X9CmiCfPpxFfkOtH0LE=;
+ b=U8X7bXytQ13RqkGb22LqjPX2aAd+SAnrEETo2buNnC8ypqQe1zxiG00WECGsnFejujHaDrSxMeJ2kuUTP1YB5ZLL7FgFhi8TXV04s/cWLEsZeBzk7or1FWIvrmwT8/TddjAw73Z5SNEIdMNkpKX+8dqyVLaWYmK/4fQhXPlYo10rYyWtd7lgPbQdf63v+ouVrEyrQvSoMBG10KR+636o4Q0ze7nIzUAV+59Psk4Dp8GXeggtTP9YIa7LXeldjAIM/mP77ASdbHRV+4Y54hfUasIyQ8NoIH5SK5+ZTgaSa1/aQRKMGqFm3YAF+cJ9Cb5xJ1DjKVU2isc3hx4oDPd5gw==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
  165.204.84.17) smtp.rcpttodomain=nongnu.org smtp.mailfrom=amd.com; dmarc=pass
  (p=quarantine sp=quarantine pct=100) action=none header.from=amd.com;
  dkim=none (message not signed); arc=none (0)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1; 
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=1LzqfNSwHpewpDtrWbQLAwBB2/ddDGiv4DslcBlmIPM=;
- b=Hbpfz99rdoCkIh0JmaLjedonyWYw7mcyy11Lu87+cRHkUKPCZvd5AePh137kEJuRGK7rOj7F6ndSZRPjWn3c4hGumLcnUmLBUYi8LOQwDfbcFv6H34seZ0L0/4drXxJBPX0U+mOOD+hz7wRR1IJc2xFyfHLhQtH5gkpE2mAqJro=
-Received: from SN7PR04CA0071.namprd04.prod.outlook.com (2603:10b6:806:121::16)
- by DM4PR12MB8558.namprd12.prod.outlook.com (2603:10b6:8:187::22) with
- Microsoft SMTP Server (version=TLS1_2,
+ bh=jBrcGIi9g7dlVdXs0dxFhtF9X9CmiCfPpxFfkOtH0LE=;
+ b=Okeb4akXT9qJfWWB+R1uYdSh8lxsW2JNSA2GmTY9ARsFcEsIre0oVrkzOrtYGToHSQSyU8GCBkBtGCnNtQ04og/ArkKtmCJ4/W95nN6fju0P2beRfnW+Esi5yX0IDJ15px6To2v0wVmkdJc8f5hi/UbIJ9cZ2f4y3QcuzzwxD6c=
+Received: from SA9PR13CA0052.namprd13.prod.outlook.com (2603:10b6:806:22::27)
+ by SJ2PR12MB8807.namprd12.prod.outlook.com (2603:10b6:a03:4d0::14)
+ with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9052.14; Thu, 21 Aug
- 2025 13:05:25 +0000
-Received: from SA2PEPF00001508.namprd04.prod.outlook.com
- (2603:10b6:806:121:cafe::18) by SN7PR04CA0071.outlook.office365.com
- (2603:10b6:806:121::16) with Microsoft SMTP Server (version=TLS1_3,
- cipher=TLS_AES_256_GCM_SHA384) id 15.20.9052.15 via Frontend Transport; Thu,
- 21 Aug 2025 13:05:25 +0000
+ 2025 13:05:19 +0000
+Received: from SA2PEPF0000150B.namprd04.prod.outlook.com (2603:10b6:806:22::4)
+ by SA9PR13CA0052.outlook.office365.com (2603:10b6:806:22::27) with
+ Microsoft
+ SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.9073.8
+ via Frontend Transport; Thu, 21 Aug 2025 13:05:19 +0000
 X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 165.204.84.17)
  smtp.mailfrom=amd.com; dkim=none (message not signed)
  header.d=none;dmarc=pass action=none header.from=amd.com;
@@ -52,20 +52,20 @@ Received-SPF: Pass (protection.outlook.com: domain of amd.com designates
  165.204.84.17 as permitted sender) receiver=protection.outlook.com;
  client-ip=165.204.84.17; helo=SATLEXMB03.amd.com; pr=C
 Received: from SATLEXMB03.amd.com (165.204.84.17) by
- SA2PEPF00001508.mail.protection.outlook.com (10.167.242.40) with Microsoft
+ SA2PEPF0000150B.mail.protection.outlook.com (10.167.242.43) with Microsoft
  SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.20.9052.8 via Frontend Transport; Thu, 21 Aug 2025 13:05:25 +0000
-Received: from satlexmb08.amd.com (10.181.42.217) by SATLEXMB03.amd.com
+ 15.20.9052.8 via Frontend Transport; Thu, 21 Aug 2025 13:05:19 +0000
+Received: from Satlexmb09.amd.com (10.181.42.218) by SATLEXMB03.amd.com
  (10.181.40.144) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.39; Thu, 21 Aug
- 2025 08:05:21 -0500
-Received: from SATLEXMB04.amd.com (10.181.40.145) by satlexmb08.amd.com
- (10.181.42.217) with Microsoft SMTP Server (version=TLS1_2,
+ 2025 08:05:09 -0500
+Received: from SATLEXMB04.amd.com (10.181.40.145) by satlexmb09.amd.com
+ (10.181.42.218) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.2.1748.10; Thu, 21 Aug
- 2025 06:05:21 -0700
+ 2025 06:05:09 -0700
 Received: from XFR-LUMICHEL-L2.xilinx.com (10.180.168.240) by
  SATLEXMB04.amd.com (10.181.40.145) with Microsoft SMTP Server id 15.1.2507.39
- via Frontend Transport; Thu, 21 Aug 2025 08:05:19 -0500
+ via Frontend Transport; Thu, 21 Aug 2025 08:05:07 -0500
 From: Luc Michel <luc.michel@amd.com>
 To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
 CC: Luc Michel <luc.michel@amd.com>, Peter Maydell <peter.maydell@linaro.org>, 
@@ -73,82 +73,72 @@ CC: Luc Michel <luc.michel@amd.com>, Peter Maydell <peter.maydell@linaro.org>,
  <edgar.iglesias@amd.com>, =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?=
  <philmd@linaro.org>, Alistair Francis <alistair@alistair23.me>, "Frederic
  Konrad" <frederic.konrad@amd.com>, Sai Pavan Boddu <sai.pavan.boddu@amd.com>
-Subject: [PATCH v3 41/47] hw/arm/xlnx-versal-virt: rename the machine to
- amd-versal-virt
-Date: Thu, 21 Aug 2025 15:03:40 +0200
-Message-ID: <20250821130354.125971-42-luc.michel@amd.com>
+Subject: [PATCH v3 35/47] hw/arm/xlnx-versal: tidy up
+Date: Thu, 21 Aug 2025 15:03:34 +0200
+Message-ID: <20250821130354.125971-36-luc.michel@amd.com>
 X-Mailer: git-send-email 2.50.1
 In-Reply-To: <20250821130354.125971-1-luc.michel@amd.com>
 References: <20250821130354.125971-1-luc.michel@amd.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-EOPAttributedMessage: 0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: SA2PEPF00001508:EE_|DM4PR12MB8558:EE_
-X-MS-Office365-Filtering-Correlation-Id: f5e54f89-b6eb-41d7-2463-08dde0b364ea
+X-MS-TrafficTypeDiagnostic: SA2PEPF0000150B:EE_|SJ2PR12MB8807:EE_
+X-MS-Office365-Filtering-Correlation-Id: e88c8796-1940-4a33-2741-08dde0b3613e
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
- ARA:13230040|1800799024|36860700013|82310400026|376014|13003099007; 
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?RHpwUGw1d1ZtcERuWFRDcVpZWm5uNmVTZ2NPeUdBSnM5Zk5jNUw1ZS91Qm5W?=
- =?utf-8?B?dG5ndTZOV0ljc09Dd001eVA3eWRSem1KVURXVHliaFJqcmNoRXBYNWJFK3dO?=
- =?utf-8?B?bWdYWXd2R2dPMUFlem9PTjB3bVhpZU5KcWxlVDNpYlRRVHN2RVhWcEd2ZlZm?=
- =?utf-8?B?UlhjbWdkZE1lYlJ0QVo2RVJKLzdET3gwL1FDT2JwVFdCYnYrUTR5MXpRaUpL?=
- =?utf-8?B?dmhvNDlNVEMvZGFKWkttRU0weHRoZktxNUVUMXVrQnBNSDkxZ1ZGTWdRK0Va?=
- =?utf-8?B?bXNqNmhoVW9USTl3RjNnVjB5TkZvNmE4RmhGSTlPVmtFMHFESVRqN25vb0Vu?=
- =?utf-8?B?dXYxRVFuRmIzSWFEalhQZElaZzhMOHc1VC82eEMrY1V5Z3VLcjJKOW1YeExI?=
- =?utf-8?B?MWxqQmVndEFVSEk1RFFvdUVtLzdXMkNmOTdmc0hXYUd5dTA5SW5EdDdNd1dD?=
- =?utf-8?B?MXVTN1dBMXpoRnIwY09DdDVoSWxMRnVZVEZac3dXYXZyRlJrS1BaKzFua0NJ?=
- =?utf-8?B?MWdZUzNDTU9DU2lZTEJGMHI3bnBMeHFqYUVQMmhacFZxaVJhZThCY1lCaXJX?=
- =?utf-8?B?bkF5cW1SZUJETWVqUE1nQTJkQnc3dFE2T1NqeXZsTzhSTDhPazZRRE9ncmlm?=
- =?utf-8?B?c1JnNklET3UvMnBaT0Y4RTIrNUhJb2puR0xUQ3lJWFJLZ3Mvd3NvL28zNExF?=
- =?utf-8?B?YWJBK1JwT3J5ZFQxanpxdDB2dnBHNnF5WndBd2ozaER3SFBRNzcreUNucjVr?=
- =?utf-8?B?VTU1SldKNElSMzlsZ21aQXpDYzlGTU5qdjFsb1p3azFRMlhTbG1wZTE4eGYr?=
- =?utf-8?B?VTkzOTFjYTJQL0RybS9TODRoQ0U1RFNNNTRzdld4bnM4NHE0Wm9FdnNwYWx5?=
- =?utf-8?B?UGJ5NjMrakV3TUk3OUFmaTZGQUVwcXRBaktFa0VQZ3JDRGtkTm95cmxBL1hF?=
- =?utf-8?B?NDUrdXJQRWFSTDBWNzZxbWxXSUIzNklxTGJrY25aYWZDczcxcEdGZ05UTGZ1?=
- =?utf-8?B?SWhpQStxLzJXaEt0bVN3ZHhLS0N4cWczS0MvNzZ0NEVDOEpaWkxmc0ljSWhQ?=
- =?utf-8?B?OENTVEZnWG14aGoxM1FURVg0bStCaXNrcjY5dVkxS08yRkEvbEE3WlRqQ2lY?=
- =?utf-8?B?YkVibDl0OVpWTmwrelpKTERjbnByQ2I5VjhFVTlIR1UzaHlyZ2ZCanZiUE02?=
- =?utf-8?B?UE5DV3p0QWh5ZUZnOWFSQXMvRjhaYmNycWlvOFBwRmljZDFRZ1psTG1jQis5?=
- =?utf-8?B?MGxMbGNadHQ4V3c0ZzhMeHlESjVMRGpkN2JVaTd5UUVYeDFqWFZIdDVvVklH?=
- =?utf-8?B?WkwxVTNxeHNVOWhlTEl6VDdNTDdMWld3WndEQ3VtR0sxUFBHYWcwS2c2R09n?=
- =?utf-8?B?dG9yZ0w5WDZ3TTBqa0UyMk9FNU92T3JIcmhWQ3dpbi81MmRWTERTckIveHcx?=
- =?utf-8?B?MlQ1THFFTEdXSVpNckpQQlc1STVpNHovSGsyMVZ6a0JEYUxFRkt0OHI2OU1H?=
- =?utf-8?B?WVN1eEFITGRxZVQwd1pGN0VkYU1VM0d0eUFYVFQ2b25uWnY2Tm9ZSkEzVXlk?=
- =?utf-8?B?U1puaU9Rcm13UWdBZU8wS0hzRzJ2ekFmRlAwRGpaNGZSUjU0N1lkTmE0VCtx?=
- =?utf-8?B?d2UwRHNSL1kyWDNlZXg0K3lacnlncUtXSVZWNUxSaStvS1VEeWZtb2hXWUg4?=
- =?utf-8?B?SDViZm9vVlpkY3RsaklJM1dlQ0Mxbk1yQjllSlhNVmZtTVdIcC9jVWNBRnoz?=
- =?utf-8?B?Mlk0QjdlTTlqeGNMOXN5NjRSZHgvL2wwLzA1WXJGU3hLVGN5TXJ1RFpNWFNo?=
- =?utf-8?B?Q0JhOFhoelBIQjVUdmNZakUySnFQL2lUOWk3eG8vRUN2Q0d6T1p1ZFhnMHhm?=
- =?utf-8?B?OEUxbXFQZExPMU8xRnJJQnJKVUEycVpRVEJZVGI3QzRCSnMxd2w1OXBxRUFh?=
- =?utf-8?B?RnFWUmV4bzNYTitnRk13WmVRYkZJbEhiN1QwTFBWOTRjZTM0TWk3dm9XNFlT?=
- =?utf-8?Q?Tom7148uWYMIf0kfBeyfcJvPgKtsg8=3D?=
+ ARA:13230040|1800799024|82310400026|36860700013|376014; 
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?umFWtTLePM7YHt6NS8h9HH0Y+huCR2xaHT29wsoFESvBgc5kS8lmz0yJWEFv?=
+ =?us-ascii?Q?3MRRzQNiyxKKJjaxGeo3R3czVHzNb0jeHjuqDCLR03whzpugKlpbtU8Ybke3?=
+ =?us-ascii?Q?MmMYAVIZAWSyBGv5lbQHd+KKWPXppBjaApn7Apccb3kDX0fEWR3hvSKnUTi0?=
+ =?us-ascii?Q?f2WoUDsYxTDSa+8LzVXFLR9wIoNWGaRh0mQD0ISQhHlbUfnZy9AVCCL1vq93?=
+ =?us-ascii?Q?uX1ROFFLgcjKu1htzjUMx6EYbRN6KQOPZd3HCYJvXjJNRtcdwWR/PSF33ufq?=
+ =?us-ascii?Q?URbmFaDKSwXafo1NVcZPORkdjmtfFPdGdV6ii9HEiuJpGOfb5D1hqEqRYAbe?=
+ =?us-ascii?Q?VSnnaJfkQXnwwPOdyFj/Duo1DqU2q3HvZ5sqlZBHGKX3cbPWnKOkDdkeu3kF?=
+ =?us-ascii?Q?T1tGTLpLr+gx0MidxMkWsJG/i93ZpfYYYggetd8/+G0sEpgGjaeHTYn2DC0I?=
+ =?us-ascii?Q?QOd9yXelfyZLF1PYeUUyfmIC6767DLdNmBI6B4bHbHyawwefUUJVGL9vsVP9?=
+ =?us-ascii?Q?26RYv1tqy1fDwvTTp/hlrnsH3N2SB9VvpnTtyGybNxsHSA+gskvDXJheO/cq?=
+ =?us-ascii?Q?Nj1Gj/GRBVkRfmJUJTIroXSP9TJh+O8JYQRHBc/tf8KYUnsr2y7+CkJXqn3J?=
+ =?us-ascii?Q?7H+GrGMV/Yxz9wklAotqWOFNa4wsJcOwazdif7O3a5H89+fvXmG9LD8FZUzN?=
+ =?us-ascii?Q?pM2FIbNqIV9GL7ce4BBBYNvK4FbZqaHWnr99M/TbhHO6Sd9NNH7SwyutFeFW?=
+ =?us-ascii?Q?Y5Ms859N3fGoalcmMfp6Qe+QR1LZcDC6zmM2mzb2RZAF8kzFBLR6ClggkrFY?=
+ =?us-ascii?Q?ls42Ubm07pZBqJ6Fii0p/hA7tE5hmIb36jsq00xFwV4W3kYI+5mtzy20mXrk?=
+ =?us-ascii?Q?OY0bSsAXdeUjAObsN9Co1VoimmUBlmTwtYeXmCVSoMQnGvrbOdpFER16tg4v?=
+ =?us-ascii?Q?8asD28PH0nnHQsHKDnTBx1Tv7oD+iuQMWCCae4yysXM5w2lbwY7kR6n3OS2W?=
+ =?us-ascii?Q?cSZHhgaAkOXQZ/J/iZ8sr/01fu50WqW1spjGVEeEOfeepuxgH8s7+UDn3R6o?=
+ =?us-ascii?Q?e1vWIxDDB+KkErIP17C0xmg7PH12S0wErGxY+laqulghKJ3L8tc9zUdDVzPj?=
+ =?us-ascii?Q?ev+fa2GsBcWPZDxibEmsW9sEVGO7v8ejgdRYefTnsryMU2EYo4z4to7kQoeR?=
+ =?us-ascii?Q?wOKtvbAD0G2Ufpy8pLfGs5wvQQip0/sN5V19tCcaJnvJKjXK4uag2MjQaaPW?=
+ =?us-ascii?Q?89ADt6FRTdLHHNVujSaSmwNW8lA5vfpIrq5SCkh1v1dYPVYwcxrzHEA8/nE1?=
+ =?us-ascii?Q?Yg6lE60nm9XTzbsHhTXXMy6ziAzktqq8PZ+ip+zDCqCsMhgzgtVHmEIxWmUb?=
+ =?us-ascii?Q?3njt//B8y5AIMDKjLCTNi5ufFD3OMr41pai0O1SnnVIP/F94H9QDSK9E5Jwh?=
+ =?us-ascii?Q?MYV+mvFo9KyuBKPRKH/kC7Yjrvgxn2+qvbi5j778kll8mwVNU/nAZUXD8nr3?=
+ =?us-ascii?Q?Xh1DrvP/KNy8hrnomN5am5wwkcJUL2KGsgsS?=
 X-Forefront-Antispam-Report: CIP:165.204.84.17; CTRY:US; LANG:en; SCL:1; SRV:;
  IPV:CAL; SFV:NSPM; H:SATLEXMB03.amd.com; PTR:InfoDomainNonexistent; CAT:NONE;
- SFS:(13230040)(1800799024)(36860700013)(82310400026)(376014)(13003099007);
- DIR:OUT; SFP:1101; 
+ SFS:(13230040)(1800799024)(82310400026)(36860700013)(376014); DIR:OUT;
+ SFP:1101; 
 X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 21 Aug 2025 13:05:25.2652 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: f5e54f89-b6eb-41d7-2463-08dde0b364ea
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 21 Aug 2025 13:05:19.1052 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: e88c8796-1940-4a33-2741-08dde0b3613e
 X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
 X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3dd8961f-e488-4e60-8e11-a82d994e183d; Ip=[165.204.84.17];
  Helo=[SATLEXMB03.amd.com]
-X-MS-Exchange-CrossTenant-AuthSource: SA2PEPF00001508.namprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthSource: SA2PEPF0000150B.namprd04.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Anonymous
 X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR12MB8558
-Received-SPF: permerror client-ip=2a01:111:f403:2413::601;
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ2PR12MB8807
+Received-SPF: permerror client-ip=2a01:111:f403:2417::622;
  envelope-from=Luc.Michel@amd.com;
- helo=NAM10-DM6-obe.outbound.protection.outlook.com
+ helo=NAM12-DM6-obe.outbound.protection.outlook.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- WEIRD_QUOTING=0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -164,231 +154,320 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-To align with current branding and ensure coherency with the upcoming
-versal2 machine, rename the xlnx-versal-virt machine to amd-versal-virt.
-Keep an alias of the old name to the new one for command-line backward
-compatibility.
+Remove now unused macros in xlnx-versal.[ch]. Those macros have been
+replaced by the VersalMap structure that serves as a central description
+for the SoC. The ones still in use in the versal_unimp function are
+inlined.
 
 Signed-off-by: Luc Michel <luc.michel@amd.com>
 Reviewed-by: Francisco Iglesias <francisco.iglesias@amd.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- docs/system/arm/xlnx-versal-virt.rst         | 26 +++++++++++---------
- hw/arm/xlnx-versal-virt.c                    | 11 ++++++---
- tests/functional/test_aarch64_xlnx_versal.py |  6 ++---
- 3 files changed, 25 insertions(+), 18 deletions(-)
+ include/hw/arm/xlnx-versal.h | 204 -----------------------------------
+ hw/arm/xlnx-versal.c         |  28 ++---
+ 2 files changed, 7 insertions(+), 225 deletions(-)
 
-diff --git a/docs/system/arm/xlnx-versal-virt.rst b/docs/system/arm/xlnx-versal-virt.rst
-index c5f35f28e4f..2c63fbf519f 100644
---- a/docs/system/arm/xlnx-versal-virt.rst
-+++ b/docs/system/arm/xlnx-versal-virt.rst
-@@ -1,21 +1,25 @@
--Xilinx Versal Virt (``xlnx-versal-virt``)
--=========================================
-+AMD Versal Virt (``amd-versal-virt``)
-+=====================================
+diff --git a/include/hw/arm/xlnx-versal.h b/include/hw/arm/xlnx-versal.h
+index da0260b83de..b6cc71f7209 100644
+--- a/include/hw/arm/xlnx-versal.h
++++ b/include/hw/arm/xlnx-versal.h
+@@ -21,22 +21,10 @@
+ #define TYPE_XLNX_VERSAL_BASE "xlnx-versal-base"
+ OBJECT_DECLARE_TYPE(Versal, VersalClass, XLNX_VERSAL_BASE)
  
--Xilinx Versal is a family of heterogeneous multi-core SoCs
-+AMD Versal is a family of heterogeneous multi-core SoCs
- (System on Chip) that combine traditional hardened CPUs and I/O
- peripherals in a Processing System (PS) with runtime programmable
- FPGA logic (PL) and an Artificial Intelligence Engine (AIE).
+ #define TYPE_XLNX_VERSAL "xlnx-versal"
  
-+QEMU implements the Versal Series variant of Versal SoCs, with the
-+``amd-versal-virt`` machine. The alias ``xlnx-versal-virt`` is kept for
-+backward compatibility.
-+
- More details here:
--https://www.xilinx.com/products/silicon-devices/acap/versal.html
-+https://www.amd.com/en/products/adaptive-socs-and-fpgas/versal.html
+-#define XLNX_VERSAL_NR_ACPUS   2
+-#define XLNX_VERSAL_NR_RCPUS   2
+-#define XLNX_VERSAL_NR_UARTS   2
+-#define XLNX_VERSAL_NR_GEMS    2
+-#define XLNX_VERSAL_NR_ADMAS   8
+-#define XLNX_VERSAL_NR_SDS     2
+-#define XLNX_VERSAL_NR_XRAM    4
+-#define XLNX_VERSAL_NR_IRQS    192
+-#define XLNX_VERSAL_NR_CANFD   2
+-#define XLNX_VERSAL_CANFD_REF_CLK (24 * 1000 * 1000)
+-#define XLNX_VERSAL_NR_CFRAME  15
+-
+ struct Versal {
+     /*< private >*/
+     SysBusDevice parent_obj;
  
- The family of Versal SoCs share a single architecture but come in
- different parts with different speed grades, amounts of PL and
- other differences.
+     /*< public >*/
+@@ -82,198 +70,6 @@ hwaddr versal_get_reserved_mmio_addr(Versal *s);
  
--The Xilinx Versal Virt board in QEMU is a model of a virtual board
-+The AMD Versal Virt board in QEMU is a model of a virtual board
- (does not exist in reality) with a virtual Versal SoC without I/O
- limitations. Currently, we support the following cores and devices:
+ int versal_get_num_cpu(VersalVersion version);
+ int versal_get_num_can(VersalVersion version);
+ int versal_get_num_sdhci(VersalVersion version);
  
- Implemented CPU cores:
- 
-@@ -72,11 +76,11 @@ A few examples:
- 
- Direct Linux boot of a generic ARM64 upstream Linux kernel:
- 
- .. code-block:: bash
- 
--  $ qemu-system-aarch64 -M xlnx-versal-virt -m 2G \
-+  $ qemu-system-aarch64 -M amd-versal-virt -m 2G \
-       -serial mon:stdio -display none \
-       -kernel arch/arm64/boot/Image \
-       -nic user -nic user \
-       -device virtio-rng-device,bus=virtio-mmio-bus.0 \
-       -drive if=none,index=0,file=hd0.qcow2,id=hd0,snapshot \
-@@ -85,11 +89,11 @@ Direct Linux boot of a generic ARM64 upstream Linux kernel:
- 
- Direct Linux boot of PetaLinux 2019.2:
- 
- .. code-block:: bash
- 
--  $ qemu-system-aarch64  -M xlnx-versal-virt -m 2G \
-+  $ qemu-system-aarch64  -M amd-versal-virt -m 2G \
-       -serial mon:stdio -display none \
-       -kernel petalinux-v2019.2/Image \
-       -append "rdinit=/sbin/init console=ttyAMA0,115200n8 earlycon=pl011,mmio,0xFF000000,115200n8" \
-       -net nic,model=cadence_gem,netdev=net0 -netdev user,id=net0 \
-       -device virtio-rng-device,bus=virtio-mmio-bus.0,rng=rng0 \
-@@ -98,11 +102,11 @@ Direct Linux boot of PetaLinux 2019.2:
- Boot PetaLinux 2019.2 via ARM Trusted Firmware (2018.3 because the 2019.2
- version of ATF tries to configure the CCI which we don't model) and U-boot:
- 
- .. code-block:: bash
- 
--  $ qemu-system-aarch64 -M xlnx-versal-virt -m 2G \
-+  $ qemu-system-aarch64 -M amd-versal-virt -m 2G \
-       -serial stdio -display none \
-       -device loader,file=petalinux-v2018.3/bl31.elf,cpu-num=0 \
-       -device loader,file=petalinux-v2019.2/u-boot.elf \
-       -device loader,addr=0x20000000,file=petalinux-v2019.2/Image \
-       -nic user -nic user \
-@@ -123,11 +127,11 @@ Run the following at the U-Boot prompt:
- 
- Boot Linux as DOM0 on Xen via U-Boot:
- 
- .. code-block:: bash
- 
--  $ qemu-system-aarch64 -M xlnx-versal-virt -m 4G \
-+  $ qemu-system-aarch64 -M amd-versal-virt -m 4G \
-       -serial stdio -display none \
-       -device loader,file=petalinux-v2019.2/u-boot.elf,cpu-num=0 \
-       -device loader,addr=0x30000000,file=linux/2018-04-24/xen \
-       -device loader,addr=0x40000000,file=petalinux-v2019.2/Image \
-       -nic user -nic user \
-@@ -151,11 +155,11 @@ Run the following at the U-Boot prompt:
- 
- Boot Linux as Dom0 on Xen via ARM Trusted Firmware and U-Boot:
- 
- .. code-block:: bash
- 
--  $ qemu-system-aarch64 -M xlnx-versal-virt -m 4G \
-+  $ qemu-system-aarch64 -M amd-versal-virt -m 4G \
-       -serial stdio -display none \
-       -device loader,file=petalinux-v2018.3/bl31.elf,cpu-num=0 \
-       -device loader,file=petalinux-v2019.2/u-boot.elf \
-       -device loader,addr=0x30000000,file=linux/2018-04-24/xen \
-       -device loader,addr=0x40000000,file=petalinux-v2019.2/Image \
-@@ -225,11 +229,11 @@ To use a different index value, N, from default of 1, add:
- 
-   Thus, a file backend should be used with caution, and 'format=luks'
-   is highly recommended (albeit with usage complexity).
- 
-   Better yet, do not use actual product data when running guest image
--  on this Xilinx Versal Virt board.
-+  on this AMD Versal Virt board.
- 
- Using CANFDs for Versal Virt
- """"""""""""""""""""""""""""
- Versal CANFD controller is developed based on SocketCAN and QEMU CAN bus
- implementation. Bus connection and socketCAN connection for each CAN module
-diff --git a/hw/arm/xlnx-versal-virt.c b/hw/arm/xlnx-versal-virt.c
-index 59bd93223af..53987db4cd1 100644
---- a/hw/arm/xlnx-versal-virt.c
-+++ b/hw/arm/xlnx-versal-virt.c
-@@ -1,7 +1,7 @@
- /*
-- * Xilinx Versal Virtual board.
-+ * AMD/Xilinx Versal Virtual board.
-  *
-  * Copyright (c) 2018 Xilinx Inc.
-  * Copyright (c) 2025 Advanced Micro Devices, Inc.
-  * Written by Edgar E. Iglesias
-  *
-@@ -24,11 +24,11 @@
- #include "hw/arm/boot.h"
- #include "target/arm/multiprocessing.h"
- #include "qom/object.h"
+-/* Memory-map and IRQ definitions. Copied a subset from
+- * auto-generated files.  */
+-
+-#define VERSAL_CRL_IRQ             10
+-#define VERSAL_UART0_IRQ_0         18
+-#define VERSAL_UART1_IRQ_0         19
+-#define VERSAL_CANFD0_IRQ_0        20
+-#define VERSAL_CANFD1_IRQ_0        21
+-#define VERSAL_USB0_IRQ_0          22
+-#define VERSAL_GEM0_IRQ_0          56
+-#define VERSAL_GEM0_WAKE_IRQ_0     57
+-#define VERSAL_GEM1_IRQ_0          58
+-#define VERSAL_GEM1_WAKE_IRQ_0     59
+-#define VERSAL_ADMA_IRQ_0          60
+-#define VERSAL_XRAM_IRQ_0          79
+-#define VERSAL_CFU_IRQ_0           120
+-#define VERSAL_PMC_APB_IRQ         121
+-#define VERSAL_OSPI_IRQ            124
+-#define VERSAL_SD0_IRQ_0           126
+-#define VERSAL_EFUSE_IRQ           139
+-#define VERSAL_TRNG_IRQ            141
+-#define VERSAL_RTC_ALARM_IRQ       142
+-#define VERSAL_RTC_SECONDS_IRQ     143
+-
+-/* Architecturally reserved IRQs suitable for virtualization.  */
+-#define VERSAL_RSVD_IRQ_FIRST 111
+-#define VERSAL_RSVD_IRQ_LAST  118
+-
+-#define MM_TOP_RSVD                 0xa0000000U
+-#define MM_TOP_RSVD_SIZE            0x4000000
+-#define MM_GIC_APU_DIST_MAIN        0xf9000000U
+-#define MM_GIC_APU_DIST_MAIN_SIZE   0x10000
+-#define MM_GIC_APU_REDIST_0         0xf9080000U
+-#define MM_GIC_APU_REDIST_0_SIZE    0x80000
+-
+-#define MM_UART0                    0xff000000U
+-#define MM_UART0_SIZE               0x10000
+-#define MM_UART1                    0xff010000U
+-#define MM_UART1_SIZE               0x10000
+-
+-#define MM_CANFD0                   0xff060000U
+-#define MM_CANFD0_SIZE              0x10000
+-#define MM_CANFD1                   0xff070000U
+-#define MM_CANFD1_SIZE              0x10000
+-
+-#define MM_GEM0                     0xff0c0000U
+-#define MM_GEM0_SIZE                0x10000
+-#define MM_GEM1                     0xff0d0000U
+-#define MM_GEM1_SIZE                0x10000
+-
+-#define MM_ADMA_CH0                 0xffa80000U
+-#define MM_ADMA_CH0_SIZE            0x10000
+-
+-#define MM_OCM                      0xfffc0000U
+-#define MM_OCM_SIZE                 0x40000
+-
+-#define MM_XRAM                     0xfe800000
+-#define MM_XRAMC                    0xff8e0000
+-#define MM_XRAMC_SIZE               0x10000
+-
+-#define MM_USB2_CTRL_REGS           0xFF9D0000
+-#define MM_USB2_CTRL_REGS_SIZE      0x10000
+-
+-#define MM_USB_0                    0xFE200000
+-#define MM_USB_0_SIZE               0x10000
+-
+-#define MM_TOP_DDR                  0x0
+-#define MM_TOP_DDR_SIZE             0x80000000U
+-#define MM_TOP_DDR_2                0x800000000ULL
+-#define MM_TOP_DDR_2_SIZE           0x800000000ULL
+-#define MM_TOP_DDR_3                0xc000000000ULL
+-#define MM_TOP_DDR_3_SIZE           0x4000000000ULL
+-#define MM_TOP_DDR_4                0x10000000000ULL
+-#define MM_TOP_DDR_4_SIZE           0xb780000000ULL
+-
+-#define MM_PSM_START                0xffc80000U
+-#define MM_PSM_END                  0xffcf0000U
+-
+-#define MM_CRL                      0xff5e0000U
+-#define MM_CRL_SIZE                 0x300000
+-#define MM_IOU_SCNTR                0xff130000U
+-#define MM_IOU_SCNTR_SIZE           0x10000
+-#define MM_IOU_SCNTRS               0xff140000U
+-#define MM_IOU_SCNTRS_SIZE          0x10000
+-#define MM_FPD_CRF                  0xfd1a0000U
+-#define MM_FPD_CRF_SIZE             0x140000
+-#define MM_FPD_FPD_APU              0xfd5c0000
+-#define MM_FPD_FPD_APU_SIZE         0x100
+-
+-#define MM_PMC_PMC_IOU_SLCR         0xf1060000
+-#define MM_PMC_PMC_IOU_SLCR_SIZE    0x10000
+-
+-#define MM_PMC_OSPI                 0xf1010000
+-#define MM_PMC_OSPI_SIZE            0x10000
+-
+-#define MM_PMC_OSPI_DAC             0xc0000000
+-#define MM_PMC_OSPI_DAC_SIZE        0x20000000
+-
+-#define MM_PMC_OSPI_DMA_DST         0xf1011800
+-#define MM_PMC_OSPI_DMA_SRC         0xf1011000
+-
+-#define MM_PMC_SD0                  0xf1040000U
+-#define MM_PMC_SD0_SIZE             0x10000
+-#define MM_PMC_BBRAM_CTRL           0xf11f0000
+-#define MM_PMC_BBRAM_CTRL_SIZE      0x00050
+-#define MM_PMC_EFUSE_CTRL           0xf1240000
+-#define MM_PMC_EFUSE_CTRL_SIZE      0x00104
+-#define MM_PMC_EFUSE_CACHE          0xf1250000
+-#define MM_PMC_EFUSE_CACHE_SIZE     0x00C00
+-
+-#define MM_PMC_CFU_APB              0xf12b0000
+-#define MM_PMC_CFU_APB_SIZE         0x10000
+-#define MM_PMC_CFU_STREAM           0xf12c0000
+-#define MM_PMC_CFU_STREAM_SIZE      0x1000
+-#define MM_PMC_CFU_SFR              0xf12c1000
+-#define MM_PMC_CFU_SFR_SIZE         0x1000
+-#define MM_PMC_CFU_FDRO             0xf12c2000
+-#define MM_PMC_CFU_FDRO_SIZE        0x1000
+-#define MM_PMC_CFU_STREAM_2         0xf1f80000
+-#define MM_PMC_CFU_STREAM_2_SIZE    0x40000
+-
+-#define MM_PMC_CFRAME0_REG          0xf12d0000
+-#define MM_PMC_CFRAME0_REG_SIZE     0x1000
+-#define MM_PMC_CFRAME0_FDRI         0xf12d1000
+-#define MM_PMC_CFRAME0_FDRI_SIZE    0x1000
+-#define MM_PMC_CFRAME1_REG          0xf12d2000
+-#define MM_PMC_CFRAME1_REG_SIZE     0x1000
+-#define MM_PMC_CFRAME1_FDRI         0xf12d3000
+-#define MM_PMC_CFRAME1_FDRI_SIZE    0x1000
+-#define MM_PMC_CFRAME2_REG          0xf12d4000
+-#define MM_PMC_CFRAME2_REG_SIZE     0x1000
+-#define MM_PMC_CFRAME2_FDRI         0xf12d5000
+-#define MM_PMC_CFRAME2_FDRI_SIZE    0x1000
+-#define MM_PMC_CFRAME3_REG          0xf12d6000
+-#define MM_PMC_CFRAME3_REG_SIZE     0x1000
+-#define MM_PMC_CFRAME3_FDRI         0xf12d7000
+-#define MM_PMC_CFRAME3_FDRI_SIZE    0x1000
+-#define MM_PMC_CFRAME4_REG          0xf12d8000
+-#define MM_PMC_CFRAME4_REG_SIZE     0x1000
+-#define MM_PMC_CFRAME4_FDRI         0xf12d9000
+-#define MM_PMC_CFRAME4_FDRI_SIZE    0x1000
+-#define MM_PMC_CFRAME5_REG          0xf12da000
+-#define MM_PMC_CFRAME5_REG_SIZE     0x1000
+-#define MM_PMC_CFRAME5_FDRI         0xf12db000
+-#define MM_PMC_CFRAME5_FDRI_SIZE    0x1000
+-#define MM_PMC_CFRAME6_REG          0xf12dc000
+-#define MM_PMC_CFRAME6_REG_SIZE     0x1000
+-#define MM_PMC_CFRAME6_FDRI         0xf12dd000
+-#define MM_PMC_CFRAME6_FDRI_SIZE    0x1000
+-#define MM_PMC_CFRAME7_REG          0xf12de000
+-#define MM_PMC_CFRAME7_REG_SIZE     0x1000
+-#define MM_PMC_CFRAME7_FDRI         0xf12df000
+-#define MM_PMC_CFRAME7_FDRI_SIZE    0x1000
+-#define MM_PMC_CFRAME8_REG          0xf12e0000
+-#define MM_PMC_CFRAME8_REG_SIZE     0x1000
+-#define MM_PMC_CFRAME8_FDRI         0xf12e1000
+-#define MM_PMC_CFRAME8_FDRI_SIZE    0x1000
+-#define MM_PMC_CFRAME9_REG          0xf12e2000
+-#define MM_PMC_CFRAME9_REG_SIZE     0x1000
+-#define MM_PMC_CFRAME9_FDRI         0xf12e3000
+-#define MM_PMC_CFRAME9_FDRI_SIZE    0x1000
+-#define MM_PMC_CFRAME10_REG         0xf12e4000
+-#define MM_PMC_CFRAME10_REG_SIZE    0x1000
+-#define MM_PMC_CFRAME10_FDRI        0xf12e5000
+-#define MM_PMC_CFRAME10_FDRI_SIZE   0x1000
+-#define MM_PMC_CFRAME11_REG         0xf12e6000
+-#define MM_PMC_CFRAME11_REG_SIZE    0x1000
+-#define MM_PMC_CFRAME11_FDRI        0xf12e7000
+-#define MM_PMC_CFRAME11_FDRI_SIZE   0x1000
+-#define MM_PMC_CFRAME12_REG         0xf12e8000
+-#define MM_PMC_CFRAME12_REG_SIZE    0x1000
+-#define MM_PMC_CFRAME12_FDRI        0xf12e9000
+-#define MM_PMC_CFRAME12_FDRI_SIZE   0x1000
+-#define MM_PMC_CFRAME13_REG         0xf12ea000
+-#define MM_PMC_CFRAME13_REG_SIZE    0x1000
+-#define MM_PMC_CFRAME13_FDRI        0xf12eb000
+-#define MM_PMC_CFRAME13_FDRI_SIZE   0x1000
+-#define MM_PMC_CFRAME14_REG         0xf12ec000
+-#define MM_PMC_CFRAME14_REG_SIZE    0x1000
+-#define MM_PMC_CFRAME14_FDRI        0xf12ed000
+-#define MM_PMC_CFRAME14_FDRI_SIZE   0x1000
+-#define MM_PMC_CFRAME_BCAST_REG       0xf12ee000
+-#define MM_PMC_CFRAME_BCAST_REG_SIZE  0x1000
+-#define MM_PMC_CFRAME_BCAST_FDRI      0xf12ef000
+-#define MM_PMC_CFRAME_BCAST_FDRI_SIZE 0x1000
+-
+-#define MM_PMC_CRP                  0xf1260000U
+-#define MM_PMC_CRP_SIZE             0x10000
+-#define MM_PMC_RTC                  0xf12a0000
+-#define MM_PMC_RTC_SIZE             0x10000
+-#define MM_PMC_TRNG                 0xf1230000
+-#define MM_PMC_TRNG_SIZE            0x10000
+ #endif
+diff --git a/hw/arm/xlnx-versal.c b/hw/arm/xlnx-versal.c
+index 28db3f263c6..a5e6b1a9019 100644
+--- a/hw/arm/xlnx-versal.c
++++ b/hw/arm/xlnx-versal.c
+@@ -16,11 +16,10 @@
+ #include "qobject/qlist.h"
+ #include "qemu/module.h"
+ #include "hw/sysbus.h"
+ #include "net/net.h"
+ #include "system/system.h"
+-#include "hw/arm/boot.h"
+ #include "hw/misc/unimp.h"
+ #include "hw/arm/xlnx-versal.h"
+ #include "qemu/log.h"
+ #include "target/arm/cpu-qom.h"
+ #include "target/arm/gtimer.h"
+@@ -49,17 +48,10 @@
+ #include "hw/core/split-irq.h"
  #include "target/arm/cpu.h"
+ #include "hw/cpu/cluster.h"
+ #include "hw/arm/bsa.h"
  
--#define TYPE_XLNX_VERSAL_VIRT_MACHINE MACHINE_TYPE_NAME("xlnx-versal-virt")
-+#define TYPE_XLNX_VERSAL_VIRT_MACHINE MACHINE_TYPE_NAME("amd-versal-virt")
- OBJECT_DECLARE_SIMPLE_TYPE(VersalVirt, XLNX_VERSAL_VIRT_MACHINE)
+-#define XLNX_VERSAL_ACPU_TYPE ARM_CPU_TYPE_NAME("cortex-a72")
+-#define XLNX_VERSAL_RCPU_TYPE ARM_CPU_TYPE_NAME("cortex-r5f")
+-#define GEM_REVISION        0x40070106
+-
+-#define VERSAL_NUM_PMC_APB_IRQS 18
+-#define NUM_OSPI_IRQ_LINES 3
+-
+ /*
+  * IRQ descriptor to catch the following cases:
+  *   - Multiple devices can connect to the same IRQ. They are OR'ed together.
+  */
+ FIELD(VERSAL_IRQ, IRQ, 0, 16)
+@@ -1356,11 +1348,11 @@ static DeviceState *versal_create_ospi(Versal *s,
  
- #define XLNX_VERSAL_NUM_OSPI_FLASH 4
+     memory_region_add_subregion(&s->mr_ps, map->dac,
+                                 linear_mr);
  
- struct VersalVirt {
-@@ -53,10 +53,11 @@ struct VersalVirt {
- };
+     /* OSPI irq */
+-    orgate = create_or_gate(s, OBJECT(dev), "irq-orgate", NUM_OSPI_IRQ_LINES,
++    orgate = create_or_gate(s, OBJECT(dev), "irq-orgate", 3,
+                             map->irq);
  
- static void fdt_create(VersalVirt *s)
+     sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, qdev_get_gpio_in(orgate, 0));
+     sysbus_connect_irq(SYS_BUS_DEVICE(dma_src), 0, qdev_get_gpio_in(orgate, 1));
+     sysbus_connect_irq(SYS_BUS_DEVICE(dma_dst), 0, qdev_get_gpio_in(orgate, 2));
+@@ -1617,22 +1609,16 @@ static void versal_unimp_irq_parity_imr(void *opaque, int n, int level)
+ static void versal_unimp(Versal *s)
  {
-     MachineClass *mc = MACHINE_GET_CLASS(s);
-+    const char versal_compat[] = "amd-versal-virt\0xlnx-versal-virt";
+     DeviceState *slcr;
+     qemu_irq gpio_in;
  
-     s->fdt = create_device_tree(&s->fdt_size);
-     if (!s->fdt) {
-         error_report("create_device_tree() failed");
-         exit(1);
-@@ -70,11 +71,12 @@ static void fdt_create(VersalVirt *s)
-     qemu_fdt_add_subnode(s->fdt, "/chosen");
-     qemu_fdt_add_subnode(s->fdt, "/aliases");
+-    versal_unimp_area(s, "psm", &s->mr_ps,
+-                        MM_PSM_START, MM_PSM_END - MM_PSM_START);
+-    versal_unimp_area(s, "crf", &s->mr_ps,
+-                        MM_FPD_CRF, MM_FPD_CRF_SIZE);
+-    versal_unimp_area(s, "apu", &s->mr_ps,
+-                        MM_FPD_FPD_APU, MM_FPD_FPD_APU_SIZE);
+-    versal_unimp_area(s, "crp", &s->mr_ps,
+-                        MM_PMC_CRP, MM_PMC_CRP_SIZE);
+-    versal_unimp_area(s, "iou-scntr", &s->mr_ps,
+-                        MM_IOU_SCNTR, MM_IOU_SCNTR_SIZE);
+-    versal_unimp_area(s, "iou-scntr-seucre", &s->mr_ps,
+-                        MM_IOU_SCNTRS, MM_IOU_SCNTRS_SIZE);
++    versal_unimp_area(s, "psm", &s->mr_ps, 0xffc80000, 0x70000);
++    versal_unimp_area(s, "crf", &s->mr_ps, 0xfd1a0000, 0x140000);
++    versal_unimp_area(s, "apu", &s->mr_ps, 0xfd5c0000, 0x100);
++    versal_unimp_area(s, "crp", &s->mr_ps, 0xf1260000, 0x10000);
++    versal_unimp_area(s, "iou-scntr", &s->mr_ps, 0xff130000, 0x10000);
++    versal_unimp_area(s, "iou-scntr-seucre", &s->mr_ps, 0xff140000, 0x10000);
  
-     /* Header */
-     qemu_fdt_setprop_string(s->fdt, "/", "model", mc->desc);
--    qemu_fdt_setprop_string(s->fdt, "/", "compatible", "xlnx-versal-virt");
-+    qemu_fdt_setprop(s->fdt, "/", "compatible", versal_compat,
-+                     sizeof(versal_compat));
- }
- 
- static void fdt_add_clk_node(VersalVirt *s, const char *name,
-                              unsigned int freq_hz, uint32_t phandle)
- {
-@@ -346,11 +348,12 @@ static void versal_virt_machine_finalize(Object *obj)
- static void versal_virt_machine_class_init(ObjectClass *oc, const void *data)
- {
-     MachineClass *mc = MACHINE_CLASS(oc);
-     int num_cpu = versal_get_num_cpu(VERSAL_VER_VERSAL);
- 
--    mc->desc = "Xilinx Versal Virtual development board";
-+    mc->desc = "AMD Versal Virtual development board";
-+    mc->alias = "xlnx-versal-virt";
-     mc->init = versal_virt_init;
-     mc->min_cpus = num_cpu;
-     mc->max_cpus = num_cpu;
-     mc->default_cpus = num_cpu;
-     mc->no_cdrom = true;
-diff --git a/tests/functional/test_aarch64_xlnx_versal.py b/tests/functional/test_aarch64_xlnx_versal.py
-index 4b9c49e5d64..95e5c44771f 100755
---- a/tests/functional/test_aarch64_xlnx_versal.py
-+++ b/tests/functional/test_aarch64_xlnx_versal.py
-@@ -4,11 +4,11 @@
- #
- # SPDX-License-Identifier: GPL-2.0-or-later
- 
- from qemu_test import LinuxKernelTest, Asset
- 
--class XlnxVersalVirtMachine(LinuxKernelTest):
-+class AmdVersalVirtMachine(LinuxKernelTest):
- 
-     ASSET_KERNEL = Asset(
-         ('http://ports.ubuntu.com/ubuntu-ports/dists/bionic-updates/main/'
-          'installer-arm64/20101020ubuntu543.19/images/netboot/'
-          'ubuntu-installer/arm64/linux'),
-@@ -18,12 +18,12 @@ class XlnxVersalVirtMachine(LinuxKernelTest):
-         ('http://ports.ubuntu.com/ubuntu-ports/dists/bionic-updates/main/'
-          'installer-arm64/20101020ubuntu543.19/images/netboot/'
-          '/ubuntu-installer/arm64/initrd.gz'),
-         'e7a5e716b6f516d8be315c06e7331aaf16994fe4222e0e7cfb34bc015698929e')
- 
--    def test_aarch64_xlnx_versal_virt(self):
--        self.set_machine('xlnx-versal-virt')
-+    def test_aarch64_amd_versal_virt(self):
-+        self.set_machine('amd-versal-virt')
-         kernel_path = self.ASSET_KERNEL.fetch()
-         initrd_path = self.ASSET_INITRD.fetch()
- 
-         self.vm.set_console()
-         self.vm.add_args('-m', '2G',
+     qdev_init_gpio_in_named(DEVICE(s), versal_unimp_sd_emmc_sel,
+                             "sd-emmc-sel-dummy", 2);
+     qdev_init_gpio_in_named(DEVICE(s), versal_unimp_qspi_ospi_mux_sel,
+                             "qspi-ospi-mux-sel-dummy", 1);
 -- 
 2.50.1
 

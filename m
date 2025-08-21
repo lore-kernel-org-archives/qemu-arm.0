@@ -4,87 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3DAEBCA0EF8
-	for <qemu-arm@archiver.kernel.org>; Thu, 21 Aug 2025 08:46:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBA73CA0EEB
+	for <qemu-arm@archiver.kernel.org>; Thu, 21 Aug 2025 08:46:14 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1up0vL-0002Xh-Kx; Thu, 21 Aug 2025 04:45:32 -0400
+	id 1up0vw-00038p-Jw; Thu, 21 Aug 2025 04:46:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <armenon@redhat.com>)
- id 1up0ui-0001mk-K6
- for qemu-arm@nongnu.org; Thu, 21 Aug 2025 04:44:53 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ id 1up0v0-00026c-UJ
+ for qemu-arm@nongnu.org; Thu, 21 Aug 2025 04:45:12 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <armenon@redhat.com>)
- id 1up0uX-0000kn-BZ
- for qemu-arm@nongnu.org; Thu, 21 Aug 2025 04:44:52 -0400
+ id 1up0up-0000n4-B9
+ for qemu-arm@nongnu.org; Thu, 21 Aug 2025 04:45:07 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1755765876;
+ s=mimecast20190719; t=1755765896;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=W5Hc1vWei+qrGWsYgCQVawr4AMWdycqJmBaNjcGcsPU=;
- b=UFCuqdbkp4AmUDnl5xncNKwaE0U9nkVNy1fupSHUXOIw2pS/1eK+HyQEmpYXwguNbqQZ75
- SxZWEIhKNqUKVJd1UrqfzNW0lhXZsiXkqZhISp8lClxF2YhlBktGMkkFZBVJISWZOTydI6
- uaCDo2pVMFc2za79curaTsqGZ7oOZRw=
-Received: from mail-pl1-f199.google.com (mail-pl1-f199.google.com
- [209.85.214.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=P2FPdADMEMHNFhxXzuVtDKfuv8H3gugQt9Ko65fK9pw=;
+ b=jALVSIOFTNPQXNF/CHEK6TFt01rf+BIligtN81DQB8RRTrcZgyRCsJu0MDwn1rWkXm1KK/
+ L5nk7/4TYVoeTkBx9+IolAcyUriIpzRb4ZiUAf4ge/mXbnEx1JFxXlZ4JudD9rk/9l6pXq
+ zPVN/Vx7Tm/+xXTc5XtkA5Hjylst2fc=
+Received: from mail-pl1-f200.google.com (mail-pl1-f200.google.com
+ [209.85.214.200]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-573-AKPk1b4UPl-H7VKCiha71g-1; Thu, 21 Aug 2025 04:44:34 -0400
-X-MC-Unique: AKPk1b4UPl-H7VKCiha71g-1
-X-Mimecast-MFC-AGG-ID: AKPk1b4UPl-H7VKCiha71g_1755765874
-Received: by mail-pl1-f199.google.com with SMTP id
- d9443c01a7336-246072fe091so6768755ad.2
- for <qemu-arm@nongnu.org>; Thu, 21 Aug 2025 01:44:34 -0700 (PDT)
+ us-mta-480-OscT0g-yOGCGVONRZ-6vCQ-1; Thu, 21 Aug 2025 04:44:55 -0400
+X-MC-Unique: OscT0g-yOGCGVONRZ-6vCQ-1
+X-Mimecast-MFC-AGG-ID: OscT0g-yOGCGVONRZ-6vCQ_1755765894
+Received: by mail-pl1-f200.google.com with SMTP id
+ d9443c01a7336-246072fe091so6774705ad.2
+ for <qemu-arm@nongnu.org>; Thu, 21 Aug 2025 01:44:54 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1755765873; x=1756370673;
- h=cc:to:content-transfer-encoding:mime-version:message-id:date
- :subject:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=W5Hc1vWei+qrGWsYgCQVawr4AMWdycqJmBaNjcGcsPU=;
- b=RFMRbAvrqXd7ImTOUO5ruh4bjR11bYWRv/0nimCyAh2TzLmz0zb8L8gWB5IfYOR8/c
- ytnuNESxlkzWgO5RlyBYNzhrLNHwZ1tHCciZ08waLqcrQUNPskiQyVZw/pOA/qxk6ba2
- /eFEFbcyL46LShUMu31s0A8nrLmM+BGOiJO3j0bTHnZU3KFKe1QI//WRQQaapYP8AFEe
- L+MqZMiZzh/cB/oa3zZ8v7K86jY7BkAnB/g76Z9yfctCeTWQskdCbuwdXCjGLgzNLsI1
- olrP9fedrz3vMANalJNTg//IxxzTIDKzLFLLjcPKoupwY3X/dejw0iOoLQD2ejtkBLfK
- BZkg==
+ d=1e100.net; s=20230601; t=1755765893; x=1756370693;
+ h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+ :mime-version:subject:date:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=P2FPdADMEMHNFhxXzuVtDKfuv8H3gugQt9Ko65fK9pw=;
+ b=VdhBYyEz0JY9aI8kboNZfcHvoUBENYZbcGQFsBGrcN2i6gq7vidQ5rpZXpNZOMOAAx
+ 9w417zycPCdh21iJ8x0melFvryqDnERMepK+P5afyNJjC6NGZjzEXxgzqlvZhWaysnp7
+ SCSFs+3bZZHEAOOKFCfcsnZmvaJp+WafsvE+DxAkgaaP0/Su/j8MSx0cDLiHX9L9aqEp
+ UWG2qqGxQrhFvYnBwVnwHX7GH9jKVX8Hp/gVefylU59BWrUx8tMqPKewgHFWLnP4rSXi
+ PbAH1A25zq8Gb0t1q8XGNdk6W98Sq7d5mOU8kiuHn3C10XePRDJExF/DyakfviQJAqUr
+ fgtA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCU598HO7Y4WKqDF9skLhgUGUdqxIGdQDOsKPDos3bfocQyIz6r4J87VnXUI6BM8DGRS2HqVFdAnBQ==@nongnu.org
-X-Gm-Message-State: AOJu0YyNXiESf6e+ds3eRB+HTh4vJCISTfNPzPCB6K4NIemw/SzXyOu/
- YHOKcE902tv2pOCienSfEcfZafiiZACBRqPl038iIeFXnAftijRqq4QoMmbuvUrIrOlpdqoGaCu
- 2ZsYrU4yzyb50zIq15+3VFwrzHp04uusz66xJ8bClEoEUqHmmitVieg==
-X-Gm-Gg: ASbGncvqI1dVoyoVLkFX8eIkfKGl4EJ7HWWD2kI91OgRkyyHrmsWIjncF49FrOykBUC
- so9o0lyWUXDhP5PxUOz/kSp/ELbpgsGGtHtNrhVqslVktWG6nv07NK/NjI+5l6H44bg8vQpasoK
- a+Jlz7Zzdu3t0QdzwrcOKIseP9ivwVsUK+sVSqZbf3o8UPuqhhw2PYtBn3PGpnqS4FUXw3LBpzT
- BZ0luM9VyoWyrDrfynlJ7sII+LGF+QXjyNgmqgp6uCVAbGLINrbDlqhL0WLXzFfU3j1HA2igdN6
- 1d0TwdIBIhyjwSrB2OhPJCG3qCGLgf+VHDYSVy3GICJveS4Iy0iH
-X-Received: by 2002:a17:902:dac8:b0:242:9d61:2b60 with SMTP id
- d9443c01a7336-245febea52bmr28443905ad.6.1755765873222; 
- Thu, 21 Aug 2025 01:44:33 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEGP73abx3HwMKy/rJLVLimLWdRn1Q5TLrT9G1AgGphQthIBAczjxNenK6tWd1tvjmNGXfccg==
-X-Received: by 2002:a17:902:dac8:b0:242:9d61:2b60 with SMTP id
- d9443c01a7336-245febea52bmr28443355ad.6.1755765872687; 
- Thu, 21 Aug 2025 01:44:32 -0700 (PDT)
+ AJvYcCXQY0sJH+Iu7tq5KY2YcSnt7Zjs7OAsO6pdn+AmfTFVbG4PivuJ+Yg+frBrabCdeGbM/F0mMTkNCw==@nongnu.org
+X-Gm-Message-State: AOJu0YzR3ILEpbcTraCzF3p5K04gEC/WOcFXKIjD+ePyAWcX1o5kjZHn
+ nABbX2dvMPsX69MPvq8Yon7KyZRJmnz/R6rg0BNkoPOPsF7X9aivG1RVN4Vn+EwBFVTJ0+g++Tc
+ srpyA8vK+GNk77ybvIhBpJ5lYKOm5WAWsyZIk1tHQzVnqxmzsJI9QVw==
+X-Gm-Gg: ASbGncv9hvHdGGCnWsoYV9lNpI7P0m7MguYHXokXbfhxLEYO7qtI6GmVe2nyZ34/yuq
+ Si9Fn8vIx9cEWrbPfB56CcEgxDN2U8lSBOZiZJqgBUc9g16PPtRlPHL6wtlMZSGZujQtdqd5VA0
+ XnUEYQE6t9+riMax9FpCLlO0kpKAwGU+wV6DG2TfMTQgzAZ1joqJ/BRZ3AtSUF9vn3eHqjjxtu9
+ +uc/XkGDXMl83U4X2NKnOd+45i+RhhKiXejFDUdDc0udU8J9ygCRg0HFl9cHnMNYsdHvOkRspri
+ WB04kuAN6t8OlEtQJAYxCZ/b/w3HVoGFs4S/kNm2NWIzGwGONfmQ
+X-Received: by 2002:a17:902:ce88:b0:240:8cec:4823 with SMTP id
+ d9443c01a7336-245fedd00e8mr20738275ad.41.1755765892780; 
+ Thu, 21 Aug 2025 01:44:52 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IG9fNSfctYIAjAJ6cSV0NJJg4L74WBW3lxCcdX9jcHZDhcjwAe27dHBn7VBA6tiMbbjfMAcYg==
+X-Received: by 2002:a17:902:ce88:b0:240:8cec:4823 with SMTP id
+ d9443c01a7336-245fedd00e8mr20737785ad.41.1755765892177; 
+ Thu, 21 Aug 2025 01:44:52 -0700 (PDT)
 Received: from armenon-kvm.bengluru.csb ([49.47.192.65])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-245ed33e05dsm48789985ad.3.2025.08.21.01.44.21
+ d9443c01a7336-245ed33e05dsm48789985ad.3.2025.08.21.01.44.42
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 21 Aug 2025 01:44:32 -0700 (PDT)
+ Thu, 21 Aug 2025 01:44:51 -0700 (PDT)
 From: Arun Menon <armenon@redhat.com>
-Subject: [PATCH v12 00/27] migration: propagate vTPM errors using Error objects
-Date: Thu, 21 Aug 2025 14:13:54 +0530
-Message-Id: <20250821-propagate_tpm_error-v12-0-72b803e707dc@redhat.com>
+Date: Thu, 21 Aug 2025 14:13:56 +0530
+Subject: [PATCH v12 02/27] migration: push Error **errp into
+ vmstate_load_state()
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIAErcpmgC/33SzW7DIAwA4Fepcl4m25i/nfYe01SRAG0OXSISV
- ZuqvvtIL2Ui2dEWfNjYt2YOaQhz83a4NSlch3kYv3KA9HJo+rP7OoV28DnREJAERdxOaZzcyS3
- huEyXY0hpTG0X2QXVk/ACmnxzSiEO3w/24zPH52FexvTzeOWKa/Z/74ottIQa2WgnrfDvKfizW
- 1778dKs4JVKRG8jlBEjrYXeWO/IVoh4IhpoGxEZsUZ5y5JBkqkQLhBU2whnJDeDFgi07qFCZIn
- stCMzgpFBRWNCULJCVIEQbiMqIzFEzRBQBtQVoktEbiM6I16SBmYWVteVmAIRO5WYdcQmekPRR
- 99RhdgnYmCnErv+CQnORxB8V7eDUCpmZ9sgMyIYdOjzkDZqwWJpDYodZt3ajjU4oblj+ru19/v
- 9F7zAKFNuAwAA
-X-Change-ID: 20250624-propagate_tpm_error-bf4ae6c23d30
+Message-Id: <20250821-propagate_tpm_error-v12-2-72b803e707dc@redhat.com>
+References: <20250821-propagate_tpm_error-v12-0-72b803e707dc@redhat.com>
+In-Reply-To: <20250821-propagate_tpm_error-v12-0-72b803e707dc@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Peter Xu <peterx@redhat.com>, Fabiano Rosas <farosas@suse.de>, 
  =?utf-8?q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>, 
@@ -109,24 +105,22 @@ Cc: Peter Xu <peterx@redhat.com>, Fabiano Rosas <farosas@suse.de>,
  Hailiang Zhang <zhanghailiang@xfusion.com>, 
  Stefan Berger <stefanb@linux.vnet.ibm.com>, 
  Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
- Arun Menon <armenon@redhat.com>, 
- =?utf-8?q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
- Stefan Berger <stefanb@linux.vnet.ibm.com>
+ Arun Menon <armenon@redhat.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=11601; i=armenon@redhat.com;
- h=from:subject:message-id; bh=7JIRgQiC3VyToRwUeCbtymmvVfpJj7/TIUX4EArEqVk=;
- b=owGbwMvMwCWWVaVqcZPfqI/xtFoSQ8ayO0kFFdvfnGqZeL3ycxWrl8HLw/UX1rpdXb2/s2Zlw
- fXuYDuljlIWBjEuBlkxRZaGrwGyTQGFEZG2L6/DzGFlAhnCwMUpABOpVGD4Z9LNFicl+fuHLveH
- RN6lBboX//26mfnd/5SSepTRxC/tyxgZLl6QY7w9Q6/Dexdz41SNhd++/t1hrucUHrI/3fxvoVs
- gIwA=
+X-Developer-Signature: v=1; a=openpgp-sha256; l=28913; i=armenon@redhat.com;
+ h=from:subject:message-id; bh=++rhMn5BRu5/6ldMZ/sKwurDc5PN18dU+iSJxVKP9Vs=;
+ b=owGbwMvMwCWWVaVqcZPfqI/xtFoSQ8ayO8mFz7bveCImfYIzzMaV94XJlcWX5nZYPFkbWq955
+ +f7qmdnO0pZGMS4GGTFFFkavgbINgUURkTavrwOM4eVCWQIAxenAEykoJHhf5JDissUb5//Sx4p
+ X40+tZO3UHb3jc1XU9N2nnoY/+64sTHDX9lHMzqmH2bMfL3bzct3Q5Z9/eFVd7sUJpxXeKh8qZr
+ Fig0A
 X-Developer-Key: i=armenon@redhat.com; a=openpgp;
  fpr=80F5501D82507158593DE9D76A7A2538D90F328E
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: U0gpgV1pxZ_EgHFBcojVJmOhoLoSvO2Xjmfi3T4nqb0_1755765874
+X-Mimecast-MFC-PROC-ID: sv5WWM2LeCiaemGzQ5Lm5NzymB9zwb9WJ2AgNa7xYts_1755765894
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=armenon@redhat.com;
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=armenon@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -135,7 +129,8 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_PASS=-0.001,
+ T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -151,229 +146,726 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hello,
+This is an incremental step in converting vmstate loading
+code to report error via Error objects instead of directly
+printing it to console/monitor.
+It is ensured that vmstate_load_state() must report an error
+in errp, in case of failure.
 
-Currently, when a migration of a VM with an encrypted vTPM
-fails on the destination host (e.g., due to a mismatch in secret values),
-the error message displayed on the source host is generic and unhelpful.
+The errors are temporarily reported using warn_report_err().
+This is removed in the subsequent patches in this series,
+when we are actually able to propagate the error to the calling
+function using errp. Whereas, if we want the function to exit on
+error, then error_fatal is passed.
 
-For example, a typical error looks like this:
-"operation failed: job 'migration out' failed: Sibling indicated error 1.
-operation failed: job 'migration in' failed: load of migration failed:
-Input/output error"
-
-This message does not provide any specific indication of a vTPM failure.
-Such generic errors are logged using error_report(), which prints to
-the console/monitor but does not make the detailed error accessible via
-the QMP query-migrate command.
-
-This series addresses the issue, by ensuring that specific TPM error
-messages are propagated via the QEMU Error object.
-To make this possible,
-- A set of functions in the call stack is changed
-  to incorporate an Error object as an additional parameter.
-- Also, the TPM backend makes use of a new hook called post_load_errp()
-  that explicitly passes an Error object.
-
-It is organized as follows,
- - Patches 1-23 focuses on pushing Error object into the functions
-   that are important in the call stack where TPM errors are observed.
-   We still need to make changes in rest of the functions in savevm.c
-   such that they also incorporate the errp object for propagating errors.
- - Patches 12, 13, 20, are minor refactoring changes.
- - Patch 24 removes error variant of vmstate_save_state() function.
- - Patch 25 renames post_save() to cleanup_save()
- - Patch 26 introduces the new variants of the hooks in VMStateDescription
-   structure. These hooks should be used in future implementations.
- - Patch 27 focuses on changing the TPM backend such that the errors are
-   set in the Error object.
-
-While this series focuses specifically on TPM error reporting during
-live migration, it lays the groundwork for broader improvements.
-A lot of methods in savevm.c that previously returned an integer now capture
-errors in the Error object, enabling other modules to adopt the
-post_load_errp hook in the future.
-
-One such change previously attempted:
-https://lists.gnu.org/archive/html/qemu-devel/2021-02/msg01727.html
-
-Resolves: https://issues.redhat.com/browse/RHEL-82826
-
+Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 Signed-off-by: Arun Menon <armenon@redhat.com>
 ---
-Changes in v12:
-- Remove error_prepend() calls where no additional information is appended to
-  the error string. This also allows us to remove unnecessary ERRP_GUARD().
-- Avoid ambiguity by propagating clear messages in errp.
-- Add clarity to commit messages throughout the series.
-- Link to v11: https://lore.kernel.org/qemu-devel/20250813-propagate_tpm_error-v11-0-b470a374b42d@redhat.com
+ hw/display/virtio-gpu.c     |  2 +-
+ hw/pci/pci.c                |  3 ++-
+ hw/s390x/virtio-ccw.c       |  2 +-
+ hw/scsi/spapr_vscsi.c       |  4 ++-
+ hw/vfio/pci.c               |  5 +++-
+ hw/virtio/virtio-mmio.c     |  3 ++-
+ hw/virtio/virtio-pci.c      |  2 +-
+ hw/virtio/virtio.c          |  7 +++--
+ include/migration/vmstate.h |  2 +-
+ migration/cpr.c             |  3 +--
+ migration/savevm.c          |  8 ++++--
+ migration/vmstate-types.c   | 22 +++++++++++----
+ migration/vmstate.c         | 65 +++++++++++++++++++++++++++++++--------------
+ tests/unit/test-vmstate.c   | 63 ++++++++++++++++++++++++++++++++++++-------
+ ui/vdagent.c                |  5 +++-
+ 15 files changed, 147 insertions(+), 49 deletions(-)
 
-Changes in v11:
-- Remove unnecessary NULL check in postcopy_ram_listen_thread.
-- Change error_warn to error_fatal or pass local_err wherever appropriate, because,
-  https://lore.kernel.org/qemu-devel/20250808080823.2638861-13-armbru@redhat.com/
-  Most changes are in patches 2,24.
-- Link to v10: https://lore.kernel.org/qemu-devel/20250808-propagate_tpm_error-v10-0-3e81a1d419b2@redhat.com
+diff --git a/hw/display/virtio-gpu.c b/hw/display/virtio-gpu.c
+index 0a1a625b0ea6cf26cb0d799171a57ed3d3ab2442..5dc31bc6bfb0272e29a4364ab10de2595a4bedf7 100644
+--- a/hw/display/virtio-gpu.c
++++ b/hw/display/virtio-gpu.c
+@@ -1343,7 +1343,7 @@ static int virtio_gpu_load(QEMUFile *f, void *opaque, size_t size,
+     }
+ 
+     /* load & apply scanout state */
+-    vmstate_load_state(f, &vmstate_virtio_gpu_scanouts, g, 1);
++    vmstate_load_state(f, &vmstate_virtio_gpu_scanouts, g, 1, &error_fatal);
+ 
+     return 0;
+ }
+diff --git a/hw/pci/pci.c b/hw/pci/pci.c
+index c70b5ceebaf1f2b10768bd030526cbb518da2b8d..6be932d3bb67ff0c4808707db2a7b6378a90e82b 100644
+--- a/hw/pci/pci.c
++++ b/hw/pci/pci.c
+@@ -934,7 +934,8 @@ void pci_device_save(PCIDevice *s, QEMUFile *f)
+ int pci_device_load(PCIDevice *s, QEMUFile *f)
+ {
+     int ret;
+-    ret = vmstate_load_state(f, &vmstate_pci_device, s, s->version_id);
++    ret = vmstate_load_state(f, &vmstate_pci_device, s, s->version_id,
++                             &error_fatal);
+     /* Restore the interrupt status bit. */
+     pci_update_irq_status(s);
+     return ret;
+diff --git a/hw/s390x/virtio-ccw.c b/hw/s390x/virtio-ccw.c
+index d2f85b39f30f7fc82e0c600144c0a958e1269b2c..6a9641a03d5d3a38a4de7ceb9deffc0cc303bcff 100644
+--- a/hw/s390x/virtio-ccw.c
++++ b/hw/s390x/virtio-ccw.c
+@@ -1136,7 +1136,7 @@ static void virtio_ccw_save_config(DeviceState *d, QEMUFile *f)
+ static int virtio_ccw_load_config(DeviceState *d, QEMUFile *f)
+ {
+     VirtioCcwDevice *dev = VIRTIO_CCW_DEVICE(d);
+-    return vmstate_load_state(f, &vmstate_virtio_ccw_dev, dev, 1);
++    return vmstate_load_state(f, &vmstate_virtio_ccw_dev, dev, 1, &error_fatal);
+ }
+ 
+ static void virtio_ccw_pre_plugged(DeviceState *d, Error **errp)
+diff --git a/hw/scsi/spapr_vscsi.c b/hw/scsi/spapr_vscsi.c
+index 20f70fb2729de78b9636a6b8c869695dab4f8902..8622419497db650523d51bcb41557bbca254eaa3 100644
+--- a/hw/scsi/spapr_vscsi.c
++++ b/hw/scsi/spapr_vscsi.c
+@@ -642,15 +642,17 @@ static void *vscsi_load_request(QEMUFile *f, SCSIRequest *sreq)
+     VSCSIState *s = VIO_SPAPR_VSCSI_DEVICE(bus->qbus.parent);
+     vscsi_req *req;
+     int rc;
++    Error *local_err = NULL;
+ 
+     assert(sreq->tag < VSCSI_REQ_LIMIT);
+     req = &s->reqs[sreq->tag];
+     assert(!req->active);
+ 
+     memset(req, 0, sizeof(*req));
+-    rc = vmstate_load_state(f, &vmstate_spapr_vscsi_req, req, 1);
++    rc = vmstate_load_state(f, &vmstate_spapr_vscsi_req, req, 1, &local_err);
+     if (rc) {
+         fprintf(stderr, "VSCSI: failed loading request tag#%u\n", sreq->tag);
++        warn_report_err(local_err);
+         return NULL;
+     }
+     assert(req->active);
+diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
+index 4fa692c1a32bcfa4e4939e5fcb64f2bf19905b3b..a65e34b6979eadfa0851666aeae7cf731a00fa40 100644
+--- a/hw/vfio/pci.c
++++ b/hw/vfio/pci.c
+@@ -2790,13 +2790,16 @@ static int vfio_pci_load_config(VFIODevice *vbasedev, QEMUFile *f)
+     PCIDevice *pdev = &vdev->pdev;
+     pcibus_t old_addr[PCI_NUM_REGIONS - 1];
+     int bar, ret;
++    Error *local_err = NULL;
+ 
+     for (bar = 0; bar < PCI_ROM_SLOT; bar++) {
+         old_addr[bar] = pdev->io_regions[bar].addr;
+     }
+ 
+-    ret = vmstate_load_state(f, &vmstate_vfio_pci_config, vdev, 1);
++    ret = vmstate_load_state(f, &vmstate_vfio_pci_config, vdev, 1,
++                             &local_err);
+     if (ret) {
++        warn_report_err(local_err);
+         return ret;
+     }
+ 
+diff --git a/hw/virtio/virtio-mmio.c b/hw/virtio/virtio-mmio.c
+index 532c67107ba1d2978a76cf49f9cdc1de1dea3e11..0a688909fc606a3c9fde933667ae8c309ab527d0 100644
+--- a/hw/virtio/virtio-mmio.c
++++ b/hw/virtio/virtio-mmio.c
+@@ -34,6 +34,7 @@
+ #include "qemu/error-report.h"
+ #include "qemu/log.h"
+ #include "trace.h"
++#include "qapi/error.h"
+ 
+ static bool virtio_mmio_ioeventfd_enabled(DeviceState *d)
+ {
+@@ -619,7 +620,7 @@ static int virtio_mmio_load_extra_state(DeviceState *opaque, QEMUFile *f)
+ {
+     VirtIOMMIOProxy *proxy = VIRTIO_MMIO(opaque);
+ 
+-    return vmstate_load_state(f, &vmstate_virtio_mmio, proxy, 1);
++    return vmstate_load_state(f, &vmstate_virtio_mmio, proxy, 1, &error_fatal);
+ }
+ 
+ static bool virtio_mmio_has_extra_state(DeviceState *opaque)
+diff --git a/hw/virtio/virtio-pci.c b/hw/virtio/virtio-pci.c
+index 767216d795998708f5716a23ae16c79cd90ff489..b04faa1e5c91b5cef40e54ec41d92422d16bfc13 100644
+--- a/hw/virtio/virtio-pci.c
++++ b/hw/virtio/virtio-pci.c
+@@ -161,7 +161,7 @@ static int virtio_pci_load_extra_state(DeviceState *d, QEMUFile *f)
+ {
+     VirtIOPCIProxy *proxy = to_virtio_pci_proxy(d);
+ 
+-    return vmstate_load_state(f, &vmstate_virtio_pci, proxy, 1);
++    return vmstate_load_state(f, &vmstate_virtio_pci, proxy, 1, &error_fatal);
+ }
+ 
+ static void virtio_pci_save_queue(DeviceState *d, int n, QEMUFile *f)
+diff --git a/hw/virtio/virtio.c b/hw/virtio/virtio.c
+index 9a81ad912e013fc254899c4e55cff1f76a6112a4..419f3516c9f0a3df43831eebc77aa1e6dfcd0f41 100644
+--- a/hw/virtio/virtio.c
++++ b/hw/virtio/virtio.c
+@@ -3235,6 +3235,7 @@ virtio_load(VirtIODevice *vdev, QEMUFile *f, int version_id)
+     BusState *qbus = qdev_get_parent_bus(DEVICE(vdev));
+     VirtioBusClass *k = VIRTIO_BUS_GET_CLASS(qbus);
+     VirtioDeviceClass *vdc = VIRTIO_DEVICE_GET_CLASS(vdev);
++    Error *local_err = NULL;
+ 
+     /*
+      * We poison the endianness to ensure it does not get used before
+@@ -3327,15 +3328,17 @@ virtio_load(VirtIODevice *vdev, QEMUFile *f, int version_id)
+     }
+ 
+     if (vdc->vmsd) {
+-        ret = vmstate_load_state(f, vdc->vmsd, vdev, version_id);
++        ret = vmstate_load_state(f, vdc->vmsd, vdev, version_id, &local_err);
+         if (ret) {
++            warn_report_err(local_err);
+             return ret;
+         }
+     }
+ 
+     /* Subsections */
+-    ret = vmstate_load_state(f, &vmstate_virtio, vdev, 1);
++    ret = vmstate_load_state(f, &vmstate_virtio, vdev, 1, &local_err);
+     if (ret) {
++        warn_report_err(local_err);
+         return ret;
+     }
+ 
+diff --git a/include/migration/vmstate.h b/include/migration/vmstate.h
+index 1ff7bd9ac425ba67cd5ca7ad97bcf570f9e19abe..056781b1c21e737583f081594d9f88b32adfd674 100644
+--- a/include/migration/vmstate.h
++++ b/include/migration/vmstate.h
+@@ -1196,7 +1196,7 @@ extern const VMStateInfo vmstate_info_qlist;
+     }
+ 
+ int vmstate_load_state(QEMUFile *f, const VMStateDescription *vmsd,
+-                       void *opaque, int version_id);
++                       void *opaque, int version_id, Error **errp);
+ int vmstate_save_state(QEMUFile *f, const VMStateDescription *vmsd,
+                        void *opaque, JSONWriter *vmdesc);
+ int vmstate_save_state_with_err(QEMUFile *f, const VMStateDescription *vmsd,
+diff --git a/migration/cpr.c b/migration/cpr.c
+index 42ad0b0d500e5de57faf0c6517e216b2d1c0cacf..8abb6db76d2474157f804ece4c35ebfc8c22d21a 100644
+--- a/migration/cpr.c
++++ b/migration/cpr.c
+@@ -233,9 +233,8 @@ int cpr_state_load(MigrationChannel *channel, Error **errp)
+         return -ENOTSUP;
+     }
+ 
+-    ret = vmstate_load_state(f, &vmstate_cpr_state, &cpr_state, 1);
++    ret = vmstate_load_state(f, &vmstate_cpr_state, &cpr_state, 1, errp);
+     if (ret) {
+-        error_setg(errp, "vmstate_load_state error %d", ret);
+         qemu_fclose(f);
+         return ret;
+     }
+diff --git a/migration/savevm.c b/migration/savevm.c
+index fabbeb296ae987d0c06ba6dafda63720205fecfd..464e8b778404a642bf60f368205f5e6fa59118ba 100644
+--- a/migration/savevm.c
++++ b/migration/savevm.c
+@@ -969,7 +969,8 @@ static int vmstate_load(QEMUFile *f, SaveStateEntry *se)
+     if (!se->vmsd) {         /* Old style */
+         return se->ops->load_state(f, se->opaque, se->load_version_id);
+     }
+-    return vmstate_load_state(f, se->vmsd, se->opaque, se->load_version_id);
++    return vmstate_load_state(f, se->vmsd, se->opaque, se->load_version_id,
++                              &error_fatal);
+ }
+ 
+ static void vmstate_save_old_style(QEMUFile *f, SaveStateEntry *se,
+@@ -2817,6 +2818,7 @@ static int qemu_loadvm_state_header(QEMUFile *f)
+ {
+     unsigned int v;
+     int ret;
++    Error *local_err = NULL;
+ 
+     v = qemu_get_be32(f);
+     if (v != QEMU_VM_FILE_MAGIC) {
+@@ -2839,9 +2841,11 @@ static int qemu_loadvm_state_header(QEMUFile *f)
+             error_report("Configuration section missing");
+             return -EINVAL;
+         }
+-        ret = vmstate_load_state(f, &vmstate_configuration, &savevm_state, 0);
++        ret = vmstate_load_state(f, &vmstate_configuration, &savevm_state, 0,
++                                 &local_err);
+ 
+         if (ret) {
++            warn_report_err(local_err);
+             return ret;
+         }
+     }
+diff --git a/migration/vmstate-types.c b/migration/vmstate-types.c
+index 741a588b7e18c6d37724b08a0101edc8bc74a0a5..f41670cc853c5b41ccc8def354886a8e5c1451fd 100644
+--- a/migration/vmstate-types.c
++++ b/migration/vmstate-types.c
+@@ -19,6 +19,7 @@
+ #include "qemu/error-report.h"
+ #include "qemu/queue.h"
+ #include "trace.h"
++#include "qapi/error.h"
+ 
+ /* bool */
+ 
+@@ -543,13 +544,17 @@ static int get_tmp(QEMUFile *f, void *pv, size_t size,
+                    const VMStateField *field)
+ {
+     int ret;
++    Error *local_err = NULL;
+     const VMStateDescription *vmsd = field->vmsd;
+     int version_id = field->version_id;
+     void *tmp = g_malloc(size);
+ 
+     /* Writes the parent field which is at the start of the tmp */
+     *(void **)tmp = pv;
+-    ret = vmstate_load_state(f, vmsd, tmp, version_id);
++    ret = vmstate_load_state(f, vmsd, tmp, version_id, &local_err);
++    if (ret < 0) {
++        warn_report_err(local_err);
++    }
+     g_free(tmp);
+     return ret;
+ }
+@@ -626,6 +631,7 @@ static int get_qtailq(QEMUFile *f, void *pv, size_t unused_size,
+                       const VMStateField *field)
+ {
+     int ret = 0;
++    Error *local_err = NULL;
+     const VMStateDescription *vmsd = field->vmsd;
+     /* size of a QTAILQ element */
+     size_t size = field->size;
+@@ -649,8 +655,9 @@ static int get_qtailq(QEMUFile *f, void *pv, size_t unused_size,
+ 
+     while (qemu_get_byte(f)) {
+         elm = g_malloc(size);
+-        ret = vmstate_load_state(f, vmsd, elm, version_id);
++        ret = vmstate_load_state(f, vmsd, elm, version_id, &local_err);
+         if (ret) {
++            warn_report_err(local_err);
+             return ret;
+         }
+         QTAILQ_RAW_INSERT_TAIL(pv, elm, entry_offset);
+@@ -772,6 +779,7 @@ static int get_gtree(QEMUFile *f, void *pv, size_t unused_size,
+     GTree *tree = *pval;
+     void *key, *val;
+     int ret = 0;
++    Error *local_err = NULL;
+ 
+     /* in case of direct key, the key vmsd can be {}, ie. check fields */
+     if (!direct_key && version_id > key_vmsd->version_id) {
+@@ -803,18 +811,20 @@ static int get_gtree(QEMUFile *f, void *pv, size_t unused_size,
+             key = (void *)(uintptr_t)qemu_get_be64(f);
+         } else {
+             key = g_malloc0(key_size);
+-            ret = vmstate_load_state(f, key_vmsd, key, version_id);
++            ret = vmstate_load_state(f, key_vmsd, key, version_id, &local_err);
+             if (ret) {
+                 error_report("%s : failed to load %s (%d)",
+                              field->name, key_vmsd->name, ret);
++                warn_report_err(local_err);
+                 goto key_error;
+             }
+         }
+         val = g_malloc0(val_size);
+-        ret = vmstate_load_state(f, val_vmsd, val, version_id);
++        ret = vmstate_load_state(f, val_vmsd, val, version_id, &local_err);
+         if (ret) {
+             error_report("%s : failed to load %s (%d)",
+                          field->name, val_vmsd->name, ret);
++            warn_report_err(local_err);
+             goto val_error;
+         }
+         g_tree_insert(tree, key, val);
+@@ -872,6 +882,7 @@ static int get_qlist(QEMUFile *f, void *pv, size_t unused_size,
+                      const VMStateField *field)
+ {
+     int ret = 0;
++    Error *local_err = NULL;
+     const VMStateDescription *vmsd = field->vmsd;
+     /* size of a QLIST element */
+     size_t size = field->size;
+@@ -892,10 +903,11 @@ static int get_qlist(QEMUFile *f, void *pv, size_t unused_size,
+ 
+     while (qemu_get_byte(f)) {
+         elm = g_malloc(size);
+-        ret = vmstate_load_state(f, vmsd, elm, version_id);
++        ret = vmstate_load_state(f, vmsd, elm, version_id, &local_err);
+         if (ret) {
+             error_report("%s: failed to load %s (%d)", field->name,
+                          vmsd->name, ret);
++            warn_report_err(local_err);
+             g_free(elm);
+             return ret;
+         }
+diff --git a/migration/vmstate.c b/migration/vmstate.c
+index 3d9f284700368e2fd573d5d77b7f7ab88008cc91..6324e5b17addcd1b4f2fcdddbd47c3e4befc1d50 100644
+--- a/migration/vmstate.c
++++ b/migration/vmstate.c
+@@ -132,30 +132,34 @@ static void vmstate_handle_alloc(void *ptr, const VMStateField *field,
+ }
+ 
+ int vmstate_load_state(QEMUFile *f, const VMStateDescription *vmsd,
+-                       void *opaque, int version_id)
++                       void *opaque, int version_id, Error **errp)
+ {
++    ERRP_GUARD();
+     const VMStateField *field = vmsd->fields;
+     int ret = 0;
+-    Error *local_err = NULL;
+ 
+     trace_vmstate_load_state(vmsd->name, version_id);
+     if (version_id > vmsd->version_id) {
+-        error_report("%s: incoming version_id %d is too new "
+-                     "for local version_id %d",
+-                     vmsd->name, version_id, vmsd->version_id);
++        error_setg(errp, "%s: incoming version_id %d is too new "
++                   "for local version_id %d",
++                   vmsd->name, version_id, vmsd->version_id);
+         trace_vmstate_load_state_end(vmsd->name, "too new", -EINVAL);
+         return -EINVAL;
+     }
+     if  (version_id < vmsd->minimum_version_id) {
+-        error_report("%s: incoming version_id %d is too old "
+-                     "for local minimum version_id  %d",
+-                     vmsd->name, version_id, vmsd->minimum_version_id);
++        error_setg(errp, "%s: incoming version_id %d is too old "
++                   "for local minimum version_id %d",
++                   vmsd->name, version_id, vmsd->minimum_version_id);
+         trace_vmstate_load_state_end(vmsd->name, "too old", -EINVAL);
+         return -EINVAL;
+     }
+     if (vmsd->pre_load) {
+         ret = vmsd->pre_load(opaque);
+         if (ret) {
++            error_setg(errp, "pre load hook failed for: '%s', "
++                       "version_id: %d, minimum version_id: %d, ret: %d",
++                       vmsd->name, vmsd->version_id, vmsd->minimum_version_id,
++                       ret);
+             return ret;
+         }
+     }
+@@ -193,13 +197,21 @@ int vmstate_load_state(QEMUFile *f, const VMStateDescription *vmsd,
+ 
+                 if (inner_field->flags & VMS_STRUCT) {
+                     ret = vmstate_load_state(f, inner_field->vmsd, curr_elem,
+-                                             inner_field->vmsd->version_id);
++                                             inner_field->vmsd->version_id,
++                                             errp);
+                 } else if (inner_field->flags & VMS_VSTRUCT) {
+                     ret = vmstate_load_state(f, inner_field->vmsd, curr_elem,
+-                                             inner_field->struct_version_id);
++                                             inner_field->struct_version_id,
++                                             errp);
+                 } else {
+                     ret = inner_field->info->get(f, curr_elem, size,
+                                                  inner_field);
++                    if (ret < 0) {
++                        error_setg(errp,
++                                   "Failed to load element of type %s for %s: "
++                                   "%d", inner_field->info->name,
++                                   inner_field->name, ret);
++                    }
+                 }
+ 
+                 /* If we used a fake temp field.. free it now */
+@@ -209,31 +221,43 @@ int vmstate_load_state(QEMUFile *f, const VMStateDescription *vmsd,
+ 
+                 if (ret >= 0) {
+                     ret = qemu_file_get_error(f);
++                    if (ret < 0) {
++                        error_setg(errp,
++                                   "Failed to load %s state: stream error: %d",
++                                   vmsd->name, ret);
++                    }
+                 }
+                 if (ret < 0) {
+                     qemu_file_set_error(f, ret);
+-                    error_report("Failed to load %s:%s", vmsd->name,
+-                                 field->name);
++                    error_prepend(errp,
++                                  "Failed to load %s/%s version_id: %d: ",
++                                  vmsd->name, field->name, vmsd->version_id);
+                     trace_vmstate_load_field_error(field->name, ret);
+                     return ret;
+                 }
+             }
+         } else if (field->flags & VMS_MUST_EXIST) {
+-            error_report("Input validation failed: %s/%s",
+-                         vmsd->name, field->name);
++            error_setg(errp, "Input validation failed: %s/%s version_id: %d",
++                       vmsd->name, field->name, vmsd->version_id);
+             return -1;
+         }
+         field++;
+     }
+     assert(field->flags == VMS_END);
+-    ret = vmstate_subsection_load(f, vmsd, opaque, &local_err);
++    ret = vmstate_subsection_load(f, vmsd, opaque, errp);
+     if (ret != 0) {
+         qemu_file_set_error(f, ret);
+-        warn_report_err(local_err);
+         return ret;
+     }
+     if (vmsd->post_load) {
+         ret = vmsd->post_load(opaque, version_id);
++        if (ret < 0) {
++            error_setg(errp,
++                       "post load hook failed for: %s, version_id: %d, "
++                       "minimum_version: %d, ret: %d",
++                       vmsd->name, vmsd->version_id, vmsd->minimum_version_id,
++                       ret);
++        }
+     }
+     trace_vmstate_load_state_end(vmsd->name, "end", ret);
+     return ret;
+@@ -570,6 +594,7 @@ vmstate_get_subsection(const VMStateDescription * const *sub,
+ static int vmstate_subsection_load(QEMUFile *f, const VMStateDescription *vmsd,
+                                    void *opaque, Error **errp)
+ {
++    ERRP_GUARD();
+     trace_vmstate_subsection_load(vmsd->name);
+ 
+     while (qemu_peek_byte(f, 0) == QEMU_VM_SUBSECTION) {
+@@ -609,12 +634,12 @@ static int vmstate_subsection_load(QEMUFile *f, const VMStateDescription *vmsd,
+         qemu_file_skip(f, len); /* idstr */
+         version_id = qemu_get_be32(f);
+ 
+-        ret = vmstate_load_state(f, sub_vmsd, opaque, version_id);
++        ret = vmstate_load_state(f, sub_vmsd, opaque, version_id, errp);
+         if (ret) {
+             trace_vmstate_subsection_load_bad(vmsd->name, idstr, "(child)");
+-            error_setg(errp,
+-                       "Loading VM subsection '%s' in '%s' failed: %d",
+-                       idstr, vmsd->name, ret);
++            error_prepend(errp,
++                          "Loading VM subsection '%s' in '%s' failed: %d: ",
++                          idstr, vmsd->name, ret);
+             return ret;
+         }
+     }
+diff --git a/tests/unit/test-vmstate.c b/tests/unit/test-vmstate.c
+index 63f28f26f45691a70936d33e7341d16477a3471f..cfab58c7f45ba50f70af164c3e58b01aaf9cc656 100644
+--- a/tests/unit/test-vmstate.c
++++ b/tests/unit/test-vmstate.c
+@@ -30,6 +30,7 @@
+ #include "../migration/savevm.h"
+ #include "qemu/module.h"
+ #include "io/channel-file.h"
++#include "qapi/error.h"
+ 
+ static int temp_fd;
+ 
+@@ -108,14 +109,16 @@ static int load_vmstate_one(const VMStateDescription *desc, void *obj,
+ {
+     QEMUFile *f;
+     int ret;
++    Error *local_err = NULL;
+ 
+     f = open_test_file(true);
+     qemu_put_buffer(f, wire, size);
+     qemu_fclose(f);
+ 
+     f = open_test_file(false);
+-    ret = vmstate_load_state(f, desc, obj, version);
++    ret = vmstate_load_state(f, desc, obj, version, &local_err);
+     if (ret) {
++        warn_report_err(local_err);
+         g_assert(qemu_file_get_error(f));
+     } else{
+         g_assert(!qemu_file_get_error(f));
+@@ -355,6 +358,8 @@ static const VMStateDescription vmstate_versioned = {
+ 
+ static void test_load_v1(void)
+ {
++    Error *local_err = NULL;
++    int ret;
+     uint8_t buf[] = {
+         0, 0, 0, 10,             /* a */
+         0, 0, 0, 30,             /* c */
+@@ -365,7 +370,10 @@ static void test_load_v1(void)
+ 
+     QEMUFile *loading = open_test_file(false);
+     TestStruct obj = { .b = 200, .e = 500, .f = 600 };
+-    vmstate_load_state(loading, &vmstate_versioned, &obj, 1);
++    ret = vmstate_load_state(loading, &vmstate_versioned, &obj, 1, &local_err);
++    if (ret < 0) {
++        warn_report_err(local_err);
++    }
+     g_assert(!qemu_file_get_error(loading));
+     g_assert_cmpint(obj.a, ==, 10);
+     g_assert_cmpint(obj.b, ==, 200);
+@@ -378,6 +386,8 @@ static void test_load_v1(void)
+ 
+ static void test_load_v2(void)
+ {
++    Error *local_err = NULL;
++    int ret;
+     uint8_t buf[] = {
+         0, 0, 0, 10,             /* a */
+         0, 0, 0, 20,             /* b */
+@@ -391,7 +401,10 @@ static void test_load_v2(void)
+ 
+     QEMUFile *loading = open_test_file(false);
+     TestStruct obj;
+-    vmstate_load_state(loading, &vmstate_versioned, &obj, 2);
++    ret = vmstate_load_state(loading, &vmstate_versioned, &obj, 2, &local_err);
++    if (ret < 0) {
++        warn_report_err(local_err);
++    }
+     g_assert_cmpint(obj.a, ==, 10);
+     g_assert_cmpint(obj.b, ==, 20);
+     g_assert_cmpint(obj.c, ==, 30);
+@@ -467,6 +480,8 @@ static void test_save_skip(void)
+ 
+ static void test_load_noskip(void)
+ {
++    Error *local_err = NULL;
++    int ret;
+     uint8_t buf[] = {
+         0, 0, 0, 10,             /* a */
+         0, 0, 0, 20,             /* b */
+@@ -480,7 +495,10 @@ static void test_load_noskip(void)
+ 
+     QEMUFile *loading = open_test_file(false);
+     TestStruct obj = { .skip_c_e = false };
+-    vmstate_load_state(loading, &vmstate_skipping, &obj, 2);
++    ret = vmstate_load_state(loading, &vmstate_skipping, &obj, 2, &local_err);
++    if (ret < 0) {
++        warn_report_err(local_err);
++    }
+     g_assert(!qemu_file_get_error(loading));
+     g_assert_cmpint(obj.a, ==, 10);
+     g_assert_cmpint(obj.b, ==, 20);
+@@ -493,6 +511,8 @@ static void test_load_noskip(void)
+ 
+ static void test_load_skip(void)
+ {
++    Error *local_err = NULL;
++    int ret;
+     uint8_t buf[] = {
+         0, 0, 0, 10,             /* a */
+         0, 0, 0, 20,             /* b */
+@@ -504,7 +524,10 @@ static void test_load_skip(void)
+ 
+     QEMUFile *loading = open_test_file(false);
+     TestStruct obj = { .skip_c_e = true, .c = 300, .e = 500 };
+-    vmstate_load_state(loading, &vmstate_skipping, &obj, 2);
++    ret = vmstate_load_state(loading, &vmstate_skipping, &obj, 2, &local_err);
++    if (ret < 0) {
++        warn_report_err(local_err);
++    }
+     g_assert(!qemu_file_get_error(loading));
+     g_assert_cmpint(obj.a, ==, 10);
+     g_assert_cmpint(obj.b, ==, 20);
+@@ -744,6 +767,8 @@ static void test_save_q(void)
+ 
+ static void test_load_q(void)
+ {
++    int ret;
++    Error *local_err = NULL;
+     TestQtailq obj_q = {
+         .i16 = -512,
+         .i32 = 70000,
+@@ -773,7 +798,10 @@ static void test_load_q(void)
+     TestQtailq tgt;
+ 
+     QTAILQ_INIT(&tgt.q);
+-    vmstate_load_state(fload, &vmstate_q, &tgt, 1);
++    ret = vmstate_load_state(fload, &vmstate_q, &tgt, 1, &local_err);
++    if (ret < 0) {
++        warn_report_err(local_err);
++    }
+     char eof = qemu_get_byte(fload);
+     g_assert(!qemu_file_get_error(fload));
+     g_assert_cmpint(tgt.i16, ==, obj_q.i16);
+@@ -1115,6 +1143,8 @@ static void diff_iommu(TestGTreeIOMMU *iommu1, TestGTreeIOMMU *iommu2)
+ 
+ static void test_gtree_load_domain(void)
+ {
++    Error *local_err = NULL;
++    int ret;
+     TestGTreeDomain *dest_domain = g_new0(TestGTreeDomain, 1);
+     TestGTreeDomain *orig_domain = create_first_domain();
+     QEMUFile *fload, *fsave;
+@@ -1127,7 +1157,11 @@ static void test_gtree_load_domain(void)
+ 
+     fload = open_test_file(false);
+ 
+-    vmstate_load_state(fload, &vmstate_domain, dest_domain, 1);
++    ret = vmstate_load_state(fload, &vmstate_domain, dest_domain, 1,
++                             &local_err);
++    if (ret < 0) {
++        warn_report_err(local_err);
++    }
+     eof = qemu_get_byte(fload);
+     g_assert(!qemu_file_get_error(fload));
+     g_assert_cmpint(orig_domain->id, ==, dest_domain->id);
+@@ -1230,6 +1264,8 @@ static void test_gtree_save_iommu(void)
+ 
+ static void test_gtree_load_iommu(void)
+ {
++    Error *local_err = NULL;
++    int ret;
+     TestGTreeIOMMU *dest_iommu = g_new0(TestGTreeIOMMU, 1);
+     TestGTreeIOMMU *orig_iommu = create_iommu();
+     QEMUFile *fsave, *fload;
+@@ -1241,7 +1277,10 @@ static void test_gtree_load_iommu(void)
+     qemu_fclose(fsave);
+ 
+     fload = open_test_file(false);
+-    vmstate_load_state(fload, &vmstate_iommu, dest_iommu, 1);
++    ret = vmstate_load_state(fload, &vmstate_iommu, dest_iommu, 1, &local_err);
++    if (ret < 0) {
++        warn_report_err(local_err);
++    }
+     eof = qemu_get_byte(fload);
+     g_assert(!qemu_file_get_error(fload));
+     g_assert_cmpint(orig_iommu->id, ==, dest_iommu->id);
+@@ -1363,6 +1402,8 @@ static void test_save_qlist(void)
+ 
+ static void test_load_qlist(void)
+ {
++    Error *local_err = NULL;
++    int ret;
+     QEMUFile *fsave, *fload;
+     TestQListContainer *orig_container = alloc_container();
+     TestQListContainer *dest_container = g_new0(TestQListContainer, 1);
+@@ -1376,7 +1417,11 @@ static void test_load_qlist(void)
+     qemu_fclose(fsave);
+ 
+     fload = open_test_file(false);
+-    vmstate_load_state(fload, &vmstate_container, dest_container, 1);
++    ret = vmstate_load_state(fload, &vmstate_container, dest_container, 1,
++                             &local_err);
++    if (ret < 0) {
++        warn_report_err(local_err);
++    }
+     eof = qemu_get_byte(fload);
+     g_assert(!qemu_file_get_error(fload));
+     g_assert_cmpint(eof, ==, QEMU_VM_EOF);
+diff --git a/ui/vdagent.c b/ui/vdagent.c
+index c0746fe5b168fdc7aeb4866de2ba0c3387566649..bec728668de4d2410c3b741bcb0a21deb373dcd3 100644
+--- a/ui/vdagent.c
++++ b/ui/vdagent.c
+@@ -1001,6 +1001,7 @@ static int get_cbinfo(QEMUFile *f, void *pv, size_t size,
+     VDAgentChardev *vd = QEMU_VDAGENT_CHARDEV(pv);
+     struct CBInfoArray cbinfo = {};
+     int i, ret;
++    Error *local_err = NULL;
+ 
+     if (!have_clipboard(vd)) {
+         return 0;
+@@ -1008,8 +1009,10 @@ static int get_cbinfo(QEMUFile *f, void *pv, size_t size,
+ 
+     vdagent_clipboard_peer_register(vd);
+ 
+-    ret = vmstate_load_state(f, &vmstate_cbinfo_array, &cbinfo, 0);
++    ret = vmstate_load_state(f, &vmstate_cbinfo_array, &cbinfo, 0,
++                             &local_err);
+     if (ret) {
++        warn_report_err(local_err);
+         return ret;
+     }
+ 
 
-Changes in v10:
-- Remove the patch to propagate most recent error and the patch of refactoring
-  vmstate_save_state_v(): 23,24. They are not required because we intend to keep
-  the design as is.
-- Added 2 new patches
-  - patch 25: Rename post_save() to cleanup_save() and make it void
-  - patch 20: Return -1 on memory allocation failure in ram.c
-- Pass &error_warn or &error_fatal to capture error or exit on error.
-- Link to v9: https://lore.kernel.org/qemu-devel/20250805-propagate_tpm_error-v9-0-123450810db7@redhat.com
-
-Changes in v9:
-- Re ordering patches such that error is reported in each one of them.
-- format specifier enclosed in '' changed i.e. '%d' changed to %d
-- Reporting errors where they were missed before. Setting errp to NULL
-  in case of retry.
-- Link to v8: https://lore.kernel.org/qemu-devel/20250731-propagate_tpm_error-v8-0-28fd82fdfdb2@redhat.com
-
-Changes in v8:
-- 3 new patches added:
-  - patch 23:
-	- Changes the error propagation by returning the most recent error
-	  to the caller when both save device state and post_save fails.
-  - patch 24:
-	- Refactors the vmstate_save_state_v() function by adding wrapper
-	  functions to separate concerns.
-  - patch 25:
-	- Removes the error variant of the vmstate_save_state()
-	  function introduced in commit 969298f9d7.
-- Use ERRP_GUARD() where there is an errp dereference or an error_prepend call.
-- Pass &error_warn in place of NULL, in vmstate_load_state() calls so
-  that the caller knows about the error.
-- Remove unnecessary null check before setting errp. Dereferencing it is not required.
-- Documentation for the new variants of post/pre save/load hooks added.
-- Some patches, although they received a 'Reviewed-by' tag, have undergone few minor changes,
-	Patch 1 : removed extra space
-	Patch 2 : Commit message changed, refactoring the function to
-		always set errp and return.
-	Patch 8 : Commit message changed.
-	Patch 9 : use error_setg_errno instead of error_setg.
-	Patch 27 : use error_setg_errno instead of error_setg.
-- Link to v7: https://lore.kernel.org/qemu-devel/20250725-propagate_tpm_error-v7-0-d52704443975@redhat.com
-
-Changes in v7:
-- Fix propagating errors in post_save_errp. The latest error encountered is
-  propagated.
-- user-strings in error_prepend() calls now end with a ': ' so that the print is pretty.
-- Change the order of one of the patches.
-- Link to v6: https://lore.kernel.org/qemu-devel/20250721-propagate_tpm_error-v6-0-fef740e15e17@redhat.com
-
-Changes in v6:
-- Incorporated review comments from Daniel and Akihiko, related to few
-  semantic errors and improve error logging.
-- Add one more patch that removes NULL checks after calling
-  qemu_file_get_return_path() because it does not fail.
-- Link to v5: https://lore.kernel.org/qemu-devel/20250717-propagate_tpm_error-v5-0-1f406f88ee65@redhat.com
-
-Changes in v5:
-- Solve a bug that set errp even though it was not NULL, pointed out by Fabiano in v4.
-- Link to v4: https://lore.kernel.org/qemu-devel/20250716-propagate_tpm_error-v4-0-7141902077c0@redhat.com
-
-Changes in v4:
-- Split the patches into smaller ones based on functions. Pass NULL in the
-  caller until errp is made available. Every function that has an
-  Error **errp object passed to it, ensures that it sets the errp object
-  in case of failure.
-- A few more functions within loadvm_process_command() now handle errors using
-  the errp object. I've converted these for consistency, taking Daniel's
-  patches (link above) as a reference.
-- Along with the post_load_errp() hook, other duplicate hooks are also introduced.
-  This will enable us to migrate to the newer versions eventually.
-- Fix some semantic errors, like using error_propagate_prepend() in places where
-  we need to preserve existing behaviour of accumulating the error in local_err
-  and then propagating it to errp. This can be refactored in a later commit.
-- Add more information in commit messages explaining the changes.
-- Link to v3: https://lore.kernel.org/qemu-devel/20250702-propagate_tpm_error-v3-0-986d94540528@redhat.com
-
-Changes in v3:
-- Split the 2nd patch into 2. Introducing post_load_with_error() hook
-  has been separated from using it in the backends TPM module. This is
-  so that it can be acknowledged.
-- Link to v2: https://lore.kernel.org/qemu-devel/20250627-propagate_tpm_error-v2-0-85990c89da29@redhat.com
-
-Changes in v2:
-- Combine the first two changes into one, focusing on passing the
-  Error object (errp) consistently through functions involved in
-  loading the VM's state. Other functions are not yet changed.
-- As suggested in the review comment, add null checks for errp
-  before adding error messages, preventing crashes.
-  We also now correctly set errors when post-copy migration fails.
-- In process_incoming_migration_co(), switch to error_prepend
-  instead of error_setg. This means we now null-check local_err in
-  the "fail" section before using it, preventing dereferencing issues.
-- Link to v1: https://lore.kernel.org/qemu-devel/20250624-propagate_tpm_error-v1-0-2171487a593d@redhat.com
-
----
-Arun Menon (27):
-      migration: push Error **errp into vmstate_subsection_load()
-      migration: push Error **errp into vmstate_load_state()
-      migration: push Error **errp into qemu_loadvm_state_header()
-      migration: push Error **errp into vmstate_load()
-      migration: push Error **errp into loadvm_process_command()
-      migration: push Error **errp into loadvm_handle_cmd_packaged()
-      migration: push Error **errp into qemu_loadvm_state()
-      migration: push Error **errp into qemu_load_device_state()
-      migration: push Error **errp into qemu_loadvm_state_main()
-      migration: push Error **errp into qemu_loadvm_section_start_full()
-      migration: push Error **errp into qemu_loadvm_section_part_end()
-      migration: Update qemu_file_get_return_path() docs and remove dead checks
-      migration: make loadvm_postcopy_handle_resume() void
-      migration: push Error **errp into ram_postcopy_incoming_init()
-      migration: push Error **errp into loadvm_postcopy_handle_advise()
-      migration: push Error **errp into loadvm_postcopy_handle_listen()
-      migration: push Error **errp into loadvm_postcopy_handle_run()
-      migration: push Error **errp into loadvm_postcopy_ram_handle_discard()
-      migration: push Error **errp into loadvm_handle_recv_bitmap()
-      migration: Return -1 on memory allocation failure in ram.c
-      migration: push Error **errp into loadvm_process_enable_colo()
-      migration: push Error **errp into loadvm_postcopy_handle_switchover_start()
-      migration: Capture error in postcopy_ram_listen_thread()
-      migration: Remove error variant of vmstate_save_state() function
-      migration: Rename post_save() to cleanup_save() and make it void
-      migration: Add error-parameterized function variants in VMSD struct
-      backends/tpm: Propagate vTPM error on migration failure
-
- backends/tpm/tpm_emulator.c   |  40 ++---
- docs/devel/migration/main.rst |  21 ++-
- hw/display/virtio-gpu.c       |   5 +-
- hw/pci/pci.c                  |   5 +-
- hw/ppc/spapr_pci.c            |   5 +-
- hw/s390x/virtio-ccw.c         |   4 +-
- hw/scsi/spapr_vscsi.c         |   6 +-
- hw/vfio/pci.c                 |   9 +-
- hw/virtio/virtio-mmio.c       |   5 +-
- hw/virtio/virtio-pci.c        |   4 +-
- hw/virtio/virtio.c            |  13 +-
- include/migration/colo.h      |   2 +-
- include/migration/vmstate.h   |  20 ++-
- migration/colo.c              |  10 +-
- migration/cpr.c               |   6 +-
- migration/migration.c         |  33 ++---
- migration/postcopy-ram.c      |   9 +-
- migration/postcopy-ram.h      |   2 +-
- migration/qemu-file.c         |   1 -
- migration/ram.c               |  16 +-
- migration/ram.h               |   4 +-
- migration/savevm.c            | 337 ++++++++++++++++++++++++------------------
- migration/savevm.h            |   7 +-
- migration/vmstate-types.c     |  45 ++++--
- migration/vmstate.c           | 118 ++++++++++-----
- target/arm/machine.c          |   6 +-
- tests/unit/test-vmstate.c     |  83 +++++++++--
- ui/vdagent.c                  |   8 +-
- 28 files changed, 522 insertions(+), 302 deletions(-)
----
-base-commit: e0006a86615baa70bc9d8b183e528aed91c1ac90
-change-id: 20250624-propagate_tpm_error-bf4ae6c23d30
-
-Best regards,
 -- 
-Arun Menon <armenon@redhat.com>
+2.50.1
 
 

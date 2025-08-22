@@ -4,102 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30376CA0EED
-	for <qemu-arm@archiver.kernel.org>; Fri, 22 Aug 2025 13:57:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A438CA0EED
+	for <qemu-arm@archiver.kernel.org>; Fri, 22 Aug 2025 14:17:03 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1upSD8-0005kK-8K; Fri, 22 Aug 2025 09:53:42 -0400
+	id 1upSZM-0000BM-Bi; Fri, 22 Aug 2025 10:16:40 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cjchen@igel.co.jp>) id 1upO21-00065I-Qf
- for qemu-arm@nongnu.org; Fri, 22 Aug 2025 05:25:58 -0400
-Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <cjchen@igel.co.jp>) id 1upO1y-0007JC-Oe
- for qemu-arm@nongnu.org; Fri, 22 Aug 2025 05:25:57 -0400
-Received: by mail-pl1-x632.google.com with SMTP id
- d9443c01a7336-2445806e03cso23150135ad.1
- for <qemu-arm@nongnu.org>; Fri, 22 Aug 2025 02:25:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=igel-co-jp.20230601.gappssmtp.com; s=20230601; t=1755854753; x=1756459553;
- darn=nongnu.org; 
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=4n1o/3nULdO/4vcLp6ocaeLLrGhDDgu+DIftv97o3kU=;
- b=upys3JB4yKZU3ArIe++mskr14PrqnT5rPWeR6EO7s0Yqg/IlgGAjC7LaU8tAe5h+X/
- 9p8bTY5elv5QATxT1TEYGRO370kAJCog70hSNKG+HLOu8+3hPFhqpIskttRA7QH8eBMh
- dW+WhDxFDAIDgsQKqF+XhTzCkPvUAfeS14dvfxIy+nGSs4pqO9975J08lNov7JeB9Zt+
- eXGTuwh76JzjrDmt4nEIMc+324+L2IhhluBC7JI/cBZTdzL9qGf0InhM6RXdo1PjTtgw
- z9KdYK2g/8KujQjEdiluiui7EAiAAdO5wmo9lBik28wCjvj50/lczhKJ28bk3emkar8F
- 7DrA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1755854753; x=1756459553;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=4n1o/3nULdO/4vcLp6ocaeLLrGhDDgu+DIftv97o3kU=;
- b=Vx0X0sk5veXe4XJb+mjbujWf+ZCUqBhHv+/1+oCjzIkXzEV5GSA5+nSHsL99d0jIJr
- onBDCNAup338IXk1bPRJ49FcaO6YEVumpRmRoOrbmqPyx2CW8tNv60B63qh+6tIV+PvH
- axp9SQvYAS8zFIWbGNOGsLmXA0tn/Pw5ez5ZV8yfSEnSLz2+GJHZtYySryhDk6oYYgeU
- RBX2WXbd8+bbUvlD2iTAdm5RJhXB9wCSNO7UybLL1JJZYfz0kiGErQDD37BuAwIxPxSm
- ZMwC+sMz7MMyiWZ95aBNa1OfBjNvqFBue9Zqg/I4ZDVJMDUm1B6n1v08nQ8FyM/N2u+C
- BYSg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXsTzC1dRHuKVCQoCOaDpPWKTStHfmp1WZMszNUUJIipfZnLLSVWFB5qGk5Wd5j1D7mHUkIeVrhew==@nongnu.org
-X-Gm-Message-State: AOJu0Yz1zpFJ8HZ13OTosygF5rEG9L8fgIxpIiNp+dwhkaILmxlrYP3x
- +otoCqq+VVzrtWFhynAfFYjoU4tfj93CJIm3XBIVQISVXtmasCRewaQXAir4Bagis8E=
-X-Gm-Gg: ASbGncvvN6JWgUkuOBa018m7h204zYaH3qVpMh8gYaw8Y/IS5sE+0svRvNBN4orXnAu
- oZOLlyeiAi4bdfMnPLx4iJtIR9lgGU39a7+Ign/G4uQrjjvmw1v3OrR+g2Cifb4dZWcQduvfpMq
- vJq4+UvAunkEjCEUgPN7aq1E4cr38lBaIg/vYGH+1IkQEOai1VgmET0GJHUWI4nS/juzzOoM2/j
- cgQsQCQ5pfsPc5+afEXsf1XKofH/YxmCDNIjIqa6OgT4X+cnDHXhdzIvrS5hs34r7GglwDymKls
- TkExtF9FWm+HPdVxHAdkKOFCFWEidt+ZhUG79phcsSt/L8lmBR/9lJvIIpG6kHryE231jziv1Aq
- PEwOmmE8gaT8lB6oL2fSK3UOmBU0rQV9nHnv8thBcpHBbWm1Ongl6
-X-Google-Smtp-Source: AGHT+IEnJxA4ELufqmF+83vXLTGSupOh5K2TH6ao0bmRfoYOFqouqA0TtrEayssE+w//NktDX9P0JA==
-X-Received: by 2002:a17:902:ebc5:b0:246:255a:1915 with SMTP id
- d9443c01a7336-2462eea840emr32074745ad.27.1755854753093; 
- Fri, 22 Aug 2025 02:25:53 -0700 (PDT)
-Received: from warg.hq.igel.co.jp (napt.igel.co.jp. [219.106.231.132])
- by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-245ed4c6fb7sm78560215ad.89.2025.08.22.02.25.46
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 22 Aug 2025 02:25:52 -0700 (PDT)
-From: CJ Chen <cjchen@igel.co.jp>
-To: qemu-devel@nongnu.org, qemu-block@nongnu.org, qemu-riscv@nongnu.org,
- qemu-arm@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>, Keith Busch <kbusch@kernel.org>,
- Klaus Jensen <its@irrelevant.dk>, Jesper Devantier <foss@defmacro.it>,
- Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- Weiwei Li <liwei1518@gmail.com>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Tyrone Ting <kfting@nuvoton.com>, Hao Wu <wuhaotsh@google.com>,
- Max Filippov <jcmvbkbc@gmail.com>, Peter Xu <peterx@redhat.com>,
- David Hildenbrand <david@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
- Tomoyuki Hirose <hrstmyk811m@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>, CJ Chen <cjchen@igel.co.jp>
-Subject: [RFC PATCH v2 8/9] hw/misc: add test device for memory access
-Date: Fri, 22 Aug 2025 18:24:09 +0900
-Message-Id: <20250822092410.25833-9-cjchen@igel.co.jp>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20250822092410.25833-1-cjchen@igel.co.jp>
-References: <20250822092410.25833-1-cjchen@igel.co.jp>
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::632;
- envelope-from=cjchen@igel.co.jp; helo=mail-pl1-x632.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ (Exim 4.90_1) (envelope-from <milesg@linux.ibm.com>)
+ id 1upSZJ-0000Ap-B1; Fri, 22 Aug 2025 10:16:37 -0400
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <milesg@linux.ibm.com>)
+ id 1upSZD-0007wV-Aa; Fri, 22 Aug 2025 10:16:37 -0400
+Received: from pps.filterd (m0360083.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 57M9CKqX012122;
+ Fri, 22 Aug 2025 14:16:22 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=cc
+ :content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:reply-to:subject:to; s=pp1;
+ bh=Fi+Ab3Zfd7AsiVm0oH7J4X4uKZMf+pBGmIdWC98fHjE=; b=o1/KSMxniylv
+ vjoQgYjgUvABMcdoXiwwLc7TPXvISROhTBI8+xHa2bCnovV799fK4kh1b4wH1Yqy
+ USCr6ihOmHCSycNJg6xThkonLHu/mY+N6dG5QxgZy6CusUwAP+9n8+1ohLd6YW1I
+ E5mYNz1oNhiP/E2Z5VpvkrXy3P9l6pviIeEh2LdRRF4H5Dqvh649/RMOdFdfOlA3
+ mqowWevZ6dKKEBGOGFcvkWPvUQnImOxTOv6G6n3G8vH4PT1vWWI6UygCxfY9hakr
+ hrPfSo2EDPT1QlXNeMLCk1LMlrSwj9KVzy8vk0rA0Sz2bOxJ1mcHwYNTb/R3wMhI
+ giI1SBTIGw==
+Received: from ppma11.dal12v.mail.ibm.com
+ (db.9e.1632.ip4.static.sl-reverse.com [50.22.158.219])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 48n38vpypf-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Fri, 22 Aug 2025 14:16:22 +0000 (GMT)
+Received: from pps.filterd (ppma11.dal12v.mail.ibm.com [127.0.0.1])
+ by ppma11.dal12v.mail.ibm.com (8.18.1.2/8.18.1.2) with ESMTP id 57MCPmsP031902;
+ Fri, 22 Aug 2025 14:16:21 GMT
+Received: from smtprelay02.wdc07v.mail.ibm.com ([172.16.1.69])
+ by ppma11.dal12v.mail.ibm.com (PPS) with ESMTPS id 48my5ydmrf-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Fri, 22 Aug 2025 14:16:21 +0000
+Received: from smtpav02.wdc07v.mail.ibm.com (smtpav02.wdc07v.mail.ibm.com
+ [10.39.53.229])
+ by smtprelay02.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 57MEGKmv29491760
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Fri, 22 Aug 2025 14:16:20 GMT
+Received: from smtpav02.wdc07v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 7DF5658059;
+ Fri, 22 Aug 2025 14:16:20 +0000 (GMT)
+Received: from smtpav02.wdc07v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 12B6F58058;
+ Fri, 22 Aug 2025 14:16:20 +0000 (GMT)
+Received: from mambor8.rchland.ibm.com (unknown [9.10.239.198])
+ by smtpav02.wdc07v.mail.ibm.com (Postfix) with ESMTP;
+ Fri, 22 Aug 2025 14:16:19 +0000 (GMT)
+Message-ID: <1eee380615318374a4ab5fc5874d5b1906428997.camel@linux.ibm.com>
+Subject: Re: [PATCH] hw/gpio/pca9554: Avoid leak in pca9554_set_pin()
+From: Miles Glenn <milesg@linux.ibm.com>
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: qemu-ppc@nongnu.org
+Date: Fri, 22 Aug 2025 09:16:19 -0500
+In-Reply-To: <20250821154459.2417976-1-peter.maydell@linaro.org>
+References: <20250821154459.2417976-1-peter.maydell@linaro.org>
+Organization: IBM
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5 (3.28.5-27.el8_10) 
+Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
+X-TM-AS-GCONF: 00
+X-Proofpoint-GUID: KkVZ1rtlSfEh6qNw7gCxZAFhPkwRwc7z
+X-Authority-Analysis: v=2.4 cv=IrhHsL/g c=1 sm=1 tr=0 ts=68a87bb6 cx=c_pps
+ a=aDMHemPKRhS1OARIsFnwRA==:117 a=aDMHemPKRhS1OARIsFnwRA==:17
+ a=IkcTkHD0fZMA:10 a=2OwXVqhp2XgA:10 a=VnNF1IyMAAAA:8 a=69wJf7TsAAAA:8
+ a=KKAkSRfTAAAA:8 a=cs6J414EKrr35_aV8MEA:9 a=QEXdDO2ut3YA:10
+ a=Fg1AiH1G6rFz08G2ETeA:22 a=cvBusfyB2V15izCimMoJ:22
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwODE5MDIyMiBTYWx0ZWRfX6czpAHgW0CeW
+ qMqW27DrCoLzKF+sMqDi8Me61LLDXE+ZLpGZWz3aG3zAkCTUmUp1g8/YpmHywiq3Zgc764wP7IF
+ 9Pxc52q8UKnTHrEtoGR24hVSXvj9VQHwU83JG+uB1bAB83D5ZzlO8qm09QZAzy2J1DKOOtfL5y6
+ hWTTIBFzYuCo0wNeg2HNBjJVXMMStErTawta9wcy1p/xnKQaiM3YyI1DZjhoH5Klqjur5IPDJzR
+ q6ceiHCStSoVTOlJrpwUr+y22LJPVCd5B7IIPn93GfdBTUZ7ACCnA0bxsCDQymTXZmo6zbeeujE
+ e1nwkY4Oau6+jY3LY0he+DBQB9DpYT5113NPeJV8+LfsVAJ0wfvBwvel+yovADposVcP7WHST7g
+ JSOnOvLTfgOGv2Qdp6O+UB7TERqDWQ==
+X-Proofpoint-ORIG-GUID: KkVZ1rtlSfEh6qNw7gCxZAFhPkwRwc7z
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.9,FMLib:17.12.80.40
+ definitions=2025-08-22_04,2025-08-20_03,2025-03-28_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ phishscore=0 malwarescore=0 bulkscore=0 suspectscore=0 spamscore=0
+ lowpriorityscore=0 impostorscore=0 adultscore=0 priorityscore=1501
+ clxscore=1015 classifier=typeunknown authscore=0 authtc= authcc=
+ route=outbound adjust=0 reason=mlx scancount=1 engine=8.19.0-2508110000
+ definitions=main-2508190222
+Received-SPF: pass client-ip=148.163.156.1; envelope-from=milesg@linux.ibm.com;
+ helo=mx0a-001b2d01.pphosted.com
+X-Spam_score_int: -26
+X-Spam_score: -2.7
+X-Spam_bar: --
+X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_LOW=-0.7,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Fri, 22 Aug 2025 09:53:38 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -111,510 +118,68 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: milesg@linux.ibm.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Tomoyuki Hirose <hrstmyk811m@gmail.com>
+Reviewed-by: Glenn Miles <milesg@linux.ibm.com>
 
-This commit adds a test device for checking memory access. The test
-device generates memory regions that covers all the legal parameter
-patterns. With this device, we can check the handling of
-reading/writing the MemoryRegion is correct.
+Thanks,
 
-Co-developed-by: CJ Chen <cjchen@igel.co.jp>
-Signed-off-by: CJ Chen <cjchen@igel.co.jp>
-Tested-by: CJ Chen <cjchen@igel.co.jp>
-Suggested-by: Peter Maydell <peter.maydell@linaro.org>
----
-v2:
-   - Fix the typo of ops size of big-l-valid.
-   - Replaced the huge macro blocks with dynamic loops that fill in
-     the `MemoryRegionOps` arrays at runtime.
-   - Remove test cases valid.unaligned = false,impl.unaligned = true.
----
- hw/misc/Kconfig                     |   4 +
- hw/misc/memaccess-testdev.c         | 331 ++++++++++++++++++++++++++++
- hw/misc/meson.build                 |   1 +
- include/hw/misc/memaccess-testdev.h | 104 +++++++++
- 4 files changed, 440 insertions(+)
- create mode 100644 hw/misc/memaccess-testdev.c
- create mode 100644 include/hw/misc/memaccess-testdev.h
+Glenn
 
-diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
-index ec0fa5aa9f..ff7d7c65ef 100644
---- a/hw/misc/Kconfig
-+++ b/hw/misc/Kconfig
-@@ -25,6 +25,10 @@ config PCI_TESTDEV
-     default y if TEST_DEVICES
-     depends on PCI
- 
-+config MEMACCESS_TESTDEV
-+    bool
-+    default y if TEST_DEVICES
-+
- config EDU
-     bool
-     default y if TEST_DEVICES
-diff --git a/hw/misc/memaccess-testdev.c b/hw/misc/memaccess-testdev.c
-new file mode 100644
-index 0000000000..1aaa52c69f
---- /dev/null
-+++ b/hw/misc/memaccess-testdev.c
-@@ -0,0 +1,331 @@
-+/*
-+ * QEMU memory access test device
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ *
-+ * Author: Tomoyuki HIROSE <hrstmyk811m@gmail.com>
-+ *
-+ * This device is used to test memory acccess, like:
-+ * qemu-system-x86_64 -device memaccess-testdev,address=0x10000000
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "system/address-spaces.h"
-+#include "system/memory.h"
-+#include "hw/qdev-core.h"
-+#include "hw/qdev-properties.h"
-+#include "qapi/error.h"
-+#include "qemu/typedefs.h"
-+#include "qom/object.h"
-+#include "hw/misc/memaccess-testdev.h"
-+
-+typedef bool (*skip_func_ptr)(uint32_t valid_max, uint32_t valid_min,
-+                              bool valid_unaligned, uint32_t impl_max,
-+                              uint32_t impl_min, bool impl_unaligned);
-+
-+typedef struct MrOpsList {
-+    const char *name;
-+    MemoryRegionOps *ops_array;
-+    const size_t ops_array_len;
-+    const size_t offset_idx;
-+    skip_func_ptr skip_fn;
-+    bool is_little;
-+} MrOpsList;
-+
-+MemoryRegionOps ops_list_little_b_valid[N_OPS_LIST_LITTLE_B_VALID];
-+MemoryRegionOps ops_list_little_b_invalid[N_OPS_LIST_LITTLE_B_INVALID];
-+MemoryRegionOps ops_list_little_w_valid[N_OPS_LIST_LITTLE_W_VALID];
-+MemoryRegionOps ops_list_little_w_invalid[N_OPS_LIST_LITTLE_W_INVALID];
-+MemoryRegionOps ops_list_little_l_valid[N_OPS_LIST_LITTLE_L_VALID];
-+MemoryRegionOps ops_list_little_l_invalid[N_OPS_LIST_LITTLE_L_INVALID];
-+MemoryRegionOps ops_list_little_q_valid[N_OPS_LIST_LITTLE_Q_VALID];
-+MemoryRegionOps ops_list_little_q_invalid[N_OPS_LIST_LITTLE_Q_INVALID];
-+MemoryRegionOps ops_list_big_b_valid[N_OPS_LIST_BIG_B_VALID];
-+MemoryRegionOps ops_list_big_b_invalid[N_OPS_LIST_BIG_B_INVALID];
-+MemoryRegionOps ops_list_big_w_valid[N_OPS_LIST_BIG_W_VALID];
-+MemoryRegionOps ops_list_big_w_invalid[N_OPS_LIST_BIG_W_INVALID];
-+MemoryRegionOps ops_list_big_l_valid[N_OPS_LIST_BIG_L_VALID];
-+MemoryRegionOps ops_list_big_l_invalid[N_OPS_LIST_BIG_L_INVALID];
-+MemoryRegionOps ops_list_big_q_valid[N_OPS_LIST_BIG_Q_VALID];
-+MemoryRegionOps ops_list_big_q_invalid[N_OPS_LIST_BIG_Q_INVALID];
-+
-+static bool skip_core(uint32_t required_min, bool valid_test,
-+                      uint32_t valid_max, uint32_t valid_min,
-+                      bool valid_unaligned, uint32_t impl_max,
-+                      uint32_t impl_min, bool impl_unaligned)
-+{
-+    if (valid_min != required_min) {
-+        return true;
-+    }
-+    if (valid_test) {
-+        if (!valid_unaligned) {
-+            return true;
-+        }
-+    } else {
-+        if (valid_unaligned || impl_unaligned) {
-+            return true;
-+        }
-+    }
-+    if (valid_max < valid_min) {
-+        return true;
-+    }
-+
-+    if (impl_max < impl_min) {
-+        return true;
-+    }
-+
-+    return false;
-+}
-+
-+#define DEFINE_SKIP_VALID_INVALID_FN(NAME, REQ_MIN)                      \
-+    static bool skip_##NAME##_valid(uint32_t vm, uint32_t vn, bool vu,   \
-+                                    uint32_t im, uint32_t in, bool iu)   \
-+    {                                                                    \
-+        return skip_core(REQ_MIN, true, vm, vn, vu, im, in, iu);         \
-+    }                                                                    \
-+                                                                         \
-+    static bool skip_##NAME##_invalid(uint32_t vm, uint32_t vn, bool vu, \
-+                                      uint32_t im, uint32_t in, bool iu) \
-+    {                                                                    \
-+        return skip_core(REQ_MIN, false, vm, vn, vu, im, in, iu);        \
-+    }
-+
-+DEFINE_SKIP_VALID_INVALID_FN(b, 1)
-+DEFINE_SKIP_VALID_INVALID_FN(w, 2)
-+DEFINE_SKIP_VALID_INVALID_FN(l, 4)
-+DEFINE_SKIP_VALID_INVALID_FN(q, 8)
-+
-+static void testdev_init_memory_region(MemoryRegion *mr,
-+                                       Object *owner,
-+                                       const MemoryRegionOps *ops,
-+                                       void *opaque,
-+                                       const char *name,
-+                                       uint64_t size,
-+                                       MemoryRegion *container,
-+                                       hwaddr container_offset)
-+{
-+    memory_region_init_io(mr, owner, ops, opaque, name, size);
-+    memory_region_add_subregion(container, container_offset, mr);
-+}
-+
-+static void testdev_init_from_mr_ops_list(MemAccessTestDev *testdev,
-+                                          const MrOpsList *l)
-+{
-+    for (size_t i = 0; i < l->ops_array_len; i++) {
-+        g_autofree gchar *name = g_strdup_printf("%s-%ld", l->name, i);
-+        testdev_init_memory_region(&testdev->memory_regions[l->offset_idx + i],
-+                                   OBJECT(testdev), &l->ops_array[i],
-+                                   testdev->mr_data[l->offset_idx + i],
-+                                   name,
-+                                   MEMACCESS_TESTDEV_REGION_SIZE,
-+                                   &testdev->container,
-+                                   MEMACCESS_TESTDEV_REGION_SIZE *
-+                                   (l->offset_idx + i));
-+    }
-+}
-+
-+#define LITTLE 1
-+#define BIG    0
-+#define _DEFINE_MR_OPS_LIST(_n, _ops, _len, _off, _skipfn, _is_little) \
-+{                                                                      \
-+    .name          = (_n),                                             \
-+    .ops_array     = (_ops),                                           \
-+    .ops_array_len = (_len),                                           \
-+    .offset_idx    = (_off),                                           \
-+    .skip_fn       = (_skipfn),                                        \
-+    .is_little     = (_is_little),                                     \
-+}
-+
-+#define DEFINE_MR_OPS_LIST(e, E, w, W, v, V)                    \
-+    _DEFINE_MR_OPS_LIST(                                        \
-+        #e "-" #w "-" #v,                /* .name            */ \
-+        ops_list_##e##_##w##_##v,        /* .ops_array       */ \
-+        N_OPS_LIST_##E##_##W##_##V,      /* .ops_array_len   */ \
-+        OFF_IDX_OPS_LIST_##E##_##W##_##V,/* .offset_idx      */ \
-+        skip_##w##_##v,                  /* .skip_fn         */ \
-+        E /* .is_little => 1 = little endian, 0 = big endian */ \
-+    )
-+
-+static MrOpsList mr_ops_list[] = {
-+    DEFINE_MR_OPS_LIST(little, LITTLE, b, B, valid,   VALID),
-+    DEFINE_MR_OPS_LIST(little, LITTLE, b, B, invalid, INVALID),
-+    DEFINE_MR_OPS_LIST(little, LITTLE, w, W, valid,   VALID),
-+    DEFINE_MR_OPS_LIST(little, LITTLE, w, W, invalid, INVALID),
-+    DEFINE_MR_OPS_LIST(little, LITTLE, l, L, valid,   VALID),
-+    DEFINE_MR_OPS_LIST(little, LITTLE, l, L, invalid, INVALID),
-+    DEFINE_MR_OPS_LIST(little, LITTLE, q, Q, valid,   VALID),
-+    DEFINE_MR_OPS_LIST(little, LITTLE, q, Q, invalid, INVALID),
-+    DEFINE_MR_OPS_LIST(big,    BIG,    b, B, valid,   VALID),
-+    DEFINE_MR_OPS_LIST(big,    BIG,    b, B, invalid, INVALID),
-+    DEFINE_MR_OPS_LIST(big,    BIG,    w, W, valid,   VALID),
-+    DEFINE_MR_OPS_LIST(big,    BIG,    w, W, invalid, INVALID),
-+    DEFINE_MR_OPS_LIST(big,    BIG,    l, L, valid,   VALID),
-+    DEFINE_MR_OPS_LIST(big,    BIG,    l, L, invalid, INVALID),
-+    DEFINE_MR_OPS_LIST(big,    BIG,    q, Q, valid,   VALID),
-+    DEFINE_MR_OPS_LIST(big,    BIG,    q, Q, invalid, INVALID),
-+};
-+#undef LITTLE
-+#undef BIG
-+
-+static uint64_t memaccess_testdev_read_little(void *opaque, hwaddr addr,
-+                                              unsigned int size)
-+{
-+    g_assert(addr + size < MEMACCESS_TESTDEV_REGION_SIZE);
-+    void *s = (uint8_t *)opaque + addr;
-+    return ldn_le_p(s, size);
-+}
-+
-+static void memaccess_testdev_write_little(void *opaque, hwaddr addr,
-+                                           uint64_t data, unsigned int size)
-+{
-+    g_assert(addr + size < MEMACCESS_TESTDEV_REGION_SIZE);
-+    void *d = (uint8_t *)opaque + addr;
-+    stn_le_p(d, size, data);
-+}
-+
-+static uint64_t memaccess_testdev_read_big(void *opaque, hwaddr addr,
-+                                           unsigned int size)
-+{
-+    g_assert(addr + size < MEMACCESS_TESTDEV_REGION_SIZE);
-+    void *s = (uint8_t *)opaque + addr;
-+    return ldn_be_p(s, size);
-+}
-+
-+static void memaccess_testdev_write_big(void *opaque, hwaddr addr,
-+                                        uint64_t data, unsigned int size)
-+{
-+    g_assert(addr + size < MEMACCESS_TESTDEV_REGION_SIZE);
-+    void *d = (uint8_t *)opaque + addr;
-+    stn_be_p(d, size, data);
-+}
-+
-+static void fill_ops_list(MemoryRegionOps *ops,
-+                          skip_func_ptr fptr,
-+                          size_t ops_len,
-+                          bool is_little)
-+{
-+    static const uint32_t sizes[] = { 1, 2, 4, 8 };
-+    static const bool bools[] = { false, true };
-+    int idx = 0;
-+
-+    for (int vMaxIdx = 0; vMaxIdx < 4; vMaxIdx++) {
-+        for (int vMinIdx = 0; vMinIdx < 4; vMinIdx++) {
-+            for (int vUIdx = 0; vUIdx < 2; vUIdx++) {
-+                for (int iMaxIdx = 0; iMaxIdx < 4; iMaxIdx++) {
-+                    for (int iMinIdx = 0; iMinIdx < 4; iMinIdx++) {
-+                        for (int iUIdx = 0; iUIdx < 2; iUIdx++) {
-+                            uint32_t valid_max       = sizes[vMaxIdx];
-+                            uint32_t valid_min       = sizes[vMinIdx];
-+                            bool     valid_unaligned = bools[vUIdx];
-+                            uint32_t impl_max        = sizes[iMaxIdx];
-+                            uint32_t impl_min        = sizes[iMinIdx];
-+                            bool     impl_unaligned  = bools[iUIdx];
-+
-+                            if (!fptr(valid_max, valid_min, valid_unaligned,
-+                                      impl_max, impl_min, impl_unaligned))
-+                            {
-+                                const MemoryRegionOps new_op = {
-+                                    .read = is_little ?
-+                                            memaccess_testdev_read_little :
-+                                            memaccess_testdev_read_big,
-+                                    .write = is_little ?
-+                                             memaccess_testdev_write_little :
-+                                             memaccess_testdev_write_big,
-+                                    .endianness = is_little ?
-+                                                  DEVICE_LITTLE_ENDIAN :
-+                                                  DEVICE_BIG_ENDIAN,
-+                                    .valid = {
-+                                        .max_access_size = valid_max,
-+                                        .min_access_size = valid_min,
-+                                        .unaligned      = valid_unaligned,
-+                                    },
-+                                    .impl = {
-+                                        .max_access_size = impl_max,
-+                                        .min_access_size = impl_min,
-+                                        .unaligned       = impl_unaligned,
-+                                    },
-+                                };
-+
-+                                ops[idx] = new_op;
-+                                idx++;
-+                                if (idx > ops_len) {
-+                                    g_assert_not_reached();
-+                                }
-+                            }
-+                        }
-+                    }
-+                }
-+            }
-+        }
-+    }
-+}
-+
-+#define N_MR_OPS_LIST (sizeof(mr_ops_list) / sizeof(MrOpsList))
-+
-+static void init_testdev(MemAccessTestDev *testdev)
-+{
-+    memory_region_init(&testdev->container, OBJECT(testdev), "memtest-regions",
-+                       MEMACCESS_TESTDEV_REGION_SIZE * N_OPS_LIST);
-+    testdev->mr_data = g_malloc(MEMACCESS_TESTDEV_MR_DATA_SIZE);
-+
-+    for (size_t i = 0; i < N_MR_OPS_LIST; i++) {
-+        fill_ops_list(
-+            mr_ops_list[i].ops_array,
-+            mr_ops_list[i].skip_fn,
-+            mr_ops_list[i].ops_array_len,
-+            mr_ops_list[i].is_little
-+        );
-+        testdev_init_from_mr_ops_list(testdev, &mr_ops_list[i]);
-+    }
-+
-+    memory_region_add_subregion(get_system_memory(), testdev->base,
-+                                &testdev->container);
-+}
-+
-+static void memaccess_testdev_realize(DeviceState *dev, Error **errp)
-+{
-+    MemAccessTestDev *d = MEM_ACCESS_TEST_DEV(dev);
-+
-+    if (d->base == UINT64_MAX) {
-+        error_setg(errp, "base address is not assigned");
-+        return;
-+    }
-+
-+    init_testdev(d);
-+}
-+
-+static void memaccess_testdev_unrealize(DeviceState *dev)
-+{
-+    MemAccessTestDev *d = MEM_ACCESS_TEST_DEV(dev);
-+    g_free(d->mr_data);
-+}
-+
-+static Property memaccess_testdev_props[] = {
-+    DEFINE_PROP_UINT64("address", MemAccessTestDev, base, UINT64_MAX),
-+};
-+
-+static void memaccess_testdev_class_init(ObjectClass *klass, const void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    dc->realize = memaccess_testdev_realize;
-+    dc->unrealize = memaccess_testdev_unrealize;
-+    device_class_set_props_n(dc,
-+                             memaccess_testdev_props,
-+                             ARRAY_SIZE(memaccess_testdev_props));
-+    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
-+}
-+
-+static const TypeInfo memaccess_testdev_info = {
-+    .name = TYPE_MEM_ACCESS_TEST_DEV,
-+    .parent = TYPE_DEVICE,
-+    .instance_size = sizeof(MemAccessTestDev),
-+    .class_init = memaccess_testdev_class_init,
-+};
-+
-+static void memaccess_testdev_register_types(void)
-+{
-+    type_register_static(&memaccess_testdev_info);
-+}
-+
-+type_init(memaccess_testdev_register_types)
-diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-index 6d47de482c..f06568aaed 100644
---- a/hw/misc/meson.build
-+++ b/hw/misc/meson.build
-@@ -4,6 +4,7 @@ system_ss.add(when: 'CONFIG_FW_CFG_DMA', if_true: files('vmcoreinfo.c'))
- system_ss.add(when: 'CONFIG_ISA_DEBUG', if_true: files('debugexit.c'))
- system_ss.add(when: 'CONFIG_ISA_TESTDEV', if_true: files('pc-testdev.c'))
- system_ss.add(when: 'CONFIG_PCI_TESTDEV', if_true: files('pci-testdev.c'))
-+system_ss.add(when: 'CONFIG_MEMACCESS_TESTDEV', if_true: files('memaccess-testdev.c'))
- system_ss.add(when: 'CONFIG_UNIMP', if_true: files('unimp.c'))
- system_ss.add(when: 'CONFIG_EMPTY_SLOT', if_true: files('empty_slot.c'))
- system_ss.add(when: 'CONFIG_LED', if_true: files('led.c'))
-diff --git a/include/hw/misc/memaccess-testdev.h b/include/hw/misc/memaccess-testdev.h
-new file mode 100644
-index 0000000000..c1b17297a2
---- /dev/null
-+++ b/include/hw/misc/memaccess-testdev.h
-@@ -0,0 +1,104 @@
-+/*
-+ * QEMU memory access test device header
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ *
-+ * Author: Tomoyuki HIROSE <hrstmyk811m@gmail.com>
-+ */
-+
-+#ifndef HW_MISC_MEMACCESS_TESTDEV_H
-+#define HW_MISC_MEMACCESS_TESTDEV_H
-+
-+#include "system/memory.h"
-+#include "hw/qdev-core.h"
-+
-+#define TYPE_MEM_ACCESS_TEST_DEV "memaccess-testdev"
-+
-+#define MEMACCESS_TESTDEV_REGION_SIZE 32
-+
-+#define N_OPS_LIST_LITTLE_B_VALID   80
-+#define N_OPS_LIST_LITTLE_B_INVALID 40
-+#define N_OPS_LIST_LITTLE_W_VALID   60
-+#define N_OPS_LIST_LITTLE_W_INVALID 30
-+#define N_OPS_LIST_LITTLE_L_VALID   40
-+#define N_OPS_LIST_LITTLE_L_INVALID 20
-+#define N_OPS_LIST_LITTLE_Q_VALID   20
-+#define N_OPS_LIST_LITTLE_Q_INVALID 10
-+#define N_OPS_LIST_BIG_B_VALID      80
-+#define N_OPS_LIST_BIG_B_INVALID    40
-+#define N_OPS_LIST_BIG_W_VALID      60
-+#define N_OPS_LIST_BIG_W_INVALID    30
-+#define N_OPS_LIST_BIG_L_VALID      40
-+#define N_OPS_LIST_BIG_L_INVALID    20
-+#define N_OPS_LIST_BIG_Q_VALID      20
-+#define N_OPS_LIST_BIG_Q_INVALID    10
-+
-+#define N_OPS_LIST \
-+    (N_OPS_LIST_LITTLE_B_VALID   + \
-+     N_OPS_LIST_LITTLE_B_INVALID + \
-+     N_OPS_LIST_LITTLE_W_VALID   + \
-+     N_OPS_LIST_LITTLE_W_INVALID + \
-+     N_OPS_LIST_LITTLE_L_VALID   + \
-+     N_OPS_LIST_LITTLE_L_INVALID + \
-+     N_OPS_LIST_LITTLE_Q_VALID   + \
-+     N_OPS_LIST_LITTLE_Q_INVALID + \
-+     N_OPS_LIST_BIG_B_VALID      + \
-+     N_OPS_LIST_BIG_B_INVALID    + \
-+     N_OPS_LIST_BIG_W_VALID      + \
-+     N_OPS_LIST_BIG_W_INVALID    + \
-+     N_OPS_LIST_BIG_L_VALID      + \
-+     N_OPS_LIST_BIG_L_INVALID    + \
-+     N_OPS_LIST_BIG_Q_VALID      + \
-+     N_OPS_LIST_BIG_Q_INVALID)
-+
-+#define OFF_IDX_OPS_LIST_LITTLE_B_VALID \
-+    (0)
-+#define OFF_IDX_OPS_LIST_LITTLE_B_INVALID \
-+    (OFF_IDX_OPS_LIST_LITTLE_B_VALID + N_OPS_LIST_LITTLE_B_VALID)
-+#define OFF_IDX_OPS_LIST_LITTLE_W_VALID \
-+    (OFF_IDX_OPS_LIST_LITTLE_B_INVALID + N_OPS_LIST_LITTLE_B_INVALID)
-+#define OFF_IDX_OPS_LIST_LITTLE_W_INVALID \
-+    (OFF_IDX_OPS_LIST_LITTLE_W_VALID + N_OPS_LIST_LITTLE_W_VALID)
-+#define OFF_IDX_OPS_LIST_LITTLE_L_VALID \
-+    (OFF_IDX_OPS_LIST_LITTLE_W_INVALID + N_OPS_LIST_LITTLE_W_INVALID)
-+#define OFF_IDX_OPS_LIST_LITTLE_L_INVALID \
-+    (OFF_IDX_OPS_LIST_LITTLE_L_VALID + N_OPS_LIST_LITTLE_L_VALID)
-+#define OFF_IDX_OPS_LIST_LITTLE_Q_VALID \
-+    (OFF_IDX_OPS_LIST_LITTLE_L_INVALID + N_OPS_LIST_LITTLE_L_INVALID)
-+#define OFF_IDX_OPS_LIST_LITTLE_Q_INVALID \
-+    (OFF_IDX_OPS_LIST_LITTLE_Q_VALID + N_OPS_LIST_LITTLE_Q_VALID)
-+#define OFF_IDX_OPS_LIST_BIG_B_VALID \
-+    (OFF_IDX_OPS_LIST_LITTLE_Q_INVALID + N_OPS_LIST_LITTLE_Q_INVALID)
-+#define OFF_IDX_OPS_LIST_BIG_B_INVALID \
-+    (OFF_IDX_OPS_LIST_BIG_B_VALID + N_OPS_LIST_BIG_B_VALID)
-+#define OFF_IDX_OPS_LIST_BIG_W_VALID \
-+    (OFF_IDX_OPS_LIST_BIG_B_INVALID + N_OPS_LIST_BIG_B_INVALID)
-+#define OFF_IDX_OPS_LIST_BIG_W_INVALID \
-+    (OFF_IDX_OPS_LIST_BIG_W_VALID + N_OPS_LIST_BIG_W_VALID)
-+#define OFF_IDX_OPS_LIST_BIG_L_VALID \
-+    (OFF_IDX_OPS_LIST_BIG_W_INVALID + N_OPS_LIST_BIG_W_INVALID)
-+#define OFF_IDX_OPS_LIST_BIG_L_INVALID \
-+    (OFF_IDX_OPS_LIST_BIG_L_VALID + N_OPS_LIST_BIG_L_VALID)
-+#define OFF_IDX_OPS_LIST_BIG_Q_VALID \
-+    (OFF_IDX_OPS_LIST_BIG_L_INVALID + N_OPS_LIST_BIG_L_INVALID)
-+#define OFF_IDX_OPS_LIST_BIG_Q_INVALID \
-+    (OFF_IDX_OPS_LIST_BIG_Q_VALID + N_OPS_LIST_BIG_Q_VALID)
-+
-+typedef uint8_t MrData[MEMACCESS_TESTDEV_REGION_SIZE];
-+#define MEMACCESS_TESTDEV_MR_DATA_SIZE (sizeof(MrData) * N_OPS_LIST)
-+
-+typedef DeviceClass MemAccessTestDevClass;
-+typedef struct MemAccessTestDev {
-+    /* Private */
-+    DeviceState parent_obj;
-+    /* Public */
-+    MemoryRegion container;
-+    MemoryRegion memory_regions[N_OPS_LIST]; /* test memory regions */
-+    uint64_t base;                           /* map base address */
-+    MrData *mr_data;                         /* memory region data array */
-+} MemAccessTestDev;
-+
-+#define MEM_ACCESS_TEST_DEV(obj)                                    \
-+    OBJECT_CHECK(MemAccessTestDev, obj, TYPE_MEM_ACCESS_TEST_DEV)
-+
-+#endif
--- 
-2.25.1
+On Thu, 2025-08-21 at 16:44 +0100, Peter Maydell wrote:
+> In pca9554_set_pin() we have a string property which we parse in
+> order to set some non-string fields in the device state.  So we call
+> visit_type_str(), passing it the address of the local variable
+> state_str.
+> 
+> visit_type_str() will allocate a new copy of the string; we
+> never free this string, so the result is a memory leak, detected
+> by ASAN during a "make check" run:
+> 
+> Direct leak of 5 byte(s) in 1 object(s) allocated from:
+>     #0 0x5d605212ede3 in malloc (/mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/qemu-system-arm+0x21f1de3) (
+> BuildId: 3d5373c89317f58bfcd191a33988c7347714be14)
+>     #1 0x7f7edea57b09 in g_malloc (/lib/x86_64-linux-gnu/libglib-2.0.so.0+0x62b09) (BuildId: 1eb6131419edb83b2178b68282
+> 9a6913cf682d75)
+>     #2 0x7f7edea6d4d8 in g_strdup (/lib/x86_64-linux-gnu/libglib-2.0.so.0+0x784d8) (BuildId: 1eb6131419edb83b2178b68282
+> 9a6913cf682d75)
+>     #3 0x5d6055289a91 in g_strdup_inline /usr/include/glib-2.0/glib/gstrfuncs.h:321:10
+>     #4 0x5d6055289a91 in qobject_input_type_str /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/../../qapi/qo
+> bject-input-visitor.c:542:12
+>     #5 0x5d605528479c in visit_type_str /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/../../qapi/qapi-visit
+> -core.c:349:10
+>     #6 0x5d60528bdd87 in pca9554_set_pin /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/../../hw/gpio/pca9554.c:179:10
+>     #7 0x5d60549bcbbb in object_property_set /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/../../qom/object.c:1450:5
+>     #8 0x5d60549d2055 in object_property_set_qobject /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/../../qom/qom-qobject.c:28:10
+>     #9 0x5d60549bcdf1 in object_property_set_str /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/../../qom/object.c:1458:15
+>     #10 0x5d605439d077 in gb200nvl_bmc_i2c_init /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/../../hw/arm/aspeed.c:1267:5
+>     #11 0x5d60543a3bbc in aspeed_machine_init /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/../../hw/arm/aspeed.c:493:9
+> 
+> 
+> Make the state_str g_autofree, so that we will always free
+> it, on both error-exit and success codepaths.
+> 
+> Cc: qemu-stable@nongnu.org
+> Fixes: de0c7d543bca ("misc: Add a pca9554 GPIO device model")
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  hw/gpio/pca9554.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/hw/gpio/pca9554.c b/hw/gpio/pca9554.c
+> index de3f883aee9..eac0d23be34 100644
+> --- a/hw/gpio/pca9554.c
+> +++ b/hw/gpio/pca9554.c
+> @@ -174,7 +174,7 @@ static void pca9554_set_pin(Object *obj, Visitor *v, const char *name,
+>      PCA9554State *s = PCA9554(obj);
+>      int pin, rc, val;
+>      uint8_t state, mask;
+> -    char *state_str;
+> +    g_autofree char *state_str = NULL;
+>  
+>      if (!visit_type_str(v, name, &state_str, errp)) {
+>          return;
 
 

@@ -4,90 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A9FDCA0EEB
-	for <qemu-arm@archiver.kernel.org>; Fri, 22 Aug 2025 08:02:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23284CA0EED
+	for <qemu-arm@archiver.kernel.org>; Fri, 22 Aug 2025 08:05:34 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1upMjT-0003ZO-Om; Fri, 22 Aug 2025 04:02:43 -0400
+	id 1upMla-0005ya-Ix; Fri, 22 Aug 2025 04:04:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1upMjR-0003Wf-Iq
- for qemu-arm@nongnu.org; Fri, 22 Aug 2025 04:02:41 -0400
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1upMlZ-0005xE-Hg
+ for qemu-arm@nongnu.org; Fri, 22 Aug 2025 04:04:53 -0400
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1upMjO-0003cy-ED
- for qemu-arm@nongnu.org; Fri, 22 Aug 2025 04:02:41 -0400
-Received: by mail-wm1-x32c.google.com with SMTP id
- 5b1f17b1804b1-45a1b05a59fso13224245e9.1
- for <qemu-arm@nongnu.org>; Fri, 22 Aug 2025 01:02:37 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1upMlX-0003no-Ee
+ for qemu-arm@nongnu.org; Fri, 22 Aug 2025 04:04:53 -0400
+Received: by mail-wm1-x32f.google.com with SMTP id
+ 5b1f17b1804b1-45a1ac7c066so11450575e9.1
+ for <qemu-arm@nongnu.org>; Fri, 22 Aug 2025 01:04:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1755849756; x=1756454556; darn=nongnu.org;
+ d=linaro.org; s=google; t=1755849888; x=1756454688; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=A+4/WBKGEWM/opyyZP9r5fdXUjGZcK4fRqjRViBp5iY=;
- b=jTwSK5V6V4pGAIOgecqTrvqHub2zPV0A6LTsmRxN9udXxhDvNCl3qfaQ/CagoZlOq5
- zxU5wSGO7Zub3odchO0blrrPI7a2WF04ar6d5LMll/toQj019Gmk7z034e17CxORsFw+
- pWVaot5LudrnbvIlXIbru0jx+D0ATSMsAoPI4WNVnlMc914G9ytmTYWYy6i1dnuqxFnd
- HAVQYwQRcjcySICwfuO7w8HEiJ9GTDJItVw6sCRukEzNJ3hJCueyrF3BDZiGM/wuhZ3s
- g817Rh9skKyzTNp2Hrg1IO7V5uf2Fk5RIsIWivj4ODnERHgp7rM3cLVq1kyH3etjYBK9
- svOQ==
+ bh=i55v84+D1aIhLWaISs7kPJXEHC/nZMjQ2iH3IDO+O+M=;
+ b=quJhmPYf68m6hakaES7j4rTinaHHOxvBsVGxUvuUzIWY0MizWmmH8ht4b5JG9+xgHS
+ 85ldJIgqR2NK9wRIl2FffmtZc+wCEwM4t1+827CaVWGRvqQd4Gxc+a3pUyasvLz4Ncs8
+ 3kx81oDFgN7zP+FNZXTa2JMcakF1eorai71XaDnE7Z9rwimGsfp0ekG6q+sD/+3rU9aQ
+ kq9yCT1CoOZz2Q9CdS6IyCLM1+gtmJumMl3fTr6b+c/6p4FpDbTOo8Qr21yBCyIok9Dr
+ lzxrFXaOLMKQd/VahTlHuIgkG12yn3IZdoNHdRVHFvaMYQ+XovGtMQKPNoJFP7Mdasxp
+ kzXg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1755849756; x=1756454556;
+ d=1e100.net; s=20230601; t=1755849888; x=1756454688;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=A+4/WBKGEWM/opyyZP9r5fdXUjGZcK4fRqjRViBp5iY=;
- b=j55e26vONJVFEw8CP7ZiRU7LnN6EGmLkqPxl27ExXnOAyFvNphNUh4V4IGy+oAi6rp
- qMMjwueYfekaDZEKzih6WHj84XTOyvmX7NobTGEtoAUYE/jI/VE+GV2wioxOrCCqoxfE
- Z6XlBOjL47R6M54zyddyEqv813pgRmDWIDuwN6WWtsxq+OFNrN6jbzCzc6jJogHddevG
- y6fkAj73JhVHbzgDDbJLN/05Ggoem1pzqc5RShyeQDXg8hmoAW4wzFWM+IroQeOFIJwV
- Av+TkqgZEi4blYS9aEnIEnNc2RD0Yn/VyworBRZldXuLmV3zbdrTeO3+L8L4BHjZSh5y
- qGRw==
+ bh=i55v84+D1aIhLWaISs7kPJXEHC/nZMjQ2iH3IDO+O+M=;
+ b=ePsnfwtiMHy3rPbEGf8yrqJlE0TK9JXnRKefHfQwonOsgQ/i+iRcyv+l+pKonDI57s
+ 4kTKCEfFTejTqL1dCrxzlYmZRuLadFbu31tQ/sD7ZqUsFMvC/9oT9/uNk/N6StuEVhtQ
+ EVti21gO703+9qJL76krHuve+v5HI3jIAD++/73neMuhWJr2wJ/roCQHCltxh5vthtgM
+ C/dcKX68A6WljkHIYgnZPvaIuStCI3MaAe3liJ9lGO9VUu+536b9ITE7wud8ES50+0Xf
+ RvnveNv+QtLEkl5l26pKXmwuxRc1JwDQUcP5ASBTfZH75d/fF48odKN/ZstahYs/GtQW
+ cIQg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVU7KVYtuyzBEn0+U7HNiTssqpL3Dso1DHlKrpvnTSiyaeZqJ6aobIo52aiAMT3VPaoFVdgz9hBiA==@nongnu.org
-X-Gm-Message-State: AOJu0Yw2rp/+JIZLwCBUDq3rovhOFveQ10FlECEQ2qh7kchf7TxeLeBt
- dP1IejFjA+/UN36jxZcI1PgCLjQdR5bWBcQb6pWOk1bl2Xu2GQIcXFTHbM6SopYI/Q2iO8CbqTJ
- gvOqg
-X-Gm-Gg: ASbGncvLwrVIfDnsCTmXn6cs+Tkk1kKGM+JjY3e08YZObdoLA0AhyRM19fmBILUsffq
- ii1YDFP3wKUbfq/2faJQWnnwivMP2IzAchYn2GmsyOS1TOSj/q2Y9EVZU2a0OqS+L5a5XBatf/b
- n3IgLoi2p5rh+Uv46YdcHO0JgRSEbGOnz0C3gCvMyA/pqNfNXbmOyfCIPl2cgMfmD3vSdh6tfQi
- UJpG5cTYIt4LQbjVaCfKk1JVOVPUDo7yQjtjGtOu6IPmFdVIen7csGgeoVh8M0h0qk1knWYtwkk
- GmFA61t5tdw8j3yh6M2mYvC0o5oC0jf6BYqTKTz8mtTXSvhen6Q6DfFUcFeEmMvOBrZEBQJ19rI
- rpZe6g7fK/kjsqIw11hIyNC4RfjsPQaYjTzwR/x7uwJuFkLHVLbbp5zaA9vwXRQkcEo77PmE=
-X-Google-Smtp-Source: AGHT+IFMJdBW65LiBqa5J80WZOoICcRQlDlEwNDsTGppq+c4NdVMX4PTgbObSUQSaupLNKvRcFceGA==
-X-Received: by 2002:a05:600c:3b87:b0:459:e398:ed89 with SMTP id
- 5b1f17b1804b1-45b517993dfmr13951975e9.1.1755849756166; 
- Fri, 22 Aug 2025 01:02:36 -0700 (PDT)
+ AJvYcCUHxoiyZa3i5ihf12HdThtTzyG8/dKW2uJHeMjklhdKRn1YdW38h8afn+Tsn/ZWlPQIntnz0aVSRQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yyf0k3M1RFyYNCFqQStlpexaFwz55Kke1dnVjz2OWGp2FdcL8+v
+ uW6CKItPOtT8O88UjN0r3cF2RzXFDgyelGmxMoLTUNadf2cm5Oz3xsMlVgE1mtsdljo=
+X-Gm-Gg: ASbGncsqX2zvG47eL999CxIne5abr6b3n1xNeD2o+S35bG9MEWk7q1grhy9dI0aQvlM
+ xf1CYBVtGovKbBjkgyrvotNKUNK1dMPjG/BOkHyCJ3Ws/JwNsd1iaz3dVYcDxJq9qCfQN1/8EXW
+ QL4Ir16iHXuxP69SDm2jnZgJM5bkkb2zaa7r+lZ5rG/hk4eyys9yoOMO7C8gPP38yrXc2wEq8Mk
+ Ixk/bUbHcVeHs+oQtdc4nO4NPBjA9OYP7ACLHGZ0QHmTjZqNKy3BlzcxYle1kF3TpbLQgrqVLWH
+ Qn7vOV09ZGG4z3vnq4Y1o5zHwonys453Dskfd2SBcy46+N4d6BRoLIcusG13bKtNKAPlZOq4rNQ
+ K1cNl32mL1JVGPab9n0YcAWY0NOYVHKyPsDpSgbRh2hKhWwF5yx9XP18VIKG5aSKBgzHd6eI=
+X-Google-Smtp-Source: AGHT+IF1nO+qLVews9F+WIZmIjxVrJhXKqNm7D7tMzsLEOekHMW8rBvd+leoNi0JOov182YJsNM7dQ==
+X-Received: by 2002:a05:600c:c084:b0:458:b4a9:b024 with SMTP id
+ 5b1f17b1804b1-45b4d7eb83emr38984035e9.11.1755849887898; 
+ Fri, 22 Aug 2025 01:04:47 -0700 (PDT)
 Received: from [192.168.69.208] (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3c3fab22726sm7767025f8f.37.2025.08.22.01.02.35
+ 5b1f17b1804b1-45b50dc023dsm28258955e9.5.2025.08.22.01.04.47
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 22 Aug 2025 01:02:35 -0700 (PDT)
-Message-ID: <19d8291f-0fab-4d43-b6d2-5e48457cc3a1@linaro.org>
-Date: Fri, 22 Aug 2025 10:02:34 +0200
+ Fri, 22 Aug 2025 01:04:47 -0700 (PDT)
+Message-ID: <a7291f23-16fd-48d7-bfe5-516237696eb1@linaro.org>
+Date: Fri, 22 Aug 2025 10:04:46 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] hw/char/max78000_uart: Destroy FIFO on deinit
+Subject: Re: [PATCH] hw/arm/stm32f205_soc: Don't leak TYPE_OR_IRQ objects
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
-Cc: Jackson Donaldson <jcksn@duck.com>
-References: <20250821154358.2417744-1-peter.maydell@linaro.org>
+Cc: Alistair Francis <alistair@alistair23.me>
+References: <20250821154229.2417453-1-peter.maydell@linaro.org>
 Content-Language: en-US
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20250821154358.2417744-1-peter.maydell@linaro.org>
+In-Reply-To: <20250821154229.2417453-1-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -103,24 +102,41 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 21/8/25 17:43, Peter Maydell wrote:
-> In the max78000_uart we create a FIFO in the instance_init function,
-> but we don't destroy it on deinit, so ASAN reports a leak in the
-> device-introspect-test:
+On 21/8/25 17:42, Peter Maydell wrote:
+> In stm32f250_soc_initfn() we mostly use the standard pattern
+> for child objects of calling object_initialize_child(). However
+> for s->adc_irqs we call object_new() and then later qdev_realize(),
+> and we never unref the object on deinit. This causes a leak,
+> detected by ASAN on the device-introspect-test:
 > 
->      #0 0x561cc92d5de3 in malloc (/mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/qemu-system-arm+0x21f1de3) (BuildId: 98fdf9fc85c3beaeca8eda0be8412f1e11b9c6ad)
->      #1 0x70cbf2afab09 in g_malloc (/lib/x86_64-linux-gnu/libglib-2.0.so.0+0x62b09) (BuildId: 1eb6131419edb83b2178b682829a6913cf682d75)
->      #2 0x561ccc4c884d in fifo8_create /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/../../util/fifo8.c:27:18
->      #3 0x561cc9744ec9 in max78000_uart_init /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/../../hw/char/max78000_uart.c:241:5
+> Indirect leak of 10 byte(s) in 1 object(s) allocated from:
+>      #0 0x5b9fc4789de3 in malloc (/mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/qemu-system-arm+0x21f1de3) (BuildId: 267a2619a026ed91c78a07b1eb2ef15381538efe)
+>      #1 0x740de3f28b09 in g_malloc (/lib/x86_64-linux-gnu/libglib-2.0.so.0+0x62b09) (BuildId: 1eb6131419edb83b2178b682829a6913cf682d75)
+>      #2 0x740de3f3e4d8 in g_strdup (/lib/x86_64-linux-gnu/libglib-2.0.so.0+0x784d8) (BuildId: 1eb6131419edb83b2178b682829a6913cf682d75)
+>      #3 0x5b9fc70159e1 in g_strdup_inline /usr/include/glib-2.0/glib/gstrfuncs.h:321:10
+>      #4 0x5b9fc70159e1 in object_property_try_add /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/../../qom/object.c:1276:18
+>      #5 0x5b9fc7015f94 in object_property_add /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/../../qom/object.c:1294:12
+>      #6 0x5b9fc701b900 in object_add_link_prop /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/../../qom/object.c:2021:10
+>      #7 0x5b9fc701b3fc in object_property_add_link /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/../../qom/object.c:2037:12
+>      #8 0x5b9fc4c299fb in qdev_init_gpio_out_named /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/../../hw/core/gpio.c:90:9
+>      #9 0x5b9fc4c29b26 in qdev_init_gpio_out /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/../../hw/core/gpio.c:101:5
+>      #10 0x5b9fc4c0f77a in or_irq_init /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/../../hw/core/or-irq.c:70:5
+>      #11 0x5b9fc70257e1 in object_init_with_type /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/../../qom/object.c:428:9
+>      #12 0x5b9fc700cd4b in object_initialize_with_type /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/../../qom/object.c:570:5
+>      #13 0x5b9fc700e66d in object_new_with_type /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/../../qom/object.c:774:5
+>      #14 0x5b9fc700e750 in object_new /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/../../qom/object.c:789:12
+>      #15 0x5b9fc68b2162 in stm32f205_soc_initfn /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/../../hw/arm/stm32f205_soc.c:69:26
 > 
-> Add an instance_finalize method to destroy the FIFO.
+> Switch to using object_initialize_child() like all our
+> other child objects for this SoC object.
 > 
 > Cc: qemu-stable@nongnu.org
-> Fixes: d447e4b70295 ("MAX78000: UART Implementation")
+> Fixes: b63041c8f6b ("STM32F205: Connect the ADC devices")
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->   hw/char/max78000_uart.c | 7 +++++++
->   1 file changed, 7 insertions(+)
+>   include/hw/arm/stm32f205_soc.h |  2 +-
+>   hw/arm/stm32f205_soc.c         | 10 +++++-----
+>   2 files changed, 6 insertions(+), 6 deletions(-)
 
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 

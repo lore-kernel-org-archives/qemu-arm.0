@@ -4,83 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2694DCA0EED
-	for <qemu-arm@archiver.kernel.org>; Fri, 22 Aug 2025 07:56:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A28D4CA0EED
+	for <qemu-arm@archiver.kernel.org>; Fri, 22 Aug 2025 08:02:37 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1upMdE-0007u8-CJ; Fri, 22 Aug 2025 03:56:16 -0400
+	id 1upMis-0002vG-BE; Fri, 22 Aug 2025 04:02:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1upMdC-0007sg-RJ
- for qemu-arm@nongnu.org; Fri, 22 Aug 2025 03:56:14 -0400
-Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1upMie-0002np-Ds
+ for qemu-arm@nongnu.org; Fri, 22 Aug 2025 04:01:52 -0400
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1upMd8-0001zG-0X
- for qemu-arm@nongnu.org; Fri, 22 Aug 2025 03:56:14 -0400
-Received: by mail-ed1-x52a.google.com with SMTP id
- 4fb4d7f45d1cf-61c14b1689eso1357250a12.1
- for <qemu-arm@nongnu.org>; Fri, 22 Aug 2025 00:56:05 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1upMib-0003T1-Ui
+ for qemu-arm@nongnu.org; Fri, 22 Aug 2025 04:01:52 -0400
+Received: by mail-wm1-x331.google.com with SMTP id
+ 5b1f17b1804b1-45b4a25ccceso10373965e9.3
+ for <qemu-arm@nongnu.org>; Fri, 22 Aug 2025 01:01:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1755849363; x=1756454163; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=Szwa3+x61AjR+V+P9JR802YOlHoy4d5KMmU1As6SE3w=;
- b=KTqgQen1ZVmjHbmz5lxwoilOPJpr1SnqPQLiO9kCx6rWDr2OFJz6rSrfXJPHge4Bl5
- zTI/+Y/plV+jZus+apKcdj3nXYn9DJOYJchHKqgk0ddBR0THAQxxouqY+hEYA52Q7W1G
- 7H0zQAqeWRiCiOiqL6B17x0LMRo+wbzZMYYcadeQ97Idp4sMYNvHMHemIMGoh6aRt6ZI
- IGFz50qL56K7voBFyeXAnqqE4YCT/KocQMqmzoTmW3zqEBusM9VXbc2Hh+6zJJBZVtkZ
- qm6tcW2ZRfGBl06Qa+iEvD4RyWsDdLvJ+tC1gGc4BqwJRgepWCEoDnIfNOQiVzxlVPpX
- 3MMg==
+ d=linaro.org; s=google; t=1755849707; x=1756454507; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=R05yerlxpRUddCTUmZ82t6NykLnReLxMV/L9FnHb1C0=;
+ b=yHWKbURYXuLqaLNoVg5xADhZ9H1IxVEFE2M98zQpuxqigrdEcgnLAefCB75TQmFYg3
+ Dq8/cFjJnc8MfUntKVg9hs+9UeqP4uCDhyQGow3EXGNlUD0xKr32coYg4crhj3ezjsyT
+ 5gr6KVLygHXFAyyLfzuZ1zFQlEyE7WC4qySDRSxvMu37X1y1uxLa/hdhBA4AuAGu0jNS
+ 39NLcDvqT6RsRXZLjFFvlLoy8yVAEWYU/jnP/PEejHvey4BtQqMkRcioYf8qQZngVDae
+ tAUDVLRyBsZkix4HSAxlunf9BOjLGfz5ktWJBLwGLPUfFjB+4cHWkCesshAl1WJIGDxB
+ +tog==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1755849363; x=1756454163;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=Szwa3+x61AjR+V+P9JR802YOlHoy4d5KMmU1As6SE3w=;
- b=diEYBYs6Sk8Mhpot2DsLJ6Vk0VjvVpJs2GL8n5MDzWV6MWLZoQzXhKyhLj/kVEDpVT
- tOumQudvxbpzaAC6i89uSQnSLf9WJ2sEDV9zoFhT/T7zpHU0w3LmJw8B7PQ2FgBBVt6c
- /1uydSVoZP4rhJCyhMwW3/nCMiHmdFIJB72VKLEIzL7oqU0n/FzTTv3KYuBOabOW0+mI
- 0IjBaCFWsN6Z4TFu8mJn4s4dPdtxHaOn4RHJTCeCE861CFC/dkoaTv139haEX/lof/Ho
- qERvhD6awg0cqdUSxRvidELYClJMF9hKu037NKZBznOE4UzebkKvJ3wsYUPtxu259lcW
- 9Bvg==
+ d=1e100.net; s=20230601; t=1755849707; x=1756454507;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=R05yerlxpRUddCTUmZ82t6NykLnReLxMV/L9FnHb1C0=;
+ b=auwktGLgq2NjYcSLjeeYA9HuiWdcmrhGuJaNoqSGjMg1lvLB4tP/UWvlEgkpRWYuWz
+ 0C4z8uTcgHoMXjcu0q1UoNnzYw6D/9P3tQtc+00jJcv0kk1X+8A2LMOSfaCVlPL8cMlG
+ ZroCUqRkf4e2GZ8aX2hVjcdFvENRsNRctfz+E7HHnJiIswQmKVcmpZYDOjQG+gd0tKYg
+ nBZ8eWkccM3JCl7lw4Q7ekAx79vMX+xCKaIUOBRvZfx0+w5EY9n7TqtmB/QLWXe3PKWX
+ 3IcF79JxIup/B4Q5pCIDmUmYKHhsR/sNoF8aggTM0vo0Jwjf3O3qh6y40T9IkRkVBPBq
+ PbkQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUsvyCrCFkrq4CVoyGVAXGxxv5eAl4z8S7v/alz+WbIF3dvLauFxlpWJyX6YbCXEqRNEIk5DJaF8w==@nongnu.org
-X-Gm-Message-State: AOJu0Yz9dFFbO7uKVniWrD+lfcaDoOfyZU6Ar/1GTUz9Bh5RDZEWdCD2
- qd620vh+vc3JmpN+2JtfBvcHaV864L9SAeocqauAB1D/74WMQMQIITEf18cdceoIxRdPE4ptysA
- 5wfb3zyMPCm1ME5aDfKE8MkRX2TFtbvUKBqzqYWyMIw==
-X-Gm-Gg: ASbGncvvvGibEtdycYHaL2pAky+MberYKRvap1VVdlz5qJXA5psV3Gb/KwjGQn47DoK
- zCPBeL6CUF/20FWjTVaoHVfaXlHh4m4l8AHz8FkJkxDXsqtclxZPrfwV2DtWRX7Mq8bVnfmsSuU
- 1uBVZ2ZPuRlcohFalXtD5Sg/6yLZE7Gwe2TIXHLE29IhhOymF8Jq8vP0DexVkBphv0ytVrjrivb
- PoA+0D7
-X-Google-Smtp-Source: AGHT+IEGlXFB2VgzPVaxsYH+hNmAsUWM3LXReJXTH5m9LDwmYrw8I7I2udE/H9dX4DKeue/OTYF5bEV9W0xsKj9MdHU=
-X-Received: by 2002:a05:6402:42ce:b0:618:35c5:64d9 with SMTP id
- 4fb4d7f45d1cf-61c1b3b910amr1639914a12.1.1755849363521; Fri, 22 Aug 2025
- 00:56:03 -0700 (PDT)
+ AJvYcCWt0lBc0CW87ipJyxWO+Q2wrYdvZUFDterTa6gfQ87YQtMwZORq7/rDsJcC8SvRaWpmybMccrqfHQ==@nongnu.org
+X-Gm-Message-State: AOJu0YyuegxdQAc3gzxW9ULLEN4VmkYZsHdn5pNkuXIXapyy0/jRh9fV
+ E3Of0twVdJYftla+JIT8sB1r2NTyscwI649ZQjVhiZO8F9qqLzZP68MiTUlL/WaStSg=
+X-Gm-Gg: ASbGncsPSluvtuXi9SouKm/mM6LxZIno+PPR55wt/l9VXgJxWrsK0vU3K7lhdL+EbaY
+ kH2zatuK9uMSmJg8S646KFgobSRkuNwEAvTHb217oavjqxnsKrJmFZm0FSQ2lGuyiPBYNGKHG2m
+ UDisbsp4rC5X753fAe5TTmPU7EK8fYy//FtomoAOMW3pWQFG+LWUlTA8Kd0BYzpcLIRiXMxo3N/
+ Nb237mrSCqhUFigYbxsHNlfneqYDWHe+YGo6H3kZAmKqmH2ph/UbYnlJGDoqnlUODfce992wIlg
+ H6UU11FS1bIQwp3BHseBySA//Ydn/H0W7jpU38xpBN9ImdSD09c9bh5uL3dnqpiRdFllClp/TLd
+ eqhiuj6mQ2FycFK5xHjJvKs2guXKSD6u3DuarfljMVK/H28/wSPnEhRDW7cmdW2JDb/F9cdg=
+X-Google-Smtp-Source: AGHT+IEph/mlFxczFLVbGA8bKpxx4SzH+LPmkB1d92UD9PAoz7jMrEL61aCo5QMfu6/qF03cEB+d5Q==
+X-Received: by 2002:a05:600c:1d1e:b0:458:ba04:fe6d with SMTP id
+ 5b1f17b1804b1-45b517a069emr12580185e9.14.1755849706632; 
+ Fri, 22 Aug 2025 01:01:46 -0700 (PDT)
+Received: from [192.168.69.208] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-3c5e024eee4sm1901569f8f.66.2025.08.22.01.01.45
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 22 Aug 2025 01:01:45 -0700 (PDT)
+Message-ID: <8a3737c5-7e25-4138-8c5a-5f67a6f587e5@linaro.org>
+Date: Fri, 22 Aug 2025 10:01:44 +0200
 MIME-Version: 1.0
-References: <20250617163351.2640572-1-alex.bennee@linaro.org>
- <20250617163351.2640572-11-alex.bennee@linaro.org>
- <19837997-57c3-47b7-ab25-f8bad6bd3d4f@linaro.org>
-In-Reply-To: <19837997-57c3-47b7-ab25-f8bad6bd3d4f@linaro.org>
-From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-Date: Fri, 22 Aug 2025 10:55:37 +0300
-X-Gm-Features: Ac12FXzysBykHD9AJKQFv_CgJk4g-Amfu2g5g4l_2aU9o7bjhIilWFp9_-DY6aE
-Message-ID: <CAAjaMXbnNeMwt2qQNX+kMA=7=tCrcUjV2=18zpwERKP=bCZJ-g@mail.gmail.com>
-Subject: Re: [RFC PATCH 10/11] kvm/arm: implement a basic hypercall handler
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
- qemu-devel@nongnu.org, Cornelia Huck <cohuck@redhat.com>, qemu-arm@nongnu.org, 
- Mark Burton <mburton@qti.qualcomm.com>, "Michael S. Tsirkin" <mst@redhat.com>, 
- Alexander Graf <graf@amazon.com>, kvm@vger.kernel.org, 
- Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini <pbonzini@redhat.com>, 
- Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::52a;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-ed1-x52a.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] hw/gpio/pca9554: Avoid leak in pca9554_set_pin()
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: qemu-ppc@nongnu.org, Glenn Miles <milesg@linux.ibm.com>,
+ Markus Armbruster <armbru@redhat.com>
+References: <20250821154459.2417976-1-peter.maydell@linaro.org>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20250821154459.2417976-1-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::331;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x331.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -103,124 +103,60 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, Aug 22, 2025 at 10:13=E2=80=AFAM Philippe Mathieu-Daud=C3=A9
-<philmd@linaro.org> wrote:
->
-> On 17/6/25 18:33, Alex Benn=C3=A9e wrote:
-> > For now just deal with the basic version probe we see during startup.
-> >
-> > Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-> > ---
-> >   target/arm/kvm.c        | 44 ++++++++++++++++++++++++++++++++++++++++=
-+
-> >   target/arm/trace-events |  1 +
-> >   2 files changed, 45 insertions(+)
-> >
-> > diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-> > index 0a852af126..1280e2c1e8 100644
-> > --- a/target/arm/kvm.c
-> > +++ b/target/arm/kvm.c
-> > @@ -1507,6 +1507,43 @@ static int kvm_arm_handle_sysreg_trap(ARMCPU *cp=
-u,
-> >       return -1;
-> >   }
-> >
-> > +/*
-> > + * The guest is making a hypercall or firmware call. We can handle a
-> > + * limited number of them (e.g. PSCI) but we can't emulate a true
-> > + * firmware. This is an abbreviated version of
-> > + * kvm_smccc_call_handler() in the kernel and the TCG only arm_handle_=
-psci_call().
-> > + *
-> > + * In the SplitAccel case we would be transitioning to execute EL2+
-> > + * under TCG.
-> > + */
-> > +static int kvm_arm_handle_hypercall(ARMCPU *cpu,
-> > +                                    int esr_ec)
-> > +{
-> > +    CPUARMState *env =3D &cpu->env;
-> > +    int32_t ret =3D 0;
-> > +
-> > +    trace_kvm_hypercall(esr_ec, env->xregs[0]);
-> > +
-> > +    switch (env->xregs[0]) {
-> > +    case QEMU_PSCI_0_2_FN_PSCI_VERSION:
-> > +        ret =3D QEMU_PSCI_VERSION_1_1;
-> > +        break;
-> > +    case QEMU_PSCI_0_2_FN_MIGRATE_INFO_TYPE:
-> > +        ret =3D QEMU_PSCI_0_2_RET_TOS_MIGRATION_NOT_REQUIRED; /* No tr=
-usted OS */
-> > +        break;
-> > +    case QEMU_PSCI_1_0_FN_PSCI_FEATURES:
-> > +        ret =3D QEMU_PSCI_RET_NOT_SUPPORTED;
-> > +        break;
-> > +    default:
-> > +        qemu_log_mask(LOG_UNIMP, "%s: unhandled hypercall %"PRIx64"\n"=
-,
-> > +                      __func__, env->xregs[0]);
-> > +        return -1;
-> > +    }
-> > +
-> > +    env->xregs[0] =3D ret;
-> > +    return 0;
-> > +}
-> > +
-> >   /**
-> >    * kvm_arm_handle_hard_trap:
-> >    * @cpu: ARMCPU
-> > @@ -1538,6 +1575,13 @@ static int kvm_arm_handle_hard_trap(ARMCPU *cpu,
-> >       switch (esr_ec) {
-> >       case EC_SYSTEMREGISTERTRAP:
-> >           return kvm_arm_handle_sysreg_trap(cpu, esr_iss, elr);
-> > +    case EC_AA32_SVC:
-> > +    case EC_AA32_HVC:
-> > +    case EC_AA32_SMC:
-> > +    case EC_AA64_SVC:
-> > +    case EC_AA64_HVC:
-> > +    case EC_AA64_SMC:
->
-> Should we increment $pc for SVC/SMC?
-> The instruction operation pseudocode [*] is:
->
->    preferred_exception_return =3D ThisInstrAddr(64);
->
+On 21/8/25 17:44, Peter Maydell wrote:
+> In pca9554_set_pin() we have a string property which we parse in
+> order to set some non-string fields in the device state.  So we call
+> visit_type_str(), passing it the address of the local variable
+> state_str.
+> 
+> visit_type_str() will allocate a new copy of the string; we
+> never free this string, so the result is a memory leak, detected
+> by ASAN during a "make check" run:
+> 
+> Direct leak of 5 byte(s) in 1 object(s) allocated from:
+>      #0 0x5d605212ede3 in malloc (/mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/qemu-system-arm+0x21f1de3) (
+> BuildId: 3d5373c89317f58bfcd191a33988c7347714be14)
+>      #1 0x7f7edea57b09 in g_malloc (/lib/x86_64-linux-gnu/libglib-2.0.so.0+0x62b09) (BuildId: 1eb6131419edb83b2178b68282
+> 9a6913cf682d75)
+>      #2 0x7f7edea6d4d8 in g_strdup (/lib/x86_64-linux-gnu/libglib-2.0.so.0+0x784d8) (BuildId: 1eb6131419edb83b2178b68282
+> 9a6913cf682d75)
+>      #3 0x5d6055289a91 in g_strdup_inline /usr/include/glib-2.0/glib/gstrfuncs.h:321:10
+>      #4 0x5d6055289a91 in qobject_input_type_str /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/../../qapi/qo
+> bject-input-visitor.c:542:12
+>      #5 0x5d605528479c in visit_type_str /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/../../qapi/qapi-visit
+> -core.c:349:10
+>      #6 0x5d60528bdd87 in pca9554_set_pin /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/../../hw/gpio/pca9554.c:179:10
+>      #7 0x5d60549bcbbb in object_property_set /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/../../qom/object.c:1450:5
+>      #8 0x5d60549d2055 in object_property_set_qobject /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/../../qom/qom-qobject.c:28:10
+>      #9 0x5d60549bcdf1 in object_property_set_str /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/../../qom/object.c:1458:15
+>      #10 0x5d605439d077 in gb200nvl_bmc_i2c_init /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/../../hw/arm/aspeed.c:1267:5
+>      #11 0x5d60543a3bbc in aspeed_machine_init /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/../../hw/arm/aspeed.c:493:9
+> 
+> 
+> Make the state_str g_autofree, so that we will always free
+> it, on both error-exit and success codepaths.
+> 
+> Cc: qemu-stable@nongnu.org
+> Fixes: de0c7d543bca ("misc: Add a pca9554 GPIO device model")
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>   hw/gpio/pca9554.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/hw/gpio/pca9554.c b/hw/gpio/pca9554.c
+> index de3f883aee9..eac0d23be34 100644
+> --- a/hw/gpio/pca9554.c
+> +++ b/hw/gpio/pca9554.c
+> @@ -174,7 +174,7 @@ static void pca9554_set_pin(Object *obj, Visitor *v, const char *name,
+>       PCA9554State *s = PCA9554(obj);
+>       int pin, rc, val;
+>       uint8_t state, mask;
+> -    char *state_str;
+> +    g_autofree char *state_str = NULL;
+>   
+>       if (!visit_type_str(v, name, &state_str, errp)) {
+>           return;
 
-Here's what the trusted firmware handler does.
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-The exception return address is modified by the :
-
-https://github.com/ARM-software/arm-trusted-firmware/blob/da6b3a181c03a492e=
-e52182b0466d0b7cc4091dd/bl31/aarch64/runtime_exceptions.S#L456-L480
-
-    > * returns:
-    > *   -1: unhandled trap, UNDEF injection into lower EL
-    > *    0: handled trap, return to the trapping instruction (repeating i=
-t)
-    > *    1: handled trap, return to the next instruction
-
-An SMC-aware trap handler should do the same
-
-
-> [*]
-> https://developer.arm.com/documentation/ddi0602/2022-06/Shared-Pseudocode=
-/AArch64-Exceptions?lang=3Den
->
-> > +        return kvm_arm_handle_hypercall(cpu, esr_ec);
-> >       default:
-> >           qemu_log_mask(LOG_UNIMP, "%s: unhandled EC: %x/%x/%x/%d\n",
-> >                   __func__, esr_ec, esr_iss, esr_iss2, esr_il);
-> > diff --git a/target/arm/trace-events b/target/arm/trace-events
-> > index 69bb4d370d..10cdba92a3 100644
-> > --- a/target/arm/trace-events
-> > +++ b/target/arm/trace-events
-> > @@ -15,3 +15,4 @@ arm_gt_update_irq(int timer, int irqstate) "gt_update=
-_irq: timer %d irqstate %d"
-> >   kvm_arm_fixup_msi_route(uint64_t iova, uint64_t gpa) "MSI iova =3D 0x=
-%"PRIx64" is translated into 0x%"PRIx64
-> >   kvm_sysreg_read(const char *name, uint64_t val) "%s =3D> 0x%" PRIx64
-> >   kvm_sysreg_write(const char *name, uint64_t val) "%s <=3D  0x%" PRIx6=
-4
-> > +kvm_hypercall(int ec, uint64_t arg0) "%d: %"PRIx64
->
->
 

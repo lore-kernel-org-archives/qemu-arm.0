@@ -4,68 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 859FACA0EEB
-	for <qemu-arm@archiver.kernel.org>; Fri, 22 Aug 2025 13:54:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D6ADCA0EED
+	for <qemu-arm@archiver.kernel.org>; Fri, 22 Aug 2025 13:54:28 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1upSD9-0005lH-Vz; Fri, 22 Aug 2025 09:53:44 -0400
+	id 1upSDB-0005mI-Jm; Fri, 22 Aug 2025 09:53:45 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cjchen@igel.co.jp>) id 1upO1K-0005Zh-UC
- for qemu-arm@nongnu.org; Fri, 22 Aug 2025 05:25:15 -0400
-Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
+ (Exim 4.90_1) (envelope-from <cjchen@igel.co.jp>) id 1upO2A-0006Ds-SL
+ for qemu-arm@nongnu.org; Fri, 22 Aug 2025 05:26:07 -0400
+Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <cjchen@igel.co.jp>) id 1upO1F-00077S-Vs
- for qemu-arm@nongnu.org; Fri, 22 Aug 2025 05:25:14 -0400
-Received: by mail-pl1-x634.google.com with SMTP id
- d9443c01a7336-24616482efeso7699995ad.1
- for <qemu-arm@nongnu.org>; Fri, 22 Aug 2025 02:25:09 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <cjchen@igel.co.jp>) id 1upO26-0007Ka-1Z
+ for qemu-arm@nongnu.org; Fri, 22 Aug 2025 05:26:06 -0400
+Received: by mail-pl1-x633.google.com with SMTP id
+ d9443c01a7336-24616482efeso7704035ad.1
+ for <qemu-arm@nongnu.org>; Fri, 22 Aug 2025 02:26:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=igel-co-jp.20230601.gappssmtp.com; s=20230601; t=1755854707; x=1756459507;
+ d=igel-co-jp.20230601.gappssmtp.com; s=20230601; t=1755854760; x=1756459560;
  darn=nongnu.org; 
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=zCby+eLrg4GAHoTlGaZ+HvxqNUEpTOhGwkTAgVF2XVQ=;
- b=smxz4qOjekaPlYatmjCZX2+1yw+qAm94ZfmUiUPcX/WHVhSgyqKf+by/sMgJkBSeCv
- U+qp4xqfXgCTmXQix+L592Zlb2LwcJDwiUOEdJQ3gcT8FG/sO2ha/7wWxrzEkrQr5f23
- UP+riUrwkxrJLTE1ubbrHwhEZX2LssEd22KLjP24bJmpVjmYvFm1lLCuvKbJamoOirF/
- xLoAbWg4HTQJ8fIShFRkQ7tZhn7OCQeeJPc5LofnQFD9g+uEejzPZaW/kk30zO5E504/
- 5dWyQ8RXMo0wVN7IJ0sNrddkST75BpW529zgk41lAfBths9vOMPpWQZbyRmIe3BpKrUE
- 7fmA==
+ bh=D4ze1BLKJzZuVnqxNymG670NaM+4LDJ76LZIGkYOHPQ=;
+ b=SSrfO2TSftR/oSYszHwaH8TvzMz/lJfkMLVAptCHjFonviGAuXcmGJ3FrQQQ2m2FNu
+ 6jO+XNG+QvQfDQPRN7nAAegthyGOM6zElOp4Ofa8ziwGNxgXgfgntaZQGGg9I9+GA2Ve
+ iJBEHfdTXolZnPzTTGN5GtVFJCvIJhJAEyIUW12Jyh/1Vv8zIana0eVsdieK/wq+n8Z/
+ H09YpWtiV2B5sU6SexC96Aixcl1MTQfHdS/1fE84xJ7NyY94AAS6niNKP7LG+bZFg+zN
+ DE1PMmVIo+Z51ESUrfkdSZTCdjxNzSMZTMoHXr+RwVYYGkvZmFGehVxVK2cf+I4KooB9
+ w/qg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1755854707; x=1756459507;
+ d=1e100.net; s=20230601; t=1755854760; x=1756459560;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=zCby+eLrg4GAHoTlGaZ+HvxqNUEpTOhGwkTAgVF2XVQ=;
- b=ibD7808ZsY6AXAoSaj4X6/s6ChOqVy4aIcnMdzSvoqFxndcg/Lnmg8pFoc3uGNZawB
- Tx6vvKVVZ69QjtIe7hORyoRO4x4efLbzVFHCzwMKef8Bn9FCsoJ/rvFpV++sQtgeFPYs
- SjIVyqyKMq3c9DF5kCkqeREceNILBDCPH4NGD68AQkVHH3u2yFUadLvchq3ACXxZNlHx
- XpSNUHC/uG4Gq0IGI0MjLCRLoGR7Ni2KustRSDXk4QQYvcRo5zoOueRzy3OuTEDiPd/E
- qRz03MdtUA4PxObz+qHYJwCs9z+2GaGyxJLoYe2Pr25iqg9KowAvu9HEsK4RgU+XyIhL
- mM0Q==
+ bh=D4ze1BLKJzZuVnqxNymG670NaM+4LDJ76LZIGkYOHPQ=;
+ b=J7x+5rgXe4plPGduD+PKQ0hDReU64YeDblGUe5GYTz0r/XRWjUPd+F8WKQCYcPv4r7
+ ew4j8qMKe+nx/opBRic3diJKebA4R/mLH4uF04UQJc0AFlVainJ7LGg8cEorKWbfiBaI
+ 5aod+oExqN/jFfcBBGmhFfPmuwRIRP7hx5/npvS0mDboqSjg6/cCvnvvi9FVLnvlX+3R
+ 1XKcRtn+E2ZAReBgWDJPo8a9K919LnXULLelVam9fVq06aMTOUfc3WMRq/2VyOHmrYlh
+ iY8x/aktYRKodSWs1XuCEHahMTDW340RmN73FbIKvFIFdVTO32QnwJ95jhK2lULyuacU
+ 37vQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXZd+hRAT/0s2N9TcrMp0jTrcT/pEqQJyVXBhlHMA+Cs+SZDZX50RDW4ZQNPPa6KH96GWrtRIfAeQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yy9DTFORNGzyBeXpfrkyCLPKP/CJEQ/RQrfCDsXtWtYHrfrribz
- QIDUqzcc0sliiGm6vhuKjIPAEJmF6DWvR916SxLG51/qwNgrfyPmoUbx8B+lJ5EcA1vzdE805KR
- iuOYthMo=
-X-Gm-Gg: ASbGncvDt+eloOUBU41uZU5zB0QHn8Bm82ahvBZjvo76DilvdGBm2Z3oFjd0Q4eq/G/
- 2VRwJY7IVpz47YTrwu17LTRcZ56kCUEU5ChRqdzBzoqisl9CMFcqXO2G6GRQUdRMA5iq3ldBgpU
- d9U8dlaxrHKBt+uZXW49zxVP69ST9fw9OybZtGiBh8m+2O1POjGfMalPlvx0k+3Lq1kxTx4tV9J
- 5QNHsMowithOtu+ZUMahi2mhQDmtliyWUKG5mLxzXjhI7gesHBhBiR32otS6ahE/UUvhtKgZRx2
- BHa0GF7v5++185LLu28fRhH539UUhaj/GrDfOcn7y5Lyp9rrZHdcSvqFMOPfoMJiGJe0L//E0Go
- Ak82Hfz87WfOqd3T8l/HLKOBx883gMkTh8g8Ekua/vw==
-X-Google-Smtp-Source: AGHT+IF0Xwuu5LZYmRduWk25dRQ4N23vj9IjGYBGoJ9IRke8ciqE9vsRzsdrjU7wgvFYWKAZPSqDoA==
-X-Received: by 2002:a17:903:1ac4:b0:240:66ff:b253 with SMTP id
- d9443c01a7336-2462ef93318mr30091655ad.46.1755854707455; 
- Fri, 22 Aug 2025 02:25:07 -0700 (PDT)
+ AJvYcCXILnS/ceZd+Hu2aNWwbVblYs5Z+xeyGblXtjoeWTgo1/16i4mcxTcz7uPcMG72x+ypZcWRTffikA==@nongnu.org
+X-Gm-Message-State: AOJu0YyJQvG/vKaVveW2i2viHmH8r9uUKpN6I67EcBehsJf64SG4LTRw
+ P5M92AD1OkDUvH0aC+QXVUNobQu4NF8zqolSV1n+c2bQYXzy17Ngp6NsYUKy50vT+PA=
+X-Gm-Gg: ASbGncu6IgMZRbuB36gYlE3g6+Hch6P/56Whd1o/9zR38JY3mleo7x3ImxOtFbwco5y
+ hGsUwd05ci6hmqX51HjGJQSdZqKPIrV3RTXPEx0XMhrAn+WvLnvEa0naK0oAEA1mI6c5i8fJziR
+ 3yggSNkT/6UknxPJ1CIcXWGUItTk2YDRrjuRLcPmVszXhVldMMbYTNPnxhVrPY9x6AWZ+vL910u
+ LYSHlhyJNfza7qT7uiqDjn+48bFZ7WzWAhJRpAOHaLYSyBC1DIdax92vFsh+5QvcVBPhC+XsZ4d
+ jOvV8ZVJ/ZvVAAucHUSJayrjgcMSHQfWWoJ8cBihRbOdB79kPNOOPOptAo3L05Lvy1PIKk0RstO
+ uAaGvhfi3ZNP6pHXO0EzwroXpGyf+AWHQimxqVP5f+Grtc/sl6fLP
+X-Google-Smtp-Source: AGHT+IGpWxGAbGJaVIwLElF7OV0p0FwtlYPpgPzH8Y1mB7NywDt9vua8AdmQEkhAbWmmluT7TOFgQA==
+X-Received: by 2002:a17:903:1b4b:b0:245:fbf8:dd0b with SMTP id
+ d9443c01a7336-2462efd4ec2mr32896205ad.57.1755854759890; 
+ Fri, 22 Aug 2025 02:25:59 -0700 (PDT)
 Received: from warg.hq.igel.co.jp (napt.igel.co.jp. [219.106.231.132])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-245ed4c6fb7sm78560215ad.89.2025.08.22.02.25.01
+ d9443c01a7336-245ed4c6fb7sm78560215ad.89.2025.08.22.02.25.53
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 22 Aug 2025 02:25:07 -0700 (PDT)
+ Fri, 22 Aug 2025 02:25:59 -0700 (PDT)
 From: CJ Chen <cjchen@igel.co.jp>
 To: qemu-devel@nongnu.org, qemu-block@nongnu.org, qemu-riscv@nongnu.org,
  qemu-arm@nongnu.org
@@ -83,18 +82,16 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>, Keith Busch <kbusch@kernel.org>,
  Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
  Tomoyuki Hirose <hrstmyk811m@gmail.com>,
  Peter Maydell <peter.maydell@linaro.org>, CJ Chen <cjchen@igel.co.jp>
-Subject: [RFC PATCH v2 1/9] doc/devel/memory.rst: additional explanation for
- unaligned access
-Date: Fri, 22 Aug 2025 18:24:02 +0900
-Message-Id: <20250822092410.25833-2-cjchen@igel.co.jp>
+Subject: [PATCH RFC v2 9/9] tests/qtest: add test for memory region access
+Date: Fri, 22 Aug 2025 18:24:10 +0900
+Message-Id: <20250822092410.25833-10-cjchen@igel.co.jp>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20250822092410.25833-1-cjchen@igel.co.jp>
 References: <20250822092410.25833-1-cjchen@igel.co.jp>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::634;
- envelope-from=cjchen@igel.co.jp; helo=mail-pl1-x634.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::633;
+ envelope-from=cjchen@igel.co.jp; helo=mail-pl1-x633.google.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -117,51 +114,696 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Add documentation to clarify that if `.valid.unaligned = true` but
-`.impl.unaligned = false`, QEMU’s memory core will automatically split
-unaligned guest accesses into multiple aligned accesses. This helps
-devices avoid implementing their own unaligned logic, but can be
-problematic for devices with side-effect-heavy registers. Also note
-that setting `.valid.unaligned = false` together with
-`.impl.unaligned = true` is invalid, as it contradicts itself and
-will trigger an assertion.
+From: Tomoyuki Hirose <hrstmyk811m@gmail.com>
+
+This commit adds a qtest for accessing various memory regions. The
+qtest checks the correctness of handling the access to memory regions
+by using 'memaccess-testdev'.
 
 Signed-off-by: CJ Chen <cjchen@igel.co.jp>
-Acked-by: Tomoyuki Hirose <hrstmyk811m@gmail.com>
-Suggested-by: Peter Maydell <peter.maydell@linaro.org>
+Co-developed-by: CJ Chen <cjchen@igel.co.jp>
+Reported-by: Tomoyuki Hirose <hrstmyk811m@gmail.com>
 ---
- docs/devel/memory.rst | 18 ++++++++++++++++++
- 1 file changed, 18 insertions(+)
+ tests/qtest/memaccess-test.c | 597 +++++++++++++++++++++++++++++++++++
+ tests/qtest/meson.build      |   9 +
+ 2 files changed, 606 insertions(+)
+ create mode 100644 tests/qtest/memaccess-test.c
 
-diff --git a/docs/devel/memory.rst b/docs/devel/memory.rst
-index 57fb2aec76..71d7de7ae5 100644
---- a/docs/devel/memory.rst
-+++ b/docs/devel/memory.rst
-@@ -365,6 +365,24 @@ callbacks are called:
- - .impl.unaligned specifies that the *implementation* supports unaligned
-   accesses; if false, unaligned accesses will be emulated by two aligned
-   accesses.
-+- Additionally, if .valid.unaligned = true but .impl.unaligned = false, the
-+  memory core will emulate each unaligned guest access by splitting it into
-+  multiple aligned sub-accesses. This ensures that devices which only handle
-+  aligned requests do not need to implement unaligned logic themselves. For
-+  example, see xhci_cap_ops in hw/usb/hcd-xhci.c: it sets  .valid.unaligned
-+  = true so guests can do unaligned reads on the xHCI Capability Registers,
-+  while keeping .impl.unaligned = false to rely on the core splitting logic.
-+  However, if a device’s registers have side effects on read or write, this
-+  extra splitting can introduce undesired behavior. Specifically, for devices
-+  whose registers trigger state changes on each read/write, splitting an access
-+  can lead to reading or writing bytes beyond the originally requested subrange
-+  thereby triggering repeated or otherwise unintended register side effects.
-+  In such cases, one should set .valid.unaligned = false to reject unaligned
-+  accesses entirely.
-+- Conversely, if .valid.unaligned = false but .impl.unaligned = true,
-+  that setting is considered invalid; it claims unaligned access is allowed
-+  by the implementation yet disallowed for the device. QEMU enforces this with
-+  an assertion to prevent contradictory usage.
+diff --git a/tests/qtest/memaccess-test.c b/tests/qtest/memaccess-test.c
+new file mode 100644
+index 0000000000..7e90028ea0
+--- /dev/null
++++ b/tests/qtest/memaccess-test.c
+@@ -0,0 +1,597 @@
++/*
++ * QEMU memory region access test
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ *
++ * Author: Tomoyuki HIROSE <hrstmyk811m@gmail.com>
++ */
++
++#include "qemu/osdep.h"
++#include "libqtest.h"
++
++#include "hw/misc/memaccess-testdev.h"
++
++static const char *arch = "";
++static const hwaddr base = 0x200000000;
++
++struct arch2cpu {
++    const char *arch;
++    const char *cpu_model;
++};
++
++static struct arch2cpu cpus_map[] = {
++    /* tested targets list */
++    { "arm", "cortex-a15" },
++    { "aarch64", "cortex-a57" },
++    { "avr", "avr6-avr-cpu" },
++    { "x86_64", "qemu64,apic-id=0" },
++    { "i386", "qemu32,apic-id=0" },
++    { "alpha", "ev67" },
++    { "cris", "crisv32" },
++    { "m68k", "m5206" },
++    { "microblaze", "any" },
++    { "microblazeel", "any" },
++    { "mips", "4Kc" },
++    { "mipsel", "I7200" },
++    { "mips64", "20Kc" },
++    { "mips64el", "I6500" },
++    { "or1k", "or1200" },
++    { "ppc", "604" },
++    { "ppc64", "power8e_v2.1" },
++    { "s390x", "qemu" },
++    { "sh4", "sh7750r" },
++    { "sh4eb", "sh7751r" },
++    { "sparc", "LEON2" },
++    { "sparc64", "Fujitsu Sparc64" },
++    { "tricore", "tc1796" },
++    { "xtensa", "dc233c" },
++    { "xtensaeb", "fsf" },
++    { "hppa", "hppa" },
++    { "riscv64", "rv64" },
++    { "riscv32", "rv32" },
++    { "rx", "rx62n" },
++    { "loongarch64", "la464" },
++};
++
++static const char *get_cpu_model_by_arch(const char *arch)
++{
++    for (int i = 0; i < ARRAY_SIZE(cpus_map); i++) {
++        if (!strcmp(arch, cpus_map[i].arch)) {
++            return cpus_map[i].cpu_model;
++        }
++    }
++    return NULL;
++}
++
++static QTestState *create_memaccess_qtest(void)
++{
++    QTestState *qts;
++
++    qts = qtest_initf("-machine none -cpu \"%s\" "
++                      "-device memaccess-testdev,address=0x%" PRIx64,
++                      get_cpu_model_by_arch(arch), base);
++    return qts;
++}
++
++static void little_b_valid(QTestState *qts, uint64_t offset)
++{
++    qtest_writeb(qts, base + offset + 0, 0x00);
++    qtest_writeb(qts, base + offset + 1, 0x11);
++    qtest_writeb(qts, base + offset + 2, 0x22);
++    qtest_writeb(qts, base + offset + 3, 0x33);
++    qtest_writeb(qts, base + offset + 4, 0x44);
++    qtest_writeb(qts, base + offset + 5, 0x55);
++    qtest_writeb(qts, base + offset + 6, 0x66);
++    qtest_writeb(qts, base + offset + 7, 0x77);
++    g_assert_cmphex(qtest_readb(qts, base + offset + 0), ==, 0x00);
++    g_assert_cmphex(qtest_readb(qts, base + offset + 1), ==, 0x11);
++    g_assert_cmphex(qtest_readb(qts, base + offset + 2), ==, 0x22);
++    g_assert_cmphex(qtest_readb(qts, base + offset + 3), ==, 0x33);
++    g_assert_cmphex(qtest_readb(qts, base + offset + 4), ==, 0x44);
++    g_assert_cmphex(qtest_readb(qts, base + offset + 5), ==, 0x55);
++    g_assert_cmphex(qtest_readb(qts, base + offset + 6), ==, 0x66);
++    g_assert_cmphex(qtest_readb(qts, base + offset + 7), ==, 0x77);
++}
++
++static void little_b_invalid(QTestState *qts, uint64_t offset)
++{
++    qtest_writeb(qts, base + offset + 0, 0x00);
++    qtest_writeb(qts, base + offset + 1, 0x11);
++    qtest_writeb(qts, base + offset + 2, 0x22);
++    qtest_writeb(qts, base + offset + 3, 0x33);
++    qtest_writeb(qts, base + offset + 4, 0x44);
++    qtest_writeb(qts, base + offset + 5, 0x55);
++    qtest_writeb(qts, base + offset + 6, 0x66);
++    qtest_writeb(qts, base + offset + 7, 0x77);
++    g_assert_cmphex(qtest_readb(qts, base + offset + 0), ==, 0x00);
++    g_assert_cmphex(qtest_readb(qts, base + offset + 1), ==, 0x11);
++    g_assert_cmphex(qtest_readb(qts, base + offset + 2), ==, 0x22);
++    g_assert_cmphex(qtest_readb(qts, base + offset + 3), ==, 0x33);
++    g_assert_cmphex(qtest_readb(qts, base + offset + 4), ==, 0x44);
++    g_assert_cmphex(qtest_readb(qts, base + offset + 5), ==, 0x55);
++    g_assert_cmphex(qtest_readb(qts, base + offset + 6), ==, 0x66);
++    g_assert_cmphex(qtest_readb(qts, base + offset + 7), ==, 0x77);
++}
++
++static void little_w_valid(QTestState *qts, hwaddr offset)
++{
++    if (qtest_big_endian(qts)) {
++        qtest_writew(qts, base + offset + 0, 0x1100);
++        qtest_writew(qts, base + offset + 1, 0x3322);
++        qtest_writew(qts, base + offset + 2, 0x5544);
++        qtest_writew(qts, base + offset + 3, 0x7766);
++        qtest_writew(qts, base + offset + 4, 0x9988);
++        qtest_writew(qts, base + offset + 5, 0xbbaa);
++        qtest_writew(qts, base + offset + 6, 0xddcc);
++        qtest_writew(qts, base + offset + 7, 0xffee);
++        g_assert_cmphex(qtest_readw(qts, base + offset + 0), ==, 0x1133);
++        g_assert_cmphex(qtest_readw(qts, base + offset + 1), ==, 0x3355);
++        g_assert_cmphex(qtest_readw(qts, base + offset + 2), ==, 0x5577);
++        g_assert_cmphex(qtest_readw(qts, base + offset + 3), ==, 0x7799);
++        g_assert_cmphex(qtest_readw(qts, base + offset + 4), ==, 0x99bb);
++        g_assert_cmphex(qtest_readw(qts, base + offset + 5), ==, 0xbbdd);
++        g_assert_cmphex(qtest_readw(qts, base + offset + 6), ==, 0xddff);
++        g_assert_cmphex(qtest_readw(qts, base + offset + 7), ==, 0xffee);
++    } else {
++        qtest_writew(qts, base + offset + 0, 0x1100);
++        qtest_writew(qts, base + offset + 1, 0x3322);
++        qtest_writew(qts, base + offset + 2, 0x5544);
++        qtest_writew(qts, base + offset + 3, 0x7766);
++        qtest_writew(qts, base + offset + 4, 0x9988);
++        qtest_writew(qts, base + offset + 5, 0xbbaa);
++        qtest_writew(qts, base + offset + 6, 0xddcc);
++        qtest_writew(qts, base + offset + 7, 0xffee);
++        g_assert_cmphex(qtest_readw(qts, base + offset + 0), ==, 0x2200);
++        g_assert_cmphex(qtest_readw(qts, base + offset + 1), ==, 0x4422);
++        g_assert_cmphex(qtest_readw(qts, base + offset + 2), ==, 0x6644);
++        g_assert_cmphex(qtest_readw(qts, base + offset + 3), ==, 0x8866);
++        g_assert_cmphex(qtest_readw(qts, base + offset + 4), ==, 0xaa88);
++        g_assert_cmphex(qtest_readw(qts, base + offset + 5), ==, 0xccaa);
++        g_assert_cmphex(qtest_readw(qts, base + offset + 6), ==, 0xeecc);
++        g_assert_cmphex(qtest_readw(qts, base + offset + 7), ==, 0xffee);
++    }
++}
++
++static void little_w_invalid(QTestState *qts, hwaddr offset)
++{
++    if (qtest_big_endian(qts)) {
++        qtest_writew(qts, base + offset + 0, 0x1100);
++        qtest_writew(qts, base + offset + 2, 0x3322);
++        qtest_writew(qts, base + offset + 4, 0x5544);
++        qtest_writew(qts, base + offset + 6, 0x7766);
++        g_assert_cmphex(qtest_readw(qts, base + offset + 0), ==, 0x1100);
++        g_assert_cmphex(qtest_readw(qts, base + offset + 2), ==, 0x3322);
++        g_assert_cmphex(qtest_readw(qts, base + offset + 4), ==, 0x5544);
++        g_assert_cmphex(qtest_readw(qts, base + offset + 6), ==, 0x7766);
++    } else {
++        qtest_writew(qts, base + offset + 0, 0x1100);
++        qtest_writew(qts, base + offset + 2, 0x3322);
++        qtest_writew(qts, base + offset + 4, 0x5544);
++        qtest_writew(qts, base + offset + 6, 0x7766);
++        g_assert_cmphex(qtest_readw(qts, base + offset + 0), ==, 0x1100);
++        g_assert_cmphex(qtest_readw(qts, base + offset + 2), ==, 0x3322);
++        g_assert_cmphex(qtest_readw(qts, base + offset + 4), ==, 0x5544);
++        g_assert_cmphex(qtest_readw(qts, base + offset + 6), ==, 0x7766);
++    }
++}
++
++static void little_l_valid(QTestState *qts, hwaddr offset)
++{
++    if (qtest_big_endian(qts)) {
++        qtest_writel(qts, base + offset + 0, 0x33221100);
++        qtest_writel(qts, base + offset + 1, 0x77665544);
++        qtest_writel(qts, base + offset + 2, 0xbbaa9988);
++        qtest_writel(qts, base + offset + 3, 0xffeeddcc);
++        qtest_writel(qts, base + offset + 4, 0x01234567);
++        qtest_writel(qts, base + offset + 5, 0x89abcdef);
++        qtest_writel(qts, base + offset + 6, 0xfedcba98);
++        qtest_writel(qts, base + offset + 7, 0x76543210);
++        g_assert_cmphex(qtest_readl(qts, base + offset + 0), ==, 0x3377bbff);
++        g_assert_cmphex(qtest_readl(qts, base + offset + 1), ==, 0x77bbff01);
++        g_assert_cmphex(qtest_readl(qts, base + offset + 2), ==, 0xbbff0189);
++        g_assert_cmphex(qtest_readl(qts, base + offset + 3), ==, 0xff0189fe);
++        g_assert_cmphex(qtest_readl(qts, base + offset + 4), ==, 0x0189fe76);
++        g_assert_cmphex(qtest_readl(qts, base + offset + 5), ==, 0x89fe7654);
++        g_assert_cmphex(qtest_readl(qts, base + offset + 6), ==, 0xfe765432);
++        g_assert_cmphex(qtest_readl(qts, base + offset + 7), ==, 0x76543210);
++    } else {
++        qtest_writel(qts, base + offset + 0, 0x33221100);
++        qtest_writel(qts, base + offset + 1, 0x77665544);
++        qtest_writel(qts, base + offset + 2, 0xbbaa9988);
++        qtest_writel(qts, base + offset + 3, 0xffeeddcc);
++        qtest_writel(qts, base + offset + 4, 0x01234567);
++        qtest_writel(qts, base + offset + 5, 0x89abcdef);
++        qtest_writel(qts, base + offset + 6, 0xfedcba98);
++        qtest_writel(qts, base + offset + 7, 0x76543210);
++        g_assert_cmphex(qtest_readl(qts, base + offset + 0), ==, 0xcc884400);
++        g_assert_cmphex(qtest_readl(qts, base + offset + 1), ==, 0x67cc8844);
++        g_assert_cmphex(qtest_readl(qts, base + offset + 2), ==, 0xef67cc88);
++        g_assert_cmphex(qtest_readl(qts, base + offset + 3), ==, 0x98ef67cc);
++        g_assert_cmphex(qtest_readl(qts, base + offset + 4), ==, 0x1098ef67);
++        g_assert_cmphex(qtest_readl(qts, base + offset + 5), ==, 0x321098ef);
++        g_assert_cmphex(qtest_readl(qts, base + offset + 6), ==, 0x54321098);
++        g_assert_cmphex(qtest_readl(qts, base + offset + 7), ==, 0x76543210);
++    }
++}
++
++static void little_l_invalid(QTestState *qts, hwaddr offset)
++{
++    if (qtest_big_endian(qts)) {
++        qtest_writel(qts, base + offset + 0, 0x33221100);
++        qtest_writel(qts, base + offset + 4, 0x77665544);
++        g_assert_cmphex(qtest_readl(qts, base + offset + 0), ==, 0x33221100);
++        g_assert_cmphex(qtest_readl(qts, base + offset + 4), ==, 0x77665544);
++    } else {
++        qtest_writel(qts, base + offset + 0, 0x33221100);
++        qtest_writel(qts, base + offset + 4, 0x77665544);
++        g_assert_cmphex(qtest_readl(qts, base + offset + 0), ==, 0x33221100);
++        g_assert_cmphex(qtest_readl(qts, base + offset + 4), ==, 0x77665544);
++    }
++}
++
++static void little_q_valid(QTestState *qts, hwaddr offset)
++{
++    if (qtest_big_endian(qts)) {
++        qtest_writeq(qts, base + offset + 0, 0x7766554433221100);
++        qtest_writeq(qts, base + offset + 1, 0xffeeddccbbaa9988);
++        qtest_writeq(qts, base + offset + 2, 0xfedcba9876543210);
++        qtest_writeq(qts, base + offset + 3, 0x0123456789abcdef);
++        qtest_writeq(qts, base + offset + 4, 0xdeadbeefdeadbeef);
++        qtest_writeq(qts, base + offset + 5, 0xcafebabecafebabe);
++        qtest_writeq(qts, base + offset + 6, 0xbeefcafebeefcafe);
++        qtest_writeq(qts, base + offset + 7, 0xfacefeedfacefeed);
++        g_assert_cmphex(qtest_readq(qts, base + offset + 0), ==,
++                        0x77fffe01decabefa);
++        g_assert_cmphex(qtest_readq(qts, base + offset + 1), ==,
++                        0xfffe01decabeface);
++        g_assert_cmphex(qtest_readq(qts, base + offset + 2), ==,
++                        0xfe01decabefacefe);
++        g_assert_cmphex(qtest_readq(qts, base + offset + 3), ==,
++                        0x01decabefacefeed);
++        g_assert_cmphex(qtest_readq(qts, base + offset + 4), ==,
++                        0xdecabefacefeedfa);
++        g_assert_cmphex(qtest_readq(qts, base + offset + 5), ==,
++                        0xcabefacefeedface);
++        g_assert_cmphex(qtest_readq(qts, base + offset + 6), ==,
++                        0xbefacefeedfacefe);
++        g_assert_cmphex(qtest_readq(qts, base + offset + 7), ==,
++                        0xfacefeedfacefeed);
++    } else {
++        qtest_writeq(qts, base + offset + 0, 0x7766554433221100);
++        qtest_writeq(qts, base + offset + 1, 0xffeeddccbbaa9988);
++        qtest_writeq(qts, base + offset + 2, 0xfedcba9876543210);
++        qtest_writeq(qts, base + offset + 3, 0x0123456789abcdef);
++        qtest_writeq(qts, base + offset + 4, 0xdeadbeefdeadbeef);
++        qtest_writeq(qts, base + offset + 5, 0xcafebabecafebabe);
++        qtest_writeq(qts, base + offset + 6, 0xbeefcafebeefcafe);
++        qtest_writeq(qts, base + offset + 7, 0xfacefeedfacefeed);
++        g_assert_cmphex(qtest_readq(qts, base + offset + 0), ==,
++                        0xedfebeefef108800);
++        g_assert_cmphex(qtest_readq(qts, base + offset + 1), ==,
++                        0xfeedfebeefef1088);
++        g_assert_cmphex(qtest_readq(qts, base + offset + 2), ==,
++                        0xcefeedfebeefef10);
++        g_assert_cmphex(qtest_readq(qts, base + offset + 3), ==,
++                        0xfacefeedfebeefef);
++        g_assert_cmphex(qtest_readq(qts, base + offset + 4), ==,
++                        0xedfacefeedfebeef);
++        g_assert_cmphex(qtest_readq(qts, base + offset + 5), ==,
++                        0xfeedfacefeedfebe);
++        g_assert_cmphex(qtest_readq(qts, base + offset + 6), ==,
++                        0xcefeedfacefeedfe);
++        g_assert_cmphex(qtest_readq(qts, base + offset + 7), ==,
++                        0xfacefeedfacefeed);
++    }
++}
++
++static void little_q_invalid(QTestState *qts, hwaddr offset)
++{
++    if (qtest_big_endian(qts)) {
++        qtest_writeq(qts, base + offset + 0, 0x7766554433221100);
++        g_assert_cmphex(qtest_readq(qts, base + offset + 0), ==,
++                        0x7766554433221100);
++    } else {
++        qtest_writeq(qts, base + offset + 0, 0x7766554433221100);
++        g_assert_cmphex(qtest_readq(qts, base + offset + 0), ==,
++                        0x7766554433221100);
++    }
++}
++
++static void big_b_valid(QTestState *qts, uint64_t offset)
++{
++    qtest_writeb(qts, base + offset + 0, 0x00);
++    qtest_writeb(qts, base + offset + 1, 0x11);
++    qtest_writeb(qts, base + offset + 2, 0x22);
++    qtest_writeb(qts, base + offset + 3, 0x33);
++    qtest_writeb(qts, base + offset + 4, 0x44);
++    qtest_writeb(qts, base + offset + 5, 0x55);
++    qtest_writeb(qts, base + offset + 6, 0x66);
++    qtest_writeb(qts, base + offset + 7, 0x77);
++    g_assert_cmphex(qtest_readb(qts, base + offset + 0), ==, 0x00);
++    g_assert_cmphex(qtest_readb(qts, base + offset + 1), ==, 0x11);
++    g_assert_cmphex(qtest_readb(qts, base + offset + 2), ==, 0x22);
++    g_assert_cmphex(qtest_readb(qts, base + offset + 3), ==, 0x33);
++    g_assert_cmphex(qtest_readb(qts, base + offset + 4), ==, 0x44);
++    g_assert_cmphex(qtest_readb(qts, base + offset + 5), ==, 0x55);
++    g_assert_cmphex(qtest_readb(qts, base + offset + 6), ==, 0x66);
++    g_assert_cmphex(qtest_readb(qts, base + offset + 7), ==, 0x77);
++}
++
++static void big_b_invalid(QTestState *qts, uint64_t offset)
++{
++    qtest_writeb(qts, base + offset + 0, 0x00);
++    qtest_writeb(qts, base + offset + 1, 0x11);
++    qtest_writeb(qts, base + offset + 2, 0x22);
++    qtest_writeb(qts, base + offset + 3, 0x33);
++    qtest_writeb(qts, base + offset + 4, 0x44);
++    qtest_writeb(qts, base + offset + 5, 0x55);
++    qtest_writeb(qts, base + offset + 6, 0x66);
++    qtest_writeb(qts, base + offset + 7, 0x77);
++    g_assert_cmphex(qtest_readb(qts, base + offset + 0), ==, 0x00);
++    g_assert_cmphex(qtest_readb(qts, base + offset + 1), ==, 0x11);
++    g_assert_cmphex(qtest_readb(qts, base + offset + 2), ==, 0x22);
++    g_assert_cmphex(qtest_readb(qts, base + offset + 3), ==, 0x33);
++    g_assert_cmphex(qtest_readb(qts, base + offset + 4), ==, 0x44);
++    g_assert_cmphex(qtest_readb(qts, base + offset + 5), ==, 0x55);
++    g_assert_cmphex(qtest_readb(qts, base + offset + 6), ==, 0x66);
++    g_assert_cmphex(qtest_readb(qts, base + offset + 7), ==, 0x77);
++}
++
++static void big_w_valid(QTestState *qts, hwaddr offset)
++{
++    if (qtest_big_endian(qts)) {
++        qtest_writew(qts, base + offset + 0, 0x1100);
++        qtest_writew(qts, base + offset + 1, 0x3322);
++        qtest_writew(qts, base + offset + 2, 0x5544);
++        qtest_writew(qts, base + offset + 3, 0x7766);
++        qtest_writew(qts, base + offset + 4, 0x9988);
++        qtest_writew(qts, base + offset + 5, 0xbbaa);
++        qtest_writew(qts, base + offset + 6, 0xddcc);
++        qtest_writew(qts, base + offset + 7, 0xffee);
++        g_assert_cmphex(qtest_readw(qts, base + offset + 0), ==, 0x1133);
++        g_assert_cmphex(qtest_readw(qts, base + offset + 1), ==, 0x3355);
++        g_assert_cmphex(qtest_readw(qts, base + offset + 2), ==, 0x5577);
++        g_assert_cmphex(qtest_readw(qts, base + offset + 3), ==, 0x7799);
++        g_assert_cmphex(qtest_readw(qts, base + offset + 4), ==, 0x99bb);
++        g_assert_cmphex(qtest_readw(qts, base + offset + 5), ==, 0xbbdd);
++        g_assert_cmphex(qtest_readw(qts, base + offset + 6), ==, 0xddff);
++        g_assert_cmphex(qtest_readw(qts, base + offset + 7), ==, 0xffee);
++    } else {
++        qtest_writew(qts, base + offset + 0, 0x1100);
++        qtest_writew(qts, base + offset + 1, 0x3322);
++        qtest_writew(qts, base + offset + 2, 0x5544);
++        qtest_writew(qts, base + offset + 3, 0x7766);
++        qtest_writew(qts, base + offset + 4, 0x9988);
++        qtest_writew(qts, base + offset + 5, 0xbbaa);
++        qtest_writew(qts, base + offset + 6, 0xddcc);
++        qtest_writew(qts, base + offset + 7, 0xffee);
++        g_assert_cmphex(qtest_readw(qts, base + offset + 0), ==, 0x2200);
++        g_assert_cmphex(qtest_readw(qts, base + offset + 1), ==, 0x4422);
++        g_assert_cmphex(qtest_readw(qts, base + offset + 2), ==, 0x6644);
++        g_assert_cmphex(qtest_readw(qts, base + offset + 3), ==, 0x8866);
++        g_assert_cmphex(qtest_readw(qts, base + offset + 4), ==, 0xaa88);
++        g_assert_cmphex(qtest_readw(qts, base + offset + 5), ==, 0xccaa);
++        g_assert_cmphex(qtest_readw(qts, base + offset + 6), ==, 0xeecc);
++        g_assert_cmphex(qtest_readw(qts, base + offset + 7), ==, 0xffee);
++    }
++}
++
++static void big_w_invalid(QTestState *qts, hwaddr offset)
++{
++    if (qtest_big_endian(qts)) {
++        qtest_writew(qts, base + offset + 0, 0x1100);
++        qtest_writew(qts, base + offset + 2, 0x3322);
++        qtest_writew(qts, base + offset + 4, 0x5544);
++        qtest_writew(qts, base + offset + 6, 0x7766);
++        g_assert_cmphex(qtest_readw(qts, base + offset + 0), ==, 0x1100);
++        g_assert_cmphex(qtest_readw(qts, base + offset + 2), ==, 0x3322);
++        g_assert_cmphex(qtest_readw(qts, base + offset + 4), ==, 0x5544);
++        g_assert_cmphex(qtest_readw(qts, base + offset + 6), ==, 0x7766);
++    } else {
++        qtest_writew(qts, base + offset + 0, 0x1100);
++        qtest_writew(qts, base + offset + 2, 0x3322);
++        qtest_writew(qts, base + offset + 4, 0x5544);
++        qtest_writew(qts, base + offset + 6, 0x7766);
++        g_assert_cmphex(qtest_readw(qts, base + offset + 0), ==, 0x1100);
++        g_assert_cmphex(qtest_readw(qts, base + offset + 2), ==, 0x3322);
++        g_assert_cmphex(qtest_readw(qts, base + offset + 4), ==, 0x5544);
++        g_assert_cmphex(qtest_readw(qts, base + offset + 6), ==, 0x7766);
++    }
++}
++
++static void big_l_valid(QTestState *qts, hwaddr offset)
++{
++    if (qtest_big_endian(qts)) {
++        qtest_writel(qts, base + offset + 0, 0x33221100);
++        qtest_writel(qts, base + offset + 1, 0x77665544);
++        qtest_writel(qts, base + offset + 2, 0xbbaa9988);
++        qtest_writel(qts, base + offset + 3, 0xffeeddcc);
++        qtest_writel(qts, base + offset + 4, 0x01234567);
++        qtest_writel(qts, base + offset + 5, 0x89abcdef);
++        qtest_writel(qts, base + offset + 6, 0xfedcba98);
++        qtest_writel(qts, base + offset + 7, 0x76543210);
++        g_assert_cmphex(qtest_readl(qts, base + offset + 0), ==, 0x3377bbff);
++        g_assert_cmphex(qtest_readl(qts, base + offset + 1), ==, 0x77bbff01);
++        g_assert_cmphex(qtest_readl(qts, base + offset + 2), ==, 0xbbff0189);
++        g_assert_cmphex(qtest_readl(qts, base + offset + 3), ==, 0xff0189fe);
++        g_assert_cmphex(qtest_readl(qts, base + offset + 4), ==, 0x0189fe76);
++        g_assert_cmphex(qtest_readl(qts, base + offset + 5), ==, 0x89fe7654);
++        g_assert_cmphex(qtest_readl(qts, base + offset + 6), ==, 0xfe765432);
++        g_assert_cmphex(qtest_readl(qts, base + offset + 7), ==, 0x76543210);
++    } else {
++        qtest_writel(qts, base + offset + 0, 0x33221100);
++        qtest_writel(qts, base + offset + 1, 0x77665544);
++        qtest_writel(qts, base + offset + 2, 0xbbaa9988);
++        qtest_writel(qts, base + offset + 3, 0xffeeddcc);
++        qtest_writel(qts, base + offset + 4, 0x01234567);
++        qtest_writel(qts, base + offset + 5, 0x89abcdef);
++        qtest_writel(qts, base + offset + 6, 0xfedcba98);
++        qtest_writel(qts, base + offset + 7, 0x76543210);
++        g_assert_cmphex(qtest_readl(qts, base + offset + 0), ==, 0xcc884400);
++        g_assert_cmphex(qtest_readl(qts, base + offset + 1), ==, 0x67cc8844);
++        g_assert_cmphex(qtest_readl(qts, base + offset + 2), ==, 0xef67cc88);
++        g_assert_cmphex(qtest_readl(qts, base + offset + 3), ==, 0x98ef67cc);
++        g_assert_cmphex(qtest_readl(qts, base + offset + 4), ==, 0x1098ef67);
++        g_assert_cmphex(qtest_readl(qts, base + offset + 5), ==, 0x321098ef);
++        g_assert_cmphex(qtest_readl(qts, base + offset + 6), ==, 0x54321098);
++        g_assert_cmphex(qtest_readl(qts, base + offset + 7), ==, 0x76543210);
++    }
++}
++
++static void big_l_invalid(QTestState *qts, hwaddr offset)
++{
++    if (qtest_big_endian(qts)) {
++        qtest_writel(qts, base + offset + 0, 0x33221100);
++        qtest_writel(qts, base + offset + 4, 0x77665544);
++        g_assert_cmphex(qtest_readl(qts, base + offset + 0), ==, 0x33221100);
++        g_assert_cmphex(qtest_readl(qts, base + offset + 4), ==, 0x77665544);
++    } else {
++        qtest_writel(qts, base + offset + 0, 0x33221100);
++        qtest_writel(qts, base + offset + 4, 0x77665544);
++        g_assert_cmphex(qtest_readl(qts, base + offset + 0), ==, 0x33221100);
++        g_assert_cmphex(qtest_readl(qts, base + offset + 4), ==, 0x77665544);
++    }
++}
++
++static void big_q_valid(QTestState *qts, hwaddr offset)
++{
++    if (qtest_big_endian(qts)) {
++        qtest_writeq(qts, base + offset + 0, 0x7766554433221100);
++        qtest_writeq(qts, base + offset + 1, 0xffeeddccbbaa9988);
++        qtest_writeq(qts, base + offset + 2, 0xfedcba9876543210);
++        qtest_writeq(qts, base + offset + 3, 0x0123456789abcdef);
++        qtest_writeq(qts, base + offset + 4, 0xdeadbeefdeadbeef);
++        qtest_writeq(qts, base + offset + 5, 0xcafebabecafebabe);
++        qtest_writeq(qts, base + offset + 6, 0xbeefcafebeefcafe);
++        qtest_writeq(qts, base + offset + 7, 0xfacefeedfacefeed);
++        g_assert_cmphex(qtest_readq(qts, base + offset + 0), ==,
++                        0x77fffe01decabefa);
++        g_assert_cmphex(qtest_readq(qts, base + offset + 1), ==,
++                        0xfffe01decabeface);
++        g_assert_cmphex(qtest_readq(qts, base + offset + 2), ==,
++                        0xfe01decabefacefe);
++        g_assert_cmphex(qtest_readq(qts, base + offset + 3), ==,
++                        0x01decabefacefeed);
++        g_assert_cmphex(qtest_readq(qts, base + offset + 4), ==,
++                        0xdecabefacefeedfa);
++        g_assert_cmphex(qtest_readq(qts, base + offset + 5), ==,
++                        0xcabefacefeedface);
++        g_assert_cmphex(qtest_readq(qts, base + offset + 6), ==,
++                        0xbefacefeedfacefe);
++        g_assert_cmphex(qtest_readq(qts, base + offset + 7), ==,
++                        0xfacefeedfacefeed);
++    } else {
++        qtest_writeq(qts, base + offset + 0, 0x7766554433221100);
++        qtest_writeq(qts, base + offset + 1, 0xffeeddccbbaa9988);
++        qtest_writeq(qts, base + offset + 2, 0xfedcba9876543210);
++        qtest_writeq(qts, base + offset + 3, 0x0123456789abcdef);
++        qtest_writeq(qts, base + offset + 4, 0xdeadbeefdeadbeef);
++        qtest_writeq(qts, base + offset + 5, 0xcafebabecafebabe);
++        qtest_writeq(qts, base + offset + 6, 0xbeefcafebeefcafe);
++        qtest_writeq(qts, base + offset + 7, 0xfacefeedfacefeed);
++        g_assert_cmphex(qtest_readq(qts, base + offset + 0), ==,
++                        0xedfebeefef108800);
++        g_assert_cmphex(qtest_readq(qts, base + offset + 1), ==,
++                        0xfeedfebeefef1088);
++        g_assert_cmphex(qtest_readq(qts, base + offset + 2), ==,
++                        0xcefeedfebeefef10);
++        g_assert_cmphex(qtest_readq(qts, base + offset + 3), ==,
++                        0xfacefeedfebeefef);
++        g_assert_cmphex(qtest_readq(qts, base + offset + 4), ==,
++                        0xedfacefeedfebeef);
++        g_assert_cmphex(qtest_readq(qts, base + offset + 5), ==,
++                        0xfeedfacefeedfebe);
++        g_assert_cmphex(qtest_readq(qts, base + offset + 6), ==,
++                        0xcefeedfacefeedfe);
++        g_assert_cmphex(qtest_readq(qts, base + offset + 7), ==,
++                        0xfacefeedfacefeed);
++    }
++}
++
++static void big_q_invalid(QTestState *qts, hwaddr offset)
++{
++    if (qtest_big_endian(qts)) {
++        qtest_writeq(qts, base + offset + 0, 0x7766554433221100);
++        g_assert_cmphex(qtest_readq(qts, base + offset + 0), ==,
++                        0x7766554433221100);
++    } else {
++        qtest_writeq(qts, base + offset + 0, 0x7766554433221100);
++        g_assert_cmphex(qtest_readq(qts, base + offset + 0), ==,
++                        0x7766554433221100);
++    }
++}
++
++#define DEFINE_test_memaccess(e, e_u, w, w_u, v, v_u)                   \
++    static void                                                         \
++    test_memaccess_##e##_##w##_##v(void)                                \
++    {                                                                   \
++        QTestState *qts;                                                \
++        qts = create_memaccess_qtest();                                 \
++        if (!qts) {                                                     \
++            return;                                                     \
++        }                                                               \
++                                                                        \
++        for (size_t i = OFF_IDX_OPS_LIST_##e_u##_##w_u##_##v_u;         \
++             i < OFF_IDX_OPS_LIST_##e_u##_##w_u##_##v_u +               \
++                 N_OPS_LIST_##e_u##_##w_u##_##v_u;                      \
++             i++) {                                                     \
++            e##_##w##_##v(qts, MEMACCESS_TESTDEV_REGION_SIZE * i);      \
++        }                                                               \
++                                                                        \
++        qtest_quit(qts);                                                \
++    }
++
++DEFINE_test_memaccess(little, LITTLE, b, B, valid, VALID)
++DEFINE_test_memaccess(little, LITTLE, w, W, valid, VALID)
++DEFINE_test_memaccess(little, LITTLE, l, L, valid, VALID)
++DEFINE_test_memaccess(little, LITTLE, q, Q, valid, VALID)
++DEFINE_test_memaccess(little, LITTLE, b, B, invalid, INVALID)
++DEFINE_test_memaccess(little, LITTLE, w, W, invalid, INVALID)
++DEFINE_test_memaccess(little, LITTLE, l, L, invalid, INVALID)
++DEFINE_test_memaccess(little, LITTLE, q, Q, invalid, INVALID)
++DEFINE_test_memaccess(big, BIG, b, B, valid, VALID)
++DEFINE_test_memaccess(big, BIG, w, W, valid, VALID)
++DEFINE_test_memaccess(big, BIG, l, L, valid, VALID)
++DEFINE_test_memaccess(big, BIG, q, Q, valid, VALID)
++DEFINE_test_memaccess(big, BIG, b, B, invalid, INVALID)
++DEFINE_test_memaccess(big, BIG, w, W, invalid, INVALID)
++DEFINE_test_memaccess(big, BIG, l, L, invalid, INVALID)
++DEFINE_test_memaccess(big, BIG, q, Q, invalid, INVALID)
++
++#undef DEFINE_test_memaccess
++
++static struct {
++    const char *name;
++    void (*test)(void);
++} tests[] = {
++    {"little_b_valid", test_memaccess_little_b_valid},
++    {"little_w_valid", test_memaccess_little_w_valid},
++    {"little_l_valid", test_memaccess_little_l_valid},
++    {"little_q_valid", test_memaccess_little_q_valid},
++    {"little_b_invalid", test_memaccess_little_b_invalid},
++    {"little_w_invalid", test_memaccess_little_w_invalid},
++    {"little_l_invalid", test_memaccess_little_l_invalid},
++    {"little_q_invalid", test_memaccess_little_q_invalid},
++    {"big_b_valid", test_memaccess_big_b_valid},
++    {"big_w_valid", test_memaccess_big_w_valid},
++    {"big_l_valid", test_memaccess_big_l_valid},
++    {"big_q_valid", test_memaccess_big_q_valid},
++    {"big_b_invalid", test_memaccess_big_b_invalid},
++    {"big_w_invalid", test_memaccess_big_w_invalid},
++    {"big_l_invalid", test_memaccess_big_l_invalid},
++    {"big_q_invalid", test_memaccess_big_q_invalid},
++};
++
++int main(int argc, char **argv)
++{
++    g_test_init(&argc, &argv, NULL);
++
++    arch = qtest_get_arch();
++
++    for (int i = 0; i < ARRAY_SIZE(tests); i++) {
++        g_autofree gchar *path = g_strdup_printf("memaccess/%s", tests[i].name);
++        qtest_add_func(path, tests[i].test);
++    }
++
++    return g_test_run();
++}
+diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+index 669d07c06b..5d721b2c60 100644
+--- a/tests/qtest/meson.build
++++ b/tests/qtest/meson.build
+@@ -95,6 +95,7 @@ qtests_i386 = \
+   (config_all_devices.has_key('CONFIG_SDHCI_PCI') ? ['fuzz-sdcard-test'] : []) +            \
+   (config_all_devices.has_key('CONFIG_ESP_PCI') ? ['am53c974-test'] : []) +                 \
+   (config_all_devices.has_key('CONFIG_VTD') ? ['intel-iommu-test'] : []) +                 \
++  (config_all_devices.has_key('CONFIG_MEMACCESS_TESTDEV') ? ['memaccess-test'] : []) +      \
+   (host_os != 'windows' and                                                                \
+    config_all_devices.has_key('CONFIG_ACPI_ERST') ? ['erst-test'] : []) +                   \
+   (config_all_devices.has_key('CONFIG_PCIE_PORT') and                                       \
+@@ -138,6 +139,7 @@ qtests_x86_64 = qtests_i386
  
- API Reference
- -------------
+ qtests_alpha = ['boot-serial-test'] + \
+   qtests_filter + \
++  (config_all_devices.has_key('CONFIG_MEMACCESS_TESTDEV') ? ['memaccess-test'] : []) +       \
+   (config_all_devices.has_key('CONFIG_VGA') ? ['display-vga-test'] : [])
+ 
+ qtests_avr = [ 'boot-serial-test' ]
+@@ -162,6 +164,7 @@ qtests_microblazeel = qtests_microblaze
+ 
+ qtests_mips = \
+   qtests_filter + \
++  (config_all_devices.has_key('CONFIG_MEMACCESS_TESTDEV') ? ['memaccess-test'] : []) +       \
+   (config_all_devices.has_key('CONFIG_ISA_TESTDEV') ? ['endianness-test'] : []) +            \
+   (config_all_devices.has_key('CONFIG_VGA') ? ['display-vga-test'] : [])
+ 
+@@ -172,6 +175,7 @@ qtests_mips64el = qtests_mips
+ qtests_ppc = \
+   qtests_filter + \
+   (config_all_devices.has_key('CONFIG_ISA_TESTDEV') ? ['endianness-test'] : []) +            \
++  (config_all_devices.has_key('CONFIG_MEMACCESS_TESTDEV') ? ['memaccess-test'] : []) +       \
+   (config_all_accel.has_key('CONFIG_TCG') ? ['prom-env-test'] : []) +                              \
+   (config_all_accel.has_key('CONFIG_TCG') ? ['boot-serial-test'] : []) +                           \
+   ['boot-order-test']
+@@ -198,6 +202,7 @@ qtests_sparc = ['prom-env-test', 'm48t59-test', 'boot-serial-test'] + \
+ 
+ qtests_sparc64 = \
+   (config_all_devices.has_key('CONFIG_ISA_TESTDEV') ? ['endianness-test'] : []) +            \
++  (config_all_devices.has_key('CONFIG_MEMACCESS_TESTDEV') ? ['memaccess-test'] : []) +       \
+   qtests_filter + \
+   ['prom-env-test', 'boot-serial-test']
+ 
+@@ -248,6 +253,7 @@ qtests_arm = \
+   (config_all_devices.has_key('CONFIG_FSI_APB2OPB_ASPEED') ? ['aspeed_fsi-test'] : []) + \
+   (config_all_devices.has_key('CONFIG_STM32L4X5_SOC') and
+    config_all_devices.has_key('CONFIG_DM163')? ['dm163-test'] : []) + \
++  (config_all_devices.has_key('CONFIG_MEMACCESS_TESTDEV') ? ['memaccess-test'] : []) + \
+   ['arm-cpu-features',
+    'boot-serial-test']
+ 
+@@ -263,6 +269,7 @@ qtests_aarch64 = \
+    config_all_devices.has_key('CONFIG_TPM_TIS_I2C') ? ['tpm-tis-i2c-test'] : []) + \
+   (config_all_devices.has_key('CONFIG_ASPEED_SOC') ? qtests_aspeed64 : []) + \
+   (config_all_devices.has_key('CONFIG_NPCM8XX') ? qtests_npcm8xx : []) + \
++  (config_all_devices.has_key('CONFIG_MEMACCESS_TESTDEV') ? ['memaccess-test'] : []) + \
+   qtests_cxl +                                                                                  \
+   ['arm-cpu-features',
+    'numa-test',
+@@ -279,9 +286,11 @@ qtests_s390x = \
+    'migration-test']
+ 
+ qtests_riscv32 = \
++  (config_all_devices.has_key('CONFIG_MEMACCESS_TESTDEV') ? ['memaccess-test'] : []) + \
+   (config_all_devices.has_key('CONFIG_SIFIVE_E_AON') ? ['sifive-e-aon-watchdog-test'] : [])
+ 
+ qtests_riscv64 = ['riscv-csr-test'] + \
++  (config_all_devices.has_key('CONFIG_MEMACCESS_TESTDEV') ? ['memaccess-test'] : []) + \
+   (unpack_edk2_blobs ? ['bios-tables-test'] : [])
+ 
+ qos_test_ss = ss.source_set()
 -- 
 2.25.1
 

@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7009CA0EEB
-	for <qemu-arm@archiver.kernel.org>; Fri, 22 Aug 2025 13:55:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 916AECA0EED
+	for <qemu-arm@archiver.kernel.org>; Fri, 22 Aug 2025 13:55:05 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1upSDA-0005lk-Ix; Fri, 22 Aug 2025 09:53:44 -0400
+	id 1upSDA-0005lv-P8; Fri, 22 Aug 2025 09:53:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cjchen@igel.co.jp>) id 1upO1k-0005th-Je
- for qemu-arm@nongnu.org; Fri, 22 Aug 2025 05:25:40 -0400
-Received: from mail-pg1-x532.google.com ([2607:f8b0:4864:20::532])
+ (Exim 4.90_1) (envelope-from <cjchen@igel.co.jp>) id 1upO1R-0005dj-3q
+ for qemu-arm@nongnu.org; Fri, 22 Aug 2025 05:25:21 -0400
+Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <cjchen@igel.co.jp>) id 1upO1g-0007D8-5X
- for qemu-arm@nongnu.org; Fri, 22 Aug 2025 05:25:40 -0400
-Received: by mail-pg1-x532.google.com with SMTP id
- 41be03b00d2f7-b49c622e598so137985a12.1
- for <qemu-arm@nongnu.org>; Fri, 22 Aug 2025 02:25:35 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <cjchen@igel.co.jp>) id 1upO1M-00078x-9o
+ for qemu-arm@nongnu.org; Fri, 22 Aug 2025 05:25:20 -0400
+Received: by mail-pl1-x633.google.com with SMTP id
+ d9443c01a7336-2445806df50so16606205ad.1
+ for <qemu-arm@nongnu.org>; Fri, 22 Aug 2025 02:25:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=igel-co-jp.20230601.gappssmtp.com; s=20230601; t=1755854734; x=1756459534;
+ d=igel-co-jp.20230601.gappssmtp.com; s=20230601; t=1755854714; x=1756459514;
  darn=nongnu.org; 
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=R20a+AC/qNPmE0yIiAxw+Sd4sMt8EwUMqbCQvSGoLUU=;
- b=Cbc+DdP+nEw/Z6cIzsFTlJMbgJyMUx2SeE9Kh1TTgzEbOrfnzfzNpb8JvymWyEP2kX
- RNNE3l+sOLv4F4FC/U9t97hHoaToOVIoyfCFb0OBQbdF9Kv6hXjEHQA4QP2ttExp+TUB
- 7wErscJMU48F4H49T1pH9NiL0sg3LZwBI7i+pMSRY+82o5Cnx7sMys95WJN7qiwjayFF
- aaB38Q2f1vWrmj6AOWopmvsLZA7zZ7wm+R2XYBGrVgxFWhyZXcYCoyeNkJOpyLlo/lvC
- 7M0DtAqs7Yw1kDi5qEjw+HQLYHgEDubkmq2gXdTTDPECVe0kWJXgPm0jt17UcIGrQ2xs
- TO1g==
+ bh=mlo0VNE2LkX+k6ixV83bmWbI8LIl4VVBBmVNmXeQQcY=;
+ b=gHlpWm/esdPlDf6OBTQA7j9IL58URUKNJ0ypl7KeyPyy08LqL136YGcVIR5dnkvhRM
+ D31OB5pb2A36D7g9zEb8ePHOJPr7cdsNh17PgXh4SQaLp6GvjkAuKeD1qVoL2XvDPueB
+ LmmTrstfjrYf8b+fKHtwP01Ch/obmqPSUI5hebbJ86QYdt0qHVYzHlQsa3u+1z5AiF/k
+ nyyE5JhkLvgRS/cOnxTLmoMavA4IARyEM0sbEzJdzHfZqnQwAOXJtF2AvR8QnPmHnpY+
+ 80ufSJoKrpnPDXps6WynkWrmvAtTbD+qjVzBLInJun54WGVFd8lC2xmW+hhRGTPUaCmq
+ fY2A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1755854734; x=1756459534;
+ d=1e100.net; s=20230601; t=1755854714; x=1756459514;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=R20a+AC/qNPmE0yIiAxw+Sd4sMt8EwUMqbCQvSGoLUU=;
- b=qHkaBuMO3nGkcP6UlmhJoZPto36SxOv1l4gEnVkuhHG3avPKglx5k6/Ckx1qQb9viC
- HcKsDpCGu77LVaY7Rn1sWUdOv4IgUQUi6mvrU8zlDHxsuWpwOqza44TTJH1Ymt5mhJ0s
- IDbvOTHLvN8g6mdOpdXnpDYsw5MQErIS9IehQnQfDu/CO3soYabAQIwb3Ab+PsDJ0GW/
- NkyRNZXEEofiuuNsDKhmPkOIU/8PIHtbrHmYBF+eWL7FBMzZ1cmBqcFJB9GTe+p6WtGi
- tXEgxPZ+R06H8Y6AQVdzy1b+wQykrhzEILuBdAyEsHwF0Slw9Os2vkoa2C1pyTxjTcpt
- FSyg==
+ bh=mlo0VNE2LkX+k6ixV83bmWbI8LIl4VVBBmVNmXeQQcY=;
+ b=v8UcVN3YPZSx8+e2YbJ312n6fJ2veLSC53f4lEPgCmWSEyKZNThltLSwlpo5nmvMza
+ 7VX0ZzdPBPjcGdJWryMdwn0e9J+z+I6NMQWddQsMJ7q+WZQ/lDC76k+TBsnP4tNV5evZ
+ W26AI8FEx+MwTx0vDPbvMFzdhkNue5xdOvNRCOEvU7JyDA22JHECDD6FBetx5jz8NCVf
+ 9krOv/J0sPxm4Sw1jQBNb9C94/uAB4huS2FHp53R2V3BauFq83YY5ugWy/VlWAPD9yqM
+ LFC8eg1LmtqKmBYuUg1/9/O9uH4CaEA9JBKmRarX3dmdr1wcyxSrwVekGmqKJa1pf4Fc
+ i+sg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXents+AR9fOsdzpmvWh5VwxkbPL+GiQVrKdQq8oHSGscyyAdZoNJGKuSvc59fwOEqWw/MSd8DttQ==@nongnu.org
-X-Gm-Message-State: AOJu0YzdASxo0147qTeTGj5euTuv9USkKzymOCSWfyxFCdpajrzWFGl1
- Ys5O8bF/9qnqwc3oQQlPTZ9XuXLTLly1cQgr7QSawIxqbDZiHsINbWDoRd4JROk8oo8=
-X-Gm-Gg: ASbGncu2exz68wK6w+5NCdGN61kKe+4yi2DJvQ/Fx3IhEBMyBjoyWEB+i5pRMpYufyB
- QUSNJE+g101+Yg1AH4pOiLqE6mgie313FmkOkd9rsYduXsOktS3knEPLWpmU9FjPFIc7tBmHXP1
- hrz2p1/iga2PRKYZzqHduTipLbNVq8XgwGrJIg3Ut9yzF7UG7BoSQuLyHptozJAnChAffXV8Zk8
- bAzKemkQCazJ863NCv33tqEiT+wZ0gfEvb6Tbl6Ek54UwdfD+cUyWCgKLpW66ioqO9k1XN/hiwD
- vBo9W/UTGh0kAAxEwn/T2AOm7qhhVwndx2Yy4CJbqAqjr/Fb0lioqrjoq+X1nKlAMtX2205DNfi
- Me4atHqlzd6PtONzQrvLGUPsqUEnRmHYSYW8eAjJ4hX+iOvjt1Foe0L2RCKXZC8s=
-X-Google-Smtp-Source: AGHT+IFnOQkuYNR3us3g/t0v9sCtLB39/Rrvw8wAMw0jAQ9pIcZSj3GKQCggiTQjqnu34PL16LXtbQ==
-X-Received: by 2002:a17:903:24d:b0:243:3fe:4294 with SMTP id
- d9443c01a7336-2462ee0bf56mr36122615ad.12.1755854733604; 
- Fri, 22 Aug 2025 02:25:33 -0700 (PDT)
+ AJvYcCUn0HuMZ8AlFPo225+9cgenIbSouVz0TzlQ0mM1a99mVzPFNvZdbAgSBePEh1to+0YACNE5BqF9+g==@nongnu.org
+X-Gm-Message-State: AOJu0YztDLtRIa3wnNoEriPKY3b0CfF2yiXD82do6sq020T4kk9sTOMy
+ TZlgqnvSAqRY06ifSvZwltge7adx0TxFzvZDgrHEpcCBP8qMg3SNLr+5OAFXM9xcAdk=
+X-Gm-Gg: ASbGncuNL4vY14lFdi2fT4eUdzN5jKWxkzawdf+J7XdODGJ5OgVMorjjSAzDLO88BWY
+ AQqxfg4XGsqMe3oZSmMesyjArZWEu2/QYmFeVCdEZTI7he7fPX6dlm+gFQF5g9WDZ5HPIWc2X/T
+ S5VL79T9BM6BWID1yxWnDvxCQt8ULozkWxa/ZuHNRY2MHw/rBkKEg2H6GM03UKu8OY7fWXYvdPg
+ fzsJg9jDL1vNKCLZMETxIAVrNrodrQTGcuGta5Xg6hdoW7Fbgp7P+rfYzhoC4RFkxFDXKBnOfNk
+ b6zACseZQeZcbrfnYDTwNLz2Zq5SGaV1y1pTlYXAEp4oqUCUXbLuWV7fQFHn6wK/puO8btkcQYU
+ Wni3IcH4YbRfngzIdM3+D5bajVpAq0XVnnbNOqYJbMOrJ80iMs6UesNPujnVQ464=
+X-Google-Smtp-Source: AGHT+IEqxrEnh0zkYioghUeAJylIvzfIK34NEJeRhP+7uR5uCgzNq3nYAwgrwA28HLoaAtq27/RD1g==
+X-Received: by 2002:a17:903:2302:b0:240:3b9e:dd4c with SMTP id
+ d9443c01a7336-2462ef446b7mr34309165ad.36.1755854714249; 
+ Fri, 22 Aug 2025 02:25:14 -0700 (PDT)
 Received: from warg.hq.igel.co.jp (napt.igel.co.jp. [219.106.231.132])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-245ed4c6fb7sm78560215ad.89.2025.08.22.02.25.27
+ d9443c01a7336-245ed4c6fb7sm78560215ad.89.2025.08.22.02.25.08
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 22 Aug 2025 02:25:33 -0700 (PDT)
+ Fri, 22 Aug 2025 02:25:13 -0700 (PDT)
 From: CJ Chen <cjchen@igel.co.jp>
 To: qemu-devel@nongnu.org, qemu-block@nongnu.org, qemu-riscv@nongnu.org,
  qemu-arm@nongnu.org
@@ -82,16 +82,16 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>, Keith Busch <kbusch@kernel.org>,
  Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
  Tomoyuki Hirose <hrstmyk811m@gmail.com>,
  Peter Maydell <peter.maydell@linaro.org>, CJ Chen <cjchen@igel.co.jp>
-Subject: [RFC PATCH v2 5/9] system/memory: support unaligned access
-Date: Fri, 22 Aug 2025 18:24:06 +0900
-Message-Id: <20250822092410.25833-6-cjchen@igel.co.jp>
+Subject: [RFC PATCH v2 2/9] hw/riscv: iommu-trap: remove .impl.unaligned = true
+Date: Fri, 22 Aug 2025 18:24:03 +0900
+Message-Id: <20250822092410.25833-3-cjchen@igel.co.jp>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20250822092410.25833-1-cjchen@igel.co.jp>
 References: <20250822092410.25833-1-cjchen@igel.co.jp>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::532;
- envelope-from=cjchen@igel.co.jp; helo=mail-pg1-x532.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::633;
+ envelope-from=cjchen@igel.co.jp; helo=mail-pl1-x633.google.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -114,247 +114,32 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Tomoyuki Hirose <hrstmyk811m@gmail.com>
+Since riscv-iommu does not support unaligned accesses, drop
+`.impl.unaligned = true` to avoid the contradictory pairing with
+`.valid.unaligned = false`.  This makes QEMU reject unaligned accesses
+for this device and prevents the assertion in memory.c that previously
+caused `make check` to fail.
 
-The previous code ignored 'impl.unaligned' and handled unaligned
-accesses as-is. But this implementation could not emulate specific
-registers of some devices that allow unaligned access such as xHCI
-Host Controller Capability Registers.
-
-This commit emulates an unaligned access with multiple aligned
-accesses. Additionally, the overwriting of the max access size is
-removed to retrieve the actual max access size.
-
-Based-on-a-patch-by: Tomoyuki Hirose <hrstmyk811m@gmail.com>
 Signed-off-by: CJ Chen <cjchen@igel.co.jp>
 Tested-by: CJ Chen <cjchen@igel.co.jp>
+Acked-by: Tomoyuki Hirose <hrstmyk811m@gmail.com>
 Reported-by: Tomoyuki Hirose <hrstmyk811m@gmail.com>
 ---
- system/memory.c  | 147 ++++++++++++++++++++++++++++++++++++++---------
- system/physmem.c |   8 ---
- 2 files changed, 119 insertions(+), 36 deletions(-)
+ hw/riscv/riscv-iommu.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/system/memory.c b/system/memory.c
-index 63b983efcd..d6071b4414 100644
---- a/system/memory.c
-+++ b/system/memory.c
-@@ -509,27 +509,118 @@ static MemTxResult memory_region_write_with_attrs_accessor(MemoryRegion *mr,
-     return mr->ops->write_with_attrs(mr->opaque, addr, tmp, size, attrs);
- }
- 
-+typedef MemTxResult (*MemoryRegionAccessFn)(MemoryRegion *mr,
-+                                            hwaddr addr,
-+                                            uint64_t *value,
-+                                            unsigned size,
-+                                            signed shift,
-+                                            uint64_t mask,
-+                                            MemTxAttrs attrs);
-+
-+static MemTxResult access_emulation(hwaddr addr,
-+                                    uint64_t *value,
-+                                    unsigned int size,
-+                                    unsigned int access_size_min,
-+                                    unsigned int access_size_max,
-+                                    MemoryRegion *mr,
-+                                    MemTxAttrs attrs,
-+                                    MemoryRegionAccessFn access_fn_read,
-+                                    MemoryRegionAccessFn access_fn_write,
-+                                    bool is_write)
-+{
-+    hwaddr a;
-+    uint8_t *d;
-+    uint64_t v;
-+    MemTxResult r = MEMTX_OK;
-+    bool is_big_endian = devend_big_endian(mr->ops->endianness);
-+    void (*store)(void *, int, uint64_t) = is_big_endian ? stn_be_p : stn_le_p;
-+    uint64_t (*load)(const void *, int) = is_big_endian ? ldn_be_p : ldn_le_p;
-+    size_t access_size = MAX(MIN(size, access_size_max), access_size_min);
-+    uint64_t access_mask = MAKE_64BIT_MASK(0, access_size * 8);
-+    hwaddr round_down = mr->ops->impl.unaligned && addr + size <= mr->size ?
-+        0 : addr % access_size;
-+    hwaddr start = addr - round_down;
-+    hwaddr tail = addr + size <= mr->size ? addr + size : mr->size;
-+    uint8_t data[16] = {0};
-+    g_assert(size <= 8);
-+
-+    for (a = start, d = data, v = 0; a < tail;
-+         a += access_size, d += access_size, v = 0) {
-+        r |= access_fn_read(mr, a, &v, access_size, 0, access_mask,
-+                            attrs);
-+        store(d, access_size, v);
-+    }
-+    if (is_write) {
-+        stn_he_p(&data[round_down], size, load(value, size));
-+        for (a = start, d = data; a < tail;
-+             a += access_size, d += access_size) {
-+            v = load(d, access_size);
-+            r |= access_fn_write(mr, a, &v, access_size, 0, access_mask,
-+                                 attrs);
-+        }
-+    } else {
-+        store(value, size, ldn_he_p(&data[round_down], size));
-+    }
-+
-+    return r;
-+}
-+
-+static bool is_access_fastpath(hwaddr addr,
-+                               unsigned int size,
-+                               unsigned int access_size_min,
-+                               unsigned int access_size_max,
-+                               MemoryRegion *mr)
-+{
-+    size_t access_size = MAX(MIN(size, access_size_max), access_size_min);
-+    hwaddr round_down = mr->ops->impl.unaligned && addr + size <= mr->size ?
-+        0 : addr % access_size;
-+
-+    return round_down == 0 && access_size <= size;
-+}
-+
-+static MemTxResult access_fastpath(hwaddr addr,
-+                                   uint64_t *value,
-+                                   unsigned int size,
-+                                   unsigned int access_size_min,
-+                                   unsigned int access_size_max,
-+                                   MemoryRegion *mr,
-+                                   MemTxAttrs attrs,
-+                                   MemoryRegionAccessFn fastpath)
-+{
-+    MemTxResult r = MEMTX_OK;
-+    size_t access_size = MAX(MIN(size, access_size_max), access_size_min);
-+    uint64_t access_mask = MAKE_64BIT_MASK(0, access_size * 8);
-+
-+    if (devend_big_endian(mr->ops->endianness)) {
-+        for (size_t i = 0; i < size; i += access_size) {
-+            r |= fastpath(mr, addr + i, value, access_size,
-+                          (size - access_size - i) * 8, access_mask, attrs);
-+        }
-+    } else {
-+        for (size_t i = 0; i < size; i += access_size) {
-+            r |= fastpath(mr, addr + i, value, access_size,
-+                          i * 8, access_mask, attrs);
-+        }
-+    }
-+
-+    return r;
-+}
-+
- static MemTxResult access_with_adjusted_size(hwaddr addr,
-                                       uint64_t *value,
-                                       unsigned size,
-                                       unsigned access_size_min,
-                                       unsigned access_size_max,
--                                      MemTxResult (*access_fn)
--                                                  (MemoryRegion *mr,
--                                                   hwaddr addr,
--                                                   uint64_t *value,
--                                                   unsigned size,
--                                                   signed shift,
--                                                   uint64_t mask,
--                                                   MemTxAttrs attrs),
-+                                      MemoryRegionAccessFn access_fn_read,
-+                                      MemoryRegionAccessFn access_fn_write,
-+                                      bool is_write,
-                                       MemoryRegion *mr,
-                                       MemTxAttrs attrs)
- {
--    uint64_t access_mask;
--    unsigned access_size;
--    unsigned i;
-     MemTxResult r = MEMTX_OK;
-     bool reentrancy_guard_applied = false;
-+    MemoryRegionAccessFn access_fn_fastpath =
-+        is_write ? access_fn_write : access_fn_read;
- 
-     if (!access_size_min) {
-         access_size_min = 1;
-@@ -551,20 +642,16 @@ static MemTxResult access_with_adjusted_size(hwaddr addr,
-         reentrancy_guard_applied = true;
-     }
- 
--    /* FIXME: support unaligned access? */
--    access_size = MAX(MIN(size, access_size_max), access_size_min);
--    access_mask = MAKE_64BIT_MASK(0, access_size * 8);
--    if (devend_big_endian(mr->ops->endianness)) {
--        for (i = 0; i < size; i += access_size) {
--            r |= access_fn(mr, addr + i, value, access_size,
--                        (size - access_size - i) * 8, access_mask, attrs);
--        }
-+    if (is_access_fastpath(addr, size, access_size_min, access_size_max, mr)) {
-+        r |= access_fastpath(addr, value, size,
-+                             access_size_min, access_size_max, mr, attrs,
-+                             access_fn_fastpath);
-     } else {
--        for (i = 0; i < size; i += access_size) {
--            r |= access_fn(mr, addr + i, value, access_size, i * 8,
--                        access_mask, attrs);
--        }
-+        r |= access_emulation(addr, value, size,
-+                              access_size_min, access_size_max, mr, attrs,
-+                              access_fn_read, access_fn_write, is_write);
-     }
-+
-     if (mr->dev && reentrancy_guard_applied) {
-         mr->dev->mem_reentrancy_guard.engaged_in_io = false;
-     }
-@@ -1450,13 +1537,15 @@ static MemTxResult memory_region_dispatch_read1(MemoryRegion *mr,
-                                          mr->ops->impl.min_access_size,
-                                          mr->ops->impl.max_access_size,
-                                          memory_region_read_accessor,
--                                         mr, attrs);
-+                                         memory_region_write_accessor,
-+                                         false, mr, attrs);
-     } else {
-         return access_with_adjusted_size(addr, pval, size,
-                                          mr->ops->impl.min_access_size,
-                                          mr->ops->impl.max_access_size,
-                                          memory_region_read_with_attrs_accessor,
--                                         mr, attrs);
-+                                         memory_region_write_with_attrs_accessor,
-+                                         false, mr, attrs);
-     }
- }
- 
-@@ -1544,15 +1633,17 @@ MemTxResult memory_region_dispatch_write(MemoryRegion *mr,
-         return access_with_adjusted_size(addr, &data, size,
-                                          mr->ops->impl.min_access_size,
-                                          mr->ops->impl.max_access_size,
--                                         memory_region_write_accessor, mr,
--                                         attrs);
-+                                         memory_region_read_accessor,
-+                                         memory_region_write_accessor,
-+                                         true, mr, attrs);
-     } else {
-         return
-             access_with_adjusted_size(addr, &data, size,
-                                       mr->ops->impl.min_access_size,
-                                       mr->ops->impl.max_access_size,
-+                                      memory_region_read_with_attrs_accessor,
-                                       memory_region_write_with_attrs_accessor,
--                                      mr, attrs);
-+                                      true, mr, attrs);
-     }
- }
- 
-diff --git a/system/physmem.c b/system/physmem.c
-index a8a9ca309e..9c5f3fbef1 100644
---- a/system/physmem.c
-+++ b/system/physmem.c
-@@ -2864,14 +2864,6 @@ int memory_access_size(MemoryRegion *mr, unsigned l, hwaddr addr)
-         access_size_max = 4;
-     }
- 
--    /* Bound the maximum access by the alignment of the address.  */
--    if (!mr->ops->impl.unaligned) {
--        unsigned align_size_max = addr & -addr;
--        if (align_size_max != 0 && align_size_max < access_size_max) {
--            access_size_max = align_size_max;
--        }
--    }
--
-     /* Don't attempt accesses larger than the maximum.  */
-     if (l > access_size_max) {
-         l = access_size_max;
+diff --git a/hw/riscv/riscv-iommu.c b/hw/riscv/riscv-iommu.c
+index a877e5da84..277746598a 100644
+--- a/hw/riscv/riscv-iommu.c
++++ b/hw/riscv/riscv-iommu.c
+@@ -2288,7 +2288,6 @@ static const MemoryRegionOps riscv_iommu_trap_ops = {
+     .impl = {
+         .min_access_size = 4,
+         .max_access_size = 8,
+-        .unaligned = true,
+     },
+     .valid = {
+         .min_access_size = 4,
 -- 
 2.25.1
 

@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E0BCCA0EED
-	for <qemu-arm@archiver.kernel.org>; Fri, 22 Aug 2025 13:56:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30376CA0EED
+	for <qemu-arm@archiver.kernel.org>; Fri, 22 Aug 2025 13:57:01 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1upSD8-0005kT-ER; Fri, 22 Aug 2025 09:53:43 -0400
+	id 1upSD8-0005kK-8K; Fri, 22 Aug 2025 09:53:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cjchen@igel.co.jp>) id 1upO1b-0005lb-Bw
- for qemu-arm@nongnu.org; Fri, 22 Aug 2025 05:25:31 -0400
-Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
+ (Exim 4.90_1) (envelope-from <cjchen@igel.co.jp>) id 1upO21-00065I-Qf
+ for qemu-arm@nongnu.org; Fri, 22 Aug 2025 05:25:58 -0400
+Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <cjchen@igel.co.jp>) id 1upO1Z-0007Bb-56
- for qemu-arm@nongnu.org; Fri, 22 Aug 2025 05:25:30 -0400
-Received: by mail-pl1-x62b.google.com with SMTP id
- d9443c01a7336-24458272c00so20901175ad.3
- for <qemu-arm@nongnu.org>; Fri, 22 Aug 2025 02:25:28 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <cjchen@igel.co.jp>) id 1upO1y-0007JC-Oe
+ for qemu-arm@nongnu.org; Fri, 22 Aug 2025 05:25:57 -0400
+Received: by mail-pl1-x632.google.com with SMTP id
+ d9443c01a7336-2445806e03cso23150135ad.1
+ for <qemu-arm@nongnu.org>; Fri, 22 Aug 2025 02:25:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=igel-co-jp.20230601.gappssmtp.com; s=20230601; t=1755854727; x=1756459527;
+ d=igel-co-jp.20230601.gappssmtp.com; s=20230601; t=1755854753; x=1756459553;
  darn=nongnu.org; 
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=2LelFaXu4nBaY9dT35+wlto5FIYzudNjlsl9EfmiZ5M=;
- b=2R5rzeR8InbtkyQo0P+AOoUt6iDP30ONkSIVG/0yTNb+ahyVL0I0n24yUL8floJWOU
- WTmXAuUX7mtKzkIDdmZm9zJ10BxRXHsvJvGyf2Lni0cZGrwKP2sWZciBCGXBPhs3iDr5
- rTtW3UXJ8w/eaAnit5w99PBOG9wHZTgWHwijCwuHJo7+NbLs1YQ/Rz62tfkNJ8IwT812
- XQ79chaVxbocuAHWZa2pY5QOvXI7iHVjCKhi/7/CimleexWo9qRWCXwT8T+Mf7lxyvML
- kDi0ieP6vfq71M7V6Yt9wMb9lTcgXIp3o/6iiA4uheBEKLt5bObQd3J83LvFsF/nsUj8
- pXpw==
+ bh=4n1o/3nULdO/4vcLp6ocaeLLrGhDDgu+DIftv97o3kU=;
+ b=upys3JB4yKZU3ArIe++mskr14PrqnT5rPWeR6EO7s0Yqg/IlgGAjC7LaU8tAe5h+X/
+ 9p8bTY5elv5QATxT1TEYGRO370kAJCog70hSNKG+HLOu8+3hPFhqpIskttRA7QH8eBMh
+ dW+WhDxFDAIDgsQKqF+XhTzCkPvUAfeS14dvfxIy+nGSs4pqO9975J08lNov7JeB9Zt+
+ eXGTuwh76JzjrDmt4nEIMc+324+L2IhhluBC7JI/cBZTdzL9qGf0InhM6RXdo1PjTtgw
+ z9KdYK2g/8KujQjEdiluiui7EAiAAdO5wmo9lBik28wCjvj50/lczhKJ28bk3emkar8F
+ 7DrA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1755854727; x=1756459527;
+ d=1e100.net; s=20230601; t=1755854753; x=1756459553;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=2LelFaXu4nBaY9dT35+wlto5FIYzudNjlsl9EfmiZ5M=;
- b=HkTHgq573FEPaFF6bcJTbJ48orLH/fmQx20d9kHH/cNihyN6k/HLp+FjIamWgsJtv4
- vyTD6o+Dh0KFG2sM6NMsYWrhbiO/Knh2CnCfHFFkXAEhQH1o+/ZdbYMerf/I/iuviZdb
- m5oEbdqiYAt8UV+4prMbPiJLui9QVbmqvxbOG+NMEhzZ26ujYrA1Fw69ky9ZfLZmjREM
- oK0/tqppV8E3rLwdWG2nENZ66FTlnCuw9b0T7cFMkgPS8lppEZXt4ngDhUGU55/S3ysJ
- oIU9G2+699uVBY1gp8yymxM8OZ50eBqaup2IyezfV2+nt2U3V2xKC5dvHo28cqwAag4/
- +WBw==
+ bh=4n1o/3nULdO/4vcLp6ocaeLLrGhDDgu+DIftv97o3kU=;
+ b=Vx0X0sk5veXe4XJb+mjbujWf+ZCUqBhHv+/1+oCjzIkXzEV5GSA5+nSHsL99d0jIJr
+ onBDCNAup338IXk1bPRJ49FcaO6YEVumpRmRoOrbmqPyx2CW8tNv60B63qh+6tIV+PvH
+ axp9SQvYAS8zFIWbGNOGsLmXA0tn/Pw5ez5ZV8yfSEnSLz2+GJHZtYySryhDk6oYYgeU
+ RBX2WXbd8+bbUvlD2iTAdm5RJhXB9wCSNO7UybLL1JJZYfz0kiGErQDD37BuAwIxPxSm
+ ZMwC+sMz7MMyiWZ95aBNa1OfBjNvqFBue9Zqg/I4ZDVJMDUm1B6n1v08nQ8FyM/N2u+C
+ BYSg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVxeswABOycUkaL201uoYrHx+J1bkS+ghawRL6YUJQ0m15gGcZDlhwygMZNYP+a1T8dDtXsgTlWBQ==@nongnu.org
-X-Gm-Message-State: AOJu0YxaLl71yzL+qnjjo0LNzdRFUaU4RPrG7WnLSbjV12tqWdEabuz7
- Qm1q+n5vQhFO06L0AssU0FEIqw04ueMgI8lv/Vse0+eB7iJHTVlXAbBCE34Tjb2CVCU=
-X-Gm-Gg: ASbGncsn9am8PT3IQIIDLzWrSIH70rYaweo5pYd/ZgYsUPRgQhnma4rvrJ7Pa9oSRb1
- PTKmSHH6z/WRi7YVqb59PT/N/4L3HAgGkEIXTWfftQtoTvvzLCd8Af9e89KAmssQlgpiBlS28Qv
- TCuP5+LlAvM396RupX4vUIguMy2/wat/e/mCIx3/r7RGBLQBXdNnyM701wjqoaHBUHpq29VhfDT
- 8bF+Yd2PsO5qxeQKoP0OAFyg8TxjDPqa/KR2nlrhkxijUvP3w0IbTtRmvh4PbSd/2TR2ys5sdHS
- 1imcphYbOg1Rp/U+x7UBKrGC9VMIYeWqEVaDzdrM5d5EWv8oDSIf+PmKJdWPte42wSrMgD+RHmz
- XDYiA8/4yinTEZ1rrmhZHW6nAcez92plPW+O7xwW0J7DT675zJhnP
-X-Google-Smtp-Source: AGHT+IHwO6/ISB0j/F3Fu/FL8iXEouvPElKuNTjaAa80YP6la6HrQCx45MOnxFn2E7Ame5lgK/uVxw==
-X-Received: by 2002:a17:903:94f:b0:246:4417:db76 with SMTP id
- d9443c01a7336-2464417dd58mr21785165ad.5.1755854727321; 
- Fri, 22 Aug 2025 02:25:27 -0700 (PDT)
+ AJvYcCXsTzC1dRHuKVCQoCOaDpPWKTStHfmp1WZMszNUUJIipfZnLLSVWFB5qGk5Wd5j1D7mHUkIeVrhew==@nongnu.org
+X-Gm-Message-State: AOJu0Yz1zpFJ8HZ13OTosygF5rEG9L8fgIxpIiNp+dwhkaILmxlrYP3x
+ +otoCqq+VVzrtWFhynAfFYjoU4tfj93CJIm3XBIVQISVXtmasCRewaQXAir4Bagis8E=
+X-Gm-Gg: ASbGncvvN6JWgUkuOBa018m7h204zYaH3qVpMh8gYaw8Y/IS5sE+0svRvNBN4orXnAu
+ oZOLlyeiAi4bdfMnPLx4iJtIR9lgGU39a7+Ign/G4uQrjjvmw1v3OrR+g2Cifb4dZWcQduvfpMq
+ vJq4+UvAunkEjCEUgPN7aq1E4cr38lBaIg/vYGH+1IkQEOai1VgmET0GJHUWI4nS/juzzOoM2/j
+ cgQsQCQ5pfsPc5+afEXsf1XKofH/YxmCDNIjIqa6OgT4X+cnDHXhdzIvrS5hs34r7GglwDymKls
+ TkExtF9FWm+HPdVxHAdkKOFCFWEidt+ZhUG79phcsSt/L8lmBR/9lJvIIpG6kHryE231jziv1Aq
+ PEwOmmE8gaT8lB6oL2fSK3UOmBU0rQV9nHnv8thBcpHBbWm1Ongl6
+X-Google-Smtp-Source: AGHT+IEnJxA4ELufqmF+83vXLTGSupOh5K2TH6ao0bmRfoYOFqouqA0TtrEayssE+w//NktDX9P0JA==
+X-Received: by 2002:a17:902:ebc5:b0:246:255a:1915 with SMTP id
+ d9443c01a7336-2462eea840emr32074745ad.27.1755854753093; 
+ Fri, 22 Aug 2025 02:25:53 -0700 (PDT)
 Received: from warg.hq.igel.co.jp (napt.igel.co.jp. [219.106.231.132])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-245ed4c6fb7sm78560215ad.89.2025.08.22.02.25.21
+ d9443c01a7336-245ed4c6fb7sm78560215ad.89.2025.08.22.02.25.46
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 22 Aug 2025 02:25:26 -0700 (PDT)
+ Fri, 22 Aug 2025 02:25:52 -0700 (PDT)
 From: CJ Chen <cjchen@igel.co.jp>
 To: qemu-devel@nongnu.org, qemu-block@nongnu.org, qemu-riscv@nongnu.org,
  qemu-arm@nongnu.org
@@ -82,17 +82,16 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>, Keith Busch <kbusch@kernel.org>,
  Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
  Tomoyuki Hirose <hrstmyk811m@gmail.com>,
  Peter Maydell <peter.maydell@linaro.org>, CJ Chen <cjchen@igel.co.jp>
-Subject: [RFC PATCH v2 4/9] hw/nvme/ctrl: specify the 'valid' field in
- MemoryRegionOps
-Date: Fri, 22 Aug 2025 18:24:05 +0900
-Message-Id: <20250822092410.25833-5-cjchen@igel.co.jp>
+Subject: [RFC PATCH v2 8/9] hw/misc: add test device for memory access
+Date: Fri, 22 Aug 2025 18:24:09 +0900
+Message-Id: <20250822092410.25833-9-cjchen@igel.co.jp>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20250822092410.25833-1-cjchen@igel.co.jp>
 References: <20250822092410.25833-1-cjchen@igel.co.jp>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62b;
- envelope-from=cjchen@igel.co.jp; helo=mail-pl1-x62b.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::632;
+ envelope-from=cjchen@igel.co.jp; helo=mail-pl1-x632.google.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -117,38 +116,504 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Tomoyuki Hirose <hrstmyk811m@gmail.com>
 
-'valid' field in MemoryRegionOps struct indicates how the MemoryRegion
-can be accessed by the guest. In the previous code, the 'valid' field
-was not specified explicitly. As a result, the CMB area could only be
-accessed in units of 4 bytes.
+This commit adds a test device for checking memory access. The test
+device generates memory regions that covers all the legal parameter
+patterns. With this device, we can check the handling of
+reading/writing the MemoryRegion is correct.
 
-This commit specifies the 'valid' field in MemoryRegionOps of CMB and
-the CMB area can be accessed in units of 8 bytes.
-
+Co-developed-by: CJ Chen <cjchen@igel.co.jp>
 Signed-off-by: CJ Chen <cjchen@igel.co.jp>
-Based-on-a-patch-by: Tomoyuki Hirose <hrstmyk811m@gmail.com>
 Tested-by: CJ Chen <cjchen@igel.co.jp>
-Reported-by: Tomoyuki Hirose <hrstmyk811m@gmail.com>
+Suggested-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/nvme/ctrl.c | 5 +++++
- 1 file changed, 5 insertions(+)
+v2:
+   - Fix the typo of ops size of big-l-valid.
+   - Replaced the huge macro blocks with dynamic loops that fill in
+     the `MemoryRegionOps` arrays at runtime.
+   - Remove test cases valid.unaligned = false,impl.unaligned = true.
+---
+ hw/misc/Kconfig                     |   4 +
+ hw/misc/memaccess-testdev.c         | 331 ++++++++++++++++++++++++++++
+ hw/misc/meson.build                 |   1 +
+ include/hw/misc/memaccess-testdev.h | 104 +++++++++
+ 4 files changed, 440 insertions(+)
+ create mode 100644 hw/misc/memaccess-testdev.c
+ create mode 100644 include/hw/misc/memaccess-testdev.h
 
-diff --git a/hw/nvme/ctrl.c b/hw/nvme/ctrl.c
-index fd935507bc..9dca718ca1 100644
---- a/hw/nvme/ctrl.c
-+++ b/hw/nvme/ctrl.c
-@@ -8272,6 +8272,11 @@ static const MemoryRegionOps nvme_cmb_ops = {
-         .min_access_size = 1,
-         .max_access_size = 8,
-     },
-+    .valid = {
-+        .unaligned = true,
-+        .min_access_size = 1,
-+        .max_access_size = 8,
-+    },
- };
+diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
+index ec0fa5aa9f..ff7d7c65ef 100644
+--- a/hw/misc/Kconfig
++++ b/hw/misc/Kconfig
+@@ -25,6 +25,10 @@ config PCI_TESTDEV
+     default y if TEST_DEVICES
+     depends on PCI
  
- static bool nvme_check_params(NvmeCtrl *n, Error **errp)
++config MEMACCESS_TESTDEV
++    bool
++    default y if TEST_DEVICES
++
+ config EDU
+     bool
+     default y if TEST_DEVICES
+diff --git a/hw/misc/memaccess-testdev.c b/hw/misc/memaccess-testdev.c
+new file mode 100644
+index 0000000000..1aaa52c69f
+--- /dev/null
++++ b/hw/misc/memaccess-testdev.c
+@@ -0,0 +1,331 @@
++/*
++ * QEMU memory access test device
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ *
++ * Author: Tomoyuki HIROSE <hrstmyk811m@gmail.com>
++ *
++ * This device is used to test memory acccess, like:
++ * qemu-system-x86_64 -device memaccess-testdev,address=0x10000000
++ */
++
++#include "qemu/osdep.h"
++#include "system/address-spaces.h"
++#include "system/memory.h"
++#include "hw/qdev-core.h"
++#include "hw/qdev-properties.h"
++#include "qapi/error.h"
++#include "qemu/typedefs.h"
++#include "qom/object.h"
++#include "hw/misc/memaccess-testdev.h"
++
++typedef bool (*skip_func_ptr)(uint32_t valid_max, uint32_t valid_min,
++                              bool valid_unaligned, uint32_t impl_max,
++                              uint32_t impl_min, bool impl_unaligned);
++
++typedef struct MrOpsList {
++    const char *name;
++    MemoryRegionOps *ops_array;
++    const size_t ops_array_len;
++    const size_t offset_idx;
++    skip_func_ptr skip_fn;
++    bool is_little;
++} MrOpsList;
++
++MemoryRegionOps ops_list_little_b_valid[N_OPS_LIST_LITTLE_B_VALID];
++MemoryRegionOps ops_list_little_b_invalid[N_OPS_LIST_LITTLE_B_INVALID];
++MemoryRegionOps ops_list_little_w_valid[N_OPS_LIST_LITTLE_W_VALID];
++MemoryRegionOps ops_list_little_w_invalid[N_OPS_LIST_LITTLE_W_INVALID];
++MemoryRegionOps ops_list_little_l_valid[N_OPS_LIST_LITTLE_L_VALID];
++MemoryRegionOps ops_list_little_l_invalid[N_OPS_LIST_LITTLE_L_INVALID];
++MemoryRegionOps ops_list_little_q_valid[N_OPS_LIST_LITTLE_Q_VALID];
++MemoryRegionOps ops_list_little_q_invalid[N_OPS_LIST_LITTLE_Q_INVALID];
++MemoryRegionOps ops_list_big_b_valid[N_OPS_LIST_BIG_B_VALID];
++MemoryRegionOps ops_list_big_b_invalid[N_OPS_LIST_BIG_B_INVALID];
++MemoryRegionOps ops_list_big_w_valid[N_OPS_LIST_BIG_W_VALID];
++MemoryRegionOps ops_list_big_w_invalid[N_OPS_LIST_BIG_W_INVALID];
++MemoryRegionOps ops_list_big_l_valid[N_OPS_LIST_BIG_L_VALID];
++MemoryRegionOps ops_list_big_l_invalid[N_OPS_LIST_BIG_L_INVALID];
++MemoryRegionOps ops_list_big_q_valid[N_OPS_LIST_BIG_Q_VALID];
++MemoryRegionOps ops_list_big_q_invalid[N_OPS_LIST_BIG_Q_INVALID];
++
++static bool skip_core(uint32_t required_min, bool valid_test,
++                      uint32_t valid_max, uint32_t valid_min,
++                      bool valid_unaligned, uint32_t impl_max,
++                      uint32_t impl_min, bool impl_unaligned)
++{
++    if (valid_min != required_min) {
++        return true;
++    }
++    if (valid_test) {
++        if (!valid_unaligned) {
++            return true;
++        }
++    } else {
++        if (valid_unaligned || impl_unaligned) {
++            return true;
++        }
++    }
++    if (valid_max < valid_min) {
++        return true;
++    }
++
++    if (impl_max < impl_min) {
++        return true;
++    }
++
++    return false;
++}
++
++#define DEFINE_SKIP_VALID_INVALID_FN(NAME, REQ_MIN)                      \
++    static bool skip_##NAME##_valid(uint32_t vm, uint32_t vn, bool vu,   \
++                                    uint32_t im, uint32_t in, bool iu)   \
++    {                                                                    \
++        return skip_core(REQ_MIN, true, vm, vn, vu, im, in, iu);         \
++    }                                                                    \
++                                                                         \
++    static bool skip_##NAME##_invalid(uint32_t vm, uint32_t vn, bool vu, \
++                                      uint32_t im, uint32_t in, bool iu) \
++    {                                                                    \
++        return skip_core(REQ_MIN, false, vm, vn, vu, im, in, iu);        \
++    }
++
++DEFINE_SKIP_VALID_INVALID_FN(b, 1)
++DEFINE_SKIP_VALID_INVALID_FN(w, 2)
++DEFINE_SKIP_VALID_INVALID_FN(l, 4)
++DEFINE_SKIP_VALID_INVALID_FN(q, 8)
++
++static void testdev_init_memory_region(MemoryRegion *mr,
++                                       Object *owner,
++                                       const MemoryRegionOps *ops,
++                                       void *opaque,
++                                       const char *name,
++                                       uint64_t size,
++                                       MemoryRegion *container,
++                                       hwaddr container_offset)
++{
++    memory_region_init_io(mr, owner, ops, opaque, name, size);
++    memory_region_add_subregion(container, container_offset, mr);
++}
++
++static void testdev_init_from_mr_ops_list(MemAccessTestDev *testdev,
++                                          const MrOpsList *l)
++{
++    for (size_t i = 0; i < l->ops_array_len; i++) {
++        g_autofree gchar *name = g_strdup_printf("%s-%ld", l->name, i);
++        testdev_init_memory_region(&testdev->memory_regions[l->offset_idx + i],
++                                   OBJECT(testdev), &l->ops_array[i],
++                                   testdev->mr_data[l->offset_idx + i],
++                                   name,
++                                   MEMACCESS_TESTDEV_REGION_SIZE,
++                                   &testdev->container,
++                                   MEMACCESS_TESTDEV_REGION_SIZE *
++                                   (l->offset_idx + i));
++    }
++}
++
++#define LITTLE 1
++#define BIG    0
++#define _DEFINE_MR_OPS_LIST(_n, _ops, _len, _off, _skipfn, _is_little) \
++{                                                                      \
++    .name          = (_n),                                             \
++    .ops_array     = (_ops),                                           \
++    .ops_array_len = (_len),                                           \
++    .offset_idx    = (_off),                                           \
++    .skip_fn       = (_skipfn),                                        \
++    .is_little     = (_is_little),                                     \
++}
++
++#define DEFINE_MR_OPS_LIST(e, E, w, W, v, V)                    \
++    _DEFINE_MR_OPS_LIST(                                        \
++        #e "-" #w "-" #v,                /* .name            */ \
++        ops_list_##e##_##w##_##v,        /* .ops_array       */ \
++        N_OPS_LIST_##E##_##W##_##V,      /* .ops_array_len   */ \
++        OFF_IDX_OPS_LIST_##E##_##W##_##V,/* .offset_idx      */ \
++        skip_##w##_##v,                  /* .skip_fn         */ \
++        E /* .is_little => 1 = little endian, 0 = big endian */ \
++    )
++
++static MrOpsList mr_ops_list[] = {
++    DEFINE_MR_OPS_LIST(little, LITTLE, b, B, valid,   VALID),
++    DEFINE_MR_OPS_LIST(little, LITTLE, b, B, invalid, INVALID),
++    DEFINE_MR_OPS_LIST(little, LITTLE, w, W, valid,   VALID),
++    DEFINE_MR_OPS_LIST(little, LITTLE, w, W, invalid, INVALID),
++    DEFINE_MR_OPS_LIST(little, LITTLE, l, L, valid,   VALID),
++    DEFINE_MR_OPS_LIST(little, LITTLE, l, L, invalid, INVALID),
++    DEFINE_MR_OPS_LIST(little, LITTLE, q, Q, valid,   VALID),
++    DEFINE_MR_OPS_LIST(little, LITTLE, q, Q, invalid, INVALID),
++    DEFINE_MR_OPS_LIST(big,    BIG,    b, B, valid,   VALID),
++    DEFINE_MR_OPS_LIST(big,    BIG,    b, B, invalid, INVALID),
++    DEFINE_MR_OPS_LIST(big,    BIG,    w, W, valid,   VALID),
++    DEFINE_MR_OPS_LIST(big,    BIG,    w, W, invalid, INVALID),
++    DEFINE_MR_OPS_LIST(big,    BIG,    l, L, valid,   VALID),
++    DEFINE_MR_OPS_LIST(big,    BIG,    l, L, invalid, INVALID),
++    DEFINE_MR_OPS_LIST(big,    BIG,    q, Q, valid,   VALID),
++    DEFINE_MR_OPS_LIST(big,    BIG,    q, Q, invalid, INVALID),
++};
++#undef LITTLE
++#undef BIG
++
++static uint64_t memaccess_testdev_read_little(void *opaque, hwaddr addr,
++                                              unsigned int size)
++{
++    g_assert(addr + size < MEMACCESS_TESTDEV_REGION_SIZE);
++    void *s = (uint8_t *)opaque + addr;
++    return ldn_le_p(s, size);
++}
++
++static void memaccess_testdev_write_little(void *opaque, hwaddr addr,
++                                           uint64_t data, unsigned int size)
++{
++    g_assert(addr + size < MEMACCESS_TESTDEV_REGION_SIZE);
++    void *d = (uint8_t *)opaque + addr;
++    stn_le_p(d, size, data);
++}
++
++static uint64_t memaccess_testdev_read_big(void *opaque, hwaddr addr,
++                                           unsigned int size)
++{
++    g_assert(addr + size < MEMACCESS_TESTDEV_REGION_SIZE);
++    void *s = (uint8_t *)opaque + addr;
++    return ldn_be_p(s, size);
++}
++
++static void memaccess_testdev_write_big(void *opaque, hwaddr addr,
++                                        uint64_t data, unsigned int size)
++{
++    g_assert(addr + size < MEMACCESS_TESTDEV_REGION_SIZE);
++    void *d = (uint8_t *)opaque + addr;
++    stn_be_p(d, size, data);
++}
++
++static void fill_ops_list(MemoryRegionOps *ops,
++                          skip_func_ptr fptr,
++                          size_t ops_len,
++                          bool is_little)
++{
++    static const uint32_t sizes[] = { 1, 2, 4, 8 };
++    static const bool bools[] = { false, true };
++    int idx = 0;
++
++    for (int vMaxIdx = 0; vMaxIdx < 4; vMaxIdx++) {
++        for (int vMinIdx = 0; vMinIdx < 4; vMinIdx++) {
++            for (int vUIdx = 0; vUIdx < 2; vUIdx++) {
++                for (int iMaxIdx = 0; iMaxIdx < 4; iMaxIdx++) {
++                    for (int iMinIdx = 0; iMinIdx < 4; iMinIdx++) {
++                        for (int iUIdx = 0; iUIdx < 2; iUIdx++) {
++                            uint32_t valid_max       = sizes[vMaxIdx];
++                            uint32_t valid_min       = sizes[vMinIdx];
++                            bool     valid_unaligned = bools[vUIdx];
++                            uint32_t impl_max        = sizes[iMaxIdx];
++                            uint32_t impl_min        = sizes[iMinIdx];
++                            bool     impl_unaligned  = bools[iUIdx];
++
++                            if (!fptr(valid_max, valid_min, valid_unaligned,
++                                      impl_max, impl_min, impl_unaligned))
++                            {
++                                const MemoryRegionOps new_op = {
++                                    .read = is_little ?
++                                            memaccess_testdev_read_little :
++                                            memaccess_testdev_read_big,
++                                    .write = is_little ?
++                                             memaccess_testdev_write_little :
++                                             memaccess_testdev_write_big,
++                                    .endianness = is_little ?
++                                                  DEVICE_LITTLE_ENDIAN :
++                                                  DEVICE_BIG_ENDIAN,
++                                    .valid = {
++                                        .max_access_size = valid_max,
++                                        .min_access_size = valid_min,
++                                        .unaligned      = valid_unaligned,
++                                    },
++                                    .impl = {
++                                        .max_access_size = impl_max,
++                                        .min_access_size = impl_min,
++                                        .unaligned       = impl_unaligned,
++                                    },
++                                };
++
++                                ops[idx] = new_op;
++                                idx++;
++                                if (idx > ops_len) {
++                                    g_assert_not_reached();
++                                }
++                            }
++                        }
++                    }
++                }
++            }
++        }
++    }
++}
++
++#define N_MR_OPS_LIST (sizeof(mr_ops_list) / sizeof(MrOpsList))
++
++static void init_testdev(MemAccessTestDev *testdev)
++{
++    memory_region_init(&testdev->container, OBJECT(testdev), "memtest-regions",
++                       MEMACCESS_TESTDEV_REGION_SIZE * N_OPS_LIST);
++    testdev->mr_data = g_malloc(MEMACCESS_TESTDEV_MR_DATA_SIZE);
++
++    for (size_t i = 0; i < N_MR_OPS_LIST; i++) {
++        fill_ops_list(
++            mr_ops_list[i].ops_array,
++            mr_ops_list[i].skip_fn,
++            mr_ops_list[i].ops_array_len,
++            mr_ops_list[i].is_little
++        );
++        testdev_init_from_mr_ops_list(testdev, &mr_ops_list[i]);
++    }
++
++    memory_region_add_subregion(get_system_memory(), testdev->base,
++                                &testdev->container);
++}
++
++static void memaccess_testdev_realize(DeviceState *dev, Error **errp)
++{
++    MemAccessTestDev *d = MEM_ACCESS_TEST_DEV(dev);
++
++    if (d->base == UINT64_MAX) {
++        error_setg(errp, "base address is not assigned");
++        return;
++    }
++
++    init_testdev(d);
++}
++
++static void memaccess_testdev_unrealize(DeviceState *dev)
++{
++    MemAccessTestDev *d = MEM_ACCESS_TEST_DEV(dev);
++    g_free(d->mr_data);
++}
++
++static Property memaccess_testdev_props[] = {
++    DEFINE_PROP_UINT64("address", MemAccessTestDev, base, UINT64_MAX),
++};
++
++static void memaccess_testdev_class_init(ObjectClass *klass, const void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    dc->realize = memaccess_testdev_realize;
++    dc->unrealize = memaccess_testdev_unrealize;
++    device_class_set_props_n(dc,
++                             memaccess_testdev_props,
++                             ARRAY_SIZE(memaccess_testdev_props));
++    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
++}
++
++static const TypeInfo memaccess_testdev_info = {
++    .name = TYPE_MEM_ACCESS_TEST_DEV,
++    .parent = TYPE_DEVICE,
++    .instance_size = sizeof(MemAccessTestDev),
++    .class_init = memaccess_testdev_class_init,
++};
++
++static void memaccess_testdev_register_types(void)
++{
++    type_register_static(&memaccess_testdev_info);
++}
++
++type_init(memaccess_testdev_register_types)
+diff --git a/hw/misc/meson.build b/hw/misc/meson.build
+index 6d47de482c..f06568aaed 100644
+--- a/hw/misc/meson.build
++++ b/hw/misc/meson.build
+@@ -4,6 +4,7 @@ system_ss.add(when: 'CONFIG_FW_CFG_DMA', if_true: files('vmcoreinfo.c'))
+ system_ss.add(when: 'CONFIG_ISA_DEBUG', if_true: files('debugexit.c'))
+ system_ss.add(when: 'CONFIG_ISA_TESTDEV', if_true: files('pc-testdev.c'))
+ system_ss.add(when: 'CONFIG_PCI_TESTDEV', if_true: files('pci-testdev.c'))
++system_ss.add(when: 'CONFIG_MEMACCESS_TESTDEV', if_true: files('memaccess-testdev.c'))
+ system_ss.add(when: 'CONFIG_UNIMP', if_true: files('unimp.c'))
+ system_ss.add(when: 'CONFIG_EMPTY_SLOT', if_true: files('empty_slot.c'))
+ system_ss.add(when: 'CONFIG_LED', if_true: files('led.c'))
+diff --git a/include/hw/misc/memaccess-testdev.h b/include/hw/misc/memaccess-testdev.h
+new file mode 100644
+index 0000000000..c1b17297a2
+--- /dev/null
++++ b/include/hw/misc/memaccess-testdev.h
+@@ -0,0 +1,104 @@
++/*
++ * QEMU memory access test device header
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ *
++ * Author: Tomoyuki HIROSE <hrstmyk811m@gmail.com>
++ */
++
++#ifndef HW_MISC_MEMACCESS_TESTDEV_H
++#define HW_MISC_MEMACCESS_TESTDEV_H
++
++#include "system/memory.h"
++#include "hw/qdev-core.h"
++
++#define TYPE_MEM_ACCESS_TEST_DEV "memaccess-testdev"
++
++#define MEMACCESS_TESTDEV_REGION_SIZE 32
++
++#define N_OPS_LIST_LITTLE_B_VALID   80
++#define N_OPS_LIST_LITTLE_B_INVALID 40
++#define N_OPS_LIST_LITTLE_W_VALID   60
++#define N_OPS_LIST_LITTLE_W_INVALID 30
++#define N_OPS_LIST_LITTLE_L_VALID   40
++#define N_OPS_LIST_LITTLE_L_INVALID 20
++#define N_OPS_LIST_LITTLE_Q_VALID   20
++#define N_OPS_LIST_LITTLE_Q_INVALID 10
++#define N_OPS_LIST_BIG_B_VALID      80
++#define N_OPS_LIST_BIG_B_INVALID    40
++#define N_OPS_LIST_BIG_W_VALID      60
++#define N_OPS_LIST_BIG_W_INVALID    30
++#define N_OPS_LIST_BIG_L_VALID      40
++#define N_OPS_LIST_BIG_L_INVALID    20
++#define N_OPS_LIST_BIG_Q_VALID      20
++#define N_OPS_LIST_BIG_Q_INVALID    10
++
++#define N_OPS_LIST \
++    (N_OPS_LIST_LITTLE_B_VALID   + \
++     N_OPS_LIST_LITTLE_B_INVALID + \
++     N_OPS_LIST_LITTLE_W_VALID   + \
++     N_OPS_LIST_LITTLE_W_INVALID + \
++     N_OPS_LIST_LITTLE_L_VALID   + \
++     N_OPS_LIST_LITTLE_L_INVALID + \
++     N_OPS_LIST_LITTLE_Q_VALID   + \
++     N_OPS_LIST_LITTLE_Q_INVALID + \
++     N_OPS_LIST_BIG_B_VALID      + \
++     N_OPS_LIST_BIG_B_INVALID    + \
++     N_OPS_LIST_BIG_W_VALID      + \
++     N_OPS_LIST_BIG_W_INVALID    + \
++     N_OPS_LIST_BIG_L_VALID      + \
++     N_OPS_LIST_BIG_L_INVALID    + \
++     N_OPS_LIST_BIG_Q_VALID      + \
++     N_OPS_LIST_BIG_Q_INVALID)
++
++#define OFF_IDX_OPS_LIST_LITTLE_B_VALID \
++    (0)
++#define OFF_IDX_OPS_LIST_LITTLE_B_INVALID \
++    (OFF_IDX_OPS_LIST_LITTLE_B_VALID + N_OPS_LIST_LITTLE_B_VALID)
++#define OFF_IDX_OPS_LIST_LITTLE_W_VALID \
++    (OFF_IDX_OPS_LIST_LITTLE_B_INVALID + N_OPS_LIST_LITTLE_B_INVALID)
++#define OFF_IDX_OPS_LIST_LITTLE_W_INVALID \
++    (OFF_IDX_OPS_LIST_LITTLE_W_VALID + N_OPS_LIST_LITTLE_W_VALID)
++#define OFF_IDX_OPS_LIST_LITTLE_L_VALID \
++    (OFF_IDX_OPS_LIST_LITTLE_W_INVALID + N_OPS_LIST_LITTLE_W_INVALID)
++#define OFF_IDX_OPS_LIST_LITTLE_L_INVALID \
++    (OFF_IDX_OPS_LIST_LITTLE_L_VALID + N_OPS_LIST_LITTLE_L_VALID)
++#define OFF_IDX_OPS_LIST_LITTLE_Q_VALID \
++    (OFF_IDX_OPS_LIST_LITTLE_L_INVALID + N_OPS_LIST_LITTLE_L_INVALID)
++#define OFF_IDX_OPS_LIST_LITTLE_Q_INVALID \
++    (OFF_IDX_OPS_LIST_LITTLE_Q_VALID + N_OPS_LIST_LITTLE_Q_VALID)
++#define OFF_IDX_OPS_LIST_BIG_B_VALID \
++    (OFF_IDX_OPS_LIST_LITTLE_Q_INVALID + N_OPS_LIST_LITTLE_Q_INVALID)
++#define OFF_IDX_OPS_LIST_BIG_B_INVALID \
++    (OFF_IDX_OPS_LIST_BIG_B_VALID + N_OPS_LIST_BIG_B_VALID)
++#define OFF_IDX_OPS_LIST_BIG_W_VALID \
++    (OFF_IDX_OPS_LIST_BIG_B_INVALID + N_OPS_LIST_BIG_B_INVALID)
++#define OFF_IDX_OPS_LIST_BIG_W_INVALID \
++    (OFF_IDX_OPS_LIST_BIG_W_VALID + N_OPS_LIST_BIG_W_VALID)
++#define OFF_IDX_OPS_LIST_BIG_L_VALID \
++    (OFF_IDX_OPS_LIST_BIG_W_INVALID + N_OPS_LIST_BIG_W_INVALID)
++#define OFF_IDX_OPS_LIST_BIG_L_INVALID \
++    (OFF_IDX_OPS_LIST_BIG_L_VALID + N_OPS_LIST_BIG_L_VALID)
++#define OFF_IDX_OPS_LIST_BIG_Q_VALID \
++    (OFF_IDX_OPS_LIST_BIG_L_INVALID + N_OPS_LIST_BIG_L_INVALID)
++#define OFF_IDX_OPS_LIST_BIG_Q_INVALID \
++    (OFF_IDX_OPS_LIST_BIG_Q_VALID + N_OPS_LIST_BIG_Q_VALID)
++
++typedef uint8_t MrData[MEMACCESS_TESTDEV_REGION_SIZE];
++#define MEMACCESS_TESTDEV_MR_DATA_SIZE (sizeof(MrData) * N_OPS_LIST)
++
++typedef DeviceClass MemAccessTestDevClass;
++typedef struct MemAccessTestDev {
++    /* Private */
++    DeviceState parent_obj;
++    /* Public */
++    MemoryRegion container;
++    MemoryRegion memory_regions[N_OPS_LIST]; /* test memory regions */
++    uint64_t base;                           /* map base address */
++    MrData *mr_data;                         /* memory region data array */
++} MemAccessTestDev;
++
++#define MEM_ACCESS_TEST_DEV(obj)                                    \
++    OBJECT_CHECK(MemAccessTestDev, obj, TYPE_MEM_ACCESS_TEST_DEV)
++
++#endif
 -- 
 2.25.1
 

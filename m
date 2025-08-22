@@ -4,82 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23284CA0EED
-	for <qemu-arm@archiver.kernel.org>; Fri, 22 Aug 2025 08:05:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F22D3CA0EFC
+	for <qemu-arm@archiver.kernel.org>; Fri, 22 Aug 2025 12:31:23 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1upMla-0005ya-Ix; Fri, 22 Aug 2025 04:04:54 -0400
+	id 1upQrn-0004v2-SO; Fri, 22 Aug 2025 08:27:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1upMlZ-0005xE-Hg
- for qemu-arm@nongnu.org; Fri, 22 Aug 2025 04:04:53 -0400
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1upQrk-0004tm-U5
+ for qemu-arm@nongnu.org; Fri, 22 Aug 2025 08:27:33 -0400
+Received: from mail-yb1-xb33.google.com ([2607:f8b0:4864:20::b33])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1upMlX-0003no-Ee
- for qemu-arm@nongnu.org; Fri, 22 Aug 2025 04:04:53 -0400
-Received: by mail-wm1-x32f.google.com with SMTP id
- 5b1f17b1804b1-45a1ac7c066so11450575e9.1
- for <qemu-arm@nongnu.org>; Fri, 22 Aug 2025 01:04:50 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1upQre-0002Q9-Ft
+ for qemu-arm@nongnu.org; Fri, 22 Aug 2025 08:27:32 -0400
+Received: by mail-yb1-xb33.google.com with SMTP id
+ 3f1490d57ef6-e94d678e116so2030617276.2
+ for <qemu-arm@nongnu.org>; Fri, 22 Aug 2025 05:27:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1755849888; x=1756454688; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=i55v84+D1aIhLWaISs7kPJXEHC/nZMjQ2iH3IDO+O+M=;
- b=quJhmPYf68m6hakaES7j4rTinaHHOxvBsVGxUvuUzIWY0MizWmmH8ht4b5JG9+xgHS
- 85ldJIgqR2NK9wRIl2FffmtZc+wCEwM4t1+827CaVWGRvqQd4Gxc+a3pUyasvLz4Ncs8
- 3kx81oDFgN7zP+FNZXTa2JMcakF1eorai71XaDnE7Z9rwimGsfp0ekG6q+sD/+3rU9aQ
- kq9yCT1CoOZz2Q9CdS6IyCLM1+gtmJumMl3fTr6b+c/6p4FpDbTOo8Qr21yBCyIok9Dr
- lzxrFXaOLMKQd/VahTlHuIgkG12yn3IZdoNHdRVHFvaMYQ+XovGtMQKPNoJFP7Mdasxp
- kzXg==
+ d=linaro.org; s=google; t=1755865643; x=1756470443; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=BYsKwztJMauWR7WjTG5BAj51rSQL/be+C1+B8xc7DMM=;
+ b=QLMI2DmKAv/ylQ8KM88MXP4Ag6QgGwzEawzKcw1aRtFESj6ys99lFoxdm4ZgFxynB9
+ uLTsEPmwNmWMPwbTpx69qLvXwdEi0I251JOoCNHAv5oEg5iJVWFSZwzltcGyRn6FBLxS
+ AuNHIXoXqCEWSBY1n0jB13iWhpAl59DNWCZvlL14Hno7FNKcpJBq+y1sN4i7eQgSGDPU
+ 5s46TScO1Ff+mCMzLxc0FZtRreSputKtnctpwjcNRHUBae9sQ8TZRlRaLEu/vMz8dts+
+ 927QmmEW4N6+pi43szmvRxDJySnyh7NLH/amHpXNVj4SJLhkme2+yzetyaXg+RcL2bRT
+ x3fg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1755849888; x=1756454688;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=i55v84+D1aIhLWaISs7kPJXEHC/nZMjQ2iH3IDO+O+M=;
- b=ePsnfwtiMHy3rPbEGf8yrqJlE0TK9JXnRKefHfQwonOsgQ/i+iRcyv+l+pKonDI57s
- 4kTKCEfFTejTqL1dCrxzlYmZRuLadFbu31tQ/sD7ZqUsFMvC/9oT9/uNk/N6StuEVhtQ
- EVti21gO703+9qJL76krHuve+v5HI3jIAD++/73neMuhWJr2wJ/roCQHCltxh5vthtgM
- C/dcKX68A6WljkHIYgnZPvaIuStCI3MaAe3liJ9lGO9VUu+536b9ITE7wud8ES50+0Xf
- RvnveNv+QtLEkl5l26pKXmwuxRc1JwDQUcP5ASBTfZH75d/fF48odKN/ZstahYs/GtQW
- cIQg==
+ d=1e100.net; s=20230601; t=1755865643; x=1756470443;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=BYsKwztJMauWR7WjTG5BAj51rSQL/be+C1+B8xc7DMM=;
+ b=KByBdIGYVww1AKGpZBR9EEkGA3XCyNYEmycmjoltuSN9Y9JM4QwjeZ7Dwjw5XzvVpg
+ RjzEnR1GjY1jKpxrlhOhIQkR/TF9qctiUBIUrsZFJ4rXeHxaVKU3hjuf54FnZ3up+mr3
+ FvISpRH8UilZpYztTlbRKLhHTaCzIOtLlHpztw3jUWsZywBsKxOL77JtxfXEnoecMlxR
+ 55Zs+BN4AIjcGZctG5QIyboCCU8pSX2+6H4SgMYjhfwK4swojzO8/rq8HRQ1n+QDtqq5
+ kDntCss2cg2CPO8H41/v5aH5b9oRFDiPRMnVecdPIceJb//AYqLCt680mcYYn9cActua
+ pbTw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUHxoiyZa3i5ihf12HdThtTzyG8/dKW2uJHeMjklhdKRn1YdW38h8afn+Tsn/ZWlPQIntnz0aVSRQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yyf0k3M1RFyYNCFqQStlpexaFwz55Kke1dnVjz2OWGp2FdcL8+v
- uW6CKItPOtT8O88UjN0r3cF2RzXFDgyelGmxMoLTUNadf2cm5Oz3xsMlVgE1mtsdljo=
-X-Gm-Gg: ASbGncsqX2zvG47eL999CxIne5abr6b3n1xNeD2o+S35bG9MEWk7q1grhy9dI0aQvlM
- xf1CYBVtGovKbBjkgyrvotNKUNK1dMPjG/BOkHyCJ3Ws/JwNsd1iaz3dVYcDxJq9qCfQN1/8EXW
- QL4Ir16iHXuxP69SDm2jnZgJM5bkkb2zaa7r+lZ5rG/hk4eyys9yoOMO7C8gPP38yrXc2wEq8Mk
- Ixk/bUbHcVeHs+oQtdc4nO4NPBjA9OYP7ACLHGZ0QHmTjZqNKy3BlzcxYle1kF3TpbLQgrqVLWH
- Qn7vOV09ZGG4z3vnq4Y1o5zHwonys453Dskfd2SBcy46+N4d6BRoLIcusG13bKtNKAPlZOq4rNQ
- K1cNl32mL1JVGPab9n0YcAWY0NOYVHKyPsDpSgbRh2hKhWwF5yx9XP18VIKG5aSKBgzHd6eI=
-X-Google-Smtp-Source: AGHT+IF1nO+qLVews9F+WIZmIjxVrJhXKqNm7D7tMzsLEOekHMW8rBvd+leoNi0JOov182YJsNM7dQ==
-X-Received: by 2002:a05:600c:c084:b0:458:b4a9:b024 with SMTP id
- 5b1f17b1804b1-45b4d7eb83emr38984035e9.11.1755849887898; 
- Fri, 22 Aug 2025 01:04:47 -0700 (PDT)
-Received: from [192.168.69.208] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-45b50dc023dsm28258955e9.5.2025.08.22.01.04.47
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 22 Aug 2025 01:04:47 -0700 (PDT)
-Message-ID: <a7291f23-16fd-48d7-bfe5-516237696eb1@linaro.org>
-Date: Fri, 22 Aug 2025 10:04:46 +0200
+ AJvYcCXDkObfEwJ+OiJRtQVzEqU9RAAs4UB1jflqeAxXVE4z5BdMZPjDgFu/S6BCqFcem2Cf5mN8NU1OVg==@nongnu.org
+X-Gm-Message-State: AOJu0YzTLFui60DSQlAXcm4J42gFxaTwD1C6myU2THsrYk2ee/Q9K3Xi
+ A/ErM1pZ4cbZA4/g89rFdvEwEbfNTUYwnTjJzdk549kp/MwYxjecSdGjpvpSKGZhsKstMaupxfy
+ oTSOCHsds2XMPixYZ7Cy/Li+pX1vvoRuU5DOl3ropFg==
+X-Gm-Gg: ASbGncvKCDv/WoQrX+c9M/TCr13+OskRUEf9MkuT6lprKpZ2u+ISSb/NiMpP7aYyl6x
+ ++9rPu1wleQbE28EKR+uny3bVJyk419foJ2guphH4SVVXRl9kK198npjQ2piU57unlOKCcmkuwT
+ OPQfugUvttiChh3fyMtsT38BxcLyoUsTyaYnlcCDGHZZDljMcIGAR2bn2QhrS9YUjVzoKqnGFj5
+ W9ZJ2eO
+X-Google-Smtp-Source: AGHT+IF7er9eyrfv7QjTi7lidx7NPd55hetUoy0ulPmLsgaXGsCsKrTqX+j3ta5+XMTIdENeLr0GxDRNZsYVjCgBnvk=
+X-Received: by 2002:a05:6902:310b:b0:e8f:f6d2:b706 with SMTP id
+ 3f1490d57ef6-e951c2de174mr3142690276.1.1755865643277; Fri, 22 Aug 2025
+ 05:27:23 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] hw/arm/stm32f205_soc: Don't leak TYPE_OR_IRQ objects
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: Alistair Francis <alistair@alistair23.me>
-References: <20250821154229.2417453-1-peter.maydell@linaro.org>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20250821154229.2417453-1-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32f.google.com
+References: <20250811193654.4012878-1-vacha.bhavsar@oss.qualcomm.com>
+ <20250811193654.4012878-4-vacha.bhavsar@oss.qualcomm.com>
+ <CAFEAcA9wQ8qh3Ah+QNNXY6u8ut6ZMVqaxFTvDDhvEGYrazFPsA@mail.gmail.com>
+ <CAEWVDmuAkDuss-vB35dOPP-zSOZTEK4WJGfvqLQdHNG-63h51Q@mail.gmail.com>
+In-Reply-To: <CAEWVDmuAkDuss-vB35dOPP-zSOZTEK4WJGfvqLQdHNG-63h51Q@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 22 Aug 2025 13:27:11 +0100
+X-Gm-Features: Ac12FXxw2wMywUFCmmHFNV_0tSTgwquaHxpt_o2gB30wsft00vQuWby2sxpI03Q
+Message-ID: <CAFEAcA_BV1ThJ_2L5pDd8WQhSPKd2WKbW1eb1Owrr4YswOg9Bg@mail.gmail.com>
+Subject: Re: [PATCH v5 3/4] target/arm: Added support for SME register
+ exposure to
+To: Vacha Bhavsar <vacha.bhavsar@oss.qualcomm.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+ Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b33;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb33.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -102,42 +101,45 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 21/8/25 17:42, Peter Maydell wrote:
-> In stm32f250_soc_initfn() we mostly use the standard pattern
-> for child objects of calling object_initialize_child(). However
-> for s->adc_irqs we call object_new() and then later qdev_realize(),
-> and we never unref the object on deinit. This causes a leak,
-> detected by ASAN on the device-introspect-test:
-> 
-> Indirect leak of 10 byte(s) in 1 object(s) allocated from:
->      #0 0x5b9fc4789de3 in malloc (/mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/qemu-system-arm+0x21f1de3) (BuildId: 267a2619a026ed91c78a07b1eb2ef15381538efe)
->      #1 0x740de3f28b09 in g_malloc (/lib/x86_64-linux-gnu/libglib-2.0.so.0+0x62b09) (BuildId: 1eb6131419edb83b2178b682829a6913cf682d75)
->      #2 0x740de3f3e4d8 in g_strdup (/lib/x86_64-linux-gnu/libglib-2.0.so.0+0x784d8) (BuildId: 1eb6131419edb83b2178b682829a6913cf682d75)
->      #3 0x5b9fc70159e1 in g_strdup_inline /usr/include/glib-2.0/glib/gstrfuncs.h:321:10
->      #4 0x5b9fc70159e1 in object_property_try_add /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/../../qom/object.c:1276:18
->      #5 0x5b9fc7015f94 in object_property_add /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/../../qom/object.c:1294:12
->      #6 0x5b9fc701b900 in object_add_link_prop /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/../../qom/object.c:2021:10
->      #7 0x5b9fc701b3fc in object_property_add_link /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/../../qom/object.c:2037:12
->      #8 0x5b9fc4c299fb in qdev_init_gpio_out_named /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/../../hw/core/gpio.c:90:9
->      #9 0x5b9fc4c29b26 in qdev_init_gpio_out /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/../../hw/core/gpio.c:101:5
->      #10 0x5b9fc4c0f77a in or_irq_init /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/../../hw/core/or-irq.c:70:5
->      #11 0x5b9fc70257e1 in object_init_with_type /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/../../qom/object.c:428:9
->      #12 0x5b9fc700cd4b in object_initialize_with_type /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/../../qom/object.c:570:5
->      #13 0x5b9fc700e66d in object_new_with_type /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/../../qom/object.c:774:5
->      #14 0x5b9fc700e750 in object_new /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/../../qom/object.c:789:12
->      #15 0x5b9fc68b2162 in stm32f205_soc_initfn /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/../../hw/arm/stm32f205_soc.c:69:26
-> 
-> Switch to using object_initialize_child() like all our
-> other child objects for this SoC object.
-> 
-> Cc: qemu-stable@nongnu.org
-> Fixes: b63041c8f6b ("STM32F205: Connect the ADC devices")
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->   include/hw/arm/stm32f205_soc.h |  2 +-
->   hw/arm/stm32f205_soc.c         | 10 +++++-----
->   2 files changed, 6 insertions(+), 6 deletions(-)
+On Thu, 21 Aug 2025 at 22:37, Vacha Bhavsar
+<vacha.bhavsar@oss.qualcomm.com> wrote:
+>
+> Hi,
+>
+> Regarding having the SME check inside the "if we have SVE" check, we were looking the the
+> Arm ARM, specifically the following excerpt from section A1.4:
+>
+> The architecture provides the following:
+>
+> - A general-purpose register file.
+> - A SIMD&FP register file.
+> - If FEAT_SVE or FEAT_SME is implemented, an SVE scalable vector register file and an
+> SVE scalable predicate register file.
+> - if FEAT_SME is implemented, the scalable ZA storage.
+>
+> Based on this, we were considering the following update to the change in gdbstub64.c and
+> we wanted to get your input.
+>
+> if (isar_feature_aa64_sve(&cpu->isar) || isar_feature_aa64_sme(&cpu->isar)) {
+>             GDBFeature *feature = arm_gen_dynamic_svereg_feature(cs, cs->gdb_num_regs);
+>             gdb_register_coprocessor(cs, aarch64_gdb_get_sve_reg,
+>                                      aarch64_gdb_set_sve_reg, feature, 0);
+> } else {
+>             gdb_register_coprocessor(cs, aarch64_gdb_get_fpu_reg,
+>                                      aarch64_gdb_set_fpu_reg,
+>                                      gdb_find_static_feature("aarch64-fpu.xml"),
+>                                      0);
+> }
+>
+> if (isar_feature_aa64_sme(&cpu->isar)) {
+>               GDBFeature *sme_feature = arm_gen_dynamic_smereg_feature(cs,
+>                     cs->gdb_num_regs);
+>               gdb_register_coprocessor(cs, aarch64_gdb_get_sme_reg,
+>                     aarch64_gdb_set_sme_reg, sme_feature, 0);
+> }
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Yes, I think that will be right.
 
+thanks
+-- PMM
 

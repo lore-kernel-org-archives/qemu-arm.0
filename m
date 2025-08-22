@@ -4,89 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F22D3CA0EFC
-	for <qemu-arm@archiver.kernel.org>; Fri, 22 Aug 2025 12:31:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3E84CA0EEB
+	for <qemu-arm@archiver.kernel.org>; Fri, 22 Aug 2025 13:53:53 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1upQrn-0004v2-SO; Fri, 22 Aug 2025 08:27:37 -0400
+	id 1upSD5-0005iK-Ue; Fri, 22 Aug 2025 09:53:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1upQrk-0004tm-U5
- for qemu-arm@nongnu.org; Fri, 22 Aug 2025 08:27:33 -0400
-Received: from mail-yb1-xb33.google.com ([2607:f8b0:4864:20::b33])
+ (Exim 4.90_1) (envelope-from <cjchen@igel.co.jp>) id 1upO1U-0005h4-T3
+ for qemu-arm@nongnu.org; Fri, 22 Aug 2025 05:25:25 -0400
+Received: from mail-pg1-x529.google.com ([2607:f8b0:4864:20::529])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1upQre-0002Q9-Ft
- for qemu-arm@nongnu.org; Fri, 22 Aug 2025 08:27:32 -0400
-Received: by mail-yb1-xb33.google.com with SMTP id
- 3f1490d57ef6-e94d678e116so2030617276.2
- for <qemu-arm@nongnu.org>; Fri, 22 Aug 2025 05:27:24 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <cjchen@igel.co.jp>) id 1upO1S-0007AS-KA
+ for qemu-arm@nongnu.org; Fri, 22 Aug 2025 05:25:24 -0400
+Received: by mail-pg1-x529.google.com with SMTP id
+ 41be03b00d2f7-b49c1c130c9so225903a12.0
+ for <qemu-arm@nongnu.org>; Fri, 22 Aug 2025 02:25:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1755865643; x=1756470443; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=BYsKwztJMauWR7WjTG5BAj51rSQL/be+C1+B8xc7DMM=;
- b=QLMI2DmKAv/ylQ8KM88MXP4Ag6QgGwzEawzKcw1aRtFESj6ys99lFoxdm4ZgFxynB9
- uLTsEPmwNmWMPwbTpx69qLvXwdEi0I251JOoCNHAv5oEg5iJVWFSZwzltcGyRn6FBLxS
- AuNHIXoXqCEWSBY1n0jB13iWhpAl59DNWCZvlL14Hno7FNKcpJBq+y1sN4i7eQgSGDPU
- 5s46TScO1Ff+mCMzLxc0FZtRreSputKtnctpwjcNRHUBae9sQ8TZRlRaLEu/vMz8dts+
- 927QmmEW4N6+pi43szmvRxDJySnyh7NLH/amHpXNVj4SJLhkme2+yzetyaXg+RcL2bRT
- x3fg==
+ d=igel-co-jp.20230601.gappssmtp.com; s=20230601; t=1755854721; x=1756459521;
+ darn=nongnu.org; 
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=CPBXmwU1P2JOttDvf/F4AUriHtbYHkfUE8krSjFXNTI=;
+ b=0hyhumnHT+wzjxI3l5lQ9w0ReGx82Z/8UJBX6STsFLkQFkhwawLw0/dGvjvrhxs7v5
+ 9MW2s+0D0fWAQKH5SZQENaXmS71uF+FfJDu+pQqoNNemiw4c13CWb/Ec99L6iX49yQLw
+ 9EGCOpA5xDTW+lRicn0IxN6hDpbR6VbcK3WsB8ieV2DcL743e7eu8AzqtcNnvFIBvrNj
+ YVm7wP/GJKDHCDSPA6s0KjFaO6V60xBClkkTk6Zb4AoEPKYnk/A3NLq9A6gczX+hd+H/
+ d0RHzTUDG2/m3GKGFl5I3bx3b0BvrwIfbIXRQX3w/9mOZHQVIM0x01CERVWSP1MRSdMr
+ 3biA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1755865643; x=1756470443;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=BYsKwztJMauWR7WjTG5BAj51rSQL/be+C1+B8xc7DMM=;
- b=KByBdIGYVww1AKGpZBR9EEkGA3XCyNYEmycmjoltuSN9Y9JM4QwjeZ7Dwjw5XzvVpg
- RjzEnR1GjY1jKpxrlhOhIQkR/TF9qctiUBIUrsZFJ4rXeHxaVKU3hjuf54FnZ3up+mr3
- FvISpRH8UilZpYztTlbRKLhHTaCzIOtLlHpztw3jUWsZywBsKxOL77JtxfXEnoecMlxR
- 55Zs+BN4AIjcGZctG5QIyboCCU8pSX2+6H4SgMYjhfwK4swojzO8/rq8HRQ1n+QDtqq5
- kDntCss2cg2CPO8H41/v5aH5b9oRFDiPRMnVecdPIceJb//AYqLCt680mcYYn9cActua
- pbTw==
+ d=1e100.net; s=20230601; t=1755854721; x=1756459521;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=CPBXmwU1P2JOttDvf/F4AUriHtbYHkfUE8krSjFXNTI=;
+ b=h1shwBq8jJKkrYugeHo2aNP73oDKhwsBe60/1f20Ldcign3yFsjGiV6oNKbPOtfQug
+ /hVbzuXFKczxb+pFnAky4hzb24YAICT7v66RYMrVuVAmKgZCn1+2asGFwKyG/Ukjbd7N
+ ri/fqWwBCGjevB8sC6j9I8MnLT1HaM5938SkJXB+qkHHoR1UqOf91l2qZenuKrEAyi9y
+ 9EgUbej5Z2TRxCDsQs8PziyONEWlcsT8YSHDssxbz8GrSTsBwYKh7yz32YiSapji3erI
+ kHadbpfmODs6hU/LlxwkQSxuZ5piB5yP0JhBExgdyiqfPNWbvGEevN4FJbShQ9JoGIRQ
+ YaBg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXDkObfEwJ+OiJRtQVzEqU9RAAs4UB1jflqeAxXVE4z5BdMZPjDgFu/S6BCqFcem2Cf5mN8NU1OVg==@nongnu.org
-X-Gm-Message-State: AOJu0YzTLFui60DSQlAXcm4J42gFxaTwD1C6myU2THsrYk2ee/Q9K3Xi
- A/ErM1pZ4cbZA4/g89rFdvEwEbfNTUYwnTjJzdk549kp/MwYxjecSdGjpvpSKGZhsKstMaupxfy
- oTSOCHsds2XMPixYZ7Cy/Li+pX1vvoRuU5DOl3ropFg==
-X-Gm-Gg: ASbGncvKCDv/WoQrX+c9M/TCr13+OskRUEf9MkuT6lprKpZ2u+ISSb/NiMpP7aYyl6x
- ++9rPu1wleQbE28EKR+uny3bVJyk419foJ2guphH4SVVXRl9kK198npjQ2piU57unlOKCcmkuwT
- OPQfugUvttiChh3fyMtsT38BxcLyoUsTyaYnlcCDGHZZDljMcIGAR2bn2QhrS9YUjVzoKqnGFj5
- W9ZJ2eO
-X-Google-Smtp-Source: AGHT+IF7er9eyrfv7QjTi7lidx7NPd55hetUoy0ulPmLsgaXGsCsKrTqX+j3ta5+XMTIdENeLr0GxDRNZsYVjCgBnvk=
-X-Received: by 2002:a05:6902:310b:b0:e8f:f6d2:b706 with SMTP id
- 3f1490d57ef6-e951c2de174mr3142690276.1.1755865643277; Fri, 22 Aug 2025
- 05:27:23 -0700 (PDT)
+ AJvYcCU3/LEPG5GUGHjiRtFMqxzquiV8wMsfwWx7QqRA94uCgKzBB2DKt9VLzE1PLeKfpMKxJwbC+vCTrQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yyeb+JTixiYWVDMejqUw6lCVprqMWb0DQA22MxHTQj2uGe4+MnB
+ Vz7wGXzLNnn4acDgPlCdmr2TZoViT1ta/mGLLadYsWkpOdrWsSlJ49ZoZaECeDrJ2lI=
+X-Gm-Gg: ASbGncvwyKAkiGQhmuVllpPq9dDVw8NHW0BR30gv/dDJ3CkeJz2phyRMid4/PAnxw+6
+ 3EZH/1xlC4SIcozckxqfXURum9DaIDP4/7Gb7pZ8+E0ZFZwezWECau5SNrA8XMsK0ddhewdwZjZ
+ 069hVXm2Fv8aQGcL3zBQfeZ9tr06AYdx6zAxuEAeCwqg8MeQ2GkYhqz/Rx86bDjiZe4HlhTuIUY
+ gKQ+L2wNaM2QPs1K2FUTZhk1Bwp7HbqJjiNhZMHmN6iajnL3F09mY0C79zIzz0KUr7fD9ezuU+I
+ RrWj5+9LAYSfaUNqOzIk8XMSpyE9FAfwgK8jOgg54iXG/74TAhyxOBBSETm6iWStCM5xEMaFAQG
+ hHyC+35Z1Rp0ymojx1KKM9Vw7WIrpf6igJOvyxT2uFhcDMBWvZtPh
+X-Google-Smtp-Source: AGHT+IFjvo9bWFDlURrx68v+zTGIpikr6/j0R2yKpRo9yWHk3zInG5YNv7tU7I9P2qs4WDy/XMZHDA==
+X-Received: by 2002:a17:902:da85:b0:234:c8f6:1afb with SMTP id
+ d9443c01a7336-2462eb37ab9mr32227985ad.0.1755854720839; 
+ Fri, 22 Aug 2025 02:25:20 -0700 (PDT)
+Received: from warg.hq.igel.co.jp (napt.igel.co.jp. [219.106.231.132])
+ by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-245ed4c6fb7sm78560215ad.89.2025.08.22.02.25.14
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 22 Aug 2025 02:25:20 -0700 (PDT)
+From: CJ Chen <cjchen@igel.co.jp>
+To: qemu-devel@nongnu.org, qemu-block@nongnu.org, qemu-riscv@nongnu.org,
+ qemu-arm@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>, Keith Busch <kbusch@kernel.org>,
+ Klaus Jensen <its@irrelevant.dk>, Jesper Devantier <foss@defmacro.it>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Weiwei Li <liwei1518@gmail.com>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ Tyrone Ting <kfting@nuvoton.com>, Hao Wu <wuhaotsh@google.com>,
+ Max Filippov <jcmvbkbc@gmail.com>, Peter Xu <peterx@redhat.com>,
+ David Hildenbrand <david@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
+ Tomoyuki Hirose <hrstmyk811m@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>, CJ Chen <cjchen@igel.co.jp>
+Subject: [RFC PATCH v2 3/9] hw: npcm7xx_fiu and mx_pic change .impl.unaligned
+ = true
+Date: Fri, 22 Aug 2025 18:24:04 +0900
+Message-Id: <20250822092410.25833-4-cjchen@igel.co.jp>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20250822092410.25833-1-cjchen@igel.co.jp>
+References: <20250822092410.25833-1-cjchen@igel.co.jp>
 MIME-Version: 1.0
-References: <20250811193654.4012878-1-vacha.bhavsar@oss.qualcomm.com>
- <20250811193654.4012878-4-vacha.bhavsar@oss.qualcomm.com>
- <CAFEAcA9wQ8qh3Ah+QNNXY6u8ut6ZMVqaxFTvDDhvEGYrazFPsA@mail.gmail.com>
- <CAEWVDmuAkDuss-vB35dOPP-zSOZTEK4WJGfvqLQdHNG-63h51Q@mail.gmail.com>
-In-Reply-To: <CAEWVDmuAkDuss-vB35dOPP-zSOZTEK4WJGfvqLQdHNG-63h51Q@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 22 Aug 2025 13:27:11 +0100
-X-Gm-Features: Ac12FXxw2wMywUFCmmHFNV_0tSTgwquaHxpt_o2gB30wsft00vQuWby2sxpI03Q
-Message-ID: <CAFEAcA_BV1ThJ_2L5pDd8WQhSPKd2WKbW1eb1Owrr4YswOg9Bg@mail.gmail.com>
-Subject: Re: [PATCH v5 3/4] target/arm: Added support for SME register
- exposure to
-To: Vacha Bhavsar <vacha.bhavsar@oss.qualcomm.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
- Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b33;
- envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb33.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::529;
+ envelope-from=cjchen@igel.co.jp; helo=mail-pg1-x529.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Fri, 22 Aug 2025 09:53:38 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,45 +115,49 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, 21 Aug 2025 at 22:37, Vacha Bhavsar
-<vacha.bhavsar@oss.qualcomm.com> wrote:
->
-> Hi,
->
-> Regarding having the SME check inside the "if we have SVE" check, we were looking the the
-> Arm ARM, specifically the following excerpt from section A1.4:
->
-> The architecture provides the following:
->
-> - A general-purpose register file.
-> - A SIMD&FP register file.
-> - If FEAT_SVE or FEAT_SME is implemented, an SVE scalable vector register file and an
-> SVE scalable predicate register file.
-> - if FEAT_SME is implemented, the scalable ZA storage.
->
-> Based on this, we were considering the following update to the change in gdbstub64.c and
-> we wanted to get your input.
->
-> if (isar_feature_aa64_sve(&cpu->isar) || isar_feature_aa64_sme(&cpu->isar)) {
->             GDBFeature *feature = arm_gen_dynamic_svereg_feature(cs, cs->gdb_num_regs);
->             gdb_register_coprocessor(cs, aarch64_gdb_get_sve_reg,
->                                      aarch64_gdb_set_sve_reg, feature, 0);
-> } else {
->             gdb_register_coprocessor(cs, aarch64_gdb_get_fpu_reg,
->                                      aarch64_gdb_set_fpu_reg,
->                                      gdb_find_static_feature("aarch64-fpu.xml"),
->                                      0);
-> }
->
-> if (isar_feature_aa64_sme(&cpu->isar)) {
->               GDBFeature *sme_feature = arm_gen_dynamic_smereg_feature(cs,
->                     cs->gdb_num_regs);
->               gdb_register_coprocessor(cs, aarch64_gdb_get_sme_reg,
->                     aarch64_gdb_set_sme_reg, sme_feature, 0);
-> }
+By setting .impl.unaligned = true, we allow QEMU to pass along
+unaligned requests directly as-is, rather than splitting them into
+multiple aligned sub-requests that might cause repeated device
+callbacks or unintended side effects.
 
-Yes, I think that will be right.
+Signed-off-by: CJ Chen <cjchen@igel.co.jp>
+Tested-by: CJ Chen <cjchen@igel.co.jp>
+Acked-by: Tomoyuki Hirose <hrstmyk811m@gmail.com>
+Reported-by: Tomoyuki Hirose <hrstmyk811m@gmail.com>
+---
+ hw/ssi/npcm7xx_fiu.c | 3 +++
+ hw/xtensa/mx_pic.c   | 3 +++
+ 2 files changed, 6 insertions(+)
 
-thanks
--- PMM
+diff --git a/hw/ssi/npcm7xx_fiu.c b/hw/ssi/npcm7xx_fiu.c
+index 056ce13394..10ee4deb31 100644
+--- a/hw/ssi/npcm7xx_fiu.c
++++ b/hw/ssi/npcm7xx_fiu.c
+@@ -255,6 +255,9 @@ static const MemoryRegionOps npcm7xx_fiu_flash_ops = {
+         .max_access_size = 8,
+         .unaligned = true,
+     },
++    .impl = {
++        .unaligned = true,
++    },
+ };
+ 
+ /* Control register read handler. */
+diff --git a/hw/xtensa/mx_pic.c b/hw/xtensa/mx_pic.c
+index 8211c993eb..6bf524a918 100644
+--- a/hw/xtensa/mx_pic.c
++++ b/hw/xtensa/mx_pic.c
+@@ -270,6 +270,9 @@ static const MemoryRegionOps xtensa_mx_pic_ops = {
+     .valid = {
+         .unaligned = true,
+     },
++    .impl = {
++        .unaligned = true,
++    },
+ };
+ 
+ MemoryRegion *xtensa_mx_pic_register_cpu(XtensaMxPic *mx,
+-- 
+2.25.1
+
 

@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3D24CA0EEB
-	for <qemu-arm@archiver.kernel.org>; Fri, 22 Aug 2025 15:06:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A393CA0EED
+	for <qemu-arm@archiver.kernel.org>; Fri, 22 Aug 2025 15:06:36 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1upTIU-00030G-49; Fri, 22 Aug 2025 11:03:20 -0400
+	id 1upTIJ-0002qe-ET; Fri, 22 Aug 2025 11:03:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1upTH9-0001z6-9j
- for qemu-arm@nongnu.org; Fri, 22 Aug 2025 11:02:02 -0400
+ id 1upTGs-0001pi-27
+ for qemu-arm@nongnu.org; Fri, 22 Aug 2025 11:01:38 -0400
 Received: from mail-pl1-x62d.google.com ([2607:f8b0:4864:20::62d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1upTGe-000510-CP
- for qemu-arm@nongnu.org; Fri, 22 Aug 2025 11:01:50 -0400
+ id 1upTGV-000504-3n
+ for qemu-arm@nongnu.org; Fri, 22 Aug 2025 11:01:37 -0400
 Received: by mail-pl1-x62d.google.com with SMTP id
- d9443c01a7336-246151aefaaso13225535ad.1
- for <qemu-arm@nongnu.org>; Fri, 22 Aug 2025 08:01:19 -0700 (PDT)
+ d9443c01a7336-2445824dc27so21201685ad.3
+ for <qemu-arm@nongnu.org>; Fri, 22 Aug 2025 08:01:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1755874876; x=1756479676; darn=nongnu.org;
+ d=linaro.org; s=google; t=1755874871; x=1756479671; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Gb/ReADUnlzi9AcO287uTsxkJfdtQt0rAfW8KkqAbww=;
- b=Io/P8RtVpGcKE5Oy7irKT/aUZnjMnXe8NgEaiS87VsDTl5dPHSMh9o1gIgLNmLA5GZ
- 1R99uNUq/9J2edWE79PoAmOI9oPnMfN8oHcmcRw2tvAKYBiaiUKt9h4mtmnPU599iA3C
- 1JrODcIj9pFTPJVhT34GUQacJRxRHfMfgAbkuO2v4r4fyj2FF1kFr+MupStTzMe3G76q
- DIlQd4lbhiekqL9fJzG5Uian4Xo6kF6w4Us3GUNQ3SLnaEuaF64dTtP58x795FlBvGhH
- F60NvlmpoDqWEKUjg1CbB4pURn1CU6fenmih1zUKJ/P+LSIIjeY21bvSVewb1XL84shg
- 49dg==
+ bh=M9U0/wZZ+X7jDvuQEIrxHKhigwEtRJDRddgS55lpDeU=;
+ b=ommykD7kbrrRzqKkePXq/JGCfKr8m53j2AGC8dPCm8eSJbZ1acHhyEwOApZp9fDLh5
+ aRcPU/C0mwnQcbKXbMl++NgBKBU/DnGitckpX/mum5osi7yoRZBTeqsYR47Y8TzbdO02
+ pnt2R8WeNlmQ6d2JPOjNAIFVPH5Iy7YHfond+Xvii5ngeHuc1QDuUaXMvs+65dbD2S3N
+ sWFkVl5xQC5pdFkUNVa8XxA6BX8zpuyASzUmNUR88Bk2oasdVmh4Uh51YcAipM6sZdRD
+ fuTo2KV3Eg5ztpmszyR0E4R3NrVvjjuIUg+mPpumQRUZYiXueVECplHn+Ce+rW61paNq
+ pi8A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1755874876; x=1756479676;
+ d=1e100.net; s=20230601; t=1755874871; x=1756479671;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=Gb/ReADUnlzi9AcO287uTsxkJfdtQt0rAfW8KkqAbww=;
- b=JLNGlzZGdG0kC5TXY080Jhq36q+jnn62AXartHaPegDwgiS253eawdwOfGo6RARNa9
- SYL3NR4+lB8IkoU7o7OlVJkvOZCp56H6vUEe+XHj16HApqRdTRlT2OQhyK9WJj6gD3zz
- 0ealfU7iFKp0HFE+wydF1Y+muavu9ySdgqy6xqYtPtlaG13gGjN53CVhcpfJ2LOfcM6c
- mb90syWA9+4sbe5vV5us0JxMASyQcR+WDBZqVwZwjGm62FbTOrD9I0T5fbS7V1yQ+lp1
- T9/XMBxV0FkbRzrjMI+AIGO6vuhmUrBY1c39C+1c9L82A5uo8ehhDQFNQj8zn+9Ki74i
- QC2A==
-X-Gm-Message-State: AOJu0YzZSe4Y6HjdgbXuv119fzu1UHILbKjPbElBoAdW3be5alqiFPaQ
- h1EALRQa72IkyMp//V92JCoc/EL48fF2ERCsPc1Ywpib+Yw2IxFua1H/rMQXG0DXbuDcTV8eRDE
- Dv+WxCKj8cw==
-X-Gm-Gg: ASbGncsvxlcWNpeb11SkmNI08ZBGIwVjRBJmTn75cDX7n2Br9nWCLVpiJ19tGrsbOpb
- RxAaHxeWjm2n7cRpcnXKAs+BY/9WKZH9SQWNt7z8DU3cVY1pAlsgkqpegYTr8bu4gpHgb8HN9ba
- 1Cmu1foeb8tGZMGIYRgP1BSgXAggkDr39D9IeqaRk4+ZvpEZXTYSSBLyXjAo5E+/ArqEGV5esKV
- NCxGMCkBPSsVb7s5XeXtsXhTsImCdJmNLwgwIvlvksYVv3JD61C5dSH51zaNuOTHYOOS2utoGJP
- Y9AMY7i6k45vgr0if8RCzR4hRgklKArg+8Ver5tp0VW3RrV9EtWm3p1xJ9K6AJpcSUYtRtWgTHJ
- JXs6QB40ju8r+ikKPS5NYhIqrqccXfZ+iCAy4gUH99mQao8nL4umspA==
-X-Google-Smtp-Source: AGHT+IHsJ9yB9dRQdCmFBOAjhp8RpEvxUs6RA0y/QSfe43hNfYYQWqFlYP+oz7KVAW2515DKr7GLGg==
-X-Received: by 2002:a17:902:cec2:b0:244:9912:8353 with SMTP id
- d9443c01a7336-2463292c8a8mr46943705ad.6.1755874875796; 
- Fri, 22 Aug 2025 08:01:15 -0700 (PDT)
+ bh=M9U0/wZZ+X7jDvuQEIrxHKhigwEtRJDRddgS55lpDeU=;
+ b=uF2y9kuL9n6y+/eEkWtnE6o8cc4N0qOyO4i9nDNhSPJpIxKn69r6aofkUqBKr7YBDz
+ 2oN/OITnw2ZpHM86kh76HlkuG2+5I25ljJlBOjFfUL4BRJaTY3k7hdn3mPkNE2DqBeqy
+ 4dIbZ5+rDRyXo+LPIqhFot3TFx9Qle6AQLDOhxTgc112IbrbsxlJmsRnXF+YNjM6/RtJ
+ vCa+jD2yduf8vC8dnEg8jYIQtdbEObgoK+6GyM0FBct45wSSl08I/sGhQX4G/yGxeJH+
+ de7ffP1EyFiYBrv14YrpQSzH3tCwqWdBOCvzx8GRCsgF9zMd6ot4WDJa9vj8DiERuANc
+ i8bg==
+X-Gm-Message-State: AOJu0YyVspTE+eddmWK6AwsF5WJUXY8+/W/m9mneP0dgH+ADhENij8Jb
+ 3Tg7OjTU+eBvSW2yJjGnwixkgqV5fwJUCyN74yJVBl3cEsWidYC2BrV3e9OewjfJ99JzNX7cPNY
+ 88Sr7C/OL5w==
+X-Gm-Gg: ASbGnctj795DDADP8nbAVT7Mt1hZZLTZ6+OdF3rjaYY7YhkXftUVB/oigPceccCSUc2
+ qExxGHPj301wzAZoCK0RZ/Vg8089YmE7nYlPW4UMKKJNK60mFpiG+e64ioZXePfS1bALfgX2eWB
+ O/JeiNucyW7/kFrSboiGe0Zp5ZfsDzYJwTKebSll0of0oa1rUUFRoDypRbdr3sqcz/mHETZoBV3
+ ddCSSf8Ag/oSaML7KPr52U9F8PhtJlKjxJ2A4r3IpyPnm+/24JOwfIYFQZtepmMNfAsgC3ZT/tG
+ zpdUOG6RKvdduzBQIabdSuByUwRdGucQ2cb+nlk1UtyW1oK+yJ07MLMuBxLSAuq3lmPmVPcfZHV
+ Egazh09PXhaqaBtn0z1TIidk0kQ/PjiN6p87B5ndzIMU=
+X-Google-Smtp-Source: AGHT+IF3toQpmj8h5tsWhOPCnEZzd3TnPsKwHOqHIF5l5vvq8fl4lmOXdwgv16NfyWulMLZ9dldmew==
+X-Received: by 2002:a17:902:e84e:b0:240:1831:eede with SMTP id
+ d9443c01a7336-2462ef4cc1amr39835165ad.32.1755874868698; 
+ Fri, 22 Aug 2025 08:01:08 -0700 (PDT)
 Received: from pc.taild8403c.ts.net ([38.41.223.211])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-245ed5406e4sm85929495ad.165.2025.08.22.08.01.14
+ d9443c01a7336-245ed5406e4sm85929495ad.165.2025.08.22.08.01.07
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 22 Aug 2025 08:01:15 -0700 (PDT)
+ Fri, 22 Aug 2025 08:01:08 -0700 (PDT)
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
@@ -76,10 +76,9 @@ Cc: qemu-arm@nongnu.org,
  Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v4 09/12] semihosting/arm-compat-semi: replace target_ulong
- with vaddr
-Date: Fri, 22 Aug 2025 08:00:55 -0700
-Message-ID: <20250822150058.18692-10-pierrick.bouvier@linaro.org>
+Subject: [PATCH v4 03/12] semihosting/guestfd: compile once for system/user
+Date: Fri, 22 Aug 2025 08:00:49 -0700
+Message-ID: <20250822150058.18692-4-pierrick.bouvier@linaro.org>
 X-Mailer: git-send-email 2.47.2
 In-Reply-To: <20250822150058.18692-1-pierrick.bouvier@linaro.org>
 References: <20250822150058.18692-1-pierrick.bouvier@linaro.org>
@@ -109,93 +108,202 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+We move relevant code to semihosting/arm-compat-semi.c, and add
+functions to query CONFIG_ARM_COMPATIBLE_SEMIHOSTING at runtime.
+
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 ---
- semihosting/arm-compat-semi.c | 24 ++++++++++++------------
- 1 file changed, 12 insertions(+), 12 deletions(-)
+ include/semihosting/guestfd.h      |  7 -------
+ include/semihosting/semihost.h     |  2 ++
+ semihosting/arm-compat-semi-stub.c | 19 +++++++++++++++++++
+ semihosting/arm-compat-semi.c      | 26 ++++++++++++++++++++++++++
+ semihosting/guestfd.c              | 26 +++++---------------------
+ semihosting/meson.build            | 11 ++++++-----
+ 6 files changed, 58 insertions(+), 33 deletions(-)
+ create mode 100644 semihosting/arm-compat-semi-stub.c
 
+diff --git a/include/semihosting/guestfd.h b/include/semihosting/guestfd.h
+index 3d426fedab3..a7ea1041ea0 100644
+--- a/include/semihosting/guestfd.h
++++ b/include/semihosting/guestfd.h
+@@ -35,13 +35,6 @@ typedef struct GuestFD {
+     };
+ } GuestFD;
+ 
+-/*
+- * For ARM semihosting, we have a separate structure for routing
+- * data for the console which is outside the guest fd address space.
+- */
+-extern GuestFD console_in_gf;
+-extern GuestFD console_out_gf;
+-
+ /**
+  * alloc_guestfd:
+  *
+diff --git a/include/semihosting/semihost.h b/include/semihosting/semihost.h
+index b03e6375787..231dc890395 100644
+--- a/include/semihosting/semihost.h
++++ b/include/semihosting/semihost.h
+@@ -33,6 +33,8 @@ typedef enum SemihostingTarget {
+  * Return true if guest code is allowed to make semihosting calls.
+  */
+ bool semihosting_enabled(bool is_user);
++bool semihosting_arm_compatible(void);
++void semihosting_arm_compatible_init(void);
+ 
+ SemihostingTarget semihosting_get_target(void);
+ const char *semihosting_get_arg(int i);
+diff --git a/semihosting/arm-compat-semi-stub.c b/semihosting/arm-compat-semi-stub.c
+new file mode 100644
+index 00000000000..bfa3681e267
+--- /dev/null
++++ b/semihosting/arm-compat-semi-stub.c
+@@ -0,0 +1,19 @@
++/*
++ * Stubs for platforms different from ARM
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "qemu/osdep.h"
++#include "semihosting/semihost.h"
++#include <glib.h>
++
++bool semihosting_arm_compatible(void)
++{
++    return false;
++}
++
++void semihosting_arm_compatible_init(void)
++{
++    g_assert_not_reached();
++}
 diff --git a/semihosting/arm-compat-semi.c b/semihosting/arm-compat-semi.c
-index c03096b253d..f593239cc9a 100644
+index 40dc778529d..3f653c6e7a9 100644
 --- a/semihosting/arm-compat-semi.c
 +++ b/semihosting/arm-compat-semi.c
-@@ -123,7 +123,7 @@ static GuestFD console_out_gf;
-  */
+@@ -101,6 +101,13 @@ static int gdb_open_modeflags[12] = {
+     GDB_O_RDWR | GDB_O_CREAT | GDB_O_APPEND,
+ };
  
- typedef struct LayoutInfo {
--    target_ulong rambase;
-+    vaddr rambase;
-     size_t ramsize;
-     hwaddr heapbase;
-     hwaddr heaplimit;
-@@ -214,7 +214,7 @@ static LayoutInfo common_semi_find_bases(CPUState *cs)
-  * global, and we assume that the guest takes care of avoiding any races.
-  */
++/*
++ * For ARM semihosting, we have a separate structure for routing
++ * data for the console which is outside the guest fd address space.
++ */
++static GuestFD console_in_gf;
++static GuestFD console_out_gf;
++
  #ifndef CONFIG_USER_ONLY
--static target_ulong syscall_err;
-+static uint64_t syscall_err;
  
- #include "semihosting/uaccess.h"
- #endif
-@@ -260,8 +260,8 @@ static void common_semi_rw_cb(CPUState *cs, uint64_t ret, int err)
- {
-     /* Recover the original length from the third argument. */
-     CPUArchState *env G_GNUC_UNUSED = cpu_env(cs);
--    target_ulong args = common_semi_arg(cs, 1);
--    target_ulong arg2;
-+    uint64_t args = common_semi_arg(cs, 1);
-+    uint64_t arg2;
-     GET_ARG(2);
+ /**
+@@ -353,6 +360,25 @@ static const uint8_t featurefile_data[] = {
+     SH_EXT_EXIT_EXTENDED | SH_EXT_STDOUT_STDERR, /* Feature byte 0 */
+ };
  
-     if (err) {
-@@ -300,9 +300,9 @@ static void common_semi_seek_cb(CPUState *cs, uint64_t ret, int err)
-  * is defined by GDB's remote protocol and is not target-specific.)
-  * We put this on the guest's stack just below SP.
-  */
--static target_ulong common_semi_flen_buf(CPUState *cs)
-+static uint64_t common_semi_flen_buf(CPUState *cs)
++bool semihosting_arm_compatible(void)
++{
++    return true;
++}
++
++void semihosting_arm_compatible_init(void)
++{
++    /* For ARM-compat, the console is in a separate namespace. */
++    if (use_gdb_syscalls()) {
++        console_in_gf.type = GuestFDGDB;
++        console_in_gf.hostfd = 0;
++        console_out_gf.type = GuestFDGDB;
++        console_out_gf.hostfd = 2;
++    } else {
++        console_in_gf.type = GuestFDConsole;
++        console_out_gf.type = GuestFDConsole;
++    }
++}
++
+ /*
+  * Do a semihosting call.
+  *
+diff --git a/semihosting/guestfd.c b/semihosting/guestfd.c
+index d3241434c51..e8f236c690c 100644
+--- a/semihosting/guestfd.c
++++ b/semihosting/guestfd.c
+@@ -12,35 +12,20 @@
+ #include "gdbstub/syscalls.h"
+ #include "semihosting/semihost.h"
+ #include "semihosting/guestfd.h"
+-#ifndef CONFIG_USER_ONLY
+-#include CONFIG_DEVICES
+-#endif
+ 
+ static GArray *guestfd_array;
+ 
+-#ifdef CONFIG_ARM_COMPATIBLE_SEMIHOSTING
+-GuestFD console_in_gf;
+-GuestFD console_out_gf;
+-#endif
+-
+ void qemu_semihosting_guestfd_init(void)
  {
--    target_ulong sp = common_semi_stack_bottom(cs);
-+    vaddr sp = common_semi_stack_bottom(cs);
-     return sp - 64;
+     /* New entries zero-initialized, i.e. type GuestFDUnused */
+     guestfd_array = g_array_new(FALSE, TRUE, sizeof(GuestFD));
+ 
+-#ifdef CONFIG_ARM_COMPATIBLE_SEMIHOSTING
+-    /* For ARM-compat, the console is in a separate namespace. */
+-    if (use_gdb_syscalls()) {
+-        console_in_gf.type = GuestFDGDB;
+-        console_in_gf.hostfd = 0;
+-        console_out_gf.type = GuestFDGDB;
+-        console_out_gf.hostfd = 2;
+-    } else {
+-        console_in_gf.type = GuestFDConsole;
+-        console_out_gf.type = GuestFDConsole;
++    if (semihosting_arm_compatible()) {
++        semihosting_arm_compatible_init();
++        return;
+     }
+-#else
+-    /* Otherwise, the stdio file descriptors apply. */
++
++    /* Out of ARM, the stdio file descriptors apply. */
+     guestfd_array = g_array_set_size(guestfd_array, 3);
+ #ifndef CONFIG_USER_ONLY
+     if (!use_gdb_syscalls()) {
+@@ -54,7 +39,6 @@ void qemu_semihosting_guestfd_init(void)
+     associate_guestfd(0, 0);
+     associate_guestfd(1, 1);
+     associate_guestfd(2, 2);
+-#endif
  }
  
-@@ -389,9 +389,9 @@ void semihosting_arm_compatible_init(void)
- void do_common_semihosting(CPUState *cs)
- {
-     CPUArchState *env = cpu_env(cs);
--    target_ulong args;
--    target_ulong arg0, arg1, arg2, arg3;
--    target_ulong ul_ret;
-+    uint64_t args;
-+    uint64_t arg0, arg1, arg2, arg3;
-+    uint64_t ul_ret;
-     char * s;
-     int nr;
-     int64_t elapsed;
-@@ -462,7 +462,7 @@ void do_common_semihosting(CPUState *cs)
+ /*
+diff --git a/semihosting/meson.build b/semihosting/meson.build
+index 77200a7f27b..bb0db323937 100644
+--- a/semihosting/meson.build
++++ b/semihosting/meson.build
+@@ -1,17 +1,18 @@
+-specific_ss.add(when: 'CONFIG_SEMIHOSTING', if_true: files(
+-  'guestfd.c',
+-))
+-
+ common_ss.add(when: 'CONFIG_SEMIHOSTING', if_false: files('stubs-all.c'))
+-user_ss.add(when: 'CONFIG_SEMIHOSTING', if_true: files('user.c'))
++user_ss.add(when: 'CONFIG_SEMIHOSTING', if_true: files(
++  'user.c',
++  'guestfd.c'))
+ system_ss.add(when: 'CONFIG_SEMIHOSTING', if_true: files(
+   'config.c',
+   'console.c',
++  'guestfd.c',
+   'uaccess.c',
+   'syscalls.c',
+ ), if_false: files(
+   'stubs-system.c',
+ ))
++system_ss.add(when: 'CONFIG_ARM_COMPATIBLE_SEMIHOSTING',
++  if_false: files('arm-compat-semi-stub.c'))
  
-     case TARGET_SYS_WRITEC:
-         /*
--         * FIXME: the byte to be written is in a target_ulong slot,
-+         * FIXME: the byte to be written is in a uint64_t slot,
-          * which means this is wrong for a big-endian guest.
-          */
-         semihost_sys_write_gf(cs, common_semi_dead_cb,
-@@ -688,11 +688,11 @@ void do_common_semihosting(CPUState *cs)
- 
-     case TARGET_SYS_HEAPINFO:
-         {
--            target_ulong retvals[4];
-+            uint64_t retvals[4];
-             int i;
- #ifdef CONFIG_USER_ONLY
-             TaskState *ts = get_task_state(cs);
--            target_ulong limit;
-+            uint64_t limit;
- #else
-             LayoutInfo info = common_semi_find_bases(cs);
- #endif
+ specific_ss.add(when: ['CONFIG_SEMIHOSTING', 'CONFIG_USER_ONLY'],
+                 if_true: files('syscalls.c'))
 -- 
 2.47.2
 

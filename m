@@ -4,89 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC519CA0EEB
-	for <qemu-arm@archiver.kernel.org>; Fri, 22 Aug 2025 23:10:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0718FCA0EE4
+	for <qemu-arm@archiver.kernel.org>; Sat, 23 Aug 2025 10:42:27 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1upat9-0001KU-Py; Fri, 22 Aug 2025 19:09:40 -0400
+	id 1uplhJ-0006pT-Sn; Sat, 23 Aug 2025 06:42:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
- id 1upat5-0001Ix-7q; Fri, 22 Aug 2025 19:09:35 -0400
-Received: from mail-pj1-x1034.google.com ([2607:f8b0:4864:20::1034])
+ (Exim 4.90_1) (envelope-from <smostafa@google.com>)
+ id 1uplhI-0006ot-Jg
+ for qemu-arm@nongnu.org; Sat, 23 Aug 2025 06:42:08 -0400
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
- id 1upasy-0006Gq-7s; Fri, 22 Aug 2025 19:09:33 -0400
-Received: by mail-pj1-x1034.google.com with SMTP id
- 98e67ed59e1d1-323267bc0a8so3038821a91.1; 
- Fri, 22 Aug 2025 16:09:24 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <smostafa@google.com>)
+ id 1uplhG-00059J-Ck
+ for qemu-arm@nongnu.org; Sat, 23 Aug 2025 06:42:08 -0400
+Received: by mail-wm1-x336.google.com with SMTP id
+ 5b1f17b1804b1-459fbc92e69so38595e9.0
+ for <qemu-arm@nongnu.org>; Sat, 23 Aug 2025 03:42:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1755904161; x=1756508961; darn=nongnu.org;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:sender:from:to:cc:subject:date:message-id
- :reply-to; bh=fsgqxL4kN4cjwTfi+W7uPaSwoZlXzRyJTDEuQTB78sE=;
- b=d+/X3Z4tzmhJjUIMCke3m06B4zGvG59zyRGYLMGG9QVoZZWLb1livoWLzWIELs61Zf
- ADTTZHQ5GcdUmSQBWeWo44KUJhLt0eyOyrBZwwKVf0SaCWSXRGI/a52/h8Kimih0Tcvl
- Qy/XF95UBWZ5Hfmw112DKDDeZhOe603w2LkZAx1Tc39LAcf9XTrzQOdFfs8lIYF9AjxT
- GM67WxMm8PDMyQ4vq/q5WQ0r3pNxG+NXqOOQElKSB6D55WNY1ty6aJNm2ZkwMPu/Mg4I
- f5A9ZUV0WaevYczIGRBzpkN7CgEX1SyK7hrbnuMwjffQ8HA5c6H7EkLgYz4eBEi1YbPv
- ZXSA==
+ d=google.com; s=20230601; t=1755945723; x=1756550523; darn=nongnu.org;
+ h=in-reply-to:content-transfer-encoding:content-disposition
+ :mime-version:references:message-id:subject:cc:to:from:date:from:to
+ :cc:subject:date:message-id:reply-to;
+ bh=A52l1A9VVDaEBVZbxzO51pCSYaQBBPLyn/x3KFuGomg=;
+ b=bcE6lXHR77pK2miVZZDflqVafbTXOXbKLHl11ruILU2A+kbM8uc/Jyc6ZMpw2f+Lgz
+ D6fL/+4o87oUkS+knCRhLSXJHp4mvdUpKnQHnjl0NtsTdaJcP8ycytYPQZYECOj1pTuQ
+ m6GKg0YV7SCDMlyOhUzO+2FYfLB0UOsarItc3ihHJk/35XFEfACrznVGS2D9ljpiEPwp
+ VcU3JlYlyMZrXcalHWf1Vnzxo0WroEzkYHNuAhNG+lEMGcFcDSLwQaG1YHbe13hiMG7f
+ O8fgnNIEfhkI3cnS9NRsPh9rxD7GfZMKnZk/YzS2WtgK7BXGpZPbPo67b7hxp8exnrHo
+ AKfg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1755904161; x=1756508961;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:sender:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=fsgqxL4kN4cjwTfi+W7uPaSwoZlXzRyJTDEuQTB78sE=;
- b=prlUZzalalTvcKMQ1vCesmOT1k36/f2Tou4WZpR5smBz4ORlmN3RFfRgeYK56dl8HH
- p2b2TBz4o1MbavC92/3H8WjUcg2H0zb0GhZ/qMxJUXGLxsPii99FRYkbbKAzu/9zQxif
- kjTGSJcCKYderToEtHCOCperP9pM54Qry802jnOQMo6aq//yE8Y8pJlqVTHKjSF+tWvQ
- Aw7iUmN/T2EbVl5U1zxe3icd5M/IX12DdC+MRWf6lm6f4YEdKnLk+K5KnJ0q3bFuf/tJ
- uiU4wNlXRJarzaAP9SeWQjRXEHpPk8Q0Oke0GS38lWc4sFzl9xyAhTmcnuVSl4cvO9uY
- Y/hA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXOhyrFbwdb82+tUdWma2JpE+s8quKf+q71qarBWCH90igDKLz/lshWmP8bIWKLJQ1/CUyNfJJRFw==@nongnu.org
-X-Gm-Message-State: AOJu0YwWEnmGo830I3LjhWHptHAYAoFSRN+VoSjmFo29gHKaZeSQ+ngQ
- iVVVEi5TS+aJzunYSvPoOORgXrfoGUOdwrEIKxdUsY14ZbYqrs21qoWt
-X-Gm-Gg: ASbGncuMAXJy8ZCzn8hTGjiZJbPX4lLFk6dPO31lKfHATJcNrn+zqG9UHCtulqYaOPC
- TU0Dmi3wiiyfcTvxBz4FA1Qd/J6WfvAuLx5yLw08aMWBsIJ+DlFT0JOyv2OzvnCCQr+Or0O+m/J
- 5R3aV7e+nKBTtFx/I8i9d638X5dhGKCHZ+M02AevD9Vwn9WXA7Ff92cXYc3NYVhFgnnX2qKo482
- +BKRFoHC+Xb96O+Rnqzy8ysu4MDxKwZ0OLnfYbRGueYAAM3IsnNFCCcLJSgxHwgEg35AMJP9/0w
- jCjzFuSS58bnYTNUjF+kbDyFQi1vEmKiBDASEX9p2aN/kxGvCoCjlAE/AYYdQ8PNzREEZdGKOxK
- 7cwFwX00FKFklFLpM254YIt/cwzjgQvXdxiE=
-X-Google-Smtp-Source: AGHT+IGK+dgtnBLPmx9whHPcXKTxoYUsnNvAHue2hTpGQ8ANIoQDLqbNIiH3/fvyKntulxpppkpGug==
-X-Received: by 2002:a17:90b:5627:b0:31e:ec58:62e2 with SMTP id
- 98e67ed59e1d1-32515eaafdcmr7371529a91.19.1755904161038; 
- Fri, 22 Aug 2025 16:09:21 -0700 (PDT)
-Received: from server.roeck-us.net ([2600:1700:e321:62f0:da43:aeff:fecc:bfd5])
- by smtp.gmail.com with ESMTPSA id
- 41be03b00d2f7-b49cb8918e7sm793002a12.6.2025.08.22.16.09.19
+ d=1e100.net; s=20230601; t=1755945723; x=1756550523;
+ h=in-reply-to:content-transfer-encoding:content-disposition
+ :mime-version:references:message-id:subject:cc:to:from:date
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=A52l1A9VVDaEBVZbxzO51pCSYaQBBPLyn/x3KFuGomg=;
+ b=t1D3v7Pvn9OrrK6T1Zm3NWJcakOEPjP1NaG61iPvjTuq2UwY/IphcBh9VaC2KSQALH
+ kOD8AU2MiWLN8nMlD69fjXmtXIL33ZiFfv9i0GQq2IXEPpfxh3EQD9hOErHKYYE0OVun
+ 7foWpW1wpdPup7gOQpnmECcs13N0tDHGnfotiDuZYBop7TQ6Vlzt3TcTclwxWrChy/l+
+ /RdtJUeRsyftS3rvwJqezRL54g79/NNx7ukiEXmnnp0eMcz84oBkUMw9CQsK95AcyTnE
+ /klGlS5UbG0JpYbc7FLIwOSgdRn9NWK00of80wIpKPW+bncup+5iDQ4ZwY8t5YX0PKo6
+ Z0sw==
+X-Gm-Message-State: AOJu0YwAdi0KFWbZ+2prbWoE1NXeDGW/oZI7HzzTdi9O+h+kiZoTGFO4
+ 4QV+cGi6GqFtgQtD9r95vcBMtgq4Zwu2fz34vxwCmi8rcN1KclVyvbEPujgoVsuEJg==
+X-Gm-Gg: ASbGncvIE/pSr+1tSOgMPjmxeF3PKCQEHkerLvVxUsMI36Tr73l4eIriKVWLCic+HKr
+ /pRR27iLnWnr195D4vdYCPKTDTdV6a0TdOiQ1dWduV1B2aNdve7U9EJaZQfRVy/7Yd3hJdG2Nzs
+ HU0IaCf2IONQvOo7lyGAiyu5kfLGVm+zyvHTb8TXby4rjgMMnBtyz8Uid8v8mzX4viXe9VsnVsM
+ 4fcc8hNcUYHOjR1jCuDHxkbD0h/Zl9hvUC8sxFt1lrlOozathM8NIVppJhVYRM9eVi0mS2uZd9f
+ vPN+n8CGVFPoz62n2KWXwSb/f3viZ/9l17dTgXVXytjRTATmcyk2Kk5a5YF+nvTuzr/fAPvh0zo
+ +lfV8qs+pi0LH0jhjMEMOoKXLC2LWXdOpHZkmYwC3PPxeHNPHQ0D/XzpzHpIC2NAaS0o=
+X-Google-Smtp-Source: AGHT+IGy4gAqr1dlpfjyCuIVbSTB07o8JcOsFJhJ6uSj72duMR670jYZvpkQNZohY1gg8+//duHK3Q==
+X-Received: by 2002:a05:600c:8906:b0:456:4607:b193 with SMTP id
+ 5b1f17b1804b1-45b5863ac74mr744845e9.7.1755945723009; 
+ Sat, 23 Aug 2025 03:42:03 -0700 (PDT)
+Received: from google.com (248.27.205.35.bc.googleusercontent.com.
+ [35.205.27.248]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-3c70f237fefsm3162897f8f.30.2025.08.23.03.42.02
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 22 Aug 2025 16:09:20 -0700 (PDT)
-Date: Fri, 22 Aug 2025 16:09:18 -0700
-From: Guenter Roeck <linux@roeck-us.net>
-To: Bernhard Beschow <shentey@gmail.com>
-Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- Andrey Smirnov <andrew.smirnov@gmail.com>, qemu-arm@nongnu.org
-Subject: Re: [PATCH 00/10] Designware PCIe host fixes
-Message-ID: <3e9ce165-9136-417e-bcac-d6f7fad0fee8@roeck-us.net>
-References: <20250820211932.27302-1-shentey@gmail.com>
- <7804e625-2421-473f-9320-89fa0cc0d085@roeck-us.net>
- <D1762D97-2253-4503-9BD9-E4BF6BED1EAE@gmail.com>
+ Sat, 23 Aug 2025 03:42:02 -0700 (PDT)
+Date: Sat, 23 Aug 2025 10:41:59 +0000
+From: Mostafa Saleh <smostafa@google.com>
+To: Tao Tang <tangtao1634@phytium.com.cn>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ Eric Auger <eric.auger@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Chen Baozi <chenbaozi@phytium.com.cn>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
+ jean-philippe@linaro.org
+Subject: Re: [RFC 02/11] hw/arm/smmuv3: Implement read/write logic for secure
+ registers
+Message-ID: <aKma98hlAWG9M4h_@google.com>
+References: <20250806151134.365755-1-tangtao1634@phytium.com.cn>
+ <20250806151134.365755-3-tangtao1634@phytium.com.cn>
+ <aKOaIcPp26kbS3Nn@google.com>
+ <53607fe8-0555-4408-bfa6-e4b95d44e230@phytium.com.cn>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <D1762D97-2253-4503-9BD9-E4BF6BED1EAE@gmail.com>
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1034;
- envelope-from=groeck7@gmail.com; helo=mail-pj1-x1034.google.com
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_ENVFROM_END_DIGIT=0.25,
- FREEMAIL_FORGED_FROMDOMAIN=0.001, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=0.067, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, T_SPF_TEMPERROR=0.01 autolearn=no autolearn_force=no
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <53607fe8-0555-4408-bfa6-e4b95d44e230@phytium.com.cn>
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=smostafa@google.com; helo=mail-wm1-x336.google.com
+X-Spam_score_int: -175
+X-Spam_score: -17.6
+X-Spam_bar: -----------------
+X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -102,41 +111,311 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, Aug 21, 2025 at 10:24:02AM +0000, Bernhard Beschow wrote:
+On Wed, Aug 20, 2025 at 11:21:02PM +0800, Tao Tang wrote:
+> 
+> On 2025/8/19 05:24, Mostafa Saleh wrote:
+> > On Wed, Aug 06, 2025 at 11:11:25PM +0800, Tao Tang wrote:
+> > > This patch builds upon the previous introduction of secure register
+> > > definitions by providing the functional implementation for their access.
+> > > 
+> > > The availability of the secure programming interface is now correctly
+> > > gated by the S_IDR1.SECURE_IMPL bit. When this bit indicates that
+> > > secure functionality is enabled, the I/O handlers (smmuv3_read and
+> > > smmuv3_write) will correctly dispatch accesses to the secure
+> > > register space.
+> > > 
+> > > Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
+> > > ---
+> > >   hw/arm/smmuv3-internal.h |   5 +
+> > >   hw/arm/smmuv3.c          | 451 +++++++++++++++++++++++++++++++++++++++
+> > >   2 files changed, 456 insertions(+)
+> > > 
+> > > diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
+> > > index 483aaa915e..1a8b1cb204 100644
+> > > --- a/hw/arm/smmuv3-internal.h
+> > > +++ b/hw/arm/smmuv3-internal.h
+> > > @@ -122,6 +122,11 @@ REG32(CR0,                 0x20)
+> > >   #define SMMU_CR0_RESERVED 0xFFFFFC20
+> > > +/*
+> > > + * BIT1 and BIT4 are RES0 in SMMU_S_CRO
+> > > + */
+> > > +#define SMMU_S_CR0_RESERVED 0xFFFFFC12
+> > > +
+> > >   REG32(CR0ACK,              0x24)
+> > >   REG32(CR1,                 0x28)
+> > >   REG32(CR2,                 0x2c)
+> > > diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+> > > index ab67972353..619180d204 100644
+> > > --- a/hw/arm/smmuv3.c
+> > > +++ b/hw/arm/smmuv3.c
+> > > @@ -317,6 +317,18 @@ static void smmuv3_init_regs(SMMUv3State *s)
+> > >       s->gerrorn = 0;
+> > >       s->statusr = 0;
+> > >       s->gbpa = SMMU_GBPA_RESET_VAL;
+> > > +
+> > > +    /* Initialize secure state */
+> > > +    memset(s->secure_idr, 0, sizeof(s->secure_idr));
+> > > +    /* Secure EL2 and Secure stage 2 support */
+> > > +    s->secure_idr[1] = FIELD_DP32(s->secure_idr[1], S_IDR1, SEL2, 1);
+> > AFAIU, this is wrong, SEL2 means that the SMMU has dual stage-2,
+> > one for secure (S_S2TTB) and one for non-secure IPAs(S2TTB).
+> > Which is not implemented in this series.
 > 
 > 
-> Am 21. August 2025 03:36:44 UTC schrieb Guenter Roeck <linux@roeck-us.net>:
-> >On 8/20/25 14:19, Bernhard Beschow wrote:
-> >> This series fixes the Designware PCIe host to work with cards other than
-> >> virio-net-pci, e.g. e1000. It was tested on the imx8mp-evk machine.
-> >> 
-> >> The series is structured as follows: The first part refactors the device
-> >> model to create memory regions for inbound/outbound PCI mappings on demand
-> >> rather than upfront since this approach doesn't scale for adding I/O space
-> >> support. The second part consists of fixing the memory mapping by adding I/O
-> >> space support and fixing default inbound viewport mapping. The third part
-> >> concludes the series by implementing device reset and cleaning up the imx8mp SoC
-> >> implementation.
-> >> 
-> >> Testing done:
-> >> * Boot imx8mp-evk machine with Buildroot while having an e1000 card attached.
-> >> Observe that it gets an IP address via DHCP and allows for downloading an HTML
-> >> file via HTTP.
-> >> 
-> >Crashing for me even if no PCIe card is attached. This is with the series applied
-> >on top of 10.1.0-rc4 or 10.0.3. I have not tried to track down the problem.
-> >
-> >Guenter
+> Hi Mostafa,
 > 
-> Hi Guenther,
+> Thank you for the very detailed and helpful review. Your feedback is spot
+> on, and I'd like to address your points and ask for a quick confirmation on
+> them.
 > 
-> Thanks for testing this series! I can reproduce the issue with Buildroot while the functional test passes...
+> Regarding the SEL2 bit, you are absolutely right, my understanding was
+> incorrect. I've spent the last few days reviewing the manual to better
+> understand the selection between Secure and Non-secure Stage 2 translations.
+> I would be very grateful if you could confirm if my new understanding is
+> correct:
 > 
-> I guess that I was too optimistic in having resolved the issue mentioned in the last patch. Does it work for you if you omit it?
+> - In Stage 2-only mode (Stage 1 bypassed), the choice between a Secure or
+> Non-secure IPA translation is determined solely by STE.NSCFG.
 > 
 
-It gives me hung task crashes when trying to boot from virtio-pci.
-I'll need some time for debugging.
+Yes, but that's only with SMMU_IDR1.ATTR_PERMS_OVR which Qemu doesn't
+advertise, so in our case it's always secure.
 
-Guenter
+> - In Stage 1-enabled mode, STE.NSCFG is ignored. The choice is determined by
+> the translation process, starting from CD.NSCFGx, with the output NS
+> attribute being the result of intermediate NSTable flags and the final
+> descriptor.NS bit (TTD.NSTable, TTD.NS).
+> 
+
+You have to differentiate between the security state of the translation and
+the security state of the translation table access.
+
+For stage-1, the security state is determined by the NS bit in the last
+level PTE, which in case of nested translation it will choose between S2TTB
+or S_S2TTB.
+
+Also, note that the stage-2 also have an NS which define the final attribute
+of the transaction.
+
+You have to also be careful around things such as NSCFG{0,1} as it might
+change which stage-2 is used for the stage-1 TTB walk.
+
+I see, in your patches, all the page-table access is done using the secure
+state of the SID which is not correct.
+
+
+> Based on this, I plan to have an internal flag, perhaps named
+> target_ipa_is_ns in SMMUTransCfg.SMMUS2Cfg struct, to track the outcome of
+> this process. This flag will then determine whether S_S2TTB or S2TTB is used
+> for the Stage 2 translation.
+> 
+
+I am worried that it's not that simple for a single secure nested translation
+you can have multiple stage-2 walks where some might be secure and others not,
+so I imagine this some how will be determined from each stage-1 walk and
+some how returned (maybe in the TLB struct) which is then the stage-2
+walk looks into.
+
+I am not sure how complicated it is to manage 2 stage-2 with the current code
+base, so my advice would be to split the problem; for now you can drop SEL2
+from this series and rely on NS stage-2.
+
+And later, it can be added separately, but that’s up to you and the maintainers
+on how they want to do this, I will try to review as much as I can.
+
+Also, according to the spec:
+"STT is 1 in implementations where SMMU_S_IDR1.SEL2 == 1."
+which requires extra work in the translation table code to support this
+feature.
+
+> 
+> > 
+> > > +    /* Secure state implemented */
+> > > +    s->secure_idr[1] = FIELD_DP32(s->secure_idr[1], S_IDR1,
+> > > +        SECURE_IMPL, 1);
+> > > +    s->secure_idr[1] = FIELD_DP32(s->secure_idr[1], S_IDR1,
+> > > +        S_SIDSIZE, SMMU_IDR1_SIDSIZE);
+> > > +
+> > > +    s->secure_gbpa = SMMU_GBPA_RESET_VAL;
+> > >   }
+> > >   static int smmu_get_ste(SMMUv3State *s, dma_addr_t addr, STE *buf,
+> > > @@ -1278,6 +1290,12 @@ static void smmuv3_range_inval(SMMUState *s, Cmd *cmd, SMMUStage stage)
+> > >       }
+> > >   }
+> > > +/* Check if the SMMU hardware itself implements secure state features */
+> > > +static inline bool smmu_hw_secure_implemented(SMMUv3State *s)
+> > > +{
+> > > +    return FIELD_EX32(s->secure_idr[1], S_IDR1, SECURE_IMPL);
+> > > +}
+> > > +
+> > I see that the secure SMMU support is unconditional. So, is this always true?
+> > Also, how that looks with migration?
+> 
+> For the v2 series, my plan is to make SECURE_IMPL a user-configurable device
+> property. I will add a "secure-enabled" property to smmuv3_properties and
+> ensure all necessary states are added to the VMStateDescription to handle
+> migration correctly. Does this approach sound reasonable to you?
+
+Yes, that makes sense.
+
+> 
+> 
+> > 
+> > >   static int smmuv3_cmdq_consume(SMMUv3State *s)
+> > >   {
+> > >       SMMUState *bs = ARM_SMMU(s);
+> > > @@ -1508,9 +1526,91 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
+> > >       return 0;
+> > >   }
+> > > +/* Helper function for secure register write validation */
+> > > +static bool smmu_validate_secure_write(MemTxAttrs attrs, bool secure_impl,
+> > > +                                       hwaddr offset, const char *reg_name)
+> > > +{
+> > > +    if (!attrs.secure || !secure_impl) {
+> > > +        const char *reason = !attrs.secure ?
+> > > +            "Non-secure write attempt" :
+> > > +            "SMMU didn't implement Security State";
+> > > +        qemu_log_mask(LOG_GUEST_ERROR,
+> > > +                      "%s: %s at offset 0x%" PRIx64 " (%s, WI)\n",
+> > > +                      __func__, reason, offset, reg_name);
+> > > +        return false;
+> > > +    }
+> > > +    return true;
+> > > +}
+> > > +
+> > > +/* Helper function for secure register read validation */
+> > > +static bool smmu_validate_secure_read(MemTxAttrs attrs, bool secure_impl,
+> > > +                                      hwaddr offset, const char *reg_name,
+> > > +                                      uint64_t *data)
+> > > +{
+> > > +    if (!attrs.secure || !secure_impl) {
+> > > +        const char *reason = !attrs.secure ?
+> > > +            "Non-secure read attempt" :
+> > > +            "SMMU didn't implement Security State";
+> > > +        qemu_log_mask(LOG_GUEST_ERROR,
+> > > +                      "%s: %s at offset 0x%" PRIx64 " (%s, RAZ)\n",
+> > > +                      __func__, reason, offset, reg_name);
+> > > +        *data = 0; /* RAZ */
+> > > +        return false;
+> > > +    }
+> > > +    return true;
+> > > +}
+> > > +
+> > > +/* Macro for secure write validation - returns early if validation fails */
+> > > +#define SMMU_CHECK_SECURE_WRITE(reg_name) \
+> > > +    do { \
+> > > +        if (!smmu_validate_secure_write(attrs, secure_impl, offset, \
+> > > +                                        reg_name)) { \
+> > > +            return MEMTX_OK; \
+> > > +        } \
+> > > +    } while (0)
+> > > +
+> > > +/* Macro for attrs.secure only validation */
+> > > +#define SMMU_CHECK_ATTRS_SECURE(reg_name) \
+> > > +    do { \
+> > > +        if (!attrs.secure) { \
+> > > +            qemu_log_mask(LOG_GUEST_ERROR, \
+> > > +                          "%s: Non-secure write attempt at offset " \
+> > > +                          "0x%" PRIx64 " (%s, WI)\n", \
+> > > +                          __func__, offset, reg_name); \
+> > > +            return MEMTX_OK; \
+> > > +        } \
+> > > +    } while (0)
+> > > +
+> > > +/* Macro for secure read validation - returns RAZ if validation fails */
+> > > +#define SMMU_CHECK_SECURE_READ(reg_name) \
+> > > +    do { \
+> > > +        if (!smmu_validate_secure_read(attrs, secure_impl, offset, \
+> > > +                                       reg_name, data)) { \
+> > > +            return MEMTX_OK; \
+> > > +        } \
+> > > +    } while (0)
+> > > +
+> > > +/* Macro for attrs.secure only validation (read) */
+> > > +#define SMMU_CHECK_ATTRS_SECURE_READ(reg_name) \
+> > > +    do { \
+> > > +        if (!attrs.secure) { \
+> > > +            qemu_log_mask(LOG_GUEST_ERROR, \
+> > > +                          "%s: Non-secure read attempt at offset " \
+> > > +                          "0x%" PRIx64 " (%s, RAZ)\n", \
+> > > +                          __func__, offset, reg_name); \
+> > > +            *data = 0; \
+> > > +            return MEMTX_OK; \
+> > > +        } \
+> > > +    } while (0)
+> > > +
+> > > 
+> > Can’t we just have one check? If the access > SMMU_SECURE_BASE_OFFSET, just
+> > check the security state?
+> > 
+> > And then based on banking, many of those switches will be common with
+> > non secure cases.
+> > 
+> > Thanks,
+> > Mostafa
+> 
+> 
+> I have already refactored this part in my v2 series, exactly as you
+> proposed. This also addresses your earlier feedback on patch #1 regarding
+> the overall structure:
+> 
+> > As Philippe mentioned, this would be better the secure state is separated
+> > in another instance of the struct, that seems it would reduce a lot of the
+> > duplication later around the logic of MMIO and queues... in the next
+> > patches.
+> 
+> The new code performs a single, necessary security state check at the entry
+> point of the MMIO handlers. The rest of the logic relies on the banking
+> mechanism, which makes the implementation generic for Non-secure, Secure,
+> and future states like Realm/Root. The new structure looks like this:
+> 
+> /* Structure for one register bank */
+> typedef struct SMMUv3Bank {
+>     uint32_t idr[6];     /* IDR0-IDR5, note: IDR5 only used for NS bank */
+>     uint32_t cr[3];      /* CR0-CR2 */
+>     uint32_t cr0ack;
+>     uint32_t init;       /* S_INIT register (secure only), reserved for NS
+> */
+>     uint32_t gbpa;
+> 
+> ......
+> 
+>     SMMUQueue eventq, cmdq;
+> } SMMUv3Bank;
+> 
+> struct SMMUv3State {
+>     SMMUState     smmu_state;
+> 
+>     /* Shared (non-banked) registers and state */
+>     uint32_t features;
+>     uint8_t sid_size;
+>     uint8_t sid_split;
+> 
+> ......
+> 
+>     /* Banked registers for all access */
+>     SMMUv3Bank bank[SMMU_SEC_IDX_NUM];
+> ......
+> };
+> 
+
+Yes, IMO,that’s the right approach. Although that might make the
+migration code more complicated as we changed the state struct.
+
+Thanks,
+Mostafa
+
+> 
+> Thanks again for your valuable feedback. I've outlined my proposed plan
+> above and would be grateful for any thoughts on it to ensure I'm on the
+> right track for v2.
+> 
+> Best regards,
+> 
+> Tao
+> 
+> 
+> 
+> 
+> 
 

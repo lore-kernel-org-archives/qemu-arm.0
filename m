@@ -4,104 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8821ECA0EEB
-	for <qemu-arm@archiver.kernel.org>; Sun, 24 Aug 2025 09:22:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD747CA0EEB
+	for <qemu-arm@archiver.kernel.org>; Sun, 24 Aug 2025 15:48:00 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uq6vd-0006dq-PW; Sun, 24 Aug 2025 05:22:21 -0400
+	id 1uqCwi-0002oR-IK; Sun, 24 Aug 2025 11:47:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dbarboza@ventanamicro.com>)
- id 1uq6vb-0006Z3-8s
- for qemu-arm@nongnu.org; Sun, 24 Aug 2025 05:22:20 -0400
-Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
+ (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1uqCwf-0002nQ-Gp; Sun, 24 Aug 2025 11:47:49 -0400
+Received: from mail-lj1-x22e.google.com ([2a00:1450:4864:20::22e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <dbarboza@ventanamicro.com>)
- id 1uq6vX-00008O-SO
- for qemu-arm@nongnu.org; Sun, 24 Aug 2025 05:22:18 -0400
-Received: by mail-pl1-x62a.google.com with SMTP id
- d9443c01a7336-246648f833aso8225695ad.3
- for <qemu-arm@nongnu.org>; Sun, 24 Aug 2025 02:22:14 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1uqCwd-0006Mm-UC; Sun, 24 Aug 2025 11:47:49 -0400
+Received: by mail-lj1-x22e.google.com with SMTP id
+ 38308e7fff4ca-3366de457a5so3878331fa.0; 
+ Sun, 24 Aug 2025 08:47:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=ventanamicro.com; s=google; t=1756027333; x=1756632133; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=10KVTjiTjkDeYAW3f7yc0y5TY4emnBCzSRWe4eb/+jU=;
- b=hZNvYHC198vViWvNgWvxQLwH7+9Xl1dQWx0ONX3KG4ygbBatRK1QGICT1BdGqG7768
- C6ACABkpmrh0ZWcSB8hpwMtFeNdR26/ymDnWjBNCeqevdxpNmcebYtsdfpxjpzsjrvUZ
- T2+kMVeGhmjPEfJuliazL8VMIoaHqXxQtVwiTmGow57wuQPFA0v0reODzoq+ni7B5Yp+
- Q3F1hFhzlxy8dRl4v9ByEuPKg/s0evaqdSRHet/GWHlpfMyXIqZi2dGXWkT5eBeQSA22
- xR2pgSAijJQE87Hp5Lpho3KruFJC0W/l3GVJaFwFaJQi1nS+k+YZshxpsqJaFVj0umCM
- 0xuA==
+ d=gmail.com; s=20230601; t=1756050465; x=1756655265; darn=nongnu.org;
+ h=user-agent:in-reply-to:content-transfer-encoding
+ :content-disposition:mime-version:references:message-id:subject:cc
+ :to:from:date:from:to:cc:subject:date:message-id:reply-to;
+ bh=zVcvf6N1+8o3jeMKc47yk3nCFx/BK5BHs6172xH/slc=;
+ b=aEoqTm2iFFmI2xoZ/m89EHcttsTyq4zPjoVkX/4OqE1g7WRhyhpsvIty8ulTtMQ9DT
+ MSzx+kfpzyQCF9OkJR8EWcwNg85Ru2iuF0Uig5DBZkUywPI0Ds8fWFFoc3/ORPpKD0hM
+ hN88L4Ufvaw4a+Of41RIm3dmm3KjHOHZUAEBbuYaSiVnQCKBFD8e5SadQRmxu+l4we47
+ 0gWNZUVPjg2tcd4DuiV6gJxzTTCPAuX3ahfmmRQOBJUDZ7fGv2OmRw+u8SBgkgGNvS8s
+ EiEs1fPtISRCmUq51L+3tzwI2GjYSNjQyAKn09WhnFRmmL+Mpti8bkNSAi9q8l00jXQj
+ +fjQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756027333; x=1756632133;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=10KVTjiTjkDeYAW3f7yc0y5TY4emnBCzSRWe4eb/+jU=;
- b=mLBLFDR1CLG4ByRl8iGErdTKGImONdky/ReiVOS/y7COSBD7ZVaTErVA1NaJL3Q298
- N6ibpeidYBGda50AHkWKb+JmIoX1P9Hrrla39cC/fnrypG/kKt1v8N5mzmrHLvbwQid2
- AUTLKG9nGoxScyVMy8pvuF38pdWnUEWrWG6PLZ6Lk9YtNgN45ggJe0woTe0oe2+sSUPs
- 2/JkuNGRSxZxsTwfgyxXf3w0BogmfAFMOZgQQjUzgDZRYQFuOU8eyQZo+nvNy6IY9s8c
- oMWFWzI1L6lUjcnU9GCUcS36x2MN9ydh3tZX7AX3xZCgsn2GI6vlroJiJZVdyPJufSnY
- J1/w==
+ d=1e100.net; s=20230601; t=1756050465; x=1756655265;
+ h=user-agent:in-reply-to:content-transfer-encoding
+ :content-disposition:mime-version:references:message-id:subject:cc
+ :to:from:date:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=zVcvf6N1+8o3jeMKc47yk3nCFx/BK5BHs6172xH/slc=;
+ b=eJiBMblbLiInCSE4sS66vmT87XPnJH3wr+EjprxeCjkSRIN6nUvvTko25wpoD9nmgL
+ Tf6YQAhVullBoikV6Ot1Pa2VLckNQQED0gOEZmMiuNoEhj/bWjZ3CQ1N9TAJZWgp4cGz
+ xwiCQveTiZyQDLy2ZFLbV7aOqJG8VSEnoD6Zuexz+p23UKbR3pG27BIJxzvPg5m+M8A1
+ Sqak5ySbmBvPWNCPZXsWjYqI1vQCKKgg81LEscX4VvUmPgYrcvM6V50NlpFpxsPVklZJ
+ rZFphu2QsYUo/vx+h9XsZ+wjz1QROGXNdxiSDzb8zL/N5jqMdUx5W8kiVaqRTQgpANPC
+ /haQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUM0UYO2ZU/YFdYfrShMxbGYce/KaLw72j+941mr0gGUW8IInrPGfrAcNtwrgtUmljkcJeqjmuueA==@nongnu.org
-X-Gm-Message-State: AOJu0YwDbX4K68Ze23g3/Md6cfRfx8fe3ASBpqBW47GgKCxzRQIl8Vxh
- A7lF0hd0mQ/L862ZkbNrqORw+hklE0UH/McCHbt6ZtTXAjamZabL427TnSOeAaLepwk=
-X-Gm-Gg: ASbGncu6gFg6UJTt0NpD1DkwKaP7pZ6f88A8laOndS4nK/LmH2cAWB/fNWQfIDTPhWg
- xOh3oBKnqlCqMew88bcf3P56bzYMbgJpsR+up2ZAK1e4JJY2GCPY0EyP1+w3oU6ruiwP0tgDUjM
- WyWERPPA/NtIaHg5gcIsVHIi3RY4ujh1hn224ffsVLUNscmpjAzj+bmSxLi9r5Un576wL6f1P58
- 7RIJmHI24vgh1EcyG9TCwLovDskMBTx3bJAjh16AE3jJnyOqGAYa/9OqxMfCwmCkpKr64f3K1i5
- X+FboL1nZBakBqlLWyMPUpIoyI2+peVm+vpz2cRoSyPBdyxetJ+OpziIHpBX0RVv9qAzvTkHzpC
- N8rl7wbp3vrbfr3tz9ZBkKQ4gQuFlaWvsDz0=
-X-Google-Smtp-Source: AGHT+IG3QuVXZba8kDezAVZAOutqReXs8MTo6BPog2Bt5V6xYiY5YoOVEyaapszgsryCM//bIZIJPg==
-X-Received: by 2002:a17:902:e888:b0:240:a54e:21a0 with SMTP id
- d9443c01a7336-2462ee13154mr117050765ad.19.1756027333379; 
- Sun, 24 Aug 2025 02:22:13 -0700 (PDT)
-Received: from [192.168.68.110] ([187.11.154.56])
+ AJvYcCWEKffbL1ey11Tdf7b4iqjMFLseqT/vna6lT4v3iRPNCV/Mxjy7bHEz/IsHldaLJ6rAx4XJXeNEjA==@nongnu.org,
+ AJvYcCX4rDX0FEB1x6ipRhXoo7XZBu5jFto06oYZ9ioAFsrSxGBCC3l/ameXpGh6EB9Mt9ypSqOaMJAOUWTK6Q==@nongnu.org
+X-Gm-Message-State: AOJu0YzB2DLgwDY0xz4ukg1DxY5/luYiZpE5z4M08YVcyonhp8qnM1h8
+ L0Kfnji6XffzqW+TEJ57+XALklhpOI5awo5LoRqUoYExLZQOBvWmLrPw
+X-Gm-Gg: ASbGncvdIkFUDDeMgDUy3bKRp9jiuMHbbp6SWr25akwQmGR/18c6M+QHxZTri2YirQV
+ 1mu/5Ey9WxeH3Gm/nf2fkLKjX2V8N4WbHhmm5zirBcMQAX1sOw+/PZlq8YfUYA5X7XKtd+hPJ0L
+ E39jXo/3CV0tOSzmdVyCxotYzosmRl5TLRoiZUYU9/rrmCH/vZc9qEJEHYs/AOPTPXNJHwugpkX
+ Gm4VXF48MBPNRSrd/soW8HklnMzf/pvAOL7XlWGRQxK4YFj3LpKQqR0wYVD9hSbRg5nWKaMeP8e
+ DHY/NVqLVuwj+Wlxf/m2XfY44gpvbrPq6WHnfDSfMZVVQyLtanlWOWOlp1llqGRDdb6Q1TSdTqV
+ cUU6bAztAgJkQda05lQsprb9D9aDdxZ8gaToeXHFJNtAVmRr1BU46+l9fypZA+YgESNE+hA==
+X-Google-Smtp-Source: AGHT+IFVM5HFkO646CqImYDWzBwIqMXrSaCdRiuVR/Sxbi+VjFKLzPrJexLM+G/joyuX6gNl3ugNMA==
+X-Received: by 2002:a05:651c:3256:10b0:32b:3104:f89c with SMTP id
+ 38308e7fff4ca-33650f3fc52mr22458121fa.29.1756050464355; 
+ Sun, 24 Aug 2025 08:47:44 -0700 (PDT)
+Received: from gmail.com (213-67-3-247-no600.tbcn.telia.com. [213.67.3.247])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-24668871071sm39558425ad.103.2025.08.24.02.22.07
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 24 Aug 2025 02:22:12 -0700 (PDT)
-Message-ID: <0c7c5894-3f57-4c95-b863-d9fce8d8f26b@ventanamicro.com>
-Date: Sun, 24 Aug 2025 06:22:04 -0300
+ 38308e7fff4ca-3365e5f4199sm10724941fa.63.2025.08.24.08.47.42
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 24 Aug 2025 08:47:43 -0700 (PDT)
+Date: Sun, 24 Aug 2025 17:47:42 +0200
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+To: Corvin =?iso-8859-1?Q?K=F6hne?= <corvin.koehne@gmail.com>
+Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Corvin =?iso-8859-1?Q?K=F6hne?= <c.koehne@beckhoff.com>,
+ qemu-arm@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Yannick =?iso-8859-1?Q?Vo=DFen?= <y.vossen@beckhoff.com>,
+ Hanna Reitz <hreitz@redhat.com>, qemu-block@nongnu.org
+Subject: Re: [PATCH v2 04/14] hw/arm/zynq-devcfg: Prevent unintended unlock
+ during initialization
+Message-ID: <aKs0HvG0OrKwWIhS@zapote>
+References: <20250815090113.141641-1-corvin.koehne@gmail.com>
+ <20250815090113.141641-5-corvin.koehne@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH v2 2/9] hw/riscv: iommu-trap: remove .impl.unaligned =
- true
-To: CJ Chen <cjchen@igel.co.jp>, qemu-devel@nongnu.org,
- qemu-block@nongnu.org, qemu-riscv@nongnu.org, qemu-arm@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>, Keith Busch <kbusch@kernel.org>,
- Klaus Jensen <its@irrelevant.dk>, Jesper Devantier <foss@defmacro.it>,
- Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <alistair.francis@wdc.com>, Weiwei Li
- <liwei1518@gmail.com>, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Tyrone Ting <kfting@nuvoton.com>, Hao Wu <wuhaotsh@google.com>,
- Max Filippov <jcmvbkbc@gmail.com>, Peter Xu <peterx@redhat.com>,
- David Hildenbrand <david@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
- Tomoyuki Hirose <hrstmyk811m@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>
-References: <20250822092410.25833-1-cjchen@igel.co.jp>
- <20250822092410.25833-3-cjchen@igel.co.jp>
-From: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
-Content-Language: en-US
-In-Reply-To: <20250822092410.25833-3-cjchen@igel.co.jp>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62a;
- envelope-from=dbarboza@ventanamicro.com; helo=mail-pl1-x62a.google.com
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20250815090113.141641-5-corvin.koehne@gmail.com>
+User-Agent: Mutt/2.2.14+84 (2efcabc4) (2025-03-23)
+Received-SPF: pass client-ip=2a00:1450:4864:20::22e;
+ envelope-from=edgar.iglesias@gmail.com; helo=mail-lj1-x22e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -117,37 +111,41 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-
-
-On 8/22/25 6:24 AM, CJ Chen wrote:
-> Since riscv-iommu does not support unaligned accesses, drop
-> `.impl.unaligned = true` to avoid the contradictory pairing with
-> `.valid.unaligned = false`.  This makes QEMU reject unaligned accesses
-> for this device and prevents the assertion in memory.c that previously
-> caused `make check` to fail.
+On Fri, Aug 15, 2025 at 11:01:02AM +0200, Corvin Kˆhne wrote:
+> From: YannickV <Y.Vossen@beckhoff.com>
 > 
-> Signed-off-by: CJ Chen <cjchen@igel.co.jp>
-> Tested-by: CJ Chen <cjchen@igel.co.jp>
-> Acked-by: Tomoyuki Hirose <hrstmyk811m@gmail.com>
-> Reported-by: Tomoyuki Hirose <hrstmyk811m@gmail.com>
+> During the emulation startup, all registers are reset, which triggers the
+> `r_unlock_post_write` function with a value of 0. This led to an
+> unintended memory access disable, making the devcfg unusable.
+> 
+> During startup, the memory space no longer gets locked.
+> 
+> Signed-off-by: Yannick Voﬂen <y.vossen@beckhoff.com>
+
+Reviewed-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
+
+
+
 > ---
-
-Reviewed-by: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
-
->   hw/riscv/riscv-iommu.c | 1 -
->   1 file changed, 1 deletion(-)
+>  hw/dma/xlnx-zynq-devcfg.c | 4 +++-
+>  1 file changed, 3 insertions(+), 1 deletion(-)
 > 
-> diff --git a/hw/riscv/riscv-iommu.c b/hw/riscv/riscv-iommu.c
-> index a877e5da84..277746598a 100644
-> --- a/hw/riscv/riscv-iommu.c
-> +++ b/hw/riscv/riscv-iommu.c
-> @@ -2288,7 +2288,6 @@ static const MemoryRegionOps riscv_iommu_trap_ops = {
->       .impl = {
->           .min_access_size = 4,
->           .max_access_size = 8,
-> -        .unaligned = true,
->       },
->       .valid = {
->           .min_access_size = 4,
-
+> diff --git a/hw/dma/xlnx-zynq-devcfg.c b/hw/dma/xlnx-zynq-devcfg.c
+> index b838c1c0d0..f28d0015e6 100644
+> --- a/hw/dma/xlnx-zynq-devcfg.c
+> +++ b/hw/dma/xlnx-zynq-devcfg.c
+> @@ -221,7 +221,9 @@ static void r_unlock_post_write(RegisterInfo *reg, uint64_t val)
+>  {
+>      XlnxZynqDevcfg *s = XLNX_ZYNQ_DEVCFG(reg->opaque);
+>      const char *device_prefix = object_get_typename(OBJECT(s));
+> -
+> +    if (device_is_in_reset(DEVICE(s))) {
+> +        return;
+> +    }
+>      if (val == R_UNLOCK_MAGIC) {
+>          DB_PRINT("successful unlock\n");
+>          s->regs[R_CTRL] |= R_CTRL_PCAP_PR_MASK;
+> -- 
+> 2.50.1
+> 
 

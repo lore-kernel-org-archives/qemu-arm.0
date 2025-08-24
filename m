@@ -4,93 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76BEACA0EEB
-	for <qemu-arm@archiver.kernel.org>; Sun, 24 Aug 2025 16:51:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5AB0CA0EED
+	for <qemu-arm@archiver.kernel.org>; Sun, 24 Aug 2025 23:00:48 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uqDw6-0005Qs-On; Sun, 24 Aug 2025 12:51:18 -0400
+	id 1uqJhH-0006xR-HX; Sun, 24 Aug 2025 19:00:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1uqDw5-0005Pl-2q; Sun, 24 Aug 2025 12:51:17 -0400
-Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b])
+ (Exim 4.90_1) (envelope-from <chichikalyuk@gmail.com>)
+ id 1uqJhF-0006wo-P5; Sun, 24 Aug 2025 19:00:21 -0400
+Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1uqDw2-0004mt-Nh; Sun, 24 Aug 2025 12:51:16 -0400
-Received: by mail-lf1-x12b.google.com with SMTP id
- 2adb3069b0e04-55ce528022eso3590885e87.3; 
- Sun, 24 Aug 2025 09:51:13 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <chichikalyuk@gmail.com>)
+ id 1uqJhE-0004r7-6o; Sun, 24 Aug 2025 19:00:21 -0400
+Received: by mail-ej1-x62a.google.com with SMTP id
+ a640c23a62f3a-afcb7ae6ed0so525611266b.3; 
+ Sun, 24 Aug 2025 16:00:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1756054272; x=1756659072; darn=nongnu.org;
- h=user-agent:in-reply-to:content-transfer-encoding
- :content-disposition:mime-version:references:message-id:subject:cc
- :to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=e2L8UFR5i1/GnFX6GzDS4WGinFUI0mKq4C/ixqfZYvk=;
- b=ZxrRecVylcc5Zi0t3EjQl/w66P9XEU2KTjcv0xK37nrzn/+kgoHnAAiuB8JaSSC2MK
- pbPkjPjsVtreJ9JRSDUrslQ6CIucfsz7+GczW0PR5nosWbZ33HFXB0Qm9pfpRAC0OusE
- wK00C4CCxY4ffJbvrddgvR5nGn/+MKD4vDdUHVrb8/lpAUgP9PFY3KWLNjOtdTnOT4GH
- dcY4qr/QquyeDBMYEmrW5alhX8TWLUnuld9WVSYogQYm0dsgBogwO5E+BgvQphFc9aWI
- ss3Ta4tfoeTRGKijgPxZ/Yj4vjW/uRTMz/ZaWPMX1IcmAdTMoNGQHT7Y7fshdcjHQinb
- 8PLw==
+ d=gmail.com; s=20230601; t=1756076418; x=1756681218; darn=nongnu.org;
+ h=to:references:message-id:content-transfer-encoding:cc:date
+ :in-reply-to:from:subject:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=zh2mOIzTyGmYIWY2saj6vgpTnQnQqNJ5gaTXcaHYWW8=;
+ b=BtYj1oPR1FfaF37B6TKhF6gWxFtDLPAl610LA2MPMog1Dy+LKd/KNYpPlOm0ueXpx2
+ DCVsPESQEXKyxZt/o2mQRizdNtGMc+XNRZDBgjx+IDmo76T/VQtFIHhvzkHz5aVz1S0C
+ QMB3G99e2Uati23F+CGzvfEa6wyzZn31syyXlyUeaM3ZQPnHjyUyt7A6EkKo9v4UON5i
+ P8+q6IPVDpdviiG0sXAywVIsd40PhxryDIUFVPdv1tpZfOEo5RKkUcL9+2WDDphGvWWb
+ MxtPXVvpLB2K3pzRVe1b61EjdsC8CwKi64JkLaMYD7RiNzDwNTkWPXXzdHnkzcVCbAB5
+ E5Dg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756054272; x=1756659072;
- h=user-agent:in-reply-to:content-transfer-encoding
- :content-disposition:mime-version:references:message-id:subject:cc
- :to:from:date:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=e2L8UFR5i1/GnFX6GzDS4WGinFUI0mKq4C/ixqfZYvk=;
- b=lfigLbCxBhSBYb4gWPC2hqMrdn+39N6rvuWK4y04dkpYFGeXzQjQdRYk5Y5ZWSsh99
- KkuNblrO43oFr2cWPSLiZ1G45MxS5QfpzQdle+Mrfbf8plMYEOMQjNUKp1SAHy6x6d2+
- O9f7kz0b8Q8xRqbJUXmEoB9xhYKLwvoYpkTud5CZlk04nat1gfn9aykNBM21BoaSBSei
- 1SnAw7F0w5tIxpBV3T23wzRIa2nu69QYQ7jbHwvDciCZAe0QoIpF9vhaE/o0KQcE6f2q
- Qmgf6jq7N8rvWLs8myRsyEX68Ab8y3OuxvHRA++iYsxBKzHv5oUyLH53fySHs8YuPb/K
- /tQQ==
+ d=1e100.net; s=20230601; t=1756076418; x=1756681218;
+ h=to:references:message-id:content-transfer-encoding:cc:date
+ :in-reply-to:from:subject:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=zh2mOIzTyGmYIWY2saj6vgpTnQnQqNJ5gaTXcaHYWW8=;
+ b=YK8o1lGumfvTqL+2jVDRLmUt4zDScMgsAJzg5i9F/K0BXop8SSpeIalobuESfUH/qX
+ UZpjZZLWPFsNKwb2INQkOGGm7FRRg7GNYeaWFb8iKfrgz1HnsU8yuL/9Gwmw6liXABTx
+ VjZaAbq6fBZPWEvI/JR1du5EKQOQ3Pv/4xttqzuIhL1br8ea7OBv4fAUlQ6WchT3S5ve
+ B2ajhLK3IvwPt7SFd8Hr5QqnWkCJOJNGhcTVuMzWuPFrUgarJcHiVscv2U7OatAcs5ie
+ UzawkYkKpQC+IZHywz2EXrfAuvvWj8C1JcKtXXEUcfz86fG6PhuPll/UEXV4kb1PhQGz
+ xQMQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUQSuC1rMYAUFSSzh67w/sZrAzgx28zHIJucJOTQ1GdPZoCAAGaygmZitjI8dVM4vOPIml2iZ4VM1wV8A==@nongnu.org,
- AJvYcCUn/n3bafKFRddnZ48mxgaFNn5LJHvQKdHrWoA7mMX8qurVZFKdaQxz3jIMQEP7k/bzKuVXTmyg3w==@nongnu.org,
- AJvYcCXka7BYibjZmtSmoyafkdx3p7quBMkSq6Lv6lGmpjz7D+0esMNNRLsg3QiAImNQBySDFrq1ljr5pMCA5A==@nongnu.org
-X-Gm-Message-State: AOJu0YzUwazSTY8pAgYH9EEQd+vLMOzv9HsJUqQxl4iX3LC8ze7eGhM/
- SHJuP85zmjr6vofOSKmXI6Ia25iTxy7Toxmsnjl1r8fAN8E5oGOeJ5ne
-X-Gm-Gg: ASbGncspmgBAGpcwYWAcQMcQVQRlsf/1KLjv01v4AAl23EBbMqWCYmEdKK2ryVb+gWP
- /79UvCe03YOfdsgfR8Uwo5hN86gIL+bVWvw+8tKpOLkGQnjIk6lESGZw0WmPlDiKscTcqqli0Gb
- 5WqCzOGUHK+RlKpLvGqaIOZuxJOihlVkDD2lR+KcPs+oVkjX6K63AA5VfUl5LklpUxSOzCXFGsq
- DuIKjD1gMydHD0RBS74pi8UGXDY8aFW22+nmCVcwO5DGOZrpxZ6npqss4imIJJOSi6ykhDs7k0g
- jdEewCZa5VwCNw/N3l3xN9fIa3iMuArSZpPT0obN9f9GfATw7ovkluaWP5qmqz7P1DflSY2vG98
- WimY2VZdjrrZdYEDRhKcoNHhVs2qA4LfYuNzGN1auT+CdXaeEpEcH1VPdhTPs/UMOLPU++w==
-X-Google-Smtp-Source: AGHT+IEF68kARxwEOcMzD6je577oPfcmdGWvkioCCYF0Di5UWivDo4ruCKsiwjHQ9nn3HICMLevQYg==
-X-Received: by 2002:a05:6512:615:10b0:55f:3786:68fd with SMTP id
- 2adb3069b0e04-55f37867757mr1155257e87.18.1756054271643; 
- Sun, 24 Aug 2025 09:51:11 -0700 (PDT)
-Received: from gmail.com (213-67-3-247-no600.tbcn.telia.com. [213.67.3.247])
+ AJvYcCW8Fx0O4BUjl1A4GoO5Qbc+B0zYnuRcxLYwQR6tJR9atShPb5prBvIkmsTvT/T07+DwW9V+TPzc1A==@nongnu.org
+X-Gm-Message-State: AOJu0Ywpu+EIfFZYIWmqfz1Sf4HDOSTgB2ra6LY9NVFobfnS5BKzJSwn
+ OS+/xb0r/8VeMJiwo3T81ZqZRrt+NKP92JRMrdho4tLiHi4JUjKcoJEu
+X-Gm-Gg: ASbGncvOOgRRcufV6vS4CN4keNsc6SXkFCOmifzGGq0Cpwu8nsXO2VK9i5TToe1eHhe
+ 6bp4Seu1/dZu4irwlVSK0wP94WCjWsxcwlfgn4boTURUKd0gceXaJedXtNUglz7QZlpk8TzhRl/
+ gPvfpwec+uc273TC3ejU8ghotJqKjWuVm2tOSPk3en8DXM6rBTKySH1X9q53wWgHQTYJKKjX9En
+ Y+RC5Fwa7a/ozz81tyb8ar/sn/Yl9GrgN18HE50nQaRSK9eDbfNJSKRfIIXaLgT8kXCz8vb4z51
+ dC77YqZ+KEpoen8BJH5JIewv32i+wUBpLDBSU8LBgHvGrgSvOMg+eM2evvBKtPW1lqCH+wyZcVr
+ w18zcnrIFOt5i5wTtSPPOXvtTjkMkinVtiHO8HtonMw==
+X-Google-Smtp-Source: AGHT+IHROHEhzLgp6MCVDN/eWH06s6wsbVBT+GG8PIq5HjI7sdpYODNPea//DqSkf/SM8buFFqAvzw==
+X-Received: by 2002:a17:906:478f:b0:ae3:5e70:32fb with SMTP id
+ a640c23a62f3a-afe28ec36ebmr1045880966b.4.1756076417691; 
+ Sun, 24 Aug 2025 16:00:17 -0700 (PDT)
+Received: from smtpclient.apple ([87.251.30.135])
  by smtp.gmail.com with ESMTPSA id
- 2adb3069b0e04-55f35bffae3sm1141945e87.31.2025.08.24.09.51.11
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 24 Aug 2025 09:51:11 -0700 (PDT)
-Date: Sun, 24 Aug 2025 18:51:10 +0200
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+ a640c23a62f3a-afe598a3fafsm373917766b.37.2025.08.24.16.00.16
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Sun, 24 Aug 2025 16:00:17 -0700 (PDT)
+Content-Type: text/plain;
+	charset=utf-8
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3826.700.81\))
+Subject: Re: [PATCH v2 0/3] hw: acpi: add UART clock freq to AArch64 SPCR
+From: Vadim Chichikalyuk <chichikalyuk@gmail.com>
+In-Reply-To: <CAFEAcA-NwTDQUJAerkX2O88_3Mgprh3A7GqaEAFdM4mpN3s05Q@mail.gmail.com>
+Date: Mon, 25 Aug 2025 02:00:05 +0300
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ "Michael S. Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+ Ani Sinha <anisinha@redhat.com>, Shannon Zhao <shannon.zhaosl@gmail.com>
+Content-Transfer-Encoding: quoted-printable
+Message-Id: <0B0D958D-67D8-4036-A6BD-75CBD7DC636C@gmail.com>
+References: <20250809211051.68824-1-chichikalyuk@gmail.com>
+ <CAFEAcA-NwTDQUJAerkX2O88_3Mgprh3A7GqaEAFdM4mpN3s05Q@mail.gmail.com>
 To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Corvin =?iso-8859-1?Q?K=F6hne?= <corvin.koehne@gmail.com>,
- qemu-devel@nongnu.org,
- Corvin =?iso-8859-1?Q?K=F6hne?= <c.koehne@beckhoff.com>,
- qemu-arm@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Alistair Francis <alistair@alistair23.me>,
- Yannick =?iso-8859-1?Q?Vo=DFen?= <y.vossen@beckhoff.com>,
- Hanna Reitz <hreitz@redhat.com>, qemu-block@nongnu.org
-Subject: Re: [PATCH v2 00/14] hw/arm: add Beckhoff CX7200 board
-Message-ID: <aKtC_jPngZ8KFiTB@zapote>
-References: <20250815090113.141641-1-corvin.koehne@gmail.com>
- <CAFEAcA9y-0-Oe5beVObe+SZqmByRSOYkCaKM1FDjeo0jdxjjCQ@mail.gmail.com>
- <CAFEAcA8bFFB9CxCoVi+YVcJpwcQeEn4RkALVXDzwOH930WsGMw@mail.gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAFEAcA8bFFB9CxCoVi+YVcJpwcQeEn4RkALVXDzwOH930WsGMw@mail.gmail.com>
-User-Agent: Mutt/2.2.14+84 (2efcabc4) (2025-03-23)
-Received-SPF: pass client-ip=2a00:1450:4864:20::12b;
- envelope-from=edgar.iglesias@gmail.com; helo=mail-lf1-x12b.google.com
+X-Mailer: Apple Mail (2.3826.700.81)
+Received-SPF: pass client-ip=2a00:1450:4864:20::62a;
+ envelope-from=chichikalyuk@gmail.com; helo=mail-ej1-x62a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -113,85 +104,31 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, Aug 19, 2025 at 05:40:14PM +0100, Peter Maydell wrote:
-> On Fri, 15 Aug 2025 at 19:06, Peter Maydell <peter.maydell@linaro.org> wrote:
-> >
-> > On Fri, 15 Aug 2025 at 10:01, Corvin Köhne <corvin.koehne@gmail.com> wrote:
-> > >
-> > > From: Corvin Köhne <c.koehne@beckhoff.com>
-> > >
-> > > Hi,
-> > >
-> > > Beckhoff has build a board, called CX7200, based on the Xilinx Zynq A9
-> > > platform. This commit series adds the Beckhoff CX7200 as new board variant to
-> > > QEMU.
-> > >
-> > > The emulation is able to successfully boot an CX7200 image. The image includes
-> > > some self tests executed on every boot. Only the cache self test fails due to
-> > > QEMU emulating the cache as always being coherent. The self tests include f.e.:
-> > >
-> > > * Network
-> > > * Flash
-> > > * CCAT DMA + EEPROM [1]
-> > > * TwinCAT (Beckhoff's automation control software [2])
-> > >
-> > > [1] https://github.com/beckhoff/ccat
-> > > [2] https://www.beckhoff.com/en-us/products/automation/
-> > >
-> > > YannickV (14):
-> > >   hw/timer: Make frequency configurable
-> > >   hw/timer: Make PERIPHCLK period configurable
-> > >   hw/dma/zynq-devcfg: Handle bitstream loading via DMA to 0xffffffff
-> > >   hw/arm/zynq-devcfg: Prevent unintended unlock during initialization
-> > >   hw/dma/zynq: Ensure PCFG_DONE bit remains set to indicate PL is in
-> > >     user mode
-> > >   hw/dma/zynq-devcfg: Simulate dummy PL reset
-> > >   hw/dma/zynq-devcfg: Indicate power-up status of PL
-> > >   hw/dma/zynq-devcfg: Fix register memory
-> > >   hw/misc: Add dummy ZYNQ DDR controller
-> > >   hw/misc/zynq_slcr: Add logic for DCI configuration
-> > >   hw/misc: Add Beckhoff CCAT device
-> > >   hw/block/m25p80: Add HAS_SR_TB flag for is25lp016d
-> > >   hw/arm: Add new machine based on xilinx-zynq-a9 for Beckhoff CX7200
-> > >   docs/system/arm: Add support for Beckhoff CX7200
-> >
-> > This patchset is on my list to review. As an initial request,
-> > for a new board could we have a test in tests/functional/
-> > please?
-> 
-> I've also now reviewed the two initial generic-arm patches
-> and the ones where you add new device models. I had a
-> quick scan through the bug fix patches to the existing
-> zynq devices but I'd appreciate it if the Xilinx folks
-> could review those ones.
->
 
-Thanks Peter,
+> On 18 Aug 2025, at 18:26, Peter Maydell <peter.maydell@linaro.org> =
+wrote:
+>=20
+> So, what's the rationale here? QEMU's UART doesn't care about
+> clocks at all. We provide a clock in the DTB because the kernel
+> refuses to boot if you don't, but if the ACPI spec didn't even
+> have a way to pass the clock frequency until rev 4 this obviously
+> isn't a problem on that side.
 
-I reviewed patches 3 - 8 and 10.
+The rationale is the same =E2=80=93 just as the (Linux?) kernel expects=20=
 
-Patch 5 and 10 have some minor whitespace issues, perhaps we could fix
-on commit...
+a clock frequency if a UART is present in the DTB, guests using=20
+ACPI may expect a valid value for the clock frequency in the
+SPCR record when one is present.
 
-f5badc6fe5 (HEAD) hw/dma/zynq: Ensure PCFG_DONE bit remains set to indicate PL is in user mode
-3: ../check.sh
+Since we already have to have a notional value in the DTB, it
+makes sense to expose the same value via ACPI, too, for=20
+consistency. The RISC-V virt machine, for example, has it both
+in its DTB and ACPI DSDT.
 
-ERROR: trailing whitespace
-#24: FILE: hw/dma/xlnx-zynq-devcfg.c:192:
-+    $
+I=E2=80=99ll fix the other patches per your comments if you think this
+is worth adding.
 
-total: 1 errors, 0 warnings, 8 lines checked
+Thanks,
+Vadim
 
-
-e8874ea66c (HEAD, beckhoff) hw/misc/zynq_slcr: Add logic for DCI configuration
-7: ../check.sh
-
-ERROR: trailing whitespace
-#72: FILE: hw/misc/zynq_slcr.c:571:
-+        if (!FIELD_EX32(val, DDRIOB_DCI_CTRL, RESET) && $
-
-total: 1 errors, 0 warnings, 61 lines checked
-
-Cheers,
-Edgar
 

@@ -4,77 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1E86CA0FE9
-	for <qemu-arm@archiver.kernel.org>; Mon, 25 Aug 2025 09:52:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBE0FCA0FE1
+	for <qemu-arm@archiver.kernel.org>; Mon, 25 Aug 2025 09:57:04 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uqTqu-0003jn-PO; Mon, 25 Aug 2025 05:51:02 -0400
+	id 1uqTwJ-00067d-Nn; Mon, 25 Aug 2025 05:56:36 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <chigot@adacore.com>)
- id 1uqTqr-0003jH-42
- for qemu-arm@nongnu.org; Mon, 25 Aug 2025 05:50:57 -0400
-Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uqTw3-00063a-9V
+ for qemu-arm@nongnu.org; Mon, 25 Aug 2025 05:56:22 -0400
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <chigot@adacore.com>)
- id 1uqTqo-0001ag-7i
- for qemu-arm@nongnu.org; Mon, 25 Aug 2025 05:50:56 -0400
-Received: by mail-ej1-x62e.google.com with SMTP id
- a640c23a62f3a-afcb78e70c5so651823866b.1
- for <qemu-arm@nongnu.org>; Mon, 25 Aug 2025 02:50:52 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uqTvx-00026J-RL
+ for qemu-arm@nongnu.org; Mon, 25 Aug 2025 05:56:16 -0400
+Received: by mail-wm1-x330.google.com with SMTP id
+ 5b1f17b1804b1-45a1b001f55so22044165e9.0
+ for <qemu-arm@nongnu.org>; Mon, 25 Aug 2025 02:56:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=adacore.com; s=google; t=1756115449; x=1756720249; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=LTzZDSfvElTZseXIR8MM/DMpaP2+xfkCPM86dY+vOS0=;
- b=jSXZQxYRXsSCsF9G3HxjuMP0LXeNb8oT+vtAB74JUKAcsiSN1vi0avMYemjjbJ0zTf
- rvTbPVDdNQUJ2Gthhu7/D9G3+FNp5Y2VnRFx0Yf+6or+EYFK2Xm3J+NH7o059ILReB6l
- 34FB/sla92FS54dOgdMvohtyhKFOW6fsUabzctTEgJXR9K4p6k3wsIQiAm1vfFdCmlhW
- KJW1FSgCtVUV/48zwbjzPaci097/oX94cDQ3Zoc4DreYLXy5g9OVMBxVAtJ0Al4bXkOh
- 1mmnrLmAe5sMnNIYgWvKV80qINJOhhXMlJXROHVB0qHjAEwhAqTTHMnxLhPGyobIGITS
- RzMA==
+ d=linaro.org; s=google; t=1756115763; x=1756720563; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=DtPysv0q8plRMP+uuaG7xvmK7HEMKFlASd4qR6lUwg4=;
+ b=Vh5CXMbcfLy1kmYwFrrbe0iRmuIFD7qb6tKOjR5D51ppZCKInMsNYLgSObhNwVjaQu
+ jAGDlDuy6HgrWsHhihzz3sjqa1Sv/3Idx6QKz7EUSmpXOpaIl1MuQYLTUkUbza00obXe
+ rxlH6uzC5f+H5s0XayXMi9J5B2BNBFnAbVcwQ4O3AUJrEGkqoJcQ84TsTCTHCZimH1S0
+ Qw9keCyqy3goV6KqmHAdQPXq4rKjiuYaWkiFzD0UczIiH467ymG9ST227Vn0fS35baKL
+ ejIdT8Lwp9JSVXplkZD7KGcPxNd34Zv2LK26OFznmWJN6eggfkN1KDr7UVD5GRKCizLd
+ Z72g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756115449; x=1756720249;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=LTzZDSfvElTZseXIR8MM/DMpaP2+xfkCPM86dY+vOS0=;
- b=heQ+zqJe5yeGQBDETmjzGdlYmvnZ1b8vWVT0nn4YYNcxvQM+HH8frVVeqLpoF5/LdJ
- MNG8pwGeXybs51knIdp7SKlF5489yLt2ZVbn1n44JNqimiroU1+VPGk9JfLM7Z8chbuX
- r7HJ3uH5AOiOTP7gQ0SCItzymd5lAJzmKEVJEkY9j9IY4bNZLp00ANL3oQeOmRrA+xe3
- Nc7F4Qgu+NerdO02Vkp6JwAYHXz+A8npgOcgQq2PvcQsl8d90qI+of9qBVvYeRXGPcGL
- mQRr+lBcNa6TlzhHc7P1VsADcNI094H2WVFfx3NZHuQ1SRu0dZUJK6K8BwbGJpQZJx3/
- K3vw==
-X-Gm-Message-State: AOJu0YzP/50HjMbS0NLR2zU+ZpEs+7vMpu3lmwS9ne3WzB09E65x1Oa9
- 4t56B1G/g0Y7Wd40vER8YYun+9QkbmgaAXiWAjdMiqzq8i81uaPriNAw86B08PjvCOzg0u9DXNM
- OzYZ6Qn+OY+hMwez2tHAf7edwjlo0ah1eesImAWm2
-X-Gm-Gg: ASbGncurDprxkUE5D9gMR9yZecKdIWcthoPotoZ8KgCh02eLaWESsFRM+d+DMWfPG0+
- mOGZjJieXI7vJaQv2d+otFKNKFHDSpHp5Ktq2m1jHjoVksSoR9BBMcEUmhFeD6P9QzStWEtQ/oQ
- yRTvVLt+h4wGejBDHG4pK+bDJ+XdXoq2USdHQKJG06LBnE2rpG2kEQOC8pAvunPfMhiY4p05pz5
- u7qx0Qq8W1YgK6sUA==
-X-Google-Smtp-Source: AGHT+IHCWK06OrJw6Q6+JjStBnC23ZHghBM/uph9btWs21wx5sDv/OVzA+ZNPEjV+31ujJ+43S6hEoR8lILJdj7nlDM=
-X-Received: by 2002:a17:907:1c93:b0:af9:d80f:645d with SMTP id
- a640c23a62f3a-afe29793340mr1021068366b.57.1756115448389; Mon, 25 Aug 2025
- 02:50:48 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1756115763; x=1756720563;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=DtPysv0q8plRMP+uuaG7xvmK7HEMKFlASd4qR6lUwg4=;
+ b=PGuA/2eJCxPpEGK6pFCAxxbjHMRiWIV6bt+avzsMgDne91cOLi0zeA0Gq+CxVkCgiE
+ EmRH4uXHq+AXy+Pwl+O+obXvaY7KEPmoECU+UDSGyrFXOwDao6wj901svhtVPmzC+eQC
+ xksxRBhXqVv71MKdyJnjG5kZGPa6u+zMFvwPBOqY0Wjz0urGkaqqQHf77CEF56xLocrV
+ Hmg7gxCNy/ryoDRsLIRKea7czUGycTv0WMUIY8qDHxSPHhs297Efh5J5EvQgEnaEbcaX
+ Kp5z6slyn+bFYeWK51wB2s7aqqqFxFY3UZT3jZs+rHpuwdrXo8v9LwoXXhruzVzy7nIh
+ IeSw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVM298ohxmURA8xbhEgqHqcpnjcvSapbd3iSNxN8PMwJGCZkspvIm02uNL+L3ncW/+6rWIbokfg+A==@nongnu.org
+X-Gm-Message-State: AOJu0YwXodhmpli8BBwDLfK18DnKnf6jy+OR2n2qeIBkPXtp8VmYq4P6
+ Owwdj7m72/BBnGuo/ZrU3HavozDNuENOZyMaMyt2dfBgEzfwsd+mAYqJTvpbeGxIcQw=
+X-Gm-Gg: ASbGncs5BpS8pNZ1nvmO4HBVYtufkBMIQgDyXmieiGIAzSMiJiOz0eBXh52Sdk8MQCW
+ eJ9uP6e/CdXEWvH3+SeocNwrIaHA2GNlk6FCX4YkBlDQA3sNgwJPKStLLvK5LuGxd/5ePn6R3fu
+ khFBJNqDyk2FkdhxPSMbjEwHA8ME/2FK5vsHfCcSOA/IFDFJYse5mc0MYUz7fpUwMCQQxfUZpnY
+ Xoxb5KXI/HZLrZhUWzcvSzZywgSmGy7WvPZZFshS3K6WqH2/2LORMAEDKM9JPmtfbYD0CsI3cWb
+ cJZo+ng3UG3kydWAQt5Mi1GYhMpMF9/b4xqVVSFyxu7x4ZAukO2dgSUs+PjL5sDAyv7ZkxUDxho
+ MQ7C07Q6T57F4zCiQm4E1+bRt3M9GvNMydaCUFKyNXR6upCuPwpnocn2ilrHZ+USQEw==
+X-Google-Smtp-Source: AGHT+IFII4uz9bHKRVMU/jqk/Ik1xyv1FNOwKxKjbIfzqXS6ferhx9aYm6vJ1OcwtxUTA8WX5oiUAQ==
+X-Received: by 2002:a05:600c:1d87:b0:45b:5ff4:2f8f with SMTP id
+ 5b1f17b1804b1-45b5ff43124mr24307765e9.4.1756115762660; 
+ Mon, 25 Aug 2025 02:56:02 -0700 (PDT)
+Received: from [192.168.69.208] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-45b5757453fsm101240695e9.14.2025.08.25.02.56.01
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 25 Aug 2025 02:56:02 -0700 (PDT)
+Message-ID: <eb4da435-2b16-4421-a192-612a33524897@linaro.org>
+Date: Mon, 25 Aug 2025 11:56:00 +0200
 MIME-Version: 1.0
-References: <20250613134208.1509436-1-chigot@adacore.com>
- <20250613134208.1509436-4-chigot@adacore.com>
-In-Reply-To: <20250613134208.1509436-4-chigot@adacore.com>
-From: =?UTF-8?Q?Cl=C3=A9ment_Chigot?= <chigot@adacore.com>
-Date: Mon, 25 Aug 2025 11:50:37 +0200
-X-Gm-Features: Ac12FXxevwTcoOSjbYEzC9Z1i5XOGMkkG8mSUYEuWlriD3GgccpklTuD5WC9OKY
-Message-ID: <CAJ307EhL53SPK4q4sd1FWQ_EKAksrRGPuMrJVn+Z-TOouevpWQ@mail.gmail.com>
-Subject: Re: [PATCH v3 3/3] hw/arm/xlnx-zynqmp: wire a second GIC for the
- Cortex-R5
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org, edgar.iglesias@gmail.com, 
- alistair@alistair23.me, Frederic Konrad <konrad.frederic@yahoo.fr>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::62e;
- envelope-from=chigot@adacore.com; helo=mail-ej1-x62e.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 00/12] single-binary: compile once semihosting
+To: Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-devel@nongnu.org
+Cc: qemu-riscv@nongnu.org, Weiwei Li <liwei1518@gmail.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>, richard.henderson@linaro.org,
+ =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, qemu-arm@nongnu.org,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>
+References: <20250804183950.3147154-1-pierrick.bouvier@linaro.org>
+ <7c026d43-04b4-4615-8478-639393b640c2@linaro.org>
+ <e7ea76f9-b66c-4656-b8b6-4d0ff0dfee35@linaro.org>
+ <33849bb7-07a8-4a04-b142-ebfe5d286332@linaro.org>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <33849bb7-07a8-4a04-b142-ebfe5d286332@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::330;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -97,268 +110,28 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, Jun 13, 2025 at 3:42=E2=80=AFPM Cl=C3=A9ment Chigot <chigot@adacore=
-.com> wrote:
->
-> From: Frederic Konrad <konrad.frederic@yahoo.fr>
->
-> This wires a second GIC for the Cortex-R5, all the IRQs are split when th=
-ere
-> is an RPU instanciated.
->
-> Signed-off-by: Cl=C3=A9ment Chigot <chigot@adacore.com>
+On 22/8/25 16:57, Pierrick Bouvier wrote:
+> On 2025-08-22 07:56, Philippe Mathieu-Daudé wrote:
+>> On 22/8/25 16:31, Pierrick Bouvier wrote:
+>>> On 2025-08-04 11:39, Pierrick Bouvier wrote:
+>>>> This series compiles once semihosting files in system mode.
+>>>> The most complicated file was semihosting/arm-compat-semi.c, which was
+>>>> carefully
+>>>> cleaned in easy to understand steps.
 
-Gentle ping here (just realized this patch hasn't been merged as I thought.=
-..)
 
-TIA,
-Cl=C3=A9ment
+>>> Ping on this series.
+>>> I'll be out next week, but it should be ready to be pulled once the
+>>> trunk reopens.
+>>
+>> Modulo the comment on patch #9, the series is fully reviewed.
 
-> ---
->  hw/arm/xlnx-zynqmp.c         | 103 +++++++++++++++++++++++++++++++----
->  include/hw/arm/xlnx-zynqmp.h |   5 ++
->  2 files changed, 98 insertions(+), 10 deletions(-)
->
-> diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
-> index ec96a46eec..ffed6e5126 100644
-> --- a/hw/arm/xlnx-zynqmp.c
-> +++ b/hw/arm/xlnx-zynqmp.c
-> @@ -26,8 +26,6 @@
->  #include "target/arm/cpu-qom.h"
->  #include "target/arm/gtimer.h"
->
-> -#define GIC_NUM_SPI_INTR 160
-> -
->  #define ARM_PHYS_TIMER_PPI  30
->  #define ARM_VIRT_TIMER_PPI  27
->  #define ARM_HYP_TIMER_PPI   26
-> @@ -206,17 +204,26 @@ static const XlnxZynqMPGICRegion xlnx_zynqmp_gic_re=
-gions[] =3D {
->
->  static inline int arm_gic_ppi_index(int cpu_nr, int ppi_index)
->  {
-> -    return GIC_NUM_SPI_INTR + cpu_nr * GIC_INTERNAL + ppi_index;
-> +    return XLNX_ZYNQMP_GIC_NUM_SPI_INTR + cpu_nr * GIC_INTERNAL + ppi_in=
-dex;
-> +}
-> +
-> +static unsigned int xlnx_zynqmp_get_rpu_number(MachineState *ms)
-> +{
-> +    /*
-> +     * RPUs will be created only if "-smp" is higher than the maximum
-> +     * of APUs. Round it up to 0 to avoid dealing with negative values.
-> +     */
-> +    return MAX(0, MIN((int)(ms->smp.cpus - XLNX_ZYNQMP_NUM_APU_CPUS),
-> +                      XLNX_ZYNQMP_NUM_RPU_CPUS));
->  }
->
->  static void xlnx_zynqmp_create_rpu(MachineState *ms, XlnxZynqMPState *s,
->                                     const char *boot_cpu, Error **errp)
->  {
->      int i;
-> -    int num_rpus =3D MIN((int)(ms->smp.cpus - XLNX_ZYNQMP_NUM_APU_CPUS),
-> -                       XLNX_ZYNQMP_NUM_RPU_CPUS);
-> +    int num_rpus =3D xlnx_zynqmp_get_rpu_number(ms);
->
-> -    if (num_rpus <=3D 0) {
-> +    if (!num_rpus) {
->          /* Don't create rpu-cluster object if there's nothing to put in =
-it */
->          return;
->      }
-> @@ -377,6 +384,7 @@ static void xlnx_zynqmp_init(Object *obj)
->      XlnxZynqMPState *s =3D XLNX_ZYNQMP(obj);
->      int i;
->      int num_apus =3D MIN(ms->smp.cpus, XLNX_ZYNQMP_NUM_APU_CPUS);
-> +    int num_rpus =3D xlnx_zynqmp_get_rpu_number(ms);
->
->      object_initialize_child(obj, "apu-cluster", &s->apu_cluster,
->                              TYPE_CPU_CLUSTER);
-> @@ -390,6 +398,12 @@ static void xlnx_zynqmp_init(Object *obj)
->
->      object_initialize_child(obj, "gic", &s->gic, gic_class_name());
->
-> +    if (num_rpus) {
-> +        /* Do not create the rpu_gic if we don't have rpus */
-> +        object_initialize_child(obj, "rpu_gic", &s->rpu_gic,
-> +                                gic_class_name());
-> +    }
-> +
->      for (i =3D 0; i < XLNX_ZYNQMP_NUM_GEMS; i++) {
->          object_initialize_child(obj, "gem[*]", &s->gem[i], TYPE_CADENCE_=
-GEM);
->          object_initialize_child(obj, "gem-irq-orgate[*]",
-> @@ -439,6 +453,15 @@ static void xlnx_zynqmp_init(Object *obj)
->      object_initialize_child(obj, "qspi-irq-orgate",
->                              &s->qspi_irq_orgate, TYPE_OR_IRQ);
->
-> +    if (num_rpus) {
-> +        for (i =3D 0; i < ARRAY_SIZE(s->splitter); i++) {
-> +            g_autofree char *name =3D g_strdup_printf("irq-splitter%d", =
-i);
-> +            object_initialize_child(obj, name, &s->splitter[i], TYPE_SPL=
-IT_IRQ);
-> +        }
-> +    }
-> +
-> +
-> +
->      for (i =3D 0; i < XLNX_ZYNQMP_NUM_USB; i++) {
->          object_initialize_child(obj, "usb[*]", &s->usb[i], TYPE_USB_DWC3=
-);
->      }
-> @@ -452,9 +475,10 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Er=
-ror **errp)
->      uint8_t i;
->      uint64_t ram_size;
->      int num_apus =3D MIN(ms->smp.cpus, XLNX_ZYNQMP_NUM_APU_CPUS);
-> +    int num_rpus =3D xlnx_zynqmp_get_rpu_number(ms);
->      const char *boot_cpu =3D s->boot_cpu ? s->boot_cpu : "apu-cpu[0]";
->      ram_addr_t ddr_low_size, ddr_high_size;
-> -    qemu_irq gic_spi[GIC_NUM_SPI_INTR];
-> +    qemu_irq gic_spi[XLNX_ZYNQMP_GIC_NUM_SPI_INTR];
->      Error *err =3D NULL;
->
->      ram_size =3D memory_region_size(s->ddr_ram);
-> @@ -502,13 +526,22 @@ static void xlnx_zynqmp_realize(DeviceState *dev, E=
-rror **errp)
->          g_free(ocm_name);
->      }
->
-> -    qdev_prop_set_uint32(DEVICE(&s->gic), "num-irq", GIC_NUM_SPI_INTR + =
-32);
-> +    qdev_prop_set_uint32(DEVICE(&s->gic), "num-irq",
-> +                         XLNX_ZYNQMP_GIC_NUM_SPI_INTR + 32);
->      qdev_prop_set_uint32(DEVICE(&s->gic), "revision", 2);
->      qdev_prop_set_uint32(DEVICE(&s->gic), "num-cpu", num_apus);
->      qdev_prop_set_bit(DEVICE(&s->gic), "has-security-extensions", s->sec=
-ure);
->      qdev_prop_set_bit(DEVICE(&s->gic),
->                        "has-virtualization-extensions", s->virt);
->
-> +    if (num_rpus) {
-> +        qdev_prop_set_uint32(DEVICE(&s->rpu_gic), "num-irq",
-> +                             XLNX_ZYNQMP_GIC_NUM_SPI_INTR + 32);
-> +        qdev_prop_set_uint32(DEVICE(&s->rpu_gic), "revision", 1);
-> +        qdev_prop_set_uint32(DEVICE(&s->rpu_gic), "num-cpu", num_rpus);
-> +        qdev_prop_set_uint32(DEVICE(&s->rpu_gic), "first-cpu-index", 4);
-> +    }
-> +
->      qdev_realize(DEVICE(&s->apu_cluster), NULL, &error_fatal);
->
->      /* Realize APUs before realizing the GIC. KVM requires this.  */
-> @@ -608,13 +641,63 @@ static void xlnx_zynqmp_realize(DeviceState *dev, E=
-rror **errp)
->          return;
->      }
->
-> +    if (num_rpus) {
-> +        if (!sysbus_realize(SYS_BUS_DEVICE(&s->rpu_gic), errp)) {
-> +            return;
-> +        }
-> +
-> +        for (i =3D 0; i < num_rpus; i++) {
-> +            qemu_irq irq;
-> +
-> +            sysbus_mmio_map(SYS_BUS_DEVICE(&s->rpu_gic), i + 1,
-> +                            GIC_BASE_ADDR + i * 0x1000);
-> +            sysbus_connect_irq(SYS_BUS_DEVICE(&s->rpu_gic), i,
-> +                               qdev_get_gpio_in(DEVICE(&s->rpu_cpu[i]),
-> +                                                ARM_CPU_IRQ));
-> +            sysbus_connect_irq(SYS_BUS_DEVICE(&s->rpu_gic), i + num_rpus=
-,
-> +                               qdev_get_gpio_in(DEVICE(&s->rpu_cpu[i]),
-> +                                                ARM_CPU_FIQ));
-> +            sysbus_connect_irq(SYS_BUS_DEVICE(&s->rpu_gic), i + num_rpus=
- * 2,
-> +                               qdev_get_gpio_in(DEVICE(&s->rpu_cpu[i]),
-> +                                                ARM_CPU_VIRQ));
-> +            sysbus_connect_irq(SYS_BUS_DEVICE(&s->rpu_gic), i + num_rpus=
- * 3,
-> +                               qdev_get_gpio_in(DEVICE(&s->rpu_cpu[i]),
-> +                                                ARM_CPU_VFIQ));
-> +            irq =3D qdev_get_gpio_in(DEVICE(&s->rpu_gic),
-> +                                   arm_gic_ppi_index(i, ARM_PHYS_TIMER_P=
-PI));
-> +            qdev_connect_gpio_out(DEVICE(&s->rpu_cpu[i]), GTIMER_PHYS, i=
-rq);
-> +            irq =3D qdev_get_gpio_in(DEVICE(&s->rpu_gic),
-> +                                   arm_gic_ppi_index(i, ARM_VIRT_TIMER_P=
-PI));
-> +            qdev_connect_gpio_out(DEVICE(&s->rpu_cpu[i]), GTIMER_VIRT, i=
-rq);
-> +            irq =3D qdev_get_gpio_in(DEVICE(&s->rpu_gic),
-> +                                   arm_gic_ppi_index(i, ARM_HYP_TIMER_PP=
-I));
-> +            qdev_connect_gpio_out(DEVICE(&s->rpu_cpu[i]), GTIMER_HYP, ir=
-q);
-> +            irq =3D qdev_get_gpio_in(DEVICE(&s->rpu_gic),
-> +                                   arm_gic_ppi_index(i, ARM_SEC_TIMER_PP=
-I));
-> +            qdev_connect_gpio_out(DEVICE(&s->rpu_cpu[i]), GTIMER_SEC, ir=
-q);
-> +        }
-> +
-> +        sysbus_mmio_map(SYS_BUS_DEVICE(&s->rpu_gic), 0, GIC_BASE_ADDR);
-> +    }
-> +
->      if (!s->boot_cpu_ptr) {
->          error_setg(errp, "ZynqMP Boot cpu %s not found", boot_cpu);
->          return;
->      }
->
-> -    for (i =3D 0; i < GIC_NUM_SPI_INTR; i++) {
-> -        gic_spi[i] =3D qdev_get_gpio_in(DEVICE(&s->gic), i);
-> +    for (i =3D 0; i < XLNX_ZYNQMP_GIC_NUM_SPI_INTR; i++) {
-> +        if (num_rpus) {
-> +            DeviceState *splitter =3D DEVICE(&s->splitter[i]);
-> +            qdev_prop_set_uint16(splitter, "num-lines", 2);
-> +            qdev_realize(splitter, NULL, &error_abort);
-> +            gic_spi[i] =3D qdev_get_gpio_in(splitter, 0);
-> +            qdev_connect_gpio_out(splitter, 0,
-> +                                  qdev_get_gpio_in(DEVICE(&s->gic), i));
-> +            qdev_connect_gpio_out(splitter, 1,
-> +                                  qdev_get_gpio_in(DEVICE(&s->rpu_gic), =
-i));
-> +        } else {
-> +            gic_spi[i] =3D qdev_get_gpio_in(DEVICE(&s->gic), i);
-> +        }
->      }
->
->      for (i =3D 0; i < XLNX_ZYNQMP_NUM_GEMS; i++) {
-> diff --git a/include/hw/arm/xlnx-zynqmp.h b/include/hw/arm/xlnx-zynqmp.h
-> index c137ac59e8..0ae00e10f6 100644
-> --- a/include/hw/arm/xlnx-zynqmp.h
-> +++ b/include/hw/arm/xlnx-zynqmp.h
-> @@ -42,6 +42,7 @@
->  #include "hw/misc/xlnx-zynqmp-crf.h"
->  #include "hw/timer/cadence_ttc.h"
->  #include "hw/usb/hcd-dwc3.h"
-> +#include "hw/core/split-irq.h"
->
->  #define TYPE_XLNX_ZYNQMP "xlnx-zynqmp"
->  OBJECT_DECLARE_SIMPLE_TYPE(XlnxZynqMPState, XLNX_ZYNQMP)
-> @@ -87,6 +88,7 @@ OBJECT_DECLARE_SIMPLE_TYPE(XlnxZynqMPState, XLNX_ZYNQMP=
-)
->                                    XLNX_ZYNQMP_MAX_HIGH_RAM_SIZE)
->
->  #define XLNX_ZYNQMP_NUM_TTC 4
-> +#define XLNX_ZYNQMP_GIC_NUM_SPI_INTR 160
->
->  /*
->   * Unimplemented mmio regions needed to boot some images.
-> @@ -105,6 +107,9 @@ struct XlnxZynqMPState {
->      GICState gic;
->      MemoryRegion gic_mr[XLNX_ZYNQMP_GIC_REGIONS][XLNX_ZYNQMP_GIC_ALIASES=
-];
->
-> +    GICState rpu_gic;
-> +    SplitIRQ splitter[XLNX_ZYNQMP_GIC_NUM_SPI_INTR];
-> +
->      MemoryRegion ocm_ram[XLNX_ZYNQMP_NUM_OCM_BANKS];
->
->      MemoryRegion *ddr_ram;
-> --
-> 2.34.1
->
+Sorry, this was a comment for the maintainer, hoping he'd update the
+comment while queuing the series, not asking you to respin another one.
+
+Next time I'll be more verbose with such comments.
+
+> I'll send a v4 with this, thanks.
+
+We should be super good now ;)
 

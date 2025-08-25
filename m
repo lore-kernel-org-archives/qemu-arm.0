@@ -4,127 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A5A7CA0FE1
-	for <qemu-arm@archiver.kernel.org>; Mon, 25 Aug 2025 08:18:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1E86CA0FE9
+	for <qemu-arm@archiver.kernel.org>; Mon, 25 Aug 2025 09:52:10 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uqSP8-0002ZG-7f; Mon, 25 Aug 2025 04:18:14 -0400
+	id 1uqTqu-0003jn-PO; Mon, 25 Aug 2025 05:51:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <harshpb@linux.ibm.com>)
- id 1uqSP6-0002Yt-H6; Mon, 25 Aug 2025 04:18:13 -0400
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <harshpb@linux.ibm.com>)
- id 1uqSP1-0008TH-Vy; Mon, 25 Aug 2025 04:18:12 -0400
-Received: from pps.filterd (m0360083.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 57P5oPsj024844;
- Mon, 25 Aug 2025 08:17:04 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=cc
- :content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=pp1; bh=0r8OZm
- sZKM1O8FPvKVD9VtykZ5Tn2fwo6zXU1+R6GmI=; b=sQQ4f5cuQ8v7S48nFi9zxD
- wHNFa03EtnQYSghkJhBhUCEOokq4FuB8MHMogcypXxn7hd59q74DgoyTgeC6RZp+
- b/dh20hqAkhMI5oP5r+qXO59GWTTsEUvq0VZzrhylMxw47jigymeLLd0kpcP4mPS
- iE6kNnEUPp/2CTbjDbyDRRne72QbslMRLvMemri8hULw9Uw+NWjN9Ven+zvGF98N
- s4/7i0JnZNhjRa8vD++1GqFozvdvQEnstGnVVSN/HV69M1b4BiHL3DjHVsV1NasI
- G2myDHhLIXUFS72I9o8k22mEPCOH7xRFbGMZatAEGQurMI92HmlqPl36Y0YXUIyQ
- ==
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 48q557qu07-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 25 Aug 2025 08:17:04 +0000 (GMT)
-Received: from m0360083.ppops.net (m0360083.ppops.net [127.0.0.1])
- by pps.reinject (8.18.1.12/8.18.0.8) with ESMTP id 57P85MBq007360;
- Mon, 25 Aug 2025 08:17:03 GMT
-Received: from ppma12.dal12v.mail.ibm.com
- (dc.9e.1632.ip4.static.sl-reverse.com [50.22.158.220])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 48q557qtyy-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 25 Aug 2025 08:17:03 +0000 (GMT)
-Received: from pps.filterd (ppma12.dal12v.mail.ibm.com [127.0.0.1])
- by ppma12.dal12v.mail.ibm.com (8.18.1.2/8.18.1.2) with ESMTP id 57P4j37u007459;
- Mon, 25 Aug 2025 08:17:02 GMT
-Received: from smtprelay07.dal12v.mail.ibm.com ([172.16.1.9])
- by ppma12.dal12v.mail.ibm.com (PPS) with ESMTPS id 48qqyu53p6-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 25 Aug 2025 08:17:02 +0000
-Received: from smtpav06.wdc07v.mail.ibm.com (smtpav06.wdc07v.mail.ibm.com
- [10.39.53.233])
- by smtprelay07.dal12v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 57P8H1kQ10946044
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 25 Aug 2025 08:17:01 GMT
-Received: from smtpav06.wdc07v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 0529A5803F;
- Mon, 25 Aug 2025 08:17:01 +0000 (GMT)
-Received: from smtpav06.wdc07v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id D76EA5804E;
- Mon, 25 Aug 2025 08:16:46 +0000 (GMT)
-Received: from [9.39.20.14] (unknown [9.39.20.14])
- by smtpav06.wdc07v.mail.ibm.com (Postfix) with ESMTP;
- Mon, 25 Aug 2025 08:16:46 +0000 (GMT)
-Message-ID: <9fde8cf9-19c4-4265-90dd-75ac4f12c584@linux.ibm.com>
-Date: Mon, 25 Aug 2025 13:46:45 +0530
+ (Exim 4.90_1) (envelope-from <chigot@adacore.com>)
+ id 1uqTqr-0003jH-42
+ for qemu-arm@nongnu.org; Mon, 25 Aug 2025 05:50:57 -0400
+Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <chigot@adacore.com>)
+ id 1uqTqo-0001ag-7i
+ for qemu-arm@nongnu.org; Mon, 25 Aug 2025 05:50:56 -0400
+Received: by mail-ej1-x62e.google.com with SMTP id
+ a640c23a62f3a-afcb78e70c5so651823866b.1
+ for <qemu-arm@nongnu.org>; Mon, 25 Aug 2025 02:50:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=adacore.com; s=google; t=1756115449; x=1756720249; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=LTzZDSfvElTZseXIR8MM/DMpaP2+xfkCPM86dY+vOS0=;
+ b=jSXZQxYRXsSCsF9G3HxjuMP0LXeNb8oT+vtAB74JUKAcsiSN1vi0avMYemjjbJ0zTf
+ rvTbPVDdNQUJ2Gthhu7/D9G3+FNp5Y2VnRFx0Yf+6or+EYFK2Xm3J+NH7o059ILReB6l
+ 34FB/sla92FS54dOgdMvohtyhKFOW6fsUabzctTEgJXR9K4p6k3wsIQiAm1vfFdCmlhW
+ KJW1FSgCtVUV/48zwbjzPaci097/oX94cDQ3Zoc4DreYLXy5g9OVMBxVAtJ0Al4bXkOh
+ 1mmnrLmAe5sMnNIYgWvKV80qINJOhhXMlJXROHVB0qHjAEwhAqTTHMnxLhPGyobIGITS
+ RzMA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1756115449; x=1756720249;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=LTzZDSfvElTZseXIR8MM/DMpaP2+xfkCPM86dY+vOS0=;
+ b=heQ+zqJe5yeGQBDETmjzGdlYmvnZ1b8vWVT0nn4YYNcxvQM+HH8frVVeqLpoF5/LdJ
+ MNG8pwGeXybs51knIdp7SKlF5489yLt2ZVbn1n44JNqimiroU1+VPGk9JfLM7Z8chbuX
+ r7HJ3uH5AOiOTP7gQ0SCItzymd5lAJzmKEVJEkY9j9IY4bNZLp00ANL3oQeOmRrA+xe3
+ Nc7F4Qgu+NerdO02Vkp6JwAYHXz+A8npgOcgQq2PvcQsl8d90qI+of9qBVvYeRXGPcGL
+ mQRr+lBcNa6TlzhHc7P1VsADcNI094H2WVFfx3NZHuQ1SRu0dZUJK6K8BwbGJpQZJx3/
+ K3vw==
+X-Gm-Message-State: AOJu0YzP/50HjMbS0NLR2zU+ZpEs+7vMpu3lmwS9ne3WzB09E65x1Oa9
+ 4t56B1G/g0Y7Wd40vER8YYun+9QkbmgaAXiWAjdMiqzq8i81uaPriNAw86B08PjvCOzg0u9DXNM
+ OzYZ6Qn+OY+hMwez2tHAf7edwjlo0ah1eesImAWm2
+X-Gm-Gg: ASbGncurDprxkUE5D9gMR9yZecKdIWcthoPotoZ8KgCh02eLaWESsFRM+d+DMWfPG0+
+ mOGZjJieXI7vJaQv2d+otFKNKFHDSpHp5Ktq2m1jHjoVksSoR9BBMcEUmhFeD6P9QzStWEtQ/oQ
+ yRTvVLt+h4wGejBDHG4pK+bDJ+XdXoq2USdHQKJG06LBnE2rpG2kEQOC8pAvunPfMhiY4p05pz5
+ u7qx0Qq8W1YgK6sUA==
+X-Google-Smtp-Source: AGHT+IHCWK06OrJw6Q6+JjStBnC23ZHghBM/uph9btWs21wx5sDv/OVzA+ZNPEjV+31ujJ+43S6hEoR8lILJdj7nlDM=
+X-Received: by 2002:a17:907:1c93:b0:af9:d80f:645d with SMTP id
+ a640c23a62f3a-afe29793340mr1021068366b.57.1756115448389; Mon, 25 Aug 2025
+ 02:50:48 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 6/8] add cpu_test_interrupt()/cpu_set_interrupt()
- helpers and use them tree wide
-To: Igor Mammedov <imammedo@redhat.com>, qemu-devel@nongnu.org
-Cc: pbonzini@redhat.com, peterx@redhat.com, mst@redhat.com,
- mtosatti@redhat.com, richard.henderson@linaro.org, riku.voipio@iki.fi,
- thuth@redhat.com, pasic@linux.ibm.com, borntraeger@linux.ibm.com,
- david@redhat.com, jjherne@linux.ibm.com, shorne@gmail.com,
- eduardo@habkost.net, marcel.apfelbaum@gmail.com, philmd@linaro.org,
- wangyanan55@huawei.com, zhao1.liu@intel.com, peter.maydell@linaro.org,
- agraf@csgraf.de, mads@ynddal.dk, mrolnik@gmail.com, deller@gmx.de,
- dirty@apple.com, rbolshakov@ddn.com, phil@philjordan.eu,
- reinoud@netbsd.org, sunilmut@microsoft.com, gaosong@loongson.cn,
- laurent@vivier.eu, edgar.iglesias@gmail.com, aurelien@aurel32.net,
- jiaxun.yang@flygoat.com, arikalo@gmail.com, chenhuacai@kernel.org,
- npiggin@gmail.com, rathc@linux.ibm.com, yoshinori.sato@nifty.com,
- iii@linux.ibm.com, mark.cave-ayland@ilande.co.uk, atar4qemu@gmail.com,
- qemu-s390x@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org
-References: <20250814160600.2327672-7-imammedo@redhat.com>
- <20250821155603.2422553-1-imammedo@redhat.com>
-Content-Language: en-US
-From: Harsh Prateek Bora <harshpb@linux.ibm.com>
-In-Reply-To: <20250821155603.2422553-1-imammedo@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: S4ydI0SUhPXLx3XtApRan3983lJS855O
-X-Proofpoint-ORIG-GUID: SeS9AxjnCblwtAd6St5veFXkS1kKE6Jw
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwODIzMDAyMSBTYWx0ZWRfX3zSxPxQXGe3G
- Rn1x4sb7fxBNdIv/jBJ5Lge1GThUKF3E+GEMuLpDP1ByKVuhFYQiU5hOuk2qz5Qy+sYJ4u3qKYA
- TJxl0IeMIK8yVAsobx2w3AF1mtKU5gbxz6SD4AZeh/i8W+rULvzpHeI6InQ/E0GYi2s7y7vWQHA
- H9PQ5MBz9gEeWGJ/2ucxT4RwVRRs4o1VEsX0MrOUoRuqAZuKpDpKLXIesZdhRdW0GRD1xa+SIjv
- 1ljXJ5hc/6bx/uEvlUuPwHUro+nfYEm+8Z2mtvaRYNP85L099XzvVobwoPK8ml5t37injZxgPwM
- Sox9ZABqYPXw1HOWYjDHmfGZGa/qNmWEgKWu28g6nOMawm13Bax4tz+IXQHq7MdSJci6hcG0SNa
- X75lLtOw
-X-Authority-Analysis: v=2.4 cv=A8ZsP7WG c=1 sm=1 tr=0 ts=68ac1c00 cx=c_pps
- a=bLidbwmWQ0KltjZqbj+ezA==:117 a=bLidbwmWQ0KltjZqbj+ezA==:17
- a=IkcTkHD0fZMA:10 a=2OwXVqhp2XgA:10 a=f7IdgyKtn90A:10 a=20KFwNOVAAAA:8
- a=VnNF1IyMAAAA:8 a=2cbqLzNlm-FmP95Ks_IA:9 a=QEXdDO2ut3YA:10
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.9,FMLib:17.12.80.40
- definitions=2025-08-25_03,2025-08-20_03,2025-03-28_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- phishscore=0 adultscore=0 priorityscore=1501 suspectscore=0 clxscore=1011
- spamscore=0 impostorscore=0 malwarescore=0 bulkscore=0 classifier=typeunknown
- authscore=0 authtc= authcc= route=outbound adjust=0 reason=mlx scancount=1
- engine=8.19.0-2507300000 definitions=main-2508230021
-Received-SPF: pass client-ip=148.163.156.1; envelope-from=harshpb@linux.ibm.com;
- helo=mx0a-001b2d01.pphosted.com
-X-Spam_score_int: -26
-X-Spam_score: -2.7
+References: <20250613134208.1509436-1-chigot@adacore.com>
+ <20250613134208.1509436-4-chigot@adacore.com>
+In-Reply-To: <20250613134208.1509436-4-chigot@adacore.com>
+From: =?UTF-8?Q?Cl=C3=A9ment_Chigot?= <chigot@adacore.com>
+Date: Mon, 25 Aug 2025 11:50:37 +0200
+X-Gm-Features: Ac12FXxevwTcoOSjbYEzC9Z1i5XOGMkkG8mSUYEuWlriD3GgccpklTuD5WC9OKY
+Message-ID: <CAJ307EhL53SPK4q4sd1FWQ_EKAksrRGPuMrJVn+Z-TOouevpWQ@mail.gmail.com>
+Subject: Re: [PATCH v3 3/3] hw/arm/xlnx-zynqmp: wire a second GIC for the
+ Cortex-R5
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org, edgar.iglesias@gmail.com, 
+ alistair@alistair23.me, Frederic Konrad <konrad.frederic@yahoo.fr>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::62e;
+ envelope-from=chigot@adacore.com; helo=mail-ej1-x62e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_LOW=-0.7,
- RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -140,311 +97,268 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+On Fri, Jun 13, 2025 at 3:42=E2=80=AFPM Cl=C3=A9ment Chigot <chigot@adacore=
+.com> wrote:
+>
+> From: Frederic Konrad <konrad.frederic@yahoo.fr>
+>
+> This wires a second GIC for the Cortex-R5, all the IRQs are split when th=
+ere
+> is an RPU instanciated.
+>
+> Signed-off-by: Cl=C3=A9ment Chigot <chigot@adacore.com>
 
+Gentle ping here (just realized this patch hasn't been merged as I thought.=
+..)
 
-On 8/21/25 21:26, Igor Mammedov wrote:
-> the helpers form load-acquire/store-release pair and use them to replace
-> open-coded checkers/setters consistently across the code, which
-> ensures that appropriate barriers are in place in case checks happen
-> outside of BQL.
-> 
-> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
-> Reviewed-by: Peter Xu <peterx@redhat.com>
-> Reviewed-by: Jason J. Herne <jjherne@linux.ibm.com>
+TIA,
+Cl=C3=A9ment
+
 > ---
-> v5: fix copy/paste error in doc comment of cpu_set_interrupt()
->     "Jason J. Herne" <jjherne@linux.ibm.com>
-> v4:
->     add cpu_set_interrupt() and merge helpers patch with
->     patches that use them (v3 6-7,9/10).
->         Peter Xu <peterx@redhat.com>
-> ---
->   include/hw/core/cpu.h               | 25 +++++++++++++++++++++
->   accel/tcg/cpu-exec.c                | 10 ++++-----
->   accel/tcg/tcg-accel-ops.c           |  2 +-
->   accel/tcg/user-exec.c               |  2 +-
->   hw/intc/s390_flic.c                 |  2 +-
->   hw/openrisc/cputimer.c              |  2 +-
->   system/cpus.c                       |  2 +-
->   target/alpha/cpu.c                  |  8 +++----
->   target/arm/cpu.c                    | 20 ++++++++---------
->   target/arm/helper.c                 | 18 +++++++--------
->   target/arm/hvf/hvf.c                |  6 ++---
->   target/avr/cpu.c                    |  2 +-
->   target/hppa/cpu.c                   |  2 +-
->   target/i386/hvf/hvf.c               |  4 ++--
->   target/i386/hvf/x86hvf.c            | 21 +++++++++---------
->   target/i386/kvm/kvm.c               | 34 ++++++++++++++---------------
->   target/i386/nvmm/nvmm-all.c         | 24 ++++++++++----------
->   target/i386/tcg/system/seg_helper.c |  2 +-
->   target/i386/tcg/system/svm_helper.c |  2 +-
->   target/i386/whpx/whpx-all.c         | 34 ++++++++++++++---------------
->   target/loongarch/cpu.c              |  2 +-
->   target/m68k/cpu.c                   |  2 +-
->   target/microblaze/cpu.c             |  2 +-
->   target/mips/cpu.c                   |  6 ++---
->   target/mips/kvm.c                   |  2 +-
->   target/openrisc/cpu.c               |  3 +--
->   target/ppc/cpu_init.c               |  2 +-
->   target/ppc/kvm.c                    |  2 +-
->   target/rx/cpu.c                     |  3 +--
->   target/rx/helper.c                  |  2 +-
->   target/s390x/cpu-system.c           |  2 +-
->   target/sh4/cpu.c                    |  2 +-
->   target/sh4/helper.c                 |  2 +-
->   target/sparc/cpu.c                  |  2 +-
->   target/sparc/int64_helper.c         |  4 ++--
->   35 files changed, 141 insertions(+), 119 deletions(-)
-> 
-> diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-> index 5eaf41a566..1dee9d4c76 100644
-> --- a/include/hw/core/cpu.h
-> +++ b/include/hw/core/cpu.h
-> @@ -942,6 +942,31 @@ CPUState *cpu_by_arch_id(int64_t id);
->   
->   void cpu_interrupt(CPUState *cpu, int mask);
->   
-> +/**
-> + * cpu_test_interrupt:
-> + * @cpu: The CPU to check interrupt(s) on.
-> + * @mask: The interrupts to check.
-> + *
-> + * Checks if any of interrupts in @mask are pending on @cpu.
-> + */
-> +static inline bool cpu_test_interrupt(CPUState *cpu, int mask)
-> +{
-> +    return qatomic_load_acquire(&cpu->interrupt_request) & mask;
+>  hw/arm/xlnx-zynqmp.c         | 103 +++++++++++++++++++++++++++++++----
+>  include/hw/arm/xlnx-zynqmp.h |   5 ++
+>  2 files changed, 98 insertions(+), 10 deletions(-)
+>
+> diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
+> index ec96a46eec..ffed6e5126 100644
+> --- a/hw/arm/xlnx-zynqmp.c
+> +++ b/hw/arm/xlnx-zynqmp.c
+> @@ -26,8 +26,6 @@
+>  #include "target/arm/cpu-qom.h"
+>  #include "target/arm/gtimer.h"
+>
+> -#define GIC_NUM_SPI_INTR 160
+> -
+>  #define ARM_PHYS_TIMER_PPI  30
+>  #define ARM_VIRT_TIMER_PPI  27
+>  #define ARM_HYP_TIMER_PPI   26
+> @@ -206,17 +204,26 @@ static const XlnxZynqMPGICRegion xlnx_zynqmp_gic_re=
+gions[] =3D {
+>
+>  static inline int arm_gic_ppi_index(int cpu_nr, int ppi_index)
+>  {
+> -    return GIC_NUM_SPI_INTR + cpu_nr * GIC_INTERNAL + ppi_index;
+> +    return XLNX_ZYNQMP_GIC_NUM_SPI_INTR + cpu_nr * GIC_INTERNAL + ppi_in=
+dex;
 > +}
 > +
-> +/**
-> + * cpu_set_interrupt:
-> + * @cpu: The CPU to set pending interrupt(s) on.
-> + * @mask: The interrupts to set.
-> + *
-> + * Sets interrupts in @mask as pending on @cpu.
-> + */
-> +static inline void cpu_set_interrupt(CPUState *cpu, int mask)
+> +static unsigned int xlnx_zynqmp_get_rpu_number(MachineState *ms)
 > +{
-> +    qatomic_store_release(&cpu->interrupt_request,
-> +        cpu->interrupt_request | mask);
-> +}
+> +    /*
+> +     * RPUs will be created only if "-smp" is higher than the maximum
+> +     * of APUs. Round it up to 0 to avoid dealing with negative values.
+> +     */
+> +    return MAX(0, MIN((int)(ms->smp.cpus - XLNX_ZYNQMP_NUM_APU_CPUS),
+> +                      XLNX_ZYNQMP_NUM_RPU_CPUS));
+>  }
+>
+>  static void xlnx_zynqmp_create_rpu(MachineState *ms, XlnxZynqMPState *s,
+>                                     const char *boot_cpu, Error **errp)
+>  {
+>      int i;
+> -    int num_rpus =3D MIN((int)(ms->smp.cpus - XLNX_ZYNQMP_NUM_APU_CPUS),
+> -                       XLNX_ZYNQMP_NUM_RPU_CPUS);
+> +    int num_rpus =3D xlnx_zynqmp_get_rpu_number(ms);
+>
+> -    if (num_rpus <=3D 0) {
+> +    if (!num_rpus) {
+>          /* Don't create rpu-cluster object if there's nothing to put in =
+it */
+>          return;
+>      }
+> @@ -377,6 +384,7 @@ static void xlnx_zynqmp_init(Object *obj)
+>      XlnxZynqMPState *s =3D XLNX_ZYNQMP(obj);
+>      int i;
+>      int num_apus =3D MIN(ms->smp.cpus, XLNX_ZYNQMP_NUM_APU_CPUS);
+> +    int num_rpus =3D xlnx_zynqmp_get_rpu_number(ms);
+>
+>      object_initialize_child(obj, "apu-cluster", &s->apu_cluster,
+>                              TYPE_CPU_CLUSTER);
+> @@ -390,6 +398,12 @@ static void xlnx_zynqmp_init(Object *obj)
+>
+>      object_initialize_child(obj, "gic", &s->gic, gic_class_name());
+>
+> +    if (num_rpus) {
+> +        /* Do not create the rpu_gic if we don't have rpus */
+> +        object_initialize_child(obj, "rpu_gic", &s->rpu_gic,
+> +                                gic_class_name());
+> +    }
 > +
->   /**
->    * cpu_set_pc:
->    * @cpu: The CPU to set the program counter for.
-> diff --git a/accel/tcg/cpu-exec.c b/accel/tcg/cpu-exec.c
-> index 713bdb2056..1269c2c6ba 100644
-> --- a/accel/tcg/cpu-exec.c
-> +++ b/accel/tcg/cpu-exec.c
-> @@ -778,7 +778,7 @@ static inline bool cpu_handle_interrupt(CPUState *cpu,
->        */
->       qatomic_set_mb(&cpu->neg.icount_decr.u16.high, 0);
->   
-> -    if (unlikely(qatomic_read(&cpu->interrupt_request))) {
-> +    if (unlikely(cpu_test_interrupt(cpu, ~0))) {
->           int interrupt_request;
->           bql_lock();
->           interrupt_request = cpu->interrupt_request;
-> @@ -786,7 +786,7 @@ static inline bool cpu_handle_interrupt(CPUState *cpu,
->               /* Mask out external interrupts for this step. */
->               interrupt_request &= ~CPU_INTERRUPT_SSTEP_MASK;
->           }
-> -        if (interrupt_request & CPU_INTERRUPT_DEBUG) {
-> +        if (cpu_test_interrupt(cpu, CPU_INTERRUPT_DEBUG)) {
->               cpu->interrupt_request &= ~CPU_INTERRUPT_DEBUG;
-
-Do we need a helper for instances like these (logical &) as well ?
-I see a couple more such instances below.
-
-
->               cpu->exception_index = EXCP_DEBUG;
->               bql_unlock();
-> @@ -795,7 +795,7 @@ static inline bool cpu_handle_interrupt(CPUState *cpu,
->   #if !defined(CONFIG_USER_ONLY)
->           if (replay_mode == REPLAY_MODE_PLAY && !replay_has_interrupt()) {
->               /* Do nothing */
-> -        } else if (interrupt_request & CPU_INTERRUPT_HALT) {
-> +        } else if (cpu_test_interrupt(cpu, CPU_INTERRUPT_HALT)) {
->               replay_interrupt();
->               cpu->interrupt_request &= ~CPU_INTERRUPT_HALT;
->               cpu->halted = 1;
-> @@ -805,7 +805,7 @@ static inline bool cpu_handle_interrupt(CPUState *cpu,
->           } else {
->               const TCGCPUOps *tcg_ops = cpu->cc->tcg_ops;
->   
-> -            if (interrupt_request & CPU_INTERRUPT_RESET) {
-> +            if (cpu_test_interrupt(cpu, CPU_INTERRUPT_RESET)) {
->                   replay_interrupt();
->                   tcg_ops->cpu_exec_reset(cpu);
->                   bql_unlock();
-> @@ -841,7 +841,7 @@ static inline bool cpu_handle_interrupt(CPUState *cpu,
->               interrupt_request = cpu->interrupt_request;
->           }
->   #endif /* !CONFIG_USER_ONLY */
-> -        if (interrupt_request & CPU_INTERRUPT_EXITTB) {
-> +        if (cpu_test_interrupt(cpu, CPU_INTERRUPT_EXITTB)) {
->               cpu->interrupt_request &= ~CPU_INTERRUPT_EXITTB;
->               /* ensure that no TB jump will be modified as
->                  the program flow was changed */
-> diff --git a/accel/tcg/tcg-accel-ops.c b/accel/tcg/tcg-accel-ops.c
-> index 3b0d7d298e..9c37266c1e 100644
-> --- a/accel/tcg/tcg-accel-ops.c
-> +++ b/accel/tcg/tcg-accel-ops.c
-> @@ -97,7 +97,7 @@ static void tcg_cpu_reset_hold(CPUState *cpu)
->   /* mask must never be zero, except for A20 change call */
->   void tcg_handle_interrupt(CPUState *cpu, int mask)
->   {
-> -    cpu->interrupt_request |= mask;
-> +    cpu_set_interrupt(cpu, mask);
->   
->       /*
->        * If called from iothread context, wake the target cpu in
-> diff --git a/accel/tcg/user-exec.c b/accel/tcg/user-exec.c
-> index f25d80e2dc..fc2eaf420d 100644
-> --- a/accel/tcg/user-exec.c
-> +++ b/accel/tcg/user-exec.c
-> @@ -49,7 +49,7 @@ __thread uintptr_t helper_retaddr;
->   void cpu_interrupt(CPUState *cpu, int mask)
->   {
->       g_assert(bql_locked());
-> -    cpu->interrupt_request |= mask;
-> +    cpu_set_interrupt(cpu, mask);
->       qatomic_set(&cpu->neg.icount_decr.u16.high, -1);
->   }
->   
-
-<snip>
-
-> diff --git a/target/ppc/cpu_init.c b/target/ppc/cpu_init.c
-> index a0e77f2673..db841f1260 100644
-> --- a/target/ppc/cpu_init.c
-> +++ b/target/ppc/cpu_init.c
-> @@ -7225,7 +7225,7 @@ static int ppc_cpu_mmu_index(CPUState *cs, bool ifetch)
->   #ifndef CONFIG_USER_ONLY
->   static bool ppc_cpu_has_work(CPUState *cs)
->   {
-> -    return cs->interrupt_request & CPU_INTERRUPT_HARD;
-> +    return cpu_test_interrupt(cs, CPU_INTERRUPT_HARD);
->   }
->   #endif /* !CONFIG_USER_ONLY */
->   
-> diff --git a/target/ppc/kvm.c b/target/ppc/kvm.c
-> index 015658049e..d145774b09 100644
-> --- a/target/ppc/kvm.c
-> +++ b/target/ppc/kvm.c
-> @@ -1354,7 +1354,7 @@ static int kvmppc_handle_halt(PowerPCCPU *cpu)
->       CPUState *cs = CPU(cpu);
->       CPUPPCState *env = &cpu->env;
->   
-> -    if (!(cs->interrupt_request & CPU_INTERRUPT_HARD) &&
-> +    if (!cpu_test_interrupt(cs, CPU_INTERRUPT_HARD) &&
->           FIELD_EX64(env->msr, MSR, EE)) {
->           cs->halted = 1;
->           cs->exception_index = EXCP_HLT;
-
-For target/ppc:
-
-Reviewed-by: Harsh Prateek Bora <harshpb@linux.ibm.com>
-
-> diff --git a/target/rx/cpu.c b/target/rx/cpu.c
-> index c6dd5d6f83..da02ae7bf8 100644
-> --- a/target/rx/cpu.c
-> +++ b/target/rx/cpu.c
-> @@ -75,8 +75,7 @@ static void rx_restore_state_to_opc(CPUState *cs,
->   
->   static bool rx_cpu_has_work(CPUState *cs)
->   {
-> -    return cs->interrupt_request &
-> -        (CPU_INTERRUPT_HARD | CPU_INTERRUPT_FIR);
-> +    return cpu_test_interrupt(cs, CPU_INTERRUPT_HARD | CPU_INTERRUPT_FIR);
->   }
->   
->   static int rx_cpu_mmu_index(CPUState *cs, bool ifunc)
-> diff --git a/target/rx/helper.c b/target/rx/helper.c
-> index 0640ab322b..ce003af421 100644
-> --- a/target/rx/helper.c
-> +++ b/target/rx/helper.c
-> @@ -44,7 +44,7 @@ void rx_cpu_unpack_psw(CPURXState *env, uint32_t psw, int rte)
->   void rx_cpu_do_interrupt(CPUState *cs)
->   {
->       CPURXState *env = cpu_env(cs);
-> -    int do_irq = cs->interrupt_request & INT_FLAGS;
-> +    int do_irq = cpu_test_interrupt(cs, INT_FLAGS);
->       uint32_t save_psw;
->   
->       env->in_sleep = 0;
-> diff --git a/target/s390x/cpu-system.c b/target/s390x/cpu-system.c
-> index 709ccd5299..f3a9ffb2a2 100644
-> --- a/target/s390x/cpu-system.c
-> +++ b/target/s390x/cpu-system.c
-> @@ -49,7 +49,7 @@ bool s390_cpu_has_work(CPUState *cs)
->           return false;
->       }
->   
-> -    if (!(cs->interrupt_request & CPU_INTERRUPT_HARD)) {
-> +    if (!cpu_test_interrupt(cs, CPU_INTERRUPT_HARD)) {
->           return false;
->       }
->   
-> diff --git a/target/sh4/cpu.c b/target/sh4/cpu.c
-> index 4f561e8c91..21ccb86df4 100644
-> --- a/target/sh4/cpu.c
-> +++ b/target/sh4/cpu.c
-> @@ -108,7 +108,7 @@ static bool superh_io_recompile_replay_branch(CPUState *cs,
->   
->   static bool superh_cpu_has_work(CPUState *cs)
->   {
-> -    return cs->interrupt_request & CPU_INTERRUPT_HARD;
-> +    return cpu_test_interrupt(cs, CPU_INTERRUPT_HARD);
->   }
->   #endif /* !CONFIG_USER_ONLY */
->   
-> diff --git a/target/sh4/helper.c b/target/sh4/helper.c
-> index fb7642bda1..1744ef0e6d 100644
-> --- a/target/sh4/helper.c
-> +++ b/target/sh4/helper.c
-> @@ -58,7 +58,7 @@ int cpu_sh4_is_cached(CPUSH4State *env, target_ulong addr)
->   void superh_cpu_do_interrupt(CPUState *cs)
->   {
->       CPUSH4State *env = cpu_env(cs);
-> -    int do_irq = cs->interrupt_request & CPU_INTERRUPT_HARD;
-> +    int do_irq = cpu_test_interrupt(cs, CPU_INTERRUPT_HARD);
->       int do_exp, irq_vector = cs->exception_index;
->   
->       /* prioritize exceptions over interrupts */
-> diff --git a/target/sparc/cpu.c b/target/sparc/cpu.c
-> index 245caf2de0..c9773f1540 100644
-> --- a/target/sparc/cpu.c
-> +++ b/target/sparc/cpu.c
-> @@ -783,7 +783,7 @@ static void sparc_restore_state_to_opc(CPUState *cs,
->   #ifndef CONFIG_USER_ONLY
->   static bool sparc_cpu_has_work(CPUState *cs)
->   {
-> -    return (cs->interrupt_request & CPU_INTERRUPT_HARD) &&
-> +    return cpu_test_interrupt(cs, CPU_INTERRUPT_HARD) &&
->              cpu_interrupts_enabled(cpu_env(cs));
->   }
->   #endif /* !CONFIG_USER_ONLY */
-> diff --git a/target/sparc/int64_helper.c b/target/sparc/int64_helper.c
-> index bd14c7a0db..49e4e51c6d 100644
-> --- a/target/sparc/int64_helper.c
-> +++ b/target/sparc/int64_helper.c
-> @@ -89,7 +89,7 @@ void cpu_check_irqs(CPUSPARCState *env)
->        * the next bit is (2 << psrpil).
->        */
->       if (pil < (2 << env->psrpil)) {
-> -        if (cs->interrupt_request & CPU_INTERRUPT_HARD) {
-> +        if (cpu_test_interrupt(cs, CPU_INTERRUPT_HARD)) {
->               trace_sparc64_cpu_check_irqs_reset_irq(env->interrupt_index);
->               env->interrupt_index = 0;
->               cpu_reset_interrupt(cs, CPU_INTERRUPT_HARD);
-> @@ -120,7 +120,7 @@ void cpu_check_irqs(CPUSPARCState *env)
->                   break;
->               }
->           }
-> -    } else if (cs->interrupt_request & CPU_INTERRUPT_HARD) {
-> +    } else if (cpu_test_interrupt(cs, CPU_INTERRUPT_HARD)) {
->           trace_sparc64_cpu_check_irqs_disabled(pil, env->pil_in, env->softint,
->                                                 env->interrupt_index);
->           env->interrupt_index = 0;
+>      for (i =3D 0; i < XLNX_ZYNQMP_NUM_GEMS; i++) {
+>          object_initialize_child(obj, "gem[*]", &s->gem[i], TYPE_CADENCE_=
+GEM);
+>          object_initialize_child(obj, "gem-irq-orgate[*]",
+> @@ -439,6 +453,15 @@ static void xlnx_zynqmp_init(Object *obj)
+>      object_initialize_child(obj, "qspi-irq-orgate",
+>                              &s->qspi_irq_orgate, TYPE_OR_IRQ);
+>
+> +    if (num_rpus) {
+> +        for (i =3D 0; i < ARRAY_SIZE(s->splitter); i++) {
+> +            g_autofree char *name =3D g_strdup_printf("irq-splitter%d", =
+i);
+> +            object_initialize_child(obj, name, &s->splitter[i], TYPE_SPL=
+IT_IRQ);
+> +        }
+> +    }
+> +
+> +
+> +
+>      for (i =3D 0; i < XLNX_ZYNQMP_NUM_USB; i++) {
+>          object_initialize_child(obj, "usb[*]", &s->usb[i], TYPE_USB_DWC3=
+);
+>      }
+> @@ -452,9 +475,10 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Er=
+ror **errp)
+>      uint8_t i;
+>      uint64_t ram_size;
+>      int num_apus =3D MIN(ms->smp.cpus, XLNX_ZYNQMP_NUM_APU_CPUS);
+> +    int num_rpus =3D xlnx_zynqmp_get_rpu_number(ms);
+>      const char *boot_cpu =3D s->boot_cpu ? s->boot_cpu : "apu-cpu[0]";
+>      ram_addr_t ddr_low_size, ddr_high_size;
+> -    qemu_irq gic_spi[GIC_NUM_SPI_INTR];
+> +    qemu_irq gic_spi[XLNX_ZYNQMP_GIC_NUM_SPI_INTR];
+>      Error *err =3D NULL;
+>
+>      ram_size =3D memory_region_size(s->ddr_ram);
+> @@ -502,13 +526,22 @@ static void xlnx_zynqmp_realize(DeviceState *dev, E=
+rror **errp)
+>          g_free(ocm_name);
+>      }
+>
+> -    qdev_prop_set_uint32(DEVICE(&s->gic), "num-irq", GIC_NUM_SPI_INTR + =
+32);
+> +    qdev_prop_set_uint32(DEVICE(&s->gic), "num-irq",
+> +                         XLNX_ZYNQMP_GIC_NUM_SPI_INTR + 32);
+>      qdev_prop_set_uint32(DEVICE(&s->gic), "revision", 2);
+>      qdev_prop_set_uint32(DEVICE(&s->gic), "num-cpu", num_apus);
+>      qdev_prop_set_bit(DEVICE(&s->gic), "has-security-extensions", s->sec=
+ure);
+>      qdev_prop_set_bit(DEVICE(&s->gic),
+>                        "has-virtualization-extensions", s->virt);
+>
+> +    if (num_rpus) {
+> +        qdev_prop_set_uint32(DEVICE(&s->rpu_gic), "num-irq",
+> +                             XLNX_ZYNQMP_GIC_NUM_SPI_INTR + 32);
+> +        qdev_prop_set_uint32(DEVICE(&s->rpu_gic), "revision", 1);
+> +        qdev_prop_set_uint32(DEVICE(&s->rpu_gic), "num-cpu", num_rpus);
+> +        qdev_prop_set_uint32(DEVICE(&s->rpu_gic), "first-cpu-index", 4);
+> +    }
+> +
+>      qdev_realize(DEVICE(&s->apu_cluster), NULL, &error_fatal);
+>
+>      /* Realize APUs before realizing the GIC. KVM requires this.  */
+> @@ -608,13 +641,63 @@ static void xlnx_zynqmp_realize(DeviceState *dev, E=
+rror **errp)
+>          return;
+>      }
+>
+> +    if (num_rpus) {
+> +        if (!sysbus_realize(SYS_BUS_DEVICE(&s->rpu_gic), errp)) {
+> +            return;
+> +        }
+> +
+> +        for (i =3D 0; i < num_rpus; i++) {
+> +            qemu_irq irq;
+> +
+> +            sysbus_mmio_map(SYS_BUS_DEVICE(&s->rpu_gic), i + 1,
+> +                            GIC_BASE_ADDR + i * 0x1000);
+> +            sysbus_connect_irq(SYS_BUS_DEVICE(&s->rpu_gic), i,
+> +                               qdev_get_gpio_in(DEVICE(&s->rpu_cpu[i]),
+> +                                                ARM_CPU_IRQ));
+> +            sysbus_connect_irq(SYS_BUS_DEVICE(&s->rpu_gic), i + num_rpus=
+,
+> +                               qdev_get_gpio_in(DEVICE(&s->rpu_cpu[i]),
+> +                                                ARM_CPU_FIQ));
+> +            sysbus_connect_irq(SYS_BUS_DEVICE(&s->rpu_gic), i + num_rpus=
+ * 2,
+> +                               qdev_get_gpio_in(DEVICE(&s->rpu_cpu[i]),
+> +                                                ARM_CPU_VIRQ));
+> +            sysbus_connect_irq(SYS_BUS_DEVICE(&s->rpu_gic), i + num_rpus=
+ * 3,
+> +                               qdev_get_gpio_in(DEVICE(&s->rpu_cpu[i]),
+> +                                                ARM_CPU_VFIQ));
+> +            irq =3D qdev_get_gpio_in(DEVICE(&s->rpu_gic),
+> +                                   arm_gic_ppi_index(i, ARM_PHYS_TIMER_P=
+PI));
+> +            qdev_connect_gpio_out(DEVICE(&s->rpu_cpu[i]), GTIMER_PHYS, i=
+rq);
+> +            irq =3D qdev_get_gpio_in(DEVICE(&s->rpu_gic),
+> +                                   arm_gic_ppi_index(i, ARM_VIRT_TIMER_P=
+PI));
+> +            qdev_connect_gpio_out(DEVICE(&s->rpu_cpu[i]), GTIMER_VIRT, i=
+rq);
+> +            irq =3D qdev_get_gpio_in(DEVICE(&s->rpu_gic),
+> +                                   arm_gic_ppi_index(i, ARM_HYP_TIMER_PP=
+I));
+> +            qdev_connect_gpio_out(DEVICE(&s->rpu_cpu[i]), GTIMER_HYP, ir=
+q);
+> +            irq =3D qdev_get_gpio_in(DEVICE(&s->rpu_gic),
+> +                                   arm_gic_ppi_index(i, ARM_SEC_TIMER_PP=
+I));
+> +            qdev_connect_gpio_out(DEVICE(&s->rpu_cpu[i]), GTIMER_SEC, ir=
+q);
+> +        }
+> +
+> +        sysbus_mmio_map(SYS_BUS_DEVICE(&s->rpu_gic), 0, GIC_BASE_ADDR);
+> +    }
+> +
+>      if (!s->boot_cpu_ptr) {
+>          error_setg(errp, "ZynqMP Boot cpu %s not found", boot_cpu);
+>          return;
+>      }
+>
+> -    for (i =3D 0; i < GIC_NUM_SPI_INTR; i++) {
+> -        gic_spi[i] =3D qdev_get_gpio_in(DEVICE(&s->gic), i);
+> +    for (i =3D 0; i < XLNX_ZYNQMP_GIC_NUM_SPI_INTR; i++) {
+> +        if (num_rpus) {
+> +            DeviceState *splitter =3D DEVICE(&s->splitter[i]);
+> +            qdev_prop_set_uint16(splitter, "num-lines", 2);
+> +            qdev_realize(splitter, NULL, &error_abort);
+> +            gic_spi[i] =3D qdev_get_gpio_in(splitter, 0);
+> +            qdev_connect_gpio_out(splitter, 0,
+> +                                  qdev_get_gpio_in(DEVICE(&s->gic), i));
+> +            qdev_connect_gpio_out(splitter, 1,
+> +                                  qdev_get_gpio_in(DEVICE(&s->rpu_gic), =
+i));
+> +        } else {
+> +            gic_spi[i] =3D qdev_get_gpio_in(DEVICE(&s->gic), i);
+> +        }
+>      }
+>
+>      for (i =3D 0; i < XLNX_ZYNQMP_NUM_GEMS; i++) {
+> diff --git a/include/hw/arm/xlnx-zynqmp.h b/include/hw/arm/xlnx-zynqmp.h
+> index c137ac59e8..0ae00e10f6 100644
+> --- a/include/hw/arm/xlnx-zynqmp.h
+> +++ b/include/hw/arm/xlnx-zynqmp.h
+> @@ -42,6 +42,7 @@
+>  #include "hw/misc/xlnx-zynqmp-crf.h"
+>  #include "hw/timer/cadence_ttc.h"
+>  #include "hw/usb/hcd-dwc3.h"
+> +#include "hw/core/split-irq.h"
+>
+>  #define TYPE_XLNX_ZYNQMP "xlnx-zynqmp"
+>  OBJECT_DECLARE_SIMPLE_TYPE(XlnxZynqMPState, XLNX_ZYNQMP)
+> @@ -87,6 +88,7 @@ OBJECT_DECLARE_SIMPLE_TYPE(XlnxZynqMPState, XLNX_ZYNQMP=
+)
+>                                    XLNX_ZYNQMP_MAX_HIGH_RAM_SIZE)
+>
+>  #define XLNX_ZYNQMP_NUM_TTC 4
+> +#define XLNX_ZYNQMP_GIC_NUM_SPI_INTR 160
+>
+>  /*
+>   * Unimplemented mmio regions needed to boot some images.
+> @@ -105,6 +107,9 @@ struct XlnxZynqMPState {
+>      GICState gic;
+>      MemoryRegion gic_mr[XLNX_ZYNQMP_GIC_REGIONS][XLNX_ZYNQMP_GIC_ALIASES=
+];
+>
+> +    GICState rpu_gic;
+> +    SplitIRQ splitter[XLNX_ZYNQMP_GIC_NUM_SPI_INTR];
+> +
+>      MemoryRegion ocm_ram[XLNX_ZYNQMP_NUM_OCM_BANKS];
+>
+>      MemoryRegion *ddr_ram;
+> --
+> 2.34.1
+>
 

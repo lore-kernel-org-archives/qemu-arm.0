@@ -4,83 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 035A1CA0FE1
-	for <qemu-arm@archiver.kernel.org>; Mon, 25 Aug 2025 10:30:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C48E4CA0EFA
+	for <qemu-arm@archiver.kernel.org>; Mon, 25 Aug 2025 10:34:32 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uqUSh-0000K5-IW; Mon, 25 Aug 2025 06:30:05 -0400
+	id 1uqUWv-0001Tm-Vh; Mon, 25 Aug 2025 06:34:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1uqUSa-0000HM-Ig
- for qemu-arm@nongnu.org; Mon, 25 Aug 2025 06:29:57 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1uqUWt-0001TL-TI
+ for qemu-arm@nongnu.org; Mon, 25 Aug 2025 06:34:23 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1uqUSV-00061D-1q
- for qemu-arm@nongnu.org; Mon, 25 Aug 2025 06:29:56 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1uqUWq-0006cR-Il
+ for qemu-arm@nongnu.org; Mon, 25 Aug 2025 06:34:23 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1756117787;
+ s=mimecast20190719; t=1756118055;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=VKQJLAbYVYWf911JTqlSSntFq1pIoSJJRgvHa6rLgv0=;
- b=FnPNtJTJn0VEAm18brmGSOF8Wh2vKPlz4DXJEVG7JZqzRygBQnbiJvU21YiBasvCeqIW/6
- tvO4V1Z+EPvOcJu0NuJjtmMMnMK7UG30REw17j4gw/lgrteiGU9aUw52wfMjjGgxP/LBTh
- Gx6GVtHEyRRcxE6y4ziLRejR7OXYk3Q=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=/wk04dinmIPpQ4cVK96z+fxLoh2FCqJ98KQMCTEN+ns=;
+ b=PaPAheLNJcNyhEw913TuGmWTzSj2DDWJ9M5LclRTNySmKdLJ+uSWK5ty06W3XFdRRXhZca
+ 1jk3rp1Cq+f1EiF70XvGp+lcB2+WntSBydAvmdr3sOgy4elGMoMay2/605usAlYdWbWnXR
+ e33/bMPCbnDQcGOmBYeTWe5UubRxShI=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-690-X7CWq6SmNMm8PwGIut-mAw-1; Mon, 25 Aug 2025 06:29:45 -0400
-X-MC-Unique: X7CWq6SmNMm8PwGIut-mAw-1
-X-Mimecast-MFC-AGG-ID: X7CWq6SmNMm8PwGIut-mAw_1756117784
-Received: by mail-wm1-f71.google.com with SMTP id
- 5b1f17b1804b1-45a1b0ccb6cso20924635e9.3
- for <qemu-arm@nongnu.org>; Mon, 25 Aug 2025 03:29:45 -0700 (PDT)
+ us-mta-502-Ro43TbcYMba6RLGGNN852A-1; Mon, 25 Aug 2025 06:34:14 -0400
+X-MC-Unique: Ro43TbcYMba6RLGGNN852A-1
+X-Mimecast-MFC-AGG-ID: Ro43TbcYMba6RLGGNN852A_1756118053
+Received: by mail-wr1-f71.google.com with SMTP id
+ ffacd0b85a97d-3c5ae800421so1910308f8f.1
+ for <qemu-arm@nongnu.org>; Mon, 25 Aug 2025 03:34:14 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756117784; x=1756722584;
+ d=1e100.net; s=20230601; t=1756118053; x=1756722853;
  h=content-transfer-encoding:in-reply-to:autocrypt:content-language
  :from:references:cc:to:subject:user-agent:mime-version:date
  :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=VKQJLAbYVYWf911JTqlSSntFq1pIoSJJRgvHa6rLgv0=;
- b=qT44RJoDH/RJz+H/9VFrFodfRiaUGbTgJnJhoCeV7uaZJdKU+ebuA8iRjTp90P+wpR
- LYU5A8HeJTSDQ99vTFzWG0gn+nrmyee6DAFYLaZ47DgU2uYuvyit2tt/OiqhzmN+VAyx
- gM7p4bJViuHiUSYxEuOTTj15rv/Ki/r95WTnV6KBbr8gij3FuzXY62CP+USyqOL1+Gza
- 4x1pmwsirEuuka7Nro83ecfizaZPAdb3kOxvKTLTI495BWw6y1YxV5kIS5sQRbMLo0SB
- gllEULyc1mnxCViuf+GhqhZ1azMjJGV0RtDEUXYBwitDkWPoR3fvHGgPl+rWCOVn9gTn
- r+LQ==
-X-Gm-Message-State: AOJu0YyF0LtRuSiQVEY7nhBdkocISTwJUhiOQVjiTlUFqvM1uGAAsC+Y
- dtKdJLBSfXtcZAD8Dvp+U7JoYx4JwHdxsKgf+npFM+byaDFNlqW/Jf8FAKCT6AWVbLZ4EMeS68q
- 97zLlpsDhZcJ/jYa9ya8LUM2mry92oa2bfnfCmzqr7hYiG4POUNAXtg==
-X-Gm-Gg: ASbGncskBZfnsdf8no1Afdcx7EMgNLVHNHV9BiYPLkOiWZjmLNvVQrJZwP6mXYpTqxU
- grUwQSCRdoFo6XMB9+Tpk4+CKaqD75Th/7gDyAOytOREgC4uRLdbjfxzvOf8ZiTRYhPJcKPXf7d
- sC/3Zi157JnijeSPN2QR7lYHCHLsGZF/88MUJcfH8l5NBI089x/rQLfV4RMM0MUVOjZiE2wvl2H
- K423PmAvPykEem1VIitFOMobepgo+jydZ0C96KHP9ztc+hclPd2EzxPo2cmJHuniIpc7w3coPDD
- w+iLMcfj2UdrZKRvOUyXC6EtJAiJUHIdyfLBisetBrcSBZAlZ2Zr05Q9pi39T8KUkDPZmDRMVQM
- 94tE=
-X-Received: by 2002:a05:600c:b8d:b0:456:496:2100 with SMTP id
- 5b1f17b1804b1-45b517c2e4emr127307815e9.31.1756117784179; 
- Mon, 25 Aug 2025 03:29:44 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IE+7UC6le9Nb78uKFp9+/xdKTyWFU7IIRjTBcVcXD3hz2EVYZnlifI8UjT3p2Rs5Ijvi8/QpQ==
-X-Received: by 2002:a05:600c:b8d:b0:456:496:2100 with SMTP id
- 5b1f17b1804b1-45b517c2e4emr127307595e9.31.1756117783721; 
- Mon, 25 Aug 2025 03:29:43 -0700 (PDT)
+ bh=/wk04dinmIPpQ4cVK96z+fxLoh2FCqJ98KQMCTEN+ns=;
+ b=vmABUFrThs6i+HSPV+/4XeBW3O6z2prMtsWqgDQbQtxcE6qpD2O3HYrPFqiz5msacU
+ Y+KOGUSsnNvPTssOeFUop/pFj70Y3MiNYyQm0YXQDE4iwKx3StolNz5FWoNBuXC7V4BL
+ O4KIofKThUTiYKaNlmfvxcdwUgoFrMCTQuGbQaZFjj3pqQ2P4wwr/BWtMJV7CmLpmlvV
+ IbSejg//wQ63HjH+DbMEtHYjfF6SS1l4NSZfZsoS3FRTk9o3oFY/xhc7SMtavr/tkI3T
+ avf+KBMD7rF4fFYIvGf5SMx3ATQRcSbyqt+7MYZScd5/DHC8bWmDecAyotOYb4n6xLd2
+ 1AQw==
+X-Gm-Message-State: AOJu0YwjQTppKlDiMIA7ByswwB4ZQkOS0WOkDPTIxqmfindZZycdjYDa
+ 5+bs0nlxL7d/5ycvegCrnS8C9nk/Sy4fGShPOXOju0umxG3Os773VeWzroypd9Hg0FTOD6wR24i
+ RI8T1XMS1hXAzbTgTnXyzVGitbLFvdHkcED+s2/gmdz96G5s5tN8csQ==
+X-Gm-Gg: ASbGncuwdg1jwBhOS0DQYIFvo5xZmhISgxNBgLPCQYnau6Xzm7l/dQYZyNRbLVDkGE7
+ YAIvDjjeHR5jtFM0NU3969Kyun599bCftnWvFbZgIwyUnvK5ge+OTuRYyZmxOrcHgmmj1l7tQul
+ eH00BphcWaxsAqW3XzIigsEBEzREnEasIMs70sYPkjLYM4ePD+S3G3o308eNSFvtDib6vYqEI3p
+ KYqoNBl3u1FaLncDumfsc26swqsAEP5Dsy+H6GNMPGgB7BQgKG/UcgXgAoXBAGwTk/t+/WTwOeR
+ Ov7J7vZQ4nvJ8i//g85fCYJTMz1oJmfBHfk1VLaJLcffp2VjX0YHYsxNGtUxZDMD0EUP8zjIYbe
+ cAl0=
+X-Received: by 2002:a05:6000:3105:b0:3b8:d672:3cf8 with SMTP id
+ ffacd0b85a97d-3c5dcb10b6amr9369384f8f.43.1756118053001; 
+ Mon, 25 Aug 2025 03:34:13 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IG9jFjqHivEN9ZDtt6uqJw4epGS8I3riUF1Ys533XnSs5/ygn1HXKWbw/Y/YP5CxF8KO5Ym2Q==
+X-Received: by 2002:a05:6000:3105:b0:3b8:d672:3cf8 with SMTP id
+ ffacd0b85a97d-3c5dcb10b6amr9369368f8f.43.1756118052523; 
+ Mon, 25 Aug 2025 03:34:12 -0700 (PDT)
 Received: from [192.168.0.6] (ltea-047-064-112-084.pools.arcor-ip.net.
  [47.64.112.84]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-45b57492d32sm104040415e9.21.2025.08.25.03.29.42
+ ffacd0b85a97d-3c711bb1d3esm11012918f8f.55.2025.08.25.03.34.11
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 25 Aug 2025 03:29:43 -0700 (PDT)
-Message-ID: <53b6e23f-5328-42c6-9c58-97ddbf3e5b29@redhat.com>
-Date: Mon, 25 Aug 2025 12:29:41 +0200
+ Mon, 25 Aug 2025 03:34:12 -0700 (PDT)
+Message-ID: <2ef8923b-18f5-47c6-b688-c9fa5b4fb0e4@redhat.com>
+Date: Mon, 25 Aug 2025 12:34:10 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 0/4] tests/functional: Adapt reverse_debugging to run w/o
+Subject: Re: [PATCH 4/4] tests/functional: Adapt reverse_debugging to run w/o
  Avocado
 To: Gustavo Romero <gustavo.romero@linaro.org>, qemu-devel@nongnu.org,
  alex.bennee@linaro.org
-Cc: qemu-arm@nongnu.org, 1844144@gmail.com, Jan Richter <jarichte@redhat.com>
+Cc: qemu-arm@nongnu.org, "Daniel P. Berrange" <berrange@redhat.com>
 References: <20250819143916.4138035-1-gustavo.romero@linaro.org>
+ <20250819143916.4138035-5-gustavo.romero@linaro.org>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -124,9 +125,9 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20250819143916.4138035-1-gustavo.romero@linaro.org>
+In-Reply-To: <20250819143916.4138035-5-gustavo.romero@linaro.org>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: iywdyi9DpaqC-1Hfh1rGJdXA1o8J-6HYbKYEeaA-r_w_1756117784
+X-Mimecast-MFC-PROC-ID: czYVCccm4SnBB3cYQ9tUktCdHwEhbMWAlORJTXNC3Gw_1756118053
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
@@ -157,55 +158,56 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 19/08/2025 16.39, Gustavo Romero wrote:
-> The goal of this series is to remove Avocado as a dependency for running
-> the reverse_debugging functional test.
+> This commit removes Avocado as a dependency for running the
+> reverse_debugging test.
 > 
-> This test, the last one I’m aware of that relies on Avocado, requires it
-> because of the need for GDB to test reverse stepping and continue.
-
-  Hi!
-
-Please note that there are currently also some efforts going on to extract 
-the GDB part from avocado into a more self-contained python module called 
-aautils, which might help here, too:
-
-  https://github.com/avocado-framework/aautils/issues/82
-
-> In this series, we leveraged the run-test.py script used in the
-> check-tcg tests, making it a GDB runner capable of calling a test script
-> without spawning any VMs. In this configuration, the test script can
-> manage the VMs and also import gdb from the test script, making the
-> Python GDB API available inside the functional test.
+> The main benefit, beyond eliminating an extra dependency, is that there
+> is no longer any need to handle GDB packets manually. This removes the
+> need for ad-hoc functions dealing with endianness and arch-specific
+> register numbers, making the test easier to read. The timeout variable
+> is also removed, since Meson now manages timeouts automatically.
 > 
-> The test is kept “skipped” for aarch64, ppc64, and x86_64, so it is
-> necessary to set QEMU_TEST_FLAKY_TESTS=1 in the test environment to
-> effectively run the test on these archs.
+> The reverse_debugging test is now executed through a runner, because it
+> requires GDB in addition to QMP. The runner is responsible for invoking
+> GDB with the appropriate arguments and for passing the test script to
+> GDB.
 > 
-> On aarch64, the test is flaky, but there is a fix that I’ve tested while
-> writing this series [0] that resolves it. On ppc64 and x86_64, the test
-> always fails: on ppc64, GDB gets a bogus PC, and on x86_64, the last
-> part of the test (reverse-continue) does not hit the last executed PC
-> (as it should) but instead jumps to the beginning of the code (fist PC
-> in forward order).
-
-At least the x86 test used to work for me most of the time, it just fails 
-occasionally. Same for the ppc64 test if I disable the powernv subtest there.
-
-> Thus, to run the reverse_debugging test effectively on aarch64:
+> Since the test now runs inside GDB, its output, particularly from
+> 'stepi' commands, which cannot be disabled, interleaves with the TAP
+> output from unittest. To avoid this conflict, the test no longer uses
+> Meson’s 'tap' protocol and instead relies on the simpler 'exitcode'
+> protocol.
 > 
-> $ export QEMU_TEST_FLAKY_TESTS=1
-> $ make check-functional
+> reverse_debugging is kept "skipped" for aarch64, ppc64, and x86_64, so
+> won't run unless QEMU_TEST_FLAKY_TESTS=1 is set in the test environment,
+> before running 'make check-functional' or 'meson test [...]'.
+> 
+> Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
+> ---
+...
+> diff --git a/tests/functional/test_aarch64_reverse_debug.py b/tests/functional/test_aarch64_reverse_debug.py
+> index 58d4532835..8b6f82c227 100755
+> --- a/tests/functional/test_aarch64_reverse_debug.py
+> +++ b/tests/functional/test_aarch64_reverse_debug.py
+...
+> -    KERNEL_ASSET = Asset(
+> +    ASSET_KERNEL = Asset(
+>           ('https://archives.fedoraproject.org/pub/archive/fedora/linux/'
+>            'releases/29/Everything/aarch64/os/images/pxeboot/vmlinuz'),
+>           '7e1430b81c26bdd0da025eeb8fbd77b5dc961da4364af26e771bd39f379cbbf7')
+> @@ -30,9 +29,9 @@ class ReverseDebugging_AArch64(ReverseDebugging):
+>       def test_aarch64_virt(self):
+>           self.set_machine('virt')
+>           self.cpu = 'cortex-a53'
+> -        kernel_path = self.KERNEL_ASSET.fetch()
+> +        kernel_path = self.ASSET_KERNEL.fetch()
+>           self.reverse_debugging(args=('-kernel', kernel_path))
 
-I gave it a try, but this did not work for me, the test was not run at all 
-anymore. Are there any patches needed on top?
+Ouch, that "KERNEL_ASSET" is worth to be sent as a separate bugfix (without 
+the proper "ASSET_" prefix, the asset won't be precached properly). Could 
+you maybe send this as a separate patch, please?
 
-Anyway, shifting to a different test harness here makes me wonder whether 
-the whole reverse_debug test should maybe be rather moved to tests/tcg 
-instead, where we already have the basic support for the stuff from 
-tests/guest-debug/ ?
-The aarch64 would require a different guest payload, of course, in that 
-case, so not sure whether it's feasible?
-
-  Thomas
+  Thanks,
+   Thomas
 
 

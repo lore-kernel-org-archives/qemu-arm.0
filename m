@@ -4,87 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D305CA0EFA
-	for <qemu-arm@archiver.kernel.org>; Mon, 25 Aug 2025 11:02:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F57FCA0EFA
+	for <qemu-arm@archiver.kernel.org>; Mon, 25 Aug 2025 11:06:41 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uqUxO-00029k-3v; Mon, 25 Aug 2025 07:01:51 -0400
+	id 1uqV20-0004rj-Oz; Mon, 25 Aug 2025 07:06:33 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1uqUxM-00027Y-BL
- for qemu-arm@nongnu.org; Mon, 25 Aug 2025 07:01:44 -0400
-Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uqV1z-0004rb-Es
+ for qemu-arm@nongnu.org; Mon, 25 Aug 2025 07:06:31 -0400
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1uqUx1-0001U4-Fu
- for qemu-arm@nongnu.org; Mon, 25 Aug 2025 07:01:41 -0400
-Received: by mail-ed1-x52e.google.com with SMTP id
- 4fb4d7f45d1cf-61c3360bbaeso2113522a12.1
- for <qemu-arm@nongnu.org>; Mon, 25 Aug 2025 04:01:17 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uqV1w-0002Fr-RU
+ for qemu-arm@nongnu.org; Mon, 25 Aug 2025 07:06:31 -0400
+Received: by mail-wr1-x431.google.com with SMTP id
+ ffacd0b85a97d-3c763484ccdso1046616f8f.0
+ for <qemu-arm@nongnu.org>; Mon, 25 Aug 2025 04:06:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756119675; x=1756724475; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=CmV+8BnlwEOlZkRzW5pzkSfYMNFngQ/rFyqp66rkQ/Y=;
- b=HoQcHpIzoUceTEneEVZTC74NuwM5+RgU/Zskt1LiWu9tAx2mKq65rouDh8943tZsZl
- bc5ku5oYn9D+UVsg0XFCPW8BpXDjnGZhZU67exSxiJpBObePCzDB/fDKKUj3+vEcaBss
- YM6W4T1HoJXH14OBEHbnwptZ08yDMKyPzMrr9ij6yWiSKs9ARV12bH2E4cV+0xCwfFiP
- 0f7Bs/L2hH0L8rJoq0nxprQ9qZ9+pjr0HhnKeAh7/cJ9T26eLllgy0x9pqI/+bs7apfU
- 5LSWfv9pc4mzylQeDcMAHOGZ4veuUdiBqo4tilJxr8bOF0BeHfDx5ScdNcV+fRwRjEQ6
- mT3w==
+ d=linaro.org; s=google; t=1756119984; x=1756724784; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=b7B1h6iBFdoyoaJoneA4WRk2fx4IAUGIgXcUS7w01a8=;
+ b=HXPa4trq5luvpNj9CeIJqM+SuK0dtb2glJtvjajCLLh77+TF61LE5r8F20j8PGGxFJ
+ en5nHjMqAGlHtTVCEk6fRcosoAjEZnHybLfRrjv0buIH6QVdaTf0k9Qku4S2fs79N+Jj
+ IY+w7XOZHXZ8xnPSMij5MuxjMaaAq62vCBNEcnUOOaRz0aTLIxgLD/RxsaoahvPPCCZB
+ NFLopykuyumCgVqPDiJnwDxVEpcKZdfc+Czkh4VN1F5r4FyChGD2T4vn3YAHFRxbs3o5
+ Gk+pFFyofWP/t/7IBF+cb2GmZ6rwNxq2GZf5bvIkZ8JamnbCuAAuGKi2wFUA7po60g2G
+ i5bg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756119675; x=1756724475;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=CmV+8BnlwEOlZkRzW5pzkSfYMNFngQ/rFyqp66rkQ/Y=;
- b=WMJv9LSpGqkPIEX3tukTr4aehV94Nk9K6Pal0GLXhZyq4OlIlYbexEmhHjV/HFXWFn
- c99jQelDVWkdXEmp9A52uH7hKi+v9bMZc7RL+bhCXUPNe6lG8c4bbwuntbhLnhtqdxD+
- NKL8C9UgBtMPti+QaYEc1RBEZXBQpK69l6xeHKLVTnQZm/W/iq+9qsj8700dmH7iGZcO
- 3XoAVKj4QnZGecYh/xvVxdoow0l5oWiVm5kN8oCvkMae7Yb82AsWGbfTtB9FAua22bTt
- iC9U88Ms74ZzvM03/PrTJoSTbSvsaMDH9U3JoyY5tQj90aNbhRxPmGXNYC1qCT1JoxmA
- NOGg==
+ d=1e100.net; s=20230601; t=1756119984; x=1756724784;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=b7B1h6iBFdoyoaJoneA4WRk2fx4IAUGIgXcUS7w01a8=;
+ b=CHHb3A/UvS94YPLpXkVo7wQoGkiA3KvPJDEuWHk1kEyXnsvjnSUa38zH5iEpjfJGMq
+ dOPD+npgahsGeQcQvLvZwU077Ejkm78Z3T4ENgmmwgoG8An9oCOADyxGkEgNT8t1O1+k
+ 8KFNnx9apoMeAsBv+yRxq3c4+c5ZEkrS/UaHAkWxlYDcEnSRlg3mQC22nUAKH09OIpuW
+ kc4PzDHJUz/imbNgbbk9u5xpz3L8HbzHmrlTMUkvr24Wyrbn5N/mNJLiL5bMABLSnIZY
+ SeBuZo+YEQdCQeSSGQPxQZw1Z2/NQSzmtghvwm1CJSt16ypUo2fikbi++Lx2B5euOlx9
+ C7Pg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCV5qBkj1zNvJ9xnYUsb7UQuFR4jr5o5Kf1oityT+9sDiyNWDjbeWkvrN7nexjP0HiHhVxaXgludWA==@nongnu.org
-X-Gm-Message-State: AOJu0YxKyRQN8yKeZ8aCHvNrke0hceXUhSMRuu1D0fYSAWb6lsxVNf2C
- bpekLEr3CA6mkiP9Rznm/dh42xu8cvcbGrjMkRQW9IaRpIpRS59bW2GypXE6CIsVGTGqowjl4pI
- onKLDqHh3lpps2ok48lM7vfcv7E8Fygd9UhZ7SIxsYA==
-X-Gm-Gg: ASbGncu8QxJUcyiXRzSdC9qbcXlPkR+rInyjNcXaZw4wfm34sfgExa0zsY5GYLiUWx3
- 2fUC5lBqmWjJLPieBDg3914plvyxCDMy3xBiJ1GQD/tTArGV2KVXyBykdvKlXJYl9n2fUuur09u
- TZ3ZKzel3IxAh2P3ODPua3i8J8M9Zm8UQzBbeB7PCC7TJBWQlTUkZ1F2+JF5ZYptGtcoeysjxFg
- bZrmBBoU7UC88o4ZhE=
-X-Google-Smtp-Source: AGHT+IG55e19oOn65bbyHgs8KKzdVtnHUB/PtBKIqQvdKXeFFlIsWC/Pyqg+u/B/HGaNpCw4+E2XNPbUl8GOZWmPea8=
-X-Received: by 2002:a05:6402:5107:b0:61c:7743:7f9b with SMTP id
- 4fb4d7f45d1cf-61c77438576mr1277608a12.32.1756119675347; Mon, 25 Aug 2025
- 04:01:15 -0700 (PDT)
+ AJvYcCXS5cGNsgTyk+swpGWRZoK+ux+w1sQIIgZcoGJ1WeA2DuoigkMT+SYoS6R0042epg8hIPML5TbTyA==@nongnu.org
+X-Gm-Message-State: AOJu0Yy2YFvAGAhF/s1xhypZBM0gkEqopO6dkDXjEG6SkZLNVxG0qKSH
+ 7cmgrzcXVYRtGCXnbFAixVRq9cfUe92XnNiniHB9hy+8R8uRNxO/RKrjhEG6gCJZqrk=
+X-Gm-Gg: ASbGncvWN7NRSfEhXmSAfjb6GsnGJCNAft2F1vAy/yGs2/j5tBgL/wtNnM53vTMF5sO
+ NcSaG5nrmyny13I9iBfcUyBACOMPH6LXs5yFe3Q3+hWO2OoGw/H46zTZk/5Nd4unyV4oKkDqde8
+ aVOCapU9uPUozh4GLxaBZMuD+JqBn2qdgzT+aVUwPSUOc6fMvVDX3HwmT98Nyl18O6zsXvhtd22
+ Li0bWkNlCznHdIi5E3KvjR7RaCyDoVs6kb/X7v0vz2GeaTcx9fV1YwRsVVMLEf3fe+qb0PRgnQl
+ azH9hB+9E1j1XhWZkitgv4hLhbydTmEcp3axy4cj2f4VqRS9o1ecsWLHS7RY7qx/fjfBNyuh0eg
+ A1EqKXuEVV2czcldBOQUxc14Vo1csffDZpcJNF5tdLxV3GuL82eUWJ8AMo4vZltym3g==
+X-Google-Smtp-Source: AGHT+IHVbiY7+DxA209a+SDNjN0O/t9xMOqd06ESsCjGRaKa3e26xGXMmjMrUSmrrcxdVZT5ShtZ5Q==
+X-Received: by 2002:a05:6000:230a:b0:3c9:d1b0:809f with SMTP id
+ ffacd0b85a97d-3c9d1b08468mr1534329f8f.29.1756119984369; 
+ Mon, 25 Aug 2025 04:06:24 -0700 (PDT)
+Received: from [192.168.69.208] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-3c70e4ba390sm11566406f8f.12.2025.08.25.04.06.22
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 25 Aug 2025 04:06:23 -0700 (PDT)
+Message-ID: <74f86350-a10a-45c0-a3f2-4d582989655b@linaro.org>
+Date: Mon, 25 Aug 2025 13:06:22 +0200
 MIME-Version: 1.0
-References: <20250819143916.4138035-1-gustavo.romero@linaro.org>
- <53b6e23f-5328-42c6-9c58-97ddbf3e5b29@redhat.com>
-In-Reply-To: <53b6e23f-5328-42c6-9c58-97ddbf3e5b29@redhat.com>
-From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-Date: Mon, 25 Aug 2025 14:00:49 +0300
-X-Gm-Features: Ac12FXxd0-3gEEy26nBQBTNeeM8BmgBWDNmEkK5aPJgoeEKNtxezgwqVitWv8Yk
-Message-ID: <CAAjaMXaS6kpq9uOdd6Jgh7JXu5JUtrFjzPUdz5UfAJ+=ASg14A@mail.gmail.com>
-Subject: Re: [PATCH 0/4] tests/functional: Adapt reverse_debugging to run w/o
- Avocado
-To: Thomas Huth <thuth@redhat.com>
-Cc: Gustavo Romero <gustavo.romero@linaro.org>, qemu-devel@nongnu.org, 
- alex.bennee@linaro.org, qemu-arm@nongnu.org, 1844144@gmail.com, 
- Jan Richter <jarichte@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::52e;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-ed1-x52e.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RFC PATCH v2 7/9] system/memory: assert on invalid unaligned
+ combo
+To: CJ Chen <cjchen@igel.co.jp>, qemu-devel@nongnu.org,
+ qemu-block@nongnu.org, qemu-riscv@nongnu.org, qemu-arm@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>, Keith Busch <kbusch@kernel.org>,
+ Klaus Jensen <its@irrelevant.dk>, Jesper Devantier <foss@defmacro.it>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <alistair.francis@wdc.com>, Weiwei Li
+ <liwei1518@gmail.com>, Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, Tyrone Ting <kfting@nuvoton.com>,
+ Hao Wu <wuhaotsh@google.com>, Max Filippov <jcmvbkbc@gmail.com>,
+ Peter Xu <peterx@redhat.com>, David Hildenbrand <david@redhat.com>,
+ Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
+ Tomoyuki Hirose <hrstmyk811m@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>
+References: <20250822092410.25833-1-cjchen@igel.co.jp>
+ <20250822092410.25833-8-cjchen@igel.co.jp>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20250822092410.25833-8-cjchen@igel.co.jp>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::431;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x431.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -100,73 +114,26 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, Aug 25, 2025 at 1:31=E2=80=AFPM Thomas Huth <thuth@redhat.com> wrot=
-e:
->
-> On 19/08/2025 16.39, Gustavo Romero wrote:
-> > The goal of this series is to remove Avocado as a dependency for runnin=
-g
-> > the reverse_debugging functional test.
-> >
-> > This test, the last one I=E2=80=99m aware of that relies on Avocado, re=
-quires it
-> > because of the need for GDB to test reverse stepping and continue.
->
->   Hi!
->
-> Please note that there are currently also some efforts going on to extrac=
-t
-> the GDB part from avocado into a more self-contained python module called
-> aautils, which might help here, too:
->
->   https://github.com/avocado-framework/aautils/issues/82
->
+On 22/8/25 11:24, CJ Chen wrote:
+> When it comes to this pattern: .valid.unaligned = false and
+> impl.unaligned = true, is effectlvely contradictory. The .valid
+> structure indicates that unaligned access should be rejected at
+> the access validation phase, yet .impl suggests the underlying
+> device implementation can handle unaligned operations. As a result,
+> the upper-layer code will never even reach the .impl logic, leading
+> to confusion.
+> 
+> Signed-off-by: CJ Chen <cjchen@igel.co.jp>
+> Tested-by: CJ Chen <cjchen@igel.co.jp>
 
-There's also https://github.com/cs01/pygdbmi which I have used before,
-it seems like it does the same thing as avocado's gdb module but it
-could be missing some functionality
+It is normal for contributors to test their patches ;)
 
-> > In this series, we leveraged the run-test.py script used in the
-> > check-tcg tests, making it a GDB runner capable of calling a test scrip=
-t
-> > without spawning any VMs. In this configuration, the test script can
-> > manage the VMs and also import gdb from the test script, making the
-> > Python GDB API available inside the functional test.
-> >
-> > The test is kept =E2=80=9Cskipped=E2=80=9D for aarch64, ppc64, and x86_=
-64, so it is
-> > necessary to set QEMU_TEST_FLAKY_TESTS=3D1 in the test environment to
-> > effectively run the test on these archs.
-> >
-> > On aarch64, the test is flaky, but there is a fix that I=E2=80=99ve tes=
-ted while
-> > writing this series [0] that resolves it. On ppc64 and x86_64, the test
-> > always fails: on ppc64, GDB gets a bogus PC, and on x86_64, the last
-> > part of the test (reverse-continue) does not hit the last executed PC
-> > (as it should) but instead jumps to the beginning of the code (fist PC
-> > in forward order).
->
-> At least the x86 test used to work for me most of the time, it just fails
-> occasionally. Same for the ppc64 test if I disable the powernv subtest th=
-ere.
->
-> > Thus, to run the reverse_debugging test effectively on aarch64:
-> >
-> > $ export QEMU_TEST_FLAKY_TESTS=3D1
-> > $ make check-functional
->
-> I gave it a try, but this did not work for me, the test was not run at al=
-l
-> anymore. Are there any patches needed on top?
->
-> Anyway, shifting to a different test harness here makes me wonder whether
-> the whole reverse_debug test should maybe be rather moved to tests/tcg
-> instead, where we already have the basic support for the stuff from
-> tests/guest-debug/ ?
-> The aarch64 would require a different guest payload, of course, in that
-> case, so not sure whether it's feasible?
->
->   Thomas
->
->
+> Suggested-by: Peter Xu <peterx@redhat.com>
+> Acked-by: Tomoyuki Hirose <hrstmyk811m@gmail.com>
+> ---
+>   system/memory.c | 1 +
+>   1 file changed, 1 insertion(+)
+
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+
 

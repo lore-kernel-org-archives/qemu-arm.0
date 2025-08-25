@@ -4,95 +4,116 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18D72CA0EFA
-	for <qemu-arm@archiver.kernel.org>; Mon, 25 Aug 2025 14:56:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1EE69CA0EFA
+	for <qemu-arm@archiver.kernel.org>; Mon, 25 Aug 2025 15:04:12 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uqYc1-0007vS-ME; Mon, 25 Aug 2025 10:55:57 -0400
+	id 1uqYjF-0002pk-CN; Mon, 25 Aug 2025 11:03:25 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
- id 1uqYbz-0007um-Mv
- for qemu-arm@nongnu.org; Mon, 25 Aug 2025 10:55:55 -0400
-Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
- id 1uqYbv-0004RZ-BM
- for qemu-arm@nongnu.org; Mon, 25 Aug 2025 10:55:53 -0400
-Received: by mail-pg1-x544.google.com with SMTP id
- 41be03b00d2f7-b476c67c5easo2910247a12.0
- for <qemu-arm@nongnu.org>; Mon, 25 Aug 2025 07:55:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756133749; x=1756738549; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=sSew+fkQvu+k086nQoRhde2nK4xteVbP5aJi2pbHq4U=;
- b=fvI+2T6JGADmB/7kimTXXmO+Nt3b8ZS/eWonVGlBA+z4NUB5EgYwUcK8rbHF0+4Wuo
- 2hdmrG6JpeBlhDLFm86eMRIcN5hD2jC3z0LsZ0xCzgkWiGqIGXy4gKNMPJtqoWrrQUNX
- mvXRtGVtP4KcJewc1/jTeyNp+zBTSvEhJOqGidf/3TZCTTzXWTdbTvw3XS6zHfcxSBAG
- U8Zg67fDZZUz8w0Uk3wVE5ET0CF59jmNqWKPDxtfHx4XX71iUnYr1n/+8OIv2SasIRw2
- vkU7sATd3dXhZ9YfHJg1O5+kqcI+TxGIDYRZwo85gL//YAZQmYsuvyB1UnCLdMHFIoVL
- F2DQ==
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1uqYj6-0002lx-Jx
+ for qemu-arm@nongnu.org; Mon, 25 Aug 2025 11:03:18 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1uqYiy-0005AW-K0
+ for qemu-arm@nongnu.org; Mon, 25 Aug 2025 11:03:15 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1756134182;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=Jku5E13G2KMIV2rKiyk3MW2G1y8V9lbYaIi8AI/84A8=;
+ b=RDvSkSPILWSWB5F/dhVXzvqK1WuG0PtFiIoW4U0+nHovJC4SrKqvWnQn5c1KqEr3kNQOuk
+ acZnbeIypO9RMMf26o5c7XUm1laKABXaqGPpO++Vv+qzmHtQ64746PqNbVEd0RFaMiN0Zu
+ C/3PcOlvPyJBN0hvf3ENTC6gSuFh5Bg=
+Received: from mail-qv1-f72.google.com (mail-qv1-f72.google.com
+ [209.85.219.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-132-OsmSsTGeOOKcyHbOUBT4kA-1; Mon, 25 Aug 2025 11:03:01 -0400
+X-MC-Unique: OsmSsTGeOOKcyHbOUBT4kA-1
+X-Mimecast-MFC-AGG-ID: OsmSsTGeOOKcyHbOUBT4kA_1756134180
+Received: by mail-qv1-f72.google.com with SMTP id
+ 6a1803df08f44-70d9a65c239so66972516d6.3
+ for <qemu-arm@nongnu.org>; Mon, 25 Aug 2025 08:03:01 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756133749; x=1756738549;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=sSew+fkQvu+k086nQoRhde2nK4xteVbP5aJi2pbHq4U=;
- b=eN2Htogu1M1eNhy1wfh8jP3Guv+cUBv0erFj4AvnQ1HTvBdCgfEq387uQsnEv5TMVO
- KS5ooKXkW48xxtQlKbqWMZykj1Zyk5M6vF9r/M3vBJEhRSqeZkdLRwv+W0+geXK5eDRd
- jMoXLrSbQFEq994ktVtItCKFwleGcfkzxp0Zb9313aj5U+IMj/xPttBXaOTGvmiDenhv
- 73M9Ol77EXZ2Aez8+UJu+GUHHrO6ZiiwcYQlW009DIbCYTpQ9FVAwn8K6D9NY9SBHcWF
- LOsDR+3cV0oVKfnQjh0moKKdiu8P3bI+aAbP9/sEJBTz/PqlCgnbJG4mJlL3C5BGeiW9
- JwyQ==
+ d=1e100.net; s=20230601; t=1756134180; x=1756738980;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=Uo+XruI8548gvlbgyudl9sYN+5f0IyR174ZzdauaxRg=;
+ b=bUn8TQ5JBIB96757+V7JHpE2sHzGLXdHKj5c1RP/tGgi2WcFyjZynYhqfsYEcJrQ2f
+ SwHq/mkKdr3E0Dfbvem0zeRO8NGUhLv2HPDtBuO8mkFxOKlSyw0m0w6GuF5L3Vy/l8o0
+ TqgdBAfDpMDt8nQGw5HGDBqtmz1b+01JSVMhPUTOIAkL6Bag7dx2bXepOWWx3lLC3U1/
+ p4nyoHlSIJQWhVGyoRm2uyaIFXfgVtbikNcoY1LB2x39cebA/pG3OcRRAAmj7/pYU/bi
+ q6Dofq+81vALkDiZMNYVePNOqfCDj8Qrv0ZgQ19USnV3nMCbKxyHy15Mj5Rn0XVQE2A5
+ h3xQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUjSXfZf5yqBhRUKln7KIe8xi0m6fHsHDRTykEfCBluKs3s0/+BVbvSTAy13udNHXp+3u15ZxDG/A==@nongnu.org
-X-Gm-Message-State: AOJu0YxLRun7gnoKWTKY6vqV+kodCypvfHZMvhyXd4Ec2H2dchRZ9BQm
- +0hSzJK9JWmoq8HtcANAxCU3lDhjfM9cQWNOz8HWMOdrrA8iZmzYX9rD5dtt62Sd1QY=
-X-Gm-Gg: ASbGncue6Jodd3gOdIORAOqk2bL6g/UEiIbEG3rMaWtICRu+CnnpYGiUoDYHK5N7ho+
- Pl7zZxuqrp/RVWByG/9S03VmeNjot/gmlkrLqotsZHXxc9XHKpwmTkSd3sIwB7o6yAZ/gWyyvAz
- CH1h8NCMCH2hn09M2R24JQyEvFC3gj/V+nuY+tZDKEcCoSDKJW9JPhVkCKvA3hdcuvZo+1cn7Q3
- if63yckWQYnnuMWol1kH1qpT/Kl38M7AWh5cz8dqWzh8a8T5fUBYaedWgasApjZSwwL0Io6VbUK
- q+6FTllH0Nla4lSSMk0QUPqC/FZOZBHmVh/UrNVA40184SjGYwenNim4P2kF5ULLZLE5+DZY31j
- nbk+qydvl1nJCxKwmAwlfRODiv5MhUcxVow==
-X-Google-Smtp-Source: AGHT+IEVKGvk2K0iCjlgHwOMs4yUt28Bo6wHO5OIoHPkLdmfTr2/n9L3vi0QiLfRc9o28lHjQVB5/w==
-X-Received: by 2002:a17:902:c408:b0:237:f757:9ad8 with SMTP id
- d9443c01a7336-2460238bc7bmr191506445ad.1.1756133748630; 
- Mon, 25 Aug 2025 07:55:48 -0700 (PDT)
-Received: from [192.168.0.102] ([187.75.38.174])
- by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-3254af4c347sm7227998a91.18.2025.08.25.07.55.46
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 25 Aug 2025 07:55:48 -0700 (PDT)
-Message-ID: <3e69b7de-bd13-44fa-8fc8-d5294fa2ca9e@linaro.org>
-Date: Mon, 25 Aug 2025 11:56:32 -0300
+ AJvYcCVHoRH2748Yv+TnqYFWW86uoELDDAf+4jf6nD5Ge2Ep1cZ7HruJQXvtkTEm8qxwBkp2VYPZZXdqHQ==@nongnu.org
+X-Gm-Message-State: AOJu0YwQDk2dwXzpBDH158UzSsDeTteHnlp7kZcrwUUppQs64UeqDMBr
+ h3HkPGyv8oTv6zQ8p6qrBbjZ1u9QKZRxeXePfFb6bwKc8fwaL3OzQNpJivVpJVeJU/JtHSCWFLa
+ joOXcArxOl2sX2N2GCyYKhH2SGDTE0t/RfYxYkfXgKG5Hb/ytPUlgoQ==
+X-Gm-Gg: ASbGncvfwON84KVGYjVkhj/9RwbF9QfP0Vm0ziVieCzWCn2J4q3MZba6TgXwGlTg5Rx
+ VCVrn7Dv7nM7WYR+sONRnXXUzZnvJCGxwno5NmsXNFCJ5Oj7ka6ponhn9nZzM+nhHZKStm0DxZL
+ VpEx3eHb7HtnhJqPf8vEojUKsepJT62dBtGNxFA82o58tc4dRW3mPR14bX9pT2rZE8+CFUsB195
+ j2fDDiD8rdn8JJF3+SBZ3us3rKZ8cHk7uzyJ+pn9IHFFqqak/cuf4piMkmt8GkoJjQNDs/KFrYH
+ xHKrrKqUMwklcDr82hwQh3et4xDwTg==
+X-Received: by 2002:ad4:5de9:0:b0:70d:ac6c:d5e with SMTP id
+ 6a1803df08f44-70dac6c152cmr85612726d6.17.1756134180038; 
+ Mon, 25 Aug 2025 08:03:00 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGv8eCrFNDO0lherB04MdWnrE7/si3AJQBQeeVWXJF6plrcPBMwu5wfSREvSOXxachUxzbc+w==
+X-Received: by 2002:ad4:5de9:0:b0:70d:ac6c:d5e with SMTP id
+ 6a1803df08f44-70dac6c152cmr85610226d6.17.1756134177610; 
+ Mon, 25 Aug 2025 08:02:57 -0700 (PDT)
+Received: from fedora ([85.93.96.130]) by smtp.gmail.com with ESMTPSA id
+ 6a1803df08f44-70da728659fsm46415946d6.39.2025.08.25.08.02.51
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 25 Aug 2025 08:02:57 -0700 (PDT)
+Date: Mon, 25 Aug 2025 17:02:49 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@linaro.org>,
+ pbonzini@redhat.com, peterx@redhat.com
+Cc: qemu-devel@nongnu.org, mst@redhat.com, mtosatti@redhat.com,
+ richard.henderson@linaro.org, riku.voipio@iki.fi, thuth@redhat.com,
+ pasic@linux.ibm.com, borntraeger@linux.ibm.com, david@redhat.com,
+ jjherne@linux.ibm.com, shorne@gmail.com, eduardo@habkost.net,
+ marcel.apfelbaum@gmail.com, wangyanan55@huawei.com, zhao1.liu@intel.com,
+ peter.maydell@linaro.org, agraf@csgraf.de, mads@ynddal.dk,
+ mrolnik@gmail.com, deller@gmx.de, dirty@apple.com, rbolshakov@ddn.com,
+ phil@philjordan.eu, reinoud@netbsd.org, sunilmut@microsoft.com,
+ gaosong@loongson.cn, laurent@vivier.eu, edgar.iglesias@gmail.com,
+ aurelien@aurel32.net, jiaxun.yang@flygoat.com, arikalo@gmail.com,
+ chenhuacai@kernel.org, npiggin@gmail.com, rathc@linux.ibm.com,
+ harshpb@linux.ibm.com, yoshinori.sato@nifty.com, iii@linux.ibm.com,
+ mark.cave-ayland@ilande.co.uk, atar4qemu@gmail.com, qemu-s390x@nongnu.org,
+ qemu-arm@nongnu.org, qemu-ppc@nongnu.org
+Subject: Re: [PATCH v5 6/8] add cpu_test_interrupt()/cpu_set_interrupt()
+ helpers and use them tree wide
+Message-ID: <20250825170249.3cdd315f@fedora>
+In-Reply-To: <d585141a-07ab-479e-9d56-f58ecc4e7207@linaro.org>
+References: <20250814160600.2327672-7-imammedo@redhat.com>
+ <20250821155603.2422553-1-imammedo@redhat.com>
+ <d585141a-07ab-479e-9d56-f58ecc4e7207@linaro.org>
+X-Mailer: Claws Mail 4.3.1 (GTK 3.24.49; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 0/4] tests/functional: Adapt reverse_debugging to run w/o
- Avocado
-To: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
- Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org, alex.bennee@linaro.org, qemu-arm@nongnu.org,
- 1844144@gmail.com, Jan Richter <jarichte@redhat.com>
-References: <20250819143916.4138035-1-gustavo.romero@linaro.org>
- <53b6e23f-5328-42c6-9c58-97ddbf3e5b29@redhat.com>
- <CAAjaMXaS6kpq9uOdd6Jgh7JXu5JUtrFjzPUdz5UfAJ+=ASg14A@mail.gmail.com>
-Content-Language: en-US
-From: Gustavo Romero <gustavo.romero@linaro.org>
-In-Reply-To: <CAAjaMXaS6kpq9uOdd6Jgh7JXu5JUtrFjzPUdz5UfAJ+=ASg14A@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::544;
- envelope-from=gustavo.romero@linaro.org; helo=mail-pg1-x544.google.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: 1FQTPWOBxDICMgZQIb2EpgOlYFC5LskzU8vxpKb3S2s_1756134180
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_PASS=-0.001, T_SPF_HELO_TEMPERROR=0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -108,85 +129,417 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Manos!
+On Mon, 25 Aug 2025 12:35:51 +0200
+Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> wrote:
 
-On 8/25/25 08:00, Manos Pitsidianakis wrote:
-> On Mon, Aug 25, 2025 at 1:31 PM Thomas Huth <thuth@redhat.com> wrote:
->>
->> On 19/08/2025 16.39, Gustavo Romero wrote:
->>> The goal of this series is to remove Avocado as a dependency for running
->>> the reverse_debugging functional test.
->>>
->>> This test, the last one I’m aware of that relies on Avocado, requires it
->>> because of the need for GDB to test reverse stepping and continue.
->>
->>    Hi!
->>
->> Please note that there are currently also some efforts going on to extract
->> the GDB part from avocado into a more self-contained python module called
->> aautils, which might help here, too:
->>
->>    https://github.com/avocado-framework/aautils/issues/82
->>
-> 
-> There's also https://github.com/cs01/pygdbmi which I have used before,
-> it seems like it does the same thing as avocado's gdb module but it
-> could be missing some functionality
+> Hi Igor,
+>=20
+> On 21/8/25 17:56, Igor Mammedov wrote:
+> > the helpers form load-acquire/store-release pair and use them to replac=
+e
+> > open-coded checkers/setters consistently across the code, which
+> > ensures that appropriate barriers are in place in case checks happen
+> > outside of BQL.
+>=20
+> I don't understand the beginning of this sentence (even prepending
+> the patch subject).
 
-Thanks for the suggestion. I recall now that I've hastily looked at pygdbmi
-when writing the mte.py test.
+yep, it looks botched, how about following?
 
-I don't think it misses any functionality for our current purposes here, but
-it has its own runner so we'll be using two different GDB runners for the
-tests. I´d like to avoid it and stick with the simplest runner which doesn't
-add another module dependency. The same for the test interface.
-
-In general, pygdbmi seems more than it would be necessary for the GDB tests
-we have currently. I would like to keep the tests as easy as possible to
-be executed manually and I think that adding another API rather than GDB's
-own Python API, currently, will not help.
+"
+The helpers form load-acquire/store-release pair and ensure
+that appropriate barriers are in place in case checks happen
+outside of BQL.
+Use them to replace open-coded checkers/setters across the code,
+to make sure that barriers are not missed.
+Helpers also make code a bit more readable.
+"
 
 
-Cheers,
-Gustavo
+>=20
+> > Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+> > Reviewed-by: Peter Xu <peterx@redhat.com>
+> > Reviewed-by: Jason J. Herne <jjherne@linux.ibm.com>
+> > ---
+> > v5: fix copy/paste error in doc comment of cpu_set_interrupt()
+> >     "Jason J. Herne" <jjherne@linux.ibm.com>
+> > v4:
+> >     add cpu_set_interrupt() and merge helpers patch with
+> >     patches that use them (v3 6-7,9/10).
+> >         Peter Xu <peterx@redhat.com>
+> > ---
+> >   include/hw/core/cpu.h               | 25 +++++++++++++++++++++
+> >   accel/tcg/cpu-exec.c                | 10 ++++-----
+> >   accel/tcg/tcg-accel-ops.c           |  2 +-
+> >   accel/tcg/user-exec.c               |  2 +-
+> >   hw/intc/s390_flic.c                 |  2 +-
+> >   hw/openrisc/cputimer.c              |  2 +-
+> >   system/cpus.c                       |  2 +-
+> >   target/alpha/cpu.c                  |  8 +++----
+> >   target/arm/cpu.c                    | 20 ++++++++---------
+> >   target/arm/helper.c                 | 18 +++++++--------
+> >   target/arm/hvf/hvf.c                |  6 ++---
+> >   target/avr/cpu.c                    |  2 +-
+> >   target/hppa/cpu.c                   |  2 +-
+> >   target/i386/hvf/hvf.c               |  4 ++--
+> >   target/i386/hvf/x86hvf.c            | 21 +++++++++---------
+> >   target/i386/kvm/kvm.c               | 34 ++++++++++++++--------------=
+-
+> >   target/i386/nvmm/nvmm-all.c         | 24 ++++++++++----------
+> >   target/i386/tcg/system/seg_helper.c |  2 +-
+> >   target/i386/tcg/system/svm_helper.c |  2 +-
+> >   target/i386/whpx/whpx-all.c         | 34 ++++++++++++++--------------=
+-
+> >   target/loongarch/cpu.c              |  2 +-
+> >   target/m68k/cpu.c                   |  2 +-
+> >   target/microblaze/cpu.c             |  2 +-
+> >   target/mips/cpu.c                   |  6 ++---
+> >   target/mips/kvm.c                   |  2 +-
+> >   target/openrisc/cpu.c               |  3 +--
+> >   target/ppc/cpu_init.c               |  2 +-
+> >   target/ppc/kvm.c                    |  2 +-
+> >   target/rx/cpu.c                     |  3 +--
+> >   target/rx/helper.c                  |  2 +-
+> >   target/s390x/cpu-system.c           |  2 +-
+> >   target/sh4/cpu.c                    |  2 +-
+> >   target/sh4/helper.c                 |  2 +-
+> >   target/sparc/cpu.c                  |  2 +-
+> >   target/sparc/int64_helper.c         |  4 ++--
+> >   35 files changed, 141 insertions(+), 119 deletions(-)
+> >=20
+> > diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+> > index 5eaf41a566..1dee9d4c76 100644
+> > --- a/include/hw/core/cpu.h
+> > +++ b/include/hw/core/cpu.h
+> > @@ -942,6 +942,31 @@ CPUState *cpu_by_arch_id(int64_t id);
+> >  =20
+> >   void cpu_interrupt(CPUState *cpu, int mask);
+> >  =20
+> > +/**
+> > + * cpu_test_interrupt:
+>  > + * @cpu: The CPU to check interrupt(s) on.> + * @mask: The  =20
+> interrupts to check.
+>=20
+> Can we use plural form to express we might test for more
+> than one interrupt in the mask?
+>=20
+>    -> cpu_test_interrupts() =20
 
->>> In this series, we leveraged the run-test.py script used in the
->>> check-tcg tests, making it a GDB runner capable of calling a test script
->>> without spawning any VMs. In this configuration, the test script can
->>> manage the VMs and also import gdb from the test script, making the
->>> Python GDB API available inside the functional test.
->>>
->>> The test is kept “skipped” for aarch64, ppc64, and x86_64, so it is
->>> necessary to set QEMU_TEST_FLAKY_TESTS=1 in the test environment to
->>> effectively run the test on these archs.
->>>
->>> On aarch64, the test is flaky, but there is a fix that I’ve tested while
->>> writing this series [0] that resolves it. On ppc64 and x86_64, the test
->>> always fails: on ppc64, GDB gets a bogus PC, and on x86_64, the last
->>> part of the test (reverse-continue) does not hit the last executed PC
->>> (as it should) but instead jumps to the beginning of the code (fist PC
->>> in forward order).
->>
->> At least the x86 test used to work for me most of the time, it just fails
->> occasionally. Same for the ppc64 test if I disable the powernv subtest there.
->>
->>> Thus, to run the reverse_debugging test effectively on aarch64:
->>>
->>> $ export QEMU_TEST_FLAKY_TESTS=1
->>> $ make check-functional
->>
->> I gave it a try, but this did not work for me, the test was not run at all
->> anymore. Are there any patches needed on top?
->>
->> Anyway, shifting to a different test harness here makes me wonder whether
->> the whole reverse_debug test should maybe be rather moved to tests/tcg
->> instead, where we already have the basic support for the stuff from
->> tests/guest-debug/ ?
->> The aarch64 would require a different guest payload, of course, in that
->> case, so not sure whether it's feasible?
->>
->>    Thomas
->>
->>
+it follow the same pattern as existing cpu_interrupt()/
+generic_handle_interrupt() which take the same 'mask'
+and cpu_handle_interrupt() that also handles a bunch of interrupts
+and CPUState::interrupt_request also in singular form.
+
+I don't have preference here but plural here would be
+inconsistent with existing pattern all over QEMU and
+it would be better to be consistent here.
+
+>=20
+> otherwise cpu_test_interrupt_mask().
+>=20
+> > + *
+> > + * Checks if any of interrupts in @mask are pending on @cpu.
+> > + */
+> > +static inline bool cpu_test_interrupt(CPUState *cpu, int mask)
+> > +{
+> > +    return qatomic_load_acquire(&cpu->interrupt_request) & mask; =20
+> How missing "qemu/atomic.h" header.
+
+it's included implicitly via "qemu/rcu_queue.h"
+
+>=20
+> > +}
+> > +
+> > +/**
+> > + * cpu_set_interrupt:
+> > + * @cpu: The CPU to set pending interrupt(s) on.
+> > + * @mask: The interrupts to set. =20
+>=20
+> Rename plural: cpu_set_interrupts() or _mask().
+>=20
+> > + *
+> > + * Sets interrupts in @mask as pending on @cpu.
+> > + */
+> > +static inline void cpu_set_interrupt(CPUState *cpu, int mask)
+> > +{
+> > +    qatomic_store_release(&cpu->interrupt_request,
+> > +        cpu->interrupt_request | mask); =20
+>=20
+> (indent is off)
+
+checkpatch was fine with it and it is (4+4) which is
+within codestyle rules and the pattern widely used in QEMU.
+
+>=20
+> > +}
+> > + =20
+> The field is described in CPUState as:
+>=20
+>    @interrupt_request: Indicates a pending interrupt request.
+>=20
+> Can we update the description, mentioning its access should be
+> via the proper cpu_test_interrupts/cpu_set_interrupts/... helpers?
+
+I didn't do this because not all places are using helpers
+and there are places which just wouldn't use them
+(example: plain copy of the field).
+I'd would leave this change out.
+
+
+> > diff --git a/accel/tcg/cpu-exec.c b/accel/tcg/cpu-exec.c
+> > index 713bdb2056..1269c2c6ba 100644
+> > --- a/accel/tcg/cpu-exec.c
+> > +++ b/accel/tcg/cpu-exec.c
+> > @@ -778,7 +778,7 @@ static inline bool cpu_handle_interrupt(CPUState *c=
+pu,
+> >        */
+> >       qatomic_set_mb(&cpu->neg.icount_decr.u16.high, 0);
+> >  =20
+> > -    if (unlikely(qatomic_read(&cpu->interrupt_request))) {
+> > +    if (unlikely(cpu_test_interrupt(cpu, ~0))) { =20
+>=20
+> Maybe nitpicking, but I'd introduce the API and use it first only where
+> we already use atomic accesses. Then convert the rest of the code base
+> to this API in a distinct patch.
+
+I thought so and it was this way before v4,
+but I was asked to merge API and users in the same patch.
+It's all depends on how many changes we are going to squash together.
+
+>=20
+> >           int interrupt_request;
+> >           bql_lock();
+> >           interrupt_request =3D cpu->interrupt_request;
+> > @@ -786,7 +786,7 @@ static inline bool cpu_handle_interrupt(CPUState *c=
+pu,
+> >               /* Mask out external interrupts for this step. */
+> >               interrupt_request &=3D ~CPU_INTERRUPT_SSTEP_MASK; =20
+> >           }> -        if (interrupt_request & CPU_INTERRUPT_DEBUG) { =
+=20
+> > +        if (cpu_test_interrupt(cpu, CPU_INTERRUPT_DEBUG)) {
+> >               cpu->interrupt_request &=3D ~CPU_INTERRUPT_DEBUG;
+> >               cpu->exception_index =3D EXCP_DEBUG;
+> >               bql_unlock();
+> > @@ -795,7 +795,7 @@ static inline bool cpu_handle_interrupt(CPUState *c=
+pu,
+> >   #if !defined(CONFIG_USER_ONLY)
+> >           if (replay_mode =3D=3D REPLAY_MODE_PLAY && !replay_has_interr=
+upt()) {
+> >               /* Do nothing */
+> > -        } else if (interrupt_request & CPU_INTERRUPT_HALT) {
+> > +        } else if (cpu_test_interrupt(cpu, CPU_INTERRUPT_HALT)) {
+> >               replay_interrupt();
+> >               cpu->interrupt_request &=3D ~CPU_INTERRUPT_HALT; =20
+>=20
+> Can we have a cpu_clear_interrupts() helper for completion? Likely we
+> need the same BQL-safe access.
+
+see below
+
+>=20
+> >               cpu->halted =3D 1;
+> > @@ -805,7 +805,7 @@ static inline bool cpu_handle_interrupt(CPUState *c=
+pu,
+> >           } else {
+> >               const TCGCPUOps *tcg_ops =3D cpu->cc->tcg_ops;
+> >  =20
+> > -            if (interrupt_request & CPU_INTERRUPT_RESET) {
+> > +            if (cpu_test_interrupt(cpu, CPU_INTERRUPT_RESET)) {
+> >                   replay_interrupt();
+> >                   tcg_ops->cpu_exec_reset(cpu);
+> >                   bql_unlock();
+> > @@ -841,7 +841,7 @@ static inline bool cpu_handle_interrupt(CPUState *c=
+pu,
+> >               interrupt_request =3D cpu->interrupt_request;
+> >           }
+> >   #endif /* !CONFIG_USER_ONLY */
+> > -        if (interrupt_request & CPU_INTERRUPT_EXITTB) {
+> > +        if (cpu_test_interrupt(cpu, CPU_INTERRUPT_EXITTB)) {
+> >               cpu->interrupt_request &=3D ~CPU_INTERRUPT_EXITTB;
+> >               /* ensure that no TB jump will be modified as
+> >                  the program flow was changed */ =20
+> Looking at v4 applied on top of v10.1.0-rc4 reconstructing patch
+> #6 with v5:
+>=20
+> $ git grep -F -- '->interrupt_request'
+>=20
+> * Missing cpu_test_interrupts()
+>=20
+> target/arm/machine.c:968:        env->irq_line_state =3D=20
+> cs->interrupt_request &
+
+it's not a test but a bitmask copy in cpu_post_load()
+where a barrier won't make a difference.
+though for consistency sake we can introduce something like
+ int cpu_get_interrupt(CPUState*)
+that will use acquire, but that won't guarantee much as
+copy might get stale after it's read.
+
+> target/i386/helper.c:600:    int sipi =3D cs->interrupt_request &=20
+> CPU_INTERRUPT_SIPI;
+
+ditto
+
+> target/i386/kvm/kvm.c:5067:            events.smi.pending =3D=20
+> cs->interrupt_request & CPU_INTERRUPT_SMI;
+> target/i386/kvm/kvm.c:5068:            events.smi.latched_init =3D=20
+> cs->interrupt_request & CPU_INTERRUPT_INIT;
+
+these indeed could use the helper
+
+>=20
+> * Possible uses of qatomic_load_acquire()?
+>=20
+> accel/tcg/cpu-exec.c:801:            int interrupt_request =3D=20
+> cpu->interrupt_request;
+
+for TCG interrupt processing seems to be under BQL, so it
+shouldn't make a difference.
+
+It might be a separate patch, but tit would be hard to come up
+with justification for it.
+
+But see 8/8, this line is moved closer to user and=20
+cpu_handle_interrupt() is cleaned up.
+
+> accel/tcg/tcg-accel-ops-icount.c:152:    int old_mask =3D=20
+> cpu->interrupt_request;
+
+another copy example, executed within cpu thread,
+we don't really need acquire here and following
+tcg_handle_interrupt->cpu_set_interrupt adds implicit one.
+
+>=20
+> * Candidates for cpu_clear_interrupts()
+
+it wasn't goal of this series
+(Paolo suggested to include cpu_interrupt()+cpu_test_interrupt()
+test pair assuming it would be relatively small change, and here we are).
+
+Also taking in account that setting interrupts are usually* done under BQL,
+cpu_clear_interrupts() would be just a wrapper without a barrier.
+
+and then we already have cpu_reset_interrupt() which should clear interrupt=
+s,
+taking BQL if needed.
+
+Anyways it's quite involving refactoring, derailing series even further
+from its scope.
+
+If it's deemed necessary probably another series taking care of
+interrupt clearing tree wide is in order. (but I'd prefer take care of
+it separately of this series).
+
+
+> accel/tcg/cpu-exec.c:784:            cpu->interrupt_request &=3D=20
+> ~CPU_INTERRUPT_DEBUG;
+> accel/tcg/cpu-exec.c:794:            cpu->interrupt_request &=3D=20
+> ~CPU_INTERRUPT_HALT;
+> accel/tcg/cpu-exec.c:842:            cpu->interrupt_request &=3D=20
+> ~CPU_INTERRUPT_EXITTB;
+> hw/core/cpu-common.c:79:    cpu->interrupt_request &=3D ~mask;
+> hw/core/cpu-system.c:207:        cpu->interrupt_request &=3D ~0x01;
+> target/avr/helper.c:50:            cs->interrupt_request &=3D=20
+> ~CPU_INTERRUPT_RESET;
+> target/avr/helper.c:62:                cs->interrupt_request &=3D=20
+> ~CPU_INTERRUPT_HARD;
+> target/i386/helper.c:605:    cs->interrupt_request =3D sipi;
+> target/i386/hvf/x86hvf.c:400:            cs->interrupt_request &=3D=20
+> ~CPU_INTERRUPT_NMI;
+> target/i386/hvf/x86hvf.c:412:        cs->interrupt_request &=3D=20
+> ~CPU_INTERRUPT_HARD;
+> target/i386/hvf/x86hvf.c:440:        cs->interrupt_request &=3D=20
+> ~CPU_INTERRUPT_POLL;
+> target/i386/hvf/x86hvf.c:453:        cs->interrupt_request &=3D=20
+> ~CPU_INTERRUPT_TPR;
+> target/i386/kvm/kvm.c:5069:            cs->interrupt_request &=3D=20
+> ~(CPU_INTERRUPT_INIT | CPU_INTERRUPT_SMI);
+
+* this one might be cleared outside of BQL
+  (kvm_cpu_exec->kvm_arch_put_registers->kvm_put_vcpu_events path)
+
+Paolo, Peter,
+should we take BQL here, if not then why?
+(kvm_arch_pre_run() that does run after it, does take BQL when resetting in=
+terrupts)
+
+> target/i386/kvm/kvm.c:5459:            cpu->interrupt_request &=3D=20
+> ~CPU_INTERRUPT_NMI;
+> target/i386/kvm/kvm.c:5470:            cpu->interrupt_request &=3D=20
+> ~CPU_INTERRUPT_SMI;
+> target/i386/kvm/kvm.c:5505:            cpu->interrupt_request &=3D=20
+> ~CPU_INTERRUPT_HARD;
+> target/i386/kvm/kvm.c:5600:        cs->interrupt_request &=3D=20
+> ~CPU_INTERRUPT_MCE;
+> target/i386/kvm/kvm.c:5630:        cs->interrupt_request &=3D=20
+> ~CPU_INTERRUPT_POLL;
+> target/i386/kvm/kvm.c:5643:        cs->interrupt_request &=3D=20
+> ~CPU_INTERRUPT_TPR;
+> target/i386/nvmm/nvmm-all.c:422:            cpu->interrupt_request &=3D=
+=20
+> ~CPU_INTERRUPT_NMI;
+> target/i386/nvmm/nvmm-all.c:431:            cpu->interrupt_request &=3D=
+=20
+> ~CPU_INTERRUPT_HARD;
+> target/i386/nvmm/nvmm-all.c:440:        cpu->interrupt_request &=3D=20
+> ~CPU_INTERRUPT_SMI;
+> target/i386/nvmm/nvmm-all.c:700:        cpu->interrupt_request &=3D=20
+> ~CPU_INTERRUPT_POLL;
+> target/i386/nvmm/nvmm-all.c:713:        cpu->interrupt_request &=3D=20
+> ~CPU_INTERRUPT_TPR;
+> target/i386/tcg/system/seg_helper.c:181:        cs->interrupt_request &=
+=3D=20
+> ~CPU_INTERRUPT_POLL;
+> target/i386/tcg/system/seg_helper.c:189:        cs->interrupt_request &=
+=3D=20
+> ~CPU_INTERRUPT_SMI;
+> target/i386/tcg/system/seg_helper.c:194:        cs->interrupt_request &=
+=3D=20
+> ~CPU_INTERRUPT_NMI;
+> target/i386/tcg/system/seg_helper.c:199:        cs->interrupt_request &=
+=3D=20
+> ~CPU_INTERRUPT_MCE;
+> target/i386/tcg/system/seg_helper.c:204:        cs->interrupt_request &=
+=3D=20
+> ~(CPU_INTERRUPT_HARD |
+> target/i386/tcg/system/seg_helper.c:218:        cs->interrupt_request &=
+=3D=20
+> ~CPU_INTERRUPT_VIRQ;
+
+> target/i386/tcg/system/svm_helper.c:827:    cs->interrupt_request &=3D=20
+> ~CPU_INTERRUPT_VIRQ;
+
+I had a question wrt this one, in one of previous versions,
+it's buried deep in opcode handling, and hard to tell if this one is
+BQL protected or not. Perhaps someone more familiar with TCG can clarify
+if it's safe as it is now.
+
+for comparison target/openrisc/sys_helper.c: HELPER(mtspr) does take BQL ex=
+plicitly
+
+> target/i386/whpx/whpx-all.c:1474:            cpu->interrupt_request &=3D=
+=20
+> ~CPU_INTERRUPT_NMI;
+> target/i386/whpx/whpx-all.c:1481:            cpu->interrupt_request &=3D=
+=20
+> ~CPU_INTERRUPT_SMI;
+> target/i386/whpx/whpx-all.c:1505:                cpu->interrupt_request=
+=20
+> &=3D ~CPU_INTERRUPT_HARD;
+> target/i386/whpx/whpx-all.c:1523:        cpu->interrupt_request &=3D=20
+> ~CPU_INTERRUPT_HARD;
+> target/i386/whpx/whpx-all.c:1610:        cpu->interrupt_request &=3D=20
+> ~CPU_INTERRUPT_POLL;
+> target/i386/whpx/whpx-all.c:1626:        cpu->interrupt_request &=3D=20
+> ~CPU_INTERRUPT_TPR;
+> target/openrisc/sys_helper.c:199:                cs->interrupt_request=20
+> &=3D ~CPU_INTERRUPT_TIMER;
+> target/rx/helper.c:66:            cs->interrupt_request &=3D=20
+> ~CPU_INTERRUPT_FIR;
+> target/rx/helper.c:76:            cs->interrupt_request &=3D=20
+> ~CPU_INTERRUPT_HARD;
+> target/s390x/tcg/excp_helper.c:562:        cs->interrupt_request &=3D=20
+> ~CPU_INTERRUPT_HARD;
+>=20
 
 

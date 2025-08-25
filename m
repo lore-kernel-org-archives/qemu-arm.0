@@ -4,99 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BFF4CCA0FE9
-	for <qemu-arm@archiver.kernel.org>; Mon, 25 Aug 2025 11:17:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67770CA0FE7
+	for <qemu-arm@archiver.kernel.org>; Mon, 25 Aug 2025 12:52:09 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uqVCY-0000yn-L6; Mon, 25 Aug 2025 07:17:27 -0400
+	id 1uqWfW-0006Kk-SX; Mon, 25 Aug 2025 08:51:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uqVC2-0000UK-R9
- for qemu-arm@nongnu.org; Mon, 25 Aug 2025 07:16:54 -0400
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1uqWel-0006AK-Rq
+ for qemu-arm@nongnu.org; Mon, 25 Aug 2025 08:50:45 -0400
+Received: from mail-yb1-xb34.google.com ([2607:f8b0:4864:20::b34])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uqVBu-0003or-0E
- for qemu-arm@nongnu.org; Mon, 25 Aug 2025 07:16:53 -0400
-Received: by mail-wm1-x335.google.com with SMTP id
- 5b1f17b1804b1-45a1b0c52f3so25514085e9.3
- for <qemu-arm@nongnu.org>; Mon, 25 Aug 2025 04:16:43 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1uqWeg-0005oh-Nh
+ for qemu-arm@nongnu.org; Mon, 25 Aug 2025 08:50:38 -0400
+Received: by mail-yb1-xb34.google.com with SMTP id
+ 3f1490d57ef6-e95246bd5e8so2316435276.3
+ for <qemu-arm@nongnu.org>; Mon, 25 Aug 2025 05:50:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756120601; x=1756725401; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=IzZrCAQ1CklasD9rsjQqAqU3awwYN4QZSv30XQ4x1UY=;
- b=HsO14OFDMnXooihVYRpdFlqy5NmOAj8IGELBWuZa7sVrFNvi0KOOILpTpR4RXQxNA0
- 6tGtrSP+qqSEy8Jl84N7jhVPLjL0z3yTTWnYJLtgHXvpek+F+5fmEKDHynbhRTtfBCOh
- bQpi/9yd1ZCW6Ae6QNSDSsStt8JCf2RidLwTVUOp5EH/Gl2fqaChgVTrq69gJi5Fg2D4
- Y2P9Xt/uf9V2jD+D4mycqSArUsEAxPUD5jfftd/U1RDBPfGfh+MjJgyT0Mxzb0nzSZAW
- 6Kzdsr4pP9WYnFgyTT+UyhDdZZWE5wRJEOxxClXLsKFYgnov/8SCLKJOeU6ONGnj5M4Z
- Qfkg==
+ d=linaro.org; s=google; t=1756126231; x=1756731031; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=gTqtUTTq9GgaC3p+iimp2St44Dw0MIbEASnueVReolE=;
+ b=Gg1rmEI0utV5QJKlEPiDAy0UGr9ShNETW57dWZEz2UU68tUyow9zYQLpt89R/b48F+
+ snxdFPUf8BivC0vex0JIQdRQBGf3ZXXMZuHweRSP6mfRvLKu19xoEV7p7vzUmTZOzsVp
+ StLV9O3ltdW+Z7Ucx0bVFGYNBa8Z5+56IoxuLCB3CMYnzWps/P5EKS/HoqKhi+CaNEml
+ bsLDX+eqmMnUsWBCuTfYVib5zVcWu5SQQvRvk7lB6zlNGlSTXgvYd8XiNtgHCghQ/r41
+ Anyok/JMCQjPtlpNjSfjHglgOF6Z26c7lHEORu3L0UuO8JLiBP3hKjJRQUjgixiA4141
+ AWXw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756120601; x=1756725401;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=IzZrCAQ1CklasD9rsjQqAqU3awwYN4QZSv30XQ4x1UY=;
- b=DgZReDq2T2E3tDYFqWqFL6+GGugZJ04Ujp8JnM7xWpBN7pOtO3ftDiksgrnmBsgvG7
- m4Uf4a3u6813sPjAqr1ayTNIw8ho5lnlC7PD36xkfXEudYGddCBu+pdHEixKtBYMzDdV
- ZrUHSm8wr5CVSslqOwja/Vi03nRW2vRDl0UsL09ZKt8RjkZKMaAV+2vsuqhoiaRR3hkP
- /4GYZ3/LfdP4SiE1eGR04vncje4QEvqcWxW8fS2U7goQo3kRAxloud032BR7LN+TvXdE
- m+pBRiyodB9aZep9LIxjH6L7gRP7o+cH3ziDlfKmYJlv0K1k3m9UY9n0oIFpWQaeC17o
- 40zA==
+ d=1e100.net; s=20230601; t=1756126231; x=1756731031;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=gTqtUTTq9GgaC3p+iimp2St44Dw0MIbEASnueVReolE=;
+ b=KOMdeRe746SjvZhhLC3GYBxPpp507nkvNw2kID+epZc9ZWxgONLR2QSlSwWM6kvoWJ
+ uSo6fqRTZ4NRcICGBzUKpYZRdmLw4LbDvVqBHsTiLCTcM3qfxxZaQrLDGqRHClC0U6VU
+ n3s2fjIhBSig5+YJVQ1nX+o3yr5RPRA8hOKfqQ9ZBC4HNUKj3Kk2RirV5xv1cAtVDSkD
+ sgDiNIeP/vcl26VFfD4yRJFGannQtAWLM51FOdEkN9aDz/IEOHYtXnNmr6qHo30uaLUW
+ uGrguS7KZInTOPcdSvnn63UtiwjbwUmdyT/ueddkyHiqh1/Lc2bzDES4R0Km/kGG8wJ+
+ i1Jw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVh9+08IATZX/Ac8oqS4gE9fjnwoQjigs56T2/QpV0ZICfM1iQt93TdwkIkaZMV7WmD3EQ9iqfGbA==@nongnu.org
-X-Gm-Message-State: AOJu0Yx49LxNM1dsBsteM9KKdoByJ5Ws4GO9i4+YaeLkI7ievQOxSFr7
- NFFa4ZFplqAyyTlZPA/etblvL/gxcwQ4mcKCIx14p+kLzRB4T6Fb7ZK2DEjULlrpaCI=
-X-Gm-Gg: ASbGncu5/Q5o1lC3Umpc/Ss7TxjKGUVnH5bNF/pHlUOno3cz/5RUCMT1KAlggegS03L
- WtBtIe8qhmGMextGuSgp2VfXgQE+FmjWFQIz1TKTZRlhswPaf7cflUacOZ1XUY/dXh0ReeskStQ
- 2hJISN7sxqzFXq3GQLZ/GwINPR2Bwc8WdRyNMd+bd+cgZAeCPHx/yz7/lH1fhOuO3odVKIHvC7O
- tbOANizQQuNfY0ppol+9mtORw7d733aMQKvGzzechbDPshfYRPNjjkgkU9+y5kBCYjBfK19UCBO
- i7+J8O4cooq9y4ltwZ5NVL89wmBOrWptKbaZHuMs1oA3PuXlVOjNzaeJZ6DTkaoOmX0fEmaSRMV
- noO1mwJVAlC71ttt6eth0yJBousbFr/FrwtyS8OuroAsuNgkhEu98PK8cmc4opvA2Zw==
-X-Google-Smtp-Source: AGHT+IF3ehKOKE3RkQilSCjSofFJwxU/NVNShvqtzx6GdoGdVvu6YVl0U7nIk45xli5HvohRaZUrVQ==
-X-Received: by 2002:a05:600c:3149:b0:45b:47e1:ef79 with SMTP id
- 5b1f17b1804b1-45b517ddbedmr93577415e9.36.1756120600581; 
- Mon, 25 Aug 2025 04:16:40 -0700 (PDT)
-Received: from [192.168.69.208] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-45b57499143sm103926495e9.26.2025.08.25.04.16.38
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 25 Aug 2025 04:16:40 -0700 (PDT)
-Message-ID: <e755b413-b983-4c98-bda8-e0c7ec6e29b5@linaro.org>
-Date: Mon, 25 Aug 2025 13:16:38 +0200
+ AJvYcCUN4DuXcwTEeZpUUspQxVLdegiKdAFtTg5Ot3fCD8axqYT5xgRHN8hfNS3sT+j0OV0pducijU32iA==@nongnu.org
+X-Gm-Message-State: AOJu0Yx55KzglSZd5+Vw9souOGBNck+fU/TcbyAzOwhds/7nGDUj9Moy
+ wtqbfy7X3rJMngtuuMmmFfpDsmC9mLoRdiRMVPIr+BOM2wL4vqv7JfXnb5LbamcSgKPJOG7lEaE
+ FWC2E/i7++0rHhWLXYgD28bYD5lvNx4HrTt95uZpfQQ==
+X-Gm-Gg: ASbGncvuXkyS0evSDtcYqJzFGJy+FboxdB2n7PUPfj5/wfD3hsweWC/PyOMIukJPnvY
+ 3WX59Zf13eTsSfHdvgRsx6OxoTQjLuYF01zIvwNuC1GSK/hTdxI1RO3giOiV6/VmnDrNGgn972o
+ GF/Y8YzWhslLsfHf2CcHxOJM64lk2LF0ZOHClsbV6rkzgGWK3+T5dyVY5WGg7x530ibCafT4Z4y
+ ay+aGPi
+X-Google-Smtp-Source: AGHT+IHt6cGE7TUtM5RFNFgjRWqIFsrdpCPCo2LvBhM2g4r430YFAhZv3tD4u6+Cz3BTv7/YySO03xIR6z/Jm+gtCZ8=
+X-Received: by 2002:a05:6902:188f:b0:e95:f5f5:60ef with SMTP id
+ 3f1490d57ef6-e95f5f56a67mr2894040276.8.1756126230921; Mon, 25 Aug 2025
+ 05:50:30 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH RFC v2 9/9] tests/qtest: add test for memory region access
-To: CJ Chen <cjchen@igel.co.jp>, qemu-devel@nongnu.org,
- qemu-block@nongnu.org, qemu-riscv@nongnu.org, qemu-arm@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>, Keith Busch <kbusch@kernel.org>,
- Klaus Jensen <its@irrelevant.dk>, Jesper Devantier <foss@defmacro.it>,
- Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <alistair.francis@wdc.com>, Weiwei Li
- <liwei1518@gmail.com>, Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, Tyrone Ting <kfting@nuvoton.com>,
- Hao Wu <wuhaotsh@google.com>, Max Filippov <jcmvbkbc@gmail.com>,
- Peter Xu <peterx@redhat.com>, David Hildenbrand <david@redhat.com>,
- Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
- Tomoyuki Hirose <hrstmyk811m@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>
-References: <20250822092410.25833-1-cjchen@igel.co.jp>
- <20250822092410.25833-10-cjchen@igel.co.jp>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20250822092410.25833-10-cjchen@igel.co.jp>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::335;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x335.google.com
+References: <20250809211051.68824-1-chichikalyuk@gmail.com>
+ <CAFEAcA-NwTDQUJAerkX2O88_3Mgprh3A7GqaEAFdM4mpN3s05Q@mail.gmail.com>
+ <0B0D958D-67D8-4036-A6BD-75CBD7DC636C@gmail.com>
+In-Reply-To: <0B0D958D-67D8-4036-A6BD-75CBD7DC636C@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 25 Aug 2025 13:50:19 +0100
+X-Gm-Features: Ac12FXzRHwO-yHDFIOa5BkKSrHfzm6X9nGg1kUnX4dMGzmtCIaWpz7GsjisP4QI
+Message-ID: <CAFEAcA-sKRc5MXjaMDGuTAYeRo00bBTNg_SZzOU46wxE53YFfA@mail.gmail.com>
+Subject: Re: [PATCH v2 0/3] hw: acpi: add UART clock freq to AArch64 SPCR
+To: Vadim Chichikalyuk <chichikalyuk@gmail.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+ "Michael S. Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+ Ani Sinha <anisinha@redhat.com>, Shannon Zhao <shannon.zhaosl@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b34;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb34.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -112,159 +100,28 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 22/8/25 11:24, CJ Chen wrote:
-> From: Tomoyuki Hirose <hrstmyk811m@gmail.com>
-> 
-> This commit adds a qtest for accessing various memory regions. The
-> qtest checks the correctness of handling the access to memory regions
-> by using 'memaccess-testdev'.
-> 
-> Signed-off-by: CJ Chen <cjchen@igel.co.jp>
-> Co-developed-by: CJ Chen <cjchen@igel.co.jp>
-> Reported-by: Tomoyuki Hirose <hrstmyk811m@gmail.com>
-> ---
->   tests/qtest/memaccess-test.c | 597 +++++++++++++++++++++++++++++++++++
->   tests/qtest/meson.build      |   9 +
->   2 files changed, 606 insertions(+)
->   create mode 100644 tests/qtest/memaccess-test.c
-> 
-> diff --git a/tests/qtest/memaccess-test.c b/tests/qtest/memaccess-test.c
-> new file mode 100644
-> index 0000000000..7e90028ea0
-> --- /dev/null
-> +++ b/tests/qtest/memaccess-test.c
-> @@ -0,0 +1,597 @@
-> +/*
-> + * QEMU memory region access test
-> + *
-> + * SPDX-License-Identifier: GPL-2.0-or-later
-> + *
-> + * Author: Tomoyuki HIROSE <hrstmyk811m@gmail.com>
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "libqtest.h"
-> +
-> +#include "hw/misc/memaccess-testdev.h"
-> +
-> +static const char *arch = "";
-> +static const hwaddr base = 0x200000000;
-> +
-> +struct arch2cpu {
-> +    const char *arch;
-> +    const char *cpu_model;
-> +};
-> +
-> +static struct arch2cpu cpus_map[] = {
-> +    /* tested targets list */
-> +    { "arm", "cortex-a15" },
-> +    { "aarch64", "cortex-a57" },
-> +    { "avr", "avr6-avr-cpu" },
-> +    { "x86_64", "qemu64,apic-id=0" },
-> +    { "i386", "qemu32,apic-id=0" },
-> +    { "alpha", "ev67" },
-> +    { "cris", "crisv32" },
-> +    { "m68k", "m5206" },
-> +    { "microblaze", "any" },
-> +    { "microblazeel", "any" },
-> +    { "mips", "4Kc" },
-> +    { "mipsel", "I7200" },
-> +    { "mips64", "20Kc" },
-> +    { "mips64el", "I6500" },
-> +    { "or1k", "or1200" },
-> +    { "ppc", "604" },
-> +    { "ppc64", "power8e_v2.1" },
-> +    { "s390x", "qemu" },
-> +    { "sh4", "sh7750r" },
-> +    { "sh4eb", "sh7751r" },
-> +    { "sparc", "LEON2" },
-> +    { "sparc64", "Fujitsu Sparc64" },
-> +    { "tricore", "tc1796" },
-> +    { "xtensa", "dc233c" },
-> +    { "xtensaeb", "fsf" },
-> +    { "hppa", "hppa" },
-> +    { "riscv64", "rv64" },
-> +    { "riscv32", "rv32" },
-> +    { "rx", "rx62n" },
-> +    { "loongarch64", "la464" },
+On Mon, 25 Aug 2025 at 00:00, Vadim Chichikalyuk <chichikalyuk@gmail.com> w=
+rote:
+>
+>
+> > On 18 Aug 2025, at 18:26, Peter Maydell <peter.maydell@linaro.org> wrot=
+e:
+> >
+> > So, what's the rationale here? QEMU's UART doesn't care about
+> > clocks at all. We provide a clock in the DTB because the kernel
+> > refuses to boot if you don't, but if the ACPI spec didn't even
+> > have a way to pass the clock frequency until rev 4 this obviously
+> > isn't a problem on that side.
+>
+> The rationale is the same =E2=80=93 just as the (Linux?) kernel expects
+> a clock frequency if a UART is present in the DTB, guests using
+> ACPI may expect a valid value for the clock frequency in the
+> SPCR record when one is present.
 
-IIUC CPUs are not involved in the test path. The only difference
-is the binary endianness. So we are testing 2 distinct code path
-duplicated as ARRAY_SIZE(cpus_map) = 31 times.
+But the ACPI spec prior to rev 4 doesn't even provide a
+way to specify the clock frequency, so why would a guest
+expect it, and how could it do so?
 
-Let's run the tests with a pair of common targets and save 29
-pointless tests:
-
-... cpus_map[] = {
-       /* One little endian and one big endian target */
-       { "x86_64", "qemu64,apic-id=0" },
-       { "s390x", "qemu" }
-}
-
-> +};
-> +
-> +static const char *get_cpu_model_by_arch(const char *arch)
-> +{
-> +    for (int i = 0; i < ARRAY_SIZE(cpus_map); i++) {
-> +        if (!strcmp(arch, cpus_map[i].arch)) {
-> +            return cpus_map[i].cpu_model;
-> +        }
-> +    }
-> +    return NULL;
-> +}
-> +
-> +static QTestState *create_memaccess_qtest(void)
-> +{
-> +    QTestState *qts;
-> +
-> +    qts = qtest_initf("-machine none -cpu \"%s\" "
-> +                      "-device memaccess-testdev,address=0x%" PRIx64,
-> +                      get_cpu_model_by_arch(arch), base);
-> +    return qts;
-> +}
-
-
-> +DEFINE_test_memaccess(little, LITTLE, b, B, valid, VALID)
-> +DEFINE_test_memaccess(little, LITTLE, w, W, valid, VALID)
-> +DEFINE_test_memaccess(little, LITTLE, l, L, valid, VALID)
-> +DEFINE_test_memaccess(little, LITTLE, q, Q, valid, VALID)
-> +DEFINE_test_memaccess(little, LITTLE, b, B, invalid, INVALID)
-> +DEFINE_test_memaccess(little, LITTLE, w, W, invalid, INVALID)
-> +DEFINE_test_memaccess(little, LITTLE, l, L, invalid, INVALID)
-> +DEFINE_test_memaccess(little, LITTLE, q, Q, invalid, INVALID)
-> +DEFINE_test_memaccess(big, BIG, b, B, valid, VALID)
-> +DEFINE_test_memaccess(big, BIG, w, W, valid, VALID)
-> +DEFINE_test_memaccess(big, BIG, l, L, valid, VALID)
-> +DEFINE_test_memaccess(big, BIG, q, Q, valid, VALID)
-> +DEFINE_test_memaccess(big, BIG, b, B, invalid, INVALID)
-> +DEFINE_test_memaccess(big, BIG, w, W, invalid, INVALID)
-> +DEFINE_test_memaccess(big, BIG, l, L, invalid, INVALID)
-> +DEFINE_test_memaccess(big, BIG, q, Q, invalid, INVALID)
-> +
-> +#undef DEFINE_test_memaccess
-> +
-> +static struct {
-> +    const char *name;
-> +    void (*test)(void);
-> +} tests[] = {
-> +    {"little_b_valid", test_memaccess_little_b_valid},
-> +    {"little_w_valid", test_memaccess_little_w_valid},
-> +    {"little_l_valid", test_memaccess_little_l_valid},
-> +    {"little_q_valid", test_memaccess_little_q_valid},
-> +    {"little_b_invalid", test_memaccess_little_b_invalid},
-> +    {"little_w_invalid", test_memaccess_little_w_invalid},
-> +    {"little_l_invalid", test_memaccess_little_l_invalid},
-> +    {"little_q_invalid", test_memaccess_little_q_invalid},
-> +    {"big_b_valid", test_memaccess_big_b_valid},
-> +    {"big_w_valid", test_memaccess_big_w_valid},
-> +    {"big_l_valid", test_memaccess_big_l_valid},
-> +    {"big_q_valid", test_memaccess_big_q_valid},
-> +    {"big_b_invalid", test_memaccess_big_b_invalid},
-> +    {"big_w_invalid", test_memaccess_big_w_invalid},
-> +    {"big_l_invalid", test_memaccess_big_l_invalid},
-> +    {"big_q_invalid", test_memaccess_big_q_invalid},
-> +};
-BTW this reminds me of 
-https://lore.kernel.org/qemu-devel/20200817161853.593247-8-f4bug@amsat.org/ 
-;)
+thanks
+-- PMM
 

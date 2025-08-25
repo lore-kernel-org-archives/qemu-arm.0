@@ -4,87 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D100DCA0FE7
-	for <qemu-arm@archiver.kernel.org>; Mon, 25 Aug 2025 16:51:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F5EECA0EFA
+	for <qemu-arm@archiver.kernel.org>; Mon, 25 Aug 2025 17:02:32 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uqaPZ-0004AR-V5; Mon, 25 Aug 2025 12:51:15 -0400
+	id 1uqaZh-0006u8-9a; Mon, 25 Aug 2025 13:01:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1uqaPQ-00048B-AQ
- for qemu-arm@nongnu.org; Mon, 25 Aug 2025 12:51:05 -0400
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+ id 1uqaZg-0006tv-LY
+ for qemu-arm@nongnu.org; Mon, 25 Aug 2025 13:01:40 -0400
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1uqaPI-0002Uy-Ml
- for qemu-arm@nongnu.org; Mon, 25 Aug 2025 12:51:03 -0400
-Received: by mail-wm1-x332.google.com with SMTP id
- 5b1f17b1804b1-45b4e5c3d0fso9922355e9.2
- for <qemu-arm@nongnu.org>; Mon, 25 Aug 2025 09:50:52 -0700 (PDT)
+ id 1uqaZU-0003mH-9y
+ for qemu-arm@nongnu.org; Mon, 25 Aug 2025 13:01:39 -0400
+Received: by mail-wr1-x435.google.com with SMTP id
+ ffacd0b85a97d-3c7ba0f6983so925904f8f.0
+ for <qemu-arm@nongnu.org>; Mon, 25 Aug 2025 10:01:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756140650; x=1756745450; darn=nongnu.org;
+ d=linaro.org; s=google; t=1756141281; x=1756746081; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:message-id:date:user-agent
  :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=we0zGkulHShFs6KviAo4DPncCevtCv+4QsSfgxRq0RA=;
- b=iHZe8wo3RRpApRGAzmS+qwCEyRYt9TcQMuaRqXeX4kbtAQdCy35d8ngPM5qfCcBAHu
- P83dIh8ODNCR9A9nGfz8awKrsaynDS1Cf69kFDnF+jWTIufjuO3UjhwjnYEPZ5zgNZrl
- GjG/PYrRv59UWyF8wwGVr5iCd7PrWINFF/0V6QmnJqDUpk7qZTrg/BzgPuIqhval0DP8
- ORp0Bga1D5j1Sg3OQk1FuIOKYAslnugCPQQttixzpvVG9d1H3sCpTIunavdOPK3b4Km+
- MEdOwho7Rp7/WfFtgdcIbGP6rZJV4f2mN2K56IgKS3xPFt1qtx4tQEtWnPnAyDi/N2Nq
- 0B3g==
+ bh=cBwExhlGnHktaNC/Pgbr6DGrGKJUY171Dt9DA24rgeI=;
+ b=EivBE1zz40aJ+zYGQppj4PYVcbcOStycqBqcKz4ifpGFQ/112K1EVBG2LZAJr7JLtq
+ HEujsshkWZOfGXAlQJsYx9QqnGpBzU8m8V5CuTY3r0FjYgR3SJFDPo0PvG/TqNd+m8Pd
+ 10PFNX4gGR6rZqPUSnVDKqe3NuwXIfmgSWy50JwGhw1+GYvaBiK/D1dzamHcgPnGG0mG
+ twk/LAWlfJgr7tzpKRwt4PZair0LlIKKBWvijuzD7pgiZ96LJibbkrnsMcK9M5muTrSm
+ uwpchFV3gbhrWRLiY9bYOnZNkOVOYTziUIPRtM7Yk6b3WSX2rpHDg6LpL0jHWuvCQjvv
+ l04A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756140650; x=1756745450;
+ d=1e100.net; s=20230601; t=1756141281; x=1756746081;
  h=content-transfer-encoding:mime-version:message-id:date:user-agent
  :references:in-reply-to:subject:cc:to:from:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=we0zGkulHShFs6KviAo4DPncCevtCv+4QsSfgxRq0RA=;
- b=vMP8D0c8GQF+2xmO4vSzV5IuylTL/nF2rJFOoAWztkaO0NkjRq32NVZqeXjK4VL8CE
- jOiR7eDsop7hs6Dyrhb2etFH5FrICLULGBbK8pEWP0hF7pOJOUZUk01OU2oJpnXpZc6s
- Qwl/S+DE1PbZ/h7ljZ/r8bo50QaiAQYBdbVMJOptIuiCyyPONCGydYQW9h2uwHdoOOpA
- IQJZ2pBJWqjBjEyuRkAh0qZ9Uom/Cz40ERKXYJl/T+1Q8riRnxtjzEboPfJr8swXwNei
- LKF7Rq0pmOiQG12c1SRdEq0T0tkdX84MqqsuwZptrU8e/XIAA5pl0RPpisAKFZAmYHJz
- sxmQ==
+ bh=cBwExhlGnHktaNC/Pgbr6DGrGKJUY171Dt9DA24rgeI=;
+ b=WitfE2OOAIQKDKZ9lfy+A3nNNuTPLtPfPj43p/IHtfW31OzyIq4g1u7h/a6RzEUoxH
+ RdHrWOi+0v2jd6XvOcozID/cu71JM2kLR1Lc7PIJ6Qb+TQovxZr6j9stN0XX0Bod1hxZ
+ oCNSBeI5pp25YPTM/ukdgmuxZ2b/A5yXKcO10MnZsGR/lLBYbwIytNs+ChElOJCap1LK
+ vajYmI2GOwDyqls7FyKSHSacuP4WXcBXCB7fCuGUYK1+pveeNyGzUrtIDbcZ6hK11/yT
+ Q2FTFr1dijGySXrBDh49zrqkCVugTN3UDvEul/kZKTWJhkI+q5jC9/Px3ze+2NksnKgR
+ wqjw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCW0UscJyNNMxtODCJqBYaCaBeQM2uFDJm9byuvIqh+BPnQ5sfm4+M487OLOEWXboyg8Yuio8W/0Rw==@nongnu.org
-X-Gm-Message-State: AOJu0Yysk1QEfyKAT4po1bFlZkV1sIUbjmV20mOLZaSRNT8JBYHLvDvY
- ndYlIFz18YM1Nv021R3hr+W9L+uD1tCypXgj87z4J5SxP86XjGVw6lVgE0Ky7t/MyTU=
-X-Gm-Gg: ASbGncv8582Zx7Fbd1mFoMDm3nr+rAybzL0Xu7KmxN5VEIXU7wrGz5moQIG32w8kzdb
- csZAa+tEZpMCAYah5QwSpgTjp3lT8clvaYvupvTa/egj8jXApeDMhk52pY9i6lhxUqcctYmqfzp
- GLe1jJtPMRLu92LPnivvA8YRjHv9502FYi0wXYrF0/8kwrQNz8iEEL4UMTGTsauVCWBDj8MfO8Y
- 2vN/ztOOZ3Y8YjVqU5N0AG4pdyMzkUB7YskgjX5Ra231hfaYeWL7m9CkykusDwtp+d9zpMtCtrc
- e7FOUeZWRU+vg2NuAgF8ok4DuTgPen70YKJeBu54Qxz2J1S9LGKtTDqkuVYPq39kuNQ8Bfimo06
- yjljRhdMTs7jMY68Viq78pVw=
-X-Google-Smtp-Source: AGHT+IEGb+BAIFeSIaWSKlrgHOaJDOPwFRM09L2A2jzCWzt2q02NG6Q56eKEjBFfpzsnxqjS4XF1zw==
-X-Received: by 2002:a05:600c:45ca:b0:45b:47e1:f5fa with SMTP id
- 5b1f17b1804b1-45b517d8e37mr105995995e9.35.1756140650220; 
- Mon, 25 Aug 2025 09:50:50 -0700 (PDT)
+ AJvYcCVWqmsFVYSfT8cTRiocd2P5jboFX4cvefrJizDBj3hs67detVuT0Zzeqxg/T/S90bW6Ds/JJ26J2g==@nongnu.org
+X-Gm-Message-State: AOJu0Yz4qsSmMBRxK2puvCEE5GxcrbkTfM3cRT5BqaPwgNzukuu6SMg+
+ AIr0TcHndXVGdjTDk1rMj+r+KDLnIa524kDYQZSt8Vw5dBlHuHVaqf5kxdznxtDTOASGcbm/NzG
+ Qdfq++ns=
+X-Gm-Gg: ASbGncsBQGlfxoRC5WX1I33Kv2GhVYJSGb/EyZHbeIYqYOVeCQ7TC2Bj1xM6ITuf5oj
+ BA6n2sQ/HCZthn59ubfkvqFg2B3r61NjMnMXwN4PS/jyzyp2bgYwq0tRLLlw+TOFKoBHj1jcewB
+ dEA4T9TSRobunCM6hMlZ6or1bGqKKXXuWXz1yI4ppIipZIM0w9YAMDFmU47lpyIU6NyIkQHVTDp
+ qsbWYV17Cf8M5WQYd4m9qPGaRmpVZYjyB/8zHDQwC+hqk4Q/eX1Guf+LMyjoaZLZ4Mjv4KxIM8J
+ xd4IODhNcjKLP49kj9xV7YVPWOfB9wbW2sVZHkZ7bf2HSA5wGiSoicx0f6P63zG6/WOnDtMfg1x
+ WRaJimsSN2Q0+XxHbZtgRSBU=
+X-Google-Smtp-Source: AGHT+IF/Nd2j9L3CCQG+zhh3E4fJDKIIqHqVT5X9mwiOq/07I7zR2mlWvBV3hKQ8fi2Vu8BW1PqlYA==
+X-Received: by 2002:a05:6000:220e:b0:3c2:502:d944 with SMTP id
+ ffacd0b85a97d-3cb001260c9mr310453f8f.0.1756141281000; 
+ Mon, 25 Aug 2025 10:01:21 -0700 (PDT)
 Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-45b5753528csm114990255e9.3.2025.08.25.09.50.49
+ ffacd0b85a97d-3c711f8a0d6sm12274640f8f.66.2025.08.25.10.01.20
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 25 Aug 2025 09:50:49 -0700 (PDT)
+ Mon, 25 Aug 2025 10:01:20 -0700 (PDT)
 Received: from draig (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 65E165F7CB;
- Mon, 25 Aug 2025 17:50:48 +0100 (BST)
+ by draig.lan (Postfix) with ESMTP id 2DB3F5F7CB;
+ Mon, 25 Aug 2025 18:01:19 +0100 (BST)
 From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: Gustavo Romero <gustavo.romero@linaro.org>
 Cc: qemu-devel@nongnu.org,  thuth@redhat.com,  qemu-arm@nongnu.org,
  1844144@gmail.com
-Subject: Re: [PATCH 2/4] tests/functional: Support tests that require a runner
-In-Reply-To: <20250819143916.4138035-3-gustavo.romero@linaro.org> (Gustavo
- Romero's message of "Tue, 19 Aug 2025 14:39:14 +0000")
+Subject: Re: [PATCH 1/4] tests/guest-debug: Make QEMU optional in run-test.py
+In-Reply-To: <20250819143916.4138035-2-gustavo.romero@linaro.org> (Gustavo
+ Romero's message of "Tue, 19 Aug 2025 14:39:13 +0000")
 References: <20250819143916.4138035-1-gustavo.romero@linaro.org>
- <20250819143916.4138035-3-gustavo.romero@linaro.org>
+ <20250819143916.4138035-2-gustavo.romero@linaro.org>
 User-Agent: mu4e 1.12.12; emacs 30.1
-Date: Mon, 25 Aug 2025 17:50:48 +0100
-Message-ID: <87bjo32vmf.fsf@draig.linaro.org>
+Date: Mon, 25 Aug 2025 18:01:19 +0100
+Message-ID: <875xeb2v4w.fsf@draig.linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::332;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x332.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::435;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x435.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -109,160 +110,183 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 Gustavo Romero <gustavo.romero@linaro.org> writes:
 
-> Add support for running tests that require a specific runner.
+> This commit makes QEMU optional in run-test.py, allowing it to be used
+> as a GDB runner, i.e., to call GDB and pass a test script to it without
+> launching QEMU. In this configuration, it is the test script=E2=80=99s du=
+ty to
+> configure and run the VMs that GDB connects to.
 >
-> The test is specified via a tuple (name, runner, protocol), where name
-> is the test name as found in the tests/functional directory without the
-> 'test_' prefix and the .py extension, runner is an array containing the
-> runner and any arguments required by the runner, and protocol is
-> the test protocol used by Meson to determine whether the test passed or
-> failed.
->
-> The test tuples are added to arrays that follow the current naming
-> logic but with the suffix '_with_runner' appended to their names. In
-> Meson it's not easy to select an element in an array at runtime based on
-> its type, so it's simpler to have a new array for these new test types
-> than use the current ones from the tests that don't require a runner,
-> and so avoid mixing strings and tuples in the same array.
->
-> Currently there is only one runner, the GDB runner, but more runners can
-> be defined and associated to a test via the tuple.
+> The --binary option continues to be required when --qemu is passed.
+> sys.argv now includes the full path to the test script in addition to
+> the script=E2=80=99s arguments, which allows unittest introspection to wo=
+rk
+> properly in case it is used in the test script.
 >
 > Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
 > ---
->  meson.build                  |  4 +++
->  tests/functional/meson.build | 62 ++++++++++++++++++++++++++++++++++++
->  2 files changed, 66 insertions(+)
+>  tests/guest-debug/run-test.py | 81 +++++++++++++++++++----------------
+>  1 file changed, 45 insertions(+), 36 deletions(-)
 >
-> diff --git a/meson.build b/meson.build
-> index 50c774a195..8d482f0809 100644
-> --- a/meson.build
-> +++ b/meson.build
-> @@ -75,6 +75,10 @@ have_user =3D have_linux_user or have_bsd_user
->=20=20
->  sh =3D find_program('sh')
->  python =3D import('python').find_installation()
-> +# Meson python.get_path() on 'purelib' or 'platlib' doesn't properly ret=
-urn the
-> +# site-packages dir in pyvenv, so it is built manually.
-> +python_ver =3D python.language_version()
-> +python_site_packages =3D meson.build_root() / 'pyvenv/lib/python' + pyth=
-on_ver / 'site-packages'
->=20=20
->  cc =3D meson.get_compiler('c')
->  all_languages =3D ['c']
-> diff --git a/tests/functional/meson.build b/tests/functional/meson.build
-> index 311c6f1806..1f70b70fd4 100644
-> --- a/tests/functional/meson.build
-> +++ b/tests/functional/meson.build
-> @@ -349,6 +349,23 @@ tests_xtensa_system_thorough =3D [
->    'xtensa_replay',
->  ]
->=20=20
-> +# Tests that require a specific runner.
-> +gdb =3D find_program('gdb-multiarch', required: false)
-> +if gdb.found()
-> +    gdb_runner_script =3D  meson.project_source_root() + '/tests/guest-d=
-ebug/run-test.py'
-> +    gdb_runner =3D [gdb_runner_script, '--gdb', gdb, '--test']
-> +
-> +    # A test with a runner is a tuple (name, runner, protocol).
-> +    # The tests must be elements of an array named like:
-> +    #
-> +    # test_<arch>_<mode=3D[system|linuxuser|bsduser]>_<speed=3D[quick|th=
-orough]>_with_runner =3D [
-> +    #      ['test0', gdb_runner, 'exitcode'],
-> +    #      ...
-> +    # ]
-> +else
-> +    message('GDB multiarch not found, skipping functional tests that rel=
-y on it.')
-> +endif
-> +
+> diff --git a/tests/guest-debug/run-test.py b/tests/guest-debug/run-test.py
+> index 75e9c92e03..7fa17aedca 100755
+> --- a/tests/guest-debug/run-test.py
+> +++ b/tests/guest-debug/run-test.py
+> @@ -22,10 +22,10 @@
+>  def get_args():
+>      parser =3D argparse.ArgumentParser(description=3D"A gdbstub test run=
+ner")
+>      parser.add_argument("--qemu", help=3D"Qemu binary for test",
+> -                        required=3DTrue)
+> +                        required=3DFalse)
+>      parser.add_argument("--qargs", help=3D"Qemu arguments for test")
+>      parser.add_argument("--binary", help=3D"Binary to debug",
+> -                        required=3DTrue)
+> +                        required=3DFalse)
 
-We already have a --gdb option in configure which sets GDB=3D for
-check-tcg - we should use the same configuration for these tests. You
-may need to convert the configure probe to a meson-option.
+    parser.add_argument("--binary", help=3D"Binary to debug",
+                        required=3D'--qemu' in sys.argv)
 
->  precache_all =3D []
->  foreach speed : ['quick', 'thorough']
->    foreach dir : target_dirs
-> @@ -372,9 +389,11 @@ foreach speed : ['quick', 'thorough']
->        suites =3D ['func-quick', 'func-' + target_base]
->        target_tests =3D get_variable('tests_' + target_base + '_' + sysmo=
-de + '_quick', []) \
->                       + get_variable('tests_generic_' + sysmode)
-> +      target_tests_r =3D get_variable('tests_' + target_base + '_' + sys=
-mode + '_quick_with_runner', [])
->      else
->        suites =3D ['func-' + speed, 'func-' + target_base + '-' + speed, =
-speed]
->        target_tests =3D get_variable('tests_' + target_base + '_' + sysmo=
-de + '_' + speed, [])
-> +      target_tests_r =3D get_variable('tests_' + target_base + '_' + sys=
-mode + '_' + speed + '_with_runner', [])
->      endif
+>      parser.add_argument("--test", help=3D"GDB test script")
+>      parser.add_argument('test_args', nargs=3D'*',
+>                          help=3D"Additional args for GDB test script. "
+> @@ -53,7 +53,7 @@ def log(output, msg):
+>  if __name__ =3D=3D '__main__':
+>      args =3D get_args()
 >=20=20
->      test_deps =3D [roms, keymap_targets]
-> @@ -423,6 +442,49 @@ foreach speed : ['quick', 'thorough']
->             priority: test_timeouts.get(test, 90),
->             suite: suites)
->      endforeach
+> -    # Search for a gdb we can use
+> +    # Search for a gdb we can use.
+>      if not args.gdb:
+>          args.gdb =3D shutil.which("gdb-multiarch")
+>      if not args.gdb:
+> @@ -73,41 +73,49 @@ def log(output, msg):
+>      socket_dir =3D TemporaryDirectory("qemu-gdbstub")
+>      socket_name =3D os.path.join(socket_dir.name, "gdbstub.socket")
+>=20=20
+> -    # Launch QEMU with binary
+> -    if "system" in args.qemu:
+> -        if args.no_suspend:
+> -            suspend =3D ''
+> -        else:
+> -            suspend =3D ' -S'
+> -        cmd =3D f'{args.qemu} {args.qargs} {args.binary}' \
+> -            f'{suspend} -gdb unix:path=3D{socket_name},server=3Don'
+> -    else:
+> -        if args.no_suspend:
+> -            suspend =3D ',suspend=3Dn'
+> -        else:
+> -            suspend =3D ''
+> -        cmd =3D f'{args.qemu} {args.qargs} -g {socket_name}{suspend}' \
+> -            f' {args.binary}'
+> -
+> -    log(output, "QEMU CMD: %s" % (cmd))
+> -    inferior =3D subprocess.Popen(shlex.split(cmd))
+> +    if args.qemu and not args.binary:
+> +        print("QEMU needs a binary to run, but no binary provided")
+> +        exit(-1)
+
+then we can avoid this.
+
+>=20=20
+> -    # Now launch gdb with our test and collect the result
+> -    gdb_cmd =3D "%s %s" % (args.gdb, args.binary)
+> +    if args.qemu:
+> +        # Launch QEMU with binary.
+> +        if "system" in args.qemu:
+> +            if args.no_suspend:
+> +                suspend =3D ''
+> +            else:
+> +                suspend =3D ' -S'
+> +            cmd =3D f'{args.qemu} {args.qargs} {args.binary}' \
+> +                f'{suspend} -gdb unix:path=3D{socket_name},server=3Don'
+> +        else:
+> +            if args.no_suspend:
+> +                suspend =3D ',suspend=3Dn'
+> +            else:
+> +                suspend =3D ''
+> +            cmd =3D f'{args.qemu} {args.qargs} -g {socket_name}{suspend}=
+' \
+> +                f' {args.binary}'
 > +
-> +    # Prepare tests that require a specific runner.
-> +    foreach test : target_tests_r
-> +      testname =3D '@0@-@1@'.format(target_base, test[0])
-> +      testfile =3D 'test_' + test[0] + '.py'
-> +      testpath =3D meson.current_source_dir() / testfile
-> +      teststamp =3D testname + '.tstamp'
-> +      testrunner  =3D test[1]
-> +      testproto =3D test[2]
+> +        log(output, "QEMU CMD: %s" % (cmd))
+> +        inferior =3D subprocess.Popen(shlex.split(cmd))
 > +
-> +      test_precache_env =3D environment()
-> +      test_precache_env.set('QEMU_TEST_PRECACHE', meson.current_build_di=
-r() / teststamp)
-> +      # python_site_packages, i.e., site packages from Python in pyvenv,=
- is
-> +      # added to PYTHONPATH because some runners can run a program that =
-has its
-> +      # own Python hooks that, by its turn, will search for modules base=
-d on
-> +      # PYTHONPATH independently of the Python used by the runner, like,=
- for
-> +      # example, GDB using libpython.
-> +      test_precache_env.set('PYTHONPATH', meson.project_source_root() / =
-'python' +
-> +                                          ':' + meson.current_source_dir=
-() +
-> +                                          ':' + python_site_packages)
-> +      precache =3D custom_target('func-precache-' + testname,
-> +                               output: teststamp,
-> +                               command: [testrunner, testpath],
-> +                               depend_files: files(testpath),
-> +                               build_by_default: false,
-> +                               env: test_precache_env)
-> +      precache_all +=3D precache
-> +
-> +      # See comment above about python_site_packages in test_precache_en=
-v.
-> +      # Don't append to test_env since it will affect previous uses of i=
-t.
-> +      test_r_env =3D test_env
-> +      test_r_env.append('PYTHONPATH', python_site_packages)
-> +
-> +      test('func-' + testname,
-> +           python,
-> +           depends: [test_deps, test_emulator, emulator_modules, plugin_=
-modules],
-> +           env: test_r_env,
-> +           args: [testrunner, testpath],
-> +           protocol: testproto,
-> +           timeout: test_timeouts.get(test[0], 90),
-> +           priority: test_timeouts.get(test[0], 90),
-> +           suite: suites)
-> +    endforeach
->    endforeach
->  endforeach
+> +    # Now launch gdb with our test and collect the result.
+> +    gdb_cmd =3D args.gdb
+> +    if args.binary:
+> +        gdb_cmd +=3D " %s" % (args.binary)
+>      if args.gdb_args:
+>          gdb_cmd +=3D " %s" % (args.gdb_args)
+> -    # run quietly and ignore .gdbinit
+> +    # Run quietly and ignore .gdbinit.
+>      gdb_cmd +=3D " -q -n -batch"
+> -    # disable pagination
+> +    # Disable pagination.
+>      gdb_cmd +=3D " -ex 'set pagination off'"
+> -    # disable prompts in case of crash
+> +    # Disable prompts in case of crash.
+>      gdb_cmd +=3D " -ex 'set confirm off'"
+
+The re-formatting makes the diffs very noisy. If you want to clean up
+the captilization of stuff do that in another commit.
+
+> -    # connect to remote
+> -    gdb_cmd +=3D " -ex 'target remote %s'" % (socket_name)
+> -    # finally the test script itself
+> +    # Connect automatically to remote only if QEMU is launched.
+> +    if args.qemu:
+> +        gdb_cmd +=3D " -ex 'target remote %s'" % (socket_name)
+> +    # Finally the test script itself.
+>      if args.test:
+> -        if args.test_args:
+> -            gdb_cmd +=3D f" -ex \"py sys.argv=3D{args.test_args}\""
+> +        argv =3D [args.test] + args.test_args
+> +        gdb_cmd +=3D f" -ex \"py sys.argv=3D{argv}\""
+>          gdb_cmd +=3D " -x %s" % (args.test)
+
+I can see this echoes from:
+
+   env QEMU_TEST_FLAKY_TESTS=3D1 ./pyvenv/bin/meson test --suite thorough f=
+unc-aarch64-aarch64_reverse_debug --verbose
+
+Shows:
+
+  GDB CMD: /usr/bin/gdb-multiarch -q -n -batch -ex 'set pagination off' -ex=
+ 'set confirm off' -ex "py sys.argv=3D['/home/alex/lsrc/qemu.git/tests/func=
+tional/test_aarch64_reverse_debug.py']" -x /home/alex/lsrc/qemu.git/tests/f=
+unctional/test_aarch64_reverse_debug.py
+
+But trying to piece that together on my the command line:
+
+  env PYTHONPATH=3D/home/alex/lsrc/qemu.git/python:/home/alex/lsrc/qemu.git=
+/tests/functional /usr/bin/gdb-multiarch -q -n -batch -ex 'set pagination o=
+ff' -ex 'set confirm off' -ex "py sys.argv=3D['/home/alex/lsrc/qemu.git/tes=
+ts/functional/test_aarch64_reverse_debug.py']" -x /home/alex/lsrc/qemu.git/=
+tests/functional/test_aarch64_reverse_debug.py
+Python Exception <class 'ModuleNotFoundError'>: No module named 'pycotap'
+Error occurred in Python: No module named 'pycotap'
+
+What am I missing?
+
+>=20=20
+>=20=20
+> @@ -129,10 +137,11 @@ def log(output, msg):
+>          log(output, "GDB crashed? (%d, %d) SKIPPING" % (result, result -=
+ 128))
+>          exit(0)
+>=20=20
+> -    try:
+> -        inferior.wait(2)
+> -    except subprocess.TimeoutExpired:
+> -        log(output, "GDB never connected? Killed guest")
+> -        inferior.kill()
+> +    if args.qemu:
+> +        try:
+> +            inferior.wait(2)
+> +        except subprocess.TimeoutExpired:
+> +            log(output, "GDB never connected? Killed guest")
+> +            inferior.kill()
+>=20=20
+>      exit(result)
 
 --=20
 Alex Benn=C3=A9e

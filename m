@@ -4,97 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6263BC8303F
-	for <qemu-arm@archiver.kernel.org>; Tue, 26 Aug 2025 02:05:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 186E1CA0EFA
+	for <qemu-arm@archiver.kernel.org>; Tue, 26 Aug 2025 07:01:59 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uqj3b-0000kP-CR; Mon, 25 Aug 2025 22:05:07 -0400
+	id 1uqngH-0002Ud-NW; Tue, 26 Aug 2025 03:01:22 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cjchen@igel.co.jp>) id 1uqj3Z-0000dJ-JW
- for qemu-arm@nongnu.org; Mon, 25 Aug 2025 22:05:05 -0400
-Received: from mail-lf1-x12d.google.com ([2a00:1450:4864:20::12d])
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1uqnfo-0002NW-BN; Tue, 26 Aug 2025 03:00:53 -0400
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <cjchen@igel.co.jp>) id 1uqj3K-0004Vn-3A
- for qemu-arm@nongnu.org; Mon, 25 Aug 2025 22:05:04 -0400
-Received: by mail-lf1-x12d.google.com with SMTP id
- 2adb3069b0e04-55ce5243f6dso5415490e87.2
- for <qemu-arm@nongnu.org>; Mon, 25 Aug 2025 19:04:39 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1uqnfh-00011t-HL; Tue, 26 Aug 2025 03:00:50 -0400
+Received: by mail-wm1-x333.google.com with SMTP id
+ 5b1f17b1804b1-45a1b0cbbbaso45146025e9.3; 
+ Tue, 26 Aug 2025 00:00:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=igel-co-jp.20230601.gappssmtp.com; s=20230601; t=1756173875; x=1756778675;
- darn=nongnu.org; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
+ d=gmail.com; s=20230601; t=1756191635; x=1756796435; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
  :message-id:reply-to;
- bh=oYbhx6akeMrp0+j7CppN23HVOCbSEz9iiNk+OzyMiew=;
- b=cyD/5Ic9YokVOeId+PJFy821ebZFTjTqeAgvDCtSxpHmBdVrx7QAd+N+0V/3urRl8F
- d2NUKJ7T1zGRhBWzEuiP8WyV24HiyGKJZJ1sRT8MyR4YCzn2mRVOWL79MfK4MQo7oZJD
- 5RNcWKtEjdVAs9MEv5dQOJTgCXC6GvnxjQjmkfpmYOuKAioORHoxs18NZKSH9hFgd/K6
- feoaHMzpiq/xybgrHpqAtCFtioQ5LTpEQiI2NmcYKmgZX9zub9FdWUqcNHaDTwKcL3Rr
- N/jILAB9kqYw+2MI+sEbdUVfQF8FCloHiPfTnwTN2J+141EvBVAZFyU+Yso/jV13L21H
- chEg==
+ bh=DBWaeHjVcW9Fko9vgWrkD3gaxMxJDzk7C4A9jrfi6jc=;
+ b=mKhzAyLNisWIWM5kKAMLOE3Jm968rp+RZvqOVvRiQY5HbY3lc/0X6FNhOfdF299QrJ
+ 9x5j2KxNjFR4HcqZcAmQFVU0+umDAyieuDz5rPzPmvqL7wcROdR3pN6+z9k8G/IECjQy
+ uL5bKnO5i72ICsPDu10aztPDxA+yGj07PrCBWFBMR0kdMB5jqQFeVytVScDmRa/etb4P
+ TTR9xGfyURJYOapv/+OXECmAaAGa7BtjqfQdzVEGi/qQYD8DvQfacYY0zD59Ui6Nijuk
+ vOQFyijDnmpgWHhB+i33n4hKAcvK8oNFLsEEBNA9fZbpireOdJpaWPo5ZENZ572coqP2
+ qRmw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756173875; x=1756778675;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ d=1e100.net; s=20230601; t=1756191635; x=1756796435;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=oYbhx6akeMrp0+j7CppN23HVOCbSEz9iiNk+OzyMiew=;
- b=p5pkvBEkgK8BscTqhUUSorpPQUqOR5qtVW6zLc6XhR+aWmpoQZ+L7C6xwcgu4zOuJV
- pGFQmZ2W2Jp0vBqY75c0ISH2cmwY6qjfdUurCR8FLd0TOjxK859kmv+rFi7/Q2IKLRBi
- pBexKaMJ84z4mDLwyyiW795VR6jksmUd8muA5C1V7/NPvszIC3XOPOc1J1jsDsWyXWO+
- 5GXx8ZrwyhdnzlWOjaZdfkNe5WX2VLWyTkRBorDJDpgIXK+17RNseBg6838gLy602zo2
- H+7ffj3gNNLSzuaNGswN2KL38WQ+lpizuZixK8tIQd2EUCpasx7PJkPnnsqUqBIuvpjD
- 5pxA==
+ bh=DBWaeHjVcW9Fko9vgWrkD3gaxMxJDzk7C4A9jrfi6jc=;
+ b=bBqSJFYNJwsKqChjtspeqXJBul9W2jrcBpxbjDcnnml6ZORuMfrtmZeJBmXkBhPvKj
+ STpX/8i6HdF3tUfDR5JhmhcvWsoumEnfKncAFM2K/GrShOSFZpjRGmPpDNiQsUAQPR7X
+ jZge/kLyGocZvMJstu9C57FYzZEZRh4mQc1ugh+6xfAhvt2ZpBGiQVx3APz7oJIsjqIS
+ rdYRsE9eeWeG19SVCRMGBybpV0svID7QcQWmvC3mE4IYa2bl5LhtDYVoNLaevG8NN4sV
+ YrxXLoHGaLFE7SitFlbeHpRHrdplMUhq5ocJ2+h3QzHOqZsfE0GiiZy5uRuTDu/mpfI9
+ KpKQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCW6GwtbliK9JZmyHbNKSZSDqSSDE/lZCohjRuVXBGbu1hsBBEM62uVJ1ClVEwGuJxQL/E+5OqyIlQ==@nongnu.org
-X-Gm-Message-State: AOJu0YxNJ64IplAZJDdyVzIneCdyt804njyFLJnKvMeCg1aemodBJgID
- kaYfx8WpE8D1038sgrkpzPcQi/8UZvpl9exXrBSlScnSdXX2p8EzbcLQcOlD5qZiM/Gl1o+lwqS
- aEcfrT40GEy/ApkCzTEmknlZ5y7Zs+lIlEK0UCRXkSw==
-X-Gm-Gg: ASbGnculVj9iId1+Sav2fY+HwwsZwpuhSnAUwYKx56HUQDwGxmQlLZGo6hsx7ssRAxp
- paor40j+FQJ+2f0sOHid7OKLHol8CPhVwbSngdz+wNjjFyDDph//Jsx0mmXvsbR12Q/+mPnFFOR
- 0ojaE2DzU0bLj/da/T2vHCmEGysdIabuO2IkiOhmPbRAmTs8mYF0pgzbgxM44ygmlQ3qymEFMk7
- 1W1rzYMKlHk1uJseG2p
-X-Google-Smtp-Source: AGHT+IEszcJrVgWpZnUqNIKpNx2DkAOEn5XCeJFnYinMzW2Ne9pmJsYXTABQ7yr06tRvIUjlak1xZ0qnVmeooL9zs54=
-X-Received: by 2002:a05:6512:3a94:b0:55f:4031:4374 with SMTP id
- 2adb3069b0e04-55f40314508mr2318638e87.47.1756173875045; Mon, 25 Aug 2025
- 19:04:35 -0700 (PDT)
+ AJvYcCXgoBphxeX5DX5qIPI8otXwWARMnlDcOhCyC6QhwoZoRKkOKqhWuANShvZVpsx4oJA5fefYzKRjEQ==@nongnu.org
+X-Gm-Message-State: AOJu0YwwcSY+Zm30yibSyHPPSC40JhB7F1+nIxHk6rnv0QdgojKz+06P
+ 9lmEAYuL6lHsFzIeqOgYIbv/UrBo3xxWCP1ZADcko397asLApixvcbSB
+X-Gm-Gg: ASbGnctp/ONKWQqSO8Gk/rX5fxF4Dm3BQJrWWYeSGvSVx4ZXeXuCyp4JefRNDLk6bLG
+ qn5e4+LWC/7YjOnZhvJ3T5hT5HhE7ODQNRnzMG2nevCm/hCKZQ/+tsP+yB9wPGgOZJCaHMC5bre
+ 7+FLZHbXBm12L4VRJ2hikY8E+4lxhSZm+J/OvOFKFmxDVO59jf7NNXAHdcZEJ+vhwThtrhe4CIY
+ WPbhrSHjr/CCJlfnHd2U7RUYBgertLOdRso6K0apwwmp19yeN3KDHgAX1DLhM6g0mMfNct/91IP
+ Xsw7i7hmP52nGonolANjTeqqnrQFSkNSsiOyrgwQFN0WLiMI8tjwjf5U1z9AwNQsDlTQyj/A8Vz
+ gJ8iSChCQoiptPFEULnQdZduucBsZHC9dfa52HEgoGNd+cNFkbCNtmVXRCj3XP+Obeu7XvNDhv7
+ uer1e//Dspsh2e9b1c4Dl/DQRSnIkLOw==
+X-Google-Smtp-Source: AGHT+IGfSnHpfcB1ujebQ1sLIsG1QfCFGeMzoFNGXILF0Xx1Pho5sVsX5RmZg8EmgZqWjH6nGJwCnA==
+X-Received: by 2002:a05:600c:3b94:b0:458:bfb1:1fb6 with SMTP id
+ 5b1f17b1804b1-45b6456ee5amr28714805e9.2.1756191634906; 
+ Tue, 26 Aug 2025 00:00:34 -0700 (PDT)
+Received: from ehlo.thunderbird.net
+ (p200300faaf05a00031cf8e3dd82746ae.dip0.t-ipconnect.de.
+ [2003:fa:af05:a000:31cf:8e3d:d827:46ae])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-3c711211bd7sm15052976f8f.38.2025.08.26.00.00.33
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 26 Aug 2025 00:00:34 -0700 (PDT)
+Date: Tue, 26 Aug 2025 05:50:36 +0000
+From: Bernhard Beschow <shentey@gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+CC: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>
+Subject: Re: [PATCH 2/2] hw/arm/imx8mp-evk: Add KVM support
+In-Reply-To: <57BBA45B-76EB-4922-8611-9596C9B37CCE@gmail.com>
+References: <20250629204851.1778-1-shentey@gmail.com>
+ <20250629204851.1778-3-shentey@gmail.com>
+ <CAFEAcA-HaQwySM1j7Cy_R1z0fM1D9ykiBiMKLYNVYF+Tm_mrPA@mail.gmail.com>
+ <78B2535C-38D8-4612-8958-49AC28482A8D@gmail.com>
+ <CAFEAcA9b+1xx+Esnt80Ny1gWBOsh-QYYxuP6PwiPk-B20xv0Dw@mail.gmail.com>
+ <3DA254A8-76AC-4214-8C65-D3B3FFF55FF9@gmail.com>
+ <57BBA45B-76EB-4922-8611-9596C9B37CCE@gmail.com>
+Message-ID: <B075C670-C5A1-482D-8E78-A2C81FBEFE11@gmail.com>
 MIME-Version: 1.0
-References: <20250822092410.25833-1-cjchen@igel.co.jp>
- <20250822092410.25833-10-cjchen@igel.co.jp>
- <e755b413-b983-4c98-bda8-e0c7ec6e29b5@linaro.org>
-In-Reply-To: <e755b413-b983-4c98-bda8-e0c7ec6e29b5@linaro.org>
-From: chen CJ <cjchen@igel.co.jp>
-Date: Tue, 26 Aug 2025 11:04:24 +0900
-X-Gm-Features: Ac12FXzS2vczPWQMQ-PQmOJZV62OGYrLk4GHU71rFORmH0JpAwXZUq8dRM8DWNo
-Message-ID: <CAAMq-Y_9tqhAQmCfyMDhqmQEeF+XiyAq+RXiBY-GJGwmRMsEGw@mail.gmail.com>
-Subject: Re: [PATCH RFC v2 9/9] tests/qtest: add test for memory region access
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-block@nongnu.org, qemu-riscv@nongnu.org, 
- qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- Keith Busch <kbusch@kernel.org>, 
- Klaus Jensen <its@irrelevant.dk>, Jesper Devantier <foss@defmacro.it>, 
- Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <alistair.francis@wdc.com>, 
- Weiwei Li <liwei1518@gmail.com>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>, 
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, Tyrone Ting <kfting@nuvoton.com>, 
- Hao Wu <wuhaotsh@google.com>, Max Filippov <jcmvbkbc@gmail.com>,
- Peter Xu <peterx@redhat.com>, 
- David Hildenbrand <david@redhat.com>, Fabiano Rosas <farosas@suse.de>,
- Laurent Vivier <lvivier@redhat.com>, 
- Tomoyuki Hirose <hrstmyk811m@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain;
+ charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::12d;
- envelope-from=cjchen@igel.co.jp; helo=mail-lf1-x12d.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::333;
+ envelope-from=shentey@gmail.com; helo=mail-wm1-x333.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -110,188 +110,73 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Philippe,
-
-Thanks for the review and the pointer.
-
-You=E2=80=99re right =E2=80=94 the CPUs are not involved in the test path, =
-and the only
-difference that matters is the binary endianness. I will re-spin the
-series and reduce the test matrix to one little-endian and one big-endian
-target to avoid redundant runs.
-
-Specifically, I will keep:
-  - x86_64  (cpu: "qemu64,apic-id=3D0")  =E2=80=94 little-endian
-  - s390x   (cpu: "qemu")              =E2=80=94 big-endian
-
-Thanks again for the feedback. If you have any further comments, please
-let me know.
-
-Best regards,
-CJ
 
 
-Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> =E6=96=BC 2025=E5=B9=B48=E6=
-=9C=8825=E6=97=A5 =E9=80=B1=E4=B8=80 =E4=B8=8B=E5=8D=888:16=E5=AF=AB=E9=81=
-=93=EF=BC=9A
->
-> On 22/8/25 11:24, CJ Chen wrote:
-> > From: Tomoyuki Hirose <hrstmyk811m@gmail.com>
-> >
-> > This commit adds a qtest for accessing various memory regions. The
-> > qtest checks the correctness of handling the access to memory regions
-> > by using 'memaccess-testdev'.
-> >
-> > Signed-off-by: CJ Chen <cjchen@igel.co.jp>
-> > Co-developed-by: CJ Chen <cjchen@igel.co.jp>
-> > Reported-by: Tomoyuki Hirose <hrstmyk811m@gmail.com>
-> > ---
-> >   tests/qtest/memaccess-test.c | 597 ++++++++++++++++++++++++++++++++++=
-+
-> >   tests/qtest/meson.build      |   9 +
-> >   2 files changed, 606 insertions(+)
-> >   create mode 100644 tests/qtest/memaccess-test.c
-> >
-> > diff --git a/tests/qtest/memaccess-test.c b/tests/qtest/memaccess-test.=
-c
-> > new file mode 100644
-> > index 0000000000..7e90028ea0
-> > --- /dev/null
-> > +++ b/tests/qtest/memaccess-test.c
-> > @@ -0,0 +1,597 @@
-> > +/*
-> > + * QEMU memory region access test
-> > + *
-> > + * SPDX-License-Identifier: GPL-2.0-or-later
-> > + *
-> > + * Author: Tomoyuki HIROSE <hrstmyk811m@gmail.com>
-> > + */
-> > +
-> > +#include "qemu/osdep.h"
-> > +#include "libqtest.h"
-> > +
-> > +#include "hw/misc/memaccess-testdev.h"
-> > +
-> > +static const char *arch =3D "";
-> > +static const hwaddr base =3D 0x200000000;
-> > +
-> > +struct arch2cpu {
-> > +    const char *arch;
-> > +    const char *cpu_model;
-> > +};
-> > +
-> > +static struct arch2cpu cpus_map[] =3D {
-> > +    /* tested targets list */
-> > +    { "arm", "cortex-a15" },
-> > +    { "aarch64", "cortex-a57" },
-> > +    { "avr", "avr6-avr-cpu" },
-> > +    { "x86_64", "qemu64,apic-id=3D0" },
-> > +    { "i386", "qemu32,apic-id=3D0" },
-> > +    { "alpha", "ev67" },
-> > +    { "cris", "crisv32" },
-> > +    { "m68k", "m5206" },
-> > +    { "microblaze", "any" },
-> > +    { "microblazeel", "any" },
-> > +    { "mips", "4Kc" },
-> > +    { "mipsel", "I7200" },
-> > +    { "mips64", "20Kc" },
-> > +    { "mips64el", "I6500" },
-> > +    { "or1k", "or1200" },
-> > +    { "ppc", "604" },
-> > +    { "ppc64", "power8e_v2.1" },
-> > +    { "s390x", "qemu" },
-> > +    { "sh4", "sh7750r" },
-> > +    { "sh4eb", "sh7751r" },
-> > +    { "sparc", "LEON2" },
-> > +    { "sparc64", "Fujitsu Sparc64" },
-> > +    { "tricore", "tc1796" },
-> > +    { "xtensa", "dc233c" },
-> > +    { "xtensaeb", "fsf" },
-> > +    { "hppa", "hppa" },
-> > +    { "riscv64", "rv64" },
-> > +    { "riscv32", "rv32" },
-> > +    { "rx", "rx62n" },
-> > +    { "loongarch64", "la464" },
->
-> IIUC CPUs are not involved in the test path. The only difference
-> is the binary endianness. So we are testing 2 distinct code path
-> duplicated as ARRAY_SIZE(cpus_map) =3D 31 times.
->
-> Let's run the tests with a pair of common targets and save 29
-> pointless tests:
->
-> ... cpus_map[] =3D {
->        /* One little endian and one big endian target */
->        { "x86_64", "qemu64,apic-id=3D0" },
->        { "s390x", "qemu" }
-> }
->
-> > +};
-> > +
-> > +static const char *get_cpu_model_by_arch(const char *arch)
-> > +{
-> > +    for (int i =3D 0; i < ARRAY_SIZE(cpus_map); i++) {
-> > +        if (!strcmp(arch, cpus_map[i].arch)) {
-> > +            return cpus_map[i].cpu_model;
-> > +        }
-> > +    }
-> > +    return NULL;
-> > +}
-> > +
-> > +static QTestState *create_memaccess_qtest(void)
-> > +{
-> > +    QTestState *qts;
-> > +
-> > +    qts =3D qtest_initf("-machine none -cpu \"%s\" "
-> > +                      "-device memaccess-testdev,address=3D0x%" PRIx64=
-,
-> > +                      get_cpu_model_by_arch(arch), base);
-> > +    return qts;
-> > +}
+Am 11=2E August 2025 11:01:53 UTC schrieb Bernhard Beschow <shentey@gmail=
+=2Ecom>:
 >
 >
-> > +DEFINE_test_memaccess(little, LITTLE, b, B, valid, VALID)
-> > +DEFINE_test_memaccess(little, LITTLE, w, W, valid, VALID)
-> > +DEFINE_test_memaccess(little, LITTLE, l, L, valid, VALID)
-> > +DEFINE_test_memaccess(little, LITTLE, q, Q, valid, VALID)
-> > +DEFINE_test_memaccess(little, LITTLE, b, B, invalid, INVALID)
-> > +DEFINE_test_memaccess(little, LITTLE, w, W, invalid, INVALID)
-> > +DEFINE_test_memaccess(little, LITTLE, l, L, invalid, INVALID)
-> > +DEFINE_test_memaccess(little, LITTLE, q, Q, invalid, INVALID)
-> > +DEFINE_test_memaccess(big, BIG, b, B, valid, VALID)
-> > +DEFINE_test_memaccess(big, BIG, w, W, valid, VALID)
-> > +DEFINE_test_memaccess(big, BIG, l, L, valid, VALID)
-> > +DEFINE_test_memaccess(big, BIG, q, Q, valid, VALID)
-> > +DEFINE_test_memaccess(big, BIG, b, B, invalid, INVALID)
-> > +DEFINE_test_memaccess(big, BIG, w, W, invalid, INVALID)
-> > +DEFINE_test_memaccess(big, BIG, l, L, invalid, INVALID)
-> > +DEFINE_test_memaccess(big, BIG, q, Q, invalid, INVALID)
-> > +
-> > +#undef DEFINE_test_memaccess
-> > +
-> > +static struct {
-> > +    const char *name;
-> > +    void (*test)(void);
-> > +} tests[] =3D {
-> > +    {"little_b_valid", test_memaccess_little_b_valid},
-> > +    {"little_w_valid", test_memaccess_little_w_valid},
-> > +    {"little_l_valid", test_memaccess_little_l_valid},
-> > +    {"little_q_valid", test_memaccess_little_q_valid},
-> > +    {"little_b_invalid", test_memaccess_little_b_invalid},
-> > +    {"little_w_invalid", test_memaccess_little_w_invalid},
-> > +    {"little_l_invalid", test_memaccess_little_l_invalid},
-> > +    {"little_q_invalid", test_memaccess_little_q_invalid},
-> > +    {"big_b_valid", test_memaccess_big_b_valid},
-> > +    {"big_w_valid", test_memaccess_big_w_valid},
-> > +    {"big_l_valid", test_memaccess_big_l_valid},
-> > +    {"big_q_valid", test_memaccess_big_q_valid},
-> > +    {"big_b_invalid", test_memaccess_big_b_invalid},
-> > +    {"big_w_invalid", test_memaccess_big_w_invalid},
-> > +    {"big_l_invalid", test_memaccess_big_l_invalid},
-> > +    {"big_q_invalid", test_memaccess_big_q_invalid},
-> > +};
-> BTW this reminds me of
-> https://lore.kernel.org/qemu-devel/20200817161853.593247-8-f4bug@amsat.or=
-g/
-> ;)
+>Am 8=2E Juli 2025 16:36:03 UTC schrieb Bernhard Beschow <shentey@gmail=2E=
+com>:
+>>
+>>
+>>Am 30=2E Juni 2025 21:03:06 UTC schrieb Peter Maydell <peter=2Emaydell@l=
+inaro=2Eorg>:
+>>>On Mon, 30 Jun 2025 at 21:22, Bernhard Beschow <shentey@gmail=2Ecom> wr=
+ote:
+>>>>
+>>>>
+>>>>
+>>>> Am 30=2E Juni 2025 09:09:31 UTC schrieb Peter Maydell <peter=2Emaydel=
+l@linaro=2Eorg>:
+>>>> >On Sun, 29 Jun 2025 at 21:49, Bernhard Beschow <shentey@gmail=2Ecom>=
+ wrote:
+>>>> >>
+>>>> >> Allows the imx8mp-evk machine to be run with KVM acceleration as a=
+ guest=2E
+>>>> >>
+>>>> >> Signed-off-by: Bernhard Beschow <shentey@gmail=2Ecom>
+>>>> >> ---
+>>>> >>  docs/system/arm/imx8mp-evk=2Erst |  7 +++++++
+>>>> >>  hw/arm/fsl-imx8mp=2Ec            | 33 +++++++++++++++++++++++++++=
++-----
+>>>> >>  hw/arm/imx8mp-evk=2Ec            | 11 +++++++++++
+>>>> >>  hw/arm/Kconfig                 |  3 ++-
+>>>> >>  hw/arm/meson=2Ebuild             |  2 +-
+>>>> >>  5 files changed, 49 insertions(+), 7 deletions(-)
+>>>> >
+>>>> >This puts a lot of IMX device models onto our security boundary,
+>>>> >which makes me a bit nervous -- that's a lot of code which
+>>>> >wasn't really written or reviewed carefully to ensure it
+>>>> >can't be exploited by a malicious guest=2E
+>>>>
+>>>> Hi Peter,
+>>>>
+>>>> Does KVM increase the attack surface compared to TCG?
+>>>
+>>>Yes, because our security policy says that TCG is not considered
+>>>a security boundary, whereas KVM is:
+>>>
+>>>https://qemu-project=2Egitlab=2Eio/qemu/system/security=2Ehtml
+>>>
+>>>(It would move from "non-virtualization use case" to
+>>>"virtualization use case"=2E)
+>>
+>>Thanks, that document nails my question=2E
+>>
+>>If KVM requires the imx devices to be inside the security boundary, what=
+ needs to be done to lift them there?
+>
+>Ping
+
+Ping^2
+
+>
+>>
+>>Best regards,
+>>Bernhard
+>>
+>>>
+>>>thanks
+>>>-- PMM
 

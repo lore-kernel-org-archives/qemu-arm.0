@@ -4,85 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DFCD1CA0EFA
-	for <qemu-arm@archiver.kernel.org>; Tue, 26 Aug 2025 09:07:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B3E1CA0EFA
+	for <qemu-arm@archiver.kernel.org>; Tue, 26 Aug 2025 09:22:31 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uqpda-0007NO-FA; Tue, 26 Aug 2025 05:06:42 -0400
+	id 1uqpsC-0003DN-7k; Tue, 26 Aug 2025 05:21:48 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1uqpd3-0007H5-EO; Tue, 26 Aug 2025 05:06:09 -0400
-Received: from mgamail.intel.com ([198.175.65.18])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1uqpcr-00049Y-NX; Tue, 26 Aug 2025 05:06:09 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1756199158; x=1787735158;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=VX51ebEyrWm0HdDAd809OGo61vSaBYsgcvkQMbax4Z8=;
- b=IxAeoNIXy1RQMvNaKbFf4oHUFQksegWSFg+BUL30gfochu/qF7Ln/59E
- RA5QfEI66x76Sulizh15gcZq7Z4Y43Y1810P6Scd1SQmCVD8SoDaqY6TM
- GywxXh4g6wbXggg/WhTkcUKNBRNtLoIKY1hKGyhighAs/sSO4POJSB7Rg
- TZWwr38hWyLE8XAtcBHEE9rKi+hoFbH1Bsmei+xA7WhlsbqZbLcU+YV6h
- LFN28ai/bgqzU044Xfv7yc8vb9jcGzithC6jiNWWCToR+I0Q7uVeZAmoo
- dIz18uIL609aLKMQ5vGvy0Hr6c1qvackE/aNzsY+UW6/FW/vKVborltkK Q==;
-X-CSE-ConnectionGUID: Ci4VCt2BR0yDVjuch4E4Eg==
-X-CSE-MsgGUID: 4a8MVIlyRgm6RdEUhmT57A==
-X-IronPort-AV: E=McAfee;i="6800,10657,11531"; a="58483348"
-X-IronPort-AV: E=Sophos;i="6.17,312,1747724400"; d="scan'208";a="58483348"
-Received: from fmviesa010.fm.intel.com ([10.60.135.150])
- by orvoesa110.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 26 Aug 2025 02:05:50 -0700
-X-CSE-ConnectionGUID: NUVChn6JT9e22n0N2AiNYw==
-X-CSE-MsgGUID: 7/Vr3fU1RqWA85ZPsXek2g==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.18,214,1751266800"; d="scan'208";a="170346575"
-Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
- ([10.239.160.39])
- by fmviesa010.fm.intel.com with ESMTP; 26 Aug 2025 02:05:41 -0700
-Date: Tue, 26 Aug 2025 17:27:27 +0800
-From: Zhao Liu <zhao1.liu@intel.com>
-To: Igor Mammedov <imammedo@redhat.com>
-Cc: qemu-devel@nongnu.org, pbonzini@redhat.com, peterx@redhat.com,
- mst@redhat.com, mtosatti@redhat.com, richard.henderson@linaro.org,
- riku.voipio@iki.fi, thuth@redhat.com, pasic@linux.ibm.com,
- borntraeger@linux.ibm.com, david@redhat.com, jjherne@linux.ibm.com,
- shorne@gmail.com, eduardo@habkost.net, marcel.apfelbaum@gmail.com,
- philmd@linaro.org, wangyanan55@huawei.com, peter.maydell@linaro.org,
- agraf@csgraf.de, mads@ynddal.dk, mrolnik@gmail.com, deller@gmx.de,
- dirty@apple.com, rbolshakov@ddn.com, phil@philjordan.eu,
- reinoud@netbsd.org, sunilmut@microsoft.com, gaosong@loongson.cn,
- laurent@vivier.eu, edgar.iglesias@gmail.com, aurelien@aurel32.net,
- jiaxun.yang@flygoat.com, arikalo@gmail.com, chenhuacai@kernel.org,
- npiggin@gmail.com, rathc@linux.ibm.com, harshpb@linux.ibm.com,
- yoshinori.sato@nifty.com, iii@linux.ibm.com,
- mark.cave-ayland@ilande.co.uk, atar4qemu@gmail.com,
- qemu-s390x@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org
-Subject: Re: [PATCH v5 6/8] add cpu_test_interrupt()/cpu_set_interrupt()
- helpers and use them tree wide
-Message-ID: <aK19/6P9325hYBO9@intel.com>
-References: <20250814160600.2327672-7-imammedo@redhat.com>
- <20250821155603.2422553-1-imammedo@redhat.com>
- <aKyBFlCtnxnP9kt/@intel.com> <20250825171912.1bc7b841@fedora>
- <aK1mHGan+n9NSAOk@intel.com> <20250826104731.1440e3ed@fedora>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1uqpsA-0003CC-1k
+ for qemu-arm@nongnu.org; Tue, 26 Aug 2025 05:21:46 -0400
+Received: from mail-yw1-x112c.google.com ([2607:f8b0:4864:20::112c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1uqps5-0006Ol-9t
+ for qemu-arm@nongnu.org; Tue, 26 Aug 2025 05:21:45 -0400
+Received: by mail-yw1-x112c.google.com with SMTP id
+ 00721157ae682-72019872530so19413687b3.1
+ for <qemu-arm@nongnu.org>; Tue, 26 Aug 2025 02:21:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1756200096; x=1756804896; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=cVT8EqQo4oW+kPc8LnM88Q3GyD1e+KQKjlAxfsHzn0Y=;
+ b=yQ/lQiDkozIiNL/jKUsuLEqcUr0O+QnvZRxays+pSygnSDSihCWJeUc2ucDPYHeqAC
+ 8kN5hu/Kgik73bkHKsOfDZ18BkGJXwXXzblwaLzbmJqv8yrLh87GDjalavk8UhYNAm74
+ GV75xNtuhcINE/XJ+U2XNF0GYOEBnRqqNxRnqQAUH0uZXhd6vYec/QCevZltejDvpQA3
+ XB49/7brsC2tLyTIhoqP4OY9i9lwCzWzdmFGuEWgepX8Sotth0AFBOng9RHYe5sfeZc4
+ VomMQOsjyyM5Oec0HzhqeGZwtfI6qa17gZGk1bqUt1fAd3chs33WQuPun395L9USJmSi
+ Ysgg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1756200096; x=1756804896;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=cVT8EqQo4oW+kPc8LnM88Q3GyD1e+KQKjlAxfsHzn0Y=;
+ b=gS4xocVwUmxHu1mCiv/AqLLrFxBq2PmBQDfHOE6A66K34kAtd88CnG0FoNadV3yTuN
+ BByB8x+gSmG+ldNiWSGAgrS/SxedSgDFHhxhtuhVXrA8blxOQls1ASJXBrreknox3Ut/
+ XTIXnhqk9Zo8uxC3Y9E0MaLxJZ4TOWiosQBuRN8ZRh1h2v0R7O8rgLsQJU5vqLURz0Jb
+ nGzArFETAZld0H1pbVZcDRBgN7xoa1eR94yiNVYY18bNFALb3I47Mb7YDe/N+ACgjb+4
+ 5dCKZTvUf/EgrRJaU6JdXDB9Dc7HiksaNkIIzj2Y6dKCumqox8Gpce88VB7vSOWoWF66
+ nA1Q==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXuPchhbk83ZNuNszQPbt4htA0U6Vtsry8v6/wjm0WYa1/BIctsh6UYn0mDsk/78gzLBUFLYyKWMQ==@nongnu.org
+X-Gm-Message-State: AOJu0YzhjxiUdSyCmDT4//F5rIy28GQTHjDBOuYnbuW02AX68RTiBdyq
+ wfI/Fx/IM+JZc//xK5i2KnNI/t+mLGvCQtRTmxcve7hl795KLVKS0Mm0T6+nXmhwRVdZJFILjQO
+ J0YZn4dPt92v+p0+MVZMKiDE5OfLzyZwZ9LnwT6oL+pcOkZzsUiin
+X-Gm-Gg: ASbGncsoXLTI5aBxee0BcBP05CZaV9pQKSPwdi3O9Fk3jNFmF6IqxBQ4bclSv2fulhs
+ b22XH2JE2WB3YaR38eD7kl+MMDbIR3Ws62mS4PnwQCsOk0+ENC5W786eq+DPoLITsV3EstpBW+C
+ qKuleY4QDj8lRWfRJIyYOzhrDyOttcaJf9v8/nviGvELDkDwtCAj+mQt2KRsL9lPzVnGHjJO5e8
+ GSpG8dIb0dT+pbDNys=
+X-Google-Smtp-Source: AGHT+IGdJWD0WCczBe3htWp1bnyINaxl97XJ4ggXdwjchtKDu2qxn0hdjKqlPRfjVb4z7W4skgk2WGnKHLSv3uDs2Fk=
+X-Received: by 2002:a05:690c:4d88:b0:70c:c013:f26 with SMTP id
+ 00721157ae682-71fdc401aa8mr164838487b3.33.1756200096481; Tue, 26 Aug 2025
+ 02:21:36 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250826104731.1440e3ed@fedora>
-Received-SPF: pass client-ip=198.175.65.18; envelope-from=zhao1.liu@intel.com;
- helo=mgamail.intel.com
-X-Spam_score_int: -43
-X-Spam_score: -4.4
-X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+References: <20250629204851.1778-1-shentey@gmail.com>
+ <20250629204851.1778-3-shentey@gmail.com>
+ <CAFEAcA-HaQwySM1j7Cy_R1z0fM1D9ykiBiMKLYNVYF+Tm_mrPA@mail.gmail.com>
+ <78B2535C-38D8-4612-8958-49AC28482A8D@gmail.com>
+ <CAFEAcA9b+1xx+Esnt80Ny1gWBOsh-QYYxuP6PwiPk-B20xv0Dw@mail.gmail.com>
+ <3DA254A8-76AC-4214-8C65-D3B3FFF55FF9@gmail.com>
+In-Reply-To: <3DA254A8-76AC-4214-8C65-D3B3FFF55FF9@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 26 Aug 2025 10:21:25 +0100
+X-Gm-Features: Ac12FXzkdbz8sSFdHkKIw5XmLVSnuk_qul-gsCB_G4ZzkqTuDewcIWi7cASaKvg
+Message-ID: <CAFEAcA-0843-YZMDqTDhiJgF223UrAcb8cQL5-ns12o8VHaT_g@mail.gmail.com>
+Subject: Re: [PATCH 2/2] hw/arm/imx8mp-evk: Add KVM support
+To: Bernhard Beschow <shentey@gmail.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+ Paolo Bonzini <pbonzini@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -98,55 +100,52 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-> > Behind this helper, I mainly considerred the case of multiple writers:
-> > 
-> >    thread 0      .        thread 1
-> >                  .
-> > load:  x         .
-> > OR:    x | a     .
-> >                  .
-> >                  .      load:  x
-> >                  .      OR:    x | b
-> >                  .      store: x | b
-> >                  .
-> > store: x | a     .      (x | b is missed)
-> > 
-> > In the above case, "load" means the direct access:
-> > cpu->interrupt_request w/o protection, and "store" is done by
-> > qatomic_store_release.
-> > 
-> > The memory order is guaranteed, but the operation result of thread 1
-> > seems lost. Only BQL or other mutex could avoid such case.
-> > 
-> > qatomic_store_release is already a great step to avoid issues outside
-> > BQL, so I'm not sure if it's worth going further to ensure atomicity,
-> > especifically for multiple writers (my initial understanding is that
-> > iothread or callback may have multiple writers, but I'm also a bit
-> > unsure.). The overhead is also indeed an issue.
-> 
-> it looks like we are always holding BQL when setting interrupt.
+On Tue, 8 Jul 2025 at 17:36, Bernhard Beschow <shentey@gmail.com> wrote:
 >
-> However currently we also have places that check interrupts
-> without BQL but without using any atomics. This patch aims to ensure
-> that proper barriers are in place when checking for interrupts
-> and introduces release/acquire pair helpers for cpu->interrupt_request,
-> to ensure it's don consistently.
+>
+>
+> Am 30. Juni 2025 21:03:06 UTC schrieb Peter Maydell <peter.maydell@linaro.org>:
+> >On Mon, 30 Jun 2025 at 21:22, Bernhard Beschow <shentey@gmail.com> wrote:
+> >>
+> >>
+> >>
+> >> Am 30. Juni 2025 09:09:31 UTC schrieb Peter Maydell <peter.maydell@linaro.org>:
+> >> >On Sun, 29 Jun 2025 at 21:49, Bernhard Beschow <shentey@gmail.com> wrote:
+> >> >>
+> >> >> Allows the imx8mp-evk machine to be run with KVM acceleration as a guest.
+> >> >>
+> >> >> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+> >> >> ---
+> >> >>  docs/system/arm/imx8mp-evk.rst |  7 +++++++
+> >> >>  hw/arm/fsl-imx8mp.c            | 33 ++++++++++++++++++++++++++++-----
+> >> >>  hw/arm/imx8mp-evk.c            | 11 +++++++++++
+> >> >>  hw/arm/Kconfig                 |  3 ++-
+> >> >>  hw/arm/meson.build             |  2 +-
+> >> >>  5 files changed, 49 insertions(+), 7 deletions(-)
+> >> >
+> >> >This puts a lot of IMX device models onto our security boundary,
+> >> >which makes me a bit nervous -- that's a lot of code which
+> >> >wasn't really written or reviewed carefully to ensure it
+> >> >can't be exploited by a malicious guest.
+> >>
+> >> Hi Peter,
+> >>
+> >> Does KVM increase the attack surface compared to TCG?
+> >
+> >Yes, because our security policy says that TCG is not considered
+> >a security boundary, whereas KVM is:
+> >
+> >https://qemu-project.gitlab.io/qemu/system/security.html
+> >
+> >(It would move from "non-virtualization use case" to
+> >"virtualization use case".)
+>
+> Thanks, that document nails my question.
+>
+> If KVM requires the imx devices to be inside the security boundary, what needs to be done to lift them there?
 
-I see. this makes sense and qatomic_store_release is enough. 
+Code audit, fuzzing, commitments to maintenance. Basically
+I would strongly prefer not to.
 
-> While overhead might be issue, it's better to have correcteness 1st.
-> (that's why blanket tree wide change to make sure we don't miss places that
-> set/test interrupts).
-> 
-> Then if performance issues were found somewhere, as was suggested
-> in previous reviews, we may opencode that place without barriers
-> with a mandatory comment/justification why it's okey doing so.
-> (well, at least that's the plan)
-
-I agree (and sorry for my misleading words; my initial thought is
-qatomic_fetch_or has worse perfermance.)
-
-Thanks,
-Zhao
-
+-- PMM
 

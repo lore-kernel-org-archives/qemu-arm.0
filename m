@@ -4,90 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29EB1CA0FF6
-	for <qemu-arm@archiver.kernel.org>; Tue, 26 Aug 2025 17:51:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 874ADCA0FF2
+	for <qemu-arm@archiver.kernel.org>; Tue, 26 Aug 2025 17:51:42 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uqxoB-0007dz-7K; Tue, 26 Aug 2025 13:50:11 -0400
+	id 1uqxoG-0007gs-W4; Tue, 26 Aug 2025 13:50:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uqxo9-0007dQ-JJ
- for qemu-arm@nongnu.org; Tue, 26 Aug 2025 13:50:09 -0400
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
+ id 1uqxoD-0007eZ-R1
+ for qemu-arm@nongnu.org; Tue, 26 Aug 2025 13:50:14 -0400
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uqxo5-0007JQ-KL
- for qemu-arm@nongnu.org; Tue, 26 Aug 2025 13:50:09 -0400
-Received: by mail-wm1-x32a.google.com with SMTP id
- 5b1f17b1804b1-45b4d89217aso31689295e9.2
+ id 1uqxo4-0007IN-RJ
+ for qemu-arm@nongnu.org; Tue, 26 Aug 2025 13:50:13 -0400
+Received: by mail-wm1-x336.google.com with SMTP id
+ 5b1f17b1804b1-45a20c51c40so45882765e9.3
  for <qemu-arm@nongnu.org>; Tue, 26 Aug 2025 10:50:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756230602; x=1756835402; darn=nongnu.org;
+ d=linaro.org; s=google; t=1756230600; x=1756835400; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=V1HfxVQSdyJU0XBGoJ8Qiv44nVAIeSbVvsYi/MkYoFA=;
- b=w7/uw8zzcIjWR9YCuCdBcHeLaypW0FkZ+ehLdgIrwHFq41N851u17goEz1o1zO0KyF
- uNf6qaMhYKCnCjbSqotE+6lU7Mgpk8GyGzLFBjzMqlyLmbNkRmeIkxOiely6VxUEnKcA
- M6YqytsX1DXNszip5L0kkXBho6ZVnJCTEktEGZczKH31NqNxeOm3uknQb2jnx6mIVBuq
- qi+5yFWS44/kadpAoh0w+fLt3x2ePyTVZnD9/QzuRtTUnoYhmwBC78htYAIT8bUgG5jM
- HqKVp/+jlEQBQhtRqrSNTIuKwKK/pCcGRHr6NxTd21hTbt5hvleCquXq/+XngsfWxwye
- pzuw==
+ bh=SewMXGS3C9PprrRoXFBooAU8hl2KOU7xEuIS5b5fjQw=;
+ b=P8n8numi0yUWS2kvPHsgq1NTakECXiQAdtxsuogyR2qzBP8zz2P3F4rE5VQDGvm6Wf
+ HXqR60DufQgvRuWQMb8lAl3SVjURSA5/QeVYXFhzLjsw+CqPpz36IJ35m3QTDOw/i8C6
+ uLt+CarH21zeuS+sij24kFlfYkOrgnM+BZWSGo3iDFeRnJ5eI+fUvBYL5ZzhfIf8jOBb
+ CqEAstRK50rglIy6Ehba3/QijmKoJlFp0SfcBSg9E1uodn+lgxUot5fxdGkqojg8roXe
+ 1MgxrwNFBL7mY9zZEO+ItSwFRDTPD8IFkT9cl3XqcOI0Ly+m/zVHCeOtoqkHNpXU6N1q
+ TPEQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756230602; x=1756835402;
+ d=1e100.net; s=20230601; t=1756230600; x=1756835400;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=V1HfxVQSdyJU0XBGoJ8Qiv44nVAIeSbVvsYi/MkYoFA=;
- b=jjtrHaxiRvi+TJEkIZo/g0mo7IEGzMy8YMi7JKHppNdhTqmyKArLZOUiYaAH++yE3e
- rUk4ICiodmCR5hi5kM+fYqiEJlkhlrzxRkKUY97nfENlKeeY/1c1x066HIMMSkXMS51i
- DHq+RbUuksO2DAPR7eAOhM/V8B95u+lXbgQDyCbrbOmA9vXHT0exuOqjzSH/OYfRpS03
- xTiruQHOxGRdl/TOrugrzPbL6uevs83GC2OvjtijDqHVCwWAjHeHHIHIeciQojVQBRpk
- K+RZW8ekEymc23Xe8WsTjMvCo5sImos4LFkNT62W/vxoszNAN6Zu5g9rQ5fhHbyy10h1
- kX8Q==
-X-Gm-Message-State: AOJu0YxQ3LfjTLrIUzCLbktdPhlDxgaa4vHl9D8U10fz95KN0NidJ1x7
- d5Z3uVwaWgqn5EEdnRxC7CqX8cJbeZOyFP49Tlf16mjoi7CmG10B6Nv3mz4dQW8toUzPnt3fTx6
- liS4Z
-X-Gm-Gg: ASbGnctjwsk/hJNvYmJtAiUy/YfqbLFjARv/dSuYdACHLOQ/LJmiT5uexl6EdRBzSIG
- yPyO/QO5qlkx4lI7/9500Qjkewhd+jfkds/zWbp+cWx9Hq5J0Mp/3v2VCYHyjZR82zDpkGWJQXn
- QCrPgOJJnox7zR9ZDdP49E2rPFkMWKqrbQZx4l3ZaCKmj0BlF8ENsYH32Fd/7Ck+rNPtWPQgiSd
- BYR1VeZBg+AWmDDo/e58MFyKds76WkLrwx1FC+1FWzvVcaFMQez6pxGAeUxq5w70+f1GhbXUe+L
- tVAQLiH10V+MOgal11Uu4IrzAcSPsJG+ptUMP4UtKA0D5kb3RAeiiIGZOSyIZLqM4Z3W+TLJMmq
- Mm/mYUogD43lYjywEdZtXmKXm3qnkRyJVFVApHdrqgT4T4hUpMg==
-X-Google-Smtp-Source: AGHT+IGAeP4yyb8pKmZ9PabKABgqh7hvmUCViyJAXfxrBhuvTANVF9HkEBHxvZFcZQcOuscu2+QQBQ==
-X-Received: by 2002:a05:600c:45c8:b0:45b:627a:60c7 with SMTP id
- 5b1f17b1804b1-45b627a62e6mr70324575e9.6.1756230601829; 
- Tue, 26 Aug 2025 10:50:01 -0700 (PDT)
+ bh=SewMXGS3C9PprrRoXFBooAU8hl2KOU7xEuIS5b5fjQw=;
+ b=oCLhwkT3czCjNSC4uvvifgf5LQup9+jlMugwdF01CeE1a43I6kDbs+2sWVZRINpV6m
+ V8jUwS6DFwRfxg+kcebyCbsxal9YQYK27x2ZC6iWvXQc4qAQsVqStoh96E1XcTou3dx0
+ fuhCUPFwS3ZbE4Zb+RJKg1j5P1DkeVo0jm/kSTVO9SKK2QtSDhyO2o9rgB7XgE+GcStc
+ ZqHVMDHyZ1quuqed4j1ozIqoROWEQnnhb9sPFY2Fad7mYGoc/+w/QjIxcqHvHfrqr/gp
+ QgxfoxPZ6c24aosi0R4SWcW/w1RkJbqJRf2LNVvoFaXoCURJWcwUIJPXgWidbc19bSKB
+ tArA==
+X-Gm-Message-State: AOJu0YxkFVq4vEBRpN7z97zN19Sic++TCDJ+TZhmS1mQsa9Hl7cEpHH+
+ l3ZLxhy1dP8T5pn7oJdWq4qBlxs0z+NL1eNo/bPyFtYq4pOFUGFTo3cp92PVg5VoC3kQaCWJHOC
+ 632On
+X-Gm-Gg: ASbGncu/RXQQKjyuDZvjDfPDI4OqY2kigPOlmxAxjIYL9zkt5v45m6HQiVxmOuaVCXy
+ UV4wlXK77HPM0j+c5qShNNspypKcVxUXj/T/NKNe0x1VizB+ZSKFcyyxwU2/k291f9uNX0ya0H2
+ bcuIRK2o3iDfxX084eS4mETEDPcNlwzuTw3+qtdb127qRhNgXuhCHpmm1Lq9X5jgsv1PaEUefAK
+ uA2lRcuyV0YpAGYD3igAz1xP5yWSzJYFnzixIKN7qHV3M1zXSqOnr3+3Gunz/5RswQrw3wyCgQC
+ WXXEHNDNqj0l33NRURf7YFebdicpZ62tvbcOoHAzpl2zquJNalJJPZB0PPVBo+guDo2Vlkz8SJG
+ RLTv0SBBPN7GvtONarqbzVrf+MuXa
+X-Google-Smtp-Source: AGHT+IFHjIcnpaePc0el3LVWE2E82mR2SxTjA7Coypu8hPUxMgYwwsV0gYQ7b7oVnd884rexKSbsXw==
+X-Received: by 2002:a05:600c:1381:b0:45b:6b57:5308 with SMTP id
+ 5b1f17b1804b1-45b6b575361mr4639525e9.7.1756230600150; 
+ Tue, 26 Aug 2025 10:50:00 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-45b6c5356a7sm2593435e9.15.2025.08.26.10.50.00
+ 5b1f17b1804b1-45b6c5356a7sm2593435e9.15.2025.08.26.10.49.58
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 26 Aug 2025 10:50:00 -0700 (PDT)
+ Tue, 26 Aug 2025 10:49:58 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Alistair Francis <alistair@alistair23.me>,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
  Francisco Iglesias <francisco.iglesias@amd.com>
-Subject: [PATCH 2/2] hw/display/xlnx_dp: Don't leak dpcd and edid objects
-Date: Tue, 26 Aug 2025 18:49:56 +0100
-Message-ID: <20250826174956.3010274-3-peter.maydell@linaro.org>
+Subject: [PATCH 1/2] hw/misc/xlnx-versal-cframe-reg: Free FIFO,
+ g_tree on deinit
+Date: Tue, 26 Aug 2025 18:49:55 +0100
+Message-ID: <20250826174956.3010274-2-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250826174956.3010274-1-peter.maydell@linaro.org>
 References: <20250826174956.3010274-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x336.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ T_SPF_TEMPERROR=0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -103,78 +104,61 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-In the xnlx_dp_init() function we create the s->dpcd and
-s->edid objects with qdev_new(); then in xlnx_dp_realize()
-we realize the dpcd with qdev_realize() and the edid with
-qdev_realize_and_unref().
+In the xlnx-versal-cframe-reg device we create a FIFO in
+instance_init but don't destroy it on deinit, causing ASAN
+to report a leak in the device-introspect-test:
 
-This is inconsistent, and both ways result in a memory
-leak for the instance_init -> deinit lifecycle tested
-by device-introspect-test:
+Direct leak of 400 byte(s) in 1 object(s) allocated from:
+    #0 0x5aded4d54e23 in malloc (/mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/qemu-system-aarch64+0x24ffe23) (BuildId: 9f1e6c53fecd904ba5fc1f521d7da080a0e4103b)
+    #1 0x71fbfac9bb09 in g_malloc (/lib/x86_64-linux-gnu/libglib-2.0.so.0+0x62b09) (BuildId: 1eb6131419edb83b2178b682829a6913cf682d75)
+    #2 0x5aded850059d in fifo8_create /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/../../util/fifo8.c:27:18
+    #3 0x5aded582b9e4 in fifo32_create /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/include/qemu/fifo32.h:35:5
+    #4 0x5aded582b326 in cframe_reg_init /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/../../hw/misc/xlnx-versal-cframe-reg.c:693:5
 
-Indirect leak of 1968 byte(s) in 1 object(s) allocated from:
+Similarly, we don't clean up the g_tree we create:
+Direct leak of 48 byte(s) in 1 object(s) allocated from:
     #0 0x5aded4d54e23 in malloc (/mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/qemu-system-aarch64+0x24ffe23) (BuildId: 9f1e6c5
 3fecd904ba5fc1f521d7da080a0e4103b)
     #1 0x71fbfac9bb09 in g_malloc (/lib/x86_64-linux-gnu/libglib-2.0.so.0+0x62b09) (BuildId: 1eb6131419edb83b2178b682829a6913cf682d75)
-    #2 0x5aded7b9211c in object_new_with_type /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/../../qom/object.c:767:15
-    #3 0x5aded7b92240 in object_new /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/../../qom/object.c:789:12
-    #4 0x5aded7b773e4 in qdev_new /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/../../hw/core/qdev.c:149:19
-    #5 0x5aded54458be in xlnx_dp_init /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/../../hw/display/xlnx_dp.c:1272:20
+    #2 0x71fbfaccc799 in g_tree_new_full (/lib/x86_64-linux-gnu/libglib-2.0.so.0+0x93799) (BuildId: 1eb6131419edb83b2178b682829a6913cf682d7
+5)
+    #3 0x5aded582b21a in cframe_reg_init /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/../../hw/misc/xlnx-versal-cframe-reg.c:691:18
 
-Direct leak of 344 byte(s) in 1 object(s) allocated from:
-    #0 0x5aded4d54e23 in malloc (/mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/qemu-system-aarch64+0x24ffe23) (BuildId: 9f1e6c53fecd904ba5fc1f521d7da080a0e4103b)
-    #1 0x71fbfac9bb09 in g_malloc (/lib/x86_64-linux-gnu/libglib-2.0.so.0+0x62b09) (BuildId: 1eb6131419edb83b2178b682829a6913cf682d75)
-    #2 0x5aded7b9211c in object_new_with_type /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/../../qom/object.c:767:15
-    #3 0x5aded7b92240 in object_new /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/../../qom/object.c:789:12
-    #4 0x5aded7b773e4 in qdev_new /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/../../hw/core/qdev.c:149:19
-    #5 0x5aded5445a56 in xlnx_dp_init /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/../../hw/display/xlnx_dp.c:1275:22
-
-Instead, explicitly object_unref() after we have added the objects as
-child properties of the device.  This means they will automatically
-be freed when this device is deinited.  When we do this,
-qdev_realize() is the correct way to realize them in
-xlnx_dp_realize().
+Add an instance_finalize method to clean up what we
+allocated in instance_init.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/display/xlnx_dp.c | 10 +++++++---
- 1 file changed, 7 insertions(+), 3 deletions(-)
+ hw/misc/xlnx-versal-cframe-reg.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
 
-diff --git a/hw/display/xlnx_dp.c b/hw/display/xlnx_dp.c
-index 7c980ee6423..ef73e1815fc 100644
---- a/hw/display/xlnx_dp.c
-+++ b/hw/display/xlnx_dp.c
-@@ -1267,14 +1267,18 @@ static void xlnx_dp_init(Object *obj)
-     s->aux_bus = aux_bus_init(DEVICE(obj), "aux");
+diff --git a/hw/misc/xlnx-versal-cframe-reg.c b/hw/misc/xlnx-versal-cframe-reg.c
+index 1ce083e2409..95e167b9213 100644
+--- a/hw/misc/xlnx-versal-cframe-reg.c
++++ b/hw/misc/xlnx-versal-cframe-reg.c
+@@ -693,6 +693,14 @@ static void cframe_reg_init(Object *obj)
+     fifo32_create(&s->new_f_data, FRAME_NUM_WORDS);
+ }
  
-     /*
--     * Initialize DPCD and EDID..
-+     * Initialize DPCD and EDID. Once we have added the objects as
-+     * child properties of this device, we can drop the reference we
-+     * hold to them, leaving the child-property as the only reference.
-      */
-     s->dpcd = DPCD(qdev_new("dpcd"));
-     object_property_add_child(OBJECT(s), "dpcd", OBJECT(s->dpcd));
-+    object_unref(s->dpcd);
- 
-     s->edid = I2CDDC(qdev_new("i2c-ddc"));
-     i2c_slave_set_address(I2C_SLAVE(s->edid), 0x50);
-     object_property_add_child(OBJECT(s), "edid", OBJECT(s->edid));
-+    object_unref(s->edid);
- 
-     fifo8_create(&s->rx_fifo, 16);
-     fifo8_create(&s->tx_fifo, 16);
-@@ -1311,8 +1315,8 @@ static void xlnx_dp_realize(DeviceState *dev, Error **errp)
-     qdev_realize(DEVICE(s->dpcd), BUS(s->aux_bus), &error_fatal);
-     aux_map_slave(AUX_SLAVE(s->dpcd), 0x0000);
- 
--    qdev_realize_and_unref(DEVICE(s->edid), BUS(aux_get_i2c_bus(s->aux_bus)),
--                           &error_fatal);
-+    qdev_realize(DEVICE(s->edid), BUS(aux_get_i2c_bus(s->aux_bus)),
-+                 &error_fatal);
- 
-     s->console = graphic_console_init(dev, 0, &xlnx_dp_gfx_ops, s);
-     surface = qemu_console_surface(s->console);
++static void cframe_reg_finalize(Object *obj)
++{
++    XlnxVersalCFrameReg *s = XLNX_VERSAL_CFRAME_REG(obj);
++
++    fifo32_destroy(&s->new_f_data);
++    g_tree_destroy(s->cframes);
++}
++
+ static const VMStateDescription vmstate_cframe = {
+     .name = "cframe",
+     .version_id = 1,
+@@ -833,6 +841,7 @@ static const TypeInfo cframe_reg_info = {
+     .instance_size = sizeof(XlnxVersalCFrameReg),
+     .class_init    = cframe_reg_class_init,
+     .instance_init = cframe_reg_init,
++    .instance_finalize = cframe_reg_finalize,
+     .interfaces = (const InterfaceInfo[]) {
+         { TYPE_XLNX_CFI_IF },
+         { }
 -- 
 2.43.0
 

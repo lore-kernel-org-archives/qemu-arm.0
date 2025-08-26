@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53A98CA0FE7
-	for <qemu-arm@archiver.kernel.org>; Tue, 26 Aug 2025 16:16:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 052CCCA0FE7
+	for <qemu-arm@archiver.kernel.org>; Tue, 26 Aug 2025 16:16:33 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uqwHE-0003vV-GN; Tue, 26 Aug 2025 12:12:04 -0400
+	id 1uqwIo-0005lN-Oo; Tue, 26 Aug 2025 12:13:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ktokunaga.mail@gmail.com>)
- id 1uqwHB-0003v1-0o; Tue, 26 Aug 2025 12:12:02 -0400
-Received: from mail-pg1-x532.google.com ([2607:f8b0:4864:20::532])
+ id 1uqwIi-0005L5-Ge; Tue, 26 Aug 2025 12:13:36 -0400
+Received: from mail-pg1-x533.google.com ([2607:f8b0:4864:20::533])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <ktokunaga.mail@gmail.com>)
- id 1uqwH5-0007qe-6t; Tue, 26 Aug 2025 12:12:00 -0400
-Received: by mail-pg1-x532.google.com with SMTP id
- 41be03b00d2f7-b49cfd967b9so1756571a12.3; 
- Tue, 26 Aug 2025 09:11:52 -0700 (PDT)
+ id 1uqwIf-00088H-0w; Tue, 26 Aug 2025 12:13:36 -0400
+Received: by mail-pg1-x533.google.com with SMTP id
+ 41be03b00d2f7-b49db86cac4so1841491a12.3; 
+ Tue, 26 Aug 2025 09:13:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1756224711; x=1756829511; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1756224810; x=1756829610; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=CKRYcSwafDNcekCgV+d38XwpLUOrhRn0ySHzx6DTOfk=;
- b=elns5LEnbtz9cJCNCyC3qHZStr3MWMGQcKgwZB2t4EyJEMAScODZHnwCcw5N99OVt3
- ruNZvfd1J4eyGd0rh8xIzw1/6AdV21LBDM6euHRFnbBAXpZ34gDopGeFzSKNiIRLLi2e
- 7X2iM7QsRmb8VAKsNDNOxQ24xJAqrxKtiHSLj3dZMajkaJWRSqClaM9GW247S2soHyLM
- CmFP7y5BmlNxdk8QYKBLm0j48W7Rsdykyk9DyIwCwdz8nLfQlvcqJka18H8Jd5Cr/o26
- L71ns7CEZ/8YMH25WAeof1I/52QAikH6Qh033W6Fgtza2mJMM969MkWRC9PHFdyv2bnN
- nvWA==
+ bh=wdm5qlPjiiBmfUrpVbsMm6TdPYck5xoQGraSVKOpe8I=;
+ b=OPGPPY9ZAiV/ByuEVPQOoX9Qz1JrSCD57L08m2a+4pLeMUzIiuUQrt7yiVQlDn5fOi
+ 8T6tkQ2whtbuj+hHqdXUhBQrtQUdV37xCbr7MHjq+IUVCz5luCMyz5/la6pFVc2bBKrf
+ TllMavomIG0ls5y0LDNaIu5dxPsgiz8KpA1hmR5fr5oRltBKhYUVVPodMKyr90S+RGbY
+ xjIJepQUh2kS/e22gPAqT+83YrpIU+rp7p0QfpMD2c2CZFcxFdElZWlojcBT3U7m75Y3
+ bOhnZg4Dkj6aaruomrFKW2i0Djz1zGex4jr4B/KrbwaP/bN/HH66X45k26CsqSVJWKnK
+ hILA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756224711; x=1756829511;
+ d=1e100.net; s=20230601; t=1756224810; x=1756829610;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=CKRYcSwafDNcekCgV+d38XwpLUOrhRn0ySHzx6DTOfk=;
- b=EjM0XdtcaJeEdNSTJX2PU4XcI3kqWJhvO+8KdZ9o8tj8pXIte4MTH7mWSPKIOx7O3u
- KZudtTSNjS2HPw6zHziYOzMjP7wTmkyuBoNcc8mt0jIRAin6wh227cPdlEs6PIwT90Qw
- u7o7iaq0JeQApRHBU/0sAN5FeXkuaTlr7GpEPopb8OSTXcfJqBGAt+EGYyZof0B2ny2M
- zkz6iDSk/BaYnG9ybWugX1t33DnZg6sEne1KbV4MDwvkbKPj5BN9p98apeum2+JwmRVJ
- q17E895s5cP/G8gNQGmV1YaSPapR7OEz8iisV9VKKLLaTBvkj9uEOqmmk/js3uwVS7VY
- ofyg==
+ bh=wdm5qlPjiiBmfUrpVbsMm6TdPYck5xoQGraSVKOpe8I=;
+ b=P9Z7HvYv7A48rZl+5X77HMZ4FxQuOzXHeLoP0oG6tmsaSk5v8fTFabXMrmFibx1J1L
+ 3ydlm86Lxo6kQ1vuZhquYCkXUnh0TYdxJiupdaRlbvT1dF/CF0AAn4/VMVWrzG6/Zaux
+ oXGGfffSecE2WKzOe3yATLGwy3PEcwK1ssyHxCACPQnbEA3j8Y+puKFHPquknHO1qHck
+ ulCTwsGXa+fr3DmempvRRCLZ9AbQevD1QVpG6EASwJUMBJWl+2dCxdexp9jMZv2h3mEL
+ KRnFcnBv2cCDhpk6i/42BIBgIsvd7b5cYtI+H/k+XVS1AxCKnKXnjXoNQ/RngjELaNje
+ CGiQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUbsqmDHFXmjVHQQrtjBNpYZGJN+1bbNd59wNwKyIsJ+hiOHQLJ75+FjpJj8PaNc4S0bPYbYb4DZAwPXQ==@nongnu.org,
- AJvYcCWD80H5QBBWiBcoc3nUmDzu+c0PquizGPPmZfkxakEi+0Pz9jOZ4hkDar5Ymb1sFeDzzS7eyJC8Jg==@nongnu.org
-X-Gm-Message-State: AOJu0Yz1cP6+/0J2h9mDGIdrTCdCaLk573/sQQXW/FNkePIosPvzu9p6
- hetDB4cgB+D4faLe32l2WfhOtyDk+5SbW9LOzfQhq0Z4+T7FAlP59DG7+tuXbw==
-X-Gm-Gg: ASbGncvN20XfHtcmle5Mi/dgISXHx/eHOWbillAb/DiGfAu95vh56V6ODTOdXSb4FrU
- yx0slAzU/ASW5qFKg9h//tQi9E5Kckn22zHcJfGztqff7fDcPvlDHwiI5TVcXV3RjeDyDFEbAsY
- CdDn3jcmJASFI6Q4oe9mSSsi4um404dKSa5reuTzkJUkOh8SLhTd/+t4GT54qiJ6DpwfaxU97ID
- vmzuSmkSGY6F+hZE0ol4O6bhIf9OUn8puVdnYx3yWspsIDl6xfKJHsLZ8ySzN+5v9dpoouhukmV
- 1lqUQUTF8P1Fr65O0GSTIkvEwEsk9Gtu1jX1M1JYScaVOMzTcA9U4KnCpUSPV04PYWRhMAF7txj
- e6+R6+I2igzn8fLDwyJFb3xc+jmA/+A4p
-X-Google-Smtp-Source: AGHT+IFF4HL9FOEk+e940IMNS1H+CIvQVkQ7XLzisbuQOTaCtjVWi11jrt71+T6TODkcZ89FOiOciA==
-X-Received: by 2002:a17:90b:578b:b0:311:d05c:936 with SMTP id
- 98e67ed59e1d1-32515eaee3dmr22437597a91.17.1756224711011; 
- Tue, 26 Aug 2025 09:11:51 -0700 (PDT)
+ AJvYcCVHw3zVD15Bn/TrsxmLvAdbl3MJznZwx62Ln+B84XLtO65s6riULofIdCpQga6zsxSyyVdeJT5khQ==@nongnu.org,
+ AJvYcCX4319KgR1pITBpg9bc2vH7y8OaeNloUF/BvIMhssLx85IGYv+kmF7Bbi4EolHSN29IcDU+tHK6nIr1Fw==@nongnu.org
+X-Gm-Message-State: AOJu0Yz8ftffL2LU1caotP/mAL3SMCv9z/9flH2mBaAWCEJDP2stI3qI
+ Cmnp/G/OBrlyhefelIqjuWXkvczv06ZupMWt/JDV9mLWGRh6gw+s6K1Bg+sY1Q==
+X-Gm-Gg: ASbGncvj8K4ZVZwBKaA13DvZOfWp4Lr84TBu1+ws2Bt4IEQY0pDuaizde35+o54WTZ+
+ Xm0Spe2CL4KVBkl30RJVvZboW6AiNEjGWnugKT1A5RryFqnjA5NvYJH/UXk+F4KV61OYG86DiMo
+ lYBmEbqEDKhKjnqiSM6qsTvrTsk3A0CTdIGZFLfbAgJ48KAfpPZQllxeoJ0Y1w7dUhVuUmswwk9
+ xRPthXuaoOQal76gecAPdtFpKrlrBdNxdCD8rwqMha/lnqZMjOzbqoSiouduzxMz0JQ2S3gmXDg
+ 5wNbPofEyYR8xuPeeVXE8f9kP9au2nRagZY3Xch4S5yZGrb9Oa7SKEBrmUWdpsHWpFfCPq9mrcS
+ hWJ2i8Tvq3aArrXNlllGizg==
+X-Google-Smtp-Source: AGHT+IHM08p3gwEauAwGot3XMz9a+Eisy9iW8w94o7N8zZy3qFDxVmnsbhhE93IhyI2Bii++6C9NFQ==
+X-Received: by 2002:a17:902:ec81:b0:246:92f5:1c07 with SMTP id
+ d9443c01a7336-24692f51fb7mr134640575ad.51.1756224809607; 
+ Tue, 26 Aug 2025 09:13:29 -0700 (PDT)
 Received: from ktock.. ([240d:1a:3b6:8b00:561f:1400:11f5:714b])
  by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-32750bc341asm1749747a91.19.2025.08.26.09.11.45
+ 98e67ed59e1d1-32750bc341asm1749747a91.19.2025.08.26.09.13.24
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 26 Aug 2025 09:11:50 -0700 (PDT)
+ Tue, 26 Aug 2025 09:13:28 -0700 (PDT)
 From: Kohei Tokunaga <ktokunaga.mail@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
@@ -80,22 +80,23 @@ Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
  qemu-arm@nongnu.org, qemu-riscv@nongnu.org,
  Stefan Hajnoczi <stefanha@redhat.com>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>, ktokunaga.mail@gmail.com
-Subject: [PATCH v2 07/35] tcg/wasm: Add constraint definitions
-Date: Wed, 27 Aug 2025 01:10:12 +0900
-Message-ID: <d935ea00f23ba6b4ea5624a57af0056214c2f495.1756216429.git.ktokunaga.mail@gmail.com>
+Subject: [PATCH v2 24/35] tcg/wasm: Add mb instruction
+Date: Wed, 27 Aug 2025 01:10:29 +0900
+Message-ID: <3db8ec74078663cbaabcc680e53f1d588f5f5970.1756216429.git.ktokunaga.mail@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <cover.1756216429.git.ktokunaga.mail@gmail.com>
 References: <cover.1756216429.git.ktokunaga.mail@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::532;
- envelope-from=ktokunaga.mail@gmail.com; helo=mail-pg1-x532.google.com
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
- DKIM_SIGNED=0.1, FREEMAIL_FROM=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=2607:f8b0:4864:20::533;
+ envelope-from=ktokunaga.mail@gmail.com; helo=mail-pg1-x533.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -111,84 +112,74 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The Wasm backend integrates a forked TCI so its constraints are defined to
-remain compatible with TCI.
+This commit generates the mb operation. In Wasm, it uses the atomic.fence
+instruction as the fence operator [1]. TCI instruction is also generated in
+the same way as the original TCI backend using smp_mb().
+
+[1] https://webassembly.github.io/threads/core/syntax/instructions.html#atomic-memory-instructions
 
 Signed-off-by: Kohei Tokunaga <ktokunaga.mail@gmail.com>
 ---
- tcg/wasm/tcg-target-con-set.h | 19 +++++++++++++++++++
- tcg/wasm/tcg-target-con-str.h | 14 ++++++++++++++
- tcg/wasm/tcg-target.c.inc     | 13 +++++++++++++
- 3 files changed, 46 insertions(+)
- create mode 100644 tcg/wasm/tcg-target-con-set.h
- create mode 100644 tcg/wasm/tcg-target-con-str.h
+ tcg/wasm.c                |  4 ++++
+ tcg/wasm/tcg-target.c.inc | 19 +++++++++++++++++++
+ 2 files changed, 23 insertions(+)
 
-diff --git a/tcg/wasm/tcg-target-con-set.h b/tcg/wasm/tcg-target-con-set.h
-new file mode 100644
-index 0000000000..0dc41ebe33
---- /dev/null
-+++ b/tcg/wasm/tcg-target-con-set.h
-@@ -0,0 +1,19 @@
-+/* SPDX-License-Identifier: MIT */
-+/*
-+ * Wasm target-specific constraint sets.
-+ *
-+ * Based on tci/tcg-target-con-set.h
-+ *
-+ * Copyright (c) 2021 Linaro
-+ */
-+
-+/*
-+ * C_On_Im(...) defines a constraint set with <n> outputs and <m> inputs.
-+ * Each operand should be a sequence of constraint letters as defined by
-+ * tcg-target-con-str.h; the constraint combination is inclusive or.
-+ */
-+C_O0_I1(r)
-+C_O0_I2(r, r)
-+C_O1_I1(r, r)
-+C_O1_I2(r, r, r)
-+C_O1_I4(r, r, r, r, r)
-diff --git a/tcg/wasm/tcg-target-con-str.h b/tcg/wasm/tcg-target-con-str.h
-new file mode 100644
-index 0000000000..21ddbcc01a
---- /dev/null
-+++ b/tcg/wasm/tcg-target-con-str.h
-@@ -0,0 +1,14 @@
-+/* SPDX-License-Identifier: MIT */
-+/*
-+ * Define Wasm target-specific operand constraints.
-+ *
-+ * Based on tci/tcg-target-con-str.h
-+ *
-+ * Copyright (c) 2021 Linaro
-+ */
-+
-+/*
-+ * Define constraint letters for register sets:
-+ * REGS(letter, register_mask)
-+ */
-+REGS('r', MAKE_64BIT_MASK(0, TCG_TARGET_NB_REGS))
+V2:
+- Added Wasm implementation of the mb operation using the atomic.fence
+  instruction.
+
+diff --git a/tcg/wasm.c b/tcg/wasm.c
+index 793c1807c2..1cc2e45e77 100644
+--- a/tcg/wasm.c
++++ b/tcg/wasm.c
+@@ -566,6 +566,10 @@ static uintptr_t tcg_qemu_tb_exec_tci(CPUArchState *env, const void *v_tb_ptr)
+             taddr = regs[r1];
+             tci_qemu_st(env, taddr, regs[r0], oi, tb_ptr);
+             break;
++        case INDEX_op_mb:
++            /* Ensure ordering for all kinds */
++            smp_mb();
++            break;
+         default:
+             g_assert_not_reached();
+         }
 diff --git a/tcg/wasm/tcg-target.c.inc b/tcg/wasm/tcg-target.c.inc
-index 3affc17232..0b12c4ea03 100644
+index e1ee2f6485..1d639561db 100644
 --- a/tcg/wasm/tcg-target.c.inc
 +++ b/tcg/wasm/tcg-target.c.inc
-@@ -75,3 +75,16 @@ static TCGReg tcg_target_call_oarg_reg(TCGCallReturnKind kind, int slot)
-     tcg_debug_assert(slot >= 0 && slot < 128 / TCG_TARGET_REG_BITS);
-     return TCG_REG_R0 + slot;
+@@ -1116,6 +1116,11 @@ static void tcg_out_op_r(TCGContext *s, TCGOpcode op, TCGReg r0)
+     tcg_out32(s, insn);
  }
-+
-+static TCGConstraintSetIndex
-+tcg_target_op_def(TCGOpcode op, TCGType type, unsigned flags)
+ 
++static void tcg_out_op_v(TCGContext *s, TCGOpcode op)
 +{
-+    return C_NotImplemented;
++    tcg_out32(s, (uint8_t)op);
 +}
 +
-+/* Test if a constant matches the constraint. */
-+static bool tcg_target_const_match(int64_t val, int ct,
-+                                   TCGType type, TCGCond cond, int vece)
+ static void tcg_out_op_ri(TCGContext *s, TCGOpcode op, TCGReg r0, int32_t i1)
+ {
+     tcg_insn_unit_tci insn = 0;
+@@ -1931,6 +1936,20 @@ static bool tcg_out_qemu_st_slow_path(TCGContext *s, TCGLabelQemuLdst *l)
+     g_assert_not_reached();
+ }
+ 
++static void tcg_out_mb(TCGContext *s, unsigned a0)
 +{
-+    return ct & TCG_CT_CONST;
++    tcg_out_op_v(s, INDEX_op_mb);
++
++    /*
++     * Wasm's threading proposal provides atomic.fence instruction as the fence
++     * operator.
++     * https://webassembly.github.io/threads/core/syntax/instructions.html#atomic-memory-instructions
++     */
++    tcg_wasm_out8(s, 0xfe);
++    tcg_wasm_out8(s, 0x03);
++    tcg_wasm_out8(s, 0x00);
 +}
++
+ static void tcg_out_tb_start(TCGContext *s)
+ {
+     init_sub_buf();
 -- 
 2.43.0
 

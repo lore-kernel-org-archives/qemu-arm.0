@@ -4,97 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E469ACA0EFA
-	for <qemu-arm@archiver.kernel.org>; Tue, 26 Aug 2025 15:31:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B03ECA0FE7
+	for <qemu-arm@archiver.kernel.org>; Tue, 26 Aug 2025 16:11:48 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uqvd9-0004qb-Bh; Tue, 26 Aug 2025 11:30:39 -0400
+	id 1uqwGi-0003fh-T3; Tue, 26 Aug 2025 12:11:33 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
- id 1uqvd4-0004on-2I
- for qemu-arm@nongnu.org; Tue, 26 Aug 2025 11:30:36 -0400
-Received: from mail-pl1-x644.google.com ([2607:f8b0:4864:20::644])
+ (Exim 4.90_1) (envelope-from <ktokunaga.mail@gmail.com>)
+ id 1uqwGc-0003dA-NX; Tue, 26 Aug 2025 12:11:26 -0400
+Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
- id 1uqvcu-00085Q-Dd
- for qemu-arm@nongnu.org; Tue, 26 Aug 2025 11:30:33 -0400
-Received: by mail-pl1-x644.google.com with SMTP id
- d9443c01a7336-2445826fd9dso72318395ad.3
- for <qemu-arm@nongnu.org>; Tue, 26 Aug 2025 08:30:21 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <ktokunaga.mail@gmail.com>)
+ id 1uqwGa-0007k9-16; Tue, 26 Aug 2025 12:11:26 -0400
+Received: by mail-pf1-x429.google.com with SMTP id
+ d2e1a72fcca58-771e4378263so2027282b3a.0; 
+ Tue, 26 Aug 2025 09:11:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756222218; x=1756827018; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:to:subject:user-agent:mime-version:date:message-id:from
- :to:cc:subject:date:message-id:reply-to;
- bh=zhH4CnVmuH5rUSqm4B08jrDn1t5mBUjW3z6ucRr1XKA=;
- b=ky2TJjMVQ+at2xyobXPQ4jSELDC9ltsgjb8fquGhVa28+0UO0+4o3rVuVjWbPeav/l
- 3JCqh0EkiEyCl5KaogPCaRrC0gYnGm3SVzWmHG06XFnlCIT+Asq3UUH664Hjf0A0u9jK
- kPiXsTsi8r8gEjAzx1N/GN4BG7LvFvngIWOfDEEU+o9OXM7GnsgoStIyOhVzNgfCMFYV
- mP0TZMdzyiW5YhGIe4aWgBD/T0zAQarDN+Q8+GFiMvtteDTJjv3shMA7xXq/3XL8CSWZ
- UTMD9b/b6QzPOEGLaSr58x3GJxNUS+K+4VPskP0TZ5S3DE6hRPEYTXkvr7sdY9Xb/MRf
- AlSw==
+ d=gmail.com; s=20230601; t=1756224676; x=1756829476; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=H7vt7OkiXHUEzx/G748B2BYGM/w8l4INmskv00Nw7Dg=;
+ b=i5cxq/TRPLW6XfpYR7lLeVtjRJHQKqjGDiHK0jM2nVNNRLQ02UjPZ8DkQPEaBb5+t8
+ V/kBxAGzgZZCkngge5Aj084sM98Hmyl5zmrMIsUO3IE5hxSrFlW8duQTkWdn8B7VB4tK
+ IGOUy8y44t79r5h3AxVLA5tHSi+VB3IWQW8UhtkJ2kk99FBn72VvBTfBYRHgwZoXBw63
+ TzQQegjv4Kit7Wq4+YA9O74LUm6eHWaXXzEmOHI7/NEpIsTA2GI9F8wjZW7Gi5JD1hKl
+ pkZRD8v7FH/S+No+kBdZ/2il0wpya+0QMs9HiIZrAJwxaLHEAA+KonGznV80KXf1vZ2F
+ LZUQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756222218; x=1756827018;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=zhH4CnVmuH5rUSqm4B08jrDn1t5mBUjW3z6ucRr1XKA=;
- b=dMf/lfBZ3VPGbi8OkAHrpmF7zhsqhRnpup6IdilbidVnnh/Giyray0ITKL3PgDpP5i
- fnbLyU9NaD9lC0r9Xb5B/gxyog3GPptHF2KyPbrquqke0hSxPY3Euham6exLFVh9rKnR
- d4yKCn4jJioySTDEZx0MkCVcq5j8MOSfT5s0RIdHCHuwOFIStlxChsRqZj/VAn1sf/cc
- mcCOkMfU9U0QVdWCBUhLdvLTnIWg2ER5d0GlLsGNFnWCGpp2VWRRGtFX32pqJM3rVct/
- AQzqUSFMLCsafEGyFpoa4/5smjO9NbfJqdbH1PJZh83wqrTPKwn8agzGjbfo3xkW7afQ
- 4UBw==
+ d=1e100.net; s=20230601; t=1756224676; x=1756829476;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=H7vt7OkiXHUEzx/G748B2BYGM/w8l4INmskv00Nw7Dg=;
+ b=MmjfkYn0v34y3TakXiMl3uJ1+ZRDGZF8br1tmQde4LXxJ4WokIYd+9Gl2AI8tq7WcD
+ r83EZ0L0zmHTK3I328CauHble3wMMb0QNSzLTvZJ+1S8Pv/XcWSjt7ZreBK6jvBiERzW
+ efk73tn9mVWJMyzcRbfbWqSLT4aV61ey+H5Rk92UQiAe2bUOWHxoL41drAMYHdFCQEnd
+ 4ydHcSLCeo/VUgLj9o7lEVjSbK5ERa85un8l2XSwzkJXfZG9b2ukPt5bPekuTudabMfX
+ o2GVHRd7LECk32KVQR0ubwn7jSgxi5SQpthAKcXovqJPbwU29fI5j30l/86SNPCoVewE
+ HggA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCX8epRc8Bg0ZN0sk+y/njXRnwNWnUMPcPPu9urnfEtXVipqku+wZyhlBVQOK6aNJ6bSybkcCFfvKA==@nongnu.org
-X-Gm-Message-State: AOJu0YwiXyCiJq+9w9P7/X4KSb4wO7aSGRlgT0jO1vMMIAHnNfxDSvu5
- VOEkaE5wVIbs9ALcOw+tPwl0dOJDNbB9zy537uzsG5ALGDhMnrxCCNVmhhJjeA0yQHs=
-X-Gm-Gg: ASbGncunPtpJnWPjMAzOKXmMELGcGfJKOwR+UL/EUv/moRD6G0ezsJraH8a30IF7HB5
- 2T+XwHIy6js/YAp8xWNXKVITeASsd5FrMk8hnt0rjwGJhBbQmh+jDq0ywABPIKZbN7rzIz/GGdM
- jljb7I9/e+rfo2HCL8jEb8T7Jh6jq5JYBSQESuRG1nYHPkcgro8qNXOVRsCv+9JTSiiY/Gwp3Gr
- QpQ9q07lIVwyZG0wOaczIInbJnXqi7t92LWURhHWEHzt8jbG2DKF2wSDqucrSRTSq74ECXKEs7Z
- mQxaAriYzzT0UgrSqfketwU0iM3RI2RqYQlMO5XezrQYb2Q0tgKQWP9ZZiQT/Li5/6dKMGbPiSX
- aMPqH/lNQror/4QXm1RkU7U4JUP6P4nzhGLgi2IkVih3v5zIiDQYtHs8=
-X-Google-Smtp-Source: AGHT+IGC5SkF03XEsy+ndwbCgobS+o8wiJUj7tVBDWpwbBiZzZqrOGN1x1mBWIIXeutG0EzBp8tQXw==
-X-Received: by 2002:a17:902:cf0f:b0:246:acd6:c635 with SMTP id
- d9443c01a7336-246acd6c81bmr127507485ad.34.1756222217575; 
- Tue, 26 Aug 2025 08:30:17 -0700 (PDT)
-Received: from [192.168.0.102] ([187.75.38.174])
+ AJvYcCUGpx7T3QJVGtZtxhYy/72wOnjHDaExdUpQCwUxFRmi4KWL3MLCsMHIbZtQPU21MBJYQJ8QK6Wi/w==@nongnu.org,
+ AJvYcCVZMJ0Hd1n7rrHwBiZyFtkKElKUej6kZyWMZ+Gz5wsGrkatUrVsyISK7ftryqwLlIy1y7HVL3lmYhazBg==@nongnu.org
+X-Gm-Message-State: AOJu0YwakIWRihS39NRtGH+lxetmRqF3f3LJGSI+uWLpUh6NiE3PjDHl
+ PmtIHqdw/0ynXp4L3XM9xlxdX5n/roWcEmzEpVutEuP7zKrEbl5QUWqG0ATZcg==
+X-Gm-Gg: ASbGnctuWRSIGuYcq0T65VWk/atcOxhIgflwZRtDFXoZdz5kDreb40nWWptBuaIn+56
+ qw4oP9BYBswGySXUSMMlkYnNVr36eflXyUYhEvkS5PX3cur8wtr0l82/zmqjQwHtTJRKxU9a2tn
+ IGPFzhxU8DzNl1T/PXcCO88EktNqAwT/IeUr5yYaGfAquqI/gilJCMJz6WLgP/fYsdBxuKwPlXq
+ eKSMVUORzaXarjueq1yPC91nKVGlAne/qgm1bvYkKC3I6JnqE1AU8J83bc4u4G8UH3WI0JGQJLo
+ BSiygaoy3wbyiDeg6Qq89DzXewfv9mJ0TLHteCqUPWdSDhAsja6BkoWEbFx/yD4vsDKXkCmXvbP
+ OIY55stJsOVl1KO4mpZxpKw==
+X-Google-Smtp-Source: AGHT+IHilpOPTkNf8uCPiUoROCi6F+Ls+u7shiD3rkLBfSwi0ay05E/98XqzOl4iGC5Z/t61RpvALg==
+X-Received: by 2002:a17:902:cf09:b0:243:43a:fa20 with SMTP id
+ d9443c01a7336-2462ee8e559mr239368125ad.24.1756224676173; 
+ Tue, 26 Aug 2025 09:11:16 -0700 (PDT)
+Received: from ktock.. ([240d:1a:3b6:8b00:561f:1400:11f5:714b])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2466887fc75sm98296685ad.105.2025.08.26.08.30.15
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 26 Aug 2025 08:30:17 -0700 (PDT)
-Message-ID: <59c3fe12-fb6d-4aaa-a6e0-ce51e1c7f7e4@linaro.org>
-Date: Tue, 26 Aug 2025 12:31:00 -0300
+ 98e67ed59e1d1-32750bc341asm1749747a91.19.2025.08.26.09.11.10
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 26 Aug 2025 09:11:15 -0700 (PDT)
+From: Kohei Tokunaga <ktokunaga.mail@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ WANG Xuerui <git@xen0n.name>, Aurelien Jarno <aurelien@aurel32.net>,
+ Huacai Chen <chenhuacai@kernel.org>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Aleksandar Rikalo <arikalo@gmail.com>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <Alistair.Francis@wdc.com>, Stefan Weil <sw@weilnetz.de>,
+ qemu-arm@nongnu.org, qemu-riscv@nongnu.org,
+ Stefan Hajnoczi <stefanha@redhat.com>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>, ktokunaga.mail@gmail.com
+Subject: [PATCH v2 01/35] meson: Add wasm64 support to the --cpu flag
+Date: Wed, 27 Aug 2025 01:10:06 +0900
+Message-ID: <33d88400963d0da84f44296306c4e39af1f3cf5c.1756216429.git.ktokunaga.mail@gmail.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <cover.1756216429.git.ktokunaga.mail@gmail.com>
+References: <cover.1756216429.git.ktokunaga.mail@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 0/4] tests/functional: Adapt reverse_debugging to run w/o
- Avocado
-To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
- alex.bennee@linaro.org, qemu-arm@nongnu.org, 1844144@gmail.com,
- Jan Richter <jarichte@redhat.com>
-References: <20250819143916.4138035-1-gustavo.romero@linaro.org>
- <53b6e23f-5328-42c6-9c58-97ddbf3e5b29@redhat.com>
- <a1105fed-dbd8-4223-b771-180ab12e3f77@linaro.org>
- <8326014d-114e-47df-89fc-632eb5683632@redhat.com>
- <aK3AYjQmb3bNEdrh@redhat.com> <aK3RJnTA1m-kEr4c@redhat.com>
-Content-Language: en-US
-From: Gustavo Romero <gustavo.romero@linaro.org>
-In-Reply-To: <aK3RJnTA1m-kEr4c@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::644;
- envelope-from=gustavo.romero@linaro.org; helo=mail-pl1-x644.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::429;
+ envelope-from=ktokunaga.mail@gmail.com; helo=mail-pf1-x429.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -110,99 +112,81 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Daniel!
+wasm64 target enables 64bit pointers using Emscripten's -sMEMORY64=1
+flag[1]. This enables QEMU to run 64bit guests.
 
-On 8/26/25 12:22, Daniel P. Berrangé wrote:
-> On Tue, Aug 26, 2025 at 03:10:42PM +0100, Daniel P. Berrangé wrote:
->> On Tue, Aug 26, 2025 at 09:51:27AM +0200, Thomas Huth wrote:
->>> On 25/08/2025 16.04, Gustavo Romero wrote:
->>>> Hello, Thomas!
->>>>
->>>> On 8/25/25 07:29, Thomas Huth wrote:
->>>>> On 19/08/2025 16.39, Gustavo Romero wrote:
->>>>>> The goal of this series is to remove Avocado as a dependency for running
->>>>>> the reverse_debugging functional test.
->>>>>>
->>>>>> This test, the last one I’m aware of that relies on Avocado, requires it
->>>>>> because of the need for GDB to test reverse stepping and continue.
->>> ...
->>>>> I gave it a try, but this did not work for me, the test was not run
->>>>> at all anymore. Are there any patches needed on top?
->>>>
->>>> hmm that's odd. I'm able to run it with 'make check-functional' and with
->>>> 'meson test'...
->>>>
->>>> This is how I'm running it (let me know if I'm missing something):
->>> ...
->>>> gromero@gromero0:/mnt/git/qemu_$
->>>> gromero@gromero0:/mnt/git/qemu_/build$ ../configure
->>>> --target-list=aarch64- softmmu --disable-docs
->>>> gromero@gromero0:/mnt/git/qemu_/build$ make -j 32
->>>> gromero@gromero0:/mnt/git/qemu_/build$ time make -j 15  check-functional
->>>> [1/2] Generating tests/functional/func-precache-aarch64-
->>>> aarch64_reverse_debug with a custom command (wrapped by meson to set
->>>> env)
->>>> 2025-08-25 12:50:04,215 - qemu-test - INFO - Attempting to cache '/home/
->>>> gromero/.cache/qemu/
->>>> download/7e1430b81c26bdd0da025eeb8fbd77b5dc961da4364af26e771bd39f379cbbf7'
->>>> 2025-08-25 12:50:04,225 - qemu-test - DEBUG - Using cached asset /home/
->>>> gromero/.cache/qemu/
->>>> download/7e1430b81c26bdd0da025eeb8fbd77b5dc961da4364af26e771bd39f379cbbf7
->>>> for
->>>> https://archives.fedoraproject.org/pub/archive/fedora/linux/releases/29/
->>>> Everything/aarch64/os/images/pxeboot/vmlinuz
->>>> GDB CMD: /usr/bin/gdb-multiarch -q -n -batch -ex 'set pagination off'
->>>> -ex 'set confirm off' -ex "py
->>>> sys.argv=['/mnt/git/qemu_/tests/functional/
->>>> test_aarch64_reverse_debug.py']" -x /mnt/git/qemu_/tests/functional/
->>>> test_aarch64_reverse_debug.py
->>>> [0/1] Running external command precache-functional (wrapped by meson to
->>>> set env)
->>>> make[1]: Entering directory '/mnt/git/qemu_/build'
->>>> [1/6] Generating qemu-version.h with a custom command (wrapped by meson
->>>> to capture output)
->>>> /mnt/git/qemu_/build/pyvenv/bin/meson test  --no-rebuild -t 1 --setup
->>>> thorough  --num-processes 10 --print-errorlogs  --suite func  --suite
->>>> func- quick  --suite func-thorough
->>>>    1/27 qemu:func-thorough+func-aarch64-thorough+thorough / func-aarch64-
->>>> aarch64_virt_gpu                   SKIP              1.95s   0 subtests
->>>> passed
->>>
->>> I tried a couple of times now, and finally realized that it's the
->>> "gdb-multiarch" binary that is missing on Fedora. And as far as I can see,
->>> there is also no package that provides this on Fedora? So if we go ahead
->>> with your patches, this test will only run on certain distros that provide
->>> this binary.
->>
->> 'gdb-multiarch' is a command name invented by Debian.
->>
->> On Fedora, the regular 'gdb' binary is built with support for
->> multiple architectures for the purpose of remote debugging.
-> 
-> The set of archs supported by GDB in Fedora is
-> 
->    s390-linux-gnu
->    powerpc-linux-gnu
->    arm-linux-gnu
->    aarch64-linux-gnu
->    riscv64-linux-gnu
->    x86_64-redhat-linux-gnu
-> 
-> you can query this with 'gdb --configuration' and parsing the
-> '--enable-targets' args  - I've not found a better way :-(
+Although the configure script uses "uname -m" as the fallback value when
+"cpu" is empty, this can't be used for Emscripten which targets to Wasm.
+So, in wasm build, this commit fixes configure to require --cpu flag to be
+explicitly specified by the user.
 
-Thanks a lot for checking it closely.
+[1] https://emscripten.org/docs/tools_reference/settings_reference.html#memory64
 
-We already detect it via:
+Signed-off-by: Kohei Tokunaga <ktokunaga.mail@gmail.com>
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+---
+ configure   | 6 +++++-
+ meson.build | 4 ++--
+ 2 files changed, 7 insertions(+), 3 deletions(-)
 
-source_path/scripts/probe-gdb-support.py
+V2:
+- This commit is under review in another patch series so please ignore it
+  here.
 
+diff --git a/configure b/configure
+index 274a778764..112e4725fc 100755
+--- a/configure
++++ b/configure
+@@ -365,7 +365,6 @@ elif check_define __APPLE__; then
+   host_os=darwin
+ elif check_define EMSCRIPTEN ; then
+   host_os=emscripten
+-  cpu=wasm32
+   cross_compile="yes"
+ else
+   # This is a fatal error, but don't report it yet, because we
+@@ -425,6 +424,8 @@ elif check_define __aarch64__ ; then
+   cpu="aarch64"
+ elif check_define __loongarch64 ; then
+   cpu="loongarch64"
++elif check_define EMSCRIPTEN ; then
++  error_exit "wasm32 or wasm64 must be specified to the cpu flag"
+ else
+   # Using uname is really broken, but it is just a fallback for architectures
+   # that are going to use TCI anyway
+@@ -535,6 +536,9 @@ case "$cpu" in
+   wasm32)
+     CPU_CFLAGS="-m32"
+     ;;
++  wasm64)
++    CPU_CFLAGS="-m64 -sMEMORY64=1"
++    ;;
+ esac
+ 
+ if test -n "$host_arch" && {
+diff --git a/meson.build b/meson.build
+index 50c774a195..44bb7ed334 100644
+--- a/meson.build
++++ b/meson.build
+@@ -52,7 +52,7 @@ qapi_trace_events = []
+ bsd_oses = ['gnu/kfreebsd', 'freebsd', 'netbsd', 'openbsd', 'dragonfly', 'darwin']
+ supported_oses = ['windows', 'freebsd', 'netbsd', 'openbsd', 'darwin', 'sunos', 'linux', 'emscripten']
+ supported_cpus = ['ppc', 'ppc64', 's390x', 'riscv32', 'riscv64', 'x86', 'x86_64',
+-  'arm', 'aarch64', 'loongarch64', 'mips', 'mips64', 'sparc64', 'wasm32']
++  'arm', 'aarch64', 'loongarch64', 'mips', 'mips64', 'sparc64', 'wasm32', 'wasm64']
+ 
+ cpu = host_machine.cpu_family()
+ 
+@@ -916,7 +916,7 @@ if have_tcg
+     if not get_option('tcg_interpreter')
+       error('Unsupported CPU @0@, try --enable-tcg-interpreter'.format(cpu))
+     endif
+-  elif host_arch == 'wasm32'
++  elif host_arch == 'wasm32' or host_arch == 'wasm64'
+     if not get_option('tcg_interpreter')
+       error('WebAssembly host requires --enable-tcg-interpreter')
+     endif
+-- 
+2.43.0
 
-in configure to detect the arches. That's what Alex is suggesting,
-to use the gdb from configure in the test harness or scripts that
-rely on GDB.
-
-
-Cheers,
-Gustavo
 

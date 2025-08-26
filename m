@@ -4,99 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 039FACA0FE7
-	for <qemu-arm@archiver.kernel.org>; Tue, 26 Aug 2025 16:27:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21432CA0FE7
+	for <qemu-arm@archiver.kernel.org>; Tue, 26 Aug 2025 17:51:22 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uqwJt-0008F0-Iy; Tue, 26 Aug 2025 12:14:50 -0400
+	id 1uqxoG-0007ga-6o; Tue, 26 Aug 2025 13:50:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ktokunaga.mail@gmail.com>)
- id 1uqwIn-0005gN-NX; Tue, 26 Aug 2025 12:13:42 -0400
-Received: from mail-pg1-x536.google.com ([2607:f8b0:4864:20::536])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1uqxoC-0007eF-EL
+ for qemu-arm@nongnu.org; Tue, 26 Aug 2025 13:50:12 -0400
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <ktokunaga.mail@gmail.com>)
- id 1uqwIk-00089M-Hk; Tue, 26 Aug 2025 12:13:41 -0400
-Received: by mail-pg1-x536.google.com with SMTP id
- 41be03b00d2f7-b475dfb4f42so3988355a12.0; 
- Tue, 26 Aug 2025 09:13:37 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1uqxo6-0007IC-1E
+ for qemu-arm@nongnu.org; Tue, 26 Aug 2025 13:50:12 -0400
+Received: by mail-wm1-x32a.google.com with SMTP id
+ 5b1f17b1804b1-45b4d892175so29851975e9.2
+ for <qemu-arm@nongnu.org>; Tue, 26 Aug 2025 10:50:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1756224815; x=1756829615; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=ztIhxTK30jqaWUf0PzyD81CT7DKpl8JVd9KnfePGnW8=;
- b=SDwgBQXyihjim6v/L4SsXGDBrrRxKI0+gfDbYCAKrOqdtPAYtQrYj+qqXDzSHx0VJN
- xhvxkcllzyByMm+Fkmt/i8+4EdMhYjA753seUb9U65L5ciBmvDt881tRPoqOx36nxfZL
- d/dKBrHkzkO19FunC1YGrs9TpvasmiBZdPVaN/6A0pkz42lurlgWQAhiR5Zm6jtK7C6z
- G6LQZS9LpbgoemZbHveNHNqUIlWnhH3Rs23TTOOls+yUlF5LMS58gVl9+mwn/DYGAreG
- 9oCCxGsvk6Vu8uC70rjS5RWSjXOo5nTy+EthDMT5Y4QkOyIKukhYI5iUfhTHazcUn+dw
- LKCQ==
+ d=linaro.org; s=google; t=1756230598; x=1756835398; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=ZR/RUH7irZ6A1UiT0VeZJ2PP4cGJptOqXwQzMuavR84=;
+ b=RBRs9wfpfxdMlQ5tQro2GylQypWIdmij8gnMgyZXIT77FU+GuqyFEdQ15W2BSGXuZW
+ lkZoJzKDt1biAd4them2xOtHJiwtBNGq3dR7QUjRqcoe9acqS9555PHIJB6ks/XeSrTb
+ 5aL4hRG+OKf4SOZANpVe3MDWsm/1vUBMYk5A2MtQ9BeEiv+vak7c30zhOX6RNdCiZq0Y
+ kaXpeFpzx0g2riYQ8o+b3rXJGNpaWdiXOJBj2/FrvpyGw3q3LFR9IA0Wwr24DCQyEH5I
+ 5FpPm/a33W/5WBGtsI+vRAl4mIbNZGQN95REQnR9HNhLHYuF+226mPnFYsMnLXALnboF
+ XT6Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756224815; x=1756829615;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=ztIhxTK30jqaWUf0PzyD81CT7DKpl8JVd9KnfePGnW8=;
- b=r+N3tdBMsBmOxW/nbyGd/xCAWvTzOlu6FZBAIK7SisXhzMY9HT8C8sALOt/wAzoyJ6
- MFzC72hXYDw0UIJM5bXiV0hdpXRC8pedDpJL8uPfKaKII+wb+FvBqMJki6S0x8/U4Qp+
- 2tqFDrruF3h272ydcKRzd29WfqFTJtPr8N8ioPyh3YbBhSOZFHKZyJM+rDZZFJRAliPm
- jwQb0CxGX8WxQalTn0PfrtFJAjt2M3a/FHgVzf88/afsocbrpU4Nvfnav7ByRZXshoGv
- VwHD4hR2dtpmcYeDVJyP1v6+/Ttjgw9HIUyhVGKkWp17uxrTKN68GchWmJPOLxkvtQxy
- EhEQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCU8sV4Zp3TYsd9Q2Tb5Z9KoeWpKdJUWWfma2RGmalzoo7a/JiP0Pf4tBE3Ki1D4KS+GljbzNRqZMA==@nongnu.org,
- AJvYcCWxqr8VjsrcwX/0szCgunEkQIMtQX2Qj/OQfrAbHnXLi8unY9mKZxXPkyeJrE3BlRTxDqbV9shcYTtAvQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yy/rmSDZMP+weatkYgzyffm/SsJsM7m9rGQbMxrp/WgUCMuzB2B
- rDCOLFWRaDj5gNTbFLAYgpNJ+rUNBXPQlxQAV7hk8SjxxOT7aUyR2KGrgfxwBQ==
-X-Gm-Gg: ASbGncs6cspGzXMOa3OjUCyKre4z9fP6VljH9oLZ7QX2RnJ8k7MTn7aSOsLV1FtDbrZ
- XO0Nc3W926n04WMN5iogFlUSA9NBo20y/xuBgd7qrKSW6Doha/0BFmYu2BFnjLnvzX8o9naXk0R
- CuumbMlpdpahXe5FdcLMe/fGIQIeVsRhXD9+kpDeOsGlPcav9HCk8pFmRNRTwbpweWlTIH1mkdh
- nE7qQhIowhnB9QfcXRlcdFavKEuyIExqf6+Bnxpp4piP4YCcSXYtS3/UKUWDTpzG8/ae+DBO61l
- O1bnxovZK7MQ5bhVJBtZnXnhnNAS1EsLHkuWsV9pzGjBNU47/GBcmCF3ZDJXx72HNrDw2+r5VUq
- 7hO7TT8jU85KtSbM9SuT5/Q==
-X-Google-Smtp-Source: AGHT+IHb0u8U5NuTT+w+uO8pDlDh7WG/BO17hLSDo0IQiOeg+cxO8ms2iRt3PZrT/44dP313eeFvLg==
-X-Received: by 2002:a17:90b:38cf:b0:325:42f8:d734 with SMTP id
- 98e67ed59e1d1-32542f8d92amr15054834a91.22.1756224815162; 
- Tue, 26 Aug 2025 09:13:35 -0700 (PDT)
-Received: from ktock.. ([240d:1a:3b6:8b00:561f:1400:11f5:714b])
+ d=1e100.net; s=20230601; t=1756230598; x=1756835398;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=ZR/RUH7irZ6A1UiT0VeZJ2PP4cGJptOqXwQzMuavR84=;
+ b=clBDjHGjXfREpTrjv0AYLor/fuambaO6AD6HVyzdMXx6djywrJvk+c5Yo+gOuzPlwj
+ OX34D61xXUmywZf1ubfqgai/I4804bzy997C0JLPn2xoPp41ZJRvHaUmFuioaonMsYLd
+ gADVs4DE8WwtMU/VxS2Sx50hvdzPdgyAIo4wt5K630D2bSXIZSKIrSHmcj7/hw4t80eu
+ g3bZenbqUWbBR3HrbxCuL/UJPjQiSpND+ekqdgta9odq8XQiNQDYAgRm+x+Bg4dsd/l0
+ cvlycW4nEGeso3KlgVUdnvDooo/0dw1lcIfxvRQDbNlGekIDNJIvB+V5fCStEoNpSdHk
+ osYw==
+X-Gm-Message-State: AOJu0YzVK3jfCQqrvrOoSHMeFekKrXg6ZhkMs/MZY2DrJdEKbRIJzfaR
+ gtr92tQEHfT6DQbwvv1aHDntcuBs7htyhY3Fohw+k7SZw7gW13C5Xr0SUVi8jrXbW70sPgIdhas
+ IoNit
+X-Gm-Gg: ASbGncvQKirp6dngMEee2fZvvRicFUByKk1Dfi0cLeYMfDJCYfZRa3BWu5MoDOBna2Y
+ vvwlV8Ckr0DPiqsEc3mxrTBEbkVT753zWwSLsbUM2AJyxCUmDko3zI3BYMooy8nm6dz8lTkn8rs
+ iUaaPY3/gE0A8EWtupsg94r7l5YfSBERVGPh8zcVqpQmQ+5/FhqkTig8LUHa0crobCq+RUdDdho
+ ErZBnc7iWULpNvGQorAetWAecKyJDRNWNa4Bz1c8fE/xhCAaYKXS49gMIVxsTgd7tEJWukOzvrm
+ 3SUHbRuUZNxKVzMpfyoxVfdiX4OK3lPCV6FtbJBsMxOe9V4ZFCiUmLAISTsCNoNZ9wNsqM//FS3
+ kbNHovDJ3nkmVfu2GWHXuZpJYilqIriWjg32+Rew=
+X-Google-Smtp-Source: AGHT+IEbP3Rx/b48mBVvzwN1uckzNsWH1kGq3/1OhcH78QB9OacwBFE1ArCegs10pus07ZYVDJQMjA==
+X-Received: by 2002:a05:600c:5251:b0:459:df07:6da4 with SMTP id
+ 5b1f17b1804b1-45b5179cc97mr137309045e9.5.1756230598512; 
+ Tue, 26 Aug 2025 10:49:58 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-32750bc341asm1749747a91.19.2025.08.26.09.13.29
+ 5b1f17b1804b1-45b6c5356a7sm2593435e9.15.2025.08.26.10.49.57
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 26 Aug 2025 09:13:34 -0700 (PDT)
-From: Kohei Tokunaga <ktokunaga.mail@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- WANG Xuerui <git@xen0n.name>, Aurelien Jarno <aurelien@aurel32.net>,
- Huacai Chen <chenhuacai@kernel.org>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Aleksandar Rikalo <arikalo@gmail.com>, Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <Alistair.Francis@wdc.com>, Stefan Weil <sw@weilnetz.de>,
- qemu-arm@nongnu.org, qemu-riscv@nongnu.org,
- Stefan Hajnoczi <stefanha@redhat.com>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>, ktokunaga.mail@gmail.com
-Subject: [PATCH v2 25/35] tcg/wasm: Mark unimplemented instructions
-Date: Wed, 27 Aug 2025 01:10:30 +0900
-Message-ID: <a3656a34217da7ac63ecdab31370b35b70b3ac94.1756216429.git.ktokunaga.mail@gmail.com>
+ Tue, 26 Aug 2025 10:49:57 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: Alistair Francis <alistair@alistair23.me>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Francisco Iglesias <francisco.iglesias@amd.com>
+Subject: [PATCH 0/2] hw: fix some leaks in xlnx devices
+Date: Tue, 26 Aug 2025 18:49:54 +0100
+Message-ID: <20250826174956.3010274-1-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <cover.1756216429.git.ktokunaga.mail@gmail.com>
-References: <cover.1756216429.git.ktokunaga.mail@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::536;
- envelope-from=ktokunaga.mail@gmail.com; helo=mail-pg1-x536.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -112,147 +100,20 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This commit adds the C_NotImplemented constraint and provides stubs for the
-functions that aren't implemented in the Wasm backend.
+These patches fix some minor leaks in xlnx devices detected
+by running 'make check' under ASAN.
 
-Signed-off-by: Kohei Tokunaga <ktokunaga.mail@gmail.com>
----
- tcg/wasm/tcg-target.c.inc | 119 ++++++++++++++++++++++++++++++++++++++
- 1 file changed, 119 insertions(+)
+thanks
+-- PMM
 
-V2:
-- Added C_NotImplemented constraints and stubs of removed instructions.
+Peter Maydell (2):
+  hw/misc/xlnx-versal-cframe-reg: Free FIFO, g_tree on deinit
+  hw/display/xlnx_dp: Don't leak dpcd and edid objects
 
-diff --git a/tcg/wasm/tcg-target.c.inc b/tcg/wasm/tcg-target.c.inc
-index 1d639561db..598db7b4bd 100644
---- a/tcg/wasm/tcg-target.c.inc
-+++ b/tcg/wasm/tcg-target.c.inc
-@@ -1950,6 +1950,125 @@ static void tcg_out_mb(TCGContext *s, unsigned a0)
-     tcg_wasm_out8(s, 0x00);
- }
- 
-+static const TCGOutOpDeposit outop_deposit = {
-+    .base.static_constraint = C_NotImplemented,
-+};
-+
-+static const TCGOutOpExtract outop_extract = {
-+    .base.static_constraint = C_NotImplemented,
-+};
-+
-+static const TCGOutOpExtract2 outop_extract2 = {
-+    .base.static_constraint = C_NotImplemented,
-+};
-+
-+static const TCGOutOpBinary outop_addco = {
-+    .base.static_constraint = C_NotImplemented,
-+};
-+
-+static const TCGOutOpAddSubCarry outop_addci = {
-+    .base.static_constraint = C_NotImplemented,
-+};
-+
-+static const TCGOutOpBinary outop_addcio = {
-+    .base.static_constraint = C_NotImplemented,
-+};
-+
-+static const TCGOutOpAddSubCarry outop_subbo = {
-+    .base.static_constraint = C_NotImplemented,
-+};
-+
-+static const TCGOutOpAddSubCarry outop_subbi = {
-+    .base.static_constraint = C_NotImplemented,
-+};
-+
-+static const TCGOutOpAddSubCarry outop_subbio = {
-+    .base.static_constraint = C_NotImplemented,
-+};
-+
-+static const TCGOutOpUnary outop_not = {
-+    .base.static_constraint = C_NotImplemented,
-+};
-+
-+static const TCGOutOpBinary outop_andc = {
-+    .base.static_constraint = C_NotImplemented,
-+};
-+
-+static const TCGOutOpBinary outop_eqv = {
-+    .base.static_constraint = C_NotImplemented,
-+};
-+
-+static const TCGOutOpBinary outop_nand = {
-+    .base.static_constraint = C_NotImplemented,
-+};
-+
-+static const TCGOutOpBinary outop_nor = {
-+    .base.static_constraint = C_NotImplemented,
-+};
-+
-+static const TCGOutOpBinary outop_orc = {
-+    .base.static_constraint = C_NotImplemented,
-+};
-+
-+static const TCGOutOpDivRem outop_divs2 = {
-+    .base.static_constraint = C_NotImplemented,
-+};
-+
-+static const TCGOutOpDivRem outop_divu2 = {
-+    .base.static_constraint = C_NotImplemented,
-+};
-+
-+static const TCGOutOpMul2 outop_muls2 = {
-+    .base.static_constraint = C_NotImplemented,
-+};
-+
-+static const TCGOutOpBinary outop_mulsh = {
-+    .base.static_constraint = C_NotImplemented,
-+};
-+
-+static const TCGOutOpMul2 outop_mulu2 = {
-+    .base.static_constraint = C_NotImplemented,
-+};
-+
-+static const TCGOutOpBinary outop_muluh = {
-+    .base.static_constraint = C_NotImplemented,
-+};
-+
-+static const TCGOutOpBswap outop_bswap16 = {
-+    .base.static_constraint = C_NotImplemented,
-+};
-+
-+static const TCGOutOpBswap outop_bswap32 = {
-+    .base.static_constraint = C_NotImplemented,
-+};
-+
-+static const TCGOutOpUnary outop_bswap64 = {
-+    .base.static_constraint = C_NotImplemented,
-+};
-+
-+static const TCGOutOpQemuLdSt2 outop_qemu_ld2 = {
-+    .base.static_constraint = C_NotImplemented,
-+};
-+
-+static const TCGOutOpQemuLdSt2 outop_qemu_st2 = {
-+    .base.static_constraint = C_NotImplemented,
-+};
-+
-+static bool tcg_out_xchg(TCGContext *s, TCGType type, TCGReg r1, TCGReg r2)
-+{
-+    return false;
-+}
-+
-+static void tcg_out_set_borrow(TCGContext *s)
-+{
-+    g_assert_not_reached();
-+}
-+
-+static void tcg_out_set_carry(TCGContext *s)
-+{
-+    g_assert_not_reached();
-+}
-+
- static void tcg_out_tb_start(TCGContext *s)
- {
-     init_sub_buf();
+ hw/display/xlnx_dp.c             | 10 +++++++---
+ hw/misc/xlnx-versal-cframe-reg.c |  9 +++++++++
+ 2 files changed, 16 insertions(+), 3 deletions(-)
+
 -- 
 2.43.0
 

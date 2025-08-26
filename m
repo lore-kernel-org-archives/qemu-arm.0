@@ -4,87 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B3E1CA0EFA
-	for <qemu-arm@archiver.kernel.org>; Tue, 26 Aug 2025 09:22:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47BD0CA0FE7
+	for <qemu-arm@archiver.kernel.org>; Tue, 26 Aug 2025 13:59:03 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uqpsC-0003DN-7k; Tue, 26 Aug 2025 05:21:48 -0400
+	id 1uquC3-0004A4-40; Tue, 26 Aug 2025 09:58:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uqpsA-0003CC-1k
- for qemu-arm@nongnu.org; Tue, 26 Aug 2025 05:21:46 -0400
-Received: from mail-yw1-x112c.google.com ([2607:f8b0:4864:20::112c])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uqps5-0006Ol-9t
- for qemu-arm@nongnu.org; Tue, 26 Aug 2025 05:21:45 -0400
-Received: by mail-yw1-x112c.google.com with SMTP id
- 00721157ae682-72019872530so19413687b3.1
- for <qemu-arm@nongnu.org>; Tue, 26 Aug 2025 02:21:39 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756200096; x=1756804896; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=cVT8EqQo4oW+kPc8LnM88Q3GyD1e+KQKjlAxfsHzn0Y=;
- b=yQ/lQiDkozIiNL/jKUsuLEqcUr0O+QnvZRxays+pSygnSDSihCWJeUc2ucDPYHeqAC
- 8kN5hu/Kgik73bkHKsOfDZ18BkGJXwXXzblwaLzbmJqv8yrLh87GDjalavk8UhYNAm74
- GV75xNtuhcINE/XJ+U2XNF0GYOEBnRqqNxRnqQAUH0uZXhd6vYec/QCevZltejDvpQA3
- XB49/7brsC2tLyTIhoqP4OY9i9lwCzWzdmFGuEWgepX8Sotth0AFBOng9RHYe5sfeZc4
- VomMQOsjyyM5Oec0HzhqeGZwtfI6qa17gZGk1bqUt1fAd3chs33WQuPun395L9USJmSi
- Ysgg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756200096; x=1756804896;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=cVT8EqQo4oW+kPc8LnM88Q3GyD1e+KQKjlAxfsHzn0Y=;
- b=gS4xocVwUmxHu1mCiv/AqLLrFxBq2PmBQDfHOE6A66K34kAtd88CnG0FoNadV3yTuN
- BByB8x+gSmG+ldNiWSGAgrS/SxedSgDFHhxhtuhVXrA8blxOQls1ASJXBrreknox3Ut/
- XTIXnhqk9Zo8uxC3Y9E0MaLxJZ4TOWiosQBuRN8ZRh1h2v0R7O8rgLsQJU5vqLURz0Jb
- nGzArFETAZld0H1pbVZcDRBgN7xoa1eR94yiNVYY18bNFALb3I47Mb7YDe/N+ACgjb+4
- 5dCKZTvUf/EgrRJaU6JdXDB9Dc7HiksaNkIIzj2Y6dKCumqox8Gpce88VB7vSOWoWF66
- nA1Q==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXuPchhbk83ZNuNszQPbt4htA0U6Vtsry8v6/wjm0WYa1/BIctsh6UYn0mDsk/78gzLBUFLYyKWMQ==@nongnu.org
-X-Gm-Message-State: AOJu0YzhjxiUdSyCmDT4//F5rIy28GQTHjDBOuYnbuW02AX68RTiBdyq
- wfI/Fx/IM+JZc//xK5i2KnNI/t+mLGvCQtRTmxcve7hl795KLVKS0Mm0T6+nXmhwRVdZJFILjQO
- J0YZn4dPt92v+p0+MVZMKiDE5OfLzyZwZ9LnwT6oL+pcOkZzsUiin
-X-Gm-Gg: ASbGncsoXLTI5aBxee0BcBP05CZaV9pQKSPwdi3O9Fk3jNFmF6IqxBQ4bclSv2fulhs
- b22XH2JE2WB3YaR38eD7kl+MMDbIR3Ws62mS4PnwQCsOk0+ENC5W786eq+DPoLITsV3EstpBW+C
- qKuleY4QDj8lRWfRJIyYOzhrDyOttcaJf9v8/nviGvELDkDwtCAj+mQt2KRsL9lPzVnGHjJO5e8
- GSpG8dIb0dT+pbDNys=
-X-Google-Smtp-Source: AGHT+IGdJWD0WCczBe3htWp1bnyINaxl97XJ4ggXdwjchtKDu2qxn0hdjKqlPRfjVb4z7W4skgk2WGnKHLSv3uDs2Fk=
-X-Received: by 2002:a05:690c:4d88:b0:70c:c013:f26 with SMTP id
- 00721157ae682-71fdc401aa8mr164838487b3.33.1756200096481; Tue, 26 Aug 2025
- 02:21:36 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1uquBu-00046z-Lh
+ for qemu-arm@nongnu.org; Tue, 26 Aug 2025 09:58:28 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1uquBm-0005tJ-Co
+ for qemu-arm@nongnu.org; Tue, 26 Aug 2025 09:58:26 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1756216692;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=vTGPWkhF8Mniu/NkwS35dSPxeOC+qJIwNleqCNKhjP4=;
+ b=Jo8NYPuwWQ8Uu+w9fQGjx3QacduU1lSwkZIEo4yRDMdEEKNeTrwKR+N4cXflCkmgUrhP0P
+ tjlX8B+gqLRCG+xKe833CxKfot0IhiuouEZRFeJP75ON07UnxZ0Xn1n39EU0nwdTQE3pNI
+ BLf44KWFbr9tOyLwExK6Ge40LLx9k6Q=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-523-LnLy3rQyP3i_IIGTmSEIIg-1; Tue,
+ 26 Aug 2025 09:58:09 -0400
+X-MC-Unique: LnLy3rQyP3i_IIGTmSEIIg-1
+X-Mimecast-MFC-AGG-ID: LnLy3rQyP3i_IIGTmSEIIg_1756216688
+Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 2E42B19541AA; Tue, 26 Aug 2025 13:58:08 +0000 (UTC)
+Received: from redhat.com (unknown [10.42.28.174])
+ by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id D8C2919560AB; Tue, 26 Aug 2025 13:58:05 +0000 (UTC)
+Date: Tue, 26 Aug 2025 14:58:02 +0100
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Gustavo Romero <gustavo.romero@linaro.org>
+Cc: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+ alex.bennee@linaro.org, qemu-arm@nongnu.org, 1844144@gmail.com,
+ Jan Richter <jarichte@redhat.com>
+Subject: Re: [PATCH 0/4] tests/functional: Adapt reverse_debugging to run w/o
+ Avocado
+Message-ID: <aK29ams5RwkQJcfJ@redhat.com>
+References: <20250819143916.4138035-1-gustavo.romero@linaro.org>
+ <53b6e23f-5328-42c6-9c58-97ddbf3e5b29@redhat.com>
+ <a1105fed-dbd8-4223-b771-180ab12e3f77@linaro.org>
 MIME-Version: 1.0
-References: <20250629204851.1778-1-shentey@gmail.com>
- <20250629204851.1778-3-shentey@gmail.com>
- <CAFEAcA-HaQwySM1j7Cy_R1z0fM1D9ykiBiMKLYNVYF+Tm_mrPA@mail.gmail.com>
- <78B2535C-38D8-4612-8958-49AC28482A8D@gmail.com>
- <CAFEAcA9b+1xx+Esnt80Ny1gWBOsh-QYYxuP6PwiPk-B20xv0Dw@mail.gmail.com>
- <3DA254A8-76AC-4214-8C65-D3B3FFF55FF9@gmail.com>
-In-Reply-To: <3DA254A8-76AC-4214-8C65-D3B3FFF55FF9@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 26 Aug 2025 10:21:25 +0100
-X-Gm-Features: Ac12FXzkdbz8sSFdHkKIw5XmLVSnuk_qul-gsCB_G4ZzkqTuDewcIWi7cASaKvg
-Message-ID: <CAFEAcA-0843-YZMDqTDhiJgF223UrAcb8cQL5-ns12o8VHaT_g@mail.gmail.com>
-Subject: Re: [PATCH 2/2] hw/arm/imx8mp-evk: Add KVM support
-To: Bernhard Beschow <shentey@gmail.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
- Paolo Bonzini <pbonzini@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112c;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112c.google.com
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <a1105fed-dbd8-4223-b771-180ab12e3f77@linaro.org>
+User-Agent: Mutt/2.2.14 (2025-02-20)
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -97,55 +89,62 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, 8 Jul 2025 at 17:36, Bernhard Beschow <shentey@gmail.com> wrote:
->
->
->
-> Am 30. Juni 2025 21:03:06 UTC schrieb Peter Maydell <peter.maydell@linaro.org>:
-> >On Mon, 30 Jun 2025 at 21:22, Bernhard Beschow <shentey@gmail.com> wrote:
-> >>
-> >>
-> >>
-> >> Am 30. Juni 2025 09:09:31 UTC schrieb Peter Maydell <peter.maydell@linaro.org>:
-> >> >On Sun, 29 Jun 2025 at 21:49, Bernhard Beschow <shentey@gmail.com> wrote:
-> >> >>
-> >> >> Allows the imx8mp-evk machine to be run with KVM acceleration as a guest.
-> >> >>
-> >> >> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
-> >> >> ---
-> >> >>  docs/system/arm/imx8mp-evk.rst |  7 +++++++
-> >> >>  hw/arm/fsl-imx8mp.c            | 33 ++++++++++++++++++++++++++++-----
-> >> >>  hw/arm/imx8mp-evk.c            | 11 +++++++++++
-> >> >>  hw/arm/Kconfig                 |  3 ++-
-> >> >>  hw/arm/meson.build             |  2 +-
-> >> >>  5 files changed, 49 insertions(+), 7 deletions(-)
-> >> >
-> >> >This puts a lot of IMX device models onto our security boundary,
-> >> >which makes me a bit nervous -- that's a lot of code which
-> >> >wasn't really written or reviewed carefully to ensure it
-> >> >can't be exploited by a malicious guest.
-> >>
-> >> Hi Peter,
-> >>
-> >> Does KVM increase the attack surface compared to TCG?
-> >
-> >Yes, because our security policy says that TCG is not considered
-> >a security boundary, whereas KVM is:
-> >
-> >https://qemu-project.gitlab.io/qemu/system/security.html
-> >
-> >(It would move from "non-virtualization use case" to
-> >"virtualization use case".)
->
-> Thanks, that document nails my question.
->
-> If KVM requires the imx devices to be inside the security boundary, what needs to be done to lift them there?
+On Mon, Aug 25, 2025 at 11:04:58AM -0300, Gustavo Romero wrote:
+> Hello, Thomas!
+> 
+> On 8/25/25 07:29, Thomas Huth wrote:
+> > On 19/08/2025 16.39, Gustavo Romero wrote:
+> > > The goal of this series is to remove Avocado as a dependency for running
+> > > the reverse_debugging functional test.
+> > > 
+> > > This test, the last one I’m aware of that relies on Avocado, requires it
+> > > because of the need for GDB to test reverse stepping and continue.
+> > 
+> >   Hi!
+> > 
+> > Please note that there are currently also some efforts going on to extract the GDB part from avocado into a more self-contained python module called aautils, which might help here, too:
+> > 
+> >   https://github.com/avocado-framework/aautils/issues/82
+> 
+> Thanks, I was not aware of it. But note that the Avocado GDB API requires one
+> to deal with GDB packets directly, which is unnecessary for tests like reverse
+> debug. I think that in general, in QEMU, we should try to avoid using it as
+> much as possible because the tests became annoying to read without any strong
+> need for it.
+> 
+> In the commit message for 4/4 I mention that benefit of using the GDB Python
+> API instead.
+> 
+> I think we should aim to make the tests in QEMU _extremely_ easy to list, run,
+> and read.
 
-Code audit, fuzzing, commitments to maintenance. Basically
-I would strongly prefer not to.
+Yes, I really like how your patch improves readability of the test
+by using GDB commands rather than raw packets.
 
--- PMM
+
+
+
+> > Anyway, shifting to a different test harness here makes me wonder whether the whole reverse_debug test should maybe be rather moved to tests/tcg instead, where we already have the basic support for the stuff from tests/guest-debug/ ?
+> > The aarch64 would require a different guest payload, of course, in that case, so not sure whether it's feasible?
+> 
+> I think reverse_debugging is really a functional test. It requires GDB, yes,
+> but also QMP and booting a whole kernel and the feature itself makes me think
+> it's a functional test. I wouldn't move it to tcg-check just for the sake of
+> no adding a new way to run test in meson.build in functional tests.
+
+Agreed, this conceptually feels like it belongs as a functional test.
+
+
+
+With regards,
+Daniel
+-- 
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+
 

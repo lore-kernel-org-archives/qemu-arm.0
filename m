@@ -4,87 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02B8FCA0FE7
-	for <qemu-arm@archiver.kernel.org>; Tue, 26 Aug 2025 15:02:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADD9CCA0EFA
+	for <qemu-arm@archiver.kernel.org>; Tue, 26 Aug 2025 15:21:00 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uqvBV-0000Gu-Cq; Tue, 26 Aug 2025 11:02:06 -0400
+	id 1uqvT0-0007ok-4I; Tue, 26 Aug 2025 11:20:10 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
- id 1uqvBJ-0000EG-De
- for qemu-arm@nongnu.org; Tue, 26 Aug 2025 11:01:57 -0400
-Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629])
+ id 1uqvSw-0007nR-Ro
+ for qemu-arm@nongnu.org; Tue, 26 Aug 2025 11:20:06 -0400
+Received: from mail-pf1-x42c.google.com ([2607:f8b0:4864:20::42c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
- id 1uqvB8-0001qh-Hi
- for qemu-arm@nongnu.org; Tue, 26 Aug 2025 11:01:53 -0400
-Received: by mail-pl1-x629.google.com with SMTP id
- d9443c01a7336-246d8e25f51so16346805ad.2
- for <qemu-arm@nongnu.org>; Tue, 26 Aug 2025 08:01:34 -0700 (PDT)
+ id 1uqvSj-0005KG-KI
+ for qemu-arm@nongnu.org; Tue, 26 Aug 2025 11:20:06 -0400
+Received: by mail-pf1-x42c.google.com with SMTP id
+ d2e1a72fcca58-76e2ea933b7so5128178b3a.1
+ for <qemu-arm@nongnu.org>; Tue, 26 Aug 2025 08:19:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756220490; x=1756825290; darn=nongnu.org;
+ d=linaro.org; s=google; t=1756221586; x=1756826386; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=ACjgcDLvoon9NUbIZIUiX3lyOafa5nmRxOYvYUER44U=;
- b=YNFPzd3s6+DjXeVV3OTMZ4dKSHylqmGRQqoFZSqS/gw9fkBZsulUmYUouJJ/G5qh3u
- L7IgHqnjDagJVaMMiI8JIH79iY3av/21HabWaSwJ7MPt1LWPn2KPyVQYw4D1M1fhQ46y
- vnEZ7EB1CLPxJZqSm7jZ24lOrjXbl/cPyISQQcWvgU90aGxBd0l4JuogW6GMvVGfuJzW
- RCvE4uxgXmSLNOMYS9qkK6lDL5/2WTAsI6Q3p8Q6psU8rT5pzcGDY6NfXyF7d52l0lqh
- Yp01wtWaWrMoCG7iXaX9xzd0euJr1j5weRtyeLbGoOcWvDSl9bvxvsUL4ZqAO/dK01IS
- 7Vlw==
+ bh=CFp5XYV5vt0+YmMHlulgMAqHUrhNiVHLMR+6k+JMX94=;
+ b=KpcmcUJmE9N9f1xdA76zlz2fDMNTzud7uG4M1yZuPYAMIYo4Us3NJ7YJm+Nt8z7T6q
+ IBiv4bpsvRSNUcWA/j+YL5nP1Nhvq5Imq8gVZ/b5qwMsin5eCV3ZaUUKXy6NKqyyw1JR
+ S8DEMYnInQFLKyBsFcdlavNxP3MzvfpgJANEP9VzrICrihgkHdgyEXUlmLrUSJaEqst7
+ ljgMMBkh1Gxy1+T0uLyowmFPlBsTyPyRaGLJMWfiYchMoS1C+dNZWeVjqHFcQ53RcJSn
+ vHTP/h5p5H3JbHxpwaYVYuY29yec8yLnJrkJY7MLZmAXkU9HsLBCQs+FD560p4Na38JM
+ kKlg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756220490; x=1756825290;
+ d=1e100.net; s=20230601; t=1756221586; x=1756826386;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=ACjgcDLvoon9NUbIZIUiX3lyOafa5nmRxOYvYUER44U=;
- b=s7GXyY54GJ/mc2KOTTS2FrrDdug8lWa82EeVoESSRhldt1a3j+QNtQCcvj5bBYOhTk
- JyqoNxqzekKcloLfKCL7+wFwSLWwGhXP0dX1J+zlrfH5mFEJmxG7eZGDpu6YulCLzyCf
- aNw/QVvOoAeYpFWFCk5y9tWMxj5MXrxwL4vdeXBs2tv0V7IHSst4vk1wSPT17q6hxehf
- 6IYY2IRZ8AjEBFOf2KEBF1xp/r0Vdkxvrun79mC6FraxVB6EO9dVlxd7yKfJl1aDf3fw
- FLa825h/te3HtdQQMwq68P0RvonoCc4l7KRW/nmKJtSPwqFdVdDqO4vorIFopqJcvrxY
- /aXg==
-X-Gm-Message-State: AOJu0YyqrIRBKNABslWHGFrEf+EI2WN2A+H5BKmekDi499/4Pm4QOYiC
- DGmOIaAXUV4tnd9BSNxeyvF8zHyxxCpQX0NkiDhc0lfAwFuhezxFRX+ItxShm2z2kfXVbDZa3B6
- ZqneUKgc=
-X-Gm-Gg: ASbGncuoNu56Nv5qbl2guQtWS6Tojdc4mwtublggiBKRmGBut9eGXifHOBhlEZSyn4+
- LjYzXpeqylk2HSxkypubWXyLwGL2bzpzUTPQS1SqswxExIGBmD/SNe1KYRac9EdpWriSwmLr+V6
- c8KIS7Sjhp0b2BdMjReA7QKS7Uf/W8ZDKI0y4tW/ngccvhw/xpqbzlUv3n4sOjvL/P/M6Rn+aMN
- Y1e5qxsaCkLz1flxGlVItrYI0cLz4RcIaW4jM7UbvR+0T/S7VTO8vtcGgjASwvZicfffFDn6TdG
- lMsLNOVs1GI92a9JUMIE/vP+pRWi72hh2h6h2pOEcWy9RPjKY3d8TsfkdvkVF25Q26xLkieMru9
- 0UCht31dTFgBaWuH9ISHfsWErsO+WNO+noQ==
-X-Google-Smtp-Source: AGHT+IFzkcNmizfxVp90cJeGRZGtt8sjPgJbBdjTdgJgjIyg8JZ4xp+YWZR1k22vtP5uCgX3xVSpaw==
-X-Received: by 2002:a17:902:dad1:b0:242:9bc6:63c3 with SMTP id
- d9443c01a7336-2462efaa3b8mr223283535ad.54.1756220489616; 
- Tue, 26 Aug 2025 08:01:29 -0700 (PDT)
+ bh=CFp5XYV5vt0+YmMHlulgMAqHUrhNiVHLMR+6k+JMX94=;
+ b=gkDBUh/MvEbRcgzaC744xoqZLkrm3bI69K25kxJBurc7y/h3xJF6+RSnMwHanSo/Hd
+ lAM+LSEx3WyNDovSsPSuMVhq8qpurGbs8ZDfaTtC+JBn7bfQqWgvX+CyxmNA5iXfcpld
+ sDJ4AdSrqxayyoMU7ZZ/succKht7aXAao57XQCzETn53SeHSvGRLVrmnudVdi783X6us
+ 80QWMzrfZhTwVWAxvNdWu8nxkGxHLPNp1D7ksLWI+UIU4c7aIRAMovuay+jRCYMDI7CZ
+ ayP07HlYn2lnceMBmsjtox9JUq9KhEZHW6IJp163PI2k0/1I9NqGkawJWpsis+C/gRe8
+ bxwg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWtAmGJhKduFP6FunmcLfFB1MJSHzPV/3PGD75hCZchOUzj98qcnqeHrXLlfC8KQxhsf+c1PppG2g==@nongnu.org
+X-Gm-Message-State: AOJu0Yyl8UYAL4OcMHyAvAmY6vjjo8EHaoMHTk9Bwykcu/DlJ1ekwzz2
+ Is3THAUpd8GHR9VMeEC0X6LHhyfXtY6WhKwiO8vQYvsx3kxQibEgcoc+Bx5nsbXLg7M=
+X-Gm-Gg: ASbGncuG+mfnbzqA9W8ucjb2r+UrDHtt6vdm9T5f+Xj4euauSbKQ6+ltb9zJMwAn5Vj
+ qhK880MFDxKQ81dm3pN/eWlVf+eJKZZTB6sGAvWsuMFmdSLTMN6Iy9JfAzRkAbbJnIFgY/gN0B9
+ 7BaafE+eIVLnHOZfdrnUgXlJzDmhHkliVk0FJBVkw55cOvvh9TRCAgpYrdpr36lAUErj8iNAjLs
+ 3P+JR+Rg5OiacSjMtl5eWxALVfoSTQqr4QGXnpH0lyI1iPs3XVFD49tJxFU1bylvn6YCDP3Y+KY
+ vu8hMNuspzacBYIznmtDs7i9NLd05a+aEy+g7LsT/LS9842hdm0IpRWyeOjpj4biLxGWEOKTN+5
+ rHCG6fiE7JJF2memDgjaZOPYX22ooVpiorQ==
+X-Google-Smtp-Source: AGHT+IH2gQWaOB6wCDxO5XdRxiGrTc1VAoLJ2V8vluKoeRh4BX2wn3ItW6HxOWAUZIiR4u4pjp7wdA==
+X-Received: by 2002:a05:6a00:3406:b0:771:f071:28fd with SMTP id
+ d2e1a72fcca58-771fc296d94mr2215911b3a.14.1756221586008; 
+ Tue, 26 Aug 2025 08:19:46 -0700 (PDT)
 Received: from [192.168.0.102] ([187.75.38.174])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-246687b4f93sm98119355ad.58.2025.08.26.08.01.27
+ d2e1a72fcca58-7704fb69542sm8724553b3a.94.2025.08.26.08.19.43
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 26 Aug 2025 08:01:29 -0700 (PDT)
-Message-ID: <9e08e638-9ab7-44cd-98cb-bd1a5b826f91@linaro.org>
-Date: Tue, 26 Aug 2025 12:02:07 -0300
+ Tue, 26 Aug 2025 08:19:45 -0700 (PDT)
+Message-ID: <ff89f821-e0aa-4a4e-9ac9-f50a6ee062af@linaro.org>
+Date: Tue, 26 Aug 2025 12:20:29 -0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 0/4] tests/functional: Adapt reverse_debugging to run w/o
- Avocado
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
- alex.bennee@linaro.org
-Cc: qemu-arm@nongnu.org, 1844144@gmail.com, Jan Richter <jarichte@redhat.com>
+Subject: Re: [PATCH 2/4] tests/functional: Support tests that require a runner
+To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
+Cc: qemu-devel@nongnu.org, thuth@redhat.com, qemu-arm@nongnu.org,
+ 1844144@gmail.com
 References: <20250819143916.4138035-1-gustavo.romero@linaro.org>
- <53b6e23f-5328-42c6-9c58-97ddbf3e5b29@redhat.com>
- <a1105fed-dbd8-4223-b771-180ab12e3f77@linaro.org>
- <57b7b6c1-1820-4475-b84a-05b37cfbefdf@redhat.com>
+ <20250819143916.4138035-3-gustavo.romero@linaro.org>
+ <87bjo32vmf.fsf@draig.linaro.org>
 Content-Language: en-US
 From: Gustavo Romero <gustavo.romero@linaro.org>
-In-Reply-To: <57b7b6c1-1820-4475-b84a-05b37cfbefdf@redhat.com>
+In-Reply-To: <87bjo32vmf.fsf@draig.linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::629;
- envelope-from=gustavo.romero@linaro.org; helo=mail-pl1-x629.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42c;
+ envelope-from=gustavo.romero@linaro.org; helo=mail-pf1-x42c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -107,53 +107,153 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Thomas,
+Hi Alex,
 
-On 8/26/25 05:06, Thomas Huth wrote:
-> On 25/08/2025 16.04, Gustavo Romero wrote:
-> ...
->>> Anyway, shifting to a different test harness here makes me wonder whether the whole reverse_debug test should maybe be rather moved to tests/tcg instead, where we already have the basic support for the stuff from tests/ guest-debug/ ?
->>> The aarch64 would require a different guest payload, of course, in that case, so not sure whether it's feasible?
->>
->> I think reverse_debugging is really a functional test. It requires GDB, yes,
->> but also QMP and booting a whole kernel and the feature itself makes me think
->> it's a functional test. I wouldn't move it to tcg-check just for the sake of
->> no adding a new way to run test in meson.build in functional tests.
+On 8/25/25 13:50, Alex Bennée wrote:
+> Gustavo Romero <gustavo.romero@linaro.org> writes:
 > 
-> Ok, fair point. But thinking about this twice, wouldn't it be nicer to keep the current test harness and simply launch the script from the test_* methods instead?
+>> Add support for running tests that require a specific runner.
+>>
+>> The test is specified via a tuple (name, runner, protocol), where name
+>> is the test name as found in the tests/functional directory without the
+>> 'test_' prefix and the .py extension, runner is an array containing the
+>> runner and any arguments required by the runner, and protocol is
+>> the test protocol used by Meson to determine whether the test passed or
+>> failed.
+>>
+>> The test tuples are added to arrays that follow the current naming
+>> logic but with the suffix '_with_runner' appended to their names. In
+>> Meson it's not easy to select an element in an array at runtime based on
+>> its type, so it's simpler to have a new array for these new test types
+>> than use the current ones from the tests that don't require a runner,
+>> and so avoid mixing strings and tuples in the same array.
+>>
+>> Currently there is only one runner, the GDB runner, but more runners can
+>> be defined and associated to a test via the tuple.
+>>
+>> Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
+>> ---
+>>   meson.build                  |  4 +++
+>>   tests/functional/meson.build | 62 ++++++++++++++++++++++++++++++++++++
+>>   2 files changed, 66 insertions(+)
+>>
+>> diff --git a/meson.build b/meson.build
+>> index 50c774a195..8d482f0809 100644
+>> --- a/meson.build
+>> +++ b/meson.build
+>> @@ -75,6 +75,10 @@ have_user = have_linux_user or have_bsd_user
+>>   
+>>   sh = find_program('sh')
+>>   python = import('python').find_installation()
+>> +# Meson python.get_path() on 'purelib' or 'platlib' doesn't properly return the
+>> +# site-packages dir in pyvenv, so it is built manually.
+>> +python_ver = python.language_version()
+>> +python_site_packages = meson.build_root() / 'pyvenv/lib/python' + python_ver / 'site-packages'
+>>   
+>>   cc = meson.get_compiler('c')
+>>   all_languages = ['c']
+>> diff --git a/tests/functional/meson.build b/tests/functional/meson.build
+>> index 311c6f1806..1f70b70fd4 100644
+>> --- a/tests/functional/meson.build
+>> +++ b/tests/functional/meson.build
+>> @@ -349,6 +349,23 @@ tests_xtensa_system_thorough = [
+>>     'xtensa_replay',
+>>   ]
+>>   
+>> +# Tests that require a specific runner.
+>> +gdb = find_program('gdb-multiarch', required: false)
+>> +if gdb.found()
+>> +    gdb_runner_script =  meson.project_source_root() + '/tests/guest-debug/run-test.py'
+>> +    gdb_runner = [gdb_runner_script, '--gdb', gdb, '--test']
+>> +
+>> +    # A test with a runner is a tuple (name, runner, protocol).
+>> +    # The tests must be elements of an array named like:
+>> +    #
+>> +    # test_<arch>_<mode=[system|linuxuser|bsduser]>_<speed=[quick|thorough]>_with_runner = [
+>> +    #      ['test0', gdb_runner, 'exitcode'],
+>> +    #      ...
+>> +    # ]
+>> +else
+>> +    message('GDB multiarch not found, skipping functional tests that rely on it.')
+>> +endif
+>> +
+> 
+> We already have a --gdb option in configure which sets GDB= for
+> check-tcg - we should use the same configuration for these tests. You
+> may need to convert the configure probe to a meson-option.
 
-If no additional module is used, then GDB needs to execute the test_* scripts via '-x' option
-because only this way the script can do "import gdb", hence we need a runner that will call gdb
-and pass the script to it.
-
-Naturally, we can instead use a module like pygdbmi (as Manos suggested) or aautils (with the
-caveats I mentioned about having to deal with GDB packets directly) that will simply wrap up
-calling gdb and passing it the script with subprocess etc., so no need to augment the test harness.
-
-The trade off I can see is: re-use the runner we use in check-tcg and augment the test
-harness to accommodate it in the functional tests _vs_ use the "runner" from another module,
-bring another python dependency and deal with another GDB API (I like using GDB native Python
-API because it's simple, sufficient and self-contained, but I'm open to experiment with pygdbmi),
-use another runner (other than the one in tests/guest-debug/test_gdbstub.py) and don't modify the
-test harness.
-
-
-> You could redirect stdout of the script into a log file, so that it cannot mess with the TAP output of the test. Or is there something that I missed and this cannot work?
-
-Yeah, I really tried it but redirecting to a file using GDB Python
-API didn't work :-(
-
-I've tried to redirect GDB's output from the test script using
-"set logging redirect on" but something is off. I even tried on GDB
-master, but besides direct not taking effect (output is still printed
-to the stdout) I got a GDB internal error when switching it off.
-
-So, yes, it would work (even adding a # in the output messages so the
-TAP protocol would simply ignore the lines at the same time we would
-be able to see the output from GDB), but I was not able to make it work
-with GDB native Python API, so turned to use the "exitcode".
+True. I'll sort it out in v2. Afaics it will solve the issue Thomas found on
+Fedora. As Daniel says gdb in Fedora already has all the arch built-in, the
+detection in configure will work. Thanks.
 
 
 Cheers,
 Gustavo
+
+>>   precache_all = []
+>>   foreach speed : ['quick', 'thorough']
+>>     foreach dir : target_dirs
+>> @@ -372,9 +389,11 @@ foreach speed : ['quick', 'thorough']
+>>         suites = ['func-quick', 'func-' + target_base]
+>>         target_tests = get_variable('tests_' + target_base + '_' + sysmode + '_quick', []) \
+>>                        + get_variable('tests_generic_' + sysmode)
+>> +      target_tests_r = get_variable('tests_' + target_base + '_' + sysmode + '_quick_with_runner', [])
+>>       else
+>>         suites = ['func-' + speed, 'func-' + target_base + '-' + speed, speed]
+>>         target_tests = get_variable('tests_' + target_base + '_' + sysmode + '_' + speed, [])
+>> +      target_tests_r = get_variable('tests_' + target_base + '_' + sysmode + '_' + speed + '_with_runner', [])
+>>       endif
+>>   
+>>       test_deps = [roms, keymap_targets]
+>> @@ -423,6 +442,49 @@ foreach speed : ['quick', 'thorough']
+>>              priority: test_timeouts.get(test, 90),
+>>              suite: suites)
+>>       endforeach
+>> +
+>> +    # Prepare tests that require a specific runner.
+>> +    foreach test : target_tests_r
+>> +      testname = '@0@-@1@'.format(target_base, test[0])
+>> +      testfile = 'test_' + test[0] + '.py'
+>> +      testpath = meson.current_source_dir() / testfile
+>> +      teststamp = testname + '.tstamp'
+>> +      testrunner  = test[1]
+>> +      testproto = test[2]
+>> +
+>> +      test_precache_env = environment()
+>> +      test_precache_env.set('QEMU_TEST_PRECACHE', meson.current_build_dir() / teststamp)
+>> +      # python_site_packages, i.e., site packages from Python in pyvenv, is
+>> +      # added to PYTHONPATH because some runners can run a program that has its
+>> +      # own Python hooks that, by its turn, will search for modules based on
+>> +      # PYTHONPATH independently of the Python used by the runner, like, for
+>> +      # example, GDB using libpython.
+>> +      test_precache_env.set('PYTHONPATH', meson.project_source_root() / 'python' +
+>> +                                          ':' + meson.current_source_dir() +
+>> +                                          ':' + python_site_packages)
+>> +      precache = custom_target('func-precache-' + testname,
+>> +                               output: teststamp,
+>> +                               command: [testrunner, testpath],
+>> +                               depend_files: files(testpath),
+>> +                               build_by_default: false,
+>> +                               env: test_precache_env)
+>> +      precache_all += precache
+>> +
+>> +      # See comment above about python_site_packages in test_precache_env.
+>> +      # Don't append to test_env since it will affect previous uses of it.
+>> +      test_r_env = test_env
+>> +      test_r_env.append('PYTHONPATH', python_site_packages)
+>> +
+>> +      test('func-' + testname,
+>> +           python,
+>> +           depends: [test_deps, test_emulator, emulator_modules, plugin_modules],
+>> +           env: test_r_env,
+>> +           args: [testrunner, testpath],
+>> +           protocol: testproto,
+>> +           timeout: test_timeouts.get(test[0], 90),
+>> +           priority: test_timeouts.get(test[0], 90),
+>> +           suite: suites)
+>> +    endforeach
+>>     endforeach
+>>   endforeach
+> 
+
 

@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A44F2CA0FF6
-	for <qemu-arm@archiver.kernel.org>; Tue, 26 Aug 2025 16:20:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8370CA0FE7
+	for <qemu-arm@archiver.kernel.org>; Tue, 26 Aug 2025 16:21:27 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uqwHW-0004DH-Lz; Tue, 26 Aug 2025 12:12:22 -0400
+	id 1uqwGu-0003lA-Jg; Tue, 26 Aug 2025 12:11:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ktokunaga.mail@gmail.com>)
- id 1uqwHR-00046s-RI; Tue, 26 Aug 2025 12:12:17 -0400
-Received: from mail-pg1-x52c.google.com ([2607:f8b0:4864:20::52c])
+ id 1uqwGn-0003gl-Sr; Tue, 26 Aug 2025 12:11:38 -0400
+Received: from mail-pg1-x535.google.com ([2607:f8b0:4864:20::535])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <ktokunaga.mail@gmail.com>)
- id 1uqwHN-0007tF-Sa; Tue, 26 Aug 2025 12:12:17 -0400
-Received: by mail-pg1-x52c.google.com with SMTP id
- 41be03b00d2f7-b49c1c130c9so3169240a12.0; 
- Tue, 26 Aug 2025 09:12:09 -0700 (PDT)
+ id 1uqwGf-0007kh-PJ; Tue, 26 Aug 2025 12:11:37 -0400
+Received: by mail-pg1-x535.google.com with SMTP id
+ 41be03b00d2f7-b4c29d2ea05so37160a12.0; 
+ Tue, 26 Aug 2025 09:11:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1756224728; x=1756829528; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1756224682; x=1756829482; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=lOVUh0D46rHhwT3Zfqon+1PR3g6RR06iG4YH+XQvtNs=;
- b=NrgIfaeQzQF5v/mp79YY47LOFlllqh1eJK6TldMPhSlpq5ouSvVx132R3+Kv3pfCwS
- quoCQUFl5qkHwAsqUkaW5Wfm6e+IK9rN9LZw+w+Sd1MgZieIdeNJoxqo5fsJIN1zbhM9
- v6eOhgT2jpvxwCPvTpWxI6TYTf0+FmNJio9ewUSsAZCPZw/BmN6H/PPf9I83ITZp8q5V
- CBP1M6lZXtN5pHwqNy2ToeCX3aSwvvOWExE9R12fSGur9YAw46X0wC2NPmoIQzUVIxAh
- dcxADmxfNO2JRjvEuuT68LKpDKsx0Ts2bZK8ZDbBT6hZ6uLNKLWoNFCV6BqpKFDdkdUc
- EoLg==
+ bh=ZrW0ohTHwOsnEYUw7cM8Ny+LWm/AdAq2m0G/QyQL0Os=;
+ b=bywpoZfF+mz51FQodaQwK4Sz4j8l0q0hcnQKlM+WmLx/40GMZwYlZCZ2q0b+Z0zZqo
+ F92/Q0lSPlOOBmCchRl9kdFIXN3M4Zp6YUD5IlH4DqsWNG5fjJZ0VnY0n+CgAL/oohHz
+ VdYQ9O1vdDokqzA6fbXmdjKwyCJpQasJf6aPfttjPu6tDmldbIrG6s5bE+SHJt2Y5L3E
+ zUSZD/7nPMCW5u39/d2kEnmkkDqjMxw9boH4YP5W/yqy/FsNnIAH8ueBgFHYXsERmpcn
+ 6Dsqr2QlHBhO2fN3l/uz41+zN8UziS8dc5pxnCb1Wvr4zxBlluZUIEhp1qouK4fUva01
+ vHHA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756224728; x=1756829528;
+ d=1e100.net; s=20230601; t=1756224682; x=1756829482;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=lOVUh0D46rHhwT3Zfqon+1PR3g6RR06iG4YH+XQvtNs=;
- b=fJEkkZY18mnHMQJMLprv9mPBao3ZxGOvIy2dbslZpKOjWkN0t1CgWpJIfXIhRxHUSc
- 9VqT86v0OpjMutM/ijrEc0gwJWvRvp/NfNZQ+YVE+3+3qK+33n7IM9aWlz8PQJijzOLj
- hE1HgCDkXP4Zxqa2wCdFECregREQyv+9eZg1cV46fcXRKV+9M1oDwZJ18YjnfIe63K8Z
- UVw6uLTFo8Xq/oVRz5poHcGJ9BM9c51Sp5NS9GMX3DFGvJ/2qkyYdTJ8R/uwFN2hVsfV
- baNU1+NwtcwD/pJ0WACsXhvULDS1PfSR6SIz0/jqCuwlMKqZmzjNZdm1CHr4TDwTpPi4
- M8AA==
+ bh=ZrW0ohTHwOsnEYUw7cM8Ny+LWm/AdAq2m0G/QyQL0Os=;
+ b=GuHz3TojYNEoLGE6X0y6WMJ7RvrAyJvDDAUDI4AyylOLC8NBlEMc+qDYJnfwh2JUC+
+ aQoFmSD625Cgig0W9J844pQBnCtDIOCJv5InV4vQqk0WnKPtCEMBWUUTsqwanLWvO9op
+ nwZJ6HuFZSqE7qHbG4gWWpVc2nVW3CG4Yg+adBVfCEQxVraz59wepmuu/DuH9CAAZcEF
+ rfQ34Ey1EgnX8lKYK4yO7If/5+EklGhCMpCjNpTW3o2RHsTz8cZXRJea+ulHRxK2g4VH
+ /C3LAfHq06lwSlCidiiZiVuj2NuY5X2ixaxLtq7K4B582jjBUmlcJtR+h87oCB/Nru3z
+ +AuA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXL85cZhXtCrOCVzKrV9d5JWsvFPZ2eOzrYppBdEjAaiKR776n7FmsaC9p3EiWaUSMd/IMnqIeH5g==@nongnu.org,
- AJvYcCXdo6VCu3uEJz4HsyVGGURKPOz/KO2x2eHlWnx2nkScs31dpC4nPR8CuWOtiywlLVLdYWJhWxRkq45qgg==@nongnu.org
-X-Gm-Message-State: AOJu0YzXGubiPaRcdB8BRqY+bXVxWrd1ETp0Qwm8mfj8mvR9QOSL01ob
- Zy/eD8vvM07HO6JWhKxoVOt96P6x0/J2V0RGr3FYjcapIm6RJ95ZrRpBQWUs/w==
-X-Gm-Gg: ASbGncv/0+UoNycnLDro95uAG/9I0EPIYc6mhVKK3gaQhj0a1w3FGHhNwKf2cWn61+h
- 8g5x8AztPuYjgdmOZRg92kvLXGTOVbXGvwoEJztKvtRvnSUChFT9h4CHtHWAODe7GuBmg4tLVWN
- 6KyviYnz2A0w2sCVLE1Shkyt08eOaHeHaa1eCgkv13J0ExeSjunnhSXhlZY6TBG0IU8m3HFvXQC
- grQ3T6Lg3MvXLmJokSaUszjXfoDF4iZzWu1ZaxLzfuETedkcvYMqD3GFThgejezZrWt6jB+3Iip
- LGt2xhK2zCgDNJaERuG5yt51PyrFrRG1C3MSZ637ldYaqrE589DDCwq5UcGsdUg+QvExSqtbyQq
- HlwFUAFbOsb6gNweq3PK4Yg==
-X-Google-Smtp-Source: AGHT+IG30VQ2Iypjlbl5VB3S+KLlzOxk9K0jAxkoNFREO0T2kat02uO9GxBzLdQGijbvhmPHg8z12A==
-X-Received: by 2002:a17:90b:4a81:b0:31f:2fed:7867 with SMTP id
- 98e67ed59e1d1-32518998362mr19777247a91.34.1756224727812; 
- Tue, 26 Aug 2025 09:12:07 -0700 (PDT)
+ AJvYcCVcj4SLtUWapioecYt1dOopVGGtM2eG/KK0dRGUIxzoYnIuEMpOUvfiDK6SrQ87EU7UtcLuxODiAw==@nongnu.org,
+ AJvYcCWbiCOA/NfII7O+E4HdN1HRjIxfcOteMZlCMsj63tNsYfax8Zs0nKlT0Fq35r9HuNHHFQAq5Y5BVYue6w==@nongnu.org
+X-Gm-Message-State: AOJu0Yx9c4S2cAiU2u8phxvfu+1fHxv2avnUEm722l7UM8zuazQvTlbE
+ KvCmn4UeIYdd4+TgTBZWep2xmph0mNqCF0At8vSWpBqB6N32xdjU0T9+UVRyCg==
+X-Gm-Gg: ASbGnctcApBOmMwA8Gi0jwSnDPWXxP7++DRtq0zBzlzdLv457uO68BZWtDlUXzbLPxQ
+ o5Pjaj7bR2kTN8B1S9QI6hdVOZPc9Qu++8l3Y6QxbYc6b1hKgYuSm7Jv4gReJzBuhsFHYV7LlXk
+ ec7LpB6cx7JozOWyMebPChYyzul6JJmK1j52IFz0/FKqmrMJocbHsXSb64hy4D3glBWijOCYJru
+ 7rCK0fAoTDGOa+ieTBJTl0294qqrrT8Ucrr9c1vf2OAu0D1eOMWV4clOaMSJqo0fbRUWbeWzMOl
+ wv/lsZHn0cKiDqTBEZIJVF5t1iQUH6Uh9zwUwIoL1g9WJahM91eCN4tEWlRLoy9/dQVsariCO2l
+ YnAWzeLc1p2FhASA2AcJmLKZJgGIe8hR8
+X-Google-Smtp-Source: AGHT+IGAlvqNgsQl2TNqNuU738NlBWs70byFFGw6TIDKRnpz8MoeUjGd0ays7mMpgVaUtX0Jp61xRw==
+X-Received: by 2002:a17:90b:4b8d:b0:325:3ada:b385 with SMTP id
+ 98e67ed59e1d1-3275085f383mr2517991a91.8.1756224681831; 
+ Tue, 26 Aug 2025 09:11:21 -0700 (PDT)
 Received: from ktock.. ([240d:1a:3b6:8b00:561f:1400:11f5:714b])
  by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-32750bc341asm1749747a91.19.2025.08.26.09.12.02
+ 98e67ed59e1d1-32750bc341asm1749747a91.19.2025.08.26.09.11.16
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 26 Aug 2025 09:12:07 -0700 (PDT)
+ Tue, 26 Aug 2025 09:11:21 -0700 (PDT)
 From: Kohei Tokunaga <ktokunaga.mail@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
@@ -80,16 +80,18 @@ Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
  qemu-arm@nongnu.org, qemu-riscv@nongnu.org,
  Stefan Hajnoczi <stefanha@redhat.com>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>, ktokunaga.mail@gmail.com
-Subject: [PATCH v2 10/35] tcg/wasm: Add add/sub/mul instructions
-Date: Wed, 27 Aug 2025 01:10:15 +0900
-Message-ID: <172f143f9806e41742137d975b2b80eb20f98a53.1756216429.git.ktokunaga.mail@gmail.com>
+Subject: [PATCH v2 02/35] configure: Enable to propagate -sMEMORY64 flag to
+ Emscripten
+Date: Wed, 27 Aug 2025 01:10:07 +0900
+Message-ID: <f0fcfef4573d19ff9291f6aac8f53c08f72509f7.1756216429.git.ktokunaga.mail@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <cover.1756216429.git.ktokunaga.mail@gmail.com>
 References: <cover.1756216429.git.ktokunaga.mail@gmail.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::52c;
- envelope-from=ktokunaga.mail@gmail.com; helo=mail-pg1-x52c.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::535;
+ envelope-from=ktokunaga.mail@gmail.com; helo=mail-pg1-x535.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -112,99 +114,79 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The add, sub and mul operations are implemented using the corresponding
-instructions in Wasm. TCI instructions are also generated in the same way as
-the original TCI backend.
+Currently there are some engines that don't support wasm64 (e.g. unsupported
+on Safari[1]). To mitigate this issue, the configure script allows the user
+to use Emscripten's compatibility feature, "-sMEMORY64=2" flag[2].
+
+Emscripten's "-sMEMORY64=2" flag still enables 64bit pointers in C code. But
+this flag lowers the output binary into wasm32, with limiting the maximum
+memory size to 4GB. So QEMU can run on wasm32 engines.
+
+[1] https://webassembly.org/features/
+[2] https://emscripten.org/docs/tools_reference/settings_reference.html#memory64
 
 Signed-off-by: Kohei Tokunaga <ktokunaga.mail@gmail.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 ---
- tcg/wasm.c                | 12 ++++++++++++
- tcg/wasm/tcg-target.c.inc | 39 +++++++++++++++++++++++++++++++++++++++
- 2 files changed, 51 insertions(+)
+ configure | 12 +++++++++++-
+ 1 file changed, 11 insertions(+), 1 deletion(-)
 
 V2:
-- This commit generates both Wasm and TCI instrucitons.
+- This commit is under review in another patch series so please ignore it
+  here.
 
-diff --git a/tcg/wasm.c b/tcg/wasm.c
-index 9f3b1344d6..ba8a89d920 100644
---- a/tcg/wasm.c
-+++ b/tcg/wasm.c
-@@ -59,6 +59,18 @@ static uintptr_t tcg_qemu_tb_exec_tci(CPUArchState *env, const void *v_tb_ptr)
-             tci_args_rrr(insn, &r0, &r1, &r2);
-             regs[r0] = regs[r1] ^ regs[r2];
-             break;
-+        case INDEX_op_add:
-+            tci_args_rrr(insn, &r0, &r1, &r2);
-+            regs[r0] = regs[r1] + regs[r2];
-+            break;
-+        case INDEX_op_sub:
-+            tci_args_rrr(insn, &r0, &r1, &r2);
-+            regs[r0] = regs[r1] - regs[r2];
-+            break;
-+        case INDEX_op_mul:
-+            tci_args_rrr(insn, &r0, &r1, &r2);
-+            regs[r0] = regs[r1] * regs[r2];
-+            break;
-         default:
-             g_assert_not_reached();
-         }
-diff --git a/tcg/wasm/tcg-target.c.inc b/tcg/wasm/tcg-target.c.inc
-index a1757b4db7..d5cf324e7b 100644
---- a/tcg/wasm/tcg-target.c.inc
-+++ b/tcg/wasm/tcg-target.c.inc
-@@ -140,6 +140,9 @@ typedef enum {
-     OPC_GLOBAL_GET = 0x23,
-     OPC_GLOBAL_SET = 0x24,
+diff --git a/configure b/configure
+index 112e4725fc..8ac6cacc06 100755
+--- a/configure
++++ b/configure
+@@ -182,6 +182,10 @@ EXTRA_CXXFLAGS=""
+ EXTRA_OBJCFLAGS=""
+ EXTRA_LDFLAGS=""
  
-+    OPC_I64_ADD = 0x7c,
-+    OPC_I64_SUB = 0x7d,
-+    OPC_I64_MUL = 0x7e,
-     OPC_I64_AND = 0x83,
-     OPC_I64_OR = 0x84,
-     OPC_I64_XOR = 0x85,
-@@ -265,6 +268,42 @@ static const TCGOutOpBinary outop_xor = {
-     .out_rrr = tgen_xor,
- };
++# The value is propagated to Emscripten's "-sMEMORY64" flag.
++# https://emscripten.org/docs/tools_reference/settings_reference.html#memory64
++wasm64_memory64=1
++
+ # Default value for a variable defining feature "foo".
+ #  * foo="no"  feature will only be used if --enable-foo arg is given
+ #  * foo=""    feature will be searched for, and if found, will be used
+@@ -239,6 +243,8 @@ for opt do
+   ;;
+   --without-default-features) default_feature="no"
+   ;;
++  --wasm64-32bit-address-limit) wasm64_memory64="2"
++  ;;
+   esac
+ done
  
-+static void tgen_add(TCGContext *s, TCGType type,
-+                     TCGReg a0, TCGReg a1, TCGReg a2)
-+{
-+    tcg_out_op_rrr(s, INDEX_op_add, a0, a1, a2);
-+    tcg_wasm_out_o1_i2(s, OPC_I64_ADD, a0, a1, a2);
-+}
-+
-+static const TCGOutOpBinary outop_add = {
-+    .base.static_constraint = C_O1_I2(r, r, r),
-+    .out_rrr = tgen_add,
-+};
-+
-+static void tgen_sub(TCGContext *s, TCGType type,
-+                     TCGReg a0, TCGReg a1, TCGReg a2)
-+{
-+    tcg_out_op_rrr(s, INDEX_op_sub, a0, a1, a2);
-+    tcg_wasm_out_o1_i2(s, OPC_I64_SUB, a0, a1, a2);
-+}
-+
-+static const TCGOutOpSubtract outop_sub = {
-+    .base.static_constraint = C_O1_I2(r, r, r),
-+    .out_rrr = tgen_sub,
-+};
-+
-+static void tgen_mul(TCGContext *s, TCGType type,
-+                     TCGReg a0, TCGReg a1, TCGReg a2)
-+{
-+    tcg_out_op_rrr(s, INDEX_op_mul, a0, a1, a2);
-+    tcg_wasm_out_o1_i2(s, OPC_I64_MUL, a0, a1, a2);
-+}
-+
-+static const TCGOutOpBinary outop_mul = {
-+    .base.static_constraint = C_O1_I2(r, r, r),
-+    .out_rrr = tgen_mul,
-+};
-+
- static void tcg_out_tb_start(TCGContext *s)
- {
-     init_sub_buf();
+@@ -537,7 +543,7 @@ case "$cpu" in
+     CPU_CFLAGS="-m32"
+     ;;
+   wasm64)
+-    CPU_CFLAGS="-m64 -sMEMORY64=1"
++    CPU_CFLAGS="-m64 -sMEMORY64=$wasm64_memory64"
+     ;;
+ esac
+ 
+@@ -795,6 +801,8 @@ for opt do
+   ;;
+   --disable-rust) rust=disabled
+   ;;
++  --wasm64-32bit-address-limit)
++  ;;
+   # everything else has the same name in configure and meson
+   --*) meson_option_parse "$opt" "$optarg"
+   ;;
+@@ -920,6 +928,8 @@ Advanced options (experts only):
+   --disable-containers     don't use containers for cross-building
+   --container-engine=TYPE  which container engine to use [$container_engine]
+   --gdb=GDB-path           gdb to use for gdbstub tests [$gdb_bin]
++  --wasm64-32bit-address-limit Restrict wasm64 address space to 32-bit (default
++                               is to use the whole 64-bit range).
+ EOF
+   meson_options_help
+ cat << EOF
 -- 
 2.43.0
 

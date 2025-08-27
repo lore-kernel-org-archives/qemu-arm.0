@@ -4,79 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B578CA0FF0
-	for <qemu-arm@archiver.kernel.org>; Wed, 27 Aug 2025 01:11:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00E6BCA0FED
+	for <qemu-arm@archiver.kernel.org>; Wed, 27 Aug 2025 01:11:49 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ur4bO-0003eO-Tx; Tue, 26 Aug 2025 21:05:26 -0400
+	id 1ur4dz-0001H7-Kn; Tue, 26 Aug 2025 21:08:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ur4bO-0003e6-B5
- for qemu-arm@nongnu.org; Tue, 26 Aug 2025 21:05:26 -0400
-Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436])
+ id 1ur4dw-00014Z-NK
+ for qemu-arm@nongnu.org; Tue, 26 Aug 2025 21:08:04 -0400
+Received: from mail-pf1-x42f.google.com ([2607:f8b0:4864:20::42f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ur4bM-0007FG-DU
- for qemu-arm@nongnu.org; Tue, 26 Aug 2025 21:05:25 -0400
-Received: by mail-pf1-x436.google.com with SMTP id
- d2e1a72fcca58-7718408baf7so3191284b3a.3
- for <qemu-arm@nongnu.org>; Tue, 26 Aug 2025 18:05:23 -0700 (PDT)
+ id 1ur4dl-0007ee-PR
+ for qemu-arm@nongnu.org; Tue, 26 Aug 2025 21:08:03 -0400
+Received: by mail-pf1-x42f.google.com with SMTP id
+ d2e1a72fcca58-771eecebb09so2761188b3a.3
+ for <qemu-arm@nongnu.org>; Tue, 26 Aug 2025 18:07:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756256722; x=1756861522; darn=nongnu.org;
+ d=linaro.org; s=google; t=1756256871; x=1756861671; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=W0ZHX+tn8nkbaFtS2dHaq5l6wD0P0NOK8ivJm8HB/sE=;
- b=wQb44mi3s0kJRrTbc5GsVL4jHgROnzTqE8FCWb/KvDPSsfJX3MVOB+zX+vLA3zxSL2
- SoeEhzJJwl6+2GO2se8v0eu9IxjYkY3xR+XpMYD61hl1wL9bt0AdZqsuvMb7xlV51h3J
- zk8uG2UAVfynpv28DABV89DtJd0vMKmG1ZolMFfNYcmnjoVAf+9mK0V8R/SOka5YBAF0
- Ul7ztkjblco/eTiTyKmxM5BAEAQMdDzIEXXFyd/TEITzZYmhTAebd38iXLEoHmrYCiF8
- TOvMAl4LihImK/ZcDScD5+iK36CkaYUaaK3/1Fu9UQNxpqVi74YE+ckhQmFqwG+13Xo+
- w1Uw==
+ bh=p5ghDBN8QlbhbdkALth1ufxnSXLIXRFpEbZ7zrY4wQo=;
+ b=gwd3JexAZ0P0GzkdDEKWWeT5Q2hpyibQsahJ1KcWb6CVHBldwRlEkLyPpw2N3hEaSp
+ g5AG4nsAZs4hH+/1ibyeuBw2b9YK2SoURB4NFLG6poNgNjLXa4+a+MK3eDuI2bBOUTyY
+ UUKSg1qtiMDcUfbdLpC6wytNtLQnHQM8lYfRTof/tB4ESQw4flhTLcrYtbR5UO5E/EH5
+ J6Fgq4pgjERDgx51HPj/hT+9ZuCy2b8uU6O4dGghIYFwuTeMrnIF2kMY3Vhmdz+QZPnW
+ de1t3OmNzjwk6LPhgfyuNTdTyIvZcJRFGDW6YMD+Bk2alfhmoSXZK0JDGi4JY1ejIYCq
+ eePA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756256722; x=1756861522;
+ d=1e100.net; s=20230601; t=1756256871; x=1756861671;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=W0ZHX+tn8nkbaFtS2dHaq5l6wD0P0NOK8ivJm8HB/sE=;
- b=C8MnR43PSdNys7RZySgtGwAXU7Sles0N2o5FiOTx59C3CEqR2fVwKVaLuUpBkJF6Cu
- 6DNs5crBzaH6XNjeg4VdX8PeEX3K1jDv/mz+p/m4JmnDi9YopWpBAgbcXVE5DAnqCiFf
- P8QRyC/xL0TLGCdN+bCN1QM6eDrcTUAQUozzxQicvZcB7HBLzM+DWs54a/pY/WQVBsBU
- jsGTH1lkzDHsvwJsEjd29lTbd3Mdylb03R+gw7n/zdB1cgE3JZabNrpGPMr0kQcHl7Zy
- 6UIla/kUlb/aFfOWy3A6ewDo5zQgewcP1TzjTtCALjxGzH0wFmtpTgQTlYMRb1zDYOUs
- dZ7Q==
-X-Gm-Message-State: AOJu0YxYLE+NDAtiCJSbsLbLioTJxCZ6oN7UlB0rvcrOBEa2+mJ4Ay6F
- Pj1ERUVbrVqDAubHiqI4raSDSCVq+y0oWpfsjzpYiJz5CuTzbSWzwj4lggT+oEYz4pXilRI7PI1
- pOWXKjxY=
-X-Gm-Gg: ASbGncswjt6Om4GYxBMvt9O0WlQu6L4jNNosrickQqvUXearvM+afVA6qaFf9cLVUrb
- T1eyCkWQXAo4+pfpiqXeCfOwaSW2YEf7iRPiyvpAjHbqIeP3f5ifQMlJNnu/BbcWZTw8iMIko4e
- ymCQdu4IIYPDKKFXngBeEoOHDzitxP5aOT8B+EenamwIQzSp1Dr4eWpUs+jmTV2F9HO/xS02gGL
- dja7112csnSlB/47v2yMI4C3Nhz7RiHjESPHVRQ7BYmjonfEcwOjW8D1qWf59co6+bl9lJuedG+
- /yTomcKxsNe8mA5x7bfSmvAPvlfIQDv9OMFXzTCz/TY1KPniSMY6kmZia11up/mSRsbq3WtZXKr
- /KoXIQBOLYZRs6cVMTu3VryFcKw==
-X-Google-Smtp-Source: AGHT+IHp9JMUDaUPvFVZUSXN8/WZtHQuHKk+gEeUXJsCBdAhtiyDOjKl+fT8uT6sUPNVkuRxov8PDQ==
-X-Received: by 2002:a05:6a00:248f:b0:770:34f9:49d2 with SMTP id
- d2e1a72fcca58-77034f94ca1mr17500150b3a.1.1756256722350; 
- Tue, 26 Aug 2025 18:05:22 -0700 (PDT)
+ bh=p5ghDBN8QlbhbdkALth1ufxnSXLIXRFpEbZ7zrY4wQo=;
+ b=foQa1eEIyFc5ca0NOGnyt732NLhF12vREJsYCetYaxyV8loQF6mFCe0Eu0aS3A2wi/
+ dSP0EqPyZJamzq+SwycZ0Ilg2sy8CWUCuqK14De1KUo5OEQDNSQ3q6FhwSL7rRNw5MQ7
+ n9ClbpUXrc23IapyTtylU9Nc9bTiV+1DhcHb3oLWwO6jskGCdy6puZDeuRynaFomzfzP
+ 8rNKnmKQz8s/CYa5K2faPDa2qlhfqsFR03PZo5H5vJaxBew60FjD6nHUirMqTfsa1ieC
+ movDGAJolkGilQP9Il8lK48gtDZPMskryGwboZafOcalPpxW3og8h2Uo0550n5QMaAk1
+ NBDA==
+X-Gm-Message-State: AOJu0YxLyBKWhfliW2mivHB9pODUjmw1e0+VgP8vWY+bKXvx8bxcicxl
+ 3LV07MrcjP9+nCnUlq9v47mAWz1pbKIqTNRYxZNDkbaEtBTqsvGzrXbCCnFP/9hlI18=
+X-Gm-Gg: ASbGncsXENejpoEvdUWw+bx0KJVnEW9KyTSjXze2pNq8FOdSsZ29oaluVIj77mvpTz1
+ AbKsJBjTxKdDabhNRXpJNK4Ho1iQi0faDS3U/D8yIbHShYi7qsrTc6BuzOjTbAooa2Pag3WrbXK
+ zCVNWU+pxPl2tVSeMGtSsDPz5+KH8q5TY5q9Ny7ctJYcBOxxy+TKXTn1DGNLaBrqtKCMjT6J0Rw
+ 9XOqLY291sWDPYFqWP6DbkD5MRpS5GSsY+XrQCGACf6GYrVZLlF10n7vjatOLR0sz1jC2Q+Hd/K
+ OemW0mgE1n2g+lNKz14EQ3xX2txlkbYpQP9pSyPBVdq5ZU8uZt0sGzDBs1JFWali3TfLFAbDt47
+ SelMWsG+NTYmS7Zd8rOe55Qp1SP71FAoeYoSE
+X-Google-Smtp-Source: AGHT+IHkd0SYEr4KzvoM4W4HNrAX6dw4EFImaUwgu9yAQBGXNpFt5XIL96Dxr0632DMOh7vdyMl82w==
+X-Received: by 2002:a05:6a00:2441:b0:771:ead8:dcdb with SMTP id
+ d2e1a72fcca58-771ead8f33amr9903414b3a.8.1756256870597; 
+ Tue, 26 Aug 2025 18:07:50 -0700 (PDT)
 Received: from stoup.. ([144.6.121.55]) by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-7720274534esm1419241b3a.47.2025.08.26.18.05.18
+ d2e1a72fcca58-7720274534esm1419241b3a.47.2025.08.26.18.07.48
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 26 Aug 2025 18:05:21 -0700 (PDT)
+ Tue, 26 Aug 2025 18:07:50 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH 4/7] target/arm/hvf: Add KVMID_TO_HVF, HVF_TO_KVMID
-Date: Wed, 27 Aug 2025 11:03:51 +1000
-Message-ID: <20250827010453.4059782-5-richard.henderson@linaro.org>
+Subject: [PATCH 34/61] target/arm: Redirect VHE FOO_EL12 to FOO_EL1 during
+ translation
+Date: Wed, 27 Aug 2025 11:04:25 +1000
+Message-ID: <20250827010453.4059782-39-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250827010453.4059782-1-richard.henderson@linaro.org>
 References: <20250827010453.4059782-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::436;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x436.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42f;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -99,45 +99,172 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Conversion between KVM system registers ids and the HVF system
-register ids is trivial.
-
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/hvf/hvf.c | 20 ++++++++++++++++++++
- 1 file changed, 20 insertions(+)
+ target/arm/cpregs.h            | 22 ++++---------
+ target/arm/gdbstub.c           |  2 ++
+ target/arm/helper.c            | 57 +++-------------------------------
+ target/arm/tcg/translate-a64.c | 12 +++++++
+ 4 files changed, 25 insertions(+), 68 deletions(-)
 
-diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index f0e4b75e6a..2577dc1c0c 100644
---- a/target/arm/hvf/hvf.c
-+++ b/target/arm/hvf/hvf.c
-@@ -403,6 +403,26 @@ struct hvf_sreg_match {
-     uint32_t cp_idx;
+diff --git a/target/arm/cpregs.h b/target/arm/cpregs.h
+index d34ed0d40b..f5d6a1c386 100644
+--- a/target/arm/cpregs.h
++++ b/target/arm/cpregs.h
+@@ -917,8 +917,12 @@ struct ARMCPRegInfo {
+      */
+     uint32_t vhe_redir_to_el2;
+ 
+-    /* This is used only by VHE. */
+-    void *opaque;
++    /*
++     * With VHE, with E2H, at EL2+, access to this EL02/EL12 reg
++     * redirects to the EL0/EL1 reg with the specified key.
++     */
++    uint32_t vhe_redir_to_el01;
++
+     /*
+      * Value of this register, if it is ARM_CP_CONST. Otherwise, if
+      * fieldoffset is non-zero, the reset value of the register.
+@@ -986,20 +990,6 @@ struct ARMCPRegInfo {
+      * fieldoffset is 0 then no reset will be done.
+      */
+     CPResetFn *resetfn;
+-
+-    /*
+-     * "Original" readfn, writefn, accessfn.
+-     * For ARMv8.1-VHE register aliases, we overwrite the read/write
+-     * accessor functions of various EL1/EL0 to perform the runtime
+-     * check for which sysreg should actually be modified, and then
+-     * forwards the operation.  Before overwriting the accessors,
+-     * the original function is copied here, so that accesses that
+-     * really do go to the EL1/EL0 version proceed normally.
+-     * (The corresponding EL2 register is linked via opaque.)
+-     */
+-    CPReadFn *orig_readfn;
+-    CPWriteFn *orig_writefn;
+-    CPAccessFn *orig_accessfn;
  };
  
-+/*
-+ * QEMU uses KVM system register ids in the migration format.
-+ * Conveniently, HVF uses the same encoding of the op* and cr* parameters
-+ * within the low 16 bits of the ids.  Thus conversion between the
-+ * formats is trivial.
-+ */
-+
-+#define KVMID_TO_HVF(KVM)  ((KVM) & 0xffff)
-+#define HVF_TO_KVMID(HVF)  \
-+    (CP_REG_ARM64 | CP_REG_SIZE_U64 | CP_REG_ARM64_SYSREG | (HVF))
-+
-+/* Verify this at compile-time. */
-+
-+#define DEF_SYSREG(HVF_ID, ...) \
-+  QEMU_BUILD_BUG_ON(HVF_ID != KVMID_TO_HVF(KVMID_AA64_SYS_REG64(__VA_ARGS__)));
-+
-+#include "sysreg.c.inc"
-+
-+#undef DEF_SYSREG
-+
- #define DEF_SYSREG(HVF_ID, crn, crm, op0, op1, op2) \
-     { HVF_ID, HVF_SYSREG(crn, crm, op0, op1, op2) },
+ void define_one_arm_cp_reg(ARMCPU *cpu, const ARMCPRegInfo *regs);
+diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
+index 3727dc01af..269bc6c132 100644
+--- a/target/arm/gdbstub.c
++++ b/target/arm/gdbstub.c
+@@ -253,6 +253,8 @@ static int arm_gdb_get_sysreg(CPUState *cs, GByteArray *buf, int reg)
+                 (arm_hcr_el2_eff(env) & HCR_E2H) &&
+                 arm_current_el(env) == 2) {
+                 ri = get_arm_cp_reginfo(cpu->cp_regs, ri->vhe_redir_to_el2);
++            } else if (ri->vhe_redir_to_el01) {
++                ri = get_arm_cp_reginfo(cpu->cp_regs, ri->vhe_redir_to_el01);
+             }
+             return gdb_get_reg64(buf, (uint64_t)read_raw_cp_reg(env, ri));
+         case MO_32:
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 3f69ce6cb5..a19406e136 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -4441,42 +4441,6 @@ static CPAccessResult access_el1nvvct(CPUARMState *env, const ARMCPRegInfo *ri,
+     return e2h_access(env, ri, isread);
+ }
  
+-static uint64_t el2_e2h_e12_read(CPUARMState *env, const ARMCPRegInfo *ri)
+-{
+-    /* Pass the EL1 register accessor its ri, not the EL12 alias ri */
+-    return ri->orig_readfn(env, ri->opaque);
+-}
+-
+-static void el2_e2h_e12_write(CPUARMState *env, const ARMCPRegInfo *ri,
+-                              uint64_t value)
+-{
+-    /* Pass the EL1 register accessor its ri, not the EL12 alias ri */
+-    return ri->orig_writefn(env, ri->opaque, value);
+-}
+-
+-static CPAccessResult el2_e2h_e12_access(CPUARMState *env,
+-                                         const ARMCPRegInfo *ri,
+-                                         bool isread)
+-{
+-    if (arm_current_el(env) == 1) {
+-        /*
+-         * This must be a FEAT_NV access (will either trap or redirect
+-         * to memory). None of the registers with _EL12 aliases want to
+-         * apply their trap controls for this kind of access, so don't
+-         * call the orig_accessfn or do the "UNDEF when E2H is 0" check.
+-         */
+-        return CP_ACCESS_OK;
+-    }
+-    /* FOO_EL12 aliases only exist when E2H is 1; otherwise they UNDEF */
+-    if (!(arm_hcr_el2_eff(env) & HCR_E2H)) {
+-        return CP_ACCESS_UNDEFINED;
+-    }
+-    if (ri->orig_accessfn) {
+-        return ri->orig_accessfn(env, ri->opaque, isread);
+-    }
+-    return CP_ACCESS_OK;
+-}
+-
+ static void define_arm_vh_e2h_redirects_aliases(ARMCPU *cpu)
+ {
+     struct E2HAlias {
+@@ -4566,9 +4530,6 @@ static void define_arm_vh_e2h_redirects_aliases(ARMCPU *cpu)
+         g_assert(strcmp(src_reg->name, a->src_name) == 0);
+         g_assert(strcmp(dst_reg->name, a->dst_name) == 0);
+ 
+-        /* None of the core system registers use opaque; we will.  */
+-        g_assert(src_reg->opaque == NULL);
+-
+         /* Create alias before redirection so we dup the right data. */
+         new_reg = g_memdup(src_reg, sizeof(ARMCPRegInfo));
+ 
+@@ -4587,19 +4548,11 @@ static void define_arm_vh_e2h_redirects_aliases(ARMCPU *cpu)
+             >> CP_REG_ARM64_SYSREG_OP1_SHIFT;
+         new_reg->opc2 = (a->new_key & CP_REG_ARM64_SYSREG_OP2_MASK)
+             >> CP_REG_ARM64_SYSREG_OP2_SHIFT;
+-        new_reg->opaque = src_reg;
+-        new_reg->orig_readfn = src_reg->readfn ?: raw_read;
+-        new_reg->orig_writefn = src_reg->writefn ?: raw_write;
+-        new_reg->orig_accessfn = src_reg->accessfn;
+-        if (!new_reg->raw_readfn) {
+-            new_reg->raw_readfn = raw_read;
+-        }
+-        if (!new_reg->raw_writefn) {
+-            new_reg->raw_writefn = raw_write;
+-        }
+-        new_reg->readfn = el2_e2h_e12_read;
+-        new_reg->writefn = el2_e2h_e12_write;
+-        new_reg->accessfn = el2_e2h_e12_access;
++        new_reg->vhe_redir_to_el01 = a->src_key;
++        new_reg->readfn = NULL;
++        new_reg->writefn = NULL;
++        new_reg->accessfn = NULL;
++        new_reg->fieldoffset = 0;
+ 
+         /*
+          * If the _EL1 register is redirected to memory by FEAT_NV2,
+diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
+index 8fcc74d151..7de8717056 100644
+--- a/target/arm/tcg/translate-a64.c
++++ b/target/arm/tcg/translate-a64.c
+@@ -2580,6 +2580,18 @@ static void handle_sys(DisasContext *s, bool isread,
+          */
+         key = ri->vhe_redir_to_el2;
+         ri = redirect_cpreg(s, key, isread);
++    } else if (ri->vhe_redir_to_el01 && s->current_el >= 2) {
++        /*
++         * This is one of the FOO_EL12 registers.
++         * With !E2H, they all UNDEF.
++         * With E2H, from EL2 or EL3, they redirect to FOO_EL1.
++         */
++        if (!s->e2h) {
++            gen_sysreg_undef(s, isread, op0, op1, op2, crn, crm, rt);
++            return;
++        }
++        key = ri->vhe_redir_to_el01;
++        ri = redirect_cpreg(s, key, isread);
+     }
+ 
+     if (ri->accessfn || (ri->fgt && s->fgt_active)) {
 -- 
 2.43.0
 

@@ -4,79 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D873BCA0FF6
-	for <qemu-arm@archiver.kernel.org>; Wed, 27 Aug 2025 01:19:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1EF92CA0FED
+	for <qemu-arm@archiver.kernel.org>; Wed, 27 Aug 2025 01:19:59 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ur4dK-0006vQ-5p; Tue, 26 Aug 2025 21:07:27 -0400
+	id 1ur4dl-0008T5-My; Tue, 26 Aug 2025 21:07:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ur4d5-0005nG-US
- for qemu-arm@nongnu.org; Tue, 26 Aug 2025 21:07:12 -0400
-Received: from mail-pf1-x42b.google.com ([2607:f8b0:4864:20::42b])
+ id 1ur4dZ-0007Xn-9X
+ for qemu-arm@nongnu.org; Tue, 26 Aug 2025 21:07:43 -0400
+Received: from mail-pf1-x42d.google.com ([2607:f8b0:4864:20::42d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ur4d0-0007V5-Ab
- for qemu-arm@nongnu.org; Tue, 26 Aug 2025 21:07:11 -0400
-Received: by mail-pf1-x42b.google.com with SMTP id
- d2e1a72fcca58-771e15ce64eso2217498b3a.0
- for <qemu-arm@nongnu.org>; Tue, 26 Aug 2025 18:07:04 -0700 (PDT)
+ id 1ur4dU-0007an-M1
+ for qemu-arm@nongnu.org; Tue, 26 Aug 2025 21:07:39 -0400
+Received: by mail-pf1-x42d.google.com with SMTP id
+ d2e1a72fcca58-77057c4d88bso2711241b3a.2
+ for <qemu-arm@nongnu.org>; Tue, 26 Aug 2025 18:07:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756256823; x=1756861623; darn=nongnu.org;
+ d=linaro.org; s=google; t=1756256852; x=1756861652; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=PiTlSDbl7ZE2Kdnr9r+qg6Y8XwHKnrFV6OAAtT3qX4s=;
- b=vaMCFL7+ZVFuuLoZeC3wFPiZXckN07/iN0qm9H36lTErZW2MaTk9HTg8HTaNLfrMAI
- LnckHPPm/gk2kwqRTfMDuetD1QULE8u5mjzosBKM/0svWS4KPRU39avCj2/r3mWRFly3
- +r0v/Z4V2gl7TUBOBR64zTVxKQI7cAALRwA7bHcLIGpIims8Q3ZQ0NRQqJ7uvHjxERQA
- c7QyWA7feZ2VpgUUDMs7vdaPB3ZEgLUox68DGsg2Zl/6c66pc92Hu4g8zBZFpzwIpYle
- zMZ3pbSneuKi1NysSbJV4PEIxReQck9SAv7kunDcX2xAYV66UFFEFq3riKCqrSLiyVMm
- 0Ocg==
+ bh=/Mzkv/ARe4RUNBXryPDykt2Z93CF8H2bNJcxJ8kAMtQ=;
+ b=wcgH08xN590ORIPXjAm+2QekIgyVazzruA/S0GcTS3MKAvleAUtfkO7vxvtSV5VidE
+ 1LoYw16cSrRi9Nz4bcQJWasbLtkdtTzkgwJbrH7Se5M21fO5OrdYHh2cN3XudV823T8W
+ nTc6rYfugcVRmMTrVcvaC92kM3yRgiuBQKj59CTWZlr699XQ53YLEd1iXpACvZLjNLdI
+ 5PVYKouXoQ41BpONSnLbzuLEqXS8PPIQPpm2uvJ2BlxBEdh7acn+4BPPqcnizZFJmfxf
+ jgGxTLV8cSPF+/h/IcAR/rIoBpiuAX6b25r9gyNMsMwXdUdYw7g9ZKZbd+MvD/vBYrTO
+ Dmpw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756256823; x=1756861623;
+ d=1e100.net; s=20230601; t=1756256852; x=1756861652;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=PiTlSDbl7ZE2Kdnr9r+qg6Y8XwHKnrFV6OAAtT3qX4s=;
- b=aM1cJianE52pv0isBW4Otj9otZH7K+AceondR4QzEkAJPqa9uYDy6DDKQps1W+UyV3
- IRgEfX4PfEw5sK+9u8T7voZGBRbtx9jkQgO43vHtyvqiGdxFdxmK5q+M+utvIucOgV+N
- ma6bafhS0Zu7PUoqgp7WaEIcqekTDHurRtz7ny9zLEAqDpTEqFwNzinGfWRNVGzN6IK7
- SYkRO+2XkdLpstDBct2wcDlMZrhvfXe8iGZlX90PoTB1Q+YyjTQZ+XT3LKzp/ew4WE5n
- JkK4peK8yOY2UXhHha3lAg2Wl8cbR6QpHP9uDmNeQfufQjCZf1YwHQCWduyfxbKkI6XX
- TuFQ==
-X-Gm-Message-State: AOJu0Yxo/QyzLf/y7ZfqDndSwW944azt7iIQJS9eDGE6EWsPbqLnYAzi
- e7z+9XW8ZwVxf1MrLPpzMFqyQUGLTs0IMrfgccKQPsbQrj35m3yJa9fc91gq0Pllx2I3kbdOhxi
- 7td51dO0=
-X-Gm-Gg: ASbGncv8F2xY7+zE2Y0u83pcY1SnjNpomGNjx6D3MIm/aHH8A5xrr9PxHZXhs7vc7TR
- 5Wg3+LkkC7pY1bRKBhYS5TlKHT8s1+/myrh2E3s9cVVOftk/7LH+UackPPWHyYH4zoYcflcRDa6
- OI1dN92CmglP/OgH3PaZwayz6YKMDx/fChFJ/LJP4yq3uK+LRGd7xVoSYQtr+xnBHyJGXM32Y+L
- ezDxEvqSYHquzJDn+LVW0xvh/y2nVZDXI2kqngKSr8Mle0s+11gF2vim77bZ7l05R6ipPpzE0Ah
- wM5SXNgT412xdObEwwgCUhemr9jIOrHaU9+UIgpIqzhqAxsyCNWFUmV1QkaiLp/AHIDppM3ce2n
- Rv4VzqGnsZBUL1DmAWLb7n1u+Z9x2F+8TA47U9PeLlkXNgVw=
-X-Google-Smtp-Source: AGHT+IH0iM1ygKOoU5r2kTMIxyLmtw73+6189p1IT7DGgLcP4y82qXYsjOF7Vl5WtssV+z+GIVmRkA==
-X-Received: by 2002:a05:6a00:14c7:b0:770:5987:5b3a with SMTP id
- d2e1a72fcca58-77059879144mr11624726b3a.16.1756256823287; 
- Tue, 26 Aug 2025 18:07:03 -0700 (PDT)
+ bh=/Mzkv/ARe4RUNBXryPDykt2Z93CF8H2bNJcxJ8kAMtQ=;
+ b=b4hPuZL4nqvTDuXLiCO7EIsYFkSkaLFsCNtIn2R7AhfFBHI2o+B7+667CjWzh6AmPB
+ x9Ff0tHEEkVdQ9pJypqOYZ/05sfP+VjtC7L/+hgYVeqDM1qk4QyJsbY9aWtIeVa24CjI
+ QKNdr7eN/6yF1E8EhRZm/jipN2quAfb8Z6NlmboyG0WsfBoYHoLh8EHZjYw/asVOOaOd
+ IlJsepv5BPZMAWPYetXbtBxVrL6airiLo5Gtyjfi4nwjIGSwGhMDGnQdmp8WBbcjJ080
+ WDbBs//OB2iJD/QPsVW2dFJb0k/s8Wo1lLoGRA7PPeah1revkCNJqlpMhSjnsA30Wtr8
+ j5AQ==
+X-Gm-Message-State: AOJu0YyuMM/0IUqyBlvN8VooS1jouG3unwQOHHRtCNJw0v1dPPmhXpxN
+ S1K9QhVql067X4809hMseDnAXEKDlptgiaHrnpHmCVmbAXG1M9t2VnVWtohbWsY8Lms=
+X-Gm-Gg: ASbGncvaHF8X8mFNy1RfMVEKgLqs0I/C3YgdYyFWioSFzZi7H+HJfNfcBN9hbDOJurm
+ aozRT+wXVejPtP5cOcSRJ6siVgN/FtsUX0L5KrpHdd8KLJNOWprVg0BN854C1TptWNkX6C2Th6q
+ isXuFxW2jmaEoXCWZ+pgbUG1xorGGBkDjgITeyJsVYWSp+WvfaACpDlEewztPEVta3SYhpFkqSa
+ tWZPPpEYZ+YPkHJL/3gqSj1GPnUPU2hrieVn6WGdzH9YN+tLZYyKxdP/OSj/5j9b/uHPof5BgmN
+ POla8fkUBlhg0ANKGrnWsZ3Rcxyb3JK3uaOykFxtWaAODLNrhdkH9ipsvgO7CUnE5djytJA0zNg
+ P1kxn5Np12mX7Z+u73uIax1zERaRIwPjfw+I1R/oRZOK2VuU=
+X-Google-Smtp-Source: AGHT+IHt59RAtXAnspcHNiGx8izVzNNxGZgUUFbo+MoJyUZPmWVkJw4oHIg7gsdZoRXtz9ZAXQL4rQ==
+X-Received: by 2002:a05:6a00:3d55:b0:771:ec42:1c09 with SMTP id
+ d2e1a72fcca58-771ec421d77mr9538236b3a.27.1756256851690; 
+ Tue, 26 Aug 2025 18:07:31 -0700 (PDT)
 Received: from stoup.. ([144.6.121.55]) by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-7720274534esm1419241b3a.47.2025.08.26.18.06.59
+ d2e1a72fcca58-7720274534esm1419241b3a.47.2025.08.26.18.07.28
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 26 Aug 2025 18:07:02 -0700 (PDT)
+ Tue, 26 Aug 2025 18:07:31 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH 22/61] target/arm: Move cp processing to define_one_arm_cp_reg
-Date: Wed, 27 Aug 2025 11:04:13 +1000
-Message-ID: <20250827010453.4059782-27-richard.henderson@linaro.org>
+Subject: [PATCH 27/61] target/arm: Remove name argument to alloc_cpreg
+Date: Wed, 27 Aug 2025 11:04:18 +1000
+Message-ID: <20250827010453.4059782-32-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250827010453.4059782-1-richard.henderson@linaro.org>
 References: <20250827010453.4059782-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42b;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42b.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42d;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -99,157 +98,65 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Processing of cp was split between add_cpreg_to_hashtable and
-define_one_arm_cp_reg.  Unify it all to the top-level function.
+All callers now pass in->name, so take the value from there.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/helper.c | 53 +++++++++++++++++++--------------------------
- 1 file changed, 22 insertions(+), 31 deletions(-)
+ target/arm/helper.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
 diff --git a/target/arm/helper.c b/target/arm/helper.c
-index da6a8f0a8f..a9d6ed1270 100644
+index d9ac6a20a7..3cd4546494 100644
 --- a/target/arm/helper.c
 +++ b/target/arm/helper.c
-@@ -7269,7 +7269,7 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+@@ -7267,9 +7267,9 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+  * Copy a ARMCPRegInfo structure, allocating it along with the name
+  * and an optional suffix to the name.
   */
- static void add_cpreg_to_hashtable(ARMCPU *cpu, const ARMCPRegInfo *r,
-                                    CPState state, CPSecureState secstate,
--                                   int crm, int opc1, int opc2,
-+                                   int cp, int crm, int opc1, int opc2,
-                                    const char *name)
+-static ARMCPRegInfo *alloc_cpreg(const ARMCPRegInfo *in,
+-                                 const char *name, const char *suffix)
++static ARMCPRegInfo *alloc_cpreg(const ARMCPRegInfo *in, const char *suffix)
  {
-     CPUARMState *env = &cpu->env;
-@@ -7277,28 +7277,14 @@ static void add_cpreg_to_hashtable(ARMCPU *cpu, const ARMCPRegInfo *r,
-     ARMCPRegInfo *r2;
-     bool is64 = r->type & ARM_CP_64BIT;
-     bool ns = secstate & ARM_CP_SECSTATE_NS;
--    int cp = r->cp;
-     size_t name_len;
-     bool make_const;
- 
-     switch (state) {
-     case ARM_CP_STATE_AA32:
--        /* We assume it is a cp15 register if the .cp field is left unset. */
--        if (cp == 0 && r->state == ARM_CP_STATE_BOTH) {
--            cp = 15;
--        }
-         key = ENCODE_CP_REG(cp, is64, ns, r->crn, crm, opc1, opc2);
-         break;
-     case ARM_CP_STATE_AA64:
--        /*
--         * To allow abbreviation of ARMCPRegInfo definitions, we treat
--         * cp == 0 as equivalent to the value for "standard guest-visible
--         * sysreg".  STATE_BOTH definitions are also always "standard sysreg"
--         * in their AArch64 view (the .cp value may be non-zero for the
--         * benefit of the AArch32 view).
--         */
--        assert(cp == 0 || r->state == ARM_CP_STATE_BOTH);
--        cp = 0;
-         key = ENCODE_AA64_CP_REG(r->opc0, opc1, r->crn, crm, opc2);
-         break;
-     default:
-@@ -7459,7 +7445,7 @@ static void add_cpreg_to_hashtable(ARMCPU *cpu, const ARMCPRegInfo *r,
- }
- 
- static void add_cpreg_to_hashtable_aa32(ARMCPU *cpu, const ARMCPRegInfo *r,
--                                        int crm, int opc1, int opc2)
-+                                        int cp, int crm, int opc1, int opc2)
- {
-     /*
-      * Under AArch32 CP registers can be common
-@@ -7472,16 +7458,16 @@ static void add_cpreg_to_hashtable_aa32(ARMCPU *cpu, const ARMCPRegInfo *r,
-     switch (r->secure) {
-     case ARM_CP_SECSTATE_S:
-     case ARM_CP_SECSTATE_NS:
--        add_cpreg_to_hashtable(cpu, r, ARM_CP_STATE_AA32,
--                               r->secure, crm, opc1, opc2, r->name);
-+        add_cpreg_to_hashtable(cpu, r, ARM_CP_STATE_AA32, r->secure,
-+                               cp, crm, opc1, opc2, r->name);
++    const char *name = in->name;
+     size_t name_len = strlen(name);
+     size_t suff_len = suffix ? strlen(suffix) : 0;
+     ARMCPRegInfo *out = g_malloc(sizeof(*in) + name_len + suff_len + 1);
+@@ -7409,7 +7409,7 @@ static void add_cpreg_to_hashtable_aa32(ARMCPU *cpu, ARMCPRegInfo *r,
+                                cp, crm, opc1, opc2, key);
          break;
      case ARM_CP_SECSTATE_BOTH:
-         name = g_strdup_printf("%s_S", r->name);
--        add_cpreg_to_hashtable(cpu, r, ARM_CP_STATE_AA32,
--                               ARM_CP_SECSTATE_S, crm, opc1, opc2, name);
-+        add_cpreg_to_hashtable(cpu, r, ARM_CP_STATE_AA32, ARM_CP_SECSTATE_S,
-+                               cp, crm, opc1, opc2, name);
-         g_free(name);
--        add_cpreg_to_hashtable(cpu, r, ARM_CP_STATE_AA32,
--                               ARM_CP_SECSTATE_NS, crm, opc1, opc2, r->name);
-+        add_cpreg_to_hashtable(cpu, r, ARM_CP_STATE_AA32, ARM_CP_SECSTATE_NS,
-+                               cp, crm, opc1, opc2, r->name);
-         break;
-     default:
-         g_assert_not_reached();
-@@ -7512,11 +7498,11 @@ static void add_cpreg_to_hashtable_aa64(ARMCPU *cpu, const ARMCPRegInfo *r,
-             nxs_ri.fgt |= R_FGT_NXS_MASK;
-         }
-         add_cpreg_to_hashtable(cpu, &nxs_ri, ARM_CP_STATE_AA64,
--                               ARM_CP_SECSTATE_NS, crm, opc1, opc2, name);
-+                               ARM_CP_SECSTATE_NS, 0, crm, opc1, opc2, name);
-     }
+-        r_s = alloc_cpreg(r, r->name, "_S");
++        r_s = alloc_cpreg(r, "_S");
+         add_cpreg_to_hashtable(cpu, r_s, ARM_CP_STATE_AA32, ARM_CP_SECSTATE_S,
+                                cp, crm, opc1, opc2, key);
  
-     add_cpreg_to_hashtable(cpu, r, ARM_CP_STATE_AA64, ARM_CP_SECSTATE_NS,
--                           crm, opc1, opc2, r->name);
-+                           0, crm, opc1, opc2, r->name);
- }
+@@ -7439,7 +7439,7 @@ static void add_cpreg_to_hashtable_aa64(ARMCPU *cpu, ARMCPRegInfo *r,
+          * and name that it is passed, so it's OK to use
+          * a local struct here.
+          */
+-        ARMCPRegInfo *nxs_ri = alloc_cpreg(r, r->name, "NXS");
++        ARMCPRegInfo *nxs_ri = alloc_cpreg(r, "NXS");
+         uint32_t nxs_key;
  
- void define_one_arm_cp_reg(ARMCPU *cpu, const ARMCPRegInfo *r)
-@@ -7551,6 +7537,7 @@ void define_one_arm_cp_reg(ARMCPU *cpu, const ARMCPRegInfo *r)
-     int opc1max = (r->opc1 == CP_ANY) ? 7 : r->opc1;
-     int opc2min = (r->opc2 == CP_ANY) ? 0 : r->opc2;
-     int opc2max = (r->opc2 == CP_ANY) ? 7 : r->opc2;
-+    int cp = r->cp;
- 
-     /*
-      * AArch64 regs are all 64 bit so ARM_CP_64BIT is meaningless.
-@@ -7573,21 +7560,25 @@ void define_one_arm_cp_reg(ARMCPU *cpu, const ARMCPRegInfo *r)
-      */
-     switch (r->state) {
-     case ARM_CP_STATE_BOTH:
--        /* 0 has a special meaning, but otherwise the same rules as AA32. */
--        if (r->cp == 0) {
-+        /*
-+         * If the cp field is left unset, assume cp15.
-+         * Otherwise apply the same rules as AA32.
-+         */
-+        if (cp == 0) {
-+            cp = 15;
-             break;
-         }
-         /* fall through */
-     case ARM_CP_STATE_AA32:
-         if (arm_feature(&cpu->env, ARM_FEATURE_V8) &&
-             !arm_feature(&cpu->env, ARM_FEATURE_M)) {
--            assert(r->cp >= 14 && r->cp <= 15);
-+            assert(cp >= 14 && cp <= 15);
-         } else {
--            assert(r->cp < 8 || (r->cp >= 14 && r->cp <= 15));
-+            assert(cp < 8 || (cp >= 14 && cp <= 15));
-         }
-         break;
-     case ARM_CP_STATE_AA64:
--        assert(r->cp == 0);
-+        assert(cp == 0);
-         break;
-     default:
-         g_assert_not_reached();
-@@ -7657,13 +7648,13 @@ void define_one_arm_cp_reg(ARMCPU *cpu, const ARMCPRegInfo *r)
+         assert(nxs_ri->crn < 0xf);
+@@ -7662,7 +7662,7 @@ void define_one_arm_cp_reg(ARMCPU *cpu, const ARMCPRegInfo *r)
+     for (int crm = crmmin; crm <= crmmax; crm++) {
+         for (int opc1 = opc1min; opc1 <= opc1max; opc1++) {
              for (int opc2 = opc2min; opc2 <= opc2max; opc2++) {
+-                ARMCPRegInfo *r2 = alloc_cpreg(r, r->name, NULL);
++                ARMCPRegInfo *r2 = alloc_cpreg(r, NULL);
+                 ARMCPRegInfo *r3;
+ 
                  switch (r->state) {
-                 case ARM_CP_STATE_AA32:
--                    add_cpreg_to_hashtable_aa32(cpu, r, crm, opc1, opc2);
-+                    add_cpreg_to_hashtable_aa32(cpu, r, cp, crm, opc1, opc2);
-                     break;
-                 case ARM_CP_STATE_AA64:
-                     add_cpreg_to_hashtable_aa64(cpu, r, crm, opc1, opc2);
+@@ -7673,7 +7673,7 @@ void define_one_arm_cp_reg(ARMCPU *cpu, const ARMCPRegInfo *r)
+                     add_cpreg_to_hashtable_aa64(cpu, r2, crm, opc1, opc2);
                      break;
                  case ARM_CP_STATE_BOTH:
--                    add_cpreg_to_hashtable_aa32(cpu, r, crm, opc1, opc2);
-+                    add_cpreg_to_hashtable_aa32(cpu, r, cp, crm, opc1, opc2);
-                     add_cpreg_to_hashtable_aa64(cpu, r, crm, opc1, opc2);
+-                    r3 = alloc_cpreg(r2, r2->name, NULL);
++                    r3 = alloc_cpreg(r2, NULL);
+                     add_cpreg_to_hashtable_aa32(cpu, r2, cp, crm, opc1, opc2);
+                     add_cpreg_to_hashtable_aa64(cpu, r3, crm, opc1, opc2);
                      break;
-                 default:
 -- 
 2.43.0
 

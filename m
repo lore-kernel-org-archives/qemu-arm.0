@@ -4,87 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11F60CA0FF0
-	for <qemu-arm@archiver.kernel.org>; Wed, 27 Aug 2025 01:13:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD83FCA0FF0
+	for <qemu-arm@archiver.kernel.org>; Wed, 27 Aug 2025 01:13:29 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ur4i2-0001p4-Uj; Tue, 26 Aug 2025 21:12:22 -0400
+	id 1ur4ip-0002uP-5G; Tue, 26 Aug 2025 21:13:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ur4hX-0001HY-5N
+ id 1ur4hY-0001I8-RJ
  for qemu-arm@nongnu.org; Tue, 26 Aug 2025 21:11:49 -0400
-Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433])
+Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ur4hM-00009B-BA
- for qemu-arm@nongnu.org; Tue, 26 Aug 2025 21:11:46 -0400
-Received: by mail-pf1-x433.google.com with SMTP id
- d2e1a72fcca58-76e2e6038cfso7073944b3a.0
- for <qemu-arm@nongnu.org>; Tue, 26 Aug 2025 18:11:35 -0700 (PDT)
+ id 1ur4hI-00009T-Rv
+ for qemu-arm@nongnu.org; Tue, 26 Aug 2025 21:11:47 -0400
+Received: by mail-pf1-x42a.google.com with SMTP id
+ d2e1a72fcca58-7704f3c46ceso2846274b3a.2
+ for <qemu-arm@nongnu.org>; Tue, 26 Aug 2025 18:11:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756257087; x=1756861887; darn=nongnu.org;
+ d=linaro.org; s=google; t=1756257090; x=1756861890; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Ru+zkqkr06yFhMECXXsdeWAo58OIAebY2k6d7rRmYv8=;
- b=sHzIwSCSW2TZMcdrstI/2lv3V8CwLAJ97Q7dBrb3a/f9UA3/E+Od3wXZ6Bm/algYbb
- N9tsrrVrD7mYLgrVt0gwdA5GBRrAdDsDC29tR2iK1c9vk7s5GISi63EH1FpnC7vbvW2k
- adI0vm5AUqMbefgOQPQSrENST/W9dmVFimU0jb5gSEA8MXb8SqggJ0r2N9eGwWvbAMQG
- 56FLcG4gB+CjXlU/C+6Ysv6+PUZrmkmU4/Ide/qrtUEWLQz3cRL3ltZpyYm1PNQk7vR5
- FB0w5TdQvh4eePS8jRp4Z6fekt0U+5PoH0yp3eNGZSIokNa26ecRCsqBt2YCdWIQXzdE
- MlGg==
+ bh=BYMBiKJq8/lsK6z7ljr/lChjjHaZZY+QCsjrhv9wKe0=;
+ b=teEkHtCBqjtIfzdKu+OgvCjfvEMBEyT4szeuTkgJF28uYsMqPhizCUmiYjTWu9W4p9
+ McrRid9pNgAx0cH1F3abMp3EHYvnkqEYUGl089xdaY+YhwO3LL7bIgWBeHpz7WlUxx8t
+ ZvcqK0P3EZ6WV+cwrejme8yw8dZD6PH02dihu960ThysaH4K7vUuH4s6Vxm4wKCulpbx
+ GfMWY7L776Q/mxEW7oYzKZgFPZw2Cou6e/SKwYG7wQyU9uQVN+AqlIORhAqR0JeHgW34
+ w0G9Wddga7qDrqdwTLfgAkcLvic5emh1TwsD2+tOUSh8oz56BJH5Tnsbos9Pekb4wLiA
+ DX4A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756257087; x=1756861887;
+ d=1e100.net; s=20230601; t=1756257090; x=1756861890;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=Ru+zkqkr06yFhMECXXsdeWAo58OIAebY2k6d7rRmYv8=;
- b=TwuDcI2TrgIKTbZIHV+7LagnQdYZUl70U1dH/iT/DePEewWVo85zYVHmQxCqK4b7fP
- Av92gWE3XitLoeOYEPkcV0Z1XF/JffnCoYqLOBckUDge235pLtgqocnWKtBdnGi4QH50
- 9q8intF/OS9AZROFwHcTC1GpVUeyVKMdXMTaAZHmC3oeyvOkaPkdfqJKgArCH6NLY+Ml
- E5AYtttvGfVP1aMKUxNLAi7i0HWdh5Jxfrpb2UdXb5rduWI8u09OcDpvHIRGnijv41+3
- T0LBg7jJcwvDWDpSvRg/QT78f/NA3VYdUrzBARJwfAljmU/SOOUkVuOtwQYg3iRF9dRR
- Su2w==
-X-Gm-Message-State: AOJu0YwNpxKq7x+1TdqF727ol3wAYjRkdZ5I5YuAh3iBrOtEAX9RXR70
- h7L2/PUjDBHcVwMTTdvw9RRk6n3b8kULUp6yNSYHUwupjOv/XUvEWUFb65JS7+Ekv6sQGwOUylJ
- tIyxSBYM=
-X-Gm-Gg: ASbGncugABkDkeJ7t7qhZudI1oI8ScQBIL5Ln6YCupzbwuJauk7xqouyhQxyM4oZsAz
- Ki1+gEE5tKwzvj0c1GS6B0LhKi0NpcAPMbIs14DNU0dT+wbkLRxy3soDcknobtr5zh21dLnYjTI
- 7OOju1ps/DGlfsYqATJjmO1FpMJk/OL4lX4LbkZw1txAbTgvwmLx4E/RY4msSgRsmdzW8HPAlmz
- pwClW/Xzw5AMfOzFEQRoelq12It90UPU9iOnyiJq4dYXTPMvM2r+bwDQ7LFCc3bSxboP8Qmbnpi
- NEplWT6rO/rCaivEcwFFVOAXJ1xSmQZM2RsW5fi80ubi7/p+Zt1qX1yMpZ/j2VXO8Xccw/uWdC8
- qiX252aSpeMtsfeC7LcwVe5WEHw==
-X-Google-Smtp-Source: AGHT+IGUkLAlYe8hrAm3tLT7bhBS/qc90gC+/iZcUYazS+zdqR3jVkMhsjj7ALPnjydCo231fV/W/g==
-X-Received: by 2002:a05:6a00:9296:b0:771:f309:c04f with SMTP id
- d2e1a72fcca58-771f309c572mr6566051b3a.10.1756257087207; 
- Tue, 26 Aug 2025 18:11:27 -0700 (PDT)
+ bh=BYMBiKJq8/lsK6z7ljr/lChjjHaZZY+QCsjrhv9wKe0=;
+ b=myn9EVjuhh9TBENF/530C+SJpiGjdiuLm+ufFAQt/uShQfj8c3MqXww+zAD+92HlO2
+ tgafGyu2e0rNbKdEUQyOUv/E+e/d75pexN9p+sPJDLuMlgXFz+kHHals0/yORAWi7PRY
+ NS2az5AWl7sa+4BF97VEY+DB4mCCWoxzW/4pdn3OlofbUDZflD5l2NZu4RZj6aaH21uZ
+ FmTWLhtMSvANWyBOQxEDUfLmr6sF2FtKc0Yh23hCrF4lRxgzbs1seSng+Ki/ETks3Q41
+ x3Pf/PN1Lz/S7VHe/RuliQIUwXH5CESAeQc7A8yqOuDWg4jPP6nFxuTruvFWGANxe/Yv
+ Tb/g==
+X-Gm-Message-State: AOJu0YzxjSvXIT1wZfQNMv9qaqECSP8jDKBiovJ+mAoJcjsW1QUISTLk
+ UIijdzXT2JiedBBprDUwx23FSekyvsYJKrwkYb/TGnmHRBfOYVhV4aThgx8zl6wqDcw=
+X-Gm-Gg: ASbGnctFcRRkI0Hu1fUr/s9UdqSjHUo8ydpRHK2JDkA4UlKWCSEv+ZTQSShhjeXds9G
+ Xuj3+tNm1qDS8uRCdBJdPgGYrqotevjex6/aAoIoSFxe4nWAv7VCR9TV7GZzy8i5oyic2S+YtF0
+ Mws7/vIKt6N46W79+qChJ9pUO7n7c546t32tTYPG9+XmB12ONSBEVVtBi8Sno9DJLwqTleI7A7K
+ hJ+XYLIlii1cIdb8iTNVP8s9ZlC4YvepiLbGeiho95h5Nkb86Nqw0BBP/TZIiEKpeN37RnTGX/P
+ TaL3yQOC/SpI2/0a9sur2amfoZ3JTT6g+QPw7Mu+OXgKbFiqzXBvKd/rY1YnfOmfcMYD1aXH36c
+ vL4SadUuFhaTZv8lbeeoiwXfWOaVNEQtdHwI2
+X-Google-Smtp-Source: AGHT+IFAFET7HGfCWqmGxJ2/bmvyMn8AvMthMTMaEMNA3B6bzAEknoU2pFoPRvS0a5T9c5T7UWSZ2Q==
+X-Received: by 2002:a05:6a00:3d0f:b0:771:f520:f775 with SMTP id
+ d2e1a72fcca58-771fd6329bamr4304075b3a.28.1756257089626; 
+ Tue, 26 Aug 2025 18:11:29 -0700 (PDT)
 Received: from stoup.. ([144.6.121.55]) by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-771f2b2d2bfsm4348408b3a.93.2025.08.26.18.11.25
+ d2e1a72fcca58-771f2b2d2bfsm4348408b3a.93.2025.08.26.18.11.27
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 26 Aug 2025 18:11:26 -0700 (PDT)
+ Tue, 26 Aug 2025 18:11:29 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH 45/61] target/arm/kvm: Assert no 128-bit sysregs in
- kvm_arm_init_cpreg_list
-Date: Wed, 27 Aug 2025 11:04:36 +1000
-Message-ID: <20250827010453.4059782-50-richard.henderson@linaro.org>
+Subject: [PATCH 46/61] target/arm/hvf: Assert no 128-bit sysregs in
+ hvf_arch_init_vcpu
+Date: Wed, 27 Aug 2025 11:04:37 +1000
+Message-ID: <20250827010453.4059782-51-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250827010453.4059782-1-richard.henderson@linaro.org>
 References: <20250827010453.4059782-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::433;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x433.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42a;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42a.google.com
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
+ DKIM_SIGNED=0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -100,26 +98,35 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-KVM has not yet enabled 128-bit system registers.
+HVF has not yet enabled 128-bit system registers.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/kvm.c | 2 ++
- 1 file changed, 2 insertions(+)
+ target/arm/hvf/hvf.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index 9e569eff65..53c79041e1 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -803,6 +803,8 @@ static int kvm_arm_init_cpreg_list(ARMCPU *cpu)
-         arraylen++;
-     }
+diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+index bda57614ed..c05e81b4e5 100644
+--- a/target/arm/hvf/hvf.c
++++ b/target/arm/hvf/hvf.c
+@@ -896,6 +896,9 @@ int hvf_arch_init_vcpu(CPUState *cpu)
+     env->aarch64 = true;
+     asm volatile("mrs %0, cntfrq_el0" : "=r"(arm_cpu->gt_cntfrq_hz));
  
-+    assert(cpu->cpreg128_array_len == 0);
++    /* No support yet for FEAT_D128 */
++    assert(arm_cpu->cpreg128_array_len == 0);
 +
-     cpu->cpreg_indexes = g_renew(uint64_t, cpu->cpreg_indexes, arraylen);
-     cpu->cpreg_values = g_renew(uint64_t, cpu->cpreg_values, arraylen);
-     cpu->cpreg_vmstate_indexes = g_renew(uint64_t, cpu->cpreg_vmstate_indexes,
+     /* Allocate enough space for our sysreg sync */
+     arm_cpu->cpreg_indexes = g_renew(uint64_t, arm_cpu->cpreg_indexes,
+                                      sregs_match_len);
+@@ -919,6 +922,7 @@ int hvf_arch_init_vcpu(CPUState *cpu)
+ 
+         if (ri) {
+             assert(!(ri->type & ARM_CP_NO_RAW));
++            assert(!(ri->type & ARM_CP_128BIT));
+             arm_cpu->cpreg_indexes[sregs_cnt++] = kvm_id;
+         }
+     }
 -- 
 2.43.0
 

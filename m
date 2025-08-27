@@ -4,62 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9682CA0EFF
-	for <qemu-arm@archiver.kernel.org>; Wed, 27 Aug 2025 09:51:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4534CA0EFF
+	for <qemu-arm@archiver.kernel.org>; Wed, 27 Aug 2025 12:05:09 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1urCo8-0005pJ-JI; Wed, 27 Aug 2025 05:51:08 -0400
+	id 1urEtS-0002wV-RM; Wed, 27 Aug 2025 08:04:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1urCo6-0005oh-77
- for qemu-arm@nongnu.org; Wed, 27 Aug 2025 05:51:06 -0400
+ id 1urEtQ-0002tf-HI
+ for qemu-arm@nongnu.org; Wed, 27 Aug 2025 08:04:44 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1urCny-0003th-Aw
- for qemu-arm@nongnu.org; Wed, 27 Aug 2025 05:51:05 -0400
+ id 1urEtI-0000Ft-Ah
+ for qemu-arm@nongnu.org; Wed, 27 Aug 2025 08:04:42 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1756288254;
+ s=mimecast20190719; t=1756296269;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:in-reply-to:in-reply-to:  references:references;
- bh=8+vvGgr/TMr049iVOrePFOf3V0szyzDgDwFlc8ybA4Q=;
- b=b8/jlgwzAynfFtR084aRp7kzR0gXV2g0E7BdqHyxDmq+Fqq2IU6hIaIbm4nq2KtTgkvBD5
- RyvgSrGaFKbzLAzE5LRwW5SewwVkIKX/0cjojQmMG9irengNbLhGJuN3tb9sP2PRZ33P1o
- lM1u9VAAs3QOMmnUfTEH1DVXdTBeSOc=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=aPxEQ6MmeefecJ2q7EjN7mQ45h1uUNNlvPG9qer+7O8=;
+ b=QIoN041f2PU8VQFDIDuWK13f505ISHg+NkF+Wi64TYCThHhicpsigfeZccbMxWV3VLxBzK
+ Wp/DyygPN2qW/XoYVZeqiM5cU77toRaasRLnoPZHx4XwAKN4vNnH9wyr90ugdjEg7fmBPm
+ A71G0k0KdTyUFc16KJh8EJN3b5iRI3I=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-520-sxTj_5aJNVCflGn6xe9SjQ-1; Wed,
- 27 Aug 2025 05:50:50 -0400
-X-MC-Unique: sxTj_5aJNVCflGn6xe9SjQ-1
-X-Mimecast-MFC-AGG-ID: sxTj_5aJNVCflGn6xe9SjQ_1756288249
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-20-BAWdexWgMgmaLDwhP9YVPQ-1; Wed,
+ 27 Aug 2025 08:04:24 -0400
+X-MC-Unique: BAWdexWgMgmaLDwhP9YVPQ-1
+X-Mimecast-MFC-AGG-ID: BAWdexWgMgmaLDwhP9YVPQ_1756296263
+Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id BE09B19560B1; Wed, 27 Aug 2025 09:50:48 +0000 (UTC)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 0AC4A180047F; Wed, 27 Aug 2025 12:04:23 +0000 (UTC)
 Received: from redhat.com (unknown [10.42.28.195])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id CD55130001A6; Wed, 27 Aug 2025 09:50:40 +0000 (UTC)
-Date: Wed, 27 Aug 2025 10:50:32 +0100
+ by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 195B31800297; Wed, 27 Aug 2025 12:04:19 +0000 (UTC)
+Date: Wed, 27 Aug 2025 13:04:16 +0100
 From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Gustavo Romero <gustavo.romero@linaro.org>
-Cc: qemu-devel@nongnu.org, alex.bennee@linaro.org, thuth@redhat.com,
- qemu-arm@nongnu.org, qemu-stable@nongnu.org
-Subject: Re: [PATCH] tests/functional: Fix reverse_debugging asset precaching
-Message-ID: <aK7U6AWCMMHMZtZ3@redhat.com>
-References: <20250827001008.22112-1-gustavo.romero@linaro.org>
+To: Thomas Huth <thuth@redhat.com>
+Cc: Gustavo Romero <gustavo.romero@linaro.org>, qemu-devel@nongnu.org,
+ alex.bennee@linaro.org, qemu-arm@nongnu.org, 1844144@gmail.com,
+ Jan Richter <jarichte@redhat.com>
+Subject: Re: [PATCH 0/4] tests/functional: Adapt reverse_debugging to run w/o
+ Avocado
+Message-ID: <aK70QEm9Gzx2szf8@redhat.com>
+References: <20250819143916.4138035-1-gustavo.romero@linaro.org>
+ <53b6e23f-5328-42c6-9c58-97ddbf3e5b29@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20250827001008.22112-1-gustavo.romero@linaro.org>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <53b6e23f-5328-42c6-9c58-97ddbf3e5b29@redhat.com>
 User-Agent: Mutt/2.2.14 (2025-02-20)
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
 Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
@@ -68,9 +74,8 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001,
- T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_PASS=-0.001, T_SPF_HELO_TEMPERROR=0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -87,52 +92,28 @@ Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-CC stable
+On Mon, Aug 25, 2025 at 12:29:41PM +0200, Thomas Huth wrote:
+> On 19/08/2025 16.39, Gustavo Romero wrote:
+> > The goal of this series is to remove Avocado as a dependency for running
+> > the reverse_debugging functional test.
+> > 
+> > This test, the last one I’m aware of that relies on Avocado, requires it
+> > because of the need for GDB to test reverse stepping and continue.
+> 
+>  Hi!
+> 
+> Please note that there are currently also some efforts going on to extract
+> the GDB part from avocado into a more self-contained python module called
+> aautils, which might help here, too:
+> 
+>  https://github.com/avocado-framework/aautils/issues/82
 
-On Wed, Aug 27, 2025 at 12:10:08AM +0000, Gustavo Romero wrote:
-> This commit fixes the asset precaching in the reverse_debugging test on
-> aarch64.
-> 
-> QemuBaseTest.main() precaches assets (kernel, rootfs, DT blobs, etc.)
-> that are defined in variables with the ASSET_ prefix. This works because
-> it ultimately calls Asset.precache_test(), which relies on introspection
-> to locate these variables.
-> 
-> If an asset variable is not named with the ASSET_ prefix, precache_test
-> cannot find the asset and precaching silently fails. Hence, fix the
-> asset precaching by fixing the asset variable name.
-> 
-> Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
-> ---
->  tests/functional/test_aarch64_reverse_debug.py | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/tests/functional/test_aarch64_reverse_debug.py b/tests/functional/test_aarch64_reverse_debug.py
-> index 58d4532835..8bc91ccfde 100755
-> --- a/tests/functional/test_aarch64_reverse_debug.py
-> +++ b/tests/functional/test_aarch64_reverse_debug.py
-> @@ -21,7 +21,7 @@ class ReverseDebugging_AArch64(ReverseDebugging):
->  
->      REG_PC = 32
->  
-> -    KERNEL_ASSET = Asset(
-> +    ASSET_KERNEL = Asset(
->          ('https://archives.fedoraproject.org/pub/archive/fedora/linux/'
->           'releases/29/Everything/aarch64/os/images/pxeboot/vmlinuz'),
->          '7e1430b81c26bdd0da025eeb8fbd77b5dc961da4364af26e771bd39f379cbbf7')
-> @@ -30,7 +30,7 @@ class ReverseDebugging_AArch64(ReverseDebugging):
->      def test_aarch64_virt(self):
->          self.set_machine('virt')
->          self.cpu = 'cortex-a53'
-> -        kernel_path = self.KERNEL_ASSET.fetch()
-> +        kernel_path = self.ASSET_KERNEL.fetch()
->          self.reverse_debugging(args=('-kernel', kernel_path))
->  
->  
-> -- 
-> 2.34.1
-> 
-> 
+If we did go the route of wanting the pygdb code, I'd prefer we just
+included it in tests/functional/qemu_test, rather than adding a dep
+on aautils which doesn't seem broadly relevant. Or pygdb should just
+be spun out as a standalone python project, as it doesn't need much
+of a dep on anything else.
+
 
 With regards,
 Daniel

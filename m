@@ -4,85 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04DA0CA0FF0
-	for <qemu-arm@archiver.kernel.org>; Wed, 27 Aug 2025 01:19:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9267ECA0FF0
+	for <qemu-arm@archiver.kernel.org>; Wed, 27 Aug 2025 01:20:12 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ur4hq-0001dj-UJ; Tue, 26 Aug 2025 21:12:08 -0400
+	id 1ur4j9-0003a6-UI; Tue, 26 Aug 2025 21:13:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ur4hR-000175-0I
- for qemu-arm@nongnu.org; Tue, 26 Aug 2025 21:11:41 -0400
-Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
+ id 1ur4hl-0001b4-3o
+ for qemu-arm@nongnu.org; Tue, 26 Aug 2025 21:12:02 -0400
+Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ur4hB-00006P-VY
- for qemu-arm@nongnu.org; Tue, 26 Aug 2025 21:11:40 -0400
-Received: by mail-pf1-x42a.google.com with SMTP id
- d2e1a72fcca58-76e6cbb991aso5482486b3a.1
- for <qemu-arm@nongnu.org>; Tue, 26 Aug 2025 18:11:24 -0700 (PDT)
+ id 1ur4hQ-0000Aq-R8
+ for qemu-arm@nongnu.org; Tue, 26 Aug 2025 21:11:58 -0400
+Received: by mail-pl1-x62c.google.com with SMTP id
+ d9443c01a7336-2445824dc27so60729425ad.3
+ for <qemu-arm@nongnu.org>; Tue, 26 Aug 2025 18:11:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756257082; x=1756861882; darn=nongnu.org;
+ d=linaro.org; s=google; t=1756257096; x=1756861896; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=zz0hmw1zkEGR7aCPTEKOMC5u8UDV58D53zKh3dJcGq0=;
- b=J0d7o7CWAha3SHBPPegnPdwIjDooiulPSkcjxCIZvEJl9vSa6PLVYGSWzd6n4VUCsI
- oUIGA4bEymLZZqs+ahjPny/wdpiSYFEUlA0nk/BvIt819ZWHIzsq+2OfZvBFcQ9U44q5
- 5/zZxTbPkurlNH4nNIUmbnrJbmw66shAlqDNh9QsneyoKu74fiZWeHue06qsSrzwX6CK
- 1l03v+/Go8iRSaPVmgI/kEf0mLhAUa9nSSuEDjEovLvPJQelgTTb9jd0Ihk1WUcizBZR
- 43vpveQ/9+DaandZRh2FTYr2YzKjokgvWHkGS2roHzlcQ7RQCGW4YdfEjDV1ZeDGaIGJ
- AG5g==
+ bh=NBOnBkxFaEwe2K3Bn4cTXQl/fQtmv3u9jbbXCvu41Ds=;
+ b=CV80/sSCt7fcdxW7SHqsAhpP0WvRn2SAnhwqWqd9xmyGY1CBuCo3jYaI7HdeTeIxU2
+ 3PpN7JrrpzUrwDlzxjZfMSo9mIN6lck+bRkcK/vAHENofMxGZJCh0er3OaiKTrFIwE5a
+ mYeq5pRs57nOszvmfPEKXuxvGlzDgXwSk9OC5tvz560IlQG5+ETNQpXWLzOT9oIAQy2n
+ FM2+WZZ+j2AghYY4zTGfA5h/omm68iiCRIKEzkmB2hMTVUNTa7WpBAhkY+SxGh8nGW9G
+ 9F1NURy7DmMqroeirMGOR++uYpz5j5RRmak13FldAwhls9gRKTUbBdnooqKZQbfuUbuq
+ BwMg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756257082; x=1756861882;
+ d=1e100.net; s=20230601; t=1756257096; x=1756861896;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=zz0hmw1zkEGR7aCPTEKOMC5u8UDV58D53zKh3dJcGq0=;
- b=Sqipzze94qJXEI50s/hP3X2PEBFTZuZT48T+/WPE/pLxwbliG5V9AArUbZ+fHd/OTN
- Hkd1Es8/cNET/mouFRRr4zVr7L++nL1geFwMSTwfMh56akKrPg4g6Ximg0y9ht0MT6mV
- NriK2VOS4IxrwZEd2dzF1i4Hmd6IcAF/tZUiIGMNok7UzlTDl6T2T/Ym5ISOMVdz8WS/
- +c0cJMrC7YB131OSraeej67vJskg8YfyAnmeKPjVt6rzODy/XfaoxAxMG7o6R8OP9SLc
- TDsdiZgaedFavKK+phO1eLJuMEF+BHoeCH5SXCL4frg2E9zssH5CwR0+U/7i3kMStbnk
- 8HJw==
-X-Gm-Message-State: AOJu0Ywzf05ZWVU3/3U4NsZ8ShEp1lExURcZnrVd4Exve4slQx1Auaew
- yuVBEt75tdpfb4ZyC9yuPAmpgGt0b8DY4j9/P8EfUI58xv9tNxzk2jaAhN/6OBswsAU=
-X-Gm-Gg: ASbGncttmr/UADrQA+ZPJBSx0voONuFURwBRZiBQkLNoWKrFeVbnW0Zmh3JKajcDCWR
- KXMCFBDPlhcRIx4PaEnvfmMAsYLDeudGmT93AasWJXp33Jbzx/zPrcMBTNor4b2p4ZvIcFO1Fh6
- 4nA3qet9nYe5+BgzFhninm23UHCjavniGvLRLvrARY5sduUCYZjU/ndC/mbWQSs5LXOe1yMI69I
- AZV/WJA7yZ0LkzWtuf4EWGknzLSFg7bxf2URVPacXIY9Kb2SjYRQhKtVVq99NMkI/byCY7Z7Zo/
- QPnUucFt1ohAbAz5QnpQvPzOVTCsVAjE1ZQEk7EB3Z662NYYwYVvxLZU4NdstO3VPY6tINghswk
- WHxqPwEIM2vRwUfuVpy9OAihnV8NeIX+QAnRx
-X-Google-Smtp-Source: AGHT+IFIAzgJHlHTSKwMVmY4Gp1Q4zava46tZeWpZ4+0M+pLKnxAF/mST+jg/eCTurrR08kf/Fa5mQ==
-X-Received: by 2002:a05:6a00:13a9:b0:771:e114:35be with SMTP id
- d2e1a72fcca58-771e1143863mr13740244b3a.13.1756257082012; 
- Tue, 26 Aug 2025 18:11:22 -0700 (PDT)
+ bh=NBOnBkxFaEwe2K3Bn4cTXQl/fQtmv3u9jbbXCvu41Ds=;
+ b=tOhqrxgWHFTnYGJ+rOyk+DxOeSCdYACYsyO2NCBrRpeVnT3zMD4Y2hPZ40R++5YdQ3
+ KP7Pw/nOA6QlOwCPYug4VW4SouxxrlfpZxdrJr1xiZ4/Lia6XHWSFEbPrAXDhPk0dMYy
+ EYKU++ZKh8Jtqh6AyvuJHZLTu2pS+nScoLRURGlXHZHgKMWdv8bGbD69VpV04ZE0ieCC
+ 8v+U/KEEGQv0FUU6X23okSdhoNYhGcJyOuMKVt3MEeQ/QwEEzSGTzzs6ywTeNndn2XHG
+ U+RdWHXvDWilTs/7r3K14Y8G2qIoVKYLSn1BKWNtNDH+Fv/SZ5eDQZtRyfhvfmK61FTN
+ 2GiA==
+X-Gm-Message-State: AOJu0Yx+rlX26hualVQJq/Fhry6kNAWsVHvvbS6c5JvCuf+IB739idEl
+ bDMamLpJ8ZF8QCHLGiqGCj3RGdAvt1u49vjU18lv9r2GkALh+998qhysSACl8mmz70s=
+X-Gm-Gg: ASbGncu1+yDsSdA5aIiAVLjqBiPvdeCcSa1fj0UlkYIRZNzdHYRkeV2oOC34kGUVvuW
+ q+ooP+jOhRQ8n97bS5uP1OkmLsWR+YiT6dRK+vSa7v3MNliIcSYyvDvhqD93iVF1exy+bJ+sSn2
+ 4KUaVoMKNg5ZrkKC7wF2/fDYlhomXltU1NYfnlzebmZYKzPL8QoRWoogHhQKF96TKRNn6qgHLir
+ RZrM+Dbpd38E3n3xiRLGJs1NPLPOb0RizWdJCPfXlfy6zAnr8/KzVVA+hUTZF3lA4nLKU3vIZgE
+ DQvY/oimXiln+D3+qLX/w50wVTPVqCNKfCKIF2hyT73AcBSjhGQlxhsIgjjH8f9MCd6YptmT1iD
+ hsc69OHglRMI9KNSJITI6CxLUmlfHieLTDOnT
+X-Google-Smtp-Source: AGHT+IH/zMfczHEuoM7jzSkWFJSo4yMbbQ7zHhsJ/G+n+LuTnOIoWsq+VUUjnfR0aMph1uP23F3TZw==
+X-Received: by 2002:a17:902:e784:b0:246:42a9:d38b with SMTP id
+ d9443c01a7336-24642a9d45fmr162358605ad.21.1756257095733; 
+ Tue, 26 Aug 2025 18:11:35 -0700 (PDT)
 Received: from stoup.. ([144.6.121.55]) by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-771f2b2d2bfsm4348408b3a.93.2025.08.26.18.11.20
+ d2e1a72fcca58-771f2b2d2bfsm4348408b3a.93.2025.08.26.18.11.33
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 26 Aug 2025 18:11:21 -0700 (PDT)
+ Tue, 26 Aug 2025 18:11:35 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH 43/61] target/arm: Add read_raw_cp_reg128, write_raw_cp_reg128
-Date: Wed, 27 Aug 2025 11:04:34 +1000
-Message-ID: <20250827010453.4059782-48-richard.henderson@linaro.org>
+Subject: [PATCH 48/61] target/arm: Migrate cpreg128 registers
+Date: Wed, 27 Aug 2025 11:04:39 +1000
+Message-ID: <20250827010453.4059782-53-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250827010453.4059782-1-richard.henderson@linaro.org>
 References: <20250827010453.4059782-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42a;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62c;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -98,105 +98,93 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Add the functions and update raw_accessors_invalid to match.
-Add assertions for !ARM_CP_128BIT in read_raw_cp_reg and
-write_raw_cp_reg.
-
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/cpregs.h |  1 +
- target/arm/helper.c | 43 +++++++++++++++++++++++++++++++++++++++----
- 2 files changed, 40 insertions(+), 4 deletions(-)
+ target/arm/machine.c | 50 ++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 50 insertions(+)
 
-diff --git a/target/arm/cpregs.h b/target/arm/cpregs.h
-index 0d8c45b60c..bd26a4a260 100644
---- a/target/arm/cpregs.h
-+++ b/target/arm/cpregs.h
-@@ -1097,6 +1097,7 @@ static inline bool cp_access_ok(int current_el,
+diff --git a/target/arm/machine.c b/target/arm/machine.c
+index 6986915bee..35ff28cc30 100644
+--- a/target/arm/machine.c
++++ b/target/arm/machine.c
+@@ -868,6 +868,34 @@ static const VMStateInfo vmstate_powered_off = {
+     .put = put_power,
+ };
  
- /* Raw read of a coprocessor register (as needed for migration, etc) */
- uint64_t read_raw_cp_reg(CPUARMState *env, const ARMCPRegInfo *ri);
-+Int128 read_raw_cp_reg128(CPUARMState *env, const ARMCPRegInfo *ri);
- 
- /*
-  * Return true if the cp register encoding is in the "feature ID space" as
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 7568b78c49..3efc14da3a 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -115,6 +115,7 @@ static void *raw_ptr(CPUARMState *env, const ARMCPRegInfo *ri)
- 
- uint64_t read_raw_cp_reg(CPUARMState *env, const ARMCPRegInfo *ri)
- {
-+    assert(!(ri->type & ARM_CP_128BIT));
-     /* Raw read of a coprocessor register (as needed for migration, etc). */
-     if (ri->type & ARM_CP_CONST) {
-         return ri->resetvalue;
-@@ -130,6 +131,7 @@ uint64_t read_raw_cp_reg(CPUARMState *env, const ARMCPRegInfo *ri)
- static void write_raw_cp_reg(CPUARMState *env, const ARMCPRegInfo *ri,
-                              uint64_t v)
- {
-+    assert(!(ri->type & ARM_CP_128BIT));
-     /*
-      * Raw write of a coprocessor register (as needed for migration, etc).
-      * Note that constant registers are treated as write-ignored; the
-@@ -147,6 +149,32 @@ static void write_raw_cp_reg(CPUARMState *env, const ARMCPRegInfo *ri,
-     }
- }
- 
-+Int128 read_raw_cp_reg128(CPUARMState *env, const ARMCPRegInfo *ri)
++static bool sysreg128_needed(void *opaque)
 +{
-+    assert(ri->type & ARM_CP_128BIT);
-+    if (ri->raw_read128fn) {
-+        return ri->raw_read128fn(env, ri);
-+    } else if (ri->read128fn) {
-+        return ri->read128fn(env, ri);
-+    } else {
-+        return raw_read128(env, ri);
-+    }
++    ARMCPU *cpu = opaque;
++    return cpu->cpreg128_array_len != 0;
 +}
 +
-+__attribute__((unused))
-+static void write_raw_cp_reg128(CPUARMState *env, const ARMCPRegInfo *ri,
-+                                Int128 v)
-+{
-+    assert(ri->type & ARM_CP_128BIT);
-+    if (ri->raw_write128fn) {
-+        ri->raw_write128fn(env, ri, v);
-+    } else if (ri->write128fn) {
-+        ri->write128fn(env, ri, v);
-+    } else {
-+        raw_write128(env, ri, v);
-+    }
-+}
++static const VMStateDescription vmstate_sysreg128 = {
++    .name = "cpu/sysreg128",
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .needed = sysreg128_needed,
++    .fields = (const VMStateField[]) {
++        /*
++         * The length-check must come before the arrays to avoid
++         * incoming data possibly overflowing the array.
++         */
++        VMSTATE_INT32_POSITIVE_LE(cpreg128_vmstate_array_len, ARMCPU),
++        VMSTATE_VARRAY_INT32(cpreg128_vmstate_indexes, ARMCPU,
++                             cpreg128_vmstate_array_len,
++                             0, vmstate_info_uint64, uint64_t),
++        VMSTATE_VARRAY_INT32(cpreg128_vmstate_values, ARMCPU,
++                             cpreg128_vmstate_array_len,
++                             0, vmstate_info_int128, Int128),
 +
- static bool raw_accessors_invalid(const ARMCPRegInfo *ri)
++        VMSTATE_END_OF_LIST()
++    },
++};
++
+ static int cpu_pre_save(void *opaque)
  {
-    /*
-@@ -161,12 +189,19 @@ static bool raw_accessors_invalid(const ARMCPRegInfo *ri)
-     * The tests here line up with the conditions in read/write_raw_cp_reg()
-     * and assertions in raw_read()/raw_write().
-     */
--    if ((ri->type & ARM_CP_CONST) ||
--        ri->fieldoffset ||
--        ((ri->raw_writefn || ri->writefn) && (ri->raw_readfn || ri->readfn))) {
-+    if (ri->type & ARM_CP_CONST) {
-+        return ri->type & ARM_CP_128BIT;
-+    }
-+    if (ri->fieldoffset) {
-         return false;
-     }
--    return true;
-+    if (ri->type & ARM_CP_128BIT) {
-+        return !((ri->raw_write128fn || ri->write128fn) &&
-+                 (ri->raw_read128fn || ri->read128fn));
-+    } else {
-+        return !((ri->raw_writefn || ri->writefn) &&
-+                 (ri->raw_readfn || ri->readfn));
-+    }
+     ARMCPU *cpu = opaque;
+@@ -900,6 +928,12 @@ static int cpu_pre_save(void *opaque)
+     memcpy(cpu->cpreg_vmstate_values, cpu->cpreg_values,
+            cpu->cpreg_array_len * sizeof(uint64_t));
+ 
++    cpu->cpreg128_vmstate_array_len = cpu->cpreg128_array_len;
++    memcpy(cpu->cpreg128_vmstate_indexes, cpu->cpreg128_indexes,
++           cpu->cpreg128_array_len * sizeof(uint64_t));
++    memcpy(cpu->cpreg128_vmstate_values, cpu->cpreg128_values,
++           cpu->cpreg128_array_len * sizeof(Int128));
++
+     return 0;
  }
  
- bool write_cpustate_to_list(ARMCPU *cpu, bool kvm_sync)
+@@ -994,6 +1028,21 @@ static int cpu_post_load(void *opaque, int version_id)
+         v++;
+     }
+ 
++    for (i = 0, v = 0; i < cpu->cpreg128_array_len
++             && v < cpu->cpreg128_vmstate_array_len; i++) {
++        if (cpu->cpreg128_vmstate_indexes[v] > cpu->cpreg128_indexes[i]) {
++            /* register in our list but not incoming : skip it */
++            continue;
++        }
++        if (cpu->cpreg128_vmstate_indexes[v] < cpu->cpreg128_indexes[i]) {
++            /* register in their list but not ours: fail migration */
++            return -1;
++        }
++        /* matching register, copy the value over */
++        cpu->cpreg128_values[i] = cpu->cpreg128_vmstate_values[v];
++        v++;
++    }
++
+     if (kvm_enabled()) {
+         if (!kvm_arm_cpu_post_load(cpu)) {
+             return -1;
+@@ -1119,6 +1168,7 @@ const VMStateDescription vmstate_arm_cpu = {
+         &vmstate_serror,
+         &vmstate_irq_line_state,
+         &vmstate_wfxt_timer,
++        &vmstate_sysreg128,
+         NULL
+     }
+ };
 -- 
 2.43.0
 

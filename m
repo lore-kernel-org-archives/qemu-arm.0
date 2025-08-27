@@ -4,85 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1EF92CA0FED
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04DA0CA0FF0
 	for <qemu-arm@archiver.kernel.org>; Wed, 27 Aug 2025 01:19:59 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ur4dl-0008T5-My; Tue, 26 Aug 2025 21:07:53 -0400
+	id 1ur4hq-0001dj-UJ; Tue, 26 Aug 2025 21:12:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ur4dZ-0007Xn-9X
- for qemu-arm@nongnu.org; Tue, 26 Aug 2025 21:07:43 -0400
-Received: from mail-pf1-x42d.google.com ([2607:f8b0:4864:20::42d])
+ id 1ur4hR-000175-0I
+ for qemu-arm@nongnu.org; Tue, 26 Aug 2025 21:11:41 -0400
+Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ur4dU-0007an-M1
- for qemu-arm@nongnu.org; Tue, 26 Aug 2025 21:07:39 -0400
-Received: by mail-pf1-x42d.google.com with SMTP id
- d2e1a72fcca58-77057c4d88bso2711241b3a.2
- for <qemu-arm@nongnu.org>; Tue, 26 Aug 2025 18:07:33 -0700 (PDT)
+ id 1ur4hB-00006P-VY
+ for qemu-arm@nongnu.org; Tue, 26 Aug 2025 21:11:40 -0400
+Received: by mail-pf1-x42a.google.com with SMTP id
+ d2e1a72fcca58-76e6cbb991aso5482486b3a.1
+ for <qemu-arm@nongnu.org>; Tue, 26 Aug 2025 18:11:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756256852; x=1756861652; darn=nongnu.org;
+ d=linaro.org; s=google; t=1756257082; x=1756861882; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=/Mzkv/ARe4RUNBXryPDykt2Z93CF8H2bNJcxJ8kAMtQ=;
- b=wcgH08xN590ORIPXjAm+2QekIgyVazzruA/S0GcTS3MKAvleAUtfkO7vxvtSV5VidE
- 1LoYw16cSrRi9Nz4bcQJWasbLtkdtTzkgwJbrH7Se5M21fO5OrdYHh2cN3XudV823T8W
- nTc6rYfugcVRmMTrVcvaC92kM3yRgiuBQKj59CTWZlr699XQ53YLEd1iXpACvZLjNLdI
- 5PVYKouXoQ41BpONSnLbzuLEqXS8PPIQPpm2uvJ2BlxBEdh7acn+4BPPqcnizZFJmfxf
- jgGxTLV8cSPF+/h/IcAR/rIoBpiuAX6b25r9gyNMsMwXdUdYw7g9ZKZbd+MvD/vBYrTO
- Dmpw==
+ bh=zz0hmw1zkEGR7aCPTEKOMC5u8UDV58D53zKh3dJcGq0=;
+ b=J0d7o7CWAha3SHBPPegnPdwIjDooiulPSkcjxCIZvEJl9vSa6PLVYGSWzd6n4VUCsI
+ oUIGA4bEymLZZqs+ahjPny/wdpiSYFEUlA0nk/BvIt819ZWHIzsq+2OfZvBFcQ9U44q5
+ 5/zZxTbPkurlNH4nNIUmbnrJbmw66shAlqDNh9QsneyoKu74fiZWeHue06qsSrzwX6CK
+ 1l03v+/Go8iRSaPVmgI/kEf0mLhAUa9nSSuEDjEovLvPJQelgTTb9jd0Ihk1WUcizBZR
+ 43vpveQ/9+DaandZRh2FTYr2YzKjokgvWHkGS2roHzlcQ7RQCGW4YdfEjDV1ZeDGaIGJ
+ AG5g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756256852; x=1756861652;
+ d=1e100.net; s=20230601; t=1756257082; x=1756861882;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=/Mzkv/ARe4RUNBXryPDykt2Z93CF8H2bNJcxJ8kAMtQ=;
- b=b4hPuZL4nqvTDuXLiCO7EIsYFkSkaLFsCNtIn2R7AhfFBHI2o+B7+667CjWzh6AmPB
- x9Ff0tHEEkVdQ9pJypqOYZ/05sfP+VjtC7L/+hgYVeqDM1qk4QyJsbY9aWtIeVa24CjI
- QKNdr7eN/6yF1E8EhRZm/jipN2quAfb8Z6NlmboyG0WsfBoYHoLh8EHZjYw/asVOOaOd
- IlJsepv5BPZMAWPYetXbtBxVrL6airiLo5Gtyjfi4nwjIGSwGhMDGnQdmp8WBbcjJ080
- WDbBs//OB2iJD/QPsVW2dFJb0k/s8Wo1lLoGRA7PPeah1revkCNJqlpMhSjnsA30Wtr8
- j5AQ==
-X-Gm-Message-State: AOJu0YyuMM/0IUqyBlvN8VooS1jouG3unwQOHHRtCNJw0v1dPPmhXpxN
- S1K9QhVql067X4809hMseDnAXEKDlptgiaHrnpHmCVmbAXG1M9t2VnVWtohbWsY8Lms=
-X-Gm-Gg: ASbGncvaHF8X8mFNy1RfMVEKgLqs0I/C3YgdYyFWioSFzZi7H+HJfNfcBN9hbDOJurm
- aozRT+wXVejPtP5cOcSRJ6siVgN/FtsUX0L5KrpHdd8KLJNOWprVg0BN854C1TptWNkX6C2Th6q
- isXuFxW2jmaEoXCWZ+pgbUG1xorGGBkDjgITeyJsVYWSp+WvfaACpDlEewztPEVta3SYhpFkqSa
- tWZPPpEYZ+YPkHJL/3gqSj1GPnUPU2hrieVn6WGdzH9YN+tLZYyKxdP/OSj/5j9b/uHPof5BgmN
- POla8fkUBlhg0ANKGrnWsZ3Rcxyb3JK3uaOykFxtWaAODLNrhdkH9ipsvgO7CUnE5djytJA0zNg
- P1kxn5Np12mX7Z+u73uIax1zERaRIwPjfw+I1R/oRZOK2VuU=
-X-Google-Smtp-Source: AGHT+IHt59RAtXAnspcHNiGx8izVzNNxGZgUUFbo+MoJyUZPmWVkJw4oHIg7gsdZoRXtz9ZAXQL4rQ==
-X-Received: by 2002:a05:6a00:3d55:b0:771:ec42:1c09 with SMTP id
- d2e1a72fcca58-771ec421d77mr9538236b3a.27.1756256851690; 
- Tue, 26 Aug 2025 18:07:31 -0700 (PDT)
+ bh=zz0hmw1zkEGR7aCPTEKOMC5u8UDV58D53zKh3dJcGq0=;
+ b=Sqipzze94qJXEI50s/hP3X2PEBFTZuZT48T+/WPE/pLxwbliG5V9AArUbZ+fHd/OTN
+ Hkd1Es8/cNET/mouFRRr4zVr7L++nL1geFwMSTwfMh56akKrPg4g6Ximg0y9ht0MT6mV
+ NriK2VOS4IxrwZEd2dzF1i4Hmd6IcAF/tZUiIGMNok7UzlTDl6T2T/Ym5ISOMVdz8WS/
+ +c0cJMrC7YB131OSraeej67vJskg8YfyAnmeKPjVt6rzODy/XfaoxAxMG7o6R8OP9SLc
+ TDsdiZgaedFavKK+phO1eLJuMEF+BHoeCH5SXCL4frg2E9zssH5CwR0+U/7i3kMStbnk
+ 8HJw==
+X-Gm-Message-State: AOJu0Ywzf05ZWVU3/3U4NsZ8ShEp1lExURcZnrVd4Exve4slQx1Auaew
+ yuVBEt75tdpfb4ZyC9yuPAmpgGt0b8DY4j9/P8EfUI58xv9tNxzk2jaAhN/6OBswsAU=
+X-Gm-Gg: ASbGncttmr/UADrQA+ZPJBSx0voONuFURwBRZiBQkLNoWKrFeVbnW0Zmh3JKajcDCWR
+ KXMCFBDPlhcRIx4PaEnvfmMAsYLDeudGmT93AasWJXp33Jbzx/zPrcMBTNor4b2p4ZvIcFO1Fh6
+ 4nA3qet9nYe5+BgzFhninm23UHCjavniGvLRLvrARY5sduUCYZjU/ndC/mbWQSs5LXOe1yMI69I
+ AZV/WJA7yZ0LkzWtuf4EWGknzLSFg7bxf2URVPacXIY9Kb2SjYRQhKtVVq99NMkI/byCY7Z7Zo/
+ QPnUucFt1ohAbAz5QnpQvPzOVTCsVAjE1ZQEk7EB3Z662NYYwYVvxLZU4NdstO3VPY6tINghswk
+ WHxqPwEIM2vRwUfuVpy9OAihnV8NeIX+QAnRx
+X-Google-Smtp-Source: AGHT+IFIAzgJHlHTSKwMVmY4Gp1Q4zava46tZeWpZ4+0M+pLKnxAF/mST+jg/eCTurrR08kf/Fa5mQ==
+X-Received: by 2002:a05:6a00:13a9:b0:771:e114:35be with SMTP id
+ d2e1a72fcca58-771e1143863mr13740244b3a.13.1756257082012; 
+ Tue, 26 Aug 2025 18:11:22 -0700 (PDT)
 Received: from stoup.. ([144.6.121.55]) by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-7720274534esm1419241b3a.47.2025.08.26.18.07.28
+ d2e1a72fcca58-771f2b2d2bfsm4348408b3a.93.2025.08.26.18.11.20
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 26 Aug 2025 18:07:31 -0700 (PDT)
+ Tue, 26 Aug 2025 18:11:21 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH 27/61] target/arm: Remove name argument to alloc_cpreg
-Date: Wed, 27 Aug 2025 11:04:18 +1000
-Message-ID: <20250827010453.4059782-32-richard.henderson@linaro.org>
+Subject: [PATCH 43/61] target/arm: Add read_raw_cp_reg128, write_raw_cp_reg128
+Date: Wed, 27 Aug 2025 11:04:34 +1000
+Message-ID: <20250827010453.4059782-48-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250827010453.4059782-1-richard.henderson@linaro.org>
 References: <20250827010453.4059782-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42d;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42d.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42a;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -98,65 +98,105 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-All callers now pass in->name, so take the value from there.
+Add the functions and update raw_accessors_invalid to match.
+Add assertions for !ARM_CP_128BIT in read_raw_cp_reg and
+write_raw_cp_reg.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/helper.c | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+ target/arm/cpregs.h |  1 +
+ target/arm/helper.c | 43 +++++++++++++++++++++++++++++++++++++++----
+ 2 files changed, 40 insertions(+), 4 deletions(-)
 
+diff --git a/target/arm/cpregs.h b/target/arm/cpregs.h
+index 0d8c45b60c..bd26a4a260 100644
+--- a/target/arm/cpregs.h
++++ b/target/arm/cpregs.h
+@@ -1097,6 +1097,7 @@ static inline bool cp_access_ok(int current_el,
+ 
+ /* Raw read of a coprocessor register (as needed for migration, etc) */
+ uint64_t read_raw_cp_reg(CPUARMState *env, const ARMCPRegInfo *ri);
++Int128 read_raw_cp_reg128(CPUARMState *env, const ARMCPRegInfo *ri);
+ 
+ /*
+  * Return true if the cp register encoding is in the "feature ID space" as
 diff --git a/target/arm/helper.c b/target/arm/helper.c
-index d9ac6a20a7..3cd4546494 100644
+index 7568b78c49..3efc14da3a 100644
 --- a/target/arm/helper.c
 +++ b/target/arm/helper.c
-@@ -7267,9 +7267,9 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-  * Copy a ARMCPRegInfo structure, allocating it along with the name
-  * and an optional suffix to the name.
-  */
--static ARMCPRegInfo *alloc_cpreg(const ARMCPRegInfo *in,
--                                 const char *name, const char *suffix)
-+static ARMCPRegInfo *alloc_cpreg(const ARMCPRegInfo *in, const char *suffix)
+@@ -115,6 +115,7 @@ static void *raw_ptr(CPUARMState *env, const ARMCPRegInfo *ri)
+ 
+ uint64_t read_raw_cp_reg(CPUARMState *env, const ARMCPRegInfo *ri)
  {
-+    const char *name = in->name;
-     size_t name_len = strlen(name);
-     size_t suff_len = suffix ? strlen(suffix) : 0;
-     ARMCPRegInfo *out = g_malloc(sizeof(*in) + name_len + suff_len + 1);
-@@ -7409,7 +7409,7 @@ static void add_cpreg_to_hashtable_aa32(ARMCPU *cpu, ARMCPRegInfo *r,
-                                cp, crm, opc1, opc2, key);
-         break;
-     case ARM_CP_SECSTATE_BOTH:
--        r_s = alloc_cpreg(r, r->name, "_S");
-+        r_s = alloc_cpreg(r, "_S");
-         add_cpreg_to_hashtable(cpu, r_s, ARM_CP_STATE_AA32, ARM_CP_SECSTATE_S,
-                                cp, crm, opc1, opc2, key);
++    assert(!(ri->type & ARM_CP_128BIT));
+     /* Raw read of a coprocessor register (as needed for migration, etc). */
+     if (ri->type & ARM_CP_CONST) {
+         return ri->resetvalue;
+@@ -130,6 +131,7 @@ uint64_t read_raw_cp_reg(CPUARMState *env, const ARMCPRegInfo *ri)
+ static void write_raw_cp_reg(CPUARMState *env, const ARMCPRegInfo *ri,
+                              uint64_t v)
+ {
++    assert(!(ri->type & ARM_CP_128BIT));
+     /*
+      * Raw write of a coprocessor register (as needed for migration, etc).
+      * Note that constant registers are treated as write-ignored; the
+@@ -147,6 +149,32 @@ static void write_raw_cp_reg(CPUARMState *env, const ARMCPRegInfo *ri,
+     }
+ }
  
-@@ -7439,7 +7439,7 @@ static void add_cpreg_to_hashtable_aa64(ARMCPU *cpu, ARMCPRegInfo *r,
-          * and name that it is passed, so it's OK to use
-          * a local struct here.
-          */
--        ARMCPRegInfo *nxs_ri = alloc_cpreg(r, r->name, "NXS");
-+        ARMCPRegInfo *nxs_ri = alloc_cpreg(r, "NXS");
-         uint32_t nxs_key;
++Int128 read_raw_cp_reg128(CPUARMState *env, const ARMCPRegInfo *ri)
++{
++    assert(ri->type & ARM_CP_128BIT);
++    if (ri->raw_read128fn) {
++        return ri->raw_read128fn(env, ri);
++    } else if (ri->read128fn) {
++        return ri->read128fn(env, ri);
++    } else {
++        return raw_read128(env, ri);
++    }
++}
++
++__attribute__((unused))
++static void write_raw_cp_reg128(CPUARMState *env, const ARMCPRegInfo *ri,
++                                Int128 v)
++{
++    assert(ri->type & ARM_CP_128BIT);
++    if (ri->raw_write128fn) {
++        ri->raw_write128fn(env, ri, v);
++    } else if (ri->write128fn) {
++        ri->write128fn(env, ri, v);
++    } else {
++        raw_write128(env, ri, v);
++    }
++}
++
+ static bool raw_accessors_invalid(const ARMCPRegInfo *ri)
+ {
+    /*
+@@ -161,12 +189,19 @@ static bool raw_accessors_invalid(const ARMCPRegInfo *ri)
+     * The tests here line up with the conditions in read/write_raw_cp_reg()
+     * and assertions in raw_read()/raw_write().
+     */
+-    if ((ri->type & ARM_CP_CONST) ||
+-        ri->fieldoffset ||
+-        ((ri->raw_writefn || ri->writefn) && (ri->raw_readfn || ri->readfn))) {
++    if (ri->type & ARM_CP_CONST) {
++        return ri->type & ARM_CP_128BIT;
++    }
++    if (ri->fieldoffset) {
+         return false;
+     }
+-    return true;
++    if (ri->type & ARM_CP_128BIT) {
++        return !((ri->raw_write128fn || ri->write128fn) &&
++                 (ri->raw_read128fn || ri->read128fn));
++    } else {
++        return !((ri->raw_writefn || ri->writefn) &&
++                 (ri->raw_readfn || ri->readfn));
++    }
+ }
  
-         assert(nxs_ri->crn < 0xf);
-@@ -7662,7 +7662,7 @@ void define_one_arm_cp_reg(ARMCPU *cpu, const ARMCPRegInfo *r)
-     for (int crm = crmmin; crm <= crmmax; crm++) {
-         for (int opc1 = opc1min; opc1 <= opc1max; opc1++) {
-             for (int opc2 = opc2min; opc2 <= opc2max; opc2++) {
--                ARMCPRegInfo *r2 = alloc_cpreg(r, r->name, NULL);
-+                ARMCPRegInfo *r2 = alloc_cpreg(r, NULL);
-                 ARMCPRegInfo *r3;
- 
-                 switch (r->state) {
-@@ -7673,7 +7673,7 @@ void define_one_arm_cp_reg(ARMCPU *cpu, const ARMCPRegInfo *r)
-                     add_cpreg_to_hashtable_aa64(cpu, r2, crm, opc1, opc2);
-                     break;
-                 case ARM_CP_STATE_BOTH:
--                    r3 = alloc_cpreg(r2, r2->name, NULL);
-+                    r3 = alloc_cpreg(r2, NULL);
-                     add_cpreg_to_hashtable_aa32(cpu, r2, cp, crm, opc1, opc2);
-                     add_cpreg_to_hashtable_aa64(cpu, r3, crm, opc1, opc2);
-                     break;
+ bool write_cpustate_to_list(ARMCPU *cpu, bool kvm_sync)
 -- 
 2.43.0
 

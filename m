@@ -4,78 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D681CA0FF0
-	for <qemu-arm@archiver.kernel.org>; Wed, 27 Aug 2025 00:11:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3FF00CA0FF0
+	for <qemu-arm@archiver.kernel.org>; Wed, 27 Aug 2025 01:06:29 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ur3kf-00040H-AV; Tue, 26 Aug 2025 20:10:57 -0400
+	id 1ur4bD-0003Yz-Rh; Tue, 26 Aug 2025 21:05:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
- id 1ur3kd-0003zQ-LN
- for qemu-arm@nongnu.org; Tue, 26 Aug 2025 20:10:55 -0400
-Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643])
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1ur4bB-0003XJ-JN
+ for qemu-arm@nongnu.org; Tue, 26 Aug 2025 21:05:13 -0400
+Received: from mail-pf1-x42d.google.com ([2607:f8b0:4864:20::42d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
- id 1ur3ka-0007oD-6U
- for qemu-arm@nongnu.org; Tue, 26 Aug 2025 20:10:55 -0400
-Received: by mail-pl1-x643.google.com with SMTP id
- d9443c01a7336-24622df0d95so38010065ad.2
- for <qemu-arm@nongnu.org>; Tue, 26 Aug 2025 17:10:51 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1ur4b9-0007DR-HV
+ for qemu-arm@nongnu.org; Tue, 26 Aug 2025 21:05:13 -0400
+Received: by mail-pf1-x42d.google.com with SMTP id
+ d2e1a72fcca58-76e4fc419a9so5859524b3a.0
+ for <qemu-arm@nongnu.org>; Tue, 26 Aug 2025 18:05:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756253449; x=1756858249; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=jBHUz3SuLSqqU/2ZexNeh2quDs8pmox9xIU2PVoduuM=;
- b=et4IEyykNOe/UEvSTRZJeT9GW9S49YoF31Mz/7qk2Dm7eqgK7bTwyFUU5lBW4FVddO
- /ArjdVLsu3yb+xXzULkW4jKTi0QEJQNoCY0cYlIo7rGJOzuTWzM0KLdwkHrE2ocaqk50
- KcviHUxgAGYsT8CQZLJSgRlOs/iTlY82Kp8aTBDROJ4NMhvf44PqtczO20IRrYNTwdUj
- 7KQjNjtdeVJ9v+C9NKEBnF83cmRmDwpkQlGkbZ3SkHbNYv8/t0cgOyXP7wMRfcJ1Hvjg
- s8pnqOH0zQ4W31a9jYsAyCeyomDu1BsE3iqRUsVlhhZTFE6cm3f7sY5WU7b+biYfQ4j5
- TGAg==
+ d=linaro.org; s=google; t=1756256709; x=1756861509; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=Ggwb1PQpRrrkLOGCaS9ng6BrXdIGDe+gz4mi5GKaHg4=;
+ b=RY9RBnWYuCqEOD+8ufxyOCGQfU4o+JriHwSSCyzHt4Zp7CNQKFaoRXkcXMODO9QqRx
+ q29rY50q+UVC3kRkJF/ePwjwDYG11szpEOS3BbYE1fE5/SQ7Skg87F9gjN4uTujRDdSu
+ fnt1oj/MPvoCAqVjX3sOOtFSxTSjjs7X9SOKP01tAWpQlH0uMFD2foxFS0odMZ7SU8WD
+ TXOux+/X8iljDxcLXZGZyGexNGV9B9il7hiNodgJvVzkoPNgzU4J8toKEkEf0rgsAF82
+ hz21u8XP+rOewyAv2IxIxJUmUGpmnBdKBAhhisq2S3+JYV8YqVWLY8znJIRHjI8/OwsR
+ jVjA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756253449; x=1756858249;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=jBHUz3SuLSqqU/2ZexNeh2quDs8pmox9xIU2PVoduuM=;
- b=n7zGEHeDx1s/J++rtMJM3gKOhEj5XEK110RYV1i7lxXvE4vxjorcPyHESGe5EDt4TL
- ure0CPdVrE0T+LKWsVjJeYXO2fI68M3ZHchtx8Ad+N/Hy2o/SZVwnnP67+wRVFoc3F6v
- tMVMhkKlijk/Up8nGDl7Ee4llo/7rLeakraces5AENbl+ULZ8gKtRdIzkZlxlEjou5pe
- wn+UGNZjEQgNexf93BjYH8+YS1Zwncrk0+I+m+mzq2FjJYceK6akBS7gUi6lxA8tFXOd
- mGTDqAX7vyP4vR+TWUjfMTy44mNey7lOMd9hvp9nsaRkhvp5T5QpLnRweWFKAiT9aEbA
- C/4A==
-X-Gm-Message-State: AOJu0YzVsdoM9kNIRRkun2ttoaoio9aFfJFzSUSCjr21uVj+Gg9Yy+m1
- P3dgxUmp9UVAE/y09EQ/i70AweJ6qqhIymrYGAwLxn1uf+A4vZbU9KHSEk2AS4ciTKk=
-X-Gm-Gg: ASbGncsfKzVUAgelqN7ePgOZoXvjrRPcEEe+ECxbuwRkIUzPIlAj2qJj9UgvwO+cL+c
- nYXNhV+qEXiRK2K7Gnm+kYchyELpVJvHsWto+yHk24RJvC+2yD16s0p7dAxAfCJfOcXHNofyv9+
- aKSJ94yr0ZBCwGFL7VXBS633ot8ydRe105zq/2NhLi0RjHS1GRv702NKZFEPaWCyQid1uUez/DW
- paI8aJjq1wGvaopuLm2cSvXPadifT1yVppWGkBcQhxZ6p7LzMpfU3c/D3LiJwaGnfhWBVCtUAE5
- TFlf5TkjRyZrCbirJa1LuccwSjiMA98mZB43zmxFqJ/1FQaRxxdEoxHXkjrTE+Eu7SK0xv9U2Jx
- w8Qp8LNGdluoc7BmeVpq/h1zO3rO8xMPeAQ4B+g==
-X-Google-Smtp-Source: AGHT+IFPch2CscGnBJ7Sb4w0yVGbs7pmZXw70Q1rJ3R6gWBRhnWeBB2WUJIeQ/c0D2pAktsRwK/MuQ==
-X-Received: by 2002:a17:902:d4c8:b0:246:96bf:c90b with SMTP id
- d9443c01a7336-24696bfd557mr169274585ad.29.1756253449167; 
- Tue, 26 Aug 2025 17:10:49 -0700 (PDT)
-Received: from gromero0.. ([187.75.38.174]) by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-24875471755sm24060245ad.54.2025.08.26.17.10.47
+ d=1e100.net; s=20230601; t=1756256709; x=1756861509;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=Ggwb1PQpRrrkLOGCaS9ng6BrXdIGDe+gz4mi5GKaHg4=;
+ b=SIzqNSPPkzjC7rE+bJJMG02cpM1uh9sw9taPtQsDLSfAmwo1PPhk2y3mrIYRGV/Kl5
+ q5z7Cl3F2ctbyJndGxR1ha45adUTySla3AVjCPF6xDYm1gWFe1LTeOXI3/oKm/NWEvZy
+ 1o8R6VxIuCG9Y5zZFssJN9S4fPhWCRLe9eL4HytEAC5VCiVMY4BypqRixJaLTRXwxvsx
+ ZFVviFb+Efh3aI3FpZLid7unX1tuHrpC/a/swfsFz2UytSLwSSqE0mOPQZAJXVU8TE7X
+ 6TWSY2bbo24JFFVzGTD4ClPyWCJTeqtNTFBzxT6wdH5uzT1kQGh5qY/xkEbM9sweQsNX
+ uAfQ==
+X-Gm-Message-State: AOJu0Yx0KlGTCdXoqsDe16zcvWiWcfwyPLnUzvR+HbnV0Wroq7CGYBdc
+ YdFy82FxEjLsVm658AVBB5tPXer1KE/uyRTKhxfNdI7ADz2a13EImep4KQgWEDxY5X6j/vnB/My
+ R08jrEkA=
+X-Gm-Gg: ASbGnct+qp/2j/VduPBHSeQpQiQRW2m60YpYVXDNYYk1+tpUkEGI0sIfu7Wh7l3njWN
+ SBCKFO3lFEk/hQFVzekUaRbvvk7kIQEqKZlWkZOSAPMqThLsGzSgdRIs0CzOfd2YJRYCRpABFSX
+ iuu5klkT3h4hqPJf4fDIC6z0hCqLTG8w00RTsWxaFs92qwNsPIxd6HcX5wFgY6lzheMsD7Xp9tJ
+ wEfua/SqjGt1AMkdnVkRIdkdYWsqfjBd+VMewMlau8CRTYWNJdSLfL1Qp/PRE71jCCTDiXHBq7Q
+ dR115yW3cYqOTBhKyhYXb+g+d8/yAigqBZB5F9H3PHTB/z80LrLaSB4mHme0Usr/Nh+RTJEKXDw
+ UQp/LzVzZ1pFr+dxMs0dgZG9mm6tqPTETHCNjo4n5NmOJn0U=
+X-Google-Smtp-Source: AGHT+IHo+9tb4fg7yF/iu+ukHEiCLEDeDjjpFctjRINkMMnSU6BBn4Ddz0POx9nW7/d6DpumBAVVQg==
+X-Received: by 2002:a05:6a20:b32a:b0:243:6e7b:9666 with SMTP id
+ adf61e73a8af0-2436e7ba22dmr10754084637.28.1756256709413; 
+ Tue, 26 Aug 2025 18:05:09 -0700 (PDT)
+Received: from stoup.. ([144.6.121.55]) by smtp.gmail.com with ESMTPSA id
+ d2e1a72fcca58-7720274534esm1419241b3a.47.2025.08.26.18.05.04
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 26 Aug 2025 17:10:48 -0700 (PDT)
-From: Gustavo Romero <gustavo.romero@linaro.org>
-To: qemu-devel@nongnu.org,
-	alex.bennee@linaro.org,
-	thuth@redhat.com
-Cc: qemu-arm@nongnu.org,
-	gustavo.romero@linaro.org
-Subject: [PATCH] tests/functional: Fix reverse_debugging asset precaching
-Date: Wed, 27 Aug 2025 00:10:08 +0000
-Message-Id: <20250827001008.22112-1-gustavo.romero@linaro.org>
-X-Mailer: git-send-email 2.34.1
+ Tue, 26 Aug 2025 18:05:08 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org
+Subject: [PATCH 01/61] target/arm: Introduce KVMID_AA64_SYS_REG64
+Date: Wed, 27 Aug 2025 11:03:48 +1000
+Message-ID: <20250827010453.4059782-2-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250827010453.4059782-1-richard.henderson@linaro.org>
+References: <20250827010453.4059782-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::643;
- envelope-from=gustavo.romero@linaro.org; helo=mail-pl1-x643.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42d;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -98,46 +99,35 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This commit fixes the asset precaching in the reverse_debugging test on
-aarch64.
+Allow us to create kvm ids directly, rather than going
+through ENCODE_AA64_CP_REG + cpreg_to_kvm_id.
 
-QemuBaseTest.main() precaches assets (kernel, rootfs, DT blobs, etc.)
-that are defined in variables with the ASSET_ prefix. This works because
-it ultimately calls Asset.precache_test(), which relies on introspection
-to locate these variables.
-
-If an asset variable is not named with the ASSET_ prefix, precache_test
-cannot find the asset and precaching silently fails. Hence, fix the
-asset precaching by fixing the asset variable name.
-
-Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- tests/functional/test_aarch64_reverse_debug.py | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ target/arm/kvm-consts.h | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
 
-diff --git a/tests/functional/test_aarch64_reverse_debug.py b/tests/functional/test_aarch64_reverse_debug.py
-index 58d4532835..8bc91ccfde 100755
---- a/tests/functional/test_aarch64_reverse_debug.py
-+++ b/tests/functional/test_aarch64_reverse_debug.py
-@@ -21,7 +21,7 @@ class ReverseDebugging_AArch64(ReverseDebugging):
+diff --git a/target/arm/kvm-consts.h b/target/arm/kvm-consts.h
+index c44d23dbe7..fdb305eea1 100644
+--- a/target/arm/kvm-consts.h
++++ b/target/arm/kvm-consts.h
+@@ -180,4 +180,15 @@ MISMATCH_CHECK(CP_REG_ARM64_SYSREG_OP2_SHIFT, KVM_REG_ARM64_SYSREG_OP2_SHIFT);
  
-     REG_PC = 32
+ #undef MISMATCH_CHECK
  
--    KERNEL_ASSET = Asset(
-+    ASSET_KERNEL = Asset(
-         ('https://archives.fedoraproject.org/pub/archive/fedora/linux/'
-          'releases/29/Everything/aarch64/os/images/pxeboot/vmlinuz'),
-         '7e1430b81c26bdd0da025eeb8fbd77b5dc961da4364af26e771bd39f379cbbf7')
-@@ -30,7 +30,7 @@ class ReverseDebugging_AArch64(ReverseDebugging):
-     def test_aarch64_virt(self):
-         self.set_machine('virt')
-         self.cpu = 'cortex-a53'
--        kernel_path = self.KERNEL_ASSET.fetch()
-+        kernel_path = self.ASSET_KERNEL.fetch()
-         self.reverse_debugging(args=('-kernel', kernel_path))
- 
- 
++#define KVMID_AA64_SYS_REG_(op0, op1, crn, crm, op2)    \
++    (CP_REG_AA64_MASK | CP_REG_ARM64_SYSREG |           \
++     ((op0) << CP_REG_ARM64_SYSREG_OP0_SHIFT) |         \
++     ((op1) << CP_REG_ARM64_SYSREG_OP1_SHIFT) |         \
++     ((crn) << CP_REG_ARM64_SYSREG_CRN_SHIFT) |         \
++     ((crm) << CP_REG_ARM64_SYSREG_CRM_SHIFT) |         \
++     ((op2) << CP_REG_ARM64_SYSREG_OP2_SHIFT))
++
++#define KVMID_AA64_SYS_REG64(op0, op1, crn, crm, op2)   \
++    (KVMID_AA64_SYS_REG_(op0, op1, crn, crm, op2) | CP_REG_SIZE_U64)
++
+ #endif
 -- 
-2.34.1
+2.43.0
 
 

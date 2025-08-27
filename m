@@ -4,79 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5EB8BCA0FF6
-	for <qemu-arm@archiver.kernel.org>; Wed, 27 Aug 2025 01:11:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53CA0CA0FF0
+	for <qemu-arm@archiver.kernel.org>; Wed, 27 Aug 2025 01:11:34 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ur4d6-0005oe-3v; Tue, 26 Aug 2025 21:07:12 -0400
+	id 1ur4ds-0000gy-NW; Tue, 26 Aug 2025 21:08:00 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ur4cx-0005MK-Aq
- for qemu-arm@nongnu.org; Tue, 26 Aug 2025 21:07:05 -0400
-Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436])
+ id 1ur4de-0007ob-P5
+ for qemu-arm@nongnu.org; Tue, 26 Aug 2025 21:07:47 -0400
+Received: from mail-pf1-x431.google.com ([2607:f8b0:4864:20::431])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ur4ce-0007RK-Jb
- for qemu-arm@nongnu.org; Tue, 26 Aug 2025 21:06:59 -0400
-Received: by mail-pf1-x436.google.com with SMTP id
- d2e1a72fcca58-76e39ec6f30so6053148b3a.2
- for <qemu-arm@nongnu.org>; Tue, 26 Aug 2025 18:06:43 -0700 (PDT)
+ id 1ur4dX-0007cM-0f
+ for qemu-arm@nongnu.org; Tue, 26 Aug 2025 21:07:45 -0400
+Received: by mail-pf1-x431.google.com with SMTP id
+ d2e1a72fcca58-7704f3c4708so4273793b3a.1
+ for <qemu-arm@nongnu.org>; Tue, 26 Aug 2025 18:07:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756256801; x=1756861601; darn=nongnu.org;
+ d=linaro.org; s=google; t=1756256856; x=1756861656; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=BMuL64RgjNJBh/XTj9TXpDrNBLGbyRPLO9EO9A1A2p8=;
- b=yZT2C6WETKjHrbBWDHKnFUw92R5URxiG/fyJxpAm2NpUuOFruNVy1mVPjEVR0hz3BG
- nNk9x4SP+YuEMr2ZQywW8irJQS3MINhyLHNpMVocTyiJ0fWnn+8jQjOvnjMuiFQAnoI7
- EgVGi/GKG/GJrScY1iIQkW/wANMkxmnMjSiR36sxDHLtiWNQ/t7L2O88OZ02XqZK2T7v
- 2SB3av3LkJ6As3wIGUwB3hNzG69WwDvMFfznn5ptUVDL9yNWPXvaLIoIODqP7btYvGTK
- IKeNT424WWtvruMG+AaEl2YkHA/kr3HCFmqT1ykyffldPZhmr7vCoDQCYhMDngtnOYx+
- gAZw==
+ bh=GXUdqCkF+LYn22BhLyzjofcSNfXOcqV3+XqLF12lMmE=;
+ b=nKcdtVmPJA+Dlh4W96IBj0DTKeJOWi3jetSUC6V87hA+97cSDYO+NCTXIS1ywrJ4YQ
+ 7n7deoZzuvS2XlGGOFILNfbhyOEY/v60cHGe+CrSMmL1QWYZzzTd3yeQAbOwqiOGQwEI
+ tf3RYdBuSiiPBXBlypfbinM+5G9oZTKqvC1w0YBZt8F27YqgR0Tgv/qSr7W1dAWWikXf
+ dOGwuZXDzJ0EQwdPej89h0Tc+20m6rgFmkV0ip60gLRvQ215/DqIcw2Y+0dO/WzOKcDp
+ qnOem1Vw3roiRLHATIi4vB5K7jZruGkUvEbC8kZ15QEQWvMgYLA/uU9cSnOP4Nm9kK6a
+ vEYw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756256801; x=1756861601;
+ d=1e100.net; s=20230601; t=1756256856; x=1756861656;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=BMuL64RgjNJBh/XTj9TXpDrNBLGbyRPLO9EO9A1A2p8=;
- b=S3oNiw0c9BLO5BmiaChxpfp53UPdAbfTQkzmQbhGQOyfwEMe3C1aCEVr4Wp3311zfl
- EwL88PXfjveDMpfrem9a2zhJUKyBqYe54FfkU4QWSXGvgmR8XcEqJ9cj1HI7bL1jddYC
- msgpWQxogsTg+24D5JnMum7aGxRCL6sDTX3xM+TEPglZ2y3HgSX3E9gKPqC1daL3TUWo
- wM/fb1kCn1+r3sdRQi+loLeNM7QnfvkM4NCkBypilvuxkapLUeE7A7yUEqGKyJvpY4dL
- fnyW+5sKjyreXGc3cAYC+Z/c2e8+W8dYW0gbpxiQY/+PvmohFsgYc+v7Ca2qK36d8jGy
- n6xQ==
-X-Gm-Message-State: AOJu0YxRW29KJTAylU4J5p5bnYJ7ty+tNpfMSDJFyDXdz/zLtKrW4PnZ
- 5pShyTn9j8w56lfO0y0BqacEU270q/IWDzgFc095lRZhRY08L3B7ueHJfw8oJQPEKFPpj2vToUK
- GtPA9VZQ=
-X-Gm-Gg: ASbGnctuxD/pztW32di9/7ULKlFIk9tbaloeeUfPHQF8Nh6SZGlLf4LlwPj9Oge6z38
- Vg/QtN9r32v4QhspY8olmRU2Il2m9iMJ25srNdjQO4Adu9HL3kUYdY/RmApJ9ooqGuIpznGzszS
- SHHz/+HpU9+foufN/cElSDswuN7PPJBBtyqcgDQfuuEAiohDz60h/Rm9gL2KEV+el1pj6gjwoNk
- mgu4vWIgnHR11kkAHyfzHV5Pbf8/n41T6IS31Mlfg0DWAAu58mGBAdq9116qlNq6hRfKMPkX4c1
- /R5LJ8xw1Z3fAhrXyYpzTA5aicVdBEHxqm/eBr1yal0fjyygmC/kIVe47WurLKDFXJ2fUS49FUd
- nSIsPfnSegfqC7R7fv5scKdSXbg==
-X-Google-Smtp-Source: AGHT+IGaI1uVyol0Hfdy0BTY66sYdIPsHuZvwTVvCkWCtu7ZrvN3/GGGZbvi4slBZJCXSsT37SU6HQ==
-X-Received: by 2002:a05:6a00:398a:b0:76b:d75c:8a76 with SMTP id
- d2e1a72fcca58-7702f9d90b9mr21126397b3a.1.1756256800751; 
- Tue, 26 Aug 2025 18:06:40 -0700 (PDT)
+ bh=GXUdqCkF+LYn22BhLyzjofcSNfXOcqV3+XqLF12lMmE=;
+ b=Q9NvzfDawSWp9/4jkVR9k1aTkBucqb9UMVa81aI2a9FeoorNhYISIaCEShZyYa8Byi
+ CM4tDCXKNmfadBy3XOnd5GheusjJjZgzgwfdd5xU/0WgkJ7QiR5/p+Nbj66ODucLfwBF
+ E2i0un/45Y1/JdPVpTkNqD94xqmHgQb9gFlrQqgHQOUCym7w2YqMORwSZeFx+l4bEr+V
+ wuGCaFtTJExi/dASNC1GSL6M9USuHddOTxZH1FF6f3rIb682ukDZ549mqpANZaVkzrlT
+ VKqFv5cWqvmm1w516OGOJLZ4cCfFXwjT4WeyC71aMnHkZkUql5uh8Jt9jkvqfWYkfS1T
+ zg1g==
+X-Gm-Message-State: AOJu0YxytBE2sZ/zQ8fIg0V+ACqqtCd3pptsYIzpum7oprSuwyH8lpdi
+ vwTKMT2TFU5T8E0LoZ4Lqe584rqS0+Kiw2MezD8geD35oFmXQFT4uEvc88qVNADeg/Y=
+X-Gm-Gg: ASbGncsUvmLnHnP6TUbYHedDPH42SccDBy4/DHQnQrP0HtcCxzqwKzsR5Q08MTE6697
+ DC93tFaTbsdpaqfGuU3JtMof2lStIHOJKidqbHNBdPnq+UiF5e7FWA5+TbxiDqF+xaVFwceedSk
+ XAviHFceVkDTQBjTIVr9cZdofTthxtuAYIrn1LioT3FJ9i6mCxyBh/oV8HzZusQQYKBR2RsDk5S
+ LnPznWg/cZH97miq2GZu2SCpfrMPMu8T9Xz4jr/OMh57zr8GK7kt5Gl5Jhhed4UmLMcXzZTArwo
+ tDSRgEpvOWc51NDTkcYAJ4wc8PwTmOnb6RjPhC7EWrpXn/KXqN6NGiu0WOURtsBAGNEQrbRsTdf
+ AdBP2P6XC5UlyfZEG8mxwRlMs34VoBQsenJbS
+X-Google-Smtp-Source: AGHT+IFf7ecdlminGXOBAydYbtK4duI+sSVUcfD5+Urj5l/NAJlkvs0mcElP4ltd85I9IUgbbqoCsQ==
+X-Received: by 2002:a05:6a00:439b:b0:771:f8b5:d88 with SMTP id
+ d2e1a72fcca58-771f8b51015mr6428666b3a.22.1756256856477; 
+ Tue, 26 Aug 2025 18:07:36 -0700 (PDT)
 Received: from stoup.. ([144.6.121.55]) by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-7720274534esm1419241b3a.47.2025.08.26.18.06.35
+ d2e1a72fcca58-7720274534esm1419241b3a.47.2025.08.26.18.07.33
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 26 Aug 2025 18:06:40 -0700 (PDT)
+ Tue, 26 Aug 2025 18:07:35 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH 18/61] target/arm: Remove cp argument to ENCODE_AA64_CP_REG
-Date: Wed, 27 Aug 2025 11:04:09 +1000
-Message-ID: <20250827010453.4059782-23-richard.henderson@linaro.org>
+Subject: [PATCH 28/61] target/arm: Move alias setting for wildcards
+Date: Wed, 27 Aug 2025 11:04:19 +1000
+Message-ID: <20250827010453.4059782-33-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250827010453.4059782-1-richard.henderson@linaro.org>
 References: <20250827010453.4059782-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::436;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x436.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::431;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x431.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -99,123 +98,59 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-All invocations were required to pass the same value,
-CP_REG_ARM64_SYSREG_CP.  Bake that in to the result directly.
-Remove CP_REG_ARM64_SYSREG_CP as unused.
+Move this test from add_cpreg_to_hashtable to
+define_one_arm_cp_reg_with_opaque, where we can also
+simplify it based on the loop variables.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/cpregs.h            |  5 ++---
- target/arm/kvm-consts.h        |  3 ---
- target/arm/helper.c            | 11 +++++------
- target/arm/hvf/hvf.c           |  3 +--
- target/arm/tcg/translate-a64.c |  6 ++----
- 5 files changed, 10 insertions(+), 18 deletions(-)
+ target/arm/helper.c | 22 ++++++++++++----------
+ 1 file changed, 12 insertions(+), 10 deletions(-)
 
-diff --git a/target/arm/cpregs.h b/target/arm/cpregs.h
-index 7ebe404163..95b0b9c78e 100644
---- a/target/arm/cpregs.h
-+++ b/target/arm/cpregs.h
-@@ -187,9 +187,8 @@ enum {
-      ((is64) << CP_REG_AA32_64BIT_SHIFT) |                  \
-      ((cp) << 16) | ((crn) << 11) | ((crm) << 7) | ((opc1) << 3) | (opc2))
- 
--#define ENCODE_AA64_CP_REG(cp, crn, crm, op0, op1, op2) \
--    (CP_REG_AA64_MASK |                                 \
--     ((cp) << CP_REG_ARM_COPROC_SHIFT) |                \
-+#define ENCODE_AA64_CP_REG(crn, crm, op0, op1, op2) \
-+    (CP_REG_AA64_MASK | CP_REG_ARM64_SYSREG |           \
-      ((op0) << CP_REG_ARM64_SYSREG_OP0_SHIFT) |         \
-      ((op1) << CP_REG_ARM64_SYSREG_OP1_SHIFT) |         \
-      ((crn) << CP_REG_ARM64_SYSREG_CRN_SHIFT) |         \
-diff --git a/target/arm/kvm-consts.h b/target/arm/kvm-consts.h
-index fdb305eea1..54ae5da7ce 100644
---- a/target/arm/kvm-consts.h
-+++ b/target/arm/kvm-consts.h
-@@ -160,9 +160,6 @@ MISMATCH_CHECK(QEMU_KVM_ARM_TARGET_CORTEX_A53, KVM_ARM_TARGET_CORTEX_A53);
- #define CP_REG_ARM64_SYSREG_OP2_MASK   0x0000000000000007
- #define CP_REG_ARM64_SYSREG_OP2_SHIFT  0
- 
--/* No kernel define but it's useful to QEMU */
--#define CP_REG_ARM64_SYSREG_CP (CP_REG_ARM64_SYSREG >> CP_REG_ARM_COPROC_SHIFT)
--
- MISMATCH_CHECK(CP_REG_ARM64, KVM_REG_ARM64);
- MISMATCH_CHECK(CP_REG_ARM_COPROC_MASK, KVM_REG_ARM_COPROC_MASK);
- MISMATCH_CHECK(CP_REG_ARM_COPROC_SHIFT, KVM_REG_ARM_COPROC_SHIFT);
 diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 268cad905f..93cae888e2 100644
+index 3cd4546494..1a321ad181 100644
 --- a/target/arm/helper.c
 +++ b/target/arm/helper.c
-@@ -4527,7 +4527,7 @@ static void define_arm_vh_e2h_redirects_aliases(ARMCPU *cpu)
-     };
+@@ -7349,20 +7349,12 @@ static void add_cpreg_to_hashtable(ARMCPU *cpu, ARMCPRegInfo *r,
+     }
  
- #define K(op0, op1, crn, crm, op2) \
--    ENCODE_AA64_CP_REG(CP_REG_ARM64_SYSREG_CP, crn, crm, op0, op1, op2)
-+    ENCODE_AA64_CP_REG(crn, crm, op0, op1, op2)
+     /*
+-     * By convention, for wildcarded registers only the first
+-     * entry is used for migration; the others are marked as
+-     * ALIAS so we don't try to transfer the register
+-     * multiple times. Special registers (ie NOP/WFI) are
+-     * never migratable and not even raw-accessible.
++     * Special registers (ie NOP/WFI) are never migratable and
++     * are not even raw-accessible.
+      */
+     if (r->type & ARM_CP_SPECIAL_MASK) {
+         r->type |= ARM_CP_NO_RAW;
+     }
+-    if (((r->crm == CP_ANY) && crm != 0) ||
+-        ((r->opc1 == CP_ANY) && opc1 != 0) ||
+-        ((r->opc2 == CP_ANY) && opc2 != 0)) {
+-        r->type |= ARM_CP_ALIAS | ARM_CP_NO_GDB;
+-    }
  
-     static const struct E2HAlias aliases[] = {
-         { K(3, 0,  1, 0, 0), K(3, 4,  1, 0, 0), K(3, 5, 1, 0, 0),
-@@ -7297,10 +7297,9 @@ static void add_cpreg_to_hashtable(ARMCPU *cpu, const ARMCPRegInfo *r,
-          * in their AArch64 view (the .cp value may be non-zero for the
-          * benefit of the AArch32 view).
-          */
--        if (cp == 0 || r->state == ARM_CP_STATE_BOTH) {
--            cp = CP_REG_ARM64_SYSREG_CP;
--        }
--        key = ENCODE_AA64_CP_REG(cp, r->crn, crm, r->opc0, opc1, opc2);
-+        assert(cp == 0 || r->state == ARM_CP_STATE_BOTH);
-+        cp = 0;
-+        key = ENCODE_AA64_CP_REG(r->crn, crm, r->opc0, opc1, opc2);
-         break;
-     default:
-         g_assert_not_reached();
-@@ -7525,7 +7524,7 @@ void define_one_arm_cp_reg(ARMCPU *cpu, const ARMCPRegInfo *r)
-         }
-         break;
-     case ARM_CP_STATE_AA64:
--        assert(r->cp == 0 || r->cp == CP_REG_ARM64_SYSREG_CP);
-+        assert(r->cp == 0);
-         break;
-     default:
-         g_assert_not_reached();
-diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index 9dffa99ed1..af03fc7fc1 100644
---- a/target/arm/hvf/hvf.c
-+++ b/target/arm/hvf/hvf.c
-@@ -1124,8 +1124,7 @@ static bool is_id_sysreg(uint32_t reg)
+     /*
+      * Update fields to match the instantiation, overwiting wildcards
+@@ -7665,6 +7657,16 @@ void define_one_arm_cp_reg(ARMCPU *cpu, const ARMCPRegInfo *r)
+                 ARMCPRegInfo *r2 = alloc_cpreg(r, NULL);
+                 ARMCPRegInfo *r3;
  
- static uint32_t hvf_reg2cp_reg(uint32_t reg)
- {
--    return ENCODE_AA64_CP_REG(CP_REG_ARM64_SYSREG_CP,
--                              (reg >> SYSREG_CRN_SHIFT) & SYSREG_CRN_MASK,
-+    return ENCODE_AA64_CP_REG((reg >> SYSREG_CRN_SHIFT) & SYSREG_CRN_MASK,
-                               (reg >> SYSREG_CRM_SHIFT) & SYSREG_CRM_MASK,
-                               (reg >> SYSREG_OP0_SHIFT) & SYSREG_OP0_MASK,
-                               (reg >> SYSREG_OP1_SHIFT) & SYSREG_OP1_MASK,
-diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-index dbf47595db..743c5a10e1 100644
---- a/target/arm/tcg/translate-a64.c
-+++ b/target/arm/tcg/translate-a64.c
-@@ -2466,8 +2466,7 @@ static void handle_sys(DisasContext *s, bool isread,
-                        unsigned int op0, unsigned int op1, unsigned int op2,
-                        unsigned int crn, unsigned int crm, unsigned int rt)
- {
--    uint32_t key = ENCODE_AA64_CP_REG(CP_REG_ARM64_SYSREG_CP,
--                                      crn, crm, op0, op1, op2);
-+    uint32_t key = ENCODE_AA64_CP_REG(crn, crm, op0, op1, op2);
-     const ARMCPRegInfo *ri = get_arm_cp_reginfo(s->cp_regs, key);
-     bool need_exit_tb = false;
-     bool nv_trap_to_el2 = false;
-@@ -2603,8 +2602,7 @@ static void handle_sys(DisasContext *s, bool isread,
-          * We don't use the EL1 register's access function, and
-          * fine-grained-traps on EL1 also do not apply here.
-          */
--        key = ENCODE_AA64_CP_REG(CP_REG_ARM64_SYSREG_CP,
--                                 crn, crm, op0, 0, op2);
-+        key = ENCODE_AA64_CP_REG(crn, crm, op0, 0, op2);
-         ri = get_arm_cp_reginfo(s->cp_regs, key);
-         assert(ri);
-         assert(cp_access_ok(s->current_el, ri, isread));
++                /*
++                 * By convention for wildcarded registers, only the first
++                 * entry is used for migration; the others are marked as
++                 * ALIAS so we don't try to transfer the register
++                 * multiple times.
++                 */
++                if (crm != crmmin || opc1 != opc1min || opc2 != opc2min) {
++                    r2->type |= ARM_CP_ALIAS | ARM_CP_NO_GDB;
++                }
++
+                 switch (r->state) {
+                 case ARM_CP_STATE_AA32:
+                     add_cpreg_to_hashtable_aa32(cpu, r2, cp, crm, opc1, opc2);
 -- 
 2.43.0
 

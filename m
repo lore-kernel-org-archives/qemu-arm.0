@@ -4,86 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AEA23CA0FF9
-	for <qemu-arm@archiver.kernel.org>; Wed, 27 Aug 2025 01:15:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D5B8CA0FF0
+	for <qemu-arm@archiver.kernel.org>; Wed, 27 Aug 2025 01:17:51 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ur4hH-0000fs-Hm; Tue, 26 Aug 2025 21:11:32 -0400
+	id 1ur4dI-0006rX-9F; Tue, 26 Aug 2025 21:07:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ur4hG-0000XX-Bw
- for qemu-arm@nongnu.org; Tue, 26 Aug 2025 21:11:30 -0400
-Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436])
+ id 1ur4cr-0005Hk-Nx
+ for qemu-arm@nongnu.org; Tue, 26 Aug 2025 21:06:58 -0400
+Received: from mail-pj1-x102a.google.com ([2607:f8b0:4864:20::102a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ur4h0-0008UW-19
- for qemu-arm@nongnu.org; Tue, 26 Aug 2025 21:11:30 -0400
-Received: by mail-pf1-x436.google.com with SMTP id
- d2e1a72fcca58-771fa8e4190so841330b3a.1
- for <qemu-arm@nongnu.org>; Tue, 26 Aug 2025 18:11:11 -0700 (PDT)
+ id 1ur4cU-0007Jy-IK
+ for qemu-arm@nongnu.org; Tue, 26 Aug 2025 21:06:55 -0400
+Received: by mail-pj1-x102a.google.com with SMTP id
+ 98e67ed59e1d1-32326e5f058so4283629a91.3
+ for <qemu-arm@nongnu.org>; Tue, 26 Aug 2025 18:05:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756257069; x=1756861869; darn=nongnu.org;
+ d=linaro.org; s=google; t=1756256748; x=1756861548; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=33SwRhUpnCZVmtsdmEpjLuwcIJnEcVUmVsI6FJrSej8=;
- b=DJGsbspYxumSlcZavs6lvJ7KXYeh6HZYlW5f/WqnxBMc4T8pwy2eIDHjxS4jZZv3I2
- fNGDQ5lHynBTYtDs/G3pgeKSiqgqWpPzpiIPkt3HV87quRgfRBTM17csk1rLG56Eb5Q2
- W0C3C/nyFOTsz/ewgZj1mtaE/gZ9J7NV//yGiaQznDKwCd7f+RWxdj/UBBD1I6Sb6qlb
- EBdbSh9PkhPrVqaz1Yk0nXKxu2gKBdOi26q7z5HCEDy076Uwhj84jQbXRU/60y/PJ0S7
- OnNDxFharnA5h5XOt5vtsxYr39fhQELfWISZtcHYaFd9TIPQbdfwhvW7MXoTA+gXHZyM
- 3+Hw==
+ bh=kSe8riRjhb8O3kX08ti8qa14kSiIJuoOb2wA1l/P/pk=;
+ b=znDACpFXCAMxv5DzqX86DZhnao1GjF6A7WeRKoV90I2Vskk3A1DELyufIb8sSYa4ta
+ xw06VdUr/sDqFbySdAruz++qqtj/QYqQMo1arNdcIXNqTXAlre4gGl1c9+0n8apf70Q1
+ J8+P30sXGRRFXGyad3+a2eGlREsFec0+0TDuQAm05I9d+6hy8UYpdv6JiQTH+inrjEwF
+ UQ2O2COiEVCP4QALvFwj4Xx1BJbLDE5AZmqSBZmng/rPqY367m4E6nFybmwPo2g9+KxQ
+ NqnLo/cPqDYo3lw2CtuUGf9meW/WKvITpFmaEwpgmd/Uj3YDemOTlcJJHe4j4FQhcQXZ
+ eeZw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756257069; x=1756861869;
+ d=1e100.net; s=20230601; t=1756256748; x=1756861548;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=33SwRhUpnCZVmtsdmEpjLuwcIJnEcVUmVsI6FJrSej8=;
- b=Hki1OYjh3BkN80CUCJ2b16fxdkJIckV95wzmizxZB2zDgCnfgPQTIOJayCCsgciw0y
- DjOK6yKSOzKZsJxN9Mgv0yqmq+MVUfdcrqr023t3UXUx+s8YyekR83c1IasNXXfp/zFv
- 9lm/8+VpJPqwtspvthNi9CUCzEI/pApXLtbv51rlY4cjLGNV0N7ePEq/kHvHCkKO7m65
- st0yNGaO7iHVV9uAjZQjYqiiXlbTvIMCYOIsDhxJpQtPAySjQXJvaU4rX8+QE8R3svIb
- LrDzMcLvXnfCm6ucLpXp149yKiIue0Fl+1YHhxPvACVUlOoIUjNHaMvZhVV9T7J3+Juk
- +9Qw==
-X-Gm-Message-State: AOJu0Ywu42lIWRmD0eSMRe/nIulToj5g4gpuhlh3buIKzObzv8sSvzJH
- yzU3pVsZuUKDKO3JXkeDjy66MxwwKkop5kYXKhv+CbTAUCG5CzlBFQxNPFy6I3RWORkisau3L05
- 7SrsJDTc=
-X-Gm-Gg: ASbGncvLF7mWiSzvWQnmq7eqsaIxWnzNzmbHp6xSma4oNarFWfCGuJIEaJAN8Vct8Ws
- TuIJqCzmcMVHo7X+gL18lhZHbRqBdido+SlwogCXotq6ZWmNBUkzOlqK/9esZ4g6jXh/UIk/4aw
- 0l63QRvpqyEtd6TA3ZgOpwzIEllrT1GufuIF86KEFtcTAjUHWjpPacefIaYqkCdt5RDvV2Vw6HA
- aDXyDKoiinAw4KQ6BK0FmRsNRKh5GXsVBYZpw+sdTEKHRMKJjcKufjhVV8LFCoy482JT6na2uJY
- W85qR+RZS/gr5eeMoNn00VW0Ff/es3N9TQi3QGnuTp+L+SE4vuOkkfNvO1oeiQAI70Z1BwOBZ2B
- gcraHYTJquDHo4X6M5Za00c8h6RqMRIiJ7GI7
-X-Google-Smtp-Source: AGHT+IFe2qQByeCozQocG/gr5aueezml33ysF1lPbjUXkH7x9ShSr0vPBp6VxfjTye2S9Lfb64WdIw==
-X-Received: by 2002:a05:6a20:918d:b0:243:78a:826b with SMTP id
- adf61e73a8af0-24340dca3b6mr28749875637.49.1756257069439; 
- Tue, 26 Aug 2025 18:11:09 -0700 (PDT)
+ bh=kSe8riRjhb8O3kX08ti8qa14kSiIJuoOb2wA1l/P/pk=;
+ b=n2jaEtVvQOXjNY4DFcSFeX1KTLokJn+6d4IcbC2R8zyhjayT/5li7MEbXI5g6f8oNr
+ W9Ga6Bcx17xkVYzVAZfPIqLnB1k6KHEbdlBHWBew28AeOickanfghQd+dnSEDPH5w2bZ
+ U5ipv7kexjNmpsFr6654Zi/QCZlo99y2VHZZ5HnghKE21pHAS650aTxSdfudDQC3hrC7
+ zKZRrbTjEoJcnFt+qwBMoa8gLjv180Rw7Txqu/exsSBhXbkFn7FDzguOQA0/4T5AuJ1I
+ 9q2S8tP6e3+xtAhV79IrEQsA2e02gag1U78ADLIqRrI5EOrM/KovyPGYQzKpQrD4GOox
+ r76Q==
+X-Gm-Message-State: AOJu0YxKqbSwHN1yFc8W2SQShSm7UNMaU/F/Y7JJVpqWIOoMBUR6UXzl
+ bhiwaMDNJHN/sORRenLcC6UhE6jiW5VIorkbdSR277QCuGV5NDqnRQ3fFaj9G/DIDs3EO3XSGrp
+ XCqiPJZM=
+X-Gm-Gg: ASbGncuvBaTVPmyY0jrB5AgPEoq28UcgGJZVTFd7+foWCOzI89tT7Vwufq17uHBM1x5
+ qWssU8MoK/8/UkJsteJjU/ZM+EjHgi39wppYx5wIUP1Gq289CznARchfQVjlAUfISM3a09G4laY
+ wg0RTELcOTmgNy8sBIXssu6LhmdFZAsGcqQQod601OIl82qrAIDjRdQ1J3zLOEA7dsWP+9dc5G+
+ N/DJoUwglB26PpiIcvJERTvPGyNb70tCEwnIM+Op5JTF1qG6oQ034ijL1yXfynZDqDMczEDC6Vf
+ wXaWR/Jet111pJG1Bkkctkpy7p56y9DgZc+++TaJIJldHrXhCKGkUIaCheghiDCh5L1e89sKGyw
+ qeIIVGG89Gz3NI2NmFMj9nX7B3uNUSCHH5TEW
+X-Google-Smtp-Source: AGHT+IFA5oZPxNUGizV7wFeIpe/aYobhUrWo8IuE1XqMukiwfiDEPQpgcf/0sgIX4oYI4d63JmXxOQ==
+X-Received: by 2002:a17:90a:e707:b0:31f:150:e045 with SMTP id
+ 98e67ed59e1d1-32515ed147emr22149559a91.32.1756256747890; 
+ Tue, 26 Aug 2025 18:05:47 -0700 (PDT)
 Received: from stoup.. ([144.6.121.55]) by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-771f2b2d2bfsm4348408b3a.93.2025.08.26.18.11.07
+ d2e1a72fcca58-7720274534esm1419241b3a.47.2025.08.26.18.05.42
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 26 Aug 2025 18:11:09 -0700 (PDT)
+ Tue, 26 Aug 2025 18:05:47 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH 39/61] target/arm: Update ARMCPRegInfo for 128-bit sysregs
-Date: Wed, 27 Aug 2025 11:04:30 +1000
-Message-ID: <20250827010453.4059782-44-richard.henderson@linaro.org>
+Subject: [PATCH 07/61] target/arm/hvf: Replace hvf_sreg_match with
+ hvf_sreg_list
+Date: Wed, 27 Aug 2025 11:03:57 +1000
+Message-ID: <20250827010453.4059782-11-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250827010453.4059782-1-richard.henderson@linaro.org>
 References: <20250827010453.4059782-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::436;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x436.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102a;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102a.google.com
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
+ DKIM_SIGNED=0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -99,71 +99,154 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Add ARM_CP_128BIT for type and functions describing 128-bit access.
+Change hvf_get_registers and hvf_put_registers to iterate over
+cpregs_indexes instead of hvf_sreg_match.
+
+This lets us drop the cp_idx member of hvf_sreg_match, which leaves
+only one member in the struct.  Replace the struct with a const array.
+Instead of int, use the proper enum type: hv_sys_reg_t.
+Rename from hvf_sreg_match to hvf_sreg_list because there is no
+longer any matching going on.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/cpregs.h | 19 +++++++++++++++++++
- 1 file changed, 19 insertions(+)
+ target/arm/hvf/hvf.c | 45 +++++++++++++++-----------------------------
+ 1 file changed, 15 insertions(+), 30 deletions(-)
 
-diff --git a/target/arm/cpregs.h b/target/arm/cpregs.h
-index 9818be4429..90f14dbb18 100644
---- a/target/arm/cpregs.h
-+++ b/target/arm/cpregs.h
-@@ -136,6 +136,8 @@ enum {
-      * identically to the normal one, other than FGT trapping handling.)
-      */
-     ARM_CP_ADD_TLBI_NXS          = 1 << 21,
-+    /* Flag: For ARM_CP_STATE_AA64, sysreg is 128-bit. */
-+    ARM_CP_128BIT                = 1 << 22,
+diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+index 5fcfa9a999..37d8f795eb 100644
+--- a/target/arm/hvf/hvf.c
++++ b/target/arm/hvf/hvf.c
+@@ -394,11 +394,6 @@ static const struct hvf_reg_match hvf_fpreg_match[] = {
+     { HV_SIMD_FP_REG_Q31, offsetof(CPUARMState, vfp.zregs[31]) },
  };
  
+-struct hvf_sreg_match {
+-    int reg;
+-    uint32_t cp_idx;
+-};
+-
  /*
-@@ -178,6 +180,10 @@ enum {
- #define CP_REG_AA32_NS_SHIFT     29
- #define CP_REG_AA32_NS_MASK      (1 << CP_REG_AA32_NS_SHIFT)
+  * QEMU uses KVM system register ids in the migration format.
+  * Conveniently, HVF uses the same encoding of the op* and cr* parameters
+@@ -419,9 +414,9 @@ struct hvf_sreg_match {
  
-+/* Distinguish 64-bit and 128-bit views of AArch64 system registers. */
-+#define CP_REG_AA64_128BIT_SHIFT 30
-+#define CP_REG_AA64_128BIT_MASK  (1 << CP_REG_AA64_128BIT_SHIFT)
-+
- /* Distinguish 32-bit and 64-bit views of AArch32 system registers. */
- #define CP_REG_AA32_64BIT_SHIFT  15
- #define CP_REG_AA32_64BIT_MASK   (1 << CP_REG_AA32_64BIT_SHIFT)
-@@ -849,6 +855,9 @@ typedef struct ARMCPRegInfo ARMCPRegInfo;
- typedef uint64_t CPReadFn(CPUARMState *env, const ARMCPRegInfo *ri);
- typedef void CPWriteFn(CPUARMState *env, const ARMCPRegInfo *ri,
-                        uint64_t value);
-+typedef Int128 CPRead128Fn(CPUARMState *env, const ARMCPRegInfo *opaque);
-+typedef void CPWrite128Fn(CPUARMState *env, const ARMCPRegInfo *opaque,
-+                          Int128 value);
- /* Access permission check functions for coprocessor registers. */
- typedef CPAccessResult CPAccessFn(CPUARMState *env,
-                                   const ARMCPRegInfo *ri,
-@@ -992,6 +1001,13 @@ struct ARMCPRegInfo {
-      * fieldoffset is 0 then no reset will be done.
-      */
-     CPResetFn *resetfn;
-+
-+    /* For ARM_CP_128BIT, when accessed via MRRS/MSRR. */
-+    CPAccessFn *access128fn;
-+    CPRead128Fn *read128fn;
-+    CPWrite128Fn *write128fn;
-+    CPRead128Fn *raw_read128fn;
-+    CPWrite128Fn *raw_write128fn;
+ #undef DEF_SYSREG
+ 
+-#define DEF_SYSREG(HVF_ID, op0, op1, crn, crm, op2)  { HVF_ID },
++#define DEF_SYSREG(HVF_ID, op0, op1, crn, crm, op2)  HVF_ID,
+ 
+-static struct hvf_sreg_match hvf_sreg_match[] = {
++static const hv_sys_reg_t hvf_sreg_list[] = {
+ #include "sysreg.c.inc"
  };
  
- void define_one_arm_cp_reg(ARMCPU *cpu, const ARMCPRegInfo *regs);
-@@ -1061,6 +1077,9 @@ void arm_cp_reset_ignore(CPUARMState *env, const ARMCPRegInfo *ri);
-  */
- static inline MemOp cpreg_field_type(const ARMCPRegInfo *ri)
+@@ -434,7 +429,7 @@ int hvf_get_registers(CPUState *cpu)
+     hv_return_t ret;
+     uint64_t val;
+     hv_simd_fp_uchar16_t fpval;
+-    int i;
++    int i, n;
+ 
+     for (i = 0; i < ARRAY_SIZE(hvf_reg_match); i++) {
+         ret = hv_vcpu_get_reg(cpu->accel->fd, hvf_reg_match[i].reg, &val);
+@@ -463,13 +458,9 @@ int hvf_get_registers(CPUState *cpu)
+     assert_hvf_ok(ret);
+     pstate_write(env, val);
+ 
+-    for (i = 0; i < ARRAY_SIZE(hvf_sreg_match); i++) {
+-        int hvf_id = hvf_sreg_match[i].reg;
+-        uint64_t kvm_id = HVF_TO_KVMID(hvf_id);
+-
+-        if (hvf_sreg_match[i].cp_idx == -1) {
+-            continue;
+-        }
++    for (i = 0, n = arm_cpu->cpreg_array_len; i < n; i++) {
++        uint64_t kvm_id = arm_cpu->cpreg_indexes[i];
++        int hvf_id = KVMID_TO_HVF(kvm_id);
+ 
+         if (cpu->accel->guest_debug_enabled) {
+             /* Handle debug registers */
+@@ -553,7 +544,7 @@ int hvf_get_registers(CPUState *cpu)
+ 
+                 val = read_raw_cp_reg(env, ri);
+ 
+-                arm_cpu->cpreg_values[hvf_sreg_match[i].cp_idx] = val;
++                arm_cpu->cpreg_values[i] = val;
+                 continue;
+             }
+             }
+@@ -562,7 +553,7 @@ int hvf_get_registers(CPUState *cpu)
+         ret = hv_vcpu_get_sys_reg(cpu->accel->fd, hvf_id, &val);
+         assert_hvf_ok(ret);
+ 
+-        arm_cpu->cpreg_values[hvf_sreg_match[i].cp_idx] = val;
++        arm_cpu->cpreg_values[i] = val;
+     }
+     assert(write_list_to_cpustate(arm_cpu));
+ 
+@@ -578,7 +569,7 @@ int hvf_put_registers(CPUState *cpu)
+     hv_return_t ret;
+     uint64_t val;
+     hv_simd_fp_uchar16_t fpval;
+-    int i;
++    int i, n;
+ 
+     for (i = 0; i < ARRAY_SIZE(hvf_reg_match); i++) {
+         val = *(uint64_t *)((void *)env + hvf_reg_match[i].offset);
+@@ -605,12 +596,9 @@ int hvf_put_registers(CPUState *cpu)
+     aarch64_save_sp(env, arm_current_el(env));
+ 
+     assert(write_cpustate_to_list(arm_cpu, false));
+-    for (i = 0; i < ARRAY_SIZE(hvf_sreg_match); i++) {
+-        int hvf_id = hvf_sreg_match[i].reg;
+-
+-        if (hvf_sreg_match[i].cp_idx == -1) {
+-            continue;
+-        }
++    for (i = 0, n = arm_cpu->cpreg_array_len; i < n; i++) {
++        uint64_t kvm_id = arm_cpu->cpreg_indexes[i];
++        int hvf_id = KVMID_TO_HVF(kvm_id);
+ 
+         if (cpu->accel->guest_debug_enabled) {
+             /* Handle debug registers */
+@@ -688,7 +676,7 @@ int hvf_put_registers(CPUState *cpu)
+             }
+         }
+ 
+-        val = arm_cpu->cpreg_values[hvf_sreg_match[i].cp_idx];
++        val = arm_cpu->cpreg_values[i];
+         ret = hv_vcpu_set_sys_reg(cpu->accel->fd, hvf_id, val);
+         assert_hvf_ok(ret);
+     }
+@@ -899,7 +887,7 @@ int hvf_arch_init_vcpu(CPUState *cpu)
  {
-+    if (ri->type & ARM_CP_128BIT) {
-+        return MO_128;
-+    }
-     return (ri->state == ARM_CP_STATE_AA64 || (ri->type & ARM_CP_64BIT)
-             ? MO_64 : MO_32);
- }
+     ARMCPU *arm_cpu = ARM_CPU(cpu);
+     CPUARMState *env = &arm_cpu->env;
+-    uint32_t sregs_match_len = ARRAY_SIZE(hvf_sreg_match);
++    uint32_t sregs_match_len = ARRAY_SIZE(hvf_sreg_list);
+     uint32_t sregs_cnt = 0;
+     uint64_t pfr;
+     hv_return_t ret;
+@@ -924,17 +912,14 @@ int hvf_arch_init_vcpu(CPUState *cpu)
+ 
+     /* Populate cp list for all known sysregs */
+     for (i = 0; i < sregs_match_len; i++) {
+-        int hvf_id = hvf_sreg_match[i].reg;
++        hv_sys_reg_t hvf_id = hvf_sreg_list[i];
+         uint64_t kvm_id = HVF_TO_KVMID(hvf_id);
+         uint32_t key = kvm_to_cpreg_id(kvm_id);
+         const ARMCPRegInfo *ri = get_arm_cp_reginfo(arm_cpu->cp_regs, key);
+ 
+         if (ri) {
+             assert(!(ri->type & ARM_CP_NO_RAW));
+-            hvf_sreg_match[i].cp_idx = sregs_cnt;
+             arm_cpu->cpreg_indexes[sregs_cnt++] = kvm_id;
+-        } else {
+-            hvf_sreg_match[i].cp_idx = -1;
+         }
+     }
+     arm_cpu->cpreg_array_len = sregs_cnt;
 -- 
 2.43.0
 

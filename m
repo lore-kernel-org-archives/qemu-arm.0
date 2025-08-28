@@ -4,82 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9B11CA0EFF
-	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 17:06:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF26FCA0EFF
+	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 17:06:53 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1usNui-0002Kx-Mq; Sat, 30 Aug 2025 11:54:48 -0400
+	id 1usO5P-000477-5S; Sat, 30 Aug 2025 12:05:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1usELO-0005ne-Af
- for qemu-arm@nongnu.org; Sat, 30 Aug 2025 01:41:42 -0400
-Received: from mail-pg1-x52e.google.com ([2607:f8b0:4864:20::52e])
+ id 1urkiZ-0005Ow-Q4
+ for qemu-arm@nongnu.org; Thu, 28 Aug 2025 18:03:39 -0400
+Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1usELL-00040l-5v
- for qemu-arm@nongnu.org; Sat, 30 Aug 2025 01:41:41 -0400
-Received: by mail-pg1-x52e.google.com with SMTP id
- 41be03b00d2f7-b47175d02dcso2345573a12.3
- for <qemu-arm@nongnu.org>; Fri, 29 Aug 2025 22:41:38 -0700 (PDT)
+ id 1urkiX-0002t8-HS
+ for qemu-arm@nongnu.org; Thu, 28 Aug 2025 18:03:39 -0400
+Received: by mail-pl1-x636.google.com with SMTP id
+ d9443c01a7336-246aef91e57so19963695ad.1
+ for <qemu-arm@nongnu.org>; Thu, 28 Aug 2025 15:03:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756532498; x=1757137298; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=xJfNF5k3nu+7zmvA/IxmSosD+BHAmoqUFdC0gCMb2Yo=;
- b=CmmUCL+Lu+5F5ZfK9aOkfMCNK2DofDD7SpgHe55MzyQApC6IgBFvWijiSMK0YrNVFP
- bnv4rzHtO7yTa+PqSy23wouoZ9B+Xf1RdTs7KsH+AsR8DS1k7SwAyae6G6yGf3Yb7w/K
- WHMLviCWZ2/DIzmk4+OW+n+tVF3et5/enfi2a1loL7x6HlAOzrljUQWFlwofk+Mh+4be
- Lzs2e3XOiZx5gA6yZMvAu5L42kTi85nqAux2nqG5nSJdz0aUwQ8s+0U/i9xCelACMAdp
- kcoBOk4o9XX86RSIG0/RDXOOeez3o5JcEDSHWh3pvwUKJjgFv7rhDOQf14Pda9CMa0xu
- za1g==
+ d=linaro.org; s=google; t=1756418615; x=1757023415; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:to:subject:user-agent:mime-version:date:message-id:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=4M9cm8Aazb+KJpA5IGIdk2z8pOTonrvhPx7widSniyM=;
+ b=UgMpIIAh8fsA126b2mU0h9YjiYxPaKTwvHDJi5o4/lI8UifirYIViLb4/vvJrSMo7i
+ MHr/BjU06GLIQQ/SVbgXBNWwFQymOfq20o/Q7TVFsuWtFOxHmkWBqGU38gGvEf+mKKtS
+ 2ADxBv16lXYFf+CPjlZUV8FEUTEOKZFzL9fImBrg+JiwToGRJPFvEWvOZGCpKAyOg6ZA
+ M86jLGMqoYMHlG6rahaPzzH9GaSdu+v+Ruw057HpLB+4Zj6rL31thmm1pazryELLfNrM
+ OCx2VJsjEyW3ZpMJrdkOzoWq1bSfmaPRpx6roHq8Me8634Rg0IU2qDXH/UzZjWNxBSkb
+ sDHQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756532498; x=1757137298;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=xJfNF5k3nu+7zmvA/IxmSosD+BHAmoqUFdC0gCMb2Yo=;
- b=blPJX05pl7rApcinrxPtYNmkptGVl4iYa+TlbPOTFmUIjsE4qfEJywx2CRjtR3DHdT
- tc7y8fvLWv8/QBb7JrFG6AophBuw7yLIDaJsyTLdGvJq9jQkhkJq+PW7SkELq0Id6RjQ
- ZAsqc4+IdQFKvmgyP5E7SshbFuFPoVNNxmrYYBgPLtXEA+n+1bXkPSIb+jSN0o/qhBgV
- reqxg4Ushy5HeEery/P130ciUGNFqE5C2wGn8OeG3Qikai/L92LtepXkplvlQ/vY/LRw
- xTqVSI+cMM126gLH4h/1DkpxujUdCq6GAq42XR65SgIDc4cKIAQZc98BDwmbeP9kqZBw
- QOag==
-X-Gm-Message-State: AOJu0Yw8M6u3ZMUeHKuW1S5vZP7BYep2qfWnX4D6IOgI2Gdd121g1qN9
- 8KOpXTdsZRVTxJ6e8YiGIIc1iqLyj9dLosh7XBKgdljCPjlQLW9L6vbqdZtlXqFtYuE=
-X-Gm-Gg: ASbGncuSlDF1Jy4aqNUhmo6DI5fWGj3uX9vzt49W0/q9IlRwfo0OqSh9yF0p3AMygsn
- paagckhieLMrLUIMyUAvpk9q9Btevlp3S+CmpauJhjkawsazefcrNdv6YyCLY4Y9O4XbEVFx4Ji
- iR8aDUwzXEzNw7gimDQl3hQwfHDOf90FNHSnoewiklLGsNYWM60Y4kJyWLCBwOPwby9FSFDz+Gs
- 3E4hkAn/4rFWtUH342LE8TM7khHR9bwwChNHJ8DNhmCoj61t5McnqeoEUN6X6aaBuwj0HGfS1Ji
- es7OIijfa/uxJyiKYpuY2Xq9XuvpJ+EF8A23tlDQZuy2h1+eGBydT/E1DznU9qW9izNXa79oc3B
- YBdvWfU6HH7/XhToavNV4/Ctnxyg7dZ8YtGPCc5dKKrDwYOURpkZY7coXUn8K
-X-Google-Smtp-Source: AGHT+IFsg2G0q33hgbIqXPNz+FfHjfUQmk/Yq1VBivb/Lq/aJT3oFqS58Nv8GOib1+SDGkCXFAOX4A==
-X-Received: by 2002:a05:6300:218a:b0:243:b20d:5e05 with SMTP id
- adf61e73a8af0-243d6f051e5mr1638088637.39.1756532497643; 
- Fri, 29 Aug 2025 22:41:37 -0700 (PDT)
-Received: from stoup.. (122-150-204-48.dyn.ip.vocus.au. [122.150.204.48])
+ d=1e100.net; s=20230601; t=1756418615; x=1757023415;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=4M9cm8Aazb+KJpA5IGIdk2z8pOTonrvhPx7widSniyM=;
+ b=khSvuGgIFltFkEfPLftVFsvr5/GX5B1sBWzZ2krvs/fEeGCLtPf8dfpPZansYcT4Io
+ 9h5oItkNQTADKevfmv+Y78gOxTxmops5+xqdo1qajJZmbuWIR/AMhg+0GU6wH3hplVC7
+ 08Umy8HGaagGpnaV9SOj7zEDFsZna2AHKV8iQ+wYKf9Erp33Oy7cxauH2R/ZV2UR7SGT
+ /B+tqfDgEttBE5pf1au2BsHLx9sHapZ+YN+/zAtydlVhWF17DmCdvuR7Yz9a4yO0kYD0
+ KfZbzmUfLd4OXniWYW1w6D6aUXxDeCknjiTYC7F6qSiggpdLugoW8jjCMb1kGslIImPu
+ pvFg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVuZ6wuJB7yzN5Grh7Rdz71RsArRIF6fiVn5Wde5Sez7mqtjS/zEkKRTM+Lm8lx143cWWRY8I+IXQ==@nongnu.org
+X-Gm-Message-State: AOJu0YzuReKiDSM5FUNF5dKEy2eyAmnArMnFZmpy35/1KUlEcNrNfVS7
+ voZh+klvTONUyTe6I3Kivqb+8k2wnhx1CRkuRovxLdiI/ya8N20qVrAQDFkimTvme00=
+X-Gm-Gg: ASbGncuRp4vN3Vw4gEPjB95smEsD/+fVfDl1emyKvTE8f37lxvDmLWMD847fuh20sG9
+ N79GqyZhewhzQ9E7QqtVgvllynaXulKOcQqdYeKY8a7K1IQreUcunK46LZMXIEOXVj8pLQfLe9h
+ vHVovk0nuLM1IOjxv1TTeQxAqLigcUDOdkZ7MtjDPFgCrmiGmsitC1siJMoo9kN6zYgOo3pIswK
+ TQ05yKDPaDdlvV2s5pvcmtYMmM1yzHfx/T/2Sy/z4ws09OJuenSlAI8bmGo6I/jFMLvwAY+Vr7R
+ 3unbivMHAacxIdHc3/B9qz3BGNMUO8lcvRQ7kVg0X4mP9Phg8kPAjHx3pz6ziokm8nvZVLcvz+j
+ ct+AsGyvQgIrX8uoPgydPPdpZDkjwJNf3G9/x
+X-Google-Smtp-Source: AGHT+IH77HgtphMfUjDHKo0mPZwZLG1fwVuEfdqHuo1XrojWzDdV3y1JPJ/b6Odi6n+kC0DrGfpXwQ==
+X-Received: by 2002:a17:902:f543:b0:246:7a11:3775 with SMTP id
+ d9443c01a7336-2467a113b1amr258167335ad.48.1756418614818; 
+ Thu, 28 Aug 2025 15:03:34 -0700 (PDT)
+Received: from [192.168.0.195] ([144.6.121.55])
  by smtp.gmail.com with ESMTPSA id
- 41be03b00d2f7-b4d96829a66sm2435905a12.6.2025.08.29.22.41.35
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 29 Aug 2025 22:41:37 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v4 01/84] linux-user/aarch64: Split out signal_for_exception
-Date: Sat, 30 Aug 2025 15:40:05 +1000
-Message-ID: <20250830054128.448363-2-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250830054128.448363-1-richard.henderson@linaro.org>
-References: <20250830054128.448363-1-richard.henderson@linaro.org>
+ d9443c01a7336-249065d1ef4sm5032555ad.134.2025.08.28.15.03.30
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 28 Aug 2025 15:03:34 -0700 (PDT)
+Message-ID: <fec1ee2a-f141-4c5f-b7a8-debe404b9d47@linaro.org>
+Date: Fri, 29 Aug 2025 08:03:26 +1000
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::52e;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x52e.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 0/5] target/arm: Remove deprecated pxa CPUs and
+ xscale/iwmmxt code
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20250828140422.3271703-1-peter.maydell@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Content-Language: en-US
+In-Reply-To: <20250828140422.3271703-1-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::636;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x636.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -102,120 +104,17 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- linux-user/aarch64/cpu_loop.c | 84 ++++++++++++++++++++---------------
- 1 file changed, 47 insertions(+), 37 deletions(-)
+On 8/29/25 00:04, Peter Maydell wrote:
+> Peter Maydell (5):
+>    target/arm: Remove deprecated pxa CPU family
+>    target/arm: Remove XScale and iWMMXt translate.c code
+>    target/arm: Remove iwmmxt helper functions
+>    target/arm: Drop ARM_FEATURE_XSCALE handling
+>    target/arm: Drop ARM_FEATURE_IWMMXT handling
 
-diff --git a/linux-user/aarch64/cpu_loop.c b/linux-user/aarch64/cpu_loop.c
-index 4c4921152e..3b2782581b 100644
---- a/linux-user/aarch64/cpu_loop.c
-+++ b/linux-user/aarch64/cpu_loop.c
-@@ -27,11 +27,56 @@
- #include "target/arm/syndrome.h"
- #include "target/arm/cpu-features.h"
- 
-+/* Use the exception syndrome to map a cpu exception to a signal. */
-+static void signal_for_exception(CPUARMState *env, vaddr addr)
-+{
-+    uint32_t syn = env->exception.syndrome;
-+    int si_code, si_signo;
-+
-+    switch (syn_get_ec(syn)) {
-+    case EC_DATAABORT:
-+    case EC_INSNABORT:
-+        /* Both EC have the same format for FSC, or close enough. */
-+        switch (extract32(syn, 0, 6)) {
-+        case 0x04 ... 0x07: /* Translation fault, level {0-3} */
-+            si_signo = TARGET_SIGSEGV;
-+            si_code = TARGET_SEGV_MAPERR;
-+            break;
-+        case 0x09 ... 0x0b: /* Access flag fault, level {1-3} */
-+        case 0x0d ... 0x0f: /* Permission fault, level {1-3} */
-+            si_signo = TARGET_SIGSEGV;
-+            si_code = TARGET_SEGV_ACCERR;
-+            break;
-+        case 0x11: /* Synchronous Tag Check Fault */
-+            si_signo = TARGET_SIGSEGV;
-+            si_code = TARGET_SEGV_MTESERR;
-+            break;
-+        case 0x21: /* Alignment fault */
-+            si_signo = TARGET_SIGBUS;
-+            si_code = TARGET_BUS_ADRALN;
-+            break;
-+        default:
-+            g_assert_not_reached();
-+        }
-+        break;
-+
-+    case EC_PCALIGNMENT:
-+        si_signo = TARGET_SIGBUS;
-+        si_code = TARGET_BUS_ADRALN;
-+        break;
-+
-+    default:
-+        g_assert_not_reached();
-+    }
-+
-+    force_sig_fault(si_signo, si_code, addr);
-+}
-+
- /* AArch64 main loop */
- void cpu_loop(CPUARMState *env)
- {
-     CPUState *cs = env_cpu(env);
--    int trapnr, ec, fsc, si_code, si_signo;
-+    int trapnr;
-     abi_long ret;
- 
-     for (;;) {
-@@ -67,42 +112,7 @@ void cpu_loop(CPUARMState *env)
-             break;
-         case EXCP_PREFETCH_ABORT:
-         case EXCP_DATA_ABORT:
--            ec = syn_get_ec(env->exception.syndrome);
--            switch (ec) {
--            case EC_DATAABORT:
--            case EC_INSNABORT:
--                /* Both EC have the same format for FSC, or close enough. */
--                fsc = extract32(env->exception.syndrome, 0, 6);
--                switch (fsc) {
--                case 0x04 ... 0x07: /* Translation fault, level {0-3} */
--                    si_signo = TARGET_SIGSEGV;
--                    si_code = TARGET_SEGV_MAPERR;
--                    break;
--                case 0x09 ... 0x0b: /* Access flag fault, level {1-3} */
--                case 0x0d ... 0x0f: /* Permission fault, level {1-3} */
--                    si_signo = TARGET_SIGSEGV;
--                    si_code = TARGET_SEGV_ACCERR;
--                    break;
--                case 0x11: /* Synchronous Tag Check Fault */
--                    si_signo = TARGET_SIGSEGV;
--                    si_code = TARGET_SEGV_MTESERR;
--                    break;
--                case 0x21: /* Alignment fault */
--                    si_signo = TARGET_SIGBUS;
--                    si_code = TARGET_BUS_ADRALN;
--                    break;
--                default:
--                    g_assert_not_reached();
--                }
--                break;
--            case EC_PCALIGNMENT:
--                si_signo = TARGET_SIGBUS;
--                si_code = TARGET_BUS_ADRALN;
--                break;
--            default:
--                g_assert_not_reached();
--            }
--            force_sig_fault(si_signo, si_code, env->exception.vaddress);
-+            signal_for_exception(env, env->exception.vaddress);
-             break;
-         case EXCP_DEBUG:
-         case EXCP_BKPT:
--- 
-2.43.0
+Woohoo!
 
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+
+r~
 

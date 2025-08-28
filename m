@@ -4,125 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47EB2CA0EED
-	for <qemu-arm@archiver.kernel.org>; Thu, 28 Aug 2025 08:21:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1DEC1C8303F
+	for <qemu-arm@archiver.kernel.org>; Thu, 28 Aug 2025 08:28:06 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1urXt6-0007YT-UC; Thu, 28 Aug 2025 04:21:41 -0400
+	id 1urXz5-0002wD-Gt; Thu, 28 Aug 2025 04:27:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armenon@redhat.com>)
- id 1urXsz-0007Qw-MU
- for qemu-arm@nongnu.org; Thu, 28 Aug 2025 04:21:34 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armenon@redhat.com>)
- id 1urXsw-0005Rs-Pz
- for qemu-arm@nongnu.org; Thu, 28 Aug 2025 04:21:33 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1756369289;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=WC0ytxsGPJH7Y7/tp/49t9pBmhIS7YlJ9LUBUCvmcH4=;
- b=bS7ji5kBMTDkxVHpbVXIDchc3ZM9/8sjVvvRW4yfR0nYEsLUyyuk+XkcrfFWBWDypzsu6j
- r8ybXTPPPMQ4VFRqb7MguMBl8H09jKSz4q+9VHzL8tlXpNdnjHuxjoWEKNPFp0PTkDZ2Tk
- aWSrJd080QLbbvPl8oZdkTFgOYcaxqM=
-Received: from mail-pf1-f199.google.com (mail-pf1-f199.google.com
- [209.85.210.199]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-183--U5oEn4uNsqmkQiTTUvyHA-1; Thu, 28 Aug 2025 04:21:28 -0400
-X-MC-Unique: -U5oEn4uNsqmkQiTTUvyHA-1
-X-Mimecast-MFC-AGG-ID: -U5oEn4uNsqmkQiTTUvyHA_1756369287
-Received: by mail-pf1-f199.google.com with SMTP id
- d2e1a72fcca58-7720f59c0f6so695920b3a.3
- for <qemu-arm@nongnu.org>; Thu, 28 Aug 2025 01:21:28 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1urXz2-0002uj-Qk
+ for qemu-arm@nongnu.org; Thu, 28 Aug 2025 04:27:49 -0400
+Received: from mail-yw1-x1131.google.com ([2607:f8b0:4864:20::1131])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1urXz0-0006QV-2C
+ for qemu-arm@nongnu.org; Thu, 28 Aug 2025 04:27:48 -0400
+Received: by mail-yw1-x1131.google.com with SMTP id
+ 00721157ae682-71d60504788so5019357b3.2
+ for <qemu-arm@nongnu.org>; Thu, 28 Aug 2025 01:27:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1756369664; x=1756974464; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=f4Eg/6x/m9e+ER1Y74rgIuNm7K7yt8ADIBCmjfcHBAo=;
+ b=XZhXLcus6Z8cpDfjybPfrB8DocQ+VoskwE+Ws5qQYlKk6XdwUOdOUnNffuJODKJ4c2
+ sRfbsHU5WNmUzfME76Mf3r/UP2zxfZNCee+aK0gBiOrrGJhxkdRhisLyePL5537gauBj
+ /gFhCfhr+lt6Apf+vKaj2QqSvVWDRk3JpKzPq0OhZ4MhJGKyOW7kdVPkrUGFysh2jh4l
+ +dgqnFVd0bzN2nHklamCIEiDjrny7UuHykAY0X7Sj1uis/zYltNsLe0AVAQxhMuEfTFe
+ EGT2kcHNJHTha72IzA8/DifXy+8FTur7MUJcDQVOkxa0NGJUyRmD8JWt8M3AmTk1psOk
+ EBcQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756369283; x=1756974083;
- h=in-reply-to:content-transfer-encoding:content-disposition
- :mime-version:references:message-id:subject:to:from:date
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=WC0ytxsGPJH7Y7/tp/49t9pBmhIS7YlJ9LUBUCvmcH4=;
- b=CjOlTSVgR+4UbaKmpgN1YGqjFPWZJko6QoJJN1vi9g5F3NNWyMIZGWUecMPfM5qAw4
- OvthP3Mfqk5VdSof8yt2S5cTOHXlp4eSEXysqWjUlBsg1fezaX1e6X6NYakX4osMAhFH
- /aMmdYTv2RFRBrWK6G65Y901FtFrC8mEEarLPIxxtpDA+5BdZ8Z6Jtpe9alwGp8fz8LL
- OUyeOZEVBDEbvLFVy3+VqkXcQfYbPWiWfev3lomfpuEhO40Cis9IsENl11wfvc94moah
- iOSq8V1c/isCai96Agb10Gr6e5+GZZ9n53xbO77Vds/SzUzLmY1aRBm9Z95bBbisuFn+
- xEDw==
+ d=1e100.net; s=20230601; t=1756369664; x=1756974464;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=f4Eg/6x/m9e+ER1Y74rgIuNm7K7yt8ADIBCmjfcHBAo=;
+ b=wu5lMMc6eZiLnAov0qUl/qmS682DRcS7sWXuwMBSdtBx0xatnA9oafMrqXWieYb/Ey
+ y+MaDj5VdnQy42TFqUA4nVDvJwh2S/wAW+PuHdTnM2lIfmM4fawfIDAIpNMWIE2rPIAr
+ bJY1mUT/ZfMIle54RMcFZWtR5aFXXmRd6DsYxojqfaGy98HMLJICQrIxxZx6Iw39zGhb
+ 9bAuIpfr4ijocw5RBcxlgQsy29XHQ+iWg/fwdsFXm9EPPCrw3l3ugMeVmeXJ2Kgtyksv
+ MM+tz6NG+Y+NmhGWZfKmar/XzEndpNVvKyorgfGoLOtxFLLowCJT1sFqjRKeLTmCGA/w
+ gWmg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXpMa7wDTC8HKKlUXuTrsY595rstmRMT1QVowZegBWAxbzC4G55Zl/q4IuG4Iz0hMwAgUiSDXpgww==@nongnu.org
-X-Gm-Message-State: AOJu0YxVH5FowDiNd6WdFpbX+9jYYyH5UqZtW47bAJ7If/4YnnK1z4rf
- MqobY8ilGsM7s0EpmcnyReYaQGCnzU+bDx4Lf1jx8TvM5wYkipw1WiBoGW/ym14IsFagQKv8Ooo
- UVc7xstgLR6/bMCFriuRnTxj4w7glQyMoxpgQt3c2cfREkz0jCYEULQ==
-X-Gm-Gg: ASbGnctSUctb3mPM5fsXnINmKuwUQvjXAbLczUWXLFZ+/o++pH3p0KMyrjZ0qvHmfDE
- f4fk9Zy8JEdCoacI7mbUAiosD1/TLBJjJIHE53d+U5Hhh6Eu9cCFs/eB78SwF3PDoSoYNlOfgT+
- U0JZTJevK4ASMMN+hHddmA/mdAaJwQ7aTS4EsZ587/AqTK7IeIr2fHYqEdOsrDGogHSEPmYMUbH
- kdHbyc3rbHoEfJX2nIm+oYdoFaWewyioOQKTMbBxkXkCCUV5QfgWXp1QNnePN9CH6iwTiaG6Dij
- kILYo6d5IQ2Kr3ZX59Y/rX0vObqXEbj4edcDPZ3kNSxHma1HG878
-X-Received: by 2002:a05:6a00:9288:b0:76b:d67b:2ee0 with SMTP id
- d2e1a72fcca58-7702f9d7f70mr34335376b3a.6.1756369283331; 
- Thu, 28 Aug 2025 01:21:23 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGCR/Xjes4AMrzdf3Q5xIAomWoO0iPV3LXKeCbb7uTuLukg1w5jX1vwoyQ+P3zvNeCG5rkt1g==
-X-Received: by 2002:a05:6a00:9288:b0:76b:d67b:2ee0 with SMTP id
- d2e1a72fcca58-7702f9d7f70mr34335332b3a.6.1756369282777; 
- Thu, 28 Aug 2025 01:21:22 -0700 (PDT)
-Received: from armenon-kvm.bengluru.csb ([49.47.193.42])
- by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-77054bb0c46sm12430554b3a.41.2025.08.28.01.21.12
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 28 Aug 2025 01:21:22 -0700 (PDT)
-Date: Thu, 28 Aug 2025 13:51:08 +0530
-From: Arun Menon <armenon@redhat.com>
-To: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>, qemu-devel@nongnu.org,
- Peter Xu <peterx@redhat.com>, Fabiano Rosas <farosas@suse.de>,
- Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
- Dmitry Osipenko <dmitry.osipenko@collabora.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Cornelia Huck <cohuck@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
- Eric Farman <farman@linux.ibm.com>, Thomas Huth <thuth@redhat.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- Matthew Rosato <mjrosato@linux.ibm.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- David Hildenbrand <david@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
- Nicholas Piggin <npiggin@gmail.com>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Fam Zheng <fam@euphon.net>,
- Alex Williamson <alex.williamson@redhat.com>,
- =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@redhat.com>,
- Steve Sistare <steven.sistare@oracle.com>,
- =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
- qemu-s390x@nongnu.org, qemu-ppc@nongnu.org,
- Hailiang Zhang <zhanghailiang@xfusion.com>,
- Stefan Berger <stefanb@linux.vnet.ibm.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
-Subject: Re: [PATCH v12 02/27] migration: push Error **errp into
- vmstate_load_state()
-Message-ID: <aLARdGTlAcliwtgi@armenon-kvm.bengluru.csb>
-References: <20250821-propagate_tpm_error-v12-0-72b803e707dc@redhat.com>
- <20250821-propagate_tpm_error-v12-2-72b803e707dc@redhat.com>
- <2f079847-8b78-4db0-b14e-a3f643b6cc98@rsg.ci.i.u-tokyo.ac.jp>
- <aLAQqhtqzwaRj7Ar@armenon-kvm.bengluru.csb>
+ AJvYcCXNR7qj4ABVJLusZ7Ucjdo2QVw0ur6MuWXOGP/wwQnhBpJI8sYosJFw1xap2j0tPpsGY4QhpvnXyA==@nongnu.org
+X-Gm-Message-State: AOJu0YwohzAex5cooG30l5ajtE5+YWkwq3g96EGMJYkX4kw00kuLCIqU
+ mqwUlrkfle2rvJj3q29yUoSa4r9biq9GqoIWWMycbPpxFAcAJnwIUeLG6cA+ahJhKPaycsdQwv5
+ AaY/nZ1hAH/CQlhAhxuWyB2okKfN83/TYKT4sQjIl6A==
+X-Gm-Gg: ASbGncuVEDGlmkhbceLLzv4ZOX1K5EbNF5mWfUpgy22hEsFuKNbIadjbHtfiDMl9P4m
+ KReKltbceseaHTGZ/VTkdKcgnaH8KlVNffzzNRUceesd56ofT5yWhoMbwX5rSHrxrBanYLpf/Jv
+ VFTHWLn0qx63I1dyK+AMKGJupZTekV/xazJ7rP3dJVBbsus3RphUseY5mTmiTCaR8l/GCCBtrL1
+ Iv6VaPM5TMCpXWjCio=
+X-Google-Smtp-Source: AGHT+IHge415xNSig9bQ10zZibhqpU39MD7aIRvcNq/JejFD03YkCiXM4TqE0tYiHN+KXYSRFfEU6p+1Lop0O/Tk/Qo=
+X-Received: by 2002:a05:690c:6f8e:b0:721:5b31:54cc with SMTP id
+ 00721157ae682-7215b316b46mr28377327b3.31.1756369663904; Thu, 28 Aug 2025
+ 01:27:43 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <aLAQqhtqzwaRj7Ar@armenon-kvm.bengluru.csb>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: sqJBqT7SDPoI5BgrTU52iC6XWdmhPBoZICUViG-6HYU_1756369287
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=armenon@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+References: <20250727074202.83141-1-richard.henderson@linaro.org>
+ <20250727074202.83141-3-richard.henderson@linaro.org>
+ <CAFEAcA_ZQ13qMRUQsieJiEPV=ULrDbz8=EJaW4_kw=yEysob0w@mail.gmail.com>
+ <87349s4kfz.fsf@draig.linaro.org>
+ <3d59d45f-79f1-4701-ad3b-402513ce4e72@linaro.org>
+In-Reply-To: <3d59d45f-79f1-4701-ad3b-402513ce4e72@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 28 Aug 2025 09:27:31 +0100
+X-Gm-Features: Ac12FXwDYMmTix2gl8Lqkfui396j7Ro6Wf-LNZp8Vl7o1V4uRqgtXpa3r21RFTA
+Message-ID: <CAFEAcA9ryysJQK8hxNxpF=00yC=t3==aFqt2pubD3CjM9T+WLg@mail.gmail.com>
+Subject: Re: [PATCH v9 2/6] tests/functional/test_aarch64_rme: update image
+To: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+ Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1131;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1131.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -138,193 +102,46 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, Aug 28, 2025 at 01:47:46PM +0530, Arun Menon wrote:
-> H Akihiko,
-> 
-> Thanks for the review.
-> 
-> On Thu, Aug 28, 2025 at 10:34:54AM +0900, Akihiko Odaki wrote:
-> > On 2025/08/21 17:43, Arun Menon wrote:
-> > > This is an incremental step in converting vmstate loading
-> > > code to report error via Error objects instead of directly
-> > > printing it to console/monitor.
-> > > It is ensured that vmstate_load_state() must report an error
-> > > in errp, in case of failure.
-> > > 
-> > > The errors are temporarily reported using warn_report_err().
-> > > This is removed in the subsequent patches in this series,
-> > > when we are actually able to propagate the error to the calling
-> > > function using errp. Whereas, if we want the function to exit on
-> > > error, then error_fatal is passed.
-> > > 
-> > > Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-> > > Signed-off-by: Arun Menon <armenon@redhat.com>
-> > > ---
-> > >   hw/display/virtio-gpu.c     |  2 +-
-> > >   hw/pci/pci.c                |  3 ++-
-> > >   hw/s390x/virtio-ccw.c       |  2 +-
-> > >   hw/scsi/spapr_vscsi.c       |  4 ++-
-> > >   hw/vfio/pci.c               |  5 +++-
-> > >   hw/virtio/virtio-mmio.c     |  3 ++-
-> > >   hw/virtio/virtio-pci.c      |  2 +-
-> > >   hw/virtio/virtio.c          |  7 +++--
-> > >   include/migration/vmstate.h |  2 +-
-> > >   migration/cpr.c             |  3 +--
-> > >   migration/savevm.c          |  8 ++++--
-> > >   migration/vmstate-types.c   | 22 +++++++++++----
-> > >   migration/vmstate.c         | 65 +++++++++++++++++++++++++++++++--------------
-> > >   tests/unit/test-vmstate.c   | 63 ++++++++++++++++++++++++++++++++++++-------
-> > >   ui/vdagent.c                |  5 +++-
-> > >   15 files changed, 147 insertions(+), 49 deletions(-)
-> > > 
-> > > diff --git a/hw/display/virtio-gpu.c b/hw/display/virtio-gpu.c
-> > > index 0a1a625b0ea6cf26cb0d799171a57ed3d3ab2442..5dc31bc6bfb0272e29a4364ab10de2595a4bedf7 100644
-> > > --- a/hw/display/virtio-gpu.c
-> > > +++ b/hw/display/virtio-gpu.c
-> > > @@ -1343,7 +1343,7 @@ static int virtio_gpu_load(QEMUFile *f, void *opaque, size_t size,
-> > >       }
-> > >       /* load & apply scanout state */
-> > > -    vmstate_load_state(f, &vmstate_virtio_gpu_scanouts, g, 1);
-> > > +    vmstate_load_state(f, &vmstate_virtio_gpu_scanouts, g, 1, &error_fatal);
-> > >       return 0;
-> > >   }
-> > > diff --git a/hw/pci/pci.c b/hw/pci/pci.c
-> > > index c70b5ceebaf1f2b10768bd030526cbb518da2b8d..6be932d3bb67ff0c4808707db2a7b6378a90e82b 100644
-> > > --- a/hw/pci/pci.c
-> > > +++ b/hw/pci/pci.c
-> > > @@ -934,7 +934,8 @@ void pci_device_save(PCIDevice *s, QEMUFile *f)
-> > >   int pci_device_load(PCIDevice *s, QEMUFile *f)
-> > >   {
-> > >       int ret;
-> > > -    ret = vmstate_load_state(f, &vmstate_pci_device, s, s->version_id);
-> > > +    ret = vmstate_load_state(f, &vmstate_pci_device, s, s->version_id,
-> > > +                             &error_fatal);
-> > >       /* Restore the interrupt status bit. */
-> > >       pci_update_irq_status(s);
-> > >       return ret;
-> > > diff --git a/hw/s390x/virtio-ccw.c b/hw/s390x/virtio-ccw.c
-> > > index d2f85b39f30f7fc82e0c600144c0a958e1269b2c..6a9641a03d5d3a38a4de7ceb9deffc0cc303bcff 100644
-> > > --- a/hw/s390x/virtio-ccw.c
-> > > +++ b/hw/s390x/virtio-ccw.c
-> > > @@ -1136,7 +1136,7 @@ static void virtio_ccw_save_config(DeviceState *d, QEMUFile *f)
-> > >   static int virtio_ccw_load_config(DeviceState *d, QEMUFile *f)
-> > >   {
-> > >       VirtioCcwDevice *dev = VIRTIO_CCW_DEVICE(d);
-> > > -    return vmstate_load_state(f, &vmstate_virtio_ccw_dev, dev, 1);
-> > > +    return vmstate_load_state(f, &vmstate_virtio_ccw_dev, dev, 1, &error_fatal);
-> > >   }
-> > >   static void virtio_ccw_pre_plugged(DeviceState *d, Error **errp)
-> > > diff --git a/hw/scsi/spapr_vscsi.c b/hw/scsi/spapr_vscsi.c
-> > > index 20f70fb2729de78b9636a6b8c869695dab4f8902..8622419497db650523d51bcb41557bbca254eaa3 100644
-> > > --- a/hw/scsi/spapr_vscsi.c
-> > > +++ b/hw/scsi/spapr_vscsi.c
-> > > @@ -642,15 +642,17 @@ static void *vscsi_load_request(QEMUFile *f, SCSIRequest *sreq)
-> > >       VSCSIState *s = VIO_SPAPR_VSCSI_DEVICE(bus->qbus.parent);
-> > >       vscsi_req *req;
-> > >       int rc;
-> > > +    Error *local_err = NULL;
-> > >       assert(sreq->tag < VSCSI_REQ_LIMIT);
-> > >       req = &s->reqs[sreq->tag];
-> > >       assert(!req->active);
-> > >       memset(req, 0, sizeof(*req));
-> > > -    rc = vmstate_load_state(f, &vmstate_spapr_vscsi_req, req, 1);
-> > > +    rc = vmstate_load_state(f, &vmstate_spapr_vscsi_req, req, 1, &local_err);
-> > >       if (rc) {
-> > >           fprintf(stderr, "VSCSI: failed loading request tag#%u\n", sreq->tag);
-> > > +        warn_report_err(local_err);
-> > >           return NULL;
-> > >       }
-> > >       assert(req->active);
-> > > diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
-> > > index 4fa692c1a32bcfa4e4939e5fcb64f2bf19905b3b..a65e34b6979eadfa0851666aeae7cf731a00fa40 100644
-> > > --- a/hw/vfio/pci.c
-> > > +++ b/hw/vfio/pci.c
-> > > @@ -2790,13 +2790,16 @@ static int vfio_pci_load_config(VFIODevice *vbasedev, QEMUFile *f)
-> > >       PCIDevice *pdev = &vdev->pdev;
-> > >       pcibus_t old_addr[PCI_NUM_REGIONS - 1];
-> > >       int bar, ret;
-> > > +    Error *local_err = NULL;
-> > >       for (bar = 0; bar < PCI_ROM_SLOT; bar++) {
-> > >           old_addr[bar] = pdev->io_regions[bar].addr;
-> > >       }
-> > > -    ret = vmstate_load_state(f, &vmstate_vfio_pci_config, vdev, 1);
-> > > +    ret = vmstate_load_state(f, &vmstate_vfio_pci_config, vdev, 1,
-> > > +                             &local_err);
-> > >       if (ret) {
-> > > +        warn_report_err(local_err);
-> > >           return ret;
-> > >       }
-> > > diff --git a/hw/virtio/virtio-mmio.c b/hw/virtio/virtio-mmio.c
-> > > index 532c67107ba1d2978a76cf49f9cdc1de1dea3e11..0a688909fc606a3c9fde933667ae8c309ab527d0 100644
-> > > --- a/hw/virtio/virtio-mmio.c
-> > > +++ b/hw/virtio/virtio-mmio.c
-> > > @@ -34,6 +34,7 @@
-> > >   #include "qemu/error-report.h"
-> > >   #include "qemu/log.h"
-> > >   #include "trace.h"
-> > > +#include "qapi/error.h"
-> > >   static bool virtio_mmio_ioeventfd_enabled(DeviceState *d)
-> > >   {
-> > > @@ -619,7 +620,7 @@ static int virtio_mmio_load_extra_state(DeviceState *opaque, QEMUFile *f)
-> > >   {
-> > >       VirtIOMMIOProxy *proxy = VIRTIO_MMIO(opaque);
-> > > -    return vmstate_load_state(f, &vmstate_virtio_mmio, proxy, 1);
-> > > +    return vmstate_load_state(f, &vmstate_virtio_mmio, proxy, 1, &error_fatal);
-> > >   }
-> > >   static bool virtio_mmio_has_extra_state(DeviceState *opaque)
-> > > diff --git a/hw/virtio/virtio-pci.c b/hw/virtio/virtio-pci.c
-> > > index 767216d795998708f5716a23ae16c79cd90ff489..b04faa1e5c91b5cef40e54ec41d92422d16bfc13 100644
-> > > --- a/hw/virtio/virtio-pci.c
-> > > +++ b/hw/virtio/virtio-pci.c
-> > > @@ -161,7 +161,7 @@ static int virtio_pci_load_extra_state(DeviceState *d, QEMUFile *f)
-> > >   {
-> > >       VirtIOPCIProxy *proxy = to_virtio_pci_proxy(d);
-> > > -    return vmstate_load_state(f, &vmstate_virtio_pci, proxy, 1);
-> > > +    return vmstate_load_state(f, &vmstate_virtio_pci, proxy, 1, &error_fatal);
-> > >   }
-> > >   static void virtio_pci_save_queue(DeviceState *d, int n, QEMUFile *f)
-> > > diff --git a/hw/virtio/virtio.c b/hw/virtio/virtio.c
-> > > index 9a81ad912e013fc254899c4e55cff1f76a6112a4..419f3516c9f0a3df43831eebc77aa1e6dfcd0f41 100644
-> > > --- a/hw/virtio/virtio.c
-> > > +++ b/hw/virtio/virtio.c
-> > > @@ -3235,6 +3235,7 @@ virtio_load(VirtIODevice *vdev, QEMUFile *f, int version_id)
-> > >       BusState *qbus = qdev_get_parent_bus(DEVICE(vdev));
-> > >       VirtioBusClass *k = VIRTIO_BUS_GET_CLASS(qbus);
-> > >       VirtioDeviceClass *vdc = VIRTIO_DEVICE_GET_CLASS(vdev);
-> > > +    Error *local_err = NULL;
-> > >       /*
-> > >        * We poison the endianness to ensure it does not get used before
-> > > @@ -3327,15 +3328,17 @@ virtio_load(VirtIODevice *vdev, QEMUFile *f, int version_id)
-> > >       }
-> > >       if (vdc->vmsd) {
-> > > -        ret = vmstate_load_state(f, vdc->vmsd, vdev, version_id);
-> > > +        ret = vmstate_load_state(f, vdc->vmsd, vdev, version_id, &local_err);
-> > >           if (ret) {
-> > > +            warn_report_err(local_err);
-> > 
-> > I think error_report_err() should be used instead because this is replacing
-> > error_report().
-> > 
-> > If I read correctly, warn_report_err() is essentially error_report_err()
-> > prefixing the message with "warning: ". However, the error messages handled
-> > in this series do not have such prefixes so you shouldn't add them in
-> > intemediate changes.
-> 
-> If I am not wrong, we have introduced warn_report_err() not as a replacement to
-> error_report(). They are newly added ones. Besides, some of them are not intermediate
-> changes, because they do end up in the final version. for example in hw/virtio/virtio-pci.c
-Sorry, hw/virtio/virtio.c this one.
-> In some places in the intermediate patches a warn_report_err() is added right after
-> error_report(), both to be replaced with error_setg()/error_prepend() later in the series.
-> 
-> Do you want to replace warn_report_err() everywhere with error_report_err()?
-> 
-> > 
-> > Regards,
-> > Akihiko Odaki
-> > 
-> 
-> Regards,
-> Arun Menon
+On Sat, 16 Aug 2025 at 01:09, Pierrick Bouvier
+<pierrick.bouvier@linaro.org> wrote:
+>
+> On 8/15/25 9:29 AM, Alex Benn=C3=A9e wrote:
+> > Peter Maydell <peter.maydell@linaro.org> writes:
+> >
+> >> On Sun, 27 Jul 2025 at 08:42, Richard Henderson
+> >> <richard.henderson@linaro.org> wrote:
+> >>>
+> >>> From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+> >>>
+> >>> TF-A needs to be patched to enable support for FEAT_TCR2 and
+> >>> FEAT_SCTLR2. This new image contains updated firmware.
+> >>>
+> >>> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+> >>> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> >>> Message-ID: <20250719035838.2284029-3-pierrick.bouvier@linaro.org>
+> >>
+> >> I see this test failing in local runs of 'make check-functional'
+> >> sometimes, complaining that it can't create the scratch/out/EFI
+> >> directory because it already exists:
+> >>
+> >> stderr:
+> >> Traceback (most recent call last):
+> >>    File "/mnt/nvmedisk/linaro/qemu-from-laptop/qemu/tests/functional/t=
+est_aarch64_rme_sbsaref.py",
+> >> line 49, in test_aarch64_rme_sbsaref
+> >>      os.mkdir(efi)
+> >
+> >    os.makedirs(efi, exist_ok=3DTrue)
+> >
+> > would solve that.
+> >
+>
+> Yes, probably safer to add that if we can't guarantee correctly that
+> scratch folder gets deleted everytime. I wrote the test assuming this
+> behaviour.
 
+I folded the os.makedirs() fix into my copy of this patch in
+target-arm.next.
+
+-- PMM
 

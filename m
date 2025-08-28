@@ -4,101 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2AC9ECA0EED
-	for <qemu-arm@archiver.kernel.org>; Thu, 28 Aug 2025 14:51:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE690CA0EED
+	for <qemu-arm@archiver.kernel.org>; Thu, 28 Aug 2025 16:31:13 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1urdxX-0004uK-31; Thu, 28 Aug 2025 10:50:39 -0400
+	id 1urfWT-0002yD-Ec; Thu, 28 Aug 2025 12:30:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1urdpo-0001qj-L7
- for qemu-arm@nongnu.org; Thu, 28 Aug 2025 10:42:41 -0400
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1urfSx-0001fc-LK
+ for qemu-arm@nongnu.org; Thu, 28 Aug 2025 12:27:11 -0400
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1urdpk-0000xJ-Ax
- for qemu-arm@nongnu.org; Thu, 28 Aug 2025 10:42:39 -0400
-Received: by mail-wr1-x433.google.com with SMTP id
- ffacd0b85a97d-3b9edf4cf6cso774111f8f.3
- for <qemu-arm@nongnu.org>; Thu, 28 Aug 2025 07:42:35 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1urfSu-0007cy-3R
+ for qemu-arm@nongnu.org; Thu, 28 Aug 2025 12:27:10 -0400
+Received: by mail-wm1-x32a.google.com with SMTP id
+ 5b1f17b1804b1-45a1b0cbbbaso9972255e9.3
+ for <qemu-arm@nongnu.org>; Thu, 28 Aug 2025 09:27:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756392152; x=1756996952; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=XlIA4USyAQE65RJp1YZjEvdIlB4v9w1UDqYnJWiMLo0=;
- b=wM4/FdnmJvNSsnYCZhu5yrMc59cw7bP0GDsjJOJPpavFeXOy2cX5mCl6NKqFY7bJxA
- CzcsnUdCHukUT/QglfWBt6G+p43UP+AxzEMxOaQJLqfVpFgK+yA4t1JLI/MQ8HVVTyMz
- n2b8G/q3XwUh/PkPVmIEPkfO8rImmd+OuRJIi1sedBplIZNMx2D43AgC18LRJOEx7UaK
- 1qR1m2beJRlpFW2hwzY6a4/4+b162GALjHJyM36XAB8XhAwD5DVMnFscoIWAx4ycogfO
- jtxaOLP0UdSeyXw4dd/j+J7sPazoNxVYCbSnybSkuK32TlZPkf01eCUxyQHmU4MQj0VV
- Hi0A==
+ d=linaro.org; s=google; t=1756398423; x=1757003223; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:to
+ :from:from:to:cc:subject:date:message-id:reply-to;
+ bh=b/fvrXfYxMrQ2GUwG53WS5yqxuWvVCymC7y5qNB8550=;
+ b=MeXMWtPSTHwkCOIROQ/uzwBZrkhges48tD9qspu4H5nFeO0X0a7JXxSvxJaiKaUFSj
+ b/EUqRAqQGr6VYxz86bfASzGYpp8EkR5F/19gZ6w+HuJgpJ9evtV6Zw9pvbBNd2eh9tU
+ dATk0Crjt+b+BuYli/aHveNp/sTl4Bo7niO0KDdqCsn1zf/FzmVzXOaSAf3QdKCVRyTj
+ 55NBkfR4rJVHVJP3nTAK3sMtR+sqiG76YJZCaVs0sApZ5mSH4W1aou37FuajKAl/Yt9R
+ qWBuO0jlHu7e9PRjTFYyQ0w13STSKEcY+Zw8FA9QBxGUkwW2atT77CINZZ+A+I2ej4gf
+ RIAg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756392152; x=1756996952;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=XlIA4USyAQE65RJp1YZjEvdIlB4v9w1UDqYnJWiMLo0=;
- b=JmISW+E8ky1OZvc0xp0d5cuY2njAZo7hXLH/XZLpmLFsWfOObi7zKp4RhiT8gmel1t
- R6bblpZJqmLntcv69CBDj/P49DRrR8suuiikXb/R3okWCgiBFRwDUxQStmjdwWyfrO8x
- g8KafHIoeLX/L7K/cO15F0SKr7Bj2XSU0d4RAJOimuIHastVKXLN4sOXFgvsVlz6GvAl
- Lo9aNbacRyoJPfB930KHY5PC2OeaLvFTa93SDrd64G9E2f8DHnhk+0MFKnJvqbUoBRN6
- ZObd6zbB/hRdC1ojW9J7xV4yiktTKPIp1jrheYnq5yqaFQdyk81bIfQZ3dx54Bgi+bth
- dYxg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUCFRzGS6SFPGanbbFZ1sXBgKfHlf7X4TJ/UY7b5mKcfoYP7L3GL+gbHBjPYFutuiD1mkBKPpUyqQ==@nongnu.org
-X-Gm-Message-State: AOJu0YwAyyriGSsVwInHXXyXO+XdLg/VSmUXArZ02M7hNFfDQIWzfTL+
- YcDx6HVKv5HUXsdDwCXDdL7u5H02koeaFby9Q9N0PsOJkd5I5QG5u06ULWlNh9mRZfg=
-X-Gm-Gg: ASbGncsP8yJuZ6cRX+9O5Cv5dJzhukYq8mgEdZyoyJY7EKpojxsgRvUa3pda3bzCNRp
- zAtZQBeaKowBIV90preQrq4FCFKKicIQ0aswyKh2MkFcD4l/VES+rPmwi9STJnDfMr2+N8WPkQU
- oEAWA+J/iq6Nw+y7Vsx3D41P2C2/sXJ9dSZy0NnZfQNHEdfeDep15pHvZziO85DWFIqGHQlCTSL
- u5noKZwE49/xPIOAwJ2tlakiiy4ryd4L2yYCoSAYHY6zMtgUE6u6rIWpFuuXf+fpTo3siWh5JoC
- +Z7QIGUb2nFP3So7wf3OLPBr+RmCLdiO6lUQIYt0wfKOobmudN2n9oz90OwPJMev41Fkw/50Qj3
- GjEOW1oeKNWIapRclyvzZgQRt4VjQ2sn9dmdW1B4BXvzJxFFJsE7pByjvDmxPfRJDJQDC3SXe5H
- a8l45Mt4yu4e4bFzq97mgqieQQBcZOtB9nyjtXA4Hs0pYVVYmnRD0Y3P0b98r8axyqDXC2pUk14
- tgasmlBXBNvlXg=
-X-Google-Smtp-Source: AGHT+IFhU0RjfxzQX4gyiUiU2u/z7+mj3ER82ZBafxLsUk5C+WMMU7+rsozf/bDZtt8oBKi1jUBBUQ==
-X-Received: by 2002:a05:6000:188e:b0:3cd:9794:cbcf with SMTP id
- ffacd0b85a97d-3cd9794cc94mr3646605f8f.60.1756392152425; 
- Thu, 28 Aug 2025 07:42:32 -0700 (PDT)
-Received: from ?IPV6:2a01:cb09:d021:8fd6:94b3:f1b:6ece:2fef?
- (2a01cb09d0218fd694b30f1b6ece2fef.ipv6.abo.wanadoo.fr.
- [2a01:cb09:d021:8fd6:94b3:f1b:6ece:2fef])
+ d=1e100.net; s=20230601; t=1756398423; x=1757003223;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:to
+ :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=b/fvrXfYxMrQ2GUwG53WS5yqxuWvVCymC7y5qNB8550=;
+ b=J5tziAEjZSv2bYZX9bKmhgVzWV7794oMJeHa4cjh8Fegfp4vpwbl4tqLry140lW8Ex
+ 7Zvtzfkz/c8iLdvRGHp6mZpL+BWeEfQISMtBx34XCM39w8rMNuRAaCAcI5msCmhhn+La
+ tqetjPRGKY3hP+Zq2+6mVGFBpX07iiEfjtMD2osrngh5HEzn0vY3Oqoh729gOQe1q+sS
+ hRpwaqHqnhNXOQi3Y697d3FL0Todip218XaMrYQY2E7OWvtMylEmXNZy9rKTL06nbpiK
+ 8J7Ru5FdDkvdeFw/jziw0L2CynETe35GiTFxhb4XSH7CGcFSNGfUEzH6g8/yyhWfTlfL
+ y6Sg==
+X-Gm-Message-State: AOJu0YybO3laKcD8nJSdsnzKk7adjgltV/1vHn9nKJFz5FdTsjiQw7G1
+ ptu9VzHa7OxwkFMkJ2WSM+Xl8bRXS5bdRiPtVbra47mFcnlS7cGiiTlIOl7FY1ZZr+wEIbY6YZu
+ ZwqTy
+X-Gm-Gg: ASbGncv1XojbV5eACeY0T1sVm3tZcnTueL/2Ntd3OjbVg1W2xP6A0eYtq7QO3bs2VK7
+ GfsTtWkCEMsBaw8OTaJwYumh31jV8M2QYUsD2jgpdcIkNFJf44dYScgujTFtlNN3DyOFwGZfpeF
+ wszE/Ffj8rjYhMq1lfQiBiBZENKNaPnVE1wYTStWoNvDwXNdjod0bA/+HKhD7GSyN2Ho8se0OUq
+ 4P7+I0gDF2YKqgJT5dsZUz+bHyBdEFlkMK90aCRdRSgaw1Sg4k+Nh8BLtUPQz7u0YvVAoNw8CQu
+ PThYhppkbZOhyzECAe8jhV0+GbNwiPPTkaC5Agz7QUrj0Jxk1S0eysyz1DAfYOJbtnI5/wHzuf0
+ 2vttH1/ycZqh6jE0TeHL8sPfNyMbAB/ATuqEYwbI2xSnO71CC4g==
+X-Google-Smtp-Source: AGHT+IFD9cnwMVLj+APiL+koVzBUVDV3e6Q/u8XEiaA9mASVbCcEWW0oKvjIFAzz9StEiL08USWAfQ==
+X-Received: by 2002:a05:600c:46cd:b0:45b:75d6:73c5 with SMTP id
+ 5b1f17b1804b1-45b7631191emr34348805e9.18.1756398422560; 
+ Thu, 28 Aug 2025 09:27:02 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3cbf1f5fc1bsm10014291f8f.54.2025.08.28.07.42.30
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 28 Aug 2025 07:42:32 -0700 (PDT)
-Message-ID: <c0acee85-eabc-4093-a74d-f54ecd6e4335@linaro.org>
-Date: Thu, 28 Aug 2025 16:42:28 +0200
+ 5b1f17b1804b1-45b6f0c6b99sm81600145e9.4.2025.08.28.09.27.01
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 28 Aug 2025 09:27:01 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH] system: drop the -old-param option
+Date: Thu, 28 Aug 2025 17:27:00 +0100
+Message-ID: <20250828162700.3308812-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v9 2/6] tests/functional/test_aarch64_rme: update image
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org
-References: <20250727074202.83141-1-richard.henderson@linaro.org>
- <20250727074202.83141-3-richard.henderson@linaro.org>
- <CAFEAcA_ZQ13qMRUQsieJiEPV=ULrDbz8=EJaW4_kw=yEysob0w@mail.gmail.com>
- <87349s4kfz.fsf@draig.linaro.org>
- <3d59d45f-79f1-4701-ad3b-402513ce4e72@linaro.org>
- <CAFEAcA9ryysJQK8hxNxpF=00yC=t3==aFqt2pubD3CjM9T+WLg@mail.gmail.com>
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-In-Reply-To: <CAFEAcA9ryysJQK8hxNxpF=00yC=t3==aFqt2pubD3CjM9T+WLg@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::433;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-wr1-x433.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -114,52 +96,227 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 2025-08-28 10:27, Peter Maydell wrote:
-> On Sat, 16 Aug 2025 at 01:09, Pierrick Bouvier
-> <pierrick.bouvier@linaro.org> wrote:
->>
->> On 8/15/25 9:29 AM, Alex Bennée wrote:
->>> Peter Maydell <peter.maydell@linaro.org> writes:
->>>
->>>> On Sun, 27 Jul 2025 at 08:42, Richard Henderson
->>>> <richard.henderson@linaro.org> wrote:
->>>>>
->>>>> From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
->>>>>
->>>>> TF-A needs to be patched to enable support for FEAT_TCR2 and
->>>>> FEAT_SCTLR2. This new image contains updated firmware.
->>>>>
->>>>> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
->>>>> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
->>>>> Message-ID: <20250719035838.2284029-3-pierrick.bouvier@linaro.org>
->>>>
->>>> I see this test failing in local runs of 'make check-functional'
->>>> sometimes, complaining that it can't create the scratch/out/EFI
->>>> directory because it already exists:
->>>>
->>>> stderr:
->>>> Traceback (most recent call last):
->>>>     File "/mnt/nvmedisk/linaro/qemu-from-laptop/qemu/tests/functional/test_aarch64_rme_sbsaref.py",
->>>> line 49, in test_aarch64_rme_sbsaref
->>>>       os.mkdir(efi)
->>>
->>>     os.makedirs(efi, exist_ok=True)
->>>
->>> would solve that.
->>>
->>
->> Yes, probably safer to add that if we can't guarantee correctly that
->> scratch folder gets deleted everytime. I wrote the test assuming this
->> behaviour.
-> 
-> I folded the os.makedirs() fix into my copy of this patch in
-> target-arm.next.
->
+We deprecated the command line option -old-param for the 10.0
+release, which allows us to drop it in 10.2.  This option was used to
+boot Arm targets with a very old boot protocol using the
+'param_struct' ABI.  We only ever needed this on a handful of board
+types which have all now been removed from QEMU.
 
-Thanks Peter, you did well.
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ docs/about/deprecated.rst       | 13 ------
+ docs/about/removed-features.rst | 12 +++++
+ include/system/system.h         |  1 -
+ hw/arm/boot.c                   | 81 +--------------------------------
+ system/globals.c                |  1 -
+ system/vl.c                     |  4 --
+ qemu-options.hx                 |  7 ---
+ 7 files changed, 13 insertions(+), 106 deletions(-)
 
-Pierrick
-
-> -- PMM
+diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
+index d50645a0711..58bce715f9c 100644
+--- a/docs/about/deprecated.rst
++++ b/docs/about/deprecated.rst
+@@ -68,19 +68,6 @@ configurations (e.g. -smp drawers=1,books=1,clusters=1 for x86 PC machine) is
+ marked deprecated since 9.0, users have to ensure that all the topology members
+ described with -smp are supported by the target machine.
+ 
+-``-old-param`` option for booting Arm kernels via param_struct (since 10.0)
+-'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+-
+-The ``-old-param`` command line option is specific to Arm targets:
+-it is used when directly booting a guest kernel to pass it the
+-command line and other information via the old ``param_struct`` ABI,
+-rather than the newer ATAGS or DTB mechanisms. This option was only
+-ever needed to support ancient kernels on some old board types
+-like the ``akita`` or ``terrier``; it has been deprecated in the
+-kernel since 2001. None of the board types QEMU supports need
+-``param_struct`` support, so this option has been deprecated and will
+-be removed in a future QEMU version.
+-
+ User-mode emulator command line arguments
+ -----------------------------------------
+ 
+diff --git a/docs/about/removed-features.rst b/docs/about/removed-features.rst
+index d7c2113fc3e..b1b3d1b1b3f 100644
+--- a/docs/about/removed-features.rst
++++ b/docs/about/removed-features.rst
+@@ -560,6 +560,18 @@ the options along with the machine models they were intended for.
+ 
+ Use ``-run-with user=..`` instead.
+ 
++``-old-param`` option for booting Arm kernels via param_struct (since 10.0)
++'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
++
++The ``-old-param`` command line option was specific to Arm targets:
++it was used when directly booting a guest kernel to pass it the
++command line and other information via the old ``param_struct`` ABI,
++rather than the newer ATAGS or DTB mechanisms. This option was only
++ever needed to support ancient kernels on some old board types
++like the ``akita`` or ``terrier``; it has been deprecated in the
++kernel since 2001. None of the board types QEMU supports need
++``param_struct`` support, so this option has been removed.
++
+ 
+ User-mode emulator command line arguments
+ -----------------------------------------
+diff --git a/include/system/system.h b/include/system/system.h
+index a7effe7dfd8..03a2d0e9005 100644
+--- a/include/system/system.h
++++ b/include/system/system.h
+@@ -42,7 +42,6 @@ extern int graphic_height;
+ extern int graphic_depth;
+ extern int display_opengl;
+ extern const char *keyboard_layout;
+-extern int old_param;
+ extern uint8_t *boot_splash_filedata;
+ extern bool enable_cpu_pm;
+ extern QEMUClockType rtc_clock;
+diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+index d391cd01bb1..525b31e1659 100644
+--- a/hw/arm/boot.c
++++ b/hw/arm/boot.c
+@@ -336,81 +336,6 @@ static void set_kernel_args(const struct arm_boot_info *info, AddressSpace *as)
+     WRITE_WORD(p, 0);
+ }
+ 
+-static void set_kernel_args_old(const struct arm_boot_info *info,
+-                                AddressSpace *as)
+-{
+-    hwaddr p;
+-    const char *s;
+-    int initrd_size = info->initrd_size;
+-    hwaddr base = info->loader_start;
+-
+-    /* see linux/include/asm-arm/setup.h */
+-    p = base + KERNEL_ARGS_ADDR;
+-    /* page_size */
+-    WRITE_WORD(p, 4096);
+-    /* nr_pages */
+-    WRITE_WORD(p, info->ram_size / 4096);
+-    /* ramdisk_size */
+-    WRITE_WORD(p, 0);
+-#define FLAG_READONLY 1
+-#define FLAG_RDLOAD   4
+-#define FLAG_RDPROMPT 8
+-    /* flags */
+-    WRITE_WORD(p, FLAG_READONLY | FLAG_RDLOAD | FLAG_RDPROMPT);
+-    /* rootdev */
+-    WRITE_WORD(p, (31 << 8) | 0); /* /dev/mtdblock0 */
+-    /* video_num_cols */
+-    WRITE_WORD(p, 0);
+-    /* video_num_rows */
+-    WRITE_WORD(p, 0);
+-    /* video_x */
+-    WRITE_WORD(p, 0);
+-    /* video_y */
+-    WRITE_WORD(p, 0);
+-    /* memc_control_reg */
+-    WRITE_WORD(p, 0);
+-    /* unsigned char sounddefault */
+-    /* unsigned char adfsdrives */
+-    /* unsigned char bytes_per_char_h */
+-    /* unsigned char bytes_per_char_v */
+-    WRITE_WORD(p, 0);
+-    /* pages_in_bank[4] */
+-    WRITE_WORD(p, 0);
+-    WRITE_WORD(p, 0);
+-    WRITE_WORD(p, 0);
+-    WRITE_WORD(p, 0);
+-    /* pages_in_vram */
+-    WRITE_WORD(p, 0);
+-    /* initrd_start */
+-    if (initrd_size) {
+-        WRITE_WORD(p, info->initrd_start);
+-    } else {
+-        WRITE_WORD(p, 0);
+-    }
+-    /* initrd_size */
+-    WRITE_WORD(p, initrd_size);
+-    /* rd_start */
+-    WRITE_WORD(p, 0);
+-    /* system_rev */
+-    WRITE_WORD(p, 0);
+-    /* system_serial_low */
+-    WRITE_WORD(p, 0);
+-    /* system_serial_high */
+-    WRITE_WORD(p, 0);
+-    /* mem_fclk_21285 */
+-    WRITE_WORD(p, 0);
+-    /* zero unused fields */
+-    while (p < base + KERNEL_ARGS_ADDR + 256 + 1024) {
+-        WRITE_WORD(p, 0);
+-    }
+-    s = info->kernel_cmdline;
+-    if (s) {
+-        address_space_write(as, p, MEMTXATTRS_UNSPECIFIED, s, strlen(s) + 1);
+-    } else {
+-        WRITE_WORD(p, 0);
+-    }
+-}
+-
+ static int fdt_add_memory_node(void *fdt, uint32_t acells, hwaddr mem_base,
+                                uint32_t scells, hwaddr mem_len,
+                                int numa_node_id)
+@@ -760,11 +685,7 @@ static void do_cpu_reset(void *opaque)
+                 cpu_set_pc(cs, info->loader_start);
+ 
+                 if (!have_dtb(info)) {
+-                    if (old_param) {
+-                        set_kernel_args_old(info, as);
+-                    } else {
+-                        set_kernel_args(info, as);
+-                    }
++                    set_kernel_args(info, as);
+                 }
+             } else if (info->secondary_cpu_reset_hook) {
+                 info->secondary_cpu_reset_hook(cpu, info);
+diff --git a/system/globals.c b/system/globals.c
+index 9640c9511e9..98f9876d5d4 100644
+--- a/system/globals.c
++++ b/system/globals.c
+@@ -52,7 +52,6 @@ bool vga_interface_created;
+ Chardev *parallel_hds[MAX_PARALLEL_PORTS];
+ QEMUOptionRom option_rom[MAX_OPTION_ROMS];
+ int nb_option_roms;
+-int old_param;
+ const char *qemu_name;
+ unsigned int nb_prom_envs;
+ const char *prom_envs[MAX_PROM_ENVS];
+diff --git a/system/vl.c b/system/vl.c
+index 3b7057e6c66..00f36947257 100644
+--- a/system/vl.c
++++ b/system/vl.c
+@@ -3524,10 +3524,6 @@ void qemu_init(int argc, char **argv)
+                 prom_envs[nb_prom_envs] = optarg;
+                 nb_prom_envs++;
+                 break;
+-            case QEMU_OPTION_old_param:
+-                warn_report("-old-param is deprecated");
+-                old_param = 1;
+-                break;
+             case QEMU_OPTION_rtc:
+                 opts = qemu_opts_parse_noisily(qemu_find_opts("rtc"), optarg,
+                                                false);
+diff --git a/qemu-options.hx b/qemu-options.hx
+index ab23f14d217..aa44b0e34ae 100644
+--- a/qemu-options.hx
++++ b/qemu-options.hx
+@@ -5347,13 +5347,6 @@ SRST
+         specified, the former is passed to semihosting as it always
+         takes precedence.
+ ERST
+-DEF("old-param", 0, QEMU_OPTION_old_param,
+-    "-old-param      old param mode\n", QEMU_ARCH_ARM)
+-SRST
+-``-old-param``
+-    Old param mode (ARM only).
+-ERST
+-
+ DEF("sandbox", HAS_ARG, QEMU_OPTION_sandbox, \
+     "-sandbox on[,obsolete=allow|deny][,elevateprivileges=allow|deny|children]\n" \
+     "          [,spawn=allow|deny][,resourcecontrol=allow|deny]\n" \
+-- 
+2.43.0
 
 

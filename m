@@ -4,88 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 271AACA1000
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39823CA0EFF
 	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 17:35:33 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1usOEu-0001PW-OW; Sat, 30 Aug 2025 12:15:40 -0400
+	id 1usOh2-0005Mg-PM; Sat, 30 Aug 2025 12:44:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1usERf-0007ZH-ED
- for qemu-arm@nongnu.org; Sat, 30 Aug 2025 01:48:12 -0400
-Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1urklB-0005xx-9t
+ for qemu-arm@nongnu.org; Thu, 28 Aug 2025 18:06:21 -0400
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1usERd-00053O-Eq
- for qemu-arm@nongnu.org; Sat, 30 Aug 2025 01:48:11 -0400
-Received: by mail-pl1-x62f.google.com with SMTP id
- d9443c01a7336-2465cb0e81bso22371765ad.1
- for <qemu-arm@nongnu.org>; Fri, 29 Aug 2025 22:48:07 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1urkl8-0003w3-Ra
+ for qemu-arm@nongnu.org; Thu, 28 Aug 2025 18:06:21 -0400
+Received: by mail-wr1-x430.google.com with SMTP id
+ ffacd0b85a97d-3ce47d1f1f8so791964f8f.2
+ for <qemu-arm@nongnu.org>; Thu, 28 Aug 2025 15:06:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756532887; x=1757137687; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=RrRDTwGDphkvvBtsV/mK2pHDoMT9L4tWZDtSjWVgm+E=;
- b=VODi5qWzHCHWrXyl5SvBraebE+RtyxsvCJmkYPsDbFDT5O+fNOrZvdZDhgDi6cvbX8
- ZtuvOXm647teiUaM2pyEKSnwXHQXc/+79tO4nKDHHgiDvnDfTieQVnoUi9gUmga+R+aq
- 182YB8rQzm0f8XBHCIOKbWG6CK9gEoGtiHo/Dxb8yYKGh0TtrVH3ssv9u4Dq0f6tbr5Y
- vExFJ//z+aM7/B/49zjhSiZmnByaR9+VBU/HUBjqLs0QZcN+5hBTokEMSfNY26Y4NbBW
- 5kX/YVtuDD+h6bANfbVHbAhIvVt8jYFpCoXpLed/+6Ml8s2zoCR5QSvqtdkuXl9+CTmw
- E0qw==
+ d=linaro.org; s=google; t=1756418775; x=1757023575; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=SQERPfGXdIzlO77ltl62NC78xJe8fEdI0otSa33hJaY=;
+ b=xeJ5AcJ7ifBjyRTVax6vyq0QMiSctboQMX8aSnZ89q7Pizc6S1yF60l1pWCjCHRh+u
+ 1EfwXvYU9YgtaWEZb9rFZ39QUuytfPKzzCRjjHhUYcdwNvbXy8wSAG3rZsM7ew/yUoxy
+ IwFZB3sDSnus/yOwWjKFL8t/M2w9kYvw+po9aped8O1CF2LomTPjPJGDDjMaWsvYLmct
+ gEDgEmpb3+6W8vjJxa+hmRUsloqugzuNd7mhAddFY/4GUrYhF590RhBeiCmQTAIdrsks
+ xL/i5uLu4kJJXyVcWSDiG4aGalUodSWveKpctS8b6XNicULUy9LV15fgGyhLUfMh2SYW
+ I84w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756532887; x=1757137687;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=RrRDTwGDphkvvBtsV/mK2pHDoMT9L4tWZDtSjWVgm+E=;
- b=AqBE+U/hQIkdM30SpY3F32ZbaTLsMXugj4imL1YE37+JPQG+31ZWo367l+jZ6QozaO
- Vc/T6ScyQabJPSycBWkxEtqrCw8sndLcStMae2hIQ5u1/y/1pEUtmdK+lx+rSA1dtXLW
- zYPxWAdVKgQkobOlkw6N2BuNUHL8Ogkhr+jvJ+aBawbYPtsgIl0O6jEJZiNV32V44yrr
- BUTYIa/YnqCejUSCoI8/MTA/DgYCs2EMGuHsXEsyJCOD6kT+Dz8oOM7A3IysFi6LMUKi
- jtM6UJvoyiu5DOTivSMseCsoHj/fv3UyaK+CSPUyTMuF72q0n4stZGM7tlS3IU7MpAfL
- LPqA==
-X-Gm-Message-State: AOJu0YyVNRgT+/aJc3NRItHwuR3pmNFPxb1RjGg/ELYk9NVp173q7tKe
- YSC3zDBTKgkTrtBlKcMmV8yW1479ucNr5AA7bqdHPVEbDLSK+eYY1cIZvNceDCsa/ely9si4D57
- QEMCJgZc=
-X-Gm-Gg: ASbGncvzojF/gQZz4QGLVuO3RnYkNyEr0WZ/pHF8xWdSjeR66Lj8rwnjqvsRXpePJVR
- P3vcsVs0uDndpcf1iP0o6aCvwlSFAhwXmtK3itVs68zl6FpmZql3KUZmPBJO0Vc3XSOHnqRqptb
- 6ltDxrZzdocGtkRmuAADz+ESEQ2I5xcdJKpspbi/PMDFXYe6bWzcIwDo9MnaV8i1MoDNm/vTVFv
- EMrF1KOkp0aQZUdiswLpyX+RQD0gjeMzKtdTp+yog7tbAc9P4IPhBpajW0RgLqmFn3yI3LvjOaV
- qxFnPvBfP6T0+Z149R5b7fVYKBW+F4JD1eGH3IDmPGd4SbGJBNOM+RjsS8rPXIYgwBx2mvUKGxn
- 9DaAmVHEdhsdumxzlJODYrQMd0/ozpFMlJlDXQtF0fBp+BW8KJ5Z1iJ+uqVUsrUg=
-X-Google-Smtp-Source: AGHT+IGoHCdK1kauU9bmFRl/SqKDamGWvYyD6nzAwFXTX6HBF0hItUjUJFLxIVqbU97cHLuXO7nYfA==
-X-Received: by 2002:a17:902:ce02:b0:246:a42b:a31d with SMTP id
- d9443c01a7336-24944ad758dmr13747515ad.44.1756532886866; 
- Fri, 29 Aug 2025 22:48:06 -0700 (PDT)
-Received: from stoup.. (122-150-204-179.dyn.ip.vocus.au. [122.150.204.179])
- by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2490658999fsm40852715ad.112.2025.08.29.22.48.04
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 29 Aug 2025 22:48:06 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v4 75/84] linux-user/aarch64: Allocate new gcs stack on clone
-Date: Sat, 30 Aug 2025 15:41:19 +1000
-Message-ID: <20250830054128.448363-76-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250830054128.448363-1-richard.henderson@linaro.org>
-References: <20250830054128.448363-1-richard.henderson@linaro.org>
+ d=1e100.net; s=20230601; t=1756418775; x=1757023575;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=SQERPfGXdIzlO77ltl62NC78xJe8fEdI0otSa33hJaY=;
+ b=lIEZWCsgfA3qvuBHoGQtaIlBnu8XeZzD9tH09/bOOyuGq7VC3LmCQR4ea51RUbk4pS
+ iqUxf9uCgzcbz4ZQrzF4K8YA94AVZyGP5genl+e7nucUcJ+xTDWw8TlOd7aTTL8d+B3T
+ Q9OoBNKxRhrzFp1c6NJ3kOvoESHLYWX3uErnFaxezDsgpvebWqAXHKsEW+I9alZjSmag
+ R/IpUmaWl8xkY98IqsEzLXXVTyLUNJrAtt8dWy5t4i2Uk+6dV1XRfTpy7/nBmPTTgIeq
+ QvwCRvV2m4dpfuS8SSMsgZ+tOo9ETOuMmmZzGZBQn+wgulTBvr6q5rB/py5mFiLPWuMC
+ +tkg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVgXNZnAAfAmKFHmvOplGNYb4wSy8PLAsHX8wECfyw4sITNKoXHzsgSUBjiQDoC+T3F4eZeGQ2CWg==@nongnu.org
+X-Gm-Message-State: AOJu0YzNQ2HI/zWI1iy6J+cYPY9z89psHSJjMy+oZrknR7QqEgtiPsvy
+ 8EfR7z/FbNL/s9dN+jGa9mHxzzJClRX2iANnbqx8KguiR4xplQKWqGAwIQ9N9Fi4hw0=
+X-Gm-Gg: ASbGncvjA8H69ngNeJmYGuAVDOf2mb24cWstz3sWXQhn6RwJFiqzTlkGAPNkvqj3IJQ
+ j51GTwc7lGa5BsnKAfyEdFH5FrxModHyaP1I6nFBaCsIbLqDvwwhwuKh7Q/Q+QQVpSARfHQ1IXc
+ AlRdTd27nV2kGXGRttymRurUPqWGiQC0wiQ8NXwh1Of7CXML67/f1zLVpHGEPYU3m3RSHggSKss
+ 3/UNjKRRUHD/E2u0eAXumrczTZE9ihFV/3XaspaP/yQFQlesqrISYoPHgfoU2IyjREYONYP8rbB
+ eI7pU26sbvHqA5PA4azwfIN8xTwRa64GzXYa1RZHeFevkkR3oOgFKNdhlfzlKBNV+qAkXsDqxCP
+ fK2FhxeR3+G3aXzsZTXBvOLhbxFZ27K6v8f5/gykdaaZAl1O3EaWsxS+l2u+ruw/HQX6FYzNv3B
+ 6gYuvT1Ui96A8=
+X-Google-Smtp-Source: AGHT+IG4E7Re26hFZMAwIrLsBg9A7pMvaMPOZfPCWWp1+RqUkTHy9qcE5RJ0uqQjeKlq7DDk8R8XJQ==
+X-Received: by 2002:a5d:5f8e:0:b0:3cd:cf31:d760 with SMTP id
+ ffacd0b85a97d-3cdcf31d9e1mr3446500f8f.36.1756418775113; 
+ Thu, 28 Aug 2025 15:06:15 -0700 (PDT)
+Received: from [192.168.69.207] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-3cf33add294sm832386f8f.29.2025.08.28.15.06.14
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 28 Aug 2025 15:06:14 -0700 (PDT)
+Message-ID: <28aa3b22-e6a5-4aaf-8301-6adb066cee57@linaro.org>
+Date: Fri, 29 Aug 2025 00:06:13 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 37/47] hw/arm/xlnx-versal: add a per_cluster_gic switch
+ to VersalCpuClusterMap
+To: Luc Michel <luc.michel@amd.com>, qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Francisco Iglesias <francisco.iglesias@amd.com>,
+ "Edgar E . Iglesias" <edgar.iglesias@amd.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Frederic Konrad <frederic.konrad@amd.com>,
+ Sai Pavan Boddu <sai.pavan.boddu@amd.com>
+References: <20250822151614.187856-1-luc.michel@amd.com>
+ <20250822151614.187856-38-luc.michel@amd.com>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20250822151614.187856-38-luc.michel@amd.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62f;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::430;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x430.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -101,54 +109,18 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Allocate the new stack early, so that error reporting need
-not clean up other objects.
+On 22/8/25 17:16, Luc Michel wrote:
+> Add the per_cluster_gic switch to the VersalCpuClusterMap structure.
+> When set, this indicates that a GIC instance should by created
+> per-cluster instead of globally for the whole RPU or APU. This is in
+> preparation for versal2.
+> 
+> Signed-off-by: Luc Michel <luc.michel@amd.com>
+> Reviewed-by: Francisco Iglesias <francisco.iglesias@amd.com>
+> ---
+>   hw/arm/xlnx-versal.c | 15 +++++++++++++--
+>   1 file changed, 13 insertions(+), 2 deletions(-)
 
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- linux-user/syscall.c | 20 ++++++++++++++++++++
- 1 file changed, 20 insertions(+)
-
-diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-index 2f1e881046..91210775ed 100644
---- a/linux-user/syscall.c
-+++ b/linux-user/syscall.c
-@@ -6652,6 +6652,21 @@ static int do_fork(CPUArchState *env, unsigned int flags, abi_ulong newsp,
-         ts = g_new0(TaskState, 1);
-         init_task_state(ts);
- 
-+#ifdef TARGET_AARCH64
-+        /*
-+         * If GCS is enabled in the parent thread, it is also enabled
-+         * in the child thread, but with a newly allocated stack.
-+         */
-+        abi_long new_gcspr = 0;
-+        if (env->cp15.gcscr_el[0] & GCSCR_PCRSEL) {
-+            new_gcspr = gcs_new_stack(ts);
-+            if (new_gcspr == -1) {
-+                g_free(ts);
-+                return -TARGET_ENOMEM;
-+            }
-+        }
-+#endif
-+
-         /* Grab a mutex so that thread setup appears atomic.  */
-         pthread_mutex_lock(&clone_lock);
- 
-@@ -6676,6 +6691,11 @@ static int do_fork(CPUArchState *env, unsigned int flags, abi_ulong newsp,
-         ts->info = parent_ts->info;
-         ts->signal_mask = parent_ts->signal_mask;
- 
-+#ifdef TARGET_AARCH64
-+        ts->gcs_el0_locked = parent_ts->gcs_el0_locked;
-+        new_env->cp15.gcspr_el[0] = new_gcspr;
-+#endif
-+
-         if (flags & CLONE_CHILD_CLEARTID) {
-             ts->child_tidptr = child_tidptr;
-         }
--- 
-2.43.0
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
 

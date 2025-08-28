@@ -4,84 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E004BCA0EFF
-	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 17:00:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E62ECA0EFF
+	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 17:02:15 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1usNxh-0004vM-IT; Sat, 30 Aug 2025 11:57:53 -0400
+	id 1usO7Z-0007KU-C2; Sat, 30 Aug 2025 12:08:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1usEQ8-000787-Qj
- for qemu-arm@nongnu.org; Sat, 30 Aug 2025 01:46:36 -0400
-Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1urkxj-0008Kk-Q6
+ for qemu-arm@nongnu.org; Thu, 28 Aug 2025 18:19:20 -0400
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1usEQ6-0004n4-Cw
- for qemu-arm@nongnu.org; Sat, 30 Aug 2025 01:46:36 -0400
-Received: by mail-pl1-x62b.google.com with SMTP id
- d9443c01a7336-2490369145fso12859525ad.2
- for <qemu-arm@nongnu.org>; Fri, 29 Aug 2025 22:46:33 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1urkxd-0008NO-0o
+ for qemu-arm@nongnu.org; Thu, 28 Aug 2025 18:19:19 -0400
+Received: by mail-wm1-x330.google.com with SMTP id
+ 5b1f17b1804b1-45b6b5ccad6so8631605e9.2
+ for <qemu-arm@nongnu.org>; Thu, 28 Aug 2025 15:19:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756532792; x=1757137592; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=XY9uHEs+/yg9KP8B5F1HuhY0y0pvH7Pd4YfxX4PFYC4=;
- b=EzBkBF+GN5kHQb/NBiZ/SqTXi5rzjBzzUmvsEN6Ncq9zge/7lja1Mjg8P/VWD3h69c
- jlKuKrInMPogD284GviW27ldlnux0WH7Wv6es8ZdIVNxNefmqEXCU/zRBYcmQuz9hiOk
- XdxIYDdEl/NBKfdHJKZDu6t5r0D8K/1W0QFmYJbPRdFgiRspNm29x5VLW4HAziF++OE+
- cuJkZ7X7syEQ5SS2Ury1WJR1YHksXiqjqtrE02+okEn+2JP8dbYxGJugiHfpcHuI01b+
- rYoHeNufNmW2AkUp0VLh2p9rpuRhOQndbU8goaIawTFqJcBGb6W1il1o/LLJCKOgycDx
- fkZA==
+ d=linaro.org; s=google; t=1756419549; x=1757024349; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=DD2yeJRw1duFOASyifATur0MnbzF0Mr38+5nlHgRrSk=;
+ b=iMS6dy4lJTW53PdqKc8hg0TZGymnvzExGb2dw38G60zc22sdoBE8GULbuEIjXSf+Vx
+ 4pnZqJ+i1HaNP33/qVwDyV99VpFkgsORnb1a/djJklne1dbsPg6x0MzSnkoL5e5AGAWT
+ W9XmVSR9eCSgSdigzv4KUjrrc8ETAKE4iHWqO5ZK45SW6+Dc5i6XShA2t36JbUxJTSX1
+ r+Yk/5SzROWjkur5g0FCLRFIfIqHeYsExirM9AsUFhODAQAhwcjyBggm8bSl/OjVdVZi
+ hXSUkMlVf4dl7iLEoiKGDWYhUnRcADD2ABQ0mrHeEJGYHty/gr81vrlcwL+TPXKnrJeL
+ 5X8Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756532792; x=1757137592;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=XY9uHEs+/yg9KP8B5F1HuhY0y0pvH7Pd4YfxX4PFYC4=;
- b=LTeevD8P98gfw8i6jdeZLR1ysLJqtXIY/2kJzrcrBqHW/BRMpkzEea9CqGs4AdvFxX
- ChdZOkAfLUVSq23X67rTj3D959Pao6Q7YUWOck0JNQhBMYtY/s4T1bbjhXkodwPNaihR
- Betfv0fHSfhs0pfC1Ggsuf49OpC7mUHR4tVYW0/wAwieGxbcJibx8d779AaB3nsmTuco
- mgqfAte3BLGzhaCN+QerlsAgtgM/d3v0tAVq/mB6vwLC7iZxac3HUXL0JTMI6gFaZKY0
- myYrpTl7/Yu5nrp/2wfHK8KfjqbMKVJwfYMTY9HtNw++Ji3WObFiZ7Zj2HiU95EBHheE
- KUdw==
-X-Gm-Message-State: AOJu0Yykd+YA/SJ3Pa+Xset3dA+4jHh+l5IQFjioyxVTis+FHJPA910G
- Q5ytWqWmN5uBFptMD7WqwLk5Dhbuuvls74XPZNRHIVVtKvCp1mBdYwzTgPAl5W0RQBI=
-X-Gm-Gg: ASbGnctL8xNvlUGQ0/XQih0dkCmvBY8fX/znMBr59LUn86idHsUck4pMCvRXRyKLY59
- rQXGb6pFOPzd/IzSltugoe6quBUUP3NGNopZ38G0AYN9oWdqc/yUvBxTD4qE2X6osv4QepmLJH7
- kw7EPYfEEvqiYNOvJDMMnXbg+rUlJFq3xKB4k7d2CGp4fYZZ2S4UJ50/CjfOM+3nxDhSx7+0UsR
- 6H8As3fICZwBvVB9W1CoMMSS2GBrxcw0xpQMJ5/QSIPiVx9QKKx89KBag09hnHZatvVNPe88A8m
- HzA1dwxeThVHWdV0goQ956wFfZdeneqvW5N7Vy6tjgkiT8mDEit6MCFj6yc7p7lmHEJHsde6Nyg
- wkJSOeFtqeZqPhvM8UlMAd3nWrqgJwtVzvO9YA5gfr4SCIKpQN0g8guzTdOEQLp4+XqxorsLolA
- ==
-X-Google-Smtp-Source: AGHT+IFe02smqgeyMwCoLStf1SQtlRow1nJTLP8rgLGNmb/6A620HSkYjuKNkPIGwn51hiJV6xjqVQ==
-X-Received: by 2002:a17:903:2288:b0:246:ae6e:e5e4 with SMTP id
- d9443c01a7336-249448ded1amr14470245ad.6.1756532792177; 
- Fri, 29 Aug 2025 22:46:32 -0700 (PDT)
-Received: from stoup.. (122-150-204-179.dyn.ip.vocus.au. [122.150.204.179])
- by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2490658999fsm40852715ad.112.2025.08.29.22.46.29
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 29 Aug 2025 22:46:31 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v4 41/84] target/arm: Convert arm_mmu_idx_is_stage1_of_2 from
- switch to table
-Date: Sat, 30 Aug 2025 15:40:45 +1000
-Message-ID: <20250830054128.448363-42-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250830054128.448363-1-richard.henderson@linaro.org>
-References: <20250830054128.448363-1-richard.henderson@linaro.org>
+ d=1e100.net; s=20230601; t=1756419549; x=1757024349;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=DD2yeJRw1duFOASyifATur0MnbzF0Mr38+5nlHgRrSk=;
+ b=q7yIUPPfizr0xUXRUDJ9tm0DOX6aS4lSF6RDQNCM4Hak7CKhiRH5F2/q+kF30PByXJ
+ Qt+EqrQif4A11X6EIeq0JDd2MQBcg4g9+LqXxdEX3T6b6j6SfAZ3GTm+iiP1Pe9SBhh4
+ 5+DkXhujCxCp2hVjxn12rQ/y81bb4bMuXfXDvgmrxqv4ZKZdZyWrdh/WKvxn/8QWIBwk
+ sg99IJP/76i/N1WK/am/G1oIFhveR5fJt0RlxGxlr1w6rpOgeHoqRyKnLpdgIOoHzfRi
+ pH/RDfyftDwi51oQVKr1rkYkQ8wiaGODfcPX6ajK7mRMQrbhceSnj6nKrdE4cuHqaOCS
+ 7sEA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUfmyIhsuoTV5LAqLzbXjnRDWPkhxMuLzac9EGtpYgF5gGyxIwJWOc5CwSyU8hZJVcgmGNkf+wQCg==@nongnu.org
+X-Gm-Message-State: AOJu0YzV4UA/qm+iIiyvWjcAhfwDnnbII4qDPx8LAWM8SkcIMOBIKEtS
+ KSWJj1EhwXNDTc/GS0GSUaFvMKyrbPlCq+A2sAXyzGlrc/qfs6DG1c2s1zG+gUAA8S0=
+X-Gm-Gg: ASbGncsI+uzCtSBwaTYA0AGV1wzGOAgbvqAXANroWf7rhDVvc6YuSMq33+8gji8Utqi
+ WYTa/TrrfumHd0ltFRGdvic1BetYrcJoep4RY8iqOtKmPCR3WSYqAbjG5mLpE/Ax6RzIEAoshSK
+ gvQiOgAm1w7+HC7btNjRt6hO1/1Ii4SmNcqxyJ/OYIntuAxIwkjgwKsnPt19liKqeii90mu2O/J
+ A09QzzF0o9m0mKSK7sojjxTQ59k66EEJWxU5XLDySDoRFJ9+SXRsAYMlmpX8Hwsa0KM1Q/x5CBp
+ xdq1pA5uupvKT2iPgSUJpYFoIRUgboRovitpUSAZPhlmM3iu12J/w+MqMNciJw7yg/RI8zqq6pv
+ Ma2VNa/ajb4gJ4gaFpWvYRU93wYCgqIDlGniQtPpq3TwhLLAGaf+hUFlWApI+KYcbOewbwpTkvX
+ ML
+X-Google-Smtp-Source: AGHT+IGNCAek5/lRo2F1mZqq2HlPWl9Zq1Yv/y0kDZlwY8Ofn6uOM02xCPSNsfulidNqW4wLQS8YGw==
+X-Received: by 2002:a05:600d:15a:10b0:458:bc3f:6a77 with SMTP id
+ 5b1f17b1804b1-45b51f2fe8dmr121000565e9.2.1756419548997; 
+ Thu, 28 Aug 2025 15:19:08 -0700 (PDT)
+Received: from [192.168.69.207] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-45b7e9c41cfsm10195565e9.21.2025.08.28.15.19.08
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 28 Aug 2025 15:19:08 -0700 (PDT)
+Message-ID: <88966d75-2947-4fd7-999d-9b94250a9033@linaro.org>
+Date: Fri, 29 Aug 2025 00:19:07 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 05/47] hw/arm/xlnx-versal: sdhci: refactor creation
+To: Luc Michel <luc.michel@amd.com>, qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Francisco Iglesias <francisco.iglesias@amd.com>,
+ "Edgar E . Iglesias" <edgar.iglesias@amd.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Frederic Konrad <frederic.konrad@amd.com>,
+ Sai Pavan Boddu <sai.pavan.boddu@amd.com>
+References: <20250822151614.187856-1-luc.michel@amd.com>
+ <20250822151614.187856-6-luc.michel@amd.com>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20250822151614.187856-6-luc.michel@amd.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62b;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::330;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -104,95 +108,37 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/internals.h       | 19 -------------------
- target/arm/mmuidx-internal.h |  8 ++++++++
- target/arm/mmuidx.c          |  7 ++++---
- 3 files changed, 12 insertions(+), 22 deletions(-)
+On 22/8/25 17:15, Luc Michel wrote:
+> Refactor the SDHCI controllers creation using the VersalMap structure.
+> 
+> Signed-off-by: Luc Michel <luc.michel@amd.com>
+> Reviewed-by: Francisco Iglesias <francisco.iglesias@amd.com>
+> ---
+>   include/hw/arm/xlnx-versal.h |  5 +-
+>   hw/arm/xlnx-versal-virt.c    | 43 ++--------------
+>   hw/arm/xlnx-versal.c         | 96 ++++++++++++++++++++++++++++--------
+>   3 files changed, 83 insertions(+), 61 deletions(-)
 
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index a2e5ae42a3..68db7559b0 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -1280,25 +1280,6 @@ ARMMMUIdx stage_1_mmu_idx(ARMMMUIdx mmu_idx);
- ARMMMUIdx arm_stage1_mmu_idx(CPUARMState *env);
- #endif
- 
--/**
-- * arm_mmu_idx_is_stage1_of_2:
-- * @mmu_idx: The ARMMMUIdx to test
-- *
-- * Return true if @mmu_idx is a NOTLB mmu_idx that is the
-- * first stage of a two stage regime.
-- */
--static inline bool arm_mmu_idx_is_stage1_of_2(ARMMMUIdx mmu_idx)
--{
--    switch (mmu_idx) {
--    case ARMMMUIdx_Stage1_E0:
--    case ARMMMUIdx_Stage1_E1:
--    case ARMMMUIdx_Stage1_E1_PAN:
--        return true;
--    default:
--        return false;
--    }
--}
--
- static inline uint32_t aarch32_cpsr_valid_mask(uint64_t features,
-                                                const ARMISARegisters *id)
- {
-diff --git a/target/arm/mmuidx-internal.h b/target/arm/mmuidx-internal.h
-index 3e51c0f579..55fba4aae2 100644
---- a/target/arm/mmuidx-internal.h
-+++ b/target/arm/mmuidx-internal.h
-@@ -18,6 +18,7 @@ FIELD(MMUIDXINFO, RELVALID, 5, 1)
- FIELD(MMUIDXINFO, 2RANGES, 6, 1)
- FIELD(MMUIDXINFO, PAN, 7, 1)
- FIELD(MMUIDXINFO, USER, 8, 1)
-+FIELD(MMUIDXINFO, STAGE1, 9, 1)
- 
- extern const uint32_t arm_mmuidx_table[ARM_MMU_IDX_M + 8];
- 
-@@ -76,4 +77,11 @@ static inline bool regime_is_user(ARMMMUIdx idx)
-     return FIELD_EX32(arm_mmuidx_table[idx], MMUIDXINFO, USER);
- }
- 
-+/* Return true if this mmu index is stage 1 of a 2-stage translation. */
-+static inline bool arm_mmu_idx_is_stage1_of_2(ARMMMUIdx idx)
-+{
-+    tcg_debug_assert(arm_mmuidx_is_valid(idx));
-+    return FIELD_EX32(arm_mmuidx_table[idx], MMUIDXINFO, STAGE1);
-+}
-+
- #endif /* TARGET_ARM_MMUIDX_INTERNAL_H */
-diff --git a/target/arm/mmuidx.c b/target/arm/mmuidx.c
-index 1c1e062bfe..c5b43a5932 100644
---- a/target/arm/mmuidx.c
-+++ b/target/arm/mmuidx.c
-@@ -13,6 +13,7 @@
- #define R2     R_MMUIDXINFO_2RANGES_MASK
- #define PAN    R_MMUIDXINFO_PAN_MASK
- #define USER   R_MMUIDXINFO_USER_MASK
-+#define S1     R_MMUIDXINFO_STAGE1_MASK
- 
- const uint32_t arm_mmuidx_table[ARM_MMU_IDX_M + 8] = {
-     /*
-@@ -35,9 +36,9 @@ const uint32_t arm_mmuidx_table[ARM_MMU_IDX_M + 8] = {
-     [ARMMMUIdx_Stage2_S]        = REL(2),
-     [ARMMMUIdx_Stage2]          = REL(2),
- 
--    [ARMMMUIdx_Stage1_E0]       = REL(1) | R2 | USER,
--    [ARMMMUIdx_Stage1_E1]       = REL(1) | R2,
--    [ARMMMUIdx_Stage1_E1_PAN]   = REL(1) | R2 | PAN,
-+    [ARMMMUIdx_Stage1_E0]       = REL(1) | R2 | S1 | USER,
-+    [ARMMMUIdx_Stage1_E1]       = REL(1) | R2 | S1,
-+    [ARMMMUIdx_Stage1_E1_PAN]   = REL(1) | R2 | S1 | PAN,
- 
-     /*
-      * M-profile.
--- 
-2.43.0
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+
+> +void versal_sdhci_plug_card(Versal *s, int sd_idx, BlockBackend *blk)
+> +{
+> +    DeviceState *sdhci, *card;
+> +
+> +    sdhci = DEVICE(versal_get_child_idx(s, "sdhci", sd_idx));
+> +
+> +    if (sdhci == NULL) {
+
+Can that happen?
+
+> +        return;
+> +    }
+> +
+> +    card = qdev_new(TYPE_SD_CARD);
+> +    object_property_add_child(OBJECT(sdhci), "card[*]", OBJECT(card));
+> +    qdev_prop_set_drive_err(card, "drive", blk, &error_fatal);
+> +    qdev_realize_and_unref(card, qdev_get_child_bus(DEVICE(sdhci), "sd-bus"),
+> +                           &error_fatal);
+> +}
 
 

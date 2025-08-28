@@ -4,89 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33155CA1001
-	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 17:33:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 453F9CA0FFF
+	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 17:34:37 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1usOeO-0008HC-FD; Sat, 30 Aug 2025 12:42:00 -0400
+	id 1usOcp-0005Jw-A1; Sat, 30 Aug 2025 12:40:25 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1urkpH-0006mb-Un
- for qemu-arm@nongnu.org; Thu, 28 Aug 2025 18:10:36 -0400
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1urkNU-0006Fc-NR
+ for qemu-arm@nongnu.org; Thu, 28 Aug 2025 17:41:52 -0400
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1urkpF-0005Wo-PH
- for qemu-arm@nongnu.org; Thu, 28 Aug 2025 18:10:35 -0400
-Received: by mail-wm1-x32d.google.com with SMTP id
- 5b1f17b1804b1-45b7da4101fso2632165e9.3
- for <qemu-arm@nongnu.org>; Thu, 28 Aug 2025 15:10:33 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1urkNR-00037w-Kp
+ for qemu-arm@nongnu.org; Thu, 28 Aug 2025 17:41:52 -0400
+Received: by mail-wm1-x335.google.com with SMTP id
+ 5b1f17b1804b1-45b618e067eso17868915e9.1
+ for <qemu-arm@nongnu.org>; Thu, 28 Aug 2025 14:41:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756419032; x=1757023832; darn=nongnu.org;
+ d=linaro.org; s=google; t=1756417307; x=1757022107; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=4IgyS4bdUdJEXom4nT0B8vFEDGGCP198DulKAudY4JM=;
- b=h07LdAOCELZFnR7Eq4HZtIErdMdAV2NuhlINLzm2Y+QmqaE1QKeJWAbx0Jd2Vzejqm
- Dn3zAX0Ifjc0/+JJ2ICToyA28byxum7P1FLWJAFEgKuWq1OsD6yYNEqCIvp1LMbHI79M
- YyKQPo8pFL/SqeHzJ6nJJQpcCJ43AdRmxWolDOkixsSs9baORSpJeFJTBHNaQVnCeIG8
- 3h4zWXm7wR4uq17ONzS55T+hjYp12CUNyCoLSXxYvg6o2Gm+4c7L55TiriNPOQuZagLj
- y/XJwhAcKoP2YJk5JfiZVqOZ5xruJ41CUcH3d4kHwV1BZZp/3Aj1lABkAXY1WsqNLLOt
- WvOg==
+ :references:to:subject:user-agent:mime-version:date:message-id:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=f2LEVdYEHwnqBH/a6hUr+DHF4tWatjySkwL68arjJ3E=;
+ b=IuXMwFVWeV8hYKURSWKLocyLhtn3pQcHhsa20nAWD8xKEcfPmRS2HwUx0wQHCJwaCM
+ aUnXTNhhK/KdNOC9NXu/I2UP5W3j4bschcnVIyL4R8AtDsgnU34FHdzsqGQrhgfBeHMU
+ HdVDl3er3CjQxDzhTsLhQOdoSeKi1p0/FVGyBqZlDMzksdJqIsXxOHVEdMSSCDBDkhYm
+ zAuVFX0xiZkusHPAVi+Bt6pEPAZRZly5782R2HWi6F2OQGyqe1H0vd7tZWn3tabPAwFx
+ 38wiknm47Y+gy/FVe6Y3jV+hvArCFn0p8ws8lXWqj6OJ0OPlsgnD+4ADlwcCZ1wMe6Y+
+ i2AQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756419032; x=1757023832;
+ d=1e100.net; s=20230601; t=1756417307; x=1757022107;
  h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :references:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=4IgyS4bdUdJEXom4nT0B8vFEDGGCP198DulKAudY4JM=;
- b=fk3n8CQpT85D+H/li7e+tDTIOmQ5SHBvbybzSrbyn4RqmQp53Sd9tuRWFpqTxXwScR
- aFfssYrPiZVhZZf1k4tTMpW/JboQ6aL/oQIixOpC5SipgBH6gcJVvPsd3VRxxpB0Bvn1
- TEGBjTGu8ch316Ye7LFeNNLrN2X/B/jHj21Blv+omREH7mJntNsUUwb46TDPjUBU+JZT
- JBTsmDRO5+cGRsXtDV1q1VVW+0XKuebO3uQMVVLGz+wzY7k0fOxjyvzjB1o3UXFNsPj0
- f1CSTQrqoS9XU2gPRY9mUeR/rLOFAvji5DLaJYO9zhkBmZd1Te01oeXNMFno8q6WKuhz
- RYgw==
+ bh=f2LEVdYEHwnqBH/a6hUr+DHF4tWatjySkwL68arjJ3E=;
+ b=oB8ABOsrC/x6Ew8xfJVj7FRShzf1ydrxK2caUeX47zm5ltjIw3ow4KgP3dhFY0dfi6
+ WUaBcm47AU8Dfqsx3CqctgWG+yHCtnWqq3d0mxO+wIjP8Ei7OTuRGhhCicg//AvbU5Yd
+ 7uo/ZkTFL6749AjVnAFuZzECAzdEuDbEGQKbO9RLPJxPSrH4ork1sei+wICloZry52e+
+ yCgoEMJZkK7H1vAC+MysCb6qPXhoDnkaw0eHkO1zdsuSCUna83Ouhzo56HqP0R8FS5NV
+ O0Oc2eLKUS9HrB7jIGECJB7Tlqrys3nPGgtT/UuvS6Pyr8NCEpzTX7C8UBW/7BXNOvZE
+ UYew==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXD4YEltm5V1MFLI/0gNe7tlQNT2+D54NWuxfpODGE9yyc8ZvL7ttjNGsL0NtF9CEWonANcW77tag==@nongnu.org
-X-Gm-Message-State: AOJu0Yy/6iG/d2BZiNpL824vbxpMFSW/wU5H6gGqwxyXPWZINUsOze6W
- QGRe9OCjhH7+BfefG4LDng4RHtiOIrV3QianhgnERlmphaBIj8/WGgfEQFdPBLsZV3U=
-X-Gm-Gg: ASbGncuwuSxLvO9pjCEL502px71AHdK010jMDPdfERzivNbW6Cx2T/qhPK3QImL0uZm
- 6/9xPTYEOfxVW9WmqPNNirwE+EO6fFb1fZRg4pIrlZSlIpfRF60VGlmwpuzEn+GGXbEqIy/exPJ
- zs9ZXctu3OhbGHbq1a7hrwlIHIz9T29dUvZRft/BNqGskDiy0NUHZ9xq2yjNyXdVjI0tI4V7yMn
- YFz1Go0Ydgup+JeX3vYiItgfNlbhGAUcPczgoCvy8iIN6e1jXBx2j6Y8sloPcnOQfcS0/+zZK5z
- wKLKhpOGSeL9x7vIrYh2Pin/A0FVujmx1UWs6d09eUrpGJIImHONTAWr2DQXbHGT8wgcAzaq3EW
- /JHplQG5DZOGOH9qRmtw2xH6IP0xVPasiJ/4l2L+tLOofHT+BPHn8hu+RAryw9G9ZWYD48ScpVM
- jz
-X-Google-Smtp-Source: AGHT+IHScl1KSy8c6rgO/fZq1i52I8Tb+tOJ0kvl4c72DlD6QicoGVNLCVHONIw9rIcPPOjYu4mJTA==
-X-Received: by 2002:a05:6000:2508:b0:3c7:df1d:3d9 with SMTP id
- ffacd0b85a97d-3c7df1d0518mr13968837f8f.39.1756419031814; 
- Thu, 28 Aug 2025 15:10:31 -0700 (PDT)
+ AJvYcCWNPSfLBy9eQRoC6LFgUA+hzj34A0qAhChMh6NwOoiaiWJT72GUO1EtKlnm0UWzsquQCCrJQJds7g==@nongnu.org
+X-Gm-Message-State: AOJu0Yxdanso3yhRetI+vhEQbuotgeVW8JiN4t2Iu4XJSXLoKfXDGtV5
+ vmGvmt/u+/pg5kZQ0hqniT9uoIjfvlJCci5UXS9UTT2n6rtNzTo8STJpKIZ4wLLW9bI=
+X-Gm-Gg: ASbGncu37VS3Q6GqFhsnaktXij3xrDWnG0ZKktDlyXLNt37SqhnBb6auojgokMyDP6s
+ YtQB7GOCYOOvd983DF7TJl+pSWHev0nwxqIGkhvhK9vKONgCQr63ip8kRzuGpBpljmaeneJovmy
+ TntUvw9KkvdlVZx4kNv+1GTchKfIZutwAw+1Rgwxfweew10Pau8YA2QpfY/PDn2vnE6ZwUX32c8
+ vsP4RyO7XQOv5Vqr3SxVAEJYWxdgMs3HrhHZ6NX4m2fSao6Jhib632+nF/hSXltLALObzrWaXZj
+ VGHsYj+C33kgf3obC1d8hdjOeYBQVpdLMPBqtCUykl2qK486SZgNchvzGF3ZMu3b44cAEMP9zb1
+ Wqcf9n81nuHEVVO/L00NR5MboQEYH21pllf/XSIjruTznImEcam5ecp9Ch4HiOolFypvL67N/E/
+ mk
+X-Google-Smtp-Source: AGHT+IHSFmdmBQw9ezUYZQz/HZgCxab6wY/SVtXOB98mYOSt/BJh2/fILZ4HQuGPVh/A6OJGERdSfw==
+X-Received: by 2002:a05:600c:a49:b0:459:d9d5:7f2b with SMTP id
+ 5b1f17b1804b1-45b6870dac5mr91678515e9.16.1756417307033; 
+ Thu, 28 Aug 2025 14:41:47 -0700 (PDT)
 Received: from [192.168.69.207] (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3cf346811b3sm794670f8f.63.2025.08.28.15.10.30
+ ffacd0b85a97d-3cf33fb9d37sm745623f8f.49.2025.08.28.14.41.45
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 28 Aug 2025 15:10:31 -0700 (PDT)
-Message-ID: <5ae93843-0059-4077-8158-6fd272f2e10d@linaro.org>
-Date: Fri, 29 Aug 2025 00:10:30 +0200
+ Thu, 28 Aug 2025 14:41:46 -0700 (PDT)
+Message-ID: <7b4d4f6a-7aad-41be-99f5-a81c7290dfc5@linaro.org>
+Date: Thu, 28 Aug 2025 23:41:44 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 12/47] hw/arm/xlnx-versal: VersalMap: add support for
- OR'ed IRQs
-To: Luc Michel <luc.michel@amd.com>, qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Francisco Iglesias <francisco.iglesias@amd.com>,
- "Edgar E . Iglesias" <edgar.iglesias@amd.com>,
- Alistair Francis <alistair@alistair23.me>,
- Frederic Konrad <frederic.konrad@amd.com>,
- Sai Pavan Boddu <sai.pavan.boddu@amd.com>
-References: <20250822151614.187856-1-luc.michel@amd.com>
- <20250822151614.187856-13-luc.michel@amd.com>
+Subject: Re: [PATCH] system: drop the -old-param option
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20250828162700.3308812-1-peter.maydell@linaro.org>
 Content-Language: en-US
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20250822151614.187856-13-luc.michel@amd.com>
+In-Reply-To: <20250828162700.3308812-1-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::335;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x335.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -109,23 +102,47 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 22/8/25 17:15, Luc Michel wrote:
-> Improve the IRQ index in the VersalMap structure to turn it into a
-> descriptor:
->     - the lower 16 bits still represent the IRQ index
->     - bit 18 is used to indicate a shared IRQ connected to a OR gate
->     - bits 19 to 22 indicate the index on the OR gate.
+On 28/8/25 18:27, Peter Maydell wrote:
+> We deprecated the command line option -old-param for the 10.0
+> release, which allows us to drop it in 10.2.  This option was used to
+> boot Arm targets with a very old boot protocol using the
+> 'param_struct' ABI.  We only ever needed this on a handful of board
+> types which have all now been removed from QEMU.
 > 
-> This allows to share an IRQ among multiple devices. An OR gate is
-> created to connect the devices to the actual IRQ pin.
-> 
-> Signed-off-by: Luc Michel <luc.michel@amd.com>
-> Reviewed-by: Francisco Iglesias <francisco.iglesias@amd.com>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->   hw/arm/xlnx-versal.c | 63 +++++++++++++++++++++++++++++++++++++++++++-
->   1 file changed, 62 insertions(+), 1 deletion(-)
+>   docs/about/deprecated.rst       | 13 ------
+>   docs/about/removed-features.rst | 12 +++++
+>   include/system/system.h         |  1 -
+>   hw/arm/boot.c                   | 81 +--------------------------------
+>   system/globals.c                |  1 -
+>   system/vl.c                     |  4 --
+>   qemu-options.hx                 |  7 ---
+>   7 files changed, 13 insertions(+), 106 deletions(-)
 
-Nice.
+
+> diff --git a/docs/about/removed-features.rst b/docs/about/removed-features.rst
+> index d7c2113fc3e..b1b3d1b1b3f 100644
+> --- a/docs/about/removed-features.rst
+> +++ b/docs/about/removed-features.rst
+> @@ -560,6 +560,18 @@ the options along with the machine models they were intended for.
+>   
+>   Use ``-run-with user=..`` instead.
+>   
+> +``-old-param`` option for booting Arm kernels via param_struct (since 10.0)
+
+s/since 10.0/removed in 10.2/
+
+> +'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+> +
+> +The ``-old-param`` command line option was specific to Arm targets:
+> +it was used when directly booting a guest kernel to pass it the
+> +command line and other information via the old ``param_struct`` ABI,
+> +rather than the newer ATAGS or DTB mechanisms. This option was only
+> +ever needed to support ancient kernels on some old board types
+> +like the ``akita`` or ``terrier``; it has been deprecated in the
+> +kernel since 2001. None of the board types QEMU supports need
+> +``param_struct`` support, so this option has been removed.
 
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 

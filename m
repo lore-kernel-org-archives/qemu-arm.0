@@ -4,157 +4,139 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C4CDCA1000
-	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 15:37:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CAD9CA0FFF
+	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 15:41:44 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1usNBZ-0006Iq-Fq; Sat, 30 Aug 2025 11:08:10 -0400
+	id 1usNbG-0005a3-SI; Sat, 30 Aug 2025 11:34:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
- id 1uruUY-0002xg-1X; Fri, 29 Aug 2025 04:29:50 -0400
-Received: from mail-dm6nam10on20625.outbound.protection.outlook.com
- ([2a01:111:f403:2413::625]
- helo=NAM10-DM6-obe.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <armenon@redhat.com>)
+ id 1us5J5-0004gO-D2
+ for qemu-arm@nongnu.org; Fri, 29 Aug 2025 16:02:43 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
- id 1uruUU-0006Re-C6; Fri, 29 Aug 2025 04:29:49 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=SfVLgWfGji8dEotAIMawUbufll4W8TyomvQs2SK72TK4NjTY3+aqqe/qN3y1yhDQmQvyU+Op0A/YU2usrPGPS0z+bnG8WAukj6bs9a15bcdBSOnGXRpqeb0NLXg5n3pVIZ+f5T6BPSfcSYOWb6006YfCjB+AWD56rFa9/Qt8SDcU7WZ3XYUzV5V3htzLtfGskPuHTdOaB1wNQnfIRC0k85/Chng2j4RiRPqAmaDuE8QjhxYs+gNmO6EF2SOOUE8CQRI1juU+DhqXaKXtIXR04aFkBQ8rTnE6HOGcTd7QfBJgotj6C90yLbB0d2208d9V4fzKX6U1haGcaBHyWlSelQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=VGFFnbUrmViHMYy7rHd3afalbHlpWoHPlYlkx1HSFo0=;
- b=bkxgnaiBQncekrCbE2/I/rvTV7FteKxTwOR5noIl7tpPu3qphKFxrkKl8yS7qQ1GKgj5ePC1T95BtRL2+Y9C+SUAeRG2MrL+oHBdyQu1ritj3mbXOyKHSD3dzgElPzv+okXclSDfs3UYV/TC2Yia/Zzclj1qNWq7tAMFONF9x9CTil8B3VMRIA+b5qs2T/AlMVzZj9mnUiOPsMR6MVXlbHFMSW8eUg7kTAba9eb4FhC+a4RRQ0JYwead/0ZPHRqzaZrykwAlWPbAYiGlphVlY4FTn5exbMcVibqyEghN9e4OcTDq3q2BCynShs1ttHh2OWLeh5ESBG/z5PX+I4Bcng==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.117.160) smtp.rcpttodomain=nongnu.org smtp.mailfrom=nvidia.com;
- dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
- dkim=none (message not signed); arc=none (0)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=VGFFnbUrmViHMYy7rHd3afalbHlpWoHPlYlkx1HSFo0=;
- b=lT9DIZEBiY0JwiFhzx/hpCuYU7Y5bpykXVxqhO18WKzZslgIqAvg4J7BfAM0G7Xp+xB909KmFGUYJtnSn4iCQYf/7KOBkZ46tZWHgpcIB1JSDl0vHg1CZx0b1+aFS0CJMrT1nQiY82192cEWy/rdGwRqV5O0+JxRe0KMpvjjC118FemQ7Psk5CO842AQT9ntLgzG4avc6SO/warhM4BvXG9CkPovqCeAJi4f4N0UrPSvHU5QWuag6rIHX+zjdw6DSB1nK359gIfpHOhB7zrL+QVwqz1UD7BvvOflmcFgn4O/mMqmysVX+c0xz2MJZRSkolnUkr6fOFpsE8IX0mObIQ==
-Received: from BYAPR01CA0037.prod.exchangelabs.com (2603:10b6:a03:94::14) by
- MN6PR12MB8568.namprd12.prod.outlook.com (2603:10b6:208:471::19) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9052.21; Fri, 29 Aug
- 2025 08:29:32 +0000
-Received: from SJ5PEPF000001EC.namprd05.prod.outlook.com
- (2603:10b6:a03:94:cafe::6f) by BYAPR01CA0037.outlook.office365.com
- (2603:10b6:a03:94::14) with Microsoft SMTP Server (version=TLS1_3,
- cipher=TLS_AES_256_GCM_SHA384) id 15.20.9073.19 via Frontend Transport; Fri,
- 29 Aug 2025 08:29:23 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.160)
- smtp.mailfrom=nvidia.com;
- dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.117.160 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.117.160; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (216.228.117.160) by
- SJ5PEPF000001EC.mail.protection.outlook.com (10.167.242.200) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.9073.11 via Frontend Transport; Fri, 29 Aug 2025 08:29:30 +0000
-Received: from rnnvmail201.nvidia.com (10.129.68.8) by mail.nvidia.com
- (10.129.200.66) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14; Fri, 29 Aug
- 2025 01:29:14 -0700
-Received: from NV-2Y5XW94.nvidia.com (10.126.231.35) by rnnvmail201.nvidia.com
- (10.129.68.8) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14; Fri, 29 Aug
- 2025 01:29:10 -0700
-From: Shameer Kolothum <skolothumtho@nvidia.com>
-To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
-CC: <eric.auger@redhat.com>, <peter.maydell@linaro.org>, <jgg@nvidia.com>,
- <nicolinc@nvidia.com>, <ddutile@redhat.com>, <berrange@redhat.com>,
- <imammedo@redhat.com>, <nathanc@nvidia.com>, <mochs@nvidia.com>,
- <smostafa@google.com>, <mst@redhat.com>, <marcel.apfelbaum@gmail.com>,
- <wangzhou1@hisilicon.com>, <jiangkunkun@huawei.com>,
- <jonathan.cameron@huawei.com>, <zhangfei.gao@linaro.org>
-Subject: [PATCH v9 07/11] hw/arm/virt: Allow user-creatable SMMUv3 dev
- instantiation
-Date: Fri, 29 Aug 2025 09:25:29 +0100
-Message-ID: <20250829082543.7680-8-skolothumtho@nvidia.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250829082543.7680-1-skolothumtho@nvidia.com>
-References: <20250829082543.7680-1-skolothumtho@nvidia.com>
+ (Exim 4.90_1) (envelope-from <armenon@redhat.com>)
+ id 1us5J1-0004Vy-EX
+ for qemu-arm@nongnu.org; Fri, 29 Aug 2025 16:02:43 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1756497756;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=oeUJ2WWP7HoGGvk5HadTQRJGJreECKIpIHTeFNUMKlc=;
+ b=RwNppjASWb++cG5iY72yFIeFurJDEw9cjvX8bZtVR5JheiqT1H4S4Nsjf9iyIIkxJy8hbd
+ 8m6H/vqTpD+jpYicZzrURM/BPiIbM5j48Fyj+Czr4hh2XvOeeTeVkEsi8Ef185372MriYr
+ 15fyVaxd5y2AqFXewZhHSJSjIQFqN5Q=
+Received: from mail-pj1-f72.google.com (mail-pj1-f72.google.com
+ [209.85.216.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-665-HLR-x5rTMxKPnPA2IDcMIg-1; Fri, 29 Aug 2025 16:02:35 -0400
+X-MC-Unique: HLR-x5rTMxKPnPA2IDcMIg-1
+X-Mimecast-MFC-AGG-ID: HLR-x5rTMxKPnPA2IDcMIg_1756497754
+Received: by mail-pj1-f72.google.com with SMTP id
+ 98e67ed59e1d1-3259ff53c2eso3586183a91.1
+ for <qemu-arm@nongnu.org>; Fri, 29 Aug 2025 13:02:35 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1756497754; x=1757102554;
+ h=cc:to:content-transfer-encoding:mime-version:message-id:date
+ :subject:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=oeUJ2WWP7HoGGvk5HadTQRJGJreECKIpIHTeFNUMKlc=;
+ b=ROOadrwn6faNlxeIC0eaI8qPE8aBrEHalfWfBKrU/QAbjvqrpCony8TZSaDdr4BbdL
+ QQFSYIB3eJtC+DSW4HPdu+uhhy28CshBYir4AM8eTKxCWKuAgTquVNz4bWSev8Pv47Ab
+ R/84l2YSN9qEueNcDLKzbeKupm8+mkL08AuCd/cNbyANLSfxV0iEzNM5efm7J3WhdEar
+ gtheGnyn5QUbRmbxp1aQ1tv1KaJfd56fBK2xfh/cQOmLWCQ5d6a7mIqrjTjQrW/u68nU
+ Jv7aeJMOnIDFm6LcdGgU5GxGRxJLGw5MNdDjpz1A24E3QuZvKow+FUeN/p089cRHEIJ8
+ aR5A==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVTbm/EDcow+OS6iF9WhLb0UOWMsH8Gv1BIFHxq8+IQL3flxlAbH3aMRAipFJqKEKABEYueoNsaVA==@nongnu.org
+X-Gm-Message-State: AOJu0YxBPVKk4e8jRNBSzscuF8Vc/QqO4V1Gz/v3Vtd6/8HVYovEz0KG
+ cFKvfeBvAXo73hrE37NSoJvqGfNj2Xrx/gj0vBoKz7B/u+BMO4E1kq9p0Wzm/ORWdJ09EMtmCi9
+ kAB5IQJwm6HUfyQZPtM4Yaoav7N9dc4qRoBG8pafp8/KbrirmqbJYxw==
+X-Gm-Gg: ASbGncuxVKMoh64+WzgHA5sLTpOFm6TXFfkpHixtLbiTaM8D9kjPmUTtvy00oMe6JuD
+ ioIqPE91ffyx0KdFPl5gw/DsaVI6z8oX4GdIb1dw7cXumXqco1j1LVUD8NMLUjeHMdmUdUjdR/U
+ wuH51Pd0UGnkhWvPUNnyi+UEk0rfmcqkgS9AQnjJGC9rLUaPcrOrQhLJEO/38+H+PB6ICvXxJph
+ 3BeMoS44aoDvsW07xcH0Lw3JQvku9e4blpUSze/a5PYDNcptkvAouspkq7/c3bIpUonEK2NfTSl
+ 6AlrJOic2wll6yTjmqYdbl1ZJ0/KUoP1ScSOZK+N+NMM79BM7jiXDw==
+X-Received: by 2002:a17:90b:510e:b0:327:f99c:d490 with SMTP id
+ 98e67ed59e1d1-327f99cd529mr3721920a91.37.1756497753489; 
+ Fri, 29 Aug 2025 13:02:33 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IH+s8Mkc9th0RuNcOZK5oZAZ4UVVI8XuZThqtBhwsN/dgXXCbOBxhcNL7LkQ/dap4q231yAbg==
+X-Received: by 2002:a17:90b:510e:b0:327:f99c:d490 with SMTP id
+ 98e67ed59e1d1-327f99cd529mr3721841a91.37.1756497752790; 
+ Fri, 29 Aug 2025 13:02:32 -0700 (PDT)
+Received: from armenon-kvm.bengluru.csb ([49.47.195.108])
+ by smtp.gmail.com with ESMTPSA id
+ 98e67ed59e1d1-327d8f66f16sm3570543a91.0.2025.08.29.13.02.22
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 29 Aug 2025 13:02:32 -0700 (PDT)
+From: Arun Menon <armenon@redhat.com>
+Subject: [PATCH v13 00/27] migration: propagate vTPM errors using Error objects
+Date: Sat, 30 Aug 2025 01:31:40 +0530
+Message-Id: <20250830-propagate_tpm_error-v13-0-a4e777b7eb2c@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.126.231.35]
-X-ClientProxiedBy: rnnvmail202.nvidia.com (10.129.68.7) To
- rnnvmail201.nvidia.com (10.129.68.8)
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: SJ5PEPF000001EC:EE_|MN6PR12MB8568:EE_
-X-MS-Office365-Filtering-Correlation-Id: ee60d9f2-f4e3-49d8-c5ef-08dde6d62d1c
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230040|1800799024|82310400026|36860700013|7416014|376014; 
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?OHRGT2xVYmlWS0tQTCtWT21vSjRrNVh0VTVsVGd6WEZsdTRsa0lLaDdSMTZM?=
- =?utf-8?B?L2RwZnRaZDZoNTFGd3hKUkMzWldidFRRVTRCQ2JZUndIQ0hXdW9LSzVMR1dQ?=
- =?utf-8?B?STFNYTlpRjl2OHNWMTcrUTM0dUx1UUVIb0d4akloRlo5bU1jMnZHMjI3NjRj?=
- =?utf-8?B?T2t5MFNWeDloZVlrbklXUDBCV2hVM1pYUXJnM3UwR2RvTno4b0FrbEhUWlZi?=
- =?utf-8?B?UzNvZ0FKMFZVUnVJTEpQRUtKa29RQXpFNjVjbVROc0ZnZGxINUwzSXJjZkRQ?=
- =?utf-8?B?WldzUDIyWmluSzViOVZzWVVnZjFRQWhDQlAxY1g3VWhSWG1iYngrTGFkR2ww?=
- =?utf-8?B?TnFTS3R5WExsQmREa1FoNjdGYU1iSXZERWVCaTNvSmRvSVlZTzRmUkJLNFoy?=
- =?utf-8?B?SDlNaFp5VzhiVkRDNWJLSDFHL2NVTzNsQk5PZ05waWNlZ3pNK0RyVmdQK0xF?=
- =?utf-8?B?TGxDSEhkSzhINHc1QlgxMVJTWkZDODc4RkhrWndSSjNVdUJjTWMrZVh6TTFY?=
- =?utf-8?B?aUtnd2VKRTBlbm5GSGNjRm1xT0IwOFZnWjF1R2I4bXZZVE84UVBZT0d4T0ZV?=
- =?utf-8?B?NTc4anpUQkEwZDkzVGc4V1dTZjlGSkhFRXRlUWlFUWIrejN3NFZFUHlsZkxR?=
- =?utf-8?B?UWZ0TzZ1TXZybU9GY3FCOWFvLzBUTVBPZGpndnJiL1k2dHVqZzdCRVFlT3ND?=
- =?utf-8?B?d0NRUWdoWkV6S0puOE45YlUvNHdkT3l4MmlJS0g2RFE0YkZGUEdta1lCbFp3?=
- =?utf-8?B?WEFKUzdrQnQ1dUlOelJmekhaQUVESXpSUVNaUEEwdStSMDBpcWV6b0k3RXRG?=
- =?utf-8?B?bTE2dWpNK2QwMi9OUHhTN1ZXdDVOWklIMWFJYWNyVjNCNmxvaHIrajZCVllj?=
- =?utf-8?B?Vkk2NU1QemdMemhRQnFmbVY3ZC8rK0xmbk9kLzNnV0tmSHVWaDdNRmgvYnYv?=
- =?utf-8?B?RnVFTFgvRkx3ZkcrY0hXWlhrUVhZWCtweUR0M2ljd3VQQ0w5VzNQS0JxSGw5?=
- =?utf-8?B?MkFSWmVPeWNBT3MrclJyVEdEaTNlYXZZdmJER1d0dGkzL3lnckExV3V4T1d4?=
- =?utf-8?B?VGtoOHVBdVdvaEkvNWFvR1VzRC9BSTJvTmNTczNNMHY2MXFRcC9oNW9xK0oz?=
- =?utf-8?B?THlDazRJVm1wVzU4TkFFczh4NU4xRXhYWWljWnBFYW45VmdUdzFWS3RLa2Zx?=
- =?utf-8?B?K1BKakxDRzZYbHVrN3hkcDVaNW1tNEFnQlU4RjFkTWVXRWFkb3FaSkwwcGpN?=
- =?utf-8?B?WExaVEVSRXlkdnh6aXZiL1pzRGNFQWZiUzJtVFRCZkoraE9HeVJlczRJSXUx?=
- =?utf-8?B?cERlRy8rRGpFeldla0FnWVl6M3FlWThkWm5aamYrVWcra2kvdGdiUjBxV0dm?=
- =?utf-8?B?UzFCSUk5NTRXRDNoNVY2VCtpTVJvaG8zdEtkMGt5eGQyMERUOGhqanRrSUcw?=
- =?utf-8?B?Q0lHWGJuTW9aUlZRQWR1clVzUnJsWTkzc3J0dWVWVHdMMTBWc0pjNFh3ZUFW?=
- =?utf-8?B?UWhIU2krZzRFTnJKdGJwZldVclFsZUR4Y3VjMVJsdXJOSWZqd1NZZ2hhQ2VP?=
- =?utf-8?B?cCtmM0o2RGFTVnRLeUhFcGxDZWp6Z2pHckhrNmtoQXFjb0pXaTRaUjVEbDhH?=
- =?utf-8?B?Z29uT3FiWm04ZWk1OExoNGlXbXRzQ2tURVBsVTZFWkhJSGdHNFZYRmVFY1Jv?=
- =?utf-8?B?SDNmL2h2ZFF4dWpjQmtjTUprSWNIeHJCMnphQXZNY0htTHdnakIvOHl5cDBS?=
- =?utf-8?B?SmlERDhHMS9GY29iaTRxUUZ4WUpBSjlSVG11UHZNVm8yci9VRktZa3c5WkJO?=
- =?utf-8?B?UkRMKzUwcEtPdGNUN3ZZekx1NUZhOEJ1QWtQQmllVU9keW1qWjM1STY2aW5M?=
- =?utf-8?B?U3o3OXdjNUlKa2tEd0JkSS9EelcrRFJSd2VYQzI0blhYd3VGTS9hOHZJaHpj?=
- =?utf-8?B?by9uZjFDK1NpdDNhOTZSRFEzYkxHNUp3ZVd2MXhSNEdOSE5VTmptbm5pZWpD?=
- =?utf-8?B?c2JVU25vVHZqTVB4K3liUWdzRlVHeTFvU0VMTlZRWElieXpXd0pzTHlpbHh5?=
- =?utf-8?Q?sFIisO?=
-X-Forefront-Antispam-Report: CIP:216.228.117.160; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge1.nvidia.com; CAT:NONE;
- SFS:(13230040)(1800799024)(82310400026)(36860700013)(7416014)(376014); DIR:OUT;
- SFP:1101; 
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 29 Aug 2025 08:29:30.9374 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: ee60d9f2-f4e3-49d8-c5ef-08dde6d62d1c
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.160];
- Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: SJ5PEPF000001EC.namprd05.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN6PR12MB8568
-Received-SPF: permerror client-ip=2a01:111:f403:2413::625;
- envelope-from=skolothumtho@nvidia.com;
- helo=NAM10-DM6-obe.outbound.protection.outlook.com
-X-Spam_score_int: -10
-X-Spam_score: -1.1
-X-Spam_bar: -
-X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-B4-Tracking: v=1; b=H4sIACUHsmgC/33SwW7DIAwG4Fepcl4m20Bsdtp7TFNFArQ5dIloV
+ W2q+u4jvZSJZEcQfNj4vzXnkMZwbt52tyaF63gep6+8QPWya4aj+zqEdvR5oyEgAx3pdk7T7A7
+ uEvaX+bQPKU2p7aN2oRtIeQVNvjmnEMfvB/vxmdfH8XyZ0s/jlSsuu/97V2yhJWTUws5Y5d9T8
+ Ed3eR2mU7OAVyoRXkcoI2KshUGsd2QrRD0RBlpHVEasdN5qo8GQVIguEOzWEZ2R3AxaIGAeoEJ
+ MiWy0YzKCUUMXRULoTIV0BUK4jnQZiSGyhoAmIFcIl4hZRzgj3hCD1lpZriuRAlEblcgyYoleK
+ Proe6oQ+0QENiqxy5+Q0vkIgu/rdhBKRTbSBplRQdChz0NaqQWL0AqqDWZJba8ZnGLda6pTi0V
+ sZWtEuOSWqRdQgYH98Ie53++/dISWDbUDAAA=
+X-Change-ID: 20250624-propagate_tpm_error-bf4ae6c23d30
+To: qemu-devel@nongnu.org
+Cc: Peter Xu <peterx@redhat.com>, Fabiano Rosas <farosas@suse.de>, 
+ =?utf-8?q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>, 
+ Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>, 
+ Dmitry Osipenko <dmitry.osipenko@collabora.com>, 
+ "Michael S. Tsirkin" <mst@redhat.com>, 
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
+ Cornelia Huck <cohuck@redhat.com>, Halil Pasic <pasic@linux.ibm.com>, 
+ Eric Farman <farman@linux.ibm.com>, Thomas Huth <thuth@redhat.com>, 
+ Christian Borntraeger <borntraeger@linux.ibm.com>, 
+ Matthew Rosato <mjrosato@linux.ibm.com>, 
+ Richard Henderson <richard.henderson@linaro.org>, 
+ David Hildenbrand <david@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>, 
+ Nicholas Piggin <npiggin@gmail.com>, 
+ Harsh Prateek Bora <harshpb@linux.ibm.com>, 
+ Paolo Bonzini <pbonzini@redhat.com>, Fam Zheng <fam@euphon.net>, 
+ Alex Williamson <alex.williamson@redhat.com>, 
+ =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>, 
+ Steve Sistare <steven.sistare@oracle.com>, 
+ =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>, 
+ qemu-s390x@nongnu.org, qemu-ppc@nongnu.org, 
+ Hailiang Zhang <zhanghailiang@xfusion.com>, 
+ Stefan Berger <stefanb@linux.vnet.ibm.com>, 
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
+ Arun Menon <armenon@redhat.com>, 
+ =?utf-8?q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+ Stefan Berger <stefanb@linux.vnet.ibm.com>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=12059; i=armenon@redhat.com;
+ h=from:subject:message-id; bh=gcFypdY3WofssM7ZEFdIZog0amIm5kGK7RmG+HXfWAY=;
+ b=owGbwMvMwCWWVaVqcZPfqI/xtFoSQ8YmdttNW074ZvttFvx8r6tDxHvFo39zIl97lN7N2pmdV
+ di28MWPjlIWBjEuBlkxRZaGrwGyTQGFEZG2L6/DzGFlAhnCwMUpABPJ+sTwP1Bn6+0pC/mSbi+6
+ lq7InSDH7Pr7umXJLUN25ckaXziLkxgZ2h6fy9eXaejiuWzyxPDG4+XXJwhGbAt/s77wuemKpu9
+ 1HAA=
+X-Developer-Key: i=armenon@redhat.com; a=openpgp;
+ fpr=80F5501D82507158593DE9D76A7A2538D90F328E
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: Sw2YY-KCydYImGQCT9ueuBiQGNU_BPXM4AYULPaS2lo_1756497754
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=armenon@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FORGED_SPF_HELO=1, SPF_HELO_PASS=-0.001,
- SPF_NONE=0.001 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Fri, 29 Aug 2025 09:59:38 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -169,195 +151,237 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Allow cold-plugging of an SMMUv3 device on the virt machine when no
-global (legacy) SMMUv3 is present or when a virtio-iommu is specified.
+Hello,
 
-This user-created SMMUv3 device is tied to a specific PCI bus provided
-by the user, so ensure the IOMMU ops are configured accordingly.
+Currently, when a migration of a VM with an encrypted vTPM
+fails on the destination host (e.g., due to a mismatch in secret values),
+the error message displayed on the source host is generic and unhelpful.
 
-Due to current limitations in QEMU’s device tree support, specifically
-its inability to properly present pxb-pcie based root complexes and
-their devices, the device tree support for the new SMMUv3 device is
-limited to cases where it is attached to the default pcie.0 root complex.
+For example, a typical error looks like this:
+"operation failed: job 'migration out' failed: Sibling indicated error 1.
+operation failed: job 'migration in' failed: load of migration failed:
+Input/output error"
 
-Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
-Tested-by: Nathan Chen <nathanc@nvidia.com>
-Tested-by: Eric Auger <eric.auger@redhat.com>
-Tested-by: Nicolin Chen <nicolinc@nvidia.com>
-Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
+This message does not provide any specific indication of a vTPM failure.
+Such generic errors are logged using error_report(), which prints to
+the console/monitor but does not make the detailed error accessible via
+the QMP query-migrate command.
+
+This series addresses the issue, by ensuring that specific TPM error
+messages are propagated via the QEMU Error object.
+To make this possible,
+- A set of functions in the call stack is changed
+  to incorporate an Error object as an additional parameter.
+- Also, the TPM backend makes use of a new hook called post_load_errp()
+  that explicitly passes an Error object.
+
+It is organized as follows,
+ - Patches 1-23 focuses on pushing Error object into the functions
+   that are important in the call stack where TPM errors are observed.
+   We still need to make changes in rest of the functions in savevm.c
+   such that they also incorporate the errp object for propagating errors.
+ - Patches 12, 13, 20, are minor refactoring changes.
+ - Patch 24 removes error variant of vmstate_save_state() function.
+ - Patch 25 renames post_save() to cleanup_save()
+ - Patch 26 introduces the new variants of the hooks in VMStateDescription
+   structure. These hooks should be used in future implementations.
+ - Patch 27 focuses on changing the TPM backend such that the errors are
+   set in the Error object.
+
+While this series focuses specifically on TPM error reporting during
+live migration, it lays the groundwork for broader improvements.
+A lot of methods in savevm.c that previously returned an integer now capture
+errors in the Error object, enabling other modules to adopt the
+post_load_errp hook in the future.
+
+One such change previously attempted:
+https://lists.gnu.org/archive/html/qemu-devel/2021-02/msg01727.html
+
+Resolves: https://issues.redhat.com/browse/RHEL-82826
+
+Signed-off-by: Arun Menon <armenon@redhat.com>
 ---
- hw/arm/smmu-common.c         |  8 +++++-
- hw/arm/smmuv3.c              |  2 ++
- hw/arm/virt.c                | 51 ++++++++++++++++++++++++++++++++++++
- hw/core/sysbus-fdt.c         |  3 +++
- include/hw/arm/smmu-common.h |  1 +
- 5 files changed, 64 insertions(+), 1 deletion(-)
+Changes in v13:
+- Akihiko suggested to use error_report_err() instead of warn_report_err().
+  We must not prefix error messages with "warning:" unless the error is a non-critical
+  failure that can be logged while the program continues to function.
+- Removed error_prepend() with ERRP_GUARD() where it is not required within
+  the series.
+- Link to v12: https://lore.kernel.org/qemu-devel/20250821-propagate_tpm_error-v12-0-72b803e707dc@redhat.com
 
-diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
-index 7f64ea48d0..62a7612184 100644
---- a/hw/arm/smmu-common.c
-+++ b/hw/arm/smmu-common.c
-@@ -961,7 +961,12 @@ static void smmu_base_realize(DeviceState *dev, Error **errp)
-                 goto out_err;
-             }
-         }
--        pci_setup_iommu(pci_bus, &smmu_ops, s);
-+
-+        if (s->smmu_per_bus) {
-+            pci_setup_iommu_per_bus(pci_bus, &smmu_ops, s);
-+        } else {
-+            pci_setup_iommu(pci_bus, &smmu_ops, s);
-+        }
-         return;
-     }
- out_err:
-@@ -986,6 +991,7 @@ static void smmu_base_reset_exit(Object *obj, ResetType type)
- 
- static const Property smmu_dev_properties[] = {
-     DEFINE_PROP_UINT8("bus_num", SMMUState, bus_num, 0),
-+    DEFINE_PROP_BOOL("smmu_per_bus", SMMUState, smmu_per_bus, false),
-     DEFINE_PROP_LINK("primary-bus", SMMUState, primary_bus,
-                      TYPE_PCI_BUS, PCIBus *),
- };
-diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index ab67972353..bcf8af8dc7 100644
---- a/hw/arm/smmuv3.c
-+++ b/hw/arm/smmuv3.c
-@@ -1996,6 +1996,8 @@ static void smmuv3_class_init(ObjectClass *klass, const void *data)
-     device_class_set_parent_realize(dc, smmu_realize,
-                                     &c->parent_realize);
-     device_class_set_props(dc, smmuv3_properties);
-+    dc->hotpluggable = false;
-+    dc->user_creatable = true;
- }
- 
- static int smmuv3_notify_flag_changed(IOMMUMemoryRegion *iommu,
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 430bc8a174..0bb03d3b5d 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -56,6 +56,7 @@
- #include "qemu/cutils.h"
- #include "qemu/error-report.h"
- #include "qemu/module.h"
-+#include "hw/pci/pci_bus.h"
- #include "hw/pci-host/gpex.h"
- #include "hw/pci-bridge/pci_expander_bridge.h"
- #include "hw/virtio/virtio-pci.h"
-@@ -1474,6 +1475,29 @@ static void create_smmuv3_dt_bindings(const VirtMachineState *vms, hwaddr base,
-     g_free(node);
- }
- 
-+static void create_smmuv3_dev_dtb(VirtMachineState *vms,
-+                                  DeviceState *dev, PCIBus *bus)
-+{
-+    PlatformBusDevice *pbus = PLATFORM_BUS_DEVICE(vms->platform_bus_dev);
-+    SysBusDevice *sbdev = SYS_BUS_DEVICE(dev);
-+    int irq = platform_bus_get_irqn(pbus, sbdev, 0);
-+    hwaddr base = platform_bus_get_mmio_addr(pbus, sbdev, 0);
-+    MachineState *ms = MACHINE(vms);
-+
-+    if (!(vms->bootinfo.firmware_loaded && virt_is_acpi_enabled(vms)) &&
-+        strcmp("pcie.0", bus->qbus.name)) {
-+        warn_report("SMMUv3 device only supported with pcie.0 for DT");
-+        return;
-+    }
-+    base += vms->memmap[VIRT_PLATFORM_BUS].base;
-+    irq += vms->irqmap[VIRT_PLATFORM_BUS];
-+
-+    vms->iommu_phandle = qemu_fdt_alloc_phandle(ms->fdt);
-+    create_smmuv3_dt_bindings(vms, base, SMMU_IO_LEN, irq);
-+    qemu_fdt_setprop_cells(ms->fdt, vms->pciehb_nodename, "iommu-map",
-+                           0x0, vms->iommu_phandle, 0x0, 0x10000);
-+}
-+
- static void create_smmu(const VirtMachineState *vms,
-                         PCIBus *bus)
- {
-@@ -3003,6 +3027,16 @@ static void virt_machine_device_pre_plug_cb(HotplugHandler *hotplug_dev,
-         qlist_append_str(reserved_regions, resv_prop_str);
-         qdev_prop_set_array(dev, "reserved-regions", reserved_regions);
-         g_free(resv_prop_str);
-+    } else if (object_dynamic_cast(OBJECT(dev), TYPE_ARM_SMMUV3)) {
-+        if (vms->legacy_smmuv3_present || vms->iommu == VIRT_IOMMU_VIRTIO) {
-+            error_setg(errp, "virt machine already has %s set. "
-+                       "Doesn't support incompatible iommus",
-+                       (vms->legacy_smmuv3_present) ?
-+                       "iommu=smmuv3" : "virtio-iommu");
-+        } else if (vms->iommu == VIRT_IOMMU_NONE) {
-+            /* The new SMMUv3 device is specific to the PCI bus */
-+            object_property_set_bool(OBJECT(dev), "smmu_per_bus", true, NULL);
-+        }
-     }
- }
- 
-@@ -3026,6 +3060,22 @@ static void virt_machine_device_plug_cb(HotplugHandler *hotplug_dev,
-         virtio_md_pci_plug(VIRTIO_MD_PCI(dev), MACHINE(hotplug_dev), errp);
-     }
- 
-+    if (object_dynamic_cast(OBJECT(dev), TYPE_ARM_SMMUV3)) {
-+        if (!vms->legacy_smmuv3_present && vms->platform_bus_dev) {
-+            PCIBus *bus;
-+
-+            bus = PCI_BUS(object_property_get_link(OBJECT(dev), "primary-bus",
-+                                                   &error_abort));
-+            if (pci_bus_bypass_iommu(bus)) {
-+                error_setg(errp, "Bypass option cannot be set for SMMUv3 "
-+                           "associated PCIe RC");
-+                return;
-+            }
-+
-+            create_smmuv3_dev_dtb(vms, dev, bus);
-+        }
-+    }
-+
-     if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_IOMMU_PCI)) {
-         PCIDevice *pdev = PCI_DEVICE(dev);
- 
-@@ -3228,6 +3278,7 @@ static void virt_machine_class_init(ObjectClass *oc, const void *data)
-     machine_class_allow_dynamic_sysbus_dev(mc, TYPE_RAMFB_DEVICE);
-     machine_class_allow_dynamic_sysbus_dev(mc, TYPE_VFIO_PLATFORM);
-     machine_class_allow_dynamic_sysbus_dev(mc, TYPE_UEFI_VARS_SYSBUS);
-+    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_ARM_SMMUV3);
- #ifdef CONFIG_TPM
-     machine_class_allow_dynamic_sysbus_dev(mc, TYPE_TPM_TIS_SYSBUS);
- #endif
-diff --git a/hw/core/sysbus-fdt.c b/hw/core/sysbus-fdt.c
-index c339a27875..e80776080b 100644
---- a/hw/core/sysbus-fdt.c
-+++ b/hw/core/sysbus-fdt.c
-@@ -31,6 +31,7 @@
- #include "qemu/error-report.h"
- #include "system/device_tree.h"
- #include "system/tpm.h"
-+#include "hw/arm/smmuv3.h"
- #include "hw/platform-bus.h"
- #include "hw/vfio/vfio-platform.h"
- #include "hw/vfio/vfio-calxeda-xgmac.h"
-@@ -518,6 +519,8 @@ static const BindingEntry bindings[] = {
- #ifdef CONFIG_TPM
-     TYPE_BINDING(TYPE_TPM_TIS_SYSBUS, add_tpm_tis_fdt_node),
- #endif
-+    /* No generic DT support for smmuv3 dev. Support added for arm virt only */
-+    TYPE_BINDING(TYPE_ARM_SMMUV3, no_fdt_node),
-     TYPE_BINDING(TYPE_RAMFB_DEVICE, no_fdt_node),
-     TYPE_BINDING(TYPE_UEFI_VARS_SYSBUS, add_uefi_vars_node),
-     TYPE_BINDING("", NULL), /* last element */
-diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
-index e5e2d09294..80d0fecfde 100644
---- a/include/hw/arm/smmu-common.h
-+++ b/include/hw/arm/smmu-common.h
-@@ -161,6 +161,7 @@ struct SMMUState {
-     QLIST_HEAD(, SMMUDevice) devices_with_notifiers;
-     uint8_t bus_num;
-     PCIBus *primary_bus;
-+    bool smmu_per_bus; /* SMMU is specific to the primary_bus */
- };
- 
- struct SMMUBaseClass {
+Changes in v12:
+- Remove error_prepend() calls where no additional information is appended to
+  the error string. This also allows us to remove unnecessary ERRP_GUARD().
+- Avoid ambiguity by propagating clear messages in errp.
+- Add clarity to commit messages throughout the series.
+- Link to v11: https://lore.kernel.org/qemu-devel/20250813-propagate_tpm_error-v11-0-b470a374b42d@redhat.com
+
+Changes in v11:
+- Remove unnecessary NULL check in postcopy_ram_listen_thread.
+- Change error_warn to error_fatal or pass local_err wherever appropriate, because,
+  https://lore.kernel.org/qemu-devel/20250808080823.2638861-13-armbru@redhat.com/
+  Most changes are in patches 2,24.
+- Link to v10: https://lore.kernel.org/qemu-devel/20250808-propagate_tpm_error-v10-0-3e81a1d419b2@redhat.com
+
+Changes in v10:
+- Remove the patch to propagate most recent error and the patch of refactoring
+  vmstate_save_state_v(): 23,24. They are not required because we intend to keep
+  the design as is.
+- Added 2 new patches
+  - patch 25: Rename post_save() to cleanup_save() and make it void
+  - patch 20: Return -1 on memory allocation failure in ram.c
+- Pass &error_warn or &error_fatal to capture error or exit on error.
+- Link to v9: https://lore.kernel.org/qemu-devel/20250805-propagate_tpm_error-v9-0-123450810db7@redhat.com
+
+Changes in v9:
+- Re ordering patches such that error is reported in each one of them.
+- format specifier enclosed in '' changed i.e. '%d' changed to %d
+- Reporting errors where they were missed before. Setting errp to NULL
+  in case of retry.
+- Link to v8: https://lore.kernel.org/qemu-devel/20250731-propagate_tpm_error-v8-0-28fd82fdfdb2@redhat.com
+
+Changes in v8:
+- 3 new patches added:
+  - patch 23:
+	- Changes the error propagation by returning the most recent error
+	  to the caller when both save device state and post_save fails.
+  - patch 24:
+	- Refactors the vmstate_save_state_v() function by adding wrapper
+	  functions to separate concerns.
+  - patch 25:
+	- Removes the error variant of the vmstate_save_state()
+	  function introduced in commit 969298f9d7.
+- Use ERRP_GUARD() where there is an errp dereference or an error_prepend call.
+- Pass &error_warn in place of NULL, in vmstate_load_state() calls so
+  that the caller knows about the error.
+- Remove unnecessary null check before setting errp. Dereferencing it is not required.
+- Documentation for the new variants of post/pre save/load hooks added.
+- Some patches, although they received a 'Reviewed-by' tag, have undergone few minor changes,
+	Patch 1 : removed extra space
+	Patch 2 : Commit message changed, refactoring the function to
+		always set errp and return.
+	Patch 8 : Commit message changed.
+	Patch 9 : use error_setg_errno instead of error_setg.
+	Patch 27 : use error_setg_errno instead of error_setg.
+- Link to v7: https://lore.kernel.org/qemu-devel/20250725-propagate_tpm_error-v7-0-d52704443975@redhat.com
+
+Changes in v7:
+- Fix propagating errors in post_save_errp. The latest error encountered is
+  propagated.
+- user-strings in error_prepend() calls now end with a ': ' so that the print is pretty.
+- Change the order of one of the patches.
+- Link to v6: https://lore.kernel.org/qemu-devel/20250721-propagate_tpm_error-v6-0-fef740e15e17@redhat.com
+
+Changes in v6:
+- Incorporated review comments from Daniel and Akihiko, related to few
+  semantic errors and improve error logging.
+- Add one more patch that removes NULL checks after calling
+  qemu_file_get_return_path() because it does not fail.
+- Link to v5: https://lore.kernel.org/qemu-devel/20250717-propagate_tpm_error-v5-0-1f406f88ee65@redhat.com
+
+Changes in v5:
+- Solve a bug that set errp even though it was not NULL, pointed out by Fabiano in v4.
+- Link to v4: https://lore.kernel.org/qemu-devel/20250716-propagate_tpm_error-v4-0-7141902077c0@redhat.com
+
+Changes in v4:
+- Split the patches into smaller ones based on functions. Pass NULL in the
+  caller until errp is made available. Every function that has an
+  Error **errp object passed to it, ensures that it sets the errp object
+  in case of failure.
+- A few more functions within loadvm_process_command() now handle errors using
+  the errp object. I've converted these for consistency, taking Daniel's
+  patches (link above) as a reference.
+- Along with the post_load_errp() hook, other duplicate hooks are also introduced.
+  This will enable us to migrate to the newer versions eventually.
+- Fix some semantic errors, like using error_propagate_prepend() in places where
+  we need to preserve existing behaviour of accumulating the error in local_err
+  and then propagating it to errp. This can be refactored in a later commit.
+- Add more information in commit messages explaining the changes.
+- Link to v3: https://lore.kernel.org/qemu-devel/20250702-propagate_tpm_error-v3-0-986d94540528@redhat.com
+
+Changes in v3:
+- Split the 2nd patch into 2. Introducing post_load_with_error() hook
+  has been separated from using it in the backends TPM module. This is
+  so that it can be acknowledged.
+- Link to v2: https://lore.kernel.org/qemu-devel/20250627-propagate_tpm_error-v2-0-85990c89da29@redhat.com
+
+Changes in v2:
+- Combine the first two changes into one, focusing on passing the
+  Error object (errp) consistently through functions involved in
+  loading the VM's state. Other functions are not yet changed.
+- As suggested in the review comment, add null checks for errp
+  before adding error messages, preventing crashes.
+  We also now correctly set errors when post-copy migration fails.
+- In process_incoming_migration_co(), switch to error_prepend
+  instead of error_setg. This means we now null-check local_err in
+  the "fail" section before using it, preventing dereferencing issues.
+- Link to v1: https://lore.kernel.org/qemu-devel/20250624-propagate_tpm_error-v1-0-2171487a593d@redhat.com
+
+---
+Arun Menon (27):
+      migration: push Error **errp into vmstate_subsection_load()
+      migration: push Error **errp into vmstate_load_state()
+      migration: push Error **errp into qemu_loadvm_state_header()
+      migration: push Error **errp into vmstate_load()
+      migration: push Error **errp into loadvm_process_command()
+      migration: push Error **errp into loadvm_handle_cmd_packaged()
+      migration: push Error **errp into qemu_loadvm_state()
+      migration: push Error **errp into qemu_load_device_state()
+      migration: push Error **errp into qemu_loadvm_state_main()
+      migration: push Error **errp into qemu_loadvm_section_start_full()
+      migration: push Error **errp into qemu_loadvm_section_part_end()
+      migration: Update qemu_file_get_return_path() docs and remove dead checks
+      migration: make loadvm_postcopy_handle_resume() void
+      migration: push Error **errp into ram_postcopy_incoming_init()
+      migration: push Error **errp into loadvm_postcopy_handle_advise()
+      migration: push Error **errp into loadvm_postcopy_handle_listen()
+      migration: push Error **errp into loadvm_postcopy_handle_run()
+      migration: push Error **errp into loadvm_postcopy_ram_handle_discard()
+      migration: push Error **errp into loadvm_handle_recv_bitmap()
+      migration: Return -1 on memory allocation failure in ram.c
+      migration: push Error **errp into loadvm_process_enable_colo()
+      migration: push Error **errp into loadvm_postcopy_handle_switchover_start()
+      migration: Capture error in postcopy_ram_listen_thread()
+      migration: Remove error variant of vmstate_save_state() function
+      migration: Rename post_save() to cleanup_save() and make it void
+      migration: Add error-parameterized function variants in VMSD struct
+      backends/tpm: Propagate vTPM error on migration failure
+
+ backends/tpm/tpm_emulator.c   |  40 ++---
+ docs/devel/migration/main.rst |  21 ++-
+ hw/display/virtio-gpu.c       |   5 +-
+ hw/pci/pci.c                  |   5 +-
+ hw/ppc/spapr_pci.c            |   5 +-
+ hw/s390x/virtio-ccw.c         |   4 +-
+ hw/scsi/spapr_vscsi.c         |   6 +-
+ hw/vfio/pci.c                 |   9 +-
+ hw/virtio/virtio-mmio.c       |   5 +-
+ hw/virtio/virtio-pci.c        |   4 +-
+ hw/virtio/virtio.c            |  13 +-
+ include/migration/colo.h      |   2 +-
+ include/migration/vmstate.h   |  20 ++-
+ migration/colo.c              |  10 +-
+ migration/cpr.c               |   6 +-
+ migration/migration.c         |  33 ++---
+ migration/postcopy-ram.c      |   9 +-
+ migration/postcopy-ram.h      |   2 +-
+ migration/qemu-file.c         |   1 -
+ migration/ram.c               |  16 +-
+ migration/ram.h               |   4 +-
+ migration/savevm.c            | 334 ++++++++++++++++++++++++------------------
+ migration/savevm.h            |   7 +-
+ migration/vmstate-types.c     |  53 ++++---
+ migration/vmstate.c           | 115 ++++++++++-----
+ target/arm/machine.c          |   6 +-
+ tests/unit/test-vmstate.c     |  83 +++++++++--
+ ui/vdagent.c                  |   8 +-
+ 28 files changed, 516 insertions(+), 310 deletions(-)
+---
+base-commit: 59f504bb43366594e97cf496c9a9ccf59be00b73
+change-id: 20250624-propagate_tpm_error-bf4ae6c23d30
+
+Best regards,
 -- 
-2.43.0
+Arun Menon <armenon@redhat.com>
 
 

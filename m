@@ -4,90 +4,132 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3DC76CA0EFF
-	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 17:50:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C23EFCA0FFF
+	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 17:51:34 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1usNvN-000527-O0; Sat, 30 Aug 2025 11:55:31 -0400
+	id 1usNeE-0003vW-1d; Sat, 30 Aug 2025 11:37:48 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1usEMV-00067r-2H
- for qemu-arm@nongnu.org; Sat, 30 Aug 2025 01:42:51 -0400
-Received: from mail-pf1-x42f.google.com ([2607:f8b0:4864:20::42f])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1usEMS-0004F4-N1
- for qemu-arm@nongnu.org; Sat, 30 Aug 2025 01:42:50 -0400
-Received: by mail-pf1-x42f.google.com with SMTP id
- d2e1a72fcca58-7723bf02181so365545b3a.1
- for <qemu-arm@nongnu.org>; Fri, 29 Aug 2025 22:42:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756532567; x=1757137367; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=0Ree5Gpr8l0LtLySxeEcXv5FgIq91JPtdUEJ2fumBaw=;
- b=hujqwa9QtNB9oUdQQ23m5jnLX0SQqT2ZHJEMFfmbUXiqlUCw/SWjxpy114W7pVLNI1
- BgefnrCR6wkd/Px5cP2DJjJPyxeO3OhEoG6aQ41Ii9lGKHhNoVCOPCK3uSSiFzKMrF09
- h4TasvLBzExaOCoJY2EU323/+1Q62vZk802sKw+X7rIrtSKHJMtR5DGWb2r0cUXfRMDM
- 5JEbu/SyEpsOE8lxizRP1/4Kaw/qHxSjr9RoR9Xpe5cHx2WanlOU8UpJ44FMBd0BabXy
- 6qAZd0kNwrGhFfz4dugB/bMNe+yPeXWdWb5DFYax8tlMW9m+z+/nCFPcqUDESz0jhk+2
- TkmA==
+ (Exim 4.90_1) (envelope-from <armenon@redhat.com>)
+ id 1us5Kg-0005GY-0p
+ for qemu-arm@nongnu.org; Fri, 29 Aug 2025 16:04:22 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armenon@redhat.com>)
+ id 1us5Kd-0004gn-6B
+ for qemu-arm@nongnu.org; Fri, 29 Aug 2025 16:04:21 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1756497858;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=BaRoLgnvXipTQIwgmh18VwtQRJZMUjxN2HSv+RmjctM=;
+ b=CqSJc+WIZC33zLsVo7s8jUrPcygys+NOhVxTQLn3FuvNVKXM7RFKFOqCqP59gEEaIxxIaI
+ KBM0HAItkBA4dHKV4xYnH9xt4eY3Y797RiROTVXzWtu4hljvyqewc3K5gVcEZXWlQ52L98
+ nGIk5cmlzTy3rY7r7/xylxcjqVAhfZc=
+Received: from mail-pj1-f72.google.com (mail-pj1-f72.google.com
+ [209.85.216.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-381-edOFm2ROPguQ_MsGuovCeQ-1; Fri, 29 Aug 2025 16:04:17 -0400
+X-MC-Unique: edOFm2ROPguQ_MsGuovCeQ-1
+X-Mimecast-MFC-AGG-ID: edOFm2ROPguQ_MsGuovCeQ_1756497856
+Received: by mail-pj1-f72.google.com with SMTP id
+ 98e67ed59e1d1-327b5e7f2f6so2923213a91.2
+ for <qemu-arm@nongnu.org>; Fri, 29 Aug 2025 13:04:17 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756532567; x=1757137367;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ d=1e100.net; s=20230601; t=1756497856; x=1757102656;
+ h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+ :mime-version:subject:date:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=0Ree5Gpr8l0LtLySxeEcXv5FgIq91JPtdUEJ2fumBaw=;
- b=G7n1chl2Amdf8tzQgUw5IUSWOaTU/xAWzYnHClRHk28r/R8wd/9z6qKxoc6R9G5BdE
- RiHIywF3DBaKPrAiLXNHdaa5SNt4oFuSotI2WqkVfh700aQoPnCmxBGft+/6n3mo48Rc
- zxmP3ULhXY4rFTyutfqgFEl+AC73wLRD//oj+bAHf2NKRRApsa6jCpKeBrABncitQP3M
- 4Dyxxn5yRw2+3mblaTsWwGiSdbhn9LNtxa2eeJ3BmAdt51ZUgJq8+mhjPV1d/43xlU7j
- uidQQsM+dwlDyNrGRorGCAB2YNDj1eaORoRYECTK434tmXViGJPk+v4oSdkwT0b/fdGD
- 7Hmw==
-X-Gm-Message-State: AOJu0YwQI552NjJrTGJDnrfEifjcxXXK9CUzeVzEIych1qpaLmpTibfM
- LcxOBFHZU5FLoFqBkI4A+vBeVjDElrmJARUIDuofdAiFUOkLAbdOn2vIvCghTPXSMUceSi1Ni27
- u0CFtguY=
-X-Gm-Gg: ASbGncsKvplv8f++mPJaG5KYIlV/ey7roFFdUL2qk4+dFt1rFUzF3t0j69qmz6pb6cu
- tRXGp4FfMpXU0o7Dhiyq/J8xl7xugAiOfs3/DmVz25ervGqnsTonIV9rHFtYOAtf3mpcacJ31sO
- LL9Vky2xXZOlCDXTGuA6dFouaf2X6V93VKk7Erpb65sQfm8V26+AVtlaoFz5kyOhW9I8VMvIS+j
- /NJQ/nU0pmPhp1rK2y5bZ9SvdwL5DY9zaFfOHrPWr5IwKo0ewyjol0kUEdcpnCMbL8uNXY59O/h
- 1ZEhwVdJ9WS0hZXg1vtr7IE84MjnukdD78xBu/4nwW7pA441srBpBMArcDn0ho+qp3Bj/79dWrq
- NMJrnxV7SDd7m5HlxaNBJClni5eRZje/A+4ejRT9d2tcBOkh1gvNpUXWNW2qIlR4vI2i5ZN4=
-X-Google-Smtp-Source: AGHT+IGH7B2jYsPMW8dhfirfZgWT/TOWRJ5fKegpZkvln1jpZ6yCT3gWV1jvmSKR1dpXpvg+MfsQQw==
-X-Received: by 2002:a05:6a21:9986:b0:243:b144:ad9d with SMTP id
- adf61e73a8af0-243d6dc7facmr1691804637.6.1756532567448; 
- Fri, 29 Aug 2025 22:42:47 -0700 (PDT)
-Received: from stoup.. (122-150-204-48.dyn.ip.vocus.au. [122.150.204.48])
+ bh=BaRoLgnvXipTQIwgmh18VwtQRJZMUjxN2HSv+RmjctM=;
+ b=WWIIDD6w7/dTnOTpVlKwvIsue2LFO/nXKEHNBubV1j5T9aZaU1eHiWqCwo9e7khpd/
+ wi1ZVArUyYQiADhy6QCEMB3PvYZxvROrQ/l4as53deu5ZlchfPqKXDptWQScHCR2X7yg
+ r63A3A0+hdwgJeXU6BOFsp3DynriTkIxnZ1acm7Kv4CQPK4N9UhBj1vYAGh2DaVRtXJb
+ LpfJaYmAi39CYYUFcsFQ62QsYbQ4PqV8iZZuqDpl0X97HWM9OtIAlMjsZ90cGmLr1D0p
+ LjF7yJCVAH7DNMDDf2JnGIGilK9pCmEFvMGDfsW3iChb5RmTP0u3FjRrdhX6Uv+MThDi
+ 9O9w==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCU8kQzF6izl9ZctR3zRCTx0G/bA5p49g0P/ZrCT5sE5IZ7K+UX65IwfLIk6HIgEhH9gZSIQS91hJg==@nongnu.org
+X-Gm-Message-State: AOJu0YyEOjl0VPwE68+M/fI/9XzwbcCfvgIuNxT4MXoQbF9F/MMuOCU/
+ wRIhGr+Ecb689Q0zRrHQDlur8xuixpReP14G30jXcVPKz0D5DtsZ0wlbGzXCfM+EUHnc2Qoh75J
+ D8aiAsJO+xJNOkJBKSRz5SsmzgbLxYsYoGwNc4Isarq+Qi7fHu0dDzA==
+X-Gm-Gg: ASbGnctzxvSA2qwKADH/rItAsEp5VdJcgTUvIjM4sy7FE5QjuIbUF9GY6FOTtd8ctFs
+ oE1cafK43BfZrguHj0dMQhWqH0JC9WqjQvIomX4feHDvrRLTLq7hPWnmy+8sUuG0fSsFBnwWpOe
+ oR2gygjr379CqFtbYg27G2BnoEHjTfEZDajafD6IJlOFUVxTlh99xgbVkSBFAwc1EWVqWl3OJrO
+ mX7thyiWWL4p7MSIh21eOdzs4xz68FbIvdfPzz+UuzJaXo8Hh94P+Yt4ybCWoCilV4rpHOmpnXt
+ zESB6iCJRumhJohMBJm4VGwM3mpBXbonSa6kftsZO5cLZfDef1mqwQ==
+X-Received: by 2002:a17:90b:4f44:b0:327:9e81:ebb1 with SMTP id
+ 98e67ed59e1d1-3279e81f451mr10353630a91.31.1756497856002; 
+ Fri, 29 Aug 2025 13:04:16 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFv8H08IlwNFTAlmeU6lJUrkYSJCahYKGC1k6IyFM9h8UDI6KXXimddarHwebX8ROKAiGzzvw==
+X-Received: by 2002:a17:90b:4f44:b0:327:9e81:ebb1 with SMTP id
+ 98e67ed59e1d1-3279e81f451mr10353590a91.31.1756497855550; 
+ Fri, 29 Aug 2025 13:04:15 -0700 (PDT)
+Received: from armenon-kvm.bengluru.csb ([49.47.195.108])
  by smtp.gmail.com with ESMTPSA id
- 41be03b00d2f7-b4d96829a66sm2435905a12.6.2025.08.29.22.42.44
+ 98e67ed59e1d1-327d8f66f16sm3570543a91.0.2025.08.29.13.04.00
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 29 Aug 2025 22:42:47 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v4 26/84] include/hw/core/cpu: Introduce MMUIdxMap
-Date: Sat, 30 Aug 2025 15:40:30 +1000
-Message-ID: <20250830054128.448363-27-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250830054128.448363-1-richard.henderson@linaro.org>
-References: <20250830054128.448363-1-richard.henderson@linaro.org>
+ Fri, 29 Aug 2025 13:04:15 -0700 (PDT)
+From: Arun Menon <armenon@redhat.com>
+Date: Sat, 30 Aug 2025 01:31:48 +0530
+Subject: [PATCH v13 08/27] migration: push Error **errp into
+ qemu_load_device_state()
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Message-Id: <20250830-propagate_tpm_error-v13-8-a4e777b7eb2c@redhat.com>
+References: <20250830-propagate_tpm_error-v13-0-a4e777b7eb2c@redhat.com>
+In-Reply-To: <20250830-propagate_tpm_error-v13-0-a4e777b7eb2c@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Peter Xu <peterx@redhat.com>, Fabiano Rosas <farosas@suse.de>, 
+ =?utf-8?q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>, 
+ Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>, 
+ Dmitry Osipenko <dmitry.osipenko@collabora.com>, 
+ "Michael S. Tsirkin" <mst@redhat.com>, 
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
+ Cornelia Huck <cohuck@redhat.com>, Halil Pasic <pasic@linux.ibm.com>, 
+ Eric Farman <farman@linux.ibm.com>, Thomas Huth <thuth@redhat.com>, 
+ Christian Borntraeger <borntraeger@linux.ibm.com>, 
+ Matthew Rosato <mjrosato@linux.ibm.com>, 
+ Richard Henderson <richard.henderson@linaro.org>, 
+ David Hildenbrand <david@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>, 
+ Nicholas Piggin <npiggin@gmail.com>, 
+ Harsh Prateek Bora <harshpb@linux.ibm.com>, 
+ Paolo Bonzini <pbonzini@redhat.com>, Fam Zheng <fam@euphon.net>, 
+ Alex Williamson <alex.williamson@redhat.com>, 
+ =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>, 
+ Steve Sistare <steven.sistare@oracle.com>, 
+ =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>, 
+ qemu-s390x@nongnu.org, qemu-ppc@nongnu.org, 
+ Hailiang Zhang <zhanghailiang@xfusion.com>, 
+ Stefan Berger <stefanb@linux.vnet.ibm.com>, 
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
+ Arun Menon <armenon@redhat.com>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2697; i=armenon@redhat.com;
+ h=from:subject:message-id; bh=UirhkFM9zKCc9fAhhyz10Rt0EBJQI4cJF89hFF4FZFs=;
+ b=owGbwMvMwCWWVaVqcZPfqI/xtFoSQ8Ymdh9esW5F1f1R1hM1t7EcnrL48Lpvtm5ht2tEq/r43
+ wkv3Dipo5SFQYyLQVZMkaXha4BsU0BhRKTty+swc1iZQIYwcHEKwETOnWdkOP95m8njJWaqns9d
+ dt9Z33uwZUIyk8H54MNOk2zfCMgdCWBkOO+pusv8/spZC6X1lqsv/Ol8eY/NiZR0Dl7LtQcT/7v
+ yswEA
+X-Developer-Key: i=armenon@redhat.com; a=openpgp;
+ fpr=80F5501D82507158593DE9D76A7A2538D90F328E
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: 9wDjywex4D5AExf5biqV9n4ewFo4vWiNth-gNs0lep4_1756497856
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42f;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42f.google.com
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=armenon@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -103,291 +145,73 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Use a typedef instead of uint16_t directly when
-describing sets of mmu indexes.
+This is an incremental step in converting vmstate loading
+code to report error via Error objects instead of directly
+printing it to console/monitor.
+It is ensured that qemu_load_device_state() must report an error
+in errp, in case of failure.
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Reviewed-by: Fabiano Rosas <farosas@suse.de>
+Signed-off-by: Arun Menon <armenon@redhat.com>
 ---
- include/exec/cputlb.h | 32 ++++++++++++++++----------------
- include/hw/core/cpu.h |  6 +++---
- accel/tcg/cputlb.c    | 30 +++++++++++++++---------------
- 3 files changed, 34 insertions(+), 34 deletions(-)
+ migration/colo.c   | 3 +--
+ migration/savevm.c | 4 ++--
+ migration/savevm.h | 2 +-
+ 3 files changed, 4 insertions(+), 5 deletions(-)
 
-diff --git a/include/exec/cputlb.h b/include/exec/cputlb.h
-index 03ed7e2165..9bec0e7890 100644
---- a/include/exec/cputlb.h
-+++ b/include/exec/cputlb.h
-@@ -150,7 +150,7 @@ void tlb_flush_all_cpus_synced(CPUState *src_cpu);
-  * MMU indexes.
-  */
- void tlb_flush_page_by_mmuidx(CPUState *cpu, vaddr addr,
--                              uint16_t idxmap);
-+                              MMUIdxMap idxmap);
- 
- /**
-  * tlb_flush_page_by_mmuidx_all_cpus_synced:
-@@ -165,7 +165,7 @@ void tlb_flush_page_by_mmuidx(CPUState *cpu, vaddr addr,
-  * translations using the flushed TLBs.
-  */
- void tlb_flush_page_by_mmuidx_all_cpus_synced(CPUState *cpu, vaddr addr,
--                                              uint16_t idxmap);
-+                                              MMUIdxMap idxmap);
- 
- /**
-  * tlb_flush_by_mmuidx:
-@@ -176,7 +176,7 @@ void tlb_flush_page_by_mmuidx_all_cpus_synced(CPUState *cpu, vaddr addr,
-  * Flush all entries from the TLB of the specified CPU, for the specified
-  * MMU indexes.
-  */
--void tlb_flush_by_mmuidx(CPUState *cpu, uint16_t idxmap);
-+void tlb_flush_by_mmuidx(CPUState *cpu, MMUIdxMap idxmap);
- 
- /**
-  * tlb_flush_by_mmuidx_all_cpus_synced:
-@@ -189,7 +189,7 @@ void tlb_flush_by_mmuidx(CPUState *cpu, uint16_t idxmap);
-  * When this function returns, no CPUs will subsequently perform
-  * translations using the flushed TLBs.
-  */
--void tlb_flush_by_mmuidx_all_cpus_synced(CPUState *cpu, uint16_t idxmap);
-+void tlb_flush_by_mmuidx_all_cpus_synced(CPUState *cpu, MMUIdxMap idxmap);
- 
- /**
-  * tlb_flush_page_bits_by_mmuidx
-@@ -201,11 +201,11 @@ void tlb_flush_by_mmuidx_all_cpus_synced(CPUState *cpu, uint16_t idxmap);
-  * Similar to tlb_flush_page_mask, but with a bitmap of indexes.
-  */
- void tlb_flush_page_bits_by_mmuidx(CPUState *cpu, vaddr addr,
--                                   uint16_t idxmap, unsigned bits);
-+                                   MMUIdxMap idxmap, unsigned bits);
- 
- /* Similarly, with broadcast and syncing. */
- void tlb_flush_page_bits_by_mmuidx_all_cpus_synced(CPUState *cpu, vaddr addr,
--                                                   uint16_t idxmap,
-+                                                   MMUIdxMap idxmap,
-                                                    unsigned bits);
- 
- /**
-@@ -220,14 +220,14 @@ void tlb_flush_page_bits_by_mmuidx_all_cpus_synced(CPUState *cpu, vaddr addr,
-  * comparing only the low @bits worth of each virtual page.
-  */
- void tlb_flush_range_by_mmuidx(CPUState *cpu, vaddr addr,
--                               vaddr len, uint16_t idxmap,
-+                               vaddr len, MMUIdxMap idxmap,
-                                unsigned bits);
- 
- /* Similarly, with broadcast and syncing. */
- void tlb_flush_range_by_mmuidx_all_cpus_synced(CPUState *cpu,
-                                                vaddr addr,
-                                                vaddr len,
--                                               uint16_t idxmap,
-+                                               MMUIdxMap idxmap,
-                                                unsigned bits);
- #else
- static inline void tlb_flush_page(CPUState *cpu, vaddr addr)
-@@ -243,42 +243,42 @@ static inline void tlb_flush_all_cpus_synced(CPUState *src_cpu)
- {
- }
- static inline void tlb_flush_page_by_mmuidx(CPUState *cpu,
--                                            vaddr addr, uint16_t idxmap)
-+                                            vaddr addr, MMUIdxMap idxmap)
- {
+diff --git a/migration/colo.c b/migration/colo.c
+index e0f713c837f5da25d67afbd02ceb6c54024ca3af..2f524b19e6a79dcfe3861f1dfb768222f65a718a 100644
+--- a/migration/colo.c
++++ b/migration/colo.c
+@@ -729,9 +729,8 @@ static void colo_incoming_process_checkpoint(MigrationIncomingState *mis,
+     bql_lock();
+     vmstate_loading = true;
+     colo_flush_ram_cache();
+-    ret = qemu_load_device_state(fb);
++    ret = qemu_load_device_state(fb, errp);
+     if (ret < 0) {
+-        error_setg(errp, "COLO: load device state failed");
+         vmstate_loading = false;
+         bql_unlock();
+         return;
+diff --git a/migration/savevm.c b/migration/savevm.c
+index 0087fca15ce108685667d3808350d80d37b807b1..5462eaff0dcec1fa207c08da6124fe91656201ac 100644
+--- a/migration/savevm.c
++++ b/migration/savevm.c
+@@ -3264,7 +3264,7 @@ int qemu_loadvm_state(QEMUFile *f, Error **errp)
+     return ret;
  }
  
--static inline void tlb_flush_by_mmuidx(CPUState *cpu, uint16_t idxmap)
-+static inline void tlb_flush_by_mmuidx(CPUState *cpu, MMUIdxMap idxmap)
+-int qemu_load_device_state(QEMUFile *f)
++int qemu_load_device_state(QEMUFile *f, Error **errp)
  {
- }
- static inline void tlb_flush_page_by_mmuidx_all_cpus_synced(CPUState *cpu,
-                                                             vaddr addr,
--                                                            uint16_t idxmap)
-+                                                            MMUIdxMap idxmap)
- {
- }
- static inline void tlb_flush_by_mmuidx_all_cpus_synced(CPUState *cpu,
--                                                       uint16_t idxmap)
-+                                                       MMUIdxMap idxmap)
- {
- }
- static inline void tlb_flush_page_bits_by_mmuidx(CPUState *cpu,
-                                                  vaddr addr,
--                                                 uint16_t idxmap,
-+                                                 MMUIdxMap idxmap,
-                                                  unsigned bits)
- {
- }
- static inline void
- tlb_flush_page_bits_by_mmuidx_all_cpus_synced(CPUState *cpu, vaddr addr,
--                                              uint16_t idxmap, unsigned bits)
-+                                              MMUIdxMap idxmap, unsigned bits)
- {
- }
- static inline void tlb_flush_range_by_mmuidx(CPUState *cpu, vaddr addr,
--                                             vaddr len, uint16_t idxmap,
-+                                             vaddr len, MMUIdxMap idxmap,
-                                              unsigned bits)
- {
- }
- static inline void tlb_flush_range_by_mmuidx_all_cpus_synced(CPUState *cpu,
-                                                              vaddr addr,
-                                                              vaddr len,
--                                                             uint16_t idxmap,
-+                                                             MMUIdxMap idxmap,
-                                                              unsigned bits)
- {
- }
-diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-index 5eaf41a566..1153cadb70 100644
---- a/include/hw/core/cpu.h
-+++ b/include/hw/core/cpu.h
-@@ -198,10 +198,10 @@ struct CPUClass {
- };
- 
- /*
-- * Fix the number of mmu modes to 16, which is also the maximum
-- * supported by the softmmu tlb api.
-+ * Fix the number of mmu modes to 16.
-  */
- #define NB_MMU_MODES 16
-+typedef uint16_t MMUIdxMap;
- 
- /* Use a fully associative victim tlb of 8 entries. */
- #define CPU_VTLB_SIZE 8
-@@ -306,7 +306,7 @@ typedef struct CPUTLBCommon {
-      * mmu_idx N since the last time that mmu_idx was flushed.
-      * Protected by tlb_c.lock.
-      */
--    uint16_t dirty;
-+     MMUIdxMap dirty;
-     /*
-      * Statistics.  These are not lock protected, but are read and
-      * written atomically.  This allows the monitor to print a snapshot
-diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c
-index 87e14bde4f..d324f33339 100644
---- a/accel/tcg/cputlb.c
-+++ b/accel/tcg/cputlb.c
-@@ -370,8 +370,8 @@ static void flush_all_helper(CPUState *src, run_on_cpu_func fn,
- 
- static void tlb_flush_by_mmuidx_async_work(CPUState *cpu, run_on_cpu_data data)
- {
--    uint16_t asked = data.host_int;
--    uint16_t all_dirty, work, to_clean;
-+    MMUIdxMap asked = data.host_int;
-+    MMUIdxMap all_dirty, work, to_clean;
-     int64_t now = get_clock_realtime();
- 
-     assert_cpu_is_self(cpu);
-@@ -408,7 +408,7 @@ static void tlb_flush_by_mmuidx_async_work(CPUState *cpu, run_on_cpu_data data)
+     MigrationIncomingState *mis = migration_incoming_get_current();
+     int ret;
+@@ -3272,7 +3272,7 @@ int qemu_load_device_state(QEMUFile *f)
+     /* Load QEMU_VM_SECTION_FULL section */
+     ret = qemu_loadvm_state_main(f, mis);
+     if (ret < 0) {
+-        error_report("Failed to load device state: %d", ret);
++        error_setg(errp, "Failed to load device state: %d", ret);
+         return ret;
      }
- }
  
--void tlb_flush_by_mmuidx(CPUState *cpu, uint16_t idxmap)
-+void tlb_flush_by_mmuidx(CPUState *cpu, MMUIdxMap idxmap)
- {
-     tlb_debug("mmu_idx: 0x%" PRIx16 "\n", idxmap);
- 
-@@ -422,7 +422,7 @@ void tlb_flush(CPUState *cpu)
-     tlb_flush_by_mmuidx(cpu, ALL_MMUIDX_BITS);
- }
- 
--void tlb_flush_by_mmuidx_all_cpus_synced(CPUState *src_cpu, uint16_t idxmap)
-+void tlb_flush_by_mmuidx_all_cpus_synced(CPUState *src_cpu, MMUIdxMap idxmap)
- {
-     const run_on_cpu_func fn = tlb_flush_by_mmuidx_async_work;
- 
-@@ -531,7 +531,7 @@ static void tlb_flush_page_locked(CPUState *cpu, int midx, vaddr page)
-  */
- static void tlb_flush_page_by_mmuidx_async_0(CPUState *cpu,
-                                              vaddr addr,
--                                             uint16_t idxmap)
-+                                             MMUIdxMap idxmap)
- {
-     int mmu_idx;
- 
-@@ -570,14 +570,14 @@ static void tlb_flush_page_by_mmuidx_async_1(CPUState *cpu,
- {
-     vaddr addr_and_idxmap = data.target_ptr;
-     vaddr addr = addr_and_idxmap & TARGET_PAGE_MASK;
--    uint16_t idxmap = addr_and_idxmap & ~TARGET_PAGE_MASK;
-+    MMUIdxMap idxmap = addr_and_idxmap & ~TARGET_PAGE_MASK;
- 
-     tlb_flush_page_by_mmuidx_async_0(cpu, addr, idxmap);
- }
- 
- typedef struct {
-     vaddr addr;
--    uint16_t idxmap;
-+    MMUIdxMap idxmap;
- } TLBFlushPageByMMUIdxData;
- 
- /**
-@@ -599,7 +599,7 @@ static void tlb_flush_page_by_mmuidx_async_2(CPUState *cpu,
-     g_free(d);
- }
- 
--void tlb_flush_page_by_mmuidx(CPUState *cpu, vaddr addr, uint16_t idxmap)
-+void tlb_flush_page_by_mmuidx(CPUState *cpu, vaddr addr, MMUIdxMap idxmap)
- {
-     tlb_debug("addr: %016" VADDR_PRIx " mmu_idx:%" PRIx16 "\n", addr, idxmap);
- 
-@@ -618,7 +618,7 @@ void tlb_flush_page(CPUState *cpu, vaddr addr)
- 
- void tlb_flush_page_by_mmuidx_all_cpus_synced(CPUState *src_cpu,
-                                               vaddr addr,
--                                              uint16_t idxmap)
-+                                              MMUIdxMap idxmap)
- {
-     tlb_debug("addr: %016" VADDR_PRIx " mmu_idx:%"PRIx16"\n", addr, idxmap);
- 
-@@ -715,8 +715,8 @@ static void tlb_flush_range_locked(CPUState *cpu, int midx,
- typedef struct {
-     vaddr addr;
-     vaddr len;
--    uint16_t idxmap;
--    uint16_t bits;
-+    MMUIdxMap idxmap;
-+    unsigned bits;
- } TLBFlushRangeData;
- 
- static void tlb_flush_range_by_mmuidx_async_0(CPUState *cpu,
-@@ -766,7 +766,7 @@ static void tlb_flush_range_by_mmuidx_async_1(CPUState *cpu,
- }
- 
- void tlb_flush_range_by_mmuidx(CPUState *cpu, vaddr addr,
--                               vaddr len, uint16_t idxmap,
-+                               vaddr len, MMUIdxMap idxmap,
-                                unsigned bits)
- {
-     TLBFlushRangeData d;
-@@ -797,7 +797,7 @@ void tlb_flush_range_by_mmuidx(CPUState *cpu, vaddr addr,
- }
- 
- void tlb_flush_page_bits_by_mmuidx(CPUState *cpu, vaddr addr,
--                                   uint16_t idxmap, unsigned bits)
-+                                   MMUIdxMap idxmap, unsigned bits)
- {
-     tlb_flush_range_by_mmuidx(cpu, addr, TARGET_PAGE_SIZE, idxmap, bits);
- }
-@@ -805,7 +805,7 @@ void tlb_flush_page_bits_by_mmuidx(CPUState *cpu, vaddr addr,
- void tlb_flush_range_by_mmuidx_all_cpus_synced(CPUState *src_cpu,
-                                                vaddr addr,
-                                                vaddr len,
--                                               uint16_t idxmap,
-+                                               MMUIdxMap idxmap,
-                                                unsigned bits)
- {
-     TLBFlushRangeData d, *p;
-@@ -847,7 +847,7 @@ void tlb_flush_range_by_mmuidx_all_cpus_synced(CPUState *src_cpu,
- 
- void tlb_flush_page_bits_by_mmuidx_all_cpus_synced(CPUState *src_cpu,
-                                                    vaddr addr,
--                                                   uint16_t idxmap,
-+                                                   MMUIdxMap idxmap,
-                                                    unsigned bits)
- {
-     tlb_flush_range_by_mmuidx_all_cpus_synced(src_cpu, addr, TARGET_PAGE_SIZE,
+diff --git a/migration/savevm.h b/migration/savevm.h
+index b80770b7461a60e2ad6ba5e24a7baeae73d90955..b12681839f0b1afa3255e45215d99c13a224b19f 100644
+--- a/migration/savevm.h
++++ b/migration/savevm.h
+@@ -67,7 +67,7 @@ int qemu_save_device_state(QEMUFile *f);
+ int qemu_loadvm_state(QEMUFile *f, Error **errp);
+ void qemu_loadvm_state_cleanup(MigrationIncomingState *mis);
+ int qemu_loadvm_state_main(QEMUFile *f, MigrationIncomingState *mis);
+-int qemu_load_device_state(QEMUFile *f);
++int qemu_load_device_state(QEMUFile *f, Error **errp);
+ int qemu_loadvm_approve_switchover(void);
+ int qemu_savevm_state_complete_precopy_non_iterable(QEMUFile *f,
+         bool in_postcopy);
+
 -- 
-2.43.0
+2.51.0
 
 

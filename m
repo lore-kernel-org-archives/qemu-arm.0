@@ -4,84 +4,148 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B01C3CA0FFF
-	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 15:26:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05B22CA1001
+	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 15:26:08 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1usNE1-0003cF-RL; Sat, 30 Aug 2025 11:10:44 -0400
+	id 1usN9N-0003mf-CE; Sat, 30 Aug 2025 11:05:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1urwUO-0003XU-Fn; Fri, 29 Aug 2025 06:37:48 -0400
-Received: from www3579.sakura.ne.jp ([49.212.243.89])
+ (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
+ id 1uruTs-0002gY-C9; Fri, 29 Aug 2025 04:29:09 -0400
+Received: from mail-bn8nam12on20619.outbound.protection.outlook.com
+ ([2a01:111:f403:2418::619]
+ helo=NAM12-BN8-obe.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1urwUJ-0002nf-Eq; Fri, 29 Aug 2025 06:37:47 -0400
-Received: from [133.11.54.205] (h205.csg.ci.i.u-tokyo.ac.jp [133.11.54.205])
- (authenticated bits=0)
- by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 57TAb9Mb091591
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
- Fri, 29 Aug 2025 19:37:09 +0900 (JST)
- (envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
-DKIM-Signature: a=rsa-sha256; bh=7pU/AR0KjFwUWrCA7X6LDRkTbGHv/eZb3lSeN9BAHnA=; 
- c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
- h=Message-ID:Date:Subject:To:From;
- s=rs20250326; t=1756463829; v=1;
- b=U0WbI+wedsKCu0mo/PgnQCaJ2fbNkIrJaP01tMgFDObsPBXkLo74PDKKn8Q9Za+Y
- I3smKuIri3bR2fOEDZh2vsQpZmi0hfHAhQ0TNFulzqYASps2PhbDMD+x7whTn5AQ
- mUZkLy7yBybsTQ9Vjhi+Va2K36itFKJZIYVsWnw5jZ0DG937LJkmddVzf5WnvySc
- m2b+Eajaf8BScX304eSNzsBBj0f5f+d0u0GjkTnsWmQgwqCToKHAwJ1AOKebN+nl
- V+L33g5slnaTzcg3a2PsuXMOuoioM6kuPdo686tsW/geyCG+qDAX2/TOszpZr46s
- 3Oo6uQtOG5N5BvkJNi0PLw==
-Message-ID: <ae29f5be-5316-4277-8da1-6c48f469e96f@rsg.ci.i.u-tokyo.ac.jp>
-Date: Fri, 29 Aug 2025 19:37:09 +0900
+ (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
+ id 1uruTk-0006Jz-RN; Fri, 29 Aug 2025 04:29:07 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=F61t5T1JA5P3R+mQQRnkJbooLc6OcV8Vz7hIcHqbsadKhXnEe2UyK/YkeIGcptlWZfRFYdJyMHmIUwlp0SSfG/1ZhWpqoxCcK/HQtifpEcd0msrXp6JXudulAvWGwjZIfnmXzMrFrdoNBKj04skCl2TejriS8r5UwoOZMPG2B+aMPMGcNDMXjjib5D6Bx9B0PwOf8kjTIyqbbPTOJ6c6WJBCtGuoHfotwFIaihriaCTcWNjsUw7/XfAoBsf4hdnDQUHdr+VOcDEPxUgKDuFm5axV3UmN2PFFazekn9ZGIKToh33KJW7r6DQyvV7zW5v/M83rF7sD78oTQIKP/HYuSA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=FX3c4ovDJyk0ZYEzLNG0uGDTxPcJxxvbLiNFyA4iA5s=;
+ b=ZWGQ2Y7kKwNKl+NjFZiWlCjKFreDNNwMF044pk0iKHIojmF6STWC5ixeksxy59t3HXBxhcifDRWiXGbRp8DSsQ0Ro0MbMJnRTpteXB3uajzJ8y1Sn2zwdcWxsciXI672EI/RcXZUSHrntmCeQNnytssemqwszDkj5kZKuLTixGM87ktQNpkoRDuOJTGrxcxPagfvGG2hOkiADOjdCPFrtXVJZ2otws7EVGIEpS9/1pFe5wT5dBm6uh4eMZmZAJ6uqUdBKe5ekvxIhc1JxABhg79FoChV0ousL8eMP2R2fYkAbFuDzz9YNfJAW03Ir88Z25gEwepCZAKHQEqF3KbvSA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 216.228.117.160) smtp.rcpttodomain=nongnu.org smtp.mailfrom=nvidia.com;
+ dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
+ dkim=none (message not signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=FX3c4ovDJyk0ZYEzLNG0uGDTxPcJxxvbLiNFyA4iA5s=;
+ b=jMrAN0qtmBj65TI181p98X7d4C9+Q6dud+gFMciIsEabupbAa1+l3OPY6tIbpftj4CkHmb4f3ApCNDto7AmL+N+2n+7T1XOH4EkBl6cgXN51COmBYGljdAFt2G1M8K9x1jseVClIAeltbx8QQd6IyvUhiNq1IQx/B0RCRq2bxyBGTNaKfDHFrP6ZE1QvwpK7qaiUDz2B9sUO1Un878qQzKC7HgWOEIOMNHtx9hcDYA0jGsnMVcQHULDzGMV3XcrhHnNA8U99SQnGAvqe0HSC0L/I9QTBtBkMCjckJjQsJaCbx9kMAM1gc/57IMexwvVTy/lKSGTOsK5nV8WiCCEVFw==
+Received: from SJ0PR13CA0046.namprd13.prod.outlook.com (2603:10b6:a03:2c2::21)
+ by DS0PR12MB8245.namprd12.prod.outlook.com (2603:10b6:8:f2::16) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9073.18; Fri, 29 Aug
+ 2025 08:28:53 +0000
+Received: from SJ1PEPF00001CDF.namprd05.prod.outlook.com
+ (2603:10b6:a03:2c2:cafe::4e) by SJ0PR13CA0046.outlook.office365.com
+ (2603:10b6:a03:2c2::21) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.9073.12 via Frontend Transport; Fri,
+ 29 Aug 2025 08:28:52 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.160)
+ smtp.mailfrom=nvidia.com;
+ dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=nvidia.com;
+Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
+ 216.228.117.160 as permitted sender) receiver=protection.outlook.com;
+ client-ip=216.228.117.160; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (216.228.117.160) by
+ SJ1PEPF00001CDF.mail.protection.outlook.com (10.167.242.7) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.9073.11 via Frontend Transport; Fri, 29 Aug 2025 08:28:52 +0000
+Received: from rnnvmail201.nvidia.com (10.129.68.8) by mail.nvidia.com
+ (10.129.200.66) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14; Fri, 29 Aug
+ 2025 01:28:40 -0700
+Received: from NV-2Y5XW94.nvidia.com (10.126.231.35) by rnnvmail201.nvidia.com
+ (10.129.68.8) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14; Fri, 29 Aug
+ 2025 01:28:34 -0700
+From: Shameer Kolothum <skolothumtho@nvidia.com>
+To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
+CC: <eric.auger@redhat.com>, <peter.maydell@linaro.org>, <jgg@nvidia.com>,
+ <nicolinc@nvidia.com>, <ddutile@redhat.com>, <berrange@redhat.com>,
+ <imammedo@redhat.com>, <nathanc@nvidia.com>, <mochs@nvidia.com>,
+ <smostafa@google.com>, <mst@redhat.com>, <marcel.apfelbaum@gmail.com>,
+ <wangzhou1@hisilicon.com>, <jiangkunkun@huawei.com>,
+ <jonathan.cameron@huawei.com>, <zhangfei.gao@linaro.org>
+Subject: [PATCH v9 01/11] hw/arm/smmu-common: Check SMMU has PCIe Root Complex
+ association
+Date: Fri, 29 Aug 2025 09:25:23 +0100
+Message-ID: <20250829082543.7680-2-skolothumtho@nvidia.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250829082543.7680-1-skolothumtho@nvidia.com>
+References: <20250829082543.7680-1-skolothumtho@nvidia.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v12 02/27] migration: push Error **errp into
- vmstate_load_state()
-To: armenon@redhat.com
-Cc: qemu-devel@nongnu.org, Peter Xu <peterx@redhat.com>,
- Fabiano Rosas <farosas@suse.de>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
- <alex.bennee@linaro.org>, Dmitry Osipenko <dmitry.osipenko@collabora.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Cornelia Huck <cohuck@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
- Eric Farman <farman@linux.ibm.com>, Thomas Huth <thuth@redhat.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- Matthew Rosato <mjrosato@linux.ibm.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- David Hildenbrand <david@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
- Nicholas Piggin <npiggin@gmail.com>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Fam Zheng <fam@euphon.net>,
- Alex Williamson <alex.williamson@redhat.com>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>,
- Steve Sistare <steven.sistare@oracle.com>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- qemu-s390x@nongnu.org, qemu-ppc@nongnu.org,
- Hailiang Zhang <zhanghailiang@xfusion.com>,
- Stefan Berger <stefanb@linux.vnet.ibm.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
-References: <20250821-propagate_tpm_error-v12-0-72b803e707dc@redhat.com>
- <20250821-propagate_tpm_error-v12-2-72b803e707dc@redhat.com>
- <2f079847-8b78-4db0-b14e-a3f643b6cc98@rsg.ci.i.u-tokyo.ac.jp>
- <aLAQqhtqzwaRj7Ar@armenon-kvm.bengluru.csb>
-Content-Language: en-US
-From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-In-Reply-To: <aLAQqhtqzwaRj7Ar@armenon-kvm.bengluru.csb>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=49.212.243.89;
- envelope-from=odaki@rsg.ci.i.u-tokyo.ac.jp; helo=www3579.sakura.ne.jp
-X-Spam_score_int: -16
-X-Spam_score: -1.7
+Content-Type: text/plain
+X-Originating-IP: [10.126.231.35]
+X-ClientProxiedBy: rnnvmail202.nvidia.com (10.129.68.7) To
+ rnnvmail201.nvidia.com (10.129.68.8)
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: SJ1PEPF00001CDF:EE_|DS0PR12MB8245:EE_
+X-MS-Office365-Filtering-Correlation-Id: 2308e3a9-584b-4775-fcda-08dde6d61600
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|82310400026|1800799024|36860700013|7416014|376014; 
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?vzoXy3QINWwmWTrdme96mKJbh8K8Uav6yVjDrHAQhdrUl2iHRxrWumLj9FnI?=
+ =?us-ascii?Q?056Xch+bMFa0NQGiZP4Lrf2HVkI/+qlN7RC+PbuP+V4qLSj/XsfmJ2ukMzJE?=
+ =?us-ascii?Q?qhdCZQhtlKnGYJWmGuiaf5hBh4qhfuqGmGW+DSe0tOpa94f+NdC7YkwwkD7r?=
+ =?us-ascii?Q?tM2dcBgO0AXpBDaYebG3x8xRPAGnH1Y8fYhEiMwVuWqsoy24Jwz4BolzxQvl?=
+ =?us-ascii?Q?dN+RxjvWwOz1BNk7Oc0dGRPzhhCMOyHQnZ3RRIWDxRsZR08yT6NK/8QmdSnC?=
+ =?us-ascii?Q?BqlhGLu37rk+uZIB8zJ92gGqjF9U1KjCWKEg1qMelFJQ6B0nHD5VgtZtYANn?=
+ =?us-ascii?Q?dUORnl8XBP70BCXcCNFy6fKNAj/hLN3jl4y0pSZPvXQpacxaPxz/JuEHd8NN?=
+ =?us-ascii?Q?ogDRUIur8B371DYKj6Uv6wcT1s38FZn2zpm6v8rBmWbf7tViEyGYfRNBAFz3?=
+ =?us-ascii?Q?FMpuSY4eQQfav0Qpnkh/SPmjl/P8/RzVuNFFjt0YzXg0t7Q98IJX/MAwNVIk?=
+ =?us-ascii?Q?qYuxhc7e5CsdqKL6NgDJ9GkqrjsdHnOYH+VEivfp00DfnR33xBZIosbL40Xi?=
+ =?us-ascii?Q?yB4jmmMJss8gv/X6WMBPK2P68v7V97QDMNWPaP9jwYOrk8D+Q7azsc9881+w?=
+ =?us-ascii?Q?v6Pt/GtX9QN1dQ9d1ExHUFPfFJ0KO8nvG9rJ3CoR+bao2vqlYMQRceR9HVo7?=
+ =?us-ascii?Q?wThOa8gqXYIcsEB65G3daUvyiwq5cYmbgo5USh+eQsbBozcH1Cu9B79/VBFE?=
+ =?us-ascii?Q?zD1kC9ccak0FvNptFvBNduYOKknPiRYLexVpm3Fi7tJa3emjTI0U7IbFWLO5?=
+ =?us-ascii?Q?TQhlvp4nn3tLFRRvD/+fsg9V/84c+80ywqfyp5b2lyBTMf6ZCNJ4G0Pv87KM?=
+ =?us-ascii?Q?VD+6vbKYX91wi69iLjoemsQSAGxUm6M+Z37xTKNhsOyv66Mk+86bnKwvPi8F?=
+ =?us-ascii?Q?/47oGMOtHlzwQbUqxr1loe/2uc3LD0R3hKGQjan9E4ngxaVadpi8qA1z/YOA?=
+ =?us-ascii?Q?cc+zQBH+uE7xWHzZzY7hFXO8Kz3Uwn/ZwBkT7B2kJeBvf8+1KAoSWlFRfzuq?=
+ =?us-ascii?Q?yz2d5XrUtqRWcWJq5CSk+er6AjcfEg3yHKtBt/8k19053nY6lrC2aawFPOWt?=
+ =?us-ascii?Q?HiHQ4Trsiq0IXkaBrVlSlKt+Ihn3y0TeE/vDih6fJrmjW9BHcbldLWJqWaxD?=
+ =?us-ascii?Q?2amiViKR/hET/Pkd4/dvrPZTRwrGjsNb7/rmsUgRXrNeot/KUPldOl5uord9?=
+ =?us-ascii?Q?tFqLwsi3Gq8zn5kk0PowixDa6qkDTWMCCKov5XBokSvDObjtSh5OD9rrGvWf?=
+ =?us-ascii?Q?xzNHKT2J41D8V7AJz/NMhrKYCccx5vLFo/8MsrUwUnQCxtwR+BWtCIbzY1/f?=
+ =?us-ascii?Q?uplQEhUtTcnsW7dJAtB7htoiHZD1IzmTkSNKI5lW3ra36sKLjMaU3pz3Qz/P?=
+ =?us-ascii?Q?wcskLIkDUtsFG2v9Z/02yHlIjaWp+vzS5b2NkC5Cm+JBY60XG1ezmjgdrmOc?=
+ =?us-ascii?Q?8AIzC+4OtAFrJHNRJPs2OrVUzTMvkvWF1MJ7?=
+X-Forefront-Antispam-Report: CIP:216.228.117.160; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge1.nvidia.com; CAT:NONE;
+ SFS:(13230040)(82310400026)(1800799024)(36860700013)(7416014)(376014); DIR:OUT;
+ SFP:1101; 
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 29 Aug 2025 08:28:52.2679 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 2308e3a9-584b-4775-fcda-08dde6d61600
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.160];
+ Helo=[mail.nvidia.com]
+X-MS-Exchange-CrossTenant-AuthSource: SJ1PEPF00001CDF.namprd05.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS0PR12MB8245
+Received-SPF: permerror client-ip=2a01:111:f403:2418::619;
+ envelope-from=skolothumtho@nvidia.com;
+ helo=NAM12-BN8-obe.outbound.protection.outlook.com
+X-Spam_score_int: -10
+X-Spam_score: -1.1
 X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
- DKIM_SIGNED=0.1, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FORGED_SPF_HELO=1, SPF_HELO_PASS=-0.001,
+ SPF_NONE=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Fri, 29 Aug 2025 09:59:37 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,217 +160,115 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 2025/08/28 17:17, Arun Menon wrote:
-> H Akihiko,
-> 
-> Thanks for the review.
-> 
-> On Thu, Aug 28, 2025 at 10:34:54AM +0900, Akihiko Odaki wrote:
->> On 2025/08/21 17:43, Arun Menon wrote:
->>> This is an incremental step in converting vmstate loading
->>> code to report error via Error objects instead of directly
->>> printing it to console/monitor.
->>> It is ensured that vmstate_load_state() must report an error
->>> in errp, in case of failure.
->>>
->>> The errors are temporarily reported using warn_report_err().
->>> This is removed in the subsequent patches in this series,
->>> when we are actually able to propagate the error to the calling
->>> function using errp. Whereas, if we want the function to exit on
->>> error, then error_fatal is passed.
->>>
->>> Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
->>> Signed-off-by: Arun Menon <armenon@redhat.com>
->>> ---
->>>    hw/display/virtio-gpu.c     |  2 +-
->>>    hw/pci/pci.c                |  3 ++-
->>>    hw/s390x/virtio-ccw.c       |  2 +-
->>>    hw/scsi/spapr_vscsi.c       |  4 ++-
->>>    hw/vfio/pci.c               |  5 +++-
->>>    hw/virtio/virtio-mmio.c     |  3 ++-
->>>    hw/virtio/virtio-pci.c      |  2 +-
->>>    hw/virtio/virtio.c          |  7 +++--
->>>    include/migration/vmstate.h |  2 +-
->>>    migration/cpr.c             |  3 +--
->>>    migration/savevm.c          |  8 ++++--
->>>    migration/vmstate-types.c   | 22 +++++++++++----
->>>    migration/vmstate.c         | 65 +++++++++++++++++++++++++++++++--------------
->>>    tests/unit/test-vmstate.c   | 63 ++++++++++++++++++++++++++++++++++++-------
->>>    ui/vdagent.c                |  5 +++-
->>>    15 files changed, 147 insertions(+), 49 deletions(-)
->>>
->>> diff --git a/hw/display/virtio-gpu.c b/hw/display/virtio-gpu.c
->>> index 0a1a625b0ea6cf26cb0d799171a57ed3d3ab2442..5dc31bc6bfb0272e29a4364ab10de2595a4bedf7 100644
->>> --- a/hw/display/virtio-gpu.c
->>> +++ b/hw/display/virtio-gpu.c
->>> @@ -1343,7 +1343,7 @@ static int virtio_gpu_load(QEMUFile *f, void *opaque, size_t size,
->>>        }
->>>        /* load & apply scanout state */
->>> -    vmstate_load_state(f, &vmstate_virtio_gpu_scanouts, g, 1);
->>> +    vmstate_load_state(f, &vmstate_virtio_gpu_scanouts, g, 1, &error_fatal);
->>>        return 0;
->>>    }
->>> diff --git a/hw/pci/pci.c b/hw/pci/pci.c
->>> index c70b5ceebaf1f2b10768bd030526cbb518da2b8d..6be932d3bb67ff0c4808707db2a7b6378a90e82b 100644
->>> --- a/hw/pci/pci.c
->>> +++ b/hw/pci/pci.c
->>> @@ -934,7 +934,8 @@ void pci_device_save(PCIDevice *s, QEMUFile *f)
->>>    int pci_device_load(PCIDevice *s, QEMUFile *f)
->>>    {
->>>        int ret;
->>> -    ret = vmstate_load_state(f, &vmstate_pci_device, s, s->version_id);
->>> +    ret = vmstate_load_state(f, &vmstate_pci_device, s, s->version_id,
->>> +                             &error_fatal);
->>>        /* Restore the interrupt status bit. */
->>>        pci_update_irq_status(s);
->>>        return ret;
->>> diff --git a/hw/s390x/virtio-ccw.c b/hw/s390x/virtio-ccw.c
->>> index d2f85b39f30f7fc82e0c600144c0a958e1269b2c..6a9641a03d5d3a38a4de7ceb9deffc0cc303bcff 100644
->>> --- a/hw/s390x/virtio-ccw.c
->>> +++ b/hw/s390x/virtio-ccw.c
->>> @@ -1136,7 +1136,7 @@ static void virtio_ccw_save_config(DeviceState *d, QEMUFile *f)
->>>    static int virtio_ccw_load_config(DeviceState *d, QEMUFile *f)
->>>    {
->>>        VirtioCcwDevice *dev = VIRTIO_CCW_DEVICE(d);
->>> -    return vmstate_load_state(f, &vmstate_virtio_ccw_dev, dev, 1);
->>> +    return vmstate_load_state(f, &vmstate_virtio_ccw_dev, dev, 1, &error_fatal);
->>>    }
->>>    static void virtio_ccw_pre_plugged(DeviceState *d, Error **errp)
->>> diff --git a/hw/scsi/spapr_vscsi.c b/hw/scsi/spapr_vscsi.c
->>> index 20f70fb2729de78b9636a6b8c869695dab4f8902..8622419497db650523d51bcb41557bbca254eaa3 100644
->>> --- a/hw/scsi/spapr_vscsi.c
->>> +++ b/hw/scsi/spapr_vscsi.c
->>> @@ -642,15 +642,17 @@ static void *vscsi_load_request(QEMUFile *f, SCSIRequest *sreq)
->>>        VSCSIState *s = VIO_SPAPR_VSCSI_DEVICE(bus->qbus.parent);
->>>        vscsi_req *req;
->>>        int rc;
->>> +    Error *local_err = NULL;
->>>        assert(sreq->tag < VSCSI_REQ_LIMIT);
->>>        req = &s->reqs[sreq->tag];
->>>        assert(!req->active);
->>>        memset(req, 0, sizeof(*req));
->>> -    rc = vmstate_load_state(f, &vmstate_spapr_vscsi_req, req, 1);
->>> +    rc = vmstate_load_state(f, &vmstate_spapr_vscsi_req, req, 1, &local_err);
->>>        if (rc) {
->>>            fprintf(stderr, "VSCSI: failed loading request tag#%u\n", sreq->tag);
->>> +        warn_report_err(local_err);
->>>            return NULL;
->>>        }
->>>        assert(req->active);
->>> diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
->>> index 4fa692c1a32bcfa4e4939e5fcb64f2bf19905b3b..a65e34b6979eadfa0851666aeae7cf731a00fa40 100644
->>> --- a/hw/vfio/pci.c
->>> +++ b/hw/vfio/pci.c
->>> @@ -2790,13 +2790,16 @@ static int vfio_pci_load_config(VFIODevice *vbasedev, QEMUFile *f)
->>>        PCIDevice *pdev = &vdev->pdev;
->>>        pcibus_t old_addr[PCI_NUM_REGIONS - 1];
->>>        int bar, ret;
->>> +    Error *local_err = NULL;
->>>        for (bar = 0; bar < PCI_ROM_SLOT; bar++) {
->>>            old_addr[bar] = pdev->io_regions[bar].addr;
->>>        }
->>> -    ret = vmstate_load_state(f, &vmstate_vfio_pci_config, vdev, 1);
->>> +    ret = vmstate_load_state(f, &vmstate_vfio_pci_config, vdev, 1,
->>> +                             &local_err);
->>>        if (ret) {
->>> +        warn_report_err(local_err);
->>>            return ret;
->>>        }
->>> diff --git a/hw/virtio/virtio-mmio.c b/hw/virtio/virtio-mmio.c
->>> index 532c67107ba1d2978a76cf49f9cdc1de1dea3e11..0a688909fc606a3c9fde933667ae8c309ab527d0 100644
->>> --- a/hw/virtio/virtio-mmio.c
->>> +++ b/hw/virtio/virtio-mmio.c
->>> @@ -34,6 +34,7 @@
->>>    #include "qemu/error-report.h"
->>>    #include "qemu/log.h"
->>>    #include "trace.h"
->>> +#include "qapi/error.h"
->>>    static bool virtio_mmio_ioeventfd_enabled(DeviceState *d)
->>>    {
->>> @@ -619,7 +620,7 @@ static int virtio_mmio_load_extra_state(DeviceState *opaque, QEMUFile *f)
->>>    {
->>>        VirtIOMMIOProxy *proxy = VIRTIO_MMIO(opaque);
->>> -    return vmstate_load_state(f, &vmstate_virtio_mmio, proxy, 1);
->>> +    return vmstate_load_state(f, &vmstate_virtio_mmio, proxy, 1, &error_fatal);
->>>    }
->>>    static bool virtio_mmio_has_extra_state(DeviceState *opaque)
->>> diff --git a/hw/virtio/virtio-pci.c b/hw/virtio/virtio-pci.c
->>> index 767216d795998708f5716a23ae16c79cd90ff489..b04faa1e5c91b5cef40e54ec41d92422d16bfc13 100644
->>> --- a/hw/virtio/virtio-pci.c
->>> +++ b/hw/virtio/virtio-pci.c
->>> @@ -161,7 +161,7 @@ static int virtio_pci_load_extra_state(DeviceState *d, QEMUFile *f)
->>>    {
->>>        VirtIOPCIProxy *proxy = to_virtio_pci_proxy(d);
->>> -    return vmstate_load_state(f, &vmstate_virtio_pci, proxy, 1);
->>> +    return vmstate_load_state(f, &vmstate_virtio_pci, proxy, 1, &error_fatal);
->>>    }
->>>    static void virtio_pci_save_queue(DeviceState *d, int n, QEMUFile *f)
->>> diff --git a/hw/virtio/virtio.c b/hw/virtio/virtio.c
->>> index 9a81ad912e013fc254899c4e55cff1f76a6112a4..419f3516c9f0a3df43831eebc77aa1e6dfcd0f41 100644
->>> --- a/hw/virtio/virtio.c
->>> +++ b/hw/virtio/virtio.c
->>> @@ -3235,6 +3235,7 @@ virtio_load(VirtIODevice *vdev, QEMUFile *f, int version_id)
->>>        BusState *qbus = qdev_get_parent_bus(DEVICE(vdev));
->>>        VirtioBusClass *k = VIRTIO_BUS_GET_CLASS(qbus);
->>>        VirtioDeviceClass *vdc = VIRTIO_DEVICE_GET_CLASS(vdev);
->>> +    Error *local_err = NULL;
->>>        /*
->>>         * We poison the endianness to ensure it does not get used before
->>> @@ -3327,15 +3328,17 @@ virtio_load(VirtIODevice *vdev, QEMUFile *f, int version_id)
->>>        }
->>>        if (vdc->vmsd) {
->>> -        ret = vmstate_load_state(f, vdc->vmsd, vdev, version_id);
->>> +        ret = vmstate_load_state(f, vdc->vmsd, vdev, version_id, &local_err);
->>>            if (ret) {
->>> +            warn_report_err(local_err);
->>
->> I think error_report_err() should be used instead because this is replacing
->> error_report().
->>
->> If I read correctly, warn_report_err() is essentially error_report_err()
->> prefixing the message with "warning: ". However, the error messages handled
->> in this series do not have such prefixes so you shouldn't add them in
->> intemediate changes.
-> 
-> If I am not wrong, we have introduced warn_report_err() not as a replacement to
-> error_report(). They are newly added ones. Besides, some of them are not intermediate
-> changes, because they do end up in the final version. for example in hw/virtio/virtio-pci.c
+We only allow default PCIe Root Complex(pcie.0) or pxb-pcie based extra
+root complexes to be associated with SMMU.
 
-I referred to the fact that the messages that were emitted with 
-error_report() calls in vmstate_load_state() are now printed with 
-warn_report_err(). That causes behavioral changes and I suspect that 
-they are accidental.
+Although this change does not affect functionality at present, it is
+required when we add support for user-creatable SMMUv3 devices in
+future patches.
 
-I especially want to know reasoning behind them if it is not accidental 
-and some of them are going to remain after applying the entire series.
+Note: Added a specific check to identify pxb-pcie to avoid matching
+pxb-cxl host bridges, which are also of type PCI_HOST_BRIDGE. This
+restriction can be relaxed once support for CXL devices on arm/virt
+is added and validated with SMMUv3.
 
-> In some places in the intermediate patches a warn_report_err() is added right after
-> error_report(), both to be replaced with error_setg()/error_prepend() later in the series.
+Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
+Tested-by: Nathan Chen <nathanc@nvidia.com>
+Tested-by: Eric Auger <eric.auger@redhat.com>
+Reviewed-by: Nicolin Chen <nicolinc@nvidia.com>
+Tested-by: Nicolin Chen <nicolinc@nvidia.com>
+Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
+---
+ hw/arm/smmu-common.c                | 31 ++++++++++++++++++++++++++---
+ hw/pci-bridge/pci_expander_bridge.c |  1 -
+ include/hw/pci/pci_bridge.h         |  1 +
+ 3 files changed, 29 insertions(+), 4 deletions(-)
 
-The appropriate choice will depend on how Errors generated by 
-error_setg() are going to be reported to the user in that case. Using 
-warn_report_err() for them is inappropriate if they are going to 
-reported with error_report_err(). If they are going to be handled in 
-some special way, keeping the original behavior is a sensible option, 
-and I think error_report_err() does that in most cases, if not all.
+diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
+index 0dcaf2f589..7f64ea48d0 100644
+--- a/hw/arm/smmu-common.c
++++ b/hw/arm/smmu-common.c
+@@ -20,6 +20,7 @@
+ #include "trace.h"
+ #include "exec/target_page.h"
+ #include "hw/core/cpu.h"
++#include "hw/pci/pci_bridge.h"
+ #include "hw/qdev-properties.h"
+ #include "qapi/error.h"
+ #include "qemu/jhash.h"
+@@ -925,6 +926,7 @@ static void smmu_base_realize(DeviceState *dev, Error **errp)
+ {
+     SMMUState *s = ARM_SMMU(dev);
+     SMMUBaseClass *sbc = ARM_SMMU_GET_CLASS(dev);
++    PCIBus *pci_bus = s->primary_bus;
+     Error *local_err = NULL;
+ 
+     sbc->parent_realize(dev, &local_err);
+@@ -937,11 +939,34 @@ static void smmu_base_realize(DeviceState *dev, Error **errp)
+                                      g_free, g_free);
+     s->smmu_pcibus_by_busptr = g_hash_table_new(NULL, NULL);
+ 
+-    if (s->primary_bus) {
+-        pci_setup_iommu(s->primary_bus, &smmu_ops, s);
+-    } else {
++    if (!pci_bus) {
+         error_setg(errp, "SMMU is not attached to any PCI bus!");
++        return;
++    }
++
++    /*
++     * We only allow default PCIe Root Complex(pcie.0) or pxb-pcie based extra
++     * root complexes to be associated with SMMU.
++     */
++    if (pci_bus_is_express(pci_bus) && pci_bus_is_root(pci_bus) &&
++        object_dynamic_cast(OBJECT(pci_bus)->parent, TYPE_PCI_HOST_BRIDGE)) {
++        /*
++         * This condition matches either the default pcie.0, pxb-pcie, or
++         * pxb-cxl. For both pxb-pcie and pxb-cxl, parent_dev will be set.
++         * Currently, we don't allow pxb-cxl as it requires further
++         * verification. Therefore, make sure this is indeed pxb-pcie.
++         */
++        if (pci_bus->parent_dev) {
++            if (!object_dynamic_cast(OBJECT(pci_bus), TYPE_PXB_PCIE_BUS)) {
++                goto out_err;
++            }
++        }
++        pci_setup_iommu(pci_bus, &smmu_ops, s);
++        return;
+     }
++out_err:
++    error_setg(errp, "SMMU should be attached to a default PCIe root complex"
++               "(pcie.0) or a pxb-pcie based root complex");
+ }
+ 
+ /*
+diff --git a/hw/pci-bridge/pci_expander_bridge.c b/hw/pci-bridge/pci_expander_bridge.c
+index 3a29dfefc2..1bcceddbc4 100644
+--- a/hw/pci-bridge/pci_expander_bridge.c
++++ b/hw/pci-bridge/pci_expander_bridge.c
+@@ -34,7 +34,6 @@ typedef struct PXBBus PXBBus;
+ DECLARE_INSTANCE_CHECKER(PXBBus, PXB_BUS,
+                          TYPE_PXB_BUS)
+ 
+-#define TYPE_PXB_PCIE_BUS "pxb-pcie-bus"
+ DECLARE_INSTANCE_CHECKER(PXBBus, PXB_PCIE_BUS,
+                          TYPE_PXB_PCIE_BUS)
+ 
+diff --git a/include/hw/pci/pci_bridge.h b/include/hw/pci/pci_bridge.h
+index 8cdacbc4e1..a055fd8d32 100644
+--- a/include/hw/pci/pci_bridge.h
++++ b/include/hw/pci/pci_bridge.h
+@@ -104,6 +104,7 @@ typedef struct PXBPCIEDev {
+     PXBDev parent_obj;
+ } PXBPCIEDev;
+ 
++#define TYPE_PXB_PCIE_BUS "pxb-pcie-bus"
+ #define TYPE_PXB_CXL_BUS "pxb-cxl-bus"
+ #define TYPE_PXB_DEV "pxb"
+ OBJECT_DECLARE_SIMPLE_TYPE(PXBDev, PXB_DEV)
+-- 
+2.43.0
 
-> 
-> Do you want to replace warn_report_err() everywhere with error_report_err()?
-
-Perhaps so, but I may have missed some cases where warn_report_err(), so 
-let me share some sort of guideline I have in my mind:
-
-- Keeping the original behavior is a safe choice.
-
-If "warning: " was not prepended in the past, leaving messages without 
-the prefix is at least not a regression, so reviewers can give 
-Reviewed-by: more easily.
-
-- Refer to Markus' email, which provides distinctions among "ordinary" 
-erros, programming errors, and warnings and I see it reasonable:
-https://lore.kernel.org/qemu-devel/87h5yijh3b.fsf@pond.sub.org/
-("Abuse of warnings for unhandled errors and programming errors")
-
-Regards,
-Akihiko Odaki
 

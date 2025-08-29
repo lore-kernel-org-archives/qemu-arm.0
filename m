@@ -4,88 +4,133 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7970CCA0FFF
-	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 15:46:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65913CA0FFF
+	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 15:47:22 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1usN7K-000841-Ip; Sat, 30 Aug 2025 11:03:51 -0400
+	id 1usNf9-0005qe-Cd; Sat, 30 Aug 2025 11:38:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1urt9F-0007Ce-Tk
- for qemu-arm@nongnu.org; Fri, 29 Aug 2025 03:03:45 -0400
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1urt9D-0004bQ-Pc
- for qemu-arm@nongnu.org; Fri, 29 Aug 2025 03:03:45 -0400
-Received: by mail-wm1-x336.google.com with SMTP id
- 5b1f17b1804b1-45b7e69570bso4121095e9.0
- for <qemu-arm@nongnu.org>; Fri, 29 Aug 2025 00:03:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756451022; x=1757055822; darn=nongnu.org;
- h=mime-version:message-id:in-reply-to:references:user-agent:subject
- :cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=nAVy79qT+VRU3NUV4NcmYczu3zKLjpOZKa36nQp76eo=;
- b=yimbYOeZW1SiIZxeZMWpjDK/GwZt9xhrVrvtfD6W4jq42G6Fl3mD8bfY40lWJTyy4o
- j440B32cZUEM/NNz9z1OTolXzE+U5eCaoWjiFMLSaN/+9nqJxKGgRva/J771TC8VnLkO
- jVZ/QHdo+grdNthUbHWCfgA/5FuhADdsLqiKaepnOlUwHlbAoH9liPPE5oTajJk/rLEo
- rJFq1BVTAa8yGLy2GhNYbv+v+wE8qCyAEtGwA/30Ez6XUBz7YZPhu0J9F9qZkhPYx+eO
- lhXdH9Wr3t2MQWbvPOs3rLHlkfPwC4Jh/vtc/3H09PGGOgQ37pfzCDznfLexIQJ+GZhM
- tUfA==
+ (Exim 4.90_1) (envelope-from <armenon@redhat.com>)
+ id 1us5Mi-0006Cy-Lh
+ for qemu-arm@nongnu.org; Fri, 29 Aug 2025 16:06:28 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armenon@redhat.com>)
+ id 1us5Mg-00057u-U8
+ for qemu-arm@nongnu.org; Fri, 29 Aug 2025 16:06:28 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1756497986;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=EK8ZniS31eKfAuecJyHjMuA5swX2F7mkJn3tAORFulo=;
+ b=GXClXWebli5hyVEsHLe3hdaUEmmSJhbVhGLLPLdnGo5EH1a9SoE1zvQvb5yhreL5fxaKZa
+ 8VLYUe/zO4AfnIEdVf9qXslvFyZEIPcqMdpUVLMO758vTg79StObVHVUtU9IQYEma6ol6R
+ bLGqXzie2abrTgygcmU6rUAVfSziA8Q=
+Received: from mail-pl1-f198.google.com (mail-pl1-f198.google.com
+ [209.85.214.198]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-671-gPJu2F10N6mOgglrvldipg-1; Fri, 29 Aug 2025 16:06:24 -0400
+X-MC-Unique: gPJu2F10N6mOgglrvldipg-1
+X-Mimecast-MFC-AGG-ID: gPJu2F10N6mOgglrvldipg_1756497984
+Received: by mail-pl1-f198.google.com with SMTP id
+ d9443c01a7336-2445803f0cfso32572325ad.1
+ for <qemu-arm@nongnu.org>; Fri, 29 Aug 2025 13:06:24 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756451022; x=1757055822;
- h=mime-version:message-id:in-reply-to:references:user-agent:subject
- :cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=nAVy79qT+VRU3NUV4NcmYczu3zKLjpOZKa36nQp76eo=;
- b=fsMR+AzPpRKX/ylsZnkd9HgqLOH8fIW1F3PTyNWuvzor+n/YDfXVb6IBFqgdZBJIqg
- nN7n01BPhg4hqLlAMtDLIe5Ln10mY1uTHyrB36grt24w6n6zrZ4HbcXD3xJv8rEMiSvy
- nsoveYHZK3Adjh6viGUagjYd+tRbjLwFFmXP8fHUcVwHrBdzbiVRNia//0NHR2bY+crV
- 0WGg9Wks9ZSVrEFRRbMoTCIlzCoyu/2tyXLTxNwWZAynvaULliMaD9EDOIbOkPMxYLzN
- 4tOCbsgTChhEnNX/BHsWksN/RoWzqR0xASlPCKbykudXrYg/RRMSnY5Od7d2A2j15vbK
- 3RkA==
-X-Gm-Message-State: AOJu0Yy4I4wSPs5Kau1AA3+7rfvTIPp8wcMMltYlK/Bws8oW7aJPykKZ
- SLN9longpZYnUfyA5YkTDJCAN5MAhqgi4zLjDZo38/7WFnVbWwNsxphVgwRYKO18ylt8lVWoJux
- 83gmc/AY=
-X-Gm-Gg: ASbGncuUSBswJF4RpUiT9RnGJVhzdj41WdPmXRaPi+5hpSxyuX5egE4+yyoZfnbXHTw
- wEWbG/nQLKDZyzZdu1W4b46tf38+kpLHKbFfx0zuwsLNuvrjm81Sf8UE6zetlYgd0YSc42BHei3
- PSmb+QsYGRHJfHAIH732WdSGSU48qdgBDpPrB6/w32QTndU/kwzvvE8Dpm3z3J3r6M7hSSkaW90
- 8e8A8YepQ9tHJ+o5mniyY2/wfH56mEqhg1zEPkokd7ZPLXj8tm7Pgoacebb2RhCivPJery15gPY
- Vn2Z04za/wgembZiGn78qqwZO5NYRjia/54hbJQixWXqZt1eO5GZqiNnMG3sovOSLTO6OWHMLqT
- 7POXIc6tKI9UXU6o6pw33RnHDRaoj9TpF63vxfQ36nn7LMXXcsxBgz3sHPEF0twlf1OWs2FFNrl
- W1v+BMNa8=
-X-Google-Smtp-Source: AGHT+IF0M6v6tWEMQ3+/dIGk6rqWMEzVMDZLzBo2z0mTftjlHCA+Qjn7YC9F812AnUVevX/ewc2k3Q==
-X-Received: by 2002:a05:600c:4451:b0:45b:43cc:e558 with SMTP id
- 5b1f17b1804b1-45b517cba3bmr218371165e9.35.1756451021607; 
- Fri, 29 Aug 2025 00:03:41 -0700 (PDT)
-Received: from meli-email.org (athedsl-4441256.home.otenet.gr.
- [79.129.180.152]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-45b81a9e971sm6511175e9.18.2025.08.29.00.03.41
+ d=1e100.net; s=20230601; t=1756497984; x=1757102784;
+ h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+ :mime-version:subject:date:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=EK8ZniS31eKfAuecJyHjMuA5swX2F7mkJn3tAORFulo=;
+ b=uu4VaYZNnMzBLzp8/nbM+7qnpuO7yFAZQT+s8MkCtf0NEmu2PobeAKxWdVptrxWjCx
+ 4zMX5bEKewqR/a+NWyVhljWRd5Q/ty0uSs6yFMpQRN/0vayHNknMoED05tLz82+E7uOk
+ +PStn433rSDZJ4NEvpfhMKA0Q6UpsFGUuvalWAKNQm8YU91zJypTy2TNUwjM59kVIO1R
+ L0/dWW63s1V62xuvotrTkwGN8fXkM/qRB7mGGVK+MPr3fBchEyusyJHYcw8u+IB8wcR/
+ wgnOI8B2SDm8vR1ViXCd/cTPwQYd/6tsw6XwAT0JUoVxP/2vV6dHkb/DkJ4/HozZ45S9
+ rB3g==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUOE62VueGVCVcbHVZk/EBknkmyLxOwn/Ohtu/bnETaS447zGEacwLPxFLas4qoZwFfKiYGtiq7+g==@nongnu.org
+X-Gm-Message-State: AOJu0YwVQx+6rj5mI2fmh7MbWD8Kzomcy5QrNYzgyRk0yzpT6KCq6H2q
+ 3ABfED21EZwBt/B0OY6LoRUx/y0Zjkz9mh/ES/nw8fgPj0YYrnLNUl2/jJv2k0cVBw4r7hn1CSC
+ ABZUFE8k2oR+5IMBSHciysaav89N4lwiyDJHnKp47UETiFQ2iCWlXVg==
+X-Gm-Gg: ASbGncumhk6EvxC6celACQema9Owj108RNmWci7woxHIXRrJdJn/38Cwr5ndWjBmCFq
+ D2A5Yu+kILBeJQZ6dBwihDrs5RWYZjZnQTKY+lfsU1igrKdOBf873HxXRYFXM3XNG5xD7iqYIac
+ C1lLw7nn4SKI3v0sl9zDLgv9y2sNUndLxUNNcj25F0rtyBbuL9BMaP0atPzfjUBq6vPMa4Eb/YQ
+ cctIui9uJ5/hU7kls4W708qTTZLVKYxpjdLuPmeDGYvBQaCvE0wiK4wsWEGhP6Vc17e7rfDEKnz
+ PVhx1KHawG/ALGE3o/jdf7ol0WLiLwedz2Ao9UZdVm7UOndUUdF2gA==
+X-Received: by 2002:a17:902:e54f:b0:246:a532:3343 with SMTP id
+ d9443c01a7336-246a5323a3cmr315115635ad.10.1756497983756; 
+ Fri, 29 Aug 2025 13:06:23 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGaksZqggjQ8NuqRcRP2WUGJ0hf1LDRm0cmz7dgENVz/im4xsVjGHviXLKSxNPegdTOKSJ8Wg==
+X-Received: by 2002:a17:902:e54f:b0:246:a532:3343 with SMTP id
+ d9443c01a7336-246a5323a3cmr315115155ad.10.1756497983318; 
+ Fri, 29 Aug 2025 13:06:23 -0700 (PDT)
+Received: from armenon-kvm.bengluru.csb ([49.47.195.108])
+ by smtp.gmail.com with ESMTPSA id
+ 98e67ed59e1d1-327d8f66f16sm3570543a91.0.2025.08.29.13.06.08
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 29 Aug 2025 00:03:41 -0700 (PDT)
-Date: Fri, 29 Aug 2025 10:00:45 +0300
-From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-To: qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-arm@nongnu.org
-Subject: Re: [PATCH 06/61] target/arm/hvf: Remove hvf_sreg_match.key
-User-Agent: meli/0.8.12
-References: <20250827010453.4059782-1-richard.henderson@linaro.org>
- <20250827010453.4059782-9-richard.henderson@linaro.org>
-In-Reply-To: <20250827010453.4059782-9-richard.henderson@linaro.org>
-Message-ID: <t1qua4.2jl6eivk2f8kt@linaro.org>
+ Fri, 29 Aug 2025 13:06:23 -0700 (PDT)
+From: Arun Menon <armenon@redhat.com>
+Date: Sat, 30 Aug 2025 01:31:57 +0530
+Subject: [PATCH v13 17/27] migration: push Error **errp into
+ loadvm_postcopy_handle_run()
 MIME-Version: 1.0
+Message-Id: <20250830-propagate_tpm_error-v13-17-a4e777b7eb2c@redhat.com>
+References: <20250830-propagate_tpm_error-v13-0-a4e777b7eb2c@redhat.com>
+In-Reply-To: <20250830-propagate_tpm_error-v13-0-a4e777b7eb2c@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Peter Xu <peterx@redhat.com>, Fabiano Rosas <farosas@suse.de>, 
+ =?utf-8?q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>, 
+ Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>, 
+ Dmitry Osipenko <dmitry.osipenko@collabora.com>, 
+ "Michael S. Tsirkin" <mst@redhat.com>, 
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
+ Cornelia Huck <cohuck@redhat.com>, Halil Pasic <pasic@linux.ibm.com>, 
+ Eric Farman <farman@linux.ibm.com>, Thomas Huth <thuth@redhat.com>, 
+ Christian Borntraeger <borntraeger@linux.ibm.com>, 
+ Matthew Rosato <mjrosato@linux.ibm.com>, 
+ Richard Henderson <richard.henderson@linaro.org>, 
+ David Hildenbrand <david@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>, 
+ Nicholas Piggin <npiggin@gmail.com>, 
+ Harsh Prateek Bora <harshpb@linux.ibm.com>, 
+ Paolo Bonzini <pbonzini@redhat.com>, Fam Zheng <fam@euphon.net>, 
+ Alex Williamson <alex.williamson@redhat.com>, 
+ =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>, 
+ Steve Sistare <steven.sistare@oracle.com>, 
+ =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>, 
+ qemu-s390x@nongnu.org, qemu-ppc@nongnu.org, 
+ Hailiang Zhang <zhanghailiang@xfusion.com>, 
+ Stefan Berger <stefanb@linux.vnet.ibm.com>, 
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
+ Arun Menon <armenon@redhat.com>, 
+ =?utf-8?q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1888; i=armenon@redhat.com;
+ h=from:subject:message-id; bh=Bc7pNWeaQQJR7xn/IMqCNxln9K0U+dn3FXOfz+z8MlM=;
+ b=owGbwMvMwCWWVaVqcZPfqI/xtFoSQ8Ymdt/GP3zhWkejXE12KHN/+leSIp+5xzVJ8+iFtTJ7m
+ N4XK8zpKGVhEONikBVTZGn4GiDbFFAYEWn78jrMHFYmkCEMXJwCMBFHTob/Xjt4xSzzNwvsFtrx
+ XK6QbbaTWdwlPf6Us4+vfLPS9/14hZFhxk57zj+3Q940P992LTsjZ/KJEwcPyNw58OaOlWbjpCv
+ 7mAA=
+X-Developer-Key: i=armenon@redhat.com; a=openpgp;
+ fpr=80F5501D82507158593DE9D76A7A2538D90F328E
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: mf53IkuzJm2BEg9Tkt6N9aMwgZ-dyJ0KkiyrOuZk2d0_1756497984
+X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::336;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wm1-x336.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=armenon@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -101,137 +146,54 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Wed, 27 Aug 2025 04:03, Richard Henderson <richard.henderson@linaro.org> wrote:
->Use conversion functions instead of table lookup.
->
->Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
->---
+This is an incremental step in converting vmstate loading
+code to report error via Error objects instead of directly
+printing it to console/monitor.
+It is ensured that loadvm_postcopy_handle_run() must report an error
+in errp, in case of failure.
 
-Reviewed-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+Reviewed-by: Fabiano Rosas <farosas@suse.de>
+Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+Signed-off-by: Arun Menon <armenon@redhat.com>
+---
+ migration/savevm.c | 10 +++-------
+ 1 file changed, 3 insertions(+), 7 deletions(-)
 
-> target/arm/hvf/hvf.c | 35 +++++++++++++++++++----------------
-> 1 file changed, 19 insertions(+), 16 deletions(-)
->
->diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
->index 47165bd29c..5fcfa9a999 100644
->--- a/target/arm/hvf/hvf.c
->+++ b/target/arm/hvf/hvf.c
->@@ -152,9 +152,6 @@ void hvf_arm_init_debug(void)
->         g_array_sized_new(true, true, sizeof(HWWatchpoint), max_hw_wps);
-> }
-> 
->-#define HVF_SYSREG(crn, crm, op0, op1, op2) \
->-        ENCODE_AA64_CP_REG(CP_REG_ARM64_SYSREG_CP, crn, crm, op0, op1, op2)
->-
-> #define SYSREG_OP0_SHIFT      20
-> #define SYSREG_OP0_MASK       0x3
-> #define SYSREG_OP0(sysreg)    ((sysreg >> SYSREG_OP0_SHIFT) & SYSREG_OP0_MASK)
->@@ -399,7 +396,6 @@ static const struct hvf_reg_match hvf_fpreg_match[] = {
-> 
-> struct hvf_sreg_match {
->     int reg;
->-    uint32_t key;
->     uint32_t cp_idx;
-> };
-> 
->@@ -423,8 +419,7 @@ struct hvf_sreg_match {
-> 
-> #undef DEF_SYSREG
-> 
->-#define DEF_SYSREG(HVF_ID, op0, op1, crn, crm, op2) \
->-    { HVF_ID, HVF_SYSREG(crn, crm, op0, op1, op2) },
->+#define DEF_SYSREG(HVF_ID, op0, op1, crn, crm, op2)  { HVF_ID },
-> 
-> static struct hvf_sreg_match hvf_sreg_match[] = {
-> #include "sysreg.c.inc"
->@@ -469,13 +464,16 @@ int hvf_get_registers(CPUState *cpu)
->     pstate_write(env, val);
-> 
->     for (i = 0; i < ARRAY_SIZE(hvf_sreg_match); i++) {
->+        int hvf_id = hvf_sreg_match[i].reg;
->+        uint64_t kvm_id = HVF_TO_KVMID(hvf_id);
->+
->         if (hvf_sreg_match[i].cp_idx == -1) {
->             continue;
->         }
-> 
->         if (cpu->accel->guest_debug_enabled) {
->             /* Handle debug registers */
->-            switch (hvf_sreg_match[i].reg) {
->+            switch (hvf_id) {
->             case HV_SYS_REG_DBGBVR0_EL1:
->             case HV_SYS_REG_DBGBCR0_EL1:
->             case HV_SYS_REG_DBGWVR0_EL1:
->@@ -549,8 +547,10 @@ int hvf_get_registers(CPUState *cpu)
->                  * vCPU but simply keep the values from the previous
->                  * environment.
->                  */
->-                const ARMCPRegInfo *ri;
->-                ri = get_arm_cp_reginfo(arm_cpu->cp_regs, hvf_sreg_match[i].key);
->+                uint32_t key = kvm_to_cpreg_id(kvm_id);
->+                const ARMCPRegInfo *ri =
->+                    get_arm_cp_reginfo(arm_cpu->cp_regs, key);
->+
->                 val = read_raw_cp_reg(env, ri);
-> 
->                 arm_cpu->cpreg_values[hvf_sreg_match[i].cp_idx] = val;
->@@ -559,7 +559,7 @@ int hvf_get_registers(CPUState *cpu)
->             }
->         }
-> 
->-        ret = hv_vcpu_get_sys_reg(cpu->accel->fd, hvf_sreg_match[i].reg, &val);
->+        ret = hv_vcpu_get_sys_reg(cpu->accel->fd, hvf_id, &val);
->         assert_hvf_ok(ret);
-> 
->         arm_cpu->cpreg_values[hvf_sreg_match[i].cp_idx] = val;
->@@ -606,13 +606,15 @@ int hvf_put_registers(CPUState *cpu)
-> 
->     assert(write_cpustate_to_list(arm_cpu, false));
->     for (i = 0; i < ARRAY_SIZE(hvf_sreg_match); i++) {
->+        int hvf_id = hvf_sreg_match[i].reg;
->+
->         if (hvf_sreg_match[i].cp_idx == -1) {
->             continue;
->         }
-> 
->         if (cpu->accel->guest_debug_enabled) {
->             /* Handle debug registers */
->-            switch (hvf_sreg_match[i].reg) {
->+            switch (hvf_id) {
->             case HV_SYS_REG_DBGBVR0_EL1:
->             case HV_SYS_REG_DBGBCR0_EL1:
->             case HV_SYS_REG_DBGWVR0_EL1:
->@@ -687,7 +689,7 @@ int hvf_put_registers(CPUState *cpu)
->         }
-> 
->         val = arm_cpu->cpreg_values[hvf_sreg_match[i].cp_idx];
->-        ret = hv_vcpu_set_sys_reg(cpu->accel->fd, hvf_sreg_match[i].reg, val);
->+        ret = hv_vcpu_set_sys_reg(cpu->accel->fd, hvf_id, val);
->         assert_hvf_ok(ret);
->     }
-> 
->@@ -922,14 +924,15 @@ int hvf_arch_init_vcpu(CPUState *cpu)
-> 
->     /* Populate cp list for all known sysregs */
->     for (i = 0; i < sregs_match_len; i++) {
->-        const ARMCPRegInfo *ri;
->-        uint32_t key = hvf_sreg_match[i].key;
->+        int hvf_id = hvf_sreg_match[i].reg;
->+        uint64_t kvm_id = HVF_TO_KVMID(hvf_id);
->+        uint32_t key = kvm_to_cpreg_id(kvm_id);
->+        const ARMCPRegInfo *ri = get_arm_cp_reginfo(arm_cpu->cp_regs, key);
-> 
->-        ri = get_arm_cp_reginfo(arm_cpu->cp_regs, key);
->         if (ri) {
->             assert(!(ri->type & ARM_CP_NO_RAW));
->             hvf_sreg_match[i].cp_idx = sregs_cnt;
->-            arm_cpu->cpreg_indexes[sregs_cnt++] = cpreg_to_kvm_id(key);
->+            arm_cpu->cpreg_indexes[sregs_cnt++] = kvm_id;
->         } else {
->             hvf_sreg_match[i].cp_idx = -1;
->         }
->-- 
->2.43.0
->
->
+diff --git a/migration/savevm.c b/migration/savevm.c
+index c681d6d21af356a97645f2a0d36e7440e3bd95c6..3ab20bd3de980ecfd79ab29697e3e1527ab3e73c 100644
+--- a/migration/savevm.c
++++ b/migration/savevm.c
+@@ -2273,13 +2273,13 @@ static void loadvm_postcopy_handle_run_bh(void *opaque)
+ }
+ 
+ /* After all discards we can start running and asking for pages */
+-static int loadvm_postcopy_handle_run(MigrationIncomingState *mis)
++static int loadvm_postcopy_handle_run(MigrationIncomingState *mis, Error **errp)
+ {
+     PostcopyState ps = postcopy_state_get();
+ 
+     trace_loadvm_postcopy_handle_run();
+     if (ps != POSTCOPY_INCOMING_LISTENING) {
+-        error_report("CMD_POSTCOPY_RUN in wrong postcopy state (%d)", ps);
++        error_setg(errp, "CMD_POSTCOPY_RUN in wrong postcopy state (%d)", ps);
+         return -1;
+     }
+ 
+@@ -2626,11 +2626,7 @@ static int loadvm_process_command(QEMUFile *f, Error **errp)
+         return loadvm_postcopy_handle_listen(mis, errp);
+ 
+     case MIG_CMD_POSTCOPY_RUN:
+-        ret = loadvm_postcopy_handle_run(mis);
+-        if (ret < 0) {
+-            error_setg(errp, "Failed to load device state command: %d", ret);
+-        }
+-        return ret;
++        return loadvm_postcopy_handle_run(mis, errp);
+ 
+     case MIG_CMD_POSTCOPY_RAM_DISCARD:
+         ret = loadvm_postcopy_ram_handle_discard(mis, len);
+
+-- 
+2.51.0
+
 

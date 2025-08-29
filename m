@@ -4,157 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69F63CA0EFF
-	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 15:08:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F201CA0FFF
+	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 15:08:23 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1usNAF-0005GU-B8; Sat, 30 Aug 2025 11:07:05 -0400
+	id 1usN85-0001ev-FG; Sat, 30 Aug 2025 11:04:33 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
- id 1uruUQ-0002uk-L2; Fri, 29 Aug 2025 04:29:43 -0400
-Received: from mail-dm6nam12on20601.outbound.protection.outlook.com
- ([2a01:111:f403:2417::601]
- helo=NAM12-DM6-obe.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
- id 1uruUL-0006QC-9t; Fri, 29 Aug 2025 04:29:41 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=dGvx4LNDFdgMrDc8EAiCtZp4D6cE8C7LicB6sNow2+sNttYs+drQV7+SfKdWUanztEaHiAcyC6KEvoX+mC6E+cArcBYLtFcaPSDauZl+Dqe2f8msNgpUl1MoBg5DSVnsx2pUWF0CHkZtpD4x4FdLrWhOIpwab96dN2GFpU3s2Vkqds2HcUxmHpNu2YORyVVoAaNJe9wmseK/HKYDesbZz5h7/uGuz4fKi+IFRQZ+CdI/nFmKdJ/Uz43mx++6c4iCjsOxJcvYdpAdZlrNIaN758v1GhiT49Ed8eYOpb+7I1TGZTEBfyFWrwQp/TLBbE/aqym8JtrPkjy0RYWxg6ngLg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=VXTaYNhXa6PsWcyqfVyVATmSC6JTnkjfHpbmLc1oisY=;
- b=Ugq80laYatJrtcTS0YtJ3cSYpXL6usR6pGCY9rQ0qUhE9fooIqE8T/clGVZDXeZiHzAEVk3xfh98RUXD1A8jYO1BbAvJucWpy9vSaI5h2FKIFMx5y9wf2tYJ78d2tHFByJ/8XwodTOpLhXohTGJ7rynMeW6F1vh8IDXwt0X50V8Yi8WiXi9V0LXuGUd/yJnUXEn3i61hpTekFakfI0S5U1lnusiGfB+44Ucf3Mbb9VZYQIxjEJYzCVlM4eq5gaoBjztUuzgna2dl+1v9Dx5ks8IRkoi3H0c0HbpsiMOt4DR9kpfcdXjF6YUCuU0q4HQP3HNFajcYzbVLXmslgKy66g==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.117.161) smtp.rcpttodomain=nongnu.org smtp.mailfrom=nvidia.com;
- dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
- dkim=none (message not signed); arc=none (0)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=VXTaYNhXa6PsWcyqfVyVATmSC6JTnkjfHpbmLc1oisY=;
- b=fEoEXyZEkDDY2JD2nNVjvNm4y9ESWqZ8cTl2zG14cmWgMqC5uRyCct29hSJRQQa2K8Y7TzIVG14ZyXE6MdFjsguKMv2o7fofcKAdMhkIJ1CsxxWISzUPmzmgMgyeeBfyyfbyTUy2jcfe2bJVqpZ0Dvje6DEEMWL8E9XwG5U49m3i69ZvyDMiAG7rqvrxKBHFdEkHOUA7PjEFUdVl5+duy5XuWkbNclEwqLB6d+a9JfKKkO4kgOMSQTN8u3wROw3zyv/Ag2ONtB6GXrCD0gq9gavlKuZFNfHFJ7nSU+Yb3Infdsge+GwqQC5EOCsT5xOMo+M66W/AewzEbStzG2Nfxg==
-Received: from SJ0PR03CA0370.namprd03.prod.outlook.com (2603:10b6:a03:3a1::15)
- by LV8PR12MB9451.namprd12.prod.outlook.com (2603:10b6:408:206::19)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9052.20; Fri, 29 Aug
- 2025 08:29:26 +0000
-Received: from SJ1PEPF000026C6.namprd04.prod.outlook.com
- (2603:10b6:a03:3a1:cafe::87) by SJ0PR03CA0370.outlook.office365.com
- (2603:10b6:a03:3a1::15) with Microsoft SMTP Server (version=TLS1_3,
- cipher=TLS_AES_256_GCM_SHA384) id 15.20.9052.22 via Frontend Transport; Fri,
- 29 Aug 2025 08:29:25 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.161)
- smtp.mailfrom=nvidia.com;
- dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.117.161 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.117.161; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (216.228.117.161) by
- SJ1PEPF000026C6.mail.protection.outlook.com (10.167.244.103) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.9073.11 via Frontend Transport; Fri, 29 Aug 2025 08:29:25 +0000
-Received: from rnnvmail201.nvidia.com (10.129.68.8) by mail.nvidia.com
- (10.129.200.67) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14; Fri, 29 Aug
- 2025 01:29:09 -0700
-Received: from NV-2Y5XW94.nvidia.com (10.126.231.35) by rnnvmail201.nvidia.com
- (10.129.68.8) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14; Fri, 29 Aug
- 2025 01:29:03 -0700
-From: Shameer Kolothum <skolothumtho@nvidia.com>
-To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
-CC: <eric.auger@redhat.com>, <peter.maydell@linaro.org>, <jgg@nvidia.com>,
- <nicolinc@nvidia.com>, <ddutile@redhat.com>, <berrange@redhat.com>,
- <imammedo@redhat.com>, <nathanc@nvidia.com>, <mochs@nvidia.com>,
- <smostafa@google.com>, <mst@redhat.com>, <marcel.apfelbaum@gmail.com>,
- <wangzhou1@hisilicon.com>, <jiangkunkun@huawei.com>,
- <jonathan.cameron@huawei.com>, <zhangfei.gao@linaro.org>
-Subject: [PATCH v9 06/11] hw/pci: Introduce pci_setup_iommu_per_bus() for
- per-bus IOMMU ops retrieval
-Date: Fri, 29 Aug 2025 09:25:28 +0100
-Message-ID: <20250829082543.7680-7-skolothumtho@nvidia.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250829082543.7680-1-skolothumtho@nvidia.com>
-References: <20250829082543.7680-1-skolothumtho@nvidia.com>
+ (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
+ id 1urtT3-0004U2-Qv
+ for qemu-arm@nongnu.org; Fri, 29 Aug 2025 03:24:13 -0400
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
+ id 1urtT1-0000m7-BA
+ for qemu-arm@nongnu.org; Fri, 29 Aug 2025 03:24:13 -0400
+Received: by mail-wr1-x42c.google.com with SMTP id
+ ffacd0b85a97d-3cf48ec9fa4so325106f8f.0
+ for <qemu-arm@nongnu.org>; Fri, 29 Aug 2025 00:24:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1756452248; x=1757057048; darn=nongnu.org;
+ h=mime-version:message-id:in-reply-to:references:user-agent:subject
+ :cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+ bh=wXmjW04Q5nWo4fwSqD9DR6HEZfNngIptCj90NYOKuis=;
+ b=LFE6Ga2mgv9BCIFIBhQgJJGaspp5sNRbSk4um9QkURHUYQ9sW6xmYpb5LFUut7ZnyJ
+ 7V0moCDiZn2LLYqe9tudT4eZoUtKRuR8w/TQ2tSupi6sozV97MLlpzyHfqlXACzEL7Ym
+ 2gKuNKfr6SNQ4WfZ3HD6eJycWybLucawAc7gfNGZGTVZk0lkd3maLi6/q/NdG7rJEepU
+ 7BnoP7gQQrjigyt3OdgxKWZ8p2E9VJ4xlJ0PvTvNRxwXN1EbiosRRI16XaI6CqTbsE53
+ waDcc5VGiqNJSVEi+yDPx4sPTILmSrUpcIuap9Ne+T4k4jjjCg9Rc1ZrVZRYNF0sm5X4
+ 6eUQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1756452248; x=1757057048;
+ h=mime-version:message-id:in-reply-to:references:user-agent:subject
+ :cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=wXmjW04Q5nWo4fwSqD9DR6HEZfNngIptCj90NYOKuis=;
+ b=w/u3KVfJdtyFcncg4wB4iiq3WfamQE7CVGlIVSH93/Qz+ljz5ciFauDVI7AIIovwcq
+ 3nzQCpHACQioyzdPaDy9iTv+qfutGvtAk5yySjzR/G0IfxbM1vyHX29hE4igNCVUsPN/
+ 32H8rxxGXfGBqACpsNnuC/fu9RntFoq0u8YPujJZ/URYjAuB/R2JathI4RQy9hFcdyvQ
+ fgK/EL+mqpuBZlJotYaSmeVlTc+obQYd2azrRG/9FXO8NyescOTY1g4qSNDgUreKXa69
+ zUnbNwf6wINz8X8S1p6QBuIAA1Pda2IM4a+XJ+CTJyvaS3TEyyqUQOR2+2KwMjisLxtM
+ +njw==
+X-Gm-Message-State: AOJu0Yw6yGMZl1UjfoLluGCL97cfRzSyJ6y+B5ff46ls3bMAQvxDvf/h
+ iuZjbii2F+eIo4BDECoy0FQueSLa8TjKs53o4jWCoI7YU5+zhqg5YejJD7sH3AhoYeKk9AzSnZ2
+ idzuGDbg=
+X-Gm-Gg: ASbGncvr8ttSx3js3QJRGfDIVVpyDd1jvQZucMMhpyk+DKuY619/k2j8Esk9PZ9oGYw
+ GsZSPrqKkrWGwORtJxBWZqA1XcllSqWJ44ochQzE2gj2WxliZfvXzOt4VBqri1D4kpBKkM2JGOm
+ 7WmLUX0GSeziU44UWFpttaMhXuS/+n2PwY3Q9WUggqZYjUs6H42VaVmx9mscPI6e59DHfNTTra5
+ G8CKe8STOkp5N34t0gbzFBKAAg41i1W0FyeEj/KYZlay7+XACC3iRKLWReEER3EvlKzjPgSlIkt
+ GnG0uz5XyhQ5HbOtxIQv60q0h+JFWQmGfb84So1npVh+eW9mJB4NGoEyLnp32j8QIADsRl59Iem
+ 15kEeENnuPe5xg3D65ubpnTa8ji2n+8AG8BNSIbbvKqCT0Fe9BVfUqPgUDAgfVe4qNsAvC/qXSx
+ eHEgoLm70=
+X-Google-Smtp-Source: AGHT+IEY3hyWhHuePou6SKqfpe1MsXXsHYpdHIbdfJs5KQmk84fkiWpReZ7DbXtQhBdiHh8KcpDv3g==
+X-Received: by 2002:a05:6000:2081:b0:3b9:148b:e78 with SMTP id
+ ffacd0b85a97d-3c5dcdfc385mr22658154f8f.53.1756452247904; 
+ Fri, 29 Aug 2025 00:24:07 -0700 (PDT)
+Received: from meli-email.org (athedsl-4441256.home.otenet.gr.
+ [79.129.180.152]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-3cf274dde69sm2244238f8f.14.2025.08.29.00.24.07
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 29 Aug 2025 00:24:07 -0700 (PDT)
+Date: Fri, 29 Aug 2025 10:13:43 +0300
+From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+To: qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-arm@nongnu.org
+Subject: Re: [PATCH 14/61] target/arm: Replace cpreg_field_is_64bit with
+ cpreg_field_type
+User-Agent: meli/0.8.12
+References: <20250827010453.4059782-1-richard.henderson@linaro.org>
+ <20250827010453.4059782-19-richard.henderson@linaro.org>
+In-Reply-To: <20250827010453.4059782-19-richard.henderson@linaro.org>
+Message-ID: <t1qv86.8eeulsm1hy3p@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.126.231.35]
-X-ClientProxiedBy: rnnvmail202.nvidia.com (10.129.68.7) To
- rnnvmail201.nvidia.com (10.129.68.8)
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: SJ1PEPF000026C6:EE_|LV8PR12MB9451:EE_
-X-MS-Office365-Filtering-Correlation-Id: 28f7bc4f-6657-497e-f6ea-08dde6d629ef
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230040|82310400026|376014|1800799024|7416014|36860700013; 
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?RWorTVBBb3ptb3hrUVJJVml2aW15SnI4eU42T2NYKzVVdmFsdTZFS1o1MTBM?=
- =?utf-8?B?aHl3NVlDRlBTelhLcGpKWUdVQXhoQWt1VDFjd1ByeThIMzBpM0dONVZNSjJr?=
- =?utf-8?B?SGJ5NXZCelp1L0V4ZlhvdFZvVmREdllFdkpwYmFnZElBV3dvT1kzaFhkWVc2?=
- =?utf-8?B?WmJoSWgxZzZQemVISVRqZ3dFOW9wcmZ6OHdSZG0zMXJWVGJMbEhMUFRjTTQy?=
- =?utf-8?B?OGswbC9KVkNONk1PaWlMcFhxZ2VsSXZZNGRSMm5RdS9lR0V4STkzUm1vMlc2?=
- =?utf-8?B?TGxTTHJYdmNPanA5OERlR1VCU2NGY2M0aHN0cy9PUi9oWFFrRTNYcDlWTC9U?=
- =?utf-8?B?SVZuOEEvV2srT3B2MXlhRFprTUh6SkJ4UytHSmZUS0dYV3pqVlRsQmpyemNT?=
- =?utf-8?B?ejdEaEVHNDN1eE1tNjZWYTNsZnZOdFAzOVdBT1gySUw1MHNpdGFFVDBvQmEx?=
- =?utf-8?B?WEg2dWdETzh1dG8weENQUGRLcnNuVHJnQWErNXFvRms3N3FvdTBzQnN1STJz?=
- =?utf-8?B?WGtiU0RaWk5zUlFrWllES0M1OVJTVlpXZHYxb1lEdy93eDZQMFdQNXdWUnhu?=
- =?utf-8?B?U3A3Q1JJUU0xcU9MR0hxcUgrVnpTS2VaU2dRRTkvRlhISWlyNDcvWVhvWXVD?=
- =?utf-8?B?cXhyVnBjRjM1S2RKZkt2eE41MDQydFhFeHQvS2VPQ0hYOXJYdytmaEhFemNR?=
- =?utf-8?B?cjhsaFN6QjVOZ0VhYkc0aGY5c1EwbklaeGc4OVk3d0NJNDByMm9PdVFXcTdR?=
- =?utf-8?B?OWxSS3ZzOWdSeXM3Y3VNR0c4OHFxTXVUOU8zZGtYN2hQZjYxSUFtVVZSTVRo?=
- =?utf-8?B?b1BrTlF6QzZkQlhGUHZCKzN4N0VTSEI5MXNOREYvQXhuaWs5UCtDVk54RjZK?=
- =?utf-8?B?M3RyU1drQit2ZG1LR0xRNGNZTWtOM0Job3ZNOU9RdmswQy94cjM4djZiek5y?=
- =?utf-8?B?S1RodVRrbUs0ZW44R2FBMDBEQms3aW5sY2h3UlRMalpEd3pBdGxkSktOUDVn?=
- =?utf-8?B?MjY1VmhkUC8vRlpabW1abGxIVStIK3lyYXBBMm5ZQmhmSGxZOEs1SlVFVVNS?=
- =?utf-8?B?U3FtU0I2ZkxvTXpjU0FLU0lWeVF5SThrQWluUjVpRXhVQTRzUW55a1lJWFYy?=
- =?utf-8?B?dm5XQkUxdzV0eGREK3VoMVlVck5DQ05FM1ZzbGdBbVZMUG9qU0RUYWhQSS9N?=
- =?utf-8?B?eTlhMlJVVHZQbDk0eVBUbFlkR0tuR2FMQTFrTTlSd2FKb1ZQc1hwSy9iM2lL?=
- =?utf-8?B?a0F6TnByL0ovRUFldTZvM2VzTTJtQlhUWGRTNnN6UTJxV3lFVGNiL1hKMWlK?=
- =?utf-8?B?MGgzUG1wVWlTYzdGbThRdWtlRU9tZXBpUEpEeDVNUVJVMmx3ZjNreVJZbG93?=
- =?utf-8?B?L0lySW5zZFo3ZjJHaHc3Mk5keXBlL0I3czFOUWFjaDRXRkYzOG1JUEZPYTlJ?=
- =?utf-8?B?Q3JHWWxKUWwxQUwyZUswV1RCdVBPTDYrZlJwbHdHZ1hFRkRZTDc5WWR6WmhJ?=
- =?utf-8?B?L0kwd3drREhpdGN6eHRvb2dzM2wyR2s1aGJZSmkvSThJenl2VXZuNWVxUDAy?=
- =?utf-8?B?U1pJUkZCdURPa01mUXpLV2g4aXUxRHhjRVlzdE1EWUpJVEVwQ0hUZWV4WURl?=
- =?utf-8?B?VWZsdW40YnZSa2pHeGpsUGdEd0QreDA5SlU3b0tDQ1lIQkRJTkU3MWwvMVR2?=
- =?utf-8?B?cjZwL2pOaGI4K1VBQmZURGpsQWpLYkdDbHpNR09iWG56RkVmS1dvc1FQYmov?=
- =?utf-8?B?bGw3WllZN0JsdTlBM3ZzWmxkRGlUQ1pCanpodGt2bTJjNHA4NHVoemVFeTZT?=
- =?utf-8?B?VmJ0YUZITkJPblkwNlNna0ppKy92cU84cGM5NHlkblVnNEF4NDIvdUtyK1M2?=
- =?utf-8?B?MFQ3Y1VyQ0RzUzdxSmdiVHAwcnpNd2lNVVg0MXFQRGFVTDl0VXFHRXhlUXVq?=
- =?utf-8?B?QUpoYmEvc1FwUkUxNFNFdnNPQ0pkd21uOWcwWVRHN3E3aWt4aUxFclJkdmlB?=
- =?utf-8?B?cXcrakRzU1d4UmJqV3Bna0VZV2EwalZPbnFpMUZMQmZySExESXd2MVM2ZWR4?=
- =?utf-8?Q?tSce0i?=
-X-Forefront-Antispam-Report: CIP:216.228.117.161; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge2.nvidia.com; CAT:NONE;
- SFS:(13230040)(82310400026)(376014)(1800799024)(7416014)(36860700013); DIR:OUT;
- SFP:1101; 
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 29 Aug 2025 08:29:25.6146 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 28f7bc4f-6657-497e-f6ea-08dde6d629ef
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.161];
- Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: SJ1PEPF000026C6.namprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: LV8PR12MB9451
-Received-SPF: permerror client-ip=2a01:111:f403:2417::601;
- envelope-from=skolothumtho@nvidia.com;
- helo=NAM12-DM6-obe.outbound.protection.outlook.com
-X-Spam_score_int: -10
-X-Spam_score: -1.1
-X-Spam_bar: -
-X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FORGED_SPF_HELO=1, SPF_HELO_PASS=-0.001,
- SPF_NONE=0.001 autolearn=no autolearn_force=no
+Content-Type: text/plain; charset="utf-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
+ envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wr1-x42c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Fri, 29 Aug 2025 09:59:38 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -169,134 +102,159 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Currently, pci_setup_iommu() registers IOMMU ops for a given PCIBus.
-However, when retrieving IOMMU ops for a device using
-pci_device_get_iommu_bus_devfn(), the function checks the parent_dev
-and fetches IOMMU ops from the parent device, even if the current
-bus does not have any associated IOMMU ops.
+On Wed, 27 Aug 2025 04:04, Richard Henderson <richard.henderson@linaro.org> wrote:
+>Prepare for 128-bit fields by using a better query api.
+>
+>Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+>---
+> target/arm/cpregs.h  | 10 ++++++----
+> target/arm/gdbstub.c |  7 +++++--
+> target/arm/helper.c  | 18 +++++++++++++-----
+> 3 files changed, 24 insertions(+), 11 deletions(-)
+>
+>diff --git a/target/arm/cpregs.h b/target/arm/cpregs.h
+>index 812fb1340a..b6c8eff0dd 100644
+>--- a/target/arm/cpregs.h
+>+++ b/target/arm/cpregs.h
+>@@ -22,6 +22,7 @@
+> #define TARGET_ARM_CPREGS_H
+> 
+> #include "hw/registerfields.h"
+>+#include "exec/memop.h"
+> #include "target/arm/kvm-consts.h"
+> #include "cpu.h"
+> 
+>@@ -1053,12 +1054,13 @@ void raw_write(CPUARMState *env, const ARMCPRegInfo *ri, uint64_t value);
+> void arm_cp_reset_ignore(CPUARMState *env, const ARMCPRegInfo *ri);
+> 
+> /*
+>- * Return true if this reginfo struct's field in the cpu state struct
+>- * is 64 bits wide.
+>+ * Return MO_32 if the field in CPUARMState is uint32_t or
+>+ * MO_64 if the field in CPUARMState is uint64_t.
+>  */
+>-static inline bool cpreg_field_is_64bit(const ARMCPRegInfo *ri)
+>+static inline MemOp cpreg_field_type(const ARMCPRegInfo *ri)
 
-This behavior works for now because QEMU's IOMMU implementations are
-globally scoped, and host bridges rely on the bypass_iommu property
-to skip IOMMU translation when needed.
+Using MemOp is slightly confusing though I understand where you're 
+coming from. Would introducing a BitWidth enum be a good idea?
 
-However, this model will break with the soon to be introduced
-arm-smmuv3 device, which allows users to associate the IOMMU
-with a specific PCIe root complex (e.g., the default pcie.0
-or a pxb-pcie root complex).
 
-For example, consider the following setup with multiple root
-complexes:
-
--device arm-smmuv3,primary-bus=pcie.0,id=smmuv3.0 \
-...
--device pxb-pcie,id=pcie.1,bus_nr=8,bus=pcie.0 \
--device pcie-root-port,id=pcie.port1,bus=pcie.1 \
--device virtio-net-pci,bus=pcie.port1
-
-In Qemu, pxb-pcie acts as a special root complex whose parent is
-effectively the default root complex(pcie.0). Hence, though pcie.1
-has no associated SMMUv3 as per above, pci_device_get_iommu_bus_devfn()
-will incorrectly return the IOMMU ops from pcie.0 due to the fallback
-via parent_dev.
-
-To fix this, introduce a new helper pci_setup_iommu_per_bus() that
-explicitly sets the new iommu_per_bus field in the PCIBus structure.
-This helper will be used in a subsequent patch that adds support for
-the new arm-smmuv3 device.
-
-Update pci_device_get_iommu_bus_devfn() to use iommu_per_bus when
-determining the correct IOMMU ops, ensuring accurate behavior for
-per-bus IOMMUs.
-
-Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
-Tested-by: Nathan Chen <nathanc@nvidia.com>
-Tested-by: Eric Auger <eric.auger@redhat.com>
-Reviewed-by: Nicolin Chen <nicolinc@nvidia.com>
-Tested-by: Nicolin Chen <nicolinc@nvidia.com>
-Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
----
- hw/pci/pci.c             | 31 +++++++++++++++++++++++++++++++
- include/hw/pci/pci.h     |  2 ++
- include/hw/pci/pci_bus.h |  1 +
- 3 files changed, 34 insertions(+)
-
-diff --git a/hw/pci/pci.c b/hw/pci/pci.c
-index c70b5ceeba..0012cc12e7 100644
---- a/hw/pci/pci.c
-+++ b/hw/pci/pci.c
-@@ -2909,6 +2909,19 @@ static void pci_device_get_iommu_bus_devfn(PCIDevice *dev,
-             }
-         }
+diff --git a/include/exec/memop.h b/include/exec/memop.h
+index cf7da3362e..9104c4f162 100644
+--- a/include/exec/memop.h
++++ b/include/exec/memop.h
+@@ -14,15 +14,26 @@
  
-+        /*
-+         * When multiple PCI Express Root Buses are defined using pxb-pcie,
-+         * the IOMMU configuration may be specific to each root bus. However,
-+         * pxb-pcie acts as a special root complex whose parent is effectively
-+         * the default root complex(pcie.0). Ensure that we retrieve the
-+         * correct IOMMU ops(if any) in such cases.
-+         */
-+        if (pci_bus_is_express(iommu_bus) && pci_bus_is_root(iommu_bus)) {
-+            if (parent_bus->iommu_per_bus) {
-+                break;
-+            }
-+        }
-+
-         iommu_bus = parent_bus;
-     }
+ #include "qemu/host-utils.h"
  
-@@ -3169,6 +3182,24 @@ void pci_setup_iommu(PCIBus *bus, const PCIIOMMUOps *ops, void *opaque)
-     bus->iommu_opaque = opaque;
- }
- 
-+/*
-+ * Similar to pci_setup_iommu(), but sets iommu_per_bus to true,
-+ * indicating that the IOMMU is specific to this bus. This is used by
-+ * IOMMU implementations that are tied to a specific PCIe root complex.
-+ *
-+ * In QEMU, pxb-pcie behaves as a special root complex whose parent is
-+ * effectively the default root complex (pcie.0). The iommu_per_bus
-+ * is checked in pci_device_get_iommu_bus_devfn() to ensure the correct
-+ * IOMMU ops are returned, avoiding the use of the parent’s IOMMU when
-+ * it's not appropriate.
-+ */
-+void pci_setup_iommu_per_bus(PCIBus *bus, const PCIIOMMUOps *ops,
-+                             void *opaque)
-+{
-+    pci_setup_iommu(bus, ops, opaque);
-+    bus->iommu_per_bus = true;
++typedef enum BitWidth {
++    BW_8     = 0,
++    BW_16    = 1,
++    BW_32    = 2,
++    BW_64    = 3,
++    BW_128   = 4,
++    BW_256   = 5,
++    BW_512   = 6,
++    BW_1024  = 7,
 +}
 +
- static void pci_dev_get_w64(PCIBus *b, PCIDevice *dev, void *opaque)
- {
-     Range *range = opaque;
-diff --git a/include/hw/pci/pci.h b/include/hw/pci/pci.h
-index 6b7d3ac8a3..6bccb25ac2 100644
---- a/include/hw/pci/pci.h
-+++ b/include/hw/pci/pci.h
-@@ -773,6 +773,8 @@ int pci_iommu_unregister_iotlb_notifier(PCIDevice *dev, uint32_t pasid,
-  */
- void pci_setup_iommu(PCIBus *bus, const PCIIOMMUOps *ops, void *opaque);
- 
-+void pci_setup_iommu_per_bus(PCIBus *bus, const PCIIOMMUOps *ops, void *opaque);
-+
- pcibus_t pci_bar_address(PCIDevice *d,
-                          int reg, uint8_t type, pcibus_t size);
- 
-diff --git a/include/hw/pci/pci_bus.h b/include/hw/pci/pci_bus.h
-index 2261312546..c738446788 100644
---- a/include/hw/pci/pci_bus.h
-+++ b/include/hw/pci/pci_bus.h
-@@ -35,6 +35,7 @@ struct PCIBus {
-     enum PCIBusFlags flags;
-     const PCIIOMMUOps *iommu_ops;
-     void *iommu_opaque;
-+    bool iommu_per_bus;
-     uint8_t devfn_min;
-     uint32_t slot_reserved_mask;
-     pci_set_irq_fn set_irq;
--- 
-2.43.0
+ typedef enum MemOp {
+-    MO_8     = 0,
+-    MO_16    = 1,
+-    MO_32    = 2,
+-    MO_64    = 3,
+-    MO_128   = 4,
+-    MO_256   = 5,
+-    MO_512   = 6,
+-    MO_1024  = 7,
++    MO_8     = BW_8,
++    MO_16    = BW_16,
++    MO_32    = BW_32,
++    MO_64    = BW_64,
++    MO_128   = BW_128,
++    MO_256   = BW_256,
++    MO_512   = BW_512,
++    MO_1024  = BW_1024,
+     MO_SIZE  = 0x07,   /* Mask for the above.  */
 
+> {
+>-    return (ri->state == ARM_CP_STATE_AA64) || (ri->type & ARM_CP_64BIT);
+>+    return (ri->state == ARM_CP_STATE_AA64 || (ri->type & ARM_CP_64BIT)
+>+            ? MO_64 : MO_32);
+> }
+> 
+> static inline bool cp_access_ok(int current_el,
+>diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
+>index ce4497ad7c..e2fc389170 100644
+>--- a/target/arm/gdbstub.c
+>+++ b/target/arm/gdbstub.c
+>@@ -247,10 +247,13 @@ static int arm_gdb_get_sysreg(CPUState *cs, GByteArray *buf, int reg)
+>     key = cpu->dyn_sysreg_feature.data.cpregs.keys[reg];
+>     ri = get_arm_cp_reginfo(cpu->cp_regs, key);
+>     if (ri) {
+>-        if (cpreg_field_is_64bit(ri)) {
+>+        switch (cpreg_field_type(ri)) {
+>+        case MO_64:
+>             return gdb_get_reg64(buf, (uint64_t)read_raw_cp_reg(env, ri));
+>-        } else {
+>+        case MO_32:
+>             return gdb_get_reg32(buf, (uint32_t)read_raw_cp_reg(env, ri));
+>+        default:
+>+            g_assert_not_reached();
+>         }
+>     }
+>     return 0;
+>diff --git a/target/arm/helper.c b/target/arm/helper.c
+>index 3a9d8f0ddc..c4103d958a 100644
+>--- a/target/arm/helper.c
+>+++ b/target/arm/helper.c
+>@@ -63,20 +63,28 @@ int compare_u64(const void *a, const void *b)
+> uint64_t raw_read(CPUARMState *env, const ARMCPRegInfo *ri)
+> {
+>     assert(ri->fieldoffset);
+>-    if (cpreg_field_is_64bit(ri)) {
+>+    switch (cpreg_field_type(ri)) {
+>+    case MO_64:
+>         return CPREG_FIELD64(env, ri);
+>-    } else {
+>+    case MO_32:
+>         return CPREG_FIELD32(env, ri);
+>+    default:
+>+        g_assert_not_reached();
+>     }
+> }
+> 
+> void raw_write(CPUARMState *env, const ARMCPRegInfo *ri, uint64_t value)
+> {
+>     assert(ri->fieldoffset);
+>-    if (cpreg_field_is_64bit(ri)) {
+>+    switch (cpreg_field_type(ri)) {
+>+    case MO_64:
+>         CPREG_FIELD64(env, ri) = value;
+>-    } else {
+>+        break;
+>+    case MO_32:
+>         CPREG_FIELD32(env, ri) = value;
+>+        break;
+>+    default:
+>+        g_assert_not_reached();
+>     }
+> }
+> 
+>@@ -2748,7 +2756,7 @@ static void vmsa_ttbr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+>                             uint64_t value)
+> {
+>     /* If the ASID changes (with a 64-bit write), we must flush the TLB.  */
+>-    if (cpreg_field_is_64bit(ri) &&
+>+    if (cpreg_field_type(ri) == MO_64 &&
+>         extract64(raw_read(env, ri) ^ value, 48, 16) != 0) {
+>         ARMCPU *cpu = env_archcpu(env);
+>         tlb_flush(CPU(cpu));
+>-- 
+>2.43.0
+>
+>
+
+Reviewed-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 

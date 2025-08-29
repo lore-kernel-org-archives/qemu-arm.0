@@ -4,87 +4,131 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B96E1CA0EFF
-	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 16:01:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF225CA0EFF
+	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 16:05:52 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1usNxP-00036Y-NR; Sat, 30 Aug 2025 11:57:35 -0400
+	id 1usNe0-0002g4-QY; Sat, 30 Aug 2025 11:37:32 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1usEMt-0006Ez-Bt
- for qemu-arm@nongnu.org; Sat, 30 Aug 2025 01:43:15 -0400
-Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1usEMr-0004Lb-ET
- for qemu-arm@nongnu.org; Sat, 30 Aug 2025 01:43:15 -0400
-Received: by mail-pj1-x102c.google.com with SMTP id
- 98e67ed59e1d1-323267872f3so2459917a91.1
- for <qemu-arm@nongnu.org>; Fri, 29 Aug 2025 22:43:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756532592; x=1757137392; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=tND04gHlxT/Saa6xkuaW3esBeW0MvUTgZUHRhTgh8oU=;
- b=HFueGpRPHwx2EPCCfjphNbWiA3DqdnN+MEjUW5YLTKNVzRnoiFKpb8mcUVOx7kBFrR
- F3wKVVWfMXr3vI5VMvZVoH3Mv+7no8m4Mc6fN5DHyew9rJL/O/h3blugymokJaWq0icN
- 0sq8ZimF/3YW28oLfittT8dnhQWoedYPExUVSbCEHgmSfGgFkhABBzQjXo/0KLUmgkLO
- K5Ez723kRUDAPzmJO+/rBMT6w1jn9u3kTQuyEinbD/f2aA2fqXdR2V/8tyDricYzcw6n
- Wt9aj7edeA8YsR6wdEOChNuiUG81hF/QZfifIJKoivMnOxJ5OvCXsMR66tF/mmn37v/9
- zZCg==
+ (Exim 4.90_1) (envelope-from <armenon@redhat.com>)
+ id 1us5Jp-0004y9-K3
+ for qemu-arm@nongnu.org; Fri, 29 Aug 2025 16:03:29 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armenon@redhat.com>)
+ id 1us5Jm-0004b1-QR
+ for qemu-arm@nongnu.org; Fri, 29 Aug 2025 16:03:29 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1756497806;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=sFESQmOnhzZW2+hXaXl8rxhwnVtiVIyzJTwYSrM4JVM=;
+ b=U1IWEeVkMpgdjMAlVUKja4pxudEHg6Xsonzy0rU0P/QUgkvOGevKBBStySfkx8rfbNPgwo
+ L67N9MnaLn9NPpPSa9YB3p2Q05L8h20aFNlRktxZHZQO8lU4kc9RXIAtS2PQBXcOyiuqtk
+ 7AyCHRalinhWi1GCYbll2pfRTqR04j0=
+Received: from mail-pj1-f71.google.com (mail-pj1-f71.google.com
+ [209.85.216.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-470-JWn9qlzuM1q9C692d4uZpQ-1; Fri, 29 Aug 2025 16:03:23 -0400
+X-MC-Unique: JWn9qlzuM1q9C692d4uZpQ-1
+X-Mimecast-MFC-AGG-ID: JWn9qlzuM1q9C692d4uZpQ_1756497803
+Received: by mail-pj1-f71.google.com with SMTP id
+ 98e67ed59e1d1-32769224506so2474375a91.2
+ for <qemu-arm@nongnu.org>; Fri, 29 Aug 2025 13:03:23 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756532592; x=1757137392;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ d=1e100.net; s=20230601; t=1756497802; x=1757102602;
+ h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+ :mime-version:subject:date:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=tND04gHlxT/Saa6xkuaW3esBeW0MvUTgZUHRhTgh8oU=;
- b=I9IMvxz9bh3ivVgOcdhmfvbEdUDDNhNapZg1/3EZjWO5y2fueI8Pds0gOgJSkOzXTh
- 8EAqcL8JYOHfNOAcr0OmzaNXkrkPtD767UAhfxwHohY2c1JF1d79I11nzh1bh5lNxMd1
- sJcnDcQehAHAeuoz/9Vcy6AXce4dRdWSNTPI4fZE5HPkGheZ2nB7aGE0dav0pa7oHqi/
- plDKUfl2uNRFRUfudEeysMxeF0H7XvL9D7nWySoM6lKjDVwn6BAVglSBYnEXWPbI34l4
- TvSmFrYiiUDfo7d2nBydQ/3+esiJKIY5HPcKR4yVaimcmOLx2Se7jVXEjDxH/8QbNHdg
- P/mQ==
-X-Gm-Message-State: AOJu0YwzqD+Zbp94gymQBXhE8ZuG7z/Bb71Od5BglV7acUE1Ew/KQnLQ
- VS1qo6PF3qL1vScNLEPeQMybZ6zlHb/0QQufyt5hTj3ae9xW9njLDte8DxMnOhfc1CE=
-X-Gm-Gg: ASbGncsemDL5bw+8shBZrefRjHsGd28/hgBuyMhoS1+YD1vrZZB8t/5lIkUIaQXrYkA
- C9MMwTk6Ho0MPdfapMW47s3JE4nEiyBOmiR3BylPzil6bbCJVkLN5NJS3onMdaEtK9IZENP/h2M
- QNhL8qE2FFTkAbWnugSwZoosUeHqRFlTKYJMLtVe43GZVPOYJyut6ZRnwGgdbcdenFMyVNIwSmg
- FTuTzBvXMNhmwfC4aRUVCkj7BEvSWx2x4HyXEeJv6P/PKaIrb/qBCwLnYD1PsElRUEmL24XMWjg
- 8oi12m+Z/2UJd8rr3j4t4IASBaTPpRBSo3DGe6EC4x5Gu0ZuLBigS4TRydcnFOYZqJqL9KB+ut3
- V4vscxpghFkB3e0Qi56neRKnwPqW1e9fHA2E2NcczbWBJPfmYHR9Yu+TDCbqozU9YgYx5iBw=
-X-Google-Smtp-Source: AGHT+IEmER0XiOIqOYx8NWXBqu0JvBnoNml+sLqpR1FnwB9udbkInmg1YR/0KYbiDqahpSpu/tWfnw==
-X-Received: by 2002:a17:90b:184d:b0:327:e2aa:9b34 with SMTP id
- 98e67ed59e1d1-32815437407mr1307836a91.13.1756532591822; 
- Fri, 29 Aug 2025 22:43:11 -0700 (PDT)
-Received: from stoup.. (122-150-204-48.dyn.ip.vocus.au. [122.150.204.48])
+ bh=sFESQmOnhzZW2+hXaXl8rxhwnVtiVIyzJTwYSrM4JVM=;
+ b=pcinIJhlYnVkRhRbFtid+lr0/gUlIy0W89Jw3jds/Lat/uV3cq+59j+gQuECKnc1N6
+ IlLaNCnd4hTI03WPNGOeWO0tDgrlFpOBvsMJDwiq7vAiSQbZOL8c3gyCWVooczw3HHSW
+ AjDJVbirl9YcFfgPhvqeDJT0kWtcjpejAzcAilQXYWImhkH6xBNZaETe18hSXLeBSNTm
+ ajkBAGUvUhT74PEIpnnhSc50rLw3mvwW+3sInRKX6QJsrkBdsCgQLMcl5x545oxOTypv
+ 1Y20YyaoFOz2hdZur9t9zikFa+viC2H68K6xQMHm+0LxfA1sJhBoRN/FlRnBu8rC6ZfX
+ AnJA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCW+9Lpv91hC/b5aMawOw9JOSRxOSrcgOu1S8qu9JVwGdemUrvZb60LUy63bXS0Tpk5pPPeisxY+zg==@nongnu.org
+X-Gm-Message-State: AOJu0YynxALw5gtuZM2+aI2GivKESRS+wKbs7OPpx0fMYNjlRzC4PN0/
+ stRmMTKELkpfRbeKxNEOeDYvDGSVd0/r7qtmdkF1eXERQEpTmagyzm6I71C4NV31Z3bLyWEKedl
+ GdamrRZ2iGjNw0w/RfuU8wK2LIiZ6PxGxQxkKhqMjQ/ha5btp0cMOqg==
+X-Gm-Gg: ASbGncvVwWXzSFUqOd0QuGBJ6w6ATzM8qIwZoftOIHI93joKwZ1wf6VhoMWWE2Zd7GX
+ 9dsMqnvZmFh1zn4wyMG0wYcpEh8PJhV7J8zrYVhc+0gso/UVcG/+LGNkU1QELLYpOV1fEROK6Lx
+ aOZBqrrLatdcJ2IpBmgQHGlSpj3LS4XIRBKnzLf+AhPmxEANhqOa3t6jLaymLQeRDJHDfFW0uF7
+ Fey9405vibF1xLw5Uo67oopEmGS3hJoLhm5z0XVfThxlXOVTTyfTNpwnSSMBDV/c/2caXDwSoUY
+ +scALcH62RSVcqarEyWRcN75dtBdKlD59HuUaK3a8bQ5hc4VpfgrdA==
+X-Received: by 2002:a17:90b:5623:b0:327:531b:b85c with SMTP id
+ 98e67ed59e1d1-327531bbae0mr20325775a91.35.1756497802081; 
+ Fri, 29 Aug 2025 13:03:22 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IG8A8uS0uqOelXhs9DBp6fb5ZkfvkmxeLH2gvetngK75nnlCPkyySJrntUu8N1qe1W2sPzaNQ==
+X-Received: by 2002:a17:90b:5623:b0:327:531b:b85c with SMTP id
+ 98e67ed59e1d1-327531bbae0mr20325744a91.35.1756497801696; 
+ Fri, 29 Aug 2025 13:03:21 -0700 (PDT)
+Received: from armenon-kvm.bengluru.csb ([49.47.195.108])
  by smtp.gmail.com with ESMTPSA id
- 41be03b00d2f7-b4d96829a66sm2435905a12.6.2025.08.29.22.43.09
+ 98e67ed59e1d1-327d8f66f16sm3570543a91.0.2025.08.29.13.03.09
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 29 Aug 2025 22:43:11 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v4 35/84] target/arm: Convert regime_el from switch to table
-Date: Sat, 30 Aug 2025 15:40:39 +1000
-Message-ID: <20250830054128.448363-36-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250830054128.448363-1-richard.henderson@linaro.org>
-References: <20250830054128.448363-1-richard.henderson@linaro.org>
+ Fri, 29 Aug 2025 13:03:21 -0700 (PDT)
+From: Arun Menon <armenon@redhat.com>
+Date: Sat, 30 Aug 2025 01:31:44 +0530
+Subject: [PATCH v13 04/27] migration: push Error **errp into vmstate_load()
 MIME-Version: 1.0
+Message-Id: <20250830-propagate_tpm_error-v13-4-a4e777b7eb2c@redhat.com>
+References: <20250830-propagate_tpm_error-v13-0-a4e777b7eb2c@redhat.com>
+In-Reply-To: <20250830-propagate_tpm_error-v13-0-a4e777b7eb2c@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Peter Xu <peterx@redhat.com>, Fabiano Rosas <farosas@suse.de>, 
+ =?utf-8?q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>, 
+ Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>, 
+ Dmitry Osipenko <dmitry.osipenko@collabora.com>, 
+ "Michael S. Tsirkin" <mst@redhat.com>, 
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
+ Cornelia Huck <cohuck@redhat.com>, Halil Pasic <pasic@linux.ibm.com>, 
+ Eric Farman <farman@linux.ibm.com>, Thomas Huth <thuth@redhat.com>, 
+ Christian Borntraeger <borntraeger@linux.ibm.com>, 
+ Matthew Rosato <mjrosato@linux.ibm.com>, 
+ Richard Henderson <richard.henderson@linaro.org>, 
+ David Hildenbrand <david@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>, 
+ Nicholas Piggin <npiggin@gmail.com>, 
+ Harsh Prateek Bora <harshpb@linux.ibm.com>, 
+ Paolo Bonzini <pbonzini@redhat.com>, Fam Zheng <fam@euphon.net>, 
+ Alex Williamson <alex.williamson@redhat.com>, 
+ =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>, 
+ Steve Sistare <steven.sistare@oracle.com>, 
+ =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>, 
+ qemu-s390x@nongnu.org, qemu-ppc@nongnu.org, 
+ Hailiang Zhang <zhanghailiang@xfusion.com>, 
+ Stefan Berger <stefanb@linux.vnet.ibm.com>, 
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
+ Arun Menon <armenon@redhat.com>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3264; i=armenon@redhat.com;
+ h=from:subject:message-id; bh=XNWOL0PRpe00C/2zRFfhJytxVRezN65+i4XThQwPhbg=;
+ b=owGbwMvMwCWWVaVqcZPfqI/xtFoSQ8Ymdp8J1vnT36vJ8F/ZU2R5qqSq2uNau8f1GUvTFdVSr
+ ntwFBR0lLIwiHExyIopsjR8DZBtCiiMiLR9eR1mDisTyBAGLk4BmMh9M4b/sVea6pJ+LmpLftjj
+ pBQ5KdatfYePs4y4Xyz/Ol+fS9a+DP8LWoufT+STe/mxrUucc0pQXdW2ou6v/8WTRb6WhUfYS7I
+ CAA==
+X-Developer-Key: i=armenon@redhat.com; a=openpgp;
+ fpr=80F5501D82507158593DE9D76A7A2538D90F328E
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: IGo96ovWZJGMBjITVsOnqDU_dvPuriNwz88of7G8ivg_1756497803
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102c;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102c.google.com
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=armenon@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -100,155 +144,96 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/internals.h       | 35 ----------------------------
- target/arm/mmuidx-internal.h | 13 +++++++++++
- target/arm/mmuidx.c          | 44 +++++++++++++++++++++---------------
- 3 files changed, 39 insertions(+), 53 deletions(-)
+This is an incremental step in converting vmstate loading
+code to report error via Error objects instead of directly
+printing it to console/monitor.
+It is ensured that vmstate_load() must report an error
+in errp, in case of failure.
 
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index c3bce6c09b..13fc5a2ca0 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -1073,41 +1073,6 @@ static inline bool regime_is_stage2(ARMMMUIdx mmu_idx)
-     return mmu_idx == ARMMMUIdx_Stage2 || mmu_idx == ARMMMUIdx_Stage2_S;
+The errors are temporarily reported using error_report_err().
+This is removed in the subsequent patches in this series
+when we are actually able to propagate the error to the calling
+function.
+
+Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Reviewed-by: Fabiano Rosas <farosas@suse.de>
+Signed-off-by: Arun Menon <armenon@redhat.com>
+---
+ migration/savevm.c | 22 +++++++++++++++-------
+ 1 file changed, 15 insertions(+), 7 deletions(-)
+
+diff --git a/migration/savevm.c b/migration/savevm.c
+index 0c445a957fc99f826e6753ed3795bcdd51f1e3f5..40dae406db22dc9ddbff2f5ada92a32626b58e3b 100644
+--- a/migration/savevm.c
++++ b/migration/savevm.c
+@@ -963,14 +963,20 @@ void vmstate_unregister(VMStateIf *obj, const VMStateDescription *vmsd,
+     }
  }
  
--/* Return the exception level which controls this address translation regime */
--static inline uint32_t regime_el(ARMMMUIdx mmu_idx)
--{
--    switch (mmu_idx) {
--    case ARMMMUIdx_E20_0:
--    case ARMMMUIdx_E20_2:
--    case ARMMMUIdx_E20_2_PAN:
--    case ARMMMUIdx_Stage2:
--    case ARMMMUIdx_Stage2_S:
--    case ARMMMUIdx_E2:
--        return 2;
--    case ARMMMUIdx_E3:
--    case ARMMMUIdx_E30_0:
--    case ARMMMUIdx_E30_3_PAN:
--        return 3;
--    case ARMMMUIdx_E10_0:
--    case ARMMMUIdx_Stage1_E0:
--    case ARMMMUIdx_Stage1_E1:
--    case ARMMMUIdx_Stage1_E1_PAN:
--    case ARMMMUIdx_E10_1:
--    case ARMMMUIdx_E10_1_PAN:
--    case ARMMMUIdx_MPrivNegPri:
--    case ARMMMUIdx_MUserNegPri:
--    case ARMMMUIdx_MPriv:
--    case ARMMMUIdx_MUser:
--    case ARMMMUIdx_MSPrivNegPri:
--    case ARMMMUIdx_MSUserNegPri:
--    case ARMMMUIdx_MSPriv:
--    case ARMMMUIdx_MSUser:
--        return 1;
--    default:
--        g_assert_not_reached();
--    }
--}
--
- static inline bool regime_is_user(CPUARMState *env, ARMMMUIdx mmu_idx)
+-static int vmstate_load(QEMUFile *f, SaveStateEntry *se)
++static int vmstate_load(QEMUFile *f, SaveStateEntry *se, Error **errp)
  {
-     switch (mmu_idx) {
-diff --git a/target/arm/mmuidx-internal.h b/target/arm/mmuidx-internal.h
-index 29bba4ecb5..d8d64a14d6 100644
---- a/target/arm/mmuidx-internal.h
-+++ b/target/arm/mmuidx-internal.h
-@@ -13,6 +13,8 @@
- 
- FIELD(MMUIDXINFO, EL, 0, 2)
- FIELD(MMUIDXINFO, ELVALID, 2, 1)
-+FIELD(MMUIDXINFO, REL, 3, 2)
-+FIELD(MMUIDXINFO, RELVALID, 5, 1)
- 
- extern const uint32_t arm_mmuidx_table[ARM_MMU_IDX_M + 8];
- 
-@@ -26,4 +28,15 @@ static inline int arm_mmu_idx_to_el(ARMMMUIdx idx)
-     return FIELD_EX32(arm_mmuidx_table[idx], MMUIDXINFO, EL);
++    int ret;
+     trace_vmstate_load(se->idstr, se->vmsd ? se->vmsd->name : "(old)");
+     if (!se->vmsd) {         /* Old style */
+-        return se->ops->load_state(f, se->opaque, se->load_version_id);
++        ret = se->ops->load_state(f, se->opaque, se->load_version_id);
++        if (ret < 0) {
++            error_setg(errp, "Failed to load vmstate version_id: %d, ret: %d",
++                       se->load_version_id, ret);
++        }
++        return ret;
+     }
+     return vmstate_load_state(f, se->vmsd, se->opaque, se->load_version_id,
+-                              &error_fatal);
++                              errp);
  }
  
-+/*
-+ * Return the exception level for the address translation regime
-+ * associated with this mmu index.
-+ */
-+static inline uint32_t regime_el(ARMMMUIdx idx)
-+{
-+    tcg_debug_assert(arm_mmuidx_is_valid(idx));
-+    tcg_debug_assert(FIELD_EX32(arm_mmuidx_table[idx], MMUIDXINFO, RELVALID));
-+    return FIELD_EX32(arm_mmuidx_table[idx], MMUIDXINFO, REL);
-+}
-+
- #endif /* TARGET_ARM_MMUIDX_INTERNAL_H */
-diff --git a/target/arm/mmuidx.c b/target/arm/mmuidx.c
-index 309b1d68df..6dfefa56c2 100644
---- a/target/arm/mmuidx.c
-+++ b/target/arm/mmuidx.c
-@@ -8,34 +8,42 @@
+ static void vmstate_save_old_style(QEMUFile *f, SaveStateEntry *se,
+@@ -2692,6 +2698,7 @@ qemu_loadvm_section_start_full(QEMUFile *f, uint8_t type)
+     SaveStateEntry *se;
+     char idstr[256];
+     int ret;
++    Error *local_err = NULL;
  
+     /* Read section start */
+     section_id = qemu_get_be32(f);
+@@ -2741,10 +2748,11 @@ qemu_loadvm_section_start_full(QEMUFile *f, uint8_t type)
+         start_ts = qemu_clock_get_us(QEMU_CLOCK_REALTIME);
+     }
  
- #define EL(X)  ((X << R_MMUIDXINFO_EL_SHIFT) | R_MMUIDXINFO_ELVALID_MASK)
-+#define REL(X) ((X << R_MMUIDXINFO_REL_SHIFT) | R_MMUIDXINFO_RELVALID_MASK)
+-    ret = vmstate_load(f, se);
++    ret = vmstate_load(f, se, &local_err);
+     if (ret < 0) {
+         error_report("error while loading state for instance 0x%"PRIx32" of"
+                      " device '%s'", instance_id, idstr);
++        error_report_err(local_err);
+         return ret;
+     }
  
- const uint32_t arm_mmuidx_table[ARM_MMU_IDX_M + 8] = {
-     /*
-      * A-profile.
-      */
--    [ARMMMUIdx_E10_0]           = EL(0),
--    [ARMMMUIdx_E10_1]           = EL(1),
--    [ARMMMUIdx_E10_1_PAN]       = EL(1),
-+    [ARMMMUIdx_E10_0]           = EL(0) | REL(1),
-+    [ARMMMUIdx_E10_1]           = EL(1) | REL(1),
-+    [ARMMMUIdx_E10_1_PAN]       = EL(1) | REL(1),
+@@ -2769,6 +2777,7 @@ qemu_loadvm_section_part_end(QEMUFile *f, uint8_t type)
+     uint32_t section_id;
+     SaveStateEntry *se;
+     int ret;
++    Error *local_err = NULL;
  
--    [ARMMMUIdx_E20_0]           = EL(0),
--    [ARMMMUIdx_E20_2]           = EL(2),
--    [ARMMMUIdx_E20_2_PAN]       = EL(2),
-+    [ARMMMUIdx_E20_0]           = EL(0) | REL(2),
-+    [ARMMMUIdx_E20_2]           = EL(2) | REL(2),
-+    [ARMMMUIdx_E20_2_PAN]       = EL(2) | REL(2),
+     section_id = qemu_get_be32(f);
  
--    [ARMMMUIdx_E2]              = EL(2),
-+    [ARMMMUIdx_E2]              = EL(2) | REL(2),
+@@ -2794,10 +2803,9 @@ qemu_loadvm_section_part_end(QEMUFile *f, uint8_t type)
+         start_ts = qemu_clock_get_us(QEMU_CLOCK_REALTIME);
+     }
  
--    [ARMMMUIdx_E3]              = EL(3),
--    [ARMMMUIdx_E30_0]           = EL(0),
--    [ARMMMUIdx_E30_3_PAN]       = EL(3),
-+    [ARMMMUIdx_E3]              = EL(3) | REL(3),
-+    [ARMMMUIdx_E30_0]           = EL(0) | REL(3),
-+    [ARMMMUIdx_E30_3_PAN]       = EL(3) | REL(3),
-+
-+    [ARMMMUIdx_Stage2_S]        = REL(2),
-+    [ARMMMUIdx_Stage2]          = REL(2),
-+
-+    [ARMMMUIdx_Stage1_E0]       = REL(1),
-+    [ARMMMUIdx_Stage1_E1]       = REL(1),
-+    [ARMMMUIdx_Stage1_E1_PAN]   = REL(1),
+-    ret = vmstate_load(f, se);
++    ret = vmstate_load(f, se, &local_err);
+     if (ret < 0) {
+-        error_report("error while loading state section id %d(%s)",
+-                     section_id, se->idstr);
++        error_report_err(local_err);
+         return ret;
+     }
  
-     /*
-      * M-profile.
-      */
--    [ARMMMUIdx_MUser]           = EL(0),
--    [ARMMMUIdx_MPriv]           = EL(1),
--    [ARMMMUIdx_MUserNegPri]     = EL(0),
--    [ARMMMUIdx_MPrivNegPri]     = EL(1),
--    [ARMMMUIdx_MSUser]          = EL(0),
--    [ARMMMUIdx_MSPriv]          = EL(1),
--    [ARMMMUIdx_MSUserNegPri]    = EL(0),
--    [ARMMMUIdx_MSPrivNegPri]    = EL(1),
-+    [ARMMMUIdx_MUser]           = EL(0) | REL(1),
-+    [ARMMMUIdx_MPriv]           = EL(1) | REL(1),
-+    [ARMMMUIdx_MUserNegPri]     = EL(0) | REL(1),
-+    [ARMMMUIdx_MPrivNegPri]     = EL(1) | REL(1),
-+    [ARMMMUIdx_MSUser]          = EL(0) | REL(1),
-+    [ARMMMUIdx_MSPriv]          = EL(1) | REL(1),
-+    [ARMMMUIdx_MSUserNegPri]    = EL(0) | REL(1),
-+    [ARMMMUIdx_MSPrivNegPri]    = EL(1) | REL(1),
- };
+
 -- 
-2.43.0
+2.51.0
 
 

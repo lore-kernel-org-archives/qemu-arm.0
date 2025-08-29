@@ -4,82 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F201CA0FFF
-	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 15:08:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52392CA0FFF
+	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 15:08:27 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1usN85-0001ev-FG; Sat, 30 Aug 2025 11:04:33 -0400
+	id 1usN9B-0002zu-6C; Sat, 30 Aug 2025 11:05:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1urtT3-0004U2-Qv
- for qemu-arm@nongnu.org; Fri, 29 Aug 2025 03:24:13 -0400
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+ id 1urtqv-0003L9-LC
+ for qemu-arm@nongnu.org; Fri, 29 Aug 2025 03:48:53 -0400
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1urtT1-0000m7-BA
- for qemu-arm@nongnu.org; Fri, 29 Aug 2025 03:24:13 -0400
-Received: by mail-wr1-x42c.google.com with SMTP id
- ffacd0b85a97d-3cf48ec9fa4so325106f8f.0
- for <qemu-arm@nongnu.org>; Fri, 29 Aug 2025 00:24:10 -0700 (PDT)
+ id 1urtqs-00061j-2b
+ for qemu-arm@nongnu.org; Fri, 29 Aug 2025 03:48:52 -0400
+Received: by mail-wm1-x32b.google.com with SMTP id
+ 5b1f17b1804b1-45b82a21eeeso439765e9.2
+ for <qemu-arm@nongnu.org>; Fri, 29 Aug 2025 00:48:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756452248; x=1757057048; darn=nongnu.org;
+ d=linaro.org; s=google; t=1756453728; x=1757058528; darn=nongnu.org;
  h=mime-version:message-id:in-reply-to:references:user-agent:subject
  :cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=wXmjW04Q5nWo4fwSqD9DR6HEZfNngIptCj90NYOKuis=;
- b=LFE6Ga2mgv9BCIFIBhQgJJGaspp5sNRbSk4um9QkURHUYQ9sW6xmYpb5LFUut7ZnyJ
- 7V0moCDiZn2LLYqe9tudT4eZoUtKRuR8w/TQ2tSupi6sozV97MLlpzyHfqlXACzEL7Ym
- 2gKuNKfr6SNQ4WfZ3HD6eJycWybLucawAc7gfNGZGTVZk0lkd3maLi6/q/NdG7rJEepU
- 7BnoP7gQQrjigyt3OdgxKWZ8p2E9VJ4xlJ0PvTvNRxwXN1EbiosRRI16XaI6CqTbsE53
- waDcc5VGiqNJSVEi+yDPx4sPTILmSrUpcIuap9Ne+T4k4jjjCg9Rc1ZrVZRYNF0sm5X4
- 6eUQ==
+ bh=mPWey27stMgUc4PmpbFoGL+j+T/9NtWsZahvA8j7Rgg=;
+ b=UzjXh9UnGUDh0Ux6b/4rvBOAHKP4vB5NeVa8HETe/4wbtK1r1qLY17NcB54fyC7Ass
+ qoJi2M/h1czM9dnmov5C2lIOgUWQqr+aNkEVJKg6dx0cVikLO9R0jHqOQWoGis0ww58Z
+ j594BBYW0hbjYiEtOgXUOV7WXZpSagKD8lYe6LUx+dxLZDAiV++Gob3ItzCY7/fUzld4
+ j1o6GL8bq3OpeUhNIHnIn702bkPg9K4+IKRLWkNaSKyBVh8OJ3T8pzFoD7Jg/MBSXUjJ
+ ZydZUWF8OGLbpftcldMk9WCeorZgCPiSTOx3OZScLxu7pTAm4a3zHyYhl4uM0zITmHlp
+ /Qcw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756452248; x=1757057048;
+ d=1e100.net; s=20230601; t=1756453728; x=1757058528;
  h=mime-version:message-id:in-reply-to:references:user-agent:subject
  :cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=wXmjW04Q5nWo4fwSqD9DR6HEZfNngIptCj90NYOKuis=;
- b=w/u3KVfJdtyFcncg4wB4iiq3WfamQE7CVGlIVSH93/Qz+ljz5ciFauDVI7AIIovwcq
- 3nzQCpHACQioyzdPaDy9iTv+qfutGvtAk5yySjzR/G0IfxbM1vyHX29hE4igNCVUsPN/
- 32H8rxxGXfGBqACpsNnuC/fu9RntFoq0u8YPujJZ/URYjAuB/R2JathI4RQy9hFcdyvQ
- fgK/EL+mqpuBZlJotYaSmeVlTc+obQYd2azrRG/9FXO8NyescOTY1g4qSNDgUreKXa69
- zUnbNwf6wINz8X8S1p6QBuIAA1Pda2IM4a+XJ+CTJyvaS3TEyyqUQOR2+2KwMjisLxtM
- +njw==
-X-Gm-Message-State: AOJu0Yw6yGMZl1UjfoLluGCL97cfRzSyJ6y+B5ff46ls3bMAQvxDvf/h
- iuZjbii2F+eIo4BDECoy0FQueSLa8TjKs53o4jWCoI7YU5+zhqg5YejJD7sH3AhoYeKk9AzSnZ2
- idzuGDbg=
-X-Gm-Gg: ASbGncvr8ttSx3js3QJRGfDIVVpyDd1jvQZucMMhpyk+DKuY619/k2j8Esk9PZ9oGYw
- GsZSPrqKkrWGwORtJxBWZqA1XcllSqWJ44ochQzE2gj2WxliZfvXzOt4VBqri1D4kpBKkM2JGOm
- 7WmLUX0GSeziU44UWFpttaMhXuS/+n2PwY3Q9WUggqZYjUs6H42VaVmx9mscPI6e59DHfNTTra5
- G8CKe8STOkp5N34t0gbzFBKAAg41i1W0FyeEj/KYZlay7+XACC3iRKLWReEER3EvlKzjPgSlIkt
- GnG0uz5XyhQ5HbOtxIQv60q0h+JFWQmGfb84So1npVh+eW9mJB4NGoEyLnp32j8QIADsRl59Iem
- 15kEeENnuPe5xg3D65ubpnTa8ji2n+8AG8BNSIbbvKqCT0Fe9BVfUqPgUDAgfVe4qNsAvC/qXSx
- eHEgoLm70=
-X-Google-Smtp-Source: AGHT+IEY3hyWhHuePou6SKqfpe1MsXXsHYpdHIbdfJs5KQmk84fkiWpReZ7DbXtQhBdiHh8KcpDv3g==
-X-Received: by 2002:a05:6000:2081:b0:3b9:148b:e78 with SMTP id
- ffacd0b85a97d-3c5dcdfc385mr22658154f8f.53.1756452247904; 
- Fri, 29 Aug 2025 00:24:07 -0700 (PDT)
+ bh=mPWey27stMgUc4PmpbFoGL+j+T/9NtWsZahvA8j7Rgg=;
+ b=YGx2EGifoxaKn7MSeqdEPgL/pbNnu4WBDVmtqdVMU0/N41VS24atYLM1e7Xud02Lg6
+ YAj5izZIa/wbYsm8DIlX61y5z2Ih0shZTCTOhNpj1L5FRrEDP8eyva+1e0FWehQtky/F
+ hrlHNhllNYTmLzsQOdo4fgY9G0YHBFtXcMarKqZ/VJl3Ys4qFcmqnnjcLcaxubov1WcS
+ /LItqf33u8etNjH3Oe4dO55deyvTaJ1PDg51O1nsHbPnKASvVePdRrOfdz0C2yWxRC9Y
+ lL4hbdMWANVfZLBgQWcoEczs7yNvK0cvXG1Xjo1vZ/1cGaFa//zOWVsCVqETMwe1rasP
+ G03g==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVmvctY3jAlrBBew/pEzCTRC0Z5UXMn5v7dezDO8IKlXKugIOxopXQCiuZbPutFMqX28Wij9klCPA==@nongnu.org
+X-Gm-Message-State: AOJu0Yyp9GrtoqFzgT77tYKdNPi/oilMXlAxSaBHaIKRR9+RrQ81d+BZ
+ A/rMoeNNcLa6O0hXuj5wX5PmCpeYOsyI87b/b1H4qI7IfEWm7KVNLiFfii9R2i9NXTQ=
+X-Gm-Gg: ASbGncvn3RGzfV9/SqDfpeZNRCSy3VJ//KNnJi4Pz1Rm+9V8FSQt/DHrnJnag5OmeKV
+ I8W41mDUlyEKMwFuiJMfpbUY79mJy9ETtSOpv87xcuKQV76jq4suooUdaGI23Ld8wSSUbZzxaWF
+ XPuxypmjjSv+4SV8JuaNbDwFsOS/VLSRcd4Ot1CJ/pfbDO2LPZeGE0+BbOxWPsHn03qyqJQrM9j
+ Jc0as1XYMbAh06aNxvisRT79ztKh/JnYMKRdamPSAskTBJr5DxglHdS+ci2S6m+rjPWG4VwEYoq
+ boqArvVHT+gRNkwMl0t4dRN0lS1ceKTwmW6HJi+yX6aTTFkTo57FRDJsnP14Jgumv4NtksCTxba
+ 4MP5qO6XFQtvzpqGkvxRPJAAsDD+woc7bQN5nCcMpFq6EoviDfQrwdKFeVGJSK9JvNgDOJHbS
+X-Google-Smtp-Source: AGHT+IFPK9xHyfFLx3AtdQmz952OoKadoYGclLJh6pWH/WaverPFoL8mnc6NwE1I23oNhj4H6CgK0g==
+X-Received: by 2002:a05:600c:1f8f:b0:45b:47e1:ef6a with SMTP id
+ 5b1f17b1804b1-45b517e9d25mr206277745e9.37.1756453727790; 
+ Fri, 29 Aug 2025 00:48:47 -0700 (PDT)
 Received: from meli-email.org (athedsl-4441256.home.otenet.gr.
  [79.129.180.152]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3cf274dde69sm2244238f8f.14.2025.08.29.00.24.07
+ 5b1f17b1804b1-45b6f306bffsm105697915e9.16.2025.08.29.00.48.47
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 29 Aug 2025 00:24:07 -0700 (PDT)
-Date: Fri, 29 Aug 2025 10:13:43 +0300
+ Fri, 29 Aug 2025 00:48:47 -0700 (PDT)
+Date: Fri, 29 Aug 2025 10:47:34 +0300
 From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-To: qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-arm@nongnu.org
-Subject: Re: [PATCH 14/61] target/arm: Replace cpreg_field_is_64bit with
- cpreg_field_type
+To: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org
+Cc: 
+Subject: Re: [PATCH] system: drop the -old-param option
 User-Agent: meli/0.8.12
-References: <20250827010453.4059782-1-richard.henderson@linaro.org>
- <20250827010453.4059782-19-richard.henderson@linaro.org>
-In-Reply-To: <20250827010453.4059782-19-richard.henderson@linaro.org>
-Message-ID: <t1qv86.8eeulsm1hy3p@linaro.org>
+References: <20250828162700.3308812-1-peter.maydell@linaro.org>
+In-Reply-To: <20250828162700.3308812-1-peter.maydell@linaro.org>
+Message-ID: <t1qwda.kroreyuwz7ew@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wr1-x42c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
+ envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wm1-x32b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -102,159 +101,232 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Wed, 27 Aug 2025 04:04, Richard Henderson <richard.henderson@linaro.org> wrote:
->Prepare for 128-bit fields by using a better query api.
+On Thu, 28 Aug 2025 19:27, Peter Maydell <peter.maydell@linaro.org> wrote:
+>We deprecated the command line option -old-param for the 10.0
+>release, which allows us to drop it in 10.2.  This option was used to
+>boot Arm targets with a very old boot protocol using the
+>'param_struct' ABI.  We only ever needed this on a handful of board
+>types which have all now been removed from QEMU.
 >
->Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+>Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 >---
-> target/arm/cpregs.h  | 10 ++++++----
-> target/arm/gdbstub.c |  7 +++++--
-> target/arm/helper.c  | 18 +++++++++++++-----
-> 3 files changed, 24 insertions(+), 11 deletions(-)
+
+Reviewed-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+
+> docs/about/deprecated.rst       | 13 ------
+> docs/about/removed-features.rst | 12 +++++
+> include/system/system.h         |  1 -
+> hw/arm/boot.c                   | 81 +--------------------------------
+> system/globals.c                |  1 -
+> system/vl.c                     |  4 --
+> qemu-options.hx                 |  7 ---
+> 7 files changed, 13 insertions(+), 106 deletions(-)
 >
->diff --git a/target/arm/cpregs.h b/target/arm/cpregs.h
->index 812fb1340a..b6c8eff0dd 100644
->--- a/target/arm/cpregs.h
->+++ b/target/arm/cpregs.h
->@@ -22,6 +22,7 @@
-> #define TARGET_ARM_CPREGS_H
+>diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
+>index d50645a0711..58bce715f9c 100644
+>--- a/docs/about/deprecated.rst
+>+++ b/docs/about/deprecated.rst
+>@@ -68,19 +68,6 @@ configurations (e.g. -smp drawers=1,books=1,clusters=1 for x86 PC machine) is
+> marked deprecated since 9.0, users have to ensure that all the topology members
+> described with -smp are supported by the target machine.
 > 
-> #include "hw/registerfields.h"
->+#include "exec/memop.h"
-> #include "target/arm/kvm-consts.h"
-> #include "cpu.h"
+>-``-old-param`` option for booting Arm kernels via param_struct (since 10.0)
+>-'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+>-
+>-The ``-old-param`` command line option is specific to Arm targets:
+>-it is used when directly booting a guest kernel to pass it the
+>-command line and other information via the old ``param_struct`` ABI,
+>-rather than the newer ATAGS or DTB mechanisms. This option was only
+>-ever needed to support ancient kernels on some old board types
+>-like the ``akita`` or ``terrier``; it has been deprecated in the
+>-kernel since 2001. None of the board types QEMU supports need
+>-``param_struct`` support, so this option has been deprecated and will
+>-be removed in a future QEMU version.
+>-
+> User-mode emulator command line arguments
+> -----------------------------------------
 > 
->@@ -1053,12 +1054,13 @@ void raw_write(CPUARMState *env, const ARMCPRegInfo *ri, uint64_t value);
-> void arm_cp_reset_ignore(CPUARMState *env, const ARMCPRegInfo *ri);
+>diff --git a/docs/about/removed-features.rst b/docs/about/removed-features.rst
+>index d7c2113fc3e..b1b3d1b1b3f 100644
+>--- a/docs/about/removed-features.rst
+>+++ b/docs/about/removed-features.rst
+>@@ -560,6 +560,18 @@ the options along with the machine models they were intended for.
 > 
-> /*
->- * Return true if this reginfo struct's field in the cpu state struct
->- * is 64 bits wide.
->+ * Return MO_32 if the field in CPUARMState is uint32_t or
->+ * MO_64 if the field in CPUARMState is uint64_t.
->  */
->-static inline bool cpreg_field_is_64bit(const ARMCPRegInfo *ri)
->+static inline MemOp cpreg_field_type(const ARMCPRegInfo *ri)
-
-Using MemOp is slightly confusing though I understand where you're 
-coming from. Would introducing a BitWidth enum be a good idea?
-
-
-diff --git a/include/exec/memop.h b/include/exec/memop.h
-index cf7da3362e..9104c4f162 100644
---- a/include/exec/memop.h
-+++ b/include/exec/memop.h
-@@ -14,15 +14,26 @@
- 
- #include "qemu/host-utils.h"
- 
-+typedef enum BitWidth {
-+    BW_8     = 0,
-+    BW_16    = 1,
-+    BW_32    = 2,
-+    BW_64    = 3,
-+    BW_128   = 4,
-+    BW_256   = 5,
-+    BW_512   = 6,
-+    BW_1024  = 7,
-+}
-+
- typedef enum MemOp {
--    MO_8     = 0,
--    MO_16    = 1,
--    MO_32    = 2,
--    MO_64    = 3,
--    MO_128   = 4,
--    MO_256   = 5,
--    MO_512   = 6,
--    MO_1024  = 7,
-+    MO_8     = BW_8,
-+    MO_16    = BW_16,
-+    MO_32    = BW_32,
-+    MO_64    = BW_64,
-+    MO_128   = BW_128,
-+    MO_256   = BW_256,
-+    MO_512   = BW_512,
-+    MO_1024  = BW_1024,
-     MO_SIZE  = 0x07,   /* Mask for the above.  */
-
-> {
->-    return (ri->state == ARM_CP_STATE_AA64) || (ri->type & ARM_CP_64BIT);
->+    return (ri->state == ARM_CP_STATE_AA64 || (ri->type & ARM_CP_64BIT)
->+            ? MO_64 : MO_32);
+> Use ``-run-with user=..`` instead.
+> 
+>+``-old-param`` option for booting Arm kernels via param_struct (since 10.0)
+>+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+>+
+>+The ``-old-param`` command line option was specific to Arm targets:
+>+it was used when directly booting a guest kernel to pass it the
+>+command line and other information via the old ``param_struct`` ABI,
+>+rather than the newer ATAGS or DTB mechanisms. This option was only
+>+ever needed to support ancient kernels on some old board types
+>+like the ``akita`` or ``terrier``; it has been deprecated in the
+>+kernel since 2001. None of the board types QEMU supports need
+>+``param_struct`` support, so this option has been removed.
+>+
+> 
+> User-mode emulator command line arguments
+> -----------------------------------------
+>diff --git a/include/system/system.h b/include/system/system.h
+>index a7effe7dfd8..03a2d0e9005 100644
+>--- a/include/system/system.h
+>+++ b/include/system/system.h
+>@@ -42,7 +42,6 @@ extern int graphic_height;
+> extern int graphic_depth;
+> extern int display_opengl;
+> extern const char *keyboard_layout;
+>-extern int old_param;
+> extern uint8_t *boot_splash_filedata;
+> extern bool enable_cpu_pm;
+> extern QEMUClockType rtc_clock;
+>diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+>index d391cd01bb1..525b31e1659 100644
+>--- a/hw/arm/boot.c
+>+++ b/hw/arm/boot.c
+>@@ -336,81 +336,6 @@ static void set_kernel_args(const struct arm_boot_info *info, AddressSpace *as)
+>     WRITE_WORD(p, 0);
 > }
 > 
-> static inline bool cp_access_ok(int current_el,
->diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
->index ce4497ad7c..e2fc389170 100644
->--- a/target/arm/gdbstub.c
->+++ b/target/arm/gdbstub.c
->@@ -247,10 +247,13 @@ static int arm_gdb_get_sysreg(CPUState *cs, GByteArray *buf, int reg)
->     key = cpu->dyn_sysreg_feature.data.cpregs.keys[reg];
->     ri = get_arm_cp_reginfo(cpu->cp_regs, key);
->     if (ri) {
->-        if (cpreg_field_is_64bit(ri)) {
->+        switch (cpreg_field_type(ri)) {
->+        case MO_64:
->             return gdb_get_reg64(buf, (uint64_t)read_raw_cp_reg(env, ri));
->-        } else {
->+        case MO_32:
->             return gdb_get_reg32(buf, (uint32_t)read_raw_cp_reg(env, ri));
->+        default:
->+            g_assert_not_reached();
->         }
->     }
->     return 0;
->diff --git a/target/arm/helper.c b/target/arm/helper.c
->index 3a9d8f0ddc..c4103d958a 100644
->--- a/target/arm/helper.c
->+++ b/target/arm/helper.c
->@@ -63,20 +63,28 @@ int compare_u64(const void *a, const void *b)
-> uint64_t raw_read(CPUARMState *env, const ARMCPRegInfo *ri)
-> {
->     assert(ri->fieldoffset);
->-    if (cpreg_field_is_64bit(ri)) {
->+    switch (cpreg_field_type(ri)) {
->+    case MO_64:
->         return CPREG_FIELD64(env, ri);
+>-static void set_kernel_args_old(const struct arm_boot_info *info,
+>-                                AddressSpace *as)
+>-{
+>-    hwaddr p;
+>-    const char *s;
+>-    int initrd_size = info->initrd_size;
+>-    hwaddr base = info->loader_start;
+>-
+>-    /* see linux/include/asm-arm/setup.h */
+>-    p = base + KERNEL_ARGS_ADDR;
+>-    /* page_size */
+>-    WRITE_WORD(p, 4096);
+>-    /* nr_pages */
+>-    WRITE_WORD(p, info->ram_size / 4096);
+>-    /* ramdisk_size */
+>-    WRITE_WORD(p, 0);
+>-#define FLAG_READONLY 1
+>-#define FLAG_RDLOAD   4
+>-#define FLAG_RDPROMPT 8
+>-    /* flags */
+>-    WRITE_WORD(p, FLAG_READONLY | FLAG_RDLOAD | FLAG_RDPROMPT);
+>-    /* rootdev */
+>-    WRITE_WORD(p, (31 << 8) | 0); /* /dev/mtdblock0 */
+>-    /* video_num_cols */
+>-    WRITE_WORD(p, 0);
+>-    /* video_num_rows */
+>-    WRITE_WORD(p, 0);
+>-    /* video_x */
+>-    WRITE_WORD(p, 0);
+>-    /* video_y */
+>-    WRITE_WORD(p, 0);
+>-    /* memc_control_reg */
+>-    WRITE_WORD(p, 0);
+>-    /* unsigned char sounddefault */
+>-    /* unsigned char adfsdrives */
+>-    /* unsigned char bytes_per_char_h */
+>-    /* unsigned char bytes_per_char_v */
+>-    WRITE_WORD(p, 0);
+>-    /* pages_in_bank[4] */
+>-    WRITE_WORD(p, 0);
+>-    WRITE_WORD(p, 0);
+>-    WRITE_WORD(p, 0);
+>-    WRITE_WORD(p, 0);
+>-    /* pages_in_vram */
+>-    WRITE_WORD(p, 0);
+>-    /* initrd_start */
+>-    if (initrd_size) {
+>-        WRITE_WORD(p, info->initrd_start);
 >-    } else {
->+    case MO_32:
->         return CPREG_FIELD32(env, ri);
->+    default:
->+        g_assert_not_reached();
->     }
-> }
-> 
-> void raw_write(CPUARMState *env, const ARMCPRegInfo *ri, uint64_t value)
-> {
->     assert(ri->fieldoffset);
->-    if (cpreg_field_is_64bit(ri)) {
->+    switch (cpreg_field_type(ri)) {
->+    case MO_64:
->         CPREG_FIELD64(env, ri) = value;
+>-        WRITE_WORD(p, 0);
+>-    }
+>-    /* initrd_size */
+>-    WRITE_WORD(p, initrd_size);
+>-    /* rd_start */
+>-    WRITE_WORD(p, 0);
+>-    /* system_rev */
+>-    WRITE_WORD(p, 0);
+>-    /* system_serial_low */
+>-    WRITE_WORD(p, 0);
+>-    /* system_serial_high */
+>-    WRITE_WORD(p, 0);
+>-    /* mem_fclk_21285 */
+>-    WRITE_WORD(p, 0);
+>-    /* zero unused fields */
+>-    while (p < base + KERNEL_ARGS_ADDR + 256 + 1024) {
+>-        WRITE_WORD(p, 0);
+>-    }
+>-    s = info->kernel_cmdline;
+>-    if (s) {
+>-        address_space_write(as, p, MEMTXATTRS_UNSPECIFIED, s, strlen(s) + 1);
 >-    } else {
->+        break;
->+    case MO_32:
->         CPREG_FIELD32(env, ri) = value;
->+        break;
->+    default:
->+        g_assert_not_reached();
->     }
-> }
+>-        WRITE_WORD(p, 0);
+>-    }
+>-}
+>-
+> static int fdt_add_memory_node(void *fdt, uint32_t acells, hwaddr mem_base,
+>                                uint32_t scells, hwaddr mem_len,
+>                                int numa_node_id)
+>@@ -760,11 +685,7 @@ static void do_cpu_reset(void *opaque)
+>                 cpu_set_pc(cs, info->loader_start);
 > 
->@@ -2748,7 +2756,7 @@ static void vmsa_ttbr_write(CPUARMState *env, const ARMCPRegInfo *ri,
->                             uint64_t value)
-> {
->     /* If the ASID changes (with a 64-bit write), we must flush the TLB.  */
->-    if (cpreg_field_is_64bit(ri) &&
->+    if (cpreg_field_type(ri) == MO_64 &&
->         extract64(raw_read(env, ri) ^ value, 48, 16) != 0) {
->         ARMCPU *cpu = env_archcpu(env);
->         tlb_flush(CPU(cpu));
+>                 if (!have_dtb(info)) {
+>-                    if (old_param) {
+>-                        set_kernel_args_old(info, as);
+>-                    } else {
+>-                        set_kernel_args(info, as);
+>-                    }
+>+                    set_kernel_args(info, as);
+>                 }
+>             } else if (info->secondary_cpu_reset_hook) {
+>                 info->secondary_cpu_reset_hook(cpu, info);
+>diff --git a/system/globals.c b/system/globals.c
+>index 9640c9511e9..98f9876d5d4 100644
+>--- a/system/globals.c
+>+++ b/system/globals.c
+>@@ -52,7 +52,6 @@ bool vga_interface_created;
+> Chardev *parallel_hds[MAX_PARALLEL_PORTS];
+> QEMUOptionRom option_rom[MAX_OPTION_ROMS];
+> int nb_option_roms;
+>-int old_param;
+> const char *qemu_name;
+> unsigned int nb_prom_envs;
+> const char *prom_envs[MAX_PROM_ENVS];
+>diff --git a/system/vl.c b/system/vl.c
+>index 3b7057e6c66..00f36947257 100644
+>--- a/system/vl.c
+>+++ b/system/vl.c
+>@@ -3524,10 +3524,6 @@ void qemu_init(int argc, char **argv)
+>                 prom_envs[nb_prom_envs] = optarg;
+>                 nb_prom_envs++;
+>                 break;
+>-            case QEMU_OPTION_old_param:
+>-                warn_report("-old-param is deprecated");
+>-                old_param = 1;
+>-                break;
+>             case QEMU_OPTION_rtc:
+>                 opts = qemu_opts_parse_noisily(qemu_find_opts("rtc"), optarg,
+>                                                false);
+>diff --git a/qemu-options.hx b/qemu-options.hx
+>index ab23f14d217..aa44b0e34ae 100644
+>--- a/qemu-options.hx
+>+++ b/qemu-options.hx
+>@@ -5347,13 +5347,6 @@ SRST
+>         specified, the former is passed to semihosting as it always
+>         takes precedence.
+> ERST
+>-DEF("old-param", 0, QEMU_OPTION_old_param,
+>-    "-old-param      old param mode\n", QEMU_ARCH_ARM)
+>-SRST
+>-``-old-param``
+>-    Old param mode (ARM only).
+>-ERST
+>-
+> DEF("sandbox", HAS_ARG, QEMU_OPTION_sandbox, \
+>     "-sandbox on[,obsolete=allow|deny][,elevateprivileges=allow|deny|children]\n" \
+>     "          [,spawn=allow|deny][,resourcecontrol=allow|deny]\n" \
 >-- 
 >2.43.0
 >
 >
-
-Reviewed-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 

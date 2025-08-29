@@ -4,87 +4,128 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97ECECA0EFF
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9A6DCA0FFF
 	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 15:20:59 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1usN7z-0001EU-BY; Sat, 30 Aug 2025 11:04:27 -0400
+	id 1usNNX-00028O-D0; Sat, 30 Aug 2025 11:20:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1urtEI-0000zj-6w
- for qemu-arm@nongnu.org; Fri, 29 Aug 2025 03:08:58 -0400
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1urtEF-0005dF-Qu
- for qemu-arm@nongnu.org; Fri, 29 Aug 2025 03:08:57 -0400
-Received: by mail-wr1-x42b.google.com with SMTP id
- ffacd0b85a97d-3cf991e8b6aso314017f8f.2
- for <qemu-arm@nongnu.org>; Fri, 29 Aug 2025 00:08:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756451334; x=1757056134; darn=nongnu.org;
- h=mime-version:message-id:in-reply-to:references:user-agent:subject
- :cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=9aICflX9gr9phC4mPWfoSDn4j5XQSCYNcihAm/aBfTE=;
- b=lPcYg4RCtgbjLhx02No2XvrSOvFerqw+iP46CYiNU8JwQe/558bFdA7/6n3T2FoyhL
- 0zpSBAkgLa7ma3ltBvuKiGu09T3VFsSQufvgVGTMyJctJ2aQJfJ+4x/jqKQI0NwSXckT
- O6Uc/FCE/1CTDSBuqnNTNfQdMB83MZvJKmDg+DJ10ANBahU2U+ncbKY3rZQrcg31rBVf
- t9mrekigBwXajyVcCWGAZXSet3oKx1SRTmU0bUKwBSyQDMl4X1zaOFcwlGAmnVSsUEIF
- lUJ8sNJ4Xl5hV7SvrGdZIy6nF8j5SpFPyWvfBvSxCRW5p67ZfOD4tgX69zBIIJp6l3ka
- zskA==
+ (Exim 4.90_1) (envelope-from <armenon@redhat.com>)
+ id 1us0S9-0002SF-7i
+ for qemu-arm@nongnu.org; Fri, 29 Aug 2025 10:51:46 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armenon@redhat.com>)
+ id 1us0Rv-0001Nf-4u
+ for qemu-arm@nongnu.org; Fri, 29 Aug 2025 10:51:39 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1756479085;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=vJbJa72t1S0OMBXjv4NiG7bOfLdpwCrHt6YR40Uzp2g=;
+ b=RxVd81UIKAIjzet4YTpdTde1ajkMZZU1Rr19+lujRNtHQ7T1+JhqesOcC041URwv3WYYbS
+ TywXEtmf1AZkflQX3P/AvQ5MJHlTPZ8dYWyjH7FrTv9IyQRhkwUPkn0Kf+l0rGMU8HyBe8
+ FJYrgITnywtGv1oOuhbPqiz9Rsgzfmk=
+Received: from mail-pl1-f197.google.com (mail-pl1-f197.google.com
+ [209.85.214.197]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-342-dKnqzth5OH6zFM-ed4pL5A-1; Fri, 29 Aug 2025 10:51:24 -0400
+X-MC-Unique: dKnqzth5OH6zFM-ed4pL5A-1
+X-Mimecast-MFC-AGG-ID: dKnqzth5OH6zFM-ed4pL5A_1756479083
+Received: by mail-pl1-f197.google.com with SMTP id
+ d9443c01a7336-246f49067bdso22694085ad.0
+ for <qemu-arm@nongnu.org>; Fri, 29 Aug 2025 07:51:24 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756451334; x=1757056134;
- h=mime-version:message-id:in-reply-to:references:user-agent:subject
- :cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=9aICflX9gr9phC4mPWfoSDn4j5XQSCYNcihAm/aBfTE=;
- b=oIW5NF9YOg8tVtfozmVZBYZfIxCvF5nCUMFP26Mpu9F7R/0rc7hiY5djAEGB6Mf+hG
- xirX6dNCpm8lpgmGOy2J+U24IrjCbNa40a2nKtRHHMehdViHX4RwIzMhgWCzQWcR94KF
- E3vyMoDG9IOkBedctNLGWlKTAZS2dcEDS/aIaIGcYfnMCsu0wTMQGxZNlmz47uwE2KCf
- GYZx/tGUKAadF12n86dHjuvFd+jpw8jsSPzAFcgdFIW4Juq2gjQvGw6/fL00fsGkMdH3
- 8kl5wMj4Wgdh2HEhW3mcBvpjaZDkh3zjP8svvoC0PNU/tMWZBNt+02vsrvXQXHkpRpNm
- AJvg==
-X-Gm-Message-State: AOJu0YxJhCm9ck7ekdzbA5aImT5wuS36fzMW9aIl2wUmPbW8ZB2Z1om6
- 8w16976Dq+JFphUzuYg+zprcylfkuH5bZ0lxfVKGuanOqFp/yTAhj9EfK8z8jXAloys=
-X-Gm-Gg: ASbGncuv8ZPZW6D8MryaQTrMXFVn8zjZ5JftWvGLsfrurn2kFwIChcjFkKbEKkW/OYr
- hg6sqzEt4o5Pj3SQfN/itkZ7z+GP+jJSBZAV92eyvvL4JW9UZhfOB+rzQm6Q3ESgoecxjpU2pvP
- UJd3cesjq1jU8fgQgAa3Ya9tw5pQaeEdDtf7sVZjLK+Deni3yDvJPdQfVqYUXqjkGfZC4htyXs7
- 1cnvcdAg//Ml910PRLU3TUih888AXN8njBHNcntzGAg1A5yC+oQ5RdzDYtyRKxoimxfbU0Qx3Yt
- HxQQn5wzPGegwqDpDq/YnWxcG3yAMOO28B+6JGIVEqqr7tYdaVJ/IaGi/2fwrqWEVBatcVu/nFW
- Mp+Jxc+se8gYv9tgk5v5EXLmgf8KA36UTRslEB79VAiDSqtuz8seNm7QWP/okONX0HTC/HbCn0T
- igBVpPFLs=
-X-Google-Smtp-Source: AGHT+IElSrOaHHzZ9ww1z2efUqbaAiDR5j2pVFHmdlkBpYVRCbQJgwm3jKGH4T81/qe7ylGGD42utA==
-X-Received: by 2002:a5d:5889:0:b0:3cf:74e0:55b9 with SMTP id
- ffacd0b85a97d-3cf74e05a00mr1243338f8f.63.1756451333614; 
- Fri, 29 Aug 2025 00:08:53 -0700 (PDT)
-Received: from meli-email.org (athedsl-4441256.home.otenet.gr.
- [79.129.180.152]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3cf33add7f2sm2248694f8f.32.2025.08.29.00.08.53
+ d=1e100.net; s=20230601; t=1756479082; x=1757083882;
+ h=in-reply-to:content-transfer-encoding:content-disposition
+ :mime-version:references:reply-to:message-id:subject:cc:to:from:date
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=vJbJa72t1S0OMBXjv4NiG7bOfLdpwCrHt6YR40Uzp2g=;
+ b=snWBzkUM7INLykl6BXnFrtJWCXhRTiPJcIEiUITmsD7+CtzDsEWzNu/G5iMZDYsS7w
+ jA4Nc1USuhCniODn+FG5gtFLpfD2AwVepV88yBnccG2vqczxt4z9UaBX+o2LPnaojQO/
+ XmfjRS9li6iCta314QQNaIFzOv62/iy6JpNpWKeYc7cc4JtFQ9wok569ZVDStBHS6WQW
+ HBXO7k/uVFZ2dMF9M/ep6ov2OOYLp2YZHccFKdSVle4fhMMX2nMtCVZIdjoQALSx6ERM
+ CnxybrHJB3kTpK7pWCZZtPr9B2yPRz31WwmS+JKdJIbQYiHQpgJ1mfC53JuQDmw3Amq+
+ guHw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCU13tpxG8TcH8pKZaefpM1XqwaerI6K0Yc2OGXePfRvWOx1oN8KUwWuboxqApk2hLhEozHYJGlaLQ==@nongnu.org
+X-Gm-Message-State: AOJu0YxZ/wgZsEGEi590TZ07eWBt4UW7TAgyeIQx0Q1Si5IoWOGYSOIu
+ RRu4DuGmSNa21i4Jy95UqYm+v0jIxAAnkesKREfn79pOOFCEdyiItSzp30IJeuLFq7rWbIvgaeI
+ hlh8Z/2Z3KqdyNhjdxk9uIhj9/nvmaSvuRU3yvFhA98dkprrBcsMzJA==
+X-Gm-Gg: ASbGncs99olmlvY8zoFQMjJifrsYMqD0VgDrwkeHYPjxcTMkB6zm7jBU25ytkU8fTAm
+ Sy3lzXv0gZYcfOnEKAzAZorXZHqD0zKh/hqYj297skITPXrFAxe3GiovWLbaLmJc9z3g9rrcV9f
+ J11yX/Xlm680qdCzLEPF7GTvMyEHM5qkY8pv5ngTyGORel7s0A7mLgucVcJIv78t52XXvDKcpUT
+ 0LegMGSm4AOIGeqDMDsu89sfTJqEcod4GVi1o4R0BtuzIVKZmxN6Fgl/zShrNzaxrz3w6EHZw8c
+ UzkB45GIQyximnVT4HUga1Mnr12fyOvvfa7HR3mReSxqISUtTOqcwA==
+X-Received: by 2002:a17:903:2291:b0:242:a0b0:3c12 with SMTP id
+ d9443c01a7336-2462ef86891mr365362525ad.52.1756479082100; 
+ Fri, 29 Aug 2025 07:51:22 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IH64QZGTtIPrlBrCGlY/mU7CAsd4dTaq9WtXDpPCsg8bafJau9sQmA0NxW9aRThpiIIxyjzlw==
+X-Received: by 2002:a17:903:2291:b0:242:a0b0:3c12 with SMTP id
+ d9443c01a7336-2462ef86891mr365361685ad.52.1756479081256; 
+ Fri, 29 Aug 2025 07:51:21 -0700 (PDT)
+Received: from armenon-kvm.bengluru.csb ([49.47.195.108])
+ by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-249065aaed1sm27550335ad.124.2025.08.29.07.51.12
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 29 Aug 2025 00:08:53 -0700 (PDT)
-Date: Fri, 29 Aug 2025 10:06:34 +0300
-From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-To: qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-arm@nongnu.org
-Subject: Re: [PATCH 12/61] target/arm: Drop define_one_arm_cp_reg_with_opaque
-User-Agent: meli/0.8.12
-References: <20250827010453.4059782-1-richard.henderson@linaro.org>
- <20250827010453.4059782-17-richard.henderson@linaro.org>
-In-Reply-To: <20250827010453.4059782-17-richard.henderson@linaro.org>
-Message-ID: <t1quis.qr3o003jaimj@linaro.org>
+ Fri, 29 Aug 2025 07:51:20 -0700 (PDT)
+Date: Fri, 29 Aug 2025 20:21:07 +0530
+From: Arun Menon <armenon@redhat.com>
+To: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
+Cc: qemu-devel@nongnu.org, Peter Xu <peterx@redhat.com>,
+ Fabiano Rosas <farosas@suse.de>,
+ Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
+ Dmitry Osipenko <dmitry.osipenko@collabora.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Cornelia Huck <cohuck@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
+ Eric Farman <farman@linux.ibm.com>, Thomas Huth <thuth@redhat.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Matthew Rosato <mjrosato@linux.ibm.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ David Hildenbrand <david@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
+ Nicholas Piggin <npiggin@gmail.com>,
+ Harsh Prateek Bora <harshpb@linux.ibm.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Fam Zheng <fam@euphon.net>,
+ Alex Williamson <alex.williamson@redhat.com>,
+ =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@redhat.com>,
+ Steve Sistare <steven.sistare@oracle.com>,
+ =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
+ qemu-s390x@nongnu.org, qemu-ppc@nongnu.org,
+ Hailiang Zhang <zhanghailiang@xfusion.com>,
+ Stefan Berger <stefanb@linux.vnet.ibm.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
+Subject: Re: [PATCH v12 02/27] migration: push Error **errp into
+ vmstate_load_state()
+Message-ID: <aLG-Wz0ctMXP3mCU@armenon-kvm.bengluru.csb>
+References: <20250821-propagate_tpm_error-v12-0-72b803e707dc@redhat.com>
+ <20250821-propagate_tpm_error-v12-2-72b803e707dc@redhat.com>
+ <2f079847-8b78-4db0-b14e-a3f643b6cc98@rsg.ci.i.u-tokyo.ac.jp>
+ <aLAQqhtqzwaRj7Ar@armenon-kvm.bengluru.csb>
+ <ae29f5be-5316-4277-8da1-6c48f469e96f@rsg.ci.i.u-tokyo.ac.jp>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wr1-x42b.google.com
+In-Reply-To: <ae29f5be-5316-4277-8da1-6c48f469e96f@rsg.ci.i.u-tokyo.ac.jp>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: nzo0ThI9BYmXR9p6r8ESricOemEzssmdReJXzZjDQec_1756479083
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=armenon@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -97,202 +138,234 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: armenon@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Wed, 27 Aug 2025 04:04, Richard Henderson <richard.henderson@linaro.org> wrote:
->The last use of this interface was removed in 603bc048a27f
->("hw/arm: Remove pxa2xx_pic").  As the comment in gicv3
->stated, keeping pointer references to cpregs has SMP issues,
->so avoid future temptation by removing the interface.
->
->Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
->---
+Hi,
 
-Reviewed-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+On Fri, Aug 29, 2025 at 07:37:09PM +0900, Akihiko Odaki wrote:
+> On 2025/08/28 17:17, Arun Menon wrote:
+> > H Akihiko,
+> > 
+> > Thanks for the review.
+> > 
+> > On Thu, Aug 28, 2025 at 10:34:54AM +0900, Akihiko Odaki wrote:
+> > > On 2025/08/21 17:43, Arun Menon wrote:
+> > > > This is an incremental step in converting vmstate loading
+> > > > code to report error via Error objects instead of directly
+> > > > printing it to console/monitor.
+> > > > It is ensured that vmstate_load_state() must report an error
+> > > > in errp, in case of failure.
+> > > > 
+> > > > The errors are temporarily reported using warn_report_err().
+> > > > This is removed in the subsequent patches in this series,
+> > > > when we are actually able to propagate the error to the calling
+> > > > function using errp. Whereas, if we want the function to exit on
+> > > > error, then error_fatal is passed.
+> > > > 
+> > > > Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+> > > > Signed-off-by: Arun Menon <armenon@redhat.com>
+> > > > ---
+> > > >    hw/display/virtio-gpu.c     |  2 +-
+> > > >    hw/pci/pci.c                |  3 ++-
+> > > >    hw/s390x/virtio-ccw.c       |  2 +-
+> > > >    hw/scsi/spapr_vscsi.c       |  4 ++-
+> > > >    hw/vfio/pci.c               |  5 +++-
+> > > >    hw/virtio/virtio-mmio.c     |  3 ++-
+> > > >    hw/virtio/virtio-pci.c      |  2 +-
+> > > >    hw/virtio/virtio.c          |  7 +++--
+> > > >    include/migration/vmstate.h |  2 +-
+> > > >    migration/cpr.c             |  3 +--
+> > > >    migration/savevm.c          |  8 ++++--
+> > > >    migration/vmstate-types.c   | 22 +++++++++++----
+> > > >    migration/vmstate.c         | 65 +++++++++++++++++++++++++++++++--------------
+> > > >    tests/unit/test-vmstate.c   | 63 ++++++++++++++++++++++++++++++++++++-------
+> > > >    ui/vdagent.c                |  5 +++-
+> > > >    15 files changed, 147 insertions(+), 49 deletions(-)
+> > > > 
+> > > > diff --git a/hw/display/virtio-gpu.c b/hw/display/virtio-gpu.c
+> > > > index 0a1a625b0ea6cf26cb0d799171a57ed3d3ab2442..5dc31bc6bfb0272e29a4364ab10de2595a4bedf7 100644
+> > > > --- a/hw/display/virtio-gpu.c
+> > > > +++ b/hw/display/virtio-gpu.c
+> > > > @@ -1343,7 +1343,7 @@ static int virtio_gpu_load(QEMUFile *f, void *opaque, size_t size,
+> > > >        }
+> > > >        /* load & apply scanout state */
+> > > > -    vmstate_load_state(f, &vmstate_virtio_gpu_scanouts, g, 1);
+> > > > +    vmstate_load_state(f, &vmstate_virtio_gpu_scanouts, g, 1, &error_fatal);
+> > > >        return 0;
+> > > >    }
+> > > > diff --git a/hw/pci/pci.c b/hw/pci/pci.c
+> > > > index c70b5ceebaf1f2b10768bd030526cbb518da2b8d..6be932d3bb67ff0c4808707db2a7b6378a90e82b 100644
+> > > > --- a/hw/pci/pci.c
+> > > > +++ b/hw/pci/pci.c
+> > > > @@ -934,7 +934,8 @@ void pci_device_save(PCIDevice *s, QEMUFile *f)
+> > > >    int pci_device_load(PCIDevice *s, QEMUFile *f)
+> > > >    {
+> > > >        int ret;
+> > > > -    ret = vmstate_load_state(f, &vmstate_pci_device, s, s->version_id);
+> > > > +    ret = vmstate_load_state(f, &vmstate_pci_device, s, s->version_id,
+> > > > +                             &error_fatal);
+> > > >        /* Restore the interrupt status bit. */
+> > > >        pci_update_irq_status(s);
+> > > >        return ret;
+> > > > diff --git a/hw/s390x/virtio-ccw.c b/hw/s390x/virtio-ccw.c
+> > > > index d2f85b39f30f7fc82e0c600144c0a958e1269b2c..6a9641a03d5d3a38a4de7ceb9deffc0cc303bcff 100644
+> > > > --- a/hw/s390x/virtio-ccw.c
+> > > > +++ b/hw/s390x/virtio-ccw.c
+> > > > @@ -1136,7 +1136,7 @@ static void virtio_ccw_save_config(DeviceState *d, QEMUFile *f)
+> > > >    static int virtio_ccw_load_config(DeviceState *d, QEMUFile *f)
+> > > >    {
+> > > >        VirtioCcwDevice *dev = VIRTIO_CCW_DEVICE(d);
+> > > > -    return vmstate_load_state(f, &vmstate_virtio_ccw_dev, dev, 1);
+> > > > +    return vmstate_load_state(f, &vmstate_virtio_ccw_dev, dev, 1, &error_fatal);
+> > > >    }
+> > > >    static void virtio_ccw_pre_plugged(DeviceState *d, Error **errp)
+> > > > diff --git a/hw/scsi/spapr_vscsi.c b/hw/scsi/spapr_vscsi.c
+> > > > index 20f70fb2729de78b9636a6b8c869695dab4f8902..8622419497db650523d51bcb41557bbca254eaa3 100644
+> > > > --- a/hw/scsi/spapr_vscsi.c
+> > > > +++ b/hw/scsi/spapr_vscsi.c
+> > > > @@ -642,15 +642,17 @@ static void *vscsi_load_request(QEMUFile *f, SCSIRequest *sreq)
+> > > >        VSCSIState *s = VIO_SPAPR_VSCSI_DEVICE(bus->qbus.parent);
+> > > >        vscsi_req *req;
+> > > >        int rc;
+> > > > +    Error *local_err = NULL;
+> > > >        assert(sreq->tag < VSCSI_REQ_LIMIT);
+> > > >        req = &s->reqs[sreq->tag];
+> > > >        assert(!req->active);
+> > > >        memset(req, 0, sizeof(*req));
+> > > > -    rc = vmstate_load_state(f, &vmstate_spapr_vscsi_req, req, 1);
+> > > > +    rc = vmstate_load_state(f, &vmstate_spapr_vscsi_req, req, 1, &local_err);
+> > > >        if (rc) {
+> > > >            fprintf(stderr, "VSCSI: failed loading request tag#%u\n", sreq->tag);
+> > > > +        warn_report_err(local_err);
+> > > >            return NULL;
+> > > >        }
+> > > >        assert(req->active);
+> > > > diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
+> > > > index 4fa692c1a32bcfa4e4939e5fcb64f2bf19905b3b..a65e34b6979eadfa0851666aeae7cf731a00fa40 100644
+> > > > --- a/hw/vfio/pci.c
+> > > > +++ b/hw/vfio/pci.c
+> > > > @@ -2790,13 +2790,16 @@ static int vfio_pci_load_config(VFIODevice *vbasedev, QEMUFile *f)
+> > > >        PCIDevice *pdev = &vdev->pdev;
+> > > >        pcibus_t old_addr[PCI_NUM_REGIONS - 1];
+> > > >        int bar, ret;
+> > > > +    Error *local_err = NULL;
+> > > >        for (bar = 0; bar < PCI_ROM_SLOT; bar++) {
+> > > >            old_addr[bar] = pdev->io_regions[bar].addr;
+> > > >        }
+> > > > -    ret = vmstate_load_state(f, &vmstate_vfio_pci_config, vdev, 1);
+> > > > +    ret = vmstate_load_state(f, &vmstate_vfio_pci_config, vdev, 1,
+> > > > +                             &local_err);
+> > > >        if (ret) {
+> > > > +        warn_report_err(local_err);
+> > > >            return ret;
+> > > >        }
+> > > > diff --git a/hw/virtio/virtio-mmio.c b/hw/virtio/virtio-mmio.c
+> > > > index 532c67107ba1d2978a76cf49f9cdc1de1dea3e11..0a688909fc606a3c9fde933667ae8c309ab527d0 100644
+> > > > --- a/hw/virtio/virtio-mmio.c
+> > > > +++ b/hw/virtio/virtio-mmio.c
+> > > > @@ -34,6 +34,7 @@
+> > > >    #include "qemu/error-report.h"
+> > > >    #include "qemu/log.h"
+> > > >    #include "trace.h"
+> > > > +#include "qapi/error.h"
+> > > >    static bool virtio_mmio_ioeventfd_enabled(DeviceState *d)
+> > > >    {
+> > > > @@ -619,7 +620,7 @@ static int virtio_mmio_load_extra_state(DeviceState *opaque, QEMUFile *f)
+> > > >    {
+> > > >        VirtIOMMIOProxy *proxy = VIRTIO_MMIO(opaque);
+> > > > -    return vmstate_load_state(f, &vmstate_virtio_mmio, proxy, 1);
+> > > > +    return vmstate_load_state(f, &vmstate_virtio_mmio, proxy, 1, &error_fatal);
+> > > >    }
+> > > >    static bool virtio_mmio_has_extra_state(DeviceState *opaque)
+> > > > diff --git a/hw/virtio/virtio-pci.c b/hw/virtio/virtio-pci.c
+> > > > index 767216d795998708f5716a23ae16c79cd90ff489..b04faa1e5c91b5cef40e54ec41d92422d16bfc13 100644
+> > > > --- a/hw/virtio/virtio-pci.c
+> > > > +++ b/hw/virtio/virtio-pci.c
+> > > > @@ -161,7 +161,7 @@ static int virtio_pci_load_extra_state(DeviceState *d, QEMUFile *f)
+> > > >    {
+> > > >        VirtIOPCIProxy *proxy = to_virtio_pci_proxy(d);
+> > > > -    return vmstate_load_state(f, &vmstate_virtio_pci, proxy, 1);
+> > > > +    return vmstate_load_state(f, &vmstate_virtio_pci, proxy, 1, &error_fatal);
+> > > >    }
+> > > >    static void virtio_pci_save_queue(DeviceState *d, int n, QEMUFile *f)
+> > > > diff --git a/hw/virtio/virtio.c b/hw/virtio/virtio.c
+> > > > index 9a81ad912e013fc254899c4e55cff1f76a6112a4..419f3516c9f0a3df43831eebc77aa1e6dfcd0f41 100644
+> > > > --- a/hw/virtio/virtio.c
+> > > > +++ b/hw/virtio/virtio.c
+> > > > @@ -3235,6 +3235,7 @@ virtio_load(VirtIODevice *vdev, QEMUFile *f, int version_id)
+> > > >        BusState *qbus = qdev_get_parent_bus(DEVICE(vdev));
+> > > >        VirtioBusClass *k = VIRTIO_BUS_GET_CLASS(qbus);
+> > > >        VirtioDeviceClass *vdc = VIRTIO_DEVICE_GET_CLASS(vdev);
+> > > > +    Error *local_err = NULL;
+> > > >        /*
+> > > >         * We poison the endianness to ensure it does not get used before
+> > > > @@ -3327,15 +3328,17 @@ virtio_load(VirtIODevice *vdev, QEMUFile *f, int version_id)
+> > > >        }
+> > > >        if (vdc->vmsd) {
+> > > > -        ret = vmstate_load_state(f, vdc->vmsd, vdev, version_id);
+> > > > +        ret = vmstate_load_state(f, vdc->vmsd, vdev, version_id, &local_err);
+> > > >            if (ret) {
+> > > > +            warn_report_err(local_err);
+> > > 
+> > > I think error_report_err() should be used instead because this is replacing
+> > > error_report().
+> > > 
+> > > If I read correctly, warn_report_err() is essentially error_report_err()
+> > > prefixing the message with "warning: ". However, the error messages handled
+> > > in this series do not have such prefixes so you shouldn't add them in
+> > > intemediate changes.
+> > 
+> > If I am not wrong, we have introduced warn_report_err() not as a replacement to
+> > error_report(). They are newly added ones. Besides, some of them are not intermediate
+> > changes, because they do end up in the final version. for example in hw/virtio/virtio-pci.c
+> 
+> I referred to the fact that the messages that were emitted with
+> error_report() calls in vmstate_load_state() are now printed with
+> warn_report_err(). That causes behavioral changes and I suspect that they
+> are accidental.
+> 
+> I especially want to know reasoning behind them if it is not accidental and
+> some of them are going to remain after applying the entire series.
+> 
+> > In some places in the intermediate patches a warn_report_err() is added right after
+> > error_report(), both to be replaced with error_setg()/error_prepend() later in the series.
+> 
+> The appropriate choice will depend on how Errors generated by error_setg()
+> are going to be reported to the user in that case. Using warn_report_err()
+> for them is inappropriate if they are going to reported with
+> error_report_err(). If they are going to be handled in some special way,
+> keeping the original behavior is a sensible option, and I think
+> error_report_err() does that in most cases, if not all.
+> 
+> > 
+> > Do you want to replace warn_report_err() everywhere with error_report_err()?
+> 
+> Perhaps so, but I may have missed some cases where warn_report_err(), so let
+> me share some sort of guideline I have in my mind:
+> 
+> - Keeping the original behavior is a safe choice.
+> 
+> If "warning: " was not prepended in the past, leaving messages without the
+> prefix is at least not a regression, so reviewers can give Reviewed-by: more
+> easily.
+> 
+> - Refer to Markus' email, which provides distinctions among "ordinary"
+> erros, programming errors, and warnings and I see it reasonable:
+> https://lore.kernel.org/qemu-devel/87h5yijh3b.fsf@pond.sub.org/
+> ("Abuse of warnings for unhandled errors and programming errors")
+> 
 
-> target/arm/cpregs.h       | 32 ++++++++------------------------
-> hw/intc/arm_gicv3_cpuif.c | 10 +---------
-> target/arm/helper.c       | 29 +++++++++++------------------
-> 3 files changed, 20 insertions(+), 51 deletions(-)
->
->diff --git a/target/arm/cpregs.h b/target/arm/cpregs.h
->index 3344a02bd3..b610716c24 100644
->--- a/target/arm/cpregs.h
->+++ b/target/arm/cpregs.h
->@@ -906,11 +906,7 @@ struct ARMCPRegInfo {
->      */
->     uint32_t nv2_redirect_offset;
+Yes most of them are going to be reported with error_report_err() in the end.
+So keeping the warning prefix does not make sense.
+I agree. I shall amend and send a new version. Thank you so much.
+
+> Regards,
+> Akihiko Odaki
 > 
->-    /*
->-     * The opaque pointer passed to define_arm_cp_regs_with_opaque() when
->-     * this register was defined: can be used to hand data through to the
->-     * register read/write functions, since they are passed the ARMCPRegInfo*.
->-     */
->+    /* This is used only by VHE. */
->     void *opaque;
->     /*
->      * Value of this register, if it is ARM_CP_CONST. Otherwise, if
->@@ -1004,27 +1000,15 @@ struct ARMCPRegInfo {
-> #define CPREG_FIELD64(env, ri) \
->     (*(uint64_t *)((char *)(env) + (ri)->fieldoffset))
-> 
->-void define_one_arm_cp_reg_with_opaque(ARMCPU *cpu, const ARMCPRegInfo *reg,
->-                                       void *opaque);
->+void define_one_arm_cp_reg(ARMCPU *cpu, const ARMCPRegInfo *regs);
->+void define_arm_cp_regs_len(ARMCPU *cpu, const ARMCPRegInfo *regs, size_t len);
-> 
->-static inline void define_one_arm_cp_reg(ARMCPU *cpu, const ARMCPRegInfo *regs)
->-{
->-    define_one_arm_cp_reg_with_opaque(cpu, regs, NULL);
->-}
->-
->-void define_arm_cp_regs_with_opaque_len(ARMCPU *cpu, const ARMCPRegInfo *regs,
->-                                        void *opaque, size_t len);
->-
->-#define define_arm_cp_regs_with_opaque(CPU, REGS, OPAQUE)               \
->-    do {                                                                \
->-        QEMU_BUILD_BUG_ON(ARRAY_SIZE(REGS) == 0);                       \
->-        define_arm_cp_regs_with_opaque_len(CPU, REGS, OPAQUE,           \
->-                                           ARRAY_SIZE(REGS));           \
->+#define define_arm_cp_regs(CPU, REGS)                           \
->+    do {                                                        \
->+        QEMU_BUILD_BUG_ON(ARRAY_SIZE(REGS) == 0);               \
->+        define_arm_cp_regs_len(CPU, REGS, ARRAY_SIZE(REGS));    \
->     } while (0)
-> 
->-#define define_arm_cp_regs(CPU, REGS) \
->-    define_arm_cp_regs_with_opaque(CPU, REGS, NULL)
->-
-> const ARMCPRegInfo *get_arm_cp_reginfo(GHashTable *cpregs, uint32_t encoded_cp);
-> 
-> /*
->@@ -1143,7 +1127,7 @@ static inline bool arm_cpreg_traps_in_nv(const ARMCPRegInfo *ri)
->      * means that the right set of registers is exactly those where
->      * the opc1 field is 4 or 5. (You can see this also in the assert
->      * we do that the opc1 field and the permissions mask line up in
->-     * define_one_arm_cp_reg_with_opaque().)
->+     * define_one_arm_cp_reg().)
->      * Checking the opc1 field is easier for us and avoids the problem
->      * that we do not consistently use the right architectural names
->      * for all sysregs, since we treat the name field as largely for debug.
->diff --git a/hw/intc/arm_gicv3_cpuif.c b/hw/intc/arm_gicv3_cpuif.c
->index 4b4cf09157..72e91f971a 100644
->--- a/hw/intc/arm_gicv3_cpuif.c
->+++ b/hw/intc/arm_gicv3_cpuif.c
->@@ -3037,15 +3037,7 @@ void gicv3_init_cpuif(GICv3State *s)
->          *  cpu->gic_pribits
->          */
-> 
->-        /* Note that we can't just use the GICv3CPUState as an opaque pointer
->-         * in define_arm_cp_regs_with_opaque(), because when we're called back
->-         * it might be with code translated by CPU 0 but run by CPU 1, in
->-         * which case we'd get the wrong value.
->-         * So instead we define the regs with no ri->opaque info, and
->-         * get back to the GICv3CPUState from the CPUARMState.
->-         *
->-         * These CP regs callbacks can be called from either TCG or HVF code.
->-         */
->+        /* These CP regs callbacks can be called from either TCG or HVF. */
->         define_arm_cp_regs(cpu, gicv3_cpuif_reginfo);
-> 
->         /*
->diff --git a/target/arm/helper.c b/target/arm/helper.c
->index e03cbc0394..35a176ea3b 100644
->--- a/target/arm/helper.c
->+++ b/target/arm/helper.c
->@@ -7256,12 +7256,11 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-> }
-> 
-> /*
->- * Private utility function for define_one_arm_cp_reg_with_opaque():
->+ * Private utility function for define_one_arm_cp_reg():
->  * add a single reginfo struct to the hash table.
->  */
-> static void add_cpreg_to_hashtable(ARMCPU *cpu, const ARMCPRegInfo *r,
->-                                   void *opaque, CPState state,
->-                                   CPSecureState secstate,
->+                                   CPState state, CPSecureState secstate,
->                                    int crm, int opc1, int opc2,
->                                    const char *name)
-> {
->@@ -7349,9 +7348,6 @@ static void add_cpreg_to_hashtable(ARMCPU *cpu, const ARMCPRegInfo *r,
->     r2->opc2 = opc2;
->     r2->state = state;
->     r2->secure = secstate;
->-    if (opaque) {
->-        r2->opaque = opaque;
->-    }
-> 
->     if (make_const) {
->         /* This should not have been a very special register to begin. */
->@@ -7456,8 +7452,7 @@ static void add_cpreg_to_hashtable(ARMCPU *cpu, const ARMCPRegInfo *r,
-> }
-> 
-> 
->-void define_one_arm_cp_reg_with_opaque(ARMCPU *cpu,
->-                                       const ARMCPRegInfo *r, void *opaque)
->+void define_one_arm_cp_reg(ARMCPU *cpu, const ARMCPRegInfo *r)
-> {
->     /*
->      * Define implementations of coprocessor registers.
->@@ -7616,7 +7611,7 @@ void define_one_arm_cp_reg_with_opaque(ARMCPU *cpu,
->                         if (nxs_ri.fgt) {
->                             nxs_ri.fgt |= R_FGT_NXS_MASK;
->                         }
->-                        add_cpreg_to_hashtable(cpu, &nxs_ri, opaque, state,
->+                        add_cpreg_to_hashtable(cpu, &nxs_ri, state,
->                                                ARM_CP_SECSTATE_NS,
->                                                crm, opc1, opc2, name);
->                     }
->@@ -7630,17 +7625,17 @@ void define_one_arm_cp_reg_with_opaque(ARMCPU *cpu,
->                         switch (r->secure) {
->                         case ARM_CP_SECSTATE_S:
->                         case ARM_CP_SECSTATE_NS:
->-                            add_cpreg_to_hashtable(cpu, r, opaque, state,
->+                            add_cpreg_to_hashtable(cpu, r, state,
->                                                    r->secure, crm, opc1, opc2,
->                                                    r->name);
->                             break;
->                         case ARM_CP_SECSTATE_BOTH:
->                             name = g_strdup_printf("%s_S", r->name);
->-                            add_cpreg_to_hashtable(cpu, r, opaque, state,
->+                            add_cpreg_to_hashtable(cpu, r, state,
->                                                    ARM_CP_SECSTATE_S,
->                                                    crm, opc1, opc2, name);
->                             g_free(name);
->-                            add_cpreg_to_hashtable(cpu, r, opaque, state,
->+                            add_cpreg_to_hashtable(cpu, r, state,
->                                                    ARM_CP_SECSTATE_NS,
->                                                    crm, opc1, opc2, r->name);
->                             break;
->@@ -7652,7 +7647,7 @@ void define_one_arm_cp_reg_with_opaque(ARMCPU *cpu,
->                          * AArch64 registers get mapped to non-secure instance
->                          * of AArch32
->                          */
->-                        add_cpreg_to_hashtable(cpu, r, opaque, state,
->+                        add_cpreg_to_hashtable(cpu, r, state,
->                                                ARM_CP_SECSTATE_NS,
->                                                crm, opc1, opc2, r->name);
->                     }
->@@ -7663,12 +7658,10 @@ void define_one_arm_cp_reg_with_opaque(ARMCPU *cpu,
-> }
-> 
-> /* Define a whole list of registers */
->-void define_arm_cp_regs_with_opaque_len(ARMCPU *cpu, const ARMCPRegInfo *regs,
->-                                        void *opaque, size_t len)
->+void define_arm_cp_regs_len(ARMCPU *cpu, const ARMCPRegInfo *regs, size_t len)
-> {
->-    size_t i;
->-    for (i = 0; i < len; ++i) {
->-        define_one_arm_cp_reg_with_opaque(cpu, regs + i, opaque);
->+    for (size_t i = 0; i < len; ++i) {
->+        define_one_arm_cp_reg(cpu, regs + i);
->     }
-> }
-> 
->-- 
->2.43.0
->
->
+
+Regards,
+Arun Menon
+
 

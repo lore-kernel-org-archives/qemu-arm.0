@@ -4,88 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52392CA0FFF
-	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 15:08:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C8EFCA0EFF
+	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 15:10:38 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1usN9B-0002zu-6C; Sat, 30 Aug 2025 11:05:42 -0400
+	id 1usN9W-0004Ok-P0; Sat, 30 Aug 2025 11:06:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1urtqv-0003L9-LC
- for qemu-arm@nongnu.org; Fri, 29 Aug 2025 03:48:53 -0400
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1uruB5-0003bn-0I
+ for qemu-arm@nongnu.org; Fri, 29 Aug 2025 04:09:44 -0400
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1urtqs-00061j-2b
- for qemu-arm@nongnu.org; Fri, 29 Aug 2025 03:48:52 -0400
-Received: by mail-wm1-x32b.google.com with SMTP id
- 5b1f17b1804b1-45b82a21eeeso439765e9.2
- for <qemu-arm@nongnu.org>; Fri, 29 Aug 2025 00:48:49 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1uruB1-0001zs-FP
+ for qemu-arm@nongnu.org; Fri, 29 Aug 2025 04:09:42 -0400
+Received: by mail-wm1-x32d.google.com with SMTP id
+ 5b1f17b1804b1-45b7d497ab9so10588055e9.0
+ for <qemu-arm@nongnu.org>; Fri, 29 Aug 2025 01:09:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756453728; x=1757058528; darn=nongnu.org;
- h=mime-version:message-id:in-reply-to:references:user-agent:subject
- :cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=mPWey27stMgUc4PmpbFoGL+j+T/9NtWsZahvA8j7Rgg=;
- b=UzjXh9UnGUDh0Ux6b/4rvBOAHKP4vB5NeVa8HETe/4wbtK1r1qLY17NcB54fyC7Ass
- qoJi2M/h1czM9dnmov5C2lIOgUWQqr+aNkEVJKg6dx0cVikLO9R0jHqOQWoGis0ww58Z
- j594BBYW0hbjYiEtOgXUOV7WXZpSagKD8lYe6LUx+dxLZDAiV++Gob3ItzCY7/fUzld4
- j1o6GL8bq3OpeUhNIHnIn702bkPg9K4+IKRLWkNaSKyBVh8OJ3T8pzFoD7Jg/MBSXUjJ
- ZydZUWF8OGLbpftcldMk9WCeorZgCPiSTOx3OZScLxu7pTAm4a3zHyYhl4uM0zITmHlp
- /Qcw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756453728; x=1757058528;
- h=mime-version:message-id:in-reply-to:references:user-agent:subject
- :cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ d=linaro.org; s=google; t=1756454976; x=1757059776; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:user-agent
+ :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=mPWey27stMgUc4PmpbFoGL+j+T/9NtWsZahvA8j7Rgg=;
- b=YGx2EGifoxaKn7MSeqdEPgL/pbNnu4WBDVmtqdVMU0/N41VS24atYLM1e7Xud02Lg6
- YAj5izZIa/wbYsm8DIlX61y5z2Ih0shZTCTOhNpj1L5FRrEDP8eyva+1e0FWehQtky/F
- hrlHNhllNYTmLzsQOdo4fgY9G0YHBFtXcMarKqZ/VJl3Ys4qFcmqnnjcLcaxubov1WcS
- /LItqf33u8etNjH3Oe4dO55deyvTaJ1PDg51O1nsHbPnKASvVePdRrOfdz0C2yWxRC9Y
- lL4hbdMWANVfZLBgQWcoEczs7yNvK0cvXG1Xjo1vZ/1cGaFa//zOWVsCVqETMwe1rasP
- G03g==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVmvctY3jAlrBBew/pEzCTRC0Z5UXMn5v7dezDO8IKlXKugIOxopXQCiuZbPutFMqX28Wij9klCPA==@nongnu.org
-X-Gm-Message-State: AOJu0Yyp9GrtoqFzgT77tYKdNPi/oilMXlAxSaBHaIKRR9+RrQ81d+BZ
- A/rMoeNNcLa6O0hXuj5wX5PmCpeYOsyI87b/b1H4qI7IfEWm7KVNLiFfii9R2i9NXTQ=
-X-Gm-Gg: ASbGncvn3RGzfV9/SqDfpeZNRCSy3VJ//KNnJi4Pz1Rm+9V8FSQt/DHrnJnag5OmeKV
- I8W41mDUlyEKMwFuiJMfpbUY79mJy9ETtSOpv87xcuKQV76jq4suooUdaGI23Ld8wSSUbZzxaWF
- XPuxypmjjSv+4SV8JuaNbDwFsOS/VLSRcd4Ot1CJ/pfbDO2LPZeGE0+BbOxWPsHn03qyqJQrM9j
- Jc0as1XYMbAh06aNxvisRT79ztKh/JnYMKRdamPSAskTBJr5DxglHdS+ci2S6m+rjPWG4VwEYoq
- boqArvVHT+gRNkwMl0t4dRN0lS1ceKTwmW6HJi+yX6aTTFkTo57FRDJsnP14Jgumv4NtksCTxba
- 4MP5qO6XFQtvzpqGkvxRPJAAsDD+woc7bQN5nCcMpFq6EoviDfQrwdKFeVGJSK9JvNgDOJHbS
-X-Google-Smtp-Source: AGHT+IFPK9xHyfFLx3AtdQmz952OoKadoYGclLJh6pWH/WaverPFoL8mnc6NwE1I23oNhj4H6CgK0g==
-X-Received: by 2002:a05:600c:1f8f:b0:45b:47e1:ef6a with SMTP id
- 5b1f17b1804b1-45b517e9d25mr206277745e9.37.1756453727790; 
- Fri, 29 Aug 2025 00:48:47 -0700 (PDT)
-Received: from meli-email.org (athedsl-4441256.home.otenet.gr.
- [79.129.180.152]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-45b6f306bffsm105697915e9.16.2025.08.29.00.48.47
+ bh=uYEqRHgbV4dj/zidZbTo09wctcjJATrJIMMftyItbto=;
+ b=SyaQmP0ve9WxSUuhkLG70fPWNo9iIgNYQGW0Zopgjl3pAK1efj+CQPmuvsxXCmzIvb
+ 7ECOI/3yUoKjTTszQXtg9sQQww9noGYWBpmTxP/2hjMp61OSjE8gZymvDdMMWDLuy2kZ
+ yU+r++ndvCYxGirMAbi1ZPAnWXi2aJ1eeadN6Yc+2TTL2N9d+saJ7V9uYknXNXwdRL3w
+ 7vCUoC1iiPVZRU9Za1+V5ksaUNY7Gx1I1PERU/0tj2ik8f5SqSFkbzIeQ5hUsz+pATRn
+ EUqemrpO3HYJD4r085LasZQs7Dlao2rMn631WWfzf53mxchxK8qtC6YwqpQFQ+ifxxnE
+ bH5A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1756454976; x=1757059776;
+ h=content-transfer-encoding:mime-version:message-id:date:user-agent
+ :references:in-reply-to:subject:cc:to:from:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=uYEqRHgbV4dj/zidZbTo09wctcjJATrJIMMftyItbto=;
+ b=FHNE+BL/F5ItTbzEzIsGi9o93gpzdOxdIy1KdonxuT2Ze/lOpiL56omYZcqw6dQZ0q
+ Bpehq/HvlGLH845ZEpDMfy0To6biCnWz5mKPbR+EyOsBkG/WHJ0dLGwlBu5N4Bt9UkJ2
+ 3PeEf5M/lf+luH6ce+fBS+5LfuQ+Qz3vPi5Dj//J5WhmVxnLe6I2a9BAo3J3L8c7Qgi6
+ LEh9pE/T6O1UEZ4BJwzlc9qd++DARMPscZYiKAE06jeLVeEeCAiZ50u+Lj18ByzxaXIz
+ mqAOmweYz1x97nUTwmenkgYZW3JmMTfCWoGkO6ZAETrLSxvTw96yfKTwKQ5R3dKECBNN
+ uCPw==
+X-Gm-Message-State: AOJu0YyGfEmeZ89Aw8AGgmAhTYoyWM7YvBTEsU3O9R03uZ7oZfk4mL4o
+ c0WdtyXEts7HF4GCCyytJT4GwMMgAiJh91nn22+CC1toaxv+zxsp5Y1w3gjMkXaH0RnSkFB/ocu
+ S7nrWw5c=
+X-Gm-Gg: ASbGncv4VF0q/0OGajvPXU+hocuySdxXoGD2EFGQLGgwkKEpfuz7oBnedu6JHrygPBH
+ uYFaFmtKD6Dx5SeUlMr90Zt14YHQRMjd0wj1pTJ70aHb0HdnEChpeMvXdqdIuNjI7m4KKzvoN/o
+ IZc2vM3hLHUa6qS3PEtSpGlA7CGnSoEFKFKG8J6r7S41dtm6Uwn1UAKeEMHJS7Nosi2Q3NHi6w0
+ Ep/+5bgTddWVPd5EeOeASYDbMNpDzvn/6bYfJ1xZMwj9/wf6AwURnXvYB0yz0yzOQlbAE+MH6+9
+ zQSBrJw9dEb5ho0tiOk3m4fGYkLXUNIKTijgwk9PlRT1sG3s+ioW9XLcdNt1wgvcBJPhWxlRya+
+ cGPJOFidM8wXOjr2ZP2p+dIw=
+X-Google-Smtp-Source: AGHT+IHWSncY8t16Gat2oF1IXj0YlNyyddkee5hGNfgNIv6CUTjZIlCqXsjtUmztQd8y/JQTBGuFKA==
+X-Received: by 2002:a05:600c:4705:b0:458:bf0a:6061 with SMTP id
+ 5b1f17b1804b1-45b517d49d4mr253939295e9.24.1756454975590; 
+ Fri, 29 Aug 2025 01:09:35 -0700 (PDT)
+Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-45b7e89920dsm29880545e9.16.2025.08.29.01.09.34
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 29 Aug 2025 00:48:47 -0700 (PDT)
-Date: Fri, 29 Aug 2025 10:47:34 +0300
-From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-To: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org
-Cc: 
+ Fri, 29 Aug 2025 01:09:34 -0700 (PDT)
+Received: from draig (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id D4A305F80C;
+ Fri, 29 Aug 2025 09:09:33 +0100 (BST)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org,  qemu-devel@nongnu.org
 Subject: Re: [PATCH] system: drop the -old-param option
-User-Agent: meli/0.8.12
+In-Reply-To: <20250828162700.3308812-1-peter.maydell@linaro.org> (Peter
+ Maydell's message of "Thu, 28 Aug 2025 17:27:00 +0100")
 References: <20250828162700.3308812-1-peter.maydell@linaro.org>
-In-Reply-To: <20250828162700.3308812-1-peter.maydell@linaro.org>
-Message-ID: <t1qwda.kroreyuwz7ew@linaro.org>
+User-Agent: mu4e 1.12.12; emacs 30.1
+Date: Fri, 29 Aug 2025 09:09:33 +0100
+Message-ID: <87wm6my2f6.fsf@draig.linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wm1-x32b.google.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -101,232 +104,19 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, 28 Aug 2025 19:27, Peter Maydell <peter.maydell@linaro.org> wrote:
->We deprecated the command line option -old-param for the 10.0
->release, which allows us to drop it in 10.2.  This option was used to
->boot Arm targets with a very old boot protocol using the
->'param_struct' ABI.  We only ever needed this on a handful of board
->types which have all now been removed from QEMU.
->
->Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
->---
+Peter Maydell <peter.maydell@linaro.org> writes:
 
-Reviewed-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+> We deprecated the command line option -old-param for the 10.0
+> release, which allows us to drop it in 10.2.  This option was used to
+> boot Arm targets with a very old boot protocol using the
+> 'param_struct' ABI.  We only ever needed this on a handful of board
+> types which have all now been removed from QEMU.
+>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
-> docs/about/deprecated.rst       | 13 ------
-> docs/about/removed-features.rst | 12 +++++
-> include/system/system.h         |  1 -
-> hw/arm/boot.c                   | 81 +--------------------------------
-> system/globals.c                |  1 -
-> system/vl.c                     |  4 --
-> qemu-options.hx                 |  7 ---
-> 7 files changed, 13 insertions(+), 106 deletions(-)
->
->diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
->index d50645a0711..58bce715f9c 100644
->--- a/docs/about/deprecated.rst
->+++ b/docs/about/deprecated.rst
->@@ -68,19 +68,6 @@ configurations (e.g. -smp drawers=1,books=1,clusters=1 for x86 PC machine) is
-> marked deprecated since 9.0, users have to ensure that all the topology members
-> described with -smp are supported by the target machine.
-> 
->-``-old-param`` option for booting Arm kernels via param_struct (since 10.0)
->-'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
->-
->-The ``-old-param`` command line option is specific to Arm targets:
->-it is used when directly booting a guest kernel to pass it the
->-command line and other information via the old ``param_struct`` ABI,
->-rather than the newer ATAGS or DTB mechanisms. This option was only
->-ever needed to support ancient kernels on some old board types
->-like the ``akita`` or ``terrier``; it has been deprecated in the
->-kernel since 2001. None of the board types QEMU supports need
->-``param_struct`` support, so this option has been deprecated and will
->-be removed in a future QEMU version.
->-
-> User-mode emulator command line arguments
-> -----------------------------------------
-> 
->diff --git a/docs/about/removed-features.rst b/docs/about/removed-features.rst
->index d7c2113fc3e..b1b3d1b1b3f 100644
->--- a/docs/about/removed-features.rst
->+++ b/docs/about/removed-features.rst
->@@ -560,6 +560,18 @@ the options along with the machine models they were intended for.
-> 
-> Use ``-run-with user=..`` instead.
-> 
->+``-old-param`` option for booting Arm kernels via param_struct (since 10.0)
->+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
->+
->+The ``-old-param`` command line option was specific to Arm targets:
->+it was used when directly booting a guest kernel to pass it the
->+command line and other information via the old ``param_struct`` ABI,
->+rather than the newer ATAGS or DTB mechanisms. This option was only
->+ever needed to support ancient kernels on some old board types
->+like the ``akita`` or ``terrier``; it has been deprecated in the
->+kernel since 2001. None of the board types QEMU supports need
->+``param_struct`` support, so this option has been removed.
->+
-> 
-> User-mode emulator command line arguments
-> -----------------------------------------
->diff --git a/include/system/system.h b/include/system/system.h
->index a7effe7dfd8..03a2d0e9005 100644
->--- a/include/system/system.h
->+++ b/include/system/system.h
->@@ -42,7 +42,6 @@ extern int graphic_height;
-> extern int graphic_depth;
-> extern int display_opengl;
-> extern const char *keyboard_layout;
->-extern int old_param;
-> extern uint8_t *boot_splash_filedata;
-> extern bool enable_cpu_pm;
-> extern QEMUClockType rtc_clock;
->diff --git a/hw/arm/boot.c b/hw/arm/boot.c
->index d391cd01bb1..525b31e1659 100644
->--- a/hw/arm/boot.c
->+++ b/hw/arm/boot.c
->@@ -336,81 +336,6 @@ static void set_kernel_args(const struct arm_boot_info *info, AddressSpace *as)
->     WRITE_WORD(p, 0);
-> }
-> 
->-static void set_kernel_args_old(const struct arm_boot_info *info,
->-                                AddressSpace *as)
->-{
->-    hwaddr p;
->-    const char *s;
->-    int initrd_size = info->initrd_size;
->-    hwaddr base = info->loader_start;
->-
->-    /* see linux/include/asm-arm/setup.h */
->-    p = base + KERNEL_ARGS_ADDR;
->-    /* page_size */
->-    WRITE_WORD(p, 4096);
->-    /* nr_pages */
->-    WRITE_WORD(p, info->ram_size / 4096);
->-    /* ramdisk_size */
->-    WRITE_WORD(p, 0);
->-#define FLAG_READONLY 1
->-#define FLAG_RDLOAD   4
->-#define FLAG_RDPROMPT 8
->-    /* flags */
->-    WRITE_WORD(p, FLAG_READONLY | FLAG_RDLOAD | FLAG_RDPROMPT);
->-    /* rootdev */
->-    WRITE_WORD(p, (31 << 8) | 0); /* /dev/mtdblock0 */
->-    /* video_num_cols */
->-    WRITE_WORD(p, 0);
->-    /* video_num_rows */
->-    WRITE_WORD(p, 0);
->-    /* video_x */
->-    WRITE_WORD(p, 0);
->-    /* video_y */
->-    WRITE_WORD(p, 0);
->-    /* memc_control_reg */
->-    WRITE_WORD(p, 0);
->-    /* unsigned char sounddefault */
->-    /* unsigned char adfsdrives */
->-    /* unsigned char bytes_per_char_h */
->-    /* unsigned char bytes_per_char_v */
->-    WRITE_WORD(p, 0);
->-    /* pages_in_bank[4] */
->-    WRITE_WORD(p, 0);
->-    WRITE_WORD(p, 0);
->-    WRITE_WORD(p, 0);
->-    WRITE_WORD(p, 0);
->-    /* pages_in_vram */
->-    WRITE_WORD(p, 0);
->-    /* initrd_start */
->-    if (initrd_size) {
->-        WRITE_WORD(p, info->initrd_start);
->-    } else {
->-        WRITE_WORD(p, 0);
->-    }
->-    /* initrd_size */
->-    WRITE_WORD(p, initrd_size);
->-    /* rd_start */
->-    WRITE_WORD(p, 0);
->-    /* system_rev */
->-    WRITE_WORD(p, 0);
->-    /* system_serial_low */
->-    WRITE_WORD(p, 0);
->-    /* system_serial_high */
->-    WRITE_WORD(p, 0);
->-    /* mem_fclk_21285 */
->-    WRITE_WORD(p, 0);
->-    /* zero unused fields */
->-    while (p < base + KERNEL_ARGS_ADDR + 256 + 1024) {
->-        WRITE_WORD(p, 0);
->-    }
->-    s = info->kernel_cmdline;
->-    if (s) {
->-        address_space_write(as, p, MEMTXATTRS_UNSPECIFIED, s, strlen(s) + 1);
->-    } else {
->-        WRITE_WORD(p, 0);
->-    }
->-}
->-
-> static int fdt_add_memory_node(void *fdt, uint32_t acells, hwaddr mem_base,
->                                uint32_t scells, hwaddr mem_len,
->                                int numa_node_id)
->@@ -760,11 +685,7 @@ static void do_cpu_reset(void *opaque)
->                 cpu_set_pc(cs, info->loader_start);
-> 
->                 if (!have_dtb(info)) {
->-                    if (old_param) {
->-                        set_kernel_args_old(info, as);
->-                    } else {
->-                        set_kernel_args(info, as);
->-                    }
->+                    set_kernel_args(info, as);
->                 }
->             } else if (info->secondary_cpu_reset_hook) {
->                 info->secondary_cpu_reset_hook(cpu, info);
->diff --git a/system/globals.c b/system/globals.c
->index 9640c9511e9..98f9876d5d4 100644
->--- a/system/globals.c
->+++ b/system/globals.c
->@@ -52,7 +52,6 @@ bool vga_interface_created;
-> Chardev *parallel_hds[MAX_PARALLEL_PORTS];
-> QEMUOptionRom option_rom[MAX_OPTION_ROMS];
-> int nb_option_roms;
->-int old_param;
-> const char *qemu_name;
-> unsigned int nb_prom_envs;
-> const char *prom_envs[MAX_PROM_ENVS];
->diff --git a/system/vl.c b/system/vl.c
->index 3b7057e6c66..00f36947257 100644
->--- a/system/vl.c
->+++ b/system/vl.c
->@@ -3524,10 +3524,6 @@ void qemu_init(int argc, char **argv)
->                 prom_envs[nb_prom_envs] = optarg;
->                 nb_prom_envs++;
->                 break;
->-            case QEMU_OPTION_old_param:
->-                warn_report("-old-param is deprecated");
->-                old_param = 1;
->-                break;
->             case QEMU_OPTION_rtc:
->                 opts = qemu_opts_parse_noisily(qemu_find_opts("rtc"), optarg,
->                                                false);
->diff --git a/qemu-options.hx b/qemu-options.hx
->index ab23f14d217..aa44b0e34ae 100644
->--- a/qemu-options.hx
->+++ b/qemu-options.hx
->@@ -5347,13 +5347,6 @@ SRST
->         specified, the former is passed to semihosting as it always
->         takes precedence.
-> ERST
->-DEF("old-param", 0, QEMU_OPTION_old_param,
->-    "-old-param      old param mode\n", QEMU_ARCH_ARM)
->-SRST
->-``-old-param``
->-    Old param mode (ARM only).
->-ERST
->-
-> DEF("sandbox", HAS_ARG, QEMU_OPTION_sandbox, \
->     "-sandbox on[,obsolete=allow|deny][,elevateprivileges=allow|deny|children]\n" \
->     "          [,spawn=allow|deny][,resourcecontrol=allow|deny]\n" \
->-- 
->2.43.0
->
->
+Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro
 

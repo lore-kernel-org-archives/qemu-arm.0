@@ -4,80 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 926B3CA0FFF
-	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 16:09:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 113ECCA0FFF
+	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 16:10:00 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1usNvr-0007SY-Vd; Sat, 30 Aug 2025 11:56:00 -0400
+	id 1usNRo-00028i-JG; Sat, 30 Aug 2025 11:24:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1usELo-0005te-1E
- for qemu-arm@nongnu.org; Sat, 30 Aug 2025 01:42:09 -0400
-Received: from mail-pf1-x430.google.com ([2607:f8b0:4864:20::430])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1us26r-0006HB-C7
+ for qemu-arm@nongnu.org; Fri, 29 Aug 2025 12:37:53 -0400
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1usELm-000479-1M
- for qemu-arm@nongnu.org; Sat, 30 Aug 2025 01:42:07 -0400
-Received: by mail-pf1-x430.google.com with SMTP id
- d2e1a72fcca58-7722bcb989aso1213232b3a.1
- for <qemu-arm@nongnu.org>; Fri, 29 Aug 2025 22:42:05 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1us26p-0006fK-GV
+ for qemu-arm@nongnu.org; Fri, 29 Aug 2025 12:37:53 -0400
+Received: by mail-wm1-x330.google.com with SMTP id
+ 5b1f17b1804b1-45a1b05a59fso17573555e9.1
+ for <qemu-arm@nongnu.org>; Fri, 29 Aug 2025 09:37:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756532524; x=1757137324; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=LrpEbuupTDGPoF+9xpEpdSwm7VuWd0B4c9SgIZ+YWys=;
- b=LJRF4KyU9n/MawfX1isa1ADVuocxTE02V60mF2mJ++wZ8/IGHenWrbpENBxiRBSt2/
- VPPkktd65boWsvwqxKNDGVeAwBh4oocR2W3sV6apmf9mI4lGvvydoNfZIeNvzMWxmUgJ
- soiv9KmQWDdVL6aoy+bCW86RfGC6cmwBS7CIVV4Nft/X7UULZzu1TwMkoUDtVo9NWOzb
- ttD+oKflGXs6EtUbAiEGIzgMTrzW0KNLR4g8GBqeqpeZYroQ/BTsuvT+g499YM0pDGyB
- 0/MWv+OXmv0F6IeR+89AOHEEYLqvGNEv12vsvsgUGjvDUrgy5alKcXEsLkFDjxU5rovC
- Ghrw==
+ d=linaro.org; s=google; t=1756485468; x=1757090268; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=huJdIqvmZ+zaJuBuQQp6mFkNWQfYfBe7ou7wyl7+Fmk=;
+ b=W7bYHK+stzVK0GKy9CNmXmUYjpm7bQKY759aPbonrEJKUexG/hB67BFIJhLpyN2HEZ
+ 6IYbAyLgVGQJKsv8HnOV28elbm5FyH70j7Yw0WqLpyE4Gsi1OD12uabGSEtORPeN2qeE
+ IVUq6kqtkAmz2bd70vv0IKxfb5KOSawQQrr7trohMtK3J7tM5X270NfzHTQXB0icorRo
+ tDKG/x6jq++PDTaGdAmAxOwIH2fBJExCTMqMpvTavCvfud8sa70gpKJfltXn2g2AcAX5
+ h5FilVwikRc7bSwpgdpVYaUpPkXF/72A02zzgANdlcRM2G/o+ObuSsw9FnEQNwuw/Z+n
+ /LWA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756532524; x=1757137324;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=LrpEbuupTDGPoF+9xpEpdSwm7VuWd0B4c9SgIZ+YWys=;
- b=uMug9CyB/fYSG8zpzMn/95Ih6m0zKyfuJZErnc45s7PGcq0LAUrpH5QfZdu8e2F6e5
- rSo89ijdYJ+jdc3+3bwXSLa2I7YwxFswACTAL+rvMLDQF5fh1zobn66r7wEqME+JB41Q
- uX3N6mGxRK/RH5AhpAJtToCzLACaZwi5SbB2PHglakjdKWCx8JD4olz5182Sm1TzxV/Z
- Y8zDl13DlVnB1BGnxyWJiEneZeruw5yCv899fSh++rHlWF2PqRf+U44U05vOOczx8bPW
- VCsZKfDhUAHn7dNmPPyk7iKvTzGB4BYPic6QykZg0WUpa+HG/BvtJzvisj4edYpebyRb
- Zv0A==
-X-Gm-Message-State: AOJu0YzlazaVrtNLK0HWCu4dbAMMQOWOwlaWucSfgdmd7FY1/jinnihM
- mMC3jDmWE1rC86zhaPhFXYVM8Sn2eWTGmaszGRuK+hDUMgN8gPDWiM8ttcxOB4W+oRM=
-X-Gm-Gg: ASbGncsNGMKlsej2m4d+tZS9hmjhOQvZ9E25aC8p91RJUMAYYbJuWACfJxwLd58uMb2
- o71/HdHfHYZku2b7hxor0Aq4477HtyCh48lsLBFk9P/Eg+15JsD83CL51E6gSQ1ecDL2DaBheQX
- VdosX2YI8uDYlO9AM7FsyROMLG3HZoTlWGfJ30xnSLZkMXu1+qC+ac3RSxrjtUArqqnzWw2XRRe
- qbpI98uUhcA0xsUyt+V2bK7swqzFUARW88x7d947txhZENYs9W0ELFaJy4tM+xTue8y31tgGJib
- 1cJ9Sl/BJqpNM903gb0ace5pjJsCarjRLksLtXVCpMEZC93U9XYhk1pj4aP5Ut3nw+b0dd5+pfG
- CSTOfeI20gGodQRll72pmOcLSEchKd75nFKmT/ab51JakwimcZNKrF4FdWbaH8Lg8tY1l9L4=
-X-Google-Smtp-Source: AGHT+IHpdXZmyMUkWaTfqEEtPerDgTDkW0FSrovCVlJ4lrOJoYSNB+/7ShR3lje9DJpc0axVBM0cTw==
-X-Received: by 2002:a05:6a20:6a25:b0:240:1327:ab3e with SMTP id
- adf61e73a8af0-243d6dcec6dmr1381147637.9.1756532524151; 
- Fri, 29 Aug 2025 22:42:04 -0700 (PDT)
-Received: from stoup.. (122-150-204-48.dyn.ip.vocus.au. [122.150.204.48])
- by smtp.gmail.com with ESMTPSA id
- 41be03b00d2f7-b4d96829a66sm2435905a12.6.2025.08.29.22.42.02
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 29 Aug 2025 22:42:03 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v4 11/84] target/arm: Remove outdated comment for ZCR_EL12
-Date: Sat, 30 Aug 2025 15:40:15 +1000
-Message-ID: <20250830054128.448363-12-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250830054128.448363-1-richard.henderson@linaro.org>
-References: <20250830054128.448363-1-richard.henderson@linaro.org>
+ d=1e100.net; s=20230601; t=1756485468; x=1757090268;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=huJdIqvmZ+zaJuBuQQp6mFkNWQfYfBe7ou7wyl7+Fmk=;
+ b=TMHdZkBR2kSo74aVyRnFnsKHTy/jLL32i7ZogfJBcnTwyqSWSf6LksO3liBnn+ZjEL
+ wPW9puhgXEs3Q6SQbOPZ30S/kq1bPSR3R+xl930txP8nRNialsqbgKE8F5l0+Kv9kRmG
+ zaokWVLuU/V6OkmL0iL80wtbkAQA3QlqpVif+2SV1YtBr+WJjklzFstZ83StnJWMV7/b
+ rogVzXCPTK/STt7j5Bwfr3YDVNHH6kBaVpoiGnZZR9eYSAu9YS7msFjcXZOpKRNVOIAM
+ MwxcagH+2N4LYOZ37IAVvNwT1k49xKsXtG1+O8qnq5atN9Iqa7Fa0wzVfEZGnC0VD/Kq
+ 7gjA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXqXdvLWOBw3SnJnV9KwKrYZpVgOPANlsUEb/QuKuTqE3O/3AEPOZ7n72j1VIWBDtgkZTRG2tMK0Q==@nongnu.org
+X-Gm-Message-State: AOJu0Ywf/nKoGJb5ZXxxGvArM7jj+IWva8W6E9YEczJhgn2F/n0FhqmR
+ P72l8EyhQ3Kq0Qx/n8vma9pSVG2x4LHVvYTbr8o8CSVEsDwKRxXHC+0CGrUJvpt48+w=
+X-Gm-Gg: ASbGncs2WSJFvSpGtBTn47XOHK+vDmxA9HsUA6WYEDwoPtJPO1wVlEAC/tWHclE0fJH
+ t8kHaVCVfwtV6HDNPH16vWqxtmj+a0se+7AS8rHFbmhHJeywZn5yJ4opke8IBTXrvoxn7imgnfY
+ LI6DVXU/+RZVRXB4IrVhlT/PPSOUeveLcWLsESUbTEKP2Sp4GjNqmy/UxTvk/tsTUlcYsw1UTSe
+ IWCzhkEH142d0XXjxmR7oemnrPMB1ogrI7tRpcfPhom5RrE7CbUYwiUTkC9/KvxQ0f4PVB9bVtt
+ ywcx+IplKAJARNo8L6N3ASD2HkIPFnSA3h8QwuO4UqSl/pbVYtkZ15jTFkZ9K8XbPdxE3MAOL0X
+ VCl5+uLu6TmwGzNSNuWfxz/jcPXImT4hg8mo/FaZOZugJ+f7L6TSlrU4QKdZ8qYcER6TOYIucoK
+ gwdgV2hpXz1Uk=
+X-Google-Smtp-Source: AGHT+IGx4lPv5fUVgnNxOiziaaiKvWCf956a+8HuCHiCxa7LPGuUslVnlQhGSHWisHWq1+pqz+1LIg==
+X-Received: by 2002:a05:600c:4f0e:b0:45b:7f16:468a with SMTP id
+ 5b1f17b1804b1-45b7f16485dmr27834525e9.37.1756485468589; 
+ Fri, 29 Aug 2025 09:37:48 -0700 (PDT)
+Received: from [192.168.69.207] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-45b7e89920dsm51510625e9.16.2025.08.29.09.37.47
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 29 Aug 2025 09:37:47 -0700 (PDT)
+Message-ID: <0c90ebd6-e112-478e-8604-ce5d1a1f29d5@linaro.org>
+Date: Fri, 29 Aug 2025 18:37:46 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::430;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x430.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 0/2] hw: fix some leaks in xlnx devices
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: Alistair Francis <alistair@alistair23.me>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Francisco Iglesias <francisco.iglesias@amd.com>
+References: <20250826174956.3010274-1-peter.maydell@linaro.org>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20250826174956.3010274-1-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::330;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -100,32 +105,11 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The comment about not being included in the summary table
-has been out of date for quite a while.
+On 26/8/25 19:49, Peter Maydell wrote:
 
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/helper.c | 5 -----
- 1 file changed, 5 deletions(-)
+> Peter Maydell (2):
+>    hw/misc/xlnx-versal-cframe-reg: Free FIFO, g_tree on deinit
+>    hw/display/xlnx_dp: Don't leak dpcd and edid objects
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 5a219703ae..11e1c52b70 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -4563,11 +4563,6 @@ static void define_arm_vh_e2h_redirects_aliases(ARMCPU *cpu)
-         { K(3, 0, 14, 1, 0), K(3, 4, 14, 1, 0), K(3, 5, 14, 1, 0),
-           "CNTKCTL", "CNTHCTL_EL2", "CNTKCTL_EL12" },
- 
--        /*
--         * Note that redirection of ZCR is mentioned in the description
--         * of ZCR_EL2, and aliasing in the description of ZCR_EL1, but
--         * not in the summary table.
--         */
-         { K(3, 0,  1, 2, 0), K(3, 4,  1, 2, 0), K(3, 5, 1, 2, 0),
-           "ZCR_EL1", "ZCR_EL2", "ZCR_EL12", isar_feature_aa64_sve },
-         { K(3, 0,  1, 2, 6), K(3, 4,  1, 2, 6), K(3, 5, 1, 2, 6),
--- 
-2.43.0
-
+Series queued, thanks.
 

@@ -4,80 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 828ACCA0EFF
-	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 16:12:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F3FDCA0FFF
+	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 16:12:47 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1usNwY-0001Ep-E3; Sat, 30 Aug 2025 11:56:42 -0400
+	id 1usNQo-0008G3-2V; Sat, 30 Aug 2025 11:23:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1usEMP-00065x-Hv
- for qemu-arm@nongnu.org; Sat, 30 Aug 2025 01:42:45 -0400
-Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1us1sz-0004jP-Au
+ for qemu-arm@nongnu.org; Fri, 29 Aug 2025 12:23:33 -0400
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1usEMN-0004Dx-6s
- for qemu-arm@nongnu.org; Sat, 30 Aug 2025 01:42:45 -0400
-Received: by mail-pf1-x433.google.com with SMTP id
- d2e1a72fcca58-7723f0924a3so220952b3a.2
- for <qemu-arm@nongnu.org>; Fri, 29 Aug 2025 22:42:42 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1us1sw-00034W-Dt
+ for qemu-arm@nongnu.org; Fri, 29 Aug 2025 12:23:33 -0400
+Received: by mail-wm1-x329.google.com with SMTP id
+ 5b1f17b1804b1-45b84367affso1356015e9.3
+ for <qemu-arm@nongnu.org>; Fri, 29 Aug 2025 09:23:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756532562; x=1757137362; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=RkmMxKsmWKq3Irpj/N+FmNwynILAG2P025dwAc8eVWU=;
- b=WhFUgx8YQDOBOWfJu5wk1/PNW2LOSgRgnybXmRLe3s2X3Bk7tGPSLSbNAl9hTrThUl
- ZPiCrG2xLSKxJ/NyCZOYpaiXOL2GRp7ndcFRZ8n1giTbmDwSVZ/rOKyzar26Vq3+s6L4
- rbIq19uB9lALj0HvJayXd7ZZFrE06ceirkWBSzzn8W1fPa/4RKro4ciP6mRrW+g/6sNH
- TQ6WWRCQ5OMZZnf1NsiRvEA9dM1J1Mfo58dPP4QniZxr6wjG40LBZVKrRz3SJJaL3ktc
- a7MoAkbqpc8Rxc5SNSKm2YZrkes+vXA0LfIOF5o4Cn/5CCsoT73jBfXEgmZ0fqU+nz5l
- XlJQ==
+ d=linaro.org; s=google; t=1756484608; x=1757089408; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=14xM34WgZ5OVhiHty2VliE68LfnqhHTViqNX91fodbk=;
+ b=daUoVIFGmNBH85i5qQUb6QfZbhroniLw1NUAhqaEUqZQJZAM6/J63Z/7z5PyjJNqYZ
+ zfqGFrDUkksseoqDsgYO2dX2aw246cV/i1kJsU1ilaf7oXBnuQLPy/94Mv/0Y8CWFG7U
+ HdTWoV1dII66q9CrsJx+WB1RPpXhnKEW10E7pxw5Y+Nv6m4xaxqDede+LP5k0lo6RzQu
+ w8dTWj6Fi69yqV/4JGV0NdA6SPSOckr+XQ+ivRehPaZS2qdUPal4Yt+wu3oGTKp0g8Fs
+ kibfhck+KQd04ddunHGWDhIF1xbBH8vqHrP7ssC3jJTX9diFxS1mpcCgluEH63TwH+8P
+ WMEw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756532562; x=1757137362;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=RkmMxKsmWKq3Irpj/N+FmNwynILAG2P025dwAc8eVWU=;
- b=JX2Vn+4whRjoma3/YGmQpD87Nv6RKRN78insfx0KhfVqRGhd3qpH3iKYO0TYeAhdIX
- GkJw++EPWcA75xwrM4I0aoYNHZEoUmeLXcOGRn8wQ8ByNYgdJXOiSJ/81/aUft+186EG
- 04nciwjM0BU3o374KMhwal74iouqZnKB47hDkB3AHumPEBwV1PkG3PivuJjaYDhp92/E
- CCP0TlSzK1tVYKXgMXo+9nJfidYne+63OG4WP9slgwOcrTtqMr0bs9eLgirTjkt9FHzB
- KLkI8NrHThZlO/QvfFWNBWEGyBj0gu7McxG0mUOcLijfyHKMq54BLh1iRagTo/u8rXnl
- xVzw==
-X-Gm-Message-State: AOJu0YwZH0MFzgyZ1X8MtU6tJRXTraCfsNKG6UitASvM86ucH+IiTVMo
- wYjFMUWXkCOrQp3Pg72fuapBfu96JPBsK3wSFvMMjnTfqsDJZqFkuWfV7H5ttTFC8Zo=
-X-Gm-Gg: ASbGncu8F2jPZXLu7W18FlT9fmM2Hnkf5v1dQETi6ZQV9GhnkuEMtsYnI7gukNLRLQQ
- iQprOROjd/sw0lX8ZxkFMJJgVbJKkjfVs4dbKGO/P8MqUiwv3iBRKpssghO8y85N4d2rY+lK4IG
- 6ITft8r2bBnZFzqYlbAuYkoRJp92Kpx08QexuLr+uFk1GsuBx413/n/7OZDy2tpUAS5DUafH/ql
- KP3Kwb2Mr//k4ioJfzVq93wQp69ev27eqeLtDTtNoDxv1lAqth+JfSXbgcK8rZOaBHLzTf5f2nj
- Dhdo4e3jXCDdda/qWhMIowt6+2YsenRmwAtkzVAPxwt56uFGPKtSgTiuXBzk20mc26Yp2VxOID1
- zNvi47HNdZmCxVpN7KfkVM0idRBinhIsPfOkODssx5RQEtEWsC2Yzpx+5TxuK6BRawyHxyEo=
-X-Google-Smtp-Source: AGHT+IE2cN3MXmVubhw779QDlzhGx7t0hD/HV2rzToKMUcyZF206nYAkv7kYO3g8Uu48sJ4Dzhw4Dg==
-X-Received: by 2002:a05:6a21:32a0:b0:243:b125:16c5 with SMTP id
- adf61e73a8af0-243d6f581f5mr1542218637.49.1756532561862; 
- Fri, 29 Aug 2025 22:42:41 -0700 (PDT)
-Received: from stoup.. (122-150-204-48.dyn.ip.vocus.au. [122.150.204.48])
- by smtp.gmail.com with ESMTPSA id
- 41be03b00d2f7-b4d96829a66sm2435905a12.6.2025.08.29.22.42.39
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 29 Aug 2025 22:42:41 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v4 24/84] target/arm: Implement dirtybit check for PIE
-Date: Sat, 30 Aug 2025 15:40:28 +1000
-Message-ID: <20250830054128.448363-25-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250830054128.448363-1-richard.henderson@linaro.org>
-References: <20250830054128.448363-1-richard.henderson@linaro.org>
+ d=1e100.net; s=20230601; t=1756484608; x=1757089408;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=14xM34WgZ5OVhiHty2VliE68LfnqhHTViqNX91fodbk=;
+ b=ctJzOwGNcrne5NbDneaqI0zsK9TkWy20lTOTtaUXLUUplt7+k1wLRSNQWKhXC+hVpC
+ rqy2JxDoiZ2wi/MuWxlEEgOyZXoM2CqnLqOgrr07Ag3d8dN3ZLZiGqGst8QlUIH+ufGe
+ MAeiQAneFUDGMLA5uVyc125kyYyNLdfb73YOCDALWG2MNBUoEt4YCeumN7g0LH5iS+YV
+ S3wg+cN1kN19t9cc+aYzdpxnZQy1BleY0oqBv2k4uK60wGJglkmGPW19EizD9iA9NPse
+ JeZsXZJjAi5cf+a00+hG2WJxjljykadze8r/RdRpy2jmcfBJ2TW67p979mJSPb4AruNE
+ m1qw==
+X-Gm-Message-State: AOJu0YzaA2kGomiOjyYLpHgyntz7MoizKXdvjKHuW5WHxrawzr7DwvBb
+ WVFManpI/6ciV2RuFyWEmUhKoGF8nJXvIRYbUAY5A436rOUD/lLyt0qArOvpLYa12ss=
+X-Gm-Gg: ASbGncvi4BueWXcRgaK5ySgDnZMMOowIAIgTV3a1bqLZS0hr6z5HEVXZCCShKkgH4k5
+ w1U8P0mY7U1JRkv3afIdslozlj/sS+A+4GoaO3K2S8L1O19jyJhyZlypJiLFP6UaBr5FlrVCTlf
+ 2nOsPQxyBfE4+C9hZWEjIMjiSDT3h4Gj5tY2FnsrG8n/WFqiQzuhjz5DcOnsRcZUPI0doE9DoLN
+ G6n0MrSVd19/xAym5quhE+M2kkRfbEvq2RzX63kSXaEVvZTde9bQpppO9JHOPjk8PImHrw2ZEYn
+ pimtvxw8ILEFEAMpx9Dhlz1cQ7W7z9j/BUgDvI6MSfCMoABqq2APGktGpZlJfzxpOi23JKY40Io
+ /sUiAZt3xdVihmWRG+T2Z0xQAqq9QwdBlQ8v+IEYCnJqKUwKuRneQ8CuzkbxgdMs78VDpYJxSxz
+ j1
+X-Google-Smtp-Source: AGHT+IFfaWFlJtcZID9seekoVR7Cts1zfcFL78mYT9f73QFOfYqsZnnS8YyvLpbs+qb6AR6Q7T36Qg==
+X-Received: by 2002:a05:600c:1381:b0:45b:6b57:5308 with SMTP id
+ 5b1f17b1804b1-45b6b575361mr101850265e9.7.1756484607588; 
+ Fri, 29 Aug 2025 09:23:27 -0700 (PDT)
+Received: from [192.168.69.207] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-45b7e92a42asm42863175e9.20.2025.08.29.09.23.26
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 29 Aug 2025 09:23:27 -0700 (PDT)
+Message-ID: <484d2580-77fc-4fdf-8f02-ef25df08bb7c@linaro.org>
+Date: Fri, 29 Aug 2025 18:23:26 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::433;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x433.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2] hw/sensor: add stub for ADM1266 blackbox
+To: Ben Hillier <bhillier@google.com>, wuhaotsh@google.com, kfting@nuvoton.com
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ Titus Rwantare <titusr@google.com>
+References: <20250828184939.3140841-1-bhillier@google.com>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20250828184939.3140841-1-bhillier@google.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::329;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x329.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -100,99 +101,91 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Both S1PIE and S2PIE have a bit to make software tracking
-of dirty pages easier.
+Hi Titus,
 
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/internals.h      |  1 +
- target/arm/ptw.c            | 16 ++++++++++++++++
- target/arm/tcg/tlb_helper.c | 12 +++++++++---
- 3 files changed, 26 insertions(+), 3 deletions(-)
+On 28/8/25 20:49, Ben Hillier wrote:
+> From: Titus Rwantare <titusr@google.com>
+> 
+> This patch fixes a bug that causes a kernel panic when calling ADM1266_BLACKBOX_INFORMATION.
 
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 1d60a4ff7d..889669c67c 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -752,6 +752,7 @@ struct ARMMMUFaultInfo {
-     bool s1ptw;
-     bool s1ns;
-     bool ea;
-+    bool dirtybit;  /* FEAT_S1PIE, FEAT_S2PIE */
- };
- 
- /**
-diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-index 7ddae90f69..2b753b1319 100644
---- a/target/arm/ptw.c
-+++ b/target/arm/ptw.c
-@@ -2306,6 +2306,22 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
-         goto do_fault;
-     }
- 
-+    /* S1PIE and S2PIE both have a bit for software dirty page tracking. */
-+    if (access_type == MMU_DATA_STORE && param.pie) {
-+        /*
-+         * For S1PIE, bit 7 is nDirty and both HA and HD are checked.
-+         * For S2PIE, bit 7 is Dirty and only HD is checked.
-+         */
-+        bool bit7 = extract64(attrs, 7, 1);
-+        if (regime_is_stage2(mmu_idx)
-+            ? !bit7 && !param.hd
-+            : bit7 && !(param.ha && param.hd)) {
-+            fi->type = ARMFault_Permission;
-+            fi->dirtybit = true;
-+            goto do_fault;
-+        }
-+    }
-+
-     /* If FEAT_HAFDBS has made changes, update the PTE. */
-     if (new_descriptor != descriptor) {
-         new_descriptor = arm_casq_ptw(env, descriptor, new_descriptor, ptw, fi);
-diff --git a/target/arm/tcg/tlb_helper.c b/target/arm/tcg/tlb_helper.c
-index 23c72a99f5..ae2acd6727 100644
---- a/target/arm/tcg/tlb_helper.c
-+++ b/target/arm/tcg/tlb_helper.c
-@@ -24,13 +24,13 @@ bool arm_s1_regime_using_lpae_format(CPUARMState *env, ARMMMUIdx mmu_idx)
-     return regime_using_lpae_format(env, mmu_idx);
- }
- 
--static inline uint32_t merge_syn_data_abort(uint32_t template_syn,
-+static inline uint64_t merge_syn_data_abort(uint32_t template_syn,
-                                             ARMMMUFaultInfo *fi,
-                                             unsigned int target_el,
-                                             bool same_el, bool is_write,
-                                             int fsc)
- {
--    uint32_t syn;
-+    uint64_t syn;
- 
-     /*
-      * ISV is only set for stage-2 data aborts routed to EL2 and
-@@ -75,6 +75,10 @@ static inline uint32_t merge_syn_data_abort(uint32_t template_syn,
-         /* Merge the runtime syndrome with the template syndrome.  */
-         syn |= template_syn;
-     }
-+
-+    /* Form ISS2 at the top of the syndrome. */
-+    syn |= (uint64_t)fi->dirtybit << 37;
-+
-     return syn;
- }
- 
-@@ -176,7 +180,9 @@ void arm_deliver_fault(ARMCPU *cpu, vaddr addr,
-     int target_el = exception_target_el(env);
-     int current_el = arm_current_el(env);
-     bool same_el;
--    uint32_t syn, exc, fsr, fsc;
-+    uint32_t exc, fsr, fsc;
-+    uint64_t syn;
-+
-     /*
-      * We know this must be a data or insn abort, and that
-      * env->exception.syndrome contains the template syndrome set
--- 
-2.43.0
+But you also implement BLACKBOX_CONFIG / READ_BLACKBOX...
 
+> Log Message:
+> 
+> adm1266 5-0042: Could not read blackbox!
+> Kernel panic - not syncing: stack-protector: Kernel stack is corrupted in: adm1266_nvmem_read+0x168/0x170
+> 
+> Signed-off-by: Titus Rwantare <titusr@google.com>
+> ---
+>   hw/sensor/adm1266.c | 15 +++++++++++++++
+>   1 file changed, 15 insertions(+)
+> 
+> diff --git a/hw/sensor/adm1266.c b/hw/sensor/adm1266.c
+> index 9017ce6116..cd11526c2b 100644
+> --- a/hw/sensor/adm1266.c
+> +++ b/hw/sensor/adm1266.c
+> @@ -75,6 +75,7 @@ typedef struct ADM1266State {
+>   static const uint8_t adm1266_ic_device_id[] = {0x03, 0x41, 0x12, 0x66};
+>   static const uint8_t adm1266_ic_device_rev[] = {0x08, 0x01, 0x08, 0x07, 0x0,
+>                                                   0x0, 0x07, 0x41, 0x30};
+> +static const uint8_t adm1266_blackbox_info[] = {0x04, 0x00, 0x00, 0x00, 0x00};
+   {
+     0x04,       /* length */
+     0x00, 0x00, /* latest ID */
+     0x00,       /* latest record logic index */
+     0x00        /* latest record count */
+   };
+
+>   
+>   static void adm1266_exit_reset(Object *obj, ResetType type)
+>   {
+> @@ -125,6 +126,17 @@ static uint8_t adm1266_read_byte(PMBusDevice *pmdev)
+>           pmbus_send(pmdev, adm1266_ic_device_rev, sizeof(adm1266_ic_device_rev));
+>           break;
+>   
+> +    case ADM1266_BLACKBOX_CONFIG:
+> +        return 0;
+
+I'd was expecting pmbus_send(pmdev, "\0\0", 2) for CYCLIC_RECORD_DISABLED.
+
+> +
+> +    case ADM1266_READ_BLACKBOX:
+
+Here I'm confused, as len+data is 65bytes. Is the guest
+reading a stream of 0xff?
+
+> +        return 0;
+> +
+> +    case ADM1266_BLACKBOX_INFORMATION:
+> +        pmbus_send(pmdev, adm1266_blackbox_info,
+> +                   sizeof(adm1266_blackbox_info));
+> +        break;
+
+OK.
+
+>       default:
+>           qemu_log_mask(LOG_UNIMP,
+>                         "%s: reading from unimplemented register: 0x%02x\n",
+> @@ -154,6 +166,9 @@ static int adm1266_write_data(PMBusDevice *pmdev, const uint8_t *buf,
+>           pmbus_receive_block(pmdev, (uint8_t *)s->mfr_rev, sizeof(s->mfr_rev));
+>           break;
+>   
+> +    case ADM1266_BLACKBOX_CONFIG:
+Do we want to check, if lduw_p(buf) != 0 -> log(UNIMP)?
+
+> +    case ADM1266_READ_BLACKBOX:
+
+Do we want to check, if (buf[0] != 1) -> log(GUEST_ERROR),
+and log(UNIMP) regardless?
+
+> +    case ADM1266_BLACKBOX_INFORMATION:
+
+            log(GUEST_ERROR);
+
+>       case ADM1266_SET_RTC:   /* do nothing */
+>           break;
+>   
+Regards,
+
+Phil.
 

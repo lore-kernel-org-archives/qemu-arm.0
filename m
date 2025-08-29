@@ -4,87 +4,132 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E80BCCA0FFF
-	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 17:57:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC6C7CA0FFF
+	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 17:58:26 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1usOFd-0003Me-OZ; Sat, 30 Aug 2025 12:16:26 -0400
+	id 1usNeN-0004BD-Gj; Sat, 30 Aug 2025 11:37:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1usEUp-0008U1-D3
- for qemu-arm@nongnu.org; Sat, 30 Aug 2025 01:51:27 -0400
-Received: from mail-pf1-x42e.google.com ([2607:f8b0:4864:20::42e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1usEUn-0005ih-G7
- for qemu-arm@nongnu.org; Sat, 30 Aug 2025 01:51:27 -0400
-Received: by mail-pf1-x42e.google.com with SMTP id
- d2e1a72fcca58-771ff6f117aso2426952b3a.2
- for <qemu-arm@nongnu.org>; Fri, 29 Aug 2025 22:51:25 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756533084; x=1757137884; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=jUo2eLEQH3tvadRbtyXeqZmXKqgrSzHJmdQtpKn9Hto=;
- b=tGOOEv4ABUASuWiAsfrgXjG40kr1jLAN5L1NpAa5PDCA2g0RtjyDfw09aRcuq+PVFp
- SS0d9dy8F4SpXTkfKDXIwWVlYDFi9S/7xfQyxtYvbbFUtxhNGM+T0jNGInhJsqjPwyZt
- nDgWLE3S7jqNzEaPFLzpWCF4eCgzbyvANrLnHnY3FkwC3LJW6iR4bnqhccxaazERHe0K
- fpKP63kUAb8rPuLm6D9iwSq2gQhF0wmIsdEOZZjDDncB/Xb+96T062APH4MCJP7JRDpM
- 7g1pbP1L0yz1aelMxaDP0cdsblhVjZGAJsX79xzwYAmlOvSvDS5oRBCE0AR90NPb63sE
- +sHw==
+ (Exim 4.90_1) (envelope-from <armenon@redhat.com>)
+ id 1us5NI-0006OM-Ta
+ for qemu-arm@nongnu.org; Fri, 29 Aug 2025 16:07:04 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armenon@redhat.com>)
+ id 1us5NH-0005DP-Do
+ for qemu-arm@nongnu.org; Fri, 29 Aug 2025 16:07:04 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1756498022;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=LB9SXkQgOnyONEMwUfFwYKtNNWRhU5cy/RayQLcVHSg=;
+ b=Tv57tOvrepVg0B8oOUht2AmdtnHRmjoUQXE+rLFvrJAFErjErE3o5HcWzrQzlbTOb2a/HS
+ XauErmGSTw4Tgm2OwJssROQMOWmTBjIzbHt5svUSqy+IIw2kJfGEDJikNktoGguHlApasb
+ BexvpK/K9Gvxbbvudh1C4u10yYj0G2g=
+Received: from mail-pj1-f70.google.com (mail-pj1-f70.google.com
+ [209.85.216.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-495-Zr3uVG6dOX2LqbFr-AtpWw-1; Fri, 29 Aug 2025 16:06:59 -0400
+X-MC-Unique: Zr3uVG6dOX2LqbFr-AtpWw-1
+X-Mimecast-MFC-AGG-ID: Zr3uVG6dOX2LqbFr-AtpWw_1756498018
+Received: by mail-pj1-f70.google.com with SMTP id
+ 98e67ed59e1d1-3275d2cb1cbso3805730a91.3
+ for <qemu-arm@nongnu.org>; Fri, 29 Aug 2025 13:06:59 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756533084; x=1757137884;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ d=1e100.net; s=20230601; t=1756498018; x=1757102818;
+ h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+ :mime-version:subject:date:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=jUo2eLEQH3tvadRbtyXeqZmXKqgrSzHJmdQtpKn9Hto=;
- b=gsX90SR/o28FeHQ3XJTF5097H4ow8oHwbuNpOtwmtClFJgWkFo062q15ndTlQeKC6k
- 3AjczEx/ozf5m84+rTIL/s4I/ODfTwZ5ob27SMo/zQjNmAnNVmmZwDJ6KWnvaLWd8Vzq
- sqLvC+E2l6u1S+Md70OR9hxVu76dDDT+RhYUNWPxAejAyFIhPAhZWEDs5oXE6veJgCfY
- pISGP/xQkKFZO24xwLlpHZd167t27dOcI4bsQRoF+A4xxUTJRLQ293zpFyeZmG/exDUH
- ze6DoJtfGNc4ZfiCk88KSYrHk9AKaNp8Gcr2s9JOfErHeTXu0Ju9E4bqWEB/6OLX4fKn
- HjeA==
-X-Gm-Message-State: AOJu0Yz+sRJFk7LUcz/rN8oG9FqLoeLjwVoyTA1rnMoJ98wZwMgvwDOl
- GBfh3jOSj0tnTfLhzfMBcduKURq3e89EHdzkcTtU2OOVdIznyDfjLdt/M054RJR4LMo=
-X-Gm-Gg: ASbGnctB0WLoLz0+o7aHdSiEt84rJ1jUVfqLm/9kBkzYoxqPtcEFNgJbqDMCAvNmGDw
- DHXmPj9hmvQDanyoo8HfRUPt60Sq7Z/bKNMqbpQSxewT502lv6xAMFhSeufHStwlNVISZRZ6fso
- oXehNeAUaqpNRDa5IJKs7GzcMuJrcILUA5oCSB/Va2WyWPDfksCBPELs4VFX5avVss9fw0sPxxs
- jBKpDkzmChbQnkhLzM9Prj3LVkIml/Nfen0/9id5gtSXdvlDI+t/JD0KkLi4a8t/GZ+Uy8q1zJR
- llVkOturcZ9JlhQg7bZCBxFoQciONsWSk0ZqroFKeKN4w3GJvoCm/9nRuJFmQtVdYeDMnoI9snV
- HkackSIGn2+Qxj65YLt7FwIB8MjcH2/7ucPKm0msNewb5CfbdakszdXb3ZSNa
-X-Google-Smtp-Source: AGHT+IGHPHpYMvEEG9zuAmwstHsI6ED8QCyZyzokxuKKz5xA+ohnxq/dWxVYswzt9+7JrRoACGEy7A==
-X-Received: by 2002:a05:6a00:928b:b0:76b:f2d9:c760 with SMTP id
- d2e1a72fcca58-7723e21a73cmr1312092b3a.7.1756533084071; 
- Fri, 29 Aug 2025 22:51:24 -0700 (PDT)
-Received: from stoup.. (122-150-204-64.dyn.ip.vocus.au. [122.150.204.64])
+ bh=LB9SXkQgOnyONEMwUfFwYKtNNWRhU5cy/RayQLcVHSg=;
+ b=lYXRL6u1RI5MZZIHfBjNXwyNM6oaRpAwLacd/+aGu+mHXGmswwbgHai1LmoGjM7YXJ
+ Q7e7oS+5RKVqoElYt04BW+YriCy2+p4nNmY83SIXjaRmUvItUIm49mxfcYwWbF4aGdhf
+ +mcKoOAwvv6sIknJJp+vYaNP57voMUiv99MJMBnbvfCqjYkgxQ1gweZ3YyUyVm6AOqhZ
+ rjKGEPLM6vA2xDYBBhmHUG0+OScx0HvPQxcAfofdMcj+N1dv/FEUJOZZHP1kuJQwY256
+ ui+faKatUugGjGFMdiXHHJGn3FUOSF+GjoWzq0S/pDOyb7htJCVfVfHXzT5bUmCthH4M
+ 3o8w==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXOHK/BrZMAQ8U2qXyIoeI1hEwTATDN5fiTLDCcHknxV8dH3SBTeuPWfQbmwuIL4ql+C6GcTuPxXw==@nongnu.org
+X-Gm-Message-State: AOJu0YyHeNlJnSI6CKYJqqzlCMoU4T40x117Y15F1GaxaOtDEtSpgCtV
+ w+Q/XCqDpSmquLMYhdG2jp2i0UHpdy3pYQnD38s9szLgZ47ThyY/NP+TcmftmLX1OhuInC9cFZZ
+ 1Sc2Bhs5qM/cGvzgURMJCAHFTXrxbfExqzPL8tTvGJTJsLE+Wh31nGA==
+X-Gm-Gg: ASbGncuvIAIkwErpneODTZIARBFZk3RjLIS2NM2VS07tEOcXvwTSnQBBFbNt9GRVVY2
+ jWoE2dhXyl+Fsbp0b9vtDM2rnCOyZFsYoDxgIAClGbn7F6oKJLCPwbf/vXGdgRODc6HBZUf8QhM
+ 9rJlGXCCHke1ijNEcanwH3KZpQS9TBTuGIaJFgDpJtmpM7jjTS5vFcTeO0kYZpanehcyYDt1d9w
+ XGXyf4gXwhCBdDwPgpPPqKQz0jqDdXbGQZUoW0tVjhxAp3tdW1/iMukPK/I6Q1mgjgkHJIuX7di
+ vpBAaXP+20+ZNBmE6dgOTjg0pm45olQS4EN2ZfZCtfF7fv9DJGUCMw==
+X-Received: by 2002:a17:90b:3ec3:b0:327:9b36:87cf with SMTP id
+ 98e67ed59e1d1-3279b36897amr11823635a91.30.1756498018303; 
+ Fri, 29 Aug 2025 13:06:58 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGzMPgOWkW3Z/4cS8GAbpm9n7G+CRS0xMZOkYARj7xvIwczkHhobX9mgYoAfwIenaYfThB81w==
+X-Received: by 2002:a17:90b:3ec3:b0:327:9b36:87cf with SMTP id
+ 98e67ed59e1d1-3279b36897amr11823606a91.30.1756498017874; 
+ Fri, 29 Aug 2025 13:06:57 -0700 (PDT)
+Received: from armenon-kvm.bengluru.csb ([49.47.195.108])
  by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-7722a2b7d10sm4198475b3a.33.2025.08.29.22.51.21
+ 98e67ed59e1d1-327d8f66f16sm3570543a91.0.2025.08.29.13.06.49
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 29 Aug 2025 22:51:23 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v4 80/84] linux-user/aarch64: Generate GCS signal records
-Date: Sat, 30 Aug 2025 15:41:24 +1000
-Message-ID: <20250830054128.448363-81-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250830054128.448363-1-richard.henderson@linaro.org>
-References: <20250830054128.448363-1-richard.henderson@linaro.org>
+ Fri, 29 Aug 2025 13:06:57 -0700 (PDT)
+From: Arun Menon <armenon@redhat.com>
+Date: Sat, 30 Aug 2025 01:32:00 +0530
+Subject: [PATCH v13 20/27] migration: Return -1 on memory allocation
+ failure in ram.c
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42e;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42e.google.com
+Message-Id: <20250830-propagate_tpm_error-v13-20-a4e777b7eb2c@redhat.com>
+References: <20250830-propagate_tpm_error-v13-0-a4e777b7eb2c@redhat.com>
+In-Reply-To: <20250830-propagate_tpm_error-v13-0-a4e777b7eb2c@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Peter Xu <peterx@redhat.com>, Fabiano Rosas <farosas@suse.de>, 
+ =?utf-8?q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>, 
+ Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>, 
+ Dmitry Osipenko <dmitry.osipenko@collabora.com>, 
+ "Michael S. Tsirkin" <mst@redhat.com>, 
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
+ Cornelia Huck <cohuck@redhat.com>, Halil Pasic <pasic@linux.ibm.com>, 
+ Eric Farman <farman@linux.ibm.com>, Thomas Huth <thuth@redhat.com>, 
+ Christian Borntraeger <borntraeger@linux.ibm.com>, 
+ Matthew Rosato <mjrosato@linux.ibm.com>, 
+ Richard Henderson <richard.henderson@linaro.org>, 
+ David Hildenbrand <david@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>, 
+ Nicholas Piggin <npiggin@gmail.com>, 
+ Harsh Prateek Bora <harshpb@linux.ibm.com>, 
+ Paolo Bonzini <pbonzini@redhat.com>, Fam Zheng <fam@euphon.net>, 
+ Alex Williamson <alex.williamson@redhat.com>, 
+ =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>, 
+ Steve Sistare <steven.sistare@oracle.com>, 
+ =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>, 
+ qemu-s390x@nongnu.org, qemu-ppc@nongnu.org, 
+ Hailiang Zhang <zhanghailiang@xfusion.com>, 
+ Stefan Berger <stefanb@linux.vnet.ibm.com>, 
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
+ Arun Menon <armenon@redhat.com>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1640; i=armenon@redhat.com;
+ h=from:subject:message-id; bh=LbrL/8rC1j/1roMz22wMr5Cto4+KiN2vW7a+UxDKaz0=;
+ b=owGbwMvMwCWWVaVqcZPfqI/xtFoSQ8Ymdr8jL2r0mK/qrVDmvbC9yLNL/Kc7f3X+b+HDQobhe
+ WXa/lc7SlkYxLgYZMUUWRq+Bsg2BRRGRNq+vA4zh5UJZAgDF6cATOShNcN/v8883qyLDXu2fly7
+ 76prgU3L0pl+rKd92cpPB2denJk7mZGhU3x6wwTVXzfMX51/dt25ozXgnUGPVp5Qu0XU1NW+67L
+ 4AQ==
+X-Developer-Key: i=armenon@redhat.com; a=openpgp;
+ fpr=80F5501D82507158593DE9D76A7A2538D90F328E
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: 2FBqkiAK6ppP4Q7C-AumozjrrlFcicFi02zFNngk_3g_1756498018
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=armenon@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -100,251 +145,47 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Here we must push and pop a cap on the GCS stack as
-well as the gcs record on the normal stack.
+The function colo_init_ram_cache() currently returns -errno if
+qemu_anon_ram_alloc() fails. However, the subsequent cleanup loop that
+calls qemu_anon_ram_free() could potentially alter the value of errno.
+This would cause the function to return a value that does not accurately
+represent the original allocation failure.
 
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+This commit changes the return value to -1 on memory allocation failure.
+This ensures that the return value is consistent and is not affected by
+any errno changes that may occur during the free process.
+
+Reviewed-by: Fabiano Rosas <farosas@suse.de>
+Reviewed-by: Peter Xu <peterx@redhat.com>
+Signed-off-by: Arun Menon <armenon@redhat.com>
 ---
- linux-user/aarch64/signal.c | 138 ++++++++++++++++++++++++++++++++++--
- 1 file changed, 132 insertions(+), 6 deletions(-)
+ migration/ram.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/linux-user/aarch64/signal.c b/linux-user/aarch64/signal.c
-index ef97be3ac7..f7edfa249e 100644
---- a/linux-user/aarch64/signal.c
-+++ b/linux-user/aarch64/signal.c
-@@ -22,6 +22,7 @@
- #include "signal-common.h"
- #include "linux-user/trace.h"
- #include "target/arm/cpu-features.h"
-+#include "gcs-internal.h"
- 
- struct target_sigcontext {
-     uint64_t fault_address;
-@@ -152,6 +153,16 @@ struct target_zt_context {
- QEMU_BUILD_BUG_ON(TARGET_ZT_SIG_REG_BYTES != \
-                   sizeof_field(CPUARMState, za_state.zt0));
- 
-+#define TARGET_GCS_MAGIC       0x47435300
-+#define GCS_SIGNAL_CAP(X)      ((X) & TARGET_PAGE_MASK)
-+
-+struct target_gcs_context {
-+    struct target_aarch64_ctx head;
-+    uint64_t gcspr;
-+    uint64_t features_enabled;
-+    uint64_t reserved;
-+};
-+
- struct target_rt_sigframe {
-     struct target_siginfo info;
-     struct target_ucontext uc;
-@@ -322,6 +333,35 @@ static void target_setup_zt_record(struct target_zt_context *zt,
-     }
- }
- 
-+static bool target_setup_gcs_record(struct target_gcs_context *ctx,
-+                                    CPUARMState *env, uint64_t return_addr)
-+{
-+    uint64_t mode = gcs_get_el0_mode(env);
-+    uint64_t gcspr = env->cp15.gcspr_el[0];
-+
-+    if (mode & PR_SHADOW_STACK_ENABLE) {
-+        /* Push a cap for the signal frame. */
-+        gcspr -= 8;
-+        if (put_user_u64(GCS_SIGNAL_CAP(gcspr), gcspr)) {
-+            return false;
-+        }
-+
-+        /* Push a gcs entry for the trampoline. */
-+        if (put_user_u64(return_addr, gcspr - 8)) {
-+            return false;
-+        }
-+        env->cp15.gcspr_el[0] = gcspr - 8;
-+    }
-+
-+    __put_user(TARGET_GCS_MAGIC, &ctx->head.magic);
-+    __put_user(sizeof(*ctx), &ctx->head.size);
-+    __put_user(gcspr, &ctx->gcspr);
-+    __put_user(mode, &ctx->features_enabled);
-+    __put_user(0, &ctx->reserved);
-+
-+    return true;
-+}
-+
- static void target_restore_general_frame(CPUARMState *env,
-                                          struct target_rt_sigframe *sf)
+diff --git a/migration/ram.c b/migration/ram.c
+index 6a0dcc04f436524a37672c41c38f201f06773374..163265a57f26fb1dc88d9797629d58c278e9afb7 100644
+--- a/migration/ram.c
++++ b/migration/ram.c
+@@ -3575,6 +3575,8 @@ static void colo_init_ram_state(void)
+  * colo cache: this is for secondary VM, we cache the whole
+  * memory of the secondary VM, it is need to hold the global lock
+  * to call this helper.
++ *
++ * Returns zero to indicate success or -1 on error.
+  */
+ int colo_init_ram_cache(void)
  {
-@@ -502,6 +542,64 @@ static bool target_restore_zt_record(CPUARMState *env,
-     return true;
- }
- 
-+static bool target_restore_gcs_record(CPUARMState *env,
-+                                      struct target_gcs_context *ctx,
-+                                      bool *rebuild_hflags)
-+{
-+    TaskState *ts = get_task_state(env_cpu(env));
-+    uint64_t cur_mode = gcs_get_el0_mode(env);
-+    uint64_t new_mode, gcspr;
-+
-+    __get_user(new_mode, &ctx->features_enabled);
-+    __get_user(gcspr, &ctx->gcspr);
-+
-+    /*
-+     * The kernel pushes the value through the hw register:
-+     * write_sysreg_s(gcspr, SYS_GCSPR_EL0) in restore_gcs_context,
-+     * then read_sysreg_s(SYS_GCSPR_EL0) in gcs_restore_signal.
-+     * Since the bottom 3 bits are RES0, this can (CONSTRAINED UNPREDICTABLE)
-+     * force align the value.  Mirror the choice from gcspr_write().
-+     */
-+    gcspr &= ~7;
-+
-+    if (new_mode & ~(PR_SHADOW_STACK_ENABLE |
-+                     PR_SHADOW_STACK_WRITE |
-+                     PR_SHADOW_STACK_PUSH)) {
-+        return false;
-+    }
-+    if ((new_mode ^ cur_mode) & ts->gcs_el0_locked) {
-+        return false;
-+    }
-+    if (new_mode & ~cur_mode & PR_SHADOW_STACK_ENABLE) {
-+        return false;
-+    }
-+
-+    if (new_mode & PR_SHADOW_STACK_ENABLE) {
-+        uint64_t cap;
-+
-+        /* Pop and clear the signal cap. */
-+        if (get_user_u64(cap, gcspr)) {
-+            return false;
-+        }
-+        if (cap != GCS_SIGNAL_CAP(gcspr)) {
-+            return false;
-+        }
-+        if (put_user_u64(0, gcspr)) {
-+            return false;
-+        }
-+        gcspr += 8;
-+    } else {
-+        new_mode = 0;
-+    }
-+
-+    env->cp15.gcspr_el[0] = gcspr;
-+    if (new_mode != cur_mode) {
-+        *rebuild_hflags = true;
-+        gcs_set_el0_mode(env, new_mode);
-+    }
-+    return true;
-+}
-+
- static int target_restore_sigframe(CPUARMState *env,
-                                    struct target_rt_sigframe *sf)
- {
-@@ -511,8 +609,10 @@ static int target_restore_sigframe(CPUARMState *env,
-     struct target_za_context *za = NULL;
-     struct target_tpidr2_context *tpidr2 = NULL;
-     struct target_zt_context *zt = NULL;
-+    struct target_gcs_context *gcs = NULL;
-     uint64_t extra_datap = 0;
-     bool used_extra = false;
-+    bool rebuild_hflags = false;
-     int sve_size = 0;
-     int za_size = 0;
-     int zt_size = 0;
-@@ -582,6 +682,15 @@ static int target_restore_sigframe(CPUARMState *env,
-             zt_size = size;
-             break;
- 
-+        case TARGET_GCS_MAGIC:
-+            if (gcs
-+                || size != sizeof(struct target_gcs_context)
-+                || !cpu_isar_feature(aa64_gcs, env_archcpu(env))) {
-+                goto err;
-+            }
-+            gcs = (struct target_gcs_context *)ctx;
-+            break;
-+
-         case TARGET_EXTRA_MAGIC:
-             if (extra || size != sizeof(struct target_extra_context)) {
-                 goto err;
-@@ -612,6 +721,10 @@ static int target_restore_sigframe(CPUARMState *env,
-         goto err;
-     }
- 
-+    if (gcs && !target_restore_gcs_record(env, gcs, &rebuild_hflags)) {
-+        goto err;
-+    }
-+
-     /* SVE data, if present, overwrites FPSIMD data.  */
-     if (sve && !target_restore_sve_record(env, sve, sve_size, &svcr)) {
-         goto err;
-@@ -631,6 +744,9 @@ static int target_restore_sigframe(CPUARMState *env,
-     }
-     if (env->svcr != svcr) {
-         env->svcr = svcr;
-+        rebuild_hflags = true;
-+    }
-+    if (rebuild_hflags) {
-         arm_rebuild_hflags(env);
-     }
-     unlock_user(extra, extra_datap, 0);
-@@ -701,7 +817,7 @@ static void target_setup_frame(int usig, struct target_sigaction *ka,
-                                uc.tuc_mcontext.__reserved),
-     };
-     int fpsimd_ofs, fr_ofs, sve_ofs = 0, za_ofs = 0, tpidr2_ofs = 0;
--    int zt_ofs = 0, esr_ofs = 0;
-+    int zt_ofs = 0, esr_ofs = 0, gcs_ofs = 0;
-     int sve_size = 0, za_size = 0, tpidr2_size = 0, zt_size = 0;
-     struct target_rt_sigframe *frame;
-     struct target_rt_frame_record *fr;
-@@ -720,6 +836,11 @@ static void target_setup_frame(int usig, struct target_sigaction *ka,
-                                        &layout);
-     }
- 
-+    if (env->cp15.gcspr_el[0]) {
-+        gcs_ofs = alloc_sigframe_space(sizeof(struct target_gcs_context),
-+                                       &layout);
-+    }
-+
-     /* SVE state needs saving only if it exists.  */
-     if (cpu_isar_feature(aa64_sve, env_archcpu(env)) ||
-         cpu_isar_feature(aa64_sme, env_archcpu(env))) {
-@@ -779,6 +900,12 @@ static void target_setup_frame(int usig, struct target_sigaction *ka,
-         goto give_sigsegv;
-     }
- 
-+    if (ka->sa_flags & TARGET_SA_RESTORER) {
-+        return_addr = ka->sa_restorer;
-+    } else {
-+        return_addr = default_rt_sigreturn;
-+    }
-+
-     target_setup_general_frame(frame, env, set);
-     target_setup_fpsimd_record((void *)frame + fpsimd_ofs, env);
-     if (esr_ofs) {
-@@ -786,6 +913,10 @@ static void target_setup_frame(int usig, struct target_sigaction *ka,
-         /* Leave ESR_EL1 clear while it's not relevant. */
-         env->cp15.esr_el[1] = 0;
-     }
-+    if (gcs_ofs &&
-+        !target_setup_gcs_record((void *)frame + gcs_ofs, env, return_addr)) {
-+        goto give_sigsegv;
-+    }
-     target_setup_end_record((void *)frame + layout.std_end_ofs);
-     if (layout.extra_ofs) {
-         target_setup_extra_record((void *)frame + layout.extra_ofs,
-@@ -811,11 +942,6 @@ static void target_setup_frame(int usig, struct target_sigaction *ka,
-     __put_user(env->xregs[29], &fr->fp);
-     __put_user(env->xregs[30], &fr->lr);
- 
--    if (ka->sa_flags & TARGET_SA_RESTORER) {
--        return_addr = ka->sa_restorer;
--    } else {
--        return_addr = default_rt_sigreturn;
--    }
-     env->xregs[0] = usig;
-     env->xregs[29] = frame_addr + fr_ofs;
-     env->xregs[30] = return_addr;
+@@ -3594,7 +3596,7 @@ int colo_init_ram_cache(void)
+                         block->colo_cache = NULL;
+                     }
+                 }
+-                return -errno;
++                return -1;
+             }
+             if (!machine_dump_guest_core(current_machine)) {
+                 qemu_madvise(block->colo_cache, block->used_length,
+
 -- 
-2.43.0
+2.51.0
 
 

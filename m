@@ -4,148 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5464CA0EFF
-	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 15:11:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D9C5CA0EFF
+	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 15:13:40 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1usN9e-0004el-Lb; Sat, 30 Aug 2025 11:06:10 -0400
+	id 1usN9H-0003Ib-1E; Sat, 30 Aug 2025 11:05:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
- id 1uruUF-0002qR-Ry; Fri, 29 Aug 2025 04:29:32 -0400
-Received: from mail-bn7nam10on20620.outbound.protection.outlook.com
- ([2a01:111:f403:2009::620]
- helo=NAM10-BN7-obe.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
- id 1uruU6-0006Nw-PA; Fri, 29 Aug 2025 04:29:28 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=Ffyo4eW15zC4EGw/WUqGKtPOiGw6ezPIwRjpYtDd89N7VNDiw6J0b+9qh/3cJ4NzpiYqv0JTvXs7VeOxGdiZuEB3fjo/4JZmX7S1bk95xK8GjIl3x+Kdmcvuj7VauWrimkOqVoFH0NM33n+k4QPKmLoJiq2iQ3YuH/QJte8V790Q5nsViT5vuRCm9ToShWEWhFKql9evzUMVmN8ndfqRfqrRscbL100IOvkxF858CrgDxs/o3gPi9AaUlGqK4JhjJAtaOvrhnu+LQ8B3c9baNqzXALA4OAyGBO3Gsaj/YtoJP+ETKi2d4w+kZhqWiuVq+LtFPIZzVmYIOTydPnVxpQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=eqUsHgMwSOtZZy1pvZPCmTRMLBj+9+ACk2xTR9ZmYt8=;
- b=KwAfX4pE0BD21LjLK2PB66SDrnk9smcllmn3LpPVOBEd6YetRaBhz6H48Nd+2cpkjw3q7BCU4bZUByJz2mEF6mf19a+oNYbK320Wn1z1ZCt0xho4FYBIR2JANf0ijuUNd2yBQ7EUb6rIWNC5hMlMRi3KmtaVntYahUEjc9Ze72tPp3CnUEGIq9GVk8Ce7dluwE6KPQs9i6XDhtExkmhMk/9gXIq3z/XufTl0RyiCP+ol6b0DjupRmgnNOmWyKB96fzSgB2QZqTDtMt2BGUjw/jpmyNGs+fNjHYM5cW6cmZyyRBYPKgxo37tkM3p3TG3ytSzRxWsJECn3ouc+Otgapw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.117.160) smtp.rcpttodomain=nongnu.org smtp.mailfrom=nvidia.com;
- dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
- dkim=none (message not signed); arc=none (0)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=eqUsHgMwSOtZZy1pvZPCmTRMLBj+9+ACk2xTR9ZmYt8=;
- b=i1xJr1hts0/9u47d8UsFxr1YPxY1hX1Cxdxd8ilymnxttD8H8UJYGoyBg0bE4dC3Kq4CEQcV233JayeJ/4bCmFB1C1FgZO+gMi1tHoOrzNpb+sPBim2+EBILqYk5dCewZe5Mu1rNpdlRh+4v1ErPyFhYuuxFezNA5iCFtDURsI1NfkExzvz1evZMXjkC/ulYe/q7CA79085COvkek1Y12pS52SNI13OSJAgYwCsDeOEczLcez4MjtXoT9r70y7QnhTp5SBCTrriMYlOrGNk2C/IrOChtSgVYis2ZXJARKwOFzpWhfac2cKG84RzoRWdcKACAn6CaZIGYNpVLGL2ifg==
-Received: from BYAPR08CA0048.namprd08.prod.outlook.com (2603:10b6:a03:117::25)
- by DM6PR12MB4356.namprd12.prod.outlook.com (2603:10b6:5:2aa::8) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9052.19; Fri, 29 Aug
- 2025 08:29:11 +0000
-Received: from SJ5PEPF000001EA.namprd05.prod.outlook.com
- (2603:10b6:a03:117:cafe::b2) by BYAPR08CA0048.outlook.office365.com
- (2603:10b6:a03:117::25) with Microsoft SMTP Server (version=TLS1_3,
- cipher=TLS_AES_256_GCM_SHA384) id 15.20.9073.20 via Frontend Transport; Fri,
- 29 Aug 2025 08:29:10 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.160)
- smtp.mailfrom=nvidia.com;
- dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.117.160 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.117.160; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (216.228.117.160) by
- SJ5PEPF000001EA.mail.protection.outlook.com (10.167.242.198) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.9073.11 via Frontend Transport; Fri, 29 Aug 2025 08:29:09 +0000
-Received: from rnnvmail201.nvidia.com (10.129.68.8) by mail.nvidia.com
- (10.129.200.66) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14; Fri, 29 Aug
- 2025 01:28:56 -0700
-Received: from NV-2Y5XW94.nvidia.com (10.126.231.35) by rnnvmail201.nvidia.com
- (10.129.68.8) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14; Fri, 29 Aug
- 2025 01:28:51 -0700
-From: Shameer Kolothum <skolothumtho@nvidia.com>
-To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
-CC: <eric.auger@redhat.com>, <peter.maydell@linaro.org>, <jgg@nvidia.com>,
- <nicolinc@nvidia.com>, <ddutile@redhat.com>, <berrange@redhat.com>,
- <imammedo@redhat.com>, <nathanc@nvidia.com>, <mochs@nvidia.com>,
- <smostafa@google.com>, <mst@redhat.com>, <marcel.apfelbaum@gmail.com>,
- <wangzhou1@hisilicon.com>, <jiangkunkun@huawei.com>,
- <jonathan.cameron@huawei.com>, <zhangfei.gao@linaro.org>
-Subject: [PATCH v9 04/11] hw/arm/virt: Factor out common SMMUV3 dt bindings
- code
-Date: Fri, 29 Aug 2025 09:25:26 +0100
-Message-ID: <20250829082543.7680-5-skolothumtho@nvidia.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250829082543.7680-1-skolothumtho@nvidia.com>
-References: <20250829082543.7680-1-skolothumtho@nvidia.com>
+ (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
+ id 1urtia-0000BN-SO
+ for qemu-arm@nongnu.org; Fri, 29 Aug 2025 03:40:17 -0400
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
+ id 1urtiY-0004bA-GX
+ for qemu-arm@nongnu.org; Fri, 29 Aug 2025 03:40:16 -0400
+Received: by mail-wr1-x432.google.com with SMTP id
+ ffacd0b85a97d-3c7ba0f6983so1091258f8f.0
+ for <qemu-arm@nongnu.org>; Fri, 29 Aug 2025 00:40:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1756453211; x=1757058011; darn=nongnu.org;
+ h=mime-version:message-id:in-reply-to:references:user-agent:subject
+ :cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+ bh=vneba+jHxulAXbnulQmkNF8jDWmbZWM/iro9XrV3cMw=;
+ b=pb9qzCQvQwiN8mrW0sP+n8CHdQFxW6EUWszkY7o2Fj9/RBfKzfKQU8mANKxw23UsLt
+ GOo0v7fsoTdPhf8rO/HPNzSOjZ1yk2kxS2286fUrqYz7JZqspU+AMabxSdGlq8mf9Vr/
+ o1wpLFZIdwGmJQTnzbk5YaKSF2YfcHC+OXa69ChM10swADKgqMPsOiKbH7nQaBi9Ij82
+ ZQxF0A/1oi40jLNwHYQZXFRogvL6PApsikyOwZ0xWryNbHzT54bo+zasL7Y28J5uu8mV
+ 3Zas3VbQM3yfzoB7+RCMpaqGldmpZ7utKlaehpfBIOBaqHih6WvbGU6ZQmgNyLPy//t1
+ /awQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1756453211; x=1757058011;
+ h=mime-version:message-id:in-reply-to:references:user-agent:subject
+ :cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=vneba+jHxulAXbnulQmkNF8jDWmbZWM/iro9XrV3cMw=;
+ b=WcJincOu/f/EDFFPfXdhjpA43Hjb9zUV1lilQMoJUAt8Ib9p1982LNTwRoXIvvF9+U
+ Xf5a5LKra+OyVivW6ZzOu0lePcWKhXQsWWs09CEr39BvZwMB3WrIUZXJoz7oyhtKhlPK
+ f/z6RFnfutlPsJX97Ns1JEjPtlyqAgGfPRoQEAZJS6aZlqWvcCwDZp1Db2VqnVbZAihx
+ p/9RAP9K8aG7vz+iID/MkIi4leNoKerHTjIBlDDr2lHvpfSHhgo/GLt+Nhnw/+TgrWaA
+ U3am54VM8fzWctZmI4WtBXs4Netz3r20u3MpGGDxJGSPPR4bs7pTpmEmL+JmPpXvJrrg
+ 2pcg==
+X-Gm-Message-State: AOJu0Yza6EnI/rmbajivQI3sFQ8d5EjClXZFCyPb9KbSVzUUCyJtRo6h
+ 2GZM54M/H4xoyYfq5RDDEifJEuxEe/Goc4gtj09baSYnx3s7WRim6QAjWYksuzD5DfWbXAtDuQ9
+ 4gVu9c5M=
+X-Gm-Gg: ASbGncvybFiQdEha4AUYPFzoviECSusUCWBzkEvG644UA5QTTlBZr2+vdJsl8D2BiZ8
+ jvpam/VRKyP6oCIZOcU4zfTGAlj/RaOyremMJ3PPcR4ufJlPDnXXaJp7z0T4XhKO1y7q9H3KKUD
+ 6i7rEj8XJdkurNBmjHFQ83oEFsHYjbDC4KJ7E7a+oUGbyFAZKZl91Bz7bxtlwWGtrMOquZq49bj
+ FFpjCJRsxd7bLnpzxQVWmqfZrhzU4hAdTkq0+94WqbQxjZl4zBT7jZn9NR3Q2rguwiftJesRc6g
+ UrSeD8rnqZjZ9tT8hfWWocvzNSpSUIsftuF8LUpotIyt27CAlx2G5P9+4Se45+n0wJUwtD6yLEf
+ OB59Fu9YFrC7Dbh0I9gpCWiwGyGN+Yq7ktVLibxoPQDKHiPeElLhDfqRoqY5Zfypm6dcPqu7G
+X-Google-Smtp-Source: AGHT+IFEhDHkXrn2S0oNQUblclJy9i+OMa5vhGY6Ke+nqmZ925CLnM/OoD4OFtuH70IQityizHzgPg==
+X-Received: by 2002:a05:6000:2082:b0:3ce:663a:c92f with SMTP id
+ ffacd0b85a97d-3ce663af648mr3392624f8f.25.1756453211388; 
+ Fri, 29 Aug 2025 00:40:11 -0700 (PDT)
+Received: from meli-email.org (athedsl-4441256.home.otenet.gr.
+ [79.129.180.152]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-3cf270fc0a8sm2287718f8f.7.2025.08.29.00.40.10
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 29 Aug 2025 00:40:11 -0700 (PDT)
+Date: Fri, 29 Aug 2025 10:36:29 +0300
+From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+To: qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-arm@nongnu.org
+Subject: Re: [PATCH 18/61] target/arm: Remove cp argument to ENCODE_AA64_CP_REG
+User-Agent: meli/0.8.12
+References: <20250827010453.4059782-1-richard.henderson@linaro.org>
+ <20250827010453.4059782-23-richard.henderson@linaro.org>
+In-Reply-To: <20250827010453.4059782-23-richard.henderson@linaro.org>
+Message-ID: <t1qvyy.1vq9bulelbzvf@linaro.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.126.231.35]
-X-ClientProxiedBy: rnnvmail202.nvidia.com (10.129.68.7) To
- rnnvmail201.nvidia.com (10.129.68.8)
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: SJ5PEPF000001EA:EE_|DM6PR12MB4356:EE_
-X-MS-Office365-Filtering-Correlation-Id: b88ca651-d349-4f41-de6d-08dde6d620a1
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230040|7416014|82310400026|376014|36860700013|1800799024; 
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?4hn5YuW9QqRq6C95jNFOjaH/CB1Knqhq/gSOZ9BeOdRy0dKT/DlVOEVqw9i8?=
- =?us-ascii?Q?fOIP6PycdgQHYszM1hUa8taZufHd/tN6zqZr+ZvS4C1+pZHdlR07MwhpQsEV?=
- =?us-ascii?Q?qrgOaDeGDvgFI4z4dTR7ccKy7J2OKzmpXQFwRYLEBVP7dKqGf3pIrsGzccay?=
- =?us-ascii?Q?wlrbsQvCICOE8XJ5SlkKuWYU592K++j2e0HbOoaB68E63zg+T3eIhbElDHyj?=
- =?us-ascii?Q?hpL42s7Ye3JrcD5xrlHNIEn1IYnyhRxBSMp/sywQJSqE3//mG0+N1Ic6NcO+?=
- =?us-ascii?Q?4ukBdt82/V5PlKZXsT7xEBkXSK8z8mGVPtPll2tJwtPab9v3/fIksAtx5sFA?=
- =?us-ascii?Q?5Sj94aGuExWkKbnBgZxdgQMR0BqSdQ+GJO7sCRpj/bS5zaKNegnhO0GVIRTZ?=
- =?us-ascii?Q?IDEg3Aa6p6vxvWxtX69HM657c/OLZOhHvjSEDmE+MsTeBWU8K/ya4AJ7B7D7?=
- =?us-ascii?Q?WBSpLG9o4Hy1//BRhjgXpUKAUMX2h8f9gCMQbdWQmqmD12HfflZ1UubAipYX?=
- =?us-ascii?Q?VBT40NLEwJNvuXEAjlBDnvdBU/ucWfpH1A/Ga/xUEVhqoMeDiKTtvR26qd5D?=
- =?us-ascii?Q?RkomTon1SBq98b2B4jDFGmqOAvKV3hK3UIKdy4yz9BcmFbr9OP6HUPaX6VPU?=
- =?us-ascii?Q?7d7RD/TdZ6dzKWZusGOVFiMidIHJqSJDsDRxM3WC07dyjjYibRYynhpHthqF?=
- =?us-ascii?Q?sI3NWzRnpa04tX7xMe6uuGNaOr8CaBMN5TyI4h9shKctcTSY+HjtkQTMXBeX?=
- =?us-ascii?Q?jmSoyhJLOsbBtNGWq5q2MM+Hf0Ctkm16lh0MMFdNikyILIOuF3UjQUhX8z3Q?=
- =?us-ascii?Q?ik6TCKN9CzfSGNXczZf+tBsuEGT8Fqfe6rEWk6FHaldIsRswdUc2ZLtpeBnB?=
- =?us-ascii?Q?/FNSe0sG7zOtXM0jwtm6r6op+uIXf6WJD1w90ZUATfTXVKSCwHa3Zq0/PGjt?=
- =?us-ascii?Q?78l2VBGPDswfDvYdpQOyxhqRmyWrLENODX1tnWxgIIzN04tapauHmC2xfTFO?=
- =?us-ascii?Q?vy8L5H6PINLZ8kf6lHF7unybHHTHl54lYTlEAVE9Sb/+wdDSkl0KNAHwmhTB?=
- =?us-ascii?Q?8APSyq8Oc95QkirZ6Uz6vdsREqCvOJa1HjQJIhD/XPFNLasmWocFE8LzdqJq?=
- =?us-ascii?Q?g7wx8wlCrs4AFYQZM7dSNijAhYQo04gAstQzaCaC/PC7Wm3m1NzHlbRxiaj+?=
- =?us-ascii?Q?f7Xh4Y6Dt8XJ0JbCdzLHt1RenTqlYZNHKAaS8Jz/JLNMbET0a2q+FW6G9k9e?=
- =?us-ascii?Q?DqT+PKX4Oh9bEHfBKLPM4OnuZFUu7TxeYxkw2JID3xOcFjv/eVXHEyUdOWYu?=
- =?us-ascii?Q?uZ/rzs/sIQ/CGFyYZm+ABDwLJQVyiweeK7slJNBIdYp3LbmXTSkZcYRbJl91?=
- =?us-ascii?Q?KIh4TWYFh4S6pX1PbvHsVGQDCvyuVx4F3CF3hbkatMOjUfcHPnjnyO667YIQ?=
- =?us-ascii?Q?tChHxev1zQqv+EtV2yvARs4GgXJJ2LLKZT/aapF7nV/qCTgxY34zfRJHrzZw?=
- =?us-ascii?Q?z+xFfvpLuORp2+WYpKNl7VfKAQaD7s32MRaz?=
-X-Forefront-Antispam-Report: CIP:216.228.117.160; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge1.nvidia.com; CAT:NONE;
- SFS:(13230040)(7416014)(82310400026)(376014)(36860700013)(1800799024); DIR:OUT;
- SFP:1101; 
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 29 Aug 2025 08:29:09.9955 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: b88ca651-d349-4f41-de6d-08dde6d620a1
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.160];
- Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: SJ5PEPF000001EA.namprd05.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR12MB4356
-Received-SPF: permerror client-ip=2a01:111:f403:2009::620;
- envelope-from=skolothumtho@nvidia.com;
- helo=NAM10-BN7-obe.outbound.protection.outlook.com
-X-Spam_score_int: -10
-X-Spam_score: -1.1
-X-Spam_bar: -
-X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FORGED_SPF_HELO=1, SPF_HELO_PASS=-0.001,
- SPF_NONE=0.001 autolearn=no autolearn_force=no
+Content-Type: text/plain; charset="utf-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::432;
+ envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wr1-x432.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Fri, 29 Aug 2025 09:59:37 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -160,103 +100,129 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-No functional changes intended. This will be useful when we
-add support for user-creatable smmuv3 device.
+On Wed, 27 Aug 2025 04:04, Richard Henderson <richard.henderson@linaro.org> wrote:
+>All invocations were required to pass the same value,
+>CP_REG_ARM64_SYSREG_CP.  Bake that in to the result directly.
+>Remove CP_REG_ARM64_SYSREG_CP as unused.
+>
+>Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+>---
 
-Reviewed-by: Nicolin Chen <nicolinc@nvidia.com>
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
-Tested-by: Nathan Chen <nathanc@nvidia.com>
-Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
-Tested-by: Eric Auger <eric.auger@redhat.com>
-Tested-by: Nicolin Chen <nicolinc@nvidia.com>
-Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
----
- hw/arm/virt.c | 54 +++++++++++++++++++++++++++------------------------
- 1 file changed, 29 insertions(+), 25 deletions(-)
+Reviewed-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 4663184654..d0d93fc0b9 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -1443,19 +1443,43 @@ static void create_pcie_irq_map(const MachineState *ms,
-                            0x7           /* PCI irq */);
- }
- 
-+static void create_smmuv3_dt_bindings(const VirtMachineState *vms, hwaddr base,
-+                                      hwaddr size, int irq)
-+{
-+    char *node;
-+    const char compat[] = "arm,smmu-v3";
-+    const char irq_names[] = "eventq\0priq\0cmdq-sync\0gerror";
-+    MachineState *ms = MACHINE(vms);
-+
-+    node = g_strdup_printf("/smmuv3@%" PRIx64, base);
-+    qemu_fdt_add_subnode(ms->fdt, node);
-+    qemu_fdt_setprop(ms->fdt, node, "compatible", compat, sizeof(compat));
-+    qemu_fdt_setprop_sized_cells(ms->fdt, node, "reg", 2, base, 2, size);
-+
-+    qemu_fdt_setprop_cells(ms->fdt, node, "interrupts",
-+            GIC_FDT_IRQ_TYPE_SPI, irq    , GIC_FDT_IRQ_FLAGS_EDGE_LO_HI,
-+            GIC_FDT_IRQ_TYPE_SPI, irq + 1, GIC_FDT_IRQ_FLAGS_EDGE_LO_HI,
-+            GIC_FDT_IRQ_TYPE_SPI, irq + 2, GIC_FDT_IRQ_FLAGS_EDGE_LO_HI,
-+            GIC_FDT_IRQ_TYPE_SPI, irq + 3, GIC_FDT_IRQ_FLAGS_EDGE_LO_HI);
-+
-+    qemu_fdt_setprop(ms->fdt, node, "interrupt-names", irq_names,
-+                     sizeof(irq_names));
-+
-+    qemu_fdt_setprop(ms->fdt, node, "dma-coherent", NULL, 0);
-+    qemu_fdt_setprop_cell(ms->fdt, node, "#iommu-cells", 1);
-+    qemu_fdt_setprop_cell(ms->fdt, node, "phandle", vms->iommu_phandle);
-+    g_free(node);
-+}
-+
- static void create_smmu(const VirtMachineState *vms,
-                         PCIBus *bus)
- {
-     VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
--    char *node;
--    const char compat[] = "arm,smmu-v3";
-     int irq =  vms->irqmap[VIRT_SMMU];
-     int i;
-     hwaddr base = vms->memmap[VIRT_SMMU].base;
-     hwaddr size = vms->memmap[VIRT_SMMU].size;
--    const char irq_names[] = "eventq\0priq\0cmdq-sync\0gerror";
-     DeviceState *dev;
--    MachineState *ms = MACHINE(vms);
- 
-     if (vms->iommu != VIRT_IOMMU_SMMUV3 || !vms->iommu_phandle) {
-         return;
-@@ -1474,27 +1498,7 @@ static void create_smmu(const VirtMachineState *vms,
-         sysbus_connect_irq(SYS_BUS_DEVICE(dev), i,
-                            qdev_get_gpio_in(vms->gic, irq + i));
-     }
--
--    node = g_strdup_printf("/smmuv3@%" PRIx64, base);
--    qemu_fdt_add_subnode(ms->fdt, node);
--    qemu_fdt_setprop(ms->fdt, node, "compatible", compat, sizeof(compat));
--    qemu_fdt_setprop_sized_cells(ms->fdt, node, "reg", 2, base, 2, size);
--
--    qemu_fdt_setprop_cells(ms->fdt, node, "interrupts",
--            GIC_FDT_IRQ_TYPE_SPI, irq    , GIC_FDT_IRQ_FLAGS_EDGE_LO_HI,
--            GIC_FDT_IRQ_TYPE_SPI, irq + 1, GIC_FDT_IRQ_FLAGS_EDGE_LO_HI,
--            GIC_FDT_IRQ_TYPE_SPI, irq + 2, GIC_FDT_IRQ_FLAGS_EDGE_LO_HI,
--            GIC_FDT_IRQ_TYPE_SPI, irq + 3, GIC_FDT_IRQ_FLAGS_EDGE_LO_HI);
--
--    qemu_fdt_setprop(ms->fdt, node, "interrupt-names", irq_names,
--                     sizeof(irq_names));
--
--    qemu_fdt_setprop(ms->fdt, node, "dma-coherent", NULL, 0);
--
--    qemu_fdt_setprop_cell(ms->fdt, node, "#iommu-cells", 1);
--
--    qemu_fdt_setprop_cell(ms->fdt, node, "phandle", vms->iommu_phandle);
--    g_free(node);
-+    create_smmuv3_dt_bindings(vms, base, size, irq);
- }
- 
- static void create_virtio_iommu_dt_bindings(VirtMachineState *vms)
--- 
-2.43.0
-
+> target/arm/cpregs.h            |  5 ++---
+> target/arm/kvm-consts.h        |  3 ---
+> target/arm/helper.c            | 11 +++++------
+> target/arm/hvf/hvf.c           |  3 +--
+> target/arm/tcg/translate-a64.c |  6 ++----
+> 5 files changed, 10 insertions(+), 18 deletions(-)
+>
+>diff --git a/target/arm/cpregs.h b/target/arm/cpregs.h
+>index 7ebe404163..95b0b9c78e 100644
+>--- a/target/arm/cpregs.h
+>+++ b/target/arm/cpregs.h
+>@@ -187,9 +187,8 @@ enum {
+>      ((is64) << CP_REG_AA32_64BIT_SHIFT) |                  \
+>      ((cp) << 16) | ((crn) << 11) | ((crm) << 7) | ((opc1) << 3) | (opc2))
+> 
+>-#define ENCODE_AA64_CP_REG(cp, crn, crm, op0, op1, op2) \
+>-    (CP_REG_AA64_MASK |                                 \
+>-     ((cp) << CP_REG_ARM_COPROC_SHIFT) |                \
+>+#define ENCODE_AA64_CP_REG(crn, crm, op0, op1, op2) \
+>+    (CP_REG_AA64_MASK | CP_REG_ARM64_SYSREG |           \
+>      ((op0) << CP_REG_ARM64_SYSREG_OP0_SHIFT) |         \
+>      ((op1) << CP_REG_ARM64_SYSREG_OP1_SHIFT) |         \
+>      ((crn) << CP_REG_ARM64_SYSREG_CRN_SHIFT) |         \
+>diff --git a/target/arm/kvm-consts.h b/target/arm/kvm-consts.h
+>index fdb305eea1..54ae5da7ce 100644
+>--- a/target/arm/kvm-consts.h
+>+++ b/target/arm/kvm-consts.h
+>@@ -160,9 +160,6 @@ MISMATCH_CHECK(QEMU_KVM_ARM_TARGET_CORTEX_A53, KVM_ARM_TARGET_CORTEX_A53);
+> #define CP_REG_ARM64_SYSREG_OP2_MASK   0x0000000000000007
+> #define CP_REG_ARM64_SYSREG_OP2_SHIFT  0
+> 
+>-/* No kernel define but it's useful to QEMU */
+>-#define CP_REG_ARM64_SYSREG_CP (CP_REG_ARM64_SYSREG >> CP_REG_ARM_COPROC_SHIFT)
+>-
+> MISMATCH_CHECK(CP_REG_ARM64, KVM_REG_ARM64);
+> MISMATCH_CHECK(CP_REG_ARM_COPROC_MASK, KVM_REG_ARM_COPROC_MASK);
+> MISMATCH_CHECK(CP_REG_ARM_COPROC_SHIFT, KVM_REG_ARM_COPROC_SHIFT);
+>diff --git a/target/arm/helper.c b/target/arm/helper.c
+>index 268cad905f..93cae888e2 100644
+>--- a/target/arm/helper.c
+>+++ b/target/arm/helper.c
+>@@ -4527,7 +4527,7 @@ static void define_arm_vh_e2h_redirects_aliases(ARMCPU *cpu)
+>     };
+> 
+> #define K(op0, op1, crn, crm, op2) \
+>-    ENCODE_AA64_CP_REG(CP_REG_ARM64_SYSREG_CP, crn, crm, op0, op1, op2)
+>+    ENCODE_AA64_CP_REG(crn, crm, op0, op1, op2)
+> 
+>     static const struct E2HAlias aliases[] = {
+>         { K(3, 0,  1, 0, 0), K(3, 4,  1, 0, 0), K(3, 5, 1, 0, 0),
+>@@ -7297,10 +7297,9 @@ static void add_cpreg_to_hashtable(ARMCPU *cpu, const ARMCPRegInfo *r,
+>          * in their AArch64 view (the .cp value may be non-zero for the
+>          * benefit of the AArch32 view).
+>          */
+>-        if (cp == 0 || r->state == ARM_CP_STATE_BOTH) {
+>-            cp = CP_REG_ARM64_SYSREG_CP;
+>-        }
+>-        key = ENCODE_AA64_CP_REG(cp, r->crn, crm, r->opc0, opc1, opc2);
+>+        assert(cp == 0 || r->state == ARM_CP_STATE_BOTH);
+>+        cp = 0;
+>+        key = ENCODE_AA64_CP_REG(r->crn, crm, r->opc0, opc1, opc2);
+>         break;
+>     default:
+>         g_assert_not_reached();
+>@@ -7525,7 +7524,7 @@ void define_one_arm_cp_reg(ARMCPU *cpu, const ARMCPRegInfo *r)
+>         }
+>         break;
+>     case ARM_CP_STATE_AA64:
+>-        assert(r->cp == 0 || r->cp == CP_REG_ARM64_SYSREG_CP);
+>+        assert(r->cp == 0);
+>         break;
+>     default:
+>         g_assert_not_reached();
+>diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+>index 9dffa99ed1..af03fc7fc1 100644
+>--- a/target/arm/hvf/hvf.c
+>+++ b/target/arm/hvf/hvf.c
+>@@ -1124,8 +1124,7 @@ static bool is_id_sysreg(uint32_t reg)
+> 
+> static uint32_t hvf_reg2cp_reg(uint32_t reg)
+> {
+>-    return ENCODE_AA64_CP_REG(CP_REG_ARM64_SYSREG_CP,
+>-                              (reg >> SYSREG_CRN_SHIFT) & SYSREG_CRN_MASK,
+>+    return ENCODE_AA64_CP_REG((reg >> SYSREG_CRN_SHIFT) & SYSREG_CRN_MASK,
+>                               (reg >> SYSREG_CRM_SHIFT) & SYSREG_CRM_MASK,
+>                               (reg >> SYSREG_OP0_SHIFT) & SYSREG_OP0_MASK,
+>                               (reg >> SYSREG_OP1_SHIFT) & SYSREG_OP1_MASK,
+>diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
+>index dbf47595db..743c5a10e1 100644
+>--- a/target/arm/tcg/translate-a64.c
+>+++ b/target/arm/tcg/translate-a64.c
+>@@ -2466,8 +2466,7 @@ static void handle_sys(DisasContext *s, bool isread,
+>                        unsigned int op0, unsigned int op1, unsigned int op2,
+>                        unsigned int crn, unsigned int crm, unsigned int rt)
+> {
+>-    uint32_t key = ENCODE_AA64_CP_REG(CP_REG_ARM64_SYSREG_CP,
+>-                                      crn, crm, op0, op1, op2);
+>+    uint32_t key = ENCODE_AA64_CP_REG(crn, crm, op0, op1, op2);
+>     const ARMCPRegInfo *ri = get_arm_cp_reginfo(s->cp_regs, key);
+>     bool need_exit_tb = false;
+>     bool nv_trap_to_el2 = false;
+>@@ -2603,8 +2602,7 @@ static void handle_sys(DisasContext *s, bool isread,
+>          * We don't use the EL1 register's access function, and
+>          * fine-grained-traps on EL1 also do not apply here.
+>          */
+>-        key = ENCODE_AA64_CP_REG(CP_REG_ARM64_SYSREG_CP,
+>-                                 crn, crm, op0, 0, op2);
+>+        key = ENCODE_AA64_CP_REG(crn, crm, op0, 0, op2);
+>         ri = get_arm_cp_reginfo(s->cp_regs, key);
+>         assert(ri);
+>         assert(cp_access_ok(s->current_el, ri, isread));
+>-- 
+>2.43.0
+>
+>
 

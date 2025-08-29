@@ -4,91 +4,132 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF26FCA0EFF
-	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 17:06:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59287CA0FFF
+	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 17:07:51 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1usO5P-000477-5S; Sat, 30 Aug 2025 12:05:51 -0400
+	id 1usNfW-0006kO-Gt; Sat, 30 Aug 2025 11:39:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1urkiZ-0005Ow-Q4
- for qemu-arm@nongnu.org; Thu, 28 Aug 2025 18:03:39 -0400
-Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1urkiX-0002t8-HS
- for qemu-arm@nongnu.org; Thu, 28 Aug 2025 18:03:39 -0400
-Received: by mail-pl1-x636.google.com with SMTP id
- d9443c01a7336-246aef91e57so19963695ad.1
- for <qemu-arm@nongnu.org>; Thu, 28 Aug 2025 15:03:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756418615; x=1757023415; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:to:subject:user-agent:mime-version:date:message-id:from
- :to:cc:subject:date:message-id:reply-to;
- bh=4M9cm8Aazb+KJpA5IGIdk2z8pOTonrvhPx7widSniyM=;
- b=UgMpIIAh8fsA126b2mU0h9YjiYxPaKTwvHDJi5o4/lI8UifirYIViLb4/vvJrSMo7i
- MHr/BjU06GLIQQ/SVbgXBNWwFQymOfq20o/Q7TVFsuWtFOxHmkWBqGU38gGvEf+mKKtS
- 2ADxBv16lXYFf+CPjlZUV8FEUTEOKZFzL9fImBrg+JiwToGRJPFvEWvOZGCpKAyOg6ZA
- M86jLGMqoYMHlG6rahaPzzH9GaSdu+v+Ruw057HpLB+4Zj6rL31thmm1pazryELLfNrM
- OCx2VJsjEyW3ZpMJrdkOzoWq1bSfmaPRpx6roHq8Me8634Rg0IU2qDXH/UzZjWNxBSkb
- sDHQ==
+ (Exim 4.90_1) (envelope-from <armenon@redhat.com>)
+ id 1us5OL-0006iI-6m
+ for qemu-arm@nongnu.org; Fri, 29 Aug 2025 16:08:09 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armenon@redhat.com>)
+ id 1us5OJ-0005K1-2k
+ for qemu-arm@nongnu.org; Fri, 29 Aug 2025 16:08:08 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1756498086;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=RIJWzM+9HmtrwS0tPhmUTm+5sifEW+9w36De81b4Bm8=;
+ b=iLoIlqgtGuXbYScHeBWumkcjyuIhEjt8Dlpl0pQzY3HZBd1ZLC26AqU9LcsnpL+h/io+cP
+ r/zOfjct/vS59FWqqLfLYK6EoHMGvTRBN/Gljf5Mg1RVhOH0y4pB1Ha7vQq7sG/B4xpBhC
+ gvz8mKXXk4tt5I/GvFv32Cmzu8bdasM=
+Received: from mail-pj1-f71.google.com (mail-pj1-f71.google.com
+ [209.85.216.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-172-136OfbStMXmtVCt_-IghLQ-1; Fri, 29 Aug 2025 16:08:05 -0400
+X-MC-Unique: 136OfbStMXmtVCt_-IghLQ-1
+X-Mimecast-MFC-AGG-ID: 136OfbStMXmtVCt_-IghLQ_1756498084
+Received: by mail-pj1-f71.google.com with SMTP id
+ 98e67ed59e1d1-3276575ae5eso2630296a91.1
+ for <qemu-arm@nongnu.org>; Fri, 29 Aug 2025 13:08:05 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756418615; x=1757023415;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=4M9cm8Aazb+KJpA5IGIdk2z8pOTonrvhPx7widSniyM=;
- b=khSvuGgIFltFkEfPLftVFsvr5/GX5B1sBWzZ2krvs/fEeGCLtPf8dfpPZansYcT4Io
- 9h5oItkNQTADKevfmv+Y78gOxTxmops5+xqdo1qajJZmbuWIR/AMhg+0GU6wH3hplVC7
- 08Umy8HGaagGpnaV9SOj7zEDFsZna2AHKV8iQ+wYKf9Erp33Oy7cxauH2R/ZV2UR7SGT
- /B+tqfDgEttBE5pf1au2BsHLx9sHapZ+YN+/zAtydlVhWF17DmCdvuR7Yz9a4yO0kYD0
- KfZbzmUfLd4OXniWYW1w6D6aUXxDeCknjiTYC7F6qSiggpdLugoW8jjCMb1kGslIImPu
- pvFg==
+ d=1e100.net; s=20230601; t=1756498084; x=1757102884;
+ h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+ :mime-version:subject:date:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=RIJWzM+9HmtrwS0tPhmUTm+5sifEW+9w36De81b4Bm8=;
+ b=Tju+WiUChiS8QpxZSNKIQUq7i9YohkFVx8IG04LB5DYwhjyM/jrF3AAeVfD1ZWAasg
+ rB+fIHhPUW00NqsgPl9FbAePGKgaILIOndaoFHqGvy1+nLpUXMavTS9GWgbUkJBfuFIj
+ CjX3PgZiYav4TL7o2ooHI8bBi0TtfugqS1Kn1vpUH1QObUQqKJrgk2VOtXPeeor1c86K
+ qzuS9PgOjS1ANUTqrKOifXfKWzotXLhdhDVeKAXjHQi9UDqEplARvHddRgJl1i1aH1fr
+ 6mQ5SYw1y3GP0G2SUExoXBdO7srN3Vb2FXy3FWZs+1r9CzjM6EIBCECEzyXeGxudPbgM
+ O8kg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVuZ6wuJB7yzN5Grh7Rdz71RsArRIF6fiVn5Wde5Sez7mqtjS/zEkKRTM+Lm8lx143cWWRY8I+IXQ==@nongnu.org
-X-Gm-Message-State: AOJu0YzuReKiDSM5FUNF5dKEy2eyAmnArMnFZmpy35/1KUlEcNrNfVS7
- voZh+klvTONUyTe6I3Kivqb+8k2wnhx1CRkuRovxLdiI/ya8N20qVrAQDFkimTvme00=
-X-Gm-Gg: ASbGncuRp4vN3Vw4gEPjB95smEsD/+fVfDl1emyKvTE8f37lxvDmLWMD847fuh20sG9
- N79GqyZhewhzQ9E7QqtVgvllynaXulKOcQqdYeKY8a7K1IQreUcunK46LZMXIEOXVj8pLQfLe9h
- vHVovk0nuLM1IOjxv1TTeQxAqLigcUDOdkZ7MtjDPFgCrmiGmsitC1siJMoo9kN6zYgOo3pIswK
- TQ05yKDPaDdlvV2s5pvcmtYMmM1yzHfx/T/2Sy/z4ws09OJuenSlAI8bmGo6I/jFMLvwAY+Vr7R
- 3unbivMHAacxIdHc3/B9qz3BGNMUO8lcvRQ7kVg0X4mP9Phg8kPAjHx3pz6ziokm8nvZVLcvz+j
- ct+AsGyvQgIrX8uoPgydPPdpZDkjwJNf3G9/x
-X-Google-Smtp-Source: AGHT+IH77HgtphMfUjDHKo0mPZwZLG1fwVuEfdqHuo1XrojWzDdV3y1JPJ/b6Odi6n+kC0DrGfpXwQ==
-X-Received: by 2002:a17:902:f543:b0:246:7a11:3775 with SMTP id
- d9443c01a7336-2467a113b1amr258167335ad.48.1756418614818; 
- Thu, 28 Aug 2025 15:03:34 -0700 (PDT)
-Received: from [192.168.0.195] ([144.6.121.55])
+ AJvYcCWPNEMlgFLVfQcCQNGBPqEd+QIRn1JthZ1d2mNEFnGVQ6JYpP/+0m9PD7kYjgTmQQxPtIiNjOWqgQ==@nongnu.org
+X-Gm-Message-State: AOJu0YzipZjsiEQqs8cG/rcRK2EYwzfbtyJslWMaedUZypPL4ljUl5Kl
+ QCGOQU+DVBNcUUrcn7ncdY6arFxshI8PjlKiXRzZP6wh06sogHdY4gjUtflQt19znRIkegZ/yj0
+ a0G2ONtzG/UssU0vw0v5TiFCpZJ5fo3oEizY8XpPdAwFW5XRDoxuJsQ==
+X-Gm-Gg: ASbGncvWOu/3/u5ATJb/aEq8DQ/kni/mgNlTQ5K5rMOsT62ECs2owjP3H5CfCWEFqQr
+ kc3uMnkFkdL1gS8u/70bKPQsoREaUjdaI5yj23AMMSzF2m2yHdPRBJQxNh+lE1507jW63Zx4u9/
+ fpKd7ZFXtycE2nNdVe5KoEzr1PKg4ENazhGh2sFFohzV2YtW7uU2MHDzyDpQSbLKFuCHhtBDRTy
+ G6dMcj9nxRD5Gwraiy/WmPRBQrqFqB/q50+uCw+EQK20B/7E+cxwLj6+tGiQKajbv+LcshadhYc
+ FtRnshenzEJ37lcldjFdffE1RMV7385UmC2G9A5zLz+nb9POHzPKsA==
+X-Received: by 2002:a17:90b:2648:b0:327:83e1:5bf with SMTP id
+ 98e67ed59e1d1-32783e10b79mr12610525a91.28.1756498084079; 
+ Fri, 29 Aug 2025 13:08:04 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFr7U8FzL+m7/jCRocI5RF71VOc6/69Njtxm9FXx7CFFkbaoLToigV1VKRugxWrzZED3Hot9Q==
+X-Received: by 2002:a17:90b:2648:b0:327:83e1:5bf with SMTP id
+ 98e67ed59e1d1-32783e10b79mr12610498a91.28.1756498083584; 
+ Fri, 29 Aug 2025 13:08:03 -0700 (PDT)
+Received: from armenon-kvm.bengluru.csb ([49.47.195.108])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-249065d1ef4sm5032555ad.134.2025.08.28.15.03.30
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 28 Aug 2025 15:03:34 -0700 (PDT)
-Message-ID: <fec1ee2a-f141-4c5f-b7a8-debe404b9d47@linaro.org>
-Date: Fri, 29 Aug 2025 08:03:26 +1000
+ 98e67ed59e1d1-327d8f66f16sm3570543a91.0.2025.08.29.13.07.52
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 29 Aug 2025 13:08:03 -0700 (PDT)
+From: Arun Menon <armenon@redhat.com>
+Date: Sat, 30 Aug 2025 01:32:05 +0530
+Subject: [PATCH v13 25/27] migration: Rename post_save() to cleanup_save()
+ and make it void
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 0/5] target/arm: Remove deprecated pxa CPUs and
- xscale/iwmmxt code
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20250828140422.3271703-1-peter.maydell@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Content-Language: en-US
-In-Reply-To: <20250828140422.3271703-1-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Message-Id: <20250830-propagate_tpm_error-v13-25-a4e777b7eb2c@redhat.com>
+References: <20250830-propagate_tpm_error-v13-0-a4e777b7eb2c@redhat.com>
+In-Reply-To: <20250830-propagate_tpm_error-v13-0-a4e777b7eb2c@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Peter Xu <peterx@redhat.com>, Fabiano Rosas <farosas@suse.de>, 
+ =?utf-8?q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>, 
+ Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>, 
+ Dmitry Osipenko <dmitry.osipenko@collabora.com>, 
+ "Michael S. Tsirkin" <mst@redhat.com>, 
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
+ Cornelia Huck <cohuck@redhat.com>, Halil Pasic <pasic@linux.ibm.com>, 
+ Eric Farman <farman@linux.ibm.com>, Thomas Huth <thuth@redhat.com>, 
+ Christian Borntraeger <borntraeger@linux.ibm.com>, 
+ Matthew Rosato <mjrosato@linux.ibm.com>, 
+ Richard Henderson <richard.henderson@linaro.org>, 
+ David Hildenbrand <david@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>, 
+ Nicholas Piggin <npiggin@gmail.com>, 
+ Harsh Prateek Bora <harshpb@linux.ibm.com>, 
+ Paolo Bonzini <pbonzini@redhat.com>, Fam Zheng <fam@euphon.net>, 
+ Alex Williamson <alex.williamson@redhat.com>, 
+ =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>, 
+ Steve Sistare <steven.sistare@oracle.com>, 
+ =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>, 
+ qemu-s390x@nongnu.org, qemu-ppc@nongnu.org, 
+ Hailiang Zhang <zhanghailiang@xfusion.com>, 
+ Stefan Berger <stefanb@linux.vnet.ibm.com>, 
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
+ Arun Menon <armenon@redhat.com>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=6500; i=armenon@redhat.com;
+ h=from:subject:message-id; bh=74/dsKktNrtzX90Ti+uqvjJHnSL4vO0NIyRx84Chf/E=;
+ b=owGbwMvMwCWWVaVqcZPfqI/xtFoSQ8Ymdj8HhidK3T2391w4tKmTN23tNefV+XmZHbNr+lwnP
+ ymbfHBtRykLgxgXg6yYIkvD1wDZpoDCiEjbl9dh5rAygQxh4OIUgImYCjP8U/23auOilooJvw26
+ 82VWfNguH/wi2SHSo/1QZmtYbmbKC4b/VR9Pxy1geb/a95aPnfb/uOyPTP8COjqy9n+JTDw9y0C
+ PGwA=
+X-Developer-Key: i=armenon@redhat.com; a=openpgp;
+ fpr=80F5501D82507158593DE9D76A7A2538D90F328E
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: aC_34xZXMBMh6J_RiDKbd5MLHj57Swpi2KZXzzpkwfo_1756498084
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::636;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x636.google.com
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=armenon@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -104,17 +145,177 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 8/29/25 00:04, Peter Maydell wrote:
-> Peter Maydell (5):
->    target/arm: Remove deprecated pxa CPU family
->    target/arm: Remove XScale and iWMMXt translate.c code
->    target/arm: Remove iwmmxt helper functions
->    target/arm: Drop ARM_FEATURE_XSCALE handling
->    target/arm: Drop ARM_FEATURE_IWMMXT handling
+The post_save() function call is responsible for cleaning up resources
+after the device state has been saved.
+Currently it is infallible, and does not return an error.
 
-Woohoo!
+It is called regardless of whether there is a preceding error from
+save or subsection save. That is, save and post_save() together are
+considered to be an atomic logical operation.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+It should not be confused as a counterpart of the post_load() function
+because post_load() does some sanity checks and returns an error if it
+fails. This commit, therefore, renames post_save() to cleanup_save()
+and makes it a void function.
 
-r~
+Reviewed-by: Fabiano Rosas <farosas@suse.de>
+Suggested-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
+Signed-off-by: Arun Menon <armenon@redhat.com>
+---
+ docs/devel/migration/main.rst |  2 +-
+ hw/ppc/spapr_pci.c            |  5 ++---
+ include/migration/vmstate.h   |  2 +-
+ migration/savevm.c            |  5 ++---
+ migration/vmstate.c           | 12 ++++--------
+ target/arm/machine.c          |  6 ++----
+ 6 files changed, 12 insertions(+), 20 deletions(-)
+
+diff --git a/docs/devel/migration/main.rst b/docs/devel/migration/main.rst
+index 6493c1d2bca48a2fa34d92f6c0979c215c56b8d5..a39fec2e21c26c4315c0cf13b105176d70679d4d 100644
+--- a/docs/devel/migration/main.rst
++++ b/docs/devel/migration/main.rst
+@@ -439,7 +439,7 @@ The functions to do that are inside a vmstate definition, and are called:
+ 
+   This function is called before we save the state of one device.
+ 
+-- ``int (*post_save)(void *opaque);``
++- ``void (*cleanup_save)(void *opaque);``
+ 
+   This function is called after we save the state of one device
+   (even upon failure, unless the call to pre_save returned an error).
+diff --git a/hw/ppc/spapr_pci.c b/hw/ppc/spapr_pci.c
+index 1ac1185825e84ca908fd878f6cbe7e8cacac1d89..135265f075dff502af59fbc91babca1f9a26c54d 100644
+--- a/hw/ppc/spapr_pci.c
++++ b/hw/ppc/spapr_pci.c
+@@ -2118,14 +2118,13 @@ static int spapr_pci_pre_save(void *opaque)
+     return 0;
+ }
+ 
+-static int spapr_pci_post_save(void *opaque)
++static void spapr_pci_cleanup_save(void *opaque)
+ {
+     SpaprPhbState *sphb = opaque;
+ 
+     g_free(sphb->msi_devs);
+     sphb->msi_devs = NULL;
+     sphb->msi_devs_num = 0;
+-    return 0;
+ }
+ 
+ static int spapr_pci_post_load(void *opaque, int version_id)
+@@ -2152,7 +2151,7 @@ static const VMStateDescription vmstate_spapr_pci = {
+     .version_id = 2,
+     .minimum_version_id = 2,
+     .pre_save = spapr_pci_pre_save,
+-    .post_save = spapr_pci_post_save,
++    .cleanup_save = spapr_pci_cleanup_save,
+     .post_load = spapr_pci_post_load,
+     .fields = (const VMStateField[]) {
+         VMSTATE_UINT64_EQUAL(buid, SpaprPhbState, NULL),
+diff --git a/include/migration/vmstate.h b/include/migration/vmstate.h
+index 5fe9bbf39058d0cf97c1adab54cc516dbe8dc32a..c1d8e5b7a7d9d544fc8ce181372660f5538ef66b 100644
+--- a/include/migration/vmstate.h
++++ b/include/migration/vmstate.h
+@@ -208,7 +208,7 @@ struct VMStateDescription {
+     int (*pre_load)(void *opaque);
+     int (*post_load)(void *opaque, int version_id);
+     int (*pre_save)(void *opaque);
+-    int (*post_save)(void *opaque);
++    void (*cleanup_save)(void *opaque);
+     bool (*needed)(void *opaque);
+     bool (*dev_unplug_pending)(void *opaque);
+ 
+diff --git a/migration/savevm.c b/migration/savevm.c
+index 2c05b763148295d7e2095027aa143f45bc4c4676..693f77b728604f2072fb40bd2ec268b217da9727 100644
+--- a/migration/savevm.c
++++ b/migration/savevm.c
+@@ -322,14 +322,13 @@ static int configuration_pre_save(void *opaque)
+     return 0;
+ }
+ 
+-static int configuration_post_save(void *opaque)
++static void configuration_cleanup_save(void *opaque)
+ {
+     SaveState *state = opaque;
+ 
+     g_free(state->capabilities);
+     state->capabilities = NULL;
+     state->caps_count = 0;
+-    return 0;
+ }
+ 
+ static int configuration_pre_load(void *opaque)
+@@ -544,7 +543,7 @@ static const VMStateDescription vmstate_configuration = {
+     .pre_load = configuration_pre_load,
+     .post_load = configuration_post_load,
+     .pre_save = configuration_pre_save,
+-    .post_save = configuration_post_save,
++    .cleanup_save = configuration_cleanup_save,
+     .fields = (const VMStateField[]) {
+         VMSTATE_UINT32(len, SaveState),
+         VMSTATE_VBUFFER_ALLOC_UINT32(name, SaveState, 0, NULL, len),
+diff --git a/migration/vmstate.c b/migration/vmstate.c
+index ad8e5b71ae2ce78e66a6426602e5c20405ec57c0..a7562a5cfd8627e20c90e286e35c5e3429c48150 100644
+--- a/migration/vmstate.c
++++ b/migration/vmstate.c
+@@ -529,8 +529,8 @@ int vmstate_save_state_v(QEMUFile *f, const VMStateDescription *vmsd,
+                 if (ret) {
+                     error_setg(errp, "Save of field %s/%s failed",
+                                 vmsd->name, field->name);
+-                    if (vmsd->post_save) {
+-                        vmsd->post_save(opaque);
++                    if (vmsd->cleanup_save) {
++                        vmsd->cleanup_save(opaque);
+                     }
+                     return ret;
+                 }
+@@ -557,12 +557,8 @@ int vmstate_save_state_v(QEMUFile *f, const VMStateDescription *vmsd,
+ 
+     ret = vmstate_subsection_save(f, vmsd, opaque, vmdesc, errp);
+ 
+-    if (vmsd->post_save) {
+-        int ps_ret = vmsd->post_save(opaque);
+-        if (!ret && ps_ret) {
+-            ret = ps_ret;
+-            error_setg(errp, "post-save failed: %s", vmsd->name);
+-        }
++    if (vmsd->cleanup_save) {
++        vmsd->cleanup_save(opaque);
+     }
+     return ret;
+ }
+diff --git a/target/arm/machine.c b/target/arm/machine.c
+index 6986915bee876402c1bd2efb92f41ca1298c66a3..d070114da15de85fd50af71e1d8caa84f25846d8 100644
+--- a/target/arm/machine.c
++++ b/target/arm/machine.c
+@@ -903,15 +903,13 @@ static int cpu_pre_save(void *opaque)
+     return 0;
+ }
+ 
+-static int cpu_post_save(void *opaque)
++static void cpu_cleanup_save(void *opaque)
+ {
+     ARMCPU *cpu = opaque;
+ 
+     if (!kvm_enabled()) {
+         pmu_op_finish(&cpu->env);
+     }
+-
+-    return 0;
+ }
+ 
+ static int cpu_pre_load(void *opaque)
+@@ -1048,7 +1046,7 @@ const VMStateDescription vmstate_arm_cpu = {
+     .version_id = 22,
+     .minimum_version_id = 22,
+     .pre_save = cpu_pre_save,
+-    .post_save = cpu_post_save,
++    .cleanup_save = cpu_cleanup_save,
+     .pre_load = cpu_pre_load,
+     .post_load = cpu_post_load,
+     .fields = (const VMStateField[]) {
+
+-- 
+2.51.0
+
 

@@ -4,79 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8CFF3CA0FFF
-	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 15:19:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCE85CA1000
+	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 15:20:22 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1usN7t-0000eW-24; Sat, 30 Aug 2025 11:04:21 -0400
+	id 1usN8e-0002cA-PW; Sat, 30 Aug 2025 11:05:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1urt66-0005uA-Ax
- for qemu-arm@nongnu.org; Fri, 29 Aug 2025 03:00:30 -0400
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+ id 1urtkX-0000wQ-I9
+ for qemu-arm@nongnu.org; Fri, 29 Aug 2025 03:42:17 -0400
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1urt64-0003w4-Bo
- for qemu-arm@nongnu.org; Fri, 29 Aug 2025 03:00:30 -0400
-Received: by mail-wm1-x334.google.com with SMTP id
- 5b1f17b1804b1-45a1b00f23eso11171175e9.0
- for <qemu-arm@nongnu.org>; Fri, 29 Aug 2025 00:00:27 -0700 (PDT)
+ id 1urtkR-0004rA-7l
+ for qemu-arm@nongnu.org; Fri, 29 Aug 2025 03:42:17 -0400
+Received: by mail-wm1-x32a.google.com with SMTP id
+ 5b1f17b1804b1-45b4d89217aso10598855e9.2
+ for <qemu-arm@nongnu.org>; Fri, 29 Aug 2025 00:42:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756450826; x=1757055626; darn=nongnu.org;
+ d=linaro.org; s=google; t=1756453328; x=1757058128; darn=nongnu.org;
  h=mime-version:message-id:in-reply-to:references:user-agent:subject
  :cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=8mDwc7859lUawsk8WvPSdQIfrO/qUoTqwkKzFjnxmlk=;
- b=vaNz+0AzWRmAtZ5K3Pad8umzvjGajgOiJ5zhTCeL1QFRNU4ne9DCQqseNJ73Pa8wNV
- RrVaNvtGIOXBPg4Ti57oK7uGSKaQimrLwgRDUoLXajk6iuXqDMcOMByAiRPkxCXzMIgn
- Ny1U+6dkL/BWLfSzyClrpvTANtg74z49F9k/RP8kVYG03nYWSVWZU3rWS4e6KNHSe68I
- Fwe42Kzylel68Rreor7WbrD5d+ItFHuqkZUzN01emgBG+D8sxYcNt2IiaCLwJw0sfAjS
- e+oGtunKGpcH3g6kYhygUECh/zgRur0EkZkOYJXNwRAUMmbJ9S8kzyDk8ycXQMm445Gg
- 531w==
+ bh=l+2TI0bjgXnqdVs75iWIYrWQx8vb/t3W54+0JniDy7g=;
+ b=ZxvXrwejGBL8t1Rqo7BvGYGXbAEuTSJmXAU/bSo8wSTkZ6eO/xZtDIMOffZBDTCOrw
+ K/NI8xK+RnsDq0KZKGXcg1GMjNfIi2oxCeQYAKeQdmRvcfQKhXesNuBP5uiuzUx95EHn
+ o5H6cSaVPf8bmX2UcoJ44QTWEMJF8l1k8L/ko8ETTDZtpnxuW1nfAMR6JpsxitQzjlpz
+ 0yWHe41zI9WeFS49cf12yNC5k0KhMUkff0s+YNDJPDhtrrtqjbcFnBUCtV4vNrCVYTCb
+ VxtYWigvDMUdelFBtbMQUtze4N8Mbvs2yp1btxHU1w8GpcLjwqDBbVl3SzxwYC2bi+mT
+ hYhw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756450826; x=1757055626;
+ d=1e100.net; s=20230601; t=1756453328; x=1757058128;
  h=mime-version:message-id:in-reply-to:references:user-agent:subject
  :cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=8mDwc7859lUawsk8WvPSdQIfrO/qUoTqwkKzFjnxmlk=;
- b=p5w34RCe1OQTyH8G0v+5c8YfgBkwLvjHzffZwzKp3uCYZtQPIn0VpsRSBUpceSizOz
- Xl2UoiXKt/WvceG7htPAX/qzA23mFMCMrIWVX1lgnX8/Hsx9tugIv/KcRZo85ZU+EUmC
- C39+QD/B1vytDbvLzHtD1zd1pOs/HGtd7cNm1Ta4rWqCeUej5CVqetb6/TR+w0CS5QfG
- iNu1iUbmdMIzQFNFljRakK/MUEcymLWwBlOldUKdswCQAj7pPIVYN2LtL6m2iaPqEFmi
- sIJMR4dVEZx5MLW6F4D8jzVINLUakMF4HQvWOuiC+JY1HA/WjEDGjq5zpaTqCXKklw+4
- /PJg==
-X-Gm-Message-State: AOJu0YwarDQOh5XYP+MVqOB0m3EgVHuV3VneWLTY9B0jN6AYaAoBEaV+
- 1KiNeUwtpv2Gotewxq1qVUGJlEtjcceQRXpq2hzn8uz5G8zBiwS9tSR8BOaYIdOI9/4=
-X-Gm-Gg: ASbGnctVu+DqPPeDi/q38Z/VgfL0ElpkTzc5M/F3aTqO2QQg2aE5ZW8ZObxoDmVjaYc
- QphEvACVONMMvPX5ekqXLJtX3U6MYwd+qjCynFBOlltY/4IfWrxeA80z5lx/epQMT35tPT3qnew
- pkWXhcdPNX0zaBKUDG8b0MqZl2EoLu9kccxxATZiUvpsa/LxNcAGOyi+/Ql4iE6Sq53dPvkt/Sk
- 68z9W05Fth9I5xNtaTauWTHDahIsAnZtNWAB/UC0Fh2E/dfJiT6vjLXjBc0tD2D9lcoFusI2Dgi
- 11no9i4T+/Bh/EgvaGjC7K8yBRZ9raCAw4UjpvdAgVHsjcKCVm3KuFUGzmql4xNUzJIG+I1czNR
- v3AXN0jlzmW/ik6FXHjA9StiEDOOxN0t3WK6UJOOY5NAYA1Jlg3cStTk+pavNhvQBaqxs7OZz
-X-Google-Smtp-Source: AGHT+IHPYF6amWyn5ekA2SxAYNR1XU4lzwddYmnEBpzfzVgX4WPX9oAZMW76zcsB2+m55Nl/R+eNAA==
-X-Received: by 2002:a05:600c:190a:b0:453:5c30:a1fd with SMTP id
- 5b1f17b1804b1-45b517954bfmr255114055e9.8.1756450825994; 
- Fri, 29 Aug 2025 00:00:25 -0700 (PDT)
+ bh=l+2TI0bjgXnqdVs75iWIYrWQx8vb/t3W54+0JniDy7g=;
+ b=EgJFnogfiZ1IkrDRuhoT4UtCOzGPZ9HlcvtcCZxYjsUeYjTnDaDpwnC7d4r66LT+53
+ T/fJ4GN0z0B7/2t0+ic/yEL1Mp3pcY8wbpAhJh/ZGMZb2eIngiqXI7JW1WrrMuT+gM9R
+ o3fJibpHdM05CS4dwZAeWpXltytczKpoUmD3mNMgHc63+pQXQQ8FM7Seoyw4JN5KivWp
+ Fn7fV3oHiidBosJY8ad+eORlGSkYbqdZtttg79t9ICQM46DlTuBhFcxHGNlgpzUsDnS3
+ bMTApm3YC+XPuRQCysTy3ZChqTVezHtO/IZTElULJUpY/KlqEo7qJZo/eyyc79nQN5ia
+ DuVg==
+X-Gm-Message-State: AOJu0YyEiyA+ndgVc16bRTJZP1w2Jndc+6mBj7pzjsxlSvcRctK+L7HM
+ bO1NcfOl7eDFP5piKD8AsXBQwwXYDD994UXlo2x6FzYYiqy0BaoGf+1VrtIHhNdjSW4=
+X-Gm-Gg: ASbGnctlWop/bM69sdZ8U6DSqMOUnAjykYPxSSXvzpJlKXemsfwnpb+PczIZ346AAt0
+ H+nfnvy3hc1JaybmM9gluIY7rXI1EvZOnIwyfTqIhOtcICy+obsc2Sd3yn91PEZopFWzSZLW/6T
+ Bx+FfYHmWeAvEd24ncizpX2j/YIckodMKF86c8P1F7/fO0JldoosMpq6fm98PCbcOQ1G391wQqq
+ iDSW1WiX5yrPztl/6tSWSD/CiEKO3f93sY36nO7w430m+MCU+Wxk1vnaLC7XgT5DOGr2S/hCM8N
+ Q8giJcKyn/DtmEK2UZfKjerTah6L54hS9DfhtTenxu4g51qlvCawIDmyGKXdWo+Yg9PgZtrJtXF
+ NG5N274NNrjEnCniy229Gr+99mMBdOgoYT+eNqjvgLCmKrO+fIUUFDWQ3E/RNgeZZ5eZDthei
+X-Google-Smtp-Source: AGHT+IF0AeISCiQvF6TlOHNlsUfD79Zz8LRsc7v7mDkuTtqjNZrivHDW1LH6vLiEoDa/pVftPu/k3w==
+X-Received: by 2002:a05:600c:3592:b0:45b:7e68:c6a3 with SMTP id
+ 5b1f17b1804b1-45b7ec0ae32mr22281555e9.16.1756453328159; 
+ Fri, 29 Aug 2025 00:42:08 -0700 (PDT)
 Received: from meli-email.org (athedsl-4441256.home.otenet.gr.
  [79.129.180.152]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-45b73c52735sm85216535e9.22.2025.08.29.00.00.25
+ 5b1f17b1804b1-45b6f0d3073sm117318105e9.7.2025.08.29.00.42.07
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 29 Aug 2025 00:00:25 -0700 (PDT)
-Date: Fri, 29 Aug 2025 09:59:22 +0300
+ Fri, 29 Aug 2025 00:42:07 -0700 (PDT)
+Date: Fri, 29 Aug 2025 10:40:55 +0300
 From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 To: qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>
 Cc: qemu-arm@nongnu.org
-Subject: Re: [PATCH 05/61] target/arm/hvf: Add KVMID_TO_HVF, HVF_TO_KVMID
+Subject: Re: [PATCH 19/61] target/arm: Reorder ENCODE_AA64_CP_REG arguments
 User-Agent: meli/0.8.12
 References: <20250827010453.4059782-1-richard.henderson@linaro.org>
- <20250827010453.4059782-7-richard.henderson@linaro.org>
-In-Reply-To: <20250827010453.4059782-7-richard.henderson@linaro.org>
-Message-ID: <t1qu4o.3fgegimfxo66f@linaro.org>
+ <20250827010453.4059782-24-richard.henderson@linaro.org>
+In-Reply-To: <20250827010453.4059782-24-richard.henderson@linaro.org>
+Message-ID: <t1qw27.1nxwnzs1wma9d@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::334;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wm1-x334.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
+ envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wm1-x32a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -99,50 +99,99 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Wed, 27 Aug 2025 04:03, Richard Henderson <richard.henderson@linaro.org> wrote:
->Conversion between KVM system registers ids and the HVF system
->register ids is trivial.
+On Wed, 27 Aug 2025 04:04, Richard Henderson <richard.henderson@linaro.org> wrote:
+>The order of the parameters in the Arm ARM is
+>
+>  op0, op1, crn, crm, op2
+>
+>Reorder the arguments of ENCODE_AA64_CP_REG to match.
 >
 >Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 >---
 
-
 Reviewed-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 
-> target/arm/hvf/hvf.c | 20 ++++++++++++++++++++
-> 1 file changed, 20 insertions(+)
+> target/arm/cpregs.h            | 2 +-
+> target/arm/helper.c            | 4 ++--
+> target/arm/hvf/hvf.c           | 6 +++---
+> target/arm/tcg/translate-a64.c | 4 ++--
+> 4 files changed, 8 insertions(+), 8 deletions(-)
 >
+>diff --git a/target/arm/cpregs.h b/target/arm/cpregs.h
+>index 95b0b9c78e..7bdf6cf847 100644
+>--- a/target/arm/cpregs.h
+>+++ b/target/arm/cpregs.h
+>@@ -187,7 +187,7 @@ enum {
+>      ((is64) << CP_REG_AA32_64BIT_SHIFT) |                  \
+>      ((cp) << 16) | ((crn) << 11) | ((crm) << 7) | ((opc1) << 3) | (opc2))
+> 
+>-#define ENCODE_AA64_CP_REG(crn, crm, op0, op1, op2) \
+>+#define ENCODE_AA64_CP_REG(op0, op1, crn, crm, op2) \
+>     (CP_REG_AA64_MASK | CP_REG_ARM64_SYSREG |           \
+>      ((op0) << CP_REG_ARM64_SYSREG_OP0_SHIFT) |         \
+>      ((op1) << CP_REG_ARM64_SYSREG_OP1_SHIFT) |         \
+>diff --git a/target/arm/helper.c b/target/arm/helper.c
+>index 93cae888e2..b48b669a6a 100644
+>--- a/target/arm/helper.c
+>+++ b/target/arm/helper.c
+>@@ -4527,7 +4527,7 @@ static void define_arm_vh_e2h_redirects_aliases(ARMCPU *cpu)
+>     };
+> 
+> #define K(op0, op1, crn, crm, op2) \
+>-    ENCODE_AA64_CP_REG(crn, crm, op0, op1, op2)
+>+    ENCODE_AA64_CP_REG(op0, op1, crn, crm, op2)
+> 
+>     static const struct E2HAlias aliases[] = {
+>         { K(3, 0,  1, 0, 0), K(3, 4,  1, 0, 0), K(3, 5, 1, 0, 0),
+>@@ -7299,7 +7299,7 @@ static void add_cpreg_to_hashtable(ARMCPU *cpu, const ARMCPRegInfo *r,
+>          */
+>         assert(cp == 0 || r->state == ARM_CP_STATE_BOTH);
+>         cp = 0;
+>-        key = ENCODE_AA64_CP_REG(r->crn, crm, r->opc0, opc1, opc2);
+>+        key = ENCODE_AA64_CP_REG(r->opc0, opc1, r->crn, crm, opc2);
+>         break;
+>     default:
+>         g_assert_not_reached();
 >diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
->index 7b0413093d..47165bd29c 100644
+>index af03fc7fc1..bda57614ed 100644
 >--- a/target/arm/hvf/hvf.c
 >+++ b/target/arm/hvf/hvf.c
->@@ -403,6 +403,26 @@ struct hvf_sreg_match {
->     uint32_t cp_idx;
-> };
+>@@ -1124,10 +1124,10 @@ static bool is_id_sysreg(uint32_t reg)
 > 
->+/*
->+ * QEMU uses KVM system register ids in the migration format.
->+ * Conveniently, HVF uses the same encoding of the op* and cr* parameters
->+ * within the low 16 bits of the ids.  Thus conversion between the
->+ * formats is trivial.
->+ */
->+
->+#define KVMID_TO_HVF(KVM)  ((KVM) & 0xffff)
->+#define HVF_TO_KVMID(HVF)  \
->+    (CP_REG_ARM64 | CP_REG_SIZE_U64 | CP_REG_ARM64_SYSREG | (HVF))
->+
->+/* Verify this at compile-time. */
->+
->+#define DEF_SYSREG(HVF_ID, ...) \
->+  QEMU_BUILD_BUG_ON(HVF_ID != KVMID_TO_HVF(KVMID_AA64_SYS_REG64(__VA_ARGS__)));
->+
->+#include "sysreg.c.inc"
->+
->+#undef DEF_SYSREG
->+
-> #define DEF_SYSREG(HVF_ID, op0, op1, crn, crm, op2) \
->     { HVF_ID, HVF_SYSREG(crn, crm, op0, op1, op2) },
+> static uint32_t hvf_reg2cp_reg(uint32_t reg)
+> {
+>-    return ENCODE_AA64_CP_REG((reg >> SYSREG_CRN_SHIFT) & SYSREG_CRN_MASK,
+>-                              (reg >> SYSREG_CRM_SHIFT) & SYSREG_CRM_MASK,
+>-                              (reg >> SYSREG_OP0_SHIFT) & SYSREG_OP0_MASK,
+>+    return ENCODE_AA64_CP_REG((reg >> SYSREG_OP0_SHIFT) & SYSREG_OP0_MASK,
+>                               (reg >> SYSREG_OP1_SHIFT) & SYSREG_OP1_MASK,
+>+                              (reg >> SYSREG_CRN_SHIFT) & SYSREG_CRN_MASK,
+>+                              (reg >> SYSREG_CRM_SHIFT) & SYSREG_CRM_MASK,
+>                               (reg >> SYSREG_OP2_SHIFT) & SYSREG_OP2_MASK);
+> }
 > 
+>diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
+>index 743c5a10e1..58303c224f 100644
+>--- a/target/arm/tcg/translate-a64.c
+>+++ b/target/arm/tcg/translate-a64.c
+>@@ -2466,7 +2466,7 @@ static void handle_sys(DisasContext *s, bool isread,
+>                        unsigned int op0, unsigned int op1, unsigned int op2,
+>                        unsigned int crn, unsigned int crm, unsigned int rt)
+> {
+>-    uint32_t key = ENCODE_AA64_CP_REG(crn, crm, op0, op1, op2);
+>+    uint32_t key = ENCODE_AA64_CP_REG(op0, op1, crn, crm, op2);
+>     const ARMCPRegInfo *ri = get_arm_cp_reginfo(s->cp_regs, key);
+>     bool need_exit_tb = false;
+>     bool nv_trap_to_el2 = false;
+>@@ -2602,7 +2602,7 @@ static void handle_sys(DisasContext *s, bool isread,
+>          * We don't use the EL1 register's access function, and
+>          * fine-grained-traps on EL1 also do not apply here.
+>          */
+>-        key = ENCODE_AA64_CP_REG(crn, crm, op0, 0, op2);
+>+        key = ENCODE_AA64_CP_REG(op0, 0, crn, crm, op2);
+>         ri = get_arm_cp_reginfo(s->cp_regs, key);
+>         assert(ri);
+>         assert(cp_access_ok(s->current_el, ri, isread));
 >-- 
 >2.43.0
 >

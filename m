@@ -4,88 +4,132 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5D8ACA0EFF
-	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 18:25:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61998CA0FFF
+	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 18:27:37 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1usNxR-0003HS-Ho; Sat, 30 Aug 2025 11:57:38 -0400
+	id 1usNbR-0005tq-NO; Sat, 30 Aug 2025 11:34:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1usEMz-0006IJ-Pv
- for qemu-arm@nongnu.org; Sat, 30 Aug 2025 01:43:21 -0400
-Received: from mail-pf1-x42e.google.com ([2607:f8b0:4864:20::42e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1usEMt-0004MC-Uw
- for qemu-arm@nongnu.org; Sat, 30 Aug 2025 01:43:21 -0400
-Received: by mail-pf1-x42e.google.com with SMTP id
- d2e1a72fcca58-7722e0ca299so973516b3a.1
- for <qemu-arm@nongnu.org>; Fri, 29 Aug 2025 22:43:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756532594; x=1757137394; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=KGZo8KBWxFmNhdef6qTbtyZn5NiQLX0WXbRYDwiR+/g=;
- b=mKHwH5YFQqYLM5QgeC6lmfKgalTAkuJ0lw5M2nuaerzL/yS10i5psD4VMWsr0NweEq
- z570NeIoZCKuERGKeuqEetWYpC2Vhq9UssypiIikPJxSpofFDOgjv0n971bHSdeA2So8
- LMyWfhZXKMNxaDunHPTYOMF0ib4RvHTSpNWjxng5uWAqWLNJjpmEUEtsuP7FpXfa1wcj
- dcogDMv5ggAWEmi1qvju75jupb3ABZ+gZJ5K59FaK2wKzUWbkcpn++wQEUB4Hv1HcFhG
- nfVFPXUYIJHvMpVezeQsM3Wm3SrwKtKTliPy2z4MroM+ooUEfRj5kv9OIA6XAqJ0wzFA
- Kaiw==
+ (Exim 4.90_1) (envelope-from <armenon@redhat.com>)
+ id 1us5Jb-0004tf-EO
+ for qemu-arm@nongnu.org; Fri, 29 Aug 2025 16:03:15 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armenon@redhat.com>)
+ id 1us5JZ-0004ZI-KR
+ for qemu-arm@nongnu.org; Fri, 29 Aug 2025 16:03:15 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1756497792;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=oOSafeLF/cdHj0WUrje7Rzs54rhm0NEYGyektqV3rfY=;
+ b=UvMki49I244pyN+/W9oF5kelqgrmC8zx9Xw2lF2AzS92nWF0fIAv8h46Xn/eVDqnQ6mEd8
+ 0MrqO+yRdLSqhEyZD6prk47ipfsVfIl5OiCV0qZfoeUEcjG3bfrB8PcbBJCg3M4MFCkSwg
+ JNgWOYDLh6Gv5h6NN+SudIIouT7NKm0=
+Received: from mail-pj1-f72.google.com (mail-pj1-f72.google.com
+ [209.85.216.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-484-ULHNecxIM3OanTzrRVCwYA-1; Fri, 29 Aug 2025 16:03:10 -0400
+X-MC-Unique: ULHNecxIM3OanTzrRVCwYA-1
+X-Mimecast-MFC-AGG-ID: ULHNecxIM3OanTzrRVCwYA_1756497790
+Received: by mail-pj1-f72.google.com with SMTP id
+ 98e67ed59e1d1-3235e45b815so2915218a91.0
+ for <qemu-arm@nongnu.org>; Fri, 29 Aug 2025 13:03:10 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756532594; x=1757137394;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ d=1e100.net; s=20230601; t=1756497790; x=1757102590;
+ h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+ :mime-version:subject:date:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=KGZo8KBWxFmNhdef6qTbtyZn5NiQLX0WXbRYDwiR+/g=;
- b=qZCNwMRvcBI67/WoPeio/pjtMeanoMJVCzzfjVKjTvKljZvsi9CYakJx1Gs+8ioviO
- ysedJ1MppvIc2ATwMOPuLEge/uJHleBMjqzdQ+C4HsmA20WmzruNs8Bf/ive0WADBWdG
- y+CpO9F7guSqhrbb4Zr/yKEoXorv3jD2TagzCK4pUWMxWFSaBO7slIiiDzABDSBozMPo
- 1On41Tx1MZuGPPPG/Y8d2xXUQTxCyJRbwuMQxqQWx2Ar8sQNJ7zIhuvLf8hRcla43pgn
- 77MjnSC9Yim6lKk/tURIiP96b9K9kEKGTafxNDcUuqQyoq9l5ZkyWcSzNmFkl0dFzgne
- i9rw==
-X-Gm-Message-State: AOJu0YweoKobXrnr7PDHyamnpdXGdT0xASeJqDKeQWOie5rkX3y4OlXL
- 25SmAxAhFnfcaoNl1enjBfTCyNhseg2ElOhg0dW7Llvcg9dbHVXthofCaqTTtoMECmg=
-X-Gm-Gg: ASbGncuVfqZxavSgfpULqJGdDarMNZtxu0kLwvfbd0TMOXYmGaDup7epunjjQ+CALKY
- RLk8mfFDqLM15vr03HTuTM5lOfstt+Px18jX5ebFXHhX6i9Ie0P8Ad0gGTr0QCV6vFsHLEPyjSm
- 11Bn+MSNoMihy31KPCa+wzzKMtScEH1xFXJcLVnGh2f/Z/ww1qQWuubVZahtVqXjqEU7Z/uD215
- DDQe1N6axt7QYE2cqtSr2TnciYAr2+mBjCtgwfpGd71WRgCGEqfP9kvIktluulnWQYj/raAr+oe
- BmAD6OO1kBqUz0LZaAqIGtgkWB9kGPVpWRmuyFlulGTEZaJ3a0RluElhJEElIvodmptUqVcwRpd
- cd6T3Jh+KepPR5+whS6EivFziiF6y0TwW76ijyvda1WVcqN+vIdpLcaEYYn2Ts6CyhlUCXS0=
-X-Google-Smtp-Source: AGHT+IHK8HBUdy3Ezx8NmEpm8qnwHZpxbFKLO82dD/+1qPAj4daHkXzjWQpnDxs8wqsrptRxiGuTcw==
-X-Received: by 2002:a05:6a21:339a:b0:243:78a:82c7 with SMTP id
- adf61e73a8af0-243d5234e3emr2387680637.28.1756532594331; 
- Fri, 29 Aug 2025 22:43:14 -0700 (PDT)
-Received: from stoup.. (122-150-204-48.dyn.ip.vocus.au. [122.150.204.48])
+ bh=oOSafeLF/cdHj0WUrje7Rzs54rhm0NEYGyektqV3rfY=;
+ b=fTZ0elWqvOVCVD1wzNOm46DQq0OL+ERgv/BO5YavTn1eImuzDCaxTrYN7oVPsS1dqr
+ JK3Whw7EGzudH2RZhLIAYig4Q/GJDPTYMFqGKeo6qunaKGnm4CUIY2V8dwkRuwnLrvI1
+ ZfuLTjbJvNOhmzLlm/cNqL/MBwyfEwL6zGRMExPuWY7AXjyujw2H7l3SjWn3fAsQgR4H
+ uqpMu5KHtdcJN/r0hyupxa8KHlPVUNCYszQWaFmSL2GSR7BPqMIz0Q/dBqX/gvxK9NDZ
+ hrmd6A/tWOx3iks8SLQjf6oTHooxjJK899TbEPCEFwciBm02bOtxi7+oLc7Mv/L8xFW+
+ NXtw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUJmYR03HW1fTDheZelJUoDzjs/NIkzL6Bg7mtVgNPnxXwnEvuHE6GQQ1y0bT096jjcmwFgvCmZcw==@nongnu.org
+X-Gm-Message-State: AOJu0Yw8c2W/tkMJHW28lszU82a6QRSXMJu4E6sd6E/lC2SXTugJ2f1V
+ iH/KDAJtf3GG0mfjL5zzcJt009t8+IHcgWIkX2Roz5lp+LUATk0BXS+kiwTLGTLGIfVg+SyUuHH
+ qz6wJtxZ2goblq76egDEG8fFfF/F4MbyXsbZgjcL8Y/m8E3e5eyy7kw==
+X-Gm-Gg: ASbGncu1DcEMMf0gL+JK2TQfgSs4NmQxNN7EGCJZpQdfU/QM62IclkaMy06S55nsLSg
+ rJFwT5soKy8Z63SCnZ5c3zV5pZjzv9E6rBy7YrAeFsSL305jaaxDwf1UIV4ZgLKLskyT0giqxf0
+ s4kI0rZlhdqm/w/hvWaM6Ory7TlW2aQ895n7iBvFGEVLozik5UYiWvQkExSp3MzQjwv4Jxm+Ip6
+ 9BBxvghm03OuXG38xTJMGHFdVAfOaLRLSHT5S09jBPhke8Dcwa2opvsnDYvSRzrEuU/UprXe2ez
+ //J5aytg5OPRtiZeNnrubdE9SU4cQ3qc0BpxkHP4mtUPH9ZykMjkaw==
+X-Received: by 2002:a17:90a:d2ce:b0:328:a79:9f1 with SMTP id
+ 98e67ed59e1d1-3280a790bcdmr1380409a91.1.1756497789570; 
+ Fri, 29 Aug 2025 13:03:09 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHFAFrNTt5uGgjI5rTVWUW0yqi4Q0YqnFQ2MhqOfDyua7LrwsJvjm7FWu1xsftHgk9cjztQqg==
+X-Received: by 2002:a17:90a:d2ce:b0:328:a79:9f1 with SMTP id
+ 98e67ed59e1d1-3280a790bcdmr1380360a91.1.1756497788997; 
+ Fri, 29 Aug 2025 13:03:08 -0700 (PDT)
+Received: from armenon-kvm.bengluru.csb ([49.47.195.108])
  by smtp.gmail.com with ESMTPSA id
- 41be03b00d2f7-b4d96829a66sm2435905a12.6.2025.08.29.22.43.12
+ 98e67ed59e1d1-327d8f66f16sm3570543a91.0.2025.08.29.13.02.57
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 29 Aug 2025 22:43:13 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v4 36/84] target/arm: Convert regime_has_2_ranges from switch
- to table
-Date: Sat, 30 Aug 2025 15:40:40 +1000
-Message-ID: <20250830054128.448363-37-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250830054128.448363-1-richard.henderson@linaro.org>
-References: <20250830054128.448363-1-richard.henderson@linaro.org>
+ Fri, 29 Aug 2025 13:03:08 -0700 (PDT)
+From: Arun Menon <armenon@redhat.com>
+Date: Sat, 30 Aug 2025 01:31:43 +0530
+Subject: [PATCH v13 03/27] migration: push Error **errp into
+ qemu_loadvm_state_header()
 MIME-Version: 1.0
+Message-Id: <20250830-propagate_tpm_error-v13-3-a4e777b7eb2c@redhat.com>
+References: <20250830-propagate_tpm_error-v13-0-a4e777b7eb2c@redhat.com>
+In-Reply-To: <20250830-propagate_tpm_error-v13-0-a4e777b7eb2c@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Peter Xu <peterx@redhat.com>, Fabiano Rosas <farosas@suse.de>, 
+ =?utf-8?q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>, 
+ Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>, 
+ Dmitry Osipenko <dmitry.osipenko@collabora.com>, 
+ "Michael S. Tsirkin" <mst@redhat.com>, 
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
+ Cornelia Huck <cohuck@redhat.com>, Halil Pasic <pasic@linux.ibm.com>, 
+ Eric Farman <farman@linux.ibm.com>, Thomas Huth <thuth@redhat.com>, 
+ Christian Borntraeger <borntraeger@linux.ibm.com>, 
+ Matthew Rosato <mjrosato@linux.ibm.com>, 
+ Richard Henderson <richard.henderson@linaro.org>, 
+ David Hildenbrand <david@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>, 
+ Nicholas Piggin <npiggin@gmail.com>, 
+ Harsh Prateek Bora <harshpb@linux.ibm.com>, 
+ Paolo Bonzini <pbonzini@redhat.com>, Fam Zheng <fam@euphon.net>, 
+ Alex Williamson <alex.williamson@redhat.com>, 
+ =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>, 
+ Steve Sistare <steven.sistare@oracle.com>, 
+ =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>, 
+ qemu-s390x@nongnu.org, qemu-ppc@nongnu.org, 
+ Hailiang Zhang <zhanghailiang@xfusion.com>, 
+ Stefan Berger <stefanb@linux.vnet.ibm.com>, 
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
+ Arun Menon <armenon@redhat.com>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2973; i=armenon@redhat.com;
+ h=from:subject:message-id; bh=08fs5yPRSN3G4fsuHEbQFA8WwDnIkqC0cHdPyjoW6j0=;
+ b=owGbwMvMwCWWVaVqcZPfqI/xtFoSQ8Ymdp//1XvLpi1Luxj+8Vv5vZglM23Uc1bFNr2XmXjKZ
+ KfAUf6yjlIWBjEuBlkxRZaGrwGyTQGFEZG2L6/DzGFlAhnCwMUpABOZqsfIsDjJJnti0JU7oVyq
+ DnVXOPMKAnpXdj32tFh7fIFN69G3gYwMR7f8SgliyX4+i2tlZCOPY5nb5M2/VweuDJ+koJT6QN6
+ PFwA=
+X-Developer-Key: i=armenon@redhat.com; a=openpgp;
+ fpr=80F5501D82507158593DE9D76A7A2538D90F328E
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: kQKFSaV2DuMGnhJAu_Fbq9F_sY3GPXAJo7-b45Wdg1o_1756497790
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42e;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42e.google.com
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=armenon@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -101,130 +145,90 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/internals.h       | 28 ----------------------------
- target/arm/mmuidx-internal.h | 17 +++++++++++++++++
- target/arm/mmuidx.c          | 19 ++++++++++---------
- 3 files changed, 27 insertions(+), 37 deletions(-)
+This is an incremental step in converting vmstate loading
+code to report error via Error objects instead of directly
+printing it to console/monitor.
+It is ensured that qemu_loadvm_state_header() must report an error
+in errp, in case of failure.
 
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 13fc5a2ca0..a9f44a23cd 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -1027,34 +1027,6 @@ static inline void arm_call_el_change_hook(ARMCPU *cpu)
-     }
+Reviewed-by: Fabiano Rosas <farosas@suse.de>
+Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Signed-off-by: Arun Menon <armenon@redhat.com>
+---
+ migration/savevm.c | 28 +++++++++++++++++-----------
+ 1 file changed, 17 insertions(+), 11 deletions(-)
+
+diff --git a/migration/savevm.c b/migration/savevm.c
+index f5a1ab91016dba51f9cd1dee19a1c7ba31417423..0c445a957fc99f826e6753ed3795bcdd51f1e3f5 100644
+--- a/migration/savevm.c
++++ b/migration/savevm.c
+@@ -2814,38 +2814,43 @@ qemu_loadvm_section_part_end(QEMUFile *f, uint8_t type)
+     return 0;
  }
  
--/*
-- * Return true if this address translation regime has two ranges.
-- * Note that this will not return the correct answer for AArch32
-- * Secure PL1&0 (i.e. mmu indexes E3, E30_0, E30_3_PAN), but it is
-- * never called from a context where EL3 can be AArch32. (The
-- * correct return value for ARMMMUIdx_E3 would be different for
-- * that case, so we can't just make the function return the
-- * correct value anyway; we would need an extra "bool e3_is_aarch32"
-- * argument which all the current callsites would pass as 'false'.)
-- */
--static inline bool regime_has_2_ranges(ARMMMUIdx mmu_idx)
--{
--    switch (mmu_idx) {
--    case ARMMMUIdx_Stage1_E0:
--    case ARMMMUIdx_Stage1_E1:
--    case ARMMMUIdx_Stage1_E1_PAN:
--    case ARMMMUIdx_E10_0:
--    case ARMMMUIdx_E10_1:
--    case ARMMMUIdx_E10_1_PAN:
--    case ARMMMUIdx_E20_0:
--    case ARMMMUIdx_E20_2:
--    case ARMMMUIdx_E20_2_PAN:
--        return true;
--    default:
--        return false;
--    }
--}
--
- static inline bool regime_is_pan(CPUARMState *env, ARMMMUIdx mmu_idx)
+-static int qemu_loadvm_state_header(QEMUFile *f)
++static int qemu_loadvm_state_header(QEMUFile *f, Error **errp)
  {
-     switch (mmu_idx) {
-diff --git a/target/arm/mmuidx-internal.h b/target/arm/mmuidx-internal.h
-index d8d64a14d6..f03a2ab94c 100644
---- a/target/arm/mmuidx-internal.h
-+++ b/target/arm/mmuidx-internal.h
-@@ -15,6 +15,7 @@ FIELD(MMUIDXINFO, EL, 0, 2)
- FIELD(MMUIDXINFO, ELVALID, 2, 1)
- FIELD(MMUIDXINFO, REL, 3, 2)
- FIELD(MMUIDXINFO, RELVALID, 5, 1)
-+FIELD(MMUIDXINFO, 2RANGES, 6, 1)
+     unsigned int v;
+     int ret;
+-    Error *local_err = NULL;
  
- extern const uint32_t arm_mmuidx_table[ARM_MMU_IDX_M + 8];
+     v = qemu_get_be32(f);
+     if (v != QEMU_VM_FILE_MAGIC) {
+-        error_report("Not a migration stream");
++        error_setg(errp, "Not a migration stream, magic: %x != %x",
++                   v, QEMU_VM_FILE_MAGIC);
+         return -EINVAL;
+     }
  
-@@ -39,4 +40,20 @@ static inline uint32_t regime_el(ARMMMUIdx idx)
-     return FIELD_EX32(arm_mmuidx_table[idx], MMUIDXINFO, REL);
- }
- 
-+/*
-+ * Return true if this address translation regime has two ranges.
-+ * Note that this will not return the correct answer for AArch32
-+ * Secure PL1&0 (i.e. mmu indexes E3, E30_0, E30_3_PAN), but it is
-+ * never called from a context where EL3 can be AArch32. (The
-+ * correct return value for ARMMMUIdx_E3 would be different for
-+ * that case, so we can't just make the function return the
-+ * correct value anyway; we would need an extra "bool e3_is_aarch32"
-+ * argument which all the current callsites would pass as 'false'.)
-+ */
-+static inline bool regime_has_2_ranges(ARMMMUIdx idx)
-+{
-+    tcg_debug_assert(arm_mmuidx_is_valid(idx));
-+    return FIELD_EX32(arm_mmuidx_table[idx], MMUIDXINFO, 2RANGES);
-+}
+     v = qemu_get_be32(f);
+     if (v == QEMU_VM_FILE_VERSION_COMPAT) {
+-        error_report("SaveVM v2 format is obsolete and don't work anymore");
++        error_setg(errp,
++                   "SaveVM v2 format is obsolete and no longer supported");
 +
- #endif /* TARGET_ARM_MMUIDX_INTERNAL_H */
-diff --git a/target/arm/mmuidx.c b/target/arm/mmuidx.c
-index 6dfefa56c2..f880d21606 100644
---- a/target/arm/mmuidx.c
-+++ b/target/arm/mmuidx.c
-@@ -9,18 +9,19 @@
+         return -ENOTSUP;
+     }
+     if (v != QEMU_VM_FILE_VERSION) {
+-        error_report("Unsupported migration stream version");
++        error_setg(errp, "Unsupported migration stream version, "
++                   "file version %x != %x",
++                   v, QEMU_VM_FILE_VERSION);
+         return -ENOTSUP;
+     }
  
- #define EL(X)  ((X << R_MMUIDXINFO_EL_SHIFT) | R_MMUIDXINFO_ELVALID_MASK)
- #define REL(X) ((X << R_MMUIDXINFO_REL_SHIFT) | R_MMUIDXINFO_RELVALID_MASK)
-+#define R2     R_MMUIDXINFO_2RANGES_MASK
+     if (migrate_get_current()->send_configuration) {
+-        if (qemu_get_byte(f) != QEMU_VM_CONFIGURATION) {
+-            error_report("Configuration section missing");
++        v = qemu_get_byte(f);
++        if (v != QEMU_VM_CONFIGURATION) {
++            error_setg(errp, "Configuration section missing, %x != %x",
++                       v, QEMU_VM_CONFIGURATION);
+             return -EINVAL;
+         }
+-        ret = vmstate_load_state(f, &vmstate_configuration, &savevm_state, 0,
+-                                 &local_err);
  
- const uint32_t arm_mmuidx_table[ARM_MMU_IDX_M + 8] = {
-     /*
-      * A-profile.
-      */
--    [ARMMMUIdx_E10_0]           = EL(0) | REL(1),
--    [ARMMMUIdx_E10_1]           = EL(1) | REL(1),
--    [ARMMMUIdx_E10_1_PAN]       = EL(1) | REL(1),
-+    [ARMMMUIdx_E10_0]           = EL(0) | REL(1) | R2,
-+    [ARMMMUIdx_E10_1]           = EL(1) | REL(1) | R2,
-+    [ARMMMUIdx_E10_1_PAN]       = EL(1) | REL(1) | R2,
++        ret = vmstate_load_state(f, &vmstate_configuration, &savevm_state, 0,
++                                 errp);
+         if (ret) {
+-            error_report_err(local_err);
+             return ret;
+         }
+     }
+@@ -3121,8 +3126,9 @@ int qemu_loadvm_state(QEMUFile *f)
  
--    [ARMMMUIdx_E20_0]           = EL(0) | REL(2),
--    [ARMMMUIdx_E20_2]           = EL(2) | REL(2),
--    [ARMMMUIdx_E20_2_PAN]       = EL(2) | REL(2),
-+    [ARMMMUIdx_E20_0]           = EL(0) | REL(2) | R2,
-+    [ARMMMUIdx_E20_2]           = EL(2) | REL(2) | R2,
-+    [ARMMMUIdx_E20_2_PAN]       = EL(2) | REL(2) | R2,
+     qemu_loadvm_thread_pool_create(mis);
  
-     [ARMMMUIdx_E2]              = EL(2) | REL(2),
+-    ret = qemu_loadvm_state_header(f);
++    ret = qemu_loadvm_state_header(f, &local_err);
+     if (ret) {
++        error_report_err(local_err);
+         return ret;
+     }
  
-@@ -31,9 +32,9 @@ const uint32_t arm_mmuidx_table[ARM_MMU_IDX_M + 8] = {
-     [ARMMMUIdx_Stage2_S]        = REL(2),
-     [ARMMMUIdx_Stage2]          = REL(2),
- 
--    [ARMMMUIdx_Stage1_E0]       = REL(1),
--    [ARMMMUIdx_Stage1_E1]       = REL(1),
--    [ARMMMUIdx_Stage1_E1_PAN]   = REL(1),
-+    [ARMMMUIdx_Stage1_E0]       = REL(1) | R2,
-+    [ARMMMUIdx_Stage1_E1]       = REL(1) | R2,
-+    [ARMMMUIdx_Stage1_E1_PAN]   = REL(1) | R2,
- 
-     /*
-      * M-profile.
+
 -- 
-2.43.0
+2.51.0
 
 

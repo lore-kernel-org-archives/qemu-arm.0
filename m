@@ -4,87 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EAD40CA1000
-	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 16:26:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5206CA0EFF
+	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 16:27:14 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1usNum-0002bj-Bc; Sat, 30 Aug 2025 11:54:52 -0400
+	id 1usNyC-0005tR-IK; Sat, 30 Aug 2025 11:58:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1usELP-0005o0-W8
- for qemu-arm@nongnu.org; Sat, 30 Aug 2025 01:41:45 -0400
-Received: from mail-pj1-x102b.google.com ([2607:f8b0:4864:20::102b])
+ id 1usEQg-0007GH-03
+ for qemu-arm@nongnu.org; Sat, 30 Aug 2025 01:47:10 -0400
+Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1usELO-00041X-2m
- for qemu-arm@nongnu.org; Sat, 30 Aug 2025 01:41:43 -0400
-Received: by mail-pj1-x102b.google.com with SMTP id
- 98e67ed59e1d1-3278efed3b0so2120018a91.2
- for <qemu-arm@nongnu.org>; Fri, 29 Aug 2025 22:41:41 -0700 (PDT)
+ id 1usEQe-0004sf-1k
+ for qemu-arm@nongnu.org; Sat, 30 Aug 2025 01:47:09 -0400
+Received: by mail-pl1-x62c.google.com with SMTP id
+ d9443c01a7336-24a1274cfb1so1042765ad.2
+ for <qemu-arm@nongnu.org>; Fri, 29 Aug 2025 22:47:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756532500; x=1757137300; darn=nongnu.org;
+ d=linaro.org; s=google; t=1756532827; x=1757137627; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=OvWWI/Hwe2tsOELzBbjd3DP4kSVprV8wMOEgKmW2NGs=;
- b=Z0j1qQ77vkJ+3TY2cKdJCSvL9SItqspC0XPiotEY7BmCBoQ/8OAQXwKF0yY5QKIwGq
- KV45o7zuzPcUx9MmH5X7wa58pFcU48sQuEsYI0GoM7EHW2DkMsXIjRJ6suBgDSAvI8nZ
- RpgMpHsJq1QAimF3la0ZCmjMgJSy9z1X2PcPJTDuuLZ2hHokkiyUbSkvA6XozuRv/kUP
- 11WjW9cCY/aicGlxJzhjELjcxYLCfdgHzPnkgzBr4z+mMdNVZsmFBuQ5uiHVhn0zo5Mh
- hhKfgMYTiWT2nLiokuAPy/3npWMbYKV1zohxJNMY5f0yq+EgCVN/ACrQ5Bopt7b4hQGX
- VhKA==
+ bh=7xtnxT94KMGz92qj0rHCZHgfy98zANUVCadhNE7Sddw=;
+ b=uDUpwLFsDUMZzWuf009db4ygGeqIiipP4SnLbmwN2vzgfqShLhHphn6ZS6PO4NmdJo
+ R+uJaoWlkHnNiG8bE1f1X7ITQCvTH1KkOGqslgiBaC0ZpDIn+aFLttABZt7TchdkvpY+
+ 7nzYB5kMUXHA5WjCY/ApeuAO1H6b4Eq67eKxrbTY4n0yE7ebi+tCQWlXW1sReeBblw9o
+ B8UurcBfSO09d1fL5BNeR1NMeHx590qLcuUFTnzaViVjNK67gUB+Pir57EqRLf+JhDkY
+ fIP4/WvOP5Sd9VXaaDmcWSQp0q8NC1xkAQAU4pLI/XLIXTEyGUag0ZoiPtIIQD2Bxf5E
+ BDWg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756532500; x=1757137300;
+ d=1e100.net; s=20230601; t=1756532827; x=1757137627;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=OvWWI/Hwe2tsOELzBbjd3DP4kSVprV8wMOEgKmW2NGs=;
- b=G/OHaAoon/FSeBiIwWWsaYNiNjaiOeJ8OTcX0sw9ysbBxHtHZ2lv8b88BPrQlDBkFF
- R7Hs7UTwukclPpBgpW04hxwKqCCcua3aLjQbwAGdFPDJ+nNf5GwRDdgEtbPJioSQD+4Y
- HZaeAP6PqAfD7UxhcMo5UuSvb7sW7JQpR426YvmbpSh2PNg3LvF+6QIlmLtAp5dqf2+m
- SKjAYXpN1KWIns3HquBtj8iA4UqLuu25s3jV35uejnhDlWBhoBrZz+G+P8CQ1KlWoejY
- zgVY5mLCpSfn83XfWGOJwPolKwN77kCRpC5m+GtN2dT4fAdqC51AVNXDBCkd7nacc0gw
- XQJg==
-X-Gm-Message-State: AOJu0Yx67dDQejZhxyBkEMpjih/A2TDxHjGbDu3xkwPXmYKdBjzQvgdQ
- JJAhVSSxLgGFPeJ2Oj4qN9mwxsIwl+wpTRpHol9uwEn+ERJoSJUnyPipzHAXYLkWxe4=
-X-Gm-Gg: ASbGncs86q42dNGCLjE9qcsGR0P5Twt8BBct8nUzM1M1dB+6U9sJl9bX70umk6aEYMV
- mdhIa5orQl6j7e3yZS2+mYBfQ4SbsB7x+vxiv6UrNT8g9frIv/4d59Tuq31j7J8Ua0KloJl8iSE
- CG+nMvOwAa8Olqp8CVnECvLDRdI/Y1qZogGjD4vR80zNXr6sSm679Ph+eCul5Wvd9mFdPtzcSf2
- ksXeivkhxi7d9hCK8La2MXjYOLI+Bv+N9cD69AEUM1L+cu9MwuLXJHu4mj++7KrY+oUVEkc5MM6
- JXzibVcx2MSk1Z/5nNluvoOS9wUaymUu+PWJgcPKvnTdLchcYHrRFV2or6rw/IQ90vQMkgAZU6F
- hrp+wetccAXrvVyhBF/Nwbk/BjvmGpmluoGYt1kHy8CKvNPz4rB37+Zi9+l8h8DaKdfqYc+M=
-X-Google-Smtp-Source: AGHT+IH2SeyC/Bq4iCcnct16kijzpG5niptNeAgVpdvmuzGUfNz08ys8fOOQ5mePwjG0aThKb9FGUg==
-X-Received: by 2002:a17:90b:270a:b0:327:d8e3:1b9e with SMTP id
- 98e67ed59e1d1-32815412c60mr1659563a91.3.1756532500430; 
- Fri, 29 Aug 2025 22:41:40 -0700 (PDT)
-Received: from stoup.. (122-150-204-48.dyn.ip.vocus.au. [122.150.204.48])
+ bh=7xtnxT94KMGz92qj0rHCZHgfy98zANUVCadhNE7Sddw=;
+ b=j+zx19EE5bSTq5h2F4tXnwYI1Dbac8K45PiBbha+s2j0pALvZreofjpkO/xot494uc
+ beRP72216Tinvhe/v5tKujwxwQXvjov6kkAwVyCXSAyFRKP9zS/fm6P35o96YdjOJMxZ
+ 2Qj8SFdmAqi59j2v2GIc2/qKSEtSo0MHCYL4lCNPMKAkfa002BtPirKJweq/ubBLAGW9
+ kQbUBSZBpBQqr9mSfCwVYt/b60wE5Y/MFYKzt1IzcEQqDC0KRkgfpB00MEN5PhjWpwot
+ Aw+GysGLZpSTTNA8XZBnNxXW0I3SYTJRXyo6zdLMIoY/jUbewvcsIrL8N5kefbjvPh/5
+ 3fWw==
+X-Gm-Message-State: AOJu0YxQjkHN6hLAEL+By5aOREMhzrVkvveT9RNKxzRHJyl3TbUtwzOt
+ Ay9NnvM1d4yn+kPbvEKnP+iyQ6+INYDRSk3BzN+a1TDJ6US/mBL5s4kEXtqS/Z+yQAQ=
+X-Gm-Gg: ASbGncvc4B/0Nnhm91QhSlw931lwEmFCYEZFma0v733WwSzZQd4gkqAf2o5padjeRQZ
+ cNDweR31jM+Au2Z5NaRzeNiTWUVHWOEbgfyClzUJTjFaelFFAtBIaVepz8cYSWQKuBl5lkDgq6r
+ yyd7nDgmOz39CrmqJ6S2uzKGZaV3zVhecG9Ew+DNL8IVqCaWCLCdBJcjcwKrl+Pzb9v2WxMg6PB
+ YJrTtvZmytx5afh6Ggp0hgPk+yyN5RnMlbA+CzUtoGD6GB9Jl9NRlanwIS+eKqYPFQwNsiFPWdu
+ 88p/7gaEXp+T7fkpPEdnGQMui9/4AMdgx1JHxLCBkQr4DP3QuqdrcoyV6WeAnPWhFoUeADUEstC
+ h8LXVugfbxoLdnucqm7rSZs1ePYXEOQk/5HrFsItIj9/BtgPFaDLSW2/FdkOe5zk=
+X-Google-Smtp-Source: AGHT+IFrH+pIfDK8BbO+bGnPeFXgi3/fLiEg1GosYQoBaDCl62++b/5gZ80lqqeEDn0VMnblooMynQ==
+X-Received: by 2002:a17:902:eb83:b0:248:70b9:c70b with SMTP id
+ d9443c01a7336-24944b1fbb2mr13565705ad.55.1756532826597; 
+ Fri, 29 Aug 2025 22:47:06 -0700 (PDT)
+Received: from stoup.. (122-150-204-179.dyn.ip.vocus.au. [122.150.204.179])
  by smtp.gmail.com with ESMTPSA id
- 41be03b00d2f7-b4d96829a66sm2435905a12.6.2025.08.29.22.41.38
+ d9443c01a7336-2490658999fsm40852715ad.112.2025.08.29.22.47.04
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 29 Aug 2025 22:41:40 -0700 (PDT)
+ Fri, 29 Aug 2025 22:47:06 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v4 02/84] linux-user/aarch64: Check syndrome for EXCP_UDEF
-Date: Sat, 30 Aug 2025 15:40:06 +1000
-Message-ID: <20250830054128.448363-3-richard.henderson@linaro.org>
+Subject: [PATCH v4 53/84] target/arm: Split {arm,core}_user_mem_index
+Date: Sat, 30 Aug 2025 15:40:57 +1000
+Message-ID: <20250830054128.448363-54-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250830054128.448363-1-richard.henderson@linaro.org>
 References: <20250830054128.448363-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102b;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102b.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62c;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -100,117 +100,99 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Note that we have been passing the incorrect code for most
-exception codes: uncategorized (do_el0_undef),
-systemregistertrap (do_el0_sys), smetrap (do_sme_acc),
-btitrap (do_el0_bti) and illegalstate (bad_el0_sync).
-Only pacfail uses ILL_ILLOPN (do_el0_fpac).
-
-Note that EC_MOP (do_el0_mops) ought not signal at all.
-For now, preserve existing behavior signalling ILL_ILLOPN.
-
-List all other exception codes and document why they do
-not apply to user-only.
+Separate current to unpriv and arm to core mmu conversions
+into two separate functions.
 
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- linux-user/aarch64/cpu_loop.c | 75 ++++++++++++++++++++++++++++++++++-
- 1 file changed, 74 insertions(+), 1 deletion(-)
+ target/arm/tcg/translate-a64.c | 24 +++++++++++++++---------
+ 1 file changed, 15 insertions(+), 9 deletions(-)
 
-diff --git a/linux-user/aarch64/cpu_loop.c b/linux-user/aarch64/cpu_loop.c
-index 3b2782581b..7ad26316de 100644
---- a/linux-user/aarch64/cpu_loop.c
-+++ b/linux-user/aarch64/cpu_loop.c
-@@ -65,6 +65,79 @@ static void signal_for_exception(CPUARMState *env, vaddr addr)
-         si_code = TARGET_BUS_ADRALN;
-         break;
+diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
+index 8c73f54e9a..ca1633540f 100644
+--- a/target/arm/tcg/translate-a64.c
++++ b/target/arm/tcg/translate-a64.c
+@@ -93,7 +93,7 @@ void a64_translate_init(void)
+ }
  
-+    case EC_UNCATEGORIZED:         /* E.g. undefined instruction */
-+    case EC_SYSTEMREGISTERTRAP:    /* E.g. inaccessible register */
-+    case EC_SMETRAP:               /* E.g. invalid insn in streaming state */
-+    case EC_BTITRAP:               /* E.g. invalid guarded branch target */
-+    case EC_ILLEGALSTATE:
-+        /*
-+         * Illegal state happens via an ERET from a privileged mode,
-+         * so is not normally possible from user-only.  However, gdbstub
-+         * is not prevented from writing CPSR_IL, aka PSTATE.IL, which
-+         * would generate a trap from the next translated block.
-+         * In the kernel, default case -> el0_inv -> bad_el0_sync.
-+         */
-+        si_signo = TARGET_SIGILL;
-+        si_code = TARGET_ILL_ILLOPC;
-+        break;
-+
-+    case EC_PACFAIL:
-+        si_signo = TARGET_SIGILL;
-+        si_code = TARGET_ILL_ILLOPN;
-+        break;
-+
-+    case EC_MOP:
-+        /*
-+         * FIXME: The kernel fixes up wrong-option exceptions.
-+         * For QEMU linux-user mode, you can only get these if
-+         * the process is doing something silly (not executing
-+         * the MOPS instructions in the required P/M/E sequence),
-+         * so it is not a problem in practice that we do not.
-+         *
-+         * We ought ideally to implement the same "rewind to the
-+         * start of the sequence" logic that the kernel does in
-+         * arm64_mops_reset_regs(). In the meantime, deliver
-+         * the guest a SIGILL, with the same ILLOPN si_code
-+         * we've always used for this.
-+         */
-+        si_signo = TARGET_SIGILL;
-+        si_code = TARGET_ILL_ILLOPN;
-+        break;
-+
-+    case EC_WFX_TRAP:              /* user-only WFI implemented as NOP */
-+    case EC_CP15RTTRAP:            /* AArch32 */
-+    case EC_CP15RRTTRAP:           /* AArch32 */
-+    case EC_CP14RTTRAP:            /* AArch32 */
-+    case EC_CP14DTTRAP:            /* AArch32 */
-+    case EC_ADVSIMDFPACCESSTRAP:   /* user-only does not disable fpu */
-+    case EC_FPIDTRAP:              /* AArch32 */
-+    case EC_PACTRAP:               /* user-only does not disable pac regs */
-+    case EC_BXJTRAP:               /* AArch32 */
-+    case EC_CP14RRTTRAP:           /* AArch32 */
-+    case EC_AA32_SVC:              /* AArch32 */
-+    case EC_AA32_HVC:              /* AArch32 */
-+    case EC_AA32_SMC:              /* AArch32 */
-+    case EC_AA64_SVC:              /* generates EXCP_SWI */
-+    case EC_AA64_HVC:              /* user-only generates EC_UNCATEGORIZED */
-+    case EC_AA64_SMC:              /* user-only generates EC_UNCATEGORIZED */
-+    case EC_SVEACCESSTRAP:         /* user-only does not disable sve */
-+    case EC_ERETTRAP:              /* user-only generates EC_UNCATEGORIZED */
-+    case EC_GPC:                   /* user-only has no EL3 gpc tables */
-+    case EC_INSNABORT_SAME_EL:     /* el0 cannot trap to el0 */
-+    case EC_DATAABORT_SAME_EL:     /* el0 cannot trap to el0 */
-+    case EC_SPALIGNMENT:           /* sp alignment checks not implemented */
-+    case EC_AA32_FPTRAP:           /* fp exceptions not implemented */
-+    case EC_AA64_FPTRAP:           /* fp exceptions not implemented */
-+    case EC_SERROR:                /* user-only does not have hw faults */
-+    case EC_BREAKPOINT:            /* user-only does not have hw debug */
-+    case EC_BREAKPOINT_SAME_EL:    /* user-only does not have hw debug */
-+    case EC_SOFTWARESTEP:          /* user-only does not have hw debug */
-+    case EC_SOFTWARESTEP_SAME_EL:  /* user-only does not have hw debug */
-+    case EC_WATCHPOINT:            /* user-only does not have hw debug */
-+    case EC_WATCHPOINT_SAME_EL:    /* user-only does not have hw debug */
-+    case EC_AA32_BKPT:             /* AArch32 */
-+    case EC_VECTORCATCH:           /* AArch32 */
-+    case EC_AA64_BKPT:             /* generates EXCP_BKPT */
-     default:
-         g_assert_not_reached();
+ /*
+- * Return the core mmu_idx to use for A64 load/store insns which
++ * Return the full arm mmu_idx to use for A64 load/store insns which
+  * have a "unprivileged load/store" variant. Those insns access
+  * EL0 if executed from an EL which has control over EL0 (usually
+  * EL1) but behave like normal loads and stores if executed from
+@@ -103,7 +103,7 @@ void a64_translate_init(void)
+  *           normal encoding (in which case we will return the same
+  *           thing as get_mem_index().
+  */
+-static int get_a64_user_mem_index(DisasContext *s, bool unpriv)
++static ARMMMUIdx arm_user_mem_index(DisasContext *s, bool unpriv)
+ {
+     /*
+      * If AccType_UNPRIV is not used, the insn uses AccType_NORMAL,
+@@ -130,7 +130,13 @@ static int get_a64_user_mem_index(DisasContext *s, bool unpriv)
+             g_assert_not_reached();
+         }
      }
-@@ -108,7 +181,7 @@ void cpu_loop(CPUARMState *env)
-             /* just indicate that signals should be handled asap */
-             break;
-         case EXCP_UDEF:
--            force_sig_fault(TARGET_SIGILL, TARGET_ILL_ILLOPN, env->pc);
-+            signal_for_exception(env, env->pc);
-             break;
-         case EXCP_PREFETCH_ABORT:
-         case EXCP_DATA_ABORT:
+-    return arm_to_core_mmu_idx(useridx);
++    return useridx;
++}
++
++/* Return the core mmu_idx per above. */
++static int core_user_mem_index(DisasContext *s, bool unpriv)
++{
++    return arm_to_core_mmu_idx(arm_user_mem_index(s, unpriv));
+ }
+ 
+ static void set_btype_raw(int val)
+@@ -3539,7 +3545,7 @@ static void op_addr_ldst_imm_pre(DisasContext *s, arg_ldst_imm *a,
+     if (!a->p) {
+         tcg_gen_addi_i64(*dirty_addr, *dirty_addr, offset);
+     }
+-    memidx = get_a64_user_mem_index(s, a->unpriv);
++    memidx = core_user_mem_index(s, a->unpriv);
+     *clean_addr = gen_mte_check1_mmuidx(s, *dirty_addr, is_store,
+                                         a->w || a->rn != 31,
+                                         mop, a->unpriv, memidx);
+@@ -3560,7 +3566,7 @@ static bool trans_STR_i(DisasContext *s, arg_ldst_imm *a)
+ {
+     bool iss_sf, iss_valid = !a->w;
+     TCGv_i64 clean_addr, dirty_addr, tcg_rt;
+-    int memidx = get_a64_user_mem_index(s, a->unpriv);
++    int memidx = core_user_mem_index(s, a->unpriv);
+     MemOp mop = finalize_memop(s, a->sz + a->sign * MO_SIGN);
+ 
+     op_addr_ldst_imm_pre(s, a, &clean_addr, &dirty_addr, a->imm, true, mop);
+@@ -3578,7 +3584,7 @@ static bool trans_LDR_i(DisasContext *s, arg_ldst_imm *a)
+ {
+     bool iss_sf, iss_valid = !a->w;
+     TCGv_i64 clean_addr, dirty_addr, tcg_rt;
+-    int memidx = get_a64_user_mem_index(s, a->unpriv);
++    int memidx = core_user_mem_index(s, a->unpriv);
+     MemOp mop = finalize_memop(s, a->sz + a->sign * MO_SIGN);
+ 
+     op_addr_ldst_imm_pre(s, a, &clean_addr, &dirty_addr, a->imm, false, mop);
+@@ -4476,7 +4482,7 @@ static bool do_SET(DisasContext *s, arg_set *a, bool is_epilogue,
+         return false;
+     }
+ 
+-    memidx = get_a64_user_mem_index(s, a->unpriv);
++    memidx = core_user_mem_index(s, a->unpriv);
+ 
+     /*
+      * We pass option_a == true, matching our implementation;
+@@ -4530,8 +4536,8 @@ static bool do_CPY(DisasContext *s, arg_cpy *a, bool is_epilogue, CpyFn fn)
+         return false;
+     }
+ 
+-    rmemidx = get_a64_user_mem_index(s, runpriv);
+-    wmemidx = get_a64_user_mem_index(s, wunpriv);
++    rmemidx = core_user_mem_index(s, runpriv);
++    wmemidx = core_user_mem_index(s, wunpriv);
+ 
+     /*
+      * We pass option_a == true, matching our implementation;
 -- 
 2.43.0
 

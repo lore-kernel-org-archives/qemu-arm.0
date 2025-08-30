@@ -4,87 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F36C7CA0EFF
-	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 17:27:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E16CCA0FFF
+	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 17:27:09 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1usOes-0000h7-Sc; Sat, 30 Aug 2025 12:42:31 -0400
+	id 1usNyu-0006pr-Da; Sat, 30 Aug 2025 11:59:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1url1C-0000Tu-IZ
- for qemu-arm@nongnu.org; Thu, 28 Aug 2025 18:22:54 -0400
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1usERW-0007X8-Mw
+ for qemu-arm@nongnu.org; Sat, 30 Aug 2025 01:48:03 -0400
+Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1url18-00013P-5z
- for qemu-arm@nongnu.org; Thu, 28 Aug 2025 18:22:54 -0400
-Received: by mail-wr1-x434.google.com with SMTP id
- ffacd0b85a97d-3c73d3ebff0so1193744f8f.1
- for <qemu-arm@nongnu.org>; Thu, 28 Aug 2025 15:22:49 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1usERV-000528-5m
+ for qemu-arm@nongnu.org; Sat, 30 Aug 2025 01:48:02 -0400
+Received: by mail-pl1-x629.google.com with SMTP id
+ d9443c01a7336-249406d5878so3318105ad.0
+ for <qemu-arm@nongnu.org>; Fri, 29 Aug 2025 22:47:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756419767; x=1757024567; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=mNQRzSAzy6KyWZYfTJ0AVWqmvWU67KGsSIif9jZcJ9k=;
- b=CinL5wQdiQBJVHT0c0FlRrfHAnIS+2Qs9dT7tC10QpmieDRNakMLqLhkOfz7DlOHHT
- IlzLth2cg9flarWVhfVjikuxsR1a5ftDERAhYsDRg3XA5sRtRAfY0MWHINVJK4xq0nTh
- OaL7QcItCRxHxPh/+jtf5RccfynjPs/9LVeUhF9gW6/hhemPpiqCuKh7FoUpXftMekI5
- PsVHPvkndHG4yE5RIgYSjmeCj78W6ZXbrlnzqW/i29v119PzWeK5IodrC0FQ+cQbQ8KR
- hHaf7VdervOS26wU18bG9ugRiJNZqmt3K/epHZP+8xNdN7Lec+WvawvutNPE7ZufSg6m
- 5EFw==
+ d=linaro.org; s=google; t=1756532878; x=1757137678; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=52VfTzYDSgjyTkCxi2KMOJnfbsQ5A6/k4xx3za3L80c=;
+ b=tjNQZVlCyQGg8QTCkYcy0sFfMPV9VQx6uW2F2cdtzrHudhAzYJ0KxHUxkhd0zJY+vd
+ gXmsvdEHh9aiOJy6nBI+jVWgdq8GNtogPWl8YeQBmD53s2n7iRSFfZVz65ifh9F/qvG3
+ tWXAz1PeA0+V2+WVXzc/bx/M0c8CkTTDYHcuVmnV7hM71Ph2Sc8sse823Wkr9HLwm7o+
+ d7wjtD3k8O+sv/jY9dvlPqBl50PMevkEi2uOesWeY8olJ4HxZw0QUZ5paHoETwvjSrM0
+ yaD9/6upDVDnOdbuSUUH6EPk9AuyNG2B9vpoGTRLXm5xb8hJvrHbYMutaKQUARNNnBZF
+ QIIw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756419767; x=1757024567;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=mNQRzSAzy6KyWZYfTJ0AVWqmvWU67KGsSIif9jZcJ9k=;
- b=AbLdPWHxEKtE5cRpF4kcVj9k5U7F09BmgB8G6jjlCvbNvqT1/E3eefu+tp0p0AA9RX
- Eb6r+iwcuGy+Gu4dAfKfRD7mcPe1AvYWyP68cs8dtbFQ8cWZr+oG3mmxp0WpynJFTAyl
- tVTks8bNpfhKrERVYJV36VZjt6M5kPJ7dbUIRkTSp5UKJVwpx/jw7Z5q/GL+9YMTZcbi
- dV7863zcDzBi5AYCJLmWyaSjruXSaOj3Yt4EARV1Z9PWiBFICnu0N0lb1bbrDaDz3Ykh
- Y2RV0AB2sSZeBgFL/lg+vHtdOGPFQha34tqFWSlp1olX8+7ZPZz1TVUMH+Bt2LKlps7s
- UiSA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCU7iLk+ivG2SLQwHMilkEHKwaTCvlLs9XtflUodyVuy4O3WTfCXyv3mQwZDXRS0JWT3VtZ+thdymA==@nongnu.org
-X-Gm-Message-State: AOJu0YxjgVNs3FjRz/95P7Ut9Wi9+GGP5ebA1bQDfPCcwTXBpQ66iz8g
- ev7Ua9+T7q5DSHSurbO6gHOBHWJn3jv7lAjEntjQZ7JJnSxzOnLohi9U+ZuiGsNTGd0=
-X-Gm-Gg: ASbGncvopwxAOgXBAz7+3JM6f7UynRCeZ7hq9gz6w6tIZYp1LxADxG6YOEmS8FvwNKa
- icS8yOpMM42fwZFQLXbdacWP6Qg6zr301WGeFhIFP3f7OdSxKa7AZIbhc32XcThrZ697gpmxNgC
- nL1ZfIQjsivmzK4YfIHTj3soxhq4LNUOecMpGSyAr23eFd1M7Xaxo1DeyMQQHujvzlS90c/Gywj
- ZvFlQdp+gEM/pH9SAnauTwAfewRUw7hg5DPXGJgxqhh/KsITKLCfys++4S2lzDZICAGwDP9R6+v
- 74Ni34jb0YscQoPMQPvomy3d4sFSjMK4B6Sv4MI3dNnFixRBz8aNaAoepmuecaDzcE+4YYX2qDS
- tXskPNMzyuPfKdI9xEW6kFcvpFUeFTVaiqnavhRQZSlkmxTQTFj+1ywlfy+9fO4Ldhw==
-X-Google-Smtp-Source: AGHT+IEmvQ6v4+OqIhe7+M0xUh5l0EQtWrbLQrwa4BM1RyiwlGGaZu36YO0k5fbUFIFjx1l9JyHqBA==
-X-Received: by 2002:a05:6000:24c6:b0:3b9:14f2:7edf with SMTP id
- ffacd0b85a97d-3cbb15c9fd1mr6976120f8f.1.1756419766703; 
- Thu, 28 Aug 2025 15:22:46 -0700 (PDT)
-Received: from [192.168.69.207] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3cf34491a65sm792450f8f.56.2025.08.28.15.22.44
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 28 Aug 2025 15:22:45 -0700 (PDT)
-Message-ID: <f5aeb950-47b6-47e2-8b6d-cdd01004f1f6@linaro.org>
-Date: Fri, 29 Aug 2025 00:22:44 +0200
+ d=1e100.net; s=20230601; t=1756532878; x=1757137678;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=52VfTzYDSgjyTkCxi2KMOJnfbsQ5A6/k4xx3za3L80c=;
+ b=SB7AAc1O/isWKLuqQCN1tTzGxVMiU1eu5JUqq+ZQJuRjjqHISwjgSr0rttiD1yGPIn
+ WZrwpMawYmykNUjU+c1mSJgPPD/6qkMWP9dxu7e8RjpAyc0k5NV8MPlNXmGt6qR4tpvX
+ TWNoUW1fauVcaiuqzmgPa3MCbV6m/7sd8+EKtU8aEn408j/18yUtiY3b5xQmfLwKDizH
+ wEwkoDZ7XewI4iImVFxAVcCBMqwvC7Jd9h5L0EAYv8bjAglikv1Xq860I1UtU6OZTbH0
+ 9s5ErvKpT0755TTyafFXBlIzH/2ok+pm3+ann6akixjWA07KdabPV6SFyJWssS3dB2wm
+ uIOQ==
+X-Gm-Message-State: AOJu0Yxd9YU5fM7soUewd/5JHbgVO6G9r1EiD4YLtLs3EeKjpCmDxDU1
+ HsqqBgJHicjnv7vF09vOaXXyWtIiusfmFSUp+aV/FDTlwkzBUAqOb0TuEblSPbhGvyc=
+X-Gm-Gg: ASbGncuMgRDBqwUILmz46mqwzf2J4foLq04xsB/eXox6khPs2IDCWPU3wzu6KWFE8Vr
+ XIJWMoYV2VSuxHW9P11wFVuP/04KiKwY8cDxXyd20DGm785ZS/io7opdP2QlkbFRSfKU75r/Qyz
+ 8dXXGWx/2IsZ+3mrEHxUe2+RjDany7/qbkCZmUChPAls6QJZKJSkYYJFfzCpqsUdMVkl0ZTnEYV
+ FsMgwRcLr+aIZkxQBVfiM1ZfuZoYu0SnK0wTBFDUEsuJojOBUW/KIsOjrcY0gA8LSgvCqlM3GbW
+ 6i6+FJgZeGpplQMXbKnMEDBrkbd1rGXGoR9vfBIlj+itxQuAjOgbdfyuTfMhy3cAins7l58hE4B
+ tctw/G4I87f04iNdQVzn7zEUOEgY5gPM/oro3Fsb/6yID4U12N6vTx/I/jiiPQPkLonkltdmWIA
+ ==
+X-Google-Smtp-Source: AGHT+IEqJCtImH2Oz22eyTM4pkOhpINTH+uBWpwKAXITS6N4dUZazzhGQABM2eNAavdWhfck3ZKzUQ==
+X-Received: by 2002:a17:902:cf4a:b0:246:644f:5b81 with SMTP id
+ d9443c01a7336-24944a9bab4mr12851355ad.32.1756532878248; 
+ Fri, 29 Aug 2025 22:47:58 -0700 (PDT)
+Received: from stoup.. (122-150-204-179.dyn.ip.vocus.au. [122.150.204.179])
+ by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-2490658999fsm40852715ad.112.2025.08.29.22.47.55
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 29 Aug 2025 22:47:57 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org,
+	Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Subject: [PATCH v4 72/84] target/arm: Implement EXLOCK check during exception
+ return
+Date: Sat, 30 Aug 2025 15:41:16 +1000
+Message-ID: <20250830054128.448363-73-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250830054128.448363-1-richard.henderson@linaro.org>
+References: <20250830054128.448363-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 36/47] hw/misc/xlnx-versal-crl: add the versal2 version
-To: Luc Michel <luc.michel@amd.com>, qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Francisco Iglesias <francisco.iglesias@amd.com>,
- "Edgar E . Iglesias" <edgar.iglesias@amd.com>,
- Alistair Francis <alistair@alistair23.me>,
- Frederic Konrad <frederic.konrad@amd.com>,
- Sai Pavan Boddu <sai.pavan.boddu@amd.com>
-References: <20250822151614.187856-1-luc.michel@amd.com>
- <20250822151614.187856-37-luc.michel@amd.com>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20250822151614.187856-37-luc.michel@amd.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::434;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x434.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::629;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x629.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -107,71 +102,35 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 22/8/25 17:16, Luc Michel wrote:
-> Add the versal2 version of the CRL device. For the implemented part, it
-> is similar to the versal version but drives reset line of more devices.
-> 
-> Signed-off-by: Luc Michel <luc.michel@amd.com>
-> Reviewed-by: Francisco Iglesias <francisco.iglesias@amd.com>
-> ---
->   include/hw/arm/xlnx-versal-version.h |   1 +
->   include/hw/misc/xlnx-versal-crl.h    | 329 ++++++++++++++++++++++
->   hw/misc/xlnx-versal-crl.c            | 392 +++++++++++++++++++++++++++
->   3 files changed, 722 insertions(+)
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ target/arm/tcg/helper-a64.c | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
 
-
-> +static DeviceState **versal2_decode_periph_rst(XlnxVersalCRLBase *s,
-> +                                               hwaddr addr, size_t *count)
-> +{
-> +    size_t idx;
-> +    XlnxVersal2CRL *xvc = XLNX_VERSAL2_CRL(s);
-> +
-> +    *count = 1;
-> +
-> +    switch (addr) {
-> +    case A_VERSAL2_RST_RPU_A ... A_VERSAL2_RST_RPU_E:
-> +        idx = (addr - A_VERSAL2_RST_RPU_A) / sizeof(uint32_t);
-> +        idx *= 2; /* two RPUs per RST_RPU_x registers */
-> +        return xvc->cfg.rpu + idx;
-> +
-> +    case A_VERSAL2_RST_ADMA:
-> +        /* A single register fans out to all DMA reset inputs */
-> +        *count = ARRAY_SIZE(xvc->cfg.adma);
-> +        return xvc->cfg.adma;
-> +
-> +    case A_VERSAL2_RST_SDMA:
-> +        *count = ARRAY_SIZE(xvc->cfg.sdma);
-> +        return xvc->cfg.sdma;
-> +
-> +    case A_VERSAL2_RST_UART0 ... A_VERSAL2_RST_UART1:
-> +        idx = (addr - A_VERSAL2_RST_UART0) / sizeof(uint32_t);
-> +        return xvc->cfg.uart + idx;
-> +
-> +    case A_VERSAL2_RST_GEM0 ... A_VERSAL2_RST_GEM1:
-> +        idx = (addr - A_VERSAL2_RST_GEM0) / sizeof(uint32_t);
-> +        return xvc->cfg.gem + idx;
-> +
-> +    case A_VERSAL2_RST_USB0 ... A_VERSAL2_RST_USB1:
-> +        idx = (addr - A_VERSAL2_RST_USB0) / sizeof(uint32_t);
-> +        return xvc->cfg.usb + idx;
-> +
-> +    case A_VERSAL2_RST_CAN0 ... A_VERSAL2_RST_CAN3:
-> +        idx = (addr - A_VERSAL2_RST_CAN0) / sizeof(uint32_t);
-> +        return xvc->cfg.can + idx;
-> +
-> +    default:
-> +        /* invalid or unimplemented */
- > +        return NULL;
-
-Can that happen?
-
-Note count=1 when returning. Should we set to 0?
-
-> +    }
-> +}
-
-Otherwise,
-
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+diff --git a/target/arm/tcg/helper-a64.c b/target/arm/tcg/helper-a64.c
+index f61adf1f80..7ab7ddf7c4 100644
+--- a/target/arm/tcg/helper-a64.c
++++ b/target/arm/tcg/helper-a64.c
+@@ -694,6 +694,17 @@ void HELPER(exception_return)(CPUARMState *env, uint64_t new_pc)
+         goto illegal_return;
+     }
+ 
++    /*
++     * If GetCurrentEXLOCKEN, the exception return path must use GCSPOPCX,
++     * which will set PSTATE.EXLOCK.  We need not explicitly check FEAT_GCS,
++     * because GCSCR_ELx cannot be set without it.
++     */
++    if (new_el == cur_el &&
++        (env->cp15.gcscr_el[cur_el] & GCSCR_EXLOCKEN) &&
++        !(env->pstate & PSTATE_EXLOCK)) {
++        goto illegal_return;
++    }
++
+     bql_lock();
+     arm_call_pre_el_change_hook(cpu);
+     bql_unlock();
+-- 
+2.43.0
 
 

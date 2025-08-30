@@ -4,88 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23C10CA0FFF
-	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 17:18:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 058A3CA0FFF
+	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 17:19:07 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1usNvW-0005Mb-Py; Sat, 30 Aug 2025 11:55:39 -0400
+	id 1usO08-0001JQ-Rn; Sat, 30 Aug 2025 12:00:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1usELl-0005tO-A0
- for qemu-arm@nongnu.org; Sat, 30 Aug 2025 01:42:07 -0400
-Received: from mail-pg1-x533.google.com ([2607:f8b0:4864:20::533])
+ id 1usERq-0007cJ-2b
+ for qemu-arm@nongnu.org; Sat, 30 Aug 2025 01:48:22 -0400
+Received: from mail-pg1-x530.google.com ([2607:f8b0:4864:20::530])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1usELj-00046b-PA
- for qemu-arm@nongnu.org; Sat, 30 Aug 2025 01:42:05 -0400
-Received: by mail-pg1-x533.google.com with SMTP id
- 41be03b00d2f7-b4c738ee2fbso1836283a12.3
- for <qemu-arm@nongnu.org>; Fri, 29 Aug 2025 22:42:02 -0700 (PDT)
+ id 1usERm-00055G-PP
+ for qemu-arm@nongnu.org; Sat, 30 Aug 2025 01:48:20 -0400
+Received: by mail-pg1-x530.google.com with SMTP id
+ 41be03b00d2f7-b471737b347so1851380a12.1
+ for <qemu-arm@nongnu.org>; Fri, 29 Aug 2025 22:48:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756532522; x=1757137322; darn=nongnu.org;
+ d=linaro.org; s=google; t=1756532897; x=1757137697; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=kEj8duxAu1Pam82WhtcHKlYlFMg89KDGm3ClOoILo48=;
- b=sc2rhVPr1Fst/iXFm9DjJ9jA1CsfekitiLQhc7hjGgd+tq9PnvlwDd+6G3+bRopXqZ
- PuXNIGnR5UWXYkKrhAFbt5v2amIOATTuSS0l6Fl9w7Su1xrXAgLPbk8i6wuJi3wzK8/3
- 1lkXOGuOly8jiReLBMX0hOG9vs9iCEKrb99D1icmn7+/5BQZD7BZL+L8wPtiyN9AKMwO
- sNrpQnr2izSVqogeXBCrkt8tWg0UQO44H/8BukR/OrU5HzWdp02yayMc9hdAgIoKt8Dg
- STEY5R6ce6N8GUm/bHZgJz2ymG7c4OFZHUWLoaZjzha4L7X7PK6OiZqcbplFQnieGE3O
- 8uPA==
+ bh=TShQhvQkk0r8kwmD31rsIF74/vVO8BlgWjtZI7/oTSM=;
+ b=wgUXFGn7EdCTt8tgxANDme9ETBYU5TJekk4vsClNazwSoQ7iv+JQK+tbTdlYhY2gHR
+ 9S7xLarSMWk3ncgM9D9t4F8mj938iM3LrQ8LBc2i3biG0ZwlaIJb921Fs78dZ0eCMrwH
+ bwMnMQMMhRrvtuvzAuNvX/2OVgGWDPhw2q0M5okXomoDy9xT+dHVy2vL/SO6iRl7h5NE
+ RqyEibjo3qR1oBpjhU9ugHH7pISsiZTMLGWm6AK4TmRhwzEj/9JRtlop6whU2hzgclt3
+ JXQ/fyGKxZNIQtScougcyvbLiHyBtvSj8LlZaX3EVf8KVmNnpHqdpc7AcrCggoD/XH8b
+ TkCA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756532522; x=1757137322;
+ d=1e100.net; s=20230601; t=1756532897; x=1757137697;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=kEj8duxAu1Pam82WhtcHKlYlFMg89KDGm3ClOoILo48=;
- b=mHJ1ZZw0Un6iAqALqWvXs9yGfA6txwXuMDgnHu0n1TIu9vxHP4n724g1Pq5R22zGRX
- sKeUe51/wtRAZfxcSfe9WRAPGjiDDMWQtoEjLDnARedCstG1yJSf3OgYZ3sYVcTc9n+S
- KIHSotvFwFA5xp3Q+DfCTDRqXrgodPW49jiNHrqsIiA5o4z1gRPlVLbeC5OY3dfCETuA
- aFOPJ6AvuOiOIDqJIiDYBq9V85IgeiXe7BTZzt2vyYW4In3DTQyD8EZ5ZkADpYpjEZPJ
- MIp0baL7QScSaWceJXNkUzouZwLfrgDxEVBHzvLzS5+p5YW8uYQRFyGZJNHGyxhJpsXw
- acQQ==
-X-Gm-Message-State: AOJu0YyxM0VUjaed1Jyw3SAFBnFTsQ7N0o0xy845kpVBjfoCkt1+ie3n
- AePfEkCXVj0RsPemL5QqAR6f18IiMKjilyWgaNuzKNTFCZR3X3rkA4vQOi7ilv58y8IushxfIUE
- R4Emf8cA=
-X-Gm-Gg: ASbGncvPj580m6XZzlKVhmYIs6MCIhGwQG542Y+TyEMQA3XJK7HKyaDnT5VaMQ3SGcB
- 4SoC19hDM7w9sghUDcq8qw3pBpBSnnn0bTwFVz7X7qZiSZmhdgU7KxMolSgSsCkP7XZAfXIwpZL
- h+PJhI5FsQCdOfXzQD22ug6MoB8cnt4XVQayzfmLim3IMMRZVmqQ2283OWzThJDCjSk2hahKXYt
- 46zf0/ra0KKuT2/XREFHjwKcDsvu1oBDWKaAGx8kjczVs66X2m7aejEwSdCq7eOBOSG6+Q8kfre
- EcDqJv5MUPlORgq5z4Mq2mUNoGsgoM0VV+x0WogWqX2khP96mm1E7qBB0M1xSMfmp6YvjgDTgjD
- lbURsicoI4SD/KgpASsGmz2NAUS7fdoe+qW/8SApPilOZDOhWU7RtxzEsImRN
-X-Google-Smtp-Source: AGHT+IHPtBOFiEzfRefyZUtWHaBtI2tu0RAWhXNiugpnHWR+ub1KWfwokwz+lWmTlQTScu4hMzSOnA==
-X-Received: by 2002:a05:6a20:918c:b0:23f:fa6e:912a with SMTP id
- adf61e73a8af0-243d6e007b3mr1600596637.16.1756532521709; 
- Fri, 29 Aug 2025 22:42:01 -0700 (PDT)
-Received: from stoup.. (122-150-204-48.dyn.ip.vocus.au. [122.150.204.48])
+ bh=TShQhvQkk0r8kwmD31rsIF74/vVO8BlgWjtZI7/oTSM=;
+ b=NxOvHgqIZtK9WC1pO+lXTHkXvrVaW8NAkfzf4gwAjRSEsc3DlKdYgYVGbttD8d/AmF
+ /QQvgVHMgw2TvZ0cYgnotpa8lkutrCdkqCFKttBKFfTWbvNsXJskzdF9Z0zGTDa2bYdz
+ D/eyrW1yXpne0AqcytV5D8GJthhX51UctpVsbMATmY3nFy7+R8o0HCzpRcjGgdqszEh4
+ qBn/mf2hrgvOOaGbeXzky8HOcyXPIrQerst3FFKbblIuLEL/cwbOcmpZxZkq8PFTavHQ
+ fqwc/A8u5BKAiByzlMHRJ/CBJX8rcjSj+Uq5M75BIB7Xc//6oYOt9h/NNBMRRzQ+JtpM
+ 8cHw==
+X-Gm-Message-State: AOJu0YxXJIEEs3AoWCLyR5YhDV6Iolh4uZaGPTI3UjonBRoog5WtnrV2
+ pNhVJAtNCd2DruqzbaLje25oh0bzUnQtB+RfZNc0B4d7/uQXYNJ5lMKoec4LhKEXnWA=
+X-Gm-Gg: ASbGncuz06sd/X7bxNnXtEb2o6tiUaXLYvHoEDN/ZWZpBf1v3X1LuZL7m58nTyehGPj
+ WwQ886FLMiCTn+pkq/DsdzKVhpqYZP83sEYXb4M1YEQwNAEfaR5KBhmdNqfLKv5OxkYnpcPSgPh
+ iW8yvXxeEKZySWG1rXo1ZPc61ApiEtixObhFs5V1YtOKqEP0fD1/K6EAUihZlaqrk+Gg3hipxwQ
+ ZAoXGtndbJHVI/a6hmCsLfKMPOkar7DzCcUai5dAlHrJWcTo/RCr4/do1r3jAgPPYE2tIAHCzaH
+ ZI9+X0TeGTm0CjdXecMFKB/qStI3+d1QG4ga4ikqQKyQxJQZgsrz0G/rDxP9mGginrauO6e23Zc
+ HTK7hHosApl/VeO0ghgtl2cYc/EjQyQ6J8RiL9tgN/pgnr+2gGiB6y4utjBCokvVaX+PeEv5FsA
+ ==
+X-Google-Smtp-Source: AGHT+IHPxYycauEFdMq8lw8oqSsUw32sICv5TA/ZeaaSpSqdB/EBVwXDxWv6W1DcRXochpe+nnnKVw==
+X-Received: by 2002:a17:902:f612:b0:249:2360:6af2 with SMTP id
+ d9443c01a7336-249448db16bmr14718565ad.16.1756532897423; 
+ Fri, 29 Aug 2025 22:48:17 -0700 (PDT)
+Received: from stoup.. (122-150-204-179.dyn.ip.vocus.au. [122.150.204.179])
  by smtp.gmail.com with ESMTPSA id
- 41be03b00d2f7-b4d96829a66sm2435905a12.6.2025.08.29.22.41.59
+ d9443c01a7336-2490658999fsm40852715ad.112.2025.08.29.22.48.15
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 29 Aug 2025 22:42:01 -0700 (PDT)
+ Fri, 29 Aug 2025 22:48:17 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v4 10/84] target/arm: Fill in HFG[RWI]TR_EL2 bits for Arm v9.5
-Date: Sat, 30 Aug 2025 15:40:14 +1000
-Message-ID: <20250830054128.448363-11-richard.henderson@linaro.org>
+Subject: [PATCH v4 79/84] linux-user/aarch64: Inject SIGSEGV for GCS faults
+Date: Sat, 30 Aug 2025 15:41:23 +1000
+Message-ID: <20250830054128.448363-80-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250830054128.448363-1-richard.henderson@linaro.org>
 References: <20250830054128.448363-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::533;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x533.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::530;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x530.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- UPPERCASE_50_75=0.008 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -104,66 +104,38 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/cpregs.h | 28 ++++++++++++++++++++++++++--
- 1 file changed, 26 insertions(+), 2 deletions(-)
+ linux-user/aarch64/target_signal.h | 1 +
+ linux-user/aarch64/cpu_loop.c      | 5 +++++
+ 2 files changed, 6 insertions(+)
 
-diff --git a/target/arm/cpregs.h b/target/arm/cpregs.h
-index c9506aa6d5..1d103b577f 100644
---- a/target/arm/cpregs.h
-+++ b/target/arm/cpregs.h
-@@ -408,10 +408,19 @@ FIELD(HFGRTR_EL2, ERXPFGCTL_EL1, 47, 1)
- FIELD(HFGRTR_EL2, ERXPFGCDN_EL1, 48, 1)
- FIELD(HFGRTR_EL2, ERXADDR_EL1, 49, 1)
- FIELD(HFGRTR_EL2, NACCDATA_EL1, 50, 1)
--/* 51-53: RES0 */
-+/* 51: RES0 */
-+FIELD(HFGRTR_EL2, NGCS_EL0, 52, 1)
-+FIELD(HFGRTR_EL2, NGCS_EL1, 53, 1)
- FIELD(HFGRTR_EL2, NSMPRI_EL1, 54, 1)
- FIELD(HFGRTR_EL2, NTPIDR2_EL0, 55, 1)
--/* 56-63: RES0 */
-+FIELD(HFGRTR_EL2, NRCWMASK_EL1, 56, 1)
-+FIELD(HFGRTR_EL2, NPIRE0_EL1, 57, 1)
-+FIELD(HFGRTR_EL2, NPIR_EL1, 58, 1)
-+FIELD(HFGRTR_EL2, NPOR_EL0, 59, 1)
-+FIELD(HFGRTR_EL2, NPOR_EL1, 60, 1)
-+FIELD(HFGRTR_EL2, NS2POR_EL1, 61, 1)
-+FIELD(HFGRTR_EL2, NMAIR2_EL1, 62, 1)
-+FIELD(HFGRTR_EL2, NAMAIR2_EL1, 63, 1)
+diff --git a/linux-user/aarch64/target_signal.h b/linux-user/aarch64/target_signal.h
+index 6f66a50bfd..e509ac1032 100644
+--- a/linux-user/aarch64/target_signal.h
++++ b/linux-user/aarch64/target_signal.h
+@@ -7,6 +7,7 @@
  
- /* These match HFGRTR but bits for RO registers are RES0 */
- FIELD(HFGWTR_EL2, AFSR0_EL1, 0, 1)
-@@ -452,8 +461,18 @@ FIELD(HFGWTR_EL2, ERXPFGCTL_EL1, 47, 1)
- FIELD(HFGWTR_EL2, ERXPFGCDN_EL1, 48, 1)
- FIELD(HFGWTR_EL2, ERXADDR_EL1, 49, 1)
- FIELD(HFGWTR_EL2, NACCDATA_EL1, 50, 1)
-+FIELD(HFGWTR_EL2, NGCS_EL0, 52, 1)
-+FIELD(HFGWTR_EL2, NGCS_EL1, 53, 1)
- FIELD(HFGWTR_EL2, NSMPRI_EL1, 54, 1)
- FIELD(HFGWTR_EL2, NTPIDR2_EL0, 55, 1)
-+FIELD(HFGWTR_EL2, NRCWMASK_EL1, 56, 1)
-+FIELD(HFGWTR_EL2, NPIRE0_EL1, 57, 1)
-+FIELD(HFGWTR_EL2, NPIR_EL1, 58, 1)
-+FIELD(HFGWTR_EL2, NPOR_EL0, 59, 1)
-+FIELD(HFGWTR_EL2, NPOR_EL1, 60, 1)
-+FIELD(HFGWTR_EL2, NS2POR_EL1, 61, 1)
-+FIELD(HFGWTR_EL2, NMAIR2_EL1, 62, 1)
-+FIELD(HFGWTR_EL2, NAMAIR2_EL1, 63, 1)
+ #define TARGET_SEGV_MTEAERR  8  /* Asynchronous ARM MTE error */
+ #define TARGET_SEGV_MTESERR  9  /* Synchronous ARM MTE exception */
++#define TARGET_SEGV_CPERR   10  /* Control protection fault */
  
- FIELD(HFGITR_EL2, ICIALLUIS, 0, 1)
- FIELD(HFGITR_EL2, ICIALLU, 1, 1)
-@@ -512,6 +531,11 @@ FIELD(HFGITR_EL2, SVC_EL1, 53, 1)
- FIELD(HFGITR_EL2, DCCVAC, 54, 1)
- FIELD(HFGITR_EL2, NBRBINJ, 55, 1)
- FIELD(HFGITR_EL2, NBRBIALL, 56, 1)
-+FIELD(HFGITR_EL2, NGCSPUSHM_EL1, 57, 1)
-+FIELD(HFGITR_EL2, NGCSSTR_EL1, 58, 1)
-+FIELD(HFGITR_EL2, NGCSEPP, 59, 1)
-+FIELD(HFGITR_EL2, COSPRCTX, 60, 1)
-+FIELD(HFGITR_EL2, ATS1E1A, 62, 1)
+ #define TARGET_ARCH_HAS_SETUP_FRAME
+ #define TARGET_ARCH_HAS_SIGTRAMP_PAGE 1
+diff --git a/linux-user/aarch64/cpu_loop.c b/linux-user/aarch64/cpu_loop.c
+index 6060572eed..41d6b35498 100644
+--- a/linux-user/aarch64/cpu_loop.c
++++ b/linux-user/aarch64/cpu_loop.c
+@@ -89,6 +89,11 @@ static void signal_for_exception(CPUARMState *env, vaddr addr)
+         si_code = TARGET_ILL_ILLOPN;
+         break;
  
- FIELD(HDFGRTR_EL2, DBGBCRN_EL1, 0, 1)
- FIELD(HDFGRTR_EL2, DBGBVRN_EL1, 1, 1)
++    case EC_GCS:
++        si_signo = TARGET_SIGSEGV;
++        si_code = TARGET_SEGV_CPERR;
++        break;
++
+     case EC_MOP:
+         /*
+          * FIXME: The kernel fixes up wrong-option exceptions.
 -- 
 2.43.0
 

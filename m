@@ -4,82 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EDA5DCA0EFF
-	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 16:43:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72DC2CA0EFF
+	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 16:44:36 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1usNwj-0001hB-AX; Sat, 30 Aug 2025 11:56:53 -0400
+	id 1usODK-0003DV-W8; Sat, 30 Aug 2025 12:14:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1usEMY-00069i-OK
- for qemu-arm@nongnu.org; Sat, 30 Aug 2025 01:42:56 -0400
-Received: from mail-pg1-x536.google.com ([2607:f8b0:4864:20::536])
+ id 1usEQb-0007Fb-Ua
+ for qemu-arm@nongnu.org; Sat, 30 Aug 2025 01:47:08 -0400
+Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1usEMV-0004GP-SF
- for qemu-arm@nongnu.org; Sat, 30 Aug 2025 01:42:54 -0400
-Received: by mail-pg1-x536.google.com with SMTP id
- 41be03b00d2f7-b4d5886f825so998380a12.0
- for <qemu-arm@nongnu.org>; Fri, 29 Aug 2025 22:42:51 -0700 (PDT)
+ id 1usEQW-0004qX-6h
+ for qemu-arm@nongnu.org; Sat, 30 Aug 2025 01:47:02 -0400
+Received: by mail-pl1-x62f.google.com with SMTP id
+ d9443c01a7336-2445824dc27so24074135ad.3
+ for <qemu-arm@nongnu.org>; Fri, 29 Aug 2025 22:46:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756532570; x=1757137370; darn=nongnu.org;
+ d=linaro.org; s=google; t=1756532815; x=1757137615; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Jdo4eXfghXIxBtW7gGLE9m9wdInFFP/OSUyrEzGuH10=;
- b=LTPviQQ0Sg7qUJGXXLrjBBwoKzF+bSCDW/m0Lxo1svTZLs3CIBMq1zTKcYzl/mq9ki
- 3dt/qvmGpuufj0poH6nygScl6HGtEvQZA78En14yNVGxmlWI8oakQICu+X7QoiaqmjSO
- Q2S+AJWDfirWtGHYZv9jf3oQxSZFCUCOi0+srrguoUSv0FKYFTyhCXBxtDnqLd6vozBp
- J7ohezni11/mb5xECa3FgOkZhtNm2I9H7GrEd7lzhgK+T8VDKuE9qUxoUG9H6dcxdkh3
- 16e2N3bRloduSBiF68OwlZk1C1NHMnaL9Ba1SyctjpxFm6YktiM7b5trpK7+nqFFYlZc
- Onxg==
+ bh=QZLKbvaJXmVjJqae0cs73+DMl1qe751GQQY47wH+UJk=;
+ b=P+ZCJQ7Z/vqqrN502oeGR6ivwkU1B5RlwzwD8B3NJUpcG2wYOx9k9SHifJ47CYuhXb
+ +yA1fcY6tlUn5oobF+Z21Qac8DtmShekzYZXus+Br3hK2dHRuyO0ThsbuEFQJSIXopkx
+ BqwhOBPNxPUdVOBoLw99BOou5H8prNOMElp+mhqSVqEh1JfkvHxPNosRs5oYPwkNdfBd
+ dz5s8vvcur8xaP2A1x0fDC5ImhTld5Omy7/DVCZgOvgf1Sv7S6z8ZtyUBEaJBBl6OlM8
+ xqPWxkszoPWv73CGTVIAq9VT07vGH1H+n+L7hx9PLvxdJL90QVFjGcmM7sX/4BEuU24b
+ /6Gw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756532570; x=1757137370;
+ d=1e100.net; s=20230601; t=1756532815; x=1757137615;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=Jdo4eXfghXIxBtW7gGLE9m9wdInFFP/OSUyrEzGuH10=;
- b=KrYVyjlx5NP1N8VjPAbALvwVGmpQOmGOsDc7Mmh9yjJ4JonA2XCw6GPFjcC4EcKfxt
- CzpmXRZRe2BuW606F7ydmE8PytsV5rx7MPt3SPXMb34P7vVbYWyacMt4Ex4kN5SBFN3q
- 4HgS51jSw3oApeVYbiHLw2e3nxtquCY3yTL/jAV5qn597oKkfjpDhNYiQn198KJOZ02x
- WzLW8qAvv3rERm/oHfXbSUcwpbap8b9cNMwxrMQk8mnZFbVB4WouW7aoogQkdBIWwIfA
- vCESb7B85T1q7sKUk/Ua/w1BLUziAW1cU9Miwt78obDBR5cDVVmYQW6d/rYIj2H+346e
- jIrA==
-X-Gm-Message-State: AOJu0YwHBts0zhr9CcxF2lEG1J59QtYKX8jdBAfk9oxEEClf1/FEsXCg
- QnWG+kfVPTpn+DA2RGD/0RiLVv7fyBpQV5Au4FwkttZZ+Wfc80lcVR3/9FxNN5WwnZc=
-X-Gm-Gg: ASbGncv4C+DQemY+6Gc3XWs+Od0v0V7pl5Fa9xGp/g4Q/otzkijHQ596tdY5EiDZQvX
- YhgySPCLhKpydyPEk4WzIVeVMmdg0VLEiVjCvSfu2FtZwsmNYqkHi7n1I1aiQojDDq/phUkY2ej
- F98OX3GYrr4CwQcmcNzD+LczZZkTU0SGlB+1jxiOi2+h3Ngy8g9SWI/5ZGNRSW2XzfZKjmbfZa0
- GSfUQu2JI3/fM/K6PsN6FokpECeXj1bANpxcVO6HylDZ3PW28pW7tlD8fQrz5uvCsN7TQJUHjMC
- gLcSbBx7HPMlEYEYNfN554dMESGW2Glv9/5ThDUZyo0jmBRkqBksRsvt78SlHmZ2Dbk2xmu3JSY
- 6iu05hR1Myit1Drv0juodTHj3yg3WLVRwEjFPr4csfysCGDigWdAMqt/w1Jv082/Z3BDEIiE=
-X-Google-Smtp-Source: AGHT+IF3VT9uEIlI6pQXs5VR24ZSOkvF6uhjHqpH8aYDRsBz/7E5E8fAkVVguGSs9K4iHu4MW//DbQ==
-X-Received: by 2002:a05:6300:2109:b0:243:b3e2:ca07 with SMTP id
- adf61e73a8af0-243d6f7ef5dmr1552786637.58.1756532570323; 
- Fri, 29 Aug 2025 22:42:50 -0700 (PDT)
-Received: from stoup.. (122-150-204-48.dyn.ip.vocus.au. [122.150.204.48])
+ bh=QZLKbvaJXmVjJqae0cs73+DMl1qe751GQQY47wH+UJk=;
+ b=T3872nHyMUnPtEO7I1ShYohGK5OOk7p/bkE4MuiZnXJ/+g/wQ4QXypSI1p0ijeeJ8l
+ d7oUQNCgqX8RLshR0BR06F2RjgufUqshYHUighoEWuBQN/NITC73+OLJE8hUmpNpFm+5
+ 1aHON1zZZUVFLqxInpBKFGqKvjLlMxC2BPOBeW2/D/rrM4QqXN+78AhtGbCUnk38gD3M
+ PzlpC6q3sDeYMHXE0QXtdKHAeuNkB9jN2P3VBnZBTMwErKqiZlOS5nSxH7eFe1F76tWg
+ 81C+CXRtBOITue5/w8X4j2n2g4Th0pFOodgUKMGzoPtWnQjPNRupFAoo6w7aqs4ZiCDO
+ jRWg==
+X-Gm-Message-State: AOJu0YzMppXwGRnSLAJeASCh2QOy1wjeoQd85AI3TCLl5EMLuNP2ENj3
+ Rnq7vY5OFmaLkDL6IO9Vt4zogVwF+dWWR2Swt+2kZP2mXMzWTaQ7F+YxHCA7pYZpFQA=
+X-Gm-Gg: ASbGncsnNr8x1Mbf/XqEN68lp85fuiArGgmdR/+JnNxkk2ZCK3/8InrJShVfp5ciWwq
+ Qp6xZ1ua99q00rUn1gVD/QuTDOtiILxYI7d+xiEfIXawYT+RRhVF/fG6NRerhcA4dMzXoKN2Luk
+ CWgyR8STP0DPMLuqfhPkQ6IejZLnvOeYYTNZLUoO1vTyt8DUGDGJyy22ec2PDjUz1cedrH42Sjs
+ 2Yu5sY9HDApjPJWxlB3d2uo8qMFDIjkNVE/CGLigQ7pTP4scf+ewWHOgYAGA9bsHzGhc7xmHFQr
+ byTmn08QchfolhNFgM+6uutAQJ0zpQn3eysvZR0lgaO1kixXG2OtRT45RIspS0WVO5Mn26cB1e4
+ i60XxDqOJm1DIh4fnFK2KWpimbDVxerzP2idGAEwUbgpqxrik52hBXDBcTE2frwM=
+X-Google-Smtp-Source: AGHT+IEVNvqMG3+DGDs3rlePUboNFtyM1HZa+e+tI8fBAMOBtmtGPrJV9lbaPkeGHnRlWk3fPMNvqA==
+X-Received: by 2002:a17:903:1250:b0:249:1234:9f7c with SMTP id
+ d9443c01a7336-24944b23caamr15133335ad.60.1756532815345; 
+ Fri, 29 Aug 2025 22:46:55 -0700 (PDT)
+Received: from stoup.. (122-150-204-179.dyn.ip.vocus.au. [122.150.204.179])
  by smtp.gmail.com with ESMTPSA id
- 41be03b00d2f7-b4d96829a66sm2435905a12.6.2025.08.29.22.42.47
+ d9443c01a7336-2490658999fsm40852715ad.112.2025.08.29.22.46.52
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 29 Aug 2025 22:42:49 -0700 (PDT)
+ Fri, 29 Aug 2025 22:46:54 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+Cc: qemu-arm@nongnu.org, Gustavo Romero <gustavo.romero@linaro.org>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v4 27/84] include/hw/core/cpu: Introduce cpu_tlb_fast
-Date: Sat, 30 Aug 2025 15:40:31 +1000
-Message-ID: <20250830054128.448363-28-richard.henderson@linaro.org>
+Subject: [PATCH v4 49/84] target/arm: Implement FEAT_CHK
+Date: Sat, 30 Aug 2025 15:40:53 +1000
+Message-ID: <20250830054128.448363-50-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250830054128.448363-1-richard.henderson@linaro.org>
 References: <20250830054128.448363-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::536;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x536.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62f;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -102,138 +100,67 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Encapsulate access to cpu->neg.tlb.f[] in a function.
+This feature contains only the CHKFEAT instruction.  It has
+no ID enable, being back-allocated into the hint nop space.
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Gustavo Romero <gustavo.romero@linaro.org>
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- include/hw/core/cpu.h        |  7 +++++++
- accel/tcg/cputlb.c           | 16 ++++++++--------
- tcg/aarch64/tcg-target.c.inc |  2 +-
- tcg/arm/tcg-target.c.inc     |  2 +-
- 4 files changed, 17 insertions(+), 10 deletions(-)
+ target/arm/tcg/translate-a64.c | 14 ++++++++++++++
+ docs/system/arm/emulation.rst  |  1 +
+ target/arm/tcg/a64.decode      |  1 +
+ 3 files changed, 16 insertions(+)
 
-diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-index 1153cadb70..bd835b07d5 100644
---- a/include/hw/core/cpu.h
-+++ b/include/hw/core/cpu.h
-@@ -593,6 +593,13 @@ static inline CPUArchState *cpu_env(CPUState *cpu)
-     return (CPUArchState *)(cpu + 1);
+diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
+index 4139b0345f..8c73f54e9a 100644
+--- a/target/arm/tcg/translate-a64.c
++++ b/target/arm/tcg/translate-a64.c
+@@ -2124,6 +2124,20 @@ static bool trans_AUTIBSP(DisasContext *s, arg_AUTIBSP *a)
+     return true;
  }
  
-+#ifdef CONFIG_TCG
-+static inline CPUTLBDescFast *cpu_tlb_fast(CPUState *cpu, int mmu_idx)
++static bool trans_CHKFEAT(DisasContext *s, arg_CHKFEAT *a)
 +{
-+    return &cpu->neg.tlb.f[mmu_idx];
-+}
-+#endif
++    uint64_t feat_en = 0;
 +
- typedef QTAILQ_HEAD(CPUTailQ, CPUState) CPUTailQ;
- extern CPUTailQ cpus_queue;
- 
-diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c
-index d324f33339..2a6aa01c57 100644
---- a/accel/tcg/cputlb.c
-+++ b/accel/tcg/cputlb.c
-@@ -129,7 +129,7 @@ static inline uint64_t tlb_addr_write(const CPUTLBEntry *entry)
- static inline uintptr_t tlb_index(CPUState *cpu, uintptr_t mmu_idx,
-                                   vaddr addr)
++    if (s->gcs_en) {
++        feat_en |= 1 << 0;
++    }
++    if (feat_en) {
++        TCGv_i64 x16 = cpu_reg(s, 16);
++        tcg_gen_andi_i64(x16, x16, ~feat_en);
++    }
++    return true;
++}
++
+ static bool trans_CLREX(DisasContext *s, arg_CLREX *a)
  {
--    uintptr_t size_mask = cpu->neg.tlb.f[mmu_idx].mask >> CPU_TLB_ENTRY_BITS;
-+    uintptr_t size_mask = cpu_tlb_fast(cpu, mmu_idx)->mask >> CPU_TLB_ENTRY_BITS;
- 
-     return (addr >> TARGET_PAGE_BITS) & size_mask;
- }
-@@ -138,7 +138,7 @@ static inline uintptr_t tlb_index(CPUState *cpu, uintptr_t mmu_idx,
- static inline CPUTLBEntry *tlb_entry(CPUState *cpu, uintptr_t mmu_idx,
-                                      vaddr addr)
- {
--    return &cpu->neg.tlb.f[mmu_idx].table[tlb_index(cpu, mmu_idx, addr)];
-+    return &cpu_tlb_fast(cpu, mmu_idx)->table[tlb_index(cpu, mmu_idx, addr)];
- }
- 
- static void tlb_window_reset(CPUTLBDesc *desc, int64_t ns,
-@@ -292,7 +292,7 @@ static void tlb_flush_one_mmuidx_locked(CPUState *cpu, int mmu_idx,
-                                         int64_t now)
- {
-     CPUTLBDesc *desc = &cpu->neg.tlb.d[mmu_idx];
--    CPUTLBDescFast *fast = &cpu->neg.tlb.f[mmu_idx];
-+    CPUTLBDescFast *fast = cpu_tlb_fast(cpu, mmu_idx);
- 
-     tlb_mmu_resize_locked(desc, fast, now);
-     tlb_mmu_flush_locked(desc, fast);
-@@ -331,7 +331,7 @@ void tlb_init(CPUState *cpu)
-     cpu->neg.tlb.c.dirty = 0;
- 
-     for (i = 0; i < NB_MMU_MODES; i++) {
--        tlb_mmu_init(&cpu->neg.tlb.d[i], &cpu->neg.tlb.f[i], now);
-+        tlb_mmu_init(&cpu->neg.tlb.d[i], cpu_tlb_fast(cpu, i), now);
-     }
- }
- 
-@@ -342,7 +342,7 @@ void tlb_destroy(CPUState *cpu)
-     qemu_spin_destroy(&cpu->neg.tlb.c.lock);
-     for (i = 0; i < NB_MMU_MODES; i++) {
-         CPUTLBDesc *desc = &cpu->neg.tlb.d[i];
--        CPUTLBDescFast *fast = &cpu->neg.tlb.f[i];
-+        CPUTLBDescFast *fast = cpu_tlb_fast(cpu, i);
- 
-         g_free(fast->table);
-         g_free(desc->fulltlb);
-@@ -667,7 +667,7 @@ static void tlb_flush_range_locked(CPUState *cpu, int midx,
-                                    unsigned bits)
- {
-     CPUTLBDesc *d = &cpu->neg.tlb.d[midx];
--    CPUTLBDescFast *f = &cpu->neg.tlb.f[midx];
-+    CPUTLBDescFast *f = cpu_tlb_fast(cpu, midx);
-     vaddr mask = MAKE_64BIT_MASK(0, bits);
- 
-     /*
-@@ -923,7 +923,7 @@ void tlb_reset_dirty(CPUState *cpu, uintptr_t start, uintptr_t length)
-     qemu_spin_lock(&cpu->neg.tlb.c.lock);
-     for (mmu_idx = 0; mmu_idx < NB_MMU_MODES; mmu_idx++) {
-         CPUTLBDesc *desc = &cpu->neg.tlb.d[mmu_idx];
--        CPUTLBDescFast *fast = &cpu->neg.tlb.f[mmu_idx];
-+        CPUTLBDescFast *fast = cpu_tlb_fast(cpu, mmu_idx);
-         unsigned int n = tlb_n_entries(fast);
-         unsigned int i;
- 
-@@ -1316,7 +1316,7 @@ static bool victim_tlb_hit(CPUState *cpu, size_t mmu_idx, size_t index,
- 
-         if (cmp == page) {
-             /* Found entry in victim tlb, swap tlb and iotlb.  */
--            CPUTLBEntry tmptlb, *tlb = &cpu->neg.tlb.f[mmu_idx].table[index];
-+            CPUTLBEntry tmptlb, *tlb = &cpu_tlb_fast(cpu, mmu_idx)->table[index];
- 
-             qemu_spin_lock(&cpu->neg.tlb.c.lock);
-             copy_tlb_helper_locked(&tmptlb, tlb);
-diff --git a/tcg/aarch64/tcg-target.c.inc b/tcg/aarch64/tcg-target.c.inc
-index 3b088b7bd9..caf79c742d 100644
---- a/tcg/aarch64/tcg-target.c.inc
-+++ b/tcg/aarch64/tcg-target.c.inc
-@@ -1668,7 +1668,7 @@ static TCGLabelQemuLdst *prepare_host_addr(TCGContext *s, HostAddress *h,
-         ldst->oi = oi;
-         ldst->addr_reg = addr_reg;
- 
--        /* Load cpu->neg.tlb.f[mmu_idx].{mask,table} into {tmp0,tmp1}. */
-+        /* Load CPUTLBDescFast.{mask,table} into {tmp0,tmp1}. */
-         QEMU_BUILD_BUG_ON(offsetof(CPUTLBDescFast, mask) != 0);
-         QEMU_BUILD_BUG_ON(offsetof(CPUTLBDescFast, table) != 8);
-         tcg_out_insn(s, 3314, LDP, TCG_REG_TMP0, TCG_REG_TMP1, TCG_AREG0,
-diff --git a/tcg/arm/tcg-target.c.inc b/tcg/arm/tcg-target.c.inc
-index 836894b16a..4069508272 100644
---- a/tcg/arm/tcg-target.c.inc
-+++ b/tcg/arm/tcg-target.c.inc
-@@ -1420,7 +1420,7 @@ static TCGLabelQemuLdst *prepare_host_addr(TCGContext *s, HostAddress *h,
-         ldst->oi = oi;
-         ldst->addr_reg = addr;
- 
--        /* Load cpu->neg.tlb.f[mmu_idx].{mask,table} into {r0,r1}.  */
-+        /* Load CPUTLBDescFast.{mask,table} into {r0,r1}.  */
-         QEMU_BUILD_BUG_ON(offsetof(CPUTLBDescFast, mask) != 0);
-         QEMU_BUILD_BUG_ON(offsetof(CPUTLBDescFast, table) != 4);
-         tcg_out_ldrd_8(s, COND_AL, TCG_REG_R0, TCG_AREG0, fast_off);
+     tcg_gen_movi_i64(cpu_exclusive_addr, -1);
+diff --git a/docs/system/arm/emulation.rst b/docs/system/arm/emulation.rst
+index 94a6192fa9..4b07af9eac 100644
+--- a/docs/system/arm/emulation.rst
++++ b/docs/system/arm/emulation.rst
+@@ -28,6 +28,7 @@ the following architecture extensions:
+ - FEAT_BF16 (AArch64 BFloat16 instructions)
+ - FEAT_BTI (Branch Target Identification)
+ - FEAT_CCIDX (Extended cache index)
++- FEAT_CHK (Check Feature Status)
+ - FEAT_CMOW (Control for cache maintenance permission)
+ - FEAT_CRC32 (CRC32 instructions)
+ - FEAT_Crypto (Cryptographic Extension)
+diff --git a/target/arm/tcg/a64.decode b/target/arm/tcg/a64.decode
+index 55ff6c504f..8283a9c83d 100644
+--- a/target/arm/tcg/a64.decode
++++ b/target/arm/tcg/a64.decode
+@@ -256,6 +256,7 @@ ERETA           1101011 0100 11111 00001 m:1 11111 11111 &reta  # ERETAA, ERETAB
+     AUTIASP     1101 0101 0000 0011 0010 0011 101 11111
+     AUTIBZ      1101 0101 0000 0011 0010 0011 110 11111
+     AUTIBSP     1101 0101 0000 0011 0010 0011 111 11111
++    CHKFEAT     1101 0101 0000 0011 0010 0101 000 11111
+   ]
+   # The canonical NOP has CRm == op2 == 0, but all of the space
+   # that isn't specifically allocated to an instruction must NOP
 -- 
 2.43.0
 

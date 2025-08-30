@@ -4,81 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F3FDCA0FFF
-	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 16:12:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F98DCA0EFF
+	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 16:13:04 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1usNQo-0008G3-2V; Sat, 30 Aug 2025 11:23:54 -0400
+	id 1usO0D-0001k8-Ku; Sat, 30 Aug 2025 12:00:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1us1sz-0004jP-Au
- for qemu-arm@nongnu.org; Fri, 29 Aug 2025 12:23:33 -0400
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1usEUx-0008VL-SO
+ for qemu-arm@nongnu.org; Sat, 30 Aug 2025 01:51:36 -0400
+Received: from mail-pg1-x531.google.com ([2607:f8b0:4864:20::531])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1us1sw-00034W-Dt
- for qemu-arm@nongnu.org; Fri, 29 Aug 2025 12:23:33 -0400
-Received: by mail-wm1-x329.google.com with SMTP id
- 5b1f17b1804b1-45b84367affso1356015e9.3
- for <qemu-arm@nongnu.org>; Fri, 29 Aug 2025 09:23:29 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1usEUw-0005kA-7m
+ for qemu-arm@nongnu.org; Sat, 30 Aug 2025 01:51:35 -0400
+Received: by mail-pg1-x531.google.com with SMTP id
+ 41be03b00d2f7-b471756592cso1839745a12.3
+ for <qemu-arm@nongnu.org>; Fri, 29 Aug 2025 22:51:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756484608; x=1757089408; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=14xM34WgZ5OVhiHty2VliE68LfnqhHTViqNX91fodbk=;
- b=daUoVIFGmNBH85i5qQUb6QfZbhroniLw1NUAhqaEUqZQJZAM6/J63Z/7z5PyjJNqYZ
- zfqGFrDUkksseoqDsgYO2dX2aw246cV/i1kJsU1ilaf7oXBnuQLPy/94Mv/0Y8CWFG7U
- HdTWoV1dII66q9CrsJx+WB1RPpXhnKEW10E7pxw5Y+Nv6m4xaxqDede+LP5k0lo6RzQu
- w8dTWj6Fi69yqV/4JGV0NdA6SPSOckr+XQ+ivRehPaZS2qdUPal4Yt+wu3oGTKp0g8Fs
- kibfhck+KQd04ddunHGWDhIF1xbBH8vqHrP7ssC3jJTX9diFxS1mpcCgluEH63TwH+8P
- WMEw==
+ d=linaro.org; s=google; t=1756533092; x=1757137892; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=SotLYLgeVo+CKYkDdlihGsrrJawGkZPr42hZuKBjr+k=;
+ b=bNk0MudOEpp8F4Gesp7RBN8nKg5TB+bi/3CCIYrWk309CG8NopjogXXZ3PbabO0XV2
+ NALyCS5MUOalgz4TBMnZp0i4E3zsxwKYfA2XnkvASWuINcuAh25m+MewkPDs5zILO821
+ A9Su5bZWELV52SUGkAYtQc6zCXDLsq/IV7t/5VdkDsWHjoMQAyGbADjigfkNHftIRz7D
+ TnTKUAxBKnbtSxQWWZrky+RwqIL9yJLK513MlSfE6jr+cmu2E+vf3hSzD0lXIDFCBFIG
+ xXHR5rUU2XA435ZuEi898epqu8qklPYfSLgmsmxQv/sjkvmh0OgDy586LN5ZcAwUoCS2
+ WmJA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756484608; x=1757089408;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=14xM34WgZ5OVhiHty2VliE68LfnqhHTViqNX91fodbk=;
- b=ctJzOwGNcrne5NbDneaqI0zsK9TkWy20lTOTtaUXLUUplt7+k1wLRSNQWKhXC+hVpC
- rqy2JxDoiZ2wi/MuWxlEEgOyZXoM2CqnLqOgrr07Ag3d8dN3ZLZiGqGst8QlUIH+ufGe
- MAeiQAneFUDGMLA5uVyc125kyYyNLdfb73YOCDALWG2MNBUoEt4YCeumN7g0LH5iS+YV
- S3wg+cN1kN19t9cc+aYzdpxnZQy1BleY0oqBv2k4uK60wGJglkmGPW19EizD9iA9NPse
- JeZsXZJjAi5cf+a00+hG2WJxjljykadze8r/RdRpy2jmcfBJ2TW67p979mJSPb4AruNE
- m1qw==
-X-Gm-Message-State: AOJu0YzaA2kGomiOjyYLpHgyntz7MoizKXdvjKHuW5WHxrawzr7DwvBb
- WVFManpI/6ciV2RuFyWEmUhKoGF8nJXvIRYbUAY5A436rOUD/lLyt0qArOvpLYa12ss=
-X-Gm-Gg: ASbGncvi4BueWXcRgaK5ySgDnZMMOowIAIgTV3a1bqLZS0hr6z5HEVXZCCShKkgH4k5
- w1U8P0mY7U1JRkv3afIdslozlj/sS+A+4GoaO3K2S8L1O19jyJhyZlypJiLFP6UaBr5FlrVCTlf
- 2nOsPQxyBfE4+C9hZWEjIMjiSDT3h4Gj5tY2FnsrG8n/WFqiQzuhjz5DcOnsRcZUPI0doE9DoLN
- G6n0MrSVd19/xAym5quhE+M2kkRfbEvq2RzX63kSXaEVvZTde9bQpppO9JHOPjk8PImHrw2ZEYn
- pimtvxw8ILEFEAMpx9Dhlz1cQ7W7z9j/BUgDvI6MSfCMoABqq2APGktGpZlJfzxpOi23JKY40Io
- /sUiAZt3xdVihmWRG+T2Z0xQAqq9QwdBlQ8v+IEYCnJqKUwKuRneQ8CuzkbxgdMs78VDpYJxSxz
- j1
-X-Google-Smtp-Source: AGHT+IFfaWFlJtcZID9seekoVR7Cts1zfcFL78mYT9f73QFOfYqsZnnS8YyvLpbs+qb6AR6Q7T36Qg==
-X-Received: by 2002:a05:600c:1381:b0:45b:6b57:5308 with SMTP id
- 5b1f17b1804b1-45b6b575361mr101850265e9.7.1756484607588; 
- Fri, 29 Aug 2025 09:23:27 -0700 (PDT)
-Received: from [192.168.69.207] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-45b7e92a42asm42863175e9.20.2025.08.29.09.23.26
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 29 Aug 2025 09:23:27 -0700 (PDT)
-Message-ID: <484d2580-77fc-4fdf-8f02-ef25df08bb7c@linaro.org>
-Date: Fri, 29 Aug 2025 18:23:26 +0200
+ d=1e100.net; s=20230601; t=1756533092; x=1757137892;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=SotLYLgeVo+CKYkDdlihGsrrJawGkZPr42hZuKBjr+k=;
+ b=ol7rDbM+Ql8zfh3P0qeOyZyFCep04Jbp3FQhBjnG1IvWqeN4RLV9/2Ymw0+Ro2eQV4
+ D3ovG3x4mBXYYxfbv6DbzSSnM/I/MfqBeo7gglYz6VeZxBfOA5DRBuH4/j159DdYKxeD
+ oyu6b/mwevhl/fdud5rkjVqz3mKcBrkwI/ySeT686Bl7oTW6nGq4FPzzIDPwvvUW2aOn
+ InqHecH4rZ3C3KWP2jnTi8w3eGdR/oOzk3ixH8lLE4aUg4bku4FpundM28Zpgmn8cV8i
+ vox4g3oXzwQrIAy921EK2DWN9ydARYr0pPE7eHfmyA9q+tcX8ptIfh4wl7w+x47atpjw
+ odJQ==
+X-Gm-Message-State: AOJu0YzGarxqvrRbI5esSVE2vd9/ctwCEq2zAarwNV+9W7IQK01wIIH4
+ y5CIW0i32gPYRYUlHbHNYcH61GMcp2TzO7z9FpFU2PLa/4mrAif/fhaKqIQTKtM3bAc=
+X-Gm-Gg: ASbGncvwufyp/xlSLo5M+kaJWY02mcpo8ocvoq0Sf2ysda9S8iHv8aAu8ZvlZ/FGm5b
+ O7bvuSXWLOE9f7SIoknBuFkOxbK21EEAkA31Mbs1lUhjJuDVACY80tBHqR+zUYfOpc7FfhlfYxS
+ igK/YEVRZECYWf/37jWaACC5hnuvaglK4dtdaBm2vciS8cIDqWdyCxYWWdMi38Yfv5HP9PPuSfW
+ xSi4OKuvbqEcnOexTXVtxHDhPPTwe6u4a8e4iy5qKN/sQhukL3lc6Vjo80R0XzzFm1bPBBgdj38
+ xEnvbfOOjR4SusY4Cp2MFF3c0SH29TME0znhl4SvQ6Qxco+uhQBYbBqFz6Go77/WI7bPTyUxpxy
+ wuIRTEJhPYjH4yuM59tsMsHynUA/RaUq/W5Fqxh8HGgg890qfoWpn/ypJiS6xWiXt/xsl5VRUif
+ YUoJDWVQ==
+X-Google-Smtp-Source: AGHT+IFnQct13X/zMXZsI476o3PsQYu+kyPIDXA3oT8qSW/M4/Vr5KwexQUC9gldC3yql+SagrbjDA==
+X-Received: by 2002:a05:6a20:6a11:b0:23f:f99d:4661 with SMTP id
+ adf61e73a8af0-243d6f08ebemr1614038637.38.1756533092001; 
+ Fri, 29 Aug 2025 22:51:32 -0700 (PDT)
+Received: from stoup.. (122-150-204-64.dyn.ip.vocus.au. [122.150.204.64])
+ by smtp.gmail.com with ESMTPSA id
+ d2e1a72fcca58-7722a2b7d10sm4198475b3a.33.2025.08.29.22.51.29
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 29 Aug 2025 22:51:31 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org,
+	Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Subject: [PATCH v4 83/84] tests/tcg/aarch64: Add gcspushm
+Date: Sat, 30 Aug 2025 15:41:27 +1000
+Message-ID: <20250830054128.448363-84-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250830054128.448363-1-richard.henderson@linaro.org>
+References: <20250830054128.448363-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] hw/sensor: add stub for ADM1266 blackbox
-To: Ben Hillier <bhillier@google.com>, wuhaotsh@google.com, kfting@nuvoton.com
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- Titus Rwantare <titusr@google.com>
-References: <20250828184939.3140841-1-bhillier@google.com>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20250828184939.3140841-1-bhillier@google.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::329;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x329.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::531;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x531.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -101,91 +101,107 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Titus,
+Validate successful and trapped executions of GCSPUSHM, GCSPOPM.
 
-On 28/8/25 20:49, Ben Hillier wrote:
-> From: Titus Rwantare <titusr@google.com>
-> 
-> This patch fixes a bug that causes a kernel panic when calling ADM1266_BLACKBOX_INFORMATION.
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ tests/tcg/aarch64/gcspushm.c      | 71 +++++++++++++++++++++++++++++++
+ tests/tcg/aarch64/Makefile.target |  2 +-
+ 2 files changed, 72 insertions(+), 1 deletion(-)
+ create mode 100644 tests/tcg/aarch64/gcspushm.c
 
-But you also implement BLACKBOX_CONFIG / READ_BLACKBOX...
+diff --git a/tests/tcg/aarch64/gcspushm.c b/tests/tcg/aarch64/gcspushm.c
+new file mode 100644
+index 0000000000..c330417a2f
+--- /dev/null
++++ b/tests/tcg/aarch64/gcspushm.c
+@@ -0,0 +1,71 @@
++/* SPDX-License-Identifier: GPL-2.0-or-later */
++
++#include "gcs.h"
++
++
++#define GCSPUSHM  "sys #3, c7, c7, #0, %[push]"
++#define GCSPOPM   "sysl %[pop], #3, c7, c7, #1"
++
++static void test_sigsegv(int sig, siginfo_t *info, void *vuc)
++{
++    ucontext_t *uc = vuc;
++    uint64_t inst_sigsegv;
++
++    __asm__("adr %0, inst_sigsegv" : "=r"(inst_sigsegv));
++    assert(uc->uc_mcontext.pc == inst_sigsegv);
++    assert(info->si_code == SEGV_CPERR);
++    /* TODO: Dig for ESR and verify syndrome. */
++    uc->uc_mcontext.pc += 4;
++}
++
++static void test_sigill(int sig, siginfo_t *info, void *vuc)
++{
++    ucontext_t *uc = vuc;
++    uint64_t inst_sigill;
++
++    __asm__("adr %0, inst_sigill" : "=r"(inst_sigill));
++    assert(uc->uc_mcontext.pc == inst_sigill);
++    assert(info->si_code == ILL_ILLOPC);
++    uc->uc_mcontext.pc += 4;
++}
++
++int main()
++{
++    struct sigaction sa = { .sa_flags = SA_SIGINFO };
++    uint64_t old, new;
++
++    sa.sa_sigaction = test_sigsegv;
++    if (sigaction(SIGSEGV, &sa, NULL) < 0) {
++        perror("sigaction");
++        exit(1);
++    }
++
++    sa.sa_sigaction = test_sigill;
++    if (sigaction(SIGILL, &sa, NULL) < 0) {
++        perror("sigaction");
++        exit(1);
++    }
++
++    /* Pushm is disabled -- SIGILL via EC_SYSTEMREGISTERTRAP */
++    asm volatile("inst_sigill:\t" GCSPUSHM
++                 : : [push] "r" (1));
++
++    enable_gcs(PR_SHADOW_STACK_PUSH);
++
++    /* Valid value -- low 2 bits clear */
++    old = 0xdeadbeeffeedcaec;
++    asm volatile(GCSPUSHM "\n\t" GCSPOPM
++                 : [pop] "=r" (new)
++                 : [push] "r" (old)
++                 : "memory");
++    assert(old == new);
++
++    /* Invalid value -- SIGSEGV via EC_GCS */
++    asm volatile(GCSPUSHM "\n"
++                 "inst_sigsegv:\t" GCSPOPM
++                 : [pop] "=r" (new)
++                 : [push] "r" (1)
++                 : "memory");
++
++    exit(0);
++}
+diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
+index 0347a36e8d..c6f401c317 100644
+--- a/tests/tcg/aarch64/Makefile.target
++++ b/tests/tcg/aarch64/Makefile.target
+@@ -76,7 +76,7 @@ $(SME_TESTS): CFLAGS += $(CROSS_AS_HAS_ARMV9_SME)
+ endif
+ 
+ # GCS Tests
+-GCS_TESTS += gcsstr
++GCS_TESTS += gcsstr gcspushm
+ AARCH64_TESTS += $(GCS_TESTS)
+ $(GCS_TESTS): gcs.h
+ 
+-- 
+2.43.0
 
-> Log Message:
-> 
-> adm1266 5-0042: Could not read blackbox!
-> Kernel panic - not syncing: stack-protector: Kernel stack is corrupted in: adm1266_nvmem_read+0x168/0x170
-> 
-> Signed-off-by: Titus Rwantare <titusr@google.com>
-> ---
->   hw/sensor/adm1266.c | 15 +++++++++++++++
->   1 file changed, 15 insertions(+)
-> 
-> diff --git a/hw/sensor/adm1266.c b/hw/sensor/adm1266.c
-> index 9017ce6116..cd11526c2b 100644
-> --- a/hw/sensor/adm1266.c
-> +++ b/hw/sensor/adm1266.c
-> @@ -75,6 +75,7 @@ typedef struct ADM1266State {
->   static const uint8_t adm1266_ic_device_id[] = {0x03, 0x41, 0x12, 0x66};
->   static const uint8_t adm1266_ic_device_rev[] = {0x08, 0x01, 0x08, 0x07, 0x0,
->                                                   0x0, 0x07, 0x41, 0x30};
-> +static const uint8_t adm1266_blackbox_info[] = {0x04, 0x00, 0x00, 0x00, 0x00};
-   {
-     0x04,       /* length */
-     0x00, 0x00, /* latest ID */
-     0x00,       /* latest record logic index */
-     0x00        /* latest record count */
-   };
-
->   
->   static void adm1266_exit_reset(Object *obj, ResetType type)
->   {
-> @@ -125,6 +126,17 @@ static uint8_t adm1266_read_byte(PMBusDevice *pmdev)
->           pmbus_send(pmdev, adm1266_ic_device_rev, sizeof(adm1266_ic_device_rev));
->           break;
->   
-> +    case ADM1266_BLACKBOX_CONFIG:
-> +        return 0;
-
-I'd was expecting pmbus_send(pmdev, "\0\0", 2) for CYCLIC_RECORD_DISABLED.
-
-> +
-> +    case ADM1266_READ_BLACKBOX:
-
-Here I'm confused, as len+data is 65bytes. Is the guest
-reading a stream of 0xff?
-
-> +        return 0;
-> +
-> +    case ADM1266_BLACKBOX_INFORMATION:
-> +        pmbus_send(pmdev, adm1266_blackbox_info,
-> +                   sizeof(adm1266_blackbox_info));
-> +        break;
-
-OK.
-
->       default:
->           qemu_log_mask(LOG_UNIMP,
->                         "%s: reading from unimplemented register: 0x%02x\n",
-> @@ -154,6 +166,9 @@ static int adm1266_write_data(PMBusDevice *pmdev, const uint8_t *buf,
->           pmbus_receive_block(pmdev, (uint8_t *)s->mfr_rev, sizeof(s->mfr_rev));
->           break;
->   
-> +    case ADM1266_BLACKBOX_CONFIG:
-Do we want to check, if lduw_p(buf) != 0 -> log(UNIMP)?
-
-> +    case ADM1266_READ_BLACKBOX:
-
-Do we want to check, if (buf[0] != 1) -> log(GUEST_ERROR),
-and log(UNIMP) regardless?
-
-> +    case ADM1266_BLACKBOX_INFORMATION:
-
-            log(GUEST_ERROR);
-
->       case ADM1266_SET_RTC:   /* do nothing */
->           break;
->   
-Regards,
-
-Phil.
 

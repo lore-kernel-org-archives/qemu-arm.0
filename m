@@ -4,132 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C23EFCA0FFF
-	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 17:51:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9802CA0EFF
+	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 17:51:40 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1usNeE-0003vW-1d; Sat, 30 Aug 2025 11:37:48 -0400
+	id 1usNvN-0004yP-0i; Sat, 30 Aug 2025 11:55:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armenon@redhat.com>)
- id 1us5Kg-0005GY-0p
- for qemu-arm@nongnu.org; Fri, 29 Aug 2025 16:04:22 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armenon@redhat.com>)
- id 1us5Kd-0004gn-6B
- for qemu-arm@nongnu.org; Fri, 29 Aug 2025 16:04:21 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1756497858;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=BaRoLgnvXipTQIwgmh18VwtQRJZMUjxN2HSv+RmjctM=;
- b=CqSJc+WIZC33zLsVo7s8jUrPcygys+NOhVxTQLn3FuvNVKXM7RFKFOqCqP59gEEaIxxIaI
- KBM0HAItkBA4dHKV4xYnH9xt4eY3Y797RiROTVXzWtu4hljvyqewc3K5gVcEZXWlQ52L98
- nGIk5cmlzTy3rY7r7/xylxcjqVAhfZc=
-Received: from mail-pj1-f72.google.com (mail-pj1-f72.google.com
- [209.85.216.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-381-edOFm2ROPguQ_MsGuovCeQ-1; Fri, 29 Aug 2025 16:04:17 -0400
-X-MC-Unique: edOFm2ROPguQ_MsGuovCeQ-1
-X-Mimecast-MFC-AGG-ID: edOFm2ROPguQ_MsGuovCeQ_1756497856
-Received: by mail-pj1-f72.google.com with SMTP id
- 98e67ed59e1d1-327b5e7f2f6so2923213a91.2
- for <qemu-arm@nongnu.org>; Fri, 29 Aug 2025 13:04:17 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1usELM-0005n8-Iy
+ for qemu-arm@nongnu.org; Sat, 30 Aug 2025 01:41:41 -0400
+Received: from mail-pg1-x52f.google.com ([2607:f8b0:4864:20::52f])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1usELI-00040N-Pa
+ for qemu-arm@nongnu.org; Sat, 30 Aug 2025 01:41:40 -0400
+Received: by mail-pg1-x52f.google.com with SMTP id
+ 41be03b00d2f7-b4cb3367d87so1189978a12.3
+ for <qemu-arm@nongnu.org>; Fri, 29 Aug 2025 22:41:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1756532495; x=1757137295; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=YSDKOHMJ8LzZafWugFBoxtinx6LpqyI+FVcpeR420n4=;
+ b=gtcG3ulzNkf74tCnDiHgfo4XWCQMCzQnyFWuvDN2nfPqT8+zO+yjtpoXUsgYk2eMh3
+ tHmPojnrd/06ZT6xnWu48CkUp8KyW7WkYMJxIpC493Mr1RUcCp+BMJivjuxtGbaPLH7a
+ tr0uzQHzln5Gg9YLDLRwrjyDz1RASD3K7lWMpNgYVM8zouQ7V1Yvixa3/FrEW8vX+U5E
+ PNLkuSoy2xkTtxfMhJf1XofTkfO9Yi8vZ/pUvvfwYaOgGag00pEs2UG+1ZZMX3UU4P2p
+ 5xw7wN7tD3Iw2j0pU2T/Z91CRPeMv6GBC9yBIE6eJx9+GvbBYYVB2p8uw7wB6sGEeyMu
+ cS4Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756497856; x=1757102656;
- h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
- :mime-version:subject:date:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=BaRoLgnvXipTQIwgmh18VwtQRJZMUjxN2HSv+RmjctM=;
- b=WWIIDD6w7/dTnOTpVlKwvIsue2LFO/nXKEHNBubV1j5T9aZaU1eHiWqCwo9e7khpd/
- wi1ZVArUyYQiADhy6QCEMB3PvYZxvROrQ/l4as53deu5ZlchfPqKXDptWQScHCR2X7yg
- r63A3A0+hdwgJeXU6BOFsp3DynriTkIxnZ1acm7Kv4CQPK4N9UhBj1vYAGh2DaVRtXJb
- LpfJaYmAi39CYYUFcsFQ62QsYbQ4PqV8iZZuqDpl0X97HWM9OtIAlMjsZ90cGmLr1D0p
- LjF7yJCVAH7DNMDDf2JnGIGilK9pCmEFvMGDfsW3iChb5RmTP0u3FjRrdhX6Uv+MThDi
- 9O9w==
-X-Forwarded-Encrypted: i=1;
- AJvYcCU8kQzF6izl9ZctR3zRCTx0G/bA5p49g0P/ZrCT5sE5IZ7K+UX65IwfLIk6HIgEhH9gZSIQS91hJg==@nongnu.org
-X-Gm-Message-State: AOJu0YyEOjl0VPwE68+M/fI/9XzwbcCfvgIuNxT4MXoQbF9F/MMuOCU/
- wRIhGr+Ecb689Q0zRrHQDlur8xuixpReP14G30jXcVPKz0D5DtsZ0wlbGzXCfM+EUHnc2Qoh75J
- D8aiAsJO+xJNOkJBKSRz5SsmzgbLxYsYoGwNc4Isarq+Qi7fHu0dDzA==
-X-Gm-Gg: ASbGnctzxvSA2qwKADH/rItAsEp5VdJcgTUvIjM4sy7FE5QjuIbUF9GY6FOTtd8ctFs
- oE1cafK43BfZrguHj0dMQhWqH0JC9WqjQvIomX4feHDvrRLTLq7hPWnmy+8sUuG0fSsFBnwWpOe
- oR2gygjr379CqFtbYg27G2BnoEHjTfEZDajafD6IJlOFUVxTlh99xgbVkSBFAwc1EWVqWl3OJrO
- mX7thyiWWL4p7MSIh21eOdzs4xz68FbIvdfPzz+UuzJaXo8Hh94P+Yt4ybCWoCilV4rpHOmpnXt
- zESB6iCJRumhJohMBJm4VGwM3mpBXbonSa6kftsZO5cLZfDef1mqwQ==
-X-Received: by 2002:a17:90b:4f44:b0:327:9e81:ebb1 with SMTP id
- 98e67ed59e1d1-3279e81f451mr10353630a91.31.1756497856002; 
- Fri, 29 Aug 2025 13:04:16 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFv8H08IlwNFTAlmeU6lJUrkYSJCahYKGC1k6IyFM9h8UDI6KXXimddarHwebX8ROKAiGzzvw==
-X-Received: by 2002:a17:90b:4f44:b0:327:9e81:ebb1 with SMTP id
- 98e67ed59e1d1-3279e81f451mr10353590a91.31.1756497855550; 
- Fri, 29 Aug 2025 13:04:15 -0700 (PDT)
-Received: from armenon-kvm.bengluru.csb ([49.47.195.108])
+ d=1e100.net; s=20230601; t=1756532495; x=1757137295;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=YSDKOHMJ8LzZafWugFBoxtinx6LpqyI+FVcpeR420n4=;
+ b=hqx8f4/d1pfrzFec6tbkIM9bvNL3dyhdYxrQ4OfKlI4aHqj6BoorvyM4JlM7ScVGw4
+ 3kn7v0cxKaayLs7ZcdV/1V9pNaYtxfRRdp2nF0biZXK3NtvyWhHpXv/D+e0PXanQnSC2
+ KRIvrXG71oEgHyuEvxOxTSVHSWZFdfn570r/4xKCMGVUb5ruS/ZreZGaF1yufFFMRMrW
+ 3BlSHPtnav+yDbZfZbFEv08mSFwxV3Hb2+gja1waKIcNv9f8It+w4wBFuCaqIs58Vl9X
+ TVogGxnRc7C5i2Kl3TiKMI8Z3dGW17dVYobt3Kfo/SVx8S9Bt11HlTUpjy9CyPf+uwlG
+ bGxg==
+X-Gm-Message-State: AOJu0Yxq24r5/AYnbWsCLw2Vc+lSIGvVNOZjiXolVGIeO6ZzACBWP2/u
+ LJfSgvHTRDr/O9q89rUfRfwMkfBPM3DtxPyAD3Nm478ymD51c859ETKiXNVUVPc7LqisNFLbbge
+ e5/xpHG4=
+X-Gm-Gg: ASbGnctbEPj9RW3VHF9aSxayEtmi4bm1mWNGaFLa6nlC2uJldmOFHy6LtmtbY5EJB9X
+ uzUD5mwHPsGlftrW6lIWerzfH4O88t97efSmQiWewC0qE4AySuAdDf5k009eUKMMrqCKrvFLGic
+ MNK/OOYFPaNyRRdIRfuwftnRX0tLk/kovu28nBlohihxZBvOGc9Cm3WOHGi2Fxay1ZgkYBBeT8T
+ 0iQemNBebeCZqKquZIFePOVt1F1Xmd3PrsPyLA+84zP44Uh1B9E0D2bc6Vy7mbM2KFUQaJUK2Uo
+ yHmy3c1Ls+jcxDYo0Aa3RNYKCfKgVTUD8NiNIjvcM/1f6nyTFssJEPD/kHUL2+emqNmoxiThsKL
+ yu3B9Jzo7UbKlf+qDZqh4HEQsufyn/R+mDmDZNH31/WL+qdJ1v4E5TYF/qTWmwOZWvivFpU0=
+X-Google-Smtp-Source: AGHT+IGSP+w37twFrhLFnUN/CRW2goG/NT0AZf+02atYQE+0WVPjHcN5zJ6B74K8H+x533vR3guuDw==
+X-Received: by 2002:a17:90b:1b4b:b0:324:e6ea:f959 with SMTP id
+ 98e67ed59e1d1-3281543747cmr1645542a91.14.1756532494516; 
+ Fri, 29 Aug 2025 22:41:34 -0700 (PDT)
+Received: from stoup.. (122-150-204-48.dyn.ip.vocus.au. [122.150.204.48])
  by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-327d8f66f16sm3570543a91.0.2025.08.29.13.04.00
+ 41be03b00d2f7-b4d96829a66sm2435905a12.6.2025.08.29.22.41.32
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 29 Aug 2025 13:04:15 -0700 (PDT)
-From: Arun Menon <armenon@redhat.com>
-Date: Sat, 30 Aug 2025 01:31:48 +0530
-Subject: [PATCH v13 08/27] migration: push Error **errp into
- qemu_load_device_state()
-MIME-Version: 1.0
-Message-Id: <20250830-propagate_tpm_error-v13-8-a4e777b7eb2c@redhat.com>
-References: <20250830-propagate_tpm_error-v13-0-a4e777b7eb2c@redhat.com>
-In-Reply-To: <20250830-propagate_tpm_error-v13-0-a4e777b7eb2c@redhat.com>
+ Fri, 29 Aug 2025 22:41:33 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: Peter Xu <peterx@redhat.com>, Fabiano Rosas <farosas@suse.de>, 
- =?utf-8?q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>, 
- Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>, 
- Dmitry Osipenko <dmitry.osipenko@collabora.com>, 
- "Michael S. Tsirkin" <mst@redhat.com>, 
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
- Cornelia Huck <cohuck@redhat.com>, Halil Pasic <pasic@linux.ibm.com>, 
- Eric Farman <farman@linux.ibm.com>, Thomas Huth <thuth@redhat.com>, 
- Christian Borntraeger <borntraeger@linux.ibm.com>, 
- Matthew Rosato <mjrosato@linux.ibm.com>, 
- Richard Henderson <richard.henderson@linaro.org>, 
- David Hildenbrand <david@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>, 
- Nicholas Piggin <npiggin@gmail.com>, 
- Harsh Prateek Bora <harshpb@linux.ibm.com>, 
- Paolo Bonzini <pbonzini@redhat.com>, Fam Zheng <fam@euphon.net>, 
- Alex Williamson <alex.williamson@redhat.com>, 
- =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>, 
- Steve Sistare <steven.sistare@oracle.com>, 
- =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>, 
- qemu-s390x@nongnu.org, qemu-ppc@nongnu.org, 
- Hailiang Zhang <zhanghailiang@xfusion.com>, 
- Stefan Berger <stefanb@linux.vnet.ibm.com>, 
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
- Arun Menon <armenon@redhat.com>
-X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2697; i=armenon@redhat.com;
- h=from:subject:message-id; bh=UirhkFM9zKCc9fAhhyz10Rt0EBJQI4cJF89hFF4FZFs=;
- b=owGbwMvMwCWWVaVqcZPfqI/xtFoSQ8Ymdh9esW5F1f1R1hM1t7EcnrL48Lpvtm5ht2tEq/r43
- wkv3Dipo5SFQYyLQVZMkaXha4BsU0BhRKTty+swc1iZQIYwcHEKwETOnWdkOP95m8njJWaqns9d
- dt9Z33uwZUIyk8H54MNOk2zfCMgdCWBkOO+pusv8/spZC6X1lqsv/Ol8eY/NiZR0Dl7LtQcT/7v
- yswEA
-X-Developer-Key: i=armenon@redhat.com; a=openpgp;
- fpr=80F5501D82507158593DE9D76A7A2538D90F328E
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 9wDjywex4D5AExf5biqV9n4ewFo4vWiNth-gNs0lep4_1756497856
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="utf-8"
+Cc: qemu-arm@nongnu.org
+Subject: [PATCH v4 00/84] target/arm: Implement FEAT_GCS
+Date: Sat, 30 Aug 2025 15:40:04 +1000
+Message-ID: <20250830054128.448363-1-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.43.0
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=armenon@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::52f;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x52f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -145,73 +98,181 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This is an incremental step in converting vmstate loading
-code to report error via Error objects instead of directly
-printing it to console/monitor.
-It is ensured that qemu_load_device_state() must report an error
-in errp, in case of failure.
+Based on Peter's tags/pull-target-arm-20250828.
+Tree: https://gitlab.com/rth7680/qemu/-/tree/tgt-arm-gcs
 
-Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-Reviewed-by: Fabiano Rosas <farosas@suse.de>
-Signed-off-by: Arun Menon <armenon@redhat.com>
----
- migration/colo.c   | 3 +--
- migration/savevm.c | 4 ++--
- migration/savevm.h | 2 +-
- 3 files changed, 4 insertions(+), 5 deletions(-)
+This includes the prerequisite features, ATS1A and S1PIE, and
+not a prerequisite but closely related, S2PIE.
 
-diff --git a/migration/colo.c b/migration/colo.c
-index e0f713c837f5da25d67afbd02ceb6c54024ca3af..2f524b19e6a79dcfe3861f1dfb768222f65a718a 100644
---- a/migration/colo.c
-+++ b/migration/colo.c
-@@ -729,9 +729,8 @@ static void colo_incoming_process_checkpoint(MigrationIncomingState *mis,
-     bql_lock();
-     vmstate_loading = true;
-     colo_flush_ram_cache();
--    ret = qemu_load_device_state(fb);
-+    ret = qemu_load_device_state(fb, errp);
-     if (ret < 0) {
--        error_setg(errp, "COLO: load device state failed");
-         vmstate_loading = false;
-         bql_unlock();
-         return;
-diff --git a/migration/savevm.c b/migration/savevm.c
-index 0087fca15ce108685667d3808350d80d37b807b1..5462eaff0dcec1fa207c08da6124fe91656201ac 100644
---- a/migration/savevm.c
-+++ b/migration/savevm.c
-@@ -3264,7 +3264,7 @@ int qemu_loadvm_state(QEMUFile *f, Error **errp)
-     return ret;
- }
- 
--int qemu_load_device_state(QEMUFile *f)
-+int qemu_load_device_state(QEMUFile *f, Error **errp)
- {
-     MigrationIncomingState *mis = migration_incoming_get_current();
-     int ret;
-@@ -3272,7 +3272,7 @@ int qemu_load_device_state(QEMUFile *f)
-     /* Load QEMU_VM_SECTION_FULL section */
-     ret = qemu_loadvm_state_main(f, mis);
-     if (ret < 0) {
--        error_report("Failed to load device state: %d", ret);
-+        error_setg(errp, "Failed to load device state: %d", ret);
-         return ret;
-     }
- 
-diff --git a/migration/savevm.h b/migration/savevm.h
-index b80770b7461a60e2ad6ba5e24a7baeae73d90955..b12681839f0b1afa3255e45215d99c13a224b19f 100644
---- a/migration/savevm.h
-+++ b/migration/savevm.h
-@@ -67,7 +67,7 @@ int qemu_save_device_state(QEMUFile *f);
- int qemu_loadvm_state(QEMUFile *f, Error **errp);
- void qemu_loadvm_state_cleanup(MigrationIncomingState *mis);
- int qemu_loadvm_state_main(QEMUFile *f, MigrationIncomingState *mis);
--int qemu_load_device_state(QEMUFile *f);
-+int qemu_load_device_state(QEMUFile *f, Error **errp);
- int qemu_loadvm_approve_switchover(void);
- int qemu_savevm_state_complete_precopy_non_iterable(QEMUFile *f,
-         bool in_postcopy);
+This passes the linux kselftests for gcs, with a 48-bit VA.
+I also include a few smoke tests in tests/tcg/.
+
+
+This includes a best-effort linux-user implementation.  Since we
+don't have softmmu in user-only (yet), gcs stack pages get normal
+read/write access.  This means we cannot write-protect the pages
+in the same way the system implementation can.  But all of the
+other parts of GCS work fine, which is good enough for testing.
+
+Changes for v4:
+  - Rebase on target-arm.next, which includes all prereqs.
+  - Fixes up the minor conflicts with the elfload.c split.
+  - Include Thiago's t-b on the system-mode enable patch.
+
+
+r~
+
+
+Richard Henderson (84):
+  linux-user/aarch64: Split out signal_for_exception
+  linux-user/aarch64: Check syndrome for EXCP_UDEF
+  linux-user/aarch64: Generate ESR signal records
+  target/arm: Add prot_check parameter to pmsav8_mpu_lookup
+  target/arm: Add in_prot_check to S1Translate
+  target/arm: Skip permission check from
+    arm_cpu_get_phys_page_attrs_debug
+  target/arm: Introduce get_phys_addr_for_at
+  target/arm: Skip AF and DB updates for AccessType_AT
+  target/arm: Add prot_check parameter to do_ats_write
+  target/arm: Fill in HFG[RWI]TR_EL2 bits for Arm v9.5
+  target/arm: Remove outdated comment for ZCR_EL12
+  target/arm: Implement FEAT_ATS1A
+  target/arm: Add isar feature test for FEAT_S1PIE, FEAT_S2PIE
+  target/arm: Enable TCR2_ELx.PIE
+  target/arm: Implement PIR_ELx, PIRE0_ELx, S2PIR_EL2 registers
+  target/arm: Force HPD for stage2 translations
+  target/arm: Cache NV1 early in get_phys_addr_lpae
+  target/arm: Populate PIE in aa64_va_parameters
+  target/arm: Implement get_S1prot_indirect
+  target/arm: Implement get_S2prot_indirect
+  target/arm: Do not migrate env->exception
+  target/arm: Expand CPUARMState.exception.syndrome to 64 bits
+  target/arm: Expand syndrome parameter to raise_exception*
+  target/arm: Implement dirtybit check for PIE
+  target/arm: Enable FEAT_S1PIE and FEAT_S2PIE on -cpu max
+  include/hw/core/cpu: Introduce MMUIdxMap
+  include/hw/core/cpu: Introduce cpu_tlb_fast
+  include/hw/core/cpu: Invert the indexing into CPUTLBDescFast
+  target/hppa: Adjust mmu indexes to begin with 0
+  include/exec/memopidx: Adjust for 32 mmu indexes
+  include/hw/core/cpu: Widen MMUIdxMap
+  target/arm: Split out mmuidx.h from cpu.h
+  target/arm: Convert arm_mmu_idx_to_el from switch to table
+  target/arm: Remove unused env argument from regime_el
+  target/arm: Convert regime_el from switch to table
+  target/arm: Convert regime_has_2_ranges from switch to table
+  target/arm: Remove unused env argument from regime_is_pan
+  target/arm: Convert regime_is_pan from switch to table
+  target/arm: Remove unused env argument from regime_is_user
+  target/arm: Convert regime_is_user from switch to table
+  target/arm: Convert arm_mmu_idx_is_stage1_of_2 from switch to table
+  target/arm: Convert regime_is_stage2 to table
+  target/arm: Introduce mmu indexes for GCS
+  target/arm: Introduce regime_to_gcs
+  target/arm: Support page protections for GCS mmu indexes
+  target/arm: Implement gcs bit for data abort
+  target/arm: Add GCS cpregs
+  target/arm: Add GCS enable and trap levels to DisasContext
+  target/arm: Implement FEAT_CHK
+  target/arm: Expand pstate to 64 bits
+  target/arm: Add syndrome data for EC_GCS
+  target/arm: Implement EXLOCKException for ELR_ELx and SPSR_ELx
+  target/arm: Split {arm,core}_user_mem_index
+  target/arm: Introduce delay_exception{_el}
+  target/arm: Emit HSTR trap exception out of line
+  target/arm: Emit v7m LTPSIZE exception out of line
+  target/arm: Implement GCSSTR, GCSSTTR
+  target/arm: Implement GCSB
+  target/arm: Implement GCSPUSHM
+  target/arm: Implement GCSPOPM
+  target/arm: Implement GCSPUSHX
+  target/arm: Implement GCSPOPX
+  target/arm: Implement GCSPOPCX
+  target/arm: Implement GCSSS1
+  target/arm: Implement GCSSS2
+  target/arm: Add gcs record for BL
+  target/arm: Add gcs record for BLR
+  target/arm: Add gcs record for BLR with PAuth
+  target/arm: Load gcs record for RET
+  target/arm: Load gcs record for RET with PAuth
+  target/arm: Copy EXLOCKEn to EXLOCK on exception to the same EL
+  target/arm: Implement EXLOCK check during exception return
+  target/arm: Enable FEAT_GCS with -cpu max
+  linux-user/aarch64: Implement prctls for GCS
+  linux-user/aarch64: Allocate new gcs stack on clone
+  linux-user/aarch64: Release gcs stack on thread exit
+  linux-user/aarch64: Implement map_shadow_stack syscall
+  target/arm: Enable GCSPR_EL0 for read in user-mode
+  linux-user/aarch64: Inject SIGSEGV for GCS faults
+  linux-user/aarch64: Generate GCS signal records
+  linux-user/aarch64: Enable GCS in HWCAP
+  tests/tcg/aarch64: Add gcsstr
+  tests/tcg/aarch64: Add gcspushm
+  tests/tcg/aarch64: Add gcsss
+
+ include/exec/cputlb.h              |  32 +--
+ include/exec/memopidx.h            |   9 +-
+ include/hw/core/cpu.h              |  25 +-
+ linux-user/aarch64/gcs-internal.h  |  38 +++
+ linux-user/aarch64/target_prctl.h  |  96 +++++++
+ linux-user/aarch64/target_signal.h |   1 +
+ linux-user/qemu.h                  |   5 +
+ target/arm/cpregs.h                |  46 ++-
+ target/arm/cpu-features.h          |  20 ++
+ target/arm/cpu.h                   | 242 ++--------------
+ target/arm/internals.h             | 169 ++----------
+ target/arm/mmuidx-internal.h       | 113 ++++++++
+ target/arm/mmuidx.h                | 241 ++++++++++++++++
+ target/arm/syndrome.h              |  35 +++
+ target/arm/tcg/translate.h         |  46 ++-
+ target/hppa/cpu.h                  |  28 +-
+ tests/tcg/aarch64/gcs.h            |  80 ++++++
+ accel/tcg/cputlb.c                 |  49 ++--
+ linux-user/aarch64/cpu_loop.c      | 167 ++++++++---
+ linux-user/aarch64/elfload.c       |   1 +
+ linux-user/aarch64/signal.c        | 170 +++++++++++-
+ linux-user/syscall.c               | 114 ++++++++
+ target/arm/cpregs-gcs.c            | 152 ++++++++++
+ target/arm/cpu.c                   |  17 +-
+ target/arm/gdbstub64.c             |   2 +
+ target/arm/helper.c                | 268 ++++++++++++++----
+ target/arm/machine.c               |  62 ++++-
+ target/arm/mmuidx.c                |  66 +++++
+ target/arm/ptw.c                   | 429 +++++++++++++++++++++-------
+ target/arm/tcg-stubs.c             |   2 +-
+ target/arm/tcg/cpregs-at.c         |  69 +++--
+ target/arm/tcg/cpu64.c             |   4 +
+ target/arm/tcg/helper-a64.c        |  13 +-
+ target/arm/tcg/hflags.c            |  38 +++
+ target/arm/tcg/m_helper.c          |   4 +-
+ target/arm/tcg/mte_helper.c        |   2 +-
+ target/arm/tcg/op_helper.c         |   8 +-
+ target/arm/tcg/tlb-insns.c         |  47 +++-
+ target/arm/tcg/tlb_helper.c        |  18 +-
+ target/arm/tcg/translate-a64.c     | 430 ++++++++++++++++++++++++++---
+ target/arm/tcg/translate.c         |  78 ++++--
+ tcg/tcg.c                          |   3 +-
+ tests/tcg/aarch64/gcspushm.c       |  71 +++++
+ tests/tcg/aarch64/gcsss.c          |  74 +++++
+ tests/tcg/aarch64/gcsstr.c         |  48 ++++
+ docs/system/arm/emulation.rst      |   5 +
+ target/arm/meson.build             |   9 +-
+ target/arm/tcg/a64.decode          |   5 +
+ tcg/aarch64/tcg-target.c.inc       |   2 +-
+ tcg/arm/tcg-target.c.inc           |   2 +-
+ tests/tcg/aarch64/Makefile.target  |   5 +
+ 51 files changed, 2931 insertions(+), 729 deletions(-)
+ create mode 100644 linux-user/aarch64/gcs-internal.h
+ create mode 100644 target/arm/mmuidx-internal.h
+ create mode 100644 target/arm/mmuidx.h
+ create mode 100644 tests/tcg/aarch64/gcs.h
+ create mode 100644 target/arm/cpregs-gcs.c
+ create mode 100644 target/arm/mmuidx.c
+ create mode 100644 tests/tcg/aarch64/gcspushm.c
+ create mode 100644 tests/tcg/aarch64/gcsss.c
+ create mode 100644 tests/tcg/aarch64/gcsstr.c
 
 -- 
-2.51.0
+2.43.0
 
 

@@ -4,83 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55F5BCA0FFF
-	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 17:49:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3DC76CA0EFF
+	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 17:50:42 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1usOgg-0003Es-Pe; Sat, 30 Aug 2025 12:44:23 -0400
+	id 1usNvN-000527-O0; Sat, 30 Aug 2025 11:55:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1urkJL-0005MB-JV
- for qemu-arm@nongnu.org; Thu, 28 Aug 2025 17:37:35 -0400
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1usEMV-00067r-2H
+ for qemu-arm@nongnu.org; Sat, 30 Aug 2025 01:42:51 -0400
+Received: from mail-pf1-x42f.google.com ([2607:f8b0:4864:20::42f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1urkJJ-0001hc-NL
- for qemu-arm@nongnu.org; Thu, 28 Aug 2025 17:37:35 -0400
-Received: by mail-wm1-x336.google.com with SMTP id
- 5b1f17b1804b1-45b7c01a708so4119555e9.3
- for <qemu-arm@nongnu.org>; Thu, 28 Aug 2025 14:37:33 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1usEMS-0004F4-N1
+ for qemu-arm@nongnu.org; Sat, 30 Aug 2025 01:42:50 -0400
+Received: by mail-pf1-x42f.google.com with SMTP id
+ d2e1a72fcca58-7723bf02181so365545b3a.1
+ for <qemu-arm@nongnu.org>; Fri, 29 Aug 2025 22:42:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756417051; x=1757021851; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:to:subject:user-agent:mime-version:date:message-id:from
- :to:cc:subject:date:message-id:reply-to;
- bh=8j9TGNf5VgZqyxibF9SLEh5Avat5cxNOqr7xWgK7H+s=;
- b=eHEnKmtfXNLVt0TjtNFm1pyg45IUfDVWj2qzzoedyUXaTtrZ2qtSEKyOLNYSiXdxZi
- E8dcdvfvpyqmGgLkFygewJRlZMyx6c7PWRyFBqULsoEz87JniNcfquL9UMDV7vyoBre9
- 9zwgFocg59374lwAOnecSJY0nMKE90VxjcGvoPhOySiBlqjESLDks7aDMV1z5UBbxNjj
- bO6AQwAykxHchQrwOb29+9wvIiaz6XHRy/wDcsQV81qLYINC+7im7OYev21r7cPjRA/R
- zD8PI1l6t03bdZxDXKmESfId+8xFXFwc974ZEC7pfIcr0+jtRAT37fdJkFfv9/WlH5U5
- CleA==
+ d=linaro.org; s=google; t=1756532567; x=1757137367; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=0Ree5Gpr8l0LtLySxeEcXv5FgIq91JPtdUEJ2fumBaw=;
+ b=hujqwa9QtNB9oUdQQ23m5jnLX0SQqT2ZHJEMFfmbUXiqlUCw/SWjxpy114W7pVLNI1
+ BgefnrCR6wkd/Px5cP2DJjJPyxeO3OhEoG6aQ41Ii9lGKHhNoVCOPCK3uSSiFzKMrF09
+ h4TasvLBzExaOCoJY2EU323/+1Q62vZk802sKw+X7rIrtSKHJMtR5DGWb2r0cUXfRMDM
+ 5JEbu/SyEpsOE8lxizRP1/4Kaw/qHxSjr9RoR9Xpe5cHx2WanlOU8UpJ44FMBd0BabXy
+ 6qAZd0kNwrGhFfz4dugB/bMNe+yPeXWdWb5DFYax8tlMW9m+z+/nCFPcqUDESz0jhk+2
+ TkmA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756417051; x=1757021851;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=8j9TGNf5VgZqyxibF9SLEh5Avat5cxNOqr7xWgK7H+s=;
- b=dIw8Lqv+jZnzWmCEnAcRbohIMaUv2GiUeKKApkh349OnmM877AKXSOABOXnRB2xtsJ
- S6uW10DV62H7ShGs50iTas2Qa5/Wz5QffdMG6Q2KQocAdbC4VsS9lMvppZVRnzlXcuZh
- Fz4LlERUNWONJtnmDX0j5dHerCCUiM/BZ+B9h94+Mu3JuDSLqPtblq/Bb+wxoaJ+SsQ4
- AgUF2jmr2CXb5cMimNMixeLud9bjVJ92TqMkSE9OctUEL7/MUOg4eCRLl9FB72fxPYyl
- 1RGqCVPthCN6upYsKr6j0u/mmNC4E8EBbUax3ZFsv/1Im3xPNezB9R4V55NHhGtBgZJj
- TN+g==
-X-Forwarded-Encrypted: i=1;
- AJvYcCX3KEkz4GZxqcwgeBSInDLofot+T1pGMgLcrcMl0yPFUbpcVfHn7Jasz32cTBEnq9p3qADwhhAEKw==@nongnu.org
-X-Gm-Message-State: AOJu0YwEf4lmPMiP5RAgOiXyOAjdLuoe1RofBk5wTf1exQ8QR7DQNmGx
- zF5EYjhpw9ZiPqIZxdxnHaVK6QLiHf5VN4EGIFUZGbwLeZzx1hORTDZtqN3Wuem/hTk=
-X-Gm-Gg: ASbGncsnMJPZ9Irg738PTFYDfhCNT+JDieGXXAAzTo1cvmtApsmVA4l86GN3K+PjcOV
- PCbFJ6mxUyajwgXHGdt9xy/iKCO2AHylbBWMVspR1eDwHSyGpeGaFvJE5ivUr1++dDlTOHSxPDE
- lbTIourXZufqwVGMH38hQJBFoww6jY2V95Wi/aRsiMhWkwWG5H5FZN4lB7oDo7p0FYwXyE6VTGR
- lbCsaHRCa3MoIwpxuxUkS/FF8GDJhtxldzB4d7CcAvgKcB9w3g6Gf7bN39qXPYZ+z80s47NKK3z
- AMTPgl7RpLHLatzCYDbRweHkCogzViPAwYwMhWJr4RAi66I/84V3d+fPU9hrcgkUKbQQV442I+j
- agDV5/4y0knEXrrlWWJeb1bPbqLdmBsyj/x93w05b/tXAdKkCHQSl+T5/CMmTpAwpu3rNiIxLAR
- yh
-X-Google-Smtp-Source: AGHT+IFhjqMOxqdsrAxp3E0RFCvY4jlsjRXiRpVPzYWcc79dWIS6dCHnj/YVsCZZcv5zVjl6hEsNIg==
-X-Received: by 2002:a05:600c:4446:b0:45b:7a9e:c4ea with SMTP id
- 5b1f17b1804b1-45b7aae0996mr31736015e9.27.1756417051229; 
- Thu, 28 Aug 2025 14:37:31 -0700 (PDT)
-Received: from [192.168.69.207] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3cf33add838sm711587f8f.39.2025.08.28.14.37.29
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 28 Aug 2025 14:37:30 -0700 (PDT)
-Message-ID: <515be40b-33fb-40de-8322-a800b941a056@linaro.org>
-Date: Thu, 28 Aug 2025 23:37:29 +0200
+ d=1e100.net; s=20230601; t=1756532567; x=1757137367;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=0Ree5Gpr8l0LtLySxeEcXv5FgIq91JPtdUEJ2fumBaw=;
+ b=G7n1chl2Amdf8tzQgUw5IUSWOaTU/xAWzYnHClRHk28r/R8wd/9z6qKxoc6R9G5BdE
+ RiHIywF3DBaKPrAiLXNHdaa5SNt4oFuSotI2WqkVfh700aQoPnCmxBGft+/6n3mo48Rc
+ zxmP3ULhXY4rFTyutfqgFEl+AC73wLRD//oj+bAHf2NKRRApsa6jCpKeBrABncitQP3M
+ 4Dyxxn5yRw2+3mblaTsWwGiSdbhn9LNtxa2eeJ3BmAdt51ZUgJq8+mhjPV1d/43xlU7j
+ uidQQsM+dwlDyNrGRorGCAB2YNDj1eaORoRYECTK434tmXViGJPk+v4oSdkwT0b/fdGD
+ 7Hmw==
+X-Gm-Message-State: AOJu0YwQI552NjJrTGJDnrfEifjcxXXK9CUzeVzEIych1qpaLmpTibfM
+ LcxOBFHZU5FLoFqBkI4A+vBeVjDElrmJARUIDuofdAiFUOkLAbdOn2vIvCghTPXSMUceSi1Ni27
+ u0CFtguY=
+X-Gm-Gg: ASbGncsKvplv8f++mPJaG5KYIlV/ey7roFFdUL2qk4+dFt1rFUzF3t0j69qmz6pb6cu
+ tRXGp4FfMpXU0o7Dhiyq/J8xl7xugAiOfs3/DmVz25ervGqnsTonIV9rHFtYOAtf3mpcacJ31sO
+ LL9Vky2xXZOlCDXTGuA6dFouaf2X6V93VKk7Erpb65sQfm8V26+AVtlaoFz5kyOhW9I8VMvIS+j
+ /NJQ/nU0pmPhp1rK2y5bZ9SvdwL5DY9zaFfOHrPWr5IwKo0ewyjol0kUEdcpnCMbL8uNXY59O/h
+ 1ZEhwVdJ9WS0hZXg1vtr7IE84MjnukdD78xBu/4nwW7pA441srBpBMArcDn0ho+qp3Bj/79dWrq
+ NMJrnxV7SDd7m5HlxaNBJClni5eRZje/A+4ejRT9d2tcBOkh1gvNpUXWNW2qIlR4vI2i5ZN4=
+X-Google-Smtp-Source: AGHT+IGH7B2jYsPMW8dhfirfZgWT/TOWRJ5fKegpZkvln1jpZ6yCT3gWV1jvmSKR1dpXpvg+MfsQQw==
+X-Received: by 2002:a05:6a21:9986:b0:243:b144:ad9d with SMTP id
+ adf61e73a8af0-243d6dc7facmr1691804637.6.1756532567448; 
+ Fri, 29 Aug 2025 22:42:47 -0700 (PDT)
+Received: from stoup.. (122-150-204-48.dyn.ip.vocus.au. [122.150.204.48])
+ by smtp.gmail.com with ESMTPSA id
+ 41be03b00d2f7-b4d96829a66sm2435905a12.6.2025.08.29.22.42.44
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 29 Aug 2025 22:42:47 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Subject: [PATCH v4 26/84] include/hw/core/cpu: Introduce MMUIdxMap
+Date: Sat, 30 Aug 2025 15:40:30 +1000
+Message-ID: <20250830054128.448363-27-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250830054128.448363-1-richard.henderson@linaro.org>
+References: <20250830054128.448363-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/5] target/arm: Remove XScale and iWMMXt translate.c code
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20250828140422.3271703-1-peter.maydell@linaro.org>
- <20250828140422.3271703-3-peter.maydell@linaro.org>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20250828140422.3271703-3-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::336;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x336.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42f;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -103,22 +103,291 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 28/8/25 16:04, Peter Maydell wrote:
-> Remove all the translator code that is accessible only via
-> ARM_FEATURE_XSCALE or ARM_FEATURE_IWMMXT.  This includes the
-> xscale-only cp15_cpar TB flags and cpu_{V0,V1,M0} TCG temps.
-> 
-> The no-longer-used helper functions will be removed in a separate
-> commit.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->   target/arm/cpu.h           |    7 -
->   target/arm/tcg/translate.h |    2 -
->   target/arm/tcg/hflags.c    |   13 +-
->   target/arm/tcg/translate.c | 1324 +-----------------------------------
->   4 files changed, 7 insertions(+), 1339 deletions(-)
+Use a typedef instead of uint16_t directly when
+describing sets of mmu indexes.
 
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ include/exec/cputlb.h | 32 ++++++++++++++++----------------
+ include/hw/core/cpu.h |  6 +++---
+ accel/tcg/cputlb.c    | 30 +++++++++++++++---------------
+ 3 files changed, 34 insertions(+), 34 deletions(-)
+
+diff --git a/include/exec/cputlb.h b/include/exec/cputlb.h
+index 03ed7e2165..9bec0e7890 100644
+--- a/include/exec/cputlb.h
++++ b/include/exec/cputlb.h
+@@ -150,7 +150,7 @@ void tlb_flush_all_cpus_synced(CPUState *src_cpu);
+  * MMU indexes.
+  */
+ void tlb_flush_page_by_mmuidx(CPUState *cpu, vaddr addr,
+-                              uint16_t idxmap);
++                              MMUIdxMap idxmap);
+ 
+ /**
+  * tlb_flush_page_by_mmuidx_all_cpus_synced:
+@@ -165,7 +165,7 @@ void tlb_flush_page_by_mmuidx(CPUState *cpu, vaddr addr,
+  * translations using the flushed TLBs.
+  */
+ void tlb_flush_page_by_mmuidx_all_cpus_synced(CPUState *cpu, vaddr addr,
+-                                              uint16_t idxmap);
++                                              MMUIdxMap idxmap);
+ 
+ /**
+  * tlb_flush_by_mmuidx:
+@@ -176,7 +176,7 @@ void tlb_flush_page_by_mmuidx_all_cpus_synced(CPUState *cpu, vaddr addr,
+  * Flush all entries from the TLB of the specified CPU, for the specified
+  * MMU indexes.
+  */
+-void tlb_flush_by_mmuidx(CPUState *cpu, uint16_t idxmap);
++void tlb_flush_by_mmuidx(CPUState *cpu, MMUIdxMap idxmap);
+ 
+ /**
+  * tlb_flush_by_mmuidx_all_cpus_synced:
+@@ -189,7 +189,7 @@ void tlb_flush_by_mmuidx(CPUState *cpu, uint16_t idxmap);
+  * When this function returns, no CPUs will subsequently perform
+  * translations using the flushed TLBs.
+  */
+-void tlb_flush_by_mmuidx_all_cpus_synced(CPUState *cpu, uint16_t idxmap);
++void tlb_flush_by_mmuidx_all_cpus_synced(CPUState *cpu, MMUIdxMap idxmap);
+ 
+ /**
+  * tlb_flush_page_bits_by_mmuidx
+@@ -201,11 +201,11 @@ void tlb_flush_by_mmuidx_all_cpus_synced(CPUState *cpu, uint16_t idxmap);
+  * Similar to tlb_flush_page_mask, but with a bitmap of indexes.
+  */
+ void tlb_flush_page_bits_by_mmuidx(CPUState *cpu, vaddr addr,
+-                                   uint16_t idxmap, unsigned bits);
++                                   MMUIdxMap idxmap, unsigned bits);
+ 
+ /* Similarly, with broadcast and syncing. */
+ void tlb_flush_page_bits_by_mmuidx_all_cpus_synced(CPUState *cpu, vaddr addr,
+-                                                   uint16_t idxmap,
++                                                   MMUIdxMap idxmap,
+                                                    unsigned bits);
+ 
+ /**
+@@ -220,14 +220,14 @@ void tlb_flush_page_bits_by_mmuidx_all_cpus_synced(CPUState *cpu, vaddr addr,
+  * comparing only the low @bits worth of each virtual page.
+  */
+ void tlb_flush_range_by_mmuidx(CPUState *cpu, vaddr addr,
+-                               vaddr len, uint16_t idxmap,
++                               vaddr len, MMUIdxMap idxmap,
+                                unsigned bits);
+ 
+ /* Similarly, with broadcast and syncing. */
+ void tlb_flush_range_by_mmuidx_all_cpus_synced(CPUState *cpu,
+                                                vaddr addr,
+                                                vaddr len,
+-                                               uint16_t idxmap,
++                                               MMUIdxMap idxmap,
+                                                unsigned bits);
+ #else
+ static inline void tlb_flush_page(CPUState *cpu, vaddr addr)
+@@ -243,42 +243,42 @@ static inline void tlb_flush_all_cpus_synced(CPUState *src_cpu)
+ {
+ }
+ static inline void tlb_flush_page_by_mmuidx(CPUState *cpu,
+-                                            vaddr addr, uint16_t idxmap)
++                                            vaddr addr, MMUIdxMap idxmap)
+ {
+ }
+ 
+-static inline void tlb_flush_by_mmuidx(CPUState *cpu, uint16_t idxmap)
++static inline void tlb_flush_by_mmuidx(CPUState *cpu, MMUIdxMap idxmap)
+ {
+ }
+ static inline void tlb_flush_page_by_mmuidx_all_cpus_synced(CPUState *cpu,
+                                                             vaddr addr,
+-                                                            uint16_t idxmap)
++                                                            MMUIdxMap idxmap)
+ {
+ }
+ static inline void tlb_flush_by_mmuidx_all_cpus_synced(CPUState *cpu,
+-                                                       uint16_t idxmap)
++                                                       MMUIdxMap idxmap)
+ {
+ }
+ static inline void tlb_flush_page_bits_by_mmuidx(CPUState *cpu,
+                                                  vaddr addr,
+-                                                 uint16_t idxmap,
++                                                 MMUIdxMap idxmap,
+                                                  unsigned bits)
+ {
+ }
+ static inline void
+ tlb_flush_page_bits_by_mmuidx_all_cpus_synced(CPUState *cpu, vaddr addr,
+-                                              uint16_t idxmap, unsigned bits)
++                                              MMUIdxMap idxmap, unsigned bits)
+ {
+ }
+ static inline void tlb_flush_range_by_mmuidx(CPUState *cpu, vaddr addr,
+-                                             vaddr len, uint16_t idxmap,
++                                             vaddr len, MMUIdxMap idxmap,
+                                              unsigned bits)
+ {
+ }
+ static inline void tlb_flush_range_by_mmuidx_all_cpus_synced(CPUState *cpu,
+                                                              vaddr addr,
+                                                              vaddr len,
+-                                                             uint16_t idxmap,
++                                                             MMUIdxMap idxmap,
+                                                              unsigned bits)
+ {
+ }
+diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+index 5eaf41a566..1153cadb70 100644
+--- a/include/hw/core/cpu.h
++++ b/include/hw/core/cpu.h
+@@ -198,10 +198,10 @@ struct CPUClass {
+ };
+ 
+ /*
+- * Fix the number of mmu modes to 16, which is also the maximum
+- * supported by the softmmu tlb api.
++ * Fix the number of mmu modes to 16.
+  */
+ #define NB_MMU_MODES 16
++typedef uint16_t MMUIdxMap;
+ 
+ /* Use a fully associative victim tlb of 8 entries. */
+ #define CPU_VTLB_SIZE 8
+@@ -306,7 +306,7 @@ typedef struct CPUTLBCommon {
+      * mmu_idx N since the last time that mmu_idx was flushed.
+      * Protected by tlb_c.lock.
+      */
+-    uint16_t dirty;
++     MMUIdxMap dirty;
+     /*
+      * Statistics.  These are not lock protected, but are read and
+      * written atomically.  This allows the monitor to print a snapshot
+diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c
+index 87e14bde4f..d324f33339 100644
+--- a/accel/tcg/cputlb.c
++++ b/accel/tcg/cputlb.c
+@@ -370,8 +370,8 @@ static void flush_all_helper(CPUState *src, run_on_cpu_func fn,
+ 
+ static void tlb_flush_by_mmuidx_async_work(CPUState *cpu, run_on_cpu_data data)
+ {
+-    uint16_t asked = data.host_int;
+-    uint16_t all_dirty, work, to_clean;
++    MMUIdxMap asked = data.host_int;
++    MMUIdxMap all_dirty, work, to_clean;
+     int64_t now = get_clock_realtime();
+ 
+     assert_cpu_is_self(cpu);
+@@ -408,7 +408,7 @@ static void tlb_flush_by_mmuidx_async_work(CPUState *cpu, run_on_cpu_data data)
+     }
+ }
+ 
+-void tlb_flush_by_mmuidx(CPUState *cpu, uint16_t idxmap)
++void tlb_flush_by_mmuidx(CPUState *cpu, MMUIdxMap idxmap)
+ {
+     tlb_debug("mmu_idx: 0x%" PRIx16 "\n", idxmap);
+ 
+@@ -422,7 +422,7 @@ void tlb_flush(CPUState *cpu)
+     tlb_flush_by_mmuidx(cpu, ALL_MMUIDX_BITS);
+ }
+ 
+-void tlb_flush_by_mmuidx_all_cpus_synced(CPUState *src_cpu, uint16_t idxmap)
++void tlb_flush_by_mmuidx_all_cpus_synced(CPUState *src_cpu, MMUIdxMap idxmap)
+ {
+     const run_on_cpu_func fn = tlb_flush_by_mmuidx_async_work;
+ 
+@@ -531,7 +531,7 @@ static void tlb_flush_page_locked(CPUState *cpu, int midx, vaddr page)
+  */
+ static void tlb_flush_page_by_mmuidx_async_0(CPUState *cpu,
+                                              vaddr addr,
+-                                             uint16_t idxmap)
++                                             MMUIdxMap idxmap)
+ {
+     int mmu_idx;
+ 
+@@ -570,14 +570,14 @@ static void tlb_flush_page_by_mmuidx_async_1(CPUState *cpu,
+ {
+     vaddr addr_and_idxmap = data.target_ptr;
+     vaddr addr = addr_and_idxmap & TARGET_PAGE_MASK;
+-    uint16_t idxmap = addr_and_idxmap & ~TARGET_PAGE_MASK;
++    MMUIdxMap idxmap = addr_and_idxmap & ~TARGET_PAGE_MASK;
+ 
+     tlb_flush_page_by_mmuidx_async_0(cpu, addr, idxmap);
+ }
+ 
+ typedef struct {
+     vaddr addr;
+-    uint16_t idxmap;
++    MMUIdxMap idxmap;
+ } TLBFlushPageByMMUIdxData;
+ 
+ /**
+@@ -599,7 +599,7 @@ static void tlb_flush_page_by_mmuidx_async_2(CPUState *cpu,
+     g_free(d);
+ }
+ 
+-void tlb_flush_page_by_mmuidx(CPUState *cpu, vaddr addr, uint16_t idxmap)
++void tlb_flush_page_by_mmuidx(CPUState *cpu, vaddr addr, MMUIdxMap idxmap)
+ {
+     tlb_debug("addr: %016" VADDR_PRIx " mmu_idx:%" PRIx16 "\n", addr, idxmap);
+ 
+@@ -618,7 +618,7 @@ void tlb_flush_page(CPUState *cpu, vaddr addr)
+ 
+ void tlb_flush_page_by_mmuidx_all_cpus_synced(CPUState *src_cpu,
+                                               vaddr addr,
+-                                              uint16_t idxmap)
++                                              MMUIdxMap idxmap)
+ {
+     tlb_debug("addr: %016" VADDR_PRIx " mmu_idx:%"PRIx16"\n", addr, idxmap);
+ 
+@@ -715,8 +715,8 @@ static void tlb_flush_range_locked(CPUState *cpu, int midx,
+ typedef struct {
+     vaddr addr;
+     vaddr len;
+-    uint16_t idxmap;
+-    uint16_t bits;
++    MMUIdxMap idxmap;
++    unsigned bits;
+ } TLBFlushRangeData;
+ 
+ static void tlb_flush_range_by_mmuidx_async_0(CPUState *cpu,
+@@ -766,7 +766,7 @@ static void tlb_flush_range_by_mmuidx_async_1(CPUState *cpu,
+ }
+ 
+ void tlb_flush_range_by_mmuidx(CPUState *cpu, vaddr addr,
+-                               vaddr len, uint16_t idxmap,
++                               vaddr len, MMUIdxMap idxmap,
+                                unsigned bits)
+ {
+     TLBFlushRangeData d;
+@@ -797,7 +797,7 @@ void tlb_flush_range_by_mmuidx(CPUState *cpu, vaddr addr,
+ }
+ 
+ void tlb_flush_page_bits_by_mmuidx(CPUState *cpu, vaddr addr,
+-                                   uint16_t idxmap, unsigned bits)
++                                   MMUIdxMap idxmap, unsigned bits)
+ {
+     tlb_flush_range_by_mmuidx(cpu, addr, TARGET_PAGE_SIZE, idxmap, bits);
+ }
+@@ -805,7 +805,7 @@ void tlb_flush_page_bits_by_mmuidx(CPUState *cpu, vaddr addr,
+ void tlb_flush_range_by_mmuidx_all_cpus_synced(CPUState *src_cpu,
+                                                vaddr addr,
+                                                vaddr len,
+-                                               uint16_t idxmap,
++                                               MMUIdxMap idxmap,
+                                                unsigned bits)
+ {
+     TLBFlushRangeData d, *p;
+@@ -847,7 +847,7 @@ void tlb_flush_range_by_mmuidx_all_cpus_synced(CPUState *src_cpu,
+ 
+ void tlb_flush_page_bits_by_mmuidx_all_cpus_synced(CPUState *src_cpu,
+                                                    vaddr addr,
+-                                                   uint16_t idxmap,
++                                                   MMUIdxMap idxmap,
+                                                    unsigned bits)
+ {
+     tlb_flush_range_by_mmuidx_all_cpus_synced(src_cpu, addr, TARGET_PAGE_SIZE,
+-- 
+2.43.0
 
 

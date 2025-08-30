@@ -4,82 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C4F8CA0FFF
-	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 17:24:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6473FCA0EFF
+	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 17:24:58 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1usNyV-0006be-Fs; Sat, 30 Aug 2025 11:58:43 -0400
+	id 1usNz2-0007Gu-Bq; Sat, 30 Aug 2025 11:59:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1usERV-0007WW-AT
- for qemu-arm@nongnu.org; Sat, 30 Aug 2025 01:48:01 -0400
-Received: from mail-pl1-x62d.google.com ([2607:f8b0:4864:20::62d])
+ id 1usERl-0007a9-Na
+ for qemu-arm@nongnu.org; Sat, 30 Aug 2025 01:48:19 -0400
+Received: from mail-pg1-x52f.google.com ([2607:f8b0:4864:20::52f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1usERQ-00051q-TQ
- for qemu-arm@nongnu.org; Sat, 30 Aug 2025 01:47:58 -0400
-Received: by mail-pl1-x62d.google.com with SMTP id
- d9443c01a7336-24a1270e0deso1471285ad.1
- for <qemu-arm@nongnu.org>; Fri, 29 Aug 2025 22:47:56 -0700 (PDT)
+ id 1usERk-00054m-AR
+ for qemu-arm@nongnu.org; Sat, 30 Aug 2025 01:48:17 -0400
+Received: by mail-pg1-x52f.google.com with SMTP id
+ 41be03b00d2f7-b47174beb13so1957815a12.2
+ for <qemu-arm@nongnu.org>; Fri, 29 Aug 2025 22:48:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756532875; x=1757137675; darn=nongnu.org;
+ d=linaro.org; s=google; t=1756532895; x=1757137695; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=iNjN5B/BY+FR/sks3ZCMW62nI8kvCxcg9XIZHJr9QyU=;
- b=PJtOUDPBa+jktCGtw9JpcOa0CfYJFcj4ebfffeIlMWxkFX2XzUnLvhYpj2WZMvW05t
- zYG+kmSwguFLKlX2KdZIxFwSbOGhBPAMlVhXpiJ5pWv9IN9RSR3XHYWV6HNNpw+BgWx6
- G75tj7S3ouU68BQ8qNqA/dAudVB8t4foJDRrWzhE0ZYa4D9iAxrq4x44VKKBCcZkkLXD
- RdDgpqAm+dAEMEUDvncmqEhcxO8S4J3l3CgKYWeXYrNsGVpjDsdmFcdJN921YLR4Cq63
- 6qxaJzq+p03lqb+9E8qle2I9t1wErP+2+CznGZg/CRhXpzV1EChr0FiuoVzXz/PLwR8T
- Kx3Q==
+ bh=HzZct4djTFinECEhxm08t9VOK2GZ1btlbs9cto0ZOTw=;
+ b=ujL//ZX5dy2DBrZUewb+Wco+q7IC+DIg82q6sKmV3v6wap+n/hz0CUDrNZYO3M5rqW
+ tJu8wCw7G+K7dAGxiUjH4I+iYDO5eR6QMPt8XwPFRJVOUxebH5hxSTRFkGh6cnTHcIPx
+ sca5RS0xTG8AZF5FULDFqmczqdJWt08qqgnT8sswGDS6N5v6UeiYJnJjVma12MpblVKi
+ MEFZmkxMvVutEGOwKTbqcUcCK/pWqqofl+5Fu+z2CmfU2HBW2O35KpqGWxgfOGwr65TG
+ TRcPKjx/hFcmnJbaRt7+zUhq45gE5yMZBr5Um4EDS2t1FX47oAENzhtlasUx0j73l+BE
+ xqag==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756532875; x=1757137675;
+ d=1e100.net; s=20230601; t=1756532895; x=1757137695;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=iNjN5B/BY+FR/sks3ZCMW62nI8kvCxcg9XIZHJr9QyU=;
- b=HNzfVcps/xYDAGsDwg7w1TSXe6xbon2Y8Vu3DXiyT97Snd+U2kskDFnsCw1qyRSHu1
- dflyMqkn2/T9prvIFr4RAxjMlGv6muL7QP1b4xiH1FozxzpiU9iw257k3YY/MD0C9blf
- o8p5pB/fkefodtnCkPPig7Bd2X/FIo1faJbxZbS1COvIprEcyLWDJkNsUo7PdQYSnJ/k
- z8uLahF0U+oxuSw8Vt9UMY/tjaXWNaiaT+PObOaGabDuFJgXQeRJMsAW+1yV/I9S82Rg
- +Y+KlTI0gt26jtAuCz24mwZNXzuQfC/+Ph+u10DqWFnWuPqeLQaT6+fy9TmLJWLJCaAB
- B+oA==
-X-Gm-Message-State: AOJu0YyKUnTRoyvNG7ZzOoCKz7bTogm5c2Gf5HerDyEucIYI6c5el9zQ
- eH+dNSA/fS3Ukd/ls9MA6FjIQ0cUWmEfgyhV8WjCyaAWERXyVYDAC5yz0WM/ThvJ+qc=
-X-Gm-Gg: ASbGnctNx/3Zyn9XYr+oaOev4nqN6Om23HQ6jR4eGpDlymDRi/2GXZgRFjQBeHHL417
- TYTWrY2Umnr9UMMJpMH66q/mtLz9RZZxl5Ri8sCQ5WR0cpZcblw6ZaTnAlrZw04U9Ke2ugodeHU
- VyUjBjfXb2BGjudytg868YHrSn2skVxF0QJSidFlqOYMABpJVfgCwXToRipzni6eRD8Km203Cmt
- 0AVhT0QRop4pwy5FMuOg+LUPwAQ+cVXLc8UcJHAgWr+6zPX/aVDaRSw0BxjU1amg+/HjqIeVKqr
- iILDCdsV+fRPKeUFhuLFuy/LUGmE4Q7wQh6cpUVA5b7g+FlC20NEei2q6fX3sqGeLvUq7rSV4KX
- OXRQ2YlmPB/dscQJBGaN0ESzoyapLxMlee4ATx56n1nMDsK5IyXzlIyOOxqNohoPM5/NdwIl3lg
- ==
-X-Google-Smtp-Source: AGHT+IEBGSWjcfK6Ks7RA7n873UkXWNDdUCrCAzAOl09BvWV7VyI02DPLxwmMDP9r9dBfhuZaiyuaw==
-X-Received: by 2002:a17:902:ecc6:b0:248:b25d:ff2d with SMTP id
- d9443c01a7336-24944aed41cmr11694465ad.51.1756532875529; 
- Fri, 29 Aug 2025 22:47:55 -0700 (PDT)
+ bh=HzZct4djTFinECEhxm08t9VOK2GZ1btlbs9cto0ZOTw=;
+ b=OH30ewH/Um9cfRIdRiCzxjpzMO93MHNdUlUf4YaDiLNmODXNnQTdsjHj2fNYWJy6bB
+ qhBconzmdZbpeII7+GM0bbB1b5jGq0n2g+Pf8HYdxHul6jsPACfgHDc3k9pY68s0nsLV
+ FdsseRSe8+R9omUoXOFQfnUcq2j8MZx2CF3jReFnLVNA7T4k1bSfhVLKkLrk/IJFk3LC
+ uCIzgI7ciHBL4ATZnrS6In2c91w8MZkrIV4THHDtYxQvZ1vRWApAZuNI9KSuCJFY6le3
+ SWBL8+Pmxhue8OnLj6F/cezpZLyJ7eBll8kHpsPVvm7g9zpr/lzEPBXWKGWJgz9e2fRn
+ UKUg==
+X-Gm-Message-State: AOJu0Ywa8XbopT1tXQiqzFuJ7LeDxYXghZ6SKIJRxo6bKv6T1hYwp+xi
+ IWz0zAsOZbDjmBOE0JMhVxc70NHZKWzLOFJ1eC7wTYdocavFoMgbLUzVi6nvKunIOm3FJttWAth
+ zAVqRfyI=
+X-Gm-Gg: ASbGnctcfH3okiZxCWXM91cffo8gcJLczkMBinEDQJSDusmyW7Oa4ToPO7kjLvkHcZr
+ RgCZ5SfMxDLqhmj9gMLhBB8htuuV/WYblIhbfMMyYkZtSEWojnYYoVdNbdZfAEYz7QPZ/NXfSL9
+ tss0Gtg6MNXpsKi7XnXvdFAzaCDf/vxbi0wOsVt7iqeaQRBYb2KW4FRFB4q4FhgNF1jZ28zSh+L
+ AMdXVRcMabNRpyLR797EgQdfao0fjCaj6103Co4Lq5ReTnYaBjef5EYM4+pWKN6PM45HeVWPRKR
+ ujLuAxp1dfYmWTK2RhO6yxK48vwLBg9wRBR5Z25YMaLi23ORi46SWqtDyVjQpB1c/ie2dBGSK/D
+ a4rabw6yqZH9S+fgE4CetWZJrNc4daBB4wD+So8YzvVdBL8VFDga0vKOdPbZfKuE=
+X-Google-Smtp-Source: AGHT+IHpeDjwV5Bw27g3dn1AQkU/Um8wLUCAH86KqgCnVlqEv+7GOBtpsDhP8gnaqAdmHuX9as/hdw==
+X-Received: by 2002:a17:902:ec85:b0:248:d84a:91df with SMTP id
+ d9443c01a7336-24944a5c73cmr15620865ad.26.1756532894858; 
+ Fri, 29 Aug 2025 22:48:14 -0700 (PDT)
 Received: from stoup.. (122-150-204-179.dyn.ip.vocus.au. [122.150.204.179])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2490658999fsm40852715ad.112.2025.08.29.22.47.53
+ d9443c01a7336-2490658999fsm40852715ad.112.2025.08.29.22.48.12
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 29 Aug 2025 22:47:55 -0700 (PDT)
+ Fri, 29 Aug 2025 22:48:14 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v4 71/84] target/arm: Copy EXLOCKEn to EXLOCK on exception to
- the same EL
-Date: Sat, 30 Aug 2025 15:41:15 +1000
-Message-ID: <20250830054128.448363-72-richard.henderson@linaro.org>
+Subject: [PATCH v4 78/84] target/arm: Enable GCSPR_EL0 for read in user-mode
+Date: Sat, 30 Aug 2025 15:41:22 +1000
+Message-ID: <20250830054128.448363-79-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250830054128.448363-1-richard.henderson@linaro.org>
 References: <20250830054128.448363-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62d;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62d.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::52f;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x52f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -102,35 +101,27 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Per R_WTXBY, PSTATE.EXLOCK is 0 on an exception to a higher EL,
-and copied from EXLOCKEn otherwise.
-
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/helper.c | 9 +++++++--
- 1 file changed, 7 insertions(+), 2 deletions(-)
+ target/arm/cpu.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 2f19695d82..4bd96de926 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -9194,8 +9194,13 @@ static void arm_cpu_do_interrupt_aarch64(CPUState *cs)
-         } else {
-             addr += 0x600;
-         }
--    } else if (pstate_read(env) & PSTATE_SP) {
--        addr += 0x200;
-+    } else {
-+        if (pstate_read(env) & PSTATE_SP) {
-+            addr += 0x200;
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 1c2ff87b89..51d1956e28 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -317,6 +317,10 @@ static void arm_cpu_reset_hold(Object *obj, ResetType type)
+         env->cp15.mdscr_el1 |= 1 << 12;
+         /* Enable FEAT_MOPS */
+         env->cp15.sctlr_el[1] |= SCTLR_MSCEN;
++        /* For Linux, GCSPR_EL0 is always readable. */
++        if (cpu_isar_feature(aa64_gcs, cpu)) {
++            env->cp15.gcscr_el[0] = GCSCRE0_NTR;
 +        }
-+        if (is_a64(env) && (env->cp15.gcscr_el[new_el] & GCSCR_EXLOCKEN)) {
-+            new_mode |= PSTATE_EXLOCK;
-+        }
-     }
- 
-     switch (cs->exception_index) {
+ #else
+         /* Reset into the highest available EL */
+         if (arm_feature(env, ARM_FEATURE_EL3)) {
 -- 
 2.43.0
 

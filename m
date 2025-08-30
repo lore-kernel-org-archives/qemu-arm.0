@@ -4,87 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF29CCA0FFF
-	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 16:55:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26D12CA0FFF
+	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 16:55:40 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1usOeG-0007Qb-68; Sat, 30 Aug 2025 12:41:52 -0400
+	id 1usNxi-000504-7Z; Sat, 30 Aug 2025 11:57:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1urkjx-0005fV-Ky
- for qemu-arm@nongnu.org; Thu, 28 Aug 2025 18:05:05 -0400
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1usEQA-00078x-OE
+ for qemu-arm@nongnu.org; Sat, 30 Aug 2025 01:46:40 -0400
+Received: from mail-pg1-x532.google.com ([2607:f8b0:4864:20::532])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1urkjv-0003L2-9v
- for qemu-arm@nongnu.org; Thu, 28 Aug 2025 18:05:05 -0400
-Received: by mail-wm1-x32e.google.com with SMTP id
- 5b1f17b1804b1-45a1b0c52f3so8758305e9.3
- for <qemu-arm@nongnu.org>; Thu, 28 Aug 2025 15:05:02 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1usEQ8-0004nQ-SZ
+ for qemu-arm@nongnu.org; Sat, 30 Aug 2025 01:46:38 -0400
+Received: by mail-pg1-x532.google.com with SMTP id
+ 41be03b00d2f7-b49c1c130c9so1969912a12.0
+ for <qemu-arm@nongnu.org>; Fri, 29 Aug 2025 22:46:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756418701; x=1757023501; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=u4K+eWzK88L/l8rxX7vzJ5F8HAu28QXPtpWi+TLyHio=;
- b=jQB3eShYAk6Ts1CQf8MGPyEBJGweiC16IJHEJmVKyVUasW7308566zVSBN+cXppi+Z
- JtzZ1UiYZCY27GPvcLbYutZ6bo/Lje2wzNsoUuydDpwUI7T4hQ3s/ocHKflMHJohlrOv
- FjxFwEDlR0DdXjfQ/mu1BIh1usJAI8YRm1SkAV4t0u8i882J/+UGWpfvwYzcMK3s7dWG
- +zI0dXFxYKSLPdKXMpAQlSxCxPlp5N3M1edNd9i3sdEKj2gcjqrIw+m7CM9Zit55LmOu
- mh2D01/OfqSwCN/rtde3dbGXG93RAdWUpjDI+kER7NkIWOT8Mll5E0PZBi13krgxDxZW
- lGag==
+ d=linaro.org; s=google; t=1756532795; x=1757137595; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=HkpSbMfpbNsDrBnQ4JDG9oAjHTCy5iQvZkW4JhQwNdo=;
+ b=wOmQJDybrBwtsSKkb++VrQy7gdaWSp80w3fuaWLeBT/EFSKao7A8O+f9Maef3TBXms
+ 0PK4+J7xg01PpIjRISrfka//ZrrU2gC8Mfmk9xSWk/cY7bemGWvcxA9RI5GYrbm6eZSM
+ YGqpuheStJMs4kxeRiPg2TwfiPKIbZ4x80Xc8f2cJUeMJN22VHIWKBne0O7Qs2LY77/C
+ Yfze5qAuXPHibD4lz0NOtPu9QpFFm0ls4VF2rELrrzqmgp6yee0Afg4txyc0nLUyFQgx
+ dp9vs0+4Dupzw8qC/vG6yuuy2UzJL5/Bts9h4cIW9s0Ks2E9CXBH0QIFwnTc1SqoPrHf
+ EOZw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756418701; x=1757023501;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=u4K+eWzK88L/l8rxX7vzJ5F8HAu28QXPtpWi+TLyHio=;
- b=pSOi723rrT02RPyKjJZktXJN7sRAKsVG1yjbaplYclEOY7+JGam0sYwuX/h8aavgJk
- sZkv/1vmPqWMRCyzgbwOJZ2piGIDOKsZ5rSf54yKKRoRIlvH1hM50O/deFC2WeYdo5ow
- jcXsVUowHAh3u9rC7ayxPDBAeTrBks8Yf+yvyfpXCuUtNXy/g5DkjUNx4YvYfOandugr
- s0Ep0o8Ro46wV3fPF1AtUrKdpdHmyJCLGkwsfmW6F4hhuxuGPT4K5bQc7YB0uPbWy9w/
- QlVhSVYkqhRThv29iU0zRcZHpYzuotHsBiWL3FHLN2LXErhet5sFLHwevEe3cU0ygzDx
- Tksw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVPspcCLIaR34L3vgNBUUPTP7/YOFZFb62IOqTXUdsA/+7XcWbui950UDSsFcUTtyqthEYg7fsUJg==@nongnu.org
-X-Gm-Message-State: AOJu0Ywx+U0aU62s5d3v72u+TO+68anaLht5d63yzX+2DYtKnGL/SQux
- E0Mz7L0JIo37uH/UCvhsR2RbQ64z+a7m3cKSffdyrKsHXj1hbIYgVBZ5mQqQJ/v1ah0=
-X-Gm-Gg: ASbGncs1nvRFEsFfS0XaTypw9k+l779XQTXrxQAkHDjcFYSzsC8zFSmgxEYuMSujZuu
- yo/Y17ScSCEn1VLxkjVIP6PAafhD29TO3BsfOm0Lt7SsYCcG/FiVlOu+sCvJUm22E05TENS22NR
- Sz0eiDbzQ/TdC6ksPK0dZ2UcYZ//RIk61Men+O0BCbYbDSz6kwdyg+Vlo4YJcX7T6aLCRlcFxqv
- NnUPKdr4MOAOe1ms95rTSfWJDT+a/0ZHUOI/rUvEg9UxGWgbEY4cB9FRgaapKIeXNf6ILm/X4Ht
- +jHQmY8XvmhlpQ5rEld5E3n3hqJHOWgUDn11ksUjWHIgpKkzxXTcCDBweQbJjrbrR90ityhpAB4
- gJmBM+ymS8vnpDkdyJ8g2xScYoo40KbV5WkyhF/lWwIYAUMtelYBFzbBIbHz7sKY4Cg==
-X-Google-Smtp-Source: AGHT+IEW8/4xQuWFGgJtc1ykUI19JormtQ244fCXfHvBPu8h+HzsOIGsiBq7ltSgFPUiu6HPXxH2mw==
-X-Received: by 2002:a05:600c:4e90:b0:450:d37d:7c with SMTP id
- 5b1f17b1804b1-45b517cb8b3mr199084225e9.21.1756418700647; 
- Thu, 28 Aug 2025 15:05:00 -0700 (PDT)
-Received: from [192.168.69.207] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3cf276d5e5fsm814066f8f.27.2025.08.28.15.04.59
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 28 Aug 2025 15:04:59 -0700 (PDT)
-Message-ID: <03c4a8d0-6246-418a-b55b-d7047b7844c6@linaro.org>
-Date: Fri, 29 Aug 2025 00:04:58 +0200
+ d=1e100.net; s=20230601; t=1756532795; x=1757137595;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=HkpSbMfpbNsDrBnQ4JDG9oAjHTCy5iQvZkW4JhQwNdo=;
+ b=svpuWJWUGyJ9uZOaaqrsCtkVmprzkW3fuGtFAY4Nz2bwfERyWiLgPbshRFJn8zgptc
+ 2h/PUzX57UoX8oeLAVrXGG3tYB15RoUhQqb7xlNyO6EKoWewECLrBTZ/FpdBWoLmuB9A
+ 6oyieS5JhTYewjy1rp2fuoor24XSMOeCHbwgxjR1VnuxWLA5hxW9aE/EtSOLsXk/eJPz
+ djmomru6UfTKOKTU+4RLMoErpxHh3ERloTwJhnC1FEDyxYlc6wWJl5P2R2s4/xJ3OvMC
+ yuW4gTbvsnFEE3gLIUlFTHkPhbHSHsrBqAf5LC5u0H3BfLQ5kEObRG17Q5OHmVbaw1M7
+ 0pxw==
+X-Gm-Message-State: AOJu0YzhEkaheQbvDh2Poz5Z8RSkc0meRTdJgPlTcx+iyo0Ye0ZG302Q
+ DGd9SW7UFBdAA/7v33yUyMoFW7zywZhABvBnVqTYBP+AIzBOC+NEV9RLmb80UBm50s0AMSE0Xwn
+ 2hsBFJVk=
+X-Gm-Gg: ASbGncu6cKwLhGbI5HpPQhQBZTpG2Su9gqhzZwmpnFfxQQr32Q9lNztXnoRBxqxj1cQ
+ jKaStz2qPqVfHDCDnTQCdwxP2XsGEV77DdvrvqV+WJ6LTvGyhkhGxgNWmLmg+rsRoYT9MOvQqFe
+ 4nDloDZDNwjqP8JcmB4hPxV+jt6nk4X+2t+c2Ojhw1FKAXVG15jkJDGHB80J8TO7ajyjXq0FzQL
+ KXDxfP0RgxR8FG3g5766PzbI7UORq8LxULfAWtSjnS9HZogOjFrGtIt2yf9nRM6cq9Sx4AhGMik
+ fCPZdedVOBBZYSr8e1cy4HdT1IEk19NEvMuo3dorUlEdJyD/V2+LCqZSFOn/S7H2quLuU77TM/b
+ RJgPYUDWs7bAX2FGPW242CV2PWmKFeCS2zZGAR8itSRrWs/VcVE+kQJ7gJSGyArk=
+X-Google-Smtp-Source: AGHT+IHkpB4oi0x+n5Gndyo3YF00AytJ/T4RwkLqAD2OGXt4bi23j9TPQmqsaKS3wq4VNodUPWJiLQ==
+X-Received: by 2002:a17:903:1988:b0:248:cd0b:3434 with SMTP id
+ d9443c01a7336-24944b0d876mr14314415ad.36.1756532795446; 
+ Fri, 29 Aug 2025 22:46:35 -0700 (PDT)
+Received: from stoup.. (122-150-204-179.dyn.ip.vocus.au. [122.150.204.179])
+ by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-2490658999fsm40852715ad.112.2025.08.29.22.46.32
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 29 Aug 2025 22:46:35 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Subject: [PATCH v4 42/84] target/arm: Convert regime_is_stage2 to table
+Date: Sat, 30 Aug 2025 15:40:46 +1000
+Message-ID: <20250830054128.448363-43-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250830054128.448363-1-richard.henderson@linaro.org>
+References: <20250830054128.448363-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 40/47] hw/arm/xlnx-versal: add versal2 SoC
-To: Luc Michel <luc.michel@amd.com>, qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Francisco Iglesias <francisco.iglesias@amd.com>,
- "Edgar E . Iglesias" <edgar.iglesias@amd.com>,
- Alistair Francis <alistair@alistair23.me>,
- Frederic Konrad <frederic.konrad@amd.com>,
- Sai Pavan Boddu <sai.pavan.boddu@amd.com>
-References: <20250822151614.187856-1-luc.michel@amd.com>
- <20250822151614.187856-41-luc.michel@amd.com>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20250822151614.187856-41-luc.michel@amd.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32e.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::532;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x532.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -107,23 +103,82 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 22/8/25 17:16, Luc Michel wrote:
-> Add the Versal Gen 2 (versal2) version of the Versal SoC family.
-> This version embeds up to 8 Cortex-A78AE cores (split into 4 clusters)
-> and 10 Cortex-R52 cores (split into 5 clusters). The similarities
-> between versal and versal2 in term of architecture allow to reuse the
-> VersalMap structure to almost fully describe the implemented parts of
-> versal2.
-> 
-> The versal2 eFuse device differs quite a lot from the versal one and is
-> left as future work.
-> 
-> Signed-off-by: Luc Michel <luc.michel@amd.com>
-> Reviewed-by: Francisco Iglesias <francisco.iglesias@amd.com>
-> ---
->   include/hw/arm/xlnx-versal.h |  17 ++-
->   hw/arm/xlnx-versal.c         | 207 ++++++++++++++++++++++++++++++++---
->   2 files changed, 209 insertions(+), 15 deletions(-)
+This wasn't using a switch, but two comparisons.
+Convert it to arm_mmuidx_table for consistency.
 
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ target/arm/internals.h       | 5 -----
+ target/arm/mmuidx-internal.h | 8 ++++++++
+ target/arm/mmuidx.c          | 5 +++--
+ 3 files changed, 11 insertions(+), 7 deletions(-)
+
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index 68db7559b0..eb11389720 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -1027,11 +1027,6 @@ static inline void arm_call_el_change_hook(ARMCPU *cpu)
+     }
+ }
+ 
+-static inline bool regime_is_stage2(ARMMMUIdx mmu_idx)
+-{
+-    return mmu_idx == ARMMMUIdx_Stage2 || mmu_idx == ARMMMUIdx_Stage2_S;
+-}
+-
+ /* Return the SCTLR value which controls this address translation regime */
+ static inline uint64_t regime_sctlr(CPUARMState *env, ARMMMUIdx mmu_idx)
+ {
+diff --git a/target/arm/mmuidx-internal.h b/target/arm/mmuidx-internal.h
+index 55fba4aae2..1d948aa6f4 100644
+--- a/target/arm/mmuidx-internal.h
++++ b/target/arm/mmuidx-internal.h
+@@ -19,6 +19,7 @@ FIELD(MMUIDXINFO, 2RANGES, 6, 1)
+ FIELD(MMUIDXINFO, PAN, 7, 1)
+ FIELD(MMUIDXINFO, USER, 8, 1)
+ FIELD(MMUIDXINFO, STAGE1, 9, 1)
++FIELD(MMUIDXINFO, STAGE2, 10, 1)
+ 
+ extern const uint32_t arm_mmuidx_table[ARM_MMU_IDX_M + 8];
+ 
+@@ -84,4 +85,11 @@ static inline bool arm_mmu_idx_is_stage1_of_2(ARMMMUIdx idx)
+     return FIELD_EX32(arm_mmuidx_table[idx], MMUIDXINFO, STAGE1);
+ }
+ 
++/* Return true if this mmu index is stage 2 of a 2-stage translation. */
++static inline bool regime_is_stage2(ARMMMUIdx idx)
++{
++    tcg_debug_assert(arm_mmuidx_is_valid(idx));
++    return FIELD_EX32(arm_mmuidx_table[idx], MMUIDXINFO, STAGE2);
++}
++
+ #endif /* TARGET_ARM_MMUIDX_INTERNAL_H */
+diff --git a/target/arm/mmuidx.c b/target/arm/mmuidx.c
+index c5b43a5932..61a682e655 100644
+--- a/target/arm/mmuidx.c
++++ b/target/arm/mmuidx.c
+@@ -14,6 +14,7 @@
+ #define PAN    R_MMUIDXINFO_PAN_MASK
+ #define USER   R_MMUIDXINFO_USER_MASK
+ #define S1     R_MMUIDXINFO_STAGE1_MASK
++#define S2     R_MMUIDXINFO_STAGE2_MASK
+ 
+ const uint32_t arm_mmuidx_table[ARM_MMU_IDX_M + 8] = {
+     /*
+@@ -33,8 +34,8 @@ const uint32_t arm_mmuidx_table[ARM_MMU_IDX_M + 8] = {
+     [ARMMMUIdx_E30_0]           = EL(0) | REL(3),
+     [ARMMMUIdx_E30_3_PAN]       = EL(3) | REL(3) | PAN,
+ 
+-    [ARMMMUIdx_Stage2_S]        = REL(2),
+-    [ARMMMUIdx_Stage2]          = REL(2),
++    [ARMMMUIdx_Stage2_S]        = REL(2) | S2,
++    [ARMMMUIdx_Stage2]          = REL(2) | S2,
+ 
+     [ARMMMUIdx_Stage1_E0]       = REL(1) | R2 | S1 | USER,
+     [ARMMMUIdx_Stage1_E1]       = REL(1) | R2 | S1,
+-- 
+2.43.0
+
 

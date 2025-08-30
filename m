@@ -4,132 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC6C7CA0FFF
-	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 17:58:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 818BACA0EFF
+	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 17:58:46 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1usNeN-0004BD-Gj; Sat, 30 Aug 2025 11:37:57 -0400
+	id 1usNzv-0000ND-Eh; Sat, 30 Aug 2025 12:00:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armenon@redhat.com>)
- id 1us5NI-0006OM-Ta
- for qemu-arm@nongnu.org; Fri, 29 Aug 2025 16:07:04 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armenon@redhat.com>)
- id 1us5NH-0005DP-Do
- for qemu-arm@nongnu.org; Fri, 29 Aug 2025 16:07:04 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1756498022;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=LB9SXkQgOnyONEMwUfFwYKtNNWRhU5cy/RayQLcVHSg=;
- b=Tv57tOvrepVg0B8oOUht2AmdtnHRmjoUQXE+rLFvrJAFErjErE3o5HcWzrQzlbTOb2a/HS
- XauErmGSTw4Tgm2OwJssROQMOWmTBjIzbHt5svUSqy+IIw2kJfGEDJikNktoGguHlApasb
- BexvpK/K9Gvxbbvudh1C4u10yYj0G2g=
-Received: from mail-pj1-f70.google.com (mail-pj1-f70.google.com
- [209.85.216.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-495-Zr3uVG6dOX2LqbFr-AtpWw-1; Fri, 29 Aug 2025 16:06:59 -0400
-X-MC-Unique: Zr3uVG6dOX2LqbFr-AtpWw-1
-X-Mimecast-MFC-AGG-ID: Zr3uVG6dOX2LqbFr-AtpWw_1756498018
-Received: by mail-pj1-f70.google.com with SMTP id
- 98e67ed59e1d1-3275d2cb1cbso3805730a91.3
- for <qemu-arm@nongnu.org>; Fri, 29 Aug 2025 13:06:59 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1usEUz-0008Vb-Hh
+ for qemu-arm@nongnu.org; Sat, 30 Aug 2025 01:51:40 -0400
+Received: from mail-pf1-x42b.google.com ([2607:f8b0:4864:20::42b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1usEUx-0005kQ-SH
+ for qemu-arm@nongnu.org; Sat, 30 Aug 2025 01:51:37 -0400
+Received: by mail-pf1-x42b.google.com with SMTP id
+ d2e1a72fcca58-76e2ea933b7so2485078b3a.1
+ for <qemu-arm@nongnu.org>; Fri, 29 Aug 2025 22:51:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1756533094; x=1757137894; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=L1ak1ZU/AR0+1y4HNoJj/qDB25/smzJJgjU2bzP6iSw=;
+ b=UwjGaNhbb1bz3lMNrBfXQbc1M22tsZYfCVmHOY/psP2QES4Eg0viWo/cFxKorV6AzQ
+ srMUWGeNs581WQoVEvqLtGMLw9jGg9ugUxZVyyI9IdeXVJTY0G33J6RocNO4rM1fa5yR
+ rgchWLPaEX1Af9mCP0PPdg8obAgvBEzwarGA9PS4yTZvtQi54tqV9aX3ZYGyH92kJ+Qp
+ D7M5rLlUxAeOJnKBzhkcS0VsVx45z+x0qfnyjryL+ZU/chqCdZBC+uZ4HMRRgSNdz8d/
+ JeMp79LSgYirFzhlm3GOw1/jgH6EyUG7eDqQpdcyuKmo2Wq5yNAcmTuG3i3k8xUwl5Nr
+ FBLA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756498018; x=1757102818;
- h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
- :mime-version:subject:date:from:x-gm-message-state:from:to:cc
+ d=1e100.net; s=20230601; t=1756533094; x=1757137894;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=LB9SXkQgOnyONEMwUfFwYKtNNWRhU5cy/RayQLcVHSg=;
- b=lYXRL6u1RI5MZZIHfBjNXwyNM6oaRpAwLacd/+aGu+mHXGmswwbgHai1LmoGjM7YXJ
- Q7e7oS+5RKVqoElYt04BW+YriCy2+p4nNmY83SIXjaRmUvItUIm49mxfcYwWbF4aGdhf
- +mcKoOAwvv6sIknJJp+vYaNP57voMUiv99MJMBnbvfCqjYkgxQ1gweZ3YyUyVm6AOqhZ
- rjKGEPLM6vA2xDYBBhmHUG0+OScx0HvPQxcAfofdMcj+N1dv/FEUJOZZHP1kuJQwY256
- ui+faKatUugGjGFMdiXHHJGn3FUOSF+GjoWzq0S/pDOyb7htJCVfVfHXzT5bUmCthH4M
- 3o8w==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXOHK/BrZMAQ8U2qXyIoeI1hEwTATDN5fiTLDCcHknxV8dH3SBTeuPWfQbmwuIL4ql+C6GcTuPxXw==@nongnu.org
-X-Gm-Message-State: AOJu0YyHeNlJnSI6CKYJqqzlCMoU4T40x117Y15F1GaxaOtDEtSpgCtV
- w+Q/XCqDpSmquLMYhdG2jp2i0UHpdy3pYQnD38s9szLgZ47ThyY/NP+TcmftmLX1OhuInC9cFZZ
- 1Sc2Bhs5qM/cGvzgURMJCAHFTXrxbfExqzPL8tTvGJTJsLE+Wh31nGA==
-X-Gm-Gg: ASbGncuvIAIkwErpneODTZIARBFZk3RjLIS2NM2VS07tEOcXvwTSnQBBFbNt9GRVVY2
- jWoE2dhXyl+Fsbp0b9vtDM2rnCOyZFsYoDxgIAClGbn7F6oKJLCPwbf/vXGdgRODc6HBZUf8QhM
- 9rJlGXCCHke1ijNEcanwH3KZpQS9TBTuGIaJFgDpJtmpM7jjTS5vFcTeO0kYZpanehcyYDt1d9w
- XGXyf4gXwhCBdDwPgpPPqKQz0jqDdXbGQZUoW0tVjhxAp3tdW1/iMukPK/I6Q1mgjgkHJIuX7di
- vpBAaXP+20+ZNBmE6dgOTjg0pm45olQS4EN2ZfZCtfF7fv9DJGUCMw==
-X-Received: by 2002:a17:90b:3ec3:b0:327:9b36:87cf with SMTP id
- 98e67ed59e1d1-3279b36897amr11823635a91.30.1756498018303; 
- Fri, 29 Aug 2025 13:06:58 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGzMPgOWkW3Z/4cS8GAbpm9n7G+CRS0xMZOkYARj7xvIwczkHhobX9mgYoAfwIenaYfThB81w==
-X-Received: by 2002:a17:90b:3ec3:b0:327:9b36:87cf with SMTP id
- 98e67ed59e1d1-3279b36897amr11823606a91.30.1756498017874; 
- Fri, 29 Aug 2025 13:06:57 -0700 (PDT)
-Received: from armenon-kvm.bengluru.csb ([49.47.195.108])
+ bh=L1ak1ZU/AR0+1y4HNoJj/qDB25/smzJJgjU2bzP6iSw=;
+ b=i1VLuyJF/Y0hd5U7FJ+8i7feRVM9b2pCNzpY4vSHfu+qA0qPVgPKPp13XiuPpG4ERA
+ OGdWMXaqJY8HcaRI7F+6vV/Ey1uDO8i+KdlvekD1Oe9waDe8hdG0xME6p7w6+IrTkuM7
+ U4Thxd1HyA4v9V8bWWYQ6fXobty1skf/6aPphQxhboWF5uEDzb6xyL89Gewl06KCxbWI
+ 6w7SegSGrh1BZ9x6GEKVFML17QirDAUOfroxD86jpMdrFq6OjeldOKwfm1nRkvvFzPCM
+ FRNr6+58vi0fWb5i4UV8D19/4288UvI4QqPBjYzZ/5IgdM9Qf6M0mQ3CyCpdJraQrvNX
+ JOrQ==
+X-Gm-Message-State: AOJu0YxvDbacOZKv1VYdM1eCL2Dn418PZVI9i9jfaqwh9cG/hiPq900s
+ 6dFgtkzFaZKRhEuRTngsVHB1rCPbC9MzMzPV4qeAvZuvnaeOUELxhqvcZQs2nN8T+qE=
+X-Gm-Gg: ASbGncvt2POtbJ1qxQlxx2Kai6WZoeW8283R8dVZFXJbuJ782Ql/9Gd8wI/avaJ+chr
+ yIAI14pv9hGujfIaezneo+yYum6c9i3DEmI7C07cpJycPcg+z8tTvLeDXC1gH8S9EA7Dn/0K/Y7
+ umTshOtQ+ijR6JHtPvYKmYuSo76I7iIIOIXuUn3daHW72j/TOuX+HgfT9DxdAkcxFFtn6Xw4MoT
+ b4lgUdztBUM19LHEZGbzFoUGGWy0B8RmDudxK0Q3LRxZL/3SwpWnxLozzsFPKIlhvC3IzKB1u5S
+ /EBR+9YXnA0DhrlnSrPJian1Epj3c9tvi9M9ADTLVfxG3S/eSiaL9ICFH+JE623/hbe5r5GP260
+ 60nCg247sTdeunYA0kSC1C1sz4WOw76984SDCzJmD/dBZY1yqege57orwdYDEq2IqRQd9tThjyS
+ wbD+1zwQ==
+X-Google-Smtp-Source: AGHT+IES2RaBv1ArD50wML2GJ64TXKFFhPNOkZ9drEUGnKjBtxe1oAJGtvMHelp/yPRqATUqF/A4Mw==
+X-Received: by 2002:a05:6a00:8904:b0:746:195b:bf1c with SMTP id
+ d2e1a72fcca58-7723c50237dmr1586766b3a.10.1756533094526; 
+ Fri, 29 Aug 2025 22:51:34 -0700 (PDT)
+Received: from stoup.. (122-150-204-64.dyn.ip.vocus.au. [122.150.204.64])
  by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-327d8f66f16sm3570543a91.0.2025.08.29.13.06.49
+ d2e1a72fcca58-7722a2b7d10sm4198475b3a.33.2025.08.29.22.51.32
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 29 Aug 2025 13:06:57 -0700 (PDT)
-From: Arun Menon <armenon@redhat.com>
-Date: Sat, 30 Aug 2025 01:32:00 +0530
-Subject: [PATCH v13 20/27] migration: Return -1 on memory allocation
- failure in ram.c
-MIME-Version: 1.0
-Message-Id: <20250830-propagate_tpm_error-v13-20-a4e777b7eb2c@redhat.com>
-References: <20250830-propagate_tpm_error-v13-0-a4e777b7eb2c@redhat.com>
-In-Reply-To: <20250830-propagate_tpm_error-v13-0-a4e777b7eb2c@redhat.com>
+ Fri, 29 Aug 2025 22:51:34 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: Peter Xu <peterx@redhat.com>, Fabiano Rosas <farosas@suse.de>, 
- =?utf-8?q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>, 
- Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>, 
- Dmitry Osipenko <dmitry.osipenko@collabora.com>, 
- "Michael S. Tsirkin" <mst@redhat.com>, 
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
- Cornelia Huck <cohuck@redhat.com>, Halil Pasic <pasic@linux.ibm.com>, 
- Eric Farman <farman@linux.ibm.com>, Thomas Huth <thuth@redhat.com>, 
- Christian Borntraeger <borntraeger@linux.ibm.com>, 
- Matthew Rosato <mjrosato@linux.ibm.com>, 
- Richard Henderson <richard.henderson@linaro.org>, 
- David Hildenbrand <david@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>, 
- Nicholas Piggin <npiggin@gmail.com>, 
- Harsh Prateek Bora <harshpb@linux.ibm.com>, 
- Paolo Bonzini <pbonzini@redhat.com>, Fam Zheng <fam@euphon.net>, 
- Alex Williamson <alex.williamson@redhat.com>, 
- =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>, 
- Steve Sistare <steven.sistare@oracle.com>, 
- =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>, 
- qemu-s390x@nongnu.org, qemu-ppc@nongnu.org, 
- Hailiang Zhang <zhanghailiang@xfusion.com>, 
- Stefan Berger <stefanb@linux.vnet.ibm.com>, 
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
- Arun Menon <armenon@redhat.com>
-X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1640; i=armenon@redhat.com;
- h=from:subject:message-id; bh=LbrL/8rC1j/1roMz22wMr5Cto4+KiN2vW7a+UxDKaz0=;
- b=owGbwMvMwCWWVaVqcZPfqI/xtFoSQ8Ymdr8jL2r0mK/qrVDmvbC9yLNL/Kc7f3X+b+HDQobhe
- WXa/lc7SlkYxLgYZMUUWRq+Bsg2BRRGRNq+vA4zh5UJZAgDF6cATOShNcN/v8883qyLDXu2fly7
- 76prgU3L0pl+rKd92cpPB2denJk7mZGhU3x6wwTVXzfMX51/dt25ozXgnUGPVp5Qu0XU1NW+67L
- 4AQ==
-X-Developer-Key: i=armenon@redhat.com; a=openpgp;
- fpr=80F5501D82507158593DE9D76A7A2538D90F328E
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 2FBqkiAK6ppP4Q7C-AumozjrrlFcicFi02zFNngk_3g_1756498018
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=armenon@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Cc: qemu-arm@nongnu.org,
+	Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Subject: [PATCH v4 84/84] tests/tcg/aarch64: Add gcsss
+Date: Sat, 30 Aug 2025 15:41:28 +1000
+Message-ID: <20250830054128.448363-85-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250830054128.448363-1-richard.henderson@linaro.org>
+References: <20250830054128.448363-1-richard.henderson@linaro.org>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42b;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -145,47 +101,128 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The function colo_init_ram_cache() currently returns -errno if
-qemu_anon_ram_alloc() fails. However, the subsequent cleanup loop that
-calls qemu_anon_ram_free() could potentially alter the value of errno.
-This would cause the function to return a value that does not accurately
-represent the original allocation failure.
+Validate stack switching and recursion depth.
 
-This commit changes the return value to -1 on memory allocation failure.
-This ensures that the return value is consistent and is not affected by
-any errno changes that may occur during the free process.
-
-Reviewed-by: Fabiano Rosas <farosas@suse.de>
-Reviewed-by: Peter Xu <peterx@redhat.com>
-Signed-off-by: Arun Menon <armenon@redhat.com>
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- migration/ram.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ tests/tcg/aarch64/gcs.h           |  9 ++++
+ tests/tcg/aarch64/gcsss.c         | 74 +++++++++++++++++++++++++++++++
+ tests/tcg/aarch64/Makefile.target |  2 +-
+ 3 files changed, 84 insertions(+), 1 deletion(-)
+ create mode 100644 tests/tcg/aarch64/gcsss.c
 
-diff --git a/migration/ram.c b/migration/ram.c
-index 6a0dcc04f436524a37672c41c38f201f06773374..163265a57f26fb1dc88d9797629d58c278e9afb7 100644
---- a/migration/ram.c
-+++ b/migration/ram.c
-@@ -3575,6 +3575,8 @@ static void colo_init_ram_state(void)
-  * colo cache: this is for secondary VM, we cache the whole
-  * memory of the secondary VM, it is need to hold the global lock
-  * to call this helper.
-+ *
-+ * Returns zero to indicate success or -1 on error.
-  */
- int colo_init_ram_cache(void)
- {
-@@ -3594,7 +3596,7 @@ int colo_init_ram_cache(void)
-                         block->colo_cache = NULL;
-                     }
-                 }
--                return -errno;
-+                return -1;
-             }
-             if (!machine_dump_guest_core(current_machine)) {
-                 qemu_madvise(block->colo_cache, block->used_length,
-
+diff --git a/tests/tcg/aarch64/gcs.h b/tests/tcg/aarch64/gcs.h
+index 99cb4d4e38..e821963cb8 100644
+--- a/tests/tcg/aarch64/gcs.h
++++ b/tests/tcg/aarch64/gcs.h
+@@ -69,3 +69,12 @@
+ 
+ #define gcspr() \
+     ({ uint64_t *r; asm volatile("mrs %0, s3_3_c2_c5_1" : "=r"(r)); r; })
++
++#define gcsss1(val) \
++    do {                                                                     \
++        asm volatile("sys #3, c7, c7, #2, %0" : : "r"(val) : "memory");      \
++    } while (0)
++
++#define gcsss2() \
++    ({ uint64_t *r;                                                          \
++       asm volatile("sysl %0, #3, c7, c7, #3" : "=r"(r) : : "memory"); r; })
+diff --git a/tests/tcg/aarch64/gcsss.c b/tests/tcg/aarch64/gcsss.c
+new file mode 100644
+index 0000000000..9550c68e7e
+--- /dev/null
++++ b/tests/tcg/aarch64/gcsss.c
+@@ -0,0 +1,74 @@
++/* SPDX-License-Identifier: GPL-2.0-or-later */
++
++#include "gcs.h"
++
++#define IN_PROGRESS(X)  ((uint64_t)(X) | 5)
++#define CAP(X)          (((uint64_t)(X) & ~0xfff) + 1)
++
++static uint64_t * __attribute__((noinline)) recurse(size_t index)
++{
++    if (index == 0) {
++        return gcspr();
++    }
++    return recurse(index - 1);
++}
++
++int main()
++{
++    void *tmp;
++    uint64_t *alt_stack, *alt_cap;
++    uint64_t *orig_pr, *orig_cap;
++    uint64_t *bottom;
++    size_t pagesize = getpagesize();
++    size_t words;
++
++    enable_gcs(0);
++    orig_pr = gcspr();
++
++    /* Allocate a guard page before and after. */
++    tmp = mmap(0, 3 * pagesize, PROT_NONE, MAP_ANON | MAP_PRIVATE, -1, 0);
++    assert(tmp != MAP_FAILED);
++
++    /* map_shadow_stack won't replace existing mappings */
++    munmap(tmp + pagesize, pagesize);
++
++    /* Allocate a new stack between the guards. */
++    alt_stack = (uint64_t *)
++        syscall(__NR_map_shadow_stack, tmp + pagesize, pagesize,
++                SHADOW_STACK_SET_TOKEN);
++    assert(alt_stack == tmp + pagesize);
++
++    words = pagesize / 8;
++    alt_cap = alt_stack + words - 1;
++
++    /* SHADOW_STACK_SET_TOKEN set the cap. */
++    assert(*alt_cap == CAP(alt_cap));
++
++    /* Swap to the alt stack, one step at a time. */
++    gcsss1(alt_cap);
++
++    assert(gcspr() == alt_cap);
++    assert(*alt_cap == IN_PROGRESS(orig_pr));
++
++    orig_cap = gcsss2();
++
++    assert(orig_cap == orig_pr - 1);
++    assert(*orig_cap == CAP(orig_cap));
++    assert(gcspr() == alt_stack + words);
++
++    /* We should be able to use the whole stack. */
++    bottom = recurse(words - 1);
++    assert(bottom == alt_stack);
++
++    /* We should be back where we started. */
++    assert(gcspr() == alt_stack + words);
++
++    /* Swap back to the original stack. */
++    gcsss1(orig_cap);
++    tmp = gcsss2();
++
++    assert(gcspr() == orig_pr);
++    assert(tmp == alt_cap);
++
++    exit(0);
++}
+diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
+index c6f401c317..b858f8692e 100644
+--- a/tests/tcg/aarch64/Makefile.target
++++ b/tests/tcg/aarch64/Makefile.target
+@@ -76,7 +76,7 @@ $(SME_TESTS): CFLAGS += $(CROSS_AS_HAS_ARMV9_SME)
+ endif
+ 
+ # GCS Tests
+-GCS_TESTS += gcsstr gcspushm
++GCS_TESTS += gcsstr gcspushm gcsss
+ AARCH64_TESTS += $(GCS_TESTS)
+ $(GCS_TESTS): gcs.h
+ 
 -- 
-2.51.0
+2.43.0
 
 

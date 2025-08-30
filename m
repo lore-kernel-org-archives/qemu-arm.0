@@ -4,81 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 112ABCA0EFF
-	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 16:26:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EAD40CA1000
+	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 16:26:44 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1usNtm-0008Cy-VV; Sat, 30 Aug 2025 11:53:51 -0400
+	id 1usNum-0002bj-Bc; Sat, 30 Aug 2025 11:54:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1usELa-0005q3-IH
- for qemu-arm@nongnu.org; Sat, 30 Aug 2025 01:41:55 -0400
-Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e])
+ id 1usELP-0005o0-W8
+ for qemu-arm@nongnu.org; Sat, 30 Aug 2025 01:41:45 -0400
+Received: from mail-pj1-x102b.google.com ([2607:f8b0:4864:20::102b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1usELZ-00044g-1Z
- for qemu-arm@nongnu.org; Sat, 30 Aug 2025 01:41:54 -0400
-Received: by mail-pj1-x102e.google.com with SMTP id
- 98e67ed59e1d1-3280264a6e8so685276a91.3
- for <qemu-arm@nongnu.org>; Fri, 29 Aug 2025 22:41:52 -0700 (PDT)
+ id 1usELO-00041X-2m
+ for qemu-arm@nongnu.org; Sat, 30 Aug 2025 01:41:43 -0400
+Received: by mail-pj1-x102b.google.com with SMTP id
+ 98e67ed59e1d1-3278efed3b0so2120018a91.2
+ for <qemu-arm@nongnu.org>; Fri, 29 Aug 2025 22:41:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756532511; x=1757137311; darn=nongnu.org;
+ d=linaro.org; s=google; t=1756532500; x=1757137300; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Iwhk1HGVIv53xO1tUgspGYJaTSrp9MM6iDeDwh0Ulxk=;
- b=AyQXkTAl6OXTW0QOwlV/XAotH1QOusAY1cx2LSdCCZ3EzQcxqJR7ww1+jLNXzf24MO
- UOweL+iC7ID86FqvMeSJ90keB60K2XIj0e844ZIvMKgT6XjMx5jJnBJ8ldL8m/WXFghQ
- IVAxTYAAT1FeP9892vHMqvVswlMweJLJjWvm0WNSBzW0IaAuFytb4yXtQ1HSTTFpblj4
- FMaPw/jFo/ohyDqriAnBfUOo9htcZClUY7zPa2XBZ4I3Rlk8S3xrdgnDRVk4DQ0d9cKI
- Iaf5onB3h48slKGtkKxeSGWKke4B3Pwv7NJFUvc7bdMKD3nKu0WPPzku28JX8Uws+U0f
- dufQ==
+ bh=OvWWI/Hwe2tsOELzBbjd3DP4kSVprV8wMOEgKmW2NGs=;
+ b=Z0j1qQ77vkJ+3TY2cKdJCSvL9SItqspC0XPiotEY7BmCBoQ/8OAQXwKF0yY5QKIwGq
+ KV45o7zuzPcUx9MmH5X7wa58pFcU48sQuEsYI0GoM7EHW2DkMsXIjRJ6suBgDSAvI8nZ
+ RpgMpHsJq1QAimF3la0ZCmjMgJSy9z1X2PcPJTDuuLZ2hHokkiyUbSkvA6XozuRv/kUP
+ 11WjW9cCY/aicGlxJzhjELjcxYLCfdgHzPnkgzBr4z+mMdNVZsmFBuQ5uiHVhn0zo5Mh
+ hhKfgMYTiWT2nLiokuAPy/3npWMbYKV1zohxJNMY5f0yq+EgCVN/ACrQ5Bopt7b4hQGX
+ VhKA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756532511; x=1757137311;
+ d=1e100.net; s=20230601; t=1756532500; x=1757137300;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=Iwhk1HGVIv53xO1tUgspGYJaTSrp9MM6iDeDwh0Ulxk=;
- b=ZrdKndA+y5eTHQxJ6chGJjNaBfZe+T4YTXYA/cc2ITnVnuq7LFxK5tkKjmKfdsTJpa
- NBeGF3q438Rcge1R/+/hiU2c+S0wNK3MzY+FEIhGKzsmQ6gZZ/jyVD/E4BTlt1KPHwju
- nU+CSrbYqvaYxn/HLZaVRlfan9p6AsHcSbWb1w7uYJrL3ztmdvEzUfJacSesh93IQAP5
- r3GvL4Y/nw04CGeO9J449nbiGrSYtIwsMiAXLGFhsFAXV8L+spOAlyBHPz+L7pdyYyL1
- 8dc2KXHZG+tGf3yBVIr1UJmvsJ5GsB4IBUqkYtWdB2YuemZEZkkkTdLmzxXWkZtiJqrP
- d8+Q==
-X-Gm-Message-State: AOJu0YyKWAbbXy1ETE8g6AsZTQKjJMU5/GL2bB9Z+xIMkJDh5tLURJrO
- MgkNpyk0sk2sE8HYPP5SUyW9zt6jMZvb5Uu4zVPthZvaaunuAM//y409TFK74PkkHMw=
-X-Gm-Gg: ASbGncucbWWLANfWkpxeFQz/Mj3Kg2mlKnapJwQT6Gi6Et8XdjRktgk8XPz2KqGJ65z
- ZkGuU4M6Jhucl9y4sxE8bHRqinahB1uEiSWsCBOiDq6tkSy4D2x0xeAaWdOWd9eI0aT2F8dpdRk
- YZwyNemFnIm4jzMiKWHtjQM6J/BgAqWQH8l9zhWUSKIMw7GagV/LC63f0ghPWPQjFtK0E1OVw5q
- XwFgi78cE9Et46rZOMcZvQSbQpyVyrHRZGlFO3d25ZnFe1P1mZyE57Sj5GqNEs/aGOR4ZLstpTf
- BmnKk293m82vCixTUBaXVWeiH6cX5qtrurqrLaJTb0S5RIskMpT55DMkdNEPU4wlexrE24m/9hg
- 4Oj8coFllGIj38+PJeCIRAet0aLiHSIemyiS4IKRMf5Agi8o0WUI4mmtvttCgs+WlcGvJbiY=
-X-Google-Smtp-Source: AGHT+IEZ+RJB4/2vLFUV6OggUWyyd9VqDey0ACNrvjRIeKm1Hd+dpw/QQzkDKYMxJxvc+vIEmtfjBQ==
-X-Received: by 2002:a17:90b:4b8d:b0:327:c9d5:257e with SMTP id
- 98e67ed59e1d1-3281543c7a0mr1756181a91.16.1756532511576; 
- Fri, 29 Aug 2025 22:41:51 -0700 (PDT)
+ bh=OvWWI/Hwe2tsOELzBbjd3DP4kSVprV8wMOEgKmW2NGs=;
+ b=G/OHaAoon/FSeBiIwWWsaYNiNjaiOeJ8OTcX0sw9ysbBxHtHZ2lv8b88BPrQlDBkFF
+ R7Hs7UTwukclPpBgpW04hxwKqCCcua3aLjQbwAGdFPDJ+nNf5GwRDdgEtbPJioSQD+4Y
+ HZaeAP6PqAfD7UxhcMo5UuSvb7sW7JQpR426YvmbpSh2PNg3LvF+6QIlmLtAp5dqf2+m
+ SKjAYXpN1KWIns3HquBtj8iA4UqLuu25s3jV35uejnhDlWBhoBrZz+G+P8CQ1KlWoejY
+ zgVY5mLCpSfn83XfWGOJwPolKwN77kCRpC5m+GtN2dT4fAdqC51AVNXDBCkd7nacc0gw
+ XQJg==
+X-Gm-Message-State: AOJu0Yx67dDQejZhxyBkEMpjih/A2TDxHjGbDu3xkwPXmYKdBjzQvgdQ
+ JJAhVSSxLgGFPeJ2Oj4qN9mwxsIwl+wpTRpHol9uwEn+ERJoSJUnyPipzHAXYLkWxe4=
+X-Gm-Gg: ASbGncs86q42dNGCLjE9qcsGR0P5Twt8BBct8nUzM1M1dB+6U9sJl9bX70umk6aEYMV
+ mdhIa5orQl6j7e3yZS2+mYBfQ4SbsB7x+vxiv6UrNT8g9frIv/4d59Tuq31j7J8Ua0KloJl8iSE
+ CG+nMvOwAa8Olqp8CVnECvLDRdI/Y1qZogGjD4vR80zNXr6sSm679Ph+eCul5Wvd9mFdPtzcSf2
+ ksXeivkhxi7d9hCK8La2MXjYOLI+Bv+N9cD69AEUM1L+cu9MwuLXJHu4mj++7KrY+oUVEkc5MM6
+ JXzibVcx2MSk1Z/5nNluvoOS9wUaymUu+PWJgcPKvnTdLchcYHrRFV2or6rw/IQ90vQMkgAZU6F
+ hrp+wetccAXrvVyhBF/Nwbk/BjvmGpmluoGYt1kHy8CKvNPz4rB37+Zi9+l8h8DaKdfqYc+M=
+X-Google-Smtp-Source: AGHT+IH2SeyC/Bq4iCcnct16kijzpG5niptNeAgVpdvmuzGUfNz08ys8fOOQ5mePwjG0aThKb9FGUg==
+X-Received: by 2002:a17:90b:270a:b0:327:d8e3:1b9e with SMTP id
+ 98e67ed59e1d1-32815412c60mr1659563a91.3.1756532500430; 
+ Fri, 29 Aug 2025 22:41:40 -0700 (PDT)
 Received: from stoup.. (122-150-204-48.dyn.ip.vocus.au. [122.150.204.48])
  by smtp.gmail.com with ESMTPSA id
- 41be03b00d2f7-b4d96829a66sm2435905a12.6.2025.08.29.22.41.49
+ 41be03b00d2f7-b4d96829a66sm2435905a12.6.2025.08.29.22.41.38
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 29 Aug 2025 22:41:51 -0700 (PDT)
+ Fri, 29 Aug 2025 22:41:40 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v4 06/84] target/arm: Skip permission check from
- arm_cpu_get_phys_page_attrs_debug
-Date: Sat, 30 Aug 2025 15:40:10 +1000
-Message-ID: <20250830054128.448363-7-richard.henderson@linaro.org>
+Subject: [PATCH v4 02/84] linux-user/aarch64: Check syndrome for EXCP_UDEF
+Date: Sat, 30 Aug 2025 15:40:06 +1000
+Message-ID: <20250830054128.448363-3-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250830054128.448363-1-richard.henderson@linaro.org>
 References: <20250830054128.448363-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102e;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102e.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102b;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -101,28 +100,117 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Do not require read permission when translating addresses
-for debugging purposes.
+Note that we have been passing the incorrect code for most
+exception codes: uncategorized (do_el0_undef),
+systemregistertrap (do_el0_sys), smetrap (do_sme_acc),
+btitrap (do_el0_bti) and illegalstate (bad_el0_sync).
+Only pacfail uses ILL_ILLOPN (do_el0_fpac).
+
+Note that EC_MOP (do_el0_mops) ought not signal at all.
+For now, preserve existing behavior signalling ILL_ILLOPN.
+
+List all other exception codes and document why they do
+not apply to user-only.
 
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/ptw.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ linux-user/aarch64/cpu_loop.c | 75 ++++++++++++++++++++++++++++++++++-
+ 1 file changed, 74 insertions(+), 1 deletion(-)
 
-diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-index d37c0ce0f1..5d85610de2 100644
---- a/target/arm/ptw.c
-+++ b/target/arm/ptw.c
-@@ -3646,7 +3646,7 @@ static hwaddr arm_cpu_get_phys_page(CPUARMState *env, vaddr addr,
-         .in_mmu_idx = mmu_idx,
-         .in_space = arm_mmu_idx_to_security_space(env, mmu_idx),
-         .in_debug = true,
--        .in_prot_check = PAGE_READ,
-+        .in_prot_check = 0,
-     };
-     GetPhysAddrResult res = {};
-     ARMMMUFaultInfo fi = {};
+diff --git a/linux-user/aarch64/cpu_loop.c b/linux-user/aarch64/cpu_loop.c
+index 3b2782581b..7ad26316de 100644
+--- a/linux-user/aarch64/cpu_loop.c
++++ b/linux-user/aarch64/cpu_loop.c
+@@ -65,6 +65,79 @@ static void signal_for_exception(CPUARMState *env, vaddr addr)
+         si_code = TARGET_BUS_ADRALN;
+         break;
+ 
++    case EC_UNCATEGORIZED:         /* E.g. undefined instruction */
++    case EC_SYSTEMREGISTERTRAP:    /* E.g. inaccessible register */
++    case EC_SMETRAP:               /* E.g. invalid insn in streaming state */
++    case EC_BTITRAP:               /* E.g. invalid guarded branch target */
++    case EC_ILLEGALSTATE:
++        /*
++         * Illegal state happens via an ERET from a privileged mode,
++         * so is not normally possible from user-only.  However, gdbstub
++         * is not prevented from writing CPSR_IL, aka PSTATE.IL, which
++         * would generate a trap from the next translated block.
++         * In the kernel, default case -> el0_inv -> bad_el0_sync.
++         */
++        si_signo = TARGET_SIGILL;
++        si_code = TARGET_ILL_ILLOPC;
++        break;
++
++    case EC_PACFAIL:
++        si_signo = TARGET_SIGILL;
++        si_code = TARGET_ILL_ILLOPN;
++        break;
++
++    case EC_MOP:
++        /*
++         * FIXME: The kernel fixes up wrong-option exceptions.
++         * For QEMU linux-user mode, you can only get these if
++         * the process is doing something silly (not executing
++         * the MOPS instructions in the required P/M/E sequence),
++         * so it is not a problem in practice that we do not.
++         *
++         * We ought ideally to implement the same "rewind to the
++         * start of the sequence" logic that the kernel does in
++         * arm64_mops_reset_regs(). In the meantime, deliver
++         * the guest a SIGILL, with the same ILLOPN si_code
++         * we've always used for this.
++         */
++        si_signo = TARGET_SIGILL;
++        si_code = TARGET_ILL_ILLOPN;
++        break;
++
++    case EC_WFX_TRAP:              /* user-only WFI implemented as NOP */
++    case EC_CP15RTTRAP:            /* AArch32 */
++    case EC_CP15RRTTRAP:           /* AArch32 */
++    case EC_CP14RTTRAP:            /* AArch32 */
++    case EC_CP14DTTRAP:            /* AArch32 */
++    case EC_ADVSIMDFPACCESSTRAP:   /* user-only does not disable fpu */
++    case EC_FPIDTRAP:              /* AArch32 */
++    case EC_PACTRAP:               /* user-only does not disable pac regs */
++    case EC_BXJTRAP:               /* AArch32 */
++    case EC_CP14RRTTRAP:           /* AArch32 */
++    case EC_AA32_SVC:              /* AArch32 */
++    case EC_AA32_HVC:              /* AArch32 */
++    case EC_AA32_SMC:              /* AArch32 */
++    case EC_AA64_SVC:              /* generates EXCP_SWI */
++    case EC_AA64_HVC:              /* user-only generates EC_UNCATEGORIZED */
++    case EC_AA64_SMC:              /* user-only generates EC_UNCATEGORIZED */
++    case EC_SVEACCESSTRAP:         /* user-only does not disable sve */
++    case EC_ERETTRAP:              /* user-only generates EC_UNCATEGORIZED */
++    case EC_GPC:                   /* user-only has no EL3 gpc tables */
++    case EC_INSNABORT_SAME_EL:     /* el0 cannot trap to el0 */
++    case EC_DATAABORT_SAME_EL:     /* el0 cannot trap to el0 */
++    case EC_SPALIGNMENT:           /* sp alignment checks not implemented */
++    case EC_AA32_FPTRAP:           /* fp exceptions not implemented */
++    case EC_AA64_FPTRAP:           /* fp exceptions not implemented */
++    case EC_SERROR:                /* user-only does not have hw faults */
++    case EC_BREAKPOINT:            /* user-only does not have hw debug */
++    case EC_BREAKPOINT_SAME_EL:    /* user-only does not have hw debug */
++    case EC_SOFTWARESTEP:          /* user-only does not have hw debug */
++    case EC_SOFTWARESTEP_SAME_EL:  /* user-only does not have hw debug */
++    case EC_WATCHPOINT:            /* user-only does not have hw debug */
++    case EC_WATCHPOINT_SAME_EL:    /* user-only does not have hw debug */
++    case EC_AA32_BKPT:             /* AArch32 */
++    case EC_VECTORCATCH:           /* AArch32 */
++    case EC_AA64_BKPT:             /* generates EXCP_BKPT */
+     default:
+         g_assert_not_reached();
+     }
+@@ -108,7 +181,7 @@ void cpu_loop(CPUARMState *env)
+             /* just indicate that signals should be handled asap */
+             break;
+         case EXCP_UDEF:
+-            force_sig_fault(TARGET_SIGILL, TARGET_ILL_ILLOPN, env->pc);
++            signal_for_exception(env, env->pc);
+             break;
+         case EXCP_PREFETCH_ABORT:
+         case EXCP_DATA_ABORT:
 -- 
 2.43.0
 

@@ -4,82 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E32AFCA0EFF
-	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 18:16:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8DCF6CA0FFF
+	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 18:16:21 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1usNvv-0007js-Dq; Sat, 30 Aug 2025 11:56:03 -0400
+	id 1usNyv-0006vA-Rh; Sat, 30 Aug 2025 11:59:10 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1usEMJ-00063E-HB
- for qemu-arm@nongnu.org; Sat, 30 Aug 2025 01:42:40 -0400
-Received: from mail-pf1-x435.google.com ([2607:f8b0:4864:20::435])
+ id 1usERE-0007Os-1y
+ for qemu-arm@nongnu.org; Sat, 30 Aug 2025 01:47:45 -0400
+Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1usEMH-0004Cv-Vw
- for qemu-arm@nongnu.org; Sat, 30 Aug 2025 01:42:39 -0400
-Received: by mail-pf1-x435.google.com with SMTP id
- d2e1a72fcca58-771facea122so1364326b3a.1
- for <qemu-arm@nongnu.org>; Fri, 29 Aug 2025 22:42:37 -0700 (PDT)
+ id 1usERC-0004zF-Ey
+ for qemu-arm@nongnu.org; Sat, 30 Aug 2025 01:47:43 -0400
+Received: by mail-pl1-x62a.google.com with SMTP id
+ d9443c01a7336-24458272c00so29633415ad.3
+ for <qemu-arm@nongnu.org>; Fri, 29 Aug 2025 22:47:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756532557; x=1757137357; darn=nongnu.org;
+ d=linaro.org; s=google; t=1756532861; x=1757137661; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=9qdzdzmqkJ1XgfZtAa367u2Lrhe3gNI4FuUAtbTsqDg=;
- b=mr2VXj+PKSvypeunLdLvJuRQ3r/3dVPLSiZ/6IGqcEIG236kQswG4rygSlADP313Tf
- jRZOYp2Wnm4Tiei1z8ute7IdClaQKQegqT1LxSgGDoJTctqgyQTrERos/Hl6XvfOwoFr
- 8g9uZt0Kx5BCk/zAiSa0YCrcYtxU11Igxi/GB575QkasOfOs1iwdKFGpYBAGvlL1qQ//
- goUR0EuqRRg36e9NwI74z4EaWQvTcANrHWIrSbDl75tnRqvDu0g9Ylt0rO5G9f/t7H0+
- aFl93s1a3qAQ4wrAuKXDXwbZUHOAqBDvbEnEiPMBGZ7LqUUeZeIkMXeV75eu2qxxdNUy
- 8emQ==
+ bh=Puj47LzXnLjLJ6PpXBaEU69J8yF1nDWaKunYAxIVNeM=;
+ b=caLHPpigPcRosc0If56qfxy63FjsQny19BHCIL+l491tiCk8TSa3jTggA+NdUBnxfm
+ Fi4MJAlrhhPwY4tsIdXNy8OUx5IHVVUI1m/28fiowest1Dqlj5l3JkEaRyqpemIMWAcJ
+ MK1BdOSWniBYfd4a/+REPq/EOCyVaxLIvuPGmm9BbM0rqLbvF7s3V4of+B9Zymfoo4gV
+ S3qF3MbUo8zSW151+wvymgmvOKBlgLKsofinOd0Lmrj4ZoTSX11ykWxwfFYAKWWZDzMG
+ WlAQxikHuJ/4RVZJr/Fbz6r6iLu+IiLWRmma2CULAeyor9PbKowbLDpI1xnMNtMEmAxU
+ eoUw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756532557; x=1757137357;
+ d=1e100.net; s=20230601; t=1756532861; x=1757137661;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=9qdzdzmqkJ1XgfZtAa367u2Lrhe3gNI4FuUAtbTsqDg=;
- b=aRu63HWRryvc4aUvtyTwG2574cA/Mu29AAFcu4fgesv9KX9RObxwcjcgaUUk5ZlBH+
- RMygtVj1anLgRrsH86NVlvpquQgAG16MNEBxM7V66nPv2L5L/0rcIX+zuhNjdXIJO0uy
- yq0WBDRfJ0fsb8g7D5eQNocmQeUYtYvHLgZynSYZNdezDaxMsLaT4N/OXWPsm8F6IzVf
- dMsXpDc3ROD8jSTjOYxfaljG5ap8fLwnxU4AD6rCO93av0e5Ane8dmnr6L5h510SqUey
- p15Navv94PFW+S6QU+O5AV3PL8aDhSlfR4JLCWExCtunuHob9idWsp3VGi4EdsjBgX3L
- gdGQ==
-X-Gm-Message-State: AOJu0YwePp/exxmIHgKd+IEL0f9H86H4rMsYQv77IWWt3uS1aa/coUBV
- t/BOTkDYZwgg+DpoDKrLHDKjFlxNgsm0G525hUKrIAWDfxBGPQMqz0QpLrSFRiMB300=
-X-Gm-Gg: ASbGncvC20JmuAnZaxDUN10cjw4t12/TvZtvlVi9RQTdNa2dGWOInZEVCOH5C8KRHCE
- KNIwPryKxLoVT2E3jRkMKck6ej2/eChVTr3i6Tl/INddiLBO4j1CzAtlK9SZp7M60g4dsBaUFdD
- GNkSpUh4wcRuawiruDDpOW5TFCZjZsNtSVQyLpc/So0wmVtccseV7d8EQ5DRAxi7JFSdKhacZCb
- iDsw5+tkp3s9Wmyrfj0xL29YhAPVjgA+ljqIZ1XXUbjfZkSL5Ay/2sJhlkd3zg2kiYanv/VBGgS
- i2x2z7ZIU6NBcckCq29cIiyBw+jd82Lr/2MPlDecnljDDaFlvgS8yj/OMLubhJVmpV26bTjw080
- pYD2ADfuj1v2gUGtl8uyKe97idHDYgQfnbYLCpBYv+nqwpGcaqbVyyODuIRZUJX+llTXzX/ZcE0
- bMDOkheA==
-X-Google-Smtp-Source: AGHT+IH++p8QS+Cu88lU8VED/a6OpKEdFJx6DzNNKJ0jlW8z6UK5mDVhjCxwHaUp82twp17j/H7gfg==
-X-Received: by 2002:a05:6a20:3d07:b0:243:b190:d139 with SMTP id
- adf61e73a8af0-243d6f1003cmr1642746637.39.1756532556633; 
- Fri, 29 Aug 2025 22:42:36 -0700 (PDT)
-Received: from stoup.. (122-150-204-48.dyn.ip.vocus.au. [122.150.204.48])
+ bh=Puj47LzXnLjLJ6PpXBaEU69J8yF1nDWaKunYAxIVNeM=;
+ b=BD04wPx9LZgfnBkWimY7pU5gwV0uo38ZS+W4kIhjgQ0lF+c4fuCvg/4BuEu42+lnE7
+ 6vU4fKNsKRsBFo84urjITRTZsHDXUH1LE7RA4t2N9yPLiZBQ06s4R27fWrVZ4QPjXsGG
+ IQqpcWgiTR32VW6HS00VKMxintYI0TVDXFnQFzTm/wkcH7uePeLP2WltNQjpyDhF10mV
+ yYxy7dfWlV0sqKs6Yq1oQvvK7FbmhWcPNkTNBuYrYf2nNtA5Hc8q9pJhPIoVbBF5IEhN
+ H44puxgapt/Beh2/nGCjNIHTaZzHaszYhHoTUd2Y8qMmntW0qFJFLphAbb+JcsfWmxRh
+ 41xA==
+X-Gm-Message-State: AOJu0YyaL4OimgqJ6cLNlTRpCuNty6drMuPlpq21xK/YPYXH7sDPWBUs
+ bPsGU70NVVjUw47Wup8V/vo5PhrDd980vHxTVGBEcIIB0uOXnrrrJ9N34Kyku5fsgeg=
+X-Gm-Gg: ASbGncu5s2k01k/mFQwSppU96AX5Hk3jDdbV8CM6Jip6ThSoLLegeqeIWR/CnsNSqZY
+ 962V5jLtak3vKv44EeAUBbMRLINMlsklc5J3Wk8PCYEtMCZsZQ1SudkCSr06wzAxGxqFL5UtTfS
+ g/FDV7MKj16Xen57z0qaRaJVXfmLJpgfzFLmIH+9TuI28nyAoIMnAEVDNN4DZbxZY3q8F7UoH2Z
+ UI+7+74+tpf4pNnK6JQPaxpYV/DcgVmx0Ezqt+VKgNiFCbcbbKEZVzY7R1wbdoGYJ6beGWno/ZA
+ t7lHXUazjphQHp7fiBwhX3RFrJ2cokQXsx433NqwtHfnBPAE58T20nWXWLL0oJ2ATcJq6xJCSKL
+ D1Q6Kf9vg7rZ1q2KKQQBPMADO6+F3L5frmvF4aAAyQ9//t/bpQ5PqDzS7PSQBBKfoju9AJ0Phcg
+ ==
+X-Google-Smtp-Source: AGHT+IHsQIH00eycoTvaTg8dyKi3F5s1YOBCHYHdHD5dI4kh9ptsi7e8PfHV5hlMpsJXTxtv8Q55TA==
+X-Received: by 2002:a17:903:41c9:b0:249:147:95bb with SMTP id
+ d9443c01a7336-249448de13fmr12519985ad.13.1756532861081; 
+ Fri, 29 Aug 2025 22:47:41 -0700 (PDT)
+Received: from stoup.. (122-150-204-179.dyn.ip.vocus.au. [122.150.204.179])
  by smtp.gmail.com with ESMTPSA id
- 41be03b00d2f7-b4d96829a66sm2435905a12.6.2025.08.29.22.42.34
+ d9443c01a7336-2490658999fsm40852715ad.112.2025.08.29.22.47.39
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 29 Aug 2025 22:42:36 -0700 (PDT)
+ Fri, 29 Aug 2025 22:47:40 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v4 22/84] target/arm: Expand CPUARMState.exception.syndrome to
- 64 bits
-Date: Sat, 30 Aug 2025 15:40:26 +1000
-Message-ID: <20250830054128.448363-23-richard.henderson@linaro.org>
+Subject: [PATCH v4 66/84] target/arm: Add gcs record for BL
+Date: Sat, 30 Aug 2025 15:41:10 +1000
+Message-ID: <20250830054128.448363-67-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250830054128.448363-1-richard.henderson@linaro.org>
 References: <20250830054128.448363-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::435;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x435.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62a;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -102,53 +101,32 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This will be used for storing the ISS2 portion of the
-ESR_ELx registers in aarch64 state.  Re-order the fsr
-member to eliminate two structure holes.
-
-Drop the comment about "if we implement EL2" since we
-have already done so.
-
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/cpu.h    | 7 ++-----
- target/arm/helper.c | 2 +-
- 2 files changed, 3 insertions(+), 6 deletions(-)
+ target/arm/tcg/translate-a64.c | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 9eeecd45a3..fff2195138 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -635,13 +635,10 @@ typedef struct CPUArchState {
-      * entry process.
-      */
-     struct {
--        uint32_t syndrome; /* AArch64 format syndrome register */
--        uint32_t fsr; /* AArch32 format fault status register info */
-+        uint64_t syndrome; /* AArch64 format syndrome register */
-         uint64_t vaddress; /* virtual addr associated with exception, if any */
-+        uint32_t fsr; /* AArch32 format fault status register info */
-         uint32_t target_el; /* EL the exception should be targeted for */
--        /* If we implement EL2 we will also need to store information
--         * about the intermediate physical address for stage 2 faults.
--         */
-     } exception;
+diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
+index 481e748ce0..336aac9d1e 100644
+--- a/target/arm/tcg/translate-a64.c
++++ b/target/arm/tcg/translate-a64.c
+@@ -1678,7 +1678,14 @@ static bool trans_B(DisasContext *s, arg_i *a)
  
-     /* Information associated with an SError */
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index ab801e2704..fc95010727 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -9332,7 +9332,7 @@ void arm_cpu_do_interrupt(CPUState *cs)
-                   new_el);
-     if (qemu_loglevel_mask(CPU_LOG_INT)
-         && !excp_is_internal(cs->exception_index)) {
--        qemu_log_mask(CPU_LOG_INT, "...with ESR 0x%x/0x%" PRIx32 "\n",
-+        qemu_log_mask(CPU_LOG_INT, "...with ESR 0x%x/0x%" PRIx64 "\n",
-                       syn_get_ec(env->exception.syndrome),
-                       env->exception.syndrome);
-     }
+ static bool trans_BL(DisasContext *s, arg_i *a)
+ {
+-    gen_pc_plus_diff(s, cpu_reg(s, 30), curr_insn_len(s));
++    TCGv_i64 link = tcg_temp_new_i64();
++
++    gen_pc_plus_diff(s, link, 4);
++    if (s->gcs_en) {
++        gen_add_gcs_record(s, link);
++    }
++    tcg_gen_mov_i64(cpu_reg(s, 30), link);
++
+     reset_btype(s);
+     gen_goto_tb(s, 0, a->imm);
+     return true;
 -- 
 2.43.0
 

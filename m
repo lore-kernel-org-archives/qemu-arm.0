@@ -4,133 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36FB4CA0FFF
-	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 16:47:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A95E2CA1001
+	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 16:47:48 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1usNeq-000523-4g; Sat, 30 Aug 2025 11:38:25 -0400
+	id 1usNxW-0003i9-Fm; Sat, 30 Aug 2025 11:57:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armenon@redhat.com>)
- id 1us5Lr-0005mN-SC
- for qemu-arm@nongnu.org; Fri, 29 Aug 2025 16:05:35 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armenon@redhat.com>)
- id 1us5Ln-0004yg-CD
- for qemu-arm@nongnu.org; Fri, 29 Aug 2025 16:05:34 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1756497922;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Jz5BpGNEzo/txk0fwJKaeZgorVoPWniz9Wyv+M1UrT0=;
- b=K1GfM0gm3be9PQpteR1pATKumhVvtrv7Xcf+TZf49QAF6HCEBn7LbkVppVs37djqQk6ixG
- jk5ec40hBrrvd7p5NBXGdOU5JwfjyK/6/UJx7QWyQdXbvvqbrBkVGTKc+rvb9EprxmXoiV
- 0bBjeZtJnQUD9aSLTCR6NZCxTl5/bro=
-Received: from mail-pj1-f72.google.com (mail-pj1-f72.google.com
- [209.85.216.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-295-eTGA8a_VOxOIMr5MYM3DPg-1; Fri, 29 Aug 2025 16:05:21 -0400
-X-MC-Unique: eTGA8a_VOxOIMr5MYM3DPg-1
-X-Mimecast-MFC-AGG-ID: eTGA8a_VOxOIMr5MYM3DPg_1756497920
-Received: by mail-pj1-f72.google.com with SMTP id
- 98e67ed59e1d1-327ceb05e9dso1697755a91.0
- for <qemu-arm@nongnu.org>; Fri, 29 Aug 2025 13:05:21 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1usEN1-0006KJ-QJ
+ for qemu-arm@nongnu.org; Sat, 30 Aug 2025 01:43:23 -0400
+Received: from mail-pf1-x42b.google.com ([2607:f8b0:4864:20::42b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1usEMz-0004N2-IP
+ for qemu-arm@nongnu.org; Sat, 30 Aug 2025 01:43:23 -0400
+Received: by mail-pf1-x42b.google.com with SMTP id
+ d2e1a72fcca58-76e4f2e4c40so2425108b3a.2
+ for <qemu-arm@nongnu.org>; Fri, 29 Aug 2025 22:43:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1756532600; x=1757137400; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=4EUcs9AxpyMgXNnrYM+Z+Mp8un4Ur/NPZfUNCkMhAek=;
+ b=ijlLBTyTp95a3bSUrnSkhuy2IqkQekr68k4MUlSh25WER9gMipBqJE7Q4aA17MoNJE
+ Kj4DYoWKNVqF0LS/UlRDCHArAOEMIX24qDCwJLTw70oOIKdlgGlBhFSanzuLKyXimFJv
+ NEbr6HjGVT/xtSM151AZCOG9XqWtUjBLxiqULDoeMPwijA260wRymWFrmD6nhTpCyeii
+ v23Aq10wH6QzKC6t2BGRkfgxBCPNkmcE/dqrym27ylSdhbDb1VayiuSmNUa9gGxfsu4n
+ TB+/Kz6XAufJt7qzuRvt0uNzo9d0pA5YbnoV6NmR9nb/WMrM5y5/kwXcfYzCp6H4U0Pv
+ ttmA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756497920; x=1757102720;
- h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
- :mime-version:subject:date:from:x-gm-message-state:from:to:cc
+ d=1e100.net; s=20230601; t=1756532600; x=1757137400;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=Jz5BpGNEzo/txk0fwJKaeZgorVoPWniz9Wyv+M1UrT0=;
- b=tazxN6BhBVEX+QU0IMKP2e5JZJn+hTENmvNmTRASkYXBw9ssPPhdTiOiFBZdSM+Q3D
- pxioK9C/qw9fzYVrYXsN1eVofZdNBBbsNVQT/pCLyGKZqCavBflOYRi2M0pI2Zqlz3/N
- rQV0ivQektBePHld9ryKDj4YBXjwi2HCQdAm2gCFJKzVPlZ/+eKLKtNixTlHzkVSBvmV
- hsy9Q8Wx07eaAUdcaiaR21HDNATiF7RaGg64sfET79d9yNtPtDVSMF9nc2BBOyVa0028
- jK20bGGQIKHbQ03I1pggyk70juSgVpF/0G9zGqFGavvxgbhTxEbKL6Rnno7Du5nv/JNO
- lbQQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWVUxqgq/I/4DTBVTu4lRZ4+B4PSnZLctwQt7cDXMls6KveMR8XL0oAcZ5Q38v4LG03kE//XSoDpg==@nongnu.org
-X-Gm-Message-State: AOJu0Yx3baHdhVhY7/ZfsKD6ID12vwupKLwrFxlFJ08/Qjqsg6XRzhxZ
- sa4tOVX68PK6Ijz0W8hdnF1joKXzT5jAdUkqwPqZfeFJRM8n1CQPR+IFKRFeSk2YPPBTusjEw/W
- kLjx75PS9i9rBieliOc908lpZXX4iQufgnnT/qSvBG6IgO9bU+wScuA==
-X-Gm-Gg: ASbGncuQDtNgnn2mpF8KkXyJ6VeGFTxHEqwtKohoXTi0EJHaf4B+jaEn6A9HApWC8nI
- 0QtVGJtm1SM3cHibGdrAtbyzmqS6gU7gSlGCWdW5Jky4oebw7IKIQlXIxBpu88UOnIjTDhWz4uD
- aYIxu3wfSw+cJCtUW802sUF80Nog7mV3LJNMecqxnTgxownFwjBytmL8bgyJlx1BtDx4pP1qo1k
- J1XLuESWleGwQdajwEuBKYjAVKA7CEV0V2Gm0ywswcew/KLwj6/USTdhjCryAZunEyCmpNGJWGY
- 4U21SdpvarzFwGUNk9hrR8zecvylWMsighVyp46ljcM8Et2S4eZcyw==
-X-Received: by 2002:a17:90b:4e87:b0:327:734a:ae8c with SMTP id
- 98e67ed59e1d1-327734aafacmr14669213a91.10.1756497920006; 
- Fri, 29 Aug 2025 13:05:20 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFGN3T+VDS5qm4suy07Tcc7/56fOvY6Eok6DyW8tUvsG7+AKLnAHJmdWajntXIIPDS6fyOrBQ==
-X-Received: by 2002:a17:90b:4e87:b0:327:734a:ae8c with SMTP id
- 98e67ed59e1d1-327734aafacmr14669147a91.10.1756497919518; 
- Fri, 29 Aug 2025 13:05:19 -0700 (PDT)
-Received: from armenon-kvm.bengluru.csb ([49.47.195.108])
+ bh=4EUcs9AxpyMgXNnrYM+Z+Mp8un4Ur/NPZfUNCkMhAek=;
+ b=KldjJjbmSGEUsf7EEIjrMJ7GHxtJu0PraGZy/ECaakWXG2AtmT/Hq32LeJfvm0B17f
+ 42FI2PFIezBDuQOQcEJUzvOSpxQBO7DMWamjLwWC4shZy6d7KzEuvZr7qHCjUIWTq4T7
+ CuIt4+HnE6cAM0O7J41Y2Y6YjoJyDwJFjxoEzlvrdc6xbEK+4Q2lncJPJqRn5TguvxTB
+ AbqvlO+8WeLFYEW0FsPhND3+cvT6RdimcfH3y7t/6NWRDg8/LAU2/vR+ue39e+7SBuG6
+ xbW72TpNZlNu6ygRj46bYHMArfd4gNas7FWyw4vD1LwQyjZfTWRvQIpcI5gmz2UbfBgI
+ 3Ztw==
+X-Gm-Message-State: AOJu0Yyr3VHJvU+i/ggU9rmYPEBtmRFoROCKpk6S/gGrl8XYc5DgUaj4
+ hxT4WAuD2fU16jVnF1pkApoQTnpM6CyaZbVlMuzNIjgdDuuoRMk7hKJlwgGvHgXoaqU=
+X-Gm-Gg: ASbGncs7ZYWXiMO0OSWOzqYUi1cJxrwJDncqfh4eoQLO47crqq4NSO9OdWhvq5gNj1v
+ cYYnX1ss/SERnkf7H6ftmQwDishpvHiLiROd8HSfT7R8Cs4Zeu0ijKYttl7hVOjgeCYyJC6GoU9
+ zkgynU/w7kuE9UZbAjuXmG+5JS/rzi5kF3EXilxtBt9g/GmriSIeIH0a+U/Hhq6VWHJeO0Yvndo
+ kF6cOEngEZYuTRs0o/oLH5uy9HZV0wR+2V+g9O0r8wD89rxLXkPHgu1q7zSV6jGJwGikG0utHF9
+ IkgHZda30qeUaGaY6fETxpaoG6PaoKUCjU0PgmS4Y2yZij2Jzw5beTGZ8E0O5s8Me7BuhbSDtKT
+ p0Z1fjyNKmteSm6vrkrMtZg+DdVKv/sua+uX6OuXdueC/WcrCJvycdGMwGv6h
+X-Google-Smtp-Source: AGHT+IFnsWuEdXg7LhQjymWvku6ivuMClMe6rdmhTtCXLLhQDoIZ8QyeATCWPV8AuJ6Aw8PEXiJtQQ==
+X-Received: by 2002:a05:6a20:7f8e:b0:243:78a:82c2 with SMTP id
+ adf61e73a8af0-243d6f92da2mr1396228637.60.1756532599710; 
+ Fri, 29 Aug 2025 22:43:19 -0700 (PDT)
+Received: from stoup.. (122-150-204-48.dyn.ip.vocus.au. [122.150.204.48])
  by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-327d8f66f16sm3570543a91.0.2025.08.29.13.05.05
+ 41be03b00d2f7-b4d96829a66sm2435905a12.6.2025.08.29.22.43.17
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 29 Aug 2025 13:05:19 -0700 (PDT)
-From: Arun Menon <armenon@redhat.com>
-Date: Sat, 30 Aug 2025 01:31:52 +0530
-Subject: [PATCH v13 12/27] migration: Update qemu_file_get_return_path()
- docs and remove dead checks
-MIME-Version: 1.0
-Message-Id: <20250830-propagate_tpm_error-v13-12-a4e777b7eb2c@redhat.com>
-References: <20250830-propagate_tpm_error-v13-0-a4e777b7eb2c@redhat.com>
-In-Reply-To: <20250830-propagate_tpm_error-v13-0-a4e777b7eb2c@redhat.com>
+ Fri, 29 Aug 2025 22:43:19 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: Peter Xu <peterx@redhat.com>, Fabiano Rosas <farosas@suse.de>, 
- =?utf-8?q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>, 
- Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>, 
- Dmitry Osipenko <dmitry.osipenko@collabora.com>, 
- "Michael S. Tsirkin" <mst@redhat.com>, 
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
- Cornelia Huck <cohuck@redhat.com>, Halil Pasic <pasic@linux.ibm.com>, 
- Eric Farman <farman@linux.ibm.com>, Thomas Huth <thuth@redhat.com>, 
- Christian Borntraeger <borntraeger@linux.ibm.com>, 
- Matthew Rosato <mjrosato@linux.ibm.com>, 
- Richard Henderson <richard.henderson@linaro.org>, 
- David Hildenbrand <david@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>, 
- Nicholas Piggin <npiggin@gmail.com>, 
- Harsh Prateek Bora <harshpb@linux.ibm.com>, 
- Paolo Bonzini <pbonzini@redhat.com>, Fam Zheng <fam@euphon.net>, 
- Alex Williamson <alex.williamson@redhat.com>, 
- =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>, 
- Steve Sistare <steven.sistare@oracle.com>, 
- =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>, 
- qemu-s390x@nongnu.org, qemu-ppc@nongnu.org, 
- Hailiang Zhang <zhanghailiang@xfusion.com>, 
- Stefan Berger <stefanb@linux.vnet.ibm.com>, 
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
- Arun Menon <armenon@redhat.com>, 
- =?utf-8?q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
-X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3908; i=armenon@redhat.com;
- h=from:subject:message-id; bh=2JbqiM5+ARKDi5QVvK8q/nOAQN+0N3zVUkcy/4NxTCk=;
- b=owGbwMvMwCWWVaVqcZPfqI/xtFoSQ8Ymdl+nNUarONy0uT7ffHfa1Sek5FlqeNz5PrcQ0/9cA
- f5V1RwdpSwMYlwMsmKKLA1fA2SbAgojIm1fXoeZw8oEMoSBi1MAJpLzj5Hh4bP08qCbLTcOtzuZ
- zinYc0jwoOGhr7LPnmV8rlj0b8oNXUaGwwl7/gbI7LziEXrvXQbjYYniHc7P5Xo3nnVy3el6a89
- LTgA=
-X-Developer-Key: i=armenon@redhat.com; a=openpgp;
- fpr=80F5501D82507158593DE9D76A7A2538D90F328E
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: K_xNsIQGhq4kL90AIy0LbTUMTOAz0OmBhgBhdEOU43o_1756497920
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="utf-8"
+Cc: qemu-arm@nongnu.org,
+	Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Subject: [PATCH v4 38/84] target/arm: Convert regime_is_pan from switch to
+ table
+Date: Sat, 30 Aug 2025 15:40:42 +1000
+Message-ID: <20250830054128.448363-39-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250830054128.448363-1-richard.henderson@linaro.org>
+References: <20250830054128.448363-1-richard.henderson@linaro.org>
+MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=armenon@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42b;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -146,109 +101,104 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The documentation of qemu_file_get_return_path() states that it can
-return NULL on failure. However, a review of the current implementation
-reveals that it is guaranteed that it will always succeed and will never
-return NULL.
-
-As a result, the NULL checks post calling the function become redundant.
-This commit updates the documentation for the function and removes all
-NULL checks throughout the migration code.
-
-Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
-Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-Reviewed-by: Fabiano Rosas <farosas@suse.de>
-Signed-off-by: Arun Menon <armenon@redhat.com>
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- migration/colo.c      |  4 ----
- migration/migration.c | 12 ++----------
- migration/qemu-file.c |  1 -
- migration/savevm.c    |  4 ----
- 4 files changed, 2 insertions(+), 19 deletions(-)
+ target/arm/internals.h       | 13 -------------
+ target/arm/mmuidx-internal.h |  8 ++++++++
+ target/arm/mmuidx.c          |  9 +++++----
+ 3 files changed, 13 insertions(+), 17 deletions(-)
 
-diff --git a/migration/colo.c b/migration/colo.c
-index 642d17487d92c0a9508e599ca3bf524e80b6fd46..07a32044b58541eb9bd7c5e63eb6ca598f8a8933 100644
---- a/migration/colo.c
-+++ b/migration/colo.c
-@@ -847,10 +847,6 @@ static void *colo_process_incoming_thread(void *opaque)
-     failover_init_state();
- 
-     mis->to_src_file = qemu_file_get_return_path(mis->from_src_file);
--    if (!mis->to_src_file) {
--        error_report("COLO incoming thread: Open QEMUFile to_src_file failed");
--        goto out;
--    }
-     /*
-      * Note: the communication between Primary side and Secondary side
-      * should be sequential, we set the fd to unblocked in migration incoming
-diff --git a/migration/migration.c b/migration/migration.c
-index c6768d88f45c870c7fad9b9957300766ff69effc..35f769bc55c235134abb5554ed01b94787d4bf78 100644
---- a/migration/migration.c
-+++ b/migration/migration.c
-@@ -2647,12 +2647,9 @@ out:
-     return NULL;
- }
- 
--static int open_return_path_on_source(MigrationState *ms)
-+static void open_return_path_on_source(MigrationState *ms)
- {
-     ms->rp_state.from_dst_file = qemu_file_get_return_path(ms->to_dst_file);
--    if (!ms->rp_state.from_dst_file) {
--        return -1;
--    }
- 
-     trace_open_return_path_on_source();
- 
-@@ -2661,8 +2658,6 @@ static int open_return_path_on_source(MigrationState *ms)
-     ms->rp_state.rp_thread_created = true;
- 
-     trace_open_return_path_on_source_continue();
--
--    return 0;
- }
- 
- /* Return true if error detected, or false otherwise */
-@@ -4011,10 +4006,7 @@ void migration_connect(MigrationState *s, Error *error_in)
-      * QEMU uses the return path.
-      */
-     if (migrate_postcopy_ram() || migrate_return_path()) {
--        if (open_return_path_on_source(s)) {
--            error_setg(&local_err, "Unable to open return-path for postcopy");
--            goto fail;
--        }
-+        open_return_path_on_source(s);
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index 2ef81a00ab..2148814835 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -1027,19 +1027,6 @@ static inline void arm_call_el_change_hook(ARMCPU *cpu)
      }
+ }
+ 
+-static inline bool regime_is_pan(ARMMMUIdx mmu_idx)
+-{
+-    switch (mmu_idx) {
+-    case ARMMMUIdx_Stage1_E1_PAN:
+-    case ARMMMUIdx_E10_1_PAN:
+-    case ARMMMUIdx_E20_2_PAN:
+-    case ARMMMUIdx_E30_3_PAN:
+-        return true;
+-    default:
+-        return false;
+-    }
+-}
+-
+ static inline bool regime_is_stage2(ARMMMUIdx mmu_idx)
+ {
+     return mmu_idx == ARMMMUIdx_Stage2 || mmu_idx == ARMMMUIdx_Stage2_S;
+diff --git a/target/arm/mmuidx-internal.h b/target/arm/mmuidx-internal.h
+index f03a2ab94c..41baf1a003 100644
+--- a/target/arm/mmuidx-internal.h
++++ b/target/arm/mmuidx-internal.h
+@@ -16,6 +16,7 @@ FIELD(MMUIDXINFO, ELVALID, 2, 1)
+ FIELD(MMUIDXINFO, REL, 3, 2)
+ FIELD(MMUIDXINFO, RELVALID, 5, 1)
+ FIELD(MMUIDXINFO, 2RANGES, 6, 1)
++FIELD(MMUIDXINFO, PAN, 7, 1)
+ 
+ extern const uint32_t arm_mmuidx_table[ARM_MMU_IDX_M + 8];
+ 
+@@ -56,4 +57,11 @@ static inline bool regime_has_2_ranges(ARMMMUIdx idx)
+     return FIELD_EX32(arm_mmuidx_table[idx], MMUIDXINFO, 2RANGES);
+ }
+ 
++/* Return true if Privileged Access Never is enabled for this mmu index. */
++static inline bool regime_is_pan(ARMMMUIdx idx)
++{
++    tcg_debug_assert(arm_mmuidx_is_valid(idx));
++    return FIELD_EX32(arm_mmuidx_table[idx], MMUIDXINFO, PAN);
++}
++
+ #endif /* TARGET_ARM_MMUIDX_INTERNAL_H */
+diff --git a/target/arm/mmuidx.c b/target/arm/mmuidx.c
+index f880d21606..98db02b8e5 100644
+--- a/target/arm/mmuidx.c
++++ b/target/arm/mmuidx.c
+@@ -10,6 +10,7 @@
+ #define EL(X)  ((X << R_MMUIDXINFO_EL_SHIFT) | R_MMUIDXINFO_ELVALID_MASK)
+ #define REL(X) ((X << R_MMUIDXINFO_REL_SHIFT) | R_MMUIDXINFO_RELVALID_MASK)
+ #define R2     R_MMUIDXINFO_2RANGES_MASK
++#define PAN    R_MMUIDXINFO_PAN_MASK
+ 
+ const uint32_t arm_mmuidx_table[ARM_MMU_IDX_M + 8] = {
+     /*
+@@ -17,24 +18,24 @@ const uint32_t arm_mmuidx_table[ARM_MMU_IDX_M + 8] = {
+      */
+     [ARMMMUIdx_E10_0]           = EL(0) | REL(1) | R2,
+     [ARMMMUIdx_E10_1]           = EL(1) | REL(1) | R2,
+-    [ARMMMUIdx_E10_1_PAN]       = EL(1) | REL(1) | R2,
++    [ARMMMUIdx_E10_1_PAN]       = EL(1) | REL(1) | R2 | PAN,
+ 
+     [ARMMMUIdx_E20_0]           = EL(0) | REL(2) | R2,
+     [ARMMMUIdx_E20_2]           = EL(2) | REL(2) | R2,
+-    [ARMMMUIdx_E20_2_PAN]       = EL(2) | REL(2) | R2,
++    [ARMMMUIdx_E20_2_PAN]       = EL(2) | REL(2) | R2 | PAN,
+ 
+     [ARMMMUIdx_E2]              = EL(2) | REL(2),
+ 
+     [ARMMMUIdx_E3]              = EL(3) | REL(3),
+     [ARMMMUIdx_E30_0]           = EL(0) | REL(3),
+-    [ARMMMUIdx_E30_3_PAN]       = EL(3) | REL(3),
++    [ARMMMUIdx_E30_3_PAN]       = EL(3) | REL(3) | PAN,
+ 
+     [ARMMMUIdx_Stage2_S]        = REL(2),
+     [ARMMMUIdx_Stage2]          = REL(2),
+ 
+     [ARMMMUIdx_Stage1_E0]       = REL(1) | R2,
+     [ARMMMUIdx_Stage1_E1]       = REL(1) | R2,
+-    [ARMMMUIdx_Stage1_E1_PAN]   = REL(1) | R2,
++    [ARMMMUIdx_Stage1_E1_PAN]   = REL(1) | R2 | PAN,
  
      /*
-diff --git a/migration/qemu-file.c b/migration/qemu-file.c
-index b6ac190034f777dbde0da1598483a892089d7538..f9ccee9a1091ecbd37e6b7d2081a4446442b544d 100644
---- a/migration/qemu-file.c
-+++ b/migration/qemu-file.c
-@@ -125,7 +125,6 @@ static QEMUFile *qemu_file_new_impl(QIOChannel *ioc, bool is_writable)
- 
- /*
-  * Result: QEMUFile* for a 'return path' for comms in the opposite direction
-- *         NULL if not available
-  */
- QEMUFile *qemu_file_get_return_path(QEMUFile *f)
- {
-diff --git a/migration/savevm.c b/migration/savevm.c
-index c8234f2ef7f413b207aebae7192c82f1f4d6d91d..d54028b1be4d7a1e4615c2b05611535bd7478e2b 100644
---- a/migration/savevm.c
-+++ b/migration/savevm.c
-@@ -2588,10 +2588,6 @@ static int loadvm_process_command(QEMUFile *f, Error **errp)
-             return 0;
-         }
-         mis->to_src_file = qemu_file_get_return_path(f);
--        if (!mis->to_src_file) {
--            error_setg(errp, "CMD_OPEN_RETURN_PATH failed");
--            return -1;
--        }
- 
-         /*
-          * Switchover ack is enabled but no device uses it, so send an ACK to
-
+      * M-profile.
 -- 
-2.51.0
+2.43.0
 
 

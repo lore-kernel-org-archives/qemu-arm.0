@@ -4,132 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57E47CA0EFF
-	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 16:41:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0DE9CA0EFF
+	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 16:41:55 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1usNbI-0005fZ-B3; Sat, 30 Aug 2025 11:34:44 -0400
+	id 1usNzf-0008Fu-Mn; Sat, 30 Aug 2025 11:59:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armenon@redhat.com>)
- id 1us5JF-0004kc-83
- for qemu-arm@nongnu.org; Fri, 29 Aug 2025 16:02:53 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armenon@redhat.com>)
- id 1us5JC-0004X3-1O
- for qemu-arm@nongnu.org; Fri, 29 Aug 2025 16:02:52 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1756497768;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=8x1fPRiLk+q98Zq/PxzJ1EQGy5pEsHLkUkWHdcN4ADk=;
- b=FrAPLzwL1jnqHQsltD0Ov2R791NE531wKsZ6ol8SFToabc6g0OiqtkVLwK5ZYQC+Tardye
- rCJRXhrVew12kLNWKqlpG4iL09xFkMVi0DIpWRZaoq/D+bPVl/ZyYYDgiVB9nKKO8ZeV4b
- hLaBMNUT2yniwth+VrXguSKkKeDZdHI=
-Received: from mail-pl1-f200.google.com (mail-pl1-f200.google.com
- [209.85.214.200]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-80-J1skNS-AM_yEVKR626jOoA-1; Fri, 29 Aug 2025 16:02:47 -0400
-X-MC-Unique: J1skNS-AM_yEVKR626jOoA-1
-X-Mimecast-MFC-AGG-ID: J1skNS-AM_yEVKR626jOoA_1756497766
-Received: by mail-pl1-f200.google.com with SMTP id
- d9443c01a7336-2461c537540so36559325ad.0
- for <qemu-arm@nongnu.org>; Fri, 29 Aug 2025 13:02:47 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1usERN-0007Sd-AV
+ for qemu-arm@nongnu.org; Sat, 30 Aug 2025 01:47:53 -0400
+Received: from mail-pg1-x536.google.com ([2607:f8b0:4864:20::536])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1usERL-00050s-I9
+ for qemu-arm@nongnu.org; Sat, 30 Aug 2025 01:47:52 -0400
+Received: by mail-pg1-x536.google.com with SMTP id
+ 41be03b00d2f7-b476c67c5easo1911578a12.0
+ for <qemu-arm@nongnu.org>; Fri, 29 Aug 2025 22:47:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1756532870; x=1757137670; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=58qPU9DMZkiZiNBL/rcJ7zUrHBcuvFVlT+jgfO7pgc8=;
+ b=WrrBBnL5dZ8WFmaXYjYVBnyUMakSfxl27W8qbQy4T5ngBxoh+z1WrUWuCMVegd38TA
+ hy3oBRqZFBtW83o00eMM8vLAyRSTK5dxRoMjRoNh+85xJ7vGTLstAJ8Sb323+mFiU7Yi
+ X1KTVoEhsURKJTrofrb6M9HE4cjRv9qp3w33irNusGqmcKAcpaTYb2HEcFYF2UQc0XG+
+ xBX2c4BiyA2AGVWXbKDCAjicfRGI25gMhcKQ2Hk0D5/2UCrQwcr+o5yr3CzX2QJ0gFeQ
+ qvllUhsUTtKfcIBUoSOHp8jQc6uIJ7KGtFOVdHJn/2aNSnWLr3AciZ5M5rG3vfuOya2n
+ SFow==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756497766; x=1757102566;
- h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
- :mime-version:subject:date:from:x-gm-message-state:from:to:cc
+ d=1e100.net; s=20230601; t=1756532870; x=1757137670;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=8x1fPRiLk+q98Zq/PxzJ1EQGy5pEsHLkUkWHdcN4ADk=;
- b=iBol8Bd6mknHUjxkH7KFqX0gUgcjKNNzCHlNKAR2PFlv25JhpQNt8XP/z/LKSUq4bz
- OMSBOu9AP8YuoSb/9pYKeiLH6OhtVKo62w8oov4YaTsK4+jE4Ra3TcqeC4T/erXJlIXG
- WLaucykNSFiKvSMLcjnnF0g8h7tmNEDArQ6xOFm7+0nH+fuwo1qZZ9goYK9q0fNOALBm
- ZpfgX0KVX+Tgt16V5MdY9ZCVS4gP4uX9HpsAhrLtq2t0TnqJQlAN/w2Ou3PDwZmpygvW
- 8gVo+7Bn2E29l54uo/uua6tMHebbD2INtM09Z6SXHqaPwgQQnkAbYLO2L7D1fzAl8h5r
- kDiQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUDD1Ba2bEqYTnyX0FfPWZNCew1jdbqs4cVkascGUqVNYuOHByVg8BIYk2ebbGjHV70kpeeYGXv+g==@nongnu.org
-X-Gm-Message-State: AOJu0YzP+lDuB9JyPcpBOv2PYiIwTEn0iq9yCFfgHUEv5ukp4g2fmNob
- wAlZovcGA77/nLiaWYloMNeNcshKk9935L683v4kGmQNhU9UIJunqmyk3jMyYP2fr9dTkKMJCv2
- Yl4eMnr9/J++vrlL9/EXHy2y7fh8axnrii+/3cA7RHAEXke5Mwu01Uw==
-X-Gm-Gg: ASbGncuRiH/Q1pJgjMvZ8b6lK1Zykieo5NXDzL3md8hOCQ4BCiC47d2aifu5BAlkEuw
- OjpTy1e1gDjzUbO0HIdbqhLqjifLlMG+ZykSKKnrjIj2MMqYGeFRpEhfyvzYOpvE8FL7f1NxpuE
- DoELDbkZaSfPw+yxbAf43Qqsbb+KFj2t0q6LMB9J+0y689VXCTg/qReH2y5rHJatE+HbMO+uZbi
- UwKpyF4XWh3EZsomQ92D8tCyZ7xnK42Gf/3dKl8KP11DAd5Z/QVvab6eGjdL6Joh70Znm7iyOm8
- fNP/l9WAGNDUO0is+kkAuFLjGgd3q1HFYqJo338m2xB0e3pfZRGwqA==
-X-Received: by 2002:a17:903:248:b0:248:7018:c739 with SMTP id
- d9443c01a7336-2487018c906mr209827555ad.28.1756497766299; 
- Fri, 29 Aug 2025 13:02:46 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFNe5QOPLN1Yo6gm4lYifmN3xBc+lNgtzX73UgXZg0qiORH0O8SGsaZsJwVtwaVaxd90xxcLw==
-X-Received: by 2002:a17:903:248:b0:248:7018:c739 with SMTP id
- d9443c01a7336-2487018c906mr209826865ad.28.1756497765759; 
- Fri, 29 Aug 2025 13:02:45 -0700 (PDT)
-Received: from armenon-kvm.bengluru.csb ([49.47.195.108])
+ bh=58qPU9DMZkiZiNBL/rcJ7zUrHBcuvFVlT+jgfO7pgc8=;
+ b=ICh4ovdE0onZwsQQGiP5ZSVPVMD/ek3muA3Kx+8yNBIgMHvbmqSjpTdxCmo6CaZLGT
+ T3UKcU9bd7KKGq3KPkFZ+3k57XpJ24piGdWuG/TG48VCV9MFnnqWHxkQI1CH/dpX08IU
+ kj2Wly4sZYO/9n2ffUlbxJv3RHFlSXFuCRQhjgcS3fAMnv5f/Bp+wLXokZ3xgfkgWRXW
+ Qa6OjlRUz55NksoUIbBalJ5DGONGAViAej4HPbmsK/yXg+mASMqyPHdNjhYFlJmrAarj
+ Dbrs6x96j7467Z1JeLcTKov4tU4EYkOnEwXg9XG5QTvrPdfrhbVeABMOZKfa5fS1l3TU
+ iC0g==
+X-Gm-Message-State: AOJu0Yx09zlYiFfhv91eACrIoMDo+tVPxP+A4EobVG6jb/MkvMedS5dB
+ +3thcoZO7MjCKv41EcibQzbfT19rvxf1IaqEq+1p9te/aEPP/xL8RSwer7u+aw9DWd0=
+X-Gm-Gg: ASbGncsE7stuvJHXWJH4zwJPwj4LQQWdXbw00ijYolqGA7JRRzGlov1wy1KdBFBvZ1s
+ pAIPTM7tj5sawJwxa/nlywMWjjq93CYdjO1zqOuaCzFGrjuDsBvPVhiqEl7d3wMwhjX70PwxA7G
+ pBSP0TGWEpxL87LrnzNN7/Vj3MkNLoxBPnY1hWZnRhMNiKUEu7315VB6Df2QzGS+iKl3nc4gDil
+ KbLui1XQrXWWT4ur2zD5I49U/MOpTO3GiCPqq65/Ve3XHzn3TWVnBgehXZALbQ57vvuUuzKjurM
+ eq58IsERHaCHQSJDgzy/YBxz+Vo3AGN7Tq3DHrcqSsbh0cR+ap53yUqyTHUlxFv24BWitPaMw37
+ TI5vfhc7pmmwWyqHwjD26uV9cvYFNrqx+zmKuZl3ayqmYzJnU8fSQZRRco1YuEqmcb5/pACrVpQ
+ ==
+X-Google-Smtp-Source: AGHT+IGRqZA1SkeOgylgeFXgPGkAeJDjPAKcKlJ71DTe5ZoKaVaX9Offa/XD00ulaCszmoD4VKg6UQ==
+X-Received: by 2002:a17:903:94c:b0:234:8a4a:ad89 with SMTP id
+ d9443c01a7336-2494486df45mr16534905ad.1.1756532869835; 
+ Fri, 29 Aug 2025 22:47:49 -0700 (PDT)
+Received: from stoup.. (122-150-204-179.dyn.ip.vocus.au. [122.150.204.179])
  by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-327d8f66f16sm3570543a91.0.2025.08.29.13.02.33
+ d9443c01a7336-2490658999fsm40852715ad.112.2025.08.29.22.47.47
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 29 Aug 2025 13:02:45 -0700 (PDT)
-From: Arun Menon <armenon@redhat.com>
-Date: Sat, 30 Aug 2025 01:31:41 +0530
-Subject: [PATCH v13 01/27] migration: push Error **errp into
- vmstate_subsection_load()
-MIME-Version: 1.0
-Message-Id: <20250830-propagate_tpm_error-v13-1-a4e777b7eb2c@redhat.com>
-References: <20250830-propagate_tpm_error-v13-0-a4e777b7eb2c@redhat.com>
-In-Reply-To: <20250830-propagate_tpm_error-v13-0-a4e777b7eb2c@redhat.com>
+ Fri, 29 Aug 2025 22:47:49 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: Peter Xu <peterx@redhat.com>, Fabiano Rosas <farosas@suse.de>, 
- =?utf-8?q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>, 
- Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>, 
- Dmitry Osipenko <dmitry.osipenko@collabora.com>, 
- "Michael S. Tsirkin" <mst@redhat.com>, 
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
- Cornelia Huck <cohuck@redhat.com>, Halil Pasic <pasic@linux.ibm.com>, 
- Eric Farman <farman@linux.ibm.com>, Thomas Huth <thuth@redhat.com>, 
- Christian Borntraeger <borntraeger@linux.ibm.com>, 
- Matthew Rosato <mjrosato@linux.ibm.com>, 
- Richard Henderson <richard.henderson@linaro.org>, 
- David Hildenbrand <david@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>, 
- Nicholas Piggin <npiggin@gmail.com>, 
- Harsh Prateek Bora <harshpb@linux.ibm.com>, 
- Paolo Bonzini <pbonzini@redhat.com>, Fam Zheng <fam@euphon.net>, 
- Alex Williamson <alex.williamson@redhat.com>, 
- =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>, 
- Steve Sistare <steven.sistare@oracle.com>, 
- =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>, 
- qemu-s390x@nongnu.org, qemu-ppc@nongnu.org, 
- Hailiang Zhang <zhanghailiang@xfusion.com>, 
- Stefan Berger <stefanb@linux.vnet.ibm.com>, 
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
- Arun Menon <armenon@redhat.com>
-X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3492; i=armenon@redhat.com;
- h=from:subject:message-id; bh=jjVnj4GpDkFjmsw4frYXnt3FkfLdgzOUkOtwV8FPcDs=;
- b=owGbwMvMwCWWVaVqcZPfqI/xtFoSQ8Ymdu+2d5N4f3Ux2Xl5yMqqbg7Q3nvLXKXpyB6x00r5c
- WKnt6h1lLIwiHExyIopsjR8DZBtCiiMiLR9eR1mDisTyBAGLk4BmMhML0aGe8l/Pxw4FfEhc/oa
- 9o+c5T9mJ3wLfvFN+9e5ZLWt7xSOb2P4X+EZb9h/woJx9ZMHXeI2PRlalVJatoox7/k2Xr67/ek
- 7FgA=
-X-Developer-Key: i=armenon@redhat.com; a=openpgp;
- fpr=80F5501D82507158593DE9D76A7A2538D90F328E
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: hdL_7_oGX4jR_D4-yRgKM6WPlHAPxANLXhmMRokAEfg_1756497766
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="utf-8"
+Cc: qemu-arm@nongnu.org,
+	Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Subject: [PATCH v4 69/84] target/arm: Load gcs record for RET
+Date: Sat, 30 Aug 2025 15:41:13 +1000
+Message-ID: <20250830054128.448363-70-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250830054128.448363-1-richard.henderson@linaro.org>
+References: <20250830054128.448363-1-richard.henderson@linaro.org>
+MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=armenon@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::536;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x536.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -145,87 +101,60 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This is an incremental step in converting vmstate loading
-code to report error via Error objects instead of directly
-printing it to console/monitor.
-It is ensured that vmstate_subsection_load() must report an error
-in errp, in case of failure.
-
-The errors are temporarily reported using error_report_err().
-This is removed in the subsequent patches in this series,
-when we are actually able to propagate the error to the calling
-function using errp.
-
-Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-Reviewed-by: Fabiano Rosas <farosas@suse.de>
-Signed-off-by: Arun Menon <armenon@redhat.com>
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- migration/vmstate.c | 13 ++++++++++---
- 1 file changed, 10 insertions(+), 3 deletions(-)
+ target/arm/tcg/translate-a64.c | 29 ++++++++++++++++++++++++++++-
+ 1 file changed, 28 insertions(+), 1 deletion(-)
 
-diff --git a/migration/vmstate.c b/migration/vmstate.c
-index 5feaa3244d259874f03048326b2497e7db32e47c..08f2b562e3a5ec0e186336215ccfb378a7675f0c 100644
---- a/migration/vmstate.c
-+++ b/migration/vmstate.c
-@@ -25,7 +25,7 @@ static int vmstate_subsection_save(QEMUFile *f, const VMStateDescription *vmsd,
-                                    void *opaque, JSONWriter *vmdesc,
-                                    Error **errp);
- static int vmstate_subsection_load(QEMUFile *f, const VMStateDescription *vmsd,
--                                   void *opaque);
-+                                   void *opaque, Error **errp);
- 
- /* Whether this field should exist for either save or load the VM? */
- static bool
-@@ -136,6 +136,7 @@ int vmstate_load_state(QEMUFile *f, const VMStateDescription *vmsd,
- {
-     const VMStateField *field = vmsd->fields;
-     int ret = 0;
-+    Error *local_err = NULL;
- 
-     trace_vmstate_load_state(vmsd->name, version_id);
-     if (version_id > vmsd->version_id) {
-@@ -225,9 +226,10 @@ int vmstate_load_state(QEMUFile *f, const VMStateDescription *vmsd,
-         field++;
-     }
-     assert(field->flags == VMS_END);
--    ret = vmstate_subsection_load(f, vmsd, opaque);
-+    ret = vmstate_subsection_load(f, vmsd, opaque, &local_err);
-     if (ret != 0) {
-         qemu_file_set_error(f, ret);
-+        error_report_err(local_err);
-         return ret;
-     }
-     if (vmsd->post_load) {
-@@ -566,7 +568,7 @@ vmstate_get_subsection(const VMStateDescription * const *sub,
+diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
+index 20e18687d5..3ddf4bb018 100644
+--- a/target/arm/tcg/translate-a64.c
++++ b/target/arm/tcg/translate-a64.c
+@@ -444,6 +444,27 @@ static void gen_add_gcs_record(DisasContext *s, TCGv_i64 value)
+     tcg_gen_mov_i64(gcspr, addr);
  }
  
- static int vmstate_subsection_load(QEMUFile *f, const VMStateDescription *vmsd,
--                                   void *opaque)
-+                                   void *opaque, Error **errp)
- {
-     trace_vmstate_subsection_load(vmsd->name);
++static void gen_load_check_gcs_record(DisasContext *s, TCGv_i64 target,
++                                      GCSInstructionType it, int rt)
++{
++    TCGv_i64 gcspr = cpu_gcspr[s->current_el];
++    int mmuidx = core_gcs_mem_index(s->mmu_idx);
++    MemOp mop = finalize_memop(s, MO_64 | MO_ALIGN);
++    TCGv_i64 rec_va = tcg_temp_new_i64();
++
++    tcg_gen_qemu_ld_i64(rec_va, clean_data_tbi(s, gcspr), mmuidx, mop);
++
++    if (s->gcs_rvcen) {
++        TCGLabel *fail_label =
++            delay_exception(s, EXCP_UDEF, syn_gcs_data_check(it, rt));
++
++        tcg_gen_brcond_i64(TCG_COND_NE, rec_va, target, fail_label);
++    }
++
++    gen_a64_set_pc(s, rec_va);
++    tcg_gen_addi_i64(gcspr, gcspr, 8);
++}
++
+ typedef struct DisasCompare64 {
+     TCGCond cond;
+     TCGv_i64 value;
+@@ -1798,7 +1819,13 @@ static bool trans_BLR(DisasContext *s, arg_r *a)
  
-@@ -598,6 +600,8 @@ static int vmstate_subsection_load(QEMUFile *f, const VMStateDescription *vmsd,
-         sub_vmsd = vmstate_get_subsection(vmsd->subsections, idstr);
-         if (sub_vmsd == NULL) {
-             trace_vmstate_subsection_load_bad(vmsd->name, idstr, "(lookup)");
-+            error_setg(errp, "VM subsection '%s' in '%s' does not exist",
-+                       idstr, vmsd->name);
-             return -ENOENT;
-         }
-         qemu_file_skip(f, 1); /* subsection */
-@@ -608,6 +612,9 @@ static int vmstate_subsection_load(QEMUFile *f, const VMStateDescription *vmsd,
-         ret = vmstate_load_state(f, sub_vmsd, opaque, version_id);
-         if (ret) {
-             trace_vmstate_subsection_load_bad(vmsd->name, idstr, "(child)");
-+            error_setg(errp,
-+                       "Loading VM subsection '%s' in '%s' failed: %d",
-+                       idstr, vmsd->name, ret);
-             return ret;
-         }
-     }
-
+ static bool trans_RET(DisasContext *s, arg_r *a)
+ {
+-    gen_a64_set_pc(s, cpu_reg(s, a->rn));
++    TCGv_i64 target = cpu_reg(s, a->rn);
++
++    if (s->gcs_en) {
++        gen_load_check_gcs_record(s, target, GCS_IT_RET_nPauth, a->rn);
++    } else {
++        gen_a64_set_pc(s, target);
++    }
+     s->base.is_jmp = DISAS_JUMP;
+     return true;
+ }
 -- 
-2.51.0
+2.43.0
 
 

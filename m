@@ -4,89 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39823CA0EFF
-	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 17:35:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 300E4CA0EFF
+	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 17:36:23 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1usOh2-0005Mg-PM; Sat, 30 Aug 2025 12:44:44 -0400
+	id 1usODu-0005iz-Hy; Sat, 30 Aug 2025 12:14:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1urklB-0005xx-9t
- for qemu-arm@nongnu.org; Thu, 28 Aug 2025 18:06:21 -0400
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1usEQv-0007Kf-Sx
+ for qemu-arm@nongnu.org; Sat, 30 Aug 2025 01:47:26 -0400
+Received: from mail-pg1-x536.google.com ([2607:f8b0:4864:20::536])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1urkl8-0003w3-Ra
- for qemu-arm@nongnu.org; Thu, 28 Aug 2025 18:06:21 -0400
-Received: by mail-wr1-x430.google.com with SMTP id
- ffacd0b85a97d-3ce47d1f1f8so791964f8f.2
- for <qemu-arm@nongnu.org>; Thu, 28 Aug 2025 15:06:18 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1usEQs-0004uG-1n
+ for qemu-arm@nongnu.org; Sat, 30 Aug 2025 01:47:24 -0400
+Received: by mail-pg1-x536.google.com with SMTP id
+ 41be03b00d2f7-b47052620a6so2775760a12.1
+ for <qemu-arm@nongnu.org>; Fri, 29 Aug 2025 22:47:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756418775; x=1757023575; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=SQERPfGXdIzlO77ltl62NC78xJe8fEdI0otSa33hJaY=;
- b=xeJ5AcJ7ifBjyRTVax6vyq0QMiSctboQMX8aSnZ89q7Pizc6S1yF60l1pWCjCHRh+u
- 1EfwXvYU9YgtaWEZb9rFZ39QUuytfPKzzCRjjHhUYcdwNvbXy8wSAG3rZsM7ew/yUoxy
- IwFZB3sDSnus/yOwWjKFL8t/M2w9kYvw+po9aped8O1CF2LomTPjPJGDDjMaWsvYLmct
- gEDgEmpb3+6W8vjJxa+hmRUsloqugzuNd7mhAddFY/4GUrYhF590RhBeiCmQTAIdrsks
- xL/i5uLu4kJJXyVcWSDiG4aGalUodSWveKpctS8b6XNicULUy9LV15fgGyhLUfMh2SYW
- I84w==
+ d=linaro.org; s=google; t=1756532832; x=1757137632; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=5UYaNg4HgCgaMfA5VDdSs+JLi614JTEFfBBOaKuI9nc=;
+ b=dPYlFRP1aLD1I1Z8m2MkDNqRPyJ22fL9wv2qSDrH6eTnUIV+il87J1+ATL7GHNyXNE
+ JlFrHNs3dyYpa2nQ2yHdhknJJ+pjYVYBLBgzPtbRrNBRwtlI8S11xZX3niCSWqqDOwKy
+ sB5plgOKY/1ltM3KONUVmqMjMnlt8Ixpe8BRJ36CNJaR1IPUiuCBWtSx82ZHrYSqpGH/
+ piXeXrO73hKUDmu1NMJWX2Z6YFTuv9KaCbqaTaRMI7heFrTwZWB25elsFhCDu+dvbWk5
+ PN2e14okzw3T7bkbRUp2VoSjXPJuoTz2mw8cg31yBiHqBmP/w/Ysgx1uljwRMn5XzxhV
+ 0bkQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756418775; x=1757023575;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=SQERPfGXdIzlO77ltl62NC78xJe8fEdI0otSa33hJaY=;
- b=lIEZWCsgfA3qvuBHoGQtaIlBnu8XeZzD9tH09/bOOyuGq7VC3LmCQR4ea51RUbk4pS
- iqUxf9uCgzcbz4ZQrzF4K8YA94AVZyGP5genl+e7nucUcJ+xTDWw8TlOd7aTTL8d+B3T
- Q9OoBNKxRhrzFp1c6NJ3kOvoESHLYWX3uErnFaxezDsgpvebWqAXHKsEW+I9alZjSmag
- R/IpUmaWl8xkY98IqsEzLXXVTyLUNJrAtt8dWy5t4i2Uk+6dV1XRfTpy7/nBmPTTgIeq
- QvwCRvV2m4dpfuS8SSMsgZ+tOo9ETOuMmmZzGZBQn+wgulTBvr6q5rB/py5mFiLPWuMC
- +tkg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVgXNZnAAfAmKFHmvOplGNYb4wSy8PLAsHX8wECfyw4sITNKoXHzsgSUBjiQDoC+T3F4eZeGQ2CWg==@nongnu.org
-X-Gm-Message-State: AOJu0YzNQ2HI/zWI1iy6J+cYPY9z89psHSJjMy+oZrknR7QqEgtiPsvy
- 8EfR7z/FbNL/s9dN+jGa9mHxzzJClRX2iANnbqx8KguiR4xplQKWqGAwIQ9N9Fi4hw0=
-X-Gm-Gg: ASbGncvjA8H69ngNeJmYGuAVDOf2mb24cWstz3sWXQhn6RwJFiqzTlkGAPNkvqj3IJQ
- j51GTwc7lGa5BsnKAfyEdFH5FrxModHyaP1I6nFBaCsIbLqDvwwhwuKh7Q/Q+QQVpSARfHQ1IXc
- AlRdTd27nV2kGXGRttymRurUPqWGiQC0wiQ8NXwh1Of7CXML67/f1zLVpHGEPYU3m3RSHggSKss
- 3/UNjKRRUHD/E2u0eAXumrczTZE9ihFV/3XaspaP/yQFQlesqrISYoPHgfoU2IyjREYONYP8rbB
- eI7pU26sbvHqA5PA4azwfIN8xTwRa64GzXYa1RZHeFevkkR3oOgFKNdhlfzlKBNV+qAkXsDqxCP
- fK2FhxeR3+G3aXzsZTXBvOLhbxFZ27K6v8f5/gykdaaZAl1O3EaWsxS+l2u+ruw/HQX6FYzNv3B
- 6gYuvT1Ui96A8=
-X-Google-Smtp-Source: AGHT+IG4E7Re26hFZMAwIrLsBg9A7pMvaMPOZfPCWWp1+RqUkTHy9qcE5RJ0uqQjeKlq7DDk8R8XJQ==
-X-Received: by 2002:a5d:5f8e:0:b0:3cd:cf31:d760 with SMTP id
- ffacd0b85a97d-3cdcf31d9e1mr3446500f8f.36.1756418775113; 
- Thu, 28 Aug 2025 15:06:15 -0700 (PDT)
-Received: from [192.168.69.207] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3cf33add294sm832386f8f.29.2025.08.28.15.06.14
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 28 Aug 2025 15:06:14 -0700 (PDT)
-Message-ID: <28aa3b22-e6a5-4aaf-8301-6adb066cee57@linaro.org>
-Date: Fri, 29 Aug 2025 00:06:13 +0200
+ d=1e100.net; s=20230601; t=1756532832; x=1757137632;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=5UYaNg4HgCgaMfA5VDdSs+JLi614JTEFfBBOaKuI9nc=;
+ b=q9rkYrRZEsCIaaDmPUD/ZvA7fFNcxEtZjJdNKdWEVN9cGzP4v1Uda+1v81gyi5OxTl
+ qZzlrRFKTYgpAgLKNuLuKicqZhNJlWqmUrO1KAKnp4/HdBxoOvtteum/EDW2MNo8lJrR
+ dAaxnAo5jb5ftmOIgRpLBRoGKoTu9Wb4HyaHDHsLwi86M1/14rpEFCjefUOqkaS7cdqg
+ fmYxlcLzgENkxgxKmkMGVjLSdwXHiaWlDl88dMufl5Fj2GWWHU45yWT/a6tqeO97k3x1
+ IxjOQHBexDurerUkuXVkEI/5zKMOHM8rVPwDC77QhJn8cNy3vt4mXyknZKSs6DW5T/yn
+ 7NbA==
+X-Gm-Message-State: AOJu0YwcwcOVGN6H0BsO7zqg9znhs8DRSMQHt1SB8/C9eRJ/6J1BQ23L
+ 1uEXjztbFEGMc5iU3ltU632XECjUeEw2oR1VbP9F/MydjVXB++BUvNah9GyBX3P2c3U=
+X-Gm-Gg: ASbGncvxLeoLzcLLcrc9X+j/CkJF5Q9+OSfA3gJn9V4HQA9uHgIXdCY/38OPkhdCEX7
+ J976SQR6XdF66AFajGqP105V25HP3QeTnIU7mVNTjA5p34NgCzsUUW/dMyN7DSxpUH5BM0Bsc/h
+ z9sh7lFYJTGZ/uKzZQeoP7XmXs/p1WQuBwmdVOk+rgwFhHcYsgogehyPcRienSo2FUSuD4DbJrx
+ 07vIlZFCUsrKH9b4XtjyYxi23JHu17vw0l0x576+VTG0lWrvnpZcN9wAcjpWXDK9mwZog5/ammb
+ Y6dq5W4mCjzv/BQPVuscjJgXIq14ohw3PK7YkJVFa6wvXXLRQvfkf1aIXkny2J1qqxoUUxtgT/C
+ JwTECZVmVQpSRnXK+RYpYl++Tn0l9jdqZplGOdQIXfzZu/5+TbIDzs8L07oDtN5M=
+X-Google-Smtp-Source: AGHT+IG8UaJCD6as6AwAgl/t2kHyyJoXdU9G1h2192y5CU6bj8OK4MCUp5nf/2CCBIIKOioDOdIzBA==
+X-Received: by 2002:a17:903:947:b0:248:96e3:6cf8 with SMTP id
+ d9443c01a7336-24944b130f9mr12714935ad.24.1756532831961; 
+ Fri, 29 Aug 2025 22:47:11 -0700 (PDT)
+Received: from stoup.. (122-150-204-179.dyn.ip.vocus.au. [122.150.204.179])
+ by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-2490658999fsm40852715ad.112.2025.08.29.22.47.09
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 29 Aug 2025 22:47:11 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org,
+	Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Subject: [PATCH v4 55/84] target/arm: Emit HSTR trap exception out of line
+Date: Sat, 30 Aug 2025 15:40:59 +1000
+Message-ID: <20250830054128.448363-56-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250830054128.448363-1-richard.henderson@linaro.org>
+References: <20250830054128.448363-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 37/47] hw/arm/xlnx-versal: add a per_cluster_gic switch
- to VersalCpuClusterMap
-To: Luc Michel <luc.michel@amd.com>, qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Francisco Iglesias <francisco.iglesias@amd.com>,
- "Edgar E . Iglesias" <edgar.iglesias@amd.com>,
- Alistair Francis <alistair@alistair23.me>,
- Frederic Konrad <frederic.konrad@amd.com>,
- Sai Pavan Boddu <sai.pavan.boddu@amd.com>
-References: <20250822151614.187856-1-luc.michel@amd.com>
- <20250822151614.187856-38-luc.michel@amd.com>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20250822151614.187856-38-luc.michel@amd.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::430;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x430.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::536;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x536.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -109,18 +100,46 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 22/8/25 17:16, Luc Michel wrote:
-> Add the per_cluster_gic switch to the VersalCpuClusterMap structure.
-> When set, this indicates that a GIC instance should by created
-> per-cluster instead of globally for the whole RPU or APU. This is in
-> preparation for versal2.
-> 
-> Signed-off-by: Luc Michel <luc.michel@amd.com>
-> Reviewed-by: Francisco Iglesias <francisco.iglesias@amd.com>
-> ---
->   hw/arm/xlnx-versal.c | 15 +++++++++++++--
->   1 file changed, 13 insertions(+), 2 deletions(-)
+Use delay_exception_el to move the exception out of line.
+Use TCG_COND_TSTNE instead of separate AND+NE.
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ target/arm/tcg/translate.c | 18 ++++--------------
+ 1 file changed, 4 insertions(+), 14 deletions(-)
+
+diff --git a/target/arm/tcg/translate.c b/target/arm/tcg/translate.c
+index c4dd3a747c..f6fdfaa551 100644
+--- a/target/arm/tcg/translate.c
++++ b/target/arm/tcg/translate.c
+@@ -3033,21 +3033,11 @@ static void do_coproc_insn(DisasContext *s, int cpnum, int is64,
+ 
+         if (maskbit != 4 && maskbit != 14) {
+             /* T4 and T14 are RES0 so never cause traps */
+-            TCGv_i32 t;
+-            DisasLabel over = gen_disas_label(s);
++            TCGLabel *fail = delay_exception_el(s, EXCP_UDEF, syndrome, 2);
++            TCGv_i32 t =
++                load_cpu_offset(offsetoflow32(CPUARMState, cp15.hstr_el2));
+ 
+-            t = load_cpu_offset(offsetoflow32(CPUARMState, cp15.hstr_el2));
+-            tcg_gen_andi_i32(t, t, 1u << maskbit);
+-            tcg_gen_brcondi_i32(TCG_COND_EQ, t, 0, over.label);
+-
+-            gen_exception_insn_el(s, 0, EXCP_UDEF, syndrome, 2);
+-            /*
+-             * gen_exception_insn() will set is_jmp to DISAS_NORETURN,
+-             * but since we're conditionally branching over it, we want
+-             * to assume continue-to-next-instruction.
+-             */
+-            s->base.is_jmp = DISAS_NEXT;
+-            set_disas_label(s, over);
++            tcg_gen_brcondi_i32(TCG_COND_TSTNE, t, 1u << maskbit, fail);
+         }
+     }
+ 
+-- 
+2.43.0
 
 

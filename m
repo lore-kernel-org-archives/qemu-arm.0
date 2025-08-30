@@ -4,132 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77D37CA0FFF
-	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 16:07:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12A30CA0EFF
+	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 16:07:34 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1usNf0-0005CR-8O; Sat, 30 Aug 2025 11:38:34 -0400
+	id 1usNyy-00078a-ON; Sat, 30 Aug 2025 11:59:13 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armenon@redhat.com>)
- id 1us5Np-0006ZY-S6
- for qemu-arm@nongnu.org; Fri, 29 Aug 2025 16:07:38 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armenon@redhat.com>)
- id 1us5Nm-0005GQ-TO
- for qemu-arm@nongnu.org; Fri, 29 Aug 2025 16:07:36 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1756498054;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Ex70HvFHCA+0PjVijQlAjy4Lm+10k8XimyJ545WFrYo=;
- b=Amei9wlAhTIKjdktelf+u/yQsCYT6Li5Gf2AEI0puykzLMdmuKj96K/SmP+EyTyybkAL31
- uFaRKb0bOTtv8biymhLF4maOxIdFe88iyVAae9bYQxib314RjiQKmTgjiBMFAxwsb82lz4
- MKz4zpl2HoYr33Lu1Bc0UZ9FMrpbH0g=
-Received: from mail-pj1-f70.google.com (mail-pj1-f70.google.com
- [209.85.216.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-9-mLltPHlgMKKY0mfu8BDS9g-1; Fri, 29 Aug 2025 16:07:32 -0400
-X-MC-Unique: mLltPHlgMKKY0mfu8BDS9g-1
-X-Mimecast-MFC-AGG-ID: mLltPHlgMKKY0mfu8BDS9g_1756498051
-Received: by mail-pj1-f70.google.com with SMTP id
- 98e67ed59e1d1-3259ff53c2eso3591775a91.1
- for <qemu-arm@nongnu.org>; Fri, 29 Aug 2025 13:07:32 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1usERg-0007Zh-VQ
+ for qemu-arm@nongnu.org; Sat, 30 Aug 2025 01:48:14 -0400
+Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1usERe-00053s-RR
+ for qemu-arm@nongnu.org; Sat, 30 Aug 2025 01:48:12 -0400
+Received: by mail-pl1-x62f.google.com with SMTP id
+ d9443c01a7336-248cb0b37dfso26143145ad.3
+ for <qemu-arm@nongnu.org>; Fri, 29 Aug 2025 22:48:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1756532889; x=1757137689; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=Bac99cWBoODM0lZjzPV8FafpKsc60jTDKb6XVoHXo24=;
+ b=n8iVZXGAFq/SZyurglApvl+Sook3Um1klhvTQmlkti//w4G6PW3yGOduOKwayHSmAz
+ xHY6e7n6ILnY80f0MwMqOxdx1dBR14rzJjazzmaP8AKI++ngDcfJiUFHiuhRaQQSHiJL
+ AI0Wc7SBtlztTaPcPqJEIhogvZXGQ/BqnPvVxLR0pRdT05hXLr4Z3vSq38LwtA74E9MN
+ aYwARVJX0WrSkNv57oFSsX42XGGWcSAqiQjdN8UggW50SH9ICqWV3mEPZcqrYeLJ4N6c
+ VLZB6CLjA+OkSzTT6peCnObaDVqnywqyc5PG5Rhh5ZEQ9oCbs4gQDtCyb+UuBIfoqu0i
+ 1Wrw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756498051; x=1757102851;
- h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
- :mime-version:subject:date:from:x-gm-message-state:from:to:cc
+ d=1e100.net; s=20230601; t=1756532889; x=1757137689;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=Ex70HvFHCA+0PjVijQlAjy4Lm+10k8XimyJ545WFrYo=;
- b=NavWL0c5isGJkcO1CuUPoibAsyOGdgcT5R+KHtec2zUODRG1t9JJ6YXmMbtsi/hMla
- WterwJJCXBEpbF5w8y7/GdLtytSLOIK1gpsbnUiwxpKW2Cn4UwwJd2mlZi0IiTaIb1IU
- cCWowOCDxL/K99RmbNGPcuY+9cbGIcodShbKtiGXI1y63Uf9eHyiuKyT76tzolBa5398
- 6MTo5t7ifbxK1sBSHVh0/EgH51oGeDg0wjsAfQ6wLA4EVdxkKsEOFsfKgBOmZlvifTzu
- fjpzOhPc2rNufnwpD8moWGEbqARbcSvu2RMhFKi/FAq4aCSkfP9Gjwuomy1mQodzgMvl
- 87PA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCW/LduUf7UXj1L+bJ9Wkco7dbCrkcxcqS58tZSdgZ7+1Jz8D9K895dhczNqvTUOdjsDY9kn/j8nuA==@nongnu.org
-X-Gm-Message-State: AOJu0YyFf14AaO15SbsCEcGFg/S5sMPgdjkDTHs4KCzZdtVzXGmZ74MD
- XKJRcq4yM1XVdusXAW37kxauMYElTAors25HU3/uDhnEANs74TRTlndheVrYdluAvQgBstgVSJx
- 8rM6/+CO0x4AgBHhMCcomE4us0IhbB0UGSL6e0V29zxr1JjQsjpvw3Q==
-X-Gm-Gg: ASbGncvwiCHKvlrm9jMRT53CA0V+VUJa7UF97pR1/gOj1eH44ngc46LVTl7bs1hKdhV
- Eo3a2YJ3EuEKSE1HjD0AU+X4QXDRi8PZJbcjP3u+pg5IKDLU6mMg1JWMP1gW70RKhaFaMB4wBm1
- h6lNXjTpZPHeyRMwUMmCwvQ0UzDZGGFROsLUl6DvxLbTK4RL0ybO84JFw+PxFBOYE0XafmCzLdH
- ZYCjgz6Tr2vFkL1k10whUWcJRcBUiXs0TR9OtB7bfgVUosOseAZOnFS1Go3iVKWbslcqzZ41xIP
- +FBLHIq0y55fcZInlvHOTSz103T5lpiHjsrKabzg817OBrCh6IE0lg==
-X-Received: by 2002:a17:90b:2f84:b0:327:e9f4:4de5 with SMTP id
- 98e67ed59e1d1-327e9f4506cmr4193748a91.23.1756498051490; 
- Fri, 29 Aug 2025 13:07:31 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGRwbcsjVEx1dz1w0nWHcTpvNQLW93gmAhnSc1tPMLDrZo+IZNZizujRtPAZz9Vsrb4ds8I6g==
-X-Received: by 2002:a17:90b:2f84:b0:327:e9f4:4de5 with SMTP id
- 98e67ed59e1d1-327e9f4506cmr4193695a91.23.1756498051064; 
- Fri, 29 Aug 2025 13:07:31 -0700 (PDT)
-Received: from armenon-kvm.bengluru.csb ([49.47.195.108])
+ bh=Bac99cWBoODM0lZjzPV8FafpKsc60jTDKb6XVoHXo24=;
+ b=a9zRFkivMERiOLMoonvLl70zceLTg3Eokh+vqMOJkACH63QhQuHNOECQmIHiCLTBH8
+ wBqG1/i79wRksdylR9QmOPbmwNzZZsSlBAd4YOzBl55JzeGLAtcmuKek9JsOA/+O3/k4
+ WkGiPVpbkkTKVLJQvA7tDbSlsLjlt4tdT3haV3bNx+KHhEKNRJaAuAwjDfDCrRYx/clR
+ VOWy/BbqeLcvYLzpOr3qiCFq6tEsMru7/FHU+gkowfe66wih3RVDqwURczoVe9Gw+epR
+ WVvp5jH5DME04Ca/q7UAk0L6MSN2YWWXvGnd98gcqD0YmewUruVwIWvtmfCGP+Z7Gl/1
+ P8SA==
+X-Gm-Message-State: AOJu0YwTKzOVB0N0ckA9WyMlngTjnXZGqsbbPJzspw+gPwQqpBY0YYwt
+ XpER7fMaEms5bQq4LXqiBqaUUL4OermyD0NNxPSJx6BNbi+8y7H9vX0fKVkbu5g0DWFd5CYVQZ6
+ n0XC00KE=
+X-Gm-Gg: ASbGncvh2XirVmvvpl50MMBAN4O0AA1iSPeTORz0wBVXzCpkzCtn3HtqHJj+FLYJPPn
+ PZqFUgiAyaT4HCyD5xuTwvtBHxhddhu1Re1anq0GvoMCXpwhyYLAVRmSsPScRyEO2IpWyK7zMGp
+ wAjPXWhqdScSetO0WGHwHo7t4sDbVVTRHGZBnail5cRXzIm3bnVTPcsxkle0FR/qtnCgH+MaW92
+ mGiucRCuSpeB+H3eUWQjeiZrgSWadNTf4Z4P008lTbBjbhW7aHXeyaZNKKeLv2Zy5xwWFaeXrcg
+ MHSoXArvMtrt2ZKsRJcJ+UkdqZljmZ5DcOhKXEt3oumjjVSBvDOZF2WXIiFBGP6WYOi4cE+Pq3s
+ Lx4BpjFPQIPVXjqCpkfrXgWgkXsytJU+fhX92IkaqXnthsBES91/VZY5ugrXd3MM=
+X-Google-Smtp-Source: AGHT+IGXaQpscm7/1zUhEeaoZ9ooDyQHhqZN0Z+WC+sNrG55TUaAuzpT/bs2zdf6XbdLvnzkq4mM0w==
+X-Received: by 2002:a17:902:e847:b0:248:9c98:2cf4 with SMTP id
+ d9443c01a7336-24944aeebf8mr15656665ad.46.1756532889443; 
+ Fri, 29 Aug 2025 22:48:09 -0700 (PDT)
+Received: from stoup.. (122-150-204-179.dyn.ip.vocus.au. [122.150.204.179])
  by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-327d8f66f16sm3570543a91.0.2025.08.29.13.07.17
+ d9443c01a7336-2490658999fsm40852715ad.112.2025.08.29.22.48.07
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 29 Aug 2025 13:07:30 -0700 (PDT)
-From: Arun Menon <armenon@redhat.com>
-Date: Sat, 30 Aug 2025 01:32:03 +0530
-Subject: [PATCH v13 23/27] migration: Capture error in
- postcopy_ram_listen_thread()
-MIME-Version: 1.0
-Message-Id: <20250830-propagate_tpm_error-v13-23-a4e777b7eb2c@redhat.com>
-References: <20250830-propagate_tpm_error-v13-0-a4e777b7eb2c@redhat.com>
-In-Reply-To: <20250830-propagate_tpm_error-v13-0-a4e777b7eb2c@redhat.com>
+ Fri, 29 Aug 2025 22:48:09 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: Peter Xu <peterx@redhat.com>, Fabiano Rosas <farosas@suse.de>, 
- =?utf-8?q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>, 
- Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>, 
- Dmitry Osipenko <dmitry.osipenko@collabora.com>, 
- "Michael S. Tsirkin" <mst@redhat.com>, 
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
- Cornelia Huck <cohuck@redhat.com>, Halil Pasic <pasic@linux.ibm.com>, 
- Eric Farman <farman@linux.ibm.com>, Thomas Huth <thuth@redhat.com>, 
- Christian Borntraeger <borntraeger@linux.ibm.com>, 
- Matthew Rosato <mjrosato@linux.ibm.com>, 
- Richard Henderson <richard.henderson@linaro.org>, 
- David Hildenbrand <david@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>, 
- Nicholas Piggin <npiggin@gmail.com>, 
- Harsh Prateek Bora <harshpb@linux.ibm.com>, 
- Paolo Bonzini <pbonzini@redhat.com>, Fam Zheng <fam@euphon.net>, 
- Alex Williamson <alex.williamson@redhat.com>, 
- =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>, 
- Steve Sistare <steven.sistare@oracle.com>, 
- =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>, 
- qemu-s390x@nongnu.org, qemu-ppc@nongnu.org, 
- Hailiang Zhang <zhanghailiang@xfusion.com>, 
- Stefan Berger <stefanb@linux.vnet.ibm.com>, 
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
- Arun Menon <armenon@redhat.com>
-X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2083; i=armenon@redhat.com;
- h=from:subject:message-id; bh=dpJRFzd7gm8KScLE3AM8NwdARIO3OP6+DoU1jE8PGBM=;
- b=owGbwMvMwCWWVaVqcZPfqI/xtFoSQ8Ymdj+hxWJtefONk/7cWr6jvmz/lTtpd55YFAkuaeKzP
- V1fsfdaRykLgxgXg6yYIkvD1wDZpoDCiEjbl9dh5rAygQxh4OIUgIn45jP895gSmx2wP9Doypft
- bznup3yLvLzp1RPNPYm/2LgYd4q6tTIyHFZMVZJi28MT+Ty6mDuv81KQ1rxPbqxs+W28vbn+Dgd
- YAA==
-X-Developer-Key: i=armenon@redhat.com; a=openpgp;
- fpr=80F5501D82507158593DE9D76A7A2538D90F328E
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: ge0Ht5b9mGEVBZ-SEz9f81XQRNx0TljqgLSiF_iM2dg_1756498051
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="utf-8"
+Cc: qemu-arm@nongnu.org,
+	Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Subject: [PATCH v4 76/84] linux-user/aarch64: Release gcs stack on thread exit
+Date: Sat, 30 Aug 2025 15:41:20 +1000
+Message-ID: <20250830054128.448363-77-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250830054128.448363-1-richard.henderson@linaro.org>
+References: <20250830054128.448363-1-richard.henderson@linaro.org>
+MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=armenon@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62f;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -145,55 +101,30 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This is an incremental step in converting vmstate loading
-code to report error via Error objects instead of directly
-printing it to console/monitor.
-postcopy_ram_listen_thread() calls qemu_loadvm_state_main()
-to load the vm, and in case of a failure, it should set the error
-in the migration object.
-
-Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-Reviewed-by: Fabiano Rosas <farosas@suse.de>
-Signed-off-by: Arun Menon <armenon@redhat.com>
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- migration/savevm.c | 8 ++++++--
- 1 file changed, 6 insertions(+), 2 deletions(-)
+ linux-user/syscall.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-diff --git a/migration/savevm.c b/migration/savevm.c
-index b0fd51d0f142c30ce21bdc02204ce947283fea49..71f4d8399349934134c2c02609d3ede6f61754f8 100644
---- a/migration/savevm.c
-+++ b/migration/savevm.c
-@@ -2095,6 +2095,7 @@ static void *postcopy_ram_listen_thread(void *opaque)
-     QEMUFile *f = mis->from_src_file;
-     int load_res;
-     MigrationState *migr = migrate_get_current();
-+    Error *local_err = NULL;
+diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+index 91210775ed..dfe114ceb3 100644
+--- a/linux-user/syscall.c
++++ b/linux-user/syscall.c
+@@ -9309,6 +9309,12 @@ static abi_long do_syscall1(CPUArchState *cpu_env, int num, abi_long arg1,
+                              FUTEX_WAKE, INT_MAX, NULL, NULL, 0);
+             }
  
-     object_ref(OBJECT(migr));
- 
-@@ -2111,7 +2112,7 @@ static void *postcopy_ram_listen_thread(void *opaque)
-     qemu_file_set_blocking(f, true);
- 
-     /* TODO: sanity check that only postcopiable data will be loaded here */
--    load_res = qemu_loadvm_state_main(f, mis, &error_fatal);
-+    load_res = qemu_loadvm_state_main(f, mis, &local_err);
- 
-     /*
-      * This is tricky, but, mis->from_src_file can change after it
-@@ -2137,7 +2138,10 @@ static void *postcopy_ram_listen_thread(void *opaque)
-                          __func__, load_res);
-             load_res = 0; /* prevent further exit() */
-         } else {
--            error_report("%s: loadvm failed: %d", __func__, load_res);
-+            error_prepend(&local_err,
-+                          "loadvm failed during postcopy: %d: ", load_res);
-+            migrate_set_error(migr, local_err);
-+            error_report_err(local_err);
-             migrate_set_state(&mis->state, MIGRATION_STATUS_POSTCOPY_ACTIVE,
-                                            MIGRATION_STATUS_FAILED);
-         }
-
++#ifdef TARGET_AARCH64
++            if (ts->gcs_base) {
++                target_munmap(ts->gcs_base, ts->gcs_size);
++            }
++#endif
++
+             object_unparent(OBJECT(cpu));
+             object_unref(OBJECT(cpu));
+             /*
 -- 
-2.51.0
+2.43.0
 
 

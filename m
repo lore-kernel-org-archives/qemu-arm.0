@@ -4,133 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65913CA0FFF
-	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 15:47:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2DE92CA0EFF
+	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 15:56:25 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1usNf9-0005qe-Cd; Sat, 30 Aug 2025 11:38:43 -0400
+	id 1usNvo-00076m-Ud; Sat, 30 Aug 2025 11:55:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armenon@redhat.com>)
- id 1us5Mi-0006Cy-Lh
- for qemu-arm@nongnu.org; Fri, 29 Aug 2025 16:06:28 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armenon@redhat.com>)
- id 1us5Mg-00057u-U8
- for qemu-arm@nongnu.org; Fri, 29 Aug 2025 16:06:28 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1756497986;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=EK8ZniS31eKfAuecJyHjMuA5swX2F7mkJn3tAORFulo=;
- b=GXClXWebli5hyVEsHLe3hdaUEmmSJhbVhGLLPLdnGo5EH1a9SoE1zvQvb5yhreL5fxaKZa
- 8VLYUe/zO4AfnIEdVf9qXslvFyZEIPcqMdpUVLMO758vTg79StObVHVUtU9IQYEma6ol6R
- bLGqXzie2abrTgygcmU6rUAVfSziA8Q=
-Received: from mail-pl1-f198.google.com (mail-pl1-f198.google.com
- [209.85.214.198]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-671-gPJu2F10N6mOgglrvldipg-1; Fri, 29 Aug 2025 16:06:24 -0400
-X-MC-Unique: gPJu2F10N6mOgglrvldipg-1
-X-Mimecast-MFC-AGG-ID: gPJu2F10N6mOgglrvldipg_1756497984
-Received: by mail-pl1-f198.google.com with SMTP id
- d9443c01a7336-2445803f0cfso32572325ad.1
- for <qemu-arm@nongnu.org>; Fri, 29 Aug 2025 13:06:24 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1usELd-0005qv-H7
+ for qemu-arm@nongnu.org; Sat, 30 Aug 2025 01:41:58 -0400
+Received: from mail-pf1-x42e.google.com ([2607:f8b0:4864:20::42e])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1usELb-00045O-TO
+ for qemu-arm@nongnu.org; Sat, 30 Aug 2025 01:41:57 -0400
+Received: by mail-pf1-x42e.google.com with SMTP id
+ d2e1a72fcca58-7720f23123dso2702348b3a.2
+ for <qemu-arm@nongnu.org>; Fri, 29 Aug 2025 22:41:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1756532514; x=1757137314; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=ZIUi24UCtA+WCzxRmM2e3Q9u+Kr20hlCK3lal507EEI=;
+ b=wx5WYltEomoEScrDLFeAXZD5WabZqwXvocGd/Tm/MpNdgj4Q9xlduw+nNnyEXYb2Wc
+ WSaJejnkme/BKTB/d5sUQ7RjtluYtjxnnZShOxbC1u5HDRScphddcD3/tcZ/2D7xnzcY
+ fK6bBVAnU6QhIGO7TP/wzPiq79L8q5F00J0rFrIVU0/9+s3dEIXLH1WFCtTL7c5ArI64
+ +KM79S3XuERg8za32lzSTcraBCE4JrdqkKlwybW/gb/tzw5VksdHaTfZUhamY4FwLJy7
+ xe/h1eAwwEXA/raxpklWuT61rygoSzG/umuT01yTBFn8kDd1OGrr6SYVHvhty+Mx2vTo
+ a28g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756497984; x=1757102784;
- h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
- :mime-version:subject:date:from:x-gm-message-state:from:to:cc
+ d=1e100.net; s=20230601; t=1756532514; x=1757137314;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=EK8ZniS31eKfAuecJyHjMuA5swX2F7mkJn3tAORFulo=;
- b=uu4VaYZNnMzBLzp8/nbM+7qnpuO7yFAZQT+s8MkCtf0NEmu2PobeAKxWdVptrxWjCx
- 4zMX5bEKewqR/a+NWyVhljWRd5Q/ty0uSs6yFMpQRN/0vayHNknMoED05tLz82+E7uOk
- +PStn433rSDZJ4NEvpfhMKA0Q6UpsFGUuvalWAKNQm8YU91zJypTy2TNUwjM59kVIO1R
- L0/dWW63s1V62xuvotrTkwGN8fXkM/qRB7mGGVK+MPr3fBchEyusyJHYcw8u+IB8wcR/
- wgnOI8B2SDm8vR1ViXCd/cTPwQYd/6tsw6XwAT0JUoVxP/2vV6dHkb/DkJ4/HozZ45S9
- rB3g==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUOE62VueGVCVcbHVZk/EBknkmyLxOwn/Ohtu/bnETaS447zGEacwLPxFLas4qoZwFfKiYGtiq7+g==@nongnu.org
-X-Gm-Message-State: AOJu0YwVQx+6rj5mI2fmh7MbWD8Kzomcy5QrNYzgyRk0yzpT6KCq6H2q
- 3ABfED21EZwBt/B0OY6LoRUx/y0Zjkz9mh/ES/nw8fgPj0YYrnLNUl2/jJv2k0cVBw4r7hn1CSC
- ABZUFE8k2oR+5IMBSHciysaav89N4lwiyDJHnKp47UETiFQ2iCWlXVg==
-X-Gm-Gg: ASbGncumhk6EvxC6celACQema9Owj108RNmWci7woxHIXRrJdJn/38Cwr5ndWjBmCFq
- D2A5Yu+kILBeJQZ6dBwihDrs5RWYZjZnQTKY+lfsU1igrKdOBf873HxXRYFXM3XNG5xD7iqYIac
- C1lLw7nn4SKI3v0sl9zDLgv9y2sNUndLxUNNcj25F0rtyBbuL9BMaP0atPzfjUBq6vPMa4Eb/YQ
- cctIui9uJ5/hU7kls4W708qTTZLVKYxpjdLuPmeDGYvBQaCvE0wiK4wsWEGhP6Vc17e7rfDEKnz
- PVhx1KHawG/ALGE3o/jdf7ol0WLiLwedz2Ao9UZdVm7UOndUUdF2gA==
-X-Received: by 2002:a17:902:e54f:b0:246:a532:3343 with SMTP id
- d9443c01a7336-246a5323a3cmr315115635ad.10.1756497983756; 
- Fri, 29 Aug 2025 13:06:23 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGaksZqggjQ8NuqRcRP2WUGJ0hf1LDRm0cmz7dgENVz/im4xsVjGHviXLKSxNPegdTOKSJ8Wg==
-X-Received: by 2002:a17:902:e54f:b0:246:a532:3343 with SMTP id
- d9443c01a7336-246a5323a3cmr315115155ad.10.1756497983318; 
- Fri, 29 Aug 2025 13:06:23 -0700 (PDT)
-Received: from armenon-kvm.bengluru.csb ([49.47.195.108])
+ bh=ZIUi24UCtA+WCzxRmM2e3Q9u+Kr20hlCK3lal507EEI=;
+ b=JBYLAgQgI5/NCDNaY05DQGt883RZOM6dlKDj5OX9hxsiF+On9+iEIZOUe/dboVK0Mu
+ MUMUHMOT0E1ZAj3Bm1k2uytx3hxJmZI9O+7c3iugUR2U0hbYNbfceS/uB3pPFYE4BXht
+ lZ8/jnfwpvRMW22l/44uqD8Yugw85WRo4Y5MkLIqqSdGzdJRA5u0IuK96foIUBRbVEkU
+ gQZFHdbRginVy/DsbBZ47r3vuKys9ggR/1k4FMvtpK02TrD3pFjMxipGjKeNLBgluj1E
+ vQnWqYK8gJQgQmfd6Mpad6NIebOIif6Atu3nLR2vXdNjJYkEAj8Pj4D2P0Q7O6d89Ddg
+ P4rg==
+X-Gm-Message-State: AOJu0YxNsiqvuzomo0+1dBE/RBFVojU2xHyGLMrpILhulXXZfxwNPjxE
+ X9g/nFoK1MBDexwmj5pj7OVi9V+3eIgP2mJNGQqLKmYfJoTckTOGcSHZPgBC4bamYEk=
+X-Gm-Gg: ASbGncvXSsrTec35hh/2wQSUE1r9isTiEfwyO5Wnn8IcXycf7Vf6jRD3wKdO/NHIbZM
+ 5qP+OpIWufCbfCvZO4Q5fe6sMjSShAHbN+T3ferO0rcUU4EvlhdPuPYOsfZw/hF0b+BprErGyOw
+ wPtbaoOOAWHxkyQlaoXlj/Wv2h6as5oB63ay5i0GF+67ghdXJcQYab/IQ8buQ0reQj3ckBsdOZy
+ R6yaz366uz6k9Y3EKARjNh330j3FDm0+01fWb2NVgAgLxW0UleghTmh+VVmbmEIjONPijiZWIcN
+ LDny4y1REGfYHnO77sB9NWW6L4bHXp1KGZ5a5M2s5CkPg11SjMXOb/RjqJK0w3fLu2NwNHXXizw
+ BMLpKWEv8qgv9WqWHHx6z2KchloK7XLc0OWSjyG8PjywKW+Z965DtdQ6sS+mz3QAx/cJ0YaI=
+X-Google-Smtp-Source: AGHT+IGmX6P3MRUNZaf529VQMzmLxg+zkTp+rqzPRreBm7ms8M7liNkMdVMIuyWnSiGf5kdPDMGLlg==
+X-Received: by 2002:a05:6a20:3ca8:b0:243:78a:829e with SMTP id
+ adf61e73a8af0-243d6f7e7fbmr1474092637.55.1756532514028; 
+ Fri, 29 Aug 2025 22:41:54 -0700 (PDT)
+Received: from stoup.. (122-150-204-48.dyn.ip.vocus.au. [122.150.204.48])
  by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-327d8f66f16sm3570543a91.0.2025.08.29.13.06.08
+ 41be03b00d2f7-b4d96829a66sm2435905a12.6.2025.08.29.22.41.51
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 29 Aug 2025 13:06:23 -0700 (PDT)
-From: Arun Menon <armenon@redhat.com>
-Date: Sat, 30 Aug 2025 01:31:57 +0530
-Subject: [PATCH v13 17/27] migration: push Error **errp into
- loadvm_postcopy_handle_run()
-MIME-Version: 1.0
-Message-Id: <20250830-propagate_tpm_error-v13-17-a4e777b7eb2c@redhat.com>
-References: <20250830-propagate_tpm_error-v13-0-a4e777b7eb2c@redhat.com>
-In-Reply-To: <20250830-propagate_tpm_error-v13-0-a4e777b7eb2c@redhat.com>
+ Fri, 29 Aug 2025 22:41:53 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: Peter Xu <peterx@redhat.com>, Fabiano Rosas <farosas@suse.de>, 
- =?utf-8?q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>, 
- Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>, 
- Dmitry Osipenko <dmitry.osipenko@collabora.com>, 
- "Michael S. Tsirkin" <mst@redhat.com>, 
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
- Cornelia Huck <cohuck@redhat.com>, Halil Pasic <pasic@linux.ibm.com>, 
- Eric Farman <farman@linux.ibm.com>, Thomas Huth <thuth@redhat.com>, 
- Christian Borntraeger <borntraeger@linux.ibm.com>, 
- Matthew Rosato <mjrosato@linux.ibm.com>, 
- Richard Henderson <richard.henderson@linaro.org>, 
- David Hildenbrand <david@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>, 
- Nicholas Piggin <npiggin@gmail.com>, 
- Harsh Prateek Bora <harshpb@linux.ibm.com>, 
- Paolo Bonzini <pbonzini@redhat.com>, Fam Zheng <fam@euphon.net>, 
- Alex Williamson <alex.williamson@redhat.com>, 
- =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>, 
- Steve Sistare <steven.sistare@oracle.com>, 
- =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>, 
- qemu-s390x@nongnu.org, qemu-ppc@nongnu.org, 
- Hailiang Zhang <zhanghailiang@xfusion.com>, 
- Stefan Berger <stefanb@linux.vnet.ibm.com>, 
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
- Arun Menon <armenon@redhat.com>, 
- =?utf-8?q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
-X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1888; i=armenon@redhat.com;
- h=from:subject:message-id; bh=Bc7pNWeaQQJR7xn/IMqCNxln9K0U+dn3FXOfz+z8MlM=;
- b=owGbwMvMwCWWVaVqcZPfqI/xtFoSQ8Ymdt/GP3zhWkejXE12KHN/+leSIp+5xzVJ8+iFtTJ7m
- N4XK8zpKGVhEONikBVTZGn4GiDbFFAYEWn78jrMHFYmkCEMXJwCMBFHTob/Xjt4xSzzNwvsFtrx
- XK6QbbaTWdwlPf6Us4+vfLPS9/14hZFhxk57zj+3Q940P992LTsjZ/KJEwcPyNw58OaOlWbjpCv
- 7mAA=
-X-Developer-Key: i=armenon@redhat.com; a=openpgp;
- fpr=80F5501D82507158593DE9D76A7A2538D90F328E
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: mf53IkuzJm2BEg9Tkt6N9aMwgZ-dyJ0KkiyrOuZk2d0_1756497984
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="utf-8"
+Cc: qemu-arm@nongnu.org,
+	Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Subject: [PATCH v4 07/84] target/arm: Introduce get_phys_addr_for_at
+Date: Sat, 30 Aug 2025 15:40:11 +1000
+Message-ID: <20250830054128.448363-8-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250830054128.448363-1-richard.henderson@linaro.org>
+References: <20250830054128.448363-1-richard.henderson@linaro.org>
+MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=armenon@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42e;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -146,54 +100,120 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This is an incremental step in converting vmstate loading
-code to report error via Error objects instead of directly
-printing it to console/monitor.
-It is ensured that loadvm_postcopy_handle_run() must report an error
-in errp, in case of failure.
+Rename get_phys_addr_with_space_nogpc for its only
+caller, do_ats_write.  Drop the MemOp memop argument
+as it doesn't make sense in the new context.  Replace
+the access_type parameter with prot_check.
 
-Reviewed-by: Fabiano Rosas <farosas@suse.de>
-Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
-Signed-off-by: Arun Menon <armenon@redhat.com>
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- migration/savevm.c | 10 +++-------
- 1 file changed, 3 insertions(+), 7 deletions(-)
+ target/arm/internals.h     | 18 +++++++-----------
+ target/arm/ptw.c           | 21 ++++++++++++++-------
+ target/arm/tcg/cpregs-at.c | 11 ++---------
+ 3 files changed, 23 insertions(+), 27 deletions(-)
 
-diff --git a/migration/savevm.c b/migration/savevm.c
-index c681d6d21af356a97645f2a0d36e7440e3bd95c6..3ab20bd3de980ecfd79ab29697e3e1527ab3e73c 100644
---- a/migration/savevm.c
-+++ b/migration/savevm.c
-@@ -2273,13 +2273,13 @@ static void loadvm_postcopy_handle_run_bh(void *opaque)
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index 899242e572..8782594b77 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -1602,25 +1602,21 @@ bool get_phys_addr(CPUARMState *env, vaddr address,
+     __attribute__((nonnull));
+ 
+ /**
+- * get_phys_addr_with_space_nogpc: get the physical address for a virtual
+- *                                 address
++ * get_phys_addr_for_at:
+  * @env: CPUARMState
+  * @address: virtual address to get physical address for
+- * @access_type: 0 for read, 1 for write, 2 for execute
+- * @memop: memory operation feeding this access, or 0 for none
++ * @prot_check: PAGE_{READ,WRITE,EXEC}, or 0
+  * @mmu_idx: MMU index indicating required translation regime
+  * @space: security space for the access
+  * @result: set on translation success.
+  * @fi: set to fault info if the translation fails
+  *
+- * Similar to get_phys_addr, but use the given security space and don't perform
+- * a Granule Protection Check on the resulting address.
++ * Similar to get_phys_addr, but for use by AccessType_AT, i.e.
++ * system instructions for address translation.
+  */
+-bool get_phys_addr_with_space_nogpc(CPUARMState *env, vaddr address,
+-                                    MMUAccessType access_type, MemOp memop,
+-                                    ARMMMUIdx mmu_idx, ARMSecuritySpace space,
+-                                    GetPhysAddrResult *result,
+-                                    ARMMMUFaultInfo *fi)
++bool get_phys_addr_for_at(CPUARMState *env, vaddr address, unsigned prot_check,
++                          ARMMMUIdx mmu_idx, ARMSecuritySpace space,
++                          GetPhysAddrResult *result, ARMMMUFaultInfo *fi)
+     __attribute__((nonnull));
+ 
+ bool pmsav8_mpu_lookup(CPUARMState *env, uint32_t address,
+diff --git a/target/arm/ptw.c b/target/arm/ptw.c
+index 5d85610de2..8925c9a610 100644
+--- a/target/arm/ptw.c
++++ b/target/arm/ptw.c
+@@ -3545,18 +3545,25 @@ static bool get_phys_addr_gpc(CPUARMState *env, S1Translate *ptw,
+     return false;
  }
  
- /* After all discards we can start running and asking for pages */
--static int loadvm_postcopy_handle_run(MigrationIncomingState *mis)
-+static int loadvm_postcopy_handle_run(MigrationIncomingState *mis, Error **errp)
+-bool get_phys_addr_with_space_nogpc(CPUARMState *env, vaddr address,
+-                                    MMUAccessType access_type, MemOp memop,
+-                                    ARMMMUIdx mmu_idx, ARMSecuritySpace space,
+-                                    GetPhysAddrResult *result,
+-                                    ARMMMUFaultInfo *fi)
++bool get_phys_addr_for_at(CPUARMState *env, vaddr address,
++                          unsigned prot_check, ARMMMUIdx mmu_idx,
++                          ARMSecuritySpace space, GetPhysAddrResult *result,
++                          ARMMMUFaultInfo *fi)
  {
-     PostcopyState ps = postcopy_state_get();
+     S1Translate ptw = {
+         .in_mmu_idx = mmu_idx,
+         .in_space = space,
++        .in_prot_check = prot_check,
+     };
+-    return get_phys_addr_nogpc(env, &ptw, address, access_type,
+-                               memop, result, fi);
++    /*
++     * I_MXTJT: Granule protection checks are not performed on the final
++     * address of a successful translation.  This is a translation not a
++     * memory reference, so MMU_DATA_LOAD is arbitrary (the exact protection
++     * check is handled or bypassed by .in_prot_check) and "memop = MO_8"
++     * bypasses any alignment check.
++     */
++    return get_phys_addr_nogpc(env, &ptw, address,
++                               MMU_DATA_LOAD, MO_8, result, fi);
+ }
  
-     trace_loadvm_postcopy_handle_run();
-     if (ps != POSTCOPY_INCOMING_LISTENING) {
--        error_report("CMD_POSTCOPY_RUN in wrong postcopy state (%d)", ps);
-+        error_setg(errp, "CMD_POSTCOPY_RUN in wrong postcopy state (%d)", ps);
-         return -1;
-     }
+ static ARMSecuritySpace
+diff --git a/target/arm/tcg/cpregs-at.c b/target/arm/tcg/cpregs-at.c
+index 398a61d398..2ff0b3e76f 100644
+--- a/target/arm/tcg/cpregs-at.c
++++ b/target/arm/tcg/cpregs-at.c
+@@ -27,19 +27,12 @@ static uint64_t do_ats_write(CPUARMState *env, uint64_t value,
+                              MMUAccessType access_type, ARMMMUIdx mmu_idx,
+                              ARMSecuritySpace ss)
+ {
+-    bool ret;
+     uint64_t par64;
+     bool format64 = false;
+     ARMMMUFaultInfo fi = {};
+     GetPhysAddrResult res = {};
+-
+-    /*
+-     * I_MXTJT: Granule protection checks are not performed on the final
+-     * address of a successful translation.  This is a translation not a
+-     * memory reference, so "memop = none = 0".
+-     */
+-    ret = get_phys_addr_with_space_nogpc(env, value, access_type, 0,
+-                                         mmu_idx, ss, &res, &fi);
++    bool ret = get_phys_addr_for_at(env, value, 1 << access_type,
++                                    mmu_idx, ss, &res, &fi);
  
-@@ -2626,11 +2626,7 @@ static int loadvm_process_command(QEMUFile *f, Error **errp)
-         return loadvm_postcopy_handle_listen(mis, errp);
- 
-     case MIG_CMD_POSTCOPY_RUN:
--        ret = loadvm_postcopy_handle_run(mis);
--        if (ret < 0) {
--            error_setg(errp, "Failed to load device state command: %d", ret);
--        }
--        return ret;
-+        return loadvm_postcopy_handle_run(mis, errp);
- 
-     case MIG_CMD_POSTCOPY_RAM_DISCARD:
-         ret = loadvm_postcopy_ram_handle_discard(mis, len);
-
+     /*
+      * ATS operations only do S1 or S1+S2 translations, so we never
 -- 
-2.51.0
+2.43.0
 
 

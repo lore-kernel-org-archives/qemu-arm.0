@@ -4,88 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 058A3CA0FFF
-	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 17:19:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63E82CA0EFF
+	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 17:19:40 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1usO08-0001JQ-Rn; Sat, 30 Aug 2025 12:00:24 -0400
+	id 1usNxL-0002n5-H3; Sat, 30 Aug 2025 11:57:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1usERq-0007cJ-2b
- for qemu-arm@nongnu.org; Sat, 30 Aug 2025 01:48:22 -0400
-Received: from mail-pg1-x530.google.com ([2607:f8b0:4864:20::530])
+ id 1usEMj-0006Ca-P1
+ for qemu-arm@nongnu.org; Sat, 30 Aug 2025 01:43:10 -0400
+Received: from mail-pf1-x42f.google.com ([2607:f8b0:4864:20::42f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1usERm-00055G-PP
- for qemu-arm@nongnu.org; Sat, 30 Aug 2025 01:48:20 -0400
-Received: by mail-pg1-x530.google.com with SMTP id
- 41be03b00d2f7-b471737b347so1851380a12.1
- for <qemu-arm@nongnu.org>; Fri, 29 Aug 2025 22:48:18 -0700 (PDT)
+ id 1usEMi-0004Jj-8b
+ for qemu-arm@nongnu.org; Sat, 30 Aug 2025 01:43:05 -0400
+Received: by mail-pf1-x42f.google.com with SMTP id
+ d2e1a72fcca58-772301f8a4cso1456181b3a.3
+ for <qemu-arm@nongnu.org>; Fri, 29 Aug 2025 22:43:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756532897; x=1757137697; darn=nongnu.org;
+ d=linaro.org; s=google; t=1756532580; x=1757137380; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=TShQhvQkk0r8kwmD31rsIF74/vVO8BlgWjtZI7/oTSM=;
- b=wgUXFGn7EdCTt8tgxANDme9ETBYU5TJekk4vsClNazwSoQ7iv+JQK+tbTdlYhY2gHR
- 9S7xLarSMWk3ncgM9D9t4F8mj938iM3LrQ8LBc2i3biG0ZwlaIJb921Fs78dZ0eCMrwH
- bwMnMQMMhRrvtuvzAuNvX/2OVgGWDPhw2q0M5okXomoDy9xT+dHVy2vL/SO6iRl7h5NE
- RqyEibjo3qR1oBpjhU9ugHH7pISsiZTMLGWm6AK4TmRhwzEj/9JRtlop6whU2hzgclt3
- JXQ/fyGKxZNIQtScougcyvbLiHyBtvSj8LlZaX3EVf8KVmNnpHqdpc7AcrCggoD/XH8b
- TkCA==
+ bh=7+ER0bRwaWJSVZXuKMTaNBSXf4hbZ3aeU4lFfN33xP8=;
+ b=RlotFGoVZ4cQE/edn06eiZXmRz+bmqX8PVcDueWCdLr8b6fPTFEOuSra1tKx9vK/25
+ fClw8YlT5raUEAIVeN4HblZkus5xYpqcax+591Xupf3Tlza+0frVaQaXyItFmCNbzX1P
+ zKrHBGeY8tkRyrRv8YOQGZkrokyW/AnMgXPpQNYJEGBrjDp7DwjjQoeWnfgk5hpwJfwq
+ xYCL/JKlqNaf+elh3cLf3dxAjeW4sqYE3hhOEwBUq+XUr6SSdzsKFNUa68PsPBU9lUkO
+ SL/e+QFHZLE65GoRK8RHugEqr2T62cH20Ebvrkgq7FSF+U8yASiVvlQIfBomSZmjAdCU
+ APPQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756532897; x=1757137697;
+ d=1e100.net; s=20230601; t=1756532581; x=1757137381;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=TShQhvQkk0r8kwmD31rsIF74/vVO8BlgWjtZI7/oTSM=;
- b=NxOvHgqIZtK9WC1pO+lXTHkXvrVaW8NAkfzf4gwAjRSEsc3DlKdYgYVGbttD8d/AmF
- /QQvgVHMgw2TvZ0cYgnotpa8lkutrCdkqCFKttBKFfTWbvNsXJskzdF9Z0zGTDa2bYdz
- D/eyrW1yXpne0AqcytV5D8GJthhX51UctpVsbMATmY3nFy7+R8o0HCzpRcjGgdqszEh4
- qBn/mf2hrgvOOaGbeXzky8HOcyXPIrQerst3FFKbblIuLEL/cwbOcmpZxZkq8PFTavHQ
- fqwc/A8u5BKAiByzlMHRJ/CBJX8rcjSj+Uq5M75BIB7Xc//6oYOt9h/NNBMRRzQ+JtpM
- 8cHw==
-X-Gm-Message-State: AOJu0YxXJIEEs3AoWCLyR5YhDV6Iolh4uZaGPTI3UjonBRoog5WtnrV2
- pNhVJAtNCd2DruqzbaLje25oh0bzUnQtB+RfZNc0B4d7/uQXYNJ5lMKoec4LhKEXnWA=
-X-Gm-Gg: ASbGncuz06sd/X7bxNnXtEb2o6tiUaXLYvHoEDN/ZWZpBf1v3X1LuZL7m58nTyehGPj
- WwQ886FLMiCTn+pkq/DsdzKVhpqYZP83sEYXb4M1YEQwNAEfaR5KBhmdNqfLKv5OxkYnpcPSgPh
- iW8yvXxeEKZySWG1rXo1ZPc61ApiEtixObhFs5V1YtOKqEP0fD1/K6EAUihZlaqrk+Gg3hipxwQ
- ZAoXGtndbJHVI/a6hmCsLfKMPOkar7DzCcUai5dAlHrJWcTo/RCr4/do1r3jAgPPYE2tIAHCzaH
- ZI9+X0TeGTm0CjdXecMFKB/qStI3+d1QG4ga4ikqQKyQxJQZgsrz0G/rDxP9mGginrauO6e23Zc
- HTK7hHosApl/VeO0ghgtl2cYc/EjQyQ6J8RiL9tgN/pgnr+2gGiB6y4utjBCokvVaX+PeEv5FsA
- ==
-X-Google-Smtp-Source: AGHT+IHPxYycauEFdMq8lw8oqSsUw32sICv5TA/ZeaaSpSqdB/EBVwXDxWv6W1DcRXochpe+nnnKVw==
-X-Received: by 2002:a17:902:f612:b0:249:2360:6af2 with SMTP id
- d9443c01a7336-249448db16bmr14718565ad.16.1756532897423; 
- Fri, 29 Aug 2025 22:48:17 -0700 (PDT)
-Received: from stoup.. (122-150-204-179.dyn.ip.vocus.au. [122.150.204.179])
+ bh=7+ER0bRwaWJSVZXuKMTaNBSXf4hbZ3aeU4lFfN33xP8=;
+ b=xHiVg+PbrEpuzwfJ8BTMfdbipNMONOvLaz2N1gX6CrA7dgF8qzJLmuq9fKVWJK4E7z
+ Ann2FW/u9jV7fDyDXaItAaeNgWeJM3sstsrYalqYlJs5+gJGC8lzjRvGh/HHJqNy5kVL
+ ydrtQ4BpKZfIOy8973LkGJcfN3ooHJrby/uLYg0vrG6pwi/2BsYUUe0QZaMV/lEhEx1z
+ 0eGt9zjb0D4OCD3OIDpOVcfim9O4twOET0/AW5gqPEljT09WQeg7gZ7ts0LB9RhTcaX4
+ X+QNfYhQyRX8tF4CcYuKteMG9Nhc3ou37WWYh5ZydedHmD3Gqj4ONc+Xjd7+ERg864j5
+ VVMw==
+X-Gm-Message-State: AOJu0YwpMICNPl/1niAbGv3aXp82Ecph5mQfxP3p7qnqH5unb23qLsNW
+ xHRfMT8jrLqArgdvKwEeEc6GD2jWkD9533N1Vt6nBZyDY7gKKzdP7ci041c06RA/DqQ=
+X-Gm-Gg: ASbGncss66iSleU2isM7TKY+e9A47YOD5bEV9vYoH0YEJ8gUGbwir+IU4AEmh3nfPVE
+ GN7D+uecazD990Pun764wEquqi4Z6wcH/ge6uI5e8exoECc4SPTtXcq6PDhLlS07oCr8tzYrVwg
+ GAbQbGWZdyk304LhggZNRI2hIhXjLKfRUI8XjpLlDAzfoHx8QqouW5xveD1sGTfl4hte0LQNmvH
+ LPMl59q1duuc6hyzyjTAMVAnMYdYqYWDDa0+39th1gB9H+nmODCVGM6tz2wjsO1yMxvdImTIzJq
+ PwaIB7UQ5bUGpvrUMt4q+BVMzGtyyUbplz2rWtrprjrwUFaN/A7fnzq6xTmORcBfMMlfJ7TvRYV
+ GaQqsXhkyxjIlYMwo4yYJaeqmykM7BntSmYI8kq1KqnsS+jQZwJidNaCrL3ps9F7XUKevpmI=
+X-Google-Smtp-Source: AGHT+IF0GzHSibwBrIdnpkkw5gj7w65Vb5Z9XfZX58mDgZe8ftvWBcDfJ72rdoT+NbZNWyoLPVCgew==
+X-Received: by 2002:a05:6a21:3287:b0:243:a705:af7a with SMTP id
+ adf61e73a8af0-243d6f379a1mr1564062637.40.1756532580635; 
+ Fri, 29 Aug 2025 22:43:00 -0700 (PDT)
+Received: from stoup.. (122-150-204-48.dyn.ip.vocus.au. [122.150.204.48])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2490658999fsm40852715ad.112.2025.08.29.22.48.15
+ 41be03b00d2f7-b4d96829a66sm2435905a12.6.2025.08.29.22.42.58
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 29 Aug 2025 22:48:17 -0700 (PDT)
+ Fri, 29 Aug 2025 22:43:00 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v4 79/84] linux-user/aarch64: Inject SIGSEGV for GCS faults
-Date: Sat, 30 Aug 2025 15:41:23 +1000
-Message-ID: <20250830054128.448363-80-richard.henderson@linaro.org>
+Subject: [PATCH v4 31/84] include/hw/core/cpu: Widen MMUIdxMap
+Date: Sat, 30 Aug 2025 15:40:35 +1000
+Message-ID: <20250830054128.448363-32-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250830054128.448363-1-richard.henderson@linaro.org>
 References: <20250830054128.448363-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::530;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x530.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42f;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -101,41 +100,43 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+Widen MMUIdxMap to 32 bits.  Do not yet expand NB_MMU_MODES,
+but widen the map type in preparation.
+
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- linux-user/aarch64/target_signal.h | 1 +
- linux-user/aarch64/cpu_loop.c      | 5 +++++
- 2 files changed, 6 insertions(+)
+ include/hw/core/cpu.h | 2 +-
+ accel/tcg/cputlb.c    | 3 ---
+ 2 files changed, 1 insertion(+), 4 deletions(-)
 
-diff --git a/linux-user/aarch64/target_signal.h b/linux-user/aarch64/target_signal.h
-index 6f66a50bfd..e509ac1032 100644
---- a/linux-user/aarch64/target_signal.h
-+++ b/linux-user/aarch64/target_signal.h
-@@ -7,6 +7,7 @@
+diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+index 23eb849a9b..fc9a2291d5 100644
+--- a/include/hw/core/cpu.h
++++ b/include/hw/core/cpu.h
+@@ -201,7 +201,7 @@ struct CPUClass {
+  * Fix the number of mmu modes to 16.
+  */
+ #define NB_MMU_MODES 16
+-typedef uint16_t MMUIdxMap;
++typedef uint32_t MMUIdxMap;
  
- #define TARGET_SEGV_MTEAERR  8  /* Asynchronous ARM MTE error */
- #define TARGET_SEGV_MTESERR  9  /* Synchronous ARM MTE exception */
-+#define TARGET_SEGV_CPERR   10  /* Control protection fault */
+ /* Use a fully associative victim tlb of 8 entries. */
+ #define CPU_VTLB_SIZE 8
+diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c
+index 2a6aa01c57..416aaa1040 100644
+--- a/accel/tcg/cputlb.c
++++ b/accel/tcg/cputlb.c
+@@ -89,9 +89,6 @@
+  */
+ QEMU_BUILD_BUG_ON(sizeof(vaddr) > sizeof(run_on_cpu_data));
  
- #define TARGET_ARCH_HAS_SETUP_FRAME
- #define TARGET_ARCH_HAS_SIGTRAMP_PAGE 1
-diff --git a/linux-user/aarch64/cpu_loop.c b/linux-user/aarch64/cpu_loop.c
-index 6060572eed..41d6b35498 100644
---- a/linux-user/aarch64/cpu_loop.c
-+++ b/linux-user/aarch64/cpu_loop.c
-@@ -89,6 +89,11 @@ static void signal_for_exception(CPUARMState *env, vaddr addr)
-         si_code = TARGET_ILL_ILLOPN;
-         break;
+-/* We currently can't handle more than 16 bits in the MMUIDX bitmask.
+- */
+-QEMU_BUILD_BUG_ON(NB_MMU_MODES > 16);
+ #define ALL_MMUIDX_BITS ((1 << NB_MMU_MODES) - 1)
  
-+    case EC_GCS:
-+        si_signo = TARGET_SIGSEGV;
-+        si_code = TARGET_SEGV_CPERR;
-+        break;
-+
-     case EC_MOP:
-         /*
-          * FIXME: The kernel fixes up wrong-option exceptions.
+ static inline size_t tlb_n_entries(CPUTLBDescFast *fast)
 -- 
 2.43.0
 

@@ -4,93 +4,126 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9624ECA0EFF
-	for <qemu-arm@archiver.kernel.org>; Sun, 31 Aug 2025 05:05:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5005CA0FE8
+	for <qemu-arm@archiver.kernel.org>; Sun, 31 Aug 2025 15:46:13 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1usaFu-0007HF-1D; Sun, 31 Aug 2025 01:05:30 -0400
+	id 1uskFA-0001E6-JA; Sun, 31 Aug 2025 11:45:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1usaFs-0007Fr-Ag; Sun, 31 Aug 2025 01:05:28 -0400
-Received: from isrv.corpit.ru ([212.248.84.144])
+ (Exim 4.90_1) (envelope-from <armenon@redhat.com>)
+ id 1uskF7-0001CX-JI
+ for qemu-arm@nongnu.org; Sun, 31 Aug 2025 11:45:21 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1usaFq-0006AR-Di; Sun, 31 Aug 2025 01:05:28 -0400
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id AC96E14E2CB;
- Sun, 31 Aug 2025 08:04:50 +0300 (MSK)
-Received: from [192.168.177.146] (mjtthink.wg.tls.msk.ru [192.168.177.146])
- by tsrv.corpit.ru (Postfix) with ESMTP id C83D526B8BB;
- Sun, 31 Aug 2025 08:05:23 +0300 (MSK)
-Message-ID: <2e6d011f-a8a5-4eef-9fe0-2a95984e4116@tls.msk.ru>
-Date: Sun, 31 Aug 2025 08:05:23 +0300
+ (Exim 4.90_1) (envelope-from <armenon@redhat.com>)
+ id 1uskF5-0007s9-8U
+ for qemu-arm@nongnu.org; Sun, 31 Aug 2025 11:45:21 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1756655117;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=In5bJWbApn4CY8LbTZodn7oyH71hzfzXlfi9guy7FRE=;
+ b=J6bfdcMDfyzHnHKWK662lPLcE7o37/W0oNfa4WEqn3ZyPkwMiZ9SUw3KSEKU6XIbqaX58u
+ OAlbFveQ2uKvApyLVfjmOy5JZU5dOLdH7nDbKNLnyk8PTu2RWhwrQnLhQNWB8NQViZu1nK
+ hjp62c9UCt/59yEYQ+5yXGO9f64gsZ4=
+Received: from mail-pf1-f199.google.com (mail-pf1-f199.google.com
+ [209.85.210.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-331-zgjCVoRmPEiKAj_ys9e5oA-1; Sun, 31 Aug 2025 11:45:15 -0400
+X-MC-Unique: zgjCVoRmPEiKAj_ys9e5oA-1
+X-Mimecast-MFC-AGG-ID: zgjCVoRmPEiKAj_ys9e5oA_1756655115
+Received: by mail-pf1-f199.google.com with SMTP id
+ d2e1a72fcca58-7724046c346so783843b3a.1
+ for <qemu-arm@nongnu.org>; Sun, 31 Aug 2025 08:45:15 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1756655114; x=1757259914;
+ h=in-reply-to:content-transfer-encoding:content-disposition
+ :mime-version:references:reply-to:message-id:subject:cc:to:from:date
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=In5bJWbApn4CY8LbTZodn7oyH71hzfzXlfi9guy7FRE=;
+ b=Ndad5tZF7oPZNe83gVSByc94sc0/lUIK+jSs9ZSxj0N+zhiVhJxZ+Wa43B4KBx7ABd
+ 2JkoT1Vn/zbYei5uHTozAEQrm1tP2j7HJ25zh6YNSSZ07xcPdYEInWhCh0HLFCVGmStJ
+ zwQwx1pA6NezndPw06PtP9wiuP0OaT7rV0/rIWFR8vsLAsplE6O/itXb3dlHhA2Zdhci
+ Up9Umb41xJqaOyfnRiPrVpvPZBDkXb4rwAuIqPxsHthIFEzd2jSdmNiT3LA73kxUWlPw
+ rTm4fpGQrzmTnuzM73FZt7/qe/2y81zBtouMLShxuyie5gkGJtakHs7pEtEqZ41LEZs8
+ NYbQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUU4fnwf1Fx3NRamY+Vvuy2SsF4Ts+xGtvR+nyAQz726AFm8SvcwmzxzX9CPmjMsqZPo2bGW2BjCA==@nongnu.org
+X-Gm-Message-State: AOJu0Ywf890tTrr3BK9cI3AVfDozA1O72pExhD3QNEfDBt37vQPSpnWq
+ sErVpVmnZeO/P/X7T2+HlU15H3MEVrawQKL+jY5rnnXrt359AFc1GCvhLXj8dq/ZblDJSMNLz4B
+ EVWEZW6gv2aPqijz52/eQhOvDXm+JImhovRcG8r34nxAwnD/FmyQf/w==
+X-Gm-Gg: ASbGnct750cKfT9Q7W0u9zVhdDSA3L7/i4pcOs/e7kyOVoGgl7A2Q0c2b9nIvdaD7JB
+ Y3z6pTkBtjo9hcDkRmQIQX8QLN7ePNaDQquwLYBmwCWUbdFQbPIsVgnCFfdb4nzhXSHL1+f2Atb
+ wyKSAcue7fVJnsiPgPTq/pZsUfcoTZUs2ZszSaIub/olFgtVn1vrrgKbApcNDusEocdoDKsXbkg
+ MyYEWmdYa5pMxNQIYeYcrbr57HZPMnfxhnF8PrrjexaCvU8y5zZuROKUrPKYx7yCmQHlTJvltMF
+ k44KjhvCOLLZT8aoMb8up7KV041FA4Lq4mT6ihWi8SjVO7jFUqxj
+X-Received: by 2002:a05:6a00:c8b:b0:772:3b9a:9f30 with SMTP id
+ d2e1a72fcca58-7723e21a723mr5240219b3a.3.1756655114185; 
+ Sun, 31 Aug 2025 08:45:14 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IG4wXiYiFXkbjMu59ibjlm+N2WwiEXFS7cP13oXSpyH+aQbIcF0U1V3qjMdMV8Ces8/vLfdNg==
+X-Received: by 2002:a05:6a00:c8b:b0:772:3b9a:9f30 with SMTP id
+ d2e1a72fcca58-7723e21a723mr5240171b3a.3.1756655113630; 
+ Sun, 31 Aug 2025 08:45:13 -0700 (PDT)
+Received: from armenon-kvm.bengluru.csb ([49.36.106.50])
+ by smtp.gmail.com with ESMTPSA id
+ d2e1a72fcca58-7722a26abdesm7873142b3a.1.2025.08.31.08.45.04
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 31 Aug 2025 08:45:13 -0700 (PDT)
+Date: Sun, 31 Aug 2025 21:15:00 +0530
+From: Arun Menon <armenon@redhat.com>
+To: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
+Cc: qemu-devel@nongnu.org, Peter Xu <peterx@redhat.com>,
+ Fabiano Rosas <farosas@suse.de>,
+ Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
+ Dmitry Osipenko <dmitry.osipenko@collabora.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Cornelia Huck <cohuck@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
+ Eric Farman <farman@linux.ibm.com>, Thomas Huth <thuth@redhat.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Matthew Rosato <mjrosato@linux.ibm.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ David Hildenbrand <david@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
+ Nicholas Piggin <npiggin@gmail.com>,
+ Harsh Prateek Bora <harshpb@linux.ibm.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Fam Zheng <fam@euphon.net>,
+ Alex Williamson <alex.williamson@redhat.com>,
+ =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@redhat.com>,
+ Steve Sistare <steven.sistare@oracle.com>,
+ =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
+ qemu-s390x@nongnu.org, qemu-ppc@nongnu.org,
+ Hailiang Zhang <zhanghailiang@xfusion.com>,
+ Stefan Berger <stefanb@linux.vnet.ibm.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
+Subject: Re: [PATCH v13 07/27] migration: push Error **errp into
+ qemu_loadvm_state()
+Message-ID: <aLRt_G-pOH1rwJbb@armenon-kvm.bengluru.csb>
+References: <20250830-propagate_tpm_error-v13-0-a4e777b7eb2c@redhat.com>
+ <20250830-propagate_tpm_error-v13-7-a4e777b7eb2c@redhat.com>
+ <078e2ef1-fbfa-450a-a2ab-d1e77cc8e850@rsg.ci.i.u-tokyo.ac.jp>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 1/1] target/arm: Trap PMCR when MDCR_EL2.TPMCR is set
-To: Smail AIDER <smail.aider@huawei.com>, qemu-devel@nongnu.org
-Cc: alexander.spyridakis@huawei.com, zhangyue165@huawei.com,
- liuyutao2@huawei.com, Peter Maydell <peter.maydell@linaro.org>,
- qemu-stable@nongnu.org, qemu-arm@nongnu.org, richard.henderson@linaro.org
-References: <20250811112143.1577055-1-smail.aider@huawei.com>
- <20250811112143.1577055-2-smail.aider@huawei.com>
-Content-Language: en-US, ru-RU
-From: Michael Tokarev <mjt@tls.msk.ru>
-Autocrypt: addr=mjt@tls.msk.ru; keydata=
- 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
-In-Reply-To: <20250811112143.1577055-2-smail.aider@huawei.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=212.248.84.144; envelope-from=mjt@tls.msk.ru;
- helo=isrv.corpit.ru
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <078e2ef1-fbfa-450a-a2ab-d1e77cc8e850@rsg.ci.i.u-tokyo.ac.jp>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: p4ZH7zwetf-0XGaCHp2orOe-DCPw-R6Jbpz21LPicqY_1756655115
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=armenon@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=-1, RCVD_IN_MSPIKE_WL=-0.01,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -103,26 +136,197 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: armenon@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 11.08.2025 14:21, Smail AIDER via wrote:
-> From: Smail AIDER via <qemu-devel@nongnu.org>
+Hi Akihiko,
+Thanks for the review.
+
+On Sat, Aug 30, 2025 at 02:58:05PM +0900, Akihiko Odaki wrote:
+> On 2025/08/30 5:01, Arun Menon wrote:
+> > This is an incremental step in converting vmstate loading
+> > code to report error via Error objects instead of directly
+> > printing it to console/monitor.
+> > It is ensured that qemu_loadvm_state() must report an error
+> > in errp, in case of failure.
+> > 
+> > When postcopy live migration runs, the device states are loaded by
+> > both the qemu coroutine process_incoming_migration_co() and the
+> > postcopy_ram_listen_thread(). Therefore, it is important that the
+> > coroutine also reports the error in case of failure, with
+> > error_report_err(). Otherwise, the source qemu will not display
+> > any errors before going into the postcopy pause state.
+> > 
+> > Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+> > Reviewed-by: Fabiano Rosas <farosas@suse.de>
+> > Signed-off-by: Arun Menon <armenon@redhat.com>
+> > ---
+> >   migration/migration.c |  9 +++++----
+> >   migration/savevm.c    | 30 ++++++++++++++++++------------
+> >   migration/savevm.h    |  2 +-
+> >   3 files changed, 24 insertions(+), 17 deletions(-)
+> > 
+> > diff --git a/migration/migration.c b/migration/migration.c
+> > index 10c216d25dec01f206eacad2edd24d21f00e614c..c6768d88f45c870c7fad9b9957300766ff69effc 100644
+> > --- a/migration/migration.c
+> > +++ b/migration/migration.c
+> > @@ -881,7 +881,7 @@ process_incoming_migration_co(void *opaque)
+> >                         MIGRATION_STATUS_ACTIVE);
+> >       mis->loadvm_co = qemu_coroutine_self();
+> > -    ret = qemu_loadvm_state(mis->from_src_file);
+> > +    ret = qemu_loadvm_state(mis->from_src_file, &local_err);
+> >       mis->loadvm_co = NULL;
+> >       trace_vmstate_downtime_checkpoint("dst-precopy-loadvm-completed");
+> > @@ -908,7 +908,8 @@ process_incoming_migration_co(void *opaque)
+> >       }
+> >       if (ret < 0) {
+> > -        error_setg(&local_err, "load of migration failed: %s", strerror(-ret));
+> > +        error_prepend(&local_err, "load of migration failed: %s: ",
+> > +                      strerror(-ret));
+> >           goto fail;
+> >       }
+> > @@ -924,13 +925,13 @@ fail:
+> >       migrate_set_state(&mis->state, MIGRATION_STATUS_ACTIVE,
+> >                         MIGRATION_STATUS_FAILED);
+> >       migrate_set_error(s, local_err);
+> > -    error_free(local_err);
+> > +    error_report_err(local_err);
 > 
-> Trap PMCR_EL0 or PMCR accesses to EL2 when MDCR_EL2.TPMCR is set.
-> Similar to MDCR_EL2.TPM, MDCR_EL2.TPMCR allows trapping EL0 and EL1
-> accesses to the PMCR register to EL2.
+> This is problematic because it results in duplicate error reports when
+> !mis->exit_on_error; in that case the query-migrate QMP command reports the
+> error and this error reporting is redundant.
+
+If I comment this change, then all of the errors propagated up to now, using
+error_setg() will not be reported. This is the place where it is finally reported,
+when qemu_loadvm_state() fails. In other words, all the error_reports() we removed
+from all the files, replacing them with error_setg(), will finally be reported here
+using error_report_err().
+
 > 
-> Signed-off-by: Smail AIDER <smail.aider@huawei.com>
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-> Message-Id: <20250722131925.2119169-1-smail.aider@huawei.com>
+> >       migration_incoming_state_destroy();
+> >       if (mis->exit_on_error) {
+> >           WITH_QEMU_LOCK_GUARD(&s->error_mutex) {
+> > -            error_report_err(s->error);
+> > +            error_free(s->error);
+> 
+> This change is problematic because s->error set somewhere else here will be
+> ignored.
 
-Hi!  Please take a look at
-https://gitlab.com/mjt0k/qemu/-/commit/842918ee3c1cb9ac687bb27920c8d9020c2c109b
-for my back-port of this commit to v10.0.x series, -- does it look
-sane?  I assume this change is targetting 10.0.x too, not just 10.1.x.
+This is specific to the case when mis->exit_on_error is set.
+since we did a migrate_set_error(s, local_err) before, we free the
+error in s->error and set it to NULL, before an exit(EXIT_FAILURE)
 
-Thanks,
+> 
+> I think the two changes I commented can be simply removed without causing
+> other problems.
 
-/mjt
+Please correct me if I am wrong.
+
+> 
+> >               s->error = NULL;
+> >           }
+> > diff --git a/migration/savevm.c b/migration/savevm.c
+> > index de5671ffd1cd06e728227a3056c3f895d3a6e6f3..0087fca15ce108685667d3808350d80d37b807b1 100644
+> > --- a/migration/savevm.c
+> > +++ b/migration/savevm.c
+> > @@ -3159,28 +3159,24 @@ out:
+> >       return ret;
+> >   }
+> > -int qemu_loadvm_state(QEMUFile *f)
+> > +int qemu_loadvm_state(QEMUFile *f, Error **errp)
+> >   {
+> >       MigrationState *s = migrate_get_current();
+> >       MigrationIncomingState *mis = migration_incoming_get_current();
+> > -    Error *local_err = NULL;
+> >       int ret;
+> > -    if (qemu_savevm_state_blocked(&local_err)) {
+> > -        error_report_err(local_err);
+> > +    if (qemu_savevm_state_blocked(errp)) {
+> >           return -EINVAL;
+> >       }
+> >       qemu_loadvm_thread_pool_create(mis);
+> > -    ret = qemu_loadvm_state_header(f, &local_err);
+> > +    ret = qemu_loadvm_state_header(f, errp);
+> >       if (ret) {
+> > -        error_report_err(local_err);
+> >           return ret;
+> >       }
+> > -    if (qemu_loadvm_state_setup(f, &local_err) != 0) {
+> > -        error_report_err(local_err);
+> > +    if (qemu_loadvm_state_setup(f, errp) != 0) {
+> >           return -EINVAL;
+> >       }
+> > @@ -3191,6 +3187,9 @@ int qemu_loadvm_state(QEMUFile *f)
+> >       cpu_synchronize_all_pre_loadvm();
+> >       ret = qemu_loadvm_state_main(f, mis);
+> > +    if (ret < 0) {
+> > +        error_setg(errp, "Load VM state failed: %d", ret);
+> > +    }
+> >       qemu_event_set(&mis->main_thread_load_event);
+> >       trace_qemu_loadvm_state_post_main(ret);
+> > @@ -3208,8 +3207,15 @@ int qemu_loadvm_state(QEMUFile *f)
+> >           if (migrate_has_error(migrate_get_current()) ||
+> >               !qemu_loadvm_thread_pool_wait(s, mis)) {
+> >               ret = -EINVAL;
+> > +            error_setg(errp,
+> > +                       "Error while loading vmstate");
+> >           } else {
+> >               ret = qemu_file_get_error(f);
+> > +            if (ret < 0) {
+> > +                error_setg(errp,
+> > +                           "Error while loading vmstate: stream error: %d",
+> > +                           ret);
+> > +            }
+> >           }
+> >       }
+> >       /*
+> > @@ -3474,6 +3480,7 @@ void qmp_xen_save_devices_state(const char *filename, bool has_live, bool live,
+> >   void qmp_xen_load_devices_state(const char *filename, Error **errp)
+> >   {
+> > +    ERRP_GUARD();
+> >       QEMUFile *f;
+> >       QIOChannelFile *ioc;
+> >       int ret;
+> > @@ -3495,10 +3502,10 @@ void qmp_xen_load_devices_state(const char *filename, Error **errp)
+> >       f = qemu_file_new_input(QIO_CHANNEL(ioc));
+> >       object_unref(OBJECT(ioc));
+> > -    ret = qemu_loadvm_state(f);
+> > +    ret = qemu_loadvm_state(f, errp);
+> >       qemu_fclose(f);
+> >       if (ret < 0) {
+> > -        error_setg(errp, "loading Xen device state failed");
+> > +        error_prepend(errp, "loading Xen device state failed: ");
+> >       }
+> >       migration_incoming_state_destroy();
+> >   }
+> > @@ -3569,13 +3576,12 @@ bool load_snapshot(const char *name, const char *vmstate,
+> >           ret = -EINVAL;
+> >           goto err_drain;
+> >       }
+> > -    ret = qemu_loadvm_state(f);
+> > +    ret = qemu_loadvm_state(f, errp);
+> >       migration_incoming_state_destroy();
+> >       bdrv_drain_all_end();
+> >       if (ret < 0) {
+> > -        error_setg(errp, "Error %d while loading VM state", ret);
+> >           return false;
+> >       }
+> > diff --git a/migration/savevm.h b/migration/savevm.h
+> > index 2d5e9c716686f06720325e82fe90c75335ced1de..b80770b7461a60e2ad6ba5e24a7baeae73d90955 100644
+> > --- a/migration/savevm.h
+> > +++ b/migration/savevm.h
+> > @@ -64,7 +64,7 @@ void qemu_savevm_send_colo_enable(QEMUFile *f);
+> >   void qemu_savevm_live_state(QEMUFile *f);
+> >   int qemu_save_device_state(QEMUFile *f);
+> > -int qemu_loadvm_state(QEMUFile *f);
+> > +int qemu_loadvm_state(QEMUFile *f, Error **errp);
+> >   void qemu_loadvm_state_cleanup(MigrationIncomingState *mis);
+> >   int qemu_loadvm_state_main(QEMUFile *f, MigrationIncomingState *mis);
+> >   int qemu_load_device_state(QEMUFile *f);
+> > 
+> 
+Regards,
+Arun Menon
+
 

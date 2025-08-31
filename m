@@ -4,132 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61998CA0FFF
-	for <qemu-arm@archiver.kernel.org>; Sat, 30 Aug 2025 18:27:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9624ECA0EFF
+	for <qemu-arm@archiver.kernel.org>; Sun, 31 Aug 2025 05:05:37 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1usNbR-0005tq-NO; Sat, 30 Aug 2025 11:34:53 -0400
+	id 1usaFu-0007HF-1D; Sun, 31 Aug 2025 01:05:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armenon@redhat.com>)
- id 1us5Jb-0004tf-EO
- for qemu-arm@nongnu.org; Fri, 29 Aug 2025 16:03:15 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1usaFs-0007Fr-Ag; Sun, 31 Aug 2025 01:05:28 -0400
+Received: from isrv.corpit.ru ([212.248.84.144])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armenon@redhat.com>)
- id 1us5JZ-0004ZI-KR
- for qemu-arm@nongnu.org; Fri, 29 Aug 2025 16:03:15 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1756497792;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=oOSafeLF/cdHj0WUrje7Rzs54rhm0NEYGyektqV3rfY=;
- b=UvMki49I244pyN+/W9oF5kelqgrmC8zx9Xw2lF2AzS92nWF0fIAv8h46Xn/eVDqnQ6mEd8
- 0MrqO+yRdLSqhEyZD6prk47ipfsVfIl5OiCV0qZfoeUEcjG3bfrB8PcbBJCg3M4MFCkSwg
- JNgWOYDLh6Gv5h6NN+SudIIouT7NKm0=
-Received: from mail-pj1-f72.google.com (mail-pj1-f72.google.com
- [209.85.216.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-484-ULHNecxIM3OanTzrRVCwYA-1; Fri, 29 Aug 2025 16:03:10 -0400
-X-MC-Unique: ULHNecxIM3OanTzrRVCwYA-1
-X-Mimecast-MFC-AGG-ID: ULHNecxIM3OanTzrRVCwYA_1756497790
-Received: by mail-pj1-f72.google.com with SMTP id
- 98e67ed59e1d1-3235e45b815so2915218a91.0
- for <qemu-arm@nongnu.org>; Fri, 29 Aug 2025 13:03:10 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756497790; x=1757102590;
- h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
- :mime-version:subject:date:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=oOSafeLF/cdHj0WUrje7Rzs54rhm0NEYGyektqV3rfY=;
- b=fTZ0elWqvOVCVD1wzNOm46DQq0OL+ERgv/BO5YavTn1eImuzDCaxTrYN7oVPsS1dqr
- JK3Whw7EGzudH2RZhLIAYig4Q/GJDPTYMFqGKeo6qunaKGnm4CUIY2V8dwkRuwnLrvI1
- ZfuLTjbJvNOhmzLlm/cNqL/MBwyfEwL6zGRMExPuWY7AXjyujw2H7l3SjWn3fAsQgR4H
- uqpMu5KHtdcJN/r0hyupxa8KHlPVUNCYszQWaFmSL2GSR7BPqMIz0Q/dBqX/gvxK9NDZ
- hrmd6A/tWOx3iks8SLQjf6oTHooxjJK899TbEPCEFwciBm02bOtxi7+oLc7Mv/L8xFW+
- NXtw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUJmYR03HW1fTDheZelJUoDzjs/NIkzL6Bg7mtVgNPnxXwnEvuHE6GQQ1y0bT096jjcmwFgvCmZcw==@nongnu.org
-X-Gm-Message-State: AOJu0Yw8c2W/tkMJHW28lszU82a6QRSXMJu4E6sd6E/lC2SXTugJ2f1V
- iH/KDAJtf3GG0mfjL5zzcJt009t8+IHcgWIkX2Roz5lp+LUATk0BXS+kiwTLGTLGIfVg+SyUuHH
- qz6wJtxZ2goblq76egDEG8fFfF/F4MbyXsbZgjcL8Y/m8E3e5eyy7kw==
-X-Gm-Gg: ASbGncu1DcEMMf0gL+JK2TQfgSs4NmQxNN7EGCJZpQdfU/QM62IclkaMy06S55nsLSg
- rJFwT5soKy8Z63SCnZ5c3zV5pZjzv9E6rBy7YrAeFsSL305jaaxDwf1UIV4ZgLKLskyT0giqxf0
- s4kI0rZlhdqm/w/hvWaM6Ory7TlW2aQ895n7iBvFGEVLozik5UYiWvQkExSp3MzQjwv4Jxm+Ip6
- 9BBxvghm03OuXG38xTJMGHFdVAfOaLRLSHT5S09jBPhke8Dcwa2opvsnDYvSRzrEuU/UprXe2ez
- //J5aytg5OPRtiZeNnrubdE9SU4cQ3qc0BpxkHP4mtUPH9ZykMjkaw==
-X-Received: by 2002:a17:90a:d2ce:b0:328:a79:9f1 with SMTP id
- 98e67ed59e1d1-3280a790bcdmr1380409a91.1.1756497789570; 
- Fri, 29 Aug 2025 13:03:09 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHFAFrNTt5uGgjI5rTVWUW0yqi4Q0YqnFQ2MhqOfDyua7LrwsJvjm7FWu1xsftHgk9cjztQqg==
-X-Received: by 2002:a17:90a:d2ce:b0:328:a79:9f1 with SMTP id
- 98e67ed59e1d1-3280a790bcdmr1380360a91.1.1756497788997; 
- Fri, 29 Aug 2025 13:03:08 -0700 (PDT)
-Received: from armenon-kvm.bengluru.csb ([49.47.195.108])
- by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-327d8f66f16sm3570543a91.0.2025.08.29.13.02.57
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 29 Aug 2025 13:03:08 -0700 (PDT)
-From: Arun Menon <armenon@redhat.com>
-Date: Sat, 30 Aug 2025 01:31:43 +0530
-Subject: [PATCH v13 03/27] migration: push Error **errp into
- qemu_loadvm_state_header()
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1usaFq-0006AR-Di; Sun, 31 Aug 2025 01:05:28 -0400
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+ by isrv.corpit.ru (Postfix) with ESMTP id AC96E14E2CB;
+ Sun, 31 Aug 2025 08:04:50 +0300 (MSK)
+Received: from [192.168.177.146] (mjtthink.wg.tls.msk.ru [192.168.177.146])
+ by tsrv.corpit.ru (Postfix) with ESMTP id C83D526B8BB;
+ Sun, 31 Aug 2025 08:05:23 +0300 (MSK)
+Message-ID: <2e6d011f-a8a5-4eef-9fe0-2a95984e4116@tls.msk.ru>
+Date: Sun, 31 Aug 2025 08:05:23 +0300
 MIME-Version: 1.0
-Message-Id: <20250830-propagate_tpm_error-v13-3-a4e777b7eb2c@redhat.com>
-References: <20250830-propagate_tpm_error-v13-0-a4e777b7eb2c@redhat.com>
-In-Reply-To: <20250830-propagate_tpm_error-v13-0-a4e777b7eb2c@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: Peter Xu <peterx@redhat.com>, Fabiano Rosas <farosas@suse.de>, 
- =?utf-8?q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>, 
- Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>, 
- Dmitry Osipenko <dmitry.osipenko@collabora.com>, 
- "Michael S. Tsirkin" <mst@redhat.com>, 
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
- Cornelia Huck <cohuck@redhat.com>, Halil Pasic <pasic@linux.ibm.com>, 
- Eric Farman <farman@linux.ibm.com>, Thomas Huth <thuth@redhat.com>, 
- Christian Borntraeger <borntraeger@linux.ibm.com>, 
- Matthew Rosato <mjrosato@linux.ibm.com>, 
- Richard Henderson <richard.henderson@linaro.org>, 
- David Hildenbrand <david@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>, 
- Nicholas Piggin <npiggin@gmail.com>, 
- Harsh Prateek Bora <harshpb@linux.ibm.com>, 
- Paolo Bonzini <pbonzini@redhat.com>, Fam Zheng <fam@euphon.net>, 
- Alex Williamson <alex.williamson@redhat.com>, 
- =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>, 
- Steve Sistare <steven.sistare@oracle.com>, 
- =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>, 
- qemu-s390x@nongnu.org, qemu-ppc@nongnu.org, 
- Hailiang Zhang <zhanghailiang@xfusion.com>, 
- Stefan Berger <stefanb@linux.vnet.ibm.com>, 
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
- Arun Menon <armenon@redhat.com>
-X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2973; i=armenon@redhat.com;
- h=from:subject:message-id; bh=08fs5yPRSN3G4fsuHEbQFA8WwDnIkqC0cHdPyjoW6j0=;
- b=owGbwMvMwCWWVaVqcZPfqI/xtFoSQ8Ymdp//1XvLpi1Luxj+8Vv5vZglM23Uc1bFNr2XmXjKZ
- KfAUf6yjlIWBjEuBlkxRZaGrwGyTQGFEZG2L6/DzGFlAhnCwMUpABOZqsfIsDjJJnti0JU7oVyq
- DnVXOPMKAnpXdj32tFh7fIFN69G3gYwMR7f8SgliyX4+i2tlZCOPY5nb5M2/VweuDJ+koJT6QN6
- PFwA=
-X-Developer-Key: i=armenon@redhat.com; a=openpgp;
- fpr=80F5501D82507158593DE9D76A7A2538D90F328E
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: kQKFSaV2DuMGnhJAu_Fbq9F_sY3GPXAJo7-b45Wdg1o_1756497790
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=armenon@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 1/1] target/arm: Trap PMCR when MDCR_EL2.TPMCR is set
+To: Smail AIDER <smail.aider@huawei.com>, qemu-devel@nongnu.org
+Cc: alexander.spyridakis@huawei.com, zhangyue165@huawei.com,
+ liuyutao2@huawei.com, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-stable@nongnu.org, qemu-arm@nongnu.org, richard.henderson@linaro.org
+References: <20250811112143.1577055-1-smail.aider@huawei.com>
+ <20250811112143.1577055-2-smail.aider@huawei.com>
+Content-Language: en-US, ru-RU
+From: Michael Tokarev <mjt@tls.msk.ru>
+Autocrypt: addr=mjt@tls.msk.ru; keydata=
+ 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
+In-Reply-To: <20250811112143.1577055-2-smail.aider@huawei.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=212.248.84.144; envelope-from=mjt@tls.msk.ru;
+ helo=isrv.corpit.ru
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -145,90 +106,23 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This is an incremental step in converting vmstate loading
-code to report error via Error objects instead of directly
-printing it to console/monitor.
-It is ensured that qemu_loadvm_state_header() must report an error
-in errp, in case of failure.
+On 11.08.2025 14:21, Smail AIDER via wrote:
+> From: Smail AIDER via <qemu-devel@nongnu.org>
+> 
+> Trap PMCR_EL0 or PMCR accesses to EL2 when MDCR_EL2.TPMCR is set.
+> Similar to MDCR_EL2.TPM, MDCR_EL2.TPMCR allows trapping EL0 and EL1
+> accesses to the PMCR register to EL2.
+> 
+> Signed-off-by: Smail AIDER <smail.aider@huawei.com>
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+> Message-Id: <20250722131925.2119169-1-smail.aider@huawei.com>
 
-Reviewed-by: Fabiano Rosas <farosas@suse.de>
-Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-Signed-off-by: Arun Menon <armenon@redhat.com>
----
- migration/savevm.c | 28 +++++++++++++++++-----------
- 1 file changed, 17 insertions(+), 11 deletions(-)
+Hi!  Please take a look at
+https://gitlab.com/mjt0k/qemu/-/commit/842918ee3c1cb9ac687bb27920c8d9020c2c109b
+for my back-port of this commit to v10.0.x series, -- does it look
+sane?  I assume this change is targetting 10.0.x too, not just 10.1.x.
 
-diff --git a/migration/savevm.c b/migration/savevm.c
-index f5a1ab91016dba51f9cd1dee19a1c7ba31417423..0c445a957fc99f826e6753ed3795bcdd51f1e3f5 100644
---- a/migration/savevm.c
-+++ b/migration/savevm.c
-@@ -2814,38 +2814,43 @@ qemu_loadvm_section_part_end(QEMUFile *f, uint8_t type)
-     return 0;
- }
- 
--static int qemu_loadvm_state_header(QEMUFile *f)
-+static int qemu_loadvm_state_header(QEMUFile *f, Error **errp)
- {
-     unsigned int v;
-     int ret;
--    Error *local_err = NULL;
- 
-     v = qemu_get_be32(f);
-     if (v != QEMU_VM_FILE_MAGIC) {
--        error_report("Not a migration stream");
-+        error_setg(errp, "Not a migration stream, magic: %x != %x",
-+                   v, QEMU_VM_FILE_MAGIC);
-         return -EINVAL;
-     }
- 
-     v = qemu_get_be32(f);
-     if (v == QEMU_VM_FILE_VERSION_COMPAT) {
--        error_report("SaveVM v2 format is obsolete and don't work anymore");
-+        error_setg(errp,
-+                   "SaveVM v2 format is obsolete and no longer supported");
-+
-         return -ENOTSUP;
-     }
-     if (v != QEMU_VM_FILE_VERSION) {
--        error_report("Unsupported migration stream version");
-+        error_setg(errp, "Unsupported migration stream version, "
-+                   "file version %x != %x",
-+                   v, QEMU_VM_FILE_VERSION);
-         return -ENOTSUP;
-     }
- 
-     if (migrate_get_current()->send_configuration) {
--        if (qemu_get_byte(f) != QEMU_VM_CONFIGURATION) {
--            error_report("Configuration section missing");
-+        v = qemu_get_byte(f);
-+        if (v != QEMU_VM_CONFIGURATION) {
-+            error_setg(errp, "Configuration section missing, %x != %x",
-+                       v, QEMU_VM_CONFIGURATION);
-             return -EINVAL;
-         }
--        ret = vmstate_load_state(f, &vmstate_configuration, &savevm_state, 0,
--                                 &local_err);
- 
-+        ret = vmstate_load_state(f, &vmstate_configuration, &savevm_state, 0,
-+                                 errp);
-         if (ret) {
--            error_report_err(local_err);
-             return ret;
-         }
-     }
-@@ -3121,8 +3126,9 @@ int qemu_loadvm_state(QEMUFile *f)
- 
-     qemu_loadvm_thread_pool_create(mis);
- 
--    ret = qemu_loadvm_state_header(f);
-+    ret = qemu_loadvm_state_header(f, &local_err);
-     if (ret) {
-+        error_report_err(local_err);
-         return ret;
-     }
- 
+Thanks,
 
--- 
-2.51.0
-
+/mjt
 

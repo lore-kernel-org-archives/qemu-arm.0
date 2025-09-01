@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6EB1CA1006
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6FACCA1005
 	for <qemu-arm@archiver.kernel.org>; Mon,  1 Sep 2025 11:48:24 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ut304-0000GE-3n; Mon, 01 Sep 2025 07:47:04 -0400
+	id 1ut2zr-0008AD-Q8; Mon, 01 Sep 2025 07:46:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ktokunaga.mail@gmail.com>)
- id 1ut2zY-0007aM-MH; Mon, 01 Sep 2025 07:46:36 -0400
-Received: from mail-pl1-x631.google.com ([2607:f8b0:4864:20::631])
+ id 1ut2z2-0006ol-6g; Mon, 01 Sep 2025 07:46:01 -0400
+Received: from mail-pl1-x62d.google.com ([2607:f8b0:4864:20::62d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <ktokunaga.mail@gmail.com>)
- id 1ut2zP-0001OS-9d; Mon, 01 Sep 2025 07:46:29 -0400
-Received: by mail-pl1-x631.google.com with SMTP id
- d9443c01a7336-2445805aa2eso43006445ad.1; 
- Mon, 01 Sep 2025 04:46:20 -0700 (PDT)
+ id 1ut2yw-0001JP-Dm; Mon, 01 Sep 2025 07:45:59 -0400
+Received: by mail-pl1-x62d.google.com with SMTP id
+ d9443c01a7336-24a1270e0deso12881415ad.1; 
+ Mon, 01 Sep 2025 04:45:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1756727179; x=1757331979; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1756727145; x=1757331945; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=cZn9qlLs9yOI27f7R6L8FcBRbqHv/U8xQ6luXz9uzYQ=;
- b=BJcrpIVaRARs3trpZlTya3iMpeyJJ4Us7XNQK38j6pWFX00NZsXOaPVKj1UO1g47Pl
- NqAX48BqCL9unTuVz9dT+5VUNn/EYG1tLwiU/6q6mWl47i3ld1MbvljV0SHbSKx31+yK
- YWBYiNvR6llq+9UpetL29Syti4LT1k5II2H8xXluxvLoLG6RevX11t9LAQD1Qdsp1nyH
- a0yk7s3g7zTos2xjJ4PoP5u4rhutGkzXzjLN/n4zJmc6Q79gyjahyVmyi3/eIrGMoDYE
- lp/4ZQQOG5NugS/jOtevrD+5eEO5papFXHibxNUI6dPDYtfWDKr8Ty94OGzZMD5bxejN
- GbTA==
+ bh=WES0X6tSGNzNPhgOsz9aAkJISTE6g/V5BmTgRuV7mUk=;
+ b=DqcoPFdj+AWXPDnW23HymEIhKcDg3Wfwh3JrAO9BEgh/uwair4d48xhWxifm54okC9
+ 9n50YPa7KXM5cqcTqgjF1DaMNEtvp22DVqjbABdVndGSBBlRBP0nTuBDL1JeCgANN4VS
+ CFjTXlibZ4A5tiWBJSl2d6cmZB3vJ78N5JoAu1bGUhdU07ffkbPqWM37MjNXSpc1s6MV
+ H39skfg1qn0uKhCToOyKmq6VybTh/9zBsVnd30q/tFIGnJyRLZaXv0u9VtfQra8qmZ9f
+ JoLgdTprrMacGWSkl0TG3itfzwc/RxHHwHtuq2t6kXolALT1YMpUEH4nTSga1cn3KtZl
+ tIFQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756727179; x=1757331979;
+ d=1e100.net; s=20230601; t=1756727145; x=1757331945;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=cZn9qlLs9yOI27f7R6L8FcBRbqHv/U8xQ6luXz9uzYQ=;
- b=l5x4B/JIi3pstCgdxfYXbEBm9bWPhFV98aB2P3RYhjGzXgL3rDVruU+QLJMak0Vck2
- ya6EHD/wGPnx30RFG++QIW7WluU9cRtvOp5K97GstFoLTBzaFrxYcvAuzNuaoM8YatyA
- XOPl/LF/vOTqCyf4h+EMYcF+JCwC6u3+92kv6YEWC1nl36VcO4s+C+SuXAkDHRdRFeHh
- 9lhOLFDMKkrGzAVBAbmQtEXJvag/4RZxwNtkAtQTtMBNCa9TB+328rSqmP5HJlSSXsZ3
- aeww8LFu3diSIsKGcGFdurMdIyZtSsTYPTgAlEUrQo7mAb5q6u9S/b7marNcjcbayspw
- kf5w==
+ bh=WES0X6tSGNzNPhgOsz9aAkJISTE6g/V5BmTgRuV7mUk=;
+ b=I4LNDap/LbK1EHA99mwOufdHymqoh4wlqLabH6sth+se/yXo2hPlYvpcc32FvIQ5up
+ TuOKrFOVriWxWK3waBy+e+H6Og3D7r4mN6y4kXwVWhioU//QUlDVfmNrlWfIbVZH1sqM
+ 0KtrwV1c75cPqjE2EtxUoQqGueglD53O0h7QTtwSlIaD+rGwfwVVdRdkKV9UJ4rDHfi0
+ SVmSktuLBQRJaKdmtALRWnXHfG/Iw8ON85K2fqIG9cupISnNzQnVDNlDaQ8KSDSJBs9q
+ wrSJP850618AmWz7Pr+es/fL5GzVcUzou1Rq+jSEayoWKLTMGryte7QQi81uxpVvniLE
+ Xs3A==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUcUSs1l9XOajnf7UlxvQofhA5yYqfQJrBffKspWoLl0RTKPD+pD+SnEJtc/6zbUU1o2aVIbNATa18unA==@nongnu.org,
- AJvYcCWVejPjpaIFM2Z7A6VOniwQoTDmVjgPXIepR6cnZbH4ZDxOm8g18GTPBGWJ0+2ArZ6jbrRsOzC9eg==@nongnu.org
-X-Gm-Message-State: AOJu0YzicfkWRZNzW3GF5AqWuTxU1mPRvFk/gjRblsEpTo1byl7SJmyk
- 8uBQZaZ868CcViF3XuJMlpCqJ07pNHLORtgnP9uWsncBDXjKAHTMnOCXCfogYw==
-X-Gm-Gg: ASbGncvdYI15TjrokwVQoCxekZ5o978c2SPgwksffnsmGKmbgZfkyTqL6XHvBhQwEze
- /JEFHcEeo4LJEzXJ3jmlmSO8cqkfmZl1nWHoDWD8gzEMEaVZW80aGV/DFVSxRQTBVKqO1UcGZbG
- rk6agKKuAfoTIdItUyHgzNhimuf+aRa3XXxNaMOdWMmDKx/6zt4CTZjqY8f4U+aJ83bjaSbI0ns
- LhL+AqZUTK6Fw/gWw3CpO9e73522/bsBYWaPVWRMrCMXBcWs/oJCYAZUTrwrWceppJXEu9tyKG/
- iSQdTiRCSaLYYRn8mT1oiEuqK0W6UQMk7Onrz3Zz1mBnjoLJDS/KALme5v5KLtI5tC12nRcDhfz
- vpoUgcZAoOJ8ICvQRHyqd0g==
-X-Google-Smtp-Source: AGHT+IGNOGj69YnPJyljEQ3eSAE85qVdseIh+Xg+uwtDUGTZ5WehUZhCZ22VhMbxHvn1wZFdwRgv+w==
-X-Received: by 2002:a17:903:3847:b0:248:e3fb:4dc8 with SMTP id
- d9443c01a7336-24944aa2905mr111738315ad.39.1756727179321; 
- Mon, 01 Sep 2025 04:46:19 -0700 (PDT)
+ AJvYcCUlbf19HjF+4NHUBCT5tFS4yOLyE98CRhjCU+i3Ygg+x60WARisnKGCnPUZN8ykFp6+3TznbAKjbA==@nongnu.org,
+ AJvYcCUywqYR6VzOqSSM+DH0RXkrnuhKF9hIg0Dc/4pce+0Subt6lr8pqgsbWADFrd98ojXwOeoPieP4HlL7Jw==@nongnu.org
+X-Gm-Message-State: AOJu0YxuvZXFFUJrR/08mEdULNnq4XyBPh5wNH4OmhjP63Qw2ROP9TVv
+ Ax5KnuF6nvZwH0H9FxrjuitpxTlQVxeqc4UyyvYnk6wwvoyP27qAm0Sxnchjdw==
+X-Gm-Gg: ASbGncvxMd8mzHyStboFnT1zo3gDmNXSU5+OOxPkWYb6VRNo09uWL4br4EAOiIMql7Z
+ Ywq+69SaWzZ9sUY1AVE8v7vQ68WPKT7+9myGS6Vjgjy656sko6Mn9qJTl35cqP5441m+s4wXMox
+ Dn1Berh3sIEIA46UeXgEwpLdiAkZiI+YaTvTWvFYRpOSRkOarAAjKo36/OP5dRCQ1nxuDiYhr2P
+ D6A086YW0EC6JMflmRddRyIZmUMMCxIsc2hfT8Eei6dVi8aPwKC2LNlHGM0nKlgWQO+6ZRZMAF9
+ 9tO4wDtIVSkMkFa6YfkUDPDb9Po2VVjCEtP1TtY7bypFhefLhmPXL4H1gGld9nE9sUPB4vyjBQt
+ u860y6dEM+vC7DN0cuFG2v/FT1QYntQ/ol4o4wo03ggE=
+X-Google-Smtp-Source: AGHT+IHDhFRJQBYt2ZX4BzXIeOLbiQkOdlyOuir3bILDtDa/NmCbPUbnJ/plEPsSK9snQ1kxnmscMQ==
+X-Received: by 2002:a17:902:e5ce:b0:248:ffb6:5bc1 with SMTP id
+ d9443c01a7336-24944a9d689mr109011385ad.35.1756727145453; 
+ Mon, 01 Sep 2025 04:45:45 -0700 (PDT)
 Received: from ktock.. ([240d:1a:3b6:8b00:750a:cb0b:f0f9:68f4])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-249065a8036sm103038775ad.129.2025.09.01.04.46.14
+ d9443c01a7336-249065a8036sm103038775ad.129.2025.09.01.04.45.39
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 01 Sep 2025 04:46:18 -0700 (PDT)
+ Mon, 01 Sep 2025 04:45:44 -0700 (PDT)
 From: Kohei Tokunaga <ktokunaga.mail@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
@@ -80,23 +80,23 @@ Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
  qemu-arm@nongnu.org, qemu-riscv@nongnu.org,
  Stefan Hajnoczi <stefanha@redhat.com>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>, ktokunaga.mail@gmail.com
-Subject: [PATCH v3 10/35] tcg/wasm: Add add/sub/mul instructions
-Date: Mon,  1 Sep 2025 20:44:12 +0900
-Message-ID: <172f143f9806e41742137d975b2b80eb20f98a53.1756724464.git.ktokunaga.mail@gmail.com>
+Subject: [PATCH v3 04/35] .gitlab-ci.d: Add build tests for wasm64
+Date: Mon,  1 Sep 2025 20:44:06 +0900
+Message-ID: <74f75ef5de887b7e27ba9d17e21fc083ba99fa67.1756724464.git.ktokunaga.mail@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <cover.1756724464.git.ktokunaga.mail@gmail.com>
 References: <cover.1756724464.git.ktokunaga.mail@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::631;
- envelope-from=ktokunaga.mail@gmail.com; helo=mail-pl1-x631.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62d;
+ envelope-from=ktokunaga.mail@gmail.com; helo=mail-pl1-x62d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ T_SPF_TEMPERROR=0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -112,96 +112,109 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The add, sub and mul operations are implemented using the corresponding
-instructions in Wasm. TCI instructions are also generated in the same way as
-the original TCI backend.
+The wasm builds are tested for 3 targets: wasm32, wasm64(-sMEMORY64=1) and
+wasm64(-sMEMORY64=2). The CI builds the containers using the same Dockerfile
+(emsdk-wasm-cross.docker) with different build args.
 
 Signed-off-by: Kohei Tokunaga <ktokunaga.mail@gmail.com>
 ---
- tcg/wasm.c                | 12 ++++++++++++
- tcg/wasm/tcg-target.c.inc | 39 +++++++++++++++++++++++++++++++++++++++
- 2 files changed, 51 insertions(+)
+ .gitlab-ci.d/buildtest.yml          | 26 ++++++++++++++++++++++----
+ .gitlab-ci.d/container-cross.yml    | 20 ++++++++++++++++++--
+ .gitlab-ci.d/container-template.yml |  4 +++-
+ 3 files changed, 43 insertions(+), 7 deletions(-)
 
-diff --git a/tcg/wasm.c b/tcg/wasm.c
-index 9f3b1344d6..ba8a89d920 100644
---- a/tcg/wasm.c
-+++ b/tcg/wasm.c
-@@ -59,6 +59,18 @@ static uintptr_t tcg_qemu_tb_exec_tci(CPUArchState *env, const void *v_tb_ptr)
-             tci_args_rrr(insn, &r0, &r1, &r2);
-             regs[r0] = regs[r1] ^ regs[r2];
-             break;
-+        case INDEX_op_add:
-+            tci_args_rrr(insn, &r0, &r1, &r2);
-+            regs[r0] = regs[r1] + regs[r2];
-+            break;
-+        case INDEX_op_sub:
-+            tci_args_rrr(insn, &r0, &r1, &r2);
-+            regs[r0] = regs[r1] - regs[r2];
-+            break;
-+        case INDEX_op_mul:
-+            tci_args_rrr(insn, &r0, &r1, &r2);
-+            regs[r0] = regs[r1] * regs[r2];
-+            break;
-         default:
-             g_assert_not_reached();
-         }
-diff --git a/tcg/wasm/tcg-target.c.inc b/tcg/wasm/tcg-target.c.inc
-index a1757b4db7..d5cf324e7b 100644
---- a/tcg/wasm/tcg-target.c.inc
-+++ b/tcg/wasm/tcg-target.c.inc
-@@ -140,6 +140,9 @@ typedef enum {
-     OPC_GLOBAL_GET = 0x23,
-     OPC_GLOBAL_SET = 0x24,
+V3:
+- This commit is under review in another patch series so please ignore it
+  here.
+
+diff --git a/.gitlab-ci.d/buildtest.yml b/.gitlab-ci.d/buildtest.yml
+index d888a60063..77ae8f8281 100644
+--- a/.gitlab-ci.d/buildtest.yml
++++ b/.gitlab-ci.d/buildtest.yml
+@@ -787,11 +787,29 @@ coverity:
+     # Always manual on forks even if $QEMU_CI == "2"
+     - when: manual
  
-+    OPC_I64_ADD = 0x7c,
-+    OPC_I64_SUB = 0x7d,
-+    OPC_I64_MUL = 0x7e,
-     OPC_I64_AND = 0x83,
-     OPC_I64_OR = 0x84,
-     OPC_I64_XOR = 0x85,
-@@ -265,6 +268,42 @@ static const TCGOutOpBinary outop_xor = {
-     .out_rrr = tgen_xor,
- };
+-build-wasm:
++build-wasm32-32bit:
+   extends: .wasm_build_job_template
+   timeout: 2h
+   needs:
+-    job: wasm-emsdk-cross-container
++    job: wasm32-32bit-emsdk-cross-container
+   variables:
+-    IMAGE: emsdk-wasm32-cross
+-    CONFIGURE_ARGS: --static --disable-tools --enable-debug --enable-tcg-interpreter
++    IMAGE: emsdk-wasm32-32bit-cross
++    CONFIGURE_ARGS: --static --cpu=wasm32 --disable-tools --enable-debug --enable-tcg-interpreter
++
++build-wasm64-64bit:
++  extends: .wasm_build_job_template
++  timeout: 2h
++  needs:
++    job: wasm64-64bit-emsdk-cross-container
++  variables:
++    IMAGE: emsdk-wasm64-64bit-cross
++    CONFIGURE_ARGS: --static --cpu=wasm64 --disable-tools --enable-debug --enable-tcg-interpreter
++
++build-wasm64-32bit:
++  extends: .wasm_build_job_template
++  timeout: 2h
++  needs:
++    job: wasm64-32bit-emsdk-cross-container
++  variables:
++    IMAGE: emsdk-wasm64-32bit-cross
++    CONFIGURE_ARGS: --static --cpu=wasm64 --wasm64-32bit-address-limit --disable-tools --enable-debug --enable-tcg-interpreter
+diff --git a/.gitlab-ci.d/container-cross.yml b/.gitlab-ci.d/container-cross.yml
+index 8d3be53b75..84c4be49f4 100644
+--- a/.gitlab-ci.d/container-cross.yml
++++ b/.gitlab-ci.d/container-cross.yml
+@@ -92,7 +92,23 @@ win64-fedora-cross-container:
+   variables:
+     NAME: fedora-win64-cross
  
-+static void tgen_add(TCGContext *s, TCGType type,
-+                     TCGReg a0, TCGReg a1, TCGReg a2)
-+{
-+    tcg_out_op_rrr(s, INDEX_op_add, a0, a1, a2);
-+    tcg_wasm_out_o1_i2(s, OPC_I64_ADD, a0, a1, a2);
-+}
+-wasm-emsdk-cross-container:
++wasm32-32bit-emsdk-cross-container:
+   extends: .container_job_template
+   variables:
+-    NAME: emsdk-wasm32-cross
++    NAME: emsdk-wasm32-32bit-cross
++    BUILD_ARGS: --build-arg TARGET_CPU=wasm32
++    DOCKERFILE: emsdk-wasm-cross
 +
-+static const TCGOutOpBinary outop_add = {
-+    .base.static_constraint = C_O1_I2(r, r, r),
-+    .out_rrr = tgen_add,
-+};
++wasm64-64bit-emsdk-cross-container:
++  extends: .container_job_template
++  variables:
++    NAME: emsdk-wasm64-64bit-cross
++    BUILD_ARGS: --build-arg TARGET_CPU=wasm64 --build-arg WASM64_MEMORY64=1
++    DOCKERFILE: emsdk-wasm-cross
 +
-+static void tgen_sub(TCGContext *s, TCGType type,
-+                     TCGReg a0, TCGReg a1, TCGReg a2)
-+{
-+    tcg_out_op_rrr(s, INDEX_op_sub, a0, a1, a2);
-+    tcg_wasm_out_o1_i2(s, OPC_I64_SUB, a0, a1, a2);
-+}
-+
-+static const TCGOutOpSubtract outop_sub = {
-+    .base.static_constraint = C_O1_I2(r, r, r),
-+    .out_rrr = tgen_sub,
-+};
-+
-+static void tgen_mul(TCGContext *s, TCGType type,
-+                     TCGReg a0, TCGReg a1, TCGReg a2)
-+{
-+    tcg_out_op_rrr(s, INDEX_op_mul, a0, a1, a2);
-+    tcg_wasm_out_o1_i2(s, OPC_I64_MUL, a0, a1, a2);
-+}
-+
-+static const TCGOutOpBinary outop_mul = {
-+    .base.static_constraint = C_O1_I2(r, r, r),
-+    .out_rrr = tgen_mul,
-+};
-+
- static void tcg_out_tb_start(TCGContext *s)
- {
-     init_sub_buf();
++wasm64-32bit-emsdk-cross-container:
++  extends: .container_job_template
++  variables:
++    NAME: emsdk-wasm64-32bit-cross
++    BUILD_ARGS: --build-arg TARGET_CPU=wasm64 --build-arg WASM64_MEMORY64=2
++    DOCKERFILE: emsdk-wasm-cross
+diff --git a/.gitlab-ci.d/container-template.yml b/.gitlab-ci.d/container-template.yml
+index 4eec72f383..01ca840413 100644
+--- a/.gitlab-ci.d/container-template.yml
++++ b/.gitlab-ci.d/container-template.yml
+@@ -10,12 +10,14 @@
+     - export COMMON_TAG="$CI_REGISTRY/qemu-project/qemu/qemu/$NAME:latest"
+     - docker login $CI_REGISTRY -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD"
+     - until docker info; do sleep 1; done
++    - export DOCKERFILE_NAME=${DOCKERFILE:-$NAME}
+   script:
+     - echo "TAG:$TAG"
+     - echo "COMMON_TAG:$COMMON_TAG"
+     - docker build --tag "$TAG" --cache-from "$TAG" --cache-from "$COMMON_TAG"
+       --build-arg BUILDKIT_INLINE_CACHE=1
+-      -f "tests/docker/dockerfiles/$NAME.docker" "."
++      $BUILD_ARGS
++      -f "tests/docker/dockerfiles/$DOCKERFILE_NAME.docker" "."
+     - docker push "$TAG"
+   after_script:
+     - docker logout
 -- 
 2.43.0
 

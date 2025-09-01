@@ -4,85 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 456EECA0FE8
-	for <qemu-arm@archiver.kernel.org>; Sun, 31 Aug 2025 17:13:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C38DBCA0FFD
+	for <qemu-arm@archiver.kernel.org>; Mon,  1 Sep 2025 04:08:40 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uslcL-0008Oy-RF; Sun, 31 Aug 2025 13:13:26 -0400
+	id 1usvqF-0002mW-8L; Mon, 01 Sep 2025 00:08:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1uslcK-0008Nu-8w; Sun, 31 Aug 2025 13:13:24 -0400
-Received: from www3579.sakura.ne.jp ([49.212.243.89])
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1usvqB-0002lg-ND; Mon, 01 Sep 2025 00:08:23 -0400
+Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1uslcG-0008F6-QI; Sun, 31 Aug 2025 13:13:24 -0400
-Received: from [192.168.10.111] (p865013-ipoe.ipoe.ocn.ne.jp [153.242.222.12])
- (authenticated bits=0)
- by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 57VHCsfq063114
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
- Mon, 1 Sep 2025 02:12:54 +0900 (JST)
- (envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
-DKIM-Signature: a=rsa-sha256; bh=PpBXGyElZog6vBu5RCro6oXYR3bKZ71T2HDsVr4zVHU=; 
- c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
- h=Message-ID:Date:Subject:To:From;
- s=rs20250326; t=1756660374; v=1;
- b=lT7TBwKL+zuq8gLDzAeydMbSeae/uqiPU7Zzc2CV5BO/mZQfS7UuA6ct1fX9evaC
- u0fJZGJRNc01iPOSidC2GePdjX0dFLN7L0bTqPj9vzcuBsASIwz5qqk51REORm8C
- O0L5aETTx5Fv/gnYkSh2UqC/Of01UUUfKw61FRvj3gzeV611CaYGO2p4Ql6ijqYq
- u6pCXDfR4lKHFZBnviRpWYj1bngeBxA8QSg67nhqb+pqYCnJz+K/Nqp0lv5LwOnq
- zgEmNsQ7pGlhg+gKhs0rV8oxzgn1aGKxQXmY7SmcV903n4HADadLGX/AbFbkccum
- WZwdr1RF60eQAeoGfFcRIA==
-Message-ID: <6bee20a5-6f12-4b12-aab3-1a2019418611@rsg.ci.i.u-tokyo.ac.jp>
-Date: Mon, 1 Sep 2025 02:12:54 +0900
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1usvq9-000862-Qq; Mon, 01 Sep 2025 00:08:23 -0400
+Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
+ (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Mon, 1 Sep
+ 2025 12:08:09 +0800
+Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
+ (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
+ Transport; Mon, 1 Sep 2025 12:08:09 +0800
+To: "reviewer:Incompatible changes" <devel@lists.libvirt.org>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
+ <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
+ <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
+ Stanley" <joel@jms.id.au>, "open list:All patches CC here"
+ <qemu-devel@nongnu.org>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>
+CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
+ <kane_chen@aspeedtech.com>
+Subject: [PATCH v1 1/4] hw/arm: Remove ast2700a0-evb machine
+Date: Mon, 1 Sep 2025 12:08:04 +0800
+Message-ID: <20250901040808.1454742-2-jamin_lin@aspeedtech.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250901040808.1454742-1-jamin_lin@aspeedtech.com>
+References: <20250901040808.1454742-1-jamin_lin@aspeedtech.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v13 07/27] migration: push Error **errp into
- qemu_loadvm_state()
-To: armenon@redhat.com
-Cc: qemu-devel@nongnu.org, Peter Xu <peterx@redhat.com>,
- Fabiano Rosas <farosas@suse.de>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
- <alex.bennee@linaro.org>, Dmitry Osipenko <dmitry.osipenko@collabora.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Cornelia Huck <cohuck@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
- Eric Farman <farman@linux.ibm.com>, Thomas Huth <thuth@redhat.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- Matthew Rosato <mjrosato@linux.ibm.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- David Hildenbrand <david@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
- Nicholas Piggin <npiggin@gmail.com>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Fam Zheng <fam@euphon.net>,
- Alex Williamson <alex.williamson@redhat.com>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>,
- Steve Sistare <steven.sistare@oracle.com>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- qemu-s390x@nongnu.org, qemu-ppc@nongnu.org,
- Hailiang Zhang <zhanghailiang@xfusion.com>,
- Stefan Berger <stefanb@linux.vnet.ibm.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
-References: <20250830-propagate_tpm_error-v13-0-a4e777b7eb2c@redhat.com>
- <20250830-propagate_tpm_error-v13-7-a4e777b7eb2c@redhat.com>
- <078e2ef1-fbfa-450a-a2ab-d1e77cc8e850@rsg.ci.i.u-tokyo.ac.jp>
- <aLRt_G-pOH1rwJbb@armenon-kvm.bengluru.csb>
- <017c40a6-3347-43e7-b7b7-9e2e2130d19e@rsg.ci.i.u-tokyo.ac.jp>
- <aLR6mKJyVPZ4bqnZ@armenon-kvm.bengluru.csb>
-Content-Language: en-US
-From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-In-Reply-To: <aLR6mKJyVPZ4bqnZ@armenon-kvm.bengluru.csb>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=49.212.243.89;
- envelope-from=odaki@rsg.ci.i.u-tokyo.ac.jp; helo=www3579.sakura.ne.jp
-X-Spam_score_int: -16
-X-Spam_score: -1.7
+Content-Type: text/plain
+Received-SPF: pass client-ip=211.20.114.72;
+ envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX01.aspeed.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
- DKIM_SIGNED=0.1, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -95,136 +62,125 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
+From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 2025/09/01 1:38, Arun Menon wrote:
-> Hi,
-> 
-> On Mon, Sep 01, 2025 at 01:04:40AM +0900, Akihiko Odaki wrote:
->> On 2025/09/01 0:45, Arun Menon wrote:
->>> Hi Akihiko,
->>> Thanks for the review.
->>>
->>> On Sat, Aug 30, 2025 at 02:58:05PM +0900, Akihiko Odaki wrote:
->>>> On 2025/08/30 5:01, Arun Menon wrote:
->>>>> This is an incremental step in converting vmstate loading
->>>>> code to report error via Error objects instead of directly
->>>>> printing it to console/monitor.
->>>>> It is ensured that qemu_loadvm_state() must report an error
->>>>> in errp, in case of failure.
->>>>>
->>>>> When postcopy live migration runs, the device states are loaded by
->>>>> both the qemu coroutine process_incoming_migration_co() and the
->>>>> postcopy_ram_listen_thread(). Therefore, it is important that the
->>>>> coroutine also reports the error in case of failure, with
->>>>> error_report_err(). Otherwise, the source qemu will not display
->>>>> any errors before going into the postcopy pause state.
->>>>>
->>>>> Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
->>>>> Reviewed-by: Fabiano Rosas <farosas@suse.de>
->>>>> Signed-off-by: Arun Menon <armenon@redhat.com>
->>>>> ---
->>>>>     migration/migration.c |  9 +++++----
->>>>>     migration/savevm.c    | 30 ++++++++++++++++++------------
->>>>>     migration/savevm.h    |  2 +-
->>>>>     3 files changed, 24 insertions(+), 17 deletions(-)
->>>>>
->>>>> diff --git a/migration/migration.c b/migration/migration.c
->>>>> index 10c216d25dec01f206eacad2edd24d21f00e614c..c6768d88f45c870c7fad9b9957300766ff69effc 100644
->>>>> --- a/migration/migration.c
->>>>> +++ b/migration/migration.c
->>>>> @@ -881,7 +881,7 @@ process_incoming_migration_co(void *opaque)
->>>>>                           MIGRATION_STATUS_ACTIVE);
->>>>>         mis->loadvm_co = qemu_coroutine_self();
->>>>> -    ret = qemu_loadvm_state(mis->from_src_file);
->>>>> +    ret = qemu_loadvm_state(mis->from_src_file, &local_err);
->>>>>         mis->loadvm_co = NULL;
->>>>>         trace_vmstate_downtime_checkpoint("dst-precopy-loadvm-completed");
->>>>> @@ -908,7 +908,8 @@ process_incoming_migration_co(void *opaque)
->>>>>         }
->>>>>         if (ret < 0) {
->>>>> -        error_setg(&local_err, "load of migration failed: %s", strerror(-ret));
->>>>> +        error_prepend(&local_err, "load of migration failed: %s: ",
->>>>> +                      strerror(-ret));
->>>>>             goto fail;
->>>>>         }
->>>>> @@ -924,13 +925,13 @@ fail:
->>>>>         migrate_set_state(&mis->state, MIGRATION_STATUS_ACTIVE,
->>>>>                           MIGRATION_STATUS_FAILED);
->>>>>         migrate_set_error(s, local_err);
->>>>> -    error_free(local_err);
->>>>> +    error_report_err(local_err);
->>>>
->>>> This is problematic because it results in duplicate error reports when
->>>> !mis->exit_on_error; in that case the query-migrate QMP command reports the
->>>> error and this error reporting is redundant.
->>>
->>> If I comment this change, then all of the errors propagated up to now, using
->>> error_setg() will not be reported. This is the place where it is finally reported,
->>> when qemu_loadvm_state() fails. In other words, all the error_reports() we removed
->>> from all the files, replacing them with error_setg(), will finally be reported here
->>> using error_report_err().
->>
->> My understanding of the code without these two changes is:
->> - If the migrate-incoming QMP command is used with false as
->>    exit-on-error, this function will not report the error but
->>    the query-migrate QMP command will report the error.
->> - Otherwise, this function reports the error.
-> 
-> With my limited experience in testing, I have a question,
-> So there are 2 scenarios,
-> 1. running the virsh migrate command on the source host. Something like the following,
->    virsh -c 'qemu:///system' migrate --live --verbose --domain guest-vm --desturi qemu+ssh://10.6.120.20/system
->    OR for postcopy-ram,
->    virsh migrate guest-vm --live qemu+ssh://10.6.120.20/system --verbose --postcopy --timeout 10 --timeout-postcopy
-> 
-> 2. Using QMP commands, performing a migration from source to destination.
->    Running something like the following on the destination:
->    {
->      "execute": "migrate-incoming",
->      "arguments": {
->        "uri": "tcp:127.0.0.1:7777",
->        "exit-on-error": false
->      }
->    }
->    {
->      "execute": "migrate-incoming",
->      "arguments": {
->        "uri": "tcp:127.0.0.1:7777",
->        "exit-on-error": false
->      }
->    }
->    and the somthing like the following on source:
->    {
->      "execute": "migrate",
->      "arguments": {
->        "uri": "tcp:127.0.0.1:7777"
->      }
->    }
->    {"execute" : "query-migrate"}
-> 
-> In 1, previously, the user used to get an error message on migration failure.
-> This was because there were error_report() calls in all of the files.
-> Now that they are replaced with error_setg() and the error is stored in errp,
-> we need to display that using error_report_err(). Hence I introduced an error_report_err()
-> call in the fail section.
-> 
-> In 2, we have 2 QMP sessions, one for the source and another for the destination.
-> The QMP command migrate will be issued on the source, and the errp will be set.
-> I did not understand the part where the message will be displayed because of the
-> error_report_err() call. I did not see such a message on failure scenario on both
-> the sessions.
-> If the user wants to check for errors, then the destination qemu will not exit
-> (exit-on-error = false ) and we can retrieve it using {"execute" : "query-migrate"}
-> 
-> Aren't the 2 scenarios different by nature?
+The ast2700a0-evb machine represents the first revision of the AST2700 and
+serves as the initial engineering sample rather than a production version.
+A newer revision, A1, is now supported, and the ast2700a1-evb should replace
+the older A0 version.
 
-In 1, doesn't libvirt query the error with query-migrate and print it?
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+---
+ docs/about/deprecated.rst                     |  8 ------
+ hw/arm/aspeed.c                               | 28 +------------------
+ .../functional/aarch64/test_aspeed_ast2700.py | 12 --------
+ 3 files changed, 1 insertion(+), 47 deletions(-)
 
-In any case, it would be nice if you describe how libvirt interacts with 
-QEMU in 1.
+diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
+index 5d1579dcf8..8a273e019a 100644
+--- a/docs/about/deprecated.rst
++++ b/docs/about/deprecated.rst
+@@ -305,14 +305,6 @@ deprecated; use the new name ``dtb-randomness`` instead. The new name
+ better reflects the way this property affects all random data within
+ the device tree blob, not just the ``kaslr-seed`` node.
+ 
+-Arm ``ast2700a0-evb`` machine (since 10.1)
+-''''''''''''''''''''''''''''''''''''''''''
+-
+-The ``ast2700a0-evb`` machine represents the first revision of the AST2700
+-and serves as the initial engineering sample rather than a production version.
+-A newer revision, A1, is now supported, and the ``ast2700a1-evb`` should
+-replace the older A0 version.
+-
+ Mips ``mipssim`` machine (since 10.0)
+ '''''''''''''''''''''''''''''''''''''
+ 
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index c31bbe7701..e729edfe13 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -1989,35 +1989,13 @@ static void ast2700_evb_i2c_init(AspeedMachineState *bmc)
+                             TYPE_TMP105, 0x4d);
+ }
+ 
+-static void aspeed_machine_ast2700a0_evb_class_init(ObjectClass *oc,
+-                                                    const void *data)
+-{
+-    MachineClass *mc = MACHINE_CLASS(oc);
+-    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
+-
+-    mc->alias = "ast2700-evb";
+-    mc->desc = "Aspeed AST2700 A0 EVB (Cortex-A35)";
+-    amc->soc_name  = "ast2700-a0";
+-    amc->hw_strap1 = AST2700_EVB_HW_STRAP1;
+-    amc->hw_strap2 = AST2700_EVB_HW_STRAP2;
+-    amc->fmc_model = "w25q01jvq";
+-    amc->spi_model = "w25q512jv";
+-    amc->num_cs    = 2;
+-    amc->macs_mask = ASPEED_MAC0_ON | ASPEED_MAC1_ON | ASPEED_MAC2_ON;
+-    amc->uart_default = ASPEED_DEV_UART12;
+-    amc->i2c_init  = ast2700_evb_i2c_init;
+-    amc->vbootrom = true;
+-    mc->auto_create_sdcard = true;
+-    mc->default_ram_size = 1 * GiB;
+-    aspeed_machine_class_init_cpus_defaults(mc);
+-}
+-
+ static void aspeed_machine_ast2700a1_evb_class_init(ObjectClass *oc,
+                                                     const void *data)
+ {
+     MachineClass *mc = MACHINE_CLASS(oc);
+     AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
+ 
++    mc->alias = "ast2700-evb";
+     mc->desc = "Aspeed AST2700 A1 EVB (Cortex-A35)";
+     amc->soc_name  = "ast2700-a1";
+     amc->hw_strap1 = AST2700_EVB_HW_STRAP1;
+@@ -2166,10 +2144,6 @@ static const TypeInfo aspeed_machine_types[] = {
+         .class_init     = aspeed_minibmc_machine_ast1030_evb_class_init,
+ #ifdef TARGET_AARCH64
+     }, {
+-        .name          = MACHINE_TYPE_NAME("ast2700a0-evb"),
+-        .parent        = TYPE_ASPEED_MACHINE,
+-        .class_init    = aspeed_machine_ast2700a0_evb_class_init,
+-        }, {
+         .name          = MACHINE_TYPE_NAME("ast2700a1-evb"),
+         .parent        = TYPE_ASPEED_MACHINE,
+         .class_init    = aspeed_machine_ast2700a1_evb_class_init,
+diff --git a/tests/functional/aarch64/test_aspeed_ast2700.py b/tests/functional/aarch64/test_aspeed_ast2700.py
+index d02dc7991c..063d9e572c 100755
+--- a/tests/functional/aarch64/test_aspeed_ast2700.py
++++ b/tests/functional/aarch64/test_aspeed_ast2700.py
+@@ -46,10 +46,6 @@ def verify_openbmc_boot_and_login(self, name):
+         exec_command_and_wait_for_pattern(self, 'root', 'Password:')
+         exec_command_and_wait_for_pattern(self, '0penBmc', f'root@{name}:~#')
+ 
+-    ASSET_SDK_V906_AST2700 = Asset(
+-            'https://github.com/AspeedTech-BMC/openbmc/releases/download/v09.06/ast2700-a0-default-obmc.tar.gz',
+-            '7247b6f19dbfb700686f8d9f723ac23f3eb229226c0589cb9b06b80d1b61f3cb')
+-
+     ASSET_SDK_V906_AST2700A1 = Asset(
+             'https://github.com/AspeedTech-BMC/openbmc/releases/download/v09.06/ast2700-default-obmc.tar.gz',
+             'f1d53e0be8a404ecce3e105f72bc50fa4e090ad13160ffa91b10a6e0233a9dc6')
+@@ -111,14 +107,6 @@ def start_ast2700_test_vbootrom(self, name):
+         self.do_test_aarch64_aspeed_sdk_start(
+                 self.scratch_file(name, 'image-bmc'))
+ 
+-    def test_aarch64_ast2700_evb_sdk_v09_06(self):
+-        self.set_machine('ast2700-evb')
+-
+-        self.archive_extract(self.ASSET_SDK_V906_AST2700)
+-        self.start_ast2700_test('ast2700-a0-default')
+-        self.verify_openbmc_boot_and_login('ast2700-a0-default')
+-        self.do_ast2700_i2c_test()
+-
+     def test_aarch64_ast2700a1_evb_sdk_v09_06(self):
+         self.set_machine('ast2700a1-evb')
+ 
+-- 
+2.43.0
 
-Regards,
-Akihiko Odaki
 

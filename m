@@ -4,78 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17336CA0FF0
-	for <qemu-arm@archiver.kernel.org>; Mon,  1 Sep 2025 06:55:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2EE8FCA0FF0
+	for <qemu-arm@archiver.kernel.org>; Mon,  1 Sep 2025 06:56:46 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1usyRs-0002Cg-02; Mon, 01 Sep 2025 02:55:28 -0400
+	id 1usySs-0002ui-9F; Mon, 01 Sep 2025 02:56:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1usyRp-0002Bh-E6
- for qemu-arm@nongnu.org; Mon, 01 Sep 2025 02:55:25 -0400
+ id 1usySg-0002oh-BS
+ for qemu-arm@nongnu.org; Mon, 01 Sep 2025 02:56:21 -0400
 Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1usyRm-0004i8-59
- for qemu-arm@nongnu.org; Mon, 01 Sep 2025 02:55:25 -0400
+ id 1usySW-0004te-KJ
+ for qemu-arm@nongnu.org; Mon, 01 Sep 2025 02:56:17 -0400
 Received: by mail-ej1-x62d.google.com with SMTP id
- a640c23a62f3a-b0428b537e5so104246666b.3
- for <qemu-arm@nongnu.org>; Sun, 31 Aug 2025 23:55:20 -0700 (PDT)
+ a640c23a62f3a-afebb6d4093so663525666b.1
+ for <qemu-arm@nongnu.org>; Sun, 31 Aug 2025 23:56:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756709718; x=1757314518; darn=nongnu.org;
+ d=linaro.org; s=google; t=1756709762; x=1757314562; darn=nongnu.org;
  h=mime-version:message-id:in-reply-to:references:user-agent:subject
  :cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=0xWX6XMK1RH4GwJTomShFt84b8vw11zBJnho3OvRg3Y=;
- b=OLRPRrxzZkgtoFlhbTA6/1V9ULHWbJMI4bUmus+TvIQGSEHESdpi1XDlBv7AjIxYaH
- wfzmnubDdJOxONnZ91jT8pwERAtICWPsIc4g69Sm+r9wtRgm8k/b93oS0An9o1DMiCDc
- W7RzTusvKWxDrriILsji6PA6HNnaI82JFgwVc+rXYzjoFs+zw9XNkn6bYhfbIeykQXsP
- q0oUrUSOxeLBB59kOUm6CmmJqn5emxkcmO7dS8/OPrTAMNAEKXfoR109hRW1chtPzF54
- gx+RHWK63krJUcE5tr813A2hBDKrCzHwo6xR+e7mJ5btiMD9BhJsaa29IT3TVH43qF+k
- 12MQ==
+ bh=qNbXwqLG6Y7c3wCCywsmaVJy7D/9jX0NIEoAahW0amI=;
+ b=w9Gi99kV7h+VMOErdsakVoKgkHGQ8AHCOgTbgVFt3qJIjKgg4wpLboU6o0GRvwiQiy
+ 6RdOG6tlBWoO19y16OBsJ8wLZ5oJra+TJQ9OJlENm3KJxu0JYVTzohkemBtbcOWEz/CB
+ +QBTuUICnxuQjK1itPu9uKp+eni2r+E/I9vjsNgAsWQNCx4lvk481Erl9UTXVEwoGEiY
+ n7NCcQZw0byoZlDBkanJnToJgesNMftKRiEzWnUJWQ+8h78K7LHmDRPgjsv3LtL0J1Dj
+ 5qB/RKBn6X5AC7+yIBBG3xxPoW+TFFQDEBVmYLNQnFy5bGtVFYvDYolQ8XdoNny4Y9jf
+ Rgpg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756709718; x=1757314518;
+ d=1e100.net; s=20230601; t=1756709762; x=1757314562;
  h=mime-version:message-id:in-reply-to:references:user-agent:subject
  :cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=0xWX6XMK1RH4GwJTomShFt84b8vw11zBJnho3OvRg3Y=;
- b=waZMuepmFUqNdgy98Ks5L6ONzD/F+rlhYBv2eh7PT8ondyW+/F8pzZrxwQ+NDUJg8/
- S7bVEnZa4blAJFQQ8qgTVCuGAjkiLS2IgR+wzYb4p24JspzvK7uBUjfEuXcshQ/b/XIo
- ZxSDvzJBJR0RseU7vEpp1l7zJ1QIIiWArZjCpXUpw7cJbAREBfsfR0QqZ5WUj+96zG9v
- 6c4IohIqo57NOorPO4d3S7tGCV/bVmn1O7ad3gDMXJ3wxVLI0+rJLIrfR+HPWqxZD/Rt
- bwxE5DTv0p0u8Nv6bMz1dbZ9UeNBeitgPRao1RqeNmOyr26VcGNedTkqw4YT6YmmChAS
- 3GoQ==
-X-Gm-Message-State: AOJu0YzsxZ+kwSQo/3H+01lJD4UEYa8E6+kjxs/+G/rmj/pHhHwmRS31
- Vhx074pdgZf8MIAHuqjdRuo9mnelup7dG//ysyfLxkXRVZNRT8axEYezXCrhL+0gQgXe1Rcoz5O
- AE9xG
-X-Gm-Gg: ASbGncsEiGWg8ur5WjirpqpFaQs7Qnb4xwOXwmOThupz/7DIZOF4Ny/sfSogET5CAc6
- 0zDZcfmgTk2D1DP7YVDP8NSxjOoDTGF6bbgvKO4j6m9MO9+E/hy4640bI5T2sIINAy5PEqqTo4f
- BeRnSFXXAzRrOumuB9X9njZflN5gcPp63pkaIwiJd6WBXKflP2klnkwh4nSxSjunaabU3mXNjrH
- yZhLabu+KnkpHnZ594s+iB/i5p6APY5vnJhkqbYz/6ygR7vmQHIXRlH4ywTmOs0grtCQ8RUYhBQ
- UyRihsApHdAiuEvmqhm+WOptUqUWUHX6hZD++76PS8ObeFtArHj5bWM7TdwwW01v0RS8bBAh5wE
- eahKU9MsSGyzrr34yzr55AYwxkrdW6vdsUdBWUiHoPZDTNLpyL9Rrevn9+5JVCUceUqiwFnMFvx
- TEgzLE//s=
-X-Google-Smtp-Source: AGHT+IFAp+leh+xUu+VPGxOcyugwdkp6l1Nr4jErPzJQvNmiWrlHU+UC6K+QFiCET656s7UZEdjFIw==
-X-Received: by 2002:a17:907:2d06:b0:afe:b781:e89f with SMTP id
- a640c23a62f3a-b01d8a70a40mr692042166b.17.1756709718059; 
- Sun, 31 Aug 2025 23:55:18 -0700 (PDT)
+ bh=qNbXwqLG6Y7c3wCCywsmaVJy7D/9jX0NIEoAahW0amI=;
+ b=G1pZEWp9ws5twYvBwqGZRsJo+UYbcQVy5sFlxznMS0FGfbPlWNIXxkG850q/i9DCHw
+ VqCNKnB6Aunz/p0tejxAdutR5jRfGors4ufmM/PmcVz41ylS3Z1gkv5OA107dthWgJfC
+ pJNGgd7wLrQwEqFeZqyJXwp6jlOpD2AkbpqyPzP4/UDpgarsi+t0nAkOmDfPSa2FkBvX
+ Ec0TVlPqgRJxjx/gBdWna563Xpr1GW4vJV49MT7tpEQGNnBwt+NTcogcrd5AsaPSLaQb
+ lTa3sjNmQdhJ+nEDKAwlgI9bLRPN472RtjRl9bTrdFukWy90Y40c3gVLD0AfZkbNB6ZZ
+ cM2A==
+X-Gm-Message-State: AOJu0YzfnmmMSoxlNc6IFIWp6H11xx7cRFEQQgESHPgyaCv3UJl8bRlo
+ sl0KNXvNfT9FLd/yK8+RopiHm7D957uzNJvZKF6Qv6SctdmeFsTN+wLuSCO7qZPlzC6v2xShxJI
+ osF7H
+X-Gm-Gg: ASbGncv+3iKwGcY7UPAypRmCkH8PMGiU3tDnmUPpyI9I6zlqnklDc2XdCudpNovrhll
+ ZVY3a8zD4j21WK5eUjXGmV3KY7Lv/qVgC+QdNj+M8sz84oSFgn6qjuIQ0AHyYRqbaSHcC7cGt3o
+ gQQXVtfEp6HfVZzsW/IbvzQ163XLbr9b84TEUIhtE2zbx9hwXcT+OdTLm8bo/S3u73Bklj1lUI1
+ ojvq/bOnd7HJ5l58h+t9jRkq1unniXAx49WSt2xbaqMqAdQowx39pl/xAzNo3ujoTvgXzBOSug3
+ ejhh+ioyi2Uh6fXcttQL3BnKbkfKdk5shwi448hYRjmNc5UX92fv5nna00Q/xMkIpKjwEX2VOoK
+ zToumCtLcwtSuC+BGokZVWdU7dKrPKdAvbvrWeCrI6/WgY/GBNVAdQOpIb6JqL4OtcfmG2cxWmQ
+ g1rmnITII=
+X-Google-Smtp-Source: AGHT+IE1pzzW0+yy6Uenxf/Yu+0Lwe5R/55dB9IpSI0UL0BlfK39Gr+Ds9BA2GpkhQEE0siWdNGvLg==
+X-Received: by 2002:a17:907:934d:b0:afe:dbfb:b10e with SMTP id
+ a640c23a62f3a-b01d979d48dmr598976366b.47.1756709761681; 
+ Sun, 31 Aug 2025 23:56:01 -0700 (PDT)
 Received: from meli-email.org (athedsl-4441256.home.otenet.gr.
  [79.129.180.152]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-b0410138d0asm392137366b.53.2025.08.31.23.55.17
+ a640c23a62f3a-b04241b2e7esm236917366b.43.2025.08.31.23.56.01
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 31 Aug 2025 23:55:17 -0700 (PDT)
-Date: Mon, 01 Sep 2025 09:55:02 +0300
+ Sun, 31 Aug 2025 23:56:01 -0700 (PDT)
+Date: Mon, 01 Sep 2025 09:55:39 +0300
 From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 To: qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>
 Cc: qemu-arm@nongnu.org
-Subject: Re: [PATCH 37/61] target/arm: Implement isar tests for FEAT_SYSREG128,
- FEAT_SYSINSTR128
+Subject: Re: [PATCH 38/61] target/arm: Define CP_REG_SIZE_U128
 User-Agent: meli/0.8.12
 References: <20250827010453.4059782-1-richard.henderson@linaro.org>
- <20250827010453.4059782-42-richard.henderson@linaro.org>
-In-Reply-To: <20250827010453.4059782-42-richard.henderson@linaro.org>
-Message-ID: <t1wdw4.2uz7xzahoegpk@linaro.org>
+ <20250827010453.4059782-43-richard.henderson@linaro.org>
+In-Reply-To: <20250827010453.4059782-43-richard.henderson@linaro.org>
+Message-ID: <t1wdxc.1rr033zmra73t@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Received-SPF: pass client-ip=2a00:1450:4864:20::62d;
@@ -108,30 +107,29 @@ On Wed, 27 Aug 2025 04:04, Richard Henderson <richard.henderson@linaro.org> wrot
 
 Reviewed-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 
-> target/arm/cpu-features.h | 10 ++++++++++
-> 1 file changed, 10 insertions(+)
+> target/arm/kvm-consts.h | 2 ++
+> 1 file changed, 2 insertions(+)
 >
->diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
->index 5876162428..7a0e515aeb 100644
->--- a/target/arm/cpu-features.h
->+++ b/target/arm/cpu-features.h
->@@ -599,6 +599,16 @@ static inline bool isar_feature_aa64_mops(const ARMISARegisters *id)
->     return FIELD_EX64_IDREG(id, ID_AA64ISAR2, MOPS);
-> }
+>diff --git a/target/arm/kvm-consts.h b/target/arm/kvm-consts.h
+>index 54ae5da7ce..1b3c10c0d3 100644
+>--- a/target/arm/kvm-consts.h
+>+++ b/target/arm/kvm-consts.h
+>@@ -30,6 +30,7 @@
+> #define CP_REG_SIZE_MASK       0x00f0000000000000ULL
+> #define CP_REG_SIZE_U32        0x0020000000000000ULL
+> #define CP_REG_SIZE_U64        0x0030000000000000ULL
+>+#define CP_REG_SIZE_U128       0x0040000000000000ULL
+> #define CP_REG_ARM             0x4000000000000000ULL
+> #define CP_REG_ARCH_MASK       0xff00000000000000ULL
 > 
->+static inline bool isar_feature_aa64_sysreg128(const ARMISARegisters *id)
->+{
->+    return FIELD_EX64_IDREG(id, ID_AA64ISAR2, SYSREG_128) != 0;
->+}
->+
->+static inline bool isar_feature_aa64_sysinstr128(const ARMISARegisters *id)
->+{
->+    return FIELD_EX64_IDREG(id, ID_AA64ISAR2, SYSINSTR_128) != 0;
->+}
->+
-> static inline bool isar_feature_aa64_rpres(const ARMISARegisters *id)
-> {
->     return FIELD_EX64_IDREG(id, ID_AA64ISAR2, RPRES);
+>@@ -37,6 +38,7 @@ MISMATCH_CHECK(CP_REG_SIZE_SHIFT, KVM_REG_SIZE_SHIFT);
+> MISMATCH_CHECK(CP_REG_SIZE_MASK, KVM_REG_SIZE_MASK);
+> MISMATCH_CHECK(CP_REG_SIZE_U32, KVM_REG_SIZE_U32);
+> MISMATCH_CHECK(CP_REG_SIZE_U64, KVM_REG_SIZE_U64);
+>+MISMATCH_CHECK(CP_REG_SIZE_U128, KVM_REG_SIZE_U128);
+> MISMATCH_CHECK(CP_REG_ARM, KVM_REG_ARM);
+> MISMATCH_CHECK(CP_REG_ARCH_MASK, KVM_REG_ARCH_MASK);
+> 
 >-- 
 >2.43.0
 >

@@ -4,50 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88DE8CA0FFD
-	for <qemu-arm@archiver.kernel.org>; Mon,  1 Sep 2025 04:18:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D266CA0FF0
+	for <qemu-arm@archiver.kernel.org>; Mon,  1 Sep 2025 06:47:41 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1usvzL-0005WA-Ot; Mon, 01 Sep 2025 00:17:52 -0400
+	id 1usyJT-0000BK-69; Mon, 01 Sep 2025 02:46:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1usvq8-0002l9-Qw; Mon, 01 Sep 2025 00:08:20 -0400
-Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1usyJR-000091-GU
+ for qemu-arm@nongnu.org; Mon, 01 Sep 2025 02:46:45 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1usvq6-000862-Ek; Mon, 01 Sep 2025 00:08:20 -0400
-Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Mon, 1 Sep
- 2025 12:08:08 +0800
-Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
- Transport; Mon, 1 Sep 2025 12:08:08 +0800
-To: "reviewer:Incompatible changes" <devel@lists.libvirt.org>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
- Stanley" <joel@jms.id.au>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>
-CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
- <kane_chen@aspeedtech.com>
-Subject: [PATCH v1 0/4] Remove AST2700 A0
-Date: Mon, 1 Sep 2025 12:08:03 +0800
-Message-ID: <20250901040808.1454742-1-jamin_lin@aspeedtech.com>
-X-Mailer: git-send-email 2.43.0
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1usyJO-0002tI-KJ
+ for qemu-arm@nongnu.org; Mon, 01 Sep 2025 02:46:45 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1756709201;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=q5w8bBlKlrAq2eKhlTHswlurzALBGfyxWtoE8c847Is=;
+ b=O1/q87+B2e2xETjHAYOeo7RFkCsWMxxBdRDF6KyTQwdiUupZDgB+pwY5TFz228ng0oO6JD
+ +mUYzqpWAJR0UzhO+TF1zF+SG6DMyJ5GAIH/6N2ba+Cc0TS+taa1gOtkcGLc8yjkyDCqQ3
+ UQn8pCB8mFVw59t1g0dT6My4pJP227U=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-257-OQXt7Y2DNPaqxgg3R2qtgw-1; Mon,
+ 01 Sep 2025 02:46:38 -0400
+X-MC-Unique: OQXt7Y2DNPaqxgg3R2qtgw-1
+X-Mimecast-MFC-AGG-ID: OQXt7Y2DNPaqxgg3R2qtgw_1756709197
+Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id EBEE619560BB; Mon,  1 Sep 2025 06:46:36 +0000 (UTC)
+Received: from corto.redhat.com (unknown [10.45.224.9])
+ by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 2C8CC19560B4; Mon,  1 Sep 2025 06:46:33 +0000 (UTC)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Eric Auger <eric.auger@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Alex Williamson <alex.williamson@redhat.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+Subject: [PATCH v2 0/8] vfio: Remove 'vfio-platform'
+Date: Mon,  1 Sep 2025 08:46:23 +0200
+Message-ID: <20250901064631.530723-1-clg@redhat.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-Received-SPF: pass client-ip=211.20.114.72;
- envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX01.aspeed.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=-1, RCVD_IN_MSPIKE_WL=-0.01,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -60,33 +79,66 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
-From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-v1:
-  - Remove ast2700a0-evb machine
-  - Remove ast2700-a0 SOC
-  - Remove GIC 128 - 136 for AST2700 A0
+Hello, 
 
-*** BLURB HERE ***
+The VFIO_PLATFORM device type has been deprecated in the QEMU 10.0
+timeframe. QEMU 10.2 is the time for removal.
 
-Jamin Lin (4):
-  hw/arm: Remove ast2700a0-evb machine
-  hw/arm/aspeed_ast27x0: Remove ast2700-a0 SOC
-  hw/intc/aspeed: Remove GIC 128 - 136
-  docs/specs/aspeed-intc:  Remove GIC 128 - 136
+The last patch moves vfio-region.h under hw/vfio since it no longer
+needs to be a public VFIO interface.
 
- docs/about/deprecated.rst                     |   8 --
- docs/specs/aspeed-intc.rst                    |  93 ++++----------
- hw/arm/aspeed.c                               |  28 +---
- hw/arm/aspeed_ast27x0.c                       | 121 ++----------------
- hw/intc/aspeed_intc.c                         |  49 +------
- .../functional/aarch64/test_aspeed_ast2700.py |  12 --
- 6 files changed, 39 insertions(+), 272 deletions(-)
+Thanks,
+
+C.
+
+Changes in v2:
+
+ - Fixed 'system/system.h' include for the arm virt machine and a
+   couple more models
+
+Cédric Le Goater (8):
+  hw/arm/virt: Include 'system/system.h'
+  hw/isa/superio: Include 'system/system.h'
+  hw/mips/loongson3_virt: Include 'system/system.h'
+  hw/mips/malta: Include 'system/system.h'
+  vfio: Remove 'vfio-amd-xgbe' device
+  vfio: Remove 'vfio-calxeda-xgmac' device
+  vfio: Remove 'vfio-platform'
+  vfio: Move vfio-region.h under hw/vfio/
+
+ docs/about/deprecated.rst             |  25 -
+ docs/about/removed-features.rst       |  25 +
+ docs/devel/kconfig.rst                |   2 -
+ {include/hw => hw}/vfio/vfio-region.h |   0
+ include/hw/vfio/vfio-amd-xgbe.h       |  46 --
+ include/hw/vfio/vfio-calxeda-xgmac.h  |  43 --
+ include/hw/vfio/vfio-device.h         |   2 +-
+ include/hw/vfio/vfio-platform.h       |  78 ---
+ hw/arm/virt.c                         |   6 +-
+ hw/core/sysbus-fdt.c                  | 383 --------------
+ hw/isa/isa-superio.c                  |   1 +
+ hw/mips/loongson3_virt.c              |   1 +
+ hw/mips/malta.c                       |   1 +
+ hw/vfio/amd-xgbe.c                    |  61 ---
+ hw/vfio/calxeda-xgmac.c               |  61 ---
+ hw/vfio/platform.c                    | 716 --------------------------
+ hw/arm/Kconfig                        |   3 -
+ hw/vfio/Kconfig                       |  16 -
+ hw/vfio/meson.build                   |   3 -
+ hw/vfio/trace-events                  |  11 -
+ 20 files changed, 30 insertions(+), 1454 deletions(-)
+ rename {include/hw => hw}/vfio/vfio-region.h (100%)
+ delete mode 100644 include/hw/vfio/vfio-amd-xgbe.h
+ delete mode 100644 include/hw/vfio/vfio-calxeda-xgmac.h
+ delete mode 100644 include/hw/vfio/vfio-platform.h
+ delete mode 100644 hw/vfio/amd-xgbe.c
+ delete mode 100644 hw/vfio/calxeda-xgmac.c
+ delete mode 100644 hw/vfio/platform.c
 
 -- 
-2.43.0
+2.51.0
 
 

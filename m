@@ -4,78 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5217CA0FF0
-	for <qemu-arm@archiver.kernel.org>; Mon,  1 Sep 2025 13:04:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4AAE3CA0FFD
+	for <qemu-arm@archiver.kernel.org>; Mon,  1 Sep 2025 13:06:26 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ut4DF-00035V-At; Mon, 01 Sep 2025 09:04:46 -0400
+	id 1ut4En-0005Vl-5B; Mon, 01 Sep 2025 09:06:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1ut4DE-00034m-0V
- for qemu-arm@nongnu.org; Mon, 01 Sep 2025 09:04:44 -0400
-Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
+ id 1ut4Eg-0005NN-W5
+ for qemu-arm@nongnu.org; Mon, 01 Sep 2025 09:06:15 -0400
+Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1ut4DB-0005z5-V2
- for qemu-arm@nongnu.org; Mon, 01 Sep 2025 09:04:43 -0400
-Received: by mail-ej1-x62d.google.com with SMTP id
- a640c23a62f3a-b0439098469so99529666b.1
- for <qemu-arm@nongnu.org>; Mon, 01 Sep 2025 06:04:41 -0700 (PDT)
+ id 1ut4Ec-0006J0-7k
+ for qemu-arm@nongnu.org; Mon, 01 Sep 2025 09:06:14 -0400
+Received: by mail-ej1-x630.google.com with SMTP id
+ a640c23a62f3a-aff0775410eso400273766b.0
+ for <qemu-arm@nongnu.org>; Mon, 01 Sep 2025 06:06:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756731880; x=1757336680; darn=nongnu.org;
+ d=linaro.org; s=google; t=1756731966; x=1757336766; darn=nongnu.org;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=HlKj8OKSsrbMCx7XTlHagNjOcu9W5Y4qb5a5EzELU08=;
- b=bmB9l1XGA/TfBDcspZ9XHhtjTd/ncZXUKiUWNrLqdXR4whKmfdc9EGDZ/dTf71XqRp
- RKa7PmA/CxhkttFjDwHmUQSBRjXErTB/1IlDkJlyGkflz29hRiFBq3RmdtvtQ95UYW2+
- bFrB+v5YiKnTu686g4b+xu/ZD1SgK2tq2sGV/ngLBctf6wSkca1NHIkKsXDayA1UinXb
- UOZl3m7L7lfIps4AgWNNyTgtlKWzZzIeJmcHKpFiEbWn3ZwcZi2HIRaN1Ul3IPwiWZ1A
- rBDd0vw14mtHYb+H6o+wEEOkVy35HIqqhdP4W2AfceyhuVuDNEvDayTTTHZ4w6RWjNqR
- mlyA==
+ bh=DPfpb6HjmaL+6OfXuLPe5ZVPtf5dqY3m5j8Nho8xd9o=;
+ b=YWKoG7mEe89ipkZjBc5xZFHe1AC2gYFNjdX1XxotFPnVsRm3UhwNCltNN18rasogID
+ gUDr9SPNaAXQhvWsQYJ0zkEGhShqhYh4QWlBoZEBXDkPi/t8+dwQwKaEZNBHhOthmTXG
+ G+xMYPOFkPoQv34M1ac/FLfebve/gkDx2U0MJ2N5Cfiu4/ZK1e31usZlKSByVlW3xUAk
+ 7kdBARplUu6i7lz2ygWS0hX06hGXOhYbxQhtIIHr8ZFn1KHZmpweFfARrlXthjNhX+Nu
+ K0m0WF0yZDEKz4t2uY276YFofudS7r/hU5AIQdHGx7uUk7AqDAOZ+dc/8BeGXlaxsKvK
+ Q4iQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756731880; x=1757336680;
+ d=1e100.net; s=20230601; t=1756731966; x=1757336766;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=HlKj8OKSsrbMCx7XTlHagNjOcu9W5Y4qb5a5EzELU08=;
- b=CxAbUgS3RSi7u60XG0jrv6Uegpv8xUmUSMsgA+i8dsFQ+ygthQnt+2Uwf8e7+PG9Yu
- xSPQKklCMtWx6MOkY3mHqXU0fx1ZeL45/zF7zVl4ROmIQzO+FiX9Dir0hGD+K88HAhgK
- VdOyrworhWveIF6zFh92v2bxCZCtzdb4RGMPdbiZN2rO7W/w8s8//ocmEISI/EiHQEOd
- kgePqq9jN0CTsl0vMXqLkPDJZlg+6BlaYJdII0Sk2Fn9lKYbE0jsiBmRNOod/RVclcao
- KS7Fg20jzP4J8Hx369Adb8ezbw799ezSnoFw4lUTqYNhgARPSY8pj3TwguJ1V1zcmNoD
- 4D0w==
+ bh=DPfpb6HjmaL+6OfXuLPe5ZVPtf5dqY3m5j8Nho8xd9o=;
+ b=ZznrFV13onFO/kVWnlgvb1U3k6jdcLgoBpPgloqOgNumCLfrJMZJPzvPzKR/j8SaJZ
+ L8g7jk9rqEdqqRIig4MaWGexSVjUzoOb7234W+j4uLdka51iuPxX/26EOkhrKLS/UGqd
+ M7oiyZlVRKFW9Ja27Oo7n5J5kNM9LcnjNb9loNLPTMmNgNFptUwu/Dr15SJJ5gJEKuMP
+ TJOrH30UjSKwxfCSUvtJJ1s3kc+/k3eqQLSnX72quSdK1A+qXcfPMdsF+/N1Ev/LWLOF
+ 2ZtAgjRFcQaOAv+8zjjHg7kNRLbGOmwHbWYETQwgoGsqx7tcSpl9NCoDNU4YRS0AZnd6
+ nypA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVo4217WhffPgmMHFsYwyE11ty+fLbY0dy563L19fwOcp1Lt+RptReTj7ig9rzcnXWNfzlKX/kXIg==@nongnu.org
-X-Gm-Message-State: AOJu0Yw93N70acguDw5nHHjGr4yhyJV2zCXyO7bQpLpsIFIiE6qNW4UY
- KB9rCZIYd/ck5Ivcur9zFkf/JcArPtUvkd6x3PSWwc01FScgr42ESMIAlm11sOTzBhWokGzubZr
- fMnh/Gwu55kPq4f7MwCemPzE1WeSruiuS+yowUJSA03SbFSZQZw85+Q0=
-X-Gm-Gg: ASbGncvaD/llkYT+59Tj397HEnz6KLQy3rzvWXVLbpTYOVAKzGLfr4anqvjgFCWR1ln
- rk8gvLQUg+DWLDz1DK29ouG/vuL/mdQPz2Xn+I8yyu889BZQgsS9oLd3uHHIWFRVy/QA78EIAKE
- x4j8EXhT9hXv10OPaMCZdBIAzWU3qvY4qLwDPkJqSx2oDoL/9g37G4CNlDUria5DDLmmXIVvdDp
- zuRAwxDNxZl40wnNqY=
-X-Google-Smtp-Source: AGHT+IGX1I49kNkvlURV0IXi8xO0t68krtT9V1FmXjJ76QABfAyRucSfyA9zVbHRFLdUUVfXLKRNcAtjBb8dA6WgYB4=
-X-Received: by 2002:a17:907:c27:b0:afe:63ec:6938 with SMTP id
- a640c23a62f3a-b01d8a308b8mr799651966b.7.1756731879870; Mon, 01 Sep 2025
- 06:04:39 -0700 (PDT)
+ AJvYcCWzZ4j1HPhhY3JmkL0Ffr4Xx9Lwg/cIUlmFx3YP++0qvuqr0GiO9xB3/JStb1ETeIkeWMFKv8Kvww==@nongnu.org
+X-Gm-Message-State: AOJu0YzHkPcntPsnZk0NewdYed1i4U+LcJRYWP1wWmZ8z1dUFE0ZTu4a
+ Nmmv/IPF1MC6NZ9Jq1UTyyNrj7irRPcNuKDJndvOJT/H9QMCbrsjO2kv6UX3IBTSJu8FlsaPgv9
+ jX4t40WDIQqRjNP317Ua9zg24EM5QpbdoxCjjXLBsvQ==
+X-Gm-Gg: ASbGncvyfcMQrLNUSHc7OynaId4YF+2TpavD0O58zw1FuoFdKaIGozeN/accizGpxZ2
+ yFshgllc6fgf6+fc4b7qBA23crpgy0OyrxcMqENqTW6B+o9OiS1bQ3ILYld0Rn25yNGLBx4l9+R
+ IIY4kJG26BZWHu0/xomqQhoZgjlFSri01yY0aXZRF44TdiphjzDKZfHOMZQDiBbTvym3OeBzzgL
+ u4aF7mwa0laqMWbC4g=
+X-Google-Smtp-Source: AGHT+IH9jm7Xq6VGX+byduOfx6thMWGmdB+TJDIHfcIKibTqh2jbrG2PgFZiDi5USr38Qm50YJ98XAPIlvs32BEJR8s=
+X-Received: by 2002:a17:907:60cb:b0:afe:834e:ac6c with SMTP id
+ a640c23a62f3a-b00f67e0f14mr783396266b.7.1756731963951; Mon, 01 Sep 2025
+ 06:06:03 -0700 (PDT)
 MIME-Version: 1.0
 References: <20250901125304.1047624-1-alex.bennee@linaro.org>
- <20250901125304.1047624-2-alex.bennee@linaro.org>
-In-Reply-To: <20250901125304.1047624-2-alex.bennee@linaro.org>
+ <20250901125304.1047624-4-alex.bennee@linaro.org>
+In-Reply-To: <20250901125304.1047624-4-alex.bennee@linaro.org>
 From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-Date: Mon, 1 Sep 2025 16:04:13 +0300
-X-Gm-Features: Ac12FXzcoetJQvq-CpvTIVuKZZaLkftVfX0VbipCW7pubyS08UfUEb4W52rFBk0
-Message-ID: <CAAjaMXZNZPyga1xPLemcfF9NDwdw=_nfeW54n5pbbfZgdr7KTQ@mail.gmail.com>
-Subject: Re: [PATCH 1/4] hw/arm: use g_autofree for filename in arm_load_dtb
+Date: Mon, 1 Sep 2025 16:05:38 +0300
+X-Gm-Features: Ac12FXwJpnQw_jYWjAYNnTnocgT8O5z25Zj2lSVW9SP-bcyIpjjDBwDDs8dhboo
+Message-ID: <CAAjaMXbDimt1wToH5BMCuTiEvfb3zaW=tNwRmLMTAvERb8u0WQ@mail.gmail.com>
+Subject: Re: [PATCH 3/4] hw/arm: use g_auto(GStrv) for node_path in
+ arm_load_dtb
 To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
 Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::62d;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-ej1-x62d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::630;
+ envelope-from=manos.pitsidianakis@linaro.org; helo=mail-ej1-x630.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -101,50 +102,44 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 On Mon, Sep 1, 2025 at 3:54=E2=80=AFPM Alex Benn=C3=A9e <alex.bennee@linaro=
 .org> wrote:
 >
-> The function has quite a number of exit cases so lets try and clean
-> things up with g_autofree. As the fdt hasn't be allocated yet we can
-> return directly from the fail point.
+> This is potentially more of a bike-shed case as node_path will persist
+> until the end of the function.
 >
 > Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
 > ---
 
 Reviewed-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 
-
->  hw/arm/boot.c | 8 +++-----
->  1 file changed, 3 insertions(+), 5 deletions(-)
+>  hw/arm/boot.c | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
 >
 > diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-> index d391cd01bb1..56fd13b9f7c 100644
+> index 749f2d08341..f9d0bc7011e 100644
 > --- a/hw/arm/boot.c
 > +++ b/hw/arm/boot.c
-> @@ -528,20 +528,18 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot=
+> @@ -520,11 +520,11 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot=
 _info *binfo,
+>                   ARMCPU *cpu)
+>  {
+>      g_autofree void *fdt =3D NULL;
+> +    g_auto(GStrv) node_path =3D NULL;
+>      int size, rc, n =3D 0;
+>      uint32_t acells, scells;
+>      unsigned int i;
+>      hwaddr mem_base, mem_len;
+> -    char **node_path;
 >      Error *err =3D NULL;
 >
 >      if (binfo->dtb_filename) {
-> -        char *filename;
-> -        filename =3D qemu_find_file(QEMU_FILE_TYPE_DTB, binfo->dtb_filen=
-ame);
-> +        g_autofree char *filename =3D qemu_find_file(QEMU_FILE_TYPE_DTB,
-> +                                                   binfo->dtb_filename);
->          if (!filename) {
->              fprintf(stderr, "Couldn't open dtb file %s\n", binfo->dtb_fi=
-lename);
-> -            goto fail;
-> +            return -1;
+> @@ -586,7 +586,6 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_i=
+nfo *binfo,
 >          }
+>          n++;
+>      }
+> -    g_strfreev(node_path);
 >
->          fdt =3D load_device_tree(filename, &size);
->          if (!fdt) {
->              fprintf(stderr, "Couldn't open dtb file %s\n", filename);
-> -            g_free(filename);
->              goto fail;
->          }
-> -        g_free(filename);
->      } else {
->          fdt =3D binfo->get_dtb(binfo, &size);
->          if (!fdt) {
+>      /*
+>       * We drop all the memory nodes which correspond to empty NUMA nodes
 > --
 > 2.47.2
 >

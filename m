@@ -4,70 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F94DCA0FFF
-	for <qemu-arm@archiver.kernel.org>; Mon,  1 Sep 2025 17:04:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85877CA0FF0
+	for <qemu-arm@archiver.kernel.org>; Mon,  1 Sep 2025 17:12:00 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ut7wn-0001gF-9l; Mon, 01 Sep 2025 13:04:01 -0400
+	id 1ut84P-0001AN-L9; Mon, 01 Sep 2025 13:11:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ut7wi-0001fc-Uo
- for qemu-arm@nongnu.org; Mon, 01 Sep 2025 13:03:57 -0400
-Received: from mail-yw1-x1129.google.com ([2607:f8b0:4864:20::1129])
+ id 1ut82e-00068y-Rb
+ for qemu-arm@nongnu.org; Mon, 01 Sep 2025 13:10:09 -0400
+Received: from mail-yw1-x1131.google.com ([2607:f8b0:4864:20::1131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ut7wh-0006tg-CT
- for qemu-arm@nongnu.org; Mon, 01 Sep 2025 13:03:56 -0400
-Received: by mail-yw1-x1129.google.com with SMTP id
- 00721157ae682-723960ded6bso6741327b3.3
- for <qemu-arm@nongnu.org>; Mon, 01 Sep 2025 10:03:54 -0700 (PDT)
+ id 1ut82Y-0007uY-Ua
+ for qemu-arm@nongnu.org; Mon, 01 Sep 2025 13:10:02 -0400
+Received: by mail-yw1-x1131.google.com with SMTP id
+ 00721157ae682-71d603b674aso30831067b3.1
+ for <qemu-arm@nongnu.org>; Mon, 01 Sep 2025 10:09:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756746233; x=1757351033; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=s8i6D5jkAUDyThSuzViGDH9PwKhirlJq1D1dtTZbZSI=;
- b=VpNnjF8No2fhck9DxilmcZerk7VnqSvv3arp/phhUfc7WYwb2ZQbr8rkeahqy1WXkW
- E3JgIgYT8XHB7r3MLePJroRMSKe32gRSyVoj44drh8zuS7VSk+hsUjOoPn3OHjA+smkE
- kFx98RFUOcGyhENwUTGbj+Krj0KkIUNujgICGPpn8yhP3BtyNxZYkCrpcsW1U9OzXjYR
- iHq5OEGLuR60aOt9zBDxVfoMetLPH0gIvN5tJC/C9VxPYMHw3J+JNwWpvsItsraNQnV0
- NjO7a5FgqstlIbxb7NdPDzvLSheHoJB47Kl+GIX+swsI/uqkDWzDFzt4mqbvi9Lu421O
- Zf7w==
+ d=linaro.org; s=google; t=1756746598; x=1757351398; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=mWm75LlarvNPNkG/j1YdIDdAaspy5HO2BeQIm0j5o6s=;
+ b=dOjtOV51wilE0mMhI7NU9a2fx06noC/7PFixlFhgavWfpcM5K7F5AitEexcFeexlNH
+ mpJBjP2Utx0G2bYTvGmuWR9BGExgQdymutc7mYTKyLi55Z59bOuKrWgnmQR4tEr0CuId
+ B7b9ZpUiMMgvH9PkrBWZ0OYx8oWfrF/7mIoNQW5k1gIEEQvUKvmAcNvyoDXa4vEM+aRq
+ ypdrDtu3xJUEMEN7vs+Bn0LuOx0MRHSTeMwNtQ294jfp0rDZh2/5QKZJ99GRIMs7k3fG
+ JElberhyRUrj1OZPssGaPK25UaEJ9NT5rnuJRv5geaThBoBh7acvMWFixeBNkGPIkj1V
+ gLbw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756746233; x=1757351033;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=s8i6D5jkAUDyThSuzViGDH9PwKhirlJq1D1dtTZbZSI=;
- b=MSVwtKamtwiMsnqk5Y/OcY1Zaw6bOVNGI1rbEg3eWVIn5IDaCEH/3S9lF7B8BBRPHr
- HHLzfrQNBp3mHn2nAWoPVirckv1Ujmv75JnPcZ6h2OQ6uLlTbIjQO1xvVQkBNMY5p0mj
- j6uoXAHaJZfn6I5Fx7R85s3PBqORP28UcO3002D+llaW64VGfbcOgn47/AgqJ5AR7TP8
- o3reM6tOI1LoYVCn7ZLhB5Up3MD3kt6VJ9lnI/FKDukXlzi0n7ThQd//0priYBHVcIo1
- n8FsQhgff2p/krYnO4fzN9evM0fD08xw4Nk9bhc/Wj2Q5ey60DM9hssLvBvjKX6EAfjG
- Qobg==
+ d=1e100.net; s=20230601; t=1756746598; x=1757351398;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=mWm75LlarvNPNkG/j1YdIDdAaspy5HO2BeQIm0j5o6s=;
+ b=lXbAeN9JM6CQWydN0cpPPOemWFv5hBOM9jP8i89ja9irfbo5LCwxkiD/9XKdmxRuph
+ 5lO50neyZi0qgkbPIjei34hb5vFoI2y6VfAuVjtLoOkWZyXOVvOzyy8sjg29fMJtUxVJ
+ R2WaRryVZDQdvKNU0O8p8qPpkwzn7HWSbQ2yrzAzPVQBB+AxylAG9bDSUwfxvmHS6lWJ
+ 4ZHM77XixlrOKfE5FrDwI5QSO0YEtmikNbthEoXIkCIsRhIaGBQVesMiMtqfJ4uHUTy8
+ kd3MsnwDa0qfzZ9HMrq/0ga2o+NVd7LmWVGvNYsP23KUdqmCFZrPVblsHaYXbSa0KJJa
+ 09UA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCW31uYZYPR2o+X68yyM2aJcYsUsMAI2rXPUwT7x4R5F9nmCGnBujGZwLFysVYu4I7njSSTxsWObSg==@nongnu.org
-X-Gm-Message-State: AOJu0YyHk3cy3btHqE/jrp1aWwowPgR1X9zA4tuHicn0MdBKP0UhVJKE
- 2VDywX24VxG/Dsd2ZPW7K10qyEju9D246AGJSPU3vk7ZZbRnLH4gCAUbZEfnJsxcTxVJqbAAUgG
- CXxI/EYUpAbt/sUFRVCJGlvzPRRyAPE88mYMatCECZA==
-X-Gm-Gg: ASbGncslQlbu/rnVbv7eSjlIsbP6VIuCBv7woWKJib0CEEMdJDzKq5d2IpqrXz7hOOU
- jhBqvOghdb16eTQ8dxrNlLFQGYhAw75D9LZjHly8QNfJ5Hbk1gbM090nHWZIL9J+rltKcl2lSOG
- TfXZaTi461fEOcNWp1fwWhmSlS24lq3fRA47Dm6WXr6WEa5Ph907iQ5uLC1wKeDvldvl3MIWESm
- NwOETWk
-X-Google-Smtp-Source: AGHT+IHnqnDvMl20p1XdCy/6NlPhO8udKqWBZ37/pVmHfoBv8D4Av3q7gGUUgjzxo2rIeIGZZFGkCaa/cVhKbzxlmNA=
-X-Received: by 2002:a05:690c:9985:b0:71f:b624:322e with SMTP id
- 00721157ae682-722764af341mr104788327b3.26.1756746232816; Mon, 01 Sep 2025
- 10:03:52 -0700 (PDT)
+ AJvYcCU6JDXC1RqcFTUI8PWaUQkG6dD7q+zb4j+PoPar75fuhFGoPcAZbBSqjWLPFF18jPyrySQKvvZwsA==@nongnu.org
+X-Gm-Message-State: AOJu0Yzb7TZGgQaIPTYGcBrETjYtgild0xUojnvkqu0WXx1FFXCtfqkI
+ PgJYMicj6tRdp8HqHeg/VjmGu8d5xV9wlC+KjC4NzKkRX5yNa9sF8lI5MW3A+CEvnvPFyrBCUBB
+ 3U8UE6/NJFUroJyVpPs/L4n/5v9NFzEMhShu6gBX9ww==
+X-Gm-Gg: ASbGncu4R2OGguBf0ogrGQjjY9g0WFnjYRa9rsZVdXrFJ8y9RwK9O1ChptIDnYP+TVV
+ vhQlmAAm8MljK4kqCDOq7BFpgoiRgeyDOWsEBWCbs5hh0LByr9cbTjtCv/QjRBb6R3CEPHhCSdF
+ uwH+Sdy1900sU9Wa2tE4QXcUhJvEn6kqF9xcQRNaCO9J5FKLir4bgFbGk8V/bgTGV6TN7xUHwnM
+ rRHuiAO
+X-Google-Smtp-Source: AGHT+IERTXHqlXXU39mvv5axTI9DNn+sVagnssYa+KVH5QXxHSA0PR8s+lbWdjQfl/g6dqIX3J7EdL/C2hw6Y+v7CeA=
+X-Received: by 2002:a05:690c:61ca:b0:723:89bb:7c63 with SMTP id
+ 00721157ae682-72389bb8b40mr41845077b3.14.1756746597452; Mon, 01 Sep 2025
+ 10:09:57 -0700 (PDT)
 MIME-Version: 1.0
 References: <20250822092410.25833-1-cjchen@igel.co.jp>
- <20250822092410.25833-9-cjchen@igel.co.jp>
-In-Reply-To: <20250822092410.25833-9-cjchen@igel.co.jp>
+ <20250822092410.25833-2-cjchen@igel.co.jp>
+In-Reply-To: <20250822092410.25833-2-cjchen@igel.co.jp>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 1 Sep 2025 18:03:41 +0100
-X-Gm-Features: Ac12FXx5i4R9R1zWKUOD0YRdUrFqyEPkAA1Wf4Ok6RoZdovbeM5ESEnmpbbH1sU
-Message-ID: <CAFEAcA9FAnnQrAf1eUPr1=FQ+=Wbu13gyfj3T3z+k6BhxHj6uQ@mail.gmail.com>
-Subject: Re: [RFC PATCH v2 8/9] hw/misc: add test device for memory access
+Date: Mon, 1 Sep 2025 18:09:45 +0100
+X-Gm-Features: Ac12FXyp5aoGFJCJISjg0rWTbnKib39-xtFSHoOxLlgVVJx173cxOAbUvbrHHzc
+Message-ID: <CAFEAcA8M6EAeEqSkJG-D+t=+3D4T99UoVNe94nfhRGxc80=PAw@mail.gmail.com>
+Subject: Re: [RFC PATCH v2 1/9] doc/devel/memory.rst: additional explanation
+ for unaligned access
 To: CJ Chen <cjchen@igel.co.jp>
 Cc: qemu-devel@nongnu.org, qemu-block@nongnu.org, qemu-riscv@nongnu.org, 
  qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
@@ -84,8 +86,9 @@ Cc: qemu-devel@nongnu.org, qemu-block@nongnu.org, qemu-riscv@nongnu.org,
  Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>, 
  Tomoyuki Hirose <hrstmyk811m@gmail.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1129;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1129.google.com
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1131;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1131.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -110,53 +113,89 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On Fri, 22 Aug 2025 at 10:25, CJ Chen <cjchen@igel.co.jp> wrote:
 >
-> From: Tomoyuki Hirose <hrstmyk811m@gmail.com>
+> Add documentation to clarify that if `.valid.unaligned =3D true` but
+> `.impl.unaligned =3D false`, QEMU=E2=80=99s memory core will automaticall=
+y split
+> unaligned guest accesses into multiple aligned accesses. This helps
+> devices avoid implementing their own unaligned logic, but can be
+> problematic for devices with side-effect-heavy registers. Also note
+> that setting `.valid.unaligned =3D false` together with
+> `.impl.unaligned =3D true` is invalid, as it contradicts itself and
+> will trigger an assertion.
 >
-> This commit adds a test device for checking memory access. The test
-> device generates memory regions that covers all the legal parameter
-> patterns. With this device, we can check the handling of
-> reading/writing the MemoryRegion is correct.
->
-> Co-developed-by: CJ Chen <cjchen@igel.co.jp>
 > Signed-off-by: CJ Chen <cjchen@igel.co.jp>
-> Tested-by: CJ Chen <cjchen@igel.co.jp>
+> Acked-by: Tomoyuki Hirose <hrstmyk811m@gmail.com>
 > Suggested-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
-> v2:
->    - Fix the typo of ops size of big-l-valid.
->    - Replaced the huge macro blocks with dynamic loops that fill in
->      the `MemoryRegionOps` arrays at runtime.
->    - Remove test cases valid.unaligned = false,impl.unaligned = true.
+>  docs/devel/memory.rst | 18 ++++++++++++++++++
+>  1 file changed, 18 insertions(+)
+>
+> diff --git a/docs/devel/memory.rst b/docs/devel/memory.rst
+> index 57fb2aec76..71d7de7ae5 100644
+> --- a/docs/devel/memory.rst
+> +++ b/docs/devel/memory.rst
+> @@ -365,6 +365,24 @@ callbacks are called:
+>  - .impl.unaligned specifies that the *implementation* supports unaligned
+>    accesses; if false, unaligned accesses will be emulated by two aligned
+>    accesses.
+> +- Additionally, if .valid.unaligned =3D true but .impl.unaligned =3D fal=
+se, the
+> +  memory core will emulate each unaligned guest access by splitting it i=
+nto
+> +  multiple aligned sub-accesses.
 
+Can we say in more specific detail what the core handling is, please?
+I should be able to read this documentation and know exactly what
+extra accesses I will get to my device. (Then I can make the decision
+about whether I will be OK with those or if I will need to do the
+unaligned handling myself.)
 
-> diff --git a/include/hw/misc/memaccess-testdev.h b/include/hw/misc/memaccess-testdev.h
-> new file mode 100644
-> index 0000000000..c1b17297a2
-> --- /dev/null
-> +++ b/include/hw/misc/memaccess-testdev.h
-> @@ -0,0 +1,104 @@
-> +/*
-> + * QEMU memory access test device header
-> + *
-> + * SPDX-License-Identifier: GPL-2.0-or-later
-> + *
-> + * Author: Tomoyuki HIROSE <hrstmyk811m@gmail.com>
-> + */
-> +
-> +#ifndef HW_MISC_MEMACCESS_TESTDEV_H
-> +#define HW_MISC_MEMACCESS_TESTDEV_H
-> +
-> +#include "system/memory.h"
-> +#include "hw/qdev-core.h"
-> +
-> +#define TYPE_MEM_ACCESS_TEST_DEV "memaccess-testdev"
+Documenting the behaviour we intend to provide will also make it
+easier to review the implementation and the tests in the later patches.
 
-Could we have a comment in this header file that documents
-what interface the test device presents to tests, please?
-Both this patch and the test-case patch are hard to
-review, because I don't know what the test device is
-trying to do or what the test code is able to assume
-about the test device.
+> This ensures that devices which only handle
+> +  aligned requests do not need to implement unaligned logic themselves. =
+For
+> +  example, see xhci_cap_ops in hw/usb/hcd-xhci.c: it sets  .valid.unalig=
+ned
+> +  =3D true so guests can do unaligned reads on the xHCI Capability Regis=
+ters,
+> +  while keeping .impl.unaligned =3D false to rely on the core splitting =
+logic.
+> +  However, if a device=E2=80=99s registers have side effects on read or =
+write, this
+> +  extra splitting can introduce undesired behavior. Specifically, for de=
+vices
+> +  whose registers trigger state changes on each read/write, splitting an=
+ access
+> +  can lead to reading or writing bytes beyond the originally requested s=
+ubrange
+> +  thereby triggering repeated or otherwise unintended register side effe=
+cts.
+> +  In such cases, one should set .valid.unaligned =3D false to reject una=
+ligned
+> +  accesses entirely.
+
+.valid.unaligned has to match what the real hardware requires.
+So we should instead say something like:
+
+ If your device must support unaligned accesses and these extra
+ accesses would cause unintended side-effects, then you must set
+ .impl.unaligned and handle the unaligned access cases yourself.
+
+> +- Conversely, if .valid.unaligned =3D false but .impl.unaligned =3D true=
+,
+> +  that setting is considered invalid; it claims unaligned access is allo=
+wed
+> +  by the implementation yet disallowed for the device. QEMU enforces thi=
+s with
+> +  an assertion to prevent contradictory usage.
+>
+>  API Reference
+>  -------------
+> --
+> 2.25.1
+>
 
 thanks
 -- PMM

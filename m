@@ -4,81 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66FEDCA0FFD
-	for <qemu-arm@archiver.kernel.org>; Mon,  1 Sep 2025 10:25:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F691CA0FF0
+	for <qemu-arm@archiver.kernel.org>; Mon,  1 Sep 2025 11:39:35 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ut1hr-0001lJ-Gr; Mon, 01 Sep 2025 06:24:11 -0400
+	id 1ut2sU-0002NF-13; Mon, 01 Sep 2025 07:39:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1ut1hq-0001l2-Ka
- for qemu-arm@nongnu.org; Mon, 01 Sep 2025 06:24:10 -0400
-Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1ut1hh-0004Ys-MB
- for qemu-arm@nongnu.org; Mon, 01 Sep 2025 06:24:09 -0400
-Received: by mail-ej1-x635.google.com with SMTP id
- a640c23a62f3a-afcb7ae6ed0so611329866b.3
- for <qemu-arm@nongnu.org>; Mon, 01 Sep 2025 03:24:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756722239; x=1757327039; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=FmZph1RVlIckYsUtSQ1kRyrwHKO66MXhKOVe8f3dlYU=;
- b=iChANKMHcfMooy9szlScX4ttzzpfG4x8dBxoWQldaZXMt27fn7GHycgVBk8CSODgik
- 1egU3eA6WUGb5CrWiOxwqpW7SvpvoV2zpjaPuuarrKPV1yM/T6PznJ0jIpVc6LzvDvmb
- nsAkf9WPAtr9X8m14BK9rQwf13tf/l5lMV2pbkDu0AY7AqiQaayxWbuB30l02/aspqvk
- a7Q/LG014pIaTAYXN63NF760ZghIoeqLW7D+DlIkBOZ2T5XPAl7rSu0nJYmne0nhTTN1
- gHrONy4aN/uqQ8yYwLaxeWEbDr3tdkfQB5t4Jrbn0Aq5xcpSidGEqXmMGZlSiHbuvE6F
- +XBA==
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1ut2sS-0002Mn-KW
+ for qemu-arm@nongnu.org; Mon, 01 Sep 2025 07:39:12 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1ut2sI-0000IX-SZ
+ for qemu-arm@nongnu.org; Mon, 01 Sep 2025 07:39:12 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1756726738;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=br6lFDDd3KDdFbXr4OlauHeyFgJdw44+ZL7FT2x+Jbk=;
+ b=dUCzAGH80oHYzqERkPu2VUbln3KvAPk6CNuDabq0aOef5twpv6tZz7qlAtz2zBjtd/zZkb
+ edgF5/epVUHvbCDB+k/kT6V0RaGxAN2KQe4rc/G7cbpWfkQLhUHepHCRDiE2dDEtm0a1KD
+ Zi2eQhd8wALOHUxP1ZxFe/Q7rQkNaQ8=
+Received: from mail-qk1-f197.google.com (mail-qk1-f197.google.com
+ [209.85.222.197]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-572-eJbWUxehO8qGEcG0UgfrDQ-1; Mon, 01 Sep 2025 07:38:56 -0400
+X-MC-Unique: eJbWUxehO8qGEcG0UgfrDQ-1
+X-Mimecast-MFC-AGG-ID: eJbWUxehO8qGEcG0UgfrDQ_1756726736
+Received: by mail-qk1-f197.google.com with SMTP id
+ af79cd13be357-7fea03c6847so160304385a.3
+ for <qemu-arm@nongnu.org>; Mon, 01 Sep 2025 04:38:56 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756722239; x=1757327039;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ d=1e100.net; s=20230601; t=1756726736; x=1757331536;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=FmZph1RVlIckYsUtSQ1kRyrwHKO66MXhKOVe8f3dlYU=;
- b=w/IvkxL4Je1ixA3I52y8q1HctI7HeJLPIySWFON3VCyfRr2ZszmLakiCNXyEy7m/FE
- V5/+kRRI06u9+kxbqPgoz2du99kUPgW8cGg3GSKksp4btfXBGgTrIQGg8zWHiv8my8Tn
- UcLnJQuyNZFhi366bTP2z8WEw3l4Uppdp1IgBXuftminwA3G9c04KCLgi2w54IEyUjzd
- Bwm+lb5/F4mErcVqrExUeHDjG9KcVGKKPsnMzVHo5vtbKryrifJMZ7stSUlO/ZUXo/RF
- VtOQtXgxt0L8y5JLH+4ya6ya3tChlnCrOB3yFOlSZUhSSiLCtjfrq0lbEn24z/ST1+Q4
- KD0g==
-X-Gm-Message-State: AOJu0YwLiNrdluJRLHinuQR+T9hjEwvCuTqOaA//ifiiihAjQIeYUk+s
- DnxUFxwy1lBAVFQYAh48q6mpdA28SPXdmb+xuCqbK2M+CZbDGA9/sxyo6Z6Xtp9dzbT2tT64Zzn
- irkhqIDGDRpz7iEPOrn2kIdTh0gRyYZme6Qendyej3A==
-X-Gm-Gg: ASbGncuUFS1n4EKzZa+SLhRuM+m4IGQL6s0kyELapV3IWotRrU7dai53s6IEsuFkSuK
- kxq7uSn/ExjGigs8PFZputlxVC9lbeaWNkqVjTAU1g3RZzBgY0pSZzr3VGNTxlbIQM6aHXwxsDv
- xlfH71gEK0S4B06B6bfdw981CyqL0Tz5L0GX2O7dfhVT/KqooHBnD+w8UA+UWBIJ7nRt4e2w30c
- tCY8g0h
-X-Google-Smtp-Source: AGHT+IEjMtgAI856oBdkpRPUG6G/3DjavL3E5L1+Whkd/Q6cX9Ej62cdVnUb1GsMzPfwmBGQpnfWYj32GipbEG+/xUU=
-X-Received: by 2002:a17:907:7f1f:b0:afe:97eb:4327 with SMTP id
- a640c23a62f3a-b01d8c749admr728626166b.20.1756722239246; Mon, 01 Sep 2025
- 03:23:59 -0700 (PDT)
+ bh=br6lFDDd3KDdFbXr4OlauHeyFgJdw44+ZL7FT2x+Jbk=;
+ b=F/Q+5DjWg5kjMrQWIMJDEkP4/RZybBeCcUBugqEcGampYgIHK67m4vs1lcux8R9U+p
+ utnRNxriAU12F7t9JvXbxzCdpzesUzZZov4iK4PBb61WXGiqWIVl2YNkMck6/CxrNlc5
+ 5g/HowMRJ8x0OM7GK02C+aTZhTceSNaw57aQBp5UI/ZVO24fFSH3akH8qTf/T637bGXd
+ 02JZrECtHgaU7vSvxqoaQ2kafqgv+pQcXk3MxoapOM+/4dA0NOB933Y/MQYvUXVOrRWY
+ 5aHqrR+k5LEfgCKmBVx/K5+eWAyp+HwAzxDdFHtYvMuGIW2uVFITtVv2RMFI5cEEoiwy
+ KBvg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWYaDEK0aBqgOU96knLO6oB98/K5wfZwT2J9CjunY+WltDk5Uqoj5oL3BtSG8svxvB5q8N9arOcgg==@nongnu.org
+X-Gm-Message-State: AOJu0YxtDA1Ruej3ggBMRdoNCPypr6L2QkhRh+yG51OdnXVq1W36s1tH
+ Ra6pnxyhPYzP3yUu/TohYQkTeYFE+ZL99EEoisQpJuf6+5tPGTADZhdZ9VDCjoFbrv6TTIrLBTD
+ kiAV+GMnsIq1suJUgMZIicFcvARDpI3xehKaS3HNUAk2Ta/N/2qIScw==
+X-Gm-Gg: ASbGncurD9u0RGCfoGrpdItMs66RFoVgCbZ3jnhmrMMj6cErOtbmhxHb8tj71QQkXq3
+ KM4Z6SHGyT08S1gU5W7cOXhWdPkx+ZauQiyhw/DCVu+gGwmt5hOCnp7UJ/KtjHavO/lLC5zZ3R+
+ M+rjA0527U5IhLjom44qwY7pzGfWS9Gjw8vrYClf6N920XoLzB4F0R0qPnciUJi6ARv6eVbtcOo
+ 6WDV0phhRBHMjc1uBN1rf4z9czP3dFCdsoxIk7Rf26gMGi094wrBfq5R8JyiOaEmj/4kB26FveQ
+ va3knwykT8yRP/q7Bs+BvmID8wtitg==
+X-Received: by 2002:a05:620a:414b:b0:7d4:5db0:5b95 with SMTP id
+ af79cd13be357-7ff2b69c9a8mr877999285a.58.1756726736179; 
+ Mon, 01 Sep 2025 04:38:56 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEhPV0hm7N+tC9sdX5/5NbkgKw8Qein10NAXECOuDh+x3l6DAuz6c0UxgMSuqJLC6zDOQv0Vw==
+X-Received: by 2002:a05:620a:414b:b0:7d4:5db0:5b95 with SMTP id
+ af79cd13be357-7ff2b69c9a8mr877996785a.58.1756726735688; 
+ Mon, 01 Sep 2025 04:38:55 -0700 (PDT)
+Received: from fedora ([85.93.96.130]) by smtp.gmail.com with ESMTPSA id
+ af79cd13be357-7fc16340db0sm649481085a.67.2025.09.01.04.38.53
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 01 Sep 2025 04:38:55 -0700 (PDT)
+Date: Mon, 1 Sep 2025 13:38:51 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: "Daniel P. =?UTF-8?B?QmVycmFuZ8Op?=" <berrange@redhat.com>
+Cc: qemu-devel@nongnu.org, peter.maydell@linaro.org, philmd@linaro.org,
+ wangyanan55@huawei.com, zhao1.liu@intel.com, mst@redhat.com,
+ pbonzini@redhat.com, qemu-arm@nongnu.org
+Subject: Re: [PATCH] smbios: cap DIMM size to 2Tb as workaround for broken
+ Windows
+Message-ID: <20250901133851.2e407990@fedora>
+In-Reply-To: <aLVijyqK4pPocGH8@redhat.com>
+References: <20250901084915.2607632-1-imammedo@redhat.com>
+ <aLVijyqK4pPocGH8@redhat.com>
+X-Mailer: Claws Mail 4.3.1 (GTK 3.24.49; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-References: <20250901102214.3748011-1-peter.maydell@linaro.org>
-In-Reply-To: <20250901102214.3748011-1-peter.maydell@linaro.org>
-From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-Date: Mon, 1 Sep 2025 13:23:33 +0300
-X-Gm-Features: Ac12FXyMDh1tCYB-M5ItDsuaaJJ1dTyUH4Pi830LZAZnwbbHsVpYFPwCMTid1k4
-Message-ID: <CAAjaMXauWTbVhNVKpLgtbaz5qtorAZRBFM2-Rp+V5Z1GOmknnw@mail.gmail.com>
-Subject: Re: [PATCH] hw/arm/boot: Correctly free the MemoryDeviceInfoList
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: DCkyR9VtNe8Nk4MFDYJJ2cx-ycrsyjsWxrvb-FTdPLY_1756726736
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::635;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-ej1-x635.google.com
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -94,73 +116,84 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, Sep 1, 2025 at 1:22=E2=80=AFPM Peter Maydell <peter.maydell@linaro.=
-org> wrote:
->
-> When running the bios-tables-test under ASAN we see leaks like this:
->
-> Direct leak of 16 byte(s) in 1 object(s) allocated from:
->     #0 0x5bc58579b00d in calloc (/mnt/nvmedisk/linaro/qemu-from-laptop/qe=
-mu/build/arm-asan/qemu-system-aarch64+0x250400d) (BuildId: 2e27b63dc9ac45f5=
-22ced40a17c2a60cc32f1d38)
->     #1 0x7b4ad90337b1 in g_malloc0 (/lib/x86_64-linux-gnu/libglib-2.0.so.=
-0+0x637b1) (BuildId: 1eb6131419edb83b2178b682829a6913cf682d75)
->     #2 0x5bc5861826db in qmp_memory_device_list /mnt/nvmedisk/linaro/qemu=
--from-laptop/qemu/build/arm-asan/../../hw/mem/memory-device.c:307:34
->     #3 0x5bc587a9edb6 in arm_load_dtb /mnt/nvmedisk/linaro/qemu-from-lapt=
-op/qemu/build/arm-asan/../../hw/arm/boot.c:656:15
->
-> Indirect leak of 28 byte(s) in 2 object(s) allocated from:
->     #0 0x5bc58579ae23 in malloc (/mnt/nvmedisk/linaro/qemu-from-laptop/qe=
-mu/build/arm-asan/qemu-system-aarch64+0x2503e23) (BuildId: 2e27b63dc9ac45f5=
-22ced40a17c2a60cc32f1d38)
->     #1 0x7b4ad6c8f947 in __vasprintf_internal libio/vasprintf.c:116:16
->     #2 0x7b4ad9080a52 in g_vasprintf (/lib/x86_64-linux-gnu/libglib-2.0.s=
-o.0+0xb0a52) (BuildId: 1eb6131419edb83b2178b682829a6913cf682d75)
->     #3 0x7b4ad90515e4 in g_strdup_vprintf (/lib/x86_64-linux-gnu/libglib-=
-2.0.so.0+0x815e4) (BuildId: 1eb6131419edb83b2178b682829a6913cf682d75)
->     #4 0x7b4ad9051940 in g_strdup_printf (/lib/x86_64-linux-gnu/libglib-2=
-.0.so.0+0x81940) (BuildId: 1eb6131419edb83b2178b682829a6913cf682d75)
->     #5 0x5bc5885eb739 in object_get_canonical_path /mnt/nvmedisk/linaro/q=
-emu-from-laptop/qemu/build/arm-asan/../../qom/object.c:2123:19
->     #6 0x5bc58618dca8 in pc_dimm_md_fill_device_info /mnt/nvmedisk/linaro=
-/qemu-from-laptop/qemu/build/arm-asan/../../hw/mem/pc-dimm.c:268:18
->     #7 0x5bc586182792 in qmp_memory_device_list /mnt/nvmedisk/linaro/qemu=
--from-laptop/qemu/build/arm-asan/../../hw/mem/memory-device.c:310:9
->
-> This happens because we declared the MemoryDeviceInfoList *md_list
-> with g_autofree, which will free the direct memory with g_free() but
-> doesn't free all the other data structures referenced by it.  Instead
-> what we want is to declare the pointer with g_autoptr(), which will
-> automatically call the qapi_free_MemoryDeviceInfoList() cleanup
-> function when the variable goes out of scope.
->
-> Fixes: 36bc78aca83cfd ("hw/arm: add static NVDIMMs in device tree")
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
+On Mon, 1 Sep 2025 10:08:31 +0100
+Daniel P. Berrang=C3=A9 <berrange@redhat.com> wrote:
 
-Reviewed-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+> On Mon, Sep 01, 2025 at 10:49:15AM +0200, Igor Mammedov wrote:
+> > With current limit set to match max spec size (2PTb),
+> > Windows fails to parse type 17 records when DIMM size reaches 4Tb+.
+> > Failure happens in GetPhysicallyInstalledSystemMemory() function,
+> > and fails "Check SMBIOS System Memory Tables" SVVP test.
+> > Though not fatal, it might cause issues for userspace apps,
+> > something like [1].
+> >=20
+> > Lets cap default DIMM size to 2Tb for now, until MS fixes it.
+> >=20
+> > 1) https://issues.redhat.com/browse/RHEL-81999?focusedId=3D27731200&pag=
+e=3Dcom.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#commen=
+t-27731200 =20
+>=20
+> Why link to a comment that refers to a link to Adobe photoshop
+> and doesn't mention KVM ???
 
-Thanks,
+It's just to demo that GetPhysicallyInstalledSystemMemory(),
+can cause issues (I doubt very much it's our case, since it's
+unlikely that there are physical DIMMs of 4Tb+ size in wild).
+Lets drop it.
 
->  hw/arm/boot.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-> index 1e57c4ab9ee..d0840308f5a 100644
-> --- a/hw/arm/boot.c
-> +++ b/hw/arm/boot.c
-> @@ -549,7 +549,7 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_i=
-nfo *binfo,
->      unsigned int i;
->      hwaddr mem_base, mem_len;
->      char **node_path;
-> -    g_autofree MemoryDeviceInfoList *md_list =3D NULL;
-> +    g_autoptr(MemoryDeviceInfoList) md_list =3D NULL;
->      Error *err =3D NULL;
->
->      if (binfo->dtb_filename) {
-> --
-> 2.43.0
->
+I'd expect issues in various inventory sw and honestly I'd kick
+this very niche problem MS direction.
+I resisted long enough till the things got moving towards
+resolution on MS side, but folks insist on workaround in QEMU.
+If w10 isn't going to get fix, then QEMU is the only option
+to work around the bug.
+
+PS:
+forgot another workaround (QEMU): configure initial RAM to be less
+than 4Tb and all additional RAM add as DIMMs on QEMU CLI.
+(however it's the job to be done by mgmt which could know
+Windows version and total amount of RAM)
+
+PS2:
+I'm fine with dropping the idea of patching QEMU defaults
+for yet another way to work around the issue.
+
+> Also should have:
+>=20
+> Fixes: 62f182c97b31445012d37181005a83ff8453edaa
+>=20
+> > Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+> > ---
+> > PS: It's obvious 32 int overflow math somewhere in Windows,
+> >     MS admitted that it's Windows bug and in a process of fixing it.
+> >     However it's unclear if W10 and earlier would get the fix.
+> >     So however I dislike changing defaults, we heed to work around
+> >     the issue (it looks like QEMU regression while not being it).
+> >     Hopefully 2Tb/DIMM split will last longer until VM memory size
+> >     will become large enough to cause to many type 17 records issue
+> >     again.
+> > PS2:
+> >     Alternatively, instead of messing with defaults, I can create
+> >     a dedicated knob to ask for desired DIMM size cap explicitly
+> >     on CLI. That will let users to enable workaround when they
+> >     hit this corner case. Downside is that knob has to be propagated
+> >     up all mgmt stack, which might be not desirable. =20
+>=20
+>=20
+> How many type 17 records can we get before hitting the the
+> Linux limits which was the motiviation for the previous
+> fix 62f182c97b31445012d37181005a83ff8453edaa ?
+>=20
+> ie, with this 2 TB dimm size, what is our effective maximum
+> RAM size ?
+
+it would be around 2PTb (assuming 1000 records,
+exact number varies due to configuration since the rest of SMBIOS
+tables take some part of that 64K buffer).
+
+>=20
+>=20
+> With regards,
+> Daniel
+
 

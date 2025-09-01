@@ -4,98 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42B35CA0FF0
-	for <qemu-arm@archiver.kernel.org>; Mon,  1 Sep 2025 12:01:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4EAF3CA0FFD
+	for <qemu-arm@archiver.kernel.org>; Mon,  1 Sep 2025 12:01:35 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ut2zu-0008Gk-5r; Mon, 01 Sep 2025 07:46:55 -0400
+	id 1ut3Dp-0008Ai-L3; Mon, 01 Sep 2025 08:01:19 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ktokunaga.mail@gmail.com>)
- id 1ut2zP-0007O9-N1; Mon, 01 Sep 2025 07:46:26 -0400
-Received: from mail-pf1-x42d.google.com ([2607:f8b0:4864:20::42d])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <ktokunaga.mail@gmail.com>)
- id 1ut2zF-0001M2-Gg; Mon, 01 Sep 2025 07:46:23 -0400
-Received: by mail-pf1-x42d.google.com with SMTP id
- d2e1a72fcca58-7722c88fc5fso2387746b3a.2; 
- Mon, 01 Sep 2025 04:46:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1756727162; x=1757331962; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=CKRYcSwafDNcekCgV+d38XwpLUOrhRn0ySHzx6DTOfk=;
- b=e9mkQQveZYZttx45r0QAbepTFEnh4/ksbLthEm+5p2PC6pGHH1Ie6MUaMafCeEiC8n
- CfVeiVJIgLV+c/1yan2UpUf3Ixs8cjHzjM4e3+neHNCZ604qgdR4/ghmfrQ3JHD05PYt
- RVyPzXyQscWXVx+rkzGBxldqcrygfDeBCkQMto0Shj4jnQfkoLhg4JkrBaJbltVEdqFo
- AAbHsbPsNzbNo/ut5YPPRGKAUQCA6MHyofWbAPUK65gXqb2NlSvkC9V8ioxofhbsgKmY
- gePGsYXT0zCj5z/CIJS1RlLJWypj5OP0s/syXJJQFGNbq0RwRUyyHyQRbGEnbfRg+V7Y
- weDQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756727162; x=1757331962;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=CKRYcSwafDNcekCgV+d38XwpLUOrhRn0ySHzx6DTOfk=;
- b=US09Ya+rvyslys86aNfPt6i1WqWTOKaoLquTHu3tHmmroLy2GJ566OfPMlU79faDQt
- /AZqozyZ50rvBoz9pfaYe1YFMvqt0zJZvUABWpixG8VxU0iTc8udLK4t311Cf9aQTF8L
- Xvkjc8nPtzju/AO0U88LM93j6L3Fi4DsBsSbZAywNSQXjgi55XZY1l92uMzPezn3ohdm
- z9jPvebEdU4XpHpV6xvA2QhvKuNazGIs9+/jq9+9rTIaqyfJRxtLhdEthuL2XKXpf3jY
- MgWoAy7ymLLd48WidJsN1lyYIuxTdpsUAiE1E6bXCNgWq1FIeWdSPW/YXQsGv97rvjMa
- WILQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUWTPSGcvEUlr59MTeDSoD0zQxXGs0PdIsH5M4dCQ12ZnPic06sd6X/c0BFEx4LC7mVEJyDm1nQlA==@nongnu.org,
- AJvYcCVPJdHWAOf0nCjesMj5esE7mgu8SERaVINSu7UNm1LbwJML2keLY/9dA3eQ6/luxH+eO5tHjvgnhpbw8w==@nongnu.org
-X-Gm-Message-State: AOJu0YxE6a91tJPNBdBi/9T3BFIdf/e5V2s5K2VFxWoEeQyEufpTO2DM
- M4+lV6SV0iTUcXYxx9uazHocjEcYn89Rp6pGFR836baC36WMfUL0Y75mH5VOKQ==
-X-Gm-Gg: ASbGncuY23+IcUT/1g/PSQ6GQKVoCkZ4aBAsMScNmxkv7JoGx3oFgTxkqiNO8EAT+gF
- Lsc5OdQnESAHepTnK7ssOftn5+2wuRhA3hqtrN5eA1WWsZyvnF3IoDuMEK1hN3hbRt4YHkaYnPz
- fBtn7hVNuVtCtlRyuoUzl1zdyUSk5v+7Zn1xqkwXb4AUdOZ2LMP02OCz8u0YsVuKihS/aCfLoZR
- THR6623E0eElwYsQOtmoF0ruzfpF6610Zyc65WGvRmByOwIm/B0yjmUwMMgb7N0K9cRyN+9T/fU
- r3CmN9DrfR/MbK077Bu9O3Ne4Wvuq7F2PEaJteOIKEh2bAUDVR/X1bFsuoUB5oKKJQNL/LXFy7X
- qv5fl6DXvdstWWEl5qwnEqA==
-X-Google-Smtp-Source: AGHT+IFkunATfldHnVpyrPyJFgoJXLdJxX35nxoCHS8d7asV94Jq+xrer2nXFHFLBVHakqvytMDG5w==
-X-Received: by 2002:a17:903:2301:b0:237:d734:5642 with SMTP id
- d9443c01a7336-24944ac6b51mr105348515ad.41.1756727162233; 
- Mon, 01 Sep 2025 04:46:02 -0700 (PDT)
-Received: from ktock.. ([240d:1a:3b6:8b00:750a:cb0b:f0f9:68f4])
- by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-249065a8036sm103038775ad.129.2025.09.01.04.45.56
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 01 Sep 2025 04:46:01 -0700 (PDT)
-From: Kohei Tokunaga <ktokunaga.mail@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- WANG Xuerui <git@xen0n.name>, Aurelien Jarno <aurelien@aurel32.net>,
- Huacai Chen <chenhuacai@kernel.org>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Aleksandar Rikalo <arikalo@gmail.com>, Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <Alistair.Francis@wdc.com>, Stefan Weil <sw@weilnetz.de>,
- qemu-arm@nongnu.org, qemu-riscv@nongnu.org,
- Stefan Hajnoczi <stefanha@redhat.com>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>, ktokunaga.mail@gmail.com
-Subject: [PATCH v3 07/35] tcg/wasm: Add constraint definitions
-Date: Mon,  1 Sep 2025 20:44:09 +0900
-Message-ID: <d935ea00f23ba6b4ea5624a57af0056214c2f495.1756724464.git.ktokunaga.mail@gmail.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <cover.1756724464.git.ktokunaga.mail@gmail.com>
-References: <cover.1756724464.git.ktokunaga.mail@gmail.com>
+ (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
+ id 1ut3DS-0007Yj-99; Mon, 01 Sep 2025 08:00:59 -0400
+Received: from www3579.sakura.ne.jp ([49.212.243.89])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
+ id 1ut3DF-0004H5-Lf; Mon, 01 Sep 2025 08:00:53 -0400
+Received: from h205.csg.ci.i.u-tokyo.ac.jp (h205.csg.ci.i.u-tokyo.ac.jp
+ [133.11.54.205]) (authenticated bits=0)
+ by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 581C0CVL013478
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
+ Mon, 1 Sep 2025 21:00:22 +0900 (JST)
+ (envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
+DKIM-Signature: a=rsa-sha256; bh=D+nZEAotU7RSIcgMm43EklAPwfbjaT+CdW78+OLt6sc=; 
+ c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
+ h=From:Date:Subject:Message-Id:To;
+ s=rs20250326; t=1756728022; v=1;
+ b=hSD19wHohaNJlLyAD/o8kwplzyecgzgTsC6OUMnlybKI90fZXe6YcN1NAgNN74T6
+ oipyh9G4wMBlKW55rVRjgyNeqOrXn6i193ZRssOOCFG+bSwyqJXS32UG2GqPiFze
+ bN578ZK3krM5uxnsVZj6a1xIuOw5uOELyPWKqFGp/15zFbbZZSWnDDrXgoCufriP
+ lrDg1KHH4sthAtf0IDq21RATV2mc6NShM1ZqqcuI1uGkRibteJjoovVX3AHTClB9
+ WV31P7ytHtsmLIbPMvKfAUFnzTCaVTW4bSzWs9Wqj4gRsHGa08PUObKSmUSdGE0S
+ EjQRoCrrU3FvCZjdm0HeJA==
+From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
+Date: Mon, 01 Sep 2025 21:00:04 +0900
+Subject: [PATCH v2] hw/arm/virt: Remove the lower bound of HighMem IO Regions
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42d;
- envelope-from=ktokunaga.mail@gmail.com; helo=mail-pf1-x42d.google.com
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
- DKIM_SIGNED=0.1, FREEMAIL_FROM=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_PASS=-0.001, T_SPF_HELO_TEMPERROR=0.01 autolearn=no autolearn_force=no
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20250901-virt-v2-1-ac2379402c80@rsg.ci.i.u-tokyo.ac.jp>
+X-B4-Tracking: v=1; b=H4sIAMOKtWgC/12NwQ6CMBAFf4Xs2Ta0RKye/A/DoZQCqwnFbWkkp
+ P9uxYOJx5m8zNvAW0Lr4VJsQDaiRzdlkIcCzKinwTLsMoMs5bE8ScUiUmCqqjrd69oI0UKezmR
+ 7fO2ZW/Nlss8l18JPjuiDo3W/iuJj/6pRMMFK3Z5rJWUtjbqSH7hBjnxhwT1Wx7Xh9xmalNIbY
+ 4bZ6roAAAA=
+X-Change-ID: 20250728-virt-833dafa6c11b
+To: qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Eric Auger <eric.auger@redhat.com>, Andrew Jones <ajones@ventanamicro.com>,
+ Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
+X-Mailer: b4 0.14.2
+Received-SPF: pass client-ip=49.212.243.89;
+ envelope-from=odaki@rsg.ci.i.u-tokyo.ac.jp; helo=www3579.sakura.ne.jp
+X-Spam_score_int: -6
+X-Spam_score: -0.7
+X-Spam_bar: /
+X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
+ DKIM_SIGNED=0.1, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ TVD_SUBJ_WIPE_DEBT=1.004 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -111,85 +75,114 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The Wasm backend integrates a forked TCI so its constraints are defined to
-remain compatible with TCI.
+Remove the lower bound of the Highmem IO Regions' addresses for the
+latest machine version to increase the chance to fit the regions in the
+PA space.
 
-Signed-off-by: Kohei Tokunaga <ktokunaga.mail@gmail.com>
+The lower bound was especially problematic when using virt-install on
+Apple M2. virt-install 5.0.0 adds multiple pcie-root-port devices that
+require sufficient space in the ECAM region. However, the Highmem ECAM
+region did not fit in the limited PA space on the hardware, and the ECAM
+region size was limited to 16 MiB. If virt-install had added more than
+16 devices to the root bridge, the region overflowed, which prevented
+edk2-stable202505 from scanning PCI devices, including the boot disk,
+causing boot failures.
+
+Ideally, a virtual machine with more than 16 devices added to the root
+bridge should just work so that users and management layers do not have
+to care whether they use constrained hardware.
+
+The base address of the Highmem IO Regions was fixed when commit
+f90747c4e8fb ("hw/arm/virt: GICv3 DT node with one or two redistributor
+regions") added the first Highmem IO Region. Later, commit 957e32cffa57
+("hw/arm/virt: Dynamic memory map depending on RAM requirements")
+allowed moving the Highmem IO Regions to higher addresses to accommodate
+RAM more than 255 GiB, but the lower bound remained to keep the legacy
+memory map.
+
+Remove the lower bound for the latest machine version to accommodate more
+devices with the root bridge. Keeping the lower bound for the old
+machine versions ensures the compatibility is still maintained.
+
+Signed-off-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
 ---
- tcg/wasm/tcg-target-con-set.h | 19 +++++++++++++++++++
- tcg/wasm/tcg-target-con-str.h | 14 ++++++++++++++
- tcg/wasm/tcg-target.c.inc     | 13 +++++++++++++
- 3 files changed, 46 insertions(+)
- create mode 100644 tcg/wasm/tcg-target-con-set.h
- create mode 100644 tcg/wasm/tcg-target-con-str.h
+Changes in v2:
+- Rebased.
+- Link to v1: https://lore.kernel.org/qemu-devel/20250728-virt-v1-1-0ab9682262c8@rsg.ci.i.u-tokyo.ac.jp
+---
+ include/hw/arm/virt.h |  1 +
+ hw/arm/virt.c         | 16 ++++++++++++----
+ 2 files changed, 13 insertions(+), 4 deletions(-)
 
-diff --git a/tcg/wasm/tcg-target-con-set.h b/tcg/wasm/tcg-target-con-set.h
-new file mode 100644
-index 0000000000..0dc41ebe33
---- /dev/null
-+++ b/tcg/wasm/tcg-target-con-set.h
-@@ -0,0 +1,19 @@
-+/* SPDX-License-Identifier: MIT */
-+/*
-+ * Wasm target-specific constraint sets.
-+ *
-+ * Based on tci/tcg-target-con-set.h
-+ *
-+ * Copyright (c) 2021 Linaro
-+ */
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index 365a28b082cae36321ed906d9a13242997fa543a..341eb171d084b911e05b9861b9f4ba516fa2888e 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -120,6 +120,7 @@ typedef enum VirtGICType {
+ 
+ struct VirtMachineClass {
+     MachineClass parent;
++    hwaddr min_highmem_base;
+     bool no_tcg_its;
+     bool no_highmem_compact;
+     bool no_ged;   /* Machines < 4.2 have no support for ACPI GED device */
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 1e63f40fbece3997dedc8aa953957471f930d44c..3cb978dae2ec0cdd9e7b902b3b427dac8a27bebf 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -1887,6 +1887,7 @@ static void virt_set_high_memmap(VirtMachineState *vms,
+ static void virt_set_memmap(VirtMachineState *vms, int pa_bits)
+ {
+     MachineState *ms = MACHINE(vms);
++    VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
+     hwaddr base, device_memory_base, device_memory_size, memtop;
+     int i;
+ 
+@@ -1913,8 +1914,7 @@ static void virt_set_memmap(VirtMachineState *vms, int pa_bits)
+     /*
+      * We compute the base of the high IO region depending on the
+      * amount of initial and device memory. The device memory start/size
+-     * is aligned on 1GiB. We never put the high IO region below 256GiB
+-     * so that if maxram_size is < 255GiB we keep the legacy memory map.
++     * is aligned on 1GiB.
+      * The device region size assumes 1GiB page max alignment per slot.
+      */
+     device_memory_base =
+@@ -1932,8 +1932,8 @@ static void virt_set_memmap(VirtMachineState *vms, int pa_bits)
+         error_report("maxmem/slots too huge");
+         exit(EXIT_FAILURE);
+     }
+-    if (base < vms->memmap[VIRT_MEM].base + LEGACY_RAMLIMIT_BYTES) {
+-        base = vms->memmap[VIRT_MEM].base + LEGACY_RAMLIMIT_BYTES;
++    if (base < vmc->min_highmem_base) {
++        base = vmc->min_highmem_base;
+     }
+ 
+     /* We know for sure that at least the memory fits in the PA space */
+@@ -3464,8 +3464,16 @@ DEFINE_VIRT_MACHINE_AS_LATEST(10, 2)
+ 
+ static void virt_machine_10_1_options(MachineClass *mc)
+ {
++    VirtMachineClass *vmc = VIRT_MACHINE_CLASS(OBJECT_CLASS(mc));
 +
-+/*
-+ * C_On_Im(...) defines a constraint set with <n> outputs and <m> inputs.
-+ * Each operand should be a sequence of constraint letters as defined by
-+ * tcg-target-con-str.h; the constraint combination is inclusive or.
-+ */
-+C_O0_I1(r)
-+C_O0_I2(r, r)
-+C_O1_I1(r, r)
-+C_O1_I2(r, r, r)
-+C_O1_I4(r, r, r, r, r)
-diff --git a/tcg/wasm/tcg-target-con-str.h b/tcg/wasm/tcg-target-con-str.h
-new file mode 100644
-index 0000000000..21ddbcc01a
---- /dev/null
-+++ b/tcg/wasm/tcg-target-con-str.h
-@@ -0,0 +1,14 @@
-+/* SPDX-License-Identifier: MIT */
-+/*
-+ * Define Wasm target-specific operand constraints.
-+ *
-+ * Based on tci/tcg-target-con-str.h
-+ *
-+ * Copyright (c) 2021 Linaro
-+ */
+     virt_machine_10_2_options(mc);
+     compat_props_add(mc->compat_props, hw_compat_10_1, hw_compat_10_1_len);
 +
-+/*
-+ * Define constraint letters for register sets:
-+ * REGS(letter, register_mask)
-+ */
-+REGS('r', MAKE_64BIT_MASK(0, TCG_TARGET_NB_REGS))
-diff --git a/tcg/wasm/tcg-target.c.inc b/tcg/wasm/tcg-target.c.inc
-index 3affc17232..0b12c4ea03 100644
---- a/tcg/wasm/tcg-target.c.inc
-+++ b/tcg/wasm/tcg-target.c.inc
-@@ -75,3 +75,16 @@ static TCGReg tcg_target_call_oarg_reg(TCGCallReturnKind kind, int slot)
-     tcg_debug_assert(slot >= 0 && slot < 128 / TCG_TARGET_REG_BITS);
-     return TCG_REG_R0 + slot;
++    /*
++     * Do not put the high IO region below 256GiB so that if maxram_size is
++     * < 255GiB we keep the legacy memory map.
++     */
++    vmc->min_highmem_base = base_memmap[VIRT_MEM].base + LEGACY_RAMLIMIT_BYTES;
  }
-+
-+static TCGConstraintSetIndex
-+tcg_target_op_def(TCGOpcode op, TCGType type, unsigned flags)
-+{
-+    return C_NotImplemented;
-+}
-+
-+/* Test if a constant matches the constraint. */
-+static bool tcg_target_const_match(int64_t val, int ct,
-+                                   TCGType type, TCGCond cond, int vece)
-+{
-+    return ct & TCG_CT_CONST;
-+}
+ DEFINE_VIRT_MACHINE(10, 1)
+ 
+
+---
+base-commit: e101d33792530093fa0b0a6e5f43e4d8cfe4581e
+change-id: 20250728-virt-833dafa6c11b
+
+Best regards,
 -- 
-2.43.0
+Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
 
 

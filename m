@@ -4,87 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8AD82CA0FF0
-	for <qemu-arm@archiver.kernel.org>; Mon,  1 Sep 2025 07:08:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68718CA0FF0
+	for <qemu-arm@archiver.kernel.org>; Mon,  1 Sep 2025 08:29:25 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1usyeR-0001cl-VK; Mon, 01 Sep 2025 03:08:28 -0400
+	id 1uszuH-00016X-CD; Mon, 01 Sep 2025 04:28:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1usyeQ-0001bM-Kc
- for qemu-arm@nongnu.org; Mon, 01 Sep 2025 03:08:26 -0400
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1usyeO-0007pU-5V
- for qemu-arm@nongnu.org; Mon, 01 Sep 2025 03:08:26 -0400
-Received: by mail-wr1-x434.google.com with SMTP id
- ffacd0b85a97d-3c46686d1e6so2581734f8f.3
- for <qemu-arm@nongnu.org>; Mon, 01 Sep 2025 00:08:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756710501; x=1757315301; darn=nongnu.org;
- h=mime-version:message-id:in-reply-to:references:user-agent:subject
- :cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=Ih8uTqWscBRx2OoRWvU0eyBD1Y+8aNV1KRoVMepk1w4=;
- b=pEaZOPCtIRUfT1wQV982XnrFARcYrR49Cq8qW7Z6YgC1wmb++owXfF70X9GNvrD2BG
- 1FsAi79/uWF+hpcZuw+zBnAte9w9rsiQEHIMVQXEDHb/RUA+ZiNBBmGkB1vU376W/gTc
- OYpIYXVwf0dFy5bvdy+cO7xskIzc0PSw3q9PRzktQ9BVNzLrJJqxTC88TBHHIaxg6QkN
- FKahwxtohmNBFF9hakgV1mS11h59XkY6/RiQjttL8UUbziocYlb9ctrJjR64RvFCjsQE
- yOgXW2M59x0/MDiypGvDns6XLiVuDLMMlUWoQIHrUDYUajZs9qRMBd9d27Mn0M38rdbj
- RsyQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756710501; x=1757315301;
- h=mime-version:message-id:in-reply-to:references:user-agent:subject
- :cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=Ih8uTqWscBRx2OoRWvU0eyBD1Y+8aNV1KRoVMepk1w4=;
- b=Gty6SIJ0lM53u/6ikXGuj+wYbwkQgtOpAZmYSwkn5i7XeVFvyd1HEe29TY5gv3QTXf
- 9hOnmU+YaGKfCF1NH/k/NBcKtUtl1d2B69c/Ca6fWj9VTiPJifq0bnP0t2/9eKtAVDOT
- FW1CnWWqRt4HdYtvqhWXpB79NZX2gJ751FIcqd8BKhGjDiptDBFBPlu3HmC00/reE7qA
- XcXdx8zvQfiZHVowAi1wPJSCVDAsx0Egi0xFIe6EaKBx7bQEsqT0b7v1wAR40LiKWH7f
- Ivbvdp20/NWCDfl1Cvr0A0lyuWpWEihDfqO1ipcOPKeRnZXzJpoGtoqh/Z8GO/RarotH
- 2toQ==
-X-Gm-Message-State: AOJu0YzPqwlluNuAZnw6bMlPtpD63ojWA+R2gXXrVo5NdGolAfmIgCS+
- NFFj7b6Lrs//rdGrYpGe6qIvW1s5WxYGaTKJXd8s9Nlvrpken2B1o8EPa+njRlNl03w=
-X-Gm-Gg: ASbGnctAsZkRv7GjR/75a6YicU0ljnIAHzaSBAcKQyCL6ROOeKJP1Y8Lq15Mi9B96uA
- MY8fODIHEIv1S4MyZ+7MWkD/4m7F9vxf36YnGz/G9IC9moDCkyuL5bQFoW1Hia3TvyXCWogJ847
- Ah4ny3MZ6CIN8oQphOh7tDAm6wGPDtgF/9Mqe+vgtPIhLL3Oylf3Drv+NWokiAbm14Zx78dd1i6
- aZQRLbALTYiu4SAw/DMf/dfhglMv2WOakFEWKn5vMlL7GuZmf19vlQ2uE09UozGylFpCoYYLlbb
- ype0GC7IYU7ClVSdYrpBO1MSSc89IJcJaYFwhrw+nfVFSHgvEtVzrN1Z/4wxlK0MCmCHEwj2sXS
- kzXX6d5pK8jNuucpMZChPJaVeolTahjH1ivQl7JC2p1wH0NuRZQc4l3+7ZFselFYrnedJlnKp
-X-Google-Smtp-Source: AGHT+IHFE+xmPrv5+Hq/4QZhXw+5LAQYAn/8JAFDpEy4b0A+JddD71JyYQH4bxGhzd+Sr6vVSeFM2g==
-X-Received: by 2002:a5d:5d86:0:b0:3d7:2284:b06 with SMTP id
- ffacd0b85a97d-3d722841157mr1304881f8f.24.1756710501025; 
- Mon, 01 Sep 2025 00:08:21 -0700 (PDT)
-Received: from meli-email.org (athedsl-4441256.home.otenet.gr.
- [79.129.180.152]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3cf270fc3fasm13819030f8f.5.2025.09.01.00.08.20
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 01 Sep 2025 00:08:20 -0700 (PDT)
-Date: Mon, 01 Sep 2025 10:05:22 +0300
-From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-To: qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-arm@nongnu.org
-Subject: Re: [PATCH 43/61] target/arm: Add read_raw_cp_reg128,
- write_raw_cp_reg128
-User-Agent: meli/0.8.12
-References: <20250827010453.4059782-1-richard.henderson@linaro.org>
- <20250827010453.4059782-48-richard.henderson@linaro.org>
-In-Reply-To: <20250827010453.4059782-48-richard.henderson@linaro.org>
-Message-ID: <t1wehv.qggqnsgrk7ur@linaro.org>
+ (Exim 4.90_1) (envelope-from <SRS0=6z4c=3M=kaod.org=clg@ozlabs.org>)
+ id 1uszu4-00012I-UB; Mon, 01 Sep 2025 04:28:44 -0400
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=6z4c=3M=kaod.org=clg@ozlabs.org>)
+ id 1usztx-0002Bp-DS; Mon, 01 Sep 2025 04:28:38 -0400
+Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4cFhpY1PtNz4w9g;
+ Mon,  1 Sep 2025 18:28:21 +1000 (AEST)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (Client did not present a certificate)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4cFhpS6FMnz4w9d;
+ Mon,  1 Sep 2025 18:28:16 +1000 (AEST)
+Message-ID: <a735659a-5a1c-460d-826c-4978dc22a865@kaod.org>
+Date: Mon, 1 Sep 2025 10:28:12 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::434;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wr1-x434.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [SPAM] [PATCH v1 1/4] hw/arm: Remove ast2700a0-evb machine
+To: Jamin Lin <jamin_lin@aspeedtech.com>,
+ "reviewer:Incompatible changes" <devel@lists.libvirt.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>
+Cc: troy_lee@aspeedtech.com, kane_chen@aspeedtech.com
+References: <20250901040808.1454742-1-jamin_lin@aspeedtech.com>
+ <20250901040808.1454742-2-jamin_lin@aspeedtech.com>
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Content-Language: en-US, fr
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <20250901040808.1454742-2-jamin_lin@aspeedtech.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+ envelope-from=SRS0=6z4c=3M=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -100,111 +112,141 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Wed, 27 Aug 2025 04:04, Richard Henderson <richard.henderson@linaro.org> wrote:
->Add the functions and update raw_accessors_invalid to match.
->Add assertions for !ARM_CP_128BIT in read_raw_cp_reg and
->write_raw_cp_reg.
->
->Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
->---
+Hello Jamin,
 
-Reviewed-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+On 9/1/25 06:08, Jamin Lin wrote:
+> The ast2700a0-evb machine represents the first revision of the AST2700 and
+> serves as the initial engineering sample rather than a production version.
+> A newer revision, A1, is now supported, and the ast2700a1-evb should replace
+> the older A0 version.
+> 
+> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+> ---
+>   docs/about/deprecated.rst                     |  8 ------
+>   hw/arm/aspeed.c                               | 28 +------------------
+>   .../functional/aarch64/test_aspeed_ast2700.py | 12 --------
+>   3 files changed, 1 insertion(+), 47 deletions(-)
+> 
+> diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
+> index 5d1579dcf8..8a273e019a 100644
+> --- a/docs/about/deprecated.rst
+> +++ b/docs/about/deprecated.rst
+> @@ -305,14 +305,6 @@ deprecated; use the new name ``dtb-randomness`` instead. The new name
+>   better reflects the way this property affects all random data within
+>   the device tree blob, not just the ``kaslr-seed`` node.
+>   
+> -Arm ``ast2700a0-evb`` machine (since 10.1)
+> -''''''''''''''''''''''''''''''''''''''''''
 
-> target/arm/cpregs.h |  1 +
-> target/arm/helper.c | 43 +++++++++++++++++++++++++++++++++++++++----
-> 2 files changed, 40 insertions(+), 4 deletions(-)
->
->diff --git a/target/arm/cpregs.h b/target/arm/cpregs.h
->index 0d8c45b60c..bd26a4a260 100644
->--- a/target/arm/cpregs.h
->+++ b/target/arm/cpregs.h
->@@ -1097,6 +1097,7 @@ static inline bool cp_access_ok(int current_el,
-> 
-> /* Raw read of a coprocessor register (as needed for migration, etc) */
-> uint64_t read_raw_cp_reg(CPUARMState *env, const ARMCPRegInfo *ri);
->+Int128 read_raw_cp_reg128(CPUARMState *env, const ARMCPRegInfo *ri);
-> 
-> /*
->  * Return true if the cp register encoding is in the "feature ID space" as
->diff --git a/target/arm/helper.c b/target/arm/helper.c
->index 7568b78c49..3efc14da3a 100644
->--- a/target/arm/helper.c
->+++ b/target/arm/helper.c
->@@ -115,6 +115,7 @@ static void *raw_ptr(CPUARMState *env, const ARMCPRegInfo *ri)
-> 
-> uint64_t read_raw_cp_reg(CPUARMState *env, const ARMCPRegInfo *ri)
-> {
->+    assert(!(ri->type & ARM_CP_128BIT));
->     /* Raw read of a coprocessor register (as needed for migration, etc). */
->     if (ri->type & ARM_CP_CONST) {
->         return ri->resetvalue;
->@@ -130,6 +131,7 @@ uint64_t read_raw_cp_reg(CPUARMState *env, const ARMCPRegInfo *ri)
-> static void write_raw_cp_reg(CPUARMState *env, const ARMCPRegInfo *ri,
->                              uint64_t v)
-> {
->+    assert(!(ri->type & ARM_CP_128BIT));
->     /*
->      * Raw write of a coprocessor register (as needed for migration, etc).
->      * Note that constant registers are treated as write-ignored; the
->@@ -147,6 +149,32 @@ static void write_raw_cp_reg(CPUARMState *env, const ARMCPRegInfo *ri,
->     }
-> }
-> 
->+Int128 read_raw_cp_reg128(CPUARMState *env, const ARMCPRegInfo *ri)
->+{
->+    assert(ri->type & ARM_CP_128BIT);
->+    if (ri->raw_read128fn) {
->+        return ri->raw_read128fn(env, ri);
->+    } else if (ri->read128fn) {
->+        return ri->read128fn(env, ri);
->+    } else {
->+        return raw_read128(env, ri);
->+    }
->+}
->+
->+__attribute__((unused))
->+static void write_raw_cp_reg128(CPUARMState *env, const ARMCPRegInfo *ri,
->+                                Int128 v)
->+{
->+    assert(ri->type & ARM_CP_128BIT);
->+    if (ri->raw_write128fn) {
->+        ri->raw_write128fn(env, ri, v);
->+    } else if (ri->write128fn) {
->+        ri->write128fn(env, ri, v);
->+    } else {
->+        raw_write128(env, ri, v);
->+    }
->+}
->+
-> static bool raw_accessors_invalid(const ARMCPRegInfo *ri)
-> {
->    /*
->@@ -161,12 +189,19 @@ static bool raw_accessors_invalid(const ARMCPRegInfo *ri)
->     * The tests here line up with the conditions in read/write_raw_cp_reg()
->     * and assertions in raw_read()/raw_write().
->     */
->-    if ((ri->type & ARM_CP_CONST) ||
->-        ri->fieldoffset ||
->-        ((ri->raw_writefn || ri->writefn) && (ri->raw_readfn || ri->readfn))) {
->+    if (ri->type & ARM_CP_CONST) {
->+        return ri->type & ARM_CP_128BIT;
->+    }
->+    if (ri->fieldoffset) {
->         return false;
->     }
->-    return true;
->+    if (ri->type & ARM_CP_128BIT) {
->+        return !((ri->raw_write128fn || ri->write128fn) &&
->+                 (ri->raw_read128fn || ri->read128fn));
->+    } else {
->+        return !((ri->raw_writefn || ri->writefn) &&
->+                 (ri->raw_readfn || ri->readfn));
->+    }
-> }
-> 
-> bool write_cpustate_to_list(ARMCPU *cpu, bool kvm_sync)
->-- 
->2.43.0
->
->
+We need to wait *two* releases after deprecation before removing a
+machine or any other feature. So removal of the ast2700a0-evb machine
+will be possible for QEMU 11.0 (next after QEMU 10.2).
+
+> -
+> -The ``ast2700a0-evb`` machine represents the first revision of the AST2700
+> -and serves as the initial engineering sample rather than a production version.
+> -A newer revision, A1, is now supported, and the ``ast2700a1-evb`` should
+> -replace the older A0 version.
+> -
+
+File docs/about/removed-features.rst should be updated too.
+
+>   Mips ``mipssim`` machine (since 10.0)
+>   '''''''''''''''''''''''''''''''''''''
+>   
+> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+> index c31bbe7701..e729edfe13 100644
+> --- a/hw/arm/aspeed.c
+> +++ b/hw/arm/aspeed.c
+> @@ -1989,35 +1989,13 @@ static void ast2700_evb_i2c_init(AspeedMachineState *bmc)
+>                               TYPE_TMP105, 0x4d);
+>   }
+>   
+> -static void aspeed_machine_ast2700a0_evb_class_init(ObjectClass *oc,
+> -                                                    const void *data)
+> -{
+> -    MachineClass *mc = MACHINE_CLASS(oc);
+> -    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
+> -
+> -    mc->alias = "ast2700-evb";
+
+The "ast2700-evb" alias should be moved first to the ast2700a1_evb machine.
+This can be done in this QEMU cycle
+
+
+Thanks,
+
+C.
+
+
+
+
+> -    mc->desc = "Aspeed AST2700 A0 EVB (Cortex-A35)";
+> -    amc->soc_name  = "ast2700-a0";
+> -    amc->hw_strap1 = AST2700_EVB_HW_STRAP1;
+> -    amc->hw_strap2 = AST2700_EVB_HW_STRAP2;
+> -    amc->fmc_model = "w25q01jvq";
+> -    amc->spi_model = "w25q512jv";
+> -    amc->num_cs    = 2;
+> -    amc->macs_mask = ASPEED_MAC0_ON | ASPEED_MAC1_ON | ASPEED_MAC2_ON;
+> -    amc->uart_default = ASPEED_DEV_UART12;
+> -    amc->i2c_init  = ast2700_evb_i2c_init;
+> -    amc->vbootrom = true;
+> -    mc->auto_create_sdcard = true;
+> -    mc->default_ram_size = 1 * GiB;
+> -    aspeed_machine_class_init_cpus_defaults(mc);
+> -}
+> -
+>   static void aspeed_machine_ast2700a1_evb_class_init(ObjectClass *oc,
+>                                                       const void *data)
+>   {
+>       MachineClass *mc = MACHINE_CLASS(oc);
+>       AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
+>   
+> +    mc->alias = "ast2700-evb";
+>       mc->desc = "Aspeed AST2700 A1 EVB (Cortex-A35)";
+>       amc->soc_name  = "ast2700-a1";
+>       amc->hw_strap1 = AST2700_EVB_HW_STRAP1;
+> @@ -2166,10 +2144,6 @@ static const TypeInfo aspeed_machine_types[] = {
+>           .class_init     = aspeed_minibmc_machine_ast1030_evb_class_init,
+>   #ifdef TARGET_AARCH64
+>       }, {
+> -        .name          = MACHINE_TYPE_NAME("ast2700a0-evb"),
+> -        .parent        = TYPE_ASPEED_MACHINE,
+> -        .class_init    = aspeed_machine_ast2700a0_evb_class_init,
+> -        }, {
+>           .name          = MACHINE_TYPE_NAME("ast2700a1-evb"),
+>           .parent        = TYPE_ASPEED_MACHINE,
+>           .class_init    = aspeed_machine_ast2700a1_evb_class_init,
+> diff --git a/tests/functional/aarch64/test_aspeed_ast2700.py b/tests/functional/aarch64/test_aspeed_ast2700.py
+> index d02dc7991c..063d9e572c 100755
+> --- a/tests/functional/aarch64/test_aspeed_ast2700.py
+> +++ b/tests/functional/aarch64/test_aspeed_ast2700.py
+> @@ -46,10 +46,6 @@ def verify_openbmc_boot_and_login(self, name):
+>           exec_command_and_wait_for_pattern(self, 'root', 'Password:')
+>           exec_command_and_wait_for_pattern(self, '0penBmc', f'root@{name}:~#')
+>   
+> -    ASSET_SDK_V906_AST2700 = Asset(
+> -            'https://github.com/AspeedTech-BMC/openbmc/releases/download/v09.06/ast2700-a0-default-obmc.tar.gz',
+> -            '7247b6f19dbfb700686f8d9f723ac23f3eb229226c0589cb9b06b80d1b61f3cb')
+> -
+>       ASSET_SDK_V906_AST2700A1 = Asset(
+>               'https://github.com/AspeedTech-BMC/openbmc/releases/download/v09.06/ast2700-default-obmc.tar.gz',
+>               'f1d53e0be8a404ecce3e105f72bc50fa4e090ad13160ffa91b10a6e0233a9dc6')
+> @@ -111,14 +107,6 @@ def start_ast2700_test_vbootrom(self, name):
+>           self.do_test_aarch64_aspeed_sdk_start(
+>                   self.scratch_file(name, 'image-bmc'))
+>   
+> -    def test_aarch64_ast2700_evb_sdk_v09_06(self):
+> -        self.set_machine('ast2700-evb')
+> -
+> -        self.archive_extract(self.ASSET_SDK_V906_AST2700)
+> -        self.start_ast2700_test('ast2700-a0-default')
+> -        self.verify_openbmc_boot_and_login('ast2700-a0-default')
+> -        self.do_ast2700_i2c_test()
+> -
+>       def test_aarch64_ast2700a1_evb_sdk_v09_06(self):
+>           self.set_machine('ast2700a1-evb')
+>   
+
 

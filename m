@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E10ECA0FFD
-	for <qemu-arm@archiver.kernel.org>; Mon,  1 Sep 2025 12:01:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42B35CA0FF0
+	for <qemu-arm@archiver.kernel.org>; Mon,  1 Sep 2025 12:01:28 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ut2zu-0008Gl-5y; Mon, 01 Sep 2025 07:46:54 -0400
+	id 1ut2zu-0008Gk-5r; Mon, 01 Sep 2025 07:46:55 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ktokunaga.mail@gmail.com>)
- id 1ut2z9-0006s9-TE; Mon, 01 Sep 2025 07:46:11 -0400
-Received: from mail-pg1-x52d.google.com ([2607:f8b0:4864:20::52d])
+ id 1ut2zP-0007O9-N1; Mon, 01 Sep 2025 07:46:26 -0400
+Received: from mail-pf1-x42d.google.com ([2607:f8b0:4864:20::42d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <ktokunaga.mail@gmail.com>)
- id 1ut2z4-0001Kd-07; Mon, 01 Sep 2025 07:46:07 -0400
-Received: by mail-pg1-x52d.google.com with SMTP id
- 41be03b00d2f7-b4d4881897cso1800309a12.0; 
- Mon, 01 Sep 2025 04:45:55 -0700 (PDT)
+ id 1ut2zF-0001M2-Gg; Mon, 01 Sep 2025 07:46:23 -0400
+Received: by mail-pf1-x42d.google.com with SMTP id
+ d2e1a72fcca58-7722c88fc5fso2387746b3a.2; 
+ Mon, 01 Sep 2025 04:46:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1756727151; x=1757331951; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1756727162; x=1757331962; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=MJlrySIO4BSZhcIFP/jHtysQnEYOUCLY5ts4W8Z02P0=;
- b=B8KVSunI4bO116tMB4q4xnJt4heNpxogCgi3R9Q/RW7PBQnuTPhHVlLtPTbBQG4Ye6
- PHUMdUzEu8yuDo4D6IHYggYK47V9VnLEy3/4viEF6BsnV8LaMmfqx22GbA3Mu60SJA8t
- HvoDtP2+f3/YXpcyoK9IjpOG2eLIqEdinkaBLMLeYUamoUGPEn9WTrpIzzdEN8ggbQ7S
- 8FLFku2ZGucUpUb1fH3VTmtjJZnoJnKPyy52nN7nVeWOB6r8kYFVRjkzOl7BR04Dj1EB
- SFaDzoc03SLntiSlaxgURNOD5TMWdehsYyQzuldkOdT5YIWqzvYKM2ARYJsSVEH/F3Sr
- WTVg==
+ bh=CKRYcSwafDNcekCgV+d38XwpLUOrhRn0ySHzx6DTOfk=;
+ b=e9mkQQveZYZttx45r0QAbepTFEnh4/ksbLthEm+5p2PC6pGHH1Ie6MUaMafCeEiC8n
+ CfVeiVJIgLV+c/1yan2UpUf3Ixs8cjHzjM4e3+neHNCZ604qgdR4/ghmfrQ3JHD05PYt
+ RVyPzXyQscWXVx+rkzGBxldqcrygfDeBCkQMto0Shj4jnQfkoLhg4JkrBaJbltVEdqFo
+ AAbHsbPsNzbNo/ut5YPPRGKAUQCA6MHyofWbAPUK65gXqb2NlSvkC9V8ioxofhbsgKmY
+ gePGsYXT0zCj5z/CIJS1RlLJWypj5OP0s/syXJJQFGNbq0RwRUyyHyQRbGEnbfRg+V7Y
+ weDQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756727151; x=1757331951;
+ d=1e100.net; s=20230601; t=1756727162; x=1757331962;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=MJlrySIO4BSZhcIFP/jHtysQnEYOUCLY5ts4W8Z02P0=;
- b=ampYP6/pL9ggbhrQRx7W6di41cVwQBaMMaI8QFnx+cdwLbWItsc5/F8gtg9ceyvgmm
- kfDb4Jc85pDcA99qFkZtiCGiAvi2DlfWNDdJq2/Mi+PLl/VwbauhqYBt6mQi65/+l+/Q
- 4KfjsGNHgwo9JupzzfruWHIFju0xBxDuX12ZGNI65ESlYVYdvVui1KpYVBNspuexwQ+Q
- nCg31Z4isPX/nv3efA5/m47Hzfjz/I5A2qRXpC4aPPqVoX1b0RG2W/DBrYZfIPMaIxXW
- JPhsKRIXqGtt+IZ/so+PEMh7EQx4eRJ1gTryWzsmYwW3OYqr+OVc47BPn4wpfYS11TAk
- Gq5g==
+ bh=CKRYcSwafDNcekCgV+d38XwpLUOrhRn0ySHzx6DTOfk=;
+ b=US09Ya+rvyslys86aNfPt6i1WqWTOKaoLquTHu3tHmmroLy2GJ566OfPMlU79faDQt
+ /AZqozyZ50rvBoz9pfaYe1YFMvqt0zJZvUABWpixG8VxU0iTc8udLK4t311Cf9aQTF8L
+ Xvkjc8nPtzju/AO0U88LM93j6L3Fi4DsBsSbZAywNSQXjgi55XZY1l92uMzPezn3ohdm
+ z9jPvebEdU4XpHpV6xvA2QhvKuNazGIs9+/jq9+9rTIaqyfJRxtLhdEthuL2XKXpf3jY
+ MgWoAy7ymLLd48WidJsN1lyYIuxTdpsUAiE1E6bXCNgWq1FIeWdSPW/YXQsGv97rvjMa
+ WILQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCU7FWTE9LWrQtbngual93upmNgCE8cEUKQwT13KpFK5kM9t09yYQ7WKz6AIp6rsRz+S8i8yuCZHqA==@nongnu.org,
- AJvYcCWAHerfjDQhtj+c+zIuYWnbFfrllVjsZDpbCmI7hKTz44U3ULq8Ljx/L4v+usUJHa+yfhOm6sP7cj+eEw==@nongnu.org
-X-Gm-Message-State: AOJu0YxlBn0XBdiBoB7LQm8Exd2Bx9qCNsVffli0/Chm1OG6cODxbmJ8
- U6vjGg1fOMcrSsO+2xpCn7c+MaRR05XQdkOzwfI/gCCLyQ/QvpH5uhZhlyrXQA==
-X-Gm-Gg: ASbGnct2SEpprdwBPSNDhwpBZJailPfNbBXRPK9oXRlj+dgGXZiXFqYwCrFcTEqwYIQ
- Ne7b/vS36Afmfg9UMltjBJO65LcReO5dal6eqebLGzrOTzttYWuuet7ttTETiwlk1VnfpWD4Jea
- NRbViA/xQTOTSInz/WFk63SPCPScn8MWersjJ8nIxN9AKCT2Lf2PxUudoaiuCuIHfh9mPmrx1DP
- odJk9usqCZD7k7b/Gcf2Vi+7mSF95pLiix8Sht6qptzOUddL7WOPcKUE9MsUvm6qN3fxKeOxaXW
- 81giNl1qvqwcfl+lgMum3/PemxRBIDmLHSS1s7abYOD8Q2OVw01QU7u5FI+LbCSTpvZLuT247+5
- mV6W9jMmujpfNVGwarncAKr3Ek+Pz5wvS
-X-Google-Smtp-Source: AGHT+IFW5pXptoNkvEWfX0rC+eB76VvDqUzzsHSUf2+rrT0WbJDA7OQuA4qZ+JSj5xn7OBcwyTx28g==
-X-Received: by 2002:a17:903:2288:b0:246:ae6e:e5e4 with SMTP id
- d9443c01a7336-249448ded1amr94443535ad.6.1756727150962; 
- Mon, 01 Sep 2025 04:45:50 -0700 (PDT)
+ AJvYcCUWTPSGcvEUlr59MTeDSoD0zQxXGs0PdIsH5M4dCQ12ZnPic06sd6X/c0BFEx4LC7mVEJyDm1nQlA==@nongnu.org,
+ AJvYcCVPJdHWAOf0nCjesMj5esE7mgu8SERaVINSu7UNm1LbwJML2keLY/9dA3eQ6/luxH+eO5tHjvgnhpbw8w==@nongnu.org
+X-Gm-Message-State: AOJu0YxE6a91tJPNBdBi/9T3BFIdf/e5V2s5K2VFxWoEeQyEufpTO2DM
+ M4+lV6SV0iTUcXYxx9uazHocjEcYn89Rp6pGFR836baC36WMfUL0Y75mH5VOKQ==
+X-Gm-Gg: ASbGncuY23+IcUT/1g/PSQ6GQKVoCkZ4aBAsMScNmxkv7JoGx3oFgTxkqiNO8EAT+gF
+ Lsc5OdQnESAHepTnK7ssOftn5+2wuRhA3hqtrN5eA1WWsZyvnF3IoDuMEK1hN3hbRt4YHkaYnPz
+ fBtn7hVNuVtCtlRyuoUzl1zdyUSk5v+7Zn1xqkwXb4AUdOZ2LMP02OCz8u0YsVuKihS/aCfLoZR
+ THR6623E0eElwYsQOtmoF0ruzfpF6610Zyc65WGvRmByOwIm/B0yjmUwMMgb7N0K9cRyN+9T/fU
+ r3CmN9DrfR/MbK077Bu9O3Ne4Wvuq7F2PEaJteOIKEh2bAUDVR/X1bFsuoUB5oKKJQNL/LXFy7X
+ qv5fl6DXvdstWWEl5qwnEqA==
+X-Google-Smtp-Source: AGHT+IFkunATfldHnVpyrPyJFgoJXLdJxX35nxoCHS8d7asV94Jq+xrer2nXFHFLBVHakqvytMDG5w==
+X-Received: by 2002:a17:903:2301:b0:237:d734:5642 with SMTP id
+ d9443c01a7336-24944ac6b51mr105348515ad.41.1756727162233; 
+ Mon, 01 Sep 2025 04:46:02 -0700 (PDT)
 Received: from ktock.. ([240d:1a:3b6:8b00:750a:cb0b:f0f9:68f4])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-249065a8036sm103038775ad.129.2025.09.01.04.45.45
+ d9443c01a7336-249065a8036sm103038775ad.129.2025.09.01.04.45.56
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 01 Sep 2025 04:45:50 -0700 (PDT)
+ Mon, 01 Sep 2025 04:46:01 -0700 (PDT)
 From: Kohei Tokunaga <ktokunaga.mail@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
@@ -80,23 +80,22 @@ Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
  qemu-arm@nongnu.org, qemu-riscv@nongnu.org,
  Stefan Hajnoczi <stefanha@redhat.com>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>, ktokunaga.mail@gmail.com
-Subject: [PATCH v3 05/35] tcg/wasm: Add tcg-target.h and tcg-target-reg-bits.h
-Date: Mon,  1 Sep 2025 20:44:07 +0900
-Message-ID: <a3135800931780f64d95cae0c461954c46ccecc1.1756724464.git.ktokunaga.mail@gmail.com>
+Subject: [PATCH v3 07/35] tcg/wasm: Add constraint definitions
+Date: Mon,  1 Sep 2025 20:44:09 +0900
+Message-ID: <d935ea00f23ba6b4ea5624a57af0056214c2f495.1756724464.git.ktokunaga.mail@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <cover.1756724464.git.ktokunaga.mail@gmail.com>
 References: <cover.1756724464.git.ktokunaga.mail@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::52d;
- envelope-from=ktokunaga.mail@gmail.com; helo=mail-pg1-x52d.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42d;
+ envelope-from=ktokunaga.mail@gmail.com; helo=mail-pf1-x42d.google.com
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
+ DKIM_SIGNED=0.1, FREEMAIL_FROM=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_PASS=-0.001, T_SPF_HELO_TEMPERROR=0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -112,126 +111,84 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The Wasm backend targets wasm64 as the host so TCG_TARGET_REG_BITS is set to
-64. Since WebAssembly instructions vary in size and can include single-byte
-instructions, TCG_TARGET_INSN_UNIT_SIZE is set to 1.
+The Wasm backend integrates a forked TCI so its constraints are defined to
+remain compatible with TCI.
 
 Signed-off-by: Kohei Tokunaga <ktokunaga.mail@gmail.com>
 ---
- MAINTAINERS                    |  5 +++
- tcg/wasm/tcg-target-reg-bits.h | 11 ++++++
- tcg/wasm/tcg-target.h          | 61 ++++++++++++++++++++++++++++++++++
- 3 files changed, 77 insertions(+)
- create mode 100644 tcg/wasm/tcg-target-reg-bits.h
- create mode 100644 tcg/wasm/tcg-target.h
+ tcg/wasm/tcg-target-con-set.h | 19 +++++++++++++++++++
+ tcg/wasm/tcg-target-con-str.h | 14 ++++++++++++++
+ tcg/wasm/tcg-target.c.inc     | 13 +++++++++++++
+ 3 files changed, 46 insertions(+)
+ create mode 100644 tcg/wasm/tcg-target-con-set.h
+ create mode 100644 tcg/wasm/tcg-target-con-str.h
 
-V3:
-- Although checkpatch.pl reports the following error in tcg/wasm/tcg-target.h,
-  this file is based on the TCI code so it is preserved as-is.
-  > New file 'tcg/wasm/tcg-target.h' must not have license boilerplate
-  > header text, only the SPDX-License-Identifier, unless this file was
-  > copied from existing code already having such text.
-
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 433a44118d..89e4b51e22 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -3999,6 +3999,11 @@ F: tcg/tci/
- F: tcg/tci.c
- F: disas/tci.c
- 
-+WebAssembly TCG target
-+M: Kohei Tokunaga <ktokunaga.mail@gmail.com>
-+S: Maintained
-+F: tcg/wasm/
-+
- Block drivers
- -------------
- VMDK
-diff --git a/tcg/wasm/tcg-target-reg-bits.h b/tcg/wasm/tcg-target-reg-bits.h
+diff --git a/tcg/wasm/tcg-target-con-set.h b/tcg/wasm/tcg-target-con-set.h
 new file mode 100644
-index 0000000000..3dd821691f
+index 0000000000..0dc41ebe33
 --- /dev/null
-+++ b/tcg/wasm/tcg-target-reg-bits.h
-@@ -0,0 +1,11 @@
-+/* SPDX-License-Identifier: MIT */
-+
-+#ifndef TCG_TARGET_REG_BITS_H
-+#define TCG_TARGET_REG_BITS_H
-+
-+#if UINTPTR_MAX != UINT64_MAX
-+# error Unsupported pointer size for TCG target
-+#endif
-+#define TCG_TARGET_REG_BITS 64
-+
-+#endif
-diff --git a/tcg/wasm/tcg-target.h b/tcg/wasm/tcg-target.h
-new file mode 100644
-index 0000000000..f00761d19f
---- /dev/null
-+++ b/tcg/wasm/tcg-target.h
-@@ -0,0 +1,61 @@
++++ b/tcg/wasm/tcg-target-con-set.h
+@@ -0,0 +1,19 @@
 +/* SPDX-License-Identifier: MIT */
 +/*
-+ * Tiny Code Generator for QEMU
++ * Wasm target-specific constraint sets.
 + *
-+ * Based on tci/tcg-target.h
++ * Based on tci/tcg-target-con-set.h
 + *
-+ * Copyright (c) 2009, 2011 Stefan Weil
-+ *
-+ * Permission is hereby granted, free of charge, to any person obtaining a copy
-+ * of this software and associated documentation files (the "Software"), to deal
-+ * in the Software without restriction, including without limitation the rights
-+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-+ * copies of the Software, and to permit persons to whom the Software is
-+ * furnished to do so, subject to the following conditions:
-+ *
-+ * The above copyright notice and this permission notice shall be included in
-+ * all copies or substantial portions of the Software.
-+ *
-+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-+ * THE SOFTWARE.
++ * Copyright (c) 2021 Linaro
 + */
 +
-+#ifndef TCG_TARGET_H
-+#define TCG_TARGET_H
++/*
++ * C_On_Im(...) defines a constraint set with <n> outputs and <m> inputs.
++ * Each operand should be a sequence of constraint letters as defined by
++ * tcg-target-con-str.h; the constraint combination is inclusive or.
++ */
++C_O0_I1(r)
++C_O0_I2(r, r)
++C_O1_I1(r, r)
++C_O1_I2(r, r, r)
++C_O1_I4(r, r, r, r, r)
+diff --git a/tcg/wasm/tcg-target-con-str.h b/tcg/wasm/tcg-target-con-str.h
+new file mode 100644
+index 0000000000..21ddbcc01a
+--- /dev/null
++++ b/tcg/wasm/tcg-target-con-str.h
+@@ -0,0 +1,14 @@
++/* SPDX-License-Identifier: MIT */
++/*
++ * Define Wasm target-specific operand constraints.
++ *
++ * Based on tci/tcg-target-con-str.h
++ *
++ * Copyright (c) 2021 Linaro
++ */
 +
-+#define TCG_TARGET_INSN_UNIT_SIZE 1
-+#define MAX_CODE_GEN_BUFFER_SIZE  ((size_t)-1)
++/*
++ * Define constraint letters for register sets:
++ * REGS(letter, register_mask)
++ */
++REGS('r', MAKE_64BIT_MASK(0, TCG_TARGET_NB_REGS))
+diff --git a/tcg/wasm/tcg-target.c.inc b/tcg/wasm/tcg-target.c.inc
+index 3affc17232..0b12c4ea03 100644
+--- a/tcg/wasm/tcg-target.c.inc
++++ b/tcg/wasm/tcg-target.c.inc
+@@ -75,3 +75,16 @@ static TCGReg tcg_target_call_oarg_reg(TCGCallReturnKind kind, int slot)
+     tcg_debug_assert(slot >= 0 && slot < 128 / TCG_TARGET_REG_BITS);
+     return TCG_REG_R0 + slot;
+ }
 +
-+/* Number of registers available. */
-+#define TCG_TARGET_NB_REGS 16
++static TCGConstraintSetIndex
++tcg_target_op_def(TCGOpcode op, TCGType type, unsigned flags)
++{
++    return C_NotImplemented;
++}
 +
-+/* List of registers which are used by TCG. */
-+typedef enum {
-+    TCG_REG_R0 = 0,
-+    TCG_REG_R1,
-+    TCG_REG_R2,
-+    TCG_REG_R3,
-+    TCG_REG_R4,
-+    TCG_REG_R5,
-+    TCG_REG_R6,
-+    TCG_REG_R7,
-+    TCG_REG_R8,
-+    TCG_REG_R9,
-+    TCG_REG_R10,
-+    TCG_REG_R11,
-+    TCG_REG_R12,
-+    TCG_REG_R13,
-+    TCG_REG_R14,
-+    TCG_REG_R15,
-+
-+    TCG_REG_TMP = TCG_REG_R13,
-+    TCG_AREG0 = TCG_REG_R14,
-+    TCG_REG_CALL_STACK = TCG_REG_R15,
-+} TCGReg;
-+
-+#endif /* TCG_TARGET_H */
++/* Test if a constant matches the constraint. */
++static bool tcg_target_const_match(int64_t val, int ct,
++                                   TCGType type, TCGCond cond, int vece)
++{
++    return ct & TCG_CT_CONST;
++}
 -- 
 2.43.0
 

@@ -4,27 +4,27 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4442DCA0FFD
-	for <qemu-arm@archiver.kernel.org>; Mon,  1 Sep 2025 04:18:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88DE8CA0FFD
+	for <qemu-arm@archiver.kernel.org>; Mon,  1 Sep 2025 04:18:09 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1usvzN-0005Wv-66; Mon, 01 Sep 2025 00:17:53 -0400
+	id 1usvzL-0005WA-Ot; Mon, 01 Sep 2025 00:17:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1usvqE-0002mJ-7V; Mon, 01 Sep 2025 00:08:26 -0400
+ id 1usvq8-0002l9-Qw; Mon, 01 Sep 2025 00:08:20 -0400
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1usvqC-000862-Hv; Mon, 01 Sep 2025 00:08:25 -0400
+ id 1usvq6-000862-Ek; Mon, 01 Sep 2025 00:08:20 -0400
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Mon, 1 Sep
- 2025 12:08:09 +0800
+ 2025 12:08:08 +0800
 Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
- Transport; Mon, 1 Sep 2025 12:08:09 +0800
+ Transport; Mon, 1 Sep 2025 12:08:08 +0800
 To: "reviewer:Incompatible changes" <devel@lists.libvirt.org>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
@@ -33,12 +33,10 @@ To: "reviewer:Incompatible changes" <devel@lists.libvirt.org>,
  <qemu-devel@nongnu.org>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
  <kane_chen@aspeedtech.com>
-Subject: [PATCH v1 2/4] hw/arm/aspeed_ast27x0: Remove ast2700-a0 SOC
-Date: Mon, 1 Sep 2025 12:08:05 +0800
-Message-ID: <20250901040808.1454742-3-jamin_lin@aspeedtech.com>
+Subject: [PATCH v1 0/4] Remove AST2700 A0
+Date: Mon, 1 Sep 2025 12:08:03 +0800
+Message-ID: <20250901040808.1454742-1-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250901040808.1454742-1-jamin_lin@aspeedtech.com>
-References: <20250901040808.1454742-1-jamin_lin@aspeedtech.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
@@ -67,122 +65,27 @@ From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The ast2700-a1 SOC represented the first revision of the AST2700 and
-was intended as an early engineering sample rather than a production
-platform. A newer revision, A1, is now supported, and the ast2700-a1
-SOC should replace the older A0 version.
+v1:
+  - Remove ast2700a0-evb machine
+  - Remove ast2700-a0 SOC
+  - Remove GIC 128 - 136 for AST2700 A0
 
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
----
- hw/arm/aspeed_ast27x0.c | 81 -----------------------------------------
- 1 file changed, 81 deletions(-)
+*** BLURB HERE ***
 
-diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
-index 6aa3841b69..2e47e2f860 100644
---- a/hw/arm/aspeed_ast27x0.c
-+++ b/hw/arm/aspeed_ast27x0.c
-@@ -89,54 +89,6 @@ static const hwaddr aspeed_soc_ast2700_memmap[] = {
- #define AST2700_MAX_IRQ 256
- 
- /* Shared Peripheral Interrupt values below are offset by -32 from datasheet */
--static const int aspeed_soc_ast2700a0_irqmap[] = {
--    [ASPEED_DEV_SDMC]      = 0,
--    [ASPEED_DEV_HACE]      = 4,
--    [ASPEED_DEV_XDMA]      = 5,
--    [ASPEED_DEV_UART4]     = 8,
--    [ASPEED_DEV_SCU]       = 12,
--    [ASPEED_DEV_RTC]       = 13,
--    [ASPEED_DEV_EMMC]      = 15,
--    [ASPEED_DEV_TIMER1]    = 16,
--    [ASPEED_DEV_TIMER2]    = 17,
--    [ASPEED_DEV_TIMER3]    = 18,
--    [ASPEED_DEV_TIMER4]    = 19,
--    [ASPEED_DEV_TIMER5]    = 20,
--    [ASPEED_DEV_TIMER6]    = 21,
--    [ASPEED_DEV_TIMER7]    = 22,
--    [ASPEED_DEV_TIMER8]    = 23,
--    [ASPEED_DEV_DP]        = 28,
--    [ASPEED_DEV_EHCI1]     = 33,
--    [ASPEED_DEV_EHCI2]     = 37,
--    [ASPEED_DEV_LPC]       = 128,
--    [ASPEED_DEV_IBT]       = 128,
--    [ASPEED_DEV_KCS]       = 128,
--    [ASPEED_DEV_ADC]       = 130,
--    [ASPEED_DEV_GPIO]      = 130,
--    [ASPEED_DEV_I2C]       = 130,
--    [ASPEED_DEV_FMC]       = 131,
--    [ASPEED_DEV_WDT]       = 131,
--    [ASPEED_DEV_PWM]       = 131,
--    [ASPEED_DEV_I3C]       = 131,
--    [ASPEED_DEV_UART0]     = 132,
--    [ASPEED_DEV_UART1]     = 132,
--    [ASPEED_DEV_UART2]     = 132,
--    [ASPEED_DEV_UART3]     = 132,
--    [ASPEED_DEV_UART5]     = 132,
--    [ASPEED_DEV_UART6]     = 132,
--    [ASPEED_DEV_UART7]     = 132,
--    [ASPEED_DEV_UART8]     = 132,
--    [ASPEED_DEV_UART9]     = 132,
--    [ASPEED_DEV_UART10]    = 132,
--    [ASPEED_DEV_UART11]    = 132,
--    [ASPEED_DEV_UART12]    = 132,
--    [ASPEED_DEV_ETH1]      = 132,
--    [ASPEED_DEV_ETH2]      = 132,
--    [ASPEED_DEV_ETH3]      = 132,
--    [ASPEED_DEV_PECI]      = 133,
--    [ASPEED_DEV_SDHCI]     = 133,
--};
--
- static const int aspeed_soc_ast2700a1_irqmap[] = {
-     [ASPEED_DEV_SDMC]      = 0,
-     [ASPEED_DEV_HACE]      = 4,
-@@ -958,34 +910,6 @@ static void aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
-                                   AST2700_SOC_IOMEM_SIZE);
- }
- 
--static void aspeed_soc_ast2700a0_class_init(ObjectClass *oc, const void *data)
--{
--    static const char * const valid_cpu_types[] = {
--        ARM_CPU_TYPE_NAME("cortex-a35"),
--        NULL
--    };
--    DeviceClass *dc = DEVICE_CLASS(oc);
--    AspeedSoCClass *sc = ASPEED_SOC_CLASS(oc);
--
--    /* Reason: The Aspeed SoC can only be instantiated from a board */
--    dc->user_creatable = false;
--    dc->realize      = aspeed_soc_ast2700_realize;
--
--    sc->valid_cpu_types = valid_cpu_types;
--    sc->silicon_rev  = AST2700_A0_SILICON_REV;
--    sc->sram_size    = 0x20000;
--    sc->spis_num     = 3;
--    sc->ehcis_num    = 2;
--    sc->wdts_num     = 8;
--    sc->macs_num     = 1;
--    sc->uarts_num    = 13;
--    sc->num_cpus     = 4;
--    sc->uarts_base   = ASPEED_DEV_UART0;
--    sc->irqmap       = aspeed_soc_ast2700a0_irqmap;
--    sc->memmap       = aspeed_soc_ast2700_memmap;
--    sc->get_irq      = aspeed_soc_ast2700_get_irq;
--}
--
- static void aspeed_soc_ast2700a1_class_init(ObjectClass *oc, const void *data)
- {
-     static const char * const valid_cpu_types[] = {
-@@ -1020,11 +944,6 @@ static const TypeInfo aspeed_soc_ast27x0_types[] = {
-         .parent         = TYPE_ASPEED_SOC,
-         .instance_size  = sizeof(Aspeed27x0SoCState),
-         .abstract       = true,
--    }, {
--        .name           = "ast2700-a0",
--        .parent         = TYPE_ASPEED27X0_SOC,
--        .instance_init  = aspeed_soc_ast2700_init,
--        .class_init     = aspeed_soc_ast2700a0_class_init,
-     },
-     {
-         .name           = "ast2700-a1",
+Jamin Lin (4):
+  hw/arm: Remove ast2700a0-evb machine
+  hw/arm/aspeed_ast27x0: Remove ast2700-a0 SOC
+  hw/intc/aspeed: Remove GIC 128 - 136
+  docs/specs/aspeed-intc:  Remove GIC 128 - 136
+
+ docs/about/deprecated.rst                     |   8 --
+ docs/specs/aspeed-intc.rst                    |  93 ++++----------
+ hw/arm/aspeed.c                               |  28 +---
+ hw/arm/aspeed_ast27x0.c                       | 121 ++----------------
+ hw/intc/aspeed_intc.c                         |  49 +------
+ .../functional/aarch64/test_aspeed_ast2700.py |  12 --
+ 6 files changed, 39 insertions(+), 272 deletions(-)
+
 -- 
 2.43.0
 

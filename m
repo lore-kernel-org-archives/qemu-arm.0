@@ -4,74 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 290E7CA0FF0
-	for <qemu-arm@archiver.kernel.org>; Mon,  1 Sep 2025 09:16:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A110CA0FFD
+	for <qemu-arm@archiver.kernel.org>; Mon,  1 Sep 2025 09:47:17 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ut0aM-0005X5-IL; Mon, 01 Sep 2025 05:12:22 -0400
+	id 1ut17d-0000xS-6U; Mon, 01 Sep 2025 05:46:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1ut0X2-0002sB-V5
- for qemu-arm@nongnu.org; Mon, 01 Sep 2025 05:08:58 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <smail.aider@huawei.com>)
+ id 1ut17b-0000x0-Np; Mon, 01 Sep 2025 05:46:43 -0400
+Received: from [185.176.79.56] (helo=frasgout.his.huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1ut0Wu-0007BE-G9
- for qemu-arm@nongnu.org; Mon, 01 Sep 2025 05:08:55 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1756717722;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:in-reply-to:in-reply-to:  references:references;
- bh=HgpYc71PQfl4nfQlGnVqXiwDo61Jcd9jk0uU5SIwJ/A=;
- b=Ijla3BkySjZgHhxWD5IiDJ1oFaIEG8vjdkXRGRQaw8+7ok6O6x/VAasfMGO+Dm9Zvrt1H5
- RcQMAuNgXy04Ry93eFJo/Aec724kMMOA5RexPg6O4gWEr0PMzp+igtNYPv5Ic0KonV7GOp
- khw4eI6rKaGYLVJXXVm9gwnM2goo3fE=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-80-TGSxVHrPMzmei2BBgVqs-A-1; Mon,
- 01 Sep 2025 05:08:39 -0400
-X-MC-Unique: TGSxVHrPMzmei2BBgVqs-A-1
-X-Mimecast-MFC-AGG-ID: TGSxVHrPMzmei2BBgVqs-A_1756717718
-Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 9E1AF18002A8; Mon,  1 Sep 2025 09:08:37 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.100])
- by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 9EF111955E89; Mon,  1 Sep 2025 09:08:34 +0000 (UTC)
-Date: Mon, 1 Sep 2025 10:08:31 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Igor Mammedov <imammedo@redhat.com>
-Cc: qemu-devel@nongnu.org, peter.maydell@linaro.org, philmd@linaro.org,
- wangyanan55@huawei.com, zhao1.liu@intel.com, mst@redhat.com,
- pbonzini@redhat.com, qemu-arm@nongnu.org
-Subject: Re: [PATCH] smbios: cap DIMM size to 2Tb as workaround for broken
- Windows
-Message-ID: <aLVijyqK4pPocGH8@redhat.com>
-References: <20250901084915.2607632-1-imammedo@redhat.com>
+ (Exim 4.90_1) (envelope-from <smail.aider@huawei.com>)
+ id 1ut17Y-0007OS-6K; Mon, 01 Sep 2025 05:46:43 -0400
+Received: from mail.maildlp.com (unknown [172.18.186.31])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4cFkTk6NRqz6M535;
+ Mon,  1 Sep 2025 17:43:54 +0800 (CST)
+Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
+ by mail.maildlp.com (Postfix) with ESMTPS id E3BFF1402F3;
+ Mon,  1 Sep 2025 17:46:19 +0800 (CST)
+Received: from frapeml500008.china.huawei.com (7.182.85.71) by
+ frapeml500008.china.huawei.com (7.182.85.71) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Mon, 1 Sep 2025 11:46:19 +0200
+Received: from frapeml500008.china.huawei.com ([7.182.85.71]) by
+ frapeml500008.china.huawei.com ([7.182.85.71]) with mapi id 15.01.2507.039;
+ Mon, 1 Sep 2025 11:46:19 +0200
+To: Michael Tokarev <mjt@tls.msk.ru>, "qemu-devel@nongnu.org"
+ <qemu-devel@nongnu.org>
+CC: "zhangyue (BA)" <zhangyue165@huawei.com>, "Liuyutao(DRC)"
+ <liuyutao2@huawei.com>, "qemu-stable@nongnu.org" <qemu-stable@nongnu.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "richard.henderson@linaro.org"
+ <richard.henderson@linaro.org>, Smail AIDER <smail.aider@huawei.com>, "Peter
+ Maydell" <peter.maydell@linaro.org>
+Subject: RE: [PATCH v3 1/1] target/arm: Trap PMCR when MDCR_EL2.TPMCR is set
+Thread-Topic: [PATCH v3 1/1] target/arm: Trap PMCR when MDCR_EL2.TPMCR is set
+Thread-Index: AQHcCrIoROzGXl5jCUm9VOEblJ0G6bR8MsqAgAH53aA=
+Date: Mon, 1 Sep 2025 09:46:19 +0000
+Message-ID: <6595d36298d344af89ce37bd5dbcd7d6@huawei.com>
+References: <20250811112143.1577055-1-smail.aider@huawei.com>
+ <20250811112143.1577055-2-smail.aider@huawei.com>
+ <2e6d011f-a8a5-4eef-9fe0-2a95984e4116@tls.msk.ru>
+In-Reply-To: <2e6d011f-a8a5-4eef-9fe0-2a95984e4116@tls.msk.ru>
+Accept-Language: en-US
+Content-Language: en-US
+X-Mentions: peter.maydell@linaro.org
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.206.134.31]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20250901084915.2607632-1-imammedo@redhat.com>
-User-Agent: Mutt/2.2.14 (2025-02-20)
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -30
-X-Spam_score: -3.1
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 185.176.79.56 (deferred)
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=smail.aider@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -33
+X-Spam_score: -3.4
 X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=-1, RCVD_IN_MSPIKE_WL=-0.01,
+X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -84,60 +79,18 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+Reply-to:  Smail AIDER <smail.aider@huawei.com>
+From:  Smail AIDER via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, Sep 01, 2025 at 10:49:15AM +0200, Igor Mammedov wrote:
-> With current limit set to match max spec size (2PTb),
-> Windows fails to parse type 17 records when DIMM size reaches 4Tb+.
-> Failure happens in GetPhysicallyInstalledSystemMemory() function,
-> and fails "Check SMBIOS System Memory Tables" SVVP test.
-> Though not fatal, it might cause issues for userspace apps,
-> something like [1].
-> 
-> Lets cap default DIMM size to 2Tb for now, until MS fixes it.
-> 
-> 1) https://issues.redhat.com/browse/RHEL-81999?focusedId=27731200&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-27731200
-
-Why link to a comment that refers to a link to Adobe photoshop
-and doesn't mention KVM ???
-
-Also should have:
-
-Fixes: 62f182c97b31445012d37181005a83ff8453edaa
-
-> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
-> ---
-> PS: It's obvious 32 int overflow math somewhere in Windows,
->     MS admitted that it's Windows bug and in a process of fixing it.
->     However it's unclear if W10 and earlier would get the fix.
->     So however I dislike changing defaults, we heed to work around
->     the issue (it looks like QEMU regression while not being it).
->     Hopefully 2Tb/DIMM split will last longer until VM memory size
->     will become large enough to cause to many type 17 records issue
->     again.
-> PS2:
->     Alternatively, instead of messing with defaults, I can create
->     a dedicated knob to ask for desired DIMM size cap explicitly
->     on CLI. That will let users to enable workaround when they
->     hit this corner case. Downside is that knob has to be propagated
->     up all mgmt stack, which might be not desirable.
-
-
-How many type 17 records can we get before hitting the the
-Linux limits which was the motiviation for the previous
-fix 62f182c97b31445012d37181005a83ff8453edaa ?
-
-ie, with this 2 TB dimm size, what is our effective maximum
-RAM size ?
-
-
-With regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
-
+SGkgTWljaGFlbCwNCg0KWW91ciBiYWNrLXBvcnQgY29tbWl0IGlzIHNhbmUuIFllcywgSSBzdXBw
+b3NlIHRoaXMgY2hhbmdlIG5lZWRzIHRvIGJlIHBvcnRlZCB0byBvdGhlciByZWxlYXNlcy4gSXQg
+aGFzIGFscmVhZHkgYmVlbiBhcHBsaWVkIHRvIHRoZSBuZXh0IDEwLjIgYnkgQFBldGVyIE1heWRl
+bGwuDQoNClRoYW5rcywNClNtYWlsIEFJREVSDQoNCi0tLS0tT3JpZ2luYWwgTWVzc2FnZS0tLS0t
+DQoNCkhpISAgUGxlYXNlIHRha2UgYSBsb29rIGF0DQpodHRwczovL2dpdGxhYi5jb20vbWp0MGsv
+cWVtdS8tL2NvbW1pdC84NDI5MThlZTNjMWNiOWFjNjg3YmIyNzkyMGM4ZDkwMjBjMmMxMDliDQpm
+b3IgbXkgYmFjay1wb3J0IG9mIHRoaXMgY29tbWl0IHRvIHYxMC4wLnggc2VyaWVzLCAtLSBkb2Vz
+IGl0IGxvb2sgc2FuZT8gIEkgYXNzdW1lIHRoaXMgY2hhbmdlIGlzIHRhcmdldHRpbmcgMTAuMC54
+IHRvbywgbm90IGp1c3QgMTAuMS54Lg0KDQpUaGFua3MsDQoNCi9tanQNCg==
 

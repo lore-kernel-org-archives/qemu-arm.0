@@ -4,85 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9962DCA0FF0
-	for <qemu-arm@archiver.kernel.org>; Mon,  1 Sep 2025 13:02:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 027CDCA0FF0
+	for <qemu-arm@archiver.kernel.org>; Mon,  1 Sep 2025 13:04:26 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ut4B8-0000MX-RQ; Mon, 01 Sep 2025 09:02:35 -0400
+	id 1ut4Cn-0002e6-Tm; Mon, 01 Sep 2025 09:04:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1ut4Az-0000G5-0D
- for qemu-arm@nongnu.org; Mon, 01 Sep 2025 09:02:28 -0400
-Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
+ id 1ut4Cm-0002bb-Ik
+ for qemu-arm@nongnu.org; Mon, 01 Sep 2025 09:04:16 -0400
+Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1ut4Au-0005qs-Pc
- for qemu-arm@nongnu.org; Mon, 01 Sep 2025 09:02:23 -0400
-Received: by mail-ej1-x630.google.com with SMTP id
- a640c23a62f3a-b00a9989633so369792866b.0
- for <qemu-arm@nongnu.org>; Mon, 01 Sep 2025 06:02:17 -0700 (PDT)
+ id 1ut4Cj-0005wm-To
+ for qemu-arm@nongnu.org; Mon, 01 Sep 2025 09:04:16 -0400
+Received: by mail-ej1-x631.google.com with SMTP id
+ a640c23a62f3a-b043da5a55fso65495766b.0
+ for <qemu-arm@nongnu.org>; Mon, 01 Sep 2025 06:04:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756731736; x=1757336536; darn=nongnu.org;
+ d=linaro.org; s=google; t=1756731849; x=1757336649; darn=nongnu.org;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=w61tivpJM1n82io8BL4sIp/rVwFVKvLE+WQ0/TgDtOc=;
- b=Aq6sT7SlkO5JKSmVJbBgW1d+ePR/qvzFvFTarscQgBAh3b6kMATDAKc1AzTKRpBkMk
- TBS17LovbehQpg8QrPiHOKezFcOwgWzGi7vn18zyrnI0BuxSCFWzPGkMavgNIuPtNgGQ
- AIARXyyOdRZFMUV5UNIaXajDziCt25bwBaVTqhE5CZOPrwBGD7a5ugv7CaLnODM7NZY9
- B+qVo4eCSDMyPl19EBozBjubemsiqqJ2nIVJvao5uF1CcV+4EB1727rhCtZ/ETt6quCr
- rK6UUrx3EsAXjPMW2ewJygv68Divu4xycoQSgTMtbYmpQtrbtUmBR07sh2/GwKuVIBSQ
- Ix5Q==
+ bh=cX69E6QOIJE7U4cNB+0scsBRFjpC4rOUc2ysvanrftI=;
+ b=jGxyv7nLu4eSfJYoRqofNPa4WbzZdQ9pk9z7HxUueeWLINsmj/meVUTllSbPla0ca9
+ hcthgwR/6VCfwS83jjG5oph0SHQuqPgqbbg50Ya9+wiG2v1IvQSCet0VrAv6PDRbIzEX
+ zD+jVNdCZf2/IYj9M1mPTGw/NqAedvMj3x5YhJ/LP9QqwUDitphpLBTRLuQDRNpRa7Mz
+ fzVyhjV1Bf+V7fqNuoYLhtRvUtQzSpExDGj6O49dAA3ZUliAKtsS/IkEXkHUq763Jq1g
+ N5c1biZ4s1f0aCPUY5X5a9uxpGvga4CK2vhML7dEKKJTYX4axvpUYMWfPHc4ITj+bGKZ
+ sOuQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756731736; x=1757336536;
+ d=1e100.net; s=20230601; t=1756731849; x=1757336649;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=w61tivpJM1n82io8BL4sIp/rVwFVKvLE+WQ0/TgDtOc=;
- b=JvkK9PLBrTF2X0WfDtnK0zk7O7ZV54mStS/5zEPP5mh0RxeSIExh5qO3h3y53qfHCn
- hzAOXT4UqSFvfqvQwZcDmeDeWxfer4M5wPxLTOIvO68Vssk5sXe24XDvSQaP/brGYz5F
- I83ltWhmVkjR2lLqlB3v3589SvKHCwsa/e32NDtulCxNauPMwmoxZvpYcwdvgp/DAI8u
- LkI15rfYgokxGiZ0zK+k1fcRl75gQm51R1tzKp3/12yunnR6n/41JEutl5nDMh8loNy7
- x0GMQnW6yMX97UDtQjpRB5Qba4uPtEc0MO59HhtrwtjTORHEAX0zRvR92TPq6e6IqK2B
- UA3Q==
+ bh=cX69E6QOIJE7U4cNB+0scsBRFjpC4rOUc2ysvanrftI=;
+ b=FV1aOJZNbtVFuEKeVhZCZa/gXLjQQOm49PU780Z4+ZUPXUJDURGUiIc1cXbrv0Sor0
+ b9bwZvGXHjyll+bZvdMTMWaRQRm2sGiALJMYLcpmZW2HSaLaYGn7gFIij4s9O4bNMwLu
+ dtoWvK57fst822erwA82mKLKJ0OORn/p9lfZrg0eQCiyZVtFv1UHDVyFvHto343bzS4k
+ ods6NUFYFcdRWCUhN12od5kZTVuS6yfcad4USRg/TNyy/Xh30c5/tVe0ovXRciw0RaRQ
+ NG5VImzY13azFCcK7ZG2rtbfKalg2as/HaTL6IyMfAiGCD2ySQg8NVOYavUbBQ9m2E4+
+ H+aw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUzU77CtcWCRGdm05SBygDB1q9f+VexWPUdOQYgydnl96yK/vvuLnOSJhaaD683m3hczBp0zW4ygQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yyks/xquage04U9HrvHKOFOYi8z5kK/UNLWdfdAM8SNsHHKHHeB
- dTZc4NJnI45jIyHUMaOZAIBzejI1ESxH4FA+wiRPIFH8Aa14tHPFlHcc4K0h1/bHKQ7LsrA3iu9
- kg1pWwPHrqiw8go5Oa1bMIGQWMtoX5oQiBrw3M5qMekoOWMuKDQUw12U=
-X-Gm-Gg: ASbGnctfGPtucKyZHfESRtCR6eyq2KHj0gfKIYgdqGVsHNFg5/ApL3MwoiZMCD1l4ZY
- w5SR+IJJvj0dfK7qN3aFF41N3AjvVw/jDNl9zrfALJfhI1RNcpEdmEEkZz86UXzQ39lDQ7gNJ+Z
- yzfNaoq0jZMcsDiJynv6VkJG8WCXnWf8Qoe1j3PtAKjmVDBu2/9xF4v3i/teFDlhRYMmAJ8ia8T
- ODuqJ0dds8ld5wTNcg=
-X-Google-Smtp-Source: AGHT+IE3V/7jbCANXhLJu088f4gEA2SXFvRzhezzMhRlZrqnnfSYeTIgyrvcLU/HfxJwrklwOiBAIoq0shMDUhA2g+0=
-X-Received: by 2002:a17:907:745:b0:afe:ed05:2e44 with SMTP id
- a640c23a62f3a-b01081b3f3fmr686304966b.14.1756731725392; Mon, 01 Sep 2025
- 06:02:05 -0700 (PDT)
+ AJvYcCURq/N874H0nkVw94n8sib8bZX9itbWi+F29JFTImYTsG8J2eanBe3hsKl/4BUp+Dza3+e+hpkcDQ==@nongnu.org
+X-Gm-Message-State: AOJu0YzTQBSpWFt4mPvWQWDRNzlBs+bWHpLMSJUGS0byJBH7XG38J4JJ
+ yQtcByvAHF0zOr+1JuqnJTCYDPWwZAlp9XwZg2LQeNxRx84FXRXCm5l8GvBonLxc9gepMbgp0ER
+ HUg5MI4IO0ADzXBVPJpTC2YZ1F5uZFbkQYEhmxosQog==
+X-Gm-Gg: ASbGncsckpabKM4fq0DJ1vOa/Ud5scD4nDI0ZNPsAG+ueTq2bk5ljWkIh7QixoBOevl
+ +cAEvAfzXuxGHfvxbbTV+11RxYSn/WmMRJBjtwh83U+/U9GneFAIt01Yc5QJHnwC3H+BYVCK1d5
+ d7o+7FR9gniUiB0GF7KccW0xE1VA/rXY/2Rtyk+IFyN7YpXMGTniixr6Hu6B2RjUrAVVHJiBku7
+ D1207zdDJDaiU8ugHlRXCi/IDYb+Q==
+X-Google-Smtp-Source: AGHT+IERDfC9tNkenxaoRknSmYVaaCZXFAiY1du5RmynL3n07AV0iSwcZHWBewgNQjrgfc/WMK6Lxd6R8Y/Juz7ZC/Y=
+X-Received: by 2002:a17:907:2da7:b0:afe:7909:f42a with SMTP id
+ a640c23a62f3a-b01d97744a5mr735612866b.51.1756731849008; Mon, 01 Sep 2025
+ 06:04:09 -0700 (PDT)
 MIME-Version: 1.0
 References: <20250901125304.1047624-1-alex.bennee@linaro.org>
- <20250901125304.1047624-3-alex.bennee@linaro.org>
-In-Reply-To: <20250901125304.1047624-3-alex.bennee@linaro.org>
+ <20250901125304.1047624-5-alex.bennee@linaro.org>
+In-Reply-To: <20250901125304.1047624-5-alex.bennee@linaro.org>
 From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-Date: Mon, 1 Sep 2025 16:01:39 +0300
-X-Gm-Features: Ac12FXy1jHBCAGP3vfBUGaPzX_PFEiuprLC_A2nr1xHSHpy6ytej_zLs8lRfkp0
-Message-ID: <CAAjaMXZXNgu9ONiWM+4B-p6XtcDMTzROin4dkDvwhZjpjQZs2w@mail.gmail.com>
-Subject: Re: [PATCH 2/4] hw/arm: use g_autofree for fdt in arm_load_dtb
+Date: Mon, 1 Sep 2025 16:03:42 +0300
+X-Gm-Features: Ac12FXwCaYvfktUGsPLolX4eNn__mVF5Az2zFjDbiHdG_6x14Mq7uoRsOSHu2IY
+Message-ID: <CAAjaMXaJ3JEnFLyKbgG5ef9XOOL+c8P3-3U_OrMULxtg6JG70A@mail.gmail.com>
+Subject: Re: [PATCH 4/4] hw/arm: expose Error * to arm_load_dtb
 To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
 Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::630;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-ej1-x630.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::631;
+ envelope-from=manos.pitsidianakis@linaro.org; helo=mail-ej1-x631.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -98,12 +98,12 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, Sep 1, 2025 at 3:53=E2=80=AFPM Alex Benn=C3=A9e <alex.bennee@linaro=
+On Mon, Sep 1, 2025 at 3:54=E2=80=AFPM Alex Benn=C3=A9e <alex.bennee@linaro=
 .org> wrote:
 >
-> With the fdt being protected by g_autofree we can skip the goto fail
-> and bail out straight away. The only thing we must take care of is
-> stealing the pointer in the one case when we do need it to survive.
+> Currently all calls to arm_load_dtb will result in an exit if we fail.
+> By passing Error * we can use &error_fatal and properly set the error
+> report.
 >
 > Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
 > ---
@@ -111,148 +111,198 @@ On Mon, Sep 1, 2025 at 3:53=E2=80=AFPM Alex Benn=C3=A9e <alex.bennee@linaro=
 Reviewed-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 
 
->  hw/arm/boot.c | 29 ++++++++++++-----------------
->  1 file changed, 12 insertions(+), 17 deletions(-)
+>  include/hw/arm/boot.h |  3 ++-
+>  hw/arm/boot.c         | 35 +++++++++++++++--------------------
+>  hw/arm/virt.c         |  6 +++---
+>  3 files changed, 20 insertions(+), 24 deletions(-)
 >
+> diff --git a/include/hw/arm/boot.h b/include/hw/arm/boot.h
+> index a2e22bda8a5..fdb99c0c1ee 100644
+> --- a/include/hw/arm/boot.h
+> +++ b/include/hw/arm/boot.h
+> @@ -164,6 +164,7 @@ AddressSpace *arm_boot_address_space(ARMCPU *cpu,
+>   * @addr_limit: upper limit of the available memory area at @addr
+>   * @as:         address space to load image to
+>   * @cpu:        ARM CPU object
+> + * @errp:       Error object, often &error_fatal
+>   *
+>   * Load a device tree supplied by the machine or by the user  with the
+>   * '-dtb' command line option, and put it at offset @addr in target
+> @@ -181,7 +182,7 @@ AddressSpace *arm_boot_address_space(ARMCPU *cpu,
+>   */
+>  int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
+>                   hwaddr addr_limit, AddressSpace *as, MachineState *ms,
+> -                 ARMCPU *cpu);
+> +                 ARMCPU *cpu, Error **errp);
+>
+>  /* Write a secure board setup routine with a dummy handler for SMCs */
+>  void arm_write_secure_board_setup_dummy_smc(ARMCPU *cpu,
 > diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-> index 56fd13b9f7c..749f2d08341 100644
+> index f9d0bc7011e..d28ae8b86ab 100644
 > --- a/hw/arm/boot.c
 > +++ b/hw/arm/boot.c
-> @@ -519,7 +519,7 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_i=
-nfo *binfo,
+> @@ -517,7 +517,7 @@ static void fdt_add_psci_node(void *fdt, ARMCPU *armc=
+pu)
+>
+>  int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
 >                   hwaddr addr_limit, AddressSpace *as, MachineState *ms,
->                   ARMCPU *cpu)
+> -                 ARMCPU *cpu)
+> +                 ARMCPU *cpu, Error **errp)
 >  {
-> -    void *fdt =3D NULL;
-> +    g_autofree void *fdt =3D NULL;
->      int size, rc, n =3D 0;
+>      g_autofree void *fdt =3D NULL;
+>      g_auto(GStrv) node_path =3D NULL;
+> @@ -525,25 +525,24 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot=
+_info *binfo,
 >      uint32_t acells, scells;
 >      unsigned int i;
-> @@ -538,13 +538,13 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot=
-_info *binfo,
+>      hwaddr mem_base, mem_len;
+> -    Error *err =3D NULL;
+>
+>      if (binfo->dtb_filename) {
+>          g_autofree char *filename =3D qemu_find_file(QEMU_FILE_TYPE_DTB,
+>                                                     binfo->dtb_filename);
+>          if (!filename) {
+> -            fprintf(stderr, "Couldn't open dtb file %s\n", binfo->dtb_fi=
+lename);
+> +            error_setg(errp, "Couldn't open dtb file %s", binfo->dtb_fil=
+ename);
+>              return -1;
+>          }
+>
 >          fdt =3D load_device_tree(filename, &size);
 >          if (!fdt) {
->              fprintf(stderr, "Couldn't open dtb file %s\n", filename);
-> -            goto fail;
-> +            return -1;
+> -            fprintf(stderr, "Couldn't open dtb file %s\n", filename);
+> +            error_setg(errp, "Couldn't open dtb file %s", filename);
+>              return -1;
 >          }
 >      } else {
 >          fdt =3D binfo->get_dtb(binfo, &size);
 >          if (!fdt) {
->              fprintf(stderr, "Board was unable to create a dtb blob\n");
-> -            goto fail;
-> +            return -1;
+> -            fprintf(stderr, "Board was unable to create a dtb blob\n");
+> +            error_setg(errp, "Board was unable to create a dtb blob");
+>              return -1;
 >          }
 >      }
->
-> @@ -553,7 +553,6 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_i=
+> @@ -561,7 +560,7 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_i=
 nfo *binfo,
->           * Whether this constitutes failure is up to the caller to decid=
-e,
->           * so just return 0 as size, i.e., no error.
->           */
-> -        g_free(fdt);
->          return 0;
->      }
->
-> @@ -563,7 +562,7 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_i=
-nfo *binfo,
+>      scells =3D qemu_fdt_getprop_cell(fdt, "/", "#size-cells",
 >                                     NULL, &error_fatal);
 >      if (acells =3D=3D 0 || scells =3D=3D 0) {
->          fprintf(stderr, "dtb file invalid (#address-cells or #size-cells=
+> -        fprintf(stderr, "dtb file invalid (#address-cells or #size-cells=
  0)\n");
-> -        goto fail;
-> +        return -1;
+> +        error_setg(errp, "dtb file invalid (#address-cells or #size-cell=
+s 0)");
+>          return -1;
 >      }
 >
->      if (scells < 2 && binfo->ram_size >=3D 4 * GiB) {
-> @@ -572,14 +571,14 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot=
+> @@ -569,15 +568,13 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot=
 _info *binfo,
+>          /* This is user error so deserves a friendlier error message
+>           * than the failure of setprop_sized_cells would provide
 >           */
->          fprintf(stderr, "qemu: dtb file not compatible with "
->                  "RAM size > 4GB\n");
-> -        goto fail;
-> +        return -1;
+> -        fprintf(stderr, "qemu: dtb file not compatible with "
+> -                "RAM size > 4GB\n");
+> +        error_setg(errp, "qemu: dtb file not compatible with RAM size > =
+4GB");
+>          return -1;
 >      }
 >
 >      /* nop all root nodes matching /memory or /memory@unit-address */
->      node_path =3D qemu_fdt_node_unit_path(fdt, "memory", &err);
->      if (err) {
->          error_report_err(err);
-> -        goto fail;
-> +        return -1;
+> -    node_path =3D qemu_fdt_node_unit_path(fdt, "memory", &err);
+> -    if (err) {
+> -        error_report_err(err);
+> +    node_path =3D qemu_fdt_node_unit_path(fdt, "memory", errp);
+> +    if (!node_path) {
+>          return -1;
 >      }
 >      while (node_path[n]) {
->          if (g_str_has_prefix(node_path[n], "/memory")) {
-> @@ -611,7 +610,7 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_i=
+> @@ -607,7 +604,7 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_i=
 nfo *binfo,
+>              rc =3D fdt_add_memory_node(fdt, acells, mem_base,
+>                                       scells, mem_len, i);
 >              if (rc < 0) {
->                  fprintf(stderr, "couldn't add /memory@%"PRIx64" node\n",
+> -                fprintf(stderr, "couldn't add /memory@%"PRIx64" node\n",
+> +                error_setg(errp, "couldn't add /memory@%"PRIx64" node",
 >                          mem_base);
-> -                goto fail;
-> +                return -1;
+>                  return -1;
 >              }
->
->              mem_base +=3D mem_len;
-> @@ -622,7 +621,7 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_i=
+> @@ -618,7 +615,7 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_i=
 nfo *binfo,
+>          rc =3D fdt_add_memory_node(fdt, acells, binfo->loader_start,
+>                                   scells, binfo->ram_size, -1);
 >          if (rc < 0) {
->              fprintf(stderr, "couldn't add /memory@%"PRIx64" node\n",
+> -            fprintf(stderr, "couldn't add /memory@%"PRIx64" node\n",
+> +            error_setg(errp, "couldn't add /memory@%"PRIx64" node",
 >                      binfo->loader_start);
-> -            goto fail;
-> +            return -1;
+>              return -1;
 >          }
->      }
->
-> @@ -636,7 +635,7 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_i=
+> @@ -633,7 +630,7 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_i=
 nfo *binfo,
+>          rc =3D qemu_fdt_setprop_string(fdt, "/chosen", "bootargs",
 >                                       ms->kernel_cmdline);
 >          if (rc < 0) {
->              fprintf(stderr, "couldn't set /chosen/bootargs\n");
-> -            goto fail;
-> +            return -1;
+> -            fprintf(stderr, "couldn't set /chosen/bootargs\n");
+> +            error_setg(errp, "couldn't set /chosen/bootargs");
+>              return -1;
 >          }
 >      }
->
-> @@ -645,7 +644,7 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_i=
+> @@ -642,7 +639,7 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_i=
 nfo *binfo,
+>          rc =3D qemu_fdt_setprop_sized_cells(fdt, "/chosen", "linux,initr=
+d-start",
 >                                            acells, binfo->initrd_start);
 >          if (rc < 0) {
->              fprintf(stderr, "couldn't set /chosen/linux,initrd-start\n")=
+> -            fprintf(stderr, "couldn't set /chosen/linux,initrd-start\n")=
 ;
-> -            goto fail;
-> +            return -1;
+> +            error_setg(errp, "couldn't set /chosen/linux,initrd-start");
+>              return -1;
 >          }
 >
->          rc =3D qemu_fdt_setprop_sized_cells(fdt, "/chosen", "linux,initr=
-d-end",
-> @@ -654,7 +653,7 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_i=
+> @@ -651,7 +648,7 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_i=
 nfo *binfo,
+>                                            binfo->initrd_start +
 >                                            binfo->initrd_size);
 >          if (rc < 0) {
->              fprintf(stderr, "couldn't set /chosen/linux,initrd-end\n");
-> -            goto fail;
-> +            return -1;
+> -            fprintf(stderr, "couldn't set /chosen/linux,initrd-end\n");
+> +            error_setg(errp, "couldn't set /chosen/linux,initrd-end");
+>              return -1;
 >          }
 >      }
->
-> @@ -673,14 +672,10 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot=
-_info *binfo,
->
->      if (fdt !=3D ms->fdt) {
->          g_free(ms->fdt);
-> -        ms->fdt =3D fdt;
-> +        ms->fdt =3D g_steal_pointer(&fdt);
+> @@ -1321,10 +1318,8 @@ void arm_load_kernel(ARMCPU *cpu, MachineState *ms=
+, struct arm_boot_info *info)
+>       * decided whether to enable PSCI and set the psci-conduit CPU prope=
+rties.
+>       */
+>      if (!info->skip_dtb_autoload && have_dtb(info)) {
+> -        if (arm_load_dtb(info->dtb_start, info, info->dtb_limit,
+> -                         as, ms, cpu) < 0) {
+> -            exit(1);
+> -        }
+> +        arm_load_dtb(info->dtb_start, info, info->dtb_limit,
+> +                     as, ms, cpu, &error_fatal);
 >      }
->
->      return size;
-> -
-> -fail:
-> -    g_free(fdt);
-> -    return -1;
 >  }
 >
->  static void do_cpu_reset(void *opaque)
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 9326cfc895f..6061e0ddb50 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -1803,9 +1803,9 @@ void virt_machine_done(Notifier *notifier, void *da=
+ta)
+>                                         vms->memmap[VIRT_PLATFORM_BUS].si=
+ze,
+>                                         vms->irqmap[VIRT_PLATFORM_BUS]);
+>      }
+> -    if (arm_load_dtb(info->dtb_start, info, info->dtb_limit, as, ms, cpu=
+) < 0) {
+> -        exit(1);
+> -    }
+> +
+> +    arm_load_dtb(info->dtb_start, info, info->dtb_limit,
+> +                 as, ms, cpu, &error_fatal);
+>
+>      pci_bus_add_fw_cfg_extra_pci_roots(vms->fw_cfg, vms->bus,
+>                                         &error_abort);
 > --
 > 2.47.2
 >

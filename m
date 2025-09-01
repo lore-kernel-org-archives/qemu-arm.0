@@ -4,76 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F24EACA0FFF
-	for <qemu-arm@archiver.kernel.org>; Mon,  1 Sep 2025 16:25:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5CD99CA0FF0
+	for <qemu-arm@archiver.kernel.org>; Mon,  1 Sep 2025 16:58:52 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ut7Kt-0003Yh-Bf; Mon, 01 Sep 2025 12:24:52 -0400
+	id 1ut7rC-0006qt-2q; Mon, 01 Sep 2025 12:58:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ut7Kq-0003Vt-4W
- for qemu-arm@nongnu.org; Mon, 01 Sep 2025 12:24:50 -0400
-Received: from mail-yb1-xb33.google.com ([2607:f8b0:4864:20::b33])
+ id 1ut7rA-0006ps-FZ
+ for qemu-arm@nongnu.org; Mon, 01 Sep 2025 12:58:12 -0400
+Received: from mail-yw1-x1129.google.com ([2607:f8b0:4864:20::1129])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ut7Kn-0006zV-PN
- for qemu-arm@nongnu.org; Mon, 01 Sep 2025 12:24:47 -0400
-Received: by mail-yb1-xb33.google.com with SMTP id
- 3f1490d57ef6-e970acf352fso3798293276.2
- for <qemu-arm@nongnu.org>; Mon, 01 Sep 2025 09:24:43 -0700 (PDT)
+ id 1ut7r8-0005i1-4d
+ for qemu-arm@nongnu.org; Mon, 01 Sep 2025 12:58:12 -0400
+Received: by mail-yw1-x1129.google.com with SMTP id
+ 00721157ae682-71d6083cc69so38660017b3.2
+ for <qemu-arm@nongnu.org>; Mon, 01 Sep 2025 09:58:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756743883; x=1757348683; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=ZiO3bgGR3inXbuuVf3DZOKCf6oPacdTtsD5CIWBAUh8=;
- b=yaYfcikHit0Y6pdl1Tbp3dRYk8DHRCTK/FBHlss8jJtI4Qse6HmoNr+K94jwksTdGq
- IAQbGKHpa0PIXWJfS1nFo9yL85gXyZSPv41fVy5Xd1QbiK36CLp7FzjsLSjXOyrCRofj
- kEA3QDn7UO+FsBljIrXTGPsRVNwF9NEO8e+G509ll+8rzcMb/3wHjiKrHYK7rReMDmvy
- 1SbJpJbEvmSoNJu6P/WWPujnoo9LYQrO1Fh5f/8EhHcopZZSQwmSVLtsCAi8H8o8H77a
- BZ1uDpgvtHdzfXH1Hy6NskGFKeZCKpITT5EdNTPEpOUTllvXWP5kupLyTZYx+GUfdTD7
- wmDQ==
+ d=linaro.org; s=google; t=1756745888; x=1757350688; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=YU/e9dtVdR2UeTNrsZclYhQdygp0+Bvgp2RaMZh/uno=;
+ b=PgkzgvovtbWtZ+wETxaqCtR5AMtmiXeiAcHVpJ4+X+U3PZPcQvQsGcVw8l6wYzohQ2
+ Y50Aa0YIz6WriUSQdCdBu7ODNG9Qzur4yC1j74xozTv4ytUBE8oqF7aQj4lRaF/4tOy3
+ GeGgOfcqL93khN0YKqxE0gJBW/1gimehYbn+jTwVQE509P62RkQAUoAY736/7GmAmko5
+ HDSzxtJn+AsNr9qhL1Y05UEhrfRLGtVFRa0+BmDpZ6vP0pwFvmMRDukK1IONoWWRwTBV
+ VT8E9isasIxGFRkTslVkULm7jB8IVhLMBqBe+NArbBRLg/1MsCQjeKxfRWMW70wJsqlK
+ YFVg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756743883; x=1757348683;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=ZiO3bgGR3inXbuuVf3DZOKCf6oPacdTtsD5CIWBAUh8=;
- b=ZHPnBGUGJbBLHuyyb0zLWG45y4Oxe8G6OVTem7+iTPrz6MmfZGXeYiNiX8EyHqQCyA
- El0l+Yc+hNDRsrOXInvpxoZhdnqct+YrP7xZQ5dBuVUIFn1DqxX3bslRR/rblqOkJ0MP
- nmLZa2oUk6qqSHIF1/s1AAT4isHPtKB/MpcQJt+D5AnE3Zyji2WCeq+xqk9vEmRo4O+3
- 2xusN6HlLbHoq2fyfAW83/TKhzqLQWliswpLktBa9Yr87aSzo84ZDrl1DwXdxg9JoV1w
- 4gzaOCr/xS+l+fIPW0HnDZBbmzbbL2ublK4Yc1fHhY03Wz2XEciMGCyuIrVfbyFm85A6
- LT8Q==
+ d=1e100.net; s=20230601; t=1756745888; x=1757350688;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=YU/e9dtVdR2UeTNrsZclYhQdygp0+Bvgp2RaMZh/uno=;
+ b=vSCHZ7DuaY6HJdDmhngVsN0FgnQHgkfll7v0oQQFZyH6SfhG/qfEgGA5sqjGDSnZ6u
+ wWUyskxQNQK4MUnnlQWSBEU9DDWp08Q0AsDO0/+ufuXMWMtVYvfRUaINOGuAzebNTuL/
+ CN/X4hNJwOwaA5jr4Di1Jb2EzosK2sYPv1CKDBnYBkcNAVHJe/jLj75vtVV5t3Ki9AuK
+ 3tR/3XZnnIWTTYoaHIuqswY+NaoS7K+PzDKbhoc99y8MdMDcKHexboAQ6MA3ODBiPJai
+ V0WG1+R+AhPnJbBcFxglEiyspMXba5nTfuA1wc1+oyNkZhQfdGhyIAIF1DJ3Treoc+Aj
+ s27w==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUDkH6k7+zVOSVQYhQyGyAKP6v3tWQMaGRCn1ZurYtHqZU2y8eU491Pp7qbp+smK+21u3rQRQFhdw==@nongnu.org
-X-Gm-Message-State: AOJu0YxALpvctdgzkGaFwo6U5qhNBx43sT9i/7lw/DFTA+BQT/hxGIJY
- h7D9b+Mt7MXGB55ZDPSspamG7Snc0E+i9mQOabu9cce/hIs65UwcVd0QShG/8Rw9/GsLWeJdzMV
- 2i6/WHe2CxhpBeOYvwy2nwA0w4Gki+ONPGPxw8la+RA==
-X-Gm-Gg: ASbGncu48YA49SgJUDBP1o3x9E0ccxSY6A/mmvQVLnawYcJnKxEixIaHavp4xntJt6u
- SY2C3CA4bfmyp/R/EEqwcfj/MSB6zNllJnNtqTYASng1NnDaryJc8Y+GQOXytGgA0C4vHvE935O
- VE09cvqQKglBDW0xnh3/Leq6P3/JABucj/XwmFh/aV1k11vLhBqYo3xsJ7FOfg25epL0asRRql/
- 9vHA3qg
-X-Google-Smtp-Source: AGHT+IGrlwuSzh5xqBTHQq3gYvKeoiVbuDREEyVeRqxuJmxIetmA1yvFdxzghWa8JKIu/8706cQkKsSfzTsWxuVlbDc=
-X-Received: by 2002:a05:690c:6c85:b0:720:378:bee0 with SMTP id
- 00721157ae682-72276333625mr96283437b3.11.1756743880700; Mon, 01 Sep 2025
- 09:24:40 -0700 (PDT)
+ AJvYcCUyODJPNa5YI85bNXuEj3PF9s6pqOn65c0wzhxQ4Vkpy250y/+N0nXkEYHc6nfPKqPDWNxp80/63g==@nongnu.org
+X-Gm-Message-State: AOJu0YwRFv2Sy6L3NMp3wSHGrBld3QAAb/GFTrD4uhXiaIeD318WmLdA
+ +chS8znxWpoNBcW6ldLtMwBTyNxoTGQhO65+e64Xx2M5AzMlPsKpY4wkHrn9aCQw99JzNtbb9IK
+ AAbSuJJ8KjXVVq4zEm0t3B3WYTk0zQ9hwe1TwBscKpA==
+X-Gm-Gg: ASbGncv1IvYsMN8Z8Lgx3ZbEFU3pMtbkCBhoIuF0EAOegj0X3a2LqBRblFEX9nxL3EU
+ 3gOf6YSrA8O+GWpa+/E/QloX9mgP3WstO53Xyw51GtCOWLvbCc4gBjPYDnGH83ufbVSEEyVOtyW
+ UHX0UdOZpfWBiRkRRKYvMAjNnTE8oE82hF7lf4Qf4gDGSyVh5MrdapgQxnlirspdQAdz8mgOHlr
+ hxwVKm4Eja7zthwmvc=
+X-Google-Smtp-Source: AGHT+IFyzPXN+xyR+Z3sNFk3pdxT+5CjrdNH6EnQySo7LIoj3JpurlQUcoHrfDgYbfQwgrlCjcL17PkjXBzhcBFX8dA=
+X-Received: by 2002:a05:690c:630e:b0:720:b0b0:e4fa with SMTP id
+ 00721157ae682-72276546fc6mr106970267b3.45.1756745888389; Mon, 01 Sep 2025
+ 09:58:08 -0700 (PDT)
 MIME-Version: 1.0
-References: <20250823150321.135527-1-osama.abdelkader@gmail.com>
-In-Reply-To: <20250823150321.135527-1-osama.abdelkader@gmail.com>
+References: <20250822092410.25833-1-cjchen@igel.co.jp>
+ <20250822092410.25833-10-cjchen@igel.co.jp>
+In-Reply-To: <20250822092410.25833-10-cjchen@igel.co.jp>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 1 Sep 2025 17:24:28 +0100
-X-Gm-Features: Ac12FXzANCKs638TJhCJYAYTs4DygvlAzhCszA2C8iKjkMVFwy6aXuJs7GPa0NU
-Message-ID: <CAFEAcA-GpC3ouaXTQ18VhcY7c-jXK_SF0MLiCMFW471U5Cqr9Q@mail.gmail.com>
-Subject: Re: [PATCH] hw/arm/boot: replace fprintf with error_report
-To: Osama Abdelkader <osama.abdelkader@gmail.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Date: Mon, 1 Sep 2025 17:57:57 +0100
+X-Gm-Features: Ac12FXxr0nvbv9k30UN1IHCqFoxib_0NEE8IDO_Rw3P8DbFnm9X6Hm2DWWEd-Jk
+Message-ID: <CAFEAcA-r5DdZj-+BxBkN+XqWJ3QrN6g+RshjShVoD-Zf1weYPg@mail.gmail.com>
+Subject: Re: [PATCH RFC v2 9/9] tests/qtest: add test for memory region access
+To: CJ Chen <cjchen@igel.co.jp>
+Cc: qemu-devel@nongnu.org, qemu-block@nongnu.org, qemu-riscv@nongnu.org, 
+ qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ Keith Busch <kbusch@kernel.org>, 
+ Klaus Jensen <its@irrelevant.dk>, Jesper Devantier <foss@defmacro.it>, 
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <alistair.francis@wdc.com>, 
+ Weiwei Li <liwei1518@gmail.com>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>, 
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, Tyrone Ting <kfting@nuvoton.com>, 
+ Hao Wu <wuhaotsh@google.com>, Max Filippov <jcmvbkbc@gmail.com>,
+ Peter Xu <peterx@redhat.com>, David Hildenbrand <david@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>, 
+ Tomoyuki Hirose <hrstmyk811m@gmail.com>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b33;
- envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb33.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1129;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1129.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -96,21 +108,53 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Sat, 23 Aug 2025 at 16:03, Osama Abdelkader
-<osama.abdelkader@gmail.com> wrote:
+On Fri, 22 Aug 2025 at 10:26, CJ Chen <cjchen@igel.co.jp> wrote:
 >
-> Replace direct fprintf(stderr, =E2=80=A6) with QEMU's error_report() API,
-> which ensures consistent formatting and integrates with QEMU's
-> logging infrastructure.
+> From: Tomoyuki Hirose <hrstmyk811m@gmail.com>
 >
-> Signed-off-by: Osama Abdelkader <osama.abdelkader@gmail.com>
+> This commit adds a qtest for accessing various memory regions. The
+> qtest checks the correctness of handling the access to memory regions
+> by using 'memaccess-testdev'.
+>
+> Signed-off-by: CJ Chen <cjchen@igel.co.jp>
+> Co-developed-by: CJ Chen <cjchen@igel.co.jp>
+> Reported-by: Tomoyuki Hirose <hrstmyk811m@gmail.com>
 > ---
->  hw/arm/boot.c | 22 +++++++++++-----------
->  1 file changed, 11 insertions(+), 11 deletions(-)
+>  tests/qtest/memaccess-test.c | 597 +++++++++++++++++++++++++++++++++++
+>  tests/qtest/meson.build      |   9 +
+>  2 files changed, 606 insertions(+)
+>  create mode 100644 tests/qtest/memaccess-test.c
 
+There seems to be a lot of duplication in these test functions
+(for instance, aren't all of little_b_valid(), little_b_invalid(),
+big_b_valid() and big_b_invalid() identical?  and the various
+_invalid functions seem to have if() blocks where the code in
+the if and the else halves is the same).
 
+But also, I feel like we could improve what we're testing.
+If I understand the memaccess-testdev correctly, it has
+one underlying block of memory, and it exposes access to that
+via various memory regions with the different possible
+valid/impl/etc configurations. So I think the way to
+test that our memory access handling code is correct would be:
 
-Applied to target-arm.next, thanks.
+ * for testing reads, we first fill the test device's memory
+   with a known pattern, always using the "just permit byte
+   accesses" memory region. Then the test of each of the
+   "some particular config" MemoryRegions only does reads,
+   and checks that reads from various offsets do what we
+   expect
+ * for testing writes, we first clear the test device's
+   memory to a known pattern, and then the test of each
+   "some config" MR only does writes. We check that the
+   writes did what we expect by doing reads from the
+   "just permit byte accesses" region.
 
+If you only test e.g. word writes by doing word reads,
+then it's possible to have bugs which cancel each other
+out in the read and write paths, especially in the
+"aligned access only" case.
+
+thanks
 -- PMM
 

@@ -4,93 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D542DCA1005
-	for <qemu-arm@archiver.kernel.org>; Mon,  1 Sep 2025 12:54:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E41ECA0FF0
+	for <qemu-arm@archiver.kernel.org>; Mon,  1 Sep 2025 12:54:22 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ut428-0002So-E3; Mon, 01 Sep 2025 08:53:16 -0400
+	id 1ut428-0002Sp-Eb; Mon, 01 Sep 2025 08:53:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1ut426-0002Qc-1S
- for qemu-arm@nongnu.org; Mon, 01 Sep 2025 08:53:14 -0400
-Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
+ id 1ut424-0002Ov-9D
+ for qemu-arm@nongnu.org; Mon, 01 Sep 2025 08:53:12 -0400
+Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1ut424-0004Jk-54
- for qemu-arm@nongnu.org; Mon, 01 Sep 2025 08:53:13 -0400
-Received: by mail-ej1-x636.google.com with SMTP id
- a640c23a62f3a-afec5651966so155365866b.2
- for <qemu-arm@nongnu.org>; Mon, 01 Sep 2025 05:53:11 -0700 (PDT)
+ id 1ut421-0004JD-PB
+ for qemu-arm@nongnu.org; Mon, 01 Sep 2025 08:53:11 -0400
+Received: by mail-ej1-x62a.google.com with SMTP id
+ a640c23a62f3a-b03fa5c5a89so247201266b.2
+ for <qemu-arm@nongnu.org>; Mon, 01 Sep 2025 05:53:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756731189; x=1757335989; darn=nongnu.org;
+ d=linaro.org; s=google; t=1756731188; x=1757335988; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Pd+2JDdfFwuawP7wDOXmAy8XWU5BClWFTFIACcDZ1/g=;
- b=okt85dMFhDBrNfezzIa+U0iCgSMXVeZM7LDmnZ3me6Asb+CeY75hnFivQbWqd5n4SI
- 463LoyGtB6gjmDMw00MQlMfcLNI/th7nJga89XyK2IiB84LNLpoMz/8cghOdyUQPR9PU
- pda0e+8+d+gka/IsJ+zlV+cy80/HUlYhMMycwWfRYt3svclkpGpi6BKKqCG/kidkOW07
- XwUtG7nrKTYBsjkHngyEt+f2mKIBkPYsHSzNV0TbirJBkMxDtQVsBvVXfSDldv2JUZkb
- Oc/yZpQXl6J2ziLti0ZmfffBsZoISgqyo1R9og+MD1SiHWpBKSin3L3xQLWg1fD5oxIY
- 1qxQ==
+ bh=3i2Eag+k7j9y13dUOQK5hZi+NdV8CGfRchfnzsO2Kps=;
+ b=Lb/Ukn2fWDTRdiHjxnglpcCuSX3RLALdZ0fNBUAfCf2q40xaWQ6DtPPRyK+zrkegdt
+ PEvgnFPpt7gL1a3H59TkGSQDYs+7jmtxfateHR6moPD0nOr4R9zu1GEK22GpEStHaV4x
+ i5zx3Q/oknH1CkE5kkxqPoozKAHxAMRCltzYYF3eW4M/V/2MdTqVGwc0pnz1zR9FoImF
+ kwTobB2FwfN//5uwIiCryE+xULcVvmscXrTjmswHfGwFuiIU0qX9Dmvjwo3DM1VrWdKp
+ /LFciXwT27U1FOg/yA3KrhjplRUh6/ait1OjPdrbju3fTrFd705sPmEIIEf5ngbRIbPh
+ O8uw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756731189; x=1757335989;
+ d=1e100.net; s=20230601; t=1756731188; x=1757335988;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=Pd+2JDdfFwuawP7wDOXmAy8XWU5BClWFTFIACcDZ1/g=;
- b=vCnIzs+zj8qe3JLvwGDFuTQks4Tge5B4S/m9h8UHqbsbmYrZSSXHAaQQXIcB/Q32Ga
- rQfCdZfR70yOL89CozktPh5l6PQ0tr0Z6nHgTl3eA0m7tOS7qQRdlhtTdyZwBR7f3PqQ
- 9v3nPOnQlFG2Hco/CnFfHM9ugqUEawkiXqX9tENNQvSTDCs1WEJlxRjFRC3zly+RuVzr
- gQeR4ba6IrGtux7NJIq9t67MEYO3NZeaYs9/0V4AHAH/4mar93CX5ZzdFwsBeBjf7r68
- 5p/hHt8BnnFpGlzdcQUBgT2+n36CWmnxfpPI4wBcbSB+aOXERIJ6XeRKF6cTwCQwsh8c
- 13cQ==
+ bh=3i2Eag+k7j9y13dUOQK5hZi+NdV8CGfRchfnzsO2Kps=;
+ b=VyhbcoOzX47p9+Wg2CGkbSmXAkpRU95MOA9BrI7bY4uIXobEeGH/9j6UxU1xW5mGyj
+ I7x625qa9+emYehR/sMQL3pQ+d7S7Jx2SSLAjkJU6WMMNOCxZ5A0co6sBe09KgBS63nI
+ brngdNRVOCRJmk43aXonUaFEJlGqVTL7Kj/1eEjXP954ZM0VxZEwjQFy5aEByfmm3J6L
+ EOeiEm6xgCe2HPPBusbPCZHW0Yn+r1SVSRxcbEl0BCNUEJAxa9OrdWvFxlBauuDRRHC2
+ fiskDNWTPJyjVKxXXeDco6bmsOjIlscT3l5u9x3g1hhTjiUeCJIYUqE+NMXj9JEOJtAC
+ NE5Q==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXJa3b0sEmWF3LTNoenchIx0rT1xjeQc2uyhWqvbNwQF67nbQlnlHhveze9l5W6DPjj+zYNgCiedg==@nongnu.org
-X-Gm-Message-State: AOJu0YyXifAnCKqtvxpWog8I83JFICexDuX9y8sj23xjSuzNkNPonhg/
- fPj/a9GifucWbew80UAlm9Q/SnczDTf4qx7NxmQMvym2516QuJJkDKjgg+QQymR7TmPOcWBxFwQ
- ts+7S/FI=
-X-Gm-Gg: ASbGnct4pi8+OY7oI9QokUDMBQ5QSDKRIg99QiOWRW87UA0v1JtbQkBFeqXfwzPdteb
- anOOejziWzh3NmdzqXYocNx56zOQq2M4Y4F9P0kU5ZCDpFSnHVXROSDjhHPf4xxhtAJ6/8G10GE
- e8fcIQVaKUyK5z7pyARJIAOx64AXkNOTXxfAgnsMR5r1b9+d4mn7kPMGgZ02YqiMYwXreWlGwh0
- BB139f4/eJUVm1uIEz5U2FFFxdTjlXXYX4ZYKgl19eRkCrl0ZbSVkE0YYxgV+GByvQk++heCih2
- DASD9Z6k6vqasW1wj7+QWluW66shaCQ2owG4S6GRPKNCX4JpRf6NJkM4kwVZlEtM0Jhm9AEm3nO
- 1NuoZS3Z9hkIKR/QywOQEyUk=
-X-Google-Smtp-Source: AGHT+IFR2ofR8BC43gwtMFx0eNeY9up3YTCSQsBXf6ChNjE8mxzM4irzoQwDJPzn9uvfHo+TF7yp4A==
-X-Received: by 2002:a17:907:72ca:b0:afe:764d:6b19 with SMTP id
- a640c23a62f3a-b01d8a25c86mr744822966b.2.1756731189267; 
- Mon, 01 Sep 2025 05:53:09 -0700 (PDT)
+ AJvYcCUbHLxBLrcuQ6Bu1PLXyuy8dUNRBYTnBJSgFvZfxG/3bK+PI4DJLjacnNzzL8LEW1Dpec1tIMieXQ==@nongnu.org
+X-Gm-Message-State: AOJu0YzMh28HlekpB1sgnyWqMs25N1HeBa4ltV+C7GsOMOmN0b0YHU7P
+ /DpE5WAKsFPt6mFFQL+veQrWz6y+4Vl9j/CtIanzXW2KIInIPJ/M1YI6Dp2sKpohUTIDr0pmdni
+ evhKDlso=
+X-Gm-Gg: ASbGncuaxBNNUwcHpf7FC1O1B+EDqypZM363xC0wEYf8b49gxisNtEWKg9dvQalFkJs
+ ED80CDJpbj70O+BWWGn/5khs0c3IDeQD0N3jdORl83yA8VITw2qlJJkku1IgQeWTIJQEhCnPS5x
+ gOGa8QzSMNtyggviYmSCwJtW28isVOa1AUCCgILazpyWzJHqokIYmyWCRCAIpcraMTMqFYUZdsc
+ KLQVI1PeE06a/ta8V3TnEA8O7cOTe+KFJHyG0xULnPOdRu2wzWNxPDnD7J6r47IBjJDxL89BPZF
+ 8CYTMb2h19M9I3SpjiZDDrz1SVXyFFvXKUm268rlMSb6NiBaEAGKQkigT52EPh0+jNlCM+msWQP
+ xWcMgkcYhkkTlMweazdHXtaU=
+X-Google-Smtp-Source: AGHT+IGqt0ogGqxj+izrq1zJvuiUR1IrPzKUuoY3YElHWhJFmIL22cW4DdFz8ymREILKQFynnZ+VKw==
+X-Received: by 2002:a17:907:1ca0:b0:b04:286a:2fb8 with SMTP id
+ a640c23a62f3a-b04286a4b87mr417188866b.56.1756731188009; 
+ Mon, 01 Sep 2025 05:53:08 -0700 (PDT)
 Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-b04241b2e7esm299693366b.43.2025.09.01.05.53.05
+ a640c23a62f3a-b00bab3ef2esm609931666b.11.2025.09.01.05.53.05
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
  Mon, 01 Sep 2025 05:53:05 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 16E695F829;
+ by draig.lan (Postfix) with ESMTP id 4484B5F8D8;
  Mon, 01 Sep 2025 13:53:05 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH 1/4] hw/arm: use g_autofree for filename in arm_load_dtb
-Date: Mon,  1 Sep 2025 13:53:01 +0100
-Message-ID: <20250901125304.1047624-2-alex.bennee@linaro.org>
+Subject: [PATCH 3/4] hw/arm: use g_auto(GStrv) for node_path in arm_load_dtb
+Date: Mon,  1 Sep 2025 13:53:03 +0100
+Message-ID: <20250901125304.1047624-4-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.2
 In-Reply-To: <20250901125304.1047624-1-alex.bennee@linaro.org>
 References: <20250901125304.1047624-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::636;
- envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x636.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::62a;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x62a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -106,43 +106,39 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The function has quite a number of exit cases so lets try and clean
-things up with g_autofree. As the fdt hasn't be allocated yet we can
-return directly from the fail point.
+This is potentially more of a bike-shed case as node_path will persist
+until the end of the function.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- hw/arm/boot.c | 8 +++-----
- 1 file changed, 3 insertions(+), 5 deletions(-)
+ hw/arm/boot.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
 diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-index d391cd01bb1..56fd13b9f7c 100644
+index 749f2d08341..f9d0bc7011e 100644
 --- a/hw/arm/boot.c
 +++ b/hw/arm/boot.c
-@@ -528,20 +528,18 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
+@@ -520,11 +520,11 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
+                  ARMCPU *cpu)
+ {
+     g_autofree void *fdt = NULL;
++    g_auto(GStrv) node_path = NULL;
+     int size, rc, n = 0;
+     uint32_t acells, scells;
+     unsigned int i;
+     hwaddr mem_base, mem_len;
+-    char **node_path;
      Error *err = NULL;
  
      if (binfo->dtb_filename) {
--        char *filename;
--        filename = qemu_find_file(QEMU_FILE_TYPE_DTB, binfo->dtb_filename);
-+        g_autofree char *filename = qemu_find_file(QEMU_FILE_TYPE_DTB,
-+                                                   binfo->dtb_filename);
-         if (!filename) {
-             fprintf(stderr, "Couldn't open dtb file %s\n", binfo->dtb_filename);
--            goto fail;
-+            return -1;
+@@ -586,7 +586,6 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
          }
+         n++;
+     }
+-    g_strfreev(node_path);
  
-         fdt = load_device_tree(filename, &size);
-         if (!fdt) {
-             fprintf(stderr, "Couldn't open dtb file %s\n", filename);
--            g_free(filename);
-             goto fail;
-         }
--        g_free(filename);
-     } else {
-         fdt = binfo->get_dtb(binfo, &size);
-         if (!fdt) {
+     /*
+      * We drop all the memory nodes which correspond to empty NUMA nodes
 -- 
 2.47.2
 

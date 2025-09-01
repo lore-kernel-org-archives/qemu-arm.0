@@ -4,80 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA7F6CA0FFD
-	for <qemu-arm@archiver.kernel.org>; Mon,  1 Sep 2025 06:58:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9BFACA0FFD
+	for <qemu-arm@archiver.kernel.org>; Mon,  1 Sep 2025 06:59:36 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1usyUa-0004HL-BV; Mon, 01 Sep 2025 02:58:18 -0400
+	id 1usyVE-0004oS-Jm; Mon, 01 Sep 2025 02:58:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1usyUX-0004GI-Cf
- for qemu-arm@nongnu.org; Mon, 01 Sep 2025 02:58:13 -0400
-Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
+ id 1usyV9-0004cN-Ay
+ for qemu-arm@nongnu.org; Mon, 01 Sep 2025 02:58:53 -0400
+Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1usyUU-0005HB-UA
- for qemu-arm@nongnu.org; Mon, 01 Sep 2025 02:58:12 -0400
-Received: by mail-ej1-x62b.google.com with SMTP id
- a640c23a62f3a-b03fa5c5a89so193448066b.2
- for <qemu-arm@nongnu.org>; Sun, 31 Aug 2025 23:58:08 -0700 (PDT)
+ id 1usyV6-0005P0-0l
+ for qemu-arm@nongnu.org; Mon, 01 Sep 2025 02:58:49 -0400
+Received: by mail-ej1-x62f.google.com with SMTP id
+ a640c23a62f3a-b0411b83aafso195344066b.1
+ for <qemu-arm@nongnu.org>; Sun, 31 Aug 2025 23:58:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756709886; x=1757314686; darn=nongnu.org;
+ d=linaro.org; s=google; t=1756709924; x=1757314724; darn=nongnu.org;
  h=mime-version:message-id:in-reply-to:references:user-agent:subject
  :cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=nrZUvNz3wyn0r28ZlqlQ+puf9UDHXob/klxDLv3YUK0=;
- b=FttNtpMsvb1GcS+OukPokYNCjvdPpqfm4ZXEJib3YFlsOWNTwK6PcDTPKstUiS3v7q
- McYJQoXZ6pBd1j6cDnnXkdGA35JGNhY+6an3MrZdrbRdc7NS4c33/51qPmwm+JOXgkPP
- nAvNwoR0aNXmHcibvdDoUspIMBE20DjV8uGf4TQLZnZA5TJRuszBSkFSTFCKJx4bpFmR
- L1vMQPYIVwsF5CQOxIVewND8Bs6/NsFqYV8ytNNY5ps9H0FQ3Pp4S4ruKIM3dEHTnr/z
- guPYAwOs3U4Z3XHb03Ct+7jhPz5jMTb7BQ4g4j+q1B9ta2ilOJjErmJO1k4o0IPjB7Gg
- gPNQ==
+ bh=Tw4JXSc0ulq4Tvq9M1VvHYI+xuxHa38s2Cd4L7osjt8=;
+ b=v1ubt+tIfM6RW7QJRPCAv6jHQbMKikxzeDURuTrqZA9tJ+7XCMQSOQefDnSA4MZ76F
+ QYYyfhYaYvtyjCLChlyPjzKZmWT+EkChn+J0A4Av5TVWK+Z6quZ5e1Zf1wLKSDT8IGEf
+ MG40VWF9du/0f1NcVdnD8C6F3Txb6NN6MduUsdCmYKqiRIL8W+byhfZjj1gPxxlNdTo+
+ 4k/oe36mPp2UXz5FEV5O4m6XKjMFX1JeMVpE0YM1wU/UqeGp255P70i8D83HyKq334vB
+ Hq7h0QtDOyYDSICM+AVWbDEkyBh9DQeQmAEKgWT7D8cMQ9FfZDPDptUu2i0ovuyYHSrR
+ dpkw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756709886; x=1757314686;
+ d=1e100.net; s=20230601; t=1756709924; x=1757314724;
  h=mime-version:message-id:in-reply-to:references:user-agent:subject
  :cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=nrZUvNz3wyn0r28ZlqlQ+puf9UDHXob/klxDLv3YUK0=;
- b=H+Ce+TFkxwxENouSPxbF85jstakipz2xMZWtU5WdMx0CFv641bWKyqqPI/MVlWGuEL
- f30Dy5h4ch8rhwcfA2Fspc25j0iaQigq7EsGoBfPm9FSe9TIjgFyAV3BMs4mSdbp6OBT
- vl9PIR4W8mZ3p5Qp4w2QbesIwgNvmnueDZXuMronDjNUoVLQ5gsWgRVR5KkeD3bEApwX
- xYJWtZf5LryLt95f73nMPbl2tv8SQwVKRAAc7+csOuvXl/at+7ItPTi5Vj+52WawglXR
- 1FSUQlzB+caY1J7nnU131xlQuwM5/WlsrUp/q9VDOgWOqX0h1vyArR7MwwwVL7PDIM51
- eDBQ==
-X-Gm-Message-State: AOJu0YxLgSyVU9OW8Uv4NhMjfpN8g91pKKmKhubv9QUYWoQH4avBSOKf
- 6gJWLLzCI64qjeJaivl/IFJNhrMcXPzBtFBWnGbH9JKWdmEmie11omBi7xrJegJe09Th3eIDNNc
- C7Bvx
-X-Gm-Gg: ASbGnct0i15hqssfTdatIQ4uqHdv8th2sc8Jk/7K/a2gPX9TEnhbMUHm6djpqugGDXq
- zoWK9qyfKYH/L3kFaEWUZ/ISFdSqpTkwcL9Z6ibD0hVENcM8ELKTA7asibyKd2IrXVODfpgPGjB
- P5yrl4EzB4Zz34DcnfsTO/OwcnHsuSKtNyIipRxeMSRZzPfGEnOOFmOd81Jb7DTb7uHFzuvd39Q
- H5cCDSGJDZ/b8+rRFVMOLgxTKbi/DYlfGCesNzH4R3GL2TdDf6dx9vDjgKEO+casFszuyP4JGB9
- uzjR5g8Ol7rchjA8UmebDkMFr9ovnsqvfSEeV0j2OYCiSOBeZbfn66IoQjbYqhof6Ta0dImwP5G
- wWCeiDmLH/DBOH7mrMXl8oURNHgoOA0821S+1V6AfRUWp/YP/gKW04AsHUY6SrgRFvnfsrW2h
-X-Google-Smtp-Source: AGHT+IFOYzFf7n3cN07DAHJ2pDRUflP64QWDMnUdf4WTGCIqlGXhhEyPR3pOakD+f4VDM/y4HGRAXw==
-X-Received: by 2002:a17:906:7308:b0:afe:c027:cfdb with SMTP id
- a640c23a62f3a-b01d8a6adddmr689763166b.17.1756709885915; 
- Sun, 31 Aug 2025 23:58:05 -0700 (PDT)
+ bh=Tw4JXSc0ulq4Tvq9M1VvHYI+xuxHa38s2Cd4L7osjt8=;
+ b=kVLYYk5uyTQEVKUmcaYRQM9wGsV6yCeFXiXsr/M1bZUMuc+GigqTkkY+peE5btFfrZ
+ V3MeDeLj0FUcouSy+BmVSE2LlMR3nS6TPz2kM0q1g18sZek45atsCclx4K9Zej8ydFU3
+ nckIZJArWUINHfE0iXEm+6NpOpFWUj1cg2w6lxEO4MmAByxg3PP1of/l0Q74ZzjpS6Yk
+ SuPd3BNWCE55c6l5ZExzk5m1GI/NAfn9NE/KWWfnZD45GcTo8hNA4szFZ8Uj6ti1B7gb
+ zREdXrPrrR1i5wKtrPzslNZnIXfv2+JeAEQXH66G2hKNcJvxhtvTvFbv/7qNP/NSXcOB
+ fmNg==
+X-Gm-Message-State: AOJu0YzR5yXANuHxyIGvxacMBouHBIl71rqSRqvnegQ9T9iNDJhLAmOF
+ xDOKGKlXM4e/UGREtj7PWQ0FHMIdww4VrBkwnJr+uR3+LCrw7Yr31UcRheaoXsVpkKt/2GTbNFh
+ jIw+G
+X-Gm-Gg: ASbGnct4vkMnu6eGaR1oUipAUo8M9pr22Ytalq9+7SRnWIQqreedt7ARUEsEamhZQ4Y
+ LLyFi5JdLvpJyd5LV3/wS7lKbatFWxI7ebsFJJ6Z1ldq9uMVXHVyDeO1+4u0DFW0ag4m04GapJv
+ erUqzpgsvXHDNyAzb9hYZFAeQA7C2wVFG11qQa/j//V4Y6yUC9ZLSCEPYPbFmgZ+oaFE++0TI9q
+ /31W8BKI+EtofsTWGpUnA8yCKRIHi+t9k/dkPojePRc4Hzx5wIPBW0WHZGhzdz/NaZtoJlkm1Zw
+ VAm+zA1opykHBALJja5Ys354u0sAzCUBghsjS7o1CGQ9sF9ENpV5GlPNXsP6wdCHvF/x4uLhAav
+ U69ToZLfLnCpkuX2YUIKQBXNiOI3pI0zz0bjtvonMsCwoXlq/LcII/1pElNtUfCEnnKLaF5zQMy
+ 8l4KWJDgc=
+X-Google-Smtp-Source: AGHT+IFjaZYJRY2NGY2Xv33mxU+veLTjviJTy2yIKezBVSkbsEW03Tl1Lr/nxQy59AcZ4uL3rVbchw==
+X-Received: by 2002:a17:907:26c4:b0:afe:a83a:87ce with SMTP id
+ a640c23a62f3a-b01d8a2f955mr668819766b.2.1756709923890; 
+ Sun, 31 Aug 2025 23:58:43 -0700 (PDT)
 Received: from meli-email.org (athedsl-4441256.home.otenet.gr.
  [79.129.180.152]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-b0410138d0asm392516466b.53.2025.08.31.23.58.05
+ a640c23a62f3a-b0432937d7esm115862866b.17.2025.08.31.23.58.43
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 31 Aug 2025 23:58:05 -0700 (PDT)
-Date: Mon, 01 Sep 2025 09:56:31 +0300
+ Sun, 31 Aug 2025 23:58:43 -0700 (PDT)
+Date: Mon, 01 Sep 2025 09:58:13 +0300
 From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 To: qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>
 Cc: qemu-arm@nongnu.org
-Subject: Re: [PATCH 39/61] target/arm: Update ARMCPRegInfo for 128-bit sysregs
+Subject: Re: [PATCH 40/61] target/arm: Assert ARM_CP_128BIT only with
+ ARM_CP_STATE_AA64
 User-Agent: meli/0.8.12
 References: <20250827010453.4059782-1-richard.henderson@linaro.org>
- <20250827010453.4059782-44-richard.henderson@linaro.org>
-In-Reply-To: <20250827010453.4059782-44-richard.henderson@linaro.org>
-Message-ID: <t1we0s.2yp21lsjxl157@linaro.org>
+ <20250827010453.4059782-45-richard.henderson@linaro.org>
+In-Reply-To: <20250827010453.4059782-45-richard.henderson@linaro.org>
+Message-ID: <t1we1u.ty2nxrkdo1vh@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::62b;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-ej1-x62b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::62f;
+ envelope-from=manos.pitsidianakis@linaro.org; helo=mail-ej1-x62f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -101,74 +103,30 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On Wed, 27 Aug 2025 04:04, Richard Henderson <richard.henderson@linaro.org> wrote:
->Add ARM_CP_128BIT for type and functions describing 128-bit access.
->
 >Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 >---
 
 Reviewed-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 
-> target/arm/cpregs.h | 19 +++++++++++++++++++
-> 1 file changed, 19 insertions(+)
+> target/arm/helper.c | 5 +++++
+> 1 file changed, 5 insertions(+)
 >
->diff --git a/target/arm/cpregs.h b/target/arm/cpregs.h
->index 9818be4429..90f14dbb18 100644
->--- a/target/arm/cpregs.h
->+++ b/target/arm/cpregs.h
->@@ -136,6 +136,8 @@ enum {
->      * identically to the normal one, other than FGT trapping handling.)
->      */
->     ARM_CP_ADD_TLBI_NXS          = 1 << 21,
->+    /* Flag: For ARM_CP_STATE_AA64, sysreg is 128-bit. */
->+    ARM_CP_128BIT                = 1 << 22,
-> };
+>diff --git a/target/arm/helper.c b/target/arm/helper.c
+>index 64a987d143..3b765408f2 100644
+>--- a/target/arm/helper.c
+>+++ b/target/arm/helper.c
+>@@ -7353,6 +7353,11 @@ void define_one_arm_cp_reg(ARMCPU *cpu, const ARMCPRegInfo *r)
+>     assert(r->state == ARM_CP_STATE_AA32 || !(r->type & ARM_CP_64BIT));
+>     /* AArch32 64-bit registers have only CRm and Opc1 fields. */
+>     assert(!(r->type & ARM_CP_64BIT) || !(r->opc2 || r->crn));
+>+    /*
+>+     * Only AArch64 regs are 128-bit.  There is usually an AArch32 64-bit
+>+     * alias, but must be defined separately due to encoding conflicts above.
+>+     */
+>+    assert(r->state == ARM_CP_STATE_AA64 || !(r->type & ARM_CP_128BIT));
+>     /* op0 only exists in the AArch64 encodings */
+>     assert(r->state != ARM_CP_STATE_AA32 || r->opc0 == 0);
 > 
-> /*
->@@ -178,6 +180,10 @@ enum {
-> #define CP_REG_AA32_NS_SHIFT     29
-> #define CP_REG_AA32_NS_MASK      (1 << CP_REG_AA32_NS_SHIFT)
-> 
->+/* Distinguish 64-bit and 128-bit views of AArch64 system registers. */
->+#define CP_REG_AA64_128BIT_SHIFT 30
->+#define CP_REG_AA64_128BIT_MASK  (1 << CP_REG_AA64_128BIT_SHIFT)
->+
-> /* Distinguish 32-bit and 64-bit views of AArch32 system registers. */
-> #define CP_REG_AA32_64BIT_SHIFT  15
-> #define CP_REG_AA32_64BIT_MASK   (1 << CP_REG_AA32_64BIT_SHIFT)
->@@ -849,6 +855,9 @@ typedef struct ARMCPRegInfo ARMCPRegInfo;
-> typedef uint64_t CPReadFn(CPUARMState *env, const ARMCPRegInfo *ri);
-> typedef void CPWriteFn(CPUARMState *env, const ARMCPRegInfo *ri,
->                        uint64_t value);
->+typedef Int128 CPRead128Fn(CPUARMState *env, const ARMCPRegInfo *opaque);
->+typedef void CPWrite128Fn(CPUARMState *env, const ARMCPRegInfo *opaque,
->+                          Int128 value);
-> /* Access permission check functions for coprocessor registers. */
-> typedef CPAccessResult CPAccessFn(CPUARMState *env,
->                                   const ARMCPRegInfo *ri,
->@@ -992,6 +1001,13 @@ struct ARMCPRegInfo {
->      * fieldoffset is 0 then no reset will be done.
->      */
->     CPResetFn *resetfn;
->+
->+    /* For ARM_CP_128BIT, when accessed via MRRS/MSRR. */
->+    CPAccessFn *access128fn;
->+    CPRead128Fn *read128fn;
->+    CPWrite128Fn *write128fn;
->+    CPRead128Fn *raw_read128fn;
->+    CPWrite128Fn *raw_write128fn;
-> };
-> 
-> void define_one_arm_cp_reg(ARMCPU *cpu, const ARMCPRegInfo *regs);
->@@ -1061,6 +1077,9 @@ void arm_cp_reset_ignore(CPUARMState *env, const ARMCPRegInfo *ri);
->  */
-> static inline MemOp cpreg_field_type(const ARMCPRegInfo *ri)
-> {
->+    if (ri->type & ARM_CP_128BIT) {
->+        return MO_128;
->+    }
->     return (ri->state == ARM_CP_STATE_AA64 || (ri->type & ARM_CP_64BIT)
->             ? MO_64 : MO_32);
-> }
 >-- 
 >2.43.0
 >

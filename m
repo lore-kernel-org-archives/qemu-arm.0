@@ -4,81 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71CC6CA0FFE
-	for <qemu-arm@archiver.kernel.org>; Tue,  2 Sep 2025 07:28:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63DE0CA1005
+	for <qemu-arm@archiver.kernel.org>; Tue,  2 Sep 2025 07:36:48 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1utLR9-00084p-9e; Tue, 02 Sep 2025 03:28:15 -0400
+	id 1utLZ3-0002o0-1f; Tue, 02 Sep 2025 03:36:25 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1utLQs-00081t-Ey
- for qemu-arm@nongnu.org; Tue, 02 Sep 2025 03:27:59 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <SRS0=Sj0j=3N=kaod.org=clg@ozlabs.org>)
+ id 1utLYz-0002nX-EY; Tue, 02 Sep 2025 03:36:23 -0400
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1utLQn-0006zr-N3
- for qemu-arm@nongnu.org; Tue, 02 Sep 2025 03:27:55 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1756798071;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=dpF1u5nXWmAgn3o3LsdADLDlOOmkx83IL0RxVjOmH3Q=;
- b=ZeeNsoTIHEKZdKQwKkN1CnjIqgHb1GiEu+QXfk+SpuY+8B5p82fwhbliAYVUGbqFJfIE6N
- j29A0s8b+U3vLEX+y1SGwsv7JpjHBqP3svP/PDFKRyjcdoz7s3Hyq6Io4AOcQ8uj3EAY+v
- wqvwUtQ+is1Yyvywqcuvtz43x8cQjGw=
-Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-611-c1TYhwWVMOqWHDwMKIIJ6A-1; Tue,
- 02 Sep 2025 03:27:45 -0400
-X-MC-Unique: c1TYhwWVMOqWHDwMKIIJ6A-1
-X-Mimecast-MFC-AGG-ID: c1TYhwWVMOqWHDwMKIIJ6A_1756798064
-Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
+ (Exim 4.90_1) (envelope-from <SRS0=Sj0j=3N=kaod.org=clg@ozlabs.org>)
+ id 1utLYw-000807-S5; Tue, 02 Sep 2025 03:36:21 -0400
+Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4cGHbw4dsSz4w9x;
+ Tue,  2 Sep 2025 17:36:12 +1000 (AEST)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id E0C67195608E; Tue,  2 Sep 2025 07:27:42 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.45.242.18])
- by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 43DEA1954B04; Tue,  2 Sep 2025 07:27:41 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 873C521E6A27; Tue, 02 Sep 2025 09:27:38 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>
-Cc: Jamin Lin <jamin_lin@aspeedtech.com>,  Peter Maydell
- <peter.maydell@linaro.org>,  Steven Lee <steven_lee@aspeedtech.com>,  Troy
- Lee <leetroy@gmail.com>,  Andrew Jeffery <andrew@codeconstruct.com.au>,
- Joel Stanley <joel@jms.id.au>,  "open list:ASPEED BMCs"
- <qemu-arm@nongnu.org>,  "open list:All patches CC here"
- <qemu-devel@nongnu.org>,  troy_lee@aspeedtech.com
-Subject: Re: [SPAM] [PATCH v1 02/21] hw/arm/ast27x0: Move SSP coprocessor
- initialization from machine to SoC leve
-In-Reply-To: <555f7a62-7332-41a2-a316-e0888fbc819d@kaod.org>
- (=?utf-8?Q?=22C=C3=A9dric?= Le
- Goater"'s message of "Tue, 2 Sep 2025 08:20:40 +0200")
-References: <20250717034054.1903991-1-jamin_lin@aspeedtech.com>
- <20250717034054.1903991-3-jamin_lin@aspeedtech.com>
- <555f7a62-7332-41a2-a316-e0888fbc819d@kaod.org>
-Date: Tue, 02 Sep 2025 09:27:38 +0200
-Message-ID: <87ms7dpb4l.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (Client did not present a certificate)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4cGHbs02vwz4w9t;
+ Tue,  2 Sep 2025 17:36:08 +1000 (AEST)
+Message-ID: <96254526-949b-4db2-971e-fd0ea9f71e98@kaod.org>
+Date: Tue, 2 Sep 2025 09:36:05 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+User-Agent: Mozilla Thunderbird
+Subject: Re: [SPAM] [PATCH v1 04/21] hw/arm/aspeed_ast27x0-ssp: Switch SSP
+ memory to SDRAM and use dram_container for remap support
+To: Jamin Lin <jamin_lin@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+Cc: troy_lee@aspeedtech.com
+References: <20250717034054.1903991-1-jamin_lin@aspeedtech.com>
+ <20250717034054.1903991-5-jamin_lin@aspeedtech.com>
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Content-Language: en-US, fr
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <20250717034054.1903991-5-jamin_lin@aspeedtech.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+ envelope-from=SRS0=Sj0j=3N=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -95,92 +112,102 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-C=C3=A9dric Le Goater <clg@kaod.org> writes:
+On 7/17/25 05:40, Jamin Lin wrote:
+> According to the AST2700 design, the SSP coprocessor uses its own SDRAM
+> instead of SRAM. Additionally, all three coprocessors—SSP, TSP, and PSP—share
+> a common SRAM block. In the previous implementation, the SSP memory region
+> was labeled and sized as "SRAM", but in practice it was being used as SSP's
+> local SDRAM.
 
-> On 7/17/25 05:40, Jamin Lin wrote:
->> In the previous design, the SSP coprocessor (aspeed27x0ssp-soc) was init=
-ialized
->> and realized at the machine level (e.g., AST2700FC). However, to make su=
-re the
->> coprocessors can work together properly=E2=80=94such as using the same S=
-RAM, sharing
->> the SCU, and having consistent memory remapping=E2=80=94we need to chang=
-e how these
->> devices are set up.
->>
->> This commit moves the SSP coprocessor initialization and realization int=
-o the
->> AST2700 SoC (aspeed_soc_ast2700_init() and aspeed_soc_ast2700_realize()).
->> By doing so, the SSP becomes a proper child of the SoC device, rather th=
-an
->> the machine.
->>
->> This is a preparation step for future commits that will support shared S=
-CU,
->> SRAM, and memory remap logic=E2=80=94specifically enabling PSP DRAM rema=
-p for SSP SDRAM
->> access.
->>
->> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 
-[...]
+So the SSP coprocessor has no SRAM ?
 
->> diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
->> index 6aa3841b69..ffbc32fef2 100644
->> --- a/hw/arm/aspeed_ast27x0.c
->> +++ b/hw/arm/aspeed_ast27x0.c
 
-[...]
+> 
+> This commit updates the SSP memory mapping to reflect the correct hardware
+> design:
+> 
+> - Replace the SRAM region with a "512MB SDRAM" region starting at 0x0.
 
->> @@ -610,9 +619,35 @@ static bool aspeed_soc_ast2700_gic_realize(DeviceSt=
-ate *dev, Error **errp)
->>       return true;
->>   }
->>   +static bool aspeed_soc_ast2700_ssp_realize(DeviceState *dev, Error **=
-errp)
->
-> I would pass 'Aspeed27x0SoCState *' instead.
->
->> +{
->> +    Aspeed27x0SoCState *a =3D ASPEED27X0_SOC(dev);
->> +    AspeedSoCState *s =3D ASPEED_SOC(dev);
->> +    Clock *sysclk;
->> +
->> +    sysclk =3D clock_new(OBJECT(s), "SSP_SYSCLK");
->> +    clock_set_hz(sysclk, 200000000ULL);
->> +    qdev_connect_clock_in(DEVICE(&a->ssp), "sysclk", sysclk);
->> +
->> +    memory_region_init(&a->ssp.memory, OBJECT(&a->ssp), "ssp-memory",
->> +                       UINT64_MAX);
->> +    if (!object_property_set_link(OBJECT(&a->ssp), "memory",
->> +                                  OBJECT(&a->ssp.memory), &error_abort)=
-) {
->
-> please use errp instead.
->
->> +        return false;
->> +    }
+Is 512MB a real HW value ?
 
-object_property_set_link() can return false only when it fails, and it
-sets an error when it fails.  Since you pass &error_abort, it cannot
-fail (it aborts instead).  Therefore the return value is always true,
-and the return statement is dead code.
 
-If object_property_set_link() is not expected to fail, i.e. failure
-would be a programming error, use
+Thanks,
 
-        object_property_set_link(..., &error_abort);
+C.
 
-If failure is not a programming error, passing &error_abort is wrong,
-and you need to pass errp instead.
 
->> +
->> +    if (!qdev_realize(DEVICE(&a->ssp), NULL, &error_abort)) {
->
-> same here.
 
-Same argument.
-
-[...]
+> - Rename the internal variable from "sram" to "dram_container" for clarity.
+> - Use "AST2700_SSP_SDRAM_SIZE" (512MB) instead of the previous 32MB SRAM size.
+> - Map the new region using "ASPEED_DEV_SDRAM" instead of "ASPEED_DEV_SRAM".
+> 
+> This change also prepares for future enhancements where PSP DRAM will be
+> remapped into this SSP SDRAM container using subregions at specific offsets.
+> Using "dram_container" makes it easier to manage aliases and remap logic.
+> 
+> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+> ---
+>   hw/arm/aspeed_ast27x0-ssp.c | 20 ++++++++++----------
+>   1 file changed, 10 insertions(+), 10 deletions(-)
+> 
+> diff --git a/hw/arm/aspeed_ast27x0-ssp.c b/hw/arm/aspeed_ast27x0-ssp.c
+> index 80ec5996c1..9641e27de1 100644
+> --- a/hw/arm/aspeed_ast27x0-ssp.c
+> +++ b/hw/arm/aspeed_ast27x0-ssp.c
+> @@ -15,10 +15,10 @@
+>   #include "hw/misc/unimp.h"
+>   #include "hw/arm/aspeed_soc.h"
+>   
+> -#define AST2700_SSP_RAM_SIZE (32 * MiB)
+> +#define AST2700_SSP_SDRAM_SIZE (512 * MiB)
+>   
+>   static const hwaddr aspeed_soc_ast27x0ssp_memmap[] = {
+> -    [ASPEED_DEV_SRAM]      =  0x00000000,
+> +    [ASPEED_DEV_SDRAM]     =  0x00000000,
+>       [ASPEED_DEV_INTC]      =  0x72100000,
+>       [ASPEED_DEV_SCU]       =  0x72C02000,
+>       [ASPEED_DEV_SCUIO]     =  0x74C02000,
+> @@ -163,7 +163,7 @@ static void aspeed_soc_ast27x0ssp_realize(DeviceState *dev_soc, Error **errp)
+>       AspeedSoCState *s = ASPEED_SOC(dev_soc);
+>       AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
+>       DeviceState *armv7m;
+> -    g_autofree char *sram_name = NULL;
+> +    g_autofree char *name = NULL;
+>       int i;
+>   
+>       if (!clock_has_source(s->sysclk)) {
+> @@ -180,16 +180,17 @@ static void aspeed_soc_ast27x0ssp_realize(DeviceState *dev_soc, Error **errp)
+>                                OBJECT(s->memory), &error_abort);
+>       sysbus_realize(SYS_BUS_DEVICE(&a->armv7m), &error_abort);
+>   
+> -    sram_name = g_strdup_printf("aspeed.dram.%d",
+> -                                CPU(a->armv7m.cpu)->cpu_index);
+> +    /* SDRAM */
+> +    name = g_strdup_printf("aspeed.sdram-container.%d",
+> +                           CPU(a->armv7m.cpu)->cpu_index);
+>   
+> -    if (!memory_region_init_ram(&s->sram, OBJECT(s), sram_name, sc->sram_size,
+> -                                errp)) {
+> +    if (!memory_region_init_ram(&s->dram_container, OBJECT(s), name,
+> +                                AST2700_SSP_SDRAM_SIZE, errp)) {
+>           return;
+>       }
+>       memory_region_add_subregion(s->memory,
+> -                                sc->memmap[ASPEED_DEV_SRAM],
+> -                                &s->sram);
+> +                                sc->memmap[ASPEED_DEV_SDRAM],
+> +                                &s->dram_container);
+>   
+>       /* SCU */
+>       if (!sysbus_realize(SYS_BUS_DEVICE(&s->scu), errp)) {
+> @@ -268,7 +269,6 @@ static void aspeed_soc_ast27x0ssp_class_init(ObjectClass *klass, const void *dat
+>   
+>       sc->valid_cpu_types = valid_cpu_types;
+>       sc->silicon_rev = AST2700_A1_SILICON_REV;
+> -    sc->sram_size = AST2700_SSP_RAM_SIZE;
+>       sc->spis_num = 0;
+>       sc->ehcis_num = 0;
+>       sc->wdts_num = 0;
 
 

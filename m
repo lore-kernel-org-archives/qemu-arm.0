@@ -4,113 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA9D6CA1005
-	for <qemu-arm@archiver.kernel.org>; Tue,  2 Sep 2025 19:10:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D99ACA1007
+	for <qemu-arm@archiver.kernel.org>; Tue,  2 Sep 2025 20:08:37 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1utWO5-0002rS-Lo; Tue, 02 Sep 2025 15:09:49 -0400
+	id 1utXIp-0008DJ-44; Tue, 02 Sep 2025 16:08:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1utWO4-0002qj-Bi
- for qemu-arm@nongnu.org; Tue, 02 Sep 2025 15:09:48 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1utWO2-0000v2-Mp
- for qemu-arm@nongnu.org; Tue, 02 Sep 2025 15:09:48 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1756840184;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=T6aZo6bFOejCKlebgRxBSqBSOCqRXA0s/PEkc9kxZzw=;
- b=KR95H1P6juwXlr3rZktgFqmbTGZnpOXk5VgXwQ8J0/Q5USajHOJFQwzKyCU0pgu9ZMGUQ9
- sfgvb8oIk4z0JmFYv65sds9OEc81TmwxUpwSmkMxTBBAzPTKxhG/sc8hpm7PKEiYEbbRDY
- dpaF/7nekl1FNA1TvQkK7CIZZytJjVU=
-Received: from mail-qk1-f197.google.com (mail-qk1-f197.google.com
- [209.85.222.197]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-470-IQjWtNeyMtGB6yhPFY-6ew-1; Tue, 02 Sep 2025 15:09:43 -0400
-X-MC-Unique: IQjWtNeyMtGB6yhPFY-6ew-1
-X-Mimecast-MFC-AGG-ID: IQjWtNeyMtGB6yhPFY-6ew_1756840183
-Received: by mail-qk1-f197.google.com with SMTP id
- af79cd13be357-80593bfe0a2so311697185a.3
- for <qemu-arm@nongnu.org>; Tue, 02 Sep 2025 12:09:43 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <osama.abdelkader@gmail.com>)
+ id 1utXIn-0008Ce-OP; Tue, 02 Sep 2025 16:08:25 -0400
+Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <osama.abdelkader@gmail.com>)
+ id 1utXIl-0003it-Rh; Tue, 02 Sep 2025 16:08:25 -0400
+Received: by mail-ed1-x532.google.com with SMTP id
+ 4fb4d7f45d1cf-619487c8865so436790a12.1; 
+ Tue, 02 Sep 2025 13:08:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1756843702; x=1757448502; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=PKd1XHDV2EvXhIOSy5Pt7wF/kR7LXei0Yk0zA6T493o=;
+ b=LDMDh2MwN/gIKgcGZ5BcH6DfuPrNgWinTzg0xJ8xUyTsL53Rw2/d1AwiGq+a++5Lyu
+ yW0xArWut6JK6jZOStp81+szfAOYtwjBiEKvJnW3e4A3c7MybrPLBn9ZA1usbvqkQz/A
+ 1Ikt/NDaEqbamdjLbgUQB6+K2g8PKqHCCIY12iKuDNjZ8q6uJSzSL6YlJlF3oqw8t4Nk
+ /Bzih9FMTsDmvu6DDFpb4D1bwEZHGBFDASO5U1YmHIgxM0yQWNTP2u1noVdNmbrsfeMh
+ 5Ykg9XiiMZa+ewXj9I3KhEpAL5FXJI2bLSO2bmRow6sDPuzpQk0sdy9L7vw1pbqwCaby
+ HAHw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756840183; x=1757444983;
- h=in-reply-to:content-transfer-encoding:content-disposition
- :mime-version:references:message-id:subject:cc:to:from:date
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=T6aZo6bFOejCKlebgRxBSqBSOCqRXA0s/PEkc9kxZzw=;
- b=Epu3Ps0Wof1iprldpWkQmNB6OuWOP8midTPI3bXLyb049ZDERxLyTsGY5BebC0Hy2U
- m5bMN0LAkwr9HMLcZ1liwKwWLOHuRa28Y0L/QBxB5dePHbbV/Ck9ZBPFhcvyVKI7uiUg
- qQip8jspb8EPqjrXp4WnM70po+6nYlxP73tjZvHIgggyFQy9vh6idjVLLa/nUPt5j8YF
- KCzTn3CEvt0BPnGihA79Qbj08LstqcMg1cTTCZBYv5LGD/FtE0YYg0x4UBZCS41B/+Cd
- JMiC05FB12dKuGH8AkqPWv4/4c2rtqN893KfvzeuVcDKMwi7Y7OC34oz8NzpaSu9oB0b
- pWvg==
+ d=1e100.net; s=20230601; t=1756843702; x=1757448502;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=PKd1XHDV2EvXhIOSy5Pt7wF/kR7LXei0Yk0zA6T493o=;
+ b=u9ArjWqOfdDEwo+sEdwzmzBw8kK1HfhX9/hDy6a51mZM2eF9FUWOa1kz4BPgTx+i2z
+ drAiml8TxcPV93kxFbixYySKEGqo0abqQ5WL1LpwHG/ZE7RL/DsIk//C1+0kHZpzFDFl
+ dsX5hmuXUH3hMaLITgg/IKMni689JuQxPPFnPSICUQybUctIv4OjazKK1d+eAQYPNuv2
+ l1CHQ1Vdsw2QPfYLr1Ug9/ULKKQvgHKAbDJs2uSnFo9m2bMdS712uskfQ66FuDA1+nll
+ vQXbMKVTBXkyjOp+wScU5ZuJDwUfOOY7MO1VTB6ZBH6vJGxofB/YlFbJNBCnrB7vB87Q
+ SiMA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUvw0Z6Yknf0mcuLYs535RxlfmmUFsWBEpDSkIDwQMfsW7ASU34ZySYBW+8qpGi4CaGBoj055EpKg==@nongnu.org
-X-Gm-Message-State: AOJu0Yzz07I02sBr9dojP0lwyiGCykZ4oMwsYWYs620cEi2ETNFtNR9h
- Jc7rK4DoTat3FNCTxYKd5nmcbXUqpIprlV1sfLMzDRWlByKY9NUzxPog/gzcDWt5GYYQ0mDy6ik
- dM/Hfa7VRJXFm9MdJhuKGXxPghlSNLxdR/DAZD+1vD+lKWWDngREUtQ==
-X-Gm-Gg: ASbGnctF2x79TPO8u6k/BsDyPWZg8CEDeU/EFeFJYb0HpKB99LiLHaFTiofRq9seVQ3
- bknZh4qtUCsmw0/GjTX3lHUt3uvfneYyaJKxnFvsjNiXeNVaXj+gOqXWGkg2EBRfgNxyARkQFNl
- B5tCkQSkH4DKeBUcMuMTMyhsfTeEenXqlcY1t9ABJ/6Q+laWKV04lcAcWrU0S+DEoCSlb7TYqLG
- 1kxEpCUzrJFQM5R/+yGbSWW5Se7mqjKZkwlDPTcCPaK8Enw1Cu4zrkpQTOFZtW91GiC7VipPhEP
- rrZweutccxdTrdIP6SJazarKVW3RH5DN
-X-Received: by 2002:a05:620a:2043:b0:809:3aea:1401 with SMTP id
- af79cd13be357-8093aea6251mr189379485a.75.1756840183193; 
- Tue, 02 Sep 2025 12:09:43 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGvr13b2cdJkcUH4TQ6/CI39Vrq5Vu33VWLBBTCta1UQzE2Fcgg8l3R8uExaeGI7N3K3jtzDw==
-X-Received: by 2002:a05:620a:2043:b0:809:3aea:1401 with SMTP id
- af79cd13be357-8093aea6251mr189375385a.75.1756840182677; 
- Tue, 02 Sep 2025 12:09:42 -0700 (PDT)
-Received: from x1.local ([174.89.135.121]) by smtp.gmail.com with ESMTPSA id
- af79cd13be357-8069cdf0c07sm180439385a.59.2025.09.02.12.09.40
+ AJvYcCXvViUoyM4TxYBFivoI8Iwa5hFnPGrpK6SZEMdUS8PYolvywkTaYIXNByE5ucM3BfwELFrW233VrQzN@nongnu.org
+X-Gm-Message-State: AOJu0Yw+Cu2/xNaqDXHGuGfn4T7HOwkeqZ9X93BqBxb0rgpIy7ZEezXb
+ QF33G4p+Wxb4WLy90NpHh3RKBdB3r3SO6jKQOO9cmXOcHBtrFWlwSCXJ
+X-Gm-Gg: ASbGncsBqbBw3FqvFnN3ll1Evw8VXRonxqccuv1/+KDdL5qRuTzwvcBx8eIktuSo2Ut
+ j+GnVpnFH4/k6C6+vkPpthVAW05+O/l6Bx1HZn5f7w+ibfcK+HpWP8iuUM+Cw2tpaWBhoOV4ix7
+ PHDfy7nbFI2dbkozrNXtrOaVFM/KzB6hRBKYKs7RqkDgo0n7tRZ+d4eVtwtWCchAwP3gdMW0ytg
+ FsfKUBjPzMc/mwi5n17M/jja0ZhY5BenrA/WhT1YdxYLV0jKI4Wh0DLV7iFcnJHOyD8yfv7d/PM
+ 3S+jtFcIJqQt+sE+JaI3qwGaOzcUTBkBt16mfUEJWC678Sm/p+R5J2t2UafN3p01Z7TSrTUXM0a
+ K8/yReTEfHPWkrCqPOoJ7Kljgc6RB1CEK3xHyp/FUpoAPec6paRCBDJhnELc4vE7S4tsRv3SNdk
+ jFv3YHed7EOQFII+I5I/ZsoZmkRYMb
+X-Google-Smtp-Source: AGHT+IGMSFkHldteP02jEBzIDQMvnblPr99tuzzeHLRlEO1QOh31lcKlOvP5Wm+TnXjYIqLvUOjzRw==
+X-Received: by 2002:a17:907:807:b0:afe:d4b0:c0bf with SMTP id
+ a640c23a62f3a-b01082b1481mr1424612866b.17.1756843701703; 
+ Tue, 02 Sep 2025 13:08:21 -0700 (PDT)
+Received: from osama.. ([2a02:908:1b0:afe0:b388:5893:2f33:1927])
+ by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-b02152cc1b8sm895699666b.36.2025.09.02.13.08.20
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 02 Sep 2025 12:09:41 -0700 (PDT)
-Date: Tue, 2 Sep 2025 15:09:22 -0400
-From: Peter Xu <peterx@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Cc: CJ Chen <cjchen@igel.co.jp>, qemu-devel@nongnu.org,
- qemu-block@nongnu.org, qemu-riscv@nongnu.org, qemu-arm@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>,
- Keith Busch <kbusch@kernel.org>, Klaus Jensen <its@irrelevant.dk>,
- Jesper Devantier <foss@defmacro.it>, Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- Weiwei Li <liwei1518@gmail.com>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Tyrone Ting <kfting@nuvoton.com>, Hao Wu <wuhaotsh@google.com>,
- Max Filippov <jcmvbkbc@gmail.com>, David Hildenbrand <david@redhat.com>,
- Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
- Tomoyuki Hirose <hrstmyk811m@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [RFC PATCH v2 3/9] hw: npcm7xx_fiu and mx_pic change
- .impl.unaligned = true
-Message-ID: <aLdA4uH5CGbfz9Gd@x1.local>
-References: <20250822092410.25833-1-cjchen@igel.co.jp>
- <20250822092410.25833-4-cjchen@igel.co.jp>
- <3a80c5e5-9889-4830-9a00-5d4d92141a3a@linaro.org>
+ Tue, 02 Sep 2025 13:08:21 -0700 (PDT)
+From: Osama Abdelkader <osama.abdelkader@gmail.com>
+To: peter.maydell@linaro.org,
+	alex.bennee@linaro.org
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ Osama Abdelkader <osama.abdelkader@gmail.com>
+Subject: [PATCH] hw/arm/raspi4b: remove redundant check in
+ raspi_add_memory_node
+Date: Tue,  2 Sep 2025 22:08:18 +0200
+Message-ID: <20250902200818.43305-1-osama.abdelkader@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-In-Reply-To: <3a80c5e5-9889-4830-9a00-5d4d92141a3a@linaro.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: sGdJbiPh4Ly4tI1wGRjM47DNm0r4sXi6xfDUVSDMJ4U_1756840183
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=peterx@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::532;
+ envelope-from=osama.abdelkader@gmail.com; helo=mail-ed1-x532.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -126,62 +100,60 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, Aug 25, 2025 at 01:00:21PM +0200, Philippe Mathieu-Daudé wrote:
-> Hi,
-> 
-> On 22/8/25 11:24, CJ Chen wrote:
-> > By setting .impl.unaligned = true, we allow QEMU to pass along
-> > unaligned requests directly as-is, rather than splitting them into
-> > multiple aligned sub-requests that might cause repeated device
-> > callbacks or unintended side effects.
-> > 
-> > Signed-off-by: CJ Chen <cjchen@igel.co.jp>
-> > Tested-by: CJ Chen <cjchen@igel.co.jp>
-> > Acked-by: Tomoyuki Hirose <hrstmyk811m@gmail.com>
-> > Reported-by: Tomoyuki Hirose <hrstmyk811m@gmail.com>
-> > ---
-> >   hw/ssi/npcm7xx_fiu.c | 3 +++
-> >   hw/xtensa/mx_pic.c   | 3 +++
-> >   2 files changed, 6 insertions(+)
-> 
-> 
-> > diff --git a/hw/xtensa/mx_pic.c b/hw/xtensa/mx_pic.c
-> > index 8211c993eb..6bf524a918 100644
-> > --- a/hw/xtensa/mx_pic.c
-> > +++ b/hw/xtensa/mx_pic.c
-> > @@ -270,6 +270,9 @@ static const MemoryRegionOps xtensa_mx_pic_ops = {
-> >       .valid = {
-> >           .unaligned = true,
-> >       },
-> > +    .impl = {
-> > +        .unaligned = true,
-> > +    },
-> >   };
-> 
-> Surely a distinct patch.
+The if (acells == 0 || scells == 0) check is redundant in
+raspi_add_memory_node, since it is already checked in the call
+chain, arm_load_dtb. Also the return value of the function is
+not checked/used so it's removed.
 
-Besides that, I also don't understand how it used to work even before this
-change..
+Signed-off-by: Osama Abdelkader <osama.abdelkader@gmail.com>
+---
+ hw/arm/raspi4b.c | 22 +++++++++-------------
+ 1 file changed, 9 insertions(+), 13 deletions(-)
 
-E.g., both of the xtensa mx_pic read/write ignores size, that doesn't look
-right already when there's totally no limitation of impl.*_access_size.
-
-Meanwhile, taking xtensa_mx_pic_ext_reg_read() as example, it'll return a
-u32 by offset smaller than MX_MAX_IRQ (where MIROUT==0):
-
-    if (offset < MIROUT + MX_MAX_IRQ) {
-        return mx->mirout[offset - MIROUT];
-    }
-
-But it returns different u32 for different offsets.. so reading 0x0 returns
-the 1st u32, then 0x1 returns the 2nd (rather than reading 0x4 returns
-that).
-
-Even if there might be a driver that works with it, it still doesn't look
-like the traditional way of doing MMIOs.. irrelevant of setting unaligned
-or not in its .impl.
-
+diff --git a/hw/arm/raspi4b.c b/hw/arm/raspi4b.c
+index 20082d5266..4df951a0d8 100644
+--- a/hw/arm/raspi4b.c
++++ b/hw/arm/raspi4b.c
+@@ -36,9 +36,8 @@ struct Raspi4bMachineState {
+  * (see https://datasheets.raspberrypi.com/bcm2711/bcm2711-peripherals.pdf
+  * 1.2 Address Map)
+  */
+-static int raspi_add_memory_node(void *fdt, hwaddr mem_base, hwaddr mem_len)
++static void raspi_add_memory_node(void *fdt, hwaddr mem_base, hwaddr mem_len)
+ {
+-    int ret;
+     uint32_t acells, scells;
+     char *nodename = g_strdup_printf("/memory@%" PRIx64, mem_base);
+ 
+@@ -46,19 +45,16 @@ static int raspi_add_memory_node(void *fdt, hwaddr mem_base, hwaddr mem_len)
+                                    NULL, &error_fatal);
+     scells = qemu_fdt_getprop_cell(fdt, "/", "#size-cells",
+                                    NULL, &error_fatal);
+-    if (acells == 0 || scells == 0) {
+-        fprintf(stderr, "dtb file invalid (#address-cells or #size-cells 0)\n");
+-        ret = -1;
+-    } else {
+-        qemu_fdt_add_subnode(fdt, nodename);
+-        qemu_fdt_setprop_string(fdt, nodename, "device_type", "memory");
+-        ret = qemu_fdt_setprop_sized_cells(fdt, nodename, "reg",
+-                                           acells, mem_base,
+-                                           scells, mem_len);
+-    }
++    /* validated by arm_load_dtb */
++    g_assert(acells && scells);
++
++    qemu_fdt_add_subnode(fdt, nodename);
++    qemu_fdt_setprop_string(fdt, nodename, "device_type", "memory");
++    qemu_fdt_setprop_sized_cells(fdt, nodename, "reg",
++                                        acells, mem_base,
++                                        scells, mem_len);
+ 
+     g_free(nodename);
+-    return ret;
+ }
+ 
+ static void raspi4_modify_dtb(const struct arm_boot_info *info, void *fdt)
 -- 
-Peter Xu
+2.43.0
 
 

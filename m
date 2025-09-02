@@ -4,83 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6814CA0FFE
-	for <qemu-arm@archiver.kernel.org>; Tue,  2 Sep 2025 09:54:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 946C9CA1005
+	for <qemu-arm@archiver.kernel.org>; Tue,  2 Sep 2025 10:27:39 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1utNiJ-0002sW-JF; Tue, 02 Sep 2025 05:54:08 -0400
+	id 1utOEY-0004IV-2e; Tue, 02 Sep 2025 06:27:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1utNiI-0002rm-Ct
- for qemu-arm@nongnu.org; Tue, 02 Sep 2025 05:54:06 -0400
-Received: from mail-yb1-xb35.google.com ([2607:f8b0:4864:20::b35])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1utOEW-0004Hs-J0
+ for qemu-arm@nongnu.org; Tue, 02 Sep 2025 06:27:24 -0400
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1utNiE-00046P-CI
- for qemu-arm@nongnu.org; Tue, 02 Sep 2025 05:54:04 -0400
-Received: by mail-yb1-xb35.google.com with SMTP id
- 3f1490d57ef6-e96e3094fd9so4538093276.1
- for <qemu-arm@nongnu.org>; Tue, 02 Sep 2025 02:54:00 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1utOEU-0000WD-9q
+ for qemu-arm@nongnu.org; Tue, 02 Sep 2025 06:27:24 -0400
+Received: by mail-wr1-x431.google.com with SMTP id
+ ffacd0b85a97d-3ce772ce0dbso3544178f8f.0
+ for <qemu-arm@nongnu.org>; Tue, 02 Sep 2025 03:27:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756806839; x=1757411639; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=S2DLNfb3hwUzbT+Qfwm51/d38ALsr8Q5J9G5EBFuW5s=;
- b=NNd8vE5hg9f+BAq7U/Lith+kd+HM7K32tz+OmK7VLLRsQLzYJl/2XHPpcEvbSkRV7j
- 2KHwuqLurchwpfuHCco7dsvv5uPVBeCCW2+LOIh2d+JHVDr0qER1/GpfFtaqMa7j+foX
- 21idyDfi+chtFQbekSLd7oa30lc6+/yzdCidBsFqoifr3alxJzP/dbmg3uChHth4meWi
- /SJbr/eMac+Rhy6WYDW6jirK14IGBZuHT08e231NfvHcIIy2jQHEWiMNw2eKcBuRli1j
- 6c3PcnCJoRfzbGFXBBswptz5SqqqsYPG4wjKhCZngJfCyAcpTgk7U5d/k7u5e9gql5Vi
- eVMA==
+ d=linaro.org; s=google; t=1756808840; x=1757413640; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=cVUdYGKa24cj4nvdAy9vOSS1mh1984JyzO3vmKT9xug=;
+ b=Kr4LBDXkekH0XqygISX9fUYjN4V7CeHaEzrOPN6qQ6A7zbWWpaS2osToLhUiEPSj5B
+ 3ss3UoDy0L25sCtWCM39fuc6/SMTgzHKal0rvGC9v97mFMyTpke2O/iLcF6i11RXGzQ9
+ sUx6WIehcSHVTV6Jp8px+6evK3yoH4wKsqKyaj9SF59X/unQ2YU3rytUA5r282VPe5QF
+ v02htBgOYDdOLpvnNwJsh4iV9ojqtGAWFhoCOsVNLXlmoZD2ZCcZlAFNHYTGW60Y7EjO
+ c5xD3fvKaHbMdQ+Tu30z51Do/b3zSrPi6wfgkdCj4QiyesKiC7ZSLl3U6SqxJ7FD6Z45
+ /AGQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756806839; x=1757411639;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=S2DLNfb3hwUzbT+Qfwm51/d38ALsr8Q5J9G5EBFuW5s=;
- b=s5e06cufkVp8xbzfxDhZuYzXdaokPsrA9Yc8yAoMW7KNelFBT7H36OLTOmxJTKbd7y
- NwFgjwqLH9C3L0R9LR3kSxTcS5F5osCNAq7f6ixZmux1/Y/vbshwWgxdXBO5EscjvKan
- WOSJOvEzGwam4g0lWqkEES1GdnfQd1H/7sFqDSPDnsqvckZD32Z6DQldAK8sgQbO0fEW
- dHA5pHikKDUyKW87qSY4CVLM/tovX3Ti1N1h7upjPRpzY0D1x2D3hKgqXgkY1qT2H4qP
- vt1GUcO0z3P895eimFN4vy9uBw0TExSxinwszjkXUSzqFRcG6vfhQ28tl270gj5QH/9D
- WDgA==
+ d=1e100.net; s=20230601; t=1756808840; x=1757413640;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=cVUdYGKa24cj4nvdAy9vOSS1mh1984JyzO3vmKT9xug=;
+ b=ccCggYroPj25wrBUNnvMelBTyVhivr2tUivNQpX0YNdviHbZF2yyvLZmnJoqiPK63L
+ jBRYE6/WafOQcJMthHyBqw5hil7uoKZAzP5K/UxHIuEfp1RwbwT55r4D4uRYUXD1KP3S
+ VM4rkLTac/umkpe8V280UiNbbm11MytE8w7VzelzMknN/aFfI8MfFSKVHX90Og+2D9pL
+ M2Aopw+FEjK8vwwS0kkCG5A5uMbM19baPvBhIbHU7gKMDW0L9TyZHzBMc0eFTcUPr4wa
+ DPobuvcQXHzptrOaRO0ww1eNFSluWvamOD5W9wA1hJBIFXJ0gjPXanIpPz1xe95xTpXI
+ uzpA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXkftFqUEQzEU/sEwSdMl1wQNu0fwZJFK8GvqlbFj1mFwhonp2vMk0/tS3KUCTyBO2Szbtihj7U7w==@nongnu.org
-X-Gm-Message-State: AOJu0YxdnSUXUCG/EZ/bQuwpXX8SS6jZppXIdXCRz+Te0ty0i8QK9Z8a
- o29koFDc4o1YWniBRy92k1LBBPWhpRQlTXwbb53D9tISQj9TnswXGPr/5hJ9HoATmeKajIxRjWw
- 63fX8SprW/2XWDvUvUO/zLknpqDneznAQn6OeFNPrK4dRrCg98AQI
-X-Gm-Gg: ASbGnct8s7xDF/ybrWZsGBP2AlP9AaoJ3DiPKXHcdEGZfRatYC7lW92oAPrG9euVT1o
- MZii0ytAOhOvg370k/ZpdD88btA+NhgT6RwWDZhqgNbhf7TKOOXl0/cI/DqSguhTzmsLZCm1Thj
- Klgs04RR/wHO9LVo2ZOigdT6SmYyOBNLqs0NTSeQ4eAnIheaX1CNVIrWYz0M7h8jXZu2dDfF3jL
- +EZbROL
-X-Google-Smtp-Source: AGHT+IEq0OMs00G8PE9o7PzzTQr5VvEooHkGACYRPRPgj7VBG/g9X75NfrCKCBwBvRulpF+C0tOzsfLOGoxTNCBCyaY=
-X-Received: by 2002:a05:690c:a0aa:20b0:722:7a7f:5358 with SMTP id
- 00721157ae682-7227a7f6daamr97651567b3.4.1756806839336; Tue, 02 Sep 2025
- 02:53:59 -0700 (PDT)
+ AJvYcCWy9ZfOBgY9Ftwi9xTygGPQEpdBmCkSXp5RMkM4w3lgiI7qMrnku1LKULj5nK+x2OSk4/N/J2Z73w==@nongnu.org
+X-Gm-Message-State: AOJu0YzMXCAXrXltBhCawHkc/ySjCb9oZ04pBwD4wkvd6SgUcjro0oEj
+ lR284A1b0p4dSPgXLX6u3FtJ0f7AQNpcYz6SRmPLcftvwaKjTUXe2aE4Lael3ulSFIk=
+X-Gm-Gg: ASbGncv05x4XiueaWlwpk0OkMZg4n7AyyK2b6cXyUB28rucJ/bDAFONj3P3T9bQqgN7
+ fKdyKBHe528+DyL6fRtc5EiWoFLYns/14/D9azRuqNQmdcc/kU7jY3Il7eKsHWtZ4aa7MX6Hb5V
+ wVFp1C3W5hb0fkXqFI7E1160bfUfeWFsBCiMIlJmtlFgw5KE8HRPIn+wG2LvuxnNBLagcJoWv8R
+ /fznJJgZ8ucekLCkm9WP4oIkCHJBwRlQPUyAVd7K3lh4hu42o8lG3aerOv7cw/nhmeS8Fb/hEQ2
+ I34MO6UOXLjcfarm+Ndsu2As3zag1eJC7Jpr9jzwzvqNTxd1til5FcesQ6I1C0JBEkTnRA42j2Q
+ aUTF+7sHRf6kB42GwIWJhggtKSaQKMeY0OMdsR6C9VGHIWJ/ml0FmWBM5RrZ03rFPjbh+YUm8bv
+ HK
+X-Google-Smtp-Source: AGHT+IHvINrOSXihdYhatG+OlhpVk1dynq2dd671bqi4jXYVESKVwjOJSVtggtl04yYkvzm7YODPcA==
+X-Received: by 2002:a05:6000:1a8c:b0:3c9:24f5:4711 with SMTP id
+ ffacd0b85a97d-3d1def66f6dmr8500780f8f.43.1756808839622; 
+ Tue, 02 Sep 2025 03:27:19 -0700 (PDT)
+Received: from [192.168.69.207] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-45b7e7efb79sm193566515e9.9.2025.09.02.03.27.18
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 02 Sep 2025 03:27:19 -0700 (PDT)
+Message-ID: <08162174-9a37-4a72-883d-b3a610de7f68@linaro.org>
+Date: Tue, 2 Sep 2025 12:27:18 +0200
 MIME-Version: 1.0
-References: <20250820211932.27302-1-shentey@gmail.com>
- <20250820211932.27302-7-shentey@gmail.com>
-In-Reply-To: <20250820211932.27302-7-shentey@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 2 Sep 2025 10:53:48 +0100
-X-Gm-Features: Ac12FXz09qSSJ5uxJBmoGYE4yxTscF7subjkPLUIDVy-ToppFSpxBX8E1CsVzG4
-Message-ID: <CAFEAcA_g08weBggnyCqLNPhOxKrZ3baVoGUyUqpZaEgSUN086A@mail.gmail.com>
-Subject: Re: [PATCH 06/10] hw/pci-host/designware: Fix I/O range
-To: Bernhard Beschow <shentey@gmail.com>
-Cc: qemu-devel@nongnu.org, Andrey Smirnov <andrew.smirnov@gmail.com>,
- qemu-arm@nongnu.org, Guenter Roeck <linux@roeck-us.net>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b35;
- envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb35.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] hw/arm/boot: Correctly free the MemoryDeviceInfoList
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+References: <20250901102214.3748011-1-peter.maydell@linaro.org>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20250901102214.3748011-1-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::431;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x431.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -96,44 +103,39 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Wed, 20 Aug 2025 at 22:19, Bernhard Beschow <shentey@gmail.com> wrote:
->
-> Fix the size of the I/O space to be 64KiB, as defined by the PCI
-> specification. This fixes illegal memory access by guests in the
-> imx8mp-evk machine such that the FSL_IMX8MP_PCIE1_MEM unimplemented
-> region can be omitted there.
->
-> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+On 1/9/25 12:22, Peter Maydell wrote:
+> When running the bios-tables-test under ASAN we see leaks like this:
+> 
+> Direct leak of 16 byte(s) in 1 object(s) allocated from:
+>      #0 0x5bc58579b00d in calloc (/mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/qemu-system-aarch64+0x250400d) (BuildId: 2e27b63dc9ac45f522ced40a17c2a60cc32f1d38)
+>      #1 0x7b4ad90337b1 in g_malloc0 (/lib/x86_64-linux-gnu/libglib-2.0.so.0+0x637b1) (BuildId: 1eb6131419edb83b2178b682829a6913cf682d75)
+>      #2 0x5bc5861826db in qmp_memory_device_list /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/../../hw/mem/memory-device.c:307:34
+>      #3 0x5bc587a9edb6 in arm_load_dtb /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/../../hw/arm/boot.c:656:15
+> 
+> Indirect leak of 28 byte(s) in 2 object(s) allocated from:
+>      #0 0x5bc58579ae23 in malloc (/mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/qemu-system-aarch64+0x2503e23) (BuildId: 2e27b63dc9ac45f522ced40a17c2a60cc32f1d38)
+>      #1 0x7b4ad6c8f947 in __vasprintf_internal libio/vasprintf.c:116:16
+>      #2 0x7b4ad9080a52 in g_vasprintf (/lib/x86_64-linux-gnu/libglib-2.0.so.0+0xb0a52) (BuildId: 1eb6131419edb83b2178b682829a6913cf682d75)
+>      #3 0x7b4ad90515e4 in g_strdup_vprintf (/lib/x86_64-linux-gnu/libglib-2.0.so.0+0x815e4) (BuildId: 1eb6131419edb83b2178b682829a6913cf682d75)
+>      #4 0x7b4ad9051940 in g_strdup_printf (/lib/x86_64-linux-gnu/libglib-2.0.so.0+0x81940) (BuildId: 1eb6131419edb83b2178b682829a6913cf682d75)
+>      #5 0x5bc5885eb739 in object_get_canonical_path /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/../../qom/object.c:2123:19
+>      #6 0x5bc58618dca8 in pc_dimm_md_fill_device_info /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/../../hw/mem/pc-dimm.c:268:18
+>      #7 0x5bc586182792 in qmp_memory_device_list /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/../../hw/mem/memory-device.c:310:9
+> 
+> This happens because we declared the MemoryDeviceInfoList *md_list
+> with g_autofree, which will free the direct memory with g_free() but
+> doesn't free all the other data structures referenced by it.  Instead
+> what we want is to declare the pointer with g_autoptr(), which will
+> automatically call the qapi_free_MemoryDeviceInfoList() cleanup
+> function when the variable goes out of scope.
+> 
+> Fixes: 36bc78aca83cfd ("hw/arm: add static NVDIMMs in device tree")
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->  hw/pci-host/designware.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/hw/pci-host/designware.c b/hw/pci-host/designware.c
-> index 7342207eb3..1e29b7e6be 100644
-> --- a/hw/pci-host/designware.c
-> +++ b/hw/pci-host/designware.c
-> @@ -684,7 +684,7 @@ static void designware_pcie_host_realize(DeviceState *dev, Error **errp)
->                            "pcie.reg", 4 * 1024);
->      sysbus_init_mmio(sbd, &s->mmio);
->
-> -    memory_region_init(&s->pci.io, OBJECT(s), "pcie-pio", 16);
-> +    memory_region_init(&s->pci.io, OBJECT(s), "pcie-pio", UINT16_MAX);
+>   hw/arm/boot.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
 
-This isn't 64K, it's 1 byte less than 64K. You want
-64 * KiB   or something similar.
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-(The memory APIs have a special case for "size 2^64" where
-you can pass it UINT64_MAX, but any sizes below that you
-pass in the actual size: the special case is just so we
-can use a uint64_t type for the argument without losing
-the ability to specify a size that covers the full 64-bit
-address space.)
-
->      memory_region_init(&s->pci.memory, OBJECT(s),
->                         "pcie-bus-memory",
->                         UINT64_MAX);
-
-(We seem to have a similar bug in xilinx-pcie.c.)
-
--- PMM
+And queued, thanks!
 

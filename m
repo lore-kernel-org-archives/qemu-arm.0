@@ -4,90 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 946C9CA1005
-	for <qemu-arm@archiver.kernel.org>; Tue,  2 Sep 2025 10:27:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39059CA0FFE
+	for <qemu-arm@archiver.kernel.org>; Tue,  2 Sep 2025 10:30:28 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1utOEY-0004IV-2e; Tue, 02 Sep 2025 06:27:26 -0400
+	id 1utOH7-0006aK-Aw; Tue, 02 Sep 2025 06:30:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1utOEW-0004Hs-J0
- for qemu-arm@nongnu.org; Tue, 02 Sep 2025 06:27:24 -0400
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1utOH2-0006US-Qm
+ for qemu-arm@nongnu.org; Tue, 02 Sep 2025 06:30:02 -0400
+Received: from mail-yw1-x1132.google.com ([2607:f8b0:4864:20::1132])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1utOEU-0000WD-9q
- for qemu-arm@nongnu.org; Tue, 02 Sep 2025 06:27:24 -0400
-Received: by mail-wr1-x431.google.com with SMTP id
- ffacd0b85a97d-3ce772ce0dbso3544178f8f.0
- for <qemu-arm@nongnu.org>; Tue, 02 Sep 2025 03:27:21 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1utOGz-0000oY-BT
+ for qemu-arm@nongnu.org; Tue, 02 Sep 2025 06:29:59 -0400
+Received: by mail-yw1-x1132.google.com with SMTP id
+ 00721157ae682-71d71bcab69so42499707b3.0
+ for <qemu-arm@nongnu.org>; Tue, 02 Sep 2025 03:29:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756808840; x=1757413640; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=cVUdYGKa24cj4nvdAy9vOSS1mh1984JyzO3vmKT9xug=;
- b=Kr4LBDXkekH0XqygISX9fUYjN4V7CeHaEzrOPN6qQ6A7zbWWpaS2osToLhUiEPSj5B
- 3ss3UoDy0L25sCtWCM39fuc6/SMTgzHKal0rvGC9v97mFMyTpke2O/iLcF6i11RXGzQ9
- sUx6WIehcSHVTV6Jp8px+6evK3yoH4wKsqKyaj9SF59X/unQ2YU3rytUA5r282VPe5QF
- v02htBgOYDdOLpvnNwJsh4iV9ojqtGAWFhoCOsVNLXlmoZD2ZCcZlAFNHYTGW60Y7EjO
- c5xD3fvKaHbMdQ+Tu30z51Do/b3zSrPi6wfgkdCj4QiyesKiC7ZSLl3U6SqxJ7FD6Z45
- /AGQ==
+ d=linaro.org; s=google; t=1756808992; x=1757413792; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=G/imFK+wxlwINE4m6wr1YjkZKrZAqg+FuJFMNF4Nks0=;
+ b=xqtNrEIIdN7/4aH7HXRGNG5091e0snXYAOqbUpMuE8s1v3Z/qhHPzeCOS28hvoKeCH
+ wSMFxLZfga70jUbeMVg9or/wWR4xik3HlGO0yvVLhkm9tQteaMr7omemrCyhTmu3yQ4U
+ 6PSKhHQF9LwjCe40EglI6mhB2IreC1GttUHI8O3QV41oBZcjP1yKoMDG8YTYug5JcHhy
+ R9YT6XHIlTeAnbz/3tZt1T5+gZC5Bt8EzotJalSvc6TX+2RPgy1BSMYTKxem0vVqYWC6
+ Ov+fgCywO7qnUM47lWTXS5q+X48rwY7MWbYijD9tfvY9heVhipNp/8QTLPcfAxFH52cv
+ Al1w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756808840; x=1757413640;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=cVUdYGKa24cj4nvdAy9vOSS1mh1984JyzO3vmKT9xug=;
- b=ccCggYroPj25wrBUNnvMelBTyVhivr2tUivNQpX0YNdviHbZF2yyvLZmnJoqiPK63L
- jBRYE6/WafOQcJMthHyBqw5hil7uoKZAzP5K/UxHIuEfp1RwbwT55r4D4uRYUXD1KP3S
- VM4rkLTac/umkpe8V280UiNbbm11MytE8w7VzelzMknN/aFfI8MfFSKVHX90Og+2D9pL
- M2Aopw+FEjK8vwwS0kkCG5A5uMbM19baPvBhIbHU7gKMDW0L9TyZHzBMc0eFTcUPr4wa
- DPobuvcQXHzptrOaRO0ww1eNFSluWvamOD5W9wA1hJBIFXJ0gjPXanIpPz1xe95xTpXI
- uzpA==
+ d=1e100.net; s=20230601; t=1756808992; x=1757413792;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=G/imFK+wxlwINE4m6wr1YjkZKrZAqg+FuJFMNF4Nks0=;
+ b=wNzOidvXk6BiZaRntoLfYWXGFkirFHBUMtR1TweLPn7RdO2ujlaeCkDpwUTSKhFwQv
+ k5oR/X9KIYiGznND7Mo4P2BfDLzuNimfU6DhMU5VW8vt8MQaseigccTDepK58Ih7hw/2
+ Ykb1mslfNDpp5KC22R3LiJOTy+v+mi9oq+0FM0yYLX/Q/m/rVFpVKc+mUt/jhJBAqBHc
+ UD19SEHYGwCUyU0Zyl7buiLyhQa8fmcVYWatw//ea5dCHpqqfgpkdyPKMVfvqrgc29c6
+ YzvzJqklbjkHuBbyC8y39nYOvyJQkcDh9G9qHNKukWfZQuh5N0W2dFK0QBL0FtqgcbZX
+ OPcw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWy9ZfOBgY9Ftwi9xTygGPQEpdBmCkSXp5RMkM4w3lgiI7qMrnku1LKULj5nK+x2OSk4/N/J2Z73w==@nongnu.org
-X-Gm-Message-State: AOJu0YzMXCAXrXltBhCawHkc/ySjCb9oZ04pBwD4wkvd6SgUcjro0oEj
- lR284A1b0p4dSPgXLX6u3FtJ0f7AQNpcYz6SRmPLcftvwaKjTUXe2aE4Lael3ulSFIk=
-X-Gm-Gg: ASbGncv05x4XiueaWlwpk0OkMZg4n7AyyK2b6cXyUB28rucJ/bDAFONj3P3T9bQqgN7
- fKdyKBHe528+DyL6fRtc5EiWoFLYns/14/D9azRuqNQmdcc/kU7jY3Il7eKsHWtZ4aa7MX6Hb5V
- wVFp1C3W5hb0fkXqFI7E1160bfUfeWFsBCiMIlJmtlFgw5KE8HRPIn+wG2LvuxnNBLagcJoWv8R
- /fznJJgZ8ucekLCkm9WP4oIkCHJBwRlQPUyAVd7K3lh4hu42o8lG3aerOv7cw/nhmeS8Fb/hEQ2
- I34MO6UOXLjcfarm+Ndsu2As3zag1eJC7Jpr9jzwzvqNTxd1til5FcesQ6I1C0JBEkTnRA42j2Q
- aUTF+7sHRf6kB42GwIWJhggtKSaQKMeY0OMdsR6C9VGHIWJ/ml0FmWBM5RrZ03rFPjbh+YUm8bv
- HK
-X-Google-Smtp-Source: AGHT+IHvINrOSXihdYhatG+OlhpVk1dynq2dd671bqi4jXYVESKVwjOJSVtggtl04yYkvzm7YODPcA==
-X-Received: by 2002:a05:6000:1a8c:b0:3c9:24f5:4711 with SMTP id
- ffacd0b85a97d-3d1def66f6dmr8500780f8f.43.1756808839622; 
- Tue, 02 Sep 2025 03:27:19 -0700 (PDT)
-Received: from [192.168.69.207] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-45b7e7efb79sm193566515e9.9.2025.09.02.03.27.18
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 02 Sep 2025 03:27:19 -0700 (PDT)
-Message-ID: <08162174-9a37-4a72-883d-b3a610de7f68@linaro.org>
-Date: Tue, 2 Sep 2025 12:27:18 +0200
+ AJvYcCX+GlHD0MvsLPUAhrupAIxgrzVstxUyaNAJMj9kOeCJFN/HswlJOLulOWiubbEa1QKXQhAyeDqckA==@nongnu.org
+X-Gm-Message-State: AOJu0Yz6XLzAzcJ0mbq53WODxUl3QuCzVPL5G816v9X/ylBmr0iHgTgf
+ obg+AtydNfegzqrZZEraXE9EvpliRHNmnq9bvkTldhQLhQBb/cpGHQK4kzaq/pjnBA11EI601gC
+ PCl7aVP7LMDHnSqFtSg0O65ZnXytdwDWuV0uzbnttRw==
+X-Gm-Gg: ASbGnctoerdYKu76CppLDDzsQ1pKsFFKTUZBkNGNMY1wTCTL5Jd44hk3EK4M3C/1YGj
+ 8XBOMzJeGBb7XsrMmZCCaHBEoB0Kd8UQtbKTTAYH1VHJkxozOM1WtnyAAxYnWJ8VfyP/NAj1SlA
+ GTXjfPxI1IrwXvg7PmfJu7LNkibrZQ2DPbFY6oOLb5D2Y4qRiYRlQd7+26rTJ6HXLsafzbvsAtg
+ N31sSS5
+X-Google-Smtp-Source: AGHT+IEEW49jn6XqUr8B+82MbnlTNfAwcDGgmifQbvoTTYeHDYV/xn4cdTUgl7LwGgfZtrOx3IkT6jyWtUTy4Jgx79s=
+X-Received: by 2002:a05:690c:7682:b0:722:7cfd:4f94 with SMTP id
+ 00721157ae682-7227cfd52f2mr112947137b3.14.1756808991961; Tue, 02 Sep 2025
+ 03:29:51 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] hw/arm/boot: Correctly free the MemoryDeviceInfoList
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-References: <20250901102214.3748011-1-peter.maydell@linaro.org>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20250901102214.3748011-1-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::431;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x431.google.com
+References: <20250826184504.510279-1-vacha.bhavsar@oss.qualcomm.com>
+ <20250826184504.510279-4-vacha.bhavsar@oss.qualcomm.com>
+In-Reply-To: <20250826184504.510279-4-vacha.bhavsar@oss.qualcomm.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 2 Sep 2025 11:29:40 +0100
+X-Gm-Features: Ac12FXxHN_ydRYoxfH2kugr7zpqez8cHcqyMCf-oUQaqSEdI3zVSYEsP_m67ccU
+Message-ID: <CAFEAcA9_wXKT6zfpCSty2bRjVpCSyzLcdfWuJofJEZcZuqRgYQ@mail.gmail.com>
+Subject: Re: [PATCH v6 3/3] target/arm: Added test case for SME register
+ exposure to GDB
+To: Vacha Bhavsar <vacha.bhavsar@oss.qualcomm.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+ Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1132;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1132.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -103,39 +99,301 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 1/9/25 12:22, Peter Maydell wrote:
-> When running the bios-tables-test under ASAN we see leaks like this:
-> 
-> Direct leak of 16 byte(s) in 1 object(s) allocated from:
->      #0 0x5bc58579b00d in calloc (/mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/qemu-system-aarch64+0x250400d) (BuildId: 2e27b63dc9ac45f522ced40a17c2a60cc32f1d38)
->      #1 0x7b4ad90337b1 in g_malloc0 (/lib/x86_64-linux-gnu/libglib-2.0.so.0+0x637b1) (BuildId: 1eb6131419edb83b2178b682829a6913cf682d75)
->      #2 0x5bc5861826db in qmp_memory_device_list /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/../../hw/mem/memory-device.c:307:34
->      #3 0x5bc587a9edb6 in arm_load_dtb /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/../../hw/arm/boot.c:656:15
-> 
-> Indirect leak of 28 byte(s) in 2 object(s) allocated from:
->      #0 0x5bc58579ae23 in malloc (/mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/qemu-system-aarch64+0x2503e23) (BuildId: 2e27b63dc9ac45f522ced40a17c2a60cc32f1d38)
->      #1 0x7b4ad6c8f947 in __vasprintf_internal libio/vasprintf.c:116:16
->      #2 0x7b4ad9080a52 in g_vasprintf (/lib/x86_64-linux-gnu/libglib-2.0.so.0+0xb0a52) (BuildId: 1eb6131419edb83b2178b682829a6913cf682d75)
->      #3 0x7b4ad90515e4 in g_strdup_vprintf (/lib/x86_64-linux-gnu/libglib-2.0.so.0+0x815e4) (BuildId: 1eb6131419edb83b2178b682829a6913cf682d75)
->      #4 0x7b4ad9051940 in g_strdup_printf (/lib/x86_64-linux-gnu/libglib-2.0.so.0+0x81940) (BuildId: 1eb6131419edb83b2178b682829a6913cf682d75)
->      #5 0x5bc5885eb739 in object_get_canonical_path /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/../../qom/object.c:2123:19
->      #6 0x5bc58618dca8 in pc_dimm_md_fill_device_info /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/../../hw/mem/pc-dimm.c:268:18
->      #7 0x5bc586182792 in qmp_memory_device_list /mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/../../hw/mem/memory-device.c:310:9
-> 
-> This happens because we declared the MemoryDeviceInfoList *md_list
-> with g_autofree, which will free the direct memory with g_free() but
-> doesn't free all the other data structures referenced by it.  Instead
-> what we want is to declare the pointer with g_autoptr(), which will
-> automatically call the qapi_free_MemoryDeviceInfoList() cleanup
-> function when the variable goes out of scope.
-> 
-> Fixes: 36bc78aca83cfd ("hw/arm: add static NVDIMMs in device tree")
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+On Tue, 26 Aug 2025 at 19:45, Vacha Bhavsar
+<vacha.bhavsar@oss.qualcomm.com> wrote:
+>
+> This patch adds a test case to test SME register exposure to
+> a remote gdb debugging session. This test simply sets and
+> reads SME registers.
+>
+> Signed-off-by: Vacha Bhavsar <vacha.bhavsar@oss.qualcomm.com>
 > ---
->   hw/arm/boot.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
+> Changes since v5:
+> - added copyright and SPDX line
+> - added functionality to avoid casting a gdb.Value object
+> to int when testing the za quadwords to address bug found
+> during review, this change is declared to users via a
+> warning message included in the test results file
+> run-gdbstub-sysregs-sme.out
+> ---
+>  configure                             |  11 ++
+>  tests/tcg/aarch64/Makefile.target     |  33 +++++-
+>  tests/tcg/aarch64/gdbstub/test-sme.py | 165 ++++++++++++++++++++++++++
+>  3 files changed, 208 insertions(+), 1 deletion(-)
+>  create mode 100644 tests/tcg/aarch64/gdbstub/test-sme.py
+>
+> diff --git a/configure b/configure
+> index 274a778764..9e2ae174dc 100755
+> --- a/configure
+> +++ b/configure
+> @@ -1839,6 +1839,17 @@ for target in $target_list; do
+>            echo "GDB=$gdb_bin" >> $config_target_mak
+>        fi
+>
+> +      if test "${gdb_arches#*$arch}" != "$gdb_arches" && version_ge $gdb_version 14.1; then
+> +          echo "GDB_HAS_SME_TILES=y" >> $config_target_mak
+> +          if test "$gdb_version" = "15.0.50.20240403-git"; then
+> +            echo "GDB_HAS_INT_CAST_SUPPORT=n" >> $config_target_mak
+> +          else
+> +            echo "GDB_HAS_INT_CAST_SUPPORT=y" >> $config_target_mak
+> +          fi
+> +       else
+> +          echo "GDB_HAS_SME_TILES=n" >> $config_target_mak
+> +      fi
+> +
+>        if test "${gdb_arches#*aarch64}" != "$gdb_arches" && version_ge $gdb_version 15.1; then
+>            echo "GDB_HAS_MTE=y" >> $config_target_mak
+>        fi
+> diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
+> index 16ddcf4f88..f9304d29cf 100644
+> --- a/tests/tcg/aarch64/Makefile.target
+> +++ b/tests/tcg/aarch64/Makefile.target
+> @@ -132,7 +132,38 @@ run-gdbstub-sve-ioctls: sve-ioctls
+>                 --bin $< --test $(AARCH64_SRC)/gdbstub/test-sve-ioctl.py, \
+>         basic gdbstub SVE ZLEN support)
+>
+> -EXTRA_RUNS += run-gdbstub-sysregs run-gdbstub-sve-ioctls
+> +ifneq ($(CROSS_AS_HAS_ARMV9_SME),)
+> +# SME gdbstub test
+> +ifeq ($(GDB_HAS_SME_TILES),y)
+> +ifeq ($(GDB_HAS_INT_CAST_SUPPORT),y)
+> +run-gdbstub-sysregs-sme: sysregs
+> +       $(call run-test, $@, $(GDB_SCRIPT) \
+> +               --gdb $(GDB) \
+> +               --qemu $(QEMU) --qargs "$(QEMU_OPTS)" \
+> +               --bin $< --test $(AARCH64_SRC)/gdbstub/test-sme.py \
+> +               -- test_sme --gdb_sme_tile_support --gdb_int_cast_support, \
+> +       basic gdbstub SME support)
+> +else
+> +run-gdbstub-sysregs-sme: sysregs
+> +       $(call run-test, $@, $(GDB_SCRIPT) \
+> +               --gdb $(GDB) \
+> +               --qemu $(QEMU) --qargs "$(QEMU_OPTS)" \
+> +               --bin $< --test $(AARCH64_SRC)/gdbstub/test-sme.py \
+> +               -- test_sme --gdb_sme_tile_support, \
+> +       basic gdbstub SME support)
+> +endif
+> +else
+> +run-gdbstub-sysregs-sme: sysregs
+> +       $(call run-test, $@, $(GDB_SCRIPT) \
+> +               --gdb $(GDB) \
+> +               --qemu $(QEMU) --qargs "$(QEMU_OPTS)" \
+> +               --bin $< --test $(AARCH64_SRC)/gdbstub/test-sme.py, \
+> +       basic gdbstub SME support)
+> +
+> +endif
+> +endif
+> +
+> +EXTRA_RUNS += run-gdbstub-sysregs run-gdbstub-sve-ioctls run-gdbstub-sysregs-sme
+>
+>  ifeq ($(GDB_HAS_MTE),y)
+>  run-gdbstub-mte: mte-8
+> diff --git a/tests/tcg/aarch64/gdbstub/test-sme.py b/tests/tcg/aarch64/gdbstub/test-sme.py
+> new file mode 100644
+> index 0000000000..e27a37631b
+> --- /dev/null
+> +++ b/tests/tcg/aarch64/gdbstub/test-sme.py
+> @@ -0,0 +1,165 @@
+> +#
+> +# Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
+> +#
+> +# SPDX-License-Identifier: GPL-2.0-or-later
+> +
+> +from __future__ import print_function
+> +#
+> +# Test the SME registers are visible and changeable via gdbstub
+> +#
+> +# This is launched via tests/guest-debug/run-test.py
+> +#
+> +
+> +import argparse
+> +import gdb
+> +from test_gdbstub import main, report
+> +
+> +MAGIC = 0x01020304
+> +INT_CAST_SUPPORT = 0
+> +
+> +def run_test():
+> +    "Run through the tests one by one"
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+This is a very unhelpful name and comment for this function.
 
-And queued, thanks!
+> +
+> +    frame = gdb.selected_frame()
+> +    rname = "za"
+> +    za = frame.read_register(rname)
+> +    report(True, "Reading %s" % rname)
+> +
+> +    for i in range(0, 16):
+> +        for j in range(0, 16):
+> +            cmd = "set $za[%d][%d] = 0x01" % (i, j)
+> +            gdb.execute(cmd)
+> +            report(True, "%s" % cmd)
+> +    for i in range(0, 16):
+> +        for j in range(0, 16):
+> +            reg = "$za[%d][%d]" % (i, j)
+> +            v = gdb.parse_and_eval(reg)
+> +            report(str(v.type) == "uint8_t",
+> +                    "size of %s" % (reg))
+> +            report(int(v) == 0x1, "%s is 0x%x" % (reg, 0x1))
+> +
+> +def run_test_slices():
+> +    "Run through the tests one by one"
+> +
+> +    frame = gdb.selected_frame()
+> +    rname = "za"
+> +    za = frame.read_register(rname)
+> +    report(True, "Reading %s" % rname)
+> +
+> +    for i in range(0, 16):
+> +        for j in range(0, 16):
+> +            cmd = "set $za[%d][%d] = 0x01" % (i, j)
+> +            gdb.execute(cmd)
+> +            report(True, "%s" % cmd)
+> +    for i in range(0, 16):
+> +        for j in range(0, 16):
+> +            reg = "$za[%d][%d]" % (i, j)
+> +            v = gdb.parse_and_eval(reg)
+> +            report(str(v.type) == "uint8_t",
+> +                    "size of %s" % (reg))
+> +            report(int(v) == 0x1, "%s is 0x%x" % (reg, 0x1))
+
+This first part is exactly the same as the run_test()
+function is testing, isn't it?
+
+> +
+> +    if INT_CAST_SUPPORT:
+> +        for i in range(0, 4):
+> +            for j in range(0, 4):
+> +                for k in range(0, 4):
+> +                    cmd = "set $za%dhq%d[%d] = 0x%x" % (i, j, k, MAGIC)
+> +                    gdb.execute(cmd)
+> +                    report(True, "%s" % cmd)
+> +            for j in range(0, 4):
+> +                for k in range(0, 4):
+> +                    reg = "$za%dhq%d[%d]" % (i, j, k)
+> +                    v = gdb.parse_and_eval(reg)
+> +                    report(str(v.type) == "uint128_t",
+> +                        "size of %s" % (reg))
+> +                    report(int(v) == MAGIC, "%s is 0x%x" % (reg, MAGIC))
+> +
+> +            for j in range(0, 4):
+> +                for k in range(0, 4):
+> +                    cmd = "set $za%dvq%d[%d] = 0x%x" % (i, j, k, MAGIC)
+> +                    gdb.execute(cmd)
+> +                    report(True, "%s" % cmd)
+> +            for j in range(0, 4):
+> +                for k in range(0, 4):
+> +                    reg = "$za%dvq%d[%d]" % (i, j, k)
+> +                    v = gdb.parse_and_eval(reg)
+> +                    report(str(v.type) == "uint128_t",
+> +                        "size of %s" % (reg))
+> +                    report(int(v) == MAGIC, "%s is 0x%x" % (reg, MAGIC))
+> +
+> +    else:
+> +        for i in range(0, 4):
+> +            for j in range(0, 4):
+> +                for k in range(0, 4):
+> +                    cmd = "set $za%dhq%d[%d] = 0x%x" % (i, j, k, MAGIC)
+> +                    gdb.execute(cmd)
+> +                    report(True, "%s" % cmd)
+> +            for j in range(0, 4):
+> +                for k in range(0, 4):
+> +                    reg = "$za%dhq%d[%d]" % (i, j, k)
+> +                    v = gdb.parse_and_eval(reg)
+> +                    report(str(v.type) == "uint128_t",
+> +                        "size of %s" % (reg))
+> +                    report(v == MAGIC, "%s is 0x%x" % (reg, MAGIC))
+
+So the only difference between these two branches is that we are
+checking "int(v) == MAGIC" rather than "v == MAGIC" ?
+
+Is this a "one GDB only works one way, and the other GDB only
+works the other way" case? Or is there a real interesting thing
+we'd like to test involving the cast ?
+
+Either way, this code is way too repetitive. Don't copy-and-paste
+like this, it's very hard to review.
+
+> +
+> +            for j in range(0, 4):
+> +                for k in range(0, 4):
+> +                    cmd = "set $za%dvq%d[%d] = 0x%x" % (i, j, k, MAGIC)
+> +                    gdb.execute(cmd)
+> +                    report(True, "%s" % cmd)
+> +            for j in range(0, 4):
+> +                for k in range(0, 4):
+> +                    reg = "$za%dvq%d[%d]" % (i, j, k)
+> +                    v = gdb.parse_and_eval(reg)
+> +                    report(str(v.type) == "uint128_t",
+> +                        "size of %s" % (reg))
+> +                    report(v == MAGIC, "%s is 0x%x" % (reg, MAGIC))
+> +
+> +    for i in range(0, 4):
+> +        for j in range(0, 4):
+> +            for k in range(0, 4):
+> +                cmd = "set $za%dhd%d[%d] = 0x%x" % (i, j, k, MAGIC)
+> +                gdb.execute(cmd)
+> +                report(True, "%s" % cmd)
+> +        for j in range(0, 4):
+> +            for k in range(0, 4):
+> +                reg = "$za%dhd%d[%d]" % (i, j, k)
+> +                v = gdb.parse_and_eval(reg)
+> +                report(str(v.type) == "uint64_t",
+> +                    "size of %s" % (reg))
+> +                report(int(v) == MAGIC, "%s is 0x%x" % (reg, MAGIC))
+> +
+> +        for j in range(0, 4):
+> +            for k in range(0, 4):
+> +                cmd = "set $za%dvd%d[%d] = 0x%x" % (i, j, k, MAGIC)
+> +                gdb.execute(cmd)
+> +                report(True, "%s" % cmd)
+> +        for j in range(0, 4):
+> +            for k in range(0, 4):
+> +                reg = "$za%dvd%d[%d]" % (i, j, k)
+> +                v = gdb.parse_and_eval(reg)
+> +                report(str(v.type) == "uint64_t",
+> +                    "size of %s" % (reg))
+> +                report(int(v) == MAGIC, "%s is 0x%x" % (reg, MAGIC))
+> +
+> +
+> +parser = argparse.ArgumentParser(description="A gdbstub test for SME support")
+> +parser.add_argument("--gdb_sme_tile_support", help="GDB support for SME tiles", \
+> +                    action="store_true")
+> +parser.add_argument("--gdb_int_cast_support",
+> +                    help="GDB support for 128bit int cast", \
+> +                    action="store_true")
+> +args = parser.parse_args()
+> +
+> +if args.gdb_sme_tile_support:
+> +    if args.gdb_int_cast_support:
+> +        INT_CAST_SUPPORT = 1
+> +    else:
+> +        print("WARNING: The version of gdb used (15.0.50.20240403-git)\n"
+
+This is super misleading: it looks like it's printing out what
+gdb version we ran the tests with, but actually this version
+string is just hardcoded !
+
+> +        "does not support casting a gdb.Value object to 128 bit python\n"
+> +        "integer. Thus, the testing for the ZA quadwords will be done\n"
+> +        "without int casting. Refer to tests/tcg/aarch64/gdbstub/test-sme.py\n"
+> +        "for details.")
+
+This is a big warning that doesn't convey anything useful
+to the reader (why do I care whether your test case
+is using int casting or not?).
+
+If there is part of the gdb view of the register that we
+can't test on some gdb versions, that's fine. To handle
+that, split the test case into two, so that for the
+test that needs a newer gdb we report the test as SKIPPED
+because gdb is too old.
+
+Please also write some comments that tell me what your
+test is testing. I should not have to reverse-engineer
+your intentions by reading the code...
+
+thanks
+-- PMM
 

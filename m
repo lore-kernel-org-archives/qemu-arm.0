@@ -4,99 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6C67CA1005
-	for <qemu-arm@archiver.kernel.org>; Tue,  2 Sep 2025 14:03:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB0A7CA1005
+	for <qemu-arm@archiver.kernel.org>; Tue,  2 Sep 2025 15:07:16 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1utRbZ-0002lH-El; Tue, 02 Sep 2025 10:03:30 -0400
+	id 1utSai-0005pR-JQ; Tue, 02 Sep 2025 11:06:36 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=Sj0j=3N=kaod.org=clg@ozlabs.org>)
- id 1utRb6-0002L0-Qb; Tue, 02 Sep 2025 10:03:05 -0400
-Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=Sj0j=3N=kaod.org=clg@ozlabs.org>)
- id 1utRb3-0003kk-Tl; Tue, 02 Sep 2025 10:02:56 -0400
-Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4cGSB20F4Zz4w9h;
- Wed,  3 Sep 2025 00:02:50 +1000 (AEST)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4cGS9y5ddtz4w2Q;
- Wed,  3 Sep 2025 00:02:46 +1000 (AEST)
-Message-ID: <d858c5a8-8698-4eed-a0ab-773b06ec77e0@kaod.org>
-Date: Tue, 2 Sep 2025 16:02:44 +0200
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1utSaf-0005nP-KZ
+ for qemu-arm@nongnu.org; Tue, 02 Sep 2025 11:06:33 -0400
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1utSaY-0008A8-AQ
+ for qemu-arm@nongnu.org; Tue, 02 Sep 2025 11:06:33 -0400
+Received: by mail-wm1-x333.google.com with SMTP id
+ 5b1f17b1804b1-45b8b02dd14so15218105e9.1
+ for <qemu-arm@nongnu.org>; Tue, 02 Sep 2025 08:06:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1756825581; x=1757430381; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=ZEGO139SeqDxUI/SQqsVpNZ7wS1+CNUNhT7jQXyiEA8=;
+ b=EliLG+igVdHnlre29wOep/CMzAlJx3jdzmKWwnDrvjrZ3Iz9+wLN9uVud44RPq+mAT
+ H+A/HIKaUPoKCkulTUmdQVbu3AUZnmbrfrC+aljohV2nBr3tMRuEzHXnXE7XluTnuQB3
+ ZmLrsRW0rMU8/ozLzV9T3DbAhccNlAwNztMdn4vZdzzVfrpUAk7b1Czx8RwfZRCJUwlZ
+ Hx1Pa2/WCfYHAYuxJelNUYaOf5UpaNx3SUqhMwNYOufmts3rf+jmLDQm1mS7LuYzWBnK
+ oReN8EekCYj2cCJKJl105EzleDzvJP016ZOdbDIPUFh3rjB3fMEF2j9zabrTTIPPZDwl
+ 6ULQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1756825581; x=1757430381;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=ZEGO139SeqDxUI/SQqsVpNZ7wS1+CNUNhT7jQXyiEA8=;
+ b=ZVz6DVqyiWRUXV+xAaRVz+DeHq1S02vAyf1cvfgErIaHG4r/zCjrt5onvDMicl5stN
+ scApSjWGCZTgl3P6DojXyxgYmLE8Evmrjq/XbCEkZdPynk/I0HJ3E2JqvDPmnipICL86
+ tlzewgt2uNdytl52o4x9HzC3oaoPAhJtwwTjmuxBi8xPuftS7PQ0b8L7PJFvV8T6zkfC
+ kPLjVVPOqDc39KaTJhviZ0Huf1HEjX5zoV8QsWCwsblQGoa5yB37e86zSakCRFvahHyi
+ NozVZeZE9fWhaG0vrTtb8yNNNWG7fLh8mDqHrNQCOSLSYfwGbuxqicgf1+X1OCR0KYg/
+ ufWQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCV/XQQ+rk9HD+wC07hwMY2CezAB4xIziqLRjC6kKDrNbd6g69ZXwlYoGlOkLy5WOUaB6O5W7PuzUA==@nongnu.org
+X-Gm-Message-State: AOJu0YwTsMGiSIQxH0V+2fBhSdfGNqrV9yvwe1GPNpfxrVJBmo2YOJ1L
+ eoYhymyWiiT34O954D3D0ru3TSzXkDapeaMU1nV4Hc9IruP/Sygw+d148rtmkc4A3wE=
+X-Gm-Gg: ASbGncuEZOCYdGOpXn0obZ5u68n2V4Ydf3VJXIOW7kFOHZBD/vmXq2FFGClMSUeZA82
+ wkjpUZRq7S7g2BNMRcZv0EPYsuYk6WXgnfDuERvvzhQ3Bg8N5FEBffjZhnjySiP3jgNFWLb8Zzx
+ pfUyLj12mVzdu077hAHVkP1bNTo+Ii54+NIdV9VQNQ2NJuB24y3Fe9X8dl/W+l9F24xVkgWMsxf
+ 5KnkWk0B/uBcw+ZSzH5j1O++KL565p26m6YSWSdygyuV7Hm7tymmwMFGJYXAym+pRxMSfZ2v6u/
+ MX7phA8FPfex7KJtXsrAjd21tCa5LM9R+U7Sfv+ypfUq2akaTQ0/eWpk2WT7fC4IMoKh3ksY+hs
+ ikHhN0q1r6LaBmWlozKT8PGwtn9HnxFlbh7SZAdRkShLxZegE8XGvzBPJ2rT1yIc2XA==
+X-Google-Smtp-Source: AGHT+IF10ro3TGgEArpDgxiZs0Eqj3adox0tKbIlEUiJ0UdUIAUl6iMe3HcGU8/gvgQsDph+PdecLA==
+X-Received: by 2002:a05:600c:5248:b0:456:1a69:94fd with SMTP id
+ 5b1f17b1804b1-45b8549c438mr101209995e9.0.1756825580900; 
+ Tue, 02 Sep 2025 08:06:20 -0700 (PDT)
+Received: from [192.168.69.207] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-3cf33fb9d37sm20272216f8f.49.2025.09.02.08.06.19
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 02 Sep 2025 08:06:20 -0700 (PDT)
+Message-ID: <6289fe04-82be-4a34-9fed-b0cc08e3b8f0@linaro.org>
+Date: Tue, 2 Sep 2025 17:06:19 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [SPAM] [PATCH v1] hw/arm/aspeed Move ast2700-evb alias to
- ast2700a1-evb
-To: Jamin Lin <jamin_lin@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-Cc: troy_lee@aspeedtech.com, kane_chen@aspeedtech.com
-References: <20250902062550.3797040-1-jamin_lin@aspeedtech.com>
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Content-Language: en-US, fr
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <20250902062550.3797040-1-jamin_lin@aspeedtech.com>
+Subject: Re: [PATCH v2 1/8] hw/sd/sdcard: Fix size check for backing block
+ image
+To: Jan Kiszka <jan.kiszka@siemens.com>, qemu-devel <qemu-devel@nongnu.org>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Cc: Bin Meng <bmeng.cn@gmail.com>, qemu-block@nongnu.org,
+ Ilias Apalodimas <ilias.apalodimas@linaro.org>,
+ qemu-arm <qemu-arm@nongnu.org>
+References: <cover.1756706188.git.jan.kiszka@siemens.com>
+ <86217712232abd5152e7dfa98111f57b9b78d83b.1756706188.git.jan.kiszka@siemens.com>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <86217712232abd5152e7dfa98111f57b9b78d83b.1756706188.git.jan.kiszka@siemens.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=150.107.74.76;
- envelope-from=SRS0=Sj0j=3N=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::333;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x333.google.com
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
+ DKIM_SIGNED=0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -112,60 +105,45 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 9/2/25 08:25, Jamin Lin wrote:
-> This patch moves the "ast2700-evb" alias from the A0 to A1.
-> The A0 machine remains available via its explicit name
-> ("ast2700a0-evb"), while functional tests are updated to
-> target A0 by name instead of relying on the generic alias.
+On 1/9/25 07:56, Jan Kiszka wrote:
+> From: Jan Kiszka <jan.kiszka@siemens.com>
 > 
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+> The power-of-2 rule applies to the user data area, not the complete
+> block image. The latter can be concatenation of boot partition images
+> and the user data.
+> 
+> Signed-off-by: Jan Kiszka <jan.kiszka@siemens.com>
+> Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > ---
->   hw/arm/aspeed.c                                 | 2 +-
->   tests/functional/aarch64/test_aspeed_ast2700.py | 4 ++--
->   2 files changed, 3 insertions(+), 3 deletions(-)
+>   hw/sd/sd.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-> index c31bbe7701..d21b21965a 100644
-> --- a/hw/arm/aspeed.c
-> +++ b/hw/arm/aspeed.c
-> @@ -1995,7 +1995,6 @@ static void aspeed_machine_ast2700a0_evb_class_init(ObjectClass *oc,
->       MachineClass *mc = MACHINE_CLASS(oc);
->       AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
+> diff --git a/hw/sd/sd.c b/hw/sd/sd.c
+> index 8c290595f0..16aee210b4 100644
+> --- a/hw/sd/sd.c
+> +++ b/hw/sd/sd.c
+> @@ -2789,7 +2789,7 @@ static void sd_realize(DeviceState *dev, Error **errp)
+>               return;
+>           }
 >   
-> -    mc->alias = "ast2700-evb";
->       mc->desc = "Aspeed AST2700 A0 EVB (Cortex-A35)";
->       amc->soc_name  = "ast2700-a0";
->       amc->hw_strap1 = AST2700_EVB_HW_STRAP1;
-> @@ -2018,6 +2017,7 @@ static void aspeed_machine_ast2700a1_evb_class_init(ObjectClass *oc,
->       MachineClass *mc = MACHINE_CLASS(oc);
->       AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
->   
-> +    mc->alias = "ast2700-evb";
->       mc->desc = "Aspeed AST2700 A1 EVB (Cortex-A35)";
->       amc->soc_name  = "ast2700-a1";
->       amc->hw_strap1 = AST2700_EVB_HW_STRAP1;
-> diff --git a/tests/functional/aarch64/test_aspeed_ast2700.py b/tests/functional/aarch64/test_aspeed_ast2700.py
-> index d02dc7991c..e8e06701cf 100755
-> --- a/tests/functional/aarch64/test_aspeed_ast2700.py
-> +++ b/tests/functional/aarch64/test_aspeed_ast2700.py
-> @@ -111,8 +111,8 @@ def start_ast2700_test_vbootrom(self, name):
->           self.do_test_aarch64_aspeed_sdk_start(
->                   self.scratch_file(name, 'image-bmc'))
->   
-> -    def test_aarch64_ast2700_evb_sdk_v09_06(self):
-> -        self.set_machine('ast2700-evb')
-> +    def test_aarch64_ast2700a0_evb_sdk_v09_06(self):
-> +        self.set_machine('ast2700a0-evb')
->   
->           self.archive_extract(self.ASSET_SDK_V906_AST2700)
->           self.start_ast2700_test('ast2700-a0-default')
+> -        blk_size = blk_getlength(sd->blk);
+> +        blk_size = blk_getlength(sd->blk) - sd->boot_part_size * 2;
+>           if (blk_size > 0 && !is_power_of_2(blk_size)) {
+>               int64_t blk_size_aligned = pow2ceil(blk_size);
+>               char *blk_size_str;
 
+This seems to break the tests/functional/arm/test_aspeed_rainier.py
+test due to mmc-p10bmc-20240617.qcow2 size:
 
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
+Command: /builds/qemu-project/qemu/build/qemu-system-arm -display none 
+-vga none -chardev socket,id=mon,fd=5 -mon chardev=mon,mode=control 
+-machine rainier-bmc -chardev socket,id=console,fd=10 -serial 
+chardev:console -drive 
+file=/builds/qemu-project/qemu/functional-cache/download/d523fb478d2b84d5adc5658d08502bc64b1486955683814f89c6137518acd90b,if=sd,id=sd2,index=2 
+-net nic -net user -snapshot
+Output: qemu-system-arm: Invalid SD card size: 16 GiB
+SD card size has to be a power of 2, e.g. 16 GiB.
 
-Thanks,
-
-C.
-
+https://gitlab.com/qemu-project/qemu/-/jobs/11217561316
 
 

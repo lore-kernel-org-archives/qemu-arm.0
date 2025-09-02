@@ -4,118 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B729CA1005
-	for <qemu-arm@archiver.kernel.org>; Tue,  2 Sep 2025 13:25:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C23F5CA0FFE
+	for <qemu-arm@archiver.kernel.org>; Tue,  2 Sep 2025 13:26:40 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1utR17-0001nN-Tn; Tue, 02 Sep 2025 09:25:45 -0400
+	id 1utR1l-0002cH-5w; Tue, 02 Sep 2025 09:26:25 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1utR0d-0001c7-Mh
- for qemu-arm@nongnu.org; Tue, 02 Sep 2025 09:25:20 -0400
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1utR1i-0002XZ-RV
+ for qemu-arm@nongnu.org; Tue, 02 Sep 2025 09:26:23 -0400
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1utR0U-0006bY-UN
- for qemu-arm@nongnu.org; Tue, 02 Sep 2025 09:25:14 -0400
-Received: by mail-wm1-x336.google.com with SMTP id
- 5b1f17b1804b1-45b8e28b3c5so12055385e9.1
- for <qemu-arm@nongnu.org>; Tue, 02 Sep 2025 06:25:06 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1utR1e-0006td-PY
+ for qemu-arm@nongnu.org; Tue, 02 Sep 2025 09:26:21 -0400
+Received: by mail-wm1-x32f.google.com with SMTP id
+ 5b1f17b1804b1-45b869d3560so26789265e9.1
+ for <qemu-arm@nongnu.org>; Tue, 02 Sep 2025 06:26:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756819504; x=1757424304; darn=nongnu.org;
+ d=linaro.org; s=google; t=1756819576; x=1757424376; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=rz/p6M0rklQHwfyQ6YvhjhFju5Y1e2Dz66wkkh69jUI=;
- b=V+f0QGCmLLB3/qhKhi8harvVDOJqFRxa1oh0gDKquKDvxPQuNLAeJN2MLhuOCFNK+G
- cS2B1UB1hV+W4UmvT23cRSZO+i8VPpUV7ht4zBj7bH/xX/u0hMz00KnfRkqW1d1S75+p
- xnxITKhnZWYGktFSV3GQL67blatkLFGntLHamyF0NJrSIQaGfrRUT5byjsySS5pQLV80
- wRNRSqU7VGWXdmvH9rqT2zLU+HNEqli4bM7u2qN5+IaDc+PZW/4Ci+B2opW6ZbYoUvee
- 70L7Kmi+JWuvBNPDTDUx1DtUOQlZXGkU+DElctrbRx92/C84pZiYzOa8J+IGtyAWZxPW
- +DJQ==
+ bh=Jpw7O1hvdgg3zkQ+ExyEAJ/cdv77jV29nWmWeROzU08=;
+ b=AhGQZQBV8w4bvakHPLlnXIWwjh+XzROqxmu3/jBMMChoWsbEoSLNVJFSKWm99jAg9J
+ Drfpgap5raoHwHwIGMp2Cc+NUHUXQXZpa8j593LI1yO8dNlonUkhUop9NroZ6RXP1cal
+ p8r/S7fwwmLMskRRpmx5VsnkbDb/W8RbAhpgscj3LG2YuvhuFaoeMOLLUvErZc+OonjZ
+ SE06Mgye9kws2bArWrkKzyxYbYuQ/nM3w+VkVWNm5cabKjvkS1MOhV+ZvAB0DXu2RCOg
+ 2/qdJAcqj6W2ltOeUkN6RYUk0HXTc4Wwp5xgMRqV37JY5WpCQ0YGLaWDEm6OTOfTkLFO
+ k2LA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756819504; x=1757424304;
+ d=1e100.net; s=20230601; t=1756819576; x=1757424376;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=rz/p6M0rklQHwfyQ6YvhjhFju5Y1e2Dz66wkkh69jUI=;
- b=mjql2l0hFFv8fy2HWskRQT4hP2wOp/cV20zTlSF8gVC7bjRw51bt5wJI+W3t4G2yR8
- jdm54nq0IF1rYH475FSUT7v3+PjXUfcgdihIxuPmS7I5pWN0OWfDJbUz7D023UlgNAMZ
- NPSWWiYb1wZ7kSRHGvk+jPpKBZ9w7O/itmSW6Wsb9TJ9Fjabif+I1sjMVnZ/PMewrERg
- AxcEOYGdXT4Rnui+S4WdqbU4yYwnv2q89mpJWg4okXrZCycjDNWUBz2w7m0iL6lGMR/g
- hek92dCWVOCNedgSPDjI6afyGznrZx0NZAlG8pmu0WUS30w+LQmuN8+HE2xCkLCzG931
- KX9Q==
+ bh=Jpw7O1hvdgg3zkQ+ExyEAJ/cdv77jV29nWmWeROzU08=;
+ b=JC0jya9sY5LN7v3M7gH/lpqg7Mb3q4IudtxPpY2/h31VMb5vctpKZjFpIAzg8DvBbu
+ xrO87dJD4Ndv49LCRLCmEZ9Wup3ByoRLQchllhD9Vzfwo45+ZnUgqbnYTT9J5cQlH7At
+ 6gTFQshO77HDEkYe8KHWP8dvG9x54hy+nKy8qYyGW5rlHMzHZ0O+MzcSgFq3xvB3U3yz
+ gva1+Lpgs6HezCj2YAn9LykwRG/WH8Y7vnor/4Uik5JtyL0oe7sTCcih75SJUczND6PV
+ r9swO5nJ7zao5e6h2qLUyTHc/CLK0NIMLBidwYAlWSkTLislmg4ZlhsAl3ghEb7uYI2m
+ xxqw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWikpRo68latCn0dhqoltQKbqKcoZNWxI9LUs1VqaMcWAfA0eODwgD1N/jeAS6t6Gal1w+JTTSxsg==@nongnu.org
-X-Gm-Message-State: AOJu0YzP6SMY2Ca73uLm6hANmAg14ydVpqKMH8QmQ5P7ejMlBFXLXg4b
- zqen8X/uhCbFsOm7GRhFzYCvAT/1+rUlFEzg1njUnm12BnTU30EIs9Z1kjCUAhD2z0w=
-X-Gm-Gg: ASbGncvt9o2WYPLRpXxdFNe7Ml4dkRcTOMPjToaQi+sIy9330ssSHQLmzn240LNfapC
- vmtpbKdkYaA6j9rHRoPwxSmQPdQzcIQF9pFmbldzh2QrYQRUH9zE829eUfDqsc78ueosPHFGOD8
- yF5q/InjQxOpZkXNwbNbXCh246Q5cmm/8BBaKRUUSxSC9GpGGMz32EgCFqn7vdJxTC858IceY8Q
- 4R2EfBiFsBPfCOE0kNETW7zwfyXKpRSVecz2Mk/+T4rfNIvj4hKWrDhoH4w4GxiBG4kpz4G4/rU
- sHhr/XpPc6FDuzjWw6oPBYP4/kHUnhEMsKVmyBkuPuyRNorDAlGJGiSS1gzodCM8w3ljf3LKoGS
- aM3bqn3xiNJS4aFYM7rDMSyUlBt5W69FSk1ZwYODErkTLKiwhODfgjGVQ9elf5LUWB1A0VPM+Qa
- MI
-X-Google-Smtp-Source: AGHT+IEYmruxNHSN7LVlQ+61cQOiuO9GUpOJdI4vg0itRWRn52yE5aUCbQ+D5IlmMUWkcOPQ5loTdw==
-X-Received: by 2002:a5d:5712:0:b0:3dc:db:89f3 with SMTP id
- ffacd0b85a97d-3dc00db8a77mr46469f8f.16.1756819504134; 
- Tue, 02 Sep 2025 06:25:04 -0700 (PDT)
+ AJvYcCWGXwAiSpdynq1M/ir4DWDt0JbePZQt/5u8h943JsgyFMRMN9mJ8llcFUaccgfQcg4jCc5R4ovFUw==@nongnu.org
+X-Gm-Message-State: AOJu0YyxFdC7XMwvuqSjqm/P+1B+qe+tkwNBPpEpW+HPRQcvKC1NC1mn
+ dASbc52AUT95KZufog6ey57h2YT78yXEn9u1Pzw6vTiiOIrck8umRREDsj50h+x4D50=
+X-Gm-Gg: ASbGncs3ZHKBsZOhttIaRab7hgVQ5NJ3WwskQyDqxRyUqNmfIMddPpz2bfKcMcnkDz0
+ kP8zmwlm2wi56yoxbVb/ilkDyk9nh4FR0egqDtxhUfpzXVn10fR1nwBA+PVA8t5uqKul7zADgmJ
+ p3LJoAZQknLxQeCos4bQW/TIaQ1X0fYJTjVR7K5ZqJnNeNQLQmS6Bu0cbqsjRLTkqN1nkD1INM8
+ 919i1T3mfQDT0cgQot16jIjg0sXCUx3e9JkTLhlJMzuetkVDKhdIE+fIjK5jIGpQynO0cDAMFXR
+ 5XU+blqdRD5ErjXCjmC9GpnfC/oigq6rRhlKuESRhhFBDPW9MXsn7fxUl36/VYFzpanBtEmqW9B
+ 0OEKDuVjxVfupxlz89valJbNJfpgdrSx9waXA6/y6rxzng91DJjjnTprKnHfp+sZQiwf9EVqou7
+ Lv
+X-Google-Smtp-Source: AGHT+IGdcmJ0xcrZ/PpCUNKK5qT5M62HF4dE794Hkisv+n4418KZbBk0qjBu7Nl1u2oeREPbt8SnAw==
+X-Received: by 2002:a05:6000:230c:b0:3d5:a6a9:7d38 with SMTP id
+ ffacd0b85a97d-3d5a6a98bd0mr6337929f8f.59.1756819575729; 
+ Tue, 02 Sep 2025 06:26:15 -0700 (PDT)
 Received: from [192.168.69.207] (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3cf270fbd01sm20127940f8f.13.2025.09.02.06.25.01
+ ffacd0b85a97d-3d540843a2csm11255089f8f.22.2025.09.02.06.26.13
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 02 Sep 2025 06:25:03 -0700 (PDT)
-Message-ID: <baa2f292-c29c-4045-8470-a9c7387cf98a@linaro.org>
-Date: Tue, 2 Sep 2025 15:25:01 +0200
+ Tue, 02 Sep 2025 06:26:15 -0700 (PDT)
+Message-ID: <9fbbe9fe-1067-4273-8c4c-645c2c1084a7@linaro.org>
+Date: Tue, 2 Sep 2025 15:26:13 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH 0/7] accel: Add per-accelerator vCPUs queue
-To: qemu-devel@nongnu.org, Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Cc: Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- =?UTF-8?B?RnLDqWTDqXJpYyBCYXJyYXQ=?= <fbarrat@linux.ibm.com>,
- Stefano Stabellini <sstabellini@kernel.org>,
- Ilya Leoshkevich <iii@linux.ibm.com>, Cameron Esfahani <dirty@apple.com>,
- Paolo Bonzini <pbonzini@redhat.com>, kvm@vger.kernel.org,
- Alexander Graf <agraf@csgraf.de>, Paul Durrant <paul@xen.org>,
- David Hildenbrand <david@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- xen-devel@lists.xenproject.org, qemu-arm@nongnu.org,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>,
- Yanan Wang <wangyanan55@huawei.com>, Reinoud Zandijk <reinoud@netbsd.org>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-s390x@nongnu.org,
- Riku Voipio <riku.voipio@iki.fi>, Anthony PERARD <anthony@xenproject.org>,
- Alistair Francis <alistair.francis@wdc.com>,
- Sunil Muthuswamy <sunilmut@microsoft.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- Nicholas Piggin <npiggin@gmail.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Marcelo Tosatti <mtosatti@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Roman Bolshakov <rbolshakov@ddn.com>,
- "Edgar E . Iglesias" <edgar.iglesias@amd.com>, Zhao Liu
- <zhao1.liu@intel.com>, Phil Dennis-Jordan <phil@philjordan.eu>,
- David Woodhouse <dwmw2@infradead.org>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>,
- Nina Schoetterl-Glausch <nsg@linux.ibm.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Eduardo Habkost <eduardo@habkost.net>, qemu-ppc@nongnu.org,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Anton Johansson <anjo@rev.ng>,
- Salil Mehta <salil.mehta@huawei.com>
-References: <20250106200258.37008-1-philmd@linaro.org>
+Subject: Re: [PATCH RFC V5 11/30] arm/virt: Init PMU at host for all possible
+ vCPUs
+To: Salil Mehta <salil.mehta@huawei.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, mst@redhat.com
+Cc: maz@kernel.org, jean-philippe@linaro.org, jonathan.cameron@huawei.com,
+ lpieralisi@kernel.org, peter.maydell@linaro.org,
+ richard.henderson@linaro.org, imammedo@redhat.com, andrew.jones@linux.dev,
+ david@redhat.com, peterx@redhat.com, eric.auger@redhat.com, will@kernel.org,
+ ardb@kernel.org, oliver.upton@linux.dev, pbonzini@redhat.com,
+ gshan@redhat.com, rafael@kernel.org, borntraeger@linux.ibm.com,
+ alex.bennee@linaro.org, npiggin@gmail.com, harshpb@linux.ibm.com,
+ linux@armlinux.org.uk, darren@os.amperecomputing.com,
+ ilkka@os.amperecomputing.com, vishnu@os.amperecomputing.com,
+ karl.heubaum@oracle.com, miguel.luis@oracle.com, salil.mehta@opnsrc.net,
+ zhukeqian1@huawei.com, wangxiongfeng2@huawei.com, wangyanan55@huawei.com,
+ jiakernel2@gmail.com, maobibo@loongson.cn, lixianglai@loongson.cn,
+ shahuang@redhat.com, zhao1.liu@intel.com, linuxarm@huawei.com,
+ gustavo.romero@linaro.org, Pierrick Bouvier <pierrick.bouvier@linaro.org>
+References: <20241015100012.254223-1-salil.mehta@huawei.com>
+ <20241015100012.254223-12-salil.mehta@huawei.com>
 Content-Language: en-US
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20250106200258.37008-1-philmd@linaro.org>
+In-Reply-To: <20241015100012.254223-12-salil.mehta@huawei.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::336;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x336.google.com
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -131,70 +118,47 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Cc'ing Pierrick & Salil.
+Hi Salil,
 
-On 6/1/25 21:02, Philippe Mathieu-Daudé wrote:
-> Hi,
+On 15/10/24 11:59, Salil Mehta wrote:
+> The PMU for all possible vCPUs must be initialized during VM initialization.
+> Refactor the existing code to accommodate possible vCPUs. This assumes that all
+> processors being used are identical. It is an architectural constraint of ARM
+> CPUs that all vCPUs MUST have identical feature sets, at least until the ARM
+> specification is updated to allow otherwise.
 > 
-> Currently we register all vCPUs to the global 'cpus_queue' queue,
-> however we can not discriminate per accelerator or per target
-> architecture (which might happen in a soon future).
+> Past discussion for reference:
+> Link: https://lists.gnu.org/archive/html/qemu-devel/2020-06/msg00131.html
 > 
-> This series tries to add an accelerator discriminator, so
-> accelerator specific code can iterate on its own vCPUs. This
-> is required to run a pair of HW + SW accelerators like the
-> (HVF, TCG) or (KVM, TCG) combinations. Otherwise, i.e. the
-> HVF core code could iterate on TCG vCPUs...
-> To keep it simple and not refactor heavily the code base,
-> we introduce the CPU_FOREACH_TCG/HVF/KVM() macros, only
-> defined for each accelerator.
-> 
-> This is just a RFC to get some thoughts whether this is
-> heading in the correct direction or not ;)
-> 
-> Regards,
-> 
-> Phil.
-> 
-> Philippe Mathieu-Daudé (7):
->    cpus: Restrict CPU_FOREACH_SAFE() to user emulation
->    cpus: Introduce AccelOpsClass::get_cpus_queue()
->    accel/tcg: Implement tcg_get_cpus_queue()
->    accel/tcg: Use CPU_FOREACH_TCG()
->    accel/hw: Implement hw_accel_get_cpus_queue()
->    accel/hvf: Use CPU_FOREACH_HVF()
->    accel/kvm: Use CPU_FOREACH_KVM()
-> 
->   accel/tcg/tcg-accel-ops.h         | 10 ++++++++++
->   include/hw/core/cpu.h             | 11 +++++++++++
->   include/system/accel-ops.h        |  6 ++++++
->   include/system/hvf_int.h          |  4 ++++
->   include/system/hw_accel.h         |  9 +++++++++
->   include/system/kvm_int.h          |  3 +++
->   accel/accel-system.c              |  8 ++++++++
->   accel/hvf/hvf-accel-ops.c         |  9 +++++----
->   accel/kvm/kvm-accel-ops.c         |  1 +
->   accel/kvm/kvm-all.c               | 14 +++++++-------
->   accel/tcg/cputlb.c                |  7 ++++---
->   accel/tcg/monitor.c               |  3 ++-
->   accel/tcg/tb-maint.c              |  7 ++++---
->   accel/tcg/tcg-accel-ops-rr.c      | 10 +++++-----
->   accel/tcg/tcg-accel-ops.c         | 16 ++++++++++++----
->   accel/tcg/user-exec-stub.c        |  5 +++++
->   accel/xen/xen-all.c               |  1 +
->   cpu-common.c                      | 10 ++++++++++
->   hw/i386/kvm/clock.c               |  3 ++-
->   hw/intc/spapr_xive_kvm.c          |  5 +++--
->   hw/intc/xics_kvm.c                |  5 +++--
->   system/cpus.c                     |  5 +++++
->   target/arm/hvf/hvf.c              |  4 ++--
->   target/i386/kvm/kvm.c             |  4 ++--
->   target/i386/kvm/xen-emu.c         |  2 +-
->   target/i386/nvmm/nvmm-accel-ops.c |  1 +
->   target/i386/whpx/whpx-accel-ops.c |  1 +
->   target/s390x/kvm/kvm.c            |  2 +-
->   target/s390x/kvm/stsi-topology.c  |  3 ++-
->   29 files changed, 130 insertions(+), 39 deletions(-)
-> 
+> Co-developed-by: Keqian Zhu <zhukeqian1@huawei.com>
+> Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
+> Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
+> ---
+>   hw/arm/virt.c         | 9 +++++----
+>   include/hw/arm/virt.h | 1 +
+>   include/hw/core/cpu.h | 5 +++++
+>   3 files changed, 11 insertions(+), 4 deletions(-)
 
+
+> diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+> index 0be1984698..4a74c383ab 100644
+> --- a/include/hw/core/cpu.h
+> +++ b/include/hw/core/cpu.h
+> @@ -618,6 +618,11 @@ extern CPUTailQ cpus_queue;
+>   #define CPU_FOREACH_SAFE(cpu, next_cpu) \
+>       QTAILQ_FOREACH_SAFE_RCU(cpu, &cpus_queue, node, next_cpu)
+>   
+> +#define CPU_FOREACH_POSSIBLE(cpu, poslist) \
+> +    for (int iter = 0; \
+> +         iter < (poslist)->len && ((cpu) = (poslist)->cpus[iter].cpu, 1); \
+> +         iter++)
+> +
+>   extern __thread CPUState *current_cpu;
+
+Please add this macro in a distinct patch, and add a @docstring
+explaining how to use it.
+
+Thanks,
+
+Phil.
 

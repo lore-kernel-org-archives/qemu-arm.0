@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48109CA0FFE
-	for <qemu-arm@archiver.kernel.org>; Tue,  2 Sep 2025 07:52:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 484C7CA1005
+	for <qemu-arm@archiver.kernel.org>; Tue,  2 Sep 2025 08:10:17 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1utLnm-0007nr-Ep; Tue, 02 Sep 2025 03:51:38 -0400
+	id 1utM5I-00014N-Tr; Tue, 02 Sep 2025 04:09:45 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=Sj0j=3N=kaod.org=clg@ozlabs.org>)
- id 1utLnk-0007lq-Oa; Tue, 02 Sep 2025 03:51:36 -0400
-Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
+ id 1utM5D-00013o-6w; Tue, 02 Sep 2025 04:09:39 -0400
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=Sj0j=3N=kaod.org=clg@ozlabs.org>)
- id 1utLni-0001xs-IP; Tue, 02 Sep 2025 03:51:36 -0400
+ id 1utM55-0004ON-Kz; Tue, 02 Sep 2025 04:09:33 -0400
 Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4cGHxY5txRz4wB0;
- Tue,  2 Sep 2025 17:51:29 +1000 (AEST)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4cGJLF1VXjz4wB0;
+ Tue,  2 Sep 2025 18:09:25 +1000 (AEST)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits))
  (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4cGHxV1jQPz4w9w;
- Tue,  2 Sep 2025 17:51:25 +1000 (AEST)
-Message-ID: <7d70dea7-8522-45a2-9958-b56d38879ba2@kaod.org>
-Date: Tue, 2 Sep 2025 09:51:23 +0200
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4cGJL96ykCz4w9x;
+ Tue,  2 Sep 2025 18:09:21 +1000 (AEST)
+Message-ID: <a06379d8-ec0f-4842-87d9-5cecdb1dfd86@kaod.org>
+Date: Tue, 2 Sep 2025 10:09:19 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [SPAM] [PATCH v1 10/21] hw/arm/ast27x0: Move DRAM and SDMC
- initialization earlier to support memory aliasing
+Subject: Re: [SPAM] [PATCH v1 08/21] hw/arm/ast27x0: Add SCU alias for SSP and
+ ensure correct device realization order
 To: Jamin Lin <jamin_lin@aspeedtech.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
@@ -41,7 +41,7 @@ To: Jamin Lin <jamin_lin@aspeedtech.com>,
  "open list:All patches CC here" <qemu-devel@nongnu.org>
 Cc: troy_lee@aspeedtech.com
 References: <20250717034054.1903991-1-jamin_lin@aspeedtech.com>
- <20250717034054.1903991-11-jamin_lin@aspeedtech.com>
+ <20250717034054.1903991-9-jamin_lin@aspeedtech.com>
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Content-Language: en-US, fr
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -86,17 +86,16 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20250717034054.1903991-11-jamin_lin@aspeedtech.com>
+In-Reply-To: <20250717034054.1903991-9-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=150.107.74.76;
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
  envelope-from=SRS0=Sj0j=3N=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
 X-Spam_score_int: -41
 X-Spam_score: -4.2
 X-Spam_bar: ----
 X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
  HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -114,97 +113,34 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 7/17/25 05:40, Jamin Lin wrote:
-> To support DRAM aliasing for coprocessors (SSP/TSP), this commit moves the
-> initialization of the SDMC (SDRAM controller) and DRAM models earlier in
-> the device realization order.
+> AST2700 has a single SCU hardware block, memory-mapped at 0x12C02000–0x12C03FFF
+> from the perspective of the main CA35 processor (PSP). The SSP coprocessor accesses
+> this same SCU block at a different address: 0x72C02000–0x72C03FFF.
 > 
-> In the upcoming changes, the PSP will expose a portion of its DRAM as shared
-> memory by creating a memory region alias at a specific offset. This alias is
-> mapped into the coprocessor's SDRAM address space, allowing both PSP and the
-> coprocessor (SSP/TSP) to access the same physical memory through their respective
-> views — PSP via its DRAM, and the coprocessor via its SDRAM.
+> To support this shared SCU model, this commit introduces "ssp.scu_mr_alias",
+> a "MemoryRegion" alias of the original SCU region ("s->scu.iomem"). The alias is
+> realized during SSP SoC setup and mapped into the SSP's SoC memory map.
 > 
-> The remapping is configured through SCU registers and enables shared memory
-> communication between PSP and the coprocessors.
+> Additionally, because the SCU must be realized before the SSP can create an alias
+> to it, the device realization order is explicitly managed:
+> "aspeed_soc_ast2700_ssp_realize()" is invoked after the SCU is initialized.
 > 
-> Therefore, the DRAM and SDMC devices must be realized before:
->    - the SCU, which configures the alias offset and size
->    - the coprocessors, which access the alias through their SDRAM window
-> 
-> No functional change.
+> This ensures that PSP and SSP access a consistent SCU state, as expected by hardware.
 
-Please move this patch at the beginning of the series. It can be
-merged early.
+The SCU model of the main SoC could be passed as a link to the coprocessor
+models, like done for the timer model. But the problem is elsewhere.
+I think we need to rework the coprocessor models.
 
+Currently, Aspeed27x0TSPSoCState and Aspeed27x0SSPSoCState inherit from
+AspeedSoCState and looking at the aspeed_soc_ast27x0{t,s}sp_init handlers,
+it seems clear that AspeedSoCState has too much state. We need a simplified
+version of AspeedSoCState for the coprocessors.
+
+Please rethink the proposal with that in mind.
 
 Thanks,
 
 C.
 
-
-> 
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-> ---
->   hw/arm/aspeed_ast27x0.c | 40 ++++++++++++++++++++--------------------
->   1 file changed, 20 insertions(+), 20 deletions(-)
-> 
-> diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
-> index 2d27eb1deb..9d67c5f631 100644
-> --- a/hw/arm/aspeed_ast27x0.c
-> +++ b/hw/arm/aspeed_ast27x0.c
-> @@ -765,6 +765,26 @@ static void aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
->                              qdev_get_gpio_in(DEVICE(&a->intc[0].orgates[0]), i));
->       }
->   
-> +    /*
-> +     * SDMC - SDRAM Memory Controller
-> +     * The SDMC controller is unlocked at SPL stage.
-> +     * At present, only supports to emulate booting
-> +     * start from u-boot stage. Set SDMC controller
-> +     * unlocked by default. It is a temporarily solution.
-> +     */
-> +    object_property_set_bool(OBJECT(&s->sdmc), "unlocked", true,
-> +                                 &error_abort);
-> +    if (!sysbus_realize(SYS_BUS_DEVICE(&s->sdmc), errp)) {
-> +        return;
-> +    }
-> +    aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->sdmc), 0,
-> +                    sc->memmap[ASPEED_DEV_SDMC]);
-> +
-> +    /* RAM */
-> +    if (!aspeed_soc_ast2700_dram_init(dev, errp)) {
-> +        return;
-> +    }
-> +
->       /* SRAM */
->       name = g_strdup_printf("aspeed.sram.%d", CPU(&a->cpu[0])->cpu_index);
->       if (!memory_region_init_ram(&s->sram, OBJECT(s), name, sc->sram_size,
-> @@ -872,26 +892,6 @@ static void aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
->                              aspeed_soc_get_irq(s, ASPEED_DEV_EHCI1 + i));
->       }
->   
-> -    /*
-> -     * SDMC - SDRAM Memory Controller
-> -     * The SDMC controller is unlocked at SPL stage.
-> -     * At present, only supports to emulate booting
-> -     * start from u-boot stage. Set SDMC controller
-> -     * unlocked by default. It is a temporarily solution.
-> -     */
-> -    object_property_set_bool(OBJECT(&s->sdmc), "unlocked", true,
-> -                                 &error_abort);
-> -    if (!sysbus_realize(SYS_BUS_DEVICE(&s->sdmc), errp)) {
-> -        return;
-> -    }
-> -    aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->sdmc), 0,
-> -                    sc->memmap[ASPEED_DEV_SDMC]);
-> -
-> -    /* RAM */
-> -    if (!aspeed_soc_ast2700_dram_init(dev, errp)) {
-> -        return;
-> -    }
-> -
->       /* Net */
->       for (i = 0; i < sc->macs_num; i++) {
->           object_property_set_bool(OBJECT(&s->ftgmac100[i]), "aspeed", true,
 
 

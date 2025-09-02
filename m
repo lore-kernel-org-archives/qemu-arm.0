@@ -4,81 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84B3DCA0FFE
-	for <qemu-arm@archiver.kernel.org>; Tue,  2 Sep 2025 10:48:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06428CA0FFE
+	for <qemu-arm@archiver.kernel.org>; Tue,  2 Sep 2025 10:54:51 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1utOYt-00026X-Ag; Tue, 02 Sep 2025 06:48:27 -0400
+	id 1utOeo-00059S-Ia; Tue, 02 Sep 2025 06:54:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1utOYr-00025J-Dg
- for qemu-arm@nongnu.org; Tue, 02 Sep 2025 06:48:25 -0400
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1utOel-00058L-8z
+ for qemu-arm@nongnu.org; Tue, 02 Sep 2025 06:54:31 -0400
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1utOYp-0002pq-Fi
- for qemu-arm@nongnu.org; Tue, 02 Sep 2025 06:48:25 -0400
-Received: by mail-wm1-x32b.google.com with SMTP id
- 5b1f17b1804b1-45b83ae1734so22001365e9.0
- for <qemu-arm@nongnu.org>; Tue, 02 Sep 2025 03:48:23 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1utOej-0003gY-2A
+ for qemu-arm@nongnu.org; Tue, 02 Sep 2025 06:54:30 -0400
+Received: by mail-wm1-x32c.google.com with SMTP id
+ 5b1f17b1804b1-45b88bff3ebso14723875e9.3
+ for <qemu-arm@nongnu.org>; Tue, 02 Sep 2025 03:54:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756810102; x=1757414902; darn=nongnu.org;
+ d=linaro.org; s=google; t=1756810466; x=1757415266; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=bRBuAjwYyLGtEfDp5Hp+CEQZdw5DIkIx0+K9YfLsRd0=;
- b=lRl53/GpbmnFpvwXSoxPhjZuVvfUlF88Y/Bwx22+cAODuuVtXldY5Oq3wWY4/LMRD7
- ZDGH04eiZC2S0zt3u6nOeOtX1ubYQhoyB22adfOJ0ipuyhu5aYn27LyMjhGx54/TasEA
- HuQff7t9YzBb0o4Wvs6RS5wdLJ2la90zBo6NnYRgeWu11ii1T9oS9mweU82fzeDDvxcM
- m89Dqop0ztCwqkQqpnMps1vGbTT0PFgWxse78Wyyw4MMxvWMskliFct79SpUOFKXGv0s
- VTs0xVZsK3ETG5FdZJ1bhd63yOhlKBkXSkcwlcMXrQ4HdHCrD7GBDDay7B3sqjrI2LaP
- VaLw==
+ :references:to:subject:user-agent:mime-version:date:message-id:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=6vbU/noPQ4DpytGCBJSdN3o1FeaehS8Wgf3dvsfk3iI=;
+ b=Fp/6kfUu2ElJAvXZ0VL8lyvnAzU1/qgIiGOe75WkMLcFU7pKbyWSArw7RoLSyFeCcx
+ Z7by5GzpnvnnNgUn31njoMi0zFBwCN0e+T9tG8R9uVfhBhXgWxY8mMnjQfAF39WRyMl2
+ tlZls38YTKsEJCmUEIOgXlTIdgdDHLHqc1fskA1t8gE70d81/Z3URcO/KcH/abI/BObr
+ bsxWYTfMbDfzBJWcOnKdKs8jMUV06ft41/n2iMQElH8jC4l8ODrAeEBkanX9G5CHkD2/
+ a6/2Qzl29eK1CtGWf+5g/qQiLPqut8VsjGCoHeeB91m74kP/UBzRYfq9To2jiGK4ReVS
+ qAgQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756810102; x=1757414902;
+ d=1e100.net; s=20230601; t=1756810466; x=1757415266;
  h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :references:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=bRBuAjwYyLGtEfDp5Hp+CEQZdw5DIkIx0+K9YfLsRd0=;
- b=gZ7X7rmPYgrpOUeQy2JFeYmcYL3Kp77e+c7p0Ox5YyPAMpG26rIVDT0vqF4MjLAY+P
- WpEXdETf10O/5J/RSKPqX6Bfy3ERCWhJCA/zRhxiOzPPbGRXDZywqK3/AHhDlviQLHw+
- LTT2Ncl6q6w4oJOUXbgBH4Hx7AYluhOGxg2Y5fAYK953luUJXB9jpz1dDM7YdcBD/oy0
- F0pdrPktgrvJtfLZi+xd9e7uMjE2Gp9jeOwpy/gwJi0hvOxs9B86yy3qdh2ocMIc8sNL
- Jl9fF6PVLCPxJWPpvDOuvOR32esVoE+OBDkPG8zLGM5F3S+G5/+nKJHKNFFy3tk5txxu
- C5yQ==
-X-Gm-Message-State: AOJu0Yw+rgRerwLYfNGCor69fWZrG4y9n8uCs9B4Gj2/x7K7sYL0EVKu
- y9d4vGbu+tW02HTs80gkSM5Z4N9fkScOpErlSLEbXZRXyEsdoWSGuL7Ig3wlCW95jOM=
-X-Gm-Gg: ASbGncsRtIXH/7jfHgXtCCPzkvHS35CXhYG/tFs208joaplq0ld5OgTtUTpJ7S5kn1M
- pe38AnoDNdDQYik43ubcxFZe2JTbyu1qkGhVLA7jFhfrh39RWZzcUwtXb4IAnIQBzLTAYqTsWUV
- YoUtgT9HNPdSkJoj2VTQmAEz/Tyj+VWvksqTFB5oz/ahYP9T9Rm9pQecPf5cIPZsQHvEh6+4EaV
- qvsaXtzL+S2F3LMMXDqPl37d2C95fjNoW7GzyoXiQDjn6XcCZ4B8poL/L0k7YWsBjs+dIBsECZa
- /nyNCY3vJNtBf5YdgmF6XUKNKNFQ6Pu9+n/gBU6W0DKM3j9yV0coHT+ZmrsRzQR5h7E2u3VGn5C
- KuXELinDJwwTyybhvS2dkDuFDIbMGE7kOl9DEYeGqkH0vLZZ4uTh9bGP+MOUGIR+z/g==
-X-Google-Smtp-Source: AGHT+IHrge87uErL1nNilvWUBDgSNIEavZ3QoheCwWmOk02dOEiliSVm1iqjmnPlv+gWxw98lNdS+A==
-X-Received: by 2002:a05:600c:4445:b0:456:13b6:4b18 with SMTP id
- 5b1f17b1804b1-45b855b2bc3mr113833455e9.31.1756810101771; 
- Tue, 02 Sep 2025 03:48:21 -0700 (PDT)
+ bh=6vbU/noPQ4DpytGCBJSdN3o1FeaehS8Wgf3dvsfk3iI=;
+ b=lPmQQS4hKky154OKxsaljbdyOYSw29/wTjv1prPIpK8+pA2/dRdEcXhSe0DlmTsHjk
+ hn2WtZwbEPKBFFN8huMNam89/Jf8lNGYe3ECqPjsCaqNdPXVgsttxtPTfrxx5D+IOZst
+ /POm/66IcKcwdXKQKl8egwckM4quxOZ+EjhOQppYskiB+oM6lVfJmu8UBt1NLhn8Pjos
+ lKpYTk4sAFvAaI/VrntMOcH+MD3Wkr6TIFAqv70Js9FwXdOYmzKdRpZ0XSRvA1BCNMUP
+ 3qihXKQt/YVCI7TnAHelPVIf+4PBn1TmCg8zStId2WAV+dfkLTFarQYsJ3lPzyeutLye
+ 36xg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUqdqWU+Hc5imSoK29zbUYcYx+taaZyX1sCVucGfAUAn2grDpn+9hUATIYv+9bR+fURHB+mi2HMsQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yyt7WdRs/kF7Zhtjop1bhopQxw/MqNEfcO58+dpQWszrE/CeEWm
+ kRh3Qumf81Z3OfW/hhYA474ImByWyeRWZAqb0U3EkEXsiSFKodGUzlh4HxkBRJ+lObwheM5mpBv
+ 8ySEY
+X-Gm-Gg: ASbGncuiNBO4XLrONnHk5t6mz+yhCBXhxKDvSDRogH3SAFwi0tDuGebQP6F0SXSB8aQ
+ x8h4N2koInvnV45F/ir1kZ6AarJDPrLH7ehSjXPaWLXHNaxvwY7pU4a2QbQEBnKmqGFa33Q7S4O
+ vxwpQmXpULMPDyw40LTssA+kDVMMt7uEGUFVUTG0dAbcl5vX3TDyvJGCZMo+1Uw5eru1qvkPPIg
+ bALjMvNJOmSxncu0Yf6FCLldLJSJeTgZN/WqM0tCYfW+SNAbqmA9KmKJjz0TGTOlrOVXSrk3fWc
+ wKIP858C+aTDjWdIFI62fQF9J95PG13Sy5UuIaEB59fRU3Bw2XKYZ88xeChch5NZ3jQkSptmFuQ
+ Njd9iiLZt0P20cZ/F3C16cd0SVz2GhvAd6+LJcnZFhx0Zd7lhx2jDFmnDspt2uQ74W98cCVh7dZ
+ PN
+X-Google-Smtp-Source: AGHT+IEQms/ew/mK09dghy4zC5tbBT0hg8W7f2iT8m3PEZuDe/+d/xvoWFjtO4Bcb4J9V6wCQw1zFw==
+X-Received: by 2002:a05:600c:484a:b0:45b:85d0:9a0c with SMTP id
+ 5b1f17b1804b1-45b85d09ccdmr68693415e9.15.1756810466344; 
+ Tue, 02 Sep 2025 03:54:26 -0700 (PDT)
 Received: from [192.168.69.207] (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-45b9ab7c7dbsm13426475e9.11.2025.09.02.03.48.20
+ 5b1f17b1804b1-45b66b6985bsm182407205e9.2.2025.09.02.03.54.25
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 02 Sep 2025 03:48:21 -0700 (PDT)
-Message-ID: <1da5c7f3-1b14-4cac-a2a1-bd132b521898@linaro.org>
-Date: Tue, 2 Sep 2025 12:48:20 +0200
+ Tue, 02 Sep 2025 03:54:25 -0700 (PDT)
+Message-ID: <8e759fdd-5ed4-4e2b-9769-c6b072f52ed1@linaro.org>
+Date: Tue, 2 Sep 2025 12:54:25 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 0/8] vfio: Remove 'vfio-platform'
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Eric Auger <eric.auger@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Alex Williamson <alex.williamson@redhat.com>
-References: <20250901064631.530723-1-clg@redhat.com>
+Subject: Re: [PATCH] system: drop the -old-param option
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20250828162700.3308812-1-peter.maydell@linaro.org>
 Content-Language: en-US
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20250901064631.530723-1-clg@redhat.com>
+In-Reply-To: <20250828162700.3308812-1-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32b.google.com
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -101,18 +103,23 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 1/9/25 08:46, Cédric Le Goater wrote:
-
-> Changes in v2:
+On 28/8/25 18:27, Peter Maydell wrote:
+> We deprecated the command line option -old-param for the 10.0
+> release, which allows us to drop it in 10.2.  This option was used to
+> boot Arm targets with a very old boot protocol using the
+> 'param_struct' ABI.  We only ever needed this on a handful of board
+> types which have all now been removed from QEMU.
 > 
->   - Fixed 'system/system.h' include for the arm virt machine and a
->     couple more models
-> 
-> Cédric Le Goater (8):
->    hw/arm/virt: Include 'system/system.h'
->    hw/isa/superio: Include 'system/system.h'
->    hw/mips/loongson3_virt: Include 'system/system.h'
->    hw/mips/malta: Include 'system/system.h'
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>   docs/about/deprecated.rst       | 13 ------
+>   docs/about/removed-features.rst | 12 +++++
+>   include/system/system.h         |  1 -
+>   hw/arm/boot.c                   | 81 +--------------------------------
+>   system/globals.c                |  1 -
+>   system/vl.c                     |  4 --
+>   qemu-options.hx                 |  7 ---
+>   7 files changed, 13 insertions(+), 106 deletions(-)
 
-Patches 1-4 queued, thanks!
+FYI this patch doesn't apply anymore.
 

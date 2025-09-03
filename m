@@ -4,83 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08A6CCA1010
-	for <qemu-arm@archiver.kernel.org>; Wed,  3 Sep 2025 22:21:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82D71CA1012
+	for <qemu-arm@archiver.kernel.org>; Wed,  3 Sep 2025 22:21:32 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1utvqt-00054l-3x; Wed, 03 Sep 2025 18:21:15 -0400
+	id 1utvqs-00054i-Mf; Wed, 03 Sep 2025 18:21:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <3TLW4aAkKCOUSPePHVfHUNVVNSL.JVTXLTb-HYTUVUNUb.VYN@flex--lixiaoyan.bounces.google.com>)
- id 1utvBP-0005jy-S7
- for qemu-arm@nongnu.org; Wed, 03 Sep 2025 17:38:24 -0400
-Received: from mail-yb1-xb49.google.com ([2607:f8b0:4864:20::b49])
+ <3R7W4aAkKCOANKZKCQaCPIQQING.EQOSGOW-CTOPQPIPW.QTI@flex--lixiaoyan.bounces.google.com>)
+ id 1utvBL-0005ga-M2
+ for qemu-arm@nongnu.org; Wed, 03 Sep 2025 17:38:19 -0400
+Received: from mail-yw1-x1149.google.com ([2607:f8b0:4864:20::1149])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <3TLW4aAkKCOUSPePHVfHUNVVNSL.JVTXLTb-HYTUVUNUb.VYN@flex--lixiaoyan.bounces.google.com>)
- id 1utvBO-0003TX-Ep
- for qemu-arm@nongnu.org; Wed, 03 Sep 2025 17:38:23 -0400
-Received: by mail-yb1-xb49.google.com with SMTP id
- 3f1490d57ef6-e9d6ce94cf2so209445276.1
- for <qemu-arm@nongnu.org>; Wed, 03 Sep 2025 14:38:21 -0700 (PDT)
+ <3R7W4aAkKCOANKZKCQaCPIQQING.EQOSGOW-CTOPQPIPW.QTI@flex--lixiaoyan.bounces.google.com>)
+ id 1utvBJ-0003RF-MU
+ for qemu-arm@nongnu.org; Wed, 03 Sep 2025 17:38:18 -0400
+Received: by mail-yw1-x1149.google.com with SMTP id
+ 00721157ae682-7227bea8b73so6872877b3.0
+ for <qemu-arm@nongnu.org>; Wed, 03 Sep 2025 14:38:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1756935501; x=1757540301; darn=nongnu.org;
- h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
- :date:from:to:cc:subject:date:message-id:reply-to;
- bh=X5hS1tZ22zNRIVkY1EfuAvsxIjxJYrjbWB6arPiOJWo=;
- b=zHGJ8itsOg1Au+KLlraW8NUUpcjNwsT7g9XCZpLV19rOXDH8VzBGFZSROaGoPSJyfJ
- kxJ/GgBIZUJ+eEoNpoGSAxjGShxoqhaKn+xkGOBB7abhV1Y+Tc2NuCZX6AC/ymKpi89o
- GJyInSKvJ4lhxkgK0dncs6+hA+OJ4AiNRP1bOCpf0vL8ZoJF2P+6ljQMIJBCLEBo3IId
- bF0uBJsTahPgYv5KnzLaaVWKD6zYvNuQSHKZaUVIAU9SqW4Y/WKPeL4P9Yf2HFZVzg21
- yTvsixe1aOR/oLcQVSQIEJ3mAY5J3g8wmYx7Z7xYhSukMSvanFluKuW0jL5QTjBLhd20
- bmYA==
+ d=google.com; s=20230601; t=1756935496; x=1757540296; darn=nongnu.org;
+ h=cc:to:from:subject:message-id:mime-version:date:from:to:cc:subject
+ :date:message-id:reply-to;
+ bh=eZAZlVJGU1iSH4VawZtkXE81cRPSzmk9jg2N8KtV7iA=;
+ b=UW2kE9eIhQWSr8MXQQsDHRoY7+3uDw6twJK66SetjbGGyRr/KKiJ+9/t6i3jduQxzH
+ RLVBY4pG0xmLbUc9zTSKebnLCQ41TYYIVmlPHqJX7nriiYTM/goHcZWMYEKC0Q1PZLoB
+ aHfqa7GXcLRp8uysS8KjJY8KAPd/1dOY7VnrNU5+FDYI0YiM7GlvFixggwp6yAk00lis
+ jGXtheOT4XjwrvUEfHkzt5p525rv3y8/hXiOw1nMWVjE8tIKdqKSTFsQ9v1CDhPGn6yN
+ l+EdJMS1TIbFx/RTmtvzHwiSVvUrowkTJ6NkK69UkXy2qg0EDJQXefaLx1WHzdMI1DoU
+ USJw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756935501; x=1757540301;
- h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
- :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=X5hS1tZ22zNRIVkY1EfuAvsxIjxJYrjbWB6arPiOJWo=;
- b=Prmvt+iytsZiaomcctdNQVe3Vxrr40wxWXciB0NepKH0IvU82ZpiKvsucuUM6ZXZOv
- 1vZQR5UsQ/aRU2WIDJDUyFkZTZEON4xpzPXdzU2sGNilO5vSyjyuKngFjRLYW0/AeGKr
- 8mfUUmWHlJ/oluC1BMlacsCBhxK0iKazDAv+8nO7kTmHV95zu0KNABlZvkoxZ/syTDXO
- oZSqigC5J051B3ABCSQeZ8Hx9tbMYdxE6GM1FGhNsMJ4CQ9XVHl5RJicQtxU2oIUpU7t
- wZRo5h7AeGtq5pZrHwk3M1EY7HC0cX0/CBBId2TPbIDzkNrjEvmRZRdtFt4Cr59GyV6J
- Pg6g==
-X-Gm-Message-State: AOJu0YwMwBpT+iZYi+e5JsXnb+Yqo7S+7MQvUKZorx9ImEE03tZoxjNe
- U5tOuMNNDzccbmcuvEqKMc0iZt6V3RQO+v/zqWsvuBuH25Icz/JNxTNcTqu/x1bEXfkNHzYH8kF
- vUhODQG5qnBl78zMBkw==
-X-Google-Smtp-Source: AGHT+IH20bEt+lOXFlacb73BNjN3iG6qx3SuvvCV81+aK3lDiMZblYU8I9joK91/dKCzOzCRs4ptqRWaDsgvKFU=
-X-Received: from ybiv44.prod.google.com ([2002:a25:abaf:0:b0:e96:dd0e:6347])
+ d=1e100.net; s=20230601; t=1756935496; x=1757540296;
+ h=cc:to:from:subject:message-id:mime-version:date:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=eZAZlVJGU1iSH4VawZtkXE81cRPSzmk9jg2N8KtV7iA=;
+ b=iBraNGtphpEvsjWSFCyQZpNMLmPuCUYLZJgwoivCi/NaSVvHQDVdcLEWwjF/8V5ebm
+ JbFT2VF5psuxC6Bts3y3PieihDjJ9Nc+lmwAj0y1y4JVO7QiylH9Ud2Fi9LyDAESUmAu
+ NP2MzrDUa28gMXtOVXCU2rwJDwydSvHkcdZpIgYDdnz/zsvctYHiTRwZPYSu8FzAKQvZ
+ 4jOba2YNGP45SSrwKIGg1+Owmkco2jo+znF4Dwuk3HVWmPTWNutGJl6zrU0EUOgJPGho
+ QXkThsldUyofxIZwnOdTzsYF0kZfNBw2qCYEy7+t2EWxeWBdMj6mncp55W8y9h1hp+gT
+ w4LA==
+X-Gm-Message-State: AOJu0YxZGCfwVFUwGT3XsSo2BlxHGONKKoAp+arGoNh98VyIKdXEkkWe
+ hZfi0Jd4c7RtwCdvrk8f6t9eU7YFBK1IvvKzoCNSTnQ/I9M4L+IBOmNt4V87gWHkoqkt5AAIdm2
+ 6eOboO9OyjXujevaiwA==
+X-Google-Smtp-Source: AGHT+IFoSq3EkO/IOZ4KWnWvfspMYDicFWq3esxNhYVmhFXdw3fGP5eFEZRbtNGhszpDh/Pno/UEtZT6ccs8KqQ=
+X-Received: from ywbfp10.prod.google.com ([2002:a05:690c:34ca:b0:721:60e6:a6a])
  (user=lixiaoyan job=prod-delivery.src-stubby-dispatcher) by
- 2002:a05:6902:1004:b0:e9d:6a31:d514 with SMTP id
- 3f1490d57ef6-e9d6a31dacemr1383224276.44.1756935500853; 
- Wed, 03 Sep 2025 14:38:20 -0700 (PDT)
-Date: Wed,  3 Sep 2025 21:38:07 +0000
-In-Reply-To: <20250903213809.3779860-1-lixiaoyan@google.com>
+ 2002:a05:690c:45c3:b0:723:be82:c7a1 with SMTP id
+ 00721157ae682-723be82c87dmr45501097b3.1.1756935495770; 
+ Wed, 03 Sep 2025 14:38:15 -0700 (PDT)
+Date: Wed,  3 Sep 2025 21:38:04 +0000
 Mime-Version: 1.0
-References: <20250903213809.3779860-1-lixiaoyan@google.com>
 X-Mailer: git-send-email 2.51.0.338.gd7d06c2dae-goog
-Message-ID: <20250903213809.3779860-4-lixiaoyan@google.com>
-Subject: [PATCH 3/5] hw/arm/npcm8xx.c: Add all IRQ ENUMs
+Message-ID: <20250903213809.3779860-1-lixiaoyan@google.com>
+Subject: [PATCH 0/5] Add Aspeed GPIO test and Support Nuvoton Serial GPIO
+ Expansion (SGPIO) device
 From: Coco Li <lixiaoyan@google.com>
 To: peter.maydell@linaro.org, clg@kaod.org
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, Coco Li <lixiaoyan@google.com>,
- Hao Wu <wuhaotsh@google.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, Coco Li <lixiaoyan@google.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b49;
- envelope-from=3TLW4aAkKCOUSPePHVfHUNVVNSL.JVTXLTb-HYTUVUNUb.VYN@flex--lixiaoyan.bounces.google.com;
- helo=mail-yb1-xb49.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1149;
+ envelope-from=3R7W4aAkKCOANKZKCQaCPIQQING.EQOSGOW-CTOPQPIPW.QTI@flex--lixiaoyan.bounces.google.com;
+ helo=mail-yw1-x1149.google.com
 X-Spam_score_int: -86
 X-Spam_score: -8.7
 X-Spam_bar: --------
 X-Spam_report: (-8.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  HK_RANDOM_FROM=0.938, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, UPPERCASE_50_75=0.008,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=no autolearn_force=no
+ SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Wed, 03 Sep 2025 18:20:47 -0400
+X-Mailman-Approved-At: Wed, 03 Sep 2025 18:20:29 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,98 +92,48 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-In the process of implementing serial gpio and adding the corresponding
-ENUMs, also complete the list for npcm8xx.
+GPIO series: 
+Added 32 bits property for ASPEED GPIO with updated qtests.
+This change gives ASPEED GPIO similar behavior as Nuvoton. 
 
-Signed-off-by: Coco Li <lixiaoyan@google.com>
-Reviewed-by: Hao Wu <wuhaotsh@google.com>
----
- hw/arm/npcm8xx.c | 43 ++++++++++++++++++++++++++++++++++++++++++-
- 1 file changed, 42 insertions(+), 1 deletion(-)
+SGPIO series:
+Implemented SGPIO device according for npcm8xx.
+Two notable implementations left undone in these patches are:
 
-diff --git a/hw/arm/npcm8xx.c b/hw/arm/npcm8xx.c
-index a276fea698..10887d07fa 100644
---- a/hw/arm/npcm8xx.c
-+++ b/hw/arm/npcm8xx.c
-@@ -92,8 +92,14 @@ enum NPCM8xxInterrupt {
-     NPCM8XX_GMAC2_IRQ,
-     NPCM8XX_GMAC3_IRQ,
-     NPCM8XX_GMAC4_IRQ,
--    NPCM8XX_MMC_IRQ             = 26,
-+    NPCM8XX_ESPI_IRQ,
-+    NPCM8XX_SIOX0_IRQ,
-+    NPCM8XX_SIOX1_IRQ,
-+    NPCM8XX_MC_IRQ              = 25,
-+    NPCM8XX_MMC_IRQ,
-     NPCM8XX_PSPI_IRQ            = 28,
-+    NPCM8XX_VDMA_IRQ,
-+    NPCM8XX_MCTP_IRQ,
-     NPCM8XX_TIMER0_IRQ          = 32,   /* Timer Module 0 */
-     NPCM8XX_TIMER1_IRQ,
-     NPCM8XX_TIMER2_IRQ,
-@@ -116,6 +122,14 @@ enum NPCM8xxInterrupt {
-     NPCM8XX_OHCI1_IRQ,
-     NPCM8XX_EHCI2_IRQ,
-     NPCM8XX_OHCI2_IRQ,
-+    NPCM8XX_SPI1_IRQ            = 82,
-+    NPCM8XX_RNG_IRQ             = 84,
-+    NPCM8XX_SPI0_IRQ            = 85,
-+    NPCM8XX_SPI3_IRQ            = 87,
-+    NPCM8XX_GDMA0_IRQ           = 88,
-+    NPCM8XX_GDMA1_IRQ,
-+    NPCM8XX_GDMA2_IRQ,
-+    NPCM8XX_OTP_IRQ             = 92,
-     NPCM8XX_PWM0_IRQ            = 93,   /* PWM module 0 */
-     NPCM8XX_PWM1_IRQ,                   /* PWM module 1 */
-     NPCM8XX_MFT0_IRQ            = 96,   /* MFT module 0 */
-@@ -128,6 +142,11 @@ enum NPCM8xxInterrupt {
-     NPCM8XX_MFT7_IRQ,                   /* MFT module 7 */
-     NPCM8XX_PCI_MBOX1_IRQ       = 105,
-     NPCM8XX_PCI_MBOX2_IRQ,
-+    NPCM8XX_GPIO231_IRQ         = 108,
-+    NPCM8XX_GPIO233_IRQ,
-+    NPCM8XX_GPIO234_IRQ,
-+    NPCM8XX_GPIO93_IRQ,
-+    NPCM8XX_GPIO94_IRQ,
-     NPCM8XX_GPIO0_IRQ           = 116,
-     NPCM8XX_GPIO1_IRQ,
-     NPCM8XX_GPIO2_IRQ,
-@@ -163,6 +182,12 @@ enum NPCM8xxInterrupt {
-     NPCM8XX_SMBUS24_IRQ,
-     NPCM8XX_SMBUS25_IRQ,
-     NPCM8XX_SMBUS26_IRQ,
-+    NPCM8XX_FLM0_IRQ            = 160,
-+    NPCM8XX_FLM1_IRQ,
-+    NPCM8XX_FLM2_IRQ,
-+    NPCM8XX_FLM3_IRQ,
-+    NPCM8XX_JMT1_IRQ            = 188,
-+    NPCM8XX_JMT2_IRQ,
-     NPCM8XX_UART0_IRQ           = 192,
-     NPCM8XX_UART1_IRQ,
-     NPCM8XX_UART2_IRQ,
-@@ -170,6 +195,22 @@ enum NPCM8xxInterrupt {
-     NPCM8XX_UART4_IRQ,
-     NPCM8XX_UART5_IRQ,
-     NPCM8XX_UART6_IRQ,
-+    NPCM8XX_I3C0_IRQ            = 224,
-+    NPCM8XX_I3C1_IRQ,
-+    NPCM8XX_I3C2_IRQ,
-+    NPCM8XX_I3C3_IRQ,
-+    NPCM8XX_I3C4_IRQ,
-+    NPCM8XX_I3C5_IRQ,
-+    NPCM8XX_A35INTERR_IRQ       = 240,
-+    NPCM8XX_A35EXTERR_IRQ,
-+    NPCM8XX_PMU0_IRQ,
-+    NPCM8XX_PMU1_IRQ,
-+    NPCM8XX_PMU2_IRQ,
-+    NPCM8XX_PMU3_IRQ,
-+    NPCM8XX_CTI0_IRQ,
-+    NPCM8XX_CTI1_IRQ,
-+    NPCM8XX_CTI2_IRQ,
-+    NPCM8XX_CTI3_IRQ,
- };
- 
- /* Total number of GIC interrupts, including internal Cortex-A35 interrupts. */
+1. Reading the data from the host controlled SIOX via register IOXDATR
+2. On-demand with polling reading node
+
+The reason is that both are currently unused/umimplemented by the nuvoton driver.
+
+The changes to qobject is used in both sets of patches.
+
+Coco Li (3):
+  hw/arm/npcm8xx.c: Add all IRQ ENUMs
+  hw/gpio/npcm8xx: Implement SIOX (SPGIO) device for NPCM without input
+    pin logic
+  hw/gpio/npcm8xx: Implement npcm sgpio device input pin logic
+
+Felix Wu (2):
+  hw/gpio: Add property for ASPEED GPIO in 32 bits basis
+  tests/qtest: Add qtest for for ASPEED GPIO gpio-set property
+
+ hw/arm/npcm8xx.c                 |  66 +++-
+ hw/gpio/aspeed_gpio.c            |  57 ++++
+ hw/gpio/meson.build              |   1 +
+ hw/gpio/npcm8xx_sgpio.c          | 533 +++++++++++++++++++++++++++++++
+ hw/gpio/trace-events             |   4 +
+ include/hw/arm/npcm8xx.h         |   2 +
+ include/hw/gpio/npcm8xx_sgpio.h  |  45 +++
+ include/qobject/qdict.h          |   1 +
+ qobject/qdict.c                  |  13 +
+ tests/qtest/aspeed_gpio-test.c   | 105 +++++-
+ tests/qtest/meson.build          |   3 +-
+ tests/qtest/npcm8xx_sgpio-test.c | 222 +++++++++++++
+ 12 files changed, 1039 insertions(+), 13 deletions(-)
+ create mode 100644 hw/gpio/npcm8xx_sgpio.c
+ create mode 100644 include/hw/gpio/npcm8xx_sgpio.h
+ create mode 100644 tests/qtest/npcm8xx_sgpio-test.c
+
 -- 
 2.51.0.338.gd7d06c2dae-goog
 

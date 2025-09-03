@@ -4,82 +4,174 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D896DCA1005
-	for <qemu-arm@archiver.kernel.org>; Tue,  2 Sep 2025 22:04:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83CDBCA1007
+	for <qemu-arm@archiver.kernel.org>; Wed,  3 Sep 2025 01:46:03 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1utZ6h-0005EO-Dg; Tue, 02 Sep 2025 18:04:03 -0400
+	id 1utcZG-0000yk-MN; Tue, 02 Sep 2025 21:45:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from
- <3zGm3aAwKCMk2pqxwt78tup2v33v0t.r315t19-p61232v29.36v@flex--nabihestefan.bounces.google.com>)
- id 1utZ6f-0005DK-KD
- for qemu-arm@nongnu.org; Tue, 02 Sep 2025 18:04:01 -0400
-Received: from mail-yw1-x114a.google.com ([2607:f8b0:4864:20::114a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from
- <3zGm3aAwKCMk2pqxwt78tup2v33v0t.r315t19-p61232v29.36v@flex--nabihestefan.bounces.google.com>)
- id 1utZ6c-0007V0-Qu
- for qemu-arm@nongnu.org; Tue, 02 Sep 2025 18:04:01 -0400
-Received: by mail-yw1-x114a.google.com with SMTP id
- 00721157ae682-7228d167060so38224657b3.1
- for <qemu-arm@nongnu.org>; Tue, 02 Sep 2025 15:03:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1756850636; x=1757455436; darn=nongnu.org;
- h=cc:to:from:subject:message-id:mime-version:date:from:to:cc:subject
- :date:message-id:reply-to;
- bh=ziP9B54S2Bq5Q45jsFa6fAV/MYu3JZEJEdecaLugvHc=;
- b=0P3kX0FKde6Vtc7RP0EQoRnUWVuTJHrKAj95zDotCdQs/4znSIF8wn9Xta0xEuMdJQ
- XwB4N/5Wj5HAaRx1HUimqqbDaGPy51tp6P1wqrR1M6tUVD8Et90JXQd5jSjIv+0FgWqu
- QS3yASsDi8fiR2AORsLB79lg8sMHTm6uqtphrrjqEhmD9HiUGvlNAvIIOvCycP2XzKRH
- amnDApfi6UEmOU4KFm1Y5wtqWcyS/nkVjaSq2qtzPXAD6mNkDTdJSoioiN7gsGGS0mNZ
- ajpyd3ZZCYhEYS9RIEclAbSPhOJdqR6yfr/VEJOAIOmlGxcQqWJ/ID8l0imnlPNqO5kO
- DpIA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756850636; x=1757455436;
- h=cc:to:from:subject:message-id:mime-version:date:x-gm-message-state
- :from:to:cc:subject:date:message-id:reply-to;
- bh=ziP9B54S2Bq5Q45jsFa6fAV/MYu3JZEJEdecaLugvHc=;
- b=fq8aAE+nXtpIAj1JyQNMuP5AK9B91iK3ADEHfS+H5moqJ49ZW0PWFZ2HIQGjlDsiH9
- IJLXERuNkERRpycMuEifep/7Kq9yIhq38CERHSAm6XxpFxfNRBwtKwBXo9epWZHBU2vO
- eBUFYPScMa/uqDZXQMnqWF0/zNjKW1bEeLkISTizeaXvwPw0a9/EeKLjgoq6VM37nS/B
- guULfdo8O1c+w9zD7B790CqnovW0MzjNYUU2L5GeeSA4a8EGSX8BCoU79OfufDxPr2g/
- +ktVy8m5rr9gdUGyXG07qd9jY6IZ0RidoS7MPHMErMadJm7xuEeC8sWfUeKyXRGBQ0PD
- O+yQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCU/FEoa3nUq9+8eXLsV9zwg1uyuN5vHWpfrtfWJ2byEizRsVjAhJMmRkhe0gWBVIl9aVgqe19Y4JQ==@nongnu.org
-X-Gm-Message-State: AOJu0YzjiH6IHL7bPRT5AIwFUv2LmIJCMsFI9etvrRxgPBpTyrIxTf0j
- 69Cx3FcabzJT+Fm+QplIH0S1C2KKslZbLSFw1b2txOZQmLmTkaH5B1JBKHrZ22YpRHMI3NIdGes
- VCX51Bs49B31FIG3Z9anCyjJCRtB4Pw==
-X-Google-Smtp-Source: AGHT+IEKl6GSoUL98Z+nsdOBXIM/HPcCjhjsgEoy/AhsshwXZQmUjpWCvul5jYomN7UQcl5nYK6uWqI2MFXhK7KKk7E=
-X-Received: from ywbdo4.prod.google.com ([2002:a05:690c:23c4:b0:723:ac0b:257f])
- (user=nabihestefan job=prod-delivery.src-stubby-dispatcher) by
- 2002:a05:690c:dcd:b0:71f:c5f0:3397 with SMTP id
- 00721157ae682-7227636ebf1mr151953587b3.18.1756850636443; 
- Tue, 02 Sep 2025 15:03:56 -0700 (PDT)
-Date: Tue,  2 Sep 2025 22:03:41 +0000
-Mime-Version: 1.0
-X-Mailer: git-send-email 2.51.0.355.g5224444f11-goog
-Message-ID: <20250902220341.1460194-1-nabihestefan@google.com>
-Subject: [PATCH v2] hw/sensor: added MAX16600 device model
-From: Nabih Estefan <nabihestefan@google.com>
-To: qemu-devel@nongnu.org
-Cc: pbonzini@redhat.com, peter.maydell@linaro.org, philmd@linaro.org, 
- farosas@suse.de, lvivier@redhat.com, qemu-arm@nongnu.org, 
- Shengtan Mao <stmao@google.com>, Titus Rwantare <titusr@google.com>, 
- Nabih Estefan <nabihestefan@google.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::114a;
- envelope-from=3zGm3aAwKCMk2pqxwt78tup2v33v0t.r315t19-p61232v29.36v@flex--nabihestefan.bounces.google.com;
- helo=mail-yw1-x114a.google.com
-X-Spam_score_int: -94
-X-Spam_score: -9.5
-X-Spam_bar: ---------
-X-Spam_report: (-9.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FUZZY_MILLION=0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1utcZE-0000y7-N6; Tue, 02 Sep 2025 21:45:44 -0400
+Received: from mail-koreacentralazlp170130007.outbound.protection.outlook.com
+ ([2a01:111:f403:c40f::7] helo=SEYPR02CU001.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1utcZB-0003On-B3; Tue, 02 Sep 2025 21:45:44 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=fkH6ADhVk06jNhdo7LLeCg+viGwfpaC/BQCYcxBLSzGpVumtKXp2uc9KPm/0yL1k89ntoKq6py/w+prWXGhEgR6YBsO06obLPJfgUPuimX/roQcCHvDISb/6WFa0Na0mHVss10z6tan35S2kTZVldAg6gltTFL72dwdMrA7QMTLt6jJpJv0w4fhpgTVEFR627cDIeykDgQwMbaKWSjupE2qj+3yoR/i/oAY0NrLZnV8oNY+v82xkOYDsZO1jdaaXuEz+7ci/666ICyIh2ZaHCIDLyqE/Vh/whxvr6yE50efnC4oLgYUrITv2rm+atUUa63GVSH1/svEbAI5+gjBaLw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=WdqP+PEPeIyxZtV+EeGGS3Du+xsbBpYJQqNCIgFzfWk=;
+ b=BUwUknFIYiojtNuFud6ra0onHAbBSjdoMlDswD3210Cn52aMvTnjldwdE+wmmDpMzSVqRf1Xu8gma2WZOJSRo7YzQCpazc6uZDDq28whFTexUZBFPG+KP4VnZdJWA1/MEWqL+yBwZqZkVDFP4eza/P3Qwm2e0G3zyJTnYcYlieqMisq6iK1WudE/vY9YT5bmYqcbdr1rPVzB9Ek45tzts5QiDIUi1ps3GiI43VsXi8yaO6FRJzj3OU3qmG+R1Ra8slO6nmrf3ByUBUw09QiMGe4dvxsGzlL1IStN7Jxezs7b+ZInjZngMgXIjrlAWitaHE+UMtgYkcpue5plZmES9Q==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
+ header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=WdqP+PEPeIyxZtV+EeGGS3Du+xsbBpYJQqNCIgFzfWk=;
+ b=XDlmDyxvdsBBhj5pav/r60VEjzM12oFjF4d5tCZu8uNuJAYuXAj9oG+3IYzflsdE+tyhvXNiXx4Gm7qiUw/IuDeK7oAasNV3it0Zch+dqVB1q05Gpvm0A3igyNLBDVulc1jPNIAd/7+2UbXDxaaWQkb3R9b/eVcA92qFQ90GJw+GxGr3kMbNLq/+8+juKm2+kTDd/MiHkaXkQq1hfCTB1x+UUp+jk69kIWONwDieY3CtgPP6aaFyT/sptel9CNgz/lDAJ+YB91L2dnP/V2RQfc20DD0YW3/Avr56qvpnwuki63c0NtRYrpGpvYtm8NK8sdVWDG02qz/zkAjBhTlW2A==
+Received: from SI2PR06MB5041.apcprd06.prod.outlook.com (2603:1096:4:1a4::6) by
+ SG2PR06MB5081.apcprd06.prod.outlook.com (2603:1096:4:1c8::5) with
+ Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.9073.27; Wed, 3 Sep 2025 01:45:33 +0000
+Received: from SI2PR06MB5041.apcprd06.prod.outlook.com
+ ([fe80::705a:352a:7564:8e56]) by SI2PR06MB5041.apcprd06.prod.outlook.com
+ ([fe80::705a:352a:7564:8e56%3]) with mapi id 15.20.9073.026; Wed, 3 Sep 2025
+ 01:45:33 +0000
+From: Jamin Lin <jamin_lin@aspeedtech.com>
+To: =?utf-8?B?Q8OpZHJpYyBMZSBHb2F0ZXI=?= <clg@kaod.org>, Peter Maydell
+ <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
+ <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, Joel
+ Stanley <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+CC: Troy Lee <troy_lee@aspeedtech.com>
+Subject: RE: [SPAM] [PATCH v1 04/21] hw/arm/aspeed_ast27x0-ssp: Switch SSP
+ memory to SDRAM and use dram_container for remap support
+Thread-Topic: [SPAM] [PATCH v1 04/21] hw/arm/aspeed_ast27x0-ssp: Switch SSP
+ memory to SDRAM and use dram_container for remap support
+Thread-Index: AQHb9sygLmoH16wr40+lQfNxdOfX1LR/yuGAgAEvQNA=
+Date: Wed, 3 Sep 2025 01:45:33 +0000
+Message-ID: <SI2PR06MB50419C1E44C1DA6E59A7EF77FC01A@SI2PR06MB5041.apcprd06.prod.outlook.com>
+References: <20250717034054.1903991-1-jamin_lin@aspeedtech.com>
+ <20250717034054.1903991-5-jamin_lin@aspeedtech.com>
+ <96254526-949b-4db2-971e-fd0ea9f71e98@kaod.org>
+In-Reply-To: <96254526-949b-4db2-971e-fd0ea9f71e98@kaod.org>
+Accept-Language: zh-TW, en-US
+Content-Language: zh-TW
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=aspeedtech.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SI2PR06MB5041:EE_|SG2PR06MB5081:EE_
+x-ms-office365-filtering-correlation-id: 697939dd-b827-44df-9a45-08ddea8b9290
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|366016|376014|1800799024|38070700018|217643003; 
+x-microsoft-antispam-message-info: =?utf-8?B?VlAyTFgxM08vZWc4MEJFOCs1bjA2S3FyWlc5aDFjOXZCandMcHdHYVZiQUxp?=
+ =?utf-8?B?QWY3WkdpNncvYURlSUVkdk5tNWZlSUJvSGFleno4TFlGRmE2WkZHTlJUVk91?=
+ =?utf-8?B?K09lS2E5dHB4Z2J6WHF1TUN1Q1VjSitOcXh5WVJrWWtmVDZsTnpUVnlTWjdJ?=
+ =?utf-8?B?WElvSmtvZGNDS01KOFhLemlSa1NDRnhzUklJbkxOTURNbm9TYkxGT2owWENN?=
+ =?utf-8?B?WTNreUUvMitMd2RJelkzajBOZEJEcXM3RlBPWWhxa1dwNmlwNzFob2FsNUta?=
+ =?utf-8?B?REUyU3ZHaTM1TzZxRDVISW4vRmxIZUtzM0xyUy9ZeEp4NDg2a0lPYjRwaXMx?=
+ =?utf-8?B?TTNNSWdlSGdtR0dNQXRra21mWDFpSGVFN1FXekZ6eFRQbDcxakt5MVRlNkg2?=
+ =?utf-8?B?L204eHdXKzBSVnhTQkV5UDhrOWIwcUdqQzlxNk5Oa0JUUzhUMTBVRVVITUdV?=
+ =?utf-8?B?RVZ5aFBIUVc5ZVlqRnRXeEJqZDRVcUVKMkVxendxaVk5b2ZleEhPSTRwMHBQ?=
+ =?utf-8?B?R05TTzRiSklWS2gwS0dySzBUcTlCRXI2WEJlSDEvWGhYa3QwLytFQUFzemxl?=
+ =?utf-8?B?b3UzV2dyMVBPdE5mMnlwWXo5Z25jekxqUEpHRTU2S0hOWXpvMkhWR3VtbXpZ?=
+ =?utf-8?B?ZmU1WFZYKzZJZFRiTlVHeTBBdDNRdDhkN1FiSzRrOFhGQjVJNHJwTW1LUWQr?=
+ =?utf-8?B?ZU1aUDZzV3ErVExIR0RSWVlsUkI5cFdCTzBpYXprMk1QaXVNWUFtazQ3Ti9w?=
+ =?utf-8?B?Mjg1aUtrRFppT3dwZVNEejI4dFVTU2RNUWJFaGdzaG5uWkRVL2xGQ3owUk80?=
+ =?utf-8?B?L2p1c0xmTXBMbFVtZ0ZNWFFuNFZzeTFsa2VzWi90OG02eTNkZlRMUXlleWVI?=
+ =?utf-8?B?NVhOOEd1enpEbTlLcW5nSDF1cGEycUZJeStRdWE4UnYvY1lPcWdwa08zRXJk?=
+ =?utf-8?B?QjZ5dUhJaG1DS09LcVFqWVYrTldndDVkOGUrNUpCM0JIWlh4L1owaVpuUUNX?=
+ =?utf-8?B?WFdzMkNnVTNORmRtMUZGaVAwTXVPQXdpaGJ3dW1MV2dGbTdtNHl1ak1HNGE5?=
+ =?utf-8?B?bjl4blN2c3p0MHNpWGY3cTQ2dExvaEh3bUxpSnlqZ1oyWS9yZlpSYmZuR2ZY?=
+ =?utf-8?B?Rm92cjFUZmZDN3JZK0xGVXdWaFI3RUR0U0g5cjFTREpwdjd0Z1o1U0ZaVEZ4?=
+ =?utf-8?B?ckRjSUROaFlUSDhSMlFzSU0zSUdDNHVHWGp1YVFIYmt5ZmZWUHZRRkY5eTly?=
+ =?utf-8?B?WmxTNkRQRjg0QnR1cXNmcExRREFsTXRFTFUwRm8wVk9RRnJzNi9WZ3NRalNy?=
+ =?utf-8?B?RWNpdDhvd2p1SkJKVTJaVDdsOWgrSTRWZUZoUUl3WG9xQzB6c3licjdCaGJl?=
+ =?utf-8?B?dG5ZN3BNbCtSbUZaZnBlWFQ0MFdYR3J6bFY1WlR2WHU5VUlScUZyWVBQNTRw?=
+ =?utf-8?B?Uk9RbGFML0RUREV2TmFOcG9zUTZlclBacmNNUytkbERnSjlYam5Uc01MSjdh?=
+ =?utf-8?B?M29FWXgrNXlieitiSTh6S1ZCaUZwYXZyNmVXOHB5dmEwbmFGZ0FFRFdtMU9G?=
+ =?utf-8?B?bHlhUUQxSGZaT1RWd25qZ1BVM1l2cGRwNmduazdCMHFDUktpQmZCUnMySUNT?=
+ =?utf-8?B?RnJnMGR6NXpIaHhzRUFDWjlGVFpVOWI1M2JZcHZuNVBLTFRZU0pwbUtjTzhY?=
+ =?utf-8?B?WGo4Y0V6cjVxemJlUEYweXlqNXV2ajF1UmZpbndCcnF4NDhSMlB1SkRBcnlO?=
+ =?utf-8?B?OWZIYytFREJjWGpWMXpDQjNZMnp4THNUV3MxOWltMytTU0tVQU5kdjIxRkM1?=
+ =?utf-8?B?UFJWa0ZmdnJlbVlDaWduVkhqZzU1UVZzQjZpUUU2REJBUHdZOGVNQlBEbitz?=
+ =?utf-8?B?eWg5MzZUYm5PbVZqVUlMMHp4NWd5U0Y2b01iZktaVVA5cGVMbHdoVktHN0Vi?=
+ =?utf-8?B?dE1UQWkvWWVEQ0U3NUg0emFSeVFGTlpxek1uei9nbHJoZjlpcWdoS2VDbEw1?=
+ =?utf-8?B?U3FpYStGazMvWWh0K2lIY1F6T2RLaFZjaUlTK09uSmdyNmhYbWloSmYyRUh2?=
+ =?utf-8?Q?GvvNm9?=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:zh-tw; SCL:1;
+ SRV:; IPV:NLI; SFV:NSPM; H:SI2PR06MB5041.apcprd06.prod.outlook.com; PTR:;
+ CAT:NONE; SFS:(13230040)(366016)(376014)(1800799024)(38070700018)(217643003);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?WkRJZmQzSC9LZUxDbVV5MWxFdWhjNzUzbGtyQjFzcm5iNXZvbktlNFhwdlVy?=
+ =?utf-8?B?Q083MGhPOWRCSDkvc3BzNXRqYVFTR3hiaHJUWEtEa0YvQXcyVVg3b1ZjdS9j?=
+ =?utf-8?B?TEtlcERSZ3o5M1JZL1hudCtvQU91bW5EZGU4VFVyZlJmTVh5a1JpU3FFNzlU?=
+ =?utf-8?B?em5Gd1ZDM0pDQWRpRzdlMXFUSUxtWlAvUkFheVh0cTgxTGtJODRZOUhreGxm?=
+ =?utf-8?B?NVRtL3lzWWdGSHlLUUVLR21Ib0N0NFlGTE1XNldGMHNQYWhFMS84NGlUcFJl?=
+ =?utf-8?B?QkV4ZEVMNFdHSkNTdXUyZ0lXTXdmUTNGL0doUmhGdEQ4cGhQcDVvbzdYY0d1?=
+ =?utf-8?B?SVhwaE5NejJra0NXYUg0Z24rOEJBbFVwYVpjNktSYlpERXFvQjhBbU8vSmVM?=
+ =?utf-8?B?dG9xbXlod1ZnL1IwNU1KRjk5UHhGUEd0NXhidzE2S2JrRTRiK1I3WlBEMWUw?=
+ =?utf-8?B?b2ZIZWJZOG9EV2RNSlIzQjk2VXIyWWcwRENYV05nU3QxbGl4b2FPUENWUUNk?=
+ =?utf-8?B?Q0JmK1Jta1p6SjFxWHNNVS9RZVFSQ3o4bGR2K2oyM2ZmV01Ga0Y1WStyRFI0?=
+ =?utf-8?B?dlpGcGVGdFRMK1pVRVNMNlVEbUpydkp2cUFiaFdQQms2bzJlV1Y3RkswNXFI?=
+ =?utf-8?B?M29ZR05EaktQUFJ1M1hLZmEvZkdiSjd6MUwwcEVrVUR6azdGSElZQzhqUFBl?=
+ =?utf-8?B?UnJ1VkxFSlhaWjZUa1hMUktyK0F2Z1JXeG9SYm9ZZnRVMTFFMDlVaUx5dGlW?=
+ =?utf-8?B?UGVpTnd6Yi8yUlIweTI2TGNSV00rUVJFbE8wOWdXNGpyVmQ3NmJjeXhYSkNH?=
+ =?utf-8?B?NW9wV1RUM2dRMmplYnB2QmllcjZCRDNWQ0xuRVBGK3ViZjVxZlVqWlhoeDR2?=
+ =?utf-8?B?T3Q3QjFMcWJVQVlYand3bHJlOGE2R2JtcDQwNTZkb3Vyb0FSRm5ZNVc4cWlS?=
+ =?utf-8?B?Wm5xQktlVU5wWlVBcm5GVjM5REx5U2syU1V2WUNoRzZYZHVGVy9vRS9qdURY?=
+ =?utf-8?B?blhLYUwzWU1NZm1kM3VLV2ZJTXYxcWQ4MTFGRHBjcFZzeE5rbndHRkNYL1lm?=
+ =?utf-8?B?WUFIVmRIdWtnMTh0bmczNjhscjY0anhwRUhlK05XbkdvT21GNE42WXpnK2U3?=
+ =?utf-8?B?RHJhaDVPZ2Y3a2xqQ0RUdEZGWUQvR2U5MGdWbmo0cGExSmNESXArUVBlTmdV?=
+ =?utf-8?B?QkVNVEFyOHV1RXp1OWFoOElzN3dUWHJNeDMrdHFTTUczZFd0ampoYTVTcmRt?=
+ =?utf-8?B?TkY3azUxazNzOUM5M25obnhUK013Q3J0cjcwT1Vic1YzcTdJZUtIcElDZ1Vj?=
+ =?utf-8?B?TXZ4aHpNRnh5QUVFbkRhU1FJODNMYytoT2E2dTFtQ3lLNUNrcGc2b0hjdVA0?=
+ =?utf-8?B?TEJmNHlpbnEzd2Z1RWpSUFF5ZWR5c0hJc1NLcFgraXovN2p2alpuQ3gwaTYy?=
+ =?utf-8?B?VWNRVlh2b2x5eWZIN0lsMVIzVjR1T0dWb0NtWU13dGFIb2IvUmp5bVozdjdr?=
+ =?utf-8?B?cjM3cUszaE9LUFY1a3NUS3JpQkZoa2EyNmZFQ0JUNHpBOTZoY3dyQVo5bS9s?=
+ =?utf-8?B?RGNHUjdycFJKQk1kUHg3czFxODJJYy92dDBGYjJrODVyc2o0WitJcHNiUUVu?=
+ =?utf-8?B?SGUxRjVLWXhYeS9xOTF3dlFVRzV4UnB4UStjVWIvNnRpTzQyN0xOM212T1hs?=
+ =?utf-8?B?aVVjSU1YdTEwWXV5WlRTeVRrYjRpbFhwcHhPdTVEdTg2WDFnbDlNODdYb1U5?=
+ =?utf-8?B?dUZMRVV1T3UrV0FNQTdYbjE4Q0oxZ3FxSzZscXhSZnhURkw2VEtFUTJ5VElu?=
+ =?utf-8?B?NWZhMWdBajhORkF6MnRZZXVMUTVPV2dpdmZXT25wSmk2WXNLRThzMmVVeTFt?=
+ =?utf-8?B?TjRrTDVKU0prajdWSklMQmFnU3N2M1FLQlJ3djJCbGI0UklFVVVySXRvSnc5?=
+ =?utf-8?B?cmZkVEpnLzk5QjVwYllJNTh2UHBDRUtXYlRIWGtlbFI3RmpkakZ2dTlYTUcw?=
+ =?utf-8?B?SGJoWHl2cStlNnBGaS9IWWh0R3V3ZXp1TmRPSzh5V1lQSkZZYW05ZGVRUkEx?=
+ =?utf-8?B?ZS9FR3Jjd2R1UWhTZDUzTTFoT29IU21xckFkdUl1K3c0azZZY0R5bk5OM3lF?=
+ =?utf-8?Q?+zmh6qxWfRd19HCH0b99Jvlrz?=
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+X-OriginatorOrg: aspeedtech.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SI2PR06MB5041.apcprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 697939dd-b827-44df-9a45-08ddea8b9290
+X-MS-Exchange-CrossTenant-originalarrivaltime: 03 Sep 2025 01:45:33.6631 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: IoLT5h+46zLBCgDHA1MxSxA3ZJvR7fkxJakFgwI8m9zDFV/enszPLT9evH6emZ4Z7XO0MQpo1Ug9INVkpoIS9zbDdnPtcUi763fFj9VhtY0=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SG2PR06MB5081
+Received-SPF: pass client-ip=2a01:111:f403:c40f::7;
+ envelope-from=jamin_lin@aspeedtech.com;
+ helo=SEYPR02CU001.outbound.protection.outlook.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -95,569 +187,81 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Shengtan Mao <stmao@google.com>
-
-Signed-off-by: Shengtan Mao <stmao@google.com>
-Signed-off-by: Titus Rwantare <titusr@google.com>
-Signed-off-by: Nabih Estefan <nabihestefan@google.com>
----
- hw/arm/Kconfig               |   1 +
- hw/sensor/Kconfig            |   4 +
- hw/sensor/max16600.c         | 196 ++++++++++++++++++++++++++++
- hw/sensor/meson.build        |   1 +
- include/hw/sensor/max16600.h |  45 +++++++
- tests/qtest/max16600-test.c  | 240 +++++++++++++++++++++++++++++++++++
- tests/qtest/meson.build      |   1 +
- 7 files changed, 488 insertions(+)
- create mode 100644 hw/sensor/max16600.c
- create mode 100644 include/hw/sensor/max16600.h
- create mode 100644 tests/qtest/max16600-test.c
-
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 2aa4b5d778..4ab0a93ba6 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -480,6 +480,7 @@ config NPCM7XX
-     select AT24C  # EEPROM
-     select MAX34451
-     select ISL_PMBUS_VR
-+    select MAX_16600
-     select PL310  # cache controller
-     select PMBUS
-     select SERIAL_MM
-diff --git a/hw/sensor/Kconfig b/hw/sensor/Kconfig
-index bc6331b4ab..ef7b3262a8 100644
---- a/hw/sensor/Kconfig
-+++ b/hw/sensor/Kconfig
-@@ -43,3 +43,7 @@ config ISL_PMBUS_VR
- config MAX31785
-     bool
-     depends on PMBUS
-+
-+config MAX_16600
-+    bool
-+    depends on I2C
-diff --git a/hw/sensor/max16600.c b/hw/sensor/max16600.c
-new file mode 100644
-index 0000000000..0aaab436e0
---- /dev/null
-+++ b/hw/sensor/max16600.c
-@@ -0,0 +1,196 @@
-+// SPDX-License-Identifier: GPL-2.0-or-later
-+/*
-+ * MAX16600 VR13.HC Dual-Output Voltage Regulator Chipset
-+ *
-+ * Copyright 2021 Google LLC
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "hw/i2c/pmbus_device.h"
-+#include "qapi/visitor.h"
-+#include "qemu/log.h"
-+#include "hw/sensor/max16600.h"
-+
-+static uint8_t max16600_read_byte(PMBusDevice *pmdev)
-+{
-+    MAX16600State *s = MAX16600(pmdev);
-+
-+    switch (pmdev->code) {
-+    case PMBUS_IC_DEVICE_ID:
-+        pmbus_send_string(pmdev, s->ic_device_id);
-+        break;
-+
-+    case MAX16600_PHASE_ID:
-+        pmbus_send8(pmdev, s->phase_id);
-+        break;
-+
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: reading from unsupported register: 0x%02x\n",
-+                      __func__, pmdev->code);
-+        break;
-+    }
-+    return 0xFF;
-+}
-+
-+static int max16600_write_data(PMBusDevice *pmdev, const uint8_t *buf,
-+                               uint8_t len)
-+{
-+    qemu_log_mask(LOG_GUEST_ERROR,
-+                  "%s: write to unsupported register: 0x%02x\n", __func__,
-+                  pmdev->code);
-+    return 0xFF;
-+}
-+
-+static void max16600_exit_reset(Object *obj, ResetType type)
-+{
-+    PMBusDevice *pmdev = PMBUS_DEVICE(obj);
-+    MAX16600State *s = MAX16600(obj);
-+
-+    pmdev->capability = MAX16600_CAPABILITY_DEFAULT;
-+    pmdev->page = 0;
-+
-+    pmdev->pages[0].operation = MAX16600_OPERATION_DEFAULT;
-+    pmdev->pages[0].on_off_config = MAX16600_ON_OFF_CONFIG_DEFAULT;
-+    pmdev->pages[0].vout_mode = MAX16600_VOUT_MODE_DEFAULT;
-+
-+    pmdev->pages[0].read_vin =
-+        pmbus_data2linear_mode(MAX16600_READ_VIN_DEFAULT, max16600_exp.vin);
-+    pmdev->pages[0].read_iin =
-+        pmbus_data2linear_mode(MAX16600_READ_IIN_DEFAULT, max16600_exp.iin);
-+    pmdev->pages[0].read_pin =
-+        pmbus_data2linear_mode(MAX16600_READ_PIN_DEFAULT, max16600_exp.pin);
-+    pmdev->pages[0].read_vout = MAX16600_READ_VOUT_DEFAULT;
-+    pmdev->pages[0].read_iout =
-+        pmbus_data2linear_mode(MAX16600_READ_IOUT_DEFAULT, max16600_exp.iout);
-+    pmdev->pages[0].read_pout =
-+        pmbus_data2linear_mode(MAX16600_READ_PIN_DEFAULT, max16600_exp.pout);
-+    pmdev->pages[0].read_temperature_1 =
-+        pmbus_data2linear_mode(MAX16600_READ_TEMP_DEFAULT, max16600_exp.temp);
-+
-+    s->ic_device_id = "MAX16601";
-+    s->phase_id = MAX16600_PHASE_ID_DEFAULT;
-+}
-+
-+static void max16600_get(Object *obj, Visitor *v, const char *name,
-+                         void *opaque, Error **errp)
-+{
-+    uint16_t value;
-+
-+    if (strcmp(name, "vin") == 0) {
-+        value = pmbus_linear_mode2data(*(uint16_t *)opaque, max16600_exp.vin);
-+    } else if (strcmp(name, "iin") == 0) {
-+        value = pmbus_linear_mode2data(*(uint16_t *)opaque, max16600_exp.iin);
-+    } else if (strcmp(name, "pin") == 0) {
-+        value = pmbus_linear_mode2data(*(uint16_t *)opaque, max16600_exp.pin);
-+    } else if (strcmp(name, "iout") == 0) {
-+        value = pmbus_linear_mode2data(*(uint16_t *)opaque, max16600_exp.iout);
-+    } else if (strcmp(name, "pout") == 0) {
-+        value = pmbus_linear_mode2data(*(uint16_t *)opaque, max16600_exp.pout);
-+    } else if (strcmp(name, "temperature") == 0) {
-+        value = pmbus_linear_mode2data(*(uint16_t *)opaque, max16600_exp.temp);
-+    } else {
-+        value = *(uint16_t *)opaque;
-+    }
-+
-+    /* scale to milli-units */
-+    if (strcmp(name, "pout") != 0 && strcmp(name, "pin") != 0) {
-+        value *= 1000;
-+    }
-+
-+    visit_type_uint16(v, name, &value, errp);
-+}
-+
-+static void max16600_set(Object *obj, Visitor *v, const char *name,
-+                         void *opaque, Error **errp)
-+{
-+    PMBusDevice *pmdev = PMBUS_DEVICE(obj);
-+    uint16_t *internal = opaque;
-+    uint16_t value;
-+    if (!visit_type_uint16(v, name, &value, errp)) {
-+        return;
-+    }
-+
-+    /* inputs match kernel driver which scales to milliunits except power */
-+    if (strcmp(name, "pout") != 0 && strcmp(name, "pin") != 0) {
-+        value /= 1000;
-+    }
-+
-+    if (strcmp(name, "vin") == 0) {
-+        *internal = pmbus_data2linear_mode(value, max16600_exp.vin);
-+    } else if (strcmp(name, "iin") == 0) {
-+        *internal = pmbus_data2linear_mode(value, max16600_exp.iin);
-+    } else if (strcmp(name, "pin") == 0) {
-+        *internal = pmbus_data2linear_mode(value, max16600_exp.pin);
-+    } else if (strcmp(name, "iout") == 0) {
-+        *internal = pmbus_data2linear_mode(value, max16600_exp.iout);
-+    } else if (strcmp(name, "pout") == 0) {
-+        *internal = pmbus_data2linear_mode(value, max16600_exp.pout);
-+    } else if (strcmp(name, "temperature") == 0) {
-+        *internal = pmbus_data2linear_mode(value, max16600_exp.temp);
-+    } else {
-+        *internal = value;
-+    }
-+
-+    pmbus_check_limits(pmdev);
-+}
-+
-+static void max16600_init(Object *obj)
-+{
-+    PMBusDevice *pmdev = PMBUS_DEVICE(obj);
-+    uint64_t flags = PB_HAS_VOUT_MODE | PB_HAS_VIN | PB_HAS_IIN | PB_HAS_PIN |
-+                     PB_HAS_IOUT | PB_HAS_POUT | PB_HAS_VOUT |
-+                     PB_HAS_TEMPERATURE | PB_HAS_MFR_INFO;
-+    pmbus_page_config(pmdev, 0, flags);
-+
-+    object_property_add(obj, "vin", "uint16", max16600_get, max16600_set, NULL,
-+                        &pmdev->pages[0].read_vin);
-+
-+    object_property_add(obj, "iin", "uint16", max16600_get, max16600_set, NULL,
-+                        &pmdev->pages[0].read_iin);
-+
-+    object_property_add(obj, "pin", "uint16", max16600_get, max16600_set, NULL,
-+                        &pmdev->pages[0].read_pin);
-+
-+    object_property_add(obj, "vout", "uint16", max16600_get, max16600_set,
-+                        NULL, &pmdev->pages[0].read_vout);
-+
-+    object_property_add(obj, "iout", "uint16", max16600_get, max16600_set,
-+                        NULL, &pmdev->pages[0].read_iout);
-+
-+    object_property_add(obj, "pout", "uint16", max16600_get, max16600_set,
-+                        NULL, &pmdev->pages[0].read_pout);
-+
-+    object_property_add(obj, "temperature", "uint16",
-+                        max16600_get, max16600_set,
-+                        NULL, &pmdev->pages[0].read_temperature_1);
-+}
-+
-+static void max16600_class_init(ObjectClass *klass, const void *data)
-+{
-+    ResettableClass *rc = RESETTABLE_CLASS(klass);
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+    PMBusDeviceClass *k = PMBUS_DEVICE_CLASS(klass);
-+
-+    dc->desc = "MAX16600 Dual-Output Voltage Regulator";
-+    k->write_data = max16600_write_data;
-+    k->receive_byte = max16600_read_byte;
-+    k->device_num_pages = 1;
-+
-+    rc->phases.exit = max16600_exit_reset;
-+}
-+
-+static const TypeInfo max16600_info = {
-+    .name = TYPE_MAX16600,
-+    .parent = TYPE_PMBUS_DEVICE,
-+    .instance_size = sizeof(MAX16600State),
-+    .instance_init = max16600_init,
-+    .class_init = max16600_class_init,
-+};
-+
-+static void max16600_register_types(void)
-+{
-+    type_register_static(&max16600_info);
-+}
-+
-+type_init(max16600_register_types)
-diff --git a/hw/sensor/meson.build b/hw/sensor/meson.build
-index 420fdc3359..85c2c73c99 100644
---- a/hw/sensor/meson.build
-+++ b/hw/sensor/meson.build
-@@ -8,3 +8,4 @@ system_ss.add(when: 'CONFIG_MAX34451', if_true: files('max34451.c'))
- system_ss.add(when: 'CONFIG_LSM303DLHC_MAG', if_true: files('lsm303dlhc_mag.c'))
- system_ss.add(when: 'CONFIG_ISL_PMBUS_VR', if_true: files('isl_pmbus_vr.c'))
- system_ss.add(when: 'CONFIG_MAX31785', if_true: files('max31785.c'))
-+system_ss.add(when: 'CONFIG_MAX_16600', if_true: files('max16600.c'))
-diff --git a/include/hw/sensor/max16600.h b/include/hw/sensor/max16600.h
-new file mode 100644
-index 0000000000..c8a1c097d1
---- /dev/null
-+++ b/include/hw/sensor/max16600.h
-@@ -0,0 +1,45 @@
-+// SPDX-License-Identifier: GPL-2.0-or-later
-+/*
-+ * MAX16600 VR13.HC Dual-Output Voltage Regulator Chipset
-+ *
-+ * Copyright 2021 Google LLC
-+ */
-+
-+#include "hw/i2c/pmbus_device.h"
-+
-+#define TYPE_MAX16600 "max16600"
-+#define MAX16600(obj) OBJECT_CHECK(MAX16600State, (obj), TYPE_MAX16600)
-+
-+#define MAX16600_PHASE_ID       0xF3
-+/*
-+ * Packet error checking capability is disabled.
-+ * Pending QEMU support
-+ */
-+#define MAX16600_CAPABILITY_DEFAULT 0x30
-+#define MAX16600_OPERATION_DEFAULT 0x88
-+#define MAX16600_ON_OFF_CONFIG_DEFAULT 0x17
-+#define MAX16600_VOUT_MODE_DEFAULT 0x22
-+#define MAX16600_PHASE_ID_DEFAULT 0x80
-+
-+#define MAX16600_READ_VIN_DEFAULT 5    /* Volts */
-+#define MAX16600_READ_IIN_DEFAULT 3    /* Amps */
-+#define MAX16600_READ_PIN_DEFAULT 100  /* Watts */
-+#define MAX16600_READ_VOUT_DEFAULT 5   /* Volts */
-+#define MAX16600_READ_IOUT_DEFAULT 3   /* Amps */
-+#define MAX16600_READ_POUT_DEFAULT 100 /* Watts */
-+#define MAX16600_READ_TEMP_DEFAULT 40  /* Celsius */
-+
-+typedef struct MAX16600State {
-+    PMBusDevice parent;
-+    const char *ic_device_id;
-+    uint8_t phase_id;
-+} MAX16600State;
-+
-+/*
-+ * determines the exponents used in linear conversion for CORE
-+ * (iin, pin) may be (-4, 0) or (-3, 1)
-+ * iout may be -2, -1, 0, 1
-+ */
-+static const struct {
-+    int vin, iin, pin, iout, pout, temp;
-+} max16600_exp = {-6, -4, 0, -2, -1, 0};
-diff --git a/tests/qtest/max16600-test.c b/tests/qtest/max16600-test.c
-new file mode 100644
-index 0000000000..b2058aecad
---- /dev/null
-+++ b/tests/qtest/max16600-test.c
-@@ -0,0 +1,240 @@
-+// SPDX-License-Identifier: GPL-2.0-or-later
-+/*
-+ * QTest for the MAX16600 VR13.HC Dual-Output Voltage Regulator Chipset
-+ *
-+ * Copyright 2021 Google LLC
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "hw/i2c/pmbus_device.h"
-+#include "hw/sensor/max16600.h"
-+#include "libqtest-single.h"
-+#include "libqos/qgraph.h"
-+#include "libqos/i2c.h"
-+#include "qobject/qdict.h"
-+#include "qobject/qnum.h"
-+#include "qemu/bitops.h"
-+
-+#define TEST_ID "max16600-test"
-+#define TEST_ADDR (0x61)
-+
-+uint16_t pmbus_linear_mode2data(uint16_t value, int exp)
-+{
-+    /* D = L * 2^e */
-+    if (exp < 0) {
-+        return value >> (-exp);
-+    }
-+    return value << exp;
-+}
-+
-+static uint16_t qmp_max16600_get(const char *id, const char *property)
-+{
-+    QDict *response;
-+    uint64_t ret;
-+
-+    response = qmp("{ 'execute': 'qom-get', 'arguments': { 'path': %s, "
-+                   "'property': %s } }",
-+                   id, property);
-+    g_assert(qdict_haskey(response, "return"));
-+    ret = qnum_get_uint(qobject_to(QNum, qdict_get(response, "return")));
-+    qobject_unref(response);
-+    return ret;
-+}
-+
-+static void qmp_max16600_set(const char *id, const char *property,
-+                             uint16_t value)
-+{
-+    QDict *response;
-+
-+    response = qmp("{ 'execute': 'qom-set', 'arguments': { 'path': %s, "
-+                   "'property': %s, 'value': %u } }",
-+                   id, property, value);
-+    g_assert(qdict_haskey(response, "return"));
-+    qobject_unref(response);
-+}
-+
-+static uint16_t max16600_i2c_get16(QI2CDevice *i2cdev, uint8_t reg)
-+{
-+    uint8_t resp[2];
-+    i2c_read_block(i2cdev, reg, resp, sizeof(resp));
-+    return (resp[1] << 8) | resp[0];
-+}
-+
-+static void max16600_i2c_set16(QI2CDevice *i2cdev, uint8_t reg, uint16_t value)
-+{
-+    uint8_t data[2];
-+
-+    data[0] = value & 255;
-+    data[1] = value >> 8;
-+    i2c_write_block(i2cdev, reg, data, sizeof(data));
-+}
-+
-+/* test default values */
-+static void test_defaults(void *obj, void *data, QGuestAllocator *alloc)
-+{
-+    uint16_t i2c_value, value;
-+    QI2CDevice *i2cdev = (QI2CDevice *)obj;
-+
-+    i2c_value = i2c_get8(i2cdev, PMBUS_CAPABILITY);
-+    g_assert_cmphex(i2c_value, ==, MAX16600_CAPABILITY_DEFAULT);
-+
-+    i2c_value = i2c_get8(i2cdev, PMBUS_OPERATION);
-+    g_assert_cmphex(i2c_value, ==, MAX16600_OPERATION_DEFAULT);
-+
-+    i2c_value = i2c_get8(i2cdev, PMBUS_ON_OFF_CONFIG);
-+    g_assert_cmphex(i2c_value, ==, MAX16600_ON_OFF_CONFIG_DEFAULT);
-+
-+    i2c_value = i2c_get8(i2cdev, PMBUS_VOUT_MODE);
-+    g_assert_cmphex(i2c_value, ==, MAX16600_VOUT_MODE_DEFAULT);
-+
-+    value = qmp_max16600_get(TEST_ID, "vin") / 1000;
-+    g_assert_cmpuint(value, ==, MAX16600_READ_VIN_DEFAULT);
-+
-+    value = qmp_max16600_get(TEST_ID, "iin") / 1000;
-+    g_assert_cmpuint(value, ==, MAX16600_READ_IIN_DEFAULT);
-+
-+    value = qmp_max16600_get(TEST_ID, "pin");
-+    g_assert_cmpuint(value, ==, MAX16600_READ_PIN_DEFAULT);
-+
-+    value = qmp_max16600_get(TEST_ID, "vout") / 1000;
-+    g_assert_cmpuint(value, ==, MAX16600_READ_VOUT_DEFAULT);
-+
-+    value = qmp_max16600_get(TEST_ID, "iout") / 1000;
-+    g_assert_cmpuint(value, ==, MAX16600_READ_IOUT_DEFAULT);
-+
-+    value = qmp_max16600_get(TEST_ID, "pout");
-+    g_assert_cmpuint(value, ==, MAX16600_READ_POUT_DEFAULT);
-+
-+    value = qmp_max16600_get(TEST_ID, "temperature") / 1000;
-+    g_assert_cmpuint(value, ==, MAX16600_READ_TEMP_DEFAULT);
-+}
-+
-+/* test qmp access */
-+static void test_tx_rx(void *obj, void *data, QGuestAllocator *alloc)
-+{
-+    uint16_t value, i2c_value;
-+    QI2CDevice *i2cdev = (QI2CDevice *)obj;
-+
-+    qmp_max16600_set(TEST_ID, "vin", 2000);
-+    value = qmp_max16600_get(TEST_ID, "vin") / 1000;
-+    i2c_value = max16600_i2c_get16(i2cdev, PMBUS_READ_VIN);
-+    i2c_value = pmbus_linear_mode2data(i2c_value, max16600_exp.vin);
-+    g_assert_cmpuint(value, ==, i2c_value);
-+
-+    qmp_max16600_set(TEST_ID, "iin", 3000);
-+    value = qmp_max16600_get(TEST_ID, "iin") / 1000;
-+    i2c_value = max16600_i2c_get16(i2cdev, PMBUS_READ_IIN);
-+    i2c_value = pmbus_linear_mode2data(i2c_value, max16600_exp.iin);
-+    g_assert_cmpuint(value, ==, i2c_value);
-+
-+    qmp_max16600_set(TEST_ID, "pin", 4);
-+    value = qmp_max16600_get(TEST_ID, "pin");
-+    i2c_value = max16600_i2c_get16(i2cdev, PMBUS_READ_PIN);
-+    i2c_value = pmbus_linear_mode2data(i2c_value, max16600_exp.pin);
-+    g_assert_cmpuint(value, ==, i2c_value);
-+
-+    qmp_max16600_set(TEST_ID, "vout", 5000);
-+    value = qmp_max16600_get(TEST_ID, "vout") / 1000;
-+    i2c_value = max16600_i2c_get16(i2cdev, PMBUS_READ_VOUT);
-+    g_assert_cmpuint(value, ==, i2c_value);
-+
-+    qmp_max16600_set(TEST_ID, "iout", 6000);
-+    value = qmp_max16600_get(TEST_ID, "iout") / 1000;
-+    i2c_value = max16600_i2c_get16(i2cdev, PMBUS_READ_IOUT);
-+    i2c_value = pmbus_linear_mode2data(i2c_value, max16600_exp.iout);
-+    g_assert_cmpuint(value, ==, i2c_value);
-+
-+    qmp_max16600_set(TEST_ID, "pout", 7);
-+    value = qmp_max16600_get(TEST_ID, "pout");
-+    i2c_value = max16600_i2c_get16(i2cdev, PMBUS_READ_POUT);
-+    i2c_value = pmbus_linear_mode2data(i2c_value, max16600_exp.pout);
-+    g_assert_cmpuint(value, ==, i2c_value);
-+
-+    qmp_max16600_set(TEST_ID, "temperature", 8000);
-+    value = qmp_max16600_get(TEST_ID, "temperature") / 1000;
-+    i2c_value = max16600_i2c_get16(i2cdev, PMBUS_READ_TEMPERATURE_1);
-+    i2c_value = pmbus_linear_mode2data(i2c_value, max16600_exp.temp);
-+    g_assert_cmpuint(value, ==, i2c_value);
-+}
-+
-+/* test r/w registers */
-+static void test_rw_regs(void *obj, void *data, QGuestAllocator *alloc)
-+{
-+    uint16_t i2c_value;
-+    QI2CDevice *i2cdev = (QI2CDevice *)obj;
-+
-+    max16600_i2c_set16(i2cdev, PMBUS_OPERATION, 0xA);
-+    i2c_value = i2c_get8(i2cdev, PMBUS_OPERATION);
-+    g_assert_cmphex(i2c_value, ==, 0xA);
-+
-+    max16600_i2c_set16(i2cdev, PMBUS_ON_OFF_CONFIG, 0xB);
-+    i2c_value = i2c_get8(i2cdev, PMBUS_ON_OFF_CONFIG);
-+    g_assert_cmphex(i2c_value, ==, 0xB);
-+
-+    max16600_i2c_set16(i2cdev, PMBUS_VOUT_MODE, 0xC);
-+    i2c_value = i2c_get8(i2cdev, PMBUS_VOUT_MODE);
-+    g_assert_cmphex(i2c_value, ==, 0xC);
-+}
-+
-+/* test read-only registers */
-+static void test_ro_regs(void *obj, void *data, QGuestAllocator *alloc)
-+{
-+    uint16_t i2c_init_value, i2c_value;
-+    QI2CDevice *i2cdev = (QI2CDevice *)obj;
-+
-+    i2c_init_value = i2c_get8(i2cdev, PMBUS_CAPABILITY);
-+    max16600_i2c_set16(i2cdev, PMBUS_CAPABILITY, 0xD);
-+    i2c_value = i2c_get8(i2cdev, PMBUS_CAPABILITY);
-+    g_assert_cmphex(i2c_init_value, ==, i2c_value);
-+
-+    i2c_init_value = max16600_i2c_get16(i2cdev, PMBUS_READ_VIN);
-+    max16600_i2c_set16(i2cdev, PMBUS_READ_VIN, 0x1234);
-+    i2c_value = max16600_i2c_get16(i2cdev, PMBUS_READ_VIN);
-+    g_assert_cmphex(i2c_init_value, ==, i2c_value);
-+
-+    i2c_init_value = max16600_i2c_get16(i2cdev, PMBUS_READ_IIN);
-+    max16600_i2c_set16(i2cdev, PMBUS_READ_IIN, 0x2234);
-+    i2c_value = max16600_i2c_get16(i2cdev, PMBUS_READ_IIN);
-+    g_assert_cmphex(i2c_init_value, ==, i2c_value);
-+
-+    i2c_init_value = max16600_i2c_get16(i2cdev, PMBUS_READ_PIN);
-+    max16600_i2c_set16(i2cdev, PMBUS_READ_PIN, 0x3234);
-+    i2c_value = max16600_i2c_get16(i2cdev, PMBUS_READ_PIN);
-+    g_assert_cmphex(i2c_init_value, ==, i2c_value);
-+
-+    i2c_init_value = max16600_i2c_get16(i2cdev, PMBUS_READ_VOUT);
-+    max16600_i2c_set16(i2cdev, PMBUS_READ_VOUT, 0x4234);
-+    i2c_value = max16600_i2c_get16(i2cdev, PMBUS_READ_VOUT);
-+    g_assert_cmphex(i2c_init_value, ==, i2c_value);
-+
-+    i2c_init_value = max16600_i2c_get16(i2cdev, PMBUS_READ_IOUT);
-+    max16600_i2c_set16(i2cdev, PMBUS_READ_IOUT, 0x5235);
-+    i2c_value = max16600_i2c_get16(i2cdev, PMBUS_READ_IOUT);
-+    g_assert_cmphex(i2c_init_value, ==, i2c_value);
-+
-+    i2c_init_value = max16600_i2c_get16(i2cdev, PMBUS_READ_POUT);
-+    max16600_i2c_set16(i2cdev, PMBUS_READ_POUT, 0x6234);
-+    i2c_value = max16600_i2c_get16(i2cdev, PMBUS_READ_POUT);
-+    g_assert_cmphex(i2c_init_value, ==, i2c_value);
-+
-+    i2c_init_value = max16600_i2c_get16(i2cdev, PMBUS_READ_TEMPERATURE_1);
-+    max16600_i2c_set16(i2cdev, PMBUS_READ_TEMPERATURE_1, 0x7236);
-+    i2c_value = max16600_i2c_get16(i2cdev, PMBUS_READ_TEMPERATURE_1);
-+    g_assert_cmphex(i2c_init_value, ==, i2c_value);
-+}
-+
-+static void max16600_register_nodes(void)
-+{
-+    QOSGraphEdgeOptions opts = {.extra_device_opts =
-+                                    "id=" TEST_ID ",address=0x61"};
-+    add_qi2c_address(&opts, &(QI2CAddress){TEST_ADDR});
-+
-+    qos_node_create_driver("max16600", i2c_device_create);
-+    qos_node_consumes("max16600", "i2c-bus", &opts);
-+
-+    qos_add_test("test_defaults", "max16600", test_defaults, NULL);
-+    qos_add_test("test_tx_rx", "max16600", test_tx_rx, NULL);
-+    qos_add_test("test_rw_regs", "max16600", test_rw_regs, NULL);
-+    qos_add_test("test_ro_regs", "max16600", test_ro_regs, NULL);
-+}
-+libqos_init(max16600_register_nodes);
-diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index 669d07c06b..459cf41985 100644
---- a/tests/qtest/meson.build
-+++ b/tests/qtest/meson.build
-@@ -295,6 +295,7 @@ qos_test_ss.add(
-   'es1370-test.c',
-   'lsm303dlhc-mag-test.c',
-   'isl_pmbus_vr-test.c',
-+  'max16600-test.c',
-   'max34451-test.c',
-   'megasas-test.c',
-   'ne2000-test.c',
--- 
-2.51.0.355.g5224444f11-goog
-
+SGkgQ8OpZHJpYw0KDQo+IFN1YmplY3Q6IFJlOiBbU1BBTV0gW1BBVENIIHYxIDA0LzIxXSBody9h
+cm0vYXNwZWVkX2FzdDI3eDAtc3NwOiBTd2l0Y2ggU1NQDQo+IG1lbW9yeSB0byBTRFJBTSBhbmQg
+dXNlIGRyYW1fY29udGFpbmVyIGZvciByZW1hcCBzdXBwb3J0DQo+IA0KPiBPbiA3LzE3LzI1IDA1
+OjQwLCBKYW1pbiBMaW4gd3JvdGU6DQo+ID4gQWNjb3JkaW5nIHRvIHRoZSBBU1QyNzAwIGRlc2ln
+biwgdGhlIFNTUCBjb3Byb2Nlc3NvciB1c2VzIGl0cyBvd24NCj4gPiBTRFJBTSBpbnN0ZWFkIG9m
+IFNSQU0uIEFkZGl0aW9uYWxseSwgYWxsIHRocmVlIGNvcHJvY2Vzc29yc+KAlFNTUCwgVFNQLA0K
+PiA+IGFuZCBQU1DigJRzaGFyZSBhIGNvbW1vbiBTUkFNIGJsb2NrLiBJbiB0aGUgcHJldmlvdXMg
+aW1wbGVtZW50YXRpb24sIHRoZQ0KPiA+IFNTUCBtZW1vcnkgcmVnaW9uIHdhcyBsYWJlbGVkIGFu
+ZCBzaXplZCBhcyAiU1JBTSIsIGJ1dCBpbiBwcmFjdGljZSBpdA0KPiA+IHdhcyBiZWluZyB1c2Vk
+IGFzIFNTUCdzIGxvY2FsIFNEUkFNLg0KPiANCj4gDQo+IFNvIHRoZSBTU1AgY29wcm9jZXNzb3Ig
+aGFzIG5vIFNSQU0gPw0KDQpUaGFua3MgZm9yIHJldmlldy4NCg0KWWVzLCBib3RoIHRoZSBjb3By
+b2Nlc3NvciBhbmQgdGhlIFBTUChDb3J0ZXggQTM1KSBzaGFyZSB0aGUgc2FtZSBTUkFNLg0KDQo+
+IA0KPiANCj4gPg0KPiA+IFRoaXMgY29tbWl0IHVwZGF0ZXMgdGhlIFNTUCBtZW1vcnkgbWFwcGlu
+ZyB0byByZWZsZWN0IHRoZSBjb3JyZWN0DQo+ID4gaGFyZHdhcmUNCj4gPiBkZXNpZ246DQo+ID4N
+Cj4gPiAtIFJlcGxhY2UgdGhlIFNSQU0gcmVnaW9uIHdpdGggYSAiNTEyTUIgU0RSQU0iIHJlZ2lv
+biBzdGFydGluZyBhdCAweDAuDQo+IA0KPiBJcyA1MTJNQiBhIHJlYWwgSFcgdmFsdWUgPw0KPiAN
+Cg0KWWVzLCB0aGUgU0RSQU0gc2l6ZSBpcyA1MTJNQiBpbiBhIHJlYWwgSFcuDQoNCkphbWluDQo+
+IA0KPiBUaGFua3MsDQo+IA0KPiBDLg0KPiANCj4gDQo+IA0KPiA+IC0gUmVuYW1lIHRoZSBpbnRl
+cm5hbCB2YXJpYWJsZSBmcm9tICJzcmFtIiB0byAiZHJhbV9jb250YWluZXIiIGZvciBjbGFyaXR5
+Lg0KPiA+IC0gVXNlICJBU1QyNzAwX1NTUF9TRFJBTV9TSVpFIiAoNTEyTUIpIGluc3RlYWQgb2Yg
+dGhlIHByZXZpb3VzIDMyTUINCj4gU1JBTSBzaXplLg0KPiA+IC0gTWFwIHRoZSBuZXcgcmVnaW9u
+IHVzaW5nICJBU1BFRURfREVWX1NEUkFNIiBpbnN0ZWFkIG9mDQo+ICJBU1BFRURfREVWX1NSQU0i
+Lg0KPiA+DQo+ID4gVGhpcyBjaGFuZ2UgYWxzbyBwcmVwYXJlcyBmb3IgZnV0dXJlIGVuaGFuY2Vt
+ZW50cyB3aGVyZSBQU1AgRFJBTSB3aWxsDQo+ID4gYmUgcmVtYXBwZWQgaW50byB0aGlzIFNTUCBT
+RFJBTSBjb250YWluZXIgdXNpbmcgc3VicmVnaW9ucyBhdCBzcGVjaWZpYw0KPiBvZmZzZXRzLg0K
+PiA+IFVzaW5nICJkcmFtX2NvbnRhaW5lciIgbWFrZXMgaXQgZWFzaWVyIHRvIG1hbmFnZSBhbGlh
+c2VzIGFuZCByZW1hcCBsb2dpYy4NCj4gPg0KPiA+IFNpZ25lZC1vZmYtYnk6IEphbWluIExpbiA8
+amFtaW5fbGluQGFzcGVlZHRlY2guY29tPg0KPiA+IC0tLQ0KPiA+ICAgaHcvYXJtL2FzcGVlZF9h
+c3QyN3gwLXNzcC5jIHwgMjAgKysrKysrKysrKy0tLS0tLS0tLS0NCj4gPiAgIDEgZmlsZSBjaGFu
+Z2VkLCAxMCBpbnNlcnRpb25zKCspLCAxMCBkZWxldGlvbnMoLSkNCj4gPg0KPiA+IGRpZmYgLS1n
+aXQgYS9ody9hcm0vYXNwZWVkX2FzdDI3eDAtc3NwLmMgYi9ody9hcm0vYXNwZWVkX2FzdDI3eDAt
+c3NwLmMNCj4gPiBpbmRleCA4MGVjNTk5NmMxLi45NjQxZTI3ZGUxIDEwMDY0NA0KPiA+IC0tLSBh
+L2h3L2FybS9hc3BlZWRfYXN0Mjd4MC1zc3AuYw0KPiA+ICsrKyBiL2h3L2FybS9hc3BlZWRfYXN0
+Mjd4MC1zc3AuYw0KPiA+IEBAIC0xNSwxMCArMTUsMTAgQEANCj4gPiAgICNpbmNsdWRlICJody9t
+aXNjL3VuaW1wLmgiDQo+ID4gICAjaW5jbHVkZSAiaHcvYXJtL2FzcGVlZF9zb2MuaCINCj4gPg0K
+PiA+IC0jZGVmaW5lIEFTVDI3MDBfU1NQX1JBTV9TSVpFICgzMiAqIE1pQikNCj4gPiArI2RlZmlu
+ZSBBU1QyNzAwX1NTUF9TRFJBTV9TSVpFICg1MTIgKiBNaUIpDQo+ID4NCj4gPiAgIHN0YXRpYyBj
+b25zdCBod2FkZHIgYXNwZWVkX3NvY19hc3QyN3gwc3NwX21lbW1hcFtdID0gew0KPiA+IC0gICAg
+W0FTUEVFRF9ERVZfU1JBTV0gICAgICA9ICAweDAwMDAwMDAwLA0KPiA+ICsgICAgW0FTUEVFRF9E
+RVZfU0RSQU1dICAgICA9ICAweDAwMDAwMDAwLA0KPiA+ICAgICAgIFtBU1BFRURfREVWX0lOVENd
+ICAgICAgPSAgMHg3MjEwMDAwMCwNCj4gPiAgICAgICBbQVNQRUVEX0RFVl9TQ1VdICAgICAgID0g
+IDB4NzJDMDIwMDAsDQo+ID4gICAgICAgW0FTUEVFRF9ERVZfU0NVSU9dICAgICA9ICAweDc0QzAy
+MDAwLA0KPiA+IEBAIC0xNjMsNyArMTYzLDcgQEAgc3RhdGljIHZvaWQNCj4gYXNwZWVkX3NvY19h
+c3QyN3gwc3NwX3JlYWxpemUoRGV2aWNlU3RhdGUgKmRldl9zb2MsIEVycm9yICoqZXJycCkNCj4g
+PiAgICAgICBBc3BlZWRTb0NTdGF0ZSAqcyA9IEFTUEVFRF9TT0MoZGV2X3NvYyk7DQo+ID4gICAg
+ICAgQXNwZWVkU29DQ2xhc3MgKnNjID0gQVNQRUVEX1NPQ19HRVRfQ0xBU1Mocyk7DQo+ID4gICAg
+ICAgRGV2aWNlU3RhdGUgKmFybXY3bTsNCj4gPiAtICAgIGdfYXV0b2ZyZWUgY2hhciAqc3JhbV9u
+YW1lID0gTlVMTDsNCj4gPiArICAgIGdfYXV0b2ZyZWUgY2hhciAqbmFtZSA9IE5VTEw7DQo+ID4g
+ICAgICAgaW50IGk7DQo+ID4NCj4gPiAgICAgICBpZiAoIWNsb2NrX2hhc19zb3VyY2Uocy0+c3lz
+Y2xrKSkgeyBAQCAtMTgwLDE2ICsxODAsMTcgQEAgc3RhdGljDQo+ID4gdm9pZCBhc3BlZWRfc29j
+X2FzdDI3eDBzc3BfcmVhbGl6ZShEZXZpY2VTdGF0ZSAqZGV2X3NvYywgRXJyb3IgKiplcnJwKQ0K
+PiA+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBPQkpFQ1Qocy0+bWVtb3J5KSwgJmVy
+cm9yX2Fib3J0KTsNCj4gPiAgICAgICBzeXNidXNfcmVhbGl6ZShTWVNfQlVTX0RFVklDRSgmYS0+
+YXJtdjdtKSwgJmVycm9yX2Fib3J0KTsNCj4gPg0KPiA+IC0gICAgc3JhbV9uYW1lID0gZ19zdHJk
+dXBfcHJpbnRmKCJhc3BlZWQuZHJhbS4lZCIsDQo+ID4gLSAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgQ1BVKGEtPmFybXY3bS5jcHUpLT5jcHVfaW5kZXgpOw0KPiA+ICsgICAgLyogU0RS
+QU0gKi8NCj4gPiArICAgIG5hbWUgPSBnX3N0cmR1cF9wcmludGYoImFzcGVlZC5zZHJhbS1jb250
+YWluZXIuJWQiLA0KPiA+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICBDUFUoYS0+YXJtdjdt
+LmNwdSktPmNwdV9pbmRleCk7DQo+ID4NCj4gPiAtICAgIGlmICghbWVtb3J5X3JlZ2lvbl9pbml0
+X3JhbSgmcy0+c3JhbSwgT0JKRUNUKHMpLCBzcmFtX25hbWUsDQo+IHNjLT5zcmFtX3NpemUsDQo+
+ID4gLSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgZXJycCkpIHsNCj4gPiArICAgIGlm
+ICghbWVtb3J5X3JlZ2lvbl9pbml0X3JhbSgmcy0+ZHJhbV9jb250YWluZXIsIE9CSkVDVChzKSwg
+bmFtZSwNCj4gPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBBU1QyNzAwX1NTUF9T
+RFJBTV9TSVpFLCBlcnJwKSkgew0KPiA+ICAgICAgICAgICByZXR1cm47DQo+ID4gICAgICAgfQ0K
+PiA+ICAgICAgIG1lbW9yeV9yZWdpb25fYWRkX3N1YnJlZ2lvbihzLT5tZW1vcnksDQo+ID4gLSAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgc2MtPm1lbW1hcFtBU1BFRURfREVWX1NSQU1d
+LA0KPiA+IC0gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICZzLT5zcmFtKTsNCj4gPiAr
+DQo+IHNjLT5tZW1tYXBbQVNQRUVEX0RFVl9TRFJBTV0sDQo+ID4gKyAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgJnMtPmRyYW1fY29udGFpbmVyKTsNCj4gPg0KPiA+ICAgICAgIC8qIFND
+VSAqLw0KPiA+ICAgICAgIGlmICghc3lzYnVzX3JlYWxpemUoU1lTX0JVU19ERVZJQ0UoJnMtPnNj
+dSksIGVycnApKSB7IEBAIC0yNjgsNw0KPiA+ICsyNjksNiBAQCBzdGF0aWMgdm9pZCBhc3BlZWRf
+c29jX2FzdDI3eDBzc3BfY2xhc3NfaW5pdChPYmplY3RDbGFzcw0KPiA+ICprbGFzcywgY29uc3Qg
+dm9pZCAqZGF0DQo+ID4NCj4gPiAgICAgICBzYy0+dmFsaWRfY3B1X3R5cGVzID0gdmFsaWRfY3B1
+X3R5cGVzOw0KPiA+ICAgICAgIHNjLT5zaWxpY29uX3JldiA9IEFTVDI3MDBfQTFfU0lMSUNPTl9S
+RVY7DQo+ID4gLSAgICBzYy0+c3JhbV9zaXplID0gQVNUMjcwMF9TU1BfUkFNX1NJWkU7DQo+ID4g
+ICAgICAgc2MtPnNwaXNfbnVtID0gMDsNCj4gPiAgICAgICBzYy0+ZWhjaXNfbnVtID0gMDsNCj4g
+PiAgICAgICBzYy0+d2R0c19udW0gPSAwOw0KDQo=
 

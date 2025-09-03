@@ -4,88 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 742ACCA1009
-	for <qemu-arm@archiver.kernel.org>; Wed,  3 Sep 2025 10:12:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60BA9CA1009
+	for <qemu-arm@archiver.kernel.org>; Wed,  3 Sep 2025 10:12:55 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1utkSD-0007Cq-Li; Wed, 03 Sep 2025 06:11:01 -0400
+	id 1utkTe-0004AK-SB; Wed, 03 Sep 2025 06:12:33 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1utkRu-0006WZ-08
- for qemu-arm@nongnu.org; Wed, 03 Sep 2025 06:10:45 -0400
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1utkTW-0003vY-UD
+ for qemu-arm@nongnu.org; Wed, 03 Sep 2025 06:12:22 -0400
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1utkRc-0000X9-9Q
- for qemu-arm@nongnu.org; Wed, 03 Sep 2025 06:10:25 -0400
-Received: by mail-wm1-x333.google.com with SMTP id
- 5b1f17b1804b1-45b8b8d45b3so29587455e9.1
- for <qemu-arm@nongnu.org>; Wed, 03 Sep 2025 03:10:23 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1utkTU-0000m2-GG
+ for qemu-arm@nongnu.org; Wed, 03 Sep 2025 06:12:22 -0400
+Received: by mail-wm1-x32f.google.com with SMTP id
+ 5b1f17b1804b1-45b9853e630so15787085e9.0
+ for <qemu-arm@nongnu.org>; Wed, 03 Sep 2025 03:12:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756894223; x=1757499023; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=d5FGcGNnO5bFwKSGnQCLf0ZTA2SwcR6MoHg2PC3auVs=;
- b=s8SNLN5uH/pt0WKADoJgRLccczogKUm8KW/fRJtGn73f0IJLErKLKJgI6ZqUZ5RbNR
- /dp3Yd5JlpGhh6uY7Gj1gHfQzY29Vq+UeMgTe+VO5TJ3TETT5c2zOZ6Jwju5U3dGOIki
- BWtgnmDjaRdLE8nFsX3sWPnaqaPjwMasjd4Y/383GyDmxkhUOkHGssYVVOWq5yLNXi0b
- c5jjoWXTXjX2StGIU55/K/rrh0yfE4+3vd5gC1fI/7rXphJ7Z2wHeem0zs4e73z/dfwb
- /w99QKjIhoorlC6xFYVMDwdzjDTy9ufoTuIB2lo/jKjoMdyTc6JSYpUKrEJsIr885LUe
- +7lg==
+ d=linaro.org; s=google; t=1756894338; x=1757499138; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=9/IZWFrW5IhGd9GyKd6ZrmUwMraLMxhPEYvLIzqwP50=;
+ b=TcyKiQtryU7XlQHCnSn5wFgQhJDGqlm3p2+pLZ/Mvh2Yq3KBtVivTnMtRBfog7jWeV
+ obn/5xkA58QaXD/oPUw4bn3+R9szZaIxjdBjnN5q23vDQG3NF154dDmEmx2kgloRkSbC
+ eLIaGYH5oEUAER9TcbvBbFiu+st8P1gJK2HqtXGzQXfTS6+QFFv0pFltlj1MomCBGG+B
+ AtDsxJZUgnqcXmxwajk0F6CmleE9FGGQdsvdU2JkD7B0EZ0KVFrBw2Uv3AhVCUzrvi0e
+ f4MgwfmJzuMF8nAtc8t049CorZzSs9HSWSNdhDzVMJx6heyFbqldHDX+H9UrWjM9GFEg
+ //DA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756894223; x=1757499023;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=d5FGcGNnO5bFwKSGnQCLf0ZTA2SwcR6MoHg2PC3auVs=;
- b=HNRK50NC0E4YNUbGOHkiuLNMJMLBIbFOf3vlHgBl0TyXbli8wUh6KOxZW4sGUmhCRH
- 1SeopGo1cJLOmEpFSHGR3cFGqZbY1v2rsIhTE22jgbHJcan78VTvas+XcBEsziiDaO42
- 2Kp8YEeGWO13nUKevE0TM2tPMvaNAIMHLe06efCvbIrpn0ZXQd7DXPSlgpbXyKktKQ3t
- WcLfJeNn4H/HloDk2KhvYZJ3czXanr1iU9/e1d4SEFUbfvDZsYl8rBknFD72/cCh6tXk
- k8fQV0oh6+pnlv+L42BUqkLcf1/IDm5Q0afGbMZkhiMGvmizypgD1rE1iRc1eiYkSGg7
- 9+dw==
+ d=1e100.net; s=20230601; t=1756894338; x=1757499138;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=9/IZWFrW5IhGd9GyKd6ZrmUwMraLMxhPEYvLIzqwP50=;
+ b=fOTuXiCRXFGEnkGEVeUreDOM+It7ag05Ap2yG37bqbZW/Co7I7Oml1+tP/+futAcDQ
+ feJ8cxptT0Ilig6IUXN7ZgVPMfb8t+71shU6dU6c57sOrB0WOep4i3Dw17o5tYEc9O1r
+ sRaGf/ohfUdU9Oh9wWeK74rjETkgz/QV2LQGn6CkDhw3aR0J8CEnBHTbsVj+uoCC5cAw
+ 7GWFqS+Dog+t6aNTDSoPKGkl8Cvx5Tka1GgSZFuegrnmYCU/APBlr1FJ0Z7TvID58wR1
+ BrJVOJUWYmIkkpltV40OaHB68zt5zvW3DEARv6rx/IoD2vd5ZQIK/7Dr8n7o+YOZVQiK
+ sdow==
 X-Forwarded-Encrypted: i=1;
- AJvYcCV6n/TtPoGUR5vU7w6M85EubqE+1/MfcrAxY8USssZmlii6RVPDORLhCLKC1u/sld3kqlheAehMzw==@nongnu.org
-X-Gm-Message-State: AOJu0YyGO0fQTuVyoS4gTmW1Hjz9pgBS9fUOyS8ukX2Juywf3po+FXcM
- 2Z2vbj/6Fk0FM44H/CW5IMqOC0GyF7DhTtSt5zXjXVdScQQHXiCxqorSS2QnCV/USSE=
-X-Gm-Gg: ASbGncs08Cl6sMwmVic0HG8hCqBXiuXq2KP47i8TLm7GQHjZwCQToM/1vqO4RxHpCjG
- JzGHk7Rc64OXXeDKtk3lXg8LpYWKA7YyA7/LNChAVQ2w7JEO4QPUJTwqV1sVxET2QLlXw1KBHiH
- ypBuZBAy+rwEDzAthQqWBZCLY+lEfc484csZQgIjj2FpWVYtMfs/qX+S7br+vgAEK3n7H4j8R7V
- hyijXLS0OmTkwQCQuMB0Q4lYkgQddSLuj3HFN9gcdrEIAprB8NV9kNbnPbaRuvAfywSDB+AQS2m
- pWT6wG3fxj0nuV+ubIMbj/4OwCW41hjL/hm3KOERcfKbXNLDCzZBZTGNvffwX26C9Byy54W30iN
- DVYUyJD7HmtwBOT0/l2BzZX2Kb4wN+Zba9kmCgK4xYrCqFrgYNHLUT3JqhPu8ESfeJS271LmSu6
- zMFbuLcqL/GGDqRmxz
-X-Google-Smtp-Source: AGHT+IG6FhdEfuIiSctR9fI6wgfSq73X17SaR0W0HqT47riT3b5U2isz3lWPnoyo7+ygKQAQAUu+2w==
-X-Received: by 2002:a05:600c:a43:b0:459:d3ce:2cbd with SMTP id
- 5b1f17b1804b1-45b8556a7acmr120350345e9.13.1756894222822; 
- Wed, 03 Sep 2025 03:10:22 -0700 (PDT)
-Received: from localhost.localdomain (98.red-88-29-180.dynamicip.rima-tde.net.
+ AJvYcCWLJVyN4J6hsN14dDOYjGuguy+XFLrsuzrzF5rXrITZ0y1YSi6g2+tnbB+p6HWnJphBGslZHwnRMQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yy2y6jfzSYMevnko6cWax1neiW9MQMYv4CYBSPbpgjKQG1vYvtm
+ 9k5VcTZ6id/mK9772xGwZ/CMO56lpy/RtCXGB/8KpUJ1jsO4TWnIKDvv1YLdqtW9c3w=
+X-Gm-Gg: ASbGncvMkc5c2pLaTyGX02I8xmScsO8MZVHhHEVCuokMkTUyzI8X7pxZgc08LHn7OAa
+ fI0MrNAxF9avqHbhmdOmeeeGZSkCEOn7FrdYJynWuEHvalaEv+hoQ0sHMfbtgJ9tC7t4RHOonSc
+ H8/k5FbZnDajOJlqVJwm16wvRCRWfCL1liJtC17dOBCczoAbjU7013fpcRDuYeJM5ISB2d2dQiM
+ yRX7TybPIL14CIXQAVDkHTX49lSm10EY9F1lGRX+Br/a77NPqKZRov7OrSCk/ceBcsmfu1/R+US
+ MQHs1xil4oPOGGMQsd23aJifIar4dU7DeD7yn3JopT/uYQX2phLvI7zBV2/VDmPZHD9JijbMhms
+ KJRtwJ0zGjpZ325qcFRSmG8CQfNksCJ1Q6F4RTmxJ1pVV04Xzec8z7eZwf7s7I1NJgnKeL3kBFF
+ i0naV/6NJu
+X-Google-Smtp-Source: AGHT+IFQZCg+j9rYs2aYBlI/Q1NA1vnuBlYKk1ozog9uwEkCMROYvZbO21Ukdei2AxevzD1AQ1HalQ==
+X-Received: by 2002:a05:600c:1c03:b0:45b:88ed:95a4 with SMTP id
+ 5b1f17b1804b1-45b88ed9c98mr99009275e9.26.1756894338501; 
+ Wed, 03 Sep 2025 03:12:18 -0700 (PDT)
+Received: from [10.223.47.213] (98.red-88-29-180.dynamicip.rima-tde.net.
  [88.29.180.98]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3d690f2edf1sm12379106f8f.16.2025.09.03.03.10.20
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 03 Sep 2025 03:10:22 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+ 5b1f17b1804b1-45b96d2a6b3sm38538005e9.10.2025.09.03.03.12.16
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 03 Sep 2025 03:12:17 -0700 (PDT)
+Message-ID: <8c66b4c7-a5ac-4e01-a226-61e2e0435418@linaro.org>
+Date: Wed, 3 Sep 2025 12:12:15 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 24/24] target/arm: Add arm_destroy_cpreg_list() helper
 To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Alexander Graf <agraf@csgraf.de>,
+Cc: Alexander Graf <agraf@csgraf.de>,
  Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org,
  Mohamed Mediouni <mohamed@unpredictable.fr>,
  Peter Maydell <peter.maydell@linaro.org>, Mads Ynddal <mads@ynddal.dk>,
  Phil Dennis-Jordan <phil@philjordan.eu>,
  Stefan Hajnoczi <stefanha@redhat.com>, Cameron Esfahani <dirty@apple.com>,
  Roman Bolshakov <rbolshakov@ddn.com>, Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH 24/24] target/arm: Add arm_destroy_cpreg_list() helper
-Date: Wed,  3 Sep 2025 12:07:00 +0200
-Message-ID: <20250903100702.16726-25-philmd@linaro.org>
-X-Mailer: git-send-email 2.51.0
-In-Reply-To: <20250903100702.16726-1-philmd@linaro.org>
 References: <20250903100702.16726-1-philmd@linaro.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+ <20250903100702.16726-25-philmd@linaro.org>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20250903100702.16726-25-philmd@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::333;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x333.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -108,48 +109,25 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-arm_destroy_cpreg_list() releases ressources allocated by
-arm_init_cpreg_list().
+On 3/9/25 12:07, Philippe Mathieu-Daudé wrote:
+> arm_destroy_cpreg_list() releases ressources allocated by
+> arm_init_cpreg_list().
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
+>   target/arm/internals.h | 2 ++
+>   target/arm/helper.c    | 8 ++++++++
+>   2 files changed, 10 insertions(+)
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- target/arm/internals.h | 2 ++
- target/arm/helper.c    | 8 ++++++++
- 2 files changed, 10 insertions(+)
 
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 400b4d670f6..5af9b1110e8 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -375,6 +375,8 @@ void arm_cpu_register(const ARMCPUInfo *info);
- 
- void register_cp_regs_for_features(ARMCPU *cpu);
- void arm_init_cpreg_list(ARMCPU *cpu);
-+/* Release ressources allocated by arm_init_cpreg_list() */
-+void arm_destroy_cpreg_list(ARMCPU *cpu);
- 
- void arm_cpu_register_gdb_regs_for_features(ARMCPU *cpu);
- void arm_translate_init(void);
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 0db3e05571f..9b7a2b94bd3 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -268,6 +268,14 @@ void arm_init_cpreg_list(ARMCPU *cpu)
-     g_list_free(keys);
- }
- 
-+void arm_destroy_cpreg_list(ARMCPU *cpu)
-+{
-+    g_free(cpu->cpreg_indexes);
-+    g_free(cpu->cpreg_values);
-+    g_free(cpu->cpreg_vmstate_indexes);
-+    g_free(cpu->cpreg_vmstate_values);
-+}
-+
- bool arm_pan_enabled(CPUARMState *env)
- {
-     if (is_a64(env)) {
--- 
-2.51.0
+> +void arm_destroy_cpreg_list(ARMCPU *cpu)
+> +{
+> +    g_free(cpu->cpreg_indexes);
+> +    g_free(cpu->cpreg_values);
+> +    g_free(cpu->cpreg_vmstate_indexes);
+> +    g_free(cpu->cpreg_vmstate_values);
+> +}
 
+Please ignore this patch, it is part of another series related
+to arm DeviceUnrealize() implementation.
 

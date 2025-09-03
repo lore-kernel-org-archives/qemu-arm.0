@@ -4,73 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E1B2CA0FF2
-	for <qemu-arm@archiver.kernel.org>; Wed,  3 Sep 2025 12:20:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 080A3CA1009
+	for <qemu-arm@archiver.kernel.org>; Wed,  3 Sep 2025 12:23:03 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1utmTK-0003H7-Qu; Wed, 03 Sep 2025 08:20:20 -0400
+	id 1utmVW-0004Yq-Nf; Wed, 03 Sep 2025 08:22:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1utmTI-0003GW-Lx
- for qemu-arm@nongnu.org; Wed, 03 Sep 2025 08:20:16 -0400
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1utmVU-0004Xt-OQ
+ for qemu-arm@nongnu.org; Wed, 03 Sep 2025 08:22:32 -0400
+Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1utmTD-0005s9-5U
- for qemu-arm@nongnu.org; Wed, 03 Sep 2025 08:20:14 -0400
-Received: by mail-wr1-x42f.google.com with SMTP id
- ffacd0b85a97d-3d2564399a5so1539017f8f.1
- for <qemu-arm@nongnu.org>; Wed, 03 Sep 2025 05:20:10 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1utmVQ-0007Bb-HF
+ for qemu-arm@nongnu.org; Wed, 03 Sep 2025 08:22:31 -0400
+Received: by mail-ej1-x635.google.com with SMTP id
+ a640c23a62f3a-b0475ce7f41so7282866b.1
+ for <qemu-arm@nongnu.org>; Wed, 03 Sep 2025 05:22:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756902009; x=1757506809; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
+ d=linaro.org; s=google; t=1756902146; x=1757506946; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:content-language:from
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=tYdbM6yd4V3eY5DQAneqQc/YGcbb1DVFfox825Cz89A=;
- b=EI56eHC2I6tj5NwplNSxbZtJqH8wi6j0UiXj3tdtBr4Ug3unRgJAh/C+NV88pSkxse
- QFhoBoEmnzD668ZZyh7pn9+AGckhyCCmSYOgkPNOLB4nUZGJt0W1O0bDyTMnTI5el5IJ
- eax9ucs8/4Q0CRMptKX+dORlz4GA4xLQXP1V/yCfR+uZ8XY64MvjhRVJGX9eijxc2uZx
- ubWtE6VCGuiJXPgTSrCNjC2r/H5gxTJ3p6hkKJ8ygOQnr9yZD5EUddr6AFD7AnnYHqjS
- P+iBhovNSaODTb8FxtIcPBm3KGABr4JMAsCJ4ssWSMsi/xWnzdnRF+iN1IXPcELtTrqw
- m+gA==
+ bh=RaDzZygIjc6a5RfjjqXh5GehwDKcXm8ywtSvR998IG0=;
+ b=u4uvynFsJNxgH9T0nE0CVwjGRKmgMK+94y0YxXXWs8N9GgUPIAlzl+TqewvSsk75qX
+ GeN3i8pHrW0c9PVNNvgTjUiF+5bJxnhgmuGndeAbZ/jtOJTp1paEDkZzBjzV0TX9EmQ/
+ 0kKUYiYYAMN7GRbQdWReU1p6yvvXTjyJwOTNacLM+sRPtdsVzHhP8sZ5aLUnsfPdSKMW
+ 56LvI9xLAVifyMSWW4NZMVCYCDJoXI5MC4hqyzrJb8cVKiwaH26K8D18c4JdwM5UzGPs
+ sP8C7QsDLmZmuposyqypllB2zgOr1f83TczC1kMa/FCHoxhaT5TKSoPrmUeBh++mEUkc
+ Spag==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756902009; x=1757506809;
- h=content-transfer-encoding:in-reply-to:from:content-language
+ d=1e100.net; s=20230601; t=1756902146; x=1757506946;
+ h=content-transfer-encoding:in-reply-to:content-language:from
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=tYdbM6yd4V3eY5DQAneqQc/YGcbb1DVFfox825Cz89A=;
- b=mh7nUAFHVqGOBrtwt80oQg0img2uTa2HOFSoib9yyp6NE2NtaF88w/AgzA4nHAYSgL
- O5oZ7JVEIPhKilKTDH5xM57kv8Sn7tnzGpVUXWK3AWZzDpUIBvW4WueXIe8KqzfeWBLf
- nlMUGyyQYpEKcUPGrkWe12RVp9xO2OoWnm0/OLu+5pt2iIrDcql2mireUXytcJ1/Ksx/
- 5tVOZNjBPF4LsuHZn0YpL6FxS+bt48LMABHp6qyPtdBb1gFm73grs8pKwumQJaKUj3Rf
- nlJwG4+fo2faEIENWMVHdsboaC2rs4yKv2uv7pNOXvnXONmwmhqfLRg4ylIUtcCIkYZH
- EG+Q==
+ bh=RaDzZygIjc6a5RfjjqXh5GehwDKcXm8ywtSvR998IG0=;
+ b=DEtuJoCrohFfdqq5JEEyQ1z9g0Xf4h9Br3EVOfgu1dxEivTiHQG7ga5+w4/8t9ljl6
+ rB/dHAZYVx9XS30D1lTalaSvFgGprgZmef64dNDFMbvRH9/M2aDLV/AKd/nJ80ZjGzHQ
+ Yt/ugkIAKQn0dMU7rBZuC4RoByubvLeCWmqjpeZYLgeEyjgWosAMVG00uHAI/vtKAFjx
+ 6asNnsVDDBw94EvSrOWLSVcv5sURON7zAqMTjI/1CLg3QeObjX/fED63Lm2zVGQ9eNGE
+ jm0SCP6GE1aE4AHF2TqTXcqFiRK7KVT9aVM55L0SjIVsa37TYYz9joURPhYp7utpzxwk
+ inIg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCX9osKCF27GR+cI3sP+vg0cwwmLdFHBg34Y1U0Uc6Kr/QTmw2DI+sJlxUnQkjSnKppNN+VfX2R/nw==@nongnu.org
-X-Gm-Message-State: AOJu0YzGCEyzbZWzZWAwk3yd/c0qgkBFhqbnPpUkv3cStrWCpmWgFd4R
- dwW9JL+mNR9hQzzfTmaDtcPc8D4oWnq9J1CX1nmL9r0jV4I26wFMaEoOLDE94ob2MFc=
-X-Gm-Gg: ASbGncvfbRXOxJi3zkwa4ZHVbO0L7PpV4wgMQCdZgjw2zMzqiCvLOKEXbO5tigJqeY+
- iOOg8A9TBoj1x6cvROaKoR3scNMfYZZYjtSwbX/0QAce6f6fYskovp+ETcw6Es4g3aH9maZOprl
- +/vWOho/YvS1ryFHSvbG6cpxdZtd24b5diomsLaEtNVxp29bgMBfAUknfgt5NdzCW8/JJRVrDwb
- f8USDG0uegJ1sH1DsPb4C4v6iPnhwq1XNlQXZDMmw9FBd3P4lYZsn/Ag0WNCoaBbV6BZHRCG4Th
- pymnQi8EMAYwSv1XRo3PXab6tb0CqEI2rycennoTutZs/qhn51002fqoscnSrlQeCMvrsgDuvOK
- 5j9BIChU8WiQ933gpFcU2yQIvcUWuRLlfhWAl1sFIzbclsKAAfNnSlr/5KoEjhcSwNf0TeJS3
-X-Google-Smtp-Source: AGHT+IHPTmHkavFC+K5s8PwOvKTcOVKKhO5KK61SSe717xI5XE6+6bqKMDlEYX45tOpOpFlK5TCB5A==
-X-Received: by 2002:a05:6000:2283:b0:3c8:e9d3:c392 with SMTP id
- ffacd0b85a97d-3d1de3bc74dmr10668789f8f.19.1756902008603; 
- Wed, 03 Sep 2025 05:20:08 -0700 (PDT)
-Received: from [10.223.47.213] (103.163.185.81.rev.sfr.net. [81.185.163.103])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3cf276d5816sm23255601f8f.25.2025.09.03.05.20.06
+ AJvYcCXz5Er5qNUMHvqOvo/94NmBczjowtR0Z7CVrPSEsH3JSTXiPh8ZQ1YX3DkDlvc4dewhspYqCDhIOw==@nongnu.org
+X-Gm-Message-State: AOJu0YyFxixnZNuydO9jA2xtdhnThv76Xo8cLTgMExWS0DfL4UY8kWv3
+ UlPGHiVVV/ReJV7bZ05jFf2rxMRw7gwqU7DTS3fdkSqtU5Sd/bBlRk8CUdpGEa24bTADuyu0Wia
+ rcJWYOGw=
+X-Gm-Gg: ASbGnctRWcyLfm1i4tuIyI4iX6KjKBDCal6xcti8yoSiRrhSFGIABSWLNoMlfMXmdRE
+ p0JREEvhfa0bOhXs4SCguiru+bNLkoqJC7z1lOzX7WQDjh0t5q4mGW0eJAbxuD/yRd5u7SRE784
+ JdCULfOVaLjzFIiz9EE8mZa3XKrB2/zf4oVVYl6N34pMWl4822R7o/MDaOTMJvph9kqSliG0Ckt
+ ZBROT7n76OnPFUFL1pCrsB5GFdH1K15yJDO0OEkXZ+5o/ZH7J1TEf73dI7I5BIL9lx0kDqYxe7q
+ Y+jzR74siWzBN3cyeRAE+Qw88di5t2JiHaGfB2hsCKYgnZoSjDA4jlT82asGRONJnwIu0xMJsus
+ HaSdydliNOxSwdRiU2M9Mez5vNoLT6i0YbjYN6UUlVvsIf2kKXN/tspN4rj0GNz3THuxpC3ii/w
+ nRiVMlvQ==
+X-Google-Smtp-Source: AGHT+IFjTkt2SmPJcCv8v/42SyJOs52hUV8sR1Z73t862Kcv8/SbRs9OTG5dm6ShINVoOKg0arkuCA==
+X-Received: by 2002:a17:907:9712:b0:b04:75fe:e88 with SMTP id
+ a640c23a62f3a-b0475fe1178mr8119666b.49.1756902146467; 
+ Wed, 03 Sep 2025 05:22:26 -0700 (PDT)
+Received: from [10.40.6.207] (93-51-222-138.ip268.fastwebnet.it.
+ [93.51.222.138]) by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-b0426516668sm778615066b.46.2025.09.03.05.22.25
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 03 Sep 2025 05:20:07 -0700 (PDT)
-Message-ID: <b65e2f61-97ac-4482-bf16-75bf107cf4c6@linaro.org>
-Date: Wed, 3 Sep 2025 14:20:05 +0200
+ Wed, 03 Sep 2025 05:22:26 -0700 (PDT)
+Message-ID: <d61398b1-9f77-462f-94b5-2874df914779@linaro.org>
+Date: Wed, 3 Sep 2025 14:22:22 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 15/24] target/arm/hvf: switch
- hvf_arm_get_host_cpu_features to not create a vCPU
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
+Subject: Re: [PATCH 01/24] target/arm/hvf: Release memory allocated by
+ hv_vcpu_config_create()
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
 Cc: Alexander Graf <agraf@csgraf.de>, qemu-arm@nongnu.org,
  Mohamed Mediouni <mohamed@unpredictable.fr>,
  Peter Maydell <peter.maydell@linaro.org>, Mads Ynddal <mads@ynddal.dk>,
@@ -78,15 +83,14 @@ Cc: Alexander Graf <agraf@csgraf.de>, qemu-arm@nongnu.org,
  Stefan Hajnoczi <stefanha@redhat.com>, Cameron Esfahani <dirty@apple.com>,
  Roman Bolshakov <rbolshakov@ddn.com>, Paolo Bonzini <pbonzini@redhat.com>
 References: <20250903100702.16726-1-philmd@linaro.org>
- <20250903100702.16726-16-philmd@linaro.org>
- <30d20299-1797-4e49-8dba-5ce3ed00162e@linaro.org>
+ <20250903100702.16726-2-philmd@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
 Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <30d20299-1797-4e49-8dba-5ce3ed00162e@linaro.org>
+In-Reply-To: <20250903100702.16726-2-philmd@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::635;
+ envelope-from=richard.henderson@linaro.org; helo=mail-ej1-x635.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -109,29 +113,26 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 3/9/25 14:03, Richard Henderson wrote:
-> On 9/3/25 12:06, Philippe Mathieu-Daudé wrote:
->> diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
->> index 3039c0987dc..fd209d23c1e 100644
->> --- a/target/arm/hvf/hvf.c
->> +++ b/target/arm/hvf/hvf.c
->> @@ -869,24 +869,25 @@ static bool 
->> hvf_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
->>   {
->>       ARMISARegisters host_isar = {};
->>       const struct isar_regs {
->> -        int reg;
->> +        hv_feature_reg_t reg;
->>           uint64_t *val;
->>       } regs[] = {
->> -        { HV_SYS_REG_ID_AA64PFR0_EL1, 
->> &host_isar.idregs[ID_AA64PFR0_EL1_IDX] },
+On 9/3/25 12:06, Philippe Mathieu-Daudé wrote:
+> hv_vcpu_config_create() is documented in <Hypervisor/hv_vcpu_config.h>
+> as:
 > 
-> Versus the original, I suggested that this should be
+>    /*!
+>     @abstract Creates a vcpu configuration object.
+>     @result A new vcpu configuration object. This should be released with os_release when no longer used.
+>     */
+>    OS_OBJECT_RETURNS_RETAINED OS_WARN_RESULT
+>    hv_vcpu_config_t hv_vcpu_config_create(void);
 > 
->      { HV_SYS_REG_ID_AA64PFR0_EL1, ID_AA64PFR0_EL1_IDX },
+> Release the memory allocated by hv_vcpu_config_create() with
+> os_release().
 > 
-> etc, so that the data structure could be static const.
+> Signed-off-by: Philippe Mathieu-Daudé<philmd@linaro.org>
+> ---
+>   target/arm/hvf/hvf.c | 2 ++
+>   1 file changed, 2 insertions(+)
 
-Sorry I missed the comment. Good idea!
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+
+r~
 

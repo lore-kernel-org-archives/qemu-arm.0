@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1906CA1009
-	for <qemu-arm@archiver.kernel.org>; Wed,  3 Sep 2025 10:11:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A9BACA0FF2
+	for <qemu-arm@archiver.kernel.org>; Wed,  3 Sep 2025 10:11:05 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1utkQb-00031K-Ue; Wed, 03 Sep 2025 06:09:22 -0400
+	id 1utkSC-00070K-Bj; Wed, 03 Sep 2025 06:11:00 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1utkQZ-0002od-4f
- for qemu-arm@nongnu.org; Wed, 03 Sep 2025 06:09:19 -0400
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1utkRb-0006Ps-Mr
+ for qemu-arm@nongnu.org; Wed, 03 Sep 2025 06:10:41 -0400
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1utkQW-0008Np-Fg
- for qemu-arm@nongnu.org; Wed, 03 Sep 2025 06:09:18 -0400
-Received: by mail-wr1-x436.google.com with SMTP id
- ffacd0b85a97d-3df35a67434so216964f8f.3
- for <qemu-arm@nongnu.org>; Wed, 03 Sep 2025 03:09:16 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1utkRY-0000SJ-CB
+ for qemu-arm@nongnu.org; Wed, 03 Sep 2025 06:10:23 -0400
+Received: by mail-wm1-x336.google.com with SMTP id
+ 5b1f17b1804b1-45b86157e18so22718045e9.0
+ for <qemu-arm@nongnu.org>; Wed, 03 Sep 2025 03:10:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756894155; x=1757498955; darn=nongnu.org;
+ d=linaro.org; s=google; t=1756894216; x=1757499016; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=+9Lub0mG3fK9Mcfaw6km1T4/o3S1e+r00z5qFSzfzT4=;
- b=nS+0CJqD0IYge4vvigSjvvoE7kurW7HA2ybHB0How2UbUVRrz0t480ogMEwDSC4JvB
- CHHYjZDUiD5k5+alOUmowUXGOwKrMKTeGrCsayQGtccDaoPn9b0WpzavLOFs9isWgiY+
- wxgeT40wz+m6upC441a/YCHFFRwR7MP1BSM2l8rcl+bknIU46cOOfdUfrVan2OjIexUi
- NmqIB8YksXAehiV6GwflSChZYc+VzWR6yNmUXNgAY06vifEk8ovEXK2URJoX7RW1AySZ
- 5KmhRK3ZXUf0biKSKdCHfHUNe5NwsnVa+iP2pTzqDgll3zwVHpMPKC7r5aOGzqSOvZm4
- 5KGg==
+ bh=0fUgWLFNyRj4U87Ya1zFrmdpfoNfLiPoZL+nODXkG4k=;
+ b=LS1qcCS/JSJ29D20UqRp+GY6a9L+r8G1Tdhi3B4gvwXUiDM2+1DMVY6Joal0We4e0z
+ 1tZh39yZNHKcCJ815zeP4JESJWPVVWNU5bD1ITsHuk5o3bjQK27nofLfZViM/8egOmC/
+ kpDrN5bc3Q7yCALEs/prKJ5jY9gyor86fQyEAP5r4skYQ+/tQenELl82LBZ4lXyDKUJJ
+ fS+FC+rkXVGxTU6rhVjxksvsuPEz+ECyf/iKmHiZuSSYjZDTSebwUAWtoViuVIYDDcBO
+ mL5XwFZ8+/x1jYav5wc8R5sCmL0FgDEBanQpJmzORVc6Csb37r2T9Db+Tvj8PrNqIjMi
+ +PYg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756894155; x=1757498955;
+ d=1e100.net; s=20230601; t=1756894216; x=1757499016;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=+9Lub0mG3fK9Mcfaw6km1T4/o3S1e+r00z5qFSzfzT4=;
- b=VkThUqbd3yMveBmJTU0nv6IqAwESF0T80Ts4nknNnajE9P3sqUSkpxngZjsIhZeuq1
- cmimkPKL5xQ5qf87dj00ZttZEcw3oiQk+gI8TjCHTvPVYSHdRb7e+D3Oen3CYW/VqTGS
- agg/EtFdkLvTx3k1xkbMYvR41IQfpVy7nCiJvoNGFuhmgn41YBYVXQ9Oka1tOgE8Io7A
- 2j7MCeGdl47Aol7c+4f1NisVUezgsYc0KfPbWJCydCcr/5/VKJw2TuKW6UowRCsYPldL
- iS7jldmTOTH7m6c9kN/Qfg1QGqFYgD8cLcCQdzZ3v/JmIma4moF+OXTSzUoVg0+3io6A
- sJtQ==
+ bh=0fUgWLFNyRj4U87Ya1zFrmdpfoNfLiPoZL+nODXkG4k=;
+ b=Y17Q23O6m/om1OdvVYtnFaCYz9zHrVP+oxccEFXgAZz4UMI7LOjdzedCnQoR76jo8E
+ TTq8unfYqM50KLrZhrXuCWRovAAbMcmwXx9fz1fh576dZHVKAaN6nKfA/60AzLIq2sBq
+ Xd2amuiQGnQgueZSj8oEwzdqkMz4R7mD7LdkBfjCpH72AoY3n3Hv7RxcXI+A6HBHrTJJ
+ gtSDxUB5xmBPRQo+Rftltetto4R9jyGwOGlVUX9uIA3PpR0X9QABzljnMEgdbJgxDtPo
+ v404uMSnjiyAdw7Mm4SHsg69Q/u5e6Ppuuw+u5HuUd6i4vrSCxwlR1H19JxrZ2lZD3lC
+ UHPw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXcMEHqpE2Hb6lH5UTu/Gay/gmwxVMB6rG1bx2Eaz8Q/j/cCmxlpyL8LOafISTYYzA9MFr+McFqhQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yw1ysay6ol9jZVslpzWlBo9QoGsFYvL5TUNOMDnKvyY4kUkSE+E
- GYmt3Drc3bVSYCsiLRqYfZjApPmmJVg5/m6gJiB9bbiWzndjhG+Xly8zJs6gjEd8ZJg=
-X-Gm-Gg: ASbGnctNBeNksfo2C/zcEJsc9lVFrk/dMZ87QhoFjCU6MIdcz7AnuqCbhKdlLzQMzZw
- 72X1CDQcELlxFG8XZ2eh44mktXPQL4U7f0ikJKQoKl+TQZmWvukO1XNeimGi63VCyFTR1e3h0Gp
- uD+NK30tu35Yb5tgvpaA3npqN8hBMess33ViJd0flqkzfnA16o3bffT0qjO+Ml+43esnPwPvnXw
- DA1IN7Caf0qACT8a6VgJTKq/PnDeYFhUWLEWRNqY5E4gNCPsOyDI+jx1i3uHXQCvRmGrx+dyPMJ
- ciVZ5a/dsQB7j0TCFW5R4XDy5ZgZHdJjXJ/VXjCm392DZ4BBAVDMEkn/dEwelovbEAMdnHq3fK0
- nX+ABbb6jkBsPMcbddmhO1hrUzQIhpUfBFCrfqjI7HvLHAPqiYoIYS7qsc5c+J1Jo/CWZwud9dZ
- pFjLlNJ8bwRWGdFTZx
-X-Google-Smtp-Source: AGHT+IGF4hIbag1NsKAusk4447qTLxvqZ3JU4x7geZwtSI/vqGI63CV6F3zhhg0ohbVeQ2sqh49LJg==
-X-Received: by 2002:a05:6000:4210:b0:3d5:9efa:fbf2 with SMTP id
- ffacd0b85a97d-3d59efaff51mr8566501f8f.22.1756894154694; 
- Wed, 03 Sep 2025 03:09:14 -0700 (PDT)
+ AJvYcCVLmAH2Ay256y79M8UeTbsVQ74UlDSKNxj+VDIgqjpBeOP6fItlQi5HC2hPqjDVf42fLEkAyIE/KQ==@nongnu.org
+X-Gm-Message-State: AOJu0YyGfKo44ahJcNMEFskqOE31g/u/7u066aSiHRR/+C4T80jHKJgk
+ n/5AsnqYy06tLEdXJAQGO/gXpENZHzZLqjZA3fWlTpYTk38orUCXiugk5zkEivZJYoY=
+X-Gm-Gg: ASbGncsQQUw3+VJ/+rON3USeW3iRspR414/ZHjg2L1puspRfPNZ8jlDs7m0a3eoRy4K
+ tPi47Sk053mj98zU2zEhXE8gss3Z08dQ4t9Om6SCqmHd8GMIiCcm+522lJYIcU5QQl89SbgpdB0
+ ppFYojiEol5Pj+NM2s+eI/IXDHxhLR7rPrCjf9cUx62o9u1BjapeKApr2SsnFtXrM5UXGdzqobR
+ Sqm95yb3doDm+QsUfhRww30IixctE1P+Inc9a5mhhIp+O7HVwkl5oIWnG0h1ATnNtQUORQ4yxfj
+ vWwGUOm3lfdU2+J9i0dLKi8Q82gsw/0iB31t9vk6cD3s6abB8S0cnrxJacXIFmiDKP7Zo850oHQ
+ 5ZCWLNtgBeZk4+KbXmQdRZERhDmMyy+hB7G+uMoC9dSzWpUdK8p+riHA2D8k4xK4mWis3Pp1ROr
+ dnaNuL+Q==
+X-Google-Smtp-Source: AGHT+IGOhuq0u3nwM5iPLA36iAloZif9a/HS2UIgkB042U+7dAVQ7RbjlGPc6pyL/tEF6RfdU7N2Aw==
+X-Received: by 2002:a05:600c:4ecc:b0:459:da89:b06 with SMTP id
+ 5b1f17b1804b1-45b8555b390mr145082195e9.16.1756894216308; 
+ Wed, 03 Sep 2025 03:10:16 -0700 (PDT)
 Received: from localhost.localdomain (98.red-88-29-180.dynamicip.rima-tde.net.
  [88.29.180.98]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-45b7e8ab14esm254118825e9.21.2025.09.03.03.09.12
+ ffacd0b85a97d-3cf33fba9fbsm23082809f8f.50.2025.09.03.03.10.14
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 03 Sep 2025 03:09:14 -0700 (PDT)
+ Wed, 03 Sep 2025 03:10:15 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
@@ -75,24 +75,25 @@ Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Phil Dennis-Jordan <phil@philjordan.eu>,
  Stefan Hajnoczi <stefanha@redhat.com>, Cameron Esfahani <dirty@apple.com>,
  Roman Bolshakov <rbolshakov@ddn.com>, Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH 14/24] target/arm/hvf: Hardcode Apple MIDR
-Date: Wed,  3 Sep 2025 12:06:50 +0200
-Message-ID: <20250903100702.16726-15-philmd@linaro.org>
+Subject: [PATCH 23/24] target/arm: Rename init_cpreg_list() ->
+ arm_init_cpreg_list()
+Date: Wed,  3 Sep 2025 12:06:59 +0200
+Message-ID: <20250903100702.16726-24-philmd@linaro.org>
 X-Mailer: git-send-email 2.51.0
 In-Reply-To: <20250903100702.16726-1-philmd@linaro.org>
 References: <20250903100702.16726-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::436;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x436.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x336.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -108,47 +109,54 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Mohamed Mediouni <mohamed@unpredictable.fr>
+Prefix init_cpreg_list() with 'arm_'.
 
-Hardcode MIDR because Apple deliberately doesn't expose
-a divergent MIDR across systems.
-
-Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- target/arm/hvf/hvf.c | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
+ target/arm/internals.h | 2 +-
+ target/arm/cpu.c       | 2 +-
+ target/arm/helper.c    | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index 5b3c34014a5..3039c0987dc 100644
---- a/target/arm/hvf/hvf.c
-+++ b/target/arm/hvf/hvf.c
-@@ -887,6 +887,7 @@ static bool hvf_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
-     hv_vcpu_t fd;
-     hv_return_t r = HV_SUCCESS;
-     hv_vcpu_exit_t *exit;
-+    uint64_t t;
-     int i;
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index f0aa26c5117..400b4d670f6 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -374,7 +374,7 @@ static inline int r14_bank_number(int mode)
+ void arm_cpu_register(const ARMCPUInfo *info);
  
-     ahcf->dtb_compatible = "arm,armv8";
-@@ -908,6 +909,17 @@ static bool hvf_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
-     r |= hv_vcpu_get_sys_reg(fd, HV_SYS_REG_MIDR_EL1, &ahcf->midr);
-     r |= hv_vcpu_destroy(fd);
+ void register_cp_regs_for_features(ARMCPU *cpu);
+-void init_cpreg_list(ARMCPU *cpu);
++void arm_init_cpreg_list(ARMCPU *cpu);
  
-+    /*
-+     * Hardcode MIDR because Apple deliberately doesn't expose a divergent
-+     * MIDR across systems.
-+     */
-+    t = FIELD_DP64(0, MIDR_EL1, IMPLEMENTER, 0x61); /* Apple */
-+    t = FIELD_DP64(t, MIDR_EL1, ARCHITECTURE, 0xf); /* v7 or later */
-+    t = FIELD_DP64(t, MIDR_EL1, PARTNUM, 0);
-+    t = FIELD_DP64(t, MIDR_EL1, VARIANT, 0);
-+    t = FIELD_DP64(t, MIDR_EL1, REVISION, 0);
-+    ahcf->midr = t;
-+
-     clamp_id_aa64mmfr0_parange_to_ipa_size(&host_isar);
+ void arm_cpu_register_gdb_regs_for_features(ARMCPU *cpu);
+ void arm_translate_init(void);
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 633ec55a57c..1789890dea3 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -2141,7 +2141,7 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+     arm_cpu_register_gdb_regs_for_features(cpu);
+     arm_cpu_register_gdb_commands(cpu);
  
+-    init_cpreg_list(cpu);
++    arm_init_cpreg_list(cpu);
+ 
+ #ifndef CONFIG_USER_ONLY
+     MachineState *ms = MACHINE(qdev_get_machine());
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index fb62742d983..0db3e05571f 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -237,7 +237,7 @@ static gint cpreg_key_compare(gconstpointer a, gconstpointer b, gpointer d)
+     return 0;
+ }
+ 
+-void init_cpreg_list(ARMCPU *cpu)
++void arm_init_cpreg_list(ARMCPU *cpu)
+ {
      /*
+      * Initialise the cpreg_tuples[] array based on the cp_regs hash.
 -- 
 2.51.0
 

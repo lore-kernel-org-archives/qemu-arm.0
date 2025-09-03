@@ -4,98 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E1B7CA1011
-	for <qemu-arm@archiver.kernel.org>; Wed,  3 Sep 2025 17:05:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08A6CCA1010
+	for <qemu-arm@archiver.kernel.org>; Wed,  3 Sep 2025 22:21:21 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1utqvK-0008NO-7b; Wed, 03 Sep 2025 13:05:32 -0400
+	id 1utvqt-00054l-3x; Wed, 03 Sep 2025 18:21:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1utqvG-0008Mm-4v
- for qemu-arm@nongnu.org; Wed, 03 Sep 2025 13:05:27 -0400
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+ (Exim 4.90_1) (envelope-from
+ <3TLW4aAkKCOUSPePHVfHUNVVNSL.JVTXLTb-HYTUVUNUb.VYN@flex--lixiaoyan.bounces.google.com>)
+ id 1utvBP-0005jy-S7
+ for qemu-arm@nongnu.org; Wed, 03 Sep 2025 17:38:24 -0400
+Received: from mail-yb1-xb49.google.com ([2607:f8b0:4864:20::b49])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1utqvE-0004Qh-0G
- for qemu-arm@nongnu.org; Wed, 03 Sep 2025 13:05:25 -0400
-Received: by mail-wm1-x32e.google.com with SMTP id
- 5b1f17b1804b1-45b804ed966so1094265e9.2
- for <qemu-arm@nongnu.org>; Wed, 03 Sep 2025 10:05:23 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from
+ <3TLW4aAkKCOUSPePHVfHUNVVNSL.JVTXLTb-HYTUVUNUb.VYN@flex--lixiaoyan.bounces.google.com>)
+ id 1utvBO-0003TX-Ep
+ for qemu-arm@nongnu.org; Wed, 03 Sep 2025 17:38:23 -0400
+Received: by mail-yb1-xb49.google.com with SMTP id
+ 3f1490d57ef6-e9d6ce94cf2so209445276.1
+ for <qemu-arm@nongnu.org>; Wed, 03 Sep 2025 14:38:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756919121; x=1757523921; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=KKg3T0VzkyNGt9Y2ird6rFs/+P4V8YZDNFyw3M3VLFA=;
- b=QhVU6BQdqYr+/T7QUNAITMmYU9rWaerky4YorUl1ZavcVgLttyNmbHf6YjYD4+O1DL
- E02tRV8EUgit7XNoP7Gcy6ueOvLg9uJWZD1UOKn2W5GPR+TuyxwEkTYLCMEnbAfylHid
- st8jajRcfP4Mujmy60KHeIsXnQJuKPTStVE4dfKlyez7XWH61oyCgDCT/B2iLDHj+MsQ
- pHwy3sWglJ3A9chWIP1z3HCkXh86+aqrNFT3CWnzaE0hUciNv6u9YWibgx+Pn19fjtzX
- 8lMZQv9WYz9QUTakzezHkB9KWVawTD2b0hVSuL1c7SBB/Itgi0pZkp2gasOgwCj7rNpJ
- vgPg==
+ d=google.com; s=20230601; t=1756935501; x=1757540301; darn=nongnu.org;
+ h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
+ :date:from:to:cc:subject:date:message-id:reply-to;
+ bh=X5hS1tZ22zNRIVkY1EfuAvsxIjxJYrjbWB6arPiOJWo=;
+ b=zHGJ8itsOg1Au+KLlraW8NUUpcjNwsT7g9XCZpLV19rOXDH8VzBGFZSROaGoPSJyfJ
+ kxJ/GgBIZUJ+eEoNpoGSAxjGShxoqhaKn+xkGOBB7abhV1Y+Tc2NuCZX6AC/ymKpi89o
+ GJyInSKvJ4lhxkgK0dncs6+hA+OJ4AiNRP1bOCpf0vL8ZoJF2P+6ljQMIJBCLEBo3IId
+ bF0uBJsTahPgYv5KnzLaaVWKD6zYvNuQSHKZaUVIAU9SqW4Y/WKPeL4P9Yf2HFZVzg21
+ yTvsixe1aOR/oLcQVSQIEJ3mAY5J3g8wmYx7Z7xYhSukMSvanFluKuW0jL5QTjBLhd20
+ bmYA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756919121; x=1757523921;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=KKg3T0VzkyNGt9Y2ird6rFs/+P4V8YZDNFyw3M3VLFA=;
- b=EwWvQbWBBVK4Z1GEVSddwLvIz3mIgYdwEIafwSJl/Ld8T4Cmcet3F2A8zoWmuKt+W4
- Ci4fCoWjXOIXClWgzhbISnsW2w9URrRVkkA2eFyhIV2lqk8PqldQPXEoK7/L+WpJZsDc
- AklJlMujteJjMQ82plm5DGnGLT+4+eoUo63OU2VFnwMOYHEmr1OYM8A5BtC7HuYKfZYg
- aC+4xXGxr1i/7KAVlOinLmzh4e4UIrQGv5B6ZXP9og+4caZ73ChabEnMqt32VVgNzxhw
- 0jlDB6MngEJHTIBR8gVnfLwgdgIe7Bpt93EVm0qctlf74TDsHWYZjV9u7G5h4Whp3BWQ
- 2R4Q==
-X-Forwarded-Encrypted: i=1;
- AJvYcCU6mCHS5aOiyKQmkrpHKHkzybrSi/bZrnk+DTvfXK9L69jF1oSvqSnKdDRKxVVAfPdzoj04geKOqA==@nongnu.org
-X-Gm-Message-State: AOJu0YyixMhFp8VAH+oW2ayZ4hQgr6lgCAOn7Qmiy1o5f5NKlXhwcg/V
- SV2xzx1/efMQ9WLOTX1bqPIv6SU3KMcteor9kyCgyOmCFCuesywBGEK6yK1zsUsEohI=
-X-Gm-Gg: ASbGnctYJFkuTEQs3hIedPsWajHLLpQcEiEa+REfqlUnnIHNQT/lqEH5QltcdJDjmPA
- puihJbzC4m4gdjvEaxSL4xQKiJioEDvFwC2yCzLThJEtQMyBkVMZ3YAEMP+ahCr7JX762S55+24
- Ao6EpDYwB0fKnzIs6BwWZVyc06GrxAGFFxYz6ffCTi9i0AJCS74JWAOLFq0mizbNHMHE5xe9dup
- HUboF+DoUet0D95SxpqdCwDtgE06w9I/S03eT/CWcuwyTKA5/L6IUWPDDDT5xloVK8f85rIfrLl
- Der3GpEq06opoD6DojlU6nr7M0B3NNNPDQTz/HhF3Gz2U/9XdKySpRK8i+yJXZzS/50zGxwuOI/
- 8xuRhwB8S1pGvGFtNY4fBMGoAlxUWdvMpc1dqlnUD5Q1CQ6EwTOiVr7DziPrUCoHka4DoSsAfYD
- rS
-X-Google-Smtp-Source: AGHT+IEFupT2dJ0aE1zSaVfQjDg/Gkk0/3bNAXi6jZ/7TwgMH6r27e/6Iy0oiJ2VIzjZXelUyoNmuQ==
-X-Received: by 2002:a05:600c:4e91:b0:45d:5c71:76a9 with SMTP id
- 5b1f17b1804b1-45d5c71790bmr10293985e9.24.1756919121337; 
- Wed, 03 Sep 2025 10:05:21 -0700 (PDT)
-Received: from [192.168.1.138] (93-34-129-33.ip49.fastwebnet.it.
- [93.34.129.33]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3d729a96912sm12172889f8f.8.2025.09.03.10.05.20
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 03 Sep 2025 10:05:20 -0700 (PDT)
-Message-ID: <2c4227ac-8f94-4599-a950-aef9a5110991@linaro.org>
-Date: Wed, 3 Sep 2025 19:05:19 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 08/24] target/arm/hvf: Mention hvf_wfi() must run on vCPU
- thread
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-Cc: Alexander Graf <agraf@csgraf.de>, qemu-arm@nongnu.org,
- Mohamed Mediouni <mohamed@unpredictable.fr>,
- Peter Maydell <peter.maydell@linaro.org>, Mads Ynddal <mads@ynddal.dk>,
- Phil Dennis-Jordan <phil@philjordan.eu>,
- Stefan Hajnoczi <stefanha@redhat.com>, Cameron Esfahani <dirty@apple.com>,
- Roman Bolshakov <rbolshakov@ddn.com>, Paolo Bonzini <pbonzini@redhat.com>
-References: <20250903100702.16726-1-philmd@linaro.org>
- <20250903100702.16726-9-philmd@linaro.org>
- <c51382aa-070f-4441-a707-a29d87093b48@linaro.org>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <c51382aa-070f-4441-a707-a29d87093b48@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ d=1e100.net; s=20230601; t=1756935501; x=1757540301;
+ h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
+ :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=X5hS1tZ22zNRIVkY1EfuAvsxIjxJYrjbWB6arPiOJWo=;
+ b=Prmvt+iytsZiaomcctdNQVe3Vxrr40wxWXciB0NepKH0IvU82ZpiKvsucuUM6ZXZOv
+ 1vZQR5UsQ/aRU2WIDJDUyFkZTZEON4xpzPXdzU2sGNilO5vSyjyuKngFjRLYW0/AeGKr
+ 8mfUUmWHlJ/oluC1BMlacsCBhxK0iKazDAv+8nO7kTmHV95zu0KNABlZvkoxZ/syTDXO
+ oZSqigC5J051B3ABCSQeZ8Hx9tbMYdxE6GM1FGhNsMJ4CQ9XVHl5RJicQtxU2oIUpU7t
+ wZRo5h7AeGtq5pZrHwk3M1EY7HC0cX0/CBBId2TPbIDzkNrjEvmRZRdtFt4Cr59GyV6J
+ Pg6g==
+X-Gm-Message-State: AOJu0YwMwBpT+iZYi+e5JsXnb+Yqo7S+7MQvUKZorx9ImEE03tZoxjNe
+ U5tOuMNNDzccbmcuvEqKMc0iZt6V3RQO+v/zqWsvuBuH25Icz/JNxTNcTqu/x1bEXfkNHzYH8kF
+ vUhODQG5qnBl78zMBkw==
+X-Google-Smtp-Source: AGHT+IH20bEt+lOXFlacb73BNjN3iG6qx3SuvvCV81+aK3lDiMZblYU8I9joK91/dKCzOzCRs4ptqRWaDsgvKFU=
+X-Received: from ybiv44.prod.google.com ([2002:a25:abaf:0:b0:e96:dd0e:6347])
+ (user=lixiaoyan job=prod-delivery.src-stubby-dispatcher) by
+ 2002:a05:6902:1004:b0:e9d:6a31:d514 with SMTP id
+ 3f1490d57ef6-e9d6a31dacemr1383224276.44.1756935500853; 
+ Wed, 03 Sep 2025 14:38:20 -0700 (PDT)
+Date: Wed,  3 Sep 2025 21:38:07 +0000
+In-Reply-To: <20250903213809.3779860-1-lixiaoyan@google.com>
+Mime-Version: 1.0
+References: <20250903213809.3779860-1-lixiaoyan@google.com>
+X-Mailer: git-send-email 2.51.0.338.gd7d06c2dae-goog
+Message-ID: <20250903213809.3779860-4-lixiaoyan@google.com>
+Subject: [PATCH 3/5] hw/arm/npcm8xx.c: Add all IRQ ENUMs
+From: Coco Li <lixiaoyan@google.com>
+To: peter.maydell@linaro.org, clg@kaod.org
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, Coco Li <lixiaoyan@google.com>,
+ Hao Wu <wuhaotsh@google.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b49;
+ envelope-from=3TLW4aAkKCOUSPePHVfHUNVVNSL.JVTXLTb-HYTUVUNUb.VYN@flex--lixiaoyan.bounces.google.com;
+ helo=mail-yb1-xb49.google.com
+X-Spam_score_int: -86
+X-Spam_score: -8.7
+X-Spam_bar: --------
+X-Spam_report: (-8.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ HK_RANDOM_FROM=0.938, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, UPPERCASE_50_75=0.008,
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=no autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Wed, 03 Sep 2025 18:20:47 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -110,31 +95,99 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 3/9/25 14:34, Richard Henderson wrote:
-> On 9/3/25 12:06, Philippe Mathieu-Daudé wrote:
->> Since hvf_wfi() calls hv_vcpu_get_sys_reg(), which
->> must run on a vCPU, it also must. Mention it.
->>
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->> ---
->>   target/arm/hvf/hvf.c | 1 +
->>   1 file changed, 1 insertion(+)
->>
->> diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
->> index d87a41bcc53..05fc591b523 100644
->> --- a/target/arm/hvf/hvf.c
->> +++ b/target/arm/hvf/hvf.c
->> @@ -1836,6 +1836,7 @@ static void hvf_wait_for_ipi(CPUState *cpu, 
->> struct timespec *ts)
->>       bql_lock();
->>   }
->> +/* Must be called by the owning thread */
->>   static void hvf_wfi(CPUState *cpu)
->>   {
->>       ARMCPU *arm_cpu = ARM_CPU(cpu);
-> 
-> How can it not?  Are all these separate patches and annotations helpful?
+In the process of implementing serial gpio and adding the corresponding
+ENUMs, also complete the list for npcm8xx.
 
-Well they helped me understand the locking issue in patch 15 in
-hvf_arm_get_host_cpu_features().
+Signed-off-by: Coco Li <lixiaoyan@google.com>
+Reviewed-by: Hao Wu <wuhaotsh@google.com>
+---
+ hw/arm/npcm8xx.c | 43 ++++++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 42 insertions(+), 1 deletion(-)
+
+diff --git a/hw/arm/npcm8xx.c b/hw/arm/npcm8xx.c
+index a276fea698..10887d07fa 100644
+--- a/hw/arm/npcm8xx.c
++++ b/hw/arm/npcm8xx.c
+@@ -92,8 +92,14 @@ enum NPCM8xxInterrupt {
+     NPCM8XX_GMAC2_IRQ,
+     NPCM8XX_GMAC3_IRQ,
+     NPCM8XX_GMAC4_IRQ,
+-    NPCM8XX_MMC_IRQ             = 26,
++    NPCM8XX_ESPI_IRQ,
++    NPCM8XX_SIOX0_IRQ,
++    NPCM8XX_SIOX1_IRQ,
++    NPCM8XX_MC_IRQ              = 25,
++    NPCM8XX_MMC_IRQ,
+     NPCM8XX_PSPI_IRQ            = 28,
++    NPCM8XX_VDMA_IRQ,
++    NPCM8XX_MCTP_IRQ,
+     NPCM8XX_TIMER0_IRQ          = 32,   /* Timer Module 0 */
+     NPCM8XX_TIMER1_IRQ,
+     NPCM8XX_TIMER2_IRQ,
+@@ -116,6 +122,14 @@ enum NPCM8xxInterrupt {
+     NPCM8XX_OHCI1_IRQ,
+     NPCM8XX_EHCI2_IRQ,
+     NPCM8XX_OHCI2_IRQ,
++    NPCM8XX_SPI1_IRQ            = 82,
++    NPCM8XX_RNG_IRQ             = 84,
++    NPCM8XX_SPI0_IRQ            = 85,
++    NPCM8XX_SPI3_IRQ            = 87,
++    NPCM8XX_GDMA0_IRQ           = 88,
++    NPCM8XX_GDMA1_IRQ,
++    NPCM8XX_GDMA2_IRQ,
++    NPCM8XX_OTP_IRQ             = 92,
+     NPCM8XX_PWM0_IRQ            = 93,   /* PWM module 0 */
+     NPCM8XX_PWM1_IRQ,                   /* PWM module 1 */
+     NPCM8XX_MFT0_IRQ            = 96,   /* MFT module 0 */
+@@ -128,6 +142,11 @@ enum NPCM8xxInterrupt {
+     NPCM8XX_MFT7_IRQ,                   /* MFT module 7 */
+     NPCM8XX_PCI_MBOX1_IRQ       = 105,
+     NPCM8XX_PCI_MBOX2_IRQ,
++    NPCM8XX_GPIO231_IRQ         = 108,
++    NPCM8XX_GPIO233_IRQ,
++    NPCM8XX_GPIO234_IRQ,
++    NPCM8XX_GPIO93_IRQ,
++    NPCM8XX_GPIO94_IRQ,
+     NPCM8XX_GPIO0_IRQ           = 116,
+     NPCM8XX_GPIO1_IRQ,
+     NPCM8XX_GPIO2_IRQ,
+@@ -163,6 +182,12 @@ enum NPCM8xxInterrupt {
+     NPCM8XX_SMBUS24_IRQ,
+     NPCM8XX_SMBUS25_IRQ,
+     NPCM8XX_SMBUS26_IRQ,
++    NPCM8XX_FLM0_IRQ            = 160,
++    NPCM8XX_FLM1_IRQ,
++    NPCM8XX_FLM2_IRQ,
++    NPCM8XX_FLM3_IRQ,
++    NPCM8XX_JMT1_IRQ            = 188,
++    NPCM8XX_JMT2_IRQ,
+     NPCM8XX_UART0_IRQ           = 192,
+     NPCM8XX_UART1_IRQ,
+     NPCM8XX_UART2_IRQ,
+@@ -170,6 +195,22 @@ enum NPCM8xxInterrupt {
+     NPCM8XX_UART4_IRQ,
+     NPCM8XX_UART5_IRQ,
+     NPCM8XX_UART6_IRQ,
++    NPCM8XX_I3C0_IRQ            = 224,
++    NPCM8XX_I3C1_IRQ,
++    NPCM8XX_I3C2_IRQ,
++    NPCM8XX_I3C3_IRQ,
++    NPCM8XX_I3C4_IRQ,
++    NPCM8XX_I3C5_IRQ,
++    NPCM8XX_A35INTERR_IRQ       = 240,
++    NPCM8XX_A35EXTERR_IRQ,
++    NPCM8XX_PMU0_IRQ,
++    NPCM8XX_PMU1_IRQ,
++    NPCM8XX_PMU2_IRQ,
++    NPCM8XX_PMU3_IRQ,
++    NPCM8XX_CTI0_IRQ,
++    NPCM8XX_CTI1_IRQ,
++    NPCM8XX_CTI2_IRQ,
++    NPCM8XX_CTI3_IRQ,
+ };
+ 
+ /* Total number of GIC interrupts, including internal Cortex-A35 interrupts. */
+-- 
+2.51.0.338.gd7d06c2dae-goog
+
 

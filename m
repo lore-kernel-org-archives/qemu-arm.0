@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A79A0CA1009
-	for <qemu-arm@archiver.kernel.org>; Wed,  3 Sep 2025 10:11:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5347CCA0FF2
+	for <qemu-arm@archiver.kernel.org>; Wed,  3 Sep 2025 10:12:09 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1utkRZ-0006P6-8t; Wed, 03 Sep 2025 06:10:37 -0400
+	id 1utkS8-0006hO-2U; Wed, 03 Sep 2025 06:10:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1utkRD-0005fd-63
- for qemu-arm@nongnu.org; Wed, 03 Sep 2025 06:10:00 -0400
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1utkRT-0006F7-D7
+ for qemu-arm@nongnu.org; Wed, 03 Sep 2025 06:10:19 -0400
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1utkRB-0008VP-CF
- for qemu-arm@nongnu.org; Wed, 03 Sep 2025 06:09:58 -0400
-Received: by mail-wr1-x42f.google.com with SMTP id
- ffacd0b85a97d-3df2f4aedc7so263865f8f.2
- for <qemu-arm@nongnu.org>; Wed, 03 Sep 2025 03:09:56 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1utkRR-00009a-ME
+ for qemu-arm@nongnu.org; Wed, 03 Sep 2025 06:10:15 -0400
+Received: by mail-wm1-x332.google.com with SMTP id
+ 5b1f17b1804b1-45b9c35bc0aso11007425e9.2
+ for <qemu-arm@nongnu.org>; Wed, 03 Sep 2025 03:10:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756894195; x=1757498995; darn=nongnu.org;
+ d=linaro.org; s=google; t=1756894210; x=1757499010; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=oCaAK1U7AfzQjqZldPBE5RveEpShlRIboizZxhe2VkY=;
- b=h0bklGCQv/xiIteVzE4B+ytaBKY5ziCFDSVtfVemH5FW+XW9BOhZ876QYVxyMtlw9S
- ujNVpDWFta2NiCtThwUk6584X2OAcgxD96qox4Z9GXHsf91dheONKvJZpAmU/apd6gSx
- 1xiFwX97SGaLGPwFTv+yd3LWcbUD2vaNsl2u91z/64i0aTAYQhKScvqmjza37A5pon9+
- 85fxmtrQgR5LdikhmekRjBfMLyexAv0uWR4pIROJOW0gdp8bPILfwla4w9CPOmWlVv5U
- Q/4BPpD0MQXdLwuuHLJvD2H4APfD9WoDLQ2z1Z+7hew+wl5opL40R27M64iY07Ut/fzF
- 2zYQ==
+ bh=BpXbEQrpDK50SMvtUWoxzqhUJ4k4wz+AbgMYLSbErPw=;
+ b=my2rq/M1EI4TW5A6prlqirdmwy+G1K8sQEOi+svI0PDo73XvHc6msaq0uk30HQkbY0
+ MGBVV6PDhs3/87RbGnEYM7spOYGkReTRNtRqSvaO0pyObs1E1NiguMphv8bppggI6Mi7
+ ldWFLYoHv7T8d4MDxeOdV9H/ygXM5CaQk/eLW8mSc5mjWW5alqmhFTCGHteULmupcLW6
+ H/L0cOFR8GbOltC6w02WMnEufYQTgW+QIg8VeShpTwWDtfYlcD26vhsS1UwKcL6qd7nB
+ xkkkhachywE1LoiGr3YSkONbe078OqStXZ9Y/SpiWe9+E5MXZi5SsDk5LcVoVlKkHXIK
+ opwQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756894195; x=1757498995;
+ d=1e100.net; s=20230601; t=1756894210; x=1757499010;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=oCaAK1U7AfzQjqZldPBE5RveEpShlRIboizZxhe2VkY=;
- b=jyPoju0ZpBdL+kmXPBg03GPJ5v2bHciUOA8rvvl7Ixm5kczPoPLoS6tUnjY4NvzSxc
- BatVZnfrwu6b5AipBe/I+EEAb/I3fxsjWiy0pP0Uabbok/3sXd4UzP7IyDQnohqw0tQo
- v5mLSjp8MjOSbWQl5sCbZHQT7jK+D6Gc66/lQMqVf5fK5DiSmaJgGBWbhc5eJwGXQBDZ
- PGSfXVIrrjjcACDELTfJTr9kn8YK8io3FO++1w0WkzB4K1Ohhnbc8StRQhMVl8/t6ZQ3
- jE2FFbkgBZULu7xOEykJn1LlhkqJPGEttZ/z/Z0f1Pb2Re7QeJkcUhu0Bbfd54ved/8D
- yDNg==
+ bh=BpXbEQrpDK50SMvtUWoxzqhUJ4k4wz+AbgMYLSbErPw=;
+ b=YpJuzs6hEXqsXqM2QAEagWUHNpCIsHg3xYa29ykhJNLOcGaCMCNJVCChEpOQGorXW2
+ /6JfNrapSBHhJQ1MravlZyQHPxLJUiv1BD3dY+XhTJdgHzzh8GmX8429FSdLr80iIFQw
+ hATYxMVQuqnS7eZzIW6+YlOXkypLZqwoXUZYoVFlvCFEthGXDbBwNajuAQN0vCvd0RtU
+ mduU3BkhX9lneIaQGQx5KM8M+3SLHrESDeozyfGAcYKHEQLEJuMmNXsPLc4N0Aqi2F16
+ XsMERfLOACf5Gq9KW5WaSbgTPGGqLionLvggXAzV83rmv8zRm7PhrlZkQmV7i7iCzxcJ
+ xhQA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCU+J8JkG+nh5GRwfaFQl3ywZAQdvxwszJPi1HPHof+wz8ZsZH5+x/PEfufpN/qiT1TiMiu11IL2OA==@nongnu.org
-X-Gm-Message-State: AOJu0Ywi6jc5ETIRymGASuLWzW+I/psbTuxtU+AsM+RPmMdU1Vy9DKGv
- LGCDYAinLCzkpktEKTKaDKTIW99O0ADq+dl2jv7se2Z8itH5y6yhdKoEk1a+1zBWDAM=
-X-Gm-Gg: ASbGncvp9mEeAaqv2a1kpUqz4TznqLxj9VlRPj8LpHRwCZanxRgzKer237jiSzPyxDn
- K4xTsaqen9+ht8TGfRXrXBFSZjacfzH/tR/b2E+p3fT2zFkJdvIft42DkrduXUOFgea+53U2Amz
- 7v9/ca7ZarniZzH2jWDbHPm8wZMNU+RyGtOY4a7f3LFaZwZ/hQY6jxK4x3Wn/CDkfJlBMVRC4IV
- UXdUGO7MNrHGT4SZEjRU4dCBQbL3+Z/DOM1mRYmDp6RhjG1hlU52Q2Xyp52FdOiGYwF/pVpXnQ1
- a1BlJirrtfhAh/LDf4vwl3GX7HPzmlxAsW25wOwhujHirsrK2zKXCoSSgoO1SAioTQDav2i9Fo4
- DTcxgM03fz0Tirjqq4WdfZlU+PGGO7oNcUh4cYGTtfhsPFouH+g0hQklzSLoaKAr9vC7R99tWRf
- VvWzmaoeID4TlMjeNp
-X-Google-Smtp-Source: AGHT+IGU8BAg7tq431LWl+B0LEsfKkDkREYGOYoLoyFgBZgv+sRl6kcDrBAKCXXTt4l3HFRmI9CCoA==
-X-Received: by 2002:a05:6000:40ce:b0:3d5:f5ef:3bb with SMTP id
- ffacd0b85a97d-3d5f5ef0766mr8304072f8f.11.1756894195377; 
- Wed, 03 Sep 2025 03:09:55 -0700 (PDT)
+ AJvYcCVU3LJi/0lnvWCcQ+phGHO1y1gfbDPkOKdxgnMTfKiSgQokAa4SK49vo71uJUlVFj553eQ2ANtQTQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yx7G4APaeAyhtyGoQ/DV6Kl4dTWZ9pef0aURtNj3R7sn0vkT3h3
+ /x0kCoji46l/rQrlcRZ21f1OvkyuKMboReN62+wkHx/9FJMQRsHj/KaV/k0SFx/PnFU=
+X-Gm-Gg: ASbGncuw9fx2LrVt16zcNUK62MWpO8cAB1jXCwHVjglLlHuy+izdf5R3zKJX4Vxyb0p
+ XecO01Awtm1TQ5RwOOkiJ0MNpqKy7A60nNpFkh1/6WXko2Xg7v6YRXpqkSlfE5T16z9cuP7yYsY
+ AAGMhB4ZjEIiA+xe7lVGo8mRntK2vJ6DdBZcd58IUPcFoqqhCc98N6i6+yMzt9SREanOnnuj8x6
+ S6+otgCvrTUcjcCyHJ5CFXaM60qGars6KjA12A1I88gRBEh3Zu7Wml9bSe6q5TeCT50uHoArwIt
+ Ym+lrY8K7/l9i8LymT05Y9T8TN/ti39Gx7XerCHc3XFYziRcZwvt3FJ+wqoaaeScf4XbS3Hpyqz
+ 3PkydYR48Gd7zbifobBV0kVC9rAr7j8o1ENu2svNUYtteMCvk1E1CVP0elS9FMRZZBvQ7nnQ/zK
+ pkWZxJUw==
+X-Google-Smtp-Source: AGHT+IH9fcHFERGeULzOi6U7b9bTjsQMBq100wAXosiiqaMXG+O1tRl2V9v2vrhTxaNa/exK/C6c3Q==
+X-Received: by 2002:a05:600c:1d07:b0:45b:6b57:5308 with SMTP id
+ 5b1f17b1804b1-45b855508e0mr126523875e9.7.1756894209562; 
+ Wed, 03 Sep 2025 03:10:09 -0700 (PDT)
 Received: from localhost.localdomain (98.red-88-29-180.dynamicip.rima-tde.net.
  [88.29.180.98]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-45cb687fe4esm11930835e9.23.2025.09.03.03.09.53
+ ffacd0b85a97d-3d0a1f807f9sm22217368f8f.38.2025.09.03.03.10.06
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 03 Sep 2025 03:09:54 -0700 (PDT)
+ Wed, 03 Sep 2025 03:10:09 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
@@ -75,18 +75,17 @@ Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Phil Dennis-Jordan <phil@philjordan.eu>,
  Stefan Hajnoczi <stefanha@redhat.com>, Cameron Esfahani <dirty@apple.com>,
  Roman Bolshakov <rbolshakov@ddn.com>, Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH 20/24] accel/hvf: Guard hv_vcpu_run() between
- cpu_exec_start/end() calls
-Date: Wed,  3 Sep 2025 12:06:56 +0200
-Message-ID: <20250903100702.16726-21-philmd@linaro.org>
+Subject: [PATCH 22/24] accel/hvf: Restrict ARM specific fields of AccelCPUState
+Date: Wed,  3 Sep 2025 12:06:58 +0200
+Message-ID: <20250903100702.16726-23-philmd@linaro.org>
 X-Mailer: git-send-email 2.51.0
 In-Reply-To: <20250903100702.16726-1-philmd@linaro.org>
 References: <20250903100702.16726-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::332;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x332.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -109,44 +108,32 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+Do not expose ARM specific fields to X86 implementation,
+allowing to use the proper 'hv_vcpu_exit_t' type.
+
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- target/arm/hvf/hvf.c  | 2 ++
- target/i386/hvf/hvf.c | 4 ++++
- 2 files changed, 6 insertions(+)
+ include/system/hvf_int.h | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index b60efdc1769..40ec930d244 100644
---- a/target/arm/hvf/hvf.c
-+++ b/target/arm/hvf/hvf.c
-@@ -2154,7 +2154,9 @@ int hvf_arch_vcpu_exec(CPUState *cpu)
-         flush_cpu_state(cpu);
+diff --git a/include/system/hvf_int.h b/include/system/hvf_int.h
+index 195d64dcf18..3d2be4092ef 100644
+--- a/include/system/hvf_int.h
++++ b/include/system/hvf_int.h
+@@ -59,10 +59,12 @@ extern HVFState *hvf_state;
  
-         bql_unlock();
-+        cpu_exec_start(cpu);
-         r = hv_vcpu_run(cpu->accel->fd);
-+        cpu_exec_end(cpu);
-         bql_lock();
-         switch (r) {
-         case HV_SUCCESS:
-diff --git a/target/i386/hvf/hvf.c b/target/i386/hvf/hvf.c
-index 73c50175048..cb4af70e91d 100644
---- a/target/i386/hvf/hvf.c
-+++ b/target/i386/hvf/hvf.c
-@@ -749,9 +749,13 @@ int hvf_arch_vcpu_exec(CPUState *cpu)
-             return EXCP_HLT;
-         }
+ struct AccelCPUState {
+     hvf_vcpuid fd;
+-    void *exit;
++#ifdef __aarch64__
++    hv_vcpu_exit_t *exit;
+     bool vtimer_masked;
+     sigset_t unblock_ipi_mask;
+     bool guest_debug_enabled;
++#endif
+ };
  
-+        cpu_exec_start(cpu);
-+
-         hv_return_t r = hv_vcpu_run_until(cpu->accel->fd, HV_DEADLINE_FOREVER);
-         assert_hvf_ok(r);
- 
-+        cpu_exec_end(cpu);
-+
-         /* handle VMEXIT */
-         uint64_t exit_reason = rvmcs(cpu->accel->fd, VMCS_EXIT_REASON);
-         uint64_t exit_qual = rvmcs(cpu->accel->fd, VMCS_EXIT_QUALIFICATION);
+ void assert_hvf_ok_impl(hv_return_t ret, const char *file, unsigned int line,
 -- 
 2.51.0
 

@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 093A1CA1013
-	for <qemu-arm@archiver.kernel.org>; Thu,  4 Sep 2025 08:20:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03E27CA1012
+	for <qemu-arm@archiver.kernel.org>; Thu,  4 Sep 2025 08:20:40 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uu58I-0001nw-RT; Thu, 04 Sep 2025 04:15:50 -0400
+	id 1uu5Ai-0000O6-4c; Thu, 04 Sep 2025 04:18:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1uu54x-0006VY-Gh
- for qemu-arm@nongnu.org; Thu, 04 Sep 2025 04:12:25 -0400
-Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
+ id 1uu55i-00079A-HT
+ for qemu-arm@nongnu.org; Thu, 04 Sep 2025 04:13:11 -0400
+Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1uu54S-00047b-QU
- for qemu-arm@nongnu.org; Thu, 04 Sep 2025 04:12:19 -0400
-Received: by mail-ed1-x530.google.com with SMTP id
- 4fb4d7f45d1cf-61c26f3cf0dso1201790a12.1
- for <qemu-arm@nongnu.org>; Thu, 04 Sep 2025 01:11:51 -0700 (PDT)
+ id 1uu54z-0004Mi-VF
+ for qemu-arm@nongnu.org; Thu, 04 Sep 2025 04:13:10 -0400
+Received: by mail-ej1-x630.google.com with SMTP id
+ a640c23a62f3a-b0415e03e25so101444966b.0
+ for <qemu-arm@nongnu.org>; Thu, 04 Sep 2025 01:12:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756973510; x=1757578310; darn=nongnu.org;
+ d=linaro.org; s=google; t=1756973536; x=1757578336; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Iadk247wa0jmFN7Lhbe5pHyYM/9Bx/fgTyvCZLz4RjI=;
- b=SeqMCnmTiLk6454+6vwk5vLADnGSUQsr/SNVkLJfv499lyTaQ/E0oCXIitV497Cm0w
- /COonz4AsMg/aeptE8K71JeiJw+kUbjPv6qvqQAvnXoE6e8mHKTFrcpdZEkG7F40pXPR
- OZlbtGmdmeZp4WuTlU0C57TN/Cjdp/ucfkiokYfn21BhI75rasENH7QUirqy2gVq66cI
- FPh07LDHx+LAqv03NdNsh3qaiU8INedF+Av1bkgbme5kZZN2ppzlthKrVpXy20guqOTO
- rLXKEK6EUIL8NbCa/c0HLwM/l8R9LPk2dbis16tZX7fOBuGPcng+h+B/p6Oc24pF2ZLQ
- KrlQ==
+ bh=VFNUB0V49RFoANOb1kSaGEn6pZ+DOzW4FGm2O4halkE=;
+ b=Spk+yPrSWkwMNmmNacgG6gzgsdn4g4wdgvoEqQ5SVeaazL0oBQYQrgPgac/2Zm3C3Q
+ nNj4f/dZrU3DNWa1EfGS7aNYHFLN+SeGl7AYW5EPIF5rWW3wPwBOwtInZ4SxsIXMOuPA
+ EjCatG5qkOPAt3erJ5vjroOCh++o8kmZZPtv7YYumyg8iAQYzzaOUBnC5UJK97FxdjT8
+ lIWFKZgJXZfpUEKjfejwr77S7eLa0ioJizS7urnbtXcfvY0XLW2eNEdzWz8j4zAtfkAn
+ jvooDiKZyuGL9UJYYZMIacCuNgl3vSNAdPibLD5cUUIpomFjwl2e45jffKVL77Bj0wsy
+ aukA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756973510; x=1757578310;
+ d=1e100.net; s=20230601; t=1756973536; x=1757578336;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=Iadk247wa0jmFN7Lhbe5pHyYM/9Bx/fgTyvCZLz4RjI=;
- b=bkHi2noSLHyRZx1Jw2v0j2vN14qoO55j+AnCOzuzz0U4B8jCzjnNJYvBLA7craDAQa
- yX1TpbZ84iFcAmNqTx5Y1rs3clgWtEJ2XrzLZKg35YGfWLmB61byD7aBXl7EFt2Zs72N
- /pTWNUJ5zvmk3XRFt71zKOR8/xwBNufpg3a8oIk0uSaFJ6qeg3dg82rFjIsRZpleBhYq
- RryBTJ6I+L9i/UMwnmaP/9HTQg/MsfUWVVsSw9pmQtuMZET2YXp3C6BoBQaaVqCZBsyb
- Xi1C3IYoWFmC6xlxBk/Bho7ZjuO76EyHKf3rWrzTcIx/08SJjx69R+M/IGpaP/idKCOK
- M2QA==
+ bh=VFNUB0V49RFoANOb1kSaGEn6pZ+DOzW4FGm2O4halkE=;
+ b=w5ECfxgevSM52GUzGD7hishrHBSrOJIbZJEA7YTBKP+saUGu3z8Cq99qpHoVz9I4Ny
+ hkSkWa55Uk96Fe9vDP7By0FrN7tL5zUuaAgQ0P1o3hFLdTkB8mgZkUW8OzMgMYuLVYJQ
+ C1mzVXLXchgqAHg9c3aSEgQDk+E/MlSZ+uCXDSHDds6YfdyzzZOtwEIY7oBhkWkzjD1I
+ 9V9ymsC0fw/8jsG2RdeTsxxZ3rAFI0+6wHmo0DNCY6PXHC1MgMAwYTIt3qQfjDjZfIZi
+ amipFL/clJZoEamG0fsk5wEwre3KmmfKyHj7u7IOOhpasuhjuugmcKt2N4Iy0L71vtAk
+ eGKA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCW0Ho9yP3GcSoAMbg/oEI4Xt+8i1bsSWUy+e/w5CpMaGa/gjPGVk8kc+ckg2GceQxiZfcXHApG/Iw==@nongnu.org
-X-Gm-Message-State: AOJu0YwpWS/YEfULfcFs7d96Ad0T1hjjhjsYPTYQSjsFeaBGCIguIB+b
- qCmjeW90Z9QvpZHtpNqgt5bosPkvEVbnQMdJDnW27GsZhx5JcXksWvHzp/t5JIMsGhU=
-X-Gm-Gg: ASbGncvTit0xuXD3PIN4kKwb9/fogFmpUcswqoTIV78HDsJbnZxyG8AdM8PAYFgj/gy
- eRmNVSrMCcYsvEEQXgNnPUBBwyX0phDHbBP9D2f4k0nyc8WUN6yEVJ9nDxf72RdSmviJw0wpYy2
- BB1Qr7fL8euMz0WjVchT2uZoaLCSff7BqvSyrQ6f53HE/OJDImK4cSuWaWn8Bsd0lfFhKuZCptd
- bvmrQz/sPSZQaKp0V05qOnEHlP6z0PDyB3SedZbShQUjnECtGTYlh15TKAydpab/jpVXjONplSH
- 3gJFv25zCAYAEeJv22G0furbbMz47lrTbBnUy/dtCsiSmQHtGHTZW+EWyZIdkGNPjr9LkyVGj6J
- LWj/UIWHNMmZcBvuS9XE2l+FxWzdtU4rEYg==
-X-Google-Smtp-Source: AGHT+IHAHTEjir+BwL4SeKgB+PnmLO4Ci/chovokQ0iZiuKeBhU50jT8UQ8cRQu6FT+TxTvx6pvlPw==
-X-Received: by 2002:a05:6402:2115:b0:61e:ca25:3502 with SMTP id
- 4fb4d7f45d1cf-61eca25373emr6417672a12.17.1756973509716; 
- Thu, 04 Sep 2025 01:11:49 -0700 (PDT)
+ AJvYcCUByK92tjH0sYbrQgcSKaptPxd54K0IXI4eS4nxlFfi/oX4Ta6LMCOZS/CgWRMxdwBKUZYWH4dnVw==@nongnu.org
+X-Gm-Message-State: AOJu0YwDzvEXW2W3fIdJgH7I6NX/DS9V4Dx4xUZl02hrgOfE6RZZ14mJ
+ Mfb2m9BHu8qQpemN63tmaVt0874cZWgl/aHeXv2/f8KLPIoB9UCM6ntbHB6J1VzxQww=
+X-Gm-Gg: ASbGncswLFXQfGhXIwwV2XSoLZtcNp7pJL9GpLPMTg+RXcFZy4qQUGvUTiWLo/QFg3V
+ tvKGLItEe4FAFoK9EPioB1MkKJDaU7cQsltLuvClE0Rd0XP0I225mgu8Upv/E0YJAVwCcZ6KvQj
+ zk20e4AyubZHR55cWaTHh9IaRtgWOmL+FvmnBoBbzEf8Gx/xV0udrOSFWgOMzzt3MATLn8eD73s
+ 6nXPxp9qd87QAuhYnJ42ans4iWZyoWoXc+XfdjtjapmFUtlHHfV3gIUfxK4ukZXBXJq7EshTfJ+
+ bqLl1lyEcRyqZDvBI6iRIjwv3RDq/gyPLg++xTzxlCuyRJHze1M0lt/ONmPNkWra/SvzFSiroL2
+ nvxbGrlorgKCnx6+uW57CPx0=
+X-Google-Smtp-Source: AGHT+IGIalYOz68UVLpWwAQ502u/6C1wYzVQm3dA2hqMKbFddMADRpQhWxxMK1CrZqrYwwk6HQP7Eg==
+X-Received: by 2002:a17:907:728e:b0:b04:48c5:35f with SMTP id
+ a640c23a62f3a-b0448c507b9mr1060418366b.10.1756973535683; 
+ Thu, 04 Sep 2025 01:12:15 -0700 (PDT)
 Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-61cfc1c7848sm14413068a12.2.2025.09.04.01.11.39
+ a640c23a62f3a-b02152cc1b8sm1264174566b.36.2025.09.04.01.12.07
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 04 Sep 2025 01:11:43 -0700 (PDT)
+ Thu, 04 Sep 2025 01:12:11 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id D5A395FAAE;
- Thu, 04 Sep 2025 09:11:30 +0100 (BST)
+ by draig.lan (Postfix) with ESMTP id 8D2E960AFF;
+ Thu, 04 Sep 2025 09:11:39 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Reinoud Zandijk <reinoud@netbsd.org>,
@@ -129,26 +129,24 @@ Cc: Reinoud Zandijk <reinoud@netbsd.org>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Nicholas Piggin <npiggin@gmail.com>, John Levon <john.levon@nutanix.com>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v2 022/281] tests/functional: Move i386 tests into
- architecture specific folder
-Date: Thu,  4 Sep 2025 09:06:56 +0100
-Message-ID: <20250904081128.1942269-23-alex.bennee@linaro.org>
+ Nicholas Piggin <npiggin@gmail.com>, John Levon <john.levon@nutanix.com>
+Subject: [PATCH v2 089/281] linux-user/xtensa: Create init_main_thread
+Date: Thu,  4 Sep 2025 09:08:03 +0100
+Message-ID: <20250904081128.1942269-90-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.2
 In-Reply-To: <20250904081128.1942269-1-alex.bennee@linaro.org>
 References: <20250904081128.1942269-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::530;
- envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x530.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::630;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x630.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -164,104 +162,80 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Thomas Huth <thuth@redhat.com>
+From: Richard Henderson <richard.henderson@linaro.org>
 
-The tests/functional folder has become quite crowded, thus move the
-i386 tests into a target-specific subfolder.
+Merge init_thread and target_cpu_copy_regs.
+There's no point going through a target_pt_regs intermediate.
 
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Signed-off-by: Thomas Huth <thuth@redhat.com>
-Message-ID: <20250819112403.432587-11-thuth@redhat.com>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- MAINTAINERS                                            |  3 ++-
- tests/functional/i386/meson.build                      | 10 ++++++++++
- .../{test_i386_migration.py => i386/test_migration.py} |  0
- .../{test_i386_replay.py => i386/test_replay.py}       |  0
- .../{test_i386_tuxrun.py => i386/test_tuxrun.py}       |  0
- tests/functional/meson.build                           | 10 +---------
- 6 files changed, 13 insertions(+), 10 deletions(-)
- create mode 100644 tests/functional/i386/meson.build
- rename tests/functional/{test_i386_migration.py => i386/test_migration.py} (100%)
- rename tests/functional/{test_i386_replay.py => i386/test_replay.py} (100%)
- rename tests/functional/{test_i386_tuxrun.py => i386/test_tuxrun.py} (100%)
+ linux-user/elfload.c         | 18 +-----------------
+ linux-user/xtensa/cpu_loop.c | 22 ++++++++++++++++------
+ 2 files changed, 17 insertions(+), 23 deletions(-)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 2e1754912f6..2b109ecc18c 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -146,6 +146,7 @@ F: target/i386/*.[ch]
- F: target/i386/Kconfig
- F: target/i386/meson.build
- F: tools/i386/
-+F: tests/functional/i386/
+diff --git a/linux-user/elfload.c b/linux-user/elfload.c
+index 4876e4b0a80..447a9be11d7 100644
+--- a/linux-user/elfload.c
++++ b/linux-user/elfload.c
+@@ -905,23 +905,7 @@ static bool init_guest_commpage(void)
+ #define ELF_CLASS       ELFCLASS32
+ #define ELF_ARCH        EM_XTENSA
  
- Guest CPU cores (TCG)
- ---------------------
-@@ -1891,7 +1892,7 @@ F: hw/isa/apm.c
- F: include/hw/isa/apm.h
- F: tests/unit/test-x86-topo.c
- F: tests/qtest/test-x86-cpuid-compat.c
--F: tests/functional/test_i386_tuxrun.py
-+F: tests/functional/i386/test_tuxrun.py
- F: tests/functional/test_linux_initrd.py
- F: tests/functional/test_mem_addr_space.py
- F: tests/functional/test_pc_cpu_hotplug_props.py
-diff --git a/tests/functional/i386/meson.build b/tests/functional/i386/meson.build
-new file mode 100644
-index 00000000000..23d8c216be7
---- /dev/null
-+++ b/tests/functional/i386/meson.build
-@@ -0,0 +1,10 @@
-+# SPDX-License-Identifier: GPL-2.0-or-later
+-static inline void init_thread(struct target_pt_regs *regs,
+-                               struct image_info *infop)
+-{
+-    regs->windowbase = 0;
+-    regs->windowstart = 1;
+-    regs->areg[1] = infop->start_stack;
+-    regs->pc = infop->entry;
+-    if (info_is_fdpic(infop)) {
+-        regs->areg[4] = infop->loadmap_addr;
+-        regs->areg[5] = infop->interpreter_loadmap_addr;
+-        if (infop->interpreter_loadmap_addr) {
+-            regs->areg[6] = infop->interpreter_pt_dynamic_addr;
+-        } else {
+-            regs->areg[6] = infop->pt_dynamic_addr;
+-        }
+-    }
+-}
++#define HAVE_INIT_MAIN_THREAD
+ 
+ /* See linux kernel: arch/xtensa/include/asm/elf.h.  */
+ #define ELF_NREG 128
+diff --git a/linux-user/xtensa/cpu_loop.c b/linux-user/xtensa/cpu_loop.c
+index c0fcf743e70..43a194fc4a4 100644
+--- a/linux-user/xtensa/cpu_loop.c
++++ b/linux-user/xtensa/cpu_loop.c
+@@ -238,12 +238,22 @@ void cpu_loop(CPUXtensaState *env)
+     }
+ }
+ 
+-void target_cpu_copy_regs(CPUArchState *env, target_pt_regs *regs)
++void init_main_thread(CPUState *cs, struct image_info *info)
+ {
+-    int i;
+-    for (i = 0; i < 16; ++i) {
+-        env->regs[i] = regs->areg[i];
++    CPUArchState *env = cpu_env(cs);
 +
-+tests_i386_system_quick = [
-+  'migration',
-+]
++    env->sregs[WINDOW_BASE] = 0;
++    env->sregs[WINDOW_START] = 1;
++    env->regs[1] = info->start_stack;
++    env->pc = info->entry;
 +
-+tests_i386_system_thorough = [
-+  'replay',
-+  'tuxrun',
-+]
-diff --git a/tests/functional/test_i386_migration.py b/tests/functional/i386/test_migration.py
-similarity index 100%
-rename from tests/functional/test_i386_migration.py
-rename to tests/functional/i386/test_migration.py
-diff --git a/tests/functional/test_i386_replay.py b/tests/functional/i386/test_replay.py
-similarity index 100%
-rename from tests/functional/test_i386_replay.py
-rename to tests/functional/i386/test_replay.py
-diff --git a/tests/functional/test_i386_tuxrun.py b/tests/functional/i386/test_tuxrun.py
-similarity index 100%
-rename from tests/functional/test_i386_tuxrun.py
-rename to tests/functional/i386/test_tuxrun.py
-diff --git a/tests/functional/meson.build b/tests/functional/meson.build
-index 8f85c13d3d1..f1fc01717c3 100644
---- a/tests/functional/meson.build
-+++ b/tests/functional/meson.build
-@@ -14,6 +14,7 @@ subdir('alpha')
- subdir('arm')
- subdir('avr')
- subdir('hppa')
-+subdir('i386')
- 
- test_mips_timeouts = {
-   'mips_malta' : 480,
-@@ -79,15 +80,6 @@ tests_generic_linuxuser = [
- tests_generic_bsduser = [
- ]
- 
--tests_i386_system_quick = [
--  'i386_migration',
--]
--
--tests_i386_system_thorough = [
--  'i386_replay',
--  'i386_tuxrun',
--]
--
- tests_loongarch64_system_thorough = [
-   'loongarch64_virt',
- ]
++    if (info_is_fdpic(info)) {
++        env->regs[4] = info->loadmap_addr;
++        env->regs[5] = info->interpreter_loadmap_addr;
++        if (info->interpreter_loadmap_addr) {
++            env->regs[6] = info->interpreter_pt_dynamic_addr;
++        } else {
++            env->regs[6] = info->pt_dynamic_addr;
++        }
+     }
+-    env->sregs[WINDOW_START] = regs->windowstart;
+-    env->pc = regs->pc;
+ }
 -- 
 2.47.2
 

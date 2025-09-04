@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DAAECCA1012
-	for <qemu-arm@archiver.kernel.org>; Thu,  4 Sep 2025 08:23:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66351CA1013
+	for <qemu-arm@archiver.kernel.org>; Thu,  4 Sep 2025 08:23:40 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uu59p-0006BP-Lo; Thu, 04 Sep 2025 04:17:26 -0400
+	id 1uu59v-0006TU-LA; Thu, 04 Sep 2025 04:17:32 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1uu558-0006bX-6c
- for qemu-arm@nongnu.org; Thu, 04 Sep 2025 04:12:37 -0400
-Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
+ id 1uu55P-0006n8-9u
+ for qemu-arm@nongnu.org; Thu, 04 Sep 2025 04:12:57 -0400
+Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1uu54a-0004Cv-NV
- for qemu-arm@nongnu.org; Thu, 04 Sep 2025 04:12:33 -0400
-Received: by mail-ej1-x62a.google.com with SMTP id
- a640c23a62f3a-b0411b83aafso113431766b.1
- for <qemu-arm@nongnu.org>; Thu, 04 Sep 2025 01:12:00 -0700 (PDT)
+ id 1uu54o-0004Jr-J3
+ for qemu-arm@nongnu.org; Thu, 04 Sep 2025 04:12:49 -0400
+Received: by mail-ed1-x530.google.com with SMTP id
+ 4fb4d7f45d1cf-61e8fe26614so1294234a12.1
+ for <qemu-arm@nongnu.org>; Thu, 04 Sep 2025 01:12:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756973519; x=1757578319; darn=nongnu.org;
+ d=linaro.org; s=google; t=1756973531; x=1757578331; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=iYGRaEygAmq0yB6dB6NYHsKe8ftCLRayZgW4YcDy0bY=;
- b=YoXmdhZRT5C+Vv/hGhX0/L05dykpNx2ALN7WuuOgbKP1LIUfooknr+zukursRWvQOn
- ABcBWOIbtJ5HAK2KNnHh3Tg127hxb/N5nU3H11eck6f6lfQ7TcXEcg9HV454AmgXmrRh
- iMFKF+oCImdUig+YX8NGQcoIiBpaidnHujaHuS2MBSTDZTXhKCp3fjAebZpPBUQ4sTFz
- 0q79rvDIcDuGHE1tU9YKNhBbBaUPtEbhM8B8Kzf1NsPnr6B3ss4DN6oZ0D8RoY7uHfzC
- rDazMbTZH0rZ+jz9Od5GqGo+DzLfCvwFPniTbVp8YuzWgXakrMLaoa1a7oBwSKUPSK/S
- AM6w==
+ bh=V5Zye4y6NxJaSczxcVcmt24avvGWMTOUTr/+SGRum6M=;
+ b=boMQ9lZMfWTFZMAR62jeP6ewTopU3I4hefUKbPZLif8K2gSWn5i1rInkeGN8n4YA+j
+ 2OGtbQWYvv/5i9t/0onqvtiKqYjhKRebVvs95HrNgWZsB0yJ4GNSbDINh06oAzP4Crfg
+ iSS0z4ioEtYGIfk369FwQ0nZtPdaIRROTeK+/tY4v/Yv8XblhE5rO5B0QSaJ6XdVTuWG
+ zxHUZf+JGkPFNypnkwLYEYKw10OvQ/5HSXEy2vAUDQTUaSGzrLpShzo601ihT5tajQdt
+ demdR2CZaUb/os6MCxphO3G8HwojF/eB8Q0OBJ9bC/oK++Z+k/1A8PqQks49BiOL8SdW
+ Msbw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756973519; x=1757578319;
+ d=1e100.net; s=20230601; t=1756973531; x=1757578331;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=iYGRaEygAmq0yB6dB6NYHsKe8ftCLRayZgW4YcDy0bY=;
- b=vSu1OeOwKOQaBus7u/kqyzFVCsAz0MCwQy0HeEQcrb0ATbbLnc1iygw94b6aKkaHI8
- XlR21HkO2b3g0TlkfTrXKdEw0ld6o2UtbDQ1z4sRYujBxFKVBO/ambEQVugrqY9UkGJs
- I8N3fJbdBixknIbfyUB9wuwaBoOQiX/EUnDBUD2yGmHd9FUoN1Nup+cvn8t0VBio8nb8
- k5jYrUL+07UT1tC/0Ndvk1ISa46K1bYOSk5IGJaW8FPMiJ1vgIXp2pCsbfdk8cwzJqR2
- auRYH9Wq9RED5Yi8ZiWFo2Mo+dA6f+BI4KkaFACRZ5TdJ8uqvA67UhbqTdIwlcLNFXWr
- GazA==
+ bh=V5Zye4y6NxJaSczxcVcmt24avvGWMTOUTr/+SGRum6M=;
+ b=JV4EL+obT3yqXyvEiGfmaT4Zq1iAY9us9H0gYalEESBNoa09ey62/Wf80rsl8Zf39y
+ /u9cg23MwPvPZqeMOAt02KAwycmYaueSBzTN1uxqADP2Nd8yrndgIxx+gL0PyZCVlPgm
+ edDEH7uxk2txkhPLV3HfOLdH8PEeXrf0S0iB6V592ohbQnKslcHzzaeQimkTEuVqWF2q
+ U4qXpFQBgqukrh9xpKsczEiWuPyhzSSTyqfLC5GnSa5yI/cbYYgeSu8FcSlh0elPOPSg
+ qHX3mWj/bdX81dq09dySm4JXvTB+esBdobWqZa7G2M80mVU9ViMow8ZLvLM41EoJkzhk
+ yM8Q==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWmbdQAFmmxprdxDk3iW67Tki8Ca+EWVch7L6kozr7PrVPqb36Eu6jBrF/WMdsgcDRfRnOD1+V6vA==@nongnu.org
-X-Gm-Message-State: AOJu0YxiaQAraiMwd+H4jVG9f6pub12tcnOZGwup8/dRQIf6WlcU8l4Z
- b/YhyLOXQYhsoEO/lmFrYFFkS99T69XHGJVlgKmUI7DuQChsUjg1S8Pok0I72K7zTnA=
-X-Gm-Gg: ASbGncvGjXaEcKrTFT02y12l828lBMztbkKMZn3472NNGLx8+TLASj97+ZSFzNWVl9J
- 9e/AAgY2R8m2R6JqnJ+u8K38lLZOrcSyWQjefbBrYuHQtsMRmTPTsQEpV9SNUuIJjSRNgon8e4K
- BGFfMMo2ZBm4MQBlsOw0IWmvOBWTeatF4L99iKTR5zDJ1VNPDma2RndJ0CaYzyEc5v0w2Uo26qL
- aTIdDymNXyZKDN6oSb43EsxCFohYlMf3Rzh+3KKimmU0VUz6958AVueMUWTUN5DYXH3uihN+Pke
- XS2dHKj1LkYajgh3IMqjdIoig89r3dYsYhsFU0t4Gh6JVowf13k97vSKXHRaBLFJUFNCXZwUYKn
- LigY+OFluL1HijQcm7lXQaZg=
-X-Google-Smtp-Source: AGHT+IEEd8ZPtE7dzpafV3rQl5ScoDbu664sPvm+oBwKTtHgwiknmKF2oJmNRBCFGa8ApKyL2E84SA==
-X-Received: by 2002:a17:907:26c4:b0:afe:a83a:87ce with SMTP id
- a640c23a62f3a-b01d8a2f955mr1857740266b.2.1756973518509; 
- Thu, 04 Sep 2025 01:11:58 -0700 (PDT)
+ AJvYcCXMp9rh19E+FDN60CXJbr4RYRMm4yju9c+wkIHyYc/rETzr+EwA1g879qOZk3jd21qCEg8RIdBCQw==@nongnu.org
+X-Gm-Message-State: AOJu0YyzMto/0HZ7sRGo2h+4YYEXyWtOAkUlzEeoT4cLjaU+VEIJPlRW
+ fDo2PF4I4GEutb9xQSP9ewYsFpt5Q/W5PGMo9Jq72AaEnNbw1i1IYDzzdX6LYgkOtUU=
+X-Gm-Gg: ASbGncuSWOGT9JYDO6xpPUSZbyVwomBn/GncBV+SUb0dklXxxWQWkrnS0nNCLc7XFW+
+ kAvorDXFXyJLLUNl7E5UCfpXNKPYhnA3CuconMdADFMYFsPzKq49Mq0Q9/7JFUpF2n5pwbogJTi
+ pJXN/vu3y9ZINhz7gLDd8k/2iefMW2OqThGaktOB3KSEtWloWLuDIRftqfJCl0/pKYh7q7eTBvk
+ I+pu75/uHS6ZJNZm2tErXq+uGfC0UZRPrnYouniOotjT8iaDbyJzGEzeuQXVMmqMsKvmzv5p0gs
+ jvi/O9o+eZiBRnvcAQ8fEewamtK84l0hF4XDtnbN75QOfAjaCOPuw+mYA7meJeDHJNbp5hItOpx
+ Bx77+frwzopXvPLnMpa7ibsY=
+X-Google-Smtp-Source: AGHT+IF1UlpN1KE60QyaFu7SPeex9JuTZpIzLFQqDWgGd66ip31ZvJUQ7H7q2GBrvomv7IKti2Khbg==
+X-Received: by 2002:a05:6402:42ce:b0:615:c5a9:4cab with SMTP id
+ 4fb4d7f45d1cf-61d26891bb7mr18730456a12.13.1756973531393; 
+ Thu, 04 Sep 2025 01:12:11 -0700 (PDT)
 Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-b0423ed35e4sm981915066b.25.2025.09.04.01.11.50
+ 4fb4d7f45d1cf-61cfc4bbbd1sm13844207a12.34.2025.09.04.01.12.02
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 04 Sep 2025 01:11:55 -0700 (PDT)
+ Thu, 04 Sep 2025 01:12:06 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 6AF12601AF;
- Thu, 04 Sep 2025 09:11:34 +0100 (BST)
+ by draig.lan (Postfix) with ESMTP id BA7BD5F93B;
+ Thu, 04 Sep 2025 09:11:38 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Reinoud Zandijk <reinoud@netbsd.org>,
@@ -130,16 +130,16 @@ Cc: Reinoud Zandijk <reinoud@netbsd.org>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
  Nicholas Piggin <npiggin@gmail.com>, John Levon <john.levon@nutanix.com>
-Subject: [PATCH v2 050/281] linux-user: Create target/elfload.c files
-Date: Thu,  4 Sep 2025 09:07:24 +0100
-Message-ID: <20250904081128.1942269-51-alex.bennee@linaro.org>
+Subject: [PATCH v2 082/281] linux-user/openrisc: Create init_main_thread
+Date: Thu,  4 Sep 2025 09:07:56 +0100
+Message-ID: <20250904081128.1942269-83-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.2
 In-Reply-To: <20250904081128.1942269-1-alex.bennee@linaro.org>
 References: <20250904081128.1942269-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62a;
- envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x62a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::530;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x530.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -164,203 +164,56 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Richard Henderson <richard.henderson@linaro.org>
 
-Prepare to split the main linux-user/elfload.c.
-Create empty files for each target, and add the common build rule.
+Merge init_thread and target_cpu_copy_regs.
+There's no point going through a target_pt_regs intermediate.
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- meson.build                      | 6 +++++-
- linux-user/aarch64/elfload.c     | 1 +
- linux-user/alpha/elfload.c       | 1 +
- linux-user/arm/elfload.c         | 1 +
- linux-user/hexagon/elfload.c     | 1 +
- linux-user/hppa/elfload.c        | 1 +
- linux-user/i386/elfload.c        | 1 +
- linux-user/loongarch64/elfload.c | 1 +
- linux-user/m68k/elfload.c        | 1 +
- linux-user/microblaze/elfload.c  | 1 +
- linux-user/mips/elfload.c        | 1 +
- linux-user/mips64/elfload.c      | 1 +
- linux-user/openrisc/elfload.c    | 1 +
- linux-user/ppc/elfload.c         | 1 +
- linux-user/riscv/elfload.c       | 1 +
- linux-user/s390x/elfload.c       | 1 +
- linux-user/sh4/elfload.c         | 1 +
- linux-user/sparc/elfload.c       | 1 +
- linux-user/x86_64/elfload.c      | 1 +
- linux-user/xtensa/elfload.c      | 1 +
- 20 files changed, 24 insertions(+), 1 deletion(-)
- create mode 100644 linux-user/aarch64/elfload.c
- create mode 100644 linux-user/alpha/elfload.c
- create mode 100644 linux-user/arm/elfload.c
- create mode 100644 linux-user/hexagon/elfload.c
- create mode 100644 linux-user/hppa/elfload.c
- create mode 100644 linux-user/i386/elfload.c
- create mode 100644 linux-user/loongarch64/elfload.c
- create mode 100644 linux-user/m68k/elfload.c
- create mode 100644 linux-user/microblaze/elfload.c
- create mode 100644 linux-user/mips/elfload.c
- create mode 100644 linux-user/mips64/elfload.c
- create mode 100644 linux-user/openrisc/elfload.c
- create mode 100644 linux-user/ppc/elfload.c
- create mode 100644 linux-user/riscv/elfload.c
- create mode 100644 linux-user/s390x/elfload.c
- create mode 100644 linux-user/sh4/elfload.c
- create mode 100644 linux-user/sparc/elfload.c
- create mode 100644 linux-user/x86_64/elfload.c
- create mode 100644 linux-user/xtensa/elfload.c
+ linux-user/elfload.c           |  7 +------
+ linux-user/openrisc/cpu_loop.c | 11 ++++-------
+ 2 files changed, 5 insertions(+), 13 deletions(-)
 
-diff --git a/meson.build b/meson.build
-index 50c774a1955..0d42de61ae6 100644
---- a/meson.build
-+++ b/meson.build
-@@ -4327,7 +4327,11 @@ foreach target : target_dirs
-     )
-     if 'CONFIG_LINUX_USER' in config_target
-       dir = base_dir / abi
--      arch_srcs += files(dir / 'signal.c', dir / 'cpu_loop.c')
-+      arch_srcs += files(
-+        dir / 'cpu_loop.c',
-+        dir / 'elfload.c',
-+        dir / 'signal.c',
-+      )
-       if config_target.has_key('TARGET_SYSTBL_ABI')
-         arch_srcs += \
-           syscall_nr_generators[abi].process(base_dir / abi / config_target['TARGET_SYSTBL'],
-diff --git a/linux-user/aarch64/elfload.c b/linux-user/aarch64/elfload.c
-new file mode 100644
-index 00000000000..73fa78ef14e
---- /dev/null
-+++ b/linux-user/aarch64/elfload.c
-@@ -0,0 +1 @@
-+/* SPDX-License-Identifier: GPL-2.0-or-later */
-diff --git a/linux-user/alpha/elfload.c b/linux-user/alpha/elfload.c
-new file mode 100644
-index 00000000000..73fa78ef14e
---- /dev/null
-+++ b/linux-user/alpha/elfload.c
-@@ -0,0 +1 @@
-+/* SPDX-License-Identifier: GPL-2.0-or-later */
-diff --git a/linux-user/arm/elfload.c b/linux-user/arm/elfload.c
-new file mode 100644
-index 00000000000..73fa78ef14e
---- /dev/null
-+++ b/linux-user/arm/elfload.c
-@@ -0,0 +1 @@
-+/* SPDX-License-Identifier: GPL-2.0-or-later */
-diff --git a/linux-user/hexagon/elfload.c b/linux-user/hexagon/elfload.c
-new file mode 100644
-index 00000000000..73fa78ef14e
---- /dev/null
-+++ b/linux-user/hexagon/elfload.c
-@@ -0,0 +1 @@
-+/* SPDX-License-Identifier: GPL-2.0-or-later */
-diff --git a/linux-user/hppa/elfload.c b/linux-user/hppa/elfload.c
-new file mode 100644
-index 00000000000..73fa78ef14e
---- /dev/null
-+++ b/linux-user/hppa/elfload.c
-@@ -0,0 +1 @@
-+/* SPDX-License-Identifier: GPL-2.0-or-later */
-diff --git a/linux-user/i386/elfload.c b/linux-user/i386/elfload.c
-new file mode 100644
-index 00000000000..73fa78ef14e
---- /dev/null
-+++ b/linux-user/i386/elfload.c
-@@ -0,0 +1 @@
-+/* SPDX-License-Identifier: GPL-2.0-or-later */
-diff --git a/linux-user/loongarch64/elfload.c b/linux-user/loongarch64/elfload.c
-new file mode 100644
-index 00000000000..73fa78ef14e
---- /dev/null
-+++ b/linux-user/loongarch64/elfload.c
-@@ -0,0 +1 @@
-+/* SPDX-License-Identifier: GPL-2.0-or-later */
-diff --git a/linux-user/m68k/elfload.c b/linux-user/m68k/elfload.c
-new file mode 100644
-index 00000000000..73fa78ef14e
---- /dev/null
-+++ b/linux-user/m68k/elfload.c
-@@ -0,0 +1 @@
-+/* SPDX-License-Identifier: GPL-2.0-or-later */
-diff --git a/linux-user/microblaze/elfload.c b/linux-user/microblaze/elfload.c
-new file mode 100644
-index 00000000000..73fa78ef14e
---- /dev/null
-+++ b/linux-user/microblaze/elfload.c
-@@ -0,0 +1 @@
-+/* SPDX-License-Identifier: GPL-2.0-or-later */
-diff --git a/linux-user/mips/elfload.c b/linux-user/mips/elfload.c
-new file mode 100644
-index 00000000000..73fa78ef14e
---- /dev/null
-+++ b/linux-user/mips/elfload.c
-@@ -0,0 +1 @@
-+/* SPDX-License-Identifier: GPL-2.0-or-later */
-diff --git a/linux-user/mips64/elfload.c b/linux-user/mips64/elfload.c
-new file mode 100644
-index 00000000000..b719555e659
---- /dev/null
-+++ b/linux-user/mips64/elfload.c
-@@ -0,0 +1 @@
-+#include "../mips/elfload.c"
-diff --git a/linux-user/openrisc/elfload.c b/linux-user/openrisc/elfload.c
-new file mode 100644
-index 00000000000..73fa78ef14e
---- /dev/null
-+++ b/linux-user/openrisc/elfload.c
-@@ -0,0 +1 @@
-+/* SPDX-License-Identifier: GPL-2.0-or-later */
-diff --git a/linux-user/ppc/elfload.c b/linux-user/ppc/elfload.c
-new file mode 100644
-index 00000000000..73fa78ef14e
---- /dev/null
-+++ b/linux-user/ppc/elfload.c
-@@ -0,0 +1 @@
-+/* SPDX-License-Identifier: GPL-2.0-or-later */
-diff --git a/linux-user/riscv/elfload.c b/linux-user/riscv/elfload.c
-new file mode 100644
-index 00000000000..73fa78ef14e
---- /dev/null
-+++ b/linux-user/riscv/elfload.c
-@@ -0,0 +1 @@
-+/* SPDX-License-Identifier: GPL-2.0-or-later */
-diff --git a/linux-user/s390x/elfload.c b/linux-user/s390x/elfload.c
-new file mode 100644
-index 00000000000..73fa78ef14e
---- /dev/null
-+++ b/linux-user/s390x/elfload.c
-@@ -0,0 +1 @@
-+/* SPDX-License-Identifier: GPL-2.0-or-later */
-diff --git a/linux-user/sh4/elfload.c b/linux-user/sh4/elfload.c
-new file mode 100644
-index 00000000000..73fa78ef14e
---- /dev/null
-+++ b/linux-user/sh4/elfload.c
-@@ -0,0 +1 @@
-+/* SPDX-License-Identifier: GPL-2.0-or-later */
-diff --git a/linux-user/sparc/elfload.c b/linux-user/sparc/elfload.c
-new file mode 100644
-index 00000000000..73fa78ef14e
---- /dev/null
-+++ b/linux-user/sparc/elfload.c
-@@ -0,0 +1 @@
-+/* SPDX-License-Identifier: GPL-2.0-or-later */
-diff --git a/linux-user/x86_64/elfload.c b/linux-user/x86_64/elfload.c
-new file mode 100644
-index 00000000000..73fa78ef14e
---- /dev/null
-+++ b/linux-user/x86_64/elfload.c
-@@ -0,0 +1 @@
-+/* SPDX-License-Identifier: GPL-2.0-or-later */
-diff --git a/linux-user/xtensa/elfload.c b/linux-user/xtensa/elfload.c
-new file mode 100644
-index 00000000000..73fa78ef14e
---- /dev/null
-+++ b/linux-user/xtensa/elfload.c
-@@ -0,0 +1 @@
-+/* SPDX-License-Identifier: GPL-2.0-or-later */
+diff --git a/linux-user/elfload.c b/linux-user/elfload.c
+index 3f9ec493595..03c95397744 100644
+--- a/linux-user/elfload.c
++++ b/linux-user/elfload.c
+@@ -673,12 +673,7 @@ static void elf_core_copy_regs(target_elf_gregset_t *regs, const CPUMBState *env
+ #define ELF_CLASS ELFCLASS32
+ #define ELF_DATA  ELFDATA2MSB
+ 
+-static inline void init_thread(struct target_pt_regs *regs,
+-                               struct image_info *infop)
+-{
+-    regs->pc = infop->entry;
+-    regs->gpr[1] = infop->start_stack;
+-}
++#define HAVE_INIT_MAIN_THREAD
+ 
+ #define USE_ELF_CORE_DUMP
+ #define ELF_EXEC_PAGESIZE 8192
+diff --git a/linux-user/openrisc/cpu_loop.c b/linux-user/openrisc/cpu_loop.c
+index 306b4f8eb43..8c72347a99a 100644
+--- a/linux-user/openrisc/cpu_loop.c
++++ b/linux-user/openrisc/cpu_loop.c
+@@ -83,13 +83,10 @@ void cpu_loop(CPUOpenRISCState *env)
+     }
+ }
+ 
+-void target_cpu_copy_regs(CPUArchState *env, target_pt_regs *regs)
++void init_main_thread(CPUState *cs, struct image_info *info)
+ {
+-    int i;
++    CPUArchState *env = cpu_env(cs);
+ 
+-    for (i = 0; i < 32; i++) {
+-        cpu_set_gpr(env, i, regs->gpr[i]);
+-    }
+-    env->pc = regs->pc;
+-    cpu_set_sr(env, regs->sr);
++    env->pc = info->entry;
++    cpu_set_gpr(env, 1, info->start_stack);
+ }
 -- 
 2.47.2
 

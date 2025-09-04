@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55A47CA1013
-	for <qemu-arm@archiver.kernel.org>; Thu,  4 Sep 2025 08:16:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 963D7CA1012
+	for <qemu-arm@archiver.kernel.org>; Thu,  4 Sep 2025 08:16:23 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uu54R-000657-Bn; Thu, 04 Sep 2025 04:11:51 -0400
+	id 1uu54w-0006Us-MZ; Thu, 04 Sep 2025 04:12:22 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1uu54P-00062T-1P
- for qemu-arm@nongnu.org; Thu, 04 Sep 2025 04:11:49 -0400
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
+ id 1uu54f-0006Mr-IA
+ for qemu-arm@nongnu.org; Thu, 04 Sep 2025 04:12:05 -0400
+Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1uu54E-0003yH-K8
- for qemu-arm@nongnu.org; Thu, 04 Sep 2025 04:11:48 -0400
-Received: by mail-ed1-x52c.google.com with SMTP id
- 4fb4d7f45d1cf-61cebce2f78so1461217a12.1
- for <qemu-arm@nongnu.org>; Thu, 04 Sep 2025 01:11:37 -0700 (PDT)
+ id 1uu54K-00042o-NI
+ for qemu-arm@nongnu.org; Thu, 04 Sep 2025 04:12:04 -0400
+Received: by mail-ej1-x632.google.com with SMTP id
+ a640c23a62f3a-b02c719a117so132845366b.1
+ for <qemu-arm@nongnu.org>; Thu, 04 Sep 2025 01:11:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756973496; x=1757578296; darn=nongnu.org;
+ d=linaro.org; s=google; t=1756973503; x=1757578303; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Wv6wFcI7G6DdUK88SJsbLfMk3oLK1TTP1R3ujLyoIqI=;
- b=xND+ov8P5ZGHcV+/GUR6bYVVW/kDrnqx9OdTmD2lEtbKBiz4kdH43aFg5jj1zD7BXY
- YvV2pTdq4ND9bLAUUTo0YTcojSdb5doPjPpsQA3SCQx9VBASE7zw5Yji0DhWXJ4TYLTB
- 4e0mfeuiDaUIPuzygT/7L284IcYAuiACsrDoIpoQcRBE6oGncIGkveTbBEPIuuMEqOoW
- s7YCKNTVVF3q60ECjtsa9O3lL6u2p+wa3TUFytmk53K/5d1O0FiS2dCw14yRD0SNy719
- 0nxjtUwrct++lR7VP+2OYkbUk6pH7z9wzAZvITB3A+GYXSlbuJgg2Laizv3yz0YvF7Lr
- HhLw==
+ bh=KFEhhh8NSACPPy03lAUeW1WvXOIqiNIP9Gmw/5CKVpI=;
+ b=pzzLfY7qD0RusmvLWQi6qIhUK5qTZsgYjX90c6w9sYL/esVsGSUkzXzx7KaxQU7BtW
+ K5oeSQT/cL6nFA0fhgbaWuVZ2no3RwcrVuqTRiDe+bJ4c2Q6D0z/4xTJaQVpL4fchrFf
+ EqBlig8boICIE7nUoodDs5pS2WwudMzre2Yo6DPiyn10nhC62GflOvV1BH5klfXwhwn5
+ 6liX4HuWMjmWIEqVfRS9Hd7wi10Y4MTCM1KCVNvD0ZY7ROPXytjYm/IY+awMEgacwZ3J
+ gy1NycRCgUu6p01kSm0hhtGLH0xxK8luqkAWuAsiABpabKMooNOzBlYSbhcv32O1vKb3
+ RwUQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756973496; x=1757578296;
+ d=1e100.net; s=20230601; t=1756973503; x=1757578303;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=Wv6wFcI7G6DdUK88SJsbLfMk3oLK1TTP1R3ujLyoIqI=;
- b=vKXa3/TL1LtY0/rvkMfVJoiSojLceljUA32yKIQAL/AuhEgZ0nK7zeG9k7KYIm6ZVx
- z4OdQtGpioNPR6xVgY8Ilcvr5Y2QZZtKjFRfJmpj4fiWD/6SV9ncgljmNF67tdlijjI+
- GHEZBqa/ZHwXo8vdEf77FhfX0zWpPKrhPNQyMyoRVLrmvc6dfYPFtin2OnhAhmMFlH8A
- 6SKZBz3hqKzPHhSg/9pY3N+FmUzUKzp/9JR2Yw7XFADUDFwKcn77d6IY1ceDYfswtkEL
- i5Y8vmWBf4C9UURN0DOO8IpjbYVJVX++HGkSy0o2LZCyoSvX3O7TjDB64PwWkQBl/xrD
- yuhw==
+ bh=KFEhhh8NSACPPy03lAUeW1WvXOIqiNIP9Gmw/5CKVpI=;
+ b=F0XKntidg+UXjR6SXbEPZqbthaBisfdXERktIFUpUQWeCvQTfVbRJbXjB4x2m4c4mE
+ oLTRq3744rzhtCMlxTm6fsnMqkhEU1MLxD11F9W1l9Exh4up88yuCIXcwPkkq6rXd2UN
+ ux+aTe+38XZWW0p2it0oYB3ePGrKukZ2XILkxWdPdROQbGzxhgYR4qmI0Vaw6G7kfPgr
+ yhYkHBazAcQsZFI0Y+J+k6d5nkBVpfg6TMJ2On/RXs1rwBntjOUV0KaVGn2x8bEWYZ1C
+ 33tJnAQjLZVZpkOKbuPL6b+1pOlQLpjehiIp9HK0c+SEMTtkmk2pgZrrhP/xYPgdJBp5
+ 413A==
 X-Forwarded-Encrypted: i=1;
- AJvYcCV9E5TyTO0z9EYCTtJ8NAGptjLbBaT22kBW2O2JYgrX8OCNBD15XJMhLa0ukmCHCYSTUDmQfUTczQ==@nongnu.org
-X-Gm-Message-State: AOJu0YwCjzF0JVziXHVtmZpdbuJOfRZyZ8se7blaodSSpat5NhUFiZTN
- hUkYRCXYBrr54c3FxqVxKQIuFhSFOKG9tM9shUB18w+MpeXrAg6BmnVCC7sH8jH2ODw=
-X-Gm-Gg: ASbGncswN9me347/+vnIErQ8ckXTcjxDqOExeYF55Hgg/cD6SyaXogpFsUEuLuyrDXg
- n7YqzI1gASeAYjT2gu94xW9fPJCmbSqR1N4UnGDZHGrXK/2M9G8n1vLyYfBx5VUsm0mWqjVKpVt
- exdq5lq+vXSUooGQwmywLBsY76GgIml76XQeTd0kGmqnhTatzUVwCG9I1jLKbzqSzgG0QaeC7WH
- OmL0kOo3X7NBNSI7Rg/fzpVAsz9k/c33wxTjrk1NwWL+8Szef0fNVGVswpkpdVdPw4w/elQrWEZ
- UYhVIzLUgFcyFRHLzS9yUX+bI21GaN03cJh9mxMv5tYvcN6D163rSgGFuyw2cT/qxh6inh34TCN
- L4Bz1BV0iwWZ2bZRCT5tYVQ8=
-X-Google-Smtp-Source: AGHT+IHJ/our/RjAw6KRMQeySnigCt3IHhrZNOosxVGUH7XLuqKl1vyepSwQHOqbRxx8a1XCA36zjw==
-X-Received: by 2002:a05:6402:52cb:b0:61c:ce93:8f7b with SMTP id
- 4fb4d7f45d1cf-61d269a73a7mr14698745a12.12.1756973496388; 
- Thu, 04 Sep 2025 01:11:36 -0700 (PDT)
+ AJvYcCVKAMC+Ao6NHTyZflIJBleZsi84lPIhMPq4J1Kp7OBpIVnoRPrpZoWosvEekLlCBMalh1lSf+VTdg==@nongnu.org
+X-Gm-Message-State: AOJu0Yyo6rhGERxJsOJWyGR1yMxsemlzR92K3ZK5Ir0RgQhUXZoQHD9B
+ zGRXnZ575y4gtKWF8YQxt91RoxrpDBZHVn1T+uYTRVP4EUe8atXlEJtSJ6WpU2p9Xak=
+X-Gm-Gg: ASbGncs316g0DEPBw/LdbXjzSbdgJ3FWO+buwS2WslRk/FDHoyolHw7GMmE1mHawd1G
+ gxMmWOjTepADv/joymEIRG1UILqH/WKwhMml/SdWz2EXJzES9x81/kv59YW4xYXWcKG5fGrdA0C
+ U1S6mLWfO+1ZhZsIQDwVSO3AxPo34bvoHs8IedV9vU4qcqFR9RlIlt9U9JBPvJq+7cFAygVoeHD
+ xaAKhvUjTlpvmEznLb3pziLL1pAyzFBc/WO5WNPhWZxOXr2YjBtDQAf9eLGqVpMKpO0n6vsSoZg
+ Y+ij4Z2rc2GfutNLuybm2j5QFYSsVvxanTqNqSKEGSvbxTFxTVO8nc01hVHM+2wxcmxtyzD3j/g
+ qYn6AuF0gxKj9hb9pA9gAB5g=
+X-Google-Smtp-Source: AGHT+IFE0TDiiGTd8vmAEWW5dDvT+OR3e1COfQ2tQfikm6TE+pQxjurI8xLG/N8RfJVRMANqaH90OQ==
+X-Received: by 2002:a17:907:3f12:b0:afe:ea46:e808 with SMTP id
+ a640c23a62f3a-b01d9793846mr1557723766b.47.1756973502739; 
+ Thu, 04 Sep 2025 01:11:42 -0700 (PDT)
 Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-61eaf588377sm7032226a12.15.2025.09.04.01.11.31
+ a640c23a62f3a-b041d7107d9sm1087840166b.4.2025.09.04.01.11.37
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 04 Sep 2025 01:11:32 -0700 (PDT)
+ Thu, 04 Sep 2025 01:11:37 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 9A3B85F92F;
- Thu, 04 Sep 2025 09:11:28 +0100 (BST)
+ by draig.lan (Postfix) with ESMTP id F0D1B5FA1B;
+ Thu, 04 Sep 2025 09:11:29 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Reinoud Zandijk <reinoud@netbsd.org>,
@@ -130,25 +130,25 @@ Cc: Reinoud Zandijk <reinoud@netbsd.org>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
  Nicholas Piggin <npiggin@gmail.com>, John Levon <john.levon@nutanix.com>,
- qemu-stable@nongnu.org
-Subject: [PATCH v2 004/281] python: mkvenv: fix messages printed by mkvenv
-Date: Thu,  4 Sep 2025 09:06:38 +0100
-Message-ID: <20250904081128.1942269-5-alex.bennee@linaro.org>
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Subject: [PATCH v2 015/281] tests/functional/meson.build: Split timeout
+ settings by target
+Date: Thu,  4 Sep 2025 09:06:49 +0100
+Message-ID: <20250904081128.1942269-16-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.2
 In-Reply-To: <20250904081128.1942269-1-alex.bennee@linaro.org>
 References: <20250904081128.1942269-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::52c;
- envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x52c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::632;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x632.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -164,47 +164,124 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Paolo Bonzini <pbonzini@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
 
-The new Matcher class does not have a __str__ implementation, and therefore
-it prints the debugging representation of the internal object:
+We are going to move these settings into target-specific subfolders.
+As a first step, split the big test_timeouts array up into individual
+ones.
 
-  $ ../configure --enable-rust && make qemu-system-arm --enable-download
-  python determined to be '/usr/bin/python3'
-  python version: Python 3.13.6
-  mkvenv: Creating non-isolated virtual environment at 'pyvenv'
-  mkvenv: checking for LegacyMatcher('meson>=1.5.0')
-  mkvenv: checking for LegacyMatcher('pycotap>=1.1.0')
-
-Add the method to print the nicer
-
-  mkvenv: checking for meson>=1.5.0
-  mkvenv: checking for pycotap>=1.1.0
-
-Cc: qemu-stable@nongnu.org
-Cc: John Snow <jsnow@redhat.com>
-Reviewed-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+Message-ID: <20250819112403.432587-4-thuth@redhat.com>
 ---
- python/scripts/mkvenv.py | 4 ++++
- 1 file changed, 4 insertions(+)
+ tests/functional/meson.build | 50 +++++++++++++++++++++++++++++++-----
+ 1 file changed, 44 insertions(+), 6 deletions(-)
 
-diff --git a/python/scripts/mkvenv.py b/python/scripts/mkvenv.py
-index f102527c4de..9aed266df1b 100644
---- a/python/scripts/mkvenv.py
-+++ b/python/scripts/mkvenv.py
-@@ -184,6 +184,10 @@ def match(self, version_str: str) -> bool:
-             )
-         )
+diff --git a/tests/functional/meson.build b/tests/functional/meson.build
+index 38ae0d6cd3b..356aad12dee 100644
+--- a/tests/functional/meson.build
++++ b/tests/functional/meson.build
+@@ -10,7 +10,7 @@ if get_option('tcg_interpreter')
+ endif
  
-+    def __str__(self) -> str:
-+        """String representation delegated to the backend."""
-+        return str(self._m)
+ # Timeouts for individual tests that can be slow e.g. with debugging enabled
+-test_timeouts = {
++test_aarch64_timeouts = {
+   'aarch64_aspeed_ast2700' : 600,
+   'aarch64_aspeed_ast2700fc' : 600,
+   'aarch64_device_passthrough' : 720,
+@@ -25,7 +25,9 @@ test_timeouts = {
+   'aarch64_tuxrun' : 240,
+   'aarch64_virt' : 360,
+   'aarch64_virt_gpu' : 480,
+-  'acpi_bits' : 420,
++}
 +
-     def __repr__(self) -> str:
-         """Stable debug representation delegated to the backend."""
-         return repr(self._m)
++test_arm_timeouts = {
+   'arm_aspeed_palmetto' : 120,
+   'arm_aspeed_romulus' : 120,
+   'arm_aspeed_witherspoon' : 120,
+@@ -44,24 +46,55 @@ test_timeouts = {
+   'arm_replay' : 240,
+   'arm_tuxrun' : 240,
+   'arm_sx1' : 360,
+-  'intel_iommu': 300,
++}
++
++test_mips_timeouts = {
+   'mips_malta' : 480,
++}
++
++test_mipsel_timeouts = {
+   'mipsel_malta' : 420,
+   'mipsel_replay' : 480,
++}
++
++test_mips64_timeouts = {
+   'mips64_malta' : 240,
++}
++
++test_mips64el_timeouts = {
+   'mips64el_malta' : 420,
+   'mips64el_replay' : 180,
+-  'netdev_ethtool' : 180,
++}
++
++test_ppc_timeouts = {
+   'ppc_40p' : 240,
++}
++
++test_ppc64_timeouts = {
+   'ppc64_hv' : 1000,
+   'ppc64_powernv' : 480,
+   'ppc64_pseries' : 480,
+   'ppc64_replay' : 210,
+   'ppc64_tuxrun' : 420,
+   'ppc64_mac99' : 120,
++}
++
++test_riscv64_timeouts = {
+   'riscv64_tuxrun' : 120,
++}
++
++test_s390x_timeouts = {
+   's390x_ccw_virtio' : 420,
++}
++
++test_sh4_timeouts = {
+   'sh4_tuxrun' : 240,
++}
++
++test_x86_64_timeouts = {
++  'acpi_bits' : 420,
++  'intel_iommu': 300,
++  'netdev_ethtool' : 180,
+   'virtio_balloon': 120,
+   'x86_64_kvm_xen' : 180,
+   'x86_64_replay' : 480,
+@@ -404,6 +437,11 @@ foreach speed : ['quick', 'thorough']
+                                build_by_default: false,
+                                env: test_precache_env)
+       precache_all += precache
++      if is_variable('test_' + target_base + '_timeouts')
++        time_out = get_variable('test_' + target_base + '_timeouts').get(test, 90)
++      else
++        time_out = 90
++      endif
+ 
+       # Ideally we would add 'precache' to 'depends' here, such that
+       # 'build_by_default: false' lets the pre-caching automatically
+@@ -419,8 +457,8 @@ foreach speed : ['quick', 'thorough']
+            env: test_env,
+            args: [testpath],
+            protocol: 'tap',
+-           timeout: test_timeouts.get(test, 90),
+-           priority: test_timeouts.get(test, 90),
++           timeout: time_out,
++           priority: time_out,
+            suite: suites)
+     endforeach
+   endforeach
 -- 
 2.47.2
 

@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF76DCA1013
-	for <qemu-arm@archiver.kernel.org>; Thu,  4 Sep 2025 08:18:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C1E5CA1013
+	for <qemu-arm@archiver.kernel.org>; Thu,  4 Sep 2025 08:19:25 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uu58M-00029n-AW; Thu, 04 Sep 2025 04:15:54 -0400
+	id 1uu59z-0006lF-FM; Thu, 04 Sep 2025 04:17:36 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1uu54y-0006Vh-7n
- for qemu-arm@nongnu.org; Thu, 04 Sep 2025 04:12:25 -0400
-Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
+ id 1uu55J-0006k4-Lq
+ for qemu-arm@nongnu.org; Thu, 04 Sep 2025 04:12:49 -0400
+Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1uu54U-00049K-EP
- for qemu-arm@nongnu.org; Thu, 04 Sep 2025 04:12:23 -0400
-Received: by mail-ed1-x532.google.com with SMTP id
- 4fb4d7f45d1cf-61cd3748c6dso1329308a12.3
- for <qemu-arm@nongnu.org>; Thu, 04 Sep 2025 01:11:53 -0700 (PDT)
+ id 1uu54e-0004FB-7I
+ for qemu-arm@nongnu.org; Thu, 04 Sep 2025 04:12:44 -0400
+Received: by mail-ej1-x631.google.com with SMTP id
+ a640c23a62f3a-b02c719a117so132895466b.1
+ for <qemu-arm@nongnu.org>; Thu, 04 Sep 2025 01:12:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756973513; x=1757578313; darn=nongnu.org;
+ d=linaro.org; s=google; t=1756973523; x=1757578323; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=eSaSrwUYSOayX0ze9g9+lMGmnZ0XX0Src5mJ41Ycn+k=;
- b=Cij7syhVINC0cdmTmh6RymjKcAFltCOXaLZO4pZYDK/AWUVxAy9MJ/3KkvuTnfkVEr
- CONzhvdaQJbk9o5XiveqXS1nnrr1ZfdUx/1XE0PISBmC0g0REigZCzccdWZBD6AsqXGr
- gU6JffLtcF8UsWRG1WVvu0xbPsCEiUJHhc1GnuMQAGyFaZ6jXxt8FqtXkzgiK1a71ZZD
- rO1DsjnkKRwqAM/yj3T+FmMBiV7W2t4rZprQLTmMjhdLAVRlk9wHo7+EoLec9m8ayqb0
- 2myYLNGoWhs69r3ZZRkxZ8flnX0X+DN6LkbGQBpDdmzSZCTrOTmWJu3JkPo5RF3ZU23r
- NaFQ==
+ bh=rXt3diCSsuzNh/VyOnThLYez8MNmwqahq33wrVvYaCc=;
+ b=PjRmmSoOPJ7lUOCK8iz9jbK4VS/cblILH0GL9ZylrPH3vF9yNzFqB7B8BA2tVj7Qvl
+ P7xbHEIXiLVNo0gIWLOobgIJeaOpVnSUL8IVqghZr49UTvweI778realm9mOKSdA3d5k
+ fZ/Z9snge1GvqlsNigUsL+MLNtyfz6WqqAX/8ykRjUmamfAlL4BtB7m8VWnZzY7MVZby
+ Wfn9Q1ZX7socdOfcvTuwsfwiyl/7/xXsi0KhOpskWSqeqlYEIoPctX8YICZ8zJJ9Flnu
+ mDgoS8fPmUV8gMtLa2UEmm+LrfcNulNahGsCPYvW4B3xwa/8xHaQhzw0rVxFkF08xAJa
+ hmAw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756973513; x=1757578313;
+ d=1e100.net; s=20230601; t=1756973523; x=1757578323;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=eSaSrwUYSOayX0ze9g9+lMGmnZ0XX0Src5mJ41Ycn+k=;
- b=D1zBCbK/r7iUPKQttFena3BjBDXuy6waV2N4NFmJVMYoO5NdK5cntLxo8GkVbRApoY
- 753425vJKqysHalfhdClpoAzZX53NneTygFah/XEKH7FgxiLuSCEELRozGjAEIXVOrSH
- va5wz4DU+Lv8ytTASw09xF3kUGhLIqAa4JzMdJaIX5dFqiPWLAeelP5dNiHCTfV6uMRo
- mY3tNx656/r9JT7W7bwjbRknC1QFoVZzhHdLVtkz8YFy0lvA/yIzNHmudiBMwI4F4mxa
- JSQgAZ8Rt/DJG9DYDbmBg2cKGtHsX7D2SFGVjoGqICwGNJWvBKBY+Ve6QQ4ws1PQW46n
- a7vw==
+ bh=rXt3diCSsuzNh/VyOnThLYez8MNmwqahq33wrVvYaCc=;
+ b=ZtGh9lokaMVPyTsETOeJ0uVYZ3y5dlLIOsW2xQoemO9PIt5DwDiL+tnOKbHidCNdAE
+ h9Bqkmo/9sxLIJ4wmglnpOw914TlcU2zKzEyYaSLAO+JnFcd0tYEtrg4vNIAyVVLBOuO
+ 7nFQf+lX4iLMAHYXIqSAIdR80Glm63UbYT67s0hbimmCcSNqBs6cSedMg6hHG22l2Iei
+ GyDWTVjAgYq9pSco4Cg/bsN7QPj+kUkzHo7n5M4dQ54YKAPw7uuj6wPyzS5H4KlnCNJn
+ hLleePHwfSoyliYZMahr3evBBlcUgZnAm0wcCNgm40r7Lq3LtEM0QhYfYA0FDrqrCzbO
+ GPlw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWAgcYI7yN/JLf7n2+YpmsbroepDsppak8pqn5J2tdWKpCuP2KtjoA0OvHfB9r0nzjPgnz7q5tLQA==@nongnu.org
-X-Gm-Message-State: AOJu0YwoYzv2yRdNscQBGcgqfKY6hjyfvcYw7c+OtadhK7uIIh8cAMMp
- JfE3BHQTg/WTNDy4n1NGSw1gjo3vkoXDbf0T8hz59RS2Ui5dEwxkJaoQ33InvYm+6Zs=
-X-Gm-Gg: ASbGncvxhvZzezmrs+X1SH6/mnY7a8KihtVCTNGACu0bZlSwQ6D2FipgcNQg4HsCXTM
- Hsh2s9iNc4d+3I045arX+vNGQgoY2b2WtDaaxt4C6WgVt9z2EbLtPZByTlL/nQ/fNZu92ASptrm
- UJVROuhzoRs0Syt6iGBYtHEITPsrihKtP+maTb5e2i6XPymRUc3Xsbpijb0rvHAP0acTCXWo7sj
- ONG7Es75WSbr2rTfbFA5bDRO3F5jyybWrwDOvVCu6P/vbCzS2OLr4mp0EfCB+Odg2Ogz+RMo7mi
- tdYkYC0Xsb515TTCKVLRCLuFDF8HyqgKbIZ0sAhPxSi+vsNHYTcDOZizUaWDnvNGVtsAVNSj10x
- Y9pK1yjQ4xF+no40aiGPQ2ok=
-X-Google-Smtp-Source: AGHT+IGLuLEHDMdceQbPHHpmcGy/yiy//i65J2KOm3EjqZSFkYkVq5LlhG4GDCyntij5BRe41onYZw==
-X-Received: by 2002:a05:6402:278d:b0:61c:8c63:a91e with SMTP id
- 4fb4d7f45d1cf-61d26d80542mr15376751a12.25.1756973512260; 
- Thu, 04 Sep 2025 01:11:52 -0700 (PDT)
+ AJvYcCUhqKpPM/Z8KSVx2rChObS0T4KTvzGfQf3AL5QdEfe2zdw0bDMilzBK3PtWPR9OpcP2su3fx4Lwmg==@nongnu.org
+X-Gm-Message-State: AOJu0YzumZrI/5Lp1epnSIdrTXFdEW9f8WeQ5Z6Ubc/tJxBuuPC6PLid
+ wACVXX0vkf75F8q2AxbHtaMgg+OWIOdXERA72vzW8G7nheAC3nkCdX6KplyuVsQXb6I=
+X-Gm-Gg: ASbGncvJFKsiJ9Bue6NEhg5zM3+KJVYZDvqfRPiR4DYtYcBw6znBzMki3QiHWMEyEnF
+ V1dHGHTknz/urTTSjbe6LhcE8QBsxCheB4mDhc4XEBdeqtsyoNFj/7udYO6o1HXU8mCF/9fjvDG
+ c+r/mvgl+vFJdMW5wpTSf7KzIphxAvW3wYeq4jISqZmQC1ofuhpSfrLmw1vQy09IdXrAtr4KbnG
+ pGEWXnBs2VuJ6Qw7tNFI1ZS3TJrUu7XgzBkYnv6m+6H7FnpemN7pXFkKcTA50CjBrVyVB2g0cxJ
+ XdkMdxGSaHT8A9Q07j/t6R+vqM0bLtp8sjlI4LvIeqEwI69+aNnZTUMXyVs9Tp+wjxuT21GIccO
+ Asgc46jdjleguMjX1AslOnuyxa4nP3tS3iQ==
+X-Google-Smtp-Source: AGHT+IEHOM1sp3Ru1NOMvYbJ51bjR67YJYy53JNtyxJ5vTGZgMdkiJNntJ7L7ebKp9Qdh6X5/23G7Q==
+X-Received: by 2002:a17:907:7205:b0:b04:250d:ee7 with SMTP id
+ a640c23a62f3a-b04250d448amr1532567166b.31.1756973514479; 
+ Thu, 04 Sep 2025 01:11:54 -0700 (PDT)
 Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-61cfc4e5229sm13693433a12.39.2025.09.04.01.11.44
+ a640c23a62f3a-b04190700a4sm1095058566b.63.2025.09.04.01.11.46
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
  Thu, 04 Sep 2025 01:11:49 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 9F5C660151;
- Thu, 04 Sep 2025 09:11:32 +0100 (BST)
+ by draig.lan (Postfix) with ESMTP id 324556017C;
+ Thu, 04 Sep 2025 09:11:33 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Reinoud Zandijk <reinoud@netbsd.org>,
@@ -129,26 +129,25 @@ Cc: Reinoud Zandijk <reinoud@netbsd.org>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Nicholas Piggin <npiggin@gmail.com>, John Levon <john.levon@nutanix.com>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v2 036/281] tests/functional: Move the generic tests to a
- subfolder
-Date: Thu,  4 Sep 2025 09:07:10 +0100
-Message-ID: <20250904081128.1942269-37-alex.bennee@linaro.org>
+ Nicholas Piggin <npiggin@gmail.com>, John Levon <john.levon@nutanix.com>
+Subject: [PATCH v2 041/281] kvm/kvm-all: make kvm_park/unpark_vcpu local to
+ kvm-all.c
+Date: Thu,  4 Sep 2025 09:07:15 +0100
+Message-ID: <20250904081128.1942269-42-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.2
 In-Reply-To: <20250904081128.1942269-1-alex.bennee@linaro.org>
 References: <20250904081128.1942269-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::532;
- envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x532.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::631;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x631.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -164,154 +163,71 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Thomas Huth <thuth@redhat.com>
+From: Ani Sinha <anisinha@redhat.com>
 
-This also removes the line for using tests from the main folder
-since we do not have any tests left here. And while we're at it,
-also mark the vnc test as generic now since it is not specific to x86.
+kvm_park_vcpu() and kvm_unpark_vcpu() is only used in kvm-all.c. Declare it
+static, remove it from common header file and make it local to kvm-all.c
 
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Signed-off-by: Thomas Huth <thuth@redhat.com>
-Message-ID: <20250819112403.432587-25-thuth@redhat.com>
+Signed-off-by: Ani Sinha <anisinha@redhat.com>
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
+Link: https://lore.kernel.org/r/20250815065445.8978-1-anisinha@redhat.com
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
 ---
- MAINTAINERS                                     |  8 ++++----
- tests/functional/generic/meson.build            | 14 ++++++++++++++
- .../{ => generic}/test_empty_cpu_model.py       |  0
- .../{ => generic}/test_info_usernet.py          |  0
- tests/functional/{ => generic}/test_version.py  |  0
- tests/functional/{ => generic}/test_vnc.py      |  0
- tests/functional/meson.build                    | 17 ++---------------
- tests/functional/x86_64/meson.build             |  1 -
- 8 files changed, 20 insertions(+), 20 deletions(-)
- create mode 100644 tests/functional/generic/meson.build
- rename tests/functional/{ => generic}/test_empty_cpu_model.py (100%)
- rename tests/functional/{ => generic}/test_info_usernet.py (100%)
- rename tests/functional/{ => generic}/test_version.py (100%)
- rename tests/functional/{ => generic}/test_vnc.py (100%)
+ include/system/kvm.h | 17 -----------------
+ accel/kvm/kvm-all.c  |  4 ++--
+ 2 files changed, 2 insertions(+), 19 deletions(-)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 792d2d6f2de..625fe67b41d 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -1976,7 +1976,7 @@ F: include/hw/core/cpu.h
- F: include/hw/cpu/cluster.h
- F: include/system/numa.h
- F: tests/functional/x86_64/test_cpu_queries.py
--F: tests/functional/test_empty_cpu_model.py
-+F: tests/functional/generic/test_empty_cpu_model.py
- F: tests/unit/test-smp-parse.c
- T: git https://gitlab.com/ehabkost/qemu.git machine-next
+diff --git a/include/system/kvm.h b/include/system/kvm.h
+index 3c7d3147366..4fc09e38910 100644
+--- a/include/system/kvm.h
++++ b/include/system/kvm.h
+@@ -317,23 +317,6 @@ int kvm_create_device(KVMState *s, uint64_t type, bool test);
+  */
+ bool kvm_device_supported(int vmfd, uint64_t type);
  
-@@ -2197,7 +2197,7 @@ S: Odd Fixes
- F: hw/net/
- F: include/hw/net/
- F: tests/qtest/virtio-net-test.c
--F: tests/functional/test_info_usernet.py
-+F: tests/functional/generic/test_info_usernet.py
- F: docs/system/virtio-net-failover.rst
- T: git https://github.com/jasowang/qemu.git net
- 
-@@ -3134,7 +3134,7 @@ S: Supported
- F: include/qemu/option.h
- F: tests/unit/test-keyval.c
- F: tests/unit/test-qemu-opts.c
--F: tests/functional/test_version.py
-+F: tests/functional/generic/test_version.py
- F: util/keyval.c
- F: util/qemu-option.c
- 
-@@ -3252,7 +3252,7 @@ F: include/ui/
- F: qapi/ui.json
- F: util/drm.c
- F: docs/devel/ui.rst
--F: tests/functional/test_vnc.py
-+F: tests/functional/generic/test_vnc.py
- 
- Cocoa graphics
- M: Peter Maydell <peter.maydell@linaro.org>
-diff --git a/tests/functional/generic/meson.build b/tests/functional/generic/meson.build
-new file mode 100644
-index 00000000000..013cc96fbf8
---- /dev/null
-+++ b/tests/functional/generic/meson.build
-@@ -0,0 +1,14 @@
-+# SPDX-License-Identifier: GPL-2.0-or-later
-+
-+tests_generic_system = [
-+  'empty_cpu_model',
-+  'info_usernet',
-+  'version',
-+  'vnc',
-+]
-+
-+tests_generic_linuxuser = [
-+]
-+
-+tests_generic_bsduser = [
-+]
-diff --git a/tests/functional/test_empty_cpu_model.py b/tests/functional/generic/test_empty_cpu_model.py
-similarity index 100%
-rename from tests/functional/test_empty_cpu_model.py
-rename to tests/functional/generic/test_empty_cpu_model.py
-diff --git a/tests/functional/test_info_usernet.py b/tests/functional/generic/test_info_usernet.py
-similarity index 100%
-rename from tests/functional/test_info_usernet.py
-rename to tests/functional/generic/test_info_usernet.py
-diff --git a/tests/functional/test_version.py b/tests/functional/generic/test_version.py
-similarity index 100%
-rename from tests/functional/test_version.py
-rename to tests/functional/generic/test_version.py
-diff --git a/tests/functional/test_vnc.py b/tests/functional/generic/test_vnc.py
-similarity index 100%
-rename from tests/functional/test_vnc.py
-rename to tests/functional/generic/test_vnc.py
-diff --git a/tests/functional/meson.build b/tests/functional/meson.build
-index b1eec16add8..2a0c5aa1418 100644
---- a/tests/functional/meson.build
-+++ b/tests/functional/meson.build
-@@ -36,18 +36,7 @@ subdir('sparc')
- subdir('sparc64')
- subdir('x86_64')
- subdir('xtensa')
+-/**
+- * kvm_park_vcpu - Park QEMU KVM vCPU context
+- * @cpu: QOM CPUState object for which QEMU KVM vCPU context has to be parked.
+- *
+- * @returns: none
+- */
+-void kvm_park_vcpu(CPUState *cpu);
 -
--tests_generic_system = [
--  'empty_cpu_model',
--  'info_usernet',
--  'version',
--]
+-/**
+- * kvm_unpark_vcpu - unpark QEMU KVM vCPU context
+- * @s: KVM State
+- * @vcpu_id: Architecture vCPU ID of the parked vCPU
+- *
+- * @returns: KVM fd
+- */
+-int kvm_unpark_vcpu(KVMState *s, unsigned long vcpu_id);
 -
--tests_generic_linuxuser = [
--]
--
--tests_generic_bsduser = [
--]
-+subdir('generic')
+ /**
+  * kvm_create_and_park_vcpu - Create and park a KVM vCPU
+  * @cpu: QOM CPUState object for which KVM vCPU has to be created and parked.
+diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
+index 890d5ea9f86..f36dfe33492 100644
+--- a/accel/kvm/kvm-all.c
++++ b/accel/kvm/kvm-all.c
+@@ -414,7 +414,7 @@ err:
+     return ret;
+ }
  
- precache_all = []
- foreach speed : ['quick', 'thorough']
-@@ -90,9 +79,7 @@ foreach speed : ['quick', 'thorough']
+-void kvm_park_vcpu(CPUState *cpu)
++static void kvm_park_vcpu(CPUState *cpu)
+ {
+     struct KVMParkedVcpu *vcpu;
  
-     foreach test : target_tests
-       testname = '@0@-@1@'.format(target_base, test)
--      if fs.exists('test_' + test + '.py')
--        testfile = 'test_' + test + '.py'
--      elif fs.exists('generic' / 'test_' + test + '.py')
-+      if fs.exists('generic' / 'test_' + test + '.py')
-         testfile = 'generic' / 'test_' + test + '.py'
-       else
-         testfile = target_base / 'test_' + test + '.py'
-diff --git a/tests/functional/x86_64/meson.build b/tests/functional/x86_64/meson.build
-index 696a9ecab42..d0b4667bb8a 100644
---- a/tests/functional/x86_64/meson.build
-+++ b/tests/functional/x86_64/meson.build
-@@ -16,7 +16,6 @@ tests_x86_64_system_quick = [
-   'migration',
-   'pc_cpu_hotplug_props',
-   'virtio_version',
--  'vnc',
-   'memlock',
- ]
+@@ -426,7 +426,7 @@ void kvm_park_vcpu(CPUState *cpu)
+     QLIST_INSERT_HEAD(&kvm_state->kvm_parked_vcpus, vcpu, node);
+ }
  
+-int kvm_unpark_vcpu(KVMState *s, unsigned long vcpu_id)
++static int kvm_unpark_vcpu(KVMState *s, unsigned long vcpu_id)
+ {
+     struct KVMParkedVcpu *cpu;
+     int kvm_fd = -ENOENT;
 -- 
 2.47.2
 

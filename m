@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4BB10CA1013
-	for <qemu-arm@archiver.kernel.org>; Thu,  4 Sep 2025 08:13:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2CA04CA1013
+	for <qemu-arm@archiver.kernel.org>; Thu,  4 Sep 2025 08:13:42 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uu54O-00061Z-ER; Thu, 04 Sep 2025 04:11:48 -0400
+	id 1uu54V-0006Aj-QY; Thu, 04 Sep 2025 04:11:55 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1uu54M-0005zd-Vk
- for qemu-arm@nongnu.org; Thu, 04 Sep 2025 04:11:47 -0400
-Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
+ id 1uu54S-00066F-QZ
+ for qemu-arm@nongnu.org; Thu, 04 Sep 2025 04:11:53 -0400
+Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1uu54C-0003xL-9a
- for qemu-arm@nongnu.org; Thu, 04 Sep 2025 04:11:46 -0400
-Received: by mail-ej1-x629.google.com with SMTP id
- a640c23a62f3a-b03fa5c5a89so107053166b.2
- for <qemu-arm@nongnu.org>; Thu, 04 Sep 2025 01:11:35 -0700 (PDT)
+ id 1uu54G-0003zL-9e
+ for qemu-arm@nongnu.org; Thu, 04 Sep 2025 04:11:52 -0400
+Received: by mail-ed1-x533.google.com with SMTP id
+ 4fb4d7f45d1cf-61cf0901a72so1237296a12.1
+ for <qemu-arm@nongnu.org>; Thu, 04 Sep 2025 01:11:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756973494; x=1757578294; darn=nongnu.org;
+ d=linaro.org; s=google; t=1756973497; x=1757578297; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=XYe2srEOzuPavOLB2dyXu3UjjKzRy0khJhV96Tf8OLU=;
- b=C95RkLJayXv/k+1pq/jQDHMJgXjz7nQZhnkaaBc8b766ydU5ZntQ9F9h4iP9ymmC8v
- 53MMQfrS1R8gDch4D4+gaCuit7x2s15u+8WIdILNxs15dJ/gqMjbY5iP1ty6NIqhoVux
- MZtFQuS83hBFpM8C9DTwSbdcDxbJwKMjmxxKS8ITD/PnDYTioc+pSfR4K784EkerCEKJ
- RS4EVunt4mpnMsglRTSk1tSrGAaJj6LpKusKxPNYXXPASFtUXBS8XcI6v8gorC0b2T7v
- 8suWKGVF4DChWXc3TRtj6Hl0aF+KBDWj2QZ8LMCIGcdiO8SlqeWNLeBMPPF7GU1NGplK
- aNUQ==
+ bh=YHrtANvKFxNzkcAR0b6AvL2FoL97RQya7kVY684YbqM=;
+ b=ilV1/w4AaXXyr2OLU50flKNk+eYnnRFEgKcqQdtycHO7h/brzNXQeLlYYyOcgk4iMp
+ zDYkBXxq6ez5kUZ2tHFNBYlPiuMXGt6VOzFgS6U6uLfwIxQc9cpmWqCe7n2A46OERpTw
+ w7w9Hj5NBiLminKr0qzhA2en0McXzEqzjTFJdrKjSBy4eApxKUgw0BBko111fi4IV8Uk
+ mAlymUSDijDXRUooahoqpsh1ppZ0oJ3k03jlD5lboF4mqaazbdXBC8BegmN6Eh6ZxWTp
+ BQdPPpNibCS4+XWjlzQ4p8zh+wLc9+TKFOAxsRJaYFUnroKEQP7xOGoFqBk+c5z8IN6L
+ ZlKg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756973494; x=1757578294;
+ d=1e100.net; s=20230601; t=1756973497; x=1757578297;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=XYe2srEOzuPavOLB2dyXu3UjjKzRy0khJhV96Tf8OLU=;
- b=IYOPJpMOKa8iYMMQa18efs8ima6iR6DAJpiIDdUt6acIrPgUD7G1DjxpX+B2smZdhw
- b9kc0R21tPmULbb+IPGSSJqjZlrvxRpXlo5ZIz50gq4Va7FjHr7davKhRySsoS3EqFdP
- w/OjyRr0FAka8BHPGqnus1mCIqQjoEyb5si9w06EUqjaqkr5HQhNXOCC0CiKhFWOUTUy
- o22Eut2JQToh9aIzISQKwCycyU+Vn01hiBZ6RVoL2muOEl+FEOv5/NyYEWydY6eRXKD1
- sXylFb9N0D5Y+xeihJSRW0s8ImKgt6xkEdEvF7i/BiDk9PiTiVJZ/KZxGAr9q37ZC5NO
- Z41A==
+ bh=YHrtANvKFxNzkcAR0b6AvL2FoL97RQya7kVY684YbqM=;
+ b=AiXGGJRX8U9AVJl588Dv8xBml1Yi9RfRkodVBlrj+JPw2+oeVPAfQHq/uVLUhGk351
+ nKuPCDfW5z3t5+2uWtzYgstRKMEL0vLe4fEuZW7cKBi/zrIctllD4RJiRYhEYvWXRBj6
+ 1Bu/3ZGGhdQk2REs5EI4JBnahaPfa5/dNYpR/zpJbw68pu6fZSs7/l413gNKkXP4MA88
+ hBfaClz+RKBSgpWPPmpRIUmdtuRroQdinomDYqOqEWryRGiTAfoaq2vWlTueMsaBuruk
+ OpOTMyglm29LZqHRQPMCKyUu/wrNZs2dCLg+LKyLy4vTLrKE3rPA7iN56l9bFpeaQNk2
+ QblQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVM+fCsRQSxnB0L+Imiz2ZxUPKKwPuuNQztI0dmOt11N2D7P5LYdt7qKhsUQfwOC/ZqBo7MRgxKYA==@nongnu.org
-X-Gm-Message-State: AOJu0YwxmHEt/EtYyu1QmvBMij8Tta2/oBRW6Nyq3hiAlPSD9XpEEDqD
- cDJd36nGJTeZ8YOr5oU4fiEF7/B8PgbW55jFhs4xf+OiyLZO2UNvnWwwjffrjcWwqZQ=
-X-Gm-Gg: ASbGncvUpeMbmAxfMQPlHtb8m9hBZ0HPAellmu6nHNJSrIIWfl3o7egmIjH+EhMBBfR
- 4vjEqHdgvXdJXgdZY8/6os5u8nJtzbNi9alPGyxoS9mXu/Hf7XDicCGMjJwfW6dAr1vIcOIhDXO
- joULAjtnAPAiE8uBIgeNE/L+k/3Xum565mFw2cTF30s6AZMytVyttgwneP/tMCULPRn5Nqc/bE4
- z26OFn6OGw/Z2jVctZ25kH09DNTfmDoXBW3/Xw4ZuAjNX511LGXJWgHFaZWQ7yF003+uqoiJLMV
- 8eogbO7fEgntOT3ic3c3KOOHQ27h/y1liV65kiJbSgUt5O/OJ60w2wAKNm0jOGnDSf/Ab1hJuJN
- eRiB30RQ8RNcl9cTVHS0/SEFtxb3mX2jseA==
-X-Google-Smtp-Source: AGHT+IEQsFUBsaFrkwGW9jzRf8OvRd90g2Obpi+/sY5uxUqYg/0NjyiJQx54EndT6c+2bdrD2EtFQA==
-X-Received: by 2002:a17:907:3d09:b0:af9:eace:8a52 with SMTP id
- a640c23a62f3a-b01d978f76fmr1732940466b.50.1756973494191; 
- Thu, 04 Sep 2025 01:11:34 -0700 (PDT)
+ AJvYcCXAGAP2vl6H9nLRElXG5QM90VP1apTcDMxBHsTH8rXUFF6tWsl15cvjpzxSwLSvrkdztSy4moIBjg==@nongnu.org
+X-Gm-Message-State: AOJu0YxvkvhvE/lf7/z1MXggl1ptDNv1rXPvkI2ouU0aMgQ0OGp6YDZL
+ k/Eb0AMJavM0VtfAI2WVfoK6EjkyPYdl4CUvA0mS+TBgLfPvQPV5WzPxN1KdqVH+Fnw=
+X-Gm-Gg: ASbGnctvmR//8hd4WwMuLjvu5oMJ1Ho6ZQmC0vJOj325YWh5P+TxIvmF5x7QAoluPEK
+ aPRBnkwkjIMTLpymv9HzYBei7GpvzPyIIDzWdEV0exllGdMEsM2HUTFzZeJMNTdc5CtyDN0w0qF
+ yol3Ifm84+QpfNDsHYOclo8HudBrDBwIbnwdTIyyUvdrkUR3c4/W/OyoVwpEdWReQ2I6Ff1vymy
+ RILaFX3qY5b5epamq60WQDxtNyrYIeiDTJangwPNNEM8e0BmIbZ56hoxCTY5dN/wDn/Sw2E4nrI
+ OAGwJ2aFryAhHvGuyujzQozaTmkCGLgE7LnXSmoh9uV7gkUfLTT9b6BpeHpLxhIJMt1lDGiG9JS
+ EV4RLOHu0n+bxphVfEBInCSBDkS1TpyYpsA==
+X-Google-Smtp-Source: AGHT+IE50bO+WNB7PMlFTG8eHGh7lccIiWFKBJI8DGsC+fWHFDbHDEStJcLiriTfrAkwiwE6IWbViQ==
+X-Received: by 2002:a05:6402:5110:b0:61a:9385:c789 with SMTP id
+ 4fb4d7f45d1cf-61d26ec5eb0mr16023613a12.36.1756973497421; 
+ Thu, 04 Sep 2025 01:11:37 -0700 (PDT)
 Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-b02152cc1b8sm1264072766b.36.2025.09.04.01.11.30
+ 4fb4d7f45d1cf-61cfc1c7dfesm13908866a12.7.2025.09.04.01.11.32
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
  Thu, 04 Sep 2025 01:11:32 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 807A05F92E;
+ by draig.lan (Postfix) with ESMTP id D1C1B5F93A;
  Thu, 04 Sep 2025 09:11:28 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -129,24 +129,25 @@ Cc: Reinoud Zandijk <reinoud@netbsd.org>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Nicholas Piggin <npiggin@gmail.com>, John Levon <john.levon@nutanix.com>
-Subject: [PATCH v2 003/281] scripts/minikconf.py: s/Error/KconfigParserError
-Date: Thu,  4 Sep 2025 09:06:37 +0100
-Message-ID: <20250904081128.1942269-4-alex.bennee@linaro.org>
+ Nicholas Piggin <npiggin@gmail.com>, John Levon <john.levon@nutanix.com>,
+ Stefan Hajnoczi <stefanha@redhat.com>
+Subject: [PATCH v2 006/281] Update version for the v10.1.0 release
+Date: Thu,  4 Sep 2025 09:06:40 +0100
+Message-ID: <20250904081128.1942269-7-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.2
 In-Reply-To: <20250904081128.1942269-1-alex.bennee@linaro.org>
 References: <20250904081128.1942269-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::629;
- envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x629.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::533;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x533.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -162,33 +163,20 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+From: Stefan Hajnoczi <stefanha@redhat.com>
 
-Error is not defined in this script, raise KconfigParserError instead.
-
-Fixes: 82f5181777ebe04b550fd94a1d04c49dd3f012dc ("kconfig: introduce kconfig files")
-Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-Link: https://lore.kernel.org/r/20250820-scripts-minikconf-fixes-v1-2-252041a9125e@linaro.org
-Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
 ---
- scripts/minikconf.py | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ VERSION | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/scripts/minikconf.py b/scripts/minikconf.py
-index 2a4694fb6a3..4de5aeed11a 100644
---- a/scripts/minikconf.py
-+++ b/scripts/minikconf.py
-@@ -363,7 +363,9 @@ def parse_file(self, fp):
- 
-     def do_assignment(self, var, val):
-         if not var.startswith("CONFIG_"):
--            raise Error('assigned variable should start with CONFIG_')
-+            raise KconfigParserError(
-+                self, "assigned variable should start with CONFIG_"
-+            )
-         var = self.data.do_var(var[7:])
-         self.data.do_assignment(var, val)
- 
+diff --git a/VERSION b/VERSION
+index dadcbd47d3c..4149c39eec6 100644
+--- a/VERSION
++++ b/VERSION
+@@ -1 +1 @@
+-10.0.94
++10.1.0
 -- 
 2.47.2
 

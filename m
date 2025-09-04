@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3B8ACA1015
-	for <qemu-arm@archiver.kernel.org>; Thu,  4 Sep 2025 08:22:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4599CA1012
+	for <qemu-arm@archiver.kernel.org>; Thu,  4 Sep 2025 08:22:42 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uu5B7-0001ER-MS; Thu, 04 Sep 2025 04:18:47 -0400
+	id 1uu58L-00025S-Fi; Thu, 04 Sep 2025 04:15:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1uu55j-00079c-Di
- for qemu-arm@nongnu.org; Thu, 04 Sep 2025 04:13:12 -0400
-Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
+ id 1uu54x-0006Vd-Sh
+ for qemu-arm@nongnu.org; Thu, 04 Sep 2025 04:12:25 -0400
+Received: from mail-ej1-x641.google.com ([2a00:1450:4864:20::641])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1uu54z-0004MN-Ur
- for qemu-arm@nongnu.org; Thu, 04 Sep 2025 04:13:11 -0400
-Received: by mail-ed1-x529.google.com with SMTP id
- 4fb4d7f45d1cf-61ce4c32a36so1286351a12.3
- for <qemu-arm@nongnu.org>; Thu, 04 Sep 2025 01:12:16 -0700 (PDT)
+ id 1uu54U-00048t-2m
+ for qemu-arm@nongnu.org; Thu, 04 Sep 2025 04:12:22 -0400
+Received: by mail-ej1-x641.google.com with SMTP id
+ a640c23a62f3a-afcb7ace3baso137859966b.3
+ for <qemu-arm@nongnu.org>; Thu, 04 Sep 2025 01:11:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756973535; x=1757578335; darn=nongnu.org;
+ d=linaro.org; s=google; t=1756973512; x=1757578312; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=vQnG/U24JxcVs8uXNe4IaAjnYt4W8HHMeVrbu0X+rAg=;
- b=g0e8JVpqbJmnTRUczhf9QIQk51HRdS1HaTaFuzFeGUJOF/4oP0cx1SsfJd6/lWxMXV
- llD841HT24ISXYswTQruFQDVR7GbMi0F146bmjnFZfzPEGdWV5J3jPLfF/zoXrej1cCi
- J/WOfmOBpmBZp5UlSVwOfnBTc3CZQOXVUVmlQgGfHT5yxVNPLX9fWa5jpkIrIJRD1/wN
- w01xbDyCtAsY82RJxCOIwpB2xiWaX4qCbBXZ2bwMXkSgBQVWcd0rrUsLTrTSN1nXt/pU
- FiHnVfp8B5P7WV9EnD+ZBPTApndE+Yptiuvhr20iViNAz4DkfgjYJIDSPfvwOdIQpU+s
- IMUw==
+ bh=3RQ/9rxDUPu7uJRVAzp79eYsa4qcVHBXmURVHyZAYUo=;
+ b=QvvOZY4e+6Y9MElx3E/UsQ+MVCtWL8O/KjmnFYldWxcLcYUBEum0te7ae+wuAZS2s6
+ 6qu8PaJW+c0G6dFsWIcG6KnnRHoKvR2+XIWMqwZSU+MW2JVer5ByVAsxSkUtBy/UKJ4o
+ IP3ypoZN0kCLj1d4eBDQVmLWB3Q86JQkLoZBjC3cT2xlAxPz5ihWp6z4AYaTsI/iUZhP
+ ovCfnXACSurZ3f8DpcZt2hMbOO6rRfrbSugJHBDYHpqsBcolS6LDD7Vmb6q9jDAotjzP
+ FxlPTG/aGlskm9EqgxDK94rUpWYCqnxxFfeJgpbIL+USe/PHfORkFDDeydupIwIx2Sag
+ iNdA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756973535; x=1757578335;
+ d=1e100.net; s=20230601; t=1756973512; x=1757578312;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=vQnG/U24JxcVs8uXNe4IaAjnYt4W8HHMeVrbu0X+rAg=;
- b=HP7MSnad4o+f7bCRqWwUsA8GY0otofFlP96YHVetpHNDp919YDN4L/PG750LLYC0nW
- cUA8gbFG2PPwIyesv9zaFBuwPUtXdTPp3+Nj4LAdJ4Mc9d5XPUJyctgvd0M6nFWJlgpJ
- M1hFlu+HfIGhXpc9GW0cSq6QKLM+bCJPBNps6KzoplQ3IOLGu5z74fLxq+mTC41e+91O
- FggSvC409W9VRNZ19fsNlIZ2boRP3WSN2qYTmY4sC1bw95jLIkG5QWSMZLPQxjpnTvT/
- JjxYeMuLmGiYGTVGl0RdDuZCPuyaneFJJllgnJ/aHyKYQMfQ0fRYVJQ/iSUBozRip2mZ
- Y4Jw==
+ bh=3RQ/9rxDUPu7uJRVAzp79eYsa4qcVHBXmURVHyZAYUo=;
+ b=v2QYQ6b4YXakRy79rh7XkBTsKBngld6ssPslgv683m41JQ/pseibjqNHNU3KGvcd42
+ 9uGzPM6Br298mo+JcXbJsdPrH5+4exgEUz8z7dNsp/GaLmvm/nzKQPZIavghWjVjkclu
+ tmBV7DU/p3Gvytz3RZhymsO+Hy01/uj61VAyUZ/fWvTf032W+nU7G9dvXYh7NhazaR64
+ LP/1NqtELqmNmuZVjvLqGprj2eJOtxKB9ELI0iLzyBHzcEaSqdmtCz0rxamUr0J3mndE
+ Gh64oeJRvvo6dlUdzHnixt7nbKKr8IuSVrBcjJnS2wkT0QkUxoFcX5wcabXx4y80UaJn
+ DCog==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUYO27pOetgsndJ6cfx2WPNAYSc861wHcrJaKF/g4EKQVNh90GNsaEUUxLMspl9q52tbguPdnCK1g==@nongnu.org
-X-Gm-Message-State: AOJu0YwRztWB8lJbsE1iAxVB7p3Fwv257vwLpULK4ys9bPr38CEYR2Ii
- ZH7Yw1Nby8g5WPApK6GLJCklhCOJ2uNsI7dmwMJ5LJTbNhMbcXpcZ1ULrrWPyQ89lOw=
-X-Gm-Gg: ASbGncufhiGzbxbVfIbzmfjQrdypnTmoRza8ourvY0h6Qsfs1FtuJlNZ7GKnwAcabFt
- AxhcW0XaM0EDkvvrS9kZIzxgFcSLuu9zImRIargciUUCEr3CMsJ7OkogpPe4LPPj3+tUXzYnOaW
- UhfO15ZJqkjJJsR/OldwFGMGFQ9kNIxaNnVxWyaohIl6UIcTHCJvpq7ZseYK+04OtLhW2RoEfEG
- O2xZ6QeriU6sXWoiVgNoQrH9SHYG4J4+iRQ8dVG5pqvpB19czLEb3aw7WR3EPWocjPq0dBWWrqe
- +jAUnA3WB+KO7BeQRfsHLr3ap4RpxmQ8zpcowYYf2kURrx0b7u03d6h3wVXQSS4yw1i17i+J41C
- WED7fh3unDnmKeMJem1eDhr9tLnY4eJeJsw==
-X-Google-Smtp-Source: AGHT+IEk45Qbq8ehMluQHQz42r6NoQthOXxreJpDeYMEyBAJ1pxkh474hyQr7aZGMvYK50yJiEKqPw==
-X-Received: by 2002:a17:906:274e:b0:b04:a39:9b98 with SMTP id
- a640c23a62f3a-b040a399f04mr1219532866b.5.1756973535021; 
- Thu, 04 Sep 2025 01:12:15 -0700 (PDT)
+ AJvYcCVJzEgEUZfyqcGWbUoWQqCVDmXzXYzZn/pq65D+kpyAFAb0mtiks7xMoZDAt9ytMGCYvuAi983gUQ==@nongnu.org
+X-Gm-Message-State: AOJu0YxemJ9CdFJZMDsHiqRtXB1NYnSy2gEbExOkDdEkhd0Bn+674yF2
+ 36FFlhnuH7d5ES+vSMH3iuVswivNY62OdHUlmfEsmLttWjle0HkrY/mdG7N/jH91VaM=
+X-Gm-Gg: ASbGncsDPybHIkwiAKy9znVXL8ie4rhqzvvum+VwtskUtwzM8p5TZaYeQI7dce7VQaV
+ 7EKV13AYHEqXk9AENG//gnUcxh8LqBp3hhBnC4Mb4O8xDbkJs98a1f1YgVxyb31NK+ENY3WpljF
+ 4UhC/+hbE6S5UxFGCEaWaOqX/N1dn4cPqWVaQtz9cCGz/sSCmyCh6ngxfqHz8neL/ktoKdvKUAv
+ 5K0lUfTnliAXAYmHjz+rbBYcIb7liH/ZYmKvC3xDWvmCegvE8L5yvN5XpQx4lhyPkUHjATSE8kO
+ y4g2sCjBmt6Oq+OKqrkROVqBMhSOXDpimwytBfQUgyo4QXdjZmlUHIIdzcmBbqyufInBBBAz7ZK
+ 9WnVtje+OAa7efKhCL6642HT3KMTKRiBeCYX4PVAmk7f9
+X-Google-Smtp-Source: AGHT+IEMiQUnZCUx+REMU/XcQ5tTI90e+ZSsd/3pD9djADv7KyFZS6DVOw7EVXdxkO4rIlRK8VaD/g==
+X-Received: by 2002:a17:906:12cf:b0:b04:11e5:9a8e with SMTP id
+ a640c23a62f3a-b0411e59b44mr1462216366b.40.1756973511178; 
+ Thu, 04 Sep 2025 01:11:51 -0700 (PDT)
 Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-b040d44c9adsm1190635766b.9.2025.09.04.01.12.07
+ a640c23a62f3a-b04129eccbfsm1161132866b.7.2025.09.04.01.11.48
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 04 Sep 2025 01:12:11 -0700 (PDT)
+ Thu, 04 Sep 2025 01:11:49 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 7063C60AFE;
- Thu, 04 Sep 2025 09:11:39 +0100 (BST)
+ by draig.lan (Postfix) with ESMTP id DEE096019A;
+ Thu, 04 Sep 2025 09:11:33 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Reinoud Zandijk <reinoud@netbsd.org>,
@@ -130,16 +130,16 @@ Cc: Reinoud Zandijk <reinoud@netbsd.org>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
  Nicholas Piggin <npiggin@gmail.com>, John Levon <john.levon@nutanix.com>
-Subject: [PATCH v2 088/281] linux-user/hppa: Create init_main_thread
-Date: Thu,  4 Sep 2025 09:08:02 +0100
-Message-ID: <20250904081128.1942269-89-alex.bennee@linaro.org>
+Subject: [PATCH v2 047/281] rust: move dependencies to rust/Cargo.toml
+Date: Thu,  4 Sep 2025 09:07:21 +0100
+Message-ID: <20250904081128.1942269-48-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.2
 In-Reply-To: <20250904081128.1942269-1-alex.bennee@linaro.org>
 References: <20250904081128.1942269-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::529;
- envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x529.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::641;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x641.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -162,70 +162,52 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Richard Henderson <richard.henderson@linaro.org>
+From: Paolo Bonzini <pbonzini@redhat.com>
 
-Merge init_thread and target_cpu_copy_regs.
-There's no point going through a target_pt_regs intermediate.
+As more crates start using the same dependencies, it's better to not
+repeat the versions and move the dependency declarations to the workspace.
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
 ---
- linux-user/elfload.c       | 13 +------------
- linux-user/hppa/cpu_loop.c | 18 +++++++++++-------
- 2 files changed, 12 insertions(+), 19 deletions(-)
+ rust/Cargo.toml          | 5 +++++
+ rust/qemu-api/Cargo.toml | 6 +++---
+ 2 files changed, 8 insertions(+), 3 deletions(-)
 
-diff --git a/linux-user/elfload.c b/linux-user/elfload.c
-index 556f11d720d..4876e4b0a80 100644
---- a/linux-user/elfload.c
-+++ b/linux-user/elfload.c
-@@ -864,18 +864,7 @@ static void elf_core_copy_regs(target_elf_gregset_t *regs,
+diff --git a/rust/Cargo.toml b/rust/Cargo.toml
+index 0a83db15356..6f8884eb30b 100644
+--- a/rust/Cargo.toml
++++ b/rust/Cargo.toml
+@@ -15,6 +15,11 @@ license = "GPL-2.0-or-later"
+ repository = "https://gitlab.com/qemu-project/qemu/"
+ rust-version = "1.77.0"
  
- #define VDSO_HEADER "vdso.c.inc"
- 
--static inline void init_thread(struct target_pt_regs *regs,
--                               struct image_info *infop)
--{
--    regs->iaoq[0] = infop->entry | PRIV_USER;
--    regs->iaoq[1] = regs->iaoq[0] + 4;
--    regs->gr[23] = 0;
--    regs->gr[24] = infop->argv;
--    regs->gr[25] = infop->argc;
--    /* The top-of-stack contains a linkage buffer.  */
--    regs->gr[30] = infop->start_stack + 64;
--    regs->gr[31] = infop->entry;
--}
-+#define HAVE_INIT_MAIN_THREAD
- 
- #define LO_COMMPAGE  0
- 
-diff --git a/linux-user/hppa/cpu_loop.c b/linux-user/hppa/cpu_loop.c
-index 9abaad5ef81..3af50653bb7 100644
---- a/linux-user/hppa/cpu_loop.c
-+++ b/linux-user/hppa/cpu_loop.c
-@@ -196,12 +196,16 @@ void cpu_loop(CPUHPPAState *env)
-     }
- }
- 
--void target_cpu_copy_regs(CPUArchState *env, target_pt_regs *regs)
-+void init_main_thread(CPUState *cs, struct image_info *info)
- {
--    int i;
--    for (i = 1; i < 32; i++) {
--        env->gr[i] = regs->gr[i];
--    }
--    env->iaoq_f = regs->iaoq[0];
--    env->iaoq_b = regs->iaoq[1];
-+    CPUArchState *env = cpu_env(cs);
++[workspace.dependencies]
++anyhow = "~1.0"
++foreign = "~0.3.1"
++libc = "0.2.162"
 +
-+    env->iaoq_f = info->entry | PRIV_USER;
-+    env->iaoq_b = env->iaoq_f + 4;
-+    env->gr[23] = 0;
-+    env->gr[24] = info->argv;
-+    env->gr[25] = info->argc;
-+    /* The top-of-stack contains a linkage buffer.  */
-+    env->gr[30] = info->start_stack + 64;
-+    env->gr[31] = info->entry;
- }
+ [workspace.lints.rust]
+ unexpected_cfgs = { level = "deny", check-cfg = [
+     'cfg(MESON)', 'cfg(HAVE_GLIB_WITH_ALIGNED_ALLOC)',
+diff --git a/rust/qemu-api/Cargo.toml b/rust/qemu-api/Cargo.toml
+index db7000dee44..c07a17a28b0 100644
+--- a/rust/qemu-api/Cargo.toml
++++ b/rust/qemu-api/Cargo.toml
+@@ -15,9 +15,9 @@ rust-version.workspace = true
+ 
+ [dependencies]
+ qemu_api_macros = { path = "../qemu-api-macros" }
+-anyhow = "~1.0"
+-libc = "0.2.162"
+-foreign = "~0.3.1"
++anyhow = { workspace = true }
++foreign = { workspace = true }
++libc = { workspace = true }
+ 
+ [features]
+ default = ["debug_cell"]
 -- 
 2.47.2
 

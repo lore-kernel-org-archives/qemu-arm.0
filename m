@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16C86CA1015
-	for <qemu-arm@archiver.kernel.org>; Thu,  4 Sep 2025 08:18:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF76DCA1013
+	for <qemu-arm@archiver.kernel.org>; Thu,  4 Sep 2025 08:18:34 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uu5AJ-000798-AZ; Thu, 04 Sep 2025 04:17:55 -0400
+	id 1uu58M-00029n-AW; Thu, 04 Sep 2025 04:15:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1uu558-0006bZ-8i
- for qemu-arm@nongnu.org; Thu, 04 Sep 2025 04:12:37 -0400
-Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
+ id 1uu54y-0006Vh-7n
+ for qemu-arm@nongnu.org; Thu, 04 Sep 2025 04:12:25 -0400
+Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1uu54Y-0004Bw-VW
- for qemu-arm@nongnu.org; Thu, 04 Sep 2025 04:12:31 -0400
-Received: by mail-ej1-x629.google.com with SMTP id
- a640c23a62f3a-b043da5a55fso107835866b.0
- for <qemu-arm@nongnu.org>; Thu, 04 Sep 2025 01:11:58 -0700 (PDT)
+ id 1uu54U-00049K-EP
+ for qemu-arm@nongnu.org; Thu, 04 Sep 2025 04:12:23 -0400
+Received: by mail-ed1-x532.google.com with SMTP id
+ 4fb4d7f45d1cf-61cd3748c6dso1329308a12.3
+ for <qemu-arm@nongnu.org>; Thu, 04 Sep 2025 01:11:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756973517; x=1757578317; darn=nongnu.org;
+ d=linaro.org; s=google; t=1756973513; x=1757578313; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=KM2ZDhNYkLW1KWUOdLmFVe8gLAQ7wgd1StjOThDS9B0=;
- b=bAJgtD5nXHix0yY9qWxVpDG0992ZNEyC7uYSRbyMzaBwG+SB+xRsA6NH2xByh8GG+T
- GNa2nHUn0TJT2Tz3VaSfpbeblotb4Pojy4Cd9/ZD4o6LAozYzIMQgb3eoGKc7N2Bcx9q
- YWw+CG4PBVYTMbHK14sIFJHwAz/tTmIaiip/KSmlL9UlwOfrqPcrt+uCPpw4oEoBwNHg
- /W2YaTVUNavM4ybB6liBXYne7l9PlCDu67AMLC1bcIB+WhWmhNScy/KAE4zHXEQIUrn4
- fecUyRpeuznWg2DZeu5WY/gItpFk90CkcCR+3+HJmK7PTRX4xAasNPSZ90sGl75ufg+D
- VydA==
+ bh=eSaSrwUYSOayX0ze9g9+lMGmnZ0XX0Src5mJ41Ycn+k=;
+ b=Cij7syhVINC0cdmTmh6RymjKcAFltCOXaLZO4pZYDK/AWUVxAy9MJ/3KkvuTnfkVEr
+ CONzhvdaQJbk9o5XiveqXS1nnrr1ZfdUx/1XE0PISBmC0g0REigZCzccdWZBD6AsqXGr
+ gU6JffLtcF8UsWRG1WVvu0xbPsCEiUJHhc1GnuMQAGyFaZ6jXxt8FqtXkzgiK1a71ZZD
+ rO1DsjnkKRwqAM/yj3T+FmMBiV7W2t4rZprQLTmMjhdLAVRlk9wHo7+EoLec9m8ayqb0
+ 2myYLNGoWhs69r3ZZRkxZ8flnX0X+DN6LkbGQBpDdmzSZCTrOTmWJu3JkPo5RF3ZU23r
+ NaFQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756973517; x=1757578317;
+ d=1e100.net; s=20230601; t=1756973513; x=1757578313;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=KM2ZDhNYkLW1KWUOdLmFVe8gLAQ7wgd1StjOThDS9B0=;
- b=nwxMerVxy70CdsFO8R2DDJgaR1gb4Y7IZi1KvB7bU7SlMge+n/u+/LH1si0lmRH+3/
- 1dVNJhRydq9tiZtLqddzbWShgvdNV/qVHqQzxBAOl8BGu879Kkz2ysuePqm3xaozVUiy
- MSHIwutrAw+pk4pqMhjoOTIVyUbk2P/OJvOoLw5QYkqfLAjZmJo5UQ3IK70n5uzgY7Wo
- cHebgBhAJw4CcF3A5aa8+1GanLUfwLpFPu5sC3PLvv+1bmh7t2aLjuZ2EIOGh2CEw/rR
- 1q61eLN4mumM/XJ2UtrcnndtxigdgMwtUJXBvvRiDeamv9PRWmqvwoCE0auVd1xNmVKV
- n3bw==
+ bh=eSaSrwUYSOayX0ze9g9+lMGmnZ0XX0Src5mJ41Ycn+k=;
+ b=D1zBCbK/r7iUPKQttFena3BjBDXuy6waV2N4NFmJVMYoO5NdK5cntLxo8GkVbRApoY
+ 753425vJKqysHalfhdClpoAzZX53NneTygFah/XEKH7FgxiLuSCEELRozGjAEIXVOrSH
+ va5wz4DU+Lv8ytTASw09xF3kUGhLIqAa4JzMdJaIX5dFqiPWLAeelP5dNiHCTfV6uMRo
+ mY3tNx656/r9JT7W7bwjbRknC1QFoVZzhHdLVtkz8YFy0lvA/yIzNHmudiBMwI4F4mxa
+ JSQgAZ8Rt/DJG9DYDbmBg2cKGtHsX7D2SFGVjoGqICwGNJWvBKBY+Ve6QQ4ws1PQW46n
+ a7vw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWHJ8UI0YIBXbvVBFaL5sgm5w8H5jkY6yg5Kt799QLy2Wm61iy0CNHoyo5A4x2PqD+kMasEd35nPg==@nongnu.org
-X-Gm-Message-State: AOJu0Yy5xHFhcyzwFnHmKiHjAm5XFQ681n1JlfwHB0cuH5dXXFK8JFtG
- KlGXlGvAR1qAB1SQe6cfjgZZhyQXudcdy8ymu7ujRAthpq3flEfumKAYwHgFMSfKqic=
-X-Gm-Gg: ASbGncto7yaMK6YoT73FN+ndTxTXpRofK7v3bf61oh5RNzR/qovyXpog0+ryecB2EkK
- YXrSDHXPhvjQZGiyc/DwF5/N53+ft6YHwlSvORBE2hjZol0NiZMpH9O/AaUStc6xKtSc0KS6KDC
- m4EzaIroY/xGHp0glBej/ccyCN+4M6uY8dvB/9eEeJUIOTpVbQGIBkmkL9qY/PSJuTu4pxv3ZqA
- p3xeeEjUntHvgggDJgDISiPP1NRneboFTeCxE1232ivgdROCUhlVxcaD5/7tI0qh/34p4NhHCRc
- IcoA9iboanlDobcCH/VhaOIb8A4TkotscNwS3D+LASlLfB1lvZ50TxpeGyRDydaJWnsaAO6l7up
- ssZfgXEKwWuEI2JhX0U7s6yk=
-X-Google-Smtp-Source: AGHT+IHrIfYhoi3D9Gm+87PPt9KEGR+SpE522yU9r/ngWzQfRBd4CgfSmCQXYip3hia/ZuTrUqkq6w==
-X-Received: by 2002:a17:907:7ba3:b0:b04:848f:a0d4 with SMTP id
- a640c23a62f3a-b04848fa469mr89096666b.13.1756973517037; 
- Thu, 04 Sep 2025 01:11:57 -0700 (PDT)
+ AJvYcCWAgcYI7yN/JLf7n2+YpmsbroepDsppak8pqn5J2tdWKpCuP2KtjoA0OvHfB9r0nzjPgnz7q5tLQA==@nongnu.org
+X-Gm-Message-State: AOJu0YwoYzv2yRdNscQBGcgqfKY6hjyfvcYw7c+OtadhK7uIIh8cAMMp
+ JfE3BHQTg/WTNDy4n1NGSw1gjo3vkoXDbf0T8hz59RS2Ui5dEwxkJaoQ33InvYm+6Zs=
+X-Gm-Gg: ASbGncvxhvZzezmrs+X1SH6/mnY7a8KihtVCTNGACu0bZlSwQ6D2FipgcNQg4HsCXTM
+ Hsh2s9iNc4d+3I045arX+vNGQgoY2b2WtDaaxt4C6WgVt9z2EbLtPZByTlL/nQ/fNZu92ASptrm
+ UJVROuhzoRs0Syt6iGBYtHEITPsrihKtP+maTb5e2i6XPymRUc3Xsbpijb0rvHAP0acTCXWo7sj
+ ONG7Es75WSbr2rTfbFA5bDRO3F5jyybWrwDOvVCu6P/vbCzS2OLr4mp0EfCB+Odg2Ogz+RMo7mi
+ tdYkYC0Xsb515TTCKVLRCLuFDF8HyqgKbIZ0sAhPxSi+vsNHYTcDOZizUaWDnvNGVtsAVNSj10x
+ Y9pK1yjQ4xF+no40aiGPQ2ok=
+X-Google-Smtp-Source: AGHT+IGLuLEHDMdceQbPHHpmcGy/yiy//i65J2KOm3EjqZSFkYkVq5LlhG4GDCyntij5BRe41onYZw==
+X-Received: by 2002:a05:6402:278d:b0:61c:8c63:a91e with SMTP id
+ 4fb4d7f45d1cf-61d26d80542mr15376751a12.25.1756973512260; 
+ Thu, 04 Sep 2025 01:11:52 -0700 (PDT)
 Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-b0484e8a4a1sm55353466b.83.2025.09.04.01.11.50
+ 4fb4d7f45d1cf-61cfc4e5229sm13693433a12.39.2025.09.04.01.11.44
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 04 Sep 2025 01:11:55 -0700 (PDT)
+ Thu, 04 Sep 2025 01:11:49 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 30E81601A8;
- Thu, 04 Sep 2025 09:11:34 +0100 (BST)
+ by draig.lan (Postfix) with ESMTP id 9F5C660151;
+ Thu, 04 Sep 2025 09:11:32 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Reinoud Zandijk <reinoud@netbsd.org>,
@@ -129,24 +129,26 @@ Cc: Reinoud Zandijk <reinoud@netbsd.org>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Nicholas Piggin <npiggin@gmail.com>, John Levon <john.levon@nutanix.com>
-Subject: [PATCH v2 049/281] semihosting: Initialize heap once per process
-Date: Thu,  4 Sep 2025 09:07:23 +0100
-Message-ID: <20250904081128.1942269-50-alex.bennee@linaro.org>
+ Nicholas Piggin <npiggin@gmail.com>, John Levon <john.levon@nutanix.com>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Subject: [PATCH v2 036/281] tests/functional: Move the generic tests to a
+ subfolder
+Date: Thu,  4 Sep 2025 09:07:10 +0100
+Message-ID: <20250904081128.1942269-37-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.2
 In-Reply-To: <20250904081128.1942269-1-alex.bennee@linaro.org>
 References: <20250904081128.1942269-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::629;
- envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x629.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::532;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x532.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -162,182 +164,154 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Richard Henderson <richard.henderson@linaro.org>
+From: Thomas Huth <thuth@redhat.com>
 
-While semihosting isn't really thread aware, the current
-implementation allocates space for the heap per-thread.
+This also removes the line for using tests from the main folder
+since we do not have any tests left here. And while we're at it,
+also mark the vnc test as generic now since it is not specific to x86.
 
-Remove the heap_base and heap_limit fields from TaskState.
-Replace with static variables within do_common_semihosting.
-
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+Message-ID: <20250819112403.432587-25-thuth@redhat.com>
 ---
- linux-user/qemu.h             |  5 -----
- linux-user/aarch64/cpu_loop.c |  7 -------
- linux-user/arm/cpu_loop.c     | 25 +++++++++++--------------
- linux-user/m68k/cpu_loop.c    |  8 --------
- linux-user/riscv/cpu_loop.c   |  4 ----
- semihosting/arm-compat-semi.c | 22 +++++++++-------------
- 6 files changed, 20 insertions(+), 51 deletions(-)
+ MAINTAINERS                                     |  8 ++++----
+ tests/functional/generic/meson.build            | 14 ++++++++++++++
+ .../{ => generic}/test_empty_cpu_model.py       |  0
+ .../{ => generic}/test_info_usernet.py          |  0
+ tests/functional/{ => generic}/test_version.py  |  0
+ tests/functional/{ => generic}/test_vnc.py      |  0
+ tests/functional/meson.build                    | 17 ++---------------
+ tests/functional/x86_64/meson.build             |  1 -
+ 8 files changed, 20 insertions(+), 20 deletions(-)
+ create mode 100644 tests/functional/generic/meson.build
+ rename tests/functional/{ => generic}/test_empty_cpu_model.py (100%)
+ rename tests/functional/{ => generic}/test_info_usernet.py (100%)
+ rename tests/functional/{ => generic}/test_version.py (100%)
+ rename tests/functional/{ => generic}/test_vnc.py (100%)
 
-diff --git a/linux-user/qemu.h b/linux-user/qemu.h
-index b6621536b36..4d6fad28c63 100644
---- a/linux-user/qemu.h
-+++ b/linux-user/qemu.h
-@@ -121,11 +121,6 @@ struct TaskState {
-     abi_ulong child_tidptr;
- #ifdef TARGET_M68K
-     abi_ulong tp_value;
--#endif
--#if defined(TARGET_ARM) || defined(TARGET_M68K) || defined(TARGET_RISCV)
--    /* Extra fields for semihosted binaries.  */
--    abi_ulong heap_base;
--    abi_ulong heap_limit;
- #endif
-     int used; /* non zero if used */
-     struct image_info *info;
-diff --git a/linux-user/aarch64/cpu_loop.c b/linux-user/aarch64/cpu_loop.c
-index b65999a75bf..030a630c936 100644
---- a/linux-user/aarch64/cpu_loop.c
-+++ b/linux-user/aarch64/cpu_loop.c
-@@ -140,9 +140,6 @@ void cpu_loop(CPUARMState *env)
- void target_cpu_copy_regs(CPUArchState *env, target_pt_regs *regs)
- {
-     ARMCPU *cpu = env_archcpu(env);
--    CPUState *cs = env_cpu(env);
--    TaskState *ts = get_task_state(cs);
--    struct image_info *info = ts->info;
-     int i;
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 792d2d6f2de..625fe67b41d 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -1976,7 +1976,7 @@ F: include/hw/core/cpu.h
+ F: include/hw/cpu/cluster.h
+ F: include/system/numa.h
+ F: tests/functional/x86_64/test_cpu_queries.py
+-F: tests/functional/test_empty_cpu_model.py
++F: tests/functional/generic/test_empty_cpu_model.py
+ F: tests/unit/test-smp-parse.c
+ T: git https://gitlab.com/ehabkost/qemu.git machine-next
  
-     if (!(arm_feature(env, ARM_FEATURE_AARCH64))) {
-@@ -167,8 +164,4 @@ void target_cpu_copy_regs(CPUArchState *env, target_pt_regs *regs)
-     if (cpu_isar_feature(aa64_pauth, cpu)) {
-         qemu_guest_getrandom_nofail(&env->keys, sizeof(env->keys));
-     }
--
--    ts->heap_base = info->brk;
--    /* This will be filled in on the first SYS_HEAPINFO call.  */
--    ts->heap_limit = 0;
- }
-diff --git a/linux-user/arm/cpu_loop.c b/linux-user/arm/cpu_loop.c
-index e40d6beafa2..9d54422736c 100644
---- a/linux-user/arm/cpu_loop.c
-+++ b/linux-user/arm/cpu_loop.c
-@@ -492,19 +492,16 @@ void target_cpu_copy_regs(CPUArchState *env, target_pt_regs *regs)
-     for(i = 0; i < 16; i++) {
-         env->regs[i] = regs->uregs[i];
-     }
--#if TARGET_BIG_ENDIAN
--    /* Enable BE8.  */
--    if (EF_ARM_EABI_VERSION(info->elf_flags) >= EF_ARM_EABI_VER4
--        && (info->elf_flags & EF_ARM_BE8)) {
--        env->uncached_cpsr |= CPSR_E;
--        env->cp15.sctlr_el[1] |= SCTLR_E0E;
--    } else {
--        env->cp15.sctlr_el[1] |= SCTLR_B;
--    }
--    arm_rebuild_hflags(env);
--#endif
+@@ -2197,7 +2197,7 @@ S: Odd Fixes
+ F: hw/net/
+ F: include/hw/net/
+ F: tests/qtest/virtio-net-test.c
+-F: tests/functional/test_info_usernet.py
++F: tests/functional/generic/test_info_usernet.py
+ F: docs/system/virtio-net-failover.rst
+ T: git https://github.com/jasowang/qemu.git net
  
--    ts->heap_base = info->brk;
--    /* This will be filled in on the first SYS_HEAPINFO call.  */
--    ts->heap_limit = 0;
-+    if (TARGET_BIG_ENDIAN) {
-+        /* Enable BE8.  */
-+        if (EF_ARM_EABI_VERSION(info->elf_flags) >= EF_ARM_EABI_VER4
-+            && (info->elf_flags & EF_ARM_BE8)) {
-+            env->uncached_cpsr |= CPSR_E;
-+            env->cp15.sctlr_el[1] |= SCTLR_E0E;
-+        } else {
-+            env->cp15.sctlr_el[1] |= SCTLR_B;
-+        }
-+        arm_rebuild_hflags(env);
-+    }
- }
-diff --git a/linux-user/m68k/cpu_loop.c b/linux-user/m68k/cpu_loop.c
-index 3aaaf02ca4e..23693f33582 100644
---- a/linux-user/m68k/cpu_loop.c
-+++ b/linux-user/m68k/cpu_loop.c
-@@ -94,10 +94,6 @@ void cpu_loop(CPUM68KState *env)
+@@ -3134,7 +3134,7 @@ S: Supported
+ F: include/qemu/option.h
+ F: tests/unit/test-keyval.c
+ F: tests/unit/test-qemu-opts.c
+-F: tests/functional/test_version.py
++F: tests/functional/generic/test_version.py
+ F: util/keyval.c
+ F: util/qemu-option.c
  
- void target_cpu_copy_regs(CPUArchState *env, target_pt_regs *regs)
- {
--    CPUState *cpu = env_cpu(env);
--    TaskState *ts = get_task_state(cpu);
--    struct image_info *info = ts->info;
+@@ -3252,7 +3252,7 @@ F: include/ui/
+ F: qapi/ui.json
+ F: util/drm.c
+ F: docs/devel/ui.rst
+-F: tests/functional/test_vnc.py
++F: tests/functional/generic/test_vnc.py
+ 
+ Cocoa graphics
+ M: Peter Maydell <peter.maydell@linaro.org>
+diff --git a/tests/functional/generic/meson.build b/tests/functional/generic/meson.build
+new file mode 100644
+index 00000000000..013cc96fbf8
+--- /dev/null
++++ b/tests/functional/generic/meson.build
+@@ -0,0 +1,14 @@
++# SPDX-License-Identifier: GPL-2.0-or-later
++
++tests_generic_system = [
++  'empty_cpu_model',
++  'info_usernet',
++  'version',
++  'vnc',
++]
++
++tests_generic_linuxuser = [
++]
++
++tests_generic_bsduser = [
++]
+diff --git a/tests/functional/test_empty_cpu_model.py b/tests/functional/generic/test_empty_cpu_model.py
+similarity index 100%
+rename from tests/functional/test_empty_cpu_model.py
+rename to tests/functional/generic/test_empty_cpu_model.py
+diff --git a/tests/functional/test_info_usernet.py b/tests/functional/generic/test_info_usernet.py
+similarity index 100%
+rename from tests/functional/test_info_usernet.py
+rename to tests/functional/generic/test_info_usernet.py
+diff --git a/tests/functional/test_version.py b/tests/functional/generic/test_version.py
+similarity index 100%
+rename from tests/functional/test_version.py
+rename to tests/functional/generic/test_version.py
+diff --git a/tests/functional/test_vnc.py b/tests/functional/generic/test_vnc.py
+similarity index 100%
+rename from tests/functional/test_vnc.py
+rename to tests/functional/generic/test_vnc.py
+diff --git a/tests/functional/meson.build b/tests/functional/meson.build
+index b1eec16add8..2a0c5aa1418 100644
+--- a/tests/functional/meson.build
++++ b/tests/functional/meson.build
+@@ -36,18 +36,7 @@ subdir('sparc')
+ subdir('sparc64')
+ subdir('x86_64')
+ subdir('xtensa')
 -
-     env->pc = regs->pc;
-     env->dregs[0] = regs->d0;
-     env->dregs[1] = regs->d1;
-@@ -116,8 +112,4 @@ void target_cpu_copy_regs(CPUArchState *env, target_pt_regs *regs)
-     env->aregs[6] = regs->a6;
-     env->aregs[7] = regs->usp;
-     env->sr = regs->sr;
+-tests_generic_system = [
+-  'empty_cpu_model',
+-  'info_usernet',
+-  'version',
+-]
 -
--    ts->heap_base = info->brk;
--    /* This will be filled in on the first SYS_HEAPINFO call.  */
--    ts->heap_limit = 0;
- }
-diff --git a/linux-user/riscv/cpu_loop.c b/linux-user/riscv/cpu_loop.c
-index 541de765ffa..2dd30c7b288 100644
---- a/linux-user/riscv/cpu_loop.c
-+++ b/linux-user/riscv/cpu_loop.c
-@@ -108,8 +108,4 @@ void target_cpu_copy_regs(CPUArchState *env, target_pt_regs *regs)
-         error_report("Incompatible ELF: RVE cpu requires RVE ABI binary");
-         exit(EXIT_FAILURE);
-     }
+-tests_generic_linuxuser = [
+-]
 -
--    ts->heap_base = info->brk;
--    /* This will be filled in on the first SYS_HEAPINFO call.  */
--    ts->heap_limit = 0;
- }
-diff --git a/semihosting/arm-compat-semi.c b/semihosting/arm-compat-semi.c
-index bc04b02eba8..bcd13cd6dfd 100644
---- a/semihosting/arm-compat-semi.c
-+++ b/semihosting/arm-compat-semi.c
-@@ -666,7 +666,7 @@ void do_common_semihosting(CPUState *cs)
-             int i;
- #ifdef CONFIG_USER_ONLY
-             TaskState *ts = get_task_state(cs);
--            target_ulong limit;
-+            static abi_ulong heapbase, heaplimit;
- #else
-             LayoutInfo info = common_semi_find_bases(cs);
- #endif
-@@ -678,24 +678,20 @@ void do_common_semihosting(CPUState *cs)
-              * Some C libraries assume the heap immediately follows .bss, so
-              * allocate it using sbrk.
-              */
--            if (!ts->heap_limit) {
--                abi_ulong ret;
--
--                ts->heap_base = do_brk(0);
--                limit = ts->heap_base + COMMON_SEMI_HEAP_SIZE;
-+            if (!heaplimit) {
-+                heapbase = do_brk(0);
-                 /* Try a big heap, and reduce the size if that fails.  */
--                for (;;) {
--                    ret = do_brk(limit);
-+                for (abi_ulong size = COMMON_SEMI_HEAP_SIZE; ; size >>= 1) {
-+                    abi_ulong limit = heapbase + size;
-+                    abi_ulong ret = do_brk(limit);
-                     if (ret >= limit) {
-+                        heaplimit = limit;
-                         break;
-                     }
--                    limit = (ts->heap_base >> 1) + (limit >> 1);
-                 }
--                ts->heap_limit = limit;
-             }
--
--            retvals[0] = ts->heap_base;
--            retvals[1] = ts->heap_limit;
-+            retvals[0] = heapbase;
-+            retvals[1] = heaplimit;
-             /*
-              * Note that semihosting is *not* thread aware.
-              * Always return the stack base of the main thread.
+-tests_generic_bsduser = [
+-]
++subdir('generic')
+ 
+ precache_all = []
+ foreach speed : ['quick', 'thorough']
+@@ -90,9 +79,7 @@ foreach speed : ['quick', 'thorough']
+ 
+     foreach test : target_tests
+       testname = '@0@-@1@'.format(target_base, test)
+-      if fs.exists('test_' + test + '.py')
+-        testfile = 'test_' + test + '.py'
+-      elif fs.exists('generic' / 'test_' + test + '.py')
++      if fs.exists('generic' / 'test_' + test + '.py')
+         testfile = 'generic' / 'test_' + test + '.py'
+       else
+         testfile = target_base / 'test_' + test + '.py'
+diff --git a/tests/functional/x86_64/meson.build b/tests/functional/x86_64/meson.build
+index 696a9ecab42..d0b4667bb8a 100644
+--- a/tests/functional/x86_64/meson.build
++++ b/tests/functional/x86_64/meson.build
+@@ -16,7 +16,6 @@ tests_x86_64_system_quick = [
+   'migration',
+   'pc_cpu_hotplug_props',
+   'virtio_version',
+-  'vnc',
+   'memlock',
+ ]
+ 
 -- 
 2.47.2
 

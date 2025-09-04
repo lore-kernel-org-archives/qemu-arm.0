@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7B94CA1013
-	for <qemu-arm@archiver.kernel.org>; Thu,  4 Sep 2025 08:22:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3B8ACA1015
+	for <qemu-arm@archiver.kernel.org>; Thu,  4 Sep 2025 08:22:38 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uu58p-0003iV-5i; Thu, 04 Sep 2025 04:16:23 -0400
+	id 1uu5B7-0001ER-MS; Thu, 04 Sep 2025 04:18:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1uu553-0006Yi-U5
- for qemu-arm@nongnu.org; Thu, 04 Sep 2025 04:12:30 -0400
-Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
+ id 1uu55j-00079c-Di
+ for qemu-arm@nongnu.org; Thu, 04 Sep 2025 04:13:12 -0400
+Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1uu54X-0004B7-Nw
- for qemu-arm@nongnu.org; Thu, 04 Sep 2025 04:12:27 -0400
-Received: by mail-ej1-x62d.google.com with SMTP id
- a640c23a62f3a-b03fa5c5a89so107100366b.2
- for <qemu-arm@nongnu.org>; Thu, 04 Sep 2025 01:11:57 -0700 (PDT)
+ id 1uu54z-0004MN-Ur
+ for qemu-arm@nongnu.org; Thu, 04 Sep 2025 04:13:11 -0400
+Received: by mail-ed1-x529.google.com with SMTP id
+ 4fb4d7f45d1cf-61ce4c32a36so1286351a12.3
+ for <qemu-arm@nongnu.org>; Thu, 04 Sep 2025 01:12:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756973516; x=1757578316; darn=nongnu.org;
+ d=linaro.org; s=google; t=1756973535; x=1757578335; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=ihVvxQgeNn/GjHbnY+gzjmvaE+8lZrZaLCxntP4XREM=;
- b=avRlE9VTTURAZOpb8FUB9d5rAta+5agkzNhCtstztO98O/IqGmh327Lerp0U/0Qyi6
- 2J8wa16ayXLXhtD8YVrpoyzNpbX7QwZUFS08/cTWtqzCaPDkQD01Fk2+xE5ZLZvzccqK
- dsFEgfB1VFl+1e/hy6r4RdTP9GhuxupWH7W+h94fpF775L8vwTpvKG7UYVFm7CuT8H6r
- FG1PXa9Prw6Ak+o01RrHwzRjK84YGFEEM0epn0h+hmSke3J9GKKH51zuj5F0TelqVnFO
- wiFadNt5/sR6U2sNtncBpzLbGv1rS4egHd0vF5ehKMQjKSveIeFjsEVPvGO9WQyoT4JQ
- 5lvA==
+ bh=vQnG/U24JxcVs8uXNe4IaAjnYt4W8HHMeVrbu0X+rAg=;
+ b=g0e8JVpqbJmnTRUczhf9QIQk51HRdS1HaTaFuzFeGUJOF/4oP0cx1SsfJd6/lWxMXV
+ llD841HT24ISXYswTQruFQDVR7GbMi0F146bmjnFZfzPEGdWV5J3jPLfF/zoXrej1cCi
+ J/WOfmOBpmBZp5UlSVwOfnBTc3CZQOXVUVmlQgGfHT5yxVNPLX9fWa5jpkIrIJRD1/wN
+ w01xbDyCtAsY82RJxCOIwpB2xiWaX4qCbBXZ2bwMXkSgBQVWcd0rrUsLTrTSN1nXt/pU
+ FiHnVfp8B5P7WV9EnD+ZBPTApndE+Yptiuvhr20iViNAz4DkfgjYJIDSPfvwOdIQpU+s
+ IMUw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756973516; x=1757578316;
+ d=1e100.net; s=20230601; t=1756973535; x=1757578335;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=ihVvxQgeNn/GjHbnY+gzjmvaE+8lZrZaLCxntP4XREM=;
- b=dkQ9e657nFWCwR0OPgjeO/HlHrIinc2RoiTKxakdTKVPJbdUi0UXeLxqiMpUbuCNtH
- bleAbvkZWeXCzud2ewP/AYeb/JoQ8ddkPcl5h4bnwQ3mRkdnhstKW+DLFJvPBgwG9e+m
- ouQrvE8+qerAXNUsXfUIhMuYRSDmeqR6Knx2WlSymEeu6ZXT5e6V7h3K2XTxTMZx8wET
- 7egnWEZSA6S8c59fmdLp2sVGxqRqKlOof1DXukYRe72AbST22jkMsy3y9bnVJAKg+Mqb
- Tq5HPDsxtwUmxM7K5VMIzFFaB0mwUMzADMm4n2w1+Xm6o3AAXnqQOo/mt28Nb2AR989q
- l2Fw==
+ bh=vQnG/U24JxcVs8uXNe4IaAjnYt4W8HHMeVrbu0X+rAg=;
+ b=HP7MSnad4o+f7bCRqWwUsA8GY0otofFlP96YHVetpHNDp919YDN4L/PG750LLYC0nW
+ cUA8gbFG2PPwIyesv9zaFBuwPUtXdTPp3+Nj4LAdJ4Mc9d5XPUJyctgvd0M6nFWJlgpJ
+ M1hFlu+HfIGhXpc9GW0cSq6QKLM+bCJPBNps6KzoplQ3IOLGu5z74fLxq+mTC41e+91O
+ FggSvC409W9VRNZ19fsNlIZ2boRP3WSN2qYTmY4sC1bw95jLIkG5QWSMZLPQxjpnTvT/
+ JjxYeMuLmGiYGTVGl0RdDuZCPuyaneFJJllgnJ/aHyKYQMfQ0fRYVJQ/iSUBozRip2mZ
+ Y4Jw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVDymFJ3xqgrSbiJE3Wp5jG3rYwBUyHtJfeyjIufNL1DabwidY9AYcuuBYsk5dqdvCM9ah1IEI5sg==@nongnu.org
-X-Gm-Message-State: AOJu0YxVGXu1rS9mRrO9dUAudpJB5Wa4BccuLqfQ/IVLTYngqCm3e6AZ
- xfe1FXfFNBHHcMT7RXJtuMcJdOecrw15eDmNa/FNdzSqxkKbUcI0nIzDNLO+Y8bTBwo=
-X-Gm-Gg: ASbGncujv8JRUyRyNt3zUEGx+pNOAeWeNDmdSJh6mIN06jzcT7KFZ7QcmwWfDsbpyWG
- LjvNs+QOyTHouHPx+eD5uar5eto6tJONc3Y5GEyqkJQmEJyB3sSjTVcQJKiCkP7+vQX7JGQCSVv
- l5pXfbjaMVKSomQxDWBicCxja1O55dCLGLqNXAfq7kx2aC77z7CTTx3DLXg3K9DD0K9Ljt0JTs3
- 56Inzu3TEAF51FmXBipELS4JRtdcSlgnMFpnva63zd4yec3QgJwHSTSf2cBZtBVtV9EbEYalg/K
- b90DIac5oSypPNdqq3YJ471QtDU1pL1lxlBC8JnyvJszJ2f1owhRdzvIuw+7tTp02hGk3qJwe/x
- vHA2IOtZsdI1B7v0RZDQYl/g=
-X-Google-Smtp-Source: AGHT+IHF6//fHkPucTdbNirjCdcOWpSIOVl4cq4nqNFlguQRGLj7oDrlFtx+sNM4o4xhUH6MIprtJA==
-X-Received: by 2002:a17:907:3f9f:b0:b04:25ae:6c79 with SMTP id
- a640c23a62f3a-b0425ae72b6mr1579471466b.33.1756973515987; 
- Thu, 04 Sep 2025 01:11:55 -0700 (PDT)
+ AJvYcCUYO27pOetgsndJ6cfx2WPNAYSc861wHcrJaKF/g4EKQVNh90GNsaEUUxLMspl9q52tbguPdnCK1g==@nongnu.org
+X-Gm-Message-State: AOJu0YwRztWB8lJbsE1iAxVB7p3Fwv257vwLpULK4ys9bPr38CEYR2Ii
+ ZH7Yw1Nby8g5WPApK6GLJCklhCOJ2uNsI7dmwMJ5LJTbNhMbcXpcZ1ULrrWPyQ89lOw=
+X-Gm-Gg: ASbGncufhiGzbxbVfIbzmfjQrdypnTmoRza8ourvY0h6Qsfs1FtuJlNZ7GKnwAcabFt
+ AxhcW0XaM0EDkvvrS9kZIzxgFcSLuu9zImRIargciUUCEr3CMsJ7OkogpPe4LPPj3+tUXzYnOaW
+ UhfO15ZJqkjJJsR/OldwFGMGFQ9kNIxaNnVxWyaohIl6UIcTHCJvpq7ZseYK+04OtLhW2RoEfEG
+ O2xZ6QeriU6sXWoiVgNoQrH9SHYG4J4+iRQ8dVG5pqvpB19czLEb3aw7WR3EPWocjPq0dBWWrqe
+ +jAUnA3WB+KO7BeQRfsHLr3ap4RpxmQ8zpcowYYf2kURrx0b7u03d6h3wVXQSS4yw1i17i+J41C
+ WED7fh3unDnmKeMJem1eDhr9tLnY4eJeJsw==
+X-Google-Smtp-Source: AGHT+IEk45Qbq8ehMluQHQz42r6NoQthOXxreJpDeYMEyBAJ1pxkh474hyQr7aZGMvYK50yJiEKqPw==
+X-Received: by 2002:a17:906:274e:b0:b04:a39:9b98 with SMTP id
+ a640c23a62f3a-b040a399f04mr1219532866b.5.1756973535021; 
+ Thu, 04 Sep 2025 01:12:15 -0700 (PDT)
 Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-b047373b000sm227427066b.68.2025.09.04.01.11.50
+ a640c23a62f3a-b040d44c9adsm1190635766b.9.2025.09.04.01.12.07
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 04 Sep 2025 01:11:55 -0700 (PDT)
+ Thu, 04 Sep 2025 01:12:11 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 0EB89601A4;
- Thu, 04 Sep 2025 09:11:34 +0100 (BST)
+ by draig.lan (Postfix) with ESMTP id 7063C60AFE;
+ Thu, 04 Sep 2025 09:11:39 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Reinoud Zandijk <reinoud@netbsd.org>,
@@ -130,23 +130,23 @@ Cc: Reinoud Zandijk <reinoud@netbsd.org>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
  Nicholas Piggin <npiggin@gmail.com>, John Levon <john.levon@nutanix.com>
-Subject: [PATCH v2 048/281] semihosting: Retrieve stack top from image_info
-Date: Thu,  4 Sep 2025 09:07:22 +0100
-Message-ID: <20250904081128.1942269-49-alex.bennee@linaro.org>
+Subject: [PATCH v2 088/281] linux-user/hppa: Create init_main_thread
+Date: Thu,  4 Sep 2025 09:08:02 +0100
+Message-ID: <20250904081128.1942269-89-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.2
 In-Reply-To: <20250904081128.1942269-1-alex.bennee@linaro.org>
 References: <20250904081128.1942269-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62d;
- envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x62d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::529;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x529.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -164,97 +164,68 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Richard Henderson <richard.henderson@linaro.org>
 
-Remove the write-once field TaskState.stack_base, and use the
-same value from struct image_info.
+Merge init_thread and target_cpu_copy_regs.
+There's no point going through a target_pt_regs intermediate.
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- linux-user/qemu.h             | 1 -
- linux-user/aarch64/cpu_loop.c | 1 -
- linux-user/arm/cpu_loop.c     | 1 -
- linux-user/m68k/cpu_loop.c    | 1 -
- linux-user/riscv/cpu_loop.c   | 1 -
- semihosting/arm-compat-semi.c | 6 +++++-
- 6 files changed, 5 insertions(+), 6 deletions(-)
+ linux-user/elfload.c       | 13 +------------
+ linux-user/hppa/cpu_loop.c | 18 +++++++++++-------
+ 2 files changed, 12 insertions(+), 19 deletions(-)
 
-diff --git a/linux-user/qemu.h b/linux-user/qemu.h
-index 0b19fa43e65..b6621536b36 100644
---- a/linux-user/qemu.h
-+++ b/linux-user/qemu.h
-@@ -127,7 +127,6 @@ struct TaskState {
-     abi_ulong heap_base;
-     abi_ulong heap_limit;
- #endif
--    abi_ulong stack_base;
-     int used; /* non zero if used */
-     struct image_info *info;
-     struct linux_binprm *bprm;
-diff --git a/linux-user/aarch64/cpu_loop.c b/linux-user/aarch64/cpu_loop.c
-index fea43cefa6b..b65999a75bf 100644
---- a/linux-user/aarch64/cpu_loop.c
-+++ b/linux-user/aarch64/cpu_loop.c
-@@ -168,7 +168,6 @@ void target_cpu_copy_regs(CPUArchState *env, target_pt_regs *regs)
-         qemu_guest_getrandom_nofail(&env->keys, sizeof(env->keys));
+diff --git a/linux-user/elfload.c b/linux-user/elfload.c
+index 556f11d720d..4876e4b0a80 100644
+--- a/linux-user/elfload.c
++++ b/linux-user/elfload.c
+@@ -864,18 +864,7 @@ static void elf_core_copy_regs(target_elf_gregset_t *regs,
+ 
+ #define VDSO_HEADER "vdso.c.inc"
+ 
+-static inline void init_thread(struct target_pt_regs *regs,
+-                               struct image_info *infop)
+-{
+-    regs->iaoq[0] = infop->entry | PRIV_USER;
+-    regs->iaoq[1] = regs->iaoq[0] + 4;
+-    regs->gr[23] = 0;
+-    regs->gr[24] = infop->argv;
+-    regs->gr[25] = infop->argc;
+-    /* The top-of-stack contains a linkage buffer.  */
+-    regs->gr[30] = infop->start_stack + 64;
+-    regs->gr[31] = infop->entry;
+-}
++#define HAVE_INIT_MAIN_THREAD
+ 
+ #define LO_COMMPAGE  0
+ 
+diff --git a/linux-user/hppa/cpu_loop.c b/linux-user/hppa/cpu_loop.c
+index 9abaad5ef81..3af50653bb7 100644
+--- a/linux-user/hppa/cpu_loop.c
++++ b/linux-user/hppa/cpu_loop.c
+@@ -196,12 +196,16 @@ void cpu_loop(CPUHPPAState *env)
      }
+ }
  
--    ts->stack_base = info->start_stack;
-     ts->heap_base = info->brk;
-     /* This will be filled in on the first SYS_HEAPINFO call.  */
-     ts->heap_limit = 0;
-diff --git a/linux-user/arm/cpu_loop.c b/linux-user/arm/cpu_loop.c
-index 33f63951a95..e40d6beafa2 100644
---- a/linux-user/arm/cpu_loop.c
-+++ b/linux-user/arm/cpu_loop.c
-@@ -504,7 +504,6 @@ void target_cpu_copy_regs(CPUArchState *env, target_pt_regs *regs)
-     arm_rebuild_hflags(env);
- #endif
- 
--    ts->stack_base = info->start_stack;
-     ts->heap_base = info->brk;
-     /* This will be filled in on the first SYS_HEAPINFO call.  */
-     ts->heap_limit = 0;
-diff --git a/linux-user/m68k/cpu_loop.c b/linux-user/m68k/cpu_loop.c
-index 5da91b997ae..3aaaf02ca4e 100644
---- a/linux-user/m68k/cpu_loop.c
-+++ b/linux-user/m68k/cpu_loop.c
-@@ -117,7 +117,6 @@ void target_cpu_copy_regs(CPUArchState *env, target_pt_regs *regs)
-     env->aregs[7] = regs->usp;
-     env->sr = regs->sr;
- 
--    ts->stack_base = info->start_stack;
-     ts->heap_base = info->brk;
-     /* This will be filled in on the first SYS_HEAPINFO call.  */
-     ts->heap_limit = 0;
-diff --git a/linux-user/riscv/cpu_loop.c b/linux-user/riscv/cpu_loop.c
-index 3ac8bbfec1f..541de765ffa 100644
---- a/linux-user/riscv/cpu_loop.c
-+++ b/linux-user/riscv/cpu_loop.c
-@@ -109,7 +109,6 @@ void target_cpu_copy_regs(CPUArchState *env, target_pt_regs *regs)
-         exit(EXIT_FAILURE);
-     }
- 
--    ts->stack_base = info->start_stack;
-     ts->heap_base = info->brk;
-     /* This will be filled in on the first SYS_HEAPINFO call.  */
-     ts->heap_limit = 0;
-diff --git a/semihosting/arm-compat-semi.c b/semihosting/arm-compat-semi.c
-index 86e5260e504..bc04b02eba8 100644
---- a/semihosting/arm-compat-semi.c
-+++ b/semihosting/arm-compat-semi.c
-@@ -696,7 +696,11 @@ void do_common_semihosting(CPUState *cs)
- 
-             retvals[0] = ts->heap_base;
-             retvals[1] = ts->heap_limit;
--            retvals[2] = ts->stack_base;
-+            /*
-+             * Note that semihosting is *not* thread aware.
-+             * Always return the stack base of the main thread.
-+             */
-+            retvals[2] = ts->info->start_stack;
-             retvals[3] = 0; /* Stack limit.  */
- #else
-             retvals[0] = info.heapbase;  /* Heap Base */
+-void target_cpu_copy_regs(CPUArchState *env, target_pt_regs *regs)
++void init_main_thread(CPUState *cs, struct image_info *info)
+ {
+-    int i;
+-    for (i = 1; i < 32; i++) {
+-        env->gr[i] = regs->gr[i];
+-    }
+-    env->iaoq_f = regs->iaoq[0];
+-    env->iaoq_b = regs->iaoq[1];
++    CPUArchState *env = cpu_env(cs);
++
++    env->iaoq_f = info->entry | PRIV_USER;
++    env->iaoq_b = env->iaoq_f + 4;
++    env->gr[23] = 0;
++    env->gr[24] = info->argv;
++    env->gr[25] = info->argc;
++    /* The top-of-stack contains a linkage buffer.  */
++    env->gr[30] = info->start_stack + 64;
++    env->gr[31] = info->entry;
+ }
 -- 
 2.47.2
 

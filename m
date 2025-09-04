@@ -4,83 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A59ABCA1013
-	for <qemu-arm@archiver.kernel.org>; Thu,  4 Sep 2025 15:47:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F38DFCA1013
+	for <qemu-arm@archiver.kernel.org>; Thu,  4 Sep 2025 15:48:10 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uuCBM-0004mS-Ni; Thu, 04 Sep 2025 11:47:31 -0400
+	id 1uuCBj-0004yo-VO; Thu, 04 Sep 2025 11:47:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
- id 1uuCB7-0004he-Qs
- for qemu-arm@nongnu.org; Thu, 04 Sep 2025 11:47:15 -0400
-Received: from mail-vk1-xa2f.google.com ([2607:f8b0:4864:20::a2f])
+ id 1uuCBM-0004mJ-4F
+ for qemu-arm@nongnu.org; Thu, 04 Sep 2025 11:47:30 -0400
+Received: from mail-vk1-xa2c.google.com ([2607:f8b0:4864:20::a2c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
- id 1uuCB0-0008Ha-FE
- for qemu-arm@nongnu.org; Thu, 04 Sep 2025 11:47:13 -0400
-Received: by mail-vk1-xa2f.google.com with SMTP id
- 71dfb90a1353d-54488e51c37so500146e0c.2
- for <qemu-arm@nongnu.org>; Thu, 04 Sep 2025 08:47:04 -0700 (PDT)
+ id 1uuCBB-0008Qx-05
+ for qemu-arm@nongnu.org; Thu, 04 Sep 2025 11:47:24 -0400
+Received: by mail-vk1-xa2c.google.com with SMTP id
+ 71dfb90a1353d-545dccac2f9so1044499e0c.0
+ for <qemu-arm@nongnu.org>; Thu, 04 Sep 2025 08:47:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1757000824; x=1757605624; darn=nongnu.org;
+ d=linaro.org; s=google; t=1757000833; x=1757605633; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=w7W8AMCroqwaeXqVpYPQbxXgScT+t9hdJtgqiSQ+G30=;
- b=u+jEFJ9k551FDTzvO4nrpQgSiZrnF2GzxRqdkkG0IvmgK8Y2IXzXGVgi243a2DfaNg
- onaBSr5aJtzaY9ogo0gqMYGZL6TtoetWvB4ABdrGZzwEcahgA2hRHuYn3sPJn2i3Ey7A
- GMobxBz2cKxavpxUlVnwxMSwS1vUR2Xbz7e9Z7JNR3WNSkHN5wfRZzpttIbFgZOTUVTG
- /q4LfwIsVRpM2N+jwkO/Ebhru4h9o5Hc9coGCxoOWACwfsqW0vsHvHr0sZ5XokA54Tdb
- GBQ31rNsr+oPXpVrpMNIOeJ7JYgqA5FoPd8htkzfujh6kgWYmQ2kP5wzPkLq9Qzask7V
- qJww==
+ bh=Ly0Uw2HSTv1mCwT12MXqsgrBCGp5zOffCN0UNp08lAs=;
+ b=doUvwRRFbiP/9f6zGeOpZkfxYnDqumJGx/fRxmbXe1QB8jWyecURAmFy/hVlleZJdU
+ 0nQXwRs2yolSp8JFnV631nP6HsSIMNAATXqPnlG0kS3XGFPERKDWpmqwpfqbW3EVB382
+ ju3MSxDXmk3Pdi37WhQiyqrdNjRFa38eQzEBTopXpkElUPodf5M0lnabQV13+Q9tef4C
+ fg7d93u/sYKSCAAY7xmdPH+w7ZH6J9NBHlqNN7qDluSY8HUXxyG44Dw8v+3UMiKbVP/G
+ ITJN2AfKqSUV6gE+mQkK7tRTRi5VxrBekVt9hCxnlDKruU11L6OFBOItGVRS79XaGbuP
+ zjBA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1757000824; x=1757605624;
+ d=1e100.net; s=20230601; t=1757000833; x=1757605633;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=w7W8AMCroqwaeXqVpYPQbxXgScT+t9hdJtgqiSQ+G30=;
- b=WZYmLt4L5gLU+vDC6oLBo5s+oYiMtZMisl6wriQ8RICAncAQywKXyS4mWGO5oKGixh
- Eylbof7F2uJf0wRgzo9yq6HG9p7g+liUVlF7CLmtUqcyCILX4qf/5T2Fp+dUl7e9Jke/
- 9AzWeUHF2ITRSNR8ssmMScNuCi7hPK9NvRbXdlYbzClWRAp09FT/AAjxkcgqAmm1KwVT
- mc9Hld08YuY7RUpsDoTbUqG523O2WTswdXe57glskxx575xvL3MvU3EgKjZrvoHYLvgk
- X/BzbR5V1XV5vx1nEfdbf0AmO5hMbTQpZrwZ2dbmeigGUSTV4yy2HYn1nu3zpIDZG4pD
- 1Rog==
-X-Gm-Message-State: AOJu0YwtgpYHxOCqhQ5Q9K7putENp9Da5efdaCzHuOdQfhqcYbDbJA9b
- 9qhTmUeqmye4zaWw3IrPWuSyfzmVe9EetmSQDeOCTx1pmEs82oaE724+0Ehza1ITLjubhVjb3YC
- dAViefWh8BA==
-X-Gm-Gg: ASbGncsvYuIxyhM7Q1LCQitLJHdboxDJqb1cY2WQnmNNAnuJOrFNcy4Gi+qlV2Fs6a7
- TOB3QbqVpCyw0N4xZWvuHVJw1UQtRiMa8yH0xMlI1pVCWTJgjwrtQr+MApu4w4ZPSHCFi+CivMC
- nincvh0kdO/XTwuNYg/KlpKGD4ibBAsQ99EfBu3vTp0phw2rgUIaMCZklKpVcuIaJp2Iq7uytax
- 5pcRM8WhSu70Ho9RZsDflw/UHhO7gLf8g8Ky1VwMy+lOSzrhlsny4hdzTGFa7eThFgRxPXu7Mzm
- 0PNAYUjyMAVdNAMDkeZB9NbeuRa9bnrKG1qZug5nytUCr17oiGAV3Jvx7sOqBDwp9R42WFXqxJv
- SHxdJ8YO/nw0Kf5vsv1IdBsJLLbNp
-X-Google-Smtp-Source: AGHT+IF1INOgEwi5XuzYYf8xmg/ZUfMMO6YYhiWR+h5YxK7FFBUBbVtiSECAhjpN0ymfBkDR36+qwA==
-X-Received: by 2002:a05:6122:2022:b0:543:cd49:ce78 with SMTP id
- 71dfb90a1353d-544a02889edmr7340174e0c.14.1757000823807; 
- Thu, 04 Sep 2025 08:47:03 -0700 (PDT)
+ bh=Ly0Uw2HSTv1mCwT12MXqsgrBCGp5zOffCN0UNp08lAs=;
+ b=RUBU/7rUHpo1OCaRVmAHAtmHaX2uPLEMWuw95JQMcfY2cx1g3LO2FOSCH/C/o79DZq
+ PmBldlnZ3vfIpO7Mn4Jz43awgRwgT7MgHVMqUo25mTWOaKb9p749AzEeXur26wrI2F0L
+ jucZu5vYVuqAs7yiYKeBCKGqyKAUDyUrlEOkCz4G+tmVQ562FMwENZyMPD6fPizPE6j6
+ 15GLoKO5fZfX/NMvGxo3vQHZzAmLWibqLm8UKkLgxF+WVD6kr+bcx5J+75uFtnoocYkf
+ ptwjXRC/PD1SHzt8LhxsqTN1hOhU2YoKRxilZvnxrBrX0pgkTAcWwhBkel3djZ1cAveE
+ +a0w==
+X-Gm-Message-State: AOJu0Yx8vjacxZ1XLZvUJOxyZzv1gO6zE8MA1+hI+SUlGrRde/bJk3v3
+ +7Tw7Slk/WkvHgssJDYWfDFxKlqXl3WKJW/PzwE5ZFAGIkiDmj8F/SkydAIjokEqKy4=
+X-Gm-Gg: ASbGnctZgy7b9gSx/Rz9ZIynjtzvu/1d3EdXbuGMecTCSLxfVFeQr3ZPJ0R6Bkqg1Y6
+ 0tunDvrQzwp4gCvfk1WRnyJFT85HxW+rdi92kjotgkLIevoTLmOSlIIgSN7Ub+r3O9uVLrln25o
+ 0Bho7f99UbQammo/8qz8lhvheasWGEqxuhRERlfPw15LoiCcfplIDDCxm8Q3jvdzr3x31nwDJ6D
+ x0KlryE9REeXcRd+mIh46Vxf5R+qsRJhu53exDyyhKE5CWgwSYrSiWREi+z3lMTRMQ0ds8bPVcf
+ IydUaJmdpTFli0djkXdwDNTsm7rKTnBOzarEpYb0/o8vMCUmhQE1sW49q1jCwV2mUJTrwwydPbb
+ 4nkbqMGEjtqcTAtaZJG2RxUd8NY2f
+X-Google-Smtp-Source: AGHT+IHFjcODdw0kEcwKl4L5wi+0ipardMLyHLfTEl29Z2W0X38mLEXrv+P1oEoTZZCCFwtg/vsT2Q==
+X-Received: by 2002:a05:6122:2022:b0:544:9414:105d with SMTP id
+ 71dfb90a1353d-5449ff8d510mr7461027e0c.0.1757000832746; 
+ Thu, 04 Sep 2025 08:47:12 -0700 (PDT)
 Received: from gromero0.. ([186.215.58.133]) by smtp.gmail.com with ESMTPSA id
- 71dfb90a1353d-544a666da0csm6497022e0c.28.2025.09.04.08.47.01
+ 71dfb90a1353d-544a666da0csm6497022e0c.28.2025.09.04.08.47.10
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 04 Sep 2025 08:47:03 -0700 (PDT)
+ Thu, 04 Sep 2025 08:47:12 -0700 (PDT)
 From: Gustavo Romero <gustavo.romero@linaro.org>
 To: qemu-devel@nongnu.org, alex.bennee@linaro.org, thuth@redhat.com,
  berrange@redhat.com
 Cc: qemu-arm@nongnu.org,
 	1844144@gmail.com,
 	gustavo.romero@linaro.org
-Subject: [PATCH v2 1/5] tests/guest-debug: Make QEMU optional in run-test.py
-Date: Thu,  4 Sep 2025 15:46:36 +0000
-Message-Id: <20250904154640.52687-2-gustavo.romero@linaro.org>
+Subject: [PATCH v2 4/5] tests/functional: Support tests that require a runner
+Date: Thu,  4 Sep 2025 15:46:39 +0000
+Message-Id: <20250904154640.52687-5-gustavo.romero@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20250904154640.52687-1-gustavo.romero@linaro.org>
 References: <20250904154640.52687-1-gustavo.romero@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::a2f;
- envelope-from=gustavo.romero@linaro.org; helo=mail-vk1-xa2f.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::a2c;
+ envelope-from=gustavo.romero@linaro.org; helo=mail-vk1-xa2c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -103,128 +101,192 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This commit makes QEMU optional in run-test.py, allowing it to be used
-as a GDB runner, i.e., to call GDB and pass a test script to it without
-launching QEMU. In this configuration, it is the test script’s duty to
-configure and run the VMs that GDB connects to.
+Add support for running tests that require a specific runner.
 
-sys.argv passed via -ex now includes the full path to the test script in
-addition to the script’s arguments, which allows unittest introspection
-to work properly in case it is used in the test script.
+The test is specified via a tuple (name, runner, protocol), where name
+is the test name as found in the tests/functional directory without the
+'test_' prefix and the .py extension, runner is an array containing the
+runner and any arguments required by the runner, and protocol is
+the test protocol used by Meson to determine whether the test passed or
+failed.
 
-The --binary option continues to be required when --qemu is passed.
+The test tuples are added to arrays that follow the current naming
+logic but with the suffix '_with_runner' appended to their names. In
+Meson it's not easy to select an element in an array at runtime based on
+its type, so it's simpler to have a new array for these new test types
+than use the current ones from the tests that don't require a runner,
+and so avoid mixing strings and tuples in the same array.
+
+Currently there is only one runner, the GDB runner, but more runners can
+be defined and associated to a test via the tuple.
+
+The GDB runner is only defined if GDB is detected. The probe is done
+in 'configure' and the full path is passed to meson.build via the -Dgdb=
+option.
 
 Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
 ---
- tests/guest-debug/run-test.py | 60 +++++++++++++++++++----------------
- 1 file changed, 33 insertions(+), 27 deletions(-)
+ configure                     |  2 ++
+ meson.build                   |  4 +++
+ meson_options.txt             |  2 ++
+ scripts/meson-buildoptions.sh |  2 ++
+ tests/functional/meson.build  | 65 +++++++++++++++++++++++++++++++++++
+ 5 files changed, 75 insertions(+)
 
-diff --git a/tests/guest-debug/run-test.py b/tests/guest-debug/run-test.py
-index 75e9c92e03..d21a5dda77 100755
---- a/tests/guest-debug/run-test.py
-+++ b/tests/guest-debug/run-test.py
-@@ -15,6 +15,7 @@
- import subprocess
- import shutil
- import shlex
-+import sys
- import os
- from time import sleep
- from tempfile import TemporaryDirectory
-@@ -22,10 +23,10 @@
- def get_args():
-     parser = argparse.ArgumentParser(description="A gdbstub test runner")
-     parser.add_argument("--qemu", help="Qemu binary for test",
--                        required=True)
-+                        required=False)
-     parser.add_argument("--qargs", help="Qemu arguments for test")
-     parser.add_argument("--binary", help="Binary to debug",
--                        required=True)
-+                        required='--qemu' in sys.argv)
-     parser.add_argument("--test", help="GDB test script")
-     parser.add_argument('test_args', nargs='*',
-                         help="Additional args for GDB test script. "
-@@ -73,27 +74,30 @@ def log(output, msg):
-     socket_dir = TemporaryDirectory("qemu-gdbstub")
-     socket_name = os.path.join(socket_dir.name, "gdbstub.socket")
+diff --git a/configure b/configure
+index 274a778764..8e2e2cd562 100755
+--- a/configure
++++ b/configure
+@@ -1978,6 +1978,8 @@ if test "$skip_meson" = no; then
+   test -n "${LIB_FUZZING_ENGINE+xxx}" && meson_option_add "-Dfuzzing_engine=$LIB_FUZZING_ENGINE"
+   test "$plugins" = yes && meson_option_add "-Dplugins=true"
+   test "$tcg" != enabled && meson_option_add "-Dtcg=$tcg"
++  test -n "$gdb_bin" && meson_option_add "-Dgdb=$gdb_bin"
++
+   run_meson() {
+     NINJA=$ninja $meson setup "$@" "$PWD" "$source_path"
+   }
+diff --git a/meson.build b/meson.build
+index 0d42de61ae..7e0afe8288 100644
+--- a/meson.build
++++ b/meson.build
+@@ -75,6 +75,10 @@ have_user = have_linux_user or have_bsd_user
  
--    # Launch QEMU with binary
--    if "system" in args.qemu:
--        if args.no_suspend:
--            suspend = ''
-+    if args.qemu:
-+        # Launch QEMU with binary.
-+        if "system" in args.qemu:
-+            if args.no_suspend:
-+                suspend = ''
-+            else:
-+                suspend = ' -S'
-+            cmd = f'{args.qemu} {args.qargs} {args.binary}' \
-+                f'{suspend} -gdb unix:path={socket_name},server=on'
-         else:
--            suspend = ' -S'
--        cmd = f'{args.qemu} {args.qargs} {args.binary}' \
--            f'{suspend} -gdb unix:path={socket_name},server=on'
--    else:
--        if args.no_suspend:
--            suspend = ',suspend=n'
--        else:
--            suspend = ''
--        cmd = f'{args.qemu} {args.qargs} -g {socket_name}{suspend}' \
--            f' {args.binary}'
-+            if args.no_suspend:
-+                suspend = ',suspend=n'
-+            else:
-+                suspend = ''
-+            cmd = f'{args.qemu} {args.qargs} -g {socket_name}{suspend}' \
-+                f' {args.binary}'
+ sh = find_program('sh')
+ python = import('python').find_installation()
++# Meson python.get_path() on 'purelib' or 'platlib' doesn't properly return the
++# site-packages dir in pyvenv, so it is built manually.
++python_ver = python.language_version()
++python_site_packages = meson.build_root() / 'pyvenv/lib/python' + python_ver / 'site-packages'
  
--    log(output, "QEMU CMD: %s" % (cmd))
--    inferior = subprocess.Popen(shlex.split(cmd))
-+        log(output, "QEMU CMD: %s" % (cmd))
-+        inferior = subprocess.Popen(shlex.split(cmd))
+ cc = meson.get_compiler('c')
+ all_languages = ['c']
+diff --git a/meson_options.txt b/meson_options.txt
+index fff1521e58..5bb41bcbc4 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -36,6 +36,8 @@ option('trace_file', type: 'string', value: 'trace',
+ option('coroutine_backend', type: 'combo',
+        choices: ['ucontext', 'sigaltstack', 'windows', 'wasm', 'auto'],
+        value: 'auto', description: 'coroutine backend to use')
++option('gdb', type: 'string', value: '',
++       description: 'Path to GDB')
  
-     # Now launch gdb with our test and collect the result
--    gdb_cmd = "%s %s" % (args.gdb, args.binary)
-+    gdb_cmd = args.gdb
-+    if args.binary:
-+        gdb_cmd += " %s" % (args.binary)
-     if args.gdb_args:
-         gdb_cmd += " %s" % (args.gdb_args)
-     # run quietly and ignore .gdbinit
-@@ -103,11 +107,12 @@ def log(output, msg):
-     # disable prompts in case of crash
-     gdb_cmd += " -ex 'set confirm off'"
-     # connect to remote
--    gdb_cmd += " -ex 'target remote %s'" % (socket_name)
-+    if args.qemu:
-+        gdb_cmd += " -ex 'target remote %s'" % (socket_name)
-     # finally the test script itself
-     if args.test:
--        if args.test_args:
--            gdb_cmd += f" -ex \"py sys.argv={args.test_args}\""
-+        argv = [args.test] + args.test_args
-+        gdb_cmd += f" -ex \"py sys.argv={argv}\""
-         gdb_cmd += " -x %s" % (args.test)
+ # Everything else can be set via --enable/--disable-* option
+ # on the configure script command line.  After adding an option
+diff --git a/scripts/meson-buildoptions.sh b/scripts/meson-buildoptions.sh
+index 0ebe6bc52a..f4bd21220e 100644
+--- a/scripts/meson-buildoptions.sh
++++ b/scripts/meson-buildoptions.sh
+@@ -58,6 +58,7 @@ meson_options_help() {
+   printf "%s\n" '  --enable-ubsan           enable undefined behaviour sanitizer'
+   printf "%s\n" '  --firmwarepath=VALUES    search PATH for firmware files [share/qemu-'
+   printf "%s\n" '                           firmware]'
++  printf "%s\n" '  --gdb=VALUE              Path to GDB'
+   printf "%s\n" '  --iasl=VALUE             Path to ACPI disassembler'
+   printf "%s\n" '  --includedir=VALUE       Header file directory [include]'
+   printf "%s\n" '  --interp-prefix=VALUE    where to find shared libraries etc., use %M for'
+@@ -323,6 +324,7 @@ _meson_option_parse() {
+     --disable-fuzzing) printf "%s" -Dfuzzing=false ;;
+     --enable-gcrypt) printf "%s" -Dgcrypt=enabled ;;
+     --disable-gcrypt) printf "%s" -Dgcrypt=disabled ;;
++    --gdb=*) quote_sh "-Dgdb=$2" ;;
+     --enable-gettext) printf "%s" -Dgettext=enabled ;;
+     --disable-gettext) printf "%s" -Dgettext=disabled ;;
+     --enable-gio) printf "%s" -Dgio=enabled ;;
+diff --git a/tests/functional/meson.build b/tests/functional/meson.build
+index 2a0c5aa141..febd31a263 100644
+--- a/tests/functional/meson.build
++++ b/tests/functional/meson.build
+@@ -9,6 +9,25 @@ if get_option('tcg_interpreter')
+   subdir_done()
+ endif
  
++# Define the GDB runner if GDB is available.
++gdb = get_option('gdb')
++if gdb != ''
++    gdb_runner_script =  meson.project_source_root() + '/tests/guest-debug/run-test.py'
++    gdb_runner = [gdb_runner_script, '--quiet', '--gdb', gdb, '--test']
++
++    message('GDB runner defined based on GDB found at: ', gdb)
++
++    # A test with a runner is a tuple (name, runner, protocol).
++    # The tests must be elements of an array named like:
++    #
++    # test_<arch>_<mode=[system|linuxuser|bsduser]>_<speed=[quick|thorough]>_with_runner = [
++    #      ['test0', gdb_runner, 'exitcode'],
++    #      ...
++    # ]
++else
++    message('GDB not found, skipping functional tests that rely on it.')
++endif
++
+ subdir('aarch64')
+ subdir('alpha')
+ subdir('arm')
+@@ -61,9 +80,11 @@ foreach speed : ['quick', 'thorough']
+       suites = ['func-quick', 'func-' + target_base]
+       target_tests = get_variable('tests_' + target_base + '_' + sysmode + '_quick', []) \
+                      + get_variable('tests_generic_' + sysmode)
++      target_tests_r = get_variable('tests_' + target_base + '_' + sysmode + '_quick_with_runner', [])
+     else
+       suites = ['func-' + speed, 'func-' + target_base + '-' + speed, speed]
+       target_tests = get_variable('tests_' + target_base + '_' + sysmode + '_' + speed, [])
++      target_tests_r = get_variable('tests_' + target_base + '_' + sysmode + '_' + speed + '_with_runner', [])
+     endif
  
-@@ -129,10 +134,11 @@ def log(output, msg):
-         log(output, "GDB crashed? (%d, %d) SKIPPING" % (result, result - 128))
-         exit(0)
+     test_deps = [roms, keymap_targets]
+@@ -121,6 +142,50 @@ foreach speed : ['quick', 'thorough']
+            priority: time_out,
+            suite: suites)
+     endforeach
++
++    # Prepare tests that require a specific runner.
++    foreach test : target_tests_r
++      testname = '@0@-@1@'.format(target_base, test[0])
++      testfile = target_base / 'test_' + test[0] + '.py'
++      testpath = meson.current_source_dir() / testfile
++      teststamp = testname + '.tstamp'
++      testrunner  = test[1]
++      testproto = test[2]
++
++      # python_site_packages, i.e., site packages from Python in pyvenv, is
++      # added to PYTHONPATH because some runners can run a program that has its
++      # own Python hooks that, by its turn, will search for modules based on
++      # PYTHONPATH independently of the Python used by the runner, like, for
++      # example, GDB using libpython.
++      test_r_precache_env = test_precache_env
++      test_r_precache_env.append('PYTHONPATH', python_site_packages)
++      # For similar reasons, PYTHONPATH must also include the path to the test
++      # scripts, otherwise unittest's introspection will failed.
++      test_r_precache_env.append('PYTHONPATH', meson.current_source_dir() / target_base)
++
++      precache = custom_target('func-precache-' + testname,
++                               output: teststamp,
++                               command: [testrunner, testpath],
++                               depend_files: files(testpath),
++                               build_by_default: false,
++                               env: test_r_precache_env)
++      precache_all += precache
++
++      # See comments above about PYTHONPATH in test_r_precache_env.
++      test_r_env = test_env
++      test_r_env.append('PYTHONPATH', python_site_packages)
++      test_r_env.append('PYTHONPATH', meson.current_source_dir() / target_base)
++
++      test('func-' + testname,
++           python,
++           depends: [test_deps, test_emulator, emulator_modules, plugin_modules],
++           env: test_r_env,
++           args: [testrunner, testpath],
++           protocol: testproto,
++           timeout: time_out,
++           priority: time_out,
++           suite: suites)
++    endforeach
+   endforeach
+ endforeach
  
--    try:
--        inferior.wait(2)
--    except subprocess.TimeoutExpired:
--        log(output, "GDB never connected? Killed guest")
--        inferior.kill()
-+    if args.qemu:
-+        try:
-+            inferior.wait(2)
-+        except subprocess.TimeoutExpired:
-+            log(output, "GDB never connected? Killed guest")
-+            inferior.kill()
- 
-     exit(result)
 -- 
 2.34.1
 

@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35EEACA1013
-	for <qemu-arm@archiver.kernel.org>; Thu,  4 Sep 2025 08:22:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3627FCA1013
+	for <qemu-arm@archiver.kernel.org>; Thu,  4 Sep 2025 08:22:22 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uu54K-0005xP-Vh; Thu, 04 Sep 2025 04:11:45 -0400
+	id 1uu5C5-00024F-EA; Thu, 04 Sep 2025 04:19:50 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1uu54J-0005vy-Gg
- for qemu-arm@nongnu.org; Thu, 04 Sep 2025 04:11:43 -0400
-Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
+ id 1uu55j-00079s-SS
+ for qemu-arm@nongnu.org; Thu, 04 Sep 2025 04:13:12 -0400
+Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1uu54A-0003wW-Jc
- for qemu-arm@nongnu.org; Thu, 04 Sep 2025 04:11:43 -0400
-Received: by mail-ej1-x62f.google.com with SMTP id
- a640c23a62f3a-afeec747e60so137315666b.0
- for <qemu-arm@nongnu.org>; Thu, 04 Sep 2025 01:11:33 -0700 (PDT)
+ id 1uu54z-0004KB-VN
+ for qemu-arm@nongnu.org; Thu, 04 Sep 2025 04:13:11 -0400
+Received: by mail-ej1-x62e.google.com with SMTP id
+ a640c23a62f3a-aff0365277aso296082966b.1
+ for <qemu-arm@nongnu.org>; Thu, 04 Sep 2025 01:12:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756973492; x=1757578292; darn=nongnu.org;
+ d=linaro.org; s=google; t=1756973532; x=1757578332; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=pfipyU6Vd8H7OBNmQiaCitsZISqNnzAeEnNiRJw+yKE=;
- b=dlQbIFG5/qKWxw/fXIBP8mzIIzb544P7rW/2ndztKyciy9bA6Hite74T1YOdGGazOf
- lY71eKPzjTDjUXgzLvdenW3iBluYz7RVqvmz+mbsXnsbjDG0mj09jFAd+3kPSxfLz9Bq
- mPx512whS7++sqXWbmyRCeiB2UoD5ueboLbAIySiedzStYgGqzPpLeb8xrP/QFu3jIw/
- kzeHSZAbbjp/x3CwrVZUUFS3U7S9Rv/xBZvE9ZUWpZWV0SJTcAM/7YW2RvyWxYqrHXv5
- yXjyBKk1rcZrSgArsVYKtlIqFXsb/Lnaf5TIn63KFpMmUhpnYCNnxD4p74RkOUOz4Phw
- Haeg==
+ bh=2o641iW9Eoei/+yvUIKi4qJ7pGzfbvmdWyUoyzoyuTo=;
+ b=MaR8o6vrw57RtRMPxoRGPLvvCFUsBxdbc3Px7tT0VeJg39+lEeelIfI19GfdopItzQ
+ BQT6kwvmxLBx88UmomHmBuYjIPMcpJPJavr+dRKlvi1xVMKHDh323AGJOmnOA6mciTbt
+ 4xjdUHIJ3ObDxfTIB9vHuQa32q9YMuczBLcqf1c+g/E1JiTK5ypmO66r6aYWmlYHvlIc
+ HZyS1FrEx92rmJeKA72tWvKDDV2XbBV+xJR88ChiZvRaglwxSpTnj+vM6V1qve9uZlBd
+ a6MOkJ5KMU3lOXEBRhOYm2gYY+KiK4JJEqzlorMGBYO7u/p5n8kuGjUlIPW+Q9XGQcJR
+ IvoA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756973492; x=1757578292;
+ d=1e100.net; s=20230601; t=1756973532; x=1757578332;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=pfipyU6Vd8H7OBNmQiaCitsZISqNnzAeEnNiRJw+yKE=;
- b=cMfIWSua8O/dT6NirqwD3cHjScqEQ/GRC8SG+otcs4rHBm9R9UuhHMVku8G0Rq0Plw
- mgbtCTjGHYgb+16B3Rq9GtL7nhB2ynwBdla8kbinGqJ0F7CD/H46EGiTkOd8tffAsm3F
- o1rQuuKv4yVqziQ4csdfk28fOTSvHtC3Hubvh/ToS5FeWulXn144iwGjN+2VattJHy91
- grkoftPmgEdvaNWv4/tiBr1Igh+o4TOozGzB6zWhoRvMA089xCunPzRrdUOynwXqft0b
- p3H5bBCwl/Y8wPoNrjxkfGBtTKl5pFRSgm7bw7yCKn0n8QGMkWHoijRLH542A1I1OLCX
- IWoQ==
+ bh=2o641iW9Eoei/+yvUIKi4qJ7pGzfbvmdWyUoyzoyuTo=;
+ b=vSTW4iJlTF577m9NMEbdMUdbK8UQ7LvuCaIbtNge9YvE4mLmYwdPSsPigkKhBKpWnf
+ eR60bmBz4k/fxHFFVwucR9weBRJLdQTv4q43KC9o7mp0YSk7L86omV+7yZCxSdgB2E7f
+ KVK+sLrEQjFt02W21bDQlNexBl5CaSmehpCphcdBNFMnsHRQqqMiORIw+V/zsB0MQ0B9
+ dM+Qj7K9grh0bSOj7+mH5RFy2BhDNtXIVrlrkf+h2sNQFYMtYfI/zcPy9PcGsbpkPTVA
+ iWzh7ItZOicz2wzY+8peQjgr95Meb8WiwZufonnCi+Y7+mWrPh9Fq4xmlSHMJzSYqRtD
+ P+hw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXr0VDNpvIH1467i0Urse2rzCHBu+n+u9RmAM9eQyn78pbbKbasrkz6zxYF3R16Hbz0bUZKvLDoaA==@nongnu.org
-X-Gm-Message-State: AOJu0Yx4tee1/UTF0cfHgZaVM8H+nIEGDCEe5Sd/jHUf9+qWvxkaO7/2
- SCLNh6wW2E3tBlf+/hq/sm+kTR/npFV1iKFnRv7nJhXZGG7ewSqQVA2VsBd2B/b8muE=
-X-Gm-Gg: ASbGnct/7rDSOk1ACtQwhPn1HKswlB9VrFyxf3Z4QZYhXq6EtCvVv+lupQGts8xFQpJ
- YN6ONGqbZsYS8UG2uXpNiC0+5xlm02FOywQpxu0a1egx5/7YFb85HhlrnVvlbDNqFTz62Fi6McF
- Ivz6oq2jcJpNjZdRsTzF5nhdaOi2Iuuy8+FkbQC7qWd6QIRkS5aFe3FdPW6jeCmp2GVMSjDt+g8
- IDJwXLMALkV3ykXKAMxsYqXKOEE56GkntLxpKNfz/Ye/4WRZ1qYP/o6iOkPFlUhzYc4jMh2TpC4
- WHqStBJgZjJYGr0Wn0phsCSRVv6XtQN3tIP31hPnilY4CMOWalQ2eKPl+8QsSq7kArr8DYzpGJD
- lY4yW4kJjPDrwp9grhkdd25lut9lhckQpAQ==
-X-Google-Smtp-Source: AGHT+IFjczJHEVrliDdkN8vtWVVQWwK/1wnn/orDs4OuNOiIHgytoVYA6b0lvt1yt3hQ6A6pduudqw==
-X-Received: by 2002:a17:907:1c19:b0:b04:522c:e113 with SMTP id
- a640c23a62f3a-b04522d1ce2mr811509666b.53.1756973492290; 
- Thu, 04 Sep 2025 01:11:32 -0700 (PDT)
+ AJvYcCX+uJOCVcjBSMxLSdQZ43ir9DUECISDKyMZtTWBqyEgX22WldkKKPsEjBMWTp/RBIWulMuI/lzvew==@nongnu.org
+X-Gm-Message-State: AOJu0YyBEFb809dLIQI+Cvsyuva53fS2XB8n4VkoprphnkX+2j+4JkRp
+ 7LE+WkFlq1m/z8VkHihoz9CIJNwis1hXES6jOWHEo7A5pYvirG4eF/YxGFKacYl/3Qo=
+X-Gm-Gg: ASbGncvb9qqebilS3VKh4sPgSXwpuCaaORJkjqEaAZtAxMQLvYLDoK9IJydpbI0gY2y
+ TQRTcCtVmEuC7E+w2WwSqMAv50b8ofrPq/PmRGNW7yznxVju0N+zLCDPfiwPfyENEaiLbE57gvU
+ /iLzh+JytgEC3SAsVPX6mYhswhto9tpnEtlxYq2icCW/IBSRXcFaGQiL7P4g5ZWp/D6x89Hxf0m
+ I2Pis6o6iMH67RQeOU2hLuO6yNOb9h9GJ6Ot8s1gfMlzcaE84KpdjmJ3RjIoGxpFu3B1aTUgtUM
+ 6H1vLSo/ENkYsouV4NiRp6TUIRZ4jxMP8Vyv+PdoOcvAnKq1GvKfgS9rBKhy7Z91YYCtL7O4Rvk
+ 0kWEPvgOEFHvOsVJ1/Epz/TTiON5wnwscF9brcX0wQdwb
+X-Google-Smtp-Source: AGHT+IFRWP93DeFvBNFSEqwG675Cj/btk2l4s4YK0xamVXgNGZ9i6guK5BnVwvSUxNT8B2oceqap3g==
+X-Received: by 2002:a17:906:5857:b0:b04:6546:3475 with SMTP id
+ a640c23a62f3a-b0465463a6dmr590051766b.6.1756973532269; 
+ Thu, 04 Sep 2025 01:12:12 -0700 (PDT)
 Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-b0466a962c4sm392430866b.71.2025.09.04.01.11.29
+ a640c23a62f3a-aff12a6b404sm1395235866b.88.2025.09.04.01.12.04
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 04 Sep 2025 01:11:29 -0700 (PDT)
+ Thu, 04 Sep 2025 01:12:10 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 674E15F913;
- Thu, 04 Sep 2025 09:11:28 +0100 (BST)
+ by draig.lan (Postfix) with ESMTP id D4EB660AE4;
+ Thu, 04 Sep 2025 09:11:38 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Reinoud Zandijk <reinoud@netbsd.org>,
@@ -130,23 +130,23 @@ Cc: Reinoud Zandijk <reinoud@netbsd.org>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
  Nicholas Piggin <npiggin@gmail.com>, John Levon <john.levon@nutanix.com>
-Subject: [PATCH v2 002/281] scripts/minikconf.py: fix invalid attribute access
-Date: Thu,  4 Sep 2025 09:06:36 +0100
-Message-ID: <20250904081128.1942269-3-alex.bennee@linaro.org>
+Subject: [PATCH v2 083/281] linux-user/sh4: Create init_main_thread
+Date: Thu,  4 Sep 2025 09:07:57 +0100
+Message-ID: <20250904081128.1942269-84-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.2
 In-Reply-To: <20250904081128.1942269-1-alex.bennee@linaro.org>
 References: <20250904081128.1942269-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62f;
- envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x62f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::62e;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x62e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -162,32 +162,58 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
 
-Fix parse method to use `defconfig` global variable instead of the
-non-existent KconfigParser class attribute
+Merge init_thread and target_cpu_copy_regs.
+There's no point going through a target_pt_regs intermediate.
 
-Fixes: f349474920d80838ecea3d421531fdb0660b8740 ("minikconfig: implement allnoconfig and defconfig modes")
-Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-Link: https://lore.kernel.org/r/20250820-scripts-minikconf-fixes-v1-1-252041a9125e@linaro.org
-Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- scripts/minikconf.py | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ linux-user/elfload.c      |  8 +-------
+ linux-user/sh4/cpu_loop.c | 10 ++++------
+ 2 files changed, 5 insertions(+), 13 deletions(-)
 
-diff --git a/scripts/minikconf.py b/scripts/minikconf.py
-index 6f7f43b2918..2a4694fb6a3 100644
---- a/scripts/minikconf.py
-+++ b/scripts/minikconf.py
-@@ -340,7 +340,7 @@ class KconfigParser:
+diff --git a/linux-user/elfload.c b/linux-user/elfload.c
+index 03c95397744..8604308a310 100644
+--- a/linux-user/elfload.c
++++ b/linux-user/elfload.c
+@@ -701,13 +701,7 @@ static void elf_core_copy_regs(target_elf_gregset_t *regs,
+ #define ELF_CLASS ELFCLASS32
+ #define ELF_ARCH  EM_SH
  
-     @classmethod
-     def parse(self, fp, mode=None):
--        data = KconfigData(mode or KconfigParser.defconfig)
-+        data = KconfigData(mode or defconfig)
-         parser = KconfigParser(data)
-         parser.parse_file(fp)
-         return data
+-static inline void init_thread(struct target_pt_regs *regs,
+-                               struct image_info *infop)
+-{
+-    /* Check other registers XXXXX */
+-    regs->pc = infop->entry;
+-    regs->regs[15] = infop->start_stack;
+-}
++#define HAVE_INIT_MAIN_THREAD
+ 
+ /* See linux kernel: arch/sh/include/asm/elf.h.  */
+ #define ELF_NREG 23
+diff --git a/linux-user/sh4/cpu_loop.c b/linux-user/sh4/cpu_loop.c
+index ee9eff3428a..259ea1cc8bb 100644
+--- a/linux-user/sh4/cpu_loop.c
++++ b/linux-user/sh4/cpu_loop.c
+@@ -81,12 +81,10 @@ void cpu_loop(CPUSH4State *env)
+     }
+ }
+ 
+-void target_cpu_copy_regs(CPUArchState *env, target_pt_regs *regs)
++void init_main_thread(CPUState *cs, struct image_info *info)
+ {
+-    int i;
++    CPUArchState *env = cpu_env(cs);
+ 
+-    for(i = 0; i < 16; i++) {
+-        env->gregs[i] = regs->regs[i];
+-    }
+-    env->pc = regs->pc;
++    env->pc = info->entry;
++    env->gregs[15] = info->start_stack;
+ }
 -- 
 2.47.2
 

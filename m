@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66712CA1012
-	for <qemu-arm@archiver.kernel.org>; Thu,  4 Sep 2025 08:15:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C963FCA1013
+	for <qemu-arm@archiver.kernel.org>; Thu,  4 Sep 2025 08:15:19 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uu565-0007gK-8s; Thu, 04 Sep 2025 04:13:34 -0400
+	id 1uu55f-00073x-0a; Thu, 04 Sep 2025 04:13:07 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1uu54p-0006QP-An
- for qemu-arm@nongnu.org; Thu, 04 Sep 2025 04:12:18 -0400
-Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
+ id 1uu54d-0006Kr-Sb
+ for qemu-arm@nongnu.org; Thu, 04 Sep 2025 04:12:04 -0400
+Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1uu54N-00044d-5t
- for qemu-arm@nongnu.org; Thu, 04 Sep 2025 04:12:11 -0400
-Received: by mail-ed1-x529.google.com with SMTP id
- 4fb4d7f45d1cf-6188b5ae1e8so921269a12.0
- for <qemu-arm@nongnu.org>; Thu, 04 Sep 2025 01:11:46 -0700 (PDT)
+ id 1uu54K-00042M-7t
+ for qemu-arm@nongnu.org; Thu, 04 Sep 2025 04:12:03 -0400
+Received: by mail-ed1-x52b.google.com with SMTP id
+ 4fb4d7f45d1cf-61e3b74672cso1628479a12.0
+ for <qemu-arm@nongnu.org>; Thu, 04 Sep 2025 01:11:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756973505; x=1757578305; darn=nongnu.org;
+ d=linaro.org; s=google; t=1756973502; x=1757578302; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=myCatgpniSey/NjO+dQuRIOhbIuhsJO0uetvy2+5HH0=;
- b=UaJLq9RvgqbWjXerA6qHandWRZlhvFLhFuvwqempVR4Y1VOcVp5KQ9KkRuvk+b2rdJ
- UkjtUub0ffAoegkfUbtZiVqJlRamTLe1fBsm7Hyv3mnwW5nOu0yAXEx5kyG0ULZtIzCQ
- 3DQQFySDVSG+6GRspdYGPBPE8mqYSHr6AioGR86rxNhRrKGqLv8v3YRJV+2BpZ7MT9Ql
- 22PQQ41YWAALoz3n93L97oz0YtEUk2xiq0AFVf3ZKsD/XAaJzoNsCfleC24L6VjJDk9o
- bsUwEHjgllV4+jMMiWX+8POR1joL6tU1pqm9Ey7h26XaDPTs1bGl4EJx/4vqYHP7mqrr
- DgPQ==
+ bh=4zFtQwjlDYtTGsZLq+AG4NuX/K0Bc+UPJFpp7UfLUFM=;
+ b=cuNVye+6+dBJP4eXBaJazhvrJrRoaj4b2NHW6sWh+KUQ5Wylq2Uh2E11NqYBGmkTkC
+ GUhhU2mvy9M9XzAJ0p4XKENa13jucQjbrCPhrDQHFqkH31jWjUQb+KdYCJgl1PE9rVTo
+ hFOFcuBGfWxKNQXPGWZKly1a7+evUfi7v5RJwjHS35WaQsKsAJkjwXU+8UeUdCos2mlv
+ 3bxupHhKHFZukjUU/R82tMn6HPwWV6K8krMrur3HjAdTVQNsHWQmwGO0YoISzZLQC24k
+ hkBbRL8Vr0EXawbSDTQu5j3n40glF88Qmf+aqPXyX3tMFRruekr9Ygx124zAiHmKo8YQ
+ yPjA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756973505; x=1757578305;
+ d=1e100.net; s=20230601; t=1756973502; x=1757578302;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=myCatgpniSey/NjO+dQuRIOhbIuhsJO0uetvy2+5HH0=;
- b=tPi7RmLSA5d9Jf0yiyd8mDhZSzS1wWwwJQ2f3ijODpJqsq4z7ec7G0emK+Yl74yza0
- r1cvfZ50u9c3Qllmk5RuYZ7Z8/zjJUK0ZcGtpkS98R9ynwqm/LbX1fD9/OafmGa6rH7B
- b5Ti10T4pINBxIa0ls2DVW2wLO7UlWnJ4S6WrohjSx0jdCIw28xMwPXwRVcTdNNeF+PP
- GYVuX8mZlcvejaGffl+yKpM7L7wH/7PJ0IUGGF2PWKUbynBCbm0oqK+9OWCOyjnKW40Q
- yRXL/3fhGDWjggwRSbRCc7AQ33krzHQ3UZgzjWjy9YTbU+JyeWDW63HjCH2xHfDbDDjr
- RCNw==
+ bh=4zFtQwjlDYtTGsZLq+AG4NuX/K0Bc+UPJFpp7UfLUFM=;
+ b=nBixCWJ51Rag2Sfo/d3ecd7XOamQ9lpMYdd4iMF2cniXaY0WZqN5Pi+NmhAoxsGQiI
+ yAkfJoSKjqYfvhuVEskUFKpKLTy/flN8Rv9LgUD83Fd+sYwMYolqxsolecsZzBYDNpCl
+ QFqIg3YMg3+Mi5B3QykrX7S2uFX2BmjD13ZVJqOviBy/Ycvb7MU6AnDSEnMTbA41ktz9
+ A520xo2mudNa3BpiklL6WQg40jKd9ZDJ2QQaDOZyyKtBBOtL6Q+j2ELAW1Dz87pkxQql
+ 6ebrWcQQ4eufNuYQjRt2b+/2pnfr5P0kH/nP/l+L+4rwI/ueGKnEsDUYEBmnjbVwRIRt
+ tBAA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXo8wBOhM2HYBHd7uxByV1cGcCFyKbByHdS/nA0x90yeNtthGYu/NtIQ9HVdVFIVbZO66WqrO3cKA==@nongnu.org
-X-Gm-Message-State: AOJu0YxGesgwtfjwwyYRFPdZrWFAUfvlntjlCZJ45G1PxXkGBgAFAf/X
- gsKDogs6lE/GI+7ddX6oEw7QBTEA7j7GPRdxRmLYPeR1RMI3N9btJoIUfHCjT7ifkdQ=
-X-Gm-Gg: ASbGncsvwlbg0Chr3QsR+OL7VfbX2QZuAh/tkbk2ff4zr85WnUB8YdotlEhZAFaHs0S
- wixA6/tkj9HfCMibICvuuzQbqeCtnnAqX5BKYVtxDWLP3svxZGc7yevlAGoEh0xi4cgtimToz5h
- jkls4bnjnKU7rtt1diGhF6mQnofUdmV3JzWAS3FrzS6VTJROOoKxeZi8U6Zr1k+HXniWjNqdg4M
- hJVm/hB11JG6bEHLOFKjOJa8rszJ4c4TTP6Ds+twwPMUdtphYVJPJV3H5xSBB+n2AdUrqbaYqW0
- UL25N9CK84EgM+yNtGoLlrs6WftyEPSOhIzI2kDFX4iVzSNTBv2RLOG/APrLNdK37TFKedYMAtq
- tlNqoxBIuJDQg0TfDyMyGYCE=
-X-Google-Smtp-Source: AGHT+IEuyqOsBrzLCtRtz3ZGL3L8oWSxERikJvSzK/DjrCCbhnw6SHIARMpI8FBk99Mc9QXgkRKGxw==
-X-Received: by 2002:a05:6402:1d53:b0:61e:ae59:5ef9 with SMTP id
- 4fb4d7f45d1cf-61eae597472mr9312473a12.11.1756973505168; 
- Thu, 04 Sep 2025 01:11:45 -0700 (PDT)
+ AJvYcCWEfuuV9+egg22i1n3Xs7nBhPczahYsQcrS/eu8B79JnT4/BkN/9fzozSAcnwLqaT+TEMNbdVS37A==@nongnu.org
+X-Gm-Message-State: AOJu0YyrrZGcC15sa6iBn8rcgDsTx5xf8JVdZbvh7QvrlS9y+J2blW9L
+ uedfA2PTX6VcM6FhYugNuB001lX7Zn76z1RiMdTQhyRPB6hgotA8TcS2V/FLloEHU9A=
+X-Gm-Gg: ASbGnct2I50Dg74Jggv0oM38NrJM8CKx5zlhpF0fh3gByGi8OwXM7pOJOTQVujLODZQ
+ 062mtbq9/CVUhM/JlwQ3YLEFCt4Or3ybtwiGi0twYf4Lbj6zfHyQnfX+mIX/BVD2K42Z5opV61X
+ Q+EGdRFps48CAmqVX/Z49F1VwTEd0QsLuiYMyXQIH1VeSQD+wlEMhZGBo5g6UMgNdg6SG99jsgC
+ shfkIAjlKb8xMBP+YEkv24s9XChxNBFOu0A0kTM+KFBwwUv4P7Ii8eWmJwUReL8fha70cpiLHDv
+ yPsAWghZFfRamtiNyLvSfPrL1tTrwjudcZ1zRDL6IOPLare3jl9q4fRMqiEMxqHcX5lo3OGTuHZ
+ 9AHCk0FYZvjpSl4U9hEas01Ix80KTyJKe/a+5RLv6aFuB
+X-Google-Smtp-Source: AGHT+IEAGMupQGzmQ7Dtgei91E1xVsJ0XEkW1FCuMtH0BwB9pNEHdoQerst6G0QZL4yGacu/nq1pzA==
+X-Received: by 2002:a50:a686:0:b0:61c:b23f:417e with SMTP id
+ 4fb4d7f45d1cf-61d22dc77c9mr12751905a12.2.1756973501906; 
+ Thu, 04 Sep 2025 01:11:41 -0700 (PDT)
 Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-61cfc579ba9sm13465044a12.52.2025.09.04.01.11.37
+ 4fb4d7f45d1cf-61cfc1c7a10sm14089075a12.5.2025.09.04.01.11.36
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 04 Sep 2025 01:11:43 -0700 (PDT)
+ Thu, 04 Sep 2025 01:11:37 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 16B025FA31;
- Thu, 04 Sep 2025 09:11:30 +0100 (BST)
+ by draig.lan (Postfix) with ESMTP id 89E265F9F9;
+ Thu, 04 Sep 2025 09:11:29 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Reinoud Zandijk <reinoud@netbsd.org>,
@@ -129,26 +129,26 @@ Cc: Reinoud Zandijk <reinoud@netbsd.org>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Nicholas Piggin <npiggin@gmail.com>, John Levon <john.levon@nutanix.com>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v2 016/281] tests/functional/meson.build: Allow tests to
- reside in subfolders
-Date: Thu,  4 Sep 2025 09:06:50 +0100
-Message-ID: <20250904081128.1942269-17-alex.bennee@linaro.org>
+ Nicholas Piggin <npiggin@gmail.com>, John Levon <john.levon@nutanix.com>
+Subject: [PATCH v2 012/281] tests/functional: Use more fine-grained locking
+ when looking for free ports
+Date: Thu,  4 Sep 2025 09:06:46 +0100
+Message-ID: <20250904081128.1942269-13-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.2
 In-Reply-To: <20250904081128.1942269-1-alex.bennee@linaro.org>
 References: <20250904081128.1942269-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::529;
- envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x529.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52b;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x52b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -166,36 +166,38 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Thomas Huth <thuth@redhat.com>
 
-We are going to move target-specific tests to subfolders that are
-named after the target (and generic tests will be put into a "generic"
-folder), so prepare the meson.build file to allow such locations, too.
+Currently, we have one lock that is held while a test is looking for
+free ports. However, we are also using different ranges for looking
+for free ports nowadays (PORTS_START is based on the PID of the process),
+so instead of using only one lock, we should rather use a lock per
+range instead. This should help to allow running more tests in parallel.
 
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+While we're at it, also create the lock files without executable bit
+(mode is 0o777 by default).
+
+Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
 Signed-off-by: Thomas Huth <thuth@redhat.com>
-Message-ID: <20250819112403.432587-5-thuth@redhat.com>
+Message-ID: <20250821094735.804210-1-thuth@redhat.com>
 ---
- tests/functional/meson.build | 8 +++++++-
- 1 file changed, 7 insertions(+), 1 deletion(-)
+ tests/functional/qemu_test/ports.py | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/tests/functional/meson.build b/tests/functional/meson.build
-index 356aad12dee..8c24ac1cc2d 100644
---- a/tests/functional/meson.build
-+++ b/tests/functional/meson.build
-@@ -423,7 +423,13 @@ foreach speed : ['quick', 'thorough']
+diff --git a/tests/functional/qemu_test/ports.py b/tests/functional/qemu_test/ports.py
+index 631b77abf6b..81174a61532 100644
+--- a/tests/functional/qemu_test/ports.py
++++ b/tests/functional/qemu_test/ports.py
+@@ -23,8 +23,9 @@ class Ports():
+     PORTS_END = PORTS_START + PORTS_RANGE_SIZE
  
-     foreach test : target_tests
-       testname = '@0@-@1@'.format(target_base, test)
--      testfile = 'test_' + test + '.py'
-+      if fs.exists('test_' + test + '.py')
-+        testfile = 'test_' + test + '.py'
-+      elif fs.exists('generic' / 'test_' + test + '.py')
-+        testfile = 'generic' / 'test_' + test + '.py'
-+      else
-+        testfile = target_base / 'test_' + test + '.py'
-+      endif
-       testpath = meson.current_source_dir() / testfile
-       teststamp = testname + '.tstamp'
-       test_precache_env = environment()
+     def __enter__(self):
+-        lock_file = os.path.join(BUILD_DIR, "tests", "functional", "port_lock")
+-        self.lock_fh = os.open(lock_file, os.O_CREAT)
++        lock_file = os.path.join(BUILD_DIR, "tests", "functional",
++                                 f".port_lock.{self.PORTS_START}")
++        self.lock_fh = os.open(lock_file, os.O_CREAT, mode=0o666)
+         fcntl.flock(self.lock_fh, fcntl.LOCK_EX)
+         return self
+ 
 -- 
 2.47.2
 

@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83795CA1012
-	for <qemu-arm@archiver.kernel.org>; Thu,  4 Sep 2025 08:17:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15199CA1015
+	for <qemu-arm@archiver.kernel.org>; Thu,  4 Sep 2025 08:17:58 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uu58S-0002ci-Bp; Thu, 04 Sep 2025 04:16:00 -0400
+	id 1uu54N-0005zz-3h; Thu, 04 Sep 2025 04:11:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1uu550-0006X5-AU
- for qemu-arm@nongnu.org; Thu, 04 Sep 2025 04:12:29 -0400
-Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
+ id 1uu54I-0005vI-GE
+ for qemu-arm@nongnu.org; Thu, 04 Sep 2025 04:11:42 -0400
+Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1uu54V-00049y-S5
- for qemu-arm@nongnu.org; Thu, 04 Sep 2025 04:12:25 -0400
-Received: by mail-ed1-x529.google.com with SMTP id
- 4fb4d7f45d1cf-620724883e6so160276a12.2
- for <qemu-arm@nongnu.org>; Thu, 04 Sep 2025 01:11:55 -0700 (PDT)
+ id 1uu549-0003wE-Md
+ for qemu-arm@nongnu.org; Thu, 04 Sep 2025 04:11:42 -0400
+Received: by mail-ej1-x62d.google.com with SMTP id
+ a640c23a62f3a-b0475ce7f41so144430966b.1
+ for <qemu-arm@nongnu.org>; Thu, 04 Sep 2025 01:11:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756973514; x=1757578314; darn=nongnu.org;
+ d=linaro.org; s=google; t=1756973492; x=1757578292; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=qtgYk8tL09X7evEehKpRVdQ+nFs0oLJoTM08eLIHHIc=;
- b=ikdjEexQtM4cNIEar8oFLEJVs2QRVXXct+K2OcM3PRvkmpt0yeznPa1+O4GxjfyhR+
- jwIzKYr+gI8z2UoHst98dv1PVEZvHOm4vY3S6QCkKvuSFQuv6aQ5vRBjrBriUnp+3SLX
- WaPfsahCyJuUlK9SVx3GGuckQJD0zKLMZf2wawtldhwJaV9vq6xHnUZziQeRXD8dGYBK
- xBslnlvA2mSEeBsBmhyTAXT4oqPI/vR5AKHkk9xs6w7ivi7x37+Jwonh5A7AZbS7ADHo
- tMA2X0KKPWJLyKNlELbn8AYgz0V/XyDbq6QWIFnvBpGK0CcJVC6MpxhTn0QUbbcJv5f8
- FYsg==
+ bh=BNEGVA0a3lSomvk/RYtnyV9U8MhQRFndjMqEzv6fEMo=;
+ b=rKqRc3MpMeZFXoPdDUyr9TMAHnqSO2boCtLoJlfBNK4ciEPxpxkBUw1OcIBQHleV70
+ AZ7x3ZeFHwU9EUtxSbQRc4NwK/7uIcVL7qYTnNfdaRnpD4dy9fRD83IAo2MMSV7emPJz
+ 5M5xeek/TbnCNrTZJvOuvPsTF5Cjy4hAqEcxsv8a+Ayd5MJLwb9MtQWE4tFI+L1p7N14
+ yRkdx3g0K7ToE258ysXDxU4Oq9AJ76YBIvgHCSO4DQAkAoF5zgf6jFJoH5Gcnc2jFng5
+ N9pqsnPmqTOPb5UywFwiETlmPlcb4Mb0OBEryq17m6ZG1ToQGVgk5LahKEN6+wwZgM3z
+ rZHQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756973514; x=1757578314;
+ d=1e100.net; s=20230601; t=1756973492; x=1757578292;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=qtgYk8tL09X7evEehKpRVdQ+nFs0oLJoTM08eLIHHIc=;
- b=Nr4EztV2UVRakZoT2A9qWsVWVw9CVYJKBvajAA83EIuVX3Cam2o9Do1Nm2OepEe5Ul
- 5t3p56UzX+5UKJGojnmWQJxg9gl1zYWBahHJATSo1Xa9K8D7PNomJ1isLfmfoSl8I7N4
- y81CQOBe9c/4zZoXkGLKDYyTT6uDJT/g7kcM4CDQmP71verPZ+66QbAzD8oVdPSTgtzJ
- 8ZnmbnsISyYtj36rzlU/8qALsSJLdGGlE7+8SMhh42OcqKvQ/V6P2gyuer882HZ3g1az
- Ia9t/z04IBatL9INCz4NIsOtu3LRZK9N+hHdTcP4I9GQ37a3QuQoS0MOIFgooH+wDlcR
- KyTg==
+ bh=BNEGVA0a3lSomvk/RYtnyV9U8MhQRFndjMqEzv6fEMo=;
+ b=HVSP/b6kN2+Qt3RcksR3IywLbBTA1O+sizM+8EtOoRg5GoryLYMd1NUmwxq7jlKs6t
+ ceh9XaNqZiCmcQ8iKlBDgUl3yeksoAzMq3bb7o9z5c2a/3Yq43GCA8J560ri+CF7IbDv
+ YocdwgzfuQeoZKNfRUyBHV4KkHyHRNKmlDVbKpcyZFupiIaG+b10ihtCGHwxm274TmZJ
+ al3CWwffxtHg1JZLbXVHyAiGE8RxMqvj2St4km/njqd7N/ZRFM80xqdPCPSBQyVN2Yty
+ DPvZ5cVkUvFdoi4L5KfGuMK8Ioip6q51HrGZUerAF3EaZlYXphZsyBhEZdcaiiNwzQWA
+ uO4A==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXHriirsfN0piOZr05W2xwRIkC7vlczmGwg5tq1F07beH2ulOy0Co6bo78UF3myoBrnrQW6hrOXSw==@nongnu.org
-X-Gm-Message-State: AOJu0YwevMRjMu7RIKwS/kQAP8FPccQ773pmhuMGkIk2/H+oAoxb4awu
- +3KqWFtSqOGCHHC4k4GHrp8UsriQ0SlF8fO6oNqyZayJdDhFS3FGKob5cWKYVX3vZKA=
-X-Gm-Gg: ASbGncvms+U34rLQmx7Z685M1mvJ4uYR48IMG+LWEjykHWbuNSnj8KJ/N2i1nxi12iY
- b/AONjJmgTukZeJ+9BBAemwTFtRA/RhDhEiGb7bDTDAHMH7SQjZpIkx3PgprC3A4EdbUX5Dt+qk
- cRQ6+BqpeatswMTvJd9ayEXEAdNzPRtbp25FWXOjvTqYL1MidgHsIP4bZm7qaXkzZVm5uMjgYt3
- i8CpevjOJSTNZaxm2Uz5J6iMqAG+ll62WijolLcR5Miw5cyUD75f22TWOdCoMnlBN+MdL0XodVW
- /2kvOXBIfips+7iRoeglnD7FrSzaux/m3imnqei2On8TPWLx3nYSD82OQytEOLg9AlDS8CqdHS4
- 94qefvajeVJ97YIqTe0/xGMO1OBqoe4BNqg==
-X-Google-Smtp-Source: AGHT+IGDclqmTpgIs8xk9qUf2wE1VgGlSngYsukGG5IMjrEQmTBeW8lir09bC4smeh8/e8K3/5/QQA==
-X-Received: by 2002:a17:906:2843:b0:b04:241c:e6f6 with SMTP id
- a640c23a62f3a-b04241ceebcmr1387985766b.40.1756973513557; 
- Thu, 04 Sep 2025 01:11:53 -0700 (PDT)
+ AJvYcCWyPC1F849AK8EpLMoKVclJZyDpaRUP4+dARMlBUpvykq6Pyjs/1PuMPYkdi1dEq+WdqGrkKctO1w==@nongnu.org
+X-Gm-Message-State: AOJu0YwNaPYq6NZNV3pH/K7iiXwRPwe38TXhHHnI6IGlbZrGuafi5MEe
+ 9z33q6EaoF8ipp+hWcX5r6SNu7dNQ2+6pAORKZCVE91GzCTzzxHyLR1oyPRWhPPV/k8=
+X-Gm-Gg: ASbGncs3fO65etg1vjf/2cdXYSXeD7eUtv/4u8/brv57d391l+sDP8LymcfrU9RjtEN
+ mOlurEpXdZAAr4mHV90/JD5/ZFP3wfSCXDKdFU/OyAS7xTWrO7rs0XhVAWnvyM0Tna9NNf+FBrn
+ ONwxRkso/UuFT3P0YZoQTZ+exFKaTnbamKE9ej5HtiJ2BpKvbfc21G21x7q/ZHdC13ekKdFJMfK
+ TXK37hEes0EtpdvILPDxY9RuCphkiU/l9shP7JMlEHSAWgFPfBmATH/lzneiO7yvmKI3o2JFfzv
+ AwnyOt618yJRu3NlHBJtQJ260JZrvVF231sV8vjXcfSvlyWOWhDfYMrSJiCvbNuBTtC9Wlg/h36
+ TC3QUTtxwXTwEg9gzZPU5XD52NJ0D0c6gHQ==
+X-Google-Smtp-Source: AGHT+IFdx3300pXgTQYVfyijukm5mevr/UA8RYXsWS4tvgREr1LW2h9o1kllZwMwMLv7al4YIwPuEg==
+X-Received: by 2002:a17:906:f59f:b0:b04:72bd:2080 with SMTP id
+ a640c23a62f3a-b0472bd2168mr346031866b.60.1756973491624; 
+ Thu, 04 Sep 2025 01:11:31 -0700 (PDT)
 Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-aff0ed6ffebsm1422344366b.32.2025.09.04.01.11.43
+ a640c23a62f3a-b0426516668sm972088866b.46.2025.09.04.01.11.29
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 04 Sep 2025 01:11:49 -0700 (PDT)
+ Thu, 04 Sep 2025 01:11:29 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 02D196000B;
- Thu, 04 Sep 2025 09:11:32 +0100 (BST)
+ by draig.lan (Postfix) with ESMTP id 4CE8D5F900;
+ Thu, 04 Sep 2025 09:11:28 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Reinoud Zandijk <reinoud@netbsd.org>,
@@ -130,19 +130,18 @@ Cc: Reinoud Zandijk <reinoud@netbsd.org>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
  Nicholas Piggin <npiggin@gmail.com>, John Levon <john.levon@nutanix.com>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v2 031/281] tests/functional: Move s390x tests into
- target-specific folders
-Date: Thu,  4 Sep 2025 09:07:05 +0100
-Message-ID: <20250904081128.1942269-32-alex.bennee@linaro.org>
+ Xin Wang <wangxinxin.wang@huawei.com>
+Subject: [PATCH v2 001/281] target/i386: Add support for save/load of
+ exception error code
+Date: Thu,  4 Sep 2025 09:06:35 +0100
+Message-ID: <20250904081128.1942269-2-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.2
 In-Reply-To: <20250904081128.1942269-1-alex.bennee@linaro.org>
 References: <20250904081128.1942269-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::529;
- envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x529.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::62d;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x62d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -165,133 +164,67 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Thomas Huth <thuth@redhat.com>
+From: Xin Wang <wangxinxin.wang@huawei.com>
 
-The tests/functional folder has become quite crowded, thus move the
-s390x tests into a target-specific subfolder.
+For now, qemu save/load CPU exception info(such as exception_nr and
+has_error_code), while the exception error_code is ignored. This will
+cause the dest hypervisor reinject a vCPU exception with error_code(0),
+potentially causing a guest kernel panic.
 
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Signed-off-by: Thomas Huth <thuth@redhat.com>
-Message-ID: <20250819112403.432587-20-thuth@redhat.com>
+For instance, if src VM stopped with an user-mode write #PF (error_code 6),
+the dest hypervisor will reinject an #PF with error_code(0) when vCPU resume,
+then guest kernel panic as:
+  BUG: unable to handle page fault for address: 00007f80319cb010
+  #PF: supervisor read access in user mode
+  #PF: error_code(0x0000) - not-present page
+  RIP: 0033:0x40115d
+
+To fix it, support save/load exception error_code.
+
+Signed-off-by: Xin Wang <wangxinxin.wang@huawei.com>
+Link: https://lore.kernel.org/r/20250819145834.3998-1-wangxinxin.wang@huawei.com
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
 ---
- MAINTAINERS                                         |  6 +++---
- tests/functional/meson.build                        | 13 +------------
- tests/functional/s390x/meson.build                  | 13 +++++++++++++
- .../test_ccw_virtio.py}                             |  0
- .../test_pxelinux.py}                               |  0
- .../{test_s390x_replay.py => s390x/test_replay.py}  |  0
- .../test_topology.py}                               |  0
- .../{test_s390x_tuxrun.py => s390x/test_tuxrun.py}  |  0
- 8 files changed, 17 insertions(+), 15 deletions(-)
- create mode 100644 tests/functional/s390x/meson.build
- rename tests/functional/{test_s390x_ccw_virtio.py => s390x/test_ccw_virtio.py} (100%)
- rename tests/functional/{test_s390x_pxelinux.py => s390x/test_pxelinux.py} (100%)
- rename tests/functional/{test_s390x_replay.py => s390x/test_replay.py} (100%)
- rename tests/functional/{test_s390x_topology.py => s390x/test_topology.py} (100%)
- rename tests/functional/{test_s390x_tuxrun.py => s390x/test_tuxrun.py} (100%)
+ target/i386/machine.c | 19 +++++++++++++++++++
+ 1 file changed, 19 insertions(+)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index c6410a5f5fd..4a55a20f6a5 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -1797,7 +1797,7 @@ S: Supported
- F: hw/s390x/
- F: include/hw/s390x/
- F: configs/devices/s390x-softmmu/default.mak
--F: tests/functional/test_s390x_*
-+F: tests/functional/s390x
- T: git https://github.com/borntraeger/qemu.git s390-next
- L: qemu-s390x@nongnu.org
+diff --git a/target/i386/machine.c b/target/i386/machine.c
+index dd2dac1d443..45b7cea80aa 100644
+--- a/target/i386/machine.c
++++ b/target/i386/machine.c
+@@ -462,6 +462,24 @@ static const VMStateDescription vmstate_exception_info = {
+     }
+ };
  
-@@ -1811,7 +1811,7 @@ F: hw/s390x/ipl.*
- F: pc-bios/s390-ccw/
- F: pc-bios/s390-ccw.img
- F: docs/devel/s390-dasd-ipl.rst
--F: tests/functional/test_s390x_pxelinux.py
-+F: tests/functional/s390x/test_pxelinux.py
- T: git https://github.com/borntraeger/qemu.git s390-next
- L: qemu-s390x@nongnu.org
- 
-@@ -1865,7 +1865,7 @@ F: hw/s390x/cpu-topology.c
- F: target/s390x/kvm/stsi-topology.c
- F: docs/devel/s390-cpu-topology.rst
- F: docs/system/s390x/cpu-topology.rst
--F: tests/functional/test_s390x_topology.py
-+F: tests/functional/s390x/test_topology.py
- 
- X86 Machines
- ------------
-diff --git a/tests/functional/meson.build b/tests/functional/meson.build
-index 7e7a6aa0c93..abaa4e00fca 100644
---- a/tests/functional/meson.build
-+++ b/tests/functional/meson.build
-@@ -29,10 +29,7 @@ subdir('ppc64')
- subdir('riscv32')
- subdir('riscv64')
- subdir('rx')
--
--test_s390x_timeouts = {
--  's390x_ccw_virtio' : 420,
--}
-+subdir('s390x')
- 
- test_sh4_timeouts = {
-   'sh4_tuxrun' : 240,
-@@ -59,14 +56,6 @@ tests_generic_linuxuser = [
- tests_generic_bsduser = [
- ]
- 
--tests_s390x_system_thorough = [
--  's390x_ccw_virtio',
--  's390x_pxelinux',
--  's390x_replay',
--  's390x_topology',
--  's390x_tuxrun',
--]
--
- tests_sh4_system_thorough = [
-   'sh4_r2d',
-   'sh4_tuxrun',
-diff --git a/tests/functional/s390x/meson.build b/tests/functional/s390x/meson.build
-new file mode 100644
-index 00000000000..030b116039c
---- /dev/null
-+++ b/tests/functional/s390x/meson.build
-@@ -0,0 +1,13 @@
-+# SPDX-License-Identifier: GPL-2.0-or-later
++static bool cpu_errcode_needed(void *opaque)
++{
++    X86CPU *cpu = opaque;
 +
-+test_s390x_timeouts = {
-+  'ccw_virtio' : 420,
++    return cpu->env.has_error_code != 0;
 +}
 +
-+tests_s390x_system_thorough = [
-+  'ccw_virtio',
-+  'pxelinux',
-+  'replay',
-+  'topology',
-+  'tuxrun',
-+]
-diff --git a/tests/functional/test_s390x_ccw_virtio.py b/tests/functional/s390x/test_ccw_virtio.py
-similarity index 100%
-rename from tests/functional/test_s390x_ccw_virtio.py
-rename to tests/functional/s390x/test_ccw_virtio.py
-diff --git a/tests/functional/test_s390x_pxelinux.py b/tests/functional/s390x/test_pxelinux.py
-similarity index 100%
-rename from tests/functional/test_s390x_pxelinux.py
-rename to tests/functional/s390x/test_pxelinux.py
-diff --git a/tests/functional/test_s390x_replay.py b/tests/functional/s390x/test_replay.py
-similarity index 100%
-rename from tests/functional/test_s390x_replay.py
-rename to tests/functional/s390x/test_replay.py
-diff --git a/tests/functional/test_s390x_topology.py b/tests/functional/s390x/test_topology.py
-similarity index 100%
-rename from tests/functional/test_s390x_topology.py
-rename to tests/functional/s390x/test_topology.py
-diff --git a/tests/functional/test_s390x_tuxrun.py b/tests/functional/s390x/test_tuxrun.py
-similarity index 100%
-rename from tests/functional/test_s390x_tuxrun.py
-rename to tests/functional/s390x/test_tuxrun.py
++static const VMStateDescription vmstate_error_code = {
++    .name = "cpu/error_code",
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .needed = cpu_errcode_needed,
++    .fields = (const VMStateField[]) {
++        VMSTATE_INT32(env.error_code, X86CPU),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
+ /* Poll control MSR enabled by default */
+ static bool poll_control_msr_needed(void *opaque)
+ {
+@@ -1746,6 +1764,7 @@ const VMStateDescription vmstate_x86_cpu = {
+     },
+     .subsections = (const VMStateDescription * const []) {
+         &vmstate_exception_info,
++        &vmstate_error_code,
+         &vmstate_async_pf_msr,
+         &vmstate_async_pf_int_msr,
+         &vmstate_pv_eoi_msr,
 -- 
 2.47.2
 

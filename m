@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 459A2CA1012
-	for <qemu-arm@archiver.kernel.org>; Thu,  4 Sep 2025 08:18:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16C86CA1015
+	for <qemu-arm@archiver.kernel.org>; Thu,  4 Sep 2025 08:18:13 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uu58A-0001UP-64; Thu, 04 Sep 2025 04:15:42 -0400
+	id 1uu5AJ-000798-AZ; Thu, 04 Sep 2025 04:17:55 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1uu54x-0006VZ-GY
- for qemu-arm@nongnu.org; Thu, 04 Sep 2025 04:12:25 -0400
-Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
+ id 1uu558-0006bZ-8i
+ for qemu-arm@nongnu.org; Thu, 04 Sep 2025 04:12:37 -0400
+Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1uu54Q-000476-OH
- for qemu-arm@nongnu.org; Thu, 04 Sep 2025 04:12:18 -0400
-Received: by mail-ej1-x62a.google.com with SMTP id
- a640c23a62f3a-afcb7a16441so104025366b.2
- for <qemu-arm@nongnu.org>; Thu, 04 Sep 2025 01:11:50 -0700 (PDT)
+ id 1uu54Y-0004Bw-VW
+ for qemu-arm@nongnu.org; Thu, 04 Sep 2025 04:12:31 -0400
+Received: by mail-ej1-x629.google.com with SMTP id
+ a640c23a62f3a-b043da5a55fso107835866b.0
+ for <qemu-arm@nongnu.org>; Thu, 04 Sep 2025 01:11:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756973509; x=1757578309; darn=nongnu.org;
+ d=linaro.org; s=google; t=1756973517; x=1757578317; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=7geJ/d+IpF0bnrBWG3MkyF/FGBGbkERD3zk6LOqJjeI=;
- b=lJMHM23hJm7pX9Lw7HVZdH6GYZS23Fde9n5NtvEbbNlJDGtf791IHu6FUmiEi8/0gz
- zohtwVfNWun/MLZbUiQGoS5PG7gSVKCF8fao+eA8qKKswVY+6z/GWIENcWSfqL/pwjkx
- i8zkLRtRqBPsV/WGxkv9K3XfAtgM62m+tL4H+4Gfx7YjSAb5kzAo02Md0J2JuFtOo7V1
- 6hQNTjzjLASLUx8LQGyTjwDqbDrlN/WYe6Rw51PSKf5kgpctiDRPO7bl1+SE2OZb+01D
- //CovwdjHqgELxNKfUledWb+UKe/O3UimixAOcHIdiS8iunBy2n3L1aHgrAAMvEl8tzt
- IWGQ==
+ bh=KM2ZDhNYkLW1KWUOdLmFVe8gLAQ7wgd1StjOThDS9B0=;
+ b=bAJgtD5nXHix0yY9qWxVpDG0992ZNEyC7uYSRbyMzaBwG+SB+xRsA6NH2xByh8GG+T
+ GNa2nHUn0TJT2Tz3VaSfpbeblotb4Pojy4Cd9/ZD4o6LAozYzIMQgb3eoGKc7N2Bcx9q
+ YWw+CG4PBVYTMbHK14sIFJHwAz/tTmIaiip/KSmlL9UlwOfrqPcrt+uCPpw4oEoBwNHg
+ /W2YaTVUNavM4ybB6liBXYne7l9PlCDu67AMLC1bcIB+WhWmhNScy/KAE4zHXEQIUrn4
+ fecUyRpeuznWg2DZeu5WY/gItpFk90CkcCR+3+HJmK7PTRX4xAasNPSZ90sGl75ufg+D
+ VydA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756973509; x=1757578309;
+ d=1e100.net; s=20230601; t=1756973517; x=1757578317;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=7geJ/d+IpF0bnrBWG3MkyF/FGBGbkERD3zk6LOqJjeI=;
- b=N94Eug/OKj4fdOvNLF/1DqLyabu9IgYfzcWAcVAwl7zUcsCTbqvWQe0okElcVAaQDn
- L6aa9SCa6icvE+RayIoqU9eGKJN7mkk8h6jjAHZrQV42hshEyenaPaAcbWJQKbLVlkR5
- MriVXalQKoO7PWEBShNwwP/UCAzGOUwcX24fgCy/ZSiXiK65meEymCjGJsA3e0rHmp/k
- groQG/WBs3/FMM0CnKHNQFQr7++ZWF+KXRj6VsxEz5ywAbYrUqJPsZipfCDxB0rOHiH2
- 818ZHO9icrpW1UHZW+H7BIbz3ZMqrSsMZJMC381D+sZD7K0SwqlmLzrm1aFLKYo8UAK8
- lKrQ==
+ bh=KM2ZDhNYkLW1KWUOdLmFVe8gLAQ7wgd1StjOThDS9B0=;
+ b=nwxMerVxy70CdsFO8R2DDJgaR1gb4Y7IZi1KvB7bU7SlMge+n/u+/LH1si0lmRH+3/
+ 1dVNJhRydq9tiZtLqddzbWShgvdNV/qVHqQzxBAOl8BGu879Kkz2ysuePqm3xaozVUiy
+ MSHIwutrAw+pk4pqMhjoOTIVyUbk2P/OJvOoLw5QYkqfLAjZmJo5UQ3IK70n5uzgY7Wo
+ cHebgBhAJw4CcF3A5aa8+1GanLUfwLpFPu5sC3PLvv+1bmh7t2aLjuZ2EIOGh2CEw/rR
+ 1q61eLN4mumM/XJ2UtrcnndtxigdgMwtUJXBvvRiDeamv9PRWmqvwoCE0auVd1xNmVKV
+ n3bw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVPGSqq5mgLfEUwBGZ8NnJrUrHCLHAcKEETgglQCANR+3PbC9TB6FrSpnFBDLoCAkeD2qX+INkjTA==@nongnu.org
-X-Gm-Message-State: AOJu0Yz4nab1+u71bWMFRz6XTL7tRoQxfc9YtWsgWaNsUvtO5sdQirBC
- Ejh2LPiHT4YVwRcDqkcRoMv7ySfcJOnUDBwyC9rHu6F1RlliODegFliOFAZa/3WXiD4=
-X-Gm-Gg: ASbGncvT6Zd7v9+eDZN3Pge223Pc6Q+eQk8OezEl2aH7MtrccVChtpRB7pYncZKXXAt
- LQLtQMjoP+bY5IAd5DCv+nmWBVn2w/HsrlvL7XmxYubO2bYfUUvIYOdTuhDkzYDjRafxgXaYaqC
- 7+pvb6sZn/zsxMVX+5jFAf1bJ7QXE9RlZ+Fdkp0HutmCbpys79ZEVi4zghC9/RY92MIEyIQnqdQ
- /JfiH1bnJC+xl7dbTaLF7sr97typi6TTcgb82DiVzmS5XA2xofiG/yw5hzszLhBC758w/ZJp+CT
- gl/UViO6R6QrMtgdDxEkwE9gQX4mpLdWlBD0F6aTzr0mfaTuU6oleh3xYrp29MD4rHLMoG8waJi
- VJyYi0+5bqB60xhjd7w0+kHx7SjQ1I033gc6ngW99+MHf
-X-Google-Smtp-Source: AGHT+IF37/RkUkvHxpHyzv6Sr1CxWGia+EZsIsO88JRHZD4x5ESW6xiGp3g5mGvariieAZ54zk6iIw==
-X-Received: by 2002:a17:907:3cca:b0:b04:354e:47a5 with SMTP id
- a640c23a62f3a-b04354e4b78mr1354615266b.17.1756973508907; 
- Thu, 04 Sep 2025 01:11:48 -0700 (PDT)
+ AJvYcCWHJ8UI0YIBXbvVBFaL5sgm5w8H5jkY6yg5Kt799QLy2Wm61iy0CNHoyo5A4x2PqD+kMasEd35nPg==@nongnu.org
+X-Gm-Message-State: AOJu0Yy5xHFhcyzwFnHmKiHjAm5XFQ681n1JlfwHB0cuH5dXXFK8JFtG
+ KlGXlGvAR1qAB1SQe6cfjgZZhyQXudcdy8ymu7ujRAthpq3flEfumKAYwHgFMSfKqic=
+X-Gm-Gg: ASbGncto7yaMK6YoT73FN+ndTxTXpRofK7v3bf61oh5RNzR/qovyXpog0+ryecB2EkK
+ YXrSDHXPhvjQZGiyc/DwF5/N53+ft6YHwlSvORBE2hjZol0NiZMpH9O/AaUStc6xKtSc0KS6KDC
+ m4EzaIroY/xGHp0glBej/ccyCN+4M6uY8dvB/9eEeJUIOTpVbQGIBkmkL9qY/PSJuTu4pxv3ZqA
+ p3xeeEjUntHvgggDJgDISiPP1NRneboFTeCxE1232ivgdROCUhlVxcaD5/7tI0qh/34p4NhHCRc
+ IcoA9iboanlDobcCH/VhaOIb8A4TkotscNwS3D+LASlLfB1lvZ50TxpeGyRDydaJWnsaAO6l7up
+ ssZfgXEKwWuEI2JhX0U7s6yk=
+X-Google-Smtp-Source: AGHT+IHrIfYhoi3D9Gm+87PPt9KEGR+SpE522yU9r/ngWzQfRBd4CgfSmCQXYip3hia/ZuTrUqkq6w==
+X-Received: by 2002:a17:907:7ba3:b0:b04:848f:a0d4 with SMTP id
+ a640c23a62f3a-b04848fa469mr89096666b.13.1756973517037; 
+ Thu, 04 Sep 2025 01:11:57 -0700 (PDT)
 Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-b046aa92242sm326302466b.59.2025.09.04.01.11.41
+ a640c23a62f3a-b0484e8a4a1sm55353466b.83.2025.09.04.01.11.50
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 04 Sep 2025 01:11:43 -0700 (PDT)
+ Thu, 04 Sep 2025 01:11:55 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 3989B5FB07;
- Thu, 04 Sep 2025 09:11:31 +0100 (BST)
+ by draig.lan (Postfix) with ESMTP id 30E81601A8;
+ Thu, 04 Sep 2025 09:11:34 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Reinoud Zandijk <reinoud@netbsd.org>,
@@ -129,27 +129,24 @@ Cc: Reinoud Zandijk <reinoud@netbsd.org>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Nicholas Piggin <npiggin@gmail.com>, John Levon <john.levon@nutanix.com>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v2 025/281] tests/functional: Move microblaze tests into
- architecture specific folder
-Date: Thu,  4 Sep 2025 09:06:59 +0100
-Message-ID: <20250904081128.1942269-26-alex.bennee@linaro.org>
+ Nicholas Piggin <npiggin@gmail.com>, John Levon <john.levon@nutanix.com>
+Subject: [PATCH v2 049/281] semihosting: Initialize heap once per process
+Date: Thu,  4 Sep 2025 09:07:23 +0100
+Message-ID: <20250904081128.1942269-50-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.2
 In-Reply-To: <20250904081128.1942269-1-alex.bennee@linaro.org>
 References: <20250904081128.1942269-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62a;
- envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x62a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::629;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x629.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -165,119 +162,182 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Thomas Huth <thuth@redhat.com>
+From: Richard Henderson <richard.henderson@linaro.org>
 
-The tests/functional folder has become quite crowded, thus move the
-microblaze tests into a target-specific subfolder.
+While semihosting isn't really thread aware, the current
+implementation allocates space for the heap per-thread.
 
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Signed-off-by: Thomas Huth <thuth@redhat.com>
-Message-ID: <20250819112403.432587-14-thuth@redhat.com>
+Remove the heap_base and heap_limit fields from TaskState.
+Replace with static variables within do_common_semihosting.
+
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- MAINTAINERS                                           |  2 +-
- tests/functional/meson.build                          | 11 ++---------
- tests/functional/microblaze/meson.build               |  6 ++++++
- .../test_replay.py}                                   |  0
- .../test_s3adsp1800.py}                               |  0
- tests/functional/microblazeel/meson.build             |  5 +++++
- .../test_s3adsp1800.py}                               |  2 +-
- 7 files changed, 15 insertions(+), 11 deletions(-)
- create mode 100644 tests/functional/microblaze/meson.build
- rename tests/functional/{test_microblaze_replay.py => microblaze/test_replay.py} (100%)
- rename tests/functional/{test_microblaze_s3adsp1800.py => microblaze/test_s3adsp1800.py} (100%)
- create mode 100644 tests/functional/microblazeel/meson.build
- rename tests/functional/{test_microblazeel_s3adsp1800.py => microblazeel/test_s3adsp1800.py} (92%)
+ linux-user/qemu.h             |  5 -----
+ linux-user/aarch64/cpu_loop.c |  7 -------
+ linux-user/arm/cpu_loop.c     | 25 +++++++++++--------------
+ linux-user/m68k/cpu_loop.c    |  8 --------
+ linux-user/riscv/cpu_loop.c   |  4 ----
+ semihosting/arm-compat-semi.c | 22 +++++++++-------------
+ 6 files changed, 20 insertions(+), 51 deletions(-)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index e188de813fb..b6a835777bb 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -1370,7 +1370,7 @@ M: Edgar E. Iglesias <edgar.iglesias@gmail.com>
- S: Maintained
- F: hw/microblaze/petalogix_s3adsp1800_mmu.c
- F: include/hw/char/xilinx_uartlite.h
--F: tests/functional/test_microblaze*.py
-+F: tests/functional/microblaze*/test_s3adsp1800.py
+diff --git a/linux-user/qemu.h b/linux-user/qemu.h
+index b6621536b36..4d6fad28c63 100644
+--- a/linux-user/qemu.h
++++ b/linux-user/qemu.h
+@@ -121,11 +121,6 @@ struct TaskState {
+     abi_ulong child_tidptr;
+ #ifdef TARGET_M68K
+     abi_ulong tp_value;
+-#endif
+-#if defined(TARGET_ARM) || defined(TARGET_M68K) || defined(TARGET_RISCV)
+-    /* Extra fields for semihosted binaries.  */
+-    abi_ulong heap_base;
+-    abi_ulong heap_limit;
+ #endif
+     int used; /* non zero if used */
+     struct image_info *info;
+diff --git a/linux-user/aarch64/cpu_loop.c b/linux-user/aarch64/cpu_loop.c
+index b65999a75bf..030a630c936 100644
+--- a/linux-user/aarch64/cpu_loop.c
++++ b/linux-user/aarch64/cpu_loop.c
+@@ -140,9 +140,6 @@ void cpu_loop(CPUARMState *env)
+ void target_cpu_copy_regs(CPUArchState *env, target_pt_regs *regs)
+ {
+     ARMCPU *cpu = env_archcpu(env);
+-    CPUState *cs = env_cpu(env);
+-    TaskState *ts = get_task_state(cs);
+-    struct image_info *info = ts->info;
+     int i;
  
- petalogix_ml605
- M: Edgar E. Iglesias <edgar.iglesias@gmail.com>
-diff --git a/tests/functional/meson.build b/tests/functional/meson.build
-index d32dd4a371f..fee68056145 100644
---- a/tests/functional/meson.build
-+++ b/tests/functional/meson.build
-@@ -17,6 +17,8 @@ subdir('hppa')
- subdir('i386')
- subdir('loongarch64')
- subdir('m68k')
-+subdir('microblaze')
-+subdir('microblazeel')
- 
- test_mips_timeouts = {
-   'mips_malta' : 480,
-@@ -82,15 +84,6 @@ tests_generic_linuxuser = [
- tests_generic_bsduser = [
- ]
- 
--tests_microblaze_system_thorough = [
--  'microblaze_replay',
--  'microblaze_s3adsp1800'
--]
+     if (!(arm_feature(env, ARM_FEATURE_AARCH64))) {
+@@ -167,8 +164,4 @@ void target_cpu_copy_regs(CPUArchState *env, target_pt_regs *regs)
+     if (cpu_isar_feature(aa64_pauth, cpu)) {
+         qemu_guest_getrandom_nofail(&env->keys, sizeof(env->keys));
+     }
 -
--tests_microblazeel_system_thorough = [
--  'microblazeel_s3adsp1800'
--]
+-    ts->heap_base = info->brk;
+-    /* This will be filled in on the first SYS_HEAPINFO call.  */
+-    ts->heap_limit = 0;
+ }
+diff --git a/linux-user/arm/cpu_loop.c b/linux-user/arm/cpu_loop.c
+index e40d6beafa2..9d54422736c 100644
+--- a/linux-user/arm/cpu_loop.c
++++ b/linux-user/arm/cpu_loop.c
+@@ -492,19 +492,16 @@ void target_cpu_copy_regs(CPUArchState *env, target_pt_regs *regs)
+     for(i = 0; i < 16; i++) {
+         env->regs[i] = regs->uregs[i];
+     }
+-#if TARGET_BIG_ENDIAN
+-    /* Enable BE8.  */
+-    if (EF_ARM_EABI_VERSION(info->elf_flags) >= EF_ARM_EABI_VER4
+-        && (info->elf_flags & EF_ARM_BE8)) {
+-        env->uncached_cpsr |= CPSR_E;
+-        env->cp15.sctlr_el[1] |= SCTLR_E0E;
+-    } else {
+-        env->cp15.sctlr_el[1] |= SCTLR_B;
+-    }
+-    arm_rebuild_hflags(env);
+-#endif
+ 
+-    ts->heap_base = info->brk;
+-    /* This will be filled in on the first SYS_HEAPINFO call.  */
+-    ts->heap_limit = 0;
++    if (TARGET_BIG_ENDIAN) {
++        /* Enable BE8.  */
++        if (EF_ARM_EABI_VERSION(info->elf_flags) >= EF_ARM_EABI_VER4
++            && (info->elf_flags & EF_ARM_BE8)) {
++            env->uncached_cpsr |= CPSR_E;
++            env->cp15.sctlr_el[1] |= SCTLR_E0E;
++        } else {
++            env->cp15.sctlr_el[1] |= SCTLR_B;
++        }
++        arm_rebuild_hflags(env);
++    }
+ }
+diff --git a/linux-user/m68k/cpu_loop.c b/linux-user/m68k/cpu_loop.c
+index 3aaaf02ca4e..23693f33582 100644
+--- a/linux-user/m68k/cpu_loop.c
++++ b/linux-user/m68k/cpu_loop.c
+@@ -94,10 +94,6 @@ void cpu_loop(CPUM68KState *env)
+ 
+ void target_cpu_copy_regs(CPUArchState *env, target_pt_regs *regs)
+ {
+-    CPUState *cpu = env_cpu(env);
+-    TaskState *ts = get_task_state(cpu);
+-    struct image_info *info = ts->info;
 -
- tests_mips_system_thorough = [
-   'mips_malta',
-   'mips_replay',
-diff --git a/tests/functional/microblaze/meson.build b/tests/functional/microblaze/meson.build
-new file mode 100644
-index 00000000000..8069ca9be60
---- /dev/null
-+++ b/tests/functional/microblaze/meson.build
-@@ -0,0 +1,6 @@
-+# SPDX-License-Identifier: GPL-2.0-or-later
-+
-+tests_microblaze_system_thorough = [
-+  'replay',
-+  's3adsp1800'
-+]
-diff --git a/tests/functional/test_microblaze_replay.py b/tests/functional/microblaze/test_replay.py
-similarity index 100%
-rename from tests/functional/test_microblaze_replay.py
-rename to tests/functional/microblaze/test_replay.py
-diff --git a/tests/functional/test_microblaze_s3adsp1800.py b/tests/functional/microblaze/test_s3adsp1800.py
-similarity index 100%
-rename from tests/functional/test_microblaze_s3adsp1800.py
-rename to tests/functional/microblaze/test_s3adsp1800.py
-diff --git a/tests/functional/microblazeel/meson.build b/tests/functional/microblazeel/meson.build
-new file mode 100644
-index 00000000000..27619dc5a9a
---- /dev/null
-+++ b/tests/functional/microblazeel/meson.build
-@@ -0,0 +1,5 @@
-+# SPDX-License-Identifier: GPL-2.0-or-later
-+
-+tests_microblazeel_system_thorough = [
-+  's3adsp1800'
-+]
-diff --git a/tests/functional/test_microblazeel_s3adsp1800.py b/tests/functional/microblazeel/test_s3adsp1800.py
-similarity index 92%
-rename from tests/functional/test_microblazeel_s3adsp1800.py
-rename to tests/functional/microblazeel/test_s3adsp1800.py
-index 915902d48bd..75ce8856ed1 100755
---- a/tests/functional/test_microblazeel_s3adsp1800.py
-+++ b/tests/functional/microblazeel/test_s3adsp1800.py
-@@ -7,7 +7,7 @@
- # This work is licensed under the terms of the GNU GPL, version 2 or
- # later. See the COPYING file in the top-level directory.
- 
--from test_microblaze_s3adsp1800 import MicroblazeMachine
-+from microblaze.test_s3adsp1800 import MicroblazeMachine
- 
- 
- class MicroblazeLittleEndianMachine(MicroblazeMachine):
+     env->pc = regs->pc;
+     env->dregs[0] = regs->d0;
+     env->dregs[1] = regs->d1;
+@@ -116,8 +112,4 @@ void target_cpu_copy_regs(CPUArchState *env, target_pt_regs *regs)
+     env->aregs[6] = regs->a6;
+     env->aregs[7] = regs->usp;
+     env->sr = regs->sr;
+-
+-    ts->heap_base = info->brk;
+-    /* This will be filled in on the first SYS_HEAPINFO call.  */
+-    ts->heap_limit = 0;
+ }
+diff --git a/linux-user/riscv/cpu_loop.c b/linux-user/riscv/cpu_loop.c
+index 541de765ffa..2dd30c7b288 100644
+--- a/linux-user/riscv/cpu_loop.c
++++ b/linux-user/riscv/cpu_loop.c
+@@ -108,8 +108,4 @@ void target_cpu_copy_regs(CPUArchState *env, target_pt_regs *regs)
+         error_report("Incompatible ELF: RVE cpu requires RVE ABI binary");
+         exit(EXIT_FAILURE);
+     }
+-
+-    ts->heap_base = info->brk;
+-    /* This will be filled in on the first SYS_HEAPINFO call.  */
+-    ts->heap_limit = 0;
+ }
+diff --git a/semihosting/arm-compat-semi.c b/semihosting/arm-compat-semi.c
+index bc04b02eba8..bcd13cd6dfd 100644
+--- a/semihosting/arm-compat-semi.c
++++ b/semihosting/arm-compat-semi.c
+@@ -666,7 +666,7 @@ void do_common_semihosting(CPUState *cs)
+             int i;
+ #ifdef CONFIG_USER_ONLY
+             TaskState *ts = get_task_state(cs);
+-            target_ulong limit;
++            static abi_ulong heapbase, heaplimit;
+ #else
+             LayoutInfo info = common_semi_find_bases(cs);
+ #endif
+@@ -678,24 +678,20 @@ void do_common_semihosting(CPUState *cs)
+              * Some C libraries assume the heap immediately follows .bss, so
+              * allocate it using sbrk.
+              */
+-            if (!ts->heap_limit) {
+-                abi_ulong ret;
+-
+-                ts->heap_base = do_brk(0);
+-                limit = ts->heap_base + COMMON_SEMI_HEAP_SIZE;
++            if (!heaplimit) {
++                heapbase = do_brk(0);
+                 /* Try a big heap, and reduce the size if that fails.  */
+-                for (;;) {
+-                    ret = do_brk(limit);
++                for (abi_ulong size = COMMON_SEMI_HEAP_SIZE; ; size >>= 1) {
++                    abi_ulong limit = heapbase + size;
++                    abi_ulong ret = do_brk(limit);
+                     if (ret >= limit) {
++                        heaplimit = limit;
+                         break;
+                     }
+-                    limit = (ts->heap_base >> 1) + (limit >> 1);
+                 }
+-                ts->heap_limit = limit;
+             }
+-
+-            retvals[0] = ts->heap_base;
+-            retvals[1] = ts->heap_limit;
++            retvals[0] = heapbase;
++            retvals[1] = heaplimit;
+             /*
+              * Note that semihosting is *not* thread aware.
+              * Always return the stack base of the main thread.
 -- 
 2.47.2
 

@@ -4,110 +4,123 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7965ACA1015
-	for <qemu-arm@archiver.kernel.org>; Thu,  4 Sep 2025 14:02:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54167CA1002
+	for <qemu-arm@archiver.kernel.org>; Thu,  4 Sep 2025 14:33:03 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uuAXS-0005do-FD; Thu, 04 Sep 2025 10:02:11 -0400
+	id 1uuB15-0000XZ-02; Thu, 04 Sep 2025 10:32:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1uuAXQ-0005dU-KY
- for qemu-arm@nongnu.org; Thu, 04 Sep 2025 10:02:08 -0400
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1uuB13-0000X4-Cd
+ for qemu-arm@nongnu.org; Thu, 04 Sep 2025 10:32:45 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1uuAXH-0001sK-FT
- for qemu-arm@nongnu.org; Thu, 04 Sep 2025 10:02:08 -0400
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1uuB0O-0006A7-QS
+ for qemu-arm@nongnu.org; Thu, 04 Sep 2025 10:32:43 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1756994512;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ s=mimecast20190719; t=1756996319;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=n2FF7QYh1G4sd68hTZrP6WTKiZuCRd21KT76pY9ILtQ=;
- b=eHcHHZQVldfylr0nC0J3Kr2WIq0fYWEMNeELDDDpoRwp2hIOfLALFpwc4wxz9Jg4LAd6YL
- c3E0Wkzx26VwFmBkW0Zd9mguJ4rtvHJ8Hk5aTmyapFc2YEhs1AMbWiBC122cG4LbgNURu3
- pf7DLYXfR8nlj6R4ESVqznO//fclBSI=
-Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com
- [209.85.222.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=pPn3U/ZJ08geO/khRmvMh/qxUuxJLFKtL9Kn0rdyTM0=;
+ b=ASxgAcdkygl5rnyYXr4Y1LCJXdNIDhRaI5C34pe1vD9f2ntJqkwu26PaiJ5hQIbEYOkQ5H
+ j8Rc/SBNgtAMgADC2Xx9jhamTdl+4A+GV5KmnxrBVS1fONJTwicWPxSN59oHZxORcwv26Q
+ SialWVGJ1OvZZ1Udd/KknawW8jFr8yU=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-101-s5iEG2vAMYKePTB_Z5bN_g-1; Thu, 04 Sep 2025 10:01:51 -0400
-X-MC-Unique: s5iEG2vAMYKePTB_Z5bN_g-1
-X-Mimecast-MFC-AGG-ID: s5iEG2vAMYKePTB_Z5bN_g_1756994511
-Received: by mail-qk1-f199.google.com with SMTP id
- af79cd13be357-80fcac99fe1so30578885a.2
- for <qemu-arm@nongnu.org>; Thu, 04 Sep 2025 07:01:51 -0700 (PDT)
+ us-mta-659-m8EzqnofOyOxvXgfEKupNg-1; Thu, 04 Sep 2025 10:31:58 -0400
+X-MC-Unique: m8EzqnofOyOxvXgfEKupNg-1
+X-Mimecast-MFC-AGG-ID: m8EzqnofOyOxvXgfEKupNg_1756996316
+Received: by mail-wm1-f70.google.com with SMTP id
+ 5b1f17b1804b1-45a15f10f31so14489455e9.0
+ for <qemu-arm@nongnu.org>; Thu, 04 Sep 2025 07:31:57 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756994510; x=1757599310;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=n2FF7QYh1G4sd68hTZrP6WTKiZuCRd21KT76pY9ILtQ=;
- b=GdCEz6/IPC4ZwGk83VN1ROIxGqw5qXhzEquLCzUp+aboLWJ8/2ipS/ytWfoMNoIQPH
- dA0tQgRuHjsya4QkbWNSwsJAeAzwmDD42bAx91zD6y5hQcJVFHTd/nKOF/wW2ztJxgyv
- famWMPQ1KDlKXMumIqqlwxBLmCwGcAqk5Z6+OjS0dj5B2hxLlFuIENPSgHFTee6h7wbv
- Y8BPGgWvElLZC4Q8iB5bKO4DxiT5BqlBMAC0WPSQXw3w9FcHk8V00Hc6O0ivvFhYi10t
- pmWoJuveYwPWS4y/gMre/1t/6N4EYCf9jMGE8DzxK1tvtteA84K3IPM0oM5B5muPBkHW
- 0tbA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWY5kNBIGU9XUQ8rlfBooZjgWgfQnF9/Njy+Mp1Ki6VbW2loqLto7SHp083ghh1AoahMP4mxiP/zg==@nongnu.org
-X-Gm-Message-State: AOJu0YwUSsq2LSxQtkFb9Rw8sZbavW4wedI+OztN0Sx4biyykGWTmOIy
- cADtjFoF8GPGPCVeP3WNHZ02YXG4N+5IYhzQbeyygx8b/sQ1XQPgxbPxt0DLEu6fMW6c+NRpg/5
- 8NvTVkQ8iwmx5qt0FZLYJGABflWgRXijxFGXKnlmXWFHE2ZTWrjqcRA==
-X-Gm-Gg: ASbGncs7iGY1fPtxzH1vM4cuEWqCAFCtrMIRbkeT8EkQPoBFZFlyxM3lggmrk0AtDd2
- zWQqB+cw3ul79l6tiNdTxZ9F/rohcUkP63tyg3pc+d9XXvbgRHm0sQcQw/DfRgkHWiOJFaa+WsP
- BmQhRoI+r+Re2x/3bvw2vUze5FQVIvCY3SPWCWOnGZV6RSG49I6JDEFGWRoVqHNgQvDi58pA7vp
- Lv/CRbpHFgw63yYb0AybMhUTtpXcGHnEVCVWGLGgcoJyRMT5gjcuv2qem+esIyIx2bNxZeyZdHy
- z8srI+Fo1ZYZUkjcu9BJKcDQSExKyPZ/
-X-Received: by 2002:a05:620a:2954:b0:809:8ccc:ba7c with SMTP id
- af79cd13be357-8098cccbb97mr872333285a.29.1756994509997; 
- Thu, 04 Sep 2025 07:01:49 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHMNV+IYKzorYL3x13harapQjY27o7mbqLf8/D+PtqSi5EgT37hw9CVgjbMnql3fCapJDAllw==
-X-Received: by 2002:a05:620a:2954:b0:809:8ccc:ba7c with SMTP id
- af79cd13be357-8098cccbb97mr872324985a.29.1756994509259; 
- Thu, 04 Sep 2025 07:01:49 -0700 (PDT)
-Received: from x1.local ([174.89.135.121]) by smtp.gmail.com with ESMTPSA id
- af79cd13be357-80aa6e4914csm282846485a.16.2025.09.04.07.01.46
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 04 Sep 2025 07:01:48 -0700 (PDT)
-Date: Thu, 4 Sep 2025 10:01:35 -0400
-From: Peter Xu <peterx@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: CJ Chen <cjchen@igel.co.jp>, qemu-devel@nongnu.org,
- qemu-block@nongnu.org, qemu-riscv@nongnu.org, qemu-arm@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>,
- Keith Busch <kbusch@kernel.org>, Klaus Jensen <its@irrelevant.dk>,
- Jesper Devantier <foss@defmacro.it>, Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- Weiwei Li <liwei1518@gmail.com>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Tyrone Ting <kfting@nuvoton.com>, Hao Wu <wuhaotsh@google.com>,
- Max Filippov <jcmvbkbc@gmail.com>, David Hildenbrand <david@redhat.com>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
- Tomoyuki Hirose <hrstmyk811m@gmail.com>
-Subject: Re: [RFC PATCH v2 8/9] hw/misc: add test device for memory access
-Message-ID: <aLmbv0ZEKjPFuYxt@x1.local>
-References: <20250822092410.25833-1-cjchen@igel.co.jp>
- <20250822092410.25833-9-cjchen@igel.co.jp>
- <CAFEAcA9FAnnQrAf1eUPr1=FQ+=Wbu13gyfj3T3z+k6BhxHj6uQ@mail.gmail.com>
+ d=1e100.net; s=20230601; t=1756996316; x=1757601116;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=pPn3U/ZJ08geO/khRmvMh/qxUuxJLFKtL9Kn0rdyTM0=;
+ b=qrJ2eVlg7f33akAupWlUMv6J0pbyjYYaTSEYBF+EKyTLiD0Lp/y2YQJh1cCmSjz4Mn
+ RKv6pMfqq7uNkCM049jIMYJA7cLIR04UFOPX5HxgnDyizQq9Ccr+1bFcsu8/DWbEOaza
+ wI3jZ8BuFEHIUPQtoM1XlYZ9/0wIKQ+twfeCa7k+Iil59ZCZ9gK0Lw7kpmvzenMHSHmp
+ fLwxs3GJ2566GjI7GKXL84/FjJp1CbntxphKNCTyBR6WR78Dx7PcXynKUzjQc2XViKqN
+ naCAh3hYDxiS2EfiMLA4SsKFbw792jvY8XEZFbyBAlOaIBKaCBS8KrqkySWjpeVlxVZv
+ YyNg==
+X-Gm-Message-State: AOJu0YxnPnfkmXofjLVwfk3RTDxrYi8mEyxg4CG5I6mm0WNWVW1g45fR
+ LzaVx3Lfu3VNyP+NOTLb0hC0c68RFjDdXc6qKODrjGz0MLvjwu/WLWHCY5Wo3sqZM7FTB+nTmKy
+ j18JJqUbc660FuF6opG0EDSNh3RpAqYW4Hd+qR59G7OmN3kpRdNwm3w==
+X-Gm-Gg: ASbGncsjEGvn/GQoxYoxu0lFwCb51fKxzCtqv9k9+s1SeE3aPnb0cZySYj8S+OUfreS
+ PuzPor/ER3ynf0inptgYC50v4HMutvMxog67zbhES1UK/UebI2xiEzj7D5/oFPZLFu0SpXwdBbs
+ Taj+23TXoSWH0CHHsqBorobYfWNIcUrJouUuz+7HzKstBNVC2oNnB+BiJVN+nGdXGGBhZIn0WJ2
+ oJtxIbZVeKA12LMtT1ocg1k7gQwjt0NxCkUk1AmrT4WlQ7JfN9kZT0uuYNL3rHrsIfJMqDAov7g
+ 4ZCheqCLNDxsFRmllzV4guAOWz/rUx+OBbfSPtRoSuGnLBo7rj8AdI3pukawXkbxenr7+k1wsdg
+ bta7k9ghpkGE=
+X-Received: by 2002:a05:600c:4e0e:b0:45d:d202:77f0 with SMTP id
+ 5b1f17b1804b1-45dd2027c29mr18834085e9.5.1756996316182; 
+ Thu, 04 Sep 2025 07:31:56 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IErZ4c57Vh+Y2//18EYDeA/Buxfw+Je5UZkapXvS+Q5wlc560firjR8VssNVT1SoN1spMkQBA==
+X-Received: by 2002:a05:600c:4e0e:b0:45d:d202:77f0 with SMTP id
+ 5b1f17b1804b1-45dd2027c29mr18833695e9.5.1756996315665; 
+ Thu, 04 Sep 2025 07:31:55 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-3d520eada16sm19054405f8f.41.2025.09.04.07.31.54
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 04 Sep 2025 07:31:55 -0700 (PDT)
+Message-ID: <71ca9132-8deb-4f57-abb0-2bcc0fe93ae9@redhat.com>
+Date: Thu, 4 Sep 2025 16:31:53 +0200
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA9FAnnQrAf1eUPr1=FQ+=Wbu13gyfj3T3z+k6BhxHj6uQ@mail.gmail.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RFC PATCH v3 05/15] hw/arm/smmuv3-accel: Introduce smmuv3 accel
+ device
+To: "Duan, Zhenzhong" <zhenzhong.duan@intel.com>,
+ Nicolin Chen <nicolinc@nvidia.com>, skolothumtho@nvidia.com
+Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "jgg@nvidia.com" <jgg@nvidia.com>, "ddutile@redhat.com"
+ <ddutile@redhat.com>, "berrange@redhat.com" <berrange@redhat.com>,
+ "nathanc@nvidia.com" <nathanc@nvidia.com>,
+ "mochs@nvidia.com" <mochs@nvidia.com>,
+ "smostafa@google.com" <smostafa@google.com>, Linuxarm <linuxarm@huawei.com>,
+ "Wangzhou (B)" <wangzhou1@hisilicon.com>,
+ jiangkunkun <jiangkunkun@huawei.com>,
+ Jonathan Cameron <jonathan.cameron@huawei.com>,
+ "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>,
+ "shameerkolothum@gmail.com" <shameerkolothum@gmail.com>
+References: <20250714155941.22176-1-shameerali.kolothum.thodi@huawei.com>
+ <20250714155941.22176-6-shameerali.kolothum.thodi@huawei.com>
+ <IA3PR11MB9136ACFB4721D47304A9885C9257A@IA3PR11MB9136.namprd11.prod.outlook.com>
+ <aHaP3ULG90gGqWHJ@Asurada-Nvidia>
+ <IA3PR11MB9136C94472D7D50CDC627CB49256A@IA3PR11MB9136.namprd11.prod.outlook.com>
+ <6ee7908c8ea44270b9f4aa64abacaace@huawei.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <6ee7908c8ea44270b9f4aa64abacaace@huawei.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 6rEi1gketspPKeMgrypE1bWzXdeiLGu3LiB8pfi79Ks_1756994511
+X-Mimecast-MFC-PROC-ID: 8sxTPv7-4pyGWoFcyYCiuMIFd9z9Fd-XOMjfE1WSnl4_1756996316
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=peterx@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001,
+ T_SPF_HELO_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -120,126 +133,100 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, Sep 01, 2025 at 06:03:41PM +0100, Peter Maydell wrote:
-> Could we have a comment in this header file that documents
-> what interface the test device presents to tests, please?
-> Both this patch and the test-case patch are hard to
-> review, because I don't know what the test device is
-> trying to do or what the test code is able to assume
-> about the test device.
+Hi Shameer,
 
-Since the series is withdrawed.. but still I feel like I'll need to read
-this series when it's picked up again, I took some time (while the brain
-cache is still around..) study the code, I think I get the rough idea of
-what this testdev is about.  If it's gonna be picked up by anyone, hope
-below could help a bit.  Also for future myself..
+On 7/16/25 11:27 AM, Shameerali Kolothum Thodi wrote:
+>
+>> -----Original Message-----
+>> From: Duan, Zhenzhong <zhenzhong.duan@intel.com>
+>> Sent: Wednesday, July 16, 2025 4:39 AM
+>> To: Nicolin Chen <nicolinc@nvidia.com>
+>> Cc: Shameerali Kolothum Thodi
+>> <shameerali.kolothum.thodi@huawei.com>; qemu-arm@nongnu.org;
+>> qemu-devel@nongnu.org; eric.auger@redhat.com;
+>> peter.maydell@linaro.org; jgg@nvidia.com; ddutile@redhat.com;
+>> berrange@redhat.com; nathanc@nvidia.com; mochs@nvidia.com;
+>> smostafa@google.com; Linuxarm <linuxarm@huawei.com>; Wangzhou (B)
+>> <wangzhou1@hisilicon.com>; jiangkunkun <jiangkunkun@huawei.com>;
+>> Jonathan Cameron <jonathan.cameron@huawei.com>;
+>> zhangfei.gao@linaro.org; shameerkolothum@gmail.com
+>> Subject: RE: [RFC PATCH v3 05/15] hw/arm/smmuv3-accel: Introduce
+>> smmuv3 accel device
+>>
+>>
+>>
+>>> -----Original Message-----
+>>> From: Nicolin Chen <nicolinc@nvidia.com>
+>>> Subject: Re: [RFC PATCH v3 05/15] hw/arm/smmuv3-accel: Introduce
+>>> smmuv3 accel device
+>>>
+>>> On Tue, Jul 15, 2025 at 10:48:31AM +0000, Duan, Zhenzhong wrote:
+>>>>> +static const TypeInfo types[] = {
+>>>>> +    {
+>>>>> +        .name = TYPE_ARM_SMMUV3_ACCEL,
+>>>>> +        .parent = TYPE_ARM_SMMUV3,
+>>>>> +        .class_init = smmuv3_accel_class_init,
+>>>>> +    }
+>>>> In cover-letter, I see "-device arm-smmuv3", so where is above accel
+>>>> device created so we could use smmuv3_accel_ops?
+>>> The smmu-common.c is the shared file between accel and non-accel
+>>> instances. It has a module property:
+>>>    DEFINE_PROP_BOOL("accel", SMMUState, accel, false),
+>> It looks we expose a new TYPE_ARM_SMMUV3_ACCEL type device just for
+>> exporting accel iommu_ops?
+>> What about returning accel iommu_ops directly in
+>> smmu_iommu_ops_by_type() and drop the new type?
+> We are not creating any new device here. Its just a Class object of different type.
+> I had a different approach previously and Eric suggested to try this as there
+> are examples in VFIO/IOMMUFD for something like this.
+>
+> https://lore.kernel.org/qemu-devel/1105d100-dd1e-4aca-b518-50f903967416@redhat.com/
+Actually I pointed out that usually we don't add methods in states as it
+was done in v2 (in SMMUState) but rather in classes hence my suggestion
+to use a class instead. Now what looks strange is your class does not
+implement any method ;-)
 
-Firstly, the testdev creates a bunch of MRs, with all kinds of the
-attributes to cover all max/min access sizes possible & unaligned access &
-endianess.  The test cases are exactly tailored for this testdev, as the
-testcase needs to know exactly which offset contains which type of MR.  The
-tests must be run correspondingly on the paired MR to work.
+docs/devel/qom.rst says "The #ObjectClass typically holds a table of function pointers
+for the virtual methods implemented by this type."
 
-There're 16 groups of MRs / tests, each group contains below num of MRs:
+Sorry if I was unclear.
 
-#define N_OPS_LIST_LITTLE_B_VALID   80
-#define N_OPS_LIST_LITTLE_B_INVALID 40
-#define N_OPS_LIST_LITTLE_W_VALID   60
-#define N_OPS_LIST_LITTLE_W_INVALID 30
-#define N_OPS_LIST_LITTLE_L_VALID   40
-#define N_OPS_LIST_LITTLE_L_INVALID 20
-#define N_OPS_LIST_LITTLE_Q_VALID   20
-#define N_OPS_LIST_LITTLE_Q_INVALID 10
-#define N_OPS_LIST_BIG_B_VALID      80
-#define N_OPS_LIST_BIG_B_INVALID    40
-#define N_OPS_LIST_BIG_W_VALID      60
-#define N_OPS_LIST_BIG_W_INVALID    30
-#define N_OPS_LIST_BIG_L_VALID      40
-#define N_OPS_LIST_BIG_L_INVALID    20
-#define N_OPS_LIST_BIG_Q_VALID      20
-#define N_OPS_LIST_BIG_Q_INVALID    10
+Now if you don't need any "accel" specific methods besides the PCIIOMMUOps which have a specific struct, I am not sure we need a class anymore. or then you direct embed the PCIIOMMUOps Struct in the method?
 
-That's a total of 600 (which is, N_OPS_LIST) MRs at the base address of the
-testdev, specified by, for example:
+Also it's true that's weird that the actual object is never instantiated and may also appear in qom object list. This is not the case for the example I gave, ie. the VFIOContainerBase.
 
-  -device memaccess-testdev,address=0x10000000
+I don't know if anyone has a better/more elegant idea?
 
-Each MR will be 32B (MEMACCESS_TESTDEV_REGION_SIZE) in size, sequentially
-appended and installed to base address offset. All of them internally
-backed by:
+Thanks
 
-    testdev->mr_data = g_malloc(MEMACCESS_TESTDEV_MR_DATA_SIZE);
+Eric
 
-Here, BIG/LITTLE decides the endianess of the MR, B/W/L/Q decides the
-min_access_size of the MR, which isn't clear at all to me..  IIUC it's
-hidden inside the skip_core() check where it skips anything except when
-valid_min == required_min.  So only those MRs that satisfy will be created.
-
-And just to mention, IIUC these numbers are not random either, they are
-exactly how many possible MRs that we can create under the specific
-category of MR group.  Changing that could either causing uninitialized MRs
-(under some group) or trigger assertions saying MR list too small:
-
-fill_ops_list:
-        if (idx > ops_len) {
-                g_assert_not_reached();
-        }
-
-This is not clear either.. better document this if it will be picked up one
-day.
-
-An example for definition of N_OPS_LIST_LITTLE_B_VALID: we can create 80
-such MRs when the MR is (1) LITTLE (2) min_access_size=1 (3) allows
-.valid.unaligned.  We'll skip the rest in skip_core() when building the
-list of MRs.  And yes, here (3) isn't clear either: VALID here means "the
-MR allows unaligned access from API level", which implies
-.valid.unaligned=true.  OTOH, INVALID implies .valid.unaligned=false.
-NOTE: it doesn't imply at all about .impl.unaligned.
-
-The test case should be tailored for this device, because for each test it
-will run, it'll run exactly on top of the group of MRs that the test case
-pairs with.
-
-Taking example of big_w_valid(): it'll run the test on all MRs that is (1)
-BIG, (2) min_access_size=2, (3) VALID to use unaligned access, aka,
-.valid.unaligned=true.
-
-Said above, I'll also raise a question that I don't understand, on the
-testdev implementation.  It's about endianess of the MR and how data
-endianess is processed in the test dev.  Please shoot if anyone knows.
-
-Again, taking the example of BIG write() of a test MR, I wonder why the
-testdev has this:
-
-static void memaccess_testdev_write_big(void *opaque, hwaddr addr,
-                                        uint64_t data, unsigned int size)
-{
-    g_assert(addr + size < MEMACCESS_TESTDEV_REGION_SIZE);
-    void *d = (uint8_t *)opaque + addr;
-    stn_be_p(d, size, data);
-}
-
-It means when the ->write() triggers, it assumes "data" here is host
-endianess, then convert that to MR's endianess, which is BE in this case.
-
-But haven't we already done that before reaching ->write()?  Memory core
-will do the endianess conversion (from HOST -> MR endianess) already here
-before reaching the write() hook, AFAICT:
-
-memory_region_dispatch_write()
-    adjust_endianness(mr, &data, op);
-        if ((op & MO_BSWAP) != devend_memop(mr->ops->endianness)) {
-
-Here, MO_BSWAP shouldn't normally be set. devend_memop() should read BE.
-On my host (x86_64) it means it'll swap once to MR endianess.  IIUC, now
-the whole "data" field already in MR endianess and should be directly put
-into the backend memdev storage.  I don't think I understand why above
-stn_be_p() is not a memcpy().  Answers welcomed..
-
--- 
-Peter Xu
+>
+> Thanks,
+> Shameer
+>
+>>> where it directs to different iommu_ops:
+>>> 937 static const PCIIOMMUOps *smmu_iommu_ops_by_type(SMMUState
+>> *s)
+>>> 938 {
+>>> 939     SMMUBaseClass *sbc;
+>>> 940
+>>> 941     if (s->accel) {
+>>> 942         sbc =
+>>> ARM_SMMU_CLASS(object_class_by_name(TYPE_ARM_SMMUV3_ACCEL));
+>>> 943     } else {
+>>> 944         sbc =
+>>> ARM_SMMU_CLASS(object_class_by_name(TYPE_ARM_SMMU));
+>>> 945     }
+>>> 946     assert(sbc->iommu_ops);
+>>> 947
+>>> 948     return sbc->iommu_ops;
+>>> 949 }
+>>>
+>>> Nicolin
 
 

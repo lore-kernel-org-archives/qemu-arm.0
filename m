@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4599CA1012
-	for <qemu-arm@archiver.kernel.org>; Thu,  4 Sep 2025 08:22:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25AC8CA1015
+	for <qemu-arm@archiver.kernel.org>; Thu,  4 Sep 2025 08:22:46 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uu58L-00025S-Fi; Thu, 04 Sep 2025 04:15:53 -0400
+	id 1uu5Af-0000Gw-JP; Thu, 04 Sep 2025 04:18:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1uu54x-0006Vd-Sh
- for qemu-arm@nongnu.org; Thu, 04 Sep 2025 04:12:25 -0400
-Received: from mail-ej1-x641.google.com ([2a00:1450:4864:20::641])
+ id 1uu55T-0006vs-Cp
+ for qemu-arm@nongnu.org; Thu, 04 Sep 2025 04:13:02 -0400
+Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1uu54U-00048t-2m
- for qemu-arm@nongnu.org; Thu, 04 Sep 2025 04:12:22 -0400
-Received: by mail-ej1-x641.google.com with SMTP id
- a640c23a62f3a-afcb7ace3baso137859966b.3
- for <qemu-arm@nongnu.org>; Thu, 04 Sep 2025 01:11:53 -0700 (PDT)
+ id 1uu54r-0004H7-FL
+ for qemu-arm@nongnu.org; Thu, 04 Sep 2025 04:12:55 -0400
+Received: by mail-ej1-x630.google.com with SMTP id
+ a640c23a62f3a-b04770a25f2so102749666b.2
+ for <qemu-arm@nongnu.org>; Thu, 04 Sep 2025 01:12:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756973512; x=1757578312; darn=nongnu.org;
+ d=linaro.org; s=google; t=1756973526; x=1757578326; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=3RQ/9rxDUPu7uJRVAzp79eYsa4qcVHBXmURVHyZAYUo=;
- b=QvvOZY4e+6Y9MElx3E/UsQ+MVCtWL8O/KjmnFYldWxcLcYUBEum0te7ae+wuAZS2s6
- 6qu8PaJW+c0G6dFsWIcG6KnnRHoKvR2+XIWMqwZSU+MW2JVer5ByVAsxSkUtBy/UKJ4o
- IP3ypoZN0kCLj1d4eBDQVmLWB3Q86JQkLoZBjC3cT2xlAxPz5ihWp6z4AYaTsI/iUZhP
- ovCfnXACSurZ3f8DpcZt2hMbOO6rRfrbSugJHBDYHpqsBcolS6LDD7Vmb6q9jDAotjzP
- FxlPTG/aGlskm9EqgxDK94rUpWYCqnxxFfeJgpbIL+USe/PHfORkFDDeydupIwIx2Sag
- iNdA==
+ bh=YbgiQLabRIDzMbEqEJW5pMy577MNL35xIUV9J9ORiGc=;
+ b=WS/eYI27w8ojbHWQpCvWdOVPWGFu3rK6L7tqWO+G0olt6M5QMQPKu06R9Fl51jAr4J
+ fXJnFkUioh8wOUvs8CxkA7QbK/Gr2bMaN5oM2xcOxWTQe9CmH/B2goQF3rH3+CxpY8PL
+ lAQOHMAYYAWvq3gVgGb6YyJ76PXUjQCXXJZH0pVFHCXV0zSnzEgVO6DNEGQ6mNLPF3Mw
+ XgGIfCJe55L/jy9G35L/YFFKHBw1AHdKQrYyO7+Jp4ek5mvVNCYEEA7Q0Yj8qDq5cDs1
+ KZ6gmxLpaStOilR6Kmbpigv8Iu0zSu6cA1bGfZ2U790Uqg1+1kGHfcOPE4YDXjldpKsN
+ ABhA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756973512; x=1757578312;
+ d=1e100.net; s=20230601; t=1756973526; x=1757578326;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=3RQ/9rxDUPu7uJRVAzp79eYsa4qcVHBXmURVHyZAYUo=;
- b=v2QYQ6b4YXakRy79rh7XkBTsKBngld6ssPslgv683m41JQ/pseibjqNHNU3KGvcd42
- 9uGzPM6Br298mo+JcXbJsdPrH5+4exgEUz8z7dNsp/GaLmvm/nzKQPZIavghWjVjkclu
- tmBV7DU/p3Gvytz3RZhymsO+Hy01/uj61VAyUZ/fWvTf032W+nU7G9dvXYh7NhazaR64
- LP/1NqtELqmNmuZVjvLqGprj2eJOtxKB9ELI0iLzyBHzcEaSqdmtCz0rxamUr0J3mndE
- Gh64oeJRvvo6dlUdzHnixt7nbKKr8IuSVrBcjJnS2wkT0QkUxoFcX5wcabXx4y80UaJn
- DCog==
+ bh=YbgiQLabRIDzMbEqEJW5pMy577MNL35xIUV9J9ORiGc=;
+ b=nSDE/W7sx9TQbD6Z3r0OlWhUs3k8BRQsBqDhCZ51qQIfvrGp3esmorKB+hhmbdKnU7
+ 9bcJLgEmlshnNF6i0YjxNb9HdxdFgeCaaX2sKqJsIO8tCFvclmIx+hLcV3H0NmCp3vMv
+ KpIsnlCM/mkjf9gsow+fVvJyZTzamnKwNVx2J9JRiMt5jREni4i26RRWbxuM1dVzyEOT
+ y734PrwPnT1wACE4QyPuXBX+GUQ8kG+fpkWgJwyouVqKQIkEFxK6Kw5jjws2ae6x3I1Y
+ tdazNS7J/UpLnSZDkSwYgXlI/gWDJoG9i8tm/qcyEso+0qB5n9eeB6n51njrhbc7Bd7R
+ 5hTQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVJzEgEUZfyqcGWbUoWQqCVDmXzXYzZn/pq65D+kpyAFAb0mtiks7xMoZDAt9ytMGCYvuAi983gUQ==@nongnu.org
-X-Gm-Message-State: AOJu0YxemJ9CdFJZMDsHiqRtXB1NYnSy2gEbExOkDdEkhd0Bn+674yF2
- 36FFlhnuH7d5ES+vSMH3iuVswivNY62OdHUlmfEsmLttWjle0HkrY/mdG7N/jH91VaM=
-X-Gm-Gg: ASbGncsDPybHIkwiAKy9znVXL8ie4rhqzvvum+VwtskUtwzM8p5TZaYeQI7dce7VQaV
- 7EKV13AYHEqXk9AENG//gnUcxh8LqBp3hhBnC4Mb4O8xDbkJs98a1f1YgVxyb31NK+ENY3WpljF
- 4UhC/+hbE6S5UxFGCEaWaOqX/N1dn4cPqWVaQtz9cCGz/sSCmyCh6ngxfqHz8neL/ktoKdvKUAv
- 5K0lUfTnliAXAYmHjz+rbBYcIb7liH/ZYmKvC3xDWvmCegvE8L5yvN5XpQx4lhyPkUHjATSE8kO
- y4g2sCjBmt6Oq+OKqrkROVqBMhSOXDpimwytBfQUgyo4QXdjZmlUHIIdzcmBbqyufInBBBAz7ZK
- 9WnVtje+OAa7efKhCL6642HT3KMTKRiBeCYX4PVAmk7f9
-X-Google-Smtp-Source: AGHT+IEMiQUnZCUx+REMU/XcQ5tTI90e+ZSsd/3pD9djADv7KyFZS6DVOw7EVXdxkO4rIlRK8VaD/g==
-X-Received: by 2002:a17:906:12cf:b0:b04:11e5:9a8e with SMTP id
- a640c23a62f3a-b0411e59b44mr1462216366b.40.1756973511178; 
- Thu, 04 Sep 2025 01:11:51 -0700 (PDT)
+ AJvYcCXC+XF/zSRR4RVoX1LeBZ/gUr9CXR7kB9JqHamgqztiJs5D2/Ew022w2c8eohQ6vvNYdcRAdjMb0Q==@nongnu.org
+X-Gm-Message-State: AOJu0YySl/Zyhn5+18fxvJXYoS0j9hOpZkap3g7+z8fxZL6h+4Hxathj
+ MwW3PSPsZTq0bjm95xqkY+FDKSIM8idd6xjo+ylDPOo45gXF5HR7Ox/YEukh7pfvDlc=
+X-Gm-Gg: ASbGncsni8yNdj0mDPCcr8NbIng9AkhOEbxVf4mI5FOx9s/JYHI29qvijLHEg2L9NG/
+ sJZppSmNxMSUL+Ce9feyOVnf6lSl29fzdiAzk3J2PRaHHl3/C3UjmgdZ8AO/ndX10kRexGnuMn4
+ 4ytpKZQfLJWV06cScJumWsfVqYED+ncrrcxDxlVj6J8iOItPOhJ36YKV6ttpukB//OsPM3DVSev
+ l+IplRZi3DoyhQHqqifjH5UrU2FpCCXgS5K6oZcXDvTtqIuXNvEOYqzWvxV78ggjzVx0tHoaqJt
+ rDG5vD72RslDpG3vI9nuRhvPE0SUOpGm1OFs/Ye3hEeNLJgSKdjheAIcMKzj+ZEHv9PWtcHLiwl
+ /uhN48+1w6JypjjoKkLA98EU5OpXvGy3zHA==
+X-Google-Smtp-Source: AGHT+IGvfUUxfZf0n7TZT/tpiPwBLlPK5VHPmndW4xraKK5riVT7vXeP9znOPanhCZ2TZ8Ykjw9z6g==
+X-Received: by 2002:a17:907:3d05:b0:b04:5c5b:16b1 with SMTP id
+ a640c23a62f3a-b045c5b1dd9mr740404766b.42.1756973526443; 
+ Thu, 04 Sep 2025 01:12:06 -0700 (PDT)
 Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-b04129eccbfsm1161132866b.7.2025.09.04.01.11.48
+ a640c23a62f3a-b042a4b3110sm950782266b.49.2025.09.04.01.11.56
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 04 Sep 2025 01:11:49 -0700 (PDT)
+ Thu, 04 Sep 2025 01:12:02 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id DEE096019A;
- Thu, 04 Sep 2025 09:11:33 +0100 (BST)
+ by draig.lan (Postfix) with ESMTP id 62F8560761;
+ Thu, 04 Sep 2025 09:11:36 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Reinoud Zandijk <reinoud@netbsd.org>,
@@ -130,23 +130,23 @@ Cc: Reinoud Zandijk <reinoud@netbsd.org>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
  Nicholas Piggin <npiggin@gmail.com>, John Levon <john.levon@nutanix.com>
-Subject: [PATCH v2 047/281] rust: move dependencies to rust/Cargo.toml
-Date: Thu,  4 Sep 2025 09:07:21 +0100
-Message-ID: <20250904081128.1942269-48-alex.bennee@linaro.org>
+Subject: [PATCH v2 063/281] linux-user: Remove ELF_HWCAP2
+Date: Thu,  4 Sep 2025 09:07:37 +0100
+Message-ID: <20250904081128.1942269-64-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.2
 In-Reply-To: <20250904081128.1942269-1-alex.bennee@linaro.org>
 References: <20250904081128.1942269-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::641;
- envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x641.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::630;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x630.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -162,52 +162,86 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Paolo Bonzini <pbonzini@redhat.com>
+From: Richard Henderson <richard.henderson@linaro.org>
 
-As more crates start using the same dependencies, it's better to not
-repeat the versions and move the dependency declarations to the workspace.
+All definitions of ELF_HWCAP2 are now identical.  Provide a
+not-reached stub as a fallback definition of get_elf_hwcap2.
 
-Reviewed-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
-Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- rust/Cargo.toml          | 5 +++++
- rust/qemu-api/Cargo.toml | 6 +++---
- 2 files changed, 8 insertions(+), 3 deletions(-)
+ linux-user/elfload.c | 23 ++++++++++-------------
+ 1 file changed, 10 insertions(+), 13 deletions(-)
 
-diff --git a/rust/Cargo.toml b/rust/Cargo.toml
-index 0a83db15356..6f8884eb30b 100644
---- a/rust/Cargo.toml
-+++ b/rust/Cargo.toml
-@@ -15,6 +15,11 @@ license = "GPL-2.0-or-later"
- repository = "https://gitlab.com/qemu-project/qemu/"
- rust-version = "1.77.0"
+diff --git a/linux-user/elfload.c b/linux-user/elfload.c
+index 88d439f3486..7a41917b49d 100644
+--- a/linux-user/elfload.c
++++ b/linux-user/elfload.c
+@@ -448,8 +448,6 @@ static bool init_guest_commpage(void)
+     return true;
+ }
  
-+[workspace.dependencies]
-+anyhow = "~1.0"
-+foreign = "~0.3.1"
-+libc = "0.2.162"
-+
- [workspace.lints.rust]
- unexpected_cfgs = { level = "deny", check-cfg = [
-     'cfg(MESON)', 'cfg(HAVE_GLIB_WITH_ALIGNED_ALLOC)',
-diff --git a/rust/qemu-api/Cargo.toml b/rust/qemu-api/Cargo.toml
-index db7000dee44..c07a17a28b0 100644
---- a/rust/qemu-api/Cargo.toml
-+++ b/rust/qemu-api/Cargo.toml
-@@ -15,9 +15,9 @@ rust-version.workspace = true
+-#define ELF_HWCAP2 get_elf_hwcap2(thread_cpu)
+-
+ #define ELF_PLATFORM get_elf_platform()
  
- [dependencies]
- qemu_api_macros = { path = "../qemu-api-macros" }
--anyhow = "~1.0"
--libc = "0.2.162"
--foreign = "~0.3.1"
-+anyhow = { workspace = true }
-+foreign = { workspace = true }
-+libc = { workspace = true }
+ static const char *get_elf_platform(void)
+@@ -537,8 +535,6 @@ static void elf_core_copy_regs(target_elf_gregset_t *regs,
+ #define USE_ELF_CORE_DUMP
+ #define ELF_EXEC_PAGESIZE       4096
  
- [features]
- default = ["debug_cell"]
+-#define ELF_HWCAP2  get_elf_hwcap2(thread_cpu)
+-
+ #if TARGET_BIG_ENDIAN
+ # define VDSO_HEADER  "vdso-be.c.inc"
+ #else
+@@ -593,8 +589,6 @@ static inline void init_thread(struct target_pt_regs *regs,
+ 
+ #define ELF_ARCH        EM_PPC
+ 
+-#define ELF_HWCAP2 get_elf_hwcap2(thread_cpu)
+-
+ /*
+  * The requirements here are:
+  * - keep the final alignment of sp (sp & 0xf)
+@@ -1279,6 +1273,10 @@ static inline void init_thread(struct target_pt_regs *regs,
+ #ifndef HAVE_ELF_HWCAP
+ abi_ulong get_elf_hwcap(CPUState *cs) { return 0; }
+ #endif
++#ifndef HAVE_ELF_HWCAP2
++abi_ulong get_elf_hwcap2(CPUState *cs) { g_assert_not_reached(); }
++#define HAVE_ELF_HWCAP2 0
++#endif
+ 
+ #include "elf.h"
+ 
+@@ -1801,9 +1799,9 @@ static abi_ulong create_elf_tables(abi_ulong p, int argc, int envc,
+ #ifdef DLINFO_ARCH_ITEMS
+     size += DLINFO_ARCH_ITEMS * 2;
+ #endif
+-#ifdef ELF_HWCAP2
+-    size += 2;
+-#endif
++    if (HAVE_ELF_HWCAP2) {
++        size += 2;
++    }
+     info->auxv_len = size * n;
+ 
+     size += envc + argc + 2;
+@@ -1863,10 +1861,9 @@ static abi_ulong create_elf_tables(abi_ulong p, int argc, int envc,
+     NEW_AUX_ENT(AT_SECURE, (abi_ulong) qemu_getauxval(AT_SECURE));
+     NEW_AUX_ENT(AT_EXECFN, info->file_string);
+ 
+-#ifdef ELF_HWCAP2
+-    NEW_AUX_ENT(AT_HWCAP2, (abi_ulong) ELF_HWCAP2);
+-#endif
+-
++    if (HAVE_ELF_HWCAP2) {
++        NEW_AUX_ENT(AT_HWCAP2, get_elf_hwcap(thread_cpu));
++    }
+     if (u_base_platform) {
+         NEW_AUX_ENT(AT_BASE_PLATFORM, u_base_platform);
+     }
 -- 
 2.47.2
 

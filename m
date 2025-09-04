@@ -4,111 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24215CA1015
-	for <qemu-arm@archiver.kernel.org>; Thu,  4 Sep 2025 14:34:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A59ABCA1013
+	for <qemu-arm@archiver.kernel.org>; Thu,  4 Sep 2025 15:47:49 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uuB24-0000vJ-3d; Thu, 04 Sep 2025 10:33:49 -0400
+	id 1uuCBM-0004mS-Ni; Thu, 04 Sep 2025 11:47:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uuB21-0000op-QG
- for qemu-arm@nongnu.org; Thu, 04 Sep 2025 10:33:46 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uuB1s-0006Wq-Fm
- for qemu-arm@nongnu.org; Thu, 04 Sep 2025 10:33:44 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1756996411;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=+Rvd8zx5PhnwMcPMnDukUW4fhCSlh4rdnVhW9YU7UHY=;
- b=EXkUW6QD4XAMiliq32wCdEs6E15OfFv4duszjBoPnhiHq/n2bJLu7nxPD23ZDNCdXsrK3J
- f0g2XE54ubdBoM3DA+7uGuQUXQi707SPqei3VC3qbrz3B9hOf/gDnpxYjcpbxWUb4Ow4iD
- armMDzGBrcnYq2ldiEPSLqFSJGDmvdM=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-663-0qTOEcYRPSG-In-zyQnHsg-1; Thu, 04 Sep 2025 10:33:28 -0400
-X-MC-Unique: 0qTOEcYRPSG-In-zyQnHsg-1
-X-Mimecast-MFC-AGG-ID: 0qTOEcYRPSG-In-zyQnHsg_1756996408
-Received: by mail-wr1-f69.google.com with SMTP id
- ffacd0b85a97d-3ce7f782622so378726f8f.1
- for <qemu-arm@nongnu.org>; Thu, 04 Sep 2025 07:33:28 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
+ id 1uuCB7-0004he-Qs
+ for qemu-arm@nongnu.org; Thu, 04 Sep 2025 11:47:15 -0400
+Received: from mail-vk1-xa2f.google.com ([2607:f8b0:4864:20::a2f])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
+ id 1uuCB0-0008Ha-FE
+ for qemu-arm@nongnu.org; Thu, 04 Sep 2025 11:47:13 -0400
+Received: by mail-vk1-xa2f.google.com with SMTP id
+ 71dfb90a1353d-54488e51c37so500146e0c.2
+ for <qemu-arm@nongnu.org>; Thu, 04 Sep 2025 08:47:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1757000824; x=1757605624; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=w7W8AMCroqwaeXqVpYPQbxXgScT+t9hdJtgqiSQ+G30=;
+ b=u+jEFJ9k551FDTzvO4nrpQgSiZrnF2GzxRqdkkG0IvmgK8Y2IXzXGVgi243a2DfaNg
+ onaBSr5aJtzaY9ogo0gqMYGZL6TtoetWvB4ABdrGZzwEcahgA2hRHuYn3sPJn2i3Ey7A
+ GMobxBz2cKxavpxUlVnwxMSwS1vUR2Xbz7e9Z7JNR3WNSkHN5wfRZzpttIbFgZOTUVTG
+ /q4LfwIsVRpM2N+jwkO/Ebhru4h9o5Hc9coGCxoOWACwfsqW0vsHvHr0sZ5XokA54Tdb
+ GBQ31rNsr+oPXpVrpMNIOeJ7JYgqA5FoPd8htkzfujh6kgWYmQ2kP5wzPkLq9Qzask7V
+ qJww==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756996407; x=1757601207;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=+Rvd8zx5PhnwMcPMnDukUW4fhCSlh4rdnVhW9YU7UHY=;
- b=EAIJz/HL1qtqB98K/mA4AiBhxwfKtX9dthE01DSb+LuRuiL4O6oaU/vGPxyykKpCeO
- eCRaNdAt4580c4IgxlFYqj6RQHcQEaWzcRXTRFDEF6ZdNgd8H8ubuZq+d6b0lBmpoty4
- VoRh65cpd7OuP0asAU2jRHO+txKkOCstY3VvL45M6y1kI2R/tAXMUrGGRyz1s4Wi33BU
- g1Rq9uxFLJ96oybMnST0q/LLeSnU9qeeKTMGQPbnbQ7YmH5wUB/04/hnSfxYtWPP7gx9
- 4Dpq+gQFeQ1pprLN4xyEc4ZMVstXayMUV3W2q84edqbLgUi02G/cH6XA2gbZb1tqZx2h
- oPhg==
-X-Gm-Message-State: AOJu0YxiGNXJc/KunS7LjZwfUnM6HNwpFweG81JZIqaVoEPtXvLCX3Dc
- AQJZOqRKbPSyWNub+3HyQI3NQG/7QtkDRgZm+fy4u1ALzaEhENvXyD55tw91IuckkRobRd9smS1
- jn6T+ZZCBacd1C4YT+lvvmewtahmMsVHUGOPGiM9BaHkmm6U8O/q+Qw==
-X-Gm-Gg: ASbGncuIgVfIVyu1w8V/DUebXBlfAmnzfEtfHeoHFcvbJUykW5YXNFPW5d9sgeDCIg2
- J+rt2WiXAovshXqMkyIsTBVI4SHVETyjp64sdQbnSBv/UMJl2WLaQ0u5PP+AV86co4aPsZPa0Qr
- p8dBRseCLIP28wzk47+W4+R2Wlmoplb/v9//jteIcSkcdhnaD2Sri72pMfxtKePr3LypeGEpL+c
- sfaZCYinEcfpUM2HNQRb06nd3iED6XrUcP8LWd//2m93zTcUc0xXWRrYDOYZx5s/Hme8UxOaWi8
- 2Vg9dU//9ndKrMDmqMvz3Tr9QDJxsh2xTFm1AFCPSj0EH7Tpl6NcfEC7o6SQZsIFhrhraQFVu9I
- 92F8xVTKCDzw=
-X-Received: by 2002:a05:6000:178e:b0:3e0:63dc:913c with SMTP id
- ffacd0b85a97d-3e063dc9503mr2941471f8f.3.1756996407494; 
- Thu, 04 Sep 2025 07:33:27 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHyDurDvrUNCb5ZwMrNsM56ZIrJNvFp6TmGhBfvPliakySuoUJJaGMPVK8IBrCnpCvOp7CDNA==
-X-Received: by 2002:a05:6000:178e:b0:3e0:63dc:913c with SMTP id
- ffacd0b85a97d-3e063dc9503mr2941439f8f.3.1756996407000; 
- Thu, 04 Sep 2025 07:33:27 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3cf34491a7fsm27152781f8f.57.2025.09.04.07.33.25
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 04 Sep 2025 07:33:26 -0700 (PDT)
-Message-ID: <f0473156-2e59-4467-90cc-d8315cf9063e@redhat.com>
-Date: Thu, 4 Sep 2025 16:33:24 +0200
+ d=1e100.net; s=20230601; t=1757000824; x=1757605624;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=w7W8AMCroqwaeXqVpYPQbxXgScT+t9hdJtgqiSQ+G30=;
+ b=WZYmLt4L5gLU+vDC6oLBo5s+oYiMtZMisl6wriQ8RICAncAQywKXyS4mWGO5oKGixh
+ Eylbof7F2uJf0wRgzo9yq6HG9p7g+liUVlF7CLmtUqcyCILX4qf/5T2Fp+dUl7e9Jke/
+ 9AzWeUHF2ITRSNR8ssmMScNuCi7hPK9NvRbXdlYbzClWRAp09FT/AAjxkcgqAmm1KwVT
+ mc9Hld08YuY7RUpsDoTbUqG523O2WTswdXe57glskxx575xvL3MvU3EgKjZrvoHYLvgk
+ X/BzbR5V1XV5vx1nEfdbf0AmO5hMbTQpZrwZ2dbmeigGUSTV4yy2HYn1nu3zpIDZG4pD
+ 1Rog==
+X-Gm-Message-State: AOJu0YwtgpYHxOCqhQ5Q9K7putENp9Da5efdaCzHuOdQfhqcYbDbJA9b
+ 9qhTmUeqmye4zaWw3IrPWuSyfzmVe9EetmSQDeOCTx1pmEs82oaE724+0Ehza1ITLjubhVjb3YC
+ dAViefWh8BA==
+X-Gm-Gg: ASbGncsvYuIxyhM7Q1LCQitLJHdboxDJqb1cY2WQnmNNAnuJOrFNcy4Gi+qlV2Fs6a7
+ TOB3QbqVpCyw0N4xZWvuHVJw1UQtRiMa8yH0xMlI1pVCWTJgjwrtQr+MApu4w4ZPSHCFi+CivMC
+ nincvh0kdO/XTwuNYg/KlpKGD4ibBAsQ99EfBu3vTp0phw2rgUIaMCZklKpVcuIaJp2Iq7uytax
+ 5pcRM8WhSu70Ho9RZsDflw/UHhO7gLf8g8Ky1VwMy+lOSzrhlsny4hdzTGFa7eThFgRxPXu7Mzm
+ 0PNAYUjyMAVdNAMDkeZB9NbeuRa9bnrKG1qZug5nytUCr17oiGAV3Jvx7sOqBDwp9R42WFXqxJv
+ SHxdJ8YO/nw0Kf5vsv1IdBsJLLbNp
+X-Google-Smtp-Source: AGHT+IF1INOgEwi5XuzYYf8xmg/ZUfMMO6YYhiWR+h5YxK7FFBUBbVtiSECAhjpN0ymfBkDR36+qwA==
+X-Received: by 2002:a05:6122:2022:b0:543:cd49:ce78 with SMTP id
+ 71dfb90a1353d-544a02889edmr7340174e0c.14.1757000823807; 
+ Thu, 04 Sep 2025 08:47:03 -0700 (PDT)
+Received: from gromero0.. ([186.215.58.133]) by smtp.gmail.com with ESMTPSA id
+ 71dfb90a1353d-544a666da0csm6497022e0c.28.2025.09.04.08.47.01
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 04 Sep 2025 08:47:03 -0700 (PDT)
+From: Gustavo Romero <gustavo.romero@linaro.org>
+To: qemu-devel@nongnu.org, alex.bennee@linaro.org, thuth@redhat.com,
+ berrange@redhat.com
+Cc: qemu-arm@nongnu.org,
+	1844144@gmail.com,
+	gustavo.romero@linaro.org
+Subject: [PATCH v2 1/5] tests/guest-debug: Make QEMU optional in run-test.py
+Date: Thu,  4 Sep 2025 15:46:36 +0000
+Message-Id: <20250904154640.52687-2-gustavo.romero@linaro.org>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20250904154640.52687-1-gustavo.romero@linaro.org>
+References: <20250904154640.52687-1-gustavo.romero@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH v3 05/15] hw/arm/smmuv3-accel: Introduce smmuv3 accel
- device
-To: Nicolin Chen <nicolinc@nvidia.com>, skolothumtho@nvidia.com
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, peter.maydell@linaro.org,
- jgg@nvidia.com, ddutile@redhat.com, berrange@redhat.com, nathanc@nvidia.com,
- mochs@nvidia.com, smostafa@google.com, linuxarm@huawei.com,
- wangzhou1@hisilicon.com, jiangkunkun@huawei.com,
- jonathan.cameron@huawei.com, zhangfei.gao@linaro.org,
- zhenzhong.duan@intel.com, shameerkolothum@gmail.com
-References: <20250714155941.22176-1-shameerali.kolothum.thodi@huawei.com>
- <20250714155941.22176-6-shameerali.kolothum.thodi@huawei.com>
- <aHU9INgBsFgvtec+@Asurada-Nvidia>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <aHU9INgBsFgvtec+@Asurada-Nvidia>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: xIE0ulT2flnHQfI-Zlnrvv9XeTY3axRGAzASfxIGSVY_1756996408
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::a2f;
+ envelope-from=gustavo.romero@linaro.org; helo=mail-vk1-xa2f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -121,111 +100,132 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+This commit makes QEMU optional in run-test.py, allowing it to be used
+as a GDB runner, i.e., to call GDB and pass a test script to it without
+launching QEMU. In this configuration, it is the test script’s duty to
+configure and run the VMs that GDB connects to.
 
+sys.argv passed via -ex now includes the full path to the test script in
+addition to the script’s arguments, which allows unittest introspection
+to work properly in case it is used in the test script.
 
-On 7/14/25 7:23 PM, Nicolin Chen wrote:
-> On Mon, Jul 14, 2025 at 04:59:31PM +0100, Shameer Kolothum wrote:
->> Also setup specific PCIIOMMUOps for accel SMMUv3 as accel
->> SMMUv3 will have different handling for those ops callbacks
->> in subsequent patches.
->>
->> The "accel" property is not yet added, so users cannot set it at this
->> point. It will be introduced in a subsequent patch once the necessary
->> support is in place.
->>
->> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-> Overall the patch looks good to me,
-> Reviewed-by: Nicolin Chen <nicolinc@nvidia.com>
->
-> with some nits:
->
->> @@ -61,7 +61,8 @@ arm_common_ss.add(when: 'CONFIG_ARMSSE', if_true: files('armsse.c'))
->>  arm_common_ss.add(when: 'CONFIG_FSL_IMX7', if_true: files('fsl-imx7.c', 'mcimx7d-sabre.c'))
->>  arm_common_ss.add(when: 'CONFIG_FSL_IMX8MP', if_true: files('fsl-imx8mp.c'))
->>  arm_common_ss.add(when: 'CONFIG_FSL_IMX8MP_EVK', if_true: files('imx8mp-evk.c'))
->> -arm_common_ss.add(when: 'CONFIG_ARM_SMMUV3', if_true: files('smmuv3.c'))
->> +arm_ss.add(when: 'CONFIG_ARM_SMMUV3', if_true: files('smmuv3.c'))
->> +arm_ss.add(when: ['CONFIG_ARM_SMMUV3', 'CONFIG_IOMMUFD'], if_true: files('smmuv3-accel.c'))
-> Wondering why "arm_common_ss" is changed to "arm_ss"?
-Indeed why did you need to change that?
+The --binary option continues to be required when --qemu is passed.
 
-Thanks
+Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
+---
+ tests/guest-debug/run-test.py | 60 +++++++++++++++++++----------------
+ 1 file changed, 33 insertions(+), 27 deletions(-)
 
-Eric
->
->> +static SMMUv3AccelDevice *smmuv3_accel_get_dev(SMMUState *bs, SMMUPciBus *sbus,
->> +                                                PCIBus *bus, int devfn)
-> There seems to be an extra space in the 2nd line.
->
->> +{
->> +    SMMUDevice *sdev = sbus->pbdev[devfn];
->> +    SMMUv3AccelDevice *accel_dev;
->> +
->> +    if (sdev) {
->> +        accel_dev = container_of(sdev, SMMUv3AccelDevice, sdev);
->> +    } else {
->> +        accel_dev = g_new0(SMMUv3AccelDevice, 1);
->> +        sdev = &accel_dev->sdev;
->> +
->> +        sbus->pbdev[devfn] = sdev;
->> +        smmu_init_sdev(bs, sdev, bus, devfn);
->> +    }
-> Could just:
->     if (sdev) {
->         return container_of(sdev, SMMUv3AccelDevice, sdev);
->     }
->
-> Then, no extra indentations for the rest of the code.
->
->> +
->> +    return accel_dev;
->> +}
->> +
->> +static AddressSpace *smmuv3_accel_find_add_as(PCIBus *bus, void *opaque,
->> +                                              int devfn)
->> +{
->> +    SMMUState *bs = opaque;
->> +    SMMUPciBus *sbus;
->> +    SMMUv3AccelDevice *accel_dev;
->> +    SMMUDevice *sdev;
->> +
->> +    sbus = smmu_get_sbus(bs, bus);
->> +    accel_dev = smmuv3_accel_get_dev(bs, sbus, bus, devfn);
->> +    sdev = &accel_dev->sdev;
-> Maybe just:
->
-> +    SMMUPciBus *sbus = smmu_get_sbus(bs, bus);
-> +    SMMUv3AccelDevice *accel_dev = smmuv3_accel_get_dev(bs, sbus, bus, devfn);
-> +    SMMUDevice *sdev = &accel_dev->sdev;
->
-> ?
->
->> +typedef struct SMMUv3AccelDevice {
->> +    SMMUDevice  sdev;
-> Let's drop the extra space in between.
->
->> +} SMMUv3AccelDevice;
->> +
->> +#endif /* HW_ARM_SMMUV3_ACCEL_H */
->> diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
->> index eb94623555..c459d24427 100644
->> --- a/include/hw/arm/smmu-common.h
->> +++ b/include/hw/arm/smmu-common.h
->> @@ -162,6 +162,7 @@ struct SMMUState {
->>      uint8_t bus_num;
->>      PCIBus *primary_bus;
->>      bool smmu_per_bus; /* SMMU is specific to the primary_bus */
->> +    bool accel; /* SMMU has accelerator support */
-> How about:
-> "SMMU is in the HW-accelerated mode for stage-1 translation"
-> ?
->
-> Thanks
-> Nicolin
->
+diff --git a/tests/guest-debug/run-test.py b/tests/guest-debug/run-test.py
+index 75e9c92e03..d21a5dda77 100755
+--- a/tests/guest-debug/run-test.py
++++ b/tests/guest-debug/run-test.py
+@@ -15,6 +15,7 @@
+ import subprocess
+ import shutil
+ import shlex
++import sys
+ import os
+ from time import sleep
+ from tempfile import TemporaryDirectory
+@@ -22,10 +23,10 @@
+ def get_args():
+     parser = argparse.ArgumentParser(description="A gdbstub test runner")
+     parser.add_argument("--qemu", help="Qemu binary for test",
+-                        required=True)
++                        required=False)
+     parser.add_argument("--qargs", help="Qemu arguments for test")
+     parser.add_argument("--binary", help="Binary to debug",
+-                        required=True)
++                        required='--qemu' in sys.argv)
+     parser.add_argument("--test", help="GDB test script")
+     parser.add_argument('test_args', nargs='*',
+                         help="Additional args for GDB test script. "
+@@ -73,27 +74,30 @@ def log(output, msg):
+     socket_dir = TemporaryDirectory("qemu-gdbstub")
+     socket_name = os.path.join(socket_dir.name, "gdbstub.socket")
+ 
+-    # Launch QEMU with binary
+-    if "system" in args.qemu:
+-        if args.no_suspend:
+-            suspend = ''
++    if args.qemu:
++        # Launch QEMU with binary.
++        if "system" in args.qemu:
++            if args.no_suspend:
++                suspend = ''
++            else:
++                suspend = ' -S'
++            cmd = f'{args.qemu} {args.qargs} {args.binary}' \
++                f'{suspend} -gdb unix:path={socket_name},server=on'
+         else:
+-            suspend = ' -S'
+-        cmd = f'{args.qemu} {args.qargs} {args.binary}' \
+-            f'{suspend} -gdb unix:path={socket_name},server=on'
+-    else:
+-        if args.no_suspend:
+-            suspend = ',suspend=n'
+-        else:
+-            suspend = ''
+-        cmd = f'{args.qemu} {args.qargs} -g {socket_name}{suspend}' \
+-            f' {args.binary}'
++            if args.no_suspend:
++                suspend = ',suspend=n'
++            else:
++                suspend = ''
++            cmd = f'{args.qemu} {args.qargs} -g {socket_name}{suspend}' \
++                f' {args.binary}'
+ 
+-    log(output, "QEMU CMD: %s" % (cmd))
+-    inferior = subprocess.Popen(shlex.split(cmd))
++        log(output, "QEMU CMD: %s" % (cmd))
++        inferior = subprocess.Popen(shlex.split(cmd))
+ 
+     # Now launch gdb with our test and collect the result
+-    gdb_cmd = "%s %s" % (args.gdb, args.binary)
++    gdb_cmd = args.gdb
++    if args.binary:
++        gdb_cmd += " %s" % (args.binary)
+     if args.gdb_args:
+         gdb_cmd += " %s" % (args.gdb_args)
+     # run quietly and ignore .gdbinit
+@@ -103,11 +107,12 @@ def log(output, msg):
+     # disable prompts in case of crash
+     gdb_cmd += " -ex 'set confirm off'"
+     # connect to remote
+-    gdb_cmd += " -ex 'target remote %s'" % (socket_name)
++    if args.qemu:
++        gdb_cmd += " -ex 'target remote %s'" % (socket_name)
+     # finally the test script itself
+     if args.test:
+-        if args.test_args:
+-            gdb_cmd += f" -ex \"py sys.argv={args.test_args}\""
++        argv = [args.test] + args.test_args
++        gdb_cmd += f" -ex \"py sys.argv={argv}\""
+         gdb_cmd += " -x %s" % (args.test)
+ 
+ 
+@@ -129,10 +134,11 @@ def log(output, msg):
+         log(output, "GDB crashed? (%d, %d) SKIPPING" % (result, result - 128))
+         exit(0)
+ 
+-    try:
+-        inferior.wait(2)
+-    except subprocess.TimeoutExpired:
+-        log(output, "GDB never connected? Killed guest")
+-        inferior.kill()
++    if args.qemu:
++        try:
++            inferior.wait(2)
++        except subprocess.TimeoutExpired:
++            log(output, "GDB never connected? Killed guest")
++            inferior.kill()
+ 
+     exit(result)
+-- 
+2.34.1
 
 

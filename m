@@ -4,108 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54167CA1002
-	for <qemu-arm@archiver.kernel.org>; Thu,  4 Sep 2025 14:33:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24215CA1015
+	for <qemu-arm@archiver.kernel.org>; Thu,  4 Sep 2025 14:34:47 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uuB15-0000XZ-02; Thu, 04 Sep 2025 10:32:47 -0400
+	id 1uuB24-0000vJ-3d; Thu, 04 Sep 2025 10:33:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uuB13-0000X4-Cd
- for qemu-arm@nongnu.org; Thu, 04 Sep 2025 10:32:45 -0400
+ id 1uuB21-0000op-QG
+ for qemu-arm@nongnu.org; Thu, 04 Sep 2025 10:33:46 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uuB0O-0006A7-QS
- for qemu-arm@nongnu.org; Thu, 04 Sep 2025 10:32:43 -0400
+ id 1uuB1s-0006Wq-Fm
+ for qemu-arm@nongnu.org; Thu, 04 Sep 2025 10:33:44 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1756996319;
+ s=mimecast20190719; t=1756996411;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=pPn3U/ZJ08geO/khRmvMh/qxUuxJLFKtL9Kn0rdyTM0=;
- b=ASxgAcdkygl5rnyYXr4Y1LCJXdNIDhRaI5C34pe1vD9f2ntJqkwu26PaiJ5hQIbEYOkQ5H
- j8Rc/SBNgtAMgADC2Xx9jhamTdl+4A+GV5KmnxrBVS1fONJTwicWPxSN59oHZxORcwv26Q
- SialWVGJ1OvZZ1Udd/KknawW8jFr8yU=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=+Rvd8zx5PhnwMcPMnDukUW4fhCSlh4rdnVhW9YU7UHY=;
+ b=EXkUW6QD4XAMiliq32wCdEs6E15OfFv4duszjBoPnhiHq/n2bJLu7nxPD23ZDNCdXsrK3J
+ f0g2XE54ubdBoM3DA+7uGuQUXQi707SPqei3VC3qbrz3B9hOf/gDnpxYjcpbxWUb4Ow4iD
+ armMDzGBrcnYq2ldiEPSLqFSJGDmvdM=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-659-m8EzqnofOyOxvXgfEKupNg-1; Thu, 04 Sep 2025 10:31:58 -0400
-X-MC-Unique: m8EzqnofOyOxvXgfEKupNg-1
-X-Mimecast-MFC-AGG-ID: m8EzqnofOyOxvXgfEKupNg_1756996316
-Received: by mail-wm1-f70.google.com with SMTP id
- 5b1f17b1804b1-45a15f10f31so14489455e9.0
- for <qemu-arm@nongnu.org>; Thu, 04 Sep 2025 07:31:57 -0700 (PDT)
+ us-mta-663-0qTOEcYRPSG-In-zyQnHsg-1; Thu, 04 Sep 2025 10:33:28 -0400
+X-MC-Unique: 0qTOEcYRPSG-In-zyQnHsg-1
+X-Mimecast-MFC-AGG-ID: 0qTOEcYRPSG-In-zyQnHsg_1756996408
+Received: by mail-wr1-f69.google.com with SMTP id
+ ffacd0b85a97d-3ce7f782622so378726f8f.1
+ for <qemu-arm@nongnu.org>; Thu, 04 Sep 2025 07:33:28 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756996316; x=1757601116;
+ d=1e100.net; s=20230601; t=1756996407; x=1757601207;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:reply-to:user-agent:mime-version:date
  :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=pPn3U/ZJ08geO/khRmvMh/qxUuxJLFKtL9Kn0rdyTM0=;
- b=qrJ2eVlg7f33akAupWlUMv6J0pbyjYYaTSEYBF+EKyTLiD0Lp/y2YQJh1cCmSjz4Mn
- RKv6pMfqq7uNkCM049jIMYJA7cLIR04UFOPX5HxgnDyizQq9Ccr+1bFcsu8/DWbEOaza
- wI3jZ8BuFEHIUPQtoM1XlYZ9/0wIKQ+twfeCa7k+Iil59ZCZ9gK0Lw7kpmvzenMHSHmp
- fLwxs3GJ2566GjI7GKXL84/FjJp1CbntxphKNCTyBR6WR78Dx7PcXynKUzjQc2XViKqN
- naCAh3hYDxiS2EfiMLA4SsKFbw792jvY8XEZFbyBAlOaIBKaCBS8KrqkySWjpeVlxVZv
- YyNg==
-X-Gm-Message-State: AOJu0YxnPnfkmXofjLVwfk3RTDxrYi8mEyxg4CG5I6mm0WNWVW1g45fR
- LzaVx3Lfu3VNyP+NOTLb0hC0c68RFjDdXc6qKODrjGz0MLvjwu/WLWHCY5Wo3sqZM7FTB+nTmKy
- j18JJqUbc660FuF6opG0EDSNh3RpAqYW4Hd+qR59G7OmN3kpRdNwm3w==
-X-Gm-Gg: ASbGncsjEGvn/GQoxYoxu0lFwCb51fKxzCtqv9k9+s1SeE3aPnb0cZySYj8S+OUfreS
- PuzPor/ER3ynf0inptgYC50v4HMutvMxog67zbhES1UK/UebI2xiEzj7D5/oFPZLFu0SpXwdBbs
- Taj+23TXoSWH0CHHsqBorobYfWNIcUrJouUuz+7HzKstBNVC2oNnB+BiJVN+nGdXGGBhZIn0WJ2
- oJtxIbZVeKA12LMtT1ocg1k7gQwjt0NxCkUk1AmrT4WlQ7JfN9kZT0uuYNL3rHrsIfJMqDAov7g
- 4ZCheqCLNDxsFRmllzV4guAOWz/rUx+OBbfSPtRoSuGnLBo7rj8AdI3pukawXkbxenr7+k1wsdg
- bta7k9ghpkGE=
-X-Received: by 2002:a05:600c:4e0e:b0:45d:d202:77f0 with SMTP id
- 5b1f17b1804b1-45dd2027c29mr18834085e9.5.1756996316182; 
- Thu, 04 Sep 2025 07:31:56 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IErZ4c57Vh+Y2//18EYDeA/Buxfw+Je5UZkapXvS+Q5wlc560firjR8VssNVT1SoN1spMkQBA==
-X-Received: by 2002:a05:600c:4e0e:b0:45d:d202:77f0 with SMTP id
- 5b1f17b1804b1-45dd2027c29mr18833695e9.5.1756996315665; 
- Thu, 04 Sep 2025 07:31:55 -0700 (PDT)
+ bh=+Rvd8zx5PhnwMcPMnDukUW4fhCSlh4rdnVhW9YU7UHY=;
+ b=EAIJz/HL1qtqB98K/mA4AiBhxwfKtX9dthE01DSb+LuRuiL4O6oaU/vGPxyykKpCeO
+ eCRaNdAt4580c4IgxlFYqj6RQHcQEaWzcRXTRFDEF6ZdNgd8H8ubuZq+d6b0lBmpoty4
+ VoRh65cpd7OuP0asAU2jRHO+txKkOCstY3VvL45M6y1kI2R/tAXMUrGGRyz1s4Wi33BU
+ g1Rq9uxFLJ96oybMnST0q/LLeSnU9qeeKTMGQPbnbQ7YmH5wUB/04/hnSfxYtWPP7gx9
+ 4Dpq+gQFeQ1pprLN4xyEc4ZMVstXayMUV3W2q84edqbLgUi02G/cH6XA2gbZb1tqZx2h
+ oPhg==
+X-Gm-Message-State: AOJu0YxiGNXJc/KunS7LjZwfUnM6HNwpFweG81JZIqaVoEPtXvLCX3Dc
+ AQJZOqRKbPSyWNub+3HyQI3NQG/7QtkDRgZm+fy4u1ALzaEhENvXyD55tw91IuckkRobRd9smS1
+ jn6T+ZZCBacd1C4YT+lvvmewtahmMsVHUGOPGiM9BaHkmm6U8O/q+Qw==
+X-Gm-Gg: ASbGncuIgVfIVyu1w8V/DUebXBlfAmnzfEtfHeoHFcvbJUykW5YXNFPW5d9sgeDCIg2
+ J+rt2WiXAovshXqMkyIsTBVI4SHVETyjp64sdQbnSBv/UMJl2WLaQ0u5PP+AV86co4aPsZPa0Qr
+ p8dBRseCLIP28wzk47+W4+R2Wlmoplb/v9//jteIcSkcdhnaD2Sri72pMfxtKePr3LypeGEpL+c
+ sfaZCYinEcfpUM2HNQRb06nd3iED6XrUcP8LWd//2m93zTcUc0xXWRrYDOYZx5s/Hme8UxOaWi8
+ 2Vg9dU//9ndKrMDmqMvz3Tr9QDJxsh2xTFm1AFCPSj0EH7Tpl6NcfEC7o6SQZsIFhrhraQFVu9I
+ 92F8xVTKCDzw=
+X-Received: by 2002:a05:6000:178e:b0:3e0:63dc:913c with SMTP id
+ ffacd0b85a97d-3e063dc9503mr2941471f8f.3.1756996407494; 
+ Thu, 04 Sep 2025 07:33:27 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHyDurDvrUNCb5ZwMrNsM56ZIrJNvFp6TmGhBfvPliakySuoUJJaGMPVK8IBrCnpCvOp7CDNA==
+X-Received: by 2002:a05:6000:178e:b0:3e0:63dc:913c with SMTP id
+ ffacd0b85a97d-3e063dc9503mr2941439f8f.3.1756996407000; 
+ Thu, 04 Sep 2025 07:33:27 -0700 (PDT)
 Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
  ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3d520eada16sm19054405f8f.41.2025.09.04.07.31.54
+ ffacd0b85a97d-3cf34491a7fsm27152781f8f.57.2025.09.04.07.33.25
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 04 Sep 2025 07:31:55 -0700 (PDT)
-Message-ID: <71ca9132-8deb-4f57-abb0-2bcc0fe93ae9@redhat.com>
-Date: Thu, 4 Sep 2025 16:31:53 +0200
+ Thu, 04 Sep 2025 07:33:26 -0700 (PDT)
+Message-ID: <f0473156-2e59-4467-90cc-d8315cf9063e@redhat.com>
+Date: Thu, 4 Sep 2025 16:33:24 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [RFC PATCH v3 05/15] hw/arm/smmuv3-accel: Introduce smmuv3 accel
  device
-To: "Duan, Zhenzhong" <zhenzhong.duan@intel.com>,
- Nicolin Chen <nicolinc@nvidia.com>, skolothumtho@nvidia.com
-Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "jgg@nvidia.com" <jgg@nvidia.com>, "ddutile@redhat.com"
- <ddutile@redhat.com>, "berrange@redhat.com" <berrange@redhat.com>,
- "nathanc@nvidia.com" <nathanc@nvidia.com>,
- "mochs@nvidia.com" <mochs@nvidia.com>,
- "smostafa@google.com" <smostafa@google.com>, Linuxarm <linuxarm@huawei.com>,
- "Wangzhou (B)" <wangzhou1@hisilicon.com>,
- jiangkunkun <jiangkunkun@huawei.com>,
- Jonathan Cameron <jonathan.cameron@huawei.com>,
- "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>,
- "shameerkolothum@gmail.com" <shameerkolothum@gmail.com>
+To: Nicolin Chen <nicolinc@nvidia.com>, skolothumtho@nvidia.com
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, peter.maydell@linaro.org,
+ jgg@nvidia.com, ddutile@redhat.com, berrange@redhat.com, nathanc@nvidia.com,
+ mochs@nvidia.com, smostafa@google.com, linuxarm@huawei.com,
+ wangzhou1@hisilicon.com, jiangkunkun@huawei.com,
+ jonathan.cameron@huawei.com, zhangfei.gao@linaro.org,
+ zhenzhong.duan@intel.com, shameerkolothum@gmail.com
 References: <20250714155941.22176-1-shameerali.kolothum.thodi@huawei.com>
  <20250714155941.22176-6-shameerali.kolothum.thodi@huawei.com>
- <IA3PR11MB9136ACFB4721D47304A9885C9257A@IA3PR11MB9136.namprd11.prod.outlook.com>
- <aHaP3ULG90gGqWHJ@Asurada-Nvidia>
- <IA3PR11MB9136C94472D7D50CDC627CB49256A@IA3PR11MB9136.namprd11.prod.outlook.com>
- <6ee7908c8ea44270b9f4aa64abacaace@huawei.com>
+ <aHU9INgBsFgvtec+@Asurada-Nvidia>
 From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <6ee7908c8ea44270b9f4aa64abacaace@huawei.com>
+In-Reply-To: <aHU9INgBsFgvtec+@Asurada-Nvidia>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 8sxTPv7-4pyGWoFcyYCiuMIFd9z9Fd-XOMjfE1WSnl4_1756996316
+X-Mimecast-MFC-PROC-ID: xIE0ulT2flnHQfI-Zlnrvv9XeTY3axRGAzASfxIGSVY_1756996408
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
@@ -115,12 +104,11 @@ Received-SPF: pass client-ip=170.10.129.124;
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_PASS=-0.001,
- T_SPF_HELO_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -137,96 +125,107 @@ Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Shameer,
 
-On 7/16/25 11:27 AM, Shameerali Kolothum Thodi wrote:
+
+On 7/14/25 7:23 PM, Nicolin Chen wrote:
+> On Mon, Jul 14, 2025 at 04:59:31PM +0100, Shameer Kolothum wrote:
+>> Also setup specific PCIIOMMUOps for accel SMMUv3 as accel
+>> SMMUv3 will have different handling for those ops callbacks
+>> in subsequent patches.
+>>
+>> The "accel" property is not yet added, so users cannot set it at this
+>> point. It will be introduced in a subsequent patch once the necessary
+>> support is in place.
+>>
+>> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+> Overall the patch looks good to me,
+> Reviewed-by: Nicolin Chen <nicolinc@nvidia.com>
 >
->> -----Original Message-----
->> From: Duan, Zhenzhong <zhenzhong.duan@intel.com>
->> Sent: Wednesday, July 16, 2025 4:39 AM
->> To: Nicolin Chen <nicolinc@nvidia.com>
->> Cc: Shameerali Kolothum Thodi
->> <shameerali.kolothum.thodi@huawei.com>; qemu-arm@nongnu.org;
->> qemu-devel@nongnu.org; eric.auger@redhat.com;
->> peter.maydell@linaro.org; jgg@nvidia.com; ddutile@redhat.com;
->> berrange@redhat.com; nathanc@nvidia.com; mochs@nvidia.com;
->> smostafa@google.com; Linuxarm <linuxarm@huawei.com>; Wangzhou (B)
->> <wangzhou1@hisilicon.com>; jiangkunkun <jiangkunkun@huawei.com>;
->> Jonathan Cameron <jonathan.cameron@huawei.com>;
->> zhangfei.gao@linaro.org; shameerkolothum@gmail.com
->> Subject: RE: [RFC PATCH v3 05/15] hw/arm/smmuv3-accel: Introduce
->> smmuv3 accel device
->>
->>
->>
->>> -----Original Message-----
->>> From: Nicolin Chen <nicolinc@nvidia.com>
->>> Subject: Re: [RFC PATCH v3 05/15] hw/arm/smmuv3-accel: Introduce
->>> smmuv3 accel device
->>>
->>> On Tue, Jul 15, 2025 at 10:48:31AM +0000, Duan, Zhenzhong wrote:
->>>>> +static const TypeInfo types[] = {
->>>>> +    {
->>>>> +        .name = TYPE_ARM_SMMUV3_ACCEL,
->>>>> +        .parent = TYPE_ARM_SMMUV3,
->>>>> +        .class_init = smmuv3_accel_class_init,
->>>>> +    }
->>>> In cover-letter, I see "-device arm-smmuv3", so where is above accel
->>>> device created so we could use smmuv3_accel_ops?
->>> The smmu-common.c is the shared file between accel and non-accel
->>> instances. It has a module property:
->>>    DEFINE_PROP_BOOL("accel", SMMUState, accel, false),
->> It looks we expose a new TYPE_ARM_SMMUV3_ACCEL type device just for
->> exporting accel iommu_ops?
->> What about returning accel iommu_ops directly in
->> smmu_iommu_ops_by_type() and drop the new type?
-> We are not creating any new device here. Its just a Class object of different type.
-> I had a different approach previously and Eric suggested to try this as there
-> are examples in VFIO/IOMMUFD for something like this.
+> with some nits:
 >
-> https://lore.kernel.org/qemu-devel/1105d100-dd1e-4aca-b518-50f903967416@redhat.com/
-Actually I pointed out that usually we don't add methods in states as it
-was done in v2 (in SMMUState) but rather in classes hence my suggestion
-to use a class instead. Now what looks strange is your class does not
-implement any method ;-)
-
-docs/devel/qom.rst says "The #ObjectClass typically holds a table of function pointers
-for the virtual methods implemented by this type."
-
-Sorry if I was unclear.
-
-Now if you don't need any "accel" specific methods besides the PCIIOMMUOps which have a specific struct, I am not sure we need a class anymore. or then you direct embed the PCIIOMMUOps Struct in the method?
-
-Also it's true that's weird that the actual object is never instantiated and may also appear in qom object list. This is not the case for the example I gave, ie. the VFIOContainerBase.
-
-I don't know if anyone has a better/more elegant idea?
+>> @@ -61,7 +61,8 @@ arm_common_ss.add(when: 'CONFIG_ARMSSE', if_true: files('armsse.c'))
+>>  arm_common_ss.add(when: 'CONFIG_FSL_IMX7', if_true: files('fsl-imx7.c', 'mcimx7d-sabre.c'))
+>>  arm_common_ss.add(when: 'CONFIG_FSL_IMX8MP', if_true: files('fsl-imx8mp.c'))
+>>  arm_common_ss.add(when: 'CONFIG_FSL_IMX8MP_EVK', if_true: files('imx8mp-evk.c'))
+>> -arm_common_ss.add(when: 'CONFIG_ARM_SMMUV3', if_true: files('smmuv3.c'))
+>> +arm_ss.add(when: 'CONFIG_ARM_SMMUV3', if_true: files('smmuv3.c'))
+>> +arm_ss.add(when: ['CONFIG_ARM_SMMUV3', 'CONFIG_IOMMUFD'], if_true: files('smmuv3-accel.c'))
+> Wondering why "arm_common_ss" is changed to "arm_ss"?
+Indeed why did you need to change that?
 
 Thanks
 
 Eric
-
 >
-> Thanks,
-> Shameer
+>> +static SMMUv3AccelDevice *smmuv3_accel_get_dev(SMMUState *bs, SMMUPciBus *sbus,
+>> +                                                PCIBus *bus, int devfn)
+> There seems to be an extra space in the 2nd line.
 >
->>> where it directs to different iommu_ops:
->>> 937 static const PCIIOMMUOps *smmu_iommu_ops_by_type(SMMUState
->> *s)
->>> 938 {
->>> 939     SMMUBaseClass *sbc;
->>> 940
->>> 941     if (s->accel) {
->>> 942         sbc =
->>> ARM_SMMU_CLASS(object_class_by_name(TYPE_ARM_SMMUV3_ACCEL));
->>> 943     } else {
->>> 944         sbc =
->>> ARM_SMMU_CLASS(object_class_by_name(TYPE_ARM_SMMU));
->>> 945     }
->>> 946     assert(sbc->iommu_ops);
->>> 947
->>> 948     return sbc->iommu_ops;
->>> 949 }
->>>
->>> Nicolin
+>> +{
+>> +    SMMUDevice *sdev = sbus->pbdev[devfn];
+>> +    SMMUv3AccelDevice *accel_dev;
+>> +
+>> +    if (sdev) {
+>> +        accel_dev = container_of(sdev, SMMUv3AccelDevice, sdev);
+>> +    } else {
+>> +        accel_dev = g_new0(SMMUv3AccelDevice, 1);
+>> +        sdev = &accel_dev->sdev;
+>> +
+>> +        sbus->pbdev[devfn] = sdev;
+>> +        smmu_init_sdev(bs, sdev, bus, devfn);
+>> +    }
+> Could just:
+>     if (sdev) {
+>         return container_of(sdev, SMMUv3AccelDevice, sdev);
+>     }
+>
+> Then, no extra indentations for the rest of the code.
+>
+>> +
+>> +    return accel_dev;
+>> +}
+>> +
+>> +static AddressSpace *smmuv3_accel_find_add_as(PCIBus *bus, void *opaque,
+>> +                                              int devfn)
+>> +{
+>> +    SMMUState *bs = opaque;
+>> +    SMMUPciBus *sbus;
+>> +    SMMUv3AccelDevice *accel_dev;
+>> +    SMMUDevice *sdev;
+>> +
+>> +    sbus = smmu_get_sbus(bs, bus);
+>> +    accel_dev = smmuv3_accel_get_dev(bs, sbus, bus, devfn);
+>> +    sdev = &accel_dev->sdev;
+> Maybe just:
+>
+> +    SMMUPciBus *sbus = smmu_get_sbus(bs, bus);
+> +    SMMUv3AccelDevice *accel_dev = smmuv3_accel_get_dev(bs, sbus, bus, devfn);
+> +    SMMUDevice *sdev = &accel_dev->sdev;
+>
+> ?
+>
+>> +typedef struct SMMUv3AccelDevice {
+>> +    SMMUDevice  sdev;
+> Let's drop the extra space in between.
+>
+>> +} SMMUv3AccelDevice;
+>> +
+>> +#endif /* HW_ARM_SMMUV3_ACCEL_H */
+>> diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
+>> index eb94623555..c459d24427 100644
+>> --- a/include/hw/arm/smmu-common.h
+>> +++ b/include/hw/arm/smmu-common.h
+>> @@ -162,6 +162,7 @@ struct SMMUState {
+>>      uint8_t bus_num;
+>>      PCIBus *primary_bus;
+>>      bool smmu_per_bus; /* SMMU is specific to the primary_bus */
+>> +    bool accel; /* SMMU has accelerator support */
+> How about:
+> "SMMU is in the HW-accelerated mode for stage-1 translation"
+> ?
+>
+> Thanks
+> Nicolin
+>
 
 

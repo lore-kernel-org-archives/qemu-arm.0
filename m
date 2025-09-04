@@ -4,111 +4,150 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C1B4CA1015
-	for <qemu-arm@archiver.kernel.org>; Thu,  4 Sep 2025 07:55:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A93C7CA1012
+	for <qemu-arm@archiver.kernel.org>; Thu,  4 Sep 2025 08:13:08 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uu4oh-0001B7-AL; Thu, 04 Sep 2025 03:55:35 -0400
+	id 1uu54W-0006B1-8j; Thu, 04 Sep 2025 04:11:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uu4of-0001AE-4b
- for qemu-arm@nongnu.org; Thu, 04 Sep 2025 03:55:33 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uu4oc-0005cC-A2
- for qemu-arm@nongnu.org; Thu, 04 Sep 2025 03:55:32 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1756972527;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=TV/JkLPsplmb7MZakCOP37DHgaUkD9O13bJkEPqbPmE=;
- b=M7j4DkzeOpx2Q9vYFduveQOM8YBE4MMIdLBsO1+gnt/ZYGDoLi0RR8LPqMNXbyGb/Mb2Kz
- ZpmHSSbXnJsyDMdJevg6tqzlWuhOwSeat5u9hejlRtIVhP/JrBvzyTXcnsGxIin1yCZdTi
- 9igPjGFjA7ZSPrHVIkhc1zx1mj8qhCU=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-657-fI3jRTtAM9KeQV3QuCJWuA-1; Thu, 04 Sep 2025 03:55:26 -0400
-X-MC-Unique: fI3jRTtAM9KeQV3QuCJWuA-1
-X-Mimecast-MFC-AGG-ID: fI3jRTtAM9KeQV3QuCJWuA_1756972525
-Received: by mail-wr1-f70.google.com with SMTP id
- ffacd0b85a97d-3ccd58af2bbso727269f8f.0
- for <qemu-arm@nongnu.org>; Thu, 04 Sep 2025 00:55:26 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1uu54T-000677-UN
+ for qemu-arm@nongnu.org; Thu, 04 Sep 2025 04:11:54 -0400
+Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1uu54H-0003zw-0r
+ for qemu-arm@nongnu.org; Thu, 04 Sep 2025 04:11:53 -0400
+Received: by mail-ej1-x633.google.com with SMTP id
+ a640c23a62f3a-b04770a25f2so102690566b.2
+ for <qemu-arm@nongnu.org>; Thu, 04 Sep 2025 01:11:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1756973498; x=1757578298; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=JNutAIaXOMQtmCL/HAblUioHloxc8S7R+7KvtZJ66hg=;
+ b=tbGtUvECqcgmBlJMGT5vriHLsy1P9p+TUpSamSU453bITIbxkfoX0tK1Cgt64tIoIr
+ VoGwLL9q3d3bo7j8OgxRqPhK8Jh5KvivQR3mDcqQGIFin3gA97GxBrIJ2gf+MDLgar9U
+ XqtTpb2EjI68/86GAgvtEcQAyXBkuDiqBwaKUY0pKbMxdzov0Q2qvEace33wLw16qvSA
+ OagVYejBYLRMi4KWUITNy9sYD+V8PURVNP0Pz8MMTWRPN1Fbm8i/DzoMWldxC3hEgLV/
+ rJuyYmTs9J58F7DVNb56idEPAkkgUoMdwrGnTmYGrIr/JdSNpbShKcgtuLwZ2iIcd8G7
+ m6TA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756972525; x=1757577325;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=TV/JkLPsplmb7MZakCOP37DHgaUkD9O13bJkEPqbPmE=;
- b=B4wfDcxy8P0Qp7TGCM+lvz88dP946fCdffSeQn6SAS5GGCe9b9fOwIjJymqiKqD2Rf
- mllsPeEGUxlKxyglPH4y+YrI/i3vuBEPfK35F8eOX39xqTPCbwDk6/ofIb0sAgYG3zRu
- BKlCR8bPb15o6x0K3hZa6gHMp0cvtCrQXu3KJtTwK1qzXQlzXc3Hk4PTH4PrIBBVhf+B
- kpc71tRiLO2yBr8MAcQVbGxuslbI9Vv4fuC64qxDGCjn8vCWdfGfxvVYQEjdeHsFsMV6
- rFsbuaOt4RGdaXpJM8th/V6j9+ENZql+dW2tVyWe4RCZwYciYN73oN81PLwLCnafNc/Y
- zMIw==
-X-Gm-Message-State: AOJu0YxPSeGy91x373kv3v/zTD2EV7CzVMgTA9nlM67tvOp5Fmsf9ld6
- EJ5EqgGlB7MotkRYas+/XzH6RC9W8uEbZFUc/yklvfC47T0VhblAj9nElrP1yPu+vrOLB3WhOBR
- A4v+fyxKZBpq0NhcRozBENxNmVo3Fm4N753+pT1hHvJ9XsNrQ3BdAZsZX//zeFylwM7amnVBjD/
- v4fnzHHwZ8XLmVKtsu81TF7Uy9l+TSkIX0jQ/Wo/vrvQw=
-X-Gm-Gg: ASbGncvQCZO/EcBqSPqu3809iICxdSCH0TbDr6EIP2eXy+Tw98gqS/WU1GZmRiuaaoM
- 6m1dsvEhLaJFJOB7I+GlKCKUUd3uni1WsfJfn5p2TEibaFKSXbZ47IPhkGIuK94lGndgblyfPdL
- uLqdsBrqYj0+LGRJa39YFh9aZrvA92k/gbGqvfE1Y53ESyxACD679dGXYgRYuS1K9/MvQ6eLwMl
- MyKgmR9yxHJZBhHiYC46dXwhtl0dgWoU5DEvhbEDIrRZfhayN+PZwl6DcSY6M3mQkrZRmLP5ku3
- 4UJxItRH1on59WzNILqeWTX0vuwMvJd2olBt5/thEd9W42czhQnbW+cS4XZ+rjqIuEmYAtgGYSc
- eYhJGvmuPkuc=
-X-Received: by 2002:a5d:5d10:0:b0:3d3:1ad0:e8a2 with SMTP id
- ffacd0b85a97d-3d31b2c7b3bmr9077075f8f.27.1756972524947; 
- Thu, 04 Sep 2025 00:55:24 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEYRZGnlAhVz/CqbddOvVxz2RHMiNNcgUs/INAahbhakPgWqumCOz9hj8nyL+USHn3UoJpWiA==
-X-Received: by 2002:a5d:5d10:0:b0:3d3:1ad0:e8a2 with SMTP id
- ffacd0b85a97d-3d31b2c7b3bmr9077043f8f.27.1756972524414; 
- Thu, 04 Sep 2025 00:55:24 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-45dcfd000dasm13089105e9.5.2025.09.04.00.55.23
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 04 Sep 2025 00:55:23 -0700 (PDT)
-Message-ID: <ba0763fd-6f87-47cf-b425-91f096fadc12@redhat.com>
-Date: Thu, 4 Sep 2025 09:55:22 +0200
+ d=1e100.net; s=20230601; t=1756973498; x=1757578298;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=JNutAIaXOMQtmCL/HAblUioHloxc8S7R+7KvtZJ66hg=;
+ b=O6FGKU/Kc5r4jR3D44H8e4ef98yAJHVPwdjaab92bkSzRVaa5wmCT127IFYF2kDzee
+ G97oMGTb24izxhfBffei+M2BjMU02qF67TgqFiG0DnpUvkL9NMRLaHxc0Mm9sKpm6Qv2
+ 4olM7MIuPhPd7VzrrZQiCmyIQ97dR7vAQNOHrpRFbQ6pWzqRzmBRGnrQlqnATB2Tk4ds
+ kAs6pw1iap8iL48mbSvbMyAOcrMl0FQgwZB3waw2Zg1MlZgyeizvymFILk0WlFFlYC97
+ X+Qnyxr2ez/v6EWIBZ7xejypmhACZF0lMs6UMFqQNdUiBCfJ6MPs4UuYxRdrcg+olnVd
+ wp0g==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXZUad1ZhRhvpYB7Z+RXgzgRrW9bxE0fgMXnpCTAZpRuvfF8S71UasLt3QzYtlaIaM4G2Ma2iXuFw==@nongnu.org
+X-Gm-Message-State: AOJu0YxngT8+XQVu2mGDsSZI73GcqoN5aSgDosZ42B4ubyvpiTRASHbQ
+ mnKO7tMdwJ/O0cIZuP1a4ZYcaAe9srE8Eefwu7LdO1nB8n7PPzAm/X8NAb/ckYBzO/s=
+X-Gm-Gg: ASbGncvyXXDp08W8VAoEwp/m6+lD+4uGZvnw+gt3JB6VkhacMzWWAfZmz66eRBG1QOK
+ dsOw2fYFgY8tFhFtnvevHDNOnxU8+htSJ4TS6fV1gYoNTDozMeeS2SEAX5AiN0/NTnVhrP1Kx/t
+ C6Uo8ZKUPrVEafusp/LgtysfKD8WBhpHTqSI6McSrHSf+Zm1/sFDdzSGCx2HdYZLQgA485/8oYU
+ gNTE4BuDAzLc4WjJTVN7TRet/uzTv+GP+f8HOMwDL3qje+tnJ1huinaqYLjkwWwy/gDXq1B8Ubl
+ DwM5Lb56l9mQULIqDClTEpDrUA6PYS+UiW7sMj7ohSaEF5Cdv00mMFUE87P7f/dmpcZOVldONmy
+ jIPfd7k2sgihlYXF1qhNEqVs=
+X-Google-Smtp-Source: AGHT+IGCnzgac6vT7YI6lW9Re7nuugDVS0yxqvBIi4yDWtnRMnHUE/Y/1DNdNjVG/Ij9oU033/T7Mw==
+X-Received: by 2002:a17:907:a09:b0:afe:db34:d769 with SMTP id
+ a640c23a62f3a-b01d8a70dd1mr2060362166b.18.1756973498255; 
+ Thu, 04 Sep 2025 01:11:38 -0700 (PDT)
+Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-aff0ed6ffebsm1422316766b.32.2025.09.04.01.11.32
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 04 Sep 2025 01:11:37 -0700 (PDT)
+Received: from draig.lan (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id EA7D95F93B;
+ Thu, 04 Sep 2025 09:11:28 +0100 (BST)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Reinoud Zandijk <reinoud@netbsd.org>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
+ Huacai Chen <chenhuacai@kernel.org>, Zhao Liu <zhao1.liu@intel.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Alistair Francis <alistair.francis@wdc.com>, qemu-arm@nongnu.org,
+ Fam Zheng <fam@euphon.net>, Helge Deller <deller@gmx.de>,
+ Matthew Rosato <mjrosato@linux.ibm.com>, Fabiano Rosas <farosas@suse.de>,
+ qemu-rust@nongnu.org, Bibo Mao <maobibo@loongson.cn>,
+ qemu-riscv@nongnu.org, Thanos Makatos <thanos.makatos@nutanix.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ Riku Voipio <riku.voipio@iki.fi>, Cameron Esfahani <dirty@apple.com>,
+ Alexander Graf <agraf@csgraf.de>, Laurent Vivier <lvivier@redhat.com>,
+ Harsh Prateek Bora <harshpb@linux.ibm.com>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ qemu-ppc@nongnu.org, Stafford Horne <shorne@gmail.com>,
+ Sunil Muthuswamy <sunilmut@microsoft.com>,
+ Jagannathan Raman <jag.raman@oracle.com>,
+ Igor Mammedov <imammedo@redhat.com>,
+ Brian Cain <brian.cain@oss.qualcomm.com>,
+ Phil Dennis-Jordan <phil@philjordan.eu>, devel@lists.libvirt.org,
+ Mads Ynddal <mads@ynddal.dk>, Elena Ufimtseva <elena.ufimtseva@oracle.com>,
+ Peter Xu <peterx@redhat.com>, Jason Herne <jjherne@linux.ibm.com>,
+ Michael Rolnik <mrolnik@gmail.com>, Weiwei Li <liwei1518@gmail.com>,
+ Laurent Vivier <laurent@vivier.eu>, Ilya Leoshkevich <iii@linux.ibm.com>,
+ qemu-block@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Kostiantyn Kostiuk <kkostiuk@redhat.com>, Kyle Evans <kevans@freebsd.org>,
+ David Hildenbrand <david@redhat.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Warner Losh <imp@bsdimp.com>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ John Snow <jsnow@redhat.com>, Yoshinori Sato <yoshinori.sato@nifty.com>,
+ Aleksandar Rikalo <arikalo@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Marcelo Tosatti <mtosatti@redhat.com>,
+ Yonggang Luo <luoyonggang@gmail.com>,
+ Radoslaw Biernacki <rad@semihalf.com>,
+ Artyom Tarasenko <atar4qemu@gmail.com>,
+ Yanan Wang <wangyanan55@huawei.com>, Eduardo Habkost <eduardo@habkost.net>,
+ Aurelien Jarno <aurelien@aurel32.net>,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-s390x@nongnu.org,
+ Alex Williamson <alex.williamson@redhat.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha <anisinha@redhat.com>,
+ Roman Bolshakov <rbolshakov@ddn.com>,
+ Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
+ Chinmay Rath <rathc@linux.ibm.com>, Thomas Huth <thuth@redhat.com>,
+ Cleber Rosa <crosa@redhat.com>, kvm@vger.kernel.org,
+ Song Gao <gaosong@loongson.cn>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Halil Pasic <pasic@linux.ibm.com>, Eric Farman <farman@linux.ibm.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ Leif Lindholm <leif.lindholm@oss.qualcomm.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Michael Roth <michael.roth@amd.com>,
+ Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Nicholas Piggin <npiggin@gmail.com>, John Levon <john.levon@nutanix.com>,
+ Stefan Hajnoczi <stefanha@redhat.com>
+Subject: [PATCH v2 007/281] Open 10.2 development tree
+Date: Thu,  4 Sep 2025 09:06:41 +0100
+Message-ID: <20250904081128.1942269-8-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.47.2
+In-Reply-To: <20250904081128.1942269-1-alex.bennee@linaro.org>
+References: <20250904081128.1942269-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH v3 04/15] hw/arm/smmu-common: Introduce
- smmu_iommu_ops_by_type() helper
-To: qemu-arm@nongnu.org, qemu-devel@nongnu.org, skolothumtho@nvidia.com
-Cc: peter.maydell@linaro.org, jgg@nvidia.com, nicolinc@nvidia.com,
- ddutile@redhat.com, berrange@redhat.com, nathanc@nvidia.com,
- mochs@nvidia.com, smostafa@google.com, linuxarm@huawei.com,
- wangzhou1@hisilicon.com, jiangkunkun@huawei.com,
- jonathan.cameron@huawei.com, zhangfei.gao@linaro.org,
- zhenzhong.duan@intel.com, shameerkolothum@gmail.com
-References: <20250714155941.22176-1-shameerali.kolothum.thodi@huawei.com>
- <20250714155941.22176-5-shameerali.kolothum.thodi@huawei.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20250714155941.22176-5-shameerali.kolothum.thodi@huawei.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: cMcp5iL9s_LUrcfn49wSsSOB86MlI9rF5dPB2rm5-0U_1756972525
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::633;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x633.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -121,95 +160,24 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+From: Stefan Hajnoczi <stefanha@redhat.com>
 
+Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
+---
+ VERSION | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-On 7/14/25 5:59 PM, Shameer Kolothum wrote:
-> Allows to retrieve the PCIIOMMUOps based on the SMMU type. This will be
-> useful when we add support for accelerated SMMUV3 in subsequent patches
-> as that requires a different set of callbacks for iommu ops.
->
-> No special handling is required for now and returns the default ops
-> in base SMMU Class.
->
-> No functional changes intended.
->
-> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
-
-Thanks
-
-Eric
-> ---
->  hw/arm/smmu-common.c         | 17 +++++++++++++++--
->  include/hw/arm/smmu-common.h |  1 +
->  2 files changed, 16 insertions(+), 2 deletions(-)
->
-> diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
-> index 0f1a06cec2..3a1080773a 100644
-> --- a/hw/arm/smmu-common.c
-> +++ b/hw/arm/smmu-common.c
-> @@ -934,6 +934,16 @@ void smmu_inv_notifiers_all(SMMUState *s)
->      }
->  }
->  
-> +static const PCIIOMMUOps *smmu_iommu_ops_by_type(SMMUState *s)
-> +{
-> +    SMMUBaseClass *sbc;
-> +
-> +    sbc = ARM_SMMU_CLASS(object_class_by_name(TYPE_ARM_SMMU));
-> +    assert(sbc->iommu_ops);
-> +
-> +    return sbc->iommu_ops;
-> +}
-> +
->  static void smmu_base_realize(DeviceState *dev, Error **errp)
->  {
->      SMMUState *s = ARM_SMMU(dev);
-> @@ -962,6 +972,7 @@ static void smmu_base_realize(DeviceState *dev, Error **errp)
->       */
->      if (pci_bus_is_express(pci_bus) && pci_bus_is_root(pci_bus) &&
->          object_dynamic_cast(OBJECT(pci_bus)->parent, TYPE_PCI_HOST_BRIDGE)) {
-> +        const PCIIOMMUOps  *iommu_ops;
->          /*
->           * This condition matches either the default pcie.0, pxb-pcie, or
->           * pxb-cxl. For both pxb-pcie and pxb-cxl, parent_dev will be set.
-> @@ -974,10 +985,11 @@ static void smmu_base_realize(DeviceState *dev, Error **errp)
->              }
->          }
->  
-> +        iommu_ops = smmu_iommu_ops_by_type(s);
->          if (s->smmu_per_bus) {
-> -            pci_setup_iommu_per_bus(pci_bus, &smmu_ops, s);
-> +            pci_setup_iommu_per_bus(pci_bus, iommu_ops, s);
->          } else {
-> -            pci_setup_iommu(pci_bus, &smmu_ops, s);
-> +            pci_setup_iommu(pci_bus, iommu_ops, s);
->          }
->          return;
->      }
-> @@ -1018,6 +1030,7 @@ static void smmu_base_class_init(ObjectClass *klass, const void *data)
->      device_class_set_parent_realize(dc, smmu_base_realize,
->                                      &sbc->parent_realize);
->      rc->phases.exit = smmu_base_reset_exit;
-> +    sbc->iommu_ops = &smmu_ops;
->  }
->  
->  static const TypeInfo smmu_base_info = {
-> diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
-> index c6f899e403..eb94623555 100644
-> --- a/include/hw/arm/smmu-common.h
-> +++ b/include/hw/arm/smmu-common.h
-> @@ -171,6 +171,7 @@ struct SMMUBaseClass {
->      /*< public >*/
->  
->      DeviceRealize parent_realize;
-> +    const PCIIOMMUOps *iommu_ops;
->  
->  };
->  
+diff --git a/VERSION b/VERSION
+index 4149c39eec6..9856be5dd98 100644
+--- a/VERSION
++++ b/VERSION
+@@ -1 +1 @@
+-10.1.0
++10.1.50
+-- 
+2.47.2
 
 

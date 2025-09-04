@@ -4,20 +4,20 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE3CACA1012
-	for <qemu-arm@archiver.kernel.org>; Thu,  4 Sep 2025 10:08:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B4AECA1015
+	for <qemu-arm@archiver.kernel.org>; Thu,  4 Sep 2025 10:08:02 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uu6rP-0004XB-9h; Thu, 04 Sep 2025 06:06:31 -0400
+	id 1uu6rC-0004LY-TE; Thu, 04 Sep 2025 06:06:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kane_chen@aspeedtech.com>)
- id 1uu6rM-0004Uc-Ae; Thu, 04 Sep 2025 06:06:28 -0400
+ id 1uu6rB-0004Ap-67; Thu, 04 Sep 2025 06:06:17 -0400
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kane_chen@aspeedtech.com>)
- id 1uu6rK-0004eu-0u; Thu, 04 Sep 2025 06:06:28 -0400
+ id 1uu6r8-0004eu-Tq; Thu, 04 Sep 2025 06:06:16 -0400
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Thu, 4 Sep
@@ -33,10 +33,10 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <qemu-devel@nongnu.org>
 CC: <troy_lee@aspeedtech.com>, <thuth@redhat.com>, Kane-Chen-AS
  <kane_chen@aspeedtech.com>
-Subject: [PATCH v1 3/4] tests/functional/arm: Update test ASPEED SDK v09.07
- for AST2600
-Date: Thu, 4 Sep 2025 18:05:54 +0800
-Message-ID: <20250904100556.1729604-4-kane_chen@aspeedtech.com>
+Subject: [PATCH v1 1/4] tests/functional/arm: Update test ASPEED SDK v03.02
+ for AST1030
+Date: Thu, 4 Sep 2025 18:05:52 +0800
+Message-ID: <20250904100556.1729604-2-kane_chen@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250904100556.1729604-1-kane_chen@aspeedtech.com>
 References: <20250904100556.1729604-1-kane_chen@aspeedtech.com>
@@ -72,32 +72,37 @@ From: Kane-Chen-AS <kane_chen@aspeedtech.com>
 
 Signed-off-by: Kane-Chen-AS <kane_chen@aspeedtech.com>
 ---
- tests/functional/arm/test_aspeed_ast2600.py | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ tests/functional/arm/test_aspeed_ast1030.py | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/tests/functional/arm/test_aspeed_ast2600.py b/tests/functional/arm/test_aspeed_ast2600.py
-index fdae4c939d..129695ca4e 100755
---- a/tests/functional/arm/test_aspeed_ast2600.py
-+++ b/tests/functional/arm/test_aspeed_ast2600.py
-@@ -97,14 +97,14 @@ def test_arm_ast2600_evb_buildroot_tpm(self):
+diff --git a/tests/functional/arm/test_aspeed_ast1030.py b/tests/functional/arm/test_aspeed_ast1030.py
+index 77037f0179..42126b514f 100755
+--- a/tests/functional/arm/test_aspeed_ast1030.py
++++ b/tests/functional/arm/test_aspeed_ast1030.py
+@@ -12,17 +12,17 @@
  
-         self.do_test_arm_aspeed_buildroot_poweroff()
+ class AST1030Machine(LinuxKernelTest):
  
--    ASSET_SDK_V906_AST2600 = Asset(
--        'https://github.com/AspeedTech-BMC/openbmc/releases/download/v09.06/ast2600-default-obmc.tar.gz',
--        '768d76e247896ad78c154b9cff4f766da2ce65f217d620b286a4a03a8a4f68f5')
-+    ASSET_SDK_V907_AST2600 = Asset(
-+        'https://github.com/AspeedTech-BMC/openbmc/releases/download/v09.07/ast2600-default-obmc.tar.gz',
-+        'cb6c08595bcbba1672ce716b068ba4e48eda1ed9abe78a07b30392ba2278feba')
+-    ASSET_ZEPHYR_3_00 = Asset(
++    ASSET_ZEPHYR_3_02 = Asset(
+         ('https://github.com/AspeedTech-BMC'
+-         '/zephyr/releases/download/v00.03.00/ast1030-evb-demo.zip'),
+-        '37fe3ecd4a1b9d620971a15b96492a81093435396eeac69b6f3e384262ff555f')
++         '/zephyr/releases/download/v00.03.02/ast1030-evb-demo.zip'),
++        '1ec83caab3ddd5d09481772801be7210e222cb015ce22ec6fffb8a76956dcd4f')
  
-     def test_arm_ast2600_evb_sdk(self):
-         self.set_machine('ast2600-evb')
+-    def test_ast1030_zephyros_3_00(self):
++    def test_ast1030_zephyros_3_02(self):
+         self.set_machine('ast1030-evb')
  
--        self.archive_extract(self.ASSET_SDK_V906_AST2600)
-+        self.archive_extract(self.ASSET_SDK_V907_AST2600)
+-        kernel_name = "ast1030-evb-demo/zephyr.elf"
++        kernel_name = "ast1030-evb-demo-3/zephyr.elf"
+         kernel_file = self.archive_extract(
+-            self.ASSET_ZEPHYR_3_00, member=kernel_name)
++            self.ASSET_ZEPHYR_3_02, member=kernel_name)
  
-         self.vm.add_args('-device',
-             'tmp105,bus=aspeed.i2c.bus.5,address=0x4d,id=tmp-test')
+         self.vm.set_console()
+         self.vm.add_args('-kernel', kernel_file, '-nographic')
 -- 
 2.43.0
 

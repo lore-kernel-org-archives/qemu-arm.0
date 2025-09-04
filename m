@@ -4,69 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8010CCA1015
-	for <qemu-arm@archiver.kernel.org>; Thu,  4 Sep 2025 08:13:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66712CA1012
+	for <qemu-arm@archiver.kernel.org>; Thu,  4 Sep 2025 08:15:01 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uu54J-0005vQ-1j; Thu, 04 Sep 2025 04:11:43 -0400
+	id 1uu565-0007gK-8s; Thu, 04 Sep 2025 04:13:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1uu54H-0005u9-9r
- for qemu-arm@nongnu.org; Thu, 04 Sep 2025 04:11:41 -0400
-Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
+ id 1uu54p-0006QP-An
+ for qemu-arm@nongnu.org; Thu, 04 Sep 2025 04:12:18 -0400
+Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1uu549-0003vw-Ck
- for qemu-arm@nongnu.org; Thu, 04 Sep 2025 04:11:40 -0400
-Received: by mail-ej1-x629.google.com with SMTP id
- a640c23a62f3a-aff0775410eso213432266b.0
- for <qemu-arm@nongnu.org>; Thu, 04 Sep 2025 01:11:32 -0700 (PDT)
+ id 1uu54N-00044d-5t
+ for qemu-arm@nongnu.org; Thu, 04 Sep 2025 04:12:11 -0400
+Received: by mail-ed1-x529.google.com with SMTP id
+ 4fb4d7f45d1cf-6188b5ae1e8so921269a12.0
+ for <qemu-arm@nongnu.org>; Thu, 04 Sep 2025 01:11:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756973491; x=1757578291; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=XqhSfFZh32/LWATk0oNaMV37MMZwWogSp5tfK+xWIOE=;
- b=LX9LT+YfvzmOOdqwVTbzqs7rFAFL0mzUmSwWRS1g1i4wTUwBBLTlZ+XEmwE+UKtPF9
- 4C2MX9ajex10L23J44ayBa+kW5SltPKE1w7wa86RMj8yQ0AwesYdh1UpnIaPxiBZpQ91
- CS7i86Lg00eVFZbVy6R3WRvFnDud0AYI9tWn9myfKgfBG8Pz344IhWQ6OLra/CBWJWRF
- Co+RLNtGAVEFTKqWlgcIHCu6XIOo0N2rt/JajvYG2eTv1ZK5tAeHknvlpCagnTCbEMsM
- Kup7DLWF6hbZDZ0Pv38rj+MkWnim2uYjRR7no4gBpUBl1KTbsaSkQIxRYwOU+36tQl/6
- VeLA==
+ d=linaro.org; s=google; t=1756973505; x=1757578305; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=myCatgpniSey/NjO+dQuRIOhbIuhsJO0uetvy2+5HH0=;
+ b=UaJLq9RvgqbWjXerA6qHandWRZlhvFLhFuvwqempVR4Y1VOcVp5KQ9KkRuvk+b2rdJ
+ UkjtUub0ffAoegkfUbtZiVqJlRamTLe1fBsm7Hyv3mnwW5nOu0yAXEx5kyG0ULZtIzCQ
+ 3DQQFySDVSG+6GRspdYGPBPE8mqYSHr6AioGR86rxNhRrKGqLv8v3YRJV+2BpZ7MT9Ql
+ 22PQQ41YWAALoz3n93L97oz0YtEUk2xiq0AFVf3ZKsD/XAaJzoNsCfleC24L6VjJDk9o
+ bsUwEHjgllV4+jMMiWX+8POR1joL6tU1pqm9Ey7h26XaDPTs1bGl4EJx/4vqYHP7mqrr
+ DgPQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756973491; x=1757578291;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=XqhSfFZh32/LWATk0oNaMV37MMZwWogSp5tfK+xWIOE=;
- b=qd8MwXlrYMwvjCFSPVZCUkTV2gCehLwS/eFW2I+Xoo4DVQVVtZhgqpUlQBu++zAEFY
- tcf8bhnbhLwRH9+REW5eS76iHS6Fv9xaEzwuZ5cqo+8nfvxVprIzrBHgQmjma4NmGnMr
- bf3yLulyoQRY92uX33XaMnf+SUPpK/RcDgHkQajzy2v/R5vIhW4vHnWjkw5ymxnkMDkj
- aRpJGqAnhi/CpcOWH5XpSQ7nD5+wfbKBFuL2LLeqb4LdUwsshD6ETm9wR65UwK8DVgxG
- 21eY7d385NrbpyqrMuUvEDS/1bIytmLksTgjLh9J3JsIRkEwVu2GC+2stVdlXjvT7G2O
- iEEQ==
+ d=1e100.net; s=20230601; t=1756973505; x=1757578305;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=myCatgpniSey/NjO+dQuRIOhbIuhsJO0uetvy2+5HH0=;
+ b=tPi7RmLSA5d9Jf0yiyd8mDhZSzS1wWwwJQ2f3ijODpJqsq4z7ec7G0emK+Yl74yza0
+ r1cvfZ50u9c3Qllmk5RuYZ7Z8/zjJUK0ZcGtpkS98R9ynwqm/LbX1fD9/OafmGa6rH7B
+ b5Ti10T4pINBxIa0ls2DVW2wLO7UlWnJ4S6WrohjSx0jdCIw28xMwPXwRVcTdNNeF+PP
+ GYVuX8mZlcvejaGffl+yKpM7L7wH/7PJ0IUGGF2PWKUbynBCbm0oqK+9OWCOyjnKW40Q
+ yRXL/3fhGDWjggwRSbRCc7AQ33krzHQ3UZgzjWjy9YTbU+JyeWDW63HjCH2xHfDbDDjr
+ RCNw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVjdy9+cnCT2q9kf/rhxT8F/nWcW1i/j3ZO14oDf0oJPA8T2Vbs2frKoXsheqbF3KT74dLL11WtkQ==@nongnu.org
-X-Gm-Message-State: AOJu0YwnxdxqUFVx1hZ4DWpewTR9qFTYs24mTWWktv30skk0KI+a3OSL
- JBAixnSesjAnRcSidzBepMK5SPzkedhLqHYyXvpVeL6l4bqWwd7aHXM5Qp5lByFrmJA=
-X-Gm-Gg: ASbGnctztjSxVc6p9frU9lanlEYohziohkjb8Jr9gDEn7wmm2XCy8/zukesAl8MA1jF
- qPMyuuFUk+Hi0NJf10iEamFbuFQnp+PR+eMjDpezthf1KUSRMeTtU2Zv/hD3jQSBxWZbM7H0LJj
- TbrDwtzyeQ+NpfZInDbWo0JlZpXRtrLf4sdJQegEPpEAnWfus9+cWozhJrcOxAabMRkDPvqlc86
- ZgxPKATRy5XBwayZn4KySb8vPNp2yGHpJ09vN33gVBQIgUfWa50Llf6gzynbz9Oly9am7qzjZxD
- 5U4BvgaRk0zj7Ehvq/tDOPi+cnT9cVHlHno5q00wjF7VAbgjgaSNJ2667PnIzuuza6TzssKlUJD
- 2XZPASI2xqkxrJS0lzsjEQcQ=
-X-Google-Smtp-Source: AGHT+IE8LFx3TfE7pO4fUaDHcfoyk8rRtY08fvLafZpfWS2+QtSuHw2ntfWfNq871pvWHGDZUrxpGQ==
-X-Received: by 2002:a17:907:745:b0:afe:ed05:2e44 with SMTP id
- a640c23a62f3a-b01081b3f3fmr1530377866b.14.1756973491213; 
- Thu, 04 Sep 2025 01:11:31 -0700 (PDT)
+ AJvYcCXo8wBOhM2HYBHd7uxByV1cGcCFyKbByHdS/nA0x90yeNtthGYu/NtIQ9HVdVFIVbZO66WqrO3cKA==@nongnu.org
+X-Gm-Message-State: AOJu0YxGesgwtfjwwyYRFPdZrWFAUfvlntjlCZJ45G1PxXkGBgAFAf/X
+ gsKDogs6lE/GI+7ddX6oEw7QBTEA7j7GPRdxRmLYPeR1RMI3N9btJoIUfHCjT7ifkdQ=
+X-Gm-Gg: ASbGncsvwlbg0Chr3QsR+OL7VfbX2QZuAh/tkbk2ff4zr85WnUB8YdotlEhZAFaHs0S
+ wixA6/tkj9HfCMibICvuuzQbqeCtnnAqX5BKYVtxDWLP3svxZGc7yevlAGoEh0xi4cgtimToz5h
+ jkls4bnjnKU7rtt1diGhF6mQnofUdmV3JzWAS3FrzS6VTJROOoKxeZi8U6Zr1k+HXniWjNqdg4M
+ hJVm/hB11JG6bEHLOFKjOJa8rszJ4c4TTP6Ds+twwPMUdtphYVJPJV3H5xSBB+n2AdUrqbaYqW0
+ UL25N9CK84EgM+yNtGoLlrs6WftyEPSOhIzI2kDFX4iVzSNTBv2RLOG/APrLNdK37TFKedYMAtq
+ tlNqoxBIuJDQg0TfDyMyGYCE=
+X-Google-Smtp-Source: AGHT+IEuyqOsBrzLCtRtz3ZGL3L8oWSxERikJvSzK/DjrCCbhnw6SHIARMpI8FBk99Mc9QXgkRKGxw==
+X-Received: by 2002:a05:6402:1d53:b0:61e:ae59:5ef9 with SMTP id
+ 4fb4d7f45d1cf-61eae597472mr9312473a12.11.1756973505168; 
+ Thu, 04 Sep 2025 01:11:45 -0700 (PDT)
 Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-b04279a59ffsm965938466b.60.2025.09.04.01.11.29
+ 4fb4d7f45d1cf-61cfc579ba9sm13465044a12.52.2025.09.04.01.11.37
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 04 Sep 2025 01:11:29 -0700 (PDT)
+ Thu, 04 Sep 2025 01:11:43 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 333B35F8DF;
- Thu, 04 Sep 2025 09:11:28 +0100 (BST)
+ by draig.lan (Postfix) with ESMTP id 16B025FA31;
+ Thu, 04 Sep 2025 09:11:30 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Reinoud Zandijk <reinoud@netbsd.org>,
@@ -128,16 +129,19 @@ Cc: Reinoud Zandijk <reinoud@netbsd.org>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Nicholas Piggin <npiggin@gmail.com>, John Levon <john.levon@nutanix.com>
-Subject: [PATCH v2 000/281] arm_load_dtb cleanups
-Date: Thu,  4 Sep 2025 09:06:34 +0100
-Message-ID: <20250904081128.1942269-1-alex.bennee@linaro.org>
+ Nicholas Piggin <npiggin@gmail.com>, John Levon <john.levon@nutanix.com>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Subject: [PATCH v2 016/281] tests/functional/meson.build: Allow tests to
+ reside in subfolders
+Date: Thu,  4 Sep 2025 09:06:50 +0100
+Message-ID: <20250904081128.1942269-17-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.2
+In-Reply-To: <20250904081128.1942269-1-alex.bennee@linaro.org>
+References: <20250904081128.1942269-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::629;
- envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x629.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::529;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x529.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -160,379 +164,38 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This was prompted by a slop PR that came in via github and while
-looking at it I thought what arm_load_dtb really needed was to be
-modernised to:
+From: Thomas Huth <thuth@redhat.com>
 
-  - use autofree to avoid goto fail
-  - use error_setg to report errors
-  - use error_fatal rather than open coding exit()
+We are going to move target-specific tests to subfolders that are
+named after the target (and generic tests will be put into a "generic"
+folder), so prepare the meson.build file to allow such locations, too.
 
-For v2
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+Message-ID: <20250819112403.432587-5-thuth@redhat.com>
+---
+ tests/functional/meson.build | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
 
-  - applied review tags
-  - tweak to handle fdt != ms->fdt
-  - put GStrv in a block
-  - re-base fixes
-
-Alex.
-
-Alex Bennée (4):
-  hw/arm: use g_autofree for filename in arm_load_dtb
-  hw/arm: use g_autofree for fdt in arm_load_dtb
-  hw/arm: use g_auto(GStrv) for node_path in arm_load_dtb
-  hw/arm: expose Error * to arm_load_dtb
-
-Ani Sinha (1):
-  kvm/kvm-all: make kvm_park/unpark_vcpu local to kvm-all.c
-
-Bibo Mao (14):
-  target/loongarch: Move some function definition to kvm directory
-  target/loongarch: Define function loongarch_cpu_post_init as static
-  target/loongarch: Set page size in TLB entry with STLB
-  target/loongarch: Add header file cpu-mmu.h
-  target/loongarch: Add enum type TLBRet definition
-  target/loongarch: Use vaddr in get_physical_address()
-  target/loongarch: Use MMUAccessType in loongarch_map_tlb_entry()
-  target/loongarch: Add common function loongarch_check_pte()
-  target/loongarch: Use loongarch_check_pte in
-    loongarch_page_table_walker
-  target/loongarch: Use MMUConext in loongarch_map_tlb_entry()
-  target/loongarch: Use MMUContext in loongarch_get_addr_from_tlb
-  target/loongarch: Use MMUContext in loongarch_map_address()
-  target/loongarch: Use MMUContext in get_physical_address()
-  target/loongarch: Use correct address when flush tlb
-
-Cornelia Huck (1):
-  hw: add compat machines for 10.2
-
-Denis V. Lunev (1):
-  qga: fix potentially not initialized nr_volumes in qga_vss_fsfreeze()
-
-Gustavo Romero (5):
-  tests/functional: Fix reverse_debugging asset precaching
-  tests/functional: Mark main in QemuBaseTest class as a static method
-  target/arm: Clean up of register field definitions
-  target/arm: Implement FEAT_SCTLR2 and enable with -cpu max
-  target/arm: Implement FEAT_TCR2 and enable with -cpu max
-
-Igor Mammedov (8):
-  add cpu_test_interrupt()/cpu_set_interrupt() helpers and use them tree
-    wide
-  memory: reintroduce BQL-free fine-grained PIO/MMIO
-  acpi: mark PMTIMER as unlocked
-  hpet: switch to fine-grained device locking
-  hpet: move out main counter read into a separate block
-  hpet: make main counter read lock-less
-  kvm: i386: irqchip: take BQL only if there is an interrupt
-  tcg: move interrupt caching and single step masking closer to user
-
-Joel Stanley (1):
-  linux-user: Add strace for rseq
-
-Kostiantyn Kostiuk (6):
-  qga-vss: Replace asserts with condition and report error
-  qga-vss: Remove unused dependencies
-  qga: Fix channel initialization check in run_agent_once
-  qga: ignore channel_init() fail if 'retry_path' is set
-  qga-vss: Write hex value of error in log
-  qga/installer: Remove QGA VSS if QGA installation failed
-
-Manos Pitsidianakis (4):
-  scripts/minikconf.py: fix invalid attribute access
-  scripts/minikconf.py: s/Error/KconfigParserError
-  rust: declare self as qemu_api for proc-macros
-  hw/arm: add static NVDIMMs in device tree
-
-Marc-André Lureau (1):
-  rust/qemu-api-macros: make derive(Object) friendly when missing parent
-
-Mark Cave-Ayland (19):
-  hw/i386/pc_piix.c: restrict isapc machine to 32-bit CPUs
-  hw/i386/pc_piix.c: restrict isapc machine to 3.5G memory
-  hw/i386/pc_piix.c: remove include for loader.h
-  hw/i386/pc_piix.c: inline pc_xen_hvm_init_pci() into pc_xen_hvm_init()
-  hw/i386/pc_piix.c: duplicate pc_init1() into pc_isa_init()
-  hw/i386/pc_piix.c: remove pcmc->pci_enabled dependent initialisation
-    from pc_init_isa()
-  hw/i386/pc_piix.c: remove igvm initialisation from pc_init_isa()
-  hw/i386/pc_piix.c: remove SMI and piix4_pm initialisation from
-    pc_init_isa()
-  hw/i386/pc_piix.c: remove SGX initialisation from pc_init_isa()
-  hw/i386/pc_piix.c: remove nvdimm initialisation from pc_init_isa()
-  hw/i386/pc_piix.c: simplify RAM size logic in pc_init_isa()
-  hw/i386/pc_piix.c: hardcode hole64_size to 0 in pc_init_isa()
-  hw/i386/pc_piix.c: remove pc_system_flash_cleanup_unused() from
-    pc_init_isa()
-  hw/i386/pc_piix.c: always initialise ISA IDE drives in pc_init_isa()
-  hw/i386/pc_piix.c: assume pcmc->pci_enabled is always true in
-    pc_init1()
-  hw/i386: move isapc machine to separate isapc.c file
-  hw/i386/pc_piix.c: remove unused headers after isapc machine split
-  hw/i386/pc_piix.c: replace rom_memory with pci_memory
-  hw/i386/isapc.c: replace rom_memory with system_memory
-
-Markus Armbruster (8):
-  ui/keymaps: Avoid trace crash and improve error messages
-  i386/kvm/vmsr_energy: Plug memory leak on failure to connect socket
-  vfio scsi ui: Error-check qio_channel_socket_connect_sync() the same
-    way
-  qtest/qom-test: Shallow testing of qom-list / qom-get
-  qtest/qom-test: Traverse entire QOM tree
-  qtest/qom-test: Don't bother to execute QMP command quit
-  MAINTAINERS: Cover tests/qtest/qom-test.c
-  Revert "tests/qtest: use qos_printf instead of g_test_message"
-
-Paolo Bonzini (7):
-  python: mkvenv: fix messages printed by mkvenv
-  MAINTAINERS: add a few more files to "Top Level Makefile and
-    configure"
-  rust: disable borrow_as_ptr warning
-  rust: qemu-api-macros: support matching more than one error
-  subprojects: update proc-macro2 and syn
-  rust: move dependencies to rust/Cargo.toml
-  user-exec: ensure interrupt_request is not used
-
-Peter Maydell (14):
-  tests/functional/test_aarch64_virt_gpu: Skip test if EGL won't
-    initialize
-  linux-user: Drop deprecated -p option
-  target/arm: Implement CTZ, CNT, ABS
-  scripts/kernel-doc: Avoid new Perl precedence warning
-  docs/sphinx/kerneldoc.py: Handle new LINENO syntax
-  tests/qtest/libqtest.h: Remove stray space from doc comment
-  scripts: Import Python kerneldoc from Linux kernel
-  scripts/kernel-doc: strip QEMU_ from function definitions
-  scripts/kernel-doc: tweak for QEMU coding standards
-  scripts/kerneldoc: Switch to the Python kernel-doc script
-  scripts/kernel-doc: Delete the old Perl kernel-doc script
-  MAINTAINERS: Put kernel-doc under the "docs build machinery" section
-  target/arm: Correct condition of aa64_atomics feature function
-  hw/arm/stm32f205_soc: Don't leak TYPE_OR_IRQ objects
-
-Pierrick Bouvier (2):
-  tests/functional/test_aarch64_device_passthrough: update image
-  tests/functional/test_aarch64_rme: update image
-
-Richard Henderson (146):
-  semihosting: Retrieve stack top from image_info
-  semihosting: Initialize heap once per process
-  linux-user: Create target/elfload.c files
-  linux-user: Move ppc uabi/asm/elf.h workaround to osdep.h
-  linux-user: Move get_elf_cpu_model to target/elfload.c
-  linux-user: Move get_elf_hwcap to {i386,x86_64}/elfload.c
-  linux-user: Move hwcap functions to {arm,aarch64}/elfload.c
-  linux-user: Move get_elf_hwcap to sparc/elfload.c
-  linux-user: Move hwcap functions to ppc/elfload.c
-  linux-user: Move get_elf_hwcap to loongarch64/elfload.c
-  linux-user: Move get_elf_hwcap to mips/elfload.c
-  linux-user: Move get_elf_hwcap to sh4/elfload.c
-  linux-user: Move hwcap functions to s390x/elfload.c
-  linux-user: Move get_elf_hwcap to riscv/elfload.c
-  linux-user: Remove ELF_HWCAP
-  linux-user: Remove ELF_HWCAP2
-  linux-user: Move get_elf_platform to {i386,x86_64}/elfload.c
-  linux-user/i386: Return const data from get_elf_platform
-  linux-user: Move get_elf_platform to arm/elfload.c
-  linux-user/loongarch64: Create get_elf_platform
-  linux-user/hppa: Create get_elf_platform
-  linux-user: Remove ELF_PLATFORM
-  linux-user: Move get_elf_base_platform to mips/elfload.c
-  linux-user: Move target_cpu_copy_regs decl to qemu.h
-  linux-user: Create do_init_main_thread
-  linux-user/i386: Create init_main_thread
-  linux-user/arm: Create init_main_thread
-  linux-user/arm: Remove a.out startup remenents
-  linux-user/aarch64: Create init_main_thread
-  linux-user/sparc: Create init_main_thread
-  linux-user/ppc: Create init_main_thread
-  linux-user/loongarch64: Create init_main_thread
-  linux-user/mips: Create init_main_thread
-  linux-user/microblaze: Create init_main_thread
-  linux-user/openrisc: Create init_main_thread
-  linux-user/sh4: Create init_main_thread
-  linux-user/m68k: Create init_main_thread
-  linux-user/alpha: Create init_main_thread
-  linux-user/s390x: Create init_main_thread
-  linux-user/riscv: Create init_main_thread
-  linux-user/hppa: Create init_main_thread
-  linux-user/xtensa: Create init_main_thread
-  linux-user/hexagon: Create init_main_thread
-  linux-user: Remove do_init_main_thread
-  hw/core: Dump cpu_reset in the reset.exit phase
-  hw/core: Use qemu_log_trylock/unlock in cpu_common_reset_exit
-  linux-user: Tidy print_socket_protocol
-  linux-user/x86_64: Convert target_elf_gregset_t to a struct
-  linux-user/i386: Convert target_elf_gregset_t to a struct
-  linux-user/arm: Convert target_elf_gregset_t to a struct
-  linux-user/aarch64: Convert target_elf_gregset_t to a struct
-  linux-user/ppc: Convert target_elf_gregset_t to a struct
-  linux-user/loongarch64: Convert target_elf_gregset_t to a struct
-  linux-user/mips: Convert target_elf_gregset_t to a struct
-  linux-user/microblaze: Convert target_elf_gregset_t to a struct
-  linux-user/openrisc: Convert target_elf_gregset_t to a struct
-  linux-user/sh4: Convert target_elf_gregset_t to a struct
-  linux-user/m68k: Convert target_elf_gregset_t to a struct
-  linux-user/s390x: Convert target_elf_gregset_t to a struct
-  linux-user/xtensa: Convert target_elf_gregset_t to a struct
-  linux-user: Update comment for target_elf_gregset_t
-  linux-user: Declare elf_core_copy_regs in loader.h
-  linux-user: Rename USE_ELF_CORE_DUMP to HAVE_ELF_CORE_DUMP
-  linux-user: Move elf_core_copy_regs to {i386,x86_64}/elfload.c
-  linux-user: Move elf_core_copy_regs to arm/elfload.c
-  linux-user: Move elf_core_copy_regs to aarch64/elfload.c
-  linux-user: Move elf_core_copy_regs to ppc/elfload.c
-  linux-user: Move elf_core_copy_regs to loongarch64/elfload.c
-  linux-user: Move elf_core_copy_regs to mips/elfload.c
-  linux-user: Move elf_core_copy_regs to microblaze/elfload.c
-  linux-user: Move elf_core_copy_regs to openrisc/elfload.c
-  linux-user: Move elf_core_copy_regs to sh4/elfload.c
-  linux-user: Move elf_core_copy_regs to m68k/elfload.c
-  linux-user: Move elf_core_copy_regs to s390x/elfload.c
-  linux-user: Move elf_core_copy_regs to xtensa/elfload.c
-  linux-user: Remove target_elf_greg_t, tswapreg from elfload.c
-  linux-user/i386: Create target_ptrace.h
-  linux-user/i386: Expand target_elf_gregset_t
-  linux-user/x86_64: Create target_ptrace.h
-  linux-user/x86_64: Expand target_elf_gregset_t
-  linux-user/x86_64: Fix dump of fs_base, gs_base
-  linux-user/aarch64: Create target_ptrace.h
-  linux-user/aarch64: Expand target_elf_gregset_t
-  linux-user/arm: Create target_ptrace.h
-  linux-user/arm: Expand target_elf_gregset_t
-  linux-user/loongarch64: Create target_ptrace.h
-  linux-user/loongarch64: Expand target_elf_gregset_t
-  linux-user/m68k: Expand target_elf_gregset_t
-  linux-user/microblaze: Create target_ptrace.h
-  linux-user/microblaze: Fold target_pt_regs.r* to an array
-  linux-user/microblaze: Expand target_elf_gregset_t
-  linux-user/mips: Create target_ptrace.h
-  linux-user/mips: Use target_ulong for target_elf_greg_t
-  linux-user/openrisc: Create target_ptrace.h
-  linux-user/openrisc: Expand target_elf_gregset_t
-  linux-user/ppc: Create target_ptrace.h
-  linux-user/ppc: Expand target_elf_gregset_t
-  linux-user/s390x: Create target_ptrace.h
-  linux-user/s390x: Expand target_elf_gregset_t
-  linux-user/sh4: Create target_ptrace.h
-  linux-user/sh4: Expand target_elf_gregset_t
-  linux-user/xtensa: Create target_ptrace.h
-  linux-user/xtensa: Expand target_elf_gregset_t
-  linux-user: Move init_guest_commpage to x86_64/elfload.c
-  linux-user: Move init_guest_commpage to arm/elfload.c
-  linux-user: Move init_guest_commpage to hppa/elfload.c
-  linux-user: Replace init_guest_commpage macro with function
-  linux-user: Move get_vdso_image_info to arm/elfload.c
-  linux-user: Remove ELF_EXEC_PAGESIZE
-  linux-user: Remove redundant ELF_DATA definitons
-  linux-user: Move elf parameters to {i386,x86_64}/target_elf.h
-  linux-user: Move elf parameters to {arm,aarch64}/target_elf.h
-  linux-user: Move elf parameters to sparc/target_elf.h
-  linux-user: Move elf parameters to ppc/target_elf.h
-  linux-user: Move elf parameters to loongarch64/target_elf.h
-  linux-user: Move elf parameters to {mips,mips64}/target_elf.h
-  linux-user: Move elf parameters to microblaze/target_elf.h
-  linux-user: Move elf parameters to openrisc/target_elf.h
-  linux-user: Move elf parameters to sh4/target_elf.h
-  linux-user: Move elf parameters to m68k/target_elf.h
-  linux-user: Move elf parameters to alpha/target_elf.h
-  linux-user: Move elf parameters to s390x/target_elf.h
-  linux-user: Move elf parameters to riscv/target_elf.h
-  linux-user: Move elf parameters to hppa/target_elf.h
-  linux-user: Move elf parameters to xtensa/target_elf.h
-  linux-user: Move elf parameters to hexagon/target_elf.h
-  linux-user: Standardize on ELF_MACHINE not ELF_ARCH
-  linux-user: Rename elf_check_arch
-  linux-user: Remove ELIBBAD from elfload.c
-  linux-user: Remove MAP_DENYWRITE from elfload.c
-  linux-user: Move arch_parse_elf_property to aarch64/elfload.c
-  linux-user: Remove a.out declarations from elfload.c
-  linux-user/sparc: Create target_ptrace.h
-  linux-user: Remove target_pt_regs from target_syscall.h
-  target/arm: Add feature predicate for FEAT_CSSC
-  target/arm: Implement MIN/MAX (immediate)
-  target/arm: Implement MIN/MAX (register)
-  target/arm: Split out gen_wrap2_i32 helper
-  target/arm: Enable FEAT_CSSC for -cpu max
-  qemu/atomic: Finish renaming atomic128-cas.h headers
-  qemu/atomic: Add atomic16 primitives for xchg, fetch_and, fetch_or
-  accel/tcg: Add cpu_atomic_*_mmu for 16-byte xchg, fetch_and, fetch_or
-  tcg: Add tcg_gen_atomic_{xchg,fetch_and,fetch_or}_i128
-  target/arm: Rename isar_feature_aa64_atomics
-  target/arm: Implement FEAT_LSE128
-  target/arm: Enable FEAT_LSE128 for -cpu max
-
-Smail AIDER (1):
-  target/arm: Trap PMCR when MDCR_EL2.TPMCR is set
-
-Stefan Hajnoczi (2):
-  Update version for the v10.1.0 release
-  Open 10.2 development tree
-
-Stefan Weil (1):
-  CI: Use mingw-w64-x86_64-curl-winssl instead of mingw-w64-x86_64-curl
-    for Windows build
-
-Steve Sistare (1):
-  hw/intc/arm_gicv3_kvm: preserve pending interrupts during cpr
-
-Thomas Huth (28):
-  tests/functional: Use more fine-grained locking when looking for free
-    ports
-  tests/functional: Rework the migration test to have target-specific
-    files
-  tests/functional: Rework the multiprocess test to have target-specific
-    files
-  tests/functional/meson.build: Split timeout settings by target
-  tests/functional/meson.build: Allow tests to reside in subfolders
-  tests/functional: Move aarch64 tests into architecture specific folder
-  tests/functional: Move alpha tests into architecture specific folder
-  tests/functional: Move arm tests into architecture specific folder
-  tests/functional: Move avr tests into architecture specific folder
-  tests/functional: Move hppa tests into architecture specific folder
-  tests/functional: Move i386 tests into architecture specific folder
-  tests/functional: Move loongarch64 tests into architecture specific
-    folder
-  tests/functional: Move m68k tests into architecture specific folder
-  tests/functional: Move microblaze tests into architecture specific
-    folder
-  tests/functional: Move mips tests into target-specific folders
-  tests/functional: Move or1k tests into target-specific folders
-  tests/functional: Move ppc/ppc64 tests into target-specific folders
-  tests/functional: Move riscv32/riscv64 tests into target-specific
-    folders
-  tests/functional: Move rx test into target-specific folders
-  tests/functional: Move s390x tests into target-specific folders
-  tests/functional: Move sh4/sh4eb tests into target-specific folders
-  tests/functional: Move sparc/sparc64 tests into target-specific
-    folders
-  tests/functional: Move x86_64 tests into target-specific folder
-  tests/functional: Move xtensa tests into target-specific folder
-  tests/functional: Move the generic tests to a subfolder
-  MAINTAINERS: Adjust wildcards for the migration, multiprocess and
-    replay tests
-  hw/intc/loongarch_pch_pic: Fix ubsan warning and endianness issue
-  qga: Fix ubsan warning
-
-WANG Rui (1):
-  target/loongarch: Guard 64-bit-only insn translation with TRANS64
-    macro
-
-Xiaoyao Li (1):
-  x86/loader: Don't update kernel header for CoCo VMs
-
-Xin Wang (1):
-  target/i386: Add support for save/load of exception error code
-
-Zero Tang (1):
-  i386/tcg/svm: fix incorrect canonicalization
-
-minglei.liu (1):
-  qga: Fix truncated output handling in guest-exec status reporting
-
-Łukasz Stelmach (1):
-  linux-user: do not print IP socket options by default
-
+diff --git a/tests/functional/meson.build b/tests/functional/meson.build
+index 356aad12dee..8c24ac1cc2d 100644
+--- a/tests/functional/meson.build
++++ b/tests/functional/meson.build
+@@ -423,7 +423,13 @@ foreach speed : ['quick', 'thorough']
+ 
+     foreach test : target_tests
+       testname = '@0@-@1@'.format(target_base, test)
+-      testfile = 'test_' + test + '.py'
++      if fs.exists('test_' + test + '.py')
++        testfile = 'test_' + test + '.py'
++      elif fs.exists('generic' / 'test_' + test + '.py')
++        testfile = 'generic' / 'test_' + test + '.py'
++      else
++        testfile = target_base / 'test_' + test + '.py'
++      endif
+       testpath = meson.current_source_dir() / testfile
+       teststamp = testname + '.tstamp'
+       test_precache_env = environment()
 -- 
 2.47.2
 

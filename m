@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40160CA1015
-	for <qemu-arm@archiver.kernel.org>; Thu,  4 Sep 2025 08:16:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80368CA1012
+	for <qemu-arm@archiver.kernel.org>; Thu,  4 Sep 2025 08:17:33 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uu58J-0001wh-UZ; Thu, 04 Sep 2025 04:15:52 -0400
+	id 1uu56A-0007t5-M0; Thu, 04 Sep 2025 04:13:40 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1uu54x-0006VW-FT
- for qemu-arm@nongnu.org; Thu, 04 Sep 2025 04:12:25 -0400
-Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
+ id 1uu54p-0006QK-6d
+ for qemu-arm@nongnu.org; Thu, 04 Sep 2025 04:12:18 -0400
+Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1uu54T-00048d-CC
- for qemu-arm@nongnu.org; Thu, 04 Sep 2025 04:12:21 -0400
-Received: by mail-ej1-x634.google.com with SMTP id
- a640c23a62f3a-afcb7ae31caso124030466b.3
- for <qemu-arm@nongnu.org>; Thu, 04 Sep 2025 01:11:52 -0700 (PDT)
+ id 1uu54O-00045H-GS
+ for qemu-arm@nongnu.org; Thu, 04 Sep 2025 04:12:12 -0400
+Received: by mail-ed1-x52e.google.com with SMTP id
+ 4fb4d7f45d1cf-61cf8280f02so1034027a12.0
+ for <qemu-arm@nongnu.org>; Thu, 04 Sep 2025 01:11:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756973512; x=1757578312; darn=nongnu.org;
+ d=linaro.org; s=google; t=1756973506; x=1757578306; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=a6t+p8GOgjhvQY+BqPqQ3Q/gGWWqVMPzMSTGgeOugcs=;
- b=nxTu2LklQL4gZK5r10sAT93rmbArAmAvp52GtsBJ6ql+2XQUWVMprLUbJkCN2GZhci
- xlQ1QYqMzir1tTQoI4UyvzsQsVu7FwykDKB8v6bwW2A64SYJTHnDPnJpspkVYA5xOev+
- sz+m0LMNGn+Mo3r3Y8av0LMxAwnKmAaxb6cL0zRede/bY7w7FzVrUS4pPHXOIHsS2gMn
- zLD+0QkcUrggbDHWXPPPY7VLhNPZWcS11nf6StX5UhiYCMgG2uHqlRTKLezf+c577/vf
- tjw8Sbc+J3A7VNT1n9EkyfIcuETnzCRDWjQvJqm7du6Xh4BfPEU/xD4JhYdkXiaYZBqY
- 1Rgw==
+ bh=ToC1ebEyvx+viBNvPFVlKTy11Wh6Rf+bOVhd1Ayq6zY=;
+ b=VWkwN+/jOYHyhXYJwbiUqFtPtZHNPLTj8Vmc4S2XxKiyY+7tox7UNvpqHEfLWpGQ/h
+ lvQDKcjpFSQ2wC3eKeO2/zhwJ9N8a/5cLtHHTvIxJSEhqEcMuzkttILvZ92qosrM5WEZ
+ MNfqnY9AKY1FpkMjjAYSsMau9kQe+sO+baNuAXue/HWqe0miIi0xUtWiAL+15XuPVpnI
+ yfeneYOymGBrlRZjvhzzjbxRf4/aSJ2ePj44ZTcZeRDBVOVqO2q4HpgGbeR5NamyJarw
+ XPTNRcbmvCEet7NgKDieukazR8rdM6/Z4X8RzfXo21/ZXUY4UkGfQVJClqRhZvHFenJN
+ BW6g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756973512; x=1757578312;
+ d=1e100.net; s=20230601; t=1756973506; x=1757578306;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=a6t+p8GOgjhvQY+BqPqQ3Q/gGWWqVMPzMSTGgeOugcs=;
- b=gpQaAVUbN5KIZ6JPPJO8W6mJSROfsFP6A4dG4sAOpczO7DmtZI6+f8DyIRZsYd5FwK
- m1pSyoUoCbNtxEmQWNVU6FxiqPDWlIkROpgtfML1ZaCfOz+kyn5B4iDAyZQBT6caPUW1
- g49k3YlexnkT5Lj5rAl3YxW0pHK4fprCtr9geXxt2qUiH2U6LhtyAIlOMGNq67H3dMc9
- 5b0tsndqMBUbOMBiQgP0bBC0FzHmT60deV4/XQHEM+dc0IXc19e8JLBGVZlrPFgFp5qw
- 4tknvE0vd63ddeI36sSY5K7982QcGuakiQV9s+8eIW4hUyaO7yBaEE+1uXhCh1x66k6G
- YSsw==
+ bh=ToC1ebEyvx+viBNvPFVlKTy11Wh6Rf+bOVhd1Ayq6zY=;
+ b=atfyA3DI4bAnqRdbrMQnk086O6q+UPoHyPgVy0/4eyLUYk6zM0irGHVCpobl+ah86v
+ Bj9nqBiX+DFZX8edRq/EoZgb1v4PhzRTfQ2VeMrIAUlhnv8YxqWdy6MKm5FdI2HtftSZ
+ A7lREWhDTXfCetXH62kFD15A861PcDF0+krMHBvHixu4Q7/wW+4g3CKR8pHdhYIsjdJ8
+ 1kQGOGHGFJqMow9dzd7fvfY5WeYDs1TEtbZl/HctjOvNCPsKZi+B7TjbdSLNqYLoXER+
+ 0z9vb/AM6oQ2c7ydAzYJh6mTwRsmzQcLKnrnyYEq6Dt1lczQDbwpkDEyuUHoPz4o84Ns
+ i36g==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVLEKiuv/DEFtVN2BXtNVQXyS61kw7X0KwQRugZ8L5dJnQsjgj3hyIo86ODXQMfqI15bXWO4N3z4A==@nongnu.org
-X-Gm-Message-State: AOJu0Yz9ByMeKqrwUK0VAbAnl0CkBkiLZrqFsCijBfBZ+8RxoP+ZRGmX
- MTohj0+NS1Kx47RxL74jd+FTqBGjTi6IpYnHeEWDzqszsG02cdpSRT3ms2AV2HA503Q=
-X-Gm-Gg: ASbGncuTV8Uce3P5e+OHwSGJKosoKqvulB7syeH4Bjti1RV45UUPNWBQw7z85P4ksJq
- slZc/wIWGFC8jYcY96TM8G80J916dKP2OV07luf9slle+NmuPAa81DgONfcFI9N8Lo5gnQnobRQ
- PEtaLVo4cGkao4SixyBSou1SBPdDY+UdIMw42zvmUQu9jiGtIl2TN22YyEb+ew8h4jEyulpybB7
- +uLp7xEI3foXpHs50YJW6/YlEPuCqvLE2k+ZIPLWuJLGq/essTvyQGu1e9CxpcX3rD/q9Gh946E
- ndlubaeqaZAVB7DUnVb7NcLM/xoXRHCBGG/ZTdGCIdiLbS/+obH35iyWUAHmXZB/bwSzhKB6G5G
- Wy6AKq90l9f62jq+bYGcCPbKo0OxGPVC+dA==
-X-Google-Smtp-Source: AGHT+IGs9IFC2MqlanPqq9Em5B426D0kzqXXfRSpZpCnpllr2COQwDaPn9fFf5H2072+YVpPFQfweQ==
-X-Received: by 2002:a17:907:3d0b:b0:adb:428f:f748 with SMTP id
- a640c23a62f3a-b01d8a72fddmr1793943566b.21.1756973511490; 
- Thu, 04 Sep 2025 01:11:51 -0700 (PDT)
+ AJvYcCWRKBt/rrRtlNkDMcOvYBRXULcmvYqPPTLlLR3TkJklCXOC4CEWHjbzwMvvUG6+Xk6yeqMIn2+JRQ==@nongnu.org
+X-Gm-Message-State: AOJu0YzRb+Z1dyHXi615CREffxzZC7XhdNU7BsSuvbDdu0NcEY8Kr8JF
+ VKh2In/u6TwGuFEIC4CD2xy87RpZqr8AL8sdI2NzaVpyrVoeih/IXjTuyIrmIUHnnJo=
+X-Gm-Gg: ASbGncu97TB4HNW6Aq0qbPSdSaxydZQM11bWqQ1CVLK6hK3jiW7Qoar7+3kX3EjQCqv
+ ZdXVHlCWjDlQ+evVUF0tFQIinH9mIbBefRk1yT67nPnlNYDysqdwdkmJmtnyx/MljIM2zDPXsJX
+ ZP1fbZv1kTmkev/oH+SX/YoGy0E9K/d/+GThaEUH2puNyaaCJpf+JbrVhmyLNbmbfq/EchsjWKP
+ M5VO+SE1SrSRgemesJuZHxQwAVT4ME07DAS0mZ81mRcqj6WxuY5FrCe5F+d25UMZiz1Fsi0T2e4
+ THavcHkTSl4B/BuF6M1hGDUBqp7ugFtPoroiu6YYsY0uFzWQBphmBD+FLelCvouS3M67gEDEWpN
+ FkaOLDWUuKQZxKF6j4ghFcSY=
+X-Google-Smtp-Source: AGHT+IHeOl+XaapxB+6EIvAn4yhQXCrxxb3dopvbnn9YTOxhvZYiRqk/3VEaWlDGlnIbEeUwNRB0HQ==
+X-Received: by 2002:a05:6402:1e8f:b0:618:139d:3128 with SMTP id
+ 4fb4d7f45d1cf-61d26c52969mr14180923a12.17.1756973504811; 
+ Thu, 04 Sep 2025 01:11:44 -0700 (PDT)
 Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-b046af12536sm324245966b.100.2025.09.04.01.11.44
+ 4fb4d7f45d1cf-61eaf588377sm7032393a12.15.2025.09.04.01.11.38
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 04 Sep 2025 01:11:49 -0700 (PDT)
+ Thu, 04 Sep 2025 01:11:43 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 3FB8D600AF;
- Thu, 04 Sep 2025 09:11:32 +0100 (BST)
+ by draig.lan (Postfix) with ESMTP id 595EA5FA5C;
+ Thu, 04 Sep 2025 09:11:30 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Reinoud Zandijk <reinoud@netbsd.org>,
@@ -131,18 +131,18 @@ Cc: Reinoud Zandijk <reinoud@netbsd.org>,
  =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
  Nicholas Piggin <npiggin@gmail.com>, John Levon <john.levon@nutanix.com>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v2 033/281] tests/functional: Move sparc/sparc64 tests into
- target-specific folders
-Date: Thu,  4 Sep 2025 09:07:07 +0100
-Message-ID: <20250904081128.1942269-34-alex.bennee@linaro.org>
+Subject: [PATCH v2 018/281] tests/functional: Move alpha tests into
+ architecture specific folder
+Date: Thu,  4 Sep 2025 09:06:52 +0100
+Message-ID: <20250904081128.1942269-19-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.2
 In-Reply-To: <20250904081128.1942269-1-alex.bennee@linaro.org>
 References: <20250904081128.1942269-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::634;
- envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x634.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52e;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x52e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -167,152 +167,104 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Thomas Huth <thuth@redhat.com>
 
-The tests/functional folder has become quite crowded, thus move the
-sparc tests into a target-specific subfolder.
+The tests/functional folder has become quite crowded already, some
+restructuring would be helpful here. Thus move the alpha tests into
+a target-specific subfolder.
 
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Signed-off-by: Thomas Huth <thuth@redhat.com>
-Message-ID: <20250819112403.432587-22-thuth@redhat.com>
+Message-ID: <20250819112403.432587-7-thuth@redhat.com>
 ---
- MAINTAINERS                                   |  6 +++---
- tests/functional/meson.build                  | 20 ++-----------------
- tests/functional/sparc/meson.build            | 10 ++++++++++
- .../test_migration.py}                        |  0
- .../test_replay.py}                           |  0
- .../test_sun4m.py}                            |  0
- tests/functional/sparc64/meson.build          | 10 ++++++++++
- .../test_migration.py}                        |  0
- .../test_sun4u.py}                            |  0
- .../test_tuxrun.py}                           |  0
- 10 files changed, 25 insertions(+), 21 deletions(-)
- create mode 100644 tests/functional/sparc/meson.build
- rename tests/functional/{test_sparc_migration.py => sparc/test_migration.py} (100%)
- rename tests/functional/{test_sparc_replay.py => sparc/test_replay.py} (100%)
- rename tests/functional/{test_sparc_sun4m.py => sparc/test_sun4m.py} (100%)
- create mode 100644 tests/functional/sparc64/meson.build
- rename tests/functional/{test_sparc64_migration.py => sparc64/test_migration.py} (100%)
- rename tests/functional/{test_sparc64_sun4u.py => sparc64/test_sun4u.py} (100%)
- rename tests/functional/{test_sparc64_tuxrun.py => sparc64/test_tuxrun.py} (100%)
+ MAINTAINERS                                            |  3 ++-
+ tests/functional/alpha/meson.build                     | 10 ++++++++++
+ .../{test_alpha_clipper.py => alpha/test_clipper.py}   |  0
+ .../test_migration.py}                                 |  0
+ .../{test_alpha_replay.py => alpha/test_replay.py}     |  0
+ tests/functional/meson.build                           | 10 +---------
+ 6 files changed, 13 insertions(+), 10 deletions(-)
+ create mode 100644 tests/functional/alpha/meson.build
+ rename tests/functional/{test_alpha_clipper.py => alpha/test_clipper.py} (100%)
+ rename tests/functional/{test_alpha_migration.py => alpha/test_migration.py} (100%)
+ rename tests/functional/{test_alpha_replay.py => alpha/test_replay.py} (100%)
 
 diff --git a/MAINTAINERS b/MAINTAINERS
-index eddec0058e0..b46445ff5c0 100644
+index a2a5ccea7b6..8115aae6183 100644
 --- a/MAINTAINERS
 +++ b/MAINTAINERS
-@@ -1755,7 +1755,7 @@ F: include/hw/nvram/sun_nvram.h
- F: include/hw/sparc/sparc32_dma.h
- F: include/hw/sparc/sun4m_iommu.h
- F: pc-bios/openbios-sparc32
--F: tests/functional/test_sparc_sun4m.py
-+F: tests/functional/sparc/test_sun4m.py
+@@ -189,6 +189,7 @@ M: Richard Henderson <richard.henderson@linaro.org>
+ S: Maintained
+ F: target/alpha/
+ F: tests/tcg/alpha/
++F: tests/functional/alpha/
+ F: disas/alpha.c
  
- Sun4u
- M: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-@@ -1768,8 +1768,8 @@ F: include/hw/pci-host/sabre.h
- F: hw/pci-bridge/simba.c
- F: include/hw/pci-bridge/simba.h
- F: pc-bios/openbios-sparc64
--F: tests/functional/test_sparc64_sun4u.py
--F: tests/functional/test_sparc64_tuxrun.py
-+F: tests/functional/sparc64/test_sun4u.py
-+F: tests/functional/sparc64/test_tuxrun.py
+ ARM TCG CPUs
+@@ -656,7 +657,7 @@ S: Maintained
+ F: hw/alpha/
+ F: hw/isa/smc37c669-superio.c
+ F: tests/tcg/alpha/system/
+-F: tests/functional/test_alpha_clipper.py
++F: tests/functional/alpha/test_clipper.py
  
- Sun4v
- M: Artyom Tarasenko <atar4qemu@gmail.com>
+ ARM Machines
+ ------------
+diff --git a/tests/functional/alpha/meson.build b/tests/functional/alpha/meson.build
+new file mode 100644
+index 00000000000..26a5b3f2e4b
+--- /dev/null
++++ b/tests/functional/alpha/meson.build
+@@ -0,0 +1,10 @@
++# SPDX-License-Identifier: GPL-2.0-or-later
++
++tests_alpha_system_quick = [
++  'migration',
++]
++
++tests_alpha_system_thorough = [
++  'clipper',
++  'replay',
++]
+diff --git a/tests/functional/test_alpha_clipper.py b/tests/functional/alpha/test_clipper.py
+similarity index 100%
+rename from tests/functional/test_alpha_clipper.py
+rename to tests/functional/alpha/test_clipper.py
+diff --git a/tests/functional/test_alpha_migration.py b/tests/functional/alpha/test_migration.py
+similarity index 100%
+rename from tests/functional/test_alpha_migration.py
+rename to tests/functional/alpha/test_migration.py
+diff --git a/tests/functional/test_alpha_replay.py b/tests/functional/alpha/test_replay.py
+similarity index 100%
+rename from tests/functional/test_alpha_replay.py
+rename to tests/functional/alpha/test_replay.py
 diff --git a/tests/functional/meson.build b/tests/functional/meson.build
-index ce713509e32..00d18dba3ce 100644
+index 9cb6325360f..a7f8c88a078 100644
 --- a/tests/functional/meson.build
 +++ b/tests/functional/meson.build
-@@ -32,6 +32,8 @@ subdir('rx')
- subdir('s390x')
- subdir('sh4')
- subdir('sh4eb')
-+subdir('sparc')
-+subdir('sparc64')
+@@ -10,6 +10,7 @@ if get_option('tcg_interpreter')
+ endif
  
- test_x86_64_timeouts = {
-   'acpi_bits' : 420,
-@@ -54,24 +56,6 @@ tests_generic_linuxuser = [
+ subdir('aarch64')
++subdir('alpha')
+ 
+ test_arm_timeouts = {
+   'arm_aspeed_palmetto' : 120,
+@@ -96,15 +97,6 @@ tests_generic_linuxuser = [
  tests_generic_bsduser = [
  ]
  
--tests_sparc_system_quick = [
--  'sparc_migration',
+-tests_alpha_system_quick = [
+-  'alpha_migration',
 -]
 -
--tests_sparc_system_thorough = [
--  'sparc_replay',
--  'sparc_sun4m',
+-tests_alpha_system_thorough = [
+-  'alpha_clipper',
+-  'alpha_replay',
 -]
 -
--tests_sparc64_system_quick = [
--  'sparc64_migration',
--]
--
--tests_sparc64_system_thorough = [
--  'sparc64_sun4u',
--  'sparc64_tuxrun',
--]
--
- tests_x86_64_system_quick = [
-   'cpu_queries',
-   'mem_addr_space',
-diff --git a/tests/functional/sparc/meson.build b/tests/functional/sparc/meson.build
-new file mode 100644
-index 00000000000..88732becd81
---- /dev/null
-+++ b/tests/functional/sparc/meson.build
-@@ -0,0 +1,10 @@
-+# SPDX-License-Identifier: GPL-2.0-or-later
-+
-+tests_sparc_system_quick = [
-+  'migration',
-+]
-+
-+tests_sparc_system_thorough = [
-+  'replay',
-+  'sun4m',
-+]
-diff --git a/tests/functional/test_sparc_migration.py b/tests/functional/sparc/test_migration.py
-similarity index 100%
-rename from tests/functional/test_sparc_migration.py
-rename to tests/functional/sparc/test_migration.py
-diff --git a/tests/functional/test_sparc_replay.py b/tests/functional/sparc/test_replay.py
-similarity index 100%
-rename from tests/functional/test_sparc_replay.py
-rename to tests/functional/sparc/test_replay.py
-diff --git a/tests/functional/test_sparc_sun4m.py b/tests/functional/sparc/test_sun4m.py
-similarity index 100%
-rename from tests/functional/test_sparc_sun4m.py
-rename to tests/functional/sparc/test_sun4m.py
-diff --git a/tests/functional/sparc64/meson.build b/tests/functional/sparc64/meson.build
-new file mode 100644
-index 00000000000..2e04e7d4f3d
---- /dev/null
-+++ b/tests/functional/sparc64/meson.build
-@@ -0,0 +1,10 @@
-+# SPDX-License-Identifier: GPL-2.0-or-later
-+
-+tests_sparc64_system_quick = [
-+  'migration',
-+]
-+
-+tests_sparc64_system_thorough = [
-+  'sun4u',
-+  'tuxrun',
-+]
-diff --git a/tests/functional/test_sparc64_migration.py b/tests/functional/sparc64/test_migration.py
-similarity index 100%
-rename from tests/functional/test_sparc64_migration.py
-rename to tests/functional/sparc64/test_migration.py
-diff --git a/tests/functional/test_sparc64_sun4u.py b/tests/functional/sparc64/test_sun4u.py
-similarity index 100%
-rename from tests/functional/test_sparc64_sun4u.py
-rename to tests/functional/sparc64/test_sun4u.py
-diff --git a/tests/functional/test_sparc64_tuxrun.py b/tests/functional/sparc64/test_tuxrun.py
-similarity index 100%
-rename from tests/functional/test_sparc64_tuxrun.py
-rename to tests/functional/sparc64/test_tuxrun.py
+ tests_arm_system_quick = [
+   'arm_migration',
+ ]
 -- 
 2.47.2
 

@@ -4,111 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13389CA1013
-	for <qemu-arm@archiver.kernel.org>; Fri,  5 Sep 2025 09:51:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88149CA1013
+	for <qemu-arm@archiver.kernel.org>; Fri,  5 Sep 2025 09:58:32 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uuT6B-0005us-I5; Fri, 05 Sep 2025 05:51:15 -0400
+	id 1uuTCw-0001fp-5E; Fri, 05 Sep 2025 05:58:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uuT6A-0005uM-Lc
- for qemu-arm@nongnu.org; Fri, 05 Sep 2025 05:51:14 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1uuTCt-0001eu-N0
+ for qemu-arm@nongnu.org; Fri, 05 Sep 2025 05:58:11 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uuT65-0006nf-U2
- for qemu-arm@nongnu.org; Fri, 05 Sep 2025 05:51:13 -0400
+ id 1uuTCq-0007bA-33
+ for qemu-arm@nongnu.org; Fri, 05 Sep 2025 05:58:11 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1757065866;
+ s=mimecast20190719; t=1757066283;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=y1vq3EHGQZY9x5nXDExeSo6nYDb33OxxqgtOv3NzN7g=;
- b=PPX13U+HSnIQapT548du7u1cMquPtJuPRvCj1x67lq+/GRs2jFelbs1I5jyisugCVQBGxu
- JMRXymFMXK+2ruPvZUgRdcILyHNk4+f9ipAw9/5+7yCOouY1RxCZPrPsBT+ETpnFGmz5Gy
- o8er9FAvXu7Q8wkrsqkNkeOZU5GvQ8Q=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=qsUQ1LMSridGG2fTjqZ7lAQ7dbV+z1PP8SvETu6DOIc=;
+ b=T6B7cHhECDLirDKLyAMjmzCq05c0rNCUOmvmoIgYLoGnmAcT35AVAWFBIIqvFQ0WdwoXux
+ t14KfSGRgMJnxeWfGLpiFCjUaKue+UjrcLEAwzg4etGwPO04mUwWgDcWWCQ7METJEufG+c
+ ZpD1RA6n0m5ZBY4e1zIcVGQ4xhj68lw=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-460-HxbK8GIeMVWSxzuYQCJtFw-1; Fri, 05 Sep 2025 05:51:04 -0400
-X-MC-Unique: HxbK8GIeMVWSxzuYQCJtFw-1
-X-Mimecast-MFC-AGG-ID: HxbK8GIeMVWSxzuYQCJtFw_1757065864
-Received: by mail-wm1-f70.google.com with SMTP id
- 5b1f17b1804b1-45cb6d8f42bso16267525e9.2
- for <qemu-arm@nongnu.org>; Fri, 05 Sep 2025 02:51:04 -0700 (PDT)
+ us-mta-111-la50CuiXOvKiiQ4-GpeVFQ-1; Fri, 05 Sep 2025 05:58:02 -0400
+X-MC-Unique: la50CuiXOvKiiQ4-GpeVFQ-1
+X-Mimecast-MFC-AGG-ID: la50CuiXOvKiiQ4-GpeVFQ_1757066281
+Received: by mail-wr1-f69.google.com with SMTP id
+ ffacd0b85a97d-3df9f185b82so923655f8f.1
+ for <qemu-arm@nongnu.org>; Fri, 05 Sep 2025 02:58:02 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1757065863; x=1757670663;
+ d=1e100.net; s=20230601; t=1757066281; x=1757671081;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:reply-to:user-agent:mime-version:date
  :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=y1vq3EHGQZY9x5nXDExeSo6nYDb33OxxqgtOv3NzN7g=;
- b=QjqIEvbPXh1/rfmPg8v4PPtF0Ye8SESMszKVvq7LMjLeCQtIadNzrMWy8EfLDk5jyt
- 2j+WplLiImGvqhA9r9565behNRk13XPRjHIra24EQWIizXtcRpvLW5Vk93bzdBaI73dV
- 9+jvZvdtPx+AxYWb9eZp0DVtU07Fzm7wuoY049K4QXBhJZ3KT4P+5zl48lWi+EBMNabd
- SoEpQAo+RZ+ZwrDB3d7NpnnOMfoSDakN3XmhpllxNpBbnQ4fJUIgURwTfsPokafrMtYc
- QQz8N9K2iPwk17k34tY7colIYx56hmvVWhk+jKNNQ27Dv80OzD5+co5QQNxl85JRFxml
- VgXg==
-X-Gm-Message-State: AOJu0YwqJYVMhxYjGafDsLOWBNPc+bpq0MavtlcD3ZjqRC2UetI9g7lc
- XUCjS9xOJCPQ7LXANty6hrMbZ8c7HyFNhW4G9Mj7KfUi680tVdKm/Hwy6KVDljGUePZA+ftQ4HN
- tTELpTeFHYeM1Zd8YF8VT//hUgFZCg/42KWoM5huhYYfYJkpZ2s1U7Q==
-X-Gm-Gg: ASbGncuk39AfBV7mrWCW8h/wYPazClAHYTBRne7djoTwLBW4ZTS5hY/CLrNf8VZvwkG
- xai31uX87hnp/2YR4Y9FceHE065B8E2ng/vuEUSTyc6SYjL2D0tN6lSncBcwWZ6lpe78T913C+N
- SEiMSNdRh7bxyU7Dte2NYwL8O/M2oqwx+Vnsk+n1xmoO5532T8K8lFlM7mpcBeibxVvdlT81Vak
- Pb55okwFg9DfJkRa8guOo2+sgo+wB+KXQ7/GnxU8pBhr//P05sSdNVJfVG6frO+VCxU7OFsla5W
- Yv6lheKNx9/xniYbPURA1wRVi0YQ80nzQ4Ec2t0lLLaCespbjVidi4r65K6W09P5PxYDbF5MZiN
- 0OrokLpvKcoc=
-X-Received: by 2002:a05:600c:3502:b0:45b:9291:320d with SMTP id
- 5b1f17b1804b1-45ddbdd6c1emr4396435e9.31.1757065863466; 
- Fri, 05 Sep 2025 02:51:03 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGlJCfZ37T0pYOnIrkKm1SPfQDFb71IAil+eiY545iqvvc8QDtKUVSTSVKkVbR6UzCgp1CggQ==
-X-Received: by 2002:a05:600c:3502:b0:45b:9291:320d with SMTP id
- 5b1f17b1804b1-45ddbdd6c1emr4396105e9.31.1757065862907; 
- Fri, 05 Sep 2025 02:51:02 -0700 (PDT)
+ bh=qsUQ1LMSridGG2fTjqZ7lAQ7dbV+z1PP8SvETu6DOIc=;
+ b=u2Z4HUwp/OwfCXN9qaf9oLT8x1o7kfA0WxQqZJNIwgUDG9iKnF9BbMY/CsI4sYjy0G
+ J5oYccFUSvTbUrt8NeYNuWVuQykiLRBG4UsrwZVe+ZqSryJTCxS+cwE1zvm0RO2VOKzi
+ 6axCnyBom0XAv7mBQ5eRlOyArwPteual3VlJMO5yNsmPPkzqsq38KGMYun6yCW6IU3rv
+ 2vQXnSkH82V2PWqTJctUZOOX2/9Em08VMhQOK/CNOetlXFDAVnrPLvO0zvuolKdp49BO
+ YReUZiqvYsQKlAWb3RIacrBxV8vgqLk48aa0BTVHU7kQoiFcoUHyE7XyyARkmAwyKR64
+ YVvQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUo1Ym1jKbXeoQUMVQ99On/p17P0t47wwEYHtT/kLjWBQbzGcseC9aZBPp28zIopqFdo7KunGvAXQ==@nongnu.org
+X-Gm-Message-State: AOJu0YwYmYbxbD+DfRS0kOnT1oeqyDBICIIrSE085y+HB6HY+guz8lD5
+ CvvFDzS2Iow7+vX+HohGlJxThbUyWRgUF0EFeU8HCKrOJNsXS2eEne8z9Ceb9Nh1HhqXUIIpiEh
+ ZzhXqCKrAhBBQ7/chAQDIT2Du/EKkLIbUuAnw0Jn/A1DqgRRuPYeaVg==
+X-Gm-Gg: ASbGnctSax+vOqPq7qxwWVB42hEdx6jSQ749FrHl9s2ygh8JMBZYFZrBqe0GDGi9Ia0
+ VkIhoJfQmFEAIgVq9WEOhOUFFw3+NF9Uzw60CUWXqSwp89qOmQlatrh3jXmlzT+9A8ewKKFEAcK
+ DIBXd1Z/G7csyw5gasmd9O+YPBuNJmVCncVBcKR+HyESXSJoJAoSLQsxH7UaZgS7DuVq4ij2d4G
+ QbQH9JmIV97xm0vBzKB4gF+SGa7Eau/hfI+c/2VTpCGCDEOCGsKd+ieVOQg/9CsqpLhc2onb7EP
+ PZa6zIoviFHoTdGG5zZvs31rP+LMotCyAqljjfILOq6mCUUTsSiJ1oqQzPcCEmB2Us4yEmeFqEQ
+ ZFXREy4k6mVU=
+X-Received: by 2002:a05:600c:a47:b0:458:bc3f:6a7b with SMTP id
+ 5b1f17b1804b1-45b85571260mr174585125e9.18.1757066281313; 
+ Fri, 05 Sep 2025 02:58:01 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IE/oQOw6D7kr5zPOJhs/mWByAYxEtGYy4q3TQfvcv9jKGWW7RGVIOjhfqD2NhE89631nD9H6w==
+X-Received: by 2002:a05:600c:a47:b0:458:bc3f:6a7b with SMTP id
+ 5b1f17b1804b1-45b85571260mr174584795e9.18.1757066280887; 
+ Fri, 05 Sep 2025 02:58:00 -0700 (PDT)
 Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
  ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-45b93fae643sm168288405e9.3.2025.09.05.02.51.01
+ 5b1f17b1804b1-45b9a6ecfafsm164487515e9.21.2025.09.05.02.57.59
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 05 Sep 2025 02:51:02 -0700 (PDT)
-Message-ID: <0eb54880-e6b5-4eb8-b07d-21ca80bd00b4@redhat.com>
-Date: Fri, 5 Sep 2025 11:51:01 +0200
+ Fri, 05 Sep 2025 02:58:00 -0700 (PDT)
+Message-ID: <2bc9b909-e25b-4b4d-b4db-0cf1d10a339b@redhat.com>
+Date: Fri, 5 Sep 2025 11:57:59 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH v3 09/15] hw/arm/smmuv3-accel: Support nested STE
- install/uninstall support
-To: Nicolin Chen <nicolinc@nvidia.com>, skolothumtho@nvidia.com
-Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "jgg@nvidia.com" <jgg@nvidia.com>, "ddutile@redhat.com"
- <ddutile@redhat.com>, "berrange@redhat.com" <berrange@redhat.com>,
- "nathanc@nvidia.com" <nathanc@nvidia.com>,
- "mochs@nvidia.com" <mochs@nvidia.com>,
- "smostafa@google.com" <smostafa@google.com>, Linuxarm <linuxarm@huawei.com>,
- "Wangzhou (B)" <wangzhou1@hisilicon.com>,
- jiangkunkun <jiangkunkun@huawei.com>,
- Jonathan Cameron <jonathan.cameron@huawei.com>,
- "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>,
- "zhenzhong.duan@intel.com" <zhenzhong.duan@intel.com>,
- "shameerkolothum@gmail.com" <shameerkolothum@gmail.com>
+Subject: Re: [RFC PATCH v3 10/15] hw/arm/smmuv3-accel: Allocate a vDEVICE
+ object for device
+To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, jgg@nvidia.com, nicolinc@nvidia.com,
+ ddutile@redhat.com, berrange@redhat.com, nathanc@nvidia.com,
+ mochs@nvidia.com, smostafa@google.com, linuxarm@huawei.com,
+ wangzhou1@hisilicon.com, jiangkunkun@huawei.com,
+ jonathan.cameron@huawei.com, zhangfei.gao@linaro.org,
+ zhenzhong.duan@intel.com, shameerkolothum@gmail.com
 References: <20250714155941.22176-1-shameerali.kolothum.thodi@huawei.com>
- <20250714155941.22176-10-shameerali.kolothum.thodi@huawei.com>
- <aHbgc8LXuuuJ/cz0@Asurada-Nvidia>
- <6110ab250e844af9982dddb230fb8707@huawei.com>
+ <20250714155941.22176-11-shameerali.kolothum.thodi@huawei.com>
 From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <6110ab250e844af9982dddb230fb8707@huawei.com>
+In-Reply-To: <20250714155941.22176-11-shameerali.kolothum.thodi@huawei.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: sQLh_GSv0jbJRTsjb9a3wtAQZEcLF8ySjfgciKpU7Ns_1757065864
+X-Mimecast-MFC-PROC-ID: Z4Dr53cNTaextrJM6gKYRDrDX0n7Y80n33usnppIfdo_1757066281
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124;
+Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -134,83 +127,111 @@ Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+Hi Shameer,
 
-
-On 7/16/25 10:36 AM, Shameerali Kolothum Thodi wrote:
+On 7/14/25 5:59 PM, Shameer Kolothum wrote:
+> From: Nicolin Chen <nicolinc@nvidia.com>
 >
->> -----Original Message-----
->> From: Nicolin Chen <nicolinc@nvidia.com>
->> Sent: Wednesday, July 16, 2025 12:13 AM
->> To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
->> Cc: qemu-arm@nongnu.org; qemu-devel@nongnu.org;
->> eric.auger@redhat.com; peter.maydell@linaro.org; jgg@nvidia.com;
->> ddutile@redhat.com; berrange@redhat.com; nathanc@nvidia.com;
->> mochs@nvidia.com; smostafa@google.com; Linuxarm
->> <linuxarm@huawei.com>; Wangzhou (B) <wangzhou1@hisilicon.com>;
->> jiangkunkun <jiangkunkun@huawei.com>; Jonathan Cameron
->> <jonathan.cameron@huawei.com>; zhangfei.gao@linaro.org;
->> zhenzhong.duan@intel.com; shameerkolothum@gmail.com
->> Subject: Re: [RFC PATCH v3 09/15] hw/arm/smmuv3-accel: Support nested
->> STE install/uninstall support
->>
->> On Mon, Jul 14, 2025 at 04:59:35PM +0100, Shameer Kolothum wrote:
->>> +static void
->>> +smmuv3_accel_ste_range(gpointer key, gpointer value, gpointer
->> user_data)
->>> +{
->>> +    SMMUDevice *sdev = (SMMUDevice *)key;
->>> +    uint32_t sid = smmu_get_sid(sdev);
->>> +    SMMUSIDRange *sid_range = (SMMUSIDRange *)user_data;
->>> +
->>> +    if (sid >= sid_range->start && sid <= sid_range->end) {
->>> +        SMMUv3State *s = sdev->smmu;
->>> +        SMMUState *bs = &s->smmu_state;
->>> +
->>> +        smmuv3_accel_install_nested_ste(bs, sdev, sid);
->>> +    }
->>> +}
->>> +
->>> +void
->>> +smmuv3_accel_install_nested_ste_range(SMMUState *bs,
->> SMMUSIDRange *range)
->>> +{
->>> +    if (!bs->accel) {
->>> +        return;
->>> +    }
->>> +
->>> +    g_hash_table_foreach(bs->configs, smmuv3_accel_ste_range, range);
->> This will not work correctly?
->>
->> The bs->configs is a cache that gets an entry inserted to when a
->> config is fetched via smmuv3_get_config(), which gets invoked by
->> smmuv3_notify_iova() and smmuv3_translate() only.
->>
->> But CMDQ_OP_CFGI_ALL can actually happen very early, e.g. Linux
->> driver does that in the probe() right after SMMU CMDQ is enabled,
->> at which point neither smmuv3_notify_iova nor smmuv3_translate
->> could ever get invoked, meaning that the g_hash_table is empty.
->>
->> Without the acceleration, this foreach works because vSMMU does
->> not need to do anything since the cache is indeed empty.
->>
->> But, with accel, it must call smmuv3_accel_install_nested_ste().
-> Ok. The only place I can see CMDQ_OP_CFGI_ALL get invoked by Linux
-Easy to say but I think we shall rather look at what the spec mandates
-and not what the Linux driver does ;-)
+> Allocate and associate a vDEVICE object for the Guest device
+> with the vIOMMU. This will help the kernel to do the
+> vSID --> sid translation whenever required (eg: device specific
+I am not sure I get this. Do you mean translation between the vSID and
+the pSID?
+
+> invalidations).
+>
+> Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
+> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+> ---
+>  hw/arm/smmuv3-accel.c    | 25 +++++++++++++++++++++++++
+>  hw/arm/smmuv3-accel.h    |  1 +
+>  include/system/iommufd.h |  5 +++++
+>  3 files changed, 31 insertions(+)
+>
+> diff --git a/hw/arm/smmuv3-accel.c b/hw/arm/smmuv3-accel.c
+> index 74bf20cfaf..f1584dd775 100644
+> --- a/hw/arm/smmuv3-accel.c
+> +++ b/hw/arm/smmuv3-accel.c
+> @@ -93,6 +93,23 @@ void smmuv3_accel_install_nested_ste(SMMUState *bs, SMMUDevice *sdev, int sid)
+>          return;
+>      }
+>  
+> +    if (!accel_dev->vdev && accel_dev->idev) {
+> +        IOMMUFDVdev *vdev;
+> +        uint32_t vdev_id;
+> +        SMMUViommu *viommu = accel_dev->viommu;
+> +
+> +        iommufd_backend_alloc_vdev(viommu->core.iommufd, accel_dev->idev->devid,
+> +                                   viommu->core.viommu_id, sid, &vdev_id,
+> +                                   &error_abort);
+error_abort vs error handling
+> +        vdev = g_new(IOMMUFDVdev, 1);
+> +        vdev->vdev_id = vdev_id;
+> +        vdev->dev_id = sid;
+> +        accel_dev->vdev = vdev;
+> +        host_iommu_device_iommufd_attach_hwpt(accel_dev->idev,
+> +                                              accel_dev->viommu->bypass_hwpt_id,
+> +                                              &error_abort);
+> +    }
+> +
+>      ret = smmu_find_ste(sdev->smmu, sid, &ste, &event);
+>      if (ret) {
+>          error_report("failed to find STE for sid 0x%x", sid);
+> @@ -287,6 +304,7 @@ static void smmuv3_accel_unset_iommu_device(PCIBus *bus, void *opaque,
+>      SMMUPciBus *sbus = g_hash_table_lookup(bs->smmu_pcibus_by_busptr, bus);
+>      SMMUv3AccelDevice *accel_dev;
+>      SMMUViommu *viommu;
+> +    IOMMUFDVdev *vdev;
+>      SMMUDevice *sdev;
+>  
+>      if (!sbus) {
+> @@ -310,6 +328,13 @@ static void smmuv3_accel_unset_iommu_device(PCIBus *bus, void *opaque,
+>      trace_smmuv3_accel_unset_iommu_device(devfn, smmu_get_sid(sdev));
+>  
+>      viommu = s->s_accel->viommu;
+> +    vdev = accel_dev->vdev;
+> +    if (vdev) {
+> +        iommufd_backend_free_id(viommu->iommufd, vdev->vdev_id);
+> +        g_free(vdev);
+> +        accel_dev->vdev = NULL;
+> +    }
+> +
+>      if (QLIST_EMPTY(&viommu->device_list)) {
+>          iommufd_backend_free_id(viommu->iommufd, viommu->bypass_hwpt_id);
+>          iommufd_backend_free_id(viommu->iommufd, viommu->abort_hwpt_id);
+> diff --git a/hw/arm/smmuv3-accel.h b/hw/arm/smmuv3-accel.h
+> index 06e81b630d..21028e60c8 100644
+> --- a/hw/arm/smmuv3-accel.h
+> +++ b/hw/arm/smmuv3-accel.h
+> @@ -40,6 +40,7 @@ typedef struct SMMUv3AccelDevice {
+>      HostIOMMUDeviceIOMMUFD *idev;
+>      SMMUS1Hwpt  *s1_hwpt;
+>      SMMUViommu *viommu;
+> +    IOMMUFDVdev  *vdev;
+>      QLIST_ENTRY(SMMUv3AccelDevice) next;
+>  } SMMUv3AccelDevice;
+>  
+> diff --git a/include/system/iommufd.h b/include/system/iommufd.h
+> index b7ad2cf10c..8de559d448 100644
+> --- a/include/system/iommufd.h
+> +++ b/include/system/iommufd.h
+> @@ -44,6 +44,11 @@ typedef struct IOMMUFDViommu {
+>      uint32_t viommu_id;
+>  } IOMMUFDViommu;
+>  
+> +typedef struct IOMMUFDVdev {
+> +    uint32_t vdev_id;
+> +    uint32_t dev_id;
+> +} IOMMUFDVdev;
+Given the jungle of devices and dev_ids we have, I think we need to have
+either proper doc comments explaining what the objects abstracts and role
 
 Thanks
 
 Eric
-> kernel is during arm_smmu_device_reset() and that is to clear all.
-> But I am not sure we will have any valid STEs at that time. Just curious,
-> are you seeing any issues with this at the moment?
+> +
+>  bool iommufd_backend_connect(IOMMUFDBackend *be, Error **errp);
+>  void iommufd_backend_disconnect(IOMMUFDBackend *be);
 >  
->> So, I think this should foreach the viommu->device_list instead.
-> But agree. Using device_list is more appropriate unless we cache the 
-> configs during each install_netsed_ste() path.
->
-> Thanks,
-> Shameer 
->
 
 

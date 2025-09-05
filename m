@@ -4,103 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65A10CA0FED
-	for <qemu-arm@archiver.kernel.org>; Fri,  5 Sep 2025 13:21:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92CB6CA0FED
+	for <qemu-arm@archiver.kernel.org>; Fri,  5 Sep 2025 14:22:34 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uuWMv-0002Rd-Qb; Fri, 05 Sep 2025 09:20:46 -0400
+	id 1uuXJn-0007WP-11; Fri, 05 Sep 2025 10:21:35 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uuWMs-0002QG-FT
- for qemu-arm@nongnu.org; Fri, 05 Sep 2025 09:20:42 -0400
+ (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1uuXJl-0007Vl-Um
+ for qemu-arm@nongnu.org; Fri, 05 Sep 2025 10:21:33 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uuWMn-0004PB-O2
- for qemu-arm@nongnu.org; Fri, 05 Sep 2025 09:20:42 -0400
+ (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1uuXJc-0008F0-6s
+ for qemu-arm@nongnu.org; Fri, 05 Sep 2025 10:21:32 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1757078434;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
+ s=mimecast20190719; t=1757082080;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=mf+KmcKug5eYQgMnjD5Ofc5b5jhpvyBPAd74jlWDiv0=;
- b=OIVaxC+HG7pZxEJbghe8m8V8zaa1mwy7CTDP4wy4ED7HdyeJokvo3s5fW+ohRKcGLWyIXy
- fxB/cnJRIvb4h8BmKkMldw7+Az84Dmm4ebGG4b49Q8jtY92bf/YvbVdEsBftC+KAXuFGWk
- 0qJqj6BNkIKz6Y/S2J1cT+vjtq+3x0g=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=eUnAleF54zHWLtK6x5C95lNix9wdJClggXJb7jgC2Dc=;
+ b=S7gvPSUUS/O1AKYR4yyRARnIThHWWfnjevSvnZYp2k0SzWVBNU1Jlo4jjj9gy6VkOWHRiK
+ 8l6NjqnTQdXim3DwFJXYtGA11iaFnIN+zIhbBeoRPbOjCRWIzqCxuTEqit9ACnVgifRRZk
+ RTJNPIXvsoa3uKwuWXy1hWsSSS/d8QA=
+Received: from mail-qt1-f199.google.com (mail-qt1-f199.google.com
+ [209.85.160.199]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-389-twZxCTQzN3-OR7FjAw6sVA-1; Fri, 05 Sep 2025 09:20:33 -0400
-X-MC-Unique: twZxCTQzN3-OR7FjAw6sVA-1
-X-Mimecast-MFC-AGG-ID: twZxCTQzN3-OR7FjAw6sVA_1757078432
-Received: by mail-wr1-f72.google.com with SMTP id
- ffacd0b85a97d-3df2f4aedd1so1446377f8f.3
- for <qemu-arm@nongnu.org>; Fri, 05 Sep 2025 06:20:33 -0700 (PDT)
+ us-mta-693-s9AhELWZMJCNLV-Uat0HMA-1; Fri, 05 Sep 2025 10:21:19 -0400
+X-MC-Unique: s9AhELWZMJCNLV-Uat0HMA-1
+X-Mimecast-MFC-AGG-ID: s9AhELWZMJCNLV-Uat0HMA_1757082079
+Received: by mail-qt1-f199.google.com with SMTP id
+ d75a77b69052e-4b31ba1392fso61143411cf.2
+ for <qemu-arm@nongnu.org>; Fri, 05 Sep 2025 07:21:19 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1757078432; x=1757683232;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=mf+KmcKug5eYQgMnjD5Ofc5b5jhpvyBPAd74jlWDiv0=;
- b=XATdreXXaG+7D/5salMYu1IzxF7GKPVFeeoyY1eF+Oftz84r9O9RQimMg1fg33Ui/f
- d08zU9RI9hgze2kmOaQ4cmTYlCulqfLLmR1OtF1+jZ2ZGa86HbRJidw+hqywHWt8/MqN
- EscnHnIPzBHpyA306fLIcbcf2lEm+0SsRR1h4azLiCtTTCM9By3x3csC1BgACEeGQV0e
- Q2nQ5n7RBrvlPUEiEnoP6R81sw7CBA0iiDxQjrWxJh114w4X6RePXr3v+s29NcLwR0Vv
- IXHD3eclpwpaZ8RSzoZTIi3+gekCU+F8j0YoQWN2RjQtxX6UjH2MaEZsEV++Em4KrCoz
- XDvQ==
-X-Gm-Message-State: AOJu0Yyfwx3zQ+GiOxnhiyzo0mIMUEEJIin00ve6HIcin52O0MIvAQLr
- +WV4fmHAL5XROH/y1X/6HPw1BjA7jxnU4thUg5Pge8Kud+7st7pS1ZnYtkLmdE6BYB1cleQswxI
- 2KgDW+n6O4GpEDu2F3VhYnjq4Nc7UOjUd1JpQg4rCE7i8jM63IQbcA2c7k5DjGUqzbJYY6qVB2X
- FcEi2xDmBSdvYYsqcxtNyLDRnJRFX503edkAcyMOEhIGI=
-X-Gm-Gg: ASbGncsBul7DTR8l9vonlcQbbmg1UNXNDY0ZZJauJSuoD2vgAn3o1mMbRvCMbiBETyC
- k+GTInuNwruQGyF5YplD+Jgr877NrcUWRCSCVxU82QgyCs6FUFVxNqRfg/PT89ynAAQkiFm/+El
- /y0OlDwtfSx880j8rWVN/WAmDYSp8z/3PNt3akNEJQCiZhahUTv+5IYjVQ4MNeVoxmLDhwB7xm9
- wLq/8HEudvBU2jkUaT/ulRmPhzB6zeECk8NKkArA4LoTMebwjTyIhGJcVeJzuiageVT5OGcQI6x
- c0HKRu6APqGHqTDESIBaKfhGweRzoo4T0tuUEmqqe5aGQZFDGEWu69wqYyam4gTj6ZdN0ZAnrh6
- OKLEyv2JAd4A=
-X-Received: by 2002:a5d:64c3:0:b0:3e4:d981:e312 with SMTP id
- ffacd0b85a97d-3e4d981e84amr880981f8f.62.1757078431665; 
- Fri, 05 Sep 2025 06:20:31 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGrysbBh3yhS6icriu81WND2TJ96lt3L71bGR/2ZvUHHiVqxPm0gffUWuGVAPjkUj20UmddLA==
-X-Received: by 2002:a5d:64c3:0:b0:3e4:d981:e312 with SMTP id
- ffacd0b85a97d-3e4d981e84amr880930f8f.62.1757078431014; 
- Fri, 05 Sep 2025 06:20:31 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3d7ac825b88sm18510354f8f.7.2025.09.05.06.20.29
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 05 Sep 2025 06:20:30 -0700 (PDT)
-Message-ID: <e2a41acf-1700-4c92-937b-53993c7e25c0@redhat.com>
-Date: Fri, 5 Sep 2025 15:20:28 +0200
+ d=1e100.net; s=20230601; t=1757082079; x=1757686879;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=eUnAleF54zHWLtK6x5C95lNix9wdJClggXJb7jgC2Dc=;
+ b=fO/L4+BP36Og+uDjt+cknGqOmeUBV8nvc1BjGlQnQaS+He9fEbZ1sJ59Vu16lVxj84
+ Zfbj7cawUMcljHHlFDO282jkMQoVeVNaHcrF2TUUeE29cNB29dT8k4lFU1QJqzHUWMtb
+ ZbMXTfzfQ+WEuwqHOpIZJkNtcphI9S4RbsSgDsBJg6zufBwMFM0KnrXf1iKRtIR/kF+S
+ gCjQehowN+yV+2rs4tg1KiB6hO0AmvXcT9jBnOxJmnwj7ATWT+Zfh+QtS5s6Ceu/3Tgz
+ ql3prqOY3q68ANDfc0nd3SnT7Md1BVmXO/+ppBkPjbGMKEAkiopWn6+Rk1EQ5GnKnDCd
+ Pwpg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVkLK4bPwBBTnQAvs4G3RRcaZdrVsPdDDthZLA+KrHeETsPnWrRDe10Q3jrFTzFnxYX0tZZ7FcsQg==@nongnu.org
+X-Gm-Message-State: AOJu0Ywdveyt8aPi7328sER5nzQ2bq63+gDqj+5so9icmtpIA7tgvnNn
+ hyfPcBG1eXu6ZzJobg9PrEWri7Hdpd2NdDFaHlukKREbJ9aZUJx9uAqXUt1cFr+xAjI2NsMlK2t
+ cZT/MlPTFzC+dnLMzmYPeOs0lygP1K+G60RoSzgLo0T2dXbeZdFnfKw==
+X-Gm-Gg: ASbGnct6b6fCR0nu3ukpH5QZFgCUQ3KSdQ4XHp1AiPLdOBH5Pg+5SNrqoq6laU7S3Oo
+ rkBFm/LsLdPCcEzgYZYX5LIW08pFe1F4e80vRxgLlJhvbeLYT4FqaeCsAozo96c7eIvpN3rtcWa
+ UMEMzvjg0RPRg0toBBlf5y+Z5uq7tYLjSmKcfQ+330f9UEGCZPEJ+gYW3/EER8aHRJ0pjVhjXvk
+ Clcz2GRzUyWiqeQPl+IQCyCLYPXtKCZHQRxD0Yk50IJOuUPfVAcPgsXOoWuEoeweVe6OkZ5peOw
+ BB2kiJQnBtfFoMzMIjkQxBGZnRhZu9pu
+X-Received: by 2002:a05:622a:47c4:b0:4b3:4c51:643e with SMTP id
+ d75a77b69052e-4b34c516d88mr151826941cf.68.1757082078245; 
+ Fri, 05 Sep 2025 07:21:18 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEapsx7hdiwyAtz86wiBs5ovYT7iicwjCRqOzxZu4Gh3/sDmYc1nsrF6JpCKn3Fs+++gIlX/Q==
+X-Received: by 2002:a05:622a:47c4:b0:4b3:4c51:643e with SMTP id
+ d75a77b69052e-4b34c516d88mr151826171cf.68.1757082077635; 
+ Fri, 05 Sep 2025 07:21:17 -0700 (PDT)
+Received: from x1.local ([174.89.135.121]) by smtp.gmail.com with ESMTPSA id
+ d75a77b69052e-4b48f780b9fsm45731361cf.41.2025.09.05.07.21.15
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 05 Sep 2025 07:21:16 -0700 (PDT)
+Date: Fri, 5 Sep 2025 10:21:03 -0400
+From: Peter Xu <peterx@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: CJ Chen <cjchen@igel.co.jp>, qemu-devel@nongnu.org,
+ qemu-block@nongnu.org, qemu-riscv@nongnu.org, qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Keith Busch <kbusch@kernel.org>, Klaus Jensen <its@irrelevant.dk>,
+ Jesper Devantier <foss@defmacro.it>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Weiwei Li <liwei1518@gmail.com>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ Tyrone Ting <kfting@nuvoton.com>, Hao Wu <wuhaotsh@google.com>,
+ Max Filippov <jcmvbkbc@gmail.com>, David Hildenbrand <david@redhat.com>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
+ Tomoyuki Hirose <hrstmyk811m@gmail.com>
+Subject: Re: [PATCH RFC v2 9/9] tests/qtest: add test for memory region access
+Message-ID: <aLrxz-ULSP3rrm8p@x1.local>
+References: <20250822092410.25833-1-cjchen@igel.co.jp>
+ <20250822092410.25833-10-cjchen@igel.co.jp>
+ <CAFEAcA-r5DdZj-+BxBkN+XqWJ3QrN6g+RshjShVoD-Zf1weYPg@mail.gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH v3 14/15] Read and validate host SMMUv3 feature bits
-To: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- Shameer Kolothum <skolothumtho@nvidia.com>
-Cc: peter.maydell@linaro.org, jgg@nvidia.com, nicolinc@nvidia.com,
- ddutile@redhat.com, berrange@redhat.com, nathanc@nvidia.com,
- mochs@nvidia.com, smostafa@google.com, linuxarm@huawei.com,
- wangzhou1@hisilicon.com, jiangkunkun@huawei.com,
- jonathan.cameron@huawei.com, zhangfei.gao@linaro.org,
- zhenzhong.duan@intel.com, shameerkolothum@gmail.com
-References: <20250714155941.22176-1-shameerali.kolothum.thodi@huawei.com>
- <20250714155941.22176-15-shameerali.kolothum.thodi@huawei.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20250714155941.22176-15-shameerali.kolothum.thodi@huawei.com>
+In-Reply-To: <CAFEAcA-r5DdZj-+BxBkN+XqWJ3QrN6g+RshjShVoD-Zf1weYPg@mail.gmail.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 7Rw0X-pNYprgO_uEyfzJk-RhqpmtTjPdYIIUdUbvn5k_1757078432
+X-Mimecast-MFC-PROC-ID: rq-wnl3lQrPOGgsQtdtCwqrLWZhsaKqUPe8iF7khQQc_1757082079
 X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=peterx@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -108,7 +107,7 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, T_SPF_TEMPERROR=0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -121,240 +120,121 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+On Mon, Sep 01, 2025 at 05:57:57PM +0100, Peter Maydell wrote:
+> On Fri, 22 Aug 2025 at 10:26, CJ Chen <cjchen@igel.co.jp> wrote:
+> >
+> > From: Tomoyuki Hirose <hrstmyk811m@gmail.com>
+> >
+> > This commit adds a qtest for accessing various memory regions. The
+> > qtest checks the correctness of handling the access to memory regions
+> > by using 'memaccess-testdev'.
+> >
+> > Signed-off-by: CJ Chen <cjchen@igel.co.jp>
+> > Co-developed-by: CJ Chen <cjchen@igel.co.jp>
+> > Reported-by: Tomoyuki Hirose <hrstmyk811m@gmail.com>
+> > ---
+> >  tests/qtest/memaccess-test.c | 597 +++++++++++++++++++++++++++++++++++
+> >  tests/qtest/meson.build      |   9 +
+> >  2 files changed, 606 insertions(+)
+> >  create mode 100644 tests/qtest/memaccess-test.c
+> 
+> There seems to be a lot of duplication in these test functions
+> (for instance, aren't all of little_b_valid(), little_b_invalid(),
+> big_b_valid() and big_b_invalid() identical?  and the various
+> _invalid functions seem to have if() blocks where the code in
+> the if and the else halves is the same).
 
+Besides that, I don't yet understand some of the test code on endianess,
+this might be relevant to the question I raised in the other reply.
 
-On 7/14/25 5:59 PM, Shameer Kolothum wrote:
-> From: Nicolin Chen <nicolinc@nvidia.com>
->
-> Not all fields in the SMMU IDR registers are meaningful for userspace.
-> Only the following fields can be used:
->
->   - IDR0: ST_LEVEL, TERM_MODEL, STALL_MODEL, TTENDIAN, CD2L, ASID16, TTF  
->   - IDR1: SIDSIZE, SSIDSIZE  
->   - IDR3: BBML, RIL  
->   - IDR5: VAX, GRAN64K, GRAN16K, GRAN4K
->
-> Use the relevant fields from these to check whether the host and emulated
-> SMMUv3 features are sufficiently aligned to enable accelerated SMMUv3
-> support.
->
-> To retrieve this information from the host, at least one vfio-pci device
-> must be assigned with "arm-smmuv3,accel=on" usage. Add a check to enforce
-> this.
->
-> Note:
->
-> ATS, PASID, and PRI features are currently not supported. Only devices
-> that do not require or make use of these features are expected to work.
->
-> Also, requiring at least one vfio-pci device to be cold-plugged
-> complicates hot-unplug and replug scenarios. For example, if all devices
-> behind the vSMMUv3 are unplugged after the guest boots, and a new device
-> is later hot-plugged into the same PCI bus, there is no guarantee that
-> the underlying host SMMUv3 will expose the same feature set as the one
-> originally used when the vSMMU was initialized.
->
-> Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
-> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-> ---
->  hw/arm/smmuv3-accel.c | 103 ++++++++++++++++++++++++++++++++++++++++++
->  hw/arm/smmuv3-accel.h |   5 ++
->  hw/arm/smmuv3.c       |   4 ++
->  hw/arm/trace-events   |   2 +-
->  4 files changed, 113 insertions(+), 1 deletion(-)
->
-> diff --git a/hw/arm/smmuv3-accel.c b/hw/arm/smmuv3-accel.c
-> index 1298b4f6d0..3b2f45bd88 100644
-> --- a/hw/arm/smmuv3-accel.c
-> +++ b/hw/arm/smmuv3-accel.c
-> @@ -23,6 +23,109 @@
->  #define SMMU_STE_VALID      (1ULL << 0)
->  #define SMMU_STE_CFG_BYPASS (1ULL << 3)
->  
-> +static int
-> +smmuv3_accel_host_hw_info(SMMUv3AccelDevice *accel_dev, uint32_t *data_type,
-> +                          uint32_t data_len, void *data)
-> +{
-> +    uint64_t caps;
-> +
-> +    if (!accel_dev || !accel_dev->idev) {
-> +        return -ENOENT;
-> +    }
-> +
-> +    return !iommufd_backend_get_device_info(accel_dev->idev->iommufd,
-> +                                            accel_dev->idev->devid,
-> +                                            data_type, data,
-> +                                            data_len, &caps, NULL);
-> +}
-> +
-> +void smmuv3_accel_init_regs(SMMUv3State *s)
-> +{
-> +    SMMUv3AccelState *s_accel = s->s_accel;
-> +    SMMUv3AccelDevice *accel_dev;
-> +    uint32_t data_type;
-> +    uint32_t val;
-> +    int ret;
-> +
-> +    if (s_accel->info.idr[0]) {
-> +        /* We already got this */
-what does it mean?
-> +        return;
-> +    }
-> +
-> +    if (!s_accel->viommu || QLIST_EMPTY(&s_accel->viommu->device_list)) {
-> +        error_report("For arm-smmuv3,accel=on case, atleast one cold-plugged "
-> +                     "vfio-pci dev needs to be assigned");
-to me this shall be relaxed. If you don't have any way to fetch HW info,
-you apply the defaults and if a device is hotplugged any mismatch would
-fail the hotplug
-> +        goto out_err;
-> +    }
-> +
-> +    accel_dev = QLIST_FIRST(&s_accel->viommu->device_list);
-> +    ret = smmuv3_accel_host_hw_info(accel_dev, &data_type,
-> +                                    sizeof(s_accel->info), &s_accel->info);
-> +    if (ret) {
-> +        error_report("Failed to get Host SMMU device info");
-> +        goto out_err;
-> +    }
-> +
-> +    if (data_type != IOMMU_HW_INFO_TYPE_ARM_SMMUV3) {
-> +        error_report("Wrong data type (%d) for Host SMMU device info",
-> +                     data_type);
-> +        goto out_err;
-> +    }
-> +
-> +    trace_smmuv3_accel_host_hw_info(s_accel->info.idr[0], s_accel->info.idr[1],
-> +                                    s_accel->info.idr[3], s_accel->info.idr[5]);
-> +    /*
-> +     * QEMU SMMUv3 supports both linear and 2-level stream tables. If host
-> +     * SMMUv3 supports only linear stream table, report that to Guest.
-> +     */
-> +    val = FIELD_EX32(s_accel->info.idr[0], IDR0, STLEVEL);
-> +    if (val < FIELD_EX32(s->idr[0], IDR0, STLEVEL)) {
-> +        s->idr[0] = FIELD_DP32(s->idr[0], IDR0, STLEVEL, val);
-> +    }
-> +
-> +    /*
-> +     * QEMU SMMUv3 supports little-endian support for translation table walks.
-> +     * If host SMMUv3 supports only big-endian, report error.
-> +     */
-> +    val = FIELD_EX32(s_accel->info.idr[0], IDR0, TTENDIAN);
-> +    if (val > FIELD_EX32(s->idr[0], IDR0, TTENDIAN)) {
-> +        error_report("Host SUUMU device translation table walk endianess "
-> +                     "not supported");
-> +        goto out_err;
-> +    }
-> +
-> +    /*
-> +     * QEMU SMMUv3 supports AArch64 Translation table format.
-> +     * If host SMMUv3 supports only AArch32, report error.
-> +     */
-> +    val = FIELD_EX32(s_accel->info.idr[0], IDR0, TTF);
-> +    if (val < FIELD_EX32(s->idr[0], IDR0, TTF)) {
-> +        error_report("Host SMMU device Translation table format not supported");
-> +        goto out_err;
-> +    }
-> +
-> +    /*
-> +     * QEMU SMMUv3 supports 4K/16K/64K translation granules. If host SMMUv3
-> +     * does't support any of these, report the supported ones only to Guest.
-> +     */
-> +    val = FIELD_EX32(s_accel->info.idr[5], IDR5, GRAN4K);
-> +    if (val < FIELD_EX32(s->idr[5], IDR5, GRAN4K)) {
-> +        s->idr[5] = FIELD_DP32(s->idr[5], IDR5, GRAN4K, val);
-> +    }
-> +    val = FIELD_EX32(s_accel->info.idr[5], IDR5, GRAN16K);
-> +    if (val < FIELD_EX32(s->idr[5], IDR5, GRAN16K)) {
-> +        s->idr[5] = FIELD_DP32(s->idr[5], IDR5, GRAN16K, val);
-> +    }
-> +    val = FIELD_EX32(s_accel->info.idr[5], IDR5, GRAN64K);
-> +    if (val < FIELD_EX32(s->idr[5], IDR5, GRAN64K)) {
-> +        s->idr[5] = FIELD_DP32(s->idr[5], IDR5, GRAN64K, val);
-for migration purpose we would definitively need to store those values
-in a VMState.
+Taking example of big_w_valid() test:
 
-Thanks
+static void big_w_valid(QTestState *qts, hwaddr offset)
+{
+    if (qtest_big_endian(qts)) {
+        qtest_writew(qts, base + offset + 0, 0x1100);                     <--- [1]
+        qtest_writew(qts, base + offset + 1, 0x3322);                     <--- [2]
+        qtest_writew(qts, base + offset + 2, 0x5544);
+        qtest_writew(qts, base + offset + 3, 0x7766);
+        qtest_writew(qts, base + offset + 4, 0x9988);
+        qtest_writew(qts, base + offset + 5, 0xbbaa);
+        qtest_writew(qts, base + offset + 6, 0xddcc);
+        qtest_writew(qts, base + offset + 7, 0xffee);
+        g_assert_cmphex(qtest_readw(qts, base + offset + 0), ==, 0x1133); <--- [3]
+        g_assert_cmphex(qtest_readw(qts, base + offset + 1), ==, 0x3355);
+        g_assert_cmphex(qtest_readw(qts, base + offset + 2), ==, 0x5577);
+        g_assert_cmphex(qtest_readw(qts, base + offset + 3), ==, 0x7799);
+        g_assert_cmphex(qtest_readw(qts, base + offset + 4), ==, 0x99bb);
+        g_assert_cmphex(qtest_readw(qts, base + offset + 5), ==, 0xbbdd);
+        g_assert_cmphex(qtest_readw(qts, base + offset + 6), ==, 0xddff);
+        g_assert_cmphex(qtest_readw(qts, base + offset + 7), ==, 0xffee);
+    } else {
+        qtest_writew(qts, base + offset + 0, 0x1100);                     <--- [4]
+        qtest_writew(qts, base + offset + 1, 0x3322);                     <--- [5]
+        qtest_writew(qts, base + offset + 2, 0x5544);
+        qtest_writew(qts, base + offset + 3, 0x7766);
+        qtest_writew(qts, base + offset + 4, 0x9988);
+        qtest_writew(qts, base + offset + 5, 0xbbaa);
+        qtest_writew(qts, base + offset + 6, 0xddcc);
+        qtest_writew(qts, base + offset + 7, 0xffee);
+        g_assert_cmphex(qtest_readw(qts, base + offset + 0), ==, 0x2200); <--- [6]
+        g_assert_cmphex(qtest_readw(qts, base + offset + 1), ==, 0x4422);
+        g_assert_cmphex(qtest_readw(qts, base + offset + 2), ==, 0x6644);
+        g_assert_cmphex(qtest_readw(qts, base + offset + 3), ==, 0x8866);
+        g_assert_cmphex(qtest_readw(qts, base + offset + 4), ==, 0xaa88);
+        g_assert_cmphex(qtest_readw(qts, base + offset + 5), ==, 0xccaa);
+        g_assert_cmphex(qtest_readw(qts, base + offset + 6), ==, 0xeecc);
+        g_assert_cmphex(qtest_readw(qts, base + offset + 7), ==, 0xffee);
+    }
+}
 
-Eric
-> +    }
-> +    return;
-> +
-> +out_err:
-> +    exit(1);
-> +}
-> +
->  static void
->  smmuv3_accel_dev_uninstall_nested_ste(SMMUv3AccelDevice *accel_dev, bool abort)
->  {
-> diff --git a/hw/arm/smmuv3-accel.h b/hw/arm/smmuv3-accel.h
-> index d06c9664ba..e1e99598b4 100644
-> --- a/hw/arm/smmuv3-accel.h
-> +++ b/hw/arm/smmuv3-accel.h
-> @@ -49,6 +49,7 @@ typedef struct SMMUv3AccelState {
->      MemoryRegion root;
->      MemoryRegion sysmem;
->      SMMUViommu *viommu;
-> +    struct iommu_hw_info_arm_smmuv3 info;
->  } SMMUv3AccelState;
->  
->  #if defined(CONFIG_ARM_SMMUV3) && defined(CONFIG_IOMMUFD)
-> @@ -60,6 +61,7 @@ bool smmuv3_accel_issue_cmd_batch(SMMUState *bs, SMMUCommandBatch *batch);
->  void smmuv3_accel_batch_cmd(SMMUState *bs, SMMUDevice *sdev,
->                             SMMUCommandBatch *batch, struct Cmd *cmd,
->                             uint32_t *cons);
-> +void smmuv3_accel_init_regs(SMMUv3State *s);
->  #else
->  static inline void smmuv3_accel_init(SMMUv3State *d)
->  {
-> @@ -83,6 +85,9 @@ static inline void smmuv3_accel_batch_cmd(SMMUState *bs, SMMUDevice *sdev,
->  {
->      return;
->  }
-> +static inline void smmuv3_accel_init_regs(SMMUv3State *s)
-> +{
-> +}
->  #endif
->  
->  #endif /* HW_ARM_SMMUV3_ACCEL_H */
-> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-> index 97ecca0764..100e3c8929 100644
-> --- a/hw/arm/smmuv3.c
-> +++ b/hw/arm/smmuv3.c
-> @@ -1894,6 +1894,7 @@ static void smmu_init_irq(SMMUv3State *s, SysBusDevice *dev)
->   */
->  static void smmu_reset_exit(Object *obj, ResetType type)
->  {
-> +    SMMUState *sys = ARM_SMMU(obj);
->      SMMUv3State *s = ARM_SMMUV3(obj);
->      SMMUv3Class *c = ARM_SMMUV3_GET_CLASS(s);
->  
-> @@ -1903,6 +1904,9 @@ static void smmu_reset_exit(Object *obj, ResetType type)
->      }
->  
->      smmuv3_init_regs(s);
-> +    if (sys->accel) {
-> +        smmuv3_accel_init_regs(s);
-> +    }
->  }
->  
->  static void smmu_realize(DeviceState *d, Error **errp)
-> diff --git a/hw/arm/trace-events b/hw/arm/trace-events
-> index 7d232ca17c..37ecab10a0 100644
-> --- a/hw/arm/trace-events
-> +++ b/hw/arm/trace-events
-> @@ -70,7 +70,7 @@ smmu_reset_exit(void) ""
->  smmuv3_accel_set_iommu_device(int devfn, uint32_t sid) "devfn=0x%x (sid=0x%x)"
->  smmuv3_accel_unset_iommu_device(int devfn, uint32_t sid) "devfn=0x%x (sid=0x%x"
->  smmuv3_accel_install_nested_ste(uint32_t sid, uint64_t ste_1, uint64_t ste_0) "sid=%d ste=%"PRIx64":%"PRIx64
-> -
-> +smmuv3_accel_host_hw_info(uint32_t idr0, uint32_t idr1, uint32_t idr3, uint32_t idr5) "idr0=0x%x idr1=0x%x idr3=0x%x idr5=0x%x"
->  # strongarm.c
->  strongarm_uart_update_parameters(const char *label, int speed, char parity, int data_bits, int stop_bits) "%s speed=%d parity=%c data=%d stop=%d"
->  strongarm_ssp_read_underrun(void) "SSP rx underrun"
+It tests on all MRs that are (1) device using big endianess, (2)
+.valid.min_access_size=2, (3) .valid.unaligned=true.
+
+First of all, I don't understand why a test case needs to behave
+differently according to the TARGET endianess, aka, qtest_big_endian().
+IIUC, each of the qtest_writew() should request a WRITE with an integer
+value to be applied to the MMIO region, when we know the endianess of the
+region (in this case, big endian), we know exactly how it will be read out.
+
+Taking above steps [1-3] as example.  Here [1+2] will write two words to
+offset 0x0, 0x1 correspondingly:
+
+  - [1] WRITE(addr=0x0, size=2, data=0x1100)
+  - [2] WRITE(addr=0x1, size=2, data=0x3322)
+
+Here, IMHO the result should not depend on the internal property of the
+systems (e.g. MR .impl values, after we have unaligned support memory core
+should resolve all of these issues by either split 2B MMIO into two 1B, or
+do proper padding on start/end to amplify the write if necessary).  Because
+we know the device / MR is big endianess, so we should know the result of
+the write already, as below:
+
+  - After [1] WRITE(addr=0x0, size=2, data=0x1100), data should look like:
+
+    [0x11, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, ...]
+     ^^^^^^^^^^^
+    Here it should always follow device's endianess.
+
+  - After [2] WRITE(addr=0x1, size=2, data=0x3322), data should look like:
+
+    [0x11, 0x33, 0x22, 0x00, 0x00, 0x00, 0x00, 0x00, ...]
+           ^^^^^^^^^^^
+    Here it should always follow device's endianess.
+
+Above would be verified by step [3].  Basically it verifies READ(addr=0x0,
+size=2) would result in 0x1133, which looks correct.
+
+However the problem is, when GUEST is little endian, the test, even if
+written the same data [4-5], expecting different results [6].  That's the
+part I don't understand.  I think it would make sense if [6] should also
+verify the same as [3].  IOW, the chunk in the "if" section looks like the
+right thing to test for both big/little GUEST endianess.
+
+-- 
+Peter Xu
 
 

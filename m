@@ -4,111 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B62ACA1013
-	for <qemu-arm@archiver.kernel.org>; Fri,  5 Sep 2025 14:33:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6645CA0FED
+	for <qemu-arm@archiver.kernel.org>; Fri,  5 Sep 2025 15:10:36 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uuXUv-0004RH-3r; Fri, 05 Sep 2025 10:33:05 -0400
+	id 1uuY4b-0007Tp-BK; Fri, 05 Sep 2025 11:10:00 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1uuXUu-0004Pf-Gv
- for qemu-arm@nongnu.org; Fri, 05 Sep 2025 10:33:04 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <mchehab+huawei@kernel.org>)
+ id 1uuY4Z-0007Rr-2t; Fri, 05 Sep 2025 11:09:55 -0400
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1uuXUb-0003I4-NF
- for qemu-arm@nongnu.org; Fri, 05 Sep 2025 10:33:03 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1757082761;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=AJYsQ0k41dYEtEm+qEtpIcG16VDv3rXSXQjY6KH6CC8=;
- b=SbN27ZXSN7kWZgZQiH6Q3umAKvh6BoA+ctWFRc0qZh5DP6Pc0MXMvbGH1LMgH8EhFx4QhZ
- O7tDgeb7ZzuD8/yCL+/ZNj5GRgHgiBMVvQF2oHTzBA8ukCRZYRi+v5OsoFCQuNY5vTNAhW
- oJvHIgVItRUwgEOtHOdfh7jBSnvS37U=
-Received: from mail-qt1-f200.google.com (mail-qt1-f200.google.com
- [209.85.160.200]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-275-0-_ulbBdPUqM4JufHNyv2Q-1; Fri, 05 Sep 2025 10:32:40 -0400
-X-MC-Unique: 0-_ulbBdPUqM4JufHNyv2Q-1
-X-Mimecast-MFC-AGG-ID: 0-_ulbBdPUqM4JufHNyv2Q_1757082760
-Received: by mail-qt1-f200.google.com with SMTP id
- d75a77b69052e-4b302991816so44627591cf.0
- for <qemu-arm@nongnu.org>; Fri, 05 Sep 2025 07:32:40 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1757082760; x=1757687560;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=AJYsQ0k41dYEtEm+qEtpIcG16VDv3rXSXQjY6KH6CC8=;
- b=ea6rPBlPKFmgHy7RIw0Ms6tiE4qiUPiydAinuF2yJimDJUafdmhDl1LhHPHwZtakK5
- wi0WgIStiNeMo0VdoUAM3JdcJ6sYJrApHiaJeHS+AyIWfp0+ZRMDeurAPrtCoFj3OXr1
- v/3ZkUB8usueKaZLU+d9RSYi5Q/kRLh9JfQAINd0TRb2PUuWG8XdLk1R27StIeKSGFnP
- 8TYCJsSQzYuxmBCFxbhJ1nK1/xFVR4OIX73qOphYZ04IIXp2CYsuyHOKMzQfuOoHiHIf
- h+tvlw1Iz3Q3uDP+T9jIBGElqaKe31h3cjTM5s9iW61RUH5yO16y/g5URqaDkxpbQZka
- aU4w==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXusMt8Vzt2Rj8fjKdu9HgHqL136OBe5Y3YulTkkz1Yu/DFeHF1f3LFR1MA3Uy/ilEHvAAtK5iCfA==@nongnu.org
-X-Gm-Message-State: AOJu0YyTQlZfDynHTyB4cu8zUv/xdhV2m6QssxI8Aed779NaNpV70x4W
- Ryn+HijFq3HfHDVrYglSC1SXBO6b4JqtHxqmq8eYX6qNbvT4L3dh3x6Ea5CrRq5yr5pySZYFpt4
- kJ1Pf0InvOxFKwkNFCoLsCl3jAtj9TfQpdKaeMNWjU9Y0tYI3rDWzvw==
-X-Gm-Gg: ASbGncuJN/CuM3ToFyLZ6aEQh1egOR/ctrO3Wge2eb9x5U1RJCF0P7j9V6YFmmpvorr
- apS9nK664xnQ3dvi8QRe8oMwhUBwwX7WzAIBZu46drsCN/TKh1v5paELUCnrc18Uo1C7IX+u0Hj
- 91uG40VaiAK3dgSOKUtKbDmHFxKwPnyYBqQxB9TaC8ZYNH7eJYucK4Jk9iIRbka+N4npxkTkWiE
- K5+NtmwEurRtTmvhCtTFg60rNvWGQRFljc9wR8hehVM7PqeSh4IUXkPCXVbMGVYC1QVEC/6x/hZ
- Ar43cazk1AQBz/S/JxilICT5pOiM02Wt
-X-Received: by 2002:a05:622a:10c:b0:4b0:69d6:85a2 with SMTP id
- d75a77b69052e-4b31d86175amr301290631cf.31.1757082759491; 
- Fri, 05 Sep 2025 07:32:39 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGGW45Sakcic0/au626zXwdL13HxP0OyaIYT2HgE/EM8+kHYAiCyErP6T4Qce2avfFhoAv8oA==
-X-Received: by 2002:a05:622a:10c:b0:4b0:69d6:85a2 with SMTP id
- d75a77b69052e-4b31d86175amr301289721cf.31.1757082758538; 
- Fri, 05 Sep 2025 07:32:38 -0700 (PDT)
-Received: from x1.local ([174.89.135.121]) by smtp.gmail.com with ESMTPSA id
- d75a77b69052e-4b48f673fecsm45984731cf.21.2025.09.05.07.32.36
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 05 Sep 2025 07:32:37 -0700 (PDT)
-Date: Fri, 5 Sep 2025 10:32:25 -0400
-From: Peter Xu <peterx@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: chen CJ <cjchen@igel.co.jp>, qemu-devel@nongnu.org,
- qemu-block@nongnu.org, qemu-riscv@nongnu.org, qemu-arm@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>,
- Keith Busch <kbusch@kernel.org>, Klaus Jensen <its@irrelevant.dk>,
- Jesper Devantier <foss@defmacro.it>, Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- Weiwei Li <liwei1518@gmail.com>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Tyrone Ting <kfting@nuvoton.com>, Hao Wu <wuhaotsh@google.com>,
- Max Filippov <jcmvbkbc@gmail.com>, David Hildenbrand <david@redhat.com>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
- Tomoyuki Hirose <hrstmyk811m@gmail.com>
-Subject: Re: [Withdrawn] [RFC PATCH v2 0/9] support unaligned access to xHCI
- Capability
-Message-ID: <aLr0eTjUe8FXkQmV@x1.local>
-References: <20250822092410.25833-1-cjchen@igel.co.jp>
- <CAAMq-Y86UY7LNe-p2P_d8mw7FgTqLm=HQdqbMvV8xxTdsZmx1A@mail.gmail.com>
- <CAFEAcA_EZxgnSHOEwdF5QayAxsncYnGGe4RDPP-vwYTqwU+dNA@mail.gmail.com>
+ (Exim 4.90_1) (envelope-from <mchehab+huawei@kernel.org>)
+ id 1uuY4P-0005mo-M2; Fri, 05 Sep 2025 11:09:53 -0400
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by tor.source.kernel.org (Postfix) with ESMTP id CAC966029C;
+ Fri,  5 Sep 2025 15:09:34 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 52B1EC4AF0D;
+ Fri,  5 Sep 2025 15:09:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1757084974;
+ bh=R1KD74Ew/S5bve2aEoz1yR5OBUxaHIWZutYJgIe/Fvs=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=m+4PKK8Fng9wvzB1UY8//bedqP1DzTvo+YHKJgYwW2lqi+1gn/LnvzexNKF58lMFO
+ l/Gdp6n0lUUtENDbZqHdlcGC8kw1jkfS9y6Y2/r/5VvbmuTQlVr0zFoqc5ZjCHFKjw
+ z3xIbzUm4cq8o0SF6HmdQkpUyeLeYaij8JXLgEQ7XRFko7OJfc5m9bvPAum0pwQreV
+ vCspY6pqu4lL9x83E20Cm3twzKTVqaEl7KeMLu8GlxgrDPrr6MuVBXm1ig6BtOIU5a
+ TyXH/+j8A9ychH2A0ysgLCRxiwtaqkkdMnNrYO5zZBmppO5fO/Pfg2INLpPhc4Niw8
+ 40np24pY5ElDA==
+Received: from mchehab by mail.kernel.org with local (Exim 4.98.2)
+ (envelope-from <mchehab+huawei@kernel.org>)
+ id 1uuY49-0000000HEUr-2yks; Fri, 05 Sep 2025 17:09:29 +0200
+From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+To: Igor Mammedov <imammedo@redhat.com>, "Michael S . Tsirkin" <mst@redhat.com>
+Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>,
+ Shiju Jose <shiju.jose@huawei.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+ Ani Sinha <anisinha@redhat.com>, Dongjiu Geng <gengdongjiu1@gmail.com>
+Subject: [PATCH v11 04/17] acpi/ghes: add a firmware file with HEST address
+Date: Fri,  5 Sep 2025 17:09:11 +0200
+Message-ID: <cd996f7237287a317f85e572f4dec67b372af684.1757084668.git.mchehab+huawei@kernel.org>
+X-Mailer: git-send-email 2.51.0
+In-Reply-To: <cover.1757084668.git.mchehab+huawei@kernel.org>
+References: <cover.1757084668.git.mchehab+huawei@kernel.org>
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA_EZxgnSHOEwdF5QayAxsncYnGGe4RDPP-vwYTqwU+dNA@mail.gmail.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: laf4zxjcrgdktzN3jPggw68OYGiSTLWoeQ4-XR7Sz1M_1757082760
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=peterx@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
- DKIM_SIGNED=0.1, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
- RCVD_IN_MSPIKE_WL=0.001, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, T_SPF_HELO_TEMPERROR=0.01,
- T_SPF_TEMPERROR=0.01 autolearn=no autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2600:3c04:e001:324:0:1991:8:25;
+ envelope-from=mchehab+huawei@kernel.org; helo=tor.source.kernel.org
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -124,53 +74,98 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Wed, Sep 03, 2025 at 10:47:17AM +0100, Peter Maydell wrote:
-> On Wed, 3 Sept 2025 at 06:03, chen CJ <cjchen@igel.co.jp> wrote:
-> >
-> > I would like to withdraw this patch series.
-> >
-> > Sorry for the inconvenience, and thank you for your understanding.
-> 
-> That's unfortunate; I think it's an issue we really do need to fix,
-> but I entirely understand if you don't have the time to work
-> on it further.
-> 
-> I might pick it up if I have the time to do so.
+Store HEST table address at GPA, placing its the start of the table at
+hest_addr_le variable.
 
-I worked on this problem a bit more in the past few days while almost
-everyone will be at the forum.  It's almost because I saw similar issues
-that I have commented before on old versions, but they still existed in the
-core patch 5.  Then I found more issues.  Keep commenting on that might be
-awkward because there will be quite a few dependency changes.  One example
-is, I kept thinking we should not worry about MMIO out-of-bound over
-mr->size when reaching as deep as access_with_adjusted_size().  There are
-still quite a few places in patch 5 of this series that does the
-calculation and it's not obvious what happens if mr->size violated.
+Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+---
+ hw/acpi/ghes.c         | 22 ++++++++++++++++++++--
+ include/hw/acpi/ghes.h |  6 +++++-
+ 2 files changed, 25 insertions(+), 3 deletions(-)
 
-Peter, if you want to pick it up, please consider reading the replies I
-left in this series, alone with this version below as comparison reading
-material.  The hope is the reworked patchset below _might_ be easier to
-read (at least I did add rich comments, because the unaligned changes are
-tricky and not easy to follow):
-
-https://gitlab.com/peterx/qemu/-/commits/mem-unaligned-fix-v0.1?ref_type=tags
-
-Especially this patch:
-
-https://gitlab.com/peterx/qemu/-/commit/8a8f0f5728a7adc6ecb2cf4358366d2d663a5ed9
-
-However that won't pass the test cases.  I still doubt the test case is
-wrong but I didn't go further modifying the test cases yet (or any better
-way to test this as you suggested in the other reply).  I think that can be
-the 1st thing we figure out, not the best way to test, but the correctness
-of the current test case, because IIUC it shouldn't be relevant to impl of
-unaligned access.  To me, if we can reach a consensus on what is the
-correct (test) behavior on all kinds of unaligned access emulations, fixing
-the impl should be relatively easy.
-
-Thanks,
-
+diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
+index 9243b5ad4acb..cbc96c1909f0 100644
+--- a/hw/acpi/ghes.c
++++ b/hw/acpi/ghes.c
+@@ -30,6 +30,7 @@
+ 
+ #define ACPI_HW_ERROR_FW_CFG_FILE           "etc/hardware_errors"
+ #define ACPI_HW_ERROR_ADDR_FW_CFG_FILE      "etc/hardware_errors_addr"
++#define ACPI_HEST_ADDR_FW_CFG_FILE          "etc/acpi_table_hest_addr"
+ 
+ /* The max size in bytes for one error block */
+ #define ACPI_GHES_MAX_RAW_DATA_LENGTH   (1 * KiB)
+@@ -341,6 +342,9 @@ void acpi_build_hest(AcpiGhesState *ags, GArray *table_data,
+ {
+     AcpiTable table = { .sig = "HEST", .rev = 1,
+                         .oem_id = oem_id, .oem_table_id = oem_table_id };
++    uint32_t hest_offset;
++
++    hest_offset = table_data->len;
+ 
+     build_ghes_error_table(ags, hardware_errors, linker);
+ 
+@@ -352,6 +356,17 @@ void acpi_build_hest(AcpiGhesState *ags, GArray *table_data,
+                   ACPI_GHES_NOTIFY_SEA, ACPI_HEST_SRC_ID_SEA);
+ 
+     acpi_table_end(linker, &table);
++
++    if (ags->use_hest_addr) {
++        /*
++         * Tell firmware to write into GPA the address of HEST via fw_cfg,
++         * once initialized.
++         */
++        bios_linker_loader_write_pointer(linker,
++                                         ACPI_HEST_ADDR_FW_CFG_FILE, 0,
++                                         sizeof(uint64_t),
++                                         ACPI_BUILD_TABLE_FILE, hest_offset);
++    }
+ }
+ 
+ void acpi_ghes_add_fw_cfg(AcpiGhesState *ags, FWCfgState *s,
+@@ -361,7 +376,10 @@ void acpi_ghes_add_fw_cfg(AcpiGhesState *ags, FWCfgState *s,
+     fw_cfg_add_file(s, ACPI_HW_ERROR_FW_CFG_FILE, hardware_error->data,
+                     hardware_error->len);
+ 
+-    if (!ags->use_hest_addr) {
++    if (ags->use_hest_addr) {
++        fw_cfg_add_file_callback(s, ACPI_HEST_ADDR_FW_CFG_FILE, NULL, NULL,
++            NULL, &(ags->hest_addr_le), sizeof(ags->hest_addr_le), false);
++    } else {
+         /* Create a read-write fw_cfg file for Address */
+         fw_cfg_add_file_callback(s, ACPI_HW_ERROR_ADDR_FW_CFG_FILE, NULL, NULL,
+             NULL, &(ags->hw_error_le), sizeof(ags->hw_error_le), false);
+@@ -484,7 +502,7 @@ AcpiGhesState *acpi_ghes_get_state(void)
+     }
+     ags = &acpi_ged_state->ghes_state;
+ 
+-    if (!ags->hw_error_le) {
++    if (!ags->hw_error_le && !ags->hest_addr_le) {
+         return NULL;
+     }
+     return ags;
+diff --git a/include/hw/acpi/ghes.h b/include/hw/acpi/ghes.h
+index 411f592662af..ea9baab764e2 100644
+--- a/include/hw/acpi/ghes.h
++++ b/include/hw/acpi/ghes.h
+@@ -70,9 +70,13 @@ enum {
+  * When use_hest_addr is false, the GPA of the etc/hardware_errors firmware
+  * is stored at hw_error_le. This is the default on QEMU 9.x.
+  *
+- * An GPA value equal to zero means that GHES is not present.
++ * When use_hest_addr is true, the GPA of the HEST table is stored at
++ * hest_addr_le. This is the default for QEMU 10.x and above.
++ *
++ * Whe both GPA values are equal to zero means that GHES is not present.
+  */
+ typedef struct AcpiGhesState {
++    uint64_t hest_addr_le;
+     uint64_t hw_error_le;
+     bool use_hest_addr;         /* Currently, always false */
+ } AcpiGhesState;
 -- 
-Peter Xu
+2.51.0
 
 

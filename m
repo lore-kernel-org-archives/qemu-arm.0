@@ -4,62 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 447EECA0FED
-	for <qemu-arm@archiver.kernel.org>; Fri,  5 Sep 2025 15:12:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFDDFCA0FED
+	for <qemu-arm@archiver.kernel.org>; Fri,  5 Sep 2025 15:12:40 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uuY5I-0007v7-H2; Fri, 05 Sep 2025 11:10:40 -0400
+	id 1uuY5M-00080o-OJ; Fri, 05 Sep 2025 11:10:48 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mchehab+huawei@kernel.org>)
- id 1uuY4t-0007bb-Mn; Fri, 05 Sep 2025 11:10:19 -0400
-Received: from tor.source.kernel.org ([172.105.4.254])
+ id 1uuY4w-0007bw-Hy; Fri, 05 Sep 2025 11:10:20 -0400
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mchehab+huawei@kernel.org>)
- id 1uuY4c-0005zu-5T; Fri, 05 Sep 2025 11:10:11 -0400
+ id 1uuY4h-00065H-RD; Fri, 05 Sep 2025 11:10:16 -0400
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by tor.source.kernel.org (Postfix) with ESMTP id 05647602A2;
- Fri,  5 Sep 2025 15:09:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5F416C4CEF7;
+ by sea.source.kernel.org (Postfix) with ESMTP id E949E44DE4;
+ Fri,  5 Sep 2025 15:09:34 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 64373C4CEFD;
  Fri,  5 Sep 2025 15:09:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
  s=k20201202; t=1757084974;
- bh=4yv2rjNBd8hAvZyMViY9N4TK8U5HT/EcD4khMKN6+lA=;
+ bh=FDEB3m+uAbcxOKfrr5rhD48neH9CR+Y35hcq4PdOFws=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=u1RgYTFOv5wAY+7R2ex7rSidBAhz/RJnYK7cGNKpWOUb1Qci9WdVau8S8+er4vYKh
- SggKMcD8LqFG2oVMHl9scURilflTPGX58RhZjw4OJ6tlmv7yn0VZAavB+rfuJq+EnF
- 1uY+hDKIAcCKNJ1a+iGWdujPGu+F/NpBMXa3xotP3DwG6wE/w4etaFH9b9ybKZ9liZ
- 1pNW8snZaDCmfBUSgLEHeh+SyccqyxaVaAM3LXM0j5JehOv/rMbD2hjXpcP1XUQGwS
- Qs3rTIY+W1NOfFZf3+XCWUugggurZ4Vx9tTYKC72ngrQ9/fIMPp/weksYeeKOW16EO
- IB38TUnD2dJAw==
+ b=EoD9v/NnhFcttNTQ71E5ABAR9k4CHEJDgUYVZfP+VdKAs27gASFcmD2WsknkBmm9E
+ pnnXvE7/pJu+i35+y4MPt5vyJHkikaLBVy3fJB6XUTTWr+/XReSyoS9ml85iBRJTJp
+ kDz38X+M2/VefVQlQW3ByrJRebJ9xlZqUHQO6pUBdyFa4j5gNWlwrWRfsJo8F8R+HZ
+ WwAUvEyTB/9N2DKAIZmClV8kQCiMnPqZarNn9HztWitMhP4ZNwHnSKcosTIVgENmrz
+ ZSJKvn3f7jJ7NSgRWWzk6JBE5/I71KMiqacLd1UH/wYOLeBpkNKhMhu9b9G5x82MUv
+ 7Pv1o0BKRzfrA==
 Received: from mchehab by mail.kernel.org with local (Exim 4.98.2)
  (envelope-from <mchehab+huawei@kernel.org>)
- id 1uuY49-0000000HEUv-35rs; Fri, 05 Sep 2025 17:09:29 +0200
+ id 1uuY49-0000000HEVS-409X; Fri, 05 Sep 2025 17:09:29 +0200
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 To: Igor Mammedov <imammedo@redhat.com>, "Michael S . Tsirkin" <mst@redhat.com>
 Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>,
  Shiju Jose <shiju.jose@huawei.com>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org, Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- Ani Sinha <anisinha@redhat.com>, Dongjiu Geng <gengdongjiu1@gmail.com>
-Subject: [PATCH v11 05/17] acpi/ghes: Use HEST table offsets when preparing
- GHES records
-Date: Fri,  5 Sep 2025 17:09:12 +0200
-Message-ID: <b7a0142b4363972c57852046ea5d351fef2c0389.1757084668.git.mchehab+huawei@kernel.org>
+ Ani Sinha <anisinha@redhat.com>, Dongjiu Geng <gengdongjiu1@gmail.com>,
+ Eric Blake <eblake@redhat.com>, Markus Armbruster <armbru@redhat.com>,
+ Michael Roth <michael.roth@amd.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>
+Subject: [PATCH v11 13/17] qapi/acpi-hest: add an interface to do generic CPER
+ error injection
+Date: Fri,  5 Sep 2025 17:09:20 +0200
+Message-ID: <e9a1277fd306a30c9e6f1582a83944a3f4a4aeff.1757084668.git.mchehab+huawei@kernel.org>
 X-Mailer: git-send-email 2.51.0
 In-Reply-To: <cover.1757084668.git.mchehab+huawei@kernel.org>
 References: <cover.1757084668.git.mchehab+huawei@kernel.org>
 Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=172.105.4.254;
- envelope-from=mchehab+huawei@kernel.org; helo=tor.source.kernel.org
+Received-SPF: pass client-ip=2600:3c0a:e001:78e:0:1991:8:25;
+ envelope-from=mchehab+huawei@kernel.org; helo=sea.source.kernel.org
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -76,171 +79,295 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-There are two pointers that are needed during error injection:
+Creates a QMP command to be used for generic ACPI APEI hardware error
+injection (HEST) via GHESv2, and add support for it for ARM guests.
 
-1. The start address of the CPER block to be stored;
-2. The address of the read ack.
+Error injection uses ACPI_HEST_SRC_ID_QMP source ID to be platform
+independent. This is mapped at arch virt bindings, depending on the
+types supported by QEMU and by the BIOS. So, on ARM, this is supported
+via ACPI_GHES_NOTIFY_GPIO notification type.
 
-It is preferable to calculate them from the HEST table.  This allows
-checking the source ID, the size of the table and the type of the
-HEST error block structures.
+This patch is co-authored:
+    - original ghes logic to inject a simple ARM record by Shiju Jose;
+    - generic logic to handle block addresses by Jonathan Cameron;
+    - generic GHESv2 error inject by Mauro Carvalho Chehab;
 
-Yet, keep the old code, as this is needed for migration purposes
-from older QEMU versions.
-
+Co-authored-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Co-authored-by: Shiju Jose <shiju.jose@huawei.com>
+Co-authored-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Signed-off-by: Shiju Jose <shiju.jose@huawei.com>
 Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+Acked-by: Igor Mammedov <imammedo@redhat.com>
+Acked-by: Markus Armbruster <armbru@redhat.com>
 ---
- hw/acpi/ghes.c         | 100 +++++++++++++++++++++++++++++++++++++++++
- include/hw/acpi/ghes.h |   2 +-
- 2 files changed, 101 insertions(+), 1 deletion(-)
+ MAINTAINERS              |  7 +++++++
+ hw/acpi/Kconfig          |  5 +++++
+ hw/acpi/ghes.c           |  2 +-
+ hw/acpi/ghes_cper.c      | 39 +++++++++++++++++++++++++++++++++++++++
+ hw/acpi/ghes_cper_stub.c | 20 ++++++++++++++++++++
+ hw/acpi/meson.build      |  2 ++
+ hw/arm/virt-acpi-build.c |  1 +
+ hw/arm/virt.c            |  7 +++++++
+ include/hw/acpi/ghes.h   |  1 +
+ include/hw/arm/virt.h    |  1 +
+ qapi/acpi-hest.json      | 36 ++++++++++++++++++++++++++++++++++++
+ qapi/meson.build         |  1 +
+ qapi/qapi-schema.json    |  1 +
+ 13 files changed, 122 insertions(+), 1 deletion(-)
+ create mode 100644 hw/acpi/ghes_cper.c
+ create mode 100644 hw/acpi/ghes_cper_stub.c
+ create mode 100644 qapi/acpi-hest.json
 
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 1ae28e880424..e609678ba9d6 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -2165,6 +2165,13 @@ F: hw/acpi/ghes.c
+ F: include/hw/acpi/ghes.h
+ F: docs/specs/acpi_hest_ghes.rst
+ 
++ACPI/HEST/GHES/ARM processor CPER
++R: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
++S: Maintained
++F: hw/arm/ghes_cper.c
++F: hw/acpi/ghes_cper_stub.c
++F: qapi/acpi-hest.json
++
+ ppc4xx
+ L: qemu-ppc@nongnu.org
+ S: Orphan
+diff --git a/hw/acpi/Kconfig b/hw/acpi/Kconfig
+index 1d4e9f0845c0..daabbe6cd11e 100644
+--- a/hw/acpi/Kconfig
++++ b/hw/acpi/Kconfig
+@@ -51,6 +51,11 @@ config ACPI_APEI
+     bool
+     depends on ACPI
+ 
++config GHES_CPER
++    bool
++    depends on ACPI_APEI
++    default y
++
+ config ACPI_PCI
+     bool
+     depends on ACPI && PCI
 diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
-index cbc96c1909f0..668ca72587c7 100644
+index 0135ac844bcf..1d02ef6dcb70 100644
 --- a/hw/acpi/ghes.c
 +++ b/hw/acpi/ghes.c
-@@ -41,6 +41,12 @@
- /* Address offset in Generic Address Structure(GAS) */
- #define GAS_ADDR_OFFSET 4
+@@ -553,7 +553,7 @@ void ghes_record_cper_errors(AcpiGhesState *ags, const void *cper, size_t len,
+     /* Write the generic error data entry into guest memory */
+     cpu_physical_memory_write(cper_addr, cper, len);
  
-+/*
-+ * ACPI spec 1.0b
-+ * 5.2.3 System Description Table Header
-+ */
-+#define ACPI_DESC_HEADER_OFFSET     36
-+
- /*
-  * The total size of Generic Error Data Entry
-  * ACPI 6.1/6.2: 18.3.2.7.1 Generic Error Data,
-@@ -61,6 +67,30 @@
-  */
- #define ACPI_GHES_GESB_SIZE                 20
- 
-+/*
-+ * See the memory layout map at docs/specs/acpi_hest_ghes.rst.
-+ */
-+
-+/*
-+ * ACPI 6.1: 18.3.2.8 Generic Hardware Error Source version 2
-+ * Table 18-344 Generic Hardware Error Source version 2 (GHESv2) Structure
-+ */
-+#define HEST_GHES_V2_ENTRY_SIZE  92
-+
-+/*
-+ * ACPI 6.1: 18.3.2.8 Generic Hardware Error Source version 2
-+ * Table 18-344 Generic Hardware Error Source version 2 (GHESv2) Structure
-+ * Read Ack Register
-+ */
-+#define GHES_READ_ACK_ADDR_OFF          64
-+
-+/*
-+ * ACPI 6.1: 18.3.2.7: Generic Hardware Error Source
-+ * Table 18-341 Generic Hardware Error Source Structure
-+ * Error Status Address
-+ */
-+#define GHES_ERR_STATUS_ADDR_OFF  20
-+
- /*
-  * Values for error_severity field
-  */
-@@ -408,6 +438,73 @@ static void get_hw_error_offsets(uint64_t ghes_addr,
-     *read_ack_register_addr = ghes_addr + sizeof(uint64_t);
+-    notifier_list_notify(&acpi_generic_error_notifiers, NULL);
++    notifier_list_notify(&acpi_generic_error_notifiers, &source_id);
  }
  
-+static void get_ghes_source_offsets(uint16_t source_id,
-+                                    uint64_t hest_addr,
-+                                    uint64_t *cper_addr,
-+                                    uint64_t *read_ack_start_addr,
-+                                    Error **errp)
+ int acpi_ghes_memory_errors(AcpiGhesState *ags, uint16_t source_id,
+diff --git a/hw/acpi/ghes_cper.c b/hw/acpi/ghes_cper.c
+new file mode 100644
+index 000000000000..1a391d85fc61
+--- /dev/null
++++ b/hw/acpi/ghes_cper.c
+@@ -0,0 +1,39 @@
++/*
++ * CPER payload parser for error injection
++ *
++ * Copyright(C) 2024-2025 Huawei LTD.
++ *
++ * This code is licensed under the GPL version 2 or later. See the
++ * COPYING file in the top-level directory.
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "qemu/osdep.h"
++
++#include "qemu/base64.h"
++#include "qemu/error-report.h"
++#include "qemu/uuid.h"
++#include "qapi/qapi-commands-acpi-hest.h"
++#include "hw/acpi/ghes.h"
++
++void qmp_inject_ghes_v2_error(const char *qmp_cper, Error **errp)
 +{
-+    uint64_t hest_err_block_addr, hest_read_ack_addr;
-+    uint64_t err_source_entry, error_block_addr;
-+    uint32_t num_sources, i;
++    AcpiGhesState *ags;
 +
-+    hest_addr += ACPI_DESC_HEADER_OFFSET;
-+
-+    cpu_physical_memory_read(hest_addr, &num_sources,
-+                             sizeof(num_sources));
-+    num_sources = le32_to_cpu(num_sources);
-+
-+    err_source_entry = hest_addr + sizeof(num_sources);
-+
-+    /*
-+     * Currently, HEST Error source navigates only for GHESv2 tables
-+     */
-+    for (i = 0; i < num_sources; i++) {
-+        uint64_t addr = err_source_entry;
-+        uint16_t type, src_id;
-+
-+        cpu_physical_memory_read(addr, &type, sizeof(type));
-+        type = le16_to_cpu(type);
-+
-+        /* For now, we only know the size of GHESv2 table */
-+        if (type != ACPI_GHES_SOURCE_GENERIC_ERROR_V2) {
-+            error_setg(errp, "HEST: type %d not supported.", type);
-+            return;
-+        }
-+
-+        /* Compare CPER source ID at the GHESv2 structure */
-+        addr += sizeof(type);
-+        cpu_physical_memory_read(addr, &src_id, sizeof(src_id));
-+        if (le16_to_cpu(src_id) == source_id) {
-+            break;
-+        }
-+
-+        err_source_entry += HEST_GHES_V2_ENTRY_SIZE;
-+    }
-+    if (i == num_sources) {
-+        error_setg(errp, "HEST: Source %d not found.", source_id);
++    ags = acpi_ghes_get_state();
++    if (!ags) {
 +        return;
 +    }
 +
-+    /* Navigate through table address pointers */
-+    hest_err_block_addr = err_source_entry + GHES_ERR_STATUS_ADDR_OFF +
-+                          GAS_ADDR_OFFSET;
++    uint8_t *cper;
++    size_t  len;
 +
-+    cpu_physical_memory_read(hest_err_block_addr, &error_block_addr,
-+                             sizeof(error_block_addr));
-+    error_block_addr = le64_to_cpu(error_block_addr);
++    cper = qbase64_decode(qmp_cper, -1, &len, errp);
++    if (!cper) {
++        error_setg(errp, "missing GHES CPER payload");
++        return;
++    }
 +
-+    cpu_physical_memory_read(error_block_addr, cper_addr,
-+                             sizeof(*cper_addr));
-+    *cper_addr = le64_to_cpu(*cper_addr);
-+
-+    hest_read_ack_addr = err_source_entry + GHES_READ_ACK_ADDR_OFF +
-+                         GAS_ADDR_OFFSET;
-+    cpu_physical_memory_read(hest_read_ack_addr, read_ack_start_addr,
-+                             sizeof(*read_ack_start_addr));
-+    *read_ack_start_addr = le64_to_cpu(*read_ack_start_addr);
++    ghes_record_cper_errors(ags, cper, len, ACPI_HEST_SRC_ID_QMP, errp);
 +}
+diff --git a/hw/acpi/ghes_cper_stub.c b/hw/acpi/ghes_cper_stub.c
+new file mode 100644
+index 000000000000..b16be73502db
+--- /dev/null
++++ b/hw/acpi/ghes_cper_stub.c
+@@ -0,0 +1,20 @@
++/*
++ * Stub interface for CPER payload parser for error injection
++ *
++ * Copyright(C) 2024-2025 Huawei LTD.
++ *
++ * This code is licensed under the GPL version 2 or later. See the
++ * COPYING file in the top-level directory.
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
 +
- void ghes_record_cper_errors(AcpiGhesState *ags, const void *cper, size_t len,
-                              uint16_t source_id, Error **errp)
- {
-@@ -423,6 +520,9 @@ void ghes_record_cper_errors(AcpiGhesState *ags, const void *cper, size_t len,
-     if (!ags->use_hest_addr) {
-         get_hw_error_offsets(le64_to_cpu(ags->hw_error_le),
-                              &cper_addr, &read_ack_register_addr);
-+    } else {
-+        get_ghes_source_offsets(source_id, le64_to_cpu(ags->hest_addr_le),
-+                                &cper_addr, &read_ack_register_addr, errp);
-     }
++#include "qemu/osdep.h"
++#include "qapi/error.h"
++#include "qapi/qapi-commands-acpi-hest.h"
++#include "hw/acpi/ghes.h"
++
++void qmp_inject_ghes_v2_error(const char *cper, Error **errp)
++{
++    error_setg(errp, "GHES QMP error inject is not compiled in");
++}
+diff --git a/hw/acpi/meson.build b/hw/acpi/meson.build
+index 73f02b96912b..56b5d1ec9691 100644
+--- a/hw/acpi/meson.build
++++ b/hw/acpi/meson.build
+@@ -34,4 +34,6 @@ endif
+ system_ss.add(when: 'CONFIG_ACPI', if_false: files('acpi-stub.c', 'aml-build-stub.c', 'ghes-stub.c', 'acpi_interface.c'))
+ system_ss.add(when: 'CONFIG_ACPI_PCI_BRIDGE', if_false: files('pci-bridge-stub.c'))
+ system_ss.add_all(when: 'CONFIG_ACPI', if_true: acpi_ss)
++system_ss.add(when: 'CONFIG_GHES_CPER', if_true: files('ghes_cper.c'))
++system_ss.add(when: 'CONFIG_GHES_CPER', if_false: files('ghes_cper_stub.c'))
+ system_ss.add(files('acpi-qmp-cmds.c'))
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 2080d535c476..47a49d4e01b3 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -1017,6 +1017,7 @@ static void acpi_align_size(GArray *blob, unsigned align)
  
-     cpu_physical_memory_read(read_ack_register_addr,
+ static const AcpiNotificationSourceId hest_ghes_notify[] = {
+     { ACPI_HEST_SRC_ID_SYNC, ACPI_GHES_NOTIFY_SEA },
++    { ACPI_HEST_SRC_ID_QMP, ACPI_GHES_NOTIFY_GPIO },
+ };
+ 
+ static const AcpiNotificationSourceId hest_ghes_notify_10_0[] = {
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index dc6634a6a6c5..1e904432be3b 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -1050,6 +1050,13 @@ static void virt_powerdown_req(Notifier *n, void *opaque)
+ 
+ static void virt_generic_error_req(Notifier *n, void *opaque)
+ {
++    uint16_t *source_id = opaque;
++
++    /* Currently, only QMP source ID is async */
++    if (*source_id != ACPI_HEST_SRC_ID_QMP) {
++        return;
++    }
++
+     VirtMachineState *s = container_of(n, VirtMachineState, generic_error_notifier);
+ 
+     acpi_send_event(s->acpi_dev, ACPI_GENERIC_ERROR);
 diff --git a/include/hw/acpi/ghes.h b/include/hw/acpi/ghes.h
-index ea9baab764e2..5265102ba51f 100644
+index 390943e46d99..df2ecbf6e4a9 100644
 --- a/include/hw/acpi/ghes.h
 +++ b/include/hw/acpi/ghes.h
-@@ -78,7 +78,7 @@ enum {
- typedef struct AcpiGhesState {
-     uint64_t hest_addr_le;
-     uint64_t hw_error_le;
--    bool use_hest_addr;         /* Currently, always false */
-+    bool use_hest_addr; /* True if HEST address is present */
- } AcpiGhesState;
+@@ -65,6 +65,7 @@ enum AcpiGhesNotifyType {
+  */
+ enum AcpiGhesSourceID {
+     ACPI_HEST_SRC_ID_SYNC,
++    ACPI_HEST_SRC_ID_QMP,       /* Use it only for QMP injected errors */
+ };
  
- void acpi_build_hest(AcpiGhesState *ags, GArray *table_data,
+ typedef struct AcpiNotificationSourceId {
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index 91e2ac7e3e80..67fa2cdf408d 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -33,6 +33,7 @@
+ #include "exec/hwaddr.h"
+ #include "qemu/notify.h"
+ #include "hw/boards.h"
++#include "hw/acpi/ghes.h"
+ #include "hw/arm/boot.h"
+ #include "hw/arm/bsa.h"
+ #include "hw/block/flash.h"
+diff --git a/qapi/acpi-hest.json b/qapi/acpi-hest.json
+new file mode 100644
+index 000000000000..2e1cdf34847d
+--- /dev/null
++++ b/qapi/acpi-hest.json
+@@ -0,0 +1,36 @@
++# -*- Mode: Python -*-
++# vim: filetype=python
++# SPDX-License-Identifier: GPL-2.0-or-later
++
++##
++# == GHESv2 CPER Error Injection
++#
++# Defined since ACPI Specification 6.1,
++# section 18.3.2.8 Generic Hardware Error Source version 2. See:
++#
++# https://uefi.org/sites/default/files/resources/ACPI_6_1.pdf
++##
++
++
++##
++# @inject-ghes-v2-error:
++#
++# Inject an error with additional ACPI 6.1 GHESv2 error information
++#
++# @cper: contains a base64 encoded string with raw data for a single
++#     CPER record with Generic Error Status Block, Generic Error Data
++#     Entry and generic error data payload, as described at
++#     https://uefi.org/specs/UEFI/2.10/Apx_N_Common_Platform_Error_Record.html#format
++#
++# Features:
++#
++# @unstable: This command is experimental.
++#
++# Since: 10.0
++##
++{ 'command': 'inject-ghes-v2-error',
++  'data': {
++    'cper': 'str'
++  },
++  'features': [ 'unstable' ]
++}
+diff --git a/qapi/meson.build b/qapi/meson.build
+index ca6b61a608d0..a46269b5a0c9 100644
+--- a/qapi/meson.build
++++ b/qapi/meson.build
+@@ -59,6 +59,7 @@ if have_system
+   qapi_all_modules += [
+     'accelerator',
+     'acpi',
++    'acpi-hest',
+     'audio',
+     'cryptodev',
+     'qdev',
+diff --git a/qapi/qapi-schema.json b/qapi/qapi-schema.json
+index 82f111ba063c..b93dd68d94c6 100644
+--- a/qapi/qapi-schema.json
++++ b/qapi/qapi-schema.json
+@@ -68,6 +68,7 @@
+ { 'include': 'misc-i386.json' }
+ { 'include': 'audio.json' }
+ { 'include': 'acpi.json' }
++{ 'include': 'acpi-hest.json' }
+ { 'include': 'pci.json' }
+ { 'include': 'stats.json' }
+ { 'include': 'virtio.json' }
 -- 
 2.51.0
 

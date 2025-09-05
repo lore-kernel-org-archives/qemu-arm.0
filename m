@@ -4,85 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12928CA1012
-	for <qemu-arm@archiver.kernel.org>; Thu,  4 Sep 2025 20:51:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4CFBCA1010
+	for <qemu-arm@archiver.kernel.org>; Fri,  5 Sep 2025 07:21:51 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uuGsI-0003aq-1X; Thu, 04 Sep 2025 16:48:06 -0400
+	id 1uuQl9-0008WK-4b; Fri, 05 Sep 2025 03:21:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <titusr@google.com>) id 1uuGsF-0003Zg-Dq
- for qemu-arm@nongnu.org; Thu, 04 Sep 2025 16:48:03 -0400
-Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132])
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1uuQl3-0008VP-9N
+ for qemu-arm@nongnu.org; Fri, 05 Sep 2025 03:21:17 -0400
+Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <titusr@google.com>) id 1uuGs8-0000mW-0M
- for qemu-arm@nongnu.org; Thu, 04 Sep 2025 16:48:02 -0400
-Received: by mail-lf1-x132.google.com with SMTP id
- 2adb3069b0e04-55f6b77c91fso804e87.1
- for <qemu-arm@nongnu.org>; Thu, 04 Sep 2025 13:47:52 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1uuQku-0005Fe-4m
+ for qemu-arm@nongnu.org; Fri, 05 Sep 2025 03:21:15 -0400
+Received: by mail-ej1-x633.google.com with SMTP id
+ a640c23a62f3a-b047f28a83dso264730066b.2
+ for <qemu-arm@nongnu.org>; Fri, 05 Sep 2025 00:21:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1757018869; x=1757623669; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
+ d=linaro.org; s=google; t=1757056865; x=1757661665; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:user-agent
+ :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=dr49+/TE2wXDXE1qirriA0xB62DpArjWBKhXglp+OL8=;
- b=PE9vMdywX8A+sJUJFzu6//jnrYPGVY+rocqM0y/Z6VzycP5a71tIxWXVNEWI+XeO1O
- o8Ywh+Tba8SqdldqkQl3KBpqJBAFvgX8X0GnnXs8OThSX4jVfjpMuMvIeJ1Ql47t9SD2
- oX7Yhm7Rp3fep/8yH+WgxUMzWGXlQuPtZUFlGJwAKBoMqGoYRITUs0q4apIRGlVzRnVz
- wZ4LIJXeLzjEka+iQoJ6zE4Hnco72Sehy/Unv3InTYRw/oVhWDG0BrQ6r2TDM/S6xznl
- tGDIby7EXpwMVmnlPqy/573OfpEBJDqqLChC6AJEbaJPKIrNavmhP1U6YhfHgDWoXZ9K
- HT6A==
+ bh=0sl4FUh407HpXKEaMaBaTSzd6a0fletkFs/HN0R0U1Y=;
+ b=eb/Sb2mXKzoKCYXX9VL8YgGfd24jS8D46SJ34JIMXr3/KMPBWK/pMkY6jRjkFWDQmr
+ Dago9JP/+8L5qOHXuO04Fu1GIr7kbAIkkYlYdx4bbC9v98qw27mieBF05EvKkbXa0h8L
+ UT69uchGNFqCuTiOn+7NwQmvjXLa8w6kq2GCG8J6eT3J4abI+c/mAdgxQllIcZB59VRZ
+ Lx41uXJmcLJ6b5qFo7VnFuKYs8bvqZttlbnHtfuW4DgFXWxFCiLPDlVGXlelByA8Jrap
+ /3BFEH/gjpc1NLZVlr+PD8IkCwuG2/QvaetklNr4XyOXbkaa7yIpeSdC9cIQ4sonKWbu
+ +QYg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1757018869; x=1757623669;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=dr49+/TE2wXDXE1qirriA0xB62DpArjWBKhXglp+OL8=;
- b=qK4ZrRofGOGOzrbIYP70q9mdq8Ds6AF4YUaZo2kq2yd+zzeLSLxg28+0HSimMICspY
- eQFU5N6LbWhHL/VG3Us4GshHG+yht9lIdrdxoVgYPb7Ac11Qgrdud2SBZRlssN3SPx4B
- Baun3Qlu21hUQ4RxIvxmPXFgDogFCYvQRDezalaRRHNv6c1ut9GGSg+QAAQW/FWtTI8+
- yjjvevygv+/wWQnoRvcvY7ZeNUhzoZiagzN0A/9MDrvFcECkm96v4S6F3sBZpPb4j/zr
- iAE/PTpvFEqEFtkjkjcy7BwDW1l+AsXMPNwaBr8++rDBd5faq8+SyT6/edYlkbX8ehDe
- kp3A==
+ d=1e100.net; s=20230601; t=1757056865; x=1757661665;
+ h=content-transfer-encoding:mime-version:message-id:date:user-agent
+ :references:in-reply-to:subject:cc:to:from:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=0sl4FUh407HpXKEaMaBaTSzd6a0fletkFs/HN0R0U1Y=;
+ b=kZD+kDa/PFMYxuhK4iDJGbJ7Gs9zly8TeCChh1dkdFEpnf9NStX0tUpvXN2IPpoic3
+ bR3bFSEhqlO4bbiqaJv1JY7ZrZP5YsEScBWPNSjkuLoQT7esxHh683dOkdAxw2AUPCg8
+ 9eJWeZ5zJ3sCjzz+bx5CC9fav3EhEZNqnJ2M4un/MYlbPZSqsitIW8J/+igD+r3H7HoK
+ 2vpsdjeR1TCBKNJOKshe56U2CV55SX9y+8pUePId98FQHwgKVOOj/0/sB69xccr76dZ3
+ QGUGCgE0SrGP8lO18YMw52Ig4ktxjtwvu1CTjfTEcsgNcCqJBmBzzp2pcJgXhMX/QLde
+ 2waQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWqQc5KkzW1lVKApzBEvdthduCy2PMs3rhMfnWHSN0TMr5ktQVmgKtdDFsm3GLvqewjjVW4sqafmQ==@nongnu.org
-X-Gm-Message-State: AOJu0YzkqyuTxEzkiWwyEqDY1UZlKuk0pS/PQWUOCUFedsYM88JK0bvB
- K+/EUIn+e1iFGGATMmC4/7c/eC+UCRr2l/nDvAN/wS+3RBc+CvAyzkP4a1Sib3vuAVnMrMRo7PT
- 2r/4cc77yuejmLEfCoCqb+GFSnhfcV4N079vOPyV9
-X-Gm-Gg: ASbGnctebCSp8DzuBXrAomZ30vcAShcdY9Zscoy/bmWjof8M5J4PB3JlAsAJuNdjI5c
- Sty4kwijMrmth6Q6QXr+acxjr6wKBbeX5Ig3q8tUQ0HTrGxLFP35Y9Z/WZ19caovg3lrjzxQr1s
- ZJosCuQn9w9L3FKHaumRjojbn0ZDyeCAwnswa1beG20QefDFVFVfVcycH07h0wwmOWXpwSxBgGs
- wiltYtxNIOdDxy0J+KsVZJeZJhoYdJ+Q+uL/2PhKDdW
-X-Google-Smtp-Source: AGHT+IE2r9g4TdemD6DpGjvEnlfAQ4oOc6iES/Hfhgn9iGUKHmC1rqNCh4nms5fJ1yGozYzm3xIm5r6UkXT0QlrMv9k=
-X-Received: by 2002:a05:6512:1145:b0:55f:6cac:c94 with SMTP id
- 2adb3069b0e04-56136fa0033mr8837e87.7.1757018868973; Thu, 04 Sep 2025 13:47:48
- -0700 (PDT)
+ AJvYcCWZ/Qtm64Fg7+sT+lN1a1mtatURifDr8SAwmYemDZq5H3Efokf2nvJtxgtjYwcDZMKQadJwA1qxLA==@nongnu.org
+X-Gm-Message-State: AOJu0YyBH622vKWIICf29QLFD9/1kQob82NOCCbxzxQOZ/HOqGLye39k
+ XBf96rBB3AFl9nf7EaaFgEQRkSQaxcBTTGrt/KhCcDxhiQ73Ej0C3SfL5IrMUPAkXhjtaBVtJjt
+ DZYJqzp8yXg==
+X-Gm-Gg: ASbGnctV4cttkk0XQQqV3hRBrO+TOiIJ6tMqgR7Nnqm7GkiKEnGuWNu4kUi3oNh2JZi
+ eBNn7JWlYsgCHmgXh4oS9+BM3ggfNPktfd4sIiPkUByecMChf23TBkk/zoUjRYB3HyHwrc9GcsM
+ quAN7ftCzsayn2DKa6Ps5sT2ZP51S8Hke/Ab5gGCH8WsAD8akK3GTwsaJ7eKyAC7TnC5/IAaYNg
+ KIWIBkTG55yKjCcYC1H4W/awYK7skO/KJE8ng7Lzf4+1vM9VUCkqkc2oFK/wm8bbU69dZR5ML2T
+ 7lkxiRGS2xRY1VCbLZv4/lUYJI7ayIN28TNFrg721dGe+PyNZGfIjSnwXzkJQ3LuR/7tUadhdwP
+ 3389QxR1Gnar+w885g21sT2Y=
+X-Google-Smtp-Source: AGHT+IE8HecJVtf9AVwFHj7Zc8GVfHW0EkZEJBpOiHPVvUmqmlG7FpnJmNe7qjSiEJz3mUckvBRgRg==
+X-Received: by 2002:a17:906:6a17:b0:b04:7b7f:33cc with SMTP id
+ a640c23a62f3a-b047b7f362amr545285766b.62.1757056864589; 
+ Fri, 05 Sep 2025 00:21:04 -0700 (PDT)
+Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
+ 4fb4d7f45d1cf-61cfc4bbc07sm16374784a12.30.2025.09.05.00.21.03
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 05 Sep 2025 00:21:03 -0700 (PDT)
+Received: from draig (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id 745F85F879;
+ Fri, 05 Sep 2025 08:21:02 +0100 (BST)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Gustavo Romero <gustavo.romero@linaro.org>
+Cc: qemu-devel@nongnu.org,  thuth@redhat.com,  berrange@redhat.com,
+ qemu-arm@nongnu.org,  1844144@gmail.com
+Subject: Re: [PATCH v2 5/5] tests/functional: Adapt reverse_debugging to run
+ w/o Avocado
+In-Reply-To: <20250904154640.52687-6-gustavo.romero@linaro.org> (Gustavo
+ Romero's message of "Thu, 4 Sep 2025 15:46:40 +0000")
+References: <20250904154640.52687-1-gustavo.romero@linaro.org>
+ <20250904154640.52687-6-gustavo.romero@linaro.org>
+User-Agent: mu4e 1.12.12; emacs 30.1
+Date: Fri, 05 Sep 2025 08:21:02 +0100
+Message-ID: <87ecslxt41.fsf@draig.linaro.org>
 MIME-Version: 1.0
-References: <20210708172556.1868139-1-titusr@google.com>
- <20210708172556.1868139-2-titusr@google.com>
- <472194f0-5853-4c7f-8b52-3c85e902097d@linaro.org>
-In-Reply-To: <472194f0-5853-4c7f-8b52-3c85e902097d@linaro.org>
-From: Titus Rwantare <titusr@google.com>
-Date: Thu, 4 Sep 2025 13:47:11 -0700
-X-Gm-Features: Ac12FXzTh9240eK_bGZv7iMuuv-ehW3FRorzo6SsQlIAFycz0vrM6HMW1704DG0
-Message-ID: <CAMvPwGqcn8fs0JWdcG1zsjZr_=Hny58Zuu=+wN_FRgvL-yTpUQ@mail.gmail.com>
-Subject: Re: [PATCH v5 1/5] hw/i2c: add support for PMBus
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: Corey Minyard <minyard@acm.org>, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- Joel Stanley <joel@jms.id.au>, Hao Wu <wuhaotsh@google.com>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::132;
- envelope-from=titusr@google.com; helo=mail-lf1-x132.google.com
-X-Spam_score_int: -175
-X-Spam_score: -17.6
-X-Spam_bar: -----------------
-X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::633;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x633.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -98,68 +109,553 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, 29 Aug 2025 at 09:08, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.or=
-g> wrote:
->
-> Hi Titus,
->
-> On 8/7/21 19:25, Titus Rwantare wrote:
-> > QEMU has support for SMBus devices, and PMBus is a more specific
-> > implementation of SMBus. The additions made in this commit makes it eas=
-ier to
-> > add new PMBus devices to QEMU.
-> >
-> > https://pmbus.org/specification-archives/
-> >
-> > Reviewed-by: Joel Stanley <joel@jms.id.au>
-> > Reviewed-by: Hao Wu <wuhaotsh@google.com>
-> > Signed-off-by: Titus Rwantare <titusr@google.com>
-> > ---
-> >   include/hw/i2c/pmbus_device.h |  517 +++++++++++
-> >   hw/i2c/pmbus_device.c         | 1612 ++++++++++++++++++++++++++++++++=
-+
-> >   hw/arm/Kconfig                |    1 +
-> >   hw/i2c/Kconfig                |    4 +
-> >   hw/i2c/meson.build            |    1 +
-> >   5 files changed, 2135 insertions(+)
-> >   create mode 100644 include/hw/i2c/pmbus_device.h
-> >   create mode 100644 hw/i2c/pmbus_device.c
->
->
-> > +static uint8_t pmbus_receive_byte(SMBusDevice *smd)
-> > +{
-> > +    PMBusDevice *pmdev =3D PMBUS_DEVICE(smd);
-> > +    PMBusDeviceClass *pmdc =3D PMBUS_DEVICE_GET_CLASS(pmdev);
+Gustavo Romero <gustavo.romero@linaro.org> writes:
 
-> > +        qemu_log_mask(LOG_GUEST_ERROR,
-> > +                      "%s: reading from write only register 0x%02x\n",
-> > +                      __func__, pmdev->code);
-> > +        break;
-> > +
-> > +passthough:
-> > +    default:
-> > +        /* Pass through read request if not handled */
-> > +        if (pmdc->receive_byte) {
-> > +            ret =3D pmdc->receive_byte(pmdev);
+> This commit removes Avocado as a dependency for running the
+> reverse_debugging test.
 >
-> This returned value ...
+> The main benefit, beyond eliminating an extra dependency, is that there
+> is no longer any need to handle GDB packets manually. This removes the
+> need for ad-hoc functions dealing with endianness and arch-specific
+> register numbers, making the test easier to read. The timeout variable
+> is also removed, since Meson now manages timeouts automatically.
 >
-> > +        }
-> > +        break;
-> > +    }
-> > +
-> > +    if (pmdev->out_buf_len !=3D 0) {
-> > +        ret =3D pmbus_out_buf_pop(pmdev);
+> The reverse_debugging test is now executed through a runner, because it
+> requires GDB in addition to QMP. The runner is responsible for invoking
+> GDB with the appropriate arguments and for passing the test script to
+> GDB.
 >
-> ... is overwritten here, is that expected?
+> Since the test now runs inside GDB, its output, particularly from
+> 'stepi' commands, which cannot be disabled, interleaves with the TAP
+> output from unittest. To avoid this conflict, the test no longer uses
+> Meson=E2=80=99s 'tap' protocol and instead relies on the simpler 'exitcod=
+e'
+> protocol.
 >
-> > +        return ret;
-> > +    }
+> reverse_debugging is kept "skipped" for aarch64, ppc64, and x86_64, so
+> won't run unless QEMU_TEST_FLAKY_TESTS=3D1 is set in the test environment,
+> before running 'make check-functional' or 'meson test [...]'.
+>
+> Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
 
-Yes, this is expected but it could be done more cleanly. I can only
-return a byte out of pmbus_receive_byte() and this is sometimes data,
-sometimes -1 for an error. At the time, I decided the valid data in
-out_buf should take precedence over returns from the device
-receive_byte.
--Titus
+Could we split this between the architectures to make for better
+bisectability. Otherwise looks good:
+
+Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+Tested-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+
+
+> ---
+>  tests/functional/aarch64/meson.build          |   7 +-
+>  .../functional/aarch64/test_reverse_debug.py  |  15 +-
+>  tests/functional/ppc64/meson.build            |   7 +-
+>  tests/functional/ppc64/test_reverse_debug.py  |  17 +-
+>  tests/functional/reverse_debugging.py         | 175 +++++++++---------
+>  tests/functional/x86_64/meson.build           |   7 +-
+>  tests/functional/x86_64/test_reverse_debug.py |  21 +--
+>  7 files changed, 131 insertions(+), 118 deletions(-)
+>
+> diff --git a/tests/functional/aarch64/meson.build b/tests/functional/aarc=
+h64/meson.build
+> index 04846c6eb1..4f3168dd55 100644
+> --- a/tests/functional/aarch64/meson.build
+> +++ b/tests/functional/aarch64/meson.build
+> @@ -32,7 +32,6 @@ tests_aarch64_system_thorough =3D [
+>    'raspi3',
+>    'raspi4',
+>    'replay',
+> -  'reverse_debug',
+>    'rme_virt',
+>    'rme_sbsaref',
+>    'sbsaref',
+> @@ -46,3 +45,9 @@ tests_aarch64_system_thorough =3D [
+>    'xen',
+>    'xlnx_versal',
+>  ]
+> +
+> +if is_variable('gdb_runner')
+> +tests_aarch64_system_thorough_with_runner =3D [
+> +    ['reverse_debug', gdb_runner, 'exitcode'],
+> +]
+> +endif
+> diff --git a/tests/functional/aarch64/test_reverse_debug.py b/tests/funct=
+ional/aarch64/test_reverse_debug.py
+> index 8bc91ccfde..8b6f82c227 100755
+> --- a/tests/functional/aarch64/test_reverse_debug.py
+> +++ b/tests/functional/aarch64/test_reverse_debug.py
+> @@ -1,26 +1,25 @@
+> -#!/usr/bin/env python3
+> -#
+>  # SPDX-License-Identifier: GPL-2.0-or-later
+>  #
+> -# Reverse debugging test
+> +# Reverse debugging test for aarch64
+>  #
+>  # Copyright (c) 2020 ISP RAS
+> +# Copyright (c) 2025 Linaro Limited
+>  #
+>  # Author:
+>  #  Pavel Dovgalyuk <Pavel.Dovgalyuk@ispras.ru>
+> +#  Gustavo Romero <gustavo.romero@linaro.org> (Run without Avocado)
+>  #
+>  # This work is licensed under the terms of the GNU GPL, version 2 or
+>  # later.  See the COPYING file in the top-level directory.
+>=20=20
+> -from qemu_test import Asset, skipIfMissingImports, skipFlakyTest
+> +# ReverseDebugging must be imported always first because of the check
+> +# in it for not running this test without the GDB runner.
+>  from reverse_debugging import ReverseDebugging
+> +from qemu_test import Asset, skipFlakyTest
+>=20=20
+>=20=20
+> -@skipIfMissingImports('avocado.utils')
+>  class ReverseDebugging_AArch64(ReverseDebugging):
+>=20=20
+> -    REG_PC =3D 32
+> -
+>      ASSET_KERNEL =3D Asset(
+>          ('https://archives.fedoraproject.org/pub/archive/fedora/linux/'
+>           'releases/29/Everything/aarch64/os/images/pxeboot/vmlinuz'),
+> @@ -35,4 +34,4 @@ def test_aarch64_virt(self):
+>=20=20
+>=20=20
+>  if __name__ =3D=3D '__main__':
+> -    ReverseDebugging.main()
+> +    ReverseDebugging_AArch64.main()
+> diff --git a/tests/functional/ppc64/meson.build b/tests/functional/ppc64/=
+meson.build
+> index 842fe0fc71..e81f8b0003 100644
+> --- a/tests/functional/ppc64/meson.build
+> +++ b/tests/functional/ppc64/meson.build
+> @@ -20,6 +20,11 @@ tests_ppc64_system_thorough =3D [
+>    'powernv',
+>    'pseries',
+>    'replay',
+> -  'reverse_debug',
+>    'tuxrun',
+>  ]
+> +
+> +if is_variable('gdb_runner')
+> +tests_ppc64_system_thorough_with_runner =3D [
+> +    ['reverse_debug', gdb_runner, 'exitcode'],
+> +]
+> +endif
+> diff --git a/tests/functional/ppc64/test_reverse_debug.py b/tests/functio=
+nal/ppc64/test_reverse_debug.py
+> index 5931adef5a..e70ca85d0a 100755
+> --- a/tests/functional/ppc64/test_reverse_debug.py
+> +++ b/tests/functional/ppc64/test_reverse_debug.py
+> @@ -1,41 +1,38 @@
+> -#!/usr/bin/env python3
+> -#
+>  # SPDX-License-Identifier: GPL-2.0-or-later
+>  #
+> -# Reverse debugging test
+> +# Reverse debugging test for ppc64
+>  #
+>  # Copyright (c) 2020 ISP RAS
+> +# Copyright (c) 2025 Linaro Limited
+>  #
+>  # Author:
+>  #  Pavel Dovgalyuk <Pavel.Dovgalyuk@ispras.ru>
+> +#  Gustavo Romero <gustavo.romero@linaro.org> (Run without Avocado)
+>  #
+>  # This work is licensed under the terms of the GNU GPL, version 2 or
+>  # later.  See the COPYING file in the top-level directory.
+>=20=20
+> -from qemu_test import skipIfMissingImports, skipFlakyTest
+> +# ReverseDebugging must be imported always first because of the check
+> +# in it for not running this test without the GDB runner.
+>  from reverse_debugging import ReverseDebugging
+> +from qemu_test import skipFlakyTest
+>=20=20
+>=20=20
+> -@skipIfMissingImports('avocado.utils')
+>  class ReverseDebugging_ppc64(ReverseDebugging):
+>=20=20
+> -    REG_PC =3D 0x40
+> -
+>      @skipFlakyTest("https://gitlab.com/qemu-project/qemu/-/issues/1992")
+>      def test_ppc64_pseries(self):
+>          self.set_machine('pseries')
+>          # SLOF branches back to its entry point, which causes this test
+>          # to take the 'hit a breakpoint again' path. That's not a proble=
+m,
+>          # just slightly different than the other machines.
+> -        self.endian_is_le =3D False
+>          self.reverse_debugging()
+>=20=20
+>      @skipFlakyTest("https://gitlab.com/qemu-project/qemu/-/issues/1992")
+>      def test_ppc64_powernv(self):
+>          self.set_machine('powernv')
+> -        self.endian_is_le =3D False
+>          self.reverse_debugging()
+>=20=20
+>=20=20
+>  if __name__ =3D=3D '__main__':
+> -    ReverseDebugging.main()
+> +    ReverseDebugging_ppc64.main()
+> diff --git a/tests/functional/reverse_debugging.py b/tests/functional/rev=
+erse_debugging.py
+> index f9a1d395f1..bb0b176579 100644
+> --- a/tests/functional/reverse_debugging.py
+> +++ b/tests/functional/reverse_debugging.py
+> @@ -1,16 +1,26 @@
+> -# Reverse debugging test
+> -#
+>  # SPDX-License-Identifier: GPL-2.0-or-later
+>  #
+> +# Reverse debugging test
+> +#
+>  # Copyright (c) 2020 ISP RAS
+> +# Copyright (c) 2025 Linaro Limited
+>  #
+>  # Author:
+>  #  Pavel Dovgalyuk <Pavel.Dovgalyuk@ispras.ru>
+> +#  Gustavo Romero <gustavo.romero@linaro.org> (Run without Avocado)
+>  #
+>  # This work is licensed under the terms of the GNU GPL, version 2 or
+>  # later.  See the COPYING file in the top-level directory.
+> -import os
+> +
+> +try:
+> +    import gdb
+> +except ModuleNotFoundError:
+> +    from sys import exit
+> +    exit("This script must be launched via tests/guest-debug/run-test.py=
+!")
+>  import logging
+> +import os
+> +import subprocess
+> +
+>=20=20
+>  from qemu_test import LinuxKernelTest, get_qemu_img
+>  from qemu_test.ports import Ports
+> @@ -28,13 +38,9 @@ class ReverseDebugging(LinuxKernelTest):
+>      that the execution is stopped at the last of them.
+>      """
+>=20=20
+> -    timeout =3D 10
+>      STEPS =3D 10
+> -    endian_is_le =3D True
+>=20=20
+>      def run_vm(self, record, shift, args, replay_path, image_path, port):
+> -        from avocado.utils import datadrainer
+> -
+>          logger =3D logging.getLogger('replay')
+>          vm =3D self.get_vm(name=3D'record' if record else 'replay')
+>          vm.set_console()
+> @@ -52,59 +58,48 @@ def run_vm(self, record, shift, args, replay_path, im=
+age_path, port):
+>          if args:
+>              vm.add_args(*args)
+>          vm.launch()
+> -        console_drainer =3D datadrainer.LineLogger(vm.console_socket.fil=
+eno(),
+> -                                    logger=3Dself.log.getChild('console'=
+),
+> -                                    stop_check=3D(lambda : not vm.is_run=
+ning()))
+> -        console_drainer.start()
+> +
+>          return vm
+>=20=20
+>      @staticmethod
+> -    def get_reg_le(g, reg):
+> -        res =3D g.cmd(b'p%x' % reg)
+> -        num =3D 0
+> -        for i in range(len(res))[-2::-2]:
+> -            num =3D 0x100 * num + int(res[i:i + 2], 16)
+> -        return num
+> +    def gdb_connect(host, port):
+> +        # Set debug on connection to get the qSupport string.
+> +        gdb.execute("set debug remote 1")
+> +        r =3D gdb.execute(f"target remote {host}:{port}", False, True)
+> +        gdb.execute("set debug remote 0")
+> +
+> +        return r
+>=20=20
+>      @staticmethod
+> -    def get_reg_be(g, reg):
+> -        res =3D g.cmd(b'p%x' % reg)
+> -        return int(res, 16)
+> -
+> -    def get_reg(self, g, reg):
+> -        # value may be encoded in BE or LE order
+> -        if self.endian_is_le:
+> -            return self.get_reg_le(g, reg)
+> -        else:
+> -            return self.get_reg_be(g, reg)
+> +    def get_pc():
+> +        val =3D gdb.parse_and_eval("$pc")
+> +        pc =3D int(val)
+>=20=20
+> -    def get_pc(self, g):
+> -        return self.get_reg(g, self.REG_PC)
+> +        return pc
+>=20=20
+> -    def check_pc(self, g, addr):
+> -        pc =3D self.get_pc(g)
+> +    def check_pc(self, addr):
+> +        logger =3D logging.getLogger('reply')
+> +        pc =3D self.get_pc()
+>          if pc !=3D addr:
+> -            self.fail('Invalid PC (read %x instead of %x)' % (pc, addr))
+> +            logger.info('Invalid PC (read %x instead of %x)' % (pc, addr=
+))
+> +            gdb.execute("exit 1")
+>=20=20
+>      @staticmethod
+> -    def gdb_step(g):
+> -        g.cmd(b's', b'T05thread:01;')
+> +    def gdb_step():
+> +        gdb.execute("stepi")
+>=20=20
+>      @staticmethod
+> -    def gdb_bstep(g):
+> -        g.cmd(b'bs', b'T05thread:01;')
+> +    def gdb_bstep():
+> +        gdb.execute("reverse-stepi")
+>=20=20
+>      @staticmethod
+>      def vm_get_icount(vm):
+>          return vm.qmp('query-replay')['return']['icount']
+>=20=20
+>      def reverse_debugging(self, shift=3D7, args=3DNone):
+> -        from avocado.utils import gdb
+> -        from avocado.utils import process
+> -
+>          logger =3D logging.getLogger('replay')
+>=20=20
+> -        # create qcow2 for snapshots
+> +        # Create qcow2 for snapshots
+>          logger.info('creating qcow2 image for VM snapshots')
+>          image_path =3D os.path.join(self.workdir, 'disk.qcow2')
+>          qemu_img =3D get_qemu_img(self)
+> @@ -112,11 +107,11 @@ def reverse_debugging(self, shift=3D7, args=3DNone):
+>              self.skipTest('Could not find "qemu-img", which is required =
+to '
+>                            'create the temporary qcow2 image')
+>          cmd =3D '%s create -f qcow2 %s 128M' % (qemu_img, image_path)
+> -        process.run(cmd)
+> +        subprocess.run(cmd, shell=3DTrue)
+>=20=20
+>          replay_path =3D os.path.join(self.workdir, 'replay.bin')
+>=20=20
+> -        # record the log
+> +        # Record the log.
+>          vm =3D self.run_vm(True, shift, args, replay_path, image_path, -=
+1)
+>          while self.vm_get_icount(vm) <=3D self.STEPS:
+>              pass
+> @@ -125,72 +120,84 @@ def reverse_debugging(self, shift=3D7, args=3DNone):
+>=20=20
+>          logger.info("recorded log with %s+ steps" % last_icount)
+>=20=20
+> -        # replay and run debug commands
+> +        # Replay and run debug commands.
+>          with Ports() as ports:
+>              port =3D ports.find_free_port()
+>              vm =3D self.run_vm(False, shift, args, replay_path, image_pa=
+th, port)
+> -        logger.info('connecting to gdbstub')
+> -        g =3D gdb.GDBRemote('127.0.0.1', port, False, False)
+> -        g.connect()
+> -        r =3D g.cmd(b'qSupported')
+> -        if b'qXfer:features:read+' in r:
+> -            g.cmd(b'qXfer:features:read:target.xml:0,ffb')
+> -        if b'ReverseStep+' not in r:
+> +        logger.info('Connecting to gdbstub')
+> +        r =3D self.gdb_connect('127.0.0.1', port)
+> +        if 'ReverseStep+' not in r:
+>              self.fail('Reverse step is not supported by QEMU')
+> -        if b'ReverseContinue+' not in r:
+> +        if 'ReverseContinue+' not in r:
+>              self.fail('Reverse continue is not supported by QEMU')
+>=20=20
+> -        logger.info('stepping forward')
+> +        logger.info('Stepping forward')
+>          steps =3D []
+> -        # record first instruction addresses
+> +        # Record first instruction addresses.
+>          for _ in range(self.STEPS):
+> -            pc =3D self.get_pc(g)
+> -            logger.info('saving position %x' % pc)
+> +            pc =3D self.get_pc()
+> +            logger.info('Saving position %x' % pc)
+>              steps.append(pc)
+> -            self.gdb_step(g)
+> +            self.gdb_step()
+>=20=20
+> -        # visit the recorded instruction in reverse order
+> -        logger.info('stepping backward')
+> +        # Visit the recorded instruction in reverse order.
+> +        logger.info('Stepping backward')
+>          for addr in steps[::-1]:
+> -            self.gdb_bstep(g)
+> -            self.check_pc(g, addr)
+> -            logger.info('found position %x' % addr)
+> +            self.gdb_bstep()
+> +            self.check_pc(addr)
+> +            logger.info('Found position %x' % addr)
+>=20=20
+> -        # visit the recorded instruction in forward order
+> -        logger.info('stepping forward')
+> +        # Visit the recorded instruction in forward order.
+> +        logger.info('Stepping forward')
+>          for addr in steps:
+> -            self.check_pc(g, addr)
+> -            self.gdb_step(g)
+> -            logger.info('found position %x' % addr)
+> +            self.check_pc(addr)
+> +            self.gdb_step()
+> +            logger.info('Found position %x' % addr)
+>=20=20
+> -        # set breakpoints for the instructions just stepped over
+> -        logger.info('setting breakpoints')
+> +        # Set breakpoints for the instructions just stepped over.
+> +        logger.info('Setting breakpoints')
+>          for addr in steps:
+>              # hardware breakpoint at addr with len=3D1
+> -            g.cmd(b'Z1,%x,1' % addr, b'OK')
+> +            gdb.execute(f"break *{hex(addr)}")
+>=20=20
+> -        # this may hit a breakpoint if first instructions are executed
+> -        # again
+> -        logger.info('continuing execution')
+> +        # This may hit a breakpoint if first instructions are executed a=
+gain.
+> +        logger.info('Continuing execution')
+>          vm.qmp('replay-break', icount=3Dlast_icount - 1)
+> -        # continue - will return after pausing
+> +        # continue - will return after pausing.
+>          # This could stop at the end and get a T02 return, or by
+>          # re-executing one of the breakpoints and get a T05 return.
+> -        g.cmd(b'c')
+> +        gdb.execute("continue")
+>          if self.vm_get_icount(vm) =3D=3D last_icount - 1:
+> -            logger.info('reached the end (icount %s)' % (last_icount - 1=
+))
+> +            logger.info('Reached the end (icount %s)' % (last_icount - 1=
+))
+>          else:
+> -            logger.info('hit a breakpoint again at %x (icount %s)' %
+> +            logger.info('Hit a breakpoint again at %x (icount %s)' %
+>                          (self.get_pc(g), self.vm_get_icount(vm)))
+>=20=20
+> -        logger.info('running reverse continue to reach %x' % steps[-1])
+> -        # reverse continue - will return after stopping at the breakpoint
+> -        g.cmd(b'bc', b'T05thread:01;')
+> +        logger.info('Running reverse continue to reach %x' % steps[-1])
+> +        # reverse continue - will return after stopping at the breakpoin=
+t.
+> +        gdb.execute("reverse-continue")
+>=20=20
+> -        # assume that none of the first instructions is executed again
+> -        # breaking the order of the breakpoints
+> -        self.check_pc(g, steps[-1])
+> -        logger.info('successfully reached %x' % steps[-1])
+> +        # Assume that none of the first instructions is executed again
+> +        # breaking the order of the breakpoints.
+> +        # steps[-1] is the first saved $pc in reverse order.
+> +        self.check_pc(steps[-1])
+> +        logger.info('Successfully reached %x' % steps[-1])
+>=20=20
+> -        logger.info('exiting gdb and qemu')
+> +        logger.info('Exiting GDB and QEMU...')
+> +        # Disconnect from the VM.
+> +        gdb.execute("disconnect")
+> +        # Guarantee VM is shutdown.
+>          vm.shutdown()
+> +        # Gently exit from GDB.
+> +        gdb.execute("exit 0")
+> +
+> +    def main():
+> +        try:
+> +            LinuxKernelTest.main()
+> +        except SystemExit:
+> +            # If the test is marked with @skipFlakyTest, then it will be=
+ exited
+> +            # via sys.exit() before we have the chance to exit from GDB =
+gently.
+> +            # Because recent versions of GDB will return a failure value=
+ if this
+> +            # happens, we catch the SystemExit and exit from GDB gently =
+with 77,
+> +            # which meson interprets correctly as a skipped test.
+> +            gdb.execute("exit 77")
+> diff --git a/tests/functional/x86_64/meson.build b/tests/functional/x86_6=
+4/meson.build
+> index d0b4667bb8..b5e0c9a0d7 100644
+> --- a/tests/functional/x86_64/meson.build
+> +++ b/tests/functional/x86_64/meson.build
+> @@ -29,8 +29,13 @@ tests_x86_64_system_thorough =3D [
+>    'multiprocess',
+>    'netdev_ethtool',
+>    'replay',
+> -  'reverse_debug',
+>    'tuxrun',
+>    'virtio_balloon',
+>    'virtio_gpu',
+>  ]
+> +
+> +if is_variable('gdb_runner')
+> +    tests_x86_64_system_thorough_with_runner =3D [
+> +        ['reverse_debug', gdb_runner, 'exitcode'],
+> +    ]
+> +endif
+> diff --git a/tests/functional/x86_64/test_reverse_debug.py b/tests/functi=
+onal/x86_64/test_reverse_debug.py
+> index d713e91e14..465f7e0abb 100755
+> --- a/tests/functional/x86_64/test_reverse_debug.py
+> +++ b/tests/functional/x86_64/test_reverse_debug.py
+> @@ -1,36 +1,31 @@
+> -#!/usr/bin/env python3
+> -#
+>  # SPDX-License-Identifier: GPL-2.0-or-later
+>  #
+> -# Reverse debugging test
+> +# Reverse debugging test for x86_64
+>  #
+>  # Copyright (c) 2020 ISP RAS
+> +# Copyright (c) 2025 Linaro Limited
+>  #
+>  # Author:
+>  #  Pavel Dovgalyuk <Pavel.Dovgalyuk@ispras.ru>
+> +#  Gustavo Romero <gustavo.romero@linaro.org> (Run without Avocado)
+>  #
+>  # This work is licensed under the terms of the GNU GPL, version 2 or
+>  # later.  See the COPYING file in the top-level directory.
+>=20=20
+> -from qemu_test import skipIfMissingImports, skipFlakyTest
+> +# ReverseDebugging must be imported always first because of the check
+> +# in it for not running this test without the GDB runner.
+>  from reverse_debugging import ReverseDebugging
+> +from qemu_test import skipFlakyTest
+>=20=20
+>=20=20
+> -@skipIfMissingImports('avocado.utils')
+>  class ReverseDebugging_X86_64(ReverseDebugging):
+>=20=20
+> -    REG_PC =3D 0x10
+> -    REG_CS =3D 0x12
+> -    def get_pc(self, g):
+> -        return self.get_reg_le(g, self.REG_PC) \
+> -            + self.get_reg_le(g, self.REG_CS) * 0x10
+> -
+>      @skipFlakyTest("https://gitlab.com/qemu-project/qemu/-/issues/2922")
+>      def test_x86_64_pc(self):
+>          self.set_machine('pc')
+> -        # start with BIOS only
+> +        # Start with BIOS only
+>          self.reverse_debugging()
+>=20=20
+>=20=20
+>  if __name__ =3D=3D '__main__':
+> -    ReverseDebugging.main()
+> +    ReverseDebugging_X86_64.main()
+
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro
 

@@ -4,111 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95A7DCA0FED
-	for <qemu-arm@archiver.kernel.org>; Fri,  5 Sep 2025 08:35:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A288CA0FED
+	for <qemu-arm@archiver.kernel.org>; Fri,  5 Sep 2025 08:43:40 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uuRuh-0006uM-Ra; Fri, 05 Sep 2025 04:35:19 -0400
+	id 1uuS2V-0002eB-EZ; Fri, 05 Sep 2025 04:43:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uuRud-0006t9-QM
- for qemu-arm@nongnu.org; Fri, 05 Sep 2025 04:35:18 -0400
+ id 1uuS2Q-0002ck-T2
+ for qemu-arm@nongnu.org; Fri, 05 Sep 2025 04:43:19 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uuRuW-00053K-Uo
- for qemu-arm@nongnu.org; Fri, 05 Sep 2025 04:35:14 -0400
+ id 1uuS2K-0007RS-BJ
+ for qemu-arm@nongnu.org; Fri, 05 Sep 2025 04:43:18 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1757061304;
+ s=mimecast20190719; t=1757061784;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=d5R1ozEOGiftEhMlw5PpLG8LK23YADtHKCGXnoZsK4g=;
- b=RAXAeqgqz2MDNE+BVONolI4lHzjCgvAxmcF16u+YR+WG+3/KCZO1XMd2vTTytJrz0jNple
- 1IZww2GGDbf1G+93bFCkLPju//d6YiSYuDbvsO+wsVlEwwZRUHLnMxGGnLuJKgCA6gNfzr
- IM+t29jBbeo694RtP86x2DeItZNsekU=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=JQhLshlqLpdrWmdUkHjxY52FvGwLrvRq5tezYToIO0Y=;
+ b=HUp8lvoZ9LPWj72zdMcORo6LPPRlR69mUv3xRs3Lo4KHWDYd3DsKdRfpklm7ArE+nFSJLb
+ D1eRTNvL6o5kDp1wFSRMMmuMGhYz9UMRNXTjtgRreBwy6JlqGel90M8Ol/J5ucrZ9rmIgQ
+ KiwE0in70NFb4wXWAqr/qN4XNNLPyfU=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-384-zGEZgreSNLSTy9Y5NNAEow-1; Fri, 05 Sep 2025 04:35:03 -0400
-X-MC-Unique: zGEZgreSNLSTy9Y5NNAEow-1
-X-Mimecast-MFC-AGG-ID: zGEZgreSNLSTy9Y5NNAEow_1757061302
-Received: by mail-wm1-f71.google.com with SMTP id
- 5b1f17b1804b1-45b990eb77cso12035995e9.0
- for <qemu-arm@nongnu.org>; Fri, 05 Sep 2025 01:35:03 -0700 (PDT)
+ us-mta-580-LtgVoT2pMw6bifjTI-v2yg-1; Fri, 05 Sep 2025 04:43:03 -0400
+X-MC-Unique: LtgVoT2pMw6bifjTI-v2yg-1
+X-Mimecast-MFC-AGG-ID: LtgVoT2pMw6bifjTI-v2yg_1757061782
+Received: by mail-wm1-f69.google.com with SMTP id
+ 5b1f17b1804b1-45a15f10f31so18802435e9.0
+ for <qemu-arm@nongnu.org>; Fri, 05 Sep 2025 01:43:03 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1757061302; x=1757666102;
+ d=1e100.net; s=20230601; t=1757061782; x=1757666582;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:reply-to:user-agent:mime-version:date
  :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=d5R1ozEOGiftEhMlw5PpLG8LK23YADtHKCGXnoZsK4g=;
- b=Dn5y1Ev3wMXzoj2pmB5tu9WRgVRSyLZEMNURZmBiYlEmMhnUMysrk5ZuQqnqFioOVq
- 8ezX0ALaXMENGhZ8B3nbh/6u1fKGetKbkc3bn3l+ziJhx7dMzGe71DzNSWhA0JFSSSQw
- z6r4b/awrCWOvCoGJd4KzqWLEI5LUM8NXQUgrcE+160XEkbfmPbGRsfJI3jYM3PsQJzv
- 8NeAWJc1pqyqhze1XVV16gmbbaQ/7dSjcVHXtz2Eegwcdzqtya/Q7Wf/GXsDaqCnLBTK
- ATkG2NKt3BGzh5mybksDjYehI3X0y36zGpAvogW3AR7Et8NGqPJw4/L2UOEeOsv71C6Y
- W5fw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUGUrkgAqpDYiZWnNMN/IP+Pa+45OB2TK6hVrO1t6XYg08HshlEnp1M5GLnlxC88qlJsJw6bVht7w==@nongnu.org
-X-Gm-Message-State: AOJu0Yxku3VtLMj9B185Xn28eYigU4hGiFMYfwTvcrZt8/N32HXxs+ti
- Ay41e7fI6NAMkoDmyMVfTYsbLKJ6/GJvSWQST6pawLwIoG3ImsrqN1qrWhkErPNfhISl8B3hPaf
- 3kFCTbAMqQ2uEZGHgVRmT3Gl8A5us7i/o26Yd4ajQSb/l1OuEyiJt5A==
-X-Gm-Gg: ASbGncspFOrZQYg5Knu3kbcOqeJU7q8LVg6RDPeFcQGMrt/Pr+wx5uvKEMzVDS2HKs8
- mc+vcEjNTrP5iKBltGYDrC70nMZt8C0rKdkB9OH3Na1+SO9RVR7myS5O9uKkjKNLU1tSROzVLgJ
- MGgpZTFq/dEZyTccBOZKL+idRkOjhncc0QvpMQKsxlaoPtsA6Ji+X9sSjPCXY8I8P/1LZbTio3T
- 4Id0Kyw7gSZtbcEaQuDlLIM4RBXLW7FkYU76tqr3gum1xgbCmRK+iagTCIdU/VaSyeYWcKVXNKE
- 49Vr8T3PxRU8W+EwTLJvfk+rR8w856CLujsW6WBU2emkWZcyGrZIwmoIzUVYFA0ReF31GGBau1x
- zLHJhQDmZXo4=
-X-Received: by 2002:a05:600c:3b01:b0:45d:d202:77f0 with SMTP id
- 5b1f17b1804b1-45dd5b3c05fmr20470845e9.5.1757061302338; 
- Fri, 05 Sep 2025 01:35:02 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IE+LR3/jbP3yoAyvxK+7HO6EG5KUTPtKcL7xxaBopvBTP+E2DDLLj3PHzBiAMBtFQ64e8aL/g==
-X-Received: by 2002:a05:600c:3b01:b0:45d:d202:77f0 with SMTP id
- 5b1f17b1804b1-45dd5b3c05fmr20470475e9.5.1757061301871; 
- Fri, 05 Sep 2025 01:35:01 -0700 (PDT)
+ bh=JQhLshlqLpdrWmdUkHjxY52FvGwLrvRq5tezYToIO0Y=;
+ b=oM0LSF7tVkMNGngK0OMqBXg66s4dEdodhrpswT5s9J3AHv6jQxiozk8fnkF3luj9xP
+ pDjR69WEU7KP46/BZxPNjByv3OYgF0orTs7dOB60HZTO33KYIMYJHebp3dR4/CZNrDQF
+ nXKLd1YTRFm/Uk9TNgZhgM1B6DBoumZNXF99Ri9uxG/lKc4H0udR6qcd9J4mczPw9zX4
+ dfTl9AxZt1Hq0UgaKg1QBjWAxhHeD3JTHgjrwum8zg1uE5uEhq3Fw09vBv8MKUtsBthn
+ wuwTfhUSi6bDrD1/IHuW8gdXwSmPxxpXue4MPgRyxMRxE92APHj0Tr9EJGm4hBFxfdEZ
+ hXrQ==
+X-Gm-Message-State: AOJu0Yzotz4jRVt1LZf6R79PdAnmymP6Z57sGLSnCiISLcBDIcOnjgki
+ +Wl0+1w27eZEQAeQtzD5kfCnFnKAwEdpEk2l2Y+oRH8I9Tp99ZDSxdV8DnLI2vDIyn7qom7aVd0
+ m/TIXWx+SctBVdEqOcZo461ox8LXJtzqNmV8U6N3hFzsIA2XQrH5pqJChgi0+vw3iYdZNUMFR6P
+ fCOlb7aRCi/nEUITG3hQNl3FA3XMXwzjxrd8BU7ihMGRE=
+X-Gm-Gg: ASbGncuF+k5hiez8Ikbx4E6vjcT0WoLS/jPvxq4s/xMUSK3ew9USFkPvUAaxHxuL2Fe
+ ABt9tcW8AINV4A7Y/ZkRNbpDHWnjJVcYKcqeyXdMU2iSu5E0vYhsT0XrWtUFo7Lgiy2N5yXXi6f
+ xS1mfBeDYnzgH6c6cGY88GcH1YdxM2vfSI/7lOoz/qiuXLHDdsMRDh9XSabBuuhsh6Jkv3lL8oZ
+ AUazTrPfMSafI+mUeiQkqRB2t4Fs28pUbvfIhq6hs++1lhTZrMkrCjQyHCDV1dC74QOtlrF0ENd
+ rnzpw+JKCtI7oVvAA2/C3yg+BRAt2HFj0z9UCMuNG7z1GoaByE0YzbzayEa/6UoBZCWKZ6ssKX2
+ WTkSNX9nHxAk=
+X-Received: by 2002:a05:6000:64c:b0:3e3:c69e:a1ca with SMTP id
+ ffacd0b85a97d-3e3c69ea5c3mr1199745f8f.10.1757061781925; 
+ Fri, 05 Sep 2025 01:43:01 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGfHs8OlhI75MyapHmJXmYqo+pUNJMeFA+JCo5kww5W2z4epg6ZYGTjKcJPlY4u8lT1cwq4vA==
+X-Received: by 2002:a05:6000:64c:b0:3e3:c69e:a1ca with SMTP id
+ ffacd0b85a97d-3e3c69ea5c3mr1199706f8f.10.1757061781441; 
+ Fri, 05 Sep 2025 01:43:01 -0700 (PDT)
 Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
  ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-45dd0869b33sm69347195e9.9.2025.09.05.01.35.00
+ ffacd0b85a97d-3cf33fb9d37sm30914926f8f.49.2025.09.05.01.42.59
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 05 Sep 2025 01:35:01 -0700 (PDT)
-Message-ID: <4e93485f-0dc5-4708-958e-4cb4162fc922@redhat.com>
-Date: Fri, 5 Sep 2025 10:34:59 +0200
+ Fri, 05 Sep 2025 01:43:00 -0700 (PDT)
+Message-ID: <f6980853-3559-4a7a-afcc-5a7a2385335b@redhat.com>
+Date: Fri, 5 Sep 2025 10:42:59 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [RFC PATCH v3 06/15] hw/arm/smmuv3-accel: Restrict accelerated
  SMMUv3 to vfio-pci endpoints with iommufd
-To: Nicolin Chen <nicolinc@nvidia.com>, skolothumtho@nvidia.com
-Cc: "Duan, Zhenzhong" <zhenzhong.duan@intel.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "jgg@nvidia.com" <jgg@nvidia.com>, "ddutile@redhat.com"
- <ddutile@redhat.com>, "berrange@redhat.com" <berrange@redhat.com>,
- "nathanc@nvidia.com" <nathanc@nvidia.com>,
- "mochs@nvidia.com" <mochs@nvidia.com>,
- "smostafa@google.com" <smostafa@google.com>, Linuxarm <linuxarm@huawei.com>,
- "Wangzhou (B)" <wangzhou1@hisilicon.com>,
- jiangkunkun <jiangkunkun@huawei.com>,
- Jonathan Cameron <jonathan.cameron@huawei.com>,
- "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>,
- "shameerkolothum@gmail.com" <shameerkolothum@gmail.com>
+To: qemu-arm@nongnu.org, qemu-devel@nongnu.org, skolothumtho@nvidia.com
+Cc: peter.maydell@linaro.org, jgg@nvidia.com, nicolinc@nvidia.com,
+ ddutile@redhat.com, berrange@redhat.com, nathanc@nvidia.com,
+ mochs@nvidia.com, smostafa@google.com, linuxarm@huawei.com,
+ wangzhou1@hisilicon.com, jiangkunkun@huawei.com,
+ jonathan.cameron@huawei.com, zhangfei.gao@linaro.org,
+ zhenzhong.duan@intel.com, shameerkolothum@gmail.com
 References: <20250714155941.22176-1-shameerali.kolothum.thodi@huawei.com>
  <20250714155941.22176-7-shameerali.kolothum.thodi@huawei.com>
- <IA3PR11MB9136A660E9FAE540037986FB9257A@IA3PR11MB9136.namprd11.prod.outlook.com>
- <aHaW9IpjbaVcRUpA@Asurada-Nvidia>
- <IA3PR11MB9136E0D793F99E3837D208229256A@IA3PR11MB9136.namprd11.prod.outlook.com>
- <798f739303f74fbca49a09a623a0a118@huawei.com>
- <aHfmmdXXKcFDnJLP@Asurada-Nvidia>
 From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <aHfmmdXXKcFDnJLP@Asurada-Nvidia>
+In-Reply-To: <20250714155941.22176-7-shameerali.kolothum.thodi@huawei.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: U4Kz8uWrQ_aG2ldosXV1S-oD4p7OsGu19I548r0Boos_1757061302
+X-Mimecast-MFC-PROC-ID: wdprtWgaplHfW3yTwpcBBxkmYeutT2ErwIdyHX8cx3A_1757061782
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
@@ -139,74 +125,237 @@ Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Nicolin
 
-On 7/16/25 7:51 PM, Nicolin Chen wrote:
-> On Wed, Jul 16, 2025 at 09:34:04AM +0000, Shameerali Kolothum Thodi wrote:
->>>>> Seems aggressive for a hotplug, could we fail hotplug instead of kill
->>> QEMU?
->>>> Hotplug will unlikely be supported well, as it would introduce
->>>> too much complication.
->>>>
->>>> With iommufd, a vIOMMU object is allocated per device (vfio). If
->>>> the device fd (cdev) is not yet given to the QEMU. It isn't able
->>>> to allocate a vIOMMU object when creating a VM.
->>>>
->>>> While a vIOMMU object can be allocated at a later stage once the
->>>> device is hotplugged. But things like IORT mappings aren't able
->>>> to get refreshed since the OS is likely already booted. Even an
->>>> IOMMU capability sync via the hw_info ioctl will be difficult to
->>>> do at the runtime post the guest iommu driver's initialization.
->>>>
->>>> I am not 100% sure. But I think Intel model could have a similar
->>>> problem if the guest boots with zero cold-plugged device and then
->>>> hot-plugs a PASID-capable device at the runtime, when the guest-
->>>> level IOMMU driver is already inited?
->>> For vtd we define a property for each capability we care about.
->>> When hotplug a device, we get hw_info through ioctl and compare
->>> host's capability with virtual vtd's property setting, if incompatible,
->>> we fail the hotplug.
->>>
->>> In old implementation we sync host iommu caps into virtual vtd's cap,
->>> but that's Naked by maintainer. The suggested way is to define property
->>> for each capability we care and do compatibility check.
->>>
->>> There is a "pasid" property in virtual vtd, only when it's true, the PASID-
->>> capable
->>> device can work with pasid.
->> Thanks for this information. I think probably we need to take a look at this as
->> this doesn't have a dependency on cold-plug device to be present for SMMUv3.
->> Will go through intel vtd implementation.
-> I see. A compatibility test sounds promising.
+
+On 7/14/25 5:59 PM, Shameer Kolothum wrote:
+> Accelerated SMMUv3 is only useful when the device can take advantage of
+> the host's SMMUv3 in nested mode. To keep things simple and correct, we
+> only allow this feature for vfio-pci endpoint devices that use the iommufd
+> backend. We also allow non-endpoint emulated devices like PCI bridges and
+> root ports, so that users can plug in these vfio-pci devices.
 >
-> It still feels tricky when dealing with multi vSMMU instances, if
-> some instances don't have a cold-plug device to poll hw_info. We
-> would need to pre-define all the feature bits. Then, run the test
-> on every hotplug device attached later to the vSMMU instance.
-
-This is what looks the most sensible to me
+> Another reason for this limit is to avoid problems with IOTLB
+> invalidations. Some commands (e.g., CMD_TLBI_NH_ASID) lack an associated
+> SID, making it difficult to trace the originating device. If we allowed
+> emulated endpoint devices, QEMU would have to invalidate both its own
+> software IOTLB and the host's hardware IOTLB, which could slow things
+> down.
 >
-> Maybe we could do something wise:
-> The sysfs node provides all the IOMMU nodes. So, we could compare
-> the node names to see if they are likely symmetric or not. Nodes
-> sharing the same naming pattern are more likely created by the
-> same IOMMU driver. So, as a speculation, a vSMMU instance with no
-> coldplug device could borrow the bits from a vSMMU instance with
-> a device?
-Then instead of trying to match names, I think it would be cleaner to
-pass the sysfs path. But I would rather explore the "collect info as the
-come" way
+> Since vfio-pci devices in nested mode rely on the host SMMUv3's nested
+> translation (S1+S2), their get_address_space() callback must return the
+> system address space to enable correct S2 mappings of guest RAM.
+>
+> So in short:
+>  - vfio-pci devices return the system address space
+>  - bridges and root ports return the IOMMU address space
+>
+> Note: On ARM, MSI doorbell addresses are also translated via SMMUv3.
+> Hence, if a vfio-pci device is behind the SMMuv3 with translation enabled,
+> it must return the IOMMU address space for MSI. Support for this will be
+> added in a follow-up patch.
+It sounds antithetical to what is said above:
 
-Thanks
+"vfio-pci devices return the system address space"
 
 Eric
+
 >
-> Sure, individual IOMMU instances could differ in specific fields
-> despite using the same node name. This would unfortunately lead
-> to hotplug failure upon the compatibility check.
+> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+> ---
+>  hw/arm/smmuv3-accel.c               | 50 ++++++++++++++++++++++++++++-
+>  hw/arm/smmuv3-accel.h               | 15 +++++++++
+>  hw/arm/smmuv3.c                     |  4 +++
+>  hw/pci-bridge/pci_expander_bridge.c |  1 -
+>  include/hw/arm/smmuv3.h             |  1 +
+>  include/hw/pci/pci_bridge.h         |  1 +
+>  6 files changed, 70 insertions(+), 2 deletions(-)
 >
-> Thanks
-> Nicolin
->
+> diff --git a/hw/arm/smmuv3-accel.c b/hw/arm/smmuv3-accel.c
+> index 2eac9c6ff4..0b0ddb03e2 100644
+> --- a/hw/arm/smmuv3-accel.c
+> +++ b/hw/arm/smmuv3-accel.c
+> @@ -7,13 +7,19 @@
+>   */
+>  
+>  #include "qemu/osdep.h"
+> +#include "qemu/error-report.h"
+>  
+>  #include "hw/arm/smmuv3.h"
+> +#include "hw/pci/pci_bridge.h"
+> +#include "hw/pci-host/gpex.h"
+> +#include "hw/vfio/pci.h"
+> +
+>  #include "smmuv3-accel.h"
+>  
+>  static SMMUv3AccelDevice *smmuv3_accel_get_dev(SMMUState *bs, SMMUPciBus *sbus,
+>                                                  PCIBus *bus, int devfn)
+>  {
+> +    SMMUv3State *s = ARM_SMMUV3(bs);
+>      SMMUDevice *sdev = sbus->pbdev[devfn];
+>      SMMUv3AccelDevice *accel_dev;
+>  
+> @@ -25,30 +31,72 @@ static SMMUv3AccelDevice *smmuv3_accel_get_dev(SMMUState *bs, SMMUPciBus *sbus,
+>  
+>          sbus->pbdev[devfn] = sdev;
+>          smmu_init_sdev(bs, sdev, bus, devfn);
+> +        address_space_init(&accel_dev->as_sysmem, &s->s_accel->root,
+> +                           "smmuv3-accel-sysmem");
+>      }
+>  
+>      return accel_dev;
+>  }
+>  
+> +static bool smmuv3_accel_pdev_allowed(PCIDevice *pdev, bool *vfio_pci)
+> +{
+> +
+> +    if (object_dynamic_cast(OBJECT(pdev), TYPE_PCI_BRIDGE) ||
+> +        object_dynamic_cast(OBJECT(pdev), "pxb-pcie") ||
+> +        object_dynamic_cast(OBJECT(pdev), "gpex-root")) {
+> +        return true;
+> +    } else if ((object_dynamic_cast(OBJECT(pdev), TYPE_VFIO_PCI) &&
+> +        object_property_find(OBJECT(pdev), "iommufd"))) {
+> +        *vfio_pci = true;
+> +        return true;
+> +    }
+> +    return false;
+> +}
+> +
+>  static AddressSpace *smmuv3_accel_find_add_as(PCIBus *bus, void *opaque,
+>                                                int devfn)
+>  {
+> +    PCIDevice *pdev = pci_find_device(bus, pci_bus_num(bus), devfn);
+>      SMMUState *bs = opaque;
+> +    bool vfio_pci = false;
+>      SMMUPciBus *sbus;
+>      SMMUv3AccelDevice *accel_dev;
+>      SMMUDevice *sdev;
+>  
+> +    if (pdev && !smmuv3_accel_pdev_allowed(pdev, &vfio_pci)) {
+> +        error_report("Device(%s) not allowed. Only PCIe root complex devices "
+> +                     "or PCI bridge devices or vfio-pci endpoint devices with "
+> +                     "iommufd as backend is allowed with arm-smmuv3,accel=on",
+> +                     pdev->name);
+> +        exit(1);
+> +    }
+>      sbus = smmu_get_sbus(bs, bus);
+>      accel_dev = smmuv3_accel_get_dev(bs, sbus, bus, devfn);
+>      sdev = &accel_dev->sdev;
+>  
+> -    return &sdev->as;
+> +    if (vfio_pci) {
+> +        return &accel_dev->as_sysmem;
+> +    } else {
+> +        return &sdev->as;
+> +    }
+>  }
+>  
+>  static const PCIIOMMUOps smmuv3_accel_ops = {
+>      .get_address_space = smmuv3_accel_find_add_as,
+>  };
+>  
+> +void smmuv3_accel_init(SMMUv3State *s)
+> +{
+> +    SMMUv3AccelState *s_accel;
+> +
+> +    s->s_accel = s_accel = g_new0(SMMUv3AccelState, 1);
+> +    memory_region_init(&s_accel->root, OBJECT(s), "root", UINT64_MAX);
+> +    memory_region_init_alias(&s_accel->sysmem, OBJECT(s),
+> +                             "smmuv3-accel-sysmem", get_system_memory(), 0,
+> +                             memory_region_size(get_system_memory()));
+> +    memory_region_add_subregion(&s_accel->root, 0, &s_accel->sysmem);
+> +}
+> +
+>  static void smmuv3_accel_class_init(ObjectClass *oc, const void *data)
+>  {
+>      SMMUBaseClass *sbc = ARM_SMMU_CLASS(oc);
+> diff --git a/hw/arm/smmuv3-accel.h b/hw/arm/smmuv3-accel.h
+> index 4cf30b1291..2cd343103f 100644
+> --- a/hw/arm/smmuv3-accel.h
+> +++ b/hw/arm/smmuv3-accel.h
+> @@ -9,11 +9,26 @@
+>  #ifndef HW_ARM_SMMUV3_ACCEL_H
+>  #define HW_ARM_SMMUV3_ACCEL_H
+>  
+> +#include "hw/arm/smmuv3.h"
+>  #include "hw/arm/smmu-common.h"
+>  #include CONFIG_DEVICES
+>  
+>  typedef struct SMMUv3AccelDevice {
+>      SMMUDevice  sdev;
+> +    AddressSpace as_sysmem;
+>  } SMMUv3AccelDevice;
+>  
+> +typedef struct SMMUv3AccelState {
+> +    MemoryRegion root;
+> +    MemoryRegion sysmem;
+> +} SMMUv3AccelState;
+> +
+> +#if defined(CONFIG_ARM_SMMUV3) && defined(CONFIG_IOMMUFD)
+> +void smmuv3_accel_init(SMMUv3State *s);
+> +#else
+> +static inline void smmuv3_accel_init(SMMUv3State *d)
+> +{
+> +}
+> +#endif
+> +
+>  #endif /* HW_ARM_SMMUV3_ACCEL_H */
+> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+> index bcf8af8dc7..2f5a8157dd 100644
+> --- a/hw/arm/smmuv3.c
+> +++ b/hw/arm/smmuv3.c
+> @@ -32,6 +32,7 @@
+>  #include "qapi/error.h"
+>  
+>  #include "hw/arm/smmuv3.h"
+> +#include "smmuv3-accel.h"
+>  #include "smmuv3-internal.h"
+>  #include "smmu-internal.h"
+>  
+> @@ -1898,6 +1899,9 @@ static void smmu_realize(DeviceState *d, Error **errp)
+>      sysbus_init_mmio(dev, &sys->iomem);
+>  
+>      smmu_init_irq(s, dev);
+> +    if (sys->accel) {
+> +        smmuv3_accel_init(s);
+> +    }
+>  }
+>  
+>  static const VMStateDescription vmstate_smmuv3_queue = {
+> diff --git a/hw/pci-bridge/pci_expander_bridge.c b/hw/pci-bridge/pci_expander_bridge.c
+> index 1bcceddbc4..a8eb2d2426 100644
+> --- a/hw/pci-bridge/pci_expander_bridge.c
+> +++ b/hw/pci-bridge/pci_expander_bridge.c
+> @@ -48,7 +48,6 @@ struct PXBBus {
+>      char bus_path[8];
+>  };
+>  
+> -#define TYPE_PXB_PCIE_DEV "pxb-pcie"
+>  OBJECT_DECLARE_SIMPLE_TYPE(PXBPCIEDev, PXB_PCIE_DEV)
+>  
+>  static GList *pxb_dev_list;
+> diff --git a/include/hw/arm/smmuv3.h b/include/hw/arm/smmuv3.h
+> index d183a62766..3bdb92391a 100644
+> --- a/include/hw/arm/smmuv3.h
+> +++ b/include/hw/arm/smmuv3.h
+> @@ -63,6 +63,7 @@ struct SMMUv3State {
+>      qemu_irq     irq[4];
+>      QemuMutex mutex;
+>      char *stage;
+> +    struct SMMUv3AccelState  *s_accel;
+>  };
+>  
+>  typedef enum {
+> diff --git a/include/hw/pci/pci_bridge.h b/include/hw/pci/pci_bridge.h
+> index a055fd8d32..b61360b900 100644
+> --- a/include/hw/pci/pci_bridge.h
+> +++ b/include/hw/pci/pci_bridge.h
+> @@ -106,6 +106,7 @@ typedef struct PXBPCIEDev {
+>  
+>  #define TYPE_PXB_PCIE_BUS "pxb-pcie-bus"
+>  #define TYPE_PXB_CXL_BUS "pxb-cxl-bus"
+> +#define TYPE_PXB_PCIE_DEV "pxb-pcie"
+>  #define TYPE_PXB_DEV "pxb"
+>  OBJECT_DECLARE_SIMPLE_TYPE(PXBDev, PXB_DEV)
+>  
 
 

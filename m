@@ -4,111 +4,113 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71706CA0FED
-	for <qemu-arm@archiver.kernel.org>; Fri,  5 Sep 2025 12:46:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E273ECA1013
+	for <qemu-arm@archiver.kernel.org>; Fri,  5 Sep 2025 13:05:19 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uuVpI-0000Vx-8x; Fri, 05 Sep 2025 08:46:00 -0400
+	id 1uuW7W-0005h2-7V; Fri, 05 Sep 2025 09:04:50 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uuVpF-0000UO-6K
- for qemu-arm@nongnu.org; Fri, 05 Sep 2025 08:45:58 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1uuW7U-0005gi-Fw
+ for qemu-arm@nongnu.org; Fri, 05 Sep 2025 09:04:48 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uuVp3-0002ER-8o
- for qemu-arm@nongnu.org; Fri, 05 Sep 2025 08:45:54 -0400
+ id 1uuW7N-0000RL-N3
+ for qemu-arm@nongnu.org; Fri, 05 Sep 2025 09:04:48 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1757076339;
+ s=mimecast20190719; t=1757077477;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=dpcpljMfUMh20mBtGWOGNHZROKSL8KX1CovFcEkH7OA=;
- b=ODGqLmJBd55VT7BZoqKnqc8Kk4BiTzn4v3vWyi06e8thwSA/XwJgWimGn9XT/lKKl4Pjre
- Pmh6/SmgTONygMj2IC+QiKW9wRyjbyxbq3bBNCipEoOthyHkl7TDhWaAb+SyZFUUPQWrHk
- wIT77wtyV5bYmegcNaYi7fltD5PCxCY=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=Dyeve++oj0PCnI7CU5T6k2ziHJ5mbvTXiAifvdXMaCk=;
+ b=G99l9WyLHzMwwBWJvYngsURTgI0fyDffludniRENB2iH7+J3imgJM0pmsqvdsVWQLKMTxR
+ MT71PZ/auxb9q53IiAGGyuv+EdTFFTPV6dADkx2J0D8rri6YIKePixj1jJcdRm0Kh05mYM
+ oR3wJnmgGc+p9MGrpQXQsUhDN2RPlSQ=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-358-tKqja54AO622AUOdu44frg-1; Fri, 05 Sep 2025 08:45:38 -0400
-X-MC-Unique: tKqja54AO622AUOdu44frg-1
-X-Mimecast-MFC-AGG-ID: tKqja54AO622AUOdu44frg_1757076338
-Received: by mail-wm1-f70.google.com with SMTP id
- 5b1f17b1804b1-45b87609663so12246295e9.3
- for <qemu-arm@nongnu.org>; Fri, 05 Sep 2025 05:45:38 -0700 (PDT)
+ us-mta-297-TP9E5IvxM8GFBDodz7h91g-1; Fri, 05 Sep 2025 09:04:36 -0400
+X-MC-Unique: TP9E5IvxM8GFBDodz7h91g-1
+X-Mimecast-MFC-AGG-ID: TP9E5IvxM8GFBDodz7h91g_1757077475
+Received: by mail-wm1-f69.google.com with SMTP id
+ 5b1f17b1804b1-45dd62a0dd2so3997725e9.1
+ for <qemu-arm@nongnu.org>; Fri, 05 Sep 2025 06:04:35 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1757076337; x=1757681137;
+ d=1e100.net; s=20230601; t=1757077475; x=1757682275;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:reply-to:user-agent:mime-version:date
  :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=dpcpljMfUMh20mBtGWOGNHZROKSL8KX1CovFcEkH7OA=;
- b=pW4+UcIdIlJiWZ89zURJ/7iYuzV31HtgJ7aOGUBAGVT81gRS6hRxCnzjf2wa7VBI5B
- AOIM/rTnfHXFeihcT31fP0RtQVdvdHzih2aMdYw/NvpjVm0N36nC5hA53JCn3AtRuKnE
- vaYPeMacJc2pf6xqCCR32Kk1V6JEg3hYvijFmo21I/ttxHAt5iPbEaVPoQp+5szFfOr4
- jbF6YNwNH628j+TFgc5+0/Md1ezVosYTZJFWo1mA5ooAux4Mae5t7bVpdojIUmaP+7sG
- N7PTIFgoRFJ6RKpdwAAe44bzbKPRs11Vl8mhVfeIFmOJre8e/i9NWMTR2aYXNUh8BsW5
- 3a2A==
-X-Gm-Message-State: AOJu0Yx267oNsJsJccHcRQlExoAwWOA+5exvGuvVv/Mf/M/p2uCCPKW1
- y26fBXlJydTNtT9vrFsQik6j3vb7l2Wwtm8sszqp1fKAaFDMHv29g1jMgZ+nvmghUSR6KC8Bmfe
- egj2qLd03Ksd1D0A6SMhaeWbItJi8IwF32LBLjdF6Ow5BlBYucRGIBn0/ubMfw9iPxP0z/VFIfT
- Uinc2MopAJ6TM0HJLfvJhC4Nt4LlrWzem7l6+3Ua/jsZE=
-X-Gm-Gg: ASbGnctdab4vjKZEODO02Br7yTK49e4WraO7SqwpvOc37ezInjcIAF7Al13NqmekAWd
- u0Y66/UeR4qwjynifv7u/FAeKL3kTttcgOb9QS3Oko5UOPStcYzeKs2rzAUdObg9FyxnYC9VJOU
- D/WWIdcRUglhcFtZy1gwO2SN9r4lS3bk7OrWBnelEQgVmq/IPLTQRSWS0uk8N4NQ2SO/Z20rmTw
- rp6bV+M93ZFgIt0TtP6hlE6eGm/lTigauu8ByYBYywP5cAp8R2q8pL5NjyC1piTa3+5Bf2o+P6L
- X53ALnPQAajfw6XYI/M15BK1aTWawB3X00dGtYluOLRSEzGs4N7CbJvEKgt8RucsIAq+ETtVIkD
- pjNil3LU6Dzc=
-X-Received: by 2002:a05:600c:1d06:b0:45b:6275:42cc with SMTP id
- 5b1f17b1804b1-45b8557a3f7mr178186945e9.28.1757076337014; 
- Fri, 05 Sep 2025 05:45:37 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEPol9Apl4omw6SWkoYNvJJs9ckstWhFG2gxiVrGGSMNeipnZU64NdnnvW6yD+Gwgb9cvBZWg==
-X-Received: by 2002:a05:600c:1d06:b0:45b:6275:42cc with SMTP id
- 5b1f17b1804b1-45b8557a3f7mr178186485e9.28.1757076336417; 
- Fri, 05 Sep 2025 05:45:36 -0700 (PDT)
+ bh=Dyeve++oj0PCnI7CU5T6k2ziHJ5mbvTXiAifvdXMaCk=;
+ b=GPHEsNgXxxVk5CJtBPI+39ABp/gde6S66lkFKxWbhVRf7XjQkfF3aWyJQK0TUFeB3C
+ L51UcnLmukCEsNQHxhxuVOTvlwDPUWF3+sQq9xrYCJ72jibO0/er2kPqDAjTuUQTFbjs
+ 7k0ZIMOJDNvQdXxIaamzypBeMwNa0EKfq2LH6XKINS9xThrlxKoincT6xjR8OAj7+d1t
+ g6jH+LCukIdUrMactZCjl3LA1stj0V3gcjGBgmGD1XHSYrtmanm1HGp0Ao/wyiw1c8L3
+ rNqQ2aVMEhLh6EKLe87xGrq+fQzY/ZOCLp4p1Q2qVkaRkgOiHQTrHI/vMJQanVIngpas
+ 2sHQ==
+X-Gm-Message-State: AOJu0Yz6909k9S5mWMmXHIi2nT9sG1mQOaYF4k03H44SNdjhlFoaBX2D
+ aW6RlmHPMXR33zFJ8jtwhUXIM00egMZ7rRNdA0V9az7d5HgfIsKvIi3DApVxc49hhZfPqfpMBPF
+ 8k8yVltcrbwe13+aYC0uiCRIfj2FVd+jV/DrE5827W4Xj9JNBe4AH6A==
+X-Gm-Gg: ASbGncvi/mKnnTBF+9MtAaImvyMnPtE6Ah4VU/S7nkbSHaMUbJjQ4t5YyKHCq6xj4ff
+ ezIGCT/wv9FnjniNCSGA83DrN9J+Zxxxaog7XbpbH+Ov0Dl9TWIm8pDYezY09dtJKA3j+YjgStT
+ 0Z+RTFE2lPSfSXL3sK+fK7PlJ4XIVmRtu0qDHHQStPyme/+Z1w4M++AoogSW9A2NIXcHZtTohVX
+ hd0HKCjlvp6qAAi7Qr3u2tmYT7jtkTkpT1lj4Emo2DEpMMyD5U14iKN4c/JBc54M7u51cUpNaUF
+ NEAxVrQRAP+JHwKsRtjXSRYPVgUxustZthtg4mB1NiBYlgFv3vlHoa06TRdydbtwWZXcIJgeJ51
+ dhXAodOezckg=
+X-Received: by 2002:a05:600c:4746:b0:45c:b642:87a6 with SMTP id
+ 5b1f17b1804b1-45dd5aa03ccmr31597155e9.0.1757077474866; 
+ Fri, 05 Sep 2025 06:04:34 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFQrDW0V369DKSpe86zQrU0Ynuw1yVekNA5wS/HtixNoWrhyU3gGEBKPujq0aXDW2YwM65aig==
+X-Received: by 2002:a05:600c:4746:b0:45c:b642:87a6 with SMTP id
+ 5b1f17b1804b1-45dd5aa03ccmr31596695e9.0.1757077474381; 
+ Fri, 05 Sep 2025 06:04:34 -0700 (PDT)
 Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
  ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-45b93fae643sm174502675e9.3.2025.09.05.05.45.35
+ 5b1f17b1804b1-45b7e7fec07sm319466755e9.10.2025.09.05.06.04.32
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 05 Sep 2025 05:45:35 -0700 (PDT)
-Message-ID: <5ab38eaa-b005-432a-9de7-fae3e6096f89@redhat.com>
-Date: Fri, 5 Sep 2025 14:45:34 +0200
+ Fri, 05 Sep 2025 06:04:33 -0700 (PDT)
+Message-ID: <73390abf-bb75-4e0d-886d-7879a01f2aba@redhat.com>
+Date: Fri, 5 Sep 2025 15:04:31 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH v3 13/15] hw/arm/smmuv3: Forward invalidation commands
- to hw
-To: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+Subject: Re: [RFC PATCH v3 14/15] Read and validate host SMMUv3 feature bits
+To: Jason Gunthorpe <jgg@nvidia.com>, Nicolin Chen <nicolinc@nvidia.com>,
  Shameer Kolothum <skolothumtho@nvidia.com>
-Cc: peter.maydell@linaro.org, jgg@nvidia.com, nicolinc@nvidia.com,
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, peter.maydell@linaro.org,
  ddutile@redhat.com, berrange@redhat.com, nathanc@nvidia.com,
  mochs@nvidia.com, smostafa@google.com, linuxarm@huawei.com,
  wangzhou1@hisilicon.com, jiangkunkun@huawei.com,
  jonathan.cameron@huawei.com, zhangfei.gao@linaro.org,
  zhenzhong.duan@intel.com, shameerkolothum@gmail.com
 References: <20250714155941.22176-1-shameerali.kolothum.thodi@huawei.com>
- <20250714155941.22176-14-shameerali.kolothum.thodi@huawei.com>
+ <20250714155941.22176-15-shameerali.kolothum.thodi@huawei.com>
+ <aHcVNYtd9qe+sHAT@Asurada-Nvidia> <20250716115123.GW2067380@nvidia.com>
+ <aHfi3SS/V6qlx77H@Asurada-Nvidia> <20250716174506.GB2177622@nvidia.com>
 From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20250714155941.22176-14-shameerali.kolothum.thodi@huawei.com>
+In-Reply-To: <20250716174506.GB2177622@nvidia.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: vznOyJ01nvpnq-uS6qkKCOvnGzjQFOsPkO32odln1KQ_1757076338
+X-Mimecast-MFC-PROC-ID: fW5Yq5UMSqDmMyyUFiheUZmI1L0ZSz6KyIL_pAlPM-w_1757077475
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124;
+Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001,
+ T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -125,145 +127,72 @@ Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Shameer,
+Hi,
 
-On 7/14/25 5:59 PM, Shameer Kolothum wrote:
-> From: Nicolin Chen <nicolinc@nvidia.com>
+On 7/16/25 7:45 PM, Jason Gunthorpe wrote:
+> On Wed, Jul 16, 2025 at 10:35:25AM -0700, Nicolin Chen wrote:
+>> On Wed, Jul 16, 2025 at 08:51:23AM -0300, Jason Gunthorpe wrote:
+>>> On Tue, Jul 15, 2025 at 07:57:57PM -0700, Nicolin Chen wrote:
+>>>>> +    val = FIELD_EX32(s_accel->info.idr[5], IDR5, GRAN4K);
+>>>>> +    if (val < FIELD_EX32(s->idr[5], IDR5, GRAN4K)) {
+>>>>> +        s->idr[5] = FIELD_DP32(s->idr[5], IDR5, GRAN4K, val);
+>>>>> +    }
+>>>>> +    val = FIELD_EX32(s_accel->info.idr[5], IDR5, GRAN16K);
+>>>>> +    if (val < FIELD_EX32(s->idr[5], IDR5, GRAN16K)) {
+>>>>> +        s->idr[5] = FIELD_DP32(s->idr[5], IDR5, GRAN16K, val);
+>>>>> +    }
+>>>>> +    val = FIELD_EX32(s_accel->info.idr[5], IDR5, GRAN64K);
+>>>>> +    if (val < FIELD_EX32(s->idr[5], IDR5, GRAN64K)) {
+>>>>> +        s->idr[5] = FIELD_DP32(s->idr[5], IDR5, GRAN64K, val);
+>>>> Unless there is some conflicts between the QEMU emulation and the
+>>>> SMMU HW, I think we should probably just override these fields to
+>>>> the HW values,
+>>> The qemu model should be fully independent of the underlying HW, it
+>>> should not override from HW.
+>>>
+>>> It should check if the underlying supports the model and fail if it
+>>> doesn't.
+>> For every bit? If there is a conflict at a certain field (e.g.
+>> VMM only supports little endian while HW supports big endian),
+>> it must fail.
+> Yes every bit.
 >
-> Use the provided smmuv3-accel helper functions to issue the
-> invalidation commands to host SMMUv3.
+>> But here, I mean for these specific fields such as GRANxK and
+>> RIL (range-based invalidation), we should override them with
+>> the HW values. Otherwise, the guest OS seeing RIL for example
+>> will issue TLBI commands that the host can't support. Right?
+> No.
 >
-> Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
-> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-> ---
->  hw/arm/smmuv3-internal.h | 11 +++++++++++
->  hw/arm/smmuv3.c          | 28 ++++++++++++++++++++++++++++
->  2 files changed, 39 insertions(+)
->
-> diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
-> index 8cb6a9238a..f3aeaf6375 100644
-> --- a/hw/arm/smmuv3-internal.h
-> +++ b/hw/arm/smmuv3-internal.h
-> @@ -233,6 +233,17 @@ static inline bool smmuv3_gerror_irq_enabled(SMMUv3State *s)
->  #define Q_CONS_WRAP(q) (((q)->cons & WRAP_MASK(q)) >> (q)->log2size)
->  #define Q_PROD_WRAP(q) (((q)->prod & WRAP_MASK(q)) >> (q)->log2size)
->  
-> +static inline int smmuv3_q_ncmds(SMMUQueue *q)
-> +{
-> +    uint32_t prod = Q_PROD(q);
-> +    uint32_t cons = Q_CONS(q);
-> +
-> +    if (Q_PROD_WRAP(q) == Q_CONS_WRAP(q))
-> +        return prod - cons;
-> +    else
-> +        return WRAP_MASK(q) - cons + prod;
-> +}
-> +
->  static inline bool smmuv3_q_full(SMMUQueue *q)
->  {
->      return ((q->cons ^ q->prod) & WRAP_INDEX_MASK(q)) == WRAP_MASK(q);
-> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-> index c94bfe6564..97ecca0764 100644
-> --- a/hw/arm/smmuv3.c
-> +++ b/hw/arm/smmuv3.c
-> @@ -1285,10 +1285,17 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
->      SMMUCmdError cmd_error = SMMU_CERROR_NONE;
->      SMMUQueue *q = &s->cmdq;
->      SMMUCommandType type = 0;
-> +    SMMUCommandBatch batch = {};
-> +    uint32_t ncmds;
->  
->      if (!smmuv3_cmdq_enabled(s)) {
->          return 0;
->      }
-> +
-> +    ncmds = smmuv3_q_ncmds(q);
-> +    batch.cmds = g_new0(Cmd, ncmds);
-> +    batch.cons = g_new0(uint32_t, ncmds);
-so you are provisionning space for n commands found in the queue,
-independently on knowing whether they will be batched, ie. only
-invalidation commands are. Then commands are added in the batch one by
-one and you increment batch->ncmds in smmuv3_accel_batch_cmd. I agree
-with Jonathan. This looks weird. AT least I would introduce a kelper
-that inits a Back of ncmds and I would make all the batch fields
-private. You you end up with the init +
-smmuv3_accel_add_cmd_to_batch(batch, cmd). Then independently on the
-ncmds you can issue a smmuv3_accel_issue_cmd_batch that would return if
-there is nothing in the batch. You also need a batch deallocation
-helper. I remember I expressed in the past my concern about having
-commands executed out of order. I don't remember out conclusion on that
-but this shall be clearly studied and conclusion shall be put in the
-commit message.
-> +
->      /*
->       * some commands depend on register values, typically CR0. In case those
->       * register values change while handling the command, spec says it
-> @@ -1383,6 +1390,7 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
->  
->              trace_smmuv3_cmdq_cfgi_cd(sid);
->              smmuv3_flush_config(sdev);
-> +            smmuv3_accel_batch_cmd(sdev->smmu, sdev, &batch, &cmd, &q->cons);
->              break;
->          }
->          case SMMU_CMD_TLBI_NH_ASID:
-> @@ -1406,6 +1414,7 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
->              trace_smmuv3_cmdq_tlbi_nh_asid(asid);
->              smmu_inv_notifiers_all(&s->smmu_state);
->              smmu_iotlb_inv_asid_vmid(bs, asid, vmid);
-> +            smmuv3_accel_batch_cmd(bs, NULL, &batch, &cmd, &q->cons);
->              break;
->          }
->          case SMMU_CMD_TLBI_NH_ALL:
-> @@ -1433,6 +1442,7 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
->              trace_smmuv3_cmdq_tlbi_nsnh();
->              smmu_inv_notifiers_all(&s->smmu_state);
->              smmu_iotlb_inv_all(bs);
-> +            smmuv3_accel_batch_cmd(bs, NULL, &batch, &cmd, &q->cons);
->              break;
->          case SMMU_CMD_TLBI_NH_VAA:
->          case SMMU_CMD_TLBI_NH_VA:
-> @@ -1441,6 +1451,7 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
->                  break;
->              }
->              smmuv3_range_inval(bs, &cmd, SMMU_STAGE_1);
-> +            smmuv3_accel_batch_cmd(bs, NULL, &batch, &cmd, &q->cons);
->              break;
->          case SMMU_CMD_TLBI_S12_VMALL:
->          {
-> @@ -1499,12 +1510,29 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
->          queue_cons_incr(q);
->      }
->  
-> +    qemu_mutex_lock(&s->mutex);
-> +    if (!cmd_error && batch.ncmds) {
-> +        if (!smmuv3_accel_issue_cmd_batch(bs, &batch)) {
-> +            if (batch.ncmds) {
-> +                q->cons = batch.cons[batch.ncmds - 1];
-> +            } else {
-> +                q->cons = batch.cons[0]; /* FIXME: Check */
-> +            }
-> +            qemu_log_mask(LOG_GUEST_ERROR, "Illegal command type: %d\n",
-> +                          CMD_TYPE(&batch.cmds[batch.ncmds]));
-Can't you have other error types returned?
+> If the SMMU model does not include RIL then RIL is not available to
+> the guest.
+
+For virtio-iommu several parameters are dynamically computed: the pgsize
+mask, the aw (using ReservedRegion info). They are computed according to
+the assigned device requirements, if not conflicting with anything else.
+
+For instance you can have a look at 5c3cfe33f418 ("virtio-iommu: Set
+supported page size mask"). I don't quite remember but intel-iommu might
+also have such dynamic settings depending on the host.
+
+However I am unsure we enforce the computed granule/aw on dest (VFIO mig
+was not supported when the feature were implemented). as this is part of
+the device config it may be but it would be worth to check.
 
 Thanks
 
 Eric
-> +            cmd_error = SMMU_CERROR_ILL;
-> +        }
-> +    }
-> +    qemu_mutex_unlock(&s->mutex);
-> +
->      if (cmd_error) {
->          trace_smmuv3_cmdq_consume_error(smmu_cmd_string(type), cmd_error);
->          smmu_write_cmdq_err(s, cmd_error);
->          smmuv3_trigger_irq(s, SMMU_IRQ_GERROR, R_GERROR_CMDQ_ERR_MASK);
->      }
->  
-> +    g_free(batch.cmds);
-> +    g_free(batch.cons);
->      trace_smmuv3_cmdq_consume_out(Q_PROD(q), Q_CONS(q),
->                                    Q_PROD_WRAP(q), Q_CONS_WRAP(q));
->  
+>
+> If the SMMU model only supports GRAN4K, then the guest only uses 4k.
+>
+> This exactness is critical for live migration. We cannot have the IDRs
+> change during live migration.
+>
+> So there should be some built in models in qemu that define exactly
+> what kind of SMMU you get, and things like if 4k/16k/64k or RIL are
+> included in that model or not should be command line parameters/etc
+> like everything else in qemu..
+>
+> Jason
+>
 
 

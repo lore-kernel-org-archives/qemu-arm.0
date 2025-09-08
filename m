@@ -4,84 +4,122 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15ADBCAC581
-	for <qemu-arm@archiver.kernel.org>; Mon,  8 Sep 2025 17:19:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8BEBCA1016
+	for <qemu-arm@archiver.kernel.org>; Mon,  8 Sep 2025 18:30:00 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uvfW1-0006eP-Gu; Mon, 08 Sep 2025 13:18:53 -0400
+	id 1uvgc5-00081X-F8; Mon, 08 Sep 2025 14:29:13 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <titusr@google.com>) id 1uvfVH-0006Bl-Hb
- for qemu-arm@nongnu.org; Mon, 08 Sep 2025 13:18:13 -0400
-Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <titusr@google.com>) id 1uvfV8-0005YD-0Y
- for qemu-arm@nongnu.org; Mon, 08 Sep 2025 13:18:06 -0400
-Received: by mail-lf1-x129.google.com with SMTP id
- 2adb3069b0e04-560885b40e2so12794e87.0
- for <qemu-arm@nongnu.org>; Mon, 08 Sep 2025 10:17:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1757351870; x=1757956670; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=7q0yPHx8a6HFJU4nt+BsB9LXwZLZMRDFnEKXGOuW82Y=;
- b=O9lTT+28vsjhfPYON8k/NLMbVANnGGwXWGWZmcb7eD8/fvTOzpDPt7JMuYcvXXCJNV
- g+i9E2N3eb1zZUYimKhKHPJyDG2G9Jg9//bvhlbmG96uKdjU46QDgpr6rWyQCy7sLL15
- PRHUVZ9hIkFhKMo1XGCPpf6arutAtbsY5o4sCjkbAdVCTQkyws5vGmpuimP5N+t3kG4w
- eUjYwrcKC7l0Clw/5hNE31PA6etIwKFuOCADryuLBJpXmOemI1OxYj7GJzPCjUwXYQvT
- 6C1UYaOOkIX4403abzGqltPcmaLy9L5Peund8P+hCo/PaCOA1xLOa/z+WkYq2aXtqxR2
- jBmA==
+ (Exim 4.90_1) (envelope-from <vacha.bhavsar@oss.qualcomm.com>)
+ id 1uvgbs-0007zN-L1
+ for qemu-arm@nongnu.org; Mon, 08 Sep 2025 14:29:06 -0400
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <vacha.bhavsar@oss.qualcomm.com>)
+ id 1uvgbe-0001BN-8t
+ for qemu-arm@nongnu.org; Mon, 08 Sep 2025 14:28:59 -0400
+Received: from pps.filterd (m0279869.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 588GOIFr029406
+ for <qemu-arm@nongnu.org>; Mon, 8 Sep 2025 18:28:40 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+ cc:content-transfer-encoding:date:from:in-reply-to:message-id
+ :mime-version:references:subject:to; s=qcppdkim1; bh=5kvK2Zbx18K
+ SbtZ55xiDNMiC1rLFrM21UQJLE860tI8=; b=cyzVlUFwVlleO/KxB+IHCx7gHwR
+ /pRtKwUGG4dyqX3CRomGGrhC0rtLEYL6f99cZ643DduHx2LGYowFzw5Ru89yyj2v
+ 2MOOGjRQgoZnbl+zMfAJ4dL89WTILR+JQzVlydm+sIrKv0QWxUhCgsNruQ4Ws02b
+ 85sTna4PU/ziOX/KpSla9gf2lbZgfGvjxKCFInpPwkjAUN5W0H9FLZTo2Inz2WOH
+ Pbl+f0IdxNv9Z5N/3COt0ESGMbWAwkmLZPI0gOVCfj0oF6qB4XlGYjW4Q+pL3NjM
+ HRoEbiMIb/H4b+Y2v0db8GB6rbI5jkg24mNUTyfWVbdBce3zyvpxyZ65yYA==
+Received: from mail-pg1-f197.google.com (mail-pg1-f197.google.com
+ [209.85.215.197])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 490by8wppp-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
+ for <qemu-arm@nongnu.org>; Mon, 08 Sep 2025 18:28:40 +0000 (GMT)
+Received: by mail-pg1-f197.google.com with SMTP id
+ 41be03b00d2f7-b4c949fc524so3686507a12.2
+ for <qemu-arm@nongnu.org>; Mon, 08 Sep 2025 11:28:40 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1757351870; x=1757956670;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ d=1e100.net; s=20230601; t=1757356119; x=1757960919;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=7q0yPHx8a6HFJU4nt+BsB9LXwZLZMRDFnEKXGOuW82Y=;
- b=cvVwCF+ESmRzOTRQe8rNAhIR0HZ5vvrLBHB7Hdb7jR0y1jeHipxQR+pvXaIPqMdZb9
- WTT+psoKcwWvHl0D0qyCv9SD4MKZZgYUXzgMQb0IVIORFny1yZu+plyQUEqETzzQVF2Y
- HrSecjhQw7Hq+5iKLaB3ryQPo700yOCNuPdR1h2T18BMT2GjI2JZ9+QD5r+eyEdjefM2
- NXxQI6BV8NmzdgJ7m+O9R5KD/GieF5/1SbQ7zYbcwAlTD+gyR97RPX2p0eJZv6mhcB0V
- CgUFG1rMIgHu7VrMJ/3q6ZuWedL5dFHjyMsszLJYNokCWQy0cem/DMzfASJASupCGX3T
- E3JQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXQk6IWxyu91uSftLzk4nYtWleVBKNYI3I5fe3nXix5UrBT7tCT0IeJ4I5G0wa7LVwDe6yLAMjMmA==@nongnu.org
-X-Gm-Message-State: AOJu0YwCKubFFkOVduUIp15Wgd60sWjixeUeJvC5EPEcQuQ7LKdc5eTD
- QWu95tgVOLiiE+f4qk5r7ERTTpx/9DfdBp2PIZQfh4s8aWmiU3BQw/bwlFM6Aj04PafOZqI/LjM
- ErGFWTQiu/ZZi/0S9edOcHYPH6CxR5SYaCuD8ULQB
-X-Gm-Gg: ASbGnctY/aX8vgShmdlKVR9sHJ//sFZwbLSck3g05ramKMBDSnmPgjyo4BVd8McR2uk
- UoX0iGdlJN8Fz91hkxB6gR9vg4p3tQIQ1jGXU1HW4b0kI8yufQ6emWe7SXaT6xILZ6Y98t5r3ct
- i9HzZdeoh8qlqx33v5PLLWmlcLNZaf04LFYLt/0xr+8Kau2eU9F3fGbPbOKM6BpqJBH1V+FKFLm
- wmPk3AdholonoJ3EYkNXWuSZRNHC2u2EMp5i38GI04o3JV7bgVSXZw=
-X-Google-Smtp-Source: AGHT+IGa1707ngqK8lE0HOddagXrOexADGlagDzoDWyTnxeGOw0lkb3mCFN2ZjuyNJCstqJQCUJGuAxr1yU6bK6KH+M=
-X-Received: by 2002:a05:6512:2394:b0:542:6b39:1d57 with SMTP id
- 2adb3069b0e04-56271a9f22emr393921e87.3.1757351869665; Mon, 08 Sep 2025
- 10:17:49 -0700 (PDT)
+ bh=5kvK2Zbx18KSbtZ55xiDNMiC1rLFrM21UQJLE860tI8=;
+ b=NPdMDZ2CNwOmenWGaN+D2W8h1Ari2M1Fn9eeitU3BL65IapWETak2Srh0trFO9ojvF
+ fGf16leDN/efhpJUpCcce4ge3tAElhkOLOnRbv9HCGhQ4+OuosPp2m4QoclJp0xfU8v7
+ VGZmLgklNTZpe+brVoyxEnB9sFPaUCOh3ru3JnJyhmGgZmVHEfGmBU55au2BtAy/J/gn
+ uSNLWKH2RBnoAtMixmr5jLUPg/9d41IKydkBfXVg2Mhxn/9D9vGz0FFZTeL+yXIykFtW
+ RrFleIXYdHcI4P5rBYR3IRptlmpspZ2d2hwKWEogP+hJGSw40XzRY5lrQwzbicka0GeM
+ 2usg==
+X-Gm-Message-State: AOJu0Yy7M0Cx9gKH37eq0tpBTp1yORnY8nIjNBhHUmwns7fO46LQZKaH
+ EG1flKEkh8CZ36td9U/5jmvSJyf1EQ78qEcLUJFStV39K5XtE4j1uPxcZPGnjtJU8vmIF8U/zMg
+ IBfv6xSfuR2E9OzHZHYDS9VS0fvfbpPJHuCLIfd18Flsk5P9CH/zU9j8=
+X-Gm-Gg: ASbGncsfB4Pguh5qy2P7oEspt5cTgsWRKTGpq43iwOr96hHpMQH6+Wul/v145LkSCxw
+ 0YWCKmRm0qATIURrEwHPf0hy0+yaVXnfyIpblg3N0fJN+mnyY9ctw/6yo756Xb//AXEzUGh99EW
+ aSwEY3SH28ZkpYt6P4+GMuLJ7KsXYOZUaiXpgLIAa5kjHrC03Wtrs87R9fZjA5EAemBvneB9GyM
+ 6QtQKrdA5ZhdSzgCay+WTEASgFoWldbPZfEeGVsrxcDg7A5s1OItihy9uxarah6eNFP7o9tpSWy
+ egb/93OuowFNhxQHtHPNCOepDwDCQS4YE8yIbXcfXEi3APxiyZYh3GnTusBj7gYm4tm1mXLGX46
+ ylsXr+KKNgvSJueI=
+X-Received: by 2002:a05:6a20:9184:b0:251:e4b4:7a37 with SMTP id
+ adf61e73a8af0-2533fd956b8mr14460968637.19.1757356119356; 
+ Mon, 08 Sep 2025 11:28:39 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFum+csjEs7j5pwEm3dPD3XQBJuekdLEcDs89Ufxyf0P01sRmq1HZiknm8O7cElTbz9htywzw==
+X-Received: by 2002:a05:6a20:9184:b0:251:e4b4:7a37 with SMTP id
+ adf61e73a8af0-2533fd956b8mr14460916637.19.1757356118804; 
+ Mon, 08 Sep 2025 11:28:38 -0700 (PDT)
+Received: from admin15.qualcomm.com (i-global254.qualcomm.com.
+ [199.106.103.254]) by smtp.gmail.com with ESMTPSA id
+ 41be03b00d2f7-b4f9c35f391sm15480164a12.25.2025.09.08.11.28.37
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 08 Sep 2025 11:28:38 -0700 (PDT)
+From: Vacha Bhavsar <vacha.bhavsar@oss.qualcomm.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+ Vacha Bhavsar <vacha.bhavsar@oss.qualcomm.com>
+Subject: [PATCH v7 3/3] target/arm: Added test case for SME register exposure
+ to GDB
+Date: Mon,  8 Sep 2025 18:28:34 +0000
+Message-Id: <20250908182834.2476277-4-vacha.bhavsar@oss.qualcomm.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20250908182834.2476277-1-vacha.bhavsar@oss.qualcomm.com>
+References: <20250908182834.2476277-1-vacha.bhavsar@oss.qualcomm.com>
 MIME-Version: 1.0
-References: <20250828184939.3140841-1-bhillier@google.com>
- <484d2580-77fc-4fdf-8f02-ef25df08bb7c@linaro.org>
-In-Reply-To: <484d2580-77fc-4fdf-8f02-ef25df08bb7c@linaro.org>
-From: Titus Rwantare <titusr@google.com>
-Date: Mon, 8 Sep 2025 10:17:12 -0700
-X-Gm-Features: Ac12FXw3NIYUuW1rXVqO3k36XnEvFYykUNHccJNNZR9NAmx-0sn8CfeyoGXC6XI
-Message-ID: <CAMvPwGpjs1HkOCJU3AEyFj+sGepU8q7xynJKT6FryDe5-DnpsA@mail.gmail.com>
-Subject: Re: [PATCH v2] hw/sensor: add stub for ADM1266 blackbox
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: Ben Hillier <bhillier@google.com>, wuhaotsh@google.com, kfting@nuvoton.com,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::129;
- envelope-from=titusr@google.com; helo=mail-lf1-x129.google.com
-X-Spam_score_int: -175
-X-Spam_score: -17.6
-X-Spam_bar: -----------------
-X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+X-Authority-Analysis: v=2.4 cv=Yv8PR5YX c=1 sm=1 tr=0 ts=68bf2058 cx=c_pps
+ a=rz3CxIlbcmazkYymdCej/Q==:117 a=JYp8KDb2vCoCEuGobkYCKw==:17
+ a=yJojWOMRYYMA:10 a=EUspDBNiAAAA:8 a=Z_9JEIKELzp6YBcrEJoA:9
+ a=bFCP_H2QrGi7Okbo017w:22
+X-Proofpoint-GUID: SafAKFGmdwzeHMydk3Psis3rmo9wh_dr
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwOTA2MDAxOCBTYWx0ZWRfX0dK/F8n+VXHn
+ e6SO8WMUGBdzFOJazPL3jqLUurrNba6Dj03i3Wonx+vG/ujg3vjpTl60Q1I5MSKRsGcooM/pizB
+ aNlS7IMLpgB/SMAqIx5UZixoFTnocYjIdd6joQ2FWR+1AjWLiryIIQWM6LCSqP97cx1UbTiWSj2
+ u9ABTsyeSMjinc7ABmLl7+45cIatBJ4d6ifdLg9aIBrXPf5tAQo9YiOCN2ugE8g8eGySezUJ157
+ seaCs6m9ImQSzlYkbp81Y9+L8hyV6MmKaDXguaWl82M0vo4Hr4U08xHxKvliPVE+vNwf7T1GISe
+ kuj4KCgV8IPPbTy8MOLYc4nG0mpx8uopUHS+6cYmclx53YoTfCRZ+cBopXbFWO/VwqLE295dgAb
+ FJ4Fnfay
+X-Proofpoint-ORIG-GUID: SafAKFGmdwzeHMydk3Psis3rmo9wh_dr
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1117,Hydra:6.1.9,FMLib:17.12.80.40
+ definitions=2025-09-08_06,2025-09-08_02,2025-03-28_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ bulkscore=0 malwarescore=0 suspectscore=0 phishscore=0 clxscore=1015
+ spamscore=0 priorityscore=1501 impostorscore=0 adultscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.19.0-2507300000 definitions=main-2509060018
+Received-SPF: pass client-ip=205.220.180.131;
+ envelope-from=vacha.bhavsar@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
+X-Spam_score_int: -26
+X-Spam_score: -2.7
+X-Spam_bar: --
+X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_LOW=-0.7,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -97,110 +135,244 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, 29 Aug 2025 at 09:23, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.or=
-g> wrote:
->
-> Hi Titus,
->
-> On 28/8/25 20:49, Ben Hillier wrote:
-> > From: Titus Rwantare <titusr@google.com>
-> >
-> > This patch fixes a bug that causes a kernel panic when calling ADM1266_=
-BLACKBOX_INFORMATION.
->
-> But you also implement BLACKBOX_CONFIG / READ_BLACKBOX...
->
-> > Log Message:
-> >
-> > adm1266 5-0042: Could not read blackbox!
-> > Kernel panic - not syncing: stack-protector: Kernel stack is corrupted =
-in: adm1266_nvmem_read+0x168/0x170
-> >
-> > Signed-off-by: Titus Rwantare <titusr@google.com>
-> > ---
-> >   hw/sensor/adm1266.c | 15 +++++++++++++++
-> >   1 file changed, 15 insertions(+)
-> >
-> > diff --git a/hw/sensor/adm1266.c b/hw/sensor/adm1266.c
-> > index 9017ce6116..cd11526c2b 100644
-> > --- a/hw/sensor/adm1266.c
-> > +++ b/hw/sensor/adm1266.c
-> > @@ -75,6 +75,7 @@ typedef struct ADM1266State {
-> >   static const uint8_t adm1266_ic_device_id[] =3D {0x03, 0x41, 0x12, 0x=
-66};
-> >   static const uint8_t adm1266_ic_device_rev[] =3D {0x08, 0x01, 0x08, 0=
-x07, 0x0,
-> >                                                   0x0, 0x07, 0x41, 0x30=
-};
-> > +static const uint8_t adm1266_blackbox_info[] =3D {0x04, 0x00, 0x00, 0x=
-00, 0x00};
->    {
->      0x04,       /* length */
->      0x00, 0x00, /* latest ID */
->      0x00,       /* latest record logic index */
->      0x00        /* latest record count */
->    };
->
-> >
-> >   static void adm1266_exit_reset(Object *obj, ResetType type)
-> >   {
-> > @@ -125,6 +126,17 @@ static uint8_t adm1266_read_byte(PMBusDevice *pmde=
-v)
-> >           pmbus_send(pmdev, adm1266_ic_device_rev, sizeof(adm1266_ic_de=
-vice_rev));
-> >           break;
-> >
-> > +    case ADM1266_BLACKBOX_CONFIG:
-> > +        return 0;
->
-> I'd was expecting pmbus_send(pmdev, "\0\0", 2) for CYCLIC_RECORD_DISABLED=
-.
->
-> > +
-> > +    case ADM1266_READ_BLACKBOX:
->
-> Here I'm confused, as len+data is 65bytes. Is the guest
-> reading a stream of 0xff?
->
-> > +        return 0;
-> > +
-> > +    case ADM1266_BLACKBOX_INFORMATION:
-> > +        pmbus_send(pmdev, adm1266_blackbox_info,
-> > +                   sizeof(adm1266_blackbox_info));
-> > +        break;
->
-> OK.
->
-> >       default:
-> >           qemu_log_mask(LOG_UNIMP,
-> >                         "%s: reading from unimplemented register: 0x%02=
-x\n",
-> > @@ -154,6 +166,9 @@ static int adm1266_write_data(PMBusDevice *pmdev, c=
-onst uint8_t *buf,
-> >           pmbus_receive_block(pmdev, (uint8_t *)s->mfr_rev, sizeof(s->m=
-fr_rev));
-> >           break;
-> >
-> > +    case ADM1266_BLACKBOX_CONFIG:
-> Do we want to check, if lduw_p(buf) !=3D 0 -> log(UNIMP)?
->
-> > +    case ADM1266_READ_BLACKBOX:
->
-> Do we want to check, if (buf[0] !=3D 1) -> log(GUEST_ERROR),
-> and log(UNIMP) regardless?
->
-> > +    case ADM1266_BLACKBOX_INFORMATION:
->
->             log(GUEST_ERROR);
->
-> >       case ADM1266_SET_RTC:   /* do nothing */
-> >           break;
-> >
-> Regards,
->
-> Phil.
+This patch adds a test case to test SME register exposure to
+a remote gdb debugging session. This test simply sets and
+reads SME registers.
 
-Thanks for the feedback, I wound up implementing more of the blackbox
-and implementing a test for it.
--Titus
+Signed-off-by: Vacha Bhavsar <vacha.bhavsar@oss.qualcomm.com>
+---
+Changes since v6:
+- added functionality to skip ZA quadword and doubleword
+tile slice tests when the detected version of gdb does not
+support SME tile slices
+- added functionality to skip ZA quadword tile slice test
+when the detected version of gdb does not support casting
+gdb.Value to a 128bit python integer
+- cleaned up testcase and made it more compact with additional
+comments
+---
+ configure                             |  11 +++
+ tests/tcg/aarch64/Makefile.target     |  51 +++++++++++
+ tests/tcg/aarch64/gdbstub/test-sme.py | 125 ++++++++++++++++++++++++++
+ 3 files changed, 187 insertions(+)
+ create mode 100644 tests/tcg/aarch64/gdbstub/test-sme.py
+
+diff --git a/configure b/configure
+index 274a778764..8de18e755f 100755
+--- a/configure
++++ b/configure
+@@ -1839,6 +1839,17 @@ for target in $target_list; do
+           echo "GDB=$gdb_bin" >> $config_target_mak
+       fi
+ 
++      if test "${gdb_arches#*$arch}" != "$gdb_arches" && version_ge $gdb_version 14.1; then
++          echo "GDB_HAS_SME_TILES=y" >> $config_target_mak
++          if version_ge $gdb_version 16.1; then
++            echo "GDB_HAS_128BIT_INT_CAST_SUPPORT=y" >> $config_target_mak
++          else
++            echo "GDB_HAS_128BIT_INT_CAST_SUPPORT=n" >> $config_target_mak
++          fi
++       else
++          echo "GDB_HAS_SME_TILES=n" >> $config_target_mak
++      fi
++
+       if test "${gdb_arches#*aarch64}" != "$gdb_arches" && version_ge $gdb_version 15.1; then
+           echo "GDB_HAS_MTE=y" >> $config_target_mak
+       fi
+diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
+index 16ddcf4f88..954bc3139a 100644
+--- a/tests/tcg/aarch64/Makefile.target
++++ b/tests/tcg/aarch64/Makefile.target
+@@ -134,6 +134,57 @@ run-gdbstub-sve-ioctls: sve-ioctls
+ 
+ EXTRA_RUNS += run-gdbstub-sysregs run-gdbstub-sve-ioctls
+ 
++ifneq ($(CROSS_AS_HAS_ARMV9_SME),)
++# SME gdbstub tests
++
++run-gdbstub-sysregs-sme: sysregs
++	$(call run-test, $@, $(GDB_SCRIPT) \
++		--gdb $(GDB) \
++		--qemu $(QEMU) --qargs "$(QEMU_OPTS)" \
++		--bin $< --test $(AARCH64_SRC)/gdbstub/test-sme.py \
++		-- test_sme --gdb_basic_za_test, \
++	basic gdbstub SME support)
++
++ifeq ($(GDB_HAS_SME_TILES),y)
++run-gdbstub-sysregs-sme-doubleword-tile-slice: sysregs
++	$(call run-test, $@, $(GDB_SCRIPT) \
++		--gdb $(GDB) \
++		--qemu $(QEMU) --qargs "$(QEMU_OPTS)" \
++		--bin $< --test $(AARCH64_SRC)/gdbstub/test-sme.py \
++		-- test_sme --gdb_doubleword_tile_slice_test, \
++	gdbstub SME ZA doubleword tile slice support)
++
++ifeq ($(GDB_HAS_128BIT_INT_CAST_SUPPORT),y)
++run-gdbstub-sysregs-sme-quadword-tile-slice: sysregs
++	$(call run-test, $@, $(GDB_SCRIPT) \
++		--gdb $(GDB) \
++		--qemu $(QEMU) --qargs "$(QEMU_OPTS)" \
++		--bin $< --test $(AARCH64_SRC)/gdbstub/test-sme.py \
++		-- test_sme --gdb_quadword_tile_slice_test, \
++	gdbstub SME ZA quadword tile slice support)	
++
++else
++run-gdbstub-sysregs-sme-quadword-tile-slice: sysregs
++	$(call skip-test,"gdbstub SME ZA quadword tile slice support", \
++	"selected gdb ($(GDB)) does not support casting gdb.Value into 128bit python integer")
++
++endif
++else
++run-gdbstub-sysregs-sme-doubleword-tile-slice: sysregs
++	$(call skip-test,"gdbstub SME ZA doubleword tile slice support", \
++	"selected gdb ($(GDB)) does not support SME ZA tile slices")
++
++run-gdbstub-sysregs-sme-quadword-tile-slice: sysregs
++	$(call skip-test,"gdbstub SME ZA quadword tile slice support", \
++	"selected gdb ($(GDB)) does not support SME ZA tile slices")
++
++endif
++
++EXTRA_RUNS += run-gdbstub-sysregs-sme run-gdbstub-sysregs-sme-doubleword-tile-slice \
++			  run-gdbstub-sysregs-sme-quadword-tile-slice
++			  
++endif
++
+ ifeq ($(GDB_HAS_MTE),y)
+ run-gdbstub-mte: mte-8
+ 	$(call run-test, $@, $(GDB_SCRIPT) \
+diff --git a/tests/tcg/aarch64/gdbstub/test-sme.py b/tests/tcg/aarch64/gdbstub/test-sme.py
+new file mode 100644
+index 0000000000..bad80f9925
+--- /dev/null
++++ b/tests/tcg/aarch64/gdbstub/test-sme.py
+@@ -0,0 +1,125 @@
++#
++# Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
++#
++# SPDX-License-Identifier: GPL-2.0-or-later
++
++from __future__ import print_function
++#
++# Test the SME registers are visible and changeable via gdbstub
++#
++# This is launched via tests/guest-debug/run-test.py
++#
++
++import argparse
++import gdb
++from test_gdbstub import main, report
++
++MAGIC = 0x01020304
++BASIC_ZA_TEST = 0
++DOUBLEWORD_TILE_SLICE_TEST = 0
++QUADWORD_TILE_SLICE_TEST = 0
++
++def run_test():
++    
++    # Run the requested test(s) for SME ZA gdbstub support
++
++    if BASIC_ZA_TEST:
++        run_basic_sme_za_gdbstub_support_test()
++    if DOUBLEWORD_TILE_SLICE_TEST or QUADWORD_TILE_SLICE_TEST:
++        run_basic_sme_za_tile_slice_gdbstub_support_test()
++
++def run_basic_sme_za_gdbstub_support_test():
++
++    # This test will check for gdbstub support for correctly reading
++    # and writing to the SME ZA register at the byte level.
++    
++    frame = gdb.selected_frame()
++    rname = "za"
++    za = frame.read_register(rname)
++    report(True, "Reading %s" % rname)
++
++    # Writing to the ZA register, byte by byte.
++    for i in range(0, 16):
++        for j in range(0, 16):
++            cmd = "set $za[%d][%d] = 0x01" % (i, j)
++            gdb.execute(cmd)
++            report(True, "%s" % cmd)
++
++    # Reading from the ZA register, byte by byte.
++    for i in range(0, 16):
++        for j in range(0, 16):
++            reg = "$za[%d][%d]" % (i, j)
++            v = gdb.parse_and_eval(reg)
++            report(str(v.type) == "uint8_t", "size of %s" % (reg))
++            report(int(v) == 0x1, "%s is 0x%x" % (reg, 0x1))
++
++def run_basic_sme_za_tile_slice_gdbstub_support_test():
++
++    # Test if SME ZA tile slices, both horizontal and vertical,
++    # can be correctly read and written to. The sizes to test
++    # depend on which tests are requested (QUADWORD_TILE_SLICE_TEST
++    # and/or DOUBLEWORD_TILE_SLICE_TEST).
++
++    sizes = {}
++    if QUADWORD_TILE_SLICE_TEST:
++        sizes["q"] = "uint128_t"
++    if DOUBLEWORD_TILE_SLICE_TEST:
++        sizes["d"] = "uint64_t"
++    
++    # Accessing requested sizes of elements of ZA
++    for size in sizes:
++
++        # Accessing various ZA tiles
++        for i in range(0, 4):
++
++            # Accessing various horizontal slices for each ZA tile
++            for j in range(0, 4):
++                # Writing to various elements in each tile slice
++                for k in range(0, 4):
++                    cmd = "set $za%dh%c%d[%d] = 0x%x" % (i, size, j, k, MAGIC)
++                    gdb.execute(cmd)
++                    report(True, "%s" % cmd)
++
++                # Reading from the written elements in each tile slice
++                for k in range(0, 4):
++                    reg = "$za%dh%c%d[%d]" % (i, size, j, k)
++                    v = gdb.parse_and_eval(reg)
++                    report(str(v.type) == sizes[size], "size of %s" % (reg))
++                    report(int(v) == MAGIC, "%s is 0x%x" % (reg, MAGIC))
++            
++            # Accessing various vertical slices for each ZA tile
++            for j in range(0, 4):
++                # Writing to various elements in each tile slice
++                for k in range(0, 4):
++                    cmd = "set $za%dv%c%d[%d] = 0x%x" % (i, size, j, k, MAGIC)
++                    gdb.execute(cmd)
++                    report(True, "%s" % cmd)
++
++                # Reading from the written elements in each tile slice
++                for k in range(0, 4):
++                    reg = "$za%dv%c%d[%d]" % (i, size, j, k)
++                    v = gdb.parse_and_eval(reg)
++                    report(str(v.type) == sizes[size], "size of %s" % (reg))
++                    report(int(v) == MAGIC, "%s is 0x%x" % (reg, MAGIC))
++
++
++parser = argparse.ArgumentParser(description="A gdbstub test for SME support")
++parser.add_argument("--gdb_basic_za_test",
++		            help="Enable test for basic SME ZA support",
++                    action="store_true")
++parser.add_argument("--gdb_doubleword_tile_slice_test",
++		            help="Enable test for ZA doubleword tile slice support",
++                    action="store_true")
++parser.add_argument("--gdb_quadword_tile_slice_test",
++                    help="Enable test for ZA quadword tile slice support",
++                    action="store_true")
++args = parser.parse_args()
++
++if args.gdb_basic_za_test:
++    BASIC_ZA_TEST = 1
++if args.gdb_doubleword_tile_slice_test:
++	DOUBLEWORD_TILE_SLICE_TEST = 1
++if args.gdb_quadword_tile_slice_test:
++	QUADWORD_TILE_SLICE_TEST = 1
++
++main(run_test, expected_arch="aarch64")
+-- 
+2.34.1
+
 

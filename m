@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93414CAC581
-	for <qemu-arm@archiver.kernel.org>; Mon,  8 Sep 2025 10:19:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8AC5ECAC581
+	for <qemu-arm@archiver.kernel.org>; Mon,  8 Sep 2025 10:20:13 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uvYvc-0006qL-2p; Mon, 08 Sep 2025 06:16:52 -0400
+	id 1uvYwm-0008Aj-80; Mon, 08 Sep 2025 06:18:06 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mads@ynddal.dk>) id 1uvYvZ-0006Ux-Og
- for qemu-arm@nongnu.org; Mon, 08 Sep 2025 06:16:49 -0400
-Received: from p-east1-cluster1-host7-snip4-6.eps.apple.com ([57.103.91.69]
+ (Exim 4.90_1) (envelope-from <mads@ynddal.dk>) id 1uvYwF-0007St-8z
+ for qemu-arm@nongnu.org; Mon, 08 Sep 2025 06:17:32 -0400
+Received: from p-east1-cluster2-host7-snip4-8.eps.apple.com ([57.103.88.199]
  helo=outbound.ci.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mads@ynddal.dk>) id 1uvYvT-0001Rf-GM
- for qemu-arm@nongnu.org; Mon, 08 Sep 2025 06:16:48 -0400
+ (Exim 4.90_1) (envelope-from <mads@ynddal.dk>) id 1uvYw9-0001Wv-24
+ for qemu-arm@nongnu.org; Mon, 08 Sep 2025 06:17:30 -0400
 Received: from outbound.ci.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-central-1k-100-percent-7 (Postfix) with ESMTPS id
- 3023218000B9; Mon,  8 Sep 2025 10:16:32 +0000 (UTC)
+ by p00-icloudmta-asmtp-us-central-1k-60-percent-9 (Postfix) with ESMTPS id
+ A49991801FEA; Mon,  8 Sep 2025 10:17:18 +0000 (UTC)
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ynddal.dk; s=sig1;
- bh=wiZW7rftnpzvn1BVfH92/dT2nJc5YtLb8ooBCb9/qDY=;
+ bh=Pg/farx3xzo9K3HwfjqCU6MjNcJpLqh/iQDwewzbGYo=;
  h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To:x-icloud-hme;
- b=kgIIE+3/GvJPQU4fLV+mEZQjBNHSls886uT7OFsdbgNItqEF0RDBxOsiKW9MQNIqdiClo23yKcZXQMHIh8ryAnQZ0198nFJi5q7Ag1R1GSh05oV9keQ1cP2mt+3iRMl7xsoX7tPG5AiGA25lnw0eyaPHJno80JNMaE1aWDWIiZIiyBHPtHZo7vA7HkiLRwJMG4OZjfJF8XAlt1zhMqslm8Y/pDxsJ7UPIs0hbAtlT2T8t1SIOy65B14qXz0fNQFmY8eWkF3TwXrQqGvwHuS6j3ciM68Fi8gWBXtcXOADU4DqCZ4OTOp2M0ll6anHMmSDwfBfmhmaM9t/EP0uzi+hlw==
+ b=IbCoO3Xm5IynoPC+DTspokc1D4Sh0ojJbKgNG70jKLA+IEJFxqEwjF2Ygt0DUs1mwMbuPn4QW2tfqYQvwdZpNynPSN8xYl5dISGwft54m/CGOP4i2Vz6lhVJK7YfqPIzH00l3jU6DZ7eliB4BKs9k9T+hLcBslA55a1z6BzoQuCQf84IRHFZwxXHTtwRmgZ/Ept8Cu1rXHEakoH5KMTxnZrCKGx5L2Z5XGOYzu/mtq4rltD3wYl6beZfdHn4w+chBWsiDohOHP6lpcqKfZpLn49j3h1r8EHTsGGKOh0Tvx+ff5dQzMbQIwmoioxVjfo+IqiSRKVJiAdzTrQJRHUKdg==
 mail-alias-created-date: 1632407063367
 Received: from smtpclient.apple (ci-asmtp-me-k8s.p00.prod.me.com
  [17.57.156.36])
- by p00-icloudmta-asmtp-us-central-1k-100-percent-7 (Postfix) with ESMTPSA id
- 72B0C1800186; Mon,  8 Sep 2025 10:16:30 +0000 (UTC)
+ by p00-icloudmta-asmtp-us-central-1k-60-percent-9 (Postfix) with ESMTPSA id
+ 9EEE21801FC4; Mon,  8 Sep 2025 10:17:16 +0000 (UTC)
 Content-Type: text/plain;
 	charset=utf-8
 Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3826.700.81\))
-Subject: Re: [PATCH 10/24] target/arm/hvf: Mention hvf_arch_set_traps() must
- run on vCPU thread
+Subject: Re: [PATCH 01/24] target/arm/hvf: Release memory allocated by
+ hv_vcpu_config_create()
 From: Mads Ynddal <mads@ynddal.dk>
-In-Reply-To: <20250903100702.16726-11-philmd@linaro.org>
-Date: Mon, 8 Sep 2025 12:15:01 +0200
+In-Reply-To: <20250903100702.16726-2-philmd@linaro.org>
+Date: Mon, 8 Sep 2025 12:17:15 +0200
 Cc: qemu-devel@nongnu.org, Alexander Graf <agraf@csgraf.de>,
  Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org,
  Mohamed Mediouni <mohamed@unpredictable.fr>,
@@ -47,27 +47,27 @@ Cc: qemu-devel@nongnu.org, Alexander Graf <agraf@csgraf.de>,
  Stefan Hajnoczi <stefanha@redhat.com>, Cameron Esfahani <dirty@apple.com>,
  Roman Bolshakov <rbolshakov@ddn.com>, Paolo Bonzini <pbonzini@redhat.com>
 Content-Transfer-Encoding: quoted-printable
-Message-Id: <7284245B-7C8E-4F58-89D2-6C24C807963A@ynddal.dk>
+Message-Id: <D0887CA6-204F-4051-8B3E-D3B546056297@ynddal.dk>
 References: <20250903100702.16726-1-philmd@linaro.org>
- <20250903100702.16726-11-philmd@linaro.org>
+ <20250903100702.16726-2-philmd@linaro.org>
 To: =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 X-Mailer: Apple Mail (2.3826.700.81)
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwOTA4MDEwNCBTYWx0ZWRfX6HPjGMk4P+vD
- Rh8k658D6WuCp0YTIhOXFamFqDFj6hoGXQDuKKb3G7pAty8agL/BSvqxgrB33IhIZYbY3zOcjuA
- 0DXXZtb3IyRNfOBPWyVOtnX3wyFVZafgSG2oS6OqJx/1Qzkqd9zTqICD7tC4shVoDI0w4vpBnBG
- e0TOdo60ZysAjNEKmavl0mpjGNm9sviwY8apfZ84NiEC+US10XooV8I+AmCpgvqf194t78DcSC6
- HYXcK5kaG3XBPvIXwKYNE8i5e/ID3v2FIs3u6C2mMSvlYIWlsdVvCpyH6RQ6cwDF4Al+Ss+eA=
-X-Proofpoint-ORIG-GUID: udl0NJEAMGn-BlYTK-X2ArVaK9slI50-
-X-Proofpoint-GUID: udl0NJEAMGn-BlYTK-X2ArVaK9slI50-
+X-Proofpoint-GUID: cVrD8QocYxWVNx8rcOQLScy3TdqkDpy8
+X-Proofpoint-ORIG-GUID: cVrD8QocYxWVNx8rcOQLScy3TdqkDpy8
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwOTA4MDEwNCBTYWx0ZWRfX5lr21h6w9wEs
+ gvgw/H9uIpx+S9ToxDKcbsc1c65efE8IPnKJERsKn0KyvUDZP7J/SZ7xZ2uda7zaLrImTvTlcca
+ hvEgmQB7lF0Q3IXBK5PZNwV87oFT40crYMrLhtWDzoQkVBto4W+K92ariXdHRHQjRIy6xVnm41T
+ DmUEt/coRFfskR/EIg7Y5b0O1nkTcw4HLywt0w3yodfaaE2xOepQZTU6Mr9BzMK7CDKum3a8Znh
+ L2ER6y45CifgwtTSs0R76sM+C7DcquOu2CdWrXZH+8yB5kRol4+FKgNyAdOoxIojcaWS5KVik=
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1117,Hydra:6.1.9,FMLib:17.12.80.40
  definitions=2025-09-08_03,2025-09-08_01,2025-03-28_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
- phishscore=0 spamscore=0 mlxlogscore=999 mlxscore=0 clxscore=1030
- malwarescore=0 suspectscore=0 adultscore=0 classifier=spam adjust=0
- reason=mlx scancount=1 engine=8.22.0-2506270000 definitions=main-2509080104
-X-JNJ: AAAAAAAB9Px5oCzkvYFV7DXVIFOeYjy1TumrztuH7atZG93MkcBdCewvBcyBno1To1FQn1InAYIr5r2OHvNAdFye6YBlp82E/W/I7vxiKM0WHTVGsTnGfKrmuQgqcmWNrL+bbyIyzJHu+p/P8oADrk/5kqCKEaBnedb0TUSjS8GyXZK29HQkxBifavEv2OwC0MSG+8z5B8kDQHFMRFDF8oYCRYEzOiekogA371SPeh02wtKEKBH4l96AvTf4TSlDfz1rwwtN8m0la2WsknDRWeFWFg9W3fQoS7TslseS9PhDOQ9NRQ6n4Gpq58umi6V2OqeNyCkD2Nf2554K6iT6ZlqGHks149XA0YR2sRwAQD9gAT0qd8M24Y4zcd/ak3gktbfbkT9C0iTIFUzPx8lBjWaIWIehV+xCAkpPXyO+XF/D8Jr/Iw8ETM9SM5ETKFwV6I8X4gfbHFqzNLY/yYNVq1b61RZu/hvfTqkrmr5L0ChpjZB/H97qOCFYEfmUszBH/PAdeXWmRm7a8LIct/Zl5dUlEvCpSLqObtkltlQH1fNdpLgDkqMHrBLkTkeQHL3ZPo+GMR7NBVGyuQQlRHHb5zbHl67+1AxC73wnb/bV7MMWLKcwwBATpzVbVyzsQjSL2zbWhCODo/TEz3knH6W3bvVMGxs4vIUxx3SM9EMTZeedgKjKD2qOCH7rs34jw4N0v4VcazZCkphAbRTnJb/I57pJB7sZaxMI6//rTMY=
-Received-SPF: pass client-ip=57.103.91.69; envelope-from=mads@ynddal.dk;
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0
+ malwarescore=0 adultscore=0 mlxlogscore=999 suspectscore=0 spamscore=0
+ clxscore=1030 mlxscore=0 bulkscore=0 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.22.0-2506270000 definitions=main-2509080104
+X-JNJ: AAAAAAABvpKVDBihe9SJOK4xmVkJxQIdZaD2DdT/t8/E5R6NfXRlTL98FjKHzwdGQVX8UKX+SMqCPNbdOhkQ5/SvES8v/fgDX8qi2iusPsUxTabRhlu5ymVRSzUSuesQQorJPKatR8TYYukK0xylhKXnKlgy/PRtcxPwC0tG1oMBCj8dq9G5jIAHJUkPtDy1Q+pT/HyceAuGhVrd9mEkvij4cszI6300M0jZxC8Q1cGBs8kbYU3mCzkPCQTcCdLSB9eKaH9/wJ7J44UnFGgBh9NRbg8vfQkHGouOnhLgyZ7Ci5w52zM4gx/m5ixkHCiownP+T9ZID2QJKt+7+fiqSuzDfc7dDUQNhiYVNa3bb45C8dhzggcmww+LDewIbGDAUXjmcLekp/Fx/VB4Uw5+4IQvgOjA9Vdn+FyqWmcgXObeurkiC9mtbHiEMfAtAEY85NxUkp2L8au40+FiYnDom22W0vWbtnO5TWMXQdpoBx/xiYy2s3S5b+n/jwENy7wQSURQ0fOU3eTzpodbTC4BhBd4tXyACF2Nok5dbonMMxlpEZizNHiYcmJteNB2FUKbXlhHFznlJ4I1HLaAcSEGdnOCbR8/10TqsM8K/qSi6n1/1kT2Nfokb1Ldn+voQ6+CVVRHKa9eEyrP6gZsvKf/+61tLEXrmTxVzc+qDqmg1YM0fNWfNGNJOMAgyj8pgLBhxwfZ/JTeTTpco/b5vfoPQoleB/4Z+D0=
+Received-SPF: pass client-ip=57.103.88.199; envelope-from=mads@ynddal.dk;
  helo=outbound.ci.icloud.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -95,14 +95,24 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 > On 3 Sep 2025, at 12.06, Philippe Mathieu-Daud=C3=A9 =
 <philmd@linaro.org> wrote:
 >=20
-> Since hvf_arch_set_traps() calls hv_vcpu_set_trap_debug_exceptions()
-> and hv_vcpu_set_trap_debug_reg_accesses(), which must run on a vCPU,
-> it also must. Mention it.
+> hv_vcpu_config_create() is documented in <Hypervisor/hv_vcpu_config.h>
+> as:
+>=20
+>  /*!
+>   @abstract Creates a vcpu configuration object.
+>   @result A new vcpu configuration object. This should be released =
+with os_release when no longer used.
+>   */
+>  OS_OBJECT_RETURNS_RETAINED OS_WARN_RESULT
+>  hv_vcpu_config_t hv_vcpu_config_create(void);
+>=20
+> Release the memory allocated by hv_vcpu_config_create() with
+> os_release().
 >=20
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
 > ---
-> target/arm/hvf/hvf.c | 1 +
-> 1 file changed, 1 insertion(+)
+> target/arm/hvf/hvf.c | 2 ++
+> 1 file changed, 2 insertions(+)
 
 Reviewed-by: Mads Ynddal <mads@ynddal.dk>=
 

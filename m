@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F4FCCA1013
-	for <qemu-arm@archiver.kernel.org>; Mon,  8 Sep 2025 10:22:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03C9CCAC581
+	for <qemu-arm@archiver.kernel.org>; Mon,  8 Sep 2025 10:22:37 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uvYwB-0007Pm-Vb; Mon, 08 Sep 2025 06:17:28 -0400
+	id 1uvYw2-0007HI-Ek; Mon, 08 Sep 2025 06:17:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mads@ynddal.dk>) id 1uvYw2-0007FD-11
- for qemu-arm@nongnu.org; Mon, 08 Sep 2025 06:17:18 -0400
-Received: from p-east1-cluster1-host3-snip4-10.eps.apple.com ([57.103.91.33]
+ (Exim 4.90_1) (envelope-from <mads@ynddal.dk>) id 1uvYvx-0007DR-7y
+ for qemu-arm@nongnu.org; Mon, 08 Sep 2025 06:17:15 -0400
+Received: from p-east1-cluster1-host6-snip4-10.eps.apple.com ([57.103.91.63]
  helo=outbound.ci.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mads@ynddal.dk>) id 1uvYvq-0001UL-JJ
- for qemu-arm@nongnu.org; Mon, 08 Sep 2025 06:17:16 -0400
+ (Exim 4.90_1) (envelope-from <mads@ynddal.dk>) id 1uvYvc-0001Sd-Ki
+ for qemu-arm@nongnu.org; Mon, 08 Sep 2025 06:17:10 -0400
 Received: from outbound.ci.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-central-1k-10-percent-0 (Postfix) with ESMTPS id
- 035BC18001EA; Mon,  8 Sep 2025 10:16:59 +0000 (UTC)
+ by p00-icloudmta-asmtp-us-central-1k-100-percent-0 (Postfix) with ESMTPS id
+ 779B71800579; Mon,  8 Sep 2025 10:16:41 +0000 (UTC)
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ynddal.dk; s=sig1;
- bh=tmKsZoKf+Uy3jOFBDkiL7LRAOXRyQXo19aT/gXMpONA=;
+ bh=QO1umtmjrWseiPN6/pJIIqxWPn2ESQMp+7TmdGbHeLM=;
  h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To:x-icloud-hme;
- b=DOps6US9/zq7y8b2nsDQzxv8BdSicwW2YL8I8MvZZ4vAmGTDu+cMjn5RsykAvVyeWyMiGkpTYjZQjP1RlVjbGz8lEOH5t/PtJKpYTJJBmkuk2galM4sYDNmog87gjzTpmIGKoeMZRj/ZvqhLlhp80aYtONDXCQ7Y8Ac9zZosolyAZLUHcNiGzGy/s1sW3STDDzSObUXv5MEwz2WuH3gC49W0DVoNaivVCTnmF9eEdOL8lKHTUQUowwwMVoYt6urEvVelZ+6mTn0LsFkh1sExNVAAyUT/c2D2VZAPJYD/ixAoqzQPXmTSo/buq0naL5L028Ubb4wfi9R1i83IqiMjZA==
+ b=woOsKWDNdaTlUkhVvqxR9M37JJ/3jVaiVEs39nULH3HxQB5M1DgbFkuYaMsp3V5X6yuFxANqYr57+XgoJ2BycYXUNwSKxlB94qOjVhrhwMOnXT8tPAgRUHoPQiz7jfue3IbI6/XC8yadmiZ/wowMaieRVMWTbQMGQVRyKQHq9823SGXs5aMa6//6ZTDQQxzNbc+0mk8o3ld4dWnsYU1YJFCGfrGaLLcBowKbeqX+1r2VMY9OpJHUCCaHBtAxu63gZKXFuU3neoaLixNFzni5MrbLWq5XcQcenHGfypNnHlw7PBHsHBE99qQPlx9Mt/hJKyR1QVby1jVc+sms9NM1IQ==
 mail-alias-created-date: 1632407063367
 Received: from smtpclient.apple (ci-asmtp-me-k8s.p00.prod.me.com
  [17.57.156.36])
- by p00-icloudmta-asmtp-us-central-1k-10-percent-0 (Postfix) with ESMTPSA id
- A57EF180089C; Mon,  8 Sep 2025 10:16:57 +0000 (UTC)
+ by p00-icloudmta-asmtp-us-central-1k-100-percent-0 (Postfix) with ESMTPSA id
+ 67C591801C9F; Mon,  8 Sep 2025 10:16:39 +0000 (UTC)
 Content-Type: text/plain;
 	charset=utf-8
 Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3826.700.81\))
-Subject: Re: [PATCH 05/24] accel/hvf: Rename hvf_put|get_registers ->
- hvf_arch_put|get_registers
+Subject: Re: [PATCH 08/24] target/arm/hvf: Mention hvf_wfi() must run on vCPU
+ thread
 From: Mads Ynddal <mads@ynddal.dk>
-In-Reply-To: <20250903100702.16726-6-philmd@linaro.org>
-Date: Mon, 8 Sep 2025 12:16:56 +0200
-Cc: qemu-devel@nongnu.org, Alexander Graf <agraf@csgraf.de>,
- Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org,
- Mohamed Mediouni <mohamed@unpredictable.fr>,
+In-Reply-To: <c51382aa-070f-4441-a707-a29d87093b48@linaro.org>
+Date: Mon, 8 Sep 2025 12:16:37 +0200
+Cc: =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org, Alexander Graf <agraf@csgraf.de>,
+ qemu-arm@nongnu.org, Mohamed Mediouni <mohamed@unpredictable.fr>,
  Peter Maydell <peter.maydell@linaro.org>,
  Phil Dennis-Jordan <phil@philjordan.eu>,
  Stefan Hajnoczi <stefanha@redhat.com>, Cameron Esfahani <dirty@apple.com>,
  Roman Bolshakov <rbolshakov@ddn.com>, Paolo Bonzini <pbonzini@redhat.com>
 Content-Transfer-Encoding: quoted-printable
-Message-Id: <08023CA0-7581-4646-9B39-8DE6FD546540@ynddal.dk>
+Message-Id: <E865FC0C-D02E-4BD4-81AF-ADDA4827DFBD@ynddal.dk>
 References: <20250903100702.16726-1-philmd@linaro.org>
- <20250903100702.16726-6-philmd@linaro.org>
-To: =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+ <20250903100702.16726-9-philmd@linaro.org>
+ <c51382aa-070f-4441-a707-a29d87093b48@linaro.org>
+To: Richard Henderson <richard.henderson@linaro.org>
 X-Mailer: Apple Mail (2.3826.700.81)
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwOTA4MDEwNCBTYWx0ZWRfXzf/AEil7dmuq
- l/A2Sjay8JtjneXAhQasJxphasjvH8fYNASE4e/NvAPI6caOqO0kj4zq/LJD2zDwF4xayAdJeFJ
- 8c54bz5ZI1pXOQ042P7Ag6uuU9nBwqxwCCrISTpplTFUVSvKcFAZlj8kqJO9Thyv99cYy5Q905F
- zRS1Djp91ui5Ln38wY8Cz6AiPdBzQEWH8mPYjjbHA608xelk0En2f2yTMB8GaYYeKhHge8vrRbI
- M86wdbWSgBGskcBaU5pN/aNqWCh/ZxGtHQlBzVqI0ofTTIo3RsNm30Xs1ViN5dBu1eMR3Hgw4=
-X-Proofpoint-GUID: dkdtUvocF_yVwABVpv-jbT65_cSmiwDe
-X-Proofpoint-ORIG-GUID: dkdtUvocF_yVwABVpv-jbT65_cSmiwDe
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwOTA4MDEwNCBTYWx0ZWRfX6uZHimnOYdNd
+ TXyQGAutycBbb5HtF5inI9xu5fq67Xw2qKQVjjQhyyMfyZ/LazouixhttCkfUvJmBkJFh96VzxT
+ 7WaIawqbfDQchuI1CX8n2LLGdTqaCr4OsIoLnTP+Z9LXXnyIBWos/ryZf5+u5lcmgmH3005AA4q
+ N5Zip7lmalsG/7MFfEJRf/wmmK+wxDDZoWxzIEsfIa/A7cV9dVjii90YHv9echKZezX5msHwv5u
+ wI7FwCAEZZxbMJfe2G4E2E1zYmUSVmduQPSuZwJsBZmXzKgWV7Qvh8EHHjmRWsEwsfG0dMpUE=
+X-Proofpoint-GUID: tuh4xTDf4Mwnkx4FMrbyFlk2rKmIf0Gv
+X-Proofpoint-ORIG-GUID: tuh4xTDf4Mwnkx4FMrbyFlk2rKmIf0Gv
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1117,Hydra:6.1.9,FMLib:17.12.80.40
  definitions=2025-09-08_03,2025-09-08_01,2025-03-28_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- clxscore=1030 phishscore=0 adultscore=0
- mlxlogscore=850 malwarescore=0
- spamscore=0 mlxscore=0 bulkscore=0 classifier=spam adjust=0 reason=mlx
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 clxscore=1030
+ phishscore=0 malwarescore=0 mlxscore=0 suspectscore=0 spamscore=0
+ mlxlogscore=999 adultscore=0 bulkscore=0 classifier=spam adjust=0 reason=mlx
  scancount=1 engine=8.22.0-2506270000 definitions=main-2509080104
-X-JNJ: AAAAAAABvVoAsXjBnK4dy75a9qDdbmh8pNaGcT4TMu7TzuZrlhtwnPV+0TXIgMbzS7f6xwi7pqREyqNhbg820wjO9zEPvUSOFbYVBuXRARNg+wxrNSgtZykkvD8DaiLmFOlqlXc+qttIuNDsDdT+o8nPUrB6nxvQ9b3tU5beR9PpE5oEQzdTVdSJQDyTQPKLO7L/4pNDQQLIbkCf85rwyayy4+TdKejQMczErkrp9MNLhZ2+N9Q02rUVAwjx0W1VQo45NOk7XPMLqiQyT9P5TkuksAJYQrARK8iL9Wm5WWChVj3hZh/HkKi2AR7xYDjutgjI6AcWpRJUeJ8y21AG1XaLE5XOUL728pbInbDvZ0pzaRC8b52AaXDUMmuRrsxhnp7cwXzHcvWImnlaOJmoKfQaXsJnVOR34XeCv+QHTllaIqz9cIdb6uqnrb/WHolIrRhTujMTW+gmOVUfJYDlKQDigGVF04iYoAiZPbI828CdeGz96Ya5ksokdLLPo3nXPD9+JBM/T60PxJIgDrlFEi3tvNIlXK3vmKgkQiGNKpuIJGuR22rJajprffh3Iw+HO9N/lR1a8DTzztTpUVukpPNoM5jyc1nNOSimbEc/DNvFochGizRyk3UJoir/HZqWbGKRhjzfeVz5IXX3s1JGxrfo9KicAfxoQUpyZ2CdzAxfOg1SSHbLPX5EzOs9T00+kRHt4j4JbaT3QxLCari3UbN73OR5Qw==
-Received-SPF: pass client-ip=57.103.91.33; envelope-from=mads@ynddal.dk;
+X-JNJ: AAAAAAAB7iz10QwmU0nZHM7XHijHjrL5cbbCpuCpgaYnC/PnPKCTABfCZDMjJG7FL0lEkzvomwfd6aB2RS+3IuOIJqu0IbZ7PucqeetMjbbiZdGsYXsQ7gTR8tLlEVckhzlgyckd3VKM+wmj4o5U/BgOJ2pes4CR8FbTlTSeWjEhTwa/enzZDpxIYq3TnrB0l26tsmxS5ooy1LaIAV96bJv/ErjzoYwivCRXbIfIL0QCu+WrcbD1824yu00a5QlNQ+pirGqZpzz3199WKlCcawsxmDi7w8Vj2cLWlacoEQu81/Z/vwA4N2un57yvaeNAn7a3Z4UqidR5Qz4pwrW3s+DqWTPAyexRwyf+56JqCQo4jOUtAD132qhxMYfce76Jrdqu++JCIwhiHEYCJ7c6mCjuQWpEkAbIXtjSBVoRdKm/9nUeSxpZnjkmYkOLUyWehx0h2Dz5iIkyaZ0QZyPaBHITWKCGOKgenJfJl/WH3zTHjuVnAVMNCnuZOTi187jze+u9yT2CeV79fnvC0N4AGuXUfyqmN/81ma8QRPfSTjYpbUMRj2qq5h8c/jh8imDdF4bprsIjimIV6pwOw67j5+YalfWf/zfGZo9Lj3ftmfmkUnR/YOZV2itsGtcPaoJqbXLK2bEE9ZiVy2Moj4pQwye/s2wdi5mxAYZr5os7s4gK90kjimVFbxTFs/F2pXVx/VftkqXkhXlpNqrFXzx5DJX5jh/3kDZHx9U=
+Received-SPF: pass client-ip=57.103.91.63; envelope-from=mads@ynddal.dk;
  helo=outbound.ci.icloud.com
 X-Spam_score_int: -37
 X-Spam_score: -3.8
@@ -76,8 +76,8 @@ X-Spam_bar: ---
 X-Spam_report: (-3.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H5=-1, RCVD_IN_MSPIKE_WL=-0.01,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -94,24 +94,39 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 
-> On 3 Sep 2025, at 12.06, Philippe Mathieu-Daud=C3=A9 =
-<philmd@linaro.org> wrote:
+> On 3 Sep 2025, at 14.34, Richard Henderson =
+<richard.henderson@linaro.org> wrote:
 >=20
-> hvf_put_registers() and hvf_get_registers() are implemented per
-> target, rename them using the 'hvf_arch_' prefix following the
-> per target pattern.
+> On 9/3/25 12:06, Philippe Mathieu-Daud=C3=A9 wrote:
+>> Since hvf_wfi() calls hv_vcpu_get_sys_reg(), which
+>> must run on a vCPU, it also must. Mention it.
+>> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+>> ---
+>>  target/arm/hvf/hvf.c | 1 +
+>>  1 file changed, 1 insertion(+)
+>> diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+>> index d87a41bcc53..05fc591b523 100644
+>> --- a/target/arm/hvf/hvf.c
+>> +++ b/target/arm/hvf/hvf.c
+>> @@ -1836,6 +1836,7 @@ static void hvf_wait_for_ipi(CPUState *cpu, =
+struct timespec *ts)
+>>      bql_lock();
+>>  }
+>>  +/* Must be called by the owning thread */
+>>  static void hvf_wfi(CPUState *cpu)
+>>  {
+>>      ARMCPU *arm_cpu =3D ARM_CPU(cpu);
 >=20
-> Since they call hv_vcpu_set_reg() / hv_vcpu_get_reg(), mention
-> they must be called on the vCPU.
+> How can it not?  Are all these separate patches and annotations =
+helpful?
 >=20
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
-> ---
-> include/system/hvf_int.h  | 6 ++++--
-> accel/hvf/hvf-accel-ops.c | 2 +-
-> target/arm/hvf/hvf.c      | 8 +++++---
-> target/i386/hvf/hvf.c     | 2 +-
-> target/i386/hvf/x86hvf.c  | 4 ++--
-> 5 files changed, 13 insertions(+), 9 deletions(-)
+> r~
 
-Reviewed-by: Mads Ynddal <mads@ynddal.dk>=
+It's just part of Apple's API. It's documented here:
+=
+https://developer.apple.com/documentation/hypervisor/hv_vcpu_get_sys_reg(_=
+:_:_:)?language=3Dobjc
+
+If they are not called in the right CPU context, they'll return an
+error. I find it helpful to have it annotated here.=
 

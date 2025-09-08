@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8AC5ECAC581
-	for <qemu-arm@archiver.kernel.org>; Mon,  8 Sep 2025 10:20:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E57E8CA1013
+	for <qemu-arm@archiver.kernel.org>; Mon,  8 Sep 2025 10:20:24 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uvYwm-0008Aj-80; Mon, 08 Sep 2025 06:18:06 -0400
+	id 1uvYvz-0007EL-UN; Mon, 08 Sep 2025 06:17:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mads@ynddal.dk>) id 1uvYwF-0007St-8z
- for qemu-arm@nongnu.org; Mon, 08 Sep 2025 06:17:32 -0400
-Received: from p-east1-cluster2-host7-snip4-8.eps.apple.com ([57.103.88.199]
+ (Exim 4.90_1) (envelope-from <mads@ynddal.dk>) id 1uvYvt-0007Bm-9A
+ for qemu-arm@nongnu.org; Mon, 08 Sep 2025 06:17:09 -0400
+Received: from p-east1-cluster1-host5-snip4-7.eps.apple.com ([57.103.91.50]
  helo=outbound.ci.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mads@ynddal.dk>) id 1uvYw9-0001Wv-24
- for qemu-arm@nongnu.org; Mon, 08 Sep 2025 06:17:30 -0400
+ (Exim 4.90_1) (envelope-from <mads@ynddal.dk>) id 1uvYvk-0001TQ-GO
+ for qemu-arm@nongnu.org; Mon, 08 Sep 2025 06:17:07 -0400
 Received: from outbound.ci.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-central-1k-60-percent-9 (Postfix) with ESMTPS id
- A49991801FEA; Mon,  8 Sep 2025 10:17:18 +0000 (UTC)
+ by p00-icloudmta-asmtp-us-central-1k-100-percent-1 (Postfix) with ESMTPS id
+ 82F6218020E2; Mon,  8 Sep 2025 10:16:50 +0000 (UTC)
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ynddal.dk; s=sig1;
- bh=Pg/farx3xzo9K3HwfjqCU6MjNcJpLqh/iQDwewzbGYo=;
+ bh=v3KhJgc1gtSkPiyEIZ8Amfodzc39yWWHTJaq8u9Br60=;
  h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To:x-icloud-hme;
- b=IbCoO3Xm5IynoPC+DTspokc1D4Sh0ojJbKgNG70jKLA+IEJFxqEwjF2Ygt0DUs1mwMbuPn4QW2tfqYQvwdZpNynPSN8xYl5dISGwft54m/CGOP4i2Vz6lhVJK7YfqPIzH00l3jU6DZ7eliB4BKs9k9T+hLcBslA55a1z6BzoQuCQf84IRHFZwxXHTtwRmgZ/Ept8Cu1rXHEakoH5KMTxnZrCKGx5L2Z5XGOYzu/mtq4rltD3wYl6beZfdHn4w+chBWsiDohOHP6lpcqKfZpLn49j3h1r8EHTsGGKOh0Tvx+ff5dQzMbQIwmoioxVjfo+IqiSRKVJiAdzTrQJRHUKdg==
+ b=y5sTGkGYT5YJeNFs1K7C3tZ7bkmUQeLUxNQBJmt28qidh59g/xmrqqOOLZUKsdwLb4DDN4WEgp5umuAlP1QHCK28j4s8AM4vJTrxdufsOxl0ysB55+drIoE4KEQTOjmg/UNxaU/MCOkSq4U4xTSg/MhNcZrSNoj6NX4W45JxdUwNIpNHz1LZSpmp7882h3JEFz7A00D0byvmhytW7V36ziPDCufHCzOv5qqY9uM2dQ/nh/sBYeZoU/T1wzEp7lVUmKHAVH4HvR6zOiw0l9Y9ps5+OxA1BA5wza1rVujmy89l2JkOOFUf5ov4wbStKL8VNGlCIWjn/sEK4Hd0fnYmXQ==
 mail-alias-created-date: 1632407063367
 Received: from smtpclient.apple (ci-asmtp-me-k8s.p00.prod.me.com
  [17.57.156.36])
- by p00-icloudmta-asmtp-us-central-1k-60-percent-9 (Postfix) with ESMTPSA id
- 9EEE21801FC4; Mon,  8 Sep 2025 10:17:16 +0000 (UTC)
+ by p00-icloudmta-asmtp-us-central-1k-100-percent-1 (Postfix) with ESMTPSA id
+ 96ECE1800166; Mon,  8 Sep 2025 10:16:48 +0000 (UTC)
 Content-Type: text/plain;
 	charset=utf-8
 Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3826.700.81\))
-Subject: Re: [PATCH 01/24] target/arm/hvf: Release memory allocated by
- hv_vcpu_config_create()
+Subject: Re: [PATCH 07/24] accel/hvf: Mention hvf_arch_init_vcpu() must run on
+ vCPU thread
 From: Mads Ynddal <mads@ynddal.dk>
-In-Reply-To: <20250903100702.16726-2-philmd@linaro.org>
-Date: Mon, 8 Sep 2025 12:17:15 +0200
+In-Reply-To: <20250903100702.16726-8-philmd@linaro.org>
+Date: Mon, 8 Sep 2025 12:16:47 +0200
 Cc: qemu-devel@nongnu.org, Alexander Graf <agraf@csgraf.de>,
  Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org,
  Mohamed Mediouni <mohamed@unpredictable.fr>,
@@ -47,27 +47,27 @@ Cc: qemu-devel@nongnu.org, Alexander Graf <agraf@csgraf.de>,
  Stefan Hajnoczi <stefanha@redhat.com>, Cameron Esfahani <dirty@apple.com>,
  Roman Bolshakov <rbolshakov@ddn.com>, Paolo Bonzini <pbonzini@redhat.com>
 Content-Transfer-Encoding: quoted-printable
-Message-Id: <D0887CA6-204F-4051-8B3E-D3B546056297@ynddal.dk>
+Message-Id: <15E992C0-C050-45E6-9072-5B875ABEA2F7@ynddal.dk>
 References: <20250903100702.16726-1-philmd@linaro.org>
- <20250903100702.16726-2-philmd@linaro.org>
+ <20250903100702.16726-8-philmd@linaro.org>
 To: =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 X-Mailer: Apple Mail (2.3826.700.81)
-X-Proofpoint-GUID: cVrD8QocYxWVNx8rcOQLScy3TdqkDpy8
-X-Proofpoint-ORIG-GUID: cVrD8QocYxWVNx8rcOQLScy3TdqkDpy8
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwOTA4MDEwNCBTYWx0ZWRfX5lr21h6w9wEs
- gvgw/H9uIpx+S9ToxDKcbsc1c65efE8IPnKJERsKn0KyvUDZP7J/SZ7xZ2uda7zaLrImTvTlcca
- hvEgmQB7lF0Q3IXBK5PZNwV87oFT40crYMrLhtWDzoQkVBto4W+K92ariXdHRHQjRIy6xVnm41T
- DmUEt/coRFfskR/EIg7Y5b0O1nkTcw4HLywt0w3yodfaaE2xOepQZTU6Mr9BzMK7CDKum3a8Znh
- L2ER6y45CifgwtTSs0R76sM+C7DcquOu2CdWrXZH+8yB5kRol4+FKgNyAdOoxIojcaWS5KVik=
+X-Proofpoint-ORIG-GUID: LBj0UcwNWPg3bb1FRwpJKTXtpUv2Gt4R
+X-Proofpoint-GUID: LBj0UcwNWPg3bb1FRwpJKTXtpUv2Gt4R
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwOTA4MDEwNCBTYWx0ZWRfX34FLDtOpYFTB
+ YyQYGp54ACEsYFBHs3N6USv+L3NDP6vmnguD5FH4J+wDc4rxNNiUQpp8zOZzK7IqLwJJWeS+U/H
+ aeOh41TBi9OE1M16vFEDt8Vb2h1e0K3DSBSkkPUac4WDwC9q9d3fCEYbgkgRGSXKo4ncf/z9Rws
+ PmwKjFuUTyqWTLOdOExMYQBmj9QXFTm39NqMoYb1ZDM/cnLD+M1zv1XIQaQYFlYVoQJXBOv/ggR
+ v0wqrfra1xxPNnpyyv4N8rvTurIwJnedE8/TAuCPxrhBiHg89lI18lfSvynyqNO/HmhGTbVW4=
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1117,Hydra:6.1.9,FMLib:17.12.80.40
  definitions=2025-09-08_03,2025-09-08_01,2025-03-28_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0
- malwarescore=0 adultscore=0 mlxlogscore=999 suspectscore=0 spamscore=0
- clxscore=1030 mlxscore=0 bulkscore=0 classifier=spam adjust=0 reason=mlx
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0
+ phishscore=0 adultscore=0 mlxlogscore=999 spamscore=0 suspectscore=0
+ bulkscore=0 malwarescore=0 clxscore=1030 classifier=spam adjust=0 reason=mlx
  scancount=1 engine=8.22.0-2506270000 definitions=main-2509080104
-X-JNJ: AAAAAAABvpKVDBihe9SJOK4xmVkJxQIdZaD2DdT/t8/E5R6NfXRlTL98FjKHzwdGQVX8UKX+SMqCPNbdOhkQ5/SvES8v/fgDX8qi2iusPsUxTabRhlu5ymVRSzUSuesQQorJPKatR8TYYukK0xylhKXnKlgy/PRtcxPwC0tG1oMBCj8dq9G5jIAHJUkPtDy1Q+pT/HyceAuGhVrd9mEkvij4cszI6300M0jZxC8Q1cGBs8kbYU3mCzkPCQTcCdLSB9eKaH9/wJ7J44UnFGgBh9NRbg8vfQkHGouOnhLgyZ7Ci5w52zM4gx/m5ixkHCiownP+T9ZID2QJKt+7+fiqSuzDfc7dDUQNhiYVNa3bb45C8dhzggcmww+LDewIbGDAUXjmcLekp/Fx/VB4Uw5+4IQvgOjA9Vdn+FyqWmcgXObeurkiC9mtbHiEMfAtAEY85NxUkp2L8au40+FiYnDom22W0vWbtnO5TWMXQdpoBx/xiYy2s3S5b+n/jwENy7wQSURQ0fOU3eTzpodbTC4BhBd4tXyACF2Nok5dbonMMxlpEZizNHiYcmJteNB2FUKbXlhHFznlJ4I1HLaAcSEGdnOCbR8/10TqsM8K/qSi6n1/1kT2Nfokb1Ldn+voQ6+CVVRHKa9eEyrP6gZsvKf/+61tLEXrmTxVzc+qDqmg1YM0fNWfNGNJOMAgyj8pgLBhxwfZ/JTeTTpco/b5vfoPQoleB/4Z+D0=
-Received-SPF: pass client-ip=57.103.88.199; envelope-from=mads@ynddal.dk;
+X-JNJ: AAAAAAABeDNg8De4QCJUFAaHQCSHQLhXdMG89RQbzcbKLv5Qj69PUwOihy9ufGN0zdvGT90k6/Vljd+p/O9HASMGtmFEHece9feh/N99i52OH/ZPsunIYd2mzEmVSOWQMWur0dCTboCt7g+Cjlo7JorCqki5vVh1Q77EJA7+RX9qT5ykqGMwJGMonnCe2PXnzEhs9iZhLNXhyLHkuxCwmn5iEktpQcQXxotF924Qu8GvbQtZn7tjAnfpt1Bm1PPy2eh+wy+sP7aLNMda0vHBjOSNsY5TDomKIjRXUs00KxMOLaVV1taV2NhFWmSQfRy6A0CzCBA2MTIszgjKQ/ylQs2Tn5grvrwIveJt0aw0z3Su7olmiPefn6WE5lCHLTr4HgYPXahLRjmF1rMwPpn3CjXv1tRUrblgKk8LfnXMDd1jEHZUzhdw1HvFxjFAupzm7MXkW0udk6EnUP67MLPlQ0i+dx4bq3wconz8eogT6yfuQQ/sAya5lOKkWY83JSLVa74i8ww7ZO39KiFGQepxDD84kNgVqXum2YAbhD3ymYB/7kWeruI3AjrlTjy6/0TF24dzudFHU/JYTyq6ahZNbCgUVcovoSxJ81PlE1bJUHaW+tr+v7XajqIVZxdb2hDj9TwaT8HmzVmplrkBGNsoOQGQQeq/9oFHchQwNBmlUSrw3pkodj9br+r9Srgt3IXw/WwycaKKbmpex4PyPkvTyjLOOMZqYh9E7Kc4zP4=
+Received-SPF: pass client-ip=57.103.91.50; envelope-from=mads@ynddal.dk;
  helo=outbound.ci.icloud.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -75,7 +75,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -95,24 +95,70 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 > On 3 Sep 2025, at 12.06, Philippe Mathieu-Daud=C3=A9 =
 <philmd@linaro.org> wrote:
 >=20
-> hv_vcpu_config_create() is documented in <Hypervisor/hv_vcpu_config.h>
-> as:
->=20
->  /*!
->   @abstract Creates a vcpu configuration object.
->   @result A new vcpu configuration object. This should be released =
-with os_release when no longer used.
->   */
->  OS_OBJECT_RETURNS_RETAINED OS_WARN_RESULT
->  hv_vcpu_config_t hv_vcpu_config_create(void);
->=20
-> Release the memory allocated by hv_vcpu_config_create() with
-> os_release().
+> hvf_arch_init_vcpu(), along with hvf_put_guest_debug_registers()
+> and hvf_put_gdbstub_debug_registers(), calls hv_vcpu_set_sys_reg(),
+> which must run on a vCPU. Mention they also must.
 >=20
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
 > ---
-> target/arm/hvf/hvf.c | 2 ++
-> 1 file changed, 2 insertions(+)
+> include/system/hvf_int.h | 3 ++-
+> target/arm/hvf/hvf.c     | 2 ++
+> 2 files changed, 4 insertions(+), 1 deletion(-)
+>=20
+> diff --git a/include/system/hvf_int.h b/include/system/hvf_int.h
+> index 8fce627b08c..0c335facc3b 100644
+> --- a/include/system/hvf_int.h
+> +++ b/include/system/hvf_int.h
+> @@ -71,11 +71,12 @@ void assert_hvf_ok_impl(hv_return_t ret, const =
+char *file, unsigned int line,
+> const char *hvf_return_string(hv_return_t ret);
+> int hvf_arch_init(void);
+> hv_return_t hvf_arch_vm_create(MachineState *ms, uint32_t pa_range);
+> -int hvf_arch_init_vcpu(CPUState *cpu);
+> void hvf_arch_vcpu_destroy(CPUState *cpu);
+> hvf_slot *hvf_find_overlap_slot(uint64_t, uint64_t);
+> void hvf_kick_vcpu_thread(CPUState *cpu);
+>=20
+> +/* Must be called by the owning thread */
+> +int hvf_arch_init_vcpu(CPUState *cpu);
+> /* Must be called by the owning thread */
+> int hvf_arch_vcpu_exec(CPUState *);
+> /* Must be called by the owning thread */
+> diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+> index 58934953c4a..d87a41bcc53 100644
+> --- a/target/arm/hvf/hvf.c
+> +++ b/target/arm/hvf/hvf.c
+> @@ -2244,6 +2244,7 @@ void hvf_arch_remove_all_hw_breakpoints(void)
+> * consists of all hardware breakpoints and watchpoints inserted so far =
+while
+> * debugging the guest.
+> */
+> +/* Must be called by the owning thread */
 
-Reviewed-by: Mads Ynddal <mads@ynddal.dk>=
+Should this be combined with the comment block above it?
+
+> static void hvf_put_gdbstub_debug_registers(CPUState *cpu)
+> {
+>    hv_return_t r =3D HV_SUCCESS;
+> @@ -2282,6 +2283,7 @@ static void =
+hvf_put_gdbstub_debug_registers(CPUState *cpu)
+> * Update the vCPU with the guest's view of debug registers. This view =
+is kept
+> * in the environment at all times.
+> */
+> +/* Must be called by the owning thread */
+
+Same here.
+
+> static void hvf_put_guest_debug_registers(CPUState *cpu)
+> {
+>    ARMCPU *arm_cpu =3D ARM_CPU(cpu);
+> --=20
+> 2.51.0
+>=20
+
+With or without the change:
+
+Reviewed-by: Mads Ynddal <mads@ynddal.dk>
+
 

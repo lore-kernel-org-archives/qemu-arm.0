@@ -4,78 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED3F5CAC581
-	for <qemu-arm@archiver.kernel.org>; Mon,  8 Sep 2025 11:01:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE32BCAC581
+	for <qemu-arm@archiver.kernel.org>; Mon,  8 Sep 2025 11:49:56 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uvZcC-0004Fq-Ct; Mon, 08 Sep 2025 07:00:53 -0400
+	id 1uvaNN-000855-6P; Mon, 08 Sep 2025 07:49:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mads@ynddal.dk>) id 1uvZbx-00042T-00
- for qemu-arm@nongnu.org; Mon, 08 Sep 2025 07:00:41 -0400
-Received: from p-east1-cluster2-host10-snip4-4.eps.apple.com ([57.103.88.225]
- helo=outbound.ci.icloud.com)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1uvaNK-00084X-E9
+ for qemu-arm@nongnu.org; Mon, 08 Sep 2025 07:49:34 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mads@ynddal.dk>) id 1uvZbg-0007XL-2q
- for qemu-arm@nongnu.org; Mon, 08 Sep 2025 07:00:31 -0400
-Received: from outbound.ci.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-central-1k-10-percent-2 (Postfix) with ESMTPS id
- DFEAD18041AA; Mon,  8 Sep 2025 11:00:05 +0000 (UTC)
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ynddal.dk; s=sig1;
- bh=ZhcvMHIeLtSYdW7P/KUJmlBVtKauwK8EsDK0M+QAk8k=;
- h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To:x-icloud-hme;
- b=sWqZqhG1Toha0hCDqcgWuTZyjym5twWJmaoCi2wnXNVVJR3ELa7NuiaBXB7tWGOvZSMQfYMHzwh7cIXkJSfH71O+ZNFNjIx3hMuAZkuOG3bpvkM6fjVem2ZlMseSiRCnqlJmPgmorbSyn5nfo81k6LEh6mt0dEYoV/IyAik6DiuVu0kXdx/eRc5vGbR0p9Rka/8fLH0DcrnvvdAlrKYxYCLy4+zJD05Xa3iot8aeftPuMNhvl9y3jMTBQIEw20MV1+FZFNOkUZrPArBAfyIU3dkZccGQc20/4UoZ8jF5lxjU2eGAobSqycdgrDzoBtboU8xLFVOt0U39sMz/Ul+qbA==
-mail-alias-created-date: 1632407063367
-Received: from smtpclient.apple (ci-asmtp-me-k8s.p00.prod.me.com
- [17.57.156.36])
- by p00-icloudmta-asmtp-us-central-1k-10-percent-2 (Postfix) with ESMTPSA id
- C924018028A0; Mon,  8 Sep 2025 11:00:03 +0000 (UTC)
-Content-Type: text/plain;
-	charset=utf-8
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3826.700.81\))
-Subject: Re: [PATCH 12/24] target/arm/hvf: Mention hvf_inject_interrupts()
- must run on vCPU thread
-From: Mads Ynddal <mads@ynddal.dk>
-In-Reply-To: <20250903100702.16726-13-philmd@linaro.org>
-Date: Mon, 8 Sep 2025 13:00:02 +0200
-Cc: qemu-devel@nongnu.org, Alexander Graf <agraf@csgraf.de>,
- Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org,
- Mohamed Mediouni <mohamed@unpredictable.fr>,
- Peter Maydell <peter.maydell@linaro.org>,
- Phil Dennis-Jordan <phil@philjordan.eu>,
- Stefan Hajnoczi <stefanha@redhat.com>, Cameron Esfahani <dirty@apple.com>,
- Roman Bolshakov <rbolshakov@ddn.com>, Paolo Bonzini <pbonzini@redhat.com>
-Content-Transfer-Encoding: quoted-printable
-Message-Id: <28FD3EBA-5904-4ED6-8803-DDA6C51D1D9A@ynddal.dk>
-References: <20250903100702.16726-1-philmd@linaro.org>
- <20250903100702.16726-13-philmd@linaro.org>
-To: =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-X-Mailer: Apple Mail (2.3826.700.81)
-X-Proofpoint-GUID: kDf3wwXH7nwmMi15Kr9Ud8p-rlh8abin
-X-Proofpoint-ORIG-GUID: kDf3wwXH7nwmMi15Kr9Ud8p-rlh8abin
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwOTA4MDExMiBTYWx0ZWRfXx2ZluTbyiRhC
- HJ8QxJqvK86IYvnDEtCg0mJuJWA42Dt7w9RMnbB+oC96+eBohIx61TBXkbZ+kbSQ9viH7sCxhPa
- xKSCzs0MgxBjhOk8O6FNOMsp/BgOGIagVuKzw1k5ALkw49XmEKP2mjlSlwDBhkUfd59bg44jbhS
- Dc70qD1k6B5mXS+opF+Gia0jn8shM4Xiw1tRIvfVE3PX/GDL7RoM2uF0Wbz9/zRSW9pZikNFgEo
- RbeGzNQGWLK865Ro0WahPemafEukk30/euhq6AXLiIkNjmGs5U4qA8eIO0cC/s9QhtASkshzA=
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1117,Hydra:6.1.9,FMLib:17.12.80.40
- definitions=2025-09-08_04,2025-09-08_01,2025-03-28_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
- mlxlogscore=760 clxscore=1030 malwarescore=0 mlxscore=0 phishscore=0
- adultscore=0 suspectscore=0 bulkscore=0 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.22.0-2506270000 definitions=main-2509080112
-X-JNJ: AAAAAAABd7nN5T+/pmO6W1VJefeRJbW3Jzg/y/U79dJbhD/qyuY3haTjtvmAxGH13Art7P1t4jqDrUooIcy+98eFcc+lemGOvBfv+lQ29PsaQbNkcPhDY4WxMu5mD3t4ggj0UKzLPQcdEtTE+T8DiYnup0HNOCgbx8Dv7iG+i6wH+euAriOv5gzYfZo0+dQSPrgy6B80VmEoZBcNkuyALC4EQnzptNzgNCKERqGRwOLwUyfikVZSx1m24YySzIuRNK9IVyrq35aEqJIiHs1DO6TZY997ZRUM429z4RUxraVivvDux7cunv6cdQDX9roK//5O5q+jFFOL8wryvvJgznnoYmXS9NBIu4hpXJ0q2dz9Hivq0Qxs9aHp/bQjLHVyPPm+UyqV/A48er8ZBDNoQK9LuNoWuOm1kt56OEQSK+HOib3GOjQQGzW1MRJW0tK6OIQ2JYK5izX63Jw8Z0+OOyjhuWj9PFWYHDWyvInzYwb2i9pkziRdeZnDUPppNeHoayx/RCk8oiuDNIBP2bbMz5F38Fzxvw5XemcnlRI2Fa7ETWoooc2KqLy8IBbu0sKke7NSuc4unXuEKB6c+8JEJnw/ObnIea5WuSVtPOnG0iuC/Hozs6Ja/gVv5i9aCvJHg9D/lqgDOpRsnFEMkwraMwE597zjIhXmGK3dJP5JNiYnX/XZN0UzRAT6788xkKZ6RbCWR134JlqOzdP4tBrqa653b2Ek1W+A5ABtmjIUCJN3jgtpUPA=
-Received-SPF: pass client-ip=57.103.88.225; envelope-from=mads@ynddal.dk;
- helo=outbound.ci.icloud.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1uvaN9-0006jb-Ag
+ for qemu-arm@nongnu.org; Mon, 08 Sep 2025 07:49:33 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1757332156;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:in-reply-to:in-reply-to:  references:references;
+ bh=nIuwVhyBgkhfjvCR/HFoiHpIeUiKsxFDqHS+CG9u8nc=;
+ b=FehJ+9NaJxw2iWmpIXumG1bXETg+d/+NDCU7OFt8sE3RDlsv/kyCZGvVSZvx1xQ9jGpjkZ
+ 4/mPGfO32C6fR7R253p0+3LtXwWcO0l5ZBlL2M/2Pu/m2tU7En1FJyblnB3kLjq+I2BE0+
+ ryQpq+3LxzoMVyr+BGSMAREEgvHol0g=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-255-f8Uva2UTOqOp_rC7_AAJzw-1; Mon,
+ 08 Sep 2025 07:49:13 -0400
+X-MC-Unique: f8Uva2UTOqOp_rC7_AAJzw-1
+X-Mimecast-MFC-AGG-ID: f8Uva2UTOqOp_rC7_AAJzw_1757332152
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 15ACF1800371; Mon,  8 Sep 2025 11:49:12 +0000 (UTC)
+Received: from redhat.com (unknown [10.42.28.93])
+ by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 8C7DD19540EB; Mon,  8 Sep 2025 11:49:09 +0000 (UTC)
+Date: Mon, 8 Sep 2025 12:49:05 +0100
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Gustavo Romero <gustavo.romero@linaro.org>
+Cc: qemu-devel@nongnu.org, alex.bennee@linaro.org, thuth@redhat.com,
+ qemu-arm@nongnu.org, 1844144@gmail.com
+Subject: Re: [PATCH v2 0/5] tests/functional: Adapt reverse_debugging to run
+ w/o Avocado
+Message-ID: <aL7CsSppNc-WZFY-@redhat.com>
+References: <20250904154640.52687-1-gustavo.romero@linaro.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20250904154640.52687-1-gustavo.romero@linaro.org>
+User-Agent: Mutt/2.2.14 (2025-02-20)
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
+ DKIM_SIGNED=0.1, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -88,20 +83,126 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+On Thu, Sep 04, 2025 at 03:46:35PM +0000, Gustavo Romero wrote:
+> In this series, we leveraged the run-test.py script used in the
+> check-tcg tests, making it a GDB runner capable of calling a test script
+> without spawning any VMs. In this configuration, the test scripts can
+> manage the VM and also import gdb, making the GDB Python API inside the
+> functional test scripts.
+> 
+> A --quiet option has been added to run-test.py so it doesn't print the
+> command line used to execute GDB to the stdout. This ensures that users
+> don't get confused about how to re-run the tests. One can re-run the
+> test simply by copying and pasting the command line shown by Meson when
+> V=1 is passed:
+> 
+> $ make -j check-functional V=1
+> 
+> or, alternatively, once the test run completes, the exact command found
+> in the 'command:' field of the build/meson-logs/testlog-thorough.txt
+> file generated by Meson. Both methods provide the correct environment
+> variables required to run the test, such as the proper $PYTHONPATH.
 
-> On 3 Sep 2025, at 12.06, Philippe Mathieu-Daud=C3=A9 =
-<philmd@linaro.org> wrote:
->=20
-> Since hvf_inject_interrupts() calls hv_vcpu_set_pending_interrupt(),
-> which must run on a vCPU, it also must. Mention it.
->=20
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
-> ---
-> target/arm/hvf/hvf.c | 1 +
-> 1 file changed, 1 insertion(+)
+While I like the conceptual idea of just sending human GDB commands,
+instead of working with GDB protocol packets, I really dislike the
+effect this has on the execution / startup of the functional tests
+via use of the custom runner for a number of reasons
 
-Reviewed-by: Mads Ynddal <mads@ynddal.dk>=
+ * The command line for launching the test outside of meson is very
+   complicated, so not memorable
+ * It makes the meson.build rules much more complicated
+ * Running standalone there is no TAP output available making the
+   test hard to debug on failure or timeout
+
+I understand the need to spawn the test via gdb, in order to be able
+to import the 'gdb' python module. Looking at what reverse_debugging.py
+does, however, makes me question whether we actually need to directly
+use the 'gdb' python module.
+
+The only APIs we use are 'gdb.execute' and 'gdb.parse_and_eval'.
+
+The latter is only used once as
+
+  gdb.parse_and_eval("$pc")
+
+and I believe that can be changed to
+
+  gdb.execute("printf \"0x%x\", $pc", to_string=True)
+
+IOW, all we need is 'gdb.execute("....", to_string=True)' 
+
+With a little extra helper proxy script, we can achieve this without
+changing the way scripts are launched.
+
+The script needs to listen on a UNIX socket path. When a client
+connects, it should read lines of data from the client and pass
+them to 'gdb.execute(..., to_string=True)' and whatever data
+gdb returns should be written back to the client.
+
+A very very crude example with no error handling would be:
+
+  #!/usr/bin/python3
+
+  import gdb
+  import os
+  import socket
+
+  sock = os.environ.get("QEMU_PROXY", "/tmp/qemu.gdb.proxy")
+
+  try:
+    os.unlink(sock)
+  except:
+    pass
+
+  with socket.socket(socket.AF_UNIX, socket.SOCK_STREAM) as s:
+    s.bind(sock)
+    s.listen()
+    conn, addr = s.accept()
+    fh = conn.makefile('rw')
+    with conn:
+        while True:
+            line = fh.readline()
+            if not line:
+                break
+            data = gdb.execute(line, to_string=True)
+            fh.write(data)
+            fh.flush()
+
+
+In the functional test suite, we should have a helper file
+tests/functional/qemu_test/gdb.py that provides an API for
+launching GDB to execute this proxy script, and an API to
+execute commands by talking over this UNIX socket path.
+
+With this, we will need no changes in the way we execute the
+reverse debugging script from a test runner POV, thus avoiding
+all the downsides of use of the run-test.py script. IOW, the
+first 4 patches in this series go away completely. Instead we
+need a patch to create the proxy script and a patch to create
+the helper APIs in tests/functional/qemu_test/gdb.py, whereupon
+the last patch can replace
+
+try:
+    import gdb
+except ModuleNotFoundError:
+    from sys import exit
+    exit("This script must be launched via tests/guest-debug/run-test.py!")
+
+with
+
+  from qemu_test import gdb
+
+and the earlier mentioned replacement of parse_and_eval()
+
+With regards,
+Daniel
+-- 
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+
 

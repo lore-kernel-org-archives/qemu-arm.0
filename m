@@ -4,72 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97637CAC582
-	for <qemu-arm@archiver.kernel.org>; Mon,  8 Sep 2025 20:40:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C60E8CA1016
+	for <qemu-arm@archiver.kernel.org>; Mon,  8 Sep 2025 20:41:02 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uvifB-0004vI-Iz; Mon, 08 Sep 2025 16:40:34 -0400
+	id 1uvifD-0004vf-VK; Mon, 08 Sep 2025 16:40:36 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
- id 1uviEL-0003pf-Q0; Mon, 08 Sep 2025 16:12:50 -0400
-Received: from mail-co1nam11on2060d.outbound.protection.outlook.com
- ([2a01:111:f403:2416::60d]
- helo=NAM11-CO1-obe.outbound.protection.outlook.com)
+ id 1uvha4-0004k3-UO; Mon, 08 Sep 2025 15:31:14 -0400
+Received: from mail-dm6nam12on20604.outbound.protection.outlook.com
+ ([2a01:111:f403:2417::604]
+ helo=NAM12-DM6-obe.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
- id 1uviEH-0001H9-0A; Mon, 08 Sep 2025 16:12:48 -0400
+ id 1uvhZn-0005C5-Pt; Mon, 08 Sep 2025 15:31:12 -0400
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=IksgvJacVTHxby06O7ODd1uL8gF0PrmvILqEhMgMTzwTKMwVKOiQkmjK6MpChQ2rDyZ6nJEcc1zjg1WwNdDH9d2myqzgCoY+IsRiPLC2YCb4Zi5hRWbXcoyVFqU2KisMLv9by2Ms7fSN5kKGIiHoSQDEs1p7Sf64HbgZDh+xfAYtnbjY9azE6xaE0v8xhbGZOT2OnrQXu9JaahWD2TkceK3p4tBOjB+7p9x1gydsQIC/CHubCKBN3P0MKau+NLqZH4GrwniPBg73688Su/u2wDIzbulnMn8DDMwRAutTWJ542Hgo7Oth4IQ6lbWzjuGmTZCmwq/W7og8CPwgWXxZMg==
+ b=UqCOiLe1tlnQKPx9W9XaGKuqS5mYRbkQ+MV9KqARaF5KKjBVfN4kJvg+NNylXOY8t6uOIq1Vqe8oHn/o6AHK36EfyqMFXUIWOyIvd+3hOAYuZhVHXq0XQdDjMYsLfg3XDxydVYmSC+q8ltAxO82UScmkU+wE6ELRFEniWrYxiqrMBa5PBk/tjbtbKVqisQCk5IfB/qkSI1g6o4LKPLTOeNGNi+rHT0j1nXWiRBFTuKcN4ofd4D9Jt9Rx5FVX8VBWHFukFcSiCskZdrjPsNO8AiJ0x6NHwDksauMdQxuNZa8RKVWsqa0XN1qapaLQ8fPKcdFZlMHh/XU118OtkqKbEA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=J9b0BcYk9WZb32veBb5CM8vbmxASJalsljZCewIlDTU=;
- b=s1HGpGlMlMFBibE/VYfcXmtR6TMjoheL1jzHdF8rOnuX1tsQzjhTB3M7MCH1gUA3xnUo/VG8dcZOvgTCxF/E1PwzPnxjqfUKHFf4ukdf/np47BFA2XPtIugFIlbH+PeXXiYUaHAO9//HilIFG92DU22+zRNcIOR28W/q2dJ3K9Czx8iHbNT8fclWcugIdntNrJFW8BYyaTm/0qypKMdZiL8DH//M6x51AD9MjLquFV7XXmhol6vIBkwZOhwHC19JqoKnMTe3uadrkvX6Iy0nUXpl6t6opY3chY9IEQuTRZij4CHszKNvfvqvSWxO0YHbdvWHBV+qXIx8Gl0KK2DStw==
+ bh=9uca8U065mr6ZPcovwvg2eYSqlRz7JEyUvxbHbpf7VI=;
+ b=F55ij+8KIX8ezb5nciaO2QRNf3DoW98xNFyAAFp/WeUkpymxF4afRVdGxYgt5a82Lfy8HpJRx3Sbu5jCfXj5WGvcFOu5amqiVwlP/+YytJRPOGME1WBRfnmguWdiPOZgUEUDUYxW+W53DtcMEs9DSAFJXB3tuXGNyvpO24ExgrCYg8wuPY6M0QFvaOTzjOjaQ0IkQsjft76H72rDBirwQtITsWiyTGoYzbsEufpsL7eK9um1inxU3SVjI1eq5UUWer6mWafQUhk/WYh9Pg7fwpsadG9D2Mvd7hIGvv+0S8OxCb3E2vjkSuNaX7SLamed9cJJ3SMM5kYl1yC8d/q+ZQ==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.118.233) smtp.rcpttodomain=linaro.org smtp.mailfrom=nvidia.com;
+ 216.228.117.160) smtp.rcpttodomain=linaro.org smtp.mailfrom=nvidia.com;
  dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
  dkim=none (message not signed); arc=none (0)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
  s=selector2;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=J9b0BcYk9WZb32veBb5CM8vbmxASJalsljZCewIlDTU=;
- b=ksVkDk32L4wbzgDFXJfVGfef1oGfY8yizGhwPZwFWiObxikoCKnkTbJlDln6ec05XNvnB2r+mMO1UJTP0wSNKvD3erPNoxgXHXt7T6GpCD02FmCWo0VaAXQvFtY44KoQsnPwrWS4SB/FEjqPzUkipoJZJENxgY+bTR+RV8P6Vg+/HvsYRRDWRF3ZDrJmbiL2MTRSN+mlShzTaljibJalu1AURxUwKtvWaKIOcRyBH7SuKbDD3cdFJT5cyiXRnlRF9jioRbA6AmqntASSWeb3UHJao4V4TTMGpB8V/sRwmM8DN8+AC7QqWVD2IsQAlQ5FNHZQ5nAOldCVCJt1i/epRw==
-Received: from MN2PR15CA0040.namprd15.prod.outlook.com (2603:10b6:208:237::9)
- by CYYPR12MB8752.namprd12.prod.outlook.com (2603:10b6:930:b9::13)
+ bh=9uca8U065mr6ZPcovwvg2eYSqlRz7JEyUvxbHbpf7VI=;
+ b=kNPOt6W9pbuxio1mvIHEJRQGq7wqqIYC6/zANnYreQcl5gZeD0e8u3+9K9mk8/WN6debG1SV9+ZeJxT1RUWb+8eP2uh1R7TIA5Vb5C7br6cXL3F0JZYe8jX3ZAiq1ZqCFoeYgKvOsB1XxJeI23vh0Ubzm6OsPyfMTmof8h3+5gwcSJs1fZCGTqGXew2vRSaHLCOJy1iJ39RcbvriJu4K8uYBXDc53te7UY22Ck/HI6vMaWgQDUhyjGhH1roZv1s12AfgTHZxurpPqOVBeKx80LvqmYRQjUfBclSUMUfl6S65FrsFi66mEWXI4SdiG7AcvNsvgQaNpDO6Rm30WO2Kow==
+Received: from BL1PR13CA0421.namprd13.prod.outlook.com (2603:10b6:208:2c3::6)
+ by MN2PR12MB4455.namprd12.prod.outlook.com (2603:10b6:208:265::23)
  with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9094.22; Mon, 8 Sep
- 2025 20:12:28 +0000
-Received: from BL6PEPF0001AB50.namprd04.prod.outlook.com
- (2603:10b6:208:237:cafe::de) by MN2PR15CA0040.outlook.office365.com
- (2603:10b6:208:237::9) with Microsoft SMTP Server (version=TLS1_3,
- cipher=TLS_AES_256_GCM_SHA384) id 15.20.9094.22 via Frontend Transport; Mon,
- 8 Sep 2025 20:12:27 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.118.233)
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9073.27; Mon, 8 Sep
+ 2025 19:30:41 +0000
+Received: from BL6PEPF00020E65.namprd04.prod.outlook.com
+ (2603:10b6:208:2c3:cafe::36) by BL1PR13CA0421.outlook.office365.com
+ (2603:10b6:208:2c3::6) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.9115.13 via Frontend Transport; Mon,
+ 8 Sep 2025 19:30:41 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.160)
  smtp.mailfrom=nvidia.com;
  dkim=none (message not signed)
  header.d=none;dmarc=pass action=none header.from=nvidia.com;
 Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.118.233 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.118.233; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (216.228.118.233) by
- BL6PEPF0001AB50.mail.protection.outlook.com (10.167.242.74) with Microsoft
+ 216.228.117.160 as permitted sender) receiver=protection.outlook.com;
+ client-ip=216.228.117.160; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (216.228.117.160) by
+ BL6PEPF00020E65.mail.protection.outlook.com (10.167.249.26) with Microsoft
  SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.9115.13 via Frontend Transport; Mon, 8 Sep 2025 20:12:27 +0000
-Received: from drhqmail202.nvidia.com (10.126.190.181) by mail.nvidia.com
- (10.127.129.6) with Microsoft SMTP Server (version=TLS1_2,
+ 15.20.9115.13 via Frontend Transport; Mon, 8 Sep 2025 19:30:41 +0000
+Received: from rnnvmail203.nvidia.com (10.129.68.9) by mail.nvidia.com
+ (10.129.200.66) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14; Mon, 8 Sep
- 2025 13:12:13 -0700
-Received: from drhqmail202.nvidia.com (10.126.190.181) by
- drhqmail202.nvidia.com (10.126.190.181) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.14; Mon, 8 Sep 2025 13:12:12 -0700
-Received: from nvidia.com (10.127.8.12) by mail.nvidia.com (10.126.190.181)
- with Microsoft SMTP Server (version=TLS1_2,
+ 2025 12:30:09 -0700
+Received: from rnnvmail201.nvidia.com (10.129.68.8) by rnnvmail203.nvidia.com
+ (10.129.68.9) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14; Mon, 8 Sep
+ 2025 12:30:04 -0700
+Received: from nvidia.com (10.127.8.12) by mail.nvidia.com (10.129.68.8) with
+ Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14 via Frontend
- Transport; Mon, 8 Sep 2025 13:12:09 -0700
-Date: Mon, 8 Sep 2025 13:12:07 -0700
+ Transport; Mon, 8 Sep 2025 12:30:01 -0700
+Date: Mon, 8 Sep 2025 12:29:58 -0700
 From: Nicolin Chen <nicolinc@nvidia.com>
 To: Shameer Kolothum <skolothumtho@nvidia.com>
 CC: "eric.auger@redhat.com" <eric.auger@redhat.com>, "qemu-arm@nongnu.org"
@@ -85,88 +85,77 @@ CC: "eric.auger@redhat.com" <eric.auger@redhat.com>, "qemu-arm@nongnu.org"
  <zhangfei.gao@linaro.org>, "zhenzhong.duan@intel.com"
  <zhenzhong.duan@intel.com>, "shameerkolothum@gmail.com"
  <shameerkolothum@gmail.com>
-Subject: Re: [RFC PATCH v3 13/15] hw/arm/smmuv3: Forward invalidation
- commands to hw
-Message-ID: <aL84lwouHh8LZ5mA@nvidia.com>
+Subject: Re: [RFC PATCH v3 12/15] hw/arm/smmuv3-accel: Introduce helpers to
+ batch and issue cache invalidations
+Message-ID: <aL8uth59ShMJyaDH@nvidia.com>
 References: <20250714155941.22176-1-shameerali.kolothum.thodi@huawei.com>
- <20250714155941.22176-14-shameerali.kolothum.thodi@huawei.com>
- <5ab38eaa-b005-432a-9de7-fae3e6096f89@redhat.com>
- <CH3PR12MB7548543A976A65B74DA6EA42AB0CA@CH3PR12MB7548.namprd12.prod.outlook.com>
+ <20250714155941.22176-13-shameerali.kolothum.thodi@huawei.com>
+ <c2935990-ac0b-4272-b3aa-92a555d88e99@redhat.com>
+ <CH3PR12MB75486D76AC47F611FC646510AB0CA@CH3PR12MB7548.namprd12.prod.outlook.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <CH3PR12MB7548543A976A65B74DA6EA42AB0CA@CH3PR12MB7548.namprd12.prod.outlook.com>
+In-Reply-To: <CH3PR12MB75486D76AC47F611FC646510AB0CA@CH3PR12MB7548.namprd12.prod.outlook.com>
 X-NV-OnPremToCloud: ExternallySecured
 X-EOPAttributedMessage: 0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: BL6PEPF0001AB50:EE_|CYYPR12MB8752:EE_
-X-MS-Office365-Filtering-Correlation-Id: e9a7beac-edec-49e5-798b-08ddef140848
+X-MS-TrafficTypeDiagnostic: BL6PEPF00020E65:EE_|MN2PR12MB4455:EE_
+X-MS-Office365-Filtering-Correlation-Id: 0cc5ad21-b70f-4d08-aef6-08ddef0e329c
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
- ARA:13230040|1800799024|7416014|376014|82310400026|36860700013; 
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?Nmp3K21iUXZjNWxOZVlKeWhEZU5aRWdEQThSSFB2d1FvQ051aGVvT1l2WERT?=
- =?utf-8?B?TzdBMWZtRUxFNG5hdTVWVVVYUUttZWZnVjhLY0FxdDNKYVhhdEVWdy9SSmNq?=
- =?utf-8?B?OTIxM1lZdUIzbVFQTVgxMXpwM1Q4WGw3bWZvMlJQSEFuZ3VyRnB2WGNsNk5L?=
- =?utf-8?B?WW5wSFdJNnd3ZGZSbDFnRGZlb0tWcFZuenBjalAwYWRkR0dvRkV6Qm8vano4?=
- =?utf-8?B?aWwwQnFmeldDajVoeWwyeEhDZG94Q1cxVDVoaEpKTnVlMkJiajEzZFFrWkNs?=
- =?utf-8?B?VXpBSDM0VnEya0ZIR2ZsdHFJWTNxSUhSWkN3ZmdwK3g0SlhLemdMSU9MNll2?=
- =?utf-8?B?MmdTNGZIeWhybDU5bWJteHBCU3E4b1JOR1NRbHIzSmNuajFOdGxRbU5ZdlRn?=
- =?utf-8?B?RXU3VTdHQnMwUCs1VVJTbU1EbDF5YUs3Rm10SGFaaFVnRHlwVW5GREFLaDhV?=
- =?utf-8?B?U2FxeFM5TzZDU01Hc3ptSUF2MzBLS0dTLzFsRmdVbm1UaUUvVnV1eUdXcDZu?=
- =?utf-8?B?b3JKOVpuOHBBQnM4aytIcDhpZHFxSzFnMU5id0EyV3JFV0cxVFVNYTAxaVlG?=
- =?utf-8?B?aHFYaDR5OC94MUhaVGpBZ0RRTWVIQVBnNG1lR3F3bDdnd21hRkxyRHgyYStX?=
- =?utf-8?B?SXhERjVDY2IwM3RlSlBCZDFvUG1iT0JLMmNXcDNIUzYzOTlNSklKdUNCU2JQ?=
- =?utf-8?B?RkY3UzY4R0xqMFBTV3F3YWhGSXJmdUNBYXBGV3AwSjlqZ0ZoQ2RKVXQrOC9H?=
- =?utf-8?B?eGQyejB4dHlQVWxTazZjKzBDbWFrTFpaQWdkeEMweWFIWU9FSW0vNkpodFBT?=
- =?utf-8?B?bkdvY3dXTkNWRDFCREY3ZXZqSGZuMXJ2SCsveXlnT0JkSkdRODVFYVl3YjlL?=
- =?utf-8?B?eVRVdWF0VmYwekhvb0h1UW0rTENVbHAvdExkU0UraWxtdXE5RXBuRUx6TElF?=
- =?utf-8?B?Y3pvRjVYWkVKR0ZVRmJzZmhtRHcydWl3eUtDYStnOHJkOWxZMWdKQmVwczNL?=
- =?utf-8?B?VFh0UGFlYUN0NDhIdEJvRkhzU3l0YlBCc0xmWmM0THpyV2xMNnVNME8raG5y?=
- =?utf-8?B?cys0QzU0cW1objNFNElRUjh1YkJlRnJDaWliSjFrWG1HeHhmR3lpdFJLWVJq?=
- =?utf-8?B?SGlPS0NCYUtlSjVkTHBsODRBczNMb0wxZlplVTFwSWZHbEdkeEdFRTNOcElh?=
- =?utf-8?B?cTJ5NXNYTzVtZDFkRlJwUGlTK3dKbGZmM0g0R09sekZEbGo1THFIWEkyTUdr?=
- =?utf-8?B?ZWIvS0JNQkVSTzRJUFdMR3BYODNHWGlYeHRiREh5aWxxaFUxTzdUcHJFV2w2?=
- =?utf-8?B?cVYzQ3hVV282bVBQNFZTdVI0TUtlekdwd05yV3pad29ZdDByT2EvL2VwQnlE?=
- =?utf-8?B?U1lmZEVVb2MzMlZ2WTdwT0JkUUdKVUNPOGhDTGhVOVdNQzRUcTA4dDcxSkJz?=
- =?utf-8?B?bkpaM0FFR2VXTUI2R2FBeCtsU0JhbHBZaldhQnQzaVRHV3MxcXB6UlVNZFlL?=
- =?utf-8?B?enUvNUg5cGM5enRLNWowRUVuUzBHZnV3SHFIWSsrcEFNai9GQkR4WUtXRWsr?=
- =?utf-8?B?RENKb1h1ellJM1c1bi9lcWU0K2tXMk5McnMycXZ6c2JnM3piNDlLb3U3b0VN?=
- =?utf-8?B?VmpWRTIvb3Vvc3NvRVNub3VzdWFBbzRCUmtnNWdVYjRRRitEY1BQaDFzUGlC?=
- =?utf-8?B?b0Z3bko4V0ZZN0Z4RDV1b2dUd05FSkIrRnQ2WTl1QU5XYmJzMFpxelJad251?=
- =?utf-8?B?cVM0V3NlQVRac2k5ZWJVM3ZMKzIrRUw4NXhJR2dzcTdlZUtOejVJNkNhMjdO?=
- =?utf-8?B?Y0NWS1c5VVIvWUtndTdjMmpLQnZ2d0p5cVllMEUvWU90MXlWZUh1RE5MRGlo?=
- =?utf-8?B?WVJKbFl5NmJuK25ObTZLdEcyb1BEMVlGT25TTmd1NHRGbXNrYUJNWUJCcmlC?=
- =?utf-8?B?bDJBRE5tak9EK3J2VmgyenhSWVZ2aDNzMHNQWEo4R01YRXEvSFRwSHBwYzJV?=
- =?utf-8?B?K3k3NTdJdXVsU3ZjWklMamtnaHFZTE1WeHBsN1o4K0c0RXRBVWlmQWlYSS85?=
- =?utf-8?Q?JR5FZe?=
-X-Forefront-Antispam-Report: CIP:216.228.118.233; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc7edge2.nvidia.com; CAT:NONE;
- SFS:(13230040)(1800799024)(7416014)(376014)(82310400026)(36860700013); DIR:OUT;
+ ARA:13230040|7416014|82310400026|376014|36860700013|1800799024; 
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?VpFKYkW1MNXR1t45uFRe5sLuIW7wL1KT5oAfPqDodlUnqbiTSLByJTBWPwS8?=
+ =?us-ascii?Q?sVP4W2/SpkMAJvHh6wjNzckanlK9oI9JC/0r43V1PAEhupRkpFp37uPu2VGt?=
+ =?us-ascii?Q?P9fIuLQ/lvkAPPGy/1ihGpheVMm1ffiVP5ECNxcxKwNXD/RhqJ16kPmnJ59i?=
+ =?us-ascii?Q?s/mulSxrQ4fIBTPTRPaJ6g7WqS5gSymyGogYidZx793/IVC/Fb5ymeykDHXQ?=
+ =?us-ascii?Q?nZoKUqZkLrnaGOK39DHbRM0gHVhyqLduC22vWfVSRmX6TQS5rIdBGAAlAml1?=
+ =?us-ascii?Q?pC9odw32RYVy3USyzFk4Qah3krBOyLSi8oHNNm/gTJdWYYKPKYNAm8hkb4qp?=
+ =?us-ascii?Q?QzYsRVSUJavhhis5xmoQKHLNLb8wOy3EkIfwmmjEZUR+t4GbW9UBTMF7mcuV?=
+ =?us-ascii?Q?2OToqsL9QGjMDyiy80TeswbO9B3QmZxz8rPNbMGotev0x72L9FGrQRIw+CJt?=
+ =?us-ascii?Q?17tFyhSyo69KLQ1xHYKc1TPzxHUR4eEd3uGUcOXcPkklx2d/6KHFgt/ddntJ?=
+ =?us-ascii?Q?+tZvuOVmMDS82NLL/dazzdPU3cfn3ilgGrGgB6j74e5tz8uaL9hi4QSV880r?=
+ =?us-ascii?Q?qgjGdAmwcg2/m36NReUOf1k1aBVPNHOaAHk9yHX8lQ93K+jDzHKHcOl5ec8o?=
+ =?us-ascii?Q?96IV5RJcrhk1tj+2AH90N3wNKwj2xqQbjqZy5M9X/fqc9/CW/Fj6VHQPGyMQ?=
+ =?us-ascii?Q?1OxOMerR6TBObkOkDOzoC8J+SXKXxJ2ZwUXHtBu22hyFjwGX4993lEV4Yao8?=
+ =?us-ascii?Q?Sxb2pTOO3CYTciWGNhmTpqIvHcPZcAeUMnPOZlTVLYQ7qDnDnFna+NMUyhRj?=
+ =?us-ascii?Q?9ztPxhKpPo575AnsCiw6BLor8q40O8mHYRHZOk4VXtYX57NdeA633Xm127dL?=
+ =?us-ascii?Q?tOorcfVS9k42ImO/XVMS4GHDQ76CXvT6FS6DdUFnhNow3GSkH/qo3fQyR0nu?=
+ =?us-ascii?Q?c5upfyYTnC08AoYCAloRyjdMGFh2jSTeNpbMbe/GiQDcTPRLOCaqLmPnf7S8?=
+ =?us-ascii?Q?fRFQzGdKBVtHCTOlLxGbY1cjPLFZIlssRPTijKpPl5F/T+1HyiojkyMYjWAP?=
+ =?us-ascii?Q?Ada5RhNFTiN9Gf8lSGXPM5oH4jl3+orkceDyTzsowlok/ysZnplTvqCrcfSN?=
+ =?us-ascii?Q?XDXa+Ysy58UF6tFo8vHd9H3bTeDkfYB2rdeloCyvHM6NFrUo56dRIxlHLC7+?=
+ =?us-ascii?Q?gSvHmpTAHitVdzQWU24WI4p93Zvb667QlF4HQz2SMV3goJePw/HoNbKqDljG?=
+ =?us-ascii?Q?uQgdvxUnW0cWvnusOcVHl7CxkfVkTHiy9SCMmhc9ShCIqip3HCJcP8MIhkh0?=
+ =?us-ascii?Q?sa3ALKdJX7TsqzLKRWftSQ1lsNCArrhRP/5a1AEw2fJ1giND8g5ekiLifsc9?=
+ =?us-ascii?Q?5lc2JeNIMgw6YdGBcC8QbmBidGrFTgFIQeTZVL+XbjmvU7uaz4Yh3+7xUFUG?=
+ =?us-ascii?Q?GH4fYVYOnsyLBCZsV0Jz5XjQ5JOeDOvMdoJji3taaEy3jNn/KF+ohGFty6M8?=
+ =?us-ascii?Q?6ir2GQZrhMcKQ25P/TeOu9YP/Nt3p78IQHcC?=
+X-Forefront-Antispam-Report: CIP:216.228.117.160; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge1.nvidia.com; CAT:NONE;
+ SFS:(13230040)(7416014)(82310400026)(376014)(36860700013)(1800799024); DIR:OUT;
  SFP:1101; 
 X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 08 Sep 2025 20:12:27.1980 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: e9a7beac-edec-49e5-798b-08ddef140848
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 08 Sep 2025 19:30:41.2182 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 0cc5ad21-b70f-4d08-aef6-08ddef0e329c
 X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.118.233];
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.160];
  Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: BL6PEPF0001AB50.namprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthSource: BL6PEPF00020E65.namprd04.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Anonymous
 X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CYYPR12MB8752
-Received-SPF: permerror client-ip=2a01:111:f403:2416::60d;
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR12MB4455
+Received-SPF: permerror client-ip=2a01:111:f403:2417::604;
  envelope-from=nicolinc@nvidia.com;
- helo=NAM11-CO1-obe.outbound.protection.outlook.com
+ helo=NAM12-DM6-obe.outbound.protection.outlook.com
 X-Spam_score_int: -10
 X-Spam_score: -1.1
 X-Spam_bar: -
-X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FORGED_SPF_HELO=1, SPF_HELO_PASS=-0.001,
- SPF_NONE=0.001 autolearn=no autolearn_force=no
+X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FORGED_SPF_HELO=1,
+ SPF_HELO_PASS=-0.001, SPF_NONE=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Mon, 08 Sep 2025 16:40:33 -0400
+X-Mailman-Approved-At: Mon, 08 Sep 2025 16:40:32 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -181,75 +170,26 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, Sep 08, 2025 at 05:22:35AM -0700, Shameer Kolothum wrote:
+On Mon, Sep 08, 2025 at 02:59:55AM -0700, Shameer Kolothum wrote:
 > > -----Original Message-----
 > > From: Eric Auger <eric.auger@redhat.com>
-> > smmuv3_cmdq_consume(SMMUv3State *s)
-> > >      SMMUCmdError cmd_error = SMMU_CERROR_NONE;
-> > >      SMMUQueue *q = &s->cmdq;
-> > >      SMMUCommandType type = 0;
-> > > +    SMMUCommandBatch batch = {};
-> > > +    uint32_t ncmds;
-> > >
-> > >      if (!smmuv3_cmdq_enabled(s)) {
-> > >          return 0;
-> > >      }
-> > > +
-> > > +    ncmds = smmuv3_q_ncmds(q);
-> > > +    batch.cmds = g_new0(Cmd, ncmds);
-> > > +    batch.cons = g_new0(uint32_t, ncmds);
-
-> > so you are provisionning space for n commands found in the queue,
-> > independently on knowing whether they will be batched, ie. only
-> > invalidation commands are. Then commands are added in the batch one by
-> > one and you increment batch->ncmds in smmuv3_accel_batch_cmd. I agree
-> > with Jonathan. This looks weird. AT least I would introduce a kelper
-> > that inits a Back of ncmds and I would make all the batch fields
-> > private. You you end up with the init +
-> > smmuv3_accel_add_cmd_to_batch(batch, cmd). Then independently on the
-> > ncmds you can issue a smmuv3_accel_issue_cmd_batch that would return if
-> > there is nothing in the batch. You also need a batch deallocation
-> > helper. 
+> > > +/*
+> > > + * SMMUCommandBatch - batch of invalidation commands for accel
+> > smmuv3
+> > > + * @cmds: Pointer to list of commands
+> > > + * @cons: Pointer to list of CONS corresponding to the commands
+> > It is not totally clear to me how the list of "CONS" indexes is used. Is
+> > it meant to store errors, how do you update cons index in case it starts
+> > failing, ...
 > 
-> Agree, at present we pre-allocate irrespective of whether there will any
-> Invalidation cmds or not. I will take another look and incorporate your above
-> suggestion to improve this. 
-
-Perhaps we can try a different data structure for those two batch
-elements, e.g. using a GArray.
-
-This allows an unknown "ncmd" at the beginning, so an invalidation
-command will be just appended to the array in the _batch().
-
-Then, in the _submit(), we can convert it to regular array:
-    Cmd *cmds = (Cmd *)g_array_free(batch->cmds, FALSE);
-    // passing cmds to ioctl
-    g_free(cmds);
-
-> I remember I expressed in the past my concern about having
-> > commands executed out of order. I don't remember out conclusion on that
-> > but this shall be clearly studied and conclusion shall be put in the
-> > commit message.
+> This is how I understand it,
 > 
-> Yes, you did, and I missed it. Sorry about that.
-> 
-> I think it is safe to honour the execution order of Guest here. From a quick glance, I
-> couldn’t find anything related to a safe out of order execution guidance from
-> SMMUv3 specification. Also, we can't be sure how Guest will be modified/optimised
-> in the future to completely rule out problems if we do out-of-order executions. 
-> 
-> Hence, my plan for next is to start batching if we see Invalidation cmds and submit
-> the batch If any non-invalidation commands are encountered in between.
+> The cons here is to store SMMUv3 queue cons corresponding to the cmd. And
+> in case batched invalidation fails(iommufd_backend_invalidate_cache()), it will
+> update the batch->ncmds with the index of the last failed command. The cons
+> value at that index is then used to update the SMMUv3 cons index.
 
-That sounds good to me.
-
-> @Nicolin, do you foresee any issues with above approach? From the current
-> Host SMMUV3 driver, batching of commands is mainly used for invalidations
-> (except for certain arm_smmu_cmdq_issue_cmd_with_sync() cases). So 
-> I guess we are good from a performance optimisation point of view if we can
-> cover invalidations as above.
-
-Yes. It shouldn't impact perf so long as the guest OS is sane.
+Yes. It is used to update the CONS index to the vSMMU CMDQ.
 
 Nicolin
 

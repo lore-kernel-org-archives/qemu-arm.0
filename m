@@ -4,174 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73983CAC582
-	for <qemu-arm@archiver.kernel.org>; Tue,  9 Sep 2025 00:31:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9DDD8CA0FED
+	for <qemu-arm@archiver.kernel.org>; Tue,  9 Sep 2025 07:14:55 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uvmGM-0003PZ-VM; Mon, 08 Sep 2025 20:31:11 -0400
+	id 1uvsYf-0004d0-Fu; Tue, 09 Sep 2025 03:14:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kane_chen@aspeedtech.com>)
- id 1uvmGL-0003O7-OX; Mon, 08 Sep 2025 20:31:09 -0400
-Received: from mail-koreacentralazlp170130007.outbound.protection.outlook.com
- ([2a01:111:f403:c40f::7] helo=SEYPR02CU001.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <SRS0=ZSe1=3U=kaod.org=clg@ozlabs.org>)
+ id 1uvsYe-0004cf-9m; Tue, 09 Sep 2025 03:14:28 -0400
+Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kane_chen@aspeedtech.com>)
- id 1uvmGF-0008HL-ME; Mon, 08 Sep 2025 20:31:09 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=M4okjLZPIR50cOWtkLGRIUrh4S7wsQ5mccQuseLun3pSetgAkBl0KidaAatwmR4KjB5D9AbihuOXnOiUjNQ3jcj/jsXeeK4Ro6bXUfJMTz6KfqFes8Sbd8J27f7+2NtIrEb7+UubDuKMsgGTiGOOt4Ijpbi3LfTE+KgFp/40CauUI0AWbzvi94W01rngr1X4ep7dCKIBieH3Wm5dXb/IfZPb2p4HFxLnT2ZR9UMYX4AEq131K/iizoRozDYhTgbcZ8LSc+Cp0/b7yRlibkY9v07PX/QD2JsUEbxSRSmR+BVzACkgFV2p97PF2sFRPQZWLzM5A2XqvPCUtR9u7MjzMw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=kSO/NF3RJC28VJ/w2ih0/FQqZ3zyPply7Z90TWAo2RI=;
- b=HUtaaq7k6N9i4wmJxWad8eTNyxs79S4aYAFBZgYWAf1aYtyVOEWxAIgGjr4J+Y4/vQOLOKznXeCG9+laBFgxf9mIP7EHOvENvL6J4HFCp+z33XRJzcj9O9jWFQUsPtZPzTIhkU16iVAoZrtdmzhdVyhaXsvYxPZq4FVlE/sMU3AQPM0YdSwNsF+cAUjYHDLW8v/qc8xJTY9IKff6rEiGpIJkiirsLsSffl7Hy8TVQqSlWiLGpSGYoaTRXeKU8HtXrtTY4/IFFVT2+uXPHyjDrhAKirPXgUrTkO2u63wWcqkpVsosD6gGitATLMfKCHY1eGbgvm3gPN994rDST62tBA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
- header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=kSO/NF3RJC28VJ/w2ih0/FQqZ3zyPply7Z90TWAo2RI=;
- b=oX0NLNKwO3rZCl2z6lrhJrSHYWriUMUWYm6Ar/gwLU0xZBGMYWFwdkn1Y6RwRC7OMAIxK4uU+P+OjaRg1GPZ3uri8asXdQT7mA9Kf0JFm5gf9IrkUzK3zGb18ovm/oXf1ErfoyAIugJ2NO+eNeuu2ZwyNwtFe9c9YneCQiXvZgoxZVW2NnrmCIln2TMlvJUpBwF5Y1JkdxeKj2AoeJCHjNIOphLp4xpb5AmafD8YTto6eN5JDz/FsRwIfsxdXfAh3CKO+M7mD0zU3pAIhyEblKnpd+jfi1KtXVc6SVaqUWk0ACAhqH2SKZ8OUEXGysZp9p6UvikDb4hheJIQjzhMbA==
-Received: from SI6PR06MB7631.apcprd06.prod.outlook.com (2603:1096:4:239::11)
- by SEYPR06MB6508.apcprd06.prod.outlook.com (2603:1096:101:172::12) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9094.22; Tue, 9 Sep
- 2025 00:30:52 +0000
-Received: from SI6PR06MB7631.apcprd06.prod.outlook.com
- ([fe80::602a:6372:fff6:feca]) by SI6PR06MB7631.apcprd06.prod.outlook.com
- ([fe80::602a:6372:fff6:feca%4]) with mapi id 15.20.9094.021; Tue, 9 Sep 2025
- 00:30:52 +0000
-From: Kane Chen <kane_chen@aspeedtech.com>
-To: =?utf-8?B?Q8OpZHJpYyBMZSBHb2F0ZXI=?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>, Andrew Jeffery
- <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, "open
- list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>
-CC: Troy Lee <troy_lee@aspeedtech.com>, "thuth@redhat.com" <thuth@redhat.com>
-Subject: RE: [SPAM] [PATCH v1 0/4] tests/functional/arm: Update test images
- for ASPEED chips
-Thread-Topic: [SPAM] [PATCH v1 0/4] tests/functional/arm: Update test images
- for ASPEED chips
-Thread-Index: AQHcHYOD6xLzvRHE6ESGx+FNDPC5I7SJCIGAgAD9NaA=
-Date: Tue, 9 Sep 2025 00:30:52 +0000
-Message-ID: <SI6PR06MB7631BA054304EB6A3A798440F70FA@SI6PR06MB7631.apcprd06.prod.outlook.com>
-References: <20250904100556.1729604-1-kane_chen@aspeedtech.com>
- <a552ccb8-2498-45f9-aa36-5b34de868b48@kaod.org>
-In-Reply-To: <a552ccb8-2498-45f9-aa36-5b34de868b48@kaod.org>
-Accept-Language: zh-TW, en-US
-Content-Language: zh-TW
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=aspeedtech.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: SI6PR06MB7631:EE_|SEYPR06MB6508:EE_
-x-ms-office365-filtering-correlation-id: 952b6d98-4722-4164-ff82-08ddef3821ff
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|1800799024|366016|376014|38070700021|217643003; 
-x-microsoft-antispam-message-info: =?utf-8?B?QkN5eE1HK2M0cGI4L2R1RTBlalA0cVMvWkJnWk43T1JBLzNHU0MrRmhsSGFh?=
- =?utf-8?B?KzJaWHRlb3NLb2xxL2lrc1BwMEx5NkJTQWFjVkVEZUpSQjR5UG1ibkUzd0ZZ?=
- =?utf-8?B?bEVSUHZJcng5NklVN1VKSUpTK0lmZDB5ODU1UHpvR2lVVEtxbHZoOHplTzU4?=
- =?utf-8?B?azFkYS9JUVZsdWU3bXZleWhnNkNyTmNucUJ6bXh3VzVqNWJVaE5RK1VSeXFZ?=
- =?utf-8?B?M1FFM09CRVg0em5Gb1lFS2ZmeVBheWMzWjhnNElUNk1UL09tK1B6QmZXdDZY?=
- =?utf-8?B?SVk4ZTluSXRyVWljNTFFMlgyaGpXbTlsbXIvKy9HajhKcjFFYmhPTlM3d1ov?=
- =?utf-8?B?Z0RtUElSZ3hYanBySGI5VFY5YjBHRFhtSUZVeGJObTROYU1QR3pVVkE2RUxr?=
- =?utf-8?B?V2YrbytvUWxVV0lnWGR3Zkx6QzBQdjl5emdxNDhJMHFiTkQ0c1ZvSlFCY2pm?=
- =?utf-8?B?dTZLWUd6RHRCMDRrZnladXZ3QlpRNHFBblpxQXZOOWQzekVpcVBaSEpQTXJq?=
- =?utf-8?B?MnZCZGJiM2JYeENHeXVqSlorRWIybGpPTUhnQmsrVmd4WDBiV2Fha1ZFdWd0?=
- =?utf-8?B?bmNXS3g2UC8zQmhqUnh2S1JEVFpZUVRBbjJwa0IrVVlQTHdrVzNyUE14QTBL?=
- =?utf-8?B?OGl1dzFxTzhwSUJIaTN6U2pIVHluLzRaMml0QW9JR0MwcHAxS1BzR0QzQ3Iy?=
- =?utf-8?B?WXNPelhBeUd1TE02VTdrSk5pMVBPRzMzTUZWNVJkdGdxODVZSGNya09Dc1p3?=
- =?utf-8?B?TWRKMlZNRVBDSkxBOTY4blJFOTZ5b2JTcFhQNmQ5MXhZVnZuTGJEVXA1M0RR?=
- =?utf-8?B?MG0vLytCeTd5MzdTU1cwU3JVTkwzWmFpK3h0ZmErd2xKR0pScHJySm8zV3BS?=
- =?utf-8?B?S1BhZ3BUdjk1MzMxY0VRTW1UUWU0UEVNTGZhazJSNERtNkJtYmJDdU9sM0hE?=
- =?utf-8?B?K2p4aHVhb2lnY3NQV0dVdzVsZnhicGYxM0lzTnFNYWF5WjBGdzI0QVRmVXBU?=
- =?utf-8?B?UWhUOE0zQnhaczZDQjU2Y051a1FvRWw0RHRENVJzOFh4L1JrTmNURDVaREVR?=
- =?utf-8?B?NURML25Rek10a3k1OW1lU2NpbzVlUHFhL3JCZzVQQ2Nub2Q4QnZHajQ4SEpp?=
- =?utf-8?B?UjV2L0FtOXBRaUlmSERTNUJhbTFYRXhycko2SmxyblJVK1BJUVZLYW0rN252?=
- =?utf-8?B?MDFYc3k2NVhjTlI5TDZneHVSTWttd3hMS2orckN4dDNGcmpORzAvaTM1dk9S?=
- =?utf-8?B?aEdOSmVxeFJmc0FnVnZ0NmZNWmEzdzdpZ0tiTGs0bkFFWHVXUjgxdVRmZUNN?=
- =?utf-8?B?ZGJvSm95Sitxb0kxa0FoMkhVK2NNK0pMSDNsTlE2WU5peDYvTkp2UG1ydE14?=
- =?utf-8?B?MlFVUTJMVHNjY0RuaFpoNGI2ZGpEVnJlRUJvZkN1dDRxakl6VE1BNnJGR1Rk?=
- =?utf-8?B?bEV5QWpxVE5TVkM0bWx3enB6MDgvTC9qaGNkbWFFUUpjNFJlSkJ5cUdWNzA2?=
- =?utf-8?B?ZWtRRG8vazdubm4wL2NMU05RZjhnVGNQOVNQMGNwd3BBMUNveEFUdHU1QVQ2?=
- =?utf-8?B?TEdSV2lWazhWOFZ5YS9SUExtMlRQMytvSnRTQzBFbE56TE5aME41a0FJclhm?=
- =?utf-8?B?SjNEaU9kM3hzT0F4ZDNuZkt0YUdXd2xxc3V6MlBqK3RVL1lJbzB6V2xGOThZ?=
- =?utf-8?B?SlB0ZWx0cXU4cFoyTHhuSS9yVzJWbW9kT0wwb1pFOVl3eXlVdzluU09vbU40?=
- =?utf-8?B?MC9ZMUVJVUk2cEljTVp6VTlKWm1pWjJId3QybnNGQkJ0cThtRGRmc0R6b0hy?=
- =?utf-8?B?ME1NTlRPNWRsZDhIZFA1ekhzUHpTNlNweUdMRHpwelhyMFMzbGhlSEsvWStG?=
- =?utf-8?B?ZW5XcjB5S1lmbGZic3Zvc3NGc05DOGhWMnk1VVk0MDZPWVdJSlRZbldWV3dC?=
- =?utf-8?B?dGloWnBlTlE3a2hRSnB1TFVzazZBdHEwMDNMaVlzWFUyb0FaM0FaODZXajN2?=
- =?utf-8?B?d25hYWp3aEl2S2hpNkNpRWpsdUN6SWZvcGIrWFB3T3lxVHhQL0tQR0dKYVlB?=
- =?utf-8?Q?KgWGro?=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:zh-tw; SCL:1;
- SRV:; IPV:NLI; SFV:NSPM; H:SI6PR06MB7631.apcprd06.prod.outlook.com; PTR:;
- CAT:NONE; SFS:(13230040)(1800799024)(366016)(376014)(38070700021)(217643003);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?aWR5ZFB3YUFYOWllcnQwUFp0djlEOEY3VTFqNVFhd1BFNk1EZEZwTW5MMmRt?=
- =?utf-8?B?YkU2M2J4bXVoYUpqSTRUL09IRjRnZXl4OXBUNHJ4RS9oWEJ5eE92ZEpDaUNK?=
- =?utf-8?B?d0llbGUraEJmUlc2aWlMYUUyRjJSSjQ5QndLMjV3R1hqbzZWV1cvanlxNDFV?=
- =?utf-8?B?T1J2UUxCWE5HaVhQdldHeGFJODlmaFhCVTRFL0dlaDJzK1BjRENFNVRzejdQ?=
- =?utf-8?B?TkkzOVo1NEhCNEdrL2hqZWtGLzhEL3FvZXRaQUk2ZVN3NEdBRkk0QTJuTUd1?=
- =?utf-8?B?RFA3MlozZFJlVEdpYnpNTmJ5SXRZdTY2eVRuRXc1TlMrci9jSjBOSElZbm56?=
- =?utf-8?B?Mk5pcFQzMjNGT2Z2UFZ4OU8ySTZLUHhSZVZUSGhmRkpCbU9HNjdZMGk1ek45?=
- =?utf-8?B?YWphKzZJUWpCSFJKeXJGTjNGL3ZOcVRiZnpoYWRocVJJemRDeldFZXpIdlY2?=
- =?utf-8?B?aWl3WlpONURzNWJKUThTaTBLQnhGZjJISjd6Y0N1a2Y5eTEwSlhlcmVXWEpG?=
- =?utf-8?B?ODVDUitJbFFYWDk1U21yeXVzZXNiUk56RVN2WERYSzc0RzdNTGk1Nk90SUlL?=
- =?utf-8?B?VVh3WlZsaUtJMW1jek42cVgyNUYrc2dlU1IrRWhLdVNNS2M2TXdNZHhvNUJM?=
- =?utf-8?B?d2RnTTk3SW95NzE3V3hQVCtwSVBPVnZpWU53RjdDU0hmUkRsUmJSS2ZCS0x2?=
- =?utf-8?B?ZE9DU2t4NUZMZ3NaUVZHSEVSNHJFSE5TcFZnaFRqK2hLTXFrREFuUDg0bXhy?=
- =?utf-8?B?dTRxbDJlMWZycGxmMDlMcVZaSi90T2IvYkJWRnlheHZ2ZnZCSWNZODg0cTF4?=
- =?utf-8?B?YTBzbERyNk82VlA3bHJoOVdsNnViNTRWWUlMR1NIVUZCcHFEZTlYWmVWcG9p?=
- =?utf-8?B?Z3R6dHExaEtHbEw5cktrRHpKRS9hRTg4Y2hCZDdPOFB2ZjJBOS9ubE84UThj?=
- =?utf-8?B?U1J4SnBrbmdyMDdaNVhBQkhGTU5RRysvcVRLQUdab21iejZIakZOSnNKUHYz?=
- =?utf-8?B?RDQrRFVNWlg1akM5SkJaZytEVTlDeU53SldhOVNMRWZENTluZHdNMGwxZUg3?=
- =?utf-8?B?MHdZLzdSTDl0YnJOeGNSVFZ2RGVDZjdWMjY0cUNtbGhHLzd2RU9HM2E0N2Fk?=
- =?utf-8?B?RXloZjU1WTQyK3o3Zkh6bDZ4MjJ3ekEyWU5RbW9ZSXFCMjl0MDI3djhSemZn?=
- =?utf-8?B?RHptOXd1TGM4QXNWaEhFQ3llUnpiRVJDeDNPQVVjRjNOOG5ZMGJVRVoyTS9n?=
- =?utf-8?B?WElLY2V4aUxjV2RVNGVUUENqK1V5WUZGWmpSekJNalBxRy9nM2M0YnRLMVdp?=
- =?utf-8?B?ejlDNXlNY25pd0FmY0QxbUpQNEtuSUNLU3J1WnNmQ3IrOUVNdndxMUZvaVkw?=
- =?utf-8?B?c3hpOVMrM2wwOGVwQksxZDdRRW5kYzlrSVNOS2pMYzU1aXFuazBLTmwzd0lP?=
- =?utf-8?B?UFlQVWJQYVY2K3FZaUhqTzhWV3hET3l5WlNvTUZwU2JnbHE2WGdhNGV5a0Yr?=
- =?utf-8?B?cWViWmViZXZucTJRM0I3Mmx5a1dpYmQ5aU1nK0c4dUV0WDNzZElXODcrMjUw?=
- =?utf-8?B?ZkhtQnp3dHRtVUZySVVWVmRtZW9Jdk1zSTM4Z1VvdjljSE4wUVlheitSQWNi?=
- =?utf-8?B?TURIZDVqczlWUjlWcHgwTXEzMEpRNi9JUGVDK2FKSTB6WFBQSmxxTm5ES0dR?=
- =?utf-8?B?Q1ZXNEZ3dEZyRjN2RzhCMmRSM3dpZjBMNzY0RFVYSDdWeGJrS2xwVC90bVpQ?=
- =?utf-8?B?RFFlRHI4bUU1WFVFcSt5bGJ5RW0zdlZFZUFVVHI2dXFGcVpodTNWVTRaL05x?=
- =?utf-8?B?QnpMdUVadXJmb2lHZnBtUEdud3RMajQydUZ5YlVmMGVBYTNMcEs4YjJSdmF1?=
- =?utf-8?B?ZCt5ZGxBSk4ybnFxWENqbnhMRExJUnJaUzFpanB2Kzg0SWp3NGtVMnRGNE9Z?=
- =?utf-8?B?TTFDK1BRRWNpd0QxRjZhTGMvWmNGbUVUL2llNjhpS1JaMUQzNk9RaWwvVmxt?=
- =?utf-8?B?TitBY0tsMGJ0NTJZM2RaUUVWZ1VmMUtXRDZUWDVkeTBHRkhZV1VuVC9SblhI?=
- =?utf-8?B?RjVNb3ZvdkNYLzMzaWVBdEJtQzNKV0R5NkRpMVZLcVRXZnBUcnN6dGI0U0Js?=
- =?utf-8?Q?faeJBhof8i9+50J4P0fhOaZrZ?=
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ (Exim 4.90_1) (envelope-from <SRS0=ZSe1=3U=kaod.org=clg@ozlabs.org>)
+ id 1uvsYR-0000WM-1T; Tue, 09 Sep 2025 03:14:26 -0400
+Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4cLZnF0kdRz4w9k;
+ Tue,  9 Sep 2025 17:14:09 +1000 (AEST)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits))
+ (Client did not present a certificate)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4cLZnB6r1Wz4w8w;
+ Tue,  9 Sep 2025 17:14:06 +1000 (AEST)
+Message-ID: <abdb5b47-a450-4fc3-b5cd-b170ebb8271a@kaod.org>
+Date: Tue, 9 Sep 2025 09:14:04 +0200
 MIME-Version: 1.0
-X-OriginatorOrg: aspeedtech.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SI6PR06MB7631.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 952b6d98-4722-4164-ff82-08ddef3821ff
-X-MS-Exchange-CrossTenant-originalarrivaltime: 09 Sep 2025 00:30:52.3657 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: AP4iqjUh051rTiV6e610PO9glIeeT4XxL+ph4N4TtmrHQUbEXbjrcZJpX5R62gEw70s2ZEqRzPXl2kMOjIxefOLz01WfByL+8nM3RVhQ01E=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEYPR06MB6508
-Received-SPF: pass client-ip=2a01:111:f403:c40f::7;
- envelope-from=kane_chen@aspeedtech.com;
- helo=SEYPR02CU001.outbound.protection.outlook.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 2/5] tests/qtest: Add qtest for for ASPEED GPIO gpio-set
+ property
+To: Coco Li <lixiaoyan@google.com>, peter.maydell@linaro.org
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, Felix Wu <flwu@google.com>,
+ 'Andrew Jeffery' <andrew@codeconstruct.com.au>
+References: <20250903213809.3779860-1-lixiaoyan@google.com>
+ <20250903213809.3779860-3-lixiaoyan@google.com>
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Content-Language: en-US, fr
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <20250903213809.3779860-3-lixiaoyan@google.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=150.107.74.76;
+ envelope-from=SRS0=ZSe1=3U=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -187,37 +109,185 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-SGkgQ8OpZHJpYywNCg0KVGhhbmtzIGZvciB0aGUgcmV2aWV3Lg0KDQpCZXN0IFJlZ2FyZHMsDQpL
-YW5lDQo+IC0tLS0tT3JpZ2luYWwgTWVzc2FnZS0tLS0tDQo+IEZyb206IEPDqWRyaWMgTGUgR29h
-dGVyIDxjbGdAa2FvZC5vcmc+DQo+IFNlbnQ6IE1vbmRheSwgU2VwdGVtYmVyIDgsIDIwMjUgNToy
-MCBQTQ0KPiBUbzogS2FuZSBDaGVuIDxrYW5lX2NoZW5AYXNwZWVkdGVjaC5jb20+OyBQZXRlciBN
-YXlkZWxsDQo+IDxwZXRlci5tYXlkZWxsQGxpbmFyby5vcmc+OyBTdGV2ZW4gTGVlIDxzdGV2ZW5f
-bGVlQGFzcGVlZHRlY2guY29tPjsgVHJveQ0KPiBMZWUgPGxlZXRyb3lAZ21haWwuY29tPjsgSmFt
-aW4gTGluIDxqYW1pbl9saW5AYXNwZWVkdGVjaC5jb20+OyBBbmRyZXcNCj4gSmVmZmVyeSA8YW5k
-cmV3QGNvZGVjb25zdHJ1Y3QuY29tLmF1PjsgSm9lbCBTdGFubGV5IDxqb2VsQGptcy5pZC5hdT47
-DQo+IG9wZW4gbGlzdDpBU1BFRUQgQk1DcyA8cWVtdS1hcm1Abm9uZ251Lm9yZz47IG9wZW4gbGlz
-dDpBbGwgcGF0Y2hlcyBDQw0KPiBoZXJlIDxxZW11LWRldmVsQG5vbmdudS5vcmc+DQo+IENjOiBU
-cm95IExlZSA8dHJveV9sZWVAYXNwZWVkdGVjaC5jb20+OyB0aHV0aEByZWRoYXQuY29tDQo+IFN1
-YmplY3Q6IFJlOiBbU1BBTV0gW1BBVENIIHYxIDAvNF0gdGVzdHMvZnVuY3Rpb25hbC9hcm06IFVw
-ZGF0ZSB0ZXN0IGltYWdlcw0KPiBmb3IgQVNQRUVEIGNoaXBzDQo+IA0KPiBPbiA5LzQvMjUgMTI6
-MDUsIEthbmUgQ2hlbiB3cm90ZToNCj4gPiBGcm9tOiBLYW5lLUNoZW4tQVMgPGthbmVfY2hlbkBh
-c3BlZWR0ZWNoLmNvbT4NCj4gPg0KPiA+IEhpIGFsbCwNCj4gPg0KPiA+IFRoaXMgc2VyaWVzIHJl
-ZnJlc2hlcyBBU1BFRUQgZnVuY3Rpb25hbCB0ZXN0cyB0byBuZXdlciB1cHN0cmVhbSBpbWFnZXMu
-DQo+ID4gTm8gZnVuY3Rpb25hbCBjaGFuZ2VzIGJleW9uZCBhc3NldCBidW1wcyBhbmQgdGVzdCBu
-YW1lL3BhdGhzIHVwZGF0ZXMuDQo+ID4NCj4gPiBBbnkgZmVlZGJhY2sgb3Igc3VnZ2VzdGlvbnMg
-YXJlIGFwcHJlY2lhdGVkIQ0KPiA+DQo+ID4gS2FuZQ0KPiA+IC0tLQ0KPiA+IEthbmUtQ2hlbi1B
-UyAoNCk6DQo+ID4gICAgdGVzdHMvZnVuY3Rpb25hbC9hcm06IFVwZGF0ZSB0ZXN0IEFTUEVFRCBT
-REsgdjAzLjAyIGZvciBBU1QxMDMwDQo+ID4gICAgdGVzdHMvZnVuY3Rpb25hbC9hcm06IFVwZGF0
-ZSB0ZXN0IEFTUEVFRCBTREsgdjA5LjA3IGZvciBBU1QyNTAwDQo+ID4gICAgdGVzdHMvZnVuY3Rp
-b25hbC9hcm06IFVwZGF0ZSB0ZXN0IEFTUEVFRCBTREsgdjA5LjA3IGZvciBBU1QyNjAwDQo+ID4g
-ICAgdGVzdHMvZnVuY3Rpb25hbC9hcm06IFVwZGF0ZSB0ZXN0IEFTUEVFRCBTREsgdjA5LjA3IGZv
-ciBBU1QyNzAwDQo+ID4gICAgICB2Ym9vdHJvbQ0KPiA+DQo+ID4gICB0ZXN0cy9mdW5jdGlvbmFs
-L2FhcmNoNjQvdGVzdF9hc3BlZWRfYXN0MjcwMC5weSB8ICA4ICsrKysrKy0tDQo+ID4gICB0ZXN0
-cy9mdW5jdGlvbmFsL2FybS90ZXN0X2FzcGVlZF9hc3QxMDMwLnB5ICAgICB8IDEyICsrKysrKy0t
-LS0tLQ0KPiA+ICAgdGVzdHMvZnVuY3Rpb25hbC9hcm0vdGVzdF9hc3BlZWRfYXN0MjUwMC5weSAg
-ICAgfCAgOCArKysrLS0tLQ0KPiA+ICAgdGVzdHMvZnVuY3Rpb25hbC9hcm0vdGVzdF9hc3BlZWRf
-YXN0MjYwMC5weSAgICAgfCAgOCArKysrLS0tLQ0KPiA+ICAgNCBmaWxlcyBjaGFuZ2VkLCAyMCBp
-bnNlcnRpb25zKCspLCAxNiBkZWxldGlvbnMoLSkNCj4gPg0KPiANCj4gRm9yIHRoZSBzZXJpZXMs
-DQo+IA0KPiANCj4gUmV2aWV3ZWQtYnk6IEPDqWRyaWMgTGUgR29hdGVyIDxjbGdAcmVkaGF0LmNv
-bT4NCj4gDQo+IFRoYW5rcywNCj4gDQo+IEMuDQo+IA0KDQo=
++Andrew for awareness
+
+On 9/3/25 23:38, Coco Li wrote:
+> From: Felix Wu <flwu@google.com>
+> 
+>   - Added qtests to test gpio-set property for ASPEED.
+>   - Added function to get uint in qdict.
+> 
+> Signed-off-by: Felix Wu <flwu@google.com>
+> ---
+>   include/qobject/qdict.h        |   1 +
+>   qobject/qdict.c                |  13 ++++
+>   tests/qtest/aspeed_gpio-test.c | 105 ++++++++++++++++++++++++++++++---
+>   3 files changed, 110 insertions(+), 9 deletions(-)
+> 
+> diff --git a/include/qobject/qdict.h b/include/qobject/qdict.h
+> index 903e6e5462..861996f08d 100644
+> --- a/include/qobject/qdict.h
+> +++ b/include/qobject/qdict.h
+> @@ -57,6 +57,7 @@ void qdict_put_str(QDict *qdict, const char *key, const char *value);
+>   
+>   double qdict_get_double(const QDict *qdict, const char *key);
+>   int64_t qdict_get_int(const QDict *qdict, const char *key);
+> +uint64_t qdict_get_uint(const QDict *qdict, const char *key);
+>   bool qdict_get_bool(const QDict *qdict, const char *key);
+>   QList *qdict_get_qlist(const QDict *qdict, const char *key);
+>   QDict *qdict_get_qdict(const QDict *qdict, const char *key);
+> diff --git a/qobject/qdict.c b/qobject/qdict.c
+> index a90ac9ae2f..0dafe6d421 100644
+> --- a/qobject/qdict.c
+> +++ b/qobject/qdict.c
+> @@ -209,6 +209,19 @@ int64_t qdict_get_int(const QDict *qdict, const char *key)
+>       return qnum_get_int(qobject_to(QNum, qdict_get(qdict, key)));
+>   }
+>   
+> +/**
+> + * qdict_get_uint(): Get an unsigned integer mapped by 'key'
+> + *
+> + * This function assumes that 'key' exists and it stores a
+> + * QNum representable as uint.
+> + *
+> + * Return unsigned integer mapped by 'key'.
+> + */
+> +uint64_t qdict_get_uint(const QDict *qdict, const char *key)
+> +{
+> +    return qnum_get_uint(qobject_to(QNum, qdict_get(qdict, key)));
+> +}
+> +
+>   /**
+>    * qdict_get_bool(): Get a bool mapped by 'key'
+>    *
+> diff --git a/tests/qtest/aspeed_gpio-test.c b/tests/qtest/aspeed_gpio-test.c
+> index 12675d4cbb..c2f9ca2298 100644
+> --- a/tests/qtest/aspeed_gpio-test.c
+> +++ b/tests/qtest/aspeed_gpio-test.c
+> @@ -27,28 +27,115 @@
+>   #include "qemu/timer.h"
+>   #include "qobject/qdict.h"
+>   #include "libqtest-single.h"
+> +#include "qemu/typedefs.h"
+>   
+>   #define AST2600_GPIO_BASE 0x1E780000
+>   
+>   #define GPIO_ABCD_DATA_VALUE 0x000
+>   #define GPIO_ABCD_DIRECTION  0x004
+>   
+> +static uint32_t qtest_qom_get_uint32(QTestState *s, const char *path,
+> +                                     const char *property)
+> +{
+> +    QDict *r;
+> +
+> +    uint32_t res;
+> +    r = qtest_qmp(s, "{ 'execute': 'qom-get', 'arguments': "
+> +                     "{ 'path': %s, 'property': %s } }", path, property);
+> +    res = qdict_get_uint(r, "return");
+> +    qobject_unref(r);
+> +
+> +    return res;
+> +}
+> +
+> +static void qtest_qom_set_uint32(QTestState *s, const char *path,
+> +                                 const char *property, uint32_t value)
+> +{
+> +    QDict *r;
+> +
+> +    r = qtest_qmp(s, "{ 'execute': 'qom-set', 'arguments': "
+> +                     "{ 'path': %s, 'property': %s, 'value': %" PRIu32 " } }",
+> +                     path, property, value);
+> +    qobject_unref(r);
+> +}
+> +
+> +static const char *resp_get_error(QDict *r, const char* error_key)
+> +{
+> +    QDict *qdict;
+> +
+> +    g_assert(r);
+> +
+> +    qdict = qdict_get_qdict(r, "error");
+> +    if (qdict) {
+> +        return qdict_get_str(qdict, error_key);
+> +    }
+> +
+> +    return NULL;
+> +}
+> +
+> +static bool qtest_qom_check_error(QTestState *s, const char *path,
+> +                                  const char *property, const char *error_msg,
+> +                                  const char *error_msg_key)
+> +{
+> +    QDict *r;
+> +    bool b;
+> +
+> +    r = qtest_qmp(s, "{ 'execute': 'qom-get', 'arguments': "
+> +                     "{ 'path': %s, 'property': %s } }", path, property);
+> +    b = g_str_equal(resp_get_error(r, error_msg_key), error_msg);
+> +    qobject_unref(r);
+> +
+> +    return b;
+> +}
+> +
+>   static void test_set_colocated_pins(const void *data)
+>   {
+>       QTestState *s = (QTestState *)data;
+> -
+> +    const char path[] = "/machine/soc/gpio";
+>       /*
+>        * gpioV4-7 occupy bits within a single 32-bit value, so we want to make
+>        * sure that modifying one doesn't affect the other.
+>        */
+> -    qtest_qom_set_bool(s, "/machine/soc/gpio", "gpioV4", true);
+> -    qtest_qom_set_bool(s, "/machine/soc/gpio", "gpioV5", false);
+> -    qtest_qom_set_bool(s, "/machine/soc/gpio", "gpioV6", true);
+> -    qtest_qom_set_bool(s, "/machine/soc/gpio", "gpioV7", false);
+> -    g_assert(qtest_qom_get_bool(s, "/machine/soc/gpio", "gpioV4"));
+> -    g_assert(!qtest_qom_get_bool(s, "/machine/soc/gpio", "gpioV5"));
+> -    g_assert(qtest_qom_get_bool(s, "/machine/soc/gpio", "gpioV6"));
+> -    g_assert(!qtest_qom_get_bool(s, "/machine/soc/gpio", "gpioV7"));
+> +    qtest_qom_set_bool(s, path, "gpioV4", true);
+> +    qtest_qom_set_bool(s, path, "gpioV5", false);
+> +    qtest_qom_set_bool(s, path, "gpioV6", true);
+> +    qtest_qom_set_bool(s, path, "gpioV7", false);
+> +    g_assert(qtest_qom_get_bool(s, path, "gpioV4"));
+> +    g_assert(!qtest_qom_get_bool(s, path, "gpioV5"));
+> +    g_assert(qtest_qom_get_bool(s, path, "gpioV6"));
+> +    g_assert(!qtest_qom_get_bool(s, path, "gpioV7"));
+> +
+> +    /*
+> +     * Testing the gpio-set[%d] properties, using individual gpio boolean
+> +     * properties to do cross check.
+> +     * We use gpioR4-7 for test, Setting them to be 0b1010.
+> +     */
+> +    qtest_qom_set_uint32(s, path, "gpio-set[4]", 0x0);
+> +    g_assert(qtest_qom_get_uint32(s, path, "gpio-set[4]") == 0x0);
+> +    qtest_qom_set_uint32(s, path, "gpio-set[4]", 0xa000);
+> +    g_assert(qtest_qom_get_uint32(s, path, "gpio-set[4]") == 0xa000);
+> +
+> +    g_assert(!qtest_qom_get_bool(s, path, "gpioR4"));
+> +    g_assert(qtest_qom_get_bool(s, path, "gpioR5"));
+> +    g_assert(!qtest_qom_get_bool(s, path, "gpioR6"));
+> +    g_assert(qtest_qom_get_bool(s, path, "gpioR7"));
+> +
+> +    /*
+> +     * Testing the invalid indexing, the response info should contain following
+> +     * info:
+> +     * {key: "class", value: "GenericError"}
+> +     *
+> +     * For pins, it should follow "gpio%2[A-Z]%1d" or "gpio%3[18A-E]%1d" format.
+> +     */
+> +    const char error_msg[] = "GenericError";
+> +    const char error_msg_key[] = "class";
+> +
+> +    g_assert(qtest_qom_check_error(s, path, "gpioR+1", error_msg,
+> +                                   error_msg_key));
+> +    g_assert(qtest_qom_check_error(s, path, "gpio-set[99]", error_msg,
+> +                                   error_msg_key));
+> +    g_assert(qtest_qom_check_error(s, path, "gpio-set[-3]", error_msg,
+> +                                   error_msg_key));
+>   }
+>   
+>   static void test_set_input_pins(const void *data)
+
 

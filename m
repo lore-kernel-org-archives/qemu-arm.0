@@ -4,67 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E27FCAC58C
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18789CAC582
 	for <qemu-arm@archiver.kernel.org>; Tue,  9 Sep 2025 22:13:02 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uw6Zq-0007Ri-41; Tue, 09 Sep 2025 18:12:39 -0400
+	id 1uw6Zu-0007Rw-CF; Tue, 09 Sep 2025 18:12:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <3EabAaAYKCKwkgNUZlSaaSXQ.OaYcQYg-MdYZaZSZg.adS@flex--yubinz.bounces.google.com>)
- id 1uw6Z2-0007Fq-IG
- for qemu-arm@nongnu.org; Tue, 09 Sep 2025 18:11:48 -0400
-Received: from mail-pl1-x649.google.com ([2607:f8b0:4864:20::649])
+ <3CqbAaAYKCKUdZGNSeLTTLQJ.HTRVJRZ-FWRSTSLSZ.TWL@flex--yubinz.bounces.google.com>)
+ id 1uw6Yv-0007EC-1x
+ for qemu-arm@nongnu.org; Tue, 09 Sep 2025 18:11:41 -0400
+Received: from mail-pj1-x104a.google.com ([2607:f8b0:4864:20::104a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <3EabAaAYKCKwkgNUZlSaaSXQ.OaYcQYg-MdYZaZSZg.adS@flex--yubinz.bounces.google.com>)
- id 1uw6Yp-00050P-0Q
- for qemu-arm@nongnu.org; Tue, 09 Sep 2025 18:11:47 -0400
-Received: by mail-pl1-x649.google.com with SMTP id
- d9443c01a7336-24ce3e62946so85504875ad.2
- for <qemu-arm@nongnu.org>; Tue, 09 Sep 2025 15:11:32 -0700 (PDT)
+ <3CqbAaAYKCKUdZGNSeLTTLQJ.HTRVJRZ-FWRSTSLSZ.TWL@flex--yubinz.bounces.google.com>)
+ id 1uw6Yl-0004ya-7C
+ for qemu-arm@nongnu.org; Tue, 09 Sep 2025 18:11:40 -0400
+Received: by mail-pj1-x104a.google.com with SMTP id
+ 98e67ed59e1d1-32811874948so5295224a91.2
+ for <qemu-arm@nongnu.org>; Tue, 09 Sep 2025 15:11:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1757455890; x=1758060690; darn=nongnu.org;
- h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
- :date:from:to:cc:subject:date:message-id:reply-to;
- bh=G/LP6fTHBZkghRvQJyUqTkcACbgbCjWb3Gp/fpwioow=;
- b=eZTGCHawkY5g/Zo0sq6x+7rPmGuinGlaWcayGI86L0jl7n0sSNv+YiTz3OC3xFvPwa
- Tm5TqsMrovomnQ83K61HPIe9XK+mjfIxeyJHiDCSzFYqHIKXcTTwa5yhZKcsTllCpmBY
- DzQQxeQrQp+6wBd2oG0yockFaSQdzdXKJKXLIR3iLvFQ1uy4OmDlooxwqFD3imu5MkDX
- fJRZ6EpwHjq/lZ8jC8gonT8wYv3i+5pYnf51aT3AIrwylrITJkkAT71QUrz/d1BVofym
- hGFmsxP5d7POBOjZVhFVVJT4imfT7gYvJVfMEjipmTH/VaOh7Iv/6Rw14yOd4w/a6G73
- EvKQ==
+ d=google.com; s=20230601; t=1757455882; x=1758060682; darn=nongnu.org;
+ h=cc:to:from:subject:message-id:mime-version:date:from:to:cc:subject
+ :date:message-id:reply-to;
+ bh=qh4BXgV/nXdiynC7DUscX6viKAu9f4DJiPyGvqyjCJ8=;
+ b=JJa0ZZd6JcRLySRRp1uLQ6gmBlauB297iLESvqRx3rICLnnnpyLfKz2waklEdWMi4c
+ DlG3Vx6zhj5H1u8+P0XLsTOFcASAkddLsWEHbxJAha03b/UUrBVdWhOWj3Ki0Qc6SQQN
+ P/R2SaXFHp4vhL7SvoGk5II5Q5zO78Ioikhz+hDaYJ8w304csFVIrjYindPYkthQfNgI
+ gqIy/P9jsIQ2biyDeC9IDFoF2yMz95CuUyOOCnFbTzndYzBj+Wgb3mOuBvpE25KR9Qld
+ +7exex0bZCglaVev4PrRP2oJ6tCv802nwj634WAdb9qzuHwThjiWqGG6ToyIQfBO9M+K
+ wVzw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1757455890; x=1758060690;
- h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
- :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=G/LP6fTHBZkghRvQJyUqTkcACbgbCjWb3Gp/fpwioow=;
- b=DPPDglu1lmoKw7AkwoaEDdpoxbIaR05MbzbJFp9Po7prALNqJg8KVQnbflHvMhpA9R
- cF7cKrW9KJYdi1GjVsIavxuK9Hybx5jP6Hmv+dp58/Bym/MHc6IxeB72Cj2M24FqNPrv
- WksSLoyp3fXroWGT8vLC4Q/1nUFwlcsdBdHlhp7ng6DLrTkiazc04B9qciuAuwckR9e8
- fyDSUVjrXqsl7HRlShIgaIAXF7pJgbnYncrvc8CK98TJ037lJWZhhaAYl+JjxbwGzIyT
- +V5YtVgDfyy1RFplebNhN/6XMcHV86HV+QznmMGfL1C73Wo0Xitfv3wtl2sRqPhldKig
- oXfQ==
+ d=1e100.net; s=20230601; t=1757455882; x=1758060682;
+ h=cc:to:from:subject:message-id:mime-version:date:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=qh4BXgV/nXdiynC7DUscX6viKAu9f4DJiPyGvqyjCJ8=;
+ b=idttrPgvZeOlmTqY2G/enX33ALbn3x2OVTYiUQm4kkAWk2Rrfdqos9LiSqqRXIQnXz
+ mcc0HfJyKBvvP0aPmyUqqSu7Xb3ycs2eCfjwRO70lNteZWSRIU+RMuvuA+/d+VbQPpKS
+ dIvsnP2GoCDHWfiB3sPYv4MdKa0uGAINRH0axeHOYpDCGJDKDcXJHrSnoj9wHceiXGM2
+ mR2GDs1Yi8HhYIpO0eeTeSM/h5dgeH0SaoOHzhD+MTxfgRtNASEGZro41i1ilfTHt+/w
+ qViy3giIUHi6lSS8/hfgTByn7cEoPv8QAm1yu1fDVdB61CZdvQKehc1av+RM5N/xxH8s
+ 480g==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWgfyRu3f2vroDULwg5UeJkUUXx/DvsgBBQ42jjbhE0YqQ8bybUcdshZOdRFlnbWAqDDMVyL9IMGQ==@nongnu.org
-X-Gm-Message-State: AOJu0YywPZI1tTEYlqY375pTVs6AY2Qp/h7ieTaC/AmMxIvbRHfX4Lc7
- uDEPieOYB/EBPlThChVtmLzv5xMWp0ixKK+paqoyjRwRj7k8oQy+URmsq+8J/+TIh0OIOTkPDEi
- JDpUChw==
-X-Google-Smtp-Source: AGHT+IHH4qu8wF32SPlJxkXsZfzuY+S4V3Ffo0txGNpbpcarWbDIS9gQh8G3oZB2I5R52nYg9FMPN3howA8=
-X-Received: from pjg4.prod.google.com ([2002:a17:90b:3f44:b0:327:e021:e61d])
+ AJvYcCXMB1kViOjLKt2HY20IuhDW65yEwtMvP0uZqz0vFCVv5ubp/RXczdLksAfBA6PQF3Cn6uXUS+qs6A==@nongnu.org
+X-Gm-Message-State: AOJu0YzkB1gn68K69TnURQG28Hv9myxTF+86RPRc3sGmA4vIOyGWLT2u
+ kx1bIrRw7uhRisVIcz0wUwdeLtMj6lUrD6na6AONpJ0t+u69DT4Co4segg3VnPVfe1BwWEBY+47
+ Owc4ORw==
+X-Google-Smtp-Source: AGHT+IEG3jeJ2cfZ5eFegnHavQCzeq1hPn1gHz4aeTAemSRhg6YAML75fQZwYPTwfj8bpGW1jOH5sYxwD3I=
+X-Received: from pjeu22.prod.google.com ([2002:a17:90a:c56:b0:32b:ae4c:196c])
  (user=yubinz job=prod-delivery.src-stubby-dispatcher) by
- 2002:a17:902:d54e:b0:246:24d:2394
- with SMTP id d9443c01a7336-2516ef54ef2mr151541235ad.8.1757455889902; Tue, 09
- Sep 2025 15:11:29 -0700 (PDT)
-Date: Tue, 09 Sep 2025 22:11:00 +0000
-In-Reply-To: <20250909-pcie-root-upstream-v1-0-d85883b2688d@google.com>
+ 2002:a17:90b:1b0b:b0:327:f216:4360
+ with SMTP id 98e67ed59e1d1-32d43f1789cmr16669043a91.8.1757455882207; Tue, 09
+ Sep 2025 15:11:22 -0700 (PDT)
+Date: Tue, 09 Sep 2025 22:10:55 +0000
 Mime-Version: 1.0
-References: <20250909-pcie-root-upstream-v1-0-d85883b2688d@google.com>
+X-B4-Tracking: v=1; b=H4sIAO+lwGgC/x3MQQqAIBBA0avErBvQMKiuEi3MpppFKmNFIN09a
+ fkW/2dIJEwJhiqD0M2Jgy/QdQVut34j5KUYGtW0qlc9RseEEsKJV0ynkD1Qk7NmttoZ00EJo9D
+ Kzz8dp/f9ALqpwQ9kAAAA
+X-Change-Id: 20250909-pcie-root-upstream-1eca4ba1c448
 X-Mailer: b4 0.14.2
-Message-ID: <20250909-pcie-root-upstream-v1-5-d85883b2688d@google.com>
-Subject: [PATCH 5/7] hw/pci-host: enable MSI on npcm PCIe root complex
+Message-ID: <20250909-pcie-root-upstream-v1-0-d85883b2688d@google.com>
+Subject: [PATCH 0/7] Introduce PCIE Root Complex on Nuvoton npcm8xx and npcm7xx
 From: Yubin Zou <yubinz@google.com>
 To: qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>, Tyrone Ting <kfting@nuvoton.com>, 
@@ -72,18 +74,18 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>, Tyrone Ting <kfting@nuvoton.com>,
  Peter Maydell <peter.maydell@linaro.org>, Yubin Zou <yubinz@google.com>, 
  Titus Rwantare <titusr@google.com>
 Content-Type: text/plain; charset="utf-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::649;
- envelope-from=3EabAaAYKCKwkgNUZlSaaSXQ.OaYcQYg-MdYZaZSZg.adS@flex--yubinz.bounces.google.com;
- helo=mail-pl1-x649.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::104a;
+ envelope-from=3CqbAaAYKCKUdZGNSeLTTLQJ.HTRVJRZ-FWRSTSLSZ.TWL@flex--yubinz.bounces.google.com;
+ helo=mail-pj1-x104a.google.com
 X-Spam_score_int: -95
 X-Spam_score: -9.6
 X-Spam_bar: ---------
 X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, T_SPF_TEMPERROR=0.01,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Tue, 09 Sep 2025 18:12:32 -0400
+X-Mailman-Approved-At: Tue, 09 Sep 2025 18:12:31 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,54 +100,51 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Titus Rwantare <titusr@google.com>
+Improvement to QEMU:
+These changes enhance QEMU by adding emulation support for a new piece
+of hardware, the Nuvoton PCIe root complex, which is prevalent
+in both NPCM7xx and NPCM8XX Board SoCs.
 
-This allows MSI capable qemu devices to attach to the root complex
+Impact (Before/After):
+- Before: QEMU lacked a specific model for the Nuvoton PCIe host.
+Emulating platforms using this SoC meant PCIe capabilities were either
+missing or inaccurate.
 
-Signed-off-by: Titus Rwantare <titusr@google.com>
+- After: QEMU can now model the fundamental aspects of the
+PCIe host controller. Virtual PCIe devices can be attached to emulated
+NPCM7xx and NPCM8xx machines, and the guest OS can interact with them
+through a more faithful representation of the on-chip PCIe hardware.
+
+Signed-off-by: Yubin Zou <yubinz@google.com>
 ---
- hw/pci-host/npcm_pcierc.c         | 5 +++++
- include/hw/pci-host/npcm_pcierc.h | 2 ++
- 2 files changed, 7 insertions(+)
+Hao Wu (1):
+      hw/arm: Add PCIERC to NPCM7xx SoC
 
-diff --git a/hw/pci-host/npcm_pcierc.c b/hw/pci-host/npcm_pcierc.c
-index a1767335fe79a30464acf32ae94fc14e417c89eb..0af76d1067a78bdbb169af3e3d5c4a2514cd0ff5 100644
---- a/hw/pci-host/npcm_pcierc.c
-+++ b/hw/pci-host/npcm_pcierc.c
-@@ -10,6 +10,7 @@
- #include "hw/irq.h"
- #include "hw/qdev-properties.h"
- #include "hw/pci-host/npcm_pcierc.h"
-+#include "hw/pci/msi.h"
- #include "qapi/error.h"
- #include "qemu/log.h"
- #include "qemu/units.h"
-@@ -442,6 +443,10 @@ static void npcm_pcierc_realize(DeviceState *dev, Error **errp)
-     address_space_init(&s->pcie_space, &s->pcie_root, "pcie-address-space");
-     pci_realize_and_unref(root, pci->bus, &error_fatal);
-     pci_setup_iommu(pci->bus, &npcm_pcierc_iommu_ops, s);
-+
-+    msi_nonbroken = true;
-+    msi_init(root, NPCM_PCIERC_MSI_OFFSET, NPCM_PCIERC_MSI_NR,
-+             true, true, errp);
- }
- 
- static void npcm_pcie_root_port_realize(DeviceState *dev, Error **errp)
-diff --git a/include/hw/pci-host/npcm_pcierc.h b/include/hw/pci-host/npcm_pcierc.h
-index a47eae0084b88ba4388681b24ab97f77a4338594..7d18177510f60d49f7fae7908dd1e3bfbe9ae12b 100644
---- a/include/hw/pci-host/npcm_pcierc.h
-+++ b/include/hw/pci-host/npcm_pcierc.h
-@@ -87,6 +87,8 @@
- #define NPCM_PCIERC_NUM_PA_WINDOWS          2
- #define NPCM_PCIERC_NUM_AP_WINDOWS          5
- 
-+#define NPCM_PCIERC_MSI_NR                  32
-+#define NPCM_PCIERC_MSI_OFFSET              0x50
- /* PCIe extended config space offsets */
- #define NPCM_PCIE_HEADER_OFFSET             0x80
- #define NPCM_PCIE_AER_OFFSET                0x100
+Titus Rwantare (6):
+      hw/pci-host: implement Nuvoton PCIE Root Complex stub
+      hw/pci-host: add basic Nuvoton PCIe window support
+      hw/arm: attach PCIe root complex to npmcm8xx
+      hw/pci-host: add Nuvoton PCIe root port
+      hw/pci-host: enable MSI on npcm PCIe root complex
+      hw/pci-host: rework Nuvoton PCIe windowing and memory regions
 
+ hw/arm/Kconfig                    |   4 +-
+ hw/arm/npcm7xx.c                  |  10 +
+ hw/arm/npcm8xx.c                  |  12 +-
+ hw/pci-host/Kconfig               |   4 +
+ hw/pci-host/meson.build           |   1 +
+ hw/pci-host/npcm_pcierc.c         | 587 ++++++++++++++++++++++++++++++++++++++
+ hw/pci-host/trace-events          |   4 +
+ include/hw/arm/npcm7xx.h          |   4 +-
+ include/hw/arm/npcm8xx.h          |   2 +
+ include/hw/pci-host/npcm_pcierc.h | 155 ++++++++++
+ 10 files changed, 779 insertions(+), 4 deletions(-)
+---
+base-commit: 6a9fa5ef3230a7d51e0d953a59ee9ef10af705b8
+change-id: 20250909-pcie-root-upstream-1eca4ba1c448
+
+Best regards,
 -- 
-2.51.0.384.g4c02a37b29-goog
+Yubin Zou <yubinz@google.com>
 
 

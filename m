@@ -4,121 +4,124 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55873CA0FED
-	for <qemu-arm@archiver.kernel.org>; Tue,  9 Sep 2025 13:44:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D6DBCAC583
+	for <qemu-arm@archiver.kernel.org>; Tue,  9 Sep 2025 16:11:19 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uvyd6-0005l8-6U; Tue, 09 Sep 2025 09:43:28 -0400
+	id 1uw0vh-0007Pi-BU; Tue, 09 Sep 2025 12:10:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uvyd4-0005kc-8V
- for qemu-arm@nongnu.org; Tue, 09 Sep 2025 09:43:26 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <vacha.bhavsar@oss.qualcomm.com>)
+ id 1uw0vM-0007N4-0g
+ for qemu-arm@nongnu.org; Tue, 09 Sep 2025 12:10:28 -0400
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uvyct-0003eT-M7
- for qemu-arm@nongnu.org; Tue, 09 Sep 2025 09:43:25 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1757425391;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=qFlYB42wJ8kJFXxA9WYxifFI+VLpy2q4pxAH/cCCi38=;
- b=fPM2slSV7xuR0gpYlWFCwV4Ueqip2tu+eubFhhUMqT+EjH9RTeK6OaYuF3s+TMd7FgRO+h
- FFuaYtbHJHKTA58aLNQZtyrZZomx1Tx+UafgwlZT4Sk63tBKtwevc9x1IZdRTxXKuic2os
- 4WtlXzuR+eUGFDGFSK/eI3JmFhxdaRc=
-Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com
- [209.85.222.199]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-25-C999C8M2Pd6L4g6c3OmBOA-1; Tue, 09 Sep 2025 09:43:10 -0400
-X-MC-Unique: C999C8M2Pd6L4g6c3OmBOA-1
-X-Mimecast-MFC-AGG-ID: C999C8M2Pd6L4g6c3OmBOA_1757425389
-Received: by mail-qk1-f199.google.com with SMTP id
- af79cd13be357-81b8e3e2a08so73537785a.3
- for <qemu-arm@nongnu.org>; Tue, 09 Sep 2025 06:43:10 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <vacha.bhavsar@oss.qualcomm.com>)
+ id 1uw0vH-0001ds-1U
+ for qemu-arm@nongnu.org; Tue, 09 Sep 2025 12:10:27 -0400
+Received: from pps.filterd (m0279870.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 5899LViE020175
+ for <qemu-arm@nongnu.org>; Tue, 9 Sep 2025 16:10:18 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+ cc:content-transfer-encoding:date:from:in-reply-to:message-id
+ :mime-version:references:subject:to; s=qcppdkim1; bh=z/urZLMPuM4
+ d+XgtAOiLTf1NrHdA73jaMLOUSb5buQo=; b=g9SZY5KZDIJrVu7JAShD2h37WaQ
+ 2lJVOeJNiYOItU1PY72AKftY9d57p8P+U9VGUnej48KeQKxHZ0uY5RV5uNjfOWum
+ uKQxmCoKLuK6oHtC7e9b8PX6PCrAHj2eQGIZdGHZOiBUikQRhX0p4XgrB4gTWGe0
+ t2Mc4r8EMjOiSdomNCoEfpNCfcg2S0248jczsofk3kmZ4E8FINr8Fm/zMlAiW2KZ
+ EgWx6P4uXCFh53z53LAWS7roDr144zO45I0GPipekfIuM7uj4+rSnoh5uaKHOhkY
+ 1IPszAs8KSomLacytjTYEvCirB/F2R9Nj+597l0B+hWRC9IPLfvkREEvY4Q==
+Received: from mail-pl1-f197.google.com (mail-pl1-f197.google.com
+ [209.85.214.197])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 491vc24ut8-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
+ for <qemu-arm@nongnu.org>; Tue, 09 Sep 2025 16:10:18 +0000 (GMT)
+Received: by mail-pl1-f197.google.com with SMTP id
+ d9443c01a7336-2507ae2fa99so89771875ad.1
+ for <qemu-arm@nongnu.org>; Tue, 09 Sep 2025 09:10:18 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1757425389; x=1758030189;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=qFlYB42wJ8kJFXxA9WYxifFI+VLpy2q4pxAH/cCCi38=;
- b=fAmjozL/HAPl1KyuS1zGh4SVpbsyck51Y/dHwPsqjSvePh489HrEQnnmwW5CwFeutG
- SLswah0bTeTZVy0arRkkTswaRkfFNT1Ki8C1Pn1ck3rFaOJHirl4/sDya2nXjO/j2Ypb
- aQqQoSbLwMlEf6OvDNDZV/jjEtmdsc8w6RWcvuk5wnk0Mnxlt5TDenVtlYTOB49XAKA1
- ZK2oU04usoxSAOv0eMaG6fugQLnPMzqr5oYy8+YxQEayIkmhQlYXaSKmNjtUIo+C/8QV
- 1IgFnmz1VEyDlUXtXA8nVZR6uMrtJ0FevEUAxU22w4Z1AF0sUQeAUbQB06Czrre2IEZu
- OK8g==
+ d=1e100.net; s=20230601; t=1757434217; x=1758039017;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=z/urZLMPuM4d+XgtAOiLTf1NrHdA73jaMLOUSb5buQo=;
+ b=fowwa7aenLPEkCnMcOry3oeazv/zogzHFmBCTRg+NO7AJLS663ihrsd1pzonc5VRpo
+ 6wkDxUiLlmX9Ec5K9913KN9MDVAdqsKFK9W/6QOCrkU9rv7ql/3OCiHB1+eBKHGUtVNL
+ FaztvlGmwNvpKzKWdhqJP5XHeu6l7etcRTJ05CTY7utLLmb/LVolrv5kmO7kdfq01cpW
+ fqfvDmI44AhLC3GfneDsOFRu/9lJj8WWiQYeyVaUN/aYojouN3jihvxwkNNNqCBt69cd
+ yzJyzG1tTE9IYZhaABiHAuwJranAZ4yBwR3+I6JWVPtHnV/o7V1bKjJEaVLe0Hqa5wAA
+ RmWA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVsg/EBMTPssF8n1kZSnvYo18xPWw193d6/zhnj54ozYUfHMRYpSFq/sA7xMcv8NTHV1i64sFtroQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yx10fYN60UAGxtxMUDjvoLvETbS2SoxdbVv3s/JIslaJvrh+JKr
- QchhmL+vB0EzbzZKFFrDXpFMfU8mlroOhEDSp5ahKb6mwY7hrOvcqElENpyPbRlWPkfXj70/jeA
- 179lHEtbzVw1rxyJxDztFQitw5GeKFOPJSCLdnfnrqvLfMV3a+HSdjg==
-X-Gm-Gg: ASbGnctuJJ5JjYw34xlEIQxFL9oCC5mdm5QcpDFAJGPXY+0Tb7a8OLUC9AyQqVZxA1z
- Ns038mrZXLchyt+/jrKvGROnAtzEbFvGoDD+fjDSlD4X5D6uos1OE2YlPWz1Vtb7uvO153Mae1b
- e5CdgmxXwefUCEUaIUf+XQ3bB/QRqBW9ulImWNGwUR+mQ2SDDaY1jOS36lTQbeNuQodUnpUiBaf
- LO/q6kRZ1g44QW0L74vf/qAzoWHRlJSKOtrEcX3Q0SamqX9p/K3wTWNN7BICW5HIq2m1ENCedZG
- ZsilYRoXwKxN6gVMcCfE/+6HKE474NRPQmMm8mAUo8IPP9s=
-X-Received: by 2002:a05:620a:1a99:b0:803:85cb:2cba with SMTP id
- af79cd13be357-813bf8aa868mr1166712485a.26.1757425389164; 
- Tue, 09 Sep 2025 06:43:09 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEpo5CD7SAY/TVrV70jhKvuxwKQkgABVqzUInH83+F7CHsEujU38+dxy4WG7A/Bfx0ai/ULJg==
-X-Received: by 2002:a05:620a:1a99:b0:803:85cb:2cba with SMTP id
- af79cd13be357-813bf8aa868mr1166707785a.26.1757425388619; 
- Tue, 09 Sep 2025 06:43:08 -0700 (PDT)
-Received: from [192.168.43.95] ([37.167.152.186])
- by smtp.gmail.com with ESMTPSA id
- d75a77b69052e-4b61bbbc302sm8923521cf.26.2025.09.09.06.43.03
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 09 Sep 2025 06:43:08 -0700 (PDT)
-Message-ID: <54ec4410-373d-4171-9e63-6933a42fe17f@redhat.com>
-Date: Tue, 9 Sep 2025 15:43:00 +0200
+ AJvYcCXmevZpZAzGqr5WOVx6Uk5mr+8z0+zfIhKJFvZFCcUdybLrLigN2PQjkQWYhBQ6kuaD54rLVXYjAQ==@nongnu.org
+X-Gm-Message-State: AOJu0YyHLp4Y2nMGTp7L+WVwbQ0vSTc1TG2vOWzE6JyinKwI0oB7/Xzb
+ eHiuqp4/d4v+HtnY5fg9PVxYs1zhF3vNmILrPf2MUNsVmVQyuvqnjg50qu8TaVXA5PneD2h4jJb
+ p/mEqJEU+UeddhT6rkeFhimh5QR8c4AWnY6KlMUA+hi4Y92OWsNsx6RYAIxMETh7gww==
+X-Gm-Gg: ASbGncsE1LOTYpZESXtex6YFlgjyok2Qy1JwfRn9fa9u+7sneTrNOzoBFDmL5Er46C4
+ INik0peyzUqE6MUI1U9IrIgOe+mln6N5X57bkVgBcgAlP6Af32zwObcBorY6dsYz+dVN2hlkOQI
+ lnY72suenEQcTHG/ch1duky5r4NYG1sezb9b4gCU7VvfxthbxlVEGjr+763ge3CH/mWAJJ3PyBS
+ XFoSIsJP8p+CDgQALHgOqtuREPOX8lugrNpB4vg1O4QFwEe/1QsVf/GdtWdKe4RV5qOtQgVg7bk
+ PWiwbWG7KIthg1N57QGOS3b0Uc3A/2b3zgGVH4nG03VeR0N5eng3m+U5mSbqhVCIFF0q5y+2N8E
+ fKJPWqyqiluSldYM=
+X-Received: by 2002:a17:902:ecc8:b0:24d:a82d:cbec with SMTP id
+ d9443c01a7336-2516d81a17emr200743535ad.5.1757434217166; 
+ Tue, 09 Sep 2025 09:10:17 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEXUZ0B85u70sgpyVNr3d0e9E0VVeMeuQ/UsCske3GSUNFZsvVu+hL5jDqnWwtZU4crbeLGfA==
+X-Received: by 2002:a17:902:ecc8:b0:24d:a82d:cbec with SMTP id
+ d9443c01a7336-2516d81a17emr200742905ad.5.1757434216666; 
+ Tue, 09 Sep 2025 09:10:16 -0700 (PDT)
+Received: from admin15.qualcomm.com (i-global254.qualcomm.com.
+ [199.106.103.254]) by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-25a2a43a9bcsm1794975ad.89.2025.09.09.09.10.15
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 09 Sep 2025 09:10:16 -0700 (PDT)
+From: Vacha Bhavsar <vacha.bhavsar@oss.qualcomm.com>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Thomas Huth <thuth@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
+ Vacha Bhavsar <vacha.bhavsar@oss.qualcomm.com>
+Subject: [PATCH v8 2/3] target/arm: Added support for SME register exposure to
+ GDB
+Date: Tue,  9 Sep 2025 16:10:11 +0000
+Message-Id: <20250909161012.2561593-3-vacha.bhavsar@oss.qualcomm.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20250909161012.2561593-1-vacha.bhavsar@oss.qualcomm.com>
+References: <20250909161012.2561593-1-vacha.bhavsar@oss.qualcomm.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH v3 13/15] hw/arm/smmuv3: Forward invalidation commands
- to hw
-To: Shameer Kolothum <skolothumtho@nvidia.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- Jason Gunthorpe <jgg@nvidia.com>, Nicolin Chen <nicolinc@nvidia.com>,
- "ddutile@redhat.com" <ddutile@redhat.com>,
- "berrange@redhat.com" <berrange@redhat.com>, Nathan Chen
- <nathanc@nvidia.com>, Matt Ochs <mochs@nvidia.com>,
- "smostafa@google.com" <smostafa@google.com>,
- "linuxarm@huawei.com" <linuxarm@huawei.com>,
- "wangzhou1@hisilicon.com" <wangzhou1@hisilicon.com>,
- "jiangkunkun@huawei.com" <jiangkunkun@huawei.com>,
- "jonathan.cameron@huawei.com" <jonathan.cameron@huawei.com>,
- "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>,
- "zhenzhong.duan@intel.com" <zhenzhong.duan@intel.com>,
- "shameerkolothum@gmail.com" <shameerkolothum@gmail.com>
-References: <20250714155941.22176-1-shameerali.kolothum.thodi@huawei.com>
- <20250714155941.22176-14-shameerali.kolothum.thodi@huawei.com>
- <5ab38eaa-b005-432a-9de7-fae3e6096f89@redhat.com>
- <CH3PR12MB7548543A976A65B74DA6EA42AB0CA@CH3PR12MB7548.namprd12.prod.outlook.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <CH3PR12MB7548543A976A65B74DA6EA42AB0CA@CH3PR12MB7548.namprd12.prod.outlook.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 5KWr4h27C__geDEhGlCzRqv6FXzkfbFSeYYjCei7La0_1757425389
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-Authority-Analysis: v=2.4 cv=FN4bx/os c=1 sm=1 tr=0 ts=68c0516a cx=c_pps
+ a=cmESyDAEBpBGqyK7t0alAg==:117 a=JYp8KDb2vCoCEuGobkYCKw==:17
+ a=yJojWOMRYYMA:10 a=NEAV23lmAAAA:8 a=EUspDBNiAAAA:8 a=BgWsvkvSDKOZz1aDhXEA:9
+ a=1OuFwYUASf3TG4hYMiVC:22
+X-Proofpoint-ORIG-GUID: SEBKsNwY-Cbp3lwcUCDW2iHXy5s1KRaE
+X-Proofpoint-GUID: SEBKsNwY-Cbp3lwcUCDW2iHXy5s1KRaE
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwOTA4MDA5NCBTYWx0ZWRfX7VjTHIPKA3wn
+ 9BXtsUw9RSzdbLwhVY/36nwpVGwaQs6pHDKEbMTGJR2ysVUKBkqSOL+Cowzn8oEvNU8w5MOrJV6
+ V1bQ1v9YWE+gaH9oRQwSXJ8CBhhnG0NpW6o9uoCECbarb0sFsmMRCAEsHM4UCn3sa7IFa47NsKI
+ 288eNii4tTbsVVYtiiqW2ICnhIJF72RAxq8XP6dAazza5rpftl7NDHkTCNSNQNisxZdvBVj1RTk
+ SUoHA4aSw2WtAPBSu29B/z4ohIgCUhXlisqZXEUb0l3CWQsqJZnyTIogWeXWXnYi+bSo0mwVRvx
+ Dzt7T6tp4OxSsGy3Lvj4jSlsZZ3NJiLy0Wo8AHRGSh5d4tKSP3KwzZabw5HjwR+d5wiUWqWusg5
+ DNiF/+Zg
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1117,Hydra:6.1.9,FMLib:17.12.80.40
+ definitions=2025-09-09_02,2025-09-08_02,2025-03-28_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ spamscore=0 priorityscore=1501 clxscore=1015 phishscore=0 adultscore=0
+ bulkscore=0 impostorscore=0 malwarescore=0 suspectscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.19.0-2507300000 definitions=main-2509080094
+Received-SPF: pass client-ip=205.220.180.131;
+ envelope-from=vacha.bhavsar@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
+X-Spam_score_int: -26
+X-Spam_score: -2.7
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_LOW=-0.7,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -131,226 +134,233 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+The QEMU GDB stub does not expose the ZA storage SME register to GDB via
+the remote serial protocol, which can be a useful functionality to debug SME
+code. To provide this functionality in Aarch64 target, this patch registers the
+SME register set with the GDB stub. To do so, this patch implements the
+aarch64_gdb_get_sme_reg() and aarch64_gdb_set_sme_reg() functions to
+specify how to get and set the SME registers, and the
+arm_gen_dynamic_smereg_feature() function to generate the target
+description in XML format to indicate the target architecture supports SME.
+Finally, this patch includes a dyn_smereg_feature structure to hold this
+GDB XML description of the SME registers for each CPU.
 
+Note that according to the GDB documentation the ZA register is defined as a
+vector of bytes, however the target description xml retrieved when using gdb
+natively on a host with SME capabilities represents the ZA register as a vector
+of vectors of bytes. To remain consistent with this implementation this patch
+also represents the ZA register as a vector of vectors of bytes as is done by
+GDB here:
+https://github.com/bminor/binutils-gdb/blob/5cce2b7006daa7073b98e3d1a3b176199d1381d7/gdb/features/aarch64-sme.c#L50
 
-On 9/8/25 2:22 PM, Shameer Kolothum wrote:
-> Hi Eric,
->
->> -----Original Message-----
->> From: Eric Auger <eric.auger@redhat.com>
->> Sent: 05 September 2025 13:46
->> To: qemu-arm@nongnu.org; qemu-devel@nongnu.org; Shameer Kolothum
->> <skolothumtho@nvidia.com>
->> Cc: peter.maydell@linaro.org; Jason Gunthorpe <jgg@nvidia.com>; Nicolin
->> Chen <nicolinc@nvidia.com>; ddutile@redhat.com; berrange@redhat.com;
->> Nathan Chen <nathanc@nvidia.com>; Matt Ochs <mochs@nvidia.com>;
->> smostafa@google.com; linuxarm@huawei.com; wangzhou1@hisilicon.com;
->> jiangkunkun@huawei.com; jonathan.cameron@huawei.com;
->> zhangfei.gao@linaro.org; zhenzhong.duan@intel.com;
->> shameerkolothum@gmail.com
->> Subject: Re: [RFC PATCH v3 13/15] hw/arm/smmuv3: Forward invalidation
->> commands to hw
->>
->> External email: Use caution opening links or attachments
->>
->>
->> Hi Shameer,
->>
->> On 7/14/25 5:59 PM, Shameer Kolothum wrote:
->>> From: Nicolin Chen <nicolinc@nvidia.com>
->>>
->>> Use the provided smmuv3-accel helper functions to issue the
->>> invalidation commands to host SMMUv3.
->>>
->>> Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
->>> Signed-off-by: Shameer Kolothum
->> <shameerali.kolothum.thodi@huawei.com>
->>> ---
->>>  hw/arm/smmuv3-internal.h | 11 +++++++++++
->>>  hw/arm/smmuv3.c          | 28 ++++++++++++++++++++++++++++
->>>  2 files changed, 39 insertions(+)
->>>
->>> diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
->>> index 8cb6a9238a..f3aeaf6375 100644
->>> --- a/hw/arm/smmuv3-internal.h
->>> +++ b/hw/arm/smmuv3-internal.h
->>> @@ -233,6 +233,17 @@ static inline bool
->> smmuv3_gerror_irq_enabled(SMMUv3State *s)
->>>  #define Q_CONS_WRAP(q) (((q)->cons & WRAP_MASK(q)) >> (q)-
->>> log2size)
->>>  #define Q_PROD_WRAP(q) (((q)->prod & WRAP_MASK(q)) >> (q)-
->>> log2size)
->>>
->>> +static inline int smmuv3_q_ncmds(SMMUQueue *q)
->>> +{
->>> +    uint32_t prod = Q_PROD(q);
->>> +    uint32_t cons = Q_CONS(q);
->>> +
->>> +    if (Q_PROD_WRAP(q) == Q_CONS_WRAP(q))
->>> +        return prod - cons;
->>> +    else
->>> +        return WRAP_MASK(q) - cons + prod;
->>> +}
->>> +
->>>  static inline bool smmuv3_q_full(SMMUQueue *q)
->>>  {
->>>      return ((q->cons ^ q->prod) & WRAP_INDEX_MASK(q)) ==
->> WRAP_MASK(q);
->>> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
->>> index c94bfe6564..97ecca0764 100644
->>> --- a/hw/arm/smmuv3.c
->>> +++ b/hw/arm/smmuv3.c
->>> @@ -1285,10 +1285,17 @@ static int
->> smmuv3_cmdq_consume(SMMUv3State *s)
->>>      SMMUCmdError cmd_error = SMMU_CERROR_NONE;
->>>      SMMUQueue *q = &s->cmdq;
->>>      SMMUCommandType type = 0;
->>> +    SMMUCommandBatch batch = {};
->>> +    uint32_t ncmds;
->>>
->>>      if (!smmuv3_cmdq_enabled(s)) {
->>>          return 0;
->>>      }
->>> +
->>> +    ncmds = smmuv3_q_ncmds(q);
->>> +    batch.cmds = g_new0(Cmd, ncmds);
->>> +    batch.cons = g_new0(uint32_t, ncmds);
->> so you are provisionning space for n commands found in the queue,
->> independently on knowing whether they will be batched, ie. only
->> invalidation commands are. Then commands are added in the batch one by
->> one and you increment batch->ncmds in smmuv3_accel_batch_cmd. I agree
->> with Jonathan. This looks weird. AT least I would introduce a kelper
->> that inits a Back of ncmds and I would make all the batch fields
->> private. You you end up with the init +
->> smmuv3_accel_add_cmd_to_batch(batch, cmd). Then independently on the
->> ncmds you can issue a smmuv3_accel_issue_cmd_batch that would return if
->> there is nothing in the batch. You also need a batch deallocation
->> helper. 
-> Agree, at present we pre-allocate irrespective of whether there will any
-> Invalidation cmds or not. I will take another look and incorporate your above
-> suggestion to improve this. 
->
-> I remember I expressed in the past my concern about having
->> commands executed out of order. I don't remember out conclusion on that
->> but this shall be clearly studied and conclusion shall be put in the
->> commit message.
-> Yes, you did, and I missed it. Sorry about that.
->
-> I think it is safe to honour the execution order of Guest here. From a quick glance, I
-> couldn’t find anything related to a safe out of order execution guidance from
-> SMMUv3 specification. Also, we can't be sure how Guest will be modified/optimised
-> in the future to completely rule out problems if we do out-of-order executions. 
-What about if you receive a sync cmd. It is supposed to assure all the
-preceding commands were consumed. However in that case you will have
-commands that were submitted before that can be executed after. This
-looks wrong to me.
+Signed-off-by: Vacha Bhavsar <vacha.bhavsar@oss.qualcomm.com>
+---
+Changes since v6:
+- removed unnecessary comment
+- corrected indentation
+---
+ target/arm/cpu.h       |   1 +
+ target/arm/gdbstub.c   |   9 +++-
+ target/arm/gdbstub64.c | 119 +++++++++++++++++++++++++++++++++++++++++
+ target/arm/internals.h |   3 ++
+ 4 files changed, 131 insertions(+), 1 deletion(-)
 
-This optimization is not requested in the first enablement series. I
-would postpone it personally.
-
->
-> Hence, my plan for next is to start batching if we see Invalidation cmds and submit
-> the batch If any non-invalidation commands are encountered in between.
-looks safe indeed. But again this can come as a follow up optimization.
-
-Eric
->
-> @Nicolin, do you foresee any issues with above approach? From the current
-> Host SMMUV3 driver, batching of commands is mainly used for invalidations
-> (except for certain arm_smmu_cmdq_issue_cmd_with_sync() cases). So 
-> I guess we are good from a performance optimisation point of view if we can
-> cover invalidations as above.
->
->>> +
->>>      /*
->>>       * some commands depend on register values, typically CR0. In case those
->>>       * register values change while handling the command, spec says it
->>> @@ -1383,6 +1390,7 @@ static int
->> smmuv3_cmdq_consume(SMMUv3State *s)
->>>              trace_smmuv3_cmdq_cfgi_cd(sid);
->>>              smmuv3_flush_config(sdev);
->>> +            smmuv3_accel_batch_cmd(sdev->smmu, sdev, &batch, &cmd, &q-
->>> cons);
->>>              break;
->>>          }
->>>          case SMMU_CMD_TLBI_NH_ASID:
->>> @@ -1406,6 +1414,7 @@ static int
->> smmuv3_cmdq_consume(SMMUv3State *s)
->>>              trace_smmuv3_cmdq_tlbi_nh_asid(asid);
->>>              smmu_inv_notifiers_all(&s->smmu_state);
->>>              smmu_iotlb_inv_asid_vmid(bs, asid, vmid);
->>> +            smmuv3_accel_batch_cmd(bs, NULL, &batch, &cmd, &q->cons);
->>>              break;
->>>          }
->>>          case SMMU_CMD_TLBI_NH_ALL:
->>> @@ -1433,6 +1442,7 @@ static int
->> smmuv3_cmdq_consume(SMMUv3State *s)
->>>              trace_smmuv3_cmdq_tlbi_nsnh();
->>>              smmu_inv_notifiers_all(&s->smmu_state);
->>>              smmu_iotlb_inv_all(bs);
->>> +            smmuv3_accel_batch_cmd(bs, NULL, &batch, &cmd, &q->cons);
->>>              break;
->>>          case SMMU_CMD_TLBI_NH_VAA:
->>>          case SMMU_CMD_TLBI_NH_VA:
->>> @@ -1441,6 +1451,7 @@ static int
->> smmuv3_cmdq_consume(SMMUv3State *s)
->>>                  break;
->>>              }
->>>              smmuv3_range_inval(bs, &cmd, SMMU_STAGE_1);
->>> +            smmuv3_accel_batch_cmd(bs, NULL, &batch, &cmd, &q->cons);
->>>              break;
->>>          case SMMU_CMD_TLBI_S12_VMALL:
->>>          {
->>> @@ -1499,12 +1510,29 @@ static int
->> smmuv3_cmdq_consume(SMMUv3State *s)
->>>          queue_cons_incr(q);
->>>      }
->>>
->>> +    qemu_mutex_lock(&s->mutex);
->>> +    if (!cmd_error && batch.ncmds) {
->>> +        if (!smmuv3_accel_issue_cmd_batch(bs, &batch)) {
->>> +            if (batch.ncmds) {
->>> +                q->cons = batch.cons[batch.ncmds - 1];
->>> +            } else {
->>> +                q->cons = batch.cons[0]; /* FIXME: Check */
->>> +            }
->>> +            qemu_log_mask(LOG_GUEST_ERROR, "Illegal command type: %d\n",
->>> +                          CMD_TYPE(&batch.cmds[batch.ncmds]));
->> Can't you have other error types returned?
-> Kernel can return EOPNOTSUPP/EINVAL/ENOMEM/EFAULT/ ETIMEDOUT errors.
-> Of these, only ETIMEDOUT is related to the actual host Queue when an attempted
-> SYNC results in timeout.
->
-> So, between CERROR_ILL/ _ABT/ _ATC_INV_SYNC I think it is best to set CERROR_ILL
-> here.
->
-> Thanks,
-> Shameer
->
->> Thanks
->>
->> Eric
->>> +            cmd_error = SMMU_CERROR_ILL;
->>> +        }
->>> +    }
->>> +    qemu_mutex_unlock(&s->mutex);
->>> +
->>>      if (cmd_error) {
->>>          trace_smmuv3_cmdq_consume_error(smmu_cmd_string(type),
->> cmd_error);
->>>          smmu_write_cmdq_err(s, cmd_error);
->>>          smmuv3_trigger_irq(s, SMMU_IRQ_GERROR,
->> R_GERROR_CMDQ_ERR_MASK);
->>>      }
->>>
->>> +    g_free(batch.cmds);
->>> +    g_free(batch.cons);
->>>      trace_smmuv3_cmdq_consume_out(Q_PROD(q), Q_CONS(q),
->>>                                    Q_PROD_WRAP(q), Q_CONS_WRAP(q));
->>>
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index c15d79a106..92808c2fe6 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -935,6 +935,7 @@ struct ArchCPU {
+ 
+     DynamicGDBFeatureInfo dyn_sysreg_feature;
+     DynamicGDBFeatureInfo dyn_svereg_feature;
++    DynamicGDBFeatureInfo dyn_smereg_feature;
+     DynamicGDBFeatureInfo dyn_m_systemreg_feature;
+     DynamicGDBFeatureInfo dyn_m_secextreg_feature;
+ 
+diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
+index ce4497ad7c..cfde7c3a46 100644
+--- a/target/arm/gdbstub.c
++++ b/target/arm/gdbstub.c
+@@ -527,7 +527,7 @@ void arm_cpu_register_gdb_regs_for_features(ARMCPU *cpu)
+          * registers so we don't need to include both.
+          */
+ #ifdef TARGET_AARCH64
+-        if (isar_feature_aa64_sve(&cpu->isar)) {
++        if (isar_feature_aa64_sve(&cpu->isar) || isar_feature_aa64_sme(&cpu->isar)) {
+             GDBFeature *feature = arm_gen_dynamic_svereg_feature(cs, cs->gdb_num_regs);
+             gdb_register_coprocessor(cs, aarch64_gdb_get_sve_reg,
+                                      aarch64_gdb_set_sve_reg, feature, 0);
+@@ -537,6 +537,13 @@ void arm_cpu_register_gdb_regs_for_features(ARMCPU *cpu)
+                                      gdb_find_static_feature("aarch64-fpu.xml"),
+                                      0);
+         }
++
++        if (isar_feature_aa64_sme(&cpu->isar)) {
++            GDBFeature *sme_feature = arm_gen_dynamic_smereg_feature(cs,
++                                                                     cs->gdb_num_regs);
++            gdb_register_coprocessor(cs, aarch64_gdb_get_sme_reg,
++                                     aarch64_gdb_set_sme_reg, sme_feature, 0);
++        }
+         /*
+          * Note that we report pauth information via the feature name
+          * org.gnu.gdb.aarch64.pauth_v2, not org.gnu.gdb.aarch64.pauth.
+diff --git a/target/arm/gdbstub64.c b/target/arm/gdbstub64.c
+index 08e2858539..3bccde2bf2 100644
+--- a/target/arm/gdbstub64.c
++++ b/target/arm/gdbstub64.c
+@@ -249,6 +249,90 @@ int aarch64_gdb_set_sve_reg(CPUState *cs, uint8_t *buf, int reg)
+     return 0;
+ }
+ 
++int aarch64_gdb_get_sme_reg(CPUState *cs, GByteArray *buf, int reg)
++{
++    ARMCPU *cpu = ARM_CPU(cs);
++    CPUARMState *env = &cpu->env;
++
++    switch (reg) {
++    case 0: /* svg register */
++    {
++        int vq = 0;
++        if (FIELD_EX64(env->svcr, SVCR, SM)) {
++            vq = sve_vqm1_for_el_sm(env, arm_current_el(env),
++                                    FIELD_EX64(env->svcr, SVCR, SM)) + 1;
++        }
++        /* svg = vector granules (2 * vector quardwords) in streaming mode */
++        return gdb_get_reg64(buf, vq * 2);
++    }
++    case 1: /* svcr register */
++        return gdb_get_reg64(buf, env->svcr);
++    case 2: /* za register */
++    {
++        int len = 0;
++        int vq = cpu->sme_max_vq;
++        int svl = vq * 16;
++        for (int i = 0; i < svl; i++) {
++            for (int q = 0; q < vq; q++) {
++                len += gdb_get_reg128(buf,
++                                      env->za_state.za[i].d[q * 2 + 1],
++                                      env->za_state.za[i].d[q * 2]);
++            }
++        }
++        return len;
++    }
++    default:
++        /* gdbstub asked for something out of range */
++        qemu_log_mask(LOG_UNIMP, "%s: out of range register %d", __func__, reg);
++        break;
++    }
++
++    return 0;
++}
++
++int aarch64_gdb_set_sme_reg(CPUState *cs, uint8_t *buf, int reg)
++{
++    ARMCPU *cpu = ARM_CPU(cs);
++    CPUARMState *env = &cpu->env;
++
++    switch (reg) {
++    case 0: /* svg register */
++        /* cannot set svg via gdbstub */
++        return 8;
++    case 1: /* svcr register */
++        aarch64_set_svcr(env, ldq_le_p(buf),
++                         R_SVCR_SM_MASK | R_SVCR_ZA_MASK);
++        return 8;
++    case 2: /* za register */
++    {
++        int len = 0;
++        int vq = cpu->sme_max_vq;
++        int svl = vq * 16;
++        for (int i = 0; i < svl; i++) {
++            for (int q = 0; q < vq; q++) {
++                if (target_big_endian()) {
++                    env->za_state.za[i].d[q * 2 + 1] = ldq_p(buf);
++                    buf += 8;
++                    env->za_state.za[i].d[q * 2] = ldq_p(buf);
++                } else{
++                    env->za_state.za[i].d[q * 2] = ldq_p(buf);
++                    buf += 8;
++                    env->za_state.za[i].d[q * 2 + 1] = ldq_p(buf);
++                }
++                buf += 8;
++                len += 16;
++            }
++        }
++        return len;
++    }
++    default:
++        /* gdbstub asked for something out of range */
++        break;
++    }
++
++    return 0;
++}
++
+ int aarch64_gdb_get_pauth_reg(CPUState *cs, GByteArray *buf, int reg)
+ {
+     ARMCPU *cpu = ARM_CPU(cs);
+@@ -413,6 +497,41 @@ GDBFeature *arm_gen_dynamic_svereg_feature(CPUState *cs, int base_reg)
+     return &cpu->dyn_svereg_feature.desc;
+ }
+ 
++GDBFeature *arm_gen_dynamic_smereg_feature(CPUState *cs, int base_reg)
++{
++    ARMCPU *cpu = ARM_CPU(cs);
++    int vq = cpu->sme_max_vq;
++    int svl = vq * 16;
++    GDBFeatureBuilder builder;
++    int reg = 0;
++
++    gdb_feature_builder_init(&builder, &cpu->dyn_smereg_feature.desc,
++                             "org.gnu.gdb.aarch64.sme", "sme-registers.xml",
++                             base_reg);
++
++
++    /* Create the sme_bv vector type. */
++    gdb_feature_builder_append_tag(
++        &builder, "<vector id=\"sme_bv\" type=\"uint8\" count=\"%d\"/>",
++        svl);
++
++    /* Create the sme_bvv vector type. */
++    gdb_feature_builder_append_tag(
++        &builder, "<vector id=\"sme_bvv\" type=\"sme_bv\" count=\"%d\"/>",
++        svl);
++
++    /* Define the svg, svcr, and za registers. */
++
++    gdb_feature_builder_append_reg(&builder, "svg", 64, reg++, "int", NULL);
++    gdb_feature_builder_append_reg(&builder, "svcr", 64, reg++, "int", NULL);
++    gdb_feature_builder_append_reg(&builder, "za", svl * svl * 8, reg++,
++                                   "sme_bvv", NULL);
++
++    gdb_feature_builder_end(&builder);
++
++    return &cpu->dyn_smereg_feature.desc;
++}
++
+ #ifdef CONFIG_USER_ONLY
+ int aarch64_gdb_get_tag_ctl_reg(CPUState *cs, GByteArray *buf, int reg)
+ {
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index f5a1e75db3..df99a17448 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -1820,8 +1820,11 @@ static inline uint64_t pmu_counter_mask(CPUARMState *env)
+ }
+ 
+ GDBFeature *arm_gen_dynamic_svereg_feature(CPUState *cpu, int base_reg);
++GDBFeature *arm_gen_dynamic_smereg_feature(CPUState *cpu, int base_reg);
+ int aarch64_gdb_get_sve_reg(CPUState *cs, GByteArray *buf, int reg);
+ int aarch64_gdb_set_sve_reg(CPUState *cs, uint8_t *buf, int reg);
++int aarch64_gdb_get_sme_reg(CPUState *cs, GByteArray *buf, int reg);
++int aarch64_gdb_set_sme_reg(CPUState *cs, uint8_t *buf, int reg);
+ int aarch64_gdb_get_fpu_reg(CPUState *cs, GByteArray *buf, int reg);
+ int aarch64_gdb_set_fpu_reg(CPUState *cs, uint8_t *buf, int reg);
+ int aarch64_gdb_get_pauth_reg(CPUState *cs, GByteArray *buf, int reg);
+-- 
+2.34.1
 
 

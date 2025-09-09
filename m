@@ -4,120 +4,121 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A6A4CA0FED
-	for <qemu-arm@archiver.kernel.org>; Tue,  9 Sep 2025 16:11:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2DCE2CAC583
+	for <qemu-arm@archiver.kernel.org>; Tue,  9 Sep 2025 16:12:15 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uw0wQ-0007kk-Qx; Tue, 09 Sep 2025 12:11:36 -0400
+	id 1uw0vu-0007Ru-NN; Tue, 09 Sep 2025 12:11:04 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <vacha.bhavsar@oss.qualcomm.com>)
- id 1uw0wO-0007kL-FX
- for qemu-arm@nongnu.org; Tue, 09 Sep 2025 12:11:32 -0400
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+ id 1uw0vQ-0007No-68
+ for qemu-arm@nongnu.org; Tue, 09 Sep 2025 12:10:41 -0400
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <vacha.bhavsar@oss.qualcomm.com>)
- id 1uw0wF-0001mt-Op
- for qemu-arm@nongnu.org; Tue, 09 Sep 2025 12:11:30 -0400
-Received: from pps.filterd (m0279865.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 5899LSQh031513
- for <qemu-arm@nongnu.org>; Tue, 9 Sep 2025 16:11:20 GMT
+ id 1uw0vH-0001e2-4O
+ for qemu-arm@nongnu.org; Tue, 09 Sep 2025 12:10:31 -0400
+Received: from pps.filterd (m0279872.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 5899Lnxb030101
+ for <qemu-arm@nongnu.org>; Tue, 9 Sep 2025 16:10:19 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-type:date:from:in-reply-to:message-id:mime-version
- :references:subject:to; s=qcppdkim1; bh=1S+8/GmANSsit+oC8iJ8NZuI
- Ic/8K6Qrgest0rjjDOY=; b=Mhb1oDNpV4uATpDgJupqcF8lTBA0mBWnQQ3vbJi0
- B9kL7lYWjS8DCOGwVA2w+v4M5xn4faoMigsOSyu79Lli3kL8IlBNU0m1slbDeHyu
- 7XONJ/COJgnMQNFEecS6chwe3ijcBv5dUQbU1oZwBOz2aanRmBBlVEJje8pi70Xi
- FHRfRM4Mork7AMpzEOZYk3485zlDnEvT21RMm1yxNHcAp2hF4hRt+CxVYG7ZD++3
- CG6yXChXXyYbHRD2VCYhfOyieAReRZUkzhc0zv/kUj3WS4WooLa5FVAXUtprO0wN
- bEWHIsL7sh5b4PyWeQIUDTeMN4IwUgZ6FwmZ8Vy6ptKyhw==
-Received: from mail-yb1-f200.google.com (mail-yb1-f200.google.com
- [209.85.219.200])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 490bws8yht-1
+ cc:content-transfer-encoding:content-type:date:from:message-id
+ :mime-version:subject:to; s=qcppdkim1; bh=3EI9SOU6kdd6tgzMd/gX2Y
+ zpwNShR+7fPBOkmdAZVfw=; b=GXPSDd5InsJNVjtBB+u7YHMxxj/AM84JxLK3Jw
+ gKls3Rv26QqU6O7cvWvq0qKiKZZWwoTAz+Kvhi1Zk/UGQUCRf0RmcWwcO9AQh2X/
+ mJFoTu3sii7aHH1+Od+Fv+bfekFwkSc726I0WCroQB/HvlPmlFcPI3qC5itAvzNk
+ QlaLH5jWQaBSWxc4BRyD/Ldj8GRcBUFNmuWYb7KhDlCJ5jcvTHZSYgdFSoTWoVdr
+ Wn1CMGuEd5eIsODNjKA5J8xnEWZb9wt83HFRMi/M9XF/TmWKRMHuM0Rpq461KjpD
+ I/0dEqGxS2L3MbjX+cBTHhtu5bZVZm9SJOjCjEHLqfn3T+DQ==
+Received: from mail-pg1-f200.google.com (mail-pg1-f200.google.com
+ [209.85.215.200])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 490db8gus0-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Tue, 09 Sep 2025 16:11:20 +0000 (GMT)
-Received: by mail-yb1-f200.google.com with SMTP id
- 3f1490d57ef6-e9d6ce94cf2so8234012276.1
- for <qemu-arm@nongnu.org>; Tue, 09 Sep 2025 09:11:20 -0700 (PDT)
+ for <qemu-arm@nongnu.org>; Tue, 09 Sep 2025 16:10:19 +0000 (GMT)
+Received: by mail-pg1-f200.google.com with SMTP id
+ 41be03b00d2f7-b47174bdce2so4505878a12.2
+ for <qemu-arm@nongnu.org>; Tue, 09 Sep 2025 09:10:19 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1757434279; x=1758039079;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ d=1e100.net; s=20230601; t=1757434215; x=1758039015;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=1S+8/GmANSsit+oC8iJ8NZuIIc/8K6Qrgest0rjjDOY=;
- b=c477/CTkcRlcinTRklbP32LEZ1P0fSuqqZAYmdHxcBffuCUEnjcsSz1WJcPNaSwI0A
- cKH4ibnOqFrDAliJR/WwukGExnHD0+XS/+nGVQJhEXsEnFOBnjDI7XOBbjaBJyypRmOp
- y6D7YHgJEGGfpw5QJkruHhzebRg7YZZ9z6UUzK7INorLYQMPjMCn24pZsTV4vmm8ikO9
- wJN5sQXChSre4RJyJmAfhQpVaBTwi9+NUmoLcHDe1tcN89F72qqTX6pmXIpOqfONPjfo
- iNBsJGSQxFUHjrDaV7srCzCB+El5tWy7tVqhIdorvHo/qMwAtfBPBUjpn8UayNv7LpBi
- Ds3w==
+ bh=3EI9SOU6kdd6tgzMd/gX2YzpwNShR+7fPBOkmdAZVfw=;
+ b=fakh/UrfWXtpaiax2aPKqIOEBKfpNMmzX5Pw5JlyFPF4Khmq4idQpshQQnapKKDyZ/
+ bjI0FbXGEadBSUOUvCDTrs+vPf1vsd7lrS/bgNUuOmCVVSifWbnoOkci6wZ3WJXVDhBY
+ HPSqI7UsQgcE3mEvewV7LRFCv0SzoM4i2RRq1FoCnnPjwLtLVVqvmYuhI3N8h0Oe8i2O
+ p01m9cAj+3IJlfgPY7pN8y3FvzmAZf14AqsTTfMxfiL3WNsejuS1vsDqan2AC78Rf7Um
+ Gq9g8JExm0ZutsdMuoKFPe8ycPV3egsxK2NrDNc6DKal5AvCvLXGu4oGrCSyJCdpaxPe
+ Qy6w==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXH6SRPO+mMbIyxZYGAr628MjAB0+vgkm44YMTAF4TsmaGdzXTS/NeZw6whnFvMCZUBcjW+et8pNg==@nongnu.org
-X-Gm-Message-State: AOJu0YzaHvLcLFXQaugpcuycW3dhwm7xGiJPK2J1aEzGe8dGQA53oLut
- TlRf3L38VH6gokVAakL4rpMx8DQzWyzMYrIAwPMyhDVHlKIyljG1a1v0csp9GvAeqMDK4x0eWCI
- aEyNAC73gUD97npqYVTBzVFjTz1kcDV2aWw8T+/KK57wJKDAJI7Jd2pWrOn1d6BeW+HzG05cD3Y
- 6oUcSDem68cDBJArlyBxju2xgykJeVtw==
-X-Gm-Gg: ASbGncssSwZd3c397iSeTGvoWYjH8xitWYVJHhuYcw4cIG3psZcBa0k3tEEkuAA8aoH
- jhqgZwdNXEseqYCX1pbjfwSldHvwykBYm59DLpsKT2cZ6OjaJ4XZnsynK6P1N4uWLnfvQrKyOt4
- n2iuMUpuvsjIbD1UXA9+kB9fg=
-X-Received: by 2002:a25:9387:0:b0:e93:2d7c:96f2 with SMTP id
- 3f1490d57ef6-e9f677a21ffmr8755303276.24.1757434278882; 
- Tue, 09 Sep 2025 09:11:18 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFGwyzQ2OT7+CTlPjbvl6aLpQ/YirsPcNJxZFKkmdwdcdeReC5LZyblnetF+TIJfQdRM+45S7Y6gWKz9AroUnk=
-X-Received: by 2002:a25:9387:0:b0:e93:2d7c:96f2 with SMTP id
- 3f1490d57ef6-e9f677a21ffmr8755266276.24.1757434278384; Tue, 09 Sep 2025
- 09:11:18 -0700 (PDT)
-MIME-Version: 1.0
-References: <20250826184504.510279-1-vacha.bhavsar@oss.qualcomm.com>
- <20250826184504.510279-4-vacha.bhavsar@oss.qualcomm.com>
- <CAFEAcA9_wXKT6zfpCSty2bRjVpCSyzLcdfWuJofJEZcZuqRgYQ@mail.gmail.com>
- <CAEWVDmttumhB+kx7RExyTV1vUoUCY=ED_qbj=7tbBx0hDPeqUg@mail.gmail.com>
- <CAFEAcA8Qnv+_=-MeNuHuZm3DuAK7A-DqYo0GsArQCk62GF0jEQ@mail.gmail.com>
-In-Reply-To: <CAFEAcA8Qnv+_=-MeNuHuZm3DuAK7A-DqYo0GsArQCk62GF0jEQ@mail.gmail.com>
+ AJvYcCV+WKoJ1+6kFtVLAqPHHpeV7Gpul/QFahaHtFsqKOr+hPsY/9lLC/fZldhf8mhUTT1iYYKIEfubOQ==@nongnu.org
+X-Gm-Message-State: AOJu0YxRcZiIQxswOYxUBhFPzKdg/hNncPCL1bJHHA96gxRZ1V94DNF6
+ bpurINxdrIdQ0JYUuijfDZgs62tJtUSZv0OrhQ2utlvYU6YCmqTeDhmBdV2dBbzkPJZB5IuTSNk
+ cMXGBXeoYl6jICRxWYLYA2+lcGVkjJm56SsbdWY+JxTcXjYF/QEDy2dY=
+X-Gm-Gg: ASbGncsimY+ggOZDTXsSbwuhPXGKW5hHzqqJCNyEPkU12zjXSMQ1rpq2TKJah5pd3ty
+ t4fM+mF9QBnymw5zkfCpfW5bEjjd4mxEmgj/pw/IAW5EN864B0DSfdvvfntSQy08pbX2q9OTIfJ
+ SeGrk1bo9L1MlkGTsTkLkzrajRTLlwIXbugh+G5IDViAbFpBpJvzhk0T0FOzhal/H7u8rPjKfHX
+ o8eIuyX2KWvOWx6yUB1mUNxoVBNRLxuqNJ9oTyPdjHATscz3gMNNYkGmfGJsrftWW/j8aqTVit4
+ nX60tQ6BqyDz8m6SGYZEoDDZbyBWpyQcV6VXYOqpiALRFdb0WO79W8tEQY3Jzi6EIL3UJDDGFTw
+ eauZqTh6rqw5gCoM=
+X-Received: by 2002:a17:903:2442:b0:24c:b54e:bf0a with SMTP id
+ d9443c01a7336-25166792637mr139882615ad.0.1757434214831; 
+ Tue, 09 Sep 2025 09:10:14 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEUcPXfSFxRIj+Ups1onwS1KkfdAzEO8tvtlKiq/bRddItl0Hp2vi8x/lQZu3Q+UzH9Bv6TKA==
+X-Received: by 2002:a17:903:2442:b0:24c:b54e:bf0a with SMTP id
+ d9443c01a7336-25166792637mr139882235ad.0.1757434214345; 
+ Tue, 09 Sep 2025 09:10:14 -0700 (PDT)
+Received: from admin15.qualcomm.com (i-global254.qualcomm.com.
+ [199.106.103.254]) by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-25a2a43a9bcsm1794975ad.89.2025.09.09.09.10.13
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 09 Sep 2025 09:10:14 -0700 (PDT)
 From: Vacha Bhavsar <vacha.bhavsar@oss.qualcomm.com>
-Date: Tue, 9 Sep 2025 12:11:07 -0400
-X-Gm-Features: AS18NWAmeO83ueie5vbU9TYvI5nU4SulUn86kX9q93t0NTqgyKCioEk6WfARH6g
-Message-ID: <CAEWVDmvwMUxYeU_130uThFUWByWt_6F=C+rpmaFyNFFM8Gc0_Q@mail.gmail.com>
-Subject: Re: [PATCH v6 3/3] target/arm: Added test case for SME register
- exposure to GDB
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>,
- =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>
-Content-Type: multipart/alternative; boundary="000000000000e12baf063e608d2a"
-X-Proofpoint-ORIG-GUID: Z74OuyjriDnxR3M9sZ97DM1dRPJuTQq9
-X-Proofpoint-GUID: Z74OuyjriDnxR3M9sZ97DM1dRPJuTQq9
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwOTA2MDAxOCBTYWx0ZWRfX1Eo13j2VSbUO
- 7WyG8rPIvGP/fwxgkVwLYYUV+4WoamwDJNVZrrOuar3DDhU4ZYoQRbJ+/dgB3yUdTvWJibFVWD5
- p+5QEDovRf3xv/ea1xvAoeH8Miih/18qBC3E+H7T0IP9IRIoo60k415nPYPdxJ89c9F+iTwNryM
- NZmu2PpKENJTIhK35C1o4gXKUWYwWzN1Bcd/ijYPweQnCpGS0FkkS5joAQxVfScgSMK8c6pT1LY
- tz/IaHZmmz9nidddqnL6pvU8qI47fpSE9Y2TroYi9UP5DFc9r1nTFREXL538ig2DxoHr9Q3bcor
- buHQh0wMvbfn21Fqa9RmJ0b/EnRzkIPvdDpFpkd3AR+ukBViN7b5BWJhu7SB1regJIuIq+eRuH3
- W2GtZ0Kt
-X-Authority-Analysis: v=2.4 cv=G4kcE8k5 c=1 sm=1 tr=0 ts=68c051a8 cx=c_pps
- a=peiObFy/9J5zY6vzkL/ViA==:117 a=yJojWOMRYYMA:10 a=CCpqsmhAAAAA:8
- a=KKAkSRfTAAAA:8 a=EUspDBNiAAAA:8 a=dw954JRmwQRGsdTYt74A:9 a=QEXdDO2ut3YA:10
- a=xsCOeRy3ZukA:10 a=Y4SkpI06CHAA:10 a=1BFMoyKHhG91QSF6OGcA:9
- a=57FbZqFqGi0K-PKL:21 a=lqcHg5cX4UMA:10 a=uSskPZdq7w8du69dlLff:22
- a=ul9cdbp4aOFLsgKbc677:22 a=cvBusfyB2V15izCimMoJ:22
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Thomas Huth <thuth@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
+ Vacha Bhavsar <vacha.bhavsar@oss.qualcomm.com>
+Subject: [PATCH v8 0/3] target/arm: Added support for SME register exposure to
+ GDB
+Date: Tue,  9 Sep 2025 16:10:09 +0000
+Message-Id: <20250909161012.2561593-1-vacha.bhavsar@oss.qualcomm.com>
+X-Mailer: git-send-email 2.34.1
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwOTA2MDAzMSBTYWx0ZWRfXykpR34lJTcKC
+ YjW9tM37zxSYjX/hnFlXk0Mz2+dKXVfAJEaKRWcKOkVm3ELhPG7M7adlWwFBvENRwbtkrc7hbpX
+ XaK1+MH7r1M0XQcaqq+04CTaax4J1hrq9drOo7x7t3Y/LGwsZqTOMN4C99f3J5Qh1PU43jSTLtr
+ NfYaxWLm63SCxECXg2vmqIfX+cXPRykt4VkOzvlSSYC+PdFGJ0afo0D0UkPIV3gy7DO3UV+/37J
+ BwAztS+un9Akj7VmdM/ky/RcgN/NG5mK3jVdn50My/Sx8BZ1nDWMZnDJktGdl4Nz046riMxxI2f
+ jbjjAULmPetrNqn7HPdrdKyK+oToJB9QSoYY7i3q2U/rH+E7UqCv97MIHflqmwmNSg0l+tEsyLY
+ FuUaXfQv
+X-Proofpoint-ORIG-GUID: Alaor4vI-13d3cEsI18WO0JzixSAuvQP
+X-Proofpoint-GUID: Alaor4vI-13d3cEsI18WO0JzixSAuvQP
+X-Authority-Analysis: v=2.4 cv=VIDdn8PX c=1 sm=1 tr=0 ts=68c0516b cx=c_pps
+ a=oF/VQ+ItUULfLr/lQ2/icg==:117 a=JYp8KDb2vCoCEuGobkYCKw==:17
+ a=IkcTkHD0fZMA:10 a=yJojWOMRYYMA:10 a=Q-dapHUw0VXFM7UNezAA:9
+ a=QEXdDO2ut3YA:10 a=3WC7DwWrALyhR5TkjVHa:22
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1117,Hydra:6.1.9,FMLib:17.12.80.40
  definitions=2025-09-09_02,2025-09-08_02,2025-03-28_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- priorityscore=1501 phishscore=0 bulkscore=0 suspectscore=0 clxscore=1015
- malwarescore=0 adultscore=0 impostorscore=0 spamscore=0
+ priorityscore=1501 malwarescore=0 spamscore=0 suspectscore=0 bulkscore=0
+ phishscore=0 adultscore=0 clxscore=1015 impostorscore=0
  classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.19.0-2507300000 definitions=main-2509060018
-Received-SPF: pass client-ip=205.220.168.131;
- envelope-from=vacha.bhavsar@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
+ reason=mlx scancount=1 engine=8.19.0-2507300000 definitions=main-2509060031
+Received-SPF: pass client-ip=205.220.180.131;
+ envelope-from=vacha.bhavsar@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
 X-Spam_score_int: -26
 X-Spam_score: -2.7
 X-Spam_bar: --
 X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, HTML_MESSAGE=0.001,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_LOW=-0.7,
  RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -135,109 +136,33 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
---000000000000e12baf063e608d2a
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+The QEMU GDB stub does not expose the ZA storage SME register to GDB via
+the remote serial protocol, which can be a useful functionality to debug SME
+code. To provide this functionality in Aarch64 target, this patch registers the
+SME register set with the GDB stub. To do so, this patch implements the
+aarch64_gdb_get_sme_reg() and aarch64_gdb_set_sme_reg() functions to
+specify how to get and set the SME registers, and the
+arm_gen_dynamic_smereg_feature() function to generate the target
+description in XML format to indicate the target architecture supports SME.
+Finally, this patch includes a dyn_smereg_feature structure to hold this
+GDB XML description of the SME registers for each CPU.
 
-Hi,
+Additionally, this patch series increases the value of MAX_PACKET_LENGTH
+to allow for remote GDB debugging of the ZA register when the vector
+length is maximal.
 
-Got it! I have sent over an updated version that avoids the
-int cast and associated checks for an appropriate gdb version.
+We have chosen to drop the patch related to changing GDBState's line_buf
+to a dynamically re-sizeable GString for the time being.
 
-Thanks,
-Vacha
+This patch also includes a test case for testing SME register exposure
+to GDB, based off of the existing SVE test case for the gdbstub.
 
-On Tue, Sep 9, 2025 at 4:55=E2=80=AFAM Peter Maydell <peter.maydell@linaro.=
-org>
-wrote:
+Vacha Bhavsar (3):
+  target/arm: Increase MAX_PACKET_LENGTH for SME ZA remote gdb debugging
+  target/arm: Added support for SME register exposure to GDB
+  target/arm: Added test case for SME register exposure to GDB
 
-> On Mon, 8 Sept 2025 at 19:32, Vacha Bhavsar
-> <vacha.bhavsar@oss.qualcomm.com> wrote:
->
-> > >So the only difference between these two branches is that we are
-> > >checking "int(v) =3D=3D MAGIC" rather than "v =3D=3D MAGIC" ?
-> >
-> >
-> >
-> > >Is this a "one GDB only works one way, and the other GDB only
-> > >works the other way" case? Or is there a real interesting thing
-> > >we'd like to test involving the cast ?
->
-> > Yes, the only difference between the two branches is the presence
-> > of the int cast. This seems to be an issue limited to specific versions
-> >
-> > of gdb. This has been discussed with the gdb team
-> > (https://sourceware.org/pipermail/gdb/2025-August/051868.html,
-> > https://sourceware.org/pipermail/gdb/2025-August/051878.html) and
-> > a bug has been filed. With additional tests I have found that the
-> > int cast causes no issues with the testcase when running gdb16.1
-> > or newer. Other than this issue there is no intention on our end
-> > of testing anything interesting regarding casting as the int cast
-> > was included to stay aligned with the existing SVE test.
->
-> So if we can test QEMU's gdbstub functionality by writing
-> the test in a way that avoids the int cast and which doesn't
-> lose coverage, we should just do that. That would mean
-> we don't need to have checks for whether the gdb can do
-> the cast and multiple paths through the test code.
->
-> -- PMM
->
+-- 
+2.34.1
 
---000000000000e12baf063e608d2a
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">Hi,<div><br></div><div>Got it! I have sent over an updated=
- version that avoids the</div><div>int cast and associated checks for an ap=
-propriate gdb version.</div><div><br></div><div>Thanks,</div><div>Vacha</di=
-v></div><br><div class=3D"gmail_quote gmail_quote_container"><div dir=3D"lt=
-r" class=3D"gmail_attr">On Tue, Sep 9, 2025 at 4:55=E2=80=AFAM Peter Maydel=
-l &lt;<a href=3D"mailto:peter.maydell@linaro.org">peter.maydell@linaro.org<=
-/a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0=
-px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">O=
-n Mon, 8 Sept 2025 at 19:32, Vacha Bhavsar<br>
-&lt;<a href=3D"mailto:vacha.bhavsar@oss.qualcomm.com" target=3D"_blank">vac=
-ha.bhavsar@oss.qualcomm.com</a>&gt; wrote:<br>
-<br>
-&gt; &gt;So the only difference between these two branches is that we are<b=
-r>
-&gt; &gt;checking &quot;int(v) =3D=3D MAGIC&quot; rather than &quot;v =3D=
-=3D MAGIC&quot; ?<br>
-&gt;<br>
-&gt;<br>
-&gt;<br>
-&gt; &gt;Is this a &quot;one GDB only works one way, and the other GDB only=
-<br>
-&gt; &gt;works the other way&quot; case? Or is there a real interesting thi=
-ng<br>
-&gt; &gt;we&#39;d like to test involving the cast ?<br>
-<br>
-&gt; Yes, the only difference between the two branches is the presence<br>
-&gt; of the int cast. This seems to be an issue limited to specific version=
-s<br>
-&gt;<br>
-&gt; of gdb. This has been discussed with the gdb team<br>
-&gt; (<a href=3D"https://sourceware.org/pipermail/gdb/2025-August/051868.ht=
-ml" rel=3D"noreferrer" target=3D"_blank">https://sourceware.org/pipermail/g=
-db/2025-August/051868.html</a>,<br>
-&gt; <a href=3D"https://sourceware.org/pipermail/gdb/2025-August/051878.htm=
-l" rel=3D"noreferrer" target=3D"_blank">https://sourceware.org/pipermail/gd=
-b/2025-August/051878.html</a>) and<br>
-&gt; a bug has been filed. With additional tests I have found that the<br>
-&gt; int cast causes no issues with the testcase when running gdb16.1<br>
-&gt; or newer. Other than this issue there is no intention on our end<br>
-&gt; of testing anything interesting regarding casting as the int cast<br>
-&gt; was included to stay aligned with the existing SVE test.<br>
-<br>
-So if we can test QEMU&#39;s gdbstub functionality by writing<br>
-the test in a way that avoids the int cast and which doesn&#39;t<br>
-lose coverage, we should just do that. That would mean<br>
-we don&#39;t need to have checks for whether the gdb can do<br>
-the cast and multiple paths through the test code.<br>
-<br>
--- PMM<br>
-</blockquote></div>
-
---000000000000e12baf063e608d2a--
 

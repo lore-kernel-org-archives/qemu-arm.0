@@ -4,82 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94D42CAC587
-	for <qemu-arm@archiver.kernel.org>; Thu, 11 Sep 2025 13:14:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B973CAC587
+	for <qemu-arm@archiver.kernel.org>; Thu, 11 Sep 2025 13:44:01 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uwh78-0001Ww-Mq; Thu, 11 Sep 2025 09:13:26 -0400
+	id 1uwhaU-0003YR-Ol; Thu, 11 Sep 2025 09:43:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uwh76-0001VN-Uj
- for qemu-arm@nongnu.org; Thu, 11 Sep 2025 09:13:25 -0400
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uwh6w-0007XE-R1
- for qemu-arm@nongnu.org; Thu, 11 Sep 2025 09:13:24 -0400
-Received: by mail-ed1-x52c.google.com with SMTP id
- 4fb4d7f45d1cf-62733e779bbso1045503a12.1
- for <qemu-arm@nongnu.org>; Thu, 11 Sep 2025 06:13:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1757596390; x=1758201190; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=BLArwD4h0WuYLDjVYgR3IWlbms1EKzAZ7hWpKqNofrY=;
- b=na/pRSC1/AF71OiBZTny6YWoYoY6PIyUaOVZy17A3MoUtzrLC3+J0fXlS0oWiOIr0x
- yv20J8qk0md1eH7ve592gxQapK1MsKqta6FpU+9+HI0E8LTqGh91kJMMQnIGsREpv4hi
- A/5ovLjKZGNs1b+CMHDIXxFlUOqvkZX4xmNkphqrzs20dKRtER+KLWK+1sPLWjKrJdPS
- W2Sup9Z03dsKOwuQegS/FIGTngXS/n9RxLLB89fzL507n4qIbcS+vobCE/Rq2+Ml+vU0
- kv/hfds6ARfVgSh6oRpz8JUAwtIini1j+CKwHW8wZk5JjgrDEOC13Zd0gAkqeyWiSJqR
- 4LeQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1757596390; x=1758201190;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=BLArwD4h0WuYLDjVYgR3IWlbms1EKzAZ7hWpKqNofrY=;
- b=mPVlVbNGz4zI3IxQ3IdWU+MAbotRnXdATXvru6hSxSqAD9hsa9NTH5kMMy8OguYey3
- FCe8lOklP1gCID5gill3VF1ykX6zKDFyG7ZcKpW82JS3Wi++Ugdwp8pvzMUNdGaFCirZ
- g/qB1qoiExKjfmoQAdl1WECivBUyE45fsBcwGPg1i5RAlvvXi48EQpwGCoeiLxhFxDV7
- SeT7GtgC863WT7/uaRuoIZrKVstslpyFUYh5qijJqXvDwPL40IflvjBTZwqLKusHKKgg
- mDlxjOoQ+WeToNzheIsk0Ek5yqieuIjY0bnDBqBZbXab4+9sK3HsE3oZlaI6aY8UjTj/
- 6b0A==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWTDt3Vft9RXgwQlFbTAWrvbEiaSLadZGfzxuw/VDaZ8K7mSSu5lrqKRyCG/o2tEhpDatlbhh0DDQ==@nongnu.org
-X-Gm-Message-State: AOJu0YzTHN2WkoT/0LpuV5q0ZvalC6Kl77LIH6jc6JI2IyRXdS90Dy4k
- Feith8um6HCBQ6h8ltwrKzBaZYAttTd7Zhy3QNO1l+HWq+r2xWCmbwYe7A6UuCrkDfyatQiNaET
- kfNO6T5znZn/zLkES2fllADzhn9dpjwSGfQFORHPvDw==
-X-Gm-Gg: ASbGncvfQDWFDrtWwmSR2Wc2P3n+wkPrzT0qryLM9kv8J4/T584TPwzvlWmqQoFWk8V
- XFC7W35LQKj82oVtHmfYK2rBGaDquBo+yjYn5sH9X9/2V6wkagp7HbE6wkU45z+3iQ6D7+iP1iY
- M3qlC2nMCz+OlumVFw74XuX3KRLDChxyag1nh7CkpM4Oww1FgmVeAmZK590OqTlDtnddPGwxm7F
- zq9TvrLfTxP+cuqUeU=
-X-Google-Smtp-Source: AGHT+IF1Do3jJJouUJIYYM5Oe7bMecITwlXX7e9Z49dzvjsXu2b7hjeaXyKSNiI25DkAz8KnlclYlmcM9ZOVih/biQ8=
-X-Received: by 2002:a05:6402:254d:b0:628:20b9:2621 with SMTP id
- 4fb4d7f45d1cf-62820b928bdmr14561690a12.2.1757596390349; Thu, 11 Sep 2025
- 06:13:10 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1uwhaQ-0003Ws-LT
+ for qemu-arm@nongnu.org; Thu, 11 Sep 2025 09:43:43 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1uwhaO-0003Ug-Fy
+ for qemu-arm@nongnu.org; Thu, 11 Sep 2025 09:43:42 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1757598218;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=iviKTt71GeDu26VB8xvgYFeM9uPkPcbx/4JJ1V4r3LQ=;
+ b=H3rTxu7ChkbzVYGh9OnqBbjsQdleL3JBcO7uGX8lCBDe2JJZNHS6hbiapuWQQjxICcUrhW
+ TW0Zmj5JRkYebqkoJU1IlU4uZDuMtbC6ay0C2J9HKoYjiwh6ojL3nVzrDMz+/2AKm3IOMm
+ wJXxPrfLmhTNrPAGuN/VyMd4LF3K9XY=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-584-zEGfQXiUOoiQfrrQKOI3VQ-1; Thu,
+ 11 Sep 2025 09:43:34 -0400
+X-MC-Unique: zEGfQXiUOoiQfrrQKOI3VQ-1
+X-Mimecast-MFC-AGG-ID: zEGfQXiUOoiQfrrQKOI3VQ_1757598212
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 8C2DA18002C1; Thu, 11 Sep 2025 13:43:31 +0000 (UTC)
+Received: from laptop.redhat.com (unknown [10.45.224.190])
+ by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 607AD1944CCA; Thu, 11 Sep 2025 13:43:27 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, peter.maydell@linaro.org, cohuck@redhat.com,
+ maz@kernel.org, oliver.upton@linux.dev, sebott@redhat.com, gshan@redhat.com
+Subject: [RFC 0/3] Mitigation of migration failures accross different host
+ kernels
+Date: Thu, 11 Sep 2025 15:40:26 +0200
+Message-ID: <20250911134324.3702720-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-References: <20250909123747.567480-1-thuth@redhat.com>
-In-Reply-To: <20250909123747.567480-1-thuth@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 11 Sep 2025 14:12:54 +0100
-X-Gm-Features: AS18NWDgOwpwP8VpUus8K1NUd1-geWRZuvI1MgI47EqU8IPPNQcD1WfFs7OPkfQ
-Message-ID: <CAFEAcA9h4HDAsSBUQq+3MCOcjyHJxjgyz6pz6GfzuboZ69=Rjw@mail.gmail.com>
-Subject: Re: [PATCH] tests/functional/aarch64: Fix assets of test_hotplug_pci
-To: Thomas Huth <thuth@redhat.com>
-Cc: Gustavo Romero <gustavo.romero@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52c;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52c.google.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -95,19 +83,49 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, 9 Sept 2025 at 13:38, Thomas Huth <thuth@redhat.com> wrote:
->
-> From: Thomas Huth <thuth@redhat.com>
->
-> The old bookworm URLs don't work anymore, resulting in a 404 error
-> now. Let's update the test to Debian Trixie to get it going again.
->
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->  tests/functional/aarch64/test_hotplug_pci.py | 12 ++++++------
->  1 file changed, 6 insertions(+), 6 deletions(-)
+When migrating ARM guests accross same machines with different host
+kernels we are likely to encounter failures such as:
 
-Applied to master to avoid the CI failures; thanks.
+"failed to load cpu:cpreg_vmstate_array_len"
 
--- PMM
+This is due to the fact KVM exposes a different number of registers
+to qemu on source and destination. When trying to migrate a bigger
+register set to a smaller one, qemu cannot save the CPU state.
+
+For example, recently we faced such kind of situations with:
+- unconditionnal exposure of KVM_REG_ARM_VENDOR_HYP_BMAP_2 FW pseudo
+  register from v6.16 onwards. Causes backward migration failure.
+- removal of unconditionnal exposure of TCR2_EL1, PIRE0_EL1,  PIR_EL1
+  from v6.13 onwards. Causes forward migration failure.
+
+More details can be found in individual patches.
+
+This situation is really problematic for distributions which want to
+guarantee forward and backward migration of a given machine type
+between different releases.
+
+This small series tries to address that issue by introducing CPU
+array properties that list the registers to ignore or to fake according
+to the situation. An example is given to illustrate how those props
+could be used to apply compats for machine types supposed to "see" the
+same register set accross various host kernels.
+
+Obviously this is a last resort situation and this situation should be
+avoided as much as possible.
+
+Eric Auger (3):
+  target/arm/cpu: Add new CPU property for KVM regs to hide
+  target/arm/kvm: Add new CPU property for KVM regs to enforce
+  hw/arm/virt: [DO NOT UPSTREAM] Enforce compatibility with older
+    kernels
+
+ target/arm/cpu.h        | 15 +++++++
+ hw/arm/virt.c           | 19 ++++++++
+ target/arm/kvm.c        | 99 +++++++++++++++++++++++++++++++++++++++--
+ target/arm/trace-events |  6 +++
+ 4 files changed, 135 insertions(+), 4 deletions(-)
+
+-- 
+2.49.0
+
 

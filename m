@@ -4,88 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6F95CAC587
-	for <qemu-arm@archiver.kernel.org>; Thu, 11 Sep 2025 14:32:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B77D7CAC58E
+	for <qemu-arm@archiver.kernel.org>; Thu, 11 Sep 2025 14:47:10 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uwiLJ-0003ok-1h; Thu, 11 Sep 2025 10:32:09 -0400
+	id 1uwiZQ-0000Oo-QF; Thu, 11 Sep 2025 10:46:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uwiLH-0003nz-8C
- for qemu-arm@nongnu.org; Thu, 11 Sep 2025 10:32:07 -0400
-Received: from mail-yb1-xb35.google.com ([2607:f8b0:4864:20::b35])
+ id 1uwiZ7-0000LV-Li
+ for qemu-arm@nongnu.org; Thu, 11 Sep 2025 10:46:26 -0400
+Received: from mail-yw1-x1131.google.com ([2607:f8b0:4864:20::1131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uwiLF-0002Kg-4E
- for qemu-arm@nongnu.org; Thu, 11 Sep 2025 10:32:06 -0400
-Received: by mail-yb1-xb35.google.com with SMTP id
- 3f1490d57ef6-e96e5535fcdso1824975276.1
- for <qemu-arm@nongnu.org>; Thu, 11 Sep 2025 07:32:04 -0700 (PDT)
+ id 1uwiZ5-0003xa-Hk
+ for qemu-arm@nongnu.org; Thu, 11 Sep 2025 10:46:24 -0400
+Received: by mail-yw1-x1131.google.com with SMTP id
+ 00721157ae682-72c3b247827so6746157b3.1
+ for <qemu-arm@nongnu.org>; Thu, 11 Sep 2025 07:46:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1757601123; x=1758205923; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=3avX0MJx7z7ou5iJA8DuZIGcQo8FIUExV5H2IAivXQM=;
- b=yPDh6ShsGO4UdkVpGSvccunYtdauqdYYDUcbb5hvWwwbL4z6l9msN+GFk+5xfhCyMf
- u3niURFOcNSX6YoIO28xJTYBH/HQ95WXVio4hBsz0USJGN75LpA9TC347HTidM/I7tPC
- k2FAqW47KRz3PHmtxOPt3xTxiGq5WAx2M3x8tktMMXTAnbmMpX0I16hHxE6oLxTf6mqy
- VBIn0lAu++PL5ux5QVOS98ZYochWzXLP5gwrrhjST3rmo9ASUogU5Rj173aMdvEedNSc
- DXM0pvi9GQd49UZMi0AOoeEQd/JB/JV3PYOWymHl9ggl2RoYyv7zxZptJ0loV232fPfW
- PxbQ==
+ d=linaro.org; s=google; t=1757601981; x=1758206781; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=FcTsT/2FVI7V/KcYWRv9dX9PSVwqf/a/qxlTK88yXXY=;
+ b=ye5M4tvp6GUKOCbvLrO1mX+YRwqHOX0eKO1mMDF/SN4q8510LOy582hZ75qMe5rQfg
+ luh2sh+mok9j0Mpe+Y0q/+3/1/4iQRI8sQUSPwqYQ3WoWNJGbACHcA3+qarBdR7jOFqH
+ 2v86h+xyFFbEpfh3eXr6v94Pq2igupmeWDKx+jvoXHcdbEaU4Ccd41ACQSv2JN/DGJWy
+ IoFHhdbpR2QhJyicpLgg/c2sBDd5egK/WiqGzAbXIlRxITy9tzDZadRIQGD8+EsQhLtS
+ 1bMVkiEZ/btrrwWD9YIaPSqUTtC4mjaxWEEweGHs5cZsrw67RUdggBsCiWlIqTPv9i29
+ zzOQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1757601123; x=1758205923;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=3avX0MJx7z7ou5iJA8DuZIGcQo8FIUExV5H2IAivXQM=;
- b=a5N5N1R03RRTw6EE6IKbf4V8NnrhCDYJNAFvd0a5RSN39eqvYsbXYk7vQF1UoOiYDP
- fRoqdQkZiCWUvh5lVzmy/OjOWeN0GJ/lSl4njDpkCUZS6jMH1dzPk69qCiGPTxyul1Ir
- JdVmmQFNiDlbZwHvttHqhg3poLfWOQnum4P6caXbPp3M8U7OlGnveqBdQzKVPA4OIAN6
- p5U13bV9NdkPDjDKfdshujCvUnaj8PbVafkdXOcfr/ccNp/yxNblRbqaBYDcutKHUfFr
- 07frJzAuyS2Yr2Odk93Arc0iylEYRQjlww5bSz/TEC9MeIabJ+wrjsvCnk6OT/iwadVx
- P2dQ==
+ d=1e100.net; s=20230601; t=1757601981; x=1758206781;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=FcTsT/2FVI7V/KcYWRv9dX9PSVwqf/a/qxlTK88yXXY=;
+ b=v9NijNfUIJ/MBLjYF1O1b6TnMM4/6k/DZ/lpj8IDy3yNYCskZRaW2KKxCP7HVbeBR5
+ 8EE6AG8+eEg9vJk1evjxpOKf8+4ere2SvQnF4hMiIHTCv/DUF4zxUiD+Py/3VByI9TW3
+ 3MmKApLgD9U9/F+sPICYfN2r+zuWuFTO29q1375RGSzxxTjWbfUREE1HHZ7lkIBLT9Tg
+ k37CtoVvSAULcFs1z9m5Rh0v66tWeOa7tobhTo1Xv4n8p0UfT7Y539yyBg2jQteSfSOH
+ I0GFnY40uv48kZg/sVKJAb+gSMqq4XuWwPFbhL/5Bo3pZCZhYdTphuZNxEqWU8Zm+sDR
+ bm4w==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVCrfiOghT8/uXoOYLawagTIPaNMUfZ92LQ6G7tWgcqkbE/QXfmgb7FRhe6AfFc+dmHRi29YxTVrw==@nongnu.org
-X-Gm-Message-State: AOJu0Yyy6XbR6uJyceUNGbZ/MXUuUf1mdMVSlUeDSzCDgyPGWLny5OK1
- QR1+i8PjEr480b3nrQ7QRfKg4Ro001vASeTDSd/Ps5mPjP1txoY5SOLmozztwYUFh8SfYXbR165
- BeF+clRbwZUPTgg4LwLXBCaWdjpNR4FqMRBdovfFb9A==
-X-Gm-Gg: ASbGnctJdBieGWfwmLX74Hnf3HBqtVZ3HTDHMmh22ubfUvgyXISj6a0qIdraXSHiF3I
- 7Hk181dOfi2DUMz135WqmbvTIm+Zg98q0NAVOW8ERpfT1l4OqkHArCEVn0nCrlCU4Rxahahzwf7
- DMPqAv8Ff7fWB8OdrMIdgNIce763amfRUiJNCwZNMhpym2WodJzO4z95z+a49p+XmQpXto0Nzqw
- +j7lHhP
-X-Google-Smtp-Source: AGHT+IEQyUF2uAO/Dr3GK+/8Yh1FkCBEqxkbFKdhvIn9JJK1BNBdmp5GTS8xK/Ajst3mT6d6OfL+Zito7A1qMjyCNDs=
-X-Received: by 2002:a05:690c:8d17:b0:71e:7a40:7efb with SMTP id
- 00721157ae682-72eeb9d1c8cmr29254277b3.11.1757601123187; Thu, 11 Sep 2025
- 07:32:03 -0700 (PDT)
+ AJvYcCXnfobFUYvuwRJJL35ORBnJ14qUR9sRgy/bZi9dDR387l5RagXMhECdxYhYyIWX1rEDr8Q769w/Uw==@nongnu.org
+X-Gm-Message-State: AOJu0YyajKx/D5kI7uzcoT4yCjOaeJEyVRUyCyphgdZ3X/RqMFOF0X+k
+ sa4FFLrAdkJBgu6aM9qHH29JXlX5FzdHKWKW1uJq8wCDQgM9SyMw9ch3iui9jvURORrKfvP+5Lr
+ 8HkEQc8tyWCHeXKqo2QgtflAamhjKsrtNmNG8EKfeSw==
+X-Gm-Gg: ASbGncsQ8j5r8GKHDE/Vv2iC9OiyqnYHbiPGG1I3h5mAqFZGX2xgutXC67OntcXg6Fk
+ DH1VSvGOADgCr5NfDvUjHpLhbs73Pqp+7QMZYZKuFPbMBcsnJ/KagkOoXyDisR9LxEGNoH1gQ0g
+ i644klOhOBtbUu8BVN6nkijtv9uyk4i3CotqQBYBdMOwzyuF4NbI2ivSu2CX6huN159Gr5MM3Gt
+ pjIUCXcqQCSTKXpHiqGL8UXCngx/g==
+X-Google-Smtp-Source: AGHT+IFyDu42MC95CranUfROhX4o6o38lUqWwTiV5HMA7Ensn9+sjwdyk24ICRGEN/HcoP4ptGH92y6EvT+TKTCCxg8=
+X-Received: by 2002:a05:690c:a010:b0:729:f78b:420c with SMTP id
+ 00721157ae682-729f78b9be5mr122562777b3.24.1757601981232; Thu, 11 Sep 2025
+ 07:46:21 -0700 (PDT)
 MIME-Version: 1.0
-References: <20250822151614.187856-1-luc.michel@amd.com>
- <20250822151614.187856-40-luc.michel@amd.com>
-In-Reply-To: <20250822151614.187856-40-luc.michel@amd.com>
+References: <20250903100702.16726-1-philmd@linaro.org>
+ <20250903100702.16726-24-philmd@linaro.org>
+In-Reply-To: <20250903100702.16726-24-philmd@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 11 Sep 2025 15:31:51 +0100
-X-Gm-Features: Ac12FXwU5pA47bV4PZ29Vo3Sh2Y6L9SKmyzInNKFfKlbGlg_Wess6EL5BefVsm8
-Message-ID: <CAFEAcA-wnyWketgmq-gQYfgxMkDq16VDNZQCvM3uA1OE__=PAA@mail.gmail.com>
-Subject: Re: [PATCH v4 39/47] target/arm/tcg/cpu64: add the cortex-a78ae CPU
-To: Luc Michel <luc.michel@amd.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
- Francisco Iglesias <francisco.iglesias@amd.com>,
- "Edgar E . Iglesias" <edgar.iglesias@amd.com>, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- Alistair Francis <alistair@alistair23.me>,
- Frederic Konrad <frederic.konrad@amd.com>, 
- Sai Pavan Boddu <sai.pavan.boddu@amd.com>
+Date: Thu, 11 Sep 2025 15:46:09 +0100
+X-Gm-Features: Ac12FXwzErRf24MAYGbl-qZ8jiJRTUumVQFc9x037jHRbDc1gkrkzef5d4PTXms
+Message-ID: <CAFEAcA8Bf90DJ44gdDWaBzc+FdbSY1Nn7Z0VJeWVpt3HMG__8A@mail.gmail.com>
+Subject: Re: [PATCH 23/24] target/arm: Rename init_cpreg_list() ->
+ arm_init_cpreg_list()
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, Alexander Graf <agraf@csgraf.de>, 
+ Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org, 
+ Mohamed Mediouni <mohamed@unpredictable.fr>, Mads Ynddal <mads@ynddal.dk>, 
+ Phil Dennis-Jordan <phil@philjordan.eu>, Stefan Hajnoczi <stefanha@redhat.com>,
+ Cameron Esfahani <dirty@apple.com>, Roman Bolshakov <rbolshakov@ddn.com>, 
+ Paolo Bonzini <pbonzini@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b35;
- envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb35.google.com
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1131;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1131.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -101,127 +103,14 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, 22 Aug 2025 at 16:17, Luc Michel <luc.michel@amd.com> wrote:
+On Wed, 3 Sept 2025 at 11:10, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.or=
+g> wrote:
 >
-> Add support for the ARM Cortex-A78AE CPU.
+> Prefix init_cpreg_list() with 'arm_'.
 >
-> Signed-off-by: Luc Michel <luc.michel@amd.com>
-> ---
->  target/arm/tcg/cpu64.c | 79 ++++++++++++++++++++++++++++++++++++++++++
->  1 file changed, 79 insertions(+)
->
-> diff --git a/target/arm/tcg/cpu64.c b/target/arm/tcg/cpu64.c
-> index 35cddbafa4c..b56677c1a5d 100644
-> --- a/target/arm/tcg/cpu64.c
-> +++ b/target/arm/tcg/cpu64.c
-> @@ -404,10 +404,84 @@ static void aarch64_a76_initfn(Object *obj)
->
->      /* From D5.1 AArch64 PMU register summary */
->      cpu->isar.reset_pmcr_el0 = 0x410b3000;
->  }
->
-> +static void aarch64_a78ae_initfn(Object *obj)
-> +{
-> +    ARMCPU *cpu = ARM_CPU(obj);
-> +    ARMISARegisters *isar = &cpu->isar;
-> +
-> +    cpu->dtb_compatible = "arm,cortex-a78ae";
-> +    set_feature(&cpu->env, ARM_FEATURE_V8);
-> +    set_feature(&cpu->env, ARM_FEATURE_NEON);
-> +    set_feature(&cpu->env, ARM_FEATURE_GENERIC_TIMER);
-> +    set_feature(&cpu->env, ARM_FEATURE_BACKCOMPAT_CNTFRQ);
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
 
-From cpu.h:
-
-    /*
-     * ARM_FEATURE_BACKCOMPAT_CNTFRQ makes the CPU default cntfrq be 62.5MHz
-     * if the board doesn't set a value, instead of 1GHz. It is for backwards
-     * compatibility and used only with CPU definitions that were already
-     * in QEMU before we changed the default. It should not be set on any
-     * CPU types added in future.
-     */
-
-This is a new CPU type, so don't set this.
-
-> +    set_feature(&cpu->env, ARM_FEATURE_AARCH64);
-> +    set_feature(&cpu->env, ARM_FEATURE_CBAR_RO);
-
-The TRM says this CPU doesn't have a CBAR register, so
-don't set this.
-
-> +    set_feature(&cpu->env, ARM_FEATURE_EL2);
-> +    set_feature(&cpu->env, ARM_FEATURE_EL3);
-> +    set_feature(&cpu->env, ARM_FEATURE_PMU);
-> +
-> +    /* Ordered by B2.4 AArch64 registers by functional group */
-
-There is no B2.4 in the Cortex-A78AE TRM. Please don't
-just cut-and-paste things from other CPU definitions.
-Similarly for other comments here referencing TRM sections.
-
-In this case what you want is section 3.2.4.
-
-> +    SET_IDREG(isar, CLIDR, 0x82000023);
-> +    cpu->ctr = 0x9444c004;
-> +    cpu->dcz_blocksize = 4;
-> +    SET_IDREG(isar, ID_AA64DFR0, 0x0000000110305408ull);
-> +    SET_IDREG(isar, ID_AA64ISAR0, 0x0010100010211120ull);
-> +    SET_IDREG(isar, ID_AA64ISAR1, 0x0000000001200031ull);
-> +    SET_IDREG(isar, ID_AA64MMFR0, 0x0000000000101125ull);
-> +    SET_IDREG(isar, ID_AA64MMFR1, 0x0000000010212122ull);
-> +    SET_IDREG(isar, ID_AA64MMFR2, 0x0000000100001011ull);
-> +    SET_IDREG(isar, ID_AA64PFR0, 0x1100000010111112ull); /* GIC filled in later */
-> +    SET_IDREG(isar, ID_AA64PFR1, 0x0000000000000010ull);
-> +    SET_IDREG(isar, ID_AFR0, 0x00000000);
-> +    SET_IDREG(isar, ID_DFR0, 0x04010088);
-> +    SET_IDREG(isar, ID_ISAR0, 0x02101110);
-> +    SET_IDREG(isar, ID_ISAR1, 0x13112111);
-> +    SET_IDREG(isar, ID_ISAR2, 0x21232042);
-> +    SET_IDREG(isar, ID_ISAR3, 0x01112131);
-> +    SET_IDREG(isar, ID_ISAR4, 0x00010142);
-> +    SET_IDREG(isar, ID_ISAR5, 0x01011121);
-> +    SET_IDREG(isar, ID_ISAR6, 0x00000010);
-> +    SET_IDREG(isar, ID_MMFR0, 0x10201105);
-> +    SET_IDREG(isar, ID_MMFR1, 0x40000000);
-> +    SET_IDREG(isar, ID_MMFR2, 0x01260000);
-> +    SET_IDREG(isar, ID_MMFR3, 0x02122211);
-> +    SET_IDREG(isar, ID_MMFR4, 0x00021110);
-> +    SET_IDREG(isar, ID_PFR0, 0x10010131);
-> +    SET_IDREG(isar, ID_PFR1, 0x00010000); /* GIC filled in later */
-> +    SET_IDREG(isar, ID_PFR2, 0x00000011);
-> +    cpu->midr = 0x410fd421;          /* r0p1 */
-
-r0p3 is the latest...
-
-> +    cpu->revidr = 0;
-> +
-> +    /* From B2.18 CCSIDR_EL1 */
-> +    /* 64KB L1 dcache */
-> +    cpu->ccsidr[0] = make_ccsidr(CCSIDR_FORMAT_LEGACY, 4, 64, 64 * KiB, 7);
-> +    /* 64KB L1 icache */
-> +    cpu->ccsidr[1] = make_ccsidr(CCSIDR_FORMAT_LEGACY, 4, 64, 64 * KiB, 2);
-> +    /* 512KB L2 cache */
-> +    cpu->ccsidr[2] = make_ccsidr(CCSIDR_FORMAT_LEGACY, 8, 64, 512 * KiB, 7);
-> +
-> +    /* From B2.93 SCTLR_EL3 */
-> +    cpu->reset_sctlr = 0x30c50838;
-> +
-> +    /* From B4.23 ICH_VTR_EL2 */
-> +    cpu->gic_num_lrs = 4;
-> +    cpu->gic_vpribits = 5;
-> +    cpu->gic_vprebits = 5;
-> +    cpu->gic_pribits = 5;
-> +
-> +    /* From B5.1 AdvSIMD AArch64 register summary */
-> +    cpu->isar.mvfr0 = 0x10110222;
-> +    cpu->isar.mvfr1 = 0x13211111;
-> +    cpu->isar.mvfr2 = 0x00000043;
-> +
-> +    /* From D5.1 AArch64 PMU register summary */
-> +    cpu->isar.reset_pmcr_el0 = 0x41223000;
-> +}
-
-The register values look OK; checked against the TRM.
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 thanks
 -- PMM

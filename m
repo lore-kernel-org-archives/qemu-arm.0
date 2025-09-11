@@ -4,90 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B77D7CAC58E
-	for <qemu-arm@archiver.kernel.org>; Thu, 11 Sep 2025 14:47:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88172CAC587
+	for <qemu-arm@archiver.kernel.org>; Thu, 11 Sep 2025 14:49:57 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uwiZQ-0000Oo-QF; Thu, 11 Sep 2025 10:46:44 -0400
+	id 1uwicH-0001Be-M1; Thu, 11 Sep 2025 10:49:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uwiZ7-0000LV-Li
- for qemu-arm@nongnu.org; Thu, 11 Sep 2025 10:46:26 -0400
-Received: from mail-yw1-x1131.google.com ([2607:f8b0:4864:20::1131])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uwiZ5-0003xa-Hk
- for qemu-arm@nongnu.org; Thu, 11 Sep 2025 10:46:24 -0400
-Received: by mail-yw1-x1131.google.com with SMTP id
- 00721157ae682-72c3b247827so6746157b3.1
- for <qemu-arm@nongnu.org>; Thu, 11 Sep 2025 07:46:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1757601981; x=1758206781; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=FcTsT/2FVI7V/KcYWRv9dX9PSVwqf/a/qxlTK88yXXY=;
- b=ye5M4tvp6GUKOCbvLrO1mX+YRwqHOX0eKO1mMDF/SN4q8510LOy582hZ75qMe5rQfg
- luh2sh+mok9j0Mpe+Y0q/+3/1/4iQRI8sQUSPwqYQ3WoWNJGbACHcA3+qarBdR7jOFqH
- 2v86h+xyFFbEpfh3eXr6v94Pq2igupmeWDKx+jvoXHcdbEaU4Ccd41ACQSv2JN/DGJWy
- IoFHhdbpR2QhJyicpLgg/c2sBDd5egK/WiqGzAbXIlRxITy9tzDZadRIQGD8+EsQhLtS
- 1bMVkiEZ/btrrwWD9YIaPSqUTtC4mjaxWEEweGHs5cZsrw67RUdggBsCiWlIqTPv9i29
- zzOQ==
+ (Exim 4.90_1) (envelope-from <sebott@redhat.com>) id 1uwicE-0001Ai-Ir
+ for qemu-arm@nongnu.org; Thu, 11 Sep 2025 10:49:39 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <sebott@redhat.com>) id 1uwicC-0004IB-Dd
+ for qemu-arm@nongnu.org; Thu, 11 Sep 2025 10:49:37 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1757602173;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=oF2cIsPBN8qXmdEgTfizvTF3d/SEeert5/n3uAYGGo4=;
+ b=S/2JWdguywpsfghbKEABwRfLeZm+i8EoZ4dG7tj0GV3rVXSm88oUUEk/t5l3xmwynU2OxY
+ XSivKXUz0DaxnRbqt7jntZ1AQgoyunUpv0yaEeXCqrLGBjNAxIICzhYn4dpUwzbBQjrJ5U
+ 4LmjWu+I2Fi2RplZXa8Ep0GUmijXeuc=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-669-_OvRErj0OVq79tB2qc37nw-1; Thu, 11 Sep 2025 10:49:31 -0400
+X-MC-Unique: _OvRErj0OVq79tB2qc37nw-1
+X-Mimecast-MFC-AGG-ID: _OvRErj0OVq79tB2qc37nw_1757602170
+Received: by mail-wm1-f69.google.com with SMTP id
+ 5b1f17b1804b1-45decfa5b26so5826525e9.3
+ for <qemu-arm@nongnu.org>; Thu, 11 Sep 2025 07:49:31 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1757601981; x=1758206781;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=FcTsT/2FVI7V/KcYWRv9dX9PSVwqf/a/qxlTK88yXXY=;
- b=v9NijNfUIJ/MBLjYF1O1b6TnMM4/6k/DZ/lpj8IDy3yNYCskZRaW2KKxCP7HVbeBR5
- 8EE6AG8+eEg9vJk1evjxpOKf8+4ere2SvQnF4hMiIHTCv/DUF4zxUiD+Py/3VByI9TW3
- 3MmKApLgD9U9/F+sPICYfN2r+zuWuFTO29q1375RGSzxxTjWbfUREE1HHZ7lkIBLT9Tg
- k37CtoVvSAULcFs1z9m5Rh0v66tWeOa7tobhTo1Xv4n8p0UfT7Y539yyBg2jQteSfSOH
- I0GFnY40uv48kZg/sVKJAb+gSMqq4XuWwPFbhL/5Bo3pZCZhYdTphuZNxEqWU8Zm+sDR
- bm4w==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXnfobFUYvuwRJJL35ORBnJ14qUR9sRgy/bZi9dDR387l5RagXMhECdxYhYyIWX1rEDr8Q769w/Uw==@nongnu.org
-X-Gm-Message-State: AOJu0YyajKx/D5kI7uzcoT4yCjOaeJEyVRUyCyphgdZ3X/RqMFOF0X+k
- sa4FFLrAdkJBgu6aM9qHH29JXlX5FzdHKWKW1uJq8wCDQgM9SyMw9ch3iui9jvURORrKfvP+5Lr
- 8HkEQc8tyWCHeXKqo2QgtflAamhjKsrtNmNG8EKfeSw==
-X-Gm-Gg: ASbGncsQ8j5r8GKHDE/Vv2iC9OiyqnYHbiPGG1I3h5mAqFZGX2xgutXC67OntcXg6Fk
- DH1VSvGOADgCr5NfDvUjHpLhbs73Pqp+7QMZYZKuFPbMBcsnJ/KagkOoXyDisR9LxEGNoH1gQ0g
- i644klOhOBtbUu8BVN6nkijtv9uyk4i3CotqQBYBdMOwzyuF4NbI2ivSu2CX6huN159Gr5MM3Gt
- pjIUCXcqQCSTKXpHiqGL8UXCngx/g==
-X-Google-Smtp-Source: AGHT+IFyDu42MC95CranUfROhX4o6o38lUqWwTiV5HMA7Ensn9+sjwdyk24ICRGEN/HcoP4ptGH92y6EvT+TKTCCxg8=
-X-Received: by 2002:a05:690c:a010:b0:729:f78b:420c with SMTP id
- 00721157ae682-729f78b9be5mr122562777b3.24.1757601981232; Thu, 11 Sep 2025
- 07:46:21 -0700 (PDT)
-MIME-Version: 1.0
-References: <20250903100702.16726-1-philmd@linaro.org>
- <20250903100702.16726-24-philmd@linaro.org>
-In-Reply-To: <20250903100702.16726-24-philmd@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 11 Sep 2025 15:46:09 +0100
-X-Gm-Features: Ac12FXwzErRf24MAYGbl-qZ8jiJRTUumVQFc9x037jHRbDc1gkrkzef5d4PTXms
-Message-ID: <CAFEAcA8Bf90DJ44gdDWaBzc+FdbSY1Nn7Z0VJeWVpt3HMG__8A@mail.gmail.com>
-Subject: Re: [PATCH 23/24] target/arm: Rename init_cpreg_list() ->
- arm_init_cpreg_list()
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, Alexander Graf <agraf@csgraf.de>, 
- Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org, 
- Mohamed Mediouni <mohamed@unpredictable.fr>, Mads Ynddal <mads@ynddal.dk>, 
- Phil Dennis-Jordan <phil@philjordan.eu>, Stefan Hajnoczi <stefanha@redhat.com>,
- Cameron Esfahani <dirty@apple.com>, Roman Bolshakov <rbolshakov@ddn.com>, 
+ d=1e100.net; s=20230601; t=1757602170; x=1758206970;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=oF2cIsPBN8qXmdEgTfizvTF3d/SEeert5/n3uAYGGo4=;
+ b=ryVwoyuTtxwlm0MPRcv3v0Ui22sMudBHKpulFJNN7WRhKMh4b1kQG+DOrBZk5xczaa
+ bkcIRx90FarfClDZjOSkjRHVt9WdTBOZezDkNajchb5cji9djvC6VoYCbxA1L7J5IIuH
+ WLmNVxqpc8JyX7+/5/X/rlRfLJw60WiOkLw6hE2gvETaiFiU66UFjt3dXOWPGUZuChgk
+ VgnN4LLUSkVYxg4dRM74DWx9Mhz5wsWsHrb9ZBUODdLo4+yTcxuC+9uazmhuTGdkc4RH
+ 6r740J1ZzXT9xJQR9T/MjC2UPy34udGaPFyQva8cpc6KWAd2VB/9BrLJ50TBCex3yUYV
+ BQHA==
+X-Gm-Message-State: AOJu0YzVx+SNd8Uebd/EN/+E/7erilBhKALnG8H8fmC6b0NbV+w6saL4
+ q/03pBgsRaUj+NWrrzSArtdTmWJLZW+eBDtLhxL9ywH99lQrrtt0/rvHlovGwICWa4ztikkmZio
+ 4YhachXsuwayCaRNKXIvJediuIb6u/7kXLjopFpcgpTLhB4KM/7oMLA==
+X-Gm-Gg: ASbGncuTlA4B9yxOw2KEJNloHIal3LtnKo5e4FEcNkuXUzM1Qz8swt7htFtcKTL5m1J
+ z4g/7BNPF8o7z9bSk98R0YigoMf5+STwwwmQ9N8GRCO4zAmz+ht+QiDIk2pXiRtwE96+yv5Is1o
+ Lb/AFlx5a3t3hjrFHO1pX9YzJOEQLOFtuhiEnw1GBZex8kUe3iZp1vAsq3OaDZYeub8vzjtym/D
+ kcTJYe6bjy/Zc30f/ZLVwlC0i3vLEOA25LDLR/IRKAhELVhd9BdV0XI3r5HRdfgTjqrk/fME1g9
+ ZxQ5CeRI4vXf96y+6NMgQrDfIkxnBTn+Wvy1hO+2iUW+/U2FmDnMs262qBdm67EKg2JNDQQiKsT
+ t4XKaeHHDaJg5ZEQRa4nxDRuKAU1D
+X-Received: by 2002:a05:600c:4688:b0:45d:d2d2:f095 with SMTP id
+ 5b1f17b1804b1-45deb702e1dmr110544235e9.19.1757602170326; 
+ Thu, 11 Sep 2025 07:49:30 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IF8qtF1qAnlROs8xNUfS1Rs+dPLZYcpuM3doPWb7N6ekPV01fUhC82BPE/uzS0/3A1DBuiZ9g==
+X-Received: by 2002:a05:600c:4688:b0:45d:d2d2:f095 with SMTP id
+ 5b1f17b1804b1-45deb702e1dmr110544065e9.19.1757602169950; 
+ Thu, 11 Sep 2025 07:49:29 -0700 (PDT)
+Received: from rh.redhat.com
+ (p200300f6af131a0027bd20bfc18c447d.dip0.t-ipconnect.de.
+ [2003:f6:af13:1a00:27bd:20bf:c18c:447d])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-45e0159c27csm14941575e9.8.2025.09.11.07.49.29
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 11 Sep 2025 07:49:29 -0700 (PDT)
+From: Sebastian Ott <sebott@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1131;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1131.google.com
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, kvm@vger.kernel.org,
+ kvmarm@lists.linux.dev, Sebastian Ott <sebott@redhat.com>
+Subject: [PATCH 0/2] arm: add kvm-psci-version vcpu property
+Date: Thu, 11 Sep 2025 16:49:21 +0200
+Message-ID: <20250911144923.24259-1-sebott@redhat.com>
+X-Mailer: git-send-email 2.51.0
+MIME-Version: 1.0
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: fngo-8zLdp0kPFOqxvcsWCLmu9vrdDcsSIWW7yJPciE_1757602170
+X-Mimecast-Originator: redhat.com
+Content-Transfer-Encoding: 8bit
+content-type: text/plain; charset="US-ASCII"; x-default=true
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=sebott@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -103,15 +111,24 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Wed, 3 Sept 2025 at 11:10, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.or=
-g> wrote:
->
-> Prefix init_cpreg_list() with 'arm_'.
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+This series adds a vcpu knob to request a specific PSCI version
+from KVM via the KVM_REG_ARM_PSCI_VERSION FW register.
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Note: in order to support PSCI v0.1 we need to drop vcpu
+initialization with KVM_CAP_ARM_PSCI_0_2 in that case.
+Alternatively we could limit support to versions >=0.2 .
 
-thanks
--- PMM
+Sebastian Ott (2):
+  target/arm/kvm: add constants for new PSCI versions
+  target/arm/kvm: add kvm-psci-version vcpu property
+
+ docs/system/arm/cpu-features.rst |  5 +++
+ target/arm/cpu.h                 |  6 +++
+ target/arm/kvm-consts.h          |  2 +
+ target/arm/kvm.c                 | 70 +++++++++++++++++++++++++++++++-
+ 4 files changed, 82 insertions(+), 1 deletion(-)
+
+-- 
+2.42.0
+
 

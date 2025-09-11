@@ -4,107 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 670FFCAC58E
-	for <qemu-arm@archiver.kernel.org>; Thu, 11 Sep 2025 21:57:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47239CAC587
+	for <qemu-arm@archiver.kernel.org>; Thu, 11 Sep 2025 23:50:33 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uwpHw-0004pA-GV; Thu, 11 Sep 2025 17:57:09 -0400
+	id 1uwr3b-0001v3-Ek; Thu, 11 Sep 2025 19:50:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ddutile@redhat.com>)
- id 1uwpHv-0004os-Of
- for qemu-arm@nongnu.org; Thu, 11 Sep 2025 17:57:07 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ddutile@redhat.com>)
- id 1uwpHt-00052V-23
- for qemu-arm@nongnu.org; Thu, 11 Sep 2025 17:57:07 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1757627823;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=SeJBnIxI7fCyyv5uMKIJP4CDgBtM5fDDyIX6A5uoIDk=;
- b=Iz1aq39LCT8rEdqhCbkeoCXzWjutIsq7g9PSbFShTCFBNB0q0F9OpwaAMDPGMgLHUFuiY4
- oxZRfdVZYRblXtK1xAreBBOoOUup92uds8y6F9u/OINJnfXCbDXGybY5woHnvzDnKHnu2C
- Q8U4BZWIW9f2MCzlm0uSIDD87PXBVWg=
-Received: from mail-qt1-f199.google.com (mail-qt1-f199.google.com
- [209.85.160.199]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-355-2W7Nsfu0Pzu-SlcnUrtApg-1; Thu, 11 Sep 2025 17:55:17 -0400
-X-MC-Unique: 2W7Nsfu0Pzu-SlcnUrtApg-1
-X-Mimecast-MFC-AGG-ID: 2W7Nsfu0Pzu-SlcnUrtApg_1757627717
-Received: by mail-qt1-f199.google.com with SMTP id
- d75a77b69052e-4b6090aeaacso34613971cf.3
- for <qemu-arm@nongnu.org>; Thu, 11 Sep 2025 14:55:17 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
+ id 1uwr3a-0001uS-B2
+ for qemu-arm@nongnu.org; Thu, 11 Sep 2025 19:50:26 -0400
+Received: from mail-pf1-x430.google.com ([2607:f8b0:4864:20::430])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
+ id 1uwr3Y-0004rp-HD
+ for qemu-arm@nongnu.org; Thu, 11 Sep 2025 19:50:26 -0400
+Received: by mail-pf1-x430.google.com with SMTP id
+ d2e1a72fcca58-77615d6af4fso1633b3a.3
+ for <qemu-arm@nongnu.org>; Thu, 11 Sep 2025 16:50:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1757634622; x=1758239422; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=JcQGAek4i81asZ4bL6G/L8o9wAK6+elN8NwZki5kqJY=;
+ b=mFm5pJAhiS7QpVaIMlVae/bXtXuzb7lc8+y+gidoaFdSqMsAbp8Xf34QgBYcy17Jh5
+ 8WPL/7rsiWq5ol+0N1xVIxay3bVSNiHfeUQykHt+wmgVn+hOogAeyFuEn8Q/UM4CWTyk
+ ZVghceh5WrFQLeHsP6ZyCqsDzdPKv9Xu7ffWHmy3Ubs1lNfOhJ3g7MkHBQYY/uWekqO8
+ W4kq9QnHP88QaE7g7RMajfbGot8cRU8Qw3qeEYHs3WXnBiJPHXYj2jdBYl+FGeVkAJAO
+ FBLzFZ7W24vfyilsMeosFaZ/jxkM7ZYdEsanACXXH9oLqs5nFA6HRaRXGsGgP7APP39y
+ RE2Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1757627717; x=1758232517;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
+ d=1e100.net; s=20230601; t=1757634622; x=1758239422;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=SeJBnIxI7fCyyv5uMKIJP4CDgBtM5fDDyIX6A5uoIDk=;
- b=DK+PyRoXu3EBVS9pwmIiWXPFn+gGIo+en+31ckQ1F+rOhWJRDj4j1WwgLScVpfTJto
- ogNd8K/fqqI8ZKz3K84OruWgJc9dO2ulOmF4jJHI10WcxHAlHBSGtBuJSzXwKu0UCjM0
- p716NUTZn7Vhx1ODtCQgzjd8Vqr65hJJca7bA2N4uerRnpfFKh5+X8csXL9bt6lyKUkG
- 05+qUeDf9VqxbdrMX8A9LGeLtIHMNvudzN8HglACfdhs+spaJbs46IZ6iwRxey14GnSO
- j0plOR74NW9R+tWX0mdu94k3I/numNnrVxQTgWPEHqpGNxqgpR6sCOBDjYVB/PquSZeW
- H09A==
+ bh=JcQGAek4i81asZ4bL6G/L8o9wAK6+elN8NwZki5kqJY=;
+ b=GTsfFEBe6KIH9LjnfOD18B4b68BKWAe2vR+3llqypkxR4wGedCDB/dypEl6WE1IY9M
+ tIx0OUvcQXgR8HYu5jJTcz9IpsecHax61gt9rf45u66VRYPczRtLjDYzlkU4dT+43DKc
+ GigkZ5fGJCDSQoTw9JWoMm67k3Ca6HlVPurLL2REwUhM/Qyx1T4+TTM3B7f0EYqPiYOU
+ seCfE0VXhnbenYjj09Dnnz+Mrp9vQN6pkXioImt+HZTI1zQAaJfE5KAJC1IXyFPgCHkk
+ ENuB9KSjgWzOvqYUBD+vronyQGVljCVX71B1JpZu9Hw/+PNbifJxzASlC5Rl3MDn+g+0
+ 7q2g==
 X-Forwarded-Encrypted: i=1;
- AJvYcCX6c74AceXCPL6iXZNchLepOL9QmUqtjh/O8Sei42PjG88q2UptHYUDKbFTVlnYF6/OJt+oO6+qyw==@nongnu.org
-X-Gm-Message-State: AOJu0Yx+t2WjmXckQeXEH2+0rgY22iwwWuJMk7UyZK/M0QoXeYT0LzJl
- VUahGnW074579DIUPoitKXpHnRTJ5QHNbF4rHzXdDlvz/Hb6kaI3GsmIm6QPqFpgjVB84i7BY/U
- NGTEiDEoX0KKNgNWMIME+FrA/vY4vdLedadjAVYCN0Xa/owOwHT0yBQ==
-X-Gm-Gg: ASbGnctSJYC5ph3SrtcbLtdt3/EHc+SAZCV8yADJuwLMfSqIEPfrNniwGPEuxWzNIBY
- kGoAEz92DKlI2NBxeDi3vmskkHaPcQYHv4HG/3xo/4q3JJpksDvamt2sqIRDrDi/od2l72Znh0H
- cn7vTmCwpABRR1xv+Bwfj8JYOGZCyPGQk0e3eT0KdCPbkmlVIzyxZ1CxbTa/KBJxWEu+f/yi1nt
- D/3yBJkdsQ/TwHe5IX3WXKdF4/XN8yG7TevlYMiKpOHNUAZfCj5t026Gw3oXvYFBdq5gRJpZcl3
- UjPmQl+3ARpD0/a6VDf35gQZsNcZ+yE2VXFLsBXR
-X-Received: by 2002:ac8:7f43:0:b0:4b3:48f2:b8c9 with SMTP id
- d75a77b69052e-4b77d14e177mr8903851cf.60.1757627717010; 
- Thu, 11 Sep 2025 14:55:17 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IF1mcRVtot2RIJd/gtDwHQc/m7fWyppt29U/D0VWZ2bpuaRyPNRicnMYvA0+s99uY7mofxUqA==
-X-Received: by 2002:ac8:7f43:0:b0:4b3:48f2:b8c9 with SMTP id
- d75a77b69052e-4b77d14e177mr8903571cf.60.1757627716456; 
- Thu, 11 Sep 2025 14:55:16 -0700 (PDT)
-Received: from [192.168.40.164] ([70.105.235.240])
+ AJvYcCW7qX7VlHZQbIMeKIkDXTZkTYgR/GjWVHYpq/sGTayKkkgbk5nrb6W0fJw+ISMfxwzYmfBhQ9wvSQ==@nongnu.org
+X-Gm-Message-State: AOJu0YwjgXp+ymLWfWMlW+yyurL4Eyu4SecrULLNKdnCZg8IbhBBvqvJ
+ 8odwZ3jMYoD/J5wP7mDVHJ2/1pI5A0xwNE7LCNrIDthDazRzNM8Ms9BAaH2MWzUWEcQ=
+X-Gm-Gg: ASbGnctxTCUe8YgiJUdtTAqV2AXd49qaFz2qanfj7CZc5xs1VZADHMLPvM2NFeWgx+t
+ Eqnosi+5OeJgVL+Iw5p8Sq8ufMH5ie3Osb7Q/fMUsS9rItzuQd3Xh4egaSv4MWZAQSV2dbvsHv7
+ boZlCEfEeyIVyzLoYFbXHo9l8m/iK7CqDJvsuaBTnIVeHtRbwQA9sNi6RjXHyfMHJLBy1pssHmG
+ 96RrliE8uynonwDG3TS2dNeSnSJ0jO01zi+MGWcaJrs/JBmqTAqe9hAHCK78yaUhgLSy/nOXUZn
+ jgp4x0OaTEbN8vtdxD0iPiUAg5IjZ7rxK42J58u3cIXSG7fdCpZoYSGhrNf3m9fUtl2GspPU4ku
+ 4rULJm5ay3gEDabUotAOh3YmLKCEbJ1GhJA==
+X-Google-Smtp-Source: AGHT+IHrxqYkbC2JUsHaN0b2hx+2PL+gmS18n2lRi+YGUsqDJwJHLcuQUWzyv6XXk8XOeh41/tHXZg==
+X-Received: by 2002:a05:6a00:17a5:b0:770:48cf:83f5 with SMTP id
+ d2e1a72fcca58-77612095a9cmr1249840b3a.14.1757634622222; 
+ Thu, 11 Sep 2025 16:50:22 -0700 (PDT)
+Received: from [192.168.0.102] ([186.215.55.55])
  by smtp.gmail.com with ESMTPSA id
- 6a1803df08f44-763b3f4ab6asm16992086d6.3.2025.09.11.14.55.14
+ d2e1a72fcca58-77607b347f8sm3287493b3a.82.2025.09.11.16.50.20
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 11 Sep 2025 14:55:15 -0700 (PDT)
-Message-ID: <e80211ce-e99e-4857-a4b4-ddc144c372f9@redhat.com>
-Date: Thu, 11 Sep 2025 17:55:13 -0400
+ Thu, 11 Sep 2025 16:50:21 -0700 (PDT)
+Message-ID: <9aa2f190-0bd7-4c54-b2a2-cdd67ec7023c@linaro.org>
+Date: Thu, 11 Sep 2025 20:50:18 -0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v9 00/11] hw/arm/virt: Add support for user creatable
- SMMUv3 device
-To: Shameer Kolothum <skolothumtho@nvidia.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: eric.auger@redhat.com, peter.maydell@linaro.org, jgg@nvidia.com,
- nicolinc@nvidia.com, berrange@redhat.com, imammedo@redhat.com,
- nathanc@nvidia.com, mochs@nvidia.com, smostafa@google.com, mst@redhat.com,
- marcel.apfelbaum@gmail.com, wangzhou1@hisilicon.com, jiangkunkun@huawei.com,
- jonathan.cameron@huawei.com, zhangfei.gao@linaro.org
-References: <20250829082543.7680-1-skolothumtho@nvidia.com>
-From: Donald Dutile <ddutile@redhat.com>
-In-Reply-To: <20250829082543.7680-1-skolothumtho@nvidia.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: BOCbDsJYiWMMdlPhj0sfXTpfqfsokYS--hsj0f80dCk_1757627717
-X-Mimecast-Originator: redhat.com
+Subject: Re: [PATCH v2 5/5] tests/functional: Adapt reverse_debugging to run
+ w/o Avocado
+To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
+Cc: qemu-devel@nongnu.org, alex.bennee@linaro.org, thuth@redhat.com,
+ qemu-arm@nongnu.org
+References: <20250904154640.52687-1-gustavo.romero@linaro.org>
+ <20250904154640.52687-6-gustavo.romero@linaro.org>
+ <aL6e8PyjsfK0Wx70@redhat.com>
 Content-Language: en-US
+From: Gustavo Romero <gustavo.romero@linaro.org>
+In-Reply-To: <aL6e8PyjsfK0Wx70@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=ddutile@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::430;
+ envelope-from=gustavo.romero@linaro.org; helo=mail-pf1-x430.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -120,223 +107,84 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+Hi Daniel!
+
+On 9/8/25 06:16, Daniel P. Berrangé wrote:
+> On Thu, Sep 04, 2025 at 03:46:40PM +0000, Gustavo Romero wrote:
+>> This commit removes Avocado as a dependency for running the
+>> reverse_debugging test.
+>>
+>> The main benefit, beyond eliminating an extra dependency, is that there
+>> is no longer any need to handle GDB packets manually. This removes the
+>> need for ad-hoc functions dealing with endianness and arch-specific
+>> register numbers, making the test easier to read. The timeout variable
+>> is also removed, since Meson now manages timeouts automatically.
+>>
+>> The reverse_debugging test is now executed through a runner, because it
+>> requires GDB in addition to QMP. The runner is responsible for invoking
+>> GDB with the appropriate arguments and for passing the test script to
+>> GDB.
+>>
+>> Since the test now runs inside GDB, its output, particularly from
+>> 'stepi' commands, which cannot be disabled, interleaves with the TAP
+>> output from unittest. To avoid this conflict, the test no longer uses
+>> Meson’s 'tap' protocol and instead relies on the simpler 'exitcode'
+>> protocol.
+>>
+>> reverse_debugging is kept "skipped" for aarch64, ppc64, and x86_64, so
+>> won't run unless QEMU_TEST_FLAKY_TESTS=1 is set in the test environment,
+>> before running 'make check-functional' or 'meson test [...]'.
+>>
+>> Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
+>> ---
+>>   tests/functional/aarch64/meson.build          |   7 +-
+>>   .../functional/aarch64/test_reverse_debug.py  |  15 +-
+>>   tests/functional/ppc64/meson.build            |   7 +-
+>>   tests/functional/ppc64/test_reverse_debug.py  |  17 +-
+>>   tests/functional/reverse_debugging.py         | 175 +++++++++---------
+>>   tests/functional/x86_64/meson.build           |   7 +-
+>>   tests/functional/x86_64/test_reverse_debug.py |  21 +--
+>>   7 files changed, 131 insertions(+), 118 deletions(-)
+>>
+>> diff --git a/tests/functional/aarch64/meson.build b/tests/functional/aarch64/meson.build
+>> index 04846c6eb1..4f3168dd55 100644
+>> --- a/tests/functional/aarch64/meson.build
+>> +++ b/tests/functional/aarch64/meson.build
+>> @@ -32,7 +32,6 @@ tests_aarch64_system_thorough = [
+>>     'raspi3',
+>>     'raspi4',
+>>     'replay',
+>> -  'reverse_debug',
+>>     'rme_virt',
+>>     'rme_sbsaref',
+>>     'sbsaref',
+>> @@ -46,3 +45,9 @@ tests_aarch64_system_thorough = [
+>>     'xen',
+>>     'xlnx_versal',
+>>   ]
+>> +
+>> +if is_variable('gdb_runner')
+>> +tests_aarch64_system_thorough_with_runner = [
+>> +    ['reverse_debug', gdb_runner, 'exitcode'],
+>> +]
+>> +endif
+> 
+> Why do you need to replace the of 'tap' with 'exitcode' for this script ?
+> 
+> I don't like the idea that a subset of our functional tests are not using
+> the TAP protocol.
+
+Unfortunately, the GDB Python API seems to be broken regarding being able
+to redirect GDB's output to a file (as it's possible to do via GDB's prompt)
+so we can't redirect the printed addresses that are printed after each "stepi"
+command in the test script. As a consequence Meson's TAP gets confused with
+it and fails the test. Since I could not find any directive in QEMU functional
+tests that forbid using the classic exitcode, I used it, at least while
+the GDB redirect is not fixed.
+
+Why don't you like it?
 
 
-On 8/29/25 4:25 AM, Shameer Kolothum wrote:
-> Hi,
-> 
-> Changes from v8:
-> https://lore.kernel.org/qemu-devel/20250711084749.18300-1-shameerali.kolothum.thodi@huawei.com/
-> 
-> 1.Dropped previous patch #1 as that one is now already in.
-> 2.Rebased and updated DSDT in patch #11 to make bios table tests happy.
->    The DSDT has changed since Eric's PCI hotplug series work.
-> 3.Added T-by tags from Nicolin. Thanks!.
-> 
-> I think this is in a good shape now. Please take a look.
-> 
-> Thanks,
-> Shameer
-> 
-> Changes from v7:
-> https://lore.kernel.org/qemu-devel/20250708154055.101012-1-shameerali.kolothum.thodi@huawei.com/
-> 
-> 1. Rebased to latest target-arm.next(I have included patch#1
->     as I can't find that after a git pull of latest)
-> 2. Addressed comments from Nicolin and added R-by tags. Thanks!
-> 
-> Changes from v6:
-> https://lore.kernel.org/qemu-devel/20250703084643.85740-1-shameerali.kolothum.thodi@huawei.com/
-> 
-> 1. Fixed the warning case for DT support, reported by Eric(patch #1).
-> 2. Picked up R-by's and T-by's. Thanks!
-> 
-> Changes from v5:
-> https://lore.kernel.org/qemu-devel/20250623094230.76084-1-shameerali.kolothum.thodi@huawei.com/
-> 
-> 1. Rebased to target-arm.next and resolved conflicts with the series
->     [PATCH-for-10.1 v6 0/9] hw/arm: GIC 'its=off'.
-> 2. While at it, noticed an issue with RC id mappings creation
->     and patch #1 is a fix for that.
-> 3. Patches 3 and 4 have changes because of the conflict resolution with the
->     above series. I have retained the R-by tags, but encourage all to take
->     another look in case I missed anything.
-> 4. Collected R-by and T-by tags. Thanks!.
-> 
-> Changes from v4:
-> https://lore.kernel.org/qemu-devel/20250613144449.60156-1-shameerali.kolothum.thodi@huawei.com/
-> 
-> Major changes from v4:
-> 
-> 1. Added stricter validation for PCI buses associated with the SMMU.
->     Only the default PCIe Root Complex (pcie.0) and additional root
->     complexes created using pxb-pcie (see patch #1) are allowed.
-> 
-> 2. While testing this series with a setup involving multiple PCIe root
->     complexes using pxb-pcie, I encountered an issue related to IOMMU
->     ops resolution. Consider the below configuration, where an
->     arm-smmuv3 device is associated with the default root complex pcie.0,
->     and an additional pxb-pcie-based root complex (pcie.1) is added
->     without any associated SMMU:
-> 
->     -device arm-smmuv3,primary-bus=pcie.0,id=smmuv3.1 \
->     ...
->     -device pxb-pcie,id=pcie.1,bus_nr=8,bus=pcie.0 \
->     -device pcie-root-port,id=pcie.port1,chassis=2,bus=pcie.1 \
->     -device arm-smmuv3,primary-bus=pcie.1,id=smmuv3.2 \
->     ...
->     -device virtio-net-pci,bus=pcie.0,netdev=net0,id=virtionet.0 \
->     -device virtio-net-pci,bus=pcie.port1,netdev=net1,id=virtionet.1
-> 
->     The guest boots fine, and virtionet.0(behind the SMMUV3) bring up
->     is successful. However, attempting to bring up virtionet.1
->     (behind pcie.1, which lacks a connected SMMU) results in a failure:
-> 
->     root@ubuntu:/# dhclient enp9s0
->     arm-smmu-v3 arm-smmu-v3.0.auto: event 0x02 received:
->     arm-smmu-v3 arm-smmu-v3.0.auto: 0x0000090000000002
->     arm-smmu-v3 arm-smmu-v3.0.auto: 0x0000000000000000
->     arm-smmu-v3 arm-smmu-v3.0.auto: 0x0000000000000000
->     arm-smmu-v3 arm-smmu-v3.0.auto: 0x0000000000000000
->     arm-smmu-v3 arm-smmu-v3.0.auto: event: C_BAD_STREAMID client: (unassigned sid) sid: 0x900 ssid: 0x0
->     virtio_net virtio1 enp9s0: NETDEV WATCHDOG: CPU: 2: transmit queue 0 timed out 5172 ms
->     virtio_net virtio1 enp9s0: TX timeout on queue: 0, sq: output.0, vq: 0x1, name: output.0, 5172000 usecs ago
->     ...
-> 
->     Debug shows that QEMU currently registers IOMMU ops for bus using
->     pci_setup_iommu(). However, when retrieving IOMMU ops for a device
->     via pci_device_get_iommu_bus_devfn(), the function walks up to the
->     parent_dev and fetches the IOMMU ops from the parent, even if the
->     current root bus has none configured.
-> 
->     This works today because existing IOMMU models in QEMU are globally
->     scoped, and pxb-pcie based extra root complexes can use the
->     bypass_iommu property to skip translation as needed.
-> 
->     However, with this series introducing support for associating
->     arm-smmuv3 devices with specific PCIe root complexes, this
->     becomes problematic. In QEMU, pxb-pcie is implemented as a synthetic
->     root complex whose parent_dev is pcie.0. As a result, even though
->     pcie.1 has no SMMU attached, pci_device_get_iommu_bus_devfn()
->     incorrectly returns the IOMMU ops associated with pcie.0 due to
->     the fallback mechanism via parent_dev. This causes devices on
->     pcie.1 to erroneously use the address space from pcie.0's SMMU,
->     leading to failures like the one above.
-> 
->     To address this, patch #6 in the series introduces a new helper
->     function pci_setup_iommu_per_bus(), which explicitly sets the
->     iommu_per_bus field in the PCIBus structure. This allows
->     pci_device_get_iommu_bus_devfn() to retrieve IOMMU ops based
->     on the specific bus.
-> 
->     Not sure this is the correct approach or not. If there is a better
->     way to handle this, please let me know .
-> 
-> 3. Picked up few R-by tags where the patch content has not changed much.
-> 
-> 4. Dropped T-by from Nathan for some patches as things have changed a bit.
->     @Nathan, apprecaite if you have time to rerun the tests.
-> 
-> 5. Added a bios table tests for both legacy SMMUv3 and new SMMMv3 devices.
->     See last few patches.
-> 
-> Cover letter:
-> 
-> This patch series introduces support for a user-creatable SMMUv3 device
-> (-device arm-smmuv3) in QEMU.
-> 
-> The implementation is based on feedback received from the RFCv2[0]:
-> "hw/arm/virt: Add support for user-creatable accelerated SMMUv3"
-> 
-> Currently, QEMU's SMMUv3 emulation (iommu=smmuv3) is tied to the machine
-> and does not support instantiating multiple SMMUv3 devices—each associated
-> with a separate PCIe root complex. In contrast, real-world ARM systems
-> often include multiple SMMUv3 instances, each bound to a different PCIe
-> root complex.
-> 
-> This series allows to specify multiple SMMUv3 instances as below,
-> 
->   -device arm-smmuv3,primary-bus=pcie.0,id=smmuv3.0
->    ...
->   -device arm-smmuv3,primary-bus=pcie.1,,id=smmuv3.1
-> 
-> The multiple SMMUv3 instance support lays the groundwork for supporting
-> accelerated SMMUv3, as proposed in the aforementioned RFCv2[0]. The
-> proposed accelerated support will be an optional property like below,
-> -device arm-smmuv3,primary-bus=pcie.1,accel=on,..
-> 
-> Please note, the accelerated SMMUv3 support is not part of this series
-> and will be sent out as a separate series later on top of this one.
-> 
-> This series also,
-> 
-> -Supports either the legacy iommu=smmuv3 option or the new
->    "-device arm-smmuv3" model.
->    -Adds device tree bindings for the new SMMUv3 device on the arm/virt
->     machine only, and only for the default pcie.0 root complex.
->     (Note: pxb-pcie root complexes are currently not supported with the
->      device tree due to known limitations[1].)
-> 
-> Example usage:
->    -device arm-smmuv3,primary-bus=pcie.0,id=smmuv3.0
->    -device virtio-net-pci,bus=pcie.0
->    -device pxb-pcie,id=pcie.1,bus_nr=2
->    -device arm-smmuv3,primary-bus=pcie.1,id=smmuv3.1
->    -device pcie-root-port,id=pcie.port1,bus=pcie.1
->    -device virtio-net-pci,bus=pcie.port1
-> 
-> Please take a look and let me know your feedback.
-> 
-> Thanks,
-> Shameer
-> [0]:https://lore.kernel.org/qemu-devel/20250311141045.66620-1-shameerali.kolothum.thodi@huawei.com/
-> [1]:https://lore.kernel.org/qemu-devel/20230421165037.2506-1-Jonathan.Cameron@huawei.com/
-> 
-> Nicolin Chen (1):
->    hw/arm/virt: Add an SMMU_IO_LEN macro
-> 
-> Shameer Kolothum (10):
->    hw/arm/smmu-common: Check SMMU has PCIe Root Complex association
->    hw/arm/virt-acpi-build: Re-arrange SMMUv3 IORT build
->    hw/arm/virt-acpi-build: Update IORT for multiple smmuv3 devices
->    hw/arm/virt: Factor out common SMMUV3 dt bindings code
->    hw/pci: Introduce pci_setup_iommu_per_bus() for per-bus IOMMU ops
->      retrieval
->    hw/arm/virt: Allow user-creatable SMMUv3 dev instantiation
->    qemu-options.hx: Document the arm-smmuv3 device
->    bios-tables-test: Allow for smmuv3 test data.
->    qtest/bios-tables-test: Add tests for legacy smmuv3 and smmuv3 device
->    qtest/bios-tables-test: Update tables for smmuv3 tests
-> 
->   hw/arm/smmu-common.c                          |  37 +++-
->   hw/arm/smmuv3.c                               |   2 +
->   hw/arm/virt-acpi-build.c                      | 201 ++++++++++++++----
->   hw/arm/virt.c                                 | 111 +++++++---
->   hw/core/sysbus-fdt.c                          |   3 +
->   hw/pci-bridge/pci_expander_bridge.c           |   1 -
->   hw/pci/pci.c                                  |  31 +++
->   include/hw/arm/smmu-common.h                  |   1 +
->   include/hw/arm/virt.h                         |   1 +
->   include/hw/pci/pci.h                          |   2 +
->   include/hw/pci/pci_bridge.h                   |   1 +
->   include/hw/pci/pci_bus.h                      |   1 +
->   qemu-options.hx                               |   7 +
->   tests/data/acpi/aarch64/virt/DSDT.smmuv3-dev  | Bin 0 -> 10230 bytes
->   .../data/acpi/aarch64/virt/DSDT.smmuv3-legacy | Bin 0 -> 10230 bytes
->   tests/data/acpi/aarch64/virt/IORT.smmuv3-dev  | Bin 0 -> 364 bytes
->   .../data/acpi/aarch64/virt/IORT.smmuv3-legacy | Bin 0 -> 276 bytes
->   tests/qtest/bios-tables-test.c                |  86 ++++++++
->   18 files changed, 410 insertions(+), 75 deletions(-)
->   create mode 100644 tests/data/acpi/aarch64/virt/DSDT.smmuv3-dev
->   create mode 100644 tests/data/acpi/aarch64/virt/DSDT.smmuv3-legacy
->   create mode 100644 tests/data/acpi/aarch64/virt/IORT.smmuv3-dev
->   create mode 100644 tests/data/acpi/aarch64/virt/IORT.smmuv3-legacy
-> 
-Apologies for delayed response; lots to catch up on after extended PTO.
-
-Final cleanup from v8 looks good, and +1 on Nicolin's testing!
-
-for series:
-Reviewed-by: Donald Dutile <ddutile@redhat.com>
-
+Cheers,
+Gustavo
 

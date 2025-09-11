@@ -4,72 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 144B6CAC58E
-	for <qemu-arm@archiver.kernel.org>; Thu, 11 Sep 2025 13:44:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CCD7CAC587
+	for <qemu-arm@archiver.kernel.org>; Thu, 11 Sep 2025 14:06:43 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uwhag-0003dA-5R; Thu, 11 Sep 2025 09:43:58 -0400
+	id 1uwhwE-0003FX-7b; Thu, 11 Sep 2025 10:06:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uwhad-0003cI-Rv
- for qemu-arm@nongnu.org; Thu, 11 Sep 2025 09:43:56 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uwhab-0003WF-5V
- for qemu-arm@nongnu.org; Thu, 11 Sep 2025 09:43:55 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1757598229;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=SJe/KYJAhOxAiHSyQRTinz6TLWYZ74JDhD11G1hMJxA=;
- b=i2y+0OPFgm84SEfvxZFDsJjDAAhlfOSKQNNNAixidFuaru8OksVc007z/4tSShIa+zM/cu
- q9zZZG5fWm9yv81DBn/XbtoEDssiOjQJM1VhjALCfNntQzNyABtovlw57SKzVEgIBo55gK
- BX7R04F1sTH28k0x6Xi/VM1ln+o3RIw=
-Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-37-MKsxTTnOORC3vBHB8W1MbA-1; Thu,
- 11 Sep 2025 09:43:45 -0400
-X-MC-Unique: MKsxTTnOORC3vBHB8W1MbA-1
-X-Mimecast-MFC-AGG-ID: MKsxTTnOORC3vBHB8W1MbA_1757598223
-Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id A78A0195609F; Thu, 11 Sep 2025 13:43:43 +0000 (UTC)
-Received: from laptop.redhat.com (unknown [10.45.224.190])
- by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 3E3D51944CCA; Thu, 11 Sep 2025 13:43:39 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, peter.maydell@linaro.org, cohuck@redhat.com,
- maz@kernel.org, oliver.upton@linux.dev, sebott@redhat.com, gshan@redhat.com
-Subject: [RFC 3/3] hw/arm/virt: [DO NOT UPSTREAM] Enforce compatibility with
- older kernels
-Date: Thu, 11 Sep 2025 15:40:29 +0200
-Message-ID: <20250911134324.3702720-4-eric.auger@redhat.com>
-In-Reply-To: <20250911134324.3702720-1-eric.auger@redhat.com>
-References: <20250911134324.3702720-1-eric.auger@redhat.com>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1uwhw4-0003EQ-Kt
+ for qemu-arm@nongnu.org; Thu, 11 Sep 2025 10:06:04 -0400
+Received: from mail-yw1-x1130.google.com ([2607:f8b0:4864:20::1130])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1uwhw0-00072A-BE
+ for qemu-arm@nongnu.org; Thu, 11 Sep 2025 10:06:02 -0400
+Received: by mail-yw1-x1130.google.com with SMTP id
+ 00721157ae682-723bc91d7bbso6250287b3.3
+ for <qemu-arm@nongnu.org>; Thu, 11 Sep 2025 07:05:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1757599557; x=1758204357; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=41Z92WFyPlZhI2EG4GlyxHkOERUdusbOiRG5vUiKhuA=;
+ b=KFLKJKCOGZi+W8I1Q6C77B1osNsZ59ZoAwNyQ78h80Bteu1aefO1SBHUnDKpianVxf
+ aU9PleYywwCyFfPXPBE9VE8tjA/gtKL5RtomyEY6g0HDFA5qU/UIVYcQHw9S24B8wqCR
+ b4gWxJVNu/smh4IybCYWvsDgXB0Y7CVyLXHWX1VXjed+DtNYnIcLWJaTAFWn4oVaWP9b
+ 7N/SmCU45Xp/ZQ6QjQ1fbB3YqgWxeNZRpHtPxvgzn3JotIhigacx1bljfTc2k9TnC5Pq
+ d1JpIhqg9XYTsoJB1TR+B+ufzRcgDfBoVrwLbVSSg2c+YobF11Lyyrk1orWkcIuMkIlz
+ I2+g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1757599557; x=1758204357;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=41Z92WFyPlZhI2EG4GlyxHkOERUdusbOiRG5vUiKhuA=;
+ b=Z77Y+oQSlr7Fos94QcVV8BZZS2irXxokX6qkc10vJFXbUxe6/RwcTiuefJ8kIrrErD
+ AYFKBExYdlMdUJ+XE7y7wOX9xkZscuBZE6uwisDQ7EQEg6lQJ2rU7CjR7soSS3cgchGj
+ jBSPScHegEx3UqOF5pWpMdCRBWUrKrkwdhDUdJd0H97ocxk0b7EwDzTx/0KJJ7x2MMKf
+ QbzmpXtRW+Bxfan5D9WPyi0sqBF+Rn2iJ2BDzr0ULPRckrywxh+g7EYsyB2upYWxG3dj
+ HhifQSwZVRJ1m4tpa7rb/OYFQZ0QyFkmff6XP4bSDcU2sMCb+LAnVGVx1XX15VIq4o14
+ lHow==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWQat9s+FOhS1x2ZCta+g08YIM6i5nomZ4hFi47GPcF86rCk40AfIVePL8jY6sL+fT7NN71FU1+uA==@nongnu.org
+X-Gm-Message-State: AOJu0YxECiWufCUa17/CXIlOywROOvnhQitDmApkfrPlqUhuRePxJYp7
+ ye1gY9XGD76CBw38PsQXEtd+W6qvUC7EyIx0i87Ro7Q78LJnmCVMD2U8hmEBIe83azoeYK5FWM8
+ 4WoEFjsOIaBHlLds+dR3uHwVSbAfrvUAQOk7Ux82q4g==
+X-Gm-Gg: ASbGnct4MJ2J30QVs4jAhps/7UwZNdBLMtFnuVDgWZQZiIFQkdncyGy3YcBNRxs7giq
+ 6MwyyagAQL0E6SnhHRw+loApZyPnkEmLqzl++x+A6H2lOC7A9Z3g1fQvHDpPUMl2QnB5q9wmfTL
+ 1b8Hz5VjY6vfgrPxIb9Oq9B++01U3Atxl/jE+8uutmFy1zd8uWoahyLroTaKSitVIZaEyX/E0Bk
+ qSOlViLHKZlUzMb9fE=
+X-Google-Smtp-Source: AGHT+IGo/iszeQRkPp2aFgemO3loswviKHpNdQHX+lCbAw7hkl7oGYtn19656Wu+8wW72PYhhOjP4hfEBa76xAYgKCs=
+X-Received: by 2002:a05:690c:734a:b0:723:97ed:b2d6 with SMTP id
+ 00721157ae682-727f3783d28mr179500237b3.24.1757599556822; Thu, 11 Sep 2025
+ 07:05:56 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+References: <20250822151614.187856-1-luc.michel@amd.com>
+ <aMJ1WpiNOuLR62t9@XFR-LUMICHEL-L2.amd.com>
+In-Reply-To: <aMJ1WpiNOuLR62t9@XFR-LUMICHEL-L2.amd.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 11 Sep 2025 15:05:45 +0100
+X-Gm-Features: Ac12FXw8414FI4p3aDLZw8rC2aKjQSoLjyEYOJE4oCZHQNwk6qjQqCfo2auUOUY
+Message-ID: <CAFEAcA-N-rFRm3zeAx51r-ivydmA3kp47o17X0NWET57ZRntcA@mail.gmail.com>
+Subject: Re: [PATCH v4 00/47] AMD Versal Gen 2 support
+To: Luc Michel <luc.michel@amd.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+ Francisco Iglesias <francisco.iglesias@amd.com>,
+ "Edgar E . Iglesias" <edgar.iglesias@amd.com>, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ Alistair Francis <alistair@alistair23.me>,
+ Frederic Konrad <frederic.konrad@amd.com>, 
+ Sai Pavan Boddu <sai.pavan.boddu@amd.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1130;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1130.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -85,69 +101,75 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This is an example on how to use the new CPU options. This catters to
-distributions who want machines to be migratable (forward and backward)
-accross different host kernel versions in case KVM registers exposed
-to qemu vary accross kernels. This patch is not meant to be upstreamed
-as it is really kernel dependent. The goal is to illustrate how this
-would be used.
+On Thu, 11 Sept 2025 at 08:08, Luc Michel <luc.michel@amd.com> wrote:
+>
+> Gentle ping. Only patches 23 and 39 need review.
 
-In this example, For 10_1 machines types and older we apply the following
-host kernel related compats:
+ASAN complains about a couple of new leaks; would you mind
+taking a look?
 
-1) Make sure the KVM_REG_ARM_VENDOR_HYP_BMAP_2 exposed from v6.15 onwards
-   is ignored/hidden.
-2) Make sure TCR_EL1, PIRE0_EL1, PIR_EL1 are always seen by qemu
-   although not exposed by KVM. They were unconditionnally exposed before
-   v6.13 while from v6.13 they are only exposed if supported by the guest.
+Direct leak of 80 byte(s) in 2 object(s) allocated from:
+    #0 0x5df4de8f7e23 in malloc
+(/mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/qemu-system-aarch64+0x2507e23)
+(BuildId: 2cb010a0f1032af1fc9fe4c70583ed9f639b86fb)
+    #1 0x77eec4c4cb09 in g_malloc
+(/lib/x86_64-linux-gnu/libglib-2.0.so.0+0x62b09) (BuildId:
+1eb6131419edb83b2178b682829a6913cf682d75)
+    #2 0x77eec4c0fbc2 in g_array_sized_new
+(/lib/x86_64-linux-gnu/libglib-2.0.so.0+0x25bc2) (BuildId:
+1eb6131419edb83b2178b682829a6913cf682d75)
+    #3 0x5df4e0b46004 in versal_base_init
+/mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/../../hw/arm/xlnx-versal.c:2081:15
 
-This will allow 10_1 machines types and older machines to migrate
-forward and backward from old downstream kernels that do not feature
-those changes to newer kernels (>= v6.15).
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
----
- hw/arm/virt.c | 19 +++++++++++++++++++
- 1 file changed, 19 insertions(+)
+Direct leak of 48 byte(s) in 2 object(s) allocated from:
+    #0 0x5df4de8f800d in calloc
+(/mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/qemu-system-aarch64+0x250800d)
+(BuildId: 2cb010a0f1032af1fc9fe4c70583ed9f639b86fb)
+    #1 0x77eec4c4d7b1 in g_malloc0
+(/lib/x86_64-linux-gnu/libglib-2.0.so.0+0x637b1) (BuildId:
+1eb6131419edb83b2178b682829a6913cf682d75)
+    #2 0x5df4e0b4615a in versal_base_init
+/mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-asan/../../hw/arm/xlnx-versal.c:2084:21
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 6f01746e74..1cceddcd2a 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -96,6 +96,23 @@ static GlobalProperty arm_virt_compat[] = {
- };
- static const size_t arm_virt_compat_len = G_N_ELEMENTS(arm_virt_compat);
- 
-+/*
-+ * if a 10_1 machine type or older is used:
-+ * 1) make sure TCR_EL1, PIRE0_EL1, PIR_EL1 are enforced, even if they are not
-+ *    exposed by the kernel
-+ * 2) hide KVM_REG_ARM_VENDOR_HYP_BMAP_2
-+ */
-+static GlobalProperty arm_virt_kernel_compat_10_1[] = {
-+    /* KVM_REG_ARM_VENDOR_HYP_BMAP_2 */
-+    { TYPE_ARM_CPU, "kvm-hidden-regs", "0x6030000000160003" },
-+    /* TCR_EL1, PIRE0_EL1, PIR_EL1 */
-+    { TYPE_ARM_CPU, "kvm-enforced-regs",
-+      "0x603000000013c103, 0x603000000013c512, 0x603000000013c513" },
-+};
-+static const size_t arm_virt_kernel_compat_10_1_len =
-+    G_N_ELEMENTS(arm_virt_kernel_compat_10_1);
-+
-+
- /*
-  * This cannot be called from the virt_machine_class_init() because
-  * TYPE_VIRT_MACHINE is abstract and mc->compat_props g_ptr_array_new()
-@@ -3462,6 +3479,8 @@ static void virt_machine_10_1_options(MachineClass *mc)
- {
-     virt_machine_10_2_options(mc);
-     compat_props_add(mc->compat_props, hw_compat_10_1, hw_compat_10_1_len);
-+    compat_props_add(mc->compat_props,
-+                     arm_virt_kernel_compat_10_1, arm_virt_kernel_compat_10_1_len);
- }
- DEFINE_VIRT_MACHINE(10, 1)
- 
--- 
-2.49.0
+This is from a run of 'make check' for arm targets with clang's
+ASAN. I use the following leak suppression file to skip various
+leaks we already know about:
 
+# This is a set of suppressions for LeakSanitizer; you can use it
+# by setting
+#   LSAN_OPTIONS="suppressions=/path/to/scripts/lsan-suppressions.txt"
+# when running a QEMU built with the leak-sanitizer.
+
+# This is a real leak but ignore it for now so we can see the others
+leak:memory_region_init
+# various leaks I think are due to memory region circular refs
+# annoyingly you can't match on filename:lineno
+leak:fsl_imx6_init
+leak:fsl_imx7_init
+leak:raspi_peripherals_base_init
+leak:fsl_imx25_init
+leak:fsl_imx6ul_init
+leak:aw_a10_init
+leak:allwinner_r40_init
+leak:usb_dwc3_init
+leak:xlnx_zynqmp_init
+leak:xhci_sysbus_instance_init
+leak:fsl_imx8mp_init
+leak:versal_usb2_init
+
+
+# register_init_block API is busted
+leak:register_init_block
+# so is this device's local hack variant of it
+leak:canfd_create_regarray
+# qtest-only leak, not very important
+leak:qemu_irq_intercept_in
+# this is maybe a leak caused by g_test_trap_subprocess():
+# in the subprocess, the cleanup functions that are supposed to free
+# memory don't get run for some reason.
+leak:qos_traverse_graph
+
+thanks
+-- PMM
 

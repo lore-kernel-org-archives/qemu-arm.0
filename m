@@ -4,81 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AFB90CA1016
-	for <qemu-arm@archiver.kernel.org>; Thu, 11 Sep 2025 12:19:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27B5ECA1016
+	for <qemu-arm@archiver.kernel.org>; Thu, 11 Sep 2025 12:57:46 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uwgGr-00064r-Mq; Thu, 11 Sep 2025 08:19:25 -0400
+	id 1uwgrl-0003iJ-Q1; Thu, 11 Sep 2025 08:57:33 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uwgGn-00064I-No
- for qemu-arm@nongnu.org; Thu, 11 Sep 2025 08:19:21 -0400
-Received: from mail-yb1-xb30.google.com ([2607:f8b0:4864:20::b30])
+ id 1uwgrj-0003ht-LX
+ for qemu-arm@nongnu.org; Thu, 11 Sep 2025 08:57:31 -0400
+Received: from mail-yw1-x1131.google.com ([2607:f8b0:4864:20::1131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uwgGf-0000ty-Um
- for qemu-arm@nongnu.org; Thu, 11 Sep 2025 08:19:19 -0400
-Received: by mail-yb1-xb30.google.com with SMTP id
- 3f1490d57ef6-e96e5535fcdso1659587276.1
- for <qemu-arm@nongnu.org>; Thu, 11 Sep 2025 05:19:12 -0700 (PDT)
+ id 1uwgrh-0005S7-7K
+ for qemu-arm@nongnu.org; Thu, 11 Sep 2025 08:57:31 -0400
+Received: by mail-yw1-x1131.google.com with SMTP id
+ 00721157ae682-72267c05050so5781747b3.3
+ for <qemu-arm@nongnu.org>; Thu, 11 Sep 2025 05:57:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1757593150; x=1758197950; darn=nongnu.org;
+ d=linaro.org; s=google; t=1757595443; x=1758200243; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=zXI+GMvURQii7b2L96FtYP1AQ4kDXZOeUobdP7oHQ/k=;
- b=uIgIk3BetcWT3t2RDyYqYzu/Hh/4qv34/mf1/caPz2s2bnuROX7iL+WrCRNK377MkF
- e3nC3WgVqK7D5kRiPX0zXu/vrMJN0ZDlcfADD9UHHkJhvjkTPGSR5nAs3OitnE2lffoM
- xWTF+58kSakCcVMI+b7cZm9peyphlyGVkgnF8RmqOQcQXWt1Qcef+1eSdTjLrAocoXL1
- GgixLxPKztBMVpm5GHpnCzk39GfZxb8jyRPMzlIY09NmY9/34fQTIvApUohUBKh9IbZ/
- EqIitNfb8awL70PFJp6ne4Erh/lXP/EP/mwYtnGajyn2hUKvWXjmzW+wNBMENvd7D7Bn
- 7PAg==
+ bh=nrMvlFAtacgAgXHusVpcx56VY587MfF7pKVl7Oa1UHU=;
+ b=apRGTx0OcvzGkKe2vc/9qq27yupbfs7npCVfgJOitXPrf0Mw9qAIJ553w08sC0PWeP
+ 5hfrRJvP/JwQwlMlXP5JjpmzsSW9si76A0m7A/a4Gb+svWPW2NKYdGP1bEGKtMOINiqy
+ SsfOIwhhtZoZ+OFlLJYFpvg9KGEdFvQCYhn3hPBPL3MWwa0p8jOBdGiIMVAhRwQcBsJq
+ qH2BSBNNzgxIC9NEVE2ty+FYsjaq79cHfhDmhdUCo1mfwWWZoPJnHNAnVoYD3ERYVTmc
+ RZ0wgGIoBnubKqUs3tLtGAHP4rzgJ+kqdFapz9/f1HHaI7kyUZsaEZBuIvnXjKlYaHm9
+ 0+4A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1757593150; x=1758197950;
+ d=1e100.net; s=20230601; t=1757595443; x=1758200243;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=zXI+GMvURQii7b2L96FtYP1AQ4kDXZOeUobdP7oHQ/k=;
- b=hbJz/Qtgy8lzhazNFxP/BtQrdLfkakrMeD6w6/MmQOPOQsctQH8IY/UOojpGRGkTc2
- crpW/N1WKBh9Q4wokTQjlltAycbRlW9+ltpXUAa/K8blBJRu7w6f6dTQdw+VIsI/7NVb
- QHPBS/FI2+3cnUxPYs1MJtR6fKZ4Eo5VJGdmuklLxsnFaIfzeXEEFPoQdYUJR/h82M3P
- rUs4qXf0HsANB186cJMJrjKHz3D0lFPpoeBKELpvlxm6I2c8QeULwvJUB79+KtlEJQ3P
- RKID+uxeKXcVbg3XuE5vBe3/Dra7nB7M79J08U6zsoTttfpgetKFL3Io0svUK/Ax0z2h
- tbew==
+ bh=nrMvlFAtacgAgXHusVpcx56VY587MfF7pKVl7Oa1UHU=;
+ b=Oh1zmY+pQ1OWuhDYtyyuXzLgmX+ZiZohgHYtqb/dbanCIQzJ2KfXRfzDgDd93CNcp8
+ p50gsxtBeuNe3NHvzViw4iXSzA+050+HGD5+FtfTIMJfPUXF36P+DbkBReIPWnry4M2g
+ gFhODZ7qw8OyK9VOCKYPdM4edXcT6/coE4t32i8SaKfQ4WzskDUGGLdSth225mEYWtKH
+ eb7XRNo9KSu0K4kGzdqPQsdOoag+9rA1Fkv3aPF/bqxujipnY61uEsIibXgWVM4jrnHd
+ nbs/mdPGIBFkgnQPzyYslT1JQPRvMh75omASW9Q62qlHyWgVO65PAgrzAcHsIuRaR9fr
+ OlvA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWAmZITPdmsoo5FkEqxdkZtFB7f5Mf2DOeD2AB9r4wJ7vCAR/MxDseXa6Dnm3jPM3ILVOVuT9TJUg==@nongnu.org
-X-Gm-Message-State: AOJu0YzuvHZ/QSiWeD2xUZ05TXngueM2YwZmr9CMJfhrS11FzLQBMomV
- gjsg3E0Dr7bq8omOlWx9UcizZeUmmyshpWtnaJOTK7lL6jU1uM3QmdSpTpagXv2LuWgUYJlv/Ti
- hNBdGLR+XewME8VSYHGGLoKW+P9T3JX+Y8MxNeL9ci0EfqizTbA4h
-X-Gm-Gg: ASbGncu+L8AjgLqIobH44D8WycSFETEcIstnSyBcDfmyDvCBUVo9wYQIpaO4KoajPdc
- yUvH36dzOirx8AgazkOrEyjERWnkAbKZRR+e3ojKxMo3IuGJEufr/fy4YUmtS/i+pxRO/24U8BV
- Jan75BLNsjwiUdMSKPLyQctvwlxiGm+BXRmlyExNNAP3netyQ87r4hGAzfmQothgx3H3OtM+Tk/
- gbGAZwqIEOZQASO8+kRB7C2U703Dg==
-X-Google-Smtp-Source: AGHT+IH0QB/NzfB5m53N60418CHu1jpf4Dij4QAxzyt9Wiu44M1hoCmMaGiOCbmMbJtqm9OWQ/27g70RDtR5gfxINNo=
-X-Received: by 2002:a05:690c:28b:b0:729:d9a1:cdcc with SMTP id
- 00721157ae682-72eebed04d5mr29921257b3.13.1757593150233; Thu, 11 Sep 2025
- 05:19:10 -0700 (PDT)
+ AJvYcCXCitN+LirDdbjHlwU+7tyT7My0G8KRrLonKMA2ixWFHBQbSptOJrMtdBOGDXJuLqMfdPlluR2N4A==@nongnu.org
+X-Gm-Message-State: AOJu0YwX1epWgLS65yEhfKFIjOcoGRZvWkrWo+86zST0eK73ME+9EQDb
+ kd3vqyzEBFNzMGi3OBt9EbiuRCzc20fAKSWanRXfM0EFEFEQFzt4Z/LBBPe1LHvphn64EOTlx/5
+ ymUE6olR6LpQQ3VqgA8P23DNv438xlPflwvNzd1ilRA==
+X-Gm-Gg: ASbGncvQGQeSgAGvxhzYJrmHbDXjGV9V+Kby1sZqPzHkqLWZfLqSfueXDTeeksIg5Of
+ XoePCgbIE+w7OkhJzCWx8iIXR0DMi1SyEeE1QxdqZoLX1tGDNw5NW3bzD9yKIyh9GPM0knHYl5j
+ J9TzMb2bVcp/GloTOso6QYy9qn1JzgOWcUlcS98rQjGHaqYOy8LdH0/Xw96rjOINM0nLvPz1y3x
+ BTwJuDDI5d383Fb6rY=
+X-Google-Smtp-Source: AGHT+IHFoF92n/fML93Q5474RgNlv5KF0c+gBTlhvMyra0HW749FLkOCk4ixhUJs5l4Pix/04PTMrW1dYx3KOmdFy9Q=
+X-Received: by 2002:a05:690c:30b:b0:71a:183e:bfc0 with SMTP id
+ 00721157ae682-727f2bcbd01mr158063247b3.9.1757595443317; Thu, 11 Sep 2025
+ 05:57:23 -0700 (PDT)
 MIME-Version: 1.0
-References: <20250830054128.448363-1-richard.henderson@linaro.org>
-In-Reply-To: <20250830054128.448363-1-richard.henderson@linaro.org>
+References: <20250902200818.43305-1-osama.abdelkader@gmail.com>
+In-Reply-To: <20250902200818.43305-1-osama.abdelkader@gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 11 Sep 2025 13:18:58 +0100
-X-Gm-Features: Ac12FXwlBdjBpENTVDr-FjbLObMOiBmpfmFZjkTSkLuigZIQLgXwTi6dRXfYuP8
-Message-ID: <CAFEAcA8-U=+OvEVYcNQkt20DXsoZKqcuD9poqKsH=Ls_0tuEYQ@mail.gmail.com>
-Subject: Re: [PATCH v4 00/84] target/arm: Implement FEAT_GCS
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Date: Thu, 11 Sep 2025 13:57:11 +0100
+X-Gm-Features: Ac12FXy1ILZVf-cGjTf-P24rH1t1Zhg87-iTIimkpTv9AGPDF4vKHULx7O5vGEk
+Message-ID: <CAFEAcA_tEhEnt8hKoyO=MA9Y3DNfhaN=n0q9TmT=9-5O=uG+dQ@mail.gmail.com>
+Subject: Re: [PATCH] hw/arm/raspi4b: remove redundant check in
+ raspi_add_memory_node
+To: Osama Abdelkader <osama.abdelkader@gmail.com>
+Cc: alex.bennee@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b30;
- envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb30.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1131;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1131.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -94,40 +95,19 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Sat, 30 Aug 2025 at 17:05, Richard Henderson
-<richard.henderson@linaro.org> wrote:
+On Tue, 2 Sept 2025 at 21:08, Osama Abdelkader
+<osama.abdelkader@gmail.com> wrote:
 >
-> Based on Peter's tags/pull-target-arm-20250828.
-> Tree: https://gitlab.com/rth7680/qemu/-/tree/tgt-arm-gcs
+> The if (acells == 0 || scells == 0) check is redundant in
+> raspi_add_memory_node, since it is already checked in the call
+> chain, arm_load_dtb. Also the return value of the function is
+> not checked/used so it's removed.
 >
-> This includes the prerequisite features, ATS1A and S1PIE, and
-> not a prerequisite but closely related, S2PIE.
->
-> This passes the linux kselftests for gcs, with a 48-bit VA.
-> I also include a few smoke tests in tests/tcg/.
->
->
-> This includes a best-effort linux-user implementation.  Since we
-> don't have softmmu in user-only (yet), gcs stack pages get normal
-> read/write access.  This means we cannot write-protect the pages
-> in the same way the system implementation can.  But all of the
-> other parts of GCS work fine, which is good enough for testing.
->
-> Changes for v4:
->   - Rebase on target-arm.next, which includes all prereqs.
->   - Fixes up the minor conflicts with the elfload.c split.
->   - Include Thiago's t-b on the system-mode enable patch.
+> Signed-off-by: Osama Abdelkader <osama.abdelkader@gmail.com>
 
-I've now gone through this patchset. I haven't sent R-by tags
-because I didn't do very close inspection and other people
-have already done review (thanks!). I have left comments on
-some patches where I saw issues: 21, 26, 50, 52, 53, 68,
-but the rest looked good to me.
 
-I've applied patches 1-12 to target-arm.next (the FEAT_ATS1A
-part). Unfortunately the first major review issue is in
-patch 21 so I couldn't take up to FEAT_S1PIE/FEAT_S2PIE :-(
 
-thanks
+Applied to target-arm.next, thanks.
+
 -- PMM
 

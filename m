@@ -4,74 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44BC2CAC58E
-	for <qemu-arm@archiver.kernel.org>; Thu, 11 Sep 2025 14:09:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6F95CAC587
+	for <qemu-arm@archiver.kernel.org>; Thu, 11 Sep 2025 14:32:19 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uwhyj-0004Xk-2Y; Thu, 11 Sep 2025 10:08:49 -0400
+	id 1uwiLJ-0003ok-1h; Thu, 11 Sep 2025 10:32:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uwhyh-0004X8-Nb
- for qemu-arm@nongnu.org; Thu, 11 Sep 2025 10:08:47 -0400
-Received: from mail-yw1-x1134.google.com ([2607:f8b0:4864:20::1134])
+ id 1uwiLH-0003nz-8C
+ for qemu-arm@nongnu.org; Thu, 11 Sep 2025 10:32:07 -0400
+Received: from mail-yb1-xb35.google.com ([2607:f8b0:4864:20::b35])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uwhyf-0007Ch-4T
- for qemu-arm@nongnu.org; Thu, 11 Sep 2025 10:08:47 -0400
-Received: by mail-yw1-x1134.google.com with SMTP id
- 00721157ae682-71d60501806so5467527b3.2
- for <qemu-arm@nongnu.org>; Thu, 11 Sep 2025 07:08:44 -0700 (PDT)
+ id 1uwiLF-0002Kg-4E
+ for qemu-arm@nongnu.org; Thu, 11 Sep 2025 10:32:06 -0400
+Received: by mail-yb1-xb35.google.com with SMTP id
+ 3f1490d57ef6-e96e5535fcdso1824975276.1
+ for <qemu-arm@nongnu.org>; Thu, 11 Sep 2025 07:32:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1757599723; x=1758204523; darn=nongnu.org;
+ d=linaro.org; s=google; t=1757601123; x=1758205923; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=5nWBAMaFKxtgU0nhKGso914cbhhuX9CKx0pTbNZl86A=;
- b=nt0jzQEGP/JWckfQ8q9bT7LCjpmhDQf5N3jRi9wNwnUD/PZd38rQqobq1nu3jR/De8
- QTgPWHxgKZ+3tO6+MgHmWZw1qkFcXTcLXGfCqiiZvuVX9bRWriu/W7R4bXilkJZbk07k
- V9CPSVimawI8YL1tolImnzSnEGFAuFJaZgpptQIataRxQ67VuwXOp1xEw6TZaJe6AvYh
- 4QIHwO05sRYz7++jbhlzkO7dwBnEmFsu3+xuBeeQC3++hMRTBHE+e+toZq1kgemYYpPZ
- krH8wscTChMt9hhTxVJydXGYsugM402XG85ClsjBlKx5W5qXXoDcQEOY+HPUpQGUpnYb
- RDBA==
+ bh=3avX0MJx7z7ou5iJA8DuZIGcQo8FIUExV5H2IAivXQM=;
+ b=yPDh6ShsGO4UdkVpGSvccunYtdauqdYYDUcbb5hvWwwbL4z6l9msN+GFk+5xfhCyMf
+ u3niURFOcNSX6YoIO28xJTYBH/HQ95WXVio4hBsz0USJGN75LpA9TC347HTidM/I7tPC
+ k2FAqW47KRz3PHmtxOPt3xTxiGq5WAx2M3x8tktMMXTAnbmMpX0I16hHxE6oLxTf6mqy
+ VBIn0lAu++PL5ux5QVOS98ZYochWzXLP5gwrrhjST3rmo9ASUogU5Rj173aMdvEedNSc
+ DXM0pvi9GQd49UZMi0AOoeEQd/JB/JV3PYOWymHl9ggl2RoYyv7zxZptJ0loV232fPfW
+ PxbQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1757599723; x=1758204523;
+ d=1e100.net; s=20230601; t=1757601123; x=1758205923;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=5nWBAMaFKxtgU0nhKGso914cbhhuX9CKx0pTbNZl86A=;
- b=abo9Yp0IzSRbSUKte8YBTZR2Pxhe/+xwR0c8T4BU1U88YIetemzcFfzwZtsBor9BrF
- Ik48r3oX52zP031CW1/OqsMQK7RtCussloD69nWWeS7rRuRDtUKGVVcp9JWS+4INk+Ts
- 3OUR4pRhek/hT1WZ+L4WRENt+ekHF//hs1GArMN6LLTxtAqhKsBB6sBTUf2jxyzOisf2
- dDMqMvJ7skBmKoxPNXgsmPVLFf0GVRtQ1yXrA35GUbTO3WQTVOqPcpkDMjvgW8fSFo4X
- sctWSMxA2GO0Ed08jgOH15QPW4NJXX+mXCCtbgoCLR2dsnj2IvVKjclq7XrXxBSE9E2J
- rB/w==
+ bh=3avX0MJx7z7ou5iJA8DuZIGcQo8FIUExV5H2IAivXQM=;
+ b=a5N5N1R03RRTw6EE6IKbf4V8NnrhCDYJNAFvd0a5RSN39eqvYsbXYk7vQF1UoOiYDP
+ fRoqdQkZiCWUvh5lVzmy/OjOWeN0GJ/lSl4njDpkCUZS6jMH1dzPk69qCiGPTxyul1Ir
+ JdVmmQFNiDlbZwHvttHqhg3poLfWOQnum4P6caXbPp3M8U7OlGnveqBdQzKVPA4OIAN6
+ p5U13bV9NdkPDjDKfdshujCvUnaj8PbVafkdXOcfr/ccNp/yxNblRbqaBYDcutKHUfFr
+ 07frJzAuyS2Yr2Odk93Arc0iylEYRQjlww5bSz/TEC9MeIabJ+wrjsvCnk6OT/iwadVx
+ P2dQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVKrHqUbJ8fhVeSB/ArpGb57gOOwPxRgZZv37mIV6YWIiIpjgAS5Gv9siiiIUO7+Twzw3fBwkOA6A==@nongnu.org
-X-Gm-Message-State: AOJu0Yx6+QeBP3pzTeb26IYAYXfCW/HdYaHOJsI/oPscBY6EOFizQvwc
- bY6UT4ViL5GZZQcfD87flrV/6mMO5OnAQbA7HWzSGPLr/L598lM8QRN0Xx1fBlu8kerfPJPiGx+
- CJxFVBWnl09jdJ0N58/mqU+GWr3BYsDMZYOcliHlHQQ==
-X-Gm-Gg: ASbGncsDZphK9iLodenofuB820unVfEAnUZSuHh6VFlx6WRrL00dIO0LZLkNg80wk7y
- M2wuIgDFwUExf8Zt9HreN5vPs+utYRReUWiMp5IWoCB1lqw1YKqbeFpowzJEpErLazOczC8rf6k
- WH3KyueVLFITSgTp5d8RPHxofYPMqpgnsfondNtyQiJm2l598OqU2TAS16f9WrEq72auMGzSdnb
- Fme5w9RNg9i16qqBpU=
-X-Google-Smtp-Source: AGHT+IGeVyjd75ZZWAwkwvwfI/3lm+uaWbDM65Jo3QRM2Ua2Wb6ZQ8cqGnk0xpqUQ7dD7Z5Ikaju+ofug03/xiFDtLc=
-X-Received: by 2002:a05:690c:9207:b0:729:df2d:4a40 with SMTP id
- 00721157ae682-729df3c9f38mr131012917b3.23.1757599722507; Thu, 11 Sep 2025
- 07:08:42 -0700 (PDT)
+ AJvYcCVCrfiOghT8/uXoOYLawagTIPaNMUfZ92LQ6G7tWgcqkbE/QXfmgb7FRhe6AfFc+dmHRi29YxTVrw==@nongnu.org
+X-Gm-Message-State: AOJu0Yyy6XbR6uJyceUNGbZ/MXUuUf1mdMVSlUeDSzCDgyPGWLny5OK1
+ QR1+i8PjEr480b3nrQ7QRfKg4Ro001vASeTDSd/Ps5mPjP1txoY5SOLmozztwYUFh8SfYXbR165
+ BeF+clRbwZUPTgg4LwLXBCaWdjpNR4FqMRBdovfFb9A==
+X-Gm-Gg: ASbGnctJdBieGWfwmLX74Hnf3HBqtVZ3HTDHMmh22ubfUvgyXISj6a0qIdraXSHiF3I
+ 7Hk181dOfi2DUMz135WqmbvTIm+Zg98q0NAVOW8ERpfT1l4OqkHArCEVn0nCrlCU4Rxahahzwf7
+ DMPqAv8Ff7fWB8OdrMIdgNIce763amfRUiJNCwZNMhpym2WodJzO4z95z+a49p+XmQpXto0Nzqw
+ +j7lHhP
+X-Google-Smtp-Source: AGHT+IEQyUF2uAO/Dr3GK+/8Yh1FkCBEqxkbFKdhvIn9JJK1BNBdmp5GTS8xK/Ajst3mT6d6OfL+Zito7A1qMjyCNDs=
+X-Received: by 2002:a05:690c:8d17:b0:71e:7a40:7efb with SMTP id
+ 00721157ae682-72eeb9d1c8cmr29254277b3.11.1757601123187; Thu, 11 Sep 2025
+ 07:32:03 -0700 (PDT)
 MIME-Version: 1.0
 References: <20250822151614.187856-1-luc.michel@amd.com>
- <20250822151614.187856-24-luc.michel@amd.com>
-In-Reply-To: <20250822151614.187856-24-luc.michel@amd.com>
+ <20250822151614.187856-40-luc.michel@amd.com>
+In-Reply-To: <20250822151614.187856-40-luc.michel@amd.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 11 Sep 2025 15:08:31 +0100
-X-Gm-Features: Ac12FXxyKHg_YPP53hGH2YgrVEOESVcrZA9G9BUpX3MkkAgce9baJaHTJIOq-g8
-Message-ID: <CAFEAcA_1QZaHS6mE26jv3Qv9=h6zciA60AB31J7KwHAu1bwz-g@mail.gmail.com>
-Subject: Re: [PATCH v4 23/47] hw/intc/arm_gicv3: Introduce a 'first-cpu-index'
- property
+Date: Thu, 11 Sep 2025 15:31:51 +0100
+X-Gm-Features: Ac12FXwU5pA47bV4PZ29Vo3Sh2Y6L9SKmyzInNKFfKlbGlg_Wess6EL5BefVsm8
+Message-ID: <CAFEAcA-wnyWketgmq-gQYfgxMkDq16VDNZQCvM3uA1OE__=PAA@mail.gmail.com>
+Subject: Re: [PATCH v4 39/47] target/arm/tcg/cpu64: add the cortex-a78ae CPU
 To: Luc Michel <luc.michel@amd.com>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
- Francisco Iglesias <francisco.iglesias@xilinx.com>, 
  Francisco Iglesias <francisco.iglesias@amd.com>,
  "Edgar E . Iglesias" <edgar.iglesias@amd.com>, 
  =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
@@ -79,8 +77,8 @@ Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  Frederic Konrad <frederic.konrad@amd.com>, 
  Sai Pavan Boddu <sai.pavan.boddu@amd.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1134;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1134.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b35;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb35.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -105,19 +103,125 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On Fri, 22 Aug 2025 at 16:17, Luc Michel <luc.michel@amd.com> wrote:
 >
-> From: Francisco Iglesias <francisco.iglesias@xilinx.com>
->
-> Introduce a 'first-cpu-index' property for specifying the first QEMU CPU
-> connected to the GICv3. This makes it possible to have multiple instances
-> of the GICv3 connected to different CPU clusters.
->
-> For KVM, mark this property has unsupported. It probably does not make
-> much sense as it is intented to be used to model non-SMP systems.
+> Add support for the ARM Cortex-A78AE CPU.
 >
 > Signed-off-by: Luc Michel <luc.michel@amd.com>
-> Signed-off-by: Francisco Iglesias <francisco.iglesias@amd.com>
+> ---
+>  target/arm/tcg/cpu64.c | 79 ++++++++++++++++++++++++++++++++++++++++++
+>  1 file changed, 79 insertions(+)
+>
+> diff --git a/target/arm/tcg/cpu64.c b/target/arm/tcg/cpu64.c
+> index 35cddbafa4c..b56677c1a5d 100644
+> --- a/target/arm/tcg/cpu64.c
+> +++ b/target/arm/tcg/cpu64.c
+> @@ -404,10 +404,84 @@ static void aarch64_a76_initfn(Object *obj)
+>
+>      /* From D5.1 AArch64 PMU register summary */
+>      cpu->isar.reset_pmcr_el0 = 0x410b3000;
+>  }
+>
+> +static void aarch64_a78ae_initfn(Object *obj)
+> +{
+> +    ARMCPU *cpu = ARM_CPU(obj);
+> +    ARMISARegisters *isar = &cpu->isar;
+> +
+> +    cpu->dtb_compatible = "arm,cortex-a78ae";
+> +    set_feature(&cpu->env, ARM_FEATURE_V8);
+> +    set_feature(&cpu->env, ARM_FEATURE_NEON);
+> +    set_feature(&cpu->env, ARM_FEATURE_GENERIC_TIMER);
+> +    set_feature(&cpu->env, ARM_FEATURE_BACKCOMPAT_CNTFRQ);
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+From cpu.h:
+
+    /*
+     * ARM_FEATURE_BACKCOMPAT_CNTFRQ makes the CPU default cntfrq be 62.5MHz
+     * if the board doesn't set a value, instead of 1GHz. It is for backwards
+     * compatibility and used only with CPU definitions that were already
+     * in QEMU before we changed the default. It should not be set on any
+     * CPU types added in future.
+     */
+
+This is a new CPU type, so don't set this.
+
+> +    set_feature(&cpu->env, ARM_FEATURE_AARCH64);
+> +    set_feature(&cpu->env, ARM_FEATURE_CBAR_RO);
+
+The TRM says this CPU doesn't have a CBAR register, so
+don't set this.
+
+> +    set_feature(&cpu->env, ARM_FEATURE_EL2);
+> +    set_feature(&cpu->env, ARM_FEATURE_EL3);
+> +    set_feature(&cpu->env, ARM_FEATURE_PMU);
+> +
+> +    /* Ordered by B2.4 AArch64 registers by functional group */
+
+There is no B2.4 in the Cortex-A78AE TRM. Please don't
+just cut-and-paste things from other CPU definitions.
+Similarly for other comments here referencing TRM sections.
+
+In this case what you want is section 3.2.4.
+
+> +    SET_IDREG(isar, CLIDR, 0x82000023);
+> +    cpu->ctr = 0x9444c004;
+> +    cpu->dcz_blocksize = 4;
+> +    SET_IDREG(isar, ID_AA64DFR0, 0x0000000110305408ull);
+> +    SET_IDREG(isar, ID_AA64ISAR0, 0x0010100010211120ull);
+> +    SET_IDREG(isar, ID_AA64ISAR1, 0x0000000001200031ull);
+> +    SET_IDREG(isar, ID_AA64MMFR0, 0x0000000000101125ull);
+> +    SET_IDREG(isar, ID_AA64MMFR1, 0x0000000010212122ull);
+> +    SET_IDREG(isar, ID_AA64MMFR2, 0x0000000100001011ull);
+> +    SET_IDREG(isar, ID_AA64PFR0, 0x1100000010111112ull); /* GIC filled in later */
+> +    SET_IDREG(isar, ID_AA64PFR1, 0x0000000000000010ull);
+> +    SET_IDREG(isar, ID_AFR0, 0x00000000);
+> +    SET_IDREG(isar, ID_DFR0, 0x04010088);
+> +    SET_IDREG(isar, ID_ISAR0, 0x02101110);
+> +    SET_IDREG(isar, ID_ISAR1, 0x13112111);
+> +    SET_IDREG(isar, ID_ISAR2, 0x21232042);
+> +    SET_IDREG(isar, ID_ISAR3, 0x01112131);
+> +    SET_IDREG(isar, ID_ISAR4, 0x00010142);
+> +    SET_IDREG(isar, ID_ISAR5, 0x01011121);
+> +    SET_IDREG(isar, ID_ISAR6, 0x00000010);
+> +    SET_IDREG(isar, ID_MMFR0, 0x10201105);
+> +    SET_IDREG(isar, ID_MMFR1, 0x40000000);
+> +    SET_IDREG(isar, ID_MMFR2, 0x01260000);
+> +    SET_IDREG(isar, ID_MMFR3, 0x02122211);
+> +    SET_IDREG(isar, ID_MMFR4, 0x00021110);
+> +    SET_IDREG(isar, ID_PFR0, 0x10010131);
+> +    SET_IDREG(isar, ID_PFR1, 0x00010000); /* GIC filled in later */
+> +    SET_IDREG(isar, ID_PFR2, 0x00000011);
+> +    cpu->midr = 0x410fd421;          /* r0p1 */
+
+r0p3 is the latest...
+
+> +    cpu->revidr = 0;
+> +
+> +    /* From B2.18 CCSIDR_EL1 */
+> +    /* 64KB L1 dcache */
+> +    cpu->ccsidr[0] = make_ccsidr(CCSIDR_FORMAT_LEGACY, 4, 64, 64 * KiB, 7);
+> +    /* 64KB L1 icache */
+> +    cpu->ccsidr[1] = make_ccsidr(CCSIDR_FORMAT_LEGACY, 4, 64, 64 * KiB, 2);
+> +    /* 512KB L2 cache */
+> +    cpu->ccsidr[2] = make_ccsidr(CCSIDR_FORMAT_LEGACY, 8, 64, 512 * KiB, 7);
+> +
+> +    /* From B2.93 SCTLR_EL3 */
+> +    cpu->reset_sctlr = 0x30c50838;
+> +
+> +    /* From B4.23 ICH_VTR_EL2 */
+> +    cpu->gic_num_lrs = 4;
+> +    cpu->gic_vpribits = 5;
+> +    cpu->gic_vprebits = 5;
+> +    cpu->gic_pribits = 5;
+> +
+> +    /* From B5.1 AdvSIMD AArch64 register summary */
+> +    cpu->isar.mvfr0 = 0x10110222;
+> +    cpu->isar.mvfr1 = 0x13211111;
+> +    cpu->isar.mvfr2 = 0x00000043;
+> +
+> +    /* From D5.1 AArch64 PMU register summary */
+> +    cpu->isar.reset_pmcr_el0 = 0x41223000;
+> +}
+
+The register values look OK; checked against the TRM.
 
 thanks
 -- PMM

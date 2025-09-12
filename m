@@ -4,93 +4,143 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02F0BCAC587
-	for <qemu-arm@archiver.kernel.org>; Thu, 11 Sep 2025 23:51:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2582CAC582
+	for <qemu-arm@archiver.kernel.org>; Fri, 12 Sep 2025 07:03:04 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uwr4f-0002vF-Sv; Thu, 11 Sep 2025 19:51:33 -0400
+	id 1uwxo7-0002C3-2t; Fri, 12 Sep 2025 03:02:55 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
- id 1uwr4d-0002rn-MM
- for qemu-arm@nongnu.org; Thu, 11 Sep 2025 19:51:31 -0400
-Received: from mail-pg1-x52b.google.com ([2607:f8b0:4864:20::52b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
- id 1uwr4T-0004vO-AL
- for qemu-arm@nongnu.org; Thu, 11 Sep 2025 19:51:24 -0400
-Received: by mail-pg1-x52b.google.com with SMTP id
- 41be03b00d2f7-b523fb676efso1055223a12.3
- for <qemu-arm@nongnu.org>; Thu, 11 Sep 2025 16:51:20 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1757634679; x=1758239479; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=jzt8fZAiJxy8CMggOsbgEYt3c/CWXdu6thBIfAsi0e4=;
- b=h9Youz0wKxtFVRC1jFtUaZUbSaAnoEFOE4bbyfOtka/csm0tBhqi4T5vSsYVgbqpg6
- jKtMIvMD87sANpTJoEHtYosoG22SuRZTsOFc7fyzA7SmzznUpoDINOAhPcgkTVAITBLd
- 4sMqUYxJc/Koo5wgYXNWjzrH8AHMzdsWSZdgFWgWIi13x9+yfsv2lCLV4jLERajspMOs
- JfIct1ljiBFqXtWG6ucotlahECzC+dmOVQnfDOOVF9Lgn25c2ekSwlw6SMwwE7Xf7LND
- hytZxzi7wfeywOz2GdpkDjt1hAdr0t1p4iwy7lSJj93JSmVXQ37lo1p0oltvQ5kd9M7u
- /yCg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1757634679; x=1758239479;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=jzt8fZAiJxy8CMggOsbgEYt3c/CWXdu6thBIfAsi0e4=;
- b=NwLIAJnU4lMCsxewMpYOmPdEM7Zco1ueb73Lx55bxU5lE3iKwFM01fKncSq5SBCcw6
- krXKDyFJZ0T70gTDDlC1gkNdit/T7q94OQvbh1adqkk7US6ikh5RclDL5N7lE6Qs3TBR
- NC+HdifSels8yVx7IHVq8ja2pmTII/qFiliZVJK87but7IEHK1bh3uvO4nCcvPPCx35L
- KTGRnQfa4Loptvi/7mCyepdJkdCg9zxCRNW/7LHKqe5vjblw7rMET2YP0Kt2D6UAuUGJ
- /0dDv2jsc4AlOmaSHAOaTbDo/vSOkcr3zbb40jabbCksD9vZUjEBHF+NxODfnfMUbOXw
- hIvw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXFR8AVIDygFaC4pObciU50Fs2e/dpIruvXyjqPruf2osiCooxdYcOMXz0q+gBZ9kohjA6IG5yQ6g==@nongnu.org
-X-Gm-Message-State: AOJu0YybrAFfBu+pVTSKmdzuuEyE0AgAIGE4onHpT4q8NXljNuC5oUX0
- Rxl5ipghYv84xIrx4pUG/g9FlGmnr7ew8gRu5FEa70a4/CEvpCZma0afT3Q9c1YjBh8=
-X-Gm-Gg: ASbGncsx4L4tPzxtNkEJNiTgsfYgmV/BQZLAcJQkapZ9ivGKiblGv/bmRFCTQ5F3/Sm
- H0BiazBTebswCXKiAmRVljFq/WUl4lx0DJ9Bg/e7OBJClWlg7Mk3p9VO+lEuQ6b4nSKjwHbOX0U
- e2FyfjzFMExuvE3Cd6yXUTDTJf/CHE7WSgMZh+2ORs3Z2pJ9U1nISdCPbW+xJ0820RM4oAPPfyB
- iGw4cc1qghHjeGwXEvP3dU/Z7hdpLqy0p/AtrIVihMQi4T34P9aNgzHwMRv46jaM59u3X66Grs7
- ghbxCylUlGiFlLUE6+Mb+DHq/fNyd1eE9LjYwaoGr1TR3tXQ7fjin8q3rg5IkuOE2LqztQzEeze
- 37PyYeNogKfpcKY+YgWtITCqWHv185Lh6TA==
-X-Google-Smtp-Source: AGHT+IF0BtcBCb7ejbGUs9ksFkJdlfJEfbqYG7evbjKVPIYkpikmTxZ7Q5aL1+AFzMT4vzLDNG//Zw==
-X-Received: by 2002:a17:902:ef03:b0:24c:7b94:2f87 with SMTP id
- d9443c01a7336-25d243ef68dmr12815175ad.14.1757634679068; 
- Thu, 11 Sep 2025 16:51:19 -0700 (PDT)
-Received: from [192.168.0.102] ([186.215.55.55])
- by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-25c3ae29aefsm29892675ad.118.2025.09.11.16.51.11
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 11 Sep 2025 16:51:18 -0700 (PDT)
-Message-ID: <a6320118-84f0-4088-82de-7192be6093cd@linaro.org>
-Date: Thu, 11 Sep 2025 20:51:08 -0300
+ (Exim 4.90_1) (envelope-from <Luc.Michel@amd.com>)
+ id 1uwxo2-0002BQ-T1; Fri, 12 Sep 2025 03:02:50 -0400
+Received: from mail-dm6nam12on20625.outbound.protection.outlook.com
+ ([2a01:111:f403:2417::625]
+ helo=NAM12-DM6-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <Luc.Michel@amd.com>)
+ id 1uwxo0-00058E-BM; Fri, 12 Sep 2025 03:02:50 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=XRuArVILtj9ItgeYzpyqz3UgG9XCBwL7bSK7m7JTDP7GKxY5QsDpGDv0R4iLGjYRPgI9VfrHq0abAyAnMiIWAgZAQiu7cwIS6b+0LzA85cCDa/djaJQFQceGyn3gFyJHTnH6EUVO2QtFdGgCcpjRpxmlkpNuwsq85FwurBqjLtN0MJD7dv5Pnrny6KyE3MSkWotO/CzbPQmpWdXPaHpgOdgeQic2QUEJ0cSwHcxAt6XUbtHondbkYzIfgdVfEKuNS6CAVnerePoeMijruX7NOysHbXpj3TANa+Rgf7dHhduxUw1+d1Jm6YGOSDT/hZ8ZT65yWGX0fJJJuCe4NgAUVA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=zCXZU9e44H5BTdIejBMDoFHy7Dvoep10JIIACPAt2Ak=;
+ b=nxzdt9JMkgN5xlYgX8ERhlowvxnnWzKqzq8+NWSPLMzeABlsvAMDrndrgsUiXlp//a7kPvnBzon6KP5OtVAdl75JFyfqSwyibv2AhXhvkXBkEeXbdmR2PGJTl9tJWdaiToy4+Iti5dJ5EjApoHvC3PCD/4d5XheaF3OcEvxPRuB9TnpQdyw6RhZGfCLFzyO5HuA2IB2OC66tKaXM0xpaljWBfAmKW57KhntwOBMEVbZBAvCHcRvj519ExBlgKKTNgqGc67gfCcFelyCSL9mpdoPNY+B1tIkhbK8pdpz0082Nn5bA3IYJAxqtOIH51Osfacxn0Xju7IKKAPqj9R+KTg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 165.204.84.17) smtp.rcpttodomain=linaro.org smtp.mailfrom=amd.com; dmarc=pass
+ (p=quarantine sp=quarantine pct=100) action=none header.from=amd.com;
+ dkim=none (message not signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1; 
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=zCXZU9e44H5BTdIejBMDoFHy7Dvoep10JIIACPAt2Ak=;
+ b=AEwmXdnRbdttcHyntg9/UF3maHp/6TMG9Cnk/xv6z06PP8HucoISjg5TF3QyBZQU6ON4TOreFthiLMxoRkiZpR89XqNouRk5r0EBZq/GaEbLseZM5lNj60c21C0SDiFg+wi/f2Jbg+zgyk1Kk2r84ey00b3IgGBbEYqZZLA5fQQ=
+Received: from BY5PR03CA0001.namprd03.prod.outlook.com (2603:10b6:a03:1e0::11)
+ by IA1PR12MB6388.namprd12.prod.outlook.com (2603:10b6:208:388::7)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9094.22; Fri, 12 Sep
+ 2025 07:02:41 +0000
+Received: from BY1PEPF0001AE1C.namprd04.prod.outlook.com
+ (2603:10b6:a03:1e0:cafe::f1) by BY5PR03CA0001.outlook.office365.com
+ (2603:10b6:a03:1e0::11) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.9115.15 via Frontend Transport; Fri,
+ 12 Sep 2025 07:02:40 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 165.204.84.17)
+ smtp.mailfrom=amd.com; dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=amd.com;
+Received-SPF: Pass (protection.outlook.com: domain of amd.com designates
+ 165.204.84.17 as permitted sender) receiver=protection.outlook.com;
+ client-ip=165.204.84.17; helo=satlexmb07.amd.com; pr=C
+Received: from satlexmb07.amd.com (165.204.84.17) by
+ BY1PEPF0001AE1C.mail.protection.outlook.com (10.167.242.105) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.9115.13 via Frontend Transport; Fri, 12 Sep 2025 07:02:40 +0000
+Received: from satlexmb10.amd.com (10.181.42.219) by satlexmb07.amd.com
+ (10.181.42.216) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.17; Fri, 12 Sep
+ 2025 00:02:40 -0700
+Received: from satlexmb08.amd.com (10.181.42.217) by satlexmb10.amd.com
+ (10.181.42.219) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.17; Fri, 12 Sep
+ 2025 00:02:40 -0700
+Received: from XFR-LUMICHEL-L2.amd.com (10.180.168.240) by satlexmb08.amd.com
+ (10.181.42.217) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.17 via Frontend
+ Transport; Fri, 12 Sep 2025 00:02:38 -0700
+Date: Fri, 12 Sep 2025 09:02:37 +0200
+From: Luc Michel <luc.michel@amd.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+CC: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, Francisco Iglesias
+ <francisco.iglesias@amd.com>, "Edgar E . Iglesias" <edgar.iglesias@amd.com>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>, Alistair Francis
+ <alistair@alistair23.me>, Frederic Konrad <frederic.konrad@amd.com>, "Sai
+ Pavan Boddu" <sai.pavan.boddu@amd.com>
+Subject: Re: [PATCH v4 39/47] target/arm/tcg/cpu64: add the cortex-a78ae CPU
+Message-ID: <aMPFjZuTsXSBiqeL@XFR-LUMICHEL-L2.amd.com>
+References: <20250822151614.187856-1-luc.michel@amd.com>
+ <20250822151614.187856-40-luc.michel@amd.com>
+ <CAFEAcA-wnyWketgmq-gQYfgxMkDq16VDNZQCvM3uA1OE__=PAA@mail.gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 0/5] tests/functional: Adapt reverse_debugging to run
- w/o Avocado
-To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
-Cc: qemu-devel@nongnu.org, alex.bennee@linaro.org, thuth@redhat.com,
- qemu-arm@nongnu.org
-References: <20250904154640.52687-1-gustavo.romero@linaro.org>
- <aL7CsSppNc-WZFY-@redhat.com>
-Content-Language: en-US
-From: Gustavo Romero <gustavo.romero@linaro.org>
-In-Reply-To: <aL7CsSppNc-WZFY-@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::52b;
- envelope-from=gustavo.romero@linaro.org; helo=mail-pg1-x52b.google.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <CAFEAcA-wnyWketgmq-gQYfgxMkDq16VDNZQCvM3uA1OE__=PAA@mail.gmail.com>
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: BY1PEPF0001AE1C:EE_|IA1PR12MB6388:EE_
+X-MS-Office365-Filtering-Correlation-Id: 439f9f56-bf85-4152-ab4c-08ddf1ca5d5a
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|1800799024|376014|82310400026|36860700013; 
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?aVWFpFwEbVUgCtdv+qdJUUSKkfvPjmy92RW+c/+LDFRwdkVT23SUTYDvx6kw?=
+ =?us-ascii?Q?OthacFL+sf/kwKJH7B6N7nHhiC/DVdenAB4kvoHKk1PV//NY4X2UyhrfZYK3?=
+ =?us-ascii?Q?VTAy5QAgIo6eHJhMtX7Ag2+Kj7Z52ufbXsc+BguSGo8XFDd58xl6wXolKP/m?=
+ =?us-ascii?Q?40Wrq7EUrgBpwsvLR0vw5H38vPU32kT/vbiMhEgThJgYs2vg5+qgvYeBpTO0?=
+ =?us-ascii?Q?ovZqf0O644jo/dNa9ET4BXC8CqZuYzwDvQXGZJN910GVtF3SMod7aqZf2FpJ?=
+ =?us-ascii?Q?8E8KhnAiO6g/+X197/8dFODapS0iBoaPhHZoZ8qemYyXGKoYMbgDxxtEu0qq?=
+ =?us-ascii?Q?WePReTOJmCbyQkQIIuCyToa2Qvf3VECSJ9bXOELlwt7JxrWqCTWHilxp0REX?=
+ =?us-ascii?Q?lpepN2x+1t8zRqEWBCbyq0D6xTgNlChF75yUyE4BpGaT03kuJ3pgLQrxq4+n?=
+ =?us-ascii?Q?bP2wf+1dMjOcTcrOslF6hKPs601kjXLRhv9chBwHtQKQXKkr6lg6nRSt3CR9?=
+ =?us-ascii?Q?NcxpNb/ktnODjkoL/9GO2jUL9jvhfFh1XYphb5MH8yEZM4yP6o3ZdQAB7XQi?=
+ =?us-ascii?Q?4GjXLPj3iQYRKgu71pkiXXPLZIKQgj7pe6YVAf8wZXQVSiGcmwkZ0T0TuttA?=
+ =?us-ascii?Q?ritsGuTEIYYAsVGRzypZn04bkXlUCo8AZrLWDp/5S0CIJB6qgJTh5eeOWngx?=
+ =?us-ascii?Q?IlEOsoJfwSwS8pCMmG09/i9YS0jN/w8nEG4G7glBh+YcE39AEATWVd9M9xMn?=
+ =?us-ascii?Q?fJvkdwnQnaT3DBVI7OwakighyykSu7xexC0b54pCvinYnS0/jiLF/RaAjv/2?=
+ =?us-ascii?Q?/9u/Va3U812VFVVzJpBkktpViFK24w2Hbhu4VbFCjybfoosE36toqX7zTet0?=
+ =?us-ascii?Q?Q3/CPcDZoyltamnfoSUlXBkXec8JiKijfk7wJj91mraPBkwH6WyqM55x74Rp?=
+ =?us-ascii?Q?qenTLnc9CWvaJAeDBBQ+f5nK5EC1OaPF/fHJ3dEWs7hawQPoTk8w9DFwQV/4?=
+ =?us-ascii?Q?aNe7USCRgysEa7LiQqvjrHlVZYjzm00JBPVrMICVXNK0emT7x+BeMqD677tz?=
+ =?us-ascii?Q?38h/HiUdaKviRt/oy1lVGeUnxZh/VXNIkcXn22iZztnqsWGyhbMuHWMkcXrw?=
+ =?us-ascii?Q?SG2/hRbKbULgThnmQmvq7oC43ZFj367TTHDp3zxhrWSpeTlQquV1xeE4Uhei?=
+ =?us-ascii?Q?D/GUo+esvn3dxXcf48OGWli6fw60jhXTKWSxS08yrZU0JtSJUwyKAIXP5uGZ?=
+ =?us-ascii?Q?QB/ttnXV8SvtoxcYiK173+GOWk+vYXgBZ4DgDPBG9nEmmf2F8/5wxRbA9DKx?=
+ =?us-ascii?Q?7jMrkLcvV2uJNnKSoIWJwpWDOA+DvmH5N18fMdHPrTighjFZ7xxISrQpjwsI?=
+ =?us-ascii?Q?d0NB1lkJX3bZzKWgZanQuuN/T2IMS2Aoe//rMxkZ85rlEZLgUwPkSwDy5f3+?=
+ =?us-ascii?Q?QjriGdZWzLUdkL4rQFKp3AwINzWXgzsJbBy9OrImES4bzTEPOX8Rh4RrAF7A?=
+ =?us-ascii?Q?kvDozrPW8TAWD2fDEAQ/vlRrHXvb04ssYfZi?=
+X-Forefront-Antispam-Report: CIP:165.204.84.17; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:CAL; SFV:NSPM; H:satlexmb07.amd.com; PTR:InfoDomainNonexistent; CAT:NONE;
+ SFS:(13230040)(1800799024)(376014)(82310400026)(36860700013); DIR:OUT;
+ SFP:1101; 
+X-OriginatorOrg: amd.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 Sep 2025 07:02:40.7054 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 439f9f56-bf85-4152-ab4c-08ddf1ca5d5a
+X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3dd8961f-e488-4e60-8e11-a82d994e183d; Ip=[165.204.84.17];
+ Helo=[satlexmb07.amd.com]
+X-MS-Exchange-CrossTenant-AuthSource: BY1PEPF0001AE1C.namprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA1PR12MB6388
+Received-SPF: permerror client-ip=2a01:111:f403:2417::625;
+ envelope-from=Luc.Michel@amd.com;
+ helo=NAM12-DM6-obe.outbound.protection.outlook.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -106,167 +156,142 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Daniel,
+On 15:31 Thu 11 Sep     , Peter Maydell wrote:
+> On Fri, 22 Aug 2025 at 16:17, Luc Michel <luc.michel@amd.com> wrote:
+> >
+> > Add support for the ARM Cortex-A78AE CPU.
+> >
+> > Signed-off-by: Luc Michel <luc.michel@amd.com>
+> > ---
+> >  target/arm/tcg/cpu64.c | 79 ++++++++++++++++++++++++++++++++++++++++++
+> >  1 file changed, 79 insertions(+)
+> >
+> > diff --git a/target/arm/tcg/cpu64.c b/target/arm/tcg/cpu64.c
+> > index 35cddbafa4c..b56677c1a5d 100644
+> > --- a/target/arm/tcg/cpu64.c
+> > +++ b/target/arm/tcg/cpu64.c
+> > @@ -404,10 +404,84 @@ static void aarch64_a76_initfn(Object *obj)
+> >
+> >      /* From D5.1 AArch64 PMU register summary */
+> >      cpu->isar.reset_pmcr_el0 = 0x410b3000;
+> >  }
+> >
+> > +static void aarch64_a78ae_initfn(Object *obj)
+> > +{
+> > +    ARMCPU *cpu = ARM_CPU(obj);
+> > +    ARMISARegisters *isar = &cpu->isar;
+> > +
+> > +    cpu->dtb_compatible = "arm,cortex-a78ae";
+> > +    set_feature(&cpu->env, ARM_FEATURE_V8);
+> > +    set_feature(&cpu->env, ARM_FEATURE_NEON);
+> > +    set_feature(&cpu->env, ARM_FEATURE_GENERIC_TIMER);
+> > +    set_feature(&cpu->env, ARM_FEATURE_BACKCOMPAT_CNTFRQ);
+> 
+> From cpu.h:
+> 
+>     /*
+>      * ARM_FEATURE_BACKCOMPAT_CNTFRQ makes the CPU default cntfrq be 62.5MHz
+>      * if the board doesn't set a value, instead of 1GHz. It is for backwards
+>      * compatibility and used only with CPU definitions that were already
+>      * in QEMU before we changed the default. It should not be set on any
+>      * CPU types added in future.
+>      */
+> 
+> This is a new CPU type, so don't set this.
+> 
+> > +    set_feature(&cpu->env, ARM_FEATURE_AARCH64);
+> > +    set_feature(&cpu->env, ARM_FEATURE_CBAR_RO);
+> 
+> The TRM says this CPU doesn't have a CBAR register, so
+> don't set this.
+> 
+> > +    set_feature(&cpu->env, ARM_FEATURE_EL2);
+> > +    set_feature(&cpu->env, ARM_FEATURE_EL3);
+> > +    set_feature(&cpu->env, ARM_FEATURE_PMU);
+> > +
+> > +    /* Ordered by B2.4 AArch64 registers by functional group */
+> 
+> There is no B2.4 in the Cortex-A78AE TRM. Please don't
+> just cut-and-paste things from other CPU definitions.
+> Similarly for other comments here referencing TRM sections.
+> 
+> In this case what you want is section 3.2.4.
 
-Thanks a lot for review and the suggestions.
+Sorry. All of this come from the fact that I mistakenly used the r0p1
+revision TRM. Section numbering seems to have changed between the
+revisions.
 
-On 9/8/25 08:49, Daniel P. Berrangé wrote:
-> On Thu, Sep 04, 2025 at 03:46:35PM +0000, Gustavo Romero wrote:
->> In this series, we leveraged the run-test.py script used in the
->> check-tcg tests, making it a GDB runner capable of calling a test script
->> without spawning any VMs. In this configuration, the test scripts can
->> manage the VM and also import gdb, making the GDB Python API inside the
->> functional test scripts.
->>
->> A --quiet option has been added to run-test.py so it doesn't print the
->> command line used to execute GDB to the stdout. This ensures that users
->> don't get confused about how to re-run the tests. One can re-run the
->> test simply by copying and pasting the command line shown by Meson when
->> V=1 is passed:
->>
->> $ make -j check-functional V=1
->>
->> or, alternatively, once the test run completes, the exact command found
->> in the 'command:' field of the build/meson-logs/testlog-thorough.txt
->> file generated by Meson. Both methods provide the correct environment
->> variables required to run the test, such as the proper $PYTHONPATH.
-> 
-> While I like the conceptual idea of just sending human GDB commands,
-> instead of working with GDB protocol packets, I really dislike the
-> effect this has on the execution / startup of the functional tests
-> via use of the custom runner for a number of reasons
-> 
->   * The command line for launching the test outside of meson is very
->     complicated, so not memorable
+I'll redo this based on r0p3.
 
-Why very complicated? It calls a simple runner instead of calling the
-test script directly, but it doesn't change the way to re-run a single
-test. One just have to pass V=1 to see make's command line  and copy
-and paste the full command line to re-run the test. I mentioned
-inspecting 'testlog-thorough.txt' just for completeness.
+Thanks
 
+Luc
 
->   * It makes the meson.build rules much more complicated
+> 
+> > +    SET_IDREG(isar, CLIDR, 0x82000023);
+> > +    cpu->ctr = 0x9444c004;
+> > +    cpu->dcz_blocksize = 4;
+> > +    SET_IDREG(isar, ID_AA64DFR0, 0x0000000110305408ull);
+> > +    SET_IDREG(isar, ID_AA64ISAR0, 0x0010100010211120ull);
+> > +    SET_IDREG(isar, ID_AA64ISAR1, 0x0000000001200031ull);
+> > +    SET_IDREG(isar, ID_AA64MMFR0, 0x0000000000101125ull);
+> > +    SET_IDREG(isar, ID_AA64MMFR1, 0x0000000010212122ull);
+> > +    SET_IDREG(isar, ID_AA64MMFR2, 0x0000000100001011ull);
+> > +    SET_IDREG(isar, ID_AA64PFR0, 0x1100000010111112ull); /* GIC filled in later */
+> > +    SET_IDREG(isar, ID_AA64PFR1, 0x0000000000000010ull);
+> > +    SET_IDREG(isar, ID_AFR0, 0x00000000);
+> > +    SET_IDREG(isar, ID_DFR0, 0x04010088);
+> > +    SET_IDREG(isar, ID_ISAR0, 0x02101110);
+> > +    SET_IDREG(isar, ID_ISAR1, 0x13112111);
+> > +    SET_IDREG(isar, ID_ISAR2, 0x21232042);
+> > +    SET_IDREG(isar, ID_ISAR3, 0x01112131);
+> > +    SET_IDREG(isar, ID_ISAR4, 0x00010142);
+> > +    SET_IDREG(isar, ID_ISAR5, 0x01011121);
+> > +    SET_IDREG(isar, ID_ISAR6, 0x00000010);
+> > +    SET_IDREG(isar, ID_MMFR0, 0x10201105);
+> > +    SET_IDREG(isar, ID_MMFR1, 0x40000000);
+> > +    SET_IDREG(isar, ID_MMFR2, 0x01260000);
+> > +    SET_IDREG(isar, ID_MMFR3, 0x02122211);
+> > +    SET_IDREG(isar, ID_MMFR4, 0x00021110);
+> > +    SET_IDREG(isar, ID_PFR0, 0x10010131);
+> > +    SET_IDREG(isar, ID_PFR1, 0x00010000); /* GIC filled in later */
+> > +    SET_IDREG(isar, ID_PFR2, 0x00000011);
+> > +    cpu->midr = 0x410fd421;          /* r0p1 */
+> 
+> r0p3 is the latest...
+> 
+> > +    cpu->revidr = 0;
+> > +
+> > +    /* From B2.18 CCSIDR_EL1 */
+> > +    /* 64KB L1 dcache */
+> > +    cpu->ccsidr[0] = make_ccsidr(CCSIDR_FORMAT_LEGACY, 4, 64, 64 * KiB, 7);
+> > +    /* 64KB L1 icache */
+> > +    cpu->ccsidr[1] = make_ccsidr(CCSIDR_FORMAT_LEGACY, 4, 64, 64 * KiB, 2);
+> > +    /* 512KB L2 cache */
+> > +    cpu->ccsidr[2] = make_ccsidr(CCSIDR_FORMAT_LEGACY, 8, 64, 512 * KiB, 7);
+> > +
+> > +    /* From B2.93 SCTLR_EL3 */
+> > +    cpu->reset_sctlr = 0x30c50838;
+> > +
+> > +    /* From B4.23 ICH_VTR_EL2 */
+> > +    cpu->gic_num_lrs = 4;
+> > +    cpu->gic_vpribits = 5;
+> > +    cpu->gic_vprebits = 5;
+> > +    cpu->gic_pribits = 5;
+> > +
+> > +    /* From B5.1 AdvSIMD AArch64 register summary */
+> > +    cpu->isar.mvfr0 = 0x10110222;
+> > +    cpu->isar.mvfr1 = 0x13211111;
+> > +    cpu->isar.mvfr2 = 0x00000043;
+> > +
+> > +    /* From D5.1 AArch64 PMU register summary */
+> > +    cpu->isar.reset_pmcr_el0 = 0x41223000;
+> > +}
+> 
+> The register values look OK; checked against the TRM.
+> 
+> thanks
+> -- PMM
 
-Do we want to never augment functional tests' meson.build? Nothing
-complicated is being added. Basically, just a new variable suffixed with
-'_with_runner' which holds a tuple (test, runner) that tell the test
-to be executed, following the same logic we already have for all the other
-variables that specify the tests per arch/mode/speed.
-
-Another option would be to select a runner based on a suffix in the test
-name, for instance, 'reverse_debug_with_runner.py'.
-
-
->   * Running standalone there is no TAP output available making the
->     test hard to debug on failure or timeout
-
-This is because of an unfortunate GDB Python API issue, please see my
-reply in your comment on patch 5/5. This can be solved but needs more
-investigation on GDB side.
-
-
-> I understand the need to spawn the test via gdb, in order to be able
-> to import the 'gdb' python module. Looking at what reverse_debugging.py
-> does, however, makes me question whether we actually need to directly
-> use the 'gdb' python module.
-> 
-> The only APIs we use are 'gdb.execute' and 'gdb.parse_and_eval'.
-> 
-> The latter is only used once as
-> 
->    gdb.parse_and_eval("$pc")
-> 
-> and I believe that can be changed to
-> 
->    gdb.execute("printf \"0x%x\", $pc", to_string=True)
-> 
-> IOW, all we need is 'gdb.execute("....", to_string=True)'
-
-Yes, I do want to directly use the 'gdb' python module directly in the
-tests. We shouldn't look at a solution only for reverse_debug.py but also
-think of any future tests that will require the GDB Python API, so I don't
-want to specialize here and reduce the API to a single method.
-
-
-> With a little extra helper proxy script, we can achieve this without
-> changing the way scripts are launched.
-> 
-> The script needs to listen on a UNIX socket path. When a client
-> connects, it should read lines of data from the client and pass
-> them to 'gdb.execute(..., to_string=True)' and whatever data
-> gdb returns should be written back to the client.
-> 
-> A very very crude example with no error handling would be:
-> 
->    #!/usr/bin/python3
-> 
->    import gdb
->    import os
->    import socket
-> 
->    sock = os.environ.get("QEMU_PROXY", "/tmp/qemu.gdb.proxy")
-> 
->    try:
->      os.unlink(sock)
->    except:
->      pass
-> 
->    with socket.socket(socket.AF_UNIX, socket.SOCK_STREAM) as s:
->      s.bind(sock)
->      s.listen()
->      conn, addr = s.accept()
->      fh = conn.makefile('rw')
->      with conn:
->          while True:
->              line = fh.readline()
->              if not line:
->                  break
->              data = gdb.execute(line, to_string=True)
->              fh.write(data)
->              fh.flush()
-> 
-> 
-> In the functional test suite, we should have a helper file
-> tests/functional/qemu_test/gdb.py that provides an API for
-> launching GDB to execute this proxy script, and an API to
-> execute commands by talking over this UNIX socket path.
-> 
-> With this, we will need no changes in the way we execute the
-> reverse debugging script from a test runner POV, thus avoiding
-> all the downsides of use of the run-test.py script. IOW, the
-> first 4 patches in this series go away completely. Instead we
-> need a patch to create the proxy script and a patch to create
-> the helper APIs in tests/functional/qemu_test/gdb.py, whereupon
-> the last patch can replace
-> 
-> try:
->      import gdb
-> except ModuleNotFoundError:
->      from sys import exit
->      exit("This script must be launched via tests/guest-debug/run-test.py!")
-> 
-> with
-> 
->    from qemu_test import gdb
-> 
-> and the earlier mentioned replacement of parse_and_eval()
-
-For the sake of not adding a few lines into meson.build, we are going
-to design a new ad-hoc API for the functional tests on top of the GDB
-Python API, which will communicate with the test script via a socket
-and will _still require a runner anyway_ (just now hidden under a
-module/API)? This is far more complicated than having a simple runner
-to call GDB and pass the test script.
-
-In fact, I think that if the test script had any clue in its name,
-like the "_with_runner" suffix I mentioned above, maybe Meson's could
-take care of calling GDB itself without calling any runner. Would that
-address your first comment in the bullets (and maybe the second one too,
-but not sure without trying it) and get this series accepted by you,
-since the third one, about the exitcode, is related to GDB's odd behavior?
-
-
-Cheers,
-Gustavo
+-- 
 

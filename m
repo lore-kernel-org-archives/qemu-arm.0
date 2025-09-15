@@ -4,151 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 373AFCAC597
-	for <qemu-arm@archiver.kernel.org>; Mon, 15 Sep 2025 12:50:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB2B1CAC592
+	for <qemu-arm@archiver.kernel.org>; Mon, 15 Sep 2025 16:05:55 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uy8eo-0007XJ-Lk; Mon, 15 Sep 2025 08:50:11 -0400
+	id 1uyBi3-0008Ae-GO; Mon, 15 Sep 2025 12:05:45 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1uy8eR-0007Bv-Im
- for qemu-arm@nongnu.org; Mon, 15 Sep 2025 08:49:49 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1uy8eD-0002qR-4r
- for qemu-arm@nongnu.org; Mon, 15 Sep 2025 08:49:47 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1757940570;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=BUUKoAo41CJwreQ9ZCD61KMP24ARohN8mBV2SYIsYz8=;
- b=fMtXmqiUbi7fW509A1hjpC4MPxfu/Zk/xy8mpauEk3MCX8SE99woxKXK8XSeYRBHsD0cnH
- KKxfzScn0a3yHzg5J3ti3yibdtUPdbPj1PkQakncc667r/MBUiDjVEv+DowFh78UvqIR7w
- c3bGb/7t8h1oKaC5l9gOcpeE2wGIftc=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-439-oZBnUAm2PfKX0R7usp22bA-1; Mon, 15 Sep 2025 08:49:29 -0400
-X-MC-Unique: oZBnUAm2PfKX0R7usp22bA-1
-X-Mimecast-MFC-AGG-ID: oZBnUAm2PfKX0R7usp22bA_1757940567
-Received: by mail-wm1-f69.google.com with SMTP id
- 5b1f17b1804b1-45dd66e1971so35475915e9.2
- for <qemu-arm@nongnu.org>; Mon, 15 Sep 2025 05:49:28 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1uyBhi-0007mG-19
+ for qemu-arm@nongnu.org; Mon, 15 Sep 2025 12:05:27 -0400
+Received: from mail-yw1-x1129.google.com ([2607:f8b0:4864:20::1129])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1uyBhZ-0001uD-HH
+ for qemu-arm@nongnu.org; Mon, 15 Sep 2025 12:05:21 -0400
+Received: by mail-yw1-x1129.google.com with SMTP id
+ 00721157ae682-71d60528734so30075647b3.2
+ for <qemu-arm@nongnu.org>; Mon, 15 Sep 2025 09:05:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1757952310; x=1758557110; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=i1+nafa16EBVNLzxQuQ1M3vX5Ab28TZOAsUJB48AWsk=;
+ b=ik2EA561c3aTdTdf0EcIRd9S1KuGP8CVTjp6IVDWYMdqSR0O4TeIaSRv9Su6spq/Kc
+ N5qIWqO5i3pX0/uMbUqlsZa8EkISQTz5+AtYaieoHuYv2xAEICwuTlbJbUypT6ToNL91
+ OXhsfFr/Xv4dtDI4YddWGygRRt/iuXsnSmhYVSeESEydykFofsh9P4D1xpK8mnZUClI7
+ V8x+Jl9OkO7IQBmWAnddxpEi/s6GVcCoITjletuMMrhRhHr4RYKEyD+jRywIT2WR+Fng
+ pDOCfiNizavMqu0s+Zm9AWSU3FAYP7+wPGMRouL4hwwbWo/qf1Y2ba3VsVhhHL7wdBlP
+ AD+g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1757940567; x=1758545367;
- h=content-transfer-encoding:in-reply-to:autocrypt:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ d=1e100.net; s=20230601; t=1757952310; x=1758557110;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=BUUKoAo41CJwreQ9ZCD61KMP24ARohN8mBV2SYIsYz8=;
- b=RGUAxuHshUJDh+vPwOmQhW9xdPn9Y38dfrW8nteXG6NgB+Glm/v3PYwRDXRyr8fS9P
- cGLfp06/j854a1nmgYV7Xg0JCbWs7onBhifSIAKvtao03fcCgCtXcDGW2XXiWQMYoceA
- 1uhYkrwlh3RWFu9LATDLdVJ1oP3acD56qkZG+Itr17u2oWHz88BtUfGk8pWPJsFivD99
- sSEzaoajKmWcjq3rOiT0M3bdoF1GAxG1i+s4ZHeWOpfGrgZw8Htts+VFqZQJvNmknAPU
- wdgb6QGLlPKJ7Rn9vtMQjLdy2RbEPmIZWmP+OI4C4VR7eOpjr9cASOz6huSwvhTd9kNJ
- 37Eg==
+ bh=i1+nafa16EBVNLzxQuQ1M3vX5Ab28TZOAsUJB48AWsk=;
+ b=ujQjD2EzHZ1VH8KcEJUxO1VSoEsezl5xj+seAIBQ4qeFhwANaRGA+flC7artY4ZUkX
+ v8zVr+LjBvcrMDbOnbv36OdUp9Y9SfRL42shFqdiNZWUajs38Bc7tSpt7S/nUqFIJLX/
+ ZsYLPulroTdmyHy5YBKcFUYddrySNimWI9+McEA7e3pPaYwzQTE9bz4B+r/IaQHweItN
+ P7jsf14JSOPaVJDoAMXymzUHC7Z7IFWpeoAIpm0Q6pfvC4nl8Vtz6A7ZsQ/T4zlRQF9P
+ axmi6bSmbo21WY2jMl+RHEfnh4TXOIXC/uJ3z/C9Mkm0ByxQ52CsYEAevG0U3BxF9APz
+ xBrQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCU30gQUvficFaoTHabgmqkeLIhIoKxQWJgoSZWbciMoTk876Q8zVOvBL7zQoBl1fG0wWSEm271v5g==@nongnu.org
-X-Gm-Message-State: AOJu0YztbguD4WBP8ecBOMRGJ7hdAzIlPHT8Q9GdMLlqCbFLmimxHQco
- fDnc4f1bDHdSMNHeC8uyyoT4HHg1g3O39JAL40eSDrAlY3uMUIQw8E2b6K0LMxDSSIxlqImGujq
- +PIy1J3h00Y635jU5Jl0Iffiiy4V1A5Zxs/gBBbyY2IVizjNG3JP8Yg==
-X-Gm-Gg: ASbGncty7OZZwyc8xD1aofRR8x2xPGlIYUKYh8wmVRDWL46Zoo9Imra44q+o2HQLskS
- 1vYcCCZIAl4E7/7JHZJJFCto0J9RHD1CADJfWufsL5LHDSQW9q+cU51p70K3a0ovR3atKXKRLN/
- k05mBES1RVufI0cuGQIuHRQvztrMcI1bjINqdZEKGdFfPMEgDkHhsKdp/0szYdub3rCHpe0ruHC
- eHX/VfVI4PjgDsCUqre1nOYaHp7bBX0F1w5PJQy0cCqpsk39+FCCWVpNVyqs8Cg5VgDEL20316G
- XelDCCol9kiNn5kivPBAcqWr01s6sJH9jkAVybSni1eruKcHDt2bUVxRdBP8KfP8/yEX8ziiNgI
- N4JtyWA==
-X-Received: by 2002:a05:600c:4fd6:b0:45b:76c6:cfb8 with SMTP id
- 5b1f17b1804b1-45f211d5d7bmr105599945e9.9.1757940567230; 
- Mon, 15 Sep 2025 05:49:27 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IF9jZtjvbleadooUxhVdf5bWxz4eh2s5Zn5cTlQZ9Qif/+ThvjzpuyPM8TWvE3InE1yuYbDjA==
-X-Received: by 2002:a05:600c:4fd6:b0:45b:76c6:cfb8 with SMTP id
- 5b1f17b1804b1-45f211d5d7bmr105599615e9.9.1757940566738; 
- Mon, 15 Sep 2025 05:49:26 -0700 (PDT)
-Received: from [192.168.0.7] (ltea-047-064-113-183.pools.arcor-ip.net.
- [47.64.113.183]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-45e017b2722sm96511295e9.1.2025.09.15.05.49.25
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 15 Sep 2025 05:49:26 -0700 (PDT)
-Message-ID: <07635935-fc6c-48bf-81b6-bc3709197411@redhat.com>
-Date: Mon, 15 Sep 2025 14:49:23 +0200
+ AJvYcCV/53OyvIz0GCY8fMLb05Yz9AU9UBrvae+g8PmOMphmRH4TeF+E8of5M5Absc4MiRDHkUGTT1KSpg==@nongnu.org
+X-Gm-Message-State: AOJu0YzB+o2Kj2xjJ7546f5j9O2NTBle8yEFoDy5J0V+SkQ0Am6UIMaB
+ ecRY8oovhcLwhfygxT3bvbiKWRNWtr7NsLuDTlMeYY+xwUFdT999j980msV5yvLGu9sFOdfsDlR
+ VeHj4gYQK2Zq0EJXT1Xw1PS2ePE+kR77V2Hwfs03kPA==
+X-Gm-Gg: ASbGncuxjUMZ3UapJ8l9ygk/d+nXsJeG19XokoZgiTJXlPL7xQ0i2j1B2xfqrxcZjoh
+ Ao4MUv5jXbWVpnU3bHVby4A7ob8qrHy1+a5XStATfQKCwVDUOTHQ0pIybFN7n99O13t+45sqaB6
+ D6MDXVqDtdUnUS3unnF+LdB4a180GycJXfv39ptdircPNsdcpGAy1IAlzWEikh4hMQRc8SVUBvq
+ qeL1lDlWdOKJtTeM4MAFJDsX05EuA==
+X-Google-Smtp-Source: AGHT+IHZ9sqn2j18TUV/dkuQsXY7X2NYCixT9VUEEPabPgdjp8gXkNQSNbwu+ehBzI5jS83/ouXyVdcBcbw+h+Q15XA=
+X-Received: by 2002:a05:690c:3706:b0:722:7d35:e0c2 with SMTP id
+ 00721157ae682-730626d2dd2mr117174837b3.2.1757952309443; Mon, 15 Sep 2025
+ 09:05:09 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 0/5] tests/functional: Adapt reverse_debugging to run
- w/o Avocado
-To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-Cc: Gustavo Romero <gustavo.romero@linaro.org>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org
-References: <20250904154640.52687-1-gustavo.romero@linaro.org>
- <aL7CsSppNc-WZFY-@redhat.com>
- <a6320118-84f0-4088-82de-7192be6093cd@linaro.org>
- <aMQzD0m3QluWzlmh@redhat.com> <871pob64iv.fsf@draig.linaro.org>
- <aMRJ6nfXF2l7iu7b@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-Autocrypt: addr=thuth@redhat.com; keydata=
- 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
-In-Reply-To: <aMRJ6nfXF2l7iu7b@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: L3LkDz10x_rIxHtTtPPIC3gJzlxXC0ZeatfkYrzq0y4_1757940567
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.035,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- T_SPF_HELO_TEMPERROR=0.01,
- T_SPF_TEMPERROR=0.01 autolearn=ham autolearn_force=no
+References: <20250901-virt-v2-1-ac2379402c80@rsg.ci.i.u-tokyo.ac.jp>
+In-Reply-To: <20250901-virt-v2-1-ac2379402c80@rsg.ci.i.u-tokyo.ac.jp>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 15 Sep 2025 17:04:58 +0100
+X-Gm-Features: Ac12FXyAtnCaX5thuSHWlCte6AqnLj_QyD8YAthoo1rEGJQnjRIA4hmVhnsWVFQ
+Message-ID: <CAFEAcA9yUd1+TO+CrTo6i3b=BugLsU7E95iW8hnUQiuos1_c5A@mail.gmail.com>
+Subject: Re: [PATCH v2] hw/arm/virt: Remove the lower bound of HighMem IO
+ Regions
+To: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+ Eric Auger <eric.auger@redhat.com>, Andrew Jones <ajones@ventanamicro.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1129;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1129.google.com
+X-Spam_score_int: -10
+X-Spam_score: -1.1
+X-Spam_bar: -
+X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, TVD_SUBJ_WIPE_DEBT=1.004,
+ T_SPF_TEMPERROR=0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -164,156 +96,136 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 12/09/2025 18.27, Daniel P. Berrangé wrote:
-> On Fri, Sep 12, 2025 at 05:04:40PM +0100, Alex Bennée wrote:
->> Daniel P. Berrangé <berrange@redhat.com> writes:
->>
->>> On Thu, Sep 11, 2025 at 08:51:08PM -0300, Gustavo Romero wrote:
->>>> Hi Daniel,
->>>>
->>>> Thanks a lot for review and the suggestions.
->>>>
->>>> On 9/8/25 08:49, Daniel P. Berrangé wrote:
->>>>> On Thu, Sep 04, 2025 at 03:46:35PM +0000, Gustavo Romero wrote:
->>>>>> In this series, we leveraged the run-test.py script used in the
->>>>>> check-tcg tests, making it a GDB runner capable of calling a test script
->>>>>> without spawning any VMs. In this configuration, the test scripts can
->>>>>> manage the VM and also import gdb, making the GDB Python API inside the
->>>>>> functional test scripts.
->>>>>>
->>>>>> A --quiet option has been added to run-test.py so it doesn't print the
->>>>>> command line used to execute GDB to the stdout. This ensures that users
->>>>>> don't get confused about how to re-run the tests. One can re-run the
->>>>>> test simply by copying and pasting the command line shown by Meson when
->>>>>> V=1 is passed:
->>>>>>
->>>>>> $ make -j check-functional V=1
->>>>>>
->>>>>> or, alternatively, once the test run completes, the exact command found
->>>>>> in the 'command:' field of the build/meson-logs/testlog-thorough.txt
->>>>>> file generated by Meson. Both methods provide the correct environment
->>>>>> variables required to run the test, such as the proper $PYTHONPATH.
->>>>>
->>>>> While I like the conceptual idea of just sending human GDB commands,
->>>>> instead of working with GDB protocol packets, I really dislike the
->>>>> effect this has on the execution / startup of the functional tests
->>>>> via use of the custom runner for a number of reasons
->>>>>
->>>>>    * The command line for launching the test outside of meson is very
->>>>>      complicated, so not memorable
->>>>
->>>> Why very complicated? It calls a simple runner instead of calling the
->>>> test script directly, but it doesn't change the way to re-run a single
->>>> test. One just have to pass V=1 to see make's command line  and copy
->>>> and paste the full command line to re-run the test. I mentioned
->>>> inspecting 'testlog-thorough.txt' just for completeness.
->>>
->>> Today we can run the individual tests directly
->>>
->>>   # ./tests/functional/x86_64/test_reverse_debug.py
->>>   TAP version 13
->>>   ok 1 test_reverse_debug.ReverseDebugging_X86_64.test_x86_64_pc
->>>   1..1
->>>
->>>
->>> (assuming you have PYTHONPATH and QEMU_TEST_QEMU_BINARY env set)
->>
->> and the old version of Avocado...
->>
->>> This gives you a very easy way to interact with the test, see
->>> its progress, understand what failed, and debug it with strace,
->>> etc.
->>>
->>> This change looses all that. It appears I can run it with
->>>
->>>    # ./tests/guest-debug/run-test.py --quiet --gdb gdb --test \
->>>         ./tests/functional/x86_64/test_reverse_debug.py
->>>
->> <snip>
->>>
->>>
->>> This undermines the core goals of what we aimed to achieve with
->>> the new functional test harness.
->>>
->>>>
->>>>>    * It makes the meson.build rules much more complicated
->>>>
->>>> Do we want to never augment functional tests' meson.build? Nothing
->>>> complicated is being added. Basically, just a new variable suffixed with
->>>> '_with_runner' which holds a tuple (test, runner) that tell the test
->>>> to be executed, following the same logic we already have for all the other
->>>> variables that specify the tests per arch/mode/speed.
->>>>
->>>> Another option would be to select a runner based on a suffix in the test
->>>> name, for instance, 'reverse_debug_with_runner.py'.
->>>
->>> IMHO the overall concept of using the run-test.py runner for launching
->>> the tests is flawed and not viable. It adds too much complexity to the
->>> use of the tests, and harms the output.
->>
->>
->>
->>>
->>>>>    * Running standalone there is no TAP output available making the
->>>>>      test hard to debug on failure or timeout
->>>>
->>>> This is because of an unfortunate GDB Python API issue, please see my
->>>> reply in your comment on patch 5/5. This can be solved but needs more
->>>> investigation on GDB side.
->>>>
->>>>
->>>>> I understand the need to spawn the test via gdb, in order to be able
->>>>> to import the 'gdb' python module. Looking at what reverse_debugging.py
->>>>> does, however, makes me question whether we actually need to directly
->>>>> use the 'gdb' python module.
->>>>>
->>>>> The only APIs we use are 'gdb.execute' and 'gdb.parse_and_eval'.
->>>>>
->>>>> The latter is only used once as
->>>>>
->>>>>     gdb.parse_and_eval("$pc")
->>>>>
->>>>> and I believe that can be changed to
->>>>>
->>>>>     gdb.execute("printf \"0x%x\", $pc", to_string=True)
->>>>>
->>>>> IOW, all we need is 'gdb.execute("....", to_string=True)'
->>>>
->>>> Yes, I do want to directly use the 'gdb' python module directly in the
->>>> tests. We shouldn't look at a solution only for reverse_debug.py but also
->>>> think of any future tests that will require the GDB Python API, so I don't
->>>> want to specialize here and reduce the API to a single method.
->>>
->>> If any other tests needing GDB arrive int he future we can consider
->>> them at that time.
->>
->> We already have a whole chunk of gdb tests under check-tcg. Maybe it
->> would be easier just to re-write the tests to use the check-tcg system
->> tests rather than jumping through hoops to fit in with the
->> check-functional requirements.
-> 
-> Well if 'easy' is our goal, then we can just copy the gdbmi.py
-> file from avocado into our test suite.
+On Mon, 1 Sept 2025 at 13:00, Akihiko Odaki
+<odaki@rsg.ci.i.u-tokyo.ac.jp> wrote:
+>
+> Remove the lower bound of the Highmem IO Regions' addresses for the
+> latest machine version to increase the chance to fit the regions in the
+> PA space.
+>
+> The lower bound was especially problematic when using virt-install on
+> Apple M2. virt-install 5.0.0 adds multiple pcie-root-port devices that
+> require sufficient space in the ECAM region. However, the Highmem ECAM
+> region did not fit in the limited PA space on the hardware, and the ECAM
+> region size was limited to 16 MiB. If virt-install had added more than
+> 16 devices to the root bridge, the region overflowed, which prevented
+> edk2-stable202505 from scanning PCI devices, including the boot disk,
+> causing boot failures.
+>
+> Ideally, a virtual machine with more than 16 devices added to the root
+> bridge should just work so that users and management layers do not have
+> to care whether they use constrained hardware.
+>
+> The base address of the Highmem IO Regions was fixed when commit
+> f90747c4e8fb ("hw/arm/virt: GICv3 DT node with one or two redistributor
+> regions") added the first Highmem IO Region. Later, commit 957e32cffa57
+> ("hw/arm/virt: Dynamic memory map depending on RAM requirements")
+> allowed moving the Highmem IO Regions to higher addresses to accommodate
+> RAM more than 255 GiB, but the lower bound remained to keep the legacy
+> memory map.
+>
+> Remove the lower bound for the latest machine version to accommodate more
+> devices with the root bridge. Keeping the lower bound for the old
+> machine versions ensures the compatibility is still maintained.
+>
+> Signed-off-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
+> ---
 
-But maintaining that stuff in the QEMU repository is also kind of ugly.
+Hi; this fails "make check":
 
-I took another stab at the problem:
+(1) fails the bios-tables-check (likely the golden-reference
+files need updating if the memory layout has changed)
 
-  https://lore.kernel.org/qemu-devel/20250915124207.42053-1-thuth@redhat.com/
+acpi-test: Warning! MCFG binary file mismatch. Actual
+[aml:/tmp/aml-PD53C3], Expected
+[aml:tests/data/acpi/aarch64/virt/MCFG].
+See source file tests/qtest/bios-tables-test.c for instructions on how
+to update expected files.
+acpi-test: Warning! MCFG mismatch. Actual [asl:/tmp/asl-6N53C3.dsl,
+aml:/tmp/aml-PD53C3], Expected [asl:/tmp/asl-FF33C3.dsl,
+aml:tests/data/acpi/aarch64/virt/MCFG].
+acpi-test: Warning! DSDT binary file mismatch. Actual
+[aml:/tmp/aml-YK53C3], Expected
+[aml:tests/data/acpi/aarch64/virt/DSDT].
+See source file tests/qtest/bios-tables-test.c for instructions on how
+to update expected files.
+acpi-test: Warning! DSDT mismatch. Actual [asl:/tmp/asl-JEN4C3.dsl,
+aml:/tmp/aml-YK53C3], Expected [asl:/tmp/asl-3ZF4C3.dsl,
+aml:tests/data/acpi/aarch64/virt/DSDT].
+**
+ERROR:../../tests/qtest/bios-tables-test.c:554:test_acpi_asl:
+assertion failed: (all_tables_match)
 
-It's basically Gustavo's patches, but I removed all the stuff around 
-tests/guest-debug/run-test.py and the cumbersome code for running a test 
-through gdb via meson.build.
 
-The test start in normal pycotap mode, then call a new function called 
-reverse_debug() which then takes care of calling gdb with the right 
-arguments (i.e. this logic has been copied from the run-test.py script).
+(2) qos-test now fails with a NULL pointer related problem
+when running with a build with the sanitizers enabled:
 
-It seems to work fine with the aarch64 test already, but details and other 
-architectures still need some more love.
 
-WDYT? Is it worth to pursue that approach?
+# Start of e1000e-tests tests
+# starting QEMU: exec ./qemu-system-aarch64 -qtest
+unix:/tmp/qtest-1298136.sock -qtest-log /dev/null -chardev
+socket,path=/tmp/qtest-1298136.qmp,id=char0 -mon
+chardev=char0,mode=control -display none -audio none -M virt, -cpu max
+-device e1000e,netdev=hs0 -netdev socket,fd=6,id=hs0  -accel qtest
+----------------------------------- stderr -----------------------------------
+../../tests/qtest/libqos/pci.c:394:15: runtime error: member access
+within null pointer of type 'QPCIBus' (aka 'struct QPCIBus')
+    #0 0x60d9ef616f23 in qpci_config_writel
+/mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-clang/../../tests/qtest/libqos/pci.c:394:15
+    #1 0x60d9ef615cc6 in qpci_iomap
+/mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-clang/../../tests/qtest/libqos/pci.c:534:5
+    #2 0x60d9ef632504 in e1000e_pci_create
+/mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-clang/../../tests/qtest/libqos/e1000e.c:189:19
+    #3 0x60d9ef61334c in qos_driver_new
+/mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-clang/../../tests/qtest/libqos/qgraph.c:756:11
+    #4 0x60d9ef6145a1 in allocate_objects
+/mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-clang/../../tests/qtest/libqos/qos_external.c:136:19
+    #5 0x60d9ef6c0c3a in qos_allocate_objects
+/mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-clang/../../tests/qtest/qos-test.c:131:12
+    #6 0x60d9ef6c0c3a in run_one_test
+/mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-clang/../../tests/qtest/qos-test.c:179:11
+    #7 0x7753c4e80387
+(/lib/x86_64-linux-gnu/libglib-2.0.so.0+0x88387) (BuildId:
+1eb6131419edb83b2178b682829a6913cf682d75)
+    #8 0x7753c4e802a2
+(/lib/x86_64-linux-gnu/libglib-2.0.so.0+0x882a2) (BuildId:
+1eb6131419edb83b2178b682829a6913cf682d75)
+    #9 0x7753c4e802a2
+(/lib/x86_64-linux-gnu/libglib-2.0.so.0+0x882a2) (BuildId:
+1eb6131419edb83b2178b682829a6913cf682d75)
+    #10 0x7753c4e802a2
+(/lib/x86_64-linux-gnu/libglib-2.0.so.0+0x882a2) (BuildId:
+1eb6131419edb83b2178b682829a6913cf682d75)
+    #11 0x7753c4e802a2
+(/lib/x86_64-linux-gnu/libglib-2.0.so.0+0x882a2) (BuildId:
+1eb6131419edb83b2178b682829a6913cf682d75)
+    #12 0x7753c4e802a2
+(/lib/x86_64-linux-gnu/libglib-2.0.so.0+0x882a2) (BuildId:
+1eb6131419edb83b2178b682829a6913cf682d75)
+    #13 0x7753c4e802a2
+(/lib/x86_64-linux-gnu/libglib-2.0.so.0+0x882a2) (BuildId:
+1eb6131419edb83b2178b682829a6913cf682d75)
+    #14 0x7753c4e802a2
+(/lib/x86_64-linux-gnu/libglib-2.0.so.0+0x882a2) (BuildId:
+1eb6131419edb83b2178b682829a6913cf682d75)
+    #15 0x7753c4e80899 in g_test_run_suite
+(/lib/x86_64-linux-gnu/libglib-2.0.so.0+0x88899) (BuildId:
+1eb6131419edb83b2178b682829a6913cf682d75)
+    #16 0x7753c4e8092f in g_test_run
+(/lib/x86_64-linux-gnu/libglib-2.0.so.0+0x8892f) (BuildId:
+1eb6131419edb83b2178b682829a6913cf682d75)
+    #17 0x60d9ef6be7ae in main
+/mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-clang/../../tests/qtest/qos-test.c:347:5
+    #18 0x7753c4a2a1c9 in __libc_start_call_main
+csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #19 0x7753c4a2a28a in __libc_start_main csu/../csu/libc-start.c:360:3
+    #20 0x60d9ef5cb224 in _start
+(/mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-clang/tests/qtest/qos-test+0x16c224)
+(BuildId: 538375f704342381ea206855e1476b3ff0beef38)
 
-  Thomas
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior
+../../tests/qtest/libqos/pci.c:394:15
 
+thanks
+-- PMM
 

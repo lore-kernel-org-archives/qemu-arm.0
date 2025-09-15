@@ -4,95 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82E33CAC597
-	for <qemu-arm@archiver.kernel.org>; Mon, 15 Sep 2025 22:06:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4173CCAC597
+	for <qemu-arm@archiver.kernel.org>; Mon, 15 Sep 2025 22:07:35 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uyHKd-0004b2-8z; Mon, 15 Sep 2025 18:05:56 -0400
+	id 1uyHJD-0003fm-5h; Mon, 15 Sep 2025 18:04:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
- id 1uyHKI-0004Sb-T6
- for qemu-arm@nongnu.org; Mon, 15 Sep 2025 18:05:40 -0400
-Received: from mail-pj1-x1032.google.com ([2607:f8b0:4864:20::1032])
+ id 1uyHI3-0002tc-VF
+ for qemu-arm@nongnu.org; Mon, 15 Sep 2025 18:03:16 -0400
+Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
- id 1uyHIv-0000Yw-N8
- for qemu-arm@nongnu.org; Mon, 15 Sep 2025 18:05:26 -0400
-Received: by mail-pj1-x1032.google.com with SMTP id
- 98e67ed59e1d1-32e11f35c0dso1832607a91.0
- for <qemu-arm@nongnu.org>; Mon, 15 Sep 2025 15:04:06 -0700 (PDT)
+ id 1uyHHW-00008X-PW
+ for qemu-arm@nongnu.org; Mon, 15 Sep 2025 18:03:11 -0400
+Received: by mail-pl1-x62f.google.com with SMTP id
+ d9443c01a7336-2445805aa2eso40757905ad.1
+ for <qemu-arm@nongnu.org>; Mon, 15 Sep 2025 15:02:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1757973843; x=1758578643; darn=nongnu.org;
+ d=linaro.org; s=google; t=1757973748; x=1758578548; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=JVPl3WkHtY26wEQgy01pXNoeJ5YDiVNuCq/nFYkezew=;
- b=bJGpbuLDysF92Y/UHo8F8KNM0Pi0wkVNYEefh5l470oxvPOTv4+bj4j+vL+71F3Up+
- AO6Q9qrtuit/uv1XSvwUxj9MMRexrCcDCR3Mw+pnNkmR35qVfoUUoBxMN4AxC50MpDSl
- jyQ76rkDdaJxSIs22yMXPtxW6E2uvVCbUjuaxMw8YZWkbB3/rFLsKAMJ/Kw95PqL8hdp
- hdmqAUGUj0pg8gDbLs/5qY0x3LXEknHt/tNkUkDO2J66y1sh9kcZsDZJw08exH9enxDv
- /Dyl6gCzcDDhtTHYEqqrkwpOETUVc7OLHHgFBKstVKdPz6yYntV0LGR2ts6yh/wvxeaS
- KYWQ==
+ bh=FQYoLYpKnTTM6AHc4a2BrPKtAPMVqixOWkEVebIGKLU=;
+ b=Ggar2f6Td0mqxCqVeAHxF2xIQFtecfUfF/iJCh0WlO1KJEgpLPb7wNlMjmfjbUt8+f
+ UUjc1ZEkXg21ZaHUGXPhH/1r5F1grWyBkQ4YxJ9ryTHYLNRMwW+aKjwfbVxOJO9pZ9/e
+ MVg6LE/Za/ll97xjOub/K7cRW65U1j2o/MtBqOCQNKjKiwEIKAfKryX359j6HnDIG0pv
+ n5wdkZhMFMa1Mbkv32lCvqseZLNXWI3MD5SZ5jynQ8zK3Ksdz/4Gtt1a5xifNMcHR4zZ
+ aODWdpNwCZ4Az+sre2GUH1aCTpe6sbuCmLA7UFpxUxChSHnHw3I/tlX6ylyfKftcTn6W
+ F4jw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1757973843; x=1758578643;
+ d=1e100.net; s=20230601; t=1757973748; x=1758578548;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=JVPl3WkHtY26wEQgy01pXNoeJ5YDiVNuCq/nFYkezew=;
- b=M0OIUdmOo5CvXY+dcgo5RO0bjKCWmKh3XoiM83G+lmMBjuDPqqDb0gKRmJjeZgN7WV
- 77hJfOxo7yVOYhiwBqjVwuKBV6ZpXF7vnN+JVCo2T9nkzGLj72sg9dPVnlNf4Cfm7cvL
- +EF29uu/GskGHSPnqDljouB4yrjTgcbVhN1W1oigbJee9irYqQ41wvg8MGiWMXygccpB
- g5O/UeoJHKGO2atBtiANt4TsDtrGUWFRPZNB1pGN4kPHo8SVSJnAo/iI7+dpUDaTj1c8
- 4O0qfww5Z2TZZ5fheL85b77lCQhvg3i36B/76FZH0za4k9e/Wj+vvY6l+OHZQNKlhGQw
- axFg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCU8Hm1I1tczqEl3EZYlAoYU0tOyiWBAFlX1E4zDiEtMtWRGfob5ZRL19PwCXt4HMLHKLYafewaKEw==@nongnu.org
-X-Gm-Message-State: AOJu0Yzud3npMNh1r9GlBjjpznvSn4TJ0rLHyGkXR8G7s5xcYpx78DZM
- nRxlQp0grF76QUliR6LcW6E1GqW0nRwO4RyuO/kU9QMg1gCdcQPnCrcevEO6PjjDLp0=
-X-Gm-Gg: ASbGncujATYJX7bAvIxJkmslJEUk6IMf0WoUd4Gf9y3EnnXQX5MGD6waVuSdVPV5VCd
- GdWnCxgEk4KkkkNM3+knvX2j0tBNgiQnAtXHcII3VVM4QRe1sBZIme/yRXxDf9m9xyPtGMz7Rbx
- jyFXBgPzng0W21LalgnpYCLzdl+cEUNAqJthBjpjVMdATuuzS8FZXnz3GjeAGN0Vril2/NiRn5W
- uQS4IxipyQk+wXEKPMbChtiYtkaBzZxIXyiMl4/dzPiZdf9jH/ZLacVgAB2xO1QeOMkrZWNV1te
- Fi59LnA/R+My5NSL7SyiCO8Zt68NfKn/5jj2M81wyibKo+AfAZZGZm7QLHGWQU6N07mqdllFR0Q
- 32kvVKDH387BdrWGqleOtA8tWpNi/3+qSYWvfBwkaaq56pGwDGibzkeqyMFW206entSs8onqcA/
- +k/LNDU6uHhKTAWg==
-X-Google-Smtp-Source: AGHT+IF/DQRfGtIQg6W64J4VEEsmo42V7SfGYDGoAvZKia3NGYaZKvds/K4oTaFZik2vVHw+jWuWxw==
-X-Received: by 2002:a17:90a:da88:b0:32b:9d3c:13b3 with SMTP id
- 98e67ed59e1d1-32de4f87cd3mr14889107a91.18.1757973843009; 
- Mon, 15 Sep 2025 15:04:03 -0700 (PDT)
+ bh=FQYoLYpKnTTM6AHc4a2BrPKtAPMVqixOWkEVebIGKLU=;
+ b=kqVfqbQZx82/oFT94yTeFf2tUTEloGqbbXjVWsQwcTYwGWWFDc6kxS6dRmZFG9/z78
+ uL845+LyCeCtePifH/qeiVNhRVwMBoOIWJpYSgEuQSa0/+EM3GRclX/qzqU0uy3n5HyW
+ O140xv24GpsTJF6HDHYSidI6iX2seXE1l6GJgDZfrKrSu/xOy1QmeIh4o1AySkJpvd6H
+ Ot1oiULJQHq8dCxwd5/IGARqK+eEaqrHaw6YAoh8xPEr7PdMqnBSIUvV6YM9yFNASZ3V
+ o+Haf+S9sDOSHUPt6Pj9sWPvwVzxcVe6NrlS3sNjo6gN8vamI0lnraFwMw+BPWF8Ve6h
+ lU2g==
+X-Gm-Message-State: AOJu0Ywnr6Ngp4RQK+Hm113H1kX1YCTZ7am8uwlm9gMDS8n7Ed0jcxzG
+ mlRC29gP1lJpPb3kYbuvex1D8BTNUBcwlZ1qfw+1vNyT74dFgtkfH6bcb/jhufMWiQw=
+X-Gm-Gg: ASbGncs7wfvS9OyEIJbEpHt8uWp7JPW71G/geoWOxbUwJKo5d/nIE1eZ2XqQicvPoIe
+ 7dRykS3g9FIvbmTVIGtXzVMJBwcX+y2pNpnp8aywZ28oVhfO/QnBViNMD7dKGZY1WlzIiOYIS2M
+ ghu0HbjRYZKRCh1UF4QipoREwwOsHi9twX6I8htTGumhz1hIf+BGWzu0JHXaf69O+XdJoTrzCNb
+ ZbIZdUfwxuOnovm9Qyw23HQuOKTOYu03+OREwL4P38QmuTkCcHPv9QWSA5Mv1dOeCu9nv/Zh2ns
+ aL5f5rT85X25bWpaBcnG4Ztt/9ZdmFL2KK/kpwpEG3UdfO630hwWm1hyOlI1rwH8muKO85PbyaT
+ MYQ2zUOkkB4bLJ2ElkPfAc9VYHeKWOHapB9dYlpRONGb0TLXZ9dE7N3JPpJdGOnIeF2999uRQKV
+ YRGBA=
+X-Google-Smtp-Source: AGHT+IGT8S9wshqubIgOdPW4D/QTL6ZWVnEyvUG0gMSYENzgUQbPAa96pchkDgojzVCDER4rFeL7ow==
+X-Received: by 2002:a17:903:2291:b0:24c:cc16:6c16 with SMTP id
+ d9443c01a7336-25d24e9d39dmr192514465ad.19.1757973748060; 
+ Mon, 15 Sep 2025 15:02:28 -0700 (PDT)
 Received: from [192.168.0.102] (200-162-224-93.static-corp.ajato.com.br.
  [200.162.224.93]) by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-32e0c2863e6sm8889884a91.28.2025.09.15.15.04.01
+ d9443c01a7336-263bb2ef614sm61161045ad.150.2025.09.15.15.02.25
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 15 Sep 2025 15:04:02 -0700 (PDT)
-Message-ID: <44612e6b-c805-4e60-9f2e-1c1863f5b5f6@linaro.org>
-Date: Mon, 15 Sep 2025 19:03:59 -0300
+ Mon, 15 Sep 2025 15:02:27 -0700 (PDT)
+Message-ID: <275a593b-18e1-461a-a416-aea50cb67dc8@linaro.org>
+Date: Mon, 15 Sep 2025 19:02:24 -0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH 0/2] tests/functional: Adapt reverse_debugging to run
- w/o Avocado (yet another try)
-To: Thomas Huth <thuth@redhat.com>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
- <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, =?UTF-8?Q?Daniel_P=2EBerrang=C3=A9?=
- <berrange@redhat.com>, qemu-arm@nongnu.org
+Subject: Re: [RFC PATCH 1/2] tests/functional: Provide GDB to the functional
+ tests
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+ =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>
+Cc: qemu-arm@nongnu.org, =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
 References: <20250915124207.42053-1-thuth@redhat.com>
- <875xdjpubx.fsf@draig.linaro.org>
- <d735ec67-dc45-438c-9151-6ced6ff49b77@redhat.com>
+ <20250915124207.42053-2-thuth@redhat.com>
 Content-Language: en-US
 From: Gustavo Romero <gustavo.romero@linaro.org>
-In-Reply-To: <d735ec67-dc45-438c-9151-6ced6ff49b77@redhat.com>
+In-Reply-To: <20250915124207.42053-2-thuth@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1032;
- envelope-from=gustavo.romero@linaro.org; helo=mail-pj1-x1032.google.com
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62f;
+ envelope-from=gustavo.romero@linaro.org; helo=mail-pl1-x62f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -110,33 +106,149 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 Hi Thomas,
 
-On 9/15/25 13:18, Thomas Huth wrote:
-> On 15/09/2025 18.13, Alex Bennée wrote:
->> Thomas Huth <thuth@redhat.com> writes:
->>
->>> Here's yet another attempt to remove the avocado dependency from the
->>> reverse debugging tests: I basically took Gustavo's patches to rework
->>> tests/functional/reverse_debugging.py, but instead of calling that
->>> through tests/guest-debug/run-test.py and adding the cumbersome code
->>> to support additional test execution logic, I kept our normal way of
->>> running tests via pycotap.
->>
->> Hmm I was getting:
->>
->>    2025-09-15 17:10:50,798 - INFO: GDB CMD: /home/alex/src/tools/binutils-gdb.git/builds/all/install/bin/gdb -q -n -batch -ex 'set pagination off' -ex 'set confirm off' -ex "py sys.argv=['/home/alex/lsrc/qemu.git/tests/functional/reverse_debugging.py']" -x /home/alex/lsrc/qemu.git/tests/functional/reverse_debugging.py
->>    2025-09-15 17:10:50,803 - DEBUG: Using cached asset /home/alex/.cache/qemu/download/7e1430b81c26bdd0da025eeb8fbd77b5dc961da4364af26e771bd39f379cbbf7 for https://archives.fedoraproject.org/pub/archive/fedora/linux/releases/29/Everything/aarch64/os/images/pxeboot/vmlinuz
->>    2025-09-15 17:10:50,891 - INFO: gdb output:
->>     Python Exception <class 'ModuleNotFoundError'>: No module named 'pycotap'
->>    Error occurred in Python: No module named 'pycotap'
+On 9/15/25 09:42, Thomas Huth wrote:
+> From: Gustavo Romero <gustavo.romero@linaro.org>
 > 
-> Ah, sorry, I have it installed pycotap system-wide, too, so I did not notice it... I'll fix it in the next version if we decide to proceed with this approach instead of using one of the others.
+> The probe of gdb is done in 'configure' and the full path is passed
+> to meson.build via the -Dgdb=option.
+> 
+> meson then can pass the location of gdb to the test via an environment
+> variable.
+> 
+> This patch is based on an earlier patch ("Support tests that require a
+> runner") by Gustavo Romero.
+> 
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>   configure                     | 2 ++
+>   meson.build                   | 4 ++++
+>   meson_options.txt             | 2 ++
+>   scripts/meson-buildoptions.sh | 2 ++
+>   tests/functional/meson.build  | 7 +++++++
+>   5 files changed, 17 insertions(+)
+> 
+> diff --git a/configure b/configure
+> index 274a7787642..8e2e2cd562a 100755
+> --- a/configure
+> +++ b/configure
+> @@ -1978,6 +1978,8 @@ if test "$skip_meson" = no; then
+>     test -n "${LIB_FUZZING_ENGINE+xxx}" && meson_option_add "-Dfuzzing_engine=$LIB_FUZZING_ENGINE"
+>     test "$plugins" = yes && meson_option_add "-Dplugins=true"
+>     test "$tcg" != enabled && meson_option_add "-Dtcg=$tcg"
+> +  test -n "$gdb_bin" && meson_option_add "-Dgdb=$gdb_bin"
+> +
+>     run_meson() {
+>       NINJA=$ninja $meson setup "$@" "$PWD" "$source_path"
+>     }
+> diff --git a/meson.build b/meson.build
+> index 3d738733566..4cbc3c8ac65 100644
+> --- a/meson.build
+> +++ b/meson.build
+> @@ -75,6 +75,10 @@ have_user = have_linux_user or have_bsd_user
+>   
+>   sh = find_program('sh')
+>   python = import('python').find_installation()
+> +# Meson python.get_path() on 'purelib' or 'platlib' doesn't properly return the
+> +# site-packages dir in pyvenv, so it is built manually.
+> +python_ver = python.language_version()
+> +python_site_packages = meson.build_root() / 'pyvenv/lib/python' + python_ver / 'site-packages'
+>   
+>   cc = meson.get_compiler('c')
+>   all_languages = ['c']
+> diff --git a/meson_options.txt b/meson_options.txt
+> index fff1521e580..5bb41bcbc43 100644
+> --- a/meson_options.txt
+> +++ b/meson_options.txt
+> @@ -36,6 +36,8 @@ option('trace_file', type: 'string', value: 'trace',
+>   option('coroutine_backend', type: 'combo',
+>          choices: ['ucontext', 'sigaltstack', 'windows', 'wasm', 'auto'],
+>          value: 'auto', description: 'coroutine backend to use')
+> +option('gdb', type: 'string', value: '',
+> +       description: 'Path to GDB')
+>   
+>   # Everything else can be set via --enable/--disable-* option
+>   # on the configure script command line.  After adding an option
+> diff --git a/scripts/meson-buildoptions.sh b/scripts/meson-buildoptions.sh
+> index 0ebe6bc52a6..f4bd21220ee 100644
+> --- a/scripts/meson-buildoptions.sh
+> +++ b/scripts/meson-buildoptions.sh
+> @@ -58,6 +58,7 @@ meson_options_help() {
+>     printf "%s\n" '  --enable-ubsan           enable undefined behaviour sanitizer'
+>     printf "%s\n" '  --firmwarepath=VALUES    search PATH for firmware files [share/qemu-'
+>     printf "%s\n" '                           firmware]'
+> +  printf "%s\n" '  --gdb=VALUE              Path to GDB'
+>     printf "%s\n" '  --iasl=VALUE             Path to ACPI disassembler'
+>     printf "%s\n" '  --includedir=VALUE       Header file directory [include]'
+>     printf "%s\n" '  --interp-prefix=VALUE    where to find shared libraries etc., use %M for'
+> @@ -323,6 +324,7 @@ _meson_option_parse() {
+>       --disable-fuzzing) printf "%s" -Dfuzzing=false ;;
+>       --enable-gcrypt) printf "%s" -Dgcrypt=enabled ;;
+>       --disable-gcrypt) printf "%s" -Dgcrypt=disabled ;;
+> +    --gdb=*) quote_sh "-Dgdb=$2" ;;
+>       --enable-gettext) printf "%s" -Dgettext=enabled ;;
+>       --disable-gettext) printf "%s" -Dgettext=disabled ;;
+>       --enable-gio) printf "%s" -Dgio=enabled ;;
+> diff --git a/tests/functional/meson.build b/tests/functional/meson.build
+> index 2a0c5aa1418..c822eb66309 100644
+> --- a/tests/functional/meson.build
+> +++ b/tests/functional/meson.build
+> @@ -77,6 +77,12 @@ foreach speed : ['quick', 'thorough']
+>       test_env.set('PYTHONPATH', meson.project_source_root() / 'python:' +
+>                                  meson.current_source_dir())
 
-See my comment in patch 1/2 about adding python_site_packages to
-PYTHONPATH to fix it. I think there is no harm to the other tests
-by adding it to the test_env, so I don't think it's worth taking
-care of it only in reverse_debugging.py.
+It's necessary to add the Python modules from pyvenv to the PYTHONPATH, otherwise
+when libpython from GDB looks for pycotap it cannot find it. We already have
+it in python_site_packages in Meson (introduced with this series) so adding
+python_site_packages to test_env.set() above, like:
+
+diff --git a/tests/functional/meson.build b/tests/functional/meson.build
+index c822eb6630..ce992adb02 100644
+--- a/tests/functional/meson.build
++++ b/tests/functional/meson.build
+@@ -74,8 +74,9 @@ foreach speed : ['quick', 'thorough']
+      endif
+      test_env.set('QEMU_TEST_QEMU_BINARY', test_emulator.full_path())
+      test_env.set('QEMU_BUILD_ROOT', meson.project_build_root())
+-    test_env.set('PYTHONPATH', meson.project_source_root() / 'python:' +
+-                               meson.current_source_dir())
++    test_env.set('PYTHONPATH', meson.project_source_root() / 'python' +
++                               ':' + meson.current_source_dir() +
++                               ':' + python_site_packages)
+  
+      # Define the GDB environment variable if gdb is available.
+      gdb = get_option('gdb')
+
+
+fixes the error:
+
+    Python Exception <class 'ModuleNotFoundError'>: No module named 'pycotap'
+   Error occurred in Python: No module named 'pycotap'
+
+
+>   
+> +    # Define the GDB environment variable if gdb is available.
+> +    gdb = get_option('gdb')
+> +    if gdb != ''
+> +      test_env.set('QEMU_TEST_GDB', gdb)
+> +    endif
+> +
+>       foreach test : target_tests
+>         testname = '@0@-@1@'.format(target_base, test)
+>         if fs.exists('generic' / 'test_' + test + '.py')
+> @@ -121,6 +127,7 @@ foreach speed : ['quick', 'thorough']
+>              priority: time_out,
+>              suite: suites)
+>       endforeach
+> +
+
+As Alex pointed out, I think there is a stray newline here too.
 
 
 Cheers,
 Gustavo
+
+>     endforeach
+>   endforeach
+>   
+
 

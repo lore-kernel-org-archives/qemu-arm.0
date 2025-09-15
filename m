@@ -4,91 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4173CCAC597
-	for <qemu-arm@archiver.kernel.org>; Mon, 15 Sep 2025 22:07:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A35D5CAC592
+	for <qemu-arm@archiver.kernel.org>; Mon, 15 Sep 2025 22:12:47 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uyHJD-0003fm-5h; Mon, 15 Sep 2025 18:04:27 -0400
+	id 1uyHQw-0001iv-TP; Mon, 15 Sep 2025 18:12:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
- id 1uyHI3-0002tc-VF
- for qemu-arm@nongnu.org; Mon, 15 Sep 2025 18:03:16 -0400
-Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
+ id 1uyHQt-0001iP-1o
+ for qemu-arm@nongnu.org; Mon, 15 Sep 2025 18:12:24 -0400
+Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
- id 1uyHHW-00008X-PW
- for qemu-arm@nongnu.org; Mon, 15 Sep 2025 18:03:11 -0400
-Received: by mail-pl1-x62f.google.com with SMTP id
- d9443c01a7336-2445805aa2eso40757905ad.1
- for <qemu-arm@nongnu.org>; Mon, 15 Sep 2025 15:02:32 -0700 (PDT)
+ id 1uyHQf-0002Y2-Ki
+ for qemu-arm@nongnu.org; Mon, 15 Sep 2025 18:12:21 -0400
+Received: by mail-pl1-x629.google.com with SMTP id
+ d9443c01a7336-26763bb9a92so11738285ad.2
+ for <qemu-arm@nongnu.org>; Mon, 15 Sep 2025 15:12:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1757973748; x=1758578548; darn=nongnu.org;
+ d=linaro.org; s=google; t=1757974322; x=1758579122; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=FQYoLYpKnTTM6AHc4a2BrPKtAPMVqixOWkEVebIGKLU=;
- b=Ggar2f6Td0mqxCqVeAHxF2xIQFtecfUfF/iJCh0WlO1KJEgpLPb7wNlMjmfjbUt8+f
- UUjc1ZEkXg21ZaHUGXPhH/1r5F1grWyBkQ4YxJ9ryTHYLNRMwW+aKjwfbVxOJO9pZ9/e
- MVg6LE/Za/ll97xjOub/K7cRW65U1j2o/MtBqOCQNKjKiwEIKAfKryX359j6HnDIG0pv
- n5wdkZhMFMa1Mbkv32lCvqseZLNXWI3MD5SZ5jynQ8zK3Ksdz/4Gtt1a5xifNMcHR4zZ
- aODWdpNwCZ4Az+sre2GUH1aCTpe6sbuCmLA7UFpxUxChSHnHw3I/tlX6ylyfKftcTn6W
- F4jw==
+ bh=QxVOYWyd2LkvoUg7aXq+N53uRKsFD9A2D50a62UMNmw=;
+ b=JvvnDbc3MovCSHemx8GLOY9XTLJg724MFx8qMXN87shoU7ticv7m59aIhtN3dM/Cl9
+ gZZDCobbCw9AuFPRJC6WT10SRrmJ78rM4MuRBpXek8u0KxFdrSuZgFGgfqihmENlbu3y
+ rqV4r9XAntJoCtLewmNgJGkkHMFu0RmWMju1u7xnXaYyzW5eQC9362mkZPK/oxlxWPCt
+ TYnc1yo8E25T1A1jJxgnms8I03J8y6dn3CRA5OCeJuIB3Iml6Nbdhb090naW/yQQ74A7
+ kg/52fXnhjZWZyuE/Ri8LlGBVVL6djmKHk2IryD5ZmHN/Ol73Q3r2XZg9BXPGTlz6f+z
+ wcxQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1757973748; x=1758578548;
+ d=1e100.net; s=20230601; t=1757974322; x=1758579122;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=FQYoLYpKnTTM6AHc4a2BrPKtAPMVqixOWkEVebIGKLU=;
- b=kqVfqbQZx82/oFT94yTeFf2tUTEloGqbbXjVWsQwcTYwGWWFDc6kxS6dRmZFG9/z78
- uL845+LyCeCtePifH/qeiVNhRVwMBoOIWJpYSgEuQSa0/+EM3GRclX/qzqU0uy3n5HyW
- O140xv24GpsTJF6HDHYSidI6iX2seXE1l6GJgDZfrKrSu/xOy1QmeIh4o1AySkJpvd6H
- Ot1oiULJQHq8dCxwd5/IGARqK+eEaqrHaw6YAoh8xPEr7PdMqnBSIUvV6YM9yFNASZ3V
- o+Haf+S9sDOSHUPt6Pj9sWPvwVzxcVe6NrlS3sNjo6gN8vamI0lnraFwMw+BPWF8Ve6h
- lU2g==
-X-Gm-Message-State: AOJu0Ywnr6Ngp4RQK+Hm113H1kX1YCTZ7am8uwlm9gMDS8n7Ed0jcxzG
- mlRC29gP1lJpPb3kYbuvex1D8BTNUBcwlZ1qfw+1vNyT74dFgtkfH6bcb/jhufMWiQw=
-X-Gm-Gg: ASbGncs7wfvS9OyEIJbEpHt8uWp7JPW71G/geoWOxbUwJKo5d/nIE1eZ2XqQicvPoIe
- 7dRykS3g9FIvbmTVIGtXzVMJBwcX+y2pNpnp8aywZ28oVhfO/QnBViNMD7dKGZY1WlzIiOYIS2M
- ghu0HbjRYZKRCh1UF4QipoREwwOsHi9twX6I8htTGumhz1hIf+BGWzu0JHXaf69O+XdJoTrzCNb
- ZbIZdUfwxuOnovm9Qyw23HQuOKTOYu03+OREwL4P38QmuTkCcHPv9QWSA5Mv1dOeCu9nv/Zh2ns
- aL5f5rT85X25bWpaBcnG4Ztt/9ZdmFL2KK/kpwpEG3UdfO630hwWm1hyOlI1rwH8muKO85PbyaT
- MYQ2zUOkkB4bLJ2ElkPfAc9VYHeKWOHapB9dYlpRONGb0TLXZ9dE7N3JPpJdGOnIeF2999uRQKV
- YRGBA=
-X-Google-Smtp-Source: AGHT+IGT8S9wshqubIgOdPW4D/QTL6ZWVnEyvUG0gMSYENzgUQbPAa96pchkDgojzVCDER4rFeL7ow==
-X-Received: by 2002:a17:903:2291:b0:24c:cc16:6c16 with SMTP id
- d9443c01a7336-25d24e9d39dmr192514465ad.19.1757973748060; 
- Mon, 15 Sep 2025 15:02:28 -0700 (PDT)
+ bh=QxVOYWyd2LkvoUg7aXq+N53uRKsFD9A2D50a62UMNmw=;
+ b=VVPdhAbSOuLJ+fesOa7ofTcd/FEaj6rxuGAb7ifrrX2jBUQ7VdHnIa9UW3zPNWNzH1
+ s9oV9e4VWcfgmRjUgRpSNziwVoDstBDi5QV2Lfixsm85QPfOz+Ws15fihO35ZQ6dRPPR
+ VQPB4LxUEengnZe8Q+gPxUFODbnYZXSfmHC7aCA0IcBadcyoZSkRLG53UtgmaFW6vvt8
+ 6+DLAkpIoDzVHT701Rmk5dbuLA9UTt+LO3a8DVe/uIJB6iiknLxDlPDS1FBxzz+346wf
+ cLWv8Ng7NZrnWjcmO+X+QTKWhRDxl4vX7e+o3L6jrupj1IZkNo+Gqdi9LAZUlbPGo4Dk
+ o8xw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCU9hxnIPud1yf53+HTBO06OyOx/emqQ17mbAtIcymwVFUWeDsPAwv6qzngv4FiheztFX2q9pCGNKw==@nongnu.org
+X-Gm-Message-State: AOJu0YxuhoclIRzCb2+6esptmKgv6tgp8MiDnU9sAOpIQC4FJZJX948e
+ YRRZtXct49KtO+QFFqFrtzKEFhBa9aN+rcB06k0YaBRIECaeraa6HUq/xi2rrERWbW8=
+X-Gm-Gg: ASbGncsmesO+6ngrxcrsadi+3bMMMOnJw80adg7MzDkLDbLkuKNupNR65emxHZ/kJ3v
+ JuUd7CPvYfn5igkTGgpoQlBpdf1UP/P+A/ZSrqpz5kVqzoXJs1AW23jMKUoZK26ep4S8+P1a2/b
+ g9z2DLoxfUpR4IIi2HqtXGfUKZP7AXi0AzF4oQa+MnJpbwYBE7KU6CE51+m32yr1mfekDme6gOx
+ 4U51Jmjno6qlvPwBy4JG8g6aAhQ7KHeK7vJamJuXLrsXD6XjpwlMCP2WHPY5qHTB+jcAJ8gH7Yn
+ jOBqPiluHAK5kMXkzgs6y53EpTKMM6gdDmL8eEqzKa0cbyhRhWo9DUJndoE8tmZ4PRXzWzsLiSN
+ 9S+e/EdhxvKkxH5u5StaPnLTWPvmsWECOhQ7pynCbG5iz/LfutAgfQqu6jkJCoGt3XKZMLbBkc+
+ zHAJr6YxAf0A6Lig==
+X-Google-Smtp-Source: AGHT+IFgx4CBu/xfSaotDfHsoNW/PZTGhhh2rjr1RWdqoop8rfQotEXy7LNxM43XyBZvCd8aL2vs7g==
+X-Received: by 2002:a17:903:2290:b0:246:76ee:535b with SMTP id
+ d9443c01a7336-25d2557fbb1mr199599905ad.27.1757974322214; 
+ Mon, 15 Sep 2025 15:12:02 -0700 (PDT)
 Received: from [192.168.0.102] (200-162-224-93.static-corp.ajato.com.br.
  [200.162.224.93]) by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-263bb2ef614sm61161045ad.150.2025.09.15.15.02.25
+ d9443c01a7336-261333a972dsm78979455ad.75.2025.09.15.15.11.59
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 15 Sep 2025 15:02:27 -0700 (PDT)
-Message-ID: <275a593b-18e1-461a-a416-aea50cb67dc8@linaro.org>
-Date: Mon, 15 Sep 2025 19:02:24 -0300
+ Mon, 15 Sep 2025 15:12:01 -0700 (PDT)
+Message-ID: <5f65fb4a-c90f-4765-9040-394c65ec2744@linaro.org>
+Date: Mon, 15 Sep 2025 19:11:57 -0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH 1/2] tests/functional: Provide GDB to the functional
- tests
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
- =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>
-Cc: qemu-arm@nongnu.org, =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-References: <20250915124207.42053-1-thuth@redhat.com>
- <20250915124207.42053-2-thuth@redhat.com>
+Subject: Re: [PATCH v2 0/5] tests/functional: Adapt reverse_debugging to run
+ w/o Avocado
+To: Thomas Huth <thuth@redhat.com>, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
+ <berrange@redhat.com>, =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+References: <20250904154640.52687-1-gustavo.romero@linaro.org>
+ <aL7CsSppNc-WZFY-@redhat.com>
+ <a6320118-84f0-4088-82de-7192be6093cd@linaro.org>
+ <aMQzD0m3QluWzlmh@redhat.com> <871pob64iv.fsf@draig.linaro.org>
+ <aMRJ6nfXF2l7iu7b@redhat.com>
+ <07635935-fc6c-48bf-81b6-bc3709197411@redhat.com>
 Content-Language: en-US
 From: Gustavo Romero <gustavo.romero@linaro.org>
-In-Reply-To: <20250915124207.42053-2-thuth@redhat.com>
+In-Reply-To: <07635935-fc6c-48bf-81b6-bc3709197411@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62f;
- envelope-from=gustavo.romero@linaro.org; helo=mail-pl1-x62f.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::629;
+ envelope-from=gustavo.romero@linaro.org; helo=mail-pl1-x629.google.com
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
+ DKIM_SIGNED=0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ T_SPF_TEMPERROR=0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -104,151 +110,162 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Thomas,
+Hi Thomas and folks,
 
-On 9/15/25 09:42, Thomas Huth wrote:
-> From: Gustavo Romero <gustavo.romero@linaro.org>
+On 9/15/25 09:49, Thomas Huth wrote:
+> On 12/09/2025 18.27, Daniel P. Berrangé wrote:
+>> On Fri, Sep 12, 2025 at 05:04:40PM +0100, Alex Bennée wrote:
+>>> Daniel P. Berrangé <berrange@redhat.com> writes:
+>>>
+>>>> On Thu, Sep 11, 2025 at 08:51:08PM -0300, Gustavo Romero wrote:
+>>>>> Hi Daniel,
+>>>>>
+>>>>> Thanks a lot for review and the suggestions.
+>>>>>
+>>>>> On 9/8/25 08:49, Daniel P. Berrangé wrote:
+>>>>>> On Thu, Sep 04, 2025 at 03:46:35PM +0000, Gustavo Romero wrote:
+>>>>>>> In this series, we leveraged the run-test.py script used in the
+>>>>>>> check-tcg tests, making it a GDB runner capable of calling a test script
+>>>>>>> without spawning any VMs. In this configuration, the test scripts can
+>>>>>>> manage the VM and also import gdb, making the GDB Python API inside the
+>>>>>>> functional test scripts.
+>>>>>>>
+>>>>>>> A --quiet option has been added to run-test.py so it doesn't print the
+>>>>>>> command line used to execute GDB to the stdout. This ensures that users
+>>>>>>> don't get confused about how to re-run the tests. One can re-run the
+>>>>>>> test simply by copying and pasting the command line shown by Meson when
+>>>>>>> V=1 is passed:
+>>>>>>>
+>>>>>>> $ make -j check-functional V=1
+>>>>>>>
+>>>>>>> or, alternatively, once the test run completes, the exact command found
+>>>>>>> in the 'command:' field of the build/meson-logs/testlog-thorough.txt
+>>>>>>> file generated by Meson. Both methods provide the correct environment
+>>>>>>> variables required to run the test, such as the proper $PYTHONPATH.
+>>>>>>
+>>>>>> While I like the conceptual idea of just sending human GDB commands,
+>>>>>> instead of working with GDB protocol packets, I really dislike the
+>>>>>> effect this has on the execution / startup of the functional tests
+>>>>>> via use of the custom runner for a number of reasons
+>>>>>>
+>>>>>>    * The command line for launching the test outside of meson is very
+>>>>>>      complicated, so not memorable
+>>>>>
+>>>>> Why very complicated? It calls a simple runner instead of calling the
+>>>>> test script directly, but it doesn't change the way to re-run a single
+>>>>> test. One just have to pass V=1 to see make's command line  and copy
+>>>>> and paste the full command line to re-run the test. I mentioned
+>>>>> inspecting 'testlog-thorough.txt' just for completeness.
+>>>>
+>>>> Today we can run the individual tests directly
+>>>>
+>>>>   # ./tests/functional/x86_64/test_reverse_debug.py
+>>>>   TAP version 13
+>>>>   ok 1 test_reverse_debug.ReverseDebugging_X86_64.test_x86_64_pc
+>>>>   1..1
+>>>>
+>>>>
+>>>> (assuming you have PYTHONPATH and QEMU_TEST_QEMU_BINARY env set)
+>>>
+>>> and the old version of Avocado...
+>>>
+>>>> This gives you a very easy way to interact with the test, see
+>>>> its progress, understand what failed, and debug it with strace,
+>>>> etc.
+>>>>
+>>>> This change looses all that. It appears I can run it with
+>>>>
+>>>>    # ./tests/guest-debug/run-test.py --quiet --gdb gdb --test \
+>>>>         ./tests/functional/x86_64/test_reverse_debug.py
+>>>>
+>>> <snip>
+>>>>
+>>>>
+>>>> This undermines the core goals of what we aimed to achieve with
+>>>> the new functional test harness.
+>>>>
+>>>>>
+>>>>>>    * It makes the meson.build rules much more complicated
+>>>>>
+>>>>> Do we want to never augment functional tests' meson.build? Nothing
+>>>>> complicated is being added. Basically, just a new variable suffixed with
+>>>>> '_with_runner' which holds a tuple (test, runner) that tell the test
+>>>>> to be executed, following the same logic we already have for all the other
+>>>>> variables that specify the tests per arch/mode/speed.
+>>>>>
+>>>>> Another option would be to select a runner based on a suffix in the test
+>>>>> name, for instance, 'reverse_debug_with_runner.py'.
+>>>>
+>>>> IMHO the overall concept of using the run-test.py runner for launching
+>>>> the tests is flawed and not viable. It adds too much complexity to the
+>>>> use of the tests, and harms the output.
+>>>
+>>>
+>>>
+>>>>
+>>>>>>    * Running standalone there is no TAP output available making the
+>>>>>>      test hard to debug on failure or timeout
+>>>>>
+>>>>> This is because of an unfortunate GDB Python API issue, please see my
+>>>>> reply in your comment on patch 5/5. This can be solved but needs more
+>>>>> investigation on GDB side.
+>>>>>
+>>>>>
+>>>>>> I understand the need to spawn the test via gdb, in order to be able
+>>>>>> to import the 'gdb' python module. Looking at what reverse_debugging.py
+>>>>>> does, however, makes me question whether we actually need to directly
+>>>>>> use the 'gdb' python module.
+>>>>>>
+>>>>>> The only APIs we use are 'gdb.execute' and 'gdb.parse_and_eval'.
+>>>>>>
+>>>>>> The latter is only used once as
+>>>>>>
+>>>>>>     gdb.parse_and_eval("$pc")
+>>>>>>
+>>>>>> and I believe that can be changed to
+>>>>>>
+>>>>>>     gdb.execute("printf \"0x%x\", $pc", to_string=True)
+>>>>>>
+>>>>>> IOW, all we need is 'gdb.execute("....", to_string=True)'
+>>>>>
+>>>>> Yes, I do want to directly use the 'gdb' python module directly in the
+>>>>> tests. We shouldn't look at a solution only for reverse_debug.py but also
+>>>>> think of any future tests that will require the GDB Python API, so I don't
+>>>>> want to specialize here and reduce the API to a single method.
+>>>>
+>>>> If any other tests needing GDB arrive int he future we can consider
+>>>> them at that time.
+>>>
+>>> We already have a whole chunk of gdb tests under check-tcg. Maybe it
+>>> would be easier just to re-write the tests to use the check-tcg system
+>>> tests rather than jumping through hoops to fit in with the
+>>> check-functional requirements.
+>>
+>> Well if 'easy' is our goal, then we can just copy the gdbmi.py
+>> file from avocado into our test suite.
 > 
-> The probe of gdb is done in 'configure' and the full path is passed
-> to meson.build via the -Dgdb=option.
+> But maintaining that stuff in the QEMU repository is also kind of ugly.
+
+I totally agree.
+
+
+> I took another stab at the problem:
 > 
-> meson then can pass the location of gdb to the test via an environment
-> variable.
+>   https://lore.kernel.org/qemu-devel/20250915124207.42053-1-thuth@redhat.com/
 > 
-> This patch is based on an earlier patch ("Support tests that require a
-> runner") by Gustavo Romero.
+> It's basically Gustavo's patches, but I removed all the stuff around tests/guest-debug/run-test.py and the cumbersome code for running a test through gdb via meson.build.
 > 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->   configure                     | 2 ++
->   meson.build                   | 4 ++++
->   meson_options.txt             | 2 ++
->   scripts/meson-buildoptions.sh | 2 ++
->   tests/functional/meson.build  | 7 +++++++
->   5 files changed, 17 insertions(+)
+> The test start in normal pycotap mode, then call a new function called reverse_debug() which then takes care of calling gdb with the right arguments (i.e. this logic has been copied from the run-test.py script).
 > 
-> diff --git a/configure b/configure
-> index 274a7787642..8e2e2cd562a 100755
-> --- a/configure
-> +++ b/configure
-> @@ -1978,6 +1978,8 @@ if test "$skip_meson" = no; then
->     test -n "${LIB_FUZZING_ENGINE+xxx}" && meson_option_add "-Dfuzzing_engine=$LIB_FUZZING_ENGINE"
->     test "$plugins" = yes && meson_option_add "-Dplugins=true"
->     test "$tcg" != enabled && meson_option_add "-Dtcg=$tcg"
-> +  test -n "$gdb_bin" && meson_option_add "-Dgdb=$gdb_bin"
-> +
->     run_meson() {
->       NINJA=$ninja $meson setup "$@" "$PWD" "$source_path"
->     }
-> diff --git a/meson.build b/meson.build
-> index 3d738733566..4cbc3c8ac65 100644
-> --- a/meson.build
-> +++ b/meson.build
-> @@ -75,6 +75,10 @@ have_user = have_linux_user or have_bsd_user
->   
->   sh = find_program('sh')
->   python = import('python').find_installation()
-> +# Meson python.get_path() on 'purelib' or 'platlib' doesn't properly return the
-> +# site-packages dir in pyvenv, so it is built manually.
-> +python_ver = python.language_version()
-> +python_site_packages = meson.build_root() / 'pyvenv/lib/python' + python_ver / 'site-packages'
->   
->   cc = meson.get_compiler('c')
->   all_languages = ['c']
-> diff --git a/meson_options.txt b/meson_options.txt
-> index fff1521e580..5bb41bcbc43 100644
-> --- a/meson_options.txt
-> +++ b/meson_options.txt
-> @@ -36,6 +36,8 @@ option('trace_file', type: 'string', value: 'trace',
->   option('coroutine_backend', type: 'combo',
->          choices: ['ucontext', 'sigaltstack', 'windows', 'wasm', 'auto'],
->          value: 'auto', description: 'coroutine backend to use')
-> +option('gdb', type: 'string', value: '',
-> +       description: 'Path to GDB')
->   
->   # Everything else can be set via --enable/--disable-* option
->   # on the configure script command line.  After adding an option
-> diff --git a/scripts/meson-buildoptions.sh b/scripts/meson-buildoptions.sh
-> index 0ebe6bc52a6..f4bd21220ee 100644
-> --- a/scripts/meson-buildoptions.sh
-> +++ b/scripts/meson-buildoptions.sh
-> @@ -58,6 +58,7 @@ meson_options_help() {
->     printf "%s\n" '  --enable-ubsan           enable undefined behaviour sanitizer'
->     printf "%s\n" '  --firmwarepath=VALUES    search PATH for firmware files [share/qemu-'
->     printf "%s\n" '                           firmware]'
-> +  printf "%s\n" '  --gdb=VALUE              Path to GDB'
->     printf "%s\n" '  --iasl=VALUE             Path to ACPI disassembler'
->     printf "%s\n" '  --includedir=VALUE       Header file directory [include]'
->     printf "%s\n" '  --interp-prefix=VALUE    where to find shared libraries etc., use %M for'
-> @@ -323,6 +324,7 @@ _meson_option_parse() {
->       --disable-fuzzing) printf "%s" -Dfuzzing=false ;;
->       --enable-gcrypt) printf "%s" -Dgcrypt=enabled ;;
->       --disable-gcrypt) printf "%s" -Dgcrypt=disabled ;;
-> +    --gdb=*) quote_sh "-Dgdb=$2" ;;
->       --enable-gettext) printf "%s" -Dgettext=enabled ;;
->       --disable-gettext) printf "%s" -Dgettext=disabled ;;
->       --enable-gio) printf "%s" -Dgio=enabled ;;
-> diff --git a/tests/functional/meson.build b/tests/functional/meson.build
-> index 2a0c5aa1418..c822eb66309 100644
-> --- a/tests/functional/meson.build
-> +++ b/tests/functional/meson.build
-> @@ -77,6 +77,12 @@ foreach speed : ['quick', 'thorough']
->       test_env.set('PYTHONPATH', meson.project_source_root() / 'python:' +
->                                  meson.current_source_dir())
+> It seems to work fine with the aarch64 test already, but details and other architectures still need some more love.
+> 
+> WDYT? Is it worth to pursue that approach?
 
-It's necessary to add the Python modules from pyvenv to the PYTHONPATH, otherwise
-when libpython from GDB looks for pycotap it cannot find it. We already have
-it in python_site_packages in Meson (introduced with this series) so adding
-python_site_packages to test_env.set() above, like:
-
-diff --git a/tests/functional/meson.build b/tests/functional/meson.build
-index c822eb6630..ce992adb02 100644
---- a/tests/functional/meson.build
-+++ b/tests/functional/meson.build
-@@ -74,8 +74,9 @@ foreach speed : ['quick', 'thorough']
-      endif
-      test_env.set('QEMU_TEST_QEMU_BINARY', test_emulator.full_path())
-      test_env.set('QEMU_BUILD_ROOT', meson.project_build_root())
--    test_env.set('PYTHONPATH', meson.project_source_root() / 'python:' +
--                               meson.current_source_dir())
-+    test_env.set('PYTHONPATH', meson.project_source_root() / 'python' +
-+                               ':' + meson.current_source_dir() +
-+                               ':' + python_site_packages)
-  
-      # Define the GDB environment variable if gdb is available.
-      gdb = get_option('gdb')
-
-
-fixes the error:
-
-    Python Exception <class 'ModuleNotFoundError'>: No module named 'pycotap'
-   Error occurred in Python: No module named 'pycotap'
-
-
->   
-> +    # Define the GDB environment variable if gdb is available.
-> +    gdb = get_option('gdb')
-> +    if gdb != ''
-> +      test_env.set('QEMU_TEST_GDB', gdb)
-> +    endif
-> +
->       foreach test : target_tests
->         testname = '@0@-@1@'.format(target_base, test)
->         if fs.exists('generic' / 'test_' + test + '.py')
-> @@ -121,6 +127,7 @@ foreach speed : ['quick', 'thorough']
->              priority: time_out,
->              suite: suites)
->       endforeach
-> +
-
-As Alex pointed out, I think there is a stray newline here too.
+Thanks Thomas, I prefer your approach. I've reviewed your
+series and had some minor comments on it but overall it
+looks good! :)
 
 
 Cheers,
 Gustavo
-
->     endforeach
->   endforeach
->   
-
 

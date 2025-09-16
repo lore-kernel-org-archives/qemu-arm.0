@@ -4,80 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48BBECAC598
-	for <qemu-arm@archiver.kernel.org>; Tue, 16 Sep 2025 14:32:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E278BCAC598
+	for <qemu-arm@archiver.kernel.org>; Tue, 16 Sep 2025 14:32:16 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uyWay-0006Rg-5A; Tue, 16 Sep 2025 10:23:51 -0400
+	id 1uyWaY-0005wK-Vl; Tue, 16 Sep 2025 10:23:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1uyWaZ-0005wq-J1
- for qemu-arm@nongnu.org; Tue, 16 Sep 2025 10:23:23 -0400
-Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
+ id 1uyWaL-0005nk-Da
+ for qemu-arm@nongnu.org; Tue, 16 Sep 2025 10:23:11 -0400
+Received: from mail-pg1-x52e.google.com ([2607:f8b0:4864:20::52e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1uyWaT-0008OW-K1
- for qemu-arm@nongnu.org; Tue, 16 Sep 2025 10:23:23 -0400
-Received: by mail-pl1-x62e.google.com with SMTP id
- d9443c01a7336-266a0e83662so16336425ad.0
- for <qemu-arm@nongnu.org>; Tue, 16 Sep 2025 07:23:08 -0700 (PDT)
+ id 1uyWa7-0008Ku-TC
+ for qemu-arm@nongnu.org; Tue, 16 Sep 2025 10:23:01 -0400
+Received: by mail-pg1-x52e.google.com with SMTP id
+ 41be03b00d2f7-b54b2428fafso3643367a12.3
+ for <qemu-arm@nongnu.org>; Tue, 16 Sep 2025 07:22:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1758032587; x=1758637387; darn=nongnu.org;
+ d=linaro.org; s=google; t=1758032574; x=1758637374; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=AyiB622GUdP8Ps2sW1QaI66OgFpDcJd68CYchnKzFN8=;
- b=j4ZUVu3auucrlCRrYIp8nTFehpis1L9K05zj9OZXCQFEkfMRqYWpYEUHLpwSlIdk+O
- BAEuth3VUU5G3QuDhC6yMW+ecW1mRvWhbYJEwU2m4UGNL75/ScameNsTP7pl32T4UegP
- +SVvgT//Fs8UZzWOfEc3yIpR3OhpJ4/z4GdWsGAjHI8FrFYyO42CAxkDm5icPTa07pMy
- uXfkYUtWXrpFHtWk5N1cwBnBr8PrhEFaYL3KFthk+DrbrGUrSEsR8mLJl+hhajv4T6dw
- PWLMiTTebhL0MJXvD0ooUsHyrMPrxvEUzgXpDho1bt6llJIsTAYRMaaE8cbU3W7tPHfx
- yLLw==
+ bh=k+cDd0rpWkjqN5+UU6HiV2AKYtyY8iLBJsZP1HDZm9w=;
+ b=YfU+UZG6xWFH4wGtrvTdi+KRjewofUM8/0gDHZdXOC1d+tN6cN+9cW25ap44B8K7MH
+ /6HGk6v2/okveLlgv+P6yd7K/czD1RYqjebVAvrVSlSJ4S5WAzD/gTuSih7Jnhcu5nWX
+ jVUfhnrPucIqP4tuF2sVH4TwmrAIoIkhH3rRJt4METiiDEsxn3bvyutn7p2PrSSYwgmY
+ 25JCqDHFYJq5niKsWvouKs3cfyIUG+CjBHmbvf1ILRSYkYset6PzfHKyoAO6VRM0WU3A
+ r5N2AbP0T5Q9m3r62Y56ydFTMmWq+XuuM55NR030csF8kAv9yzyuHd9nU/Gs0ArrVJOe
+ n6+w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1758032587; x=1758637387;
+ d=1e100.net; s=20230601; t=1758032574; x=1758637374;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=AyiB622GUdP8Ps2sW1QaI66OgFpDcJd68CYchnKzFN8=;
- b=QkXqX/ZKa5OYHKNzOgjryVnjhgdaHYD3AGosXKk1Hwi+ji2FONw0ErtmIfCbodHAQm
- 1riOsfjOf8i5D7y/aQyWjHvJyyuXzmf2T6y7tRURIr+n1TQ8lFrqDY0nSepT16bSoA1t
- 6+c3Lmh9xgZP4DkL7H9rg1l+Sq860TM8oKEa/Zm03w7Zuo1/cUo65LYSetfn0jOdZEtB
- 4gJo8RKN3VaGDsO3gBuPzaDNhhgsbro7RT+DxrW7B7VEt724JKGnXyaJEDbD0rStROvC
- 6Bvf7s/ah2DGXWJsDiDqWZOpGi11dMD1tUcy7tD92R9OGCVKeQbV/Jm9dzhOhP8x2Np5
- Qm8A==
-X-Gm-Message-State: AOJu0Yz3jdpFTJJCxb6EHqZYRvlleiwMdONWI1J9TJwUaCUUwP8SYRlE
- 8uux3OiO5GusZVdVS/zzZmrFVZezs5KQQaDqrDzILsktTIdWRdJfbzcYd9foVxN9IPE=
-X-Gm-Gg: ASbGncthbc4lQOw7xfXCzR06NsBhEJ4n+Rjs/55VniC2sHvnltOphWgFpJseDhEL1QX
- lSutTp583dFFmZis2YLNrvWUExqHb+xORJ/REOg/keECUVhDMXC/nynmImRFlbKUrXEv9WqzsI6
- Bo3QSJRZjX9/ymgA1KLhozrg1ituNXpkbU6KRH28Ebm89oMZ+hSQ+I9W3zN0q+KXq1r1bGFHtPR
- mm9Uoc0W6PStXHKP7XM2q05mHcaFDBftuQIqADlHfnjQuOYKafstRo1MST3XNnb7jj+aUAaR/cw
- C4fhY2IUfdZ83TetcoWkLHvDJn2t9LhQgDDnaZbBKeAj+VjihsMjr564SR676KRhLpTEE9HM111
- nnSXo6bjNK4fUaZ/uhx5KB1sACVvdTJgSY47Yogo=
-X-Google-Smtp-Source: AGHT+IFWXcg/tjajSOgda4sLcCf8URs2u3c/XsoOVKZyVxiebVe7pitg4847tYzBuRcrml5Qe9+DxQ==
-X-Received: by 2002:a17:902:cf09:b0:260:b4c7:986d with SMTP id
- d9443c01a7336-260b4c799f1mr149069845ad.36.1758032587128; 
- Tue, 16 Sep 2025 07:23:07 -0700 (PDT)
+ bh=k+cDd0rpWkjqN5+UU6HiV2AKYtyY8iLBJsZP1HDZm9w=;
+ b=wOaz85ds3GB38ENM1Cyu+wnq0IzrGuRGyGLJnFr9V+yo76mKIKWLJWHdx8PCokL0j6
+ VZipilipJIVTLdjQzQ/e0KkUF38rvnBwRTgDirYg0gqGiI1UO/uF6bvibiIL46mnykcZ
+ bagrK7XnqeGaflXjWi5jUaOO3i2rnKPiGlozHkEmLjdmoTu/aX1upTTFPG0Vod9N6RRr
+ t77hPVBcfCwEmanaH91h7tcV3JRjQr+dOF4P8j1kZmRRsPtFRPu2pS8SyqHNzbSLfMN6
+ 3/8wJdXl2du6kccLQnohkBpqYK61ni+vb9XVIN+TLUCcy3gzioTYy2C+wONqUs7dzQTz
+ vxrA==
+X-Gm-Message-State: AOJu0YzESF/s+IvtvpMTe6dLAx7TVdQpIq+4q43huWEPgjrFozfM5IXb
+ W+Sflu5HKXN906ptb7gbKZnHJLxfD4WtsPCPGHcsHvjNwOcAzItv069YXPbjeut4BGI=
+X-Gm-Gg: ASbGncuWegj5sH0+mF9ype+fy7D3fVfwwZZdfNYInAWj91JDVnb7hsgZt0gY6gmi6BD
+ LTAB/IZqx22veHbFumCFDh9ClQECOk0Jc+8VCAB4sXvddj0n4ifsV0Dgw3qlnISMGE3hHaNql38
+ s23xVg8mIEQ4xMDPDaKrdqd+c2X5dsOF/PlLMdmVldE45NXQyP00oXP2SShYIB3WNyIdIrwxmfe
+ x6ncJjTfng/7fGkOhbKm1qJi83XkBLN69WJwh7D+pfqPzkxw5uF4x+nwtMWgxdERqmtDz8BLUyj
+ 4KEZ3eC1wLDGvEnxSOqoTtjM7EIyNkhGsB5p5o385FDXB8RFn0S0PuTF5wD2FxJ23KWMbITqmSu
+ FbD/WItf+SMd+GL+KVCcaGIUoeWsmtDK/cACBa0U=
+X-Google-Smtp-Source: AGHT+IHg4ng8qcN21owDztk6+LO+SGv6zByq5GflZQZ7mFGZmmXA4d8rnjUG1pYqQR745Il+1bDvUQ==
+X-Received: by 2002:a17:903:1b46:b0:250:1c22:e7b with SMTP id
+ d9443c01a7336-25d27c21e98mr204870405ad.43.1758032573987; 
+ Tue, 16 Sep 2025 07:22:53 -0700 (PDT)
 Received: from stoup.. ([71.212.157.132]) by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2651d2df15esm73459905ad.45.2025.09.16.07.23.06
+ d9443c01a7336-2651d2df15esm73459905ad.45.2025.09.16.07.22.53
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 16 Sep 2025 07:23:06 -0700 (PDT)
+ Tue, 16 Sep 2025 07:22:53 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	peter.maydell@linaro.org
-Subject: [PATCH v2 34/36] target/arm: Redirect VHE FOO_EL12 to FOO_EL1 during
- translation
-Date: Tue, 16 Sep 2025 07:22:35 -0700
-Message-ID: <20250916142238.664316-35-richard.henderson@linaro.org>
+Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org,
+ Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+Subject: [PATCH v2 18/36] target/arm: Remove cp argument to ENCODE_AA64_CP_REG
+Date: Tue, 16 Sep 2025 07:22:19 -0700
+Message-ID: <20250916142238.664316-19-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250916142238.664316-1-richard.henderson@linaro.org>
 References: <20250916142238.664316-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62e;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62e.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::52e;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x52e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -100,172 +99,124 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+All invocations were required to pass the same value,
+CP_REG_ARM64_SYSREG_CP.  Bake that in to the result directly.
+Remove CP_REG_ARM64_SYSREG_CP as unused.
+
+Reviewed-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/cpregs.h            | 22 ++++---------
- target/arm/gdbstub.c           |  2 ++
- target/arm/helper.c            | 57 +++-------------------------------
- target/arm/tcg/translate-a64.c | 12 +++++++
- 4 files changed, 25 insertions(+), 68 deletions(-)
+ target/arm/cpregs.h            |  5 ++---
+ target/arm/kvm-consts.h        |  3 ---
+ target/arm/helper.c            | 11 +++++------
+ target/arm/hvf/hvf.c           |  3 +--
+ target/arm/tcg/translate-a64.c |  6 ++----
+ 5 files changed, 10 insertions(+), 18 deletions(-)
 
 diff --git a/target/arm/cpregs.h b/target/arm/cpregs.h
-index d34ed0d40b..f5d6a1c386 100644
+index 7ebe404163..95b0b9c78e 100644
 --- a/target/arm/cpregs.h
 +++ b/target/arm/cpregs.h
-@@ -917,8 +917,12 @@ struct ARMCPRegInfo {
-      */
-     uint32_t vhe_redir_to_el2;
+@@ -187,9 +187,8 @@ enum {
+      ((is64) << CP_REG_AA32_64BIT_SHIFT) |                  \
+      ((cp) << 16) | ((crn) << 11) | ((crm) << 7) | ((opc1) << 3) | (opc2))
  
--    /* This is used only by VHE. */
--    void *opaque;
-+    /*
-+     * With VHE, with E2H, at EL2+, access to this EL02/EL12 reg
-+     * redirects to the EL0/EL1 reg with the specified key.
-+     */
-+    uint32_t vhe_redir_to_el01;
-+
-     /*
-      * Value of this register, if it is ARM_CP_CONST. Otherwise, if
-      * fieldoffset is non-zero, the reset value of the register.
-@@ -986,20 +990,6 @@ struct ARMCPRegInfo {
-      * fieldoffset is 0 then no reset will be done.
-      */
-     CPResetFn *resetfn;
+-#define ENCODE_AA64_CP_REG(cp, crn, crm, op0, op1, op2) \
+-    (CP_REG_AA64_MASK |                                 \
+-     ((cp) << CP_REG_ARM_COPROC_SHIFT) |                \
++#define ENCODE_AA64_CP_REG(crn, crm, op0, op1, op2) \
++    (CP_REG_AA64_MASK | CP_REG_ARM64_SYSREG |           \
+      ((op0) << CP_REG_ARM64_SYSREG_OP0_SHIFT) |         \
+      ((op1) << CP_REG_ARM64_SYSREG_OP1_SHIFT) |         \
+      ((crn) << CP_REG_ARM64_SYSREG_CRN_SHIFT) |         \
+diff --git a/target/arm/kvm-consts.h b/target/arm/kvm-consts.h
+index fdb305eea1..54ae5da7ce 100644
+--- a/target/arm/kvm-consts.h
++++ b/target/arm/kvm-consts.h
+@@ -160,9 +160,6 @@ MISMATCH_CHECK(QEMU_KVM_ARM_TARGET_CORTEX_A53, KVM_ARM_TARGET_CORTEX_A53);
+ #define CP_REG_ARM64_SYSREG_OP2_MASK   0x0000000000000007
+ #define CP_REG_ARM64_SYSREG_OP2_SHIFT  0
+ 
+-/* No kernel define but it's useful to QEMU */
+-#define CP_REG_ARM64_SYSREG_CP (CP_REG_ARM64_SYSREG >> CP_REG_ARM_COPROC_SHIFT)
 -
--    /*
--     * "Original" readfn, writefn, accessfn.
--     * For ARMv8.1-VHE register aliases, we overwrite the read/write
--     * accessor functions of various EL1/EL0 to perform the runtime
--     * check for which sysreg should actually be modified, and then
--     * forwards the operation.  Before overwriting the accessors,
--     * the original function is copied here, so that accesses that
--     * really do go to the EL1/EL0 version proceed normally.
--     * (The corresponding EL2 register is linked via opaque.)
--     */
--    CPReadFn *orig_readfn;
--    CPWriteFn *orig_writefn;
--    CPAccessFn *orig_accessfn;
- };
- 
- void define_one_arm_cp_reg(ARMCPU *cpu, const ARMCPRegInfo *regs);
-diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
-index 3727dc01af..269bc6c132 100644
---- a/target/arm/gdbstub.c
-+++ b/target/arm/gdbstub.c
-@@ -253,6 +253,8 @@ static int arm_gdb_get_sysreg(CPUState *cs, GByteArray *buf, int reg)
-                 (arm_hcr_el2_eff(env) & HCR_E2H) &&
-                 arm_current_el(env) == 2) {
-                 ri = get_arm_cp_reginfo(cpu->cp_regs, ri->vhe_redir_to_el2);
-+            } else if (ri->vhe_redir_to_el01) {
-+                ri = get_arm_cp_reginfo(cpu->cp_regs, ri->vhe_redir_to_el01);
-             }
-             return gdb_get_reg64(buf, (uint64_t)read_raw_cp_reg(env, ri));
-         case MO_32:
+ MISMATCH_CHECK(CP_REG_ARM64, KVM_REG_ARM64);
+ MISMATCH_CHECK(CP_REG_ARM_COPROC_MASK, KVM_REG_ARM_COPROC_MASK);
+ MISMATCH_CHECK(CP_REG_ARM_COPROC_SHIFT, KVM_REG_ARM_COPROC_SHIFT);
 diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 49bb1e8365..8074c50241 100644
+index cc924adbc7..7094b63f82 100644
 --- a/target/arm/helper.c
 +++ b/target/arm/helper.c
-@@ -4456,42 +4456,6 @@ static CPAccessResult access_el1nvvct(CPUARMState *env, const ARMCPRegInfo *ri,
-     return e2h_access(env, ri, isread);
- }
+@@ -4542,7 +4542,7 @@ static void define_arm_vh_e2h_redirects_aliases(ARMCPU *cpu)
+     };
  
--static uint64_t el2_e2h_e12_read(CPUARMState *env, const ARMCPRegInfo *ri)
--{
--    /* Pass the EL1 register accessor its ri, not the EL12 alias ri */
--    return ri->orig_readfn(env, ri->opaque);
--}
--
--static void el2_e2h_e12_write(CPUARMState *env, const ARMCPRegInfo *ri,
--                              uint64_t value)
--{
--    /* Pass the EL1 register accessor its ri, not the EL12 alias ri */
--    return ri->orig_writefn(env, ri->opaque, value);
--}
--
--static CPAccessResult el2_e2h_e12_access(CPUARMState *env,
--                                         const ARMCPRegInfo *ri,
--                                         bool isread)
--{
--    if (arm_current_el(env) == 1) {
--        /*
--         * This must be a FEAT_NV access (will either trap or redirect
--         * to memory). None of the registers with _EL12 aliases want to
--         * apply their trap controls for this kind of access, so don't
--         * call the orig_accessfn or do the "UNDEF when E2H is 0" check.
--         */
--        return CP_ACCESS_OK;
--    }
--    /* FOO_EL12 aliases only exist when E2H is 1; otherwise they UNDEF */
--    if (!(arm_hcr_el2_eff(env) & HCR_E2H)) {
--        return CP_ACCESS_UNDEFINED;
--    }
--    if (ri->orig_accessfn) {
--        return ri->orig_accessfn(env, ri->opaque, isread);
--    }
--    return CP_ACCESS_OK;
--}
--
- static void define_arm_vh_e2h_redirects_aliases(ARMCPU *cpu)
+ #define K(op0, op1, crn, crm, op2) \
+-    ENCODE_AA64_CP_REG(CP_REG_ARM64_SYSREG_CP, crn, crm, op0, op1, op2)
++    ENCODE_AA64_CP_REG(crn, crm, op0, op1, op2)
+ 
+     static const struct E2HAlias aliases[] = {
+         { K(3, 0,  1, 0, 0), K(3, 4,  1, 0, 0), K(3, 5, 1, 0, 0),
+@@ -7451,10 +7451,9 @@ static void add_cpreg_to_hashtable(ARMCPU *cpu, const ARMCPRegInfo *r,
+          * in their AArch64 view (the .cp value may be non-zero for the
+          * benefit of the AArch32 view).
+          */
+-        if (cp == 0 || r->state == ARM_CP_STATE_BOTH) {
+-            cp = CP_REG_ARM64_SYSREG_CP;
+-        }
+-        key = ENCODE_AA64_CP_REG(cp, r->crn, crm, r->opc0, opc1, opc2);
++        assert(cp == 0 || r->state == ARM_CP_STATE_BOTH);
++        cp = 0;
++        key = ENCODE_AA64_CP_REG(r->crn, crm, r->opc0, opc1, opc2);
+         break;
+     default:
+         g_assert_not_reached();
+@@ -7679,7 +7678,7 @@ void define_one_arm_cp_reg(ARMCPU *cpu, const ARMCPRegInfo *r)
+         }
+         break;
+     case ARM_CP_STATE_AA64:
+-        assert(r->cp == 0 || r->cp == CP_REG_ARM64_SYSREG_CP);
++        assert(r->cp == 0);
+         break;
+     default:
+         g_assert_not_reached();
+diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+index 694584cc13..6e67d89163 100644
+--- a/target/arm/hvf/hvf.c
++++ b/target/arm/hvf/hvf.c
+@@ -1124,8 +1124,7 @@ static bool is_id_sysreg(uint32_t reg)
+ 
+ static uint32_t hvf_reg2cp_reg(uint32_t reg)
  {
-     struct E2HAlias {
-@@ -4585,9 +4549,6 @@ static void define_arm_vh_e2h_redirects_aliases(ARMCPU *cpu)
-         g_assert(strcmp(src_reg->name, a->src_name) == 0);
-         g_assert(strcmp(dst_reg->name, a->dst_name) == 0);
- 
--        /* None of the core system registers use opaque; we will.  */
--        g_assert(src_reg->opaque == NULL);
--
-         /* Create alias before redirection so we dup the right data. */
-         new_reg = g_memdup(src_reg, sizeof(ARMCPRegInfo));
- 
-@@ -4606,19 +4567,11 @@ static void define_arm_vh_e2h_redirects_aliases(ARMCPU *cpu)
-             >> CP_REG_ARM64_SYSREG_OP1_SHIFT;
-         new_reg->opc2 = (a->new_key & CP_REG_ARM64_SYSREG_OP2_MASK)
-             >> CP_REG_ARM64_SYSREG_OP2_SHIFT;
--        new_reg->opaque = src_reg;
--        new_reg->orig_readfn = src_reg->readfn ?: raw_read;
--        new_reg->orig_writefn = src_reg->writefn ?: raw_write;
--        new_reg->orig_accessfn = src_reg->accessfn;
--        if (!new_reg->raw_readfn) {
--            new_reg->raw_readfn = raw_read;
--        }
--        if (!new_reg->raw_writefn) {
--            new_reg->raw_writefn = raw_write;
--        }
--        new_reg->readfn = el2_e2h_e12_read;
--        new_reg->writefn = el2_e2h_e12_write;
--        new_reg->accessfn = el2_e2h_e12_access;
-+        new_reg->vhe_redir_to_el01 = a->src_key;
-+        new_reg->readfn = NULL;
-+        new_reg->writefn = NULL;
-+        new_reg->accessfn = NULL;
-+        new_reg->fieldoffset = 0;
- 
-         /*
-          * If the _EL1 register is redirected to memory by FEAT_NV2,
+-    return ENCODE_AA64_CP_REG(CP_REG_ARM64_SYSREG_CP,
+-                              (reg >> SYSREG_CRN_SHIFT) & SYSREG_CRN_MASK,
++    return ENCODE_AA64_CP_REG((reg >> SYSREG_CRN_SHIFT) & SYSREG_CRN_MASK,
+                               (reg >> SYSREG_CRM_SHIFT) & SYSREG_CRM_MASK,
+                               (reg >> SYSREG_OP0_SHIFT) & SYSREG_OP0_MASK,
+                               (reg >> SYSREG_OP1_SHIFT) & SYSREG_OP1_MASK,
 diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-index 3ef24fb0c3..6728e362b6 100644
+index 37bedc3780..a560ef0f42 100644
 --- a/target/arm/tcg/translate-a64.c
 +++ b/target/arm/tcg/translate-a64.c
-@@ -2580,6 +2580,18 @@ static void handle_sys(DisasContext *s, bool isread,
+@@ -2466,8 +2466,7 @@ static void handle_sys(DisasContext *s, bool isread,
+                        unsigned int op0, unsigned int op1, unsigned int op2,
+                        unsigned int crn, unsigned int crm, unsigned int rt)
+ {
+-    uint32_t key = ENCODE_AA64_CP_REG(CP_REG_ARM64_SYSREG_CP,
+-                                      crn, crm, op0, op1, op2);
++    uint32_t key = ENCODE_AA64_CP_REG(crn, crm, op0, op1, op2);
+     const ARMCPRegInfo *ri = get_arm_cp_reginfo(s->cp_regs, key);
+     bool need_exit_tb = false;
+     bool nv_trap_to_el2 = false;
+@@ -2603,8 +2602,7 @@ static void handle_sys(DisasContext *s, bool isread,
+          * We don't use the EL1 register's access function, and
+          * fine-grained-traps on EL1 also do not apply here.
           */
-         key = ri->vhe_redir_to_el2;
-         ri = redirect_cpreg(s, key, isread);
-+    } else if (ri->vhe_redir_to_el01 && s->current_el >= 2) {
-+        /*
-+         * This is one of the FOO_EL12 registers.
-+         * With !E2H, they all UNDEF.
-+         * With E2H, from EL2 or EL3, they redirect to FOO_EL1.
-+         */
-+        if (!s->e2h) {
-+            gen_sysreg_undef(s, isread, op0, op1, op2, crn, crm, rt);
-+            return;
-+        }
-+        key = ri->vhe_redir_to_el01;
-+        ri = redirect_cpreg(s, key, isread);
-     }
- 
-     if (ri->accessfn || (ri->fgt && s->fgt_active)) {
+-        key = ENCODE_AA64_CP_REG(CP_REG_ARM64_SYSREG_CP,
+-                                 crn, crm, op0, 0, op2);
++        key = ENCODE_AA64_CP_REG(crn, crm, op0, 0, op2);
+         ri = get_arm_cp_reginfo(s->cp_regs, key);
+         assert(ri);
+         assert(cp_access_ok(s->current_el, ri, isread));
 -- 
 2.43.0
 

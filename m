@@ -4,84 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E968CAC599
-	for <qemu-arm@archiver.kernel.org>; Tue, 16 Sep 2025 14:29:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F28D7CAC598
+	for <qemu-arm@archiver.kernel.org>; Tue, 16 Sep 2025 14:29:14 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uyWcw-0000lH-Kb; Tue, 16 Sep 2025 10:25:50 -0400
+	id 1uyWat-0006O0-6M; Tue, 16 Sep 2025 10:23:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1uyWaU-0005th-PO
- for qemu-arm@nongnu.org; Tue, 16 Sep 2025 10:23:20 -0400
-Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
+ id 1uyWaX-0005vA-GB
+ for qemu-arm@nongnu.org; Tue, 16 Sep 2025 10:23:21 -0400
+Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1uyWaL-0008Mf-FD
- for qemu-arm@nongnu.org; Tue, 16 Sep 2025 10:23:18 -0400
-Received: by mail-pl1-x630.google.com with SMTP id
- d9443c01a7336-25669596955so57006265ad.0
- for <qemu-arm@nongnu.org>; Tue, 16 Sep 2025 07:23:00 -0700 (PDT)
+ id 1uyWaT-0008Nl-Cx
+ for qemu-arm@nongnu.org; Tue, 16 Sep 2025 10:23:21 -0400
+Received: by mail-pl1-x635.google.com with SMTP id
+ d9443c01a7336-24456ce0b96so62678145ad.0
+ for <qemu-arm@nongnu.org>; Tue, 16 Sep 2025 07:23:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1758032580; x=1758637380; darn=nongnu.org;
+ d=linaro.org; s=google; t=1758032583; x=1758637383; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=jRgfGoWkJBViaWdfAuuV3gVCQiMB3rBg0skWkT97tNk=;
- b=tQByyXcTa7IKRSB8ZWM4+ZTk2/esMRKDZ8zBS9Q3LL1D0SeuuSkC/yhdtEFR4190dp
- DFsE1LzHCmC+2bdx9umrsvjmbbh9g5o/yDinq0ytzGQioEcdCxnpJQU7Nk6ORkINxc6A
- kZgtMi0eEgjaeIK2slbvyCjwpmcTl+uW0bBM2IGu8W7711YZUKvDS9dWBiI+QYpxBDo2
- MEgkhDRFyTtWyq+mRSpg/NGMBuJXxbpruzjeth8TcQIlhxwqIhhWazU01W6Ljje7dsja
- KRxCUZxWwIvt2ac/Zah6GyPAZ8pX7m1Pev64X3xyUPiHwa2MPkipLjU1JezsKjAQB1nF
- e2ww==
+ bh=y9C7TeSELE/I78PqGnfI0xNq18ESqIf/4E122jlCx3E=;
+ b=XYNnMLfgUDiMeEYl9kSNrge8OkddtfEgo/p1ugxdy2+ZUpeWb8cfpyDOSbqAoaBWvj
+ uIM22Y0lNmIIGmLoBd8KJNhDrK9gjtEPLtkGlCLsGLqm2FZiE4lAK4ZteZyvWOKsEpHH
+ Ubo4R6gB4sQV48406v5B/lKEQp+tt6muxMuVqzDCqTToFQ4eLpk0Nm4gDo//Y+7XGSrm
+ RKdnmF3sbaeHmQjmatj+Ae6f+JAb17DYFcGNT4odf7eaRxnrpRXUT0zVjNPLPawOMVcq
+ dkOjeTgRl9slBfYVI2rjCZb2YEcZHjmtnE6csS9RyPOU84ORXdHjGHEg8gs89rGQXDEA
+ CsDA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1758032580; x=1758637380;
+ d=1e100.net; s=20230601; t=1758032583; x=1758637383;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=jRgfGoWkJBViaWdfAuuV3gVCQiMB3rBg0skWkT97tNk=;
- b=Wbwg1lDUyA4XFBXO/dhQcuj+CEg6WQ2X2foVoNyYoSn+hjtCF7y1YvUJP67dwnNSBO
- GLFUtNSOAm4iL8o1YRijo5uz1kn71FG5w4951u1NSuDL9/LPP1q5Ymw1zfNGcSccpyx0
- iHUL6Vks98dbgvpdWJFUc6PVlBysJjo5F9DORe58dnFBoP+P90tVGFLJesv31aoSd37E
- JST9CvMYMsQzNGlXyZ8jupA7edLkvwtihsj3BKmtKeVKTJylGXh5GBlcr8bDH+qAFjsS
- 90GS0PwpL0RFbhBwzKEk0kmwbwBy2Nwft8N7VDLwUnRZPEMOm82geFQFF4mxQRn/5Sj+
- Cnkw==
-X-Gm-Message-State: AOJu0YxjkU47S1hojlL8JdnsgzDdEn/RAUwFIB6ntLACvNcij44zhZbi
- ng2ZGDrec3FcBvQzImKVKQj4R70RTArlU30ojHbDw6r0rR7IHQheR+Z/VoldpqB2QYU=
-X-Gm-Gg: ASbGncsJJv81jmr3jgjCUZlhLvArivP4SwaoocnV5tkm1aJAA5yJuEIYTAV7V427hUy
- wf+0zSko/5wCFHdalkyXjwStIwbl9F35j/br+guuDHdIXb3J5KQupq9l+GptKaW7Te2CQs6i/+u
- izZrBw7vB6kdr4guF7HDd4N0FNw7y+4QcQZaqq3b4RV268P+cO2d4N95H5FQtBIKvNBOCU90kpg
- qL9WFWGHndAei9YGkbXhgQI4hLikj+HpXxG+0XYo57sN7ebj7xBjFvEz+4td1FfLnoK8GDWiJXp
- EegmBm15B1xrDhJ8sl4+JdhnGu1vZ9/MRGNKiknqQGiu2fpOnIEMg7nAaud5p3CkdmhGbSXR/JB
- WBHumJBmCyUp9VOqAzUeXHNd0CW8M
-X-Google-Smtp-Source: AGHT+IEKg8RBNQVZfjsGxxqrsTnQ/ZBF4bXbkMjZ2HndW1XegnOq6B70B5k+pKzbPOExU5yiP7nkGQ==
-X-Received: by 2002:a17:902:d2cf:b0:266:e0e6:873e with SMTP id
- d9443c01a7336-266e0e68a56mr103540915ad.57.1758032579582; 
- Tue, 16 Sep 2025 07:22:59 -0700 (PDT)
+ bh=y9C7TeSELE/I78PqGnfI0xNq18ESqIf/4E122jlCx3E=;
+ b=eOKD3I5iPMaDMxW8OnfhjKxz0eE4UvSaV1rnosEhqvBvFsU1bEyWyHgOSsvukOK9H0
+ yoGBjNLtTB3ZJCQtBTprdmirZtJr6TcVuoYZ8An3nO1zJEHzL7cGve3IRaSMNtDKPvzA
+ 89M+sYZMCQJfTYec0GMvNq4yyHV/u/EctJDsWFIjCjNI6v64iWkPm9fOR2pxB5XyuLVg
+ XnIJ/tU/6Yw46ZEupRCFpCDpstCqrNgWVCmCc1+FlTFM/pFNfH9ASz6B6x4GgK5hojEY
+ Uo0UFoihPYUqOYY7B8qKovf/K4uKYnhZ07Ai5LLmIWq60j1twKCa3swC5iXfxWQA5Ol3
+ wSFA==
+X-Gm-Message-State: AOJu0YwuxG/50cJ7qZUxZq5df4xHU/+KN8FPlN73KwPpuUzbpfr95xqJ
+ LFVPl/o378IREUBnyOn1U06ejtfwuHQgmm3tQdw7Kvp+8xFgMmzx5mGZ5NBDNTcxwKs=
+X-Gm-Gg: ASbGnctPVTt+6IFrDl6eWWLiD/ICG+PmfZTwfq/Ze1wmJlZ2nIYsm1VMWQLW81fBbmk
+ NdLPa0qGMMXbaXS0xiuWdU03NJSmX30L1JgH4fUfi+G4aMlMgz1tNdGlouMQEalZaoU07rX6m2q
+ mew5iGj9zV4fXJIIg1un0iGOnZhkBLsTKWpvDNNBhHGIksaPRP+BnSk6A42esgt3jFapyO71xk+
+ ek/JDCBLV/RMSrmxS7WVJ80hZFq/U0RPH/FWlzqIKEEHZor0xhp3PgqF1RHmTl6tSESl02CDFAj
+ 2bwi5L5tPnlzdEXoyGP37iUk6uct0K3g2SZWORfZYaYvfZx9qWe8tlRBd5FURpuOZpZ1z0N/1bD
+ 6iyIpBPIvgOtktIN58RgvVFt5Oa3L
+X-Google-Smtp-Source: AGHT+IE+Qfbk0b0Y3115cRAlVaar1X+didrD2Gf9E3LVprk0+7tgZLKad651m7yXduDlH2+ZtlQ1nQ==
+X-Received: by 2002:a17:902:cccc:b0:267:c1ae:8f04 with SMTP id
+ d9443c01a7336-267d15f1e77mr28050565ad.20.1758032583386; 
+ Tue, 16 Sep 2025 07:23:03 -0700 (PDT)
 Received: from stoup.. ([71.212.157.132]) by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2651d2df15esm73459905ad.45.2025.09.16.07.22.59
+ d9443c01a7336-2651d2df15esm73459905ad.45.2025.09.16.07.23.02
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 16 Sep 2025 07:22:59 -0700 (PDT)
+ Tue, 16 Sep 2025 07:23:03 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	peter.maydell@linaro.org
-Subject: [PATCH v2 26/36] target/arm: Hoist the allocation of ARMCPRegInfo
-Date: Tue, 16 Sep 2025 07:22:27 -0700
-Message-ID: <20250916142238.664316-27-richard.henderson@linaro.org>
+Subject: [PATCH v2 30/36] target/arm: Move endianness fixup for 32-bit
+ registers
+Date: Tue, 16 Sep 2025 07:22:31 -0700
+Message-ID: <20250916142238.664316-31-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250916142238.664316-1-richard.henderson@linaro.org>
 References: <20250916142238.664316-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::630;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x630.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::635;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x635.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -98,235 +100,45 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Pass in a newly allocated structure, rather than having to
-dance around allocation of the name and the structure.
-
-Since we no longer have two copies of the structure handy
-within add_cpreg_to_hashtable, delay the writeback of concrete
-values over wildcards until we're done querying the wildcards.
+Move the test outside of the banked register block,
+and repeat the AA32 test.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/helper.c | 97 ++++++++++++++++++++++-----------------------
- 1 file changed, 48 insertions(+), 49 deletions(-)
+ target/arm/helper.c | 17 ++++++++++++-----
+ 1 file changed, 12 insertions(+), 5 deletions(-)
 
 diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 7f55ea726d..71dd094fac 100644
+index 7828268c7f..0f681c15e0 100644
 --- a/target/arm/helper.c
 +++ b/target/arm/helper.c
-@@ -7443,13 +7443,12 @@ static ARMCPRegInfo *alloc_cpreg(const ARMCPRegInfo *in,
-  * Private utility function for define_one_arm_cp_reg():
-  * add a single reginfo struct to the hash table.
-  */
--static void add_cpreg_to_hashtable(ARMCPU *cpu, const ARMCPRegInfo *r,
-+static void add_cpreg_to_hashtable(ARMCPU *cpu, ARMCPRegInfo *r,
-                                    CPState state, CPSecureState secstate,
-                                    int cp, int crm, int opc1, int opc2,
--                                   const char *name, uint32_t key)
-+                                   uint32_t key)
- {
-     CPUARMState *env = &cpu->env;
--    ARMCPRegInfo *r2;
-     bool ns = secstate & ARM_CP_SECSTATE_NS;
- 
-     /* Overriding of an existing definition must be explicitly requested. */
-@@ -7460,19 +7459,6 @@ static void add_cpreg_to_hashtable(ARMCPU *cpu, const ARMCPRegInfo *r,
-         }
-     }
- 
--    r2 = alloc_cpreg(r, name, NULL);
--
--    /*
--     * Update fields to match the instantiation, overwiting wildcards
--     * such as CP_ANY, ARM_CP_STATE_BOTH, or ARM_CP_SECSTATE_BOTH.
--     */
--    r2->cp = cp;
--    r2->crm = crm;
--    r2->opc1 = opc1;
--    r2->opc2 = opc2;
--    r2->state = state;
--    r2->secure = secstate;
--
-     {
-         bool isbanked = r->bank_fieldoffsets[0] && r->bank_fieldoffsets[1];
- 
-@@ -7482,7 +7468,7 @@ static void add_cpreg_to_hashtable(ARMCPU *cpu, const ARMCPRegInfo *r,
-              * Overwriting fieldoffset as the array is only used to define
-              * banked registers but later only fieldoffset is used.
-              */
--            r2->fieldoffset = r->bank_fieldoffsets[ns];
-+            r->fieldoffset = r->bank_fieldoffsets[ns];
-         }
-         if (state == ARM_CP_STATE_AA32) {
-             if (isbanked) {
-@@ -7499,19 +7485,19 @@ static void add_cpreg_to_hashtable(ARMCPU *cpu, const ARMCPRegInfo *r,
+@@ -7493,14 +7493,21 @@ static void add_cpreg_to_hashtable(ARMCPU *cpu, ARMCPRegInfo *r,
                   */
-                 if ((r->state == ARM_CP_STATE_BOTH && ns) ||
-                     (arm_feature(env, ARM_FEATURE_V8) && !ns)) {
--                    r2->type |= ARM_CP_ALIAS;
-+                    r->type |= ARM_CP_ALIAS;
-                 }
-             } else if ((secstate != r->secure) && !ns) {
-                 /*
-                  * The register is not banked so we only want to allow
-                  * migration of the non-secure instance.
-                  */
--                r2->type |= ARM_CP_ALIAS;
-+                r->type |= ARM_CP_ALIAS;
+                 r->type |= ARM_CP_ALIAS;
              }
- 
-             if (HOST_BIG_ENDIAN &&
--                r->state == ARM_CP_STATE_BOTH && r2->fieldoffset) {
--                r2->fieldoffset += sizeof(uint32_t);
-+                r->state == ARM_CP_STATE_BOTH && r->fieldoffset) {
-+                r->fieldoffset += sizeof(uint32_t);
-             }
+-
+-            if (HOST_BIG_ENDIAN &&
+-                r->state == ARM_CP_STATE_BOTH && r->fieldoffset) {
+-                r->fieldoffset += sizeof(uint32_t);
+-            }
          }
-     }
-@@ -7523,35 +7509,46 @@ static void add_cpreg_to_hashtable(ARMCPU *cpu, const ARMCPRegInfo *r,
-      * multiple times. Special registers (ie NOP/WFI) are
-      * never migratable and not even raw-accessible.
-      */
--    if (r2->type & ARM_CP_SPECIAL_MASK) {
--        r2->type |= ARM_CP_NO_RAW;
-+    if (r->type & ARM_CP_SPECIAL_MASK) {
-+        r->type |= ARM_CP_NO_RAW;
-     }
-     if (((r->crm == CP_ANY) && crm != 0) ||
-         ((r->opc1 == CP_ANY) && opc1 != 0) ||
-         ((r->opc2 == CP_ANY) && opc2 != 0)) {
--        r2->type |= ARM_CP_ALIAS | ARM_CP_NO_GDB;
-+        r->type |= ARM_CP_ALIAS | ARM_CP_NO_GDB;
      }
  
 +    /*
-+     * Update fields to match the instantiation, overwiting wildcards
-+     * such as CP_ANY, ARM_CP_STATE_BOTH, or ARM_CP_SECSTATE_BOTH.
++     * For 32-bit AArch32 regs shared with 64-bit AArch64 regs,
++     * adjust the field offset for endianness.  This had to be
++     * delayed until banked registers were resolved.
 +     */
-+    r->cp = cp;
-+    r->crm = crm;
-+    r->opc1 = opc1;
-+    r->opc2 = opc2;
-+    r->state = state;
-+    r->secure = secstate;
++    if (HOST_BIG_ENDIAN &&
++        state == ARM_CP_STATE_AA32 &&
++        r->state == ARM_CP_STATE_BOTH &&
++        r->fieldoffset) {
++        r->fieldoffset += sizeof(uint32_t);
++    }
 +
      /*
-      * Check that raw accesses are either forbidden or handled. Note that
-      * we can't assert this earlier because the setup of fieldoffset for
-      * banked registers has to be done first.
-      */
--    if (!(r2->type & ARM_CP_NO_RAW)) {
--        assert(!raw_accessors_invalid(r2));
-+    if (!(r->type & ARM_CP_NO_RAW)) {
-+        assert(!raw_accessors_invalid(r));
-     }
- 
--    g_hash_table_insert(cpu->cp_regs, (gpointer)(uintptr_t)key, r2);
-+    g_hash_table_insert(cpu->cp_regs, (gpointer)(uintptr_t)key, r);
- }
- 
--static void add_cpreg_to_hashtable_aa32(ARMCPU *cpu, const ARMCPRegInfo *r,
-+static void add_cpreg_to_hashtable_aa32(ARMCPU *cpu, ARMCPRegInfo *r,
-                                         int cp, int crm, int opc1, int opc2)
- {
-     /*
-      * Under AArch32 CP registers can be common
-      * (same for secure and non-secure world) or banked.
-      */
--    char *name;
-+    ARMCPRegInfo *r_s;
-     bool is64 = r->type & ARM_CP_64BIT;
-     uint32_t key = ENCODE_CP_REG(cp, is64, 0, r->crn, crm, opc1, opc2);
- 
-@@ -7563,24 +7560,23 @@ static void add_cpreg_to_hashtable_aa32(ARMCPU *cpu, const ARMCPRegInfo *r,
-         /* fall through */
-     case ARM_CP_SECSTATE_S:
-         add_cpreg_to_hashtable(cpu, r, ARM_CP_STATE_AA32, r->secure,
--                               cp, crm, opc1, opc2, r->name, key);
-+                               cp, crm, opc1, opc2, key);
-         break;
-     case ARM_CP_SECSTATE_BOTH:
--        name = g_strdup_printf("%s_S", r->name);
--        add_cpreg_to_hashtable(cpu, r, ARM_CP_STATE_AA32, ARM_CP_SECSTATE_S,
--                               cp, crm, opc1, opc2, name, key);
--        g_free(name);
-+        r_s = alloc_cpreg(r, r->name, "_S");
-+        add_cpreg_to_hashtable(cpu, r_s, ARM_CP_STATE_AA32, ARM_CP_SECSTATE_S,
-+                               cp, crm, opc1, opc2, key);
- 
-         key |= CP_REG_AA32_NS_MASK;
-         add_cpreg_to_hashtable(cpu, r, ARM_CP_STATE_AA32, ARM_CP_SECSTATE_NS,
--                               cp, crm, opc1, opc2, r->name, key);
-+                               cp, crm, opc1, opc2, key);
-         break;
-     default:
-         g_assert_not_reached();
-     }
- }
- 
--static void add_cpreg_to_hashtable_aa64(ARMCPU *cpu, const ARMCPRegInfo *r,
-+static void add_cpreg_to_hashtable_aa64(ARMCPU *cpu, ARMCPRegInfo *r,
-                                         int crm, int opc1, int opc2)
- {
-     uint32_t key = ENCODE_AA64_CP_REG(r->opc0, opc1, r->crn, crm, opc2);
-@@ -7597,24 +7593,23 @@ static void add_cpreg_to_hashtable_aa64(ARMCPU *cpu, const ARMCPRegInfo *r,
-          * and name that it is passed, so it's OK to use
-          * a local struct here.
-          */
--        ARMCPRegInfo nxs_ri = *r;
--        g_autofree char *name = g_strdup_printf("%sNXS", r->name);
-+        ARMCPRegInfo *nxs_ri = alloc_cpreg(r, r->name, "NXS");
-         uint32_t nxs_key;
- 
--        assert(nxs_ri.crn < 0xf);
--        nxs_ri.crn++;
-+        assert(nxs_ri->crn < 0xf);
-+        nxs_ri->crn++;
-         nxs_key = key + (1 << CP_REG_ARM64_SYSREG_CRN_SHIFT);
--        if (nxs_ri.fgt) {
--            nxs_ri.fgt |= R_FGT_NXS_MASK;
-+        if (nxs_ri->fgt) {
-+            nxs_ri->fgt |= R_FGT_NXS_MASK;
-         }
- 
--        add_cpreg_to_hashtable(cpu, &nxs_ri, ARM_CP_STATE_AA64,
-+        add_cpreg_to_hashtable(cpu, nxs_ri, ARM_CP_STATE_AA64,
-                                ARM_CP_SECSTATE_NS, 0, crm, opc1, opc2,
--                               name, nxs_key);
-+                               nxs_key);
-     }
- 
-     add_cpreg_to_hashtable(cpu, r, ARM_CP_STATE_AA64, ARM_CP_SECSTATE_NS,
--                           0, crm, opc1, opc2, r->name, key);
-+                           0, crm, opc1, opc2, key);
- }
- 
- void define_one_arm_cp_reg(ARMCPU *cpu, const ARMCPRegInfo *r)
-@@ -7821,16 +7816,20 @@ void define_one_arm_cp_reg(ARMCPU *cpu, const ARMCPRegInfo *r)
-     for (int crm = crmmin; crm <= crmmax; crm++) {
-         for (int opc1 = opc1min; opc1 <= opc1max; opc1++) {
-             for (int opc2 = opc2min; opc2 <= opc2max; opc2++) {
-+                ARMCPRegInfo *r2 = alloc_cpreg(r, r->name, NULL);
-+                ARMCPRegInfo *r3;
-+
-                 switch (r->state) {
-                 case ARM_CP_STATE_AA32:
--                    add_cpreg_to_hashtable_aa32(cpu, r, cp, crm, opc1, opc2);
-+                    add_cpreg_to_hashtable_aa32(cpu, r2, cp, crm, opc1, opc2);
-                     break;
-                 case ARM_CP_STATE_AA64:
--                    add_cpreg_to_hashtable_aa64(cpu, r, crm, opc1, opc2);
-+                    add_cpreg_to_hashtable_aa64(cpu, r2, crm, opc1, opc2);
-                     break;
-                 case ARM_CP_STATE_BOTH:
--                    add_cpreg_to_hashtable_aa32(cpu, r, cp, crm, opc1, opc2);
--                    add_cpreg_to_hashtable_aa64(cpu, r, crm, opc1, opc2);
-+                    r3 = alloc_cpreg(r2, r2->name, NULL);
-+                    add_cpreg_to_hashtable_aa32(cpu, r2, cp, crm, opc1, opc2);
-+                    add_cpreg_to_hashtable_aa64(cpu, r3, crm, opc1, opc2);
-                     break;
-                 default:
-                     g_assert_not_reached();
+      * Special registers (ie NOP/WFI) are never migratable and
+      * are not even raw-accessible.
 -- 
 2.43.0
 

@@ -4,27 +4,27 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41F38CAC598
-	for <qemu-arm@archiver.kernel.org>; Tue, 16 Sep 2025 08:04:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5AE0ECAC59A
+	for <qemu-arm@archiver.kernel.org>; Tue, 16 Sep 2025 08:05:19 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uyQfy-0004eY-Db; Tue, 16 Sep 2025 04:04:36 -0400
+	id 1uyQg9-0004q4-3j; Tue, 16 Sep 2025 04:04:45 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kane_chen@aspeedtech.com>)
- id 1uyQfq-0004bZ-7b; Tue, 16 Sep 2025 04:04:26 -0400
+ id 1uyQg6-0004mC-Lb; Tue, 16 Sep 2025 04:04:43 -0400
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kane_chen@aspeedtech.com>)
- id 1uyQfi-0002G3-EA; Tue, 16 Sep 2025 04:04:25 -0400
+ id 1uyQfz-0002G3-AF; Tue, 16 Sep 2025 04:04:42 -0400
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Tue, 16 Sep
- 2025 16:04:06 +0800
+ 2025 16:04:07 +0800
 Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
- Transport; Tue, 16 Sep 2025 16:04:06 +0800
+ Transport; Tue, 16 Sep 2025 16:04:07 +0800
 To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
  <leetroy@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>, Andrew Jeffery
@@ -33,10 +33,13 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <qemu-devel@nongnu.org>
 CC: <troy_lee@aspeedtech.com>, <thuth@redhat.com>, Kane-Chen-AS
  <kane_chen@aspeedtech.com>
-Subject: [PATCH v1 0/3] tests/functional/arm: Add OTP functional test
-Date: Tue, 16 Sep 2025 16:04:02 +0800
-Message-ID: <20250916080406.2430111-1-kane_chen@aspeedtech.com>
+Subject: [PATCH v1 3/3] tests/functional/arm: Add AST2600 boot test with
+ generated OTP image
+Date: Tue, 16 Sep 2025 16:04:05 +0800
+Message-ID: <20250916080406.2430111-4-kane_chen@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250916080406.2430111-1-kane_chen@aspeedtech.com>
+References: <20250916080406.2430111-1-kane_chen@aspeedtech.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
@@ -67,28 +70,39 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Kane-Chen-AS <kane_chen@aspeedtech.com>
 
-Hi all,
+Add a functional test that boots an AST2600 machine with a generated
+OTP image. The test verifies that OTP contents are read during early
+boot and that the system reaches the expected console prompt.
 
-During early boot, SoC firmware reads from the OTP region to obtain the
-chip ID and default configuration. This series adds functional tests that
-boot with a generated OTP image and verify that the firmware reads these
-contents correctly during initialization.
-
-Any feedback or suggestions are appreciated.
-
-Best Regards,
-Kane
+Signed-off-by: Kane-Chen-AS <kane_chen@aspeedtech.com>
 ---
-Kane-Chen-AS (3):
-  tests/functional/arm: Add helper to generate OTP images
-  tests/functional/arm: Add AST1030 boot test with prebuilt OTP image
-  tests/functional/arm: Add AST2600 boot test with prebuilt OTP image
-
- tests/functional/arm/test_aspeed_ast1030.py | 20 ++++++++++++++++++--
  tests/functional/arm/test_aspeed_ast2600.py | 14 ++++++++++++++
- tests/functional/aspeed.py                  |  7 +++++++
- 3 files changed, 39 insertions(+), 2 deletions(-)
+ 1 file changed, 14 insertions(+)
 
+diff --git a/tests/functional/arm/test_aspeed_ast2600.py b/tests/functional/arm/test_aspeed_ast2600.py
+index 129695ca4e..1813601fcb 100755
+--- a/tests/functional/arm/test_aspeed_ast2600.py
++++ b/tests/functional/arm/test_aspeed_ast2600.py
+@@ -136,5 +136,19 @@ def test_arm_ast2600_evb_sdk(self):
+         exec_command_and_wait_for_pattern(self,
+              '/sbin/hwclock -f /dev/rtc1', year)
+ 
++    def test_ast2600_otp_blockdev_device(self):
++        self.vm.set_machine("ast2600-evb")
++
++        image_path = self.archive_extract(self.ASSET_SDK_V907_AST2600)
++        otp_img = self.generate_otpmem_image()
++
++        self.vm.set_console()
++        self.vm.add_args(
++            "-blockdev", f"driver=file,filename={otp_img},node-name=otp",
++            "-global", "aspeed-otp.drive=otp",
++        )
++        self.do_test_arm_aspeed_sdk_start(self.scratch_file("ast2600-default", "image-bmc"))
++        self.wait_for_console_pattern("ast2600-default login:")
++
+ if __name__ == '__main__':
+     AspeedTest.main()
 -- 
 2.43.0
 

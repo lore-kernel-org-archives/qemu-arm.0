@@ -4,92 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B370CCAC599
-	for <qemu-arm@archiver.kernel.org>; Tue, 16 Sep 2025 11:42:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF31BCAC598
+	for <qemu-arm@archiver.kernel.org>; Tue, 16 Sep 2025 11:44:08 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uyU4F-0008Kt-Bu; Tue, 16 Sep 2025 07:41:51 -0400
+	id 1uyU63-00015A-4Q; Tue, 16 Sep 2025 07:43:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uyU4D-0008KB-8s
- for qemu-arm@nongnu.org; Tue, 16 Sep 2025 07:41:50 -0400
-Received: from mail-yb1-xb31.google.com ([2607:f8b0:4864:20::b31])
+ id 1uyU61-00014z-Mx
+ for qemu-arm@nongnu.org; Tue, 16 Sep 2025 07:43:41 -0400
+Received: from mail-yw1-x1136.google.com ([2607:f8b0:4864:20::1136])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uyU43-0003N6-TG
- for qemu-arm@nongnu.org; Tue, 16 Sep 2025 07:41:49 -0400
-Received: by mail-yb1-xb31.google.com with SMTP id
- 3f1490d57ef6-ea3e0b4a98aso2926219276.1
- for <qemu-arm@nongnu.org>; Tue, 16 Sep 2025 04:41:38 -0700 (PDT)
+ id 1uyU5y-0003Tx-JS
+ for qemu-arm@nongnu.org; Tue, 16 Sep 2025 07:43:41 -0400
+Received: by mail-yw1-x1136.google.com with SMTP id
+ 00721157ae682-71d603acc23so37251687b3.1
+ for <qemu-arm@nongnu.org>; Tue, 16 Sep 2025 04:43:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1758022896; x=1758627696; darn=nongnu.org;
+ d=linaro.org; s=google; t=1758023013; x=1758627813; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=r1vRkHG3XPxQYR5TC9t05+Hh0Ojf9SICD0yuubEt+7k=;
- b=v8BtyWPDVFtqXLGbXqf5etzZk13jK+vpNh8J1dI4nGS32JvU0mQvPpNYAu63D39EcA
- SlnT825vPGqyi6bJYXeaE3Yt6r350aMCIXSFIcbMl98SlVqqC1JZMb7S4ljRCWdRB78P
- zyFG1yc2fQZbVFpdQZX/CEfoVruOK1vrbpmrqRaellECb2n7rf+JkTc/3yTccY+BbaR5
- KOSV2ZwmK+te2V/ttK93OyRCkzEWikgJFFrnbwOlVGKDOGeGYPyBLoPrtqNvoRVpaCx0
- /rE5k3f8FLbN8wFRWv4+9l7dabYilySJCix2RF/Qlye8pjC7RYfzL8/KSsgXHjZhHo5j
- 1tDA==
+ bh=R2GJcsijddl+DQmsjULjtQKML3IigbwEY0yVqdqSnwM=;
+ b=w/uKyN84EZglJ9PjvVxcpQxsjKciNyx/HZXTiKrkusXrmVxbJJV/jb7PRSKsZyEicJ
+ o0y7eDICfJ9VuA2UtBwLa0eVOPaGNmT3mt4wdFOr2JKdGpoJxUmouUptVg/6sU39L4W2
+ MbSIBoK1aM40+5u8cBf2/lwpSa0MyiF0j4q19QNLqroX8HXM/8Q0Dj1TB/dOjhT2wSt1
+ TNNCV2VRAtPfvnGOz9/IUkNyGPrFrMVWVVIyiP3M5JeSEN9eomBSFn2oQ1gxD7ACbpI3
+ /8hbde8qSlBB3M4Jyh3lyfeYNS/ED/ShUVL4u4jJnBEYOwWcsvDUHeoT8guopOsQXKY4
+ MeBQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1758022896; x=1758627696;
+ d=1e100.net; s=20230601; t=1758023013; x=1758627813;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=r1vRkHG3XPxQYR5TC9t05+Hh0Ojf9SICD0yuubEt+7k=;
- b=jVd1AzJxKASOlldWdTs9yRapOSwJEatTmJk6eIq6Om9ZlWGkusW3/7DkF5jB9qkfPe
- BDE2ELRPngl/m0hVVPFt2rCd7nn4PdyCBXjp+hN403jjdhJR2PbyHCNRqMBWfAdo0Srh
- aPivqHFlYn2gODRAhHooW4aZdbG0CV/GpuC1ixMoPx8onRZdNBZ2LbtapywNMpi74Lzx
- mriun/BeweyC80uXoEhn7Be9P3BLmJZs3Tp6MARwFDiPR89f7rcCSmAVNHD2BwZ0vN9E
- ZCQrUPYN9nodzg7ZL7LJNZTEYx41s6oqkVHk+nWjcqtpGYEQPloolgaoDzOKkub5xuWc
- UXjw==
+ bh=R2GJcsijddl+DQmsjULjtQKML3IigbwEY0yVqdqSnwM=;
+ b=iFd/9RPSrvG4W/GgRYJWJqJD/yoazTiBmB8cj/XDMSMZESjEhZFgek3AbxITTPCc80
+ NR+1AjrLgF9LE/nCvVaq+pRU7v4MsbaPbrm12B526L+y59+hPh1RIucaHr1lecvI/o6l
+ YopfTO5+QTLMtS+hNJTkMV3imKIV3kH+UXhfim3Mbra9jSMSkPqLc0FRtRDZRvOWCxOY
+ UhucZZW9MNMVK5RIMuxobVe9+OQyR96byfvCIREhwbBtHP/dzmV5JfsntQOrxLIe7Cq2
+ 2x+Y0KLGJORprLyvqtKVOtFl1MTbSUcvd/VZbp26UpcmgNpbRZZwdJHyn9alM1DrHrgJ
+ NWgQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWwqpK7EAmvtgNcygAtUaSRlfin/5PmL1s4CDQn5ucH+y+NiPfKZ6yE/QwLqTYNtidzKvBvX2W3xA==@nongnu.org
-X-Gm-Message-State: AOJu0YwFYRsWIUlCCVXX6kV6Q/WVGZaRWCeesPoVHhypD0IiY7V57g2V
- issZ4LieXbK/zXJkaFY7eoi3faHEuizzII3giFWwqMQ5lM64Xn6rDQGdEIt/yKMFJ5pOj7NAb20
- qtOJ5Xe4LRjZESpRUbmD8FsS7mCqOmt+lsYr1gjpdoQ==
-X-Gm-Gg: ASbGnctO88jkV9q9cnRu0cnvQ9ZDAp7NJgmpaLaVDdDEnaSBmnygcBx1uZpbcG4vGO9
- +yE13P/zmquT55CL/2CicA8LAHuKTH7KL9XX3lg8avmZzcA6UGThoawNwIpKUI72Vpxwy0RzZF+
- xqbL7F7tbzZcHiCWWpNcwdaUMBX7/tysoech7mJwrfoRnEsvog5tJT/owY3SQxLalyU4hg333M7
- RRnYu6H
-X-Google-Smtp-Source: AGHT+IFkijY+U0whVyTBmw6irnpS1KNJtzTmIXCWTH5ZkrPg50cqCtb5XjiXA44OTS6b7ANd3vR5WUzcErFLasZXrLo=
-X-Received: by 2002:a53:b987:0:b0:633:a090:c0a8 with SMTP id
- 956f58d0204a3-633a090c493mr1727968d50.22.1758022896042; Tue, 16 Sep 2025
- 04:41:36 -0700 (PDT)
+ AJvYcCV6rl0g6UtsSCGUFzOLYoEYWz3zPdNkIh5Irm96QamVaJWjkfBP29HAT9mtu3EY807/7j0EvdLocw==@nongnu.org
+X-Gm-Message-State: AOJu0YwnTJlfseaYOOryMvAjpFTHoETCfTChx+AHfkWrp1Hkg/yoFE3k
+ c4Dp1UsFYvug5i84/18vfsOyStoEAYY4+C6Zf30lc93s+gMQEE8jADj02rlsgRLXrsn7tpzwmQq
+ BCaAlK/Pnj1uBc0DiLMhkf5ZZizZaZnAI5He3q3syUA==
+X-Gm-Gg: ASbGncuun0LoyuciCI/Lkrp28+M/rWn+l093xcT3rEHXypMf0u5eHQU0Ky78eSCnqG7
+ +FAaYvLvw23CZrlZdOaLVYp0Ul8K+KiMzeUTHeZ+kcrJPJisvVVOX8rlFS27vZqe+FXn42mCoRl
+ BCHJlfegjDu54tx09fafyc0UWUqUTpAqwddQq4D/bT1bLzJIa55HVxSj+BY8boltPns4IqnuLM2
+ dGKMwJk
+X-Google-Smtp-Source: AGHT+IEQlCy0au6n8jixIpIrWA/oiMrQZSlD2zsttYyQwWYCnBbj4d923+AvCxhKRKR4ubu/Yso2i5PedB4onU1lW6A=
+X-Received: by 2002:a05:690c:a012:b0:730:c83b:e9f2 with SMTP id
+ 00721157ae682-730c83c14b2mr117859247b3.37.1758023013174; Tue, 16 Sep 2025
+ 04:43:33 -0700 (PDT)
 MIME-Version: 1.0
-References: <20250225163031.1409078-1-kraxel@redhat.com>
- <20250225163031.1409078-25-kraxel@redhat.com>
-In-Reply-To: <20250225163031.1409078-25-kraxel@redhat.com>
+References: <20250304124815.591749-1-kraxel@redhat.com>
+ <20250304124815.591749-21-kraxel@redhat.com>
+In-Reply-To: <20250304124815.591749-21-kraxel@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 16 Sep 2025 12:41:24 +0100
-X-Gm-Features: Ac12FXwhFnCrg2PfmE6Sm48wCtS0lCqDCZzT4EjB2TI9Uezn-yNTkxm76WjNCsM
-Message-ID: <CAFEAcA_MUnTbQNiCLv_HjucNZxC3NyS_0_1VQBcz5RRdtqoS9Q@mail.gmail.com>
-Subject: Re: [PATCH v5 24/24] docs: add uefi variable service documentation
+Date: Tue, 16 Sep 2025 12:43:21 +0100
+X-Gm-Features: Ac12FXx9XadVkXfh56DOz_qdBwpDZ-EOHCcGJXsWKrZwlOYAmecKbo3OMlJbzyc
+Message-ID: <CAFEAcA8Amg8KDX0QYKqe7RtHPMC+GFD6N+c5z4S-ts_V11_RCA@mail.gmail.com>
+Subject: Re: [PULL 20/24] hw/uefi-vars-sysbus: add x64 variant
 To: Gerd Hoffmann <kraxel@redhat.com>
-Cc: qemu-devel@nongnu.org,
+Cc: qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>, 
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, 
+ Eric Blake <eblake@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ qemu-arm@nongnu.org, 
+ Michael Roth <michael.roth@amd.com>, Markus Armbruster <armbru@redhat.com>, 
+ Eduardo Habkost <eduardo@habkost.net>,
  =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- Markus Armbruster <armbru@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
- qemu-arm@nongnu.org, Ard Biesheuvel <ardb@kernel.org>,
- =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
- Thomas Huth <thuth@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>, 
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, graf@amazon.com, 
- Eric Blake <eblake@redhat.com>, Michael Roth <michael.roth@amd.com>, 
- Richard Henderson <richard.henderson@linaro.org>,
  =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
- Paolo Bonzini <pbonzini@redhat.com>
+ =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b31;
- envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb31.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1136;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1136.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -105,37 +104,37 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, 25 Feb 2025 at 16:31, Gerd Hoffmann <kraxel@redhat.com> wrote:
+On Tue, 4 Mar 2025 at 12:49, Gerd Hoffmann <kraxel@redhat.com> wrote:
+>
+> The x86 variant of the device is mapped on the fixed address 0xfef10000
+> and uses etc/hardware-info instead of FDT to pass the mapping location
+> to the edk2 firmware.  The latter allows to move the device to a
+> different location should that turn out to be necessary in the future.
 >
 > Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
-> ---
->  docs/devel/index-internals.rst |  1 +
->  docs/devel/uefi-vars.rst       | 68 ++++++++++++++++++++++++++++++++++
->  hw/uefi/LIMITATIONS.md         |  7 ++++
->  3 files changed, 76 insertions(+)
->  create mode 100644 docs/devel/uefi-vars.rst
->  create mode 100644 hw/uefi/LIMITATIONS.md
+> Message-ID: <20250225163031.1409078-21-kraxel@redhat.com>
 
-> +The ``uefi-vars`` device implements the UEFI virtual device.  It comes
-> +in ``uefi-vars-x86`` and ``uefi-vars-sysbus`` flavours.
+Hi; apologies for this very late comment, but I just
+noticed this reading through the code:
 
-Hi; a bug reporter points out that this documentation says
-the device name is uefi-vars-x86, but the code does
+> +static void uefi_vars_x64_realize(DeviceState *dev, Error **errp)
+> +{
+> +    HARDWARE_INFO_SIMPLE_DEVICE hwinfo = {
+> +        .mmio_address = cpu_to_le64(0xfef10000),
+> +    };
+> +    SysBusDevice *sysbus = SYS_BUS_DEVICE(dev);
+> +
+> +    uefi_vars_sysbus_realize(dev, errp);
+> +
+> +    hardware_info_register(HardwareInfoQemuUefiVars,
+> +                           &hwinfo, sizeof(hwinfo));
+> +    sysbus_mmio_map(sysbus, 0, hwinfo.mmio_address);
+> +}
 
-#define TYPE_UEFI_VARS_X64       "uefi-vars-x64"
-
-https://gitlab.com/qemu-project/qemu/-/issues/3106
-
-I guess we need to update the docs?
-
-> +The advantage of the approach is that we do not need a special
-> +privilege level for the firmware to protect itself, i.e. it does not
-> +depend on SMM emulation on x64
-
-Our name for the 64-bit intel architecture is "x86_64"; we
-should use that consistently, not "x64". (Ideally we would
-also have been consistent in the device name, but it's been
-released now...)
+Device realize methods should generally not map things into
+the system address space. Can we refactor this so
+that the board/SoC/whatever devices that create the
+device do the mapping ?
 
 thanks
 -- PMM

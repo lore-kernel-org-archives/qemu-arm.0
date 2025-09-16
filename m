@@ -4,80 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 506CCCAC598
-	for <qemu-arm@archiver.kernel.org>; Tue, 16 Sep 2025 14:23:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0B60CAC599
+	for <qemu-arm@archiver.kernel.org>; Tue, 16 Sep 2025 14:24:28 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uyWaa-0005y5-Tg; Tue, 16 Sep 2025 10:23:24 -0400
+	id 1uyWat-0006OS-OY; Tue, 16 Sep 2025 10:23:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1uyWaT-0005t2-K2
- for qemu-arm@nongnu.org; Tue, 16 Sep 2025 10:23:18 -0400
-Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
+ id 1uyWaZ-0005wv-Jw
+ for qemu-arm@nongnu.org; Tue, 16 Sep 2025 10:23:23 -0400
+Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1uyWaL-0008MO-Br
- for qemu-arm@nongnu.org; Tue, 16 Sep 2025 10:23:13 -0400
-Received: by mail-pf1-x429.google.com with SMTP id
- d2e1a72fcca58-772301f8a4cso7006831b3a.3
- for <qemu-arm@nongnu.org>; Tue, 16 Sep 2025 07:23:00 -0700 (PDT)
+ id 1uyWaT-0008K5-Su
+ for qemu-arm@nongnu.org; Tue, 16 Sep 2025 10:23:23 -0400
+Received: by mail-pl1-x62a.google.com with SMTP id
+ d9443c01a7336-266fa7a0552so20406195ad.3
+ for <qemu-arm@nongnu.org>; Tue, 16 Sep 2025 07:22:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1758032579; x=1758637379; darn=nongnu.org;
+ d=linaro.org; s=google; t=1758032571; x=1758637371; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=UIhMlSf7KJn7eRbwBzn/O5ACZwJPiK5MVS7jZdwVVVw=;
- b=v9jH6LPbj/XbN+c3m5f3wFzCcr5Tzgl7VZulHr1oxWhW4n9eiXUzTIb5n3sOec7lRG
- S/DgWTiW3DTh8F7va3OkJSQZ6PXcI7bzX2kxiIBQcgxb3ZCv+t5c+4v6QXHzU6X87e+k
- ouZripsyHyAg/uukcj9BkiWDkjkWZhgO8A7IL3hs/lGzHTHbhmb4TgjXEuhX3eCWzG54
- pCAmqB/VXWXYPK42d1ywgbLwePVl1/3xUrF9H19dOOxxz3KfUUkxfve+G4eTFFe/RBpG
- f1aDpfVZaregoqpTDQloqhPrnW1VwiGLHIvn4JhM3GNUFSgS0BxCQikYzYVB2ZtRfy/O
- 7s+A==
+ bh=vxN+3w5DJd2qHPBAZ7pYBpWaLTYZHTclwzQuuWTXi7U=;
+ b=Ev2m4HovWtco1enM0fiWbgCLDz3bXGBsNdtb0UoGm6OVC3M1nH9AHM/4EMnseoAccP
+ BSFV92h91or+Oq4PCDOzaYQmyCeLDM0LQWhVKrcGtRhbEVdr5lgpqJwmEiKXrMq71y1n
+ FQDC60ELUoutWQhlgEHCcdjVJ7t42HAJPoSwcQ6pvmJhEg6oxD1wTlLEhpHiQkughztH
+ xeXMH2oIYfljYsxWYryq2+z0SvSYAOXsQhlA/TOGDwXIcDXN5nIv+14D6H0b1Dg/T03c
+ XiXI5WvYU1lLPy6DD/Lzb7Scwzj0j9j78fPii1KdyK9pR8J5MCAk7cJaPmiaxQDDkpzP
+ wpYg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1758032579; x=1758637379;
+ d=1e100.net; s=20230601; t=1758032571; x=1758637371;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=UIhMlSf7KJn7eRbwBzn/O5ACZwJPiK5MVS7jZdwVVVw=;
- b=KF7pkufrTOw5BT3NSQM7DD9HB3RcN3/l6EaRvoi4CRV8ApMQXrMzPmLU8TeVADyjMv
- 91ElIstAz8UoNJM/i7GUPYYpo1UnXeRy9HTZ7dGNh866knftmF8GwBF42Wq2zkwvftFQ
- xqgVcE3GNE11MDOFkTenOrRW6mQSPTv6nUAe3h9zT+b5vXu/a5ngWoqVBG9n+Loj8mZh
- Qbk31Z03dzDHei7KlT0fAALdrRWNhHNra9CurhKljvIRUT8yKkkB50DExzIXTtap6xrZ
- 0dBwd2d3uTYJyn/ueQfSqqC1XGdSsIsbINPioML1eC0wEJq2N/42qRim5ahnm3Cm90Tv
- uc9g==
-X-Gm-Message-State: AOJu0YwkcXtldu0SM39aEFZ2V3drs/GOtTue5nQj0vYOKcj/QqWUuIht
- oFaPkUEU2M0B25n/KXkWeljJZ3jNnuXA6WAivpNDh5VK+xfZs8enWGOBXm+uDtfRCWLITA5qRTf
- yLom1
-X-Gm-Gg: ASbGncvC7qjVkxl6GPL0S4lWNalFPp+9MHbqk49Z6wdcRAE8OLoN1RImvRBshdKGzyY
- pnIoQAwwDyV9t3ku8eRwoeF0iZOW8fT7+rQy0V3aH5MRkydaedAjSS2/M49a5xXS8NYHtH7pNzY
- OCqiVDAS7z5jY2Essc3EdTf1e3Uhw8yAP6MiiSN0NrGequUug6QnhqKyk2g/Z/ncoYEeLCpfD/t
- riT8t1231Hzq+cl8oRmjiXtpRCZW8pbH9RS+jv3GnnCLCptSGNXUHc3xDdW+Ly73IeKr54A0/PH
- CXo9iGJaR6fEByaW92r6WMd4irl2JWZy28WSmKiUbmP4ZK8Ptm0q18ov5PVm9jVTMkvWmTRBOfl
- h4h8sufqGq99qU1Nh9MWH7f8r20Es
-X-Google-Smtp-Source: AGHT+IHzjU4+JGC8n0zdYlJI2SNOnIixnl8wWzV9ja29tNKh5/6zNe0CWnwn6Wk1edOqGef8h5tF/w==
-X-Received: by 2002:a17:903:478d:b0:264:8a8d:92dd with SMTP id
- d9443c01a7336-2648a8da428mr133264635ad.20.1758032578889; 
- Tue, 16 Sep 2025 07:22:58 -0700 (PDT)
+ bh=vxN+3w5DJd2qHPBAZ7pYBpWaLTYZHTclwzQuuWTXi7U=;
+ b=qsH3Xhtx1ikO073mqd1WpoMrTw0sbbH7e2opXjtG/dyODGOcWjQyCxPaudIU4wTqwj
+ 4vmbOFo+sfsQSIchsV7zN71dp46JwVO1/ZREGI+Kfg2lq2GL8rpWpMv4Hc1cNhVCHVhr
+ IkGEESiIQ6v6xKExi2jZ6/j1+J/f7NEK4yq0pCwCFFP7ZKQf0eFV1jwoChWjXi0wOp3P
+ b5CQHpeg173ygmpVUrvYpckB/0T6fA5y8smTULHh0KgAkD8X9s24QwHmGqAkkF/1QVl2
+ oC8poCoVqzVAxdWjT4r/Vl4icYUvo7GGxMMJaP3mKgK2jKWINX5WGfcw0B1DXrtgFohU
+ d88w==
+X-Gm-Message-State: AOJu0YwVTkNyAD2FYDsB61sJwJRsDiWq8cXanby5QrIbUheaZSGftEUK
+ 9Gfb3Ss7kmKX2voBwOwoIZIJqsY+SVxEWPzjJk173rG72lOWr0ulrOMsSUITMaDEWzWuTDat5iK
+ b7Flk
+X-Gm-Gg: ASbGncs7pnd2CKyusysO0nDxX6y2hsVhiPY0BGb/6jaCD2mL9Q3xSPrGKLInfa/1jTH
+ r6aHU40aQBNV4IsUVn9xUaHBXnI/godJlE+scvGtrntW7nfxaeMXjadQcda//IamgXkh2B9dKjZ
+ XcWatHksAq1dbrcTwvvOALT2XJrS3uwAW8XBP2xHpVUFyr70iJlYTy7wp6AtlMenai0rJq8o2nz
+ J4l18FQxu5Bbj2aFXFlMi1BVs0N1UeFxORdvGIWQaSzD/Da6G1SU1fGCTTqMvMXElYZ9IgcvG1i
+ WbBWmhm/R+XvHLASkM3QzAYJomhQE77moQgClnSBNnSIGwOfS26G8ZpQlaXB74A6OXSZKO0jKcM
+ A9VynAwgaX2WsVjcKjHWA5nS913mM
+X-Google-Smtp-Source: AGHT+IHTIxQbYkyJFL/LTs8nN/Oi7LwgxhbltcYOQ3JoBg6wzHZkyHWrgbryzeSVPyLd6OWXPGf0Dg==
+X-Received: by 2002:a17:902:d58a:b0:264:c48:9cae with SMTP id
+ d9443c01a7336-2640c489f42mr132015655ad.38.1758032570923; 
+ Tue, 16 Sep 2025 07:22:50 -0700 (PDT)
 Received: from stoup.. ([71.212.157.132]) by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2651d2df15esm73459905ad.45.2025.09.16.07.22.58
+ d9443c01a7336-2651d2df15esm73459905ad.45.2025.09.16.07.22.50
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 16 Sep 2025 07:22:58 -0700 (PDT)
+ Tue, 16 Sep 2025 07:22:50 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	peter.maydell@linaro.org
-Subject: [PATCH v2 25/36] target/arm: Split out alloc_cpreg
-Date: Tue, 16 Sep 2025 07:22:26 -0700
-Message-ID: <20250916142238.664316-26-richard.henderson@linaro.org>
+Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org,
+ Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+Subject: [PATCH v2 14/36] target/arm: Replace cpreg_field_is_64bit with
+ cpreg_field_type
+Date: Tue, 16 Sep 2025 07:22:15 -0700
+Message-ID: <20250916142238.664316-15-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250916142238.664316-1-richard.henderson@linaro.org>
 References: <20250916142238.664316-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::429;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x429.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62a;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -100,67 +101,112 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Include provision for a name suffix.
+Prepare for 128-bit fields by using a better query api.
 
+Reviewed-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/helper.c | 29 +++++++++++++++++++++++------
- 1 file changed, 23 insertions(+), 6 deletions(-)
+ target/arm/cpregs.h  | 10 ++++++----
+ target/arm/gdbstub.c |  7 +++++--
+ target/arm/helper.c  | 18 +++++++++++++-----
+ 3 files changed, 24 insertions(+), 11 deletions(-)
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index a5195e296d..7f55ea726d 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -7417,6 +7417,28 @@ void register_cp_regs_for_features(ARMCPU *cpu)
- #endif
+diff --git a/target/arm/cpregs.h b/target/arm/cpregs.h
+index 812fb1340a..b6c8eff0dd 100644
+--- a/target/arm/cpregs.h
++++ b/target/arm/cpregs.h
+@@ -22,6 +22,7 @@
+ #define TARGET_ARM_CPREGS_H
+ 
+ #include "hw/registerfields.h"
++#include "exec/memop.h"
+ #include "target/arm/kvm-consts.h"
+ #include "cpu.h"
+ 
+@@ -1053,12 +1054,13 @@ void raw_write(CPUARMState *env, const ARMCPRegInfo *ri, uint64_t value);
+ void arm_cp_reset_ignore(CPUARMState *env, const ARMCPRegInfo *ri);
+ 
+ /*
+- * Return true if this reginfo struct's field in the cpu state struct
+- * is 64 bits wide.
++ * Return MO_32 if the field in CPUARMState is uint32_t or
++ * MO_64 if the field in CPUARMState is uint64_t.
+  */
+-static inline bool cpreg_field_is_64bit(const ARMCPRegInfo *ri)
++static inline MemOp cpreg_field_type(const ARMCPRegInfo *ri)
+ {
+-    return (ri->state == ARM_CP_STATE_AA64) || (ri->type & ARM_CP_64BIT);
++    return (ri->state == ARM_CP_STATE_AA64 || (ri->type & ARM_CP_64BIT)
++            ? MO_64 : MO_32);
  }
  
-+/*
-+ * Copy a ARMCPRegInfo structure, allocating it along with the name
-+ * and an optional suffix to the name.
-+ */
-+static ARMCPRegInfo *alloc_cpreg(const ARMCPRegInfo *in,
-+                                 const char *name, const char *suffix)
-+{
-+    size_t name_len = strlen(name);
-+    size_t suff_len = suffix ? strlen(suffix) : 0;
-+    ARMCPRegInfo *out = g_malloc(sizeof(*in) + name_len + suff_len + 1);
-+    char *p = (char *)(out + 1);
-+
-+    *out = *in;
-+    out->name = p;
-+
-+    memcpy(p, name, name_len + 1);
-+    if (suffix) {
-+        memcpy(p + name_len, suffix, suff_len + 1);
-+    }
-+    return out;
-+}
-+
- /*
-  * Private utility function for define_one_arm_cp_reg():
-  * add a single reginfo struct to the hash table.
-@@ -7429,7 +7451,6 @@ static void add_cpreg_to_hashtable(ARMCPU *cpu, const ARMCPRegInfo *r,
-     CPUARMState *env = &cpu->env;
-     ARMCPRegInfo *r2;
-     bool ns = secstate & ARM_CP_SECSTATE_NS;
--    size_t name_len;
- 
-     /* Overriding of an existing definition must be explicitly requested. */
-     if (!(r->type & ARM_CP_OVERRIDE)) {
-@@ -7439,11 +7460,7 @@ static void add_cpreg_to_hashtable(ARMCPU *cpu, const ARMCPRegInfo *r,
+ static inline bool cp_access_ok(int current_el,
+diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
+index ce4497ad7c..e2fc389170 100644
+--- a/target/arm/gdbstub.c
++++ b/target/arm/gdbstub.c
+@@ -247,10 +247,13 @@ static int arm_gdb_get_sysreg(CPUState *cs, GByteArray *buf, int reg)
+     key = cpu->dyn_sysreg_feature.data.cpregs.keys[reg];
+     ri = get_arm_cp_reginfo(cpu->cp_regs, key);
+     if (ri) {
+-        if (cpreg_field_is_64bit(ri)) {
++        switch (cpreg_field_type(ri)) {
++        case MO_64:
+             return gdb_get_reg64(buf, (uint64_t)read_raw_cp_reg(env, ri));
+-        } else {
++        case MO_32:
+             return gdb_get_reg32(buf, (uint32_t)read_raw_cp_reg(env, ri));
++        default:
++            g_assert_not_reached();
          }
      }
+     return 0;
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index b310f52724..b7c483b0d9 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -63,20 +63,28 @@ int compare_u64(const void *a, const void *b)
+ uint64_t raw_read(CPUARMState *env, const ARMCPRegInfo *ri)
+ {
+     assert(ri->fieldoffset);
+-    if (cpreg_field_is_64bit(ri)) {
++    switch (cpreg_field_type(ri)) {
++    case MO_64:
+         return CPREG_FIELD64(env, ri);
+-    } else {
++    case MO_32:
+         return CPREG_FIELD32(env, ri);
++    default:
++        g_assert_not_reached();
+     }
+ }
  
--    /* Combine cpreg and name into one allocation. */
--    name_len = strlen(name) + 1;
--    r2 = g_malloc(sizeof(*r2) + name_len);
--    *r2 = *r;
--    r2->name = memcpy(r2 + 1, name, name_len);
-+    r2 = alloc_cpreg(r, name, NULL);
+ void raw_write(CPUARMState *env, const ARMCPRegInfo *ri, uint64_t value)
+ {
+     assert(ri->fieldoffset);
+-    if (cpreg_field_is_64bit(ri)) {
++    switch (cpreg_field_type(ri)) {
++    case MO_64:
+         CPREG_FIELD64(env, ri) = value;
+-    } else {
++        break;
++    case MO_32:
+         CPREG_FIELD32(env, ri) = value;
++        break;
++    default:
++        g_assert_not_reached();
+     }
+ }
  
-     /*
-      * Update fields to match the instantiation, overwiting wildcards
+@@ -2754,7 +2762,7 @@ static void vmsa_ttbr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+                             uint64_t value)
+ {
+     /* If the ASID changes (with a 64-bit write), we must flush the TLB.  */
+-    if (cpreg_field_is_64bit(ri) &&
++    if (cpreg_field_type(ri) == MO_64 &&
+         extract64(raw_read(env, ri) ^ value, 48, 16) != 0) {
+         ARMCPU *cpu = env_archcpu(env);
+         tlb_flush(CPU(cpu));
 -- 
 2.43.0
 

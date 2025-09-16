@@ -4,87 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07C99CAC599
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4824ECAC59B
 	for <qemu-arm@archiver.kernel.org>; Tue, 16 Sep 2025 14:28:04 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uyWaq-0006KR-4t; Tue, 16 Sep 2025 10:23:40 -0400
+	id 1uyWci-00087V-52; Tue, 16 Sep 2025 10:25:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1uyWaL-0005nz-O4
- for qemu-arm@nongnu.org; Tue, 16 Sep 2025 10:23:11 -0400
-Received: from mail-pf1-x430.google.com ([2607:f8b0:4864:20::430])
+ id 1uyWad-00061N-EQ
+ for qemu-arm@nongnu.org; Tue, 16 Sep 2025 10:23:27 -0400
+Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1uyWaC-0008LB-JK
- for qemu-arm@nongnu.org; Tue, 16 Sep 2025 10:23:05 -0400
-Received: by mail-pf1-x430.google.com with SMTP id
- d2e1a72fcca58-7728815e639so3858684b3a.1
- for <qemu-arm@nongnu.org>; Tue, 16 Sep 2025 07:22:55 -0700 (PDT)
+ id 1uyWaT-0008La-O3
+ for qemu-arm@nongnu.org; Tue, 16 Sep 2025 10:23:27 -0400
+Received: by mail-pl1-x630.google.com with SMTP id
+ d9443c01a7336-244580523a0so56738665ad.1
+ for <qemu-arm@nongnu.org>; Tue, 16 Sep 2025 07:22:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=linaro.org; s=google; t=1758032575; x=1758637375; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=ZSIAGhmwh8mZ4wBWdZ4ZwC8IrpicHIIk/ZQHhSqFh34=;
- b=l2tN+n/U5zVOe7rIHWNnZt+WAjC4RKfUMQoN01Uf8Q5BQJ4WW7f9yKBw6R/k3DbIjc
- p0sugoGXJOjiQ9yNqH9m+hmnSUR92bca0YzOsgNUUQR1PY1z8IhyMVsspeGdj7kR3Ko5
- BJtuXjwsi6PKpbvjlYKJyZ4Vqsfy5yQOJLPPtR3p1DjjDn2edBbIHkCCYac9Y3aZa9Ok
- AO4RdYbVwx523grZ0lUEZQWAb605JVJJfW16KjfguaL+RcB1O71ZmEnaKix4NvnEkDoP
- 5JORahLokGJqdTx+V+qC+YNvTdtzFU/mahWyspSLuOYAaw21I0CMBgcgB2VamRiBS/yb
- HLAQ==
+ bh=O3ZI3DSvuSnKVozoGKOUzCAQ9C1UttOP4zYBt0a8luk=;
+ b=Hfkk6nz7AEi+6meQ1pCJcKsOZhfM203qM1V9Z9M3IIzXYcRzP6St6j1swXBTWvpIhb
+ wDo7/+5Qfrss+LHNJJzXk2U+6dE9/wArYY/4+JANu0K693z4HGwxzJUF9gk2qJeHHV/g
+ rhYXoEko9sEAkTMO/UlS3uUmdADtyerogt0b9qfmFsFF60vPu4qoAiEwe+MaKoWrsnfk
+ x8uql2P9oKRoak0DMgCAhvR1P7fUsI8iAb8CD3W8RNGUYtO4/oQcikqUzMh9afOkU+jX
+ wky76JI865nbFvPvlwvfrfkZSW+VkyU0Occ4ZPFt3Ys4IRdjWxdiAuESpYhiwV0QYVUq
+ ejsA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20230601; t=1758032575; x=1758637375;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=ZSIAGhmwh8mZ4wBWdZ4ZwC8IrpicHIIk/ZQHhSqFh34=;
- b=ehMycd9QsIwhF1ItGTeb304u44Cmc3wV+ws+XcNYze0oPynlnmCrdLSg7qku30hvOQ
- yXJJe73GQ2IXycoyYlRZ0VSnRtATYhI95IrX+4We3I/1DVCjblFIUVdYhYNfrEAidnrR
- 78ZzX1csHHR9gUd0bIOXybK4fh6LSa5wDU45c8nVO+pW7E90v+J3mFt5zm/uJzVCdf1+
- xfPoelVwAVFLzOmaazrhy+2wazIv/LbkK2+JbMxlrCGl8NLC6rYYZiq9qgwEo40mSGTR
- LUeVo8WVrOWtnLsq810aSxKQgbuW0+ooI+umg8vzmIiZaMKqurbOK1pr/A63MtXyZcO6
- B5OA==
-X-Gm-Message-State: AOJu0YzPTgOSg5gxV4d33OaFV8A+kOHt3d+fhzq18zUNdsEaopr0i3ZX
- PawqO6A5yHgQXZfEZpq6UzdZcKfJ4HrZWkiuc4TRSgVQnPxiH4Tvbr/e/AmUz7a3cPw50Cmdk94
- h7A8d
-X-Gm-Gg: ASbGncuw3zVA1zmWCMRCxfMkpEbwzf1o+MdNG/NHNYb2O05NqQi9hk8wbZTfpt3Tm2g
- oOVdRO3tf6G/yk0VYXqtMGhMzAUWc7ciS9qD8JeK1np76T7uEoQchL9XOt0KH2C353KsIjSDMWq
- LjsXcVYZu4OxTOKcTzUtEq1YWzNzZ3Ce2Nwi7NPUKxeMtBvY+4IWEpayIdrd4+Y9+RzntgTXaRZ
- 1dm9ptdKhlHYv8xqM+ClNQAn7YXqYMYcbbXq2wh+F1wFAAWOCz1bAep6ESO8Ha7FUWJi0uuVEWy
- R4OAf6dLPbgb65bF/nRneUX2nuIp/2C4Uda7bz8+NJ6jFZptdx+7vZj936wlPsPNNHXFrgOCxsA
- pDXDOWsjILleYeg1Q3nOmrmahswHm
-X-Google-Smtp-Source: AGHT+IEaTBui/B91+WuP7qzd0c/v5oaVCMAIgu//8CktMGyP697FmZZgXaXtjUwiQNvnERoSdLxpFw==
-X-Received: by 2002:a17:902:cec6:b0:266:88ae:be6d with SMTP id
- d9443c01a7336-26688aec242mr94412115ad.6.1758032574645; 
- Tue, 16 Sep 2025 07:22:54 -0700 (PDT)
+ bh=O3ZI3DSvuSnKVozoGKOUzCAQ9C1UttOP4zYBt0a8luk=;
+ b=RZascwH2vR0ORKk72qhDyB/NSvg4rH6r4oQmIW0E+dOCYWeLi7hBKzLd7Zhg1Coy5q
+ e1vlpCmUtAy/Cyu9cDWtDEAzO/inFYMEpo95sf5HefkScsd12BWor1tyB2behsf7WLgp
+ IXmY4U7KkOLQyGuG2RzHqHpdcjQmFzzB8c6RdKkT26wQmiV71gd4HPqkYyBIOj7iRVRN
+ s3mU6zFRrbM+4cyWtAHg40u3QwVe4XWwBoOnBNtTjJcRT0UF7171Vhj7ec80/P+MuWfI
+ 3zj91K/I6scq0KQmeclcasskgTyNyIo9tolDj1iVoPTbHWuX4DIhcySS+Pyll9yF+ZcT
+ QLbQ==
+X-Gm-Message-State: AOJu0Yxao2uiOdYCP7i7OKqnx6Fo+V7dEP6O3Nfp3CUx5b1YhTrOfVar
+ BRHtcXv3vsrrUmMMiX/4Y/qvsLLUa2KuK1ndzc6WOvGcRQpZngIhO48m9pOkfPalgsU=
+X-Gm-Gg: ASbGnctXFjYzaPx+0V3SLTCgmTreLLj/Jpmw5tdKnHLjwfg48nT2zO1Yrdj1IkYBB59
+ muTDBjlXB5ij63VBPocOweAG9F/APsKSD2P5URRXsDo2Z9/fxi1GJ89LgEv4X0bJFvyNSzpQu61
+ BSNtICSZQ+BNBV/NoVqDP3oKOqzBHMy+MlgkhrvT3fanF9K4WiXJS+J/7J2hOUzHWMh0r9ht6Sr
+ M8SW9JSjIGDVq2dC/YGEeQAVjG31/s0UqQ7KUXsxmwsTvMCSxcR0FnX2Byfw0MBDv4Na9JTAfYW
+ TmIclEp/0YQtcLG4EGk2Nust/ZFhROYJg4/ov5IBNOYRqlY53uhjS0cwaf1/C+3NBi49BrQvauB
+ CloIFu0rivyuT7ughpEDGXfA3ygAtWvudFPdl1f0=
+X-Google-Smtp-Source: AGHT+IEliu+Ux8ncYvtfLYROnFdzKeiFM8UHKSBUqvd3juzX+RrflFEdZz1RIIhhHxfDG7KCpF0jzA==
+X-Received: by 2002:a17:903:230d:b0:263:671e:397b with SMTP id
+ d9443c01a7336-263671e3beemr122575215ad.7.1758032575412; 
+ Tue, 16 Sep 2025 07:22:55 -0700 (PDT)
 Received: from stoup.. ([71.212.157.132]) by smtp.gmail.com with ESMTPSA id
  d9443c01a7336-2651d2df15esm73459905ad.45.2025.09.16.07.22.54
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 16 Sep 2025 07:22:54 -0700 (PDT)
+ Tue, 16 Sep 2025 07:22:55 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org,
- Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-Subject: [PATCH v2 19/36] target/arm: Reorder ENCODE_AA64_CP_REG arguments
-Date: Tue, 16 Sep 2025 07:22:20 -0700
-Message-ID: <20250916142238.664316-20-richard.henderson@linaro.org>
+Cc: qemu-arm@nongnu.org,
+	peter.maydell@linaro.org
+Subject: [PATCH v2 20/36] target/arm: Split out add_cpreg_to_hashtable_aa{32,
+ 64}
+Date: Tue, 16 Sep 2025 07:22:21 -0700
+Message-ID: <20250916142238.664316-21-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250916142238.664316-1-richard.henderson@linaro.org>
 References: <20250916142238.664316-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::430;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x430.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::630;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x630.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -100,96 +100,194 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The order of the parameters in the Arm ARM is
+The nesting level for the inner loop of define_one_arm_cp_reg
+was overly deep.  Split out that code into two functions, for
+the AArch32 and AArch64 paths separately.  Simplify the innermost
+loop to a switch statement over r->state.
 
-  op0, op1, crn, crm, op2
-
-Reorder the arguments of ENCODE_AA64_CP_REG to match.
-
-Reviewed-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/cpregs.h            | 2 +-
- target/arm/helper.c            | 4 ++--
- target/arm/hvf/hvf.c           | 6 +++---
- target/arm/tcg/translate-a64.c | 4 ++--
- 4 files changed, 8 insertions(+), 8 deletions(-)
+ target/arm/helper.c | 147 +++++++++++++++++++++++---------------------
+ 1 file changed, 76 insertions(+), 71 deletions(-)
 
-diff --git a/target/arm/cpregs.h b/target/arm/cpregs.h
-index 95b0b9c78e..7bdf6cf847 100644
---- a/target/arm/cpregs.h
-+++ b/target/arm/cpregs.h
-@@ -187,7 +187,7 @@ enum {
-      ((is64) << CP_REG_AA32_64BIT_SHIFT) |                  \
-      ((cp) << 16) | ((crn) << 11) | ((crm) << 7) | ((opc1) << 3) | (opc2))
- 
--#define ENCODE_AA64_CP_REG(crn, crm, op0, op1, op2) \
-+#define ENCODE_AA64_CP_REG(op0, op1, crn, crm, op2) \
-     (CP_REG_AA64_MASK | CP_REG_ARM64_SYSREG |           \
-      ((op0) << CP_REG_ARM64_SYSREG_OP0_SHIFT) |         \
-      ((op1) << CP_REG_ARM64_SYSREG_OP1_SHIFT) |         \
 diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 7094b63f82..8b63eacb91 100644
+index 8b63eacb91..ec78c8f08f 100644
 --- a/target/arm/helper.c
 +++ b/target/arm/helper.c
-@@ -4542,7 +4542,7 @@ static void define_arm_vh_e2h_redirects_aliases(ARMCPU *cpu)
-     };
- 
- #define K(op0, op1, crn, crm, op2) \
--    ENCODE_AA64_CP_REG(crn, crm, op0, op1, op2)
-+    ENCODE_AA64_CP_REG(op0, op1, crn, crm, op2)
- 
-     static const struct E2HAlias aliases[] = {
-         { K(3, 0,  1, 0, 0), K(3, 4,  1, 0, 0), K(3, 5, 1, 0, 0),
-@@ -7453,7 +7453,7 @@ static void add_cpreg_to_hashtable(ARMCPU *cpu, const ARMCPRegInfo *r,
-          */
-         assert(cp == 0 || r->state == ARM_CP_STATE_BOTH);
-         cp = 0;
--        key = ENCODE_AA64_CP_REG(r->crn, crm, r->opc0, opc1, opc2);
-+        key = ENCODE_AA64_CP_REG(r->opc0, opc1, r->crn, crm, opc2);
-         break;
-     default:
-         g_assert_not_reached();
-diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index 6e67d89163..8b467b3663 100644
---- a/target/arm/hvf/hvf.c
-+++ b/target/arm/hvf/hvf.c
-@@ -1124,10 +1124,10 @@ static bool is_id_sysreg(uint32_t reg)
- 
- static uint32_t hvf_reg2cp_reg(uint32_t reg)
- {
--    return ENCODE_AA64_CP_REG((reg >> SYSREG_CRN_SHIFT) & SYSREG_CRN_MASK,
--                              (reg >> SYSREG_CRM_SHIFT) & SYSREG_CRM_MASK,
--                              (reg >> SYSREG_OP0_SHIFT) & SYSREG_OP0_MASK,
-+    return ENCODE_AA64_CP_REG((reg >> SYSREG_OP0_SHIFT) & SYSREG_OP0_MASK,
-                               (reg >> SYSREG_OP1_SHIFT) & SYSREG_OP1_MASK,
-+                              (reg >> SYSREG_CRN_SHIFT) & SYSREG_CRN_MASK,
-+                              (reg >> SYSREG_CRM_SHIFT) & SYSREG_CRM_MASK,
-                               (reg >> SYSREG_OP2_SHIFT) & SYSREG_OP2_MASK);
+@@ -7612,6 +7612,66 @@ static void add_cpreg_to_hashtable(ARMCPU *cpu, const ARMCPRegInfo *r,
+     g_hash_table_insert(cpu->cp_regs, (gpointer)(uintptr_t)key, r2);
  }
  
-diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-index a560ef0f42..0ec309f1ea 100644
---- a/target/arm/tcg/translate-a64.c
-+++ b/target/arm/tcg/translate-a64.c
-@@ -2466,7 +2466,7 @@ static void handle_sys(DisasContext *s, bool isread,
-                        unsigned int op0, unsigned int op1, unsigned int op2,
-                        unsigned int crn, unsigned int crm, unsigned int rt)
++static void add_cpreg_to_hashtable_aa32(ARMCPU *cpu, const ARMCPRegInfo *r,
++                                        int crm, int opc1, int opc2)
++{
++    /*
++     * Under AArch32 CP registers can be common
++     * (same for secure and non-secure world) or banked.
++     */
++    char *name;
++
++    assert(!(r->type & ARM_CP_ADD_TLBI_NXS)); /* aa64 only */
++
++    switch (r->secure) {
++    case ARM_CP_SECSTATE_S:
++    case ARM_CP_SECSTATE_NS:
++        add_cpreg_to_hashtable(cpu, r, ARM_CP_STATE_AA32,
++                               r->secure, crm, opc1, opc2, r->name);
++        break;
++    case ARM_CP_SECSTATE_BOTH:
++        name = g_strdup_printf("%s_S", r->name);
++        add_cpreg_to_hashtable(cpu, r, ARM_CP_STATE_AA32,
++                               ARM_CP_SECSTATE_S, crm, opc1, opc2, name);
++        g_free(name);
++        add_cpreg_to_hashtable(cpu, r, ARM_CP_STATE_AA32,
++                               ARM_CP_SECSTATE_NS, crm, opc1, opc2, r->name);
++        break;
++    default:
++        g_assert_not_reached();
++    }
++}
++
++static void add_cpreg_to_hashtable_aa64(ARMCPU *cpu, const ARMCPRegInfo *r,
++                                        int crm, int opc1, int opc2)
++{
++    if ((r->type & ARM_CP_ADD_TLBI_NXS) &&
++        cpu_isar_feature(aa64_xs, cpu)) {
++        /*
++         * This is a TLBI insn which has an NXS variant. The
++         * NXS variant is at the same encoding except that
++         * crn is +1, and has the same behaviour except for
++         * fine-grained trapping. Add the NXS insn here and
++         * then fall through to add the normal register.
++         * add_cpreg_to_hashtable() copies the cpreg struct
++         * and name that it is passed, so it's OK to use
++         * a local struct here.
++         */
++        ARMCPRegInfo nxs_ri = *r;
++        g_autofree char *name = g_strdup_printf("%sNXS", r->name);
++
++        assert(nxs_ri.crn < 0xf);
++        nxs_ri.crn++;
++        if (nxs_ri.fgt) {
++            nxs_ri.fgt |= R_FGT_NXS_MASK;
++        }
++        add_cpreg_to_hashtable(cpu, &nxs_ri, ARM_CP_STATE_AA64,
++                               ARM_CP_SECSTATE_NS, crm, opc1, opc2, name);
++    }
++
++    add_cpreg_to_hashtable(cpu, r, ARM_CP_STATE_AA64, ARM_CP_SECSTATE_NS,
++                           crm, opc1, opc2, r->name);
++}
+ 
+ void define_one_arm_cp_reg(ARMCPU *cpu, const ARMCPRegInfo *r)
  {
--    uint32_t key = ENCODE_AA64_CP_REG(crn, crm, op0, op1, op2);
-+    uint32_t key = ENCODE_AA64_CP_REG(op0, op1, crn, crm, op2);
-     const ARMCPRegInfo *ri = get_arm_cp_reginfo(s->cp_regs, key);
-     bool need_exit_tb = false;
-     bool nv_trap_to_el2 = false;
-@@ -2602,7 +2602,7 @@ static void handle_sys(DisasContext *s, bool isread,
-          * We don't use the EL1 register's access function, and
-          * fine-grained-traps on EL1 also do not apply here.
-          */
--        key = ENCODE_AA64_CP_REG(crn, crm, op0, 0, op2);
-+        key = ENCODE_AA64_CP_REG(op0, 0, crn, crm, op2);
-         ri = get_arm_cp_reginfo(s->cp_regs, key);
-         assert(ri);
-         assert(cp_access_ok(s->current_el, ri, isread));
+@@ -7639,14 +7699,12 @@ void define_one_arm_cp_reg(ARMCPU *cpu, const ARMCPRegInfo *r)
+      * bits; the ARM_CP_64BIT* flag applies only to the AArch32 view of
+      * the register, if any.
+      */
+-    int crm, opc1, opc2;
+     int crmmin = (r->crm == CP_ANY) ? 0 : r->crm;
+     int crmmax = (r->crm == CP_ANY) ? 15 : r->crm;
+     int opc1min = (r->opc1 == CP_ANY) ? 0 : r->opc1;
+     int opc1max = (r->opc1 == CP_ANY) ? 7 : r->opc1;
+     int opc2min = (r->opc2 == CP_ANY) ? 0 : r->opc2;
+     int opc2max = (r->opc2 == CP_ANY) ? 7 : r->opc2;
+-    CPState state;
+ 
+     /* 64 bit registers have only CRm and Opc1 fields */
+     assert(!((r->type & ARM_CP_64BIT) && (r->opc2 || r->crn)));
+@@ -7743,75 +7801,22 @@ void define_one_arm_cp_reg(ARMCPU *cpu, const ARMCPRegInfo *r)
+         }
+     }
+ 
+-    for (crm = crmmin; crm <= crmmax; crm++) {
+-        for (opc1 = opc1min; opc1 <= opc1max; opc1++) {
+-            for (opc2 = opc2min; opc2 <= opc2max; opc2++) {
+-                for (state = ARM_CP_STATE_AA32;
+-                     state <= ARM_CP_STATE_AA64; state++) {
+-                    if (r->state != state && r->state != ARM_CP_STATE_BOTH) {
+-                        continue;
+-                    }
+-                    if ((r->type & ARM_CP_ADD_TLBI_NXS) &&
+-                        cpu_isar_feature(aa64_xs, cpu)) {
+-                        /*
+-                         * This is a TLBI insn which has an NXS variant. The
+-                         * NXS variant is at the same encoding except that
+-                         * crn is +1, and has the same behaviour except for
+-                         * fine-grained trapping. Add the NXS insn here and
+-                         * then fall through to add the normal register.
+-                         * add_cpreg_to_hashtable() copies the cpreg struct
+-                         * and name that it is passed, so it's OK to use
+-                         * a local struct here.
+-                         */
+-                        ARMCPRegInfo nxs_ri = *r;
+-                        g_autofree char *name = g_strdup_printf("%sNXS", r->name);
+-
+-                        assert(state == ARM_CP_STATE_AA64);
+-                        assert(nxs_ri.crn < 0xf);
+-                        nxs_ri.crn++;
+-                        if (nxs_ri.fgt) {
+-                            nxs_ri.fgt |= R_FGT_NXS_MASK;
+-                        }
+-                        add_cpreg_to_hashtable(cpu, &nxs_ri, state,
+-                                               ARM_CP_SECSTATE_NS,
+-                                               crm, opc1, opc2, name);
+-                    }
+-                    if (state == ARM_CP_STATE_AA32) {
+-                        /*
+-                         * Under AArch32 CP registers can be common
+-                         * (same for secure and non-secure world) or banked.
+-                         */
+-                        char *name;
+-
+-                        switch (r->secure) {
+-                        case ARM_CP_SECSTATE_S:
+-                        case ARM_CP_SECSTATE_NS:
+-                            add_cpreg_to_hashtable(cpu, r, state,
+-                                                   r->secure, crm, opc1, opc2,
+-                                                   r->name);
+-                            break;
+-                        case ARM_CP_SECSTATE_BOTH:
+-                            name = g_strdup_printf("%s_S", r->name);
+-                            add_cpreg_to_hashtable(cpu, r, state,
+-                                                   ARM_CP_SECSTATE_S,
+-                                                   crm, opc1, opc2, name);
+-                            g_free(name);
+-                            add_cpreg_to_hashtable(cpu, r, state,
+-                                                   ARM_CP_SECSTATE_NS,
+-                                                   crm, opc1, opc2, r->name);
+-                            break;
+-                        default:
+-                            g_assert_not_reached();
+-                        }
+-                    } else {
+-                        /*
+-                         * AArch64 registers get mapped to non-secure instance
+-                         * of AArch32
+-                         */
+-                        add_cpreg_to_hashtable(cpu, r, state,
+-                                               ARM_CP_SECSTATE_NS,
+-                                               crm, opc1, opc2, r->name);
+-                    }
++    for (int crm = crmmin; crm <= crmmax; crm++) {
++        for (int opc1 = opc1min; opc1 <= opc1max; opc1++) {
++            for (int opc2 = opc2min; opc2 <= opc2max; opc2++) {
++                switch (r->state) {
++                case ARM_CP_STATE_AA32:
++                    add_cpreg_to_hashtable_aa32(cpu, r, crm, opc1, opc2);
++                    break;
++                case ARM_CP_STATE_AA64:
++                    add_cpreg_to_hashtable_aa64(cpu, r, crm, opc1, opc2);
++                    break;
++                case ARM_CP_STATE_BOTH:
++                    add_cpreg_to_hashtable_aa32(cpu, r, crm, opc1, opc2);
++                    add_cpreg_to_hashtable_aa64(cpu, r, crm, opc1, opc2);
++                    break;
++                default:
++                    g_assert_not_reached();
+                 }
+             }
+         }
 -- 
 2.43.0
 

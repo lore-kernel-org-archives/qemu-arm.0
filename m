@@ -4,84 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF31BCAC598
-	for <qemu-arm@archiver.kernel.org>; Tue, 16 Sep 2025 11:44:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 321CCCAC598
+	for <qemu-arm@archiver.kernel.org>; Tue, 16 Sep 2025 12:14:53 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uyU63-00015A-4Q; Tue, 16 Sep 2025 07:43:43 -0400
+	id 1uyUZr-000154-Gm; Tue, 16 Sep 2025 08:14:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uyU61-00014z-Mx
- for qemu-arm@nongnu.org; Tue, 16 Sep 2025 07:43:41 -0400
-Received: from mail-yw1-x1136.google.com ([2607:f8b0:4864:20::1136])
+ id 1uyUZn-00014X-Gg
+ for qemu-arm@nongnu.org; Tue, 16 Sep 2025 08:14:27 -0400
+Received: from mail-yx1-xb133.google.com ([2607:f8b0:4864:20::b133])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uyU5y-0003Tx-JS
- for qemu-arm@nongnu.org; Tue, 16 Sep 2025 07:43:41 -0400
-Received: by mail-yw1-x1136.google.com with SMTP id
- 00721157ae682-71d603acc23so37251687b3.1
- for <qemu-arm@nongnu.org>; Tue, 16 Sep 2025 04:43:35 -0700 (PDT)
+ id 1uyUZg-0007Oo-S5
+ for qemu-arm@nongnu.org; Tue, 16 Sep 2025 08:14:26 -0400
+Received: by mail-yx1-xb133.google.com with SMTP id
+ 956f58d0204a3-6296f6ce5ddso1622914d50.3
+ for <qemu-arm@nongnu.org>; Tue, 16 Sep 2025 05:14:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1758023013; x=1758627813; darn=nongnu.org;
+ d=linaro.org; s=google; t=1758024857; x=1758629657; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=R2GJcsijddl+DQmsjULjtQKML3IigbwEY0yVqdqSnwM=;
- b=w/uKyN84EZglJ9PjvVxcpQxsjKciNyx/HZXTiKrkusXrmVxbJJV/jb7PRSKsZyEicJ
- o0y7eDICfJ9VuA2UtBwLa0eVOPaGNmT3mt4wdFOr2JKdGpoJxUmouUptVg/6sU39L4W2
- MbSIBoK1aM40+5u8cBf2/lwpSa0MyiF0j4q19QNLqroX8HXM/8Q0Dj1TB/dOjhT2wSt1
- TNNCV2VRAtPfvnGOz9/IUkNyGPrFrMVWVVIyiP3M5JeSEN9eomBSFn2oQ1gxD7ACbpI3
- /8hbde8qSlBB3M4Jyh3lyfeYNS/ED/ShUVL4u4jJnBEYOwWcsvDUHeoT8guopOsQXKY4
- MeBQ==
+ bh=LELe6qQMAHuq0j6jtIzkdLrh9Q0SC541GX9GxbkCA7U=;
+ b=tIMWtRgbWtIY+pUVB8hrnT4F0xEtykahspptbfiqkLZ6oFg3GrUEzJFk5dYw+plxs8
+ 9AHnvsXuEGSA6qNNfWRwJ0XW3uE4qodYyWBdBvWYC4hYI8H3sIqvONhdsOnJ0WQ5MuJz
+ KzlVoBRYeCbn5IA5Xzwh1kkrCb2z4DL8yg1AWm/o06MMQgpc6HfvJIdAgomOcInGvMmB
+ M8xn4XDITUSlWUPfvwQlVnQrBBETGOKYASLJUYiXaeapHpZF/ZKUgRzcy9RqV+AqVZWO
+ 5T/ztQDnIVAJpqGAwmE7wcpkc/CHWPwa1elbEOB26wHoruVx7qFh3dQK/05TMaT0UsT9
+ xaVQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1758023013; x=1758627813;
+ d=1e100.net; s=20230601; t=1758024857; x=1758629657;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=R2GJcsijddl+DQmsjULjtQKML3IigbwEY0yVqdqSnwM=;
- b=iFd/9RPSrvG4W/GgRYJWJqJD/yoazTiBmB8cj/XDMSMZESjEhZFgek3AbxITTPCc80
- NR+1AjrLgF9LE/nCvVaq+pRU7v4MsbaPbrm12B526L+y59+hPh1RIucaHr1lecvI/o6l
- YopfTO5+QTLMtS+hNJTkMV3imKIV3kH+UXhfim3Mbra9jSMSkPqLc0FRtRDZRvOWCxOY
- UhucZZW9MNMVK5RIMuxobVe9+OQyR96byfvCIREhwbBtHP/dzmV5JfsntQOrxLIe7Cq2
- 2x+Y0KLGJORprLyvqtKVOtFl1MTbSUcvd/VZbp26UpcmgNpbRZZwdJHyn9alM1DrHrgJ
- NWgQ==
+ bh=LELe6qQMAHuq0j6jtIzkdLrh9Q0SC541GX9GxbkCA7U=;
+ b=SWV5ruipC9Fub0LbPenLfmLRDSusgvDZqRjCI/8u97uJQPg7vP1aK9HWeRz6r8CSSM
+ l8Z0t5x1O0X4zRtRg/zqK+x0j+bZ83W4ZEJYJ0sq0TVbYqFPPMjbP9bpqbZBNIoplmQB
+ LlmYYEmidw0mkY0vm00TOYBFDuGpH68so50GZehZPQj1RHo8qeb5ouIIX51mXGHyzMRn
+ dU/dfC8JNKMIFEfl1iXbb3j8VXw/6sKc+DPEXAVB1KMyufXEvEwqmD8eDNpZvkHu1Oph
+ 4QnER5T+ClUj0p3I7osJRr693nIr7ZVorXR1iOFxLwdTOTlnf572RUsnTzVQKdkrJhTU
+ Q1VA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCV6rl0g6UtsSCGUFzOLYoEYWz3zPdNkIh5Irm96QamVaJWjkfBP29HAT9mtu3EY807/7j0EvdLocw==@nongnu.org
-X-Gm-Message-State: AOJu0YwnTJlfseaYOOryMvAjpFTHoETCfTChx+AHfkWrp1Hkg/yoFE3k
- c4Dp1UsFYvug5i84/18vfsOyStoEAYY4+C6Zf30lc93s+gMQEE8jADj02rlsgRLXrsn7tpzwmQq
- BCaAlK/Pnj1uBc0DiLMhkf5ZZizZaZnAI5He3q3syUA==
-X-Gm-Gg: ASbGncuun0LoyuciCI/Lkrp28+M/rWn+l093xcT3rEHXypMf0u5eHQU0Ky78eSCnqG7
- +FAaYvLvw23CZrlZdOaLVYp0Ul8K+KiMzeUTHeZ+kcrJPJisvVVOX8rlFS27vZqe+FXn42mCoRl
- BCHJlfegjDu54tx09fafyc0UWUqUTpAqwddQq4D/bT1bLzJIa55HVxSj+BY8boltPns4IqnuLM2
- dGKMwJk
-X-Google-Smtp-Source: AGHT+IEQlCy0au6n8jixIpIrWA/oiMrQZSlD2zsttYyQwWYCnBbj4d923+AvCxhKRKR4ubu/Yso2i5PedB4onU1lW6A=
-X-Received: by 2002:a05:690c:a012:b0:730:c83b:e9f2 with SMTP id
- 00721157ae682-730c83c14b2mr117859247b3.37.1758023013174; Tue, 16 Sep 2025
- 04:43:33 -0700 (PDT)
+ AJvYcCVSL8Q6o3PGOc7/xN0Er1bG2RVdJYhmPEv6F+Po1GU2nIqnbUoKXvP0usB8l4PMjLFBTKF3mglt5A==@nongnu.org
+X-Gm-Message-State: AOJu0YwHwPDt8aEBU4dUDkrQd7j/xn1/GIB/xsUpTg5KVrVqgPT9SWbv
+ KLPUP3xvM0IMr/hMBrx3T95DijOgYjGATKcQnxqOPExG99XIhzT31njlvmsYCdSa0en2U+QTEc+
+ JQWY8GBfxh6vnSR92JfJunzEcxMgeoeDafxXpT2Uicw==
+X-Gm-Gg: ASbGncvfJuFDn9qB/ehpKmws7lFhk3d5gL3xHYw3cA0atZ8RKuVk9gT39BYyiy2NVVx
+ LdJ2TfqXKmtkq3NNKN+qCcmT7S0lZmJ0ASWWMZSR0ONoODgpV+7NYYOMRfSirvnMV8bF11J6XxL
+ 6rvJNmBp454WHlteIhMG2bilzEPZsmWENi5oI4tb/odjhgNLzwHFMmMVAdZcz7ONKClq8iCmI3o
+ b3eGab5
+X-Google-Smtp-Source: AGHT+IEQ5K74msA7ZRCaGSOqGN46hhRbBnFPhEghBuW9KnI4k7MrHwrVjFeg4Gw5W2Sp33HhKQuhE6/XhN90Q/7oG1s=
+X-Received: by 2002:a05:690c:6701:b0:727:501e:9a4d with SMTP id
+ 00721157ae682-7306481b292mr147146397b3.33.1758024857349; Tue, 16 Sep 2025
+ 05:14:17 -0700 (PDT)
 MIME-Version: 1.0
-References: <20250304124815.591749-1-kraxel@redhat.com>
- <20250304124815.591749-21-kraxel@redhat.com>
-In-Reply-To: <20250304124815.591749-21-kraxel@redhat.com>
+References: <20250827010453.4059782-1-richard.henderson@linaro.org>
+In-Reply-To: <20250827010453.4059782-1-richard.henderson@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 16 Sep 2025 12:43:21 +0100
-X-Gm-Features: Ac12FXx9XadVkXfh56DOz_qdBwpDZ-EOHCcGJXsWKrZwlOYAmecKbo3OMlJbzyc
-Message-ID: <CAFEAcA8Amg8KDX0QYKqe7RtHPMC+GFD6N+c5z4S-ts_V11_RCA@mail.gmail.com>
-Subject: Re: [PULL 20/24] hw/uefi-vars-sysbus: add x64 variant
-To: Gerd Hoffmann <kraxel@redhat.com>
-Cc: qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>, 
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, 
- Eric Blake <eblake@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- qemu-arm@nongnu.org, 
- Michael Roth <michael.roth@amd.com>, Markus Armbruster <armbru@redhat.com>, 
- Eduardo Habkost <eduardo@habkost.net>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
- =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>
+Date: Tue, 16 Sep 2025 13:14:06 +0100
+X-Gm-Features: Ac12FXywPgs7fs5mUJFGqdFjRw4Ju6XI0_Q0xgNA9qX-nP8_oO_aidYSTbpOIrA
+Message-ID: <CAFEAcA9Any7XcejhUsCQDkseV8J0JQYq1YMDrM_eL7uJmDwcjg@mail.gmail.com>
+Subject: Re: [RFC PATCH 00/61] target/arm: Implement FEAT_SYSREG128
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1136;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1136.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b133;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb133.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -104,37 +94,70 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, 4 Mar 2025 at 12:49, Gerd Hoffmann <kraxel@redhat.com> wrote:
+On Wed, 27 Aug 2025 at 02:06, Richard Henderson
+<richard.henderson@linaro.org> wrote:
 >
-> The x86 variant of the device is mapped on the fixed address 0xfef10000
-> and uses etc/hardware-info instead of FDT to pass the mapping location
-> to the edk2 firmware.  The latter allows to move the device to a
-> different location should that turn out to be necessary in the future.
+> Requesting feedback on the implementation of 128-bit registers.
 >
-> Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
-> Message-ID: <20250225163031.1409078-21-kraxel@redhat.com>
+> Note that there ought to be no functional change with all of this,
+> because 128-bit sysregs are not hereing enabled.  Despite all of the
+> different FEAT_* names, it's all indivisible from FEAT_D128.
+>
+> I've used Int128 throughout, which seems sensible at first glance,
+> but *really* complicates the definition of the registers within
+> ARMCPU, especially when the low part is aliased with AArch32.
+> The only saving grace is that there are so few 128-bit registers.
+>
+> Gettng there isn't trivial either.  I wasn't happy with the idea
+> of replicating the orig_{read,write,access} set of hooks used by
+> VHE, so I've rewritten that to perform the VHE redirection at
+> translation time, much like how we do for NV2.
+>
+> In the process of rewriting VHE, re-organize registration to
+> simplify memory management and reduce the number of arguments
+> to the inner helper functions.
+>
+> At one point in development, I did not have CP_REG_AA64_128BIT_MASK,
+> which was going to require cpreg_to_kvm_id to also take a
+> ARMCPRegInfo pointer.  There aren't a whole lot of calls to that
+> helper, but the one in hvf required reorganization to handle.
+> With CP_REG_AA64_128BIT_MASK, that reorganization is not required,
+> but I still think it's a good cleanup so I have kept it.
+>
+> Alternate implementation strategies:
+>
+>   (1) Disconnect the 64-bit halves of the sysregs.
+>       Cons:
+>         - The 128-bit-ness isn't screamingly obvious.
+>       Pros:
+>         - Avoid having to rearrange the ARMCPU layout, and simpler
+>           integration with AArch32.
+>         - Avoid Int128 most places, since we wind up doing quite a
+>           lot of packing and unpacking the structure.
+>         - Because Int128 *isn't* a structure for most 64-bit builds,
+>           we can accidentally assign a 64-bit local to a 128-bit field.
+>         - Possibly easier migration changes; I havn't thought about
+>           that too much.
 
-Hi; apologies for this very late comment, but I just
-noticed this reading through the code:
+I haven't looked at the patchset in very close detail, but
+(as we discussed at KVM Forum) my inclination is to prefer
+to have explicitly separate halves rather than an Int128.
+If we had a real compiler type int128_t everywhere I think
+my opinion would be different, but as it is we can't write
+operations on the field in an "obvious" way, and we have to
+have clunky int128_* functions like this one:
 
-> +static void uefi_vars_x64_realize(DeviceState *dev, Error **errp)
-> +{
-> +    HARDWARE_INFO_SIMPLE_DEVICE hwinfo = {
-> +        .mmio_address = cpu_to_le64(0xfef10000),
-> +    };
-> +    SysBusDevice *sysbus = SYS_BUS_DEVICE(dev);
-> +
-> +    uefi_vars_sysbus_realize(dev, errp);
-> +
-> +    hardware_info_register(HardwareInfoQemuUefiVars,
-> +                           &hwinfo, sizeof(hwinfo));
-> +    sysbus_mmio_map(sysbus, 0, hwinfo.mmio_address);
-> +}
++        flush_if_asid_change(env, int128_getlo(raw_read128(env, ri)),
++                             int128_getlo(value),
++                             ARMMMUIdxBit_E20_2 |
++                             ARMMMUIdxBit_E20_2_PAN |
++                             ARMMMUIdxBit_E20_0);
 
-Device realize methods should generally not map things into
-the system address space. Can we refactor this so
-that the board/SoC/whatever devices that create the
-device do the mapping ?
+so there doesn't seem like a great deal of benefit to
+defining an Int128 field.
+
+Is some of the early part of this patchset useful refactoring
+that we could get upstream already?
 
 thanks
 -- PMM

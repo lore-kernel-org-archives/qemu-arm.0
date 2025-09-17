@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 542EBCAC59D
-	for <qemu-arm@archiver.kernel.org>; Wed, 17 Sep 2025 13:09:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6586CAC599
+	for <qemu-arm@archiver.kernel.org>; Wed, 17 Sep 2025 13:09:52 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uyrse-0002Hc-Ki; Wed, 17 Sep 2025 09:07:28 -0400
+	id 1uyrsz-00039g-DG; Wed, 17 Sep 2025 09:07:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1uyroj-00052E-LG; Wed, 17 Sep 2025 09:03:30 -0400
+ id 1uyrpX-0005uP-Rc; Wed, 17 Sep 2025 09:04:32 -0400
 Received: from www3579.sakura.ne.jp ([49.212.243.89])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1uyroh-0005vP-Jd; Wed, 17 Sep 2025 09:03:25 -0400
+ id 1uyrpV-00066D-LT; Wed, 17 Sep 2025 09:04:15 -0400
 Received: from h205.csg.ci.i.u-tokyo.ac.jp (h205.csg.ci.i.u-tokyo.ac.jp
  [133.11.54.205]) (authenticated bits=0)
- by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 58HCuN70008967
+ by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 58HCuN6s008967
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
- Wed, 17 Sep 2025 21:56:47 +0900 (JST)
+ Wed, 17 Sep 2025 21:56:42 +0900 (JST)
  (envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
-DKIM-Signature: a=rsa-sha256; bh=IeYVbNa9ewH8X0AMzPHwbB1bovCCW1XINUrS833KFLU=; 
+DKIM-Signature: a=rsa-sha256; bh=xplWx0T3pH95kfYhsL6HObR0v1/371FsGPZ7likh5Eo=; 
  c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
  h=From:Date:Subject:Message-Id:To;
- s=rs20250326; t=1758113808; v=1;
- b=RaCvs2pC4/oFYc/lwHEOZmzgDc8bmeoHZZOSvm4cn4lA7ojwDk6bZGqre9/Sk8p9
- 9Yx79ItQGLJwc6hNE3Iy88Gr/Js2OAkqcafa6FPKGzaHCWUbzhDjliw9QU9P1wio
- OyvpFayXqX9th2ut3T54cvwQNbpXusK7b4RNYpjZ02vM2/PP1H4jLqx6vISedT8k
- QOW3pS/INVZUcLck6cZ30TO3AaQIi9GGa8LYlB6kxAtsSNKlmUF1an/wtFjeVpBa
- 8iRmUJUoUxg0CLdGTiJILaNd7W8l0tlwCwuZYAnPgsabs+O2Ze12VHrBRtaNYfS/
- qrZ1xfTkg8Fz9asUWZ3Cpw==
+ s=rs20250326; t=1758113803; v=1;
+ b=u0e4qWkRUJ30ZFxZupPVEGVLpoAX0qgZl3mczzMZJ6ciKmH26JvBI2UbGVLoLb/l
+ RCWQDqjNSH/BwyDKf5oVnYhPptBdNepbPjoI0kDyafZJyT9skmz8F851N3fq4QF9
+ TGKnQMQYKRm/zCzAjv+WncnP7a7Ja9j2Jx5R9iInHH3UQKlmb7TsQ0Xkrrwsha1G
+ oKI+4Gf5Z06GaycO3NgiwqIk5ZG3pw1l4umaK+XFIuchSh7SJ14vQczC3BZ0qvTr
+ s5OI5nrZMLby0g7zMYdJEeXj+cEcnJEFWSJCS4bnT56F1d6cCIhpZ3CbYNkpCYzZ
+ ORZTrQ9dCXZq58Fkzi59BQ==
 From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-Date: Wed, 17 Sep 2025 21:56:32 +0900
-Subject: [PATCH 20/35] hw/remote: QOM-ify AddressSpace
+Date: Wed, 17 Sep 2025 21:56:26 +0900
+Subject: [PATCH 14/35] hw/misc: QOM-ify AddressSpace
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250917-qom-v1-20-7262db7b0a84@rsg.ci.i.u-tokyo.ac.jp>
+Message-Id: <20250917-qom-v1-14-7262db7b0a84@rsg.ci.i.u-tokyo.ac.jp>
 References: <20250917-qom-v1-0-7262db7b0a84@rsg.ci.i.u-tokyo.ac.jp>
 In-Reply-To: <20250917-qom-v1-0-7262db7b0a84@rsg.ci.i.u-tokyo.ac.jp>
 To: qemu-devel@nongnu.org
@@ -136,31 +136,138 @@ concise and also avoid conflicts with other properties.
 
 Signed-off-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
 ---
- hw/remote/iommu.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ hw/misc/aspeed_hace.c      | 2 +-
+ hw/misc/auxbus.c           | 2 +-
+ hw/misc/bcm2835_mbox.c     | 3 +--
+ hw/misc/bcm2835_property.c | 3 +--
+ hw/misc/max78000_gcr.c     | 2 +-
+ hw/misc/tz-mpc.c           | 6 ++----
+ hw/misc/tz-msc.c           | 2 +-
+ hw/misc/tz-ppc.c           | 5 ++++-
+ 8 files changed, 12 insertions(+), 13 deletions(-)
 
-diff --git a/hw/remote/iommu.c b/hw/remote/iommu.c
-index aac5c178ec81..89d79e9480da 100644
---- a/hw/remote/iommu.c
-+++ b/hw/remote/iommu.c
-@@ -54,7 +54,7 @@ static AddressSpace *remote_iommu_find_add_as(PCIBus *pci_bus,
-     if (!elem->mr) {
-         elem->mr = MEMORY_REGION(object_new(TYPE_MEMORY_REGION));
-         memory_region_set_size(elem->mr, UINT64_MAX);
--        address_space_init(&elem->as, NULL, elem->mr, NULL);
-+        address_space_init(&elem->as, OBJECT(iommu), elem->mr, "as");
+diff --git a/hw/misc/aspeed_hace.c b/hw/misc/aspeed_hace.c
+index 198363fd64fa..a8a4a91afac8 100644
+--- a/hw/misc/aspeed_hace.c
++++ b/hw/misc/aspeed_hace.c
+@@ -603,7 +603,7 @@ static void aspeed_hace_realize(DeviceState *dev, Error **errp)
+         return;
      }
  
-     qemu_mutex_unlock(&iommu->lock);
-@@ -73,7 +73,7 @@ void remote_iommu_unplug_dev(PCIDevice *pci_dev)
+-    address_space_init(&s->dram_as, NULL, s->dram_mr, "dram");
++    address_space_init(&s->dram_as, OBJECT(s), s->dram_mr, "as");
  
-     elem = container_of(as, RemoteIommuElem, as);
+     sysbus_init_mmio(sbd, &s->iomem);
+ }
+diff --git a/hw/misc/auxbus.c b/hw/misc/auxbus.c
+index e5448ef3cc60..d20dd8789ae6 100644
+--- a/hw/misc/auxbus.c
++++ b/hw/misc/auxbus.c
+@@ -74,7 +74,7 @@ AUXBus *aux_bus_init(DeviceState *parent, const char *name)
+     /* Memory related. */
+     bus->aux_io = g_malloc(sizeof(*bus->aux_io));
+     memory_region_init(bus->aux_io, OBJECT(bus), "aux-io", 1 * MiB);
+-    address_space_init(&bus->aux_addr_space, NULL, bus->aux_io, "aux-io");
++    address_space_init(&bus->aux_addr_space, OBJECT(bus), bus->aux_io, "as");
+     return bus;
+ }
  
--    address_space_destroy(&elem->as);
-+    object_unparent(OBJECT(&elem->as));
+diff --git a/hw/misc/bcm2835_mbox.c b/hw/misc/bcm2835_mbox.c
+index 4bf3c59a40a1..f26aa39ca4e5 100644
+--- a/hw/misc/bcm2835_mbox.c
++++ b/hw/misc/bcm2835_mbox.c
+@@ -310,8 +310,7 @@ static void bcm2835_mbox_realize(DeviceState *dev, Error **errp)
  
-     object_unref(elem->mr);
+     obj = object_property_get_link(OBJECT(dev), "mbox-mr", &error_abort);
+     s->mbox_mr = MEMORY_REGION(obj);
+-    address_space_init(&s->mbox_as, NULL, s->mbox_mr,
+-                       TYPE_BCM2835_MBOX "-memory");
++    address_space_init(&s->mbox_as, OBJECT(s), s->mbox_mr, "as");
+     bcm2835_mbox_reset(dev);
+ }
  
+diff --git a/hw/misc/bcm2835_property.c b/hw/misc/bcm2835_property.c
+index 8bdde2d248b5..e86d001f17fb 100644
+--- a/hw/misc/bcm2835_property.c
++++ b/hw/misc/bcm2835_property.c
+@@ -540,8 +540,7 @@ static void bcm2835_property_realize(DeviceState *dev, Error **errp)
+ 
+     obj = object_property_get_link(OBJECT(dev), "dma-mr", &error_abort);
+     s->dma_mr = MEMORY_REGION(obj);
+-    address_space_init(&s->dma_as, NULL, s->dma_mr,
+-                       TYPE_BCM2835_PROPERTY "-memory");
++    address_space_init(&s->dma_as, OBJECT(s), s->dma_mr, "as");
+ 
+     obj = object_property_get_link(OBJECT(dev), "otp", &error_abort);
+     s->otp = BCM2835_OTP(obj);
+diff --git a/hw/misc/max78000_gcr.c b/hw/misc/max78000_gcr.c
+index 0a0692c7cffe..048b265be348 100644
+--- a/hw/misc/max78000_gcr.c
++++ b/hw/misc/max78000_gcr.c
+@@ -320,7 +320,7 @@ static void max78000_gcr_realize(DeviceState *dev, Error **errp)
+ {
+     Max78000GcrState *s = MAX78000_GCR(dev);
+ 
+-    address_space_init(&s->sram_as, NULL, s->sram, "sram");
++    address_space_init(&s->sram_as, OBJECT(s), s->sram, "as");
+ }
+ 
+ static void max78000_gcr_class_init(ObjectClass *klass, const void *data)
+diff --git a/hw/misc/tz-mpc.c b/hw/misc/tz-mpc.c
+index b8be234630e3..b5415d46feae 100644
+--- a/hw/misc/tz-mpc.c
++++ b/hw/misc/tz-mpc.c
+@@ -550,10 +550,8 @@ static void tz_mpc_realize(DeviceState *dev, Error **errp)
+     memory_region_init_io(&s->blocked_io, obj, &tz_mpc_mem_blocked_ops,
+                           s, "tz-mpc-blocked-io", size);
+ 
+-    address_space_init(&s->downstream_as, NULL, s->downstream,
+-                       "tz-mpc-downstream");
+-    address_space_init(&s->blocked_io_as, NULL, &s->blocked_io,
+-                       "tz-mpc-blocked-io");
++    address_space_init(&s->downstream_as, obj, s->downstream, "downstream-as");
++    address_space_init(&s->blocked_io_as, obj, &s->blocked_io, "blocked-io-as");
+ 
+     s->blk_lut = g_new0(uint32_t, s->blk_max);
+ }
+diff --git a/hw/misc/tz-msc.c b/hw/misc/tz-msc.c
+index ed1c95e2e9fa..07a8a5137d22 100644
+--- a/hw/misc/tz-msc.c
++++ b/hw/misc/tz-msc.c
+@@ -260,7 +260,7 @@ static void tz_msc_realize(DeviceState *dev, Error **errp)
+     }
+ 
+     size = memory_region_size(s->downstream);
+-    address_space_init(&s->downstream_as, NULL, s->downstream, name);
++    address_space_init(&s->downstream_as, obj, s->downstream, "as");
+     memory_region_init_io(&s->upstream, obj, &tz_msc_ops, s, name, size);
+     sysbus_init_mmio(sbd, &s->upstream);
+ }
+diff --git a/hw/misc/tz-ppc.c b/hw/misc/tz-ppc.c
+index 28a1c27aa3cc..ac928accec2d 100644
+--- a/hw/misc/tz-ppc.c
++++ b/hw/misc/tz-ppc.c
+@@ -257,6 +257,7 @@ static void tz_ppc_realize(DeviceState *dev, Error **errp)
+     for (i = 0; i <= max_port; i++) {
+         TZPPCPort *port = &s->port[i];
+         char *name;
++        g_autofree char *as_name = NULL;
+         uint64_t size;
+ 
+         if (!port->downstream) {
+@@ -274,9 +275,11 @@ static void tz_ppc_realize(DeviceState *dev, Error **errp)
+         }
+ 
+         name = g_strdup_printf("tz-ppc-port[%d]", i);
++        as_name = g_strconcat(name, "-as", NULL);
+ 
+         port->ppc = s;
+-        address_space_init(&port->downstream_as, NULL, port->downstream, name);
++        address_space_init(&port->downstream_as, obj, port->downstream,
++                           as_name);
+ 
+         size = memory_region_size(port->downstream);
+         memory_region_init_io(&port->upstream, obj, &tz_ppc_ops,
 
 -- 
 2.51.0

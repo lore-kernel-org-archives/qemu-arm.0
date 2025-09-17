@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BAB0ACAC599
-	for <qemu-arm@archiver.kernel.org>; Wed, 17 Sep 2025 13:09:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A61DACAC59A
+	for <qemu-arm@archiver.kernel.org>; Wed, 17 Sep 2025 13:09:16 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uyrnv-0003Vr-HT; Wed, 17 Sep 2025 09:02:35 -0400
+	id 1uyrsz-00039Y-6R; Wed, 17 Sep 2025 09:07:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1uyrl6-0000Zt-Ea; Wed, 17 Sep 2025 08:59:41 -0400
+ id 1uyrpm-0005wO-KZ; Wed, 17 Sep 2025 09:04:36 -0400
 Received: from www3579.sakura.ne.jp ([49.212.243.89])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1uyrl2-00054c-CQ; Wed, 17 Sep 2025 08:59:38 -0400
+ id 1uyrpk-0005xn-8N; Wed, 17 Sep 2025 09:04:30 -0400
 Received: from h205.csg.ci.i.u-tokyo.ac.jp (h205.csg.ci.i.u-tokyo.ac.jp
  [133.11.54.205]) (authenticated bits=0)
- by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 58HCuN6q008967
+ by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 58HCuN6x008967
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
- Wed, 17 Sep 2025 21:56:41 +0900 (JST)
+ Wed, 17 Sep 2025 21:56:46 +0900 (JST)
  (envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
-DKIM-Signature: a=rsa-sha256; bh=CpRCyRAYIH2JSKiVPg762a+pxdQx53RiD8R6KgThpvY=; 
+DKIM-Signature: a=rsa-sha256; bh=2k1RXsuysZJUUbooF4SQHx4mO+9R1oof00yibd4tPt8=; 
  c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
  h=From:Date:Subject:Message-Id:To;
- s=rs20250326; t=1758113801; v=1;
- b=Bp8/LTMcn2vA4okUjWIJFNCQxsm68Infpf0VwT0PCBkfO9mjQdG/rLrraYEGaNG3
- q4SE4xes/3fWF6rpDs8MnNhRye1BCMKZIXrwcaEqD7GtznBworqbGIzwIaMVpVCQ
- kX9VZ3kMlHj9yJ/tkjt+vo7JM13zXnbTvoN2saEfsqm2iPUdv4GgpfaFRTMzx/a0
- 5+yV//9iZ2gLOziJXMgN9nieKgpDOSquK+ylIYdAvWbFETn5cSzduVn00rptlKaH
- 2QDmXO1SBgg4zUaL3HWSGFrkQMyTKCnPKgqKq+MGhF6+db6mHCRNaOWFx3agUmTr
- 8FoNIo97MC0qBPOHMuSUpg==
+ s=rs20250326; t=1758113807; v=1;
+ b=FvaXOvL0NzIYuie5l9DQdrEVrjLdBmVmO2Z5k3XIcvMFwZzDcBEwIZaN2DUwCRf9
+ TmpX9robixIPy+LNyaFa60g9E1eZrfW/ygqhDOD+6e5VOk1+j+FCwAsKGqGFZpYg
+ RTMTEikUoYBvo6ihFgFS4J1f/lE0L65s0MRSZANMhV+vHphVLaypaKAkFOW+7t3B
+ +g45JKUixe7q7xlyuh2MH3yPwty6t3xOsLG2tTrTemCQrVtsgXUMjLa9jVTK3ITv
+ opFWLFKv3yRuB/V/6TgY/MKGRni25HSzwYN5CWeU3aFp3S3jU1B4cl2RN5yehiod
+ kR4HtnZxXPba6n+ID0vytg==
 From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-Date: Wed, 17 Sep 2025 21:56:24 +0900
-Subject: [PATCH 12/35] hw/loongarch: QOM-ify AddressSpace
+Date: Wed, 17 Sep 2025 21:56:31 +0900
+Subject: [PATCH 19/35] hw/ppc: QOM-ify AddressSpace
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250917-qom-v1-12-7262db7b0a84@rsg.ci.i.u-tokyo.ac.jp>
+Message-Id: <20250917-qom-v1-19-7262db7b0a84@rsg.ci.i.u-tokyo.ac.jp>
 References: <20250917-qom-v1-0-7262db7b0a84@rsg.ci.i.u-tokyo.ac.jp>
 In-Reply-To: <20250917-qom-v1-0-7262db7b0a84@rsg.ci.i.u-tokyo.ac.jp>
 To: qemu-devel@nongnu.org
@@ -136,23 +136,74 @@ concise and also avoid conflicts with other properties.
 
 Signed-off-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
 ---
- hw/loongarch/virt.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ hw/ppc/pnv_lpc.c   | 2 +-
+ hw/ppc/pnv_xscom.c | 2 +-
+ hw/ppc/spapr_pci.c | 5 ++---
+ hw/ppc/spapr_vio.c | 2 +-
+ 4 files changed, 5 insertions(+), 6 deletions(-)
 
-diff --git a/hw/loongarch/virt.c b/hw/loongarch/virt.c
-index 0bace2f54b49..f65c2da5c6dd 100644
---- a/hw/loongarch/virt.c
-+++ b/hw/loongarch/virt.c
-@@ -699,7 +699,8 @@ static void virt_init(MachineState *machine)
-     /* Create IOCSR space */
-     memory_region_init_io(&lvms->system_iocsr, OBJECT(machine), NULL,
-                           machine, "iocsr", UINT64_MAX);
--    address_space_init(&lvms->as_iocsr, NULL, &lvms->system_iocsr, "IOCSR");
-+    address_space_init(&lvms->as_iocsr, OBJECT(machine), &lvms->system_iocsr,
-+                       "iocsr-as");
-     memory_region_init_io(&lvms->iocsr_mem, OBJECT(machine),
-                           &virt_iocsr_misc_ops,
-                           machine, "iocsr_misc", 0x428);
+diff --git a/hw/ppc/pnv_lpc.c b/hw/ppc/pnv_lpc.c
+index 373b5a8be573..304f01e240db 100644
+--- a/hw/ppc/pnv_lpc.c
++++ b/hw/ppc/pnv_lpc.c
+@@ -799,7 +799,7 @@ static void pnv_lpc_realize(DeviceState *dev, Error **errp)
+ 
+     /* Create address space and backing MR for the OPB bus */
+     memory_region_init(&lpc->opb_mr, OBJECT(dev), "lpc-opb", 0x100000000ull);
+-    address_space_init(&lpc->opb_as, NULL, &lpc->opb_mr, "lpc-opb");
++    address_space_init(&lpc->opb_as, OBJECT(dev), &lpc->opb_mr, "as");
+ 
+     /*
+      * Create ISA IO, Mem, and FW space regions which are the root of
+diff --git a/hw/ppc/pnv_xscom.c b/hw/ppc/pnv_xscom.c
+index 58f86bcbd2a6..353eb9b14e29 100644
+--- a/hw/ppc/pnv_xscom.c
++++ b/hw/ppc/pnv_xscom.c
+@@ -219,7 +219,7 @@ void pnv_xscom_init(PnvChip *chip, uint64_t size, hwaddr addr)
+     memory_region_add_subregion(get_system_memory(), addr, &chip->xscom_mmio);
+ 
+     memory_region_init(&chip->xscom, OBJECT(chip), name, size);
+-    address_space_init(&chip->xscom_as, NULL, &chip->xscom, name);
++    address_space_init(&chip->xscom_as, OBJECT(chip), &chip->xscom, "as");
+     g_free(name);
+ }
+ 
+diff --git a/hw/ppc/spapr_pci.c b/hw/ppc/spapr_pci.c
+index 13fc5c9aa8f2..41bf65b291de 100644
+--- a/hw/ppc/spapr_pci.c
++++ b/hw/ppc/spapr_pci.c
+@@ -1759,7 +1759,7 @@ static void spapr_phb_unrealize(DeviceState *dev)
+      * address space.
+      */
+     address_space_remove_listeners(&sphb->iommu_as);
+-    address_space_destroy(&sphb->iommu_as);
++    object_unparent(OBJECT(&sphb->iommu_as));
+ 
+     qbus_set_hotplug_handler(BUS(phb->bus), NULL);
+     pci_unregister_root_bus(phb->bus);
+@@ -1902,8 +1902,7 @@ static void spapr_phb_realize(DeviceState *dev, Error **errp)
+     memory_region_init(&sphb->iommu_root, OBJECT(sphb),
+                        namebuf, UINT64_MAX);
+     g_free(namebuf);
+-    address_space_init(&sphb->iommu_as, NULL, &sphb->iommu_root,
+-                       sphb->dtbusname);
++    address_space_init(&sphb->iommu_as, OBJECT(sphb), &sphb->iommu_root, "as");
+ 
+     /*
+      * As MSI/MSIX interrupts trigger by writing at MSI/MSIX vectors,
+diff --git a/hw/ppc/spapr_vio.c b/hw/ppc/spapr_vio.c
+index ebe4bad23668..5f8dd153dedf 100644
+--- a/hw/ppc/spapr_vio.c
++++ b/hw/ppc/spapr_vio.c
+@@ -529,7 +529,7 @@ static void spapr_vio_busdev_realize(DeviceState *qdev, Error **errp)
+                                  "iommu-spapr-bypass", get_system_memory(),
+                                  0, MACHINE(spapr)->ram_size);
+         memory_region_add_subregion_overlap(&dev->mrroot, 0, &dev->mrbypass, 1);
+-        address_space_init(&dev->as, NULL, &dev->mrroot, qdev->id);
++        address_space_init(&dev->as, OBJECT(dev), &dev->mrroot, "as");
+ 
+         dev->tcet = spapr_tce_new_table(qdev, liobn);
+         spapr_tce_table_enable(dev->tcet, SPAPR_TCE_PAGE_SHIFT, 0,
 
 -- 
 2.51.0

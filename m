@@ -4,27 +4,27 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A922CAC598
-	for <qemu-arm@archiver.kernel.org>; Wed, 17 Sep 2025 03:59:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3403CCA0EE8
+	for <qemu-arm@archiver.kernel.org>; Wed, 17 Sep 2025 04:00:12 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uyjKN-0004yW-4u; Tue, 16 Sep 2025 23:59:31 -0400
+	id 1uyjKM-0004yB-5u; Tue, 16 Sep 2025 23:59:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kane_chen@aspeedtech.com>)
- id 1uyjKM-0004yE-GL; Tue, 16 Sep 2025 23:59:30 -0400
+ id 1uyjKK-0004x9-1C; Tue, 16 Sep 2025 23:59:28 -0400
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kane_chen@aspeedtech.com>)
- id 1uyjKK-0006g6-UE; Tue, 16 Sep 2025 23:59:30 -0400
+ id 1uyjKH-0006g6-Ly; Tue, 16 Sep 2025 23:59:27 -0400
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Wed, 17 Sep
  2025 11:59:18 +0800
 Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
- Transport; Wed, 17 Sep 2025 11:59:18 +0800
+ Transport; Wed, 17 Sep 2025 11:59:17 +0800
 To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
  <leetroy@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>, Andrew Jeffery
@@ -33,12 +33,10 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <qemu-devel@nongnu.org>
 CC: <troy_lee@aspeedtech.com>, <thuth@redhat.com>, Kane-Chen-AS
  <kane_chen@aspeedtech.com>
-Subject: [PATCH v2 1/3] tests/functional/arm: Add helper to generate OTP images
-Date: Wed, 17 Sep 2025 11:59:15 +0800
-Message-ID: <20250917035917.4141723-2-kane_chen@aspeedtech.com>
+Subject: [PATCH v2 0/3] tests/functional/arm: Add OTP functional test
+Date: Wed, 17 Sep 2025 11:59:14 +0800
+Message-ID: <20250917035917.4141723-1-kane_chen@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250917035917.4141723-1-kane_chen@aspeedtech.com>
-References: <20250917035917.4141723-1-kane_chen@aspeedtech.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
@@ -69,31 +67,33 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Kane-Chen-AS <kane_chen@aspeedtech.com>
 
-Add a small helper that generates OTP images at test time. This lets
-multiple test cases create default OTP contents without shipping prebuilt
-fixtures and keeps the tests self-contained.
+Hi all,
 
-Signed-off-by: Kane-Chen-AS <kane_chen@aspeedtech.com>
+During early boot, SoC firmware reads from the OTP region to obtain the
+chip ID and default configuration. This series adds functional tests that
+boot with a generated OTP image and verify that the firmware reads these
+contents correctly during initialization.
+
+Any feedback or suggestions are appreciated.
+
+Best Regards,
+Kane
 ---
- tests/functional/aspeed.py | 8 ++++++++
- 1 file changed, 8 insertions(+)
+Change log:
+v2: Fine-tune test scripts
 
-diff --git a/tests/functional/aspeed.py b/tests/functional/aspeed.py
-index b131703c52..47e84e035b 100644
---- a/tests/functional/aspeed.py
-+++ b/tests/functional/aspeed.py
-@@ -61,3 +61,11 @@ def do_test_arm_aspeed_sdk_start(self, image):
-         self.wait_for_console_pattern('U-Boot 2019.04')
-         self.wait_for_console_pattern('## Loading kernel from FIT Image')
-         self.wait_for_console_pattern('Starting kernel ...')
-+
-+    def generate_otpmem_image(self):
-+        path = self.scratch_file("otpmem.img")
-+        pattern = b'\x00\x00\x00\x00\xff\xff\xff\xff' * (16 * 1024 // 8)
-+        with open(path, "wb") as f:
-+            f.write(pattern)
-+        return path
-+
+v1: Initial version
+---
+Kane-Chen-AS (3):
+  tests/functional/arm: Add helper to generate OTP images
+  tests/functional/arm: Add AST1030 boot test with generated OTP image
+  tests/functional/arm: Add AST2600 boot test with generated OTP image
+
+ tests/functional/arm/test_aspeed_ast1030.py | 24 +++++++++++++++++----
+ tests/functional/arm/test_aspeed_ast2600.py | 14 ++++++++++++
+ tests/functional/aspeed.py                  |  8 +++++++
+ 3 files changed, 42 insertions(+), 4 deletions(-)
+
 -- 
 2.43.0
 

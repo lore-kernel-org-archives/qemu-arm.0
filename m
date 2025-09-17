@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3653ACAC599
-	for <qemu-arm@archiver.kernel.org>; Wed, 17 Sep 2025 13:13:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E00F0CAC59A
+	for <qemu-arm@archiver.kernel.org>; Wed, 17 Sep 2025 13:13:54 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uyrsd-0002Ci-MH; Wed, 17 Sep 2025 09:07:27 -0400
+	id 1uyrsr-0002nV-DW; Wed, 17 Sep 2025 09:07:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1uyroe-0004z0-Iu; Wed, 17 Sep 2025 09:03:23 -0400
+ id 1uyrpm-0005wN-KW; Wed, 17 Sep 2025 09:04:36 -0400
 Received: from www3579.sakura.ne.jp ([49.212.243.89])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1uyroa-0005tJ-GY; Wed, 17 Sep 2025 09:03:20 -0400
+ id 1uyrpj-0005xa-AN; Wed, 17 Sep 2025 09:04:29 -0400
 Received: from h205.csg.ci.i.u-tokyo.ac.jp (h205.csg.ci.i.u-tokyo.ac.jp
  [133.11.54.205]) (authenticated bits=0)
- by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 58HCuN6j008967
+ by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 58HCuN6h008967
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
- Wed, 17 Sep 2025 21:56:35 +0900 (JST)
+ Wed, 17 Sep 2025 21:56:33 +0900 (JST)
  (envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
-DKIM-Signature: a=rsa-sha256; bh=SN54eqMpyxZn5t52ldVheDzKEoBDUBkvg/chu4l0yTs=; 
+DKIM-Signature: a=rsa-sha256; bh=KPkgneIU/Kxw3przf+/EO57BUaP8vFhAy1Y4oUYjPZY=; 
  c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
  h=From:Date:Subject:Message-Id:To;
- s=rs20250326; t=1758113796; v=1;
- b=DUSefoHX+5AQ41jKoyMQZ/520KnWRg3PTuzflX+/GPXZq3riyQSurxvuJq6Y+xeA
- sc0QE5yEaHKX31nXhL9x1HMWA8aCw1Kd//xPmJ1dS9TuYPRYEBUV3wIEZhunNBJy
- KSkDKTovU4HxAGab/4PCRKGMY+wWz4sLV/SxfhbPFp4A9F+HbrufBwEu6zktI+9n
- 37l8Va3KoDIqMDlZsWOzKy4/48ABx7OARe8Nt0FjkxJ7uloAMGpNVwmyed0owEJw
- 5AyPLLiP+X0+9IMBiwGrNzhPbldNRxURcOfovreIznCLAPrtI/DRx+W457D9g07k
- PFKYTh6R/xZXDBSuQAmfDQ==
+ s=rs20250326; t=1758113794; v=1;
+ b=p6CW3wGmzP/3BPNGDz1fVZLaV3/Flytml54QCdn8QBKxE6XKmetfZg+fVzt4n3th
+ uEh/vkZLkgUVKsYEiLky4LLz2fap1aN0EvqGq1e9vNVAWzWcfgG6K6sA+bGk5P2n
+ NvwF1DofnV5zwtMCEMIMrFE+9IU3tr5uTUhEGBa1t0tzJVVE/307LUt11ZJe1odm
+ n+Pr7o9eLkl6ZOYsvA0KBY13AXAqTmHrZ3Ar7hNmBQB5yMJeAkQG3AvdEXy6djmz
+ kH08sM2K4Hw+w6MGKkARhjxu6TBl4+r0aA38T1JSM5QVjwgYa0TiThAAholfXC6N
+ M6bs5/EkJjSFRjC8tqNnhQ==
 From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-Date: Wed, 17 Sep 2025 21:56:17 +0900
-Subject: [PATCH 05/35] hw/arm: QOM-ify AddressSpace
+Date: Wed, 17 Sep 2025 21:56:15 +0900
+Subject: [PATCH 03/35] vfio: Use address_space_get_path()
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250917-qom-v1-5-7262db7b0a84@rsg.ci.i.u-tokyo.ac.jp>
+Message-Id: <20250917-qom-v1-3-7262db7b0a84@rsg.ci.i.u-tokyo.ac.jp>
 References: <20250917-qom-v1-0-7262db7b0a84@rsg.ci.i.u-tokyo.ac.jp>
 In-Reply-To: <20250917-qom-v1-0-7262db7b0a84@rsg.ci.i.u-tokyo.ac.jp>
 To: qemu-devel@nongnu.org
@@ -125,71 +125,62 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Make AddressSpaces QOM objects to ensure that they are destroyed when
-their owners are finalized and also to get a unique path for debugging
-output.
-
-The name arguments were used to distinguish AddresSpaces in debugging
-output, but they will represent property names after QOM-ification and
-debugging output will show QOM paths. So change them to make them more
-concise and also avoid conflicts with other properties.
+The name field of an QOM-ified AddressSpace represents a property name,
+which may not be sufficient to identify the AddressSpace. Use
+address_space_get_path() instead.
 
 Signed-off-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
 ---
- hw/arm/armv7m.c         | 2 +-
- hw/arm/aspeed_ast27x0.c | 2 +-
- hw/arm/smmu-common.c    | 5 +++--
- 3 files changed, 5 insertions(+), 4 deletions(-)
+ hw/vfio/listener.c     | 8 ++++++--
+ hw/virtio/vhost-vdpa.c | 4 +++-
+ 2 files changed, 9 insertions(+), 3 deletions(-)
 
-diff --git a/hw/arm/armv7m.c b/hw/arm/armv7m.c
-index 7fa854bc14df..54d0d9f78207 100644
---- a/hw/arm/armv7m.c
-+++ b/hw/arm/armv7m.c
-@@ -117,7 +117,7 @@ static void bitband_realize(DeviceState *dev, Error **errp)
+diff --git a/hw/vfio/listener.c b/hw/vfio/listener.c
+index f498e23a9374..d0418db28c8b 100644
+--- a/hw/vfio/listener.c
++++ b/hw/vfio/listener.c
+@@ -137,9 +137,11 @@ static void vfio_iommu_map_notify(IOMMUNotifier *n, IOMMUTLBEntry *iotlb)
+                                 iova, iova + iotlb->addr_mask);
+ 
+     if (iotlb->target_as != &address_space_memory) {
++        g_autofree char *path = address_space_get_path(iotlb->target_as);
++
+         error_setg(&local_err,
+                    "Wrong target AS \"%s\", only system memory is allowed",
+-                   iotlb->target_as->name ? iotlb->target_as->name : "none");
++                   path);
+         if (migration_is_running()) {
+             migration_file_set_error(-EINVAL, local_err);
+         } else {
+@@ -1060,9 +1062,11 @@ static void vfio_iommu_map_dirty_notify(IOMMUNotifier *n, IOMMUTLBEntry *iotlb)
+     trace_vfio_iommu_map_dirty_notify(iova, iova + iotlb->addr_mask);
+ 
+     if (iotlb->target_as != &address_space_memory) {
++        g_autofree char *path = address_space_get_path(iotlb->target_as);
++
+         error_setg(&local_err,
+                    "Wrong target AS \"%s\", only system memory is allowed",
+-                   iotlb->target_as->name ? iotlb->target_as->name : "none");
++                   path);
+         goto out;
+     }
+ 
+diff --git a/hw/virtio/vhost-vdpa.c b/hw/virtio/vhost-vdpa.c
+index 7061b6e1a386..7ed639358458 100644
+--- a/hw/virtio/vhost-vdpa.c
++++ b/hw/virtio/vhost-vdpa.c
+@@ -213,8 +213,10 @@ static void vhost_vdpa_iommu_map_notify(IOMMUNotifier *n, IOMMUTLBEntry *iotlb)
+     hwaddr xlat;
+ 
+     if (iotlb->target_as != &address_space_memory) {
++        g_autofree char *path = address_space_get_path(iotlb->target_as);
++
+         error_report("Wrong target AS \"%s\", only system memory is allowed",
+-                     iotlb->target_as->name ? iotlb->target_as->name : "none");
++                     path);
          return;
      }
- 
--    address_space_init(&s->source_as, NULL, s->source_memory, "bitband-source");
-+    address_space_init(&s->source_as, OBJECT(s), s->source_memory, "as");
- }
- 
- /* Board init.  */
-diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
-index f8c0ac5f87df..7fe097ad3f11 100644
---- a/hw/arm/aspeed_ast27x0.c
-+++ b/hw/arm/aspeed_ast27x0.c
-@@ -387,7 +387,7 @@ static bool aspeed_soc_ast2700_dram_init(DeviceState *dev, Error **errp)
-     memory_region_init(&s->dram_container, OBJECT(s), "ram-container",
-                        ram_size);
-     memory_region_add_subregion(&s->dram_container, 0, s->dram_mr);
--    address_space_init(&s->dram_as, NULL, s->dram_mr, "dram");
-+    address_space_init(&s->dram_as, OBJECT(s), s->dram_mr, "dram-as");
- 
-     /*
-      * Add a memory region beyond the RAM region to emulate
-diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
-index 081c50750947..7c1648165b9f 100644
---- a/hw/arm/smmu-common.c
-+++ b/hw/arm/smmu-common.c
-@@ -863,6 +863,7 @@ static AddressSpace *smmu_find_add_as(PCIBus *bus, void *opaque, int devfn)
-     sdev = sbus->pbdev[devfn];
-     if (!sdev) {
-         char *name = g_strdup_printf("%s-%d-%d", s->mrtypename, devfn, index++);
-+        g_autofree char *as_name = g_strconcat(name, "-as", NULL);
- 
-         sdev = sbus->pbdev[devfn] = g_new0(SMMUDevice, 1);
- 
-@@ -873,8 +874,8 @@ static AddressSpace *smmu_find_add_as(PCIBus *bus, void *opaque, int devfn)
-         memory_region_init_iommu(&sdev->iommu, sizeof(sdev->iommu),
-                                  s->mrtypename,
-                                  OBJECT(s), name, UINT64_MAX);
--        address_space_init(&sdev->as, NULL,
--                           MEMORY_REGION(&sdev->iommu), name);
-+        address_space_init(&sdev->as, OBJECT(s),
-+                           MEMORY_REGION(&sdev->iommu), as_name);
-         trace_smmu_add_mr(name);
-         g_free(name);
-     }
+     RCU_READ_LOCK_GUARD();
 
 -- 
 2.51.0

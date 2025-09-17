@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0EBCCAC599
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C26F9CAC59D
 	for <qemu-arm@archiver.kernel.org>; Wed, 17 Sep 2025 13:10:30 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uyrsk-0002W7-St; Wed, 17 Sep 2025 09:07:34 -0400
+	id 1uyrsi-0002Nv-5O; Wed, 17 Sep 2025 09:07:32 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1uyroi-00051N-5J; Wed, 17 Sep 2025 09:03:30 -0400
+ id 1uyroi-000529-To; Wed, 17 Sep 2025 09:03:30 -0400
 Received: from www3579.sakura.ne.jp ([49.212.243.89])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1uyrof-0005uV-4n; Wed, 17 Sep 2025 09:03:23 -0400
+ id 1uyrof-0005ub-LQ; Wed, 17 Sep 2025 09:03:24 -0400
 Received: from h205.csg.ci.i.u-tokyo.ac.jp (h205.csg.ci.i.u-tokyo.ac.jp
  [133.11.54.205]) (authenticated bits=0)
- by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 58HCuN6r008967
+ by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 58HCuN71008967
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
- Wed, 17 Sep 2025 21:56:41 +0900 (JST)
+ Wed, 17 Sep 2025 21:56:48 +0900 (JST)
  (envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
-DKIM-Signature: a=rsa-sha256; bh=TGbrQM/McNBrLXG5VfeAkh7HnxBCj04Y3QHaSSNnZfI=; 
+DKIM-Signature: a=rsa-sha256; bh=GOQKVqefPAJmBrPvNMsFbTKEyGldKAyJfG+hCf+5Ixc=; 
  c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
  h=From:Date:Subject:Message-Id:To;
- s=rs20250326; t=1758113802; v=1;
- b=KheEbi1DHbpSY1QMbJ+q1rYvx7VsHKkiS8/9RjIZiRXMxAyctZqTc0JFtwBvh8PW
- 2lKENHULJa8wpzYIeWYz2UROsL+SnDsw7kwGSPlXu9/XzqJKBb1rCwX0ICOzKLFN
- +bu/6ujnuSSLfrn4qTLWAnGGdVIArkbeyzz/ERp0RLdum5ZGDcwG1f7AerWpDS1Z
- eT/ItWkzHgUstvQj7m354JJwf41b5mNhUpi/++mCjMFvFlFs4SP8knmmtBCbZ+A9
- +toIb6vhywCtSILmojmMqKTjF38LQiZl7pw+tcUMM/YYSs4bJsu/2qyrxZEa1CkQ
- LAYO+Em9E6LfJazNVBAXJA==
+ s=rs20250326; t=1758113809; v=1;
+ b=e1Ob/piSj7cxEtTEojTvIjLvvXI1f4M9y8dhT54XWq2NNAJK9e2AYRl2yqkukXIJ
+ WNBaTiUjkp5ztkR7CHz3BNA978TDmZeQy5pc3yl62Vzt/0Js1cT0LcXU4FGcwqRg
+ dRxW9VdL6bphyt4odv6HmfTX2+QpMhY89N+CyVoZn2mvzcV3M/keLZcktZ+IdaHU
+ MJwsw33Awyb1v5g3OtTceF/ilc4az8tU3oVjdJYtf3Yige5Yi+G9ohT4ViEiNIUW
+ Fal/pEC7t79R1ra38eeCEkawlu+TqatE52yndj1zYLalrJPWSKG6MimIXorWBWTv
+ T6W+nb8n8IZMLJpu20ftXg==
 From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-Date: Wed, 17 Sep 2025 21:56:25 +0900
-Subject: [PATCH 13/35] hw/mem: QOM-ify AddressSpace
+Date: Wed, 17 Sep 2025 21:56:33 +0900
+Subject: [PATCH 21/35] hw/riscv: QOM-ify AddressSpace
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250917-qom-v1-13-7262db7b0a84@rsg.ci.i.u-tokyo.ac.jp>
+Message-Id: <20250917-qom-v1-21-7262db7b0a84@rsg.ci.i.u-tokyo.ac.jp>
 References: <20250917-qom-v1-0-7262db7b0a84@rsg.ci.i.u-tokyo.ac.jp>
 In-Reply-To: <20250917-qom-v1-0-7262db7b0a84@rsg.ci.i.u-tokyo.ac.jp>
 To: qemu-devel@nongnu.org
@@ -136,143 +136,44 @@ concise and also avoid conflicts with other properties.
 
 Signed-off-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
 ---
- hw/mem/cxl_type3.c     | 44 ++++++++++++--------------------------------
- hw/mem/memory-device.c |  4 ++--
- 2 files changed, 14 insertions(+), 34 deletions(-)
+ hw/riscv/riscv-iommu.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/hw/mem/cxl_type3.c b/hw/mem/cxl_type3.c
-index 1a726b834b02..968594ae65e2 100644
---- a/hw/mem/cxl_type3.c
-+++ b/hw/mem/cxl_type3.c
-@@ -727,8 +727,6 @@ static void cxl_destroy_dc_regions(CXLType3Dev *ct3d)
+diff --git a/hw/riscv/riscv-iommu.c b/hw/riscv/riscv-iommu.c
+index aed84d87a823..6e2962f8331b 100644
+--- a/hw/riscv/riscv-iommu.c
++++ b/hw/riscv/riscv-iommu.c
+@@ -1221,8 +1221,8 @@ static AddressSpace *riscv_iommu_space(RISCVIOMMUState *s, uint32_t devid)
+         memory_region_init_iommu(&as->iova_mr, sizeof(as->iova_mr),
+             TYPE_RISCV_IOMMU_MEMORY_REGION,
+             OBJECT(as), "riscv_iommu", UINT64_MAX);
+-        address_space_init(&as->iova_as, NULL, MEMORY_REGION(&as->iova_mr),
+-                           name);
++        address_space_init(&as->iova_as, OBJECT(s), MEMORY_REGION(&as->iova_mr),
++                           "iova-as");
  
- static bool cxl_setup_memory(CXLType3Dev *ct3d, Error **errp)
- {
--    DeviceState *ds = DEVICE(ct3d);
--
-     if (!ct3d->hostmem && !ct3d->hostvmem && !ct3d->hostpmem
-         && !ct3d->dc.num_regions) {
-         error_setg(errp, "at least one memdev property must be set");
-@@ -750,7 +748,6 @@ static bool cxl_setup_memory(CXLType3Dev *ct3d, Error **errp)
+         QLIST_INSERT_HEAD(&s->spaces, as, list);
  
-     if (ct3d->hostvmem) {
-         MemoryRegion *vmr;
--        char *v_name;
+@@ -2427,8 +2427,8 @@ static void riscv_iommu_realize(DeviceState *dev, Error **errp)
+     /* Memory region for downstream access, if specified. */
+     if (s->target_mr) {
+         s->target_as = g_new0(AddressSpace, 1);
+-        address_space_init(s->target_as, NULL, s->target_mr,
+-            "riscv-iommu-downstream");
++        address_space_init(s->target_as, OBJECT(s), s->target_mr,
++                           "downstream-as");
+     } else {
+         /* Fallback to global system memory. */
+         s->target_as = &address_space_memory;
+@@ -2437,7 +2437,7 @@ static void riscv_iommu_realize(DeviceState *dev, Error **errp)
+     /* Memory region for untranslated MRIF/MSI writes */
+     memory_region_init_io(&s->trap_mr, OBJECT(dev), &riscv_iommu_trap_ops, s,
+             "riscv-iommu-trap", ~0ULL);
+-    address_space_init(&s->trap_as, NULL, &s->trap_mr, "riscv-iommu-trap-as");
++    address_space_init(&s->trap_as, OBJECT(s), &s->trap_mr, "trap-as");
  
-         vmr = host_memory_backend_get_memory(ct3d->hostvmem);
-         if (!vmr) {
-@@ -765,20 +762,14 @@ static bool cxl_setup_memory(CXLType3Dev *ct3d, Error **errp)
-         memory_region_set_nonvolatile(vmr, false);
-         memory_region_set_enabled(vmr, true);
-         host_memory_backend_set_mapped(ct3d->hostvmem, true);
--        if (ds->id) {
--            v_name = g_strdup_printf("cxl-type3-dpa-vmem-space:%s", ds->id);
--        } else {
--            v_name = g_strdup("cxl-type3-dpa-vmem-space");
--        }
--        address_space_init(&ct3d->hostvmem_as, NULL, vmr, v_name);
-+        address_space_init(&ct3d->hostvmem_as, OBJECT(ct3d), vmr,
-+                           "volatile-as");
-         ct3d->cxl_dstate.vmem_size = memory_region_size(vmr);
-         ct3d->cxl_dstate.static_mem_size += memory_region_size(vmr);
--        g_free(v_name);
-     }
- 
-     if (ct3d->hostpmem) {
-         MemoryRegion *pmr;
--        char *p_name;
- 
-         pmr = host_memory_backend_get_memory(ct3d->hostpmem);
-         if (!pmr) {
-@@ -793,21 +784,15 @@ static bool cxl_setup_memory(CXLType3Dev *ct3d, Error **errp)
-         memory_region_set_nonvolatile(pmr, true);
-         memory_region_set_enabled(pmr, true);
-         host_memory_backend_set_mapped(ct3d->hostpmem, true);
--        if (ds->id) {
--            p_name = g_strdup_printf("cxl-type3-dpa-pmem-space:%s", ds->id);
--        } else {
--            p_name = g_strdup("cxl-type3-dpa-pmem-space");
--        }
--        address_space_init(&ct3d->hostpmem_as, NULL, pmr, p_name);
-+        address_space_init(&ct3d->hostpmem_as, OBJECT(ct3d), pmr,
-+                           "persistent-as");
-         ct3d->cxl_dstate.pmem_size = memory_region_size(pmr);
-         ct3d->cxl_dstate.static_mem_size += memory_region_size(pmr);
--        g_free(p_name);
-     }
- 
-     ct3d->dc.total_capacity = 0;
-     if (ct3d->dc.num_regions > 0) {
-         MemoryRegion *dc_mr;
--        char *dc_name;
- 
-         if (!ct3d->dc.host_dc) {
-             error_setg(errp, "dynamic capacity must have a backing device");
-@@ -832,13 +817,8 @@ static bool cxl_setup_memory(CXLType3Dev *ct3d, Error **errp)
-         memory_region_set_nonvolatile(dc_mr, false);
-         memory_region_set_enabled(dc_mr, true);
-         host_memory_backend_set_mapped(ct3d->dc.host_dc, true);
--        if (ds->id) {
--            dc_name = g_strdup_printf("cxl-dcd-dpa-dc-space:%s", ds->id);
--        } else {
--            dc_name = g_strdup("cxl-dcd-dpa-dc-space");
--        }
--        address_space_init(&ct3d->dc.host_dc_as, NULL, dc_mr, dc_name);
--        g_free(dc_name);
-+        address_space_init(&ct3d->dc.host_dc_as, OBJECT(ct3d), dc_mr,
-+                           "volatile-dc-as");
- 
-         if (!cxl_create_dc_regions(ct3d, errp)) {
-             error_append_hint(errp, "setup DC regions failed");
-@@ -974,13 +954,13 @@ err_free_special_ops:
-     g_free(regs->special_ops);
-     if (ct3d->dc.host_dc) {
-         cxl_destroy_dc_regions(ct3d);
--        address_space_destroy(&ct3d->dc.host_dc_as);
-+        object_unparent(OBJECT(&ct3d->dc.host_dc_as));
-     }
-     if (ct3d->hostpmem) {
--        address_space_destroy(&ct3d->hostpmem_as);
-+        object_unparent(OBJECT(&ct3d->hostpmem_as));
-     }
-     if (ct3d->hostvmem) {
--        address_space_destroy(&ct3d->hostvmem_as);
-+        object_unparent(OBJECT(&ct3d->hostvmem_as));
-     }
- }
- 
-@@ -997,13 +977,13 @@ static void ct3_exit(PCIDevice *pci_dev)
-     cxl_destroy_cci(&ct3d->cci);
-     if (ct3d->dc.host_dc) {
-         cxl_destroy_dc_regions(ct3d);
--        address_space_destroy(&ct3d->dc.host_dc_as);
-+        object_unparent(OBJECT(&ct3d->dc.host_dc_as));
-     }
-     if (ct3d->hostpmem) {
--        address_space_destroy(&ct3d->hostpmem_as);
-+        object_unparent(OBJECT(&ct3d->hostpmem_as));
-     }
-     if (ct3d->hostvmem) {
--        address_space_destroy(&ct3d->hostvmem_as);
-+        object_unparent(OBJECT(&ct3d->hostvmem_as));
-     }
- }
- 
-diff --git a/hw/mem/memory-device.c b/hw/mem/memory-device.c
-index a4a8efdd869b..165866f10b25 100644
---- a/hw/mem/memory-device.c
-+++ b/hw/mem/memory-device.c
-@@ -535,8 +535,8 @@ void machine_memory_devices_init(MachineState *ms, hwaddr base, uint64_t size)
- 
-     memory_region_init(&ms->device_memory->mr, OBJECT(ms), "device-memory",
-                        size);
--    address_space_init(&ms->device_memory->as, NULL, &ms->device_memory->mr,
--                       "device-memory");
-+    address_space_init(&ms->device_memory->as, OBJECT(ms),
-+                       &ms->device_memory->mr, "device-memory-as");
-     memory_region_add_subregion(get_system_memory(), ms->device_memory->base,
-                                 &ms->device_memory->mr);
- 
+     if (s->cap & RISCV_IOMMU_CAP_HPM) {
+         s->hpm_timer =
 
 -- 
 2.51.0

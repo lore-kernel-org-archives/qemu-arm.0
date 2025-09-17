@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA245CAC5A5
-	for <qemu-arm@archiver.kernel.org>; Wed, 17 Sep 2025 13:17:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14553CAC59A
+	for <qemu-arm@archiver.kernel.org>; Wed, 17 Sep 2025 13:17:38 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uyrk5-00085G-Jk; Wed, 17 Sep 2025 08:58:37 -0400
+	id 1uyrsW-0001pB-7H; Wed, 17 Sep 2025 09:07:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1uyrk1-0007zX-My; Wed, 17 Sep 2025 08:58:33 -0400
+ id 1uyroi-00052A-Ub; Wed, 17 Sep 2025 09:03:30 -0400
 Received: from www3579.sakura.ne.jp ([49.212.243.89])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1uyrjw-00051p-Ji; Wed, 17 Sep 2025 08:58:33 -0400
+ id 1uyrog-0005ud-VX; Wed, 17 Sep 2025 09:03:24 -0400
 Received: from h205.csg.ci.i.u-tokyo.ac.jp (h205.csg.ci.i.u-tokyo.ac.jp
  [133.11.54.205]) (authenticated bits=0)
- by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 58HCuN6k008967
+ by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 58HCuN75008967
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
- Wed, 17 Sep 2025 21:56:36 +0900 (JST)
+ Wed, 17 Sep 2025 21:56:51 +0900 (JST)
  (envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
-DKIM-Signature: a=rsa-sha256; bh=t7gZYZry7+AY7F/ztLeWkPizR8T5wkzF6no/b+Jg/94=; 
+DKIM-Signature: a=rsa-sha256; bh=apJU/xEOhl+u20xNh0DgmznSGgywxoUvUFTbMIW9Ze8=; 
  c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
  h=From:Date:Subject:Message-Id:To;
- s=rs20250326; t=1758113797; v=1;
- b=MuGDuLxI/Nk2Quxviz5Ui5dtxnTGbK8mjPe2jODrn4AsztRYEvQj1jJLdTuUg03f
- HTJSt00FKZ7lY3Lo9hOfvxbXCr46OLfp6LkI9N8LTlxkSaKru3qI7wVC08JaXZNR
- EZ+gTuihaQZVohfX41xVaits6xxS/VoncImwZkDTqvxg82wtLangPnWLXVK4hxzM
- wJUKHr0ygxllEtOusH0TbikQNDdlJ1oOpQaxMqthDk9jpfiZCradiiHS2qbl+6EJ
- HLwA/vNRVzKK3hQ3kv4Uxmfx4vUy3+yUoGpNjgaeJ9X4WUfHuilOyAd6VhAPplj0
- NS6jwsLpje/k5RyMWH9KjQ==
+ s=rs20250326; t=1758113812; v=1;
+ b=awFy0Dt7+ut7jGmxNZbyxz0TK7jmFiME4eor1MaNNhpa7g/8SOhmzMVM7L8aeMxP
+ Gq3uCxvYJrDWJywV/ZFwlGgATLB1lTkSglO2o3HQpUcvYxJTd6eXjrArZXYL+2J5
+ GQdON7vnVAZGEblgZ3LHio9IJiljkJ20Js46DJj+Y5C0HRawGmu7AQnSRCxe/ZUL
+ U9RcWeSkSuRSjdQjDRfTNcmLPTExlSQNPE8pJJEbgy5Hk13I7mxFgHwiMUUtUDpg
+ iq3wiEIKX+kiCPfZoNfF+NUUQp3+YO9Xxh8+2GNzuW4YuPbOFsmtldO0kCP2rbj9
+ eZ8I2JCFqVXpGzCDqQ5lVg==
 From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-Date: Wed, 17 Sep 2025 21:56:18 +0900
-Subject: [PATCH 06/35] hw/display: QOM-ify AddressSpace
+Date: Wed, 17 Sep 2025 21:56:37 +0900
+Subject: [PATCH 25/35] hw/sparc: QOM-ify AddressSpace
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250917-qom-v1-6-7262db7b0a84@rsg.ci.i.u-tokyo.ac.jp>
+Message-Id: <20250917-qom-v1-25-7262db7b0a84@rsg.ci.i.u-tokyo.ac.jp>
 References: <20250917-qom-v1-0-7262db7b0a84@rsg.ci.i.u-tokyo.ac.jp>
 In-Reply-To: <20250917-qom-v1-0-7262db7b0a84@rsg.ci.i.u-tokyo.ac.jp>
 To: qemu-devel@nongnu.org
@@ -136,35 +136,22 @@ concise and also avoid conflicts with other properties.
 
 Signed-off-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
 ---
- hw/display/artist.c     | 2 +-
- hw/display/bcm2835_fb.c | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ hw/sparc/sun4m_iommu.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/hw/display/artist.c b/hw/display/artist.c
-index 42905563ad49..b47ca875f93a 100644
---- a/hw/display/artist.c
-+++ b/hw/display/artist.c
-@@ -1391,7 +1391,7 @@ static void artist_realizefn(DeviceState *dev, Error **errp)
-     }
+diff --git a/hw/sparc/sun4m_iommu.c b/hw/sparc/sun4m_iommu.c
+index 7b8d78273b97..d1c18f800170 100644
+--- a/hw/sparc/sun4m_iommu.c
++++ b/hw/sparc/sun4m_iommu.c
+@@ -359,8 +359,7 @@ static void iommu_init(Object *obj)
+     memory_region_init_iommu(&s->iommu, sizeof(s->iommu),
+                              TYPE_SUN4M_IOMMU_MEMORY_REGION, OBJECT(dev),
+                              "iommu-sun4m", UINT64_MAX);
+-    address_space_init(&s->iommu_as, NULL, MEMORY_REGION(&s->iommu),
+-                       "iommu-as");
++    address_space_init(&s->iommu_as, OBJECT(s), MEMORY_REGION(&s->iommu), "as");
  
-     memory_region_init(&s->mem_as_root, OBJECT(dev), "artist", ~0ull);
--    address_space_init(&s->as, NULL, &s->mem_as_root, "artist");
-+    address_space_init(&s->as, OBJECT(s), &s->mem_as_root, "as");
- 
-     artist_create_buffer(s, "cmap", &offset, ARTIST_BUFFER_CMAP, 2048, 4);
-     artist_create_buffer(s, "ap", &offset, ARTIST_BUFFER_AP,
-diff --git a/hw/display/bcm2835_fb.c b/hw/display/bcm2835_fb.c
-index c6710bdc0700..cc1567895522 100644
---- a/hw/display/bcm2835_fb.c
-+++ b/hw/display/bcm2835_fb.c
-@@ -421,7 +421,7 @@ static void bcm2835_fb_realize(DeviceState *dev, Error **errp)
-     s->initial_config.base = s->vcram_base + BCM2835_FB_OFFSET;
- 
-     s->dma_mr = MEMORY_REGION(obj);
--    address_space_init(&s->dma_as, NULL, s->dma_mr, TYPE_BCM2835_FB "-memory");
-+    address_space_init(&s->dma_as, OBJECT(s), s->dma_mr, "as");
- 
-     bcm2835_fb_reset(dev);
+     sysbus_init_irq(dev, &s->irq);
  
 
 -- 

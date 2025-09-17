@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8691BCAC59A
-	for <qemu-arm@archiver.kernel.org>; Wed, 17 Sep 2025 13:02:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E18DFCAC59A
+	for <qemu-arm@archiver.kernel.org>; Wed, 17 Sep 2025 13:02:53 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uyrk9-00089A-Mb; Wed, 17 Sep 2025 08:58:41 -0400
+	id 1uyrny-0003iO-8L; Wed, 17 Sep 2025 09:02:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1uyrk4-00083q-Uq; Wed, 17 Sep 2025 08:58:36 -0400
+ id 1uyrkz-0000SA-L5; Wed, 17 Sep 2025 08:59:34 -0400
 Received: from www3579.sakura.ne.jp ([49.212.243.89])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1uyrk3-00054V-2w; Wed, 17 Sep 2025 08:58:36 -0400
+ id 1uyrkw-0005CO-I2; Wed, 17 Sep 2025 08:59:33 -0400
 Received: from h205.csg.ci.i.u-tokyo.ac.jp (h205.csg.ci.i.u-tokyo.ac.jp
  [133.11.54.205]) (authenticated bits=0)
- by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 58HCuN76008967
+ by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 58HCuN7F008967
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
- Wed, 17 Sep 2025 21:56:52 +0900 (JST)
+ Wed, 17 Sep 2025 21:56:59 +0900 (JST)
  (envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
-DKIM-Signature: a=rsa-sha256; bh=7FgjsptE3YS3i6VK0ESKyy8+p9l4cjkMo+wmMtf5k7E=; 
+DKIM-Signature: a=rsa-sha256; bh=H8Viwr1cqgug0xlJipwqK4Ddh9h3sxTvY8hZvwlaj9U=; 
  c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
  h=From:Date:Subject:Message-Id:To;
- s=rs20250326; t=1758113813; v=1;
- b=cyEwAgpDa+aZPzULAdFt7VBFZFqQFr1b9V18sdfhr4ZwCyw8YlRIQuffLcP1eGGI
- T6A4P+gjm+Pbb8t53dxHuCndk86FGT74YKQdqZTBo9S9ZT2dBKRwFvrsAn0iaeh0
- 1X5p+AnLdGg7Bcm/RBYz4fzuhLEz0mJ6SCADt1eptqY2M4Uce1kCI86GKg2TUYaM
- Mh15+4+1+udKf/163Vp4HnScyy6CY/1pB7HwwFAPicW5qb2aFgEOa6doRXRlMWE6
- MZfUeamNIjbomMcQ+10BMCpOqX9DkN2+Cqay56Gu7StrcIs7P/xpeBR0xB/rar1+
- cgHkJZ+RH/LJpcTa6lrCWg==
+ s=rs20250326; t=1758113820; v=1;
+ b=ASEKTZYuEtYCiyC+S1q0meRd7z5XkixpT3NBMntqIHUfz+u0zb7CO1TAibDaO8Si
+ M1Kt6K1CX2uTX1JQsNDvxB6seFFV1Ef95h4G1o1GsG4bTdYcmlXJosgCognl/9t8
+ s08EXpyc2oHGY/G6fADfhaJ6amvTtEcHhDqt3c2Jw6k4U3FsgSfjLHgXW78z97rK
+ qF5Ki5NNU2Y/Lt5OxRcNTk7e80JEzE/FpMwoMoLgxMoFc9rsOr4PnGetetyhxzul
+ cQqyKz1qLGmXvn/1B84xIEZg1wNyHrmBxVkojB+TbAsyx9c6n5QW1ViVc7PHdXkb
+ JpUg87NjSDLtKgd/dqk9FQ==
 From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-Date: Wed, 17 Sep 2025 21:56:38 +0900
-Subject: [PATCH 26/35] hw/sparc64: QOM-ify AddressSpace
+Date: Wed, 17 Sep 2025 21:56:47 +0900
+Subject: [PATCH 35/35] memory: Drop non-QOM AddressSpace support
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250917-qom-v1-26-7262db7b0a84@rsg.ci.i.u-tokyo.ac.jp>
+Message-Id: <20250917-qom-v1-35-7262db7b0a84@rsg.ci.i.u-tokyo.ac.jp>
 References: <20250917-qom-v1-0-7262db7b0a84@rsg.ci.i.u-tokyo.ac.jp>
 In-Reply-To: <20250917-qom-v1-0-7262db7b0a84@rsg.ci.i.u-tokyo.ac.jp>
 To: qemu-devel@nongnu.org
@@ -125,34 +125,118 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Make AddressSpaces QOM objects to ensure that they are destroyed when
-their owners are finalized and also to get a unique path for debugging
-output.
-
-The name arguments were used to distinguish AddresSpaces in debugging
-output, but they will represent property names after QOM-ification and
-debugging output will show QOM paths. So change them to make them more
-concise and also avoid conflicts with other properties.
+Now all AddressSpace instances are converted to QOM so drop
+non-QOM AddressSpace support.
 
 Signed-off-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
 ---
- hw/sparc64/sun4u_iommu.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ include/system/memory.h | 13 -------------
+ system/memory.c         | 26 +++++---------------------
+ 2 files changed, 5 insertions(+), 34 deletions(-)
 
-diff --git a/hw/sparc64/sun4u_iommu.c b/hw/sparc64/sun4u_iommu.c
-index 0a5703044e7a..72ccf293b46e 100644
---- a/hw/sparc64/sun4u_iommu.c
-+++ b/hw/sparc64/sun4u_iommu.c
-@@ -298,8 +298,7 @@ static void iommu_init(Object *obj)
-     memory_region_init_iommu(&s->iommu, sizeof(s->iommu),
-                              TYPE_SUN4U_IOMMU_MEMORY_REGION, OBJECT(s),
-                              "iommu-sun4u", UINT64_MAX);
--    address_space_init(&s->iommu_as, NULL, MEMORY_REGION(&s->iommu),
--                       "iommu-as");
-+    address_space_init(&s->iommu_as, obj, MEMORY_REGION(&s->iommu), "as");
+diff --git a/include/system/memory.h b/include/system/memory.h
+index 5108e0fba339..9b249b4b3ae2 100644
+--- a/include/system/memory.h
++++ b/include/system/memory.h
+@@ -1163,8 +1163,6 @@ struct AddressSpace {
+     /* private: */
+     Object parent_obj;
+     struct rcu_head rcu;
+-    bool qom;
+-    char *name;
+     MemoryRegion *root;
  
-     memory_region_init_io(&s->iomem, obj, &iommu_mem_ops, s, "iommu",
-                           IOMMU_NREGS * sizeof(uint64_t));
+     /* Accessed via RCU.  */
+@@ -2719,17 +2717,6 @@ MemTxResult memory_region_dispatch_write(MemoryRegion *mr,
+ void address_space_init(AddressSpace *as, Object *parent, MemoryRegion *root,
+                         const char *name);
+ 
+-/**
+- * address_space_destroy: destroy an address space
+- *
+- * Releases all resources associated with an address space.  After an address space
+- * is destroyed, its root memory region (given by address_space_init()) may be destroyed
+- * as well.
+- *
+- * @as: address space to be destroyed
+- */
+-void address_space_destroy(AddressSpace *as);
+-
+ /**
+  * address_space_get_path: get the path to an address space
+  *
+diff --git a/system/memory.c b/system/memory.c
+index 7a77ba0f1797..363f50e7a4f0 100644
+--- a/system/memory.c
++++ b/system/memory.c
+@@ -3206,11 +3206,7 @@ void address_space_remove_listeners(AddressSpace *as)
+ void address_space_init(AddressSpace *as, Object *parent, MemoryRegion *root,
+                         const char *name)
+ {
+-    if (parent) {
+-        object_initialize_child(parent, name, as, TYPE_ADDRESS_SPACE);
+-    }
+-
+-    as->qom = parent;
++    object_initialize_child(parent, name, as, TYPE_ADDRESS_SPACE);
+     memory_region_ref(root);
+     as->root = root;
+     as->current_map = NULL;
+@@ -3222,12 +3218,11 @@ void address_space_init(AddressSpace *as, Object *parent, MemoryRegion *root,
+     as->bounce_buffer_size = 0;
+     qemu_mutex_init(&as->map_client_list_lock);
+     QLIST_INIT(&as->map_client_list);
+-    as->name = g_strdup(name ? name : "anonymous");
+     address_space_update_topology(as);
+     address_space_update_ioeventfds(as);
+ }
+ 
+-static void do_address_space_destroy(struct rcu_head *head)
++static void do_address_space_finalize(struct rcu_head *head)
+ {
+     AddressSpace *as = container_of(head, AddressSpace, rcu);
+ 
+@@ -3238,18 +3233,13 @@ static void do_address_space_destroy(struct rcu_head *head)
+     assert(QTAILQ_EMPTY(&as->listeners));
+ 
+     flatview_unref(as->current_map);
+-    g_free(as->name);
+     g_free(as->ioeventfds);
+     memory_region_unref(as->root);
+ }
+ 
+ static void address_space_finalize(Object *obj)
+ {
+-    address_space_destroy(ADDRESS_SPACE(obj));
+-}
+-
+-void address_space_destroy(AddressSpace *as)
+-{
++    AddressSpace *as = ADDRESS_SPACE(obj);
+     MemoryRegion *root = as->root;
+ 
+     /* Flush out anything from MemoryListeners listening in on this */
+@@ -3263,18 +3253,12 @@ void address_space_destroy(AddressSpace *as)
+      * values to expire before freeing the data.
+      */
+     as->root = root;
+-    call_rcu1(&as->rcu, do_address_space_destroy);
++    call_rcu1(&as->rcu, do_address_space_finalize);
+ }
+ 
+ char *address_space_get_path(AddressSpace *as)
+ {
+-    char *path;
+-
+-    if (!as->qom) {
+-        return as->name;
+-    }
+-
+-    path = object_get_canonical_path(OBJECT(as));
++    char *path = object_get_canonical_path(OBJECT(as));
+ 
+     return path ? path : g_strdup("orphan");
+ }
 
 -- 
 2.51.0

@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E373CAC599
-	for <qemu-arm@archiver.kernel.org>; Wed, 17 Sep 2025 13:11:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3653ACAC599
+	for <qemu-arm@archiver.kernel.org>; Wed, 17 Sep 2025 13:13:16 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uyrt2-0003Fb-1x; Wed, 17 Sep 2025 09:07:52 -0400
+	id 1uyrsd-0002Ci-MH; Wed, 17 Sep 2025 09:07:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1uyrpk-0005wB-Au; Wed, 17 Sep 2025 09:04:36 -0400
+ id 1uyroe-0004z0-Iu; Wed, 17 Sep 2025 09:03:23 -0400
 Received: from www3579.sakura.ne.jp ([49.212.243.89])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1uyrpg-0005wC-Vk; Wed, 17 Sep 2025 09:04:27 -0400
+ id 1uyroa-0005tJ-GY; Wed, 17 Sep 2025 09:03:20 -0400
 Received: from h205.csg.ci.i.u-tokyo.ac.jp (h205.csg.ci.i.u-tokyo.ac.jp
  [133.11.54.205]) (authenticated bits=0)
- by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 58HCuN79008967
+ by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 58HCuN6j008967
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
- Wed, 17 Sep 2025 21:56:55 +0900 (JST)
+ Wed, 17 Sep 2025 21:56:35 +0900 (JST)
  (envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
-DKIM-Signature: a=rsa-sha256; bh=HLe7pvlXLzUEMbjcEoVHTcQq1sGyjMOPV2Jd4nQBR28=; 
+DKIM-Signature: a=rsa-sha256; bh=SN54eqMpyxZn5t52ldVheDzKEoBDUBkvg/chu4l0yTs=; 
  c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
  h=From:Date:Subject:Message-Id:To;
- s=rs20250326; t=1758113815; v=1;
- b=YUl26O9sN95D4FLlZBogOnlopmCljnZ1xDZ1c0b8MltFYLgUupQPEgTlgcBwEJsR
- fmatzo2AaDh6vw4DOgNUqN+rTwXvzjEriYq3NqND14tpJX2lhRp5EirQN6N0HRGi
- HY7Vo7dDq3vnXhnU5VF5+6s/K477/QK+0o2LCayg5mSz0kSiRT5BTsG7TSEIBcSF
- 4xkclhwiUFP917BLzbPt5IhRMsANO/wtH2fyS46bzO04Y4My7nkCYnTMDlLw7WxG
- CaYktq0pnmtUvLW/cLv65Y1WG4LusxVyFrY7pEWWLQyD9+7XHfJmfGGo5+HWBT/I
- 8AEOI60+py1DtcoYghKkSA==
+ s=rs20250326; t=1758113796; v=1;
+ b=DUSefoHX+5AQ41jKoyMQZ/520KnWRg3PTuzflX+/GPXZq3riyQSurxvuJq6Y+xeA
+ sc0QE5yEaHKX31nXhL9x1HMWA8aCw1Kd//xPmJ1dS9TuYPRYEBUV3wIEZhunNBJy
+ KSkDKTovU4HxAGab/4PCRKGMY+wWz4sLV/SxfhbPFp4A9F+HbrufBwEu6zktI+9n
+ 37l8Va3KoDIqMDlZsWOzKy4/48ABx7OARe8Nt0FjkxJ7uloAMGpNVwmyed0owEJw
+ 5AyPLLiP+X0+9IMBiwGrNzhPbldNRxURcOfovreIznCLAPrtI/DRx+W457D9g07k
+ PFKYTh6R/xZXDBSuQAmfDQ==
 From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-Date: Wed, 17 Sep 2025 21:56:41 +0900
-Subject: [PATCH 29/35] hw/usb: QOM-ify AddressSpace
+Date: Wed, 17 Sep 2025 21:56:17 +0900
+Subject: [PATCH 05/35] hw/arm: QOM-ify AddressSpace
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250917-qom-v1-29-7262db7b0a84@rsg.ci.i.u-tokyo.ac.jp>
+Message-Id: <20250917-qom-v1-5-7262db7b0a84@rsg.ci.i.u-tokyo.ac.jp>
 References: <20250917-qom-v1-0-7262db7b0a84@rsg.ci.i.u-tokyo.ac.jp>
 In-Reply-To: <20250917-qom-v1-0-7262db7b0a84@rsg.ci.i.u-tokyo.ac.jp>
 To: qemu-devel@nongnu.org
@@ -136,21 +136,59 @@ concise and also avoid conflicts with other properties.
 
 Signed-off-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
 ---
- hw/usb/hcd-xhci-sysbus.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/arm/armv7m.c         | 2 +-
+ hw/arm/aspeed_ast27x0.c | 2 +-
+ hw/arm/smmu-common.c    | 5 +++--
+ 3 files changed, 5 insertions(+), 4 deletions(-)
 
-diff --git a/hw/usb/hcd-xhci-sysbus.c b/hw/usb/hcd-xhci-sysbus.c
-index 6d060062ab86..a078ab489c54 100644
---- a/hw/usb/hcd-xhci-sysbus.c
-+++ b/hw/usb/hcd-xhci-sysbus.c
-@@ -45,7 +45,7 @@ static void xhci_sysbus_realize(DeviceState *dev, Error **errp)
-                              s->xhci.numintrs);
-     if (s->xhci.dma_mr) {
-         s->xhci.as =  g_malloc0(sizeof(AddressSpace));
--        address_space_init(s->xhci.as, NULL, s->xhci.dma_mr, NULL);
-+        address_space_init(s->xhci.as, OBJECT(s), s->xhci.dma_mr, "as");
-     } else {
-         s->xhci.as = &address_space_memory;
+diff --git a/hw/arm/armv7m.c b/hw/arm/armv7m.c
+index 7fa854bc14df..54d0d9f78207 100644
+--- a/hw/arm/armv7m.c
++++ b/hw/arm/armv7m.c
+@@ -117,7 +117,7 @@ static void bitband_realize(DeviceState *dev, Error **errp)
+         return;
+     }
+ 
+-    address_space_init(&s->source_as, NULL, s->source_memory, "bitband-source");
++    address_space_init(&s->source_as, OBJECT(s), s->source_memory, "as");
+ }
+ 
+ /* Board init.  */
+diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
+index f8c0ac5f87df..7fe097ad3f11 100644
+--- a/hw/arm/aspeed_ast27x0.c
++++ b/hw/arm/aspeed_ast27x0.c
+@@ -387,7 +387,7 @@ static bool aspeed_soc_ast2700_dram_init(DeviceState *dev, Error **errp)
+     memory_region_init(&s->dram_container, OBJECT(s), "ram-container",
+                        ram_size);
+     memory_region_add_subregion(&s->dram_container, 0, s->dram_mr);
+-    address_space_init(&s->dram_as, NULL, s->dram_mr, "dram");
++    address_space_init(&s->dram_as, OBJECT(s), s->dram_mr, "dram-as");
+ 
+     /*
+      * Add a memory region beyond the RAM region to emulate
+diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
+index 081c50750947..7c1648165b9f 100644
+--- a/hw/arm/smmu-common.c
++++ b/hw/arm/smmu-common.c
+@@ -863,6 +863,7 @@ static AddressSpace *smmu_find_add_as(PCIBus *bus, void *opaque, int devfn)
+     sdev = sbus->pbdev[devfn];
+     if (!sdev) {
+         char *name = g_strdup_printf("%s-%d-%d", s->mrtypename, devfn, index++);
++        g_autofree char *as_name = g_strconcat(name, "-as", NULL);
+ 
+         sdev = sbus->pbdev[devfn] = g_new0(SMMUDevice, 1);
+ 
+@@ -873,8 +874,8 @@ static AddressSpace *smmu_find_add_as(PCIBus *bus, void *opaque, int devfn)
+         memory_region_init_iommu(&sdev->iommu, sizeof(sdev->iommu),
+                                  s->mrtypename,
+                                  OBJECT(s), name, UINT64_MAX);
+-        address_space_init(&sdev->as, NULL,
+-                           MEMORY_REGION(&sdev->iommu), name);
++        address_space_init(&sdev->as, OBJECT(s),
++                           MEMORY_REGION(&sdev->iommu), as_name);
+         trace_smmu_add_mr(name);
+         g_free(name);
      }
 
 -- 

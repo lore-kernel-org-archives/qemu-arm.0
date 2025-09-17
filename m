@@ -4,136 +4,112 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00D56CAC59D
-	for <qemu-arm@archiver.kernel.org>; Wed, 17 Sep 2025 11:53:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5414CAC599
+	for <qemu-arm@archiver.kernel.org>; Wed, 17 Sep 2025 12:59:31 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uyqiA-00037p-8b; Wed, 17 Sep 2025 07:52:34 -0400
+	id 1uyrk6-000868-67; Wed, 17 Sep 2025 08:58:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <Luc.Michel@amd.com>)
- id 1uyqb9-0002i9-It; Wed, 17 Sep 2025 07:45:34 -0400
-Received: from mail-westus2azlp170100005.outbound.protection.outlook.com
- ([2a01:111:f403:c005::5] helo=CO1PR03CU002.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
+ id 1uyrk1-0007za-OH; Wed, 17 Sep 2025 08:58:33 -0400
+Received: from www3579.sakura.ne.jp ([49.212.243.89])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <Luc.Michel@amd.com>)
- id 1uyqb7-0001pK-Lx; Wed, 17 Sep 2025 07:45:19 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=eI73tWMbpKMdWTY9dEf9R4iuGLyke7vuBB/tMtLZwAp6Dhtvz2cAQ53xVH8iwgkSbmtVyYXwwg2MdQLAqtuEJo1nbmO1LlNMLXRgoJWSWyqM1jAoktnEakHV07Z51mnn39cCoJPFIJeluDvRc7W8tYvx/lJmeS6ewlqT1035KOCHEcWHZQqwYN6Dcb/7zRJeWdeajU81/ZrWXIlr77hin3obCVZEOnHnfoWilkfbwJ5FQDIA4FZ5Z7RNfhN1+CFBONnUX0UWCf678xG7acei/ZA/tdRF0x6vXFf/MmCOVES2f6lbop+GpXqJUzXXpKsT5KC5FrtXAwhKmOKgwbv0Ew==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=fb1MQlQftlmKR4RiuBV4l8tUleVNBLtd58xgtytc76Y=;
- b=dTO5xfcwDq8fOGiujMUnAXQACPkZT9DoIqbTYcXnbjwOgQs0KBNvyw6ArRmv9hLGEZnfrofaHrTokSiBkqIyvBo+hRd7okTE8DCimI9o5ZpBNvt4Zkfke0GT+1VDRiyMehd8+boZmgsQkQYV4uK1HCmfXXziUSiorbXngK2iDqQbZU7oYN1JmSUsy2JaFBqg0vQrTN26JBXU9TLhrUBhCnHB9Ix8bCCmpfXLvauTfc/7p/ciT04peYpqrBQw7EAbyrJ92/Yv2UvBmLwzaSSU2TlpnJIpe1V0tMx29bVJAVhbITURyZ/M/LbW8MXh4LZzGAX7e2AD5vzcWwzzAOOMgw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 165.204.84.17) smtp.rcpttodomain=nongnu.org smtp.mailfrom=amd.com; dmarc=pass
- (p=quarantine sp=quarantine pct=100) action=none header.from=amd.com;
- dkim=none (message not signed); arc=none (0)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1; 
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=fb1MQlQftlmKR4RiuBV4l8tUleVNBLtd58xgtytc76Y=;
- b=hn8MmRkOSwtmiLZGJqpn1CLdMBZD9bIqDCk2hjv/5dWbOHUrv4HhJU9U+j5Hsprbrpta3tBWN1zLFlMP1t7/zy5DeKOJchqqWCZN9ziZ4yYCfL6+1XJbETEINyZ8UVDmTaKQ7u0o+vcMztdsMmbsiPHfFbXzhR2goseocJxAn7I=
-Received: from BN0PR02CA0006.namprd02.prod.outlook.com (2603:10b6:408:e4::11)
- by CY8PR12MB8340.namprd12.prod.outlook.com (2603:10b6:930:7a::5) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9115.23; Wed, 17 Sep
- 2025 11:45:10 +0000
-Received: from BL6PEPF00022570.namprd02.prod.outlook.com
- (2603:10b6:408:e4:cafe::4b) by BN0PR02CA0006.outlook.office365.com
- (2603:10b6:408:e4::11) with Microsoft SMTP Server (version=TLS1_3,
- cipher=TLS_AES_256_GCM_SHA384) id 15.20.9137.13 via Frontend Transport; Wed,
- 17 Sep 2025 11:45:09 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 165.204.84.17)
- smtp.mailfrom=amd.com; dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=amd.com;
-Received-SPF: Pass (protection.outlook.com: domain of amd.com designates
- 165.204.84.17 as permitted sender) receiver=protection.outlook.com;
- client-ip=165.204.84.17; helo=satlexmb07.amd.com; pr=C
-Received: from satlexmb07.amd.com (165.204.84.17) by
- BL6PEPF00022570.mail.protection.outlook.com (10.167.249.38) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.9137.12 via Frontend Transport; Wed, 17 Sep 2025 11:45:09 +0000
-Received: from satlexmb08.amd.com (10.181.42.217) by satlexmb07.amd.com
- (10.181.42.216) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.17; Wed, 17 Sep
- 2025 04:45:04 -0700
-Received: from XFR-LUMICHEL-L2.xilinx.com (10.180.168.240) by
- satlexmb08.amd.com (10.181.42.217) with Microsoft SMTP Server id 15.2.2562.17
- via Frontend Transport; Wed, 17 Sep 2025 04:45:02 -0700
-From: Luc Michel <luc.michel@amd.com>
-To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
-CC: Luc Michel <luc.michel@amd.com>, Peter Maydell <peter.maydell@linaro.org>, 
- Francisco Iglesias <francisco.iglesias@amd.com>, "Edgar E . Iglesias"
- <edgar.iglesias@amd.com>, =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>, Alistair Francis <alistair@alistair23.me>
-Subject: [PATCH 2/7] hw/core/register: add the REGISTER_ARRAY type
-Date: Wed, 17 Sep 2025 13:44:43 +0200
-Message-ID: <20250917114450.175892-3-luc.michel@amd.com>
-X-Mailer: git-send-email 2.50.1
-In-Reply-To: <20250917114450.175892-1-luc.michel@amd.com>
-References: <20250917114450.175892-1-luc.michel@amd.com>
+ (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
+ id 1uyrjx-00052E-VC; Wed, 17 Sep 2025 08:58:33 -0400
+Received: from h205.csg.ci.i.u-tokyo.ac.jp (h205.csg.ci.i.u-tokyo.ac.jp
+ [133.11.54.205]) (authenticated bits=0)
+ by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 58HCuN6l008967
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
+ Wed, 17 Sep 2025 21:56:37 +0900 (JST)
+ (envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
+DKIM-Signature: a=rsa-sha256; bh=I0NMvF5OGZVy1ri6cDaaDK+4nakFScwWAWwMOrizyQw=; 
+ c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
+ h=From:Date:Subject:Message-Id:To;
+ s=rs20250326; t=1758113797; v=1;
+ b=bberKOrO6J7tY0L7zJPCCBce2lzuLyNtHl2vnIJUXIZZMwbfrJwuttLnlc9sonPs
+ 14JtvF6GMhefXFETjBqtOUjw14A2IcAg4+INF921qr21btTZ10oeoS6eqXhEYTpc
+ d2+qDuD7DVPiUYKJcmYxuegzPPIPRVujjO8SrPvhayhKHi+7JNbbJ8+F88JzRNdg
+ tZdN/NDdvDo+XlEfojYYM41UVanxTLjA+D/SRzZw2zeqJAQ8nsVebcxYrGGVVMh0
+ 7LIYrh0+uNGOWQXR1XPZA8cO1V4zTuMbGIifi4NtgOtyxInjjcjlxVpfI1G5DRRW
+ TFV4JVQb0q8Jp6z3Ra2GfQ==
+From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
+Date: Wed, 17 Sep 2025 21:56:19 +0900
+Subject: [PATCH 07/35] hw/dma: QOM-ify AddressSpace
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: BL6PEPF00022570:EE_|CY8PR12MB8340:EE_
-X-MS-Office365-Filtering-Correlation-Id: 08bf17d3-1d18-43ea-12c2-08ddf5dfa79e
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230040|82310400026|376014|1800799024|36860700013; 
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?4Ok2S0/WrVVbTuWyelfzmX/UdGE+xQby8JRUzjCcLoXhfSWpNVFAby9LkORe?=
- =?us-ascii?Q?NKhUtnXXgfJ4GY7G/K4xA1sivXK4aN6mExxy6nN9qisJpyG6cSp1WkpXmLcn?=
- =?us-ascii?Q?/hQxNnOe5sEC+NVxFGT7Yj9g49+HDbHxnE37/2RDWxuCgQLdz146Sv+NRTmy?=
- =?us-ascii?Q?Hx2/rfHDJOgnTaWxoQCrxSB1KJxnII1H/BOq7sTbyF5w2hZjlZFubXK/p4Ax?=
- =?us-ascii?Q?VjcmZ9vHIwY2liUa//Eh36sqAa2OvUvXHdJv07VIGogXxI9jSqryxgokUbCs?=
- =?us-ascii?Q?MwWZfE9CfGm7r5h9MFk7Orl3d6PyvD/RyEvAtRngR5w0eu5H2iPv5Jn46zlW?=
- =?us-ascii?Q?SFf8u0mPGcpWdirM4Tdc18pGpXIK6Exqsrc8Ygzx3gpUhLf0sr2aForubDsa?=
- =?us-ascii?Q?KNVRcY6coUlSgsIr1JjaGQfEprA9Gi+14TSW/6YpkpDi4xjwXkBNisJc1UJ8?=
- =?us-ascii?Q?nI3XklLZugc8sZR/ohNHkmxfBKPJcnynOAA3SGh7MV5OulIro2D68mk2kKzD?=
- =?us-ascii?Q?L3Z4ImGXC1ruy1m9wuWJ8ELLItJx+oBiOU91Y7/iXPXk7SFjWe36IVOeuQeA?=
- =?us-ascii?Q?R4RzcCilpNjoLtaf3qSG2kLjJuk2rG3yM4IqnSGkw9KIcYy76Fv1Ev/wBp/4?=
- =?us-ascii?Q?H53rENrJmlGM4UdYSrgorkTOXPmOzCtVCWK8xDhvudZf8pDm0tgAJEU4LamE?=
- =?us-ascii?Q?SbdgKDElWmFEB3vdFO5ueTIC7rEeOCSY+Gye6rQN4bbfAt1LsJWckqLhLMNw?=
- =?us-ascii?Q?6cNAH+0+b5aDs1QHvEeVGf/rMCNy20pw8gSm05nLn12HRiBdaNryn5ynZPI3?=
- =?us-ascii?Q?46DwA9W1e52NGbTcIkA4qED5UqW+5/Sx3NYTFFaS3YYndV5Iaot3yIRu7C38?=
- =?us-ascii?Q?ik0AaVmnI13rmMC+AC5Iiw6H3LuV31pwSsSxeoppun9PfK/+gMqkm0uZPLev?=
- =?us-ascii?Q?rSW4klqrwt9E6L/X/jGhe0CTS5jmMBZjbwl4bazSvYsI5tr0P2w3i/hqVMLq?=
- =?us-ascii?Q?N5ELZoINjPvn8q+nllaZzdEPk8zD4KpGHpdGrGBj9VbAXzPyvGWHWtiCu+l2?=
- =?us-ascii?Q?kxcIaJPwx3WqOioWb8ZPZRAh2dQ3PuGYxwAICq2D9QzFHeIfxOOFHd+VpMOO?=
- =?us-ascii?Q?dSeyxR25i++BpUo9cdpLFanOEkty/fAlCxi90Wy3+vpw5q4Uvw96YrOie/Ut?=
- =?us-ascii?Q?fCpJn2RCNH/ZA2+FfTraiwMi3FocfykigDNi5MwYiWZ7f2T9D0XKvRLUgq9s?=
- =?us-ascii?Q?O8JUuBYTmucUk7dKTPZWkqcDmg8nxZNREgbLBLUAYau3rSNKU0rywYTtEHQI?=
- =?us-ascii?Q?GO4PFrM9Xnou06EZRuaZMRuLDRyFcY8yaeSzhnyLMEOEhtCZvi9s56pF574N?=
- =?us-ascii?Q?lp2L18ZwxqKju0JneUPoRNOmqHWuNbwIdTU5CeopNa5hHHcjS4ilWhOEnUxg?=
- =?us-ascii?Q?4Cehm2j7Gxncf408bPNCeDbRy4pBAy3gPZ38LgAF3b/IQvcfRjIFGNKaoNxz?=
- =?us-ascii?Q?TLyXlBJE4s7RUOd7fFYmWVMvviJHGFrvLwGz?=
-X-Forefront-Antispam-Report: CIP:165.204.84.17; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:CAL; SFV:NSPM; H:satlexmb07.amd.com; PTR:InfoDomainNonexistent; CAT:NONE;
- SFS:(13230040)(82310400026)(376014)(1800799024)(36860700013); DIR:OUT;
- SFP:1101; 
-X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 Sep 2025 11:45:09.4700 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 08bf17d3-1d18-43ea-12c2-08ddf5dfa79e
-X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3dd8961f-e488-4e60-8e11-a82d994e183d; Ip=[165.204.84.17];
- Helo=[satlexmb07.amd.com]
-X-MS-Exchange-CrossTenant-AuthSource: BL6PEPF00022570.namprd02.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY8PR12MB8340
-Received-SPF: permerror client-ip=2a01:111:f403:c005::5;
- envelope-from=Luc.Michel@amd.com;
- helo=CO1PR03CU002.outbound.protection.outlook.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20250917-qom-v1-7-7262db7b0a84@rsg.ci.i.u-tokyo.ac.jp>
+References: <20250917-qom-v1-0-7262db7b0a84@rsg.ci.i.u-tokyo.ac.jp>
+In-Reply-To: <20250917-qom-v1-0-7262db7b0a84@rsg.ci.i.u-tokyo.ac.jp>
+To: qemu-devel@nongnu.org
+Cc: Richard Henderson <richard.henderson@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Joel Stanley <joel@jms.id.au>, Eric Auger <eric.auger@redhat.com>,
+ Helge Deller <deller@gmx.de>,
+ =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ =?utf-8?q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
+ Aleksandar Rikalo <arikalo@gmail.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Ninad Palsule <ninad@linux.ibm.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Jason Wang <jasowang@redhat.com>, Yi Liu <yi.l.liu@intel.com>,
+ =?utf-8?q?Cl=C3=A9ment_Mathieu--Drif?= <clement.mathieu--drif@eviden.com>,
+ Nicholas Piggin <npiggin@gmail.com>, Aditya Gupta <adityag@linux.ibm.com>,
+ Gautam Menghani <gautam@linux.ibm.com>, Song Gao <gaosong@loongson.cn>,
+ Bibo Mao <maobibo@loongson.cn>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Jonathan Cameron <jonathan.cameron@huawei.com>,
+ Fan Ni <fan.ni@samsung.com>, David Hildenbrand <david@redhat.com>,
+ Igor Mammedov <imammedo@redhat.com>,
+ Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
+ Beniamino Galvani <b.galvani@gmail.com>,
+ Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
+ Subbaraya Sundeep <sundeep.lkml@gmail.com>,
+ Jan Kiszka <jan.kiszka@web.de>, Laurent Vivier <laurent@vivier.eu>,
+ Andrey Smirnov <andrew.smirnov@gmail.com>,
+ Aurelien Jarno <aurelien@aurel32.net>, BALATON Zoltan <balaton@eik.bme.hu>,
+ Bernhard Beschow <shentey@gmail.com>,
+ Harsh Prateek Bora <harshpb@linux.ibm.com>,
+ Elena Ufimtseva <elena.ufimtseva@oracle.com>,
+ Jagannathan Raman <jag.raman@oracle.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Weiwei Li <liwei1518@gmail.com>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ Matthew Rosato <mjrosato@linux.ibm.com>,
+ Eric Farman <farman@linux.ibm.com>, Thomas Huth <thuth@redhat.com>,
+ Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Ilya Leoshkevich <iii@linux.ibm.com>, Fam Zheng <fam@euphon.net>,
+ Bin Meng <bmeng.cn@gmail.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Peter Xu <peterx@redhat.com>,
+ Marcelo Tosatti <mtosatti@redhat.com>,
+ Max Filippov <jcmvbkbc@gmail.com>, qemu-arm@nongnu.org,
+ qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, qemu-s390x@nongnu.org,
+ qemu-block@nongnu.org, kvm@vger.kernel.org,
+ Alex Williamson <alex.williamson@redhat.com>,
+ =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>,
+ Stefano Garzarella <sgarzare@redhat.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
+X-Mailer: b4 0.15-dev-179e8
+Received-SPF: pass client-ip=49.212.243.89;
+ envelope-from=odaki@rsg.ci.i.u-tokyo.ac.jp; helo=www3579.sakura.ne.jp
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
+ DKIM_SIGNED=0.1, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -149,112 +125,133 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Introduce the REGISTER_ARRAY QOM type. This type reuses the existing
-RegisterInfoArray struct. When `register_init_block' is called, it creates
-a REGISTER_ARRAY object and parents it to the calling device. This way
-it gets finalized when the device is.
+Make AddressSpaces QOM objects to ensure that they are destroyed when
+their owners are finalized and also to get a unique path for debugging
+output.
 
-The finalize function of the REGISTER_ARRAY type performs the necessary
-cleaning that used to be done by `register_finalize_block'. The latter
-is left empty and will be removed when all the register API users have
-been refactored.
+The name arguments were used to distinguish AddresSpaces in debugging
+output, but they will represent property names after QOM-ification and
+debugging output will show QOM paths. So change them to make them more
+concise and also avoid conflicts with other properties.
 
-Signed-off-by: Luc Michel <luc.michel@amd.com>
+Signed-off-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
 ---
- include/hw/register.h |  4 ++++
- hw/core/register.c    | 24 +++++++++++++++++++++---
- 2 files changed, 25 insertions(+), 3 deletions(-)
+ hw/dma/bcm2835_dma.c   | 2 +-
+ hw/dma/pl080.c         | 3 +--
+ hw/dma/pl330.c         | 3 +--
+ hw/dma/rc4030.c        | 5 ++---
+ hw/dma/xilinx_axidma.c | 4 ++--
+ hw/dma/xlnx-zdma.c     | 2 +-
+ hw/dma/xlnx_csu_dma.c  | 2 +-
+ 7 files changed, 9 insertions(+), 12 deletions(-)
 
-diff --git a/include/hw/register.h b/include/hw/register.h
-index 4d13ea183c7..65c82600e06 100644
---- a/include/hw/register.h
-+++ b/include/hw/register.h
-@@ -81,10 +81,12 @@ struct RegisterInfo {
-     const RegisterAccessInfo *access;
+diff --git a/hw/dma/bcm2835_dma.c b/hw/dma/bcm2835_dma.c
+index ebef56d8d613..8ff266c48882 100644
+--- a/hw/dma/bcm2835_dma.c
++++ b/hw/dma/bcm2835_dma.c
+@@ -380,7 +380,7 @@ static void bcm2835_dma_realize(DeviceState *dev, Error **errp)
  
-     void *opaque;
- };
+     obj = object_property_get_link(OBJECT(dev), "dma-mr", &error_abort);
+     s->dma_mr = MEMORY_REGION(obj);
+-    address_space_init(&s->dma_as, NULL, s->dma_mr, TYPE_BCM2835_DMA "-memory");
++    address_space_init(&s->dma_as, OBJECT(s), s->dma_mr,  "as");
  
-+#define TYPE_REGISTER_ARRAY "qemu-register-array"
-+OBJECT_DECLARE_SIMPLE_TYPE(RegisterInfoArray, REGISTER_ARRAY)
+     bcm2835_dma_reset(dev);
+ }
+diff --git a/hw/dma/pl080.c b/hw/dma/pl080.c
+index cf02a484d6a6..1b6e9f741330 100644
+--- a/hw/dma/pl080.c
++++ b/hw/dma/pl080.c
+@@ -398,8 +398,7 @@ static void pl080_realize(DeviceState *dev, Error **errp)
+         return;
+     }
  
- /**
-  * This structure is used to group all of the individual registers which are
-  * modeled using the RegisterInfo structure.
-  *
-@@ -94,10 +96,12 @@ struct RegisterInfo {
-  *
-  * @mem: optional Memory region for the register
-  */
- 
- struct RegisterInfoArray {
-+    Object parent_obj;
-+
-     MemoryRegion mem;
- 
-     int num_elements;
-     RegisterInfo **r;
- 
-diff --git a/hw/core/register.c b/hw/core/register.c
-index 57dde29710c..4d1cce02a55 100644
---- a/hw/core/register.c
-+++ b/hw/core/register.c
-@@ -243,14 +243,20 @@ static RegisterInfoArray *register_init_block(DeviceState *owner,
-                                               bool debug_enabled,
-                                               uint64_t memory_size,
-                                               size_t data_size_bits)
- {
-     const char *device_prefix = object_get_typename(OBJECT(owner));
--    RegisterInfoArray *r_array = g_new0(RegisterInfoArray, 1);
-+    Object *obj;
-+    RegisterInfoArray *r_array;
-     int data_size = data_size_bits >> 3;
-     int i;
- 
-+    obj = object_new(TYPE_REGISTER_ARRAY);
-+    object_property_add_child(OBJECT(owner), "reg-array[*]", obj);
-+    object_unref(obj);
-+
-+    r_array = REGISTER_ARRAY(obj);
-     r_array->r = g_new0(RegisterInfo *, num);
-     r_array->num_elements = num;
-     r_array->debug = debug_enabled;
-     r_array->prefix = device_prefix;
- 
-@@ -307,18 +313,30 @@ RegisterInfoArray *register_init_block64(DeviceState *owner,
- {
-     return register_init_block(owner, rae, num, ri, (void *)
-                                data, ops, debug_enabled, memory_size, 64);
+-    address_space_init(&s->downstream_as, NULL, s->downstream,
+-                       "pl080-downstream");
++    address_space_init(&s->downstream_as, OBJECT(s), s->downstream, "as");
  }
  
--void register_finalize_block(RegisterInfoArray *r_array)
-+static void register_array_finalize(Object *obj)
- {
-+    RegisterInfoArray *r_array = REGISTER_ARRAY(obj);
-+
-     object_unparent(OBJECT(&r_array->mem));
-     g_free(r_array->r);
--    g_free(r_array);
+ static void pl081_init(Object *obj)
+diff --git a/hw/dma/pl330.c b/hw/dma/pl330.c
+index 4733799f4045..e9bf8f86ee5a 100644
+--- a/hw/dma/pl330.c
++++ b/hw/dma/pl330.c
+@@ -1569,8 +1569,7 @@ static void pl330_realize(DeviceState *dev, Error **errp)
+         s->mem_as = &address_space_memory;
+     } else {
+         s->mem_as = g_new0(AddressSpace, 1);
+-        address_space_init(s->mem_as, NULL, s->mem_mr,
+-                           memory_region_name(s->mem_mr));
++        address_space_init(s->mem_as, OBJECT(s), s->mem_mr, "as");
+     }
+ 
+     s->timer = timer_new_ns(QEMU_CLOCK_VIRTUAL, pl330_exec_cycle_timer, s);
+diff --git a/hw/dma/rc4030.c b/hw/dma/rc4030.c
+index cf76f90f4d3b..65f2c7f1bd19 100644
+--- a/hw/dma/rc4030.c
++++ b/hw/dma/rc4030.c
+@@ -688,8 +688,7 @@ static void rc4030_realize(DeviceState *dev, Error **errp)
+     memory_region_init_iommu(&s->dma_mr, sizeof(s->dma_mr),
+                              TYPE_RC4030_IOMMU_MEMORY_REGION,
+                              o, "rc4030.dma", 4 * GiB);
+-    address_space_init(&s->dma_as, NULL, MEMORY_REGION(&s->dma_mr),
+-                       "rc4030-dma");
++    address_space_init(&s->dma_as, o, MEMORY_REGION(&s->dma_mr), "as");
  }
  
-+void register_finalize_block(RegisterInfoArray *r_array)
-+{
-+}
-+
-+static const TypeInfo register_array_info = {
-+    .name  = TYPE_REGISTER_ARRAY,
-+    .parent = TYPE_OBJECT,
-+    .instance_size = sizeof(RegisterInfoArray),
-+    .instance_finalize = register_array_finalize,
-+};
+ static void rc4030_unrealize(DeviceState *dev)
+@@ -698,7 +697,7 @@ static void rc4030_unrealize(DeviceState *dev)
  
- static void register_register_types(void)
- {
-+    type_register_static(&register_array_info);
+     timer_free(s->periodic_timer);
+ 
+-    address_space_destroy(&s->dma_as);
++    object_unparent(OBJECT(&s->dma_as));
+     object_unparent(OBJECT(&s->dma_mr));
  }
  
- type_init(register_register_types)
+diff --git a/hw/dma/xilinx_axidma.c b/hw/dma/xilinx_axidma.c
+index 0f340abc2c6f..5f85b686fd18 100644
+--- a/hw/dma/xilinx_axidma.c
++++ b/hw/dma/xilinx_axidma.c
+@@ -588,8 +588,8 @@ static void xilinx_axidma_realize(DeviceState *dev, Error **errp)
+         ptimer_transaction_commit(st->ptimer);
+     }
+ 
+-    address_space_init(&s->as, NULL,
+-                       s->dma_mr ? s->dma_mr : get_system_memory(), "dma");
++    address_space_init(&s->as, OBJECT(s),
++                       s->dma_mr ? s->dma_mr : get_system_memory(), "as");
+ }
+ 
+ static void xilinx_axidma_init(Object *obj)
+diff --git a/hw/dma/xlnx-zdma.c b/hw/dma/xlnx-zdma.c
+index 9b9ccd1e3c08..ad93bab5d4fa 100644
+--- a/hw/dma/xlnx-zdma.c
++++ b/hw/dma/xlnx-zdma.c
+@@ -769,7 +769,7 @@ static void zdma_realize(DeviceState *dev, Error **errp)
+         error_setg(errp, TYPE_XLNX_ZDMA " 'dma' link not set");
+         return;
+     }
+-    address_space_init(&s->dma_as, NULL, s->dma_mr, "zdma-dma");
++    address_space_init(&s->dma_as, OBJECT(s), s->dma_mr, "as");
+ 
+     for (i = 0; i < ARRAY_SIZE(zdma_regs_info); ++i) {
+         RegisterInfo *r = &s->regs_info[zdma_regs_info[i].addr / 4];
+diff --git a/hw/dma/xlnx_csu_dma.c b/hw/dma/xlnx_csu_dma.c
+index 8b88392bb92b..8a0ec5bc5b94 100644
+--- a/hw/dma/xlnx_csu_dma.c
++++ b/hw/dma/xlnx_csu_dma.c
+@@ -653,7 +653,7 @@ static void xlnx_csu_dma_realize(DeviceState *dev, Error **errp)
+         error_setg(errp, TYPE_XLNX_CSU_DMA " 'dma' link not set");
+         return;
+     }
+-    address_space_init(&s->dma_as, NULL, s->dma_mr, "csu-dma");
++    address_space_init(&s->dma_as, OBJECT(s), s->dma_mr, "as");
+ 
+     reg_array =
+         register_init_block32(dev, xlnx_csu_dma_regs_info[!!s->is_dst],
+
 -- 
-2.50.1
+2.51.0
 
 

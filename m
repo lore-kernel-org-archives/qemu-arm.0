@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8B05CAC59D
-	for <qemu-arm@archiver.kernel.org>; Wed, 17 Sep 2025 13:07:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 722C3CAC599
+	for <qemu-arm@archiver.kernel.org>; Wed, 17 Sep 2025 13:07:58 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uyrkA-00089i-GB; Wed, 17 Sep 2025 08:58:42 -0400
+	id 1uyrnx-0003ex-E4; Wed, 17 Sep 2025 09:02:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1uyrk4-00082B-2R; Wed, 17 Sep 2025 08:58:36 -0400
+ id 1uyrl3-0000Yk-S2; Wed, 17 Sep 2025 08:59:38 -0400
 Received: from www3579.sakura.ne.jp ([49.212.243.89])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1uyrk0-00053K-64; Wed, 17 Sep 2025 08:58:35 -0400
+ id 1uyrl1-00054i-TW; Wed, 17 Sep 2025 08:59:37 -0400
 Received: from h205.csg.ci.i.u-tokyo.ac.jp (h205.csg.ci.i.u-tokyo.ac.jp
  [133.11.54.205]) (authenticated bits=0)
- by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 58HCuN6m008967
+ by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 58HCuN7E008967
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
- Wed, 17 Sep 2025 21:56:37 +0900 (JST)
+ Wed, 17 Sep 2025 21:56:59 +0900 (JST)
  (envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
-DKIM-Signature: a=rsa-sha256; bh=AJDWmN4L41yfypclNPa9nkE7NslZs1RqVWFRg0YxSyg=; 
+DKIM-Signature: a=rsa-sha256; bh=PNMnLRjPBvJf9zcddoKVhh8oLqzzqK++XKLEpivd92g=; 
  c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
  h=From:Date:Subject:Message-Id:To;
- s=rs20250326; t=1758113798; v=1;
- b=dGm/igvl0OzEWgpIft4X52yFO4DicZ/wHsTMsqmCrecZkl288EJNuCdc6YR7aLFl
- cD6x2SXhP9dwkXAZTmkozz9IiFMmGNWh5TAWN3MeDf4BDhlcd7iIyKyz91aBrHX6
- IC3CFZiA6L6CJNGf1ky42YxSm7oLbnWL95cWIxRaUFKGNDJg3x6D0EEHuwXbzJp0
- wbxJzp1aoWwvtkr8OJj//oGWy2/qsyIaaPfOSzuZvaCmpURg+ts848JlMWZ/pQI/
- ZzznLyojiU8ZDbTJZafavjV0m3AlDG1PI1loXSKUhfeAmGjUan7v7LAJ3tQYSvJj
- wIy+Cn8ACUUSUDHvhv5llw==
+ s=rs20250326; t=1758113819; v=1;
+ b=NnHkjpoW1qu2A9ISqhFHI/sEjcpFLHlq7XeOdagISksFg/K6gT7AWSeADEGw+jb4
+ /jTUp3/6jw2bu6fLc6lokGgrHc+4+73QpMshfwovf+hai/Si50325YwQ6AUrGXPn
+ L0OonZkXl7Tw/2pRfxXP4mDxxH3bb/BWrIa7ELbzlAfgPN1zMO5K0kNwAqvEHpjk
+ GXXaClbIfU0su6HPiOUlAxpxnZnbb7eTdfWcrMsswVgKwdkB+omtHWH/7yrwQ6/s
+ 4iVM0/TSccAb6c5jq4br+ALAoE+uepSCHAQSSh9qJTkQqxjeFjOaYqQuPB+xItjX
+ kZFt01frt8baCk4VqiV63A==
 From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-Date: Wed, 17 Sep 2025 21:56:20 +0900
-Subject: [PATCH 08/35] hw/fsi: QOM-ify AddressSpace
+Date: Wed, 17 Sep 2025 21:56:46 +0900
+Subject: [PATCH 34/35] target/xtensa: QOM-ify AddressSpace
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250917-qom-v1-8-7262db7b0a84@rsg.ci.i.u-tokyo.ac.jp>
+Message-Id: <20250917-qom-v1-34-7262db7b0a84@rsg.ci.i.u-tokyo.ac.jp>
 References: <20250917-qom-v1-0-7262db7b0a84@rsg.ci.i.u-tokyo.ac.jp>
 In-Reply-To: <20250917-qom-v1-0-7262db7b0a84@rsg.ci.i.u-tokyo.ac.jp>
 To: qemu-devel@nongnu.org
@@ -136,22 +136,22 @@ concise and also avoid conflicts with other properties.
 
 Signed-off-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
 ---
- hw/fsi/aspeed_apb2opb.c | 2 +-
+ target/xtensa/cpu.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/fsi/aspeed_apb2opb.c b/hw/fsi/aspeed_apb2opb.c
-index 8eda6f67cfd9..d337f567c6f5 100644
---- a/hw/fsi/aspeed_apb2opb.c
-+++ b/hw/fsi/aspeed_apb2opb.c
-@@ -349,7 +349,7 @@ static void fsi_opb_init(Object *o)
-     OPBus *opb = OP_BUS(o);
+diff --git a/target/xtensa/cpu.c b/target/xtensa/cpu.c
+index 26a1c87a7856..de68a36bc36f 100644
+--- a/target/xtensa/cpu.c
++++ b/target/xtensa/cpu.c
+@@ -272,7 +272,7 @@ static void xtensa_cpu_initfn(Object *obj)
+     env->system_er = g_malloc(sizeof(*env->system_er));
+     memory_region_init_io(env->system_er, obj, NULL, env, "er",
+                           UINT64_C(0x100000000));
+-    address_space_init(env->address_space_er, NULL, env->system_er, "ER");
++    address_space_init(env->address_space_er, obj, env->system_er, "er-as");
  
-     memory_region_init(&opb->mr, 0, TYPE_FSI_OPB, UINT32_MAX);
--    address_space_init(&opb->as, NULL, &opb->mr, TYPE_FSI_OPB);
-+    address_space_init(&opb->as, OBJECT(opb), &opb->mr, "as");
- }
- 
- static const TypeInfo opb_info = {
+     cpu->clock = qdev_init_clock_in(DEVICE(obj), "clk-in", NULL, cpu, 0);
+     clock_set_hz(cpu->clock, env->config->clock_freq_khz * 1000);
 
 -- 
 2.51.0

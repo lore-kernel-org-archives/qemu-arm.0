@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24B2DCAC599
-	for <qemu-arm@archiver.kernel.org>; Wed, 17 Sep 2025 13:14:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08457CAC599
+	for <qemu-arm@archiver.kernel.org>; Wed, 17 Sep 2025 13:15:22 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uyrr4-0007xL-7T; Wed, 17 Sep 2025 09:05:50 -0400
+	id 1uyrqt-0007L5-4d; Wed, 17 Sep 2025 09:05:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1uyroh-000517-3u; Wed, 17 Sep 2025 09:03:30 -0400
+ id 1uyrn3-00020V-ME; Wed, 17 Sep 2025 09:01:43 -0400
 Received: from www3579.sakura.ne.jp ([49.212.243.89])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1uyroe-0005th-Fe; Wed, 17 Sep 2025 09:03:22 -0400
+ id 1uyrn0-0005eP-T0; Wed, 17 Sep 2025 09:01:41 -0400
 Received: from h205.csg.ci.i.u-tokyo.ac.jp (h205.csg.ci.i.u-tokyo.ac.jp
  [133.11.54.205]) (authenticated bits=0)
- by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 58HCuN6p008967
+ by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 58HCuN7D008967
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
- Wed, 17 Sep 2025 21:56:40 +0900 (JST)
+ Wed, 17 Sep 2025 21:56:58 +0900 (JST)
  (envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
-DKIM-Signature: a=rsa-sha256; bh=dlDpCOT8hfuWYega9JeyOclfSRcwNjcXChId/Qt7554=; 
+DKIM-Signature: a=rsa-sha256; bh=7PCGJmdjfJHA8NxdiTCGq5+u1H1eLf1xFPp6xeAliLU=; 
  c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
  h=From:Date:Subject:Message-Id:To;
- s=rs20250326; t=1758113801; v=1;
- b=KCsNyOYCFm4OgYqaYo+DMSNrEBU0zsJTj1GTT64bzCkYPA8giGRkxscLJQ72szjr
- lY+Qu3xaMHRkO3QG3UUh/5K1Z2eDg+Xu2hHiNZWiCfYrA/xvtRyKaN6Sgjav92rV
- p7/Z3LTC+zeD/XJ02k8tk+eNWEkw+Z0JY5GnKOW6JyE179WWT4KuHiGjlD0nxlNM
- W7Fs2shzkuBFFlF0ATi+xI4eQ2lkw5Oq2NXzPGgeDvJ+XgnIQXSKi6wCeRDeWY0V
- TtoAccLf0iXS8S9bSITCO64Piy0nW1L8Cody5/f1FfWlSkAjUYS8k0f9OVU+935a
- 5tngYUjDMtPqawzT2AHIJg==
+ s=rs20250326; t=1758113819; v=1;
+ b=ltioezOZX36yhHqqk43mS978ufccOEdZSM8Jx7oYevVrtSzy7fAYmnbW5qi2XcRY
+ E+1tC5VWYu4GbRZzYOqObhHcNSFC2Rpdu7JjbMa4EL29PhopMiYnZZsptvTKNcrO
+ 6uqRg/E/2mVSI/orxoAOVoG5BvHeJpz+1FYJ9UqNxSJdjDnYBlZS3pJGXF1FCd+7
+ /kPSDyWBukC5UmKguKm6MqDuChgUXO1XIwv1FFtsTnG+niPGoBCF08flIQvrVrRO
+ rL2V/cS1ZaKTkRlI2KSe2R/6cu+VkCvQzNTJTV/mzmIVFIGAM4DyLAH3v0IgVqyX
+ mQOjOlLkEeAFxLM2qATLeg==
 From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-Date: Wed, 17 Sep 2025 21:56:23 +0900
-Subject: [PATCH 11/35] hw/intc: QOM-ify AddressSpace
+Date: Wed, 17 Sep 2025 21:56:45 +0900
+Subject: [PATCH 33/35] target/mips: QOM-ify AddressSpace
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250917-qom-v1-11-7262db7b0a84@rsg.ci.i.u-tokyo.ac.jp>
+Message-Id: <20250917-qom-v1-33-7262db7b0a84@rsg.ci.i.u-tokyo.ac.jp>
 References: <20250917-qom-v1-0-7262db7b0a84@rsg.ci.i.u-tokyo.ac.jp>
 In-Reply-To: <20250917-qom-v1-0-7262db7b0a84@rsg.ci.i.u-tokyo.ac.jp>
 To: qemu-devel@nongnu.org
@@ -136,41 +136,24 @@ concise and also avoid conflicts with other properties.
 
 Signed-off-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
 ---
- hw/intc/arm_gicv3_common.c | 3 +--
- hw/intc/pnv_xive.c         | 4 ++--
- 2 files changed, 3 insertions(+), 4 deletions(-)
+ target/mips/cpu.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/hw/intc/arm_gicv3_common.c b/hw/intc/arm_gicv3_common.c
-index 169e0fcca828..a56b2eb7b3bc 100644
---- a/hw/intc/arm_gicv3_common.c
-+++ b/hw/intc/arm_gicv3_common.c
-@@ -429,8 +429,7 @@ static void arm_gicv3_common_realize(DeviceState *dev, Error **errp)
+diff --git a/target/mips/cpu.c b/target/mips/cpu.c
+index b13df32e6479..571caf6f4e0b 100644
+--- a/target/mips/cpu.c
++++ b/target/mips/cpu.c
+@@ -505,8 +505,8 @@ static void mips_cpu_initfn(Object *obj)
+     if (mcc->cpu_def->lcsr_cpucfg2 & (1 << CPUCFG2_LCSRP)) {
+         memory_region_init_io(&env->iocsr.mr, OBJECT(cpu), NULL,
+                                 env, "iocsr", UINT64_MAX);
+-        address_space_init(&env->iocsr.as, NULL,
+-                            &env->iocsr.mr, "IOCSR");
++        address_space_init(&env->iocsr.as, OBJECT(cpu),
++                            &env->iocsr.mr, "iocsr-as");
      }
- 
-     if (s->lpi_enable) {
--        address_space_init(&s->dma_as, NULL, s->dma,
--                           "gicv3-its-sysmem");
-+        address_space_init(&s->dma_as, OBJECT(s), s->dma, "as");
-     }
- 
-     s->cpu = g_new0(GICv3CPUState, s->num_cpu);
-diff --git a/hw/intc/pnv_xive.c b/hw/intc/pnv_xive.c
-index d14c26773021..baa90956e796 100644
---- a/hw/intc/pnv_xive.c
-+++ b/hw/intc/pnv_xive.c
-@@ -2012,10 +2012,10 @@ static void pnv_xive_realize(DeviceState *dev, Error **errp)
- 
-     memory_region_init(&xive->ipi_mmio, OBJECT(xive), "xive-vc-ipi",
-                        PNV9_XIVE_VC_SIZE);
--    address_space_init(&xive->ipi_as, NULL, &xive->ipi_mmio, "xive-vc-ipi");
-+    address_space_init(&xive->ipi_as, OBJECT(xive), &xive->ipi_mmio, "ipi-as");
-     memory_region_init(&xive->end_mmio, OBJECT(xive), "xive-vc-end",
-                        PNV9_XIVE_VC_SIZE);
--    address_space_init(&xive->end_as, NULL, &xive->end_mmio, "xive-vc-end");
-+    address_space_init(&xive->end_as, OBJECT(xive), &xive->end_mmio, "end-as");
- 
-     /*
-      * The MMIO windows exposing the IPI ESBs and the END ESBs in the
+ #endif
+ }
 
 -- 
 2.51.0

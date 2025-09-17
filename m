@@ -4,111 +4,152 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F099CAC59A
-	for <qemu-arm@archiver.kernel.org>; Wed, 17 Sep 2025 19:31:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EFE12CAC59A
+	for <qemu-arm@archiver.kernel.org>; Wed, 17 Sep 2025 19:32:36 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uyxrC-0005yl-4l; Wed, 17 Sep 2025 15:30:22 -0400
+	id 1uyxtG-0007Ff-RJ; Wed, 17 Sep 2025 15:32:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <farosas@suse.de>) id 1uyxqw-0005ws-3D
- for qemu-arm@nongnu.org; Wed, 17 Sep 2025 15:30:06 -0400
-Received: from smtp-out2.suse.de ([2a07:de40:b251:101:10:150:64:2])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <farosas@suse.de>) id 1uyxqp-0004PT-92
- for qemu-arm@nongnu.org; Wed, 17 Sep 2025 15:30:02 -0400
-Received: from imap1.dmz-prg2.suse.org (imap1.dmz-prg2.suse.org
- [IPv6:2a07:de40:b281:104:10:150:64:97])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by smtp-out2.suse.de (Postfix) with ESMTPS id E43D05C59F;
- Wed, 17 Sep 2025 19:29:56 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
- t=1758137397; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=dzmcHjJvSTCRUpRebOkPIRw1Q5jS1fSPJkK0JUXnVBk=;
- b=d72YcRMcFc3jlPLiuY3cFRpq9Awvrx1ocSrob5JPvvUa4CrnKdnQTkQAK4kUaQW5+Tz6Sd
- bnGrixp9pLBOwP0baJz0QJ7KofJVl/r2uesiMyo05zOuyKaWDY8kZf6ws50NH/g2oYCb9a
- JV9Uy3Ad3dl+6UkeV/oW0gtCsL3a/7I=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
- s=susede2_ed25519; t=1758137397;
- h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=dzmcHjJvSTCRUpRebOkPIRw1Q5jS1fSPJkK0JUXnVBk=;
- b=zK+OghCgju2cr8dpYS9S06RQQaNXylK40OPbSb+ni+YvhwIN28bGvSRR7FTjDJGZo5lMZu
- rX+l46KU93q6AHBQ==
-Authentication-Results: smtp-out2.suse.de;
- dkim=pass header.d=suse.de header.s=susede2_rsa header.b=tX8SitvI;
- dkim=pass header.d=suse.de header.s=susede2_ed25519 header.b=DRl9RK2O
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
- t=1758137396; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=dzmcHjJvSTCRUpRebOkPIRw1Q5jS1fSPJkK0JUXnVBk=;
- b=tX8SitvIZARnB8Zas/RawjffVJGmh0uLIUEXNU9BVV9N0dAbhX1V/fJ5HMg75xB7wCM+MM
- dWUivwdt5OkjqXsXzExBTBxz28eRzMwpf71b0UAI1HQ2l7/DwynMdqt6vRbmKePK5WQnPu
- XYOzl1Sk1ZroSXn4mgdIQkflm19oJRo=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
- s=susede2_ed25519; t=1758137396;
- h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=dzmcHjJvSTCRUpRebOkPIRw1Q5jS1fSPJkK0JUXnVBk=;
- b=DRl9RK2ObT+gBS2GfgOKCT8GoCeC6AMpR0NunqZJ16SV4b6pX855+Ov8swOrDwLMi5cTbI
- QXLOAD2O2mKK05Cw==
-Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id 55D20137C3;
- Wed, 17 Sep 2025 19:29:56 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
- by imap1.dmz-prg2.suse.org with ESMTPSA id YOIjBTQMy2hUZQAAD6G6ig
- (envelope-from <farosas@suse.de>); Wed, 17 Sep 2025 19:29:56 +0000
-From: Fabiano Rosas <farosas@suse.de>
-To: Nabih Estefan <nabihestefan@google.com>, qemu-devel@nongnu.org
-Cc: pbonzini@redhat.com, peter.maydell@linaro.org, philmd@linaro.org,
- lvivier@redhat.com, qemu-arm@nongnu.org, Shengtan Mao <stmao@google.com>,
- Titus Rwantare <titusr@google.com>, Nabih Estefan <nabihestefan@google.com>
-Subject: Re: [PATCH v3] hw/sensor: added MAX16600 device model
-In-Reply-To: <20250903155410.1910145-1-nabihestefan@google.com>
-References: <20250903155410.1910145-1-nabihestefan@google.com>
-Date: Wed, 17 Sep 2025 16:29:53 -0300
-Message-ID: <874it0x4ge.fsf@suse.de>
+ (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
+ id 1uyxAC-0007j4-Ib; Wed, 17 Sep 2025 14:45:56 -0400
+Received: from mail-westcentralusazlp170130007.outbound.protection.outlook.com
+ ([2a01:111:f403:c112::7] helo=CY3PR05CU001.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
+ id 1uyxA8-00075B-BY; Wed, 17 Sep 2025 14:45:55 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=LE1pn8SA84a865nUYlxzcFlZDkItQkAxpLGPCoWWMEFGhpAGAmVCLMVo6QjyFEAAjLC4QTgVgznrCOvH1+ddYdag1M7UJZkssW53wGzYHRtPVDkEB6cl6NEIUxEppiw3QSZZogxQDRve7r7+PF+mn89H9j4KiNfIci8r61FwVFtgn+Fjaa8Qahqp0zQGwKkN2tCEpjdaFCsOTST8EpXUHi0wla5S35simAnqEydzgo/seJ4YfWn8DmIVw1/WO36ac3iqgbe6Dml6XiNJfJc+saw/iYRAUT1BJ+DVfw9l2A9gkFxPwhg3H1U9Fb9J7ztKKb/VEsRomUg6bNb5YA9Jdg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=iC7YJSnvKluXcnJNkKqa52Md3iCoqqeNfx6oPoYyA38=;
+ b=C/1d32kI6RwIGAEuPPhqllX15O5YsVL7Lm+nhmdKHIpQcxM2dEtuw1UB5FVl4ggzCLOBO3C4jeWZVkOnMhCdwJg4jIl6fnkAJNMuu0htnvVVhvGYWDlM80P4GW5wywVQw9tEruZWFFoatcAyKFYmXgP6VORtG9qIaHxZtIPbBniNVQ4U/qgvKX2mdlSvD+Y02WVn0QcIK7lHlipv9y/Sc6BryNyRHQs83AmfpvPeRv1CGKvfuur2zUViS+WHdJzcxYtFKzNotRYkvrj21rCTSX2QJTIpabKg8q/PiPj/kvAdr2Wu7emwvKhCUK1uDaxfDLyt9pxPyvINQJq8SuhBmw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 216.228.117.161) smtp.rcpttodomain=gmail.com smtp.mailfrom=nvidia.com;
+ dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
+ dkim=none (message not signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=iC7YJSnvKluXcnJNkKqa52Md3iCoqqeNfx6oPoYyA38=;
+ b=qn69Fs+5xdnim+BIH4+1KY4tfyrFfjUiug2HndaF0V8CA93nK+2LMjdkMRvO+jvFpZrkYnnTWPpMP5Kq3aQXrxsClqQ+Fmh3diFjuVEYVQ9JaNNbQMbCn1w1sHSxI7VKB+VHuTwEnV+TzaV4y9O2vuFaTtUPB2Y6sQXEGKBNG5W9A3hJf8N2zfqyDAx95Pv0rFNZPJzYwxlnqRjcd9vcXoX4vg8Nx/cPMivA+7rlX4IxI826poP5tKqVwMN+ZPOknaR6D+5HUPBqwk9MNWnBzTqdZuYmyDSHxcq77kcKgMh2ZInp60E5+oM5GJ6+0fAnYLWSnhePikDIRwkEGGND5g==
+Received: from BYAPR08CA0033.namprd08.prod.outlook.com (2603:10b6:a03:100::46)
+ by CH3PR12MB9731.namprd12.prod.outlook.com (2603:10b6:610:253::5)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9115.22; Wed, 17 Sep
+ 2025 18:45:45 +0000
+Received: from CY4PEPF0000EE35.namprd05.prod.outlook.com
+ (2603:10b6:a03:100:cafe::1a) by BYAPR08CA0033.outlook.office365.com
+ (2603:10b6:a03:100::46) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.9137.14 via Frontend Transport; Wed,
+ 17 Sep 2025 18:45:44 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.161)
+ smtp.mailfrom=nvidia.com;
+ dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=nvidia.com;
+Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
+ 216.228.117.161 as permitted sender) receiver=protection.outlook.com;
+ client-ip=216.228.117.161; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (216.228.117.161) by
+ CY4PEPF0000EE35.mail.protection.outlook.com (10.167.242.41) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.9137.12 via Frontend Transport; Wed, 17 Sep 2025 18:45:44 +0000
+Received: from rnnvmail202.nvidia.com (10.129.68.7) by mail.nvidia.com
+ (10.129.200.67) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14; Wed, 17 Sep
+ 2025 11:45:21 -0700
+Received: from rnnvmail204.nvidia.com (10.129.68.6) by rnnvmail202.nvidia.com
+ (10.129.68.7) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14; Wed, 17 Sep
+ 2025 11:45:20 -0700
+Received: from Asurada-Nvidia (10.127.8.12) by mail.nvidia.com (10.129.68.6)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14 via Frontend
+ Transport; Wed, 17 Sep 2025 11:45:19 -0700
+Date: Wed, 17 Sep 2025 11:45:17 -0700
+From: Nicolin Chen <nicolinc@nvidia.com>
+To: Shameer Kolothum <shameerkolothum@gmail.com>
+CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, <eric.auger@redhat.com>,
+ <peter.maydell@linaro.org>, <jgg@nvidia.com>, <ddutile@redhat.com>,
+ <berrange@redhat.com>, <nathanc@nvidia.com>, <mochs@nvidia.com>,
+ <smostafa@google.com>, <linuxarm@huawei.com>, <wangzhou1@hisilicon.com>,
+ <jiangkunkun@huawei.com>, <jonathan.cameron@huawei.com>,
+ <zhangfei.gao@linaro.org>, <zhenzhong.duan@intel.com>,
+ <skolothumtho@nvidia.com>
+Subject: Re: [RFC PATCH v3 06/15] hw/arm/smmuv3-accel: Restrict accelerated
+ SMMUv3 to vfio-pci endpoints with iommufd
+Message-ID: <aMsBvSSEzsgeMHkK@Asurada-Nvidia>
+References: <20250714155941.22176-1-shameerali.kolothum.thodi@huawei.com>
+ <20250714155941.22176-7-shameerali.kolothum.thodi@huawei.com>
+ <aJKn650gOGQh2whD@Asurada-Nvidia>
+ <CAHy=t28z=wrXbXOJjD4sFw0RxJR3fccqF-EdaQDB_s_F6RC4FQ@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Rspamd-Queue-Id: E43D05C59F
-X-Rspamd-Action: no action
-X-Rspamd-Server: rspamd1.dmz-prg2.suse.org
-X-Spamd-Result: default: False [-4.51 / 50.00]; BAYES_HAM(-3.00)[100.00%];
- NEURAL_HAM_LONG(-1.00)[-1.000];
- R_DKIM_ALLOW(-0.20)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
- NEURAL_HAM_SHORT(-0.20)[-1.000]; MIME_GOOD(-0.10)[text/plain];
- MX_GOOD(-0.01)[]; FUZZY_RATELIMITED(0.00)[rspamd.com];
- RCVD_VIA_SMTP_AUTH(0.00)[]; ARC_NA(0.00)[];
- RCPT_COUNT_SEVEN(0.00)[10]; MIME_TRACE(0.00)[0:+];
- MISSING_XM_UA(0.00)[]; MID_RHS_MATCH_FROM(0.00)[];
- RCVD_TLS_ALL(0.00)[];
- DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
- FROM_EQ_ENVFROM(0.00)[]; FROM_HAS_DN(0.00)[];
- TO_DN_SOME(0.00)[]; RCVD_COUNT_TWO(0.00)[2];
- TO_MATCH_ENVRCPT_ALL(0.00)[];
- DBL_BLOCKED_OPENRESOLVER(0.00)[suse.de:dkim,suse.de:mid,suse.de:email];
- DNSWL_BLOCKED(0.00)[2a07:de40:b281:106:10:150:64:167:received,2a07:de40:b281:104:10:150:64:97:from];
- DKIM_TRACE(0.00)[suse.de:+]
-Received-SPF: pass client-ip=2a07:de40:b251:101:10:150:64:2;
- envelope-from=farosas@suse.de; helo=smtp-out2.suse.de
-X-Spam_score_int: -19
-X-Spam_score: -2.0
-X-Spam_bar: --
-X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FUZZY_MILLION=0.1,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <CAHy=t28z=wrXbXOJjD4sFw0RxJR3fccqF-EdaQDB_s_F6RC4FQ@mail.gmail.com>
+X-NV-OnPremToCloud: ExternallySecured
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: CY4PEPF0000EE35:EE_|CH3PR12MB9731:EE_
+X-MS-Office365-Filtering-Correlation-Id: 3f90a896-21be-49b1-e8ff-08ddf61a68d3
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|82310400026|1800799024|36860700013|7416014|376014; 
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?VVFXAxRSgmpHirpz4xj8Wia+KCziQMFcPagMS/hi6L1HnbcUgRnk9cOQAUF2?=
+ =?us-ascii?Q?/wF4zRG6irM6uGdVfRHdFv9ZGTG6KsLbwo6cHXgiVz6+wH7Y7W38qO0pvUGD?=
+ =?us-ascii?Q?P2iO9xiNZL2edpdIcT/7CwOGPJHnVROY+lsZEiUkiDmjXigy4g0rntmzI2jy?=
+ =?us-ascii?Q?KsqiB8BKRDx61jEqJLIuv4WgPwM6qlCokRhaJ+cBqNOD4+vp7IbTqvAGBDyd?=
+ =?us-ascii?Q?VU12vtZKvseCIdM6bDqVoyiuMZJj1ZbsQlElS7NP/tg0pAMtLbC/Z829MTlW?=
+ =?us-ascii?Q?BpXLkuZBX6Z6NBuhgRiLqse1vbYbbyY4RguzkvY6mNiHFTQNtBpO0Ktwb+Rw?=
+ =?us-ascii?Q?OK7kMqPfO2QrfsnYrzwOSCiELQohUuC/NdEaMw/243ZdBZvR9d07nX/kpR8X?=
+ =?us-ascii?Q?vEKWk7tKA0FJMC505QuHEwHlUVOICnW0jTScl+OtYHp21FxDJqXSfgSmwHCW?=
+ =?us-ascii?Q?I1JUJLDeI6MiEv3h790k9eh0kqeLQN/u3CQiaQQdg737dFcKUpuIVru85haB?=
+ =?us-ascii?Q?/euRZGKn5lR7TGBxfE2zvfQ2B7fcfIPv8+K8hdPGXDMsNXtEjchaW7C/hCpQ?=
+ =?us-ascii?Q?7zgZnMmvVJ6DAiXGeEgAn/eQu75Dvpeu8jx149/urxsFjuBHiURjqKBzMqHX?=
+ =?us-ascii?Q?ra5rzvXRQsNpLdHp0ZC8HC3W6ucc35Cu7rjgdFtXeFkZ2GviZuO+G+ZkdnSs?=
+ =?us-ascii?Q?Xl41wcpM2QZX32g9QUrGcLYNwrUm+JX88mprnJYBGLyubK45FKkrNNwNopVU?=
+ =?us-ascii?Q?DOoCXz8oTN1+iCO+Hc9v7eVSsx7rz2IoCAOg/QAuEfXwQAWmElw95LDa1+lX?=
+ =?us-ascii?Q?Xiue9lmUbCAuQSqlmjX+pMgzY+4/PQhp+OQZVtyasa6FA2qzvwtpECIjIhds?=
+ =?us-ascii?Q?UmvG00LDWLyMAW2NdGlMHn9+ct0KZQg85qZ6PMPAfZywihxm/hvvPIwdYQOr?=
+ =?us-ascii?Q?x8ck43gMLzj8lTl9rK516vESadSqaLUgvH+A2jrb5gtOqK2IqHo5At+N9Knt?=
+ =?us-ascii?Q?pG5sW1Ky9oakWlENi+TvAenkvpMrp8xdo07XO92Vq8Q+vhb4eRVUjVtDepUy?=
+ =?us-ascii?Q?PCWprPKhTbmz2t4iFfPgErZELQEzIxHQPgQdqWLSTYsoxENXpPO4Xigaqrza?=
+ =?us-ascii?Q?+Dg9xZTPIbdmS/Yk5k+nq0hqyW6OHE3P4pb7Rjq6ItwEKBDPlofSCC+MDk8n?=
+ =?us-ascii?Q?8exOfeTVGDsHbwaOMITglkx26G7COPttlIcfq1K8rF9RIYy5ybuB76VhsrTt?=
+ =?us-ascii?Q?9w0AQpVA7mLpSpIl17FKUFHYgKJt1zmCM1QxBq4/TCw6u7MCcaug0dzsIE+2?=
+ =?us-ascii?Q?Dts1oiwAP57PQLBs5hyqrUEyKbjzhYyDmrlcRDDK7vdtxdY4bZjrPlhMJo/3?=
+ =?us-ascii?Q?V3AX3nfpF6uaQh5og1n3/wjAnpx86XsFRPHtwF9XE9r74sdSryqVc+U4yRl5?=
+ =?us-ascii?Q?xUi6E0W9bGObI9VAha5W/dmxq31LhTVxjsDp5cLoJvnc+kdTp55qG998EsxP?=
+ =?us-ascii?Q?EXd+n1YiUsws5/Gx7qsJibXqNAfMfYVFMSwS?=
+X-Forefront-Antispam-Report: CIP:216.228.117.161; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge2.nvidia.com; CAT:NONE;
+ SFS:(13230040)(82310400026)(1800799024)(36860700013)(7416014)(376014); DIR:OUT;
+ SFP:1101; 
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 Sep 2025 18:45:44.3432 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 3f90a896-21be-49b1-e8ff-08ddf61a68d3
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.161];
+ Helo=[mail.nvidia.com]
+X-MS-Exchange-CrossTenant-AuthSource: CY4PEPF0000EE35.namprd05.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH3PR12MB9731
+Received-SPF: permerror client-ip=2a01:111:f403:c112::7;
+ envelope-from=nicolinc@nvidia.com;
+ helo=CY3PR05CU001.outbound.protection.outlook.com
+X-Spam_score_int: -10
+X-Spam_score: -1.1
+X-Spam_bar: -
+X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FORGED_SPF_HELO=1, SPF_HELO_PASS=-0.001,
+ SPF_NONE=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Wed, 17 Sep 2025 15:32:28 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -123,575 +164,49 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Nabih Estefan <nabihestefan@google.com> writes:
+On Tue, Sep 16, 2025 at 11:33:21AM +0100, Shameer Kolothum wrote:
+> > I found a new problem here that we initialize new as_sysmem per
+> > VFIO device. So, sdevs would return own individual AS pointers
+> > here at this get_address_space function, although they point to
+> > the same system address space.
+> >
+> > Since address space pointers are returned differently for VFIO
+> > devices, this fails to reuse ioas_id in iommufd_cdev_attach(),
+> > and ends up with allocating a new ioas for each device.
+> >
+> > I think we can try the following change to make sure all accel
+> > linked VFIO devices would share the same ioas_id, though I am
+> > not sure if SMMUBaseClass is the right place to go. Please take
+> > a look.
+> 
+> Ok. I think it is better to move that to SMMUv3AccelState and call
+> address_space_init() in smmuv3_accel_init() instead. Something like
+> below. Please take a look and let me know.
 
-> From: Shengtan Mao <stmao@google.com>
->
-> Signed-off-by: Shengtan Mao <stmao@google.com>
-> Signed-off-by: Titus Rwantare <titusr@google.com>
-> Signed-off-by: Nabih Estefan <nabihestefan@google.com>
-> ---
->  hw/arm/Kconfig               |   1 +
->  hw/sensor/Kconfig            |   4 +
->  hw/sensor/max16600.c         | 197 ++++++++++++++++++++++++++++
->  hw/sensor/meson.build        |   1 +
->  include/hw/sensor/max16600.h |  46 +++++++
->  tests/qtest/max16600-test.c  | 241 +++++++++++++++++++++++++++++++++++
->  tests/qtest/meson.build      |   1 +
->  7 files changed, 491 insertions(+)
->  create mode 100644 hw/sensor/max16600.c
->  create mode 100644 include/hw/sensor/max16600.h
->  create mode 100644 tests/qtest/max16600-test.c
->
-> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-> index 2aa4b5d778..4ab0a93ba6 100644
-> --- a/hw/arm/Kconfig
-> +++ b/hw/arm/Kconfig
-> @@ -480,6 +480,7 @@ config NPCM7XX
->      select AT24C  # EEPROM
->      select MAX34451
->      select ISL_PMBUS_VR
-> +    select MAX_16600
->      select PL310  # cache controller
->      select PMBUS
->      select SERIAL_MM
-> diff --git a/hw/sensor/Kconfig b/hw/sensor/Kconfig
-> index bc6331b4ab..ef7b3262a8 100644
-> --- a/hw/sensor/Kconfig
-> +++ b/hw/sensor/Kconfig
-> @@ -43,3 +43,7 @@ config ISL_PMBUS_VR
->  config MAX31785
->      bool
->      depends on PMBUS
-> +
-> +config MAX_16600
-> +    bool
-> +    depends on I2C
-> diff --git a/hw/sensor/max16600.c b/hw/sensor/max16600.c
-> new file mode 100644
-> index 0000000000..1941391dab
-> --- /dev/null
-> +++ b/hw/sensor/max16600.c
-> @@ -0,0 +1,197 @@
-> +/*
-> + * MAX16600 VR13.HC Dual-Output Voltage Regulator Chipset
-> + *
-> + * SPDX-License-Identifier: GPL-2.0-or-later
-> + *
-> + * Copyright 2025 Google LLC
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "hw/i2c/pmbus_device.h"
-> +#include "qapi/visitor.h"
-> +#include "qemu/log.h"
-> +#include "hw/sensor/max16600.h"
-> +
-> +static uint8_t max16600_read_byte(PMBusDevice *pmdev)
-> +{
-> +    MAX16600State *s = MAX16600(pmdev);
-> +
-> +    switch (pmdev->code) {
-> +    case PMBUS_IC_DEVICE_ID:
-> +        pmbus_send_string(pmdev, s->ic_device_id);
-> +        break;
-> +
-> +    case MAX16600_PHASE_ID:
-> +        pmbus_send8(pmdev, s->phase_id);
-> +        break;
-> +
-> +    default:
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "%s: reading from unsupported register: 0x%02x\n",
-> +                      __func__, pmdev->code);
-> +        break;
-> +    }
-> +    return 0xFF;
-> +}
-> +
-> +static int max16600_write_data(PMBusDevice *pmdev, const uint8_t *buf,
-> +                               uint8_t len)
-> +{
-> +    qemu_log_mask(LOG_GUEST_ERROR,
-> +                  "%s: write to unsupported register: 0x%02x\n", __func__,
-> +                  pmdev->code);
-> +    return 0xFF;
-> +}
-> +
-> +static void max16600_exit_reset(Object *obj, ResetType type)
-> +{
-> +    PMBusDevice *pmdev = PMBUS_DEVICE(obj);
-> +    MAX16600State *s = MAX16600(obj);
-> +
-> +    pmdev->capability = MAX16600_CAPABILITY_DEFAULT;
-> +    pmdev->page = 0;
-> +
-> +    pmdev->pages[0].operation = MAX16600_OPERATION_DEFAULT;
-> +    pmdev->pages[0].on_off_config = MAX16600_ON_OFF_CONFIG_DEFAULT;
-> +    pmdev->pages[0].vout_mode = MAX16600_VOUT_MODE_DEFAULT;
-> +
-> +    pmdev->pages[0].read_vin =
-> +        pmbus_data2linear_mode(MAX16600_READ_VIN_DEFAULT, max16600_exp.vin);
-> +    pmdev->pages[0].read_iin =
-> +        pmbus_data2linear_mode(MAX16600_READ_IIN_DEFAULT, max16600_exp.iin);
-> +    pmdev->pages[0].read_pin =
-> +        pmbus_data2linear_mode(MAX16600_READ_PIN_DEFAULT, max16600_exp.pin);
-> +    pmdev->pages[0].read_vout = MAX16600_READ_VOUT_DEFAULT;
-> +    pmdev->pages[0].read_iout =
-> +        pmbus_data2linear_mode(MAX16600_READ_IOUT_DEFAULT, max16600_exp.iout);
-> +    pmdev->pages[0].read_pout =
-> +        pmbus_data2linear_mode(MAX16600_READ_PIN_DEFAULT, max16600_exp.pout);
-> +    pmdev->pages[0].read_temperature_1 =
-> +        pmbus_data2linear_mode(MAX16600_READ_TEMP_DEFAULT, max16600_exp.temp);
-> +
-> +    s->ic_device_id = "MAX16601";
-> +    s->phase_id = MAX16600_PHASE_ID_DEFAULT;
-> +}
-> +
-> +static void max16600_get(Object *obj, Visitor *v, const char *name,
-> +                         void *opaque, Error **errp)
-> +{
-> +    uint16_t value;
-> +
-> +    if (strcmp(name, "vin") == 0) {
-> +        value = pmbus_linear_mode2data(*(uint16_t *)opaque, max16600_exp.vin);
-> +    } else if (strcmp(name, "iin") == 0) {
-> +        value = pmbus_linear_mode2data(*(uint16_t *)opaque, max16600_exp.iin);
-> +    } else if (strcmp(name, "pin") == 0) {
-> +        value = pmbus_linear_mode2data(*(uint16_t *)opaque, max16600_exp.pin);
-> +    } else if (strcmp(name, "iout") == 0) {
-> +        value = pmbus_linear_mode2data(*(uint16_t *)opaque, max16600_exp.iout);
-> +    } else if (strcmp(name, "pout") == 0) {
-> +        value = pmbus_linear_mode2data(*(uint16_t *)opaque, max16600_exp.pout);
-> +    } else if (strcmp(name, "temperature") == 0) {
-> +        value = pmbus_linear_mode2data(*(uint16_t *)opaque, max16600_exp.temp);
-> +    } else {
-> +        value = *(uint16_t *)opaque;
-> +    }
-> +
-> +    /* scale to milli-units */
-> +    if (strcmp(name, "pout") != 0 && strcmp(name, "pin") != 0) {
-> +        value *= 1000;
-> +    }
-> +
-> +    visit_type_uint16(v, name, &value, errp);
-> +}
-> +
-> +static void max16600_set(Object *obj, Visitor *v, const char *name,
-> +                         void *opaque, Error **errp)
-> +{
-> +    PMBusDevice *pmdev = PMBUS_DEVICE(obj);
-> +    uint16_t *internal = opaque;
-> +    uint16_t value;
-> +    if (!visit_type_uint16(v, name, &value, errp)) {
-> +        return;
-> +    }
-> +
-> +    /* inputs match kernel driver which scales to milliunits except power */
-> +    if (strcmp(name, "pout") != 0 && strcmp(name, "pin") != 0) {
-> +        value /= 1000;
-> +    }
-> +
-> +    if (strcmp(name, "vin") == 0) {
-> +        *internal = pmbus_data2linear_mode(value, max16600_exp.vin);
-> +    } else if (strcmp(name, "iin") == 0) {
-> +        *internal = pmbus_data2linear_mode(value, max16600_exp.iin);
-> +    } else if (strcmp(name, "pin") == 0) {
-> +        *internal = pmbus_data2linear_mode(value, max16600_exp.pin);
-> +    } else if (strcmp(name, "iout") == 0) {
-> +        *internal = pmbus_data2linear_mode(value, max16600_exp.iout);
-> +    } else if (strcmp(name, "pout") == 0) {
-> +        *internal = pmbus_data2linear_mode(value, max16600_exp.pout);
-> +    } else if (strcmp(name, "temperature") == 0) {
-> +        *internal = pmbus_data2linear_mode(value, max16600_exp.temp);
-> +    } else {
-> +        *internal = value;
-> +    }
-> +
-> +    pmbus_check_limits(pmdev);
-> +}
-> +
-> +static void max16600_init(Object *obj)
-> +{
-> +    PMBusDevice *pmdev = PMBUS_DEVICE(obj);
-> +    uint64_t flags = PB_HAS_VOUT_MODE | PB_HAS_VIN | PB_HAS_IIN | PB_HAS_PIN |
-> +                     PB_HAS_IOUT | PB_HAS_POUT | PB_HAS_VOUT |
-> +                     PB_HAS_TEMPERATURE | PB_HAS_MFR_INFO;
-> +    pmbus_page_config(pmdev, 0, flags);
-> +
-> +    object_property_add(obj, "vin", "uint16", max16600_get, max16600_set, NULL,
-> +                        &pmdev->pages[0].read_vin);
-> +
-> +    object_property_add(obj, "iin", "uint16", max16600_get, max16600_set, NULL,
-> +                        &pmdev->pages[0].read_iin);
-> +
-> +    object_property_add(obj, "pin", "uint16", max16600_get, max16600_set, NULL,
-> +                        &pmdev->pages[0].read_pin);
-> +
-> +    object_property_add(obj, "vout", "uint16", max16600_get, max16600_set,
-> +                        NULL, &pmdev->pages[0].read_vout);
-> +
-> +    object_property_add(obj, "iout", "uint16", max16600_get, max16600_set,
-> +                        NULL, &pmdev->pages[0].read_iout);
-> +
-> +    object_property_add(obj, "pout", "uint16", max16600_get, max16600_set,
-> +                        NULL, &pmdev->pages[0].read_pout);
-> +
-> +    object_property_add(obj, "temperature", "uint16",
-> +                        max16600_get, max16600_set,
-> +                        NULL, &pmdev->pages[0].read_temperature_1);
-> +}
-> +
-> +static void max16600_class_init(ObjectClass *klass, const void *data)
-> +{
-> +    ResettableClass *rc = RESETTABLE_CLASS(klass);
-> +    DeviceClass *dc = DEVICE_CLASS(klass);
-> +    PMBusDeviceClass *k = PMBUS_DEVICE_CLASS(klass);
-> +
-> +    dc->desc = "MAX16600 Dual-Output Voltage Regulator";
-> +    k->write_data = max16600_write_data;
-> +    k->receive_byte = max16600_read_byte;
-> +    k->device_num_pages = 1;
-> +
-> +    rc->phases.exit = max16600_exit_reset;
-> +}
-> +
-> +static const TypeInfo max16600_info = {
-> +    .name = TYPE_MAX16600,
-> +    .parent = TYPE_PMBUS_DEVICE,
-> +    .instance_size = sizeof(MAX16600State),
-> +    .instance_init = max16600_init,
-> +    .class_init = max16600_class_init,
-> +};
-> +
-> +static void max16600_register_types(void)
-> +{
-> +    type_register_static(&max16600_info);
-> +}
-> +
-> +type_init(max16600_register_types)
-> diff --git a/hw/sensor/meson.build b/hw/sensor/meson.build
-> index 420fdc3359..85c2c73c99 100644
-> --- a/hw/sensor/meson.build
-> +++ b/hw/sensor/meson.build
-> @@ -8,3 +8,4 @@ system_ss.add(when: 'CONFIG_MAX34451', if_true: files('max34451.c'))
->  system_ss.add(when: 'CONFIG_LSM303DLHC_MAG', if_true: files('lsm303dlhc_mag.c'))
->  system_ss.add(when: 'CONFIG_ISL_PMBUS_VR', if_true: files('isl_pmbus_vr.c'))
->  system_ss.add(when: 'CONFIG_MAX31785', if_true: files('max31785.c'))
-> +system_ss.add(when: 'CONFIG_MAX_16600', if_true: files('max16600.c'))
-> diff --git a/include/hw/sensor/max16600.h b/include/hw/sensor/max16600.h
-> new file mode 100644
-> index 0000000000..a8cd0a5d4b
-> --- /dev/null
-> +++ b/include/hw/sensor/max16600.h
-> @@ -0,0 +1,46 @@
-> +/*
-> + * MAX16600 VR13.HC Dual-Output Voltage Regulator Chipset
-> + *
-> + * SPDX-License-Identifier: GPL-2.0-or-later
-> + *
-> + * Copyright 2025 Google LLC
-> + */
-> +
-> +#include "hw/i2c/pmbus_device.h"
-> +
-> +#define TYPE_MAX16600 "max16600"
-> +#define MAX16600(obj) OBJECT_CHECK(MAX16600State, (obj), TYPE_MAX16600)
-> +
-> +#define MAX16600_PHASE_ID       0xF3
-> +/*
-> + * Packet error checking capability is disabled.
-> + * Pending QEMU support
-> + */
-> +#define MAX16600_CAPABILITY_DEFAULT 0x30
-> +#define MAX16600_OPERATION_DEFAULT 0x88
-> +#define MAX16600_ON_OFF_CONFIG_DEFAULT 0x17
-> +#define MAX16600_VOUT_MODE_DEFAULT 0x22
-> +#define MAX16600_PHASE_ID_DEFAULT 0x80
-> +
-> +#define MAX16600_READ_VIN_DEFAULT 5    /* Volts */
-> +#define MAX16600_READ_IIN_DEFAULT 3    /* Amps */
-> +#define MAX16600_READ_PIN_DEFAULT 100  /* Watts */
-> +#define MAX16600_READ_VOUT_DEFAULT 5   /* Volts */
-> +#define MAX16600_READ_IOUT_DEFAULT 3   /* Amps */
-> +#define MAX16600_READ_POUT_DEFAULT 100 /* Watts */
-> +#define MAX16600_READ_TEMP_DEFAULT 40  /* Celsius */
-> +
-> +typedef struct MAX16600State {
-> +    PMBusDevice parent;
-> +    const char *ic_device_id;
-> +    uint8_t phase_id;
-> +} MAX16600State;
-> +
-> +/*
-> + * determines the exponents used in linear conversion for CORE
-> + * (iin, pin) may be (-4, 0) or (-3, 1)
-> + * iout may be -2, -1, 0, 1
-> + */
-> +static const struct {
-> +    int vin, iin, pin, iout, pout, temp;
-> +} max16600_exp = {-6, -4, 0, -2, -1, 0};
-> diff --git a/tests/qtest/max16600-test.c b/tests/qtest/max16600-test.c
-> new file mode 100644
-> index 0000000000..bad5da7989
-> --- /dev/null
-> +++ b/tests/qtest/max16600-test.c
-> @@ -0,0 +1,241 @@
-> +/*
-> + * QTest for the MAX16600 VR13.HC Dual-Output Voltage Regulator Chipset
-> + *
-> + * SPDX-License-Identifier: GPL-2.0-or-later
-> + *
-> + * Copyright 2025 Google LLC
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "hw/i2c/pmbus_device.h"
-> +#include "hw/sensor/max16600.h"
-> +#include "libqtest-single.h"
-> +#include "libqos/qgraph.h"
-> +#include "libqos/i2c.h"
-> +#include "qobject/qdict.h"
-> +#include "qobject/qnum.h"
-> +#include "qemu/bitops.h"
-> +
-> +#define TEST_ID "max16600-test"
-> +#define TEST_ADDR (0x61)
-> +
-> +uint16_t pmbus_linear_mode2data(uint16_t value, int exp)
-> +{
-> +    /* D = L * 2^e */
-> +    if (exp < 0) {
-> +        return value >> (-exp);
-> +    }
-> +    return value << exp;
-> +}
-> +
-> +static uint16_t qmp_max16600_get(const char *id, const char *property)
-> +{
-> +    QDict *response;
-> +    uint64_t ret;
-> +
-> +    response = qmp("{ 'execute': 'qom-get', 'arguments': { 'path': %s, "
-> +                   "'property': %s } }",
-> +                   id, property);
-> +    g_assert(qdict_haskey(response, "return"));
-> +    ret = qnum_get_uint(qobject_to(QNum, qdict_get(response, "return")));
-> +    qobject_unref(response);
-> +    return ret;
-> +}
-> +
-> +static void qmp_max16600_set(const char *id, const char *property,
-> +                             uint16_t value)
-> +{
-> +    QDict *response;
-> +
-> +    response = qmp("{ 'execute': 'qom-set', 'arguments': { 'path': %s, "
-> +                   "'property': %s, 'value': %u } }",
-> +                   id, property, value);
-> +    g_assert(qdict_haskey(response, "return"));
-> +    qobject_unref(response);
-> +}
-> +
-> +static uint16_t max16600_i2c_get16(QI2CDevice *i2cdev, uint8_t reg)
-> +{
-> +    uint8_t resp[2];
-> +    i2c_read_block(i2cdev, reg, resp, sizeof(resp));
-> +    return (resp[1] << 8) | resp[0];
-> +}
-> +
-> +static void max16600_i2c_set16(QI2CDevice *i2cdev, uint8_t reg, uint16_t value)
-> +{
-> +    uint8_t data[2];
-> +
-> +    data[0] = value & 255;
-> +    data[1] = value >> 8;
-> +    i2c_write_block(i2cdev, reg, data, sizeof(data));
-> +}
-> +
-> +/* test default values */
-> +static void test_defaults(void *obj, void *data, QGuestAllocator *alloc)
-> +{
-> +    uint16_t i2c_value, value;
-> +    QI2CDevice *i2cdev = (QI2CDevice *)obj;
-> +
-> +    i2c_value = i2c_get8(i2cdev, PMBUS_CAPABILITY);
-> +    g_assert_cmphex(i2c_value, ==, MAX16600_CAPABILITY_DEFAULT);
-> +
-> +    i2c_value = i2c_get8(i2cdev, PMBUS_OPERATION);
-> +    g_assert_cmphex(i2c_value, ==, MAX16600_OPERATION_DEFAULT);
-> +
-> +    i2c_value = i2c_get8(i2cdev, PMBUS_ON_OFF_CONFIG);
-> +    g_assert_cmphex(i2c_value, ==, MAX16600_ON_OFF_CONFIG_DEFAULT);
-> +
-> +    i2c_value = i2c_get8(i2cdev, PMBUS_VOUT_MODE);
-> +    g_assert_cmphex(i2c_value, ==, MAX16600_VOUT_MODE_DEFAULT);
-> +
-> +    value = qmp_max16600_get(TEST_ID, "vin") / 1000;
-> +    g_assert_cmpuint(value, ==, MAX16600_READ_VIN_DEFAULT);
-> +
-> +    value = qmp_max16600_get(TEST_ID, "iin") / 1000;
-> +    g_assert_cmpuint(value, ==, MAX16600_READ_IIN_DEFAULT);
-> +
-> +    value = qmp_max16600_get(TEST_ID, "pin");
-> +    g_assert_cmpuint(value, ==, MAX16600_READ_PIN_DEFAULT);
-> +
-> +    value = qmp_max16600_get(TEST_ID, "vout") / 1000;
-> +    g_assert_cmpuint(value, ==, MAX16600_READ_VOUT_DEFAULT);
-> +
-> +    value = qmp_max16600_get(TEST_ID, "iout") / 1000;
-> +    g_assert_cmpuint(value, ==, MAX16600_READ_IOUT_DEFAULT);
-> +
-> +    value = qmp_max16600_get(TEST_ID, "pout");
-> +    g_assert_cmpuint(value, ==, MAX16600_READ_POUT_DEFAULT);
-> +
-> +    value = qmp_max16600_get(TEST_ID, "temperature") / 1000;
-> +    g_assert_cmpuint(value, ==, MAX16600_READ_TEMP_DEFAULT);
-> +}
-> +
-> +/* test qmp access */
-> +static void test_tx_rx(void *obj, void *data, QGuestAllocator *alloc)
-> +{
-> +    uint16_t value, i2c_value;
-> +    QI2CDevice *i2cdev = (QI2CDevice *)obj;
-> +
-> +    qmp_max16600_set(TEST_ID, "vin", 2000);
-> +    value = qmp_max16600_get(TEST_ID, "vin") / 1000;
-> +    i2c_value = max16600_i2c_get16(i2cdev, PMBUS_READ_VIN);
-> +    i2c_value = pmbus_linear_mode2data(i2c_value, max16600_exp.vin);
-> +    g_assert_cmpuint(value, ==, i2c_value);
-> +
-> +    qmp_max16600_set(TEST_ID, "iin", 3000);
-> +    value = qmp_max16600_get(TEST_ID, "iin") / 1000;
-> +    i2c_value = max16600_i2c_get16(i2cdev, PMBUS_READ_IIN);
-> +    i2c_value = pmbus_linear_mode2data(i2c_value, max16600_exp.iin);
-> +    g_assert_cmpuint(value, ==, i2c_value);
-> +
-> +    qmp_max16600_set(TEST_ID, "pin", 4);
-> +    value = qmp_max16600_get(TEST_ID, "pin");
-> +    i2c_value = max16600_i2c_get16(i2cdev, PMBUS_READ_PIN);
-> +    i2c_value = pmbus_linear_mode2data(i2c_value, max16600_exp.pin);
-> +    g_assert_cmpuint(value, ==, i2c_value);
-> +
-> +    qmp_max16600_set(TEST_ID, "vout", 5000);
-> +    value = qmp_max16600_get(TEST_ID, "vout") / 1000;
-> +    i2c_value = max16600_i2c_get16(i2cdev, PMBUS_READ_VOUT);
-> +    g_assert_cmpuint(value, ==, i2c_value);
-> +
-> +    qmp_max16600_set(TEST_ID, "iout", 6000);
-> +    value = qmp_max16600_get(TEST_ID, "iout") / 1000;
-> +    i2c_value = max16600_i2c_get16(i2cdev, PMBUS_READ_IOUT);
-> +    i2c_value = pmbus_linear_mode2data(i2c_value, max16600_exp.iout);
-> +    g_assert_cmpuint(value, ==, i2c_value);
-> +
-> +    qmp_max16600_set(TEST_ID, "pout", 7);
-> +    value = qmp_max16600_get(TEST_ID, "pout");
-> +    i2c_value = max16600_i2c_get16(i2cdev, PMBUS_READ_POUT);
-> +    i2c_value = pmbus_linear_mode2data(i2c_value, max16600_exp.pout);
-> +    g_assert_cmpuint(value, ==, i2c_value);
-> +
-> +    qmp_max16600_set(TEST_ID, "temperature", 8000);
-> +    value = qmp_max16600_get(TEST_ID, "temperature") / 1000;
-> +    i2c_value = max16600_i2c_get16(i2cdev, PMBUS_READ_TEMPERATURE_1);
-> +    i2c_value = pmbus_linear_mode2data(i2c_value, max16600_exp.temp);
-> +    g_assert_cmpuint(value, ==, i2c_value);
-> +}
-> +
-> +/* test r/w registers */
-> +static void test_rw_regs(void *obj, void *data, QGuestAllocator *alloc)
-> +{
-> +    uint16_t i2c_value;
-> +    QI2CDevice *i2cdev = (QI2CDevice *)obj;
-> +
-> +    max16600_i2c_set16(i2cdev, PMBUS_OPERATION, 0xA);
-> +    i2c_value = i2c_get8(i2cdev, PMBUS_OPERATION);
-> +    g_assert_cmphex(i2c_value, ==, 0xA);
-> +
-> +    max16600_i2c_set16(i2cdev, PMBUS_ON_OFF_CONFIG, 0xB);
-> +    i2c_value = i2c_get8(i2cdev, PMBUS_ON_OFF_CONFIG);
-> +    g_assert_cmphex(i2c_value, ==, 0xB);
-> +
-> +    max16600_i2c_set16(i2cdev, PMBUS_VOUT_MODE, 0xC);
-> +    i2c_value = i2c_get8(i2cdev, PMBUS_VOUT_MODE);
-> +    g_assert_cmphex(i2c_value, ==, 0xC);
-> +}
-> +
-> +/* test read-only registers */
-> +static void test_ro_regs(void *obj, void *data, QGuestAllocator *alloc)
-> +{
-> +    uint16_t i2c_init_value, i2c_value;
-> +    QI2CDevice *i2cdev = (QI2CDevice *)obj;
-> +
-> +    i2c_init_value = i2c_get8(i2cdev, PMBUS_CAPABILITY);
-> +    max16600_i2c_set16(i2cdev, PMBUS_CAPABILITY, 0xD);
-> +    i2c_value = i2c_get8(i2cdev, PMBUS_CAPABILITY);
-> +    g_assert_cmphex(i2c_init_value, ==, i2c_value);
-> +
-> +    i2c_init_value = max16600_i2c_get16(i2cdev, PMBUS_READ_VIN);
-> +    max16600_i2c_set16(i2cdev, PMBUS_READ_VIN, 0x1234);
-> +    i2c_value = max16600_i2c_get16(i2cdev, PMBUS_READ_VIN);
-> +    g_assert_cmphex(i2c_init_value, ==, i2c_value);
-> +
-> +    i2c_init_value = max16600_i2c_get16(i2cdev, PMBUS_READ_IIN);
-> +    max16600_i2c_set16(i2cdev, PMBUS_READ_IIN, 0x2234);
-> +    i2c_value = max16600_i2c_get16(i2cdev, PMBUS_READ_IIN);
-> +    g_assert_cmphex(i2c_init_value, ==, i2c_value);
-> +
-> +    i2c_init_value = max16600_i2c_get16(i2cdev, PMBUS_READ_PIN);
-> +    max16600_i2c_set16(i2cdev, PMBUS_READ_PIN, 0x3234);
-> +    i2c_value = max16600_i2c_get16(i2cdev, PMBUS_READ_PIN);
-> +    g_assert_cmphex(i2c_init_value, ==, i2c_value);
-> +
-> +    i2c_init_value = max16600_i2c_get16(i2cdev, PMBUS_READ_VOUT);
-> +    max16600_i2c_set16(i2cdev, PMBUS_READ_VOUT, 0x4234);
-> +    i2c_value = max16600_i2c_get16(i2cdev, PMBUS_READ_VOUT);
-> +    g_assert_cmphex(i2c_init_value, ==, i2c_value);
-> +
-> +    i2c_init_value = max16600_i2c_get16(i2cdev, PMBUS_READ_IOUT);
-> +    max16600_i2c_set16(i2cdev, PMBUS_READ_IOUT, 0x5235);
-> +    i2c_value = max16600_i2c_get16(i2cdev, PMBUS_READ_IOUT);
-> +    g_assert_cmphex(i2c_init_value, ==, i2c_value);
-> +
-> +    i2c_init_value = max16600_i2c_get16(i2cdev, PMBUS_READ_POUT);
-> +    max16600_i2c_set16(i2cdev, PMBUS_READ_POUT, 0x6234);
-> +    i2c_value = max16600_i2c_get16(i2cdev, PMBUS_READ_POUT);
-> +    g_assert_cmphex(i2c_init_value, ==, i2c_value);
-> +
-> +    i2c_init_value = max16600_i2c_get16(i2cdev, PMBUS_READ_TEMPERATURE_1);
-> +    max16600_i2c_set16(i2cdev, PMBUS_READ_TEMPERATURE_1, 0x7236);
-> +    i2c_value = max16600_i2c_get16(i2cdev, PMBUS_READ_TEMPERATURE_1);
-> +    g_assert_cmphex(i2c_init_value, ==, i2c_value);
-> +}
-> +
-> +static void max16600_register_nodes(void)
-> +{
-> +    QOSGraphEdgeOptions opts = {.extra_device_opts =
-> +                                    "id=" TEST_ID ",address=0x61"};
-> +    add_qi2c_address(&opts, &(QI2CAddress){TEST_ADDR});
-> +
-> +    qos_node_create_driver("max16600", i2c_device_create);
-> +    qos_node_consumes("max16600", "i2c-bus", &opts);
-> +
-> +    qos_add_test("test_defaults", "max16600", test_defaults, NULL);
-> +    qos_add_test("test_tx_rx", "max16600", test_tx_rx, NULL);
-> +    qos_add_test("test_rw_regs", "max16600", test_rw_regs, NULL);
-> +    qos_add_test("test_ro_regs", "max16600", test_ro_regs, NULL);
-> +}
-> +libqos_init(max16600_register_nodes);
-> diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-> index 669d07c06b..459cf41985 100644
-> --- a/tests/qtest/meson.build
-> +++ b/tests/qtest/meson.build
-> @@ -295,6 +295,7 @@ qos_test_ss.add(
->    'es1370-test.c',
->    'lsm303dlhc-mag-test.c',
->    'isl_pmbus_vr-test.c',
-> +  'max16600-test.c',
->    'max34451-test.c',
->    'megasas-test.c',
->    'ne2000-test.c',
+[...]
 
-For qtest:
+> @@ -37,7 +37,6 @@ typedef struct SMMUS1Hwpt {
+> 
+>  typedef struct SMMUv3AccelDevice {
+>      SMMUDevice  sdev;
+> -    AddressSpace as_sysmem;
+>      HostIOMMUDeviceIOMMUFD *idev;
+>      SMMUS1Hwpt  *s1_hwpt;
+>      SMMUViommu *viommu;
+> @@ -48,6 +47,7 @@ typedef struct SMMUv3AccelDevice {
+>  typedef struct SMMUv3AccelState {
+>      MemoryRegion root;
+>      MemoryRegion sysmem;
+> +    AddressSpace as_sysmem;
+>      SMMUViommu *viommu;
+>      struct iommu_hw_info_arm_smmuv3 info;
+>  } SMMUv3AccelState;
 
-Acked-by: Fabiano Rosas <farosas@suse.de>
+That's changing from an ioas_id per VFIO device to an ioas_id per
+vSMMU instance, right? I think it's still not enough.
+
+All vSMMU instances could share the same ioas_id. That is why I
+put in the SMMUBaseClass as it's shared structure across vSMMUs.
+
+Nicolin
 

@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E7CCCAC59A
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21BFACAC59D
 	for <qemu-arm@archiver.kernel.org>; Wed, 17 Sep 2025 13:15:54 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uyrkM-0008Kh-Qe; Wed, 17 Sep 2025 08:58:54 -0400
+	id 1uyrkM-0008Kn-Ty; Wed, 17 Sep 2025 08:58:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1uyrk2-00080g-P5; Wed, 17 Sep 2025 08:58:34 -0400
+ id 1uyrk3-00081G-1U; Wed, 17 Sep 2025 08:58:35 -0400
 Received: from www3579.sakura.ne.jp ([49.212.243.89])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1uyrjy-00052I-0J; Wed, 17 Sep 2025 08:58:34 -0400
+ id 1uyrjz-00052X-IM; Wed, 17 Sep 2025 08:58:34 -0400
 Received: from h205.csg.ci.i.u-tokyo.ac.jp (h205.csg.ci.i.u-tokyo.ac.jp
  [133.11.54.205]) (authenticated bits=0)
- by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 58HCuN74008967
+ by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 58HCuN7C008967
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
- Wed, 17 Sep 2025 21:56:50 +0900 (JST)
+ Wed, 17 Sep 2025 21:56:57 +0900 (JST)
  (envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
-DKIM-Signature: a=rsa-sha256; bh=IObcSxb1mEGR5pVanbHlUpUo799Y/B2tp5AzAzydRGA=; 
+DKIM-Signature: a=rsa-sha256; bh=iRO+hrK4XG9Id0QZlzueAlZAZ0CQr5cH8M80zLSFtdk=; 
  c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
  h=From:Date:Subject:Message-Id:To;
- s=rs20250326; t=1758113811; v=1;
- b=tFZy7oa+nP+PtLJI2EIl6sGY+GMaHR/7ptxbf+ii5lc3dKpFVZ+4S2QOVk12hOme
- 8FwO8O11BILpR094dmNm9daOQeTFpooTEiW4hoobEhu2S0jwte5AsLLc8nz8LFMa
- Cm96KElGwqbrlq1HZoI7iWC9SQW+OmSQsJHXuTpWLf4uThpEzfZbB3LBL+uLw+UR
- b4hErl+1sD+yjb/gYVMbmzvLUCHQa3/QTIqg3f6H0a+l2MlMkitW9hMmmMIL4wxj
- wSBGrblbGHzZXGUL8OEXNJn5GCjX9oO9BRS1KjL5f5zP8nq1OS1v/00XYWLPONkQ
- 5k3CkYTpwPFwX04fT2TAlg==
+ s=rs20250326; t=1758113818; v=1;
+ b=DCgdJUt8BsdsHaJ7TwtGHOS5Bl+Hwe0u8DbfwZddRm5m1qylu0a+Tk+XJ9mPKh4V
+ GI5qS8dH3Hppq9l5T4V9FNgNDWDqFIVCdhiln1db/ePtu4FqIB0OHAdFkAUb5mAy
+ /Ji7aqCMf7kqS68Ly2a1S0sohdoaJyFCMstjOQZeJz7P4WkxQtZqvnChgL14XASY
+ mO8cuykhmZhA4DLkJwQJzj2KKNbDgcb8ub5uOinuhksLZDWT+/BRod80gdIB1yUf
+ Omoayby052Xn8pF4FkTs/Y9nXTcac/MxWwyCDfRLe1l2Q9QJm0k6W+4+VjIHkq6J
+ 6ZqMRSnfmSFLUdRYgEG1Fg==
 From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-Date: Wed, 17 Sep 2025 21:56:36 +0900
-Subject: [PATCH 24/35] hw/sd: QOM-ify AddressSpace
+Date: Wed, 17 Sep 2025 21:56:44 +0900
+Subject: [PATCH 32/35] target/i386: QOM-ify AddressSpace
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250917-qom-v1-24-7262db7b0a84@rsg.ci.i.u-tokyo.ac.jp>
+Message-Id: <20250917-qom-v1-32-7262db7b0a84@rsg.ci.i.u-tokyo.ac.jp>
 References: <20250917-qom-v1-0-7262db7b0a84@rsg.ci.i.u-tokyo.ac.jp>
 In-Reply-To: <20250917-qom-v1-0-7262db7b0a84@rsg.ci.i.u-tokyo.ac.jp>
 To: qemu-devel@nongnu.org
@@ -136,45 +136,23 @@ concise and also avoid conflicts with other properties.
 
 Signed-off-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
 ---
- hw/sd/allwinner-sdhost.c | 2 +-
- hw/sd/sdhci.c            | 4 ++--
- 2 files changed, 3 insertions(+), 3 deletions(-)
+ target/i386/kvm/kvm.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/hw/sd/allwinner-sdhost.c b/hw/sd/allwinner-sdhost.c
-index 158d434e7fde..c001dfd60203 100644
---- a/hw/sd/allwinner-sdhost.c
-+++ b/hw/sd/allwinner-sdhost.c
-@@ -832,7 +832,7 @@ static void allwinner_sdhost_realize(DeviceState *dev, Error **errp)
-         return;
+diff --git a/target/i386/kvm/kvm.c b/target/i386/kvm/kvm.c
+index 2ce071dfafb2..17f3c3c9e543 100644
+--- a/target/i386/kvm/kvm.c
++++ b/target/i386/kvm/kvm.c
+@@ -2725,7 +2725,8 @@ static void register_smram_listener(Notifier *n, void *unused)
+         memory_region_set_enabled(smram, true);
      }
  
--    address_space_init(&s->dma_as, NULL, s->dma_mr, "sdhost-dma");
-+    address_space_init(&s->dma_as, OBJECT(s), s->dma_mr, "as");
+-    address_space_init(&smram_address_space, NULL, &smram_as_root, "KVM-SMRAM");
++    address_space_init(&smram_address_space, OBJECT(kvm_state), &smram_as_root,
++                       "smram-as");
+     kvm_memory_listener_register(kvm_state, &smram_listener,
+                                  &smram_address_space, 1, "kvm-smram");
  }
- 
- static void allwinner_sdhost_reset(DeviceState *dev)
-diff --git a/hw/sd/sdhci.c b/hw/sd/sdhci.c
-index c6a203744463..1a6b6e1198f2 100644
---- a/hw/sd/sdhci.c
-+++ b/hw/sd/sdhci.c
-@@ -1594,7 +1594,7 @@ static void sdhci_sysbus_realize(DeviceState *dev, Error **errp)
- 
-     if (s->dma_mr) {
-         s->dma_as = &s->sysbus_dma_as;
--        address_space_init(s->dma_as, NULL, s->dma_mr, "sdhci-dma");
-+        address_space_init(s->dma_as, OBJECT(s), s->dma_mr, "as");
-     } else {
-         /* use system_memory() if property "dma" not set */
-         s->dma_as = &address_space_memory;
-@@ -1612,7 +1612,7 @@ static void sdhci_sysbus_unrealize(DeviceState *dev)
-     sdhci_common_unrealize(s);
- 
-      if (s->dma_mr) {
--        address_space_destroy(s->dma_as);
-+        object_unparent(OBJECT(s->dma_as));
-     }
- }
- 
 
 -- 
 2.51.0

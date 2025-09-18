@@ -4,60 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3412ACAC59A
-	for <qemu-arm@archiver.kernel.org>; Thu, 18 Sep 2025 03:11:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6AAC4CAC59A
+	for <qemu-arm@archiver.kernel.org>; Thu, 18 Sep 2025 03:14:31 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uz53B-0004Gt-FQ; Wed, 17 Sep 2025 23:11:15 -0400
+	id 1uz56D-0005hB-1y; Wed, 17 Sep 2025 23:14:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wangyuquan1236@phytium.com.cn>)
- id 1uz538-0004DL-Jj; Wed, 17 Sep 2025 23:11:10 -0400
-Received: from zg8tmtyylji0my4xnjqumte4.icoremail.net ([162.243.164.118])
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <wangyuquan1236@phytium.com.cn>)
- id 1uz534-0005Ls-QQ; Wed, 17 Sep 2025 23:11:10 -0400
-Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
- by hzbj-icmmx-6 (Coremail) with SMTP id AQAAfwB3DWFEeMtoyGxXBw--.54455S2;
- Thu, 18 Sep 2025 11:11:00 +0800 (CST)
-Received: from localhost (unknown [123.150.8.50])
- by mail (Coremail) with SMTP id AQAAfwAXeuc_eMtoJjUUAA--.17208S2;
- Thu, 18 Sep 2025 11:10:56 +0800 (CST)
-Date: Thu, 18 Sep 2025 11:10:38 +0800
-From: Yuquan Wang <wangyuquan1236@phytium.com.cn>
-To: Jonathan Cameron <jonathan.cameron@huawei.com>
-Cc: rad@semihalf.com, peter.maydell@linaro.org,
- leif.lindholm@oss.qualcomm.com, chenbaozi@phytium.com.cn,
- qemu-devel@nongnu.org, linux-cxl@vger.kernel.org,
- qemu-arm@nongnu.org, ligen@phytium.com.cn
-Subject: Re: [RFC QEMU PATCH v7] hw/arm/sbsa-ref: Support CXL Host Bridge &
- CFMW
-Message-ID: <aMt4LqSympNcVqnb@phytium.com.cn>
-References: <20250807111037.241118-1-wangyuquan1236@phytium.com.cn>
- <20250917173914.0000331e@huawei.com>
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1uz569-0005as-Oe; Wed, 17 Sep 2025 23:14:17 -0400
+Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1uz567-0005cU-Da; Wed, 17 Sep 2025 23:14:17 -0400
+Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
+ (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Thu, 18 Sep
+ 2025 11:13:51 +0800
+Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
+ (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
+ Transport; Thu, 18 Sep 2025 11:13:51 +0800
+To: Paolo Bonzini <pbonzini@redhat.com>, Peter Maydell
+ <peter.maydell@linaro.org>, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?=
+ <clg@kaod.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
+ <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
+ Stanley" <joel@jms.id.au>, "Michael S. Tsirkin" <mst@redhat.com>, "Marcel
+ Apfelbaum" <marcel.apfelbaum@gmail.com>, "open list:ARM TCG CPUs"
+ <qemu-arm@nongnu.org>, "open list:All patches CC here"
+ <qemu-devel@nongnu.org>
+CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
+ <nabihestefan@google.com>, <wuhaotsh@google.com>, <titusr@google.com>
+Subject: [PATCH v3 06/14] hw/pci-host/aspeed: Add MSI support and per-RC IOMMU
+ address space
+Date: Thu, 18 Sep 2025 11:13:35 +0800
+Message-ID: <20250918031348.3991681-7-jamin_lin@aspeedtech.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250918031348.3991681-1-jamin_lin@aspeedtech.com>
+References: <20250918031348.3991681-1-jamin_lin@aspeedtech.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250917173914.0000331e@huawei.com>
-X-CM-TRANSID: AQAAfwAXeuc_eMtoJjUUAA--.17208S2
-X-CM-SenderInfo: 5zdqw5pxtxt0arstlqxsk13x1xpou0fpof0/1tbiAQAQAWjJu34I-gA1s3
-Authentication-Results: hzbj-icmmx-6; spf=neutral smtp.mail=wangyuquan
- 1236@phytium.com.cn;
-X-Coremail-Antispam: 1Uk129KBjvdXoW7Xr1ktF1fJF4rtw1kGw1ftFb_yoWkWrb_ZF
- s2yr9avw4vkF9FgFsxt3ZIvrWftryDur47XwnrAas8JF9xtas5uF4DKFna9345Gr42qr42
- kr1YvrW3tanrZjkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8wcxFpf9Il3svdxBIdaVrnU
- Uv73VFW2AGmfu7jjvjm3AaLaJ3UjIYCTnIWjDUYxBIdaVFxhVjvjDU0xZFpf9x0zRUUUUU
- UUUU=
-Received-SPF: pass client-ip=162.243.164.118;
- envelope-from=wangyuquan1236@phytium.com.cn;
- helo=zg8tmtyylji0my4xnjqumte4.icoremail.net
-X-Spam_score_int: -25
-X-Spam_score: -2.6
-X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+Received-SPF: pass client-ip=211.20.114.72;
+ envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX01.aspeed.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -70,44 +65,296 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
+From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Wed, Sep 17, 2025 at 05:39:14PM +0100, Jonathan Cameron wrote:
-> On Thu, 7 Aug 2025 19:10:37 +0800
-> wangyuquan <wangyuquan1236@phytium.com.cn> wrote:
-> 
-> > From: Yuquan Wang <wangyuquan1236@phytium.com.cn>
-> > 
-> > This creates a specific CXL host bridge (0001:00) with four cxl
-> > root ports on sbsa-ref. And the memory layout provides separate
-> > space windows for the cxl host bridge in the sbsa-ref memmap:
-> > 
-> > - 64K  CXL Host Bridge Component Registers (CHBCR)
-> > - 64K  CXL_PIO
-> > - 128M CXL_MMIO
-> > - 256M CXL_ECAM
-> > - 4G   CXL_MMIO_HIGH
-> > 
-> > To provide CFMWs on sbsa-ref, this extends 1TB space from the
-> > hole above RAM Memory [SBSA_MEM] for CXL Fixed Memory Window:
-> > 
-> > - 1T   CXL_FIXED_WINDOW
-> > 
-> > Signed-off-by: Yuquan Wang <wangyuquan1236@phytium.com.cn>
-> This looks pretty standard to me so FWIW as someone who hasn't used
-> the SBSA model.
-> 
-> Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
-> 
->
+Add MSI support to the ASPEED PCIe RC/Config model and introduce a per-RC
+"IOMMU root" address space to correctly route MSI writes.
 
-Hi, Leif and SBSA folks
+On AST2700 all RCs use the same MSI address, and the MSI target is PCI
+system memory (not normal DRAM). If the MSI window were mapped into real
+system RAM, an endpoint's write could be observed by other RCs and
+spuriously trigger their interrupts. To avoid this, each RC now owns an
+isolated IOMMU root AddressSpace that contains a small MSI window and a
+DRAM alias region for normal DMA.
 
-We hope to hear from everyone regarding other suggestions for using the
-CXL on the sbsa-ref, as well as any areas where this patch might have
-been overlooked.
+The MSI window captures writes and asserts the RC IRQ. MSI status bits
+are tracked in new H2X RC_H registers (R_H2X_RC_H_MSI_EN{0,1} and
+R_H2X_RC_H_MSI_STS{0,1}). Clearing all status bits drops the IRQ. The
+default MSI address is set to 0x1e77005c and can be overridden via the
+msi-addr property.
 
-Yuquan
+This keeps MSI traffic contained within each RC while preserving normal
+DMA to system DRAM. It enables correct MSI/MSI-X interrupt delivery when
+multiple RCs use the same MSI target address.
+
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+---
+ include/hw/pci-host/aspeed_pcie.h |  10 +++
+ hw/pci-host/aspeed_pcie.c         | 129 ++++++++++++++++++++++++++++++
+ hw/pci-host/trace-events          |   3 +
+ 3 files changed, 142 insertions(+)
+
+diff --git a/include/hw/pci-host/aspeed_pcie.h b/include/hw/pci-host/aspeed_pcie.h
+index 5346c15c81..5e60cba07b 100644
+--- a/include/hw/pci-host/aspeed_pcie.h
++++ b/include/hw/pci-host/aspeed_pcie.h
+@@ -35,6 +35,8 @@ typedef struct AspeedPCIECfgTxDesc {
+ typedef struct AspeedPCIERcRegs {
+     uint32_t int_en_reg;
+     uint32_t int_sts_reg;
++    uint32_t msi_sts0_reg;
++    uint32_t msi_sts1_reg;
+ } AspeedPCIERcRegs;
+ 
+ typedef struct AspeedPCIERegMap {
+@@ -61,11 +63,18 @@ OBJECT_DECLARE_SIMPLE_TYPE(AspeedPCIERcState, ASPEED_PCIE_RC);
+ struct AspeedPCIERcState {
+     PCIExpressHost parent_obj;
+ 
++    MemoryRegion iommu_root;
++    AddressSpace iommu_as;
++    MemoryRegion dram_alias;
++    MemoryRegion *dram_mr;
+     MemoryRegion mmio_window;
++    MemoryRegion msi_window;
+     MemoryRegion io_window;
+     MemoryRegion mmio;
+     MemoryRegion io;
+ 
++    uint64_t dram_base;
++    uint32_t msi_addr;
+     uint32_t rp_addr;
+     uint32_t bus_nr;
+     char name[16];
+@@ -97,6 +106,7 @@ struct AspeedPCIECfgClass {
+     const AspeedPCIERegMap *reg_map;
+     const MemoryRegionOps *reg_ops;
+ 
++    uint32_t rc_msi_addr;
+     uint32_t rc_rp_addr;
+     uint64_t rc_bus_nr;
+     uint64_t nr_regs;
+diff --git a/hw/pci-host/aspeed_pcie.c b/hw/pci-host/aspeed_pcie.c
+index b7a0dca273..bff01ac85a 100644
+--- a/hw/pci-host/aspeed_pcie.c
++++ b/hw/pci-host/aspeed_pcie.c
+@@ -94,6 +94,8 @@ static const TypeInfo aspeed_pcie_root_port_info = {
+  * PCIe Root Complex (RC)
+  */
+ 
++#define ASPEED_PCIE_CFG_RC_MAX_MSI 64
++
+ static void aspeed_pcie_rc_set_irq(void *opaque, int irq, int level)
+ {
+     AspeedPCIERcState *rc = (AspeedPCIERcState *) opaque;
+@@ -120,6 +122,58 @@ static int aspeed_pcie_rc_map_irq(PCIDevice *pci_dev, int irq_num)
+     return irq_num % PCI_NUM_PINS;
+ }
+ 
++static void aspeed_pcie_rc_msi_notify(AspeedPCIERcState *rc, uint64_t data)
++{
++    AspeedPCIECfgState *cfg =
++           container_of(rc, AspeedPCIECfgState, rc);
++    uint32_t reg;
++
++    /* Written data is the HW IRQ number */
++    assert(data < ASPEED_PCIE_CFG_RC_MAX_MSI);
++
++    reg = (data < 32) ?
++            cfg->rc_regs->msi_sts0_reg : cfg->rc_regs->msi_sts1_reg;
++    cfg->regs[reg] |= BIT(data % 32);
++
++    trace_aspeed_pcie_rc_msi_set_irq(cfg->id, data, 1);
++    qemu_set_irq(rc->irq, 1);
++}
++
++static void aspeed_pcie_rc_msi_write(void *opaque, hwaddr addr, uint64_t data,
++                                     unsigned int size)
++{
++    AspeedPCIERcState *rc = ASPEED_PCIE_RC(opaque);
++    AspeedPCIECfgState *cfg =
++           container_of(rc, AspeedPCIECfgState, rc);
++
++    trace_aspeed_pcie_rc_msi_notify(cfg->id, addr + rc->msi_addr, data);
++    aspeed_pcie_rc_msi_notify(rc, data);
++}
++
++static const MemoryRegionOps aspeed_pcie_rc_msi_ops = {
++    .write = aspeed_pcie_rc_msi_write,
++    .read = NULL,
++    .endianness = DEVICE_LITTLE_ENDIAN,
++    .valid = {
++        .min_access_size = 4,
++        .max_access_size = 4,
++    },
++    .impl = {
++        .min_access_size = 4,
++        .max_access_size = 4,
++    },
++};
++
++static AddressSpace *aspeed_pcie_rc_get_as(PCIBus *bus, void *opaque, int devfn)
++{
++    AspeedPCIERcState *rc = ASPEED_PCIE_RC(opaque);
++    return &rc->iommu_as;
++}
++
++static const PCIIOMMUOps aspeed_pcie_rc_iommu_ops = {
++    .get_address_space = aspeed_pcie_rc_get_as,
++};
++
+ static void aspeed_pcie_rc_realize(DeviceState *dev, Error **errp)
+ {
+     PCIExpressHost *pex = PCIE_HOST_BRIDGE(dev);
+@@ -157,6 +211,42 @@ static void aspeed_pcie_rc_realize(DeviceState *dev, Error **errp)
+                                      &rc->io, 0, 4, TYPE_PCIE_BUS);
+     pci->bus->flags |= PCI_BUS_EXTENDED_CONFIG_SPACE;
+ 
++   /*
++    * PCIe memory view setup
++    *
++    * Background:
++    * - On AST2700, all Root Complexes use the same MSI address. This MSI
++    *   address is not normal system RAM - it is a PCI system memory address.
++    *   If we map the MSI/MSI-X window into real system memory, a write from
++    *   one EP can be seen by all RCs and wrongly trigger interrupts on them.
++    *
++    * Design:
++    * - MSI/MSI-X here is just a placeholder address so RC and EP can talk.
++    *   We make a separate MMIO space (iommu_root) for the MSI window so the
++    *   writes stay local to each RC.
++    *
++    * DMA:
++    * - EPs still need access to real system memory for DMA. We add a DRAM
++    *   alias in the PCI space so DMA works as expected.
++    */
++    name = g_strdup_printf("pcie.%d.iommu_root", cfg->id);
++    memory_region_init(&rc->iommu_root, OBJECT(rc), name, UINT64_MAX);
++    address_space_init(&rc->iommu_as, &rc->iommu_root, name);
++    /* setup MSI */
++    memory_region_init_io(&rc->msi_window, OBJECT(rc),
++                          &aspeed_pcie_rc_msi_ops, rc,
++                          "msi_window", 4);
++    memory_region_add_subregion(&rc->iommu_root, rc->msi_addr,
++                                &rc->msi_window);
++    /* setup DRAM for DMA */
++    assert(rc->dram_mr != NULL);
++    name = g_strdup_printf("pcie.%d.dram_alias", cfg->id);
++    memory_region_init_alias(&rc->dram_alias, OBJECT(rc), name, rc->dram_mr,
++                             0, memory_region_size(rc->dram_mr));
++    memory_region_add_subregion(&rc->iommu_root, rc->dram_base,
++                                &rc->dram_alias);
++    pci_setup_iommu(pci->bus, &aspeed_pcie_rc_iommu_ops, rc);
++
+     /* setup root device */
+     if (rc->has_rd) {
+         object_initialize_child(OBJECT(rc), "root_device", &rc->root_device,
+@@ -202,6 +292,10 @@ static const Property aspeed_pcie_rc_props[] = {
+     DEFINE_PROP_UINT32("bus-nr", AspeedPCIERcState, bus_nr, 0),
+     DEFINE_PROP_BOOL("has-rd", AspeedPCIERcState, has_rd, 0),
+     DEFINE_PROP_UINT32("rp-addr", AspeedPCIERcState, rp_addr, 0),
++    DEFINE_PROP_UINT32("msi-addr", AspeedPCIERcState, msi_addr, 0),
++    DEFINE_PROP_UINT64("dram-base", AspeedPCIERcState, dram_base, 0),
++    DEFINE_PROP_LINK("dram", AspeedPCIERcState, dram_mr, TYPE_MEMORY_REGION,
++                     MemoryRegion *),
+ };
+ 
+ static void aspeed_pcie_rc_class_init(ObjectClass *klass, const void *data)
+@@ -262,6 +356,10 @@ REG32(H2X_RC_H_INT_STS,     0xC8)
+     SHARED_FIELD(H2X_RC_INT_INTDONE, 4, 1)
+     SHARED_FIELD(H2X_RC_INT_INTX, 0, 4)
+ REG32(H2X_RC_H_RDATA,       0xCC)
++REG32(H2X_RC_H_MSI_EN0,     0xE0)
++REG32(H2X_RC_H_MSI_EN1,     0xE4)
++REG32(H2X_RC_H_MSI_STS0,    0xE8)
++REG32(H2X_RC_H_MSI_STS1,    0xEC)
+ 
+ #define TLP_FMTTYPE_CFGRD0  0x04 /* Configuration Read  Type 0 */
+ #define TLP_FMTTYPE_CFGWR0  0x44 /* Configuration Write Type 0 */
+@@ -275,6 +373,8 @@ static const AspeedPCIERegMap aspeed_regmap = {
+     .rc = {
+         .int_en_reg     = R_H2X_RC_H_INT_EN,
+         .int_sts_reg    = R_H2X_RC_H_INT_STS,
++        .msi_sts0_reg   = R_H2X_RC_H_MSI_STS0,
++        .msi_sts1_reg   = R_H2X_RC_H_MSI_STS1,
+     },
+ };
+ 
+@@ -444,6 +544,29 @@ static void aspeed_pcie_cfg_write(void *opaque, hwaddr addr, uint64_t data,
+         }
+         s->regs[reg] &= ~data | H2X_RC_INT_INTX_MASK;
+         break;
++    /*
++     * These status registers are used for notify sources ISR are executed.
++     * If one source ISR is executed, it will clear one bit.
++     * If it clear all bits, it means to initialize this register status
++     * rather than sources ISR are executed.
++     */
++    case R_H2X_RC_H_MSI_STS0:
++    case R_H2X_RC_H_MSI_STS1:
++        if (data == 0) {
++            return ;
++        }
++
++        s->regs[reg] &= ~data;
++        if (data == 0xffffffff) {
++            return;
++        }
++
++        if (!s->regs[R_H2X_RC_H_MSI_STS0] &&
++            !s->regs[R_H2X_RC_H_MSI_STS1]) {
++            trace_aspeed_pcie_rc_msi_clear_irq(s->id, 0);
++            qemu_set_irq(s->rc.irq, 0);
++        }
++        break;
+     default:
+         s->regs[reg] = data;
+         break;
+@@ -465,6 +588,8 @@ static void aspeed_pcie_cfg_instance_init(Object *obj)
+     AspeedPCIECfgState *s = ASPEED_PCIE_CFG(obj);
+ 
+     object_initialize_child(obj, "rc", &s->rc, TYPE_ASPEED_PCIE_RC);
++    object_property_add_alias(obj, "dram", OBJECT(&s->rc), "dram");
++    object_property_add_alias(obj, "dram-base", OBJECT(&s->rc), "dram-base");
+ 
+     return;
+ }
+@@ -500,6 +625,9 @@ static void aspeed_pcie_cfg_realize(DeviceState *dev, Error **errp)
+     object_property_set_int(OBJECT(&s->rc), "rp-addr",
+                             apc->rc_rp_addr,
+                             &error_abort);
++    object_property_set_int(OBJECT(&s->rc), "msi-addr",
++                            apc->rc_msi_addr,
++                            &error_abort);
+     if (!sysbus_realize(SYS_BUS_DEVICE(&s->rc), errp)) {
+         return;
+     }
+@@ -531,6 +659,7 @@ static void aspeed_pcie_cfg_class_init(ObjectClass *klass, const void *data)
+     apc->reg_ops = &aspeed_pcie_cfg_ops;
+     apc->reg_map = &aspeed_regmap;
+     apc->nr_regs = 0x100 >> 2;
++    apc->rc_msi_addr = 0x1e77005C;
+     apc->rc_bus_nr = 0x80;
+     apc->rc_has_rd = true;
+     apc->rc_rp_addr = PCI_DEVFN(8, 0);
+diff --git a/hw/pci-host/trace-events b/hw/pci-host/trace-events
+index 2584ea56e2..a6fd88c2c4 100644
+--- a/hw/pci-host/trace-events
++++ b/hw/pci-host/trace-events
+@@ -2,6 +2,9 @@
+ 
+ # aspeed_pcie.c
+ aspeed_pcie_rc_intx_set_irq(uint32_t id, int num, int level) "%d: num %d set IRQ leve %d"
++aspeed_pcie_rc_msi_notify(uint32_t id, uint64_t addr, uint64_t data) "%d: 0x%" PRIx64 " data 0x%" PRIx64
++aspeed_pcie_rc_msi_set_irq(uint32_t id, uint64_t unm, int level) "%d: num 0x%" PRIx64 " set IRQ level %d"
++aspeed_pcie_rc_msi_clear_irq(uint32_t id, int level) "%d: clear IRQ level %d"
+ aspeed_pcie_cfg_read(uint32_t id, uint64_t addr, uint32_t value) "%d: addr 0x%" PRIx64 " value 0x%" PRIx32
+ aspeed_pcie_cfg_write(uint32_t id, uint64_t addr, uint32_t value) "%d: addr 0x%" PRIx64 " value 0x%" PRIx32
+ aspeed_pcie_cfg_rw(uint32_t id, const char *dir, uint8_t bus, uint8_t devfn, uint64_t addr, uint64_t data) "%d: %s bus:0x%x devfn:0x%x addr 0x%" PRIx64 " data 0x%" PRIx64
+-- 
+2.43.0
 
 

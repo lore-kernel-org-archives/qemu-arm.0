@@ -4,27 +4,27 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D40FCAC59F
-	for <qemu-arm@archiver.kernel.org>; Thu, 18 Sep 2025 03:16:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3F56CAC59F
+	for <qemu-arm@archiver.kernel.org>; Thu, 18 Sep 2025 03:16:54 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uz55t-0005Rx-Hv; Wed, 17 Sep 2025 23:14:01 -0400
+	id 1uz563-0005VD-T2; Wed, 17 Sep 2025 23:14:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1uz55s-0005RV-Bg; Wed, 17 Sep 2025 23:14:00 -0400
+ id 1uz563-0005Uq-1K; Wed, 17 Sep 2025 23:14:11 -0400
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1uz55q-0005cU-RQ; Wed, 17 Sep 2025 23:14:00 -0400
+ id 1uz561-0005cU-1g; Wed, 17 Sep 2025 23:14:10 -0400
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Thu, 18 Sep
- 2025 11:13:49 +0800
+ 2025 11:13:50 +0800
 Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
- Transport; Thu, 18 Sep 2025 11:13:49 +0800
+ Transport; Thu, 18 Sep 2025 11:13:50 +0800
 To: Paolo Bonzini <pbonzini@redhat.com>, Peter Maydell
  <peter.maydell@linaro.org>, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?=
  <clg@kaod.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
@@ -34,17 +34,17 @@ To: Paolo Bonzini <pbonzini@redhat.com>, Peter Maydell
  <qemu-arm@nongnu.org>, "open list:All patches CC here"
  <qemu-devel@nongnu.org>
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
- <nabihestefan@google.com>, <wuhaotsh@google.com>, <titusr@google.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PATCH v3 01/14] hw/pci/pci_ids: Add PCI vendor ID for ASPEED
-Date: Thu, 18 Sep 2025 11:13:30 +0800
-Message-ID: <20250918031348.3991681-2-jamin_lin@aspeedtech.com>
+ <nabihestefan@google.com>, <wuhaotsh@google.com>, <titusr@google.com>
+Subject: [PATCH v3 04/14] hw/pci-host/aspeed: Add AST2600 PCIe Root Device
+ support
+Date: Thu, 18 Sep 2025 11:13:33 +0800
+Message-ID: <20250918031348.3991681-5-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250918031348.3991681-1-jamin_lin@aspeedtech.com>
 References: <20250918031348.3991681-1-jamin_lin@aspeedtech.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 Received-SPF: pass client-ip=211.20.114.72;
  envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX01.aspeed.com
 X-Spam_score_int: -18
@@ -70,23 +70,168 @@ From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
----
- include/hw/pci/pci_ids.h | 2 ++
- 1 file changed, 2 insertions(+)
+Introduce a PCIe Root Device for AST2600 platform.
 
-diff --git a/include/hw/pci/pci_ids.h b/include/hw/pci/pci_ids.h
-index 33e2898be9..16034aaa2c 100644
---- a/include/hw/pci/pci_ids.h
-+++ b/include/hw/pci/pci_ids.h
-@@ -291,4 +291,6 @@
+The AST2600 root complex exposes a PCIe root device at bus 80, devfn 0.
+This root device is implemented as a child of the PCIe RC and modeled
+as a host bridge PCI function (class_id = PCI_CLASS_BRIDGE_HOST).
+
+Key changes:
+- Add a new device type "aspeed.pcie-root-device".
+- Instantiate the root device as part of AspeedPCIERcState.
+- Initialize it during RC realize() and attach it to the root bus.
+- Mark the root device as non-user-creatable.
+- Add RC boolean property "has-rd" to control whether the Root Device is
+  created (platforms can enable/disable it as needed).
+
+Note: Only AST2600 implements this PCIe root device. AST2700 does not
+provide one.
+
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+---
+ include/hw/pci-host/aspeed_pcie.h | 11 ++++++
+ hw/pci-host/aspeed_pcie.c         | 56 +++++++++++++++++++++++++++++++
+ 2 files changed, 67 insertions(+)
+
+diff --git a/include/hw/pci-host/aspeed_pcie.h b/include/hw/pci-host/aspeed_pcie.h
+index 850d579189..fe30ac02ae 100644
+--- a/include/hw/pci-host/aspeed_pcie.h
++++ b/include/hw/pci-host/aspeed_pcie.h
+@@ -40,6 +40,13 @@ typedef struct AspeedPCIERegMap {
+     AspeedPCIERcRegs rc;
+ } AspeedPCIERegMap;
  
- #define PCI_VENDOR_ID_NVIDIA             0x10de
- 
-+#define PCI_VENDOR_ID_ASPEED             0x1A03
++#define TYPE_ASPEED_PCIE_ROOT_DEVICE "aspeed.pcie-root-device"
++OBJECT_DECLARE_SIMPLE_TYPE(AspeedPCIERootDeviceState, ASPEED_PCIE_ROOT_DEVICE);
 +
- #endif
++struct AspeedPCIERootDeviceState {
++    PCIBridge parent_obj;
++};
++
+ #define TYPE_ASPEED_PCIE_RC "aspeed.pcie-rc"
+ OBJECT_DECLARE_SIMPLE_TYPE(AspeedPCIERcState, ASPEED_PCIE_RC);
+ 
+@@ -53,7 +60,10 @@ struct AspeedPCIERcState {
+ 
+     uint32_t bus_nr;
+     char name[16];
++    bool has_rd;
+     qemu_irq irq;
++
++    AspeedPCIERootDeviceState root_device;
+ };
+ 
+ /* Bridge between AHB bus and PCIe RC. */
+@@ -79,6 +89,7 @@ struct AspeedPCIECfgClass {
+ 
+     uint64_t rc_bus_nr;
+     uint64_t nr_regs;
++    bool rc_has_rd;
+ };
+ 
+ #define TYPE_ASPEED_PCIE_PHY "aspeed.pcie-phy"
+diff --git a/hw/pci-host/aspeed_pcie.c b/hw/pci-host/aspeed_pcie.c
+index 08d717381b..aa546cb0e7 100644
+--- a/hw/pci-host/aspeed_pcie.c
++++ b/hw/pci-host/aspeed_pcie.c
+@@ -25,6 +25,44 @@
+ #include "hw/pci/msi.h"
+ #include "trace.h"
+ 
++/*
++ * PCIe Root Device
++ * This device exists only on AST2600.
++ */
++
++static void aspeed_pcie_root_device_class_init(ObjectClass *klass,
++                                               const void *data)
++{
++    PCIDeviceClass *k = PCI_DEVICE_CLASS(klass);
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
++    dc->desc = "ASPEED PCIe Root Device";
++    k->vendor_id = PCI_VENDOR_ID_ASPEED;
++    k->device_id = 0x2600;
++    k->class_id = PCI_CLASS_BRIDGE_HOST;
++    k->subsystem_vendor_id = k->vendor_id;
++    k->subsystem_id = k->device_id;
++    k->revision = 0;
++
++    /*
++     * PCI-facing part of the host bridge,
++     * not usable without the host-facing part
++     */
++    dc->user_creatable = false;
++}
++
++static const TypeInfo aspeed_pcie_root_device_info = {
++    .name = TYPE_ASPEED_PCIE_ROOT_DEVICE,
++    .parent = TYPE_PCI_DEVICE,
++    .instance_size = sizeof(AspeedPCIERootDeviceState),
++    .class_init = aspeed_pcie_root_device_class_init,
++    .interfaces = (const InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { },
++    },
++};
++
+ /*
+  * PCIe Root Complex (RC)
+  */
+@@ -91,6 +129,18 @@ static void aspeed_pcie_rc_realize(DeviceState *dev, Error **errp)
+                                      aspeed_pcie_rc_map_irq, rc, &rc->mmio,
+                                      &rc->io, 0, 4, TYPE_PCIE_BUS);
+     pci->bus->flags |= PCI_BUS_EXTENDED_CONFIG_SPACE;
++
++    /* setup root device */
++    if (rc->has_rd) {
++        object_initialize_child(OBJECT(rc), "root_device", &rc->root_device,
++                                TYPE_ASPEED_PCIE_ROOT_DEVICE);
++        qdev_prop_set_int32(DEVICE(&rc->root_device), "addr",
++                            PCI_DEVFN(0, 0));
++        qdev_prop_set_bit(DEVICE(&rc->root_device), "multifunction", false);
++        if (!qdev_realize(DEVICE(&rc->root_device), BUS(pci->bus), errp)) {
++            return;
++        }
++    }
+ }
+ 
+ static const char *aspeed_pcie_rc_root_bus_path(PCIHostState *host_bridge,
+@@ -107,6 +157,7 @@ static const char *aspeed_pcie_rc_root_bus_path(PCIHostState *host_bridge,
+ 
+ static const Property aspeed_pcie_rc_props[] = {
+     DEFINE_PROP_UINT32("bus-nr", AspeedPCIERcState, bus_nr, 0),
++    DEFINE_PROP_BOOL("has-rd", AspeedPCIERcState, has_rd, 0),
+ };
+ 
+ static void aspeed_pcie_rc_class_init(ObjectClass *klass, const void *data)
+@@ -398,6 +449,9 @@ static void aspeed_pcie_cfg_realize(DeviceState *dev, Error **errp)
+     object_property_set_int(OBJECT(&s->rc), "bus-nr",
+                             apc->rc_bus_nr,
+                             &error_abort);
++    object_property_set_bool(OBJECT(&s->rc), "has-rd",
++                            apc->rc_has_rd,
++                            &error_abort);
+     if (!sysbus_realize(SYS_BUS_DEVICE(&s->rc), errp)) {
+         return;
+     }
+@@ -430,6 +484,7 @@ static void aspeed_pcie_cfg_class_init(ObjectClass *klass, const void *data)
+     apc->reg_map = &aspeed_regmap;
+     apc->nr_regs = 0x100 >> 2;
+     apc->rc_bus_nr = 0x80;
++    apc->rc_has_rd = true;
+ }
+ 
+ static const TypeInfo aspeed_pcie_cfg_info = {
+@@ -567,6 +622,7 @@ static const TypeInfo aspeed_pcie_phy_info = {
+ static void aspeed_pcie_register_types(void)
+ {
+     type_register_static(&aspeed_pcie_rc_info);
++    type_register_static(&aspeed_pcie_root_device_info);
+     type_register_static(&aspeed_pcie_cfg_info);
+     type_register_static(&aspeed_pcie_phy_info);
+ }
 -- 
 2.43.0
 

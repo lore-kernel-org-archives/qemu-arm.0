@@ -4,81 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6397ECAC5A0
-	for <qemu-arm@archiver.kernel.org>; Thu, 18 Sep 2025 15:27:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E20ECA1013
+	for <qemu-arm@archiver.kernel.org>; Thu, 18 Sep 2025 15:27:33 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uzGVu-0004zM-8I; Thu, 18 Sep 2025 11:25:38 -0400
+	id 1uzGXi-0002nG-CU; Thu, 18 Sep 2025 11:27:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <armenon@redhat.com>)
- id 1uzGVq-0004nj-NB
- for qemu-arm@nongnu.org; Thu, 18 Sep 2025 11:25:34 -0400
+ id 1uzGXh-0002ii-7U
+ for qemu-arm@nongnu.org; Thu, 18 Sep 2025 11:27:29 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <armenon@redhat.com>)
- id 1uzGVo-0002zm-QW
- for qemu-arm@nongnu.org; Thu, 18 Sep 2025 11:25:34 -0400
+ id 1uzGXf-0003OB-9L
+ for qemu-arm@nongnu.org; Thu, 18 Sep 2025 11:27:28 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1758209132;
+ s=mimecast20190719; t=1758209246;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=kPRRonDI7v9CULdkpTnX724+UFIBp/Jcli88m3ndHPQ=;
- b=hmMhxrGWQ3UiKSTuaoGtqd9FXW0K34iQfxXW6rKE+DCCEEf+FiPOXuKr+of8k3NZwg7XDD
- jtC/8QuiTda5F1g4HylU1H7cfJuTKkRW242YiISiJPRetERPBFjZ4VZXFcD629DFGUckL0
- hlxEbmIU/9cy33JDQo2izgwvthYbXrg=
-Received: from mail-pg1-f198.google.com (mail-pg1-f198.google.com
- [209.85.215.198]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=PaZvHMvq5UGvPHZJTIR0qZ8hdQBkbCFkuOZ3ZxBhp7k=;
+ b=AB+d7a/bv3ypcpBeYRarhrvKRHULIYmXekVCiIIpkGouz3fBIh0DTctQD0cEPBeYBaMnlH
+ jqETshSFdXFA+Zvh5yFpLW3oCq2684pyAYf29nr5r8xM9Rv/y/XDauqAAt5XPUJHO0jk91
+ UXax0y6skqwMokxtzbfH0sPuJuTZHuk=
+Received: from mail-pf1-f200.google.com (mail-pf1-f200.google.com
+ [209.85.210.200]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-637-Nv9Pf7W2PCWiXt5dDG1bkg-1; Thu, 18 Sep 2025 11:25:31 -0400
-X-MC-Unique: Nv9Pf7W2PCWiXt5dDG1bkg-1
-X-Mimecast-MFC-AGG-ID: Nv9Pf7W2PCWiXt5dDG1bkg_1758209130
-Received: by mail-pg1-f198.google.com with SMTP id
- 41be03b00d2f7-b521995d498so845131a12.1
- for <qemu-arm@nongnu.org>; Thu, 18 Sep 2025 08:25:30 -0700 (PDT)
+ us-mta-371-quqzex4eOYaNAJ5iNb1YZw-1; Thu, 18 Sep 2025 11:27:25 -0400
+X-MC-Unique: quqzex4eOYaNAJ5iNb1YZw-1
+X-Mimecast-MFC-AGG-ID: quqzex4eOYaNAJ5iNb1YZw_1758209244
+Received: by mail-pf1-f200.google.com with SMTP id
+ d2e1a72fcca58-77dff701fb8so217667b3a.1
+ for <qemu-arm@nongnu.org>; Thu, 18 Sep 2025 08:27:25 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1758209130; x=1758813930;
+ d=1e100.net; s=20230601; t=1758209244; x=1758814044;
  h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
  :mime-version:subject:date:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=kPRRonDI7v9CULdkpTnX724+UFIBp/Jcli88m3ndHPQ=;
- b=vwk/ueptbr8ZJgnH88qJjz3zRF2qnwMkCq3BxH8u1RXzFlIoocqS0itPFKXq/nD3lQ
- wPD0lnDNQeHxTqzqCj8HLuCekv+5z3e0ZMpGi+c33eCrnTzwmbXGhsISTTabt5oAgPhg
- 8gByUySzavSxwmvo/NjDHviGUyeny2jQVUHa0D3ATLjJdaXf1qXpyARHleWBe9uU7kTO
- eHC8pD+YWv0jYez0SD5XuQ4Ih4TnfwIceT26u7uDFlpapct1CYGjmIXxa7vchHGv/ugd
- AfECaFw5ZgbWTT1roK+GHpMh3DK4ONiumMXFFERx3o1r6vEqv1xXYl5DegdlhprMR6fh
- Pssw==
+ bh=PaZvHMvq5UGvPHZJTIR0qZ8hdQBkbCFkuOZ3ZxBhp7k=;
+ b=Mu0/Ng+/9Q7nwlf95MVo2wPbWszu+wj0X3jRZ61bmCmq9/zdBqEKWBnMS1X+JUaCZc
+ wYIc0Ca+N4bpy2GkUegJc9L3E7cKqrFsH22xSAN9rwxLmjTs+Jb1X4gUI2ko5o4TKJjp
+ lMcSD4ZliS7ZMPzo5ZFKzzUXJcqN7xGT/Nttsmi2k08QDDyZSbdzX21+db2hqhj8x3dG
+ AE1Ww/SA0zCBgvDkFVEKdVs5MrPXbJNAmCMUUirbroHZbeBmCv2zR4RUU5Zqg6FOkdae
+ VvfIf0dRd4spZLlUsks6VXORJfN7oJ8LH9d8dSfegZqoaSBRbbY2znMS/7Rowdavut6e
+ MzAQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUULsLWLXlaUp4u3Gzk9ymwKFRTO+RuIV7J2G7oonMuCipm8ADPmXaLDKC+i4g5WnKgjafFM5In0g==@nongnu.org
-X-Gm-Message-State: AOJu0YyS57vpy58lUjBdaAeHDNVQAqgJzDsB4DXBpx4QBhM442XVwu2h
- mEaEWl31KqBwGlBPS2Wp5Rjisgy9SZ6+8yukioL8rFHInoWhfWMSzdhrs26AWaQedgfrR9bS/SN
- c+/+tr0MdcxZ2xrGFxi18v0pW/Kc0wUc8cvSj41zg/2sfHM2NqLVa/A==
-X-Gm-Gg: ASbGnct3I/ruyyoXcccq/3Y839HieiS4p0pQmycWYg0O3Zi/SUPmEWMDh5SdX7M1YbL
- sVm5HVU7jqdqAPnYSLu0Mjp5giFuStNw7WpzI8Kt8tJ+/JUMm6nkwH68dHCQ32zjNFyT9N6H5Wb
- /aUiFQmySOdSry4a+JYuWtr9WRWP4pjZEdTFaqAy4SmRYYCRy2lDz+P7OdUH15p1E30xDE/x/44
- 23Rl4zZgF0WfDTmGse5nIVZnUoFPnMES2k1JQ5CaLunTGzz7C1XYGCK+1YWqRvRHNjdTOHaVR80
- New1QE21Cbz0CmseOeyzAU0VD6nmfVQJt9+jKWavC0tdCbEM0c8E2g==
-X-Received: by 2002:a05:6a21:6d86:b0:263:71ee:51f7 with SMTP id
- adf61e73a8af0-27a9586ba4bmr8962415637.24.1758209129970; 
- Thu, 18 Sep 2025 08:25:29 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHMuah6p8Lj4os8pSCNCMoJDCYCF+l4cBohev7TpDVWRdsoSXdbrjQ5xyeQbkS83C55eyWzwA==
-X-Received: by 2002:a05:6a21:6d86:b0:263:71ee:51f7 with SMTP id
- adf61e73a8af0-27a9586ba4bmr8962380637.24.1758209129561; 
- Thu, 18 Sep 2025 08:25:29 -0700 (PDT)
+ AJvYcCXQ7Cy0IoNsJXv4kOw0bkKCZCSZjJM9ETcEStLYxmoVNy0bgeevufGyEtgwi3wdHuxXoP3E9OG9YA==@nongnu.org
+X-Gm-Message-State: AOJu0YyLBic5nrj/IP1Dl+joetMGlFx/FZOlEMYnluiM21DHzf501wSi
+ 3lY4/IP89HUK8tZJa+ffpFUV+NQKRde1i6dF2JD4Y1LEMQfDsEV9XNqgys3ikgybr3otgTCKwAX
+ ryd6UFs/SHed7SC6j+XhIS0gQsVVmqmYHEJCQ4qhtZS96M7NH9H7CFA==
+X-Gm-Gg: ASbGncsD9QIGdnmsXive8LRjnt7Xone9cxtYX5XzXLLrdzb4K5Eeukf5CaFVkpSpkg+
+ dpckDRW3chq1Tu7xMD6bQoBbN7kfFZ2KvN0E+66+8EcMTRpAkiEbDrDWV4HNzU5SalPg4VH6R6q
+ f7MExiRskBH6TTyiIzhnwSQI2/LplclrPU2ApjUpvY6tfyZ0HObPP7zVScPbJML2DnW3BccpSdI
+ m+EXGjkovsD1Q/Q9AQ8bAXRoYmOYEuftz2UgA5HnRydx3MOYqnhbGjdFfzZCOOF2gsVEWhfJOG+
+ SPMkHYDFip+0gTpC7/IN/xLdq+sj7l2zYsKmcWHg2383nR/b2GTB/g==
+X-Received: by 2002:a05:6a00:1395:b0:771:ec42:1c1e with SMTP id
+ d2e1a72fcca58-77bf9274927mr6708391b3a.16.1758209243996; 
+ Thu, 18 Sep 2025 08:27:23 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEh4YZXnONzvydcwry0JyJmM1lVvZRxCXhgGiNSZ1r9M4aK4I7jrrnQaVsMUnrkDuoLzzmxbQ==
+X-Received: by 2002:a05:6a00:1395:b0:771:ec42:1c1e with SMTP id
+ d2e1a72fcca58-77bf9274927mr6708358b3a.16.1758209243574; 
+ Thu, 18 Sep 2025 08:27:23 -0700 (PDT)
 Received: from armenon-kvm.bengluru.csb ([49.36.110.230])
  by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-77cfc2481d7sm2675512b3a.32.2025.09.18.08.25.21
+ d2e1a72fcca58-77cfc2481d7sm2675512b3a.32.2025.09.18.08.27.14
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 18 Sep 2025 08:25:29 -0700 (PDT)
+ Thu, 18 Sep 2025 08:27:23 -0700 (PDT)
 From: Arun Menon <armenon@redhat.com>
-Date: Thu, 18 Sep 2025 20:53:29 +0530
-Subject: [PATCH v14 12/27] migration: Update qemu_file_get_return_path()
- docs and remove dead checks
+Date: Thu, 18 Sep 2025 20:53:42 +0530
+Subject: [PATCH v14 25/27] migration: Rename post_save() to cleanup_save()
+ and make it void
 MIME-Version: 1.0
-Message-Id: <20250918-propagate_tpm_error-v14-12-36f11a6fb9d3@redhat.com>
+Message-Id: <20250918-propagate_tpm_error-v14-25-36f11a6fb9d3@redhat.com>
 References: <20250918-propagate_tpm_error-v14-0-36f11a6fb9d3@redhat.com>
 In-Reply-To: <20250918-propagate_tpm_error-v14-0-36f11a6fb9d3@redhat.com>
 To: qemu-devel@nongnu.org
@@ -105,22 +105,21 @@ Cc: Peter Xu <peterx@redhat.com>, Fabiano Rosas <farosas@suse.de>,
  Hailiang Zhang <zhanghailiang@xfusion.com>, 
  Stefan Berger <stefanb@linux.vnet.ibm.com>, 
  Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
- Arun Menon <armenon@redhat.com>, 
- =?utf-8?q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
+ Arun Menon <armenon@redhat.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3908; i=armenon@redhat.com;
- h=from:subject:message-id; bh=RY2oIVqr3QDclIGMM+6BjCwpbbpRGE9+Nfi4t5ye/aI=;
- b=owGbwMvMwCWWVaVqcZPfqI/xtFoSQ8YZ5R83zba1WYs8cf/tWXHgzbwnWSeT31ll1Jycey5bO
- e2i77HDHaUsDGJcDLJiiiwNXwNkmwIKIyJtX16HmcPKBDKEgYtTACZy0ofhf/rpT28aPrO0CPCF
- W7N+ckhYECd99+Ihq98v5cKe/peKmcrIMJ+bcckWi+lL2H6sdL8uYSkdLrlWfl+al0n4vwVFl9x
- LWAA=
+X-Developer-Signature: v=1; a=openpgp-sha256; l=6500; i=armenon@redhat.com;
+ h=from:subject:message-id; bh=RA0v69F99I5SRsauN9jKQHb/8Bw3uL+HkXH2toG+G78=;
+ b=owGbwMvMwCWWVaVqcZPfqI/xtFoSQ8YZ5Z99Z2Nk0qR3u6uJX1or/zT/UpjUIwuPD3dPah4qM
+ pO6uMK3o5SFQYyLQVZMkaXha4BsU0BhRKTty+swc1iZQIYwcHEKwET4pRkZnnosOmwso8Fre2ZW
+ 3rRDz2dfF39+99iuqttLtj4IvyNet4Lhr0xyylvmcouOf/wS33+sqOfwfNh2NDDORk/RWH+Vljo
+ HFwA=
 X-Developer-Key: i=armenon@redhat.com; a=openpgp;
  fpr=80F5501D82507158593DE9D76A7A2538D90F328E
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: ydaWg3Mn6AQHRA8MZce95Zr8hPz7UvhtxRqt9sAxPdg_1758209130
+X-Mimecast-MFC-PROC-ID: AYvJO2mRx2drrZcMpcaLstkhRr-gIA3grd3JZwOyaMY_1758209244
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=170.10.129.124; envelope-from=armenon@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
@@ -146,107 +145,175 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The documentation of qemu_file_get_return_path() states that it can
-return NULL on failure. However, a review of the current implementation
-reveals that it is guaranteed that it will always succeed and will never
-return NULL.
+The post_save() function call is responsible for cleaning up resources
+after the device state has been saved.
+Currently it is infallible, and does not return an error.
 
-As a result, the NULL checks post calling the function become redundant.
-This commit updates the documentation for the function and removes all
-NULL checks throughout the migration code.
+It is called regardless of whether there is a preceding error from
+save or subsection save. That is, save and post_save() together are
+considered to be an atomic logical operation.
 
-Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
-Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+It should not be confused as a counterpart of the post_load() function
+because post_load() does some sanity checks and returns an error if it
+fails. This commit, therefore, renames post_save() to cleanup_save()
+and makes it a void function.
+
 Reviewed-by: Fabiano Rosas <farosas@suse.de>
+Suggested-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
 Signed-off-by: Arun Menon <armenon@redhat.com>
 ---
- migration/colo.c      |  4 ----
- migration/migration.c | 12 ++----------
- migration/qemu-file.c |  1 -
- migration/savevm.c    |  4 ----
- 4 files changed, 2 insertions(+), 19 deletions(-)
+ docs/devel/migration/main.rst |  2 +-
+ hw/ppc/spapr_pci.c            |  5 ++---
+ include/migration/vmstate.h   |  2 +-
+ migration/savevm.c            |  5 ++---
+ migration/vmstate.c           | 12 ++++--------
+ target/arm/machine.c          |  6 ++----
+ 6 files changed, 12 insertions(+), 20 deletions(-)
 
-diff --git a/migration/colo.c b/migration/colo.c
-index 642d17487d92c0a9508e599ca3bf524e80b6fd46..07a32044b58541eb9bd7c5e63eb6ca598f8a8933 100644
---- a/migration/colo.c
-+++ b/migration/colo.c
-@@ -847,10 +847,6 @@ static void *colo_process_incoming_thread(void *opaque)
-     failover_init_state();
+diff --git a/docs/devel/migration/main.rst b/docs/devel/migration/main.rst
+index 6493c1d2bca48a2fa34d92f6c0979c215c56b8d5..a39fec2e21c26c4315c0cf13b105176d70679d4d 100644
+--- a/docs/devel/migration/main.rst
++++ b/docs/devel/migration/main.rst
+@@ -439,7 +439,7 @@ The functions to do that are inside a vmstate definition, and are called:
  
-     mis->to_src_file = qemu_file_get_return_path(mis->from_src_file);
--    if (!mis->to_src_file) {
--        error_report("COLO incoming thread: Open QEMUFile to_src_file failed");
--        goto out;
--    }
-     /*
-      * Note: the communication between Primary side and Secondary side
-      * should be sequential, we set the fd to unblocked in migration incoming
-diff --git a/migration/migration.c b/migration/migration.c
-index fcf76cf73595c93e7616ee7341f2e02a598e4e3b..16250faed91781843a572fe1ad4d71a37a2847a4 100644
---- a/migration/migration.c
-+++ b/migration/migration.c
-@@ -2656,12 +2656,9 @@ out:
-     return NULL;
+   This function is called before we save the state of one device.
+ 
+-- ``int (*post_save)(void *opaque);``
++- ``void (*cleanup_save)(void *opaque);``
+ 
+   This function is called after we save the state of one device
+   (even upon failure, unless the call to pre_save returned an error).
+diff --git a/hw/ppc/spapr_pci.c b/hw/ppc/spapr_pci.c
+index 1ac1185825e84ca908fd878f6cbe7e8cacac1d89..135265f075dff502af59fbc91babca1f9a26c54d 100644
+--- a/hw/ppc/spapr_pci.c
++++ b/hw/ppc/spapr_pci.c
+@@ -2118,14 +2118,13 @@ static int spapr_pci_pre_save(void *opaque)
+     return 0;
  }
  
--static int open_return_path_on_source(MigrationState *ms)
-+static void open_return_path_on_source(MigrationState *ms)
+-static int spapr_pci_post_save(void *opaque)
++static void spapr_pci_cleanup_save(void *opaque)
  {
-     ms->rp_state.from_dst_file = qemu_file_get_return_path(ms->to_dst_file);
--    if (!ms->rp_state.from_dst_file) {
--        return -1;
--    }
+     SpaprPhbState *sphb = opaque;
  
-     trace_open_return_path_on_source();
+     g_free(sphb->msi_devs);
+     sphb->msi_devs = NULL;
+     sphb->msi_devs_num = 0;
+-    return 0;
+ }
  
-@@ -2670,8 +2667,6 @@ static int open_return_path_on_source(MigrationState *ms)
-     ms->rp_state.rp_thread_created = true;
+ static int spapr_pci_post_load(void *opaque, int version_id)
+@@ -2152,7 +2151,7 @@ static const VMStateDescription vmstate_spapr_pci = {
+     .version_id = 2,
+     .minimum_version_id = 2,
+     .pre_save = spapr_pci_pre_save,
+-    .post_save = spapr_pci_post_save,
++    .cleanup_save = spapr_pci_cleanup_save,
+     .post_load = spapr_pci_post_load,
+     .fields = (const VMStateField[]) {
+         VMSTATE_UINT64_EQUAL(buid, SpaprPhbState, NULL),
+diff --git a/include/migration/vmstate.h b/include/migration/vmstate.h
+index 5fe9bbf39058d0cf97c1adab54cc516dbe8dc32a..c1d8e5b7a7d9d544fc8ce181372660f5538ef66b 100644
+--- a/include/migration/vmstate.h
++++ b/include/migration/vmstate.h
+@@ -208,7 +208,7 @@ struct VMStateDescription {
+     int (*pre_load)(void *opaque);
+     int (*post_load)(void *opaque, int version_id);
+     int (*pre_save)(void *opaque);
+-    int (*post_save)(void *opaque);
++    void (*cleanup_save)(void *opaque);
+     bool (*needed)(void *opaque);
+     bool (*dev_unplug_pending)(void *opaque);
  
-     trace_open_return_path_on_source_continue();
+diff --git a/migration/savevm.c b/migration/savevm.c
+index 2c05b763148295d7e2095027aa143f45bc4c4676..693f77b728604f2072fb40bd2ec268b217da9727 100644
+--- a/migration/savevm.c
++++ b/migration/savevm.c
+@@ -322,14 +322,13 @@ static int configuration_pre_save(void *opaque)
+     return 0;
+ }
+ 
+-static int configuration_post_save(void *opaque)
++static void configuration_cleanup_save(void *opaque)
+ {
+     SaveState *state = opaque;
+ 
+     g_free(state->capabilities);
+     state->capabilities = NULL;
+     state->caps_count = 0;
+-    return 0;
+ }
+ 
+ static int configuration_pre_load(void *opaque)
+@@ -544,7 +543,7 @@ static const VMStateDescription vmstate_configuration = {
+     .pre_load = configuration_pre_load,
+     .post_load = configuration_post_load,
+     .pre_save = configuration_pre_save,
+-    .post_save = configuration_post_save,
++    .cleanup_save = configuration_cleanup_save,
+     .fields = (const VMStateField[]) {
+         VMSTATE_UINT32(len, SaveState),
+         VMSTATE_VBUFFER_ALLOC_UINT32(name, SaveState, 0, NULL, len),
+diff --git a/migration/vmstate.c b/migration/vmstate.c
+index ad8e5b71ae2ce78e66a6426602e5c20405ec57c0..a7562a5cfd8627e20c90e286e35c5e3429c48150 100644
+--- a/migration/vmstate.c
++++ b/migration/vmstate.c
+@@ -529,8 +529,8 @@ int vmstate_save_state_v(QEMUFile *f, const VMStateDescription *vmsd,
+                 if (ret) {
+                     error_setg(errp, "Save of field %s/%s failed",
+                                 vmsd->name, field->name);
+-                    if (vmsd->post_save) {
+-                        vmsd->post_save(opaque);
++                    if (vmsd->cleanup_save) {
++                        vmsd->cleanup_save(opaque);
+                     }
+                     return ret;
+                 }
+@@ -557,12 +557,8 @@ int vmstate_save_state_v(QEMUFile *f, const VMStateDescription *vmsd,
+ 
+     ret = vmstate_subsection_save(f, vmsd, opaque, vmdesc, errp);
+ 
+-    if (vmsd->post_save) {
+-        int ps_ret = vmsd->post_save(opaque);
+-        if (!ret && ps_ret) {
+-            ret = ps_ret;
+-            error_setg(errp, "post-save failed: %s", vmsd->name);
+-        }
++    if (vmsd->cleanup_save) {
++        vmsd->cleanup_save(opaque);
+     }
+     return ret;
+ }
+diff --git a/target/arm/machine.c b/target/arm/machine.c
+index 6666a0c50c45504082f02fab42f499ca58dc3597..cb6b9ee653915cd07b7d93e2c9ec63be1a3365a0 100644
+--- a/target/arm/machine.c
++++ b/target/arm/machine.c
+@@ -883,15 +883,13 @@ static int cpu_pre_save(void *opaque)
+     return 0;
+ }
+ 
+-static int cpu_post_save(void *opaque)
++static void cpu_cleanup_save(void *opaque)
+ {
+     ARMCPU *cpu = opaque;
+ 
+     if (!kvm_enabled()) {
+         pmu_op_finish(&cpu->env);
+     }
 -
 -    return 0;
  }
  
- /* Return true if error detected, or false otherwise */
-@@ -4020,10 +4015,7 @@ void migration_connect(MigrationState *s, Error *error_in)
-      * QEMU uses the return path.
-      */
-     if (migrate_postcopy_ram() || migrate_return_path()) {
--        if (open_return_path_on_source(s)) {
--            error_setg(&local_err, "Unable to open return-path for postcopy");
--            goto fail;
--        }
-+        open_return_path_on_source(s);
-     }
- 
-     /*
-diff --git a/migration/qemu-file.c b/migration/qemu-file.c
-index b6ac190034f777dbde0da1598483a892089d7538..f9ccee9a1091ecbd37e6b7d2081a4446442b544d 100644
---- a/migration/qemu-file.c
-+++ b/migration/qemu-file.c
-@@ -125,7 +125,6 @@ static QEMUFile *qemu_file_new_impl(QIOChannel *ioc, bool is_writable)
- 
- /*
-  * Result: QEMUFile* for a 'return path' for comms in the opposite direction
-- *         NULL if not available
-  */
- QEMUFile *qemu_file_get_return_path(QEMUFile *f)
- {
-diff --git a/migration/savevm.c b/migration/savevm.c
-index c8234f2ef7f413b207aebae7192c82f1f4d6d91d..d54028b1be4d7a1e4615c2b05611535bd7478e2b 100644
---- a/migration/savevm.c
-+++ b/migration/savevm.c
-@@ -2588,10 +2588,6 @@ static int loadvm_process_command(QEMUFile *f, Error **errp)
-             return 0;
-         }
-         mis->to_src_file = qemu_file_get_return_path(f);
--        if (!mis->to_src_file) {
--            error_setg(errp, "CMD_OPEN_RETURN_PATH failed");
--            return -1;
--        }
- 
-         /*
-          * Switchover ack is enabled but no device uses it, so send an ACK to
+ static int cpu_pre_load(void *opaque)
+@@ -1028,7 +1026,7 @@ const VMStateDescription vmstate_arm_cpu = {
+     .version_id = 22,
+     .minimum_version_id = 22,
+     .pre_save = cpu_pre_save,
+-    .post_save = cpu_post_save,
++    .cleanup_save = cpu_cleanup_save,
+     .pre_load = cpu_pre_load,
+     .post_load = cpu_post_load,
+     .fields = (const VMStateField[]) {
 
 -- 
 2.51.0

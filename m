@@ -4,106 +4,132 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E21BECAC59A
-	for <qemu-arm@archiver.kernel.org>; Thu, 18 Sep 2025 15:26:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8FFC1CA1013
+	for <qemu-arm@archiver.kernel.org>; Thu, 18 Sep 2025 15:26:27 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uzGWW-0006xw-GI; Thu, 18 Sep 2025 11:26:16 -0400
+	id 1uzGWJ-0005xG-1t; Thu, 18 Sep 2025 11:26:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uzGWU-0006tJ-IQ
- for qemu-arm@nongnu.org; Thu, 18 Sep 2025 11:26:14 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <armenon@redhat.com>)
+ id 1uzGWC-0005kM-9k
+ for qemu-arm@nongnu.org; Thu, 18 Sep 2025 11:25:58 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1uzGWS-00038R-J7
- for qemu-arm@nongnu.org; Thu, 18 Sep 2025 11:26:14 -0400
+ (Exim 4.90_1) (envelope-from <armenon@redhat.com>)
+ id 1uzGW8-00033V-6D
+ for qemu-arm@nongnu.org; Thu, 18 Sep 2025 11:25:55 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1758209171;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
+ s=mimecast20190719; t=1758209151;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=60bh1/8KDe5Bli2xGeThDg2WbIb0AYpA+zhbjhLgDGc=;
- b=WzfGcXuGuUfkFOtpWHbSwPSRikC0U0ICxz0tLXu6pwq76JIaXsCF7kTlVywT2nuDnrG8Ma
- EOEd32HZ1uOOWV8pGodRHY9vrwyG0bh4jCo0OsdYXqq2dvJdRPgFjU9YXw9kX3Xc+fdNsU
- KT3VgMvB+4x0SZALovGTrCYHA1Xhzik=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=sTWUNM+v16RdqicPQUSVUg/HZymrt0SY9y6hBqA0bZE=;
+ b=Mak4pHFms+zVwy9a+1psRsY42ZRQ8J2IYCbEL2WCr0mt+DGVY+dnzxKER+yYc5b+NT54AS
+ tw8PryG0uoAJwOtJNpOGu1sGMZBBUyWZdg3EU6a1gR4znEQjaOK6ahHXKaqtMLSSpogKz5
+ SeZvJUMSqjES3opZ4FNyyR4pm5dBTxo=
+Received: from mail-pf1-f197.google.com (mail-pf1-f197.google.com
+ [209.85.210.197]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-222-aqAvPsVYN6yMIGBWPeifdw-1; Thu, 18 Sep 2025 11:26:10 -0400
-X-MC-Unique: aqAvPsVYN6yMIGBWPeifdw-1
-X-Mimecast-MFC-AGG-ID: aqAvPsVYN6yMIGBWPeifdw_1758209169
-Received: by mail-wm1-f71.google.com with SMTP id
- 5b1f17b1804b1-45f2c41c819so7345265e9.2
- for <qemu-arm@nongnu.org>; Thu, 18 Sep 2025 08:26:10 -0700 (PDT)
+ us-mta-119-7b3A45A0OHSNKw94X9RAUA-1; Thu, 18 Sep 2025 11:25:48 -0400
+X-MC-Unique: 7b3A45A0OHSNKw94X9RAUA-1
+X-Mimecast-MFC-AGG-ID: 7b3A45A0OHSNKw94X9RAUA_1758209147
+Received: by mail-pf1-f197.google.com with SMTP id
+ d2e1a72fcca58-77615793f06so1170687b3a.0
+ for <qemu-arm@nongnu.org>; Thu, 18 Sep 2025 08:25:48 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1758209169; x=1758813969;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=60bh1/8KDe5Bli2xGeThDg2WbIb0AYpA+zhbjhLgDGc=;
- b=IKB8KAJ+tfcmDBA3dv2VgVrW3gzhOkSnBkgx5RR5GzMqJ/GdCla9dXNgRh0GfvOkXA
- utC3Xag+fDRudgjHI03m93SVayoqruv6ZfvuuZvKlRir/gN/SSRqH6m3orhcMNzJm6Mn
- swyHXALPlM1v6gf1WZSDPfZ18W+YQJdqwtZHuETONbZjIzq5tP7zr5nzvducmruhGbz9
- Kr1q2bxBn6m129alpNHY8Zk4LU1XDETzvSoXoRYNVU4HxaLRkWTFOgaNQtwmbtrULvVS
- f4lJ0C90IYJl+mza3um1Eh51t3FEdnQ+ATbLTVtie7SXqeLl1K9wtdxtfzW5W4hap1vu
- ZggA==
-X-Gm-Message-State: AOJu0YyL8ZFXp5Nve8hQgNJAjHhdMgKxCYx5ucTB/tuH/GlQ1qyjx2Fm
- hgk/lq1YNFxvCbMANAFHkqOiiYRyAqP4S/UZcog31JGnKK+b+oTJY+fDyAbJx3tXhMWgACESxJK
- eQtpLfXzP6UwUT+glN9ARE6ovWQh/hclR6xoWJNK+t3+2sN4T36QrjA==
-X-Gm-Gg: ASbGncuUg+vY6AFt515cSK2oduww3dcNvLocTxNd+WRtL7jJhDqpZo203v61bj4JNxU
- f22zrzc+PRKIC9bPai+/bq1yy+LN3npG5DvWbp4pDMDaZ6TxDA8C9crWFqr/cn29OIwzlO+1wgj
- zQbEShXN6XuECUbVb/z7lrASyoHEa1meztrfop9nwY0MzneaMDub1RnBDM8yRSHnZQh/anWvWze
- gIYiv8NC8Fv6JbDpr/3kW/fslUKqExm+cmDkSMl7ycRY+sAOS4XSWTL7XBa3vLiWAtHnaW1Ko0Q
- jKRtnhaMNaJVmwk2JP0zyc/ri2PV5lRP4hKt5WJsG0nUF1bhFrGUv00QEu8gcitv/zJziQRSELx
- RrfUI8dwKKpY=
-X-Received: by 2002:a05:600c:4eca:b0:45b:79fd:cb3d with SMTP id
- 5b1f17b1804b1-4634c528acamr48192835e9.36.1758209168701; 
- Thu, 18 Sep 2025 08:26:08 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGEtQw7Ad4RC9Ve+flPRrpO5OIZ1reWlCMCoXq69hJMRKQIk5PW42Rnui+NeQkSFExCkaGLOA==
-X-Received: by 2002:a05:600c:4eca:b0:45b:79fd:cb3d with SMTP id
- 5b1f17b1804b1-4634c528acamr48192565e9.36.1758209168259; 
- Thu, 18 Sep 2025 08:26:08 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ d=1e100.net; s=20230601; t=1758209147; x=1758813947;
+ h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+ :mime-version:subject:date:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=sTWUNM+v16RdqicPQUSVUg/HZymrt0SY9y6hBqA0bZE=;
+ b=U22wtOrUFAqH0XbKRzdm3hgBy09oVPkaGmVdQqqcbUrDSE2hUU1/HCUW6/IAiy3Ga6
+ aKjyBmLDj5B8wISu+ruX25WoniMiZiqeGVp+i15++DRh0Arok7rOO6kxJUmFGjjSDGXU
+ MYk/6HiZ6JCpgQf8+1cXMuhBkzUDQd823JOnThlIWA76FN2WJyRdvcxJk+SNxiSDRhuH
+ 3IH1BN0yoDqfMDVBNJMOms49QQGfDP2szwwOgeNvSh5f2ikArx7+r2PL5sfRRh41u0tT
+ M8bAJZ7m4eG8irq2QCjT3u/gc526hm4r38VG7MHwFzRMjL/V+iO40NnF8SBWrDbvvCz4
+ EgsA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXzRMIFVvwfEzqU37ArQVadrrqh3L5QZVO9+tetUN4OtPgXYNY2E0PTt18kvV424VnboiiV2qjH2A==@nongnu.org
+X-Gm-Message-State: AOJu0YzMw7lmZUSGBbFVRQXo0ptaH+PFg2tVT3vDKDHzWCp4WfmduRJA
+ j4bSmVgVnmSVlG+FydKgK5gMKrZroMnx1CXEgpcNSJnkKoY5Hktf7q2sGCQHz8TrRu1MsOX5hts
+ V/ME0JvefDeYCphFd948IqI07+Hiy5+rLg5JSkpP1D3caR2vv5nRUKw==
+X-Gm-Gg: ASbGncsMzkmZ37YpsvucXgc9q1FNIYxR3x6Pva36IBVFvvf3U+VlQNVTfh/DOVxEKcb
+ Q3+8UtqCv3TEi3EqNHzEf3hZFepLctC9445zPTU769TXU4yJin3VkuVxMHbfpSdCS06rObBLcxI
+ XoHmWYkKnLIS1a8VqtkrLSey6in1l9Ms7Kixza03jA7dwSef6sQUpl4T2qgsdxZ8in90cq12UJL
+ 96PqW30/x9HGuquk7NOHf92fpmMpbIvAREeCbmizK5u3qU0sdJ6aoW0zn9nucRfXvxbSlgZWKWA
+ aGLLqeZQPJJS80R/8+XdZOOHNDFK++BwmEnH5RDSQA5EllOKe0oSQg==
+X-Received: by 2002:a05:6a00:2e94:b0:772:86aa:ed0a with SMTP id
+ d2e1a72fcca58-77bf9074a10mr7866386b3a.25.1758209147135; 
+ Thu, 18 Sep 2025 08:25:47 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFL3TrqGnADVsga37YrtTY8aAsF5vQqest3wrqepncC63N9W8kxEjr8izw20zTt3Sy8FTA0hg==
+X-Received: by 2002:a05:6a00:2e94:b0:772:86aa:ed0a with SMTP id
+ d2e1a72fcca58-77bf9074a10mr7866343b3a.25.1758209146747; 
+ Thu, 18 Sep 2025 08:25:46 -0700 (PDT)
+Received: from armenon-kvm.bengluru.csb ([49.36.110.230])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-464f5d053f2sm46067075e9.20.2025.09.18.08.26.07
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 18 Sep 2025 08:26:07 -0700 (PDT)
-Message-ID: <22caf6ef-e1ba-4465-b587-baffb3ce4618@redhat.com>
-Date: Thu, 18 Sep 2025 17:26:06 +0200
+ d2e1a72fcca58-77cfc2481d7sm2675512b3a.32.2025.09.18.08.25.38
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 18 Sep 2025 08:25:46 -0700 (PDT)
+From: Arun Menon <armenon@redhat.com>
+Date: Thu, 18 Sep 2025 20:53:31 +0530
+Subject: [PATCH v14 14/27] migration: push Error **errp into
+ ram_postcopy_incoming_init()
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/2] target/arm/kvm: add kvm-psci-version vcpu property
-To: Sebastian Ott <sebott@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini <pbonzini@redhat.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, kvm@vger.kernel.org,
- kvmarm@lists.linux.dev
-References: <20250911144923.24259-1-sebott@redhat.com>
- <20250911144923.24259-3-sebott@redhat.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20250911144923.24259-3-sebott@redhat.com>
+Message-Id: <20250918-propagate_tpm_error-v14-14-36f11a6fb9d3@redhat.com>
+References: <20250918-propagate_tpm_error-v14-0-36f11a6fb9d3@redhat.com>
+In-Reply-To: <20250918-propagate_tpm_error-v14-0-36f11a6fb9d3@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Peter Xu <peterx@redhat.com>, Fabiano Rosas <farosas@suse.de>, 
+ =?utf-8?q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>, 
+ Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>, 
+ Dmitry Osipenko <dmitry.osipenko@collabora.com>, 
+ "Michael S. Tsirkin" <mst@redhat.com>, 
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
+ Cornelia Huck <cohuck@redhat.com>, Halil Pasic <pasic@linux.ibm.com>, 
+ Eric Farman <farman@linux.ibm.com>, Thomas Huth <thuth@redhat.com>, 
+ Christian Borntraeger <borntraeger@linux.ibm.com>, 
+ Matthew Rosato <mjrosato@linux.ibm.com>, 
+ Richard Henderson <richard.henderson@linaro.org>, 
+ David Hildenbrand <david@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>, 
+ Nicholas Piggin <npiggin@gmail.com>, 
+ Harsh Prateek Bora <harshpb@linux.ibm.com>, 
+ Paolo Bonzini <pbonzini@redhat.com>, Fam Zheng <fam@euphon.net>, 
+ Alex Williamson <alex.williamson@redhat.com>, 
+ =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>, 
+ Steve Sistare <steven.sistare@oracle.com>, 
+ =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>, 
+ qemu-s390x@nongnu.org, qemu-ppc@nongnu.org, 
+ Hailiang Zhang <zhanghailiang@xfusion.com>, 
+ Stefan Berger <stefanb@linux.vnet.ibm.com>, 
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
+ Arun Menon <armenon@redhat.com>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=4806; i=armenon@redhat.com;
+ h=from:subject:message-id; bh=NxHIEIcsn6ki3pjI+1SDVs7doJTeFpfWjxBGpIKPSXQ=;
+ b=owGbwMvMwCWWVaVqcZPfqI/xtFoSQ8YZ5R+NcxU3blCK7/XnCb/Vt3dbtUzH1pAnilctjikKK
+ 2SHp2zqKGVhEONikBVTZGn4GiDbFFAYEWn78jrMHFYmkCEMXJwCMJEqb0aGi8tuXeBqVmTVsfps
+ qaql+OFkyWGrJyLz75+0Zp5/Lzkmh+GvxL+FinP7ynkcGGa42H2+8ufpe1O1brdJD7XCpp74uEy
+ DGwA=
+X-Developer-Key: i=armenon@redhat.com; a=openpgp;
+ fpr=80F5501D82507158593DE9D76A7A2538D90F328E
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: vDWUMGUrqsTTbWzxor2cmlEpqlO06RmJ6_WXN9epLY0_1758209169
+X-Mimecast-MFC-PROC-ID: x-Sdsbg_fq8zViDwcM_lWCh6hJ9vnnM1hny3yeAJjCw_1758209147
 X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=armenon@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.005,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -116,167 +142,125 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Sebastian,
+This is an incremental step in converting vmstate loading
+code to report error via Error objects instead of directly
+printing it to console/monitor.
+It is ensured that ram_postcopy_incoming_init() must report an error
+in errp, in case of failure.
 
-On 9/11/25 4:49 PM, Sebastian Ott wrote:
-> Provide a kvm specific vcpu property to override the default
-> (as of kernel v6.13 that would be PSCI v1.3) PSCI version emulated
-> by kvm. Current valid values are: 0.1, 0.2, 1.0, 1.1, 1.2, and 1.3
->
-> Signed-off-by: Sebastian Ott <sebott@redhat.com>
-> ---
->  docs/system/arm/cpu-features.rst |  5 +++
->  target/arm/cpu.h                 |  6 +++
->  target/arm/kvm.c                 | 70 +++++++++++++++++++++++++++++++-
->  3 files changed, 80 insertions(+), 1 deletion(-)
->
-> diff --git a/docs/system/arm/cpu-features.rst b/docs/system/arm/cpu-features.rst
-> index 37d5dfd15b..1d32ce0fee 100644
-> --- a/docs/system/arm/cpu-features.rst
-> +++ b/docs/system/arm/cpu-features.rst
-> @@ -204,6 +204,11 @@ the list of KVM VCPU features and their descriptions.
->    the guest scheduler behavior and/or be exposed to the guest
->    userspace.
->  
-> +``kvm-psci-version``
-> +  Override the default (as of kernel v6.13 that would be PSCI v1.3)
-> +  PSCI version emulated by the kernel. Current valid values are:
-> +  0.1, 0.2, 1.0, 1.1, 1.2, and 1.3
-> +
->  TCG VCPU Features
->  =================
->  
-> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> index c15d79a106..44292aab32 100644
-> --- a/target/arm/cpu.h
-> +++ b/target/arm/cpu.h
-> @@ -974,6 +974,12 @@ struct ArchCPU {
->       */
->      uint32_t psci_version;
->  
-> +    /*
-> +     * Intermediate value used during property parsing.
-> +     * Once finalized, the value should be read from psci_version.
-> +     */
-> +    uint32_t prop_psci_version;
-> +
->      /* Current power state, access guarded by BQL */
->      ARMPSCIState power_state;
->  
-> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-> index 6672344855..bc6073f395 100644
-> --- a/target/arm/kvm.c
-> +++ b/target/arm/kvm.c
-> @@ -483,6 +483,59 @@ static void kvm_steal_time_set(Object *obj, bool value, Error **errp)
->      ARM_CPU(obj)->kvm_steal_time = value ? ON_OFF_AUTO_ON : ON_OFF_AUTO_OFF;
->  }
->  
-> +static char *kvm_get_psci_version(Object *obj, Error **errp)
-> +{
-> +    ARMCPU *cpu = ARM_CPU(obj);
-> +    const char *val;
-> +
-> +    switch (cpu->prop_psci_version) {
-> +    case QEMU_PSCI_VERSION_0_1:
-> +        val = "0.1";
-> +        break;
-> +    case QEMU_PSCI_VERSION_0_2:
-> +        val = "0.2";
-> +        break;
-> +    case QEMU_PSCI_VERSION_1_0:
-> +        val = "1.0";
-> +        break;
-> +    case QEMU_PSCI_VERSION_1_1:
-> +        val = "1.1";
-> +        break;
-> +    case QEMU_PSCI_VERSION_1_2:
-> +        val = "1.2";
-> +        break;
-> +    case QEMU_PSCI_VERSION_1_3:
-> +        val = "1.3";
-> +        break;
-> +    default:
-> +        val = "0.2";
-can you explain why you return 0.2 by default? Shouldn't we report the
-default value exposed by KVM?
-> +        break;
-> +    }
-> +    return g_strdup(val);
-> +}
-> +
-> +static void kvm_set_psci_version(Object *obj, const char *value, Error **errp)
-> +{
-> +    ARMCPU *cpu = ARM_CPU(obj);
-> +
-> +    if (!strcmp(value, "0.1")) {
-> +        cpu->prop_psci_version = QEMU_PSCI_VERSION_0_1;
-> +    } else if (!strcmp(value, "0.2")) {
-> +        cpu->prop_psci_version = QEMU_PSCI_VERSION_0_2;
-> +    } else if (!strcmp(value, "1.0")) {
-> +        cpu->prop_psci_version = QEMU_PSCI_VERSION_1_0;
-> +    } else if (!strcmp(value, "1.1")) {
-> +        cpu->prop_psci_version = QEMU_PSCI_VERSION_1_1;
-> +    } else if (!strcmp(value, "1.2")) {
-> +        cpu->prop_psci_version = QEMU_PSCI_VERSION_1_2;
-> +    } else if (!strcmp(value, "1.3")) {
-> +        cpu->prop_psci_version = QEMU_PSCI_VERSION_1_3;
-> +    } else {
-> +        error_setg(errp, "Invalid PSCI-version value");
-> +        error_append_hint(errp, "Valid values are 0.1, 0.2, 1.0, 1.1, 1.2, 1.3\n");
-> +    }
-> +}
-> +
->  /* KVM VCPU properties should be prefixed with "kvm-". */
->  void kvm_arm_add_vcpu_properties(ARMCPU *cpu)
->  {
-> @@ -504,6 +557,12 @@ void kvm_arm_add_vcpu_properties(ARMCPU *cpu)
->                               kvm_steal_time_set);
->      object_property_set_description(obj, "kvm-steal-time",
->                                      "Set off to disable KVM steal time.");
-> +
-> +    object_property_add_str(obj, "kvm-psci-version", kvm_get_psci_version,
-> +                            kvm_set_psci_version);
-> +    object_property_set_description(obj, "kvm-psci-version",
-> +                                    "Set PSCI version. "
-> +                                    "Valid values are 0.1, 0.2, 1.0, 1.1, 1.2, 1.3");
->  }
->  
->  bool kvm_arm_pmu_supported(void)
-> @@ -1883,7 +1942,8 @@ int kvm_arch_init_vcpu(CPUState *cs)
->      if (cs->start_powered_off) {
->          cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_POWER_OFF;
->      }
-> -    if (kvm_check_extension(cs->kvm_state, KVM_CAP_ARM_PSCI_0_2)) {
-> +    if (cpu->prop_psci_version != QEMU_PSCI_VERSION_0_1 &&
-> +        kvm_check_extension(cs->kvm_state, KVM_CAP_ARM_PSCI_0_2)) {
-I don't get why this change is needed. Please can you explain?
+Reviewed-by: Fabiano Rosas <farosas@suse.de>
+Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Signed-off-by: Arun Menon <armenon@redhat.com>
+---
+ migration/postcopy-ram.c | 9 ++++++---
+ migration/postcopy-ram.h | 2 +-
+ migration/ram.c          | 4 ++--
+ migration/ram.h          | 2 +-
+ migration/savevm.c       | 2 +-
+ 5 files changed, 11 insertions(+), 8 deletions(-)
 
+diff --git a/migration/postcopy-ram.c b/migration/postcopy-ram.c
+index 45af9a361e8eacaad0fb217a5da2c5004416c1da..05617e5fbcad62226a54fe17d9f7d9a316baf1e4 100644
+--- a/migration/postcopy-ram.c
++++ b/migration/postcopy-ram.c
+@@ -681,6 +681,7 @@ out:
+  */
+ static int init_range(RAMBlock *rb, void *opaque)
+ {
++    Error **errp = opaque;
+     const char *block_name = qemu_ram_get_idstr(rb);
+     void *host_addr = qemu_ram_get_host_addr(rb);
+     ram_addr_t offset = qemu_ram_get_offset(rb);
+@@ -701,6 +702,8 @@ static int init_range(RAMBlock *rb, void *opaque)
+      * (Precopy will just overwrite this data, so doesn't need the discard)
+      */
+     if (ram_discard_range(block_name, 0, length)) {
++        error_setg(errp, "failed to discard RAM block %s len=%zu",
++                   block_name, length);
+         return -1;
+     }
+ 
+@@ -749,9 +752,9 @@ static int cleanup_range(RAMBlock *rb, void *opaque)
+  * postcopy later; must be called prior to any precopy.
+  * called from arch_init's similarly named ram_postcopy_incoming_init
+  */
+-int postcopy_ram_incoming_init(MigrationIncomingState *mis)
++int postcopy_ram_incoming_init(MigrationIncomingState *mis, Error **errp)
+ {
+-    if (foreach_not_ignored_block(init_range, NULL)) {
++    if (foreach_not_ignored_block(init_range, errp)) {
+         return -1;
+     }
+ 
+@@ -1703,7 +1706,7 @@ bool postcopy_ram_supported_by_host(MigrationIncomingState *mis, Error **errp)
+     return false;
+ }
+ 
+-int postcopy_ram_incoming_init(MigrationIncomingState *mis)
++int postcopy_ram_incoming_init(MigrationIncomingState *mis, Error **errp)
+ {
+     error_report("postcopy_ram_incoming_init: No OS support");
+     return -1;
+diff --git a/migration/postcopy-ram.h b/migration/postcopy-ram.h
+index 3852141d7e37ab18bada4b46c137fef0969d0070..ca19433b246893fa5105bcebffb442c58a9a4f48 100644
+--- a/migration/postcopy-ram.h
++++ b/migration/postcopy-ram.h
+@@ -30,7 +30,7 @@ int postcopy_ram_incoming_setup(MigrationIncomingState *mis);
+  * postcopy later; must be called prior to any precopy.
+  * called from ram.c's similarly named ram_postcopy_incoming_init
+  */
+-int postcopy_ram_incoming_init(MigrationIncomingState *mis);
++int postcopy_ram_incoming_init(MigrationIncomingState *mis, Error **errp);
+ 
+ /*
+  * At the end of a migration where postcopy_ram_incoming_init was called.
+diff --git a/migration/ram.c b/migration/ram.c
+index 7208bc114fb5c366740db380ee6956a91b3871a0..6a0dcc04f436524a37672c41c38f201f06773374 100644
+--- a/migration/ram.c
++++ b/migration/ram.c
+@@ -3716,9 +3716,9 @@ static int ram_load_cleanup(void *opaque)
+  * postcopy-ram. postcopy-ram's similarly names
+  * postcopy_ram_incoming_init does the work.
+  */
+-int ram_postcopy_incoming_init(MigrationIncomingState *mis)
++int ram_postcopy_incoming_init(MigrationIncomingState *mis, Error **errp)
+ {
+-    return postcopy_ram_incoming_init(mis);
++    return postcopy_ram_incoming_init(mis, errp);
+ }
+ 
+ /**
+diff --git a/migration/ram.h b/migration/ram.h
+index 921c39a2c5c45bc2344be80854c46e4c10c09aeb..275709a99187f9429ccb4111e05281ec268ba0db 100644
+--- a/migration/ram.h
++++ b/migration/ram.h
+@@ -86,7 +86,7 @@ void ram_postcopy_migrated_memory_release(MigrationState *ms);
+ void ram_postcopy_send_discard_bitmap(MigrationState *ms);
+ /* For incoming postcopy discard */
+ int ram_discard_range(const char *block_name, uint64_t start, size_t length);
+-int ram_postcopy_incoming_init(MigrationIncomingState *mis);
++int ram_postcopy_incoming_init(MigrationIncomingState *mis, Error **errp);
+ int ram_load_postcopy(QEMUFile *f, int channel);
+ 
+ void ram_handle_zero(void *host, uint64_t size);
+diff --git a/migration/savevm.c b/migration/savevm.c
+index c079942b7ecb959b3b668b977174d906f73c2777..a1b606318f2ae8feff42b759ad308ebbd07318b7 100644
+--- a/migration/savevm.c
++++ b/migration/savevm.c
+@@ -1989,7 +1989,7 @@ static int loadvm_postcopy_handle_advise(MigrationIncomingState *mis,
+         return -1;
+     }
+ 
+-    if (ram_postcopy_incoming_init(mis)) {
++    if (ram_postcopy_incoming_init(mis, NULL) < 0) {
+         return -1;
+     }
+ 
 
->          cpu->psci_version = QEMU_PSCI_VERSION_0_2;
->          cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_PSCI_0_2;
->      }
-> @@ -1922,6 +1982,14 @@ int kvm_arch_init_vcpu(CPUState *cs)
->          }
->      }
->  
-> +    if (cpu->prop_psci_version) {
-> +        psciver = cpu->prop_psci_version;
-> +        ret = kvm_set_one_reg(cs, KVM_REG_ARM_PSCI_VERSION, &psciver);
-> +        if (ret) {
-> +            error_report("PSCI version %lx is not supported by KVM", psciver);
-don't you need a PRIx64 here?
-> +            return ret;
-> +        }
-> +    }
->      /*
->       * KVM reports the exact PSCI version it is implementing via a
->       * special sysreg. If it is present, use its contents to determine
-Thanks
-
-Eric
+-- 
+2.51.0
 
 

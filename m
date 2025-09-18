@@ -4,133 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C397CCAC59A
-	for <qemu-arm@archiver.kernel.org>; Thu, 18 Sep 2025 06:29:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1BD4BCAC597
+	for <qemu-arm@archiver.kernel.org>; Thu, 18 Sep 2025 06:42:50 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uz88x-00050a-Fd; Thu, 18 Sep 2025 02:29:23 -0400
+	id 1uz8LM-0001Gx-S8; Thu, 18 Sep 2025 02:42:13 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armenon@redhat.com>)
- id 1uz88e-0004vh-1O
- for qemu-arm@nongnu.org; Thu, 18 Sep 2025 02:29:04 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <SRS0=jpNI=35=kaod.org=clg@ozlabs.org>)
+ id 1uz8LL-0001GV-0K; Thu, 18 Sep 2025 02:42:11 -0400
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armenon@redhat.com>)
- id 1uz88X-0008Fv-Vp
- for qemu-arm@nongnu.org; Thu, 18 Sep 2025 02:29:03 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1758176934;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=LvEwLI90derZxIaabTS7qjgomldNwvo6k5kFFugHx98=;
- b=dnZWZJdPRaE4hoVZmoek2zkUiSXl+dofHVykOvyAnEzAqMZucya2+Kmug+ZYO/T71A8S2a
- Jy5g7s2JL7H7zFw9fNaJiTzthqepOAc0wH3l2G3PK12DXQJwxUN8SGSheNWJ+AEq9V+SiR
- A+fXUZjjDQ7gjVbcAMvrxXJ+WDepfQQ=
-Received: from mail-pg1-f197.google.com (mail-pg1-f197.google.com
- [209.85.215.197]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-3-mfPQpH-_OdGLERyuJ0zFVA-1; Thu, 18 Sep 2025 02:28:53 -0400
-X-MC-Unique: mfPQpH-_OdGLERyuJ0zFVA-1
-X-Mimecast-MFC-AGG-ID: mfPQpH-_OdGLERyuJ0zFVA_1758176932
-Received: by mail-pg1-f197.google.com with SMTP id
- 41be03b00d2f7-b54df707c1cso444313a12.2
- for <qemu-arm@nongnu.org>; Wed, 17 Sep 2025 23:28:53 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1758176932; x=1758781732;
- h=in-reply-to:content-transfer-encoding:content-disposition
- :mime-version:references:reply-to:message-id:subject:cc:to:from:date
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=LvEwLI90derZxIaabTS7qjgomldNwvo6k5kFFugHx98=;
- b=CLRMLRk3OWwuvv+xrtrybMdg046u7HhcjdZlYxsHF58Gk7k8APnnI4J3YiM/yYQ4GL
- q4AdTmV+zka9jL38x/nlNqXtjkTMsyT7PJn626EtSThb6hxmJux1iR2b8SxaLXlMUJme
- zKOqwsPyLaSB80kFek9gq/hVWWcGeNGhg7wYhKVmOQPHD2LKZ/qjiCVW5IpC9PEUVndz
- fSpC96c2+TU1lc8RMeIOsHAYpBDu6B8ZGPVqKGAbg4VeDZZW254oPDb0PD3xiB8s1JS9
- uVTUZDlIW2WjBoaqndve6r5amsQGCHp4tjhK12edzsu/6mdGSM86KDy0Rl9Eo8ycm3pa
- DnBA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUGdLxAeV/DjeBYnDfDy5NfYROGAr6d/jiag0bO0UojEpCDVWvl/nP3TkgEggB9n57fo14vkFvkMw==@nongnu.org
-X-Gm-Message-State: AOJu0YwateONxd4wg+7hSKHtKCAjWnbl4OMGScjn6e7GFZGEn1d7mrIS
- vfqOssLRdcHWdGjmHy1cvggUdCMDbGgAvqSxzU8W1Py+wszph3PecxF43+UwYD5vowECwoLjGW5
- e9fcw95L1ZIqLun1Z6adXlIQ2iHpJ6UF+IwoS6KLGm1JD4+zn9u12SA==
-X-Gm-Gg: ASbGnctPHQogEUN1RCK+DG7/uRdnqolE2iXFUO53keb4MGaCRpV6UkGvkC8uRG/CUHp
- XuxAyoClCM6boJBxuP6tcWvaDVD8YxOPY16gy5aVeFpff9rLt4sWFPhEVYE6bk5qG9u4llQcLIo
- 3WbUpY8WZvULpE84I7hlXGi1Q9WI8OF3XntFgz9Qr5iJRB5tI8bvgwd8b+maDBbJ8213JXY+DQ+
- s+oDgvfFlXq9GJg6GilBGn1GWgqWKPYIhCBeM84VNuAWiR/0fL5gc/gSckcRMn6EDfzoTNRrpLp
- 4ifPukl689Ro7Sy5P9OXvsVCYNzKsbdPeREzqh6ISGgG5gmU2iQ4Jw==
-X-Received: by 2002:a05:6a20:a11f:b0:24a:b2eb:6675 with SMTP id
- adf61e73a8af0-27a94cef89fmr6447651637.13.1758176932229; 
- Wed, 17 Sep 2025 23:28:52 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGQUbV6oS8xnqns0BgFRJHguu2aB4L4aKSStOk5GxR3mBfteFzahWSkQdiiAkzSTyM983M8cQ==
-X-Received: by 2002:a05:6a20:a11f:b0:24a:b2eb:6675 with SMTP id
- adf61e73a8af0-27a94cef89fmr6447593637.13.1758176931619; 
- Wed, 17 Sep 2025 23:28:51 -0700 (PDT)
-Received: from armenon-kvm.bengluru.csb ([49.36.110.230])
- by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-77cfe7604bcsm1306912b3a.65.2025.09.17.23.28.43
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 17 Sep 2025 23:28:51 -0700 (PDT)
-Date: Thu, 18 Sep 2025 11:58:40 +0530
-From: Arun Menon <armenon@redhat.com>
-To: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-Cc: qemu-devel@nongnu.org, Peter Xu <peterx@redhat.com>,
- Fabiano Rosas <farosas@suse.de>,
- Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
- Dmitry Osipenko <dmitry.osipenko@collabora.com>,
+ (Exim 4.90_1) (envelope-from <SRS0=jpNI=35=kaod.org=clg@ozlabs.org>)
+ id 1uz8LG-0002Eu-Sp; Thu, 18 Sep 2025 02:42:10 -0400
+Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4cS5dt4wLYz4wC8;
+ Thu, 18 Sep 2025 16:41:54 +1000 (AEST)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (Client did not present a certificate)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4cS5dn2089z4w9f;
+ Thu, 18 Sep 2025 16:41:48 +1000 (AEST)
+Message-ID: <9c28bf82-e451-48fd-8a95-169ff862ed03@kaod.org>
+Date: Thu, 18 Sep 2025 08:41:44 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [SPAM] [PATCH v3 02/14] hw/pci-host/aspeed: Add AST2600 PCIe PHY
+ model
+To: Jamin Lin <jamin_lin@aspeedtech.com>, Paolo Bonzini
+ <pbonzini@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
  "Michael S. Tsirkin" <mst@redhat.com>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Cornelia Huck <cohuck@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
- Eric Farman <farman@linux.ibm.com>, Thomas Huth <thuth@redhat.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- Matthew Rosato <mjrosato@linux.ibm.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- David Hildenbrand <david@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
- Nicholas Piggin <npiggin@gmail.com>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Fam Zheng <fam@euphon.net>,
- Alex Williamson <alex.williamson@redhat.com>,
- =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@redhat.com>,
- Steve Sistare <steven.sistare@oracle.com>,
- =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
- qemu-s390x@nongnu.org, qemu-ppc@nongnu.org,
- Hailiang Zhang <zhanghailiang@xfusion.com>,
- Stefan Berger <stefanb@linux.vnet.ibm.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
-Subject: Re: [PATCH v13 07/27] migration: push Error **errp into
- qemu_loadvm_state()
-Message-ID: <aMummAAkDFSvP-eT@armenon-kvm.bengluru.csb>
-References: <aLRt_G-pOH1rwJbb@armenon-kvm.bengluru.csb>
- <017c40a6-3347-43e7-b7b7-9e2e2130d19e@rsg.ci.i.u-tokyo.ac.jp>
- <aLR6mKJyVPZ4bqnZ@armenon-kvm.bengluru.csb>
- <6bee20a5-6f12-4b12-aab3-1a2019418611@rsg.ci.i.u-tokyo.ac.jp>
- <aLfklAy0qqetX8_K@armenon-kvm.bengluru.csb>
- <201bb795-57af-4614-8ef1-e5218108c13f@rsg.ci.i.u-tokyo.ac.jp>
- <aMoCIwzS7NWmTedG@armenon-kvm.bengluru.csb>
- <1cfcf036-0cdf-44a9-8c39-5219285a1dfa@rsg.ci.i.u-tokyo.ac.jp>
- <aMrFPbbbC3gIcvJu@armenon-kvm.bengluru.csb>
- <bb702a89-c198-43d0-bc4e-22c355d3ac20@rsg.ci.i.u-tokyo.ac.jp>
-MIME-Version: 1.0
-In-Reply-To: <bb702a89-c198-43d0-bc4e-22c355d3ac20@rsg.ci.i.u-tokyo.ac.jp>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: fegkjwfaLWtw_YX3ejApqb5Hcv0ipjJtk-EZBFMDSmU_1758176932
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+ "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+Cc: troy_lee@aspeedtech.com, nabihestefan@google.com, wuhaotsh@google.com,
+ titusr@google.com
+References: <20250918031348.3991681-1-jamin_lin@aspeedtech.com>
+ <20250918031348.3991681-3-jamin_lin@aspeedtech.com>
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Content-Language: en-US, fr
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <20250918031348.3991681-3-jamin_lin@aspeedtech.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=armenon@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+ envelope-from=SRS0=jpNI=35=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -143,313 +112,354 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: armenon@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Akihiko,
+On 9/18/25 05:13, Jamin Lin wrote:
+> This patch introduces an initial ASPEED PCIe PHY/host controller model to
+> support the AST2600 SoC. It provides a simple register block with MMIO
+> read/write callbacks, integration into the build system, and trace events
+> for debugging.
+> 
+> Key changes:
+> 
+> 1. PCIe PHY MMIO read/write callbacks
+>     Implemented aspeed_pcie_phy_read() and aspeed_pcie_phy_write() to
+>     handle 32-bit register accesses.
+> 
+> 2. Build system and Kconfig integration
+>     Added CONFIG_PCI_EXPRESS_ASPEED in hw/pci-host/Kconfig and meson
+>     rules.
+>     Updated ASPEED_SOC in hw/arm/Kconfig to imply PCI_DEVICES and select
+>     PCI_EXPRESS_ASPEED.
+> 
+> 3. Trace events for debug
+>     New tracepoints aspeed_pcie_phy_read and aspeed_pcie_phy_write allow
+>     monitoring MMIO accesses.
+> 
+> 4. Register space and defaults (AST2600 reference)
+>     Expose a 0x100 register space, as documented in the AST2600 datasheet.
+>     On reset, set default values:
+>     PEHR_ID: Vendor ID = ASPEED, Device ID = 0x1150
+>     PEHR_CLASS_CODE = 0x06040006
+>     PEHR_DATALINK = 0xD7040022
+>     PEHR_LINK: bit[5] set to 1 to indicate link up.
+> 
+> This provides a skeleton device for the AST2600 platform. It enables
+> firmware to detect the PCIe link as up by default and allows future
+> extension.
+> 
+> This commit is the starting point of the series to introduce ASPEED PCIe
+> Root Complex (RC) support. Based on previous work from Cédric Le Goater,
+> the following commits in this series extend and refine the implementation:
+> 
+> - Add a PCIe Root Port so that devices can be attached without requiring an
+> extra bridge.
+> - Restrict the Root Port device instantiation to the AST2600 platform.
+> - Integrate aspeed_cfg_translate_write() to support both AST2600 and AST2700.
+> - Add MSI support and a preliminary RC IOMMU address space.
+> - Fix issues with MSI interrupt clearing.
+> - Extend support to the AST2700 SoC.
+> - Drop the AST2600 RC_L support.
+> - Introduce PCIe RC functional tests covering both AST2600 and AST2700.
+> 
+> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+> ---
+>   include/hw/pci-host/aspeed_pcie.h |  42 ++++++++
+>   hw/pci-host/aspeed_pcie.c         | 157 ++++++++++++++++++++++++++++++
+>   hw/arm/Kconfig                    |   3 +
+>   hw/pci-host/Kconfig               |   4 +
+>   hw/pci-host/meson.build           |   1 +
+>   hw/pci-host/trace-events          |   4 +
+>   6 files changed, 211 insertions(+)
+>   create mode 100644 include/hw/pci-host/aspeed_pcie.h
+>   create mode 100644 hw/pci-host/aspeed_pcie.c
+> 
+> diff --git a/include/hw/pci-host/aspeed_pcie.h b/include/hw/pci-host/aspeed_pcie.h
+> new file mode 100644
+> index 0000000000..d9fb829048
+> --- /dev/null
+> +++ b/include/hw/pci-host/aspeed_pcie.h
+> @@ -0,0 +1,42 @@
+> +/*
+> + * ASPEED PCIe Host Controller
+> + *
+> + * Copyright (C) 2025 ASPEED Technology Inc.
+> + * Copyright (c) 2022 Cédric Le Goater <clg@kaod.org>
+> + *
+> + * Authors:
+> + *   Cédric Le Goater <clg@kaod.org>
+> + *   Jamin Lin <jamin_lin@aspeedtech.com>
+> + *
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + *
+> + * Based on previous work from Cédric Le Goater.
+> + * Modifications extend support for the ASPEED AST2600 and AST2700 platforms.
+> + */
+> +
+> +#ifndef ASPEED_PCIE_H
+> +#define ASPEED_PCIE_H
+> +
+> +#include "hw/sysbus.h"
+> +#include "hw/pci/pci_bridge.h"
+> +#include "hw/pci/pcie_host.h"
+> +#include "qom/object.h"
+> +
+> +#define TYPE_ASPEED_PCIE_PHY "aspeed.pcie-phy"
+> +OBJECT_DECLARE_TYPE(AspeedPCIEPhyState, AspeedPCIEPhyClass, ASPEED_PCIE_PHY);
+> +
+> +struct AspeedPCIEPhyState {
+> +    SysBusDevice parent_obj;
+> +
+> +    MemoryRegion mmio;
+> +    uint32_t *regs;
+> +    uint32_t id;
+> +};
+> +
+> +struct AspeedPCIEPhyClass {
+> +    SysBusDeviceClass parent_class;
+> +
+> +    uint64_t nr_regs;
+> +};
+> +
+> +#endif /* ASPEED_PCIE_H */
+> diff --git a/hw/pci-host/aspeed_pcie.c b/hw/pci-host/aspeed_pcie.c
+> new file mode 100644
+> index 0000000000..110c963779
+> --- /dev/null
+> +++ b/hw/pci-host/aspeed_pcie.c
+> @@ -0,0 +1,157 @@
+> +/*
+> + * ASPEED PCIe Host Controller
+> + *
+> + * Copyright (C) 2025 ASPEED Technology Inc.
+> + * Copyright (c) 2022 Cédric Le Goater <clg@kaod.org>
+> + *
+> + * Authors:
+> + *   Cédric Le Goater <clg@kaod.org>
+> + *   Jamin Lin <jamin_lin@aspeedtech.com>
+> + *
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + *
+> + * Based on previous work from Cédric Le Goater.
+> + * Modifications extend support for the ASPEED AST2600 and AST2700 platforms.
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "qemu/log.h"
+> +#include "qapi/error.h"
+> +#include "hw/qdev-properties.h"
+> +#include "hw/registerfields.h"
+> +#include "hw/irq.h"
+> +#include "hw/pci/pci_host.h"
+> +#include "hw/pci-host/aspeed_pcie.h"
+> +#include "hw/pci/msi.h"
+> +#include "trace.h"
+> +
+> +/*
+> + * PCIe PHY
+> + *
+> + * PCIe Host Controller (PCIEH)
+> + */
+> +
+> +/* AST2600 */
+> +REG32(PEHR_ID,     0x00)
+> +    FIELD(PEHR_ID, DEV, 16, 16)
+> +REG32(PEHR_CLASS_CODE,  0x04)
+> +REG32(PEHR_DATALINK,    0x10)
+> +REG32(PEHR_PROTECT,     0x7C)
+> +    FIELD(PEHR_PROTECT, LOCK, 0, 8)
+> +REG32(PEHR_LINK,        0xC0)
+> +    FIELD(PEHR_LINK, STS, 5, 1)
+> +
+> +#define ASPEED_PCIE_PHY_UNLOCK  0xA8
+> +
+> +static uint64_t aspeed_pcie_phy_read(void *opaque, hwaddr addr,
+> +                                     unsigned int size)
+> +{
+> +    AspeedPCIEPhyState *s = ASPEED_PCIE_PHY(opaque);
+> +    uint32_t reg = addr >> 2;
+> +    uint32_t value = 0;
+> +
+> +    value = s->regs[reg];
+> +
+> +    trace_aspeed_pcie_phy_read(s->id, addr, value);
+> +
+> +    return value;
+> +}
+> +
+> +static void aspeed_pcie_phy_write(void *opaque, hwaddr addr, uint64_t data,
+> +                                  unsigned int size)
+> +{
+> +    AspeedPCIEPhyState *s = ASPEED_PCIE_PHY(opaque);
+> +    uint32_t reg = addr >> 2;
+> +
+> +    trace_aspeed_pcie_phy_write(s->id, addr, data);
+> +
+> +    switch (reg) {
+> +    case R_PEHR_PROTECT:
+> +        data &= R_PEHR_PROTECT_LOCK_MASK;
+> +        s->regs[reg] = !!(data == ASPEED_PCIE_PHY_UNLOCK);
+> +        break;
+> +    default:
+> +        s->regs[reg] = data;
+> +        break;
+> +    }
+> +}
+> +
+> +static const MemoryRegionOps aspeed_pcie_phy_ops = {
+> +    .read = aspeed_pcie_phy_read,
+> +    .write = aspeed_pcie_phy_write,
+> +    .endianness = DEVICE_LITTLE_ENDIAN,
+> +    .valid = {
+> +        .min_access_size = 1,
+> +        .max_access_size = 4,
+> +    },
+> +};
+> +
+> +static void aspeed_pcie_phy_reset(DeviceState *dev)
+> +{
+> +    AspeedPCIEPhyState *s = ASPEED_PCIE_PHY(dev);
+> +    AspeedPCIEPhyClass *apc = ASPEED_PCIE_PHY_GET_CLASS(s);
+> +
+> +    memset(s->regs, 0, apc->nr_regs << 2);
+> +
+> +    s->regs[R_PEHR_ID] =
+> +        (0x1150 << R_PEHR_ID_DEV_SHIFT) | PCI_VENDOR_ID_ASPEED;
+> +    s->regs[R_PEHR_CLASS_CODE] = 0x06040006;
+> +    s->regs[R_PEHR_DATALINK] = 0xD7040022;
+> +    s->regs[R_PEHR_LINK] = R_PEHR_LINK_STS_MASK;
+> +}
+> +
+> +static void aspeed_pcie_phy_realize(DeviceState *dev, Error **errp)
+> +{
+> +    AspeedPCIEPhyState *s = ASPEED_PCIE_PHY(dev);
+> +    AspeedPCIEPhyClass *apc = ASPEED_PCIE_PHY_GET_CLASS(s);
+> +    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
+> +    g_autofree char *name;
 
-On Thu, Sep 18, 2025 at 11:06:58AM +0900, Akihiko Odaki wrote:
-> On 2025/09/17 23:27, Arun Menon wrote:
-> > Hi Akihiko,
-> > 
-> > On Wed, Sep 17, 2025 at 04:54:11PM +0900, Akihiko Odaki wrote:
-> > > On 2025/09/17 9:34, Arun Menon wrote:
-> > > > Hi Akihiko,
-> > > > 
-> > > > On Sat, Sep 06, 2025 at 05:22:31AM +0200, Akihiko Odaki wrote:
-> > > > > On 2025/09/03 8:47, Arun Menon wrote:
-> > > > > > Hi Akihiko,
-> > > > > > 
-> > > > > > It took some time to set up the machines; apologies for the delay in response.
-> > > > > > 
-> > > > > > On Mon, Sep 01, 2025 at 02:12:54AM +0900, Akihiko Odaki wrote:
-> > > > > > > On 2025/09/01 1:38, Arun Menon wrote:
-> > > > > > > > Hi,
-> > > > > > > > 
-> > > > > > > > On Mon, Sep 01, 2025 at 01:04:40AM +0900, Akihiko Odaki wrote:
-> > > > > > > > > On 2025/09/01 0:45, Arun Menon wrote:
-> > > > > > > > > > Hi Akihiko,
-> > > > > > > > > > Thanks for the review.
-> > > > > > > > > > 
-> > > > > > > > > > On Sat, Aug 30, 2025 at 02:58:05PM +0900, Akihiko Odaki wrote:
-> > > > > > > > > > > On 2025/08/30 5:01, Arun Menon wrote:
-> > > > > > > > > > > > This is an incremental step in converting vmstate loading
-> > > > > > > > > > > > code to report error via Error objects instead of directly
-> > > > > > > > > > > > printing it to console/monitor.
-> > > > > > > > > > > > It is ensured that qemu_loadvm_state() must report an error
-> > > > > > > > > > > > in errp, in case of failure.
-> > > > > > > > > > > > 
-> > > > > > > > > > > > When postcopy live migration runs, the device states are loaded by
-> > > > > > > > > > > > both the qemu coroutine process_incoming_migration_co() and the
-> > > > > > > > > > > > postcopy_ram_listen_thread(). Therefore, it is important that the
-> > > > > > > > > > > > coroutine also reports the error in case of failure, with
-> > > > > > > > > > > > error_report_err(). Otherwise, the source qemu will not display
-> > > > > > > > > > > > any errors before going into the postcopy pause state.
-> > > > > > > > > > > > 
-> > > > > > > > > > > > Reviewed-by: Marc-Andr� Lureau <marcandre.lureau@redhat.com>
-> > > > > > > > > > > > Reviewed-by: Fabiano Rosas <farosas@suse.de>
-> > > > > > > > > > > > Signed-off-by: Arun Menon <armenon@redhat.com>
-> > > > > > > > > > > > ---
-> > > > > > > > > > > >        migration/migration.c |  9 +++++----
-> > > > > > > > > > > >        migration/savevm.c    | 30 ++++++++++++++++++------------
-> > > > > > > > > > > >        migration/savevm.h    |  2 +-
-> > > > > > > > > > > >        3 files changed, 24 insertions(+), 17 deletions(-)
-> > > > > > > > > > > > 
-> > > > > > > > > > > > diff --git a/migration/migration.c b/migration/migration.c
-> > > > > > > > > > > > index 10c216d25dec01f206eacad2edd24d21f00e614c..c6768d88f45c870c7fad9b9957300766ff69effc 100644
-> > > > > > > > > > > > --- a/migration/migration.c
-> > > > > > > > > > > > +++ b/migration/migration.c
-> > > > > > > > > > > > @@ -881,7 +881,7 @@ process_incoming_migration_co(void *opaque)
-> > > > > > > > > > > >                              MIGRATION_STATUS_ACTIVE);
-> > > > > > > > > > > >            mis->loadvm_co = qemu_coroutine_self();
-> > > > > > > > > > > > -    ret = qemu_loadvm_state(mis->from_src_file);
-> > > > > > > > > > > > +    ret = qemu_loadvm_state(mis->from_src_file, &local_err);
-> > > > > > > > > > > >            mis->loadvm_co = NULL;
-> > > > > > > > > > > >            trace_vmstate_downtime_checkpoint("dst-precopy-loadvm-completed");
-> > > > > > > > > > > > @@ -908,7 +908,8 @@ process_incoming_migration_co(void *opaque)
-> > > > > > > > > > > >            }
-> > > > > > > > > > > >            if (ret < 0) {
-> > > > > > > > > > > > -        error_setg(&local_err, "load of migration failed: %s", strerror(-ret));
-> > > > > > > > > > > > +        error_prepend(&local_err, "load of migration failed: %s: ",
-> > > > > > > > > > > > +                      strerror(-ret));
-> > > > > > > > > > > >                goto fail;
-> > > > > > > > > > > >            }
-> > > > > > > > > > > > @@ -924,13 +925,13 @@ fail:
-> > > > > > > > > > > >            migrate_set_state(&mis->state, MIGRATION_STATUS_ACTIVE,
-> > > > > > > > > > > >                              MIGRATION_STATUS_FAILED);
-> > > > > > > > > > > >            migrate_set_error(s, local_err);
-> > > > > > > > > > > > -    error_free(local_err);
-> > > > > > > > > > > > +    error_report_err(local_err);
-> > > > > > > > > > > 
-> > > > > > > > > > > This is problematic because it results in duplicate error reports when
-> > > > > > > > > > > !mis->exit_on_error; in that case the query-migrate QMP command reports the
-> > > > > > > > > > > error and this error reporting is redundant.
-> > > > > > > > > > 
-> > > > > > > > > > If I comment this change, then all of the errors propagated up to now, using
-> > > > > > > > > > error_setg() will not be reported. This is the place where it is finally reported,
-> > > > > > > > > > when qemu_loadvm_state() fails. In other words, all the error_reports() we removed
-> > > > > > > > > > from all the files, replacing them with error_setg(), will finally be reported here
-> > > > > > > > > > using error_report_err().
-> > > > > > > > > 
-> > > > > > > > > My understanding of the code without these two changes is:
-> > > > > > > > > - If the migrate-incoming QMP command is used with false as
-> > > > > > > > >       exit-on-error, this function will not report the error but
-> > > > > > > > >       the query-migrate QMP command will report the error.
-> > > > > > > > > - Otherwise, this function reports the error.
-> > > > > > > > 
-> > > > > > > > With my limited experience in testing, I have a question,
-> > > > > > > > So there are 2 scenarios,
-> > > > > > > > 1. running the virsh migrate command on the source host. Something like the following,
-> > > > > > > >       virsh -c 'qemu:///system' migrate --live --verbose --domain guest-vm --desturi qemu+ssh://10.6.120.20/system
-> > > > > > > >       OR for postcopy-ram,
-> > > > > > > >       virsh migrate guest-vm --live qemu+ssh://10.6.120.20/system --verbose --postcopy --timeout 10 --timeout-postcopy
-> > > > > > > > 
-> > > > > > > > 2. Using QMP commands, performing a migration from source to destination.
-> > > > > > > >       Running something like the following on the destination:
-> > > > > > > >       {
-> > > > > > > >         "execute": "migrate-incoming",
-> > > > > > > >         "arguments": {
-> > > > > > > >           "uri": "tcp:127.0.0.1:7777",
-> > > > > > > >           "exit-on-error": false
-> > > > > > > >         }
-> > > > > > > >       }
-> > > > > > > >       {
-> > > > > > > >         "execute": "migrate-incoming",
-> > > > > > > >         "arguments": {
-> > > > > > > >           "uri": "tcp:127.0.0.1:7777",
-> > > > > > > >           "exit-on-error": false
-> > > > > > > >         }
-> > > > > > > >       }
-> > > > > > > >       and the somthing like the following on source:
-> > > > > > > >       {
-> > > > > > > >         "execute": "migrate",
-> > > > > > > >         "arguments": {
-> > > > > > > >           "uri": "tcp:127.0.0.1:7777"
-> > > > > > > >         }
-> > > > > > > >       }
-> > > > > > > >       {"execute" : "query-migrate"}
-> > > > > > > > 
-> > > > > > > > In 1, previously, the user used to get an error message on migration failure.
-> > > > > > > > This was because there were error_report() calls in all of the files.
-> > > > > > > > Now that they are replaced with error_setg() and the error is stored in errp,
-> > > > > > > > we need to display that using error_report_err(). Hence I introduced an error_report_err()
-> > > > > > > > call in the fail section.
-> > > > > > > > 
-> > > > > > > > In 2, we have 2 QMP sessions, one for the source and another for the destination.
-> > > > > > > > The QMP command migrate will be issued on the source, and the errp will be set.
-> > > > > > > > I did not understand the part where the message will be displayed because of the
-> > > > > > > > error_report_err() call. I did not see such a message on failure scenario on both
-> > > > > > > > the sessions.
-> > > > > > > > If the user wants to check for errors, then the destination qemu will not exit
-> > > > > > > > (exit-on-error = false ) and we can retrieve it using {"execute" : "query-migrate"}
-> > > > > > > > 
-> > > > > > > > Aren't the 2 scenarios different by nature?
-> > > > > > > 
-> > > > > > > In 1, doesn't libvirt query the error with query-migrate and print it?
-> > > > > > 
-> > > > > > Ideally it should find the the error, and print the whole thing. It does work
-> > > > > > in the normal scenario. However, the postcopy scenario does not show the same result,
-> > > > > > which is mentioned in the commit message.
-> > > > > > 
-> > > > > > > 
-> > > > > > > In any case, it would be nice if you describe how libvirt interacts with
-> > > > > > > QEMU in 1.
-> > > > > > 
-> > > > > > Please find below the difference in the command output at source, when we run a live migration
-> > > > > > with postcopy enabled.
-> > > > > > 
-> > > > > > =========
-> > > > > > With the current changes:
-> > > > > > [root@dell-per750-42 qemu-priv]# virsh migrate-setspeed guest-vm 1
-> > > > > > 
-> > > > > > [root@dell-per750-42 build]# virsh migrate guest-vm --live qemu+ssh://10.6.120.9/system --verbose --postcopy --timeout 10 --timeout-postcopy
-> > > > > > root@10.6.120.9's password:
-> > > > > > Migration: [ 1.26 %]error: internal error: QEMU unexpectedly closed the monitor (vm='guest-vm'): 2025-09-03T06:19:15.076547Z qemu-system-x86_64: -accel kvm: warning: Number of SMP cpus requested (2) exceeds the recommended cpus supported by KVM (1)
-> > > > > > 2025-09-03T06:19:15.076586Z qemu-system-x86_64: -accel kvm: warning: Number of hotpluggable cpus requested (2) exceeds the recommended cpus supported by KVM (1)
-> > > > > > 2025-09-03T06:19:27.776715Z qemu-system-x86_64: load of migration failed: Input/output error: error while loading state for instance 0x0 of device 'tpm-emulator': post load hook failed for: tpm-emulator, version_id: 0, minimum_version: 0, ret: -5: tpm-emulator: Setting the stateblob (type 1) failed with a TPM error 0x21 decryption error
-> > > > > > 
-> > > > > > [root@dell-per750-42 build]#
-> > > > > > 
-> > > > > > =========
-> > > > > > 
-> > > > > > Without the current changes:
-> > > > > > [root@dell-per750-42 qemu-priv]# virsh migrate-setspeed guest-vm 1
-> > > > > > 
-> > > > > > [root@dell-per750-42 qemu-priv]# virsh migrate guest-vm --live qemu+ssh://10.6.120.9/system --verbose --postcopy --timeout 10 --timeout-postcopy
-> > > > > > root@10.6.120.9's password:
-> > > > > > Migration: [ 1.28 %]error: internal error: QEMU unexpectedly closed the monitor (vm='guest-vm'): 2025-09-03T06:26:17.733786Z qemu-system-x86_64: -accel kvm: warning: Number of SMP cpus requested (2) exceeds the recommended cpus supported by KVM (1)
-> > > > > > 2025-09-03T06:26:17.733830Z qemu-system-x86_64: -accel kvm: warning: Number of hotpluggable cpus requested (2) exceeds the recommended cpus supported by KVM (1)
-> > > > > > 
-> > > > > > [root@dell-per750-42 qemu-priv]#
-> > > > > > 
-> > > > > > =========
-> > > > > > The original behavior was to print the error to the console regardless of whether the migration is normal or postcopy.
-> > > > > 
-> > > > > This was true for messages in qemu_loadvm_state(), but the message "load of
-> > > > > migration failed" was printed or queried with query-migrate, not both. We
-> > > > > should think of which behavior is more appropriate, and I think we should
-> > > > > avoid duplicate reports.
-> > > > > 
-> > > > > > The source machine goes in to a paused state after this.
-> > > > > 
-> > > > > The output is informative. It implies the destination machine exited, and it
-> > > > > makes sense to print error messages as it is done for
-> > > > > mis->exit_on_error. I wonder if it is possible to detect the condition and
-> > > > > treat it identically to mis->exit_on_error.
-> > > > 
-> > > > I see that we want to catch a specific scenario in postcopy ram migration
-> > > > where the destination abruptly exits without a graceful shutdown,
-> > > > thus failing to inform the source the reason for its failure through a
-> > > > 'query-migrate' even though 'exit-on-error' was set to false on the destination.
-> > > > 
-> > > > However, I am not sure how to reliably detect the specific error condition of
-> > > > such a connection close that you have described. Given that this is a large
-> > > > patch series already, could we keep the current change as is for now?
-> > > >   From what I can tell, the additional log message "load of migration failed"
-> > > > is not a breaking change and will not cause a crash. We can develop a more
-> > > > elegant solution to handle the issue of duplication in a separate patch.
-> > > There are two regressions:
-> > > 1) Duplicate error reports when exit-on-error is false and postcopy is
-> > > disabled.
-> > 
-> > Thank you for your detailed response.
-> > I am trying to fully understand the logic here, so please correct me if I'm wrong.
-> > My understanding of the patch is that all errors are chained together
-> > in local_err by propagating them through the call stack and prepending them with
-> > "load of migration failed."
-> > This creates a single, comprehensive error message, which is then passed to
-> >    migrate_set_error(s, local_err) in the fail section.
-> > This line already existed. So in effect we are setting the error here.
-> 
-> There are two other changes:
-> - The message is printed immediately with error_report_err(). This causes
-> 1).
-> - The error set with migrate_set_error() is ignored. This causes 2).
-> 
-> > 
-> > Regarding the second regression you mentioned:
-> > 
-> > > 2) Errors reported code else qemu_loadvm_state() are ignored when
-> > > exit-on-error is true.
-> > 
-> > Doesn't the error_prepend() function ensure that errors set higher up the call stack
-> > are preserved and only "load of migration failed" is prepended to it?
-> > When the fail section is reached, local_err will have the complete error message.
-> > 
-> > > 
-> > > 1) is trivial yet difficult to fix and I agree that it can be handled later.
-> > > Ideally there should be a comment to note that.
-> > > 
-> > > However, there is also 2), which is more serious and easier to fix so I
-> > > suggest fixing it now. More concretely, the code will look like as follows:
-> > > 
-> > >      migrate_set_error(s, local_err);
-> > >      if (mis->exit_on_error) {
-> > >          error_free(local_err);
-> > >      } else {
-> > >          /*
-> > >           * Report the error here in case that QEMU abruptly exits when
-> > >           * postcopy is enabled.
-> > >           */
-> > >          error_report_err(s->error);
-> > >      }
-> > > 
-> > >      migration_incoming_state_destroy();
-> > > 
-> > >      if (mis->exit_on_error) {
-> > >          WITH_QEMU_LOCK_GUARD(&s->error_mutex) {
-> > >              error_report_err(s->error);
-> > > 
-> > > This ensures errors set by anyone will be reported while duplicate error
-> > > reports are avoided when exit-on-error is true.
-> > 
-> > yes, this part (set by anyone), I fail to follow. Do you mean that there can be
-> > chances of a race condition between migrate_set_error() and error_report_err()?
-> > 
-> > My analysis of your proposed code shows that whether mis->exit_on_error is true (in the final if block)
-> > or false (in the else block), error_report_err() is called.
-> > This seems to result in the error being reported regardless, which is similar to my original patch.
-> > Yes in both the cases, s->error is being reported. However in my view, in the fail section, both
-> > local_err and s->error will be the same.
-> > 
-> > I appreciate your patience as I try to understand this better.
-> 
-> I indeed suspect the possibility of a race condition between
-> migration_set_error() and error_report_err(). The code implies an error can
-> be concurrently reported when migration_incoming_state_destroy() is called,
-> and synchronized with WITH_QEMU_LOCK_GUARD(&s->error_mutex).
-> 
-> This code fragment is useless if there is no such concurrency at all and
-> should look like the following:
-> 
->     migrate_set_state(&mis->state, MIGRATION_STATUS_ACTIVE,
->                       MIGRATION_STATUS_FAILED);
->     error_report_err(local_err);
-> 
->     if (mis->exit_on_error) {
->         exit(EXIT_FAILURE);
->     }
-> 
->     migrate_set_error(s, local_err);
-> 
->     migration_incoming_state_destroy();
-> 
-> But it is not how the code is written, so I suspect there is a race
-> condition.
+g_autofree variables should defined when declared. So,
 
-Thank you. That is clear to me now.
-We need to report s->error because it can be set somewhere else.
-We are creating separate paths but only adding a placeholder comment
-for now for the postcopy scenario. I suppose local_err can be freed outside the if clause.
-I shall amend and send a new version.
+     g_autofree char *name = g_strdup_printf(TYPE_ASPEED_PCIE_PHY ".regs.%d", s->id);
 
-> 
-> Regards,
-> Akihiko Odaki
-> 
+I can do that if there are no major issues in the series.
 
-Regards,
-Arun Menon
+
+Thanks,
+
+C.
+
+
+> +
+> +    s->regs = g_new(uint32_t, apc->nr_regs);
+> +    name = g_strdup_printf(TYPE_ASPEED_PCIE_PHY ".regs.%d", s->id);
+> +    memory_region_init_io(&s->mmio, OBJECT(s), &aspeed_pcie_phy_ops, s, name,
+> +                          apc->nr_regs << 2);
+> +    sysbus_init_mmio(sbd, &s->mmio);
+> +}
+> +
+> +static void aspeed_pcie_phy_unrealize(DeviceState *dev)
+> +{
+> +    AspeedPCIEPhyState *s = ASPEED_PCIE_PHY(dev);
+> +
+> +    g_free(s->regs);
+> +    s->regs = NULL;
+> +}
+> +
+> +static const Property aspeed_pcie_phy_props[] = {
+> +    DEFINE_PROP_UINT32("id", AspeedPCIEPhyState, id, 0),
+> +};
+> +
+> +static void aspeed_pcie_phy_class_init(ObjectClass *klass, const void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(klass);
+> +    AspeedPCIEPhyClass *apc = ASPEED_PCIE_PHY_CLASS(klass);
+> +
+> +    dc->desc = "ASPEED PCIe Phy";
+> +    dc->realize = aspeed_pcie_phy_realize;
+> +    dc->unrealize = aspeed_pcie_phy_unrealize;
+> +    device_class_set_legacy_reset(dc, aspeed_pcie_phy_reset);
+> +    device_class_set_props(dc, aspeed_pcie_phy_props);
+> +
+> +    apc->nr_regs = 0x100 >> 2;
+> +}
+> +
+> +static const TypeInfo aspeed_pcie_phy_info = {
+> +    .name       = TYPE_ASPEED_PCIE_PHY,
+> +    .parent     = TYPE_SYS_BUS_DEVICE,
+> +    .instance_size = sizeof(AspeedPCIEPhyState),
+> +    .class_init = aspeed_pcie_phy_class_init,
+> +    .class_size = sizeof(AspeedPCIEPhyClass),
+> +};
+> +
+> +static void aspeed_pcie_register_types(void)
+> +{
+> +    type_register_static(&aspeed_pcie_phy_info);
+> +}
+> +
+> +type_init(aspeed_pcie_register_types);
+> +
+> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+> index 3baa6c6c74..b44b85f436 100644
+> --- a/hw/arm/Kconfig
+> +++ b/hw/arm/Kconfig
+> @@ -541,6 +541,7 @@ config ASPEED_SOC
+>       bool
+>       default y
+>       depends on TCG && ARM
+> +    imply PCI_DEVICES
+>       select DS1338
+>       select FTGMAC100
+>       select I2C
+> @@ -561,6 +562,8 @@ config ASPEED_SOC
+>       select MAX31785
+>       select FSI_APB2OPB_ASPEED
+>       select AT24C
+> +    select PCI_EXPRESS
+> +    select PCI_EXPRESS_ASPEED
+>   
+>   config MPS2
+>       bool
+> diff --git a/hw/pci-host/Kconfig b/hw/pci-host/Kconfig
+> index 9824fa188d..8cbb8304a3 100644
+> --- a/hw/pci-host/Kconfig
+> +++ b/hw/pci-host/Kconfig
+> @@ -46,6 +46,10 @@ config PCI_I440FX
+>       select PCI
+>       select PAM
+>   
+> +config PCI_EXPRESS_ASPEED
+> +    bool
+> +    select PCI_EXPRESS
+> +
+>   config PCI_EXPRESS_Q35
+>       bool
+>       select PCI_EXPRESS
+> diff --git a/hw/pci-host/meson.build b/hw/pci-host/meson.build
+> index 937a0f72ac..86b754d0b0 100644
+> --- a/hw/pci-host/meson.build
+> +++ b/hw/pci-host/meson.build
+> @@ -2,6 +2,7 @@ pci_ss = ss.source_set()
+>   pci_ss.add(when: 'CONFIG_PAM', if_true: files('pam.c'))
+>   pci_ss.add(when: 'CONFIG_PCI_BONITO', if_true: files('bonito.c'))
+>   pci_ss.add(when: 'CONFIG_GT64120', if_true: files('gt64120.c'))
+> +pci_ss.add(when: 'CONFIG_PCI_EXPRESS_ASPEED', if_true: files('aspeed_pcie.c'))
+>   pci_ss.add(when: 'CONFIG_PCI_EXPRESS_DESIGNWARE', if_true: files('designware.c'))
+>   pci_ss.add(when: 'CONFIG_PCI_EXPRESS_GENERIC_BRIDGE', if_true: files('gpex.c'))
+>   pci_ss.add(when: ['CONFIG_PCI_EXPRESS_GENERIC_BRIDGE', 'CONFIG_ACPI'], if_true: files('gpex-acpi.c'))
+> diff --git a/hw/pci-host/trace-events b/hw/pci-host/trace-events
+> index 0a816b9aa1..3438516756 100644
+> --- a/hw/pci-host/trace-events
+> +++ b/hw/pci-host/trace-events
+> @@ -1,5 +1,9 @@
+>   # See docs/devel/tracing.rst for syntax documentation.
+>   
+> +# aspeed_pcie.c
+> +aspeed_pcie_phy_read(uint32_t id, uint64_t addr, uint32_t value) "%d: addr 0x%" PRIx64 " value 0x%" PRIx32
+> +aspeed_pcie_phy_write(uint32_t id, uint64_t addr, uint32_t value) "%d: addr 0x%" PRIx64 " value 0x%" PRIx32
+> +
+>   # bonito.c
+>   bonito_spciconf_small_access(uint64_t addr, unsigned size) "PCI config address is smaller then 32-bit, addr: 0x%"PRIx64", size: %u"
+>   
 
 

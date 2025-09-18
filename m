@@ -4,27 +4,27 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63660CAC59A
-	for <qemu-arm@archiver.kernel.org>; Thu, 18 Sep 2025 03:14:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E866CAC59A
+	for <qemu-arm@archiver.kernel.org>; Thu, 18 Sep 2025 03:15:10 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uz56g-0006JI-PW; Wed, 17 Sep 2025 23:14:51 -0400
+	id 1uz569-0005ac-3M; Wed, 17 Sep 2025 23:14:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1uz56P-0005zC-Ja; Wed, 17 Sep 2025 23:14:35 -0400
+ id 1uz567-0005YT-KG; Wed, 17 Sep 2025 23:14:15 -0400
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1uz56M-0005fJ-8e; Wed, 17 Sep 2025 23:14:33 -0400
+ id 1uz564-0005cU-RQ; Wed, 17 Sep 2025 23:14:14 -0400
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Thu, 18 Sep
- 2025 11:13:52 +0800
+ 2025 11:13:50 +0800
 Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
- Transport; Thu, 18 Sep 2025 11:13:52 +0800
+ Transport; Thu, 18 Sep 2025 11:13:50 +0800
 To: Paolo Bonzini <pbonzini@redhat.com>, Peter Maydell
  <peter.maydell@linaro.org>, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?=
  <clg@kaod.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
@@ -35,10 +35,10 @@ To: Paolo Bonzini <pbonzini@redhat.com>, Peter Maydell
  <qemu-devel@nongnu.org>
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
  <nabihestefan@google.com>, <wuhaotsh@google.com>, <titusr@google.com>
-Subject: [PATCH v3 10/14] hw/pci-host/aspeed: Add AST2700 PCIe config with
- dedicated H2X blocks
-Date: Thu, 18 Sep 2025 11:13:39 +0800
-Message-ID: <20250918031348.3991681-11-jamin_lin@aspeedtech.com>
+Subject: [PATCH v3 05/14] hw/pci-host/aspeed: Add AST2600 PCIe Root Port and
+ make address configurable
+Date: Thu, 18 Sep 2025 11:13:34 +0800
+Message-ID: <20250918031348.3991681-6-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250918031348.3991681-1-jamin_lin@aspeedtech.com>
 References: <20250918031348.3991681-1-jamin_lin@aspeedtech.com>
@@ -70,267 +70,195 @@ From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Introduce PCIe config (H2X) support for the AST2700 SoC.
+Introduce an ASPEED PCIe Root Port and wire it under the RC. The root port
+is modeled as TYPE_ASPEED_PCIE_ROOT_PORT (subclass of TYPE_PCIE_ROOT_PORT).
 
-Unlike the AST2600, the AST2700 provides three independent Root Complexes,
-each with its own H2X (AHB to PCIe bridge) register block of size 0x100.
-All RCs use the same MSI address (0x000000F0). The H2X block includes
-two different access paths:
+Key changes:
+- Add TYPE_ASPEED_PCIE_ROOT_PORT (PCIESlot-based) with vendor/device IDs
+  and AER capability offset.
+- Extend AspeedPCIERcState to embed a root_port instance and a
+  configurable rp_addr.
+- Add "rp-addr" property to the RC to place the root port at a specific
+  devfn on the root bus.
+- Set the root port's "chassis" property to ensure a unique chassis per RC.
+- Extend AspeedPCIECfgClass with rc_rp_addr defaulting to PCI_DEVFN(8,0).
 
-1. CFGI (internal bridge): used to access the host bridge itself, always
-   with BDF=0. The AST2700 controller simplifies the design by exposing
-   only one register (H2X_CFGI_TLP) with fields for ADDR[15:0], BEN[19:16],
-   and WR[20]. This is not a full TLP descriptor as in the external case.
-   For QEMU readability and code reuse, the model converts H2X_CFGI_TLP
-   into a standard TLP TX descriptor with BDF forced to 0 and then calls
-   the existing helpers aspeed_pcie_cfg_readwrite() and
-   aspeed_pcie_cfg_translate_write().
-
-2. CFGE (external EP access): used to access external endpoints. The
-   AST2700 design provides H2X_CFGE_TLP1 and a small FIFO at H2X_CFGE_TLPN.
-   For reads, TX DESC0 is stored in TLP1 and DESC1/DESC2 in TLPN FIFO
-   slots. For writes, TX DESC0 is stored in TLP1, DESC1/DESC2 in TLPN
-   FIFO[0..1], and TX write data in TLPN FIFO[2].
-
-The implementation extends AspeedPCIECfgState with a small FIFO and index,
-wires up new register definitions for AST2700, and adds a specific ops
-table and class (TYPE_ASPEED_2700_PCIE_CFG). The reset handler clears the
-FIFO state. Interrupt and MSI status registers are also supported.
-
-This provides enough modeling for firmware and drivers to use any of the
-three PCIe RCs on AST2700 with their own dedicated H2X config window,
-while reusing existing TLP decode helpers in QEMU.
+Rationale:
+- AST2600 places the root port at 80:08.0 (bus 0x80, dev 8, fn 0).
+- AST2700 must place the root port at 00:00.0, and it supports three RCs.
+  Each root port must therefore be uniquely identifiable; uses the
+  PCIe "chassis" ID for that.
+- Providing a configurable "rp-addr" lets platforms select the correct
+  devfn per SoC family, while the "chassis" property ensures uniqueness
+  across multiple RC instances on AST2700.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 ---
- include/hw/pci-host/aspeed_pcie.h |   3 +
- hw/pci-host/aspeed_pcie.c         | 158 ++++++++++++++++++++++++++++++
- 2 files changed, 161 insertions(+)
+ include/hw/pci-host/aspeed_pcie.h | 11 +++++++
+ hw/pci-host/aspeed_pcie.c         | 50 +++++++++++++++++++++++++++++++
+ 2 files changed, 61 insertions(+)
 
 diff --git a/include/hw/pci-host/aspeed_pcie.h b/include/hw/pci-host/aspeed_pcie.h
-index 5806505f30..be53ea96b9 100644
+index fe30ac02ae..5346c15c81 100644
 --- a/include/hw/pci-host/aspeed_pcie.h
 +++ b/include/hw/pci-host/aspeed_pcie.h
-@@ -87,6 +87,7 @@ struct AspeedPCIERcState {
+@@ -20,6 +20,7 @@
+ #include "hw/sysbus.h"
+ #include "hw/pci/pci_bridge.h"
+ #include "hw/pci/pcie_host.h"
++#include "hw/pci/pcie_port.h"
+ #include "qom/object.h"
  
- /* Bridge between AHB bus and PCIe RC. */
- #define TYPE_ASPEED_PCIE_CFG "aspeed.pcie-cfg"
-+#define TYPE_ASPEED_2700_PCIE_CFG TYPE_ASPEED_PCIE_CFG "-ast2700"
- OBJECT_DECLARE_TYPE(AspeedPCIECfgState, AspeedPCIECfgClass, ASPEED_PCIE_CFG);
+ typedef struct AspeedPCIECfgTxDesc {
+@@ -40,6 +41,13 @@ typedef struct AspeedPCIERegMap {
+     AspeedPCIERcRegs rc;
+ } AspeedPCIERegMap;
  
- struct AspeedPCIECfgState {
-@@ -98,6 +99,8 @@ struct AspeedPCIECfgState {
++#define TYPE_ASPEED_PCIE_ROOT_PORT "aspeed.pcie-root-port"
++OBJECT_DECLARE_SIMPLE_TYPE(AspeedPCIERootPortState, ASPEED_PCIE_ROOT_PORT)
++
++typedef struct AspeedPCIERootPortState {
++    PCIESlot parent_obj;
++} AspeedPCIERootPortState;
++
+ #define TYPE_ASPEED_PCIE_ROOT_DEVICE "aspeed.pcie-root-device"
+ OBJECT_DECLARE_SIMPLE_TYPE(AspeedPCIERootDeviceState, ASPEED_PCIE_ROOT_DEVICE);
  
-     const AspeedPCIERcRegs *rc_regs;
-     AspeedPCIERcState rc;
-+    uint32_t tlpn_fifo[3];
-+    uint32_t tlpn_idx;
+@@ -58,12 +66,14 @@ struct AspeedPCIERcState {
+     MemoryRegion mmio;
+     MemoryRegion io;
+ 
++    uint32_t rp_addr;
+     uint32_t bus_nr;
+     char name[16];
+     bool has_rd;
+     qemu_irq irq;
+ 
+     AspeedPCIERootDeviceState root_device;
++    AspeedPCIERootPortState root_port;
  };
  
- struct AspeedPCIECfgClass {
+ /* Bridge between AHB bus and PCIe RC. */
+@@ -87,6 +97,7 @@ struct AspeedPCIECfgClass {
+     const AspeedPCIERegMap *reg_map;
+     const MemoryRegionOps *reg_ops;
+ 
++    uint32_t rc_rp_addr;
+     uint64_t rc_bus_nr;
+     uint64_t nr_regs;
+     bool rc_has_rd;
 diff --git a/hw/pci-host/aspeed_pcie.c b/hw/pci-host/aspeed_pcie.c
-index 266fe6e7b0..b7ae47f9b2 100644
+index aa546cb0e7..b7a0dca273 100644
 --- a/hw/pci-host/aspeed_pcie.c
 +++ b/hw/pci-host/aspeed_pcie.c
-@@ -332,6 +332,11 @@ static const TypeInfo aspeed_pcie_rc_info = {
-  * - Registers 0x00 - 0x7F are shared by both PCIe0 (rc_l) and PCIe1 (rc_h).
-  * - Registers 0x80 - 0xBF are specific to PCIe0.
-  * - Registers 0xC0 - 0xFF are specific to PCIe1.
-+ *
-+ * On the AST2700:
-+ * - The register range 0x00 - 0xFF is assigned to a single PCIe configuration.
-+ * - There are three PCIe Root Complexes (RCs), each with its own dedicated H2X
-+ *   register set of size 0x100 (covering offsets 0x00 to 0xFF).
-  */
- 
- /* AST2600 */
-@@ -361,6 +366,31 @@ REG32(H2X_RC_H_MSI_EN1,     0xE4)
- REG32(H2X_RC_H_MSI_STS0,    0xE8)
- REG32(H2X_RC_H_MSI_STS1,    0xEC)
- 
-+/* AST2700 */
-+REG32(H2X_CFGE_INT_STS,         0x08)
-+    FIELD(H2X_CFGE_INT_STS, TX_IDEL, 0, 1)
-+    FIELD(H2X_CFGE_INT_STS, RX_BUSY, 1, 1)
-+REG32(H2X_CFGI_TLP,         0x20)
-+    FIELD(H2X_CFGI_TLP, ADDR, 0, 16)
-+    FIELD(H2X_CFGI_TLP, BEN, 16, 4)
-+    FIELD(H2X_CFGI_TLP, WR, 20, 1)
-+REG32(H2X_CFGI_WDATA,       0x24)
-+REG32(H2X_CFGI_CTRL,        0x28)
-+    FIELD(H2X_CFGI_CTRL, FIRE, 0, 1)
-+REG32(H2X_CFGI_RDATA,       0x2C)
-+REG32(H2X_CFGE_TLP1,        0x30)
-+REG32(H2X_CFGE_TLPN,        0x34)
-+REG32(H2X_CFGE_CTRL,        0x38)
-+    FIELD(H2X_CFGE_CTRL, FIRE, 0, 1)
-+REG32(H2X_CFGE_RDATA,       0x3C)
-+REG32(H2X_INT_EN,          0x40)
-+REG32(H2X_INT_STS,         0x48)
-+    FIELD(H2X_INT_STS, INTX, 0, 4)
-+REG32(H2X_MSI_EN0,          0x50)
-+REG32(H2X_MSI_EN1,          0x54)
-+REG32(H2X_MSI_STS0,         0x58)
-+REG32(H2X_MSI_STS1,         0x5C)
-+
- #define TLP_FMTTYPE_CFGRD0  0x04 /* Configuration Read  Type 0 */
- #define TLP_FMTTYPE_CFGWR0  0x44 /* Configuration Write Type 0 */
- #define TLP_FMTTYPE_CFGRD1  0x05 /* Configuration Read  Type 1 */
-@@ -378,6 +408,15 @@ static const AspeedPCIERegMap aspeed_regmap = {
+@@ -21,6 +21,7 @@
+ #include "hw/registerfields.h"
+ #include "hw/irq.h"
+ #include "hw/pci/pci_host.h"
++#include "hw/pci/pcie_port.h"
+ #include "hw/pci-host/aspeed_pcie.h"
+ #include "hw/pci/msi.h"
+ #include "trace.h"
+@@ -63,6 +64,32 @@ static const TypeInfo aspeed_pcie_root_device_info = {
      },
  };
  
-+static const AspeedPCIERegMap aspeed_2700_regmap = {
-+    .rc = {
-+        .int_en_reg     = R_H2X_INT_EN,
-+        .int_sts_reg    = R_H2X_INT_STS,
-+        .msi_sts0_reg   = R_H2X_MSI_STS0,
-+        .msi_sts1_reg   = R_H2X_MSI_STS1,
-+    },
-+};
++/*
++ * PCIe Root Port
++ */
 +
- static uint64_t aspeed_pcie_cfg_read(void *opaque, hwaddr addr,
-                                      unsigned int size)
- {
-@@ -600,6 +639,8 @@ static void aspeed_pcie_cfg_reset(DeviceState *dev)
-     AspeedPCIECfgClass *apc = ASPEED_PCIE_CFG_GET_CLASS(s);
- 
-     memset(s->regs, 0, apc->nr_regs << 2);
-+    memset(s->tlpn_fifo, 0, sizeof(s->tlpn_fifo));
-+    s->tlpn_idx = 0;
- }
- 
- static void aspeed_pcie_cfg_realize(DeviceState *dev, Error **errp)
-@@ -674,6 +715,122 @@ static const TypeInfo aspeed_pcie_cfg_info = {
-     .class_size = sizeof(AspeedPCIECfgClass),
- };
- 
-+static void aspeed_2700_pcie_cfg_write(void *opaque, hwaddr addr,
-+                                       uint64_t data, unsigned int size)
++static void aspeed_pcie_root_port_class_init(ObjectClass *klass,
++                                             const void *data)
 +{
-+    AspeedPCIECfgState *s = ASPEED_PCIE_CFG(opaque);
-+    AspeedPCIECfgTxDesc desc;
-+    uint32_t reg = addr >> 2;
-+
-+    trace_aspeed_pcie_cfg_write(s->id, addr, data);
-+
-+    switch (reg) {
-+    case R_H2X_CFGE_INT_STS:
-+        if (data & R_H2X_CFGE_INT_STS_TX_IDEL_MASK) {
-+            s->regs[R_H2X_CFGE_INT_STS] &= ~R_H2X_CFGE_INT_STS_TX_IDEL_MASK;
-+        }
-+
-+        if (data & R_H2X_CFGE_INT_STS_RX_BUSY_MASK) {
-+            s->regs[R_H2X_CFGE_INT_STS] &= ~R_H2X_CFGE_INT_STS_RX_BUSY_MASK;
-+        }
-+        break;
-+    case R_H2X_CFGI_CTRL:
-+        if (data & R_H2X_CFGI_CTRL_FIRE_MASK) {
-+            /*
-+             * Internal access to bridge
-+             * Type and BDF are 0
-+             */
-+            desc.desc0 = 0x04000001 |
-+                (ARRAY_FIELD_EX32(s->regs, H2X_CFGI_TLP, WR) << 30);
-+            desc.desc1 = 0x00401000 |
-+                ARRAY_FIELD_EX32(s->regs, H2X_CFGI_TLP, BEN);
-+            desc.desc2 = 0x00000000 |
-+                ARRAY_FIELD_EX32(s->regs, H2X_CFGI_TLP, ADDR);
-+            desc.wdata = s->regs[R_H2X_CFGI_WDATA];
-+            desc.rdata_reg = R_H2X_CFGI_RDATA;
-+            aspeed_pcie_cfg_readwrite(s, &desc);
-+        }
-+        break;
-+    case R_H2X_CFGE_TLPN:
-+        s->tlpn_fifo[s->tlpn_idx] = data;
-+        s->tlpn_idx = (s->tlpn_idx + 1) % ARRAY_SIZE(s->tlpn_fifo);
-+        break;
-+    case R_H2X_CFGE_CTRL:
-+        if (data & R_H2X_CFGE_CTRL_FIRE_MASK) {
-+            desc.desc0 = s->regs[R_H2X_CFGE_TLP1];
-+            desc.desc1 = s->tlpn_fifo[0];
-+            desc.desc2 = s->tlpn_fifo[1];
-+            desc.wdata = s->tlpn_fifo[2];
-+            desc.rdata_reg = R_H2X_CFGE_RDATA;
-+            aspeed_pcie_cfg_readwrite(s, &desc);
-+            s->regs[R_H2X_CFGE_INT_STS] |= R_H2X_CFGE_INT_STS_TX_IDEL_MASK;
-+            s->regs[R_H2X_CFGE_INT_STS] |= R_H2X_CFGE_INT_STS_RX_BUSY_MASK;
-+            s->tlpn_idx = 0;
-+        }
-+        break;
-+
-+    case R_H2X_INT_STS:
-+        s->regs[reg] &= ~data | R_H2X_INT_STS_INTX_MASK;
-+        break;
-+    /*
-+     * These status registers are used for notify sources ISR are executed.
-+     * If one source ISR is executed, it will clear one bit.
-+     * If it clear all bits, it means to initialize this register status
-+     * rather than sources ISR are executed.
-+     */
-+    case R_H2X_MSI_STS0:
-+    case R_H2X_MSI_STS1:
-+        if (data == 0) {
-+            return ;
-+        }
-+
-+        s->regs[reg] &= ~data;
-+        if (data == 0xffffffff) {
-+            return;
-+        }
-+
-+        if (!s->regs[R_H2X_MSI_STS0] &&
-+            !s->regs[R_H2X_MSI_STS1]) {
-+            trace_aspeed_pcie_rc_msi_clear_irq(s->id, 0);
-+            qemu_set_irq(s->rc.irq, 0);
-+        }
-+        break;
-+    default:
-+        s->regs[reg] = data;
-+        break;
-+    }
-+}
-+
-+static const MemoryRegionOps aspeed_2700_pcie_cfg_ops = {
-+    .read = aspeed_pcie_cfg_read,
-+    .write = aspeed_2700_pcie_cfg_write,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+    .valid = {
-+        .min_access_size = 1,
-+        .max_access_size = 4,
-+    },
-+};
-+
-+static void aspeed_2700_pcie_cfg_class_init(ObjectClass *klass,
-+                                            const void *data)
-+{
++    PCIDeviceClass *k = PCI_DEVICE_CLASS(klass);
 +    DeviceClass *dc = DEVICE_CLASS(klass);
-+    AspeedPCIECfgClass *apc = ASPEED_PCIE_CFG_CLASS(klass);
++    PCIERootPortClass *rpc = PCIE_ROOT_PORT_CLASS(klass);
 +
-+    dc->desc = "ASPEED 2700 PCIe Config";
-+    apc->reg_ops = &aspeed_2700_pcie_cfg_ops;
-+    apc->reg_map = &aspeed_2700_regmap;
-+    apc->nr_regs = 0x100 >> 2;
-+    apc->rc_msi_addr = 0x000000F0;
-+    apc->rc_bus_nr = 0;
++    dc->desc = "ASPEED PCIe Root Port";
++    k->vendor_id = PCI_VENDOR_ID_ASPEED;
++    k->device_id = 0x1150;
++    dc->user_creatable = true;
++
++    rpc->aer_offset = 0x100;
 +}
 +
-+static const TypeInfo aspeed_2700_pcie_cfg_info = {
-+    .name = TYPE_ASPEED_2700_PCIE_CFG,
-+    .parent = TYPE_ASPEED_PCIE_CFG,
-+    .class_init = aspeed_2700_pcie_cfg_class_init,
++static const TypeInfo aspeed_pcie_root_port_info = {
++    .name = TYPE_ASPEED_PCIE_ROOT_PORT,
++    .parent = TYPE_PCIE_ROOT_PORT,
++    .instance_size = sizeof(AspeedPCIERootPortState),
++    .class_init = aspeed_pcie_root_port_class_init,
 +};
 +
  /*
-  * PCIe PHY
-  *
-@@ -841,6 +998,7 @@ static void aspeed_pcie_register_types(void)
+  * PCIe Root Complex (RC)
+  */
+@@ -141,6 +168,13 @@ static void aspeed_pcie_rc_realize(DeviceState *dev, Error **errp)
+             return;
+         }
+     }
++
++    /* setup root port */
++    qdev_prop_set_int32(DEVICE(&rc->root_port), "addr", rc->rp_addr);
++    qdev_prop_set_uint16(DEVICE(&rc->root_port), "chassis", cfg->id);
++    if (!qdev_realize(DEVICE(&rc->root_port), BUS(pci->bus), errp)) {
++        return;
++    }
+ }
+ 
+ static const char *aspeed_pcie_rc_root_bus_path(PCIHostState *host_bridge,
+@@ -155,9 +189,19 @@ static const char *aspeed_pcie_rc_root_bus_path(PCIHostState *host_bridge,
+     return rc->name;
+ }
+ 
++static void aspeed_pcie_rc_instance_init(Object *obj)
++{
++    AspeedPCIERcState *rc = ASPEED_PCIE_RC(obj);
++    AspeedPCIERootPortState *root_port = &rc->root_port;
++
++    object_initialize_child(obj, "root_port", root_port,
++                            TYPE_ASPEED_PCIE_ROOT_PORT);
++}
++
+ static const Property aspeed_pcie_rc_props[] = {
+     DEFINE_PROP_UINT32("bus-nr", AspeedPCIERcState, bus_nr, 0),
+     DEFINE_PROP_BOOL("has-rd", AspeedPCIERcState, has_rd, 0),
++    DEFINE_PROP_UINT32("rp-addr", AspeedPCIERcState, rp_addr, 0),
+ };
+ 
+ static void aspeed_pcie_rc_class_init(ObjectClass *klass, const void *data)
+@@ -180,6 +224,7 @@ static const TypeInfo aspeed_pcie_rc_info = {
+     .name = TYPE_ASPEED_PCIE_RC,
+     .parent = TYPE_PCIE_HOST_BRIDGE,
+     .instance_size = sizeof(AspeedPCIERcState),
++    .instance_init = aspeed_pcie_rc_instance_init,
+     .class_init = aspeed_pcie_rc_class_init,
+ };
+ 
+@@ -452,6 +497,9 @@ static void aspeed_pcie_cfg_realize(DeviceState *dev, Error **errp)
+     object_property_set_bool(OBJECT(&s->rc), "has-rd",
+                             apc->rc_has_rd,
+                             &error_abort);
++    object_property_set_int(OBJECT(&s->rc), "rp-addr",
++                            apc->rc_rp_addr,
++                            &error_abort);
+     if (!sysbus_realize(SYS_BUS_DEVICE(&s->rc), errp)) {
+         return;
+     }
+@@ -485,6 +533,7 @@ static void aspeed_pcie_cfg_class_init(ObjectClass *klass, const void *data)
+     apc->nr_regs = 0x100 >> 2;
+     apc->rc_bus_nr = 0x80;
+     apc->rc_has_rd = true;
++    apc->rc_rp_addr = PCI_DEVFN(8, 0);
+ }
+ 
+ static const TypeInfo aspeed_pcie_cfg_info = {
+@@ -623,6 +672,7 @@ static void aspeed_pcie_register_types(void)
+ {
+     type_register_static(&aspeed_pcie_rc_info);
      type_register_static(&aspeed_pcie_root_device_info);
-     type_register_static(&aspeed_pcie_root_port_info);
++    type_register_static(&aspeed_pcie_root_port_info);
      type_register_static(&aspeed_pcie_cfg_info);
-+    type_register_static(&aspeed_2700_pcie_cfg_info);
      type_register_static(&aspeed_pcie_phy_info);
-     type_register_static(&aspeed_2700_pcie_phy_info);
  }
 -- 
 2.43.0

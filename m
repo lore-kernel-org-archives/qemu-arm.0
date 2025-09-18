@@ -4,133 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B3FBCA1013
-	for <qemu-arm@archiver.kernel.org>; Thu, 18 Sep 2025 15:26:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E21BECAC59A
+	for <qemu-arm@archiver.kernel.org>; Thu, 18 Sep 2025 15:26:20 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uzGVf-0004c9-0v; Thu, 18 Sep 2025 11:25:25 -0400
+	id 1uzGWW-0006xw-GI; Thu, 18 Sep 2025 11:26:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armenon@redhat.com>)
- id 1uzGVT-0004Hj-ME
- for qemu-arm@nongnu.org; Thu, 18 Sep 2025 11:25:13 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1uzGWU-0006tJ-IQ
+ for qemu-arm@nongnu.org; Thu, 18 Sep 2025 11:26:14 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armenon@redhat.com>)
- id 1uzGVP-0002m1-Mx
- for qemu-arm@nongnu.org; Thu, 18 Sep 2025 11:25:09 -0400
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1uzGWS-00038R-J7
+ for qemu-arm@nongnu.org; Thu, 18 Sep 2025 11:26:14 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1758209106;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ s=mimecast20190719; t=1758209171;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=UTHY4yYhUKE3D/jL5Fi7j9W8F5eZAPi88KnU28ha278=;
- b=RL1rGZx955BecHEsqZYs7wS8q2yOR32K+VYFEVGiZ8BDmgpqRvhsP3vEcMe0FpOQo3fH5l
- kzOyRvWSTgLs7zUj34YrTpq62aPCExVvDWhZaKbrLqXAelWQ9PUzHWkwG1wH444V+vYI4m
- nmxqOoIAPnMm8ROKeE9jZRIfjtPIkHo=
-Received: from mail-pg1-f200.google.com (mail-pg1-f200.google.com
- [209.85.215.200]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=60bh1/8KDe5Bli2xGeThDg2WbIb0AYpA+zhbjhLgDGc=;
+ b=WzfGcXuGuUfkFOtpWHbSwPSRikC0U0ICxz0tLXu6pwq76JIaXsCF7kTlVywT2nuDnrG8Ma
+ EOEd32HZ1uOOWV8pGodRHY9vrwyG0bh4jCo0OsdYXqq2dvJdRPgFjU9YXw9kX3Xc+fdNsU
+ KT3VgMvB+4x0SZALovGTrCYHA1Xhzik=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-153-izU3BDadM6qnosxw_lI1og-1; Thu, 18 Sep 2025 11:25:05 -0400
-X-MC-Unique: izU3BDadM6qnosxw_lI1og-1
-X-Mimecast-MFC-AGG-ID: izU3BDadM6qnosxw_lI1og_1758209105
-Received: by mail-pg1-f200.google.com with SMTP id
- 41be03b00d2f7-b550514936fso891712a12.3
- for <qemu-arm@nongnu.org>; Thu, 18 Sep 2025 08:25:05 -0700 (PDT)
+ us-mta-222-aqAvPsVYN6yMIGBWPeifdw-1; Thu, 18 Sep 2025 11:26:10 -0400
+X-MC-Unique: aqAvPsVYN6yMIGBWPeifdw-1
+X-Mimecast-MFC-AGG-ID: aqAvPsVYN6yMIGBWPeifdw_1758209169
+Received: by mail-wm1-f71.google.com with SMTP id
+ 5b1f17b1804b1-45f2c41c819so7345265e9.2
+ for <qemu-arm@nongnu.org>; Thu, 18 Sep 2025 08:26:10 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1758209104; x=1758813904;
- h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
- :mime-version:subject:date:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=UTHY4yYhUKE3D/jL5Fi7j9W8F5eZAPi88KnU28ha278=;
- b=g4fND4iMkOI9r21w1W9evh1Zt26UsFLmzQs7+begJD7N+b+KwqZPub3QgPLISGiZHw
- dVxuK02hX4qIpZzl7L4lzlPFph+bLnBv+1dOGcpRygbG9Ycqjphisg9/mVYDEqC0vx81
- 5G3n7bcmceOU+CHwI0A0mRkVztoYaRVl2dIAr84VlTqhcK8ZjXnQ31z0uM4caUNkr/ji
- BPVsiuBvyTLP2Bq968ViZcoAINqbv9Oo4PkAeYBOc5tEblec1EiWC75J//yTsVmLOvMl
- NQcFCXgMOCx6mWRxsXMzD6PV4L5S/qDotpF80NXPJHv3vwhyH/+QCc9U4ll4F/Tzlp98
- 30nA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCV5hCn4JIhLMx4POV8qz0RhYD5JsQ78u81Kl8IQkFvEz9E4MG2D1EwedCARBhlS9ufnU2/lK13AIw==@nongnu.org
-X-Gm-Message-State: AOJu0YwhHZMy7tZnN8sRPmBlwZEzuVPeqViKhHcjwWkMvmZFWCx5VtJ3
- uosEVynkkWvmA3PrS7w7MZxaXq0Ku+k5d9cflbq9/L6GxMl02X51ZhueZBEbPUF7dVkZ+0Dkb5V
- nEqhkPWnMijVKCKuRdRaSvNiF14v04b3guagExRJ/pJPGbQwQxg1wVA==
-X-Gm-Gg: ASbGncspmXJcPX9bvLyiQLsIkZ49NTM2Fy5dhDZ9UZ8VBOD9eeLWfsIpH6zvPw/mJzt
- wazFkHQWcOdGKSzsEeCnfTCBaDPCHFRfru7wMZBc4wmd+tzcn1S0cQC1bVrsWz0D6lcOHIB/FQf
- UPq6jemGEWjml0WOWvVL2onn4sXJJkdH2/eCcE01WRZWQ55NEzcOIylGRdC/2ePMIQiq2NK5S0t
- ZTDHyCYf4/QFPiWh6nGq6GHORdGsokAYHUP22jTwMSaZguo/nJtI9ozP99lP8rcoxebAogViOSp
- GwA7lqvWdGGJ8qe3UiD2PzxOaTKKfdq/Mippj2OS5inejV3m4kyllA==
-X-Received: by 2002:a05:6a20:bf25:b0:262:8bce:33bc with SMTP id
- adf61e73a8af0-27aa99bdb79mr7505475637.56.1758209104193; 
- Thu, 18 Sep 2025 08:25:04 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGGWS037C+Fg39j6wEdOMo5UkvblfjDZdIvKIxYeD15QWSN7u4XXyj546tU9lufY5KE1s4Jcg==
-X-Received: by 2002:a05:6a20:bf25:b0:262:8bce:33bc with SMTP id
- adf61e73a8af0-27aa99bdb79mr7505454637.56.1758209103791; 
- Thu, 18 Sep 2025 08:25:03 -0700 (PDT)
-Received: from armenon-kvm.bengluru.csb ([49.36.110.230])
+ d=1e100.net; s=20230601; t=1758209169; x=1758813969;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=60bh1/8KDe5Bli2xGeThDg2WbIb0AYpA+zhbjhLgDGc=;
+ b=IKB8KAJ+tfcmDBA3dv2VgVrW3gzhOkSnBkgx5RR5GzMqJ/GdCla9dXNgRh0GfvOkXA
+ utC3Xag+fDRudgjHI03m93SVayoqruv6ZfvuuZvKlRir/gN/SSRqH6m3orhcMNzJm6Mn
+ swyHXALPlM1v6gf1WZSDPfZ18W+YQJdqwtZHuETONbZjIzq5tP7zr5nzvducmruhGbz9
+ Kr1q2bxBn6m129alpNHY8Zk4LU1XDETzvSoXoRYNVU4HxaLRkWTFOgaNQtwmbtrULvVS
+ f4lJ0C90IYJl+mza3um1Eh51t3FEdnQ+ATbLTVtie7SXqeLl1K9wtdxtfzW5W4hap1vu
+ ZggA==
+X-Gm-Message-State: AOJu0YyL8ZFXp5Nve8hQgNJAjHhdMgKxCYx5ucTB/tuH/GlQ1qyjx2Fm
+ hgk/lq1YNFxvCbMANAFHkqOiiYRyAqP4S/UZcog31JGnKK+b+oTJY+fDyAbJx3tXhMWgACESxJK
+ eQtpLfXzP6UwUT+glN9ARE6ovWQh/hclR6xoWJNK+t3+2sN4T36QrjA==
+X-Gm-Gg: ASbGncuUg+vY6AFt515cSK2oduww3dcNvLocTxNd+WRtL7jJhDqpZo203v61bj4JNxU
+ f22zrzc+PRKIC9bPai+/bq1yy+LN3npG5DvWbp4pDMDaZ6TxDA8C9crWFqr/cn29OIwzlO+1wgj
+ zQbEShXN6XuECUbVb/z7lrASyoHEa1meztrfop9nwY0MzneaMDub1RnBDM8yRSHnZQh/anWvWze
+ gIYiv8NC8Fv6JbDpr/3kW/fslUKqExm+cmDkSMl7ycRY+sAOS4XSWTL7XBa3vLiWAtHnaW1Ko0Q
+ jKRtnhaMNaJVmwk2JP0zyc/ri2PV5lRP4hKt5WJsG0nUF1bhFrGUv00QEu8gcitv/zJziQRSELx
+ RrfUI8dwKKpY=
+X-Received: by 2002:a05:600c:4eca:b0:45b:79fd:cb3d with SMTP id
+ 5b1f17b1804b1-4634c528acamr48192835e9.36.1758209168701; 
+ Thu, 18 Sep 2025 08:26:08 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGEtQw7Ad4RC9Ve+flPRrpO5OIZ1reWlCMCoXq69hJMRKQIk5PW42Rnui+NeQkSFExCkaGLOA==
+X-Received: by 2002:a05:600c:4eca:b0:45b:79fd:cb3d with SMTP id
+ 5b1f17b1804b1-4634c528acamr48192565e9.36.1758209168259; 
+ Thu, 18 Sep 2025 08:26:08 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-77cfc2481d7sm2675512b3a.32.2025.09.18.08.24.55
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 18 Sep 2025 08:25:03 -0700 (PDT)
-From: Arun Menon <armenon@redhat.com>
-Date: Thu, 18 Sep 2025 20:53:26 +0530
-Subject: [PATCH v14 09/27] migration: push Error **errp into
- qemu_loadvm_state_main()
+ 5b1f17b1804b1-464f5d053f2sm46067075e9.20.2025.09.18.08.26.07
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 18 Sep 2025 08:26:07 -0700 (PDT)
+Message-ID: <22caf6ef-e1ba-4465-b587-baffb3ce4618@redhat.com>
+Date: Thu, 18 Sep 2025 17:26:06 +0200
 MIME-Version: 1.0
-Message-Id: <20250918-propagate_tpm_error-v14-9-36f11a6fb9d3@redhat.com>
-References: <20250918-propagate_tpm_error-v14-0-36f11a6fb9d3@redhat.com>
-In-Reply-To: <20250918-propagate_tpm_error-v14-0-36f11a6fb9d3@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: Peter Xu <peterx@redhat.com>, Fabiano Rosas <farosas@suse.de>, 
- =?utf-8?q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>, 
- Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>, 
- Dmitry Osipenko <dmitry.osipenko@collabora.com>, 
- "Michael S. Tsirkin" <mst@redhat.com>, 
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
- Cornelia Huck <cohuck@redhat.com>, Halil Pasic <pasic@linux.ibm.com>, 
- Eric Farman <farman@linux.ibm.com>, Thomas Huth <thuth@redhat.com>, 
- Christian Borntraeger <borntraeger@linux.ibm.com>, 
- Matthew Rosato <mjrosato@linux.ibm.com>, 
- Richard Henderson <richard.henderson@linaro.org>, 
- David Hildenbrand <david@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>, 
- Nicholas Piggin <npiggin@gmail.com>, 
- Harsh Prateek Bora <harshpb@linux.ibm.com>, 
- Paolo Bonzini <pbonzini@redhat.com>, Fam Zheng <fam@euphon.net>, 
- Alex Williamson <alex.williamson@redhat.com>, 
- =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>, 
- Steve Sistare <steven.sistare@oracle.com>, 
- =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>, 
- qemu-s390x@nongnu.org, qemu-ppc@nongnu.org, 
- Hailiang Zhang <zhanghailiang@xfusion.com>, 
- Stefan Berger <stefanb@linux.vnet.ibm.com>, 
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
- Arun Menon <armenon@redhat.com>, 
- =?utf-8?q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
-X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=6326; i=armenon@redhat.com;
- h=from:subject:message-id; bh=CbE6WDTGoaxyx+hpN6RrbB5sFr/ZitwM6OvQ3jqdjKk=;
- b=owGbwMvMwCWWVaVqcZPfqI/xtFoSQ8YZ5e/zpx/j5nq248eEhceXFa3c8bm2+t4b8UnnO9dXN
- 8zxDjhu0FHKwiDGxSArpsjS8DVAtimgMCLS9uV1mDmsTCBDGLg4BWAi5+8x/A+tm2MuK3Hy9cmz
- GSbrBHWZD2Zanb/VHujcWF+Se+ZiQQwjw03u409eh/5cEPZw29btNxf5vJ747Oe+APFKc0W5GsX
- NRdwA
-X-Developer-Key: i=armenon@redhat.com; a=openpgp;
- fpr=80F5501D82507158593DE9D76A7A2538D90F328E
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 2/2] target/arm/kvm: add kvm-psci-version vcpu property
+To: Sebastian Ott <sebott@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini <pbonzini@redhat.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, kvm@vger.kernel.org,
+ kvmarm@lists.linux.dev
+References: <20250911144923.24259-1-sebott@redhat.com>
+ <20250911144923.24259-3-sebott@redhat.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <20250911144923.24259-3-sebott@redhat.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: qZ_Ik68HamFfDcFrEZl4ZZwCXWQrqDImJadnDTb-yfs_1758209105
+X-Mimecast-MFC-PROC-ID: vDWUMGUrqsTTbWzxor2cmlEpqlO06RmJ6_WXN9epLY0_1758209169
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=armenon@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.005,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -143,178 +116,167 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This is an incremental step in converting vmstate loading
-code to report error via Error objects instead of directly
-printing it to console/monitor.
-It is ensured that qemu_loadvm_state_main() must report an error
-in errp, in case of failure.
+Hi Sebastian,
 
-Set errp explicitly if it is NULL in case of failure in the out
-section. This will be removed in the subsequent patch when all of
-the calls are converted to passing errp.
+On 9/11/25 4:49 PM, Sebastian Ott wrote:
+> Provide a kvm specific vcpu property to override the default
+> (as of kernel v6.13 that would be PSCI v1.3) PSCI version emulated
+> by kvm. Current valid values are: 0.1, 0.2, 1.0, 1.1, 1.2, and 1.3
+>
+> Signed-off-by: Sebastian Ott <sebott@redhat.com>
+> ---
+>  docs/system/arm/cpu-features.rst |  5 +++
+>  target/arm/cpu.h                 |  6 +++
+>  target/arm/kvm.c                 | 70 +++++++++++++++++++++++++++++++-
+>  3 files changed, 80 insertions(+), 1 deletion(-)
+>
+> diff --git a/docs/system/arm/cpu-features.rst b/docs/system/arm/cpu-features.rst
+> index 37d5dfd15b..1d32ce0fee 100644
+> --- a/docs/system/arm/cpu-features.rst
+> +++ b/docs/system/arm/cpu-features.rst
+> @@ -204,6 +204,11 @@ the list of KVM VCPU features and their descriptions.
+>    the guest scheduler behavior and/or be exposed to the guest
+>    userspace.
+>  
+> +``kvm-psci-version``
+> +  Override the default (as of kernel v6.13 that would be PSCI v1.3)
+> +  PSCI version emulated by the kernel. Current valid values are:
+> +  0.1, 0.2, 1.0, 1.1, 1.2, and 1.3
+> +
+>  TCG VCPU Features
+>  =================
+>  
+> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> index c15d79a106..44292aab32 100644
+> --- a/target/arm/cpu.h
+> +++ b/target/arm/cpu.h
+> @@ -974,6 +974,12 @@ struct ArchCPU {
+>       */
+>      uint32_t psci_version;
+>  
+> +    /*
+> +     * Intermediate value used during property parsing.
+> +     * Once finalized, the value should be read from psci_version.
+> +     */
+> +    uint32_t prop_psci_version;
+> +
+>      /* Current power state, access guarded by BQL */
+>      ARMPSCIState power_state;
+>  
+> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+> index 6672344855..bc6073f395 100644
+> --- a/target/arm/kvm.c
+> +++ b/target/arm/kvm.c
+> @@ -483,6 +483,59 @@ static void kvm_steal_time_set(Object *obj, bool value, Error **errp)
+>      ARM_CPU(obj)->kvm_steal_time = value ? ON_OFF_AUTO_ON : ON_OFF_AUTO_OFF;
+>  }
+>  
+> +static char *kvm_get_psci_version(Object *obj, Error **errp)
+> +{
+> +    ARMCPU *cpu = ARM_CPU(obj);
+> +    const char *val;
+> +
+> +    switch (cpu->prop_psci_version) {
+> +    case QEMU_PSCI_VERSION_0_1:
+> +        val = "0.1";
+> +        break;
+> +    case QEMU_PSCI_VERSION_0_2:
+> +        val = "0.2";
+> +        break;
+> +    case QEMU_PSCI_VERSION_1_0:
+> +        val = "1.0";
+> +        break;
+> +    case QEMU_PSCI_VERSION_1_1:
+> +        val = "1.1";
+> +        break;
+> +    case QEMU_PSCI_VERSION_1_2:
+> +        val = "1.2";
+> +        break;
+> +    case QEMU_PSCI_VERSION_1_3:
+> +        val = "1.3";
+> +        break;
+> +    default:
+> +        val = "0.2";
+can you explain why you return 0.2 by default? Shouldn't we report the
+default value exposed by KVM?
+> +        break;
+> +    }
+> +    return g_strdup(val);
+> +}
+> +
+> +static void kvm_set_psci_version(Object *obj, const char *value, Error **errp)
+> +{
+> +    ARMCPU *cpu = ARM_CPU(obj);
+> +
+> +    if (!strcmp(value, "0.1")) {
+> +        cpu->prop_psci_version = QEMU_PSCI_VERSION_0_1;
+> +    } else if (!strcmp(value, "0.2")) {
+> +        cpu->prop_psci_version = QEMU_PSCI_VERSION_0_2;
+> +    } else if (!strcmp(value, "1.0")) {
+> +        cpu->prop_psci_version = QEMU_PSCI_VERSION_1_0;
+> +    } else if (!strcmp(value, "1.1")) {
+> +        cpu->prop_psci_version = QEMU_PSCI_VERSION_1_1;
+> +    } else if (!strcmp(value, "1.2")) {
+> +        cpu->prop_psci_version = QEMU_PSCI_VERSION_1_2;
+> +    } else if (!strcmp(value, "1.3")) {
+> +        cpu->prop_psci_version = QEMU_PSCI_VERSION_1_3;
+> +    } else {
+> +        error_setg(errp, "Invalid PSCI-version value");
+> +        error_append_hint(errp, "Valid values are 0.1, 0.2, 1.0, 1.1, 1.2, 1.3\n");
+> +    }
+> +}
+> +
+>  /* KVM VCPU properties should be prefixed with "kvm-". */
+>  void kvm_arm_add_vcpu_properties(ARMCPU *cpu)
+>  {
+> @@ -504,6 +557,12 @@ void kvm_arm_add_vcpu_properties(ARMCPU *cpu)
+>                               kvm_steal_time_set);
+>      object_property_set_description(obj, "kvm-steal-time",
+>                                      "Set off to disable KVM steal time.");
+> +
+> +    object_property_add_str(obj, "kvm-psci-version", kvm_get_psci_version,
+> +                            kvm_set_psci_version);
+> +    object_property_set_description(obj, "kvm-psci-version",
+> +                                    "Set PSCI version. "
+> +                                    "Valid values are 0.1, 0.2, 1.0, 1.1, 1.2, 1.3");
+>  }
+>  
+>  bool kvm_arm_pmu_supported(void)
+> @@ -1883,7 +1942,8 @@ int kvm_arch_init_vcpu(CPUState *cs)
+>      if (cs->start_powered_off) {
+>          cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_POWER_OFF;
+>      }
+> -    if (kvm_check_extension(cs->kvm_state, KVM_CAP_ARM_PSCI_0_2)) {
+> +    if (cpu->prop_psci_version != QEMU_PSCI_VERSION_0_1 &&
+> +        kvm_check_extension(cs->kvm_state, KVM_CAP_ARM_PSCI_0_2)) {
+I don't get why this change is needed. Please can you explain?
 
-The error message in the default case of qemu_loadvm_state_main()
-has the word "savevm". This is removed because it can confuse the
-user while reading destination side error logs.
 
-Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
-Reviewed-by: Fabiano Rosas <farosas@suse.de>
-Signed-off-by: Arun Menon <armenon@redhat.com>
----
- migration/colo.c   |  3 +--
- migration/savevm.c | 36 +++++++++++++++++-------------------
- migration/savevm.h |  3 ++-
- 3 files changed, 20 insertions(+), 22 deletions(-)
+>          cpu->psci_version = QEMU_PSCI_VERSION_0_2;
+>          cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_PSCI_0_2;
+>      }
+> @@ -1922,6 +1982,14 @@ int kvm_arch_init_vcpu(CPUState *cs)
+>          }
+>      }
+>  
+> +    if (cpu->prop_psci_version) {
+> +        psciver = cpu->prop_psci_version;
+> +        ret = kvm_set_one_reg(cs, KVM_REG_ARM_PSCI_VERSION, &psciver);
+> +        if (ret) {
+> +            error_report("PSCI version %lx is not supported by KVM", psciver);
+don't you need a PRIx64 here?
+> +            return ret;
+> +        }
+> +    }
+>      /*
+>       * KVM reports the exact PSCI version it is implementing via a
+>       * special sysreg. If it is present, use its contents to determine
+Thanks
 
-diff --git a/migration/colo.c b/migration/colo.c
-index 2f524b19e6a79dcfe3861f1dfb768222f65a718a..642d17487d92c0a9508e599ca3bf524e80b6fd46 100644
---- a/migration/colo.c
-+++ b/migration/colo.c
-@@ -686,11 +686,10 @@ static void colo_incoming_process_checkpoint(MigrationIncomingState *mis,
- 
-     bql_lock();
-     cpu_synchronize_all_states();
--    ret = qemu_loadvm_state_main(mis->from_src_file, mis);
-+    ret = qemu_loadvm_state_main(mis->from_src_file, mis, errp);
-     bql_unlock();
- 
-     if (ret < 0) {
--        error_setg(errp, "Load VM's live state (ram) error");
-         return;
-     }
- 
-diff --git a/migration/savevm.c b/migration/savevm.c
-index 5462eaff0dcec1fa207c08da6124fe91656201ac..eccb3f63f8dfc070263a1d19ec3415684e8fa60e 100644
---- a/migration/savevm.c
-+++ b/migration/savevm.c
-@@ -2105,7 +2105,7 @@ static void *postcopy_ram_listen_thread(void *opaque)
-     qemu_file_set_blocking(f, true);
- 
-     /* TODO: sanity check that only postcopiable data will be loaded here */
--    load_res = qemu_loadvm_state_main(f, mis);
-+    load_res = qemu_loadvm_state_main(f, mis, &error_fatal);
- 
-     /*
-      * This is tricky, but, mis->from_src_file can change after it
-@@ -2456,10 +2456,7 @@ static int loadvm_handle_cmd_packaged(MigrationIncomingState *mis, Error **errp)
-         qemu_coroutine_yield();
-     } while (1);
- 
--    ret = qemu_loadvm_state_main(packf, mis);
--    if (ret < 0) {
--        error_setg(errp, "VM state load failed: %d", ret);
--    }
-+    ret = qemu_loadvm_state_main(packf, mis, errp);
-     trace_loadvm_handle_cmd_packaged_main(ret);
-     qemu_fclose(packf);
-     object_unref(OBJECT(bioc));
-@@ -3080,18 +3077,22 @@ static bool postcopy_pause_incoming(MigrationIncomingState *mis)
-     return true;
- }
- 
--int qemu_loadvm_state_main(QEMUFile *f, MigrationIncomingState *mis)
-+int qemu_loadvm_state_main(QEMUFile *f, MigrationIncomingState *mis,
-+                           Error **errp)
- {
-+    ERRP_GUARD();
-     uint8_t section_type;
-     int ret = 0;
--    Error *local_err = NULL;
- 
- retry:
-     while (true) {
-         section_type = qemu_get_byte(f);
- 
--        ret = qemu_file_get_error_obj_any(f, mis->postcopy_qemufile_dst, NULL);
-+        ret = qemu_file_get_error_obj_any(f, mis->postcopy_qemufile_dst, errp);
-         if (ret) {
-+            error_prepend(errp,
-+                          "Failed to load section ID: stream error: %d: ",
-+                          ret);
-             break;
-         }
- 
-@@ -3112,10 +3113,7 @@ retry:
-             }
-             break;
-         case QEMU_VM_COMMAND:
--            ret = loadvm_process_command(f, &local_err);
--            if (ret < 0) {
--                error_report_err(local_err);
--            }
-+            ret = loadvm_process_command(f, errp);
-             trace_qemu_loadvm_state_section_command(ret);
-             if ((ret < 0) || (ret == LOADVM_QUIT)) {
-                 goto out;
-@@ -3125,7 +3123,7 @@ retry:
-             /* This is the end of migration */
-             goto out;
-         default:
--            error_report("Unknown savevm section type %d", section_type);
-+            error_setg(errp, "Unknown section type %d", section_type);
-             ret = -EINVAL;
-             goto out;
-         }
-@@ -3133,6 +3131,9 @@ retry:
- 
- out:
-     if (ret < 0) {
-+        if (*errp == NULL) {
-+            error_setg(errp, "Loading VM state failed: %d", ret);
-+        }
-         qemu_file_set_error(f, ret);
- 
-         /* Cancel bitmaps incoming regardless of recovery */
-@@ -3153,6 +3154,7 @@ out:
-             migrate_postcopy_ram() && postcopy_pause_incoming(mis)) {
-             /* Reset f to point to the newly created channel */
-             f = mis->from_src_file;
-+            error_free_or_abort(errp);
-             goto retry;
-         }
-     }
-@@ -3186,10 +3188,7 @@ int qemu_loadvm_state(QEMUFile *f, Error **errp)
- 
-     cpu_synchronize_all_pre_loadvm();
- 
--    ret = qemu_loadvm_state_main(f, mis);
--    if (ret < 0) {
--        error_setg(errp, "Load VM state failed: %d", ret);
--    }
-+    ret = qemu_loadvm_state_main(f, mis, errp);
-     qemu_event_set(&mis->main_thread_load_event);
- 
-     trace_qemu_loadvm_state_post_main(ret);
-@@ -3270,9 +3269,8 @@ int qemu_load_device_state(QEMUFile *f, Error **errp)
-     int ret;
- 
-     /* Load QEMU_VM_SECTION_FULL section */
--    ret = qemu_loadvm_state_main(f, mis);
-+    ret = qemu_loadvm_state_main(f, mis, errp);
-     if (ret < 0) {
--        error_setg(errp, "Failed to load device state: %d", ret);
-         return ret;
-     }
- 
-diff --git a/migration/savevm.h b/migration/savevm.h
-index b12681839f0b1afa3255e45215d99c13a224b19f..c337e3e3d111a7f28a57b90f61e8f70b71803d4e 100644
---- a/migration/savevm.h
-+++ b/migration/savevm.h
-@@ -66,7 +66,8 @@ int qemu_save_device_state(QEMUFile *f);
- 
- int qemu_loadvm_state(QEMUFile *f, Error **errp);
- void qemu_loadvm_state_cleanup(MigrationIncomingState *mis);
--int qemu_loadvm_state_main(QEMUFile *f, MigrationIncomingState *mis);
-+int qemu_loadvm_state_main(QEMUFile *f, MigrationIncomingState *mis,
-+                           Error **errp);
- int qemu_load_device_state(QEMUFile *f, Error **errp);
- int qemu_loadvm_approve_switchover(void);
- int qemu_savevm_state_complete_precopy_non_iterable(QEMUFile *f,
-
--- 
-2.51.0
+Eric
 
 

@@ -4,168 +4,155 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1178CAC59A
-	for <qemu-arm@archiver.kernel.org>; Fri, 19 Sep 2025 07:39:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA67ACAC59A
+	for <qemu-arm@archiver.kernel.org>; Fri, 19 Sep 2025 08:06:09 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uzVhv-0004GD-6k; Fri, 19 Sep 2025 03:39:03 -0400
+	id 1uzW7z-00051h-2a; Fri, 19 Sep 2025 04:05:59 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
- id 1uzVht-0004F4-Qg; Fri, 19 Sep 2025 03:39:01 -0400
-Received: from mail-westus2azlp170100005.outbound.protection.outlook.com
- ([2a01:111:f403:c005::5] helo=CO1PR03CU002.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1uzW7x-0004yw-GP
+ for qemu-arm@nongnu.org; Fri, 19 Sep 2025 04:05:57 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
- id 1uzVhm-0000Tu-Fx; Fri, 19 Sep 2025 03:39:00 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=f+PbFMAGok2wtr4AkeHSt+k6sPWRXEGqhprYtR67tpAHUGZeHdIgqCxx+IOvlJIJ1f7/5Yib4GaUua8t5H07Fl/f9RQsLljHfOC4lTTzDCNFmHGNgFjvpFySwgTg1F3LVnxCx754Hlmi/Qcc7n0kj97ek0F+EFgAvsvcLC3HDO1QatYK2sP4lvFnFtMvXV+XW0V9Ow23l3FnyFtduZr+tyrQetVBBMnkECbVUTU8EduOQzDNajivock+NhP9mmfYX4Bcyas/iv8pQlhEUpEgteEn2Tid9Ao5d+Lpv6gp8K1Vhmz10F28mpLpO7B9mu2Qyy/fVEUjwqHcBj+os4tZYg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=WxArBN3w6TtMcpX8KROWmn8So1WVLGNAn/5JRBI92eA=;
- b=latEyhL+w7x2J3+AlSVW8fHwU1UzuI5GcnfxP4Xm7ZexqUOVQ2y7tscncWhGjeXx73dxqQhy1vSIescbMGD9RQRa2q6AFx+RxJrDXN+DcI8YjUqQUoKp9G31RQtI+j9dNvA693i50vx7JNk8LtNUFmFC7eITxeRt9qTJqCaIw9almSzGmXsXHvVqv+clOTduhD1ncGKogs1sIUVL2JiN4fBAsWerJAJe09mf8sfbaqGsACo9NJo9l7/qLwIJMT80HqgT2qEH2mfUFp2V5IdUrUC0oJ6MWquJusF/6KshQda5eKtweYiw5BM+IQOhx5AJ1e0kUn/V20xe9zaGTW7v1g==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=WxArBN3w6TtMcpX8KROWmn8So1WVLGNAn/5JRBI92eA=;
- b=ZkIBMKvmklVtbj0dzPSp1n+r0i5fOjc97OOHxWPbMphdn/QSb2Lr5cxudw543JSoSPaimUKvYEUKBXiye4mUwYkfXrz4t57TZnr4T6X/3FS9mOvGnBm7/2u2q8sIagiNDbXQFqVgJI0ozNLv7/eXevffYE4yXcnN5+JjfwGt6WJuWwKEuQDyy1nyGhM18SA03nQALhHBHXaVu/Wnrr9fMhz7U647+/aO4poB3MUs3M+laopKidDLRCjuD3QWcnUwv8c3Rj/DxJcaPQGGzGHm8+rTB8Rv2bO6lOaQ+Go1keChB5+7Bj0kzmCfZJHreX7qTjdIjsadB2p3ODiSwRCf4g==
-Received: from CH3PR12MB7548.namprd12.prod.outlook.com (2603:10b6:610:144::12)
- by BY5PR12MB4098.namprd12.prod.outlook.com (2603:10b6:a03:205::8)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9137.16; Fri, 19 Sep
- 2025 07:38:45 +0000
-Received: from CH3PR12MB7548.namprd12.prod.outlook.com
- ([fe80::e8c:e992:7287:cb06]) by CH3PR12MB7548.namprd12.prod.outlook.com
- ([fe80::e8c:e992:7287:cb06%5]) with mapi id 15.20.9137.012; Fri, 19 Sep 2025
- 07:38:45 +0000
-From: Shameer Kolothum <skolothumtho@nvidia.com>
-To: Nicolin Chen <nicolinc@nvidia.com>
-CC: Shameer Kolothum <shameerkolothum@gmail.com>, "qemu-arm@nongnu.org"
- <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "eric.auger@redhat.com" <eric.auger@redhat.com>, "peter.maydell@linaro.org"
- <peter.maydell@linaro.org>, Jason Gunthorpe <jgg@nvidia.com>,
- "ddutile@redhat.com" <ddutile@redhat.com>, "berrange@redhat.com"
- <berrange@redhat.com>, Nathan Chen <nathanc@nvidia.com>, Matt Ochs
- <mochs@nvidia.com>, "smostafa@google.com" <smostafa@google.com>,
- "linuxarm@huawei.com" <linuxarm@huawei.com>, "wangzhou1@hisilicon.com"
- <wangzhou1@hisilicon.com>, "jiangkunkun@huawei.com" <jiangkunkun@huawei.com>, 
- "jonathan.cameron@huawei.com" <jonathan.cameron@huawei.com>,
- "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>,
- "zhenzhong.duan@intel.com" <zhenzhong.duan@intel.com>
-Subject: RE: [RFC PATCH v3 06/15] hw/arm/smmuv3-accel: Restrict accelerated
- SMMUv3 to vfio-pci endpoints with iommufd
-Thread-Topic: [RFC PATCH v3 06/15] hw/arm/smmuv3-accel: Restrict accelerated
- SMMUv3 to vfio-pci endpoints with iommufd
-Thread-Index: AQHcJvVSyZvN/mVpTUewNZT1jGrd9rSXuIGAgAABxLCAATN4wIAAk4AAgACX+rA=
-Date: Fri, 19 Sep 2025 07:38:45 +0000
-Message-ID: <CH3PR12MB7548BB774BB375D5056C062CAB11A@CH3PR12MB7548.namprd12.prod.outlook.com>
-References: <20250714155941.22176-1-shameerali.kolothum.thodi@huawei.com>
- <20250714155941.22176-7-shameerali.kolothum.thodi@huawei.com>
- <aJKn650gOGQh2whD@Asurada-Nvidia>
- <CAHy=t28z=wrXbXOJjD4sFw0RxJR3fccqF-EdaQDB_s_F6RC4FQ@mail.gmail.com>
- <aMsBvSSEzsgeMHkK@Asurada-Nvidia>
- <CH3PR12MB7548347E93651468E70B2470AB17A@CH3PR12MB7548.namprd12.prod.outlook.com>
- <CH3PR12MB7548B6A98B640192579078EBAB16A@CH3PR12MB7548.namprd12.prod.outlook.com>
- <aMyA4AHf7pqnOzSV@Asurada-Nvidia>
-In-Reply-To: <aMyA4AHf7pqnOzSV@Asurada-Nvidia>
-Accept-Language: en-US, en-GB
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: CH3PR12MB7548:EE_|BY5PR12MB4098:EE_
-x-ms-office365-filtering-correlation-id: 700ebae4-9be0-4664-da1b-08ddf74f9042
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|1800799024|366016|7416014|376014|38070700021; 
-x-microsoft-antispam-message-info: =?us-ascii?Q?7lBn4nrn8OJ7J0KqeW2foy6nBm0OmIvfcuKJMYbgp62TimMsC9MF0DLkdnUe?=
- =?us-ascii?Q?iORiih977ynOKlCaVVcNQpKejhbcnjMu4UDTLh/haQHmaZBF0kdM4q44hk2m?=
- =?us-ascii?Q?LAjpYSEGCn++9THKL461FF1W7WbOZbAtv8X9b3VCm+XACV0MCYgm1VJqPWC1?=
- =?us-ascii?Q?qiuyUajp+y4yNHlLh0IUWnQib+x7x8gwPiI+zfAv0pDctWYbZjBkTNGOGN7y?=
- =?us-ascii?Q?G3Mw6fWES5qE0mu+fXFUnIzdT2EuDd0sUyYVKPplt2swZmILmNKyxOn2uvMf?=
- =?us-ascii?Q?6JEW73G1qjTjkRb9aryMBf2eVL/xn96j8qMcCkTcAy7f1SgCyUb1+sPzvGsf?=
- =?us-ascii?Q?v7LC6YUOYV7+TluodmceIWoHB/BGJiT7lwbc9hsv8H6kbld3JZD9D13jnf17?=
- =?us-ascii?Q?3DKpq6+vdcpmqogrx7mm/ST6SWzRfK6cBieWFW5EDCrohjrjgGHNfBac91Mb?=
- =?us-ascii?Q?iUpEY2+N1rrDSzLdfK7CNs9opOvDtAK12MwFuogYemfJR3wHCnBmWogwk9JU?=
- =?us-ascii?Q?lznbW6AbxH7PsGFGPorQvNdznIusIrzBbh9FOY9Lv4oGl6Qd5zqo382Ccc81?=
- =?us-ascii?Q?i1uw20tqGbvgqptbuNzU/BJfvlENVQhBBdY9EKIUBb4rFY/axZYkXNAwCIDZ?=
- =?us-ascii?Q?41rIdcCD7cm+ySe9ln47qq/J6xz7U5B3fWC38nTb9rtAu+EwtR5VvbNFJUgg?=
- =?us-ascii?Q?IziY1nv/LwQv9NkH92+QqHIXqAjmDJy5gipnsoEhheHgpYTTt+I8RWEMWw8L?=
- =?us-ascii?Q?K5LSOo0ZEhZAZp/kfz+rMUMRf8ZxWqonuynK8hHX/JN0+7gv9RULFLW92JLl?=
- =?us-ascii?Q?/8eNJ6ZCwmlu7TKiWTnBz3VVfEyOIxGi9HRR4YOSdQCJIs3VKunaywiFzIIC?=
- =?us-ascii?Q?jnIk0G96gbwXz46Icc2wjg+QPYxS9dnxQ/1nNl4SHwJO+2KmOfgNutWhKAyB?=
- =?us-ascii?Q?xdAAIEnf7FADfGE5yYooWkVxBwmiXfJS1T55QpP45Q6EdZ4aQueRYlbK8+Cw?=
- =?us-ascii?Q?AZ8crkbO3KruOmcblqiontTalshG2k8Pv0Dq4MTIYgaDtv6HzHOy2YiFkXDD?=
- =?us-ascii?Q?eRpzA9TJqwIDKB8hKKuw7YtsBTFajZ7G8sidTki4pwPduQJ0g+MbQXNmRD1G?=
- =?us-ascii?Q?CKz3/9+J2RbS6mkIyuePxCi0OGORrbErlF+EuiCgaL3n1gN+qSWCppkpXf7X?=
- =?us-ascii?Q?TlQjD+m4e1EvXwEZfqFgaSX5Bfkr8I5VCmsqbVd6B3IxwrPaV6CKqm4vF9Rs?=
- =?us-ascii?Q?8zPMB9HDjA10UpXeZ+FQ/xt8+lfFxDL48LqL7SOpZPtL7nVZ0OOFVKQsP5Sw?=
- =?us-ascii?Q?mlIWi3EMFmQ6mW83cO3zqRXf788PX7b4Ahkk+GbHdta1wOQfFCkBXIxe5rzl?=
- =?us-ascii?Q?BqimoZRJ47N9QCLfbnqmKnqERpPmaRovakPPt4693l3rxriGMjg28cz5+zZX?=
- =?us-ascii?Q?3rvCev1ZPw9tWDVD2pq3EnvhnwQ7AxYq4/SKBZLYhCZ+j3rm4Q+1jA=3D=3D?=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:CH3PR12MB7548.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(1800799024)(366016)(7416014)(376014)(38070700021); DIR:OUT;
- SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?PytZ64RxWg++uCy4CK5fqafKj3W3d7i/8iIAMwT2pNsbUD5GkbZQrNIz1Kzd?=
- =?us-ascii?Q?aNkZsitoXgJCZGoinK9pE8cOaE6k2Bxn6VWRAF5HokAfOFhPbai6gl8sry9u?=
- =?us-ascii?Q?sEhTjDvUfPtYEJ4cPCLWuyG5ATrr3W1nwc+ovkHOwh7Y1ufLOdc18nvr/sAb?=
- =?us-ascii?Q?0HP7Yx0gwwnxmkjp6DOjqpVd3oWMVh8cDKIadMw+hcWfdZO9LCsK2CLUMApi?=
- =?us-ascii?Q?kSYGJVWKyXWHKDEK37wj/lJR6nb5t5Wa67bxwoT7HbaKe6fEzQEitA4V49cg?=
- =?us-ascii?Q?RBDc0q6S4B9VglEeo03WZOTrKaI8HGqNfdYrvmwsVq38r8MxODU5911WkInp?=
- =?us-ascii?Q?4E/Axs3NXty2n7NepHprNfYLFBDhwQMw9vuZ7KNSl5cWVtkYWz9oAgyMPsD9?=
- =?us-ascii?Q?LISXt9hK5uyI4IuSFZ5HAP89C1l0NxG+NyS/RlqswWpNvP4UvffmAIWr8i4r?=
- =?us-ascii?Q?sQFLQ8oZDiLf1dz6O38h+pYYaBUPLjhQYM12wrSumygYOzIjwrb4vz76VCSO?=
- =?us-ascii?Q?0tlVPlfKJUXOYgWvUrA2jOhDDEU8i2neo/R/YD5rgHT89VlZLADXNcgLxiaL?=
- =?us-ascii?Q?rCOEQrc91WmrSDA9FXYt1L/ARQCwVrepr/FI6iWx7exyCoB4oBB2OyEJyyB9?=
- =?us-ascii?Q?gffsfFj0e9115lXLCYhxO8uZkQjdLiahMgsfnzeaUQUZArtabNVB/IelyGLc?=
- =?us-ascii?Q?WpvJ7u3PJffb30pfUO9z4LAfrZvDy9ltuMQEYcuUdh18Y/akRPnWR72vRm73?=
- =?us-ascii?Q?gaOo2hmBR49/CaZRpp7Fr1UvAzxybkMomw52GnI+EEmD+S9DT/SpIHPjQtL6?=
- =?us-ascii?Q?jbkXjZSgIJ+QvkBcahSQlivWMrUr6TKAeUyCt1YiCnnxAlP4GNh7bjx14qE/?=
- =?us-ascii?Q?AkyOkmXqF7FyyeEb6Mhvj35lvUtRYE4z98QSSQ16iwbIlE25luY+ZJCBBSEb?=
- =?us-ascii?Q?bnLsRPaJMYHLqKF9c0zZ8pdz51aOHOtnOEitXrbT5HG40Z1V8BjWQvHKrz7A?=
- =?us-ascii?Q?xdsVtuYvoRic55UWWBzlWdG52zjOARqZY9TfqdtTZAHv/FVruDnBsup7Cnd9?=
- =?us-ascii?Q?4bsFlhc4nvDv78kuYFGGfzt8goZJAW5PI/xwlK1MKHvcOCqf2GNDaaedp/Va?=
- =?us-ascii?Q?v29IYEK0fa/ME9d0RfCyPuLY41c4TxM0hCccVkSAclyVUdRL03SC3I/sBKu7?=
- =?us-ascii?Q?Yd5f0CgXpXiLONuiJj1Oa3pJecxGsG7wu2zkq9p7pm+lsaTzs+ci3gSH0x/m?=
- =?us-ascii?Q?7/tU65aXOFkGXlQAC1xHarwawDpp+a/bY1wEyrBp/P4QstHENNzJ4WB4IHnK?=
- =?us-ascii?Q?AoGdPiFICqxtoK/19fi1UKHn7hH3Y0k4nbTEzyyGTKqwoqcAYzqC+D82dATE?=
- =?us-ascii?Q?znBTFPus4l8vl3BcqipePOZPYgcwxYHv9E385g4WvfZuYTr5Rn93XppYCJZf?=
- =?us-ascii?Q?SYlY7XOJfmXy6wssZ8pFyo2jIoOQ3GK5ele1aMX9Ll23Yb9EcttD+BWdL6MK?=
- =?us-ascii?Q?Rr3wzUY1bN/oQnWU3DkCPP6rbHIV+DEiJtPFoNjoVefkO0cFf88AFyL9KaGr?=
- =?us-ascii?Q?vspi/Nl7YVyognm7L2KO345ThnXFd/bee+9xxhnV?=
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1uzW7u-0006xp-Rb
+ for qemu-arm@nongnu.org; Fri, 19 Sep 2025 04:05:57 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1758269153;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=22Rwj6pH8qbOgqPnxbP5er9ISnFTjMBIrJnh6Ys8sc0=;
+ b=MpMTzmLl2GmRfOa8i1tXnBtxZIbJqtKWPP51hp4pwAXOMDo4pnkaR75NJbABw4l1VhQkKv
+ PspS5U5lQ+dEhT2ib10EetKpi8m/bMFJAwaH/vKqpXi235jWIMHaltIWct9FyKyiR9B1s+
+ +EpQb/cDzrMePfV2/N827qEWeDZB8Sw=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-669-q0hAnuNEOK2NbzpL1k7XBw-1; Fri, 19 Sep 2025 04:05:52 -0400
+X-MC-Unique: q0hAnuNEOK2NbzpL1k7XBw-1
+X-Mimecast-MFC-AGG-ID: q0hAnuNEOK2NbzpL1k7XBw_1758269151
+Received: by mail-wm1-f71.google.com with SMTP id
+ 5b1f17b1804b1-45de27bf706so9768035e9.0
+ for <qemu-arm@nongnu.org>; Fri, 19 Sep 2025 01:05:52 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1758269151; x=1758873951;
+ h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=22Rwj6pH8qbOgqPnxbP5er9ISnFTjMBIrJnh6Ys8sc0=;
+ b=cQKm+avxeCf/JwDbb7d4nmQreiB+PYQCr+VNdo2XzlRoy1s8Ev5ASWdA8+CtduxG9q
+ WA4X9FN1Uqkuw6P4UQh99Aeli+FmLkncnsxcKAVSuFJAdiGetwbWvOKmTOokDdDA3VP9
+ hOS7U8NPt7BoAni3tkIFMvsAiRppCoZVmoLsGo3xMB8wDDdH/tY7hOo99YgxdcGHhNtS
+ GoQAkwFNKd9cB5cSF/cgFPIkI+dzq8xnTrhdq/gIgkWrz6xidsZnhjDJW1gH7lJ2juv8
+ BUMBatpnGS5Zi1YTzAagD7p0+zXPf+u9rY3ooPjyO2tdr0mxcWn1KbWl2GsChhEAhgUF
+ yXqw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXSJ5OrGNNT6htq5XGI/xlgeTqa/ZLP+xmoWAQy2lNZxR5XWx9FcNopUasC7qVFI/n/QFSpbl7rvA==@nongnu.org
+X-Gm-Message-State: AOJu0Yz47fScMBCW7EJw4oDFls/dcK4BtjdhwlrSxP6qHitu/f1kxYnS
+ Kdhc+fl3mjOkyAuNVbOHnG+PKopgfaBIQZmUMi1yAeqrfzCM6usWqrg6YfqXiOadtIBZ3vVcCRV
+ KU/cU2cY6Y9o/sOGPW2ows3FRg3eB2SuydUXu5qa6fhLYykv/p3GEfg==
+X-Gm-Gg: ASbGncsByMgVR+DC0Z52EIE7DgrMR7poHOPGDr9tGVlAMvvNaWzerFfc9Au/wgsDmMR
+ bMq6lcvYt4qa8Hc96AyV2ztpzx/PiaDYTNPEX1QounZbC8W0tjxy3Am2WpMdYMb/wmn0JD4a6Oh
+ WWjLC4leE+MFylIL0POtbGXcZfI8LXrttRmMZ0daszNG7zORoHO/HySZ75LrxkxeqaUrWJVT1qo
+ Dp+Easal9OliA+3QltjQR5NNC/6n3m61bECFmDWzGQvkJbHc1Ipw8dn9/kFnEpwgWuIf9Dd2uwK
+ /gImru/TAg6hKfoVuUd7ra3+ffAXu5eXVvptNW+09CQ10ftOSZhyktph/EXv8ffa2qbrhsSL9Wo
+ 1aiU=
+X-Received: by 2002:a05:600c:1f8e:b0:45b:8a0e:cda9 with SMTP id
+ 5b1f17b1804b1-467ead675eemr15599875e9.2.1758269151017; 
+ Fri, 19 Sep 2025 01:05:51 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGkIxAqHduSISasl24KmhUIDtMO+cR7hSpmCeodxpkvH5G0LiaDXvvQUEn4pMXRWNJRWuxAqg==
+X-Received: by 2002:a05:600c:1f8e:b0:45b:8a0e:cda9 with SMTP id
+ 5b1f17b1804b1-467ead675eemr15599615e9.2.1758269150567; 
+ Fri, 19 Sep 2025 01:05:50 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:280:24f0:576b:abc6:6396:ed4a?
+ ([2a01:e0a:280:24f0:576b:abc6:6396:ed4a])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-3ee0fbc7284sm6790274f8f.33.2025.09.19.01.05.49
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 19 Sep 2025 01:05:50 -0700 (PDT)
+Message-ID: <bc2493e8-0e83-43a9-82de-bf85e5576d7c@redhat.com>
+Date: Fri, 19 Sep 2025 10:05:49 +0200
 MIME-Version: 1.0
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: CH3PR12MB7548.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 700ebae4-9be0-4664-da1b-08ddf74f9042
-X-MS-Exchange-CrossTenant-originalarrivaltime: 19 Sep 2025 07:38:45.0990 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: pOwEZKmGpNES/5Ya6eBisuRCedrGQO64G0k/ZEAUEEWWVdNCldXNbaZSipkLppVNhZyLZZLVyMfscwIFjB3h5A==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BY5PR12MB4098
-Received-SPF: permerror client-ip=2a01:111:f403:c005::5;
- envelope-from=skolothumtho@nvidia.com;
- helo=CO1PR03CU002.outbound.protection.outlook.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [SPAM] [PATCH v4 08/14] hw/arm/aspeed_ast2600: Add PCIe RC
+ support (RC_H only)
+To: Jamin Lin <jamin_lin@aspeedtech.com>, Paolo Bonzini
+ <pbonzini@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+Cc: troy_lee@aspeedtech.com, nabihestefan@google.com, wuhaotsh@google.com,
+ titusr@google.com
+References: <20250919032431.3316764-1-jamin_lin@aspeedtech.com>
+ <20250919032431.3316764-9-jamin_lin@aspeedtech.com>
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
+Autocrypt: addr=clg@redhat.com; keydata=
+ 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
+ uVKe8BVz4atMOoktmt0GWTOC8P4=
+In-Reply-To: <20250919032431.3316764-9-jamin_lin@aspeedtech.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: cKwNmrQYbNulZPUc2KVLGGvth5zpok73Aa0X5lnrqGI_1758269151
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US, fr
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.005,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_NONE=0.001,
- T_SPF_HELO_TEMPERROR=0.01 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -181,103 +168,176 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+On 9/19/25 05:24, Jamin Lin wrote:
+> Wire up the PCIe Root Complex in the AST2600 SoC model.
+> 
+> According to the AST2600 firmware driver, only the RC_H controller is
+> supported. RC_H uses PCIe PHY1 at 0x1e6ed200 and the PCIe config (H2X)
+> register block at 0x1e770000. The RC_H MMIO window is mapped at
+> 0x70000000–0x80000000. RC_L is not modeled. The RC_H interrupt is
+> wired to IRQ 168. Only RC_H is realized and connected to the SoC
+> interrupt controller.
+> 
+> The SoC integration initializes PCIe PHY1, instantiates a single RC
+> instance, wires its MMIO regions, and connects its interrupt. An alias
+> region is added to map the RC MMIO space into the guest physical address
+> space.
+> 
+> This provides enough functionality for firmware and guest drivers to
+> discover and use the AST2600 RC_H Root Complex while leaving RC_L
+> unimplemented.
+> 
+> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 
 
-> -----Original Message-----
-> From: Nicolin Chen <nicolinc@nvidia.com>
-> Sent: 18 September 2025 23:00
-> To: Shameer Kolothum <skolothumtho@nvidia.com>
-> Cc: Shameer Kolothum <shameerkolothum@gmail.com>; qemu-
-> arm@nongnu.org; qemu-devel@nongnu.org; eric.auger@redhat.com;
-> peter.maydell@linaro.org; Jason Gunthorpe <jgg@nvidia.com>;
-> ddutile@redhat.com; berrange@redhat.com; Nathan Chen
-> <nathanc@nvidia.com>; Matt Ochs <mochs@nvidia.com>;
-> smostafa@google.com; linuxarm@huawei.com; wangzhou1@hisilicon.com;
-> jiangkunkun@huawei.com; jonathan.cameron@huawei.com;
-> zhangfei.gao@linaro.org; zhenzhong.duan@intel.com
-> Subject: Re: [RFC PATCH v3 06/15] hw/arm/smmuv3-accel: Restrict
-> accelerated SMMUv3 to vfio-pci endpoints with iommufd
->=20
-> On Thu, Sep 18, 2025 at 06:31:43AM -0700, Shameer Kolothum wrote:
-> > > > > @@ -37,7 +37,6 @@ typedef struct SMMUS1Hwpt {
-> > > > >
-> > > > >  typedef struct SMMUv3AccelDevice {
-> > > > >      SMMUDevice  sdev;
-> > > > > -    AddressSpace as_sysmem;
-> > > > >      HostIOMMUDeviceIOMMUFD *idev;
-> > > > >      SMMUS1Hwpt  *s1_hwpt;
-> > > > >      SMMUViommu *viommu;
-> > > > > @@ -48,6 +47,7 @@ typedef struct SMMUv3AccelDevice {  typedef
-> struct
-> > > > > SMMUv3AccelState {
-> > > > >      MemoryRegion root;
-> > > > >      MemoryRegion sysmem;
-> > > > > +    AddressSpace as_sysmem;
-> > > > >      SMMUViommu *viommu;
-> > > > >      struct iommu_hw_info_arm_smmuv3 info;  } SMMUv3AccelState;
-> > > >
-> > > > That's changing from an ioas_id per VFIO device to an ioas_id per
-> > > > vSMMU instance, right? I think it's still not enough.
-> > > >
-> > > > All vSMMU instances could share the same ioas_id. That is why I put=
- in
-> > > > the SMMUBaseClass as it's shared structure across vSMMUs.
-> > >
-> > > Ah..you mean it is basically per VM then. Got it.
-> >
-> > Regarding using SMMUBaseClass for this, it looks like ObjectClass norma=
-lly
-> holds
-> > function pointers. Eric has made a similar observation elsewhere in thi=
-s
-> series.
-> >
-> >  @Eric, any suggestions?
-> >
-> > Is use of &address_space_memory directly in smmuv3_accel_find_add_as()
-> a complete
-> > no-go, given we are talking about having the system address space for a=
-ll the
-> SMMUv3
-> > accelerated devices here?
->=20
-> smmuv3_accel_find_add_as() is per instance. So, it wouldn't share.
-
-My suggestion was...
-
-static AddressSpace *smmuv3_accel_find_add_as(..)
-{
-...
-    if (vfio_pci) {
-        return &address_space_memory;
-    } else {
-        return &sdev->as;
-    }
-}
-
-ie, use the global to system memory address space instead of creating an
-alias to the system memory and a different address space. This will provide
-the same pointer to VFIO/iommufd and  it can then reuse the ioas_id.
-I can see that QEMU uses "&address_space_memory" directly in many places
-(pci_device_iommu_address_space(), etc). I think the idea behind a separate=
-=20
-address space is to have private ownership and lifetime management probably=
-.
-Not sure there are any other concerns here. Please let me know if there are
-any.
-
-> Even smmuv3_accel_init() wouldn't work.
->=20
-> If SMMUBaseClass isn't a good place, (I haven't tested but..) can
-> we do address_space_init() in the VMS? I see virt.c calling the
-> memory_region_init(), so perhaps we could init the as_sysmem there
-> and pass it in to each vSMMU instance.
-
-That will still require you to store the address space pointer somewhere an=
-d=20
-each time a SMMUv3 accel instance is created set a property to the instance
-via the hotplug handler. Doable but still...
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
 
 Thanks,
-Shameer
+
+C.
+
+
+> ---
+>   include/hw/arm/aspeed_soc.h |  1 +
+>   hw/arm/aspeed_ast2600.c     | 74 +++++++++++++++++++++++++++++++++++++
+>   2 files changed, 75 insertions(+)
+> 
+> diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
+> index 79fe353f83..a0cf433775 100644
+> --- a/include/hw/arm/aspeed_soc.h
+> +++ b/include/hw/arm/aspeed_soc.h
+> @@ -62,6 +62,7 @@ struct AspeedSoCState {
+>       MemoryRegion spi_boot_container;
+>       MemoryRegion spi_boot;
+>       MemoryRegion vbootrom;
+> +    MemoryRegion pcie_mmio_alias[ASPEED_PCIE_NUM];
+>       AddressSpace dram_as;
+>       AspeedRtcState rtc;
+>       AspeedTimerCtrlState timerctrl;
+> diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+> index d12707f0ab..17c3ae8bb0 100644
+> --- a/hw/arm/aspeed_ast2600.c
+> +++ b/hw/arm/aspeed_ast2600.c
+> @@ -48,11 +48,13 @@ static const hwaddr aspeed_soc_ast2600_memmap[] = {
+>       [ASPEED_DEV_XDMA]      = 0x1E6E7000,
+>       [ASPEED_DEV_ADC]       = 0x1E6E9000,
+>       [ASPEED_DEV_DP]        = 0x1E6EB000,
+> +    [ASPEED_DEV_PCIE_PHY1] = 0x1E6ED200,
+>       [ASPEED_DEV_SBC]       = 0x1E6F2000,
+>       [ASPEED_DEV_EMMC_BC]   = 0x1E6f5000,
+>       [ASPEED_DEV_VIDEO]     = 0x1E700000,
+>       [ASPEED_DEV_SDHCI]     = 0x1E740000,
+>       [ASPEED_DEV_EMMC]      = 0x1E750000,
+> +    [ASPEED_DEV_PCIE0]     = 0x1E770000,
+>       [ASPEED_DEV_GPIO]      = 0x1E780000,
+>       [ASPEED_DEV_GPIO_1_8V] = 0x1E780800,
+>       [ASPEED_DEV_RTC]       = 0x1E781000,
+> @@ -79,6 +81,7 @@ static const hwaddr aspeed_soc_ast2600_memmap[] = {
+>       [ASPEED_DEV_FSI1]      = 0x1E79B000,
+>       [ASPEED_DEV_FSI2]      = 0x1E79B100,
+>       [ASPEED_DEV_I3C]       = 0x1E7A0000,
+> +    [ASPEED_DEV_PCIE_MMIO1] = 0x70000000,
+>       [ASPEED_DEV_SDRAM]     = 0x80000000,
+>   };
+>   
+> @@ -127,6 +130,7 @@ static const int aspeed_soc_ast2600_irqmap[] = {
+>       [ASPEED_DEV_LPC]       = 35,
+>       [ASPEED_DEV_IBT]       = 143,
+>       [ASPEED_DEV_I2C]       = 110,   /* 110 -> 125 */
+> +    [ASPEED_DEV_PCIE0]     = 168,
+>       [ASPEED_DEV_PECI]      = 38,
+>       [ASPEED_DEV_ETH1]      = 2,
+>       [ASPEED_DEV_ETH2]      = 3,
+> @@ -191,6 +195,10 @@ static void aspeed_soc_ast2600_init(Object *obj)
+>       snprintf(typename, sizeof(typename), "aspeed.i2c-%s", socname);
+>       object_initialize_child(obj, "i2c", &s->i2c, typename);
+>   
+> +    object_initialize_child(obj, "pcie-cfg", &s->pcie[0], TYPE_ASPEED_PCIE_CFG);
+> +    object_initialize_child(obj, "pcie-phy[*]", &s->pcie_phy[0],
+> +                            TYPE_ASPEED_PCIE_PHY);
+> +
+>       object_initialize_child(obj, "peci", &s->peci, TYPE_ASPEED_PECI);
+>   
+>       snprintf(typename, sizeof(typename), "aspeed.fmc-%s", socname);
+> @@ -285,6 +293,67 @@ static uint64_t aspeed_calc_affinity(int cpu)
+>       return (0xf << ARM_AFF1_SHIFT) | cpu;
+>   }
+>   
+> +/*
+> + * PCIe Root Complex (RC)
+> + *
+> + * H2X register space (single block 0x00-0xFF):
+> + *   0x00-0x7F : shared by RC_L (PCIe0) and RC_H (PCIe1)
+> + *   0x80-0xBF : RC_L only
+> + *   0xC0-0xFF : RC_H only
+> + *
+> + * Model scope / limitations:
+> + *   - Firmware supports RC_H only; this QEMU model does not support RC_L.
+> + *   - RC_H uses PHY1 and the MMIO window [0x70000000, 0x80000000]
+> + *     (aka MMIO1).
+> + *
+> + * Indexing convention (this model):
+> + *   - Expose a single logical instance at index 0.
+> + *   - pcie[0] -> hardware RC_H (PCIe1)
+> + *   - phy[0]  -> hardware PHY1
+> + *   - mmio.0 -> guest address range MMIO1: 0x70000000-0x80000000
+> + *   - RC_L / PCIe0 is not created and mapped.
+> + */
+> +static bool aspeed_soc_ast2600_pcie_realize(DeviceState *dev, Error **errp)
+> +{
+> +    Aspeed2600SoCState *a = ASPEED2600_SOC(dev);
+> +    AspeedSoCState *s = ASPEED_SOC(dev);
+> +    AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
+> +    MemoryRegion *mmio_mr = NULL;
+> +    qemu_irq irq;
+> +
+> +    if (!sysbus_realize(SYS_BUS_DEVICE(&s->pcie_phy[0]), errp)) {
+> +        return false;
+> +    }
+> +    aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->pcie_phy[0]), 0,
+> +                    sc->memmap[ASPEED_DEV_PCIE_PHY1]);
+> +
+> +    object_property_set_int(OBJECT(&s->pcie[0]), "dram-base",
+> +                            sc->memmap[ASPEED_DEV_SDRAM],
+> +                            &error_abort);
+> +    object_property_set_link(OBJECT(&s->pcie[0]), "dram", OBJECT(s->dram_mr),
+> +                             &error_abort);
+> +    if (!sysbus_realize(SYS_BUS_DEVICE(&s->pcie[0]), errp)) {
+> +        return false;
+> +    }
+> +    aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->pcie[0]), 0,
+> +                    sc->memmap[ASPEED_DEV_PCIE0]);
+> +
+> +    irq = qdev_get_gpio_in(DEVICE(&a->a7mpcore),
+> +                           sc->irqmap[ASPEED_DEV_PCIE0]);
+> +    sysbus_connect_irq(SYS_BUS_DEVICE(&s->pcie[0].rc), 0, irq);
+> +
+> +    mmio_mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->pcie[0].rc), 1);
+> +    memory_region_init_alias(&s->pcie_mmio_alias[0], OBJECT(&s->pcie[0].rc),
+> +                             "aspeed.pcie-mmio", mmio_mr,
+> +                             sc->memmap[ASPEED_DEV_PCIE_MMIO1],
+> +                             0x10000000);
+> +    memory_region_add_subregion(s->memory,
+> +                                sc->memmap[ASPEED_DEV_PCIE_MMIO1],
+> +                                &s->pcie_mmio_alias[0]);
+> +
+> +    return true;
+> +}
+> +
+>   static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
+>   {
+>       int i;
+> @@ -438,6 +507,11 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
+>       sysbus_connect_irq(SYS_BUS_DEVICE(&s->peci), 0,
+>                          aspeed_soc_get_irq(s, ASPEED_DEV_PECI));
+>   
+> +    /* PCIe Root Complex (RC) */
+> +    if (!aspeed_soc_ast2600_pcie_realize(dev, errp)) {
+> +        return;
+> +    }
+> +
+>       /* FMC, The number of CS is set at the board level */
+>       object_property_set_link(OBJECT(&s->fmc), "dram", OBJECT(s->dram_mr),
+>                                &error_abort);
+
 

@@ -4,27 +4,27 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5FE6CAC5A9
-	for <qemu-arm@archiver.kernel.org>; Fri, 19 Sep 2025 09:33:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0300CAC5A5
+	for <qemu-arm@archiver.kernel.org>; Fri, 19 Sep 2025 09:34:24 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uzXS8-0003Qi-8k; Fri, 19 Sep 2025 05:30:52 -0400
+	id 1uzXTn-00051L-Ch; Fri, 19 Sep 2025 05:32:35 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1uzXS6-0003QJ-P1; Fri, 19 Sep 2025 05:30:50 -0400
+ id 1uzXTB-0004Ia-Dm; Fri, 19 Sep 2025 05:32:00 -0400
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1uzXS4-0001GX-Su; Fri, 19 Sep 2025 05:30:50 -0400
+ id 1uzXT9-0001Uy-J9; Fri, 19 Sep 2025 05:31:57 -0400
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Fri, 19 Sep
- 2025 17:30:18 +0800
+ 2025 17:30:22 +0800
 Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
- Transport; Fri, 19 Sep 2025 17:30:18 +0800
+ Transport; Fri, 19 Sep 2025 17:30:22 +0800
 To: Paolo Bonzini <pbonzini@redhat.com>, Peter Maydell
  <peter.maydell@linaro.org>, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?=
  <clg@kaod.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
@@ -36,9 +36,10 @@ To: Paolo Bonzini <pbonzini@redhat.com>, Peter Maydell
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
  <nabihestefan@google.com>, <wuhaotsh@google.com>, <titusr@google.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PATCH v5 01/14] hw/pci/pci_ids: Add PCI vendor ID for ASPEED
-Date: Fri, 19 Sep 2025 17:30:00 +0800
-Message-ID: <20250919093017.338309-2-jamin_lin@aspeedtech.com>
+Subject: [PATCH v5 11/14] hw/pci-host/aspeed: Disable Root Device and place
+ Root Port at 00:00.0 to AST2700
+Date: Fri, 19 Sep 2025 17:30:10 +0800
+Message-ID: <20250919093017.338309-12-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250919093017.338309-1-jamin_lin@aspeedtech.com>
 References: <20250919093017.338309-1-jamin_lin@aspeedtech.com>
@@ -70,23 +71,28 @@ From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+AST2700 does not implement a PCIe Root Device; each RC exposes a single
+PCIe Root Port at devfn 0:0.0.
+
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
 ---
- include/hw/pci/pci_ids.h | 2 ++
+ hw/pci-host/aspeed_pcie.c | 2 ++
  1 file changed, 2 insertions(+)
 
-diff --git a/include/hw/pci/pci_ids.h b/include/hw/pci/pci_ids.h
-index 33e2898be9..16034aaa2c 100644
---- a/include/hw/pci/pci_ids.h
-+++ b/include/hw/pci/pci_ids.h
-@@ -291,4 +291,6 @@
+diff --git a/hw/pci-host/aspeed_pcie.c b/hw/pci-host/aspeed_pcie.c
+index a757fd7ec8..f7593444fc 100644
+--- a/hw/pci-host/aspeed_pcie.c
++++ b/hw/pci-host/aspeed_pcie.c
+@@ -829,6 +829,8 @@ static void aspeed_2700_pcie_cfg_class_init(ObjectClass *klass,
+     apc->nr_regs = 0x100 >> 2;
+     apc->rc_msi_addr = 0x000000F0;
+     apc->rc_bus_nr = 0;
++    apc->rc_has_rd = false;
++    apc->rc_rp_addr = PCI_DEVFN(0, 0);
+ }
  
- #define PCI_VENDOR_ID_NVIDIA             0x10de
- 
-+#define PCI_VENDOR_ID_ASPEED             0x1A03
-+
- #endif
+ static const TypeInfo aspeed_2700_pcie_cfg_info = {
 -- 
 2.43.0
 

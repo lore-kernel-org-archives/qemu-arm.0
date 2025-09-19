@@ -4,81 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1FDAFCAC5A5
-	for <qemu-arm@archiver.kernel.org>; Fri, 19 Sep 2025 08:07:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F0AECAC592
+	for <qemu-arm@archiver.kernel.org>; Fri, 19 Sep 2025 08:08:12 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uzW8C-00059q-UY; Fri, 19 Sep 2025 04:06:12 -0400
+	id 1uzW8I-0005Tf-5v; Fri, 19 Sep 2025 04:06:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1uzW8B-00058M-F7
- for qemu-arm@nongnu.org; Fri, 19 Sep 2025 04:06:11 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1uzW8G-0005L7-6v
+ for qemu-arm@nongnu.org; Fri, 19 Sep 2025 04:06:16 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1uzW87-0006zb-Cg
- for qemu-arm@nongnu.org; Fri, 19 Sep 2025 04:06:11 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1uzW8D-00070l-G7
+ for qemu-arm@nongnu.org; Fri, 19 Sep 2025 04:06:15 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1758269166;
+ s=mimecast20190719; t=1758269172;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=YKz20iASh/D67u7j+nz5UUJq2bajc8DmVciDI/JvwOk=;
- b=g9K33qcLDH5eFLmuncFYnbIA1KGiAp2YDhbdCxywdSzTSJqszasievhzD6Gcu02S+UxDtB
- nHtTvFnZTMrCAHXqH9ajARTaf0EP73jHNegSNV/qZYK4FuB/KCYZPZ4h5xP2lFjOvC1GEZ
- kT2kIKkpYb5tQBaBydMhcUpFZFRl/mw=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=HSLzVcJ3k5VfjMfwaGziJmBIigImbG32w8i35pTTc0c=;
+ b=MrPgU0mNp60BXouIUv0EYB9VcFj1LXaJfL69BEs2iAS49ylILmu0vC7Ti8TjU5fgHyNkxX
+ RLWPZ88ZgY47YhbkAeARt/ORf8+IwB5K9U7TQ0fRkC9IIXJkWYlMC52YU6EMaiJpvIu87X
+ lp5mopMqG6vieBOIlCywsesn4pLbtM4=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-317-ZsdeHTtgOoa31RXKqroqUA-1; Fri, 19 Sep 2025 04:06:03 -0400
-X-MC-Unique: ZsdeHTtgOoa31RXKqroqUA-1
-X-Mimecast-MFC-AGG-ID: ZsdeHTtgOoa31RXKqroqUA_1758269163
-Received: by mail-wr1-f69.google.com with SMTP id
- ffacd0b85a97d-3df07c967e9so955635f8f.2
- for <qemu-arm@nongnu.org>; Fri, 19 Sep 2025 01:06:03 -0700 (PDT)
+ us-mta-441-WTw1S53tPxCvOziHv66zMw-1; Fri, 19 Sep 2025 04:06:10 -0400
+X-MC-Unique: WTw1S53tPxCvOziHv66zMw-1
+X-Mimecast-MFC-AGG-ID: WTw1S53tPxCvOziHv66zMw_1758269170
+Received: by mail-wm1-f72.google.com with SMTP id
+ 5b1f17b1804b1-45dd9a66cfbso14351345e9.1
+ for <qemu-arm@nongnu.org>; Fri, 19 Sep 2025 01:06:10 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1758269162; x=1758873962;
+ d=1e100.net; s=20230601; t=1758269169; x=1758873969;
  h=content-transfer-encoding:in-reply-to:autocrypt:content-language
  :from:references:cc:to:subject:user-agent:mime-version:date
  :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=YKz20iASh/D67u7j+nz5UUJq2bajc8DmVciDI/JvwOk=;
- b=qsKNDvxmhdZF5kCjeE7dfC+oU/AdVF8/bXGDA8/RyfIn/IOZkekEgQCCyYGJy22+nY
- eb+3NOlwom5+P7VAWVKSo+CFK3TXfxjr91GgAK7fvWo7nTtkCl/KA14VjMq0/vuAvcQm
- wWLzmVdvAFHRRce/1oqPeizve5lVEyDYEcTFEbVthGlOgn15KbUdo3WtwHgAlMVqE7nz
- 3Oe05YRF5bZHVX/qpsu8WYCfImcO3VzPh4msdoRKi5hybj5zYWqMTq2pGcpOMeXDJP29
- Rrpe8IEleAmXMTSTq4XepWyyXQtq4nHQgWZk0mfB+uqsObidQsMp9jE+/XAgM5BlxgDM
- dS4A==
+ bh=HSLzVcJ3k5VfjMfwaGziJmBIigImbG32w8i35pTTc0c=;
+ b=H3IMYY2+MOliyViIfKrAPkzhbYcJIY+3u8ccI6/Lg3HodZmbIgiS516c0nHaAmWSkB
+ zigym2c67Tp1lW0clIB4oW763fg0ECxxDLf8CSmr4wy59q6DcbtTL/eiY3xdpvezPfxx
+ br3FQh0RlN2qTkXAtQsA2AaruZX/1ptC9FMEAG3eguctGtY3HzbFt1mWOsF60fsPAgYC
+ r1zjmzJ6eNxDcd3e9Y4TGAntgfO6VyMc0X46iWHU+MO0mT8mMT236xNp+HCXYs9L/uTQ
+ 50gZV0g7RHIJqx6ahN40Ap517aXxclZQ8I4eKTT0yU41Pog2cTd2IFQuUdIsGIOLlhPe
+ Z4Aw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUlBU543g03jsxBt9vhBfDsv7lTu332dCKWLHiKIBbJ+42iHPWFk4LfkWGyWVFjmLFTfb+XdS1SBw==@nongnu.org
-X-Gm-Message-State: AOJu0YzJK8GawRGbd2RP7ZNgAxmPffPQz6deaENlT/0Pc8Pz4cdzWHIV
- m1tEYAqNJCMS46JPRaOSmaAojV/XlF6+idOlZe2UxvaQVt0sRV3YIFjEdFX6daSHBbVIiEnVReR
- 8LKqA0gsVQrR4TLxqfMlmi9t35yiumHoCmCT2DtBCpWh9jfLmwTU1dQ==
-X-Gm-Gg: ASbGncv/o+tIBjTFssd2Rxd+2+eg6RbJGeCNiz7qaHyE/JTiLy5Vsp/14SzzJETTGLw
- h7fchS24thoFytMCK5/CKwAcQTHdpWoZOsWYTgi7bdaLHkikKQVFnCI3DvtB0hwBc9CCn/H/QFr
- ZjrSq1o/C9J3N01msrmm3dTK/GIic+LeVO7kJHmMevfN+q3QDaTy5vOFmpxGe0UiDypYBwcRtx/
- I951xvXd0aAIRX74ytC4UWoCkaSmHK1/yc5wfleMJVMZjjyDpCmDhy0CpRkwOSf0bUwuWugz6/T
- y6EoTetmr87lhugG3VbsMhnRyVuKp5rfUe9MPXNXwSVR1LMqBb89eQpzD1BhAtBgm94DqJ7E+3q
- Hz3A=
-X-Received: by 2002:a05:6000:2891:b0:3ea:b91f:8f4e with SMTP id
- ffacd0b85a97d-3ee7e10617amr1784117f8f.21.1758269162438; 
- Fri, 19 Sep 2025 01:06:02 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IH3/JHcMV9Xmoj0vXYpV4orcUJAn9AYZrdS7EdBRHcoLc+jBOY/aPYLgEhj5/BGmTs4bwOWTw==
-X-Received: by 2002:a05:6000:2891:b0:3ea:b91f:8f4e with SMTP id
- ffacd0b85a97d-3ee7e10617amr1784072f8f.21.1758269161907; 
- Fri, 19 Sep 2025 01:06:01 -0700 (PDT)
+ AJvYcCVXk3jWL3z+gwR7vGleLQFbZ1FJYTsByW4xxxgBmI7Pw/KjnRnlPgUuMMKy9+JLWC9xbUOLVVvNpg==@nongnu.org
+X-Gm-Message-State: AOJu0YwfdqVWQzdxdaBqDbn+2/FpPsm8Dt5rnZ/1XnNM52eNEKBEXpwc
+ HeuaQAb/tjK+1lsUvmkIR7sffqyMdUIhE9fEwgBzm3gwcz/v7IL/2HOf1pVc6T2kAOSY9SAbqkG
+ 1vfyi/hTzTTzOyAOD4O7hsHmmvsnWux3MCZzb8yxegKnuoNOZv7r64A==
+X-Gm-Gg: ASbGnctPEhlaliQJqiHV2whJPA6DQ6R15dZkYwuK/2Oi3tXqFNFlazM0MhGidU0KAqs
+ EVDgGFb22WR92zFsOB3kvKT7bAjbRG1MHYVgFKNa6eS4RY9KnjPTtM1nM9xd2c5oM1NmpPAn4bp
+ FIuTZqci0glZNI/D0uk7ntqbqbH/hl3K7SJ08lq8Q47mOP3O1qhNix/I1hU59vvBNbIERkTyf+Z
+ OVv6aeyxBMFHjaHaTiVZDAJS/lhwFZwVD4nOWV8TQXvf8ZJw4NoKZ++/Qionl/cc9Poidq0+Bb5
+ C5Y3rbR/ieAF/7ds8+XXcFGiAjmsOWvc1TfL3viuZPiYEpjjAGy0XTeqQI9Ev5cFSjz3BDK6qee
+ 6D+g=
+X-Received: by 2002:a05:600c:1f06:b0:45d:d88b:cc6 with SMTP id
+ 5b1f17b1804b1-467f0b4ee72mr16623365e9.25.1758269169325; 
+ Fri, 19 Sep 2025 01:06:09 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEygJu1LYsqKF/u2fbvX9rumdsN70QVD/7fzQHwGiy0QjTxfkZhK89lGe7LpshOeDfudYNEqA==
+X-Received: by 2002:a05:600c:1f06:b0:45d:d88b:cc6 with SMTP id
+ 5b1f17b1804b1-467f0b4ee72mr16622815e9.25.1758269168754; 
+ Fri, 19 Sep 2025 01:06:08 -0700 (PDT)
 Received: from ?IPV6:2a01:e0a:280:24f0:576b:abc6:6396:ed4a?
  ([2a01:e0a:280:24f0:576b:abc6:6396:ed4a])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3ee0fbc7284sm6790274f8f.33.2025.09.19.01.06.00
+ ffacd0b85a97d-3ee15bfab67sm2987490f8f.43.2025.09.19.01.06.07
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 19 Sep 2025 01:06:01 -0700 (PDT)
-Message-ID: <88839f9a-073d-40bd-a6f6-a9cefa64595a@redhat.com>
-Date: Fri, 19 Sep 2025 10:06:00 +0200
+ Fri, 19 Sep 2025 01:06:08 -0700 (PDT)
+Message-ID: <366839f7-101e-45e7-9821-ac7ac0eceed3@redhat.com>
+Date: Fri, 19 Sep 2025 10:06:07 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [SPAM] [PATCH v4 09/14] hw/pci-host/aspeed: Add AST2700 PCIe PHY
+Subject: Re: [SPAM] [PATCH v4 06/14] hw/pci-host/aspeed: Add MSI support and
+ per-RC IOMMU address space
 To: Jamin Lin <jamin_lin@aspeedtech.com>, Paolo Bonzini
  <pbonzini@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
@@ -90,7 +91,7 @@ To: Jamin Lin <jamin_lin@aspeedtech.com>, Paolo Bonzini
 Cc: troy_lee@aspeedtech.com, nabihestefan@google.com, wuhaotsh@google.com,
  titusr@google.com
 References: <20250919032431.3316764-1-jamin_lin@aspeedtech.com>
- <20250919032431.3316764-10-jamin_lin@aspeedtech.com>
+ <20250919032431.3316764-7-jamin_lin@aspeedtech.com>
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
 Autocrypt: addr=clg@redhat.com; keydata=
  xsFNBFu8o3UBEADP+oJVJaWm5vzZa/iLgpBAuzxSmNYhURZH+guITvSySk30YWfLYGBWQgeo
@@ -135,9 +136,9 @@ Autocrypt: addr=clg@redhat.com; keydata=
  HQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4PlsZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQ
  izDiU6iOrUzBThaMhZO3i927SG2DwWDVzZltKrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gD
  uVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20250919032431.3316764-10-jamin_lin@aspeedtech.com>
+In-Reply-To: <20250919032431.3316764-7-jamin_lin@aspeedtech.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 87tlZGwqyUp1z03TvycqFEjatnnKvtA97aws6nYdLoM_1758269163
+X-Mimecast-MFC-PROC-ID: ck6LdKS9Y0P1J_KDSwHkuOAInbNvjZ2w42LNW0pc5jg_1758269170
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US, fr
 Content-Type: text/plain; charset=UTF-8; format=flowed
@@ -168,28 +169,28 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 9/19/25 05:24, Jamin Lin wrote:
-> Introduce a PCIe Host Controller PHY model for AST2700. This adds an
-> AST2700 specific PHY type (TYPE_ASPEED_2700_PCIE_PHY) with a 0x800 byte
-> register space and link-status bits compatible with the firmware’s
-> expectations.
+> Add MSI support to the ASPEED PCIe RC/Config model and introduce a per-RC
+> "IOMMU root" address space to correctly route MSI writes.
 > 
-> AST2700 provides three PCIe RCs; PCIe0 and PCIe1 are GEN4, PCIe2 is
-> GEN2. The PHY exposes:
-> PEHR_2700_LINK_GEN2 at 0x344, bit 18 indicates GEN2 link up
-> PEHR_2700_LINK_GEN4 at 0x358, bit 8 indicates GEN4 link up
+> On AST2700 all RCs use the same MSI address, and the MSI target is PCI
+> system memory (not normal DRAM). If the MSI window were mapped into real
+> system RAM, an endpoint's write could be observed by other RCs and
+> spuriously trigger their interrupts. To avoid this, each RC now owns an
+> isolated IOMMU root AddressSpace that contains a small MSI window and a
+> DRAM alias region for normal DMA.
 > 
-> In real hardware these GEN2/GEN4 link bits are mutually exclusive.
-> QEMU does not model GEN2 vs GEN4 signaling differences, so the reset
-> handler sets both bits to 1. This keeps the model simple and lets
-> firmware see the link as up; firmware will read the appropriate
-> register per RC port to infer the intended mode.
+> The MSI window captures writes and asserts the RC IRQ. MSI status bits
+> are tracked in new H2X RC_H registers (R_H2X_RC_H_MSI_EN{0,1} and
+> R_H2X_RC_H_MSI_STS{0,1}). Clearing all status bits drops the IRQ. The
+> default MSI address is set to 0x1e77005c and can be overridden via the
+> msi-addr property.
 > 
-> The header gains TYPE_ASPEED_2700_PCIE_PHY; the new class derives from
-> TYPE_ASPEED_PCIE_PHY, sets nr_regs to 0x800 >> 2, and installs an
-> AST2700 reset routine that programs the class code (0x06040011) and the
-> GEN2/GEN4 status bits.
+> This keeps MSI traffic contained within each RC while preserving normal
+> DMA to system DRAM. It enables correct MSI/MSI-X interrupt delivery when
+> multiple RCs use the same MSI target address.
 > 
 > Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+
 
 
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
@@ -200,85 +201,277 @@ C.
 
 
 > ---
->   include/hw/pci-host/aspeed_pcie.h |  1 +
->   hw/pci-host/aspeed_pcie.c         | 39 +++++++++++++++++++++++++++++++
->   2 files changed, 40 insertions(+)
+>   include/hw/pci-host/aspeed_pcie.h |  10 +++
+>   hw/pci-host/aspeed_pcie.c         | 132 ++++++++++++++++++++++++++++++
+>   hw/pci-host/trace-events          |   3 +
+>   3 files changed, 145 insertions(+)
 > 
 > diff --git a/include/hw/pci-host/aspeed_pcie.h b/include/hw/pci-host/aspeed_pcie.h
-> index 5e60cba07b..5806505f30 100644
+> index 5346c15c81..5e60cba07b 100644
 > --- a/include/hw/pci-host/aspeed_pcie.h
 > +++ b/include/hw/pci-host/aspeed_pcie.h
-> @@ -114,6 +114,7 @@ struct AspeedPCIECfgClass {
->   };
+> @@ -35,6 +35,8 @@ typedef struct AspeedPCIECfgTxDesc {
+>   typedef struct AspeedPCIERcRegs {
+>       uint32_t int_en_reg;
+>       uint32_t int_sts_reg;
+> +    uint32_t msi_sts0_reg;
+> +    uint32_t msi_sts1_reg;
+>   } AspeedPCIERcRegs;
 >   
->   #define TYPE_ASPEED_PCIE_PHY "aspeed.pcie-phy"
-> +#define TYPE_ASPEED_2700_PCIE_PHY TYPE_ASPEED_PCIE_PHY "-ast2700"
->   OBJECT_DECLARE_TYPE(AspeedPCIEPhyState, AspeedPCIEPhyClass, ASPEED_PCIE_PHY);
+>   typedef struct AspeedPCIERegMap {
+> @@ -61,11 +63,18 @@ OBJECT_DECLARE_SIMPLE_TYPE(AspeedPCIERcState, ASPEED_PCIE_RC);
+>   struct AspeedPCIERcState {
+>       PCIExpressHost parent_obj;
 >   
->   struct AspeedPCIEPhyState {
+> +    MemoryRegion iommu_root;
+> +    AddressSpace iommu_as;
+> +    MemoryRegion dram_alias;
+> +    MemoryRegion *dram_mr;
+>       MemoryRegion mmio_window;
+> +    MemoryRegion msi_window;
+>       MemoryRegion io_window;
+>       MemoryRegion mmio;
+>       MemoryRegion io;
+>   
+> +    uint64_t dram_base;
+> +    uint32_t msi_addr;
+>       uint32_t rp_addr;
+>       uint32_t bus_nr;
+>       char name[16];
+> @@ -97,6 +106,7 @@ struct AspeedPCIECfgClass {
+>       const AspeedPCIERegMap *reg_map;
+>       const MemoryRegionOps *reg_ops;
+>   
+> +    uint32_t rc_msi_addr;
+>       uint32_t rc_rp_addr;
+>       uint64_t rc_bus_nr;
+>       uint64_t nr_regs;
 > diff --git a/hw/pci-host/aspeed_pcie.c b/hw/pci-host/aspeed_pcie.c
-> index 8be55b962f..788160d532 100644
+> index dafffbde61..8be55b962f 100644
 > --- a/hw/pci-host/aspeed_pcie.c
 > +++ b/hw/pci-host/aspeed_pcie.c
-> @@ -696,6 +696,12 @@ REG32(PEHR_PROTECT,     0x7C)
->   REG32(PEHR_LINK,        0xC0)
->       FIELD(PEHR_LINK, STS, 5, 1)
+> @@ -94,6 +94,8 @@ static const TypeInfo aspeed_pcie_root_port_info = {
+>    * PCIe Root Complex (RC)
+>    */
 >   
-> +/* AST2700 */
-> +REG32(PEHR_2700_LINK_GEN2,  0x344)
-> +    FIELD(PEHR_2700_LINK_GEN2, STS, 18, 1)
-> +REG32(PEHR_2700_LINK_GEN4,  0x358)
-> +    FIELD(PEHR_2700_LINK_GEN4, STS, 8, 1)
+> +#define ASPEED_PCIE_CFG_RC_MAX_MSI 64
 > +
->   #define ASPEED_PCIE_PHY_UNLOCK  0xA8
->   
->   static uint64_t aspeed_pcie_phy_read(void *opaque, hwaddr addr,
-> @@ -803,6 +809,38 @@ static const TypeInfo aspeed_pcie_phy_info = {
->       .class_size = sizeof(AspeedPCIEPhyClass),
->   };
->   
-> +static void aspeed_2700_pcie_phy_reset(DeviceState *dev)
-> +{
-> +    AspeedPCIEPhyState *s = ASPEED_PCIE_PHY(dev);
-> +    AspeedPCIEPhyClass *apc = ASPEED_PCIE_PHY_GET_CLASS(s);
-> +
-> +    memset(s->regs, 0, apc->nr_regs << 2);
-> +
-> +    s->regs[R_PEHR_ID] =
-> +        (0x1150 << R_PEHR_ID_DEV_SHIFT) | PCI_VENDOR_ID_ASPEED;
-> +    s->regs[R_PEHR_CLASS_CODE] = 0x06040011;
-> +    s->regs[R_PEHR_2700_LINK_GEN2] = R_PEHR_2700_LINK_GEN2_STS_MASK;
-> +    s->regs[R_PEHR_2700_LINK_GEN4] = R_PEHR_2700_LINK_GEN4_STS_MASK;
-> +}
-> +
-> +static void aspeed_2700_pcie_phy_class_init(ObjectClass *klass,
-> +                                            const void *data)
-> +{
-> +    DeviceClass *dc = DEVICE_CLASS(klass);
-> +    AspeedPCIEPhyClass *apc = ASPEED_PCIE_PHY_CLASS(klass);
-> +
-> +    dc->desc = "ASPEED AST2700 PCIe Phy";
-> +    device_class_set_legacy_reset(dc, aspeed_2700_pcie_phy_reset);
-> +
-> +    apc->nr_regs = 0x800 >> 2;
-> +}
-> +
-> +static const TypeInfo aspeed_2700_pcie_phy_info = {
-> +    .name       = TYPE_ASPEED_2700_PCIE_PHY,
-> +    .parent     = TYPE_ASPEED_PCIE_PHY,
-> +    .class_init = aspeed_2700_pcie_phy_class_init,
-> +};
-> +
->   static void aspeed_pcie_register_types(void)
+>   static void aspeed_pcie_rc_set_irq(void *opaque, int irq, int level)
 >   {
->       type_register_static(&aspeed_pcie_rc_info);
-> @@ -810,6 +848,7 @@ static void aspeed_pcie_register_types(void)
->       type_register_static(&aspeed_pcie_root_port_info);
->       type_register_static(&aspeed_pcie_cfg_info);
->       type_register_static(&aspeed_pcie_phy_info);
-> +    type_register_static(&aspeed_2700_pcie_phy_info);
+>       AspeedPCIERcState *rc = (AspeedPCIERcState *) opaque;
+> @@ -120,6 +122,58 @@ static int aspeed_pcie_rc_map_irq(PCIDevice *pci_dev, int irq_num)
+>       return irq_num % PCI_NUM_PINS;
 >   }
 >   
->   type_init(aspeed_pcie_register_types);
+> +static void aspeed_pcie_rc_msi_notify(AspeedPCIERcState *rc, uint64_t data)
+> +{
+> +    AspeedPCIECfgState *cfg =
+> +           container_of(rc, AspeedPCIECfgState, rc);
+> +    uint32_t reg;
+> +
+> +    /* Written data is the HW IRQ number */
+> +    assert(data < ASPEED_PCIE_CFG_RC_MAX_MSI);
+> +
+> +    reg = (data < 32) ?
+> +            cfg->rc_regs->msi_sts0_reg : cfg->rc_regs->msi_sts1_reg;
+> +    cfg->regs[reg] |= BIT(data % 32);
+> +
+> +    trace_aspeed_pcie_rc_msi_set_irq(cfg->id, data, 1);
+> +    qemu_set_irq(rc->irq, 1);
+> +}
+> +
+> +static void aspeed_pcie_rc_msi_write(void *opaque, hwaddr addr, uint64_t data,
+> +                                     unsigned int size)
+> +{
+> +    AspeedPCIERcState *rc = ASPEED_PCIE_RC(opaque);
+> +    AspeedPCIECfgState *cfg =
+> +           container_of(rc, AspeedPCIECfgState, rc);
+> +
+> +    trace_aspeed_pcie_rc_msi_notify(cfg->id, addr + rc->msi_addr, data);
+> +    aspeed_pcie_rc_msi_notify(rc, data);
+> +}
+> +
+> +static const MemoryRegionOps aspeed_pcie_rc_msi_ops = {
+> +    .write = aspeed_pcie_rc_msi_write,
+> +    .read = NULL,
+> +    .endianness = DEVICE_LITTLE_ENDIAN,
+> +    .valid = {
+> +        .min_access_size = 4,
+> +        .max_access_size = 4,
+> +    },
+> +    .impl = {
+> +        .min_access_size = 4,
+> +        .max_access_size = 4,
+> +    },
+> +};
+> +
+> +static AddressSpace *aspeed_pcie_rc_get_as(PCIBus *bus, void *opaque, int devfn)
+> +{
+> +    AspeedPCIERcState *rc = ASPEED_PCIE_RC(opaque);
+> +    return &rc->iommu_as;
+> +}
+> +
+> +static const PCIIOMMUOps aspeed_pcie_rc_iommu_ops = {
+> +    .get_address_space = aspeed_pcie_rc_get_as,
+> +};
+> +
+>   static void aspeed_pcie_rc_realize(DeviceState *dev, Error **errp)
+>   {
+>       PCIExpressHost *pex = PCIE_HOST_BRIDGE(dev);
+> @@ -130,6 +184,8 @@ static void aspeed_pcie_rc_realize(DeviceState *dev, Error **errp)
+>       SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
+>       g_autofree char *ioport_window_name = NULL;
+>       g_autofree char *mmio_window_name = NULL;
+> +    g_autofree char *iommu_root_name = NULL;
+> +    g_autofree char *dram_alias_name = NULL;
+>       g_autofree char *root_bus_name = NULL;
+>   
+>       /* PCI configuration space */
+> @@ -160,6 +216,43 @@ static void aspeed_pcie_rc_realize(DeviceState *dev, Error **errp)
+>                                        &rc->io, 0, 4, TYPE_PCIE_BUS);
+>       pci->bus->flags |= PCI_BUS_EXTENDED_CONFIG_SPACE;
+>   
+> +   /*
+> +    * PCIe memory view setup
+> +    *
+> +    * Background:
+> +    * - On AST2700, all Root Complexes use the same MSI address. This MSI
+> +    *   address is not normal system RAM - it is a PCI system memory address.
+> +    *   If we map the MSI/MSI-X window into real system memory, a write from
+> +    *   one EP can be seen by all RCs and wrongly trigger interrupts on them.
+> +    *
+> +    * Design:
+> +    * - MSI/MSI-X here is just a placeholder address so RC and EP can talk.
+> +    *   We make a separate MMIO space (iommu_root) for the MSI window so the
+> +    *   writes stay local to each RC.
+> +    *
+> +    * DMA:
+> +    * - EPs still need access to real system memory for DMA. We add a DRAM
+> +    *   alias in the PCI space so DMA works as expected.
+> +    */
+> +    iommu_root_name = g_strdup_printf("pcie.%d.iommu_root", cfg->id);
+> +    memory_region_init(&rc->iommu_root, OBJECT(rc), iommu_root_name,
+> +                       UINT64_MAX);
+> +    address_space_init(&rc->iommu_as, &rc->iommu_root, iommu_root_name);
+> +    /* setup MSI */
+> +    memory_region_init_io(&rc->msi_window, OBJECT(rc),
+> +                          &aspeed_pcie_rc_msi_ops, rc,
+> +                          "msi_window", 4);
+> +    memory_region_add_subregion(&rc->iommu_root, rc->msi_addr,
+> +                                &rc->msi_window);
+> +    /* setup DRAM for DMA */
+> +    assert(rc->dram_mr != NULL);
+> +    dram_alias_name = g_strdup_printf("pcie.%d.dram_alias", cfg->id);
+> +    memory_region_init_alias(&rc->dram_alias, OBJECT(rc), dram_alias_name,
+> +                             rc->dram_mr, 0, memory_region_size(rc->dram_mr));
+> +    memory_region_add_subregion(&rc->iommu_root, rc->dram_base,
+> +                                &rc->dram_alias);
+> +    pci_setup_iommu(pci->bus, &aspeed_pcie_rc_iommu_ops, rc);
+> +
+>       /* setup root device */
+>       if (rc->has_rd) {
+>           object_initialize_child(OBJECT(rc), "root_device", &rc->root_device,
+> @@ -205,6 +298,10 @@ static const Property aspeed_pcie_rc_props[] = {
+>       DEFINE_PROP_UINT32("bus-nr", AspeedPCIERcState, bus_nr, 0),
+>       DEFINE_PROP_BOOL("has-rd", AspeedPCIERcState, has_rd, 0),
+>       DEFINE_PROP_UINT32("rp-addr", AspeedPCIERcState, rp_addr, 0),
+> +    DEFINE_PROP_UINT32("msi-addr", AspeedPCIERcState, msi_addr, 0),
+> +    DEFINE_PROP_UINT64("dram-base", AspeedPCIERcState, dram_base, 0),
+> +    DEFINE_PROP_LINK("dram", AspeedPCIERcState, dram_mr, TYPE_MEMORY_REGION,
+> +                     MemoryRegion *),
+>   };
+>   
+>   static void aspeed_pcie_rc_class_init(ObjectClass *klass, const void *data)
+> @@ -265,6 +362,10 @@ REG32(H2X_RC_H_INT_STS,     0xC8)
+>       SHARED_FIELD(H2X_RC_INT_INTDONE, 4, 1)
+>       SHARED_FIELD(H2X_RC_INT_INTX, 0, 4)
+>   REG32(H2X_RC_H_RDATA,       0xCC)
+> +REG32(H2X_RC_H_MSI_EN0,     0xE0)
+> +REG32(H2X_RC_H_MSI_EN1,     0xE4)
+> +REG32(H2X_RC_H_MSI_STS0,    0xE8)
+> +REG32(H2X_RC_H_MSI_STS1,    0xEC)
+>   
+>   #define TLP_FMTTYPE_CFGRD0  0x04 /* Configuration Read  Type 0 */
+>   #define TLP_FMTTYPE_CFGWR0  0x44 /* Configuration Write Type 0 */
+> @@ -278,6 +379,8 @@ static const AspeedPCIERegMap aspeed_regmap = {
+>       .rc = {
+>           .int_en_reg     = R_H2X_RC_H_INT_EN,
+>           .int_sts_reg    = R_H2X_RC_H_INT_STS,
+> +        .msi_sts0_reg   = R_H2X_RC_H_MSI_STS0,
+> +        .msi_sts1_reg   = R_H2X_RC_H_MSI_STS1,
+>       },
+>   };
+>   
+> @@ -447,6 +550,29 @@ static void aspeed_pcie_cfg_write(void *opaque, hwaddr addr, uint64_t data,
+>           }
+>           s->regs[reg] &= ~data | H2X_RC_INT_INTX_MASK;
+>           break;
+> +    /*
+> +     * These status registers are used for notify sources ISR are executed.
+> +     * If one source ISR is executed, it will clear one bit.
+> +     * If it clear all bits, it means to initialize this register status
+> +     * rather than sources ISR are executed.
+> +     */
+> +    case R_H2X_RC_H_MSI_STS0:
+> +    case R_H2X_RC_H_MSI_STS1:
+> +        if (data == 0) {
+> +            return ;
+> +        }
+> +
+> +        s->regs[reg] &= ~data;
+> +        if (data == 0xffffffff) {
+> +            return;
+> +        }
+> +
+> +        if (!s->regs[R_H2X_RC_H_MSI_STS0] &&
+> +            !s->regs[R_H2X_RC_H_MSI_STS1]) {
+> +            trace_aspeed_pcie_rc_msi_clear_irq(s->id, 0);
+> +            qemu_set_irq(s->rc.irq, 0);
+> +        }
+> +        break;
+>       default:
+>           s->regs[reg] = data;
+>           break;
+> @@ -468,6 +594,8 @@ static void aspeed_pcie_cfg_instance_init(Object *obj)
+>       AspeedPCIECfgState *s = ASPEED_PCIE_CFG(obj);
+>   
+>       object_initialize_child(obj, "rc", &s->rc, TYPE_ASPEED_PCIE_RC);
+> +    object_property_add_alias(obj, "dram", OBJECT(&s->rc), "dram");
+> +    object_property_add_alias(obj, "dram-base", OBJECT(&s->rc), "dram-base");
+>   
+>       return;
+>   }
+> @@ -503,6 +631,9 @@ static void aspeed_pcie_cfg_realize(DeviceState *dev, Error **errp)
+>       object_property_set_int(OBJECT(&s->rc), "rp-addr",
+>                               apc->rc_rp_addr,
+>                               &error_abort);
+> +    object_property_set_int(OBJECT(&s->rc), "msi-addr",
+> +                            apc->rc_msi_addr,
+> +                            &error_abort);
+>       if (!sysbus_realize(SYS_BUS_DEVICE(&s->rc), errp)) {
+>           return;
+>       }
+> @@ -534,6 +665,7 @@ static void aspeed_pcie_cfg_class_init(ObjectClass *klass, const void *data)
+>       apc->reg_ops = &aspeed_pcie_cfg_ops;
+>       apc->reg_map = &aspeed_regmap;
+>       apc->nr_regs = 0x100 >> 2;
+> +    apc->rc_msi_addr = 0x1e77005C;
+>       apc->rc_bus_nr = 0x80;
+>       apc->rc_has_rd = true;
+>       apc->rc_rp_addr = PCI_DEVFN(8, 0);
+> diff --git a/hw/pci-host/trace-events b/hw/pci-host/trace-events
+> index 2584ea56e2..a6fd88c2c4 100644
+> --- a/hw/pci-host/trace-events
+> +++ b/hw/pci-host/trace-events
+> @@ -2,6 +2,9 @@
+>   
+>   # aspeed_pcie.c
+>   aspeed_pcie_rc_intx_set_irq(uint32_t id, int num, int level) "%d: num %d set IRQ leve %d"
+> +aspeed_pcie_rc_msi_notify(uint32_t id, uint64_t addr, uint64_t data) "%d: 0x%" PRIx64 " data 0x%" PRIx64
+> +aspeed_pcie_rc_msi_set_irq(uint32_t id, uint64_t unm, int level) "%d: num 0x%" PRIx64 " set IRQ level %d"
+> +aspeed_pcie_rc_msi_clear_irq(uint32_t id, int level) "%d: clear IRQ level %d"
+>   aspeed_pcie_cfg_read(uint32_t id, uint64_t addr, uint32_t value) "%d: addr 0x%" PRIx64 " value 0x%" PRIx32
+>   aspeed_pcie_cfg_write(uint32_t id, uint64_t addr, uint32_t value) "%d: addr 0x%" PRIx64 " value 0x%" PRIx32
+>   aspeed_pcie_cfg_rw(uint32_t id, const char *dir, uint8_t bus, uint8_t devfn, uint64_t addr, uint64_t data) "%d: %s bus:0x%x devfn:0x%x addr 0x%" PRIx64 " data 0x%" PRIx64
 
 

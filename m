@@ -4,82 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 556C6CAC59A
-	for <qemu-arm@archiver.kernel.org>; Fri, 19 Sep 2025 08:53:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A5AECAC59A
+	for <qemu-arm@archiver.kernel.org>; Fri, 19 Sep 2025 08:56:21 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uzWs1-0005ll-1F; Fri, 19 Sep 2025 04:53:33 -0400
+	id 1uzWuU-0007Hh-Gg; Fri, 19 Sep 2025 04:56:07 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1uzWrx-0005l2-Nr
- for qemu-arm@nongnu.org; Fri, 19 Sep 2025 04:53:31 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1uzWuS-0007H5-BY
+ for qemu-arm@nongnu.org; Fri, 19 Sep 2025 04:56:04 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1uzWrp-0000Sc-99
- for qemu-arm@nongnu.org; Fri, 19 Sep 2025 04:53:28 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1uzWuM-00015K-6s
+ for qemu-arm@nongnu.org; Fri, 19 Sep 2025 04:56:04 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1758271999;
+ s=mimecast20190719; t=1758272157;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=sU2o15CSdjIrEyIWfUoUgT/2Mbn4M92cKqapRgBmdwk=;
- b=UPVipi6gJEVtg5vGayzGmepOce8ZzVF98x8GckGE/3XgEm9tcXz+NosWnIzX/yuAbQ0joa
- a8i/YiO+uKdUhzBdaXI9+i7N0hRmHLRMeODiTfxTODDiml8MJPAcrhyqy7cJJib8Z+KdJg
- vl97xbkbWqwDbF+AlmCmx0RPj6BRM80=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=YE0fuS2yywVvc77+gRbBzA+RcbnYWA9TvVN1yIPtrs4=;
+ b=SU3NCVEbTSDEYP08o/Xv9APC6pscdo0f7KhB3LxjRul2W2su6Wjcm/7ZxYIByxzrJ3gr4D
+ mruTv4ndcASZidJq0cBE8uYon7z7NRhsOCKHnQiwmFR0TE7m3/rjvZUQQIEcNJi3E2Ea8g
+ /IcYsdx7nS4s2FVnC2wNet+nIJ0HG9g=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-618-66XI4cfBNhWoMjZGGVTAxQ-1; Fri, 19 Sep 2025 04:53:12 -0400
-X-MC-Unique: 66XI4cfBNhWoMjZGGVTAxQ-1
-X-Mimecast-MFC-AGG-ID: 66XI4cfBNhWoMjZGGVTAxQ_1758271991
-Received: by mail-wm1-f70.google.com with SMTP id
- 5b1f17b1804b1-45b920a0c89so8440395e9.2
- for <qemu-arm@nongnu.org>; Fri, 19 Sep 2025 01:53:12 -0700 (PDT)
+ us-mta-527-5uENxSMfOQ--2_mvS8GuzQ-1; Fri, 19 Sep 2025 04:55:53 -0400
+X-MC-Unique: 5uENxSMfOQ--2_mvS8GuzQ-1
+X-Mimecast-MFC-AGG-ID: 5uENxSMfOQ--2_mvS8GuzQ_1758272152
+Received: by mail-wm1-f69.google.com with SMTP id
+ 5b1f17b1804b1-45b920a0c89so8453605e9.2
+ for <qemu-arm@nongnu.org>; Fri, 19 Sep 2025 01:55:53 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1758271991; x=1758876791;
+ d=1e100.net; s=20230601; t=1758272152; x=1758876952;
  h=content-transfer-encoding:in-reply-to:autocrypt:content-language
  :from:references:cc:to:subject:user-agent:mime-version:date
  :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=sU2o15CSdjIrEyIWfUoUgT/2Mbn4M92cKqapRgBmdwk=;
- b=vqq2qiI9GUgR3iIWjXhjCcs2TmMTSrGfD+n00hxYykCYGa0QxblwyUKQIE8HFliW7k
- Fd+HRHHRkOboZLuAI/PiDaQKAHWrkdObnxhE9IzifFy13hT8ZyfsNMi4ZvVJLhmPiY7z
- j0w+MitNerQICq2+5d1MefEkpJhOZ5eJNfonY2zd5rpPUQeJXP9OfwrmikWetcvLtNbW
- cTyWFJ43e5tACSuaeg2EOFhWlzguDgBimAmdhyEMBHdczsp8fe4oN+jKkms2OYSsETRk
- 9e+I+zT8MObZHroL2gIvcpPTcie8YDlABqsjQulLTJahSEgJLdHN2jwynwRYJxyOS21+
- nEEA==
+ bh=YE0fuS2yywVvc77+gRbBzA+RcbnYWA9TvVN1yIPtrs4=;
+ b=BHTR4Mi2VEWXbAMEE7gGsyw2pGtyeHUgQOfulRyMaV+wE0p1tOLADWHJNjXcDHL0MU
+ V05DBfebeSnW/UN4mM/iFCVkidFK80lJedc/I6VW5TrHPLpNSEbe1H7dPSnPPGWz4FmK
+ 1CHRYB1e91wZAXJYwjCqdB9a6wyIi44dKw2XT9G10VgvJSRgAI2VSyTye0fjmfQ/mbAU
+ 6qSZqSEZekbWRmrdVtQpeD/WPpnwEcYMlXd0aEIPzsuetWA5wuhpD3Vvt0u8Yf4xCXJi
+ GIZO9HIcD/GUYUm72tb0a457dPlQWsY9uL46UGECVgnuSDOwxfw2xVvT+GdjpREbTUC0
+ hung==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUqJZjNi9V9r1QnIHPIrGgaZiz9+G6YI2PvOJXzrtqMreeX5lbp+QjkSHuavS1r3QvNe+Eu9G12dw==@nongnu.org
-X-Gm-Message-State: AOJu0YzOMj6IIN0rZ8XCtGA8dXu29ea4bPg3M628YaBCaq08inE9+fIY
- +gQbya3+UbgZ9KZlkIUshnA6AXmFXm7rzZPje/uYnFWtMCEUpyRROxkF1zAjODxXj6JSW/fH3yt
- /DyCZlxtA1L3Uxk52kpF6Gs5Vpex02plGhwEeBx477JtrxFvJhT4jWg==
-X-Gm-Gg: ASbGnct53dq+4wa1C85ZApELytTbNbA6Uqg+07KKDvyxHgeJmfJpsuUUpRcipKqi5F+
- RR5uILd2puoNFJxaqfR7iBz6X5qOzFH8+vJvMQ/mPGnaMKKcPbLThzWImImcK8nJkJjl1asSYyQ
- XpITcpxv5e6yb94bVtqRRWxwmDRjk9w4hTONVIb2hCcmVkH52pRqAh8nAdzV5HVbAIN4QZJP/kH
- hrSssAIbFRkSFEMxbswvYlp2m0DI1LQCG1kFGGbNNrItdbT1LbwVVweWRlgIDsVC5m2uZVoM/Kg
- ILN8kCDnsByZCgJc04mwSLgaSlKcNscRXsYzMeXn5ySlFdmM0c1Zn1S6Ilta1tmudXkdKjnK8If
- x9A8=
-X-Received: by 2002:a05:600c:3593:b0:45b:8477:de1a with SMTP id
- 5b1f17b1804b1-467ead67316mr22465925e9.7.1758271991197; 
- Fri, 19 Sep 2025 01:53:11 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHv1AzkQkzdnhbsYxjq6Ks+SxmxooC1TmO5/UoB2krCfVhblO7cyeghMTTIH1PG5/3BxWx/RQ==
-X-Received: by 2002:a05:600c:3593:b0:45b:8477:de1a with SMTP id
- 5b1f17b1804b1-467ead67316mr22465705e9.7.1758271990802; 
- Fri, 19 Sep 2025 01:53:10 -0700 (PDT)
+ AJvYcCX1AtU4SDJzUP9vepsBFNjIsVP7T5ZUtYkVr1UJVNwzS3JsxM0Bzu6DtaGoHNXC2MoAo63jQsNsiw==@nongnu.org
+X-Gm-Message-State: AOJu0YxZ2Vru9nNZtiAVLk2c47OSckfNmgHxhTFUb0b5smPrC4PBiS+R
+ SGd0IxgW1OJfzWDG7aSNj2fO6YQW9M4XKj48DUIIHlIfPPOzL9LW1L9VeTX9C2Gpg1L7KM8SHIo
+ Co9DVwX5lpylVCZlufEpJsliWRngQPO6WeQkyrfE63dXuLCbktuO0ow==
+X-Gm-Gg: ASbGncuo8f36ZVC2pPKsM+K3QObgxnYtz394JoOAjMsmIgDCSn7DwegewQ6T6VtJLyB
+ wNhqtJU7HaVJHVqQ3VPD6U473v2paon4tkXx+FfbFbh+E3kGbuOVwAnxBefEBqHfs1Vdz9wCWzR
+ fSyzg1gzQsvLpnt6OMCKLEMfRwelTfk6U9b95y/l+jlXRLJtgebVCjKuT3Wxx93nAEMQUfHS2xy
+ NM7f9rDmT0+20TgitUwNXVAyQbv+PoG9v5cTzKFxhXvh9yt6pr5s12ZuWUR29D1hgygT/UKkFkU
+ KrpmcnBGA1MkZpq5BVlUUb8Ej1EdKdpeNm33/NKEzOtgNhpblWqnKaK24Bry0Uw+GNBBpMyH77+
+ 25ho=
+X-Received: by 2002:a05:600c:4fd1:b0:45f:2207:ab2a with SMTP id
+ 5b1f17b1804b1-467ef72c37dmr14688165e9.27.1758272152489; 
+ Fri, 19 Sep 2025 01:55:52 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFS2sep/dGGkocvef3E3Fr2zvSXaltwWpxiCfucYhx9+EwlP4VL692nao0sKLNuYUYvtRD8Yw==
+X-Received: by 2002:a05:600c:4fd1:b0:45f:2207:ab2a with SMTP id
+ 5b1f17b1804b1-467ef72c37dmr14687915e9.27.1758272152107; 
+ Fri, 19 Sep 2025 01:55:52 -0700 (PDT)
 Received: from ?IPV6:2a01:e0a:280:24f0:576b:abc6:6396:ed4a?
  ([2a01:e0a:280:24f0:576b:abc6:6396:ed4a])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-460942b6c3csm67829015e9.1.2025.09.19.01.53.09
+ 5b1f17b1804b1-46138695223sm117211655e9.5.2025.09.19.01.55.51
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 19 Sep 2025 01:53:10 -0700 (PDT)
-Message-ID: <a4c04906-fa69-406a-bf69-76a959403345@redhat.com>
-Date: Fri, 19 Sep 2025 10:53:09 +0200
+ Fri, 19 Sep 2025 01:55:51 -0700 (PDT)
+Message-ID: <cdc7b092-2386-4451-81bd-7842d350b881@redhat.com>
+Date: Fri, 19 Sep 2025 10:55:50 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [SPAM] [PATCH v4 12/14] hw/arm/aspeed_ast27x0: Introduce 3 PCIe
- RCs for AST2700
+Subject: Re: [SPAM] [PATCH v4 11/14] hw/pci-host/aspeed: Disable Root Device
+ and place Root Port at 00:00.0 to AST2700
 To: Jamin Lin <jamin_lin@aspeedtech.com>, Paolo Bonzini
  <pbonzini@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
@@ -91,7 +91,7 @@ To: Jamin Lin <jamin_lin@aspeedtech.com>, Paolo Bonzini
 Cc: troy_lee@aspeedtech.com, nabihestefan@google.com, wuhaotsh@google.com,
  titusr@google.com
 References: <20250919032431.3316764-1-jamin_lin@aspeedtech.com>
- <20250919032431.3316764-13-jamin_lin@aspeedtech.com>
+ <20250919032431.3316764-12-jamin_lin@aspeedtech.com>
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
 Autocrypt: addr=clg@redhat.com; keydata=
  xsFNBFu8o3UBEADP+oJVJaWm5vzZa/iLgpBAuzxSmNYhURZH+guITvSySk30YWfLYGBWQgeo
@@ -136,21 +136,21 @@ Autocrypt: addr=clg@redhat.com; keydata=
  HQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4PlsZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQ
  izDiU6iOrUzBThaMhZO3i927SG2DwWDVzZltKrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gD
  uVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20250919032431.3316764-13-jamin_lin@aspeedtech.com>
+In-Reply-To: <20250919032431.3316764-12-jamin_lin@aspeedtech.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: Un3s9xBZYtUVPndZg6bvPO3AfoE_3fXqojc4HhOALCs_1758271991
+X-Mimecast-MFC-PROC-ID: ba5Y7RHyaIakmxU6lVTR7UifT7RN4HFP6fS7Un8sWlI_1758272152
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US, fr
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.005,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
@@ -169,216 +169,35 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 9/19/25 05:24, Jamin Lin wrote:
-> Add PCIe Root Complex support to the AST2700 SoC model.
-> 
-> The AST2700 A1 silicon revision provides three PCIe Root Complexes:
-> 
-> PCIe0 with its PHY at 0x12C15000, config (H2X) block at 0x120E0000,
-> MMIO window at 0x60000000, and GIC IRQ 56.
-> 
-> PCIe1 with its PHY at 0x12C15800, config (H2X) block at 0x120F0000,
-> MMIO window at 0x80000000, and GIC IRQ 57.
-> 
-> PCIe2 with its PHY at 0x14C1C000, config (H2X) block at 0x140D0000,
-> MMIO window at 0xA0000000, and IRQ routed through INTC4 bit 31
-> mapped to GIC IRQ 196.
-> 
-> Each RC instantiates a PHY device, a PCIe config (H2X) bridge, and an MMIO
-> alias region. The per-RC MMIO alias size is 0x20000000. The AST2700 A0
-> silicon revision does not support PCIe Root Complexes, so pcie_num is set
-> to 0 in that variant.
+> AST2700 does not implement a PCIe Root Device; each RC exposes a single
+> PCIe Root Port at devfn 0:0.0.
 > 
 > Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 > ---
->   include/hw/arm/aspeed_soc.h |  1 +
->   hw/arm/aspeed_ast27x0.c     | 74 +++++++++++++++++++++++++++++++++++++
->   2 files changed, 75 insertions(+)
+>   hw/pci-host/aspeed_pcie.c | 2 ++
+>   1 file changed, 2 insertions(+)
 > 
-> diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
-> index a0cf433775..aaf518d179 100644
-> --- a/include/hw/arm/aspeed_soc.h
-> +++ b/include/hw/arm/aspeed_soc.h
-> @@ -186,6 +186,7 @@ struct AspeedSoCClass {
->       uint32_t silicon_rev;
->       uint64_t sram_size;
->       uint64_t secsram_size;
-> +    int pcie_num;
->       int spis_num;
->       int ehcis_num;
->       int wdts_num;
-> diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
-> index 6aa3841b69..cd062f3f57 100644
-> --- a/hw/arm/aspeed_ast27x0.c
-> +++ b/hw/arm/aspeed_ast27x0.c
-> @@ -38,6 +38,8 @@ static const hwaddr aspeed_soc_ast2700_memmap[] = {
->       [ASPEED_DEV_EHCI2]     =  0x12063000,
->       [ASPEED_DEV_HACE]      =  0x12070000,
->       [ASPEED_DEV_EMMC]      =  0x12090000,
-> +    [ASPEED_DEV_PCIE0]     =  0x120E0000,
-> +    [ASPEED_DEV_PCIE1]     =  0x120F0000,
->       [ASPEED_DEV_INTC]      =  0x12100000,
->       [ASPEED_GIC_DIST]      =  0x12200000,
->       [ASPEED_GIC_REDIST]    =  0x12280000,
-> @@ -45,6 +47,8 @@ static const hwaddr aspeed_soc_ast2700_memmap[] = {
->       [ASPEED_DEV_SCU]       =  0x12C02000,
->       [ASPEED_DEV_RTC]       =  0x12C0F000,
->       [ASPEED_DEV_TIMER1]    =  0x12C10000,
-> +    [ASPEED_DEV_PCIE_PHY0] =  0x12C15000,
-> +    [ASPEED_DEV_PCIE_PHY1] =  0x12C15800,
->       [ASPEED_DEV_SLI]       =  0x12C17000,
->       [ASPEED_DEV_UART4]     =  0x12C1A000,
->       [ASPEED_DEV_IOMEM1]    =  0x14000000,
-> @@ -59,6 +63,7 @@ static const hwaddr aspeed_soc_ast2700_memmap[] = {
->       [ASPEED_DEV_ETH2]      =  0x14060000,
->       [ASPEED_DEV_ETH3]      =  0x14070000,
->       [ASPEED_DEV_SDHCI]     =  0x14080000,
-> +    [ASPEED_DEV_PCIE2]     =  0x140D0000,
->       [ASPEED_DEV_EHCI3]     =  0x14121000,
->       [ASPEED_DEV_EHCI4]     =  0x14123000,
->       [ASPEED_DEV_ADC]       =  0x14C00000,
-> @@ -66,6 +71,7 @@ static const hwaddr aspeed_soc_ast2700_memmap[] = {
->       [ASPEED_DEV_GPIO]      =  0x14C0B000,
->       [ASPEED_DEV_I2C]       =  0x14C0F000,
->       [ASPEED_DEV_INTCIO]    =  0x14C18000,
-> +    [ASPEED_DEV_PCIE_PHY2] =  0x14C1C000,
->       [ASPEED_DEV_SLIIO]     =  0x14C1E000,
->       [ASPEED_DEV_VUART]     =  0x14C30000,
->       [ASPEED_DEV_UART0]     =  0x14C33000,
-> @@ -81,6 +87,9 @@ static const hwaddr aspeed_soc_ast2700_memmap[] = {
->       [ASPEED_DEV_UART11]    =  0x14C33A00,
->       [ASPEED_DEV_UART12]    =  0x14C33B00,
->       [ASPEED_DEV_WDT]       =  0x14C37000,
-> +    [ASPEED_DEV_PCIE_MMIO0] = 0x60000000,
-> +    [ASPEED_DEV_PCIE_MMIO1] = 0x80000000,
-> +    [ASPEED_DEV_PCIE_MMIO2] = 0xA0000000,
->       [ASPEED_DEV_SPI_BOOT]  =  0x100000000,
->       [ASPEED_DEV_LTPI]      =  0x300000000,
->       [ASPEED_DEV_SDRAM]     =  0x400000000,
-> @@ -156,6 +165,8 @@ static const int aspeed_soc_ast2700a1_irqmap[] = {
->       [ASPEED_DEV_DP]        = 28,
->       [ASPEED_DEV_EHCI1]     = 33,
->       [ASPEED_DEV_EHCI2]     = 37,
-> +    [ASPEED_DEV_PCIE0]     = 56,
-> +    [ASPEED_DEV_PCIE1]     = 57,
->       [ASPEED_DEV_LPC]       = 192,
->       [ASPEED_DEV_IBT]       = 192,
->       [ASPEED_DEV_KCS]       = 192,
-> @@ -166,6 +177,7 @@ static const int aspeed_soc_ast2700a1_irqmap[] = {
->       [ASPEED_DEV_WDT]       = 195,
->       [ASPEED_DEV_PWM]       = 195,
->       [ASPEED_DEV_I3C]       = 195,
-> +    [ASPEED_DEV_PCIE2]     = 196,
->       [ASPEED_DEV_UART0]     = 196,
->       [ASPEED_DEV_UART1]     = 196,
->       [ASPEED_DEV_UART2]     = 196,
-> @@ -233,6 +245,7 @@ static const int ast2700_gic132_gic196_intcmap[] = {
->       [ASPEED_DEV_UART12]    = 18,
->       [ASPEED_DEV_EHCI3]     = 28,
->       [ASPEED_DEV_EHCI4]     = 29,
-> +    [ASPEED_DEV_PCIE2]     = 31,
->   };
->   
->   /* GICINT 133 */
-> @@ -519,6 +532,17 @@ static void aspeed_soc_ast2700_init(Object *obj)
->   
->       snprintf(typename, sizeof(typename), "aspeed.hace-%s", socname);
->       object_initialize_child(obj, "hace", &s->hace, typename);
-> +
-> +    for (i = 0; i < sc->pcie_num; i++) {
-> +        snprintf(typename, sizeof(typename), "aspeed.pcie-phy-%s", socname);
-> +        object_initialize_child(obj, "pcie-phy[*]", &s->pcie_phy[i], typename);
-> +        object_property_set_int(OBJECT(&s->pcie_phy[i]), "id", i, &error_abort);
-> +
-> +        snprintf(typename, sizeof(typename), "aspeed.pcie-cfg-%s", socname);
-> +        object_initialize_child(obj, "pcie-cfg[*]", &s->pcie[i], typename);
-> +        object_property_set_int(OBJECT(&s->pcie[i]), "id", i, &error_abort);
-> +    }
-> +
->       object_initialize_child(obj, "dpmcu", &s->dpmcu,
->                               TYPE_UNIMPLEMENTED_DEVICE);
->       object_initialize_child(obj, "ltpi", &s->ltpi,
-> @@ -610,6 +634,49 @@ static bool aspeed_soc_ast2700_gic_realize(DeviceState *dev, Error **errp)
->       return true;
+> diff --git a/hw/pci-host/aspeed_pcie.c b/hw/pci-host/aspeed_pcie.c
+> index a757fd7ec8..f7593444fc 100644
+> --- a/hw/pci-host/aspeed_pcie.c
+> +++ b/hw/pci-host/aspeed_pcie.c
+> @@ -829,6 +829,8 @@ static void aspeed_2700_pcie_cfg_class_init(ObjectClass *klass,
+>       apc->nr_regs = 0x100 >> 2;
+>       apc->rc_msi_addr = 0x000000F0;
+>       apc->rc_bus_nr = 0;
+> +    apc->rc_has_rd = false;
+> +    apc->rc_rp_addr = PCI_DEVFN(0, 0);
 >   }
 >   
-> +static bool aspeed_soc_ast2700_pcie_realize(DeviceState *dev, Error **errp)
-> +{
-> +    AspeedSoCState *s = ASPEED_SOC(dev);
-> +    AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
-> +    g_autofree char *name = NULL;
-> +    MemoryRegion *mmio_mr = NULL;
-> +    qemu_irq irq;
-> +    int i;
-> +
-> +    for (i = 0; i < sc->pcie_num; i++) {
-
-'name' should be declared in this block else it will leak.  That's why
-I sometime prefer the old snprintf() method.
+>   static const TypeInfo aspeed_2700_pcie_cfg_info = {
 
 
-> +        if (!sysbus_realize(SYS_BUS_DEVICE(&s->pcie_phy[i]), errp)) {
-> +            return false;
-> +        }
-> +        aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->pcie_phy[i]), 0,
-> +                        sc->memmap[ASPEED_DEV_PCIE_PHY0 + i]);
-> +
-> +        object_property_set_int(OBJECT(&s->pcie[i]), "dram-base",
-> +                                sc->memmap[ASPEED_DEV_SDRAM],
-> +                                &error_abort);
-> +        object_property_set_link(OBJECT(&s->pcie[i]), "dram",
-> +                                 OBJECT(s->dram_mr), &error_abort);
-> +        if (!sysbus_realize(SYS_BUS_DEVICE(&s->pcie[i]), errp)) {
-> +            return false;
-> +        }
-> +        aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->pcie[i]), 0,
-> +                        sc->memmap[ASPEED_DEV_PCIE0 + i]);
-> +        irq = aspeed_soc_get_irq(s, ASPEED_DEV_PCIE0 + i);
-> +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->pcie[i].rc), 0, irq);
-> +
-> +        mmio_mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->pcie[i].rc), 1);
-> +        name = g_strdup_printf("aspeed.pcie-mmio.%d", i);
-> +        memory_region_init_alias(&s->pcie_mmio_alias[i], OBJECT(&s->pcie[i].rc),
-> +                                 name, mmio_mr,
-> +                                 sc->memmap[ASPEED_DEV_PCIE_MMIO0 + i],
-> +                                 0x20000000);
-> +        memory_region_add_subregion(s->memory,
-> +                                    sc->memmap[ASPEED_DEV_PCIE_MMIO0 + i],
-> +                                    &s->pcie_mmio_alias[i]);
-> +    }
-> +
-> +    return true;
-> +}
-> +
->   static void aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
->   {
->       int i;
-> @@ -936,6 +1003,11 @@ static void aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
->       sysbus_connect_irq(SYS_BUS_DEVICE(&s->hace), 0,
->                          aspeed_soc_get_irq(s, ASPEED_DEV_HACE));
->   
-> +    /* PCIe Root Complex (RC) */
-> +    if (!aspeed_soc_ast2700_pcie_realize(dev, errp)) {
-> +        return;
-> +    }
-> +
->       aspeed_mmio_map_unimplemented(s, SYS_BUS_DEVICE(&s->dpmcu),
->                                     "aspeed.dpmcu",
->                                     sc->memmap[ASPEED_DEV_DPMCU],
-> @@ -974,6 +1046,7 @@ static void aspeed_soc_ast2700a0_class_init(ObjectClass *oc, const void *data)
->       sc->valid_cpu_types = valid_cpu_types;
->       sc->silicon_rev  = AST2700_A0_SILICON_REV;
->       sc->sram_size    = 0x20000;
-> +    sc->pcie_num     = 0;
->       sc->spis_num     = 3;
->       sc->ehcis_num    = 2;
->       sc->wdts_num     = 8;
-> @@ -1002,6 +1075,7 @@ static void aspeed_soc_ast2700a1_class_init(ObjectClass *oc, const void *data)
->       sc->valid_cpu_types = valid_cpu_types;
->       sc->silicon_rev  = AST2700_A1_SILICON_REV;
->       sc->sram_size    = 0x20000;
-> +    sc->pcie_num     = 3;
->       sc->spis_num     = 3;
->       sc->ehcis_num    = 4;
->       sc->wdts_num     = 8;
+
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
+
+Thanks,
+
+C.
+
 
 

@@ -4,181 +4,155 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B29ECAC592
-	for <qemu-arm@archiver.kernel.org>; Fri, 19 Sep 2025 09:39:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6BC08CAC592
+	for <qemu-arm@archiver.kernel.org>; Fri, 19 Sep 2025 09:50:09 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uzXaV-0006Gv-MT; Fri, 19 Sep 2025 05:39:31 -0400
+	id 1uzXkc-0002bk-9f; Fri, 19 Sep 2025 05:49:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1uzXaT-0006GH-1u; Fri, 19 Sep 2025 05:39:30 -0400
-Received: from mail-japaneastazlp170130007.outbound.protection.outlook.com
- ([2a01:111:f403:c405::7] helo=TYDPR03CU002.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1uzXkW-0002Z1-1w
+ for qemu-arm@nongnu.org; Fri, 19 Sep 2025 05:49:52 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1uzXaM-0003oR-R6; Fri, 19 Sep 2025 05:39:27 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=QY32bZxg8jMjbTG2K2OHF854oEJL2MozsJJQptXNVlop5VjmsMJaKgwvasFWMV8VHQE1Wn1V9jgNVH+d12Uma1M3DNa3NoEuFJD8WsQFfaBcV4gW3SV9AUWdJ7BmcnN/8YvoLcddod73UjZibuP4G8ERZPx2poXSCzlmv64JGZNIyK8eKvYDUXqSiW6jbtq6EzU8dWIlBRXmThW9eNs92dOaqAexzV/N/v1vjhyIrVOx2fI3YIuoANvHELdwbDrcAYNE/Ak6OebaQIzCUEAZtvJ7lNubBdx+9FLIWJmnQNMwQ3cPMxkZxBJadFi1ZszOC4J3mHUxieQULdcwp86FcA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=PRdMDvIxBhmoMQCdQKof4ueOYcXWjeIN+B7CCITELMI=;
- b=wDG8aTK7UUISJ3G4VP/s/rftL+Gw+hD7ZqaTXfUHX/EGxMTsQqW98RRviS9ePSe3NJtN1EIK9b4rXX6iQKiM1oTnZg2hsuil57G6k50xz1/5dAnHyzLF7c+9VmysrxHIymemTa+4jehGGPTjj94ZRHhtqUs4m1Vvu/4zOsyz9PVUeoBK62kCQdO8iPX0xGogfOSBofRo53gsz39E60qonCHD/aWgBTzIFEHBq5lMm3hxjzv4r/spzj364ks2RJ/KvdHlMxLENuIBme6aV5noR1FzYmnBJ7Lsjt+mR1ymt8eDabT6hx/j1uA4lABRXZC9IFqzx98ACP8B5qVXBBAzqQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
- header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=PRdMDvIxBhmoMQCdQKof4ueOYcXWjeIN+B7CCITELMI=;
- b=UpK8LKO+WHTMzwpxBjbaLyQfNazcLThzyuMsWtFSRtR45V4Nk1TlJl0nlAlOfNGHSEXKc7z4IN1dTdqNEebAcnhGhu5pzrRL77Sn3KllWfRabGpd6aR0IlIecBzi/qRkxkZ38nMKtwE4mIf76rqMp1L0DrH3IV1kIpae6PpoV/GolQUSsA5kUo6HdEH+YwUY36RI+glSRSnarNUcWlLG6eoxIv/QTEuDSIxDK19kWj+SQ0dq2Q2OviizFHN6zJ7iN/Y8zAe7IIAnmCa2f6XehZ7cr+AO8AOlUfaUm3OPNCqo5trvBgQiLs8h0MhQ1wJ0p2VVDKzISoXFjhWFFL+U1Q==
-Received: from SI2PR06MB5041.apcprd06.prod.outlook.com (2603:1096:4:1a4::6) by
- PUZPR06MB5828.apcprd06.prod.outlook.com (2603:1096:301:e8::11) with
- Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.9137.16; Fri, 19 Sep 2025 09:39:14 +0000
-Received: from SI2PR06MB5041.apcprd06.prod.outlook.com
- ([fe80::705a:352a:7564:8e56]) by SI2PR06MB5041.apcprd06.prod.outlook.com
- ([fe80::705a:352a:7564:8e56%3]) with mapi id 15.20.9115.018; Fri, 19 Sep 2025
- 09:39:14 +0000
-From: Jamin Lin <jamin_lin@aspeedtech.com>
-To: =?utf-8?B?Q8OpZHJpYyBMZSBHb2F0ZXI=?= <clg@redhat.com>, Paolo Bonzini
- <pbonzini@redhat.com>, Peter Maydell <peter.maydell@linaro.org>, Steven Lee
- <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, Andrew Jeffery
- <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, "Michael S.
- Tsirkin" <mst@redhat.com>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>, "open list:All patches CC
- here" <qemu-devel@nongnu.org>
-CC: Troy Lee <troy_lee@aspeedtech.com>, "nabihestefan@google.com"
- <nabihestefan@google.com>, "wuhaotsh@google.com" <wuhaotsh@google.com>,
- "titusr@google.com" <titusr@google.com>
-Subject: RE: Aspeed backlog (was Re: [SPAM] [PATCH v3 00/14] Support PCIe RC
- to AST2600 and AST2700)
-Thread-Topic: Aspeed backlog (was Re: [SPAM] [PATCH v3 00/14] Support PCIe RC
- to AST2600 and AST2700)
-Thread-Index: AQHcKT8+f5LkJt2IXkeRPNfwjfpR0bSaPgUw
-Date: Fri, 19 Sep 2025 09:39:14 +0000
-Message-ID: <SI2PR06MB504147B4AA57E46DA1F1D2BAFC11A@SI2PR06MB5041.apcprd06.prod.outlook.com>
-References: <20250918031348.3991681-1-jamin_lin@aspeedtech.com>
- <2e5f260b-dafa-42ab-953d-f0781cd3601f@kaod.org>
- <SI2PR06MB5041C7EE49F5A61C6E8B2DE3FC16A@SI2PR06MB5041.apcprd06.prod.outlook.com>
- <ef4f4cd4-6efc-4176-9043-4bca04e5da4f@kaod.org>
- <SI2PR06MB5041840F757BD2DED8342164FC11A@SI2PR06MB5041.apcprd06.prod.outlook.com>
- <e77f8aa9-8c19-41f5-b8b3-073c02092180@redhat.com>
-In-Reply-To: <e77f8aa9-8c19-41f5-b8b3-073c02092180@redhat.com>
-Accept-Language: zh-TW, en-US
-Content-Language: zh-TW
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=aspeedtech.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: SI2PR06MB5041:EE_|PUZPR06MB5828:EE_
-x-ms-office365-filtering-correlation-id: a7f20003-06ad-4638-8b28-08ddf760654c
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|1800799024|366016|7416014|376014|921020|38070700021|217643003; 
-x-microsoft-antispam-message-info: =?utf-8?B?V0kycHVqNGtidnhOWDZtSnltZXV4K1I3eWUvbHU0VDZXM2FINE1UdUZ3M05R?=
- =?utf-8?B?eWtCNnBjZFJNTEtxeXR5L0VseUN6dG9jNWh4RlhXN2RtNEIvUzFHVS95L1Nx?=
- =?utf-8?B?WjVoeW1NMlFveWN0c2tTR2cvYkpsYi9pc0JXamZzMjJyMWttNUE5MkkwN01G?=
- =?utf-8?B?UVNFWGhtL2g5MEFNOHJ6bUQxVWdRV3hlem9KRDdSTWF6UVJydTlNaTdzZ1M5?=
- =?utf-8?B?ZkxtUHpZZ0NzWjFyR1d1NlY4a3pTRXZmeFU3UklodnVhL3ozNGV4Wmw0UlZ1?=
- =?utf-8?B?UTNKdDRHQTZDaXgzMXNDb1lmejFPcUZhbWJjcTFIWFMvbUdmUG50TnhCbDdN?=
- =?utf-8?B?NUFnSWhHaHU3bHZyTHl6Z2swbTBIdXJ6ZHlxRlA0ZzlEMXdINW9ocjZna0Ra?=
- =?utf-8?B?VmJQQTRTZFc3TWJpSkFaWUM3dThRWDBvVHZtRVRsbUkzM1kyQ09sWFdNQllr?=
- =?utf-8?B?OCt6ejZiRUl2ZDFyVmY3cDBKNDNKZTM2UldPek0wNjRBZXprSFpUdDBUckxO?=
- =?utf-8?B?VTVWa3Q1azNaUUsxZ3BZb3lrVk9qakltakNrTDMvWnFYSjlxekxFQ1kreVNR?=
- =?utf-8?B?NWl5Mkc5VlBGdWM1d3laQ3IzVXVUVERpcmxwenlldUZlSWtwSW40eTRjS0lm?=
- =?utf-8?B?dnVsMlB3aU5IV0tJR255SGRqdU9ya1ZmdTZoZFpHUWxqTmUzQ1hWQUxXaTFq?=
- =?utf-8?B?Z0c2eGc0OW5KVzU3NXdyMVVTMkswTG5jeVgwbFRNVVJTdGVEdzdkb21jNyts?=
- =?utf-8?B?amY1REtjKzZGZUNUYXFXZUEyK0diMnozN0tuWk9WSjB2TmJSMElmY3BBbDFX?=
- =?utf-8?B?eThUSGRocGpXVktObEQ5SFZGSVM3OE1YU2VVeWVzUEl6WDdyYWh0em1jODZO?=
- =?utf-8?B?ekF2WmFpZ1BLQlRLM1dGanJRcnZtMVN1akNRM1ZxdVhLTENyQXYybHhhR0oy?=
- =?utf-8?B?ZmJ3MFBjSFVqV29SZ3FRVjVwRk1rRWdsK1FRVnZOd2NwVmNLdzgvUVNFNEdU?=
- =?utf-8?B?OG5MTjdKZmVkdVhLOHA0czdKL1QyVWF5dFg4RlRsMmE1RkZIWVVrVkJzTnBv?=
- =?utf-8?B?ckZEekFuRlltbkhTMENKT3UrS1RsWDg2Z0t4ZDZ2SFNGSk5lL25icG00dVdm?=
- =?utf-8?B?cFZ6K2FMVThwZ21Qcjl5QVpzZUptUDNlT3hDUzFQTWJkVmxoTEpic014bWxh?=
- =?utf-8?B?M2pnS2tDekxaV09EYk5KN3dobDFRUmlUR255M1pRUlVXbThucHFEaTNFL0NG?=
- =?utf-8?B?MXJ2WTZnblhzUG9MYmd1YkF2TFRrRjRZMUJLeUdrWFltUmdwNWRDalcycU5V?=
- =?utf-8?B?bmQzQzVGU1kxZEFjZHRCOWMydDZWSFJ1UE85NFUrdHNodXpWelFVV0VVZzB4?=
- =?utf-8?B?VGloZDJTZ0dLUVNSYXVNVzBmQmpCVFFQdGZzb3hNek14TEgxYWpiSHVqeHgw?=
- =?utf-8?B?LzZCaGl5Z3p2bXpGWkd1Q21VbjRRbWVVbzFpZ2svUzd3Vi8xR0NiR1FKZGxx?=
- =?utf-8?B?WS9PUFhIcTd5WVU3WGJ5RXNEUjArUndmOXRSZWZaRndHUkF4QndIQlpTV0ZC?=
- =?utf-8?B?TkxPWmx5L1pkOVVVZlpjNlFsQUl4SmQ3ckd3MkFEWjhIMnZFTnN5cTkwRTFm?=
- =?utf-8?B?bThhYlVkSVUzOVlqRnJLY0Vrd2JPOWMwczlBK3hrRDYwc1FVV0NvQWVjQklr?=
- =?utf-8?B?WTFGTlRjQ1JEeitDRE5FZWVPR2ZsamdaMTN6WTJiZXpyZU9uN3VrbFlyL041?=
- =?utf-8?B?Z1ZnYWtyUnZRK3JieE1RMk5pU3YvU2U5TlIvQU02bGlVZTNhYjZqUHdFMHhO?=
- =?utf-8?B?cVhGYUczMndaK2hSQ01lSkNKcGw5VUtzMHVOeFoxczBMd3l5N01ITS9WWHlK?=
- =?utf-8?B?TGpxYmlza2tSS1RPKzUwbFhmVUxOSlpUYjdvaXlzcm9leUp2NWYwK3JMdnFz?=
- =?utf-8?B?NU9ETDNjWVQ1Q2VRV0FCcXZnU0RsQ0xwU0RHYjNJaHdic252ZnRrdnhhcG9O?=
- =?utf-8?B?UTN0NndKVEpnPT0=?=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:zh-tw; SCL:1;
- SRV:; IPV:NLI; SFV:NSPM; H:SI2PR06MB5041.apcprd06.prod.outlook.com; PTR:;
- CAT:NONE;
- SFS:(13230040)(1800799024)(366016)(7416014)(376014)(921020)(38070700021)(217643003);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?WkFKb3E2YzNrV0N4U3dkMDRtK2lhdnhkVmpvVWNrdHYyK3ZBTEpDT2ZZYlVY?=
- =?utf-8?B?TUMvZlRhRE1KcStRUHZiOUVyTXpBYzdjeTd0RnE0N1JqODczRStqeWFZb0Iy?=
- =?utf-8?B?bC9sZ3dyRnhvOTFYNklWSGl0SHd6Z2ZBTk1qbEZud1VycUloUlZyQ0UvcEpI?=
- =?utf-8?B?S2VIeXdGZmxIdFp1UFdaeDN3VFM3bmZsRmwwSUhrMWdTRFM0dFFvODVNVy9U?=
- =?utf-8?B?Tk1LWjdUcUdDZHl6cDBpTW9NR29aNlhpQTE2SjFwRGZjQzZ4SWU1YnhKc1p5?=
- =?utf-8?B?eVkyVHphdWM4STNQSHZQdHB0VVgzanBwRStvWGEwa21IZ3cvYWhoZ0RUcWJ0?=
- =?utf-8?B?ME5JUy9GZEVEYVhXWjF6MEZaMDJtK05sdHJiS2crVG5PcE9DSzRCVkh4SG1Y?=
- =?utf-8?B?Q0hxL0FhNXNWWVJsQ25XeUhzOWRmZjJSa21nTVNKejlnZUsxeHFQMzNnU2tu?=
- =?utf-8?B?T0hCdzhHL2x1dWtvdTcwaEMydEhmT2RPbGJoZDhkc2ZmRzFITlgzeTlsYTdR?=
- =?utf-8?B?SkpmL2xJY3RhR0U5VGxCNEF1UUR0b04wNDVmN1pUWWZabkdDcUhLQzRkWEFI?=
- =?utf-8?B?OW53UUhsZkRVbWFKdE1VUlVDNW5UNng4SDNlbnU4by9YK3R4b0dCWjlFYlNO?=
- =?utf-8?B?dS9kTGJnVEV3VkozSDdLYUhOeTdIcEw3NklwYllmeFZlRGJQRGNDelJvUUgw?=
- =?utf-8?B?S0hiV3JnWUp4VkRrbE5vNG1SOHhwZmhMMXZQeGZaVDNSdmxKckNSUmZmM1hC?=
- =?utf-8?B?WG1MMUpmMlhXK2VKRGx0STkvRXJRMXplN3B3Mit2Y3BkVFRyWXV3OFBBakh1?=
- =?utf-8?B?akwwZDNHTkJob3pWNHNsMkQ5RVBVNGMvREp6OXNiNk0zbUVRY0FJRlhJUlpU?=
- =?utf-8?B?NUI0Tk5XOVN3SUgwQXIwTzBXRzJ5VGxJNW55OCtnNnRpUkMrVVQ5Y3JDZjJr?=
- =?utf-8?B?L2VsRzg5azdzWFJ4ZHVVOEhCL2UxK0VFY294VkU5ZnJNWFYxMUxFUlZjQ0hh?=
- =?utf-8?B?QlQ3bC9BRG15RmVFWUhzSm9FaW9CeFhMTDQ1RmtaNXlMdVB6a0lCb2xTU1F4?=
- =?utf-8?B?clVkMHhLQ3BUTlhCZ25ha2FJMzltWWQzYlhYZXF1UzZrYS9IMVk2bVlyMlNh?=
- =?utf-8?B?cCtNVS9qWkxOTitRQ2ZoSjQ1d29jdEZ0SURCNDk3SFlGZHhYeThURVV1Z3c2?=
- =?utf-8?B?Q1BEbmNjUGM2d2NheWVqODQvSkZqVGswdVIyQkl4a3Y1Z1c0KzhrS1czWWwr?=
- =?utf-8?B?dE9PYTJPY3VKZkhGTFVOSDJtSFVPRGU5MlNVQjJ6OWtiUEROdnlxbVB3eHpm?=
- =?utf-8?B?a055dzdNcnhiWFRqZm85T01VTUZlejgyUDJEQTkwL05rUUV0dEFtVk4xTzFz?=
- =?utf-8?B?VGdpWjFaVG5TVXRMNHhXcWdpUEh5eVBISHEwVjlvcXE2KzNISlllSlRJOHVE?=
- =?utf-8?B?bGpXTWM4cmxJa05zUmlHTVhYRTB3TE84aTdvRWViNGRVb2ZOU3VRSjZYdG5V?=
- =?utf-8?B?bDlOVHB5RUtnM0kyK0czSXZmK2Z4WTExOGsya254RW9mMkc2NTROVlhMMnlr?=
- =?utf-8?B?Z2hnbERRbmxQMnFyVFkxQUtjNURlcGdsRUhzUW53ZWQvYmNnY05QSlRNUGxW?=
- =?utf-8?B?eEVQNFIwMEp2UjlOaGJHSTdldzVBV1F0Q01WZ1dYUzBEM2Q4bWN6V0VSRkFS?=
- =?utf-8?B?ZEtqK1Y3VmtWM3hvT1ZyVTduaUtlQnNHN2VIYXdpcWVxa29LWEJRdlRqT250?=
- =?utf-8?B?VEt4YUZ3dGFncVdIU3FVcXFjRVBhYno4R1ByMU5zTkhCbkFsZXNaYWZjQ2Vx?=
- =?utf-8?B?Si9OY2QzR3ZwTnZRSEZMa1YwekRYaWZoNlB4VmIvTFhBSFV0OVM2dk9WckF6?=
- =?utf-8?B?T25mU1ZiRGJlcU9RdVRNc2hEVUVNRlpzN0FFcXBYaEM3bG1ua2RQTzFMQmcr?=
- =?utf-8?B?Z0laeTJtMzBZdFplTGlpZ0hkY0lVZ3hleUM1Y1BuZldtSTBGTi83ZUIweC9K?=
- =?utf-8?B?NzlNcWREZTNiRURmdDgzWkJjZjVrVE0zNytYTU0venZ4ZWdaR1RidWtWc1Uv?=
- =?utf-8?B?Nm5maThmNnREOS9NVmh4VmFWb2gwa0VjNlZjWU45T3AxdTRldENiN0tqOUZL?=
- =?utf-8?Q?QWf9qyNnN0PEhVWJkyLKNrueA?=
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1uzXkS-0003Wm-5v
+ for qemu-arm@nongnu.org; Fri, 19 Sep 2025 05:49:51 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1758275384;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=Kj3CDlJWv+ULGO9qpclBJ6W3ZkNIDp9SSzAtkDx9LfM=;
+ b=gb4iW6L9Pw309qwDw9x/44HGBAR204MdZXOP7HSq51sZ48e634Cu2Lc7rxz6RYaC/w+JnA
+ WIdmk5JDKuoE8BvM717hjXbZHnq9KkfZ1pm278+lKXLp6LiuaX29JRp8PgWtI1M37q/6+b
+ Emyw3ULnUXQeYCrVp/SHKi5UqVyJSds=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-288-pO1_JtDKO2iJ_6fLRZPOnQ-1; Fri, 19 Sep 2025 05:49:43 -0400
+X-MC-Unique: pO1_JtDKO2iJ_6fLRZPOnQ-1
+X-Mimecast-MFC-AGG-ID: pO1_JtDKO2iJ_6fLRZPOnQ_1758275382
+Received: by mail-wm1-f71.google.com with SMTP id
+ 5b1f17b1804b1-45f2b9b958aso18560345e9.3
+ for <qemu-arm@nongnu.org>; Fri, 19 Sep 2025 02:49:42 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1758275381; x=1758880181;
+ h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=Kj3CDlJWv+ULGO9qpclBJ6W3ZkNIDp9SSzAtkDx9LfM=;
+ b=U60ltcGvmUQCouSM+edgV4jj4xHJgBxyXJ2SeVjxke0+9baU1PcX92fVShR06alueU
+ MxEmkZUepESZH2YoqtGFXrM7mv5ptkvMjg+9X0kzcLvA9vYa5dtafc43fdqVp2LA7Go0
+ qbpaVibiSMp56O8eVdNJ9yrIxziXYlemss33IknXDwGcsdYOMxdo3StW1kIscjAZkQli
+ Sevdnf7s8WFh2V0LFltEFcSI7mjf2Pkh0MpkD70YEiw4LS7XNcqQHGBJ4RGUF0YisHZd
+ Oq11klKE7Mkmn+QyXtsA2H6Fgnv7nkB0+6gvYItoUADbqzUdQEK+bOFV/RDAeHaAjjKJ
+ XNTA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCV00Qh6jmiOxB0iAkyl3RlsecQikOiN3oPyPQpw4LRa33A7xOk8krGsDONauXCqfpWXbnShm7mmzw==@nongnu.org
+X-Gm-Message-State: AOJu0Yw1CSq6iz9kJE5iIYFdtgQx3sxYurS1ssftqNego9a5xE8QQ6uU
+ nRxNzlRvNF19HYM5NkMh9J0qj/EKe4NwMx8cHe9/ozEIbUaO+WflEk3SHLXB6y4okDVYTEPa87V
+ Dpisr9hidyUjsKfgTE4bUv/51m20PBqQKKq90XDAqIprSvhomEFK8ruHBuQVjpA==
+X-Gm-Gg: ASbGnctAAevtV/cxFKM7lKafWbbtMganaW0G0OBfA+fvGHrU3Ggw7tf1FJF387yViar
+ O8+ZjB1xpppKgK2eYKUWM3YogRd71kOvZ/UgOQm4e8yxU7KmVQ6tbBVByN+gS3PUdNKUeHiN+5a
+ ZIMJIyilNFRBHclhQg+kqFozkJEOWDFDB2pKPdXPi5A0Q4nIDNG/1jIMow4eyU20GIsyq5mj5Xb
+ VUtotWX23I/IR26MZuSsECLF/ZENyon7c9V3tLkq3Sv+73Fy8ZmOq6XvlfJNi2zE9RCdUWnq1y4
+ v+VSN5sw1su4/0zjzaNGkFFr3QkoDzuM0NCW6ohidAppvZMuqax7KTpWq1UHnz4LyUQ09wny1dJ
+ lVWM=
+X-Received: by 2002:a05:600c:6288:b0:45f:2843:e76b with SMTP id
+ 5b1f17b1804b1-467ec36a36cmr19439465e9.2.1758275381464; 
+ Fri, 19 Sep 2025 02:49:41 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHmCdi9lWjGlTzWv+uZZ2QSU13I4J0CDdwOc5N2NI3brMhnE6JuYFgQtSESAOoe44W2hOH8Sg==
+X-Received: by 2002:a05:600c:6288:b0:45f:2843:e76b with SMTP id
+ 5b1f17b1804b1-467ec36a36cmr19439095e9.2.1758275380953; 
+ Fri, 19 Sep 2025 02:49:40 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:280:24f0:576b:abc6:6396:ed4a?
+ ([2a01:e0a:280:24f0:576b:abc6:6396:ed4a])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-464f4f9f4e4sm89230795e9.13.2025.09.19.02.49.39
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 19 Sep 2025 02:49:40 -0700 (PDT)
+Message-ID: <2b844152-7db6-4706-ab1d-4d8176c67985@redhat.com>
+Date: Fri, 19 Sep 2025 11:49:39 +0200
 MIME-Version: 1.0
-X-OriginatorOrg: aspeedtech.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SI2PR06MB5041.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: a7f20003-06ad-4638-8b28-08ddf760654c
-X-MS-Exchange-CrossTenant-originalarrivaltime: 19 Sep 2025 09:39:14.4608 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: aK9OHgQh7//qu+4U+dXENSXXyF2+BXeACNL18UUdKJoh+124+4tiUxnHGEXRYTkMs/QtmwDEcfFay8PlW7rECweycT/tkaVpSa2I5pOZtsY=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PUZPR06MB5828
-Received-SPF: pass client-ip=2a01:111:f403:c405::7;
- envelope-from=jamin_lin@aspeedtech.com;
- helo=TYDPR03CU002.outbound.protection.outlook.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [SPAM] [PATCH v5 12/14] hw/arm/aspeed_ast27x0: Introduce 3 PCIe
+ RCs for AST2700
+To: Jamin Lin <jamin_lin@aspeedtech.com>, Paolo Bonzini
+ <pbonzini@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+Cc: troy_lee@aspeedtech.com, nabihestefan@google.com, wuhaotsh@google.com,
+ titusr@google.com
+References: <20250919093017.338309-1-jamin_lin@aspeedtech.com>
+ <20250919093017.338309-13-jamin_lin@aspeedtech.com>
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
+Autocrypt: addr=clg@redhat.com; keydata=
+ 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
+ uVKe8BVz4atMOoktmt0GWTOC8P4=
+In-Reply-To: <20250919093017.338309-13-jamin_lin@aspeedtech.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: H3v73sAASKChQRW5qP0LHaBJedeY4231LONLBovhb3I_1758275382
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US, fr
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.005,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -194,50 +168,221 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-SGkgQ8OpZHJpYw0KDQo+IFN1YmplY3Q6IEFzcGVlZCBiYWNrbG9nICh3YXMgUmU6IFtTUEFNXSBb
-UEFUQ0ggdjMgMDAvMTRdIFN1cHBvcnQgUENJZSBSQyB0bw0KPiBBU1QyNjAwIGFuZCBBU1QyNzAw
-KQ0KPiANCj4gSGVsbG8gSmFtaW4sDQo+IA0KPiA+PiBPbmUgbGFzdCB0aGluZywgdGhlIGxpc3Qg
-b2YgUENJIGNhcGFiaWxpdGllcyByZXBvcnRlZCBvbiByZWFsIEhXIGlzIGENCj4gPj4gbGl0dGxl
-IGRpZmZlcmVudC4gU2VlIGJlbG93LiBXaGVuIHlvdSBoYXZlIHRpbWUsIGl0IHdvdWxkIGJlIGdv
-b2QgdG8NCj4gPj4gYWRqdXN0IHRoZSBtb2RlbCBpZiBwb3NzaWJsZS4gSXQgY2FuIGNvbWUgbGF0
-ZXIuDQo+ID4+DQo+ID4NCj4gPiBUaGFua3MgZm9yIHRoZSBzdWdnZXN0aW9uIGFuZCBmb3IgcmVw
-b3J0aW5nIHRoaXMgaXNzdWUuIEnigJlsbCBhZGQgaXQgdG8gbXkNCj4gd29ya2luZyBxdWV1ZS4N
-Cj4gPiBIZXJlIGFyZSB0aGUgdGFza3MgY3VycmVudGx5IGluIG15IHF1ZXVlOg0KPiA+DQo+ID4g
-MS4gQ29udHJvbCBjb3Byb2Nlc3NvciByZXNldCBmb3IgQVNUMjcwMA0KPiA+IGh0dHBzOi8vcGF0
-Y2h3b3JrLmtlcm5lbC5vcmcvcHJvamVjdC9xZW11LWRldmVsL2NvdmVyLzIwMjUwNzE3MDM0MDU0
-LjENCj4gPiA5MDM5OTEtMS1qYW1pbl9saW5AYXNwZWVkdGVjaC5jb20vDQo+IA0KPiBUaGlzIG5l
-ZWRzIGEgcmV3b3JrIG9mIHRoZSBjbyBwcm9jZXNzb3IgbW9kZWxzLiBUaGlzIHNob3VsZCBiZSBR
-RU1VIDEwLjINCj4gbWF0ZXJpYWwgSU1PLg0KDQpZZXMsIEkgYW0gcmV3b3JraW5nIGl0LCBhbmQg
-SSB3aWxsIGRpc2N1c3Mgd2l0aCB5b3Ugd2l0aGluIHRoaXMgcGF0Y2ggc2VyaWVzIGlmIEkgaGF2
-ZSBhbnkgcXVlc3Rpb25zIGR1cmluZyB0aGUgcmV3b3JrLg0KDQo+IA0KPiA+IDIuIEFuYWx5emUg
-aXNzdWUgImZ1bmMtYXJtLWFzcGVlZF9hc3QyNTAwIHRlc3Qgb2NjYXNpb25hbGx5IHRpbWVzIG91
-dCINCj4gPiBodHRwczovL2dpdGxhYi5jb20vcWVtdS1wcm9qZWN0L3FlbXUvLS9pc3N1ZXMvMzEx
-Nw0KPiA+IDMuIEFkanVzdCBQQ0llIGNhcGFiaWxpdGllcw0KPiA+IDMuIFN1cHBvcnQgQVNUMjcw
-MCBJUEMgbW9kZWwobWF5IHJlcXVpcmUgcmVmYWN0b3JpbmcgdGhlIElOVEMgbW9kZWwgaWYNCj4g
-PiBuZWVkZWQpIDQuIFN1cHBvcnQgQVNUMjcwMCBBMiAocGxhbm5lZCBmb3IgZW5kIG9mIHRoaXMg
-eWVhciBvciBRMSBuZXh0DQo+ID4geWVhcikgNS4gU3VwcG9ydCBBU1QyNzAwIGJvb3QgZnJvbSBC
-b290TUNVKFJJU0MtVikgaW5zdGVhZCBvZiB2Ym9vdHJvbSwNCj4gaWYgYSBzaW5nbGUgYmluYXJ5
-IHJlYWR5Lg0KPiANCj4gSXQgd291bGQgYmUgZ3JlYXQgaWYgVHJveSAoPykgY291bGQgcmVzZW5k
-IHRoZSBtb2RlbHMsIGl0J3MgZ29vZCB0byBoYXZlIHNpbmNlDQo+IHNpbmdsZSBiaW5hcnkgaXMg
-bWFraW5nIHByb2dyZXNzLg0KPiANCg0KSSB3aWxsIG9yZ2FuaXplIGFuZCBzZW5kIG91dCBUcm95
-4oCZcyBwYXRjaCBmb3IgdGhlIEFTVDI3MDAgQm9vdE1DVS4NClNvIGZhciwgd2UgaGF2ZSBvbmx5
-IHRlc3RlZCBpdCB1cCB0byBydW5uaW5nIFNQTCB3aXRoIHFlbXUtc3lzdGVtLXJpc2N2MzIuDQoN
-ClRoYW5rcy1KYW1pbg0KPiANCj4gDQo+IEFsc28sIHRoZXNlIGNoYW5nZXMgbWF5IGJlIG9mIGlu
-dGVyZXN0LCB0aGV5IG5lZWQgcmV2aWV3IDoNCj4gDQo+ICAgIC0gdXNiL3VoY2k6IEFkZCBVSENJ
-IHN5c2J1cyBzdXBwb3J0LCBhbmQgZW5hYmxlIGZvciBBU1QgKEd1ZW50ZXIgUm9lY2spDQo+IA0K
-PiBodHRwczovL2xvcmUua2VybmVsLm9yZy8vcWVtdS1kZXZlbC8yMDI0MTExMjE3MDE1Mi4yMTc2
-NjQtMS1saW51eEByb2Vjay11DQo+IHMubmV0DQo+IA0KPiAgICAgIExvb2tzIHJlYWxseSBnb29k
-LiBOZWVkcyByZXZpZXdlcnMgYW5kIHN0YWtlaG9sZGVycy4NCj4gDQo+ICAgIC0gaTNjOiBhc3Bl
-ZWQ6IEFkZCBJM0Mgc3VwcG9ydCAoSm9lIEtvbWxvZGkpDQo+IA0KPiBodHRwczovL2xvcmUua2Vy
-bmVsLm9yZy8vcWVtdS1kZXZlbC8yMDI1MDYxMzAwMDQxMS4xNTE2NTIxLTEta29tbG9kaUBnbw0K
-PiBvZ2xlLmNvbQ0KPiANCj4gICAgICBMb29rcyBnb29kIG92ZXJhbGwuIE5lZWRzIHJldmlld2Vy
-cyBhbmQgc3Rha2Vob2xkZXJzLg0KPiANCj4gICAgLSBBZGQgQXNwZWVkIEdQSU8gdGVzdCBhbmQg
-U3VwcG9ydCBOdXZvdG9uIFNlcmlhbCBHUElPIChDb2NvIExpKQ0KPiANCj4gaHR0cHM6Ly9sb3Jl
-Lmtlcm5lbC5vcmcvL3FlbXUtZGV2ZWwvMjAyNTA5MDMyMTM4MDkuMzc3OTg2MC0xLWxpeGlhb3lh
-bkBnDQo+IG9vZ2xlLmNvbQ0KPiANCj4gICAgICBOZWVkcyByZXZpZXdlcnMNCj4gDQo+ICAgIC0g
-aHcvYXJtL2FzcGVlZDogQVNUMTcwMCBJTyBleHBhbmRlciBzdXBwb3J0IGZvciAoS2FuZS1DaGVu
-LUFTKQ0KPiANCj4gaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvL3FlbXUtZGV2ZWwvMjAyNTA5MTcw
-MTMxNDMuMTYwMDM3Ny0xLWthbmVfY2hlbkANCj4gYXNwZWVkdGVjaC5jb20NCj4gDQo+ICAgICAg
-TmVlZHMgcmV3b3JrLiBJIHdpbGwgY29tbWVudCBtb3JlIHdoZW4gdGltZSBwZXJtaXRzDQo+IA0K
-PiANCj4gVGhhbmtzLA0KPiANCj4gQy4NCg0K
+On 9/19/25 11:30, Jamin Lin wrote:
+> Add PCIe Root Complex support to the AST2700 SoC model.
+> 
+> The AST2700 A1 silicon revision provides three PCIe Root Complexes:
+> 
+> PCIe0 with its PHY at 0x12C15000, config (H2X) block at 0x120E0000,
+> MMIO window at 0x60000000, and GIC IRQ 56.
+> 
+> PCIe1 with its PHY at 0x12C15800, config (H2X) block at 0x120F0000,
+> MMIO window at 0x80000000, and GIC IRQ 57.
+> 
+> PCIe2 with its PHY at 0x14C1C000, config (H2X) block at 0x140D0000,
+> MMIO window at 0xA0000000, and IRQ routed through INTC4 bit 31
+> mapped to GIC IRQ 196.
+> 
+> Each RC instantiates a PHY device, a PCIe config (H2X) bridge, and an MMIO
+> alias region. The per-RC MMIO alias size is 0x20000000. The AST2700 A0
+> silicon revision does not support PCIe Root Complexes, so pcie_num is set
+> to 0 in that variant.
+> 
+> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+
+
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
+
+Thanks,
+
+C.
+
+
+> ---
+>   include/hw/arm/aspeed_soc.h |  1 +
+>   hw/arm/aspeed_ast27x0.c     | 74 +++++++++++++++++++++++++++++++++++++
+>   2 files changed, 75 insertions(+)
+> 
+> diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
+> index a0cf433775..aaf518d179 100644
+> --- a/include/hw/arm/aspeed_soc.h
+> +++ b/include/hw/arm/aspeed_soc.h
+> @@ -186,6 +186,7 @@ struct AspeedSoCClass {
+>       uint32_t silicon_rev;
+>       uint64_t sram_size;
+>       uint64_t secsram_size;
+> +    int pcie_num;
+>       int spis_num;
+>       int ehcis_num;
+>       int wdts_num;
+> diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
+> index 6aa3841b69..853339119f 100644
+> --- a/hw/arm/aspeed_ast27x0.c
+> +++ b/hw/arm/aspeed_ast27x0.c
+> @@ -38,6 +38,8 @@ static const hwaddr aspeed_soc_ast2700_memmap[] = {
+>       [ASPEED_DEV_EHCI2]     =  0x12063000,
+>       [ASPEED_DEV_HACE]      =  0x12070000,
+>       [ASPEED_DEV_EMMC]      =  0x12090000,
+> +    [ASPEED_DEV_PCIE0]     =  0x120E0000,
+> +    [ASPEED_DEV_PCIE1]     =  0x120F0000,
+>       [ASPEED_DEV_INTC]      =  0x12100000,
+>       [ASPEED_GIC_DIST]      =  0x12200000,
+>       [ASPEED_GIC_REDIST]    =  0x12280000,
+> @@ -45,6 +47,8 @@ static const hwaddr aspeed_soc_ast2700_memmap[] = {
+>       [ASPEED_DEV_SCU]       =  0x12C02000,
+>       [ASPEED_DEV_RTC]       =  0x12C0F000,
+>       [ASPEED_DEV_TIMER1]    =  0x12C10000,
+> +    [ASPEED_DEV_PCIE_PHY0] =  0x12C15000,
+> +    [ASPEED_DEV_PCIE_PHY1] =  0x12C15800,
+>       [ASPEED_DEV_SLI]       =  0x12C17000,
+>       [ASPEED_DEV_UART4]     =  0x12C1A000,
+>       [ASPEED_DEV_IOMEM1]    =  0x14000000,
+> @@ -59,6 +63,7 @@ static const hwaddr aspeed_soc_ast2700_memmap[] = {
+>       [ASPEED_DEV_ETH2]      =  0x14060000,
+>       [ASPEED_DEV_ETH3]      =  0x14070000,
+>       [ASPEED_DEV_SDHCI]     =  0x14080000,
+> +    [ASPEED_DEV_PCIE2]     =  0x140D0000,
+>       [ASPEED_DEV_EHCI3]     =  0x14121000,
+>       [ASPEED_DEV_EHCI4]     =  0x14123000,
+>       [ASPEED_DEV_ADC]       =  0x14C00000,
+> @@ -66,6 +71,7 @@ static const hwaddr aspeed_soc_ast2700_memmap[] = {
+>       [ASPEED_DEV_GPIO]      =  0x14C0B000,
+>       [ASPEED_DEV_I2C]       =  0x14C0F000,
+>       [ASPEED_DEV_INTCIO]    =  0x14C18000,
+> +    [ASPEED_DEV_PCIE_PHY2] =  0x14C1C000,
+>       [ASPEED_DEV_SLIIO]     =  0x14C1E000,
+>       [ASPEED_DEV_VUART]     =  0x14C30000,
+>       [ASPEED_DEV_UART0]     =  0x14C33000,
+> @@ -81,6 +87,9 @@ static const hwaddr aspeed_soc_ast2700_memmap[] = {
+>       [ASPEED_DEV_UART11]    =  0x14C33A00,
+>       [ASPEED_DEV_UART12]    =  0x14C33B00,
+>       [ASPEED_DEV_WDT]       =  0x14C37000,
+> +    [ASPEED_DEV_PCIE_MMIO0] = 0x60000000,
+> +    [ASPEED_DEV_PCIE_MMIO1] = 0x80000000,
+> +    [ASPEED_DEV_PCIE_MMIO2] = 0xA0000000,
+>       [ASPEED_DEV_SPI_BOOT]  =  0x100000000,
+>       [ASPEED_DEV_LTPI]      =  0x300000000,
+>       [ASPEED_DEV_SDRAM]     =  0x400000000,
+> @@ -156,6 +165,8 @@ static const int aspeed_soc_ast2700a1_irqmap[] = {
+>       [ASPEED_DEV_DP]        = 28,
+>       [ASPEED_DEV_EHCI1]     = 33,
+>       [ASPEED_DEV_EHCI2]     = 37,
+> +    [ASPEED_DEV_PCIE0]     = 56,
+> +    [ASPEED_DEV_PCIE1]     = 57,
+>       [ASPEED_DEV_LPC]       = 192,
+>       [ASPEED_DEV_IBT]       = 192,
+>       [ASPEED_DEV_KCS]       = 192,
+> @@ -166,6 +177,7 @@ static const int aspeed_soc_ast2700a1_irqmap[] = {
+>       [ASPEED_DEV_WDT]       = 195,
+>       [ASPEED_DEV_PWM]       = 195,
+>       [ASPEED_DEV_I3C]       = 195,
+> +    [ASPEED_DEV_PCIE2]     = 196,
+>       [ASPEED_DEV_UART0]     = 196,
+>       [ASPEED_DEV_UART1]     = 196,
+>       [ASPEED_DEV_UART2]     = 196,
+> @@ -233,6 +245,7 @@ static const int ast2700_gic132_gic196_intcmap[] = {
+>       [ASPEED_DEV_UART12]    = 18,
+>       [ASPEED_DEV_EHCI3]     = 28,
+>       [ASPEED_DEV_EHCI4]     = 29,
+> +    [ASPEED_DEV_PCIE2]     = 31,
+>   };
+>   
+>   /* GICINT 133 */
+> @@ -519,6 +532,17 @@ static void aspeed_soc_ast2700_init(Object *obj)
+>   
+>       snprintf(typename, sizeof(typename), "aspeed.hace-%s", socname);
+>       object_initialize_child(obj, "hace", &s->hace, typename);
+> +
+> +    for (i = 0; i < sc->pcie_num; i++) {
+> +        snprintf(typename, sizeof(typename), "aspeed.pcie-phy-%s", socname);
+> +        object_initialize_child(obj, "pcie-phy[*]", &s->pcie_phy[i], typename);
+> +        object_property_set_int(OBJECT(&s->pcie_phy[i]), "id", i, &error_abort);
+> +
+> +        snprintf(typename, sizeof(typename), "aspeed.pcie-cfg-%s", socname);
+> +        object_initialize_child(obj, "pcie-cfg[*]", &s->pcie[i], typename);
+> +        object_property_set_int(OBJECT(&s->pcie[i]), "id", i, &error_abort);
+> +    }
+> +
+>       object_initialize_child(obj, "dpmcu", &s->dpmcu,
+>                               TYPE_UNIMPLEMENTED_DEVICE);
+>       object_initialize_child(obj, "ltpi", &s->ltpi,
+> @@ -610,6 +634,49 @@ static bool aspeed_soc_ast2700_gic_realize(DeviceState *dev, Error **errp)
+>       return true;
+>   }
+>   
+> +static bool aspeed_soc_ast2700_pcie_realize(DeviceState *dev, Error **errp)
+> +{
+> +    AspeedSoCState *s = ASPEED_SOC(dev);
+> +    AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
+> +    MemoryRegion *mmio_mr = NULL;
+> +    char name[64];
+> +    qemu_irq irq;
+> +    int i;
+> +
+> +    for (i = 0; i < sc->pcie_num; i++) {
+> +        if (!sysbus_realize(SYS_BUS_DEVICE(&s->pcie_phy[i]), errp)) {
+> +            return false;
+> +        }
+> +        aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->pcie_phy[i]), 0,
+> +                        sc->memmap[ASPEED_DEV_PCIE_PHY0 + i]);
+> +
+> +        object_property_set_int(OBJECT(&s->pcie[i]), "dram-base",
+> +                                sc->memmap[ASPEED_DEV_SDRAM],
+> +                                &error_abort);
+> +        object_property_set_link(OBJECT(&s->pcie[i]), "dram",
+> +                                 OBJECT(s->dram_mr), &error_abort);
+> +        if (!sysbus_realize(SYS_BUS_DEVICE(&s->pcie[i]), errp)) {
+> +            return false;
+> +        }
+> +        aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->pcie[i]), 0,
+> +                        sc->memmap[ASPEED_DEV_PCIE0 + i]);
+> +        irq = aspeed_soc_get_irq(s, ASPEED_DEV_PCIE0 + i);
+> +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->pcie[i].rc), 0, irq);
+> +
+> +        mmio_mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->pcie[i].rc), 1);
+> +        snprintf(name, sizeof(name), "aspeed.pcie-mmio.%d", i);
+> +        memory_region_init_alias(&s->pcie_mmio_alias[i], OBJECT(&s->pcie[i].rc),
+> +                                 name, mmio_mr,
+> +                                 sc->memmap[ASPEED_DEV_PCIE_MMIO0 + i],
+> +                                 0x20000000);
+> +        memory_region_add_subregion(s->memory,
+> +                                    sc->memmap[ASPEED_DEV_PCIE_MMIO0 + i],
+> +                                    &s->pcie_mmio_alias[i]);
+> +    }
+> +
+> +    return true;
+> +}
+> +
+>   static void aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
+>   {
+>       int i;
+> @@ -936,6 +1003,11 @@ static void aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
+>       sysbus_connect_irq(SYS_BUS_DEVICE(&s->hace), 0,
+>                          aspeed_soc_get_irq(s, ASPEED_DEV_HACE));
+>   
+> +    /* PCIe Root Complex (RC) */
+> +    if (!aspeed_soc_ast2700_pcie_realize(dev, errp)) {
+> +        return;
+> +    }
+> +
+>       aspeed_mmio_map_unimplemented(s, SYS_BUS_DEVICE(&s->dpmcu),
+>                                     "aspeed.dpmcu",
+>                                     sc->memmap[ASPEED_DEV_DPMCU],
+> @@ -974,6 +1046,7 @@ static void aspeed_soc_ast2700a0_class_init(ObjectClass *oc, const void *data)
+>       sc->valid_cpu_types = valid_cpu_types;
+>       sc->silicon_rev  = AST2700_A0_SILICON_REV;
+>       sc->sram_size    = 0x20000;
+> +    sc->pcie_num     = 0;
+>       sc->spis_num     = 3;
+>       sc->ehcis_num    = 2;
+>       sc->wdts_num     = 8;
+> @@ -1002,6 +1075,7 @@ static void aspeed_soc_ast2700a1_class_init(ObjectClass *oc, const void *data)
+>       sc->valid_cpu_types = valid_cpu_types;
+>       sc->silicon_rev  = AST2700_A1_SILICON_REV;
+>       sc->sram_size    = 0x20000;
+> +    sc->pcie_num     = 3;
+>       sc->spis_num     = 3;
+>       sc->ehcis_num    = 4;
+>       sc->wdts_num     = 8;
+
 

@@ -4,82 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DFCDFCAC59A
-	for <qemu-arm@archiver.kernel.org>; Fri, 19 Sep 2025 08:07:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5724ECAC59A
+	for <qemu-arm@archiver.kernel.org>; Fri, 19 Sep 2025 08:07:35 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uzW83-00054t-Rq; Fri, 19 Sep 2025 04:06:03 -0400
+	id 1uzW7w-0004xi-3a; Fri, 19 Sep 2025 04:05:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1uzW82-00053j-M1
- for qemu-arm@nongnu.org; Fri, 19 Sep 2025 04:06:02 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1uzW7t-0004vd-LH
+ for qemu-arm@nongnu.org; Fri, 19 Sep 2025 04:05:53 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1uzW80-0006z2-Ac
- for qemu-arm@nongnu.org; Fri, 19 Sep 2025 04:06:02 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1uzW7r-0006o6-E2
+ for qemu-arm@nongnu.org; Fri, 19 Sep 2025 04:05:53 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1758269159;
+ s=mimecast20190719; t=1758269149;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=Dstga8pnvd10QnYFSJMTWUIwELxiahrLrZw8FqyVVtU=;
- b=Nz0AUGC4R1eBnIeQzZgmcS6dHG1JciZye6htaF6qvUUvpQhjF+89TbR+m6TV8wPfwtjdWs
- vsKXJ9vRJuayUDNsMA0KA4Josj9WBnLBCtCmLOJWphHUBC4w9MaApY9/bP+1KN77MMn6YL
- SEAQcZInuMvDgpaHye9yQUcKamz0PbE=
+ bh=FbSXNfwjeJK59L1O0kxY34YbvRazp9gayZSbxh5qKww=;
+ b=TZCVe44yO6i7RlXHO1aR7pfujWJboZ7eZ+xQ7vhU5oVK9FWv2LxHdV/LjdQ2XqfaUZYtSz
+ 5IrLHM1oCjwJz/Tnn+VDYMsYBx8OK2nK4uJkI0wxJaBQzIcl8A0DB/Hu1cBvm+VSu4am6W
+ oFMo4DDy391gbf9PdFzTibiTNcBJmKA=
 Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
  [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-304-xftmfMTNNVGQ1VGTdTFQ1A-1; Fri, 19 Sep 2025 04:05:57 -0400
-X-MC-Unique: xftmfMTNNVGQ1VGTdTFQ1A-1
-X-Mimecast-MFC-AGG-ID: xftmfMTNNVGQ1VGTdTFQ1A_1758269156
+ us-mta-554-Jn5cHwjhMA6Q6rkxH-7RuA-1; Fri, 19 Sep 2025 04:05:47 -0400
+X-MC-Unique: Jn5cHwjhMA6Q6rkxH-7RuA-1
+X-Mimecast-MFC-AGG-ID: Jn5cHwjhMA6Q6rkxH-7RuA_1758269147
 Received: by mail-wr1-f69.google.com with SMTP id
- ffacd0b85a97d-3e40057d90aso919115f8f.0
- for <qemu-arm@nongnu.org>; Fri, 19 Sep 2025 01:05:57 -0700 (PDT)
+ ffacd0b85a97d-3e8c4aa37bbso594448f8f.3
+ for <qemu-arm@nongnu.org>; Fri, 19 Sep 2025 01:05:47 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1758269156; x=1758873956;
+ d=1e100.net; s=20230601; t=1758269146; x=1758873946;
  h=content-transfer-encoding:in-reply-to:autocrypt:content-language
  :from:references:cc:to:subject:user-agent:mime-version:date
  :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=Dstga8pnvd10QnYFSJMTWUIwELxiahrLrZw8FqyVVtU=;
- b=faQA2xvUfWSJzQXxp/B8pG2qgvBCjCr3Jv9PHoHatPJq8qUxr/SqeLPrPvWVmOekAR
- RFJWiM3OgbwIKHBbpm4N9tKJA5W9RW+2UAOIVNRhyo6d+BiKEJn+zUDy1XvrqVc/29a/
- zTG3rv7+kmtR7Li2aN4ZAU2SWF/pzs/TnanstxB4QmW5eNMW5tbwjsYIpI5xe8qIYMi9
- LgaDrD0HjZsxR/8l+pjrbgwRBNhy6qrmo/MJp7K6ZBwyVLpRk78KP5Cims4yscYLqZYV
- Y0P25EBunO/bzhdqNG//57dwtZhCQRftEFSvp5rQebEsb2juJKTQOwkXeWNiVRAXtcWx
- 4xTg==
+ bh=FbSXNfwjeJK59L1O0kxY34YbvRazp9gayZSbxh5qKww=;
+ b=GxScn0niKT2Hj0jwAl5PM+Yk/LeQTtwOJLKowPFP7evWjneGbk01Q1/F0fBhOA+kOr
+ n7q8PkdRsABriFpvuLu8V6l2bFs327cd88kJNWxDDBXqPU9dxuxnyabtyn0BSCSl6/c8
+ 01ZSGxQRYV4qb5fll+iS7JzWXonRNBYgZsmdacZ0LMpQ94REW4NVKyENaswR0YwwUu8d
+ sRBN3p+ErY07AruaiAYsaAtPxJGn8QDmMTBRfSV2sWOp4/GpTFQYBOtCf6sj5BWOMv7X
+ E+37l3w3Ip8Ki2NVdq93AbXR5VBHEHy1FORQa8XZ6lGEPYQ2NH9frRJden2T3rW0TvWj
+ M63Q==
 X-Forwarded-Encrypted: i=1;
- AJvYcCU+z3QG1Fe33h2aoZjpOtu2ST4Av1/IMm6zu1b4iSKUwgPLQXAfAoGXL8zpLa6eHenDxXkdXyDvgg==@nongnu.org
-X-Gm-Message-State: AOJu0Yy/cD492Rlj5NPlUzEm0sP4OFnehZw6PrA10mtVf/XSwF8RaI8L
- aMMMC3AaOEbMfucsTDA2pFmkeXtqnmlUZMUfcFHdxh2GzxatecS2TWJl/4TjRI5ViOI+/svZzWA
- C4jtQDz62WMaS3yoMZITvR9B8BjSeKI1jWpc4ZeFTP+ciTvuksEvhVA==
-X-Gm-Gg: ASbGncsAOQYyAC5htNGwPe7QqCqbuhnamc2bO/mzfKnHA+7uboXa0CT2Bur58SBIH7M
- wZIBTzfZiDxTFilfJuxst41XLei5SxxN9s9/v7WxJhMfiN0mrRwFoHkal5LfSCenMe0S6SyWZ+0
- cbqf6yk5G14gQuegaTW/5Walojz1MvsmN45bewEHm00PfG0QtmjITWicKejbeumzYhCRcYKquY/
- uHL8pNKOoTrMzy4CP1v7JJK52AfgrbWtuCcaXwbC1wZmYydT7RvaI7I0l82bRDinsQMxAD4ZVaH
- rRDyKrJWG2+GBA/8ec5vRFLaKwzgAkXoLr1DA2p99ujJ6DB6B2CcE4koauBZgC5btkbfn4tx1HM
- aLzI=
-X-Received: by 2002:a05:6000:2f83:b0:3d9:7021:fff0 with SMTP id
- ffacd0b85a97d-3ee8481fe2amr1342474f8f.37.1758269156267; 
- Fri, 19 Sep 2025 01:05:56 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEdX/VFUFW7Xrpi5NTzgCXtSiyKsCkG1EPem9THd8GStWhx73kif0M6QsD3A7dcS5oQi+ayHQ==
-X-Received: by 2002:a05:6000:2f83:b0:3d9:7021:fff0 with SMTP id
- ffacd0b85a97d-3ee8481fe2amr1342463f8f.37.1758269155794; 
- Fri, 19 Sep 2025 01:05:55 -0700 (PDT)
+ AJvYcCViNQ0ZGRisd3MHAG8tlSyuoEj/YxEX+Y9T/++C8uOrO23ajWiwIDdMS4cH3+XobHMNDiHDc0DSGg==@nongnu.org
+X-Gm-Message-State: AOJu0Yza+30XxsJ5ovnofAvc7RFEz+aK7UqMCz/6nvEW/UkrBM0KJJci
+ aq1efVE3tGldD/TRW36lHkYyRvCuoOlBLQuPiuqmy66Zpe31gFU8fQgKy1ji12Qj9kPhf8qcjyl
+ Ocg0RfIYd4lmR4SSSL9buylMyljNcRkclxLZfTatX9F/ZPIu44iFWwA==
+X-Gm-Gg: ASbGncv1hRfgNqT4Zgb14et2Q+ntvBlZO7YGY1B2Xe72BQsXSkEzR0ZYA5GO+tHRCfe
+ jDSLgBBSSJEuLP8CGxJ7ORmSXfu5NMLEyFi1HyFZUYWnXZjM5Vsnr6wafthIGXlEY5N/RrGGHjx
+ /6EK0npyhshS22KiIwPgT1s/xjg5ZXDpXz72Oahy8VeRRWQ1AWgLOcsFZrcnzahULvpSJmxIwHd
+ UqBp2r53t6HtylYXbplowh32B3pjoViMqIEeN4698HaCOq0WhxrKecNbseOG/XPfGrAxtA3pVDI
+ Z623qoEqddI9QLTvofDO1lW2PQmsmUWM9iz4V0X8FerFR8hb21NQFbKP3TPIgbGK8XO0HziocPK
+ qxWs=
+X-Received: by 2002:a05:6000:1a86:b0:3e8:f67:894a with SMTP id
+ ffacd0b85a97d-3ee7c552a12mr1907878f8f.5.1758269146491; 
+ Fri, 19 Sep 2025 01:05:46 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEabPYeM68K8ROwhOqzy0C4NhV47TDIPpOpIxeDeB5BouB3JP5ahSv08F7e5GxuPwmDD9V7tA==
+X-Received: by 2002:a05:6000:1a86:b0:3e8:f67:894a with SMTP id
+ ffacd0b85a97d-3ee7c552a12mr1907840f8f.5.1758269145993; 
+ Fri, 19 Sep 2025 01:05:45 -0700 (PDT)
 Received: from ?IPV6:2a01:e0a:280:24f0:576b:abc6:6396:ed4a?
  ([2a01:e0a:280:24f0:576b:abc6:6396:ed4a])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3ee0fbc7284sm6790274f8f.33.2025.09.19.01.05.54
+ ffacd0b85a97d-3ee0fbc7284sm6790274f8f.33.2025.09.19.01.05.45
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 19 Sep 2025 01:05:55 -0700 (PDT)
-Message-ID: <0f9020d4-9209-433b-9228-63747172f0f5@redhat.com>
-Date: Fri, 19 Sep 2025 10:05:54 +0200
+ Fri, 19 Sep 2025 01:05:45 -0700 (PDT)
+Message-ID: <c282f3a5-11a6-4890-8d8e-1ce283d12ebd@redhat.com>
+Date: Fri, 19 Sep 2025 10:05:45 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [SPAM] [PATCH v4 05/14] hw/pci-host/aspeed: Add AST2600 PCIe Root
- Port and make address configurable
+Subject: Re: [SPAM] [PATCH v4 13/14] tests/functional/arm/test_aspeed_ast2600:
+ Add PCIe and network test
 To: Jamin Lin <jamin_lin@aspeedtech.com>, Paolo Bonzini
  <pbonzini@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
@@ -91,7 +91,7 @@ To: Jamin Lin <jamin_lin@aspeedtech.com>, Paolo Bonzini
 Cc: troy_lee@aspeedtech.com, nabihestefan@google.com, wuhaotsh@google.com,
  titusr@google.com
 References: <20250919032431.3316764-1-jamin_lin@aspeedtech.com>
- <20250919032431.3316764-6-jamin_lin@aspeedtech.com>
+ <20250919032431.3316764-14-jamin_lin@aspeedtech.com>
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
 Autocrypt: addr=clg@redhat.com; keydata=
  xsFNBFu8o3UBEADP+oJVJaWm5vzZa/iLgpBAuzxSmNYhURZH+guITvSySk30YWfLYGBWQgeo
@@ -136,9 +136,9 @@ Autocrypt: addr=clg@redhat.com; keydata=
  HQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4PlsZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQ
  izDiU6iOrUzBThaMhZO3i927SG2DwWDVzZltKrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gD
  uVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20250919032431.3316764-6-jamin_lin@aspeedtech.com>
+In-Reply-To: <20250919032431.3316764-14-jamin_lin@aspeedtech.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: d2N8EjQjIIyjTDh9UeZyOma_jfdlwj8Ujihqh34Ny4M_1758269156
+X-Mimecast-MFC-PROC-ID: Dv7tiviK8JVjWdGIEJcCoJnbJCtR7R-d_DodxdMBvH8_1758269147
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US, fr
 Content-Type: text/plain; charset=UTF-8; format=flowed
@@ -169,27 +169,21 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 9/19/25 05:24, Jamin Lin wrote:
-> Introduce an ASPEED PCIe Root Port and wire it under the RC. The root port
-> is modeled as TYPE_ASPEED_PCIE_ROOT_PORT (subclass of TYPE_PCIE_ROOT_PORT).
+> Extend the AST2600 functional tests with PCIe and network checks.
 > 
-> Key changes:
-> - Add TYPE_ASPEED_PCIE_ROOT_PORT (PCIESlot-based) with vendor/device IDs
->    and AER capability offset.
-> - Extend AspeedPCIERcState to embed a root_port instance and a
->    configurable rp_addr.
-> - Add "rp-addr" property to the RC to place the root port at a specific
->    devfn on the root bus.
-> - Set the root port's "chassis" property to ensure a unique chassis per RC.
-> - Extend AspeedPCIECfgClass with rc_rp_addr defaulting to PCI_DEVFN(8,0).
+> This patch introduces a new helper "do_ast2600_pcie_test()" that runs "lspci"
+> on the emulated system and verifies the presence of the expected PCIe devices:
 > 
-> Rationale:
-> - AST2600 places the root port at 80:08.0 (bus 0x80, dev 8, fn 0).
-> - AST2700 must place the root port at 00:00.0, and it supports three RCs.
->    Each root port must therefore be uniquely identifiable; uses the
->    PCIe "chassis" ID for that.
-> - Providing a configurable "rp-addr" lets platforms select the correct
->    devfn per SoC family, while the "chassis" property ensures uniqueness
->    across multiple RC instances on AST2700.
+> - 80:00.0 Host bridge: ASPEED Technology, Inc. Device 2600
+> - 80:08.0 PCI bridge: ASPEED Technology, Inc. AST1150 PCI-to-PCI Bridge
+> - 81:00.0 Ethernet controller: Intel Corporation 82574L Gigabit Network Connection
+> 
+> To exercise the PCIe network device, the test adds:
+> 
+>    -device e1000e,netdev=net1,bus=pcie.0
+>    -netdev user,id=net1
+> 
+> and assigns an IP address to the interface, verifying it with `ip addr`.
 > 
 > Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 
@@ -202,171 +196,56 @@ C.
 
 
 > ---
->   include/hw/pci-host/aspeed_pcie.h | 11 +++++++
->   hw/pci-host/aspeed_pcie.c         | 50 +++++++++++++++++++++++++++++++
->   2 files changed, 61 insertions(+)
+>   tests/functional/arm/test_aspeed_ast2600.py | 21 +++++++++++++++++++++
+>   1 file changed, 21 insertions(+)
 > 
-> diff --git a/include/hw/pci-host/aspeed_pcie.h b/include/hw/pci-host/aspeed_pcie.h
-> index fe30ac02ae..5346c15c81 100644
-> --- a/include/hw/pci-host/aspeed_pcie.h
-> +++ b/include/hw/pci-host/aspeed_pcie.h
-> @@ -20,6 +20,7 @@
->   #include "hw/sysbus.h"
->   #include "hw/pci/pci_bridge.h"
->   #include "hw/pci/pcie_host.h"
-> +#include "hw/pci/pcie_port.h"
->   #include "qom/object.h"
+> diff --git a/tests/functional/arm/test_aspeed_ast2600.py b/tests/functional/arm/test_aspeed_ast2600.py
+> index 87e3595584..49ffe89d91 100755
+> --- a/tests/functional/arm/test_aspeed_ast2600.py
+> +++ b/tests/functional/arm/test_aspeed_ast2600.py
+> @@ -101,8 +101,26 @@ def test_arm_ast2600_evb_buildroot_tpm(self):
+>           'https://github.com/AspeedTech-BMC/openbmc/releases/download/v09.07/ast2600-default-obmc.tar.gz',
+>           'cb6c08595bcbba1672ce716b068ba4e48eda1ed9abe78a07b30392ba2278feba')
 >   
->   typedef struct AspeedPCIECfgTxDesc {
-> @@ -40,6 +41,13 @@ typedef struct AspeedPCIERegMap {
->       AspeedPCIERcRegs rc;
->   } AspeedPCIERegMap;
->   
-> +#define TYPE_ASPEED_PCIE_ROOT_PORT "aspeed.pcie-root-port"
-> +OBJECT_DECLARE_SIMPLE_TYPE(AspeedPCIERootPortState, ASPEED_PCIE_ROOT_PORT)
+> +    def do_ast2600_pcie_test(self):
+> +        exec_command_and_wait_for_pattern(self,
+> +            'lspci -s 80:00.0',
+> +            '80:00.0 Host bridge: '
+> +            'ASPEED Technology, Inc. Device 2600')
+> +        exec_command_and_wait_for_pattern(self,
+> +            'lspci -s 80:08.0',
+> +            '80:08.0 PCI bridge: '
+> +            'ASPEED Technology, Inc. AST1150 PCI-to-PCI Bridge')
+> +        exec_command_and_wait_for_pattern(self,
+> +            'lspci -s 81:00.0',
+> +            '81:00.0 Ethernet controller: '
+> +            'Intel Corporation 82574L Gigabit Network Connection')
+> +        exec_command_and_wait_for_pattern(self,
+> +            'ip addr show dev eth4',
+> +            'inet 10.0.2.15/24')
 > +
-> +typedef struct AspeedPCIERootPortState {
-> +    PCIESlot parent_obj;
-> +} AspeedPCIERootPortState;
-> +
->   #define TYPE_ASPEED_PCIE_ROOT_DEVICE "aspeed.pcie-root-device"
->   OBJECT_DECLARE_SIMPLE_TYPE(AspeedPCIERootDeviceState, ASPEED_PCIE_ROOT_DEVICE);
+>       def test_arm_ast2600_evb_sdk(self):
+>           self.set_machine('ast2600-evb')
+> +        self.require_netdev('user')
 >   
-> @@ -58,12 +66,14 @@ struct AspeedPCIERcState {
->       MemoryRegion mmio;
->       MemoryRegion io;
+>           self.archive_extract(self.ASSET_SDK_V907_AST2600)
 >   
-> +    uint32_t rp_addr;
->       uint32_t bus_nr;
->       char name[16];
->       bool has_rd;
->       qemu_irq irq;
+> @@ -110,6 +128,8 @@ def test_arm_ast2600_evb_sdk(self):
+>               'tmp105,bus=aspeed.i2c.bus.5,address=0x4d,id=tmp-test')
+>           self.vm.add_args('-device',
+>               'ds1338,bus=aspeed.i2c.bus.5,address=0x32')
+> +        self.vm.add_args('-device', 'e1000e,netdev=net1,bus=pcie.0')
+> +        self.vm.add_args('-netdev', 'user,id=net1')
+>           self.do_test_arm_aspeed_sdk_start(
+>               self.scratch_file("ast2600-default", "image-bmc"))
 >   
->       AspeedPCIERootDeviceState root_device;
-> +    AspeedPCIERootPortState root_port;
->   };
+> @@ -135,6 +155,7 @@ def test_arm_ast2600_evb_sdk(self):
+>           year = time.strftime("%Y")
+>           exec_command_and_wait_for_pattern(self,
+>                '/sbin/hwclock -f /dev/rtc1', year)
+> +        self.do_ast2600_pcie_test()
 >   
->   /* Bridge between AHB bus and PCIe RC. */
-> @@ -87,6 +97,7 @@ struct AspeedPCIECfgClass {
->       const AspeedPCIERegMap *reg_map;
->       const MemoryRegionOps *reg_ops;
->   
-> +    uint32_t rc_rp_addr;
->       uint64_t rc_bus_nr;
->       uint64_t nr_regs;
->       bool rc_has_rd;
-> diff --git a/hw/pci-host/aspeed_pcie.c b/hw/pci-host/aspeed_pcie.c
-> index 6e563a07a3..dafffbde61 100644
-> --- a/hw/pci-host/aspeed_pcie.c
-> +++ b/hw/pci-host/aspeed_pcie.c
-> @@ -21,6 +21,7 @@
->   #include "hw/registerfields.h"
->   #include "hw/irq.h"
->   #include "hw/pci/pci_host.h"
-> +#include "hw/pci/pcie_port.h"
->   #include "hw/pci-host/aspeed_pcie.h"
->   #include "hw/pci/msi.h"
->   #include "trace.h"
-> @@ -63,6 +64,32 @@ static const TypeInfo aspeed_pcie_root_device_info = {
->       },
->   };
->   
-> +/*
-> + * PCIe Root Port
-> + */
-> +
-> +static void aspeed_pcie_root_port_class_init(ObjectClass *klass,
-> +                                             const void *data)
-> +{
-> +    PCIDeviceClass *k = PCI_DEVICE_CLASS(klass);
-> +    DeviceClass *dc = DEVICE_CLASS(klass);
-> +    PCIERootPortClass *rpc = PCIE_ROOT_PORT_CLASS(klass);
-> +
-> +    dc->desc = "ASPEED PCIe Root Port";
-> +    k->vendor_id = PCI_VENDOR_ID_ASPEED;
-> +    k->device_id = 0x1150;
-> +    dc->user_creatable = true;
-> +
-> +    rpc->aer_offset = 0x100;
-> +}
-> +
-> +static const TypeInfo aspeed_pcie_root_port_info = {
-> +    .name = TYPE_ASPEED_PCIE_ROOT_PORT,
-> +    .parent = TYPE_PCIE_ROOT_PORT,
-> +    .instance_size = sizeof(AspeedPCIERootPortState),
-> +    .class_init = aspeed_pcie_root_port_class_init,
-> +};
-> +
->   /*
->    * PCIe Root Complex (RC)
->    */
-> @@ -144,6 +171,13 @@ static void aspeed_pcie_rc_realize(DeviceState *dev, Error **errp)
->               return;
->           }
->       }
-> +
-> +    /* setup root port */
-> +    qdev_prop_set_int32(DEVICE(&rc->root_port), "addr", rc->rp_addr);
-> +    qdev_prop_set_uint16(DEVICE(&rc->root_port), "chassis", cfg->id);
-> +    if (!qdev_realize(DEVICE(&rc->root_port), BUS(pci->bus), errp)) {
-> +        return;
-> +    }
->   }
->   
->   static const char *aspeed_pcie_rc_root_bus_path(PCIHostState *host_bridge,
-> @@ -158,9 +192,19 @@ static const char *aspeed_pcie_rc_root_bus_path(PCIHostState *host_bridge,
->       return rc->name;
->   }
->   
-> +static void aspeed_pcie_rc_instance_init(Object *obj)
-> +{
-> +    AspeedPCIERcState *rc = ASPEED_PCIE_RC(obj);
-> +    AspeedPCIERootPortState *root_port = &rc->root_port;
-> +
-> +    object_initialize_child(obj, "root_port", root_port,
-> +                            TYPE_ASPEED_PCIE_ROOT_PORT);
-> +}
-> +
->   static const Property aspeed_pcie_rc_props[] = {
->       DEFINE_PROP_UINT32("bus-nr", AspeedPCIERcState, bus_nr, 0),
->       DEFINE_PROP_BOOL("has-rd", AspeedPCIERcState, has_rd, 0),
-> +    DEFINE_PROP_UINT32("rp-addr", AspeedPCIERcState, rp_addr, 0),
->   };
->   
->   static void aspeed_pcie_rc_class_init(ObjectClass *klass, const void *data)
-> @@ -183,6 +227,7 @@ static const TypeInfo aspeed_pcie_rc_info = {
->       .name = TYPE_ASPEED_PCIE_RC,
->       .parent = TYPE_PCIE_HOST_BRIDGE,
->       .instance_size = sizeof(AspeedPCIERcState),
-> +    .instance_init = aspeed_pcie_rc_instance_init,
->       .class_init = aspeed_pcie_rc_class_init,
->   };
->   
-> @@ -455,6 +500,9 @@ static void aspeed_pcie_cfg_realize(DeviceState *dev, Error **errp)
->       object_property_set_bool(OBJECT(&s->rc), "has-rd",
->                               apc->rc_has_rd,
->                               &error_abort);
-> +    object_property_set_int(OBJECT(&s->rc), "rp-addr",
-> +                            apc->rc_rp_addr,
-> +                            &error_abort);
->       if (!sysbus_realize(SYS_BUS_DEVICE(&s->rc), errp)) {
->           return;
->       }
-> @@ -488,6 +536,7 @@ static void aspeed_pcie_cfg_class_init(ObjectClass *klass, const void *data)
->       apc->nr_regs = 0x100 >> 2;
->       apc->rc_bus_nr = 0x80;
->       apc->rc_has_rd = true;
-> +    apc->rc_rp_addr = PCI_DEVFN(8, 0);
->   }
->   
->   static const TypeInfo aspeed_pcie_cfg_info = {
-> @@ -626,6 +675,7 @@ static void aspeed_pcie_register_types(void)
->   {
->       type_register_static(&aspeed_pcie_rc_info);
->       type_register_static(&aspeed_pcie_root_device_info);
-> +    type_register_static(&aspeed_pcie_root_port_info);
->       type_register_static(&aspeed_pcie_cfg_info);
->       type_register_static(&aspeed_pcie_phy_info);
->   }
+>       def test_arm_ast2600_otp_blockdev_device(self):
+>           self.vm.set_machine("ast2600-evb")
 
 

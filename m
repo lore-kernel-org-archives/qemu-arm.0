@@ -4,105 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5A4DCAC5A5
-	for <qemu-arm@archiver.kernel.org>; Sat, 20 Sep 2025 13:04:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68634CAC5A5
+	for <qemu-arm@archiver.kernel.org>; Sat, 20 Sep 2025 14:02:24 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uzxG3-0000c4-Du; Sat, 20 Sep 2025 09:04:07 -0400
+	id 1uzyAE-0006NM-6n; Sat, 20 Sep 2025 10:02:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uzxG1-0000bb-Kv
- for qemu-arm@nongnu.org; Sat, 20 Sep 2025 09:04:05 -0400
-Received: from mail-yb1-xb32.google.com ([2607:f8b0:4864:20::b32])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uzxFz-0005eO-Qd
- for qemu-arm@nongnu.org; Sat, 20 Sep 2025 09:04:05 -0400
-Received: by mail-yb1-xb32.google.com with SMTP id
- 3f1490d57ef6-ea5ca8dbd37so1933772276.2
- for <qemu-arm@nongnu.org>; Sat, 20 Sep 2025 06:04:02 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1758373442; x=1758978242; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=xiQ+B8haY8wM2ZYMlbbGQ0QYSn3IkE1oi1qDQl7choQ=;
- b=V5ld5g2MPbswcwzaamgbGVh+P1X76ZQRQdYgt42I0RzHvj+9qbwMw7CIV9kgCWRt0J
- ekIQunAWjcpBaUijafhTGK8SQizZG3X1qBFl73kd20Z2Kj1urTHE+Vz6FNMbHuzAeBAR
- aqBdjkyinOePpaw1OIR0BWkmjSe/rHZMP5JUmb+quGbrdScm23Xgdtj9fK9fjgsPsrhM
- hwV2k7SuuIB047CAFS9UDsSa4Qx4XjLFLRVdkpOG67MFjLEETSIF5Lq2keiCYUDMxwkL
- ANvRqgHmJSCmQtvtp9t0naP27NaT7cIIXx3VPK0gQKERfWLdra6/KFj8e64ohM7zwoSC
- jjQQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1758373442; x=1758978242;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=xiQ+B8haY8wM2ZYMlbbGQ0QYSn3IkE1oi1qDQl7choQ=;
- b=Lf00fisIVcv1ZWfPGkL14jpE/XcVGGPHYZ1Gju6Wc7twruxzOloYN1xyYL+/EG8an3
- QJPG1lgTlzglJ1oI3/pLfZ+Y54f+mPMLYeAX1uXdWoEq9qOQI8msUQWZU0AlbhiMgGu8
- 2p07EihBuAMXPw+T+zL/NIOEw4bttcRyNuDidn+lo0D+DiTdSBF3ZZsEpNsO+LZ6LGhf
- C5EPIXmBDczI2Ztri6l5Oiq8Kr8ndMVEn4X4q699P/C6cOzaMriJVPm5r8BqVF+I7y3X
- 4YgyZFzQaBc0ae96LNe0WTPwmCENQtAAodA+DrlFTZ9koB6ytys+A52Zg7XWOySV6AT/
- 0ytA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUH2o0N+3OTt5V/ECqBOKPvLpDfTcO+/kM0j0eJKegSqC5gag5Wmm4iBlv017dUG2UjXDa5xc8tpA==@nongnu.org
-X-Gm-Message-State: AOJu0YwIZqztWweybViWbnN8/fr/aJwYK5MhVRU9lNJrOMZP+A0QkqRK
- cQ3Kdd9x5RlnDL6ATaGxjGub0AP3y7VteCkAREbaWeERGaM4j3fvIHReg5c2eLUS/VnWvzgAjv0
- ui0DwKmbEfkVZeQKvuVRzDwU+EqsgHbHsJFKU5qg3qw==
-X-Gm-Gg: ASbGncsCOtH7vjSEgX5+bI3Z3AN8qETNufzTFH5G06b7ZHU5Zv0Dpg6TJSnwrpUJao6
- HBPushVDNYDd9Xq+If+EYsTkVn6J7ANced/UegmTOfgKKCWck2uNmzjjv5xURtjKInlVaBVgQq5
- rt7dsK4927MzbiwLzOBq6dNmwGAoFZzHsQJifkxTcSMQEYF9ByNLDu3xgEBBTQ3TaEFVUjI1U3b
- yAYdXUp
-X-Google-Smtp-Source: AGHT+IFKwN5ap9KeqRJ3xvA+lwfDLFWJcD261r4mg6q0sJjVXfcAGGpIEh1vlGOAzDVYm4zomNSSIxvUoDBCsLg5YQQ=
-X-Received: by 2002:a05:690c:6f12:b0:722:85cc:3970 with SMTP id
- 00721157ae682-73d1efe5fc7mr57062327b3.4.1758373441842; Sat, 20 Sep 2025
- 06:04:01 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1uzyA7-0006KL-82
+ for qemu-arm@nongnu.org; Sat, 20 Sep 2025 10:02:05 -0400
+Received: from p-east3-cluster5-host7-snip4-10.eps.apple.com ([57.103.86.201]
+ helo=outbound.qs.icloud.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1uzyA4-0007iU-Hn
+ for qemu-arm@nongnu.org; Sat, 20 Sep 2025 10:02:02 -0400
+Received: from outbound.qs.icloud.com (unknown [127.0.0.2])
+ by p00-icloudmta-asmtp-us-east-2d-100-percent-3 (Postfix) with ESMTPS id
+ 01DA0181729E; Sat, 20 Sep 2025 14:01:52 +0000 (UTC)
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
+ s=sig1; bh=gH+1mhRq+Q6jbURH4IDoZbvrLZRZnHLaio5C9CrJrC4=;
+ h=From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:x-icloud-hme;
+ b=QLnTWrIrQUZojsHPaljACBYtqoK78PHpeMJ0oedgAlXfdDs9T8cTLAgbERjF2l4lA158fANlvJdWZ83G/TCX5qjqo0CGZvldq3TuSs34hrCVYU5SOWKqm2rSBjanFjkljxLl4yf6sh3M871PMzd3FUnKXYmi0s8/e6J5QcMFCdskYLZ5sy0XtleRpBSZ/pGulpKeTP8l/eKXM4h3x3vPbuUeN8yJdpAg5FnooS5Y8RvrHX2PFjalvUH4hCyYdyA8R1SqhHRU3kH0O+QUep2GbYfAyO/EnO/KCy2kn5a1ZXgvA3Ye86mYUIeMTng8gk+Vugesakqyums0kkKwu5k67g==
+mail-alias-created-date: 1752046281608
+Received: from localhost.localdomain (qs-asmtp-me-k8s.p00.prod.me.com
+ [17.57.155.37])
+ by p00-icloudmta-asmtp-us-east-2d-100-percent-3 (Postfix) with ESMTPSA id
+ 8C6F51817262; Sat, 20 Sep 2025 14:01:27 +0000 (UTC)
+From: Mohamed Mediouni <mohamed@unpredictable.fr>
+To: qemu-devel@nongnu.org
+Cc: Shannon Zhao <shannon.zhaosl@gmail.com>,
+ Yanan Wang <wangyanan55@huawei.com>,
+ Phil Dennis-Jordan <phil@philjordan.eu>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ Mads Ynddal <mads@ynddal.dk>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Cameron Esfahani <dirty@apple.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Zhao Liu <zhao1.liu@intel.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ kvm@vger.kernel.org, Igor Mammedov <imammedo@redhat.com>,
+ qemu-arm@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
+ Roman Bolshakov <rbolshakov@ddn.com>,
+ Pedro Barbuda <pbarbuda@microsoft.com>, Alexander Graf <agraf@csgraf.de>,
+ Sunil Muthuswamy <sunilmut@microsoft.com>,
+ Eduardo Habkost <eduardo@habkost.net>, Ani Sinha <anisinha@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Mohamed Mediouni <mohamed@unpredictable.fr>,
+ Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH v6 00/23] WHPX support for Arm
+Date: Sat, 20 Sep 2025 16:01:01 +0200
+Message-ID: <20250920140124.63046-1-mohamed@unpredictable.fr>
+X-Mailer: git-send-email 2.50.1
 MIME-Version: 1.0
-References: <20250714155941.22176-1-shameerali.kolothum.thodi@huawei.com>
- <20250714155941.22176-7-shameerali.kolothum.thodi@huawei.com>
- <aJKn650gOGQh2whD@Asurada-Nvidia>
- <CAHy=t28z=wrXbXOJjD4sFw0RxJR3fccqF-EdaQDB_s_F6RC4FQ@mail.gmail.com>
- <aMsBvSSEzsgeMHkK@Asurada-Nvidia>
- <CH3PR12MB7548347E93651468E70B2470AB17A@CH3PR12MB7548.namprd12.prod.outlook.com>
- <CH3PR12MB7548B6A98B640192579078EBAB16A@CH3PR12MB7548.namprd12.prod.outlook.com>
- <aMyA4AHf7pqnOzSV@Asurada-Nvidia>
- <CH3PR12MB7548BB774BB375D5056C062CAB11A@CH3PR12MB7548.namprd12.prod.outlook.com>
-In-Reply-To: <CH3PR12MB7548BB774BB375D5056C062CAB11A@CH3PR12MB7548.namprd12.prod.outlook.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sat, 20 Sep 2025 14:03:50 +0100
-X-Gm-Features: AS18NWB4nIAqV6UXhK_FFSXUddoq4btZxagLVw_nJyLvtRc3Sn9gTTui00E7sP8
-Message-ID: <CAFEAcA_MReA7Lx4Mm8x6mrO9rGaeH_zNYq+EWzS4Zh=j-h-23g@mail.gmail.com>
-Subject: Re: [RFC PATCH v3 06/15] hw/arm/smmuv3-accel: Restrict accelerated
- SMMUv3 to vfio-pci endpoints with iommufd
-To: Shameer Kolothum <skolothumtho@nvidia.com>
-Cc: Nicolin Chen <nicolinc@nvidia.com>,
- Shameer Kolothum <shameerkolothum@gmail.com>, 
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, 
- "eric.auger@redhat.com" <eric.auger@redhat.com>,
- Jason Gunthorpe <jgg@nvidia.com>, 
- "ddutile@redhat.com" <ddutile@redhat.com>,
- "berrange@redhat.com" <berrange@redhat.com>, 
- Nathan Chen <nathanc@nvidia.com>, Matt Ochs <mochs@nvidia.com>, 
- "smostafa@google.com" <smostafa@google.com>,
- "linuxarm@huawei.com" <linuxarm@huawei.com>, 
- "wangzhou1@hisilicon.com" <wangzhou1@hisilicon.com>,
- "jiangkunkun@huawei.com" <jiangkunkun@huawei.com>, 
- "jonathan.cameron@huawei.com" <jonathan.cameron@huawei.com>, 
- "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>, 
- "zhenzhong.duan@intel.com" <zhenzhong.duan@intel.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b32;
- envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb32.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-Proofpoint-GUID: libiZkKede5AQw9z5Z2PdENfZHlkvN-8
+X-Proofpoint-ORIG-GUID: libiZkKede5AQw9z5Z2PdENfZHlkvN-8
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwOTIwMDEzNiBTYWx0ZWRfX0Dh/qc8BYQgJ
+ 92U/Q19NAhlQ4loFC8TSh00+i73Mq4fQZgRUYItxlgd8XYpkShchNBfqsOBO/qOmFh9tPGXEMtW
+ ZJ5qIqdexImaParAS/AG3Wxe0i3xTH0AYHG8FIfQUoYOmyMK3phzyzWoaKztGLdFb39yDqt+rND
+ Qq+RGXuIHQwD1ctYcEsFNDJ+qfjDzm2I6yJUeKEFPUNkelK8uKtWRkcgZ+T7Oz7EULLlJYsQBue
+ NqE6Wxq7g/Sg55lEEe70b2hEOzghq99Y/Bwfgph12F2kcgfhmF9DVvd6Rsa7Rwz/h0A5ZDEUA=
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1117,Hydra:6.1.9,FMLib:17.12.80.40
+ definitions=2025-09-20_05,2025-09-19_01,2025-03-28_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
+ suspectscore=0 mlxscore=0 clxscore=1030 phishscore=0 mlxlogscore=999
+ spamscore=0 malwarescore=0 adultscore=0 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.22.0-2506270000 definitions=main-2509200136
+X-JNJ: AAAAAAABF/IzV6O/tb5ck1D72qwoMO4rBovNv+8WFw8lodokxRCF9TRbZOq1sge3cjT08EseaZ+nVzvrd9V8NkTU/1xRXjD0iDFVDpmwne4PJ6e72LUX2+J7wAtXY8wVz5Dz1FKdUAMl1Z7K3aCsxh979PztQJ1NSGVyi5dlMQYbS3/ftYHiaixh1+kyLFfcjlh4ueUU6g2e8Y2JnZTmJfA4OOyJKe1ZqsJ2+kTKeFEBsCA4W5frqVoCD4WCn6ydvViYFDfLTOq0CFAx2jknjziA96xy2fPcmQpW3kCyyAozhu07jGdMM2rLFZ7NQl8NiF8UESuw0iz6f35YcWXyqAbUBgrEOw8SVMxo4cQEDc0JcvwqhWfj0oKohvsArhVfF5UvzBTVM77FKkeTw8sS14+7VxsbpL8GKx+RDrtrgnbn0kAVStp55N47dH3WgaW0HAh93tpNN6LWyyoOyORici8IMhT9gdQOvfWgX68jDIl+ipmLGBpRnkM7XrULjWD0uadrN5nWR1kyD1gbKsmouyve2HTeAJNu8ZonhfvCsZZu0HQW0nrAXrcNXVdcp4Ji0LQvai+7+M/MBBF3QjNCwATX3/u4a8xjnp6wUgWgXHw6BDnNWAKsSVmszjj5v0V8B3B16ASfxD9afYUO9MAg+tZCPlY6b1Gh5j7dtC9wOtLbGwxegTjp2zJC6CuLtgjreYV6ENCWcUqyTaQeRgYwbJBmmgKji6uDAgCZ9glVBGp3c5oL+ZsDqaL6QsKYM5LpDAnwLibDcr4YDFNwy+jfjJlSoVJ2mzRA00UGevp7W0Y/uOM7if5bsT3es9acBOSigdPL3feoDuHOaJGEYbJvJPIUHq/Z9xi25alXc/hZcnX9Kj7cm5X6L2PHjQ2pAIq0NQXt7St4ZtBdy3mytg==
+Received-SPF: pass client-ip=57.103.86.201;
+ envelope-from=mohamed@unpredictable.fr; helo=outbound.qs.icloud.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -118,95 +100,150 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, 19 Sept 2025 at 08:38, Shameer Kolothum <skolothumtho@nvidia.com> wrote:
->
->
->
-> > -----Original Message-----
-> > From: Nicolin Chen <nicolinc@nvidia.com>
-> > Sent: 18 September 2025 23:00
-> > To: Shameer Kolothum <skolothumtho@nvidia.com>
-> > Cc: Shameer Kolothum <shameerkolothum@gmail.com>; qemu-
-> > arm@nongnu.org; qemu-devel@nongnu.org; eric.auger@redhat.com;
-> > peter.maydell@linaro.org; Jason Gunthorpe <jgg@nvidia.com>;
-> > ddutile@redhat.com; berrange@redhat.com; Nathan Chen
-> > <nathanc@nvidia.com>; Matt Ochs <mochs@nvidia.com>;
-> > smostafa@google.com; linuxarm@huawei.com; wangzhou1@hisilicon.com;
-> > jiangkunkun@huawei.com; jonathan.cameron@huawei.com;
-> > zhangfei.gao@linaro.org; zhenzhong.duan@intel.com
-> > Subject: Re: [RFC PATCH v3 06/15] hw/arm/smmuv3-accel: Restrict
-> > accelerated SMMUv3 to vfio-pci endpoints with iommufd
-> >
-> > On Thu, Sep 18, 2025 at 06:31:43AM -0700, Shameer Kolothum wrote:
-> > > > > > @@ -37,7 +37,6 @@ typedef struct SMMUS1Hwpt {
-> > > > > >
-> > > > > >  typedef struct SMMUv3AccelDevice {
-> > > > > >      SMMUDevice  sdev;
-> > > > > > -    AddressSpace as_sysmem;
-> > > > > >      HostIOMMUDeviceIOMMUFD *idev;
-> > > > > >      SMMUS1Hwpt  *s1_hwpt;
-> > > > > >      SMMUViommu *viommu;
-> > > > > > @@ -48,6 +47,7 @@ typedef struct SMMUv3AccelDevice {  typedef
-> > struct
-> > > > > > SMMUv3AccelState {
-> > > > > >      MemoryRegion root;
-> > > > > >      MemoryRegion sysmem;
-> > > > > > +    AddressSpace as_sysmem;
-> > > > > >      SMMUViommu *viommu;
-> > > > > >      struct iommu_hw_info_arm_smmuv3 info;  } SMMUv3AccelState;
-> > > > >
-> > > > > That's changing from an ioas_id per VFIO device to an ioas_id per
-> > > > > vSMMU instance, right? I think it's still not enough.
-> > > > >
-> > > > > All vSMMU instances could share the same ioas_id. That is why I put in
-> > > > > the SMMUBaseClass as it's shared structure across vSMMUs.
-> > > >
-> > > > Ah..you mean it is basically per VM then. Got it.
-> > >
-> > > Regarding using SMMUBaseClass for this, it looks like ObjectClass normally
-> > holds
-> > > function pointers. Eric has made a similar observation elsewhere in this
-> > series.
-> > >
-> > >  @Eric, any suggestions?
-> > >
-> > > Is use of &address_space_memory directly in smmuv3_accel_find_add_as()
-> > a complete
-> > > no-go, given we are talking about having the system address space for all the
-> > SMMUv3
-> > > accelerated devices here?
-> >
-> > smmuv3_accel_find_add_as() is per instance. So, it wouldn't share.
->
-> My suggestion was...
->
-> static AddressSpace *smmuv3_accel_find_add_as(..)
-> {
-> ...
->     if (vfio_pci) {
->         return &address_space_memory;
->     } else {
->         return &sdev->as;
->     }
-> }
->
-> ie, use the global to system memory address space instead of creating an
-> alias to the system memory and a different address space. This will provide
-> the same pointer to VFIO/iommufd and  it can then reuse the ioas_id.
-> I can see that QEMU uses "&address_space_memory" directly in many places
-> (pci_device_iommu_address_space(), etc). I think the idea behind a separate
-> address space is to have private ownership and lifetime management probably.
-> Not sure there are any other concerns here. Please let me know if there are
-> any.
+Link to branch: https://github.com/mediouni-m/qemu whpx (tag for this submission: whpx-v6)
 
-I don't know about vfio, but why is it special here? Generally
-directly doing stuff with address_space_memory is not a good
-idea : you should be dealing with whatever address space the
-board model handed you as what you do transactions to. We
-have a lot of legacy code that assumes it can directly work
-with address_space_memory, but we should usually try to avoid
-adding new code that does that.
+Missing features:
+- PSCI state sync with Hyper-V
+- Interrupt controller save-restore
+- SVE register sync
 
-thanks
--- PMM
+Known bugs:
+- reboots when multiple cores are enabled are currently broken
+
+Note:
+
+"target/arm/kvm: add constants for new PSCI versions" taken from the mailing list.
+
+"accel/system: Introduce hwaccel_enabled() helper" taken from the mailing list, added here
+as part of this series to make it compilable as a whole.
+
+"hw/arm: virt: add GICv2m for the case when ITS is not available" present in both the HVF
+vGIC and this series.
+
+Updates since v5:
+- Rebasing
+- Address review comments
+- Rework ITS enablement to a tristate
+- On x86: move away from deprecated APIs to get/set APIC state
+
+Updates since v4:
+- Taking into account review comments
+- Add migration blocker in the vGICv3 code due to missing interrupt controller save/restore
+- Debug register sync
+
+Updates since v3:
+- Disabling SVE on WHPX
+- Taking into account review comments incl:
+
+- fixing x86 support
+- reduce the amount of __x86_64__ checks in common code to the minimum (winhvemulation)
+which can be reduced even further down the road.
+- generalize get_physical_address_range into something common between hvf and whpx
+
+Updates since v2:
+- Fixed up a rebase screwup for whpx-internal.h
+- Fixed ID_AA64ISAR1_EL1 and ID_AA64ISAR2_EL1 feature probe for -cpu host
+- Switched to ID_AA64PFR1_EL1/ID_AA64DFR0_EL1 instead of their non-AA64 variant
+
+Updates since v1:
+- Shutdowns and reboots
+- MPIDR_EL1 register sync
+- Fixing GICD_TYPER_LPIS value
+- IPA size clamping
+- -cpu host now implemented
+
+Mohamed Mediouni (21):
+  hw/arm: virt: add GICv2m for the case when ITS is not available
+  tests: data: update AArch64 ACPI tables
+  whpx: Move around files before introducing AArch64 support
+  whpx: reshuffle common code
+  whpx: ifdef out winhvemulation on non-x86_64
+  whpx: common: add WHPX_INTERCEPT_DEBUG_TRAPS define
+  hw, target, accel: whpx: change apic_in_platform to kernel_irqchip
+  whpx: interrupt controller support
+  whpx: add arm64 support
+  whpx: copy over memory management logic from hvf
+  target/arm: cpu: mark WHPX as supporting PSCI 1.3
+  hw/arm: virt: cleanly fail on attempt to use the platform vGIC
+    together with ITS
+  whpx: arm64: clamp down IPA size
+  hw/arm, accel/hvf, whpx: unify get_physical_address_range between WHPX
+    and HVF
+  whpx: arm64: implement -cpu host
+  target/arm: whpx: instantiate GIC early
+  whpx: arm64: gicv3: add migration blocker
+  whpx: enable arm64 builds
+  MAINTAINERS: update maintainers for WHPX
+  docs: arm: update virt machine model description
+  whpx: apic: use non-deprecated APIs to control interrupt controller
+    state
+
+Philippe Mathieu-Daudé (1):
+  accel/system: Introduce hwaccel_enabled() helper
+
+Sebastian Ott (1):
+  target/arm/kvm: add constants for new PSCI versions
+
+ MAINTAINERS                                   |   11 +-
+ accel/hvf/hvf-all.c                           |    7 +-
+ accel/meson.build                             |    1 +
+ accel/whpx/meson.build                        |    7 +
+ {target/i386 => accel}/whpx/whpx-accel-ops.c  |    6 +-
+ accel/whpx/whpx-common.c                      |  666 +++++++++++
+ docs/system/arm/virt.rst                      |   10 +-
+ hw/arm/virt-acpi-build.c                      |   16 +-
+ hw/arm/virt.c                                 |   70 +-
+ hw/i386/x86-cpu.c                             |    4 +-
+ hw/intc/arm_gicv3_common.c                    |    3 +
+ hw/intc/arm_gicv3_whpx.c                      |  249 ++++
+ hw/intc/meson.build                           |    1 +
+ include/hw/arm/virt.h                         |    6 +-
+ include/hw/boards.h                           |    3 +-
+ include/hw/intc/arm_gicv3_common.h            |    3 +
+ include/system/hvf_int.h                      |    2 +
+ include/system/hw_accel.h                     |   13 +
+ .../whpx => include/system}/whpx-accel-ops.h  |    4 +-
+ include/system/whpx-all.h                     |   20 +
+ include/system/whpx-common.h                  |   26 +
+ .../whpx => include/system}/whpx-internal.h   |   23 +-
+ include/system/whpx.h                         |    4 +-
+ meson.build                                   |   21 +-
+ target/arm/cpu.c                              |    3 +
+ target/arm/cpu64.c                            |   19 +-
+ target/arm/hvf-stub.c                         |   20 -
+ target/arm/hvf/hvf.c                          |    6 +-
+ target/arm/hvf_arm.h                          |    3 -
+ target/arm/kvm-consts.h                       |    2 +
+ target/arm/meson.build                        |    2 +-
+ target/arm/whpx/meson.build                   |    5 +
+ target/arm/whpx/whpx-all.c                    | 1021 +++++++++++++++++
+ target/arm/whpx/whpx-stub.c                   |   15 +
+ target/arm/whpx_arm.h                         |   17 +
+ target/i386/cpu-apic.c                        |    2 +-
+ target/i386/hvf/hvf.c                         |   11 +
+ target/i386/whpx/meson.build                  |    1 -
+ target/i386/whpx/whpx-all.c                   |  569 +--------
+ target/i386/whpx/whpx-apic.c                  |   48 +-
+ tests/data/acpi/aarch64/virt/APIC             |  Bin 172 -> 148 bytes
+ .../data/acpi/aarch64/virt/APIC.acpihmatvirt  |  Bin 412 -> 388 bytes
+ tests/data/acpi/aarch64/virt/APIC.its_off     |  Bin 164 -> 188 bytes
+ tests/data/acpi/aarch64/virt/APIC.topology    |  Bin 732 -> 708 bytes
+ 44 files changed, 2267 insertions(+), 653 deletions(-)
+ create mode 100644 accel/whpx/meson.build
+ rename {target/i386 => accel}/whpx/whpx-accel-ops.c (96%)
+ create mode 100644 accel/whpx/whpx-common.c
+ create mode 100644 hw/intc/arm_gicv3_whpx.c
+ rename {target/i386/whpx => include/system}/whpx-accel-ops.h (92%)
+ create mode 100644 include/system/whpx-all.h
+ create mode 100644 include/system/whpx-common.h
+ rename {target/i386/whpx => include/system}/whpx-internal.h (89%)
+ delete mode 100644 target/arm/hvf-stub.c
+ create mode 100644 target/arm/whpx/meson.build
+ create mode 100644 target/arm/whpx/whpx-all.c
+ create mode 100644 target/arm/whpx/whpx-stub.c
+ create mode 100644 target/arm/whpx_arm.h
+
+-- 
+2.50.1 (Apple Git-155)
+
 

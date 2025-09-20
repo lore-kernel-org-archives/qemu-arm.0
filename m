@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E9CECAC5A5
-	for <qemu-arm@archiver.kernel.org>; Sat, 20 Sep 2025 14:03:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3138ECAC5A5
+	for <qemu-arm@archiver.kernel.org>; Sat, 20 Sep 2025 14:03:49 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uzyAy-0006co-FQ; Sat, 20 Sep 2025 10:02:56 -0400
+	id 1uzyAk-0006X3-Ux; Sat, 20 Sep 2025 10:02:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1uzyAo-0006Z3-E7
- for qemu-arm@nongnu.org; Sat, 20 Sep 2025 10:02:46 -0400
-Received: from p-east3-cluster5-host7-snip4-10.eps.apple.com ([57.103.86.201]
+ id 1uzyAZ-0006Qk-7K
+ for qemu-arm@nongnu.org; Sat, 20 Sep 2025 10:02:35 -0400
+Received: from p-east3-cluster5-host3-snip4-3.eps.apple.com ([57.103.86.154]
  helo=outbound.qs.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1uzyAn-00086l-06
- for qemu-arm@nongnu.org; Sat, 20 Sep 2025 10:02:46 -0400
+ id 1uzyAW-00082D-BK
+ for qemu-arm@nongnu.org; Sat, 20 Sep 2025 10:02:30 -0400
 Received: from outbound.qs.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-east-2d-100-percent-3 (Postfix) with ESMTPS id
- 8914B1817080; Sat, 20 Sep 2025 14:02:41 +0000 (UTC)
+ EBF54181721C; Sat, 20 Sep 2025 14:02:24 +0000 (UTC)
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; bh=PhLJzUtKf+LkD6Ec9pG9Thcy5r3gUsucKZDUxMVqHrs=;
+ s=sig1; bh=zNv66cYWOjcoM4iD8mPZ0d3N5D4+2q07Wwy2NtrQNPs=;
  h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
- b=A1AbolwxSOrVlLmVbAA/4tFR6/nOM5uf4tpPXVfHz0x6ndYcAOyyrThYxk7h8t2CRxgMmtT3L1udE5RrupF+nQvlAnqoWr8acVz2UaRU5zdOc5u7/GikiTE04uHJ/n5I8SQCadB5NIKU5XxPw1qs1ER3ucum5D2jHlcANRUp10HTyTsyZckxk1DR+9lTuMh36V0QqDOMbwRVYDgeyjEHzoNRkycD7kYYuZY4QeC2WGefaMq2G03R0KYflTo1BWe6LNXjTQgCykNVUxlTb2Qbe7St9i2cfhj0gSH3Cj82Pq/p6Fe6mAwnQanbPZ7H89G6nequYTCPwZECtJ/lA0VWvQ==
+ b=IOLDUEDwDN8Iq3LaU3lApsJnTyoRXdRFTV6DffGbumbm9etkB6vQiAYEaYIO9Pevx9cMGl/eezAahpxy16pNyQWVhr1FO2YcNbRfPxq8GJInbdsuPrchcKa9qh5H+CspfaWA1G7X3KijypHs7PaAzoJ630BzJveyPYwrp0mh8NyiVgHhZvQYWzG8koEZmO6qNzuBWDTvW9/iF6wZyTxDZtq9Du42Z/wBwSNfGNKkKq8TaBcdBijQ/FpRsmPnnGlzoLP2Pn4CNuS6CCKhgPn1yP6m4O2z96XCZj9Me6vfdlOMh8S+JnykpJ29uzHoedEPjcvCz+Mm5dcF8RDB4VJMGg==
 mail-alias-created-date: 1752046281608
 Received: from localhost.localdomain (qs-asmtp-me-k8s.p00.prod.me.com
  [17.57.155.37])
  by p00-icloudmta-asmtp-us-east-2d-100-percent-3 (Postfix) with ESMTPSA id
- 2FF5D18172D4; Sat, 20 Sep 2025 14:02:06 +0000 (UTC)
+ 548F61817261; Sat, 20 Sep 2025 14:01:51 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: qemu-devel@nongnu.org
 Cc: Shannon Zhao <shannon.zhaosl@gmail.com>,
@@ -54,37 +54,36 @@ Cc: Shannon Zhao <shannon.zhaosl@gmail.com>,
  Mohamed Mediouni <mohamed@unpredictable.fr>,
  Peter Maydell <peter.maydell@linaro.org>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v6 13/23] target/arm: cpu: mark WHPX as supporting PSCI 1.3
-Date: Sat, 20 Sep 2025 16:01:14 +0200
-Message-ID: <20250920140124.63046-14-mohamed@unpredictable.fr>
+Subject: [PATCH v6 08/23] whpx: common: add WHPX_INTERCEPT_DEBUG_TRAPS define
+Date: Sat, 20 Sep 2025 16:01:09 +0200
+Message-ID: <20250920140124.63046-9-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.50.1
 In-Reply-To: <20250920140124.63046-1-mohamed@unpredictable.fr>
 References: <20250920140124.63046-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-GUID: 1kCwcYHxALyAWxcvWGeOKt5L23Bju8Gy
-X-Proofpoint-ORIG-GUID: 1kCwcYHxALyAWxcvWGeOKt5L23Bju8Gy
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwOTIwMDEzNiBTYWx0ZWRfX//rypqGR+ZZ3
- 6IscCsCP413dtyLTYRS9jUM4sVSeTuh5MWok/0OvSmdCTE1e1CuZGqYdiNeSiR2aKl4oBbjrCId
- jQ9ffZyxFUmkfJ3y9SsSBJ9TfZX42GDt+dB9Atd/yLnNtVm7Azk6I7DEDx6OxYmtbs1W27AkUkS
- 55xkFroYV0JXidzXMT8CYCZ1npSRGxxAnFF1f2VJasZGoT7Em5UKL40HS61r0k2TAqC/ntcj9o5
- spVO3kDdejqRLTiazSdcANhIHgo/eBha4P4GRK1MX0ZAFyjYUr9tLuElqdm+8vYv4UZuQVKtI=
+X-Proofpoint-ORIG-GUID: o3u7CCR8NAtDuWC5ymQf3UtFwD8cH3bs
+X-Proofpoint-GUID: o3u7CCR8NAtDuWC5ymQf3UtFwD8cH3bs
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwOTIwMDEzNiBTYWx0ZWRfXyVPhRy0mwR0y
+ e5R/zfR8jzzR8mEtuqqlGlwZ0LSX+tKNgpxBnL1/YVFDDro0LkflYEGQRcxqCAOCUsQnG4/zMDo
+ D6/aJkpWGDQkpe/eXP9KgDpl0jyOyyb/ZaAMvnu8tHyjWhLS7pNVcrxNffO4B5iyQoiv+h7nuyv
+ akRLoN0ueC9Us3EcfD6MC4kj0ZFRPhzamRmervbltMDIT/YOIPauELW3Q6Ym5nRU354/PnpsXCS
+ W2TFLPGV0BjC2E5o7RqN0GmMbCTpwbzJzWYP6CDReW/nDyXG6C6ANtWIUwRRTejtuIBnu0YeA=
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1117,Hydra:6.1.9,FMLib:17.12.80.40
  definitions=2025-09-20_05,2025-09-19_01,2025-03-28_01
 X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
- mlxlogscore=892 phishscore=0 bulkscore=0 clxscore=1030 suspectscore=0
- malwarescore=0 adultscore=0 mlxscore=0 classifier=spam adjust=0 reason=mlx
+ mlxlogscore=999 mlxscore=0 clxscore=1030 malwarescore=0 suspectscore=0
+ phishscore=0 adultscore=0 bulkscore=0 classifier=spam adjust=0 reason=mlx
  scancount=1 engine=8.22.0-2506270000 definitions=main-2509200136
-X-JNJ: AAAAAAABCaQ/PnPyuLfW4ZHwdiAblKEVDn58xAMRycDfP/CUPNc4G37Cjny+CiI0bGNIDMrvJeky1S9sEuUclVp6Yl6U6KgYHdw065jhw7hVVoct79AxBAQvaPJ+QWDhsx+I/ctUNYxOgIzmoLh2u96DMvmZlPADWfeFrfJmdwc8VnD9gRnHVG94ycavYiPvSRPrTIBLun0hGdeLUKZCzqIUB4wpx5QDSpuNa4EkP4Ny+6/rmr+LMESHBEObiMflwnWMw7A4485phzcsiEi17sLCkS0/3upNaCJlJ7nSqWVtwrLRKIaR3tohAKx7JZ4qy6Dm5jwWdY8UU6URwbJepZc1fQwR5PBXmEsehEJF1c3X0GZ66Jee9tU2Efzv7jzNYYXbWGi0lN4EYmp4GMl2iXfywwYeYsIgyseIIauvO1OG517X+ghps9GFNlsLLcFqz02x0Z5OE5vzOlC7isHVvantcs9VStJPjMHZlMpjXoST8gAofQbI3sRVo37UzuSwxKJLzL7vgPuuWalhXVVw89599DcXWVRtrN2LbLTS5w4C+WS5Jd19E5DNO12e0tqunSVJlhsBL3mguqLCLXtH1//j3bwSPiz4pmAOUfW1OBixaiKC3xCFHOlm6YWYvkE/vYyfxaBFEQp4QTP5H3DeB91fpp/gALZPM+IfXqNpvjO3v6EqoTbP+88pFBzwf3vR4Z5Mo8y/jZNU2WN8T0ZTHhTTZMeWtAfimOg+n3ZeG0kN3F9m7Apv29Hl28Maa57xc8Yf0qCbOZr3sHnhIgaM7Fm2YSRGLZQztrK2CzUYtup+FRNhB3ddr7BOzBfbYo4NUU3lERTlT65viI+HyORQrEPy4SHs8bsrL/BTnOAYmx3BqrywAm6tIlpB1u8GF6Eg81WeQkLMv7/aBCiajzKO03z0A/YPohiSbpU+G5M92g==
-Received-SPF: pass client-ip=57.103.86.201;
+X-JNJ: AAAAAAABsWmkZRyh+Oq6DMHUgSKM9+XQNVd17uzOMrcC6bpCYw1DQe/lDtYZd0jy8ElzQUkjd48E9voKYSn57K5YEXBczx5fSQlFXI+JgaRF5hO4ZXepeZq9tJpiV0xDgKFfFPtGIDG00s6qJjLh2a9BkQPDHpzYzbeFB8DzGm57lhvDPb6bRU+ci9xid7l+CO2W748k1IkmHiHvokfHE/Hxn+vgfEefh4bjKoyzVn/Vs+Bh1zKm9rJdAECgtQd0c1NwzRhT25eJmXOAU7CBWqtdSczgWD2erL/n/i3o0yYy8WkZDN4CJG/H7PjrOA6xERipimHdpBNE+IwNDEhYmn0IYi9/gBVQPE/KnWVIOpawQbk81QCG/q79NtWMFOvM88se8kUPOWfKcej2jBzoomlSqurAhcuDfL1Wp8Fn2CsBCwIE8fYLowUr4fnJ8nOlWJ9XngvtACLZzd4xuKUvM1Mk9IvLwvwdzyh35NCL4Xj3mn1L3/QZJxRbqTCYJIG5KfkL8H2dWjnHtPhNza+4HYPrawJ3x4DV3q77dhD2bN3wnoEHmifv2eQgJybMtbhODtIF2k5qmnYtD+Ctyqj/y64MtMRkcEeIBGBQn7GIyxj6Twcb1IFLBfaojzLdZXwAadSbDHfvG3mAk/2RD4W+PZiHa+PB8LmrEBWisEwtCQuj27gPWJ+qEAn9jJpxTKYfl8HVYqNplWGsksemCuEMYEETJspmC6k+x506dTI9YgOWVvxU4JrILHxuu+c9Q29SqscLu3du65Lhd7HvGsLRTqMgcJDUenqL2whLRp4MQ6+sN5p2UrAUPKygNWLY/w8ZTJDAjM0WuyhCIrdjvZ0M5x55+PoQKiV90aZ4WknZcUq6EAEOKneaMcKUIl2vPJTxV/iWsAlLipGPjmRrGN6ZzA==
+Received-SPF: pass client-ip=57.103.86.154;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.qs.icloud.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -102,38 +101,43 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hyper-V supports PSCI 1.3, and that implementation is exposed through
-WHPX.
+As of why: WHPX on arm64 doesn't have debug trap support as of today.
+
+Keep the exception bitmap interface for now - despite that being entirely unavailable on arm64 too.
 
 Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 ---
- target/arm/cpu.c | 3 +++
- 1 file changed, 3 insertions(+)
+ accel/whpx/whpx-common.c     | 2 +-
+ include/system/whpx-common.h | 3 +++
+ 2 files changed, 4 insertions(+), 1 deletion(-)
 
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index c65af7e761..5a5dcda60c 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -23,6 +23,7 @@
- #include "qemu/timer.h"
- #include "qemu/log.h"
- #include "exec/page-vary.h"
-+#include "system/whpx.h"
- #include "target/arm/idau.h"
- #include "qemu/module.h"
- #include "qapi/error.h"
-@@ -1126,6 +1127,8 @@ static void arm_cpu_initfn(Object *obj)
-     if (tcg_enabled() || hvf_enabled()) {
-         /* TCG and HVF implement PSCI 1.1 */
-         cpu->psci_version = QEMU_PSCI_VERSION_1_1;
-+    } else if (whpx_enabled()) {
-+        cpu->psci_version = QEMU_PSCI_VERSION_1_3;
-     }
- }
- 
+diff --git a/accel/whpx/whpx-common.c b/accel/whpx/whpx-common.c
+index 95664a1df7..c0ff6cacb8 100644
+--- a/accel/whpx/whpx-common.c
++++ b/accel/whpx/whpx-common.c
+@@ -123,7 +123,7 @@ int whpx_first_vcpu_starting(CPUState *cpu)
+          * have one or more breakpoints enabled. Both require intercepting
+          * the WHvX64ExceptionTypeBreakpointTrap exception.
+          */
+-        exception_mask = 1UL << WHvX64ExceptionTypeDebugTrapOrFault;
++        exception_mask = 1UL << WHPX_INTERCEPT_DEBUG_TRAPS;
+     } else {
+         /* Let the guest handle all exceptions. */
+         exception_mask = 0;
+diff --git a/include/system/whpx-common.h b/include/system/whpx-common.h
+index 7a7c607e0a..73b9f7c119 100644
+--- a/include/system/whpx-common.h
++++ b/include/system/whpx-common.h
+@@ -20,4 +20,7 @@ int whpx_first_vcpu_starting(CPUState *cpu);
+ int whpx_last_vcpu_stopping(CPUState *cpu);
+ void whpx_memory_init(void);
+ struct whpx_breakpoint *whpx_lookup_breakpoint_by_addr(uint64_t address);
++
++/* On x64: same as WHvX64ExceptionTypeDebugTrapOrFault */
++#define WHPX_INTERCEPT_DEBUG_TRAPS 1
+ #endif
 -- 
 2.50.1 (Apple Git-155)
 

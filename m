@@ -4,188 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2746CAC5A7
-	for <qemu-arm@archiver.kernel.org>; Mon, 22 Sep 2025 08:29:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAACCCAC592
+	for <qemu-arm@archiver.kernel.org>; Mon, 22 Sep 2025 09:32:08 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v0bun-0005JV-Ho; Mon, 22 Sep 2025 04:28:54 -0400
+	id 1v0csg-0002CM-4e; Mon, 22 Sep 2025 05:30:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
- id 1v0bul-0005Is-S4; Mon, 22 Sep 2025 04:28:51 -0400
-Received: from mail-westusazlp170120002.outbound.protection.outlook.com
- ([2a01:111:f403:c001::2] helo=SJ2PR03CU001.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
- id 1v0bue-0003FO-CF; Mon, 22 Sep 2025 04:28:51 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=en6StsNJlsrymbrJ/d6bnqSz8vJmtxZMfJB2RgH53Pre+FVofQDX/kw7A0N1l9fYNeGOxYGNovXTO2CXnztwgPNMNL9tHYGhBPjXoffbhO3cic7CEjYShC8H5sCYL0qBrKlkoond+Ls3HlcHXaTHYn1M5Cjies6EZrpdnS6zQaAtrn8CaQIiQmp60loUZc7rhA1Jm2A4fi4/ycWlO8GYJ+JIoZ/Ugg7t8hcAFd6XYIEtPrQNMA6P7A1Z/5f8vASYsd+oRapq0K4YMIHzJZUba2wzxSKuXIn7dViicNE/R2qlQ9d+psD+UDbOvVaBg/dC22YgB0Smq6joj6U3wDFfeA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=DRJQws5dmgih4Nj9rG6Msnd1aDKCFRf3uUMgIUWnY50=;
- b=uXWeojSOLRyayi3hosNO45XYIwaAid2BM38fIcD8B4tgPaXQt/Rsn7iAlLshcGNmKWxGfpS8/uuqC6K4ORw9/uOmdz4F0WXKQ13OOPAjWVvUTXUPKg57xIg4A4p86rLnDy3pgSm6vFvJzQgNBSlJwgc/90e0NpV9be+2JfVyQyYtcCcVwknWdaC+Nj4UgKfc9JM9lI3pUjZ6LpO7uC/Uoow0dWRr4t22mLuJR55PvcE6bCAYx7/p/HCp5/QIGdtfG52eOKj/I6r1lIFGidTMRcK75XNQtOYiJ2kVRjg9pJen7Yykw0VBGttGppewX8FkHhuTaB/cvMu90M2qJf0pbA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=DRJQws5dmgih4Nj9rG6Msnd1aDKCFRf3uUMgIUWnY50=;
- b=IGI2y/ARtPGoKz16DBvADTQzav1DNS9gkWDKJp/gWHjDWQQFeAUqlU1C0BVol0DUgxr+rtgkiWFUqECmmiUYzpR50BHviAPkfWYdQrFH9A/7mtz/cYXCEfsZRJ/nhNs4mlc17sZwgajoWbHKFWZ8qS9ANi2jVksO07/h3SuRKHz6Vt16LCJ2ChoJlbCXUuNMIzekAn7A+r4B0jxMw7IqmipaD7UppDQLez2qcAvfgAWO41ibVrsN+171U6H5lkLa/H3BKAW/9QTxzT6xmzPxBa/A0X/KJ05YkF7+u54Qga0lYfjFTXD2U3X4gPNA8iC+O8r9F741pURfHj53ZwQ3VA==
-Received: from CH3PR12MB7548.namprd12.prod.outlook.com (2603:10b6:610:144::12)
- by IA0PR12MB7723.namprd12.prod.outlook.com (2603:10b6:208:431::10)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9137.19; Mon, 22 Sep
- 2025 08:28:32 +0000
-Received: from CH3PR12MB7548.namprd12.prod.outlook.com
- ([fe80::e8c:e992:7287:cb06]) by CH3PR12MB7548.namprd12.prod.outlook.com
- ([fe80::e8c:e992:7287:cb06%5]) with mapi id 15.20.9137.018; Mon, 22 Sep 2025
- 08:28:32 +0000
-From: Shameer Kolothum <skolothumtho@nvidia.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-CC: Nicolin Chen <nicolinc@nvidia.com>, Shameer Kolothum
- <shameerkolothum@gmail.com>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "eric.auger@redhat.com"
- <eric.auger@redhat.com>, Jason Gunthorpe <jgg@nvidia.com>,
- "ddutile@redhat.com" <ddutile@redhat.com>, "berrange@redhat.com"
- <berrange@redhat.com>, Nathan Chen <nathanc@nvidia.com>, Matt Ochs
- <mochs@nvidia.com>, "smostafa@google.com" <smostafa@google.com>,
- "linuxarm@huawei.com" <linuxarm@huawei.com>, "wangzhou1@hisilicon.com"
- <wangzhou1@hisilicon.com>, "jiangkunkun@huawei.com" <jiangkunkun@huawei.com>, 
- "jonathan.cameron@huawei.com" <jonathan.cameron@huawei.com>,
- "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>,
- "zhenzhong.duan@intel.com" <zhenzhong.duan@intel.com>
-Subject: RE: [RFC PATCH v3 06/15] hw/arm/smmuv3-accel: Restrict accelerated
- SMMUv3 to vfio-pci endpoints with iommufd
-Thread-Topic: [RFC PATCH v3 06/15] hw/arm/smmuv3-accel: Restrict accelerated
- SMMUv3 to vfio-pci endpoints with iommufd
-Thread-Index: AQHcJvVSyZvN/mVpTUewNZT1jGrd9rSXuIGAgAABxLCAATN4wIAAk4AAgACX+rCAAfbiAIAC1Xig
-Date: Mon, 22 Sep 2025 08:28:32 +0000
-Message-ID: <CH3PR12MB7548E2D2DFB71EDE4702C9B4AB12A@CH3PR12MB7548.namprd12.prod.outlook.com>
-References: <20250714155941.22176-1-shameerali.kolothum.thodi@huawei.com>
- <20250714155941.22176-7-shameerali.kolothum.thodi@huawei.com>
- <aJKn650gOGQh2whD@Asurada-Nvidia>
- <CAHy=t28z=wrXbXOJjD4sFw0RxJR3fccqF-EdaQDB_s_F6RC4FQ@mail.gmail.com>
- <aMsBvSSEzsgeMHkK@Asurada-Nvidia>
- <CH3PR12MB7548347E93651468E70B2470AB17A@CH3PR12MB7548.namprd12.prod.outlook.com>
- <CH3PR12MB7548B6A98B640192579078EBAB16A@CH3PR12MB7548.namprd12.prod.outlook.com>
- <aMyA4AHf7pqnOzSV@Asurada-Nvidia>
- <CH3PR12MB7548BB774BB375D5056C062CAB11A@CH3PR12MB7548.namprd12.prod.outlook.com>
- <CAFEAcA_MReA7Lx4Mm8x6mrO9rGaeH_zNYq+EWzS4Zh=j-h-23g@mail.gmail.com>
-In-Reply-To: <CAFEAcA_MReA7Lx4Mm8x6mrO9rGaeH_zNYq+EWzS4Zh=j-h-23g@mail.gmail.com>
-Accept-Language: en-US, en-GB
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: CH3PR12MB7548:EE_|IA0PR12MB7723:EE_
-x-ms-office365-filtering-correlation-id: 926c2c08-099d-46fc-c670-08ddf9b203f8
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|1800799024|376014|7416014|366016|7053199007|38070700021; 
-x-microsoft-antispam-message-info: =?utf-8?B?enZtem1DOGJNVDUzengvZU9kcUowdFZLejdxWXBiOCtiNEJ2LzA5cThjc01Z?=
- =?utf-8?B?cUgyVjZwMDFLVTVhRml6M003ZjIySzM3YjlPZ0RvdlVtaUxvd0ZkZVl5MzRy?=
- =?utf-8?B?MHM5bEg3U1J2d2pqd1hDM3lzZWFvRjUzT0xJcVNaZ0t4N3gxQTNGM0dlMm5B?=
- =?utf-8?B?TXo0K0NzL3g1N0oxdlpkeW9TaGlFbnNWc21USlhEQjB6dmJPaHVSZER1MlF2?=
- =?utf-8?B?ekk0VytnWTAvalRENlNiV2JhNWUrRGduTk5RbjkzUVZSa2tYbko5ek9nb1Ay?=
- =?utf-8?B?bGpBS29LMEQwU0tBeENhbnFqNDdZd0VuTjRaZ3JFckpYU2htWTJtVERCRk4w?=
- =?utf-8?B?ZEt3UmpTV3F4cnFYcm43SnU4TTM5WU0rbXRiNm4zKzR0OGIzVXBKRkN1YytD?=
- =?utf-8?B?TTQ4RU4wYk9sRG9meGJsRThmczhhZTRyK2JsRmdseG9LZ29lYzlyY0lNckZ1?=
- =?utf-8?B?M2lRV0hlWHN2TU9vMmc2eDBWMWZXd1NTOUhUc3lKSlozMlpGeXR5NW1NdXF4?=
- =?utf-8?B?bGxmc3FQSTdrNERPTGRjTWdzNTBNZzBsdU1WSDBBUU1KaWREb3UvMlk1RU14?=
- =?utf-8?B?Ulh1YVJKUzArR0kvdUwvajBsYSsyOEJNUG5FclJ5TWVtN1RJT2ZDbzVoc0gx?=
- =?utf-8?B?QW5xVDF1TTRXbk9wb2w4TFNLcnVTNndzRi9ZcHdUWmw5a1J1bUVxQmIzU1pI?=
- =?utf-8?B?dm8xSXVUempDSktLZjlGNEYwdnBFM2hHN01YMHJoT3hKcnVUU2VqTjdVdms1?=
- =?utf-8?B?VVVzaTFIOGh4cDV0WGtZMWpQOEE0Y1BlYjdoR1VTMVhLUEpLSzFGL1lWcFJr?=
- =?utf-8?B?UGcxM3dIQ25aeXlqdHlGK2FPb3F6elJNaXo2TnpxaUtTN2xiZXk1aUNmTytM?=
- =?utf-8?B?bngvRmhvS2dRRjhIZWszZFBIMUxJRGViWG9QSDkzN1FTMHZ6ZEJRRmZyaTgx?=
- =?utf-8?B?NWtvVEwxQmlBVityaDdlU2dham45QkdZdnlycFZjRzRLK1drQzcyMVRkMzFX?=
- =?utf-8?B?RVpIU0N6bU9xTk4yVUt5eVlGNmtuYld6UVN1RDkyY1MvaTNURDlDM2g0R3BD?=
- =?utf-8?B?cys5cFVITGpYZzAzY3lnZUZUQ2NjM3krS29LLytTNUNjOHZVUDRVYUJpYmlO?=
- =?utf-8?B?azNucVN6Q2RUZXpWY0FwUUxyVjhxTlMzZVFlQWZXbVl3L1k5MWRwcExUZTJu?=
- =?utf-8?B?UGV0aWJnT0gyeCtwK2xnZXg4VmVTQlcvVTkwNEhvSUhVemJaM25rc3BUSFpD?=
- =?utf-8?B?WTljMmplalBLc0k1bUszVk9heGs4dHJqanJoU1N1Z3JHZnZNL2o3TDVlUitp?=
- =?utf-8?B?WHhNSy9oRmFJOEJ4eVUyZEhPNCtXUWlRN1BtdmtSOVhSUit5YURjYVE3UUF3?=
- =?utf-8?B?NjNMako1bTRwd25zSHI2NVJ4eElGOVNJK1AwNElOMmtQLzAvZWx4ajdLT0oy?=
- =?utf-8?B?REVOd1dqRTRtR0txNU0zV29Ra1VrYmtOSG1TZ0NaQ3pPeFB6UCtYOHpyaUFk?=
- =?utf-8?B?SWozd0FUdlpHdmU0cllGZXBRdUFOUUdlb21sRnFsU0V3THZzVHhXOEpUWE8y?=
- =?utf-8?B?ak52NWtDOGFhVTBOYjQ3MUhNWnJjWmExRGpVcEF0TFB2NlNLajhmRVVrUC9E?=
- =?utf-8?B?eFFtUktMYk1hZHJBNDdpSjloRlZQeGV4Y2N3U3YwSkI3RXZLRG00K3ZoaVl3?=
- =?utf-8?B?MjMxQy9jcXVhWGNzd2tLT3BtdU5vdlRXaHJJd2t4QnNhS1JZZ1lrcW5XaXBC?=
- =?utf-8?B?N0lVZnJSVUlONFU0L1ZObmh0bzVkTlRCK3piZXhCaTBId1RYR2Z5cUNpTzJ4?=
- =?utf-8?B?WmpWUUR3UThyeFJDMnk1RitEQ3JwelA2N25OWmlUOFhJVlpIbFVZNDU2b2dz?=
- =?utf-8?B?R0dwUDkrNmZ3NjI4N1RVNkVMazZ0clErSi9oMXNpTVA3R1FTdmh1ODBkSUZL?=
- =?utf-8?B?K293dXFuTE1zSVV2Q0FldTVUeEc3cmJ5WDhFTFBNL0R5bU1DYWl3ek8wcjJF?=
- =?utf-8?Q?S56anXXtjBb51WMShVpPFge/ghTEPA=3D?=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:CH3PR12MB7548.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(1800799024)(376014)(7416014)(366016)(7053199007)(38070700021);
- DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?SjBWSy9EbUFHNk5GSnVJZVNadTd6anVwTnUvNzBNYmdhbjJ6R081RmZjZmxj?=
- =?utf-8?B?QWNSVVlBbk9hMERkSW1VQis4cFhFTkYvcXNibFlseTRUeHBIV0xOMGp6b2VM?=
- =?utf-8?B?a0YvNkdkTUtweEg2aVdJZXZnRVRyREFzWm5RYjB5S3Z3RFF4QWZ4TXVpZVIv?=
- =?utf-8?B?ZWFKYTFTdkZzUEhGVlAxM1NlUEl0UkhDRzF0L3JvMmFJYTdEYWJmcndxSGlC?=
- =?utf-8?B?VDZiZ3lHaUdmTjRVcUhBYnhqeWdZeW5MK1J2NEFidE1pUm5qT1dMcGJNc25R?=
- =?utf-8?B?bFZVMEVxR0ZMeUlwMFVNV3ZBT05XbDMxYVpnNnF3R290eWtOeVl2S1pNN2pH?=
- =?utf-8?B?WE1Mc3BLa0E1aUorRjBXNEJzQitadXJUZmJJdm14eWRqYkw4N3BWN1VscmQy?=
- =?utf-8?B?K2duU1pERTRmTVl4azd0V2hhOXNEMzIxZFFVSDdXeC81QWR6OWkzMVE3UTl3?=
- =?utf-8?B?emNEYmFzL0I5Q2E5SXBxVkJlQTV2ZnVLQUJKU0x0cWcydDU1RWhpSFA5cWdO?=
- =?utf-8?B?SG5RT1hSWDY4Z3d5VFpJS1VRYVBlRXlLTjgvTkhmWHFhMUo3T0ZzVHhER09W?=
- =?utf-8?B?eTNxOG5HYW1saGV1QnFzeDNWRmN0ekQ2K2M2emNHU28wWStTMkx6eGJQWlBQ?=
- =?utf-8?B?aVZOS0MrYkxtc212VS8wNG4zMXFNdW1PaDFBWm4wTForVnJVNWI0c1FyVlE2?=
- =?utf-8?B?OFlPandHYzA2RU4vRDJZRU1NUnR2eGpZMm13ZlJTRnZub21rRG1WK3o3OXRW?=
- =?utf-8?B?TEd0UFlqWHRUdm5MTzdGZm1DOWIvczkzbDZWa0VuYmt0R0p4RTJSWThUZDVQ?=
- =?utf-8?B?ZXk4cC9tQ0U0ejhPOHk1SkhtQTR2Q3NNa3R3Z1d6S2wxNm9zTDR6SGlhNTZN?=
- =?utf-8?B?SklUbG5GNFN1S2RtVnRXa3M1dy9OVHZUWDl4aktMOFlSY1AwdGdLb2dUMnMw?=
- =?utf-8?B?YXN3NFQvR2RhMm5pNzFlQm5uSzNrWDkrTXUvcGVBT2tvdEl6OC9kdHpvWEg5?=
- =?utf-8?B?Qk5ORTFWb0RMOVZvZTF0MzBlYTJVMExKZTJKWU4ya3BIR0N1c21kdjBpWkJK?=
- =?utf-8?B?YTcwaFE3bWtBMEpMbXUvRUFIY05EWFFHRkJYdkk2b2l1SC92RWdJd1dHd05F?=
- =?utf-8?B?cjduZFVXUDZVeW9oWEZmU3FvVVExbzJHcXQ2MnVyUU1YRUVFOWhRTjYxa01V?=
- =?utf-8?B?L09nbVBMb2VLRzNzV2FzTE9WZUc5TjFLRWV2Nml4Y0tsVkNxem81YW9Wd0Fq?=
- =?utf-8?B?b3k2dVdRamE4N0ZGRVhNNHJidmRFc1FXcDZaNG1pSGZwOURMakZKaVRjNmlD?=
- =?utf-8?B?d0FXaC9TYjY2dTRUSDZXWi9PVWFHRVJFSWFpRnd2UkMzMFdCSnRYeTBWdFFY?=
- =?utf-8?B?UXU4RTBmSDlhdlpHakNBU2hoZ1hLcVRKcm1xMHFRTENvaWNENm9ySnFnd1A1?=
- =?utf-8?B?b2dIelkrRTduU2dnZWpDMXFwMEpXbFhaZnZQYVVxbWJVV3FNUHh3c3JxTVc2?=
- =?utf-8?B?K3lhQksvbGNrMVU4SzM4M0xVN3NBQ0pSQmZQZU1acDlFaTM5VDRndmFYZm1N?=
- =?utf-8?B?RzNKSWxOeUU1a1BhSDlxZnVhc1dEbW9uVFI5RmtackpPK3JhQmJkb3ZjU2xm?=
- =?utf-8?B?VEdRNmZUZ1U4V1kxbS9IbUMvWm4yQUlOb21DTEhKNjVvaFJjb0g1SnhxNzNP?=
- =?utf-8?B?ZEZxdEh6MXNaaU5uaVc1VXRFTk11blNvc0tsa3FEMzRZdW9xQlR1a0c0NzBH?=
- =?utf-8?B?MjNnd0lJSkM5ZlAxMFFEK1hVY01lVlRDSWEzV2poZ0RsbS9GdWU2TkxKUk9M?=
- =?utf-8?B?dHJ1RHFHREZCc2tUWWFzWncxWTBQbXdNK2ErY0YwUUNob1BnV3hqZDhNMTJ1?=
- =?utf-8?B?NTlCZlFLcU1XWGIxNkswMGpTODZKd29xVUI1NXdrbHhYdFRHcm1kcSttQUhT?=
- =?utf-8?B?ajlMM2xIbTBJcm54MnB6dXVZK0xQL3B6c29sR0RnZUdMenB2RlVra3gvYng2?=
- =?utf-8?B?VmtNOEZGUVJPVmYrZUNZMEpOUCtidFkvb2VONkN5cnBDbnlpU0xJNkNkdnZy?=
- =?utf-8?B?ZytVUmNjN0lrWnFnRmNERjgvZzlPVlBFbS90Y0xpSnMxTDd5K3djdFQ1eGdQ?=
- =?utf-8?Q?KQg7dz0IEToMQnAyqMeQLBNWO?=
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1v0csd-00020T-1l
+ for qemu-arm@nongnu.org; Mon, 22 Sep 2025 05:30:43 -0400
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1v0csN-0007jV-RH
+ for qemu-arm@nongnu.org; Mon, 22 Sep 2025 05:30:42 -0400
+Received: by mail-wm1-x334.google.com with SMTP id
+ 5b1f17b1804b1-45f2313dd86so35457385e9.2
+ for <qemu-arm@nongnu.org>; Mon, 22 Sep 2025 02:30:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1758533422; x=1759138222; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:user-agent
+ :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=Qxr1DxP9nP+5d8JszYWZLOI5YpRCrGwfk0E1CxfzzcM=;
+ b=KLoFaWhr9pw7wOut13JSKohi3AubhKwQIBy3KEPMs/yYc9Yx+3VtM5LI5Gf5H8jP5I
+ deNhQdd9X6Xfn+Yh8AwWFRcZ3EXC0Y6Bs2/hbvaQEwr6K6xkX411y5j/2HsNAm7tlP3C
+ aBJCEk9c0BgTzc31DF2TTl/+grgMnH6w073fHJnvYuXvII9fnNtcWxS0VPz5HsTRpslb
+ GI/5gUbOtSHw3VF4iazvzYkdvJDY/7G85LkR6QGSgPTLSVQbnwdFnfSH+N3ygZfVZxjj
+ StgH77C7EfhWd6sJV5vhqgZCa4EeZVTegqCzEB0Jhu4sLuiRRObxLblNjAvD7X7McMTH
+ jt3Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1758533422; x=1759138222;
+ h=content-transfer-encoding:mime-version:message-id:date:user-agent
+ :references:in-reply-to:subject:cc:to:from:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=Qxr1DxP9nP+5d8JszYWZLOI5YpRCrGwfk0E1CxfzzcM=;
+ b=HvCLbYoBiS0n16ISUM2ibBZR0XmSMEr2ypAoV1rxCBONJSkquvzJs80+i8LJQ7qmAB
+ VXuScSC0nFRx8XnJXJ23a7Ey7tQodkcT2wMufRFZNbA1EJtvDtVZeVhGHI/y930ysRZU
+ cA/6Xyct7K2qoRZAah7OH7Bp0fiLJcgFeNeI9iUZj+t01cQ6MM1fAsxyiFhdfrrWxrew
+ nAqpqeQdjpNTmD+vFM9FpXFZoYjE3bXMsreMDG1+8hMJPalYjJJiTjoqYAhhp3TSVKze
+ 9ZsbmqGcoVmjLqqltYFXpESmx0serWhoplUhrqXVszB1Qa2LgAJyIFJKuAlVpljbzE6U
+ TOQQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCV11synwMY0P68JHb+vzWYahB4pxXECRrXLNj65BbGMfA2/NX7zg0VerwqlP6TeKwHvuNIX+y56uQ==@nongnu.org
+X-Gm-Message-State: AOJu0YzNkSsRZkHyYfDWTYD8NbL642RKrk5bQEixyi9Ocs3nNBrsxK8J
+ y0BCVrZvla2v17DDre2tlJnSNlIDFqzrO9Ae9uGIOm9grkxDmfEY2KcNNrWVIZhKWkc=
+X-Gm-Gg: ASbGncs5k0iHR4eZV5JstL8E2NW+i534ET/iXjEhzcT2d7Csr1qQFjODavEGq+hZgwo
+ pTm91Kw4D/T+uZ3E5WooHT6VeKsaDTDJFT+dFQzeRY4CJokVSpTZUZrspExXfCti6ywsi9mfZ7Q
+ dXNKb3lfuTYncrTkxiq3AYNiDsfNsqFrCZ2ljiZBDMC7tABCrIRDCtCCOb5809wP7YpXe3z4tLa
+ diVoAK546cpLc/YYrFZPy3ZYR1KKueZ7n4LfbwY7fTzyMMGJ2vlx12b+H8hOe09JCYOMjtLUByM
+ GJnY0gjOZ3g0SPijfOZ0qVXjt1NRa+OnQTQ0zC+sKjX9oIYS0HG+KvAh9AvKfj/cLgl7tWfnNSP
+ qwazye8bOxUkLVtfmlcAuVfU=
+X-Google-Smtp-Source: AGHT+IH3uGAXaYRsgv3CXqNZJ+wobWDXFUs6Q+/kTofu8Yn0dPugN9soGoGtk+t9y7LsjlbXtsk4lg==
+X-Received: by 2002:a05:600c:468a:b0:45d:e326:96e7 with SMTP id
+ 5b1f17b1804b1-467eaa86e42mr107544115e9.29.1758533421769; 
+ Mon, 22 Sep 2025 02:30:21 -0700 (PDT)
+Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-46d51e5d863sm31702325e9.24.2025.09.22.02.30.20
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 22 Sep 2025 02:30:20 -0700 (PDT)
+Received: from draig (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id F2A135F7B1;
+ Mon, 22 Sep 2025 10:30:19 +0100 (BST)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Gustavo Romero <gustavo.romero@linaro.org>
+Cc: qemu-devel@nongnu.org,  thuth@redhat.com,  berrange@redhat.com,
+ qemu-arm@nongnu.org,  manos.pitsidianakis@linaro.org,
+ peter.maydell@linaro.org
+Subject: Re: [PATCH v3 3/4] tests/functional: Adapt reverse_debugging to run
+ w/o Avocado
+In-Reply-To: <20250922054351.14289-4-gustavo.romero@linaro.org> (Gustavo
+ Romero's message of "Mon, 22 Sep 2025 05:43:50 +0000")
+References: <20250922054351.14289-1-gustavo.romero@linaro.org>
+ <20250922054351.14289-4-gustavo.romero@linaro.org>
+User-Agent: mu4e 1.12.12; emacs 30.1
+Date: Mon, 22 Sep 2025 10:30:19 +0100
+Message-ID: <87h5wuq1g4.fsf@draig.linaro.org>
 MIME-Version: 1.0
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: CH3PR12MB7548.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 926c2c08-099d-46fc-c670-08ddf9b203f8
-X-MS-Exchange-CrossTenant-originalarrivaltime: 22 Sep 2025 08:28:32.2536 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: Bxr4Lpjv6TVguRVUjUXvS3+qmcxUlXNTwjfhwLLn2wNj0MikksZBeuvTtqiwoW3OfkVHrUi9LPg/abkvcVYpog==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA0PR12MB7723
-Received-SPF: permerror client-ip=2a01:111:f403:c001::2;
- envelope-from=skolothumtho@nvidia.com;
- helo=SJ2PR03CU001.outbound.protection.outlook.com
-X-Spam_score_int: 3
-X-Spam_score: 0.3
-X-Spam_bar: /
-X-Spam_report: (0.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.442,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FORGED_SPF_HELO=2.883, SPF_HELO_PASS=-0.001,
- SPF_NONE=0.001 autolearn=no autolearn_force=no
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::334;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x334.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -201,106 +108,531 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-DQoNCj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4gRnJvbTogUGV0ZXIgTWF5ZGVsbCA8
-cGV0ZXIubWF5ZGVsbEBsaW5hcm8ub3JnPg0KPiBTZW50OiAyMCBTZXB0ZW1iZXIgMjAyNSAxNDow
-NA0KPiBUbzogU2hhbWVlciBLb2xvdGh1bSA8c2tvbG90aHVtdGhvQG52aWRpYS5jb20+DQo+IENj
-OiBOaWNvbGluIENoZW4gPG5pY29saW5jQG52aWRpYS5jb20+OyBTaGFtZWVyIEtvbG90aHVtDQo+
-IDxzaGFtZWVya29sb3RodW1AZ21haWwuY29tPjsgcWVtdS1hcm1Abm9uZ251Lm9yZzsgcWVtdS0N
-Cj4gZGV2ZWxAbm9uZ251Lm9yZzsgZXJpYy5hdWdlckByZWRoYXQuY29tOyBKYXNvbiBHdW50aG9y
-cGUNCj4gPGpnZ0BudmlkaWEuY29tPjsgZGR1dGlsZUByZWRoYXQuY29tOyBiZXJyYW5nZUByZWRo
-YXQuY29tOyBOYXRoYW4NCj4gQ2hlbiA8bmF0aGFuY0BudmlkaWEuY29tPjsgTWF0dCBPY2hzIDxt
-b2Noc0BudmlkaWEuY29tPjsNCj4gc21vc3RhZmFAZ29vZ2xlLmNvbTsgbGludXhhcm1AaHVhd2Vp
-LmNvbTsgd2FuZ3pob3UxQGhpc2lsaWNvbi5jb207DQo+IGppYW5na3Vua3VuQGh1YXdlaS5jb207
-IGpvbmF0aGFuLmNhbWVyb25AaHVhd2VpLmNvbTsNCj4gemhhbmdmZWkuZ2FvQGxpbmFyby5vcmc7
-IHpoZW56aG9uZy5kdWFuQGludGVsLmNvbQ0KPiBTdWJqZWN0OiBSZTogW1JGQyBQQVRDSCB2MyAw
-Ni8xNV0gaHcvYXJtL3NtbXV2My1hY2NlbDogUmVzdHJpY3QgYWNjZWxlcmF0ZWQNCj4gU01NVXYz
-IHRvIHZmaW8tcGNpIGVuZHBvaW50cyB3aXRoIGlvbW11ZmQNCj4gDQo+IEV4dGVybmFsIGVtYWls
-OiBVc2UgY2F1dGlvbiBvcGVuaW5nIGxpbmtzIG9yIGF0dGFjaG1lbnRzDQo+IA0KPiANCj4gT24g
-RnJpLCAxOSBTZXB0IDIwMjUgYXQgMDg6MzgsIFNoYW1lZXIgS29sb3RodW0NCj4gPHNrb2xvdGh1
-bXRob0BudmlkaWEuY29tPiB3cm90ZToNCj4gPg0KPiA+DQo+ID4NCj4gPiA+IC0tLS0tT3JpZ2lu
-YWwgTWVzc2FnZS0tLS0tDQo+ID4gPiBGcm9tOiBOaWNvbGluIENoZW4gPG5pY29saW5jQG52aWRp
-YS5jb20+DQo+ID4gPiBTZW50OiAxOCBTZXB0ZW1iZXIgMjAyNSAyMzowMA0KPiA+ID4gVG86IFNo
-YW1lZXIgS29sb3RodW0gPHNrb2xvdGh1bXRob0BudmlkaWEuY29tPg0KPiA+ID4gQ2M6IFNoYW1l
-ZXIgS29sb3RodW0gPHNoYW1lZXJrb2xvdGh1bUBnbWFpbC5jb20+OyBxZW11LQ0KPiA+ID4gYXJt
-QG5vbmdudS5vcmc7IHFlbXUtZGV2ZWxAbm9uZ251Lm9yZzsgZXJpYy5hdWdlckByZWRoYXQuY29t
-Ow0KPiA+ID4gcGV0ZXIubWF5ZGVsbEBsaW5hcm8ub3JnOyBKYXNvbiBHdW50aG9ycGUgPGpnZ0Bu
-dmlkaWEuY29tPjsNCj4gPiA+IGRkdXRpbGVAcmVkaGF0LmNvbTsgYmVycmFuZ2VAcmVkaGF0LmNv
-bTsgTmF0aGFuIENoZW4NCj4gPiA+IDxuYXRoYW5jQG52aWRpYS5jb20+OyBNYXR0IE9jaHMgPG1v
-Y2hzQG52aWRpYS5jb20+Ow0KPiA+ID4gc21vc3RhZmFAZ29vZ2xlLmNvbTsgbGludXhhcm1AaHVh
-d2VpLmNvbTsNCj4gd2FuZ3pob3UxQGhpc2lsaWNvbi5jb207DQo+ID4gPiBqaWFuZ2t1bmt1bkBo
-dWF3ZWkuY29tOyBqb25hdGhhbi5jYW1lcm9uQGh1YXdlaS5jb207DQo+ID4gPiB6aGFuZ2ZlaS5n
-YW9AbGluYXJvLm9yZzsgemhlbnpob25nLmR1YW5AaW50ZWwuY29tDQo+ID4gPiBTdWJqZWN0OiBS
-ZTogW1JGQyBQQVRDSCB2MyAwNi8xNV0gaHcvYXJtL3NtbXV2My1hY2NlbDogUmVzdHJpY3QNCj4g
-PiA+IGFjY2VsZXJhdGVkIFNNTVV2MyB0byB2ZmlvLXBjaSBlbmRwb2ludHMgd2l0aCBpb21tdWZk
-DQo+ID4gPg0KPiA+ID4gT24gVGh1LCBTZXAgMTgsIDIwMjUgYXQgMDY6MzE6NDNBTSAtMDcwMCwg
-U2hhbWVlciBLb2xvdGh1bSB3cm90ZToNCj4gPiA+ID4gPiA+ID4gQEAgLTM3LDcgKzM3LDYgQEAg
-dHlwZWRlZiBzdHJ1Y3QgU01NVVMxSHdwdCB7DQo+ID4gPiA+ID4gPiA+DQo+ID4gPiA+ID4gPiA+
-ICB0eXBlZGVmIHN0cnVjdCBTTU1VdjNBY2NlbERldmljZSB7DQo+ID4gPiA+ID4gPiA+ICAgICAg
-U01NVURldmljZSAgc2RldjsNCj4gPiA+ID4gPiA+ID4gLSAgICBBZGRyZXNzU3BhY2UgYXNfc3lz
-bWVtOw0KPiA+ID4gPiA+ID4gPiAgICAgIEhvc3RJT01NVURldmljZUlPTU1VRkQgKmlkZXY7DQo+
-ID4gPiA+ID4gPiA+ICAgICAgU01NVVMxSHdwdCAgKnMxX2h3cHQ7DQo+ID4gPiA+ID4gPiA+ICAg
-ICAgU01NVVZpb21tdSAqdmlvbW11Ow0KPiA+ID4gPiA+ID4gPiBAQCAtNDgsNiArNDcsNyBAQCB0
-eXBlZGVmIHN0cnVjdCBTTU1VdjNBY2NlbERldmljZSB7ICB0eXBlZGVmDQo+ID4gPiBzdHJ1Y3QN
-Cj4gPiA+ID4gPiA+ID4gU01NVXYzQWNjZWxTdGF0ZSB7DQo+ID4gPiA+ID4gPiA+ICAgICAgTWVt
-b3J5UmVnaW9uIHJvb3Q7DQo+ID4gPiA+ID4gPiA+ICAgICAgTWVtb3J5UmVnaW9uIHN5c21lbTsN
-Cj4gPiA+ID4gPiA+ID4gKyAgICBBZGRyZXNzU3BhY2UgYXNfc3lzbWVtOw0KPiA+ID4gPiA+ID4g
-PiAgICAgIFNNTVVWaW9tbXUgKnZpb21tdTsNCj4gPiA+ID4gPiA+ID4gICAgICBzdHJ1Y3QgaW9t
-bXVfaHdfaW5mb19hcm1fc21tdXYzIGluZm87ICB9DQo+IFNNTVV2M0FjY2VsU3RhdGU7DQo+ID4g
-PiA+ID4gPg0KPiA+ID4gPiA+ID4gVGhhdCdzIGNoYW5naW5nIGZyb20gYW4gaW9hc19pZCBwZXIg
-VkZJTyBkZXZpY2UgdG8gYW4gaW9hc19pZCBwZXINCj4gPiA+ID4gPiA+IHZTTU1VIGluc3RhbmNl
-LCByaWdodD8gSSB0aGluayBpdCdzIHN0aWxsIG5vdCBlbm91Z2guDQo+ID4gPiA+ID4gPg0KPiA+
-ID4gPiA+ID4gQWxsIHZTTU1VIGluc3RhbmNlcyBjb3VsZCBzaGFyZSB0aGUgc2FtZSBpb2FzX2lk
-LiBUaGF0IGlzIHdoeSBJIHB1dA0KPiBpbg0KPiA+ID4gPiA+ID4gdGhlIFNNTVVCYXNlQ2xhc3Mg
-YXMgaXQncyBzaGFyZWQgc3RydWN0dXJlIGFjcm9zcyB2U01NVXMuDQo+ID4gPiA+ID4NCj4gPiA+
-ID4gPiBBaC4ueW91IG1lYW4gaXQgaXMgYmFzaWNhbGx5IHBlciBWTSB0aGVuLiBHb3QgaXQuDQo+
-ID4gPiA+DQo+ID4gPiA+IFJlZ2FyZGluZyB1c2luZyBTTU1VQmFzZUNsYXNzIGZvciB0aGlzLCBp
-dCBsb29rcyBsaWtlIE9iamVjdENsYXNzDQo+IG5vcm1hbGx5DQo+ID4gPiBob2xkcw0KPiA+ID4g
-PiBmdW5jdGlvbiBwb2ludGVycy4gRXJpYyBoYXMgbWFkZSBhIHNpbWlsYXIgb2JzZXJ2YXRpb24g
-ZWxzZXdoZXJlIGluIHRoaXMNCj4gPiA+IHNlcmllcy4NCj4gPiA+ID4NCj4gPiA+ID4gIEBFcmlj
-LCBhbnkgc3VnZ2VzdGlvbnM/DQo+ID4gPiA+DQo+ID4gPiA+IElzIHVzZSBvZiAmYWRkcmVzc19z
-cGFjZV9tZW1vcnkgZGlyZWN0bHkgaW4NCj4gc21tdXYzX2FjY2VsX2ZpbmRfYWRkX2FzKCkNCj4g
-PiA+IGEgY29tcGxldGUNCj4gPiA+ID4gbm8tZ28sIGdpdmVuIHdlIGFyZSB0YWxraW5nIGFib3V0
-IGhhdmluZyB0aGUgc3lzdGVtIGFkZHJlc3Mgc3BhY2UgZm9yIGFsbA0KPiB0aGUNCj4gPiA+IFNN
-TVV2Mw0KPiA+ID4gPiBhY2NlbGVyYXRlZCBkZXZpY2VzIGhlcmU/DQo+ID4gPg0KPiA+ID4gc21t
-dXYzX2FjY2VsX2ZpbmRfYWRkX2FzKCkgaXMgcGVyIGluc3RhbmNlLiBTbywgaXQgd291bGRuJ3Qg
-c2hhcmUuDQo+ID4NCj4gPiBNeSBzdWdnZXN0aW9uIHdhcy4uLg0KPiA+DQo+ID4gc3RhdGljIEFk
-ZHJlc3NTcGFjZSAqc21tdXYzX2FjY2VsX2ZpbmRfYWRkX2FzKC4uKQ0KPiA+IHsNCj4gPiAuLi4N
-Cj4gPiAgICAgaWYgKHZmaW9fcGNpKSB7DQo+ID4gICAgICAgICByZXR1cm4gJmFkZHJlc3Nfc3Bh
-Y2VfbWVtb3J5Ow0KPiA+ICAgICB9IGVsc2Ugew0KPiA+ICAgICAgICAgcmV0dXJuICZzZGV2LT5h
-czsNCj4gPiAgICAgfQ0KPiA+IH0NCj4gPg0KPiA+IGllLCB1c2UgdGhlIGdsb2JhbCB0byBzeXN0
-ZW0gbWVtb3J5IGFkZHJlc3Mgc3BhY2UgaW5zdGVhZCBvZiBjcmVhdGluZyBhbg0KPiA+IGFsaWFz
-IHRvIHRoZSBzeXN0ZW0gbWVtb3J5IGFuZCBhIGRpZmZlcmVudCBhZGRyZXNzIHNwYWNlLiBUaGlz
-IHdpbGwgcHJvdmlkZQ0KPiA+IHRoZSBzYW1lIHBvaW50ZXIgdG8gVkZJTy9pb21tdWZkIGFuZCAg
-aXQgY2FuIHRoZW4gcmV1c2UgdGhlIGlvYXNfaWQuDQo+ID4gSSBjYW4gc2VlIHRoYXQgUUVNVSB1
-c2VzICImYWRkcmVzc19zcGFjZV9tZW1vcnkiIGRpcmVjdGx5IGluIG1hbnkNCj4gcGxhY2VzDQo+
-ID4gKHBjaV9kZXZpY2VfaW9tbXVfYWRkcmVzc19zcGFjZSgpLCBldGMpLiBJIHRoaW5rIHRoZSBp
-ZGVhIGJlaGluZCBhDQo+IHNlcGFyYXRlDQo+ID4gYWRkcmVzcyBzcGFjZSBpcyB0byBoYXZlIHBy
-aXZhdGUgb3duZXJzaGlwIGFuZCBsaWZldGltZSBtYW5hZ2VtZW50DQo+IHByb2JhYmx5Lg0KPiA+
-IE5vdCBzdXJlIHRoZXJlIGFyZSBhbnkgb3RoZXIgY29uY2VybnMgaGVyZS4gUGxlYXNlIGxldCBt
-ZSBrbm93IGlmIHRoZXJlIGFyZQ0KPiA+IGFueS4NCj4gDQo+IEkgZG9uJ3Qga25vdyBhYm91dCB2
-ZmlvLCBidXQgd2h5IGlzIGl0IHNwZWNpYWwgaGVyZT8gR2VuZXJhbGx5DQo+IGRpcmVjdGx5IGRv
-aW5nIHN0dWZmIHdpdGggYWRkcmVzc19zcGFjZV9tZW1vcnkgaXMgbm90IGEgZ29vZA0KPiBpZGVh
-IDogeW91IHNob3VsZCBiZSBkZWFsaW5nIHdpdGggd2hhdGV2ZXIgYWRkcmVzcyBzcGFjZSB0aGUN
-Cj4gYm9hcmQgbW9kZWwgaGFuZGVkIHlvdSBhcyB3aGF0IHlvdSBkbyB0cmFuc2FjdGlvbnMgdG8u
-IFdlDQo+IGhhdmUgYSBsb3Qgb2YgbGVnYWN5IGNvZGUgdGhhdCBhc3N1bWVzIGl0IGNhbiBkaXJl
-Y3RseSB3b3JrDQo+IHdpdGggYWRkcmVzc19zcGFjZV9tZW1vcnksIGJ1dCB3ZSBzaG91bGQgdXN1
-YWxseSB0cnkgdG8gYXZvaWQNCj4gYWRkaW5nIG5ldyBjb2RlIHRoYXQgZG9lcyB0aGF0Lg0KDQpU
-aGUgZ29hbCBpcyB0byByZXR1cm4gdGhlIHNhbWUgc3lzdGVtIGFkZHJlc3Mgc3BhY2UgcG9pbnRl
-ciBmb3IgYWxsIGRldmljZXMNCmJlaGluZCB0aGUgYWNjZWxlcmF0ZWQgU01NVXYzcyBpbiBhIFZN
-LiBUaGF0IHdheSBWRklPL2lvbW11ZmQgY2FuDQpyZXVzZSBhIHNpbmdsZSBJT0FTIElEIGluIGlv
-bW11ZmRfY2Rldl9hdHRhY2goKSwgYWxsb3dpbmcgdGhlIFN0YWdlLTIgcGFnZQ0KdGFibGVzIHRv
-IGJlIHNoYXJlZCB3aXRoaW4gdGhlIFZNIGluc3RlYWQgb2YgZHVwbGljYXRpbmcgdGhlbSBmb3Ig
-ZXZlcnkNClNNTVV2MyBpbnN0YW5jZS4NCg0KSWYgZGlyZWN0bHkgdXNpbmcgJmFkZHJlc3Nfc3Bh
-Y2VfbWVtb3J5IGluIFNNTVV2MyBpcyBkaXNjb3VyYWdlZCwgdGhlDQpvdGhlciB0d28gb3B0aW9u
-cyBjb25zaWRlcmVkIHNvIGZhciBhcmUsDQoNCiAtTWFrZSB1c2Ugb2YgU01NVXYzIE9iamVjdENs
-YXNzIHRvIGNyZWF0ZSBhIHNlcGFyYXRlIEFkZHJlc3MgU3BhY2Ugc28gdGhhdA0KICBhbGwgaW5z
-dGFuY2VzIGNhbiByZXR1cm4gdGhlIHNhbWUgcG9pbnRlci4gQnV0IGl0IGxvb2tzIGxpa2UgI09i
-amVjdENsYXNzDQogIGlzIG1haW5seSB0byBob2xkIGZ1bmN0aW9uIHBvaW50ZXJzIGFuZCwgQUZB
-SUNTLCBBZGRyZXNzU3BhY2UgaXMgbm90IGFuDQogIG9iamVjdCB0eXBlIG1ha2luZyBpdCBkaWZm
-aWN1bHQgdG8gYXNzb2NpYXRlIHRoZSBwdHIgdXNpbmcNCiAgb2JqZWN0X2NsYXNzX3Byb3BlcnR5
-X2FkZC9vYmplY3RfY2xhc3NfcHJvcGVydHlfbGluayBldGMuDQoNCiAtU2FtZSBwcm9ibGVtIGlm
-IHdlIGRvIGl0IHdpdGhpbiB2aXJ0IGNvZGUuIEhvdyBjYW4gd2UgbGluayBpdCBpbiB2aXJ0IHdp
-dGgNCiAgU01NVXYzIGRldiBzdGF0ZT8NCg0KUGxlYXNlIGxldCBtZSBrbm93IGlmIEkgYW0gbWlz
-c2luZyBzb21ldGhpbmcgYW5kIHRoZXJlIGlzIGEgd2F5IGFyb3VuZCB0aGlzLg0KQW55IHBvaW50
-ZXJzIGFwcHJlY2lhdGVkLg0KDQpUaGFua3MsDQpTaGFtZWVyDQo=
+Gustavo Romero <gustavo.romero@linaro.org> writes:
+
+> This commit removes Avocado as a dependency for running the
+> reverse_debugging test.
+>
+> The main benefit, beyond eliminating an extra dependency, is that there
+> is no longer any need to handle GDB packets manually. This removes the
+> need for ad-hoc functions dealing with endianness and arch-specific
+> register numbers, making the test easier to read. The timeout variable
+> is also removed, since Meson now manages timeouts automatically.
+>
+> reverse_debugging now uses the pygdbmi module to interact with GDB, if
+> it's available in the test environment, otherwise the test is skipped.
+> GDB is detect via the QEMU_TEST_GDB env. variable.
+>
+> This commit also significantly improves the output for the test and
+> now prints all the GDB commands used in sequence. It also adds
+> some clarifications to existing comments, for example, clarifying that
+> once the replay-break is reached, a SIGINT is captured in GDB.
+>
+> reverse_debugging is kept "skipped" for aarch64, ppc64, and x86_64, so
+> won't run unless QEMU_TEST_FLAKY_TESTS=3D1 is set in the test environment,
+> before running 'make check-functional' or 'meson test [...]'.
+>
+> Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
+> ---
+>  tests/functional/reverse_debugging.py | 308 ++++++++++++++++----------
+>  1 file changed, 188 insertions(+), 120 deletions(-)
+>
+> diff --git a/tests/functional/reverse_debugging.py b/tests/functional/rev=
+erse_debugging.py
+> index f9a1d395f1..38161beab8 100644
+> --- a/tests/functional/reverse_debugging.py
+> +++ b/tests/functional/reverse_debugging.py
+> @@ -1,21 +1,94 @@
+> -# Reverse debugging test
+> -#
+>  # SPDX-License-Identifier: GPL-2.0-or-later
+>  #
+> +# Reverse debugging test
+> +#
+>  # Copyright (c) 2020 ISP RAS
+> +# Copyright (c) 2025 Linaro Limited
+>  #
+>  # Author:
+>  #  Pavel Dovgalyuk <Pavel.Dovgalyuk@ispras.ru>
+> +#  Gustavo Romero <gustavo.romero@linaro.org> (Run without Avocado)
+>  #
+>  # This work is licensed under the terms of the GNU GPL, version 2 or
+>  # later.  See the COPYING file in the top-level directory.
+> -import os
+> +
+>  import logging
+> +import os
+> +import re
+> +import subprocess
+> +from pygdbmi.gdbcontroller import GdbController
+> +from pygdbmi.constants import GdbTimeoutError
+> +
+>=20=20
+>  from qemu_test import LinuxKernelTest, get_qemu_img
+>  from qemu_test.ports import Ports
+>=20=20
+>=20=20
+> +class GDB:
+> +    def __init__(self, gdb_path, echo=3DTrue, suffix=3D'# ', prompt=3D"$=
+ "):
+> +        gdb_cmd =3D [gdb_path, "-q", "--interpreter=3Dmi2"]
+> +        self.gdbmi =3D GdbController(gdb_cmd)
+> +        self.echo =3D echo
+> +        self.suffix =3D suffix
+> +        self.prompt =3D prompt
+> +
+> +
+> +    def get_payload(self, response, kind):
+> +        output =3D []
+> +        for o in response:
+> +            # Unpack payloads of the same type.
+> +            _type, _, payload, *_ =3D o.values()
+> +            if _type =3D=3D kind:
+> +                output +=3D [payload]
+> +
+> +        # Some output lines do not end with \n but begin with it,
+> +        # so remove the leading \n and merge them with the next line
+> +        # that ends with \n.
+> +        lines =3D [line.lstrip('\n') for line in output]
+> +        lines =3D "".join(lines)
+> +        lines =3D lines.splitlines(keepends=3DTrue)
+> +
+> +        return lines
+> +
+> +
+> +    def cli(self, cmd, timeout=3D4.0):
+> +        self.response =3D self.gdbmi.write(cmd, timeout_sec=3Dtimeout)
+> +        self.cmd_output =3D self.get_payload(self.response, "console")
+> +        if self.echo:
+> +            print(self.suffix + self.prompt + cmd)
+> +
+> +            if len(self.cmd_output) > 0:
+> +                cmd_output =3D self.suffix.join(self.cmd_output)
+> +                print(self.suffix + cmd_output, end=3D"")
+> +
+> +        return self
+> +
+> +
+> +    def get_addr(self):
+> +        pattern =3D r"0x[0-9A-Fa-f]+"
+> +        cmd_output =3D "".join(self.cmd_output)
+> +        match =3D re.search(pattern, cmd_output)
+> +
+> +        return int(match[0], 16) if match else None
+> +
+> +
+> +    def get_log(self):
+> +        r =3D self.get_payload(self.response, kind=3D"log")
+> +        r =3D "".join(r)
+> +
+> +        return r
+> +
+> +
+> +    def get_console(self):
+> +        r =3D "".join(self.cmd_output)
+> +
+> +        return r
+> +
+> +
+> +    def exit(self):
+> +        self.gdbmi.exit()
+> +
+> +
+
+Could this re-factor into a class have been a separate commit?
+
+>  class ReverseDebugging(LinuxKernelTest):
+>      """
+>      Test GDB reverse debugging commands: reverse step and reverse contin=
+ue.
+> @@ -28,21 +101,17 @@ class ReverseDebugging(LinuxKernelTest):
+>      that the execution is stopped at the last of them.
+>      """
+>=20=20
+> -    timeout =3D 10
+>      STEPS =3D 10
+> -    endian_is_le =3D True
+>=20=20
+>      def run_vm(self, record, shift, args, replay_path, image_path, port):
+> -        from avocado.utils import datadrainer
+> -
+>          logger =3D logging.getLogger('replay')
+>          vm =3D self.get_vm(name=3D'record' if record else 'replay')
+>          vm.set_console()
+>          if record:
+> -            logger.info('recording the execution...')
+> +            logger.info('Recording the execution...')
+
+Mixing capitalisation fixes with logical change makes reviewing a pain.
+
+>              mode =3D 'record'
+>          else:
+> -            logger.info('replaying the execution...')
+> +            logger.info('Replaying the execution...')
+>              mode =3D 'replay'
+>              vm.add_args('-gdb', 'tcp::%d' % port, '-S')
+>          vm.add_args('-icount', 'shift=3D%s,rr=3D%s,rrfile=3D%s,rrsnapsho=
+t=3Dinit' %
+> @@ -52,145 +121,144 @@ def run_vm(self, record, shift, args, replay_path,=
+ image_path, port):
+>          if args:
+>              vm.add_args(*args)
+>          vm.launch()
+> -        console_drainer =3D datadrainer.LineLogger(vm.console_socket.fil=
+eno(),
+> -                                    logger=3Dself.log.getChild('console'=
+),
+> -                                    stop_check=3D(lambda : not vm.is_run=
+ning()))
+> -        console_drainer.start()
+> -        return vm
+
+I suspect dropping the console drainer could be a separate commit like
+in Daniels series.
+
+>=20=20
+> -    @staticmethod
+> -    def get_reg_le(g, reg):
+> -        res =3D g.cmd(b'p%x' % reg)
+> -        num =3D 0
+> -        for i in range(len(res))[-2::-2]:
+> -            num =3D 0x100 * num + int(res[i:i + 2], 16)
+> -        return num
+> -
+> -    @staticmethod
+> -    def get_reg_be(g, reg):
+> -        res =3D g.cmd(b'p%x' % reg)
+> -        return int(res, 16)
+> -
+> -    def get_reg(self, g, reg):
+> -        # value may be encoded in BE or LE order
+> -        if self.endian_is_le:
+> -            return self.get_reg_le(g, reg)
+> -        else:
+> -            return self.get_reg_be(g, reg)
+> -
+> -    def get_pc(self, g):
+> -        return self.get_reg(g, self.REG_PC)
+> -
+> -    def check_pc(self, g, addr):
+> -        pc =3D self.get_pc(g)
+> -        if pc !=3D addr:
+> -            self.fail('Invalid PC (read %x instead of %x)' % (pc, addr))
+> -
+> -    @staticmethod
+> -    def gdb_step(g):
+> -        g.cmd(b's', b'T05thread:01;')
+> -
+> -    @staticmethod
+> -    def gdb_bstep(g):
+> -        g.cmd(b'bs', b'T05thread:01;')
+> +        return vm
+>=20=20
+>      @staticmethod
+>      def vm_get_icount(vm):
+>          return vm.qmp('query-replay')['return']['icount']
+>=20=20
+>      def reverse_debugging(self, shift=3D7, args=3DNone):
+> -        from avocado.utils import gdb
+> -        from avocado.utils import process
+> -
+>          logger =3D logging.getLogger('replay')
+>=20=20
+> -        # create qcow2 for snapshots
+> -        logger.info('creating qcow2 image for VM snapshots')
+> +        # Create qcow2 for snapshots
+> +        logger.info('Creating qcow2 image for VM snapshots')
+>          image_path =3D os.path.join(self.workdir, 'disk.qcow2')
+>          qemu_img =3D get_qemu_img(self)
+>          if qemu_img is None:
+>              self.skipTest('Could not find "qemu-img", which is required =
+to '
+>                            'create the temporary qcow2 image')
+>          cmd =3D '%s create -f qcow2 %s 128M' % (qemu_img, image_path)
+> -        process.run(cmd)
+> +        r =3D subprocess.run(cmd, capture_output=3DTrue, shell=3DTrue, t=
+ext=3DTrue)
+> +        logger.info(r.args)
+> +        logger.info(r.stdout)
+>=20=20
+>          replay_path =3D os.path.join(self.workdir, 'replay.bin')
+>=20=20
+> -        # record the log
+> +        # Record the log.
+>          vm =3D self.run_vm(True, shift, args, replay_path, image_path, -=
+1)
+>          while self.vm_get_icount(vm) <=3D self.STEPS:
+>              pass
+>          last_icount =3D self.vm_get_icount(vm)
+>          vm.shutdown()
+>=20=20
+> -        logger.info("recorded log with %s+ steps" % last_icount)
+> +        logger.info("Recorded log with %s+ steps" % last_icount)
+> +
+> +        # Replay and run debug commands.
+> +        gdb_cmd =3D os.getenv('QEMU_TEST_GDB')
+> +        if not gdb_cmd:
+> +            test.skipTest(f"Test skipped because there is no GDB
+> available!")
+
+This fails:
+
+  test:         qemu:func-thorough+func-aarch64-thorough+thorough / func-aa=
+rch64-reverse_debug
+  start time:   09:24:25
+  duration:     0.88s
+  result:       exit status 1
+  command:      ASAN_OPTIONS=3Dhalt_on_error=3D1:abort_on_error=3D1:print_s=
+ummary=3D1 MALLOC_PERTURB_=3D220 QEMU_TEST_QEMU_BINARY=3D/home/alex/lsrc/qe=
+mu.git/builds/all/qemu-system-aarch64=20
+  LD_LIBRARY_PATH=3D/home/alex/lsrc/qemu.git/builds/all/contrib/plugins:/ho=
+me/alex/lsrc/qemu.git/builds/all/tests/tcg/plugins UBSAN_OPTIONS=3Dhalt_on_=
+error=3D1:abort_on_error=3D1:print
+  _summary=3D1:print_stacktrace=3D1 PYTHONPATH=3D/home/alex/lsrc/qemu.git/p=
+ython:/home/alex/lsrc/qemu.git/tests/functional RUST_BACKTRACE=3D1 QEMU_BUI=
+LD_ROOT=3D/home/alex/lsrc/qemu.git/b
+  uilds/all MSAN_OPTIONS=3Dhalt_on_error=3D1:abort_on_error=3D1:print_summa=
+ry=3D1:print_stacktrace=3D1 QEMU_TEST_QEMU_IMG=3D/home/alex/lsrc/qemu.git/b=
+uilds/all/qemu-img MESON_TEST_ITERATIO
+  N=3D1 /home/alex/lsrc/qemu.git/builds/all/pyvenv/bin/python3 /home/alex/l=
+src/qemu.git/tests/functional/aarch64/test_reverse_debug.py
+  ----------------------------------- stdout ------------------------------=
+-----
+  TAP version 13
+  not ok 1 test_reverse_debug.ReverseDebugging_AArch64.test_aarch64_virt
+  1..1
+  ----------------------------------- stderr ------------------------------=
+-----
+  Traceback (most recent call last):
+    File "/home/alex/lsrc/qemu.git/tests/functional/aarch64/test_reverse_de=
+bug.py", line 31, in test_aarch64_virt
+      self.reverse_debugging(args=3D('-kernel', kernel_path))
+      ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    File "/home/alex/lsrc/qemu.git/tests/functional/reverse_debugging.py", =
+line 160, in reverse_debugging
+      test.skipTest(f"Test skipped because there is no GDB available!")
+      ^^^^
+  NameError: name 'test' is not defined
+
+  More information on test_reverse_debug.ReverseDebugging_AArch64.test_aarc=
+h64_virt could be found here:
+   /home/alex/lsrc/qemu.git/builds/all/tests/functional/aarch64/test_revers=
+e_debug.ReverseDebugging_AArch64.test_aarch64_virt/base.log
+   /home/alex/lsrc/qemu.git/builds/all/tests/functional/aarch64/test_revers=
+e_debug.ReverseDebugging_AArch64.test_aarch64_virt/console.log
+
+  (test program exited with status code 1)
+
+Not sure why though as:
+
+    cat config-host.mak
+  # Automatically generated by configure - do not modify
+
+  all:
+  SRC_PATH=3D/home/alex/lsrc/qemu.git
+  TARGET_DIRS=3Daarch64-linux-user aarch64_be-linux-user alpha-linux-user a=
+rm-linux-user armeb-linux-user hexagon-linux-user hppa-linux-user i386-linu=
+x-user loongarch64-linux-user m68k-linux-user microblaze-linux-user microbl=
+azeel-linux-user mips-linux-user mips64-linux-user mips64el-linux-user mips=
+el-linux-user mipsn32-linux-user mipsn32el-linux-user or1k-linux-user ppc-l=
+inux-user ppc64-linux-user ppc64le-linux-user riscv32-linux-user riscv64-li=
+nux-user s390x-linux-user sh4-linux-user sh4eb-linux-user sparc-linux-user =
+sparc32plus-linux-user sparc64-linux-user x86_64-linux-user xtensa-linux-us=
+er xtensaeb-linux-user aarch64-softmmu alpha-softmmu arm-softmmu avr-softmm=
+u hppa-softmmu i386-softmmu loongarch64-softmmu m68k-softmmu microblaze-sof=
+tmmu microblazeel-softmmu mips-softmmu mips64-softmmu mips64el-softmmu mips=
+el-softmmu or1k-softmmu ppc-softmmu ppc64-softmmu riscv32-softmmu riscv64-s=
+oftmmu rx-softmmu s390x-softmmu sh4-softmmu sh4eb-softmmu sparc-softmmu spa=
+rc64-softmmu tricore-softmmu x86_64-softmmu xtensa-softmmu xtensaeb-softmmu
+  GDB=3D/usr/bin/gdb-multiarch
+
+>=20=20
+> -        # replay and run debug commands
+>          with Ports() as ports:
+>              port =3D ports.find_free_port()
+>              vm =3D self.run_vm(False, shift, args, replay_path, image_pa=
+th, port)
+> -        logger.info('connecting to gdbstub')
+> -        g =3D gdb.GDBRemote('127.0.0.1', port, False, False)
+> -        g.connect()
+> -        r =3D g.cmd(b'qSupported')
+> -        if b'qXfer:features:read+' in r:
+> -            g.cmd(b'qXfer:features:read:target.xml:0,ffb')
+> -        if b'ReverseStep+' not in r:
+> -            self.fail('Reverse step is not supported by QEMU')
+> -        if b'ReverseContinue+' not in r:
+> -            self.fail('Reverse continue is not supported by QEMU')
+> -
+> -        logger.info('stepping forward')
+> -        steps =3D []
+> -        # record first instruction addresses
+> -        for _ in range(self.STEPS):
+> -            pc =3D self.get_pc(g)
+> -            logger.info('saving position %x' % pc)
+> -            steps.append(pc)
+> -            self.gdb_step(g)
+> -
+> -        # visit the recorded instruction in reverse order
+> -        logger.info('stepping backward')
+> -        for addr in steps[::-1]:
+> -            self.gdb_bstep(g)
+> -            self.check_pc(g, addr)
+> -            logger.info('found position %x' % addr)
+> -
+> -        # visit the recorded instruction in forward order
+> -        logger.info('stepping forward')
+> -        for addr in steps:
+> -            self.check_pc(g, addr)
+> -            self.gdb_step(g)
+> -            logger.info('found position %x' % addr)
+> -
+> -        # set breakpoints for the instructions just stepped over
+> -        logger.info('setting breakpoints')
+> -        for addr in steps:
+> -            # hardware breakpoint at addr with len=3D1
+> -            g.cmd(b'Z1,%x,1' % addr, b'OK')
+> -
+> -        # this may hit a breakpoint if first instructions are executed
+> -        # again
+> -        logger.info('continuing execution')
+> -        vm.qmp('replay-break', icount=3Dlast_icount - 1)
+> -        # continue - will return after pausing
+> -        # This could stop at the end and get a T02 return, or by
+> -        # re-executing one of the breakpoints and get a T05 return.
+> -        g.cmd(b'c')
+> -        if self.vm_get_icount(vm) =3D=3D last_icount - 1:
+> -            logger.info('reached the end (icount %s)' % (last_icount - 1=
+))
+> -        else:
+> -            logger.info('hit a breakpoint again at %x (icount %s)' %
+> -                        (self.get_pc(g), self.vm_get_icount(vm)))
+>=20=20
+> -        logger.info('running reverse continue to reach %x' % steps[-1])
+> -        # reverse continue - will return after stopping at the breakpoint
+> -        g.cmd(b'bc', b'T05thread:01;')
+> +        try:
+> +            gdb =3D GDB(gdb_cmd)
+>=20=20
+> -        # assume that none of the first instructions is executed again
+> -        # breaking the order of the breakpoints
+> -        self.check_pc(g, steps[-1])
+> -        logger.info('successfully reached %x' % steps[-1])
+> +            logger.info('Connecting to gdbstub...')
+>=20=20
+> -        logger.info('exiting gdb and qemu')
+> -        vm.shutdown()
+> +            gdb.cli("set debug remote 1")
+> +
+> +            c =3D gdb.cli(f"target remote localhost:{port}").get_console=
+()
+> +            if not f"Remote debugging using localhost:{port}" in c:
+> +                self.fail("Could not connect to gdbstub!")
+> +
+> +            # Remote debug messages are in 'log' payloads.
+> +            r =3D gdb.get_log()
+> +            if 'ReverseStep+' not in r:
+> +                self.fail('Reverse step is not supported by QEMU')
+> +            if 'ReverseContinue+' not in r:
+> +                self.fail('Reverse continue is not supported by QEMU')
+> +
+> +            gdb.cli("set debug remote 0")
+> +
+> +            logger.info('Stepping forward')
+> +            steps =3D []
+> +            # Record first instruction addresses.
+> +            for _ in range(self.STEPS):
+> +                pc =3D gdb.cli("print $pc").get_addr()
+> +                logger.info('Saving position %x' % pc)
+> +                steps.append(pc)
+> +
+> +                gdb.cli("stepi")
+> +
+> +            # Visit the recorded instructions in reverse order.
+> +            logger.info('Stepping backward')
+> +            for saved_pc in steps[::-1]:
+> +                logger.info('Found position %x' % saved_pc)
+> +                gdb.cli("reverse-stepi")
+> +                pc =3D gdb.cli("print $pc").get_addr()
+> +                if pc !=3D saved_pc:
+> +                    logger.info('Invalid PC (read %x instead of %x)' % (=
+pc, saved_pc))
+> +                    self.fail('Reverse stepping failed!')
+> +
+> +            # Visit the recorded instructions in forward order.
+> +            logger.info('Stepping forward')
+> +            for saved_pc in steps:
+> +                logger.info('Found position %x' % saved_pc)
+> +                pc =3D gdb.cli("print $pc").get_addr()
+> +                if pc !=3D saved_pc:
+> +                    logger.info('Invalid PC (read %x instead of %x)' % (=
+pc, saved_pc))
+> +                    self.fail('Forward stepping failed!')
+> +
+> +                gdb.cli("stepi")
+> +
+> +            # Set breakpoints for the instructions just stepped over.
+> +            logger.info('Setting breakpoints')
+> +            for saved_pc in steps:
+> +                gdb.cli(f"break *{hex(saved_pc)}")
+> +
+> +            # This may hit a breakpoint if first instructions are execut=
+ed again.
+> +            logger.info('Continuing execution')
+> +            vm.qmp('replay-break', icount=3Dlast_icount - 1)
+> +            # continue - will return after pausing.
+> +            # This can stop at the end of the replay-break and gdb gets =
+a SIGINT,
+> +            # or by re-executing one of the breakpoints and gdb stops at=
+ a
+> +            # breakpoint.
+> +            gdb.cli("continue")
+> +
+> +            pc =3D gdb.cli("print $pc").get_addr()
+> +            current_icount =3D self.vm_get_icount(vm)
+> +            if current_icount =3D=3D last_icount - 1:
+> +                print(f"# **** Hit replay-break at icount=3D{current_ico=
+unt}, pc=3D{hex(pc)} ****")
+> +                logger.info('Reached the end (icount %s)' % (current_ico=
+unt))
+> +            else:
+> +                print(f"# **** Hit breakpoint at icount=3D{current_icoun=
+t}, pc=3D{hex(pc)} ****")
+> +                logger.info('Hit a breakpoint again at %x (icount %s)' %
+> +                            (pc, current_icount))
+> +
+> +            logger.info('Running reverse continue to reach %x' % steps[-=
+1])
+> +            # reverse-continue - will return after stopping at the break=
+point.
+> +            gdb.cli("reverse-continue")
+> +
+> +            # Assume that none of the first instructions are executed ag=
+ain
+> +            # breaking the order of the breakpoints.
+> +            # steps[-1] is the first saved $pc in reverse order.
+> +            pc =3D gdb.cli("print $pc").get_addr()
+> +            first_pc_in_rev_order =3D steps[-1]
+> +            if pc =3D=3D first_pc_in_rev_order:
+> +                print(f"# **** Hit breakpoint at the first PC in reverse=
+ order ({hex(pc)}) ****")
+> +                logger.info('Successfully reached breakpoint at %x' % fi=
+rst_pc_in_rev_order)
+> +            else:
+> +                logger.info('Failed to reach breakpoint at %x' % first_p=
+c_in_rev_order)
+> +                self.fail("'reverse-continue' did not hit the first PC i=
+n reverse order!")
+> +
+> +            logger.info('Exiting GDB and QEMU...')
+> +            gdb.exit()
+> +            vm.shutdown()
+> +
+> +            logger.info('Test passed.')
+> +
+> +        except GdbTimeoutError:
+> +            self.fail("Connection to gdbstub timeouted...")
+
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro
 

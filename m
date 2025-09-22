@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 146E7CAC592
-	for <qemu-arm@archiver.kernel.org>; Mon, 22 Sep 2025 09:42:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92F38CAC5A7
+	for <qemu-arm@archiver.kernel.org>; Mon, 22 Sep 2025 09:43:04 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v0d0t-0004mx-CL; Mon, 22 Sep 2025 05:39:15 -0400
+	id 1v0d0n-0004YS-O1; Mon, 22 Sep 2025 05:39:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1v0czi-0002UJ-9i
- for qemu-arm@nongnu.org; Mon, 22 Sep 2025 05:38:06 -0400
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+ id 1v0czr-0002VR-JW
+ for qemu-arm@nongnu.org; Mon, 22 Sep 2025 05:38:14 -0400
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1v0czC-0000fh-Dv
- for qemu-arm@nongnu.org; Mon, 22 Sep 2025 05:38:01 -0400
-Received: by mail-wm1-x333.google.com with SMTP id
- 5b1f17b1804b1-45f2c9799a3so30982225e9.0
- for <qemu-arm@nongnu.org>; Mon, 22 Sep 2025 02:37:25 -0700 (PDT)
+ id 1v0czE-0000gq-3a
+ for qemu-arm@nongnu.org; Mon, 22 Sep 2025 05:38:11 -0400
+Received: by mail-wr1-x431.google.com with SMTP id
+ ffacd0b85a97d-3ed20bdfdffso4473385f8f.2
+ for <qemu-arm@nongnu.org>; Mon, 22 Sep 2025 02:37:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1758533844; x=1759138644; darn=nongnu.org;
+ d=linaro.org; s=google; t=1758533848; x=1759138648; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=1iOqbIE2K4YSn24nejTWVSAedyV/jyzH66EOGDnjiAU=;
- b=C6RdRDhhZjUh8/0q/UifG+yJmpMyFxPToMKDssfXrAcXBu4qzMVaGr7xqNAwuQ1L57
- 6iBBcD3xluqjxxgyr1uGFa5OyNd48yNCYpNRNUZezseNELGVCRknGpPt8Re3KChzpIfa
- 81VCqpkt5dIyTDKB0/APHBpmKyh+kIw9ccfav4PNpETa/MvOWcBHl18t5H05SYi2Hgv7
- LED7dY+Q094d74kG8vdccHJk+JiMpPlhfkv4gBGwlACDvoEEvpeOcVkw2E33NDcbBbGO
- /w2Kz+rkTQ+g8XdNKBuBC0t6HVtpSi5Ee4ll7CvRCZeKAhCh/S7GipQSmRjnL7Jffh7p
- mBVg==
+ bh=6IMWbDFgDEMOUiMUfT2TDkGRm3klPMgO+lre4zsnFwM=;
+ b=ylLRNwcsrOhMLbtImmXvXmGlCCW+qQj8xvLlirvqN9JgzkiRd9b2YoFfSbrQ8/w9Ib
+ 8ZcK1JGpazrFwwaUEfbBa2Cgzr4k29u76bF+S2C1uMZ52Q1pkWIWVYFsK4oHumHspEZn
+ WQEi0PCRwGER/U92RIXnmxzvi98EAr5GAOynSFUjgxKcfnuJCWfaQf6mCxMd84vl5Hqc
+ VECnUtF+1Fb1MpQCww7VlRyXSj5EgYvphtOk9OLbw2bfO1pDbtEAS8+9s19wesXc35t7
+ K2XD0lXCeRPTa2EqyWlTKjg52ri8ZUbKBHsotzLTVu0sJwGpYF0mo7goQX7EWc/YTk0+
+ Lvsw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1758533844; x=1759138644;
+ d=1e100.net; s=20230601; t=1758533848; x=1759138648;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=1iOqbIE2K4YSn24nejTWVSAedyV/jyzH66EOGDnjiAU=;
- b=q8etoUYY8CLUvn0gWu+1A9SE3f8vjBi3Juh0JWwUzk7w8dztnwkJfqm+K6bKhKKv4R
- 7yBkBAmIy/Okzj+wQl3h6wU/bHROMZGC0MrMgBtF8zQL/w/z3KIVxfH+7BuMO4xhQFoO
- 2wDlrc1X4dAsXCGfl+OcFAW2lGpsXdhJUSLF/oKJzU9AuvOtTkPVSA6kBCjWlN9b2Gj5
- MYYYdGb9+ZFrlz5niW5m+K2nmYeVIjTwdCR9OEOUeTTMQgsojXMjnrjy1QYt1qIqyn9+
- poFl7DWuaC57rEEqsynAWiOMj/H5jUE/vISPAQK6qG3bxN6nPKo/h7QnEvgbKEEvcaZ1
- aNRg==
+ bh=6IMWbDFgDEMOUiMUfT2TDkGRm3klPMgO+lre4zsnFwM=;
+ b=AhEKvyCHfSoHKgbK9ZESS7hXd266/3jNsDxdXMZaWOA4nbwnTsqORpRZn5XYOPRUPc
+ A3rYWglQQ/r5+gAhkVIGzkiuSQU2DAv2Rbh+z3nX37vT1PK55+6aA4ItasmLNkGq7iYL
+ 9NVXHVjEDzDl2vOXOkcRFajJOPPQhlHLnXY9PVInFYCi7HQpPGKi9+LLrXrFdtZgHF7F
+ FpH9NE4ol8KMc6pE/lve8qT7kGuZAIeU0AO4kJ6VaVlwXsBK38pE/rqaDsqHqW6gwk79
+ HwNqy0MG5r9duDHhNCK9T7qUPnbV2c+FUNgvkbNCrd0sKu6Kdhl2WNkng9iT+1f23TKc
+ 9HTw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWivtV+I3iQ6HNfiDmJ8nbEnMxoNSAoc4TPd+va+isGbLn884vtQ6wqsCP1mhCmVaACcSerm5J+VA==@nongnu.org
-X-Gm-Message-State: AOJu0YztpfpNAJ6c33b5wBRbKBOdIrWvR//0RKhEyrVBs1ur8kQNUubv
- drKj/6nLVgZl6YCFA8s9csWqbgWLmNbzclYuZJt5BWT6Y4f2qjpCHxbU6aWUbiNlqZM=
-X-Gm-Gg: ASbGncsp6NkuCSMQnBYR4tMbr0KFAIG5Wnk47O8lfVzCrzdof4CyCYz20yL7MXIoTI0
- HylC/R3XNZzvTWIDvaCQgdNb9HiqAfDfCX7W/nENLR52HlsrAvSwQWpOSgE8SAmzRejgH/UuVLU
- I73pBv6SnsAojmmWEiQCS5qq5UE0Tm5BuZWLl6uyngmN58KG/84MGayp6hDmXgoOtO6zzaYRHuN
- WHlkivl7nThW9cacqiFoEPWtM6OLV1rcK22WwJtHv/Gbucze2oHsrz2KMlA9K3TptAm1mNmKfZz
- lif6XnbA++D3T2sPuFYVKPyYSjoNesNeZNdOa9wHa+iMVT2MNz7xlB5SpfCCHdKSZgvT8W+kEZM
- Bk5D/L2y7wGHCBSC4tW5B/Tg=
-X-Google-Smtp-Source: AGHT+IFkZwvxSmVDmxgSasMbzlLFLbhVkG8wbrFW9ZSpxWsVrcMe5RBVXVH9Wp5gPkJf08/UW7+0Xw==
-X-Received: by 2002:a05:600c:3b11:b0:45d:d5fb:185b with SMTP id
- 5b1f17b1804b1-467eaf51178mr99398715e9.20.1758533844252; 
- Mon, 22 Sep 2025 02:37:24 -0700 (PDT)
+ AJvYcCVtmg+x0aD+kiMy1xaLx1rL/ZBQEjmxKx0nHOY3oNSsmyIr8yvutKd27xrX4j7sR40urPyOVQTkrg==@nongnu.org
+X-Gm-Message-State: AOJu0YzXOIcgrtPQe91g0frhA8DT8nIKNUHx/yje0WsAvl/wvK5RDlJT
+ bVVdZjzOig6WqXSiy+AD4IOHwqcSTgPlT/U7LNBUz+J7qkCdkJ5sO3EXVAoeqdJMUo8=
+X-Gm-Gg: ASbGnctz/Y7/bwBSKptogWrIwH47y+H/w/lq/8V9FdN3T0nviS7iB+jInhdrC4ZEMmc
+ gl8lGuBurnU80JbWqcheIprUvvJR6nJp296rAbnAbG+XRwd2PCL7HsBF6BKRc7dAZp/+5jin+Kx
+ 7GM0bSgSZpapI4r7Ex1ta7uy3xbPRMI2prTdt0o4eXdguNEUU5bHxucjpPnzH1pqiSwNeJD4FDq
+ 2d4BVCNgR75Ey1/+C5JXjbHVSoJZ04oMyrG3ov+0mYzpQ9z+NibuR83pjXQZS2KevbKX5JpSEIc
+ 65aYb3dgYx0tC/2xFrbbVJMXphO731X4HjEtu4y2TgE1p2YPqK8ZgGAH9FRbZglzlTPwi5ehC96
+ /E+C0K0Ksi9EqYXhvSs/rTgQ=
+X-Google-Smtp-Source: AGHT+IHzcbP4ZgAQ4czQX/WUR2ZTlhWheiedH3ZK+CqlCjpak/wZDsCWom84WogTfvuujwoB7Ghnwg==
+X-Received: by 2002:a05:6000:42c9:b0:3f7:b7ac:f3aa with SMTP id
+ ffacd0b85a97d-3f7b7acf7e9mr3396731f8f.29.1758533847808; 
+ Mon, 22 Sep 2025 02:37:27 -0700 (PDT)
 Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4613d42bee6sm241384845e9.15.2025.09.22.02.37.14
+ ffacd0b85a97d-3fd84338ca2sm4200856f8f.42.2025.09.22.02.37.19
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 22 Sep 2025 02:37:17 -0700 (PDT)
+ Mon, 22 Sep 2025 02:37:24 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 3896B5F9F7;
- Mon, 22 Sep 2025 10:37:12 +0100 (BST)
+ by draig.lan (Postfix) with ESMTP id 2C5255FA29;
+ Mon, 22 Sep 2025 10:37:13 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Palmer Dabbelt <palmer@dabbelt.com>, Alexandre Iooss <erdnaxe@crans.org>,
@@ -80,26 +80,25 @@ Cc: Palmer Dabbelt <palmer@dabbelt.com>, Alexandre Iooss <erdnaxe@crans.org>,
  Weiwei Li <liwei1518@gmail.com>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>,
  Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Richard Henderson <richard.henderson@linaro.org>
-Subject: [PATCH 07/25] semihosting/arm-compat-semi: change
- common_semi_sys_exit_extended
-Date: Mon, 22 Sep 2025 10:36:52 +0100
-Message-ID: <20250922093711.2768983-8-alex.bennee@linaro.org>
+ Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+Subject: [PATCH 17/25] contrib/plugins/uftrace: skeleton file
+Date: Mon, 22 Sep 2025 10:37:02 +0100
+Message-ID: <20250922093711.2768983-18-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20250922093711.2768983-1-alex.bennee@linaro.org>
 References: <20250922093711.2768983-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::333;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x333.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::431;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x431.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -117,66 +116,113 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 
-We now check only is sys_exit is extended.
-This allows to break dependency to TARGET_SYS_EXIT_EXTENDED which will
-not be available anymore from this code.
+We define a scoreboard that will hold our data per cpu. As well, we
+define a buffer per cpu that will be used to read registers and memories
+in a thread-safe way.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+For now, we just instrument all instructions with an empty callback.
+
+Reviewed-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Message-ID: <20250822150058.18692-5-pierrick.bouvier@linaro.org>
+Message-ID: <20250902075042.223990-2-pierrick.bouvier@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- target/arm/common-semi-target.h   | 4 ++--
- target/riscv/common-semi-target.h | 4 ++--
- semihosting/arm-compat-semi.c     | 3 ++-
- 3 files changed, 6 insertions(+), 5 deletions(-)
+ contrib/plugins/uftrace.c   | 73 +++++++++++++++++++++++++++++++++++++
+ contrib/plugins/meson.build |  3 +-
+ 2 files changed, 75 insertions(+), 1 deletion(-)
+ create mode 100644 contrib/plugins/uftrace.c
 
-diff --git a/target/arm/common-semi-target.h b/target/arm/common-semi-target.h
-index da51f2d7f54..7bb442f24ca 100644
---- a/target/arm/common-semi-target.h
-+++ b/target/arm/common-semi-target.h
-@@ -34,9 +34,9 @@ static inline void common_semi_set_ret(CPUState *cs, target_ulong ret)
-     }
- }
- 
--static inline bool common_semi_sys_exit_extended(CPUState *cs, int nr)
-+static inline bool common_semi_sys_exit_is_extended(CPUState *cs)
- {
--    return nr == TARGET_SYS_EXIT_EXTENDED || is_a64(cpu_env(cs));
-+    return is_a64(cpu_env(cs));
- }
- 
- static inline bool is_64bit_semihosting(CPUArchState *env)
-diff --git a/target/riscv/common-semi-target.h b/target/riscv/common-semi-target.h
-index 7c8a59e0cc3..ba40e794dcc 100644
---- a/target/riscv/common-semi-target.h
-+++ b/target/riscv/common-semi-target.h
-@@ -25,9 +25,9 @@ static inline void common_semi_set_ret(CPUState *cs, target_ulong ret)
-     env->gpr[xA0] = ret;
- }
- 
--static inline bool common_semi_sys_exit_extended(CPUState *cs, int nr)
-+static inline bool common_semi_sys_exit_is_extended(CPUState *cs)
- {
--    return (nr == TARGET_SYS_EXIT_EXTENDED || sizeof(target_ulong) == 8);
-+    return sizeof(target_ulong) == 8;
- }
- 
- static inline bool is_64bit_semihosting(CPUArchState *env)
-diff --git a/semihosting/arm-compat-semi.c b/semihosting/arm-compat-semi.c
-index a239cfc5a9d..26263a06b7a 100644
---- a/semihosting/arm-compat-semi.c
-+++ b/semihosting/arm-compat-semi.c
-@@ -755,7 +755,8 @@ void do_common_semihosting(CPUState *cs)
-     {
-         uint32_t ret;
- 
--        if (common_semi_sys_exit_extended(cs, nr)) {
-+        if (nr == TARGET_SYS_EXIT_EXTENDED ||
-+            common_semi_sys_exit_is_extended(cs)) {
-             /*
-              * The A64 version of SYS_EXIT takes a parameter block,
-              * so the application-exit type can return a subcode which
+diff --git a/contrib/plugins/uftrace.c b/contrib/plugins/uftrace.c
+new file mode 100644
+index 00000000000..4af0130b159
+--- /dev/null
++++ b/contrib/plugins/uftrace.c
+@@ -0,0 +1,73 @@
++/*
++ * Copyright (C) 2025, Pierrick Bouvier <pierrick.bouvier@linaro.org>
++ *
++ * Generates a trace compatible with uftrace (similar to uftrace record).
++ * https://github.com/namhyung/uftrace
++ *
++ * See docs/about/emulation.rst|Uftrace for details and examples.
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include <qemu-plugin.h>
++#include <glib.h>
++
++QEMU_PLUGIN_EXPORT int qemu_plugin_version = QEMU_PLUGIN_VERSION;
++
++typedef struct Cpu {
++    GByteArray *buf;
++} Cpu;
++
++static struct qemu_plugin_scoreboard *score;
++
++static void track_callstack(unsigned int cpu_index, void *udata)
++{
++}
++
++static void vcpu_tb_trans(qemu_plugin_id_t id, struct qemu_plugin_tb *tb)
++{
++    size_t n_insns = qemu_plugin_tb_n_insns(tb);
++
++    for (size_t i = 0; i < n_insns; i++) {
++        struct qemu_plugin_insn *insn = qemu_plugin_tb_get_insn(tb, i);
++
++        uintptr_t pc = qemu_plugin_insn_vaddr(insn);
++        qemu_plugin_register_vcpu_insn_exec_cb(insn, track_callstack,
++                                               QEMU_PLUGIN_CB_R_REGS,
++                                               (void *) pc);
++    }
++}
++
++static void vcpu_init(qemu_plugin_id_t id, unsigned int vcpu_index)
++{
++    Cpu *cpu = qemu_plugin_scoreboard_find(score, vcpu_index);
++    cpu->buf = g_byte_array_new();
++}
++
++static void vcpu_end(unsigned int vcpu_index)
++{
++    Cpu *cpu = qemu_plugin_scoreboard_find(score, vcpu_index);
++    g_byte_array_free(cpu->buf, true);
++    memset(cpu, 0, sizeof(Cpu));
++}
++
++static void at_exit(qemu_plugin_id_t id, void *data)
++{
++    for (size_t i = 0; i < qemu_plugin_num_vcpus(); ++i) {
++        vcpu_end(i);
++    }
++
++    qemu_plugin_scoreboard_free(score);
++}
++
++QEMU_PLUGIN_EXPORT int qemu_plugin_install(qemu_plugin_id_t id,
++                                           const qemu_info_t *info,
++                                           int argc, char **argv)
++{
++    score = qemu_plugin_scoreboard_new(sizeof(Cpu));
++    qemu_plugin_register_vcpu_init_cb(id, vcpu_init);
++    qemu_plugin_register_atexit_cb(id, at_exit, NULL);
++    qemu_plugin_register_vcpu_tb_trans_cb(id, vcpu_tb_trans);
++
++    return 0;
++}
+diff --git a/contrib/plugins/meson.build b/contrib/plugins/meson.build
+index 1876bc78438..7eb3629c95d 100644
+--- a/contrib/plugins/meson.build
++++ b/contrib/plugins/meson.build
+@@ -1,5 +1,6 @@
+ contrib_plugins = ['bbv', 'cache', 'cflow', 'drcov', 'execlog', 'hotblocks',
+-                   'hotpages', 'howvec', 'hwprofile', 'ips', 'stoptrigger']
++                   'hotpages', 'howvec', 'hwprofile', 'ips', 'stoptrigger',
++                   'uftrace']
+ if host_os != 'windows'
+   # lockstep uses socket.h
+   contrib_plugins += 'lockstep'
 -- 
 2.47.3
 

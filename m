@@ -4,86 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE885CA100F
-	for <qemu-arm@archiver.kernel.org>; Mon, 22 Sep 2025 18:55:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6416CCAC592
+	for <qemu-arm@archiver.kernel.org>; Mon, 22 Sep 2025 18:56:05 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v0lbj-0004k5-QK; Mon, 22 Sep 2025 14:49:51 -0400
+	id 1v0lbp-0004pS-Td; Mon, 22 Sep 2025 14:49:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1v0lbf-0004fW-FG
- for qemu-arm@nongnu.org; Mon, 22 Sep 2025 14:49:47 -0400
-Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
+ id 1v0lbl-0004mC-Cv
+ for qemu-arm@nongnu.org; Mon, 22 Sep 2025 14:49:53 -0400
+Received: from mail-pf1-x42d.google.com ([2607:f8b0:4864:20::42d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1v0lbW-00044r-Ib
- for qemu-arm@nongnu.org; Mon, 22 Sep 2025 14:49:45 -0400
-Received: by mail-pf1-x429.google.com with SMTP id
- d2e1a72fcca58-77f2e621ef8so1704438b3a.0
- for <qemu-arm@nongnu.org>; Mon, 22 Sep 2025 11:49:37 -0700 (PDT)
+ id 1v0lbg-00048U-Qx
+ for qemu-arm@nongnu.org; Mon, 22 Sep 2025 14:49:53 -0400
+Received: by mail-pf1-x42d.google.com with SMTP id
+ d2e1a72fcca58-77f35113821so1180391b3a.0
+ for <qemu-arm@nongnu.org>; Mon, 22 Sep 2025 11:49:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1758566976; x=1759171776; darn=nongnu.org;
+ d=linaro.org; s=google; t=1758566986; x=1759171786; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Og9JNUSJhtxcO4q7du8DvVfoQI0JDprhWczIVzB4Jaw=;
- b=LGbNeFMdYP1Dt2Tvr/h/fZ4btB1ZqG9xED/DvHP8g+1Ta2blqm6p4UOXISjYBYyw28
- PhUqUMwbGxNeGmHghUO65mFzX5jTFL9mvaTZG6yQsZwvoT4k3MngNbYnN4EnLos5Lrsi
- 99rS02Z7T2eLkR72Qz7WCuH0ZuGouPFDH8hqdtqh1RjHHfZIC7lLP9A95vREcPvyxU18
- Akq+EpGt+xh/278sDRfKL+g4zfGO1Nb/CZ2rO8ypKDgoFdGrtb+dNp9/YXGjhwcK9kte
- VSRieX7kIlB/j41Ja0R6s6F3ZryyEf/RemSvz1niUlrF2qVJlND3lipn9IUql289qAFY
- qQVg==
+ bh=itJOo7yOK2M+RLljfiwxs6NiYNiCxqgpNJLYncMVRhQ=;
+ b=oOwEe9iFZuKXTrVVufISycHZrK0RASibGYbJBS1sZRK7Uhv3GzyawCPWC57neLkms9
+ x+3TEpInfkfcXIRnbiYWe8HjQGG6yLuwyeMNv2FfJzpLLRpYrAfwLjLQpOjRCsaBAHMi
+ JiN7PC3dvZwTgn1jsObWIchW/ufEDC4a7zk5zvOqniorlItBLslOTu7XHQR5z97Mwp2I
+ L2ntI/qf/BQmv/EG/RbFA43y64NBIFOUJqiO6u52yH4W5JvptI0LFAcKdzFGjbjlI5rx
+ mNNx7fBbl4hlVt/spueSnj4pBfJ6QfI7qrNiyQJ6Bq31rKXHMmHz4d/XPEV9xMy0kr2b
+ YRXw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1758566976; x=1759171776;
+ d=1e100.net; s=20230601; t=1758566986; x=1759171786;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=Og9JNUSJhtxcO4q7du8DvVfoQI0JDprhWczIVzB4Jaw=;
- b=WqtW0mE2svFBlosXnVeOybqlyfs0LIcHaSSrcJl+YvEYPyzcJSpB2pFstGeEHUugLh
- XTcKZjwCMZJ11KfZffca8iLbXmHbnTNzqxwX0RQmtjEg+qx2lYuyz7lirY3vYOmgUA7N
- qSSMq5ILut2/K9XqPCNVaOb7g5GiJhfUHVvpTOBMM5kgF4GuoHyOAsV0SzyLqYT5Z2fY
- /gatdiNEmQcb5yM8YxYZk0fn6SnxJo4g2bX8be5McN6Rb62MwEnrUvT01x5VgZNB4k3Y
- 71z+Rvo/l6zqYXYdU1D2StfyhNtfCr/WEBeeX0jPfi5yeAAmFsQeGFTT0SoZK3xnnyxr
- 3y1A==
-X-Gm-Message-State: AOJu0YyfAqk9HQOccCj2+tcwKfa5Tw5Ku7lMdrb69rLSGrvKC0A1+rJu
- Q+vHHVrwHHHVoaSCjKNIR4Qzp5YnCy3kL9DYHFmAMNuMtMOQeroVC10YDJDD5oHADj8=
-X-Gm-Gg: ASbGncvSH0K+myd5ZYSvvLZhWAOVyOWnZMFmiIBRItMQGusLUYGMUQiMv7wGExZAYsy
- cEXq1ZPD/rTdAQptqPGXFJbgxDgYaL4hxGVgZlRU5WDclWYaZdNyoNBRJehAEA0hLzhLyb6U5zq
- pUVOOD5KDyUY2YFRYEK8s8JG+RuIRz+3Yfj8Ecfq/MR8nGoXaxiXd/fm0vlwr+14DBL/h0NlRe5
- Mj7fPmUVa+Jnh/WGi6ehIeN2fS5eN1ha3qSLCZPi/9h7nk21iDjYkWbZ96k8c8nT+ynePfN614J
- tHS28/E2ylVP76kUBTqJFL/sC0UlwYPXU2K9u1iEblrueZcBeIVyW0eD3MiBL0CP2gBfkIvFiWK
- UCYxkYjaJQoBcQlULiknMFix4i7lV
-X-Google-Smtp-Source: AGHT+IGdWYZL90qwpY09ICZdypBV24pVOOo/K8jdSfx+E4CZvwPzjpIGQ+J5lVLJ3HlG+kic6iBBTg==
-X-Received: by 2002:a05:6a20:a10c:b0:246:7032:2c1d with SMTP id
- adf61e73a8af0-2cfdfe1be61mr116046637.23.1758566975680; 
- Mon, 22 Sep 2025 11:49:35 -0700 (PDT)
+ bh=itJOo7yOK2M+RLljfiwxs6NiYNiCxqgpNJLYncMVRhQ=;
+ b=r8CXga3uWXEEXd/7IFi5mzOKd6EHOJ/0DWIrvpRHwqT9XcufZvwv1xAZ+kpqTgtYMz
+ 5+/oec/Y0C2B1veMm7w098iwwx0mzQTmixXl5CE2GmvcwG/FIMFjxES1vqL/lGh4a5oG
+ 7MktCSo6A/ejpljMzlXsv8w6RTa7JaLKsmIsxEwaYQVVgE4I+dnfJCgnSFFvjcO4Q0tb
+ d08QH06QH9HB+YuiY6FB604uJ2rI/D1KfN7fPEFsmKMWmWoqb4mWwIAgqGprcBGuNRWw
+ DxcaE+AxZQcSop6rOkvTZWWztcPm99wAgYRVenRQaFo5HsnPMXNcohyqqFZZuf77dybW
+ 64QQ==
+X-Gm-Message-State: AOJu0Yy5t1tcXx2EybhwSr2U4SDrw3UWbKR4jUvHxWpP9UuCoeZCOU8X
+ DFJNMMP8ASiiJD8aT5d6IrX2+6hxlHg0NAx5x4f263Bw7HOuhaA+UYNAFSCsEKoC6ZQ=
+X-Gm-Gg: ASbGncs6CCI+AJxuikspHgO+Fx23sjz12ahYbHUwN1NGduXrbetcubrlD3YTfEC0qBf
+ uaa/9x4ONMVmnXBwvPO8hxH9366WDxKgYeapmfMz0xPwptOVAkUBjAz/6BB1AJFhG1u1ojUW41z
+ HPM+3mQXF+oUKj/r24coVGIEPIm8XhRk68PUuWQtWaHAMz4TXKdpNBSZRSDE/8pYpxSo/goCGnc
+ nD91PbNub60KWCjiZUW25k7SnAQXJYQtDtFgfOFn/Wz9kIraIiTOiqzqgSyH8PcYQzH/Mcm914W
+ r0QF5J5g0eL14/902bzpvRa1/wgc4ZlVPZftfaZ6Ac/cLrJ+n/3lpzJMzhpD250p7kamqRUfcPU
+ TQcn4MssvWu4UcbBdmtahU9e/hA6wRbV5hF7Cjws=
+X-Google-Smtp-Source: AGHT+IGMHkJkHlpYKOMqYn+0ytHaNsDioMGeY5EA+HGTNuG7yGkbNx8zPdKc6zkQ3bdrJusEvyqqpA==
+X-Received: by 2002:a05:6a20:a122:b0:279:90c2:f872 with SMTP id
+ adf61e73a8af0-2cfd4836b81mr157201637.11.1758566986576; 
+ Mon, 22 Sep 2025 11:49:46 -0700 (PDT)
 Received: from stoup.. ([71.212.157.132]) by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-77e5fe6de75sm10583861b3a.19.2025.09.22.11.49.34
+ d2e1a72fcca58-77e5fe6de75sm10583861b3a.19.2025.09.22.11.49.45
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 22 Sep 2025 11:49:34 -0700 (PDT)
+ Mon, 22 Sep 2025 11:49:45 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
-	Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v5 07/76] target/arm: Implement get_S1prot_indirect
-Date: Mon, 22 Sep 2025 11:48:15 -0700
-Message-ID: <20250922184924.2754205-8-richard.henderson@linaro.org>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Subject: [PATCH v5 14/76] include/hw/core/cpu: Introduce cpu_tlb_fast
+Date: Mon, 22 Sep 2025 11:48:22 -0700
+Message-ID: <20250922184924.2754205-15-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250922184924.2754205-1-richard.henderson@linaro.org>
 References: <20250922184924.2754205-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::429;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x429.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42d;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -99,227 +101,138 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This approximately corresponds to AArch64.S1IndirectBasePermissions
-and the tail of AArch64.S1ComputePermissions which applies WXN.
+Encapsulate access to cpu->neg.tlb.f[] in a function.
 
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/ptw.c | 169 +++++++++++++++++++++++++++++++++++++++--------
- 1 file changed, 143 insertions(+), 26 deletions(-)
+ include/hw/core/cpu.h        |  7 +++++++
+ accel/tcg/cputlb.c           | 16 ++++++++--------
+ tcg/aarch64/tcg-target.c.inc |  2 +-
+ tcg/arm/tcg-target.c.inc     |  2 +-
+ 4 files changed, 17 insertions(+), 10 deletions(-)
 
-diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-index d6d704e2a9..4fb4436db1 100644
---- a/target/arm/ptw.c
-+++ b/target/arm/ptw.c
-@@ -1448,6 +1448,106 @@ static int get_S1prot(CPUARMState *env, ARMMMUIdx mmu_idx, bool is_aa64,
-     return prot_rw | PAGE_EXEC;
+diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+index a7038b8c07..30e335d7d0 100644
+--- a/include/hw/core/cpu.h
++++ b/include/hw/core/cpu.h
+@@ -594,6 +594,13 @@ static inline CPUArchState *cpu_env(CPUState *cpu)
+     return (CPUArchState *)(cpu + 1);
  }
  
-+/* Extra page permission bits, during get_S1prot_indirect only. */
-+#define PAGE_GCS      (1 << 3)
-+#define PAGE_WXN      (1 << 4)
-+#define PAGE_OVERLAY  (1 << 5)
-+QEMU_BUILD_BUG_ON(PAGE_RWX & (PAGE_GCS | PAGE_WXN | PAGE_OVERLAY));
-+
-+static int get_S1prot_indirect(CPUARMState *env, S1Translate *ptw,
-+                               ARMMMUIdx mmu_idx, int pi_index, int po_index,
-+                               ARMSecuritySpace in_pa, ARMSecuritySpace out_pa)
++#ifdef CONFIG_TCG
++static inline CPUTLBDescFast *cpu_tlb_fast(CPUState *cpu, int mmu_idx)
 +{
-+    static const uint8_t perm_table[16] = {
-+        /* 0 */ PAGE_OVERLAY,  /* no access */
-+        /* 1 */ PAGE_OVERLAY | PAGE_READ,
-+        /* 2 */ PAGE_OVERLAY | PAGE_EXEC,
-+        /* 3 */ PAGE_OVERLAY | PAGE_READ | PAGE_EXEC,
-+        /* 4 */ PAGE_OVERLAY,  /* reserved */
-+        /* 5 */ PAGE_OVERLAY | PAGE_READ | PAGE_WRITE,
-+        /* 6 */ PAGE_OVERLAY | PAGE_READ | PAGE_WRITE | PAGE_EXEC | PAGE_WXN,
-+        /* 7 */ PAGE_OVERLAY | PAGE_READ | PAGE_WRITE | PAGE_EXEC,
-+        /* 8 */ PAGE_READ,
-+        /* 9 */ PAGE_READ | PAGE_GCS,
-+        /* A */ PAGE_READ | PAGE_EXEC,
-+        /* B */ 0,             /* reserved */
-+        /* C */ PAGE_READ | PAGE_WRITE,
-+        /* D */ 0,             /* reserved */
-+        /* E */ PAGE_READ | PAGE_WRITE | PAGE_EXEC,
-+        /* F */ 0,             /* reserved */
-+    };
-+
-+    uint32_t el = regime_el(env, mmu_idx);
-+    uint64_t pir = env->cp15.pir_el[el];
-+    uint64_t pire0 = 0;
-+    int perm;
-+
-+    if (el < 3) {
-+        if (arm_feature(env, ARM_FEATURE_EL3)
-+            && !(env->cp15.scr_el3 & SCR_PIEN)) {
-+            pir = 0;
-+        } else if (el == 2) {
-+            pire0 = env->cp15.pire0_el2;
-+        } else if (!ptw->in_nv1) {
-+            pire0 = env->cp15.pir_el[0];
-+        }
-+    }
-+    perm = perm_table[extract64(pir, pi_index * 4, 4)];
-+
-+    if (regime_has_2_ranges(mmu_idx)) {
-+        int p_perm = perm;
-+        int u_perm = perm_table[extract64(pire0, pi_index * 4, 4)];
-+
-+        if ((p_perm & (PAGE_EXEC | PAGE_GCS)) &&
-+            (u_perm & (PAGE_WRITE | PAGE_GCS))) {
-+            p_perm &= ~(PAGE_RWX | PAGE_GCS);
-+            u_perm &= ~(PAGE_RWX | PAGE_GCS);
-+        }
-+        if ((u_perm & (PAGE_RWX | PAGE_GCS)) && regime_is_pan(env, mmu_idx)) {
-+            p_perm &= ~(PAGE_READ | PAGE_WRITE);
-+        }
-+        perm = regime_is_user(env, mmu_idx) ? u_perm : p_perm;
-+    }
-+
-+    if (in_pa != out_pa) {
-+        switch (in_pa) {
-+        case ARMSS_Root:
-+            /*
-+             * R_ZWRVD: permission fault for insn fetched from non-Root,
-+             * I_WWBFB: SIF has no effect in EL3.
-+             */
-+            perm &= ~(PAGE_EXEC | PAGE_GCS);
-+            break;
-+        case ARMSS_Realm:
-+            /*
-+             * R_PKTDS: permission fault for insn fetched from non-Realm,
-+             * for Realm EL2 or EL2&0.  The corresponding fault for EL1&0
-+             * happens during any stage2 translation.
-+             */
-+            if (el == 2) {
-+                perm &= ~(PAGE_EXEC | PAGE_GCS);
-+            }
-+            break;
-+        case ARMSS_Secure:
-+            if (env->cp15.scr_el3 & SCR_SIF) {
-+                perm &= ~(PAGE_EXEC | PAGE_GCS);
-+            }
-+            break;
-+        default:
-+            /* Input NonSecure must have output NonSecure. */
-+            g_assert_not_reached();
-+        }
-+    }
-+
-+    if (perm & PAGE_WXN) {
-+        perm &= ~PAGE_EXEC;
-+    }
-+
-+    /* TODO: FEAT_GCS */
-+
-+    return perm & PAGE_RWX;
++    return &cpu->neg.tlb.f[mmu_idx];
 +}
++#endif
 +
- static ARMVAParameters aa32_va_parameters(CPUARMState *env, uint32_t va,
-                                           ARMMMUIdx mmu_idx)
+ typedef QTAILQ_HEAD(CPUTailQ, CPUState) CPUTailQ;
+ extern CPUTailQ cpus_queue;
+ 
+diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c
+index d324f33339..2a6aa01c57 100644
+--- a/accel/tcg/cputlb.c
++++ b/accel/tcg/cputlb.c
+@@ -129,7 +129,7 @@ static inline uint64_t tlb_addr_write(const CPUTLBEntry *entry)
+ static inline uintptr_t tlb_index(CPUState *cpu, uintptr_t mmu_idx,
+                                   vaddr addr)
  {
-@@ -1677,7 +1777,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
-     int32_t stride;
-     int addrsize, inputsize, outputsize;
-     uint64_t tcr = regime_tcr(env, mmu_idx);
--    int ap, xn, pxn;
-+    int ap;
-     uint32_t el = regime_el(env, mmu_idx);
-     uint64_t descaddrmask;
-     bool aarch64 = arm_el_is_aa64(env, el);
-@@ -2011,7 +2111,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
-             out_space = ARMSS_NonSecure;
-             result->f.prot = get_S2prot_noexecute(ap);
-         } else {
--            xn = extract64(attrs, 53, 2);
-+            int xn = extract64(attrs, 53, 2);
-             result->f.prot = get_S2prot(env, ap, xn, ptw->in_s1_is_el0);
-         }
+-    uintptr_t size_mask = cpu->neg.tlb.f[mmu_idx].mask >> CPU_TLB_ENTRY_BITS;
++    uintptr_t size_mask = cpu_tlb_fast(cpu, mmu_idx)->mask >> CPU_TLB_ENTRY_BITS;
  
-@@ -2027,7 +2127,6 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
-         int nse, ns = extract32(attrs, 5, 1);
-         uint8_t attrindx;
-         uint64_t mair;
--        int user_rw, prot_rw;
+     return (addr >> TARGET_PAGE_BITS) & size_mask;
+ }
+@@ -138,7 +138,7 @@ static inline uintptr_t tlb_index(CPUState *cpu, uintptr_t mmu_idx,
+ static inline CPUTLBEntry *tlb_entry(CPUState *cpu, uintptr_t mmu_idx,
+                                      vaddr addr)
+ {
+-    return &cpu->neg.tlb.f[mmu_idx].table[tlb_index(cpu, mmu_idx, addr)];
++    return &cpu_tlb_fast(cpu, mmu_idx)->table[tlb_index(cpu, mmu_idx, addr)];
+ }
  
-         switch (out_space) {
-         case ARMSS_Root:
-@@ -2076,33 +2175,51 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
-         default:
-             g_assert_not_reached();
-         }
--        xn = extract64(attrs, 54, 1);
--        pxn = extract64(attrs, 53, 1);
+ static void tlb_window_reset(CPUTLBDesc *desc, int64_t ns,
+@@ -292,7 +292,7 @@ static void tlb_flush_one_mmuidx_locked(CPUState *cpu, int mmu_idx,
+                                         int64_t now)
+ {
+     CPUTLBDesc *desc = &cpu->neg.tlb.d[mmu_idx];
+-    CPUTLBDescFast *fast = &cpu->neg.tlb.f[mmu_idx];
++    CPUTLBDescFast *fast = cpu_tlb_fast(cpu, mmu_idx);
  
--        if (el == 1 && ptw->in_nv1) {
-+        if (param.pie) {
-+            int pi = extract64(attrs, 6, 1)
-+                   | (extract64(attrs, 51, 1) << 1)
-+                   | (extract64(attrs, 53, 2) << 2);
-+            int po = extract64(attrs, 60, 3);
-             /*
--             * With FEAT_NV, when HCR_EL2.{NV,NV1} == {1,1}, the block/page
--             * descriptor bit 54 holds PXN, 53 is RES0, and the effective value
--             * of UXN is 0. Similarly for bits 59 and 60 in table descriptors
--             * (which we have already folded into bits 53 and 54 of attrs).
--             * AP[1] (descriptor bit 6, our ap bit 0) is treated as 0.
--             * Similarly, APTable[0] from the table descriptor is treated as 0;
--             * we already folded this into AP[1] and squashing that to 0 does
--             * the right thing.
-+             * Note that we modified ptw->in_space earlier for NSTable, but
-+             * result->f.attrs retains a copy of the original security space.
-              */
--            pxn = xn;
--            xn = 0;
--            ap &= ~1;
--        }
-+            result->f.prot = get_S1prot_indirect(env, ptw, mmu_idx, pi, po,
-+                                                 result->f.attrs.space,
-+                                                 out_space);
-+        } else {
-+            int xn = extract64(attrs, 54, 1);
-+            int pxn = extract64(attrs, 53, 1);
-+            int user_rw, prot_rw;
+     tlb_mmu_resize_locked(desc, fast, now);
+     tlb_mmu_flush_locked(desc, fast);
+@@ -331,7 +331,7 @@ void tlb_init(CPUState *cpu)
+     cpu->neg.tlb.c.dirty = 0;
  
--        user_rw = simple_ap_to_rw_prot_is_user(ap, true);
--        prot_rw = simple_ap_to_rw_prot_is_user(ap, false);
--        /*
--         * Note that we modified ptw->in_space earlier for NSTable, but
--         * result->f.attrs retains a copy of the original security space.
--         */
--        result->f.prot = get_S1prot(env, mmu_idx, aarch64, user_rw, prot_rw,
--                                    xn, pxn, result->f.attrs.space, out_space);
-+            if (el == 1 && ptw->in_nv1) {
-+                /*
-+                 * With FEAT_NV, when HCR_EL2.{NV,NV1} == {1,1},
-+                 * the block/page descriptor bit 54 holds PXN,
-+                 * 53 is RES0, and the effective value of UXN is 0.
-+                 * Similarly for bits 59 and 60 in table descriptors
-+                 * (which we have already folded into bits 53 and 54 of attrs).
-+                 * AP[1] (descriptor bit 6, our ap bit 0) is treated as 0.
-+                 * Similarly, APTable[0] from the table descriptor is treated
-+                 * as 0; we already folded this into AP[1] and squashing
-+                 * that to 0 does the right thing.
-+                 */
-+                pxn = xn;
-+                xn = 0;
-+                ap &= ~1;
-+            }
-+
-+            user_rw = simple_ap_to_rw_prot_is_user(ap, true);
-+            prot_rw = simple_ap_to_rw_prot_is_user(ap, false);
-+            /*
-+             * Note that we modified ptw->in_space earlier for NSTable, but
-+             * result->f.attrs retains a copy of the original security space.
-+             */
-+            result->f.prot = get_S1prot(env, mmu_idx, aarch64,
-+                                        user_rw, prot_rw, xn, pxn,
-+                                        result->f.attrs.space, out_space);
-+        }
+     for (i = 0; i < NB_MMU_MODES; i++) {
+-        tlb_mmu_init(&cpu->neg.tlb.d[i], &cpu->neg.tlb.f[i], now);
++        tlb_mmu_init(&cpu->neg.tlb.d[i], cpu_tlb_fast(cpu, i), now);
+     }
+ }
  
-         /* Index into MAIR registers for cache attributes */
-         attrindx = extract32(attrs, 2, 3);
+@@ -342,7 +342,7 @@ void tlb_destroy(CPUState *cpu)
+     qemu_spin_destroy(&cpu->neg.tlb.c.lock);
+     for (i = 0; i < NB_MMU_MODES; i++) {
+         CPUTLBDesc *desc = &cpu->neg.tlb.d[i];
+-        CPUTLBDescFast *fast = &cpu->neg.tlb.f[i];
++        CPUTLBDescFast *fast = cpu_tlb_fast(cpu, i);
+ 
+         g_free(fast->table);
+         g_free(desc->fulltlb);
+@@ -667,7 +667,7 @@ static void tlb_flush_range_locked(CPUState *cpu, int midx,
+                                    unsigned bits)
+ {
+     CPUTLBDesc *d = &cpu->neg.tlb.d[midx];
+-    CPUTLBDescFast *f = &cpu->neg.tlb.f[midx];
++    CPUTLBDescFast *f = cpu_tlb_fast(cpu, midx);
+     vaddr mask = MAKE_64BIT_MASK(0, bits);
+ 
+     /*
+@@ -923,7 +923,7 @@ void tlb_reset_dirty(CPUState *cpu, uintptr_t start, uintptr_t length)
+     qemu_spin_lock(&cpu->neg.tlb.c.lock);
+     for (mmu_idx = 0; mmu_idx < NB_MMU_MODES; mmu_idx++) {
+         CPUTLBDesc *desc = &cpu->neg.tlb.d[mmu_idx];
+-        CPUTLBDescFast *fast = &cpu->neg.tlb.f[mmu_idx];
++        CPUTLBDescFast *fast = cpu_tlb_fast(cpu, mmu_idx);
+         unsigned int n = tlb_n_entries(fast);
+         unsigned int i;
+ 
+@@ -1316,7 +1316,7 @@ static bool victim_tlb_hit(CPUState *cpu, size_t mmu_idx, size_t index,
+ 
+         if (cmp == page) {
+             /* Found entry in victim tlb, swap tlb and iotlb.  */
+-            CPUTLBEntry tmptlb, *tlb = &cpu->neg.tlb.f[mmu_idx].table[index];
++            CPUTLBEntry tmptlb, *tlb = &cpu_tlb_fast(cpu, mmu_idx)->table[index];
+ 
+             qemu_spin_lock(&cpu->neg.tlb.c.lock);
+             copy_tlb_helper_locked(&tmptlb, tlb);
+diff --git a/tcg/aarch64/tcg-target.c.inc b/tcg/aarch64/tcg-target.c.inc
+index 3b088b7bd9..caf79c742d 100644
+--- a/tcg/aarch64/tcg-target.c.inc
++++ b/tcg/aarch64/tcg-target.c.inc
+@@ -1668,7 +1668,7 @@ static TCGLabelQemuLdst *prepare_host_addr(TCGContext *s, HostAddress *h,
+         ldst->oi = oi;
+         ldst->addr_reg = addr_reg;
+ 
+-        /* Load cpu->neg.tlb.f[mmu_idx].{mask,table} into {tmp0,tmp1}. */
++        /* Load CPUTLBDescFast.{mask,table} into {tmp0,tmp1}. */
+         QEMU_BUILD_BUG_ON(offsetof(CPUTLBDescFast, mask) != 0);
+         QEMU_BUILD_BUG_ON(offsetof(CPUTLBDescFast, table) != 8);
+         tcg_out_insn(s, 3314, LDP, TCG_REG_TMP0, TCG_REG_TMP1, TCG_AREG0,
+diff --git a/tcg/arm/tcg-target.c.inc b/tcg/arm/tcg-target.c.inc
+index 338c57b061..87ca66bb02 100644
+--- a/tcg/arm/tcg-target.c.inc
++++ b/tcg/arm/tcg-target.c.inc
+@@ -1421,7 +1421,7 @@ static TCGLabelQemuLdst *prepare_host_addr(TCGContext *s, HostAddress *h,
+         ldst->oi = oi;
+         ldst->addr_reg = addr;
+ 
+-        /* Load cpu->neg.tlb.f[mmu_idx].{mask,table} into {r0,r1}.  */
++        /* Load CPUTLBDescFast.{mask,table} into {r0,r1}.  */
+         QEMU_BUILD_BUG_ON(offsetof(CPUTLBDescFast, mask) != 0);
+         QEMU_BUILD_BUG_ON(offsetof(CPUTLBDescFast, table) != 4);
+         tcg_out_ldrd_8(s, COND_AL, TCG_REG_R0, TCG_AREG0, fast_off);
 -- 
 2.43.0
 

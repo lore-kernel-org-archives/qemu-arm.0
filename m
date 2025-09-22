@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A24F2CAC5A7
-	for <qemu-arm@archiver.kernel.org>; Mon, 22 Sep 2025 09:41:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E0C4CAC592
+	for <qemu-arm@archiver.kernel.org>; Mon, 22 Sep 2025 09:41:50 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v0d0s-0004lZ-Kj; Mon, 22 Sep 2025 05:39:14 -0400
+	id 1v0d0e-00041L-OW; Mon, 22 Sep 2025 05:39:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1v0czk-0002UW-9P
- for qemu-arm@nongnu.org; Mon, 22 Sep 2025 05:38:08 -0400
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+ id 1v0czF-00028d-Md
+ for qemu-arm@nongnu.org; Mon, 22 Sep 2025 05:37:36 -0400
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1v0czC-0000gB-E2
- for qemu-arm@nongnu.org; Mon, 22 Sep 2025 05:38:03 -0400
-Received: by mail-wm1-x335.google.com with SMTP id
- 5b1f17b1804b1-45dcfecdc0fso36728555e9.1
- for <qemu-arm@nongnu.org>; Mon, 22 Sep 2025 02:37:27 -0700 (PDT)
+ id 1v0cz4-0000cO-4O
+ for qemu-arm@nongnu.org; Mon, 22 Sep 2025 05:37:33 -0400
+Received: by mail-wr1-x42c.google.com with SMTP id
+ ffacd0b85a97d-3f99ac9acc4so985970f8f.3
+ for <qemu-arm@nongnu.org>; Mon, 22 Sep 2025 02:37:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1758533846; x=1759138646; darn=nongnu.org;
+ d=linaro.org; s=google; t=1758533835; x=1759138635; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=S4WNTy7QbDl7ReDD5PUvCAXuciU8b39SjZqZspkFta4=;
- b=n4iXFapDqjeBYZkvriC0g4xEVvmtxf38qkhnvbVIF80WiBsVE1KHBKJJoLnsRssTL3
- s5NDCbLXuwB07WR4Eq2KfrZVEn5mjRK2AcvYQkBBWaCvMV58XkzH3hbyUqjVE0wp00TK
- bXryvpOOwEssa+pVGshIgGmEYLgg6WBM8vrRjujUg7GcMjbfymM4PgsBMhwc9/kzuIup
- L4h+7wMVtwQ0w574tziTvdbJIGA8I2lJKAjWnuO57dkYalTzgvcyHMMytxFQ0J0ErgQu
- scMHevg2lwT+ChlX33O9jOCid+ObLdX+fNGJNcFSnqACvgJXs6AGGSps+8qivaHe6wfh
- JcyQ==
+ bh=p7AJahUMqP4H52ZjgDIGUlzyg5ExoTqCJvWrQsOM+Os=;
+ b=Bg/SRRFWdo1eoN1rrUiX+oMyQW5KptzRh/TvTfXBdhYWtscq65fuWo4pfjWACOWc0G
+ MuEvFRbVQZ2CeQOJtSlBe09oJuiF4og/q2AEL9lAo+dAVSh9CKejD1XM9zKQWIF9FHt0
+ IbEW/KERg5mq1LEJVdj9lYPxp9Gt2VXM6zpN9g/jEKejFJsZKzETa0dIGPhVpfqjMHmN
+ lnI3DbL3mBVrn6zVTmmo7tOwXZBfeDuRe9R3Q6joQ3AXVRm1/KQUeZICju66YiH0PDvF
+ TRa4di5yce/gtTtpzrJ/bB+aGTRO+azqbJk76AJoRlB9Lqt6vkegECf/HG8CAWeS4oou
+ 03MQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1758533846; x=1759138646;
+ d=1e100.net; s=20230601; t=1758533835; x=1759138635;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=S4WNTy7QbDl7ReDD5PUvCAXuciU8b39SjZqZspkFta4=;
- b=dTLHWyrbwSKrI4CdriNDT1Qd3VeB1awdndAhJAT14FwupxfjXsCYjv/XTsCdPaelxZ
- KRVa4xt932ziRVn47Tx3Rvk7IMs18MjHHZKqL67ze5eMkJCZL//N6W7xQuqYQvHfgFT8
- /qjTBDBObVssItEVXiNOueyxxlcoGyMjaEid+x5F2BZ8eAgrOl3v9Bcu4M0dgUJUSPZ7
- LObEs5XFD5So122YuQL6u+dZgpRU96cRZXE0oL21C5Rl6vsA6a9s1uY7V9GUFyzqp2mf
- dS1EJWWMqHZ6bXy0TJxMBdDtWcTrOxAZF4spueL28REfbunJ35ba8Yv60ZAAd2XGzpUk
- ONWw==
+ bh=p7AJahUMqP4H52ZjgDIGUlzyg5ExoTqCJvWrQsOM+Os=;
+ b=VLAbmWLMz+xF7BxUGJCEMxR/Y/K/ljYgR4XT6rcXjKN4Aw+8vksavjVa5YGAlBfJcU
+ Szh6fwlwXp0BjtlvvTpya0haqk+bum7O+xd892Cd/Ccyw8NgTRG1imc7f+0gXFymS28J
+ uBHHe4wwYiewKmwPs4fonHDsQ6ziLLpLs229Z3SqL6sSYGO3HTU2dF5zZ1HVpiZ5t9Ep
+ YU+VFWqO2cVn8DZM9t+diVXVrj8R4YdlB6x9y6o04pn4u7zU2YyM3V8Ag6S8N01yOp/b
+ XUZzUxqq9l8wD7i9swMWed8hEdDyewIS3GoqEhD/LDCLIkHXWyq9YUuKOTKlndPzUftY
+ MuCg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWkW16TKpMqTO6iCyMo1/hnwkHbQjaa4RUfnrd4pS/2uf/gd+LYGw9WuliWNyn9KPR6MAirphCtcA==@nongnu.org
-X-Gm-Message-State: AOJu0YxL4jq4NmPFJaviISMYkCzZLI217a+m2RgExkEsX/jnZXM8U7eL
- D4uZcaqF2jwCPk5PU0xZQSKrzUcjPCaUqlr4rhdWYcWnrA+NS1lI37BpSGjhvAc3NZk=
-X-Gm-Gg: ASbGncsx84GadArXEgAtBxcSTXT5cWcXJVysqzZEd2JDXrgjFCua75tdO7jPTFaQAdr
- qkKiGsrrfzEheou8gqMc0mDa287SO1tDhdOLJvuoI3oaxw1lXOEUvnVi00t5NA73JrkuJQ98VCg
- NsBv5D9je6mEtGl/MVBttWDmVD188ocvGggPzGlHieFofAUw4aguUH75pqF9L0wXkpQ0rblw14a
- kcGHf+AIvlXMWB8aSERWKiX/l6Svu7HARfz3qMvilJzUW08d0bJ5f8rK2ImA0c5i2duJPCOOVrX
- BYtrfEXNU9M/PnTQhACWolhip5XI8Je7mNut/1TVMdFVNXStycE26Bfc+L/p6D5iqdxsdRca0zl
- FmkNWIJtRMADYmbhsStLmW5o=
-X-Google-Smtp-Source: AGHT+IEfOfsj70NV5OJ38BPB3oBvQ/TSHt5ZiCzF66U4ZGiQdrLGPQXZxesF+PGJ4gx11C67PFSoyA==
-X-Received: by 2002:a05:600c:1c05:b0:45b:7a93:f108 with SMTP id
- 5b1f17b1804b1-4684c13ea94mr118734105e9.3.1758533845869; 
- Mon, 22 Sep 2025 02:37:25 -0700 (PDT)
+ AJvYcCXiChNYVKjLUsnpWkSEsr9A56SqCyPFPqoPG4YtrfzSiWF0Jy/lDr73z4tzZqar6Tr+wVQsnqN9Ow==@nongnu.org
+X-Gm-Message-State: AOJu0YwclcdxIm/NZbitjEA+CiNb6tTr32D/glujrryVxVGuKmyhgdWl
+ 82hMRYgfxguMEFHcccZfCapCjlNUlCX35DpGRHvSYF/I07LWzP6j7EELdumAL9Utn7U=
+X-Gm-Gg: ASbGncsLLZU6ymymc8poIxB2VNkhcTna5+WWKd/mhsiQ12kb2mRjItWMJx/L6e8omSz
+ O+s3u+LW3udzcr3CXUMMw9Zn1HID299OOJ4Z8p3cYRJndMeIi4vuCeU9Esa3gto7N/r3eCr45iB
+ /6XLa/XFrE330u2FYLr2y6gFs9cSmGvc1LbZN02yOUs20jwdDwh0tPDmD/mLi2rKoJbz5AfiMkK
+ Zz2UOrNRWpSI/fwvW5FgXDcFBiWQ66zLdYrYmmgVfRYUpysJQug+1pkYKY0naW0auu/ssPjPEK4
+ jtHUxdrSGa63A4sll1m6fRG7O070GUQe/ebZD1HHqPHKIn7ewtVl4SdGiGWql91saAFtqk2JDTW
+ aAch1dBJ8IZ/U4TcDSFTP2pE=
+X-Google-Smtp-Source: AGHT+IEKJ52MYarnP5WeS3Ssw0avY2ayMO6o3vcUndbtS7T5aj3s7MrMaJEPUYVs8MIw5X3I4Ev1pw==
+X-Received: by 2002:a05:6000:2c05:b0:3eb:2428:4a05 with SMTP id
+ ffacd0b85a97d-3ee7bad11fdmr11043020f8f.3.1758533834747; 
+ Mon, 22 Sep 2025 02:37:14 -0700 (PDT)
 Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-460942b6c3csm131375925e9.1.2025.09.22.02.37.17
+ ffacd0b85a97d-3ee0fbd63a2sm19048919f8f.48.2025.09.22.02.37.12
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 22 Sep 2025 02:37:24 -0700 (PDT)
+ Mon, 22 Sep 2025 02:37:12 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id C4F2D5FA14;
- Mon, 22 Sep 2025 10:37:12 +0100 (BST)
+ by draig.lan (Postfix) with ESMTP id C3D4D5F90D;
+ Mon, 22 Sep 2025 10:37:11 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Palmer Dabbelt <palmer@dabbelt.com>, Alexandre Iooss <erdnaxe@crans.org>,
@@ -80,25 +80,26 @@ Cc: Palmer Dabbelt <palmer@dabbelt.com>, Alexandre Iooss <erdnaxe@crans.org>,
  Weiwei Li <liwei1518@gmail.com>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>,
  Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Richard Henderson <richard.henderson@linaro.org>
-Subject: [PATCH 13/25] semihosting/arm-compat-semi: eradicate target_long
-Date: Mon, 22 Sep 2025 10:36:58 +0100
-Message-ID: <20250922093711.2768983-14-alex.bennee@linaro.org>
+ Nabih Estefan <nabihestefan@google.com>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
+Subject: [PATCH 03/25] checkpatch: Ignore removed lines in license check
+Date: Mon, 22 Sep 2025 10:36:48 +0100
+Message-ID: <20250922093711.2768983-4-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20250922093711.2768983-1-alex.bennee@linaro.org>
 References: <20250922093711.2768983-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::335;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x335.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x42c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -114,38 +115,39 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+From: Nabih Estefan <nabihestefan@google.com>
 
-We use int64_t or int32_t depending on ret size.
+When running the license check, if we are updating a license it is
+possible for the checkpatch script to test against old license lines
+instead of newer ones, since the removal lines appear before the
+addition lines in a .patch file.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Message-ID: <20250822150058.18692-11-pierrick.bouvier@linaro.org>
+Fix this by skipping over lines that start with "-" in the checkpatch
+script.
+
+Signed-off-by: Nabih Estefan <nabihestefan@google.com>
+Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Message-ID: <20250916165928.10048-1-nabihestefan@google.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- semihosting/arm-compat-semi.c | 7 +++++--
- 1 file changed, 5 insertions(+), 2 deletions(-)
+ scripts/checkpatch.pl | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/semihosting/arm-compat-semi.c b/semihosting/arm-compat-semi.c
-index 29cdab66f73..3c9192d8684 100644
---- a/semihosting/arm-compat-semi.c
-+++ b/semihosting/arm-compat-semi.c
-@@ -501,10 +501,13 @@ void do_common_semihosting(CPUState *cs)
-         break;
+diff --git a/scripts/checkpatch.pl b/scripts/checkpatch.pl
+index 91616c974f2..40b6955c698 100755
+--- a/scripts/checkpatch.pl
++++ b/scripts/checkpatch.pl
+@@ -1816,7 +1816,8 @@ sub process {
+ 		}
  
-     case TARGET_SYS_ISERROR:
-+    {
-         GET_ARG(0);
--        common_semi_set_ret(cs, (target_long)arg0 < 0);
-+        bool ret = is_64bit_semihosting(env) ?
-+                   (int64_t)arg0 < 0 : (int32_t)arg0 < 0;
-+        common_semi_set_ret(cs, ret);
-         break;
--
-+    }
-     case TARGET_SYS_ISTTY:
-         GET_ARG(0);
-         semihost_sys_isatty(cs, common_semi_istty_cb, arg0);
+ # Check SPDX-License-Identifier references a permitted license
+-		if ($rawline =~ m,SPDX-License-Identifier: (.*?)(\*/)?\s*$,) {
++		if (($rawline =~ m,SPDX-License-Identifier: (.*?)(\*/)?\s*$,) &&
++			$rawline !~ /^-/) {
+ 			$fileinfo->{facts}->{sawspdx} = 1;
+ 			&checkspdx($realfile, $1);
+ 		}
 -- 
 2.47.3
 

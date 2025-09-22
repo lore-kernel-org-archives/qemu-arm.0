@@ -4,85 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B755CAC5AA
-	for <qemu-arm@archiver.kernel.org>; Mon, 22 Sep 2025 18:54:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8433CA100F
+	for <qemu-arm@archiver.kernel.org>; Mon, 22 Sep 2025 18:55:08 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v0lfb-0004Ax-4x; Mon, 22 Sep 2025 14:53:51 -0400
+	id 1v0lc2-0004zH-CL; Mon, 22 Sep 2025 14:50:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1v0lf9-0003WQ-D6
- for qemu-arm@nongnu.org; Mon, 22 Sep 2025 14:53:23 -0400
-Received: from mail-pg1-x529.google.com ([2607:f8b0:4864:20::529])
+ id 1v0lbv-0004w7-GP
+ for qemu-arm@nongnu.org; Mon, 22 Sep 2025 14:50:04 -0400
+Received: from mail-pf1-x42b.google.com ([2607:f8b0:4864:20::42b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1v0lf4-0004wd-0Y
- for qemu-arm@nongnu.org; Mon, 22 Sep 2025 14:53:22 -0400
-Received: by mail-pg1-x529.google.com with SMTP id
- 41be03b00d2f7-b523fb676efso4105013a12.3
- for <qemu-arm@nongnu.org>; Mon, 22 Sep 2025 11:53:17 -0700 (PDT)
+ id 1v0lbn-0004An-TV
+ for qemu-arm@nongnu.org; Mon, 22 Sep 2025 14:50:03 -0400
+Received: by mail-pf1-x42b.google.com with SMTP id
+ d2e1a72fcca58-77f169d8153so2465500b3a.3
+ for <qemu-arm@nongnu.org>; Mon, 22 Sep 2025 11:49:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1758567195; x=1759171995; darn=nongnu.org;
+ d=linaro.org; s=google; t=1758566993; x=1759171793; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=u3lppChNLDhQriahywEGch8lhsfYgg6UozfYzfSbm90=;
- b=CwCFgxFbrrRNLRbCi2GspvL5Rivxi+8e50PT1Y4UFZidTEzoVdKmDCTCZaTo295Phn
- m8dXMZrDArrIi27M5XwxJjToPfG3a7MjCBAs30U68lspgGmR4U3p7HCZP2SpoLO9Xg/J
- kpH0bOO5WanBnCqqKNLJZdKliF4XnLgKP9wCgEHd8qyATWnLSPFXPXeyPxjRqLICIiFc
- rwhkMCOBKAxGMon+T0orQ+eWz5z3wiFq7EgdQRy/SHEpJ16N7ParqZdAS6zLEhq89ber
- cHT7zztQe4nCsxhKaLTmFOThAApmFQlH73J7Jr8nSp/W+XdWBimrQU2OcAvEyggl/D3/
- yKuw==
+ bh=zYe+uePxsIsajaRDVH94tF9MgiBWjfYNGABEvljPCDU=;
+ b=Gybyav+SKO3X/k9j1CVitRCirhkCRjXDES67QnuVA+gFyC0RuLwGh6rDZ86IW170wz
+ BcAYT+jF7G6wx4R/T/2NwueYtuaJ56DdjHY0t0sKz5KEN8Jq8p2lVqzKPFaC6hIrIN3Z
+ 4flRg8Ao21S7pui3EVSOc87Xv8HDgknf7vSVSZbnIfxsH2jAwMfm0/ClNJ2XBSvO4LcW
+ OSbL4bnrK7nKiNc3gOFCYX9qXY4JKHYU7H2V8rZkL0BCIXYbA9Tekvn/NP+/NxqDJ0Qg
+ FZokyapxXgkndVPAphqPyX6ho/bjVFv0qUjOrKOFqK7s1TEY1Xj8hpGI92goFmn6GBUy
+ Mb2Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1758567195; x=1759171995;
+ d=1e100.net; s=20230601; t=1758566993; x=1759171793;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=u3lppChNLDhQriahywEGch8lhsfYgg6UozfYzfSbm90=;
- b=Dov2/fHRlJcvdyLSkVpwpvZzBkpK65DzA5gTnmcWXwND8snuaUSlnI6uXy6q0y8n1m
- Kzu/sh/ighS9Yw8yP9fs3VEODKTGG3EynAFjyWvsEGsLahVpbDwwn3z0l8yTQ3nfmNNz
- yINHeDZeqtRo5RI7YBMsR2Jqus7BLSfvERtAd3YWU6GIUC54ENoMqR8i93/oi6lsHkHT
- 6iTi4DumNh5Gpj4EgzTnps7XwqsvDm9GXvhFXiAH2685yab9HUgBCbDRF2rc06ktj6PM
- LscpHBdEh4r7wLfX8L7AvXN5T/sf6iJK7P1svrhAJaQQsIasicNmiepSpbpiJDRJOb5v
- ax7Q==
-X-Gm-Message-State: AOJu0YzXk7LbzC5s52z7aDHaUziyO2r/naLKi0Mn+H/Utay9etevdRzj
- Pt6igoUhE0pwcKloAf2imU/FYBYhlY6uG+y7v3k2qhT+74mp+ILnMplT9iQUDwLpUPY=
-X-Gm-Gg: ASbGnctaLNv+ZwGTnqFyLn+yB+E3ShB6YxsLtmHq3vmmrzcWfRg4MQTiUeVMObGT9am
- bLgmAR64nLW+3BtRpJ44vkb/4UEdYCxDIOdrPL1kosBbtgyBjVVhPbBpEcDSUZCCyzV0en7oV2W
- etM04u/xwTm3+35Iuz9NjA3l+B0YXY0m5Hxm4W+Eh/v7RgopYE7Kh0MmUABM47o2NRp8XCVN+nb
- w9IlbVNxV1wGxf4JNGBlqS/4OMx378pnm+WRQe4fC4penSFMwlTlU+C9MTV41afx6Md10ZPwOeh
- 8T4TBTcwZEJtD4kS1lZEthKSfNVZ/qDZPRE//47gz4Gm3RfoPAM2Z7GL2VoLmplgykWaWEG7Bo6
- 2gyouxhrhkgvBh52vRhbqvBbC1qXF
-X-Google-Smtp-Source: AGHT+IF5f23Xjj5Et5bObngPcLqjWFuArJxPciSo1NR3ZyuUf2vxBEuGkqWStZo1Y3YVfmfM6Hja1A==
-X-Received: by 2002:a17:902:f645:b0:269:b2e5:ee48 with SMTP id
- d9443c01a7336-269ba52e56emr198628995ad.52.1758567195640; 
- Mon, 22 Sep 2025 11:53:15 -0700 (PDT)
+ bh=zYe+uePxsIsajaRDVH94tF9MgiBWjfYNGABEvljPCDU=;
+ b=Bef/qcCYrXLa+ggycndS4EUAvttCPeHBGB3pWp3AzUdb8ioyqPklent92clw6CxmIK
+ Z3TZFVUm/RHxSXH102uH/R4VoTLTMSW4R725BxkqxJfeubAlQzGEYloiic3tQMLtm9od
+ hwvp01ayZxhxXmKyFiJ/cRhb27wqkqNP95Az34QUnbL6ZrZJAz38JFfZzrMRsRVLxGUO
+ 30O1d/ZtAjfdJfhSe7KHxyiIsHa42fb3iIqi4kMqopKKOEDuP7moyhlmwc2ptDaZ9xo+
+ H0o7Z5IM4MMzkrAICUGzFgD9Jmnr2Tt5IH39Sr+ms4ahTlBq14OCTrM/hpBT5dYHpJZn
+ r3dg==
+X-Gm-Message-State: AOJu0Yw6N80rttBuNofdu4tSSabhmc6veZlv3Tmbw7oO5ilCW6+rOOk9
+ r3UYm7kcEZFFyRzOYqdwziIw4AXL4rlyPdtAln4sVgxb924hR9D64w+p0HUhKLIyMe4=
+X-Gm-Gg: ASbGncvlQ+TrHRU5uqea50rGBDqnCyCBGDL8SBs2Xp3vUvMVRfHG4dR7Gzw4s2hoUI8
+ roQm6j9D2GYMsWJ7LUdRyKaQqmPOZsWqj5NFSRK0HKXsnvY5tBJ16peOVq9SvE9BE85RWUzYutu
+ 7+2zvCBIDvVl+7T7lSHTpUoWrWcCEoOoxkJQkRTKfZQOH7jgFq6Uozq+2pjhFGHLXKhGbJ+6wOw
+ 4YwAjFTW1bO+6ZTaxK7B2U3ctbLHoyLXqhIQyefs2GrVkcQB+RUwIQzGHuqwJ4eyODP78Yx6V1i
+ rez29gBTd0mpjqM3QGYM+eDEwmVXQAbqlAOvUnUF9sKOkzfBJEBUyM5pjCv0k1bTTxTOEHyNl96
+ cyqEc/qAAr6e8yNtMhFxFpi9HFg+k
+X-Google-Smtp-Source: AGHT+IHUdBUOr8L6LENtd/TenG6Rvo3QIwjnS4zjuO4gSQxxEjApqN5gzhEJt5U0vdbPHCpcVTCTOw==
+X-Received: by 2002:a05:6a00:85aa:b0:77f:1b15:6b0d with SMTP id
+ d2e1a72fcca58-77f1b15721cmr11182923b3a.13.1758566992879; 
+ Mon, 22 Sep 2025 11:49:52 -0700 (PDT)
 Received: from stoup.. ([71.212.157.132]) by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2698018a472sm138554795ad.58.2025.09.22.11.53.14
+ d2e1a72fcca58-77e5fe6de75sm10583861b3a.19.2025.09.22.11.49.52
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 22 Sep 2025 11:53:15 -0700 (PDT)
+ Mon, 22 Sep 2025 11:49:52 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org
-Subject: [PATCH v5 43/76] target/arm: Split out access_nv1_with_nvx
-Date: Mon, 22 Sep 2025 11:48:51 -0700
-Message-ID: <20250922184924.2754205-44-richard.henderson@linaro.org>
+Cc: qemu-arm@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Subject: [PATCH v5 19/76] target/arm: Split out mmuidx.h from cpu.h
+Date: Mon, 22 Sep 2025 11:48:27 -0700
+Message-ID: <20250922184924.2754205-20-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250922184924.2754205-1-richard.henderson@linaro.org>
 References: <20250922184924.2754205-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::529;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x529.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42b;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -98,37 +101,462 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/helper.c | 11 ++++++-----
- 1 file changed, 6 insertions(+), 5 deletions(-)
+ target/arm/cpu.h    | 207 +-----------------------------------------
+ target/arm/mmuidx.h | 216 ++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 217 insertions(+), 206 deletions(-)
+ create mode 100644 target/arm/mmuidx.h
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 8b5ae0c543..5519484186 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -3419,15 +3419,16 @@ static void mdcr_el2_write(CPUARMState *env, const ARMCPRegInfo *ri,
-     }
- }
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 4dd4c6d4bf..d5a45e9b43 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -33,6 +33,7 @@
+ #include "target/arm/multiprocessing.h"
+ #include "target/arm/gtimer.h"
+ #include "target/arm/cpu-sysregs.h"
++#include "target/arm/mmuidx.h"
  
-+static CPAccessResult access_nv1_with_nvx(uint64_t hcr_nv)
-+{
-+    return hcr_nv == (HCR_NV | HCR_NV1) ? CP_ACCESS_TRAP_EL2 : CP_ACCESS_OK;
-+}
-+
- static CPAccessResult access_nv1(CPUARMState *env, const ARMCPRegInfo *ri,
-                                  bool isread)
- {
-     if (arm_current_el(env) == 1) {
--        uint64_t hcr_nv = arm_hcr_el2_nvx_eff(env);
+ #define EXCP_UDEF            1   /* undefined instruction */
+ #define EXCP_SWI             2   /* software interrupt */
+@@ -2705,212 +2706,6 @@ bool write_cpustate_to_list(ARMCPU *cpu, bool kvm_sync);
+ 
+ #define TYPE_ARM_HOST_CPU "host-" TYPE_ARM_CPU
+ 
+-/* ARM has the following "translation regimes" (as the ARM ARM calls them):
+- *
+- * If EL3 is 64-bit:
+- *  + NonSecure EL1 & 0 stage 1
+- *  + NonSecure EL1 & 0 stage 2
+- *  + NonSecure EL2
+- *  + NonSecure EL2 & 0   (ARMv8.1-VHE)
+- *  + Secure EL1 & 0 stage 1
+- *  + Secure EL1 & 0 stage 2 (FEAT_SEL2)
+- *  + Secure EL2 (FEAT_SEL2)
+- *  + Secure EL2 & 0 (FEAT_SEL2)
+- *  + Realm EL1 & 0 stage 1 (FEAT_RME)
+- *  + Realm EL1 & 0 stage 2 (FEAT_RME)
+- *  + Realm EL2 (FEAT_RME)
+- *  + EL3
+- * If EL3 is 32-bit:
+- *  + NonSecure PL1 & 0 stage 1
+- *  + NonSecure PL1 & 0 stage 2
+- *  + NonSecure PL2
+- *  + Secure PL1 & 0
+- * (reminder: for 32 bit EL3, Secure PL1 is *EL3*, not EL1.)
+- *
+- * For QEMU, an mmu_idx is not quite the same as a translation regime because:
+- *  1. we need to split the "EL1 & 0" and "EL2 & 0" regimes into two mmu_idxes,
+- *     because they may differ in access permissions even if the VA->PA map is
+- *     the same
+- *  2. we want to cache in our TLB the full VA->IPA->PA lookup for a stage 1+2
+- *     translation, which means that we have one mmu_idx that deals with two
+- *     concatenated translation regimes [this sort of combined s1+2 TLB is
+- *     architecturally permitted]
+- *  3. we don't need to allocate an mmu_idx to translations that we won't be
+- *     handling via the TLB. The only way to do a stage 1 translation without
+- *     the immediate stage 2 translation is via the ATS or AT system insns,
+- *     which can be slow-pathed and always do a page table walk.
+- *     The only use of stage 2 translations is either as part of an s1+2
+- *     lookup or when loading the descriptors during a stage 1 page table walk,
+- *     and in both those cases we don't use the TLB.
+- *  4. we can also safely fold together the "32 bit EL3" and "64 bit EL3"
+- *     translation regimes, because they map reasonably well to each other
+- *     and they can't both be active at the same time.
+- *  5. we want to be able to use the TLB for accesses done as part of a
+- *     stage1 page table walk, rather than having to walk the stage2 page
+- *     table over and over.
+- *  6. we need separate EL1/EL2 mmu_idx for handling the Privileged Access
+- *     Never (PAN) bit within PSTATE.
+- *  7. we fold together most secure and non-secure regimes for A-profile,
+- *     because there are no banked system registers for aarch64, so the
+- *     process of switching between secure and non-secure is
+- *     already heavyweight.
+- *  8. we cannot fold together Stage 2 Secure and Stage 2 NonSecure,
+- *     because both are in use simultaneously for Secure EL2.
+- *
+- * This gives us the following list of cases:
+- *
+- * EL0 EL1&0 stage 1+2 (aka NS PL0 PL1&0 stage 1+2)
+- * EL1 EL1&0 stage 1+2 (aka NS PL1 PL1&0 stage 1+2)
+- * EL1 EL1&0 stage 1+2 +PAN (aka NS PL1 P1&0 stage 1+2 +PAN)
+- * EL0 EL2&0
+- * EL2 EL2&0
+- * EL2 EL2&0 +PAN
+- * EL2 (aka NS PL2)
+- * EL3 (aka AArch32 S PL1 PL1&0)
+- * AArch32 S PL0 PL1&0 (we call this EL30_0)
+- * AArch32 S PL1 PL1&0 +PAN (we call this EL30_3_PAN)
+- * Stage2 Secure
+- * Stage2 NonSecure
+- * plus one TLB per Physical address space: S, NS, Realm, Root
+- *
+- * for a total of 16 different mmu_idx.
+- *
+- * R profile CPUs have an MPU, but can use the same set of MMU indexes
+- * as A profile. They only need to distinguish EL0 and EL1 (and
+- * EL2 for cores like the Cortex-R52).
+- *
+- * M profile CPUs are rather different as they do not have a true MMU.
+- * They have the following different MMU indexes:
+- *  User
+- *  Privileged
+- *  User, execution priority negative (ie the MPU HFNMIENA bit may apply)
+- *  Privileged, execution priority negative (ditto)
+- * If the CPU supports the v8M Security Extension then there are also:
+- *  Secure User
+- *  Secure Privileged
+- *  Secure User, execution priority negative
+- *  Secure Privileged, execution priority negative
+- *
+- * The ARMMMUIdx and the mmu index value used by the core QEMU TLB code
+- * are not quite the same -- different CPU types (most notably M profile
+- * vs A/R profile) would like to use MMU indexes with different semantics,
+- * but since we don't ever need to use all of those in a single CPU we
+- * can avoid having to set NB_MMU_MODES to "total number of A profile MMU
+- * modes + total number of M profile MMU modes". The lower bits of
+- * ARMMMUIdx are the core TLB mmu index, and the higher bits are always
+- * the same for any particular CPU.
+- * Variables of type ARMMUIdx are always full values, and the core
+- * index values are in variables of type 'int'.
+- *
+- * Our enumeration includes at the end some entries which are not "true"
+- * mmu_idx values in that they don't have corresponding TLBs and are only
+- * valid for doing slow path page table walks.
+- *
+- * The constant names here are patterned after the general style of the names
+- * of the AT/ATS operations.
+- * The values used are carefully arranged to make mmu_idx => EL lookup easy.
+- * For M profile we arrange them to have a bit for priv, a bit for negpri
+- * and a bit for secure.
+- */
+-#define ARM_MMU_IDX_A     0x10  /* A profile */
+-#define ARM_MMU_IDX_NOTLB 0x20  /* does not have a TLB */
+-#define ARM_MMU_IDX_M     0x40  /* M profile */
 -
--        if (hcr_nv == (HCR_NV | HCR_NV1)) {
--            return CP_ACCESS_TRAP_EL2;
--        }
-+        return access_nv1_with_nvx(arm_hcr_el2_nvx_eff(env));
-     }
-     return CP_ACCESS_OK;
- }
+-/* Meanings of the bits for M profile mmu idx values */
+-#define ARM_MMU_IDX_M_PRIV   0x1
+-#define ARM_MMU_IDX_M_NEGPRI 0x2
+-#define ARM_MMU_IDX_M_S      0x4  /* Secure */
+-
+-#define ARM_MMU_IDX_TYPE_MASK \
+-    (ARM_MMU_IDX_A | ARM_MMU_IDX_M | ARM_MMU_IDX_NOTLB)
+-#define ARM_MMU_IDX_COREIDX_MASK 0xf
+-
+-typedef enum ARMMMUIdx {
+-    /*
+-     * A-profile.
+-     */
+-    ARMMMUIdx_E10_0     = 0 | ARM_MMU_IDX_A,
+-    ARMMMUIdx_E20_0     = 1 | ARM_MMU_IDX_A,
+-    ARMMMUIdx_E10_1     = 2 | ARM_MMU_IDX_A,
+-    ARMMMUIdx_E20_2     = 3 | ARM_MMU_IDX_A,
+-    ARMMMUIdx_E10_1_PAN = 4 | ARM_MMU_IDX_A,
+-    ARMMMUIdx_E20_2_PAN = 5 | ARM_MMU_IDX_A,
+-    ARMMMUIdx_E2        = 6 | ARM_MMU_IDX_A,
+-    ARMMMUIdx_E3        = 7 | ARM_MMU_IDX_A,
+-    ARMMMUIdx_E30_0     = 8 | ARM_MMU_IDX_A,
+-    ARMMMUIdx_E30_3_PAN = 9 | ARM_MMU_IDX_A,
+-
+-    /*
+-     * Used for second stage of an S12 page table walk, or for descriptor
+-     * loads during first stage of an S1 page table walk.  Note that both
+-     * are in use simultaneously for SecureEL2: the security state for
+-     * the S2 ptw is selected by the NS bit from the S1 ptw.
+-     */
+-    ARMMMUIdx_Stage2_S  = 10 | ARM_MMU_IDX_A,
+-    ARMMMUIdx_Stage2    = 11 | ARM_MMU_IDX_A,
+-
+-    /* TLBs with 1-1 mapping to the physical address spaces. */
+-    ARMMMUIdx_Phys_S     = 12 | ARM_MMU_IDX_A,
+-    ARMMMUIdx_Phys_NS    = 13 | ARM_MMU_IDX_A,
+-    ARMMMUIdx_Phys_Root  = 14 | ARM_MMU_IDX_A,
+-    ARMMMUIdx_Phys_Realm = 15 | ARM_MMU_IDX_A,
+-
+-    /*
+-     * These are not allocated TLBs and are used only for AT system
+-     * instructions or for the first stage of an S12 page table walk.
+-     */
+-    ARMMMUIdx_Stage1_E0 = 0 | ARM_MMU_IDX_NOTLB,
+-    ARMMMUIdx_Stage1_E1 = 1 | ARM_MMU_IDX_NOTLB,
+-    ARMMMUIdx_Stage1_E1_PAN = 2 | ARM_MMU_IDX_NOTLB,
+-
+-    /*
+-     * M-profile.
+-     */
+-    ARMMMUIdx_MUser = ARM_MMU_IDX_M,
+-    ARMMMUIdx_MPriv = ARM_MMU_IDX_M | ARM_MMU_IDX_M_PRIV,
+-    ARMMMUIdx_MUserNegPri = ARMMMUIdx_MUser | ARM_MMU_IDX_M_NEGPRI,
+-    ARMMMUIdx_MPrivNegPri = ARMMMUIdx_MPriv | ARM_MMU_IDX_M_NEGPRI,
+-    ARMMMUIdx_MSUser = ARMMMUIdx_MUser | ARM_MMU_IDX_M_S,
+-    ARMMMUIdx_MSPriv = ARMMMUIdx_MPriv | ARM_MMU_IDX_M_S,
+-    ARMMMUIdx_MSUserNegPri = ARMMMUIdx_MUserNegPri | ARM_MMU_IDX_M_S,
+-    ARMMMUIdx_MSPrivNegPri = ARMMMUIdx_MPrivNegPri | ARM_MMU_IDX_M_S,
+-} ARMMMUIdx;
+-
+-/*
+- * Bit macros for the core-mmu-index values for each index,
+- * for use when calling tlb_flush_by_mmuidx() and friends.
+- */
+-#define TO_CORE_BIT(NAME) \
+-    ARMMMUIdxBit_##NAME = 1 << (ARMMMUIdx_##NAME & ARM_MMU_IDX_COREIDX_MASK)
+-
+-typedef enum ARMMMUIdxBit {
+-    TO_CORE_BIT(E10_0),
+-    TO_CORE_BIT(E20_0),
+-    TO_CORE_BIT(E10_1),
+-    TO_CORE_BIT(E10_1_PAN),
+-    TO_CORE_BIT(E2),
+-    TO_CORE_BIT(E20_2),
+-    TO_CORE_BIT(E20_2_PAN),
+-    TO_CORE_BIT(E3),
+-    TO_CORE_BIT(E30_0),
+-    TO_CORE_BIT(E30_3_PAN),
+-    TO_CORE_BIT(Stage2),
+-    TO_CORE_BIT(Stage2_S),
+-
+-    TO_CORE_BIT(MUser),
+-    TO_CORE_BIT(MPriv),
+-    TO_CORE_BIT(MUserNegPri),
+-    TO_CORE_BIT(MPrivNegPri),
+-    TO_CORE_BIT(MSUser),
+-    TO_CORE_BIT(MSPriv),
+-    TO_CORE_BIT(MSUserNegPri),
+-    TO_CORE_BIT(MSPrivNegPri),
+-} ARMMMUIdxBit;
+-
+-#undef TO_CORE_BIT
+-
+-#define MMU_USER_IDX 0
+-
+ /* Indexes used when registering address spaces with cpu_address_space_init */
+ typedef enum ARMASIdx {
+     ARMASIdx_NS = 0,
+diff --git a/target/arm/mmuidx.h b/target/arm/mmuidx.h
+new file mode 100644
+index 0000000000..5b9b4bc84f
+--- /dev/null
++++ b/target/arm/mmuidx.h
+@@ -0,0 +1,216 @@
++/*
++ * QEMU Arm software mmu index definitions
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#ifndef TARGET_ARM_MMUIDX_H
++#define TARGET_ARM_MMUIDX_H
++
++/*
++ * Arm has the following "translation regimes" (as the Arm ARM calls them):
++ *
++ * If EL3 is 64-bit:
++ *  + NonSecure EL1 & 0 stage 1
++ *  + NonSecure EL1 & 0 stage 2
++ *  + NonSecure EL2
++ *  + NonSecure EL2 & 0   (ARMv8.1-VHE)
++ *  + Secure EL1 & 0 stage 1
++ *  + Secure EL1 & 0 stage 2 (FEAT_SEL2)
++ *  + Secure EL2 (FEAT_SEL2)
++ *  + Secure EL2 & 0 (FEAT_SEL2)
++ *  + Realm EL1 & 0 stage 1 (FEAT_RME)
++ *  + Realm EL1 & 0 stage 2 (FEAT_RME)
++ *  + Realm EL2 (FEAT_RME)
++ *  + EL3
++ * If EL3 is 32-bit:
++ *  + NonSecure PL1 & 0 stage 1
++ *  + NonSecure PL1 & 0 stage 2
++ *  + NonSecure PL2
++ *  + Secure PL1 & 0
++ * (reminder: for 32 bit EL3, Secure PL1 is *EL3*, not EL1.)
++ *
++ * For QEMU, an mmu_idx is not quite the same as a translation regime because:
++ *  1. we need to split the "EL1 & 0" and "EL2 & 0" regimes into two mmu_idxes,
++ *     because they may differ in access permissions even if the VA->PA map is
++ *     the same
++ *  2. we want to cache in our TLB the full VA->IPA->PA lookup for a stage 1+2
++ *     translation, which means that we have one mmu_idx that deals with two
++ *     concatenated translation regimes [this sort of combined s1+2 TLB is
++ *     architecturally permitted]
++ *  3. we don't need to allocate an mmu_idx to translations that we won't be
++ *     handling via the TLB. The only way to do a stage 1 translation without
++ *     the immediate stage 2 translation is via the ATS or AT system insns,
++ *     which can be slow-pathed and always do a page table walk.
++ *     The only use of stage 2 translations is either as part of an s1+2
++ *     lookup or when loading the descriptors during a stage 1 page table walk,
++ *     and in both those cases we don't use the TLB.
++ *  4. we can also safely fold together the "32 bit EL3" and "64 bit EL3"
++ *     translation regimes, because they map reasonably well to each other
++ *     and they can't both be active at the same time.
++ *  5. we want to be able to use the TLB for accesses done as part of a
++ *     stage1 page table walk, rather than having to walk the stage2 page
++ *     table over and over.
++ *  6. we need separate EL1/EL2 mmu_idx for handling the Privileged Access
++ *     Never (PAN) bit within PSTATE.
++ *  7. we fold together most secure and non-secure regimes for A-profile,
++ *     because there are no banked system registers for aarch64, so the
++ *     process of switching between secure and non-secure is
++ *     already heavyweight.
++ *  8. we cannot fold together Stage 2 Secure and Stage 2 NonSecure,
++ *     because both are in use simultaneously for Secure EL2.
++ *
++ * This gives us the following list of cases:
++ *
++ * EL0 EL1&0 stage 1+2 (aka NS PL0 PL1&0 stage 1+2)
++ * EL1 EL1&0 stage 1+2 (aka NS PL1 PL1&0 stage 1+2)
++ * EL1 EL1&0 stage 1+2 +PAN (aka NS PL1 P1&0 stage 1+2 +PAN)
++ * EL0 EL2&0
++ * EL2 EL2&0
++ * EL2 EL2&0 +PAN
++ * EL2 (aka NS PL2)
++ * EL3 (aka AArch32 S PL1 PL1&0)
++ * AArch32 S PL0 PL1&0 (we call this EL30_0)
++ * AArch32 S PL1 PL1&0 +PAN (we call this EL30_3_PAN)
++ * Stage2 Secure
++ * Stage2 NonSecure
++ * plus one TLB per Physical address space: S, NS, Realm, Root
++ *
++ * for a total of 16 different mmu_idx.
++ *
++ * R profile CPUs have an MPU, but can use the same set of MMU indexes
++ * as A profile. They only need to distinguish EL0 and EL1 (and
++ * EL2 for cores like the Cortex-R52).
++ *
++ * M profile CPUs are rather different as they do not have a true MMU.
++ * They have the following different MMU indexes:
++ *  User
++ *  Privileged
++ *  User, execution priority negative (ie the MPU HFNMIENA bit may apply)
++ *  Privileged, execution priority negative (ditto)
++ * If the CPU supports the v8M Security Extension then there are also:
++ *  Secure User
++ *  Secure Privileged
++ *  Secure User, execution priority negative
++ *  Secure Privileged, execution priority negative
++ *
++ * The ARMMMUIdx and the mmu index value used by the core QEMU TLB code
++ * are not quite the same -- different CPU types (most notably M profile
++ * vs A/R profile) would like to use MMU indexes with different semantics,
++ * but since we don't ever need to use all of those in a single CPU we
++ * can avoid having to set NB_MMU_MODES to "total number of A profile MMU
++ * modes + total number of M profile MMU modes". The lower bits of
++ * ARMMMUIdx are the core TLB mmu index, and the higher bits are always
++ * the same for any particular CPU.
++ * Variables of type ARMMUIdx are always full values, and the core
++ * index values are in variables of type 'int'.
++ *
++ * Our enumeration includes at the end some entries which are not "true"
++ * mmu_idx values in that they don't have corresponding TLBs and are only
++ * valid for doing slow path page table walks.
++ *
++ * The constant names here are patterned after the general style of the names
++ * of the AT/ATS operations.
++ * The values used are carefully arranged to make mmu_idx => EL lookup easy.
++ * For M profile we arrange them to have a bit for priv, a bit for negpri
++ * and a bit for secure.
++ */
++#define ARM_MMU_IDX_A     0x10  /* A profile */
++#define ARM_MMU_IDX_NOTLB 0x20  /* does not have a TLB */
++#define ARM_MMU_IDX_M     0x40  /* M profile */
++
++/* Meanings of the bits for M profile mmu idx values */
++#define ARM_MMU_IDX_M_PRIV   0x1
++#define ARM_MMU_IDX_M_NEGPRI 0x2
++#define ARM_MMU_IDX_M_S      0x4  /* Secure */
++
++#define ARM_MMU_IDX_TYPE_MASK \
++    (ARM_MMU_IDX_A | ARM_MMU_IDX_M | ARM_MMU_IDX_NOTLB)
++#define ARM_MMU_IDX_COREIDX_MASK 0xf
++
++typedef enum ARMMMUIdx {
++    /*
++     * A-profile.
++     */
++    ARMMMUIdx_E10_0     = 0 | ARM_MMU_IDX_A,
++    ARMMMUIdx_E20_0     = 1 | ARM_MMU_IDX_A,
++    ARMMMUIdx_E10_1     = 2 | ARM_MMU_IDX_A,
++    ARMMMUIdx_E20_2     = 3 | ARM_MMU_IDX_A,
++    ARMMMUIdx_E10_1_PAN = 4 | ARM_MMU_IDX_A,
++    ARMMMUIdx_E20_2_PAN = 5 | ARM_MMU_IDX_A,
++    ARMMMUIdx_E2        = 6 | ARM_MMU_IDX_A,
++    ARMMMUIdx_E3        = 7 | ARM_MMU_IDX_A,
++    ARMMMUIdx_E30_0     = 8 | ARM_MMU_IDX_A,
++    ARMMMUIdx_E30_3_PAN = 9 | ARM_MMU_IDX_A,
++
++    /*
++     * Used for second stage of an S12 page table walk, or for descriptor
++     * loads during first stage of an S1 page table walk.  Note that both
++     * are in use simultaneously for SecureEL2: the security state for
++     * the S2 ptw is selected by the NS bit from the S1 ptw.
++     */
++    ARMMMUIdx_Stage2_S  = 10 | ARM_MMU_IDX_A,
++    ARMMMUIdx_Stage2    = 11 | ARM_MMU_IDX_A,
++
++    /* TLBs with 1-1 mapping to the physical address spaces. */
++    ARMMMUIdx_Phys_S     = 12 | ARM_MMU_IDX_A,
++    ARMMMUIdx_Phys_NS    = 13 | ARM_MMU_IDX_A,
++    ARMMMUIdx_Phys_Root  = 14 | ARM_MMU_IDX_A,
++    ARMMMUIdx_Phys_Realm = 15 | ARM_MMU_IDX_A,
++
++    /*
++     * These are not allocated TLBs and are used only for AT system
++     * instructions or for the first stage of an S12 page table walk.
++     */
++    ARMMMUIdx_Stage1_E0 = 0 | ARM_MMU_IDX_NOTLB,
++    ARMMMUIdx_Stage1_E1 = 1 | ARM_MMU_IDX_NOTLB,
++    ARMMMUIdx_Stage1_E1_PAN = 2 | ARM_MMU_IDX_NOTLB,
++
++    /*
++     * M-profile.
++     */
++    ARMMMUIdx_MUser = ARM_MMU_IDX_M,
++    ARMMMUIdx_MPriv = ARM_MMU_IDX_M | ARM_MMU_IDX_M_PRIV,
++    ARMMMUIdx_MUserNegPri = ARMMMUIdx_MUser | ARM_MMU_IDX_M_NEGPRI,
++    ARMMMUIdx_MPrivNegPri = ARMMMUIdx_MPriv | ARM_MMU_IDX_M_NEGPRI,
++    ARMMMUIdx_MSUser = ARMMMUIdx_MUser | ARM_MMU_IDX_M_S,
++    ARMMMUIdx_MSPriv = ARMMMUIdx_MPriv | ARM_MMU_IDX_M_S,
++    ARMMMUIdx_MSUserNegPri = ARMMMUIdx_MUserNegPri | ARM_MMU_IDX_M_S,
++    ARMMMUIdx_MSPrivNegPri = ARMMMUIdx_MPrivNegPri | ARM_MMU_IDX_M_S,
++} ARMMMUIdx;
++
++/*
++ * Bit macros for the core-mmu-index values for each index,
++ * for use when calling tlb_flush_by_mmuidx() and friends.
++ */
++#define TO_CORE_BIT(NAME) \
++    ARMMMUIdxBit_##NAME = 1 << (ARMMMUIdx_##NAME & ARM_MMU_IDX_COREIDX_MASK)
++
++typedef enum ARMMMUIdxBit {
++    TO_CORE_BIT(E10_0),
++    TO_CORE_BIT(E20_0),
++    TO_CORE_BIT(E10_1),
++    TO_CORE_BIT(E10_1_PAN),
++    TO_CORE_BIT(E2),
++    TO_CORE_BIT(E20_2),
++    TO_CORE_BIT(E20_2_PAN),
++    TO_CORE_BIT(E3),
++    TO_CORE_BIT(E30_0),
++    TO_CORE_BIT(E30_3_PAN),
++    TO_CORE_BIT(Stage2),
++    TO_CORE_BIT(Stage2_S),
++
++    TO_CORE_BIT(MUser),
++    TO_CORE_BIT(MPriv),
++    TO_CORE_BIT(MUserNegPri),
++    TO_CORE_BIT(MPrivNegPri),
++    TO_CORE_BIT(MSUser),
++    TO_CORE_BIT(MSPriv),
++    TO_CORE_BIT(MSUserNegPri),
++    TO_CORE_BIT(MSPrivNegPri),
++} ARMMMUIdxBit;
++
++#undef TO_CORE_BIT
++
++#define MMU_USER_IDX 0
++
++#endif /* TARGET_ARM_MMUIDX_H */
 -- 
 2.43.0
 

@@ -4,79 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37A6ECA100F
-	for <qemu-arm@archiver.kernel.org>; Mon, 22 Sep 2025 18:56:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7CD9CA100F
+	for <qemu-arm@archiver.kernel.org>; Mon, 22 Sep 2025 18:57:28 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v0lhk-0008Cc-Gi; Mon, 22 Sep 2025 14:56:06 -0400
+	id 1v0lfB-0003XV-8O; Mon, 22 Sep 2025 14:53:25 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1v0lfz-00054q-5g
- for qemu-arm@nongnu.org; Mon, 22 Sep 2025 14:54:19 -0400
-Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629])
+ id 1v0lf6-0003OF-Ue
+ for qemu-arm@nongnu.org; Mon, 22 Sep 2025 14:53:21 -0400
+Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1v0lfP-00050T-0x
- for qemu-arm@nongnu.org; Mon, 22 Sep 2025 14:54:14 -0400
-Received: by mail-pl1-x629.google.com with SMTP id
- d9443c01a7336-26a0a694ea8so29190705ad.3
- for <qemu-arm@nongnu.org>; Mon, 22 Sep 2025 11:53:36 -0700 (PDT)
+ id 1v0lf3-0004wO-MH
+ for qemu-arm@nongnu.org; Mon, 22 Sep 2025 14:53:19 -0400
+Received: by mail-pl1-x636.google.com with SMTP id
+ d9443c01a7336-271067d66fbso23376745ad.3
+ for <qemu-arm@nongnu.org>; Mon, 22 Sep 2025 11:53:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1758567213; x=1759172013; darn=nongnu.org;
+ d=linaro.org; s=google; t=1758567194; x=1759171994; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=lV01EAejMZtOUVdGrh8FhpDGLA+CmMEq51hjadKy0iI=;
- b=ckPdObCBSVtwzn8RZIH7YYJrxr9fcO3+K5S3lZ305I9X5CFDwFIadQMYTN4p1Xlntt
- QqAJ2d5mCvQMC6wDmvUguQU375Gvan+loVsiyQQimO86P37uGFgBlagSFTp4cCua4MOO
- j5O7AmfI32pH9MUBVcIH8YEvxZIh8dY+2hxpeUez+3oIjFLUlEDlszTtp65wjqU2ugfC
- gJKRXtBQbufkE6QclKXMtxNSrOoDImLU3jzGHwtHOAVzBFT4yjx2ear0ZS5EH4OAY/5R
- ZqIACJ7VSTEtwTRf0jPGx8t+jj1jzHwkXDgZ7+bA0pMnZDrmMvIUr9jETE99QOXvdrRP
- C4VQ==
+ bh=c8wyuys4m1d8GhLqeKYb3zwEPLO/sLqR4mHAelbDpjY=;
+ b=GRO4EMf2KFL/IY1EpbX25Eopao1U+R5cPMtyu9VaGDxxM79ZS1YsT3ty9JETv7IDvU
+ C/4wQb/ecuSaKLgo/0Mlp0Iu+bOZ5HUAsvLLUw9UfAAeUKF5ywY3yFBf1dcYiUztAe4c
+ RZmluZRqoSFT8vyR0Ob0ISqAdtsauqfyG0FWNBRAMa37CRGQUbK4VEhsJVWMB+sTT1Oi
+ AQP9eGj9zLXxNZ5kevZKsEjZyWEj5QpMt7e681itR1b0Zsh1/DGEgS66BDykOWuEzjKG
+ M3bSgiFSAloEzs0NHu5fFi7iZ77+616aVFcVjOBJkKF78zAgu1WR+jrxe/tcpQCZsPTE
+ dmTA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1758567213; x=1759172013;
+ d=1e100.net; s=20230601; t=1758567194; x=1759171994;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=lV01EAejMZtOUVdGrh8FhpDGLA+CmMEq51hjadKy0iI=;
- b=Wr65Y+5DE9G3iFa2qT/9/03TQ/+HxXgTqCY20s4PCU4EoH8joWnl30ENZlDNz0hLEp
- xenJ5RkI1Uif+1W+NZ1ugYBT7hZgImzLapijvTqAvGewk4lGAtifvdbnTCvvKJmfCD1Z
- KsjKRr0CyfXIMqmvFwuYlctwY5B3t5EvaekC6YKzO9i7EhWNyzmpJr1g1DvaaMNnSk+6
- GIMr9Qd3+jmEcaHKAoS9KM9evrhmNZlV1fKGnxqU/xQfYbCr8rV7kQjkqmg99LY0Cfib
- G/XbUtogQZjW04bvdB+xQYPTxpQPERucLZazOsGLQbWxe238OrWZwG8SFq4FDxdkIXg2
- gGDA==
-X-Gm-Message-State: AOJu0Ywa/fo5EIsV/4fw3c2GlJXKhjsHeM/vaDrrd/sIU/R3+SdaqPAm
- vhoQPLSC5RMRpR5jRB1tPC0I4O2uZetbBFyyGgGitAX5e9A8djBquxrsmFsPaFTYdUA=
-X-Gm-Gg: ASbGncueD96UlQrzaeI7d9AfrvdNVt0sfd2utYONlfNwNnlGS9Gs4xYtWqcy0ccoH41
- I/O8cIsFzWEdk8W6FkPKkd5PB/b5FNyf1SW8439nR38lvwps9iyO9hAm7kgNzcrb/9s1IzQyYLx
- i4S4swbxvdWCBf1zIdblHYSHCEkUCrByzRzn/c5KmwvISq89e5A3IITDvxgtYMRGYP/E7Ph24JQ
- R9AzvqnhOHl8jIE0QSQ95se66NFlQLqk3EeaAlJNuWZrVraqQyATw5XmzOQatRf2Hzt4fKNpRBZ
- qnoz2M6UPUCSvfTly+z2hPhdcB7cdXRw0v2VQWSH94xvOPfBzsRS0nuom8XdpjpCjVupA8euUKa
- 7cdx9dkNuENGlEGlm1ZmFXMcGKA7j
-X-Google-Smtp-Source: AGHT+IEpDmEToQ1+L5xmeMw9xV9VsFid0A5cTQZvLbC6YIXZnYlEPMA9Gc5twiztSWeSRLZ0KyGY5Q==
-X-Received: by 2002:a17:902:d487:b0:269:96ee:17d3 with SMTP id
- d9443c01a7336-269ba523685mr157701145ad.51.1758567213071; 
- Mon, 22 Sep 2025 11:53:33 -0700 (PDT)
+ bh=c8wyuys4m1d8GhLqeKYb3zwEPLO/sLqR4mHAelbDpjY=;
+ b=XLv9+k3CLChfV98ZWEFRSREDmxQZAOAt3oVhBXOHQQpxmkB1ks2OGl9GUG8zG3N2Xj
+ WPtq/uBP3b4YOktr9+kvhkSvnZd1EaiUCsKTyBpRAybOVL1bF4HcQHE4CdnIQucYlGT6
+ Zfa2A2m4nH5qkH5EKgmPtoYjCmypKN4OomQpTqL1R8WCuuwGnWH7n3wD6nAGqSB1g778
+ BOAd6t02orP+l+tNDu1ztIglg5dpL6WWQUAekgNx7vaFptP1MYOe7haddTxuwOXe/DhU
+ AagVE5PSDQ9TJg6Fk0fTX/NTcKZf8uXA7/HSii2YPaZY/mB+8CWphoDXI0Kk4G9ojxDh
+ u84A==
+X-Gm-Message-State: AOJu0YwS8zae7s2bPKh4C1c9LlB/vVpVn7057tQl2SsQdJJHnGg/uYCn
+ QBB4qMYHeoGG/zRlC8EnKEb0LOnKbOcuPEOK/lq/JWLHWTYv/6j5cA0PifdlYvNKzkw=
+X-Gm-Gg: ASbGncvbhRODbfSNvquI3dDD9Xd5XWPXc6S1ERrowrR67r88NJVyhc9WJ9YFxh73eJ1
+ pfz2jmfQcpC5IO/7C/Xd0bKyxVKSalVYTPcas9Mv1UQUxxzbUFW6dpUW0niqade99blVFlBpsDn
+ k9GIHJZmM9y0t+8FDjbXYwonNq9XE26yjoMAKz0fk0it2Xj7xJ9rvDgospnjU7Ogy0pGgH7KUHl
+ Y+8pkJ+gkSVhndTxZJwcSbS9jkoVfobX3y3dH3nsQuuSgTkaroWZHW8UE6lG6ABrDPjcOZAwk3l
+ XzX+J9a4PoK64iwvKyKv09NXOYdnnjZpc4AxKnkZOco/V7reMnwhFp4uvh9WsirDlUueDs/442j
+ OY9JWl1P03vNyMF2yxkAJofxnPedM
+X-Google-Smtp-Source: AGHT+IG5dEyukZKTtzWMUKbT+WNVl/fuUbv7f6jTIQPKZqdUH78QggLxTRJxyyqzFsbg93OGaGDOPw==
+X-Received: by 2002:a17:902:eccf:b0:269:8404:9a6b with SMTP id
+ d9443c01a7336-269ba563609mr208360705ad.57.1758567194008; 
+ Mon, 22 Sep 2025 11:53:14 -0700 (PDT)
 Received: from stoup.. ([71.212.157.132]) by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2698018a472sm138554795ad.58.2025.09.22.11.53.32
+ d9443c01a7336-2698018a472sm138554795ad.58.2025.09.22.11.53.13
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 22 Sep 2025 11:53:32 -0700 (PDT)
+ Mon, 22 Sep 2025 11:53:13 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v5 61/76] target/arm: Load gcs record for RET
-Date: Mon, 22 Sep 2025 11:49:09 -0700
-Message-ID: <20250922184924.2754205-62-richard.henderson@linaro.org>
+Cc: qemu-arm@nongnu.org
+Subject: [PATCH v5 41/76] target/arm: Add arm_hcr_el2_nvx_eff
+Date: Mon, 22 Sep 2025 11:48:49 -0700
+Message-ID: <20250922184924.2754205-42-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250922184924.2754205-1-richard.henderson@linaro.org>
 References: <20250922184924.2754205-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::629;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x629.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::636;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x636.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -99,59 +98,47 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Implement the pseudocode function EffectiveHCR_EL2_NVx.
+
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/tcg/translate-a64.c | 29 ++++++++++++++++++++++++++++-
- 1 file changed, 28 insertions(+), 1 deletion(-)
+ target/arm/cpu.h    |  1 +
+ target/arm/helper.c | 10 ++++++++++
+ 2 files changed, 11 insertions(+)
 
-diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-index 529c5bef0c..462c61032b 100644
---- a/target/arm/tcg/translate-a64.c
-+++ b/target/arm/tcg/translate-a64.c
-@@ -444,6 +444,27 @@ static void gen_add_gcs_record(DisasContext *s, TCGv_i64 value)
-     tcg_gen_mov_i64(gcspr, addr);
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index c79393d9c2..b36436ee2b 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -2639,6 +2639,7 @@ static inline bool arm_is_el2_enabled(CPUARMState *env)
+  */
+ uint64_t arm_hcr_el2_eff_secstate(CPUARMState *env, ARMSecuritySpace space);
+ uint64_t arm_hcr_el2_eff(CPUARMState *env);
++uint64_t arm_hcr_el2_nvx_eff(CPUARMState *env);
+ uint64_t arm_hcrx_el2_eff(CPUARMState *env);
+ 
+ /*
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 37cfd2064c..e3ea5254c5 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -3899,6 +3899,16 @@ uint64_t arm_hcr_el2_eff(CPUARMState *env)
+     return arm_hcr_el2_eff_secstate(env, arm_security_space_below_el3(env));
  }
  
-+static void gen_load_check_gcs_record(DisasContext *s, TCGv_i64 target,
-+                                      GCSInstructionType it, int rt)
++uint64_t arm_hcr_el2_nvx_eff(CPUARMState *env)
 +{
-+    TCGv_i64 gcspr = cpu_gcspr[s->current_el];
-+    int mmuidx = core_gcs_mem_index(s->mmu_idx);
-+    MemOp mop = finalize_memop(s, MO_64 | MO_ALIGN);
-+    TCGv_i64 rec_va = tcg_temp_new_i64();
++    uint64_t hcr = arm_hcr_el2_eff(env);
 +
-+    tcg_gen_qemu_ld_i64(rec_va, clean_data_tbi(s, gcspr), mmuidx, mop);
-+
-+    if (s->gcs_rvcen) {
-+        TCGLabel *fail_label =
-+            delay_exception(s, EXCP_UDEF, syn_gcs_data_check(it, rt));
-+
-+        tcg_gen_brcond_i64(TCG_COND_NE, rec_va, target, fail_label);
++    if (!(hcr & HCR_NV)) {
++        return 0; /* CONSTRAINED UNPREDICTABLE wrt NV1 */
 +    }
-+
-+    gen_a64_set_pc(s, rec_va);
-+    tcg_gen_addi_i64(gcspr, gcspr, 8);
++    return hcr & (HCR_NV2 | HCR_NV1 | HCR_NV);
 +}
 +
- typedef struct DisasCompare64 {
-     TCGCond cond;
-     TCGv_i64 value;
-@@ -1798,7 +1819,13 @@ static bool trans_BLR(DisasContext *s, arg_r *a)
- 
- static bool trans_RET(DisasContext *s, arg_r *a)
- {
--    gen_a64_set_pc(s, cpu_reg(s, a->rn));
-+    TCGv_i64 target = cpu_reg(s, a->rn);
-+
-+    if (s->gcs_en) {
-+        gen_load_check_gcs_record(s, target, GCS_IT_RET_nPauth, a->rn);
-+    } else {
-+        gen_a64_set_pc(s, target);
-+    }
-     s->base.is_jmp = DISAS_JUMP;
-     return true;
- }
+ /*
+  * Corresponds to ARM pseudocode function ELIsInHost().
+  */
 -- 
 2.43.0
 

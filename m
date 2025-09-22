@@ -4,69 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A9A6CAC5AC
-	for <qemu-arm@archiver.kernel.org>; Mon, 22 Sep 2025 09:41:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A24F2CAC5A7
+	for <qemu-arm@archiver.kernel.org>; Mon, 22 Sep 2025 09:41:48 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v0czX-0002Oo-9D; Mon, 22 Sep 2025 05:37:57 -0400
+	id 1v0d0s-0004lZ-Kj; Mon, 22 Sep 2025 05:39:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1v0czD-00022e-3T
- for qemu-arm@nongnu.org; Mon, 22 Sep 2025 05:37:31 -0400
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
+ id 1v0czk-0002UW-9P
+ for qemu-arm@nongnu.org; Mon, 22 Sep 2025 05:38:08 -0400
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1v0cz2-0000cF-CE
- for qemu-arm@nongnu.org; Mon, 22 Sep 2025 05:37:30 -0400
-Received: by mail-wr1-x434.google.com with SMTP id
- ffacd0b85a97d-3ecdf2b1751so2388983f8f.0
- for <qemu-arm@nongnu.org>; Mon, 22 Sep 2025 02:37:16 -0700 (PDT)
+ id 1v0czC-0000gB-E2
+ for qemu-arm@nongnu.org; Mon, 22 Sep 2025 05:38:03 -0400
+Received: by mail-wm1-x335.google.com with SMTP id
+ 5b1f17b1804b1-45dcfecdc0fso36728555e9.1
+ for <qemu-arm@nongnu.org>; Mon, 22 Sep 2025 02:37:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1758533834; x=1759138634; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=DY0XmkUw/px6He2/QViLhoiKimIF9WS2BOzUGcig47M=;
- b=PRJhJXsQuRNVUX4enWK7NFbkSDSg0iemfSk5i549omoA0IaoiJNnV0MVuPyfBse8Pg
- Tov9TRIezI/UsJvSCq1S5ujaiIUfjr58Bzq3AitgEFizGBZU4NHnKqoajYvz36DMGITu
- 8mHCiLFZC1AYpxUEy1tMVTWyvw2Za0houDPMRac7MenoHmiAIhQReXpQwuiw1sGghjns
- 6bthUT/WIUU16q4FwLvrhCOdRBBxPB8MJftFMUouQQxkJkRuv6QkKVNlPH0saItxZA4T
- ANarUY00AuZ9gRRl8gtxoS61WX3PKbvR2mNsnUr21+NNozXeR+7KxJ0xqmXo0HBaC4P0
- u6Lg==
+ d=linaro.org; s=google; t=1758533846; x=1759138646; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=S4WNTy7QbDl7ReDD5PUvCAXuciU8b39SjZqZspkFta4=;
+ b=n4iXFapDqjeBYZkvriC0g4xEVvmtxf38qkhnvbVIF80WiBsVE1KHBKJJoLnsRssTL3
+ s5NDCbLXuwB07WR4Eq2KfrZVEn5mjRK2AcvYQkBBWaCvMV58XkzH3hbyUqjVE0wp00TK
+ bXryvpOOwEssa+pVGshIgGmEYLgg6WBM8vrRjujUg7GcMjbfymM4PgsBMhwc9/kzuIup
+ L4h+7wMVtwQ0w574tziTvdbJIGA8I2lJKAjWnuO57dkYalTzgvcyHMMytxFQ0J0ErgQu
+ scMHevg2lwT+ChlX33O9jOCid+ObLdX+fNGJNcFSnqACvgJXs6AGGSps+8qivaHe6wfh
+ JcyQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1758533834; x=1759138634;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=DY0XmkUw/px6He2/QViLhoiKimIF9WS2BOzUGcig47M=;
- b=KemIZkTqsMwOjVSMpmFKZ0ewilbRd3wUtrmeRiblvtktoEUpVUKUjZQbk+J6yRAYzn
- ql6GCQbvcIgjDPf/SQJN3xLLJSZ9tOJzmVVsbhSzpXxgW4kpIy6dwco+UHEX/kCzZX5a
- vl5XK+ped0mbc1eDof4HfJHUe8EztRXfr1dJw4rJ8RGLLlvqo90vvYWW07vB3BZbaRk2
- Epwecbl+hzKemA8JrkxNCPwFtC0yFlTs1bmDIpa7VLfS9XjS+PGvAisCXAEwLEtG8kHc
- NZpJy1kx0CYYGplDqkJowH/CzDLArKU8uBQb3JhmB/oCxfW5H/58lnA0BFrx6XtGGNcA
- PlfA==
+ d=1e100.net; s=20230601; t=1758533846; x=1759138646;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=S4WNTy7QbDl7ReDD5PUvCAXuciU8b39SjZqZspkFta4=;
+ b=dTLHWyrbwSKrI4CdriNDT1Qd3VeB1awdndAhJAT14FwupxfjXsCYjv/XTsCdPaelxZ
+ KRVa4xt932ziRVn47Tx3Rvk7IMs18MjHHZKqL67ze5eMkJCZL//N6W7xQuqYQvHfgFT8
+ /qjTBDBObVssItEVXiNOueyxxlcoGyMjaEid+x5F2BZ8eAgrOl3v9Bcu4M0dgUJUSPZ7
+ LObEs5XFD5So122YuQL6u+dZgpRU96cRZXE0oL21C5Rl6vsA6a9s1uY7V9GUFyzqp2mf
+ dS1EJWWMqHZ6bXy0TJxMBdDtWcTrOxAZF4spueL28REfbunJ35ba8Yv60ZAAd2XGzpUk
+ ONWw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVChjthPPhABImQNUpMHS+V/ZFuHNdHmOHOVurNP05yg3YXe4IJJz3jGtmXSaOOSyiUW1DM6rKGkQ==@nongnu.org
-X-Gm-Message-State: AOJu0YycMNktC9cL4ABfJTiesdiuqUETKv5UjS4oYIAFKf1Xq73zOyab
- TuzX3WmP4nevLysqEHiJiLI7LnddTY/vzOKPqrR8Pd5+2O/9MwimXqHaeQ8VRR/V1vQ=
-X-Gm-Gg: ASbGnctIfUabgCJMoIPELtZUXiWPFj0sRON9bHEOq1u5XCl1snkCYw1KyJ3i2inkhcX
- 6kXvKpytOubuEYrM8T1pE6VLlTxRIfeogaAY2Dv86vUnIPA5Qzzzst+KNIqt3SgdmYmEHTJvmFq
- fgYGmRtIVtAqLvIGmVZnj1c82QNSsqUlK4dIYnqjF1L2WhewStqxbAQDqwZNDaSwpjqT++nh0RH
- gjim81Srzcpk5qFroyGoAyDujbzso85Dl8035il5obu56k3sRtaXbSMcPXO8kkvRPXpPDZWKAeZ
- a5a0/FodVfzkEcw/buKyBmNgiOwc4C00ZYSbWFnBYDg/TXJyhqqzRumDKWvtv2V9sWIEoeyCmup
- oOML9q9OkMFtjpa6zqUCNfwwzmkG1J9RT0A==
-X-Google-Smtp-Source: AGHT+IHWrI4/43aheYywm2/WnfKmVmn8vZizXgUs4ZCZPfXuPbJzRHgAuqENnwGr/lbSzIRfsf+B8Q==
-X-Received: by 2002:a05:6000:440a:b0:3f9:e348:f5c with SMTP id
- ffacd0b85a97d-3f9e34815b0mr2918240f8f.60.1758533834086; 
- Mon, 22 Sep 2025 02:37:14 -0700 (PDT)
+ AJvYcCWkW16TKpMqTO6iCyMo1/hnwkHbQjaa4RUfnrd4pS/2uf/gd+LYGw9WuliWNyn9KPR6MAirphCtcA==@nongnu.org
+X-Gm-Message-State: AOJu0YxL4jq4NmPFJaviISMYkCzZLI217a+m2RgExkEsX/jnZXM8U7eL
+ D4uZcaqF2jwCPk5PU0xZQSKrzUcjPCaUqlr4rhdWYcWnrA+NS1lI37BpSGjhvAc3NZk=
+X-Gm-Gg: ASbGncsx84GadArXEgAtBxcSTXT5cWcXJVysqzZEd2JDXrgjFCua75tdO7jPTFaQAdr
+ qkKiGsrrfzEheou8gqMc0mDa287SO1tDhdOLJvuoI3oaxw1lXOEUvnVi00t5NA73JrkuJQ98VCg
+ NsBv5D9je6mEtGl/MVBttWDmVD188ocvGggPzGlHieFofAUw4aguUH75pqF9L0wXkpQ0rblw14a
+ kcGHf+AIvlXMWB8aSERWKiX/l6Svu7HARfz3qMvilJzUW08d0bJ5f8rK2ImA0c5i2duJPCOOVrX
+ BYtrfEXNU9M/PnTQhACWolhip5XI8Je7mNut/1TVMdFVNXStycE26Bfc+L/p6D5iqdxsdRca0zl
+ FmkNWIJtRMADYmbhsStLmW5o=
+X-Google-Smtp-Source: AGHT+IEfOfsj70NV5OJ38BPB3oBvQ/TSHt5ZiCzF66U4ZGiQdrLGPQXZxesF+PGJ4gx11C67PFSoyA==
+X-Received: by 2002:a05:600c:1c05:b0:45b:7a93:f108 with SMTP id
+ 5b1f17b1804b1-4684c13ea94mr118734105e9.3.1758533845869; 
+ Mon, 22 Sep 2025 02:37:25 -0700 (PDT)
 Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-46d7a566a27sm27122065e9.20.2025.09.22.02.37.12
+ 5b1f17b1804b1-460942b6c3csm131375925e9.1.2025.09.22.02.37.17
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 22 Sep 2025 02:37:12 -0700 (PDT)
+ Mon, 22 Sep 2025 02:37:24 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 85B005F7B1;
- Mon, 22 Sep 2025 10:37:11 +0100 (BST)
+ by draig.lan (Postfix) with ESMTP id C4F2D5FA14;
+ Mon, 22 Sep 2025 10:37:12 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Palmer Dabbelt <palmer@dabbelt.com>, Alexandre Iooss <erdnaxe@crans.org>,
@@ -78,17 +79,19 @@ Cc: Palmer Dabbelt <palmer@dabbelt.com>, Alexandre Iooss <erdnaxe@crans.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Weiwei Li <liwei1518@gmail.com>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>
-Subject: [PATCH 00/25] September maintainer updates (docs, plugins,
- semihosting) pre-PR
-Date: Mon, 22 Sep 2025 10:36:45 +0100
-Message-ID: <20250922093711.2768983-1-alex.bennee@linaro.org>
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ Richard Henderson <richard.henderson@linaro.org>
+Subject: [PATCH 13/25] semihosting/arm-compat-semi: eradicate target_long
+Date: Mon, 22 Sep 2025 10:36:58 +0100
+Message-ID: <20250922093711.2768983-14-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
+In-Reply-To: <20250922093711.2768983-1-alex.bennee@linaro.org>
+References: <20250922093711.2768983-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::434;
- envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x434.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::335;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x335.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -111,97 +114,38 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-These are all bits and pieces that have been mostly reviewed when
-posted with a few minor additional patches. I plan to send the PR by
-the end of the week.
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 
-Plugins
+We use int64_t or int32_t depending on ret size.
 
-  - minor fix checking return values from Peter
-  - Pierrick's nifty uftrace plugin
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Message-ID: <20250822150058.18692-11-pierrick.bouvier@linaro.org>
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+---
+ semihosting/arm-compat-semi.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
 
-Semihosting
-
-  - build the sub-system once (single binary work)
-
-Misc
-
-  - typo fix
-  - tweak to checkpatch license checking
-  - *new* gitlab-failure-analysis script
-
-The following still need review:
-
-  scripts/ci: add gitlab-failure-analysis script
-  docs/devel: fix typo in code-provenance.rst
-
-Alex.
-
-Alex Bennée (2):
-  docs/devel: fix typo in code-provenance.rst
-  scripts/ci: add gitlab-failure-analysis script
-
-Nabih Estefan (1):
-  checkpatch: Ignore removed lines in license check
-
-Peter Maydell (1):
-  contrib/plugins/execlog: Explicitly check for
-    qemu_plugin_read_register() failure
-
-Pierrick Bouvier (21):
-  semihosting/syscalls: compile once in system and per target for user
-    mode
-  semihosting/syscalls: replace uint64_t with vaddr where appropriate
-  semihosting/guestfd: compile once for system/user
-  semihosting/arm-compat-semi: change common_semi_sys_exit_extended
-  target/riscv/common-semi-target: remove sizeof(target_ulong)
-  target/{arm, riscv}/common-semi-target: eradicate target_ulong
-  include/semihosting/common-semi: extract common_semi API
-  semihosting/arm-compat-semi: eradicate sizeof(target_ulong)
-  semihosting/arm-compat-semi: replace target_ulong with vaddr
-  semihosting/arm-compat-semi: eradicate target_long
-  semihosting/arm-compat-semi: remove dependency on cpu.h
-  semihosting/arm-compat-semi: compile once in system and per target for
-    user mode
-  contrib/plugins/uftrace: skeleton file
-  contrib/plugins/uftrace: define cpu operations and implement aarch64
-  contrib/plugins/uftrace: track callstack
-  contrib/plugins/uftrace: implement tracing
-  contrib/plugins/uftrace: implement privilege level tracing
-  contrib/plugins/uftrace: generate additional files for uftrace
-  contrib/plugins/uftrace: implement x64 support
-  contrib/plugins/uftrace_symbols.py
-  contrib/plugins/uftrace: add documentation
-
- docs/about/emulation.rst                      | 199 ++++
- docs/devel/code-provenance.rst                |   2 +-
- include/semihosting/common-semi.h             |   6 +
- include/semihosting/guestfd.h                 |   7 -
- include/semihosting/semihost.h                |   2 +
- include/semihosting/syscalls.h                |  30 +-
- contrib/plugins/execlog.c                     |   1 +
- contrib/plugins/uftrace.c                     | 878 ++++++++++++++++++
- semihosting/arm-compat-semi-stub.c            |  19 +
- semihosting/arm-compat-semi.c                 |  63 +-
- semihosting/guestfd.c                         |  26 +-
- semihosting/syscalls.c                        | 109 ++-
- ...mon-semi-target.h => common-semi-target.c} |  22 +-
- ...mon-semi-target.h => common-semi-target.c} |  23 +-
- contrib/plugins/meson.build                   |   3 +-
- contrib/plugins/uftrace_symbols.py            | 152 +++
- scripts/checkpatch.pl                         |   3 +-
- scripts/ci/gitlab-failure-analysis            | 117 +++
- semihosting/meson.build                       |  18 +-
- target/arm/meson.build                        |   4 +
- target/riscv/meson.build                      |   4 +
- 21 files changed, 1539 insertions(+), 149 deletions(-)
- create mode 100644 contrib/plugins/uftrace.c
- create mode 100644 semihosting/arm-compat-semi-stub.c
- rename target/arm/{common-semi-target.h => common-semi-target.c} (59%)
- rename target/riscv/{common-semi-target.h => common-semi-target.c} (53%)
- create mode 100755 contrib/plugins/uftrace_symbols.py
- create mode 100755 scripts/ci/gitlab-failure-analysis
-
+diff --git a/semihosting/arm-compat-semi.c b/semihosting/arm-compat-semi.c
+index 29cdab66f73..3c9192d8684 100644
+--- a/semihosting/arm-compat-semi.c
++++ b/semihosting/arm-compat-semi.c
+@@ -501,10 +501,13 @@ void do_common_semihosting(CPUState *cs)
+         break;
+ 
+     case TARGET_SYS_ISERROR:
++    {
+         GET_ARG(0);
+-        common_semi_set_ret(cs, (target_long)arg0 < 0);
++        bool ret = is_64bit_semihosting(env) ?
++                   (int64_t)arg0 < 0 : (int32_t)arg0 < 0;
++        common_semi_set_ret(cs, ret);
+         break;
+-
++    }
+     case TARGET_SYS_ISTTY:
+         GET_ARG(0);
+         semihost_sys_isatty(cs, common_semi_istty_cb, arg0);
 -- 
 2.47.3
 

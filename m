@@ -4,79 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CA1DCA100F
-	for <qemu-arm@archiver.kernel.org>; Mon, 22 Sep 2025 19:10:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A456CCAC592
+	for <qemu-arm@archiver.kernel.org>; Mon, 22 Sep 2025 19:10:40 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v0lc6-000524-CY; Mon, 22 Sep 2025 14:50:14 -0400
+	id 1v0lg6-0005Bm-IV; Mon, 22 Sep 2025 14:54:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1v0lbw-0004wR-EW
- for qemu-arm@nongnu.org; Mon, 22 Sep 2025 14:50:04 -0400
-Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436])
+ id 1v0lfO-0003rP-Uf
+ for qemu-arm@nongnu.org; Mon, 22 Sep 2025 14:53:42 -0400
+Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1v0lbq-0004Bg-A0
- for qemu-arm@nongnu.org; Mon, 22 Sep 2025 14:50:04 -0400
-Received: by mail-pf1-x436.google.com with SMTP id
- d2e1a72fcca58-77f0efd84abso2135772b3a.3
- for <qemu-arm@nongnu.org>; Mon, 22 Sep 2025 11:49:56 -0700 (PDT)
+ id 1v0lf7-0004wk-Gw
+ for qemu-arm@nongnu.org; Mon, 22 Sep 2025 14:53:36 -0400
+Received: by mail-pl1-x629.google.com with SMTP id
+ d9443c01a7336-267facf9b58so34908145ad.2
+ for <qemu-arm@nongnu.org>; Mon, 22 Sep 2025 11:53:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1758566996; x=1759171796; darn=nongnu.org;
+ d=linaro.org; s=google; t=1758567197; x=1759171997; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=u2qun7bBQurVJmcwvikszJiyDINQVBDa8kuiWrv+8rE=;
- b=syoVAN4+KowWwC1ss2Ffapd8XRohNO+xk3vgR+Mem3lBr2e1Bzrt06qYpXeY0pXP4Q
- C5avmjtL8gqyWEDmR2C10bF5sot3D4kom1fOIzIhAeY5zuSwhnt/lJyfZnNpBnX81odb
- RyL7rgK0CJhmZvlAvp1e9N9jIhtr0rFvzn/mJjdEBg6CILibx6y3v88N9DchqAIGoXlj
- arbpcORF0unqgLhtj09dCjMK0aet5Am1UWoucS34Yk1fZkBgkPlitURIYYoohvcrwORG
- hUh4eQMSHqnSBFZHJbla4+8dAbxGgbGFaCmMmxXU73KaH4x72J/AHWbiRNAuhpMri3hr
- tAhg==
+ bh=v6UhbL1wlL/mcB0x0GrzT1zamkcYww0puSFWXXUpmdY=;
+ b=Q371F4DCtvP1LoKW0X69Wzf3ecok3xeIshTjrt+G3u0+HT+988j8RHKcGEo4uCIsrK
+ wR48vni68s5Zyvvc8SmzAPBF4x7taP6MiSv/SuodQS7vgnjFEaMufnuSybkhlttY7kXv
+ D1EYctHUEvStDb4i/1BZbND0hQm2mbAi18MlikXbiwZ9L8WTiCc5RC028kid8CTOl4Hl
+ fjeaSN7Ct6qpIXQ1VLhPaw1NS+d0OOt3r4EP/vVlS5vgGlxNM4/A7ib59RK+NssX+qBG
+ zo+bFSgsfH1dY0V3elBNzq/2NTEFagqqU+6AJZ/jq9H03/JPVlFJPqk7STS3bM5hGwbT
+ HJZQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1758566996; x=1759171796;
+ d=1e100.net; s=20230601; t=1758567197; x=1759171997;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=u2qun7bBQurVJmcwvikszJiyDINQVBDa8kuiWrv+8rE=;
- b=Y6iuuLkYTrlzS+kpKGc0BudPxJ7iSN7AWiJVIvV6dZ9hI8HzrZQ2bVarQRG9sDYH5t
- 3WiMZ4xKOujyktN/FVEMMKIkqdHHA3/44kpyBXY+mI0zD2+W2KsylXUlwRh3wVYrmd//
- AaEtpNMu9ESF+70YD8aOp1C2AYO1AaD+WxDCqwuhxhddWfwtQNUbaj4e53jU/Z2uQXlO
- SWijztpub2EI1damd7sC5Qr/0RGMDMbMsA79qqP5X6jjN9E9eve8xAjtKpuygTvGa/0r
- FcAMQwHcmYcbvuUCvjfkUjyfAaxQA3liQsUhmCu9/+QIO6f8jDvSaiDtDerSvUIlCV4/
- C2zQ==
-X-Gm-Message-State: AOJu0Yy5cC6XOa6u9NOn5pRR7nZUDDXy02MyeXGUOZTpFwWC8vYTAgwT
- 6oLpz8kgAmNvGFOh3yMOF9SKy3w3F5sSSiTgcAwJGmHyYHykQtAKHuzsZfawfynbOO4=
-X-Gm-Gg: ASbGncsYUNppvvTgV458CO+sAia2YGicc0i+dHDQi/bDivDotXzJoQwmY4D8LgGPyQT
- TGsndt1l5lpRsj1tRIYzBfT0qG7Zd7OD3cN/lasBarud/4f7ZQbcJ+O97rBlh8kxfXSiMJHf5Ai
- kF/nC8CVP4bkULEldDWoXCiFwleAcW1Na1caOJtJUVOY65bAZA8i5mKaBFOuOSJraAIQ/InIHnI
- fGc5xoJOyztD/+c2sWPHZW/19JpeRvRsagzA5KZVblN+sxVl55qm/8P7CwV4x+5g3tnOC9DnXvv
- czy48tqQs/zCXYRrJmb2971tGYwTl1p79YlSE9i892HMZmwNjYd/pg4OScUwr71k5W4HxddJGZS
- k6mr44Pb4rPgVsvP7OOAtUJVhaTR6
-X-Google-Smtp-Source: AGHT+IHeb06Adqa1vI+d50qulI22ifH9wbWRzWfPbjcpB02mxqM5VIqPc/mosvCFS2LixmrCW+LTMg==
-X-Received: by 2002:a05:6a00:1889:b0:776:1482:ef5b with SMTP id
- d2e1a72fcca58-77e4d329cc9mr13506848b3a.10.1758566995687; 
- Mon, 22 Sep 2025 11:49:55 -0700 (PDT)
+ bh=v6UhbL1wlL/mcB0x0GrzT1zamkcYww0puSFWXXUpmdY=;
+ b=hL5IKOZvrvJxiyhG/2KU0guEugYOv5/afS6cApqDRnGBFXqDKwkbTc/4EaFkWaY5vC
+ FWkxRpEg7FmiZGuR7FG7y0PasqzpU4cKlvdAECU+3hTeP8TsCGjR9QrLpJXr17fFPSmd
+ XNIj70rkWwUTjcy/DdD24Ssg1Ragmoeg9OK355t5bzgnJakn2R5KBh/05GHPnvzDbTh0
+ JiKbNfJcLkJic+V4Iy/2YPy1B9ynLtiRgPgNZY9N+HZUxVRhKzOdwtjWBXgcT9FjbFad
+ aNFSpn2Ih0a+ofxBS+uicgRHozaozPF2wUgptSBJNBtg9HaXwDYmY8Aiwn4AW+9Zacgv
+ tcvA==
+X-Gm-Message-State: AOJu0Yzmjq2wENQXEgC/QGxhImo4B+klNgd74UnJd42Rc+8bCBogvpcA
+ OqdTvUmXQxyFd4DHRQxo6HmSRKIOMdpXUgDs2wGJLm4LwWTQPaHZvePRc8tn0qEgiP8=
+X-Gm-Gg: ASbGncsDqyiofNW81IjYKplmDkaosw6V0yEEOEIdj0Ixq0eBgesompZcX+VQxXSUERt
+ uCl8uDtRlOWJpgjX8/kdRNAftVFEaYoTk4I6GDMdELiPUBhf4bdHM/YmwNcIKMaHW8WR5ZTwcBC
+ os9Dm9TYkm5Xc5AfYyRg//uXoXhXr8yhS/udcULX89iEMRabbOGUeCl64LeK6TTGqvJoCbIX8Y5
+ uhNTfLCkll1HlI86FzSRCljQGQLCpQaL51Fw4z3t3IG76NHHZ+DFuFRIocoAc/6Qqb3TfeSJAdU
+ sfkQounrOjBOh/h3r2Ys+ql9iydCHunCbquqv4ddNMXS7uCejmAEx1zKU9bCXUO5NKrViingdff
+ OX1OCi7BSXYmDXJnfKlGksLOcT3YeZhXLALjK/IM=
+X-Google-Smtp-Source: AGHT+IGkwd2kVoy9NlQG7nUZU589wUz+kJm1XWypVwk4RoTTsYvVdnc3Ewl2ClScgqsIRFj7u7YsFg==
+X-Received: by 2002:a17:902:e549:b0:26e:62c9:1cc4 with SMTP id
+ d9443c01a7336-26e62c92042mr124693015ad.4.1758567196716; 
+ Mon, 22 Sep 2025 11:53:16 -0700 (PDT)
 Received: from stoup.. ([71.212.157.132]) by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-77e5fe6de75sm10583861b3a.19.2025.09.22.11.49.54
+ d9443c01a7336-2698018a472sm138554795ad.58.2025.09.22.11.53.15
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 22 Sep 2025 11:49:55 -0700 (PDT)
+ Mon, 22 Sep 2025 11:53:16 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v5 22/76] target/arm: Convert regime_el from switch to table
-Date: Mon, 22 Sep 2025 11:48:30 -0700
-Message-ID: <20250922184924.2754205-23-richard.henderson@linaro.org>
+Subject: [PATCH v5 44/76] target/arm: Implement EXLOCKException for ELR_ELx
+ and SPSR_ELx
+Date: Mon, 22 Sep 2025 11:48:52 -0700
+Message-ID: <20250922184924.2754205-45-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250922184924.2754205-1-richard.henderson@linaro.org>
 References: <20250922184924.2754205-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::436;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x436.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::629;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x629.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -99,154 +100,191 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+If PSTATE.EXLOCK is set, and the GCS EXLOCK enable bit is set,
+and nested virt is in the appropriate state, then we need to
+raise an EXLOCK exception.
+
+Since PSTATE.EXLOCK cannot be set without GCS being present
+and enabled, no explicit check for GCS is required.
+
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/internals.h       | 35 ----------------------------
- target/arm/mmuidx-internal.h | 13 +++++++++++
- target/arm/mmuidx.c          | 44 +++++++++++++++++++++---------------
- 3 files changed, 39 insertions(+), 53 deletions(-)
+ target/arm/cpregs.h        |  8 +++++
+ target/arm/cpu.h           |  1 +
+ target/arm/helper.c        | 67 ++++++++++++++++++++++++++++++++++----
+ target/arm/tcg/op_helper.c |  7 ++++
+ 4 files changed, 77 insertions(+), 6 deletions(-)
 
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 245c60652f..a886282957 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -1073,41 +1073,6 @@ static inline bool regime_is_stage2(ARMMMUIdx mmu_idx)
-     return mmu_idx == ARMMMUIdx_Stage2 || mmu_idx == ARMMMUIdx_Stage2_S;
+diff --git a/target/arm/cpregs.h b/target/arm/cpregs.h
+index bd2121a336..a79f00351c 100644
+--- a/target/arm/cpregs.h
++++ b/target/arm/cpregs.h
+@@ -351,6 +351,14 @@ typedef enum CPAccessResult {
+      * specified target EL.
+      */
+     CP_ACCESS_UNDEFINED = (2 << 2),
++
++    /*
++     * Access fails with EXLOCK, a GCS exception syndrome.
++     * These traps are always to the current execution EL,
++     * which is the same as the usual target EL because
++     * they cannot occur from EL0.
++     */
++    CP_ACCESS_EXLOCK = (3 << 2),
+ } CPAccessResult;
+ 
+ /* Indexes into fgt_read[] */
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index b36436ee2b..97cdcd8cdc 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -1502,6 +1502,7 @@ void pmu_init(ARMCPU *cpu);
+ #define PSTATE_C (1U << 29)
+ #define PSTATE_Z (1U << 30)
+ #define PSTATE_N (1U << 31)
++#define PSTATE_EXLOCK (1ULL << 34)
+ #define PSTATE_NZCV (PSTATE_N | PSTATE_Z | PSTATE_C | PSTATE_V)
+ #define PSTATE_DAIF (PSTATE_D | PSTATE_A | PSTATE_I | PSTATE_F)
+ #define CACHED_PSTATE_BITS (PSTATE_NZCV | PSTATE_DAIF | PSTATE_BTYPE)
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 5519484186..e90398acc9 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -3433,6 +3433,61 @@ static CPAccessResult access_nv1(CPUARMState *env, const ARMCPRegInfo *ri,
+     return CP_ACCESS_OK;
  }
  
--/* Return the exception level which controls this address translation regime */
--static inline uint32_t regime_el(ARMMMUIdx mmu_idx)
--{
--    switch (mmu_idx) {
--    case ARMMMUIdx_E20_0:
--    case ARMMMUIdx_E20_2:
--    case ARMMMUIdx_E20_2_PAN:
--    case ARMMMUIdx_Stage2:
--    case ARMMMUIdx_Stage2_S:
--    case ARMMMUIdx_E2:
--        return 2;
--    case ARMMMUIdx_E3:
--    case ARMMMUIdx_E30_0:
--    case ARMMMUIdx_E30_3_PAN:
--        return 3;
--    case ARMMMUIdx_E10_0:
--    case ARMMMUIdx_Stage1_E0:
--    case ARMMMUIdx_Stage1_E1:
--    case ARMMMUIdx_Stage1_E1_PAN:
--    case ARMMMUIdx_E10_1:
--    case ARMMMUIdx_E10_1_PAN:
--    case ARMMMUIdx_MPrivNegPri:
--    case ARMMMUIdx_MUserNegPri:
--    case ARMMMUIdx_MPriv:
--    case ARMMMUIdx_MUser:
--    case ARMMMUIdx_MSPrivNegPri:
--    case ARMMMUIdx_MSUserNegPri:
--    case ARMMMUIdx_MSPriv:
--    case ARMMMUIdx_MSUser:
--        return 1;
--    default:
--        g_assert_not_reached();
--    }
--}
--
- static inline bool regime_is_user(CPUARMState *env, ARMMMUIdx mmu_idx)
- {
-     switch (mmu_idx) {
-diff --git a/target/arm/mmuidx-internal.h b/target/arm/mmuidx-internal.h
-index 29bba4ecb5..d8d64a14d6 100644
---- a/target/arm/mmuidx-internal.h
-+++ b/target/arm/mmuidx-internal.h
-@@ -13,6 +13,8 @@
- 
- FIELD(MMUIDXINFO, EL, 0, 2)
- FIELD(MMUIDXINFO, ELVALID, 2, 1)
-+FIELD(MMUIDXINFO, REL, 3, 2)
-+FIELD(MMUIDXINFO, RELVALID, 5, 1)
- 
- extern const uint32_t arm_mmuidx_table[ARM_MMU_IDX_M + 8];
- 
-@@ -26,4 +28,15 @@ static inline int arm_mmu_idx_to_el(ARMMMUIdx idx)
-     return FIELD_EX32(arm_mmuidx_table[idx], MMUIDXINFO, EL);
- }
- 
-+/*
-+ * Return the exception level for the address translation regime
-+ * associated with this mmu index.
-+ */
-+static inline uint32_t regime_el(ARMMMUIdx idx)
++static CPAccessResult access_nv1_or_exlock_el1(CPUARMState *env,
++                                               const ARMCPRegInfo *ri,
++                                               bool isread)
 +{
-+    tcg_debug_assert(arm_mmuidx_is_valid(idx));
-+    tcg_debug_assert(FIELD_EX32(arm_mmuidx_table[idx], MMUIDXINFO, RELVALID));
-+    return FIELD_EX32(arm_mmuidx_table[idx], MMUIDXINFO, REL);
++    if (arm_current_el(env) == 1) {
++        uint64_t nvx = arm_hcr_el2_nvx_eff(env);
++
++        if (!isread &&
++            (env->pstate & PSTATE_EXLOCK) &&
++            (env->cp15.gcscr_el[1] & GCSCR_EXLOCKEN) &&
++            !(nvx & HCR_NV1)) {
++            return CP_ACCESS_EXLOCK;
++        }
++        return access_nv1_with_nvx(nvx);
++    }
++
++    /*
++     * At EL2, since VHE redirection is done at translation time,
++     * el_is_in_host is always false here, so EXLOCK does not apply.
++     */
++    return CP_ACCESS_OK;
 +}
 +
- #endif /* TARGET_ARM_MMUIDX_INTERNAL_H */
-diff --git a/target/arm/mmuidx.c b/target/arm/mmuidx.c
-index 309b1d68df..6dfefa56c2 100644
---- a/target/arm/mmuidx.c
-+++ b/target/arm/mmuidx.c
-@@ -8,34 +8,42 @@
- 
- 
- #define EL(X)  ((X << R_MMUIDXINFO_EL_SHIFT) | R_MMUIDXINFO_ELVALID_MASK)
-+#define REL(X) ((X << R_MMUIDXINFO_REL_SHIFT) | R_MMUIDXINFO_RELVALID_MASK)
- 
- const uint32_t arm_mmuidx_table[ARM_MMU_IDX_M + 8] = {
-     /*
-      * A-profile.
-      */
--    [ARMMMUIdx_E10_0]           = EL(0),
--    [ARMMMUIdx_E10_1]           = EL(1),
--    [ARMMMUIdx_E10_1_PAN]       = EL(1),
-+    [ARMMMUIdx_E10_0]           = EL(0) | REL(1),
-+    [ARMMMUIdx_E10_1]           = EL(1) | REL(1),
-+    [ARMMMUIdx_E10_1_PAN]       = EL(1) | REL(1),
- 
--    [ARMMMUIdx_E20_0]           = EL(0),
--    [ARMMMUIdx_E20_2]           = EL(2),
--    [ARMMMUIdx_E20_2_PAN]       = EL(2),
-+    [ARMMMUIdx_E20_0]           = EL(0) | REL(2),
-+    [ARMMMUIdx_E20_2]           = EL(2) | REL(2),
-+    [ARMMMUIdx_E20_2_PAN]       = EL(2) | REL(2),
- 
--    [ARMMMUIdx_E2]              = EL(2),
-+    [ARMMMUIdx_E2]              = EL(2) | REL(2),
- 
--    [ARMMMUIdx_E3]              = EL(3),
--    [ARMMMUIdx_E30_0]           = EL(0),
--    [ARMMMUIdx_E30_3_PAN]       = EL(3),
-+    [ARMMMUIdx_E3]              = EL(3) | REL(3),
-+    [ARMMMUIdx_E30_0]           = EL(0) | REL(3),
-+    [ARMMMUIdx_E30_3_PAN]       = EL(3) | REL(3),
++static CPAccessResult access_exlock_el2(CPUARMState *env,
++                                        const ARMCPRegInfo *ri, bool isread)
++{
++    int el = arm_current_el(env);
 +
-+    [ARMMMUIdx_Stage2_S]        = REL(2),
-+    [ARMMMUIdx_Stage2]          = REL(2),
++    if (el == 3) {
++        return CP_ACCESS_OK;
++    }
 +
-+    [ARMMMUIdx_Stage1_E0]       = REL(1),
-+    [ARMMMUIdx_Stage1_E1]       = REL(1),
-+    [ARMMMUIdx_Stage1_E1_PAN]   = REL(1),
- 
-     /*
-      * M-profile.
-      */
--    [ARMMMUIdx_MUser]           = EL(0),
--    [ARMMMUIdx_MPriv]           = EL(1),
--    [ARMMMUIdx_MUserNegPri]     = EL(0),
--    [ARMMMUIdx_MPrivNegPri]     = EL(1),
--    [ARMMMUIdx_MSUser]          = EL(0),
--    [ARMMMUIdx_MSPriv]          = EL(1),
--    [ARMMMUIdx_MSUserNegPri]    = EL(0),
--    [ARMMMUIdx_MSPrivNegPri]    = EL(1),
-+    [ARMMMUIdx_MUser]           = EL(0) | REL(1),
-+    [ARMMMUIdx_MPriv]           = EL(1) | REL(1),
-+    [ARMMMUIdx_MUserNegPri]     = EL(0) | REL(1),
-+    [ARMMMUIdx_MPrivNegPri]     = EL(1) | REL(1),
-+    [ARMMMUIdx_MSUser]          = EL(0) | REL(1),
-+    [ARMMMUIdx_MSPriv]          = EL(1) | REL(1),
-+    [ARMMMUIdx_MSUserNegPri]    = EL(0) | REL(1),
-+    [ARMMMUIdx_MSPrivNegPri]    = EL(1) | REL(1),
- };
++    /*
++     * Access to the EL2 register from EL1 means NV is set, and
++     * EXLOCK has priority over an NV1 trap to EL2.
++     */
++    if (!isread &&
++        (env->pstate & PSTATE_EXLOCK) &&
++        (env->cp15.gcscr_el[el] & GCSCR_EXLOCKEN)) {
++        return CP_ACCESS_EXLOCK;
++    }
++    return CP_ACCESS_OK;
++}
++
++static CPAccessResult access_exlock_el3(CPUARMState *env,
++                                        const ARMCPRegInfo *ri, bool isread)
++{
++    if (!isread &&
++        (env->pstate & PSTATE_EXLOCK) &&
++        (env->cp15.gcscr_el[3] & GCSCR_EXLOCKEN)) {
++        return CP_ACCESS_EXLOCK;
++    }
++    return CP_ACCESS_OK;
++}
++
+ #ifdef CONFIG_USER_ONLY
+ /*
+  * `IC IVAU` is handled to improve compatibility with JITs that dual-map their
+@@ -3604,7 +3659,7 @@ static const ARMCPRegInfo v8_cp_reginfo[] = {
+     { .name = "ELR_EL1", .state = ARM_CP_STATE_AA64,
+       .type = ARM_CP_ALIAS,
+       .opc0 = 3, .opc1 = 0, .crn = 4, .crm = 0, .opc2 = 1,
+-      .access = PL1_RW, .accessfn = access_nv1,
++      .access = PL1_RW, .accessfn = access_nv1_or_exlock_el1,
+       .nv2_redirect_offset = 0x230 | NV2_REDIR_NV1,
+       .vhe_redir_to_el2 = ENCODE_AA64_CP_REG(3, 4, 4, 0, 1),
+       .vhe_redir_to_el01 = ENCODE_AA64_CP_REG(3, 5, 4, 0, 1),
+@@ -3612,7 +3667,7 @@ static const ARMCPRegInfo v8_cp_reginfo[] = {
+     { .name = "SPSR_EL1", .state = ARM_CP_STATE_AA64,
+       .type = ARM_CP_ALIAS,
+       .opc0 = 3, .opc1 = 0, .crn = 4, .crm = 0, .opc2 = 0,
+-      .access = PL1_RW, .accessfn = access_nv1,
++      .access = PL1_RW, .accessfn = access_nv1_or_exlock_el1,
+       .nv2_redirect_offset = 0x160 | NV2_REDIR_NV1,
+       .vhe_redir_to_el2 = ENCODE_AA64_CP_REG(3, 4, 4, 0, 0),
+       .vhe_redir_to_el01 = ENCODE_AA64_CP_REG(3, 5, 4, 0, 0),
+@@ -4095,7 +4150,7 @@ static const ARMCPRegInfo el2_cp_reginfo[] = {
+     { .name = "ELR_EL2", .state = ARM_CP_STATE_AA64,
+       .type = ARM_CP_ALIAS | ARM_CP_NV2_REDIRECT,
+       .opc0 = 3, .opc1 = 4, .crn = 4, .crm = 0, .opc2 = 1,
+-      .access = PL2_RW,
++      .access = PL2_RW, .accessfn = access_exlock_el2,
+       .fieldoffset = offsetof(CPUARMState, elr_el[2]) },
+     { .name = "ESR_EL2", .state = ARM_CP_STATE_BOTH,
+       .type = ARM_CP_NV2_REDIRECT,
+@@ -4113,7 +4168,7 @@ static const ARMCPRegInfo el2_cp_reginfo[] = {
+     { .name = "SPSR_EL2", .state = ARM_CP_STATE_AA64,
+       .type = ARM_CP_ALIAS | ARM_CP_NV2_REDIRECT,
+       .opc0 = 3, .opc1 = 4, .crn = 4, .crm = 0, .opc2 = 0,
+-      .access = PL2_RW,
++      .access = PL2_RW, .accessfn = access_exlock_el2,
+       .fieldoffset = offsetof(CPUARMState, banked_spsr[BANK_HYP]) },
+     { .name = "VBAR_EL2", .state = ARM_CP_STATE_BOTH,
+       .opc0 = 3, .opc1 = 4, .crn = 12, .crm = 0, .opc2 = 0,
+@@ -4395,7 +4450,7 @@ static const ARMCPRegInfo el3_cp_reginfo[] = {
+     { .name = "ELR_EL3", .state = ARM_CP_STATE_AA64,
+       .type = ARM_CP_ALIAS,
+       .opc0 = 3, .opc1 = 6, .crn = 4, .crm = 0, .opc2 = 1,
+-      .access = PL3_RW,
++      .access = PL3_RW, .accessfn = access_exlock_el3,
+       .fieldoffset = offsetof(CPUARMState, elr_el[3]) },
+     { .name = "ESR_EL3", .state = ARM_CP_STATE_AA64,
+       .opc0 = 3, .opc1 = 6, .crn = 5, .crm = 2, .opc2 = 0,
+@@ -4406,7 +4461,7 @@ static const ARMCPRegInfo el3_cp_reginfo[] = {
+     { .name = "SPSR_EL3", .state = ARM_CP_STATE_AA64,
+       .type = ARM_CP_ALIAS,
+       .opc0 = 3, .opc1 = 6, .crn = 4, .crm = 0, .opc2 = 0,
+-      .access = PL3_RW,
++      .access = PL3_RW, .accessfn = access_exlock_el3,
+       .fieldoffset = offsetof(CPUARMState, banked_spsr[BANK_MON]) },
+     { .name = "VBAR_EL3", .state = ARM_CP_STATE_AA64,
+       .opc0 = 3, .opc1 = 6, .crn = 12, .crm = 0, .opc2 = 0,
+diff --git a/target/arm/tcg/op_helper.c b/target/arm/tcg/op_helper.c
+index dd3700dc6f..4fbd219555 100644
+--- a/target/arm/tcg/op_helper.c
++++ b/target/arm/tcg/op_helper.c
+@@ -881,6 +881,13 @@ const void *HELPER(access_check_cp_reg)(CPUARMState *env, uint32_t key,
+         }
+         syndrome = syn_uncategorized();
+         break;
++    case CP_ACCESS_EXLOCK:
++        /*
++         * CP_ACCESS_EXLOCK is always directed to the current EL,
++         * which is going to be the same as the usual target EL.
++         */
++        syndrome = syn_gcs_exlock();
++        break;
+     default:
+         g_assert_not_reached();
+     }
 -- 
 2.43.0
 

@@ -4,88 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 974BFCAC5A7
-	for <qemu-arm@archiver.kernel.org>; Sat, 20 Sep 2025 14:07:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 877AECAC5A7
+	for <qemu-arm@archiver.kernel.org>; Mon, 22 Sep 2025 05:45:38 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uzyBT-00072W-3u; Sat, 20 Sep 2025 10:03:27 -0400
+	id 1v0ZMQ-00082A-Lr; Mon, 22 Sep 2025 01:45:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1uzyBO-0006yE-Pa
- for qemu-arm@nongnu.org; Sat, 20 Sep 2025 10:03:22 -0400
-Received: from p-east3-cluster1-host9-snip4-8.eps.apple.com ([57.103.87.91]
- helo=outbound.qs.icloud.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1uzyBN-0008Ax-9N
- for qemu-arm@nongnu.org; Sat, 20 Sep 2025 10:03:22 -0400
-Received: from outbound.qs.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-east-2d-100-percent-3 (Postfix) with ESMTPS id
- DEA2918170A5; Sat, 20 Sep 2025 14:03:14 +0000 (UTC)
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; bh=6QHLe7sI/ta/TpnlofGbhZSXfY72nxkqv2tu61id1Xw=;
- h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
- b=Yal54Mo2j/1B9TAxD6hgWtXOuoivd6GsUp5UlECkI1Ozv6iPJNFfADPRumTtZ4CvlZlpNBa1DET98Z1YPij8W9En4/7tLwoyzKm/3oZgMqL2AHz9jkzox23eECMKGJ7F2UmKfV5mdLG3MdyxwpilYwdXGGL76A7iGv/TI2fYzQ0RPBUyRFKwNfHW4PMmuhR7xOIEAkNSXIy0x2NJHaL2zuR7sC3cacvEv4TTrSDy4grI6U15t6zqxGi03uS/EkAu8biN+MrQv5SOtAUoopjT8gGqB8UEupvRPilCp5lLwaqG52/EXMSknMJM05sROdNcbH1z0NrXh3JIAyMzwCYEoA==
-mail-alias-created-date: 1752046281608
-Received: from localhost.localdomain (qs-asmtp-me-k8s.p00.prod.me.com
- [17.57.155.37])
- by p00-icloudmta-asmtp-us-east-2d-100-percent-3 (Postfix) with ESMTPSA id
- 691F71817268; Sat, 20 Sep 2025 14:02:32 +0000 (UTC)
-From: Mohamed Mediouni <mohamed@unpredictable.fr>
-To: qemu-devel@nongnu.org
-Cc: Shannon Zhao <shannon.zhaosl@gmail.com>,
- Yanan Wang <wangyanan55@huawei.com>,
- Phil Dennis-Jordan <phil@philjordan.eu>,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Mads Ynddal <mads@ynddal.dk>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Cameron Esfahani <dirty@apple.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Zhao Liu <zhao1.liu@intel.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- kvm@vger.kernel.org, Igor Mammedov <imammedo@redhat.com>,
- qemu-arm@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
- Roman Bolshakov <rbolshakov@ddn.com>,
- Pedro Barbuda <pbarbuda@microsoft.com>, Alexander Graf <agraf@csgraf.de>,
- Sunil Muthuswamy <sunilmut@microsoft.com>,
- Eduardo Habkost <eduardo@habkost.net>, Ani Sinha <anisinha@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Mohamed Mediouni <mohamed@unpredictable.fr>,
- Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v6 22/23] docs: arm: update virt machine model description
-Date: Sat, 20 Sep 2025 16:01:23 +0200
-Message-ID: <20250920140124.63046-23-mohamed@unpredictable.fr>
-X-Mailer: git-send-email 2.50.1
-In-Reply-To: <20250920140124.63046-1-mohamed@unpredictable.fr>
-References: <20250920140124.63046-1-mohamed@unpredictable.fr>
+ (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
+ id 1v0ZMN-00081m-7h
+ for qemu-arm@nongnu.org; Mon, 22 Sep 2025 01:45:11 -0400
+Received: from mail-pg1-x531.google.com ([2607:f8b0:4864:20::531])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
+ id 1v0ZMH-0004jC-Ng
+ for qemu-arm@nongnu.org; Mon, 22 Sep 2025 01:45:07 -0400
+Received: by mail-pg1-x531.google.com with SMTP id
+ 41be03b00d2f7-b54a2ab01ffso2801013a12.2
+ for <qemu-arm@nongnu.org>; Sun, 21 Sep 2025 22:45:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1758519901; x=1759124701; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=+RZlZ+q1dIe7KsFxNLgETNIWtWzp25LkrQSbiUq3K1o=;
+ b=y9PbuhCHgwwjxZOeiindayG/58kY8wxsZ7iMc7i3LUYs78zMy0h0QJT9ewB+/HQE/q
+ HqK4tqKnq6SQ6NODXO/vWmz0m26tXvQoeFMnfo9+E8zbZPpc7Mx8yvvEEbhqMyvNBkAM
+ R5DNpzln93VUl/XQi/2q6UOmiQIWvgRUrih84Rbaa12ZrjUx5WNSoWlKkHB00REj4/I/
+ vfgt2V4Tsxsn6nEETCLXxeECxlGsZ5FSn3me2mbNjUWryRagzndWcwulDJoWUgwyo2Ev
+ IHfG+j9hwHp8DFwLRMkA9Md//i9W9sb3wUm2hu5dN1gm5OBGeukQ/eiBnrWytPy/dCt1
+ 4gcQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1758519901; x=1759124701;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=+RZlZ+q1dIe7KsFxNLgETNIWtWzp25LkrQSbiUq3K1o=;
+ b=VLFDmLKKxztAuGFfViRVXmfEkGTfT432YucEJ7dN0lh4AcIQlkEiuyeuM1ZAcEwi1K
+ 8QbJy5f6jQBS8K/zTIOfMDEa+Q4F+e+RDcIU4E6rp5sfYvTzIrrnPbI+/4N8Jl2n5spT
+ u5RQq59YRpDAWN4Us+9wK7+sP6czIj1CQBcc1PFlVQskEYfNsictWwOu/+5K3/sWottB
+ 0ieBfhalL8f0H0kLfXjfylivXXArgUqnFYwDN16C3f7XDbwMW4gqQxt9C1/A6Gl6fBo4
+ vI3hSJYWQdlNYbqhj2OqYK6p/rrrvMqGJPib0r0AHG0HzC1KxM2B4hxZv9BUscd7Ulv0
+ JkGA==
+X-Gm-Message-State: AOJu0Yxb0wtDQDxvLgHKHS5Ds1V5+E58GuMXaNmVjjoWDkfFBALZNMvk
+ svLuZRgKj3pC//mfnwbNnJm/HCoa0R8ZtTKIfMOMy4wHQu6Kk5nGojG5apBtHgkq6F4=
+X-Gm-Gg: ASbGncvyV1V8xZdRYR0nqW9dxgmnMoo1KvBCkYgneDHMWaS+EWHJdcDjqixAeJS9XNS
+ b4RxT6QMhMS/ccSXNXObV/FigzQ2xv9W8P8ugNLVUjCL+0fF71650CkrDcLRaQU/ttOGuD5SXIS
+ IEXclU+AMB0VLDkC0ZNMlex4Aige79xLsNLvUj1+S+9nMmJ/AnaXKCoQ8fdo3V09zxqfLJjaTyL
+ +WzzAm5jm5K9Ld9PNshH0HTLmNeBZa9rc6r/So19houECf8A7qwRaupjAtIbn+7x65VDYDRc4ox
+ ocFqqmkiQ/qCuKEx6X5TMtrSfSQ2ajL0qo/Vj8ovSntJYiqxY4w/SYHD+E1COT8bfNyKoGB+a4H
+ H/Zwjkk16LIGJcDaWKU/MFs6pcTRs1InNvrJGQr3+Ptk2QTp5hYsnTsjEfsWmXCX0tepNSEP7
+X-Google-Smtp-Source: AGHT+IHgW/UU4zrJVPuDF2vM9PZWv7AVqIxguJh2thLLJbPy+UV5U5IrITvZ2Ug8s8wmmuM9V23rAA==
+X-Received: by 2002:a17:90b:1a8c:b0:32e:7270:94b1 with SMTP id
+ 98e67ed59e1d1-33097fefdf9mr15267752a91.14.1758519901253; 
+ Sun, 21 Sep 2025 22:45:01 -0700 (PDT)
+Received: from gromero0.. (200-162-224-93.static-corp.ajato.com.br.
+ [200.162.224.93]) by smtp.gmail.com with ESMTPSA id
+ 41be03b00d2f7-b551c279cd5sm7691377a12.3.2025.09.21.22.44.58
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 21 Sep 2025 22:45:00 -0700 (PDT)
+From: Gustavo Romero <gustavo.romero@linaro.org>
+To: qemu-devel@nongnu.org, alex.bennee@linaro.org, thuth@redhat.com,
+ berrange@redhat.com
+Cc: qemu-arm@nongnu.org, gustavo.romero@linaro.org,
+ manos.pitsidianakis@linaro.org, peter.maydell@linaro.org
+Subject: [PATCH v3 0/4] tests/functional: Adapt reverse_debugging to run w/o
+ Avocado
+Date: Mon, 22 Sep 2025 05:43:47 +0000
+Message-Id: <20250922054351.14289-1-gustavo.romero@linaro.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-ORIG-GUID: ojLL6QodVQ17wDK9HHqj0FwWgh6Q8daA
-X-Proofpoint-GUID: ojLL6QodVQ17wDK9HHqj0FwWgh6Q8daA
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwOTIwMDEzNiBTYWx0ZWRfX25h+Oy3H7yiS
- yt9rk8Wty6XF48La1pCM3v9VeSEHWEXpAp6eHstyw2qPEoBHEJWJkJukxeJ8RL5rzBtm4jhgvlb
- mNFsLe3F15Y1SHee+YZhYBzAGp37q+yIthkM8R07Swf+Z4Lsm/Dx35pGEOB4whFhYaErp3ALYR2
- 0rFLvXXIBAipso3jrQO7F/k2CmaZj616P0JfpjfWjl/vq9ecLKt0YXw/EpNK+4hxByYZ83HLpch
- mC2gS7VlTQE8LW+fqcWJn2M0ayboU33aZwYE7vlKQohTjNFUYYIY8TZrQsEyEA6jgv0tcdQWQ=
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1117,Hydra:6.1.9,FMLib:17.12.80.40
- definitions=2025-09-20_05,2025-09-19_01,2025-03-28_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
- adultscore=0 phishscore=0 mlxscore=0 suspectscore=0 bulkscore=0
- malwarescore=0 mlxlogscore=999 clxscore=1030 classifier=spam adjust=0
- reason=mlx scancount=1 engine=8.22.0-2506270000 definitions=main-2509200136
-X-JNJ: AAAAAAABzBXNo6aD0xhHNo9zDDLKtbsGIdEu9Jzv0TkCWRLkBC7HbJwcYHwcB7cJdKBi6rFM4zCP286YCrzFBoQDYCRGYSCIS5FuHpcLeFsu5aLATorotIsTuv3e3aDWeuoKokRJw1AZ7e2Ae/8eBbp2YMJE5De1oidpSO3aB4DtyXUGcfsiUaB2ULR1DJ1d94E2ieHzNeTYJW1/KtsA/aaPRTJS8ifZewz+Q5i+WZaw1qHmGsWumTQVWwkR/lNJSX8O6nPrkZWW4M5R0fUJXUshLJ7sFwRjaI4KhrkfrFtLIovtPJG0VoKb7xXFHX2xS0ylGm1pk0zXQ2YeJ0q2qiCq0SFIeivSn6Sti3KnXDXj6igcFy9iirRMe4j1AChxwd5MqXVxsRHnd9rvteZft2kZk0NzFH5WpRsY6/Z7+X4/htMXkaTgi73+/B6pHZZacyS8cEj4fUO5strUtRYL9Ldz6PGyAxYWHUAZSVC8yuCQO/KXEs/dZ0kPF4uLq+0bCXxLFkOy7NDFOp2Xd4+IaVF1fLz4OP77W9BEumjILfNkIehV3b0pbqiZr0i+4D+MTVagYA1Jnd/2loyQsx/b4CmNvpZbvx0vGxTbqc0ztFwDDRlExj2hjlMyoWVeTS6M7BbJxuJHbtXJ2WlPajKEEaBt6vQUIaLeJbX3QiTmThqyH3QkpdWP5/rSDmHeH9RBL9I8flt8Z+zubrVh6s6ZhB7TQ50bk08XEYDig3+zjUd5g5zSlODKPUIkVzWEnhM7ETyf8ye9/YM1A01hWlJok4LiJYicG2jYZi/xJShXP0jJkkV4DSKoZTSDfap3iqUkY8Waf7p6vJSfJiGq6PVGGBB6OvMovwfCJvlq/VYNt/hn72/tAvzzb8oDBcprBl1ESg==
-Received-SPF: pass client-ip=57.103.87.91;
- envelope-from=mohamed@unpredictable.fr; helo=outbound.qs.icloud.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::531;
+ envelope-from=gustavo.romero@linaro.org; helo=mail-pg1-x531.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -101,45 +100,173 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Update the documentation to match current QEMU.
+tests/functional: Adapt reverse_debugging to run w/o Avocado
 
-Remove the mention of pre-2.7 machine models as those aren't provided
-anymore.
+The goal of this series is to remove Avocado as a dependency for running
+the reverse_debugging functional test.
 
-Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
----
- docs/system/arm/virt.rst | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+After several rounds of discussions about v1 and v2, and experiments
+done by Daniel and Thomas (thanks for all the experiments and comments
+so far), I've taken a new approach and moved away from using a runner
+for GDB. The changes, I believe, are much simpler now.
 
-diff --git a/docs/system/arm/virt.rst b/docs/system/arm/virt.rst
-index 10cbffc8a7..fe95be991e 100644
---- a/docs/system/arm/virt.rst
-+++ b/docs/system/arm/virt.rst
-@@ -40,9 +40,10 @@ The virt board supports:
- - An optional SMMUv3 IOMMU
- - hotpluggable DIMMs
- - hotpluggable NVDIMMs
--- An MSI controller (GICv2M or ITS). GICv2M is selected by default along
--  with GICv2. ITS is selected by default with GICv3 (>= virt-2.7). Note
--  that ITS is not modeled in TCG mode.
-+- An MSI controller (GICv2m or ITS).
-+  - When using a GICv3, ITS is selected by default when available on the platform.
-+  - If using a GICv2 or when ITS is not available, a GICv2m is provided by default instead.
-+  - Before virt-10.2, a GICv2m is not provided when the ITS is disabled.
- - 32 virtio-mmio transport devices
- - running guests using the KVM accelerator on aarch64 hardware
- - large amounts of RAM (at least 255GB, and more if using highmem)
-@@ -167,8 +168,7 @@ gic-version
-     ``4`` if ``virtualization`` is ``on``, but this may change in future)
- 
- its
--  Set ``on``/``off`` to enable/disable ITS instantiation. The default is ``on``
--  for machine types later than ``virt-2.7``.
-+  Set ``on``/``off``/``auto`` to control ITS instantiation. The default is ``auto``.
- 
- iommu
-   Set the IOMMU type to create for the guest. Valid values are:
+This new series uses GDB's machine interface (MI) via the pygdbmi module
+(thanks Manos and Peter for the inputs). pygdbmi provides a controller
+to start GDB and communicate with it through MI, so there is no longer a
+risk of version clashes between libpython in GDB and Python modules in
+the pyvenv, as it could, in theory, happen when GDB executes the test
+script via -x option.
+
+Also, as Daniel pointed out, the overall test output is pretty bad and
+currently does not allow one to easily follow the sequence of GDB
+commands used in the test. I took this opportunity to improve the output
+and it now prints the sequence in a format that can be copied and pasted
+directly into GDB. For instance, the test output for STEPS = 4 is:
+
+TAP version 13
+# $ set debug remote 1
+# $ target remote localhost:62464
+# Remote debugging using localhost:62464
+# 0x0000000040000000 in ?? ()
+# $ set debug remote 0
+# $ print $pc
+# $1 = (void (*)()) 0x40000000
+# $ stepi
+# 0x0000000040000004 in ?? ()
+# $ print $pc
+# $2 = (void (*)()) 0x40000004
+# $ stepi
+# 0x0000000040000008 in ?? ()
+# $ print $pc
+# $3 = (void (*)()) 0x40000008
+# $ stepi
+# 0x000000004000000c in ?? ()
+# $ print $pc
+# $4 = (void (*)()) 0x4000000c
+# $ stepi
+# 0x0000000040000010 in ?? ()
+# $ reverse-stepi
+# 0x000000004000000c in ?? ()
+# $ print $pc
+# $5 = (void (*)()) 0x4000000c
+# $ reverse-stepi
+# 0x0000000040000008 in ?? ()
+# $ print $pc
+# $6 = (void (*)()) 0x40000008
+# $ reverse-stepi
+# 0x0000000040000004 in ?? ()
+# $ print $pc
+# $7 = (void (*)()) 0x40000004
+# $ reverse-stepi
+# 0x0000000040000000 in ?? ()
+# $ print $pc
+# $8 = (void (*)()) 0x40000000
+# $ print $pc
+# $9 = (void (*)()) 0x40000000
+# $ stepi
+# 0x0000000040000004 in ?? ()
+# $ print $pc
+# $10 = (void (*)()) 0x40000004
+# $ stepi
+# 0x0000000040000008 in ?? ()
+# $ print $pc
+# $11 = (void (*)()) 0x40000008
+# $ stepi
+# 0x000000004000000c in ?? ()
+# $ print $pc
+# $12 = (void (*)()) 0x4000000c
+# $ stepi
+# 0x0000000040000010 in ?? ()
+# $ break *0x40000000
+# Breakpoint 1 at 0x40000000
+# $ break *0x40000004
+# Breakpoint 2 at 0x40000004
+# $ break *0x40000008
+# Breakpoint 3 at 0x40000008
+# $ break *0x4000000c
+# Breakpoint 4 at 0x4000000c
+# $ continue
+# Continuing.
+# Program received signal SIGINT, Interrupt.
+# 0xffff45a2feaa2050 in ?? ()
+# $ print $pc
+# $13 = (void (*)()) 0xffff45a2feaa2050
+# **** Hit replay-break at icount=3691561, pc=0xffff45a2feaa2050 ****
+# $ reverse-continue
+# Continuing.
+# Breakpoint 4, 0x000000004000000c in ?? ()
+# $ print $pc
+# $14 = (void (*)()) 0x4000000c
+# **** Hit breakpoint at the first PC in reverse order (0x4000000c) ****
+ok 1 test_reverse_debug.ReverseDebugging_AArch64.test_aarch64_virt
+1..1
+
+As can be observed above, the TAP protocol is respected, and Meson
+correctly displays GDB's test output in testlog-thorough.txt.
+
+Because the pygdbmi "shim" is so thin, I had to write a trivial GDB
+class around it to easily capture and print the payloads returned by its
+write() method. The GDB class allows clean, single-line commands to be
+used in the tests through method chaining, making them easier to follow,
+for example:
+
+pc = gdb.cli("print $pc").get_add()
+
+The test is kept “skipped” for aarch64, ppc64, and x86_64, so it is
+necessary to set QEMU_TEST_FLAKY_TESTS=1 in the test environment to
+effectively run the test on these archs.
+
+On aarch64, the test is flaky, but there is a fix that I’ve tested while
+writing this series [0] that resolves it. On ppc64 and x86_64, the test
+always fails: on ppc64, GDB gets a bogus PC, and on x86_64, the last
+part of the test (reverse-continue) does not hit the last executed PC
+(as it should) but instead jumps to the beginning of the code (first PC
+in forward order).
+
+Thus, to effectively run the reverse_debugging test on aarch64:
+
+$ export QEMU_TEST_FLAKY_TESTS=1
+$ make check-functional
+
+or even, to run only the reverse_debug test:
+$ ./pyvenv/bin/meson test --verbose --no-rebuild -t 1 --setup thorough --suite func-thorough func-aarch64-reverse_debug
+
+
+Cheers,
+Gustavo
+
+v1:
+https://patchew.org/QEMU/20250819143916.4138035-1-gustavo.romero@linaro.org/
+
+v2:
+https://patchew.org/QEMU/20250904154640.52687-1-gustavo.romero@linaro.org/
+
+v3:
+- Use pygdbmi instead of run-test.py or any other GDB runner
+- No changes in meson.build, except to set QEMU_TEST_GDB in the test env. 
+- Improved test output to show all GDB commands used in the test
+
+
+Gustavo Romero (4):
+  python: Install pygdbmi in venv
+  tests/functional: Provide GDB to the functional tests
+  tests/functional: Adapt reverse_debugging to run w/o Avocado
+  tests/functional: Adapt arches to reverse_debugging w/o Avocado
+
+ configure                                     |   2 +
+ meson_options.txt                             |   2 +
+ .../wheels/pygdbmi-0.11.0.0-py3-none-any.whl  | Bin 0 -> 21258 bytes
+ pythondeps.toml                               |   1 +
+ scripts/meson-buildoptions.sh                 |   2 +
+ .../functional/aarch64/test_reverse_debug.py  |  13 +-
+ tests/functional/meson.build                  |   6 +
+ tests/functional/ppc64/test_reverse_debug.py  |  15 +-
+ tests/functional/reverse_debugging.py         | 308 +++++++++++-------
+ tests/functional/x86_64/test_reverse_debug.py |  19 +-
+ 10 files changed, 217 insertions(+), 151 deletions(-)
+ create mode 100644 python/wheels/pygdbmi-0.11.0.0-py3-none-any.whl
+
 -- 
-2.50.1 (Apple Git-155)
+2.34.1
 
 

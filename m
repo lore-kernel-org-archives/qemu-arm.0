@@ -4,81 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6416CCAC592
-	for <qemu-arm@archiver.kernel.org>; Mon, 22 Sep 2025 18:56:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF7F0CA100F
+	for <qemu-arm@archiver.kernel.org>; Mon, 22 Sep 2025 18:56:17 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v0lbp-0004pS-Td; Mon, 22 Sep 2025 14:49:57 -0400
+	id 1v0lc5-00051F-JA; Mon, 22 Sep 2025 14:50:13 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1v0lbl-0004mC-Cv
- for qemu-arm@nongnu.org; Mon, 22 Sep 2025 14:49:53 -0400
-Received: from mail-pf1-x42d.google.com ([2607:f8b0:4864:20::42d])
+ id 1v0lbw-0004wQ-4z
+ for qemu-arm@nongnu.org; Mon, 22 Sep 2025 14:50:04 -0400
+Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1v0lbg-00048U-Qx
- for qemu-arm@nongnu.org; Mon, 22 Sep 2025 14:49:53 -0400
-Received: by mail-pf1-x42d.google.com with SMTP id
- d2e1a72fcca58-77f35113821so1180391b3a.0
- for <qemu-arm@nongnu.org>; Mon, 22 Sep 2025 11:49:48 -0700 (PDT)
+ id 1v0lbp-0004BD-KE
+ for qemu-arm@nongnu.org; Mon, 22 Sep 2025 14:50:03 -0400
+Received: by mail-pf1-x436.google.com with SMTP id
+ d2e1a72fcca58-77c1814ca1dso3638409b3a.2
+ for <qemu-arm@nongnu.org>; Mon, 22 Sep 2025 11:49:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1758566986; x=1759171786; darn=nongnu.org;
+ d=linaro.org; s=google; t=1758566995; x=1759171795; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=itJOo7yOK2M+RLljfiwxs6NiYNiCxqgpNJLYncMVRhQ=;
- b=oOwEe9iFZuKXTrVVufISycHZrK0RASibGYbJBS1sZRK7Uhv3GzyawCPWC57neLkms9
- x+3TEpInfkfcXIRnbiYWe8HjQGG6yLuwyeMNv2FfJzpLLRpYrAfwLjLQpOjRCsaBAHMi
- JiN7PC3dvZwTgn1jsObWIchW/ufEDC4a7zk5zvOqniorlItBLslOTu7XHQR5z97Mwp2I
- L2ntI/qf/BQmv/EG/RbFA43y64NBIFOUJqiO6u52yH4W5JvptI0LFAcKdzFGjbjlI5rx
- mNNx7fBbl4hlVt/spueSnj4pBfJ6QfI7qrNiyQJ6Bq31rKXHMmHz4d/XPEV9xMy0kr2b
- YRXw==
+ bh=abGCKgev04oeEhG3rgazv9SPtOpq/6p9y11w+U7Ho90=;
+ b=M2nGbysEPpfqx58j3LMwHXRuitLdMr4Npdui6ERJS0MaWLMnK89aPDsJwKyuj9i2VW
+ UQFVa3Ad5OKrFfjkXQJCowLeLiOVtDWFMgcG+8Vt3Qe5RdaVGvagNBGo0c1BYVRA2mB4
+ Q+BFDhoYMeppyCMhnMNTc0ejbcTumsrfH1OF6EkwR8et17QqOuR/CuEBhH3OEAr7i3C2
+ EW80xYvSvwzq785BeguI+7XFJoKzTj4AA2jw8S0KkoeV+XIL6HMa6hjHP2oIe2GkFiPR
+ 4O8XKJp8OlRtY1h1YCEwO8nTjXAMxlJEePfnC0hf/lPNkA5xF+x+Lf/rrSD7L+ARvZaJ
+ 6/ig==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1758566986; x=1759171786;
+ d=1e100.net; s=20230601; t=1758566995; x=1759171795;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=itJOo7yOK2M+RLljfiwxs6NiYNiCxqgpNJLYncMVRhQ=;
- b=r8CXga3uWXEEXd/7IFi5mzOKd6EHOJ/0DWIrvpRHwqT9XcufZvwv1xAZ+kpqTgtYMz
- 5+/oec/Y0C2B1veMm7w098iwwx0mzQTmixXl5CE2GmvcwG/FIMFjxES1vqL/lGh4a5oG
- 7MktCSo6A/ejpljMzlXsv8w6RTa7JaLKsmIsxEwaYQVVgE4I+dnfJCgnSFFvjcO4Q0tb
- d08QH06QH9HB+YuiY6FB604uJ2rI/D1KfN7fPEFsmKMWmWoqb4mWwIAgqGprcBGuNRWw
- DxcaE+AxZQcSop6rOkvTZWWztcPm99wAgYRVenRQaFo5HsnPMXNcohyqqFZZuf77dybW
- 64QQ==
-X-Gm-Message-State: AOJu0Yy5t1tcXx2EybhwSr2U4SDrw3UWbKR4jUvHxWpP9UuCoeZCOU8X
- DFJNMMP8ASiiJD8aT5d6IrX2+6hxlHg0NAx5x4f263Bw7HOuhaA+UYNAFSCsEKoC6ZQ=
-X-Gm-Gg: ASbGncs6CCI+AJxuikspHgO+Fx23sjz12ahYbHUwN1NGduXrbetcubrlD3YTfEC0qBf
- uaa/9x4ONMVmnXBwvPO8hxH9366WDxKgYeapmfMz0xPwptOVAkUBjAz/6BB1AJFhG1u1ojUW41z
- HPM+3mQXF+oUKj/r24coVGIEPIm8XhRk68PUuWQtWaHAMz4TXKdpNBSZRSDE/8pYpxSo/goCGnc
- nD91PbNub60KWCjiZUW25k7SnAQXJYQtDtFgfOFn/Wz9kIraIiTOiqzqgSyH8PcYQzH/Mcm914W
- r0QF5J5g0eL14/902bzpvRa1/wgc4ZlVPZftfaZ6Ac/cLrJ+n/3lpzJMzhpD250p7kamqRUfcPU
- TQcn4MssvWu4UcbBdmtahU9e/hA6wRbV5hF7Cjws=
-X-Google-Smtp-Source: AGHT+IGMHkJkHlpYKOMqYn+0ytHaNsDioMGeY5EA+HGTNuG7yGkbNx8zPdKc6zkQ3bdrJusEvyqqpA==
-X-Received: by 2002:a05:6a20:a122:b0:279:90c2:f872 with SMTP id
- adf61e73a8af0-2cfd4836b81mr157201637.11.1758566986576; 
- Mon, 22 Sep 2025 11:49:46 -0700 (PDT)
+ bh=abGCKgev04oeEhG3rgazv9SPtOpq/6p9y11w+U7Ho90=;
+ b=kXwabTd0PNRTBQG3neyWdi2s6Kr3ftS908WfHESga8cRFHPXNJe9fbfRsaC0nDViMf
+ AKuP8jTzKtAPTR6bXRHYEpUS0WZvAaa1uSroS266ZU5l9Jb9RAC1ejEZ/xlxjlif8KZu
+ hatH+XdrEHEl2u7h7CT9o4LhC7icfeKudXX85mgg8UONn9ag1GwxB7UJ7aWznxLQq+Ih
+ ytm064dc6STYoJ1LVJQ41ED8VH2nDX1d9JxpiPRIyakKc7iMpRjeP6qrwmChpTDSdGbc
+ vtpKlyORaSklo/kWoFi4mnlBL4UhHKAmHwercfYvW56Iolw3qveqQ9kMOqO7/sVy/TcG
+ shWw==
+X-Gm-Message-State: AOJu0Yyc8QtJxgxJP+48e+jyufhRlC+feE69/HLa+vN40ffMoVxYDS54
+ +mngU9mueDH3SlYJczXGDv2IBsAn12V0atx6H6DM1nwq+Xvm31Ravatfs58JgahsXbFKrzzb2Hq
+ eN5A/
+X-Gm-Gg: ASbGncsmivmg5/03sUNdszdPjIXw7SN5I/dVGI+nGOKlWe4svs/1LfPppjm7YzHTiOR
+ uBQpxMA/c1GQBHwjNxSFvh2sNNxh9J4vX1rmJhvj+CYZdJztTGatNId+cizy60HbciwWkRUyoAM
+ RXz/1K0TRZi4oOTrLjkjffsq6ia+97St//Nela2taFrFkCEQudX1n1y1cOI1JYocMnUlXH2J97+
+ x5asugkNP1a1WkHbu1AgafzymNtDiKi8FvipcU5DYJb6Pr9/5PGaCdEZeXF0Njl3jiQ9sTwo3RL
+ TQifdfKeL/usIca6ugWQC4z6+CAkckelnSEOwhwyr9O9WqcecGy633et/1M+tobAvHstJnByYFt
+ xc3fcWG+0pAMhlt6jI411wDvHTMFh
+X-Google-Smtp-Source: AGHT+IHI//PVGKGWG/97DO2+4MhM6p/zjK59ARQNr2kvzqO5PxwUhy7D1oJ5BmqNbUGXyZ0/U/54vw==
+X-Received: by 2002:a05:6a00:1784:b0:776:32e0:248f with SMTP id
+ d2e1a72fcca58-77e4ecbad9emr15404729b3a.27.1758566994669; 
+ Mon, 22 Sep 2025 11:49:54 -0700 (PDT)
 Received: from stoup.. ([71.212.157.132]) by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-77e5fe6de75sm10583861b3a.19.2025.09.22.11.49.45
+ d2e1a72fcca58-77e5fe6de75sm10583861b3a.19.2025.09.22.11.49.54
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 22 Sep 2025 11:49:45 -0700 (PDT)
+ Mon, 22 Sep 2025 11:49:54 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v5 14/76] include/hw/core/cpu: Introduce cpu_tlb_fast
-Date: Mon, 22 Sep 2025 11:48:22 -0700
-Message-ID: <20250922184924.2754205-15-richard.henderson@linaro.org>
+Subject: [PATCH v5 21/76] target/arm: Remove unused env argument from regime_el
+Date: Mon, 22 Sep 2025 11:48:29 -0700
+Message-ID: <20250922184924.2754205-22-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250922184924.2754205-1-richard.henderson@linaro.org>
 References: <20250922184924.2754205-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42d;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42d.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::436;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x436.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -101,138 +102,231 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Encapsulate access to cpu->neg.tlb.f[] in a function.
-
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- include/hw/core/cpu.h        |  7 +++++++
- accel/tcg/cputlb.c           | 16 ++++++++--------
- tcg/aarch64/tcg-target.c.inc |  2 +-
- tcg/arm/tcg-target.c.inc     |  2 +-
- 4 files changed, 17 insertions(+), 10 deletions(-)
+ target/arm/internals.h      |  8 ++++----
+ target/arm/helper.c         |  2 +-
+ target/arm/ptw.c            | 34 +++++++++++++++++-----------------
+ target/arm/tcg/mte_helper.c |  2 +-
+ 4 files changed, 23 insertions(+), 23 deletions(-)
 
-diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-index a7038b8c07..30e335d7d0 100644
---- a/include/hw/core/cpu.h
-+++ b/include/hw/core/cpu.h
-@@ -594,6 +594,13 @@ static inline CPUArchState *cpu_env(CPUState *cpu)
-     return (CPUArchState *)(cpu + 1);
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index c29682da7d..245c60652f 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -1074,7 +1074,7 @@ static inline bool regime_is_stage2(ARMMMUIdx mmu_idx)
  }
  
-+#ifdef CONFIG_TCG
-+static inline CPUTLBDescFast *cpu_tlb_fast(CPUState *cpu, int mmu_idx)
-+{
-+    return &cpu->neg.tlb.f[mmu_idx];
-+}
-+#endif
-+
- typedef QTAILQ_HEAD(CPUTailQ, CPUState) CPUTailQ;
- extern CPUTailQ cpus_queue;
- 
-diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c
-index d324f33339..2a6aa01c57 100644
---- a/accel/tcg/cputlb.c
-+++ b/accel/tcg/cputlb.c
-@@ -129,7 +129,7 @@ static inline uint64_t tlb_addr_write(const CPUTLBEntry *entry)
- static inline uintptr_t tlb_index(CPUState *cpu, uintptr_t mmu_idx,
-                                   vaddr addr)
+ /* Return the exception level which controls this address translation regime */
+-static inline uint32_t regime_el(CPUARMState *env, ARMMMUIdx mmu_idx)
++static inline uint32_t regime_el(ARMMMUIdx mmu_idx)
  {
--    uintptr_t size_mask = cpu->neg.tlb.f[mmu_idx].mask >> CPU_TLB_ENTRY_BITS;
-+    uintptr_t size_mask = cpu_tlb_fast(cpu, mmu_idx)->mask >> CPU_TLB_ENTRY_BITS;
- 
-     return (addr >> TARGET_PAGE_BITS) & size_mask;
- }
-@@ -138,7 +138,7 @@ static inline uintptr_t tlb_index(CPUState *cpu, uintptr_t mmu_idx,
- static inline CPUTLBEntry *tlb_entry(CPUState *cpu, uintptr_t mmu_idx,
-                                      vaddr addr)
+     switch (mmu_idx) {
+     case ARMMMUIdx_E20_0:
+@@ -1128,7 +1128,7 @@ static inline bool regime_is_user(CPUARMState *env, ARMMMUIdx mmu_idx)
+ /* Return the SCTLR value which controls this address translation regime */
+ static inline uint64_t regime_sctlr(CPUARMState *env, ARMMMUIdx mmu_idx)
  {
--    return &cpu->neg.tlb.f[mmu_idx].table[tlb_index(cpu, mmu_idx, addr)];
-+    return &cpu_tlb_fast(cpu, mmu_idx)->table[tlb_index(cpu, mmu_idx, addr)];
+-    return env->cp15.sctlr_el[regime_el(env, mmu_idx)];
++    return env->cp15.sctlr_el[regime_el(mmu_idx)];
  }
  
- static void tlb_window_reset(CPUTLBDesc *desc, int64_t ns,
-@@ -292,7 +292,7 @@ static void tlb_flush_one_mmuidx_locked(CPUState *cpu, int mmu_idx,
-                                         int64_t now)
+ /*
+@@ -1160,13 +1160,13 @@ static inline uint64_t regime_tcr(CPUARMState *env, ARMMMUIdx mmu_idx)
+         v |= env->cp15.vtcr_el2 & VTCR_SHARED_FIELD_MASK;
+         return v;
+     }
+-    return env->cp15.tcr_el[regime_el(env, mmu_idx)];
++    return env->cp15.tcr_el[regime_el(mmu_idx)];
+ }
+ 
+ /* Return true if the translation regime is using LPAE format page tables */
+ static inline bool regime_using_lpae_format(CPUARMState *env, ARMMMUIdx mmu_idx)
  {
-     CPUTLBDesc *desc = &cpu->neg.tlb.d[mmu_idx];
--    CPUTLBDescFast *fast = &cpu->neg.tlb.f[mmu_idx];
-+    CPUTLBDescFast *fast = cpu_tlb_fast(cpu, mmu_idx);
+-    int el = regime_el(env, mmu_idx);
++    int el = regime_el(mmu_idx);
+     if (el == 2 || arm_el_is_aa64(env, el)) {
+         return true;
+     }
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index ea343e9d48..83a675cc22 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -9377,7 +9377,7 @@ ARMVAParameters aa64_va_parameters(CPUARMState *env, uint64_t va,
+     ARMGranuleSize gran;
+     ARMCPU *cpu = env_archcpu(env);
+     bool stage2 = regime_is_stage2(mmu_idx);
+-    int r_el = regime_el(env, mmu_idx);
++    int r_el = regime_el(mmu_idx);
  
-     tlb_mmu_resize_locked(desc, fast, now);
-     tlb_mmu_flush_locked(desc, fast);
-@@ -331,7 +331,7 @@ void tlb_init(CPUState *cpu)
-     cpu->neg.tlb.c.dirty = 0;
- 
-     for (i = 0; i < NB_MMU_MODES; i++) {
--        tlb_mmu_init(&cpu->neg.tlb.d[i], &cpu->neg.tlb.f[i], now);
-+        tlb_mmu_init(&cpu->neg.tlb.d[i], cpu_tlb_fast(cpu, i), now);
+     if (!regime_has_2_ranges(mmu_idx)) {
+         select = 0;
+diff --git a/target/arm/ptw.c b/target/arm/ptw.c
+index be3629a745..622b5cf520 100644
+--- a/target/arm/ptw.c
++++ b/target/arm/ptw.c
+@@ -232,9 +232,9 @@ static uint64_t regime_ttbr(CPUARMState *env, ARMMMUIdx mmu_idx, int ttbrn)
+         return env->cp15.vsttbr_el2;
+     }
+     if (ttbrn == 0) {
+-        return env->cp15.ttbr0_el[regime_el(env, mmu_idx)];
++        return env->cp15.ttbr0_el[regime_el(mmu_idx)];
+     } else {
+-        return env->cp15.ttbr1_el[regime_el(env, mmu_idx)];
++        return env->cp15.ttbr1_el[regime_el(mmu_idx)];
      }
  }
  
-@@ -342,7 +342,7 @@ void tlb_destroy(CPUState *cpu)
-     qemu_spin_destroy(&cpu->neg.tlb.c.lock);
-     for (i = 0; i < NB_MMU_MODES; i++) {
-         CPUTLBDesc *desc = &cpu->neg.tlb.d[i];
--        CPUTLBDescFast *fast = &cpu->neg.tlb.f[i];
-+        CPUTLBDescFast *fast = cpu_tlb_fast(cpu, i);
+@@ -1023,7 +1023,7 @@ static bool get_phys_addr_v5(CPUARMState *env, S1Translate *ptw,
+     }
+     type = (desc & 3);
+     domain = (desc >> 5) & 0x0f;
+-    if (regime_el(env, ptw->in_mmu_idx) == 1) {
++    if (regime_el(ptw->in_mmu_idx) == 1) {
+         dacr = env->cp15.dacr_ns;
+     } else {
+         dacr = env->cp15.dacr_s;
+@@ -1162,7 +1162,7 @@ static bool get_phys_addr_v6(CPUARMState *env, S1Translate *ptw,
+         /* Page or Section.  */
+         domain = (desc >> 5) & 0x0f;
+     }
+-    if (regime_el(env, mmu_idx) == 1) {
++    if (regime_el(mmu_idx) == 1) {
+         dacr = env->cp15.dacr_ns;
+     } else {
+         dacr = env->cp15.dacr_s;
+@@ -1453,7 +1453,7 @@ static int get_S1prot(CPUARMState *env, ARMMMUIdx mmu_idx, bool is_aa64,
+             xn = pxn || (user_rw & PAGE_WRITE);
+         }
+     } else if (arm_feature(env, ARM_FEATURE_V7)) {
+-        switch (regime_el(env, mmu_idx)) {
++        switch (regime_el(mmu_idx)) {
+         case 1:
+         case 3:
+             if (is_user) {
+@@ -1509,7 +1509,7 @@ static int get_S1prot_indirect(CPUARMState *env, S1Translate *ptw,
+         /* F */ 0,             /* reserved */
+     };
  
-         g_free(fast->table);
-         g_free(desc->fulltlb);
-@@ -667,7 +667,7 @@ static void tlb_flush_range_locked(CPUState *cpu, int midx,
-                                    unsigned bits)
+-    uint32_t el = regime_el(env, mmu_idx);
++    uint32_t el = regime_el(mmu_idx);
+     uint64_t pir = env->cp15.pir_el[el];
+     uint64_t pire0 = 0;
+     int perm;
+@@ -1584,7 +1584,7 @@ static ARMVAParameters aa32_va_parameters(CPUARMState *env, uint32_t va,
+                                           ARMMMUIdx mmu_idx)
  {
-     CPUTLBDesc *d = &cpu->neg.tlb.d[midx];
--    CPUTLBDescFast *f = &cpu->neg.tlb.f[midx];
-+    CPUTLBDescFast *f = cpu_tlb_fast(cpu, midx);
-     vaddr mask = MAKE_64BIT_MASK(0, bits);
+     uint64_t tcr = regime_tcr(env, mmu_idx);
+-    uint32_t el = regime_el(env, mmu_idx);
++    uint32_t el = regime_el(mmu_idx);
+     int select, tsz;
+     bool epd, hpd;
  
-     /*
-@@ -923,7 +923,7 @@ void tlb_reset_dirty(CPUState *cpu, uintptr_t start, uintptr_t length)
-     qemu_spin_lock(&cpu->neg.tlb.c.lock);
-     for (mmu_idx = 0; mmu_idx < NB_MMU_MODES; mmu_idx++) {
-         CPUTLBDesc *desc = &cpu->neg.tlb.d[mmu_idx];
--        CPUTLBDescFast *fast = &cpu->neg.tlb.f[mmu_idx];
-+        CPUTLBDescFast *fast = cpu_tlb_fast(cpu, mmu_idx);
-         unsigned int n = tlb_n_entries(fast);
-         unsigned int i;
+@@ -1810,7 +1810,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
+     int addrsize, inputsize, outputsize;
+     uint64_t tcr = regime_tcr(env, mmu_idx);
+     int ap, prot;
+-    uint32_t el = regime_el(env, mmu_idx);
++    uint32_t el = regime_el(mmu_idx);
+     uint64_t descaddrmask;
+     bool aarch64 = arm_el_is_aa64(env, el);
+     uint64_t descriptor, new_descriptor;
+@@ -2264,7 +2264,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
  
-@@ -1316,7 +1316,7 @@ static bool victim_tlb_hit(CPUState *cpu, size_t mmu_idx, size_t index,
+         /* Index into MAIR registers for cache attributes */
+         attrindx = extract32(attrs, 2, 3);
+-        mair = env->cp15.mair_el[regime_el(env, mmu_idx)];
++        mair = env->cp15.mair_el[regime_el(mmu_idx)];
+         assert(attrindx <= 7);
+         result->cacheattrs.is_s2_format = false;
+         result->cacheattrs.attrs = extract64(mair, attrindx * 8, 8);
+@@ -2742,7 +2742,7 @@ static bool get_phys_addr_pmsav7(CPUARMState *env,
+ static uint32_t *regime_rbar(CPUARMState *env, ARMMMUIdx mmu_idx,
+                              uint32_t secure)
+ {
+-    if (regime_el(env, mmu_idx) == 2) {
++    if (regime_el(mmu_idx) == 2) {
+         return env->pmsav8.hprbar;
+     } else {
+         return env->pmsav8.rbar[secure];
+@@ -2752,7 +2752,7 @@ static uint32_t *regime_rbar(CPUARMState *env, ARMMMUIdx mmu_idx,
+ static uint32_t *regime_rlar(CPUARMState *env, ARMMMUIdx mmu_idx,
+                              uint32_t secure)
+ {
+-    if (regime_el(env, mmu_idx) == 2) {
++    if (regime_el(mmu_idx) == 2) {
+         return env->pmsav8.hprlar;
+     } else {
+         return env->pmsav8.rlar[secure];
+@@ -2784,7 +2784,7 @@ bool pmsav8_mpu_lookup(CPUARMState *env, uint32_t address,
+     uint32_t addr_page_limit = addr_page_base + (TARGET_PAGE_SIZE - 1);
+     int region_counter;
  
-         if (cmp == page) {
-             /* Found entry in victim tlb, swap tlb and iotlb.  */
--            CPUTLBEntry tmptlb, *tlb = &cpu->neg.tlb.f[mmu_idx].table[index];
-+            CPUTLBEntry tmptlb, *tlb = &cpu_tlb_fast(cpu, mmu_idx)->table[index];
+-    if (regime_el(env, mmu_idx) == 2) {
++    if (regime_el(mmu_idx) == 2) {
+         region_counter = cpu->pmsav8r_hdregion;
+     } else {
+         region_counter = cpu->pmsav7_dregion;
+@@ -2910,7 +2910,7 @@ bool pmsav8_mpu_lookup(CPUARMState *env, uint32_t address,
+             xn = 1;
+         }
  
-             qemu_spin_lock(&cpu->neg.tlb.c.lock);
-             copy_tlb_helper_locked(&tmptlb, tlb);
-diff --git a/tcg/aarch64/tcg-target.c.inc b/tcg/aarch64/tcg-target.c.inc
-index 3b088b7bd9..caf79c742d 100644
---- a/tcg/aarch64/tcg-target.c.inc
-+++ b/tcg/aarch64/tcg-target.c.inc
-@@ -1668,7 +1668,7 @@ static TCGLabelQemuLdst *prepare_host_addr(TCGContext *s, HostAddress *h,
-         ldst->oi = oi;
-         ldst->addr_reg = addr_reg;
+-        if (regime_el(env, mmu_idx) == 2) {
++        if (regime_el(mmu_idx) == 2) {
+             result->f.prot = simple_ap_to_rw_prot_is_user(ap,
+                                             mmu_idx != ARMMMUIdx_E2);
+         } else {
+@@ -2919,7 +2919,7 @@ bool pmsav8_mpu_lookup(CPUARMState *env, uint32_t address,
  
--        /* Load cpu->neg.tlb.f[mmu_idx].{mask,table} into {tmp0,tmp1}. */
-+        /* Load CPUTLBDescFast.{mask,table} into {tmp0,tmp1}. */
-         QEMU_BUILD_BUG_ON(offsetof(CPUTLBDescFast, mask) != 0);
-         QEMU_BUILD_BUG_ON(offsetof(CPUTLBDescFast, table) != 8);
-         tcg_out_insn(s, 3314, LDP, TCG_REG_TMP0, TCG_REG_TMP1, TCG_AREG0,
-diff --git a/tcg/arm/tcg-target.c.inc b/tcg/arm/tcg-target.c.inc
-index 338c57b061..87ca66bb02 100644
---- a/tcg/arm/tcg-target.c.inc
-+++ b/tcg/arm/tcg-target.c.inc
-@@ -1421,7 +1421,7 @@ static TCGLabelQemuLdst *prepare_host_addr(TCGContext *s, HostAddress *h,
-         ldst->oi = oi;
-         ldst->addr_reg = addr;
+         if (!arm_feature(env, ARM_FEATURE_M)) {
+             uint8_t attrindx = extract32(matched_rlar, 1, 3);
+-            uint64_t mair = env->cp15.mair_el[regime_el(env, mmu_idx)];
++            uint64_t mair = env->cp15.mair_el[regime_el(mmu_idx)];
+             uint8_t sh = extract32(matched_rlar, 3, 2);
  
--        /* Load cpu->neg.tlb.f[mmu_idx].{mask,table} into {r0,r1}.  */
-+        /* Load CPUTLBDescFast.{mask,table} into {r0,r1}.  */
-         QEMU_BUILD_BUG_ON(offsetof(CPUTLBDescFast, mask) != 0);
-         QEMU_BUILD_BUG_ON(offsetof(CPUTLBDescFast, table) != 4);
-         tcg_out_ldrd_8(s, COND_AL, TCG_REG_R0, TCG_AREG0, fast_off);
+             if (regime_sctlr(env, mmu_idx) & SCTLR_WXN &&
+@@ -2927,7 +2927,7 @@ bool pmsav8_mpu_lookup(CPUARMState *env, uint32_t address,
+                 xn = 0x1;
+             }
+ 
+-            if ((regime_el(env, mmu_idx) == 1) &&
++            if ((regime_el(mmu_idx) == 1) &&
+                 regime_sctlr(env, mmu_idx) & SCTLR_UWXN && ap == 0x1) {
+                 pxn = 0x1;
+             }
+@@ -3412,7 +3412,7 @@ static bool get_phys_addr_disabled(CPUARMState *env,
+         break;
+ 
+     default:
+-        r_el = regime_el(env, mmu_idx);
++        r_el = regime_el(mmu_idx);
+         if (arm_el_is_aa64(env, r_el)) {
+             int pamax = arm_pamax(env_archcpu(env));
+             uint64_t tcr = env->cp15.tcr_el[r_el];
+@@ -3664,7 +3664,7 @@ static bool get_phys_addr_nogpc(CPUARMState *env, S1Translate *ptw,
+      */
+     if (address < 0x02000000 && mmu_idx != ARMMMUIdx_Stage2
+         && !arm_feature(env, ARM_FEATURE_V8)) {
+-        if (regime_el(env, mmu_idx) == 3) {
++        if (regime_el(mmu_idx) == 3) {
+             address += env->cp15.fcseidr_s;
+         } else {
+             address += env->cp15.fcseidr_ns;
+diff --git a/target/arm/tcg/mte_helper.c b/target/arm/tcg/mte_helper.c
+index 0efc18a181..ed30026b7d 100644
+--- a/target/arm/tcg/mte_helper.c
++++ b/target/arm/tcg/mte_helper.c
+@@ -604,7 +604,7 @@ void mte_check_fail(CPUARMState *env, uint32_t desc,
+     int el, reg_el, tcf;
+     uint64_t sctlr;
+ 
+-    reg_el = regime_el(env, arm_mmu_idx);
++    reg_el = regime_el(arm_mmu_idx);
+     sctlr = env->cp15.sctlr_el[reg_el];
+ 
+     switch (arm_mmu_idx) {
 -- 
 2.43.0
 

@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E0C4CAC592
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DF07CAC5AC
 	for <qemu-arm@archiver.kernel.org>; Mon, 22 Sep 2025 09:41:50 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v0d0e-00041L-OW; Mon, 22 Sep 2025 05:39:01 -0400
+	id 1v0d0X-00039g-IQ; Mon, 22 Sep 2025 05:38:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1v0czF-00028d-Md
- for qemu-arm@nongnu.org; Mon, 22 Sep 2025 05:37:36 -0400
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+ id 1v0czQ-0002F8-3d
+ for qemu-arm@nongnu.org; Mon, 22 Sep 2025 05:37:45 -0400
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1v0cz4-0000cO-4O
- for qemu-arm@nongnu.org; Mon, 22 Sep 2025 05:37:33 -0400
-Received: by mail-wr1-x42c.google.com with SMTP id
- ffacd0b85a97d-3f99ac9acc4so985970f8f.3
- for <qemu-arm@nongnu.org>; Mon, 22 Sep 2025 02:37:18 -0700 (PDT)
+ id 1v0cz6-0000f2-PH
+ for qemu-arm@nongnu.org; Mon, 22 Sep 2025 05:37:43 -0400
+Received: by mail-wr1-x436.google.com with SMTP id
+ ffacd0b85a97d-3b9edf4cf6cso3576354f8f.3
+ for <qemu-arm@nongnu.org>; Mon, 22 Sep 2025 02:37:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1758533835; x=1759138635; darn=nongnu.org;
+ d=linaro.org; s=google; t=1758533842; x=1759138642; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=p7AJahUMqP4H52ZjgDIGUlzyg5ExoTqCJvWrQsOM+Os=;
- b=Bg/SRRFWdo1eoN1rrUiX+oMyQW5KptzRh/TvTfXBdhYWtscq65fuWo4pfjWACOWc0G
- MuEvFRbVQZ2CeQOJtSlBe09oJuiF4og/q2AEL9lAo+dAVSh9CKejD1XM9zKQWIF9FHt0
- IbEW/KERg5mq1LEJVdj9lYPxp9Gt2VXM6zpN9g/jEKejFJsZKzETa0dIGPhVpfqjMHmN
- lnI3DbL3mBVrn6zVTmmo7tOwXZBfeDuRe9R3Q6joQ3AXVRm1/KQUeZICju66YiH0PDvF
- TRa4di5yce/gtTtpzrJ/bB+aGTRO+azqbJk76AJoRlB9Lqt6vkegECf/HG8CAWeS4oou
- 03MQ==
+ bh=rN+UABDX33GElLhpMxpOfn/bxSt0jF+QLakS0yUkPiM=;
+ b=csUCUzthCrfiTPGLeshqpcGSNkBzKLAskM6fghiccJrFkm/2d12UAN/TKuD+6FfmAE
+ wGBQIpvZIbLrlnzSIpS29OvFn0SAlndx1Pu3sl3MpvfR7ZryuIAhk41MOWo6++snSVm2
+ cG0/dWlkaWNYo3/ta0Ys5aF3w4Q8UmGHgrVq+VA2Zhft+fF3P38nt1APUf/jhXnsO+rG
+ 1Sd3lpL7ld95KphkXHr8OTNmRULKbBPzc0J2ALIvQ5UHB80dAay1hEalskXrmeL5RwH/
+ FxGE1ClHbFBCmRJQUfTC6caba333PcbXJrgeOv/VMXMWR3zMQToMmotX65+VSQPzhwUa
+ fAkA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1758533835; x=1759138635;
+ d=1e100.net; s=20230601; t=1758533842; x=1759138642;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=p7AJahUMqP4H52ZjgDIGUlzyg5ExoTqCJvWrQsOM+Os=;
- b=VLAbmWLMz+xF7BxUGJCEMxR/Y/K/ljYgR4XT6rcXjKN4Aw+8vksavjVa5YGAlBfJcU
- Szh6fwlwXp0BjtlvvTpya0haqk+bum7O+xd892Cd/Ccyw8NgTRG1imc7f+0gXFymS28J
- uBHHe4wwYiewKmwPs4fonHDsQ6ziLLpLs229Z3SqL6sSYGO3HTU2dF5zZ1HVpiZ5t9Ep
- YU+VFWqO2cVn8DZM9t+diVXVrj8R4YdlB6x9y6o04pn4u7zU2YyM3V8Ag6S8N01yOp/b
- XUZzUxqq9l8wD7i9swMWed8hEdDyewIS3GoqEhD/LDCLIkHXWyq9YUuKOTKlndPzUftY
- MuCg==
+ bh=rN+UABDX33GElLhpMxpOfn/bxSt0jF+QLakS0yUkPiM=;
+ b=iMutZD3LQHnw+XmhZ4ReLB6uGVVmRP2AHA/GJYRwEhqBD4QX/0mtGrY5ygU1w2iuuF
+ SpjmoQenq73blUFLX1vkQ7LfnEs6yXMvzMgsFvolkbLxj4AGFlk0opmMLZ/spLMuF577
+ o6rfphYLm2TbbC15e/h2ob/ZAOJL7OEMkqkIHy6mM1I1YxXZOPgrMBmKNHi3QjWTaEIJ
+ MMImWCKN7nj/DCFRgB/GfHZwGm8/JrgLXMfpfePA4aElRPvw5S7z/ySgyZEB2KWkRkHX
+ OqRMrdu4D2USFaWXvPwqDMb7HzdCZ607hwEAekM1z8Ep96z/4tjAPjce5NUaeslkrTSx
+ GVMg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXiChNYVKjLUsnpWkSEsr9A56SqCyPFPqoPG4YtrfzSiWF0Jy/lDr73z4tzZqar6Tr+wVQsnqN9Ow==@nongnu.org
-X-Gm-Message-State: AOJu0YwclcdxIm/NZbitjEA+CiNb6tTr32D/glujrryVxVGuKmyhgdWl
- 82hMRYgfxguMEFHcccZfCapCjlNUlCX35DpGRHvSYF/I07LWzP6j7EELdumAL9Utn7U=
-X-Gm-Gg: ASbGncsLLZU6ymymc8poIxB2VNkhcTna5+WWKd/mhsiQ12kb2mRjItWMJx/L6e8omSz
- O+s3u+LW3udzcr3CXUMMw9Zn1HID299OOJ4Z8p3cYRJndMeIi4vuCeU9Esa3gto7N/r3eCr45iB
- /6XLa/XFrE330u2FYLr2y6gFs9cSmGvc1LbZN02yOUs20jwdDwh0tPDmD/mLi2rKoJbz5AfiMkK
- Zz2UOrNRWpSI/fwvW5FgXDcFBiWQ66zLdYrYmmgVfRYUpysJQug+1pkYKY0naW0auu/ssPjPEK4
- jtHUxdrSGa63A4sll1m6fRG7O070GUQe/ebZD1HHqPHKIn7ewtVl4SdGiGWql91saAFtqk2JDTW
- aAch1dBJ8IZ/U4TcDSFTP2pE=
-X-Google-Smtp-Source: AGHT+IEKJ52MYarnP5WeS3Ssw0avY2ayMO6o3vcUndbtS7T5aj3s7MrMaJEPUYVs8MIw5X3I4Ev1pw==
-X-Received: by 2002:a05:6000:2c05:b0:3eb:2428:4a05 with SMTP id
- ffacd0b85a97d-3ee7bad11fdmr11043020f8f.3.1758533834747; 
- Mon, 22 Sep 2025 02:37:14 -0700 (PDT)
+ AJvYcCVPed+IX4oTd/7EjFwOXqgc0G6VuoKbrRfdYBAqIK4Xt3PKV4pAqszkgmfAXuQQfFMAraXWOx0v6Q==@nongnu.org
+X-Gm-Message-State: AOJu0YwXsHIdEWjLIJmHTg1dWrMYm2RAqphzOK5PIIV5hkah991tNfIX
+ sKiP553P//4P7Ec7z1OHXKjqbUigjSWg71bfMCUZIQi1F/lgRbRpbUn1TSTVzjoGK3I=
+X-Gm-Gg: ASbGncueG7T7NcQSmaol58N56QepPXQ860oolsk5vB+o+64CTlMNsJ02nCP6anHly1i
+ +SfeZaiBlQozY5tEKiK5KwHqLSEhQoQ/Uu5phe8OMUhnRWTLFT7TdgQsSbcqWC3BIAFBg+PI0r6
+ sPsTi8U8eeKd/Cjl9FNYbUKVcsZJTijzOBc2mvt38ppL3VHbdEkYyVORubbAopLzUov2TxHERPQ
+ oxPn6KszNCpVIgTp09y1RyWkZWGk20Fj4VA8qIPlRGUchyffFip0p+FAetjmGqnNexdHzx5SEEX
+ ksyVbzr7cmTPugFAD7599kqDQN+2lq8QMefXrE5Lv7o/y5CRLiPTwr1MOdnJ1tOeaHA3dXh6P+3
+ 11KW1SAyBRXlz0OwwqMAkUP8=
+X-Google-Smtp-Source: AGHT+IGXplVmD3OLqQHoKMQjJiyf0VDSnMaQcgJSVKAaJgaw9ilpZyoJrTJgqViPJpdsOBDUn8fHSA==
+X-Received: by 2002:a05:6000:22c7:b0:3eb:df84:62e with SMTP id
+ ffacd0b85a97d-3ee7c5535d9mr10926109f8f.3.1758533842377; 
+ Mon, 22 Sep 2025 02:37:22 -0700 (PDT)
 Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3ee0fbd63a2sm19048919f8f.48.2025.09.22.02.37.12
+ ffacd0b85a97d-3ee0fbd63a2sm19049094f8f.48.2025.09.22.02.37.15
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 22 Sep 2025 02:37:12 -0700 (PDT)
+ Mon, 22 Sep 2025 02:37:17 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id C3D4D5F90D;
- Mon, 22 Sep 2025 10:37:11 +0100 (BST)
+ by draig.lan (Postfix) with ESMTP id 683855F9FF;
+ Mon, 22 Sep 2025 10:37:12 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Palmer Dabbelt <palmer@dabbelt.com>, Alexandre Iooss <erdnaxe@crans.org>,
@@ -80,26 +80,26 @@ Cc: Palmer Dabbelt <palmer@dabbelt.com>, Alexandre Iooss <erdnaxe@crans.org>,
  Weiwei Li <liwei1518@gmail.com>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>,
  Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Nabih Estefan <nabihestefan@google.com>,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-Subject: [PATCH 03/25] checkpatch: Ignore removed lines in license check
-Date: Mon, 22 Sep 2025 10:36:48 +0100
-Message-ID: <20250922093711.2768983-4-alex.bennee@linaro.org>
+ Richard Henderson <richard.henderson@linaro.org>
+Subject: [PATCH 09/25] target/{arm,
+ riscv}/common-semi-target: eradicate target_ulong
+Date: Mon, 22 Sep 2025 10:36:54 +0100
+Message-ID: <20250922093711.2768983-10-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20250922093711.2768983-1-alex.bennee@linaro.org>
 References: <20250922093711.2768983-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
- envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x42c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::436;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x436.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -115,39 +115,82 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Nabih Estefan <nabihestefan@google.com>
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 
-When running the license check, if we are updating a license it is
-possible for the checkpatch script to test against old license lines
-instead of newer ones, since the removal lines appear before the
-addition lines in a .patch file.
+We replace mechanically with uint64_t.
+There is no semantic change, and allows us to extract a proper API from
+this set of functions.
 
-Fix this by skipping over lines that start with "-" in the checkpatch
-script.
-
-Signed-off-by: Nabih Estefan <nabihestefan@google.com>
-Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
-Message-ID: <20250916165928.10048-1-nabihestefan@google.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Message-ID: <20250822150058.18692-7-pierrick.bouvier@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- scripts/checkpatch.pl | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ target/arm/common-semi-target.h   | 6 +++---
+ target/riscv/common-semi-target.h | 6 +++---
+ 2 files changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/scripts/checkpatch.pl b/scripts/checkpatch.pl
-index 91616c974f2..40b6955c698 100755
---- a/scripts/checkpatch.pl
-+++ b/scripts/checkpatch.pl
-@@ -1816,7 +1816,8 @@ sub process {
- 		}
+diff --git a/target/arm/common-semi-target.h b/target/arm/common-semi-target.h
+index 7bb442f24ca..6775a270aaa 100644
+--- a/target/arm/common-semi-target.h
++++ b/target/arm/common-semi-target.h
+@@ -12,7 +12,7 @@
  
- # Check SPDX-License-Identifier references a permitted license
--		if ($rawline =~ m,SPDX-License-Identifier: (.*?)(\*/)?\s*$,) {
-+		if (($rawline =~ m,SPDX-License-Identifier: (.*?)(\*/)?\s*$,) &&
-+			$rawline !~ /^-/) {
- 			$fileinfo->{facts}->{sawspdx} = 1;
- 			&checkspdx($realfile, $1);
- 		}
+ #include "target/arm/cpu-qom.h"
+ 
+-static inline target_ulong common_semi_arg(CPUState *cs, int argno)
++static inline uint64_t common_semi_arg(CPUState *cs, int argno)
+ {
+     ARMCPU *cpu = ARM_CPU(cs);
+     CPUARMState *env = &cpu->env;
+@@ -23,7 +23,7 @@ static inline target_ulong common_semi_arg(CPUState *cs, int argno)
+     }
+ }
+ 
+-static inline void common_semi_set_ret(CPUState *cs, target_ulong ret)
++static inline void common_semi_set_ret(CPUState *cs, uint64_t ret)
+ {
+     ARMCPU *cpu = ARM_CPU(cs);
+     CPUARMState *env = &cpu->env;
+@@ -44,7 +44,7 @@ static inline bool is_64bit_semihosting(CPUArchState *env)
+     return is_a64(env);
+ }
+ 
+-static inline target_ulong common_semi_stack_bottom(CPUState *cs)
++static inline uint64_t common_semi_stack_bottom(CPUState *cs)
+ {
+     ARMCPU *cpu = ARM_CPU(cs);
+     CPUARMState *env = &cpu->env;
+diff --git a/target/riscv/common-semi-target.h b/target/riscv/common-semi-target.h
+index 7e6ea8da02c..663dedfdad2 100644
+--- a/target/riscv/common-semi-target.h
++++ b/target/riscv/common-semi-target.h
+@@ -11,14 +11,14 @@
+ #ifndef TARGET_RISCV_COMMON_SEMI_TARGET_H
+ #define TARGET_RISCV_COMMON_SEMI_TARGET_H
+ 
+-static inline target_ulong common_semi_arg(CPUState *cs, int argno)
++static inline uint64_t common_semi_arg(CPUState *cs, int argno)
+ {
+     RISCVCPU *cpu = RISCV_CPU(cs);
+     CPURISCVState *env = &cpu->env;
+     return env->gpr[xA0 + argno];
+ }
+ 
+-static inline void common_semi_set_ret(CPUState *cs, target_ulong ret)
++static inline void common_semi_set_ret(CPUState *cs, uint64_t ret)
+ {
+     RISCVCPU *cpu = RISCV_CPU(cs);
+     CPURISCVState *env = &cpu->env;
+@@ -35,7 +35,7 @@ static inline bool common_semi_sys_exit_is_extended(CPUState *cs)
+     return is_64bit_semihosting(cpu_env(cs));
+ }
+ 
+-static inline target_ulong common_semi_stack_bottom(CPUState *cs)
++static inline uint64_t common_semi_stack_bottom(CPUState *cs)
+ {
+     RISCVCPU *cpu = RISCV_CPU(cs);
+     CPURISCVState *env = &cpu->env;
 -- 
 2.47.3
 

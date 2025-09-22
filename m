@@ -4,80 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8226CAC592
-	for <qemu-arm@archiver.kernel.org>; Mon, 22 Sep 2025 19:04:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E7D7CAC5A7
+	for <qemu-arm@archiver.kernel.org>; Mon, 22 Sep 2025 19:06:28 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v0lbr-0004r3-Ip; Mon, 22 Sep 2025 14:49:59 -0400
+	id 1v0liD-0000xt-4T; Mon, 22 Sep 2025 14:56:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1v0lbq-0004qN-74
- for qemu-arm@nongnu.org; Mon, 22 Sep 2025 14:49:58 -0400
-Received: from mail-pf1-x431.google.com ([2607:f8b0:4864:20::431])
+ id 1v0lgS-0006Aq-Tu
+ for qemu-arm@nongnu.org; Mon, 22 Sep 2025 14:54:49 -0400
+Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1v0lbl-0004AJ-Bc
- for qemu-arm@nongnu.org; Mon, 22 Sep 2025 14:49:57 -0400
-Received: by mail-pf1-x431.google.com with SMTP id
- d2e1a72fcca58-77f2e960728so1970864b3a.2
- for <qemu-arm@nongnu.org>; Mon, 22 Sep 2025 11:49:52 -0700 (PDT)
+ id 1v0lfT-00052V-Mw
+ for qemu-arm@nongnu.org; Mon, 22 Sep 2025 14:54:34 -0400
+Received: by mail-pl1-x630.google.com with SMTP id
+ d9443c01a7336-2680cf68265so35248905ad.2
+ for <qemu-arm@nongnu.org>; Mon, 22 Sep 2025 11:53:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1758566992; x=1759171792; darn=nongnu.org;
+ d=linaro.org; s=google; t=1758567221; x=1759172021; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=dwXNsvpsI+ev3l1X0Dinc/JnjQKCdGo0MRhCsyBFRqA=;
- b=dKecoTV8MjKPczlOi194es4WtbUA3l1UF4WW1OlGjPmaXLlH62Uf/4LlpizkeZogmb
- PYv3RERNSgpxxdryjgf6L19NEjBgQqwkYLmgu3BupvnmmRDS3T/rQTZce1t7fa9WqPj8
- VTDhFUYz85luGpWcZCnYCG2K7m/ylSCg6Kp8FwpvhGAkdFOz9gqyOkkyuAdrvshpDJUs
- mcwkoPSDGqrijKCFfpeyKMlvCSJZkEMFIex4hUQS69PX4Ktvn+4vEmlnFz9i3fO9hEcp
- P1F0vftvpOtKoJX8xZ1GX9X7iOFal8GWH7+fkH1ReNOEjpj1G4XOP6EJ7hah+de9GRxu
- WiXA==
+ bh=x7nV0Ak+FzJdflIEY7yKbyAYL5FePaOZ1XHx7vKnyo4=;
+ b=y0+3BjEqZNfVpPK+00yjnCpSrxi8Sz9GztA4QK7qnrmLlbMATwGouw1hodDUCuiBea
+ g9C5vPD1qClPdlwgMAg3WLH/ne1N05JTCffAJVEguXvym/8kKwCMeaE4Oe6kdGPJcdgh
+ mWQAeXVzS4NNd0v2q/1Ck7mEJiS7RM4gkIPISXovVIYtp8DVJUj1bicA6t0lASlJhiuG
+ M41ptGRzxs2OBW9m4iFpKji0tU3uC3fuE40shL2DlzgZPzyrlR/BrwBmA2rF3yzQlaC1
+ 5l/pr5HRVN0yPjJmv+akzwKksHtzzsokRnAwKrz0b3m2rkkXMN8VEWxYmxXvwmKhwf48
+ 5vwA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1758566992; x=1759171792;
+ d=1e100.net; s=20230601; t=1758567221; x=1759172021;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=dwXNsvpsI+ev3l1X0Dinc/JnjQKCdGo0MRhCsyBFRqA=;
- b=I45h8NNn440NpR4inPjLqheE30wno6Xs5PdsrL+WsrtG1igdxIVk/6VBP91ltn7Jxf
- EPx5tALQ0DZzogrlRIaC6aTiHLZVuizdxUvtg3dGHX2l5Q5pIAyIhDZqmLX5CymxQxc2
- rByVKX/9iVAX8DqXS8wQ/VskHe6hj5sL7CUURyYDWwekA58W0j/LQPLxiM9Elz0+lVPD
- zsdH41Q/7MurHpawPxlzxCiCWR17czoWrf9P2nMkehTUf9liFzK7IdH97wl56LyHKGjS
- mcCzz6k2mL2YbTXrc8eoUHJO3XUGS4ugZe6MxiKFdhr6ZUVmhPYxdXOHXJFD+PTr6pZd
- OEbw==
-X-Gm-Message-State: AOJu0YwTIcXIvfIM2roXLq0NLX3P7qsiNyp2JC9Qy99t8leqXwy98LNO
- TqTJLgsCHwNLzx/g2J/QrTiKy1CAA4GyzuQahtLNpIGi9liNJxyAfqTX8BydGsU9ZjuqjNyCIrs
- RaZgW
-X-Gm-Gg: ASbGnctO6UZ2q1TLxUkAr6B8VafjV9uq+JBIRueeXEeYg46d24lbpdxZP07PaMT9r1K
- YpGFZl/DpjIQqpxNCKTzY3yAkcHbUVVBfVXFCX6sNV2e9WU1rQoykxX2OGf4T+3nYGznhbJiTZz
- KTkZooYW1fc/SC0a5/UlmWegJKt6Dovmjz0+EdLduEDfmBit6l7VNcMunHvDqhv7G2jx5Zz2r3v
- itbdij2EzoJj8Pius/4o4vOmSGibJsB+mtoto0ef64Tffrj2nNCDyNhQ7YvOmY9TyXIAWC5wKec
- xQ4kv29EiBWF2aR93EA/bxVB1iSram03gtmxizG5REZ7mrUW4E2+P+6t21zftjdXltocqeNsM9j
- voA7dA/dyY92d8LSJG2ztFKPfQHtO
-X-Google-Smtp-Source: AGHT+IEPL0u1ll3ZFjgOMl2zDHZVPngTrnSqaXnTj4EuWS0ZeHoSKlrPdKDGDxgPAf6XLeyVIzYQcA==
-X-Received: by 2002:a05:6a00:3cd6:b0:77f:50df:df30 with SMTP id
- d2e1a72fcca58-77f50dfe612mr904881b3a.17.1758566991740; 
- Mon, 22 Sep 2025 11:49:51 -0700 (PDT)
+ bh=x7nV0Ak+FzJdflIEY7yKbyAYL5FePaOZ1XHx7vKnyo4=;
+ b=JiEBZuasMdL5a7+cDwmlfHgSoAx6d+qp6smqov2ctkmDdMkTyUycW5VCRlrhE/akk1
+ QodAez+RgcJpdftsNU44/tT35w8GmVZ+CY9bTvBLdmwpHBLITEyy288H/6tQoXe3Ztfc
+ DDifQt0pbR2PgVmPrCj4gnHHtWHtyX/JXqgZv4DxsKZF8s07OvPxBsHmBXJJK8UcfyZV
+ USnaI/lt1omkZ1IPj42otGBwJYR07K9UaQTGltA6POiBlBqO0OaXNYgAP6YoXn+7J23u
+ zZzwi69/c2O6a6teiHZ5DuchttH/xZKYS34OhNbJEzv4vFQ6yGV0y8e7pnJCIIUqQg/B
+ Lmdg==
+X-Gm-Message-State: AOJu0YzsF7Cnm3LI8FqMjEyz8ZP8gsNbgstxuOSJ+cRDJ/FNEnbq4XQR
+ h3XH/p0IUB3mHpCXBFYmkSARSLI+ziCGKirtVqbuqAQ8f+ciFwpBRuHyP56MJT7nUwSBYKLsezr
+ MfQdG
+X-Gm-Gg: ASbGncu02GSDKP+OqMJkTgyCMfeHia+HElp6Tl1de4D2s5U5Fpwfxlgr0uU8iU101l6
+ SeVjSOlJLYYaYWf6ja7gYEyeJafA/Z3aPTmwN9d8v2lGYBaQeVPZlS46NDwhrwrRQWjtL7FPFN9
+ JPxdMvvQ+fV9y8t1Bbza+cuJN7lfttTLrl7qeHlWoH4XSJAttgmxmhbzd67LSDt+GD+JBKdoOHN
+ SSWJCl40HJ4JLS0lH54qxHuiGxYpCDhvwD4BLTz3CMH51R+Mir9Y4gbFbgFFsSc/jqWeFkwEtNI
+ E02iEPnkieDTfXDWcSpxySICqN7YHybBudCXA5JfhL2U5Rc+vn0IzWMMsgvrEr2bCOH8Ds6UACG
+ uTWPRv6VIQuBsLDmeBTYlKaUrPzL6xrQjc87a4Fg=
+X-Google-Smtp-Source: AGHT+IF1yXZm6ppXW7M2y5mnXlLaKY+H/GfFGoOF+b1wzpjcXgfOQx5PJ3wtR0zHhxn0i8EnTjegGg==
+X-Received: by 2002:a17:902:8490:b0:269:8072:5be7 with SMTP id
+ d9443c01a7336-269ba566c82mr124399245ad.56.1758567220755; 
+ Mon, 22 Sep 2025 11:53:40 -0700 (PDT)
 Received: from stoup.. ([71.212.157.132]) by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-77e5fe6de75sm10583861b3a.19.2025.09.22.11.49.51
+ d9443c01a7336-2698018a472sm138554795ad.58.2025.09.22.11.53.40
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 22 Sep 2025 11:49:51 -0700 (PDT)
+ Mon, 22 Sep 2025 11:53:40 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v5 18/76] include/hw/core/cpu: Widen MMUIdxMap
-Date: Mon, 22 Sep 2025 11:48:26 -0700
-Message-ID: <20250922184924.2754205-19-richard.henderson@linaro.org>
+Subject: [PATCH v5 70/76] target/arm: Enable GCSPR_EL0 for read in user-mode
+Date: Mon, 22 Sep 2025 11:49:18 -0700
+Message-ID: <20250922184924.2754205-71-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250922184924.2754205-1-richard.henderson@linaro.org>
 References: <20250922184924.2754205-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::431;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x431.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::630;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x630.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -100,43 +100,27 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Widen MMUIdxMap to 32 bits.  Do not yet expand NB_MMU_MODES,
-but widen the map type in preparation.
-
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- include/hw/core/cpu.h | 2 +-
- accel/tcg/cputlb.c    | 3 ---
- 2 files changed, 1 insertion(+), 4 deletions(-)
+ target/arm/cpu.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-index 89fe937a6f..83d6e9c24e 100644
---- a/include/hw/core/cpu.h
-+++ b/include/hw/core/cpu.h
-@@ -201,7 +201,7 @@ struct CPUClass {
-  * Fix the number of mmu modes to 16.
-  */
- #define NB_MMU_MODES 16
--typedef uint16_t MMUIdxMap;
-+typedef uint32_t MMUIdxMap;
- 
- /* Use a fully associative victim tlb of 8 entries. */
- #define CPU_VTLB_SIZE 8
-diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c
-index 2a6aa01c57..416aaa1040 100644
---- a/accel/tcg/cputlb.c
-+++ b/accel/tcg/cputlb.c
-@@ -89,9 +89,6 @@
-  */
- QEMU_BUILD_BUG_ON(sizeof(vaddr) > sizeof(run_on_cpu_data));
- 
--/* We currently can't handle more than 16 bits in the MMUIDX bitmask.
-- */
--QEMU_BUILD_BUG_ON(NB_MMU_MODES > 16);
- #define ALL_MMUIDX_BITS ((1 << NB_MMU_MODES) - 1)
- 
- static inline size_t tlb_n_entries(CPUTLBDescFast *fast)
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 731b4d5725..09c27451fd 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -307,6 +307,10 @@ static void arm_cpu_reset_hold(Object *obj, ResetType type)
+         env->cp15.mdscr_el1 |= 1 << 12;
+         /* Enable FEAT_MOPS */
+         env->cp15.sctlr_el[1] |= SCTLR_MSCEN;
++        /* For Linux, GCSPR_EL0 is always readable. */
++        if (cpu_isar_feature(aa64_gcs, cpu)) {
++            env->cp15.gcscr_el[0] = GCSCRE0_NTR;
++        }
+ #else
+         /* Reset into the highest available EL */
+         if (arm_feature(env, ARM_FEATURE_EL3)) {
 -- 
 2.43.0
 

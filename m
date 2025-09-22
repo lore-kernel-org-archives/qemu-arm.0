@@ -4,84 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08850CAC592
-	for <qemu-arm@archiver.kernel.org>; Mon, 22 Sep 2025 11:11:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31E57CAC5A7
+	for <qemu-arm@archiver.kernel.org>; Mon, 22 Sep 2025 11:34:08 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v0eRn-0006ds-Tk; Mon, 22 Sep 2025 07:11:09 -0400
+	id 1v0emP-0006kQ-K6; Mon, 22 Sep 2025 07:32:25 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1v0eRk-0006dX-MD
- for qemu-arm@nongnu.org; Mon, 22 Sep 2025 07:11:05 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1v0emM-0006jl-Df
+ for qemu-arm@nongnu.org; Mon, 22 Sep 2025 07:32:23 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1v0eRb-0004IL-F5
- for qemu-arm@nongnu.org; Mon, 22 Sep 2025 07:11:04 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1v0emF-0001k7-EN
+ for qemu-arm@nongnu.org; Mon, 22 Sep 2025 07:32:22 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1758539452;
+ s=mimecast20190719; t=1758540732;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=hbkgTQP6g8DkmzniyXDBvYiQfHYG+bQWdxX3d6/8X2I=;
- b=BGjgDz6IUZ59yoyXxiI06tzJec4oZT/upM5aR1VT40vOM5yCAcCfxcmu5KlODregzi9mdW
- w2VJpRQvcPJaHzd6zVfHs1PNUKIzrTCbAiFWRXsvPhn4zh9/aWQq0pPxNf6gjcU7fQnn6T
- kXDPwdkkvtoOlUTe/3SvzMjzjjsKgZ0=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=pfEf0KPRFEi/1qGChhZlFYNcWUCNMDujVMEg7yKLIxU=;
+ b=QGe4j+ATtx8Osca+iXTTA/1aK7GvKUk0Q/ncszIOo5bvpVDdwunKqMvcLvevPeYsXaSO5b
+ VoejwVU6fialn3EyfVJJBprLq064pfYSbsrpVveIZqsc9EYJQhnseNkPKwX9vc68IOACjJ
+ pgQZFwqafJn/Z2k9oy3DSXerigBH/o8=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-673-7lcn5THMMF-kgyCKh3OJ4g-1; Mon, 22 Sep 2025 07:10:49 -0400
-X-MC-Unique: 7lcn5THMMF-kgyCKh3OJ4g-1
-X-Mimecast-MFC-AGG-ID: 7lcn5THMMF-kgyCKh3OJ4g_1758539448
-Received: by mail-wr1-f72.google.com with SMTP id
- ffacd0b85a97d-3f42b54d159so1397013f8f.2
- for <qemu-arm@nongnu.org>; Mon, 22 Sep 2025 04:10:49 -0700 (PDT)
+ us-mta-549-x_e-xeNUO4CYsH9N0ITcTg-1; Mon, 22 Sep 2025 07:32:10 -0400
+X-MC-Unique: x_e-xeNUO4CYsH9N0ITcTg-1
+X-Mimecast-MFC-AGG-ID: x_e-xeNUO4CYsH9N0ITcTg_1758540729
+Received: by mail-wr1-f70.google.com with SMTP id
+ ffacd0b85a97d-3f384f10762so804775f8f.3
+ for <qemu-arm@nongnu.org>; Mon, 22 Sep 2025 04:32:10 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1758539448; x=1759144248;
+ d=1e100.net; s=20230601; t=1758540729; x=1759145529;
  h=content-transfer-encoding:in-reply-to:autocrypt:content-language
  :from:references:cc:to:subject:user-agent:mime-version:date
  :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=hbkgTQP6g8DkmzniyXDBvYiQfHYG+bQWdxX3d6/8X2I=;
- b=GtNniKfEs0MkoDup19+KmqROdEzLfzrEblWtDxwNa3peJtHGKOuYRyPaXN+B5tU37R
- CPWC0Esuc8P1cDpI6W9YkEar0H0IlOaWqeKNFByk1Xetf5nempCBFTyQ69nFoVN2qLax
- Gfm4FMvneZBnSkwmtuQL477kVB+rleksh8+jrky6sngUJrURcPgLLwNUJ4w7lUMCICxy
- LhnYQ63dpN2cL39w9yT9j15eWV4ntkQ22YYJki7+ojDfT3s47WIwC0a4hmlflQz/bHgp
- pFUoRZvZ6hJv1dyUJYqkc9LFzIEVhs9H/Df9yHQvkAwe0t6LYOXy0RkEdmyeRBpUZneJ
- UgoQ==
-X-Gm-Message-State: AOJu0YwCsKs4gufSdgs8ImobdKifEfSYVCRDks4fPxRwEt1yP07Bk40s
- AxvlT0x6p6iBMrYXZvedKCSNVhxwZRJSLxQ2f80ZnBcjyXnVlr98OVY/di1ctoEeXILm2cQq8I6
- cCkWUJlZhdEl2+vWDz42AqvmvfOu0djUzz0hbZ3GQIhhidB1DNfVWNw==
-X-Gm-Gg: ASbGncv78nmgpzWbUl2U7WqZLNKKqdu56ZlqJ7uKnstWVNsrlAZfdO8CuSMVK0mTo1L
- gmpsGvB1ixB1uZh+ppsH7M4xgaeH5Rsx2JUZBUlE9/8dKfWP5X+iAW3jac4I8xa/v0+T5HyG00V
- BkBNJ2o2v7CI3Wna/zL7PZrZZFylT/uQRWrrJuMuBK+7UzsUp1sa+7g1NAW+Ao9Ey+JE28F4xss
- VG/id6Qx8AZXWyeHVuQ+/z6tb34rr9Ud4tpgaHg86w4XukCNJGM5m3qqR7TqU5mBY83WJueVkVh
- dVuXciJ/4ZxDlxmJxfxggpdGuf04mCk+y7NyelBUpsQo38k9PqwHR1V/IV07aW1HUtouQPxwa/N
- dwF9DjQ==
-X-Received: by 2002:a05:6000:400c:b0:3e8:b4cb:c3dc with SMTP id
- ffacd0b85a97d-3ee7c925658mr11728850f8f.3.1758539448396; 
- Mon, 22 Sep 2025 04:10:48 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHvTYE4BFviE7oEBk2NZxaP55bRbtLYgZdqkdONCZ0X0wc1BWl+e/QksnQS6NDvS/ZKkhQZ5g==
-X-Received: by 2002:a05:6000:400c:b0:3e8:b4cb:c3dc with SMTP id
- ffacd0b85a97d-3ee7c925658mr11728818f8f.3.1758539447967; 
- Mon, 22 Sep 2025 04:10:47 -0700 (PDT)
+ bh=pfEf0KPRFEi/1qGChhZlFYNcWUCNMDujVMEg7yKLIxU=;
+ b=d4p6aMLtRl6fhV2jeGzKvJTdYDiVwc1x4WctlKezDb0DExl3DzCwMfw+WQOGRVUFOT
+ 1eB4fDJFHrIyVa5RQCYb02jTXTOAAp6/jlAaqtdR9o1Z1LZs26pliWNiJoqqC9cS3G21
+ pgZVmp4VEQMI3YSYexQgqFrLBtT9EqZm+gMITbCmzZSI7QnOnxVwtiadBO946Q2eVUPH
+ FK83zLOA+DkX8X66InHoZoujWOPaemGzk3xBiz5r7lzdVLdVfZ6DFLeGqK8B+qiFiNk8
+ x2Xteet3qDJPn6dYtJQLrtoGC60e0nQ0bHB0hs0lI5K7Y6+eLhNZgYNkhqQijVUfgrkj
+ S70w==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCW/q/gJFZdl7YQ08m/z9vd1vILDvTMWaMl9lZQrfAzjC9Q26rwPaCxNY8FJ+DQUSWwx0j7w47I2dA==@nongnu.org
+X-Gm-Message-State: AOJu0Yxm1B8Ix28f6FLUoLWi+W3XqbgjPW7cIS5OHkF9IQaD6YJFevTz
+ /P9wcuAVBEB8YAYarsXec5PmYQMA5zV83s6pSX/zvbQIAAx7Kfra+kipSEwLGXX+ymND90f+wlj
+ mU9BrT1GSotAahaUZIUERHK1jISuqlGN3sAqz2tCfIEdEE9kyKpy63w==
+X-Gm-Gg: ASbGncuETV0lYfP1xqTVkqC/fgWjpJbA7G/J3uuGc9Guq3WeU3emF7YubuZq3brQ6FE
+ hGXY2JUwTT+NC8hRg0GDmbnXcSMu/p3PwWZUgyq1253vX//GF/te9NgHye9eIDVRuYa9w138lBb
+ 3O91RkQ7nx2O+Peu6m8IccXU1sXd3AUELO0HzoNEnUwRNuDCHbodaUSeudT0P+NWNg5SStkCE7y
+ TL5BiafvsViluKS3M4ocexk0yguuZs8xVdtXAvO+s+XWUTqTOMrecx4ovB+TcHJrK0+DqX5deMf
+ sgPnKTHlSkSuBVm/NtNdl8DmEH+nrO9MaTNMjFoT+hrLz2oYdLQ+06nhilF3xIF2t/xCKVxp92l
+ pPnrG8g==
+X-Received: by 2002:adf:e006:0:b0:3f0:d752:34b6 with SMTP id
+ ffacd0b85a97d-3f13bfea75emr6732249f8f.53.1758540728982; 
+ Mon, 22 Sep 2025 04:32:08 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFodxjjZSemxbb9lOeMoQ1ZVlJu8hOn0b6k8/FHzJbTAC1J80lEnq202/80ILugoSc4IE9xuQ==
+X-Received: by 2002:adf:e006:0:b0:3f0:d752:34b6 with SMTP id
+ ffacd0b85a97d-3f13bfea75emr6732225f8f.53.1758540728536; 
+ Mon, 22 Sep 2025 04:32:08 -0700 (PDT)
 Received: from [192.168.0.7] (ltea-047-064-113-218.pools.arcor-ip.net.
  [47.64.113.218]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3ee07412111sm19258582f8f.28.2025.09.22.04.10.46
+ ffacd0b85a97d-3ee0740841dsm19434906f8f.23.2025.09.22.04.32.07
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 22 Sep 2025 04:10:47 -0700 (PDT)
-Message-ID: <4c7934c4-4deb-461f-af4d-c089a5514d9d@redhat.com>
-Date: Mon, 22 Sep 2025 13:10:46 +0200
+ Mon, 22 Sep 2025 04:32:08 -0700 (PDT)
+Message-ID: <ab633307-4dbf-42c9-8c12-dcb22608cafc@redhat.com>
+Date: Mon, 22 Sep 2025 13:32:06 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 1/4] python: Install pygdbmi in venv
-To: Gustavo Romero <gustavo.romero@linaro.org>, qemu-devel@nongnu.org,
- alex.bennee@linaro.org, berrange@redhat.com
-Cc: qemu-arm@nongnu.org, manos.pitsidianakis@linaro.org,
- peter.maydell@linaro.org
-References: <20250922054351.14289-1-gustavo.romero@linaro.org>
- <20250922054351.14289-2-gustavo.romero@linaro.org>
+Subject: Re: [PATCH 01/25] docs/devel: fix typo in code-provenance.rst
+To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Palmer Dabbelt <palmer@dabbelt.com>, Alexandre Iooss <erdnaxe@crans.org>, 
+ Mahmoud Mandour <ma.mandourr@gmail.com>, qemu-riscv@nongnu.org,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Alistair Francis <alistair.francis@wdc.com>, qemu-arm@nongnu.org,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Weiwei Li <liwei1518@gmail.com>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>
+References: <20250922093711.2768983-1-alex.bennee@linaro.org>
+ <20250922093711.2768983-2-alex.bennee@linaro.org>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -125,23 +134,23 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20250922054351.14289-2-gustavo.romero@linaro.org>
+In-Reply-To: <20250922093711.2768983-2-alex.bennee@linaro.org>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 3cGdD_bIX6SuLJXfJe6-_uHFrPLkS_KlYJ-3_oRueVE_1758539448
+X-Mimecast-MFC-PROC-ID: TUs18qVhA5krzaHjxA_UvuPY7OihPK_ee04ZPUiN5Qw_1758540729
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -25
-X-Spam_score: -2.6
-X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.442,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
+ DKIM_SIGNED=0.1, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -157,55 +166,26 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 22/09/2025 07.43, Gustavo Romero wrote:
-> Install pygdbmi in Meson's venv. pygdbmi is required by functional tests
-> that interact with GDB. pygdbmi size is only 21 kB.
-> 
-> The wheel file has been obtained with:
-> 
-> pyvenv/bin/pip3 download --only-binary :all: --dest . --no-cache pygdbmi
-> 
-> Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
+On 22/09/2025 11.36, Alex Bennée wrote:
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 > ---
->   python/wheels/pygdbmi-0.11.0.0-py3-none-any.whl | Bin 0 -> 21258 bytes
->   pythondeps.toml                                 |   1 +
->   2 files changed, 1 insertion(+)
->   create mode 100644 python/wheels/pygdbmi-0.11.0.0-py3-none-any.whl
+>   docs/devel/code-provenance.rst | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/docs/devel/code-provenance.rst b/docs/devel/code-provenance.rst
+> index b5aae2e2532..af5d7349e12 100644
+> --- a/docs/devel/code-provenance.rst
+> +++ b/docs/devel/code-provenance.rst
+> @@ -331,7 +331,7 @@ ChatGPT, Anthropic's Claude, and Meta's Code Llama, and code/content
+>   generation agents which are built on top of such tools.
+>   
+>   This policy may evolve as AI tools mature and the legal situation is
+> -clarifed. In the meanwhile, requests for exceptions to this policy will be
+> +clarified. In the meanwhile, requests for exceptions to this policy will be
+>   evaluated by the QEMU project on a case by case basis. To be granted an
+>   exception, a contributor will need to demonstrate clarity of the license and
+>   copyright status for the tool's output in relation to its training model and
 
-I think we should rather avoid to add python test dependencies as wheels 
-(unless it's really necessary as it was with the pycotap module that is also 
-required for the "quick" tests).
-
-It's better if we finally re-activate the "check-venv" target for the 
-functional tests (we used it in the past for the avocado-based tests, too).
-
-Could you please try whether something like this does the job for you:
-
-diff --git a/pythondeps.toml b/pythondeps.toml
---- a/pythondeps.toml
-+++ b/pythondeps.toml
-@@ -33,3 +33,4 @@ sphinx_rtd_theme = { accepted = ">=0.5", installed = "1.2.2" }
-
-  [testdeps]
-  qemu.qmp = { accepted = ">=0.0.3", installed = "0.0.3" }
-+pygdbmi = { accepted = ">=0.11.0.0", installed = "0.11.0.0" }
-diff --git a/tests/Makefile.include b/tests/Makefile.include
---- a/tests/Makefile.include
-+++ b/tests/Makefile.include
-@@ -109,7 +109,7 @@ $(FUNCTIONAL_TARGETS):
-         @$(MAKE) SPEED=thorough $(subst -functional,-func,$@)
-
-  .PHONY: check-functional
--check-functional:
-+check-functional: check-venv
-         @$(NINJA) precache-functional
-         @QEMU_TEST_NO_DOWNLOAD=1 $(MAKE) SPEED=thorough check-func 
-check-func-quick
-
-
-?
-
-  Thanks,
-   Thomas
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
 

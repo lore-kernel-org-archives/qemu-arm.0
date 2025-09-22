@@ -4,82 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89EA6CAC592
-	for <qemu-arm@archiver.kernel.org>; Mon, 22 Sep 2025 18:51:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3D5BCA100F
+	for <qemu-arm@archiver.kernel.org>; Mon, 22 Sep 2025 18:51:38 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v0lc9-00055R-Fl; Mon, 22 Sep 2025 14:50:17 -0400
+	id 1v0lcm-0005Xc-43; Mon, 22 Sep 2025 14:50:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1v0lc3-00050Q-K0
- for qemu-arm@nongnu.org; Mon, 22 Sep 2025 14:50:12 -0400
-Received: from mail-pf1-x42b.google.com ([2607:f8b0:4864:20::42b])
+ id 1v0lc8-00054G-5n
+ for qemu-arm@nongnu.org; Mon, 22 Sep 2025 14:50:16 -0400
+Received: from mail-pf1-x42d.google.com ([2607:f8b0:4864:20::42d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1v0lbv-0004EK-Eo
- for qemu-arm@nongnu.org; Mon, 22 Sep 2025 14:50:11 -0400
-Received: by mail-pf1-x42b.google.com with SMTP id
- d2e1a72fcca58-77c1814ca1dso3638501b3a.2
- for <qemu-arm@nongnu.org>; Mon, 22 Sep 2025 11:50:02 -0700 (PDT)
+ id 1v0lbs-0004Cd-1C
+ for qemu-arm@nongnu.org; Mon, 22 Sep 2025 14:50:15 -0400
+Received: by mail-pf1-x42d.google.com with SMTP id
+ d2e1a72fcca58-77716518125so2449396b3a.3
+ for <qemu-arm@nongnu.org>; Mon, 22 Sep 2025 11:49:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1758567002; x=1759171802; darn=nongnu.org;
+ d=linaro.org; s=google; t=1758566998; x=1759171798; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=fXEhGs2c7sX9UNzM1Em26qJHq6E+l20XSVscjZYvVl8=;
- b=JIyKxGh+Ti63Lk4m6pCiamqy+UH/7Yf7iGUaJuP6vkR0li1mRL41nNRKTpwce5ag5c
- h6zfIOpyQOc+MQ1RBLjG+bh9mp5kGPpuCJcQAE1RUkiTqPdeHIePeZFjqWgAYoLDb1/t
- SGHz+FcpHfTK8eH3aTYd/oGzoFx+aaxo+xjrC9Zva8pInjUWeEIX8geCjPwwduk8NBV7
- WpS3eZGrB2R3vZ792Ch5qZbkvWpGuyx0k5V/CR4J91VBu+LXmLbmLRzL5CSe/9SISgoE
- SZTsSkim+d/vG4fk7YkwhQOfUbc26J84JI+W1kAe7mBYtIHDYSsmEIrcd5sh/+WzIXjq
- 88HQ==
+ bh=HidgR8YbdGgwoHKVV2oZVXdM2RMQ3ecG9VGCjbLMY1s=;
+ b=hFS9XJylgsenpGO6uMkh8PMcGh4z5swIi8+qjIH/YX7WHpKFWA1ed1gtctls2UzaLq
+ Wgw/Pu3JTRVPAw1spggV/16qH1ArdUCdwjZ4RoHSmyONMYER7hIbfX8FpqC8yJAXRidY
+ UPeZnDLF5lYF0oF3n17NGFylAxaqoAPbzMnZ+th2s5ajZA7mR9RsBKnr79egKZVUgvl+
+ MKbVsrPisMZD1zj8ZTrT/56ff9wJepMUzVLQAjFjXI0+dejgtSl1HZKZh/hQJuspasfQ
+ NqL79oSUsnzzBPnPX3/dB9Uiw1v1aPCQGFe983JI4ASpUFuAv8YPfVSRb5iHuP8V/xXp
+ GQGg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1758567002; x=1759171802;
+ d=1e100.net; s=20230601; t=1758566998; x=1759171798;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=fXEhGs2c7sX9UNzM1Em26qJHq6E+l20XSVscjZYvVl8=;
- b=mSp6ztdCZ0iAEn4wZysOFCYeRpoSij0GIrQqGVH9De/Vx4QO/iT+4BsFeIIPaCGeB5
- HxGHgX4Gt7OsHDyQb66eCuMCHbjZ+bdsmN31w2SlmzOHTEcnCwd7gETPRm2zYv8tcROm
- 2aDlOKWUeMAyKGCeEymQCfYgkQOEcoYTb3JlW0nbBpKsIJ7NENLxmPnFIfoRsnLZHzCz
- 4YPqyTEHpeUYSiDQofWGNE06/TaV1Vj7iRhqsY/axmzrX7ndA9tVgzjh+DWSoFpihEqW
- CGkhNZwuxU0DTN0KAN4bho8V3ALJyiDVltvFNGUJrU7oT8Aug3Ov8N/ntDT+87/DNvFE
- mS4g==
-X-Gm-Message-State: AOJu0YysishDIxfui6u98Yj7u+F9r7nP3/QI0rfmimYKQjE87DsMN/3Z
- tfzWbV2xqJ8gBWTg/cJgqptHmmIMzlbzmHG7yI1y0soSHMlCxm+Pn41anuaY7/Os6XQ=
-X-Gm-Gg: ASbGncswjuyC982A+VahGvg7Nii491rWEloIdCEJQ1n6kNX5jwKv/QJUIoNySegsngH
- 4XB1ANEB9RaoKmugYJjmrl32J/KmQq21Vwm5T4sFkslG0kv7R4K+4D1gmnIX5pUD+sWFfWMG6sk
- IF5UgZVgGSC23KHSpGzNMrmoRWQY7sOwnFbmGz58ot6BRGinjozclnnRs351ylPSILahQg7O0xS
- O7EpK//N1x0l69jF0iBZphltImS4EJ+BAlKSWxi491fAbP8dXd9joP+GlMeDA4laTeMubae7jg3
- 8g0MYUbx6zPLnUeoXJ8Ph6ICuKOJHD8x6HiPZMuFguIq9VxinXZq5Y+5LnGagXhW03rBGRYUwch
- jXMXcTTRxbWJdwwe5RvpNTE8XYy/J
-X-Google-Smtp-Source: AGHT+IGyJcjpSg9dEAZ6WxG9bnfJKkiMS4GH21i4I+L6ZQur2in73nvU+R236wQZYquUiAS+OH+jxQ==
-X-Received: by 2002:a05:6a00:3e0a:b0:776:4fb5:bfc6 with SMTP id
- d2e1a72fcca58-77e4e8bd90bmr16339504b3a.21.1758567001664; 
- Mon, 22 Sep 2025 11:50:01 -0700 (PDT)
+ bh=HidgR8YbdGgwoHKVV2oZVXdM2RMQ3ecG9VGCjbLMY1s=;
+ b=VBKJvaKJts6dT+LIHAkC8FYKbM27v/bZ7lBbe6OKC+lOObO6Yw7rAxBLtn4cc5eG/m
+ qC+iB7bk7d4FeOaCeq4wxRkAD9UVrvA2v6LkVWiwaw6QFg/2e/JuFUTMejXE7hamqb4Q
+ HLeWfpG/2fVSR0oU7ARxjmu2+kg6uYBDkX1UsxtJH0AI0Mv8cVqlROI10YWons346iF8
+ bQcTb2CX98JnnVC4iygZYMmQU44EpZtiEnBUhZgIbg8+WN2cm5gL+qnKZOCpIar7ufR+
+ g+ULfrOs8AGqXNzeKLXziMNLgr1yTybq0Dw7ibbbfwibTXCjAGCckZbE0TYemG+Wx8bj
+ 82dw==
+X-Gm-Message-State: AOJu0YxUHBYkfMvY5Z7o7hk+ctqvYujmOE+7bv9+jMnOU516AvIirSsi
+ 5/2v+XL7F81wb6R0fRFiz7ZTk3E39XziCjPjcreyhgUfrfyEFKBHTqdAj5P1brqHfDo=
+X-Gm-Gg: ASbGnctlC+6RWaI9ZfBn0eA8T63dzKyOdrUCswJWcFOp7HKb+9wpEdEuDmALJ7BRzV+
+ ORu3217jtODCQAdNs+hLPCbSynJCK8ghvvnlUu+DAwNFMoTu0NR1EidrqOwXg7lkea8YziIz0X2
+ ZMZ5DCcaeV3IzfPTFGSKTugqtSr4UOT7Q3bftf2Pl93XiTVE+EYCmQ1HtdTUc9ySr1eYAEJ0FFr
+ DGCwkNKv9UsGuqn20SThZWalUpKkVo/VcRcpuLCuH9MdTcnFoeLGTjH0vRrMlJQkkfehRB6aZAx
+ lqsvW7AauuTzyrm5FCG9lBHc8njWq2N5Bk+a6UaltGhuaV/gSy7/MdC27Cia5+iJUx8TC7amYF2
+ Pxe0L9MieVS2kj4UfxxQdL8Yr9UOn
+X-Google-Smtp-Source: AGHT+IEz49kNzWGti3Us/0yjyZzEpNLwdomoQLQFyFMC90XvzhCEeZzjsrGNFZcfduEuXuW6QybXww==
+X-Received: by 2002:a05:6a00:23c3:b0:77f:42d5:b914 with SMTP id
+ d2e1a72fcca58-77f42d5bb6amr3565135b3a.12.1758566997680; 
+ Mon, 22 Sep 2025 11:49:57 -0700 (PDT)
 Received: from stoup.. ([71.212.157.132]) by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-77e5fe6de75sm10583861b3a.19.2025.09.22.11.50.01
+ d2e1a72fcca58-77e5fe6de75sm10583861b3a.19.2025.09.22.11.49.56
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 22 Sep 2025 11:50:01 -0700 (PDT)
+ Mon, 22 Sep 2025 11:49:57 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v5 28/76] target/arm: Convert arm_mmu_idx_is_stage1_of_2 from
- switch to table
-Date: Mon, 22 Sep 2025 11:48:36 -0700
-Message-ID: <20250922184924.2754205-29-richard.henderson@linaro.org>
+Subject: [PATCH v5 24/76] target/arm: Remove unused env argument from
+ regime_is_pan
+Date: Mon, 22 Sep 2025 11:48:32 -0700
+Message-ID: <20250922184924.2754205-25-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250922184924.2754205-1-richard.henderson@linaro.org>
 References: <20250922184924.2754205-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42b;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42b.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42d;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -106,90 +106,49 @@ Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/internals.h       | 19 -------------------
- target/arm/mmuidx-internal.h |  8 ++++++++
- target/arm/mmuidx.c          |  7 ++++---
- 3 files changed, 12 insertions(+), 22 deletions(-)
+ target/arm/internals.h | 2 +-
+ target/arm/ptw.c       | 6 +++---
+ 2 files changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/target/arm/internals.h b/target/arm/internals.h
-index afdc5a92ae..771f7748de 100644
+index a25ef90c4c..b32c31779c 100644
 --- a/target/arm/internals.h
 +++ b/target/arm/internals.h
-@@ -1280,25 +1280,6 @@ ARMMMUIdx stage_1_mmu_idx(ARMMMUIdx mmu_idx);
- ARMMMUIdx arm_stage1_mmu_idx(CPUARMState *env);
- #endif
- 
--/**
-- * arm_mmu_idx_is_stage1_of_2:
-- * @mmu_idx: The ARMMMUIdx to test
-- *
-- * Return true if @mmu_idx is a NOTLB mmu_idx that is the
-- * first stage of a two stage regime.
-- */
--static inline bool arm_mmu_idx_is_stage1_of_2(ARMMMUIdx mmu_idx)
--{
--    switch (mmu_idx) {
--    case ARMMMUIdx_Stage1_E0:
--    case ARMMMUIdx_Stage1_E1:
--    case ARMMMUIdx_Stage1_E1_PAN:
--        return true;
--    default:
--        return false;
--    }
--}
--
- static inline uint32_t aarch32_cpsr_valid_mask(uint64_t features,
-                                                const ARMISARegisters *id)
- {
-diff --git a/target/arm/mmuidx-internal.h b/target/arm/mmuidx-internal.h
-index 3e51c0f579..55fba4aae2 100644
---- a/target/arm/mmuidx-internal.h
-+++ b/target/arm/mmuidx-internal.h
-@@ -18,6 +18,7 @@ FIELD(MMUIDXINFO, RELVALID, 5, 1)
- FIELD(MMUIDXINFO, 2RANGES, 6, 1)
- FIELD(MMUIDXINFO, PAN, 7, 1)
- FIELD(MMUIDXINFO, USER, 8, 1)
-+FIELD(MMUIDXINFO, STAGE1, 9, 1)
- 
- extern const uint32_t arm_mmuidx_table[ARM_MMU_IDX_M + 8];
- 
-@@ -76,4 +77,11 @@ static inline bool regime_is_user(ARMMMUIdx idx)
-     return FIELD_EX32(arm_mmuidx_table[idx], MMUIDXINFO, USER);
+@@ -1027,7 +1027,7 @@ static inline void arm_call_el_change_hook(ARMCPU *cpu)
+     }
  }
  
-+/* Return true if this mmu index is stage 1 of a 2-stage translation. */
-+static inline bool arm_mmu_idx_is_stage1_of_2(ARMMMUIdx idx)
-+{
-+    tcg_debug_assert(arm_mmuidx_is_valid(idx));
-+    return FIELD_EX32(arm_mmuidx_table[idx], MMUIDXINFO, STAGE1);
-+}
-+
- #endif /* TARGET_ARM_MMUIDX_INTERNAL_H */
-diff --git a/target/arm/mmuidx.c b/target/arm/mmuidx.c
-index 1c1e062bfe..c5b43a5932 100644
---- a/target/arm/mmuidx.c
-+++ b/target/arm/mmuidx.c
-@@ -13,6 +13,7 @@
- #define R2     R_MMUIDXINFO_2RANGES_MASK
- #define PAN    R_MMUIDXINFO_PAN_MASK
- #define USER   R_MMUIDXINFO_USER_MASK
-+#define S1     R_MMUIDXINFO_STAGE1_MASK
- 
- const uint32_t arm_mmuidx_table[ARM_MMU_IDX_M + 8] = {
-     /*
-@@ -35,9 +36,9 @@ const uint32_t arm_mmuidx_table[ARM_MMU_IDX_M + 8] = {
-     [ARMMMUIdx_Stage2_S]        = REL(2),
-     [ARMMMUIdx_Stage2]          = REL(2),
- 
--    [ARMMMUIdx_Stage1_E0]       = REL(1) | R2 | USER,
--    [ARMMMUIdx_Stage1_E1]       = REL(1) | R2,
--    [ARMMMUIdx_Stage1_E1_PAN]   = REL(1) | R2 | PAN,
-+    [ARMMMUIdx_Stage1_E0]       = REL(1) | R2 | S1 | USER,
-+    [ARMMMUIdx_Stage1_E1]       = REL(1) | R2 | S1,
-+    [ARMMMUIdx_Stage1_E1_PAN]   = REL(1) | R2 | S1 | PAN,
- 
-     /*
-      * M-profile.
+-static inline bool regime_is_pan(CPUARMState *env, ARMMMUIdx mmu_idx)
++static inline bool regime_is_pan(ARMMMUIdx mmu_idx)
+ {
+     switch (mmu_idx) {
+     case ARMMMUIdx_Stage1_E1_PAN:
+diff --git a/target/arm/ptw.c b/target/arm/ptw.c
+index 622b5cf520..db51e55cd2 100644
+--- a/target/arm/ptw.c
++++ b/target/arm/ptw.c
+@@ -1393,10 +1393,10 @@ static int get_S1prot(CPUARMState *env, ARMMMUIdx mmu_idx, bool is_aa64,
+          * We make the IMPDEF choices that SCR_EL3.SIF and Realm EL2&0
+          * do not affect EPAN.
+          */
+-        if (user_rw && regime_is_pan(env, mmu_idx)) {
++        if (user_rw && regime_is_pan(mmu_idx)) {
+             prot_rw = 0;
+         } else if (cpu_isar_feature(aa64_pan3, cpu) && is_aa64 &&
+-                   regime_is_pan(env, mmu_idx) &&
++                   regime_is_pan(mmu_idx) &&
+                    (regime_sctlr(env, mmu_idx) & SCTLR_EPAN) && !xn) {
+             prot_rw = 0;
+         }
+@@ -1535,7 +1535,7 @@ static int get_S1prot_indirect(CPUARMState *env, S1Translate *ptw,
+             p_perm &= ~(PAGE_RWX | PAGE_GCS);
+             u_perm &= ~(PAGE_RWX | PAGE_GCS);
+         }
+-        if ((u_perm & (PAGE_RWX | PAGE_GCS)) && regime_is_pan(env, mmu_idx)) {
++        if ((u_perm & (PAGE_RWX | PAGE_GCS)) && regime_is_pan(mmu_idx)) {
+             p_perm &= ~(PAGE_READ | PAGE_WRITE);
+         }
+         perm = regime_is_user(env, mmu_idx) ? u_perm : p_perm;
 -- 
 2.43.0
 

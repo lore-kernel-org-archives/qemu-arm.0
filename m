@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43ACECAC5A7
-	for <qemu-arm@archiver.kernel.org>; Mon, 22 Sep 2025 09:44:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65FF8CAC5A7
+	for <qemu-arm@archiver.kernel.org>; Mon, 22 Sep 2025 09:47:02 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v0d5v-0005xD-Uy; Mon, 22 Sep 2025 05:44:28 -0400
+	id 1v0d62-0006PB-U1; Mon, 22 Sep 2025 05:44:35 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1v0d55-0005O1-Ft
- for qemu-arm@nongnu.org; Mon, 22 Sep 2025 05:43:37 -0400
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+ id 1v0d5H-0005YJ-Ib
+ for qemu-arm@nongnu.org; Mon, 22 Sep 2025 05:43:47 -0400
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1v0d4p-00020O-6c
- for qemu-arm@nongnu.org; Mon, 22 Sep 2025 05:43:35 -0400
-Received: by mail-wr1-x42d.google.com with SMTP id
- ffacd0b85a97d-3ee64bc6b90so1894301f8f.0
+ id 1v0d4r-00021A-Ds
+ for qemu-arm@nongnu.org; Mon, 22 Sep 2025 05:43:47 -0400
+Received: by mail-wm1-x32a.google.com with SMTP id
+ 5b1f17b1804b1-45f2b062b86so26951915e9.1
  for <qemu-arm@nongnu.org>; Mon, 22 Sep 2025 02:43:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1758534196; x=1759138996; darn=nongnu.org;
+ d=linaro.org; s=google; t=1758534197; x=1759138997; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Xka3pneMH2qFxqRVxyDw79VsTx+gMXoNji+Y4GSMTqs=;
- b=tEyTOQfbIqxEBM68XpojlbCSsx5xe383/w1q5GxhNL1kmVFswctE1z/JUYMuuyl8HA
- PovVGMNtb9evrn4TVV2YvPsZPkjXQNvKVR9RaTlOGheaV87mWa+hY+dFpGgXI+jCpusV
- bZlb0YDqO7EL7ZvTXKc3fdYi+hDCzwkjUbI5uuBU/dt0SJ/Bvy8DJyTVdJY8nLd+t6iw
- /vTbmIAIXujUuN5bNKOkT8fgLilygFAkOUgBPs7dH7dy+t/KIWrt96MYTVOlayfRj2F0
- /RCWSDKLzUFHr6FCTVTwWQeoLfo4FMiyumcD4QB/IjxQ6uhXvfYrsl0K8UJmvO2WFABg
- SMpg==
+ bh=30/Sw7/xAd9JXNBC4JguewcrlL8rhREEZz71xctzWtw=;
+ b=K8PYXxe96pRYX8Fcz/B4YzSUpoJtA+WLySxAmEP6sP1DPYIhhGCfqrK3/pJyh3+GuF
+ awKaGNzdBaoCk9RS9IqjsjNCY0SfS3M7b1j4Fs6BKmq6ob+XxagwWL3TPlRMTjOID9WU
+ MvlMOf7PwPGTb6vnqnx3KCg1b0KwFJmj0TUS/Ot2aZVgXH37fDSyAFbPYC6XFC4o6Qz6
+ WovH1MO/o6qK9C1apJiLpkfRJBvg9bWNQGsIVWm6G/rBpDvnf4qMb1ygfZ7HVKKXf5uf
+ lU+M8lviXif+z5npSVH2rLHVKFY9P4J9UmOv5HQcxIZI8x/TMl0cJTE2KkEqZJjvsnuN
+ w4iQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1758534196; x=1759138996;
+ d=1e100.net; s=20230601; t=1758534197; x=1759138997;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=Xka3pneMH2qFxqRVxyDw79VsTx+gMXoNji+Y4GSMTqs=;
- b=Rej7evSdrJ1Mkk7KGrQFvfbhQNj0xXiBPv+miUWaD7QxhA5Oxg01rHEB703ejD/BmE
- qE+FyIKbU/AIXsasRoX8ZfYJMV8iZTxT9QDvM1HJ1+h71P2HlaKQSD5x9X2IdmPfM6Sw
- sxHBu5yXnMzlgIcykdxro2+7CpWr/2IJNnRspuQInmVCYOM6sVvRWOJIizXumuwutTzj
- IIokGYEJAvBodvmIJw/L5o+dJDLwkv4UQYKOTYn4q27K3bTWmEq8gn1cJSxcklsy63NJ
- PMzWwGBYkGAaQ8DKFL+28ATRgA3f8C6W0IpU/daGWzLi5qq0Re4aVjJWvkxAp3UvpTq8
- wY0A==
+ bh=30/Sw7/xAd9JXNBC4JguewcrlL8rhREEZz71xctzWtw=;
+ b=qEAT6+Er8wypbCCm+aAFX5vRyk3dt3/syaCb9eDok/cy3BSJffrVWvQscm4+npNMPj
+ HCUPLK6x+jSnWP7j06Ua8OmfDqjrMJsxvfIAnoYPPDbeWB8gRnlnz0rZWPAvPNWxYnxv
+ LtxPWZT9gxPg6YPEK3gcbC9VhQSMUTvOZuceAIQ2UXnsjNbvsbwOWFcCmUQ+wOgHH0wB
+ 7cTDc1wmqIOCPvP6SfXs8xPuy7nzVJHy5SnXxrggXjBWGMysa0+Z4y3DL/ntUy0cpbCE
+ XHtrRviUh+Yol6bNoVXiGiskDmjRY00xU5h4Iii7Tf2ypoe9N5mJEmz+ulNhv+F7//kU
+ L4tQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXudHeFkoY0d5A5LT6ObPNv43SHB0gXjmSGJ2DeeswnHIR71y3rO9wmlqmupqoP5DsgkFqH5+sOsg==@nongnu.org
-X-Gm-Message-State: AOJu0Ywyo56AfgDFACw6h1uYRYRKJHBEOZRP/Pg6xKrTfqE8XyIHOrXd
- ursNCJOFXjdIdIlMtUM57fuummpudSiyl0xDqjpn9oMYx8fxlILqZjfPg9Jr6WTWDoM=
-X-Gm-Gg: ASbGnctbYutEvX9iPEn3qIRnw0Y0FT3VxtX44Rr8iGwuLNrNyvEnvPUcwtTm4hJbkJw
- bUpj1XlAnrCDEIdApn8b0//0AVu7MtCbgCmGLnZRYYGd6Za3zHk2TAorItNHfvA6gRVn5gP8R/A
- 1w4vnoHPlq2QIqanEvVS5dBToQgCZDUuEYuhXAmAx6kGo6oOAmLnrBUISI8yhCvcWn10iWLbktU
- LPlLEWNBzwPRpnlZ04EjgrDc3I/Lz76cnpOSfwJrT0xo2jYN/GJ3F8rlqnkAZH/JSZyLATWHYoT
- DyBpZ3S/y8epBAjTdQhTkFB0ew4RLNNSFWmYp3q/TVbhBdUnBbO+e8CIftflym6dyrjjBolC2ZS
- fgAKnLZACBTCl5UI5dEIyhqA=
-X-Google-Smtp-Source: AGHT+IF9euK6P/jVSKmTMYqDnTu7Pa+8D/t3miko6mM1UHE+U/WgS/i4aGQZMAkNCSbkFIvJ9QqFQw==
-X-Received: by 2002:a5d:5d0b:0:b0:400:c7c0:52af with SMTP id
- ffacd0b85a97d-400c7c052d6mr1177801f8f.1.1758534195638; 
- Mon, 22 Sep 2025 02:43:15 -0700 (PDT)
+ AJvYcCVOPC0jqccZexBT57g7UAPD2CfIVgJBu8ZXun9QSmO9y+rQbHvLV0NA40LkSGECKTq4WkhR0xWynQ==@nongnu.org
+X-Gm-Message-State: AOJu0YzoE2mQFT9VzWaUF/mG6TClNnJgfDrpEQ9OQRVKfoKKl4MkDv3e
+ L31zXp3b9QcxFFYnaJrU4WbOjLfY8VF9WKhufl6umnZLHsePHsqKxQGvsfgn/4mfDH4=
+X-Gm-Gg: ASbGncvVvaI5gdwAFEPVggxXzeZ6B8qViOitFF6NuS+225eRrsw0W1HlIVElPhIB7Ma
+ exWaGjHAPjdt5FF5pJF8Wm1PwV2pll4EMk7kwKUzuSNmef3IKn1g1v8e4LbQCtfKJs2/cPOim9w
+ OTAEVSLmRVp0PywVyuvsbPEGrhI4w9BjwcxBIrAi0S9gIW5jRU/aAVbQG4CLFZMANUBQ6rryQcR
+ BOtzhet6CGwfnXcs1rMpa+is/MBiRH8wihAGfyycsM+91FBcavepPNP2MrC8Y+OHR2KgYVjjq15
+ D9XmTWjBe+pNYmPC5+nrWxJgrL1zuwatJgbziHXqke7mUtAt7/bu2zfAC4NSX+ccXnRvqSYKlj6
+ i+gsrESUca2suIpo0I43wTJk=
+X-Google-Smtp-Source: AGHT+IEr4H07owG+xBQBwEkJEDkgU6g+J+fTCesMM1MjRJs0OT/DRbC4Ba+MvUjyq+UGC2HTtIP2Tg==
+X-Received: by 2002:a05:600c:1c03:b0:46d:fe0b:d55a with SMTP id
+ 5b1f17b1804b1-46dfe0bd756mr11149635e9.33.1758534197144; 
+ Mon, 22 Sep 2025 02:43:17 -0700 (PDT)
 Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-464eadd7e11sm205573335e9.0.2025.09.22.02.43.11
+ ffacd0b85a97d-3ee07407d33sm19370945f8f.18.2025.09.22.02.43.11
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
  Mon, 22 Sep 2025 02:43:14 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id B93785FA5C;
+ by draig.lan (Postfix) with ESMTP id EBA335FA6C;
  Mon, 22 Sep 2025 10:37:13 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -81,17 +81,17 @@ Cc: Palmer Dabbelt <palmer@dabbelt.com>, Alexandre Iooss <erdnaxe@crans.org>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>,
  Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
  Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-Subject: [PATCH 23/25] contrib/plugins/uftrace: implement x64 support
-Date: Mon, 22 Sep 2025 10:37:08 +0100
-Message-ID: <20250922093711.2768983-24-alex.bennee@linaro.org>
+Subject: [PATCH 25/25] contrib/plugins/uftrace: add documentation
+Date: Mon, 22 Sep 2025 10:37:10 +0100
+Message-ID: <20250922093711.2768983-26-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20250922093711.2768983-1-alex.bennee@linaro.org>
 References: <20250922093711.2768983-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
- envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x42d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -116,128 +116,229 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 
-It's trivial to implement x64 support, as it's the same stack layout
-as aarch64.
+This documentation summarizes how to use the plugin, and present two
+examples of the possibilities offered by it, in system and user mode.
+
+As well, it explains how to rebuild and reproduce those examples.
 
 Reviewed-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Message-ID: <20250902075042.223990-8-pierrick.bouvier@linaro.org>
+Message-ID: <20250902075042.223990-10-pierrick.bouvier@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- contrib/plugins/uftrace.c | 86 +++++++++++++++++++++++++++++++++++++++
- 1 file changed, 86 insertions(+)
+ docs/about/emulation.rst | 199 +++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 199 insertions(+)
 
-diff --git a/contrib/plugins/uftrace.c b/contrib/plugins/uftrace.c
-index 2386cc723bc..b7d6124d2f5 100644
---- a/contrib/plugins/uftrace.c
-+++ b/contrib/plugins/uftrace.c
-@@ -82,6 +82,21 @@ typedef struct {
-     struct qemu_plugin_register *reg_scr_el3;
- } Aarch64Cpu;
+diff --git a/docs/about/emulation.rst b/docs/about/emulation.rst
+index 456d01d5b08..8a5e128f677 100644
+--- a/docs/about/emulation.rst
++++ b/docs/about/emulation.rst
+@@ -816,6 +816,205 @@ This plugin can limit the number of Instructions Per Second that are executed::
+       The lower the number the more accurate time will be, but the less efficient the plugin.
+       Defaults to ips/10
  
-+typedef enum {
-+    X64_RING0,
-+    X64_RING1,
-+    X64_RING2,
-+    X64_RING3,
-+    X64_REAL_MODE,
-+    X64_PRIVILEGE_LEVEL_MAX,
-+} X64PrivilegeLevel;
++Uftrace
++.......
 +
-+typedef struct {
-+    struct qemu_plugin_register *reg_rbp;
-+    struct qemu_plugin_register *reg_cs;
-+    struct qemu_plugin_register *reg_cr0;
-+} X64Cpu;
++``contrib/plugins/uftrace.c``
 +
- typedef struct {
-     uint64_t timestamp;
-     uint64_t data;
-@@ -570,6 +585,75 @@ static CpuOps aarch64_ops = {
-     .does_insn_modify_frame_pointer = aarch64_does_insn_modify_frame_pointer,
- };
++This plugin generates a binary trace compatible with
++`uftrace <https://github.com/namhyung/uftrace>`_.
++
++Plugin supports aarch64 and x64, and works in user and system mode, allowing to
++trace a system boot, which is not something possible usually.
++
++In user mode, the memory mapping is directly copied from ``/proc/self/maps`` at
++the end of execution. Uftrace should be able to retrieve symbols by itself,
++without any additional step.
++In system mode, the default memory mapping is empty, and you can generate
++one (and associated symbols) using ``contrib/plugins/uftrace_symbols.py``.
++Symbols must be present in ELF binaries.
++
++It tracks the call stack (based on frame pointer analysis). Thus, your program
++and its dependencies must be compiled using ``-fno-omit-frame-pointer
++-mno-omit-leaf-frame-pointer``. In 2024, `Ubuntu and Fedora enabled it by
++default again on x64
++<https://www.brendangregg.com/blog/2024-03-17/the-return-of-the-frame-pointers.html>`_.
++On aarch64, this is less of a problem, as they are usually part of the ABI,
++except for leaf functions. That's true for user space applications, but not
++necessarily for bare metal code. You can read this `section
++<uftrace_build_system_example>` to easily build a system with frame pointers.
++
++When tracing long scenarios (> 1 min), the generated trace can become very long,
++making it hard to extract data from it. In this case, a simple solution is to
++trace execution while generating a timestamped output log using
++``qemu-system-aarch64 ... | ts "%s"``. Then, ``uftrace --time-range=start~end``
++can be used to reduce trace for only this part of execution.
++
++Performance wise, overhead compared to normal tcg execution is around x5-x15.
++
++.. list-table:: Uftrace plugin arguments
++  :widths: 20 80
++  :header-rows: 1
++
++  * - Option
++    - Description
++  * - trace-privilege-level=[on|off]
++    - Generate separate traces for each privilege level (Exception Level +
++      Security State on aarch64, Rings on x64).
++
++.. list-table:: uftrace_symbols.py arguments
++  :widths: 20 80
++  :header-rows: 1
++
++  * - Option
++    - Description
++  * - elf_file [elf_file ...]
++    - path to an ELF file. Use /path/to/file:0xdeadbeef to add a mapping offset.
++  * - --prefix-symbols
++    - prepend binary name to symbols
++
++Example user trace
++++++++++++++++++++
++
++As an example, we can trace qemu itself running git::
++
++    $ ./build/qemu-aarch64 -plugin \
++      build/contrib/plugins/libuftrace.so \
++      ./build/qemu-aarch64 /usr/bin/git --help
++
++    # and generate a chrome trace directly
++    $ uftrace dump --chrome | gzip > ~/qemu_aarch64_git_help.json.gz
++
++For convenience, you can download this trace `qemu_aarch64_git_help.json.gz
++<https://fileserver.linaro.org/s/N8X8fnZ5yGRZLsT/download/qemu_aarch64_git_help.json.gz>`_.
++Download it and open this trace on https://ui.perfetto.dev/. You can zoom in/out
++using :kbd:`W`, :kbd:`A`, :kbd:`S`, :kbd:`D` keys.
++Some sequences taken from this trace:
++
++- Loading program and its interpreter
++
++.. image:: https://fileserver.linaro.org/s/fie8JgX76yyL5cq/preview
++   :height: 200px
++
++- open syscall
++
++.. image:: https://fileserver.linaro.org/s/rsXPTeZZPza4PcE/preview
++   :height: 200px
++
++- TB creation
++
++.. image:: https://fileserver.linaro.org/s/GXY6NKMw5EeRCew/preview
++   :height: 200px
++
++It's usually better to use ``uftrace record`` directly. However, tracing
++binaries through qemu-user can be convenient when you don't want to recompile
++them (``uftrace record`` requires instrumentation), as long as symbols are
++present.
++
++Example system trace
++++++++++++++++++++++
++
++A full trace example (chrome trace, from instructions below) generated from a
++system boot can be found `here
++<https://fileserver.linaro.org/s/WsemLboPEzo24nw/download/aarch64_boot.json.gz>`_.
++Download it and open this trace on https://ui.perfetto.dev/. You can see code
++executed for all privilege levels, and zoom in/out using
++:kbd:`W`, :kbd:`A`, :kbd:`S`, :kbd:`D` keys. You can find below some sequences
++taken from this trace:
++
++- Two first stages of boot sequence in Arm Trusted Firmware (EL3 and S-EL1)
++
++.. image:: https://fileserver.linaro.org/s/kkxBS552W7nYESX/preview
++   :height: 200px
++
++- U-boot initialization (until code relocation, after which we can't track it)
++
++.. image:: https://fileserver.linaro.org/s/LKTgsXNZFi5GFNC/preview
++   :height: 200px
++
++- Stat and open syscalls in kernel
++
++.. image:: https://fileserver.linaro.org/s/dXe4MfraKg2F476/preview
++   :height: 200px
++
++- Timer interrupt
++
++.. image:: https://fileserver.linaro.org/s/TM5yobYzJtP7P3C/preview
++   :height: 200px
++
++- Poweroff sequence (from kernel back to firmware, NS-EL2 to EL3)
++
++.. image:: https://fileserver.linaro.org/s/oR2PtyGKJrqnfRf/preview
++   :height: 200px
++
++Build and run system example
++++++++++++++++++++++++++++++
++
++.. _uftrace_build_system_example:
++
++Building a full system image with frame pointers is not trivial.
++
++We provide a `simple way <https://github.com/pbo-linaro/qemu-linux-stack>`_ to
++build an aarch64 system, combining Arm Trusted firmware, U-boot, Linux kernel
++and debian userland. It's based on containers (``podman`` only) and
++``qemu-user-static (binfmt)`` to make sure it's easily reproducible and does not depend
++on machine where you build it.
++
++You can follow the exact same instructions for a x64 system, combining edk2,
++Linux, and Ubuntu, simply by switching to
++`x86_64 <https://github.com/pbo-linaro/qemu-linux-stack/tree/x86_64>`_ branch.
++
++To build the system::
++
++    # Install dependencies
++    $ sudo apt install -y podman qemu-user-static
++
++    $ git clone https://github.com/pbo-linaro/qemu-linux-stack
++    $ cd qemu-linux-stack
++    $ ./build.sh
++
++    # system can be started using:
++    $ ./run.sh /path/to/qemu-system-aarch64
++
++To generate a uftrace for a system boot from that::
++
++    # run true and poweroff the system
++    $ env INIT=true ./run.sh path/to/qemu-system-aarch64 \
++      -plugin path/to/contrib/plugins/libuftrace.so,trace-privilege-level=on
++
++    # generate symbols and memory mapping
++    $ path/to/contrib/plugins/uftrace_symbols.py \
++      --prefix-symbols \
++      arm-trusted-firmware/build/qemu/debug/bl1/bl1.elf \
++      arm-trusted-firmware/build/qemu/debug/bl2/bl2.elf \
++      arm-trusted-firmware/build/qemu/debug/bl31/bl31.elf \
++      u-boot/u-boot:0x60000000 \
++      linux/vmlinux
++
++    # inspect trace with
++    $ uftrace replay
++
++Uftrace allows to filter the trace, and dump flamegraphs, or a chrome trace.
++This last one is very interesting to see visually the boot process::
++
++    $ uftrace dump --chrome > boot.json
++    # Open your browser, and load boot.json on https://ui.perfetto.dev/.
++
++Long visual chrome traces can't be easily opened, thus, it might be
++interesting to generate them around a particular point of execution::
++
++    # execute qemu and timestamp output log
++    $ env INIT=true ./run.sh path/to/qemu-system-aarch64 \
++      -plugin path/to/contrib/plugins/libuftrace.so,trace-privilege-level=on |&
++      ts "%s" | tee exec.log
++
++    $ cat exec.log  | grep 'Run /init'
++      1753122320 [   11.834391] Run /init as init process
++      # init was launched at 1753122320
++
++    # generate trace around init execution (2 seconds):
++    $ uftrace dump --chrome --time-range=1753122320~1753122322 > init.json
++
+ Other emulation features
+ ------------------------
  
-+static uint8_t x64_num_privilege_levels(void)
-+{
-+    return X64_PRIVILEGE_LEVEL_MAX;
-+}
-+
-+static const char *x64_get_privilege_level_name(uint8_t pl)
-+{
-+    switch (pl) {
-+    case X64_RING0: return "Ring0";
-+    case X64_RING1: return "Ring1";
-+    case X64_RING2: return "Ring2";
-+    case X64_RING3: return "Ring3";
-+    case X64_REAL_MODE: return "RealMode";
-+    default:
-+        g_assert_not_reached();
-+    }
-+}
-+
-+static uint8_t x64_get_privilege_level(Cpu *cpu_)
-+{
-+    X64Cpu *cpu = cpu_->arch;
-+    uint64_t cr0 = cpu_read_register64(cpu_, cpu->reg_cr0);
-+    uint64_t protected_mode = (cr0 >> 0) & 0b1;
-+    if (!protected_mode) {
-+        return X64_REAL_MODE;
-+    }
-+    uint32_t cs = cpu_read_register32(cpu_, cpu->reg_cs);
-+    uint32_t ring_level = (cs >> 0) & 0b11;
-+    return ring_level;
-+}
-+
-+static uint64_t x64_get_frame_pointer(Cpu *cpu_)
-+{
-+    X64Cpu *cpu = cpu_->arch;
-+    return cpu_read_register64(cpu_, cpu->reg_rbp);
-+}
-+
-+static void x64_init(Cpu *cpu_)
-+{
-+    X64Cpu *cpu = g_new0(X64Cpu, 1);
-+    cpu_->arch = cpu;
-+    cpu->reg_rbp = plugin_find_register("rbp");
-+    g_assert(cpu->reg_rbp);
-+    cpu->reg_cs = plugin_find_register("cs");
-+    g_assert(cpu->reg_cs);
-+    cpu->reg_cr0 = plugin_find_register("cr0");
-+    g_assert(cpu->reg_cr0);
-+}
-+
-+static void x64_end(Cpu *cpu)
-+{
-+    g_free(cpu->arch);
-+}
-+
-+static bool x64_does_insn_modify_frame_pointer(const char *disas)
-+{
-+    return strstr(disas, "rbp");
-+}
-+
-+static CpuOps x64_ops = {
-+    .init = x64_init,
-+    .end = x64_end,
-+    .get_frame_pointer = x64_get_frame_pointer,
-+    .get_privilege_level = x64_get_privilege_level,
-+    .num_privilege_levels = x64_num_privilege_levels,
-+    .get_privilege_level_name = x64_get_privilege_level_name,
-+    .does_insn_modify_frame_pointer = x64_does_insn_modify_frame_pointer,
-+};
-+
- static void track_privilege_change(unsigned int cpu_index, void *udata)
- {
-     Cpu *cpu = qemu_plugin_scoreboard_find(score, cpu_index);
-@@ -777,6 +861,8 @@ QEMU_PLUGIN_EXPORT int qemu_plugin_install(qemu_plugin_id_t id,
- 
-     if (!strcmp(info->target_name, "aarch64")) {
-         arch_ops = aarch64_ops;
-+    } else if (!strcmp(info->target_name, "x86_64")) {
-+        arch_ops = x64_ops;
-     } else {
-         fprintf(stderr, "plugin uftrace: %s target is not supported\n",
-                 info->target_name);
 -- 
 2.47.3
 

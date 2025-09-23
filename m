@@ -4,86 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75CA0CAC5A5
-	for <qemu-arm@archiver.kernel.org>; Tue, 23 Sep 2025 17:59:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA1C7CAC5A5
+	for <qemu-arm@archiver.kernel.org>; Tue, 23 Sep 2025 20:09:25 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v17HD-0003YF-SS; Tue, 23 Sep 2025 13:58:07 -0400
+	id 1v19Jx-0004ca-RT; Tue, 23 Sep 2025 16:09:07 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1v17HC-0003Xp-Cl
- for qemu-arm@nongnu.org; Tue, 23 Sep 2025 13:58:06 -0400
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1v19Jg-0004YO-H2
+ for qemu-arm@nongnu.org; Tue, 23 Sep 2025 16:08:51 -0400
+Received: from mail-pg1-x532.google.com ([2607:f8b0:4864:20::532])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1v17H8-00033O-DT
- for qemu-arm@nongnu.org; Tue, 23 Sep 2025 13:58:05 -0400
-Received: by mail-wr1-x42f.google.com with SMTP id
- ffacd0b85a97d-3ee12807d97so5138041f8f.0
- for <qemu-arm@nongnu.org>; Tue, 23 Sep 2025 10:58:01 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1v19Jb-0005oC-Ku
+ for qemu-arm@nongnu.org; Tue, 23 Sep 2025 16:08:45 -0400
+Received: by mail-pg1-x532.google.com with SMTP id
+ 41be03b00d2f7-b54a74f9150so4462781a12.0
+ for <qemu-arm@nongnu.org>; Tue, 23 Sep 2025 13:08:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1758650280; x=1759255080; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=BW5jVmojF7BTekEQU23zqKenHHzqa5Btf2NwoKDIct4=;
- b=Tn5Ch5PnPf1gDLD1/6pH8X9082XKI907Ma1evTEGht2BVMg8grE+vHe1OZiuVH8cuP
- mW+m/vibcQX4FSjMCO7Gx3VClHRLkLY72JFomUK/eVenGoFLxcKa42/EAaK3MKDEMeyI
- i7jYktP0eLb4SeCuOZDJc1ZXoTNjLq1kprD7cmI2x/XpeCvfb3eHvYHPhyxAjycrOtQR
- 00JvP+RrW94nvMR4zjLTqD8exJPwx1vuPR5iXbqqPwo+quTaINC5NZNOTTcfweOC0SZo
- Fi0z44uQRMtduRSSu2qoWvUn8axVCQkkHeKyinuQ3mPHNUubdedZU14FT/2fIqrR9tCF
- 6kPQ==
+ d=linaro.org; s=google; t=1758658121; x=1759262921; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:to:subject:user-agent:mime-version:date:message-id:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=L+A870irlUyzIlTjkl7PKvI9+jV2CUJnu1PK217zi+M=;
+ b=dRSeQlnPEDEwPgWwDg5F7g4LwNKZuEwnYEtOliE7USLB0jOEG0gqUoIUEL5QjQZwet
+ QPK25CQtJWpchUsRXF8o7pZxxXYM89aE953Rak2wwSdjGLL2AwI3er0+xwcD3SQ+7F9X
+ lr2IAFL+c9KacWsdojuLqfgL4XdKtN3rBqzlNyNS/zUBhnpARz36LheOpSBvk1N6y2ic
+ eobtuhATxQs8F5qRSaZjd1st1FevXneO+gkDKaysx2wrmUeVYBbDgKldVJU4zzrSqmr0
+ +rY4ufkJb9T77E8WKz4B4HooSwCDJI4FHOGBzsvDFcXR/Xhw43+TdmUdQRnsrzoAvLbs
+ TgYA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1758650280; x=1759255080;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=BW5jVmojF7BTekEQU23zqKenHHzqa5Btf2NwoKDIct4=;
- b=lHgQIQUM0wBSZ0M3ld+CustnfDpAf8yxHNELReTIIgPkePuCLHm8nydLdChYw78Yn8
- +8U/We9gIFVQExAvSGSOzpIZGi3+F4PrKUeIUhT+9CW5B1zeUDc3ZbLTiZbpHWMwebwc
- YdnNRpLa2198ZaZpcRNGic5Q8PesbP6CbM0ZbpeFQhyK6UvUNQPw1FknUuyzmAg+4JmU
- QteVS1f8BKhksbDjFO2wd0xAnifaSv5dQW8otdJLoCKzw1MUnT/THst8F8Cb8Yxyukiu
- oMIi1zgM01wvSOwFvnr/kjKJZuDsPDWglzytkvr7T0bquSdoM1EVDZpGRPYiPkWHuxpJ
- s1Aw==
-X-Gm-Message-State: AOJu0Yz1zCemWjE/bZVFBL1Qorx0kJnH3QR1H67fvaShSNbWGxJxhimc
- xV2Qx8JhftYmN6RK69c8M7HfnOk6dsuyNQRrYkdrBWFB6yMFR/KU03RsIlIbOdmBQqS2Lo0nln3
- SMkNj
-X-Gm-Gg: ASbGncvuz38QfZr6JMqW9EqBiCC8/NtXozDb7ubBkZMApH0TbOWz+hIQH+GYXYctH4W
- NIJPN2zErIUr7LJM6RixX2GZgw2NXkRNdI/QnnGHMVJejnyBi5fSagLxHDK2JpM7WSInZpezEtH
- h/0ZsV/ewn1WfMbugJQqDpfmr5bHb6HuIxxKQjQ6XBCdL+v9JnFCcaiNBbQdmIyMP9Qu5YA0B9C
- FeEgeGX5A0u7mNEcnQZzeLuI5jvtI6BLVTOWnLJ33i5rJ/Z2Xon7bVGEpoEoKPiaSrZ38a5NpFW
- EU2WW2jsOSIwEMXpUax3fUhFma7FKt/f+deWVhyVFKijgikTrWdYtaWQO87xMdRIgWrY3iv48PV
- avMQX7SccqH2VM1CRT0Dw65HVZcOh
-X-Google-Smtp-Source: AGHT+IEu4dh2QD5E/jWeaaJq9bfDRd9SBgZlv+QJkCdUTo5Aleu4KwHJ/FfAw983hajWiV4GMKgygg==
-X-Received: by 2002:a05:6000:26cf:b0:3ee:1125:fb6d with SMTP id
- ffacd0b85a97d-405c49a2bf2mr2445224f8f.9.1758650279747; 
- Tue, 23 Sep 2025 10:57:59 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+ d=1e100.net; s=20230601; t=1758658121; x=1759262921;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=L+A870irlUyzIlTjkl7PKvI9+jV2CUJnu1PK217zi+M=;
+ b=MMZKkILdRMp7KT75TKcyqVUov+YjsPwqyLYUMCbZ2bbubLaVeS3ElaVClyzn3d5soK
+ 35QqHp8pkXsauFEt6hwdoblICEDrmYa7aZmTGSPCQ7+8TmfzL17VIG6T2Cj2v2VPOA0M
+ jSqc6VvfyrS65FYoooBxoGwrYdqQ3TcrT2zkVgMmNAq3kMgTB1xnsnt0igRdn/D70WpS
+ HHP7gmfOW7RPIphePIOilUy2U0Qu1A8rNgdWxQKpc84cKosxuZORG5E5wHo62TvWMPVf
+ nC6LPDF4hsqoYsKpkmNEt3xdSIWPCs5cQubExaDckUIj6V1G/ppZU+T9CjNWwXDe+ToC
+ 1eng==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCW1jG+UD/dz1FKhFiLrNItQuO7qVfxLrqm2goPrf7zENxeJ4b4oqfTB09SSfsMCJ2N3RB34ap0yMw==@nongnu.org
+X-Gm-Message-State: AOJu0YxBhaD6ESZndZ8jSBnT4zaa1SyP5rugrvvAvk0B2obmQrZ0fkZX
+ Lc1GS8YOea0DDXlkuF0uA7bHFxBAUv4tyIYcCl2By2St2DOsKY+VQNzvwie/a21JQ+A=
+X-Gm-Gg: ASbGncswi2Ydb1uQEUjW6ynOD9xhN+DyKppX0nWGMWQAC3mKeO/uOyNeFuP5X5bCg96
+ FFc/Apn++NbFLa0UjlBGPyeOGgITq2iNw/ktHIsHXlI+3xI/kNi5duP/K5Cwp5o9nXf2v9uDode
+ sQaL8OgAK/gf308wwAUXorL/hqkIXBnv3kOKQZOJla+dKQsrC/IGykmIv7L7prY5+SkrFCWKvbn
+ tlauNXqQ5FLRRrCVnuEvmoD2qdcTDGiKjQR3I3vv5vH11PCKYIN4m8p0f8fsjrbkgTThi7moUuK
+ E/hbftj7Rtf9MGA5iyuZ2PZ1+z+Z4o1smSrG7yp9fDLCFpLJd4FpufeHiAx2A2Be200aI9lCLIe
+ NpUrosLYotfuLOgfJImiJBj4OH9kM7UyRTGgw
+X-Google-Smtp-Source: AGHT+IFGJ4d2E0v3lW32Kclb1pxxEn7rcJk0mlGTWRriQWqKSlqObk7D+mf2fjZIJV7b0jkzS/7OnQ==
+X-Received: by 2002:a17:902:e88b:b0:276:305b:14a7 with SMTP id
+ d9443c01a7336-27cc5a06cfbmr48977945ad.33.1758658120852; 
+ Tue, 23 Sep 2025 13:08:40 -0700 (PDT)
+Received: from [192.168.0.4] ([71.212.157.132])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-46d1c97a87csm97657155e9.20.2025.09.23.10.57.57
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 23 Sep 2025 10:57:57 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH v2 2/2] target/arm: Implement ID_AA64PFR2_EL1
-Date: Tue, 23 Sep 2025 18:57:51 +0100
-Message-ID: <20250923175751.966795-3-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250923175751.966795-1-peter.maydell@linaro.org>
-References: <20250923175751.966795-1-peter.maydell@linaro.org>
+ d9443c01a7336-26980053dc8sm171070535ad.13.2025.09.23.13.08.40
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 23 Sep 2025 13:08:40 -0700 (PDT)
+Message-ID: <ea5c9843-527a-410c-9c7d-12f3a5264f9e@linaro.org>
+Date: Tue, 23 Sep 2025 13:08:38 -0700
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42f.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 0/2] target/arm: Implement ID_AA64PFR2_EL1
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20250923175751.966795-1-peter.maydell@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Content-Language: en-US
+In-Reply-To: <20250923175751.966795-1-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::532;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x532.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -99,115 +103,40 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Currently we define the ID_AA64PFR2_EL1 encoding as reserved (with
-the required RAZ behaviour for unassigned system registers in the ID
-register encoding space).  Newer architecture versions start to
-define fields in this ID register, so define the appropriate
-constants and implement it as an ID register backed by a field in
-cpu->isar.  Since none of our CPUs set that isar field to non-zero,
-there is no behavioural change here (other than the name exposed to
-the user via the gdbstub), but this paves the way for implementing
-the new features that use fields in this register.
+On 9/23/25 10:57, Peter Maydell wrote:
+> The ID register ID_AA64PFR2_EL1 is in the space previously reserved
+> in the system register ID space, but recent versions of the
+> architecture have started to define fields in it to advertise the
+> presence of new architectural features. We don't implement any
+> of those new features yet, but will need to do so at some point.
+> (Notably, the GICv5 EAC spec defines a field in this register
+> to advertise the GICv5 CPU interface.)
+> 
+> This patchset gives ID_AA64PFR2_EL1 a backing field in the CPU
+> ID regs struct, defines the field names, and reads it from KVM if
+> it's present there. The only visible behaviour change is the
+> name we present to the user via the gdbstub.
+> 
+> Commit 1 is a code movement one to clear some more stuff out
+> of cpu.h that doesn't need to be there; it's mostly because of that
+> that I'm sending this patchset rather than holding on to it until
+> I have some GICv5 patches ready to send.
+> 
+> (Compare commit f7ddd7b6a1f90c from last year which added the
+> ID_AA64MMFR3_EL1 register.)
+> 
+> v2 here is just a rebase which updates the patchset to handle
+> the new array-based storage we're using for ID register values.
+> 
+> thanks
+> -- PMM
+> 
+> Peter Maydell (2):
+>    target/arm: Move ID register field defs to cpu-features.h
+>    target/arm: Implement ID_AA64PFR2_EL1
+> 
 
-The fields here are the ones documented in rev L.b of the Arm ARM.
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- target/arm/cpu-features.h    | 5 +++++
- target/arm/cpu-sysregs.h.inc | 1 +
- target/arm/helper.c          | 6 ++++--
- target/arm/hvf/hvf.c         | 2 ++
- target/arm/kvm.c             | 1 +
- 5 files changed, 13 insertions(+), 2 deletions(-)
-
-diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
-index ad571e2ffee..602f6a88e53 100644
---- a/target/arm/cpu-features.h
-+++ b/target/arm/cpu-features.h
-@@ -277,6 +277,11 @@ FIELD(ID_AA64PFR1, MTEX, 52, 4)
- FIELD(ID_AA64PFR1, DF2, 56, 4)
- FIELD(ID_AA64PFR1, PFAR, 60, 4)
- 
-+FIELD(ID_AA64PFR2, MTEPERM, 0, 4)
-+FIELD(ID_AA64PFR2, MTESTOREONLY, 4, 4)
-+FIELD(ID_AA64PFR2, MTEFAR, 8, 4)
-+FIELD(ID_AA64PFR2, FPMR, 32, 4)
-+
- FIELD(ID_AA64MMFR0, PARANGE, 0, 4)
- FIELD(ID_AA64MMFR0, ASIDBITS, 4, 4)
- FIELD(ID_AA64MMFR0, BIGEND, 8, 4)
-diff --git a/target/arm/cpu-sysregs.h.inc b/target/arm/cpu-sysregs.h.inc
-index f48a9daa7c1..2bb2861c623 100644
---- a/target/arm/cpu-sysregs.h.inc
-+++ b/target/arm/cpu-sysregs.h.inc
-@@ -1,6 +1,7 @@
- /* SPDX-License-Identifier: GPL-2.0-or-later */
- DEF(ID_AA64PFR0_EL1, 3, 0, 0, 4, 0)
- DEF(ID_AA64PFR1_EL1, 3, 0, 0, 4, 1)
-+DEF(ID_AA64PFR2_EL1, 3, 0, 0, 4, 2)
- DEF(ID_AA64SMFR0_EL1, 3, 0, 0, 4, 5)
- DEF(ID_AA64DFR0_EL1, 3, 0, 0, 5, 0)
- DEF(ID_AA64DFR1_EL1, 3, 0, 0, 5, 1)
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index c44294711f8..258cda4e90e 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -6278,11 +6278,11 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-               .access = PL1_R, .type = ARM_CP_CONST,
-               .accessfn = access_aa64_tid3,
-               .resetvalue = GET_IDREG(isar, ID_AA64PFR1)},
--            { .name = "ID_AA64PFR2_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-+            { .name = "ID_AA64PFR2_EL1", .state = ARM_CP_STATE_AA64,
-               .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 4, .opc2 = 2,
-               .access = PL1_R, .type = ARM_CP_CONST,
-               .accessfn = access_aa64_tid3,
--              .resetvalue = 0 },
-+              .resetvalue = GET_IDREG(isar, ID_AA64PFR2)},
-             { .name = "ID_AA64PFR3_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-               .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 4, .opc2 = 3,
-               .access = PL1_R, .type = ARM_CP_CONST,
-@@ -6510,6 +6510,8 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-                                R_ID_AA64PFR1_SSBS_MASK |
-                                R_ID_AA64PFR1_MTE_MASK |
-                                R_ID_AA64PFR1_SME_MASK },
-+            { .name = "ID_AA64PFR2_EL1",
-+              .exported_bits = 0 },
-             { .name = "ID_AA64PFR*_EL1_RESERVED",
-               .is_glob = true },
-             { .name = "ID_AA64ZFR0_EL1",
-diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index b77db99079e..90e438e4e16 100644
---- a/target/arm/hvf/hvf.c
-+++ b/target/arm/hvf/hvf.c
-@@ -495,6 +495,7 @@ static struct hvf_sreg_match hvf_sreg_match[] = {
-     { HV_SYS_REG_ID_AA64PFR0_EL1, HVF_SYSREG(0, 4, 3, 0, 0) },
- #endif
-     { HV_SYS_REG_ID_AA64PFR1_EL1, HVF_SYSREG(0, 4, 3, 0, 1) },
-+    /* Add ID_AA64PFR2_EL1 here when HVF supports it */
-     { HV_SYS_REG_ID_AA64DFR0_EL1, HVF_SYSREG(0, 5, 3, 0, 0) },
-     { HV_SYS_REG_ID_AA64DFR1_EL1, HVF_SYSREG(0, 5, 3, 0, 1) },
-     { HV_SYS_REG_ID_AA64ISAR0_EL1, HVF_SYSREG(0, 6, 3, 0, 0) },
-@@ -869,6 +870,7 @@ static bool hvf_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
-     } regs[] = {
-         { HV_SYS_REG_ID_AA64PFR0_EL1, &host_isar.idregs[ID_AA64PFR0_EL1_IDX] },
-         { HV_SYS_REG_ID_AA64PFR1_EL1, &host_isar.idregs[ID_AA64PFR1_EL1_IDX] },
-+        /* Add ID_AA64PFR2_EL1 here when HVF supports it */
-         { HV_SYS_REG_ID_AA64DFR0_EL1, &host_isar.idregs[ID_AA64DFR0_EL1_IDX] },
-         { HV_SYS_REG_ID_AA64DFR1_EL1, &host_isar.idregs[ID_AA64DFR1_EL1_IDX] },
-         { HV_SYS_REG_ID_AA64ISAR0_EL1, &host_isar.idregs[ID_AA64ISAR0_EL1_IDX] },
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index c1ec6654ca6..65a262529a7 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -324,6 +324,7 @@ static bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
-         err = 0;
-     } else {
-         err |= get_host_cpu_reg(fd, ahcf, ID_AA64PFR1_EL1_IDX);
-+        err |= get_host_cpu_reg(fd, ahcf, ID_AA64PFR2_EL1_IDX);
-         err |= get_host_cpu_reg(fd, ahcf, ID_AA64SMFR0_EL1_IDX);
-         err |= get_host_cpu_reg(fd, ahcf, ID_AA64DFR0_EL1_IDX);
-         err |= get_host_cpu_reg(fd, ahcf, ID_AA64DFR1_EL1_IDX);
--- 
-2.43.0
-
+r~
 

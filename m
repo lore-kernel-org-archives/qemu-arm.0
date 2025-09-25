@@ -4,97 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46B89CAC5A5
-	for <qemu-arm@archiver.kernel.org>; Thu, 25 Sep 2025 02:57:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13CE1CAC5A5
+	for <qemu-arm@archiver.kernel.org>; Thu, 25 Sep 2025 03:22:41 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v1c96-0001yL-QA; Wed, 24 Sep 2025 22:55:48 -0400
+	id 1v1cYe-00008Y-AR; Wed, 24 Sep 2025 23:22:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v1c95-0001y4-VH
- for qemu-arm@nongnu.org; Wed, 24 Sep 2025 22:55:48 -0400
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v1cYc-00006p-JE
+ for qemu-arm@nongnu.org; Wed, 24 Sep 2025 23:22:10 -0400
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v1c8y-0002WC-Fu
- for qemu-arm@nongnu.org; Wed, 24 Sep 2025 22:55:47 -0400
-Received: by mail-wr1-x42e.google.com with SMTP id
- ffacd0b85a97d-3ee130237a8so310455f8f.0
- for <qemu-arm@nongnu.org>; Wed, 24 Sep 2025 19:55:40 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v1cYR-00088B-9z
+ for qemu-arm@nongnu.org; Wed, 24 Sep 2025 23:22:10 -0400
+Received: by mail-wr1-x433.google.com with SMTP id
+ ffacd0b85a97d-3f2ae6fadb4so425673f8f.1
+ for <qemu-arm@nongnu.org>; Wed, 24 Sep 2025 20:21:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1758768934; x=1759373734; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=GMSkQ8tS0Fq3QSh+vFnvslWSeFrUAxUcnptpA9cP+L4=;
- b=NXMwhVlA2jZsZhIoG/0DOBcr1eSNbEtKg/G9n9tZ4go3CtEqAXsL6RlOOHqcmfgquu
- mCFnSlhmdDUeD2RldT+Y4QcJGZgMbCXD76ivtTfwH3R714ZBrRrYrXMixcUfk2nzcSvC
- RRIUKhn8aj79U87S4Vl0QsbKFz37PBYtvB3U530nbvFvjyM+QO1VOIoOM3K1REDveWry
- Jbr3mNlV0DLPqpf3tU5zrcLInSmwmUIbYrd9hGlcrRDSWb3XWCrC5mwVBs7ZtoB5CYGL
- 45AI9LPgsI+Rgl+dSI9+R5OVHmqVLwGAEJimhJvHOndy4izNdEXMrPItDf420co6H4IX
- HinA==
+ d=linaro.org; s=google; t=1758770514; x=1759375314; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=Tnyi33IajyywLiwqk0hFaeDi2TC1JFPW7M4x0i1cEBo=;
+ b=HpmPvyzm2dtn6AQWFN/0K99bdczyjATZSFQkNwyxO2KSzhanDysVaTDuFDMNRB9fFa
+ l09xslzeiKrEaZlaxEBOHhb5qkKOPnKA8ajk4Ef4jZFaQzHl5YN7ZaIP4d8ogDGOIka/
+ Hu1LkTRQt7QmSfdC7NROYwYknzW/IN7H5AQuky+49/gCydZVpB7U1DjqOEPehoijA19M
+ t2RG33V0CxUb8oQKwH3uiibgnwCKSGYLfmV1tHQSPnRntDz6ROtMnBVdUsc0GMRHdLOj
+ 9omKBrbBoXAeEnqPYy8lSWQvJIBTW+uOLiDKc3bFZeosULkJL85ItSVGS0uXtLbCVQo4
+ 2QuQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1758768934; x=1759373734;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=GMSkQ8tS0Fq3QSh+vFnvslWSeFrUAxUcnptpA9cP+L4=;
- b=B2TyUTrLIDtLrgq4gfOjr+P6Cf5jorMPNlwu4AyOc5Scgv+OI6IO8A/bkyE+QxumK9
- CdicKMcvKm6k/4twMAZ53BANrQYK9+ZUQOkTlg2AFC8nrSN+qm0Yq+YT46NJyycQhksW
- tqtiFVDtdTRE+2caeOKeFQwCo5Sk7IFe9UBFLeByBtotdPyS26E3LiwIor2vqMLD4o/Z
- cB6X7AbLynw9E5sqYUAzRTcoYYXGKaUYE2TutZJjgC/A02cWXV4Dr0+NUojFf1EdyGIy
- iLokET9m6eKfy+xsXy93foVqcWX1RWcwO6lzY9oZEOgqC4btGt5ERYHiu0W+b77Lsxu8
- rROA==
+ d=1e100.net; s=20230601; t=1758770514; x=1759375314;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=Tnyi33IajyywLiwqk0hFaeDi2TC1JFPW7M4x0i1cEBo=;
+ b=R+I4jOe0daM5y0IXrNlN5Z6wLUo6KVFMHsmk//m1kD1ZzzSUzXx/M2+7zUkGY5Xzim
+ oi6ZkrJNgKj6/pY3izeIGWo+uEXsGStHey/suGiPpwIxQBZ3XS2IpCCxnSYTSQtK2Q96
+ ijJXQHD2TctZQpwy4cKsyUQulwkOnPzwDMa2uJ9xbs9PlAxhqLNnbr3oD+rI5EcMEt3I
+ XaXnMvF1s+iELtiT96+nbPw84+mn2ctz2l97isM/WwRSwY2DLUNJRUTpviwxjfABmjlV
+ HjUshMT62CL1ATKNMbG+2I/9VnqpCTR5tyUVduii5Bb0dTCaxepj8R5kWoTGtWAbtNyZ
+ 0+OQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWEzK7255J3W1xp2VF3CV+/HrYGOVe6rcLJrDjJFT+AtI3+rN146dtGcW5v85P10/eeLBONcDvBkQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yw28pFxd4Ugz5E1UK33W6LWyPilogeVuH2EYyDi7rM3pbFCPmto
- U1K8x5oRgYPG7f26ZH1yDSVFIwg3oBnlEaCnqTov0DYsFKun8t1pHerXRyhpiKBEoSo=
-X-Gm-Gg: ASbGncuYqKwMj1gEcxmw5UMjbXcXTGWfg6Ksd/Ib5YiBk07lDnrsHUi1+3k0m+oNwpj
- 19cbmmPxOoiJMSAiV6TdkShs+XyWzmF2/FU8BePIK2XCvx8daNJejAR7RTqPmRatNORjYdFmCpq
- Fu5i1z7UirpJaUDa9G1FWc103QgTugPEYDuH9bl/gjyFo3/N7TrFWX4/baLCkkfbvrb8yWL5ut7
- 7AI4spiy8MJwqbSbtxT+ma8BgZd/cmqJsMbdNgJOkZbtD5JnqJSVCUmArSlTzOQpT0Lfadparmd
- K6D95m25FQ6byXwDhnekQqTgLtGdEyg9519LUVT4rlC9vIkIsX7yTXlGcKVwe+POxy/ZGJ3MrSq
- uVsw+sImyU4g+TrFwHdev3WlULquIktB6Tgi7y69IAmYTXoan5sCR3HVGR2yTZJI8RxFPp+Qc
-X-Google-Smtp-Source: AGHT+IGUgr+uSOvWhJNgshrow4YUrsqarBBn7PfgQ8z4KuRBhxvHTHxpq90zU3j/a00h/1m/rIhrZQ==
-X-Received: by 2002:a05:6000:607:b0:3e7:451f:3a6e with SMTP id
- ffacd0b85a97d-40e4bff51d6mr1567732f8f.51.1758768934460; 
- Wed, 24 Sep 2025 19:55:34 -0700 (PDT)
+ AJvYcCWmtr/gCU2fvpopnaSn1GTaCkNzVmsghac5taIQoxJFpkkz1DXpsGqZiV10mzfm2PIYobO1ebb61Q==@nongnu.org
+X-Gm-Message-State: AOJu0YxKsRtUeBy5zvjzOgArdgD5HGhcEysTL4umSAA8u3Hj9DP2j+kq
+ /3owfJZz/unjmvPHnb32v40Tmo5PKYCgSpe2VkfdiA8MxBgHtB5OAbCk1u223tNn0LY=
+X-Gm-Gg: ASbGncvja8P+etoiNGvQKW5GYPXsJQ5WogrTmarjPS5NUBO8eEOJJTRmX/xrY/BAL5+
+ H0Zxw+tLjbEZKW4ly+84IzgrCwpG8f6x+8oANvWhuDQiMn5K0Ew8NFRCaYKn0Df0c5tuvt4SXV1
+ 2UQhykt3AO7DWrIuzSZctcicqcq5tB+45IGUITJcr1QuPrAPPoMicvmj4yRrVmp72gbkXtaSdKt
+ PzO98AOqn4+dTQONdkyCZnLmaqpEYwUkCYG1bK7Gz4NKWbdfPiNp6yr70p0HYB+ICG2LSnhFWaN
+ olaBrD7slxfJUpZ04PitKL6I6fKmI3awuiB/p5FGCLZvd9WYps1QeR7CjGnRV1zfRA2OdMEylhq
+ nBNDELinGlz4d5g1uSGuaNhnqvSF9r8WTB4QDGE5hpOYGaul95U+idwLdDAw0euZO/q3Xn6K0
+X-Google-Smtp-Source: AGHT+IG1qt9WN+89+sBmkYf0GKiCUK+sf3TrtT14E/eBdQnYlFnFut1WoaFROlUm9pDjnFeWRuL5Iw==
+X-Received: by 2002:a05:6000:25c3:b0:3b7:8da6:1bb4 with SMTP id
+ ffacd0b85a97d-40e4accc86fmr1646939f8f.58.1758770513688; 
+ Wed, 24 Sep 2025 20:21:53 -0700 (PDT)
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-40fb74e46bcsm939728f8f.8.2025.09.24.19.55.32
+ ffacd0b85a97d-40fac4a5e41sm1066296f8f.0.2025.09.24.20.21.51
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 24 Sep 2025 19:55:33 -0700 (PDT)
+ Wed, 24 Sep 2025 20:21:53 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: Phil Dennis-Jordan <phil@philjordan.eu>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Mads Ynddal <mads@ynddal.dk>, Alexander Graf <agraf@csgraf.de>,
- Cameron Esfahani <dirty@apple.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Roman Bolshakov <rbolshakov@ddn.com>,
- =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
- qemu-arm@nongnu.org, Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-Subject: [PATCH 2/4] cpus: Access CPUState::thread_kicked atomically
-Date: Thu, 25 Sep 2025 04:55:17 +0200
-Message-ID: <20250925025520.71805-3-philmd@linaro.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH] target/arm: Replace magic GIC values by proper definitions
+Date: Thu, 25 Sep 2025 05:21:51 +0200
+Message-ID: <20250925032151.73250-1-philmd@linaro.org>
 X-Mailer: git-send-email 2.51.0
-In-Reply-To: <20250925025520.71805-1-philmd@linaro.org>
-References: <20250925025520.71805-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::433;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x433.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -110,33 +98,36 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-cpus_kick_thread() is called via cpu_exit() -> qemu_cpu_kick(),
-and also via gdb_syscall_handling(). Access the CPUState field
-using atomic accesses. See commit 8ac2ca02744 ("accel: use atomic
-accesses for exit_request") for rationale.
+Prefer the FIELD_DP64() macro and self-describing GIC
+definitions over magic values.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- system/cpus.c | 4 ++--
+ target/arm/helper.c | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/system/cpus.c b/system/cpus.c
-index 6062226d4ac..818a8047198 100644
---- a/system/cpus.c
-+++ b/system/cpus.c
-@@ -480,10 +480,10 @@ void qemu_process_cpu_events(CPUState *cpu)
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index c44294711f8..da8aa7b9d08 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -5184,7 +5184,7 @@ static uint64_t id_pfr1_read(CPUARMState *env, const ARMCPRegInfo *ri)
+     uint64_t pfr1 = GET_IDREG(&cpu->isar, ID_PFR1);
  
- void cpus_kick_thread(CPUState *cpu)
- {
--    if (cpu->thread_kicked) {
-+    if (qatomic_read(&cpu->thread_kicked)) {
-         return;
+     if (env->gicv3state) {
+-        pfr1 |= 1 << 28;
++        pfr1 = FIELD_DP64(pfr1, ID_PFR1, GIC, 1);
      }
--    cpu->thread_kicked = true;
-+    qatomic_set(&cpu->thread_kicked, true);
+     return pfr1;
+ }
+@@ -5195,7 +5195,7 @@ static uint64_t id_aa64pfr0_read(CPUARMState *env, const ARMCPRegInfo *ri)
+     uint64_t pfr0 = GET_IDREG(&cpu->isar, ID_AA64PFR0);
  
- #ifndef _WIN32
-     int err = pthread_kill(cpu->thread->thread, SIG_IPI);
+     if (env->gicv3state) {
+-        pfr0 |= 1 << 24;
++        pfr0 = FIELD_DP64(pfr0, ID_AA64PFR0, GIC, 1);
+     }
+     return pfr0;
+ }
 -- 
 2.51.0
 

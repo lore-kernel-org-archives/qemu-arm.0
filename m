@@ -4,153 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F1A3CAC5B9
-	for <qemu-arm@archiver.kernel.org>; Thu, 25 Sep 2025 18:47:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E4F9CAC5B9
+	for <qemu-arm@archiver.kernel.org>; Thu, 25 Sep 2025 19:20:29 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v1qzh-0006iL-SA; Thu, 25 Sep 2025 14:47:06 -0400
+	id 1v1rVl-00045D-QC; Thu, 25 Sep 2025 15:20:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <Edgar.Iglesias@amd.com>)
- id 1v1qz2-0006Kv-4b; Thu, 25 Sep 2025 14:46:39 -0400
-Received: from mail-southcentralusazlp170130001.outbound.protection.outlook.com
- ([2a01:111:f403:c10c::1] helo=SA9PR02CU001.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <Edgar.Iglesias@amd.com>)
- id 1v1qyl-00013A-R3; Thu, 25 Sep 2025 14:46:21 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=NacvZe3/CbL9vr+9xOgeN8SsB68v9TP0HMoahrbTxkgiDswOGYapQn9StGD5YA4UL/lKWSa9qinwYXfr1sByjSp+QQK5mSjTnJ2m7TZ/ifnTfAVCbburWN2MjvLDi51HrMOX8hpcmygnoHjzOzG90B1hlua1QpwMEPLSXFK1WeKS/USmzoAvwlWpgtOrSegjI3NWX+JjjO4fczb3wzaCk0JEnDn5gHwp9Vme+xI3pY7r2dNIUzQrQOy4B8PYIK0rxoqdruYXlxwFxm/xgH7wLgQrV7TpI8zQxbLejCQb7BPFCzwtLb2/PWsABQxWl/f60gu5UtoU8x7WPRNxCMQZiQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=zOShE5Os+iIO4Tk9ZFekyU9iwBXUQ7v7S2bVe4xjDKw=;
- b=rvkjDwm284hic8nRGMrDWjBRbYYIRkfNGWkxwHW2Q+qSW94z/Dr5umKmgyTWHcj//xzZONJ/uTy1GbBXoFkxn5SMk9GBtXL5Hz2fU5ZP9MYXum0oQaTG0GZMI6yntDOhnWCQvkw4PRLZZbohDSeHPZYgutpIeWXhWS0NN98+E7X7PSwF2Ji4IOi8oQCc3Dbuor6eS2sgVSsXCTx258M8WNwp09K/edKPB5VhcUkFWCyhK/AGTow+YNcyd/07UpyxHJwE3W8g9FndHbWcSTiujtVYPF0Wj2Leh31z6iPGMuFG0YtIxq7I95JT4ugcbFEFu+5+nsqL7hsxIc1jDEV1Qg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=amd.com; dmarc=pass action=none header.from=amd.com; dkim=pass
- header.d=amd.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1; 
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=zOShE5Os+iIO4Tk9ZFekyU9iwBXUQ7v7S2bVe4xjDKw=;
- b=DrBPCG5la79tr0IdRALcx86J/2BC0zSxFesMeT2URVAe0vGvVXzG+Ip3cSGryxeV58C3CAeZ0rJzDaWNTeNLDAUVc5SJd51IduXSYhYyjmrj2bwxjG3yG7GrFI9bKyzJwgxrnBX0w298GOdvLqKpI8z3X4rXFlPcFlgY2p75NQs=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=amd.com;
-Received: from MW4PR12MB6777.namprd12.prod.outlook.com (2603:10b6:303:1e9::17)
- by MW6PR12MB7087.namprd12.prod.outlook.com (2603:10b6:303:238::14)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9160.11; Thu, 25 Sep
- 2025 18:45:51 +0000
-Received: from MW4PR12MB6777.namprd12.prod.outlook.com
- ([fe80::2113:34e8:8f3b:1a49]) by MW4PR12MB6777.namprd12.prod.outlook.com
- ([fe80::2113:34e8:8f3b:1a49%5]) with mapi id 15.20.9160.010; Thu, 25 Sep 2025
- 18:45:51 +0000
-Date: Thu, 25 Sep 2025 20:45:48 +0200
-From: "Edgar E. Iglesias" <edgar.iglesias@amd.com>
-To: Luc Michel <luc.michel@amd.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>,
- Francisco Iglesias <francisco.iglesias@amd.com>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
- Alistair Francis <alistair@alistair23.me>,
- Frederic Konrad <frederic.konrad@amd.com>,
- Sai Pavan Boddu <sai.pavan.boddu@amd.com>
-Subject: Re: [PATCH v5 02/47] hw/arm/xlnx-versal: prepare for FDT creation
-Message-ID: <aNWN3KxHvMlszraG@zapote>
-References: <20250912100059.103997-1-luc.michel@amd.com>
- <20250912100059.103997-3-luc.michel@amd.com>
- <aMRVsn6cbN7fjPuq@zapote>
- <aMkR9fr7ITfggWV7@XFR-LUMICHEL-L2.amd.com>
- <aMugpMt4qU4XSnay@zapote>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <aMugpMt4qU4XSnay@zapote>
-User-Agent: Mutt/2.2.14+84 (2efcabc4) (2025-03-23)
-X-ClientProxiedBy: BL1P222CA0027.NAMP222.PROD.OUTLOOK.COM
- (2603:10b6:208:2c7::32) To MW4PR12MB6777.namprd12.prod.outlook.com
- (2603:10b6:303:1e9::17)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1v1rVj-00042X-7M
+ for qemu-arm@nongnu.org; Thu, 25 Sep 2025 15:20:12 -0400
+Received: from mail-pf1-x42e.google.com ([2607:f8b0:4864:20::42e])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1v1rVa-0005gk-7V
+ for qemu-arm@nongnu.org; Thu, 25 Sep 2025 15:20:09 -0400
+Received: by mail-pf1-x42e.google.com with SMTP id
+ d2e1a72fcca58-7761b83fd01so1427156b3a.3
+ for <qemu-arm@nongnu.org>; Thu, 25 Sep 2025 12:19:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1758827993; x=1759432793; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=s8YRoxuHX85uA3mGLtSauCk7RP3VWwFPGCJP4JBrhls=;
+ b=erDYmA/522LJ8pLlx3nzVk8qNAg8QD/01mmxRxaJVQ17oadkERpJ8G+cho+sQG/Zs5
+ a2erZgh6juh01By59ftBoK3ya7+g0TeElwODPflMP10hWzMdQzWcU3aeDS1nEV2KB0HP
+ r7SBpHH9UQL+wBS1j96xXPWg7eIe7ZQr9NYR/l4kV5XWM0aStu8lKySCsgtROfvdiQtb
+ BxN16omvYYxJa9ksweyRmU1eu0jz9rrdDdm79GA3qRkc3RQ7q41euPKyi/JDwbFhPgyW
+ XPlq3cGwJn4NNeQsA3RRPtCy5IRce3HjLSFmxoD2qOxzLUB2D8mmQ2r6LX9BtUx3zY2J
+ pcgQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1758827993; x=1759432793;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=s8YRoxuHX85uA3mGLtSauCk7RP3VWwFPGCJP4JBrhls=;
+ b=kgi5xmxrz4h70gUaXRZ1wkvm/dxSRx3O1xSjl+Q90jJCjj8JaEbwd6nrGrvh6mz+cG
+ MnOaRA83hjRRBQ0fIrtNNhBL5rQdKvUict5KZf1yecvl8iSpFYvfzsMvwWXNpBLh4UF3
+ XNKWOAKVU8T6e1yM+JFx6IpYVeVSmxMBCIY8znBhwQe77RklDLnNIi2lFZrBJz39MzKn
+ Rh9rVD6onzEFzigWD2q8B+LeihHL4SLOM0iiilPsEuVDhpGnGPmHJtoCp7s3bOQXn8Gw
+ Ftuk2KNtAjYfllzgQkfqZ1W3+tFCie+79Pstcd1lkmf+xEH8vuM0U5zRODEaQiIHaZ/Z
+ e/JQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUx6O+XU2mCeoLigIMpFNibV9OYiSaeYZgxv3hufGqEST04lYMq6/Jlpt5UdLUeBwZd86yLjvsbnA==@nongnu.org
+X-Gm-Message-State: AOJu0YzDutmhuQFLaGjw/p8NzOpymhWKdUEdlFHlPlAvB2MmeO7kEkww
+ 4SD4xcM0TgiM5CMrktrF/AixUhUh4YTxpqDLqQ385zZ3ohRV+XydS4zqafE6HqnK5Is=
+X-Gm-Gg: ASbGncuC4CPqBIsTi8ho5ooXAIfd2y8qoJUOnK6pm4aClv8u+eFgwPQyFGPbbp0y5w2
+ OAMw13lOeRxgu4zqSr27G/iefmj1X59S6ofvicM0hZVkXNM4t4zWYoPEnO3MCLrFz4kA7r/OGMS
+ L11BiYfbwEEnQBqxENFJhqgXVkjL08FoZvfyCnIIrmqYP+lxA6SaK4gstUUS1VyvP9Tjp8/7LKq
+ VFHhXnzjLpddwSLzE3CulUmarNEkFIFhrBMlkfaF7CY94vKsunB1var/dGXPmB168c62gtbG9Dd
+ 5Kt8SqXUES8/9wDQTXrbbUsFq94FUIRbRIAjl1pzQ2+LPwCGN3RfyFHdxtIYgVCk6qXCc/q8diJ
+ wE5w0BpAYaR0O8vDo2ulEny03f4/OgJStoK6q
+X-Google-Smtp-Source: AGHT+IE1OJCqkcN45FybII8oBIGuWAJjjwqHJmaFX9bdLgeewJVLY/9WVylsS21389QF1tN5FYyVFQ==
+X-Received: by 2002:a05:6a20:7349:b0:2cb:5f15:ebf3 with SMTP id
+ adf61e73a8af0-2e7d0daec75mr6195548637.44.1758827993217; 
+ Thu, 25 Sep 2025 12:19:53 -0700 (PDT)
+Received: from [192.168.0.4] ([71.212.157.132])
+ by smtp.gmail.com with ESMTPSA id
+ d2e1a72fcca58-78102c06981sm2543040b3a.72.2025.09.25.12.19.52
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 25 Sep 2025 12:19:52 -0700 (PDT)
+Message-ID: <922f7912-7255-4a36-a5f7-669dffc964e8@linaro.org>
+Date: Thu, 25 Sep 2025 12:19:45 -0700
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: MW4PR12MB6777:EE_|MW6PR12MB7087:EE_
-X-MS-Office365-Filtering-Correlation-Id: 65c2b0c0-d427-46ea-f437-08ddfc63c02c
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|366016|376014;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?ZIOk+Kptf1bAjFZbmckWkpLX4Z0WT+g20fVwytdmtrb+9hjtVsecWERg21Zr?=
- =?us-ascii?Q?xWxNJ4uzsmZ/Edn2oMWJwDtEuMWVHBdI6wb/qgFDRkcTfHGY6eiQiKTWhyDd?=
- =?us-ascii?Q?0EZQqGg7GJCxcUIKssVqnE1VjaToUicZB7wMwqWi/fiRJznwg+gAcgid+X+A?=
- =?us-ascii?Q?XnNG6ztFq68bvWn9Hd3SIYS+jr29w3Nl5dcctvKoV2KytWGtLBmYBtuvw7GG?=
- =?us-ascii?Q?AnSv87GxvQVonqNe5itTPYT35FthZ+V7C8FG2dh42R2NUWl6ZUAwrhM73wLo?=
- =?us-ascii?Q?KxhJHqS1nTLg+Xh6g8dGkiequTU/vb5pJeo92MVPMg+zP/i0LxFkRWdvkse2?=
- =?us-ascii?Q?NPuP7SGmj0gH9Mc9Wtd6LWkYkDaAuN++KhALAzvvcCGPM+xotV0hqxWtJUi6?=
- =?us-ascii?Q?11RfM8EsoDCgWBfzafImy3pRQ/VA/gc02GQwONFxnRWnxny3QqtIo6OSz1PS?=
- =?us-ascii?Q?dW8nmDGVv65g1p4Y0JE9CnGsmpb9aavrXHT+344lystWuaE8AUA2xSvlAuxz?=
- =?us-ascii?Q?g75eTX5IkGa9nge+KjMQ36QMO7Kwv548dYFTCslZrRop3lFA41XjIme6GXF0?=
- =?us-ascii?Q?gGPOUfMinqkHO8+ONUqdctSlGybY9kYOKPcAKcoLk6XfS00g+DYnmVldl3GO?=
- =?us-ascii?Q?cWOk3QxZh7qPmLe0wnsNClMCNb+Q1kXHcoa4LpdlrbpfSRYXfT1qO/f7Mb84?=
- =?us-ascii?Q?oLZTv+swuy0gDayZGlzkdgKxbEaOR+NT3Jw3Cuw6P54wXmrMHBGEo9+5/mws?=
- =?us-ascii?Q?wmnQkl7QIhtMsmtH8UnwqC5yor4LdwV2+GKM+Ksf1D61p1QEOcbNJvyh5SME?=
- =?us-ascii?Q?uqIokZjeZSgG8WFPiDxN7UAM0x9pBs9u02P9jDiGUggtViZS0BSj4LMRPiiW?=
- =?us-ascii?Q?dN2vu7/vr5LzzDULnNCsLLcouhuDmTuMd8AjP4o4W5Wslg0xPC2o/8VUgua8?=
- =?us-ascii?Q?JhPNmvbiWVjrrTIQjFFaxQBaUPpKcpRfuEiHlBlSeyeVVy2H7QOUWqMSo4WO?=
- =?us-ascii?Q?7p83bIg/8qYS1FuenqKH4pF6wdW89ovIPvb9rG25ZHYREV4jHcEqcHP0sdLW?=
- =?us-ascii?Q?KGktysT0lY1/qEA6qQjhMdxgBrJbqtvRM+dg+My8io10Pg8DKMKMOhTqr/mK?=
- =?us-ascii?Q?3xB7nDmf7j9VQFvzK0QG0SmOBTq14mL7ONBK7jqCl4kMHVsF8CYNj06qKqAt?=
- =?us-ascii?Q?WGNue0D03pbZN4MCQB5RlBJpHiMXorpe7s7KUjgDJPfJE+nugACACy9jROwB?=
- =?us-ascii?Q?P5M27RWrzWnK+v69mDufVg2x/gAeZx4qGmv3OWr8WiNEYozC5iNkHIWfeU0t?=
- =?us-ascii?Q?DWPBNtVSgs7hgYqcWNtL1M24OgjENOpFcg4ZoI0eevOdBobBv8v/xfknVBTJ?=
- =?us-ascii?Q?UovX/692hMrhqGDGWUjwpi+HzCIuglShtS6TFmW9p2FjUWVULS1mV6aiF3xe?=
- =?us-ascii?Q?TBl9WoJnXhEkYNK3XC5T/isqix7ZTb1t?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MW4PR12MB6777.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(1800799024)(366016)(376014); DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?QZcSZKxUqBvNY9FZMTRhyzcI9sOsuZLGPtRHU4989skfO271ddPgc/9d4kdP?=
- =?us-ascii?Q?BAur2p45VKidQsUUjflyOS0GEnHnDCNbDXqyCGlXx8HAGVy2YbwistReWzg6?=
- =?us-ascii?Q?3MIptT3v2qAPXON0LnHCiyqJlEwqy0WpFunIGPHn1WjhkUWvesGqymodLU1g?=
- =?us-ascii?Q?QMJM04XY/lT88kzyBeXeZ66bmYwgoyck7tdurhpgDwQ6yWvvNHb7KpkPychH?=
- =?us-ascii?Q?7RFhR9VNHw9wZwGa4w6gECsOnTOeQsYhG4DxlHZ3WRbk0MwBOkB4G0VwmlL5?=
- =?us-ascii?Q?B0O5PEV/wKNK9mZdnHNvMX2F/O5AQWbOpW4vZ06/6rT2sprGtnwu8X+JIgod?=
- =?us-ascii?Q?T0tSgzRKgXUw5Dwl0vtkvfuxEkzGD69CMgNxn1ptiV7qQeI3A0/ThpC1U/7L?=
- =?us-ascii?Q?vJeRuVdKwpqKuT+1X2QqI5mKZgRxdk2kXNaCo0EJnTG7cNBr8Zvmzh3BKql3?=
- =?us-ascii?Q?5nfcpBJrQHItFVkaFT7yDuVFZkH1o61dck1YGwj/e7Z/iAQDgPSKIWxMkMx2?=
- =?us-ascii?Q?zp4qTWZ1pl0gHkSW+Vxjg56wm3DgdsXP1ckUB37M13+zspaSc03nebaJIiyw?=
- =?us-ascii?Q?6t6fBYXKohZ/1zqBsZhRLOmGX81LPzNoZGFz9ZusQHveO+4hc1lEZOEYW2h8?=
- =?us-ascii?Q?Nak7f1qkpw9pr/UXE0TpyEbdZ5Xx5HXGHFq8oCZkK0XLZTUQZ8+mqNxmnCmc?=
- =?us-ascii?Q?johhCsetBsETQtrg+Y7/jRV4lsLTeFdFR1bu4i5ybT/95xhfkNDFiP1rhshq?=
- =?us-ascii?Q?tRbHRFz52ktNSTH1OZZtF+Ox65cMBiKY/UEbaEy1QSWEnlCesG7FxHkEYRCA?=
- =?us-ascii?Q?frwaHtOxkV3y+xk1glAQV5tJQdMlCVr2O2zXw2BmUwihJ2e2fkiKDX8nKfx6?=
- =?us-ascii?Q?l43rCPdoYaHg35ZW25SWXw1B9ff7dMixuAYeCAaXjj4Na3N9KcGjtQ97YiBB?=
- =?us-ascii?Q?oucfLOXqZjsjdq+4ZJ3j+GDGAA1MxPIVd/9vWwiajBR0CCrTDJzITslthCXO?=
- =?us-ascii?Q?H2TpvVNUUad18Vy63YSYM0g8t+LSlbPKA+sRruQhEg7cfUJX6wz+jriuwbXr?=
- =?us-ascii?Q?0GDHdzPbKVDBQ8JU2xxnzThrgvRcAcu9ejISvlhEuL1vignjeh6RQDbY2sjn?=
- =?us-ascii?Q?J8G92FmbxQ8JafcNqU4N63t4xMpZBwcIKKLM+l+Vo8On7iZfBdL4UOGCZMyA?=
- =?us-ascii?Q?EllmO0yGo4sCXll08Orub9f2ZM8QCFaXTIb+pHYgPVbSSvQOSdOSRoCOxY08?=
- =?us-ascii?Q?iV6lwMIyhLwjiyFnXwGhD3mjE3UYWPf5g+dvPyIUUkhkxqO4G5TlihGwSdHR?=
- =?us-ascii?Q?+wYBjyH25KtDqtSverj9pKWORINi6NzHSdvPRVM2lkAd90qf0Yo3igERkebH?=
- =?us-ascii?Q?qtA/TVcoy3qL0qfcL6XnCR2FyQ6tIQHi9z9Vqqof4AyUqhhKWxVoBuEZrgg1?=
- =?us-ascii?Q?qnMHe0XQ9b/UTpzBhVby21hi7hiCHnmob5QA6gKcoUvBANEsUJ4DBAR298av?=
- =?us-ascii?Q?M8/Y/bnh1mod357Yifw73IY5PhBoHHo0BwJ3fVffBTpPEXGDuEOSFDOFAlcB?=
- =?us-ascii?Q?o3jsEY8EOI70aYeprbYu5FTdodLTPw8IQKB1ucPS?=
-X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 65c2b0c0-d427-46ea-f437-08ddfc63c02c
-X-MS-Exchange-CrossTenant-AuthSource: MW4PR12MB6777.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 25 Sep 2025 18:45:51.3933 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: d5mth64Fl0QNALzk28+pfUQ7IswkW1QbJopk8M0z2LI/zqje0n6f9165JsIKxTYa
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW6PR12MB7087
-Received-SPF: permerror client-ip=2a01:111:f403:c10c::1;
- envelope-from=Edgar.Iglesias@amd.com;
- helo=SA9PR02CU001.outbound.protection.outlook.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FORGED_SPF_HELO=1, SPF_HELO_PASS=-0.001,
- T_SPF_TEMPERROR=0.01 autolearn=no autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] target/arm: Replace magic GIC values by proper definitions
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
+References: <20250925032151.73250-1-philmd@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Content-Language: en-US
+In-Reply-To: <20250925032151.73250-1-philmd@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42e;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -166,55 +104,39 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, Sep 18, 2025 at 08:10:18AM +0200, Edgar E. Iglesias wrote:
-> On Tue, Sep 16, 2025 at 09:30:46AM +0200, Luc Michel wrote:
-> > Hi Edgar,
-> >
-
-[snip]
-
-> > [snip]
-> > 
-> > > > +
-> > > >  static void versal_realize(DeviceState *dev, Error **errp)
-> > > >  {
-> > > >      Versal *s = XLNX_VERSAL_BASE(dev);
-> > > >      qemu_irq pic[XLNX_VERSAL_NR_IRQS];
-> > > >  
-> > > > +    if (s->cfg.fdt == NULL) {
-> > > > +        int fdt_size;
-> > > > +
-> > > > +        s->cfg.fdt = create_device_tree(&fdt_size);
-> > > > +    }
-> > > > +
-> > > > +    s->phandle.clk_25mhz = fdt_add_clk_node(s, "/clk25", 25 * 1000 * 1000);
-> > > > +    s->phandle.clk_125mhz = fdt_add_clk_node(s, "/clk125", 125 * 1000 * 1000);
-> > > > +
-> > > 
-> > > Should we be adding nodes if s->cfg.fdt wasn't created by us?
-> > > If the user passes a dtb, I wonder if we should just assume the user
-> > > knows what they are doing and use it as is...
-> > > 
-> > > Or do you have use-cases where it makes sense?
-> > 
-> > Note that the device tree created in the SoC code is just a dummy one to
-> > avoid crashing when the SoC user does not provide one, as stated in the
-> > commit message:
-> > 
-> > "If no FDT is passed, a dummy one is created internally as a stub to the
-> > fdt function calls."
+On 9/24/25 20:21, Philippe Mathieu-Daudé wrote:
+> Prefer the FIELD_DP64() macro and self-describing GIC
+> definitions over magic values.
 > 
-> Aha, thanks!
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
+>   target/arm/helper.c | 4 ++--
+>   1 file changed, 2 insertions(+), 2 deletions(-)
 > 
-> But then is there really a case when the dummy one is needed? won't
-> versal-virt always pass an fdt?
-> 
-> If that is the case then maybe we could just assert(s->cfg.fdt);
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index c44294711f8..da8aa7b9d08 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -5184,7 +5184,7 @@ static uint64_t id_pfr1_read(CPUARMState *env, const ARMCPRegInfo *ri)
+>       uint64_t pfr1 = GET_IDREG(&cpu->isar, ID_PFR1);
+>   
+>       if (env->gicv3state) {
+> -        pfr1 |= 1 << 28;
+> +        pfr1 = FIELD_DP64(pfr1, ID_PFR1, GIC, 1);
+>       }
+>       return pfr1;
+>   }
+> @@ -5195,7 +5195,7 @@ static uint64_t id_aa64pfr0_read(CPUARMState *env, const ARMCPRegInfo *ri)
+>       uint64_t pfr0 = GET_IDREG(&cpu->isar, ID_AA64PFR0);
+>   
+>       if (env->gicv3state) {
+> -        pfr0 |= 1 << 24;
+> +        pfr0 = FIELD_DP64(pfr0, ID_AA64PFR0, GIC, 1);
+>       }
+>       return pfr0;
+>   }
 
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-Luc, up to you if you want to add an assert rather than creating the
-dummy stub. My preference would be to assert.
-
-In any case, feel free to add my RB tag on the whole series:
-Reviewed-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
+r~
 

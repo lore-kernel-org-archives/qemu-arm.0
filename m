@@ -4,84 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1126FCAC5B9
-	for <qemu-arm@archiver.kernel.org>; Thu, 25 Sep 2025 19:41:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53BCDCAC5B5
+	for <qemu-arm@archiver.kernel.org>; Thu, 25 Sep 2025 21:14:34 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v1rpO-0001mX-SO; Thu, 25 Sep 2025 15:40:30 -0400
+	id 1v1tI8-0001qd-Om; Thu, 25 Sep 2025 17:14:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <titusr@google.com>) id 1v1rpF-0001k7-80
- for qemu-arm@nongnu.org; Thu, 25 Sep 2025 15:40:23 -0400
-Received: from mail-lf1-x135.google.com ([2a00:1450:4864:20::135])
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
+ id 1v1tI1-0001px-2s
+ for qemu-arm@nongnu.org; Thu, 25 Sep 2025 17:14:09 -0400
+Received: from mail-pg1-x534.google.com ([2607:f8b0:4864:20::534])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <titusr@google.com>) id 1v1rp6-0000KX-5D
- for qemu-arm@nongnu.org; Thu, 25 Sep 2025 15:40:20 -0400
-Received: by mail-lf1-x135.google.com with SMTP id
- 2adb3069b0e04-57d97bac755so1820e87.0
- for <qemu-arm@nongnu.org>; Thu, 25 Sep 2025 12:40:04 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
+ id 1v1tHs-00057k-Cn
+ for qemu-arm@nongnu.org; Thu, 25 Sep 2025 17:14:08 -0400
+Received: by mail-pg1-x534.google.com with SMTP id
+ 41be03b00d2f7-b54a74f9150so1303883a12.0
+ for <qemu-arm@nongnu.org>; Thu, 25 Sep 2025 14:13:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1758829202; x=1759434002; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=dGRCvzXb0/08Yj1vz/AcgP+Yf86OKXwxAO5W/B0eQ08=;
- b=YHYBgJ3jNvKc2BID5QIjp5J+FBTv5JcCOX/CtZNLsAV+yCUFIf2RqkKsauP7zdNxAw
- Tri/ITc4N6vNZu8ZCtZqCzh4DXWI+eOKM5mtAtK+W0mizvbrLCuCwJmlDfu+xvBNg04t
- rB1aqkjtWpW97c5hY/SPPJQCTtkHWqOyi7IhkN9HWurO27u481RrqnaL0gzt2X0z3Yc8
- 0vveLKmp3wE/VAvGVPBtC9G8ur9JctpvS8Z4588HoZKHRDf11KLrmdJD/SZ3CgTDoT1U
- RvHzXELR5pY+aBwN4ZF8CS7FAr/z0ipb+mFTPT4eYeR+t2tnITHVxCYNKPClbKAQuH/k
- VUYw==
+ d=linaro.org; s=google; t=1758834834; x=1759439634; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=M36z01tvDiO4eiSV5/XCyURuP7Abakr3KCAND8fEuqc=;
+ b=c6d0zegqBR8E80C3rX8GcrBzphy77pc73/kP697IKAL1+MBd9lJfCx38dCpzjIEfsM
+ VXXMb8mtJTxhmon6UdBJKr2N0bXLqSR5QMvV07Th6Bkngc3Q9nN4cE41IkP3VA7D5OFh
+ 7Sw/sF7NhRr9o11yOXeBRCI+udN1ZR3WUw7tqHjr/gQa3zqJxdAt+WshU5GyzKo+ir53
+ ezCJsWbNRVkLUZcry5p7C632gt+v6PVvHBe1BVxSvK3+eiaYaD2VuSK3GSmdMVQgVfx7
+ pqVvxwzUkrqSpeLRaC2sVgknZokCwpR4/bE2TyHpRXPcC9r69uVyzOTX7S5Rjv74r0Vs
+ ih6w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1758829202; x=1759434002;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=dGRCvzXb0/08Yj1vz/AcgP+Yf86OKXwxAO5W/B0eQ08=;
- b=w246t92easvRFFDuj0Dw+1DjLZBvvbO3VS1pxppY7zv5ReBaZMmG49VcX3CWttqK7l
- JyUVWNcCAdP/kHgpoQKsrPa0LT533eNIqo0X69lXfympDKAYhzeR7LIDLBxBRZaKTeF7
- +pl9GE7gaSTfd4QP9OI4WP/iXtck1OPWq49AQUIyndclNG5TjzzIICV+sy00aMwTbXHC
- YLNpmn6tF/mAf+MVJhnaIAClRaBvtL/HJQc7i26Eet1wN3EBQK4r1Rr2Obb0m1H9gxGX
- uVXVhPL1hPghgg3bN42tUksaYpzBx93NlKYjQ/+n8aMLkVlYfVINRxLj394TLg4O4rjn
- 0OEw==
+ d=1e100.net; s=20230601; t=1758834834; x=1759439634;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=M36z01tvDiO4eiSV5/XCyURuP7Abakr3KCAND8fEuqc=;
+ b=ha9ost4xTi89zcqmtJx00ZVu1G1t3/OJrS9ssS1oz+VvPduc611RhUhFY15NyzH1NY
+ +bqI/P2xBj6l6TXB7Pca25508u0sbrUgmw7OTUa5TOKCvGaxbManEanhpN91omb1xocG
+ 1XdebKSnlez6mIt1y6RLfkkH7aZqdtlLT7LzJq+S7tNAyk5C0aV9h7kGRTsGMxQYkdKg
+ Jd0/TtgkaWCayBmVKP6ZWrMjM3Py1e490G6Hg99sd79E/MQ6d73mMjFdK2+Er2n6Wh0x
+ bcim7Ik4WRkluaF491FufVHyuS2AmNrGNtrrMw1rqbRYkp8YiLwSwO1P+DjP+9v5ihi0
+ a6sw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCX6okFsRVDwBxraSvo9zm63UrQMv7uZmqDZiLaxZeqxwiD0oa0dlcBIxl78OwuroKJkeUOOjQIamA==@nongnu.org
-X-Gm-Message-State: AOJu0YxtP0OQtcH20LETufePIgCBFbm8dox/4ubQT1zWSWd6znBU1Df5
- FScNXiMwSgRzzifmUH4sIVuE9qtZ6QmCZRv0FwAx6EIpIvmpvKpuZymKcBlPES9bk6wVRVeAXak
- l9UJeK3LB9+kibQW6mNGKT9ehcMx8GMLLnnXItiqk
-X-Gm-Gg: ASbGncsIrClMuiH06bTe2YBJlyP05eOafMraWowkiSYkZ2Vu/BUulHR4QbT8JGfsIMJ
- jNVU8CbcFdZcVnsj23/fdDy/gz8M3K88qKm7+QU5Xvd5vEfAlUBAqEMTMnJmHlAqFkB4+sFFV8z
- gLqFOeqXdtt57Z2wQb7wVQyI5QWWVE8tw422NXvfmK6VufEpsEAc77fwhHyEFQNy2mvkKSNC8QB
- K8Ko4ijWEWodE+SFBlbjuVcIWbBDokYnqvU0t1uBRPE+uSeHiTAzEs=
-X-Google-Smtp-Source: AGHT+IE8l6NG34xbqF5CoVR1uSrYYQ8TEk334Mt1K59wnyIGsnSF2GXHC8JydYw3c7o8d1JYNgORVMbOa6ZQjIQkR5E=
-X-Received: by 2002:ac2:5399:0:b0:579:fbe5:4467 with SMTP id
- 2adb3069b0e04-5843504f532mr66429e87.4.1758829201925; Thu, 25 Sep 2025
- 12:40:01 -0700 (PDT)
+ AJvYcCXINHP07LGqBXNd894o+VvjMmp1YWAwT6xEAZl/hEt3KU5G7HFdeNvlsyXb+HElcpqML521H2yp/w==@nongnu.org
+X-Gm-Message-State: AOJu0YzwfZEhXVRp/LkU0Ua0trmlLpQ/30qJGmtExm+nYrL8fz0LH5IG
+ EggU+RhHSuBSsB7czUHv0tw1CVSToKoEn++6quuccop5exUYDO0f0E6a3SWYkPA6CLc=
+X-Gm-Gg: ASbGncv52HuwYxS/r++06iO7z6UwfBsWWocLi8xf9B1b+dfFdM60Y7G2+73+e8Z/NaT
+ 3dtDTCVl6iCvRAcPlyVjnb743ucEM4ZKR7+bzbJAC5gubJBN4VoDxO23gBsZbfDQ7qyEf9LadX4
+ BaWzV/rvWUMka8ZOtOv2AQ3buKgnQ1hDS9A+sjruxaswmg4q6SEIxvF7kQPa8mnNCVbEsCBfYto
+ eo6byum7uKL+XJS2IbbDbxA83QcUongnPc16Q9ItCXoP0/yLRCCUQrkap/wtQJ5VKltbk2Cqmp8
+ Y2QzVkHgkGHiJHovNyTEdCBZ7XaZ9rWLBhkcoBN8BDYEkPmuLciwXyG7ubNIB/7eQzB5p6RnMSv
+ Qz93uJ4yWg2N85ZM4Lc/YDdThDQyhJtkiHCzUhxUcMnT4uw==
+X-Google-Smtp-Source: AGHT+IFdocDfmpuv4fKGNgjO538vG9UCiJrrTAHsBuZfc0IMQ4mVCbhdpzA0ZBBVLALxIbN4Kx5AAg==
+X-Received: by 2002:a17:902:cccf:b0:27e:ef96:c153 with SMTP id
+ d9443c01a7336-27eef96c3acmr1362405ad.19.1758834834040; 
+ Thu, 25 Sep 2025 14:13:54 -0700 (PDT)
+Received: from [192.168.1.87] ([38.41.223.211])
+ by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-27ed66d6523sm34133135ad.11.2025.09.25.14.13.53
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 25 Sep 2025 14:13:53 -0700 (PDT)
+Message-ID: <8e73d8af-6f4f-405c-bed8-a475f051dcf5@linaro.org>
+Date: Thu, 25 Sep 2025 14:13:52 -0700
 MIME-Version: 1.0
-References: <20250909-pcie-root-upstream-v1-0-d85883b2688d@google.com>
- <20250909-pcie-root-upstream-v1-2-d85883b2688d@google.com>
- <CAFEAcA8QAj54xxTfk087=8dERGiM28Bz2mw9eVtMd6qNOd7aYw@mail.gmail.com>
-In-Reply-To: <CAFEAcA8QAj54xxTfk087=8dERGiM28Bz2mw9eVtMd6qNOd7aYw@mail.gmail.com>
-From: Titus Rwantare <titusr@google.com>
-Date: Thu, 25 Sep 2025 12:39:24 -0700
-X-Gm-Features: AS18NWBTtowT4M59ZFcVd2Lw5bbNT0R3_Fheh61VDmq6C-fwUa9w9RvuAL0bYaE
-Message-ID: <CAMvPwGo-PpapVgYG9RRdtzEOzFzgn1++f-uTHyyDHzfjyNTPfg@mail.gmail.com>
-Subject: Re: [PATCH 2/7] hw/pci-host: add basic Nuvoton PCIe window support
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Yubin Zou <yubinz@google.com>, qemu-devel@nongnu.org, 
- Paolo Bonzini <pbonzini@redhat.com>, Tyrone Ting <kfting@nuvoton.com>,
- Hao Wu <wuhaotsh@google.com>, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::135;
- envelope-from=titusr@google.com; helo=mail-lf1-x135.google.com
-X-Spam_score_int: -175
-X-Spam_score: -17.6
-X-Spam_bar: -----------------
-X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 12/25] semihosting/arm-compat-semi: replace target_ulong
+ with vaddr
+Content-Language: en-US
+To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, Palmer Dabbelt <palmer@dabbelt.com>,
+ Alexandre Iooss <erdnaxe@crans.org>, Mahmoud Mandour
+ <ma.mandourr@gmail.com>, qemu-riscv@nongnu.org,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Thomas Huth <thuth@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ Alistair Francis <alistair.francis@wdc.com>, qemu-arm@nongnu.org,
+ Weiwei Li <liwei1518@gmail.com>, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ Richard Henderson <richard.henderson@linaro.org>
+References: <20250922093711.2768983-1-alex.bennee@linaro.org>
+ <20250922093711.2768983-13-alex.bennee@linaro.org>
+ <935cfb4b-1990-4ca8-91a2-b9b96b503c42@linaro.org>
+ <87ldm6odxw.fsf@draig.linaro.org>
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+In-Reply-To: <87ldm6odxw.fsf@draig.linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::534;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pg1-x534.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -97,49 +115,40 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, 25 Sept 2025 at 09:38, Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> On Tue, 9 Sept 2025 at 23:11, Yubin Zou <yubinz@google.com> wrote:
-> >
-> > From: Titus Rwantare <titusr@google.com>
-> >
-> > Adds the windowing registers without address translation
-> >
-> > Signed-off-by: Titus Rwantare <titusr@google.com>
-> > ---
-> >  hw/pci-host/npcm_pcierc.c         | 223 +++++++++++++++++++++++++++++++++++++-
-> >  include/hw/pci-host/npcm_pcierc.h |  77 ++++++++++++-
-> >  2 files changed, 297 insertions(+), 3 deletions(-)
-> >
-> > diff --git a/hw/pci-host/npcm_pcierc.c b/hw/pci-host/npcm_pcierc.c
-> > index 3afe92e264f6ce4312e94f05b5e908840008df64..bffdec71acaba6562856b3bdd8aec07c3c153323 100644
-> > --- a/hw/pci-host/npcm_pcierc.c
-> > +++ b/hw/pci-host/npcm_pcierc.c
-> > @@ -16,6 +16,193 @@
-> >  #include "qom/object.h"
-> >  #include "trace.h"
-> >
-> > +/* Map enabled windows to a memory subregion */
-> > +static void npcm_pcierc_map_enabled(NPCMPCIERCState *s, NPCMPCIEWindow *w)
-> > +{
-> > +    MemoryRegion *system = get_system_memory();
->
-> > +    /* TODO: set subregion to target translation address */
-> > +    /* add subregion starting at the window source address */
-> > +    if (!memory_region_is_mapped(&w->mem)) {
-> > +        memory_region_init(&w->mem, OBJECT(s), name, size);
-> > +        memory_region_add_subregion(system, bar, &w->mem);
-> > +    }
->
-> This looks weird. Generally devices should not map themselves
-> into the system address space, although some of our older
-> pci-host devices do for historical reasons. Should we
-> be modelling this some other way?
->
-> thanks
-> -- PMM
+On 9/22/25 5:43 AM, Alex Bennée wrote:
+> Philippe Mathieu-Daudé <philmd@linaro.org> writes:
+> 
+>> On 22/9/25 11:36, Alex Bennée wrote:
+>>> From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+>>> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+>>> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+>>> Message-ID: <20250822150058.18692-10-pierrick.bouvier@linaro.org>
+>>> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+>>> ---
+>>>    semihosting/arm-compat-semi.c | 22 +++++++++++-----------
+>>>    1 file changed, 11 insertions(+), 11 deletions(-)
+>>> diff --git a/semihosting/arm-compat-semi.c
+>>> b/semihosting/arm-compat-semi.c
+>>> index 6725dcf4ba7..29cdab66f73 100644
+>>> --- a/semihosting/arm-compat-semi.c
+>>> +++ b/semihosting/arm-compat-semi.c
+>>> @@ -123,7 +123,7 @@ static GuestFD console_out_gf;
+>>>     */
+>>>      typedef struct LayoutInfo {
+>>> -    target_ulong rambase;
+>>> +    vaddr rambase;
+>>
+>> This is what the subject describes. Most of the other changes aren't.
+> 
+> I was going to say vaddr is functionally a uint64_t but we actually made
+> it a uintptr_t in February. Shall I update to:
+> 
+>    semihosting/arm-compat-semi: replace target_ulong
+> 
+>    Replace with vaddr or uint64_t where appropriate
+> 
+> ?
 
-I can update this. What devices are doing it the new way?
-
--Titus
+Looks good to me, thanks.
+Pierrick
 

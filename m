@@ -4,89 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AAE22CAC5A5
-	for <qemu-arm@archiver.kernel.org>; Thu, 25 Sep 2025 01:08:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32D89CAC5A5
+	for <qemu-arm@archiver.kernel.org>; Thu, 25 Sep 2025 01:11:23 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v1aTB-0008Fl-Ts; Wed, 24 Sep 2025 21:08:27 -0400
+	id 1v1aVt-0000ln-HV; Wed, 24 Sep 2025 21:11:13 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v1aT8-0008Bv-HM
- for qemu-arm@nongnu.org; Wed, 24 Sep 2025 21:08:23 -0400
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v1aVr-0000lK-C4
+ for qemu-arm@nongnu.org; Wed, 24 Sep 2025 21:11:12 -0400
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v1aT4-0007yA-0a
- for qemu-arm@nongnu.org; Wed, 24 Sep 2025 21:08:21 -0400
-Received: by mail-wr1-x42a.google.com with SMTP id
- ffacd0b85a97d-3e8ef75b146so366817f8f.0
- for <qemu-arm@nongnu.org>; Wed, 24 Sep 2025 18:08:17 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v1aVn-0000ms-PK
+ for qemu-arm@nongnu.org; Wed, 24 Sep 2025 21:11:10 -0400
+Received: by mail-wm1-x335.google.com with SMTP id
+ 5b1f17b1804b1-45cb5e5e71eso1619065e9.2
+ for <qemu-arm@nongnu.org>; Wed, 24 Sep 2025 18:11:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1758762489; x=1759367289; darn=nongnu.org;
+ d=linaro.org; s=google; t=1758762661; x=1759367461; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=4ztfqaZ/MsUvC6elF0FGoons+FyLCZ369wcyPFzyv+U=;
- b=Z6tNjRBA5yJBF5TuF9gNHEcfAD0AS0BfHhhLlcYvac+aRQ/EwjPGo3AHeB0o+yIg2K
- +TEgRL0VjMfco3SlnaHNs2bU5FyQIybh2rmwNvY7B0cUNQja6USD+S6ngSj6laTH5CXR
- sRvOtFa2jRIzRH07iO2TlHtQw2cBBDnnOiHazALn7a513YvYiRXWO4pUYHQbwwAiD4q4
- /mMTJ/cCc4bf7+v3TxBIzP3RKuzTPpoS8U4nLQMnvP+EP0eJ9YlM06duu4qThzLZfQ7/
- tkzS9E38hUSb3spItIuH+oK7jw4Bil5z2nfRS+mjl36yyJCkVunPJPu5PuYoHJYRKcr9
- GV6g==
+ bh=vhIHUUlhWKAlN5od0xfoeVS0hk23aHhXFxBsfij08Fs=;
+ b=WvpVNLVzEcubiAk7KrWW7/T2dbPdNXQ5krXWGudfg3bzKMUhz+Yhfli3oFzy5fhrWn
+ 2KjqQBvgBbFmlqpLCc4PLCfVIEG/lzhAB0rsIsQTEglwvlotQeA5wItO/Lod5kV+yoR/
+ DSVjXCcJVf+QWDTZ18Yt3VWKfpx4RSoNLMpmVe0ZRk4b5tczUoy2r6kx28udYvvdVDrP
+ /AH7e3r1+VNO7EAzWiz8lgTjfhzkO+dOKmvesy+6SoX86I08gARhAm43CJlJJ2OcH/tX
+ jFZaYO9BHnCPuKjy45sEtEUVhJm0Z8wJfnb0hYt+f24bgFGmX0pcSYlr05znz5sszmIt
+ ucsg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1758762489; x=1759367289;
+ d=1e100.net; s=20230601; t=1758762661; x=1759367461;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=4ztfqaZ/MsUvC6elF0FGoons+FyLCZ369wcyPFzyv+U=;
- b=n2lvn/c28fSKTnIB1EKS9fSAcrizaIP9DJGyxDBBsO+viwJ1g0KvoJ5dtPrzCk7qLt
- IiLszbls+qz/kZxJBi37j7ReV1u7aCXDbbT4cdN1ZgCUKL69lr9udLiYo62p3x3R8kxR
- M3c3DIKmMKb/mnIgiupzW0g3N7bVAtACs2XQCOZfAjQMoOCkFV8FH0YYiirrMcMwiPh9
- SReCVAd6HA5ssAI5DFMd783e7/P8HRNf9Zd4Nv2ncn67clSJ7iZw0i9X/tp3QCXgNcyW
- OJ9LDOm1T9jk85jiGl8jOYfZk3RIgG7XUZRwIoLsOiAdgucSG+7+kcuQ1it0NhWmE8sb
- MISQ==
-X-Gm-Message-State: AOJu0Yz+ERjKuvti4NLYufZ8ijwDQwQCvhoqI2qsdN3d+fp/MJEfQAAV
- 7cK5S37CU/W/k7NCWHYxsKhM6OE4AUKl4pwbCS4VraHSNApC21cMwuM/GvRUvMuYUPE=
-X-Gm-Gg: ASbGncsrTF7YigJuDgBOUewqtpxXmaF//NnPTZK6BjfwTbJ9pvQgQCn0q/rjGThrHts
- yiFNrrZ25R9P91zw6MEb8QUPecGLxIvsgMk7WYb5CdMY6mYw0J1vSu704HMFx0IkfoblUBSKFEd
- qNtWgnhdTX+ZNfPL6SFUtZ+iOTmgCYwVa8nghoBYMs13DiMe/jFcSiUAqEK4gPq55+RfC3Lz4cY
- +jmpwg8UyU4jFerh+qu/s64KCW/YzO7EuBhtzBJBpdahmZtuwS9nKXgvs0EfcOGLdxfrOVqa8y6
- wosz27PGZkVhSEgr1UX4PLAzOlSIaHMC1jnWO8I/zWZxs0cQ1xtC45/FAlJvEN0PJhYVG7M89fU
- O389CRk/82YU+pXEWu/iVlecqUuF4gxglyoj2D4isd51fEi388KK8AvwK5RNPz05jSBkMPFIQdX
- m2
-X-Google-Smtp-Source: AGHT+IHlwV51wTAwA22Lh+pJh50xhgWZ811f5rNcVPrtga8FRlU2tAUxVT10lLcO6xjYMPET1d9ZfQ==
-X-Received: by 2002:a05:6000:2f87:b0:3fe:4fa2:8cdc with SMTP id
- ffacd0b85a97d-40e4dabf3f7mr1592751f8f.60.1758762489115; 
- Wed, 24 Sep 2025 18:08:09 -0700 (PDT)
+ bh=vhIHUUlhWKAlN5od0xfoeVS0hk23aHhXFxBsfij08Fs=;
+ b=bUdbTbTRyLtgx7VwDeguPZaAUb8YB+gYyvkbBe75rM5AHP4vOWA2rWe7zJdZWSjhaL
+ WuCg4wht6KzZlRuyrq/+22UR81FXQe6A6Iwo1pFX5wPk5lHhIglM1gsQT2Ns2zHNd63Y
+ sS8V3mgajo2/xSQxPU7mM2fNhiVB+bB/+cgw5IkhQlLLCAeV/Nxjm/6Sy9nRXCgGlzvA
+ hL+Nhzc0cp4P0ZS3PxDu0gJlIxmGvLgqn6lgb4q5EHwTEZMgp3lfFzXIekOOmPp6P7zT
+ GeUD2CAVIyztEWF56Txr7WM7qDZgsQPI92mS7k6AAbHK+JMpZL/lkrQlmjIn2jW09qS2
+ e9lw==
+X-Gm-Message-State: AOJu0YzzVfvGS1agchSgAOnYSlO24iRLqBwge/xNblDKs4SAHhl29C9U
+ NRTZ1TDQlzbxwgxXdMVuDwYLr3BsfjinmCpu9Nl/aWGzoHIpaTfJ+HD/ULIYY5CIF5wLIjexvXR
+ Xvtgp+S8PbA==
+X-Gm-Gg: ASbGncuPtry9x5QREtvTKEkpYWAFDLCWqumMpuoZhW7xIvhc7VHmymRQCNij1sPf7oI
+ ob0rMIBHaLzQPx6qEnGCHuAZqMQGWG7Mz92pkrKuwlyyBIwpDQmaxo5918AUPbzXInp+hB5zSCB
+ BC2Irh9UPTxL9EkOgI03qFn+J9GGY9zlhlJT91qtwwGIxiszU/Y0us/bww1JMit5kNMGLcWVc5F
+ oh3HedwoBtzY+yGdVRakOlKWMTMq43q7Nsqq6rcDRU0HkFzyozGdTrnVqcr3Ouv/LB5k67HKOeT
+ NEPfxCkx0Y9/nh4lBZOIgb6YDRXJYHnLgQOdfPSxNAW6049G8u4gUTI6RqHY6TkleDbqMkD6nrQ
+ 2yJaG65USJq9efTOvM+lWlNoJjXbXj4bk+B0604RFgUnOAaTSxaL32s78CHoh03uqFg==
+X-Google-Smtp-Source: AGHT+IGZCC/okg2JhlLmjECODSxCdvEx8rAnVxDAqRTAE82888s12CHHrbUOsYXtweyE+h0j4mVWtQ==
+X-Received: by 2002:a05:600c:4f49:b0:468:7a5a:725 with SMTP id
+ 5b1f17b1804b1-46e329d499fmr16316125e9.1.1758762660702; 
+ Wed, 24 Sep 2025 18:11:00 -0700 (PDT)
 Received: from [192.168.69.221] (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-40fb89065b5sm673673f8f.17.2025.09.24.18.08.08
+ 5b1f17b1804b1-46e2ab31e97sm53790225e9.14.2025.09.24.18.10.59
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 24 Sep 2025 18:08:08 -0700 (PDT)
-Message-ID: <1a755fbf-e6d6-4f80-b35d-29fcb3f587d3@linaro.org>
-Date: Thu, 25 Sep 2025 03:08:07 +0200
+ Wed, 24 Sep 2025 18:11:00 -0700 (PDT)
+Message-ID: <132cc9e6-bab2-47d7-bfe3-c08ac5fc6816@linaro.org>
+Date: Thu, 25 Sep 2025 03:10:59 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 3/5] hw/arm/npcm8xx.c: Add all IRQ ENUMs
+Subject: Re: [PATCH v1 5/5] hw/gpio/npcm8xx: Implement npcm sgpio device input
+ pin logic
 Content-Language: en-US
-To: Coco Li <lixiaoyan@google.com>, peter.maydell@linaro.org, clg@kaod.org
+To: Coco Li <lixiaoyan@google.com>, peter.maydell@linaro.org, clg@kaod.org,
+ Richard Henderson <richard.henderson@linaro.org>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, flwu@google.com,
  andrew@codeconstruct.com.au, Hao Wu <wuhaotsh@google.com>
 References: <20250925005832.3708492-1-lixiaoyan@google.com>
- <20250925005832.3708492-4-lixiaoyan@google.com>
+ <20250925005832.3708492-6-lixiaoyan@google.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20250925005832.3708492-4-lixiaoyan@google.com>
+In-Reply-To: <20250925005832.3708492-6-lixiaoyan@google.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::335;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x335.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- UPPERCASE_50_75=0.008 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -102,108 +104,33 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi,
-
 On 25/9/25 02:58, Coco Li wrote:
-> In the process of implementing serial gpio and adding the corresponding
-> ENUMs, also complete the list for npcm8xx.
-> 
 > Signed-off-by: Coco Li <lixiaoyan@google.com>
 > Reviewed-by: Hao Wu <wuhaotsh@google.com>
 > ---
->   hw/arm/npcm8xx.c | 43 ++++++++++++++++++++++++++++++++++++++++++-
->   1 file changed, 42 insertions(+), 1 deletion(-)
+>   hw/gpio/npcm8xx_sgpio.c          | 134 ++++++++++++++++++++---
+>   include/hw/gpio/npcm8xx_sgpio.h  |   4 +-
+>   tests/qtest/npcm8xx_sgpio-test.c | 180 ++++++++++++++++++++++++++-----
+>   3 files changed, 274 insertions(+), 44 deletions(-)
 > 
-> diff --git a/hw/arm/npcm8xx.c b/hw/arm/npcm8xx.c
-> index a276fea698..10887d07fa 100644
-> --- a/hw/arm/npcm8xx.c
-> +++ b/hw/arm/npcm8xx.c
-> @@ -92,8 +92,14 @@ enum NPCM8xxInterrupt {
->       NPCM8XX_GMAC2_IRQ,
->       NPCM8XX_GMAC3_IRQ,
->       NPCM8XX_GMAC4_IRQ,
-> -    NPCM8XX_MMC_IRQ             = 26,
-> +    NPCM8XX_ESPI_IRQ,
-> +    NPCM8XX_SIOX0_IRQ,
-> +    NPCM8XX_SIOX1_IRQ,
-> +    NPCM8XX_MC_IRQ              = 25,
-> +    NPCM8XX_MMC_IRQ,
->       NPCM8XX_PSPI_IRQ            = 28,
-> +    NPCM8XX_VDMA_IRQ,
-> +    NPCM8XX_MCTP_IRQ,
->       NPCM8XX_TIMER0_IRQ          = 32,   /* Timer Module 0 */
->       NPCM8XX_TIMER1_IRQ,
->       NPCM8XX_TIMER2_IRQ,
-> @@ -116,6 +122,14 @@ enum NPCM8xxInterrupt {
->       NPCM8XX_OHCI1_IRQ,
->       NPCM8XX_EHCI2_IRQ,
->       NPCM8XX_OHCI2_IRQ,
-> +    NPCM8XX_SPI1_IRQ            = 82,
-> +    NPCM8XX_RNG_IRQ             = 84,
-> +    NPCM8XX_SPI0_IRQ            = 85,
-> +    NPCM8XX_SPI3_IRQ            = 87,
-> +    NPCM8XX_GDMA0_IRQ           = 88,
-> +    NPCM8XX_GDMA1_IRQ,
-> +    NPCM8XX_GDMA2_IRQ,
-> +    NPCM8XX_OTP_IRQ             = 92,
->       NPCM8XX_PWM0_IRQ            = 93,   /* PWM module 0 */
->       NPCM8XX_PWM1_IRQ,                   /* PWM module 1 */
->       NPCM8XX_MFT0_IRQ            = 96,   /* MFT module 0 */
-> @@ -128,6 +142,11 @@ enum NPCM8xxInterrupt {
->       NPCM8XX_MFT7_IRQ,                   /* MFT module 7 */
->       NPCM8XX_PCI_MBOX1_IRQ       = 105,
->       NPCM8XX_PCI_MBOX2_IRQ,
-> +    NPCM8XX_GPIO231_IRQ         = 108,
-> +    NPCM8XX_GPIO233_IRQ,
-> +    NPCM8XX_GPIO234_IRQ,
-> +    NPCM8XX_GPIO93_IRQ,
-> +    NPCM8XX_GPIO94_IRQ,
->       NPCM8XX_GPIO0_IRQ           = 116,
->       NPCM8XX_GPIO1_IRQ,
->       NPCM8XX_GPIO2_IRQ,
-> @@ -163,6 +182,12 @@ enum NPCM8xxInterrupt {
->       NPCM8XX_SMBUS24_IRQ,
->       NPCM8XX_SMBUS25_IRQ,
->       NPCM8XX_SMBUS26_IRQ,
-> +    NPCM8XX_FLM0_IRQ            = 160,
-> +    NPCM8XX_FLM1_IRQ,
-> +    NPCM8XX_FLM2_IRQ,
-> +    NPCM8XX_FLM3_IRQ,
+> diff --git a/hw/gpio/npcm8xx_sgpio.c b/hw/gpio/npcm8xx_sgpio.c
 
-Minor style comment, maybe worth adding a new line when the
-following enum is not contiguous.
 
-Regards,
+> +static uint8_t get_even_bits(uint16_t n)
+> +{
+> +    n &= 0x5555;
+> +
+> +    n = (n | (n >> 1)) & 0x3333;
+> +    n = (n | (n >> 2)) & 0x0F0F;
+> +    n = (n | (n >> 4)) & 0x00FF;
+> +
+> +    return (uint8_t)n;
+> +}
+> +
+> +static uint8_t get_odd_bits(uint16_t n)
+> +{
+> +    return get_even_bits(n >> 1);
+> +}
 
-Phil.
-
-> +    NPCM8XX_JMT1_IRQ            = 188,
-> +    NPCM8XX_JMT2_IRQ,
->       NPCM8XX_UART0_IRQ           = 192,
->       NPCM8XX_UART1_IRQ,
->       NPCM8XX_UART2_IRQ,
-> @@ -170,6 +195,22 @@ enum NPCM8xxInterrupt {
->       NPCM8XX_UART4_IRQ,
->       NPCM8XX_UART5_IRQ,
->       NPCM8XX_UART6_IRQ,
-> +    NPCM8XX_I3C0_IRQ            = 224,
-> +    NPCM8XX_I3C1_IRQ,
-> +    NPCM8XX_I3C2_IRQ,
-> +    NPCM8XX_I3C3_IRQ,
-> +    NPCM8XX_I3C4_IRQ,
-> +    NPCM8XX_I3C5_IRQ,
-> +    NPCM8XX_A35INTERR_IRQ       = 240,
-> +    NPCM8XX_A35EXTERR_IRQ,
-> +    NPCM8XX_PMU0_IRQ,
-> +    NPCM8XX_PMU1_IRQ,
-> +    NPCM8XX_PMU2_IRQ,
-> +    NPCM8XX_PMU3_IRQ,
-> +    NPCM8XX_CTI0_IRQ,
-> +    NPCM8XX_CTI1_IRQ,
-> +    NPCM8XX_CTI2_IRQ,
-> +    NPCM8XX_CTI3_IRQ,
->   };
->   
->   /* Total number of GIC interrupts, including internal Cortex-A35 interrupts. */
-
+Candidates for "include/qemu/bitops.h"?
 

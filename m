@@ -4,83 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E01ABCAC5A7
-	for <qemu-arm@archiver.kernel.org>; Thu, 25 Sep 2025 11:58:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD9CCCAC5A5
+	for <qemu-arm@archiver.kernel.org>; Thu, 25 Sep 2025 13:24:31 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v1kbe-0005i8-ED; Thu, 25 Sep 2025 07:57:50 -0400
+	id 1v1lxH-0007K0-SJ; Thu, 25 Sep 2025 09:24:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1v1kbc-0005gq-QV
- for qemu-arm@nongnu.org; Thu, 25 Sep 2025 07:57:48 -0400
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+ id 1v1lxH-0007Jn-0F
+ for qemu-arm@nongnu.org; Thu, 25 Sep 2025 09:24:15 -0400
+Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1v1kbN-0003Sq-0J
- for qemu-arm@nongnu.org; Thu, 25 Sep 2025 07:57:47 -0400
-Received: by mail-wm1-x333.google.com with SMTP id
- 5b1f17b1804b1-46e34052bb7so6560645e9.2
- for <qemu-arm@nongnu.org>; Thu, 25 Sep 2025 04:57:27 -0700 (PDT)
+ id 1v1lx9-0003AG-Dl
+ for qemu-arm@nongnu.org; Thu, 25 Sep 2025 09:24:13 -0400
+Received: by mail-ej1-x635.google.com with SMTP id
+ a640c23a62f3a-b30f8d14b9cso152961666b.3
+ for <qemu-arm@nongnu.org>; Thu, 25 Sep 2025 06:24:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1758801446; x=1759406246; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:to
- :from:from:to:cc:subject:date:message-id:reply-to;
- bh=2Sg4d6Xi4dn19c1xIRc0y4T4UNJGPBwgkBfHHYUi4ds=;
- b=gVpTvTTZE6LALtau23assPD3qukSD7XRokiR5GqRWN4eo95NOc0rryrjsjN0i77rSF
- 7ZV0yrjm5Oy8he7v1dCFUiaSnH3MseyD8HisSbzXLU6s4CUABiN/E3oNb3AHr0/sYxsr
- wmQM2dqAJw9TQvgBLaJp2TFQUZrW4yNqeHmPELl7IOcLxBX1vauj5H9s6PGPIXgffgxc
- x43sY3q1ONI6+dfsTayebvxhITYdXrSZj0T9KDLDeoTMQcFlHObR+d9zXHHtw4YdeNL+
- 2RcgI1no30Bc5Y2sDM4kBKOIlguQtRR8UcLQhFzEXy62+H8db9881AdebG9iR622rWDa
- zmHA==
+ d=linaro.org; s=google; t=1758806642; x=1759411442; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=vgiPj1g3LbRwQGf0tFC1ezm4NNNMo9eY7QGMXPTOWZA=;
+ b=DfvPAo8wKvEZkZgRbeO6B5/YfoZxDk1yHOqxxwKO3mVlL72vjRvFj3DIkIEnalTlfk
+ vDbWzcJfQA7gh15sU+VXlifpYMbAohDjqwoznGXi7Syi5mYOL7oZXCpYkyM6ji3kCmMs
+ GqMuqzmNOhr6jR7eAGE2JjUqqzpa1QBtyLfaq8HuDpkgPbrYCujDHY+27oooKJAvLvSd
+ NS6Vgtkz6qWowkuVRK4pDLMpjlZZSz2UDqjZZPJ5gxDZf0i++ay2w+5VSLGSeuOoHaj4
+ kvp4ErVs28t6/ndsOvYVS+sjznHXptkugSia8L3H9kk4YDUe2N+rHlLcoK5ZQpgvkTbg
+ cSKQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1758801446; x=1759406246;
- h=content-transfer-encoding:mime-version:message-id:date:subject:to
- :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=2Sg4d6Xi4dn19c1xIRc0y4T4UNJGPBwgkBfHHYUi4ds=;
- b=Z9cce4U/JzLP9hwNi4jhtonkHEfrHdjnRbWyHSTpknMBwQJiR/HHYO8JyRhh6o6AXx
- JSiV3CUbWmeh9IZq8YjvvnrA7kX9yjonnMp6dov+PZR1y9xdwtNWshYcKHg5FkNl8iUo
- dSsqX/oJK4riROzheu2+LA18aLq2ZJWVR+xWiHNjaONj14i6aSJmg189fjsn7msKAzaR
- Xr8SuTNmPPtONhn3PLz/tvrmTkjHOjLbj2TS8sUQptamK9nQ0/yB55Nc3ab6rIhHmp5k
- u3FjeYeA52YjcvUrFsD1KfO/CcRUM8keMDFOo07FXXzgcau5sYX5xtv5mx6YByapQR4P
- 4Erw==
-X-Gm-Message-State: AOJu0Yz0Z66OfhhjBRkGrCto0dx5BnbEHcg4wDdSMqNK+QNmNc8QzJLo
- D0dhKUb0CnMr8Ya3bJq7emUnM6pt7LkJ3Ai+/b6bUAmdW/9Co6E6+6uRbe6X0lfa/daUgN6dYOx
- L8NbS
-X-Gm-Gg: ASbGnctQVFtJl05A6oJZqCmYbAAIN3lWQg1lwF7Ort9JS4x9BtrKCp7gPHEdUYuP/v4
- 7f075K8UE7r8EF8PJriqMelInKssBFXnzViQ+Noxnk4tzANYjJLX4woAtP0ZAXOyPSxeHuzPxZe
- zmnniM6WHmsAFWYa+1nSwjwSII35G7TitFh4udoKC117tUVrTtRWQbMqOuToFRV7SqWL63qe0iS
- tJz4co6buJ3ueHft5h6netBPEZWwcyeo3d4Kvhpbi0knwMVSqyrbsBcQwVkemjhVlyd27cUKUsw
- wUX+KbEu4k7lcDv/dRmbj+cBVjCFCjQwgDu9Ne9hm3B+CFWEYoDoJKSNneEYPI9ex4OxhDBgXWW
- iSS7jw7CfTy39set3G9YNu7lk1laX
-X-Google-Smtp-Source: AGHT+IHvtrbtZH3UVf49CcEc89QNmXANmu1l0FtXAqaXFeQlriuvg/UzLYzVItzm1rU+Ksk7mVv98Q==
-X-Received: by 2002:a05:600c:848f:b0:46e:2d8a:d1a1 with SMTP id
- 5b1f17b1804b1-46e329b2d10mr37726465e9.10.1758801446115; 
- Thu, 25 Sep 2025 04:57:26 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-46e33fede76sm28392215e9.14.2025.09.25.04.57.24
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 25 Sep 2025 04:57:24 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH] target/arm: Don't set HCR.RW for AArch32 only CPUs
-Date: Thu, 25 Sep 2025 12:57:23 +0100
-Message-ID: <20250925115723.1293233-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.43.0
+ d=1e100.net; s=20230601; t=1758806642; x=1759411442;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=vgiPj1g3LbRwQGf0tFC1ezm4NNNMo9eY7QGMXPTOWZA=;
+ b=suDwe1qNpgDQGjNHf2DfCFP85TwGUzfGWlMSofaFfrmVhNxODwWEPj4efArhvy/QEi
+ eg7R4P6tWWLQMzd7q/3UYYxIVFbkcMXLLLxCo9stbDlJt4sDjINoqV+Pl/wYDmMGneFu
+ flLuqtaPo1UgwC+EqQX4u71k5k3cWBHbuNCMYINxdKR+SA5OvrbB+xnCT/NJCRc3vo+7
+ 4jNJNpWf8+LW4F1Sq1nN7GcrwI5vH35MmPbrT6ub2EGWEWwzsLbeDP0qn8/JwqYXUnuy
+ lREZfngFcHcj+6aibGfgP7ALm0d0wHdCh/qDDYW5ADWP//mk5Ksx8YSv5aQD4RP2hLXj
+ NfAA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUdKV7NNBk3x/z+iAPfLA26iNr5+8Z8lQo55ohqZpzOSBm9l89yLbTiSrm30SX+SGPxhltsAF6B8g==@nongnu.org
+X-Gm-Message-State: AOJu0YyzX6hmF4SlbJ8bljBNdOrSOjnJNSFow6rfdK5xvIltF7u4+i8X
+ LjyOjk+284Pv7thPaJdVt0rKST5/pGzVT+ME+gZMgq1AS/rdJQ9tI9WsCMeCY5pg4qXiWzz324b
+ AplxFMaE+TkmJvVeF0FwegodsGkKKmrqLKHsfYaaIpQ==
+X-Gm-Gg: ASbGncsZ935/iEgobS9aNn6o4B8ZKqNEybEBPxkfnWofQigD0hDykbCDm8zU5Zm38ZS
+ coblkGQJgfgO2EnBtfwY6lnKopvraYNFfKhPRVQmYUE8Lyg+5WKgR5EvdNMfEzllYGILG31i2rE
+ Yc5a4gDHvQI/S86pqyXKig4YKgu0rISuJL5Jz1nCtpql6GIflac0qm4cq8D+PDRyI3hbkEQVvb1
+ we4gfl0
+X-Google-Smtp-Source: AGHT+IGTMKdLMpXicDW0fLs7RbT1LVFRXHZKRZjRPJus8JsfD1XsKelzlri8X20rG5A31YHVSk9NTI1aUbg11xLrC+s=
+X-Received: by 2002:a17:907:9710:b0:b04:8358:26fe with SMTP id
+ a640c23a62f3a-b34bbbd9a1fmr375302266b.34.1758806642266; Thu, 25 Sep 2025
+ 06:24:02 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::333;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x333.google.com
+References: <20250916142238.664316-1-richard.henderson@linaro.org>
+ <20250916142238.664316-9-richard.henderson@linaro.org>
+ <59ae43f2-d392-4582-96dc-8465bf893bb1@linaro.org>
+In-Reply-To: <59ae43f2-d392-4582-96dc-8465bf893bb1@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 25 Sep 2025 14:23:48 +0100
+X-Gm-Features: AS18NWCkkR_qMKtmEisoD2JXa5ujJGfsCmf37uG0wTkJxgRKc71ZUHtPSuwYkt8
+Message-ID: <CAFEAcA9QSfz=JaDhLyf0v6ttCGX3fsy6U1tJMV4hqHRfZSitDg@mail.gmail.com>
+Subject: Re: [PATCH v2 08/36] target/arm/hvf: Sort the cpreg_indexes array
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Cc: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org, 
+ qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::635;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x635.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
- T_SPF_HELO_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -96,37 +99,47 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-In commit 39ec3fc0301 we fixed a bug where we were not implementing
-HCR_EL2.RW as RAO/WI for CPUs where EL1 doesn't support AArch32.
-However, we got the condition wrong, so we now set this bit even on
-CPUs which have no AArch64 support at all.  This is wrong because the
-AArch32 HCR register defines this bit as RES0.
+On Thu, 25 Sept 2025 at 11:33, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.o=
+rg> wrote:
+>
+> On 16/9/25 16:22, Richard Henderson wrote:
+> > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> > ---
+> >   target/arm/hvf/hvf.c | 3 +++
+> >   1 file changed, 3 insertions(+)
+> >
+> > diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+> > index b043eac8c6..99d8672b9b 100644
+> > --- a/target/arm/hvf/hvf.c
+> > +++ b/target/arm/hvf/hvf.c
+> > @@ -925,6 +925,9 @@ int hvf_arch_init_vcpu(CPUState *cpu)
+> >       arm_cpu->cpreg_array_len =3D sregs_cnt;
+> >       arm_cpu->cpreg_vmstate_array_len =3D sregs_cnt;
+> >
+> > +    /* cpreg tuples must be in strictly ascending order */
+>
+> I don't get the "why". If this is related to a previous change,
+> maybe better to squash there?
 
-Correct the condition we use for forcing HCR_RW to be set.
+It's a requirement on the cpreg list data structure;
+compare kvm_arm_init_cpreg_list()'s comment
+    /* Sort the list we get back from the kernel, since cpreg_tuples
+     * must be in strictly ascending order.
+     */
+and the one in init_cpreg_list():
+    /*
+     * Initialise the cpreg_tuples[] array based on the cp_regs hash.
+     * Note that we require cpreg_tuples[] to be sorted by key ID.
+     */
 
-Cc: qemu-stable@nongnu.org
-Resolves: https://gitlab.com/qemu-project/qemu/-/issues/3128
-Fixes: 39ec3fc0301 ("target/arm: HCR_EL2.RW should be RAO/WI if EL1 doesn't support AArch32")
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- target/arm/helper.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+The underlying reason for this is the algorithm we use
+for incoming migration in cpu_post_load(), where we
+iterate through the incoming-data list and the one
+we have on the destination comparing indexes. This
+only works if the list is in order so that we can
+easily identify "register in our list but not theirs"
+and "register in their list but not ours" by comparing
+the next value in the index lists.
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index c44294711f8..ba1f7296dd0 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -3695,7 +3695,8 @@ static void do_hcr_write(CPUARMState *env, uint64_t value, uint64_t valid_mask)
-     value &= valid_mask;
- 
-     /* RW is RAO/WI if EL1 is AArch64 only */
--    if (!cpu_isar_feature(aa64_aa32_el1, cpu)) {
-+    if (arm_feature(env, ARM_FEATURE_AARCH64) &&
-+        !cpu_isar_feature(aa64_aa32_el1, cpu)) {
-         value |= HCR_RW;
-     }
- 
--- 
-2.43.0
-
+-- PMM
 

@@ -4,96 +4,117 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D5CACAC5B1
-	for <qemu-arm@archiver.kernel.org>; Thu, 25 Sep 2025 16:04:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E360CAC5B1
+	for <qemu-arm@archiver.kernel.org>; Thu, 25 Sep 2025 16:11:26 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v1oRK-0000Bp-8B; Thu, 25 Sep 2025 12:03:28 -0400
+	id 1v1oYl-0005XZ-EL; Thu, 25 Sep 2025 12:11:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1v1oR3-0008Ph-Jj
- for qemu-arm@nongnu.org; Thu, 25 Sep 2025 12:03:13 -0400
-Received: from mail-yx1-xb12b.google.com ([2607:f8b0:4864:20::b12b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1v1oQo-0007yj-1E
- for qemu-arm@nongnu.org; Thu, 25 Sep 2025 12:03:07 -0400
-Received: by mail-yx1-xb12b.google.com with SMTP id
- 956f58d0204a3-635380a4a67so887971d50.0
- for <qemu-arm@nongnu.org>; Thu, 25 Sep 2025 09:02:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1758816166; x=1759420966; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=iLlFuJ+iX5wyifqNxIn6t6XU4TT5qvqEgzhS+Kbw400=;
- b=Y1knRhNe9tpGPM5RC+o0g5p6CKaxlNDRl0PYRazC9B2L5lGfeIpuH6Ipvgvb2vsXHT
- vSsCobn6ZLk/ro9OcpOtEKYczl2YAptxZ4F2yigJs1Qx6WdKgLnWHV1AyX6spab4pjkZ
- or2WlZrJcyQlQCnVG9QqcAIy8hARJeEbwQaFy/0K35onkNk6tmKu9Y3IXnBHm1SNFccr
- Hst39ehC4rR7hSsIrY4uE2XGQ0PMEFrEcm+GZ5kWqT3kCjNFUArX0oST4JgR/Tv9QA8F
- ReGJ7QfPvPhR1MmGhs+rYxou2UKVLhFUVhAjtFJTMnYfGJivhUcycvSsii5ut/SEoIsX
- 6kJw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1758816166; x=1759420966;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=iLlFuJ+iX5wyifqNxIn6t6XU4TT5qvqEgzhS+Kbw400=;
- b=VTYsj6IqFWgFUmpOYBbZJ1uFiBZaYQ8QujLsYZdahXpB9LE7HhM7pMoIkNjbcwjrvG
- SFApTThbaChOoxYcb8cbfvst6jFo+jcpkNGK0przMOJJ/+aI/pcIoJ8zOlFQxSUmTiBO
- je45wp9/pCx8+CA/xc8pdk0UP906HfZNspX9aqVLEbHd45YJVqWkQj873teTPyB7USFA
- ov+XA6n//vkofrBFLQhR4YWjR0XmLomoaSBC43jJrqjzINMjzSiQYT/pI0FEZG/eqn2G
- fFfG7HWbrs8JzQlDhqS/q3xsnX5e3caX57asvgJJXE+2q972AR70CFsY8ysmgxaLc3xz
- YAjQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWD2g6ylm1BcWUfzH5UYzj7TGJ5nrc13g613gXhI1upadAVr9wapHSwkC+C1dXOntp344SGns4Qag==@nongnu.org
-X-Gm-Message-State: AOJu0YyAiW+cWw5EXL2L/flY0BLu2aosBjCsRpSO72pp2l6vfcWeHEPT
- OvNzcX/PQ9svNFhur9piFrGaoDiGZcbs/bYKyVyRDDpV3mDwvDYPt/kjMc3CrB3ovmzcqMOKeDX
- Lnri0iqdN48+SPetUiqpvRgCWDwWDvsdrKNFhlRuRWg==
-X-Gm-Gg: ASbGncs93LKVkKfz8S6vU19nuRnD+teS3MKXDVqUTjWSiBjqGcMPkDbZxE/x8LOWO++
- rcfoxir+dGeNnJRxDeZgZ1xZ0r77zQIHKqoC6noaKO2Onl47N/bgDorFIIdXVvcDIkSLSZn85WQ
- rSty3qkvB2yKkVU0d4+mevHDYHUmAnWd1jR9si201ycQGBMyZMPMtBGq9NggCGOTrbdPpChJ8tT
- lwoVz1M
-X-Google-Smtp-Source: AGHT+IGCpms8i93eV3XeMlurKIEORFFdZpoyUexyQ+ZgkMKXHoaliP079vOHYsZIwueY2s4NAmmS6fRd8IBm2j3Rsts=
-X-Received: by 2002:a05:6902:100e:b0:eb3:8155:73d7 with SMTP id
- 3f1490d57ef6-eb3815575f9mr3351111276.43.1758816165198; Thu, 25 Sep 2025
- 09:02:45 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1v1oYg-0005X0-Di
+ for qemu-arm@nongnu.org; Thu, 25 Sep 2025 12:11:03 -0400
+Received: from smtpout2.mo529.mail-out.ovh.net ([79.137.123.220])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1v1oYW-0000z7-NL
+ for qemu-arm@nongnu.org; Thu, 25 Sep 2025 12:11:02 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.109.254.179])
+ by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 4cXdwv5p8Kz5yH5;
+ Thu, 25 Sep 2025 16:10:39 +0000 (UTC)
+Received: from kaod.org (37.59.142.108) by DAG8EX2.mxp5.local (172.16.2.72)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.59; Thu, 25 Sep
+ 2025 18:10:38 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-108S002ee3b9c0f-7aba-463d-b711-ea9daab2049b,
+ 430B70353558F8354C2EE2D8074F991CFFE72556) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <eae962d6-a7ce-4a8c-a3fb-b3e4df78fa6d@kaod.org>
+Date: Thu, 25 Sep 2025 18:10:37 +0200
 MIME-Version: 1.0
-References: <20250920140124.63046-1-mohamed@unpredictable.fr>
- <20250920140124.63046-23-mohamed@unpredictable.fr>
-In-Reply-To: <20250920140124.63046-23-mohamed@unpredictable.fr>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 25 Sep 2025 17:02:33 +0100
-X-Gm-Features: AS18NWD0ExaVsx4-sz2VajpoCZeR2gAFsGP1JUT_ZNYO9R7ArS7Np5PQco5dlVo
-Message-ID: <CAFEAcA-45aHae+frQkq1JAHPYJH-Uu9HUOLU5VjVtEEW1sNO4g@mail.gmail.com>
-Subject: Re: [PATCH v6 22/23] docs: arm: update virt machine model description
-To: Mohamed Mediouni <mohamed@unpredictable.fr>
-Cc: qemu-devel@nongnu.org, Shannon Zhao <shannon.zhaosl@gmail.com>, 
- Yanan Wang <wangyanan55@huawei.com>, Phil Dennis-Jordan <phil@philjordan.eu>, 
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
- =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
- Mads Ynddal <mads@ynddal.dk>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- Cameron Esfahani <dirty@apple.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Zhao Liu <zhao1.liu@intel.com>, 
- "Michael S. Tsirkin" <mst@redhat.com>, kvm@vger.kernel.org,
- Igor Mammedov <imammedo@redhat.com>, 
- qemu-arm@nongnu.org, Richard Henderson <richard.henderson@linaro.org>, 
- Roman Bolshakov <rbolshakov@ddn.com>, Pedro Barbuda <pbarbuda@microsoft.com>, 
- Alexander Graf <agraf@csgraf.de>, Sunil Muthuswamy <sunilmut@microsoft.com>, 
- Eduardo Habkost <eduardo@habkost.net>, Ani Sinha <anisinha@redhat.com>, 
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b12b;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12b.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 5/8] hw/arm/aspeed_ast27x0-fc: Drop dead return checks
+To: Jamin Lin <jamin_lin@aspeedtech.com>, Peter Maydell
+ <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
+ <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, Joel
+ Stanley <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+CC: <troy_lee@aspeedtech.com>
+References: <20250925050535.2657256-1-jamin_lin@aspeedtech.com>
+ <20250925050535.2657256-6-jamin_lin@aspeedtech.com>
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Content-Language: en-US, fr
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <20250925050535.2657256-6-jamin_lin@aspeedtech.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [37.59.142.108]
+X-ClientProxiedBy: DAG7EX1.mxp5.local (172.16.2.61) To DAG8EX2.mxp5.local
+ (172.16.2.72)
+X-Ovh-Tracer-GUID: f980f828-10df-4ca3-aa9f-fd87b78c07de
+X-Ovh-Tracer-Id: 7601794696159660847
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: dmFkZTEvr7eMIKrAE5JvXqeExWppLQvGXISBk0tANnxzr/2D0ZgD5Qzte9WfvtdeaVvfjSXUkCO0SEu4GNWttLSG01vrn6Z/udOxjVuDxN9bKJcab5XvJCxhP+/Kn1cByeeTwVcB6LZiWWrFIuP3ZWtaZ8RU3LuHVYwlPYGhg8OGf+/rt8kT6j4VN8egXkodZueoSNaZ8t9PZkXK3/l83Ep+LA/ZwPclTdWsQ/yGPXzuMgNaMVib5EJX63T5u33ND5F0dfz9ksdNzgJAKVpTdlLKHJ8HB3DyJxzU3J6xoW3zeGz1A6cqRhPxhgpwIny6d5deZVYpb2N9y+rwDKgRbGEDAcOYjiwfOSmFX+jltnucjTeV06ei6RNNp4vxDLG277YcQJjufrkZTBxg/eJnKiU+gXgXHi6KWr85Ao1+u6xwBmu55VTSJOL2sQ+IxnxqS4aTrfjXtNTIZ8ORjAxSld5f3SrOQRCQdCKbXoYwYdeQ2Raqz0j1yuhss596KWGfPpWE3E1H4RS1Y9o8OP/pb9idCHvP2N0Wl1TiuGgJ2AFDl5id5z47nUN3UgJm2LxOC2eDxo3FuaGyaJ4EG6Go+pnSsMTpQB4xlidPAqy+sZ7775LZKhi0QzReoqJ6QEcWHyENndeBDzXCEjlgwVDYuPOT+hzwqzFuQwS8XDksqu47KTGaPw
+DKIM-Signature: a=rsa-sha256; bh=cTVicY/o636vATMUl82X7qHXgQbdIly2coGGu6wdCls=; 
+ c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
+ t=1758816641; v=1;
+ b=iImFMmM6ROZd6anp3N5MPMqtYsVJWIwN6LPtMZrojWZnL6nOdc7xk7GV8hNM5dZeprbgSbPJ
+ brCFGN2iGaNyaZ3hRg3Lk1APkxtZfwRv7MAbqVJ6oxNlwTEYdat56TXeSmo2s2zURLpzaSjZNFO
+ +vt+LLWfGDOehSrFau4cv3bn5gUf9hyuLe84Neum1bSVvqUAEBnKaiLA/cinp5BaDkIr/pwIXtC
+ aLn7yMAoMq6yLFoNNAlpJg4cLe92zby8LYZ/1/GAyle0Qf9cLvW+q6Y0JtzICDLpRosXLpdnlUd
+ ngd00PALLLcApUfjptzFxuD4H+OQwRXY1v52aI4gTzhyw==
+Received-SPF: pass client-ip=79.137.123.220; envelope-from=clg@kaod.org;
+ helo=smtpout2.mo529.mail-out.ovh.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -109,50 +130,105 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Sat, 20 Sept 2025 at 15:03, Mohamed Mediouni
-<mohamed@unpredictable.fr> wrote:
->
-> Update the documentation to match current QEMU.
->
-> Remove the mention of pre-2.7 machine models as those aren't provided
-> anymore.
->
-> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+On 9/25/25 07:05, Jamin Lin wrote:
+> 1. object_property_set_link() can return false only when it fails, and it
+> sets an error when it fails. Since passing &error_abort causes an abort,
+> the function never returns false, and the return statement is effectively
+> dead code.
+> 2. object_property_set_int() is considered as a routine which shouldn't fail.
+> So the common practice in models is to pass &error_abort and ignore the returned value.
+> https://patchwork.kernel.org/project/qemu-devel/patch/20250717034054.1903991-3-jamin_lin@aspeedtech.com/#26540626
+> 
+> No functional change.
+> 
+> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+
+
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
+
+Thanks,
+
+C.
+
+
 > ---
->  docs/system/arm/virt.rst | 10 +++++-----
->  1 file changed, 5 insertions(+), 5 deletions(-)
->
-> diff --git a/docs/system/arm/virt.rst b/docs/system/arm/virt.rst
-> index 10cbffc8a7..fe95be991e 100644
-> --- a/docs/system/arm/virt.rst
-> +++ b/docs/system/arm/virt.rst
-> @@ -40,9 +40,10 @@ The virt board supports:
->  - An optional SMMUv3 IOMMU
->  - hotpluggable DIMMs
->  - hotpluggable NVDIMMs
-> -- An MSI controller (GICv2M or ITS). GICv2M is selected by default along
-> -  with GICv2. ITS is selected by default with GICv3 (>= virt-2.7). Note
-> -  that ITS is not modeled in TCG mode.
-> +- An MSI controller (GICv2m or ITS).
-> +  - When using a GICv3, ITS is selected by default when available on the platform.
-> +  - If using a GICv2 or when ITS is not available, a GICv2m is provided by default instead.
-> +  - Before virt-10.2, a GICv2m is not provided when the ITS is disabled.
->  - 32 virtio-mmio transport devices
->  - running guests using the KVM accelerator on aarch64 hardware
->  - large amounts of RAM (at least 255GB, and more if using highmem)
-> @@ -167,8 +168,7 @@ gic-version
->      ``4`` if ``virtualization`` is ``on``, but this may change in future)
->
->  its
-> -  Set ``on``/``off`` to enable/disable ITS instantiation. The default is ``on``
-> -  for machine types later than ``virt-2.7``.
-> +  Set ``on``/``off``/``auto`` to control ITS instantiation. The default is ``auto``.
+>   hw/arm/aspeed_ast27x0-fc.c | 43 +++++++++++++-------------------------
+>   1 file changed, 14 insertions(+), 29 deletions(-)
+> 
+> diff --git a/hw/arm/aspeed_ast27x0-fc.c b/hw/arm/aspeed_ast27x0-fc.c
+> index 7087be4288..ebf3784df5 100644
+> --- a/hw/arm/aspeed_ast27x0-fc.c
+> +++ b/hw/arm/aspeed_ast27x0-fc.c
+> @@ -74,19 +74,12 @@ static void ast2700fc_ca35_init(MachineState *machine)
+>                                   AST2700FC_BMC_RAM_SIZE, &error_abort)) {
+>           return;
+>       }
+> -    if (!object_property_set_link(OBJECT(&s->ca35), "memory",
+> -                                  OBJECT(&s->ca35_memory),
+> -                                  &error_abort)) {
+> -        return;
+> -    };
+> -    if (!object_property_set_link(OBJECT(&s->ca35), "dram",
+> -                                  OBJECT(&s->ca35_dram), &error_abort)) {
+> -        return;
+> -    }
+> -    if (!object_property_set_int(OBJECT(&s->ca35), "ram-size",
+> -                                 AST2700FC_BMC_RAM_SIZE, &error_abort)) {
+> -        return;
+> -    }
+> +    object_property_set_link(OBJECT(&s->ca35), "memory",
+> +                             OBJECT(&s->ca35_memory), &error_abort);
+> +    object_property_set_link(OBJECT(&s->ca35), "dram", OBJECT(&s->ca35_dram),
+> +                             &error_abort);
+> +    object_property_set_int(OBJECT(&s->ca35), "ram-size",
+> +                            AST2700FC_BMC_RAM_SIZE, &error_abort);
+>   
+>       for (int i = 0; i < sc->macs_num; i++) {
+>           if (!qemu_configure_nic_device(DEVICE(&soc->ftgmac100[i]),
+> @@ -94,14 +87,10 @@ static void ast2700fc_ca35_init(MachineState *machine)
+>               break;
+>           }
+>       }
+> -    if (!object_property_set_int(OBJECT(&s->ca35), "hw-strap1",
+> -                                 AST2700FC_HW_STRAP1, &error_abort)) {
+> -        return;
+> -    }
+> -    if (!object_property_set_int(OBJECT(&s->ca35), "hw-strap2",
+> -                                 AST2700FC_HW_STRAP2, &error_abort)) {
+> -        return;
+> -    }
+> +    object_property_set_int(OBJECT(&s->ca35), "hw-strap1",
+> +                            AST2700FC_HW_STRAP1, &error_abort);
+> +    object_property_set_int(OBJECT(&s->ca35), "hw-strap2",
+> +                            AST2700FC_HW_STRAP2, &error_abort);
+>       aspeed_soc_uart_set_chr(soc, ASPEED_DEV_UART12, serial_hd(0));
+>       if (!qdev_realize(DEVICE(&s->ca35), NULL, &error_abort)) {
+>           return;
+> @@ -133,10 +122,8 @@ static void ast2700fc_ssp_init(MachineState *machine)
+>                          UINT64_MAX);
+>   
+>       qdev_connect_clock_in(DEVICE(&s->ssp), "sysclk", s->ssp_sysclk);
+> -    if (!object_property_set_link(OBJECT(&s->ssp), "memory",
+> -                                  OBJECT(&s->ssp_memory), &error_abort)) {
+> -        return;
+> -    }
+> +    object_property_set_link(OBJECT(&s->ssp), "memory",
+> +                             OBJECT(&s->ssp_memory), &error_abort);
+>   
+>       soc = ASPEED_SOC(&s->ssp);
+>       aspeed_soc_uart_set_chr(soc, ASPEED_DEV_UART4, serial_hd(1));
+> @@ -157,10 +144,8 @@ static void ast2700fc_tsp_init(MachineState *machine)
+>                          UINT64_MAX);
+>   
+>       qdev_connect_clock_in(DEVICE(&s->tsp), "sysclk", s->tsp_sysclk);
+> -    if (!object_property_set_link(OBJECT(&s->tsp), "memory",
+> -                                  OBJECT(&s->tsp_memory), &error_abort)) {
+> -        return;
+> -    }
+> +    object_property_set_link(OBJECT(&s->tsp), "memory",
+> +                             OBJECT(&s->tsp_memory), &error_abort);
+>   
+>       soc = ASPEED_SOC(&s->tsp);
+>       aspeed_soc_uart_set_chr(soc, ASPEED_DEV_UART7, serial_hd(2));
 
-Could you fold the docs updates into whichever patches make the
-corresponding changes to the virt board, please? I think
-that's patch 3 for the "gicv2m when no ITS available" and
-I'm not sure which patch the "add auto for the its property" is.
-
-thanks
--- PMM
 

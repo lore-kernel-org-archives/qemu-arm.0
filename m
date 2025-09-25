@@ -4,26 +4,26 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43339CAC5B1
-	for <qemu-arm@archiver.kernel.org>; Thu, 25 Sep 2025 16:28:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11384CAC5B1
+	for <qemu-arm@archiver.kernel.org>; Thu, 25 Sep 2025 16:28:28 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v1op5-0007Kv-FP; Thu, 25 Sep 2025 12:28:00 -0400
+	id 1v1opH-0007fe-1O; Thu, 25 Sep 2025 12:28:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <tangtao1634@phytium.com.cn>)
- id 1v1ooF-0006U8-5Z; Thu, 25 Sep 2025 12:27:07 -0400
-Received: from zg8tmtyylji0my4xnjqumte4.icoremail.net ([162.243.164.118])
+ id 1v1oo6-0006S5-Nj; Thu, 25 Sep 2025 12:27:00 -0400
+Received: from zg8tmtu5ljy1ljeznc42.icoremail.net ([159.65.134.6])
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <tangtao1634@phytium.com.cn>)
- id 1v1ons-0004mc-J1; Thu, 25 Sep 2025 12:27:04 -0400
+ id 1v1onl-0004l9-Q5; Thu, 25 Sep 2025 12:26:58 -0400
 Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
- by hzbj-icmmx-7 (Coremail) with SMTP id AQAAfwAXHbU7bdVopAo6CQ--.561S2;
- Fri, 26 Sep 2025 00:26:35 +0800 (CST)
+ by hzbj-icmmx-6 (Coremail) with SMTP id AQAAfwA3PVE1bdVooDN6Bw--.49908S2;
+ Fri, 26 Sep 2025 00:26:29 +0800 (CST)
 Received: from phytium.com.cn (unknown [218.76.62.144])
- by mail (Coremail) with SMTP id AQAAfwDHLestbdVoW_MeAA--.7120S14;
- Fri, 26 Sep 2025 00:26:32 +0800 (CST)
+ by mail (Coremail) with SMTP id AQAAfwDHLestbdVoW_MeAA--.7120S9;
+ Fri, 26 Sep 2025 00:26:28 +0800 (CST)
 From: Tao Tang <tangtao1634@phytium.com.cn>
 To: Eric Auger <eric.auger@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>
@@ -31,33 +31,34 @@ Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  Chen Baozi <chenbaozi@phytium.com.cn>, pierrick.bouvier@linaro.org,
  philmd@linaro.org, jean-philippe@linaro.org, smostafa@google.com,
  Tao Tang <tangtao1634@phytium.com.cn>
-Subject: [PATCH v2 11/14] hw/arm/smmuv3: Harden security checks in MMIO
- handlers
-Date: Fri, 26 Sep 2025 00:26:15 +0800
-Message-Id: <20250925162618.191242-12-tangtao1634@phytium.com.cn>
+Subject: [PATCH v2 06/14] hw/arm/smmuv3: Add separate address space for secure
+ SMMU accesses
+Date: Fri, 26 Sep 2025 00:26:10 +0800
+Message-Id: <20250925162618.191242-7-tangtao1634@phytium.com.cn>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20250925162618.191242-1-tangtao1634@phytium.com.cn>
 References: <20250925162618.191242-1-tangtao1634@phytium.com.cn>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: AQAAfwDHLestbdVoW_MeAA--.7120S14
-X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQAEBWjUSMIHwwAAsy
-Authentication-Results: hzbj-icmmx-7; spf=neutral smtp.mail=tangtao163
+X-CM-TRANSID: AQAAfwDHLestbdVoW_MeAA--.7120S9
+X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQAEBWjUSMIHuQAAsI
+Authentication-Results: hzbj-icmmx-6; spf=neutral smtp.mail=tangtao163
  4@phytium.com.cn;
-X-Coremail-Antispam: 1Uk129KBjvJXoWxGFykuF15Gw4xWrW5AFWfAFb_yoWrXF18pr
- WvgryYgr4DGF13Xan3Jw1kCF1FkrWkWF9rGrZxGrW8Za4UJ3yrJ3W8Aa45Ka4DGFyUAws7
- JFyfAF4fWF12y3DanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
+X-Coremail-Antispam: 1Uk129KBjvJXoWxWr43Jw47Jw1rCw48XF1kKrg_yoW5ZrW5pF
+ Z3AFZxt3yjk3W7ZrZ7XrnruFy8Wa95WF4UGr47Cwn5ZF13tr1ayw4qk3W5KFyDCr45Ja17
+ ZF17Zr4xXF4jqrJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
  DUYxn0WfASr-VFAU7a7-sFnT9fnUUIcSsGvfJ3UbIYCTnIWIevJa73UjIFyTuYvj4RJUUU
  UUUUU
-Received-SPF: pass client-ip=162.243.164.118;
+Received-SPF: pass client-ip=159.65.134.6;
  envelope-from=tangtao1634@phytium.com.cn;
- helo=zg8tmtyylji0my4xnjqumte4.icoremail.net
-X-Spam_score_int: -25
-X-Spam_score: -2.6
-X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
+ helo=zg8tmtu5ljy1ljeznc42.icoremail.net
+X-Spam_score_int: 41
+X-Spam_score: 4.1
+X-Spam_bar: ++++
+X-Spam_report: (4.1 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
+ RCVD_IN_PBL=3.335, RCVD_IN_SBL_CSS=3.335,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001, T_SPF_HELO_TEMPERROR=0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -73,115 +74,102 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This patch hardens the security validation within the main MMIO
-dispatcher functions (smmu_read_mmio and smmu_write_mmio).
+According to the Arm architecture, SMMU-originated memory accesses,
+such as fetching commands or writing events for a secure stream, must
+target the Secure Physical Address (PA) space. The existing model sends
+all DMA to the global address_space_memory.
 
-First, accesses to the secure register space are now correctly gated by
-whether the SECURE_IMPL feature is enabled in the model. This prevents
-guest software from accessing the secure programming interface when it is
-disabled, though some registers are exempt from this check as per the
-architecture.
+This patch introduces the infrastructure to differentiate between secure
+and non-secure memory accesses. A weak global symbol,
+arm_secure_address_space, is added, which can be provided by the
+machine model to represent the Secure PA space.
 
-Second, the check for the input stream's security is made more robust.
-It now validates not only the legacy MemTxAttrs.secure bit, but also
-the .space field. This brings the SMMU's handling of security spaces
-into full alignment with the PE.
+A new helper, smmu_get_address_space(), selects the target address
+space based on the is_secure context. All internal DMA calls
+(dma_memory_read/write) are updated to use this helper. Additionally,
+the attrs.secure bit is set on transactions targeting the secure
+address space.
 
 Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
 ---
- hw/arm/smmuv3.c | 58 +++++++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 58 insertions(+)
+ hw/arm/smmu-common.c         |  8 ++++++++
+ hw/arm/virt.c                |  5 +++++
+ include/hw/arm/smmu-common.h | 20 ++++++++++++++++++++
+ 3 files changed, 33 insertions(+)
 
-diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index 53c7eff0e3..eec36d5fd2 100644
---- a/hw/arm/smmuv3.c
-+++ b/hw/arm/smmuv3.c
-@@ -1484,6 +1484,12 @@ static bool smmu_eventq_irq_cfg_writable(SMMUv3State *s,
-     return smmu_irq_ctl_evtq_irqen_disabled(s, sec_idx);
- }
+diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
+index 62a7612184..24db448683 100644
+--- a/hw/arm/smmu-common.c
++++ b/hw/arm/smmu-common.c
+@@ -30,6 +30,14 @@
+ #include "hw/arm/smmu-common.h"
+ #include "smmu-internal.h"
  
-+/* Check if the SMMU hardware itself implements secure state features */
-+static inline bool smmu_hw_secure_implemented(SMMUv3State *s)
++/* Global state for secure address space availability */
++bool arm_secure_as_available;
++
++void smmu_enable_secure_address_space(void)
 +{
-+    return FIELD_EX32(s->bank[SMMU_SEC_IDX_S].idr[1], S_IDR1, SECURE_IMPL);
++    arm_secure_as_available = true;
 +}
 +
- static int smmuv3_cmdq_consume(SMMUv3State *s, SMMUSecurityIndex sec_idx)
- {
-     SMMUState *bs = ARM_SMMU(s);
-@@ -1723,6 +1729,43 @@ static int smmuv3_cmdq_consume(SMMUv3State *s, SMMUSecurityIndex sec_idx)
-     return 0;
- }
+ /* IOTLB Management */
  
-+static bool is_secure_impl_exempt_reg(hwaddr offset)
+ static guint smmu_iotlb_key_hash(gconstpointer v)
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 02209fadcf..805d9aadb7 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -92,6 +92,8 @@
+ #include "hw/cxl/cxl_host.h"
+ #include "qemu/guest-random.h"
+ 
++AddressSpace arm_secure_address_space;
++
+ static GlobalProperty arm_virt_compat[] = {
+     { TYPE_VIRTIO_IOMMU_PCI, "aw-bits", "48" },
+ };
+@@ -2243,6 +2245,9 @@ static void machvirt_init(MachineState *machine)
+         memory_region_init(secure_sysmem, OBJECT(machine), "secure-memory",
+                            UINT64_MAX);
+         memory_region_add_subregion_overlap(secure_sysmem, 0, sysmem, -1);
++        address_space_init(&arm_secure_address_space, secure_sysmem,
++                           "secure-memory-space");
++        smmu_enable_secure_address_space();
+     }
+ 
+     firmware_loaded = virt_firmware_init(vms, sysmem,
+diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
+index 3df82b83eb..cd61c5e126 100644
+--- a/include/hw/arm/smmu-common.h
++++ b/include/hw/arm/smmu-common.h
+@@ -53,6 +53,26 @@ typedef enum SMMUSecurityIndex {
+     SMMU_SEC_IDX_NUM,
+ } SMMUSecurityIndex;
+ 
++extern AddressSpace __attribute__((weak)) arm_secure_address_space;
++extern bool arm_secure_as_available;
++void smmu_enable_secure_address_space(void);
++
++static inline AddressSpace *smmu_get_address_space(SMMUSecurityIndex sec_sid)
 +{
-+    switch (offset) {
-+    case A_S_EVENTQ_IRQ_CFG0:
-+    case A_S_EVENTQ_IRQ_CFG1:
-+    case A_S_EVENTQ_IRQ_CFG2:
-+        return true;
++    switch (sec_sid) {
++    case SMMU_SEC_IDX_S:
++    {
++        if (arm_secure_as_available) {
++            return &arm_secure_address_space;
++        }
++    }
++    QEMU_FALLTHROUGH;
++    case SMMU_SEC_IDX_NS:
 +    default:
-+        return false;
++        return &address_space_memory;
 +    }
 +}
 +
-+/* Helper function for Secure register access validation */
-+static bool smmu_check_secure_access(SMMUv3State *s, MemTxAttrs attrs,
-+                                     hwaddr offset, bool is_read)
-+{   /* Check if the access is secure */
-+    if (!(attrs.space == ARMSS_Secure || attrs.space == ARMSS_Root ||
-+          attrs.secure == 1)) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+            "%s: Non-secure %s attempt at offset 0x%" PRIx64 " (%s)\n",
-+            __func__, is_read ? "read" : "write", offset,
-+            is_read ? "RAZ" : "WI");
-+        return false;
-+    }
-+
-+    /* Check if the secure state is implemented. Some registers are exempted */
-+    /* from this check. */
-+    if (!is_secure_impl_exempt_reg(offset) && !smmu_hw_secure_implemented(s)) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+            "%s: Secure %s attempt at offset 0x%" PRIx64 ". But Secure state "
-+            "is not implemented (RES0)\n",
-+            __func__, is_read ? "read" : "write", offset);
-+        return false;
-+    }
-+    return true;
-+}
-+
- static MemTxResult smmu_writell(SMMUv3State *s, hwaddr offset,
-                                uint64_t data, MemTxAttrs attrs,
-                                SMMUSecurityIndex reg_sec_idx)
-@@ -2038,6 +2081,13 @@ static MemTxResult smmu_write_mmio(void *opaque, hwaddr offset, uint64_t data,
-     /* CONSTRAINED UNPREDICTABLE choice to have page0/1 be exact aliases */
-     offset &= ~0x10000;
-     SMMUSecurityIndex reg_sec_idx = SMMU_SEC_IDX_NS;
-+    if (offset >= SMMU_SECURE_BASE_OFFSET) {
-+        if (!smmu_check_secure_access(s, attrs, offset, false)) {
-+            trace_smmuv3_write_mmio(offset, data, size, MEMTX_OK);
-+            return MEMTX_OK;
-+        }
-+        reg_sec_idx = SMMU_SEC_IDX_S;
-+    }
- 
-     switch (size) {
-     case 8:
-@@ -2252,6 +2302,14 @@ static MemTxResult smmu_read_mmio(void *opaque, hwaddr offset, uint64_t *data,
-     /* CONSTRAINED UNPREDICTABLE choice to have page0/1 be exact aliases */
-     offset &= ~0x10000;
-     SMMUSecurityIndex reg_sec_idx = SMMU_SEC_IDX_NS;
-+    if (offset >= SMMU_SECURE_BASE_OFFSET) {
-+        if (!smmu_check_secure_access(s, attrs, offset, true)) {
-+            *data = 0;
-+            trace_smmuv3_read_mmio(offset, *data, size, MEMTX_OK);
-+            return MEMTX_OK;
-+        }
-+        reg_sec_idx = SMMU_SEC_IDX_S;
-+    }
- 
-     switch (size) {
-     case 8:
+ /*
+  * Page table walk error types
+  */
 -- 
 2.34.1
 

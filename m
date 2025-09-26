@@ -4,94 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6BB8CAC5AE
-	for <qemu-arm@archiver.kernel.org>; Fri, 26 Sep 2025 18:16:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15F94CAC5BB
+	for <qemu-arm@archiver.kernel.org>; Fri, 26 Sep 2025 21:49:50 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v2Cz5-00068b-EY; Fri, 26 Sep 2025 14:15:55 -0400
+	id 1v2GJh-0004i7-TE; Fri, 26 Sep 2025 17:49:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
- id 1v2Cz2-00067d-4h
- for qemu-arm@nongnu.org; Fri, 26 Sep 2025 14:15:53 -0400
-Received: from mail-pf1-x42f.google.com ([2607:f8b0:4864:20::42f])
+ (Exim 4.90_1) (envelope-from <lixiaoyan@google.com>)
+ id 1v2GJe-0004hW-1Q
+ for qemu-arm@nongnu.org; Fri, 26 Sep 2025 17:49:22 -0400
+Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
- id 1v2Cyo-0006qi-Vh
- for qemu-arm@nongnu.org; Fri, 26 Sep 2025 14:15:51 -0400
-Received: by mail-pf1-x42f.google.com with SMTP id
- d2e1a72fcca58-77d94c6562fso2790613b3a.2
- for <qemu-arm@nongnu.org>; Fri, 26 Sep 2025 11:15:31 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <lixiaoyan@google.com>)
+ id 1v2GJP-0000rZ-QD
+ for qemu-arm@nongnu.org; Fri, 26 Sep 2025 17:49:21 -0400
+Received: by mail-ed1-x534.google.com with SMTP id
+ 4fb4d7f45d1cf-62fa84c6916so3433a12.0
+ for <qemu-arm@nongnu.org>; Fri, 26 Sep 2025 14:49:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1758910528; x=1759515328; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:content-language:references
- :cc:to:from:subject:user-agent:mime-version:date:message-id:from:to
- :cc:subject:date:message-id:reply-to;
- bh=rhEyu8bfBt8unG1DTjMeOH3PnADamHBw2zj4j4HAaAk=;
- b=PHsc8Zhw3YgDGJotqcApGg9LsbneUA71v7edEyXsNA+UhWxSLiQumKvbbo3r5hZ9C3
- n7trAov9U0LNpFPJCzswFk60DAs+dmPEQ/mJGibU0/q7MzlyleerXN3Xuuzx/lWrf3e5
- oLmF/sIp131bU+HVW/Jk7oPiieg3PyiSZy+j4AuGy5zMLjrNKRi5w/D6/qGLwcrl4NNq
- f8r1y6LhWShLb/unLCdoM4mghDPHN3JIbrqOLFn1LhIIwJKwToHnfmoSPCUrp4HGCbIk
- oiorNhwqBumXVHUVYR76ELAZcxEHujVLUCAtIgytFCvkfmTLGPllpTFP0FnD20ifpsPg
- QFOA==
+ d=google.com; s=20230601; t=1758923340; x=1759528140; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=0YOQH1ol7r7OQB7qdsyqB7C9IdyT80BjoHAoKtgCFPc=;
+ b=hbGZnylt85JfVSfXIJcAQ3IB2lVUjTCx/nfka6LgFfKQYHJ5X26Ovo+5Q8mrFZguv/
+ imR/Zgifa28B3Kq5DouXUd5dBeJM/n45kXrp2sXIkoC6+Ne4xBYsQ21/5QlnbX2cNXkP
+ ynm2TByCDPjepXV9sSJy51Uwa9tsbrgy8sREe1vXnJcnZHINvftmFsXne6FX5IgC/UDN
+ g088KPYh7AW9aXrvbv5zAlt2MDVu+rYWuy58XPR/NT97qooU6GRbgXlRUf2SWjJgMTiH
+ DmWli/3zOlqoaa02ZeBZif72GKO8jWpFYUQLd9U7Zq/V2PwjVy8lgpuCsAunhMYswZ69
+ h/IQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1758910528; x=1759515328;
- h=content-transfer-encoding:in-reply-to:content-language:references
- :cc:to:from:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=rhEyu8bfBt8unG1DTjMeOH3PnADamHBw2zj4j4HAaAk=;
- b=H4vA9nw9as+tYu3cwYM75H/cZ5wE5Tepx5flR/+MymigEHkDLDhQk0l4S334W9GtnG
- ZdDhvfcvC6N8JaSCND3rvV3LMCH4IwFyRbHRJ58bx76OSVirC20hBkdg4Uo0uc631eCR
- NQbbRjpB0ETT244jb/f0l1chzPHI/MXCDM3nWSwGlKXnkBUUyN0Uc8Yfb+FCi7CtUhMc
- Szv8SGqJy5pX0gTYPTdJogHGXYk29V+UinOcIDmWh1Gkbkrhgk3AaMMWsuHgkUEa1l/x
- GvLOSOdHelNOddcEHN5216hsi5rmzuR1V9GHB8yhYFhjmupnAz3267Ej4qBpll0C3ZqQ
- /rpg==
-X-Gm-Message-State: AOJu0Yw2q2ZLMnu/vtmeg2q8FnH3gWhkRAaYHx7e/hIuRRSIelf4iIaW
- wGlEKdNbKPKCLqXe5XdKIqcqpbDG+jkd6J7b4LnlSl5P3q3bSIYTGCRHx/88N1d02OE=
-X-Gm-Gg: ASbGncvmaVe+ldihuhYUN03xxdcwzJwUjo0KgV+12pFpXKGjsotfKtlrLaZW4ZKNS5q
- dzATduvvduWq6OjOQ2zyhK1Jw5jsxw6X2Im96zOhMC91ZcB/YkzTeLSz2QD/60LAFBlJLhLduqC
- xURmHoMbHRFC9kcdw4dj1aT5kMUKqP8chcS7gl0KvK5iqhudMPZMM+ed5hBA9ItMcZvt26PFnV5
- ogXUYGzyDNtmCV2IcQrO8mcziBpbwgJCafLCavGi+kxoCnMcPbbU2at2tpPKT0rv5NeMj4yQTzR
- bdIal6fIr1r8vhjKCFRotonj9b1zIVLZlWlifUGqnIwHePYUykk4s//VVdA3T24v0oRla/55iLs
- 9fSXKP3MC9FxMeC6VNtKnfe+DExyGLlVUZbR46hbBDHFKKMEd1yMJCDVgD/TJ5q37
-X-Google-Smtp-Source: AGHT+IHGo6GJ99yrEtfeqWAhoNrG9INAC9cP6QZ5qggVCqug5Z2uQd2xekH3nAMuFQjFgeMuEAEwug==
-X-Received: by 2002:a05:6a00:181b:b0:781:2177:1c9b with SMTP id
- d2e1a72fcca58-78121771e77mr2041252b3a.17.1758910527512; 
- Fri, 26 Sep 2025 11:15:27 -0700 (PDT)
-Received: from [192.168.0.102] (189-47-45-49.dsl.telesp.net.br. [189.47.45.49])
- by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-7810238cafasm4976130b3a.4.2025.09.26.11.15.25
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 26 Sep 2025 11:15:27 -0700 (PDT)
-Message-ID: <599cd42e-0619-4556-ae70-b2d360e6405a@linaro.org>
-Date: Fri, 26 Sep 2025 15:15:24 -0300
+ d=1e100.net; s=20230601; t=1758923340; x=1759528140;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=0YOQH1ol7r7OQB7qdsyqB7C9IdyT80BjoHAoKtgCFPc=;
+ b=tPozxoP9xJRwpLg/Ud3SKQB1T+sCJsj88MVQd2r/dQybqysuGw5dfuBBRGisYfDyF7
+ z7UpzSXYM2juwQ/9NjiS+NaIe3KJBa9lhF0dudsUmR68L6ZqB430Dd9ZE0xDu/a9Zelu
+ edlgYOrrr1Tz6pv+/LtFbZonHDmok9oxqW2DDU2LpJ5poqz9aYbmG1xrYe6lIEtxEU/4
+ YT+aUBYu9MZG7u7v01+HrJdXcIlVjLX9H+xuGAJHESMeldMTwyqUfjVkZezb4qnNKgS0
+ QfU6Pr3BI3sVr9SdyodKYU61O4vmnKJ2GTKckUgQ9pFQulrDCCxCATsP7oEsI2HYu8qF
+ ONwQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWJchuTIKqMLx+zZMzmIOliq5uDf3ujy/n6Hq+rn+lh3z1t121hbux4KECKILz3xMZco4+4zobLWg==@nongnu.org
+X-Gm-Message-State: AOJu0YyOoxKr9/dEHvSR37BUowfJ6TIQf28TPOWyTfUkBInYZTBUGDZN
+ XOeHPO1GmOoqGuPo0pwHOuJ+aYKp0PCtR35ttgZBdm1xm9r0yY4sUfRFwiEffZq3TNALVaWsmk9
+ uzQBYWRqts+WeGo79NnnH6UaKEou8JegNR+yPubwL
+X-Gm-Gg: ASbGncvwFPIgz4oCSqaXsqJMmEWj9zGhgtSXdtDQbdLROfVxp6RT3zwHZPBm0ZyJMKe
+ tyt2+1sCewOYPz+LwR8AorY+qFIAysE5uqg9cCM4KwQS3gcJeU2hrYp6nwKkzoHkM/+/6eDD4Vd
+ A+nDBCrj5RN/dQESXcePep6mZXtFSOYlcHDv8go6A3jeKQIfKPYvFTcvgL7TeA7UQV9Wp1N1NDY
+ IslfF2R6FvyO3pwm+le9w6Ac4VLaO+p/swljZrtaqDZLZ0X30a9pj07Sw==
+X-Google-Smtp-Source: AGHT+IEmPPcZtaPtymcprODMivqiTM9vnUx8lUpfKoyXip8yeVhDMEVVcOvfXAApjNh0+usP9pC7JOoaCESrsULmnD0=
+X-Received: by 2002:a05:6402:6d5:b0:633:2321:a07b with SMTP id
+ 4fb4d7f45d1cf-634b60424c7mr125037a12.0.1758923339716; Fri, 26 Sep 2025
+ 14:48:59 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 3/9] tests/functional: Provide GDB to the functional
- tests
-From: Gustavo Romero <gustavo.romero@linaro.org>
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
- alex.bennee@linaro.org, berrange@redhat.com
-Cc: qemu-arm@nongnu.org, manos.pitsidianakis@linaro.org,
- peter.maydell@linaro.org
-References: <20250926051542.104432-1-gustavo.romero@linaro.org>
- <20250926051542.104432-4-gustavo.romero@linaro.org>
- <a9118adc-f9ac-4df0-8e60-4407945a5908@redhat.com>
- <bd906237-c0fb-4921-a017-a591bc95f31f@linaro.org>
-Content-Language: en-US
-In-Reply-To: <bd906237-c0fb-4921-a017-a591bc95f31f@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42f;
- envelope-from=gustavo.romero@linaro.org; helo=mail-pf1-x42f.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+References: <20250925005832.3708492-1-lixiaoyan@google.com>
+ <20250925005832.3708492-4-lixiaoyan@google.com>
+ <1a755fbf-e6d6-4f80-b35d-29fcb3f587d3@linaro.org>
+In-Reply-To: <1a755fbf-e6d6-4f80-b35d-29fcb3f587d3@linaro.org>
+From: Coco Li <lixiaoyan@google.com>
+Date: Fri, 26 Sep 2025 14:48:47 -0700
+X-Gm-Features: AS18NWD4a8yEo_18Lu7kQUn4ii3v8Jr1mHfOE9Jx1wSs8zAxrXE_lWkPvTU_BJU
+Message-ID: <CADjXwji8M6RsmPtf6Duw+8WcesZD3qSZ9_cR-oiX+dzJ_w7Z9g@mail.gmail.com>
+Subject: Re: [PATCH v1 3/5] hw/arm/npcm8xx.c: Add all IRQ ENUMs
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Cc: peter.maydell@linaro.org, clg@kaod.org, qemu-arm@nongnu.org, 
+ qemu-devel@nongnu.org, flwu@google.com, andrew@codeconstruct.com.au, 
+ Hao Wu <wuhaotsh@google.com>
+Content-Type: multipart/alternative; boundary="000000000000da5000063fbb40f3"
+Received-SPF: pass client-ip=2a00:1450:4864:20::534;
+ envelope-from=lixiaoyan@google.com; helo=mail-ed1-x534.google.com
+X-Spam_score_int: -165
+X-Spam_score: -16.6
+X-Spam_bar: ----------------
+X-Spam_report: (-16.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ ENV_AND_HDR_SPF_MATCH=-0.5, HK_RANDOM_ENVFROM=0.001, HK_RANDOM_FROM=0.999,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -107,92 +100,274 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Thomas,
+--000000000000da5000063fbb40f3
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-On 9/26/25 15:08, Gustavo Romero wrote:
-> Hi Thomas,
-> 
-> On 9/26/25 07:03, Thomas Huth wrote:
->> On 26/09/2025 07.15, Gustavo Romero wrote:
->>> The probe of GDB is done in 'configure' and the full path is passed to
->>> meson.build via the -Dgdb=option.
->>>
->>> Because a single functional test can cover different arches, such as
->>> aarch64, ppc64, and x86_64, only a GDB that supports all the arches in
->>> the target list is passed to Meson for use in the functional tests. To
->>> handle this check, a new shell function, is_target_arch_in_arch_list, is
->>> introduced in 'configure'.
->>>
->>> Meson then can pass the location of GDB to the test via an environment
->>> variable: QEMU_TEST_GDB.
->>>
->>> Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
->>> Signed-off-by: Thomas Huth <thuth@redhat.com>
->>> ---
->>>   configure                     | 21 +++++++++++++++++++++
->>>   meson_options.txt             |  2 ++
->>>   scripts/meson-buildoptions.sh |  2 ++
->>>   tests/functional/meson.build  |  6 ++++++
->>>   4 files changed, 31 insertions(+)
->>>
->>> diff --git a/configure b/configure
->>> index 0f7eb95586..20e05d233f 100755
->>> --- a/configure
->>> +++ b/configure
->>> @@ -1142,12 +1142,31 @@ fi
->>>   #########################################
->>>   # gdb test
->>> +# Check if all target arches are in a provided list of arches.
->>> +is_target_arch_in_arch_list() {
->>> +    arch_list=$1
->>> +    for target in $target_list; do
->>> +        arch=${target%%-*}
->>> +        if test "${arch_list#*$arch}" = "$arch_list"; then
->>> +            # Target arch not in arch list
->>> +            return 1
->>> +        fi
->>> +    done
->>> +    return 0
->>> +}
->>> +
->>>   if test -n "$gdb_bin"; then
->>>       gdb_version_string=$($gdb_bin --version | head -n 1)
->>>       # Extract last field in the version string
->>>       gdb_version=${gdb_version_string##* }
->>>       if version_ge $gdb_version 9.1; then
->>>           gdb_arches=$($python "$source_path/scripts/probe-gdb-support.py" $gdb_bin)
->>> +
->>> +    if is_target_arch_in_arch_list "$gdb_arches"; then
->>
->> No TABs, please!
->>
->>> +            gdb_multiarch="yes"
->>> +        else
->>> +            gdb_multiarch=""
->>> +    fi
->>
->> This unfortunately does not work with the GDB from Fedora - it only supports "arch64_be arm riscv64 riscv32 ppc i386 s390x ppc64 aarch64 ppc64le x86_64", but if you configured a target like "alpha-softmmu", this breaks.
-> 
-> argh! ok
-> 
-> 
->> (BTW, does the gdb-multiarch from Debian/Ubuntu really also support exotic QEMU targets like tricore?)
-> 
-> No, I've checked GDB upstream and I can't see any trace of tricore.
-> And I just saw that Alex left a comment in scripts/probe-gdb-support.py
-> saying "# no tricore in upstream gdb", so nope, it seems that it still holds.
-> 
-> 
->> I think it would be better to drop this hunk, and rather check in the spot where we use GDB if the required target is really there (i.e. in the functional test that uses it).
-> 
-> OK. I'm also not a big fan of doing it in bash. How do you suggest
-> to do it? Directly in the code, via a skipIf decorator, or something else?
+Hi Phil,
 
-$gdb_arches, obtained using scripts/probe-gdb-support.py in configure,
-could be passed to meson and meson sets it in the test env, as we're
-doing for $gdb_bin and QEMU_TEST_GDB env var. wdyt?
+Thanks for the review!
+It looks like IRQ mapping enums on other boards also generally do not have
+line breaks, is it ok if I keep it like this for consistency sake?
 
+Best,
+Coco
 
-Cheers,
-Gustavo
+On Wed, Sep 24, 2025 at 6:08=E2=80=AFPM Philippe Mathieu-Daud=C3=A9 <philmd=
+@linaro.org>
+wrote:
+
+> Hi,
+>
+> On 25/9/25 02:58, Coco Li wrote:
+> > In the process of implementing serial gpio and adding the corresponding
+> > ENUMs, also complete the list for npcm8xx.
+> >
+> > Signed-off-by: Coco Li <lixiaoyan@google.com>
+> > Reviewed-by: Hao Wu <wuhaotsh@google.com>
+> > ---
+> >   hw/arm/npcm8xx.c | 43 ++++++++++++++++++++++++++++++++++++++++++-
+> >   1 file changed, 42 insertions(+), 1 deletion(-)
+> >
+> > diff --git a/hw/arm/npcm8xx.c b/hw/arm/npcm8xx.c
+> > index a276fea698..10887d07fa 100644
+> > --- a/hw/arm/npcm8xx.c
+> > +++ b/hw/arm/npcm8xx.c
+> > @@ -92,8 +92,14 @@ enum NPCM8xxInterrupt {
+> >       NPCM8XX_GMAC2_IRQ,
+> >       NPCM8XX_GMAC3_IRQ,
+> >       NPCM8XX_GMAC4_IRQ,
+> > -    NPCM8XX_MMC_IRQ             =3D 26,
+> > +    NPCM8XX_ESPI_IRQ,
+> > +    NPCM8XX_SIOX0_IRQ,
+> > +    NPCM8XX_SIOX1_IRQ,
+> > +    NPCM8XX_MC_IRQ              =3D 25,
+> > +    NPCM8XX_MMC_IRQ,
+> >       NPCM8XX_PSPI_IRQ            =3D 28,
+> > +    NPCM8XX_VDMA_IRQ,
+> > +    NPCM8XX_MCTP_IRQ,
+> >       NPCM8XX_TIMER0_IRQ          =3D 32,   /* Timer Module 0 */
+> >       NPCM8XX_TIMER1_IRQ,
+> >       NPCM8XX_TIMER2_IRQ,
+> > @@ -116,6 +122,14 @@ enum NPCM8xxInterrupt {
+> >       NPCM8XX_OHCI1_IRQ,
+> >       NPCM8XX_EHCI2_IRQ,
+> >       NPCM8XX_OHCI2_IRQ,
+> > +    NPCM8XX_SPI1_IRQ            =3D 82,
+> > +    NPCM8XX_RNG_IRQ             =3D 84,
+> > +    NPCM8XX_SPI0_IRQ            =3D 85,
+> > +    NPCM8XX_SPI3_IRQ            =3D 87,
+> > +    NPCM8XX_GDMA0_IRQ           =3D 88,
+> > +    NPCM8XX_GDMA1_IRQ,
+> > +    NPCM8XX_GDMA2_IRQ,
+> > +    NPCM8XX_OTP_IRQ             =3D 92,
+> >       NPCM8XX_PWM0_IRQ            =3D 93,   /* PWM module 0 */
+> >       NPCM8XX_PWM1_IRQ,                   /* PWM module 1 */
+> >       NPCM8XX_MFT0_IRQ            =3D 96,   /* MFT module 0 */
+> > @@ -128,6 +142,11 @@ enum NPCM8xxInterrupt {
+> >       NPCM8XX_MFT7_IRQ,                   /* MFT module 7 */
+> >       NPCM8XX_PCI_MBOX1_IRQ       =3D 105,
+> >       NPCM8XX_PCI_MBOX2_IRQ,
+> > +    NPCM8XX_GPIO231_IRQ         =3D 108,
+> > +    NPCM8XX_GPIO233_IRQ,
+> > +    NPCM8XX_GPIO234_IRQ,
+> > +    NPCM8XX_GPIO93_IRQ,
+> > +    NPCM8XX_GPIO94_IRQ,
+> >       NPCM8XX_GPIO0_IRQ           =3D 116,
+> >       NPCM8XX_GPIO1_IRQ,
+> >       NPCM8XX_GPIO2_IRQ,
+> > @@ -163,6 +182,12 @@ enum NPCM8xxInterrupt {
+> >       NPCM8XX_SMBUS24_IRQ,
+> >       NPCM8XX_SMBUS25_IRQ,
+> >       NPCM8XX_SMBUS26_IRQ,
+> > +    NPCM8XX_FLM0_IRQ            =3D 160,
+> > +    NPCM8XX_FLM1_IRQ,
+> > +    NPCM8XX_FLM2_IRQ,
+> > +    NPCM8XX_FLM3_IRQ,
+>
+> Minor style comment, maybe worth adding a new line when the
+> following enum is not contiguous.
+>
+> Regards,
+>
+> Phil.
+>
+> > +    NPCM8XX_JMT1_IRQ            =3D 188,
+> > +    NPCM8XX_JMT2_IRQ,
+> >       NPCM8XX_UART0_IRQ           =3D 192,
+> >       NPCM8XX_UART1_IRQ,
+> >       NPCM8XX_UART2_IRQ,
+> > @@ -170,6 +195,22 @@ enum NPCM8xxInterrupt {
+> >       NPCM8XX_UART4_IRQ,
+> >       NPCM8XX_UART5_IRQ,
+> >       NPCM8XX_UART6_IRQ,
+> > +    NPCM8XX_I3C0_IRQ            =3D 224,
+> > +    NPCM8XX_I3C1_IRQ,
+> > +    NPCM8XX_I3C2_IRQ,
+> > +    NPCM8XX_I3C3_IRQ,
+> > +    NPCM8XX_I3C4_IRQ,
+> > +    NPCM8XX_I3C5_IRQ,
+> > +    NPCM8XX_A35INTERR_IRQ       =3D 240,
+> > +    NPCM8XX_A35EXTERR_IRQ,
+> > +    NPCM8XX_PMU0_IRQ,
+> > +    NPCM8XX_PMU1_IRQ,
+> > +    NPCM8XX_PMU2_IRQ,
+> > +    NPCM8XX_PMU3_IRQ,
+> > +    NPCM8XX_CTI0_IRQ,
+> > +    NPCM8XX_CTI1_IRQ,
+> > +    NPCM8XX_CTI2_IRQ,
+> > +    NPCM8XX_CTI3_IRQ,
+> >   };
+> >
+> >   /* Total number of GIC interrupts, including internal Cortex-A35
+> interrupts. */
+>
+>
+
+--000000000000da5000063fbb40f3
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Hi Phil,<div><br></div><div>Thanks for the review!=C2=A0</=
+div><div>It looks like IRQ mapping enums on other boards also generally do =
+not have line breaks, is it ok if I keep it like this for consistency sake?=
+</div><div><br></div><div>Best,</div><div>Coco</div></div><br><div class=3D=
+"gmail_quote gmail_quote_container"><div dir=3D"ltr" class=3D"gmail_attr">O=
+n Wed, Sep 24, 2025 at 6:08=E2=80=AFPM Philippe Mathieu-Daud=C3=A9 &lt;<a h=
+ref=3D"mailto:philmd@linaro.org">philmd@linaro.org</a>&gt; wrote:<br></div>=
+<blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-=
+left:1px solid rgb(204,204,204);padding-left:1ex">Hi,<br>
+<br>
+On 25/9/25 02:58, Coco Li wrote:<br>
+&gt; In the process of implementing serial gpio and adding the correspondin=
+g<br>
+&gt; ENUMs, also complete the list for npcm8xx.<br>
+&gt; <br>
+&gt; Signed-off-by: Coco Li &lt;<a href=3D"mailto:lixiaoyan@google.com" tar=
+get=3D"_blank">lixiaoyan@google.com</a>&gt;<br>
+&gt; Reviewed-by: Hao Wu &lt;<a href=3D"mailto:wuhaotsh@google.com" target=
+=3D"_blank">wuhaotsh@google.com</a>&gt;<br>
+&gt; ---<br>
+&gt;=C2=A0 =C2=A0hw/arm/npcm8xx.c | 43 ++++++++++++++++++++++++++++++++++++=
+++++++-<br>
+&gt;=C2=A0 =C2=A01 file changed, 42 insertions(+), 1 deletion(-)<br>
+&gt; <br>
+&gt; diff --git a/hw/arm/npcm8xx.c b/hw/arm/npcm8xx.c<br>
+&gt; index a276fea698..10887d07fa 100644<br>
+&gt; --- a/hw/arm/npcm8xx.c<br>
+&gt; +++ b/hw/arm/npcm8xx.c<br>
+&gt; @@ -92,8 +92,14 @@ enum NPCM8xxInterrupt {<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0NPCM8XX_GMAC2_IRQ,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0NPCM8XX_GMAC3_IRQ,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0NPCM8XX_GMAC4_IRQ,<br>
+&gt; -=C2=A0 =C2=A0 NPCM8XX_MMC_IRQ=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0=3D 26,<br>
+&gt; +=C2=A0 =C2=A0 NPCM8XX_ESPI_IRQ,<br>
+&gt; +=C2=A0 =C2=A0 NPCM8XX_SIOX0_IRQ,<br>
+&gt; +=C2=A0 =C2=A0 NPCM8XX_SIOX1_IRQ,<br>
+&gt; +=C2=A0 =C2=A0 NPCM8XX_MC_IRQ=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =3D 25,<br>
+&gt; +=C2=A0 =C2=A0 NPCM8XX_MMC_IRQ,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0NPCM8XX_PSPI_IRQ=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =3D 28,<br>
+&gt; +=C2=A0 =C2=A0 NPCM8XX_VDMA_IRQ,<br>
+&gt; +=C2=A0 =C2=A0 NPCM8XX_MCTP_IRQ,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0NPCM8XX_TIMER0_IRQ=C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =3D 32,=C2=A0 =C2=A0/* Timer Module 0 */<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0NPCM8XX_TIMER1_IRQ,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0NPCM8XX_TIMER2_IRQ,<br>
+&gt; @@ -116,6 +122,14 @@ enum NPCM8xxInterrupt {<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0NPCM8XX_OHCI1_IRQ,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0NPCM8XX_EHCI2_IRQ,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0NPCM8XX_OHCI2_IRQ,<br>
+&gt; +=C2=A0 =C2=A0 NPCM8XX_SPI1_IRQ=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =3D 82,<br>
+&gt; +=C2=A0 =C2=A0 NPCM8XX_RNG_IRQ=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0=3D 84,<br>
+&gt; +=C2=A0 =C2=A0 NPCM8XX_SPI0_IRQ=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =3D 85,<br>
+&gt; +=C2=A0 =C2=A0 NPCM8XX_SPI3_IRQ=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =3D 87,<br>
+&gt; +=C2=A0 =C2=A0 NPCM8XX_GDMA0_IRQ=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0=3D 88,<br>
+&gt; +=C2=A0 =C2=A0 NPCM8XX_GDMA1_IRQ,<br>
+&gt; +=C2=A0 =C2=A0 NPCM8XX_GDMA2_IRQ,<br>
+&gt; +=C2=A0 =C2=A0 NPCM8XX_OTP_IRQ=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0=3D 92,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0NPCM8XX_PWM0_IRQ=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =3D 93,=C2=A0 =C2=A0/* PWM module 0 */<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0NPCM8XX_PWM1_IRQ,=C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0/* PWM module 1 */<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0NPCM8XX_MFT0_IRQ=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =3D 96,=C2=A0 =C2=A0/* MFT module 0 */<br>
+&gt; @@ -128,6 +142,11 @@ enum NPCM8xxInterrupt {<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0NPCM8XX_MFT7_IRQ,=C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0/* MFT module 7 */<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0NPCM8XX_PCI_MBOX1_IRQ=C2=A0 =C2=A0 =C2=A0 =
+=C2=A0=3D 105,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0NPCM8XX_PCI_MBOX2_IRQ,<br>
+&gt; +=C2=A0 =C2=A0 NPCM8XX_GPIO231_IRQ=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+=3D 108,<br>
+&gt; +=C2=A0 =C2=A0 NPCM8XX_GPIO233_IRQ,<br>
+&gt; +=C2=A0 =C2=A0 NPCM8XX_GPIO234_IRQ,<br>
+&gt; +=C2=A0 =C2=A0 NPCM8XX_GPIO93_IRQ,<br>
+&gt; +=C2=A0 =C2=A0 NPCM8XX_GPIO94_IRQ,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0NPCM8XX_GPIO0_IRQ=C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0=3D 116,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0NPCM8XX_GPIO1_IRQ,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0NPCM8XX_GPIO2_IRQ,<br>
+&gt; @@ -163,6 +182,12 @@ enum NPCM8xxInterrupt {<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0NPCM8XX_SMBUS24_IRQ,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0NPCM8XX_SMBUS25_IRQ,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0NPCM8XX_SMBUS26_IRQ,<br>
+&gt; +=C2=A0 =C2=A0 NPCM8XX_FLM0_IRQ=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =3D 160,<br>
+&gt; +=C2=A0 =C2=A0 NPCM8XX_FLM1_IRQ,<br>
+&gt; +=C2=A0 =C2=A0 NPCM8XX_FLM2_IRQ,<br>
+&gt; +=C2=A0 =C2=A0 NPCM8XX_FLM3_IRQ,<br>
+<br>
+Minor style comment, maybe worth adding a new line when the<br>
+following enum is not contiguous.<br>
+<br>
+Regards,<br>
+<br>
+Phil.<br>
+<br>
+&gt; +=C2=A0 =C2=A0 NPCM8XX_JMT1_IRQ=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =3D 188,<br>
+&gt; +=C2=A0 =C2=A0 NPCM8XX_JMT2_IRQ,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0NPCM8XX_UART0_IRQ=C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0=3D 192,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0NPCM8XX_UART1_IRQ,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0NPCM8XX_UART2_IRQ,<br>
+&gt; @@ -170,6 +195,22 @@ enum NPCM8xxInterrupt {<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0NPCM8XX_UART4_IRQ,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0NPCM8XX_UART5_IRQ,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0NPCM8XX_UART6_IRQ,<br>
+&gt; +=C2=A0 =C2=A0 NPCM8XX_I3C0_IRQ=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =3D 224,<br>
+&gt; +=C2=A0 =C2=A0 NPCM8XX_I3C1_IRQ,<br>
+&gt; +=C2=A0 =C2=A0 NPCM8XX_I3C2_IRQ,<br>
+&gt; +=C2=A0 =C2=A0 NPCM8XX_I3C3_IRQ,<br>
+&gt; +=C2=A0 =C2=A0 NPCM8XX_I3C4_IRQ,<br>
+&gt; +=C2=A0 =C2=A0 NPCM8XX_I3C5_IRQ,<br>
+&gt; +=C2=A0 =C2=A0 NPCM8XX_A35INTERR_IRQ=C2=A0 =C2=A0 =C2=A0 =C2=A0=3D 240=
+,<br>
+&gt; +=C2=A0 =C2=A0 NPCM8XX_A35EXTERR_IRQ,<br>
+&gt; +=C2=A0 =C2=A0 NPCM8XX_PMU0_IRQ,<br>
+&gt; +=C2=A0 =C2=A0 NPCM8XX_PMU1_IRQ,<br>
+&gt; +=C2=A0 =C2=A0 NPCM8XX_PMU2_IRQ,<br>
+&gt; +=C2=A0 =C2=A0 NPCM8XX_PMU3_IRQ,<br>
+&gt; +=C2=A0 =C2=A0 NPCM8XX_CTI0_IRQ,<br>
+&gt; +=C2=A0 =C2=A0 NPCM8XX_CTI1_IRQ,<br>
+&gt; +=C2=A0 =C2=A0 NPCM8XX_CTI2_IRQ,<br>
+&gt; +=C2=A0 =C2=A0 NPCM8XX_CTI3_IRQ,<br>
+&gt;=C2=A0 =C2=A0};<br>
+&gt;=C2=A0 =C2=A0<br>
+&gt;=C2=A0 =C2=A0/* Total number of GIC interrupts, including internal Cort=
+ex-A35 interrupts. */<br>
+<br>
+</blockquote></div>
+
+--000000000000da5000063fbb40f3--
 

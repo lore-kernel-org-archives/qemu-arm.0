@@ -4,80 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B46E6CAC5AE
-	for <qemu-arm@archiver.kernel.org>; Fri, 26 Sep 2025 05:16:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8FB66CAC5AC
+	for <qemu-arm@archiver.kernel.org>; Fri, 26 Sep 2025 05:17:04 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v20oj-0004gZ-5a; Fri, 26 Sep 2025 01:16:26 -0400
+	id 1v20p4-0004pZ-2z; Fri, 26 Sep 2025 01:16:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
- id 1v20oe-0004dW-8o
- for qemu-arm@nongnu.org; Fri, 26 Sep 2025 01:16:20 -0400
-Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
+ id 1v20ov-0004mB-8J
+ for qemu-arm@nongnu.org; Fri, 26 Sep 2025 01:16:38 -0400
+Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
- id 1v20oY-0005zM-FH
- for qemu-arm@nongnu.org; Fri, 26 Sep 2025 01:16:19 -0400
-Received: by mail-pl1-x62a.google.com with SMTP id
- d9443c01a7336-2698d47e776so15120165ad.1
- for <qemu-arm@nongnu.org>; Thu, 25 Sep 2025 22:16:10 -0700 (PDT)
+ id 1v20on-00061P-Ik
+ for qemu-arm@nongnu.org; Fri, 26 Sep 2025 01:16:35 -0400
+Received: by mail-pl1-x635.google.com with SMTP id
+ d9443c01a7336-2697899a202so22457655ad.0
+ for <qemu-arm@nongnu.org>; Thu, 25 Sep 2025 22:16:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1758863766; x=1759468566; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=4fb5YIRAYuFTsi1a0hr4VCGRrcrYRivQ/A3VTdModZM=;
- b=H1D5Qc9JvYI1wXzgi98tPzCaQlT9z1dC9NJB24y4Eoo1W8vMZgrSPsHrtDZzCfXx6T
- k8eTZMJQ2dicAZvllx1KF9zBb5HbkqsNpWyYe8USRVaRTcxeSZDD70LyAHvvY68tHSe/
- 3ZdjX73Mxg6nSKlTuaxI+m3a0nrejP3g/P4NUik6Dz6/KBQ3cwc1B6yoMzvwnsbaY2BM
- On+ued4siUEvUW0rsNBodqexADvuFwLUPdD6jV1CC2JVdeaXq230155y83IsFW09fyRa
- 359ZgnY8K6rLBvwz7FX7FwJ/CqhiBdQQDxYLA6C448AgELOhBffqfPRED3b4YNR1vasg
- Nkow==
+ d=linaro.org; s=google; t=1758863786; x=1759468586; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=tqvAjhF9PeBnkzh7otQwLKhrmJazNmoc6H8q1BcmrGw=;
+ b=epBtE1i+Lp+TTTgh2haWFmw146XpCUImdLq742wFplHj68xW/CLyDYVOADAafmTO/9
+ uriE+oMmYZwcqNdTdRrW1+bbwgkW2JWm6YTKyNxVBvhGCnrC/A75N2jTS4mYgWXBdj3o
+ OvSKY5iPITrVF/RYWVQAAte00mPMV4OMlAsZFTt3+WQtor6PDW//e3v0gTm9ud2Eo5JX
+ ItjdeJbmTM4v0Glp2K3d0pAENQOkHhGAdeFLqEXXtLxCG/7ujfrwr+T0BALuU+NzHkY1
+ BBvLO/k1fhFUGr9SNosRQKBaVqtMCEW2Eb5KsYk0aWkNXtuuSj7eqH3hVy6y+duDMRxt
+ ohqQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1758863766; x=1759468566;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=4fb5YIRAYuFTsi1a0hr4VCGRrcrYRivQ/A3VTdModZM=;
- b=Uz0lhihhmQbyHnByph82r1aUT85KA0TQFuMl9hJxID4gcG84VffqUKSpNjwSyOqmXy
- /1S+QuBcarLCChcGp/Xf4cY93CU5V/exNyCuzklQYPtmM2TgrMVTDWDEfAZ3atTHPsFo
- 1r677O39sYDAI2r+/7fqWd9S4cwv5oc1aEeoa4O3qhPS4HI/y/2PAo9X04jABxvxn+D+
- O2m8MLmHGgz71Bnz4rCF3v2mdPy6UBwCg3tvCW9pSD+aNsbK6NaB0c4l3GeYbBmx2d6g
- /IYu6WNAyRUXZ0TSKQb7D6bUXjrKSz4BaWacWNXfLv3FJnOYEBmhGvZHaTqXKOK6bw6U
- jEaQ==
-X-Gm-Message-State: AOJu0YxGklbrJ90RXHGGt340GI0h0RTwJrqVQU1lWwHYSkEfXvoBBU6Z
- s6jPspWurlg8rJHrjalEuRe7WCHk5lsjioSpgqaEcJ0eARh6adD+G/R8xJ1084sOmKc=
-X-Gm-Gg: ASbGncvrxPAss0eOoD2a4ZEvQilwkiZ/OR8mJ1Ae/AHfvplMcNwEMmpwICZsbp6nvAM
- q1zlroCg0KZ+GwFKrc6wGvQ2S0Xe4efDp9K95mULhGPwlaZAJCag79r+prcwaWpz6+UrUhqONfD
- wudz0zrhusGatY0/FCG5XBjPpIq0HM1eVy+8M+9VTmg/laMHK1Y1BRL1u48V2rpWdAdCkuhpaIM
- gvG4bSgLjZOuoud8rNqFtl7NAESQ6PLUIKz6Fp/gZDgmee9awSeAwsjz3HDfpzTBM7nvdCVpeaS
- kOORQijuAOnyd4qYplIzV9M1Jd1Y95VKz70Lb5Y0wYAWo7WvfBpWjbXQ0EfCSImKxJ1tUDxhDpg
- bW5CI8KZhUwg1JoCYQzrn1XiEFSTBakDN1oNFVrkUX6C1BE1tsRevomGR5QY0ThBmlgrK
-X-Google-Smtp-Source: AGHT+IHKLcCmfA0yDNi08yuMefjTyUq6RDVJb9VhJhU2LlmYZZ65jEDUGVo2ixtDZfuyMcV8C9RwpQ==
-X-Received: by 2002:a17:903:1c9:b0:267:6649:ec17 with SMTP id
- d9443c01a7336-27ed49d1344mr62684425ad.23.1758863766549; 
- Thu, 25 Sep 2025 22:16:06 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1758863786; x=1759468586;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=tqvAjhF9PeBnkzh7otQwLKhrmJazNmoc6H8q1BcmrGw=;
+ b=i9cpcBYg5TUZN6LGjFmg9w9u81YTJdZ8NiGtqxANu698v8qmEauOKC9ieLESxjoSzl
+ 1986+1uxOBT8Zld8g+wjd3apoM4ClDdFMBzGEbKgEo1SX2bsr4sDsLl175DcWWVavQDi
+ 8hlK5dUhbJeOA4pC2uicVNqdPQxzVoGVHfVQT7tIiQM0dLSq27KaJas+MDaRNYPp/DL2
+ GfuW/5ZZSa0ZaswutiK3rPHjNxHf16AgxueIGTqDr7fikZJmbMxNOtY1bAVXd+B3TvDs
+ 6zldAAQEQL2OBvRyrA8Cg9imR9Z0T00KTJ/B2XnuqSZupRDAMRI/PP1RcRb2ayjnUAxJ
+ SLJg==
+X-Gm-Message-State: AOJu0YwcgIOh+wqca4owmxMHTthyuup0lDYHV63pocQdgz3m++LZMpL+
+ ZaAhskaXs/U63OJ/Y+EWTMsS485f82Hj7bupGxSUmWCvesk3WEHB3T2j5to825kQN9A=
+X-Gm-Gg: ASbGncthawOpy/peQH8cl5H9q2sOrSzufgZjISZyT6W5y/rec774iSdKjjARMk4JJEC
+ 3eRFQ/eklOYb8G1TUOcmbs0J9DJdvIRF5/Vg3b08w8/74CEyBzxxVTcgmFcJJz+2mv5AkUhiu/X
+ Fr7DEUFfe23vLhumvHPg4G6E63Fu0m7DJftd13zBju0pq2p/7D+htF1R/yWYX20hhX+fzFjEjYF
+ TjfW+HoZ+b/KNWFaMZe2GfYGzIb4UFucNZXuj8Afc1DRb9MqkDnpzMsrDLj5T3DQT+8bZiOUaD5
+ dLIScrNoDf3rp0qyolDnfPWdAdlF8k7Ojq5eRpV2aenk4wxnrH2gkNmTp9ge/V5jZE0M2qgzFZQ
+ MZ9EwyB6WBz63lL7L3oEvKOH9gQpE0lUUv0fzLLKgdFIWszu4xHxh+sXbnKHHRzFx7770
+X-Google-Smtp-Source: AGHT+IHYIWi5gcV0fp9+TeSsY77WtkC+hvKT/qc8RXgBb+kfZWgiPvxz6FshJdgCPkH6cON97RS6HA==
+X-Received: by 2002:a17:902:e745:b0:272:d27d:48de with SMTP id
+ d9443c01a7336-27ed6e05744mr64600655ad.18.1758863785704; 
+ Thu, 25 Sep 2025 22:16:25 -0700 (PDT)
 Received: from gromero0.. (189-47-45-49.dsl.telesp.net.br. [189.47.45.49])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-27ed672a51fsm42160085ad.63.2025.09.25.22.16.04
+ d9443c01a7336-27ed672a51fsm42160085ad.63.2025.09.25.22.16.23
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 25 Sep 2025 22:16:06 -0700 (PDT)
+ Thu, 25 Sep 2025 22:16:25 -0700 (PDT)
 From: Gustavo Romero <gustavo.romero@linaro.org>
 To: qemu-devel@nongnu.org, alex.bennee@linaro.org, thuth@redhat.com,
  berrange@redhat.com
 Cc: qemu-arm@nongnu.org, gustavo.romero@linaro.org,
  manos.pitsidianakis@linaro.org, peter.maydell@linaro.org
-Subject: [PATCH v4 0/9] tests/functional: Adapt reverse_debugging to run w/o
- Avocado
-Date: Fri, 26 Sep 2025 05:15:33 +0000
-Message-Id: <20250926051542.104432-1-gustavo.romero@linaro.org>
+Subject: [PATCH v4 7/9] tests/functional: Add decorator to skip test on
+ missing env vars
+Date: Fri, 26 Sep 2025 05:15:40 +0000
+Message-Id: <20250926051542.104432-8-gustavo.romero@linaro.org>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20250926051542.104432-1-gustavo.romero@linaro.org>
+References: <20250926051542.104432-1-gustavo.romero@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62a;
- envelope-from=gustavo.romero@linaro.org; helo=mail-pl1-x62a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::635;
+ envelope-from=gustavo.romero@linaro.org; helo=mail-pl1-x635.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -100,121 +102,60 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-tests/functional: Adapt reverse_debugging to run w/o Avocado
+Add a decorator to skip tests on missing env variable(s). Multiple
+variable names can be provided and if one or more of them are not set in
+the test environment the test is skipped and the missing vars are
+printed out.
 
-The goal of this series is to remove Avocado as a dependency for running
-the reverse_debugging functional test.
+Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
+---
+ tests/functional/qemu_test/__init__.py   |  3 ++-
+ tests/functional/qemu_test/decorators.py | 18 ++++++++++++++++++
+ 2 files changed, 20 insertions(+), 1 deletion(-)
 
-After several rounds of discussions about v1 and v2, and experiments
-done by Daniel and Thomas (thanks for all the experiments and comments
-so far), I've taken a new approach and moved away from using a runner
-for GDB. The changes, I believe, are much simpler now.
-
-This new series uses GDB's machine interface (MI) via the pygdbmi module
-(thanks Manos and Peter for the inputs). pygdbmi provides a controller
-to start GDB and communicate with it through MI, so there is no longer a
-risk of version clashes between libpython in GDB and Python modules in
-the pyvenv, as it could, in theory, happen when GDB executes the test
-script via -x option.
-
-Also, as Daniel pointed out, the overall test output is pretty bad and
-currently does not allow one to easily follow the sequence of GDB
-commands used in the test. I took this opportunity to improve the output
-and it now prints the sequence in a format that can be copied and pasted
-directly into GDB.
-
-The TAP protocol is respected, and Meson correctly displays GDB's test
-output in testlog-thorough.txt.
-
-Because the pygdbmi "shim" is so thin, I had to write a trivial GDB
-class around it to easily capture and print the payloads returned by its
-write() method. The GDB class allows clean, single-line commands to be
-used in the tests through method chaining, making them easier to follow,
-for example:
-
-pc = gdb.cli("print $pc").get_add()
-
-The test is kept “skipped” for aarch64, ppc64, and x86_64, so it is
-necessary to set QEMU_TEST_FLAKY_TESTS=1 in the test environment to
-effectively run the test on these archs.
-
-On aarch64, the test is flaky, but there is a fix that I’ve tested while
-writing this series [0] that resolves it. On ppc64 and x86_64, the test
-always fails: on ppc64, GDB gets a bogus PC, and on x86_64, the last
-part of the test (reverse-continue) does not hit the last executed PC
-(as it should happen) but instead jumps to the beginning of the code
-(first PC in forward order).
-
-Thus, to effectively run the reverse_debugging test on aarch64:
-
-$ export QEMU_TEST_FLAKY_TESTS=1
-$ make check-functional
-
-or even, to run only the reverse_debug test after 'make check-functional':
-$ ./pyvenv/bin/meson test --verbose --no-rebuild -t 1 --setup thorough --suite func-thorough func-aarch64-reverse_debug
-
-
-Cheers,
-Gustavo
-
-v1:
-https://patchew.org/QEMU/20250819143916.4138035-1-gustavo.romero@linaro.org/
-
-v2:
-https://patchew.org/QEMU/20250904154640.52687-1-gustavo.romero@linaro.org/
-
-v3:
-https://patchew.org/QEMU/20250922054351.14289-1-gustavo.romero@linaro.org/
-
-v4:
-- Installed pygdbmi only in check-functional step and using pip,
-  so not from local wheels (thomas)
-- Fixed GDB probe in configure by ensuring that the GDB passed to Meson
-  supports all that arches in the target list
-- Fixed error found by Alex when skipping the test, "name 'test' is not
-  defined", by using the new decorator suggested by Daniel to skip the
-  tests if QEMU_TEST_GDB env var is missing (alex, daniel)
-- Moved GDB class into its own file under qemu_test, in gdb.py. (alex,
-  daniel)
-- Put subprocess and the drop of the data drainer changes in separate
-  commits (used previous commits from Daniel for it) (alex, daniel)
-- Put back /usr/bin/env python shebang into per arch test files (daniel)
-- Added new method reverse_debugging_run() to separate test bootstrap
-  from GDB test execution, also helping to get a better diff view
-  (daniel)
-- Made diffs better for reviewing by avoiding mixing text changes with
-  changes in the code related to Avocado's removal (alex, daniel)
-
-
-Daniel P. Berrangé (2):
-  tests/functional: replace avocado process with subprocess
-  tests/functional: drop datadrainer class in reverse debugging
-
-Gustavo Romero (7):
-  tests/functional: Re-activate the check-venv target
-  python: Install pygdbmi in meson's venv
-  tests/functional: Provide GDB to the functional tests
-  tests/functional: Add GDB class
-  tests/functional: Add decorator to skip test on missing env vars
-  tests/functional: Adapt reverse_debugging to run w/o Avocado
-  tests/functional: Adapt arches to reverse_debugging w/o Avocado
-
- configure                                     |  21 +++
- meson_options.txt                             |   2 +
- pythondeps.toml                               |   1 +
- scripts/meson-buildoptions.sh                 |   2 +
- tests/Makefile.include                        |   2 +-
- .../functional/aarch64/test_reverse_debug.py  |   9 +-
- tests/functional/meson.build                  |   6 +
- tests/functional/ppc64/test_reverse_debug.py  |  11 +-
- tests/functional/qemu_test/__init__.py        |   4 +-
- tests/functional/qemu_test/decorators.py      |  18 +++
- tests/functional/qemu_test/gdb.py             |  85 +++++++++++
- tests/functional/reverse_debugging.py         | 140 ++++++++----------
- tests/functional/x86_64/test_reverse_debug.py |  13 +-
- 13 files changed, 216 insertions(+), 98 deletions(-)
- create mode 100644 tests/functional/qemu_test/gdb.py
-
+diff --git a/tests/functional/qemu_test/__init__.py b/tests/functional/qemu_test/__init__.py
+index 60d19891bf..320193591b 100644
+--- a/tests/functional/qemu_test/__init__.py
++++ b/tests/functional/qemu_test/__init__.py
+@@ -15,7 +15,8 @@
+ from .linuxkernel import LinuxKernelTest
+ from .decorators import skipIfMissingCommands, skipIfNotMachine, \
+     skipFlakyTest, skipUntrustedTest, skipBigDataTest, skipSlowTest, \
+-    skipIfMissingImports, skipIfOperatingSystem, skipLockedMemoryTest
++    skipIfMissingImports, skipIfOperatingSystem, skipLockedMemoryTest, \
++    skipIfMissingEnv
+ from .archive import archive_extract
+ from .uncompress import uncompress
+ from .gdb import GDB
+diff --git a/tests/functional/qemu_test/decorators.py b/tests/functional/qemu_test/decorators.py
+index c0d1567b14..b239295804 100644
+--- a/tests/functional/qemu_test/decorators.py
++++ b/tests/functional/qemu_test/decorators.py
+@@ -11,6 +11,24 @@
+ from .cmd import which
+ 
+ '''
++Decorator to skip execution of a test if the provided
++environment variables are not set.
++Example:
++
++  @skipIfMissingEnv("QEMU_ENV_VAR0", "QEMU_ENV_VAR1")
++'''
++def skipIfMissingEnv(*vars_):
++    missing_vars = []
++    for var in vars_:
++        if os.getenv(var) == None:
++            missing_vars.append(var)
++
++    has_vars = True if len(missing_vars) == 0 else False
++
++    return skipUnless(has_vars, f"Missing env var(s): {', '.join(missing_vars)}")
++
++'''
++
+ Decorator to skip execution of a test if the list
+ of command binaries is not available in $PATH.
+ Example:
 -- 
 2.34.1
 

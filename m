@@ -4,85 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4EC33CAC5AC
-	for <qemu-arm@archiver.kernel.org>; Fri, 26 Sep 2025 09:10:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F6CACAC5AE
+	for <qemu-arm@archiver.kernel.org>; Fri, 26 Sep 2025 09:15:08 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v24Sf-0003xa-Gj; Fri, 26 Sep 2025 05:09:53 -0400
+	id 1v24XE-0006kj-2M; Fri, 26 Sep 2025 05:14:36 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1v24Se-0003wZ-CK
- for qemu-arm@nongnu.org; Fri, 26 Sep 2025 05:09:52 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1v24XC-0006kG-PJ
+ for qemu-arm@nongnu.org; Fri, 26 Sep 2025 05:14:34 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1v24Sa-00041M-36
- for qemu-arm@nongnu.org; Fri, 26 Sep 2025 05:09:52 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1v24X5-0004jE-DY
+ for qemu-arm@nongnu.org; Fri, 26 Sep 2025 05:14:34 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1758877784;
+ s=mimecast20190719; t=1758878054;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=MyV6a01tjLqjPaVKNvz8GKBfSkxgNR40rAt0doVLyi4=;
- b=UtLzHay6gHotFyAbZl6X2bDB3oOhr9f3YKHGIgUuireexlYYzSDpraoFHgFSZbu9cgLfjK
- rN5VOPJCYLib4xgpcBkmYsrbevrwN6LF42SPzKqvVeLYVLkjK42HlKofjVf9OedU34lbiv
- +eL+fbkgX23I1O57v7QCrUb5wJHAcsc=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=d66a8EHFYXGJOOAeoUwT0gni7Is0pod/W57UOPyGSRM=;
+ b=AbPGSpmJgYfT+Ow4Bep6QNGe2BJ2/oyB76v5xjEOTH3l3x2kH3raoZdsX1g57ng4gLaas1
+ 9RvoF6AgRGlmpLacy6d7JzEq6RWRXUNT9bwVEc5G5gtMxIeihVJSOrpchPBxOHzajH6rAr
+ aPf1owXgaonkiQK2Fl1zC9ho4P1e5N4=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-601-_ZE2gMf8N-GlRghTp4KrGw-1; Fri, 26 Sep 2025 05:09:42 -0400
-X-MC-Unique: _ZE2gMf8N-GlRghTp4KrGw-1
-X-Mimecast-MFC-AGG-ID: _ZE2gMf8N-GlRghTp4KrGw_1758877781
-Received: by mail-wr1-f71.google.com with SMTP id
- ffacd0b85a97d-3ee10a24246so1078488f8f.3
- for <qemu-arm@nongnu.org>; Fri, 26 Sep 2025 02:09:42 -0700 (PDT)
+ us-mta-633-wVrKFrg0NY-4ZR-omfiDmg-1; Fri, 26 Sep 2025 05:14:12 -0400
+X-MC-Unique: wVrKFrg0NY-4ZR-omfiDmg-1
+X-Mimecast-MFC-AGG-ID: wVrKFrg0NY-4ZR-omfiDmg_1758878049
+Received: by mail-wm1-f70.google.com with SMTP id
+ 5b1f17b1804b1-46e36f9c651so10187155e9.3
+ for <qemu-arm@nongnu.org>; Fri, 26 Sep 2025 02:14:12 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1758877781; x=1759482581;
+ d=1e100.net; s=20230601; t=1758878049; x=1759482849;
  h=content-transfer-encoding:in-reply-to:autocrypt:content-language
  :from:references:cc:to:subject:user-agent:mime-version:date
  :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=MyV6a01tjLqjPaVKNvz8GKBfSkxgNR40rAt0doVLyi4=;
- b=pZycKbtEHI6tK0b+EYpimrdIDCG/Bc3/GHL/dZAqoA1ZchBW+DccD1hyyk6cXOZJIA
- dPkUs3UhZGDe6ncHaTZTDEjkpZFbuchrZLf4QqKN1uxPEBWXqBatctfwH7v43CuliMjc
- XDId+v3ppOXY9EXrotjlJIEPonF3VP7KLqa3yuvpk+ZJvPVOuZahEepyGtqbKAk9+KCx
- K+sssd3v7pm9tvEMcXqFwajFOLvxRx31+8b0tb9Wn6colQ+yehxF6wLMzyedqe0pHUDf
- 9ouKuQjHY6e/bmhpZxbZRDYcbiGm/h5XOx4oXF0WfKsxU0pD8EVxBStT3XZ2YLNTRxrE
- YuVQ==
-X-Gm-Message-State: AOJu0YzruiPjJUi90OWIxAENJDu1tteRQyb/1osMFrXLrMT3wN9xIFHH
- SXmoQfQ7eFsCs9OJNcnmVXKhOp0kdH4Z9Ez0J4GNUn1AwoyUP6EQxhGhMqFIhs+mmHE2wJ8E2mA
- U+bZF9mvD/V1UHZMnvDX5CIyfrJAui4rwhAYk7bm2CRVxV1bgI2K6+A==
-X-Gm-Gg: ASbGncvF3hJdlev1Tu/Bkv7o0mDKu4TxN7hBWypikXy8t2nPc3j8t7CC5QC3fwTje2/
- VN1Xr8WBPAWcXeNA3bB0lNa7bMRKQaDZRC/X01giyHVbu5hT3ZcAiH+rmH5J/ObbpvD6zwvwucW
- cdKdS0386HaVEZxtHwmOzh+/FgGpCyp9rl/lV9yvg4AEwLi7B/cFdVfODlxTJkAZe3UGufl5nJR
- kQS7GQdPP5xqLMFFl9UsoVJ9PQ5Lk8Blw66zGR5mAfdCnoWSY3m5tvL+eo37e+XY+AZSGVoWqhs
- LmZ4H06FkZv4OsmZ0Bi01xdg0qyYxX/l3iH6QsSO/sMW/Sk2Hyohx3DufI0wFOn0nDgF08yt9QQ
- +vneyxw==
-X-Received: by 2002:a05:6000:220c:b0:3fa:5925:4b11 with SMTP id
- ffacd0b85a97d-40e4cb6ebe0mr5797319f8f.42.1758877781420; 
- Fri, 26 Sep 2025 02:09:41 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFMZqFCJ+58ANilTo9vRHieNVOUJeZQRv3Ue3c3T/4IXpBSBWiz8ZpOed2nDiatYDuZFMeboQ==
-X-Received: by 2002:a05:6000:220c:b0:3fa:5925:4b11 with SMTP id
- ffacd0b85a97d-40e4cb6ebe0mr5797290f8f.42.1758877781034; 
- Fri, 26 Sep 2025 02:09:41 -0700 (PDT)
+ bh=d66a8EHFYXGJOOAeoUwT0gni7Is0pod/W57UOPyGSRM=;
+ b=nRwoNPB1WH7Fw6hapxVgTzkrO375UwZAiAjyt9HDSAQsncqnShjUL9KqlIZbOLeGPw
+ ZowhqHSu3GMeQTvfVVmrGAW7CgbumNq1FM/AXYKOEqJPIDrsto1D4qLABjAQGHANJOev
+ XyC26Ex+nXd44WBPdlBWJFeLmst7UoOwJVv5wZHleuyLmQmdz66QCD3h2O3LJ1F6QWWG
+ 3n4hHQsbnCk+iWVb4S6VyLvw/NHNHP10VfCFh+1EUZaYLnnqPOo86UuLpKYbBUA/qhRH
+ Eb5P8pFzCLl041hbDRvJIgTK154240kgqi2qqANkwgj522mcos0K0xZDzLclCDs8HntG
+ wygA==
+X-Gm-Message-State: AOJu0YyKShTM7qug9ZbX2H0wwTD6B/O2LCaA+Fmtg8usQoCJKYcNbwt0
+ qO5X1QTF2I5/Kkpb0OsNzHqN3Cr+cbci/Hh0kgryWNS8Vs3TMLrJ/FtoNlzBIVTsvVdGPiYVyNG
+ 1i9j76thAGojQr48Pd8Rj6Yt8OfY6Ug3KB/yBr8BUgHQ5wjDjuBbYyg==
+X-Gm-Gg: ASbGncueJhQ8MLeSakAj0juUOOX+DHlZhi92e8Sh1y4YzcpM0SCEZwjc7LfldokJ7Qw
+ dhPTaTKl+OJcbrefXIg/5B+b2LrfPP2dRGtOBzBmfDD9CIwQUNxf8L7QL3mLUAYaXHus1UAWTbS
+ 0DvtAqTJTVnoXerq9+LwOsz6d74Puwc4mOWmk8ad8PKR1OPkAlbRk7vDAhfEzDeDjePnidpVvIA
+ FKbSVaSD0Tqfyu+jJU/+kBODWbO/ZTbItA60tDazkQqGbOv3EJ/O2E1hhM+ic36u7yzvT8lsgVb
+ rcyFH2F3OHs9VOaUGyvUrYGpJTg/WX/QhmLz6iLlzOQQMilWaYPNqF3G36FGKEXScv2k6sRB2Wi
+ VoxK5kQ==
+X-Received: by 2002:a05:600c:4f4c:b0:46e:324b:fc70 with SMTP id
+ 5b1f17b1804b1-46e329b258emr72306695e9.9.1758878048624; 
+ Fri, 26 Sep 2025 02:14:08 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEGtfE37lu9gETlQzNRK/v1TLZcfdOYIProMEeOD9mAPkLaeG4gZj3//+dTjEayfPnmq9tkyw==
+X-Received: by 2002:a05:600c:4f4c:b0:46e:324b:fc70 with SMTP id
+ 5b1f17b1804b1-46e329b258emr72306385e9.9.1758878048217; 
+ Fri, 26 Sep 2025 02:14:08 -0700 (PDT)
 Received: from [192.168.0.7] (ltea-047-064-114-212.pools.arcor-ip.net.
  [47.64.114.212]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-40fc6921bcfsm6522214f8f.43.2025.09.26.02.09.40
+ ffacd0b85a97d-40fb72fb1a3sm6278286f8f.10.2025.09.26.02.14.07
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 26 Sep 2025 02:09:40 -0700 (PDT)
-Message-ID: <5b49a9c1-2eb1-4061-8e77-6b4b39f588e1@redhat.com>
-Date: Fri, 26 Sep 2025 11:09:39 +0200
+ Fri, 26 Sep 2025 02:14:07 -0700 (PDT)
+Message-ID: <1d096685-ada0-4c8a-b16a-ed8a5df7b90d@redhat.com>
+Date: Fri, 26 Sep 2025 11:14:06 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 9/9] tests/functional: Adapt arches to
- reverse_debugging w/o Avocado
-To: Gustavo Romero <gustavo.romero@linaro.org>, qemu-devel@nongnu.org,
+Subject: Re: [PATCH v4 0/9] tests/functional: Adapt reverse_debugging to run
+ w/o Avocado
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Gustavo Romero <gustavo.romero@linaro.org>, qemu-devel@nongnu.org,
  alex.bennee@linaro.org, berrange@redhat.com
 Cc: qemu-arm@nongnu.org, manos.pitsidianakis@linaro.org,
  peter.maydell@linaro.org
 References: <20250926051542.104432-1-gustavo.romero@linaro.org>
- <20250926051542.104432-10-gustavo.romero@linaro.org>
+ <f94da379-eee1-4375-95e6-7349c3c188ee@linaro.org>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -126,13 +127,13 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20250926051542.104432-10-gustavo.romero@linaro.org>
+In-Reply-To: <f94da379-eee1-4375-95e6-7349c3c188ee@linaro.org>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: UiUSTq2N6iNBpwgDOXkb5HdEdHbpZEfpnBiLElM6xYI_1758877781
+X-Mimecast-MFC-PROC-ID: BbGFaYZzJtSsLAkY-lL6SgA0d-j0HuKVueS2RKx97vY_1758878049
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -24
@@ -142,7 +143,8 @@ X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001,
+ T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -158,51 +160,35 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 26/09/2025 07.15, Gustavo Romero wrote:
-> reverse_debugging no longer depends on Avocado, so remove the import
-> checks for Avocado, the per-arch endianness tweaks, and the per-arch
-> register settings. All of these are now handled in the ReverseDebugging
-> class, automatically.
+On 26/09/2025 08.49, Philippe Mathieu-Daudé wrote:
+> Hi Gustavo,
 > 
-> Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
-> ---
->   tests/functional/aarch64/test_reverse_debug.py |  9 ++++-----
->   tests/functional/ppc64/test_reverse_debug.py   | 11 ++++-------
->   tests/functional/x86_64/test_reverse_debug.py  | 13 ++++---------
->   3 files changed, 12 insertions(+), 21 deletions(-)
+> On 26/9/25 07:15, Gustavo Romero wrote:
+>> tests/functional: Adapt reverse_debugging to run w/o Avocado
+>>
+>> The goal of this series is to remove Avocado as a dependency for running
+>> the reverse_debugging functional test.
 > 
-> diff --git a/tests/functional/aarch64/test_reverse_debug.py b/tests/functional/aarch64/test_reverse_debug.py
-> index 8bc91ccfde..36985a4a1d 100755
-> --- a/tests/functional/aarch64/test_reverse_debug.py
-> +++ b/tests/functional/aarch64/test_reverse_debug.py
-> @@ -2,25 +2,24 @@
->   #
->   # SPDX-License-Identifier: GPL-2.0-or-later
->   #
-> -# Reverse debugging test
-> +# Reverse debugging test for aarch64
->   #
->   # Copyright (c) 2020 ISP RAS
-> +# Copyright (c) 2025 Linaro Limited
->   #
->   # Author:
->   #  Pavel Dovgalyuk <Pavel.Dovgalyuk@ispras.ru>
-> +#  Gustavo Romero <gustavo.romero@linaro.org> (Run without Avocado)
->   #
->   # This work is licensed under the terms of the GNU GPL, version 2 or
->   # later.  See the COPYING file in the top-level directory.
->   
-> -from qemu_test import Asset, skipIfMissingImports, skipFlakyTest
-> +from qemu_test import Asset, skipFlakyTest
->   from reverse_debugging import ReverseDebugging
->   
->   
-> -@skipIfMissingImports('avocado.utils')
->   class ReverseDebugging_AArch64(ReverseDebugging):
+> 
+>> Daniel P. Berrangé (2):
+>>    tests/functional: replace avocado process with subprocess
+>>    tests/functional: drop datadrainer class in reverse debugging
+>>
+>> Gustavo Romero (7):
+>>    tests/functional: Re-activate the check-venv target
+>>    python: Install pygdbmi in meson's venv
+>>    tests/functional: Provide GDB to the functional tests
+>>    tests/functional: Add GDB class
+>>    tests/functional: Add decorator to skip test on missing env vars
+>>    tests/functional: Adapt reverse_debugging to run w/o Avocado
+>>    tests/functional: Adapt arches to reverse_debugging w/o Avocado
+> 
+> Out of curiosity, do you plan to post the final patch removing Avocado
+> use / dependency?
 
-Maybe use @skipIfMissingImports('pygdbmi') now?
+Which other uses of Avocado are you thinking about? AFAIK, this test here is 
+the last one that used Avocado.
 
-Apart from that:
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+  Thomas
 
 

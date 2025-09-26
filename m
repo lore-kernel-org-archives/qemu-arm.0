@@ -4,88 +4,144 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 845F5CAC5AC
-	for <qemu-arm@archiver.kernel.org>; Fri, 26 Sep 2025 05:18:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6728ACAC5AE
+	for <qemu-arm@archiver.kernel.org>; Fri, 26 Sep 2025 06:29:09 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v20ot-0004lD-IB; Fri, 26 Sep 2025 01:16:38 -0400
+	id 1v21wq-00036q-23; Fri, 26 Sep 2025 02:28:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
- id 1v20oq-0004jz-VO
- for qemu-arm@nongnu.org; Fri, 26 Sep 2025 01:16:33 -0400
-Received: from mail-pg1-x536.google.com ([2607:f8b0:4864:20::536])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
- id 1v20of-00060A-9y
- for qemu-arm@nongnu.org; Fri, 26 Sep 2025 01:16:31 -0400
-Received: by mail-pg1-x536.google.com with SMTP id
- 41be03b00d2f7-b5526b7c54eso1121531a12.0
- for <qemu-arm@nongnu.org>; Thu, 25 Sep 2025 22:16:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1758863775; x=1759468575; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=ErpjM5v///jsQEmH//OMXKSRg7T93UzIYGTiGLLhSpc=;
- b=nMryvUoaMxaTTO6jqTBDLADTLhXmYoN5YQvl3H77qgorOGSv/ND+7+1KyvewOD2K4E
- /J7hJ+b3CZG/1MLDZZWzEuvtvpcwt2P5jQ+Jhz3suPUuRyL3V4PUDFU8RAeK72nsj7JY
- +ire1igJomlxadvUMB+xplUqeI3zgNWoz5TU4UoKaOUKyvQLuXwi7rAOHTEyNec+LKpq
- rflYhJTiQT79JZjZ9y0eQ4NHIBBdpc270QDMXWYSdKZONxLYPQxnxWtkqxHjKS33s3rC
- +P72xCmUIxlxp2yGevjzRdfuQ1Q65BGDvb/pIVZDEgfc7wBunWUoCXzfC6MqznDGXfks
- 4UgA==
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1v21wl-00035y-Na
+ for qemu-arm@nongnu.org; Fri, 26 Sep 2025 02:28:48 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1v21we-0000OI-MD
+ for qemu-arm@nongnu.org; Fri, 26 Sep 2025 02:28:47 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1758868115;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=7VzwTe1sTuf4hwGkSRrHfnFvnKxJ0O1MG/dYzXhFWqY=;
+ b=UuwgXeJpC0LWz4LOcbjMsq1NbvzNOjbkXUX5pcL4+/lFuonhogZTqmCMJBFjQ71zJJAxA2
+ Wq4kNdU7rMtSvKpjOLBgMnbsZHMv8Sci8bWtxCZya8pWWaqe04GeIkFPNPA+nxa9lwXGkw
+ sLQsKitvtzBWbHAYCD0esCcTLIxMz5s=
+Received: from mail-ej1-f70.google.com (mail-ej1-f70.google.com
+ [209.85.218.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-120--vVezpfkPVuj2k6WnfUUUw-1; Fri, 26 Sep 2025 02:28:29 -0400
+X-MC-Unique: -vVezpfkPVuj2k6WnfUUUw-1
+X-Mimecast-MFC-AGG-ID: -vVezpfkPVuj2k6WnfUUUw_1758868109
+Received: by mail-ej1-f70.google.com with SMTP id
+ a640c23a62f3a-aff0df4c4abso211983366b.1
+ for <qemu-arm@nongnu.org>; Thu, 25 Sep 2025 23:28:29 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1758863775; x=1759468575;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=ErpjM5v///jsQEmH//OMXKSRg7T93UzIYGTiGLLhSpc=;
- b=B/nrD2tpnFRvWO6daGbWgxjR0pU3fKcRaWi0rdLGJjgu/aRi3Iw0IRm5d9zIRlISg9
- dhjAo8DPNdAHRsH+0pJrGBoKA/ZV9KkBYYd032+17q/HAjeU+hXK+CsBlvT3LL2cMgyR
- /dLF8HWEl0wwbXJm1s/Aro0wqWHBLG5qBSGRhVyBekF07DpMJV6scxwFwzr/qyuay2wj
- X0r7tt2ovEuUq5S9AdxZCtTt6LEY6+tP5Sf/teICvCUbSXhuczsIyjVoek6DqJLORzdw
- rWHVTpw86ZAPJ3RA9D73hGXzJdeVndvN1QwoxlXPrXQTK5Rncm1BUWwiQ6dW5dfM7mqe
- huZQ==
-X-Gm-Message-State: AOJu0YwzXR8c9hoz0pZEuMsi1a9rf6ZxVIZW4/uncw7tKdfMLyuNmlpT
- phK1clYsoLZR1nDz3s30cUAn4ZMH6QsLt7Sxh3qBGX9uNIp4HhmTcgQcaC0spyHlbXg=
-X-Gm-Gg: ASbGncvtzjIMUmzqrYd/5mDtbhaTU8KUgu3hDKUnnF4Ko8F6+2lMQGo6/HHzWYIPCBp
- Q5riRnoSCA18c5Ymuyy+REveYK+NMiRUwEl93TARYuT4CjP5dfRaIhtXrGJ0G0i6JcHchgIH9dX
- RHNTX/MVWbqYbh67MBRQyr4RzjlXxipu5yG1Ap5gslGiaD/mXZyKxjEH0X+pxjbkWES37qkwCfs
- APY+1NS03ge1WXKQ7CEAeRUnoXL+41ezz6OQFXz6pUOks4L7FSQNbWc2VGwpqzOEo15Pv+aR6UH
- 861IjZE/3FRLe4tXxHOKOe7ODwylqqiqtlazjZKPzmLvfRIPRS23lokSzbW9R2BPd1Z4jZF9MBO
- aUw3n5bWbfdWFNXbYKyI6KWIk+j8Xx/NsyclNwcNb93RDoSuI4OtmsYqOvoaZSLHhOp7s
-X-Google-Smtp-Source: AGHT+IFRyPVOrEnEpQLIMDsrPcD3BrCW77aiKC4vjEC+82B5VTCizBN4m4Qj99MITrhmBs7V4SW/Aw==
-X-Received: by 2002:a17:902:ced2:b0:271:ac7a:8f18 with SMTP id
- d9443c01a7336-27ed4a9615cmr78110225ad.43.1758863774712; 
- Thu, 25 Sep 2025 22:16:14 -0700 (PDT)
-Received: from gromero0.. (189-47-45-49.dsl.telesp.net.br. [189.47.45.49])
- by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-27ed672a51fsm42160085ad.63.2025.09.25.22.16.12
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 25 Sep 2025 22:16:14 -0700 (PDT)
-From: Gustavo Romero <gustavo.romero@linaro.org>
-To: qemu-devel@nongnu.org, alex.bennee@linaro.org, thuth@redhat.com,
- berrange@redhat.com
-Cc: qemu-arm@nongnu.org, gustavo.romero@linaro.org,
- manos.pitsidianakis@linaro.org, peter.maydell@linaro.org
-Subject: [PATCH v4 3/9] tests/functional: Provide GDB to the functional tests
-Date: Fri, 26 Sep 2025 05:15:36 +0000
-Message-Id: <20250926051542.104432-4-gustavo.romero@linaro.org>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20250926051542.104432-1-gustavo.romero@linaro.org>
-References: <20250926051542.104432-1-gustavo.romero@linaro.org>
+ d=1e100.net; s=20230601; t=1758868109; x=1759472909;
+ h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=7VzwTe1sTuf4hwGkSRrHfnFvnKxJ0O1MG/dYzXhFWqY=;
+ b=Px2I4l1uSXbjuj8oWG3IVr/urX+EvF9hVbtRK/FpWWbukT8oEg9IrSNM7eiWSgMELt
+ 0wRIsretBm4cJABzbaMRlh702m+fsFA6se/5Km4JqoaxKSLPTXO96N90dGZ6FbAc7vwI
+ 8SiVJ3voQa2DOdF4Q21ecru0lcd/ZhV/BtLJIeZodSh4FYBRecGDheiLlqsfRHFygtSz
+ 2TTWFGvgoQKKBpE3W4rSxMkJdZOzFFEZ1OXf1jkmbFSu6u+YocJO8KHtZsliZ+ixrF7d
+ uVTUWDD7osACDECmqVCu84YLdYGgz42QXQvS6LcS7lP03xwFaqjb38lfDYe5wPpu6RFj
+ egkA==
+X-Gm-Message-State: AOJu0YwjKixSpCPtth0eoiFjCjuiAclJqPNOEZa4+g/hx2AcB9H2Euxy
+ 8WQd6QURbLgqfmm22ufWdnV7eiEIPmZOPbgGAzX3wlcsNxNUZ0Lzi87PMuCrnKZlpUJLBjkkal2
+ K3mDhV+UtDNupbBbVkpUrdceCHfOhdxghfzbIZkCxaXbCsI7ZtC73mw==
+X-Gm-Gg: ASbGncs6fr9UV+4GAjDq4BXfhMijvmkYiNuuyp8L2ISMlm8GEoc8EIl/aG/R5dpSnE4
+ BzqxkoaKXy4aeAjyVzi6GpjWCzAi2+d2NOkAJ/joGNS7DU4H+NJGzq/ANb08l3yX7zHFsYZJkFd
+ Zrn419LahmeN9T/+bP+U3yKvU87DW78KkHh9K48YBQ3dyD1sYQkr252xnY95zCsN3gEFp+1iJcL
+ cMCCCF+bkExDJsLyOj+BTXzujKQH4pRcg2x272pgzfpwQoE7tJQLj1MJMtaNgX1sALKxK2sgg6O
+ voY/O3FW/whD6HP5zh3YpKqJtk6YtkCubAgihx3aI3Z4nxBVTb/8X5NOL5qu/YJz8gYbtuHaLiM
+ awMSmYg==
+X-Received: by 2002:a17:907:6d0b:b0:b03:d5ca:b14 with SMTP id
+ a640c23a62f3a-b34beba9670mr629607966b.61.1758868108664; 
+ Thu, 25 Sep 2025 23:28:28 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IERu8xzf4c7X9ik7l3rfczx+GfLuqpk1yPzMmcpBiAswlYABqEQANeerGEoiJgyELGiid0x/w==
+X-Received: by 2002:a17:907:6d0b:b0:b03:d5ca:b14 with SMTP id
+ a640c23a62f3a-b34beba9670mr629605766b.61.1758868108246; 
+ Thu, 25 Sep 2025 23:28:28 -0700 (PDT)
+Received: from [192.168.0.7] (ltea-047-064-114-212.pools.arcor-ip.net.
+ [47.64.114.212]) by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-b35446f7488sm320718766b.71.2025.09.25.23.28.27
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 25 Sep 2025 23:28:27 -0700 (PDT)
+Message-ID: <825b38e7-dca5-44c5-b73b-ae2ac740ccb6@redhat.com>
+Date: Fri, 26 Sep 2025 08:28:26 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::536;
- envelope-from=gustavo.romero@linaro.org; helo=mail-pg1-x536.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 1/9] tests/functional: Re-activate the check-venv target
+To: Gustavo Romero <gustavo.romero@linaro.org>, qemu-devel@nongnu.org,
+ alex.bennee@linaro.org, berrange@redhat.com
+Cc: qemu-arm@nongnu.org, manos.pitsidianakis@linaro.org,
+ peter.maydell@linaro.org
+References: <20250926051542.104432-1-gustavo.romero@linaro.org>
+ <20250926051542.104432-2-gustavo.romero@linaro.org>
+From: Thomas Huth <thuth@redhat.com>
+Autocrypt: addr=thuth@redhat.com; keydata=
+ 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
+In-Reply-To: <20250926051542.104432-2-gustavo.romero@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: 69HVpELo82ddJWHZ-KP49pLs8eEjRBlIlGvkPGK7Q3Q_1758868109
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- T_SPF_TEMPERROR=0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -101,123 +157,31 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The probe of GDB is done in 'configure' and the full path is passed to
-meson.build via the -Dgdb=option.
+On 26/09/2025 07.15, Gustavo Romero wrote:
+> Add check-venv target as a dependency for the functional tests. This
+> causes Python modules listed in pythondeps.toml, under the testdeps
+> group, to be installed when 'make check-functional' is executed to
+> prepare and run the functional tests.
+> 
+> Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
+> Suggested-by: Thomas Huth <thuth@redhat.com>
+> ---
+>   tests/Makefile.include | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/tests/Makefile.include b/tests/Makefile.include
+> index 3538c0c740..d012a9b25d 100644
+> --- a/tests/Makefile.include
+> +++ b/tests/Makefile.include
+> @@ -109,7 +109,7 @@ $(FUNCTIONAL_TARGETS):
+>   	@$(MAKE) SPEED=thorough $(subst -functional,-func,$@)
+>   
+>   .PHONY: check-functional
+> -check-functional:
+> +check-functional: check-venv
+>   	@$(NINJA) precache-functional
+>   	@QEMU_TEST_NO_DOWNLOAD=1 $(MAKE) SPEED=thorough check-func check-func-quick
 
-Because a single functional test can cover different arches, such as
-aarch64, ppc64, and x86_64, only a GDB that supports all the arches in
-the target list is passed to Meson for use in the functional tests. To
-handle this check, a new shell function, is_target_arch_in_arch_list, is
-introduced in 'configure'.
-
-Meson then can pass the location of GDB to the test via an environment
-variable: QEMU_TEST_GDB.
-
-Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- configure                     | 21 +++++++++++++++++++++
- meson_options.txt             |  2 ++
- scripts/meson-buildoptions.sh |  2 ++
- tests/functional/meson.build  |  6 ++++++
- 4 files changed, 31 insertions(+)
-
-diff --git a/configure b/configure
-index 0f7eb95586..20e05d233f 100755
---- a/configure
-+++ b/configure
-@@ -1142,12 +1142,31 @@ fi
- #########################################
- # gdb test
- 
-+# Check if all target arches are in a provided list of arches.
-+is_target_arch_in_arch_list() {
-+    arch_list=$1
-+    for target in $target_list; do
-+        arch=${target%%-*}
-+        if test "${arch_list#*$arch}" = "$arch_list"; then
-+            # Target arch not in arch list
-+            return 1
-+        fi
-+    done
-+    return 0
-+}
-+
- if test -n "$gdb_bin"; then
-     gdb_version_string=$($gdb_bin --version | head -n 1)
-     # Extract last field in the version string
-     gdb_version=${gdb_version_string##* }
-     if version_ge $gdb_version 9.1; then
-         gdb_arches=$($python "$source_path/scripts/probe-gdb-support.py" $gdb_bin)
-+
-+	if is_target_arch_in_arch_list "$gdb_arches"; then
-+            gdb_multiarch="yes"
-+        else
-+            gdb_multiarch=""
-+	fi
-     else
-         gdb_bin=""
-     fi
-@@ -1984,6 +2003,8 @@ if test "$skip_meson" = no; then
-   test -n "${LIB_FUZZING_ENGINE+xxx}" && meson_option_add "-Dfuzzing_engine=$LIB_FUZZING_ENGINE"
-   test "$plugins" = yes && meson_option_add "-Dplugins=true"
-   test "$tcg" != enabled && meson_option_add "-Dtcg=$tcg"
-+  test "$gdb_multiarch" = yes && meson_option_add "-Dgdb=$gdb_bin"
-+
-   run_meson() {
-     NINJA=$ninja $meson setup "$@" "$PWD" "$source_path"
-   }
-diff --git a/meson_options.txt b/meson_options.txt
-index fff1521e58..5bb41bcbc4 100644
---- a/meson_options.txt
-+++ b/meson_options.txt
-@@ -36,6 +36,8 @@ option('trace_file', type: 'string', value: 'trace',
- option('coroutine_backend', type: 'combo',
-        choices: ['ucontext', 'sigaltstack', 'windows', 'wasm', 'auto'],
-        value: 'auto', description: 'coroutine backend to use')
-+option('gdb', type: 'string', value: '',
-+       description: 'Path to GDB')
- 
- # Everything else can be set via --enable/--disable-* option
- # on the configure script command line.  After adding an option
-diff --git a/scripts/meson-buildoptions.sh b/scripts/meson-buildoptions.sh
-index 0ebe6bc52a..f4bd21220e 100644
---- a/scripts/meson-buildoptions.sh
-+++ b/scripts/meson-buildoptions.sh
-@@ -58,6 +58,7 @@ meson_options_help() {
-   printf "%s\n" '  --enable-ubsan           enable undefined behaviour sanitizer'
-   printf "%s\n" '  --firmwarepath=VALUES    search PATH for firmware files [share/qemu-'
-   printf "%s\n" '                           firmware]'
-+  printf "%s\n" '  --gdb=VALUE              Path to GDB'
-   printf "%s\n" '  --iasl=VALUE             Path to ACPI disassembler'
-   printf "%s\n" '  --includedir=VALUE       Header file directory [include]'
-   printf "%s\n" '  --interp-prefix=VALUE    where to find shared libraries etc., use %M for'
-@@ -323,6 +324,7 @@ _meson_option_parse() {
-     --disable-fuzzing) printf "%s" -Dfuzzing=false ;;
-     --enable-gcrypt) printf "%s" -Dgcrypt=enabled ;;
-     --disable-gcrypt) printf "%s" -Dgcrypt=disabled ;;
-+    --gdb=*) quote_sh "-Dgdb=$2" ;;
-     --enable-gettext) printf "%s" -Dgettext=enabled ;;
-     --disable-gettext) printf "%s" -Dgettext=disabled ;;
-     --enable-gio) printf "%s" -Dgio=enabled ;;
-diff --git a/tests/functional/meson.build b/tests/functional/meson.build
-index 2a0c5aa141..725630d308 100644
---- a/tests/functional/meson.build
-+++ b/tests/functional/meson.build
-@@ -77,6 +77,12 @@ foreach speed : ['quick', 'thorough']
-     test_env.set('PYTHONPATH', meson.project_source_root() / 'python:' +
-                                meson.current_source_dir())
- 
-+    # Define the GDB environment variable if gdb is available.
-+    gdb = get_option('gdb')
-+    if gdb != ''
-+      test_env.set('QEMU_TEST_GDB', gdb)
-+    endif
-+
-     foreach test : target_tests
-       testname = '@0@-@1@'.format(target_base, test)
-       if fs.exists('generic' / 'test_' + test + '.py')
--- 
-2.34.1
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
 

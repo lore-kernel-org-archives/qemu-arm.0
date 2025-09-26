@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97414CAC5AC
-	for <qemu-arm@archiver.kernel.org>; Fri, 26 Sep 2025 07:21:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8B75CAC5AC
+	for <qemu-arm@archiver.kernel.org>; Fri, 26 Sep 2025 07:22:13 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v22eG-000468-Au; Fri, 26 Sep 2025 03:13:45 -0400
+	id 1v22Zb-00069F-IU; Fri, 26 Sep 2025 03:08:55 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <Luc.Michel@amd.com>)
- id 1v22cV-00015d-U0; Fri, 26 Sep 2025 03:11:56 -0400
-Received: from mail-westus3azlp170110003.outbound.protection.outlook.com
- ([2a01:111:f403:c107::3] helo=PH0PR06CU001.outbound.protection.outlook.com)
+ id 1v22ZX-00065M-Sp; Fri, 26 Sep 2025 03:08:52 -0400
+Received: from mail-westus3azlp170100009.outbound.protection.outlook.com
+ ([2a01:111:f403:c107::9] helo=PH7PR06CU001.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <Luc.Michel@amd.com>)
- id 1v22cJ-0007Fp-0s; Fri, 26 Sep 2025 03:11:54 -0400
+ id 1v22ZJ-0006X8-PL; Fri, 26 Sep 2025 03:08:51 -0400
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=OFa272ZWSFxPgHHBIwJ6XjxZd3LN4nd2ScpCmKGuyZ/WU8M+kjmieeY22ZA1/l8WKgo9TPgH4aH57Bi6Zg9IeFRG61OsBGjoa4FSi+vw5HLxLAkLFzdxsjED14AgCUNH+RZDBeivJyFl6BQ3Awki4Kd6VkR+SyXnHLqi/mR9RQrJcHBlR1XNgyK1J41UoJSd+DQEFQva5VHmBD0BxcukXPx86v6cFKr051pEUA1LfIfEGB8QJvJjuqqnXZvowj+69BQ4+3v97dCAfb51K2O77Caf+enUdgyxcs1mcj/Iwm3nqjV0OhCsu5YumyTEweGE2kxHD7TfikdiFnY0EsOCXg==
+ b=KRrDZamEyMYk4ZpOj6XPAr5hG/ZGkRC+Z6a+LhrImtk3qKtS+z+oZVYFOjAeEnlfAZm8oKz1zsTcNNlpwBPJmi4BrVoW029xX4lUnPtjD3GH0ESgNyMXIK432GSopCrmQMH4fliD8hmKLRVOm4sS7UwlLlgP1EvyNGrzYyp2l1MKhW91hClv5u+USLp3uADIooOS2cVt9zP7A71ml0EBY/KF1HjqcrWXuYwmzBjDPaQPqO6iVs2253X8Q7RMTmxcf5SW6zHsSEemf0Ub5F3Srx/1+kcTWDhJWWft3LRqVnQ6ucT+J0MAcyw+M+TL4MeIgeGi/YCZG76EiL7izyx3ug==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=Kihyp+p43tYNcqRkNOb/4laAo6FtxVLRtDdITnqWkAk=;
- b=WoIH57OriWdxBcsYBz36p1nzJK0lqDLZaT7BqHY5nbR2K3ftMJXKtHlp2BSff+TA3Pz1Fl4IgPLSButneGDd/UHbokzqXupt56sNPInfr8O1OAm8Lh7RHLduZLsZmZJqlTXjJzNWHYWZUADr0zz2CSFaSfEn5FakDPm9L19eONoIfuqKEEu86ODnpG7gtoBeXxAXj80Q8GMnx52BX3+AoIyF3srygAP1j7aqwi5QvdujyYtUiY/90sLa3DLWUO/dceA1dpVeXhVJTU0/7FyjjXjhXFcHornooYh8ht8L9p8wA0qwMZYEwDNnoB/vn3I/6cUXnMGgTY4qOaor06EUVA==
+ bh=PbPGiuqT9+ZviK0KQHJSO52ZgtdTHi0SpB5NYOVPraI=;
+ b=hpQnUrV/FQmVYH7D+KuDK4fwjZstgYGVhFT189FgEGV14SOkhcgTbX+FG04AP8AQCOwpEVZ8ijB+Z2Dxk34wb/sVVu8MJTC05neot73Q3Lo/dJGGjSlFUw/u0t9CRJF5dPqaykb1N9qk1F0+yAQa26KK1CRcg4PRsUv99c1sNmgpp9E+C2oCVdRpPUn89qGWukJ+z3kQYIz0Md+qmUzr/xe9c6Oa5rk2efuN63X+74CaBthIKdW5D7SNylau1NLqVNlZq0AU7iiF8sQg3pRFJOHEb4s0gbbEvSW80SFUaeXQBlIs56HQv3udCblqf39OA54/2cqO/lSgGjd2W92Njw==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
  165.204.84.17) smtp.rcpttodomain=nongnu.org smtp.mailfrom=amd.com; dmarc=pass
  (p=quarantine sp=quarantine pct=100) action=none header.from=amd.com;
  dkim=none (message not signed); arc=none (0)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1; 
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=Kihyp+p43tYNcqRkNOb/4laAo6FtxVLRtDdITnqWkAk=;
- b=QQxVMp3cNIYmuEqLoO7vdSRX8/JwDeQY/6h7mZMVjQbow3XhEQBUv4ha7g7LyxnET1TcRKeKjcgzd9itMhKOkY+kOeo6pHmb8NTGIbHY1t8OUoDtftY1esIUDMlFsqPrX5T/T7lQJ/JF5/p0/yavegyQawk4uIhzyXSvpRIZzxk=
-Received: from PH7PR17CA0055.namprd17.prod.outlook.com (2603:10b6:510:325::16)
- by PH8PR12MB7133.namprd12.prod.outlook.com (2603:10b6:510:22e::16)
+ bh=PbPGiuqT9+ZviK0KQHJSO52ZgtdTHi0SpB5NYOVPraI=;
+ b=mdl4lzkCbImwh1l1aLavrQ492DrOAfcK0ttnxDH7wGNb5XUo0cA12lLiI0tftIayep28JfUQgWHCG9bheqf24TNKWVVnTUHaBSt4ONHOG64m/mGpliYJvpovQOp5F80AtIoVuneElnFA5vWt16HrdrxvgpFXiT5oTDz+IyIah80=
+Received: from PH1PEPF000132EF.NAMP220.PROD.OUTLOOK.COM (2603:10b6:518:1::37)
+ by CH3PR12MB7739.namprd12.prod.outlook.com (2603:10b6:610:151::22)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9160.11; Fri, 26 Sep
- 2025 07:09:47 +0000
-Received: from CY4PEPF0000FCC5.namprd03.prod.outlook.com
- (2603:10b6:510:325:cafe::57) by PH7PR17CA0055.outlook.office365.com
- (2603:10b6:510:325::16) with Microsoft SMTP Server (version=TLS1_3,
- cipher=TLS_AES_256_GCM_SHA384) id 15.20.9160.10 via Frontend Transport; Fri,
- 26 Sep 2025 07:09:47 +0000
+ 2025 07:08:23 +0000
+Received: from SN1PEPF0002BA4B.namprd03.prod.outlook.com
+ (2a01:111:f403:f90e::3) by PH1PEPF000132EF.outlook.office365.com
+ (2603:1036:903:47::3) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.9137.19 via Frontend Transport; Fri,
+ 26 Sep 2025 07:08:23 +0000
 X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 165.204.84.17)
  smtp.mailfrom=amd.com; dkim=none (message not signed)
  header.d=none;dmarc=pass action=none header.from=amd.com;
@@ -51,20 +51,20 @@ Received-SPF: Pass (protection.outlook.com: domain of amd.com designates
  165.204.84.17 as permitted sender) receiver=protection.outlook.com;
  client-ip=165.204.84.17; helo=satlexmb07.amd.com; pr=C
 Received: from satlexmb07.amd.com (165.204.84.17) by
- CY4PEPF0000FCC5.mail.protection.outlook.com (10.167.242.107) with Microsoft
+ SN1PEPF0002BA4B.mail.protection.outlook.com (10.167.242.68) with Microsoft
  SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.9160.9 via Frontend Transport; Fri, 26 Sep 2025 07:09:47 +0000
+ 15.20.9160.9 via Frontend Transport; Fri, 26 Sep 2025 07:08:23 +0000
 Received: from SATLEXMB04.amd.com (10.181.40.145) by satlexmb07.amd.com
  (10.181.42.216) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.2.2562.17; Fri, 26 Sep
- 2025 00:09:36 -0700
+ 2025 00:08:22 -0700
 Received: from satlexmb07.amd.com (10.181.42.216) by SATLEXMB04.amd.com
  (10.181.40.145) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.39; Fri, 26 Sep
- 2025 02:09:36 -0500
+ 2025 02:08:22 -0500
 Received: from XFR-LUMICHEL-L2.xilinx.com (10.180.168.240) by
  satlexmb07.amd.com (10.181.42.216) with Microsoft SMTP Server id 15.2.2562.17
- via Frontend Transport; Fri, 26 Sep 2025 00:09:34 -0700
+ via Frontend Transport; Fri, 26 Sep 2025 00:08:20 -0700
 From: Luc Michel <luc.michel@amd.com>
 To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
 CC: Luc Michel <luc.michel@amd.com>, Peter Maydell <peter.maydell@linaro.org>, 
@@ -72,10 +72,9 @@ CC: Luc Michel <luc.michel@amd.com>, Peter Maydell <peter.maydell@linaro.org>,
  <edgar.iglesias@amd.com>, =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?=
  <philmd@linaro.org>, Alistair Francis <alistair@alistair23.me>, "Frederic
  Konrad" <frederic.konrad@amd.com>, Sai Pavan Boddu <sai.pavan.boddu@amd.com>
-Subject: [PATCH v6 47/47] tests/functional/test_aarch64_xlnx_versal: test the
- versal2 machine
-Date: Fri, 26 Sep 2025 09:08:05 +0200
-Message-ID: <20250926070806.292065-48-luc.michel@amd.com>
+Subject: [PATCH v6 05/47] hw/arm/xlnx-versal: sdhci: refactor creation
+Date: Fri, 26 Sep 2025 09:07:23 +0200
+Message-ID: <20250926070806.292065-6-luc.michel@amd.com>
 X-Mailer: git-send-email 2.51.0
 In-Reply-To: <20250926070806.292065-1-luc.michel@amd.com>
 References: <20250926070806.292065-1-luc.michel@amd.com>
@@ -86,54 +85,56 @@ Received-SPF: None (SATLEXMB04.amd.com: luc.michel@amd.com does not designate
  permitted sender hosts)
 X-EOPAttributedMessage: 0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CY4PEPF0000FCC5:EE_|PH8PR12MB7133:EE_
-X-MS-Office365-Filtering-Correlation-Id: 75b78df1-ad00-41c8-7da5-08ddfccbad91
+X-MS-TrafficTypeDiagnostic: SN1PEPF0002BA4B:EE_|CH3PR12MB7739:EE_
+X-MS-Office365-Filtering-Correlation-Id: 7cce5048-df9e-4540-dca6-08ddfccb7b24
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
- ARA:13230040|1800799024|376014|36860700013|82310400026|13003099007; 
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?y6Twyl6qzNwBCoogx2REfR2PGSsC/FRjY0l5tdbIsaq7xyMVpAtFMHfFAf3X?=
- =?us-ascii?Q?9Vf6n5BfNaJRluaQM3nppgoD6lIU8Gzgw1dHjfeNFxZsgxzVwd6YNdrQP3Ba?=
- =?us-ascii?Q?pMpY77ZShXgF1gnMYZg0P00pWmYlD21i8NsjYj0t4Q6YxYveucJZpH/ogUbx?=
- =?us-ascii?Q?r/VYGW7BEEPOdTDn1+rEtsKzqxn7+AJl7pXOdKEZfD6OmCSVwzKiHLbftRlK?=
- =?us-ascii?Q?feldp1HQXI5lrSGuKdz8q8QMquxQKRgy6N2rdn9qrsCA8hQWU+5Q0o4HxKpw?=
- =?us-ascii?Q?Pl5C8GDETndEQT0YEjTHG++2jNkgK625OiPmMoBZWgH3LWGbarji0RgB/sQx?=
- =?us-ascii?Q?LUA0CWrNmLbyWYUtJOjBU9lfMboHjVj3gLNPO0ltloehLmnhGvHvE7O+fnZc?=
- =?us-ascii?Q?g21z+o67FGLyAuH+jniJcm2aejOppZPHhEjCyxq6Vyr36pDkLuQS8DNa/e1+?=
- =?us-ascii?Q?zH66vSjJaiwBJwiVauPmNUvxzwWuZbrw4R4hBFOuJweBxoZuS2kN4bxZgg3x?=
- =?us-ascii?Q?TcR+IwOtUlK8uvhoJAIC6mjXPLVIk38dhLzT1a+p26unL5ehPv2CQLBtc21i?=
- =?us-ascii?Q?kLDg8w67jNXRzfHi9AYgEWMGKzxzL0wb3rcoU32Rg34/3I8JNgrbXN8feUFu?=
- =?us-ascii?Q?iUHNm63I7Bb8rx/VyA/vKaK4Hjs3EzrVqHBScBaN6JhfYCpsKwfx/jr2Yl+4?=
- =?us-ascii?Q?URIZ5VLw0WZsstCalthNLsAyiFkOpiT0wQ4sHtRT9np47vmvnxsSHeH3+YME?=
- =?us-ascii?Q?UeVvOiINlHGY1ObxznYVpovLPIcsw67+zDIJugGbKVoJz3QL3AEyLLyxZYka?=
- =?us-ascii?Q?kRjPacLcHdX7VyqzXfeOEi/jCZcrrOi51vSCOhKe5CIA5RZsKYJ+K6RQZrkB?=
- =?us-ascii?Q?X+fhQczCGNM7VkaX1XaXL73Wmi2wfg/0YB3TU77e1JPPawBLZ+2UlUJmOURV?=
- =?us-ascii?Q?wtdpwZFsxovr3oe74GNkgeTUEuhR1/6sZOL54plRUL5f9iBW6A9viUvHbWwr?=
- =?us-ascii?Q?syF7bFSEijtdu5de1WCa2dbBuHtxUh55LnxDH565TFjPZtfGeqZcWnlpaive?=
- =?us-ascii?Q?W4o7FVhogrXcXtAtdzhRJ79mOOpReUJR9z5aOsV8uqXXeuMdtzxodZWgWLfM?=
- =?us-ascii?Q?lmKchxlPyv5xrmmjOdxXUQszUD9PLPDKjwhsfg3DfcqKNCGJyzNoLUjc+7Di?=
- =?us-ascii?Q?T5ybsfnS204YgXNmSnWFyLQJiPKZGKKrdokY6CL1qMYnwPvVpt7OHQ0NolDI?=
- =?us-ascii?Q?jcSKSfrUBa48WPEWEJ7U0qP8I+M54oKOn0DMvGuQlzR8zfiNP6EwnnTMh+Fp?=
- =?us-ascii?Q?Z24+o/plOqI7NgHzTEVfmuhLExx/wcWMByYmswvT9qjLdrm7gGBPrl53vIvX?=
- =?us-ascii?Q?cxZWDZ4U6hMJWO8KqmBWC6UpX4Dc0TbRYFAerl3s6n31/dZELUWgVBIVY+Ef?=
- =?us-ascii?Q?ILJTKrRZidWkEsWeuF83O/w9ynvhIzm+QpkQ6/ZQ4ma8beUVpmhlKg=3D=3D?=
+ ARA:13230040|376014|1800799024|82310400026|36860700013; 
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?Luky0Tlpy2kht1p5f4D1oUtnGGHnA/eO1m8TfuNtt8KjcqzCYggt/l2XiMF6?=
+ =?us-ascii?Q?FHrqyoczduXyFMiMflxhVrPho4+7uh1H3t/dvtYHdAl5n621JM+fe45sss5Y?=
+ =?us-ascii?Q?LIJK+3Ngivi9nNyeH3Kb1TBRMAOBZO29R/ipruutbxqzKNebjujHtPMuDEDz?=
+ =?us-ascii?Q?rl35UgvERQ/5uTUmYUKvHj+HVXaonL57dj70vzpOdlUlFluaaR9dc310rOnW?=
+ =?us-ascii?Q?5uphPdyXqfzhzmF8qeBv55hInAeEKEOpYHPPJeWaXTVdwcKBasyr4hWxg1L8?=
+ =?us-ascii?Q?xooFJ3V3TOV4ZqqspjrB6cG0/1zD2RUfwitDVlqh3yXSfacOlFqEJ/IuLSxD?=
+ =?us-ascii?Q?RwSOFysa4mNFjFJFebk2S/7yoQfzo3QqjREg/qcDVA4eLt4NuxPVFeuNYThy?=
+ =?us-ascii?Q?IHh2S7yi7N7RuXFbZM+eJt3/WwgiUlU5Jkbxzp4PJjNIcphRWYqCfLFN3TQZ?=
+ =?us-ascii?Q?srLXsWv3LqUF/8sLehObZGNI9Hn52fY0rtJq2WfcjAQji9yjGaY8hOn2Z5o4?=
+ =?us-ascii?Q?SG5ZEojVmNNSe8Q4eO7wCsIvD+NaijIF8wJVfYeqaG99ik4cM4hdUDvGCcyM?=
+ =?us-ascii?Q?+n38KzrKrHiy/Mhk/GTt0dzz+dSuHV/9ETJ5GZFRtGu/IvIbWmoOyyTRBcuD?=
+ =?us-ascii?Q?ICtnHMvWcVLjghgOBmeMmfwvRpw2Q8H75Yl8A/8tXkqJVMPSJPOD5zlpXRUX?=
+ =?us-ascii?Q?MbsbwAu6DZC6fGTZjUJL1haRAaTIa/ZkbAeXyFrxwSxaabY0hEfD5jTBWFdJ?=
+ =?us-ascii?Q?vF9myzPA448lb18UpQj+CB9KAIm1JKegjUo/Y1bumPryXtyuhPJVzc0VR6Kh?=
+ =?us-ascii?Q?N+YjGWlODA0shDuKKLDgIDCwY80Xa3pBKRpNt1W0qvQTXZ2llH3pyZKTtWs0?=
+ =?us-ascii?Q?5letL0/kxPQGdHavHDiUw40ME8UKRd0txjDwKfZd4PDqc+J85iz8ir0CJmwM?=
+ =?us-ascii?Q?11VMycgsjmzAjiQVWQoqJaF5oY+rmHuGiiefafgFPBVzY7I8+siiHvq4DXXw?=
+ =?us-ascii?Q?nKc5WvoOA9L69BvpW32X6K2bNAY/FFzxcpl6q1vCJY8CcwgPBTDegpRwKcp7?=
+ =?us-ascii?Q?F7ENGicTkQ+EV9M2GfoT1KGcT0A56mFJ4+KtpPxXbg07QDymBQNa8Tff6Xmu?=
+ =?us-ascii?Q?6vXOuR4Tcaw0M9x9uECNbFueEyzqKQC2f/Sn4ow8ydQWcrVSvwTToLGY2wGM?=
+ =?us-ascii?Q?j+gykXjkmPTrn2TRcagWil5j6Bt8l0Gtn/FKXH8rnLjqpflqmYlCod5Zgnrx?=
+ =?us-ascii?Q?vTC200Is/+1HGj7FGYAQIUlQMYsGvAsUM27S7/rK+fC30KhoYw0FIUtamK3p?=
+ =?us-ascii?Q?nx/gIQ9Zcb5ZaXtm3GL4/5ihRlZ9sEgrkHBIu5dBSNnWtF3HsCags30Rm+1T?=
+ =?us-ascii?Q?KU/A5XvAzdh3b10lTXt2H0U0IVyGs4ntXemt5QWiu9kWGnRTPVHFwxg7iMzK?=
+ =?us-ascii?Q?XLAmexM/p1k83phpkQXpZE2ZNnaeeMG17UIp7SlNCjxZCNZq5MRZt8MqDUAH?=
+ =?us-ascii?Q?gPpk1ngBG2YKErDpYYTZE7YJd+3LS/12k666vS96O1a0PBsyHJGeQjyeQ4P+?=
+ =?us-ascii?Q?kCBR2+5MjhIjFF1hOEQ=3D?=
 X-Forefront-Antispam-Report: CIP:165.204.84.17; CTRY:US; LANG:en; SCL:1; SRV:;
  IPV:CAL; SFV:NSPM; H:satlexmb07.amd.com; PTR:InfoDomainNonexistent; CAT:NONE;
- SFS:(13230040)(1800799024)(376014)(36860700013)(82310400026)(13003099007);
- DIR:OUT; SFP:1101; 
+ SFS:(13230040)(376014)(1800799024)(82310400026)(36860700013); DIR:OUT;
+ SFP:1101; 
 X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 26 Sep 2025 07:09:47.6136 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 75b78df1-ad00-41c8-7da5-08ddfccbad91
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 26 Sep 2025 07:08:23.0427 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 7cce5048-df9e-4540-dca6-08ddfccb7b24
 X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
 X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3dd8961f-e488-4e60-8e11-a82d994e183d; Ip=[165.204.84.17];
  Helo=[satlexmb07.amd.com]
-X-MS-Exchange-CrossTenant-AuthSource: CY4PEPF0000FCC5.namprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthSource: SN1PEPF0002BA4B.namprd03.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Anonymous
 X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH8PR12MB7133
-Received-SPF: permerror client-ip=2a01:111:f403:c107::3;
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH3PR12MB7739
+Received-SPF: permerror client-ip=2a01:111:f403:c107::9;
  envelope-from=Luc.Michel@amd.com;
- helo=PH0PR06CU001.outbound.protection.outlook.com
+ helo=PH7PR06CU001.outbound.protection.outlook.com
 X-Spam_score_int: -24
 X-Spam_score: -2.5
 X-Spam_bar: --
@@ -155,49 +156,346 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Add a test for the amd-versal2-virt machine using the same command line,
-kernel, initrd than the ones used for amd-versal-virt.
+Refactor the SDHCI controllers creation using the VersalMap structure.
 
 Signed-off-by: Luc Michel <luc.michel@amd.com>
 Reviewed-by: Francisco Iglesias <francisco.iglesias@amd.com>
 Reviewed-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
 ---
- tests/functional/aarch64/test_xlnx_versal.py | 10 ++++++++--
- 1 file changed, 8 insertions(+), 2 deletions(-)
+ include/hw/arm/xlnx-versal.h |  5 +-
+ hw/arm/xlnx-versal-virt.c    | 43 ++--------------
+ hw/arm/xlnx-versal.c         | 96 ++++++++++++++++++++++++++++--------
+ 3 files changed, 83 insertions(+), 61 deletions(-)
 
-diff --git a/tests/functional/aarch64/test_xlnx_versal.py b/tests/functional/aarch64/test_xlnx_versal.py
-index 95e5c44771f..45aa6e1b881 100755
---- a/tests/functional/aarch64/test_xlnx_versal.py
-+++ b/tests/functional/aarch64/test_xlnx_versal.py
-@@ -18,12 +18,12 @@ class AmdVersalVirtMachine(LinuxKernelTest):
-         ('http://ports.ubuntu.com/ubuntu-ports/dists/bionic-updates/main/'
-          'installer-arm64/20101020ubuntu543.19/images/netboot/'
-          '/ubuntu-installer/arm64/initrd.gz'),
-         'e7a5e716b6f516d8be315c06e7331aaf16994fe4222e0e7cfb34bc015698929e')
+diff --git a/include/hw/arm/xlnx-versal.h b/include/hw/arm/xlnx-versal.h
+index 007c91b596e..4a7a2d85aac 100644
+--- a/include/hw/arm/xlnx-versal.h
++++ b/include/hw/arm/xlnx-versal.h
+@@ -14,11 +14,10 @@
+ #define XLNX_VERSAL_H
  
--    def test_aarch64_amd_versal_virt(self):
--        self.set_machine('amd-versal-virt')
-+    def common_aarch64_amd_versal_virt(self, machine):
-+        self.set_machine(machine)
-         kernel_path = self.ASSET_KERNEL.fetch()
-         initrd_path = self.ASSET_INITRD.fetch()
+ #include "hw/sysbus.h"
+ #include "hw/cpu/cluster.h"
+ #include "hw/or-irq.h"
+-#include "hw/sd/sdhci.h"
+ #include "hw/intc/arm_gicv3.h"
+ #include "hw/dma/xlnx-zdma.h"
+ #include "hw/net/cadence_gem.h"
+ #include "hw/rtc/xlnx-zynqmp-rtc.h"
+ #include "qom/object.h"
+@@ -103,11 +102,10 @@ struct Versal {
+     } lpd;
  
-         self.vm.set_console()
-         self.vm.add_args('-m', '2G',
-@@ -31,7 +31,13 @@ def test_aarch64_amd_versal_virt(self):
-                          '-kernel', kernel_path,
-                          '-initrd', initrd_path)
-         self.vm.launch()
-         self.wait_for_console_pattern('Checked W+X mappings: passed')
+     /* The Platform Management Controller subsystem.  */
+     struct {
+         struct {
+-            SDHCIState sd[XLNX_VERSAL_NR_SDS];
+             XlnxVersalPmcIouSlcr slcr;
  
-+    def test_aarch64_amd_versal_virt(self):
-+        self.common_aarch64_amd_versal_virt('amd-versal-virt')
+             struct {
+                 XlnxVersalOspi ospi;
+                 XlnxCSUDMA dma_src;
+@@ -154,11 +152,14 @@ static inline void versal_set_fdt(Versal *s, void *fdt)
+ {
+     g_assert(!qdev_is_realized(DEVICE(s)));
+     s->cfg.fdt = fdt;
+ }
+ 
++void versal_sdhci_plug_card(Versal *s, int sd_idx, BlockBackend *blk);
 +
-+    def test_aarch64_amd_versal2_virt(self):
-+        self.common_aarch64_amd_versal_virt('amd-versal2-virt')
+ int versal_get_num_can(VersalVersion version);
++int versal_get_num_sdhci(VersalVersion version);
+ 
+ /* Memory-map and IRQ definitions. Copied a subset from
+  * auto-generated files.  */
+ 
+ #define VERSAL_GIC_MAINT_IRQ        9
+diff --git a/hw/arm/xlnx-versal-virt.c b/hw/arm/xlnx-versal-virt.c
+index 334252564be..52852082d4b 100644
+--- a/hw/arm/xlnx-versal-virt.c
++++ b/hw/arm/xlnx-versal-virt.c
+@@ -282,36 +282,10 @@ static void fdt_add_zdma_nodes(VersalVirt *s)
+         qemu_fdt_setprop(s->fdt, name, "compatible", compat, sizeof(compat));
+         g_free(name);
+     }
+ }
+ 
+-static void fdt_add_sd_nodes(VersalVirt *s)
+-{
+-    const char clocknames[] = "clk_xin\0clk_ahb";
+-    const char compat[] = "arasan,sdhci-8.9a";
+-    int i;
+-
+-    for (i = ARRAY_SIZE(s->soc.pmc.iou.sd) - 1; i >= 0; i--) {
+-        uint64_t addr = MM_PMC_SD0 + MM_PMC_SD0_SIZE * i;
+-        char *name = g_strdup_printf("/sdhci@%" PRIx64, addr);
+-
+-        qemu_fdt_add_subnode(s->fdt, name);
+-
+-        qemu_fdt_setprop_cells(s->fdt, name, "clocks",
+-                               s->phandle.clk_25Mhz, s->phandle.clk_25Mhz);
+-        qemu_fdt_setprop(s->fdt, name, "clock-names",
+-                         clocknames, sizeof(clocknames));
+-        qemu_fdt_setprop_cells(s->fdt, name, "interrupts",
+-                               GIC_FDT_IRQ_TYPE_SPI, VERSAL_SD0_IRQ_0 + i * 2,
+-                               GIC_FDT_IRQ_FLAGS_LEVEL_HI);
+-        qemu_fdt_setprop_sized_cells(s->fdt, name, "reg",
+-                                     2, addr, 2, MM_PMC_SD0_SIZE);
+-        qemu_fdt_setprop(s->fdt, name, "compatible", compat, sizeof(compat));
+-        g_free(name);
+-    }
+-}
+-
+ static void fdt_add_rtc_node(VersalVirt *s)
+ {
+     const char compat[] = "xlnx,zynqmp-rtc";
+     const char interrupt_names[] = "alarm\0sec";
+     char *name = g_strdup_printf("/rtc@%x", MM_PMC_RTC);
+@@ -562,20 +536,15 @@ static void efuse_attach_drive(XlnxEFuse *dev)
+     if (blk) {
+         qdev_prop_set_drive(DEVICE(dev), "drive", blk);
+     }
+ }
+ 
+-static void sd_plugin_card(SDHCIState *sd, DriveInfo *di)
++static void sd_plug_card(VersalVirt *s, int idx, DriveInfo *di)
+ {
+     BlockBackend *blk = di ? blk_by_legacy_dinfo(di) : NULL;
+-    DeviceState *card;
+ 
+-    card = qdev_new(TYPE_SD_CARD);
+-    object_property_add_child(OBJECT(sd), "card[*]", OBJECT(card));
+-    qdev_prop_set_drive_err(card, "drive", blk, &error_fatal);
+-    qdev_realize_and_unref(card, qdev_get_child_bus(DEVICE(sd), "sd-bus"),
+-                           &error_fatal);
++    versal_sdhci_plug_card(&s->soc, idx, blk);
+ }
+ 
+ static char *versal_get_ospi_model(Object *obj, Error **errp)
+ {
+     VersalVirt *s = XLNX_VERSAL_VIRT_MACHINE(obj);
+@@ -646,11 +615,10 @@ static void versal_virt_init(MachineState *machine)
+     fdt_add_gem_nodes(s);
+     fdt_add_gic_nodes(s);
+     fdt_add_timer_nodes(s);
+     fdt_add_zdma_nodes(s);
+     fdt_add_usb_xhci_nodes(s);
+-    fdt_add_sd_nodes(s);
+     fdt_add_rtc_node(s);
+     fdt_add_bbram_node(s);
+     fdt_add_efuse_ctrl_node(s);
+     fdt_add_efuse_cache_node(s);
+     fdt_add_cpu_nodes(s, psci_conduit);
+@@ -666,14 +634,13 @@ static void versal_virt_init(MachineState *machine)
+     bbram_attach_drive(&s->soc.pmc.bbram);
+ 
+     /* Attach efuse backend, if given */
+     efuse_attach_drive(&s->soc.pmc.efuse);
+ 
+-    /* Plugin SD cards.  */
+-    for (i = 0; i < ARRAY_SIZE(s->soc.pmc.iou.sd); i++) {
+-        sd_plugin_card(&s->soc.pmc.iou.sd[i],
+-                       drive_get(IF_SD, 0, i));
++    /* Plug SD cards */
++    for (i = 0; i < versal_get_num_sdhci(VERSAL_VER_VERSAL); i++) {
++        sd_plug_card(s, i, drive_get(IF_SD, 0, i));
+     }
+ 
+     s->binfo.ram_size = machine->ram_size;
+     s->binfo.loader_start = 0x0;
+     s->binfo.get_dtb = versal_virt_get_dtb;
+diff --git a/hw/arm/xlnx-versal.c b/hw/arm/xlnx-versal.c
+index 3d2e33d3dac..ff2f47daad9 100644
+--- a/hw/arm/xlnx-versal.c
++++ b/hw/arm/xlnx-versal.c
+@@ -26,10 +26,11 @@
+ #include "target/arm/gtimer.h"
+ #include "system/device_tree.h"
+ #include "hw/arm/fdt.h"
+ #include "hw/char/pl011.h"
+ #include "hw/net/xlnx-versal-canfd.h"
++#include "hw/sd/sdhci.h"
+ 
+ #define XLNX_VERSAL_ACPU_TYPE ARM_CPU_TYPE_NAME("cortex-a72")
+ #define XLNX_VERSAL_RCPU_TYPE ARM_CPU_TYPE_NAME("cortex-r5f")
+ #define GEM_REVISION        0x40070106
+ 
+@@ -45,20 +46,27 @@ typedef struct VersalMap {
+     VersalSimplePeriphMap uart[2];
+     size_t num_uart;
+ 
+     VersalSimplePeriphMap canfd[4];
+     size_t num_canfd;
 +
- if __name__ == '__main__':
-     LinuxKernelTest.main()
++    VersalSimplePeriphMap sdhci[2];
++    size_t num_sdhci;
+ } VersalMap;
+ 
+ static const VersalMap VERSAL_MAP = {
+     .uart[0] = { 0xff000000, 18 },
+     .uart[1] = { 0xff010000, 19 },
+     .num_uart = 2,
+ 
+     .canfd[0] = { 0xff060000, 20 },
+     .canfd[1] = { 0xff070000, 21 },
+     .num_canfd = 2,
++
++    .sdhci[0] = { 0xf1040000, 126 },
++    .sdhci[1] = { 0xf1050000, 128 },
++    .num_sdhci = 2,
+ };
+ 
+ static const VersalMap *VERSION_TO_MAP[] = {
+     [VERSAL_VER_VERSAL] = &VERSAL_MAP,
+ };
+@@ -71,10 +79,22 @@ static inline VersalVersion versal_get_version(Versal *s)
+ static inline const VersalMap *versal_get_map(Versal *s)
+ {
+     return VERSION_TO_MAP[versal_get_version(s)];
+ }
+ 
++static inline Object *versal_get_child(Versal *s, const char *child)
++{
++    return object_resolve_path_at(OBJECT(s), child);
++}
++
++static inline Object *versal_get_child_idx(Versal *s, const char *child,
++                                           size_t idx)
++{
++    g_autofree char *n = g_strdup_printf("%s[%zu]", child, idx);
++
++    return versal_get_child(s, n);
++}
+ 
+ static qemu_irq versal_get_irq(Versal *s, int irq_idx)
+ {
+     return qdev_get_gpio_in(DEVICE(&s->fpd.apu.gic), irq_idx);
+ }
+@@ -422,36 +442,43 @@ static void versal_create_admas(Versal *s, qemu_irq *pic)
+         g_free(name);
+     }
+ }
+ 
+ #define SDHCI_CAPABILITIES  0x280737ec6481 /* Same as on ZynqMP.  */
+-static void versal_create_sds(Versal *s, qemu_irq *pic)
++static void versal_create_sdhci(Versal *s,
++                                const VersalSimplePeriphMap *map)
+ {
+-    int i;
++    DeviceState *dev;
++    MemoryRegion *mr;
++    g_autofree char *node;
++    const char compatible[] = "arasan,sdhci-8.9a";
++    const char clocknames[] = "clk_xin\0clk_ahb";
+ 
+-    for (i = 0; i < ARRAY_SIZE(s->pmc.iou.sd); i++) {
+-        DeviceState *dev;
+-        MemoryRegion *mr;
++    dev = qdev_new(TYPE_SYSBUS_SDHCI);
++    object_property_add_child(OBJECT(s), "sdhci[*]", OBJECT(dev));
+ 
+-        object_initialize_child(OBJECT(s), "sd[*]", &s->pmc.iou.sd[i],
+-                                TYPE_SYSBUS_SDHCI);
+-        dev = DEVICE(&s->pmc.iou.sd[i]);
++    object_property_set_uint(OBJECT(dev), "sd-spec-version", 3,
++                             &error_fatal);
++    object_property_set_uint(OBJECT(dev), "capareg", SDHCI_CAPABILITIES,
++                             &error_fatal);
++    object_property_set_uint(OBJECT(dev), "uhs", UHS_I, &error_fatal);
++    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
+ 
+-        object_property_set_uint(OBJECT(dev), "sd-spec-version", 3,
+-                                 &error_fatal);
+-        object_property_set_uint(OBJECT(dev), "capareg", SDHCI_CAPABILITIES,
+-                                 &error_fatal);
+-        object_property_set_uint(OBJECT(dev), "uhs", UHS_I, &error_fatal);
+-        sysbus_realize(SYS_BUS_DEVICE(dev), &error_fatal);
++    mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(dev), 0);
++    memory_region_add_subregion(&s->mr_ps, map->addr, mr);
+ 
+-        mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(dev), 0);
+-        memory_region_add_subregion(&s->mr_ps,
+-                                    MM_PMC_SD0 + i * MM_PMC_SD0_SIZE, mr);
++    versal_sysbus_connect_irq(s, SYS_BUS_DEVICE(dev), 0, map->irq);
+ 
+-        sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0,
+-                           pic[VERSAL_SD0_IRQ_0 + i * 2]);
+-    }
++    node = versal_fdt_add_simple_subnode(s, "/sdhci", map->addr, 0x10000,
++                                         compatible, sizeof(compatible));
++    qemu_fdt_setprop_cells(s->cfg.fdt, node, "clocks",
++                           s->phandle.clk_25mhz, s->phandle.clk_25mhz);
++    qemu_fdt_setprop(s->cfg.fdt, node, "clock-names",
++                     clocknames, sizeof(clocknames));
++    qemu_fdt_setprop_cells(s->cfg.fdt, node, "interrupts",
++                           GIC_FDT_IRQ_TYPE_SPI, map->irq,
++                           GIC_FDT_IRQ_FLAGS_LEVEL_HI);
+ }
+ 
+ static void versal_create_pmc_apb_irq_orgate(Versal *s, qemu_irq *pic)
+ {
+     DeviceState *orgate;
+@@ -1060,14 +1087,17 @@ static void versal_realize(DeviceState *dev, Error **errp)
+ 
+     for (i = 0; i < map->num_canfd; i++) {
+         versal_create_canfd(s, &map->canfd[i], s->cfg.canbus[i]);
+     }
+ 
++    for (i = 0; i < map->num_sdhci; i++) {
++        versal_create_sdhci(s, &map->sdhci[i]);
++    }
++
+     versal_create_usbs(s, pic);
+     versal_create_gems(s, pic);
+     versal_create_admas(s, pic);
+-    versal_create_sds(s, pic);
+     versal_create_pmc_apb_irq_orgate(s, pic);
+     versal_create_rtc(s, pic);
+     versal_create_trng(s, pic);
+     versal_create_xrams(s, pic);
+     versal_create_bbram(s, pic);
+@@ -1087,17 +1117,41 @@ static void versal_realize(DeviceState *dev, Error **errp)
+     memory_region_add_subregion_overlap(&s->fpd.apu.mr, 0, &s->mr_ps, 0);
+     memory_region_add_subregion_overlap(&s->lpd.rpu.mr, 0,
+                                         &s->lpd.rpu.mr_ps_alias, 0);
+ }
+ 
++void versal_sdhci_plug_card(Versal *s, int sd_idx, BlockBackend *blk)
++{
++    DeviceState *sdhci, *card;
++
++    sdhci = DEVICE(versal_get_child_idx(s, "sdhci", sd_idx));
++
++    if (sdhci == NULL) {
++        return;
++    }
++
++    card = qdev_new(TYPE_SD_CARD);
++    object_property_add_child(OBJECT(sdhci), "card[*]", OBJECT(card));
++    qdev_prop_set_drive_err(card, "drive", blk, &error_fatal);
++    qdev_realize_and_unref(card, qdev_get_child_bus(DEVICE(sdhci), "sd-bus"),
++                           &error_fatal);
++}
++
+ int versal_get_num_can(VersalVersion version)
+ {
+     const VersalMap *map = VERSION_TO_MAP[version];
+ 
+     return map->num_canfd;
+ }
+ 
++int versal_get_num_sdhci(VersalVersion version)
++{
++    const VersalMap *map = VERSION_TO_MAP[version];
++
++    return map->num_sdhci;
++}
++
+ static void versal_base_init(Object *obj)
+ {
+     Versal *s = XLNX_VERSAL_BASE(obj);
+     size_t i, num_can;
+ 
 -- 
 2.51.0
 

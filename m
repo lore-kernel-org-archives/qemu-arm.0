@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BFB11CAC5AE
-	for <qemu-arm@archiver.kernel.org>; Fri, 26 Sep 2025 07:23:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29405CAC5AC
+	for <qemu-arm@archiver.kernel.org>; Fri, 26 Sep 2025 07:25:43 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v22aI-0006bB-Tm; Fri, 26 Sep 2025 03:09:38 -0400
+	id 1v22bn-0000Dw-3t; Fri, 26 Sep 2025 03:11:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <Luc.Michel@amd.com>)
- id 1v22a8-0006PQ-1O; Fri, 26 Sep 2025 03:09:28 -0400
-Received: from mail-westusazlp170120002.outbound.protection.outlook.com
- ([2a01:111:f403:c001::2] helo=SJ2PR03CU001.outbound.protection.outlook.com)
+ id 1v22aT-0006l9-PJ; Fri, 26 Sep 2025 03:09:50 -0400
+Received: from mail-southcentralusazlp170110003.outbound.protection.outlook.com
+ ([2a01:111:f403:c10d::3] helo=SN4PR0501CU005.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <Luc.Michel@amd.com>)
- id 1v22Zv-0006cY-Vz; Fri, 26 Sep 2025 03:09:27 -0400
+ id 1v22aF-0006gs-Gi; Fri, 26 Sep 2025 03:09:48 -0400
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=J8/f7ARlC51kMW/0VE0fRjgYlBzgR2wXqsH2ew5QX7Q6GQed9AU493GHt423eiRHj3yuyVKLQd2UsPZnkGaUGMSCX+/bjCY/9KzfeMbF7rMnynOmQP4VhhCEeeLn8J5cyLbzmcBH5lfeoCH9t0UHgr22Go1wZdflViLPoBqeVY5ICbIJ4ACI2jVGi81RXW8DWtEIVBTHsON/nxXQzJd9SqBTxA8k7cOz4rZSA9aowlQ3yY3fMDuCSFbO6M8aj3eoAfppuwlEjeilog2EyQw2PQr4g0z/54LNQlM2ZiLFcWj3MCHFUZ20+USP4qJxsvgjRMMiryHeMfQy87KGyaRUCA==
+ b=i066dFY2GBLhnT43JQTT9vy2P4WbXGJwTDr25JqUFs+2qaHwYn5W7hP2Aro1V2VrH1CtR1SkzdC6GXDWpZlDjICDxoTDVSNACgFRvnx0AymulVGkx0h6xpzLvMozZHjbZguJrm6J2GUqfeP9oxKRgSXQHKeuguGF2Sm2fCLyXRbvnzQJ1V714VtoB6qn4IVr4fWn3citf/OQHgtBBhQieE18GKOVitYA/bWJvotKqX0pOY6fvUYWHTACSi0j8ldqYh0HrfzNJxZzkSU+m6gB5OekXY0XMj5fMAqVqHzkmjk0DtDv6shRvDTNVXX5bo+ySbiiQC5ppmfRBcjDu8Uqpg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=zNkAKqZ+Vs2sJGrLfxr5vHLitaUOg9ieJqxxEbdy8d8=;
- b=lK7fH03OO+H3r0q/1sHi/PK4Dh8C0nxq0eBpH2bh5bi5J3CVOyR39MnCWiN+SIBe49lyOk174J0nANzJYYbzF/4nuNar0Z20BbtAERem5ucSxFnV3YgFOmTyzxr7iObVKSWpI9KdAFPPhFOM/xTpjNoNA2pb5PpslUAuF1Lw+x4iJITQxHnXpw+OieMMuiIKsH+BNyfO2EQviFgn5hNyklr8xKs3zw9aHEqZ225Be4QviQawZ5dJW9r/HYpdZCbKGDfpLyrlaSq/F0miygl35hurwlwrtstVesv5JjqdViSOpp1FtT9ltbOoaUhAxMCb39C2evJzKRPUOGZoW3YSuA==
+ bh=YlJDcseIU8su1ldR01v/SuSzsm9Bl46VEStISTBwrjU=;
+ b=nMI2geo9P2dBrTGjG2jmbFSNfiq66ymqiRoD9MfgLjOTkHENXm8JiSnYw4gZAyX78Scsn28y0C0MfMyw7BqQUR4KWZNEyqvNpIpmNCGN9J2QwCw9kCHQWtUOp6orT71JFAp67dUS7G2f7kZz2sbDPzTlc7spKYvJmAtqluGZC5dMXoy0fli7CCwA40b0eheYVSSSDadsm4CcpwFEPkhI4iv6UAnPaCHkmofPBjWIGS686nLyLfvENzX9XPY/uXfpbB+MtxyJM8TlsK7jQtZjgDU7ZY3rYn3VSQf+QOAImnIUjx+b6ejtDFGja8WdgCreCHs60kw8py6BbhYpsm3C1Q==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
  165.204.84.17) smtp.rcpttodomain=nongnu.org smtp.mailfrom=amd.com; dmarc=pass
  (p=quarantine sp=quarantine pct=100) action=none header.from=amd.com;
  dkim=none (message not signed); arc=none (0)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1; 
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=zNkAKqZ+Vs2sJGrLfxr5vHLitaUOg9ieJqxxEbdy8d8=;
- b=QOw3QcfdIa1oTzhIh1GMISzNCOrKml82YkaQezd8XMYxJky8VOKOV9EUaSKjJ/DWrJQVJ7IMeDm9TBRByQGgUCWxW/u59r6m0XC7VQSH7nykG/D/NPexLV3oDwubl3n3Rjs7JGlxrOeBdMYTix8v0sBq02BVz+iD4/rPgBeu78A=
-Received: from SA0PR11CA0156.namprd11.prod.outlook.com (2603:10b6:806:1bb::11)
- by DM4PR12MB5769.namprd12.prod.outlook.com (2603:10b6:8:60::6) with
- Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.9160.10; Fri, 26 Sep 2025 07:09:04 +0000
-Received: from SN1PEPF0002BA51.namprd03.prod.outlook.com
- (2603:10b6:806:1bb:cafe::80) by SA0PR11CA0156.outlook.office365.com
- (2603:10b6:806:1bb::11) with Microsoft SMTP Server (version=TLS1_3,
- cipher=TLS_AES_256_GCM_SHA384) id 15.20.9160.10 via Frontend Transport; Fri,
- 26 Sep 2025 07:09:01 +0000
+ bh=YlJDcseIU8su1ldR01v/SuSzsm9Bl46VEStISTBwrjU=;
+ b=iqliTGGN0iJQtHeI0tZGFWcWFcK5Z3Rbsjh57/Tszkwe0/iojaSO+luv6zUxgXFdtgVNra8gUMBFVEUQz8Z7YMaGlDqriH7hCJ5D88VmbTYVVPAjNPpITCzXwcSVbFJcJWCHPEEau5Zed8La4xtTh7yVV9wR2BcyokodTda+tko=
+Received: from PH8PR21CA0002.namprd21.prod.outlook.com (2603:10b6:510:2ce::16)
+ by CY5PR12MB6454.namprd12.prod.outlook.com (2603:10b6:930:36::22)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9115.19; Fri, 26 Sep
+ 2025 07:09:25 +0000
+Received: from SN1PEPF0002BA4F.namprd03.prod.outlook.com
+ (2603:10b6:510:2ce:cafe::de) by PH8PR21CA0002.outlook.office365.com
+ (2603:10b6:510:2ce::16) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.9182.6 via Frontend Transport; Fri,
+ 26 Sep 2025 07:09:24 +0000
 X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 165.204.84.17)
  smtp.mailfrom=amd.com; dkim=none (message not signed)
  header.d=none;dmarc=pass action=none header.from=amd.com;
@@ -51,20 +51,20 @@ Received-SPF: Pass (protection.outlook.com: domain of amd.com designates
  165.204.84.17 as permitted sender) receiver=protection.outlook.com;
  client-ip=165.204.84.17; helo=satlexmb07.amd.com; pr=C
 Received: from satlexmb07.amd.com (165.204.84.17) by
- SN1PEPF0002BA51.mail.protection.outlook.com (10.167.242.74) with Microsoft
+ SN1PEPF0002BA4F.mail.protection.outlook.com (10.167.242.72) with Microsoft
  SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.9160.9 via Frontend Transport; Fri, 26 Sep 2025 07:09:03 +0000
-Received: from SATLEXMB04.amd.com (10.181.40.145) by satlexmb07.amd.com
+ 15.20.9160.9 via Frontend Transport; Fri, 26 Sep 2025 07:09:24 +0000
+Received: from SATLEXMB06.amd.com (10.181.40.147) by satlexmb07.amd.com
  (10.181.42.216) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.2.2562.17; Fri, 26 Sep
- 2025 00:08:50 -0700
-Received: from satlexmb07.amd.com (10.181.42.216) by SATLEXMB04.amd.com
- (10.181.40.145) with Microsoft SMTP Server (version=TLS1_2,
+ 2025 00:09:12 -0700
+Received: from satlexmb07.amd.com (10.181.42.216) by SATLEXMB06.amd.com
+ (10.181.40.147) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.39; Fri, 26 Sep
- 2025 02:08:50 -0500
+ 2025 02:09:11 -0500
 Received: from XFR-LUMICHEL-L2.xilinx.com (10.180.168.240) by
  satlexmb07.amd.com (10.181.42.216) with Microsoft SMTP Server id 15.2.2562.17
- via Frontend Transport; Fri, 26 Sep 2025 00:08:49 -0700
+ via Frontend Transport; Fri, 26 Sep 2025 00:09:10 -0700
 From: Luc Michel <luc.michel@amd.com>
 To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
 CC: Luc Michel <luc.michel@amd.com>, Peter Maydell <peter.maydell@linaro.org>, 
@@ -72,75 +72,74 @@ CC: Luc Michel <luc.michel@amd.com>, Peter Maydell <peter.maydell@linaro.org>,
  <edgar.iglesias@amd.com>, =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?=
  <philmd@linaro.org>, Alistair Francis <alistair@alistair23.me>, "Frederic
  Konrad" <frederic.konrad@amd.com>, Sai Pavan Boddu <sai.pavan.boddu@amd.com>
-Subject: [PATCH v6 21/47] hw/arm/xlnx-versal: add the mp_affinity property to
- the CPU mapping
-Date: Fri, 26 Sep 2025 09:07:39 +0200
-Message-ID: <20250926070806.292065-22-luc.michel@amd.com>
+Subject: [PATCH v6 33/47] hw/arm/xlnx-versal: reconnect the CRL to the other
+ devices
+Date: Fri, 26 Sep 2025 09:07:51 +0200
+Message-ID: <20250926070806.292065-34-luc.michel@amd.com>
 X-Mailer: git-send-email 2.51.0
 In-Reply-To: <20250926070806.292065-1-luc.michel@amd.com>
 References: <20250926070806.292065-1-luc.michel@amd.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
-Received-SPF: None (SATLEXMB04.amd.com: luc.michel@amd.com does not designate
- permitted sender hosts)
 X-EOPAttributedMessage: 0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: SN1PEPF0002BA51:EE_|DM4PR12MB5769:EE_
-X-MS-Office365-Filtering-Correlation-Id: ca4e95c2-409b-4f44-fd56-08ddfccb9371
+X-MS-TrafficTypeDiagnostic: SN1PEPF0002BA4F:EE_|CY5PR12MB6454:EE_
+X-MS-Office365-Filtering-Correlation-Id: d6100c29-98de-4150-332e-08ddfccb9fe4
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
- ARA:13230040|376014|82310400026|36860700013|1800799024; 
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?EpxT3XmuOhWgfZ1scg/a0DkcZ9dXYVtfZ8uHeRzSqz+hZZWsGIoaJTTq/kj4?=
- =?us-ascii?Q?zrEeQ34aKXZJUtuUYFVJ8q1T1HdWo1zU9ZA+Om4s2D3tywT4ZXKYeJ6Lk6FS?=
- =?us-ascii?Q?HDJV967r+Ex21XKf6BxzqQOuBoEeB7zBzJ3HqzhlREJqkuqkiwyiIeEnL6qx?=
- =?us-ascii?Q?tgm5VNgU4Rd0S/WJg3vycBQI/qRNRPPT4Xqnx6pbu1zW7yXIBV0FCFqPIf3k?=
- =?us-ascii?Q?sjr13psE6zwxuF04ztg7085aVO9bP7enihhX172EuU8CZ3Wi5AbgLLLePtJI?=
- =?us-ascii?Q?v0FB81157gCl0ZTT1iMsl4Ld/IV6ArcROyGXmKE+eKw7B4W4FEGyQ8Py5PUU?=
- =?us-ascii?Q?yloOt2Jmbo5nOqiaPbjSsc3s0xtn01pZW6Q64L+nldYko3n7GP7btv56OLLR?=
- =?us-ascii?Q?FSdNfhm8g7zV9UPVLkfRm3xRmz2WVX9dmpOJtA0JWU/uLF3MCM0zbZ2Z79cq?=
- =?us-ascii?Q?3LAmtYapdGPmmsIVSFkaNu2II5qbWFPuLad1ayBQiXzOwtyFzwIQIxxuBoh/?=
- =?us-ascii?Q?iBVluvaWcKjBEVKThhk6CesmCw1vcs/+z/G8Cx1QGiDO+BqFXoOOSxHCEvHI?=
- =?us-ascii?Q?tapDjIlpX25xCfi2DdMXVT357iSk5JiObzksnWo5qlhRMqQvpbqs+fhjZbSJ?=
- =?us-ascii?Q?at3r+RzeqM8yJEq+6k9fbXyErK1RInMTiiz67NWwdEv6wkniQ+P90K2tMnAX?=
- =?us-ascii?Q?3aw0kOjrYaAwcS8zB7+um92V25etvgjOU8WVstr8j//aeZtuLZMqQTpUTiMh?=
- =?us-ascii?Q?YEoK4SvdN8I1fKy0XHX/otUfjm9ilV9ANlcbl++zU3Bbu0cxcp+umVGnVaZe?=
- =?us-ascii?Q?HG1OvPVSFTKsATDZ03GdikXrIGZh30N6lzulieRG81UFoIfaFR7jfJbbd1xB?=
- =?us-ascii?Q?kI4pYjC6eZsE7HyTtuirySaYoWSrnZL+6bAsxw+tWcNc7ozHy1i1OzC2Cqjd?=
- =?us-ascii?Q?3PrrVMAP3psw+XjZNQzJYIHW8iv8x2VqO7v8hfbv4Upj7rv20NWJfJiPGKfB?=
- =?us-ascii?Q?2oIqhuaq/N40EtwZ7BQqRNStbhhkMrhIVSkf+0+Ll/cxAl7GEwdtH7kz8q/Y?=
- =?us-ascii?Q?hwB5gZhi2fZynboQ6xp+TR+OH+HcGe4RUllC3aiare6KotDkMt+MVBpF+GQT?=
- =?us-ascii?Q?dUNcRTPVzX32HSSc1A9HsL4bTjnyaMNaUuR0QGFWMMjrLvvq+DEWJssh8jPZ?=
- =?us-ascii?Q?/HT0W6LfyCNTxFd5MT15hNAA0E97vsdAAuYVKXPWmQDIA1ygEQdoF5RZKLRn?=
- =?us-ascii?Q?N9VbYuZpOqz1QyNeFW9JAlrOyj/Bk+e7xO62ACcc7mXLDQI4SDY8aoYVXlzr?=
- =?us-ascii?Q?2Pa6+D36zlpc/J0UPVzTTlBZOkI4gZ1ZL1vw7c9ZNRN8OX+IOX0NVgqAQWBE?=
- =?us-ascii?Q?1Z07akAs0T+rzgrpQP3Mi7JPUhzwWutOnmFd6qMG6U7vVn3DXCm6klK3nk4G?=
- =?us-ascii?Q?qyBEx4ER1KlS6E9RzdmlOnnMY6PQg/j2NFjZY7ysuyeYBgCFokZMzPF/UU/X?=
- =?us-ascii?Q?a4O1XgYMPIEVX6TdjIoagQK/bzk4IUngZHmM?=
+ ARA:13230040|36860700013|376014|82310400026|1800799024; 
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?cJZbVVnja8h8Z3VVhwrzXjEt8VdxGpNVRPKkD66OvgQJRRiVQftc8JxzuzNJ?=
+ =?us-ascii?Q?bf5Cr7MS/+9zEfM5IOaQmPJqh5N3gy/ZP85CS79OgJBIq8M1n1q61T3fOyl5?=
+ =?us-ascii?Q?dGeVJNbUqy3k/qq9SJ7P9Ycra96FWu+EHNt/YhQ7Y++NuCdNZC80FvyFAXwU?=
+ =?us-ascii?Q?JZqTrVxhL/SyW3ohAaYKzn/B4s9Zf7PdSFJtxrA2zjcjtefKwblIJNzMRhlX?=
+ =?us-ascii?Q?cmZnSo34Tzn1OkG4nb2kx2AW4VPpSnHpEq8qNIO4E7o19ii6A2OJqZktXxl0?=
+ =?us-ascii?Q?EvgCnuKklVlqCi16xS1ZGhXsGnPM5LP+6M8qHFgoixvpJJGYm/uZU+r80KKp?=
+ =?us-ascii?Q?jzr5h/SW99Gk8zCWjautjRljCQnPyHTYnAsBSumQ8WfWox6TfFIMzCi3bUjZ?=
+ =?us-ascii?Q?KniY2aFgcsVsbyYGF3tOZ0wO3+aKjHwNv8alop99gtAa0vbCbFhm7iwagrag?=
+ =?us-ascii?Q?+vwDeebSyIJ3qXSLZ+QaYW2bbToZJuCxnG3z/f5eXg3HWKTKqanA2Nit9ogk?=
+ =?us-ascii?Q?KTdJbOV1OGn/vg3ydsDfn7esYgIO2djF0xAVWUutbux+zZzIWCVBroEhY1Qq?=
+ =?us-ascii?Q?gGt9BHj8pN0jEJcYVLWpXDmobWZ3eHImVKT4DtuAHJnsFK93rseqyOFwrCBj?=
+ =?us-ascii?Q?7P2NGDAg1UrdCg4YKVRHOK+IHK8KjSC2Jt84XY5ikQK8cGFWbxfdF74U2i9Q?=
+ =?us-ascii?Q?tXNWluR4chqLY/ONMVsC+58/zYf9KImgXCgX2JnnjQ0IJNGMj93Le3SvLhn7?=
+ =?us-ascii?Q?0/g+sfRPeax1FMF7RkkqLEawBOneffIphuyrCxGBzHD439dkyOQVQd1i8pql?=
+ =?us-ascii?Q?OT/3R7cvRA70TCRFrljGj26tiQHfPRAD2423+stuGtIH16fUMKGYFDSJTtAs?=
+ =?us-ascii?Q?QHhv8SouwAhYyyT3jhoWB8R/qWjjggd7ENOGIXhwVGYtrxjZeJdEqu8NYRQf?=
+ =?us-ascii?Q?EOQ1KwURXfLRsSQvmV7lxE1M3+l70I9MwJZA5H0gXyhSuRsxqRKsM7wsRDkB?=
+ =?us-ascii?Q?DcMHpXXreExUGIM3nqYZt7iGpZjwpBHYuqtVM4V10ACud+vRyslBKFFh4H1J?=
+ =?us-ascii?Q?rI3wvIe9yWvWe/9fUsxllc8wwoec2XedtFJZihccxCUpia3HtKv/DQJfjCf5?=
+ =?us-ascii?Q?4SNZrBXTUKROCFySN6FuMc9zp+9WECuO4cpaz4PtyvmHVQ/jCVsic3dhu76m?=
+ =?us-ascii?Q?z7//psNngNojnh3Llc2w4PQIelHGsarJIO+KJAz6avZbDKqQ+WU47Aurb7HD?=
+ =?us-ascii?Q?COqtEp3qnWn/73AL7rWWSDjMPY4bZjNOw5C0ZcHYWUWhl3b2W3wp7BaxEBCK?=
+ =?us-ascii?Q?SfL5HAixeqPrhAtDFxc6lr/5y9ap57YgC7dngxbB7YClfJ8GpwLSahprNjd6?=
+ =?us-ascii?Q?DrhZnbDeXMO9lFKzCtWu8mh9PwRLAN7fNHHo/6vJGSQSVO2Ei7/pvFxr2JvB?=
+ =?us-ascii?Q?CPrupGuUbAPtQTcDbZvRfWtxj6gnyUutrNVHR1NeyPdbne5//4P6KIkiUvC4?=
+ =?us-ascii?Q?H0rDUVZQ7kPfvk3069ef1B8VHFH8K/G2mrC/bJ2xtKmykKzcJ4uDbMR+PTNC?=
+ =?us-ascii?Q?qOwUrpdHXA1TPCnFSQU=3D?=
 X-Forefront-Antispam-Report: CIP:165.204.84.17; CTRY:US; LANG:en; SCL:1; SRV:;
  IPV:CAL; SFV:NSPM; H:satlexmb07.amd.com; PTR:InfoDomainNonexistent; CAT:NONE;
- SFS:(13230040)(376014)(82310400026)(36860700013)(1800799024); DIR:OUT;
+ SFS:(13230040)(36860700013)(376014)(82310400026)(1800799024); DIR:OUT;
  SFP:1101; 
 X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 26 Sep 2025 07:09:03.8029 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: ca4e95c2-409b-4f44-fd56-08ddfccb9371
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 26 Sep 2025 07:09:24.6965 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: d6100c29-98de-4150-332e-08ddfccb9fe4
 X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
 X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3dd8961f-e488-4e60-8e11-a82d994e183d; Ip=[165.204.84.17];
  Helo=[satlexmb07.amd.com]
-X-MS-Exchange-CrossTenant-AuthSource: SN1PEPF0002BA51.namprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthSource: SN1PEPF0002BA4F.namprd03.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Anonymous
 X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR12MB5769
-Received-SPF: permerror client-ip=2a01:111:f403:c001::2;
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY5PR12MB6454
+Received-SPF: permerror client-ip=2a01:111:f403:c10d::3;
  envelope-from=Luc.Michel@amd.com;
- helo=SJ2PR03CU001.outbound.protection.outlook.com
+ helo=SN4PR0501CU005.outbound.protection.outlook.com
 X-Spam_score_int: -24
 X-Spam_score: -2.5
 X-Spam_bar: --
 X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001, T_SPF_HELO_TEMPERROR=0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -156,83 +155,76 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Add a way to configure the MP affinity value of the CPUs given their
-core and cluster IDs. For the Versal APU CPUs, the MP affinity value is
-given by the core ID in Aff0.
+The CRL connects to various devices through link properties to be able
+to reset them. The connections were dropped during the SoC refactoring.
+Reintroduce them now.
+
+Rely on the QOM tree to retrieve the devices to connect. The component
+parts of the device names are chosen to match the properties on the CRL.
 
 Signed-off-by: Luc Michel <luc.michel@amd.com>
 Reviewed-by: Francisco Iglesias <francisco.iglesias@amd.com>
 Reviewed-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
 ---
- hw/arm/xlnx-versal.c | 16 ++++++++++++++++
- 1 file changed, 16 insertions(+)
+ hw/arm/xlnx-versal.c | 31 ++++++++++++++++++++++++++++++-
+ 1 file changed, 30 insertions(+), 1 deletion(-)
 
 diff --git a/hw/arm/xlnx-versal.c b/hw/arm/xlnx-versal.c
-index b4cad856dc2..ccb78fadd7f 100644
+index 2e28b807d71..6604e24a9cd 100644
 --- a/hw/arm/xlnx-versal.c
 +++ b/hw/arm/xlnx-versal.c
-@@ -88,10 +88,16 @@ typedef struct VersalCpuClusterMap {
-     size_t num_core;
-     size_t num_cluster;
-     uint32_t qemu_cluster_id;
-     bool dtb_expose;
+@@ -1474,21 +1474,50 @@ static void versal_create_cfu(Versal *s, const struct VersalCfuMap *map)
+     sysbus_realize_and_unref(sbd, &error_fatal);
+     memory_region_add_subregion(&s->mr_ps, map->cfu_sfr,
+                                 sysbus_mmio_get_region(sbd, 0));
+ }
  
-+    struct {
-+        uint64_t base;
-+        uint64_t core_shift;
-+        uint64_t cluster_shift;
-+    } mp_affinity;
++static inline void crl_connect_dev(Object *crl, Object *dev)
++{
++    const char *prop = object_get_canonical_path_component(dev);
 +
-     enum StartPoweredOffMode start_powered_off;
- } VersalCpuClusterMap;
- 
- typedef struct VersalMap {
-     VersalCpuClusterMap apu;
-@@ -196,10 +202,14 @@ static const VersalMap VERSAL_MAP = {
-         .name = "apu",
-         .cpu_model = ARM_CPU_TYPE_NAME("cortex-a72"),
-         .num_cluster = 1,
-         .num_core = 2,
-         .qemu_cluster_id = 0,
-+        .mp_affinity = {
-+            .core_shift = ARM_AFF0_SHIFT,
-+            .cluster_shift = ARM_AFF1_SHIFT,
-+        },
-         .start_powered_off = SPO_SECONDARIES,
-         .dtb_expose = true,
-         .gic = {
-             .version = 3,
-             .dist = 0xf9000000,
-@@ -565,23 +575,29 @@ static DeviceState *versal_create_cpu(Versal *s,
-                                       size_t core_idx)
++    /* The component part of the device path matches the CRL property name */
++    object_property_set_link(crl, prop, dev, &error_abort);
++}
++
++static inline void crl_connect_dev_by_name(Versal *s, Object *crl,
++                                           const char *name, size_t num)
++{
++    size_t i;
++
++    for (i = 0; i < num; i++) {
++        Object *dev = versal_get_child_idx(s, name, i);
++
++        crl_connect_dev(crl, dev);
++    }
++}
++
+ static inline void versal_create_crl(Versal *s)
  {
-     DeviceState *cpu = qdev_new(map->cpu_model);
-     ARMCPU *arm_cpu = ARM_CPU(cpu);
-     Object *obj = OBJECT(cpu);
-+    uint64_t affinity;
-     bool start_off;
-     size_t idx = cluster_idx * map->num_core + core_idx;
-     g_autofree char *name;
-     g_autofree char *node = NULL;
+     const VersalMap *map;
+     const char *crl_class;
+     DeviceState *dev;
++    Object *obj;
  
-+    affinity = map->mp_affinity.base;
-+    affinity |= (cluster_idx & 0xff) << map->mp_affinity.cluster_shift;
-+    affinity |= (core_idx & 0xff) << map->mp_affinity.core_shift;
+     map = versal_get_map(s);
+ 
+     crl_class = TYPE_XLNX_VERSAL_CRL;
+     dev = qdev_new(crl_class);
+-    object_property_add_child(OBJECT(s), "crl", OBJECT(dev));
++    obj = OBJECT(dev);
++    object_property_add_child(OBJECT(s), "crl", obj);
 +
-     start_off = map->start_powered_off == SPO_ALL
-         || ((map->start_powered_off == SPO_SECONDARIES)
-             && (cluster_idx || core_idx));
++    crl_connect_dev_by_name(s, obj, "rpu-cluster/rpu",
++                            map->rpu.num_cluster * map->rpu.num_core);
++    crl_connect_dev_by_name(s, obj, map->zdma[0].name, map->zdma[0].num_chan);
++    crl_connect_dev_by_name(s, obj, "uart", map->num_uart);
++    crl_connect_dev_by_name(s, obj, "gem", map->num_gem);
++    crl_connect_dev_by_name(s, obj, "usb", map->num_usb);
  
-     name = g_strdup_printf("%s[*]", map->name);
-     object_property_add_child(OBJECT(qemu_cluster), name, obj);
-     object_property_set_bool(obj, "start-powered-off", start_off,
-                              &error_abort);
-+    qdev_prop_set_uint64(cpu, "mp-affinity", affinity);
-     qdev_prop_set_int32(cpu, "core-count",  map->num_core);
-     object_property_set_link(obj, "memory", OBJECT(cpu_mr), &error_abort);
-     qdev_realize_and_unref(cpu, NULL, &error_fatal);
+     sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_abort);
  
-     if (!map->dtb_expose) {
+     memory_region_add_subregion(&s->mr_ps, map->crl.addr,
+                                 sysbus_mmio_get_region(SYS_BUS_DEVICE(dev), 0));
 -- 
 2.51.0
 

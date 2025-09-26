@@ -4,102 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78EEECAC5AE
-	for <qemu-arm@archiver.kernel.org>; Fri, 26 Sep 2025 13:24:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F289CAC5B8
+	for <qemu-arm@archiver.kernel.org>; Fri, 26 Sep 2025 14:55:52 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v28LE-00083G-U5; Fri, 26 Sep 2025 09:18:29 -0400
+	id 1v29qq-0002j2-4U; Fri, 26 Sep 2025 10:55:13 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1v28LE-000831-4K
- for qemu-arm@nongnu.org; Fri, 26 Sep 2025 09:18:28 -0400
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1v28Kq-00043U-T4
- for qemu-arm@nongnu.org; Fri, 26 Sep 2025 09:18:27 -0400
-Received: by mail-wm1-x32e.google.com with SMTP id
- 5b1f17b1804b1-46e326e4e99so11928475e9.1
- for <qemu-arm@nongnu.org>; Fri, 26 Sep 2025 06:17:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1758892675; x=1759497475; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=y9d5BP7lns2PVAN5IYXcTxZLAWv4Unp9pZLQ6Ob5dbg=;
- b=GvPqvqB/XYroVM2t8MrPtskvvOuBWoxgdagWqynvJda85yH2R0nSo30CN0WMTeAjuo
- MKf8sOYJW1C5PF3+gfuDtWUgHs4TZhlN4ly/ctVxKlYLGKVj7SwNkiQ4WFZ/rIS6bW7K
- 1o84C0d1eqd+yf79Ko6lcVtR+m0MyRR9RcDnvhnKUljqn4/oek9x4Xy5jhkKcxns4YcO
- ImB4dkhMuNL6Gxer6G8adLT+I8Fha7k+1C3Z73wp8bzlkQ1lJnd32+5WCSZDhTK/CICd
- 0CGAe31140PkUF7zX+cxtYFG4VjJgczuiAItkM/p8A4VXeYX08+k2X1dnMu0GnP7rfNJ
- Btdg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1758892675; x=1759497475;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=y9d5BP7lns2PVAN5IYXcTxZLAWv4Unp9pZLQ6Ob5dbg=;
- b=nbaUpq+qkN7E2RSJfOqimt93szCLe5tDOPLdnR0p3+U8p+kQOmBCDRFNX2+0KNxQNC
- JGUfCrPm336+mTDjSfp6CiGUYPDgVLfsUKCKEloMrOHD/uXzUsa8wZUHE/mn8IvBA83Z
- +T6EcGRo48XP4CIPnBWJ94zHOxnbrOfkkDab96vZMQZeiwv5+n6IaYDPBVv38zhMGcq0
- vUurb5uFhJikJgOAd6jFHSxV7JdBcQKW+HfhIfdw2UiQ7HdLwGNt5Xi2KEPHG0wcjmmH
- hjI0OLxXWr2NXOv+bTFN4XVYPQUzLcxIUHVvqyLJU3FzoZf7CVRhKMtAIWUgQ52YvJP7
- sI9g==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVGQ02JGLZ9v4pdDn/B4rv8fbCLk7mjBKoHWL4XaIM/KNFhvEKXXcLh4YyR2KiGhDNySHqz8PLNpQ==@nongnu.org
-X-Gm-Message-State: AOJu0YygHZi81hkPh7NwjrOz4Xn/prtQVIu0f2EtwfBBxP0zsrdpegrf
- L1xY1UXtmJXiHazNZcX0IK4nADez3Z3txQmQN4KXfL3cxjWY+p20DuIlnovlc+iP7HM=
-X-Gm-Gg: ASbGncuIVpY28vlEn2y4kuXQSUVOIFGIlwfHYqggCQR1sTKWdn2cINErGMJHHxRmeeh
- Dvi3jOZAc37niwjb1BUAr9UAJ8KKeDpPXBG8aje0QMBsEp0bBOY0dxhNsTAlhGP9zhbbhdnBhfw
- 1tP3giQWmlvfBZwlEfBwUXu4r2Yqln4HTbP8ZlZwwJcQybn6JO9fdEz/VFBzckE8qEenNmJUZnG
- j0H7D0hVUQYYbpVXVfGcI2zgAw68oNIcx6l+07qES0b+f1pk3qgcy0kAYkOLebFH4QSJa894jLt
- b/jha8aZgKwTJGgAMAF0NtaJ0LpeRH64te2a1dZlOJmpNTDi9D1lDKGu4jJ7X6X5cMb4h9XVS0s
- vwZf2t3mE946FmLfB+xu/oHw=
-X-Google-Smtp-Source: AGHT+IFwNCoKqYkvjcluvDzTRuZ7pHZpM0OcM0pWV5vpgzZePXa2ycPhSZfvL+o2DIY995dN+bIoBQ==
-X-Received: by 2002:a05:600c:8b23:b0:458:b8b0:6338 with SMTP id
- 5b1f17b1804b1-46e33c4bd45mr75387065e9.6.1758892675569; 
- Fri, 26 Sep 2025 06:17:55 -0700 (PDT)
-Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-46e42eee0b6sm6427805e9.10.2025.09.26.06.17.47
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 26 Sep 2025 06:17:50 -0700 (PDT)
-Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 7AE815F8E0;
- Fri, 26 Sep 2025 14:17:45 +0100 (BST)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- Weiwei Li <liwei1518@gmail.com>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- qemu-arm@nongnu.org (open list:ARM TCG CPUs),
- qemu-riscv@nongnu.org (open list:RISC-V TCG CPUs)
-Subject: [PULL 08/24] target/{arm,
- riscv}/common-semi-target: eradicate target_ulong
-Date: Fri, 26 Sep 2025 14:17:27 +0100
-Message-ID: <20250926131744.432185-9-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20250926131744.432185-1-alex.bennee@linaro.org>
-References: <20250926131744.432185-1-alex.bennee@linaro.org>
+ (Exim 4.90_1) (envelope-from <tangtao1634@phytium.com.cn>)
+ id 1v29qn-0002i9-H3; Fri, 26 Sep 2025 10:55:09 -0400
+Received: from zg8tmtyylji0my4xnjqumte4.icoremail.net ([162.243.164.118])
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <tangtao1634@phytium.com.cn>)
+ id 1v29qh-0006eK-Ry; Fri, 26 Sep 2025 10:55:09 -0400
+Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
+ by hzbj-icmmx-7 (Coremail) with SMTP id AQAAfwAnLdUxqdZonWVGCQ--.88S2;
+ Fri, 26 Sep 2025 22:54:41 +0800 (CST)
+Received: from [192.168.31.224] (unknown [113.246.118.76])
+ by mail (Coremail) with SMTP id AQAAfwA3mucjqdZopmsjAA--.13130S2;
+ Fri, 26 Sep 2025 22:54:38 +0800 (CST)
+Message-ID: <ce02db47-f9b2-4e48-afe5-3d29a5172f7e@phytium.com.cn>
+Date: Fri, 26 Sep 2025 22:54:24 +0800
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 00/14] hw/arm/smmuv3: Add initial support for Secure
+ State
+To: eric.auger@redhat.com, Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Chen Baozi <chenbaozi@phytium.com.cn>, pierrick.bouvier@linaro.org,
+ philmd@linaro.org, jean-philippe@linaro.org, smostafa@google.com
+References: <20250925162618.191242-1-tangtao1634@phytium.com.cn>
+ <e439e75e-6d1c-4209-aa41-f3e9d5051462@redhat.com>
+From: Tao Tang <tangtao1634@phytium.com.cn>
+In-Reply-To: <e439e75e-6d1c-4209-aa41-f3e9d5051462@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-CM-TRANSID: AQAAfwA3mucjqdZopmsjAA--.13130S2
+X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQAFBWjVmkcGXQADs5
+Authentication-Results: hzbj-icmmx-7; spf=neutral smtp.mail=tangtao163
+ 4@phytium.com.cn;
+X-Coremail-Antispam: 1Uk129KBjvJXoW3JryUCrWrAF47tFWxtFWrXwb_yoW7ArWrpa
+ yrKan0gr4DGF4fZryIqr4xuayrtFZ5Ja4UJrsrGry3Gwn8uF93tr4IyF1YkFykKr1kCFyI
+ 9ryIvw4kur1jvrJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
+ DUYxn0WfASr-VFAU7a7-sFnT9fnUUIcSsGvfJ3UbIYCTnIWIevJa73UjIFyTuYvj4RJUUU
+ UUUUU
+Received-SPF: pass client-ip=162.243.164.118;
+ envelope-from=tangtao1634@phytium.com.cn;
+ helo=zg8tmtyylji0my4xnjqumte4.icoremail.net
+X-Spam_score_int: -25
+X-Spam_score: -2.6
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -115,80 +73,150 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 
-We replace mechanically with uint64_t.
-There is no semantic change, and allows us to extract a proper API from
-this set of functions.
+On 2025/9/26 20:24, Eric Auger wrote:
+> Hi,
+>
+> On 9/25/25 6:26 PM, Tao Tang wrote:
+>> Hi all,
+>>
+>> This is the second version of the patch series to introduce initial
+>> support for Secure SMMUv3 emulation in QEMU.
+>>
+>> This version has been significantly restructured based on the excellent
+>> feedback received on the RFC.
+>>
+>> This version addresses the major points raised during the RFC review.
+>> Nearly all issues identified in v1 have been resolved. The most
+>> significant changes include:
+>>
+>>    - The entire series has been refactored to use a "banked register"
+>>    architecture. This new design serves as a solid base for all secure
+>>    functionality and significantly reduces code duplication.
+>>
+>>    - The large refactoring patch from v1 has been split into smaller, more
+>>    focused commits (e.g., STE parsing, page table handling, and TLB
+>>    management) to make the review process easier.
+>>
+>>    - Support for the complex SEL2 feature (Secure Stage 2) has been
+>>    deferred to a future series to reduce the scope of this RFC.
+>>
+>>    - The mechanism for propagating the security context now correctly uses
+>>    the ARMSecuritySpace attribute from the incoming transaction. This
+>>    ensures the SMMU's handling of security is aligned with the rest of the
+>>    QEMU ARM architecture.
+>>
+>>
+>> The series now begins with two preparatory patches that fix pre-existing
+>> bugs in the SMMUv3 model. The first of these, which corrects the CR0
+>> reserved mask, has already been reviewed by Eric.
+>>
+>>    - hw/arm/smmuv3: Fix incorrect reserved mask for SMMU CR0 register
+>>    - hw/arm/smmuv3: Correct SMMUEN field name in CR0
+>>
+>> The subsequent patches implement the Secure SMMUv3 feature, refactored
+>> to address the feedback from the v1 RFC.
+> could you shared a branch? It does not seem to apply on master.
+>
+> Thanks
+>
+> Eric
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Message-ID: <20250822150058.18692-7-pierrick.bouvier@linaro.org>
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Message-ID: <20250922093711.2768983-10-alex.bennee@linaro.org>
 
-diff --git a/target/arm/common-semi-target.h b/target/arm/common-semi-target.h
-index 7bb442f24ca..6775a270aaa 100644
---- a/target/arm/common-semi-target.h
-+++ b/target/arm/common-semi-target.h
-@@ -12,7 +12,7 @@
- 
- #include "target/arm/cpu-qom.h"
- 
--static inline target_ulong common_semi_arg(CPUState *cs, int argno)
-+static inline uint64_t common_semi_arg(CPUState *cs, int argno)
- {
-     ARMCPU *cpu = ARM_CPU(cs);
-     CPUARMState *env = &cpu->env;
-@@ -23,7 +23,7 @@ static inline target_ulong common_semi_arg(CPUState *cs, int argno)
-     }
- }
- 
--static inline void common_semi_set_ret(CPUState *cs, target_ulong ret)
-+static inline void common_semi_set_ret(CPUState *cs, uint64_t ret)
- {
-     ARMCPU *cpu = ARM_CPU(cs);
-     CPUARMState *env = &cpu->env;
-@@ -44,7 +44,7 @@ static inline bool is_64bit_semihosting(CPUArchState *env)
-     return is_a64(env);
- }
- 
--static inline target_ulong common_semi_stack_bottom(CPUState *cs)
-+static inline uint64_t common_semi_stack_bottom(CPUState *cs)
- {
-     ARMCPU *cpu = ARM_CPU(cs);
-     CPUARMState *env = &cpu->env;
-diff --git a/target/riscv/common-semi-target.h b/target/riscv/common-semi-target.h
-index 7e6ea8da02c..663dedfdad2 100644
---- a/target/riscv/common-semi-target.h
-+++ b/target/riscv/common-semi-target.h
-@@ -11,14 +11,14 @@
- #ifndef TARGET_RISCV_COMMON_SEMI_TARGET_H
- #define TARGET_RISCV_COMMON_SEMI_TARGET_H
- 
--static inline target_ulong common_semi_arg(CPUState *cs, int argno)
-+static inline uint64_t common_semi_arg(CPUState *cs, int argno)
- {
-     RISCVCPU *cpu = RISCV_CPU(cs);
-     CPURISCVState *env = &cpu->env;
-     return env->gpr[xA0 + argno];
- }
- 
--static inline void common_semi_set_ret(CPUState *cs, target_ulong ret)
-+static inline void common_semi_set_ret(CPUState *cs, uint64_t ret)
- {
-     RISCVCPU *cpu = RISCV_CPU(cs);
-     CPURISCVState *env = &cpu->env;
-@@ -35,7 +35,7 @@ static inline bool common_semi_sys_exit_is_extended(CPUState *cs)
-     return is_64bit_semihosting(cpu_env(cs));
- }
- 
--static inline target_ulong common_semi_stack_bottom(CPUState *cs)
-+static inline uint64_t common_semi_stack_bottom(CPUState *cs)
- {
-     RISCVCPU *cpu = RISCV_CPU(cs);
-     CPURISCVState *env = &cpu->env;
--- 
-2.47.3
+Hi Eric,
+
+Thanks for the feedback. I've rebased the patch series onto the latest 
+master and pushed it to a branch as you requested.
+
+Interestingly, the rebase completed cleanly without any conflicts on my 
+end, so I'm not sure what the initial issue might have been. In any 
+case, this branch should be up-to-date.
+
+
+You can find the updated branch here for review:
+
+- [v1-rebased] 
+https://github.com/hnusdr/qemu/tree/secure-smmu-v1-community-newer
+
+
+For historical reference, the original branch is here.
+
+- 
+[v1-original]  https://github.com/hnusdr/qemu/tree/secure-smmu-v1-community
+
+
+Thanks,
+
+Tao
+
+
+>>
+>> Changes from v1 RFC:
+>>
+>>    - The entire feature implementation has been refactored to use a "banked
+>>    register" approach. This significantly reduces code duplication.
+>>
+>>    - Support for the SEL2 feature (Secure Stage 2) has been deferred. As
+>>    Mostafa pointed out, a correct implementation is complex and depends on
+>>    FEAT_TTST. This will be addressed in a separate, future patch series.
+>>    As a result, this series now supports the following flows:
+>>
+>>      - Non-secure Stage 1, Stage 2, and nested translations.
+>>
+>>      - Secure Stage 1-only translations.
+>>
+>>      - Nested translations (Secure Stage 1 + Non-secure Stage 2), with a
+>>    fault generated if a Secure Stage 2 translation is required.
+>>
+>>    - Writability checks for various registers (both secure and non-secure)
+>>    have been hardened to ensure that enable bits are correctly checked.
+>>
+>> The series has been successfully validated with several test setups:
+>>
+>>    - An environment using OP-TEE, Hafnium, and a custom platform
+>>    device as V1 series described.
+>>
+>>    - A new, self-contained test device (smmu-testdev) built upon the
+>>    QTest framework, which will be submitted as a separate series as
+>>    discussed here:
+>>      https://lists.nongnu.org/archive/html/qemu-devel/2025-09/msg05365.html
+>>
+>>    - The existing non-secure functionality was regression-tested using
+>>    PCIe passthrough to a KVM guest running inside a TCG guest.
+>>
+>> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
+>>
+>> Tao Tang (14):
+>>    hw/arm/smmuv3: Fix incorrect reserved mask for SMMU CR0 register
+>>    hw/arm/smmuv3: Correct SMMUEN field name in CR0
+>>    hw/arm/smmuv3: Introduce secure registers and commands
+>>    refactor: Move ARMSecuritySpace to a common header
+>>    hw/arm/smmuv3: Introduce banked registers for SMMUv3 state
+>>    hw/arm/smmuv3: Add separate address space for secure SMMU accesses
+>>    hw/arm/smmuv3: Make Configuration Cache security-state aware
+>>    hw/arm/smmuv3: Add security-state handling for page table walks
+>>    hw/arm/smmuv3: Add secure TLB entry management
+>>    hw/arm/smmuv3: Add banked support for queues and error handling
+>>    hw/arm/smmuv3: Harden security checks in MMIO handlers
+>>    hw/arm/smmuv3: Use iommu_index to represent the security context
+>>    hw/arm/smmuv3: Add property to enable Secure SMMU support
+>>    hw/arm/smmuv3: Optional Secure bank migration via subsections
+>>
+>>   hw/arm/smmu-common.c          |  151 ++++-
+>>   hw/arm/smmu-internal.h        |    7 +
+>>   hw/arm/smmuv3-internal.h      |  114 +++-
+>>   hw/arm/smmuv3.c               | 1130 +++++++++++++++++++++++++--------
+>>   hw/arm/trace-events           |    9 +-
+>>   hw/arm/virt.c                 |    5 +
+>>   include/hw/arm/arm-security.h |   54 ++
+>>   include/hw/arm/smmu-common.h  |   60 +-
+>>   include/hw/arm/smmuv3.h       |   35 +-
+>>   target/arm/cpu.h              |   25 +-
+>>   10 files changed, 1257 insertions(+), 333 deletions(-)
+>>   create mode 100644 include/hw/arm/arm-security.h
+>>
+>> --
+>> 2.34.1
+>>
 
 

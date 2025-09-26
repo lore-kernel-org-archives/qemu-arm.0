@@ -4,101 +4,111 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F190BCAC5B8
-	for <qemu-arm@archiver.kernel.org>; Fri, 26 Sep 2025 16:03:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D558CAC5AE
+	for <qemu-arm@archiver.kernel.org>; Fri, 26 Sep 2025 16:13:18 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v2Aul-0001kY-Ik; Fri, 26 Sep 2025 12:03:19 -0400
+	id 1v2B44-0007MY-Ah; Fri, 26 Sep 2025 12:12:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
- id 1v2AuQ-0001X7-0d
- for qemu-arm@nongnu.org; Fri, 26 Sep 2025 12:03:05 -0400
-Received: from mail-pg1-x536.google.com ([2607:f8b0:4864:20::536])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
- id 1v2AuA-0004tZ-GM
- for qemu-arm@nongnu.org; Fri, 26 Sep 2025 12:02:53 -0400
-Received: by mail-pg1-x536.google.com with SMTP id
- 41be03b00d2f7-b586551e3cdso509268a12.1
- for <qemu-arm@nongnu.org>; Fri, 26 Sep 2025 09:02:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1758902551; x=1759507351; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=mPQa80q1v1PKlb2HcaBtoxK7+XTWqPZSx0PW2nTA3JE=;
- b=OKKBDQs392eecgF+TpKwcH0Xmw+EMFbyV5CRouMQtmXJqxxWFZCRP73oArcl4Spw8z
- 1YpbvruMeNpbDhdZfFFF7dMMMQyPIvT9RPu6OAgU40FFIteBEPBAybzmcgWZwTMTld8T
- PDVM/1lqe0k7nN+COBpwcT1MMHmyVC3ynKQ084HNmXdFHQe0n2NJwyrTY/wyRa1xjNme
- URpC2FuBkIp0Fxcg/Sqy1Vdt+m8QfmOThBHRQk8og7SOj7q3U9T5JALFkQRJzMFvyobs
- 9NfQLqoqd0fB81N8o+ccvUy+Gzoiunal42M8MxBl12YYYc79T9hC/D82SjCBcCm3U4Tr
- IX/A==
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1v2B3x-0007Lg-GH
+ for qemu-arm@nongnu.org; Fri, 26 Sep 2025 12:12:49 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1v2B3o-00077k-Cw
+ for qemu-arm@nongnu.org; Fri, 26 Sep 2025 12:12:48 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1758903154;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=KJdb/L+KFYMkIctsBP1lxeu8sdCseNUPRWxPpD9JrWw=;
+ b=HhuaUs2h0miE5+HDW608uAkgpf1Mix4Kk5Fj33xEQKNpU6AyogXMrqU/RUOrSCdS/rq8lk
+ gMe/mbjc6Cgwi52GANgcDm7FUyLxiOx5ugyCj+po+rEGtyyWh/SLSeky8Nh0PxrkhsroCV
+ WIFrOSdAoTkjwnBANkNBbKLWeVQkiZQ=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-650-Ftnh-iiAO4qzQ6oknswlAw-1; Fri, 26 Sep 2025 12:12:32 -0400
+X-MC-Unique: Ftnh-iiAO4qzQ6oknswlAw-1
+X-Mimecast-MFC-AGG-ID: Ftnh-iiAO4qzQ6oknswlAw_1758903151
+Received: by mail-wm1-f70.google.com with SMTP id
+ 5b1f17b1804b1-46e32eb4798so12602115e9.2
+ for <qemu-arm@nongnu.org>; Fri, 26 Sep 2025 09:12:32 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1758902551; x=1759507351;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=mPQa80q1v1PKlb2HcaBtoxK7+XTWqPZSx0PW2nTA3JE=;
- b=IyNUbS05w0LlRSzAyoc6Kk7WHogxKIw1juyUm3vg8W7EbV10YFSLVUFk7uiowcoxKg
- FGW5tJxE6oa2dwVZNTbKhPyjlgt+u50KEPoZeC5OvRVrlS8UL4TEECUYWMZtNXcBKkeJ
- uuFgLZ4kP7bUDBv/EX/kS7QeNYH0EX4D5RG+xwLFxZ9t5vDJdtT5fadu2WSJxQMv6c0y
- Xjw7DKb9HPDyTv/DTbfJRKnEvm96OUIHFjVqQdkTh7huiBYNPnsZM8GwlVZy9n72yfmD
- qzRpxucHL/Z0QJ2k0IKBaHVfUMfLoHKya+yl0vyszvHJZZL6wDfKYFSNgzA9OUvxtuEf
- dJrw==
+ d=1e100.net; s=20230601; t=1758903151; x=1759507951;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=KJdb/L+KFYMkIctsBP1lxeu8sdCseNUPRWxPpD9JrWw=;
+ b=wB35AllNuJ9nvxsL4eyn3A+ekInPjfRTTejBLDWh6Hf7RiqP4OmAhiCfg9Nbp2nhbo
+ R9QbidMA1NiWZLl/ioukbr0ANZwskU9YISj6ERae2GHsHMXGvpqFNjjMhl7a3PVxSzS5
+ MPLB+eFD5nmA9FZlODBZ3V7yypsdUmFUZMDnKSAhQrd+WaJfplSwaoela8FFxWd3HVR6
+ Kc3yOyjttzx+UCI/tvVUTiRsPp9YRZHy4H75WdxOGbpXBigtHfi0i+qOz3iiSWVEQssv
+ v/kqGPwm19u8KlqY2RrYVVWDz1jerWpixcSVRrKDvQ4UJHJYxAdnwGbBdrvQ25MY6Zn4
+ 9prA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVFjWZMCmOcOjyiTtRMhq00Cyrt2WuSk0aKC/lnJ9AXaSuzKq6Tjq+BvRGduHMy0wC0JgkZ9Vxg4w==@nongnu.org
-X-Gm-Message-State: AOJu0YzC9EA6Vcnw0T4HowWJfMgNVKN/5NKnf4HktfPOFPThgmOaoFCk
- V7bqujX7r8vj/j6w5Fkb7KM/Nr+XLEkDXXq1jtjEgfKfZKIfbRIXs3ovEJ93VBjmM11RLjhDDF1
- 1dU3O
-X-Gm-Gg: ASbGncsKBS6S4H9u4wEg0twsE9ulKCrWrpObv5Qae8BQnCDPSVhxtxJs3ONrTV9OoIu
- U3jkCVXG9SNEd774lr1jv3GF3thuZAnJRfnczWzQuDp5Frm/59rlw3ABUfE/gRG89AOPgir1yGF
- lfDqtn5RJziM5N7/oj79BvdainL5lPpWJIj3alTx0s40L2LuGlv3pLeg4R45aE+qaqSM7XHZw7z
- oufJBk4yxWNhrl7+muqAIXNb1/WuvxHZqfvhoXp1ckHb/2AspzCNRki4hyYRmM0T3QuaNP7xutE
- VNHX/zDvr0PRZgKdBWbiHCcouBhTc3nNNp1S2AglCA1ZJ0TlMvjlghvWsjBUzEJQ+YMUdXxCd2m
- 62I91KXa8E3j9Um97YZ/cG0oG9j7XQ/9ojq5wgK67npKp6TUr/F1nnMbjZ8uGcW+s1Ea5/LVoSS
- A=
-X-Google-Smtp-Source: AGHT+IEpwGVLdpHxlWxZTeONg7SPB83t0s99BHE5ffmCFurYh+hOKZbyV8LGb9oX8tS61biiZiMXTQ==
-X-Received: by 2002:a17:902:f611:b0:271:fead:9930 with SMTP id
- d9443c01a7336-27ed4a78d72mr87113175ad.59.1758902551069; 
- Fri, 26 Sep 2025 09:02:31 -0700 (PDT)
-Received: from [192.168.0.102] (189-47-45-49.dsl.telesp.net.br. [189.47.45.49])
+ AJvYcCULsm9dUYnj7KmMDXWKWBPV5prgaVGwpH7ahcdUiNAd2+86tvVGrxgUt6Tf9tbZLEb9mA9i448OLg==@nongnu.org
+X-Gm-Message-State: AOJu0YwFJ9mAcluafqsGVIgUskXFqEoiJVqs5pCJsc1t3XmAZbhTF1DN
+ CSe6bsgPmgUuiZZEw24Ua9a8/fpgwJZ/sq/GTzItMOe8VCwVJAjrhriYfZuOkud7kXXlrS7vO3T
+ k4OQLx8sz2mtb+KIZx/IdHTgRzi52qPXsJ87iZITePeJ16iiV/DmZ8A==
+X-Gm-Gg: ASbGncv1NZTtCJPn49m5MrZQiZImcSrIoSEUY/8U9GYtaUm0l9zNnu/RgIxOyNb+IPH
+ rQANExwQCNWAXL4tTx37n+ZjY01yVt9oGXzKwLY4h86h/JoAREW5WgZ8F4e2Ap+DJOFDzM98Ist
+ S7ygu+14tc4aILPmmtEomRJNcYP1FjqE69fY0yLr7HFvSxfinf5Fa0HLyAAy02aYv9Fng43kmsN
+ zAfhjbniSXjKqDSodlVm/SQhyi8pqemp2eYFp2h7z+nzafnss7uX+VOzoGNG2jixjCnRRQ0vmcJ
+ Fl6kePOoH0cPLoTTLx1aBKjsIu/ot6GlnFndfdAnPKSt+w3QfroK2caIQkggTdCtLGtBn4Hj2xR
+ SDN1g7hBvAcQ=
+X-Received: by 2002:a05:600c:8209:b0:46e:376a:c9db with SMTP id
+ 5b1f17b1804b1-46e376acfbbmr55479665e9.26.1758903151090; 
+ Fri, 26 Sep 2025 09:12:31 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IE2jDP056oF8tEN5bgzw1klTRTvTVc52vz+HmtjLJBvYvPnTVO/GI0V8Z4mhqmJ6DG0UdYRNg==
+X-Received: by 2002:a05:600c:8209:b0:46e:376a:c9db with SMTP id
+ 5b1f17b1804b1-46e376acfbbmr55479345e9.26.1758903150638; 
+ Fri, 26 Sep 2025 09:12:30 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-27ed688223dsm57862285ad.86.2025.09.26.09.02.28
+ 5b1f17b1804b1-46e42eee0b6sm11434765e9.10.2025.09.26.09.12.29
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 26 Sep 2025 09:02:30 -0700 (PDT)
-Message-ID: <d0f10230-11f8-480b-9b54-d7c146fbe732@linaro.org>
-Date: Fri, 26 Sep 2025 13:02:26 -0300
+ Fri, 26 Sep 2025 09:12:29 -0700 (PDT)
+Message-ID: <7612914c-ada2-42c4-8e68-951e2d601534@redhat.com>
+Date: Fri, 26 Sep 2025 18:12:28 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 1/9] tests/functional: Re-activate the check-venv target
-To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
-Cc: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
- alex.bennee@linaro.org, qemu-arm@nongnu.org, manos.pitsidianakis@linaro.org,
- peter.maydell@linaro.org
-References: <20250926051542.104432-1-gustavo.romero@linaro.org>
- <20250926051542.104432-2-gustavo.romero@linaro.org>
- <5aefdfa3-4b8b-4512-a6a4-1a1684352d0f@redhat.com>
- <aNZQwnBW76LPUgeE@redhat.com>
- <1015000c-3f92-429f-84d2-bf496b5776d7@redhat.com>
- <aNZTx0Sxfo8QJMj_@redhat.com>
- <80c73d95-e8c0-4cb7-bf11-1c1e2f749c00@linaro.org>
- <aNa1iV7XZ-BSeX88@redhat.com>
+Subject: Re: [PATCH v2 00/14] hw/arm/smmuv3: Add initial support for Secure
+ State
+To: Tao Tang <tangtao1634@phytium.com.cn>,
+ Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Chen Baozi <chenbaozi@phytium.com.cn>, pierrick.bouvier@linaro.org,
+ philmd@linaro.org, jean-philippe@linaro.org, smostafa@google.com
+References: <20250925162618.191242-1-tangtao1634@phytium.com.cn>
+ <e439e75e-6d1c-4209-aa41-f3e9d5051462@redhat.com>
+ <ce02db47-f9b2-4e48-afe5-3d29a5172f7e@phytium.com.cn>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <ce02db47-f9b2-4e48-afe5-3d29a5172f7e@phytium.com.cn>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: o_IU0Z7NZmpBLVJmkoLdC2n1uyXRH8IrWB53DcCn6sY_1758903151
+X-Mimecast-Originator: redhat.com
 Content-Language: en-US
-From: Gustavo Romero <gustavo.romero@linaro.org>
-In-Reply-To: <aNa1iV7XZ-BSeX88@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::536;
- envelope-from=gustavo.romero@linaro.org; helo=mail-pg1-x536.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.446,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -111,90 +121,181 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Daniel,
 
-On 9/26/25 12:47, Daniel P. Berrangé wrote:
-> On Fri, Sep 26, 2025 at 12:44:58PM -0300, Gustavo Romero wrote:
->> Hi Daniel,
+
+On 9/26/25 4:54 PM, Tao Tang wrote:
+>
+> On 2025/9/26 20:24, Eric Auger wrote:
+>> Hi,
 >>
->> On 9/26/25 05:50, Daniel P. Berrangé wrote:
->>> On Fri, Sep 26, 2025 at 10:42:22AM +0200, Thomas Huth wrote:
->>>> On 26/09/2025 10.37, Daniel P. Berrangé wrote:
->>>>> On Fri, Sep 26, 2025 at 10:34:01AM +0200, Thomas Huth wrote:
->>>>>> On 26/09/2025 07.15, Gustavo Romero wrote:
->>>>>>> Add check-venv target as a dependency for the functional tests. This
->>>>>>> causes Python modules listed in pythondeps.toml, under the testdeps
->>>>>>> group, to be installed when 'make check-functional' is executed to
->>>>>>> prepare and run the functional tests.
->>>>>>>
->>>>>>> Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
->>>>>>> Suggested-by: Thomas Huth <thuth@redhat.com>
->>>>>>> ---
->>>>>>>      tests/Makefile.include | 2 +-
->>>>>>>      1 file changed, 1 insertion(+), 1 deletion(-)
->>>>>>>
->>>>>>> diff --git a/tests/Makefile.include b/tests/Makefile.include
->>>>>>> index 3538c0c740..d012a9b25d 100644
->>>>>>> --- a/tests/Makefile.include
->>>>>>> +++ b/tests/Makefile.include
->>>>>>> @@ -109,7 +109,7 @@ $(FUNCTIONAL_TARGETS):
->>>>>>>      	@$(MAKE) SPEED=thorough $(subst -functional,-func,$@)
->>>>>>>      .PHONY: check-functional
->>>>>>> -check-functional:
->>>>>>> +check-functional: check-venv
->>>>>>
->>>>>> I just noticed that there's still a problem: If you run "make
->>>>>> check-functional-aarch64" immediately after configuring + compiling QEMU in
->>>>>> a fresh folder for the first time, the functional tests fail with:
->>>>>>
->>>>>> ModuleNotFoundError: No module named 'pygdbmi'
->>>>>>
->>>>>> We either need to add dependencies to the check-functional-<arch> targets,
->>>>>> too, or we have to make sure that tests still get properly skipped in the
->>>>>> case that pygdbmi has not been installed into the venv yet.
->>>>>
->>>>> We already have a decorator for skipping tests when modules are missing,
->>>>> so we should add usage of that.
->>>>
->>>> Ack ... and the "from .gdb import GDB" in qemu_test/__init__.py likely also
->>>> has to go away, to avoid that each and every test tries to pull in the gdb
->>>> code.
+>> On 9/25/25 6:26 PM, Tao Tang wrote:
+>>> Hi all,
 >>>
->>> Or alternatively the gdb module can move the gdbmi import so that it is
->>> only referenced in method scope, so it becomes relevant only when
->>> executed.
+>>> This is the second version of the patch series to introduce initial
+>>> support for Secure SMMUv3 emulation in QEMU.
+>>>
+>>> This version has been significantly restructured based on the excellent
+>>> feedback received on the RFC.
+>>>
+>>> This version addresses the major points raised during the RFC review.
+>>> Nearly all issues identified in v1 have been resolved. The most
+>>> significant changes include:
+>>>
+>>>    - The entire series has been refactored to use a "banked register"
+>>>    architecture. This new design serves as a solid base for all secure
+>>>    functionality and significantly reduces code duplication.
+>>>
+>>>    - The large refactoring patch from v1 has been split into
+>>> smaller, more
+>>>    focused commits (e.g., STE parsing, page table handling, and TLB
+>>>    management) to make the review process easier.
+>>>
+>>>    - Support for the complex SEL2 feature (Secure Stage 2) has been
+>>>    deferred to a future series to reduce the scope of this RFC.
+>>>
+>>>    - The mechanism for propagating the security context now
+>>> correctly uses
+>>>    the ARMSecuritySpace attribute from the incoming transaction. This
+>>>    ensures the SMMU's handling of security is aligned with the rest
+>>> of the
+>>>    QEMU ARM architecture.
+>>>
+>>>
+>>> The series now begins with two preparatory patches that fix
+>>> pre-existing
+>>> bugs in the SMMUv3 model. The first of these, which corrects the CR0
+>>> reserved mask, has already been reviewed by Eric.
+>>>
+>>>    - hw/arm/smmuv3: Fix incorrect reserved mask for SMMU CR0 register
+>>>    - hw/arm/smmuv3: Correct SMMUEN field name in CR0
+>>>
+>>> The subsequent patches implement the Secure SMMUv3 feature, refactored
+>>> to address the feedback from the v1 RFC.
+>> could you shared a branch? It does not seem to apply on master.
 >>
->> I can´t follow what you meant here. Do mind expanding on it a bit?
-> 
-> The code currently does:
-> 
->    from pygdbmi.gdbcontroller import GdbController
-> 
->    class GDB:
->        def __init__(self, gdb_path, echo=True, suffix='# ', prompt="$ "):
->            gdb_cmd = [gdb_path, "-q", "--interpreter=mi2"]
->            self.gdbmi = GdbController(gdb_cmd)
->            self.echo = echo
-> 
-> but it could instead do
-> 
->    class GDB:
->        def __init__(self, gdb_path, echo=True, suffix='# ', prompt="$ "):
->            gdb_cmd = [gdb_path, "-q", "--interpreter=mi2"]
->            from pygdbmi.gdbcontroller import GdbController
->            self.gdbmi = GdbController(gdb_cmd)
->            self.echo = echo
-> 
-> 
-> so pygdbmi is only required if the GDB classs is instantiated
-> by a test, not when 'gdb.py' is imported
+>> Thanks
+>>
+>> Eric
+>
+>
+> Hi Eric,
+>
+> Thanks for the feedback. I've rebased the patch series onto the latest
+> master and pushed it to a branch as you requested.
+>
+> Interestingly, the rebase completed cleanly without any conflicts on
+> my end, so I'm not sure what the initial issue might have been. In any
+> case, this branch should be up-to-date.
+>
+>
+> You can find the updated branch here for review:
+>
+> - [v1-rebased]
+> https://github.com/hnusdr/qemu/tree/secure-smmu-v1-community-newer
 
-ah, got it. Thanks for clarification ;)
+Thanks for the branches. I guess it is due to
 
+[PATCH v9 00/11] hw/arm/virt: Add support for user creatable SMMUv3 device <https://lore.kernel.org/all/20250829082543.7680-1-skolothumtho@nvidia.com/#r>
 
-Cheers,
-Gustavo
+which landed ~ 10d ago.
+
+Thanks
+
+Eric
+
+>
+>
+> For historical reference, the original branch is here.
+>
+> -
+> [v1-original]  https://github.com/hnusdr/qemu/tree/secure-smmu-v1-community
+>
+>
+> Thanks,
+>
+> Tao
+>
+>
+>>>
+>>> Changes from v1 RFC:
+>>>
+>>>    - The entire feature implementation has been refactored to use a
+>>> "banked
+>>>    register" approach. This significantly reduces code duplication.
+>>>
+>>>    - Support for the SEL2 feature (Secure Stage 2) has been
+>>> deferred. As
+>>>    Mostafa pointed out, a correct implementation is complex and
+>>> depends on
+>>>    FEAT_TTST. This will be addressed in a separate, future patch
+>>> series.
+>>>    As a result, this series now supports the following flows:
+>>>
+>>>      - Non-secure Stage 1, Stage 2, and nested translations.
+>>>
+>>>      - Secure Stage 1-only translations.
+>>>
+>>>      - Nested translations (Secure Stage 1 + Non-secure Stage 2),
+>>> with a
+>>>    fault generated if a Secure Stage 2 translation is required.
+>>>
+>>>    - Writability checks for various registers (both secure and
+>>> non-secure)
+>>>    have been hardened to ensure that enable bits are correctly checked.
+>>>
+>>> The series has been successfully validated with several test setups:
+>>>
+>>>    - An environment using OP-TEE, Hafnium, and a custom platform
+>>>    device as V1 series described.
+>>>
+>>>    - A new, self-contained test device (smmu-testdev) built upon the
+>>>    QTest framework, which will be submitted as a separate series as
+>>>    discussed here:
+>>>     
+>>> https://lists.nongnu.org/archive/html/qemu-devel/2025-09/msg05365.html
+>>>
+>>>    - The existing non-secure functionality was regression-tested using
+>>>    PCIe passthrough to a KVM guest running inside a TCG guest.
+>>>
+>>> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
+>>>
+>>> Tao Tang (14):
+>>>    hw/arm/smmuv3: Fix incorrect reserved mask for SMMU CR0 register
+>>>    hw/arm/smmuv3: Correct SMMUEN field name in CR0
+>>>    hw/arm/smmuv3: Introduce secure registers and commands
+>>>    refactor: Move ARMSecuritySpace to a common header
+>>>    hw/arm/smmuv3: Introduce banked registers for SMMUv3 state
+>>>    hw/arm/smmuv3: Add separate address space for secure SMMU accesses
+>>>    hw/arm/smmuv3: Make Configuration Cache security-state aware
+>>>    hw/arm/smmuv3: Add security-state handling for page table walks
+>>>    hw/arm/smmuv3: Add secure TLB entry management
+>>>    hw/arm/smmuv3: Add banked support for queues and error handling
+>>>    hw/arm/smmuv3: Harden security checks in MMIO handlers
+>>>    hw/arm/smmuv3: Use iommu_index to represent the security context
+>>>    hw/arm/smmuv3: Add property to enable Secure SMMU support
+>>>    hw/arm/smmuv3: Optional Secure bank migration via subsections
+>>>
+>>>   hw/arm/smmu-common.c          |  151 ++++-
+>>>   hw/arm/smmu-internal.h        |    7 +
+>>>   hw/arm/smmuv3-internal.h      |  114 +++-
+>>>   hw/arm/smmuv3.c               | 1130
+>>> +++++++++++++++++++++++++--------
+>>>   hw/arm/trace-events           |    9 +-
+>>>   hw/arm/virt.c                 |    5 +
+>>>   include/hw/arm/arm-security.h |   54 ++
+>>>   include/hw/arm/smmu-common.h  |   60 +-
+>>>   include/hw/arm/smmuv3.h       |   35 +-
+>>>   target/arm/cpu.h              |   25 +-
+>>>   10 files changed, 1257 insertions(+), 333 deletions(-)
+>>>   create mode 100644 include/hw/arm/arm-security.h
+>>>
+>>> -- 
+>>> 2.34.1
+>>>
+>
+
 

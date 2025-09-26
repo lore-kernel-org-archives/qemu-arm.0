@@ -4,85 +4,145 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6AD7CAC5AC
-	for <qemu-arm@archiver.kernel.org>; Fri, 26 Sep 2025 09:08:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4EC33CAC5AC
+	for <qemu-arm@archiver.kernel.org>; Fri, 26 Sep 2025 09:10:26 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v24R1-0003Od-2j; Fri, 26 Sep 2025 05:08:11 -0400
+	id 1v24Sf-0003xa-Gj; Fri, 26 Sep 2025 05:09:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1v24R0-0003OT-2f
- for qemu-arm@nongnu.org; Fri, 26 Sep 2025 05:08:10 -0400
-Received: from mail-yx1-xb135.google.com ([2607:f8b0:4864:20::b135])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1v24Qp-0003o6-HL
- for qemu-arm@nongnu.org; Fri, 26 Sep 2025 05:08:09 -0400
-Received: by mail-yx1-xb135.google.com with SMTP id
- 956f58d0204a3-6360f986fb0so1440040d50.3
- for <qemu-arm@nongnu.org>; Fri, 26 Sep 2025 02:07:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1758877674; x=1759482474; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=jeWlD2+XvDuF9fZefYX7rm/bH2gHCJ471Q4sat+U148=;
- b=ZT75daTiTvIpfw2cWlDdhKfQF4p2I3+cMY+IPrZRX/+lHZZM2e7pQe3x+nbkGYVsfF
- 0WZFQr+e+y4m0jJx6a5Ceo2UeeNSqoAd52CYbmb2kayQHeZKHtDTQvA7ZqDOuWWEU7UA
- 2tpGUYz/1h9MjZRojbjV6IhgPmtjF81E/uk/xDZJ19svTYt1ggkuuxLg0q9+dztJj6wf
- P+mV6fZrat4pkkkV05F0iSVHDOeJeTeMct5ddQOLxLkXBYtkyvsqSpUB088+lo7mYVnY
- Eg1d06xKR7Z4eYs4VA105Bo8OSkIj8TcPSwNqnTStSTh608ax8OWzEfhMswM8yPlOStI
- Ii8Q==
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1v24Se-0003wZ-CK
+ for qemu-arm@nongnu.org; Fri, 26 Sep 2025 05:09:52 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1v24Sa-00041M-36
+ for qemu-arm@nongnu.org; Fri, 26 Sep 2025 05:09:52 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1758877784;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=MyV6a01tjLqjPaVKNvz8GKBfSkxgNR40rAt0doVLyi4=;
+ b=UtLzHay6gHotFyAbZl6X2bDB3oOhr9f3YKHGIgUuireexlYYzSDpraoFHgFSZbu9cgLfjK
+ rN5VOPJCYLib4xgpcBkmYsrbevrwN6LF42SPzKqvVeLYVLkjK42HlKofjVf9OedU34lbiv
+ +eL+fbkgX23I1O57v7QCrUb5wJHAcsc=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-601-_ZE2gMf8N-GlRghTp4KrGw-1; Fri, 26 Sep 2025 05:09:42 -0400
+X-MC-Unique: _ZE2gMf8N-GlRghTp4KrGw-1
+X-Mimecast-MFC-AGG-ID: _ZE2gMf8N-GlRghTp4KrGw_1758877781
+Received: by mail-wr1-f71.google.com with SMTP id
+ ffacd0b85a97d-3ee10a24246so1078488f8f.3
+ for <qemu-arm@nongnu.org>; Fri, 26 Sep 2025 02:09:42 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1758877674; x=1759482474;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ d=1e100.net; s=20230601; t=1758877781; x=1759482581;
+ h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=jeWlD2+XvDuF9fZefYX7rm/bH2gHCJ471Q4sat+U148=;
- b=roCRvhuyaMrnehTiSTSgccWhdxpNj1dv34qfwugsva8HFOIjj0/GWyQApzvcprSkza
- +vuSDo0sFy20hZvCoZnmY9t9R/6Ht7T4OqnhfSilfNU/GDm8r8WGKYzzP49Zm+KF4uPv
- x7fURQbpaxCpH4IhM7N4WVeKqX3do6ttO+y0cLrOlTldX40jjvlKMD20NnLVSm0Baf6L
- iB0zPqRCZkhKXRVNHBB/Y3sy183rwt8jDLCkuzz6xeB2tTGj0QhNFGGXMW6XIK0WZ9vj
- XbH3jg8oQLjcbjZnVTuLImwhjl07U4SsX7qqqoaU4Gi4azE21YbVORV4U3pAdgLaA/lk
- v5Ag==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWlIqdRZsfCMSwLxN+5PM/YJpmblSH1Ou+H4V8XzPTM6F/loFcTk/zKteZY1CWKhrlUEVdCFKYZQg==@nongnu.org
-X-Gm-Message-State: AOJu0YxpxCtgZeNdyLanQRaMOEGGVyz+H8Ds2VoMYmTG72Zw4MrHZ1aF
- awm75al7rzYcApzQtfexiDkI2QGHo1hrH83+DepRtd4VZlETyQGB3APYerbVL/k7ncJrl5+0b6A
- e8eudiOjNZRTIWD8Gl76y08/FBxmWxtkci3uHdppiYQ==
-X-Gm-Gg: ASbGncsrm4pFMT10JBryqTeaiSO/VDLdqiq5ubBCmY5BSK0ckq+EokMa0lWc9nrm7Hi
- e/vMO94QKQ9zl+yZSr+VNUHxlPjry4YgI7is2KLvgR73JfeUaKn65yEE1Jp8uzFBmWL/bVhv0La
- hpToNxNpt4qUYwi1VoZC/hu4rywvmSAlPbYqX/Diyfph4IdxIIZ3d+JjTsVQAjWVG9u+HRJIL3C
- tnq6VFi
-X-Google-Smtp-Source: AGHT+IFOMGBVv5oQXI7QdzmGXwDMo3l8U1B535wsVZBkCeT7lfzZ/P4Rfi+eSrSh2RJhMINsvNns8svqneGQF1F7hJ4=
-X-Received: by 2002:a05:690e:4303:b0:633:a260:14a1 with SMTP id
- 956f58d0204a3-6361a735958mr4326863d50.18.1758877673594; Fri, 26 Sep 2025
- 02:07:53 -0700 (PDT)
+ bh=MyV6a01tjLqjPaVKNvz8GKBfSkxgNR40rAt0doVLyi4=;
+ b=pZycKbtEHI6tK0b+EYpimrdIDCG/Bc3/GHL/dZAqoA1ZchBW+DccD1hyyk6cXOZJIA
+ dPkUs3UhZGDe6ncHaTZTDEjkpZFbuchrZLf4QqKN1uxPEBWXqBatctfwH7v43CuliMjc
+ XDId+v3ppOXY9EXrotjlJIEPonF3VP7KLqa3yuvpk+ZJvPVOuZahEepyGtqbKAk9+KCx
+ K+sssd3v7pm9tvEMcXqFwajFOLvxRx31+8b0tb9Wn6colQ+yehxF6wLMzyedqe0pHUDf
+ 9ouKuQjHY6e/bmhpZxbZRDYcbiGm/h5XOx4oXF0WfKsxU0pD8EVxBStT3XZ2YLNTRxrE
+ YuVQ==
+X-Gm-Message-State: AOJu0YzruiPjJUi90OWIxAENJDu1tteRQyb/1osMFrXLrMT3wN9xIFHH
+ SXmoQfQ7eFsCs9OJNcnmVXKhOp0kdH4Z9Ez0J4GNUn1AwoyUP6EQxhGhMqFIhs+mmHE2wJ8E2mA
+ U+bZF9mvD/V1UHZMnvDX5CIyfrJAui4rwhAYk7bm2CRVxV1bgI2K6+A==
+X-Gm-Gg: ASbGncvF3hJdlev1Tu/Bkv7o0mDKu4TxN7hBWypikXy8t2nPc3j8t7CC5QC3fwTje2/
+ VN1Xr8WBPAWcXeNA3bB0lNa7bMRKQaDZRC/X01giyHVbu5hT3ZcAiH+rmH5J/ObbpvD6zwvwucW
+ cdKdS0386HaVEZxtHwmOzh+/FgGpCyp9rl/lV9yvg4AEwLi7B/cFdVfODlxTJkAZe3UGufl5nJR
+ kQS7GQdPP5xqLMFFl9UsoVJ9PQ5Lk8Blw66zGR5mAfdCnoWSY3m5tvL+eo37e+XY+AZSGVoWqhs
+ LmZ4H06FkZv4OsmZ0Bi01xdg0qyYxX/l3iH6QsSO/sMW/Sk2Hyohx3DufI0wFOn0nDgF08yt9QQ
+ +vneyxw==
+X-Received: by 2002:a05:6000:220c:b0:3fa:5925:4b11 with SMTP id
+ ffacd0b85a97d-40e4cb6ebe0mr5797319f8f.42.1758877781420; 
+ Fri, 26 Sep 2025 02:09:41 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFMZqFCJ+58ANilTo9vRHieNVOUJeZQRv3Ue3c3T/4IXpBSBWiz8ZpOed2nDiatYDuZFMeboQ==
+X-Received: by 2002:a05:6000:220c:b0:3fa:5925:4b11 with SMTP id
+ ffacd0b85a97d-40e4cb6ebe0mr5797290f8f.42.1758877781034; 
+ Fri, 26 Sep 2025 02:09:41 -0700 (PDT)
+Received: from [192.168.0.7] (ltea-047-064-114-212.pools.arcor-ip.net.
+ [47.64.114.212]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-40fc6921bcfsm6522214f8f.43.2025.09.26.02.09.40
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 26 Sep 2025 02:09:40 -0700 (PDT)
+Message-ID: <5b49a9c1-2eb1-4061-8e77-6b4b39f588e1@redhat.com>
+Date: Fri, 26 Sep 2025 11:09:39 +0200
 MIME-Version: 1.0
-References: <20250909-pcie-root-upstream-v1-0-d85883b2688d@google.com>
- <20250909-pcie-root-upstream-v1-2-d85883b2688d@google.com>
- <CAFEAcA8QAj54xxTfk087=8dERGiM28Bz2mw9eVtMd6qNOd7aYw@mail.gmail.com>
- <CAMvPwGo-PpapVgYG9RRdtzEOzFzgn1++f-uTHyyDHzfjyNTPfg@mail.gmail.com>
-In-Reply-To: <CAMvPwGo-PpapVgYG9RRdtzEOzFzgn1++f-uTHyyDHzfjyNTPfg@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 26 Sep 2025 10:07:42 +0100
-X-Gm-Features: AS18NWAJ5f40w1WFD01kVlZJ6hQSLN_rnlyBQjCdwJpH9-ZGGQSP7Z0u1dh3jR0
-Message-ID: <CAFEAcA_-3GeW5Y0WNXXqDJn394vyp9FfHPLZSx6J3VRZBW_kjQ@mail.gmail.com>
-Subject: Re: [PATCH 2/7] hw/pci-host: add basic Nuvoton PCIe window support
-To: Titus Rwantare <titusr@google.com>
-Cc: Yubin Zou <yubinz@google.com>, qemu-devel@nongnu.org, 
- Paolo Bonzini <pbonzini@redhat.com>, Tyrone Ting <kfting@nuvoton.com>,
- Hao Wu <wuhaotsh@google.com>, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b135;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb135.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 9/9] tests/functional: Adapt arches to
+ reverse_debugging w/o Avocado
+To: Gustavo Romero <gustavo.romero@linaro.org>, qemu-devel@nongnu.org,
+ alex.bennee@linaro.org, berrange@redhat.com
+Cc: qemu-arm@nongnu.org, manos.pitsidianakis@linaro.org,
+ peter.maydell@linaro.org
+References: <20250926051542.104432-1-gustavo.romero@linaro.org>
+ <20250926051542.104432-10-gustavo.romero@linaro.org>
+From: Thomas Huth <thuth@redhat.com>
+Autocrypt: addr=thuth@redhat.com; keydata=
+ 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
+In-Reply-To: <20250926051542.104432-10-gustavo.romero@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: UiUSTq2N6iNBpwgDOXkb5HdEdHbpZEfpnBiLElM6xYI_1758877781
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -98,55 +158,51 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, 25 Sept 2025 at 20:40, Titus Rwantare <titusr@google.com> wrote:
->
-> On Thu, 25 Sept 2025 at 09:38, Peter Maydell <peter.maydell@linaro.org> wrote:
-> >
-> > On Tue, 9 Sept 2025 at 23:11, Yubin Zou <yubinz@google.com> wrote:
-> > >
-> > > From: Titus Rwantare <titusr@google.com>
-> > >
-> > > Adds the windowing registers without address translation
-> > >
-> > > Signed-off-by: Titus Rwantare <titusr@google.com>
-> > > ---
-> > >  hw/pci-host/npcm_pcierc.c         | 223 +++++++++++++++++++++++++++++++++++++-
-> > >  include/hw/pci-host/npcm_pcierc.h |  77 ++++++++++++-
-> > >  2 files changed, 297 insertions(+), 3 deletions(-)
-> > >
-> > > diff --git a/hw/pci-host/npcm_pcierc.c b/hw/pci-host/npcm_pcierc.c
-> > > index 3afe92e264f6ce4312e94f05b5e908840008df64..bffdec71acaba6562856b3bdd8aec07c3c153323 100644
-> > > --- a/hw/pci-host/npcm_pcierc.c
-> > > +++ b/hw/pci-host/npcm_pcierc.c
-> > > @@ -16,6 +16,193 @@
-> > >  #include "qom/object.h"
-> > >  #include "trace.h"
-> > >
-> > > +/* Map enabled windows to a memory subregion */
-> > > +static void npcm_pcierc_map_enabled(NPCMPCIERCState *s, NPCMPCIEWindow *w)
-> > > +{
-> > > +    MemoryRegion *system = get_system_memory();
-> >
-> > > +    /* TODO: set subregion to target translation address */
-> > > +    /* add subregion starting at the window source address */
-> > > +    if (!memory_region_is_mapped(&w->mem)) {
-> > > +        memory_region_init(&w->mem, OBJECT(s), name, size);
-> > > +        memory_region_add_subregion(system, bar, &w->mem);
-> > > +    }
-> >
-> > This looks weird. Generally devices should not map themselves
-> > into the system address space, although some of our older
-> > pci-host devices do for historical reasons. Should we
-> > be modelling this some other way?
+On 26/09/2025 07.15, Gustavo Romero wrote:
+> reverse_debugging no longer depends on Avocado, so remove the import
+> checks for Avocado, the per-arch endianness tweaks, and the per-arch
+> register settings. All of these are now handled in the ReverseDebugging
+> class, automatically.
+> 
+> Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
+> ---
+>   tests/functional/aarch64/test_reverse_debug.py |  9 ++++-----
+>   tests/functional/ppc64/test_reverse_debug.py   | 11 ++++-------
+>   tests/functional/x86_64/test_reverse_debug.py  | 13 ++++---------
+>   3 files changed, 12 insertions(+), 21 deletions(-)
+> 
+> diff --git a/tests/functional/aarch64/test_reverse_debug.py b/tests/functional/aarch64/test_reverse_debug.py
+> index 8bc91ccfde..36985a4a1d 100755
+> --- a/tests/functional/aarch64/test_reverse_debug.py
+> +++ b/tests/functional/aarch64/test_reverse_debug.py
+> @@ -2,25 +2,24 @@
+>   #
+>   # SPDX-License-Identifier: GPL-2.0-or-later
+>   #
+> -# Reverse debugging test
+> +# Reverse debugging test for aarch64
+>   #
+>   # Copyright (c) 2020 ISP RAS
+> +# Copyright (c) 2025 Linaro Limited
+>   #
+>   # Author:
+>   #  Pavel Dovgalyuk <Pavel.Dovgalyuk@ispras.ru>
+> +#  Gustavo Romero <gustavo.romero@linaro.org> (Run without Avocado)
+>   #
+>   # This work is licensed under the terms of the GNU GPL, version 2 or
+>   # later.  See the COPYING file in the top-level directory.
+>   
+> -from qemu_test import Asset, skipIfMissingImports, skipFlakyTest
+> +from qemu_test import Asset, skipFlakyTest
+>   from reverse_debugging import ReverseDebugging
+>   
+>   
+> -@skipIfMissingImports('avocado.utils')
+>   class ReverseDebugging_AArch64(ReverseDebugging):
 
-> I can update this. What devices are doing it the new way?
+Maybe use @skipIfMissingImports('pygdbmi') now?
 
-I'm not sure exactly what your device is doing here in
-general, but typically the device exposes sysbus MRs
-to the SoC and the SoC maps those where they ought to go.
+Apart from that:
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
-Is there documentation on what the hardware behaviour is?
-
-thanks
--- PMM
 

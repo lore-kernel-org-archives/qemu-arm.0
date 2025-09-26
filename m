@@ -4,80 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97644CAC5AC
-	for <qemu-arm@archiver.kernel.org>; Fri, 26 Sep 2025 08:51:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6AD7CAC5AC
+	for <qemu-arm@archiver.kernel.org>; Fri, 26 Sep 2025 09:08:38 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v24AH-0007MA-6T; Fri, 26 Sep 2025 04:50:53 -0400
+	id 1v24R1-0003Od-2j; Fri, 26 Sep 2025 05:08:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1v24AF-0007LX-Tb
- for qemu-arm@nongnu.org; Fri, 26 Sep 2025 04:50:51 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1v24A4-0000d1-R6
- for qemu-arm@nongnu.org; Fri, 26 Sep 2025 04:50:51 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1758876628;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=wjKm6cjFisvotmhfB0nkvgkZD0vkkcxV7PvTdaXrEAg=;
- b=dvInRyinqSyIiWRxn4+/I8obcACzTNBYpIs/kfEtzDrJxTd6xHZMXE37KNxQF9sTABmiqw
- hrNQN9PDp4S9hFbdOZS8nRZKYi76Oq6o68+FF+/Dtk0OxDmYwPb0wQoWjMQqJUhYUUsNJt
- horuBPuwYx8RDPVT1Ihyxl+9oMrVBls=
-Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-266-kFd5z9s2NfGbHlsbkONUiQ-1; Fri,
- 26 Sep 2025 04:50:22 -0400
-X-MC-Unique: kFd5z9s2NfGbHlsbkONUiQ-1
-X-Mimecast-MFC-AGG-ID: kFd5z9s2NfGbHlsbkONUiQ_1758876621
-Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 924BB1956089; Fri, 26 Sep 2025 08:50:21 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.175])
- by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id B6745180044F; Fri, 26 Sep 2025 08:50:18 +0000 (UTC)
-Date: Fri, 26 Sep 2025 09:50:15 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Thomas Huth <thuth@redhat.com>
-Cc: Gustavo Romero <gustavo.romero@linaro.org>, qemu-devel@nongnu.org,
- alex.bennee@linaro.org, qemu-arm@nongnu.org,
- manos.pitsidianakis@linaro.org, peter.maydell@linaro.org
-Subject: Re: [PATCH v4 1/9] tests/functional: Re-activate the check-venv target
-Message-ID: <aNZTx0Sxfo8QJMj_@redhat.com>
-References: <20250926051542.104432-1-gustavo.romero@linaro.org>
- <20250926051542.104432-2-gustavo.romero@linaro.org>
- <5aefdfa3-4b8b-4512-a6a4-1a1684352d0f@redhat.com>
- <aNZQwnBW76LPUgeE@redhat.com>
- <1015000c-3f92-429f-84d2-bf496b5776d7@redhat.com>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1v24R0-0003OT-2f
+ for qemu-arm@nongnu.org; Fri, 26 Sep 2025 05:08:10 -0400
+Received: from mail-yx1-xb135.google.com ([2607:f8b0:4864:20::b135])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1v24Qp-0003o6-HL
+ for qemu-arm@nongnu.org; Fri, 26 Sep 2025 05:08:09 -0400
+Received: by mail-yx1-xb135.google.com with SMTP id
+ 956f58d0204a3-6360f986fb0so1440040d50.3
+ for <qemu-arm@nongnu.org>; Fri, 26 Sep 2025 02:07:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1758877674; x=1759482474; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=jeWlD2+XvDuF9fZefYX7rm/bH2gHCJ471Q4sat+U148=;
+ b=ZT75daTiTvIpfw2cWlDdhKfQF4p2I3+cMY+IPrZRX/+lHZZM2e7pQe3x+nbkGYVsfF
+ 0WZFQr+e+y4m0jJx6a5Ceo2UeeNSqoAd52CYbmb2kayQHeZKHtDTQvA7ZqDOuWWEU7UA
+ 2tpGUYz/1h9MjZRojbjV6IhgPmtjF81E/uk/xDZJ19svTYt1ggkuuxLg0q9+dztJj6wf
+ P+mV6fZrat4pkkkV05F0iSVHDOeJeTeMct5ddQOLxLkXBYtkyvsqSpUB088+lo7mYVnY
+ Eg1d06xKR7Z4eYs4VA105Bo8OSkIj8TcPSwNqnTStSTh608ax8OWzEfhMswM8yPlOStI
+ Ii8Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1758877674; x=1759482474;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=jeWlD2+XvDuF9fZefYX7rm/bH2gHCJ471Q4sat+U148=;
+ b=roCRvhuyaMrnehTiSTSgccWhdxpNj1dv34qfwugsva8HFOIjj0/GWyQApzvcprSkza
+ +vuSDo0sFy20hZvCoZnmY9t9R/6Ht7T4OqnhfSilfNU/GDm8r8WGKYzzP49Zm+KF4uPv
+ x7fURQbpaxCpH4IhM7N4WVeKqX3do6ttO+y0cLrOlTldX40jjvlKMD20NnLVSm0Baf6L
+ iB0zPqRCZkhKXRVNHBB/Y3sy183rwt8jDLCkuzz6xeB2tTGj0QhNFGGXMW6XIK0WZ9vj
+ XbH3jg8oQLjcbjZnVTuLImwhjl07U4SsX7qqqoaU4Gi4azE21YbVORV4U3pAdgLaA/lk
+ v5Ag==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWlIqdRZsfCMSwLxN+5PM/YJpmblSH1Ou+H4V8XzPTM6F/loFcTk/zKteZY1CWKhrlUEVdCFKYZQg==@nongnu.org
+X-Gm-Message-State: AOJu0YxpxCtgZeNdyLanQRaMOEGGVyz+H8Ds2VoMYmTG72Zw4MrHZ1aF
+ awm75al7rzYcApzQtfexiDkI2QGHo1hrH83+DepRtd4VZlETyQGB3APYerbVL/k7ncJrl5+0b6A
+ e8eudiOjNZRTIWD8Gl76y08/FBxmWxtkci3uHdppiYQ==
+X-Gm-Gg: ASbGncsrm4pFMT10JBryqTeaiSO/VDLdqiq5ubBCmY5BSK0ckq+EokMa0lWc9nrm7Hi
+ e/vMO94QKQ9zl+yZSr+VNUHxlPjry4YgI7is2KLvgR73JfeUaKn65yEE1Jp8uzFBmWL/bVhv0La
+ hpToNxNpt4qUYwi1VoZC/hu4rywvmSAlPbYqX/Diyfph4IdxIIZ3d+JjTsVQAjWVG9u+HRJIL3C
+ tnq6VFi
+X-Google-Smtp-Source: AGHT+IFOMGBVv5oQXI7QdzmGXwDMo3l8U1B535wsVZBkCeT7lfzZ/P4Rfi+eSrSh2RJhMINsvNns8svqneGQF1F7hJ4=
+X-Received: by 2002:a05:690e:4303:b0:633:a260:14a1 with SMTP id
+ 956f58d0204a3-6361a735958mr4326863d50.18.1758877673594; Fri, 26 Sep 2025
+ 02:07:53 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <1015000c-3f92-429f-84d2-bf496b5776d7@redhat.com>
-User-Agent: Mutt/2.2.14 (2025-02-20)
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
+References: <20250909-pcie-root-upstream-v1-0-d85883b2688d@google.com>
+ <20250909-pcie-root-upstream-v1-2-d85883b2688d@google.com>
+ <CAFEAcA8QAj54xxTfk087=8dERGiM28Bz2mw9eVtMd6qNOd7aYw@mail.gmail.com>
+ <CAMvPwGo-PpapVgYG9RRdtzEOzFzgn1++f-uTHyyDHzfjyNTPfg@mail.gmail.com>
+In-Reply-To: <CAMvPwGo-PpapVgYG9RRdtzEOzFzgn1++f-uTHyyDHzfjyNTPfg@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 26 Sep 2025 10:07:42 +0100
+X-Gm-Features: AS18NWAJ5f40w1WFD01kVlZJ6hQSLN_rnlyBQjCdwJpH9-ZGGQSP7Z0u1dh3jR0
+Message-ID: <CAFEAcA_-3GeW5Y0WNXXqDJn394vyp9FfHPLZSx6J3VRZBW_kjQ@mail.gmail.com>
+Subject: Re: [PATCH 2/7] hw/pci-host: add basic Nuvoton PCIe window support
+To: Titus Rwantare <titusr@google.com>
+Cc: Yubin Zou <yubinz@google.com>, qemu-devel@nongnu.org, 
+ Paolo Bonzini <pbonzini@redhat.com>, Tyrone Ting <kfting@nuvoton.com>,
+ Hao Wu <wuhaotsh@google.com>, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b135;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb135.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, T_SPF_TEMPERROR=0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -90,62 +95,58 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, Sep 26, 2025 at 10:42:22AM +0200, Thomas Huth wrote:
-> On 26/09/2025 10.37, Daniel P. Berrangé wrote:
-> > On Fri, Sep 26, 2025 at 10:34:01AM +0200, Thomas Huth wrote:
-> > > On 26/09/2025 07.15, Gustavo Romero wrote:
-> > > > Add check-venv target as a dependency for the functional tests. This
-> > > > causes Python modules listed in pythondeps.toml, under the testdeps
-> > > > group, to be installed when 'make check-functional' is executed to
-> > > > prepare and run the functional tests.
-> > > > 
-> > > > Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
-> > > > Suggested-by: Thomas Huth <thuth@redhat.com>
-> > > > ---
-> > > >    tests/Makefile.include | 2 +-
-> > > >    1 file changed, 1 insertion(+), 1 deletion(-)
-> > > > 
-> > > > diff --git a/tests/Makefile.include b/tests/Makefile.include
-> > > > index 3538c0c740..d012a9b25d 100644
-> > > > --- a/tests/Makefile.include
-> > > > +++ b/tests/Makefile.include
-> > > > @@ -109,7 +109,7 @@ $(FUNCTIONAL_TARGETS):
-> > > >    	@$(MAKE) SPEED=thorough $(subst -functional,-func,$@)
-> > > >    .PHONY: check-functional
-> > > > -check-functional:
-> > > > +check-functional: check-venv
-> > > 
-> > > I just noticed that there's still a problem: If you run "make
-> > > check-functional-aarch64" immediately after configuring + compiling QEMU in
-> > > a fresh folder for the first time, the functional tests fail with:
-> > > 
-> > > ModuleNotFoundError: No module named 'pygdbmi'
-> > > 
-> > > We either need to add dependencies to the check-functional-<arch> targets,
-> > > too, or we have to make sure that tests still get properly skipped in the
-> > > case that pygdbmi has not been installed into the venv yet.
-> > 
-> > We already have a decorator for skipping tests when modules are missing,
-> > so we should add usage of that.
-> 
-> Ack ... and the "from .gdb import GDB" in qemu_test/__init__.py likely also
-> has to go away, to avoid that each and every test tries to pull in the gdb
-> code.
+On Thu, 25 Sept 2025 at 20:40, Titus Rwantare <titusr@google.com> wrote:
+>
+> On Thu, 25 Sept 2025 at 09:38, Peter Maydell <peter.maydell@linaro.org> wrote:
+> >
+> > On Tue, 9 Sept 2025 at 23:11, Yubin Zou <yubinz@google.com> wrote:
+> > >
+> > > From: Titus Rwantare <titusr@google.com>
+> > >
+> > > Adds the windowing registers without address translation
+> > >
+> > > Signed-off-by: Titus Rwantare <titusr@google.com>
+> > > ---
+> > >  hw/pci-host/npcm_pcierc.c         | 223 +++++++++++++++++++++++++++++++++++++-
+> > >  include/hw/pci-host/npcm_pcierc.h |  77 ++++++++++++-
+> > >  2 files changed, 297 insertions(+), 3 deletions(-)
+> > >
+> > > diff --git a/hw/pci-host/npcm_pcierc.c b/hw/pci-host/npcm_pcierc.c
+> > > index 3afe92e264f6ce4312e94f05b5e908840008df64..bffdec71acaba6562856b3bdd8aec07c3c153323 100644
+> > > --- a/hw/pci-host/npcm_pcierc.c
+> > > +++ b/hw/pci-host/npcm_pcierc.c
+> > > @@ -16,6 +16,193 @@
+> > >  #include "qom/object.h"
+> > >  #include "trace.h"
+> > >
+> > > +/* Map enabled windows to a memory subregion */
+> > > +static void npcm_pcierc_map_enabled(NPCMPCIERCState *s, NPCMPCIEWindow *w)
+> > > +{
+> > > +    MemoryRegion *system = get_system_memory();
+> >
+> > > +    /* TODO: set subregion to target translation address */
+> > > +    /* add subregion starting at the window source address */
+> > > +    if (!memory_region_is_mapped(&w->mem)) {
+> > > +        memory_region_init(&w->mem, OBJECT(s), name, size);
+> > > +        memory_region_add_subregion(system, bar, &w->mem);
+> > > +    }
+> >
+> > This looks weird. Generally devices should not map themselves
+> > into the system address space, although some of our older
+> > pci-host devices do for historical reasons. Should we
+> > be modelling this some other way?
 
-Or alternatively the gdb module can move the gdbmi import so that it is
-only referenced in method scope, so it becomes relevant only when
-executed.
+> I can update this. What devices are doing it the new way?
 
+I'm not sure exactly what your device is doing here in
+general, but typically the device exposes sysbus MRs
+to the SoC and the SoC maps those where they ought to go.
 
-With regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+Is there documentation on what the hardware behaviour is?
 
+thanks
+-- PMM
 

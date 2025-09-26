@@ -4,85 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E790CAC5B5
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 087C1CAC5B0
 	for <qemu-arm@archiver.kernel.org>; Fri, 26 Sep 2025 00:14:15 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v1w45-0002G2-R5; Thu, 25 Sep 2025 20:11:58 -0400
+	id 1v1w4O-0002NH-UL; Thu, 25 Sep 2025 20:12:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1v1w44-0002Fa-H0
- for qemu-arm@nongnu.org; Thu, 25 Sep 2025 20:11:56 -0400
-Received: from mail-pg1-x533.google.com ([2607:f8b0:4864:20::533])
+ id 1v1w4N-0002Mv-Gh
+ for qemu-arm@nongnu.org; Thu, 25 Sep 2025 20:12:15 -0400
+Received: from mail-pg1-x531.google.com ([2607:f8b0:4864:20::531])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1v1w3s-0005Dz-M1
- for qemu-arm@nongnu.org; Thu, 25 Sep 2025 20:11:54 -0400
-Received: by mail-pg1-x533.google.com with SMTP id
- 41be03b00d2f7-b57bf560703so1149949a12.2
- for <qemu-arm@nongnu.org>; Thu, 25 Sep 2025 17:11:41 -0700 (PDT)
+ id 1v1w3z-0005Eu-2i
+ for qemu-arm@nongnu.org; Thu, 25 Sep 2025 20:12:15 -0400
+Received: by mail-pg1-x531.google.com with SMTP id
+ 41be03b00d2f7-b555ab7fabaso1507136a12.0
+ for <qemu-arm@nongnu.org>; Thu, 25 Sep 2025 17:11:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1758845496; x=1759450296; darn=nongnu.org;
+ d=linaro.org; s=google; t=1758845502; x=1759450302; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=4B0sed8fcKcEBs00RcNhGZcUvjaD+FLFaLTVM+s8BDA=;
- b=sJp4uP9lQ1H/KibGWs17LLSqU9pzVTN92WXJ6QjmA3igJLmdxKTpxEtvrtLhkDBEX1
- 15cDgduyGLpn7v4u6HrjAf0FYFLWVnA3kY0LYgi6iZLVMHwYee/FroemwuKN/HpfF5co
- WrMTZ29Mw4FJ8YApdd7cAA3l5MTPDtVSRyjgPaqmZYCx//3IEVoLIbcOip4wIc80F0/g
- 5ALWReAK8+Fu7412JDVibOL6osKNWcZ+jiK4HVoIU5+1zhL9VHGgC5LD86Wo94G3B6VX
- +fxUbCPE89z+tERPdMf2hgxbg3ap7zusA6NDRWa9EiaIhKmMzqyYNABsl68jXXI8US5t
- ozBA==
+ bh=CxjHHRJTw3hUZ1UsocmE5vCuaQ9siO6rI5yfDT7Lfcs=;
+ b=LumKvdg7w+HUfzGqZL9wQIzlZsOOfbDgch1OBfAK0ng3asuFrXGgEJAfkVl4maFKDX
+ 4/3+PuBEEq2YHguIgACxvRiz2CY+1EW/MOMqEoglCp9flSGRauiyyDdoklojQTS70mOx
+ mipxaRIjTCl+Bjz9ry1nUSP25KGfbSP2ljAD0OyIIRmQihI+DwRjiNp81f9Nj0rEH5Mb
+ riSuuVN/2DFTz7wAivRFh26GirSFnbcIC8uLofThLRzj1ANDT1obCnuqc7Ha2iR3KFq6
+ PU5HlrtAKUdGE+SJIqlZdophq4vlxTbRkh21B1ybSQFN+Eg54rcYTlZTm0KSYTXPRrRR
+ GOFw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1758845496; x=1759450296;
+ d=1e100.net; s=20230601; t=1758845502; x=1759450302;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=4B0sed8fcKcEBs00RcNhGZcUvjaD+FLFaLTVM+s8BDA=;
- b=rNfARYLkpn2KJwoNMSoj0s9YShSrHl7eqy1Lxs2SMhX/200Lpr03d9wtDdbeZH5oye
- IAru2tnnZ7nBzHn0EaefxCz7huPUnuieXl84wFoy6ZSMC3yoz4hriPCQJ1TBapYgoUtv
- SV23OQ96o7SshwOJppe9RLtQAesFC4qCyk6JFfqDd81CsYky9N/N4ULaY+BXlIen+sEe
- bPZG7dOciNWb75mAvDW4QtBBAA78VcQJjI9Qmf+c/862NX4mg946qAEMKCAUZ/eVzWFw
- UxfF6JYa/h2mwNM3iAY/kMedjxkIMBWzp4+5dGEFyc9FsRD2tDyu3qpg8/AGCLbuqVdX
- hBWw==
-X-Gm-Message-State: AOJu0YwksEbzmcHPFqCSNlzNF/q+7oHzZppPtyiQ9PwmNLJUkcCnuGCF
- D+cG+FX+4RzKxVm+s2ifNIq6wq0qo2GwNFT1cyvtQwSoMcAQucm4tnCMSKcRgrNTU6J8Q1DHx/S
- vNHZa
-X-Gm-Gg: ASbGncvPTsT3SifNIJ1gAo4bmRkqPJ2X502C0jPsK5m6xZWFQ4QoujlCgQj0wHXLEfl
- SjKkHhf1BJ95592gd2zC66CNafws8kesxhwtnZy8dPkOYMW0sTD2aRyYKY61RVgvKd2Z1Hz4jLD
- JcuWiaSG1bhlfuNvbsVKLP24Z5+uuUu/ZbIK3/ZpzBSv61JFORI50sUSEzxrJ59z7XWMg7dea0T
- 2CpXov+/b4rF+t0thLoxPJV8aDwFgfLTvUx782yRAhPmo/HB5p1mN9xD+QLLFck+u5h+XlDKi9O
- bHSLqO8S9e2Xn8GF9UhWUh0p5p2vCj7J3D3GwkdzGKxIwxqhrh0u5b4xV2gXZqEo1rmhf7lP+3H
- vo9cZxb4B5iyxRbCYIAFnesAzoWH6
-X-Google-Smtp-Source: AGHT+IHO4ZBpku6huVja5uunEa1NdGZhwig/6rs5Hy3NFPHdHcvALDmDQp+JM5fRjosFkOYSMqIgQg==
-X-Received: by 2002:a17:902:f60f:b0:27d:6f37:7b66 with SMTP id
- d9443c01a7336-27ed4ac78b0mr52183065ad.47.1758845496634; 
- Thu, 25 Sep 2025 17:11:36 -0700 (PDT)
+ bh=CxjHHRJTw3hUZ1UsocmE5vCuaQ9siO6rI5yfDT7Lfcs=;
+ b=X6/1EcgdowpGcDXG85R/dWpyNHTW+ADrEyIrzJ4nJr03D386z7WpP08ixArr523lc7
+ 14mMCAp+NAjo/VXIUTvV8AGiTuOpP343DiguhinwfObqYZutwrMO/X2J+gSvbYNEDlrA
+ oNRgtG7Zv4t6bVTz/gr1vhSN+0BXdfFTW5/SkXAbbE0+E1FwK09IsRooaGCR3QyKWO7S
+ ATqPUgWgkavpZISya8mjWDP0Ucj663xmY5pvrPOiWD6NVSLn5/O75cCFZmgNxgyT4vRy
+ W6KNCrxGPyaPcwNbYkTFjsUPZPqo7/vMUtk5VvWRLs5VCSQeof6xKp9yPTOjpTGRFDIi
+ IIXg==
+X-Gm-Message-State: AOJu0YyDK01NN5QM029Uy9SyL/Ihww7OlX9GWgmUIqw7YzyJpUMaRmvJ
+ 8mMtXYT13Ja5LZo7XOv1jI0fBcMg0JDdj0LBgzsQdn2GKrlm+OHKBCquZ1fa+wPWINo=
+X-Gm-Gg: ASbGncs/HcotEupJkIc4TYPVhpnVrNYkx6BD6mSO+hnh8AKg865Kx8p8LlTzsxJHwRP
+ Qwf2bCvhJVlCi6vZofWvWdHxc5X0+o6ryCMv4XhQVupz5EMYvwQNXYOEDNdINEhl3Q3NshAfPlX
+ oqqLeZqqh0qt2cL32BOoGxqhqOAFhaLmOoQpbO9VSUcnU5iVmy/E7isH4aAhAvOAIUdxHV9G52Y
+ 67PhpXaF5HmKOfpqYh61QbT+LLWByh7AWzvqEZblnSDiQSCcYVAd9EnZwdErJbCBh4FBYlPkkSR
+ pP9Qut6X3LRD1SdBOAQhCOgU3RrqlRpS3OeE5bs/FBZDYKN6xYO0OuaGZdxlIVC739HqAq+jbgf
+ uqV+ZsoG6+p1g4bOPbEzqLixt5vtD2GF+XtCxAq8=
+X-Google-Smtp-Source: AGHT+IH8hWdSKitCkNzygpMbIA57pTpyDi3inMnTs1Upq/5V8hoVThD7ZRkaBq1nRsBMz2d/992+Hw==
+X-Received: by 2002:a17:903:22cb:b0:269:8f2e:e38 with SMTP id
+ d9443c01a7336-27ed49b9a40mr61514725ad.6.1758845502387; 
+ Thu, 25 Sep 2025 17:11:42 -0700 (PDT)
 Received: from stoup.. ([71.212.157.132]) by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-27ed6ac37efsm35829425ad.137.2025.09.25.17.11.36
+ d9443c01a7336-27ed6ac37efsm35829425ad.137.2025.09.25.17.11.41
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 25 Sep 2025 17:11:36 -0700 (PDT)
+ Thu, 25 Sep 2025 17:11:42 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH 01/10] target/arm: Add isar feature test for FEAT_RME_GPC2
-Date: Thu, 25 Sep 2025 17:11:25 -0700
-Message-ID: <20250926001134.295547-2-richard.henderson@linaro.org>
+Subject: [PATCH 09/10] target/arm: Implement APPSAA
+Date: Thu, 25 Sep 2025 17:11:33 -0700
+Message-ID: <20250926001134.295547-10-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250926001134.295547-1-richard.henderson@linaro.org>
 References: <20250926001134.295547-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::533;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x533.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::531;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x531.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -98,27 +98,29 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+This bit allows all spaces to access memory above PPS.
+
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/cpu-features.h | 5 +++++
- 1 file changed, 5 insertions(+)
+ target/arm/ptw.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
-index 512eeaf551..2214b0ee08 100644
---- a/target/arm/cpu-features.h
-+++ b/target/arm/cpu-features.h
-@@ -676,6 +676,11 @@ static inline bool isar_feature_aa64_rme(const ARMISARegisters *id)
-     return FIELD_EX64_IDREG(id, ID_AA64PFR0, RME) != 0;
- }
- 
-+static inline bool isar_feature_aa64_rme_gpc2(const ARMISARegisters *id)
-+{
-+    return FIELD_EX64_IDREG(id, ID_AA64PFR0, RME) >= 2;
-+}
-+
- static inline bool isar_feature_aa64_dit(const ARMISARegisters *id)
- {
-     return FIELD_EX64_IDREG(id, ID_AA64PFR0, DIT) != 0;
+diff --git a/target/arm/ptw.c b/target/arm/ptw.c
+index 236c3a9569..e03657f309 100644
+--- a/target/arm/ptw.c
++++ b/target/arm/ptw.c
+@@ -408,9 +408,10 @@ static bool granule_protection_check(CPUARMState *env, uint64_t paddress,
+      * GPC Priority 3: Secure, Realm or Root address exceeds PPS.
+      * R_CPDSB: A NonSecure physical address input exceeding PPS
+      * does not experience any fault.
++     * R_PBPSH: Other address spaces have fault suppressed by APPSAA.
+      */
+     if (paddress & ~pps_mask) {
+-        if (pspace == ARMSS_NonSecure) {
++        if (pspace == ARMSS_NonSecure || FIELD_EX64(gpccr, GPCCR, APPSAA)) {
+             return true;
+         }
+         goto fault_fail;
 -- 
 2.43.0
 

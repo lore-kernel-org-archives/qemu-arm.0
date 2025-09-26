@@ -4,62 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 708D2CAC5B0
-	for <qemu-arm@archiver.kernel.org>; Fri, 26 Sep 2025 03:31:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B46E6CAC5AE
+	for <qemu-arm@archiver.kernel.org>; Fri, 26 Sep 2025 05:16:44 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v1zAe-00053x-30; Thu, 25 Sep 2025 23:30:56 -0400
+	id 1v20oj-0004gZ-5a; Fri, 26 Sep 2025 01:16:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tangtao1634@phytium.com.cn>)
- id 1v1zAc-000532-DL; Thu, 25 Sep 2025 23:30:54 -0400
-Received: from zg8tmja5ljk3lje4ms43mwaa.icoremail.net ([209.97.181.73])
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <tangtao1634@phytium.com.cn>)
- id 1v1zAH-0006r4-7m; Thu, 25 Sep 2025 23:30:43 -0400
-Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
- by hzbj-icmmx-7 (Coremail) with SMTP id AQAAfwAXWWzKCNZokH0_CQ--.1S2;
- Fri, 26 Sep 2025 11:30:18 +0800 (CST)
-Received: from phytium.com.cn (unknown [218.76.62.144])
- by mail (Coremail) with SMTP id AQAAfwB32ufGCNZoBAAhAA--.9828S3;
- Fri, 26 Sep 2025 11:30:14 +0800 (CST)
-From: Tao Tang <tangtao1634@phytium.com.cn>
-To: Eric Auger <eric.auger@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Chen Baozi <chenbaozi@phytium.com.cn>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Jean-Philippe Brucker <jean-philippe@linaro.org>,
- Mostafa Saleh <smostafa@google.com>, Tao Tang <tangtao1634@phytium.com.cn>
-Subject: [PATCH v2 14/14] hw/arm/smmuv3: Optional Secure bank migration via
- subsections
-Date: Fri, 26 Sep 2025 11:30:13 +0800
-Message-Id: <20250926033013.1099304-1-tangtao1634@phytium.com.cn>
+ (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
+ id 1v20oe-0004dW-8o
+ for qemu-arm@nongnu.org; Fri, 26 Sep 2025 01:16:20 -0400
+Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
+ id 1v20oY-0005zM-FH
+ for qemu-arm@nongnu.org; Fri, 26 Sep 2025 01:16:19 -0400
+Received: by mail-pl1-x62a.google.com with SMTP id
+ d9443c01a7336-2698d47e776so15120165ad.1
+ for <qemu-arm@nongnu.org>; Thu, 25 Sep 2025 22:16:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1758863766; x=1759468566; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=4fb5YIRAYuFTsi1a0hr4VCGRrcrYRivQ/A3VTdModZM=;
+ b=H1D5Qc9JvYI1wXzgi98tPzCaQlT9z1dC9NJB24y4Eoo1W8vMZgrSPsHrtDZzCfXx6T
+ k8eTZMJQ2dicAZvllx1KF9zBb5HbkqsNpWyYe8USRVaRTcxeSZDD70LyAHvvY68tHSe/
+ 3ZdjX73Mxg6nSKlTuaxI+m3a0nrejP3g/P4NUik6Dz6/KBQ3cwc1B6yoMzvwnsbaY2BM
+ On+ued4siUEvUW0rsNBodqexADvuFwLUPdD6jV1CC2JVdeaXq230155y83IsFW09fyRa
+ 359ZgnY8K6rLBvwz7FX7FwJ/CqhiBdQQDxYLA6C448AgELOhBffqfPRED3b4YNR1vasg
+ Nkow==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1758863766; x=1759468566;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=4fb5YIRAYuFTsi1a0hr4VCGRrcrYRivQ/A3VTdModZM=;
+ b=Uz0lhihhmQbyHnByph82r1aUT85KA0TQFuMl9hJxID4gcG84VffqUKSpNjwSyOqmXy
+ /1S+QuBcarLCChcGp/Xf4cY93CU5V/exNyCuzklQYPtmM2TgrMVTDWDEfAZ3atTHPsFo
+ 1r677O39sYDAI2r+/7fqWd9S4cwv5oc1aEeoa4O3qhPS4HI/y/2PAo9X04jABxvxn+D+
+ O2m8MLmHGgz71Bnz4rCF3v2mdPy6UBwCg3tvCW9pSD+aNsbK6NaB0c4l3GeYbBmx2d6g
+ /IYu6WNAyRUXZ0TSKQb7D6bUXjrKSz4BaWacWNXfLv3FJnOYEBmhGvZHaTqXKOK6bw6U
+ jEaQ==
+X-Gm-Message-State: AOJu0YxGklbrJ90RXHGGt340GI0h0RTwJrqVQU1lWwHYSkEfXvoBBU6Z
+ s6jPspWurlg8rJHrjalEuRe7WCHk5lsjioSpgqaEcJ0eARh6adD+G/R8xJ1084sOmKc=
+X-Gm-Gg: ASbGncvrxPAss0eOoD2a4ZEvQilwkiZ/OR8mJ1Ae/AHfvplMcNwEMmpwICZsbp6nvAM
+ q1zlroCg0KZ+GwFKrc6wGvQ2S0Xe4efDp9K95mULhGPwlaZAJCag79r+prcwaWpz6+UrUhqONfD
+ wudz0zrhusGatY0/FCG5XBjPpIq0HM1eVy+8M+9VTmg/laMHK1Y1BRL1u48V2rpWdAdCkuhpaIM
+ gvG4bSgLjZOuoud8rNqFtl7NAESQ6PLUIKz6Fp/gZDgmee9awSeAwsjz3HDfpzTBM7nvdCVpeaS
+ kOORQijuAOnyd4qYplIzV9M1Jd1Y95VKz70Lb5Y0wYAWo7WvfBpWjbXQ0EfCSImKxJ1tUDxhDpg
+ bW5CI8KZhUwg1JoCYQzrn1XiEFSTBakDN1oNFVrkUX6C1BE1tsRevomGR5QY0ThBmlgrK
+X-Google-Smtp-Source: AGHT+IHKLcCmfA0yDNi08yuMefjTyUq6RDVJb9VhJhU2LlmYZZ65jEDUGVo2ixtDZfuyMcV8C9RwpQ==
+X-Received: by 2002:a17:903:1c9:b0:267:6649:ec17 with SMTP id
+ d9443c01a7336-27ed49d1344mr62684425ad.23.1758863766549; 
+ Thu, 25 Sep 2025 22:16:06 -0700 (PDT)
+Received: from gromero0.. (189-47-45-49.dsl.telesp.net.br. [189.47.45.49])
+ by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-27ed672a51fsm42160085ad.63.2025.09.25.22.16.04
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 25 Sep 2025 22:16:06 -0700 (PDT)
+From: Gustavo Romero <gustavo.romero@linaro.org>
+To: qemu-devel@nongnu.org, alex.bennee@linaro.org, thuth@redhat.com,
+ berrange@redhat.com
+Cc: qemu-arm@nongnu.org, gustavo.romero@linaro.org,
+ manos.pitsidianakis@linaro.org, peter.maydell@linaro.org
+Subject: [PATCH v4 0/9] tests/functional: Adapt reverse_debugging to run w/o
+ Avocado
+Date: Fri, 26 Sep 2025 05:15:33 +0000
+Message-Id: <20250926051542.104432-1-gustavo.romero@linaro.org>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20250925162618.191242-1-tangtao1634@phytium.com.cn>
-References: <20250925162618.191242-1-tangtao1634@phytium.com.cn>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: AQAAfwB32ufGCNZoBAAhAA--.9828S3
-X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQAFBWjVmkcBzQAAst
-Authentication-Results: hzbj-icmmx-7; spf=neutral smtp.mail=tangtao163
- 4@phytium.com.cn;
-X-Coremail-Antispam: 1Uk129KBjvJXoWxWF45uw4xXFy8Jw48Ww1kAFb_yoWruw4kpr
- s8G3Z8GryDGF4fZr4fJw4rCFs8CrWrGF4akrWDCa93ta1kJay2qrnFyFW8u3s5JrWjqa17
- uF1xuFZrJr47ArJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
- DUYxn0WfASr-VFAU7a7-sFnT9fnUUIcSsGvfJ3UbIYCTnIWIevJa73UjIFyTuYvj4RJUUU
- UUUUU
-Received-SPF: pass client-ip=209.97.181.73;
- envelope-from=tangtao1634@phytium.com.cn;
- helo=zg8tmja5ljk3lje4ms43mwaa.icoremail.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, T_SPF_TEMPERROR=0.01 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62a;
+ envelope-from=gustavo.romero@linaro.org; helo=mail-pl1-x62a.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -75,146 +100,122 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-My apologies, resending patches 13-14/14 to fix a threading mistake from
-my previous attempt.
+tests/functional: Adapt reverse_debugging to run w/o Avocado
 
-Introduce a generic vmstate_smmuv3_bank that serializes a single SMMUv3
-bank (registers and queues). Add a 'smmuv3/bank_s' subsection guarded by
-secure_impl and a new 'migrate-secure-bank' property; when enabled, the S
-bank is migrated. Add a 'smmuv3/gbpa_secure' subsection which is only sent
-when GBPA differs from its reset value.
+The goal of this series is to remove Avocado as a dependency for running
+the reverse_debugging functional test.
 
-This keeps the existing migration stream unchanged by default and remains
-backward compatible: older QEMUs can ignore unknown subsections, and with
-'migrate-secure-bank' defaulting to off, the stream is identical to before.
+After several rounds of discussions about v1 and v2, and experiments
+done by Daniel and Thomas (thanks for all the experiments and comments
+so far), I've taken a new approach and moved away from using a runner
+for GDB. The changes, I believe, are much simpler now.
 
-This also prepares for future RME extensions (Realm/Root) by reusing the
-bank subsection pattern.
+This new series uses GDB's machine interface (MI) via the pygdbmi module
+(thanks Manos and Peter for the inputs). pygdbmi provides a controller
+to start GDB and communicate with it through MI, so there is no longer a
+risk of version clashes between libpython in GDB and Python modules in
+the pyvenv, as it could, in theory, happen when GDB executes the test
+script via -x option.
 
-Usage:
-  -global arm-smmuv3,secure-impl=on,migrate-secure-bank=on
+Also, as Daniel pointed out, the overall test output is pretty bad and
+currently does not allow one to easily follow the sequence of GDB
+commands used in the test. I took this opportunity to improve the output
+and it now prints the sequence in a format that can be copied and pasted
+directly into GDB.
 
-Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
----
- hw/arm/smmuv3.c         | 70 +++++++++++++++++++++++++++++++++++++++++
- include/hw/arm/smmuv3.h |  1 +
- 2 files changed, 71 insertions(+)
+The TAP protocol is respected, and Meson correctly displays GDB's test
+output in testlog-thorough.txt.
 
-diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index 80fbc25cf5..2a1e80d179 100644
---- a/hw/arm/smmuv3.c
-+++ b/hw/arm/smmuv3.c
-@@ -2450,6 +2450,53 @@ static const VMStateDescription vmstate_smmuv3_queue = {
-     },
- };
+Because the pygdbmi "shim" is so thin, I had to write a trivial GDB
+class around it to easily capture and print the payloads returned by its
+write() method. The GDB class allows clean, single-line commands to be
+used in the tests through method chaining, making them easier to follow,
+for example:
 
-+static const VMStateDescription vmstate_smmuv3_bank = {
-+    .name = "smmuv3_bank",
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (const VMStateField[]) {
-+        VMSTATE_UINT32(features, SMMUv3RegBank),
-+        VMSTATE_UINT8(sid_split, SMMUv3RegBank),
-+        VMSTATE_UINT32_ARRAY(cr, SMMUv3RegBank, 3),
-+        VMSTATE_UINT32(cr0ack, SMMUv3RegBank),
-+        VMSTATE_UINT32(irq_ctrl, SMMUv3RegBank),
-+        VMSTATE_UINT32(gerror, SMMUv3RegBank),
-+        VMSTATE_UINT32(gerrorn, SMMUv3RegBank),
-+        VMSTATE_UINT64(gerror_irq_cfg0, SMMUv3RegBank),
-+        VMSTATE_UINT32(gerror_irq_cfg1, SMMUv3RegBank),
-+        VMSTATE_UINT32(gerror_irq_cfg2, SMMUv3RegBank),
-+        VMSTATE_UINT64(strtab_base, SMMUv3RegBank),
-+        VMSTATE_UINT32(strtab_base_cfg, SMMUv3RegBank),
-+        VMSTATE_UINT64(eventq_irq_cfg0, SMMUv3RegBank),
-+        VMSTATE_UINT32(eventq_irq_cfg1, SMMUv3RegBank),
-+        VMSTATE_UINT32(eventq_irq_cfg2, SMMUv3RegBank),
-+        VMSTATE_STRUCT(cmdq, SMMUv3RegBank, 0,
-+                       vmstate_smmuv3_queue, SMMUQueue),
-+        VMSTATE_STRUCT(eventq, SMMUv3RegBank, 0,
-+                       vmstate_smmuv3_queue, SMMUQueue),
-+        VMSTATE_END_OF_LIST(),
-+    },
-+};
-+
-+static bool smmuv3_secure_bank_needed(void *opaque)
-+{
-+    SMMUv3State *s = opaque;
-+
-+    return s->secure_impl && s->migrate_secure_bank;
-+}
-+
-+static const VMStateDescription vmstate_smmuv3_bank_s = {
-+    .name = "smmuv3/bank_s",
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .needed = smmuv3_secure_bank_needed,
-+    .fields = (const VMStateField[]) {
-+        VMSTATE_STRUCT(bank[SMMU_SEC_IDX_S], SMMUv3State, 0,
-+                       vmstate_smmuv3_bank, SMMUv3RegBank),
-+        VMSTATE_END_OF_LIST(),
-+    },
-+};
-+
- static bool smmuv3_gbpa_needed(void *opaque)
- {
-     SMMUv3State *s = opaque;
-@@ -2469,6 +2516,25 @@ static const VMStateDescription vmstate_gbpa = {
-     }
- };
+pc = gdb.cli("print $pc").get_add()
 
-+static bool smmuv3_gbpa_secure_needed(void *opaque)
-+{
-+    SMMUv3State *s = opaque;
-+
-+    return s->secure_impl && s->migrate_secure_bank &&
-+           s->bank[SMMU_SEC_IDX_S].gbpa != SMMU_GBPA_RESET_VAL;
-+}
-+
-+static const VMStateDescription vmstate_gbpa_secure = {
-+    .name = "smmuv3/gbpa_secure",
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .needed = smmuv3_gbpa_secure_needed,
-+    .fields = (const VMStateField[]) {
-+        VMSTATE_UINT32(bank[SMMU_SEC_IDX_S].gbpa, SMMUv3State),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
- static const VMStateDescription vmstate_smmuv3 = {
-     .name = "smmuv3",
-     .version_id = 1,
-@@ -2502,6 +2568,8 @@ static const VMStateDescription vmstate_smmuv3 = {
-     },
-     .subsections = (const VMStateDescription * const []) {
-         &vmstate_gbpa,
-+        &vmstate_smmuv3_bank_s,
-+        &vmstate_gbpa_secure,
-         NULL
-     }
- };
-@@ -2521,6 +2589,8 @@ static const Property smmuv3_properties[] = {
-      * Defaults to false (0)
-      */
-     DEFINE_PROP_BOOL("secure-impl", SMMUv3State, secure_impl, false),
-+    DEFINE_PROP_BOOL("migrate-secure-bank", SMMUv3State,
-+                     migrate_secure_bank, false),
- };
+The test is kept “skipped” for aarch64, ppc64, and x86_64, so it is
+necessary to set QEMU_TEST_FLAKY_TESTS=1 in the test environment to
+effectively run the test on these archs.
 
- static void smmuv3_instance_init(Object *obj)
-diff --git a/include/hw/arm/smmuv3.h b/include/hw/arm/smmuv3.h
-index 572f15251e..5ffb609fa2 100644
---- a/include/hw/arm/smmuv3.h
-+++ b/include/hw/arm/smmuv3.h
-@@ -71,6 +71,7 @@ struct SMMUv3State {
-     QemuMutex mutex;
-     char *stage;
-     bool secure_impl;
-+    bool migrate_secure_bank;
- };
+On aarch64, the test is flaky, but there is a fix that I’ve tested while
+writing this series [0] that resolves it. On ppc64 and x86_64, the test
+always fails: on ppc64, GDB gets a bogus PC, and on x86_64, the last
+part of the test (reverse-continue) does not hit the last executed PC
+(as it should happen) but instead jumps to the beginning of the code
+(first PC in forward order).
 
- typedef enum {
---
+Thus, to effectively run the reverse_debugging test on aarch64:
+
+$ export QEMU_TEST_FLAKY_TESTS=1
+$ make check-functional
+
+or even, to run only the reverse_debug test after 'make check-functional':
+$ ./pyvenv/bin/meson test --verbose --no-rebuild -t 1 --setup thorough --suite func-thorough func-aarch64-reverse_debug
+
+
+Cheers,
+Gustavo
+
+v1:
+https://patchew.org/QEMU/20250819143916.4138035-1-gustavo.romero@linaro.org/
+
+v2:
+https://patchew.org/QEMU/20250904154640.52687-1-gustavo.romero@linaro.org/
+
+v3:
+https://patchew.org/QEMU/20250922054351.14289-1-gustavo.romero@linaro.org/
+
+v4:
+- Installed pygdbmi only in check-functional step and using pip,
+  so not from local wheels (thomas)
+- Fixed GDB probe in configure by ensuring that the GDB passed to Meson
+  supports all that arches in the target list
+- Fixed error found by Alex when skipping the test, "name 'test' is not
+  defined", by using the new decorator suggested by Daniel to skip the
+  tests if QEMU_TEST_GDB env var is missing (alex, daniel)
+- Moved GDB class into its own file under qemu_test, in gdb.py. (alex,
+  daniel)
+- Put subprocess and the drop of the data drainer changes in separate
+  commits (used previous commits from Daniel for it) (alex, daniel)
+- Put back /usr/bin/env python shebang into per arch test files (daniel)
+- Added new method reverse_debugging_run() to separate test bootstrap
+  from GDB test execution, also helping to get a better diff view
+  (daniel)
+- Made diffs better for reviewing by avoiding mixing text changes with
+  changes in the code related to Avocado's removal (alex, daniel)
+
+
+Daniel P. Berrangé (2):
+  tests/functional: replace avocado process with subprocess
+  tests/functional: drop datadrainer class in reverse debugging
+
+Gustavo Romero (7):
+  tests/functional: Re-activate the check-venv target
+  python: Install pygdbmi in meson's venv
+  tests/functional: Provide GDB to the functional tests
+  tests/functional: Add GDB class
+  tests/functional: Add decorator to skip test on missing env vars
+  tests/functional: Adapt reverse_debugging to run w/o Avocado
+  tests/functional: Adapt arches to reverse_debugging w/o Avocado
+
+ configure                                     |  21 +++
+ meson_options.txt                             |   2 +
+ pythondeps.toml                               |   1 +
+ scripts/meson-buildoptions.sh                 |   2 +
+ tests/Makefile.include                        |   2 +-
+ .../functional/aarch64/test_reverse_debug.py  |   9 +-
+ tests/functional/meson.build                  |   6 +
+ tests/functional/ppc64/test_reverse_debug.py  |  11 +-
+ tests/functional/qemu_test/__init__.py        |   4 +-
+ tests/functional/qemu_test/decorators.py      |  18 +++
+ tests/functional/qemu_test/gdb.py             |  85 +++++++++++
+ tests/functional/reverse_debugging.py         | 140 ++++++++----------
+ tests/functional/x86_64/test_reverse_debug.py |  13 +-
+ 13 files changed, 216 insertions(+), 98 deletions(-)
+ create mode 100644 tests/functional/qemu_test/gdb.py
+
+-- 
 2.34.1
 
 

@@ -4,73 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0D9ACAC5BB
-	for <qemu-arm@archiver.kernel.org>; Sun, 28 Sep 2025 23:36:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EACCBCAC5BB
+	for <qemu-arm@archiver.kernel.org>; Sun, 28 Sep 2025 23:36:59 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v30vy-0002kR-Uj; Sun, 28 Sep 2025 19:36:06 -0400
+	id 1v30wa-0003I9-W7; Sun, 28 Sep 2025 19:36:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1v30vw-0002hZ-7L
- for qemu-arm@nongnu.org; Sun, 28 Sep 2025 19:36:00 -0400
-Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
+ id 1v30wY-0003Fj-Ar
+ for qemu-arm@nongnu.org; Sun, 28 Sep 2025 19:36:38 -0400
+Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1v30vn-0006bI-Em
- for qemu-arm@nongnu.org; Sun, 28 Sep 2025 19:35:58 -0400
-Received: by mail-ed1-x52f.google.com with SMTP id
- 4fb4d7f45d1cf-634bc2d6137so4635577a12.0
- for <qemu-arm@nongnu.org>; Sun, 28 Sep 2025 16:35:43 -0700 (PDT)
+ id 1v30w8-0006iB-K6
+ for qemu-arm@nongnu.org; Sun, 28 Sep 2025 19:36:34 -0400
+Received: by mail-ed1-x529.google.com with SMTP id
+ 4fb4d7f45d1cf-628f29d68ecso8269650a12.3
+ for <qemu-arm@nongnu.org>; Sun, 28 Sep 2025 16:36:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1759102541; x=1759707341; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1759102565; x=1759707365; darn=nongnu.org;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=DeK6BRgSn8A2iZ5HxE/X3LsVMXWmkjHuQcLSvM2jQ8w=;
- b=GtJbu729MSCd/qcdqAB3Mj1ufZyjxFDdcEDfFciNo1Ny1e9CFf2qW1KrAjNvlzqNe8
- we8W+FlNLM5z164q/p2oDxa6Z/20O3Xl2RIoLNQ7NtMphCbrYoY/4FTOwcdwbZwutSp/
- VvBs2HOC1MyIFp3nVQpXMz2zmPjrWc4WxbkUbyhB1gZaGOyrykHpOwCNQyP17242aZGj
- w6aH+4+9HuBnYOUpBZY5Vroy1ZU86/HUj+slqR91htevRmlmI8/Y2XjfHajvFjJLiWRR
- ENrwelHVi4DbxjXHUA7bkwGQitjJQmM0AdNtLTMq0pR7S+Huw9GbNqUQ3RIlKWTAoude
- hLZQ==
+ bh=HD2+rEol+zuesGa48FK5nOsi28dpTeYz0uRTWXah58A=;
+ b=J8jgtEMdwJbFpyOsL/4tClnR3/G+oYKk7sGtuabTJMa/y5FzfJD6pPjvgaD2mVPx4p
+ jpiQwwhD4CMTUJ2umuEQsdEXnKGnMRt9fm04Q0rnfmPrmdVEv6WcuKDiDvbDKFoDN6dZ
+ 99M9Z1ZwMPwKanoBphaXrhjdKt4Hu42COmXRPVuzdtmsYNPnoRxcry4BNTYJDutR+XFA
+ DfZw+OQB7DjKxKafYiUNQrlph52LV/hvmazK8j0vGmSMXDoxf8Xep9rrP0Pmu3SDiG6O
+ EkvCstaaNsuOu0ZKRqwTN+J1L/8q0LiGKzXD2Uch6T2cP0WhndwoC2lR0vO3dCLJptOi
+ dQTA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759102541; x=1759707341;
+ d=1e100.net; s=20230601; t=1759102565; x=1759707365;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=DeK6BRgSn8A2iZ5HxE/X3LsVMXWmkjHuQcLSvM2jQ8w=;
- b=mR4gJJCNTBSDHQAIUSPRQHdY8EDyL68WTi2itVxekrGnqVE7WSmY9veVzacrK/SeUT
- NH3Bj/7IbCdjcFrsAyWWvEsHBSAnGJF66dkQ8slw0lMwDTwtZ/e45vyzib9G0sWSodc0
- iCku846RjLk8Hq+RdA0juibrmPvYt5DroZRnY3BdTlSfRH2vK8lswCdRp9ZJYfkdMxvP
- XD50NdPNufeYREBA4Lwa6hNCBxgPOKDN2r3Z97LNlduPhR2McZIgBm+rihrOw5DWpeP9
- qgs4Yij3LWPlqW6qNVAUo3KH+BS/7aTo57Xx9RViJaVzy7v+j3SfGXERXb8kfTVogTrb
- LRWg==
+ bh=HD2+rEol+zuesGa48FK5nOsi28dpTeYz0uRTWXah58A=;
+ b=EeqwDpJyZSv9gGmHekezh3cPtCr0wrDG9I1sY4lROqSbQDaGhdrwH1LqsV87ar0O+W
+ zYtBnPw0z/vEiSuRbPTI0VKUjJ0PUdVpJo46aLNMYjE9ZtHXvUKfARTuZzI4QC2oA0hD
+ Ciqn5KetDWegXqt/kW7oDUTtrLIfLXQTYsN8wLIQvXECriF+jHATIwthve9ZH7zZRB6O
+ UFEkJV+/OmSTiMTuoGnZ31jSxgCqsLB66kpTEBreU+TIC7Q2f/8MDEPITqPDyjappLE3
+ +OIKNNCSAhywAnwVOPG9/Upv0+vkkAwCViJL4tiJtxr27QmYfOVGQdLbwnkyVCXa36vR
+ tDoA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXE69nlGmTv9Y+W2fGlkm3CFgs8ALJ7YBG6RQAvwSOeDKKhkSd2w5wSZJATUaI/Af8FltUBbnFzaw==@nongnu.org
-X-Gm-Message-State: AOJu0YxDTENcQ76I0PkrKmHByb+VxHmpL01InT4RUVZlYd0pln+tX05d
- yf1izmv+vPkBHofGGs5AhxfV4vXw5yAGE8JeikVHdyw52ZD9A5+3UG7z/6e1J3yVQR9VGskQgIn
- 5mPQeUc8M9hkP4hr9gBwfTUrv5ryiqPU=
-X-Gm-Gg: ASbGnct9QRVspfaS24lm0v5Cy+3ZHj4LHA5lu4Zr2jU3VGCoV0Y6/kgG7WU5jwbKHHS
- aDI8T1IY5zfR9Ed4csn5SMT4FfLNUKf/jdvwlPAppTHbbNB71qX/nS1gB5jzIJTgdh7W6ub46z5
- YvcssIuf/FP9vkE0rVEPSFFD4PKc+iFXAB80v0MMm8m1iJDreJUsmqdD2XoFSqrwkdXems9lHlt
- 9BsCRxOIcZpNPTE+whHIYo2Lb1oYB6PWITu0D7ihcn+u3CLqzeA7BtNlEAJ50oG5qWJNhYDX37v
- YQ==
-X-Google-Smtp-Source: AGHT+IHFRZFlcP7qS2nBD2sFtPdCbea/x6ipReHPHmjUSZbg1s7v06SYHlBsJk4yt8qaQRk66EyI6O36WWwN0DAPIps=
-X-Received: by 2002:a17:907:9445:b0:b28:c29d:7b2d with SMTP id
- a640c23a62f3a-b34ba63990amr1588614066b.39.1759102540518; Sun, 28 Sep 2025
- 16:35:40 -0700 (PDT)
+ AJvYcCVwpLyry9Md1xpmzR5z0SXG3ZH65DWjm0gUDn2nJbpJ6DyuadonX/RkbNaBat9mSe/jPpnctoWZRA==@nongnu.org
+X-Gm-Message-State: AOJu0YxesSLblIfbSxLHjQPrQnUCVFTWYjzvfDB66hyY4Ll3ulErW0wc
+ goGUsGGj/LPqZPUPtr18DdcZTmeBubmMxF9FCe1zwaNkUggu/YIdpuQtx0j6aqfC4DrnEJvfzIk
+ aniLxlOlF0hw2JBp+cq6Oqp0V7DW8ssY=
+X-Gm-Gg: ASbGncugxNv4p0+DkoR5ul9ibNTujTYNK9iOhqG6a4FDX8qDMOOTCWiJXc3C/XG5N1R
+ M4W1gW+cOoefZqC87CNyniHK0q2H5cb8JuriMd5P6WR6FYN5ihvTSLCc5VM/2WwBnW0bF8R7H2g
+ tqCzbE6bKiSrL1IFLC11pckbpZGU62SE6YFza+BdQDQAfGTP6f5pI4MjKxkN+I0cEdoa9qT96y0
+ hXHQTa+SIdnmy7xazk8+tB+s1Rd+4Eg4xrcZA==
+X-Google-Smtp-Source: AGHT+IG8UmC1JtVGPuq3Q8HeKWf6Y11YOD0ghCL4E9Q2pPwtej86heMuMRvNkad3LwexQgQ79wF50vyjYW+7LQAZcmc=
+X-Received: by 2002:a17:906:f586:b0:b3d:d6be:4cbe with SMTP id
+ a640c23a62f3a-b3dd6be501fmr327735266b.18.1759102565288; Sun, 28 Sep 2025
+ 16:36:05 -0700 (PDT)
 MIME-Version: 1.0
 References: <20250917114450.175892-1-luc.michel@amd.com>
- <20250917114450.175892-4-luc.michel@amd.com>
-In-Reply-To: <20250917114450.175892-4-luc.michel@amd.com>
+ <20250917114450.175892-5-luc.michel@amd.com>
+In-Reply-To: <20250917114450.175892-5-luc.michel@amd.com>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 29 Sep 2025 09:35:13 +1000
-X-Gm-Features: AS18NWD9qdLZy4WkklxjlBnzs8txlZ5eMUt6ZSyuD6J9W28S7MhGkse-NJSxXi8
-Message-ID: <CAKmqyKOZ2BUYgxm+uR28rHnPMY=2msKui6vU2bPf9KyYoWg1fw@mail.gmail.com>
-Subject: Re: [PATCH 3/7] hw/core/register: remove the calls to
- `register_finalize_block'
+Date: Mon, 29 Sep 2025 09:35:38 +1000
+X-Gm-Features: AS18NWCd7M3pY-ULQbN3tNzSPRcE3-9A3kwkHeA_qnAcH8LlwzizUQDKmAdm8SQ
+Message-ID: <CAKmqyKMY3p=5RzeYRjF_twtE6p2yeahJPBoqcFW4ZHsVaRYZYg@mail.gmail.com>
+Subject: Re: [PATCH 4/7] hw/core/register: remove the `register_finalize_block'
+ function
 To: Luc Michel <luc.michel@amd.com>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
  Peter Maydell <peter.maydell@linaro.org>,
@@ -80,8 +79,8 @@ Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  Alistair Francis <alistair@alistair23.me>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::52f;
- envelope-from=alistair23@gmail.com; helo=mail-ed1-x52f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::529;
+ envelope-from=alistair23@gmail.com; helo=mail-ed1-x529.google.com
 X-Spam_score_int: -17
 X-Spam_score: -1.8
 X-Spam_bar: -
@@ -89,7 +88,7 @@ X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -105,14 +104,10 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Wed, Sep 17, 2025 at 9:49=E2=80=AFPM Luc Michel <luc.michel@amd.com> wro=
+On Wed, Sep 17, 2025 at 9:50=E2=80=AFPM Luc Michel <luc.michel@amd.com> wro=
 te:
 >
-> This function is now a no-op. The register array is parented to the
-> device and get finalized when the device is.
->
-> Drop all the calls to `register_finalize_block'. Drop the
-> RegisterInfoArray reference when it is not used elsewhere in the device.
+> This function is now unused. Drop it.
 >
 > Signed-off-by: Luc Michel <luc.michel@amd.com>
 
@@ -121,480 +116,59 @@ Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 Alistair
 
 > ---
->  include/hw/misc/xlnx-versal-crl.h      |  1 -
->  include/hw/misc/xlnx-versal-xramc.h    |  1 -
->  include/hw/misc/xlnx-zynqmp-apu-ctrl.h |  1 -
->  include/hw/misc/xlnx-zynqmp-crf.h      |  1 -
->  include/hw/nvram/xlnx-bbram.h          |  1 -
->  hw/misc/xlnx-versal-crl.c              | 38 +++++++++++---------------
->  hw/misc/xlnx-versal-trng.c             |  1 -
->  hw/misc/xlnx-versal-xramc.c            | 12 ++------
->  hw/misc/xlnx-zynqmp-apu-ctrl.c         | 12 ++------
->  hw/misc/xlnx-zynqmp-crf.c              | 12 ++------
->  hw/nvram/xlnx-bbram.c                  | 13 ++-------
->  hw/nvram/xlnx-versal-efuse-ctrl.c      |  1 -
->  hw/nvram/xlnx-zynqmp-efuse.c           |  8 ------
->  13 files changed, 28 insertions(+), 74 deletions(-)
+>  include/hw/register.h | 14 --------------
+>  hw/core/register.c    |  4 ----
+>  2 files changed, 18 deletions(-)
 >
-> diff --git a/include/hw/misc/xlnx-versal-crl.h b/include/hw/misc/xlnx-ver=
-sal-crl.h
-> index f6b8694ebea..49ed500acde 100644
-> --- a/include/hw/misc/xlnx-versal-crl.h
-> +++ b/include/hw/misc/xlnx-versal-crl.h
-> @@ -531,11 +531,10 @@ REG32(VERSAL2_RST_OCM, 0x3d8)
->  #define VERSAL2_CRL_R_MAX (R_VERSAL2_RST_OCM + 1)
+> diff --git a/include/hw/register.h b/include/hw/register.h
+> index 65c82600e06..7b0f4c8b7a6 100644
+> --- a/include/hw/register.h
+> +++ b/include/hw/register.h
+> @@ -207,20 +207,6 @@ RegisterInfoArray *register_init_block64(DeviceState=
+ *owner,
+>                                           uint64_t *data,
+>                                           const MemoryRegionOps *ops,
+>                                           bool debug_enabled,
+>                                           uint64_t memory_size);
 >
->  struct XlnxVersalCRLBase {
->      SysBusDevice parent_obj;
->
-> -    RegisterInfoArray *reg_array;
->      uint32_t *regs;
->  };
->
->  struct XlnxVersalCRLBaseClass {
->      SysBusDeviceClass parent_class;
-> diff --git a/include/hw/misc/xlnx-versal-xramc.h b/include/hw/misc/xlnx-v=
-ersal-xramc.h
-> index d3d1862676f..35e4e8b91dd 100644
-> --- a/include/hw/misc/xlnx-versal-xramc.h
-> +++ b/include/hw/misc/xlnx-versal-xramc.h
-> @@ -88,10 +88,9 @@ typedef struct XlnxXramCtrl {
->      struct {
->          uint64_t size;
->          unsigned int encoded_size;
->      } cfg;
->
-> -    RegisterInfoArray *reg_array;
->      uint32_t regs[XRAM_CTRL_R_MAX];
->      RegisterInfo regs_info[XRAM_CTRL_R_MAX];
->  } XlnxXramCtrl;
+> -/**
+> - * This function should be called to cleanup the registers that were ini=
+tialized
+> - * when calling register_init_block32(). This function should only be ca=
+lled
+> - * from the device's instance_finalize function.
+> - *
+> - * Any memory operations that the device performed that require cleanup =
+(such
+> - * as creating subregions) need to be called before calling this functio=
+n.
+> - *
+> - * @r_array: A structure containing all of the registers, as returned by
+> - *           register_init_block32()
+> - */
+> -
+> -void register_finalize_block(RegisterInfoArray *r_array);
+> -
 >  #endif
-> diff --git a/include/hw/misc/xlnx-zynqmp-apu-ctrl.h b/include/hw/misc/xln=
-x-zynqmp-apu-ctrl.h
-> index c3bf3c1583b..fbfe34aa7e5 100644
-> --- a/include/hw/misc/xlnx-zynqmp-apu-ctrl.h
-> +++ b/include/hw/misc/xlnx-zynqmp-apu-ctrl.h
-> @@ -83,11 +83,10 @@ struct XlnxZynqMPAPUCtrl {
->      qemu_irq irq_imr;
+> diff --git a/hw/core/register.c b/hw/core/register.c
+> index 4d1cce02a55..6cfcfcd2b14 100644
+> --- a/hw/core/register.c
+> +++ b/hw/core/register.c
+> @@ -321,14 +321,10 @@ static void register_array_finalize(Object *obj)
 >
->      uint8_t cpu_pwrdwn_req;
->      uint8_t cpu_in_wfi;
->
-> -    RegisterInfoArray *reg_array;
->      uint32_t regs[APU_R_MAX];
->      RegisterInfo regs_info[APU_R_MAX];
->  };
->
->  #endif
-> diff --git a/include/hw/misc/xlnx-zynqmp-crf.h b/include/hw/misc/xlnx-zyn=
-qmp-crf.h
-> index 02ef0bdeeee..c746ae10397 100644
-> --- a/include/hw/misc/xlnx-zynqmp-crf.h
-> +++ b/include/hw/misc/xlnx-zynqmp-crf.h
-> @@ -201,11 +201,10 @@ REG32(RST_DDR_SS, 0x108)
->  struct XlnxZynqMPCRF {
->      SysBusDevice parent_obj;
->      MemoryRegion iomem;
->      qemu_irq irq_ir;
->
-> -    RegisterInfoArray *reg_array;
->      uint32_t regs[CRF_R_MAX];
->      RegisterInfo regs_info[CRF_R_MAX];
->  };
->
->  #endif
-> diff --git a/include/hw/nvram/xlnx-bbram.h b/include/hw/nvram/xlnx-bbram.=
-h
-> index 58acbe9f51b..af90900bfc6 100644
-> --- a/include/hw/nvram/xlnx-bbram.h
-> +++ b/include/hw/nvram/xlnx-bbram.h
-> @@ -45,11 +45,10 @@ struct XlnxBBRam {
->
->      uint32_t crc_zpads;
->      bool bbram8_wo;
->      bool blk_ro;
->
-> -    RegisterInfoArray *reg_array;
->      uint32_t regs[RMAX_XLNX_BBRAM];
->      RegisterInfo regs_info[RMAX_XLNX_BBRAM];
->  };
->
->  #endif
-> diff --git a/hw/misc/xlnx-versal-crl.c b/hw/misc/xlnx-versal-crl.c
-> index 10e6af002ba..5987f32c716 100644
-> --- a/hw/misc/xlnx-versal-crl.c
-> +++ b/hw/misc/xlnx-versal-crl.c
-> @@ -632,21 +632,21 @@ static const MemoryRegionOps crl_ops =3D {
->  static void versal_crl_init(Object *obj)
->  {
->      XlnxVersalCRL *s =3D XLNX_VERSAL_CRL(obj);
->      XlnxVersalCRLBase *xvcb =3D XLNX_VERSAL_CRL_BASE(obj);
->      SysBusDevice *sbd =3D SYS_BUS_DEVICE(obj);
-> +    RegisterInfoArray *reg_array;
->      int i;
->
-> -    xvcb->reg_array =3D
-> -        register_init_block32(DEVICE(obj), crl_regs_info,
-> -                              ARRAY_SIZE(crl_regs_info),
-> -                              s->regs_info, s->regs,
-> -                              &crl_ops,
-> -                              XLNX_VERSAL_CRL_ERR_DEBUG,
-> -                              CRL_R_MAX * 4);
-> +    reg_array =3D register_init_block32(DEVICE(obj), crl_regs_info,
-> +                                      ARRAY_SIZE(crl_regs_info),
-> +                                      s->regs_info, s->regs,
-> +                                      &crl_ops,
-> +                                      XLNX_VERSAL_CRL_ERR_DEBUG,
-> +                                      CRL_R_MAX * 4);
->      xvcb->regs =3D s->regs;
-> -    sysbus_init_mmio(sbd, &xvcb->reg_array->mem);
-> +    sysbus_init_mmio(sbd, &reg_array->mem);
->      sysbus_init_irq(sbd, &s->irq);
->
->      for (i =3D 0; i < ARRAY_SIZE(s->cfg.rpu); ++i) {
->          object_property_add_link(obj, "rpu[*]", TYPE_ARM_CPU,
->                                   (Object **)&s->cfg.rpu[i],
-> @@ -686,21 +686,22 @@ static void versal_crl_init(Object *obj)
->  static void versal2_crl_init(Object *obj)
->  {
->      XlnxVersal2CRL *s =3D XLNX_VERSAL2_CRL(obj);
->      XlnxVersalCRLBase *xvcb =3D XLNX_VERSAL_CRL_BASE(obj);
->      SysBusDevice *sbd =3D SYS_BUS_DEVICE(obj);
-> +    RegisterInfoArray *reg_array;
->      size_t i;
->
-> -    xvcb->reg_array =3D register_init_block32(DEVICE(obj), versal2_crl_r=
-egs_info,
-> -                                            ARRAY_SIZE(versal2_crl_regs_=
-info),
-> -                                            s->regs_info, s->regs,
-> -                                            &crl_ops,
-> -                                            XLNX_VERSAL_CRL_ERR_DEBUG,
-> -                                            VERSAL2_CRL_R_MAX * 4);
-> +    reg_array =3D register_init_block32(DEVICE(obj), versal2_crl_regs_in=
-fo,
-> +                                      ARRAY_SIZE(versal2_crl_regs_info),
-> +                                      s->regs_info, s->regs,
-> +                                      &crl_ops,
-> +                                      XLNX_VERSAL_CRL_ERR_DEBUG,
-> +                                      VERSAL2_CRL_R_MAX * 4);
->      xvcb->regs =3D s->regs;
->
-> -    sysbus_init_mmio(sbd, &xvcb->reg_array->mem);
-> +    sysbus_init_mmio(sbd, &reg_array->mem);
->
->      for (i =3D 0; i < ARRAY_SIZE(s->cfg.rpu); ++i) {
->          object_property_add_link(obj, "rpu[*]", TYPE_ARM_CPU,
->                                   (Object **)&s->cfg.rpu[i],
->                                   qdev_prop_allow_set_link_before_realize=
-,
-> @@ -748,16 +749,10 @@ static void versal2_crl_init(Object *obj)
->                                   qdev_prop_allow_set_link_before_realize=
-,
->                                   OBJ_PROP_LINK_STRONG);
->      }
+>      object_unparent(OBJECT(&r_array->mem));
+>      g_free(r_array->r);
 >  }
 >
-> -static void crl_finalize(Object *obj)
+> -void register_finalize_block(RegisterInfoArray *r_array)
 > -{
-> -    XlnxVersalCRLBase *s =3D XLNX_VERSAL_CRL_BASE(obj);
-> -    register_finalize_block(s->reg_array);
 > -}
 > -
->  static const VMStateDescription vmstate_versal_crl =3D {
->      .name =3D TYPE_XLNX_VERSAL_CRL,
->      .version_id =3D 1,
->      .minimum_version_id =3D 1,
->      .fields =3D (const VMStateField[]) {
-> @@ -802,11 +797,10 @@ static void versal2_crl_class_init(ObjectClass *kla=
-ss, const void *data)
->  static const TypeInfo crl_base_info =3D {
->      .name          =3D TYPE_XLNX_VERSAL_CRL_BASE,
->      .parent        =3D TYPE_SYS_BUS_DEVICE,
->      .instance_size =3D sizeof(XlnxVersalCRLBase),
->      .class_size    =3D sizeof(XlnxVersalCRLBaseClass),
-> -    .instance_finalize =3D crl_finalize,
->      .abstract      =3D true,
->  };
->
->  static const TypeInfo versal_crl_info =3D {
->      .name          =3D TYPE_XLNX_VERSAL_CRL,
-> diff --git a/hw/misc/xlnx-versal-trng.c b/hw/misc/xlnx-versal-trng.c
-> index f34dd3ef352..2b573a45bdb 100644
-> --- a/hw/misc/xlnx-versal-trng.c
-> +++ b/hw/misc/xlnx-versal-trng.c
-> @@ -625,11 +625,10 @@ static void trng_init(Object *obj)
->
->  static void trng_finalize(Object *obj)
->  {
->      XlnxVersalTRng *s =3D XLNX_VERSAL_TRNG(obj);
->
-> -    register_finalize_block(s->reg_array);
->      g_rand_free(s->prng);
->      s->prng =3D NULL;
->  }
->
->  static void trng_reset_hold(Object *obj, ResetType type)
-> diff --git a/hw/misc/xlnx-versal-xramc.c b/hw/misc/xlnx-versal-xramc.c
-> index 07370b80c0d..d90f3e87c74 100644
-> --- a/hw/misc/xlnx-versal-xramc.c
-> +++ b/hw/misc/xlnx-versal-xramc.c
-> @@ -188,28 +188,23 @@ static void xram_ctrl_realize(DeviceState *dev, Err=
-or **errp)
->
->  static void xram_ctrl_init(Object *obj)
->  {
->      XlnxXramCtrl *s =3D XLNX_XRAM_CTRL(obj);
->      SysBusDevice *sbd =3D SYS_BUS_DEVICE(obj);
-> +    RegisterInfoArray *reg_array;
->
-> -    s->reg_array =3D
-> +    reg_array =3D
->          register_init_block32(DEVICE(obj), xram_ctrl_regs_info,
->                                ARRAY_SIZE(xram_ctrl_regs_info),
->                                s->regs_info, s->regs,
->                                &xram_ctrl_ops,
->                                XLNX_XRAM_CTRL_ERR_DEBUG,
->                                XRAM_CTRL_R_MAX * 4);
-> -    sysbus_init_mmio(sbd, &s->reg_array->mem);
-> +    sysbus_init_mmio(sbd, &reg_array->mem);
->      sysbus_init_irq(sbd, &s->irq);
->  }
->
-> -static void xram_ctrl_finalize(Object *obj)
-> -{
-> -    XlnxXramCtrl *s =3D XLNX_XRAM_CTRL(obj);
-> -    register_finalize_block(s->reg_array);
-> -}
-> -
->  static const VMStateDescription vmstate_xram_ctrl =3D {
->      .name =3D TYPE_XLNX_XRAM_CTRL,
->      .version_id =3D 1,
->      .minimum_version_id =3D 1,
->      .fields =3D (const VMStateField[]) {
-> @@ -239,11 +234,10 @@ static const TypeInfo xram_ctrl_info =3D {
->      .name              =3D TYPE_XLNX_XRAM_CTRL,
->      .parent            =3D TYPE_SYS_BUS_DEVICE,
->      .instance_size     =3D sizeof(XlnxXramCtrl),
->      .class_init        =3D xram_ctrl_class_init,
->      .instance_init     =3D xram_ctrl_init,
-> -    .instance_finalize =3D xram_ctrl_finalize,
->  };
->
->  static void xram_ctrl_register_types(void)
->  {
->      type_register_static(&xram_ctrl_info);
-> diff --git a/hw/misc/xlnx-zynqmp-apu-ctrl.c b/hw/misc/xlnx-zynqmp-apu-ctr=
-l.c
-> index e85da32d99c..08777496d56 100644
-> --- a/hw/misc/xlnx-zynqmp-apu-ctrl.c
-> +++ b/hw/misc/xlnx-zynqmp-apu-ctrl.c
-> @@ -177,20 +177,21 @@ static void zynqmp_apu_handle_wfi(void *opaque, int=
- irq, int level)
->  }
->
->  static void zynqmp_apu_init(Object *obj)
->  {
->      XlnxZynqMPAPUCtrl *s =3D XLNX_ZYNQMP_APU_CTRL(obj);
-> +    RegisterInfoArray *reg_array;
->      int i;
->
-> -    s->reg_array =3D
-> +    reg_array =3D
->          register_init_block32(DEVICE(obj), zynqmp_apu_regs_info,
->                                ARRAY_SIZE(zynqmp_apu_regs_info),
->                                s->regs_info, s->regs,
->                                &zynqmp_apu_ops,
->                                XILINX_ZYNQMP_APU_ERR_DEBUG,
->                                APU_R_MAX * 4);
-> -    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->reg_array->mem);
-> +    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &reg_array->mem);
->      sysbus_init_irq(SYS_BUS_DEVICE(obj), &s->irq_imr);
->
->      for (i =3D 0; i < APU_MAX_CPU; ++i) {
->          g_autofree gchar *prop_name =3D g_strdup_printf("cpu%d", i);
->          object_property_add_link(obj, prop_name, TYPE_ARM_CPU,
-> @@ -206,16 +207,10 @@ static void zynqmp_apu_init(Object *obj)
->                               "CPU_POWER_STATUS", 4);
->      /* wfi_in is used as input from CPUs as wfi request. */
->      qdev_init_gpio_in_named(DEVICE(obj), zynqmp_apu_handle_wfi, "wfi_in"=
-, 4);
->  }
->
-> -static void zynqmp_apu_finalize(Object *obj)
-> -{
-> -    XlnxZynqMPAPUCtrl *s =3D XLNX_ZYNQMP_APU_CTRL(obj);
-> -    register_finalize_block(s->reg_array);
-> -}
-> -
->  static const VMStateDescription vmstate_zynqmp_apu =3D {
->      .name =3D TYPE_XLNX_ZYNQMP_APU_CTRL,
->      .version_id =3D 1,
->      .minimum_version_id =3D 1,
->      .fields =3D (const VMStateField[]) {
-> @@ -239,11 +234,10 @@ static const TypeInfo zynqmp_apu_info =3D {
->      .name              =3D TYPE_XLNX_ZYNQMP_APU_CTRL,
->      .parent            =3D TYPE_SYS_BUS_DEVICE,
->      .instance_size     =3D sizeof(XlnxZynqMPAPUCtrl),
->      .class_init        =3D zynqmp_apu_class_init,
->      .instance_init     =3D zynqmp_apu_init,
-> -    .instance_finalize =3D zynqmp_apu_finalize,
->  };
->
->  static void zynqmp_apu_register_types(void)
->  {
->      type_register_static(&zynqmp_apu_info);
-> diff --git a/hw/misc/xlnx-zynqmp-crf.c b/hw/misc/xlnx-zynqmp-crf.c
-> index cccca0e814e..d9c1bd50e4f 100644
-> --- a/hw/misc/xlnx-zynqmp-crf.c
-> +++ b/hw/misc/xlnx-zynqmp-crf.c
-> @@ -209,28 +209,23 @@ static const MemoryRegionOps crf_ops =3D {
->
->  static void crf_init(Object *obj)
->  {
->      XlnxZynqMPCRF *s =3D XLNX_ZYNQMP_CRF(obj);
->      SysBusDevice *sbd =3D SYS_BUS_DEVICE(obj);
-> +    RegisterInfoArray *reg_array;
->
-> -    s->reg_array =3D
-> +    reg_array =3D
->          register_init_block32(DEVICE(obj), crf_regs_info,
->                                ARRAY_SIZE(crf_regs_info),
->                                s->regs_info, s->regs,
->                                &crf_ops,
->                                XLNX_ZYNQMP_CRF_ERR_DEBUG,
->                                CRF_R_MAX * 4);
-> -    sysbus_init_mmio(sbd, &s->reg_array->mem);
-> +    sysbus_init_mmio(sbd, &reg_array->mem);
->      sysbus_init_irq(sbd, &s->irq_ir);
->  }
->
-> -static void crf_finalize(Object *obj)
-> -{
-> -    XlnxZynqMPCRF *s =3D XLNX_ZYNQMP_CRF(obj);
-> -    register_finalize_block(s->reg_array);
-> -}
-> -
->  static const VMStateDescription vmstate_crf =3D {
->      .name =3D TYPE_XLNX_ZYNQMP_CRF,
->      .version_id =3D 1,
->      .minimum_version_id =3D 1,
->      .fields =3D (const VMStateField[]) {
-> @@ -253,11 +248,10 @@ static const TypeInfo crf_info =3D {
->      .name              =3D TYPE_XLNX_ZYNQMP_CRF,
->      .parent            =3D TYPE_SYS_BUS_DEVICE,
->      .instance_size     =3D sizeof(XlnxZynqMPCRF),
->      .class_init        =3D crf_class_init,
->      .instance_init     =3D crf_init,
-> -    .instance_finalize =3D crf_finalize,
->  };
->
->  static void crf_register_types(void)
->  {
->      type_register_static(&crf_info);
-> diff --git a/hw/nvram/xlnx-bbram.c b/hw/nvram/xlnx-bbram.c
-> index 5702bb3f310..22aefbc240d 100644
-> --- a/hw/nvram/xlnx-bbram.c
-> +++ b/hw/nvram/xlnx-bbram.c
-> @@ -454,30 +454,24 @@ static void bbram_ctrl_realize(DeviceState *dev, Er=
-ror **errp)
->
->  static void bbram_ctrl_init(Object *obj)
->  {
->      XlnxBBRam *s =3D XLNX_BBRAM(obj);
->      SysBusDevice *sbd =3D SYS_BUS_DEVICE(obj);
-> +    RegisterInfoArray *reg_array;
->
-> -    s->reg_array =3D
-> +    reg_array =3D
->          register_init_block32(DEVICE(obj), bbram_ctrl_regs_info,
->                                ARRAY_SIZE(bbram_ctrl_regs_info),
->                                s->regs_info, s->regs,
->                                &bbram_ctrl_ops,
->                                XLNX_BBRAM_ERR_DEBUG,
->                                R_MAX * 4);
->
-> -    sysbus_init_mmio(sbd, &s->reg_array->mem);
-> +    sysbus_init_mmio(sbd, &reg_array->mem);
->      sysbus_init_irq(sbd, &s->irq_bbram);
->  }
->
-> -static void bbram_ctrl_finalize(Object *obj)
-> -{
-> -    XlnxBBRam *s =3D XLNX_BBRAM(obj);
-> -
-> -    register_finalize_block(s->reg_array);
-> -}
-> -
->  static void bbram_prop_set_drive(Object *obj, Visitor *v, const char *na=
-me,
->                                   void *opaque, Error **errp)
->  {
->      DeviceState *dev =3D DEVICE(obj);
->
-> @@ -540,11 +534,10 @@ static const TypeInfo bbram_ctrl_info =3D {
->      .name          =3D TYPE_XLNX_BBRAM,
->      .parent        =3D TYPE_SYS_BUS_DEVICE,
->      .instance_size =3D sizeof(XlnxBBRam),
->      .class_init    =3D bbram_ctrl_class_init,
->      .instance_init =3D bbram_ctrl_init,
-> -    .instance_finalize =3D bbram_ctrl_finalize,
->  };
->
->  static void bbram_ctrl_register_types(void)
->  {
->      type_register_static(&bbram_ctrl_info);
-> diff --git a/hw/nvram/xlnx-versal-efuse-ctrl.c b/hw/nvram/xlnx-versal-efu=
-se-ctrl.c
-> index 90962198008..6f17f32a0c3 100644
-> --- a/hw/nvram/xlnx-versal-efuse-ctrl.c
-> +++ b/hw/nvram/xlnx-versal-efuse-ctrl.c
-> @@ -726,11 +726,10 @@ static void efuse_ctrl_init(Object *obj)
->
->  static void efuse_ctrl_finalize(Object *obj)
->  {
->      XlnxVersalEFuseCtrl *s =3D XLNX_VERSAL_EFUSE_CTRL(obj);
->
-> -    register_finalize_block(s->reg_array);
->      g_free(s->extra_pg0_lock_spec);
->  }
->
->  static const VMStateDescription vmstate_efuse_ctrl =3D {
->      .name =3D TYPE_XLNX_VERSAL_EFUSE_CTRL,
-> diff --git a/hw/nvram/xlnx-zynqmp-efuse.c b/hw/nvram/xlnx-zynqmp-efuse.c
-> index 5a218c32e84..ce35bb0cc1f 100644
-> --- a/hw/nvram/xlnx-zynqmp-efuse.c
-> +++ b/hw/nvram/xlnx-zynqmp-efuse.c
-> @@ -814,17 +814,10 @@ static void zynqmp_efuse_init(Object *obj)
->
->      sysbus_init_mmio(sbd, &s->reg_array->mem);
->      sysbus_init_irq(sbd, &s->irq);
->  }
->
-> -static void zynqmp_efuse_finalize(Object *obj)
-> -{
-> -    XlnxZynqMPEFuse *s =3D XLNX_ZYNQMP_EFUSE(obj);
-> -
-> -    register_finalize_block(s->reg_array);
-> -}
-> -
->  static const VMStateDescription vmstate_efuse =3D {
->      .name =3D TYPE_XLNX_ZYNQMP_EFUSE,
->      .version_id =3D 1,
->      .minimum_version_id =3D 1,
->      .fields =3D (const VMStateField[]) {
-> @@ -855,11 +848,10 @@ static const TypeInfo efuse_info =3D {
->      .name          =3D TYPE_XLNX_ZYNQMP_EFUSE,
->      .parent        =3D TYPE_SYS_BUS_DEVICE,
->      .instance_size =3D sizeof(XlnxZynqMPEFuse),
->      .class_init    =3D zynqmp_efuse_class_init,
->      .instance_init =3D zynqmp_efuse_init,
-> -    .instance_finalize =3D zynqmp_efuse_finalize,
->  };
->
->  static void efuse_register_types(void)
->  {
->      type_register_static(&efuse_info);
+>  static const TypeInfo register_array_info =3D {
+>      .name  =3D TYPE_REGISTER_ARRAY,
+>      .parent =3D TYPE_OBJECT,
+>      .instance_size =3D sizeof(RegisterInfoArray),
+>      .instance_finalize =3D register_array_finalize,
 > --
 > 2.50.1
 >

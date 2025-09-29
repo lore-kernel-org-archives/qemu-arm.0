@@ -4,55 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E66ACAC5B0
-	for <qemu-arm@archiver.kernel.org>; Mon, 29 Sep 2025 16:57:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B2F5CAC5B9
+	for <qemu-arm@archiver.kernel.org>; Mon, 29 Sep 2025 16:58:41 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v3H8r-0004a3-Nq; Mon, 29 Sep 2025 12:54:26 -0400
+	id 1v3H93-0005at-5C; Mon, 29 Sep 2025 12:54:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1v3H82-0003AS-P5
- for qemu-arm@nongnu.org; Mon, 29 Sep 2025 12:53:38 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1v3H88-0003Ff-DW
+ for qemu-arm@nongnu.org; Mon, 29 Sep 2025 12:53:40 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1v3H7w-0002sE-Ax
- for qemu-arm@nongnu.org; Mon, 29 Sep 2025 12:53:34 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1v3H85-0002uN-Mf
+ for qemu-arm@nongnu.org; Mon, 29 Sep 2025 12:53:39 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1759164806;
+ s=mimecast20190719; t=1759164815;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=tU65x/pMgXbaDsPgkCXEeRX4++z2QbVo+jvUR3wp6JU=;
- b=NbR8Umx8PB19QtDm6IB8Gc2hfPcrxbuO1cVfKtXVSC3ywV1Vsri1rnWJ954VtwfXmQ/n+D
- VOuh7O9P0bDpLu6mu+AXE8zAupop/GmXdVq2OdoBVK6yPccjpWn0B1gPVuAPpXnQlV8fTx
- 871nqqQk97u0nbN5474Zl5+xLmj4dwk=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=vU4xJwq/A8r2IJ6crVcvu5a9NPnmzpiJfSiXIWwJWmc=;
+ b=UsS3NZ7l6GtteFtJ090/nASsD3yWenPk4LG1uNhWsjYqOzsJQKPPQ3D/+3j5NQ02RSIuj+
+ YB5jcTZLw7ofkcpZVn+8X82Me5ze4NsDQqQCYA/5WwJd4dBJabxxTGfS4mGJ9aifSSxiC/
+ uQgvPj5Xzz8F7wf+q9vdrxXg3JIXNNM=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-611-gpoJQmRfNoSTj8CLKy6iRw-1; Mon,
- 29 Sep 2025 12:53:22 -0400
-X-MC-Unique: gpoJQmRfNoSTj8CLKy6iRw-1
-X-Mimecast-MFC-AGG-ID: gpoJQmRfNoSTj8CLKy6iRw_1759164801
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-577-bkOm6W0ePP-DsKiwv_ggSg-1; Mon,
+ 29 Sep 2025 12:53:31 -0400
+X-MC-Unique: bkOm6W0ePP-DsKiwv_ggSg-1
+X-Mimecast-MFC-AGG-ID: bkOm6W0ePP-DsKiwv_ggSg_1759164810
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 9B45D18004D8; Mon, 29 Sep 2025 16:53:21 +0000 (UTC)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 758B1195604F; Mon, 29 Sep 2025 16:53:30 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.32.27])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 020B81800577; Mon, 29 Sep 2025 16:53:19 +0000 (UTC)
+ id AA01D1800452; Mon, 29 Sep 2025 16:53:28 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 20/32] hw/arm/aspeed: Wire up PCIe devices in SoC model
-Date: Mon, 29 Sep 2025 18:52:18 +0200
-Message-ID: <20250929165230.797471-21-clg@redhat.com>
+Subject: [PULL 24/32] hw/pci-host/aspeed: Disable Root Device and place Root
+ Port at 00:00.0 to AST2700
+Date: Mon, 29 Sep 2025 18:52:22 +0200
+Message-ID: <20250929165230.797471-25-clg@redhat.com>
 In-Reply-To: <20250929165230.797471-1-clg@redhat.com>
 References: <20250929165230.797471-1-clg@redhat.com>
 MIME-Version: 1.0
@@ -86,68 +87,30 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-Add PCIe controller and PHY instances to the Aspeed SoC state and device
-enum. This prepares the SoC model to host PCIe Root Complexes and their
-associated PHYs.
-
-Although the AST2600 supports only a single Root Complex, the AST2700
-provides three Root Complexes. For this reason, the model defines arrays
-of three PCIe config/PHY objects and enumerates three PCIe device IDs so
-that both SoCs can be represented consistently.
+AST2700 does not implement a PCIe Root Device; each RC exposes a single
+PCIe Root Port at devfn 0:0.0.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20250919093017.338309-8-jamin_lin@aspeedtech.com
+Link: https://lore.kernel.org/qemu-devel/20250919093017.338309-12-jamin_lin@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- include/hw/arm/aspeed_soc.h | 13 +++++++++++++
- 1 file changed, 13 insertions(+)
+ hw/pci-host/aspeed_pcie.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
-index 217ef0eafd6c..79fe353f83b0 100644
---- a/include/hw/arm/aspeed_soc.h
-+++ b/include/hw/arm/aspeed_soc.h
-@@ -37,6 +37,7 @@
- #include "qom/object.h"
- #include "hw/misc/aspeed_lpc.h"
- #include "hw/misc/unimp.h"
-+#include "hw/pci-host/aspeed_pcie.h"
- #include "hw/misc/aspeed_peci.h"
- #include "hw/fsi/aspeed_apb2opb.h"
- #include "hw/char/serial-mm.h"
-@@ -49,6 +50,7 @@
- #define ASPEED_MACS_NUM  4
- #define ASPEED_UARTS_NUM 13
- #define ASPEED_JTAG_NUM  2
-+#define ASPEED_PCIE_NUM  3
+diff --git a/hw/pci-host/aspeed_pcie.c b/hw/pci-host/aspeed_pcie.c
+index a757fd7ec850..f7593444fc42 100644
+--- a/hw/pci-host/aspeed_pcie.c
++++ b/hw/pci-host/aspeed_pcie.c
+@@ -829,6 +829,8 @@ static void aspeed_2700_pcie_cfg_class_init(ObjectClass *klass,
+     apc->nr_regs = 0x100 >> 2;
+     apc->rc_msi_addr = 0x000000F0;
+     apc->rc_bus_nr = 0;
++    apc->rc_has_rd = false;
++    apc->rc_rp_addr = PCI_DEVFN(0, 0);
+ }
  
- struct AspeedSoCState {
-     DeviceState parent;
-@@ -87,6 +89,8 @@ struct AspeedSoCState {
-     AspeedSDHCIState sdhci;
-     AspeedSDHCIState emmc;
-     AspeedLPCState lpc;
-+    AspeedPCIECfgState pcie[ASPEED_PCIE_NUM];
-+    AspeedPCIEPhyState pcie_phy[ASPEED_PCIE_NUM];
-     AspeedPECIState peci;
-     SerialMM uart[ASPEED_UARTS_NUM];
-     Clock *sysclk;
-@@ -254,6 +258,15 @@ enum {
-     ASPEED_DEV_LPC,
-     ASPEED_DEV_IBT,
-     ASPEED_DEV_I2C,
-+    ASPEED_DEV_PCIE0,
-+    ASPEED_DEV_PCIE1,
-+    ASPEED_DEV_PCIE2,
-+    ASPEED_DEV_PCIE_PHY0,
-+    ASPEED_DEV_PCIE_PHY1,
-+    ASPEED_DEV_PCIE_PHY2,
-+    ASPEED_DEV_PCIE_MMIO0,
-+    ASPEED_DEV_PCIE_MMIO1,
-+    ASPEED_DEV_PCIE_MMIO2,
-     ASPEED_DEV_PECI,
-     ASPEED_DEV_ETH1,
-     ASPEED_DEV_ETH2,
+ static const TypeInfo aspeed_2700_pcie_cfg_info = {
 -- 
 2.51.0
 

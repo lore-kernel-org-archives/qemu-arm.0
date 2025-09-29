@@ -4,155 +4,148 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7E1FCAC5B0
-	for <qemu-arm@archiver.kernel.org>; Mon, 29 Sep 2025 20:59:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA03CCAC5BD
+	for <qemu-arm@archiver.kernel.org>; Mon, 29 Sep 2025 21:54:38 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v3Kxl-0007vT-Fl; Mon, 29 Sep 2025 16:59:14 -0400
+	id 1v3Lop-0004JJ-2n; Mon, 29 Sep 2025 17:54:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1v3Kxe-0007uQ-Kw
- for qemu-arm@nongnu.org; Mon, 29 Sep 2025 16:59:07 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
+ id 1v3Lon-0004J2-I4; Mon, 29 Sep 2025 17:54:01 -0400
+Received: from mail-northcentralusazlp170100001.outbound.protection.outlook.com
+ ([2a01:111:f403:c105::1] helo=CH1PR05CU001.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1v3KxR-0000vf-Qa
- for qemu-arm@nongnu.org; Mon, 29 Sep 2025 16:59:05 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1759179528;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=qGlYEFRv8xDNhpiiWlWf8YqSTaYSiFOP+ymflG4dl6g=;
- b=YtpjqGFK09goaTDTuT1z2mEcpt5i4E1O5W0/gKkmZ1mjSAYFmGk3ovZFzhok2cmwjJXkkX
- nEFphMdKWvj2piPJmgoOCBQX+pnNN0s60C0WEc6PRbnFtNib8OoVdz/tTIIJE0RJP3dMgc
- cnmyfM1ZnH17c/vn/y+ZeUFaGNi/nCQ=
-Received: from mail-qk1-f198.google.com (mail-qk1-f198.google.com
- [209.85.222.198]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-500-sjEY0phYMIiIdri1ikXwlQ-1; Mon, 29 Sep 2025 16:58:46 -0400
-X-MC-Unique: sjEY0phYMIiIdri1ikXwlQ-1
-X-Mimecast-MFC-AGG-ID: sjEY0phYMIiIdri1ikXwlQ_1759179526
-Received: by mail-qk1-f198.google.com with SMTP id
- af79cd13be357-863cd58a92dso717380085a.1
- for <qemu-arm@nongnu.org>; Mon, 29 Sep 2025 13:58:46 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759179526; x=1759784326;
- h=in-reply-to:content-transfer-encoding:content-disposition
- :mime-version:references:message-id:subject:cc:to:from:date
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=qGlYEFRv8xDNhpiiWlWf8YqSTaYSiFOP+ymflG4dl6g=;
- b=GyG9+VrUuj0EE1WYHKIS/H24O2UOEVFjxQY7Z1KJTE/1jMQCAQK/dC882dSfjg1h6E
- Ui41Y5XsD0m27Z4ay/paIIRvQe9zEP3kzzFO4YlRud0fvyvFfO9FWwFwIEwda+aFRMDk
- Vv5WmYWSYSZKzOMkQwcKurkrC5Lw5he85OiNA3sXCXHPa9QFvD2gUDnARJkR52vVXYZp
- QEtJdvUg9wGuU12vTBhrZZCzMmkCJhrav1xvJuuVBJYdzsl4gjvsiMy7z+QZowitNqgJ
- lDokMYHHEavNSTXJgIMxplT84BPy2Ahuc5Y+u5f1rnk0QFFWrkOHFtPAApvvdz5v4YvU
- yW6w==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUROUH2ZzdH6DcJikxAqEoSiFMBUJ/K0CrMrx/azVoSJdzF6+zeMYY/fgG3tYkpL7AVQRrTg5sZYQ==@nongnu.org
-X-Gm-Message-State: AOJu0YyLwvFzzG5zsJR1z8oiRhi+hhvUzXc9YWxImU0UDynQniSXf6ss
- b5TChknnkwEYjBbg4EAFQCRMn9891RUmMeRUzmiQnhvlBlcN37FDDOIOt+iSOAK/d+QEt8Y7n3a
- T1O19vs9YGHQK6HF8ZP65zR+szpv6192ojC2q3c34We2FSWQH95KHzQ==
-X-Gm-Gg: ASbGnctrZPXNYu3/Th/4qnLCwQtVwAgfCDCGK7kz72ScamqU5SStoz2QIXfaDYjgJko
- RZ9SkOFwKctFVoWwUu7JtDV4bJPwnHYKKyytzp0u/zLbeKwwL29wwVz1tWzV+rEHHAQ5l9I4gCw
- ddVioLu7hVYSYwqsnchDgdap9s9AQdTO5j8XGkx1XvtdHoksqNktbDhPmd21PFi1ArDtJCvAn0s
- b1UtbVY0HUxnLVmtexIOxKHhNqJyW4skMX/QbBKeL+hVWv6lYGfL1RwLhi5hvaWzaL7e29u4b4N
- otowIEHcb1LXPtpQoJpQHn7I9a56pMd6
-X-Received: by 2002:a05:620a:a00d:b0:85c:3bcf:e843 with SMTP id
- af79cd13be357-85c3bcfeaa1mr2112608485a.43.1759179526125; 
- Mon, 29 Sep 2025 13:58:46 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEDVAfO10gZpyYJ8dwCVcOEIU84P0ACyRABeDGvxvxzPh4CJm5bPu8NN+2BKbE3WeVcAszc+g==
-X-Received: by 2002:a05:620a:a00d:b0:85c:3bcf:e843 with SMTP id
- af79cd13be357-85c3bcfeaa1mr2112601685a.43.1759179525509; 
- Mon, 29 Sep 2025 13:58:45 -0700 (PDT)
-Received: from x1.local ([142.188.210.50]) by smtp.gmail.com with ESMTPSA id
- af79cd13be357-85c2a1913d5sm893653985a.31.2025.09.29.13.58.41
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 29 Sep 2025 13:58:45 -0700 (PDT)
-Date: Mon, 29 Sep 2025 16:58:41 -0400
-From: Peter Xu <peterx@redhat.com>
-To: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>,
- =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@redhat.com>
-Cc: =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@redhat.com>, qemu-devel@nongnu.org,
- Richard Henderson <richard.henderson@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
- Steven Lee <steven_lee@aspeedtech.com>,
- Troy Lee <leetroy@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>,
- Joel Stanley <joel@jms.id.au>, Eric Auger <eric.auger@redhat.com>,
- Helge Deller <deller@gmx.de>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- =?utf-8?B?SGVydsOp?= Poussineau <hpoussin@reactos.org>,
- Aleksandar Rikalo <arikalo@gmail.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Alistair Francis <alistair@alistair23.me>,
- Ninad Palsule <ninad@linux.ibm.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Eduardo Habkost <eduardo@habkost.net>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Jason Wang <jasowang@redhat.com>, Yi Liu <yi.l.liu@intel.com>,
- =?utf-8?Q?Cl=C3=A9ment?= Mathieu--Drif <clement.mathieu--drif@eviden.com>,
- Nicholas Piggin <npiggin@gmail.com>, Aditya Gupta <adityag@linux.ibm.com>,
- Gautam Menghani <gautam@linux.ibm.com>,
- Song Gao <gaosong@loongson.cn>, Bibo Mao <maobibo@loongson.cn>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Jonathan Cameron <jonathan.cameron@huawei.com>,
- Fan Ni <fan.ni@samsung.com>, David Hildenbrand <david@redhat.com>,
- Igor Mammedov <imammedo@redhat.com>,
- Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
- Beniamino Galvani <b.galvani@gmail.com>,
- Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
- Subbaraya Sundeep <sundeep.lkml@gmail.com>,
- Jan Kiszka <jan.kiszka@web.de>, Laurent Vivier <laurent@vivier.eu>,
- Andrey Smirnov <andrew.smirnov@gmail.com>,
- Aurelien Jarno <aurelien@aurel32.net>, BALATON Zoltan <balaton@eik.bme.hu>,
- Bernhard Beschow <shentey@gmail.com>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>,
- Elena Ufimtseva <elena.ufimtseva@oracle.com>,
- Jagannathan Raman <jag.raman@oracle.com>,
- Palmer Dabbelt <palmer@dabbelt.com>, Weiwei Li <liwei1518@gmail.com>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Matthew Rosato <mjrosato@linux.ibm.com>,
- Eric Farman <farman@linux.ibm.com>, Thomas Huth <thuth@redhat.com>,
- Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- Ilya Leoshkevich <iii@linux.ibm.com>, Fam Zheng <fam@euphon.net>,
- Bin Meng <bmeng.cn@gmail.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Artyom Tarasenko <atar4qemu@gmail.com>,
- Marcelo Tosatti <mtosatti@redhat.com>,
- Max Filippov <jcmvbkbc@gmail.com>, qemu-arm@nongnu.org,
- qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, qemu-s390x@nongnu.org,
- qemu-block@nongnu.org, kvm@vger.kernel.org,
- Alex Williamson <alex.williamson@redhat.com>,
- Stefano Garzarella <sgarzare@redhat.com>,
- Alistair Francis <alistair.francis@wdc.com>
-Subject: Re: [PATCH 00/35] memory: QOM-ify AddressSpace
-Message-ID: <aNrzASvJCP_axv22@x1.local>
-References: <20250917-qom-v1-0-7262db7b0a84@rsg.ci.i.u-tokyo.ac.jp>
- <a06a989d-b685-4e62-be06-d96fb91ed6ea@redhat.com>
- <61e4c2bb-d8fa-446a-b4ec-027d4eae35b5@rsg.ci.i.u-tokyo.ac.jp>
+ (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
+ id 1v3Loi-00033Z-4J; Mon, 29 Sep 2025 17:54:01 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=W5i+VqWbxjae6B+pR/VvxP8oAWXoClgqFiWs4LkJ+Uuhz+geuJVNJR7Cz+EWAZIUmSmz4nm2BHqFHICp6RADYPFWAx8hG4BPY+iUWiVkUhwabh0YcNikuxDASpASESn8X4LEuo4Y9xMVIBsDn1Y/h8Vj1nXSh6oXxiuPX8970ZTWQQJsIhUEJhDVu1e2AM7dTPJvrQa0KiwYAIBbR/B4cCYCgLaRlxTJtWTpUwjvoaj+dp4mwQJUEjlc1CzKV5wpnIZvUf0VI5QckmFqT/oimPJSWTKP+7rEKUYyuJ9dBvAjcEe4I+KJSpVeVTcpe+KG75KUaZ9j4LQ0IzloqDdCdw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=1Clv/9u+5YNB68pMxyZwvHidhVmCEiHixRTJmxBBa2Q=;
+ b=xAz/ffcIx7uy/HbiICXIxwdg3YWRmoDg6EYeKaUcj4Dlvn7Mb98ELSTVgAAyCtEeuC5FgryxycoJE0zGmRgGkKOFxZP7kShwPVb6ml7ua9m7Tt6a3SIAUYhPybNipkobbHTMN7KYx5WjPQmcUSZBriufP/EKJ/i8l5m2T+ZNVJKEoXSQksEe3V0knxg7JStugXCNZtKeEUujJz167bagwarDShbqSshbQEGAoZIdYiLSrO+uOLGg+Q9KU4TtrmgGGdcI7a/elBrPlzB9723o6A6Q61C76E8eU2s9NMktZBE/CFia5IFWnfCd4GT8fkVAZ/5MvYeLey3Dy58mBXNpzw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 216.228.117.160) smtp.rcpttodomain=intel.com smtp.mailfrom=nvidia.com;
+ dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
+ dkim=none (message not signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=1Clv/9u+5YNB68pMxyZwvHidhVmCEiHixRTJmxBBa2Q=;
+ b=t1msZidPuAEhDc2ComI3EArVGKukiOL1N3fNN3AQQ8qXCZQVInIvNa6i0NPQLNqkgivwvOCm5VrFvUmJMYhr7qrU4AwNaRLR1yZFz9T4sJi+7+QNO+zGlmG+g9g8RWAur8ji5y/ldDuX1sFp8aj9QoP8Nopi/cJa5pO35sFVTMn9LCCWyq/sfL2w9MemhfmbWE6E6y5s/hSP/3V0QR/6bvo5/FepMFaJl8YenfB0WzNNZi6ieQ5Qhw5E3Cow5gpQZyR6VYSfhSspkZSUn11L6zwcxiRehC7yR6prj+NKMW8k5iF4rafvI4s13pudNdTIXbyi+ICDA1VDBf/yDRv+Mw==
+Received: from BL1PR13CA0190.namprd13.prod.outlook.com (2603:10b6:208:2be::15)
+ by PH7PR12MB6489.namprd12.prod.outlook.com (2603:10b6:510:1f7::21)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9137.13; Mon, 29 Sep
+ 2025 21:53:45 +0000
+Received: from BL6PEPF0001AB76.namprd02.prod.outlook.com
+ (2603:10b6:208:2be:cafe::41) by BL1PR13CA0190.outlook.office365.com
+ (2603:10b6:208:2be::15) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.9182.13 via Frontend Transport; Mon,
+ 29 Sep 2025 21:53:09 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.160)
+ smtp.mailfrom=nvidia.com;
+ dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=nvidia.com;
+Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
+ 216.228.117.160 as permitted sender) receiver=protection.outlook.com;
+ client-ip=216.228.117.160; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (216.228.117.160) by
+ BL6PEPF0001AB76.mail.protection.outlook.com (10.167.242.169) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.9160.9 via Frontend Transport; Mon, 29 Sep 2025 21:53:45 +0000
+Received: from rnnvmail203.nvidia.com (10.129.68.9) by mail.nvidia.com
+ (10.129.200.66) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.34; Mon, 29 Sep
+ 2025 14:53:28 -0700
+Received: from rnnvmail204.nvidia.com (10.129.68.6) by rnnvmail203.nvidia.com
+ (10.129.68.9) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20; Mon, 29 Sep
+ 2025 14:53:27 -0700
+Received: from Asurada-Nvidia (10.127.8.9) by mail.nvidia.com (10.129.68.6)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20 via Frontend
+ Transport; Mon, 29 Sep 2025 14:53:26 -0700
+Date: Mon, 29 Sep 2025 14:53:25 -0700
+To: Shameer Kolothum <skolothumtho@nvidia.com>
+CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, <eric.auger@redhat.com>,
+ <peter.maydell@linaro.org>, <jgg@nvidia.com>, <ddutile@redhat.com>,
+ <berrange@redhat.com>, <nathanc@nvidia.com>, <mochs@nvidia.com>,
+ <smostafa@google.com>, <wangzhou1@hisilicon.com>, <jiangkunkun@huawei.com>,
+ <jonathan.cameron@huawei.com>, <zhangfei.gao@linaro.org>,
+ <zhenzhong.duan@intel.com>, <yi.l.liu@intel.com>, <shameerkolothum@gmail.com>
+Subject: Re: [PATCH v4 04/27] hw/arm/smmu-common:Make iommu ops part of
+ SMMUState
+Message-ID: <aNr/1fxA8pqGs7B0@Asurada-Nvidia>
+References: <20250929133643.38961-1-skolothumtho@nvidia.com>
+ <20250929133643.38961-5-skolothumtho@nvidia.com>
 MIME-Version: 1.0
-In-Reply-To: <61e4c2bb-d8fa-446a-b4ec-027d4eae35b5@rsg.ci.i.u-tokyo.ac.jp>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: zj_U7L8oam_4LW_jSTqcPdmcNihdcnGz18UmebGcPHU_1759179526
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset="iso-8859-1"
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=peterx@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -25
-X-Spam_score: -2.6
-X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.513,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_PASS=-0.001,
- T_SPF_HELO_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
+In-Reply-To: <20250929133643.38961-5-skolothumtho@nvidia.com>
+X-NV-OnPremToCloud: ExternallySecured
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: BL6PEPF0001AB76:EE_|PH7PR12MB6489:EE_
+X-MS-Office365-Filtering-Correlation-Id: b1782880-f1cd-43fe-85e4-08ddffa2a9a5
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|82310400026|36860700013|7416014|376014|1800799024; 
+X-Microsoft-Antispam-Message-Info: =?iso-8859-1?Q?50QJOE16V0L2n+sitSrNKjMw0IYu1lU1eQtVdkIJFQnLFXnIcCmhgpO+9Z?=
+ =?iso-8859-1?Q?3VW5gPesoXl3ch8jsSN/K6bjuUqGFFsALdzYknSjHUq9MTBzRmeqDkUfDm?=
+ =?iso-8859-1?Q?rbPiktaIr+Ssa3z4WOep4sIhGwk4JuE8szGJZOOCeAdDXcCOrk3f7tt5Hw?=
+ =?iso-8859-1?Q?F7wBZDkUdRmwgv+fxA5o+Cp3XBEW+cSqTpGxrJvGhLNOxUYKfIAGxYHJEi?=
+ =?iso-8859-1?Q?RU9f3AptCZJ8LISdAeUVb70u/apcmjiFmxsqJMzMZwloHkgrAs7rtPoJll?=
+ =?iso-8859-1?Q?oOtAzDeLIwvSzkity5su7DgEgaW9rhPbdwRN5H4KAkB1gT9UMUtyAenvni?=
+ =?iso-8859-1?Q?fcNxKPI24JlFLpsj+kYf/UJWi1htxqaKn7uoj/Cuzk1LoiM4/BRCgndNGk?=
+ =?iso-8859-1?Q?ztQ76nEAu1iFf4DnFsYi8Un5G0PmNUOBJw+2nMpWVvSl4LCEglX7o5IKnm?=
+ =?iso-8859-1?Q?MrLjlcEiQ0/FNbkOvyGMN4slW1lef+QW6rsm0pwZMG/ThjO1X9Rin2dgh3?=
+ =?iso-8859-1?Q?oiC9fUubcyhIr9f/UoWnXMCk5v6hOei91s22ziC8dkdM0nuDV9sn1YskU9?=
+ =?iso-8859-1?Q?i4LOXnLC+JTfb+bhQfTkYOJpy/pfz1jb4dJi3DVTb1NU1RQDTYfJaDNElE?=
+ =?iso-8859-1?Q?Oc3GfJYBivSQ7KEQytP6yA3GU4a+r/PAV91kE0CMAqaVeHtstF7Thffgqk?=
+ =?iso-8859-1?Q?h8dM1Jgs8pvTUX/6+jcDldFI9/2xuCzyvyVagekqN+V6dxwJAc9/bIrsXO?=
+ =?iso-8859-1?Q?9z/WWaAxFgr0BgV/Nu035VhcCBo3KARgqCWjRKsPOPjHGsPqYGV7KueUr1?=
+ =?iso-8859-1?Q?BPyLDIAsnGxW1oEx52Gu1EmXARzxIMgyhNEq+TlS05QZvF3kzQTn5mVPf9?=
+ =?iso-8859-1?Q?+GGJismzoGOjoPj334VUvlVXmOCTAzIX+1P3WcLBzVThhF6blaCe2Quegp?=
+ =?iso-8859-1?Q?iI90OqFah1KwkWdttUOes/U9EW6DjKk8MEpA87wXJJGod+V6CkdZUheRLF?=
+ =?iso-8859-1?Q?NVAmj6VVMc1/RwXhFdVfdmcqxgwORKw2zS4HuiCrnh9QcbEm0uflzl9JYJ?=
+ =?iso-8859-1?Q?d6Nj6nqe10yK6SKtb2HLHEpyauYuM1t32PO2O/9biqkkXGEHSsM3Xn3MgG?=
+ =?iso-8859-1?Q?KB8Ymknv36gqQj876l4cuG3T5G7TvqQiExqV3iqOXzMkzYYI3XA21k7M0g?=
+ =?iso-8859-1?Q?wjrSNjXBwx7TvzTNrFH6X4aVl9dbIsb1yDQFNeSUhIb64EF5KNtgykVlLI?=
+ =?iso-8859-1?Q?Zm9JixjJh5a1YZTX3MLAb/6J6iKK5h5i+MpZSricS7IFyCmOciWIwqxCZ3?=
+ =?iso-8859-1?Q?EAenCARVT+AstDmESxq53RF6idI3APcchLUV5aLkOJdT1bh7UDZIGWLDZ7?=
+ =?iso-8859-1?Q?ahm102DFUk7sfpsVsBI4fOnWu8bTcueMuEaI5j7L5j7QfzCBTqOKfpopu1?=
+ =?iso-8859-1?Q?t9Gc1PS3/xsPi6gVNT+39wq9baqsVPzhRHWB49pWONVd5PCDDkK/ZQEMYI?=
+ =?iso-8859-1?Q?tB/SU44smLBqGMZf5k2bFg6QeVAIAnmsoX0ZlBlpy63IwjkZYF3sW7jxD+?=
+ =?iso-8859-1?Q?Iz2bXUdEezxw3a0V5grw9Nhqc5jwsXEZK0Pst2v5YBui0naNxi0s4G+rQR?=
+ =?iso-8859-1?Q?DuNySdIRkD9ck=3D?=
+X-Forefront-Antispam-Report: CIP:216.228.117.160; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge1.nvidia.com; CAT:NONE;
+ SFS:(13230040)(82310400026)(36860700013)(7416014)(376014)(1800799024); DIR:OUT;
+ SFP:1101; 
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 29 Sep 2025 21:53:45.0634 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: b1782880-f1cd-43fe-85e4-08ddffa2a9a5
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.160];
+ Helo=[mail.nvidia.com]
+X-MS-Exchange-CrossTenant-AuthSource: BL6PEPF0001AB76.namprd02.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH7PR12MB6489
+Received-SPF: permerror client-ip=2a01:111:f403:c105::1;
+ envelope-from=nicolinc@nvidia.com;
+ helo=CH1PR05CU001.outbound.protection.outlook.com
+X-Spam_score_int: -2
+X-Spam_score: -0.3
+X-Spam_bar: /
+X-Spam_report: (-0.3 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
+ DKIM_SIGNED=0.1, FORGED_SPF_HELO=1, KHOP_HELO_FCRDNS=0.4, SPF_HELO_PASS=-0.001,
+ SPF_NONE=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -165,55 +158,17 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Nicolin Chen <nicolinc@nvidia.com>
+From:  Nicolin Chen via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, Sep 18, 2025 at 09:47:07PM +0900, Akihiko Odaki wrote:
-> On 2025/09/18 21:39, CÃ©dric Le Goater wrote:
-> > Hello Akihiko,
-> > 
-> > On 9/17/25 14:56, Akihiko Odaki wrote:
-> > > Based-on: <20250917-subregion-v1-0-bef37d9b4f73@rsg.ci.i.u-tokyo.ac.jp>
-> > > ("[PATCH 00/14] Fix memory region use-after-finalization")
-> > > 
-> > > Make AddressSpaces QOM objects to ensure that they are destroyed when
-> > > their owners are finalized and also to get a unique path for debugging
-> > > output.
-> > > 
-> > > Suggested by BALATON Zoltan:
-> > > https://lore.kernel.org/qemu-devel/cd21698f-db77-eb75-6966-
-> > > d559fdcab835@eik.bme.hu/
-> > > 
-> > > Signed-off-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-> > 
-> > I wonder if this is going to fix an issue I was seeing a while ago
-> > in the FSI models. I couldn't find a clean way to avoid corrupting
-> > memory because of how the address_space was created and later on
-> > destroyed. See below,
+On Mon, Sep 29, 2025 at 02:36:20PM +0100, Shameer Kolothum wrote:
+> And set to the current default smmu_ops. No functional change intended.
+> This will allow SMMUv3 accel implementation to set a different iommu ops
+> later.
 > 
-> Partially, but this is insufficient.
-> 
-> The first problem is that AddressSpace suffers from circular references the
-> following series solves:
-> https://lore.kernel.org/qemu-devel/20250906-mr-v2-0-2820f5a3d282@rsg.ci.i.u-tokyo.ac.jp/
-> "[PATCH v2 0/3] memory: Stop piggybacking on memory region owners"
-> 
-> Another problem is that RCU is not properly waited. This is left to future
-> work.
+> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
 
-Just to mention, Peter Maydell just posted a series for fixing AS
-destructions here:
-
-https://lore.kernel.org/qemu-devel/20250929144228.1994037-1-peter.maydell@linaro.org/
-
-IIUC it should also work for FSI, if FSI can convert to use dynamically
-allocated AddressSpaces (with/without QOMify; as Akihiko pointed out
-correctly, these should be orthogonal), then provide a proper unrealize()
-of the bus device to invoke address_space_destroy_free().
-
-Thanks,
-
--- 
-Peter Xu
-
+Reviewed-by: Nicolin Chen <nicolinc@nvidia.com>
 

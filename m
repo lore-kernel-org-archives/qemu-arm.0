@@ -4,56 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6B61CAC5B0
-	for <qemu-arm@archiver.kernel.org>; Mon, 29 Sep 2025 16:54:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49BABCAC5B9
+	for <qemu-arm@archiver.kernel.org>; Mon, 29 Sep 2025 16:54:38 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v3H8R-0003mk-VT; Mon, 29 Sep 2025 12:54:04 -0400
+	id 1v3H8F-0003Zd-69; Mon, 29 Sep 2025 12:53:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1v3H7T-0002pq-1q
- for qemu-arm@nongnu.org; Mon, 29 Sep 2025 12:52:59 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1v3H7e-0002us-3a
+ for qemu-arm@nongnu.org; Mon, 29 Sep 2025 12:53:14 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1v3H7O-0002lD-0h
- for qemu-arm@nongnu.org; Mon, 29 Sep 2025 12:52:58 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1v3H7Y-0002nW-86
+ for qemu-arm@nongnu.org; Mon, 29 Sep 2025 12:53:09 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1759164771;
+ s=mimecast20190719; t=1759164782;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=ZhN+iR+ZF390fWQx/ABQD5ZU0M8Wt8Fgfqh6Toezzfg=;
- b=MmXosqgm4Q/6aSEWB4J0hkZZ7L4aAdiRPNaZ0YS0ryjSDeizHWKH20nM+3mrDje/oQnIXE
- 8sP+f/X9Z7D0Ih8Vx1blKShHwk3oGcacmHcANuQslugrBIooikMX6wf/zcYxrwD+eww26k
- U5LC1I8i4KJaXjpHfxzsdo9/oTJ2DHM=
+ bh=aqVOYhGw94Jf/OiJAawsJ2cAh/HpqFgHZnqY+6tx1CA=;
+ b=Mrbni4vZgRAmd4V7+fsm2geSF3qdHrTQGCLH5ATfi6x85y0RqCW3G0oC0tdB9Y/+Gy8sSA
+ kXvWlPC/L2/5t86wLGuN7vSqrAoke5bCtb1FXmIx2JrW2OSqtWOS1SHph2ZMDvsXfeLpSe
+ KgP/E+aDVKbZCm3KgZQKBubfJ4r0yAE=
 Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-77-3lzaumJ_PMaAlBusMqgq1A-1; Mon,
- 29 Sep 2025 12:52:49 -0400
-X-MC-Unique: 3lzaumJ_PMaAlBusMqgq1A-1
-X-Mimecast-MFC-AGG-ID: 3lzaumJ_PMaAlBusMqgq1A_1759164768
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-621-Uud92gsJNb6nHzOenO94-w-1; Mon,
+ 29 Sep 2025 12:52:58 -0400
+X-MC-Unique: Uud92gsJNb6nHzOenO94-w-1
+X-Mimecast-MFC-AGG-ID: Uud92gsJNb6nHzOenO94-w_1759164777
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 125A518005BE; Mon, 29 Sep 2025 16:52:46 +0000 (UTC)
+ id 9484C1800577; Mon, 29 Sep 2025 16:52:57 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.32.27])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id DDC081800577; Mon, 29 Sep 2025 16:52:42 +0000 (UTC)
+ id F08611800452; Mon, 29 Sep 2025 16:52:55 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Kane-Chen-AS <kane_chen@aspeedtech.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 04/32] hw/nvram/aspeed_otp: Add 'drive' property to support
- block backend
-Date: Mon, 29 Sep 2025 18:52:02 +0200
-Message-ID: <20250929165230.797471-5-clg@redhat.com>
+Subject: [PULL 09/32] docs/system/arm/aspeed: Document OTP memory options
+Date: Mon, 29 Sep 2025 18:52:07 +0200
+Message-ID: <20250929165230.797471-10-clg@redhat.com>
 In-Reply-To: <20250929165230.797471-1-clg@redhat.com>
 References: <20250929165230.797471-1-clg@redhat.com>
 MIME-Version: 1.0
@@ -87,66 +86,61 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Kane-Chen-AS <kane_chen@aspeedtech.com>
 
-This patch introduces a 'drive' property to the Aspeed OTP device,
-allowing it to be backed by a block device. Users can now preload
-OTP data via QEMU CLI using a block backend.
-
-Example usage:
-  ./qemu-system-arm \
-    -blockdev driver=file,filename=otpmem.img,node-name=otp \
-    -global aspeed-otp.drive=otp \
-    ...
-
-If the drive is provided, its content will be loaded as the initial OTP
-state. Otherwise, an internal memory buffer will be used.
+Add documentation for the OTP memory module used by AST2600 and AST1030
+SoCs, and describe options for using a pre-generated image or an
+internal buffer. Include example commands for configuration and image
+generation.
 
 Signed-off-by: Kane-Chen-AS <kane_chen@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20250812094011.2617526-5-kane_chen@aspeedtech.com
+Link: https://lore.kernel.org/qemu-devel/20250812094011.2617526-11-kane_chen@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- hw/nvram/aspeed_otp.c | 15 ++++++++++++++-
- 1 file changed, 14 insertions(+), 1 deletion(-)
+ docs/system/arm/aspeed.rst | 31 +++++++++++++++++++++++++++++++
+ 1 file changed, 31 insertions(+)
 
-diff --git a/hw/nvram/aspeed_otp.c b/hw/nvram/aspeed_otp.c
-index e5b7ca96767c..abb37318231b 100644
---- a/hw/nvram/aspeed_otp.c
-+++ b/hw/nvram/aspeed_otp.c
-@@ -35,13 +35,25 @@ static bool aspeed_otp_init_storage(AspeedOTPState *s, Error **errp)
- {
-     uint32_t *p;
-     int i, num;
-+    uint64_t perm;
+diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
+index bf18c5634700..6317c0e910a2 100644
+--- a/docs/system/arm/aspeed.rst
++++ b/docs/system/arm/aspeed.rst
+@@ -243,6 +243,37 @@ under Linux), use :
  
-+    if (s->blk) {
-+        perm = BLK_PERM_CONSISTENT_READ |
-+               (blk_supports_write_perm(s->blk) ? BLK_PERM_WRITE : 0);
-+        if (blk_set_perm(s->blk, perm, BLK_PERM_ALL, errp) < 0) {
-+            return false;
-+        }
-+        if (blk_pread(s->blk, 0, s->size, s->storage, 0) < 0) {
-+            error_setg(errp, "Failed to read the initial flash content");
-+            return false;
-+        }
-+    } else {
-         num = s->size / sizeof(uint32_t);
-         p = (uint32_t *)s->storage;
-         for (i = 0; i < num; i++) {
-             p[i] = (i % 2 == 0) ? 0x00000000 : 0xFFFFFFFF;
-         }
--
-+    }
-     return true;
- }
+   -M ast2500-evb,bmc-console=uart3
  
-@@ -75,6 +87,7 @@ static void aspeed_otp_realize(DeviceState *dev, Error **errp)
++OTP Option
++^^^^^^^^^^
++
++Both the AST2600 and AST1030 chips use the same One Time Programmable
++(OTP) memory module, which is utilized for configuration, key storage,
++and storing user-programmable data. This OTP memory module is managed
++by the Secure Boot Controller (SBC). The following options can be
++specified or omitted based on your needs.
++
++  * When the options are specified, the pre-generated configuration
++    file will be used as the OTP memory storage.
++
++  * When the options are omitted, an internal memory buffer will be
++    used to store the OTP memory data.
++
++.. code-block:: bash
++
++  -blockdev driver=file,filename=otpmem.img,node-name=otp \
++  -global aspeed-otp.drive=otp \
++
++The following bash command can be used to generate a default
++configuration file for OTP memory:
++
++.. code-block:: bash
++
++  if [ ! -f otpmem.img ]; then
++    for i in $(seq 1 2048); do
++      printf '\x00\x00\x00\x00\xff\xff\xff\xff'
++    done > otpmem.img
++  fi
++
+ Aspeed 2700 family boards (``ast2700-evb``)
+ ==================================================================
  
- static const Property aspeed_otp_properties[] = {
-     DEFINE_PROP_UINT64("size", AspeedOTPState, size, 0),
-+    DEFINE_PROP_DRIVE("drive", AspeedOTPState, blk),
- };
- 
- static void aspeed_otp_class_init(ObjectClass *klass, const void *data)
 -- 
 2.51.0
 

@@ -4,56 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B2F5CAC5B9
-	for <qemu-arm@archiver.kernel.org>; Mon, 29 Sep 2025 16:58:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08D07CAC5B0
+	for <qemu-arm@archiver.kernel.org>; Mon, 29 Sep 2025 16:58:42 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v3H93-0005at-5C; Mon, 29 Sep 2025 12:54:37 -0400
+	id 1v3H9B-0005xI-AT; Mon, 29 Sep 2025 12:54:45 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1v3H88-0003Ff-DW
- for qemu-arm@nongnu.org; Mon, 29 Sep 2025 12:53:40 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1v3H8V-0003pw-97
+ for qemu-arm@nongnu.org; Mon, 29 Sep 2025 12:54:05 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1v3H85-0002uN-Mf
- for qemu-arm@nongnu.org; Mon, 29 Sep 2025 12:53:39 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1v3H8K-0002xJ-1s
+ for qemu-arm@nongnu.org; Mon, 29 Sep 2025 12:54:02 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1759164815;
+ s=mimecast20190719; t=1759164828;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=vU4xJwq/A8r2IJ6crVcvu5a9NPnmzpiJfSiXIWwJWmc=;
- b=UsS3NZ7l6GtteFtJ090/nASsD3yWenPk4LG1uNhWsjYqOzsJQKPPQ3D/+3j5NQ02RSIuj+
- YB5jcTZLw7ofkcpZVn+8X82Me5ze4NsDQqQCYA/5WwJd4dBJabxxTGfS4mGJ9aifSSxiC/
- uQgvPj5Xzz8F7wf+q9vdrxXg3JIXNNM=
+ bh=IFV8yzChiwwaTru2ixwd6NCKrifkFsnekzGPSSMFVv8=;
+ b=RF99gDHEEB4TZIsAoX2x3l9fcuysLjLyIGMraDANNxP9Jd1uuQHu/ErcBRR8mn9q7QJWAK
+ Xdyq6k53MYufW+uanDmJ+FejAjGeC3X8N7Me2bnkbRGrDrIrP2ri5OrQ3e/kPNEU34nyUr
+ uRsJ2cMyK+f23HooWtqth9zQwmlWJJo=
 Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-577-bkOm6W0ePP-DsKiwv_ggSg-1; Mon,
- 29 Sep 2025 12:53:31 -0400
-X-MC-Unique: bkOm6W0ePP-DsKiwv_ggSg-1
-X-Mimecast-MFC-AGG-ID: bkOm6W0ePP-DsKiwv_ggSg_1759164810
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-197-2aAQz_MFMHqnGivpEkWmkA-1; Mon,
+ 29 Sep 2025 12:53:46 -0400
+X-MC-Unique: 2aAQz_MFMHqnGivpEkWmkA-1
+X-Mimecast-MFC-AGG-ID: 2aAQz_MFMHqnGivpEkWmkA_1759164825
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 758B1195604F; Mon, 29 Sep 2025 16:53:30 +0000 (UTC)
+ id C0D9E19560B5; Mon, 29 Sep 2025 16:53:45 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.32.27])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id AA01D1800452; Mon, 29 Sep 2025 16:53:28 +0000 (UTC)
+ id 277211800452; Mon, 29 Sep 2025 16:53:43 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 24/32] hw/pci-host/aspeed: Disable Root Device and place Root
- Port at 00:00.0 to AST2700
-Date: Mon, 29 Sep 2025 18:52:22 +0200
-Message-ID: <20250929165230.797471-25-clg@redhat.com>
+Subject: [PULL 31/32] hw/arm/aspeed_ast27x0-fc: Drop dead return checks
+Date: Mon, 29 Sep 2025 18:52:29 +0200
+Message-ID: <20250929165230.797471-32-clg@redhat.com>
 In-Reply-To: <20250929165230.797471-1-clg@redhat.com>
 References: <20250929165230.797471-1-clg@redhat.com>
 MIME-Version: 1.0
@@ -87,30 +86,99 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-AST2700 does not implement a PCIe Root Device; each RC exposes a single
-PCIe Root Port at devfn 0:0.0.
+1. object_property_set_link() can return false only when it fails, and it
+sets an error when it fails. Since passing &error_abort causes an abort,
+the function never returns false, and the return statement is effectively
+dead code.
+2. object_property_set_int() is considered as a routine which shouldn't fail.
+So the common practice in models is to pass &error_abort and ignore the returned value.
+https://patchwork.kernel.org/project/qemu-devel/patch/20250717034054.1903991-3-jamin_lin@aspeedtech.com/#26540626
+
+No functional change.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20250919093017.338309-12-jamin_lin@aspeedtech.com
+Link: https://lore.kernel.org/qemu-devel/20250925050535.2657256-6-jamin_lin@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- hw/pci-host/aspeed_pcie.c | 2 ++
- 1 file changed, 2 insertions(+)
+ hw/arm/aspeed_ast27x0-fc.c | 43 +++++++++++++-------------------------
+ 1 file changed, 14 insertions(+), 29 deletions(-)
 
-diff --git a/hw/pci-host/aspeed_pcie.c b/hw/pci-host/aspeed_pcie.c
-index a757fd7ec850..f7593444fc42 100644
---- a/hw/pci-host/aspeed_pcie.c
-+++ b/hw/pci-host/aspeed_pcie.c
-@@ -829,6 +829,8 @@ static void aspeed_2700_pcie_cfg_class_init(ObjectClass *klass,
-     apc->nr_regs = 0x100 >> 2;
-     apc->rc_msi_addr = 0x000000F0;
-     apc->rc_bus_nr = 0;
-+    apc->rc_has_rd = false;
-+    apc->rc_rp_addr = PCI_DEVFN(0, 0);
- }
+diff --git a/hw/arm/aspeed_ast27x0-fc.c b/hw/arm/aspeed_ast27x0-fc.c
+index 7087be4288bb..ebf3784df588 100644
+--- a/hw/arm/aspeed_ast27x0-fc.c
++++ b/hw/arm/aspeed_ast27x0-fc.c
+@@ -74,19 +74,12 @@ static void ast2700fc_ca35_init(MachineState *machine)
+                                 AST2700FC_BMC_RAM_SIZE, &error_abort)) {
+         return;
+     }
+-    if (!object_property_set_link(OBJECT(&s->ca35), "memory",
+-                                  OBJECT(&s->ca35_memory),
+-                                  &error_abort)) {
+-        return;
+-    };
+-    if (!object_property_set_link(OBJECT(&s->ca35), "dram",
+-                                  OBJECT(&s->ca35_dram), &error_abort)) {
+-        return;
+-    }
+-    if (!object_property_set_int(OBJECT(&s->ca35), "ram-size",
+-                                 AST2700FC_BMC_RAM_SIZE, &error_abort)) {
+-        return;
+-    }
++    object_property_set_link(OBJECT(&s->ca35), "memory",
++                             OBJECT(&s->ca35_memory), &error_abort);
++    object_property_set_link(OBJECT(&s->ca35), "dram", OBJECT(&s->ca35_dram),
++                             &error_abort);
++    object_property_set_int(OBJECT(&s->ca35), "ram-size",
++                            AST2700FC_BMC_RAM_SIZE, &error_abort);
  
- static const TypeInfo aspeed_2700_pcie_cfg_info = {
+     for (int i = 0; i < sc->macs_num; i++) {
+         if (!qemu_configure_nic_device(DEVICE(&soc->ftgmac100[i]),
+@@ -94,14 +87,10 @@ static void ast2700fc_ca35_init(MachineState *machine)
+             break;
+         }
+     }
+-    if (!object_property_set_int(OBJECT(&s->ca35), "hw-strap1",
+-                                 AST2700FC_HW_STRAP1, &error_abort)) {
+-        return;
+-    }
+-    if (!object_property_set_int(OBJECT(&s->ca35), "hw-strap2",
+-                                 AST2700FC_HW_STRAP2, &error_abort)) {
+-        return;
+-    }
++    object_property_set_int(OBJECT(&s->ca35), "hw-strap1",
++                            AST2700FC_HW_STRAP1, &error_abort);
++    object_property_set_int(OBJECT(&s->ca35), "hw-strap2",
++                            AST2700FC_HW_STRAP2, &error_abort);
+     aspeed_soc_uart_set_chr(soc, ASPEED_DEV_UART12, serial_hd(0));
+     if (!qdev_realize(DEVICE(&s->ca35), NULL, &error_abort)) {
+         return;
+@@ -133,10 +122,8 @@ static void ast2700fc_ssp_init(MachineState *machine)
+                        UINT64_MAX);
+ 
+     qdev_connect_clock_in(DEVICE(&s->ssp), "sysclk", s->ssp_sysclk);
+-    if (!object_property_set_link(OBJECT(&s->ssp), "memory",
+-                                  OBJECT(&s->ssp_memory), &error_abort)) {
+-        return;
+-    }
++    object_property_set_link(OBJECT(&s->ssp), "memory",
++                             OBJECT(&s->ssp_memory), &error_abort);
+ 
+     soc = ASPEED_SOC(&s->ssp);
+     aspeed_soc_uart_set_chr(soc, ASPEED_DEV_UART4, serial_hd(1));
+@@ -157,10 +144,8 @@ static void ast2700fc_tsp_init(MachineState *machine)
+                        UINT64_MAX);
+ 
+     qdev_connect_clock_in(DEVICE(&s->tsp), "sysclk", s->tsp_sysclk);
+-    if (!object_property_set_link(OBJECT(&s->tsp), "memory",
+-                                  OBJECT(&s->tsp_memory), &error_abort)) {
+-        return;
+-    }
++    object_property_set_link(OBJECT(&s->tsp), "memory",
++                             OBJECT(&s->tsp_memory), &error_abort);
+ 
+     soc = ASPEED_SOC(&s->tsp);
+     aspeed_soc_uart_set_chr(soc, ASPEED_DEV_UART7, serial_hd(2));
 -- 
 2.51.0
 

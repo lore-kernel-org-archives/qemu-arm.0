@@ -4,32 +4,32 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7945CAC5B0
-	for <qemu-arm@archiver.kernel.org>; Mon, 29 Sep 2025 15:58:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9DF7CAC5B0
+	for <qemu-arm@archiver.kernel.org>; Mon, 29 Sep 2025 16:04:35 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v3GG0-0002jj-I9; Mon, 29 Sep 2025 11:57:45 -0400
+	id 1v3GLc-0006To-AF; Mon, 29 Sep 2025 12:03:33 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <tangtao1634@phytium.com.cn>)
- id 1v3GFi-0002GN-Cp; Mon, 29 Sep 2025 11:57:26 -0400
-Received: from zg8tmtu5ljy1ljeznc42.icoremail.net ([159.65.134.6])
+ id 1v3GLM-00068y-Vv; Mon, 29 Sep 2025 12:03:20 -0400
+Received: from sgoci-sdnproxy-4.icoremail.net ([129.150.39.64])
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <tangtao1634@phytium.com.cn>)
- id 1v3GFR-00024r-FG; Mon, 29 Sep 2025 11:57:25 -0400
+ id 1v3GLG-0003PJ-2g; Mon, 29 Sep 2025 12:03:14 -0400
 Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
- by hzbj-icmmx-6 (Coremail) with SMTP id AQAAfwA3JVxGrNpo9gQAAA--.39S2;
- Mon, 29 Sep 2025 23:56:54 +0800 (CST)
+ by hzbj-icmmx-6 (Coremail) with SMTP id AQAAfwBXRVywrdpoWgsAAA--.93S2;
+ Tue, 30 Sep 2025 00:02:56 +0800 (CST)
 Received: from [192.168.31.222] (unknown [113.246.232.83])
- by mail (Coremail) with SMTP id AQAAfwDnS+lDrNpoxIUvAA--.53536S2;
- Mon, 29 Sep 2025 23:56:52 +0800 (CST)
-Message-ID: <e43de190-7643-49e1-8e57-0b5f28c33fe9@phytium.com.cn>
-Date: Mon, 29 Sep 2025 23:56:48 +0800
+ by mail (Coremail) with SMTP id AQAAfwCnDeuprdpoFI4vAA--.40173S2;
+ Tue, 30 Sep 2025 00:02:51 +0800 (CST)
+Message-ID: <36dc34ba-2673-4529-9af7-4f83b4478cbf@phytium.com.cn>
+Date: Tue, 30 Sep 2025 00:02:49 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 11/14] hw/arm/smmuv3: Harden security checks in MMIO
- handlers
+Subject: Re: [PATCH v2 12/14] hw/arm/smmuv3: Use iommu_index to represent the
+ security context
 To: Peter Maydell <peter.maydell@linaro.org>,
  Eric Auger <eric.auger@redhat.com>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
@@ -39,31 +39,30 @@ Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  Jean-Philippe Brucker <jean-philippe@linaro.org>,
  Mostafa Saleh <smostafa@google.com>
 References: <20250925162618.191242-1-tangtao1634@phytium.com.cn>
- <20250925162618.191242-12-tangtao1634@phytium.com.cn>
- <81c98959-45dc-4cbc-836f-a34fdf160801@redhat.com>
+ <20250926030831.1067440-1-tangtao1634@phytium.com.cn>
+ <39446b6c-d7dd-4aeb-a2ee-96db03997e4a@redhat.com>
 From: Tao Tang <tangtao1634@phytium.com.cn>
-In-Reply-To: <81c98959-45dc-4cbc-836f-a34fdf160801@redhat.com>
+In-Reply-To: <39446b6c-d7dd-4aeb-a2ee-96db03997e4a@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-CM-TRANSID: AQAAfwDnS+lDrNpoxIUvAA--.53536S2
-X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQAIBWjZjscNIQAAsY
+Content-Transfer-Encoding: 8bit
+X-CM-TRANSID: AQAAfwCnDeuprdpoFI4vAA--.40173S2
+X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQAIBWjZjscNoQAAsY
 Authentication-Results: hzbj-icmmx-6; spf=neutral smtp.mail=tangtao163
  4@phytium.com.cn;
-X-Coremail-Antispam: 1Uk129KBjvJXoWxKFy7Kr1UJr47JryrXFyUGFg_yoW7XFWfpr
- W8KFyYgF4kGF17XF1fJw1DAFyFkrWkKFZFkrsxGa48Za4qyw1xJa40k34YkasrGr1UZw4I
- yF1Ivr4fWF1ay3DanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
+X-Coremail-Antispam: 1Uk129KBjvJXoWxXr1UAr48JF4DAw4kXw4fXwb_yoWrAF4DpF
+ 48GFZxKa1fJFy3Ar1fJa1UZF4a93ykKry7ZFZxK3Z5CF1DZrn7JryvkFyYgryDurWUCw42
+ va109FW3WF1qyrJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
  DUYxn0WfASr-VFAU7a7-sFnT9fnUUIcSsGvfJ3UbIYCTnIWIevJa73UjIFyTuYvj4RJUUU
  UUUUU
-Received-SPF: pass client-ip=159.65.134.6;
- envelope-from=tangtao1634@phytium.com.cn;
- helo=zg8tmtu5ljy1ljeznc42.icoremail.net
-X-Spam_score_int: 7
-X-Spam_score: 0.7
-X-Spam_bar: /
-X-Spam_report: (0.7 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
- RCVD_IN_PBL=3.335, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- T_SPF_TEMPERROR=0.01 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=129.150.39.64;
+ envelope-from=tangtao1634@phytium.com.cn; helo=sgoci-sdnproxy-4.icoremail.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -81,145 +80,119 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 Hi Eric,
 
-On 2025/9/29 23:30, Eric Auger wrote:
-> Hi Tao,
+On 2025/9/29 23:33, Eric Auger wrote:
 >
-> On 9/25/25 6:26 PM, Tao Tang wrote:
->> This patch hardens the security validation within the main MMIO
->> dispatcher functions (smmu_read_mmio and smmu_write_mmio).
+> On 9/26/25 5:08 AM, Tao Tang wrote:
+>> Resending patches 12–14/14 that were missing due to a send issue. Sorry
+>> for the noise.
 >>
->> First, accesses to the secure register space are now correctly gated by
->> whether the SECURE_IMPL feature is enabled in the model. This prevents
->> guest software from accessing the secure programming interface when it is
->> disabled, though some registers are exempt from this check as per the
->> architecture.
+>> The Arm SMMUv3 architecture uses a SEC_SID (Secure StreamID) to select
+>> the programming interface. To support future extensions like RME, which
+>> defines four security states (Non-secure, Secure, Realm, and Root), the
+>> QEMU model must cleanly separate these contexts for all operations.
 >>
->> Second, the check for the input stream's security is made more robust.
->> It now validates not only the legacy MemTxAttrs.secure bit, but also
->> the .space field. This brings the SMMU's handling of security spaces
->> into full alignment with the PE.
+>> This commit leverages the generic iommu_index to represent this
+>> security context. The core IOMMU layer now uses the SMMU's .attrs_to_index
+>> callback to map a transaction's ARMSecuritySpace attribute to the
+>> corresponding iommu_index.
+>>
+>> This index is then passed down to smmuv3_translate and used throughout
+>> the model to select the correct register bank and processing logic. This
+>> makes the iommu_index the clear QEMU equivalent of the architectural
+>> SEC_SID, cleanly separating the contexts for all subsequent lookups.
 >>
 >> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
 >> ---
->>   hw/arm/smmuv3.c | 58 +++++++++++++++++++++++++++++++++++++++++++++++++
->>   1 file changed, 58 insertions(+)
+>>   hw/arm/smmuv3.c | 37 ++++++++++++++++++++++++++++++++++++-
+>>   1 file changed, 36 insertions(+), 1 deletion(-)
 >>
 >> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
->> index 53c7eff0e3..eec36d5fd2 100644
+>> index eec36d5fd2..c92cc0f06a 100644
 >> --- a/hw/arm/smmuv3.c
 >> +++ b/hw/arm/smmuv3.c
->> @@ -1484,6 +1484,12 @@ static bool smmu_eventq_irq_cfg_writable(SMMUv3State *s,
->>       return smmu_irq_ctl_evtq_irqen_disabled(s, sec_idx);
+>> @@ -1099,6 +1099,38 @@ static void smmuv3_fixup_event(SMMUEventInfo *event, hwaddr iova)
+>>       }
 >>   }
->>   
->> +/* Check if the SMMU hardware itself implements secure state features */
->> +static inline bool smmu_hw_secure_implemented(SMMUv3State *s)
+>>
+>> +static SMMUSecurityIndex smmuv3_attrs_to_security_index(MemTxAttrs attrs)
 >> +{
->> +    return FIELD_EX32(s->bank[SMMU_SEC_IDX_S].idr[1], S_IDR1, SECURE_IMPL);
->> +}
->> +
->>   static int smmuv3_cmdq_consume(SMMUv3State *s, SMMUSecurityIndex sec_idx)
->>   {
->>       SMMUState *bs = ARM_SMMU(s);
->> @@ -1723,6 +1729,43 @@ static int smmuv3_cmdq_consume(SMMUv3State *s, SMMUSecurityIndex sec_idx)
->>       return 0;
->>   }
->>   
->> +static bool is_secure_impl_exempt_reg(hwaddr offset)
-> Worth a comment: some secure registers can be accessed even if secure HW
-> is not implemented. Returns true if this is the case or something alike.
-
-
-You're right, that function definitely needs a comment to explain the 
-architectural exception it handles. I will add one in the next version 
-to improve clarity.
-
->> +{
->> +    switch (offset) {
->> +    case A_S_EVENTQ_IRQ_CFG0:
->> +    case A_S_EVENTQ_IRQ_CFG1:
->> +    case A_S_EVENTQ_IRQ_CFG2:
->> +        return true;
+>> +    switch (attrs.space) {
+>> +    case ARMSS_Secure:
+>> +        return SMMU_SEC_IDX_S;
+>> +    case ARMSS_NonSecure:
 >> +    default:
->> +        return false;
+>> +        return SMMU_SEC_IDX_NS;
 >> +    }
 >> +}
 >> +
->> +/* Helper function for Secure register access validation */
->> +static bool smmu_check_secure_access(SMMUv3State *s, MemTxAttrs attrs,
->> +                                     hwaddr offset, bool is_read)
->> +{   /* Check if the access is secure */
->> +    if (!(attrs.space == ARMSS_Secure || attrs.space == ARMSS_Root ||
-> First occurence of ARMSS_Root in hw dir? Is it needed?
-
-
-This is a good question, and I'd like to clarify your expectation. My 
-thinking was that if we are using ARMSecuritySpace to propagate the 
-security context at the device level, then ARMSS_Root will eventually be 
-part of this check.
-
-Is your suggestion that I should remove the ARMSS_Root check for now, as 
-it's not strictly necessary for the current Secure-state implementation, 
-and only re-introduce it when full Realm/Root support is added to the 
-SMMU model? I'm happy to do that to keep this patch focused.
-
-Thanks,
-Tao
-
->> +          attrs.secure == 1)) {
->> +        qemu_log_mask(LOG_GUEST_ERROR,
->> +            "%s: Non-secure %s attempt at offset 0x%" PRIx64 " (%s)\n",
->> +            __func__, is_read ? "read" : "write", offset,
->> +            is_read ? "RAZ" : "WI");
->> +        return false;
->> +    }
->> +
->> +    /* Check if the secure state is implemented. Some registers are exempted */
->> +    /* from this check. */
->> +    if (!is_secure_impl_exempt_reg(offset) && !smmu_hw_secure_implemented(s)) {
->> +        qemu_log_mask(LOG_GUEST_ERROR,
->> +            "%s: Secure %s attempt at offset 0x%" PRIx64 ". But Secure state "
->> +            "is not implemented (RES0)\n",
->> +            __func__, is_read ? "read" : "write", offset);
->> +        return false;
->> +    }
->> +    return true;
+>> +/*
+>> + * ARM SMMU IOMMU index mapping (implements SEC_SID from ARM SMMU):
+>> + * iommu_idx = 0: Non-secure transactions
+>> + * iommu_idx = 1: Secure transactions
+>> + *
+>> + * The iommu_idx parameter effectively implements the SEC_SID
+>> + * (Security Stream ID) attribute from the ARM SMMU architecture
+>> + * specification, which allows the SMMU to differentiate between
+>> + * secure and non-secure transactions at the hardware level.
+>> + */
+>> +static int smmuv3_attrs_to_index(IOMMUMemoryRegion *iommu, MemTxAttrs attrs)
+>> +{
+>> +    return smmuv3_attrs_to_security_index(attrs);
 >> +}
 >> +
->>   static MemTxResult smmu_writell(SMMUv3State *s, hwaddr offset,
->>                                  uint64_t data, MemTxAttrs attrs,
->>                                  SMMUSecurityIndex reg_sec_idx)
->> @@ -2038,6 +2081,13 @@ static MemTxResult smmu_write_mmio(void *opaque, hwaddr offset, uint64_t data,
->>       /* CONSTRAINED UNPREDICTABLE choice to have page0/1 be exact aliases */
->>       offset &= ~0x10000;
->>       SMMUSecurityIndex reg_sec_idx = SMMU_SEC_IDX_NS;
->> +    if (offset >= SMMU_SECURE_BASE_OFFSET) {
->> +        if (!smmu_check_secure_access(s, attrs, offset, false)) {
->> +            trace_smmuv3_write_mmio(offset, data, size, MEMTX_OK);
->> +            return MEMTX_OK;
->> +        }
->> +        reg_sec_idx = SMMU_SEC_IDX_S;
->> +    }
->>   
->>       switch (size) {
->>       case 8:
->> @@ -2252,6 +2302,14 @@ static MemTxResult smmu_read_mmio(void *opaque, hwaddr offset, uint64_t *data,
->>       /* CONSTRAINED UNPREDICTABLE choice to have page0/1 be exact aliases */
->>       offset &= ~0x10000;
->>       SMMUSecurityIndex reg_sec_idx = SMMU_SEC_IDX_NS;
->> +    if (offset >= SMMU_SECURE_BASE_OFFSET) {
->> +        if (!smmu_check_secure_access(s, attrs, offset, true)) {
->> +            *data = 0;
->> +            trace_smmuv3_read_mmio(offset, *data, size, MEMTX_OK);
->> +            return MEMTX_OK;
->> +        }
->> +        reg_sec_idx = SMMU_SEC_IDX_S;
->> +    }
->>   
->>       switch (size) {
->>       case 8:
-> Thanks
+>> +static int smmuv3_num_indexes(IOMMUMemoryRegion *iommu)
+>> +{
+>> +    /* Support 2 IOMMU indexes for now: NS/S */
+>> +    return SMMU_SEC_IDX_NUM;
+>> +}
+>> +
+>>   /* Entry point to SMMU, does everything. */
+>>   static IOMMUTLBEntry smmuv3_translate(IOMMUMemoryRegion *mr, hwaddr addr,
+>>                                         IOMMUAccessFlags flag, int iommu_idx)
+>> @@ -1111,7 +1143,7 @@ static IOMMUTLBEntry smmuv3_translate(IOMMUMemoryRegion *mr, hwaddr addr,
+>>                              .inval_ste_allowed = false};
+>>       SMMUTranslationStatus status;
+>>       SMMUTransCfg *cfg = NULL;
+>> -    SMMUSecurityIndex sec_idx = SMMU_SEC_IDX_NS;
+>> +    SMMUSecurityIndex sec_idx = iommu_idx;
+>>       IOMMUTLBEntry entry = {
+>>           .target_as = &address_space_memory,
+>>           .iova = addr,
+>> @@ -1155,6 +1187,7 @@ epilogue:
+>>           entry.perm = cached_entry->entry.perm;
+>>           entry.translated_addr = CACHED_ENTRY_TO_ADDR(cached_entry, addr);
+>>           entry.addr_mask = cached_entry->entry.addr_mask;
+>> +        entry.target_as = cached_entry->entry.target_as;
+> this change looks unrelated to the commit desc.
 >
 > Eric
+
+
+You are absolutely right. That line of code is clearly part of the IOTLB 
+cache logic and doesn't belong in this commit.
+
+I will move this change to the relevant IOTLB cache commit in the next 
+version of the series.
+
+Thanks for catching that.
+
+Best,
+Tao
+
+>>           trace_smmuv3_translate_success(mr->parent_obj.name, sid, addr,
+>>                                          entry.translated_addr, entry.perm,
+>>                                          cfg->stage);
+>> @@ -2534,6 +2567,8 @@ static void smmuv3_iommu_memory_region_class_init(ObjectClass *klass,
+>>
+>>       imrc->translate = smmuv3_translate;
+>>       imrc->notify_flag_changed = smmuv3_notify_flag_changed;
+>> +    imrc->attrs_to_index = smmuv3_attrs_to_index;
+>> +    imrc->num_indexes = smmuv3_num_indexes;
+>>   }
+>>
+>>   static const TypeInfo smmuv3_type_info = {
+>> --
+>> 2.34.1
+>>
 
 

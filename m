@@ -4,56 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2D04CAC5B9
-	for <qemu-arm@archiver.kernel.org>; Mon, 29 Sep 2025 17:00:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FF14CCA468
+	for <qemu-arm@archiver.kernel.org>; Mon, 29 Sep 2025 17:01:34 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v3H8u-0004o4-Aj; Mon, 29 Sep 2025 12:54:28 -0400
+	id 1v3H91-0005Ty-AZ; Mon, 29 Sep 2025 12:54:35 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1v3H7l-0002xf-57
- for qemu-arm@nongnu.org; Mon, 29 Sep 2025 12:53:18 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1v3H7p-0002zW-M1
+ for qemu-arm@nongnu.org; Mon, 29 Sep 2025 12:53:22 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1v3H7f-0002ot-AC
- for qemu-arm@nongnu.org; Mon, 29 Sep 2025 12:53:16 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1v3H7i-0002pY-D5
+ for qemu-arm@nongnu.org; Mon, 29 Sep 2025 12:53:21 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1759164788;
+ s=mimecast20190719; t=1759164791;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=d+ZQAAhU87/YX5/hMdCzNPOqYmeNjXyy3qddKmYrX08=;
- b=ZpjAlqH4GCssXpalNZzzeyFCFwQrkeFhaQ11YxxlEX0o4KzoDDyfy7ZbnvFBVchPjjBWOL
- sox2HzdlOymdERk1w/ILk1KZ337RPpZrE4iwlqOyL07FizbWzsRPjgRZF2ewS3DOcBXYJ6
- +gwIYC2miOO7diB/Yf72JNqpU9YY7tY=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ bh=vOA4xs0gBj+EPnfWxrpP1KWqkf93n5dvSLDRVXGFM/k=;
+ b=OxITHqyHkcMctfwGaAkDK9+DgqrjrpMdhBbF5cy9oWtqW1Aaq5o58ut43zMhZ5p0PYbWqZ
+ +lOnAcGgQyTYLqZkSxmfFl7XP/scySWrVuj3MlhDaiw74nLckC+OZTy1Fmeb3BqX3bqKE9
+ eu9ymW6GA1HnH3sWGjD1yLV8ye9kDfI=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-494-ezlWGGTqMmqSZv3wVH9MJg-1; Mon,
- 29 Sep 2025 12:53:05 -0400
-X-MC-Unique: ezlWGGTqMmqSZv3wVH9MJg-1
-X-Mimecast-MFC-AGG-ID: ezlWGGTqMmqSZv3wVH9MJg_1759164784
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-576-pj5HjTuxNUWZ_AVYJOSlfg-1; Mon,
+ 29 Sep 2025 12:53:09 -0400
+X-MC-Unique: pj5HjTuxNUWZ_AVYJOSlfg-1
+X-Mimecast-MFC-AGG-ID: pj5HjTuxNUWZ_AVYJOSlfg_1759164788
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 138011956065; Mon, 29 Sep 2025 16:53:04 +0000 (UTC)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 7FA9018004D8; Mon, 29 Sep 2025 16:53:08 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.32.27])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 6EB2A1800446; Mon, 29 Sep 2025 16:53:02 +0000 (UTC)
+ id B30D91800452; Mon, 29 Sep 2025 16:53:06 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Kane-Chen-AS <kane_chen@aspeedtech.com>,
+Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 12/32] tests/functional/arm: Add AST1030 boot test with
- generated OTP image
-Date: Mon, 29 Sep 2025 18:52:10 +0200
-Message-ID: <20250929165230.797471-13-clg@redhat.com>
+Subject: [PULL 14/32] hw/pci/pci_ids: Add PCI vendor ID for ASPEED
+Date: Mon, 29 Sep 2025 18:52:12 +0200
+Message-ID: <20250929165230.797471-15-clg@redhat.com>
 In-Reply-To: <20250929165230.797471-1-clg@redhat.com>
 References: <20250929165230.797471-1-clg@redhat.com>
 MIME-Version: 1.0
@@ -69,7 +68,8 @@ X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.513,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001,
+ T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -85,77 +85,27 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Kane-Chen-AS <kane_chen@aspeedtech.com>
+From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-Add a functional test that boots an AST1030 machine with a generated
-OTP image. The test verifies that OTP contents are read during early
-boot and that the system reaches the expected console prompt.
-
-Signed-off-by: Kane-Chen-AS <kane_chen@aspeedtech.com>
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20250917035917.4141723-3-kane_chen@aspeedtech.com
+Link: https://lore.kernel.org/qemu-devel/20250919093017.338309-2-jamin_lin@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- tests/functional/arm/test_aspeed_ast1030.py | 24 +++++++++++++++++----
- 1 file changed, 20 insertions(+), 4 deletions(-)
+ include/hw/pci/pci_ids.h | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/tests/functional/arm/test_aspeed_ast1030.py b/tests/functional/arm/test_aspeed_ast1030.py
-index 42126b514ff9..e47b597d0bd9 100755
---- a/tests/functional/arm/test_aspeed_ast1030.py
-+++ b/tests/functional/arm/test_aspeed_ast1030.py
-@@ -7,17 +7,18 @@
- # SPDX-License-Identifier: GPL-2.0-or-later
+diff --git a/include/hw/pci/pci_ids.h b/include/hw/pci/pci_ids.h
+index 33e2898be957..16034aaa2c7e 100644
+--- a/include/hw/pci/pci_ids.h
++++ b/include/hw/pci/pci_ids.h
+@@ -291,4 +291,6 @@
  
- from qemu_test import LinuxKernelTest, Asset
-+from aspeed import AspeedTest
- from qemu_test import exec_command_and_wait_for_pattern
+ #define PCI_VENDOR_ID_NVIDIA             0x10de
  
- 
--class AST1030Machine(LinuxKernelTest):
-+class AST1030Machine(AspeedTest):
- 
-     ASSET_ZEPHYR_3_02 = Asset(
-         ('https://github.com/AspeedTech-BMC'
-          '/zephyr/releases/download/v00.03.02/ast1030-evb-demo.zip'),
-         '1ec83caab3ddd5d09481772801be7210e222cb015ce22ec6fffb8a76956dcd4f')
- 
--    def test_ast1030_zephyros_3_02(self):
-+    def test_arm_ast1030_zephyros_3_02(self):
-         self.set_machine('ast1030-evb')
- 
-         kernel_name = "ast1030-evb-demo-3/zephyr.elf"
-@@ -36,7 +37,7 @@ def test_ast1030_zephyros_3_02(self):
-          '/zephyr/releases/download/v00.01.07/ast1030-evb-demo.zip'),
-         'ad52e27959746988afaed8429bf4e12ab988c05c4d07c9d90e13ec6f7be4574c')
- 
--    def test_ast1030_zephyros_1_07(self):
-+    def test_arm_ast1030_zephyros_1_07(self):
-         self.set_machine('ast1030-evb')
- 
-         kernel_name = "ast1030-evb-demo/zephyr.bin"
-@@ -68,6 +69,21 @@ def test_ast1030_zephyros_1_07(self):
-                 'kernel uptime',
-         ]: exec_command_and_wait_for_pattern(self, shell_cmd, "uart:~$")
- 
-+    def test_arm_ast1030_otp_blockdev_device(self):
-+        self.vm.set_machine("ast1030-evb")
++#define PCI_VENDOR_ID_ASPEED             0x1A03
 +
-+        kernel_name = "ast1030-evb-demo-3/zephyr.elf"
-+        kernel_file = self.archive_extract(self.ASSET_ZEPHYR_3_02, member=kernel_name)
-+        otp_img = self.generate_otpmem_image()
-+
-+        self.vm.set_console()
-+        self.vm.add_args(
-+            "-kernel", kernel_file,
-+            "-blockdev", f"driver=file,filename={otp_img},node-name=otp",
-+            "-global", "aspeed-otp.drive=otp",
-+        )
-+        self.vm.launch()
-+        self.wait_for_console_pattern("Booting Zephyr OS")
- 
- if __name__ == '__main__':
--    LinuxKernelTest.main()
-+    AspeedTest.main()
+ #endif
 -- 
 2.51.0
 

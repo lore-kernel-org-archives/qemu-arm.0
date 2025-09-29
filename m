@@ -4,55 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86AF9CAC5B0
-	for <qemu-arm@archiver.kernel.org>; Mon, 29 Sep 2025 16:55:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E98E5CCA46F
+	for <qemu-arm@archiver.kernel.org>; Mon, 29 Sep 2025 16:55:13 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v3H8w-0004xr-0C; Mon, 29 Sep 2025 12:54:30 -0400
+	id 1v3H94-0005eN-Hd; Mon, 29 Sep 2025 12:54:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1v3H7m-0002yA-6G
- for qemu-arm@nongnu.org; Mon, 29 Sep 2025 12:53:19 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1v3H8I-0003dv-BL
+ for qemu-arm@nongnu.org; Mon, 29 Sep 2025 12:53:51 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1v3H7c-0002o3-UX
- for qemu-arm@nongnu.org; Mon, 29 Sep 2025 12:53:16 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1v3H89-0002vP-Ro
+ for qemu-arm@nongnu.org; Mon, 29 Sep 2025 12:53:49 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1759164784;
+ s=mimecast20190719; t=1759164819;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=LtZkkfn48BVSq6kvoBsfQMoqoIUkdv0Eh2+9wImb+4E=;
- b=OWm+d1KKOuPcPpKt1G08BP2v/lNA8R8o66YlFKDM/AGe4tJAK1oAIk4y+1Ov35YR3H/Ca8
- 1dIPRL2eLJRvZPWgqaT8Cjl8hmVcmDnzMKZKmhjUqMZPwpVf4YXDbYdTB0WPwC0jOQ6ejz
- umSLwsbNIzDsrnFogcl5noVGSBNEXMs=
-Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ bh=3Z6KcR/fbr5ArTGgKKWeLzpUDLymK4uxK6AggY1lNrg=;
+ b=VF3JhkmfV821cVDovxOoR7dghYvgCRoeeY7WuKO53WeAPKHVYrm5a61/xXC+qeMtDSCKGp
+ Zgv+/lNLzpAMAXfnRExEjOUJv/R5yWHLG354q+CgMK/RynxYSKphreFoSaycP4L4nHZVr2
+ 1xYL7C4il5qwGsKwyCgmjQM8jWB7qyI=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-389-414rMYyNPcOmS6PkunwGXw-1; Mon,
- 29 Sep 2025 12:53:00 -0400
-X-MC-Unique: 414rMYyNPcOmS6PkunwGXw-1
-X-Mimecast-MFC-AGG-ID: 414rMYyNPcOmS6PkunwGXw_1759164779
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-519-KztJEwxaOPSt_GyXji6Alw-1; Mon,
+ 29 Sep 2025 12:53:35 -0400
+X-MC-Unique: KztJEwxaOPSt_GyXji6Alw-1
+X-Mimecast-MFC-AGG-ID: KztJEwxaOPSt_GyXji6Alw_1759164814
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id B77151956087; Mon, 29 Sep 2025 16:52:59 +0000 (UTC)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id D41A0180034F; Mon, 29 Sep 2025 16:53:34 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.32.27])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 1FE201800452; Mon, 29 Sep 2025 16:52:57 +0000 (UTC)
+ id 20EC61800446; Mon, 29 Sep 2025 16:53:32 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 10/32] hw/arm/aspeed Move ast2700-evb alias to ast2700a1-evb
-Date: Mon, 29 Sep 2025 18:52:08 +0200
-Message-ID: <20250929165230.797471-11-clg@redhat.com>
+Subject: [PULL 26/32] tests/functional/arm/test_aspeed_ast2600: Add PCIe and
+ network test
+Date: Mon, 29 Sep 2025 18:52:24 +0200
+Message-ID: <20250929165230.797471-27-clg@redhat.com>
 In-Reply-To: <20250929165230.797471-1-clg@redhat.com>
 References: <20250929165230.797471-1-clg@redhat.com>
 MIME-Version: 1.0
@@ -68,7 +69,7 @@ X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.513,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -86,55 +87,78 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-This patch moves the "ast2700-evb" alias from the A0 to A1.
-The A0 machine remains available via its explicit name
-("ast2700a0-evb"), while functional tests are updated to
-target A0 by name instead of relying on the generic alias.
+Extend the AST2600 functional tests with PCIe and network checks.
+
+This patch introduces a new helper "do_ast2600_pcie_test()" that runs "lspci"
+on the emulated system and verifies the presence of the expected PCIe devices:
+
+- 80:00.0 Host bridge: ASPEED Technology, Inc. Device 2600
+- 80:08.0 PCI bridge: ASPEED Technology, Inc. AST1150 PCI-to-PCI Bridge
+- 81:00.0 Ethernet controller: Intel Corporation 82574L Gigabit Network Connection
+
+To exercise the PCIe network device, the test adds:
+
+  -device e1000e,netdev=net1,bus=pcie.0
+  -netdev user,id=net1
+
+and assigns an IP address to the interface, verifying it with `ip addr`.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20250902062550.3797040-1-jamin_lin@aspeedtech.com
+Link: https://lore.kernel.org/qemu-devel/20250919093017.338309-14-jamin_lin@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- hw/arm/aspeed.c                                 | 2 +-
- tests/functional/aarch64/test_aspeed_ast2700.py | 4 ++--
- 2 files changed, 3 insertions(+), 3 deletions(-)
+ tests/functional/arm/test_aspeed_ast2600.py | 21 +++++++++++++++++++++
+ 1 file changed, 21 insertions(+)
 
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index c31bbe770138..d21b21965aa6 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -1995,7 +1995,6 @@ static void aspeed_machine_ast2700a0_evb_class_init(ObjectClass *oc,
-     MachineClass *mc = MACHINE_CLASS(oc);
-     AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
+diff --git a/tests/functional/arm/test_aspeed_ast2600.py b/tests/functional/arm/test_aspeed_ast2600.py
+index 62949b0b4fe9..f655c0ba0c7a 100755
+--- a/tests/functional/arm/test_aspeed_ast2600.py
++++ b/tests/functional/arm/test_aspeed_ast2600.py
+@@ -101,8 +101,26 @@ def test_arm_ast2600_evb_buildroot_tpm(self):
+         'https://github.com/AspeedTech-BMC/openbmc/releases/download/v09.07/ast2600-default-obmc.tar.gz',
+         'cb6c08595bcbba1672ce716b068ba4e48eda1ed9abe78a07b30392ba2278feba')
  
--    mc->alias = "ast2700-evb";
-     mc->desc = "Aspeed AST2700 A0 EVB (Cortex-A35)";
-     amc->soc_name  = "ast2700-a0";
-     amc->hw_strap1 = AST2700_EVB_HW_STRAP1;
-@@ -2018,6 +2017,7 @@ static void aspeed_machine_ast2700a1_evb_class_init(ObjectClass *oc,
-     MachineClass *mc = MACHINE_CLASS(oc);
-     AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
++    def do_ast2600_pcie_test(self):
++        exec_command_and_wait_for_pattern(self,
++            'lspci -s 80:00.0',
++            '80:00.0 Host bridge: '
++            'ASPEED Technology, Inc. Device 2600')
++        exec_command_and_wait_for_pattern(self,
++            'lspci -s 80:08.0',
++            '80:08.0 PCI bridge: '
++            'ASPEED Technology, Inc. AST1150 PCI-to-PCI Bridge')
++        exec_command_and_wait_for_pattern(self,
++            'lspci -s 81:00.0',
++            '81:00.0 Ethernet controller: '
++            'Intel Corporation 82574L Gigabit Network Connection')
++        exec_command_and_wait_for_pattern(self,
++            'ip addr show dev eth4',
++            'inet 10.0.2.15/24')
++
+     def test_arm_ast2600_evb_sdk(self):
+         self.set_machine('ast2600-evb')
++        self.require_netdev('user')
  
-+    mc->alias = "ast2700-evb";
-     mc->desc = "Aspeed AST2700 A1 EVB (Cortex-A35)";
-     amc->soc_name  = "ast2700-a1";
-     amc->hw_strap1 = AST2700_EVB_HW_STRAP1;
-diff --git a/tests/functional/aarch64/test_aspeed_ast2700.py b/tests/functional/aarch64/test_aspeed_ast2700.py
-index 8a08bc46888e..a3db26729499 100755
---- a/tests/functional/aarch64/test_aspeed_ast2700.py
-+++ b/tests/functional/aarch64/test_aspeed_ast2700.py
-@@ -115,8 +115,8 @@ def start_ast2700_test_vbootrom(self, name):
-         self.do_test_aarch64_aspeed_sdk_start(
-                 self.scratch_file(name, 'image-bmc'))
+         self.archive_extract(self.ASSET_SDK_V907_AST2600)
  
--    def test_aarch64_ast2700_evb_sdk_v09_06(self):
--        self.set_machine('ast2700-evb')
-+    def test_aarch64_ast2700a0_evb_sdk_v09_06(self):
-+        self.set_machine('ast2700a0-evb')
+@@ -110,6 +128,8 @@ def test_arm_ast2600_evb_sdk(self):
+             'tmp105,bus=aspeed.i2c.bus.5,address=0x4d,id=tmp-test')
+         self.vm.add_args('-device',
+             'ds1338,bus=aspeed.i2c.bus.5,address=0x32')
++        self.vm.add_args('-device', 'e1000e,netdev=net1,bus=pcie.0')
++        self.vm.add_args('-netdev', 'user,id=net1')
+         self.do_test_arm_aspeed_sdk_start(
+             self.scratch_file("ast2600-default", "image-bmc"))
  
-         self.archive_extract(self.ASSET_SDK_V906_AST2700)
-         self.start_ast2700_test('ast2700-a0-default')
+@@ -135,6 +155,7 @@ def test_arm_ast2600_evb_sdk(self):
+         year = time.strftime("%Y")
+         exec_command_and_wait_for_pattern(self,
+              '/sbin/hwclock -f /dev/rtc1', year)
++        self.do_ast2600_pcie_test()
+ 
+     def test_arm_ast2600_otp_blockdev_device(self):
+         self.vm.set_machine("ast2600-evb")
 -- 
 2.51.0
 

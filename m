@@ -4,119 +4,144 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C956CAC5B5
-	for <qemu-arm@archiver.kernel.org>; Mon, 29 Sep 2025 13:50:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6EE7BCAC5B5
+	for <qemu-arm@archiver.kernel.org>; Mon, 29 Sep 2025 13:51:44 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v3EEG-0002A4-5Q; Mon, 29 Sep 2025 09:47:48 -0400
+	id 1v3E9n-0004SF-H3; Mon, 29 Sep 2025 09:43:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1v3EEB-00024U-SF
- for qemu-arm@nongnu.org; Mon, 29 Sep 2025 09:47:45 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
+ id 1v3E8T-0003Ss-KP; Mon, 29 Sep 2025 09:41:49 -0400
+Received: from mail-eastusazlp170120007.outbound.protection.outlook.com
+ ([2a01:111:f403:c101::7] helo=BL0PR03CU003.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1v3EDn-0005sP-IV
- for qemu-arm@nongnu.org; Mon, 29 Sep 2025 09:47:43 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1759153625;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=iHiGRlxUobEpePdY/J4nh0RlNm3a5QbJfQGFAxVfwWM=;
- b=IBnnLNyawFVKFK8nvJ7wTar86gxzAvBYEiWJuFpCvy0w0P7/4UPZ0DeaSPF+hgmufL1+Yt
- 3mYE520kigkHrSoL3NQE/spmP00HYhfhtPdBetWVKuuFAD7KUyYQnjUaKiaAb8ysT2kiRM
- 31Azg3wBQ/3ZKqWovsBBjf2e8tOMFoY=
-Received: from mail-qv1-f69.google.com (mail-qv1-f69.google.com
- [209.85.219.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-607-LPE-UUQYOHqwqb4M2_rfjw-1; Mon, 29 Sep 2025 09:47:04 -0400
-X-MC-Unique: LPE-UUQYOHqwqb4M2_rfjw-1
-X-Mimecast-MFC-AGG-ID: LPE-UUQYOHqwqb4M2_rfjw_1759153624
-Received: by mail-qv1-f69.google.com with SMTP id
- 6a1803df08f44-79538b281cdso96137526d6.0
- for <qemu-arm@nongnu.org>; Mon, 29 Sep 2025 06:47:04 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759153624; x=1759758424;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=iHiGRlxUobEpePdY/J4nh0RlNm3a5QbJfQGFAxVfwWM=;
- b=A+czxvWuSRMBAtu6nesDYnr9ylfBZJIVnqqPc7vWvNIcpQiInoIM26VSw1soYrZrQA
- Qx33PMcAD/jcFeVM9WGHZvLg58G9eeHDrIhtSEejuW4wwn0ww8pE8YglG6rmeRwNmOxD
- OufuRM8OxNgb9Iinx5jDy/87zCmsfSrGpw0ugZG60fnLfSbXhymq0hnXZigJdY1N0QRZ
- F22lQ3yWElGXiUHt+UZg4lBxIQiQm3deEzBYbJHGQ/5uJqVWutNwGuggcMwxidkVElSO
- Vky7w7fGt3vHKOzme198Ha7RSiI8bNmFW/AsrKa42vx77f+CYMrEtOfdXjs9jZy3McZk
- YZ+A==
-X-Forwarded-Encrypted: i=1;
- AJvYcCW8vHK5DRsnsktMldm1Gx+FqoOX77dCIlwDbLVfOLTtmRv0mRA/KYzk99hYfMJBdeatFGuD476Log==@nongnu.org
-X-Gm-Message-State: AOJu0Yw4lNfF3F0x5KSCCj4Jv21YD1e5bBZhlbJFXH6jm25eeDnyS8uO
- wMXhncCSUGEMLAZYooCUxA0YT+sccDKLji2fI4vUsV1WoVnpYrnIfrz9AjMxY0L3YI0m2y2brnH
- 4LxymzRksQXfV4y3IwBzBabk6Z7kb64evNFGblL8SXLMhnDTMOH7mig==
-X-Gm-Gg: ASbGncteqdnYs61I89sypGRZsKxtMRPdemxpJdNzXwh10EKSC/49wz5DWObcXCNJoi9
- tjeTs3Q71e/GMf7+UBAvMeyi8wyeFyqqVIymhyW+A0QJWbtbASOpPNXPkU3C4AWdav+4JXmmIO0
- CMbEVrtqbZOakl7gIHBf/PiMAo9zj1DEHr4YeBGUGnMeYDKkHbWPQ5O8Dhh5qDLJs60CA31utU7
- h9MFT3VJVDaWcJBjY++rYbmamQqvGgTatLlsbbClgoM8rp9pG7YwtzoHGanQjMlPf5yCpXEn781
- Us6aY4vpFc+jijMzFEhQCPNczMZpUNRZ
-X-Received: by 2002:ad4:5c65:0:b0:70f:abbb:609a with SMTP id
- 6a1803df08f44-869a8a9d1cemr9591356d6.19.1759153623989; 
- Mon, 29 Sep 2025 06:47:03 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEUKonu9l62RbCLN7Em1aPGn94ORFtSDS6viksl+nSCOwrO2CxK9sVW79FG+yGiC7r3b9d9Ug==
-X-Received: by 2002:ad4:5c65:0:b0:70f:abbb:609a with SMTP id
- 6a1803df08f44-869a8a9d1cemr9589586d6.19.1759153622515; 
- Mon, 29 Sep 2025 06:47:02 -0700 (PDT)
-Received: from x1.local ([142.188.210.50]) by smtp.gmail.com with ESMTPSA id
- 6a1803df08f44-8013cdf32a4sm75795376d6.21.2025.09.29.06.47.00
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 29 Sep 2025 06:47:01 -0700 (PDT)
-Date: Mon, 29 Sep 2025 09:46:59 -0400
-From: Peter Xu <peterx@redhat.com>
-To: Arun Menon <armenon@redhat.com>
-Cc: qemu-devel@nongnu.org, Fabiano Rosas <farosas@suse.de>,
- Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>,
- Dmitry Osipenko <dmitry.osipenko@collabora.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Cornelia Huck <cohuck@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
- Eric Farman <farman@linux.ibm.com>, Thomas Huth <thuth@redhat.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- Matthew Rosato <mjrosato@linux.ibm.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- David Hildenbrand <david@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
- Nicholas Piggin <npiggin@gmail.com>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Fam Zheng <fam@euphon.net>,
- Alex Williamson <alex.williamson@redhat.com>,
- =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@redhat.com>,
- Steve Sistare <steven.sistare@oracle.com>,
- =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
- qemu-s390x@nongnu.org, qemu-ppc@nongnu.org,
- Hailiang Zhang <zhanghailiang@xfusion.com>,
- Stefan Berger <stefanb@linux.vnet.ibm.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-Subject: Re: [PATCH v14 00/27] migration: propagate vTPM errors using Error
- objects
-Message-ID: <aNqN05aj0CYttxd6@x1.local>
-References: <20250918-propagate_tpm_error-v14-0-36f11a6fb9d3@redhat.com>
- <aNpILAhr8LaMFbcL@armenon-kvm.bengluru.csb>
+ (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
+ id 1v3E8B-0003t2-Cq; Mon, 29 Sep 2025 09:41:47 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=B4bbSe4tGvH0yszbxAWDavP6jXhBCeCiXBZCYh1sdjfwv+o8XWLjpkvX7UzfaF9fUR7m5DEFM8FR2kicFFL0zmDHiDrZWGFW5ZsZR0ES9bDjhwTBtiqso3qGRH3OIxbSi8s31Nw1elS8pY59ylsJHqKuBBvY5Vgcy+M/kKAWLcUpc1skCgUHkyP3wwVjmdf7XmsrtXa328GPhauUJSXGWxLjNhJCd0LhAeQ1gfNkQ7gnb3J4kstyE8rScaoPtcIlusAZRhwFPXjkT4Vh0+AKYAw7ZZTZd4fRus+g725QEA3NNk4o9mb9A7xMvXgEP/mr+n5PiZFWt752Ijda8r50Pg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=N3rUQ3miVbAZ4Zbj0o446R24p7Tb+B4MAYHSfY14SQc=;
+ b=ts72hKcYN1qqvOivN0Z6sOeSfwpwJUugYC4q+E+nUFwXEdl8cXZOBPc6BoNuhtHbaEyJVHuI8b8SGltjNyF3YztBlyTZPsXI5h9Va8be985c6IjfOdZoCmnUxj0Q5mIEaQGpRJ5pA/+b6w5fzA3/DL2Yo5ahfMNS+aS1YBqkZU+AvJ8MG73acLfEqB6YfBU8AZrN/oMm8mP/DkMRqAIzE9Sxa6Ld18KReqL0WxSqWFiXJAbRQEMtcxPYmqcN+qK1CmMLd8df/xaT1JRpd3mM0zGUz6z2Pb20yRxw/G6tW1kJPMga/PIS+ZpCUn1nKbgUtqUpmfszJTUR8HffYrqKpQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 216.228.117.160) smtp.rcpttodomain=nongnu.org smtp.mailfrom=nvidia.com;
+ dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
+ dkim=none (message not signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=N3rUQ3miVbAZ4Zbj0o446R24p7Tb+B4MAYHSfY14SQc=;
+ b=YLzUyJMh7TFBtPsVO8eEp6dAB3hNfEqEaLJb5qScZgyc1ZM4IBnMRRZnLQwERAEGGqyTzIFPtuats180C78q8MdDHaEK2SXCvuXEvTJAr3uxu2H+9zQRmJm3h0cuAFGYfZpxmZ8i4e+jdM+9IzIcqCtAqQxtDFZyMhj2k+EaWBV3bVYW16ABTQPYvWLwAM30KAm3gQcDPSl55qvLp8ZJos/Hm1CzDGm+k66etltSeJEDLm6DmIVpvCVpvex6z4gfPBjdB/ZgA0JznZVXZJvdpcy5nMVraOElZr5YWdlXzssyaIBUWdlHem2wXEP89yPvsPhUSwPPC1oaEI2mTWHezQ==
+Received: from CH5P223CA0024.NAMP223.PROD.OUTLOOK.COM (2603:10b6:610:1f3::14)
+ by DS0PR12MB6557.namprd12.prod.outlook.com (2603:10b6:8:d3::5) with
+ Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.9160.16; Mon, 29 Sep 2025 13:41:00 +0000
+Received: from CH2PEPF00000099.namprd02.prod.outlook.com
+ (2603:10b6:610:1f3:cafe::cb) by CH5P223CA0024.outlook.office365.com
+ (2603:10b6:610:1f3::14) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.9160.17 via Frontend Transport; Mon,
+ 29 Sep 2025 13:40:54 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.160)
+ smtp.mailfrom=nvidia.com;
+ dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=nvidia.com;
+Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
+ 216.228.117.160 as permitted sender) receiver=protection.outlook.com;
+ client-ip=216.228.117.160; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (216.228.117.160) by
+ CH2PEPF00000099.mail.protection.outlook.com (10.167.244.20) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.9160.9 via Frontend Transport; Mon, 29 Sep 2025 13:41:00 +0000
+Received: from rnnvmail201.nvidia.com (10.129.68.8) by mail.nvidia.com
+ (10.129.200.66) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.34; Mon, 29 Sep
+ 2025 06:40:44 -0700
+Received: from NV-2Y5XW94.nvidia.com (10.126.230.35) by rnnvmail201.nvidia.com
+ (10.129.68.8) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20; Mon, 29 Sep
+ 2025 06:40:37 -0700
+From: Shameer Kolothum <skolothumtho@nvidia.com>
+To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
+CC: <eric.auger@redhat.com>, <peter.maydell@linaro.org>, <jgg@nvidia.com>,
+ <nicolinc@nvidia.com>, <ddutile@redhat.com>, <berrange@redhat.com>,
+ <nathanc@nvidia.com>, <mochs@nvidia.com>, <smostafa@google.com>,
+ <wangzhou1@hisilicon.com>, <jiangkunkun@huawei.com>,
+ <jonathan.cameron@huawei.com>, <zhangfei.gao@linaro.org>,
+ <zhenzhong.duan@intel.com>, <yi.l.liu@intel.com>, <shameerkolothum@gmail.com>
+Subject: [PATCH v4 23/27] hw/arm/smmuv3-accel: Add property to specify OAS bits
+Date: Mon, 29 Sep 2025 14:36:39 +0100
+Message-ID: <20250929133643.38961-24-skolothumtho@nvidia.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250929133643.38961-1-skolothumtho@nvidia.com>
+References: <20250929133643.38961-1-skolothumtho@nvidia.com>
 MIME-Version: 1.0
-In-Reply-To: <aNpILAhr8LaMFbcL@armenon-kvm.bengluru.csb>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: Jv3pHtvYiIVDSrHgnVx77kwSxsyNNHqSUYTXlAISb8E_1759153624
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=peterx@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -16
-X-Spam_score: -1.7
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.126.230.35]
+X-ClientProxiedBy: rnnvmail202.nvidia.com (10.129.68.7) To
+ rnnvmail201.nvidia.com (10.129.68.8)
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: CH2PEPF00000099:EE_|DS0PR12MB6557:EE_
+X-MS-Office365-Filtering-Correlation-Id: ba30f757-1a1a-40ce-6b77-08ddff5dd3a9
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|7416014|376014|82310400026|1800799024|36860700013; 
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?xdG81woYIui60VYwFkAIhNrBcruV1T5jBdcTV2pIeGNS6bMy/UoAox4mbBup?=
+ =?us-ascii?Q?iiX7MxiDKQEEXV4J0lKNg0KRB7MJvcIsxAzaWDlIY21JszbYXFABYprwTOTN?=
+ =?us-ascii?Q?YxSOPhDlxTQhrOB4+AOEdqmPUAvfA6ptRn0ghGcpOt8qSqpOigNN13be+ilY?=
+ =?us-ascii?Q?2LDTkxeikUcXThyRNF8PMEIrbXghib/Qb2IlPmfDQfBW7vdp+YbRN48UnDIn?=
+ =?us-ascii?Q?TQiNyelf13oQB0sSfoBWxL6X7VoK+52TmDRD9YofpDfPrOrvXqCsXXAsphtJ?=
+ =?us-ascii?Q?Nx1O3fAH64SKfi9dM2zhXjmsBgLZf2cRXlgjsP0tKqO1GLvUce5PkSnJd57z?=
+ =?us-ascii?Q?CtU1qeSFIj+oCWMC/M3SXCaiT2uz3Ik9PJ3aP6+v7fNzPNTcvAtBb7AS1Rs7?=
+ =?us-ascii?Q?ufnE7ajC/60D6uuzBfaqmQKrAIVlRhNoRF2lHf4HgiPM5LlK+OGX3z8SHWm5?=
+ =?us-ascii?Q?M4TciRoKRQ6TOo6AM3pUDNWO2jig8jxHFqarsZ9fotl8hAdtAPHCAwWUlxMg?=
+ =?us-ascii?Q?GN1Ym56INUS9rmnA2BKcPQuTWNVqh8lDMlW8tdCwBOaiiiQiMR0wLqGZNlVX?=
+ =?us-ascii?Q?LGDj7H19y3A3Z7wvoZLOC77J5WMAsQEcDgsmyqC9aiZpoCs9MKsy6iufW6V4?=
+ =?us-ascii?Q?7qL+8J4/8sg4FgNc648B9RABI66nBpWOkMtQZmWjLxtJPrl2Z7Ccck/cptTC?=
+ =?us-ascii?Q?ylVw4WYegmJJyJNPOSDWWSzf+tXZ7KhoOwogBXunVQFje2AnuJD2zpbU/MCL?=
+ =?us-ascii?Q?7Kj5RCMuB/E/6y0d3Rxx5SVYu/oxKJJTbJ1VMAZEdM5JBmjdiCAXrDpM/nXu?=
+ =?us-ascii?Q?GmdlYGmSnfFQCJTrrsLMOgxL27RaxnbyRh62vr4vAkgbNv85vfiMiB39zqgT?=
+ =?us-ascii?Q?HMsnuKe9hHmcNZPKGohc+yUCjS+wAh/7TfIVsVpveOkoL9z/XwMTox17O1J0?=
+ =?us-ascii?Q?hG8/R78+/EiekZ2Dlo5M0nF/2NoO12oT2d3EqQI6beuAcaxJiV/hTTcXsHDO?=
+ =?us-ascii?Q?q17R60jOcxF9pVQUOaEERqjDNpdoYgswrAQdS1Yq3eiNkoDl0rB3dLwmbBLB?=
+ =?us-ascii?Q?s1WApbMqybO3zW4QmwloOqXx6zwXvodu5YfAQXWGfK2amxI1dxBno80iz8Hu?=
+ =?us-ascii?Q?je4vEDADKocyq7tzzXl1E5a8Tdq6JeoFeeFthRP1M/iA///bQsnkCNlXJnjY?=
+ =?us-ascii?Q?Cw7CuxI3LnZx8rAg48F7iznjKAdApNDN5gXzd0wbjAlLyd1vWhnzB3Mp7DY0?=
+ =?us-ascii?Q?VElEOzL384QP7kxBjBlPeLQkwEzh7KAKaOL1Q+rRTtznUKohgqxyjoEFaHch?=
+ =?us-ascii?Q?Z/9vLDuPJSsRNF0w7BNQR0MaP4XNBmwNIaMyGrERUIXyNK4H7x/KjBxBCfo+?=
+ =?us-ascii?Q?lGLoZQR5u2uws+8QDuBm6t3YJyfF4t3GwY4PyWMStnpeeSNabCHO53yK5EJl?=
+ =?us-ascii?Q?PZSyt+QdDRlCUkTSIexFeg0h8qAXHJbF5RlzsmFm3WnoIrATb4v3jqTOSpsd?=
+ =?us-ascii?Q?aSd+yHuQKAtWARJMtVpQwT1bdm2tLLxZT8vxYlYMpp4kA6++JPLQy5lWV9/3?=
+ =?us-ascii?Q?vUTdpQo/Jw2fh9cKPXk=3D?=
+X-Forefront-Antispam-Report: CIP:216.228.117.160; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge1.nvidia.com; CAT:NONE;
+ SFS:(13230040)(7416014)(376014)(82310400026)(1800799024)(36860700013); DIR:OUT;
+ SFP:1101; 
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 29 Sep 2025 13:41:00.3094 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: ba30f757-1a1a-40ce-6b77-08ddff5dd3a9
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.160];
+ Helo=[mail.nvidia.com]
+X-MS-Exchange-CrossTenant-AuthSource: CH2PEPF00000099.namprd02.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS0PR12MB6557
+Received-SPF: permerror client-ip=2a01:111:f403:c101::7;
+ envelope-from=skolothumtho@nvidia.com;
+ helo=BL0PR03CU003.outbound.protection.outlook.com
+X-Spam_score_int: -12
+X-Spam_score: -1.3
 X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
- DKIM_SIGNED=0.1, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, T_SPF_HELO_TEMPERROR=0.01,
- T_SPF_TEMPERROR=0.01 autolearn=no autolearn_force=no
+X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
+ DKIM_SIGNED=0.1, KHOP_HELO_FCRDNS=0.4, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -132,17 +157,136 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, Sep 29, 2025 at 02:19:48PM +0530, Arun Menon wrote:
-> Hi,
-> Gentle ping for the series.
-> Is there something more to be done to improve this before queueing it?
-> TIA.
+QEMU SMMUv3 currently sets the output address size (OAS) to 44 bits. With
+accelerator mode enabled, a guest device may use SVA where CPU page tables
+are shared with SMMUv3, requiring OAS at least equal to the CPU OAS. Add
+a user option to set this.
 
-Arun, don't worry - I believe this is on Fabiano's radar.
+Note: Linux kernel docs currently state the OAS field in the IDR register
+is not meaningful for users. But looks like we need this information.
 
-Thanks,
+Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
+---
+ hw/arm/smmuv3-accel.c    | 15 +++++++++++++++
+ hw/arm/smmuv3-internal.h |  3 ++-
+ hw/arm/smmuv3.c          | 15 ++++++++++++++-
+ include/hw/arm/smmuv3.h  |  1 +
+ 4 files changed, 32 insertions(+), 2 deletions(-)
 
+diff --git a/hw/arm/smmuv3-accel.c b/hw/arm/smmuv3-accel.c
+index eee54316bf..ba37d690ad 100644
+--- a/hw/arm/smmuv3-accel.c
++++ b/hw/arm/smmuv3-accel.c
+@@ -86,6 +86,17 @@ smmuv3_accel_check_hw_compatible(SMMUv3State *s,
+         return false;
+     }
+ 
++    /*
++     * ToDo: OAS is not something Linux kernel doc says meaningful for user.
++     * But looks like OAS needs to be compatibe for accelerator support. Please
++     * check.
++     */
++    val = FIELD_EX32(info->idr[5], IDR5, OAS);
++    if (val < FIELD_EX32(s->idr[5], IDR5, OAS)) {
++        error_setg(errp, "Host SUMMUv3 OAS not compatible");
++        return false;
++    }
++
+     val = FIELD_EX32(info->idr[5], IDR5, GRAN4K);
+     if (val != FIELD_EX32(s->idr[5], IDR5, GRAN4K)) {
+         error_setg(errp, "Host SMMUv3 doesn't support 64K translation granule");
+@@ -648,6 +659,10 @@ void smmuv3_accel_idr_override(SMMUv3State *s)
+     if (s->ats) {
+         s->idr[0] = FIELD_DP32(s->idr[0], IDR0, ATS, 1); /* ATS */
+     }
++    /* QEMU SMMUv3 has oas set 44. Update IDR5 if user has it set to 48 bits*/
++    if (s->oas == 48) {
++        s->idr[5] = FIELD_DP32(s->idr[5], IDR5, OAS, SMMU_IDR5_OAS_48);
++    }
+ }
+ 
+ /*
+diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
+index b0dfa9465c..910a34e05b 100644
+--- a/hw/arm/smmuv3-internal.h
++++ b/hw/arm/smmuv3-internal.h
+@@ -111,7 +111,8 @@ REG32(IDR5,                0x14)
+      FIELD(IDR5, VAX,        10, 2);
+      FIELD(IDR5, STALL_MAX,  16, 16);
+ 
+-#define SMMU_IDR5_OAS 4
++#define SMMU_IDR5_OAS_44 4
++#define SMMU_IDR5_OAS_48 5
+ 
+ REG32(IIDR,                0x18)
+ REG32(AIDR,                0x1c)
+diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+index 77d46a9cd6..7c391ab711 100644
+--- a/hw/arm/smmuv3.c
++++ b/hw/arm/smmuv3.c
+@@ -294,7 +294,8 @@ static void smmuv3_init_regs(SMMUv3State *s)
+     s->idr[3] = FIELD_DP32(s->idr[3], IDR3, RIL, 1);
+     s->idr[3] = FIELD_DP32(s->idr[3], IDR3, BBML, 2);
+ 
+-    s->idr[5] = FIELD_DP32(s->idr[5], IDR5, OAS, SMMU_IDR5_OAS); /* 44 bits */
++    /* OAS: 44 bits */
++    s->idr[5] = FIELD_DP32(s->idr[5], IDR5, OAS, SMMU_IDR5_OAS_44);
+     /* 4K, 16K and 64K granule support */
+     s->idr[5] = FIELD_DP32(s->idr[5], IDR5, GRAN4K, 1);
+     s->idr[5] = FIELD_DP32(s->idr[5], IDR5, GRAN16K, 1);
+@@ -1943,6 +1944,10 @@ static bool smmu_validate_property(SMMUv3State *s, Error **errp)
+     }
+ #endif
+     if (s->accel) {
++        if (s->oas != 44 && s->oas != 48) {
++            error_setg(errp, "oas can only be set to 44 or 48 bits");
++            return false;
++        }
+         return true;
+     }
+     if (!s->ril) {
+@@ -1953,6 +1958,10 @@ static bool smmu_validate_property(SMMUv3State *s, Error **errp)
+         error_setg(errp, "ats can only be enabled if accel=on");
+         return false;
+     }
++    if (s->oas != 44) {
++        error_setg(errp, "oas can only be set to 44 bits if accel=off");
++        return false;
++    }
+     return true;
+ }
+ 
+@@ -2078,6 +2087,7 @@ static const Property smmuv3_properties[] = {
+     /* RIL can be turned off for accel cases */
+     DEFINE_PROP_BOOL("ril", SMMUv3State, ril, true),
+     DEFINE_PROP_BOOL("ats", SMMUv3State, ats, false),
++    DEFINE_PROP_UINT8("oas", SMMUv3State, oas, 44),
+ };
+ 
+ static void smmuv3_instance_init(Object *obj)
+@@ -2110,6 +2120,9 @@ static void smmuv3_class_init(ObjectClass *klass, const void *data)
+     object_class_property_set_description(klass, "ats",
+         "Enable/disable ATS support. Please ensure host platform has ATS "
+         "support before enabling this");
++    object_class_property_set_description(klass, "oas",
++        "Specify Output Address Size. Supported values are 44 or 48 bits "
++        "Defaults to 44 bits");
+ }
+ 
+ static int smmuv3_notify_flag_changed(IOMMUMemoryRegion *iommu,
+diff --git a/include/hw/arm/smmuv3.h b/include/hw/arm/smmuv3.h
+index 6f07baa144..d3788b2d85 100644
+--- a/include/hw/arm/smmuv3.h
++++ b/include/hw/arm/smmuv3.h
+@@ -70,6 +70,7 @@ struct SMMUv3State {
+     Error  *migration_blocker;
+     bool ril;
+     bool ats;
++    uint8_t oas;
+ };
+ 
+ typedef enum {
 -- 
-Peter Xu
+2.43.0
 
 

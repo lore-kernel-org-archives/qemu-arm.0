@@ -4,72 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F64ECAC5B0
-	for <qemu-arm@archiver.kernel.org>; Mon, 29 Sep 2025 10:38:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50B5ECAC5B5
+	for <qemu-arm@archiver.kernel.org>; Mon, 29 Sep 2025 10:39:18 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v3BGt-0000Bv-LI; Mon, 29 Sep 2025 06:38:21 -0400
+	id 1v3BHc-0000Y0-HE; Mon, 29 Sep 2025 06:39:04 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v3BGf-00006U-UB
- for qemu-arm@nongnu.org; Mon, 29 Sep 2025 06:38:07 -0400
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v3BHa-0000XC-Ld
+ for qemu-arm@nongnu.org; Mon, 29 Sep 2025 06:39:02 -0400
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v3BGb-0003nw-A3
- for qemu-arm@nongnu.org; Mon, 29 Sep 2025 06:38:04 -0400
-Received: by mail-wm1-x32b.google.com with SMTP id
- 5b1f17b1804b1-46e48d6b95fso18730595e9.3
- for <qemu-arm@nongnu.org>; Mon, 29 Sep 2025 03:37:54 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v3BHQ-00043g-Qm
+ for qemu-arm@nongnu.org; Mon, 29 Sep 2025 06:39:01 -0400
+Received: by mail-wr1-x42c.google.com with SMTP id
+ ffacd0b85a97d-3f99ac9acc4so3682829f8f.3
+ for <qemu-arm@nongnu.org>; Mon, 29 Sep 2025 03:38:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1759142270; x=1759747070; darn=nongnu.org;
+ d=linaro.org; s=google; t=1759142325; x=1759747125; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=MAjojh3+fzVJToeRPImJu4+aCgGjbdiTzfqgwr3WcbI=;
- b=sPsVbeMOPZa0LxTt4czL/VO4AJchrcTlfg+xVlR7x/h+q36a7phCEEExz/+ZLlrxcI
- 69eg4XW4a7fxWBSpqIhN4OXMUc48VPnMjYirkL8tGQRCtpLupQnKFwyXc+tNBsrMamU3
- bFQaWsKSqw4iqddSXVedrLE4AzyYo1FZqL48iwZlFuUrGd22QIvvTpL2TvHVXS2S+Lh9
- f0MkCrKolRosVUz9b2SwGlTsBMn2OREKzsP4+Rx5hFdxGlen7SBklD6wjwCUJ+Mg0HbV
- M/G7C6BwVHuP/PNClvvDHXqFNu/TUeXMftPlWXmwLCIBXG87w4bxEOmTN+wieGxoCnon
- X2SA==
+ bh=GkQfNdF8/1YXaWqYo9IuawZRMCWQcQ2zbgerS62scVQ=;
+ b=Xc91OhTqm3PP1uJLbx3z0fI6iSwapL2kYT4DPUXsQm7LTeekbTuBRzpeOJ8y8JO2Jy
+ oqHeAmC8qMBRZzxlkv8pJw/+dqUgEl126jHuCFJ5w4TutWhLDmWc9HocnoFZ9nOuqy27
+ iXrOTMb+AcOL2B9IwW05kY6GQoLQyskd+7zIPWmNXr5j0weR8p5vYJyCc+z59bl/79qP
+ 5QgGRMMGoo6lZt5F0H5NTtUXUQZ7sGrUALQIsa0luxft7bFafIwCJgW8tjwSZP7045DX
+ 1NC3RRS9EilJsenVQj1GsyTetBbwS6xriroDp6RBAdwwVRxL0N5RFxKgXCNAR5MwJPRV
+ lTdg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759142270; x=1759747070;
+ d=1e100.net; s=20230601; t=1759142325; x=1759747125;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=MAjojh3+fzVJToeRPImJu4+aCgGjbdiTzfqgwr3WcbI=;
- b=TKTArP6qeISi6UUZ/Fp8B6FLFJValTCr0oX0sRGwdTq0RE3V7nE30hKO6C3yc6JvWa
- z7rIG3/VQpOqKCQX+9Tz3w/jjvldN2toE/Llp7HawEQi0ktCwlUh0Kcjf7T+R8eEQLvJ
- HlsuszZmEviC1Dlmx5Tkr66/NtcTEgqXG3TrNX7hbEBs9iLWMwWA7fSa+BH4mcUlJCjC
- U1Zw8xq+pOIJcPGBdFpNVH1OuDO1AbqqlBSHLTlCDCabhbdvRE6dz3GOl17WUAYDCRW3
- vapzmAyqSBgRmLuotyX6hAt5cvJLNdCWiuHdS4EsnUS30cEyGRpdwBODBkgSeKsK/nrR
- WePA==
+ bh=GkQfNdF8/1YXaWqYo9IuawZRMCWQcQ2zbgerS62scVQ=;
+ b=ZO9lCQJfJ0Wn2Ekv4HzObyrQXb6GOSGjKY53Tv6QvOVQUZvrtsi1B6BSp2rPaNodUy
+ S1NCEt4J74GJrSCofXTW1R1tY38luOjgUT3wRRpzLvP5KaZ7fdd+2wi4Hy4JMq2HwYcF
+ wMjoEKleQLNaitk9oVi3UkmVBQ61h+ly4G7ua7/jiQQtMuL3aqQa/MIUt+Bb2n9EMsKO
+ SZlT7umrKOhkb4DaRyuJ8c+su0tfEyQtNpTMiUODwb/nKsK37wr5ZosWmTEI8B/chUbm
+ MolrY8V2Y2I8ly39GuglA9EuUYbMAej4NlHlEAJ7eAWMxjsm0Fl/9TVdXYDQpPDRxnnr
+ xGIw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXg9KCi9iXwwn5adksUTqXBQ699xIW567VeMrxsrUdUYGO/vSj6zqcnwh+G2fOxKn+3jlHtnohXpA==@nongnu.org
-X-Gm-Message-State: AOJu0YyoXEFfYCNNyQTAGmVddiicxS7TKfEnegSQL5QpthaSKLMdTQhe
- 5xw756jS2nUU8THE4/c3ZMIZNAwtbFriCZSxPjd0vi/SLBzIUtx30YZRCpTUcViX6Ws=
-X-Gm-Gg: ASbGncvp0ksreb9EpshIUQnKuwhMvIB/cIK0tr8vFjJR+CIuHX14QZMAtwGiPNQRcTP
- ZhzwJ2f5BeQBXOP3S+locbP35cSrqNs4EpJO3/3OlkYv8azJ7iomI2kTqof2h6uDT8vq+JxqT6d
- i55vyeqqacKaxxbYDQINhCTv/YEwNl5Ah9GiH+riMtJPCZRvQqyUCu9OfhG1cGmZgcELG6ys/oI
- 1uno6ypLTuCFp7XGUm6l2Vs33nv7Y/3JbMukdS1mjytyCRUDVklDZPrmoOirfetk/AbxjN2Hz73
- y/Mj+iGmlCK5yKKT1dgjQS1CtLKdp/hQkb/2iMlTNbK7bRjWH4L6O/nHxKkX0tnCPqDfNV1NtGL
- FynPTX6kUd0vvc/JRl+InhkCPebrnifpD8VKu4LWhDWXFrbVr9DvJjpqm+gWlACiyog==
-X-Google-Smtp-Source: AGHT+IEjWw5O8IWWBs437wcF5tJzOMjRcXQ+lr1qPZVm5+EgVWyT5y8HlNDnwynHeJt1X95wAvY7sg==
-X-Received: by 2002:a05:600c:4e50:b0:46e:3d5a:d15d with SMTP id
- 5b1f17b1804b1-46e3d5ad285mr110930615e9.26.1759142269951; 
- Mon, 29 Sep 2025 03:37:49 -0700 (PDT)
+ AJvYcCXWaA9xwTcd3Gur5BZyUAOIX8yXr1vScYX039GP7Q/fZmqP4ZUmScBii+DLgyZRXqpNzTCs1SGrGg==@nongnu.org
+X-Gm-Message-State: AOJu0Ywk3xQUgtr9wRWDzKAjlXtk3MbJ3vpaMFXF8qpHpkcPrdowiqAm
+ +8+VOMNo2ups9QmGbT4kGUSD2+M7UDALfuFkl2z6gP6dOnG+tGt18AdPhaB6PuEg1rE=
+X-Gm-Gg: ASbGncubizHXfCAF++FptoQ9RkwFfLfunHwfvUFrXHmgXHibr2UxvE3pPRYUWjRtBx6
+ /RzKO6hU3vnaemK/rMw2Qwrd/hGcekduNht6VXPMQf2zKyMixMqrYdYZ5LFynsPU7lIfSmMZ+8o
+ bZR7H8swsgB9qcjHFeLeQSGXTuHSLiaolxlh+fGsfW1zJ9RUwptmKz4j5k6BJhxXldPB6IuEezb
+ KqEGzhKRZaPK7v1vvS3ScCVs7cNUWLdT8Cqxny8A2dBUZTbPukGLBSoPNktbt/+QUHZ87LowsTD
+ 2CY7/uXT1iXDZZy3yAJPKo0vB2MsxIspDCMuoy6JptrlagaLby5r2RBR8MHYiGRkh5uVWBcHHk3
+ m8S2jxjTEwxI7jaLqNSIIyDHThYUH7VWppravqbOPVrPuekgitxYe+twQMGTRodDQReMoL8xkfv
+ K1
+X-Google-Smtp-Source: AGHT+IE4mtKkv7JaKO93A0mFA/dVWpaP/FCqlB/M9qgTmi/cJAXBlzpzk5irWWm2ugiklkZBqKdQ+A==
+X-Received: by 2002:a05:6000:400b:b0:3e8:9e32:38f8 with SMTP id
+ ffacd0b85a97d-40e44498167mr16297596f8f.14.1759142325453; 
+ Mon, 29 Sep 2025 03:38:45 -0700 (PDT)
 Received: from [192.168.69.221] (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-46e56f658ffsm7443535e9.14.2025.09.29.03.37.49
+ ffacd0b85a97d-4151d0ae6f9sm13268199f8f.51.2025.09.29.03.38.44
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 29 Sep 2025 03:37:49 -0700 (PDT)
-Message-ID: <41fd8595-6f8d-4583-8d72-dace695adc2d@linaro.org>
-Date: Mon, 29 Sep 2025 12:37:48 +0200
+ Mon, 29 Sep 2025 03:38:45 -0700 (PDT)
+Message-ID: <83f7009f-1464-475c-9694-0af3a4fea4ba@linaro.org>
+Date: Mon, 29 Sep 2025 12:38:44 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 42/47] hw/arm/xlnx-versal-virt: split into
- base/concrete classes
+Subject: Re: [PATCH v6 46/47] hw/arm/xlnx-versal-virt: add the
+ xlnx-versal2-virt machine
 Content-Language: en-US
 To: Luc Michel <luc.michel@amd.com>, qemu-devel@nongnu.org, qemu-arm@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -79,13 +80,13 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Frederic Konrad <frederic.konrad@amd.com>,
  Sai Pavan Boddu <sai.pavan.boddu@amd.com>
 References: <20250926070806.292065-1-luc.michel@amd.com>
- <20250926070806.292065-43-luc.michel@amd.com>
+ <20250926070806.292065-47-luc.michel@amd.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20250926070806.292065-43-luc.michel@amd.com>
+In-Reply-To: <20250926070806.292065-47-luc.michel@amd.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -109,16 +110,19 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 26/9/25 09:08, Luc Michel wrote:
-> Split the xlnx-versal-virt machine type into a base abstract type and a
-> concrete type. There is no functional change. This is in preparation for
-> the versal2 machine.
+> Add the Versal Gen 2 Virtual development machine embedding a
+> versal2 SoC. This machine follows the same principle than the
+> xlnx-versal-virt machine. It creates its own DTB and feeds it to the
+> software payload. This way only implemented devices are exposed to the
+> guest and the user does not need to provide a DTB.
 > 
 > Signed-off-by: Luc Michel <luc.michel@amd.com>
 > Reviewed-by: Francisco Iglesias <francisco.iglesias@amd.com>
 > Reviewed-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
 > ---
->   hw/arm/xlnx-versal-virt.c | 74 +++++++++++++++++++++++++++------------
->   1 file changed, 52 insertions(+), 22 deletions(-)
+>   docs/system/arm/xlnx-versal-virt.rst | 49 ++++++++++++++++++++++++----
+>   hw/arm/xlnx-versal-virt.c            | 37 +++++++++++++++++++--
+>   2 files changed, 76 insertions(+), 10 deletions(-)
 
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 

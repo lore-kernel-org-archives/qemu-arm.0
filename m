@@ -4,83 +4,115 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47377CAC5B5
-	for <qemu-arm@archiver.kernel.org>; Mon, 29 Sep 2025 00:35:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EECFCCAC5B5
+	for <qemu-arm@archiver.kernel.org>; Mon, 29 Sep 2025 05:42:37 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v31r8-0005Qd-6Q; Sun, 28 Sep 2025 20:35:06 -0400
+	id 1v36dz-00056f-9A; Mon, 29 Sep 2025 01:41:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1v31r4-0005PA-Q8
- for qemu-arm@nongnu.org; Sun, 28 Sep 2025 20:35:03 -0400
-Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1v31qv-0007Mo-FY
- for qemu-arm@nongnu.org; Sun, 28 Sep 2025 20:35:01 -0400
-Received: by mail-ed1-x530.google.com with SMTP id
- 4fb4d7f45d1cf-6228de280a4so7848681a12.2
- for <qemu-arm@nongnu.org>; Sun, 28 Sep 2025 17:34:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1759106088; x=1759710888; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=2rfX5WOfA1y09+eggC5CNyFt9iUd0mD+S4yDvOqh9A0=;
- b=c/S95+LfLTbyc6DU6qEBLaZKHrh7+XegSmjwp3tjPvArBoJDnnKQm0oakLJpM8NQkz
- VV2kSRCIWkUTPfTNGLqvTRYPi76gtW4BLAgbMv9AwYS7acCThYoe2mT3zsUosTFqB6TN
- WLZ50yP5hXJn38CSv05nBFYxjZ03lXWkvzcE/QpovGS8F9CeOf0HVbqfJcd9DeiBrftv
- TrsYGq25mMONvhPpg1VvuDQBa6h/jhwLjcuVf0PFP7B1KQ1iU+crSzT9Xc1jIqc9btqp
- SMDpGRNyEGhpD1EpY5fgamedfMl+hoht+Ws7D9CNLkbDR2okWVBTDjhMRfhS4omVeNmJ
- Ineg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759106088; x=1759710888;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=2rfX5WOfA1y09+eggC5CNyFt9iUd0mD+S4yDvOqh9A0=;
- b=kYvfaIdasKosfEQUHftzJsAh6xCpNI5xFP7diuecLMGiwdFJ14+wmbR6pWI+KrZCar
- DYfprxULxH0sz4M80Ebu7pCgObBpgjWYKWmbKPmJo/jhA6pxIyKH6xagPI1mEP7YDfFw
- cvl9eukVe0Oac6YhvBonh7D9I5rBoSI+xzdpFRtv65wnu7xIOgnbJc2ygb2Zek3eJnnm
- bIty9i4ToO9nXmDfMJcUzt7ETRioo/1nkTBZX43HV77dzwvdCtYzzhbNQ6g/+joCMCjF
- khDps4o7rQjrmMAz80bU9Mm2S/Tx+MA7ca5HpUCLWh0v04rRdl91K2DkxNEvJ3I2tme4
- DE0w==
-X-Gm-Message-State: AOJu0YyQFPC1tNOtLS5y6NJcQxmucvxlvvN13/SOOHU456mgdvisjgNh
- kso/41v4jdMc/sEcjOLPVD8MIgHI0GPQJyapGjmeQllwovqWv/ishqQR5wtxFarU3MsGtueTboz
- tDXD3761020dNEDmDnpLkoT0xtMrLbxE=
-X-Gm-Gg: ASbGncuFND6Cw6JB80OGsVdjJjaaus+AtEbHqSWt6fzm2y7Pfb39gFDLEuksNV9mdsA
- P+Qu/b5ToBMcVJn6zJgk2nzkO/Ge1ZSG6ZjpgRP07ykUfISbwjayDmPPZrZSS3PWWxmvkxNJhLW
- CDqak2bAmeUYbQV5hKPja06GJ2/8xhR16GY+OzVtImk6leSKMY3336dp6mpnL/qSB7BCa/gsowb
- uNlDiLAGo/xqPPLVtnT8CG0h4MD74fKZWuXCA==
-X-Google-Smtp-Source: AGHT+IEImx5Ln0lob2PHtZQgZCyGzqItUZep1UCIWt5rRZVdTu/7jjDjE/+TpOxfriDjpe9FAsMOA2xOiPwCrZacY9E=
-X-Received: by 2002:a05:6402:180c:b0:632:bc36:db59 with SMTP id
- 4fb4d7f45d1cf-6349f9cb7demr10990713a12.1.1759106088398; Sun, 28 Sep 2025
- 17:34:48 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1v36dx-00056I-0C
+ for qemu-arm@nongnu.org; Mon, 29 Sep 2025 01:41:49 -0400
+Received: from 10.mo548.mail-out.ovh.net ([46.105.77.235])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1v36dg-0008V1-NV
+ for qemu-arm@nongnu.org; Mon, 29 Sep 2025 01:41:48 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.110.0.1])
+ by mo548.mail-out.ovh.net (Postfix) with ESMTPS id 4cZqmq03F0z6Mt6;
+ Mon, 29 Sep 2025 05:41:14 +0000 (UTC)
+Received: from kaod.org (37.59.142.103) by DAG8EX2.mxp5.local (172.16.2.72)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.59; Mon, 29 Sep
+ 2025 07:41:13 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-103G00529ba7d3e-903a-45a0-95eb-b90fb64884e1,
+ C0B7F939972EFBFB8B135CC8703FF5F6CF89E47D) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <ebe8c9c3-0e94-4ed0-a231-4d93306fb779@kaod.org>
+Date: Mon, 29 Sep 2025 07:41:13 +0200
 MIME-Version: 1.0
-References: <20250821154229.2417453-1-peter.maydell@linaro.org>
-In-Reply-To: <20250821154229.2417453-1-peter.maydell@linaro.org>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 29 Sep 2025 10:34:22 +1000
-X-Gm-Features: AS18NWC6DHgNHdcvbUZ1qPhB8KxFPzTO3wKWR_VlVeNh1cR6KkYYska4wKvnswI
-Message-ID: <CAKmqyKOxaStFvb5XSzEHOw4Sz9NkaFQE2+NS2JNwHnrVOpJijw@mail.gmail.com>
-Subject: Re: [PATCH] hw/arm/stm32f205_soc: Don't leak TYPE_OR_IRQ objects
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
- Alistair Francis <alistair@alistair23.me>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::530;
- envelope-from=alistair23@gmail.com; helo=mail-ed1-x530.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 0/8] Support VBOOTROM to ast2700fc machine
+To: Jamin Lin <jamin_lin@aspeedtech.com>, Peter Maydell
+ <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
+ <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, Joel
+ Stanley <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+CC: <troy_lee@aspeedtech.com>
+References: <20250925050535.2657256-1-jamin_lin@aspeedtech.com>
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Content-Language: en-US, fr
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <20250925050535.2657256-1-jamin_lin@aspeedtech.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [37.59.142.103]
+X-ClientProxiedBy: DAG8EX2.mxp5.local (172.16.2.72) To DAG8EX2.mxp5.local
+ (172.16.2.72)
+X-Ovh-Tracer-GUID: 86feff9a-7028-4b3c-96d8-88017d6c4945
+X-Ovh-Tracer-Id: 2015923786936978223
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: dmFkZTFWyVH2V4mfc4aDPxbZ9UJrhypCK4hERc4T0EY52wk90J1OwS6ntWUNYU/U44ROqGCyUuNDyatPCeSedbMCYqSDv5TLzH94OzrRNHzc6D+/vE0p7BCmUAK1bWoqe4gFqSzyLumXGa+4SgQEDup9+SrXBtxZJhrsPAphPE8+1ESixsStRDe51dA7q6g6gJh0pNqxmbSwhH84R6qLXQf9uu9kSyiu9l9ytVhPi4tX9bXTqv+kXVmUTDCT7vIBHdnb7mzQdVmpGJURgnybNVvE8FO7FXdJz0Tp3bhfceuUXH9W/mF4yyLK1RgIeIvpBELCoi8EBNaueWhqSTRAd521cqS2pjt9yU0As1BPXmF8V9m6Fp1ZV5ZpUDI8AJR5M30Tj1p5gFSv+sT6zZSTTpqWt82epuJ0ntFz+AvbzkUOze6HkfEFW81lw3s3J9c8DIvTgmqOe4FXx6rqJ/6XorMQNq3LvEjxuxxzDeZWH2MnJn9w1lEiz1JfYsUlVmaH8hzDK7eLNQo5TH6Zh2L/poT7qfxyO7jwgNJwDiLmVUD+fEFZCUWiiuCLw4lFZGlB5KpK3r5aweDvhQutKWz200geQUSbcKAGXj5rIAB0jAyz97r0OFJupE6//EQ23UQXonVDusC5lOCmRWwAMXOsxv/00ACXPx/2tZ7HHLpjrUGOugDfig
+DKIM-Signature: a=rsa-sha256; bh=8OYxozQg+Nkxcm35BtV4SokJTRznc6l6hsCF9NSwwKA=; 
+ c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
+ t=1759124476; v=1;
+ b=HUVfWvhvNwpDtpdbFXpPy4sTgj1LYTssTqTtLkPYYGUNaNUXRauDmq0wRkfOc5BdsTFvoUTf
+ puwWOObdXR2z0OG8Hbk5mvgo1fTwzDH5MBYtrtA0EmB2MCI5gaL12d3iUXFAd2qByBA9R7/K2PY
+ ohAe7VQTrDHR8C8yT0WlFg+cuNHOR+FyXpkuNLyMOGewNXPshDLHC1XEe12SRNYtZZHGTCa7Oe+
+ DWLivXQiNE++JEdieG+bpFWAwdpbu8QjSE1NMPGBASPbSfusSx8E2ZBYgVEseeOAWQMt6XhihVy
+ mIm23R9ayt2kGxNg/iumgO+upHtAaLKmsD3VL8mpQ4G4Q==
+Received-SPF: pass client-ip=46.105.77.235; envelope-from=clg@kaod.org;
+ helo=10.mo548.mail-out.ovh.net
+X-Spam_score_int: -16
+X-Spam_score: -1.7
 X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- T_SPF_TEMPERROR=0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
+ DKIM_SIGNED=0.1, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, T_SPF_TEMPERROR=0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -96,126 +128,57 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, Aug 22, 2025 at 1:42=E2=80=AFAM Peter Maydell <peter.maydell@linaro=
-.org> wrote:
->
-> In stm32f250_soc_initfn() we mostly use the standard pattern
-> for child objects of calling object_initialize_child(). However
-> for s->adc_irqs we call object_new() and then later qdev_realize(),
-> and we never unref the object on deinit. This causes a leak,
-> detected by ASAN on the device-introspect-test:
->
-> Indirect leak of 10 byte(s) in 1 object(s) allocated from:
->     #0 0x5b9fc4789de3 in malloc (/mnt/nvmedisk/linaro/qemu-from-laptop/qe=
-mu/build/arm-asan/qemu-system-arm+0x21f1de3) (BuildId: 267a2619a026ed91c78a=
-07b1eb2ef15381538efe)
->     #1 0x740de3f28b09 in g_malloc (/lib/x86_64-linux-gnu/libglib-2.0.so.0=
-+0x62b09) (BuildId: 1eb6131419edb83b2178b682829a6913cf682d75)
->     #2 0x740de3f3e4d8 in g_strdup (/lib/x86_64-linux-gnu/libglib-2.0.so.0=
-+0x784d8) (BuildId: 1eb6131419edb83b2178b682829a6913cf682d75)
->     #3 0x5b9fc70159e1 in g_strdup_inline /usr/include/glib-2.0/glib/gstrf=
-uncs.h:321:10
->     #4 0x5b9fc70159e1 in object_property_try_add /mnt/nvmedisk/linaro/qem=
-u-from-laptop/qemu/build/arm-asan/../../qom/object.c:1276:18
->     #5 0x5b9fc7015f94 in object_property_add /mnt/nvmedisk/linaro/qemu-fr=
-om-laptop/qemu/build/arm-asan/../../qom/object.c:1294:12
->     #6 0x5b9fc701b900 in object_add_link_prop /mnt/nvmedisk/linaro/qemu-f=
-rom-laptop/qemu/build/arm-asan/../../qom/object.c:2021:10
->     #7 0x5b9fc701b3fc in object_property_add_link /mnt/nvmedisk/linaro/qe=
-mu-from-laptop/qemu/build/arm-asan/../../qom/object.c:2037:12
->     #8 0x5b9fc4c299fb in qdev_init_gpio_out_named /mnt/nvmedisk/linaro/qe=
-mu-from-laptop/qemu/build/arm-asan/../../hw/core/gpio.c:90:9
->     #9 0x5b9fc4c29b26 in qdev_init_gpio_out /mnt/nvmedisk/linaro/qemu-fro=
-m-laptop/qemu/build/arm-asan/../../hw/core/gpio.c:101:5
->     #10 0x5b9fc4c0f77a in or_irq_init /mnt/nvmedisk/linaro/qemu-from-lapt=
-op/qemu/build/arm-asan/../../hw/core/or-irq.c:70:5
->     #11 0x5b9fc70257e1 in object_init_with_type /mnt/nvmedisk/linaro/qemu=
--from-laptop/qemu/build/arm-asan/../../qom/object.c:428:9
->     #12 0x5b9fc700cd4b in object_initialize_with_type /mnt/nvmedisk/linar=
-o/qemu-from-laptop/qemu/build/arm-asan/../../qom/object.c:570:5
->     #13 0x5b9fc700e66d in object_new_with_type /mnt/nvmedisk/linaro/qemu-=
-from-laptop/qemu/build/arm-asan/../../qom/object.c:774:5
->     #14 0x5b9fc700e750 in object_new /mnt/nvmedisk/linaro/qemu-from-lapto=
-p/qemu/build/arm-asan/../../qom/object.c:789:12
->     #15 0x5b9fc68b2162 in stm32f205_soc_initfn /mnt/nvmedisk/linaro/qemu-=
-from-laptop/qemu/build/arm-asan/../../hw/arm/stm32f205_soc.c:69:26
->
-> Switch to using object_initialize_child() like all our
-> other child objects for this SoC object.
->
-> Cc: qemu-stable@nongnu.org
-> Fixes: b63041c8f6b ("STM32F205: Connect the ADC devices")
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Jamin
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+On 9/25/25 07:05, Jamin Lin wrote:
+> v1
+>   1. Added support for Vboot ROM.
+>   2. Moved coprocessor initialization from machine level to SoC level
+>   3. Unified SCU controllers between PSP and coprocessors
+>   4. Shared the same SRAM between PSP and coprocessors
+>   5. Support PSP DRAM remaps coprocessor SDRAM
+>   6. Added support for controlling coprocessor reset via SCU registers.
+> 
+> v2
+> Split the original patch set into smaller sub-patches for review.
+>   This patch focuses on:
+>    1. Adding support for Vboot ROM.
+>    2. Moving common APIs to SoC-level code for reuse in different
+>       platforms and reducing duplication.
+> 
+> v3
+>    1. Drop dead return checks.
+>    2. Make sub-init functions return bool with errp.
+> 
+> Dependencies
+> 
+> Based on https://github.com/legoater/qemu at the aspeed-next branch.
+> 
+> Jamin Lin (8):
+>    hw/arm/aspeed: Move aspeed_board_init_flashes() to common SoC code
+>    hw/arm/aspeed: Move write_boot_rom to common SoC code
+>    hw/arm/aspeed: Move aspeed_install_boot_rom to common SoC code
+>    hw/arm/aspeed: Move aspeed_load_vbootrom to common SoC code
+>    hw/arm/aspeed_ast27x0-fc: Drop dead return checks
+>    hw/arm/aspeed_ast27x0-fc: Make sub-init functions return bool with
+>      errp
+>    hw/arm/aspeed_ast27x0-fc: Map FMC0 flash contents into CA35 boot ROM
+>    hw/arm/aspeed_ast27x0-fc: Add VBOOTROM support
+> 
+>   include/hw/arm/aspeed_soc.h |   8 +++
+>   hw/arm/aspeed.c             | 105 ++----------------------------------
+>   hw/arm/aspeed_ast27x0-fc.c  |  96 +++++++++++++++++----------------
+>   hw/arm/aspeed_soc_common.c  |  96 +++++++++++++++++++++++++++++++++
+>   4 files changed, 159 insertions(+), 146 deletions(-)
+> 
 
-Alistair
+Applied 1-6 to aspeed-next. Waiting for a commit log update of patch 7.
 
-> ---
->  include/hw/arm/stm32f205_soc.h |  2 +-
->  hw/arm/stm32f205_soc.c         | 10 +++++-----
->  2 files changed, 6 insertions(+), 6 deletions(-)
->
-> diff --git a/include/hw/arm/stm32f205_soc.h b/include/hw/arm/stm32f205_so=
-c.h
-> index 4f4c8bbebc1..46eda3403a9 100644
-> --- a/include/hw/arm/stm32f205_soc.h
-> +++ b/include/hw/arm/stm32f205_soc.h
-> @@ -59,7 +59,7 @@ struct STM32F205State {
->      STM32F2XXADCState adc[STM_NUM_ADCS];
->      STM32F2XXSPIState spi[STM_NUM_SPIS];
->
-> -    OrIRQState *adc_irqs;
-> +    OrIRQState adc_irqs;
->
->      MemoryRegion sram;
->      MemoryRegion flash;
-> diff --git a/hw/arm/stm32f205_soc.c b/hw/arm/stm32f205_soc.c
-> index 229af7fb108..e3c7203c6e7 100644
-> --- a/hw/arm/stm32f205_soc.c
-> +++ b/hw/arm/stm32f205_soc.c
-> @@ -66,7 +66,7 @@ static void stm32f205_soc_initfn(Object *obj)
->                                  TYPE_STM32F2XX_TIMER);
->      }
->
-> -    s->adc_irqs =3D OR_IRQ(object_new(TYPE_OR_IRQ));
-> +    object_initialize_child(obj, "adc-irq-orgate", &s->adc_irqs, TYPE_OR=
-_IRQ);
->
->      for (i =3D 0; i < STM_NUM_ADCS; i++) {
->          object_initialize_child(obj, "adc[*]", &s->adc[i], TYPE_STM32F2X=
-X_ADC);
-> @@ -171,12 +171,12 @@ static void stm32f205_soc_realize(DeviceState *dev_=
-soc, Error **errp)
->      }
->
->      /* ADC 1 to 3 */
-> -    object_property_set_int(OBJECT(s->adc_irqs), "num-lines", STM_NUM_AD=
-CS,
-> +    object_property_set_int(OBJECT(&s->adc_irqs), "num-lines", STM_NUM_A=
-DCS,
->                              &error_abort);
-> -    if (!qdev_realize(DEVICE(s->adc_irqs), NULL, errp)) {
-> +    if (!qdev_realize(DEVICE(&s->adc_irqs), NULL, errp)) {
->          return;
->      }
-> -    qdev_connect_gpio_out(DEVICE(s->adc_irqs), 0,
-> +    qdev_connect_gpio_out(DEVICE(&s->adc_irqs), 0,
->                            qdev_get_gpio_in(armv7m, ADC_IRQ));
->
->      for (i =3D 0; i < STM_NUM_ADCS; i++) {
-> @@ -187,7 +187,7 @@ static void stm32f205_soc_realize(DeviceState *dev_so=
-c, Error **errp)
->          busdev =3D SYS_BUS_DEVICE(dev);
->          sysbus_mmio_map(busdev, 0, adc_addr[i]);
->          sysbus_connect_irq(busdev, 0,
-> -                           qdev_get_gpio_in(DEVICE(s->adc_irqs), i));
-> +                           qdev_get_gpio_in(DEVICE(&s->adc_irqs), i));
->      }
->
->      /* SPI 1 and 2 */
-> --
-> 2.43.0
->
->
+Also, why isn't there a vbootrom functional test for ast2700fc machine ?
+
+Thanks,
+
+C.
+
+
 

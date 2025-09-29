@@ -4,115 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EEC66CAC5B0
-	for <qemu-arm@archiver.kernel.org>; Mon, 29 Sep 2025 08:55:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9FA88CAC5B5
+	for <qemu-arm@archiver.kernel.org>; Mon, 29 Sep 2025 09:47:26 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v39ew-0000kx-Un; Mon, 29 Sep 2025 04:55:04 -0400
+	id 1v3ATI-0005PY-B7; Mon, 29 Sep 2025 05:47:04 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1v39er-0000iJ-9n
- for qemu-arm@nongnu.org; Mon, 29 Sep 2025 04:54:58 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1v39eW-0001Yk-1u
- for qemu-arm@nongnu.org; Mon, 29 Sep 2025 04:54:45 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1759136067;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=FvuMMIh36T7bEzJy9lL6n0zyQNEqJT4rXRP+Yb82gMw=;
- b=g02Ow3azlkZaeayLeX+aJpQit1bjmy/Ek6uzUQf3Yn08VEyZmnPsD0bQeYV80N3p4qMxX+
- lIeZ/IlYj/Y8nq/YwFVXQunQ9V2gzAocTPtQYvH0Nd7x0EzsxYd9ZbeaoQAdAmQZLDF9Tn
- r7/qwhdBYSrGIwDTHak05p/cqxtKM1Y=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-636-6kAd12KgPYyZDOvk-a0rmQ-1; Mon, 29 Sep 2025 04:54:25 -0400
-X-MC-Unique: 6kAd12KgPYyZDOvk-a0rmQ-1
-X-Mimecast-MFC-AGG-ID: 6kAd12KgPYyZDOvk-a0rmQ_1759136064
-Received: by mail-wr1-f70.google.com with SMTP id
- ffacd0b85a97d-3ecdd80ea44so3042758f8f.1
- for <qemu-arm@nongnu.org>; Mon, 29 Sep 2025 01:54:24 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759136064; x=1759740864;
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v3ATF-0005PP-JC
+ for qemu-arm@nongnu.org; Mon, 29 Sep 2025 05:47:02 -0400
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v3AT3-0006x7-1o
+ for qemu-arm@nongnu.org; Mon, 29 Sep 2025 05:47:00 -0400
+Received: by mail-wm1-x336.google.com with SMTP id
+ 5b1f17b1804b1-46e4c9083a0so11367095e9.0
+ for <qemu-arm@nongnu.org>; Mon, 29 Sep 2025 02:46:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1759139203; x=1759744003; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=FvuMMIh36T7bEzJy9lL6n0zyQNEqJT4rXRP+Yb82gMw=;
- b=T3wcR8LURr4iW+VW+w/7eUaC3BUxyVqOaPKIWyciNRSkw3rcDsH5e+DKIBTJqCPi04
- lot5KQHbGlmo1gWKl0H/tJFtm/4dAfyxQqt3m37+A2JSPtDxEm71P7WhxKVDAFiHdowJ
- K+Lrr1k98ZWvh2FMcnelaQDeB+g7zjQwysNCJrUeXtvPxBEEMUHRbvn8bvy/2p9y/PnP
- 9jAFQxo2smiZdCAWxWeQTEmimAFAiEfjOiZnAFJaIHFH3D3aycuxn6Z6BSQcEP7XXoPh
- yhNcz6p7efml6rXWptRJ21Vyxe+GexPqYIi/CTkSBwdApTwejvklFAch7gRQx9OKAWnZ
- JJog==
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=+V//qnbZFZJ90/YB6cboR6+ZHQ+fvTELXb3dtjAa1tM=;
+ b=uK6/UnoowYSacorBF3nPcl67PGyJQxxvbX+lTDXJALqZwaAJUVfhyEyrZoQivaVwH0
+ lJeF0KKyWuRHN05GmyNfhhLlqIOJSaQ01R17gIMB+yu7GGswSbRQJa7oqeFVGOa63LWr
+ 9/DrtFkJSGd9DyVXj+lsxPaqt0WRn2QEgIxT+FsDme7Q/m3kuTBmqFcTPKvYjOUZXuDz
+ 872CL2Z5P0k3/MMeBfs7j8y8zyt64ECXJ+bno9BysYk8icj0q6SnVWQkX6RIGeaUWrFN
+ S0+zqbQPuZZHJ74ZT8f1wfgpxR8SBQNfzPnOJq8QK8hfDYhcGEBM/DHrhMrgBobr6gI8
+ LpPw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1759139203; x=1759744003;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=+V//qnbZFZJ90/YB6cboR6+ZHQ+fvTELXb3dtjAa1tM=;
+ b=cPh9YIy10WWkd0wrNzhq6KjH915zGy87fIPR2UbLLKhn2UcvoL+xyZN1TXDo5Znay4
+ GvxW/34g34eiNb3xY+S//0l/2A13L7z1q3kPEjuznO7QOeeKfBodblWp/5jMXhoeGU/o
+ dH2J/YEieVHoyNqhksZzFdNvWp1j7Zka0RA0h1Pext6OQFNC6MLEFLEpX0x5J7udTqL4
+ O8uswgNNgsje9aMMu+pydHnoX0ivcndidSpfRcK0Q/hmZjs6eL4UH5Ppp4DYq2PXDVQ+
+ YWV3eWRsLAlC55OlikAvNsQbuAdVFyhHvjky6CZqS4nNUQA+wPGkPgA5fj8x6o1VtB7K
+ +xWA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXMlaURHCdHhfxjhvXcqZ/Aq1jWN8gxHqDcWfhDKE1xs7wQMRye9W6U+SjT8DGGLxZHOV/2ejgZHA==@nongnu.org
-X-Gm-Message-State: AOJu0Ywn2gbONKW8U6OxKhj1RMc9W70sfNptPdJlYfP7XTtCeDEtZX8x
- pZQFxqRSHb5AqiVtLiZZNQqs1MYnodhkAJygf03a9b5LLb91+mp8C/i7h2VDS3VmtEVmhg6bqXT
- MVnRlDNVxU4xfYqRP4UvNSEjKCXOTOkbCIlwqU+l2A5p/oqkQSEYWgA==
-X-Gm-Gg: ASbGncvghvY2L5oCOgQp+Nd5R+FHl0yy9W7k2pVG1BO7QzP4gckatRdA/NF65lkkRtn
- X8QYn3tYIJBLu2kE4C1DxEf99gDuz3KRxcm83uUgMJiXw0wYuQnOPC3BEdiKMlFbbQEOw1sZ9qh
- xMmhoEbY55hh/oI7Ko/MyCeNpeaUcH9GCe3a6ysayDRrnbL69Yc9vRgJ5gaaj8xMVhcGuik4M+s
- JYFRVWKh9PoNcuWJB/1YFvgwLGXlGRn1CBHy24SoSbrh5yxExnim5hkTUr55MPB28OGKDi7oI2j
- BT5RGBF1XSr871CW/Ff3w8iLj8FGIvWyU8tGyzJcma33d+siAZrvIawNoAzFU9Pp2IwsIOUPYYa
- Ur7mnehNPDCI=
-X-Received: by 2002:a05:6000:40c8:b0:3ec:db88:bf1 with SMTP id
- ffacd0b85a97d-418005f50dfmr6507934f8f.12.1759136063794; 
- Mon, 29 Sep 2025 01:54:23 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGAGRvZYpbjm87rfeEdUBoudfHp6cVVWo00yxaK8XmEUz+ARXg+T2j7VJ/6/1Zs7yL5MH5pxg==
-X-Received: by 2002:a05:6000:40c8:b0:3ec:db88:bf1 with SMTP id
- ffacd0b85a97d-418005f50dfmr6507904f8f.12.1759136063293; 
- Mon, 29 Sep 2025 01:54:23 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-46e56f77956sm3853495e9.20.2025.09.29.01.54.22
+ AJvYcCU5Lw1YrxUoA/ydteDdIZ6su1O64LY+qYUf3XhrE3d4L6c1uJU3oYmYE3CEm4EyuJlQ0B5lHS7UKw==@nongnu.org
+X-Gm-Message-State: AOJu0Yyn30E3zHKmfyZ8v8ZyUDUp7sKEEIUBf3r0ecKOiba68+iyz95q
+ iaTtO9fcPlnBrSB74rTxfKkWphRVFtFIX/X6FA8R2B00TcBgP4/OB7umfwP5fLzyC/A=
+X-Gm-Gg: ASbGncu2w8tmClpeiDfbMhPAbmq8FPBThUzGl16nD21niUbiT/wfJRsWycUs4nIGvOw
+ nAZrx84SeXlilljvbwrpAGKjZPMTqm3DXIKCy2VmH/a1jM3xd79VBrt+xclPUBTLNY+sXgmobWU
+ 4n1DcX9L2iaRGUQkVWmRLw+Wl04VGXzcK8w4fR4P0CLDuAd1/ne9GsBDnTJXtJDssiP6ThxNAGz
+ f0A2i4VvsfLz3Xejdh0tGXev6n9MorNuTbo6DEhuC9TngJD6Bw6FW/1VR1cZZBupxrQw7C5vbtf
+ l7tsADxtO0AAL6KVc7/+uBqqSwYDPeXUDznjDyA+e/w6JEB6PbOVGJ0a1RJVooUC5kZ+fgTKQlo
+ p1hnA2LE0fFEb6jU15i0Q2ZjDORgS85tDlVFbKLDkI2HHqEOZ0qZwyUUcXG+XuGxe3+5/jcF+ND
+ Uo
+X-Google-Smtp-Source: AGHT+IG+xDXrfnRqSGfqT7yAJTwNTupbpo2mb7dM9T/66xUt4T+D8ztrGwSr3oAPds6/lbpnk9koMw==
+X-Received: by 2002:a05:600c:2d55:b0:45b:910c:adf with SMTP id
+ 5b1f17b1804b1-46e442fa57fmr40413305e9.12.1759139202735; 
+ Mon, 29 Sep 2025 02:46:42 -0700 (PDT)
+Received: from [192.168.69.221] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-46e56f658ffsm5662925e9.14.2025.09.29.02.46.41
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 29 Sep 2025 01:54:22 -0700 (PDT)
-Message-ID: <aaee9930-69c5-4ed1-8bc0-7ad20e084440@redhat.com>
-Date: Mon, 29 Sep 2025 10:54:21 +0200
+ Mon, 29 Sep 2025 02:46:42 -0700 (PDT)
+Message-ID: <1e08caeb-1cf9-4864-a3d0-6d9b3857f2a3@linaro.org>
+Date: Mon, 29 Sep 2025 11:46:41 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 06/14] hw/arm/smmuv3: Add separate address space for
- secure SMMU accesses
-To: Tao Tang <tangtao1634@phytium.com.cn>,
- Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Chen Baozi <chenbaozi@phytium.com.cn>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Jean-Philippe Brucker <jean-philippe@linaro.org>,
- Mostafa Saleh <smostafa@google.com>
-References: <20250925162618.191242-1-tangtao1634@phytium.com.cn>
- <20250925162618.191242-7-tangtao1634@phytium.com.cn>
- <9ea1fc2a-8280-4a31-92b9-4870bf2bf940@redhat.com>
- <fcf54e8a-d4c6-49ea-b31a-35e2f5df1222@phytium.com.cn>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <fcf54e8a-d4c6-49ea-b31a-35e2f5df1222@phytium.com.cn>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: qPaUluDCCtU8UvCNNc2rL9ApSUKBYX9k0X6Z5N3FnMc_1759136064
-X-Mimecast-Originator: redhat.com
+Subject: Re: [PATCH v1 3/5] hw/arm/npcm8xx.c: Add all IRQ ENUMs
 Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
+To: Coco Li <lixiaoyan@google.com>
+Cc: peter.maydell@linaro.org, clg@kaod.org, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, flwu@google.com, andrew@codeconstruct.com.au,
+ Hao Wu <wuhaotsh@google.com>
+References: <20250925005832.3708492-1-lixiaoyan@google.com>
+ <20250925005832.3708492-4-lixiaoyan@google.com>
+ <1a755fbf-e6d6-4f80-b35d-29fcb3f587d3@linaro.org>
+ <CADjXwji8M6RsmPtf6Duw+8WcesZD3qSZ9_cR-oiX+dzJ_w7Z9g@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <CADjXwji8M6RsmPtf6Duw+8WcesZD3qSZ9_cR-oiX+dzJ_w7Z9g@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -35
-X-Spam_score: -3.6
-X-Spam_bar: ---
-X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.539,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=-1, RCVD_IN_MSPIKE_WL=-0.01,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x336.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -125,163 +104,104 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+On 26/9/25 23:48, Coco Li wrote:
+> Hi Phil,
+> 
+> Thanks for the review!
+> It looks like IRQ mapping enums on other boards also generally do not 
+> have line breaks, is it ok if I keep it like this for consistency sake?
 
+This is just a suggestion, since you are modifying these lines. I
+won't object if you keep the old style, and I don't mind if the
+other boards as not changed (also, can be done as future cleanup).
 
-On 9/29/25 10:33 AM, Tao Tang wrote:
-> Hi Eric,
->
-> On 2025/9/29 15:44, Eric Auger wrote:
->> Hi Tao,
->>
->> On 9/25/25 6:26 PM, Tao Tang wrote:
->>> According to the Arm architecture, SMMU-originated memory accesses,
->>> such as fetching commands or writing events for a secure stream, must
->>> target the Secure Physical Address (PA) space. The existing model sends
->>> all DMA to the global address_space_memory.
->>>
->>> This patch introduces the infrastructure to differentiate between
->>> secure
->>> and non-secure memory accesses. A weak global symbol,
->>> arm_secure_address_space, is added, which can be provided by the
->>> machine model to represent the Secure PA space.
->>>
->>> A new helper, smmu_get_address_space(), selects the target address
->>> space based on the is_secure context. All internal DMA calls
->>> (dma_memory_read/write) are updated to use this helper. Additionally,
->>> the attrs.secure bit is set on transactions targeting the secure
->>> address space.
->> The last sentence does not seem to be implemented in that patch?
->
->
-> You are right to point this out, and my apologies for the confusion.
-> As I was preparing the series, the patches were intertwined, and I
-> didn't manage their boundaries clearly. This led me to mistakenly
-> describe a feature in this commit message that is only implemented in
-> a subsequent patch #07.
->
-> I'm very sorry for the confusion and the unnecessary time this has
-> cost you. In all future community interactions, I will pay special
-> attention to ensuring each patch and its description are atomic and
-> self-contained to reduce the review burden for everyone. Thank you for
-> your guidance on this.
+(please avoid top-posting on technical mailing lists).
 
-No problem. Your commit messages are pretty well written and we all do
-such kind of oversights - at least I do ;-) -
-
-Eric
->
->>> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
->>> ---
->>>   hw/arm/smmu-common.c         |  8 ++++++++
->>>   hw/arm/virt.c                |  5 +++++
->>>   include/hw/arm/smmu-common.h | 20 ++++++++++++++++++++
->>>   3 files changed, 33 insertions(+)
->>>
->>> diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
->>> index 62a7612184..24db448683 100644
->>> --- a/hw/arm/smmu-common.c
->>> +++ b/hw/arm/smmu-common.c
->>> @@ -30,6 +30,14 @@
->>>   #include "hw/arm/smmu-common.h"
->>>   #include "smmu-internal.h"
->>>   +/* Global state for secure address space availability */
->>> +bool arm_secure_as_available;
->>> +
->>> +void smmu_enable_secure_address_space(void)
->>> +{
->>> +    arm_secure_as_available = true;
->>> +}
->>> +
->>>   /* IOTLB Management */
->>>     static guint smmu_iotlb_key_hash(gconstpointer v)
->>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
->>> index 02209fadcf..805d9aadb7 100644
->>> --- a/hw/arm/virt.c
->>> +++ b/hw/arm/virt.c
->>> @@ -92,6 +92,8 @@
->>>   #include "hw/cxl/cxl_host.h"
->>>   #include "qemu/guest-random.h"
->>>   +AddressSpace arm_secure_address_space;
->>> +
->>>   static GlobalProperty arm_virt_compat[] = {
->>>       { TYPE_VIRTIO_IOMMU_PCI, "aw-bits", "48" },
->>>   };
->>> @@ -2243,6 +2245,9 @@ static void machvirt_init(MachineState *machine)
->>>           memory_region_init(secure_sysmem, OBJECT(machine),
->>> "secure-memory",
->>>                              UINT64_MAX);
->>>           memory_region_add_subregion_overlap(secure_sysmem, 0,
->>> sysmem, -1);
->>> +        address_space_init(&arm_secure_address_space, secure_sysmem,
->>> +                           "secure-memory-space");
->>> +        smmu_enable_secure_address_space();
->>>       }
->>>         firmware_loaded = virt_firmware_init(vms, sysmem,
->>> diff --git a/include/hw/arm/smmu-common.h
->>> b/include/hw/arm/smmu-common.h
->>> index 3df82b83eb..cd61c5e126 100644
->>> --- a/include/hw/arm/smmu-common.h
->>> +++ b/include/hw/arm/smmu-common.h
->>> @@ -53,6 +53,26 @@ typedef enum SMMUSecurityIndex {
->>>       SMMU_SEC_IDX_NUM,
->>>   } SMMUSecurityIndex;
->>>   +extern AddressSpace __attribute__((weak)) arm_secure_address_space;
->>> +extern bool arm_secure_as_available;
->>> +void smmu_enable_secure_address_space(void);
->>> +
->>> +static inline AddressSpace
->>> *smmu_get_address_space(SMMUSecurityIndex sec_sid)
->>> +{
->>> +    switch (sec_sid) {
->>> +    case SMMU_SEC_IDX_S:
->>> +    {
->>> +        if (arm_secure_as_available) {
->>> +            return &arm_secure_address_space;
->>> +        }
->> don't you want to return NULL or at least emit an error in case
->> !arm_secure_as_available. When adding Realm support this will avoid to
->> return NS AS.
->
->
-> That's a great point. Silently falling back to the non-secure address
-> space is indeed dangerous. I will update the logic to return NULL and
-> emit an error if the secure address space is requested but not available.
->
->>> +    }
->>> +    QEMU_FALLTHROUGH;
->>> +    case SMMU_SEC_IDX_NS:
->>> +    default:
->> Maybe return an error here in case of other value than NS
->
-> Also I will change the default case to handle unexpected values by
-> returning NULL, which will make the code safer for future extensions
-> like Realm.  Then a check for the NULL return value at the call sites
-> of smmu_get_address_space will be applied to handle the error
-> appropriately in v3 series.
->
->
-> Thanks again for your helpful feedback.
->
->
+> 
 > Best,
->
-> Tao
->
->
->>> +        return &address_space_memory;
->>> +    }
->>> +}
->>> +
->>>   /*
->>>    * Page table walk error types
->>>    */
->> Thanks
->>
->> Eric
->
-
+> Coco
+> 
+> On Wed, Sep 24, 2025 at 6:08 PM Philippe Mathieu-Daudé 
+> <philmd@linaro.org <mailto:philmd@linaro.org>> wrote:
+> 
+>     Hi,
+> 
+>     On 25/9/25 02:58, Coco Li wrote:
+>      > In the process of implementing serial gpio and adding the
+>     corresponding
+>      > ENUMs, also complete the list for npcm8xx.
+>      >
+>      > Signed-off-by: Coco Li <lixiaoyan@google.com
+>     <mailto:lixiaoyan@google.com>>
+>      > Reviewed-by: Hao Wu <wuhaotsh@google.com
+>     <mailto:wuhaotsh@google.com>>
+>      > ---
+>      >   hw/arm/npcm8xx.c | 43 ++++++++++++++++++++++++++++++++++++++++++-
+>      >   1 file changed, 42 insertions(+), 1 deletion(-)
+>      >
+>      > diff --git a/hw/arm/npcm8xx.c b/hw/arm/npcm8xx.c
+>      > index a276fea698..10887d07fa 100644
+>      > --- a/hw/arm/npcm8xx.c
+>      > +++ b/hw/arm/npcm8xx.c
+>      > @@ -92,8 +92,14 @@ enum NPCM8xxInterrupt {
+>      >       NPCM8XX_GMAC2_IRQ,
+>      >       NPCM8XX_GMAC3_IRQ,
+>      >       NPCM8XX_GMAC4_IRQ,
+>      > -    NPCM8XX_MMC_IRQ             = 26,
+>      > +    NPCM8XX_ESPI_IRQ,
+>      > +    NPCM8XX_SIOX0_IRQ,
+>      > +    NPCM8XX_SIOX1_IRQ,
+>      > +    NPCM8XX_MC_IRQ              = 25,
+>      > +    NPCM8XX_MMC_IRQ,
+>      >       NPCM8XX_PSPI_IRQ            = 28,
+>      > +    NPCM8XX_VDMA_IRQ,
+>      > +    NPCM8XX_MCTP_IRQ,
+>      >       NPCM8XX_TIMER0_IRQ          = 32,   /* Timer Module 0 */
+>      >       NPCM8XX_TIMER1_IRQ,
+>      >       NPCM8XX_TIMER2_IRQ,
+>      > @@ -116,6 +122,14 @@ enum NPCM8xxInterrupt {
+>      >       NPCM8XX_OHCI1_IRQ,
+>      >       NPCM8XX_EHCI2_IRQ,
+>      >       NPCM8XX_OHCI2_IRQ,
+>      > +    NPCM8XX_SPI1_IRQ            = 82,
+>      > +    NPCM8XX_RNG_IRQ             = 84,
+>      > +    NPCM8XX_SPI0_IRQ            = 85,
+>      > +    NPCM8XX_SPI3_IRQ            = 87,
+>      > +    NPCM8XX_GDMA0_IRQ           = 88,
+>      > +    NPCM8XX_GDMA1_IRQ,
+>      > +    NPCM8XX_GDMA2_IRQ,
+>      > +    NPCM8XX_OTP_IRQ             = 92,
+>      >       NPCM8XX_PWM0_IRQ            = 93,   /* PWM module 0 */
+>      >       NPCM8XX_PWM1_IRQ,                   /* PWM module 1 */
+>      >       NPCM8XX_MFT0_IRQ            = 96,   /* MFT module 0 */
+>      > @@ -128,6 +142,11 @@ enum NPCM8xxInterrupt {
+>      >       NPCM8XX_MFT7_IRQ,                   /* MFT module 7 */
+>      >       NPCM8XX_PCI_MBOX1_IRQ       = 105,
+>      >       NPCM8XX_PCI_MBOX2_IRQ,
+>      > +    NPCM8XX_GPIO231_IRQ         = 108,
+>      > +    NPCM8XX_GPIO233_IRQ,
+>      > +    NPCM8XX_GPIO234_IRQ,
+>      > +    NPCM8XX_GPIO93_IRQ,
+>      > +    NPCM8XX_GPIO94_IRQ,
+>      >       NPCM8XX_GPIO0_IRQ           = 116,
+>      >       NPCM8XX_GPIO1_IRQ,
+>      >       NPCM8XX_GPIO2_IRQ,
+>      > @@ -163,6 +182,12 @@ enum NPCM8xxInterrupt {
+>      >       NPCM8XX_SMBUS24_IRQ,
+>      >       NPCM8XX_SMBUS25_IRQ,
+>      >       NPCM8XX_SMBUS26_IRQ,
+>      > +    NPCM8XX_FLM0_IRQ            = 160,
+>      > +    NPCM8XX_FLM1_IRQ,
+>      > +    NPCM8XX_FLM2_IRQ,
+>      > +    NPCM8XX_FLM3_IRQ,
+> 
+>     Minor style comment, maybe worth adding a new line when the
+>     following enum is not contiguous.
+> 
+>     Regards,
+> 
+>     Phil.
 

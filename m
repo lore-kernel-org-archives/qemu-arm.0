@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6171FCAC5B0
-	for <qemu-arm@archiver.kernel.org>; Mon, 29 Sep 2025 17:02:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66991CAC5B9
+	for <qemu-arm@archiver.kernel.org>; Mon, 29 Sep 2025 17:02:35 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v3H9D-000641-T7; Mon, 29 Sep 2025 12:54:47 -0400
+	id 1v3H9A-0005x3-7g; Mon, 29 Sep 2025 12:54:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1v3H86-0003DY-4n
- for qemu-arm@nongnu.org; Mon, 29 Sep 2025 12:53:38 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1v3H8D-0003Mp-81
+ for qemu-arm@nongnu.org; Mon, 29 Sep 2025 12:53:45 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1v3H82-0002tN-3y
- for qemu-arm@nongnu.org; Mon, 29 Sep 2025 12:53:36 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1v3H87-0002ui-Ef
+ for qemu-arm@nongnu.org; Mon, 29 Sep 2025 12:53:43 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1759164810;
+ s=mimecast20190719; t=1759164816;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=hjUUHHNcZxiZuqkZCcmbvxeBuUGZmKnaqGvTcwPCnMI=;
- b=F3RAJX/WG9lU3X+kPgQvakYy9YwVd/wtFcdPCK7O3ZoDOhgw6Olm820F2oY1gDPitAaL0w
- yM1xrvcO1KEQfb2nEXE3JiZL4BT084QrMeYkYpvUEmg3i5WD5H327LTFEo87uDfa37nVXt
- IlxeX8MDyR6A5LJ5mQ0p1I8ffc4d0q4=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ bh=ahlIDfeDVUpHhDrjEgVTd7H1oIb9R2fpsphOku2d9D4=;
+ b=OY4/Qbq/YhetXmkTuleOiXVgmWVYVpeQMDD5faYAmWcnb0Jy9VsoiFVymm3IGLNCevAlIx
+ nacnqT3vMnjF1MrGj6YHoldcMwT6jNhBBqtZvzUfXod5gzw62+EenSplkc2nwdqAkrU+Wt
+ 2swa4ZkkR6fQxlyK5fzs0+zuVHbUo3Y=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-283-J3kpDFXoNaGoa2ww0PS7Qg-1; Mon,
- 29 Sep 2025 12:53:24 -0400
-X-MC-Unique: J3kpDFXoNaGoa2ww0PS7Qg-1
-X-Mimecast-MFC-AGG-ID: J3kpDFXoNaGoa2ww0PS7Qg_1759164804
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-664-8DvbaqLcNcKZ_toZgyksYg-1; Mon,
+ 29 Sep 2025 12:53:33 -0400
+X-MC-Unique: 8DvbaqLcNcKZ_toZgyksYg-1
+X-Mimecast-MFC-AGG-ID: 8DvbaqLcNcKZ_toZgyksYg_1759164812
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id D76ED1956055; Mon, 29 Sep 2025 16:53:23 +0000 (UTC)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 96750195609F; Mon, 29 Sep 2025 16:53:32 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.32.27])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 23BC91800446; Mon, 29 Sep 2025 16:53:21 +0000 (UTC)
+ id F30CA1800446; Mon, 29 Sep 2025 16:53:30 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 21/32] hw/arm/aspeed_ast2600: Add PCIe RC support (RC_H only)
-Date: Mon, 29 Sep 2025 18:52:19 +0200
-Message-ID: <20250929165230.797471-22-clg@redhat.com>
+Subject: [PULL 25/32] hw/arm/aspeed_ast27x0: Introduce 3 PCIe RCs for AST2700
+Date: Mon, 29 Sep 2025 18:52:23 +0200
+Message-ID: <20250929165230.797471-26-clg@redhat.com>
 In-Reply-To: <20250929165230.797471-1-clg@redhat.com>
 References: <20250929165230.797471-1-clg@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -25
 X-Spam_score: -2.6
 X-Spam_bar: --
 X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.513,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
@@ -86,170 +86,215 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-Wire up the PCIe Root Complex in the AST2600 SoC model.
+Add PCIe Root Complex support to the AST2700 SoC model.
 
-According to the AST2600 firmware driver, only the RC_H controller is
-supported. RC_H uses PCIe PHY1 at 0x1e6ed200 and the PCIe config (H2X)
-register block at 0x1e770000. The RC_H MMIO window is mapped at
-0x70000000–0x80000000. RC_L is not modeled. The RC_H interrupt is
-wired to IRQ 168. Only RC_H is realized and connected to the SoC
-interrupt controller.
+The AST2700 A1 silicon revision provides three PCIe Root Complexes:
 
-The SoC integration initializes PCIe PHY1, instantiates a single RC
-instance, wires its MMIO regions, and connects its interrupt. An alias
-region is added to map the RC MMIO space into the guest physical address
-space.
+PCIe0 with its PHY at 0x12C15000, config (H2X) block at 0x120E0000,
+MMIO window at 0x60000000, and GIC IRQ 56.
 
-This provides enough functionality for firmware and guest drivers to
-discover and use the AST2600 RC_H Root Complex while leaving RC_L
-unimplemented.
+PCIe1 with its PHY at 0x12C15800, config (H2X) block at 0x120F0000,
+MMIO window at 0x80000000, and GIC IRQ 57.
+
+PCIe2 with its PHY at 0x14C1C000, config (H2X) block at 0x140D0000,
+MMIO window at 0xA0000000, and IRQ routed through INTC4 bit 31
+mapped to GIC IRQ 196.
+
+Each RC instantiates a PHY device, a PCIe config (H2X) bridge, and an MMIO
+alias region. The per-RC MMIO alias size is 0x20000000. The AST2700 A0
+silicon revision does not support PCIe Root Complexes, so pcie_num is set
+to 0 in that variant.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20250919093017.338309-9-jamin_lin@aspeedtech.com
+Link: https://lore.kernel.org/qemu-devel/20250919093017.338309-13-jamin_lin@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
  include/hw/arm/aspeed_soc.h |  1 +
- hw/arm/aspeed_ast2600.c     | 74 +++++++++++++++++++++++++++++++++++++
+ hw/arm/aspeed_ast27x0.c     | 74 +++++++++++++++++++++++++++++++++++++
  2 files changed, 75 insertions(+)
 
 diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
-index 79fe353f83b0..a0cf43377507 100644
+index a0cf43377507..aaf518d1799e 100644
 --- a/include/hw/arm/aspeed_soc.h
 +++ b/include/hw/arm/aspeed_soc.h
-@@ -62,6 +62,7 @@ struct AspeedSoCState {
-     MemoryRegion spi_boot_container;
-     MemoryRegion spi_boot;
-     MemoryRegion vbootrom;
-+    MemoryRegion pcie_mmio_alias[ASPEED_PCIE_NUM];
-     AddressSpace dram_as;
-     AspeedRtcState rtc;
-     AspeedTimerCtrlState timerctrl;
-diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-index 59ffd41a4ab0..03e5df96bb4f 100644
---- a/hw/arm/aspeed_ast2600.c
-+++ b/hw/arm/aspeed_ast2600.c
-@@ -48,11 +48,13 @@ static const hwaddr aspeed_soc_ast2600_memmap[] = {
-     [ASPEED_DEV_XDMA]      = 0x1E6E7000,
-     [ASPEED_DEV_ADC]       = 0x1E6E9000,
-     [ASPEED_DEV_DP]        = 0x1E6EB000,
-+    [ASPEED_DEV_PCIE_PHY1] = 0x1E6ED200,
-     [ASPEED_DEV_SBC]       = 0x1E6F2000,
-     [ASPEED_DEV_EMMC_BC]   = 0x1E6f5000,
-     [ASPEED_DEV_VIDEO]     = 0x1E700000,
-     [ASPEED_DEV_SDHCI]     = 0x1E740000,
-     [ASPEED_DEV_EMMC]      = 0x1E750000,
-+    [ASPEED_DEV_PCIE0]     = 0x1E770000,
-     [ASPEED_DEV_GPIO]      = 0x1E780000,
-     [ASPEED_DEV_GPIO_1_8V] = 0x1E780800,
-     [ASPEED_DEV_RTC]       = 0x1E781000,
-@@ -79,6 +81,7 @@ static const hwaddr aspeed_soc_ast2600_memmap[] = {
-     [ASPEED_DEV_FSI1]      = 0x1E79B000,
-     [ASPEED_DEV_FSI2]      = 0x1E79B100,
-     [ASPEED_DEV_I3C]       = 0x1E7A0000,
-+    [ASPEED_DEV_PCIE_MMIO1] = 0x70000000,
-     [ASPEED_DEV_SDRAM]     = 0x80000000,
+@@ -186,6 +186,7 @@ struct AspeedSoCClass {
+     uint32_t silicon_rev;
+     uint64_t sram_size;
+     uint64_t secsram_size;
++    int pcie_num;
+     int spis_num;
+     int ehcis_num;
+     int wdts_num;
+diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
+index 6aa3841b6911..853339119ff6 100644
+--- a/hw/arm/aspeed_ast27x0.c
++++ b/hw/arm/aspeed_ast27x0.c
+@@ -38,6 +38,8 @@ static const hwaddr aspeed_soc_ast2700_memmap[] = {
+     [ASPEED_DEV_EHCI2]     =  0x12063000,
+     [ASPEED_DEV_HACE]      =  0x12070000,
+     [ASPEED_DEV_EMMC]      =  0x12090000,
++    [ASPEED_DEV_PCIE0]     =  0x120E0000,
++    [ASPEED_DEV_PCIE1]     =  0x120F0000,
+     [ASPEED_DEV_INTC]      =  0x12100000,
+     [ASPEED_GIC_DIST]      =  0x12200000,
+     [ASPEED_GIC_REDIST]    =  0x12280000,
+@@ -45,6 +47,8 @@ static const hwaddr aspeed_soc_ast2700_memmap[] = {
+     [ASPEED_DEV_SCU]       =  0x12C02000,
+     [ASPEED_DEV_RTC]       =  0x12C0F000,
+     [ASPEED_DEV_TIMER1]    =  0x12C10000,
++    [ASPEED_DEV_PCIE_PHY0] =  0x12C15000,
++    [ASPEED_DEV_PCIE_PHY1] =  0x12C15800,
+     [ASPEED_DEV_SLI]       =  0x12C17000,
+     [ASPEED_DEV_UART4]     =  0x12C1A000,
+     [ASPEED_DEV_IOMEM1]    =  0x14000000,
+@@ -59,6 +63,7 @@ static const hwaddr aspeed_soc_ast2700_memmap[] = {
+     [ASPEED_DEV_ETH2]      =  0x14060000,
+     [ASPEED_DEV_ETH3]      =  0x14070000,
+     [ASPEED_DEV_SDHCI]     =  0x14080000,
++    [ASPEED_DEV_PCIE2]     =  0x140D0000,
+     [ASPEED_DEV_EHCI3]     =  0x14121000,
+     [ASPEED_DEV_EHCI4]     =  0x14123000,
+     [ASPEED_DEV_ADC]       =  0x14C00000,
+@@ -66,6 +71,7 @@ static const hwaddr aspeed_soc_ast2700_memmap[] = {
+     [ASPEED_DEV_GPIO]      =  0x14C0B000,
+     [ASPEED_DEV_I2C]       =  0x14C0F000,
+     [ASPEED_DEV_INTCIO]    =  0x14C18000,
++    [ASPEED_DEV_PCIE_PHY2] =  0x14C1C000,
+     [ASPEED_DEV_SLIIO]     =  0x14C1E000,
+     [ASPEED_DEV_VUART]     =  0x14C30000,
+     [ASPEED_DEV_UART0]     =  0x14C33000,
+@@ -81,6 +87,9 @@ static const hwaddr aspeed_soc_ast2700_memmap[] = {
+     [ASPEED_DEV_UART11]    =  0x14C33A00,
+     [ASPEED_DEV_UART12]    =  0x14C33B00,
+     [ASPEED_DEV_WDT]       =  0x14C37000,
++    [ASPEED_DEV_PCIE_MMIO0] = 0x60000000,
++    [ASPEED_DEV_PCIE_MMIO1] = 0x80000000,
++    [ASPEED_DEV_PCIE_MMIO2] = 0xA0000000,
+     [ASPEED_DEV_SPI_BOOT]  =  0x100000000,
+     [ASPEED_DEV_LTPI]      =  0x300000000,
+     [ASPEED_DEV_SDRAM]     =  0x400000000,
+@@ -156,6 +165,8 @@ static const int aspeed_soc_ast2700a1_irqmap[] = {
+     [ASPEED_DEV_DP]        = 28,
+     [ASPEED_DEV_EHCI1]     = 33,
+     [ASPEED_DEV_EHCI2]     = 37,
++    [ASPEED_DEV_PCIE0]     = 56,
++    [ASPEED_DEV_PCIE1]     = 57,
+     [ASPEED_DEV_LPC]       = 192,
+     [ASPEED_DEV_IBT]       = 192,
+     [ASPEED_DEV_KCS]       = 192,
+@@ -166,6 +177,7 @@ static const int aspeed_soc_ast2700a1_irqmap[] = {
+     [ASPEED_DEV_WDT]       = 195,
+     [ASPEED_DEV_PWM]       = 195,
+     [ASPEED_DEV_I3C]       = 195,
++    [ASPEED_DEV_PCIE2]     = 196,
+     [ASPEED_DEV_UART0]     = 196,
+     [ASPEED_DEV_UART1]     = 196,
+     [ASPEED_DEV_UART2]     = 196,
+@@ -233,6 +245,7 @@ static const int ast2700_gic132_gic196_intcmap[] = {
+     [ASPEED_DEV_UART12]    = 18,
+     [ASPEED_DEV_EHCI3]     = 28,
+     [ASPEED_DEV_EHCI4]     = 29,
++    [ASPEED_DEV_PCIE2]     = 31,
  };
  
-@@ -127,6 +130,7 @@ static const int aspeed_soc_ast2600_irqmap[] = {
-     [ASPEED_DEV_LPC]       = 35,
-     [ASPEED_DEV_IBT]       = 143,
-     [ASPEED_DEV_I2C]       = 110,   /* 110 -> 125 */
-+    [ASPEED_DEV_PCIE0]     = 168,
-     [ASPEED_DEV_PECI]      = 38,
-     [ASPEED_DEV_ETH1]      = 2,
-     [ASPEED_DEV_ETH2]      = 3,
-@@ -191,6 +195,10 @@ static void aspeed_soc_ast2600_init(Object *obj)
-     snprintf(typename, sizeof(typename), "aspeed.i2c-%s", socname);
-     object_initialize_child(obj, "i2c", &s->i2c, typename);
+ /* GICINT 133 */
+@@ -519,6 +532,17 @@ static void aspeed_soc_ast2700_init(Object *obj)
  
-+    object_initialize_child(obj, "pcie-cfg", &s->pcie[0], TYPE_ASPEED_PCIE_CFG);
-+    object_initialize_child(obj, "pcie-phy[*]", &s->pcie_phy[0],
-+                            TYPE_ASPEED_PCIE_PHY);
+     snprintf(typename, sizeof(typename), "aspeed.hace-%s", socname);
+     object_initialize_child(obj, "hace", &s->hace, typename);
 +
-     object_initialize_child(obj, "peci", &s->peci, TYPE_ASPEED_PECI);
- 
-     snprintf(typename, sizeof(typename), "aspeed.fmc-%s", socname);
-@@ -285,6 +293,67 @@ static uint64_t aspeed_calc_affinity(int cpu)
-     return (0xf << ARM_AFF1_SHIFT) | cpu;
++    for (i = 0; i < sc->pcie_num; i++) {
++        snprintf(typename, sizeof(typename), "aspeed.pcie-phy-%s", socname);
++        object_initialize_child(obj, "pcie-phy[*]", &s->pcie_phy[i], typename);
++        object_property_set_int(OBJECT(&s->pcie_phy[i]), "id", i, &error_abort);
++
++        snprintf(typename, sizeof(typename), "aspeed.pcie-cfg-%s", socname);
++        object_initialize_child(obj, "pcie-cfg[*]", &s->pcie[i], typename);
++        object_property_set_int(OBJECT(&s->pcie[i]), "id", i, &error_abort);
++    }
++
+     object_initialize_child(obj, "dpmcu", &s->dpmcu,
+                             TYPE_UNIMPLEMENTED_DEVICE);
+     object_initialize_child(obj, "ltpi", &s->ltpi,
+@@ -610,6 +634,49 @@ static bool aspeed_soc_ast2700_gic_realize(DeviceState *dev, Error **errp)
+     return true;
  }
  
-+/*
-+ * PCIe Root Complex (RC)
-+ *
-+ * H2X register space (single block 0x00-0xFF):
-+ *   0x00-0x7F : shared by RC_L (PCIe0) and RC_H (PCIe1)
-+ *   0x80-0xBF : RC_L only
-+ *   0xC0-0xFF : RC_H only
-+ *
-+ * Model scope / limitations:
-+ *   - Firmware supports RC_H only; this QEMU model does not support RC_L.
-+ *   - RC_H uses PHY1 and the MMIO window [0x70000000, 0x80000000]
-+ *     (aka MMIO1).
-+ *
-+ * Indexing convention (this model):
-+ *   - Expose a single logical instance at index 0.
-+ *   - pcie[0] -> hardware RC_H (PCIe1)
-+ *   - phy[0]  -> hardware PHY1
-+ *   - mmio.0 -> guest address range MMIO1: 0x70000000-0x80000000
-+ *   - RC_L / PCIe0 is not created and mapped.
-+ */
-+static bool aspeed_soc_ast2600_pcie_realize(DeviceState *dev, Error **errp)
++static bool aspeed_soc_ast2700_pcie_realize(DeviceState *dev, Error **errp)
 +{
-+    Aspeed2600SoCState *a = ASPEED2600_SOC(dev);
 +    AspeedSoCState *s = ASPEED_SOC(dev);
 +    AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
 +    MemoryRegion *mmio_mr = NULL;
++    char name[64];
 +    qemu_irq irq;
++    int i;
 +
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->pcie_phy[0]), errp)) {
-+        return false;
++    for (i = 0; i < sc->pcie_num; i++) {
++        if (!sysbus_realize(SYS_BUS_DEVICE(&s->pcie_phy[i]), errp)) {
++            return false;
++        }
++        aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->pcie_phy[i]), 0,
++                        sc->memmap[ASPEED_DEV_PCIE_PHY0 + i]);
++
++        object_property_set_int(OBJECT(&s->pcie[i]), "dram-base",
++                                sc->memmap[ASPEED_DEV_SDRAM],
++                                &error_abort);
++        object_property_set_link(OBJECT(&s->pcie[i]), "dram",
++                                 OBJECT(s->dram_mr), &error_abort);
++        if (!sysbus_realize(SYS_BUS_DEVICE(&s->pcie[i]), errp)) {
++            return false;
++        }
++        aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->pcie[i]), 0,
++                        sc->memmap[ASPEED_DEV_PCIE0 + i]);
++        irq = aspeed_soc_get_irq(s, ASPEED_DEV_PCIE0 + i);
++        sysbus_connect_irq(SYS_BUS_DEVICE(&s->pcie[i].rc), 0, irq);
++
++        mmio_mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->pcie[i].rc), 1);
++        snprintf(name, sizeof(name), "aspeed.pcie-mmio.%d", i);
++        memory_region_init_alias(&s->pcie_mmio_alias[i], OBJECT(&s->pcie[i].rc),
++                                 name, mmio_mr,
++                                 sc->memmap[ASPEED_DEV_PCIE_MMIO0 + i],
++                                 0x20000000);
++        memory_region_add_subregion(s->memory,
++                                    sc->memmap[ASPEED_DEV_PCIE_MMIO0 + i],
++                                    &s->pcie_mmio_alias[i]);
 +    }
-+    aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->pcie_phy[0]), 0,
-+                    sc->memmap[ASPEED_DEV_PCIE_PHY1]);
-+
-+    object_property_set_int(OBJECT(&s->pcie[0]), "dram-base",
-+                            sc->memmap[ASPEED_DEV_SDRAM],
-+                            &error_abort);
-+    object_property_set_link(OBJECT(&s->pcie[0]), "dram", OBJECT(s->dram_mr),
-+                             &error_abort);
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->pcie[0]), errp)) {
-+        return false;
-+    }
-+    aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->pcie[0]), 0,
-+                    sc->memmap[ASPEED_DEV_PCIE0]);
-+
-+    irq = qdev_get_gpio_in(DEVICE(&a->a7mpcore),
-+                           sc->irqmap[ASPEED_DEV_PCIE0]);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->pcie[0].rc), 0, irq);
-+
-+    mmio_mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->pcie[0].rc), 1);
-+    memory_region_init_alias(&s->pcie_mmio_alias[0], OBJECT(&s->pcie[0].rc),
-+                             "aspeed.pcie-mmio", mmio_mr,
-+                             sc->memmap[ASPEED_DEV_PCIE_MMIO1],
-+                             0x10000000);
-+    memory_region_add_subregion(s->memory,
-+                                sc->memmap[ASPEED_DEV_PCIE_MMIO1],
-+                                &s->pcie_mmio_alias[0]);
 +
 +    return true;
 +}
 +
- static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
+ static void aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
  {
      int i;
-@@ -438,6 +507,11 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
-     sysbus_connect_irq(SYS_BUS_DEVICE(&s->peci), 0,
-                        aspeed_soc_get_irq(s, ASPEED_DEV_PECI));
+@@ -936,6 +1003,11 @@ static void aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->hace), 0,
+                        aspeed_soc_get_irq(s, ASPEED_DEV_HACE));
  
 +    /* PCIe Root Complex (RC) */
-+    if (!aspeed_soc_ast2600_pcie_realize(dev, errp)) {
++    if (!aspeed_soc_ast2700_pcie_realize(dev, errp)) {
 +        return;
 +    }
 +
-     /* FMC, The number of CS is set at the board level */
-     object_property_set_link(OBJECT(&s->fmc), "dram", OBJECT(s->dram_mr),
-                              &error_abort);
+     aspeed_mmio_map_unimplemented(s, SYS_BUS_DEVICE(&s->dpmcu),
+                                   "aspeed.dpmcu",
+                                   sc->memmap[ASPEED_DEV_DPMCU],
+@@ -974,6 +1046,7 @@ static void aspeed_soc_ast2700a0_class_init(ObjectClass *oc, const void *data)
+     sc->valid_cpu_types = valid_cpu_types;
+     sc->silicon_rev  = AST2700_A0_SILICON_REV;
+     sc->sram_size    = 0x20000;
++    sc->pcie_num     = 0;
+     sc->spis_num     = 3;
+     sc->ehcis_num    = 2;
+     sc->wdts_num     = 8;
+@@ -1002,6 +1075,7 @@ static void aspeed_soc_ast2700a1_class_init(ObjectClass *oc, const void *data)
+     sc->valid_cpu_types = valid_cpu_types;
+     sc->silicon_rev  = AST2700_A1_SILICON_REV;
+     sc->sram_size    = 0x20000;
++    sc->pcie_num     = 3;
+     sc->spis_num     = 3;
+     sc->ehcis_num    = 4;
+     sc->wdts_num     = 8;
 -- 
 2.51.0
 

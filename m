@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FF14CCA468
-	for <qemu-arm@archiver.kernel.org>; Mon, 29 Sep 2025 17:01:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C85BBCAC5B0
+	for <qemu-arm@archiver.kernel.org>; Mon, 29 Sep 2025 17:01:33 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v3H91-0005Ty-AZ; Mon, 29 Sep 2025 12:54:35 -0400
+	id 1v3H9P-0006hn-1p; Mon, 29 Sep 2025 12:54:59 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1v3H7p-0002zW-M1
- for qemu-arm@nongnu.org; Mon, 29 Sep 2025 12:53:22 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1v3H8L-0003fN-2U
+ for qemu-arm@nongnu.org; Mon, 29 Sep 2025 12:53:56 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1v3H7i-0002pY-D5
- for qemu-arm@nongnu.org; Mon, 29 Sep 2025 12:53:21 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1v3H8C-0002wE-Rb
+ for qemu-arm@nongnu.org; Mon, 29 Sep 2025 12:53:52 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1759164791;
+ s=mimecast20190719; t=1759164823;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=vOA4xs0gBj+EPnfWxrpP1KWqkf93n5dvSLDRVXGFM/k=;
- b=OxITHqyHkcMctfwGaAkDK9+DgqrjrpMdhBbF5cy9oWtqW1Aaq5o58ut43zMhZ5p0PYbWqZ
- +lOnAcGgQyTYLqZkSxmfFl7XP/scySWrVuj3MlhDaiw74nLckC+OZTy1Fmeb3BqX3bqKE9
- eu9ymW6GA1HnH3sWGjD1yLV8ye9kDfI=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=dw5+HRMXQxmLbLvv5eWjtDjPDQLcbeAsb7Fx0HFJnWg=;
+ b=Aig0t1Vc9NyjsZT2gELddr+7kq6/kpdMWRlFx+jc42RhLu4mmhRUCM/9FryLBgqVI5E7Ps
+ TleA4bAhfbOfLNctCvMZTH2ibfJOlSbKmMypbb+k5uH+vXw955zZrZ72gQ3Hs662fvC8j1
+ PS432fCtAfDcZu2tNyAcmcEFNcTtn9o=
+Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-576-pj5HjTuxNUWZ_AVYJOSlfg-1; Mon,
- 29 Sep 2025 12:53:09 -0400
-X-MC-Unique: pj5HjTuxNUWZ_AVYJOSlfg-1
-X-Mimecast-MFC-AGG-ID: pj5HjTuxNUWZ_AVYJOSlfg_1759164788
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-548-i8JPLj7pMl6PkSDc-dqhNA-1; Mon,
+ 29 Sep 2025 12:53:40 -0400
+X-MC-Unique: i8JPLj7pMl6PkSDc-dqhNA-1
+X-Mimecast-MFC-AGG-ID: i8JPLj7pMl6PkSDc-dqhNA_1759164819
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 7FA9018004D8; Mon, 29 Sep 2025 16:53:08 +0000 (UTC)
+ by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 4838A19560B0; Mon, 29 Sep 2025 16:53:39 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.32.27])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id B30D91800452; Mon, 29 Sep 2025 16:53:06 +0000 (UTC)
+ id 7D4271800446; Mon, 29 Sep 2025 16:53:37 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 14/32] hw/pci/pci_ids: Add PCI vendor ID for ASPEED
-Date: Mon, 29 Sep 2025 18:52:12 +0200
-Message-ID: <20250929165230.797471-15-clg@redhat.com>
+Subject: [PULL 28/32] hw/arm/aspeed: Move write_boot_rom to common SoC code
+Date: Mon, 29 Sep 2025 18:52:26 +0200
+Message-ID: <20250929165230.797471-29-clg@redhat.com>
 In-Reply-To: <20250929165230.797471-1-clg@redhat.com>
 References: <20250929165230.797471-1-clg@redhat.com>
 MIME-Version: 1.0
@@ -68,8 +68,7 @@ X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.513,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001,
- T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -87,25 +86,137 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Jamin Lin <jamin_lin@aspeedtech.com>
 
+Move the write_boot_rom helper from hw/arm/aspeed.c into
+hw/arm/aspeed_soc_common.c so it can be reused by all ASPEED
+machines. Export the API as aspeed_write_boot_rom() in
+include/hw/arm/aspeed_soc.h and update the existing call site
+to use the new helper.
+
+No functional change.
+
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20250919093017.338309-2-jamin_lin@aspeedtech.com
+Link: https://lore.kernel.org/qemu-devel/20250925050535.2657256-3-jamin_lin@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- include/hw/pci/pci_ids.h | 2 ++
- 1 file changed, 2 insertions(+)
+ include/hw/arm/aspeed_soc.h |  2 ++
+ hw/arm/aspeed.c             | 33 ++-------------------------------
+ hw/arm/aspeed_soc_common.c  | 31 +++++++++++++++++++++++++++++++
+ 3 files changed, 35 insertions(+), 31 deletions(-)
 
-diff --git a/include/hw/pci/pci_ids.h b/include/hw/pci/pci_ids.h
-index 33e2898be957..16034aaa2c7e 100644
---- a/include/hw/pci/pci_ids.h
-+++ b/include/hw/pci/pci_ids.h
-@@ -291,4 +291,6 @@
+diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
+index aaf518d1799e..5567bdcb699f 100644
+--- a/include/hw/arm/aspeed_soc.h
++++ b/include/hw/arm/aspeed_soc.h
+@@ -312,6 +312,8 @@ void aspeed_mmio_map_unimplemented(AspeedSoCState *s, SysBusDevice *dev,
+                                    uint64_t size);
+ void aspeed_board_init_flashes(AspeedSMCState *s, const char *flashtype,
+                                unsigned int count, int unit0);
++void aspeed_write_boot_rom(BlockBackend *blk, hwaddr addr, size_t rom_size,
++                           Error **errp);
  
- #define PCI_VENDOR_ID_NVIDIA             0x10de
+ static inline int aspeed_uart_index(int uart_dev)
+ {
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index 55f0afe0a499..4d0d93583659 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -263,35 +263,6 @@ static void aspeed_reset_secondary(ARMCPU *cpu,
+     cpu_set_pc(cs, info->smp_loader_start);
+ }
  
-+#define PCI_VENDOR_ID_ASPEED             0x1A03
+-static void write_boot_rom(BlockBackend *blk, hwaddr addr, size_t rom_size,
+-                           Error **errp)
+-{
+-    g_autofree void *storage = NULL;
+-    int64_t size;
+-
+-    /*
+-     * The block backend size should have already been 'validated' by
+-     * the creation of the m25p80 object.
+-     */
+-    size = blk_getlength(blk);
+-    if (size <= 0) {
+-        error_setg(errp, "failed to get flash size");
+-        return;
+-    }
+-
+-    if (rom_size > size) {
+-        rom_size = size;
+-    }
+-
+-    storage = g_malloc0(rom_size);
+-    if (blk_pread(blk, 0, rom_size, storage, 0) < 0) {
+-        error_setg(errp, "failed to read the initial flash content");
+-        return;
+-    }
+-
+-    rom_add_blob_fixed("aspeed.boot_rom", storage, rom_size, addr);
+-}
+-
+ /*
+  * Create a ROM and copy the flash contents at the expected address
+  * (0x0). Boots faster than execute-in-place.
+@@ -306,8 +277,8 @@ static void aspeed_install_boot_rom(AspeedMachineState *bmc, BlockBackend *blk,
+                            &error_abort);
+     memory_region_add_subregion_overlap(&soc->spi_boot_container, 0,
+                                         &bmc->boot_rom, 1);
+-    write_boot_rom(blk, sc->memmap[ASPEED_DEV_SPI_BOOT],
+-                   rom_size, &error_abort);
++    aspeed_write_boot_rom(blk, sc->memmap[ASPEED_DEV_SPI_BOOT], rom_size,
++                          &error_abort);
+ }
+ 
+ #define VBOOTROM_FILE_NAME  "ast27x0_bootrom.bin"
+diff --git a/hw/arm/aspeed_soc_common.c b/hw/arm/aspeed_soc_common.c
+index 31b1e683c375..d0a400725f24 100644
+--- a/hw/arm/aspeed_soc_common.c
++++ b/hw/arm/aspeed_soc_common.c
+@@ -17,6 +17,8 @@
+ #include "hw/arm/aspeed_soc.h"
+ #include "hw/char/serial-mm.h"
+ #include "system/blockdev.h"
++#include "system/block-backend.h"
++#include "hw/loader.h"
+ 
+ 
+ const char *aspeed_soc_cpu_type(AspeedSoCClass *sc)
+@@ -147,6 +149,35 @@ void aspeed_board_init_flashes(AspeedSMCState *s, const char *flashtype,
+     }
+ }
+ 
++void aspeed_write_boot_rom(BlockBackend *blk, hwaddr addr, size_t rom_size,
++                           Error **errp)
++{
++    g_autofree void *storage = NULL;
++    int64_t size;
 +
- #endif
++    /*
++     * The block backend size should have already been 'validated' by
++     * the creation of the m25p80 object.
++     */
++    size = blk_getlength(blk);
++    if (size <= 0) {
++        error_setg(errp, "failed to get flash size");
++        return;
++    }
++
++    if (rom_size > size) {
++        rom_size = size;
++    }
++
++    storage = g_malloc0(rom_size);
++    if (blk_pread(blk, 0, rom_size, storage, 0) < 0) {
++        error_setg(errp, "failed to read the initial flash content");
++        return;
++    }
++
++    rom_add_blob_fixed("aspeed.boot_rom", storage, rom_size, addr);
++}
++
+ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
+ {
+     AspeedSoCState *s = ASPEED_SOC(dev);
 -- 
 2.51.0
 

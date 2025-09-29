@@ -4,110 +4,139 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6EF3ECAC5B5
-	for <qemu-arm@archiver.kernel.org>; Mon, 29 Sep 2025 14:22:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5221CAC5B5
+	for <qemu-arm@archiver.kernel.org>; Mon, 29 Sep 2025 14:32:03 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v3Ell-0004mu-0k; Mon, 29 Sep 2025 10:22:26 -0400
+	id 1v3EuI-0007wo-2L; Mon, 29 Sep 2025 10:31:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1v3Elj-0004mh-Od
- for qemu-arm@nongnu.org; Mon, 29 Sep 2025 10:22:23 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1v3ElY-0003d2-OV
- for qemu-arm@nongnu.org; Mon, 29 Sep 2025 10:22:23 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1759155723;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
+ (Exim 4.90_1) (envelope-from <farosas@suse.de>) id 1v3Etq-0007oP-VG
+ for qemu-arm@nongnu.org; Mon, 29 Sep 2025 10:30:54 -0400
+Received: from smtp-out1.suse.de ([195.135.223.130])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <farosas@suse.de>) id 1v3Etb-0005wF-Lk
+ for qemu-arm@nongnu.org; Mon, 29 Sep 2025 10:30:43 -0400
+Received: from imap1.dmz-prg2.suse.org (imap1.dmz-prg2.suse.org
+ [IPv6:2a07:de40:b281:104:10:150:64:97])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by smtp-out1.suse.de (Postfix) with ESMTPS id A78016BC20;
+ Mon, 29 Sep 2025 14:30:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+ t=1759156223; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=mIOCVbN/anAbQoFyfAnEryt0rUrMQ2P8i5xZiKMGJRs=;
- b=QVuNBPvTY0+VQ8Te5wuxlfBOGbUsKEUxsM0X2h3Uj+WITbsrY8r6uRSZF1GZiTyV/Cgvyz
- 5aUDZBOd1jJlksObFgl+7WMi9CweZ4zTyTxVaWIybO/Q1yvrfEVNe9PWYUlYwqXdp47tcT
- MjfVc1fK49r6GEpsCuRBdxIHVWH5jHM=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-577-325VpW5POsWmuLK17OU9FA-1; Mon, 29 Sep 2025 10:22:00 -0400
-X-MC-Unique: 325VpW5POsWmuLK17OU9FA-1
-X-Mimecast-MFC-AGG-ID: 325VpW5POsWmuLK17OU9FA_1759155719
-Received: by mail-wr1-f72.google.com with SMTP id
- ffacd0b85a97d-3f42b54d159so3679805f8f.2
- for <qemu-arm@nongnu.org>; Mon, 29 Sep 2025 07:22:00 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759155719; x=1759760519;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=mIOCVbN/anAbQoFyfAnEryt0rUrMQ2P8i5xZiKMGJRs=;
- b=X15KHbfOBB9TuPbsVbfDbiBXQk/6H2n5/mrQ4APG7spMKekpW2VTv6WeJm86cX3+9t
- 99wFdoxAltB1MNfxESJ2LPTY1pgcRzO4oChrL18MIU3NKFPC6A5kon5kMeMJggHLf6bH
- PnS6c4OzrdyEanxkkzVm6UKtYwJREVAZVqYAqCs2z4mYDkdnIv8TxYVfpe8wI4gUupC9
- 5E4FGRNBtkQbJ0xogwNWldeYOmFHyYObHfMF5XuG9SQ7YTGdTM9o8/xTzLv/inZeQLin
- YbG15Mi9ZPYe4gTafv/YpuuOppYzTWwunIOqgGToHF+hFAFo7Czsdp1ZDmCLsWk1/EI7
- a18A==
-X-Forwarded-Encrypted: i=1;
- AJvYcCV4h341Ckme4nDQ5yjmoloTj9UOte1pcjHI7S3LJTWsaD9yv1ZgdkkMYqiwsEiVNjQYA+rTJhUhog==@nongnu.org
-X-Gm-Message-State: AOJu0YyhOKY4adSzi8+9fLn3+4iuB0mYkFShvKTlRQLnZP+FMNHFmkUw
- Vd3PV+EdCoiLerUZnoyepeeQjUIAdsLd5dXa3oCx+Whky1rogcT1wUR8DE5Kh7Ff0WUFiHqk+qu
- PdAzwEza7dinNRRhKCu8CtNLhjSfb21VePJjsjGQ6dFX6lAoPvzxj+A==
-X-Gm-Gg: ASbGnctc7BGgGCUI67OXKIDhuhWLRmXaFEMAOMeRaly5t7yvXg2mNnlsCh+Lj24A5G9
- Rsis5uB0jAGmwO9ycN3OeCCZ0JH3j7xD7cUjaoJaJ1+DqNIZB2WDinRzZkPFhhdnF+3JtKR78An
- puSZoswGTeejzqhUq7KvK60U1XlWTwtqLmYHv8k+vwDbDiQiD/jcbZP3AWYEYsLZjlOV7jqguUD
- j8z1XyLKQD6K7oF8lsBPHt94kAzfK2hc/lDP+pEsD/xaVFHmgZesXvf/eo0EiQkGMdMbsm1+ZyD
- bzKmL9h2N/2W9wQxTJv2UCdylfXabBHSUKjA1dnJVpLzGb8XIh6yBj9I38HCqje7eIEILcEyKc6
- c6SkhZ8xiLgg=
-X-Received: by 2002:a05:6000:2504:b0:3fa:944b:9bc3 with SMTP id
- ffacd0b85a97d-40e4dabf402mr16271951f8f.62.1759155718928; 
- Mon, 29 Sep 2025 07:21:58 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGJ2hNllX2uu2BW9xPWd/vuJU9wjY54Csq9QvRSLxbO8gB8ak0jCQLVBNpo1QOVsHnvkRR9eA==
-X-Received: by 2002:a05:6000:2504:b0:3fa:944b:9bc3 with SMTP id
- ffacd0b85a97d-40e4dabf402mr16271916f8f.62.1759155718301; 
- Mon, 29 Sep 2025 07:21:58 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-40fc72b0aeesm18942945f8f.49.2025.09.29.07.21.57
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 29 Sep 2025 07:21:57 -0700 (PDT)
-Message-ID: <a9fe0e74-652d-48b7-89b1-73f28d1c63a4@redhat.com>
-Date: Mon, 29 Sep 2025 16:21:56 +0200
+ bh=VmnIvJSGtvVzaP5Atmrej6k+JrA0DEplPzF28A8lzCU=;
+ b=lkVLeuJMEyu7PUj6GMmEEscXecqgzqIJPjzAkPe88gtx4z3SxqKJa1iRZN1cOkgfBtwjSY
+ iFtZ046Bm0lBhQnysjV0j/BNhxEoMd5s+H3ImCPs9V5KL6N4XDX7jiEbdXytgZ2gRR345/
+ L+PI8hcsnnZUwReGuRlWFDoLUW02nI8=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+ s=susede2_ed25519; t=1759156223;
+ h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=VmnIvJSGtvVzaP5Atmrej6k+JrA0DEplPzF28A8lzCU=;
+ b=uRmArO4loQ0VZecIm6fFyNRTIx0SnQ10fbkn3QpUPeGXAMgSMvjpDhk9i2c4dpehuhz5t0
+ aQ1d38duwbuuuwDw==
+Authentication-Results: smtp-out1.suse.de;
+ dkim=pass header.d=suse.de header.s=susede2_rsa header.b=lkVLeuJM;
+ dkim=pass header.d=suse.de header.s=susede2_ed25519 header.b=uRmArO4l
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+ t=1759156223; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=VmnIvJSGtvVzaP5Atmrej6k+JrA0DEplPzF28A8lzCU=;
+ b=lkVLeuJMEyu7PUj6GMmEEscXecqgzqIJPjzAkPe88gtx4z3SxqKJa1iRZN1cOkgfBtwjSY
+ iFtZ046Bm0lBhQnysjV0j/BNhxEoMd5s+H3ImCPs9V5KL6N4XDX7jiEbdXytgZ2gRR345/
+ L+PI8hcsnnZUwReGuRlWFDoLUW02nI8=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+ s=susede2_ed25519; t=1759156223;
+ h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=VmnIvJSGtvVzaP5Atmrej6k+JrA0DEplPzF28A8lzCU=;
+ b=uRmArO4loQ0VZecIm6fFyNRTIx0SnQ10fbkn3QpUPeGXAMgSMvjpDhk9i2c4dpehuhz5t0
+ aQ1d38duwbuuuwDw==
+Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id D479613A21;
+ Mon, 29 Sep 2025 14:30:22 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
+ by imap1.dmz-prg2.suse.org with ESMTPSA id o13BM/6X2mh0MQAAD6G6ig
+ (envelope-from <farosas@suse.de>); Mon, 29 Sep 2025 14:30:22 +0000
+From: Fabiano Rosas <farosas@suse.de>
+To: Peter Xu <peterx@redhat.com>, Arun Menon <armenon@redhat.com>
+Cc: qemu-devel@nongnu.org, Alex =?utf-8?Q?Benn=C3=A9e?=
+ <alex.bennee@linaro.org>, Akihiko
+ Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>, Dmitry Osipenko
+ <dmitry.osipenko@collabora.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Cornelia Huck
+ <cohuck@redhat.com>, Halil Pasic <pasic@linux.ibm.com>, Eric Farman
+ <farman@linux.ibm.com>, Thomas Huth <thuth@redhat.com>, Christian
+ Borntraeger <borntraeger@linux.ibm.com>, Matthew Rosato
+ <mjrosato@linux.ibm.com>, Richard Henderson
+ <richard.henderson@linaro.org>, David Hildenbrand <david@redhat.com>, Ilya
+ Leoshkevich <iii@linux.ibm.com>, Nicholas Piggin <npiggin@gmail.com>,
+ Harsh Prateek Bora <harshpb@linux.ibm.com>, Paolo Bonzini
+ <pbonzini@redhat.com>, Fam Zheng <fam@euphon.net>, Alex Williamson
+ <alex.williamson@redhat.com>, =?utf-8?Q?C=C3=A9dric?= Le Goater
+ <clg@redhat.com>, Steve
+ Sistare <steven.sistare@oracle.com>, =?utf-8?Q?Marc-Andr=C3=A9?= Lureau
+ <marcandre.lureau@redhat.com>, qemu-s390x@nongnu.org, qemu-ppc@nongnu.org,
+ Hailiang Zhang <zhanghailiang@xfusion.com>, Stefan Berger
+ <stefanb@linux.vnet.ibm.com>, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org, =?utf-8?Q?Daniel_P=2E_Berrang=C3=A9?=
+ <berrange@redhat.com>
+Subject: Re: [PATCH v14 00/27] migration: propagate vTPM errors using Error
+ objects
+In-Reply-To: <aNqN05aj0CYttxd6@x1.local>
+References: <20250918-propagate_tpm_error-v14-0-36f11a6fb9d3@redhat.com>
+ <aNpILAhr8LaMFbcL@armenon-kvm.bengluru.csb> <aNqN05aj0CYttxd6@x1.local>
+Date: Mon, 29 Sep 2025 11:30:20 -0300
+Message-ID: <877bxhwcub.fsf@suse.de>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 08/14] hw/arm/smmuv3: Add security-state handling for
- page table walks
-To: Tao Tang <tangtao1634@phytium.com.cn>,
- Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Chen Baozi <chenbaozi@phytium.com.cn>, pierrick.bouvier@linaro.org,
- philmd@linaro.org, jean-philippe@linaro.org, smostafa@google.com
-References: <20250925162618.191242-1-tangtao1634@phytium.com.cn>
- <20250925162618.191242-9-tangtao1634@phytium.com.cn>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20250925162618.191242-9-tangtao1634@phytium.com.cn>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: venMYAMsTQYiSgxSW3yvhD8rHOBv6T7_p0PMapUbC44_1759155719
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -25
-X-Spam_score: -2.6
-X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.513,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Type: text/plain
+X-Spamd-Result: default: False [-3.01 / 50.00]; BAYES_HAM(-3.00)[99.99%];
+ SUSPICIOUS_RECIPS(1.50)[]; NEURAL_HAM_LONG(-1.00)[-1.000];
+ R_DKIM_ALLOW(-0.20)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
+ NEURAL_HAM_SHORT(-0.20)[-1.000]; MIME_GOOD(-0.10)[text/plain];
+ MX_GOOD(-0.01)[]; FREEMAIL_ENVRCPT(0.00)[gmail.com];
+ TO_MATCH_ENVRCPT_ALL(0.00)[];
+ DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
+ RBL_SPAMHAUS_BLOCKED_OPENRESOLVER(0.00)[2a07:de40:b281:104:10:150:64:97:from]; 
+ ARC_NA(0.00)[]; RCPT_COUNT_TWELVE(0.00)[32];
+ FUZZY_RATELIMITED(0.00)[rspamd.com]; MIME_TRACE(0.00)[0:+];
+ SPAMHAUS_XBL(0.00)[2a07:de40:b281:104:10:150:64:97:from];
+ FREEMAIL_CC(0.00)[nongnu.org,linaro.org,rsg.ci.i.u-tokyo.ac.jp,collabora.com,redhat.com,gmail.com,linux.ibm.com,euphon.net,oracle.com,xfusion.com,linux.vnet.ibm.com];
+ RCVD_TLS_ALL(0.00)[]; DKIM_TRACE(0.00)[suse.de:+];
+ RCVD_COUNT_TWO(0.00)[2];
+ DNSWL_BLOCKED(0.00)[2a07:de40:b281:104:10:150:64:97:from,2a07:de40:b281:106:10:150:64:167:received];
+ FROM_EQ_ENVFROM(0.00)[]; FROM_HAS_DN(0.00)[];
+ TO_DN_SOME(0.00)[]; MID_RHS_MATCH_FROM(0.00)[];
+ TAGGED_RCPT(0.00)[];
+ R_RATELIMIT(0.00)[to_ip_from(RLzasi9boc9ahn35s1z6tc8qwy)];
+ RECEIVED_SPAMHAUS_BLOCKED_OPENRESOLVER(0.00)[2a07:de40:b281:106:10:150:64:167:received];
+ MISSING_XM_UA(0.00)[]; RCVD_VIA_SMTP_AUTH(0.00)[];
+ DBL_BLOCKED_OPENRESOLVER(0.00)[suse.de:mid, suse.de:dkim, suse.de:email,
+ imap1.dmz-prg2.suse.org:helo, imap1.dmz-prg2.suse.org:rdns]
+X-Rspamd-Queue-Id: A78016BC20
+X-Rspamd-Server: rspamd2.dmz-prg2.suse.org
+X-Rspamd-Action: no action
+Received-SPF: pass client-ip=195.135.223.130; envelope-from=farosas@suse.de;
+ helo=smtp-out1.suse.de
+X-Spam_score_int: -43
+X-Spam_score: -4.4
+X-Spam_bar: ----
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -120,286 +149,23 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Tao,
+Peter Xu <peterx@redhat.com> writes:
 
-On 9/25/25 6:26 PM, Tao Tang wrote:
-> This patch introduces the necessary logic to handle security states
-> during the page table translation process.
+> On Mon, Sep 29, 2025 at 02:19:48PM +0530, Arun Menon wrote:
+>> Hi,
+>> Gentle ping for the series.
+>> Is there something more to be done to improve this before queueing it?
+>> TIA.
 >
-> Support for the NS (Non-secure) attribute bit is added to the parsing of
-> various translation structures, including CD and PTEs. This allows the
-> SMMU model to correctly determine the security properties of memory
-> during a translation.
+> Arun, don't worry - I believe this is on Fabiano's radar.
 >
-> With this change, a new translation stage is added:
->
-> - Secure Stage 1 translation
->
-> Note that this commit does not include support for Secure Stage 2
-> translation, which will be addressed in the future.
->
-> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
-> ---
->  hw/arm/smmu-common.c         | 55 ++++++++++++++++++++++++++++++++----
->  hw/arm/smmu-internal.h       |  7 +++++
->  hw/arm/smmuv3-internal.h     |  2 ++
->  hw/arm/smmuv3.c              |  2 ++
->  hw/arm/trace-events          |  2 +-
->  include/hw/arm/smmu-common.h |  4 +++
->  6 files changed, 66 insertions(+), 6 deletions(-)
->
-> diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
-> index bc13b00f1d..f563cba023 100644
-> --- a/hw/arm/smmu-common.c
-> +++ b/hw/arm/smmu-common.c
-> @@ -398,20 +398,25 @@ void smmu_iotlb_inv_vmid_s1(SMMUState *s, int vmid)
->   * @base_addr[@index]
-Wile we add some new params it may be relevant to add some new doc
-comments above
->   */
->  static int get_pte(dma_addr_t baseaddr, uint32_t index, uint64_t *pte,
-> -                   SMMUPTWEventInfo *info)
-> +                   SMMUPTWEventInfo *info, SMMUTransCfg *cfg, int walk_ns)
-I see a cfg param is added while not used.
 
-why walk_ns is an int while it seems to match a SecureIndex type? while
-not directly passing the sec_sid?
->  {
->      int ret;
->      dma_addr_t addr = baseaddr + index * sizeof(*pte);
-> +    /* Only support Secure PA Space as RME isn't implemented yet */
-> +    MemTxAttrs attrs =
-> +        smmu_get_txattrs(walk_ns ? SMMU_SEC_IDX_NS : SMMU_SEC_IDX_S);
-> +    AddressSpace *as =
-> +        smmu_get_address_space(walk_ns ? SMMU_SEC_IDX_NS : SMMU_SEC_IDX_S);
->  
->      /* TODO: guarantee 64-bit single-copy atomicity */
-> -    ret = ldq_le_dma(&address_space_memory, addr, pte, MEMTXATTRS_UNSPECIFIED);
-> +    ret = ldq_le_dma(as, addr, pte, attrs);
->  
->      if (ret != MEMTX_OK) {
->          info->type = SMMU_PTW_ERR_WALK_EABT;
->          info->addr = addr;
->          return -EINVAL;
->      }
-> -    trace_smmu_get_pte(baseaddr, index, addr, *pte);
-> +    trace_smmu_get_pte(baseaddr, index, addr, *pte, walk_ns);
->      return 0;
->  }
->  
-> @@ -542,6 +547,8 @@ static int smmu_ptw_64_s1(SMMUState *bs, SMMUTransCfg *cfg,
->  
->      baseaddr = extract64(tt->ttb, 0, cfg->oas);
->      baseaddr &= ~indexmask;
-> +    int nscfg = tt->nscfg;
-> +    bool forced_ns = false;  /* Track if NSTable=1 forced NS mode */
->  
->      while (level < VMSA_LEVELS) {
->          uint64_t subpage_size = 1ULL << level_shift(level, granule_sz);
-> @@ -551,7 +558,9 @@ static int smmu_ptw_64_s1(SMMUState *bs, SMMUTransCfg *cfg,
->          dma_addr_t pte_addr = baseaddr + offset * sizeof(pte);
->          uint8_t ap;
->  
-> -        if (get_pte(baseaddr, offset, &pte, info)) {
-> +        /* Use NS if forced by previous NSTable=1 or current nscfg */
-> +        int current_ns = forced_ns || nscfg;
-> +        if (get_pte(baseaddr, offset, &pte, info, cfg, current_ns)) {
->                  goto error;
->          }
->          trace_smmu_ptw_level(stage, level, iova, subpage_size,
-> @@ -576,6 +585,26 @@ static int smmu_ptw_64_s1(SMMUState *bs, SMMUTransCfg *cfg,
->                      goto error;
->                  }
->              }
-> +
-> +            /*
-> +             * Hierarchical control of Secure/Non-secure accesses:
-> +             * If NSTable=1 from Secure space, force all subsequent lookups to
-> +             * Non-secure space and ignore future NSTable according to
-> +             * (IHI 0070G.b) 13.4.1 Stage 1 page permissions and
-> +             * (DDI 0487H.a)D8.4.2 Control of Secure or Non-secure memory access
-> +             */
-> +            if (!forced_ns) {
-> +                int new_nstable = PTE_NSTABLE(pte);
-> +                if (!current_ns && new_nstable) {
-> +                    /* First transition from Secure to Non-secure */
-> +                    forced_ns = true;
-> +                    nscfg = 1;
-> +                } else if (!forced_ns) {
-> +                    /* Still in original mode, update nscfg normally */
-> +                    nscfg = new_nstable;
-> +                }
-> +                /* If forced_ns is already true, ignore NSTable bit */
-> +            }
->              level++;
->              continue;
->          } else if (is_page_pte(pte, level)) {
-> @@ -618,6 +647,8 @@ static int smmu_ptw_64_s1(SMMUState *bs, SMMUTransCfg *cfg,
->              goto error;
->          }
->  
-> +        tlbe->sec_idx = PTE_NS(pte) ? SMMU_SEC_IDX_NS : SMMU_SEC_IDX_S;
-> +        tlbe->entry.target_as = smmu_get_address_space(tlbe->sec_idx);
->          tlbe->entry.translated_addr = gpa;
->          tlbe->entry.iova = iova & ~mask;
->          tlbe->entry.addr_mask = mask;
-> @@ -687,7 +718,8 @@ static int smmu_ptw_64_s2(SMMUTransCfg *cfg,
->          dma_addr_t pte_addr = baseaddr + offset * sizeof(pte);
->          uint8_t s2ap;
->  
-> -        if (get_pte(baseaddr, offset, &pte, info)) {
-> +        /* Use NS as Secure Stage 2 is not implemented (SMMU_S_IDR1.SEL2 == 0)*/
-> +        if (get_pte(baseaddr, offset, &pte, info, cfg, 1)) {
->                  goto error;
->          }
->          trace_smmu_ptw_level(stage, level, ipa, subpage_size,
-> @@ -740,6 +772,8 @@ static int smmu_ptw_64_s2(SMMUTransCfg *cfg,
->              goto error_ipa;
->          }
->  
-> +        tlbe->sec_idx = SMMU_SEC_IDX_NS;
-> +        tlbe->entry.target_as = &address_space_memory;
->          tlbe->entry.translated_addr = gpa;
->          tlbe->entry.iova = ipa & ~mask;
->          tlbe->entry.addr_mask = mask;
-> @@ -824,6 +858,17 @@ int smmu_ptw(SMMUState *bs, SMMUTransCfg *cfg, dma_addr_t iova,
->          return ret;
->      }
->  
-> +    if (!cfg->sel2 && tlbe->sec_idx > SMMU_SEC_IDX_NS) {
-> +        /*
-> +         * Nested translation with Secure IPA output is not supported if
-> +         * Secure Stage 2 is not implemented.
-> +         */
-> +        info->type = SMMU_PTW_ERR_TRANSLATION;
-> +        info->stage = SMMU_STAGE_1;
-> +        tlbe->entry.perm = IOMMU_NONE;
-> +        return -EINVAL;
-> +    }
-> +
->      ipa = CACHED_ENTRY_TO_ADDR(tlbe, iova);
->      ret = smmu_ptw_64_s2(cfg, ipa, perm, &tlbe_s2, info);
->      if (ret) {
-> diff --git a/hw/arm/smmu-internal.h b/hw/arm/smmu-internal.h
-> index d143d296f3..cb3a6eb8d1 100644
-> --- a/hw/arm/smmu-internal.h
-> +++ b/hw/arm/smmu-internal.h
-> @@ -58,6 +58,10 @@
->      ((level == 3) &&                                                    \
->       ((pte & ARM_LPAE_PTE_TYPE_MASK) == ARM_LPAE_L3_PTE_TYPE_PAGE))
->  
-> +/* Non-secure bit */
-> +#define PTE_NS(pte) \
-> +    (extract64(pte, 5, 1))
-> +
-I have not read that code for a while. Might be worth to create
-differentiated sections for the different kinds of descriptors
-For instance NS belongs to block & page descriptor while NSTable belongs
-to a table descriptor.
->  /* access permissions */
->  
->  #define PTE_AP(pte) \
-> @@ -66,6 +70,9 @@
->  #define PTE_APTABLE(pte) \
->      (extract64(pte, 61, 2))
->  
-> +#define PTE_NSTABLE(pte) \
-> +    (extract64(pte, 63, 1))
-> +
->  #define PTE_AF(pte) \
->      (extract64(pte, 10, 1))
->  /*
-> diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
-> index cf17c405de..af2936cf16 100644
-> --- a/hw/arm/smmuv3-internal.h
-> +++ b/hw/arm/smmuv3-internal.h
-> @@ -704,6 +704,8 @@ static inline int oas2bits(int oas_field)
->  #define CD_R(x)          extract32((x)->word[1], 13, 1)
->  #define CD_A(x)          extract32((x)->word[1], 14, 1)
->  #define CD_AARCH64(x)    extract32((x)->word[1], 9 , 1)
-> +#define CD_NSCFG0(x)     extract32((x)->word[2], 0, 1)
-> +#define CD_NSCFG1(x)     extract32((x)->word[4], 0, 1)
->  
->  /**
->   * tg2granule - Decodes the CD translation granule size field according
-> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-> index eba709ae2b..2f8494c346 100644
-> --- a/hw/arm/smmuv3.c
-> +++ b/hw/arm/smmuv3.c
-> @@ -832,6 +832,7 @@ static int decode_cd(SMMUv3State *s, SMMUTransCfg *cfg,
->              tt->ttb = CACHED_ENTRY_TO_ADDR(entry, tt->ttb);
->          }
->  
-> +        tt->nscfg = i ? CD_NSCFG1(cd) : CD_NSCFG0(cd);
->          tt->had = CD_HAD(cd, i);
->          trace_smmuv3_decode_cd_tt(i, tt->tsz, tt->ttb, tt->granule_sz, tt->had);
->      }
-> @@ -929,6 +930,7 @@ static SMMUTransCfg *smmuv3_get_config(SMMUDevice *sdev, SMMUEventInfo *event,
->          cfg->sec_idx = sec_idx;
->          cfg->txattrs = smmu_get_txattrs(sec_idx);
->          cfg->as = smmu_get_address_space(sec_idx);
-> +        cfg->sel2 = s->bank[SMMU_SEC_IDX_S].idr[1];
-S_IDR1 contains other feilds than SEL2 such as S_SIDSIZE?
+Wait, have I forgot and I should be the one doing the PRs?
 
-Can't you split that patch again into 2 patches:
-one related to the config data extraction and another one related to
-page table walk according to the config settings?
+The series looks good to me. I forgot (again?) to add a t-b last week:
 
-
->  
->          if (!smmuv3_decode_config(&sdev->iommu, cfg, event)) {
->              SMMUConfigKey *persistent_key = g_new(SMMUConfigKey, 1);
-> diff --git a/hw/arm/trace-events b/hw/arm/trace-events
-> index 80cb4d6b04..f99de78655 100644
-> --- a/hw/arm/trace-events
-> +++ b/hw/arm/trace-events
-> @@ -16,7 +16,7 @@ smmu_ptw_level(int stage, int level, uint64_t iova, size_t subpage_size, uint64_
->  smmu_ptw_invalid_pte(int stage, int level, uint64_t baseaddr, uint64_t pteaddr, uint32_t offset, uint64_t pte) "stage=%d level=%d base@=0x%"PRIx64" pte@=0x%"PRIx64" offset=%d pte=0x%"PRIx64
->  smmu_ptw_page_pte(int stage, int level,  uint64_t iova, uint64_t baseaddr, uint64_t pteaddr, uint64_t pte, uint64_t address) "stage=%d level=%d iova=0x%"PRIx64" base@=0x%"PRIx64" pte@=0x%"PRIx64" pte=0x%"PRIx64" page address = 0x%"PRIx64
->  smmu_ptw_block_pte(int stage, int level, uint64_t baseaddr, uint64_t pteaddr, uint64_t pte, uint64_t iova, uint64_t gpa, int bsize_mb) "stage=%d level=%d base@=0x%"PRIx64" pte@=0x%"PRIx64" pte=0x%"PRIx64" iova=0x%"PRIx64" block address = 0x%"PRIx64" block size = %d MiB"
-> -smmu_get_pte(uint64_t baseaddr, int index, uint64_t pteaddr, uint64_t pte) "baseaddr=0x%"PRIx64" index=0x%x, pteaddr=0x%"PRIx64", pte=0x%"PRIx64
-> +smmu_get_pte(uint64_t baseaddr, int index, uint64_t pteaddr, uint64_t pte, bool ns_walk) "baseaddr=0x%"PRIx64" index=0x%x, pteaddr=0x%"PRIx64", pte=0x%"PRIx64" ns_walk=%d"
->  smmu_iotlb_inv_all(void) "IOTLB invalidate all"
->  smmu_iotlb_inv_asid_vmid(int asid, int vmid) "IOTLB invalidate asid=%d vmid=%d"
->  smmu_iotlb_inv_vmid(int vmid) "IOTLB invalidate vmid=%d"
-> diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
-> index ed21db7728..c27aec8bd4 100644
-> --- a/include/hw/arm/smmu-common.h
-> +++ b/include/hw/arm/smmu-common.h
-> @@ -109,6 +109,7 @@ typedef struct SMMUTransTableInfo {
->      uint8_t tsz;               /* input range, ie. 2^(64 -tsz)*/
->      uint8_t granule_sz;        /* granule page shift */
->      bool had;                  /* hierarchical attribute disable */
-> +    bool nscfg;                /* Non-secure attribute of Starting-level TT */
->  } SMMUTransTableInfo;
->  
->  typedef struct SMMUTLBEntry {
-> @@ -116,6 +117,7 @@ typedef struct SMMUTLBEntry {
->      uint8_t level;
->      uint8_t granule;
->      IOMMUAccessFlags parent_perm;
-> +    SMMUSecurityIndex sec_idx;
->  } SMMUTLBEntry;
->  
->  /* Stage-2 configuration. */
-> @@ -156,6 +158,8 @@ typedef struct SMMUTransCfg {
->      SMMUSecurityIndex sec_idx; /* cached security index */
->      MemTxAttrs txattrs;        /* cached transaction attributes */
->      AddressSpace *as;          /* cached address space */
-> +    bool current_walk_ns;      /* cached if the current walk is non-secure */
-this does not seem to be used?
-> +    bool sel2;
-would require a comment to remind the reader what sel2 is.
->  } SMMUTransCfg;
->  
->  typedef struct SMMUDevice {
-
-Thanks
-
-Eric
-
+Tested-by: Fabiano Rosas <farosas@suse.de>
 

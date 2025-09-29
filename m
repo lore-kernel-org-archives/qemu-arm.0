@@ -4,65 +4,121 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 342B9CAC5B5
-	for <qemu-arm@archiver.kernel.org>; Mon, 29 Sep 2025 15:22:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0C6ECAC5B5
+	for <qemu-arm@archiver.kernel.org>; Mon, 29 Sep 2025 15:26:15 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v3Fi2-0000Pb-LD; Mon, 29 Sep 2025 11:22:39 -0400
+	id 1v3FlD-0001gQ-Lm; Mon, 29 Sep 2025 11:25:55 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tangtao1634@phytium.com.cn>)
- id 1v3Fhy-0000NH-8O; Mon, 29 Sep 2025 11:22:34 -0400
-Received: from zg8tmtyylji0my4xnjqumte4.icoremail.net ([162.243.164.118])
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <tangtao1634@phytium.com.cn>)
- id 1v3Fhm-0007yv-6Q; Mon, 29 Sep 2025 11:22:33 -0400
-Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
- by hzbj-icmmx-6 (Coremail) with SMTP id AQAAfwA3P9sfpNpo69CJBw--.5S2;
- Mon, 29 Sep 2025 23:22:07 +0800 (CST)
-Received: from [192.168.31.222] (unknown [113.246.232.83])
- by mail (Coremail) with SMTP id AQAAfwD3WecepNpoTmIvAA--.28826S2;
- Mon, 29 Sep 2025 23:22:06 +0800 (CST)
-Message-ID: <fb2f172f-36ce-487e-88d8-3b354f25f183@phytium.com.cn>
-Date: Mon, 29 Sep 2025 23:22:02 +0800
+ (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1v3Fkt-0001aH-MC
+ for qemu-arm@nongnu.org; Mon, 29 Sep 2025 11:25:38 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1v3Fkl-0000a3-9S
+ for qemu-arm@nongnu.org; Mon, 29 Sep 2025 11:25:35 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1759159523;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=JXBe3NS8d0bVtOqVULXaqNC7wJclStTQnAXF8BKjajk=;
+ b=FwwFYkeDGqD8tv8JkNgSexiAO37/ngboLFvn3/vyVMJo5c4Xr30Hds1VRBoUSDYuP+mOgN
+ +1CTvcbNWxHjWLHhruz4juBQS0n21AQELssb0DjG7OOfIhx5XCDiKoEOozkmeik+VHSU4F
+ k1Jt8O6ZuRjKld7Z+Y9kLiMTOG3WkJM=
+Received: from mail-qk1-f198.google.com (mail-qk1-f198.google.com
+ [209.85.222.198]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-564-vsGL9Eq3NSmyN7s6Asofug-1; Mon, 29 Sep 2025 11:25:22 -0400
+X-MC-Unique: vsGL9Eq3NSmyN7s6Asofug-1
+X-Mimecast-MFC-AGG-ID: vsGL9Eq3NSmyN7s6Asofug_1759159522
+Received: by mail-qk1-f198.google.com with SMTP id
+ af79cd13be357-859b89cd3f2so1095224085a.1
+ for <qemu-arm@nongnu.org>; Mon, 29 Sep 2025 08:25:22 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1759159522; x=1759764322;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=JXBe3NS8d0bVtOqVULXaqNC7wJclStTQnAXF8BKjajk=;
+ b=O7uCdzDMoa3jAVMAsUimvqqoXp5/scCV4BTKAZIMmdCgowXy/VG6x6z2Y4JvnQDQKk
+ hFCIB5zZSm5y9rUOPL0lXpUVU1mqCOwuMEaLE3JVcwJ0boXpnNZd3SWMnsGFk9YN+rvZ
+ fjlhPCVM07avC5Lt7iVSXSSt2x4mrdFVuWFcHZtg0GLfQ7ClgakwTU9A5hbVtO8WtUuD
+ aSOBtZQXiPsKVOY+8hxXH//1ytwOTLhSCVsTy92uuGQZzI0AOCvdM1pQZG9KovqvBkTR
+ TTF6NKC2AXF3j0lFgKvnn9Wu88D103hw19MMLfhnu0qCXBXDUEPY/8isYY6libfzqmnZ
+ hd/A==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWWGR4PXXhCO2j2o6+y3Jl+2q47rAInU6FR5vuYUApd5ThCTpSau5UhQLIrieX73wNQRudg5QgLig==@nongnu.org
+X-Gm-Message-State: AOJu0YwDKAyg6RB1BbyhD/d/hHIH+8qJV9j3QGKj2khGS+SkEF8uxI49
+ cmwxIPlq2l3fr1p+wxvN7CVUmc901B26cQAP0HuvJU2EGbYp0Fd5Peb9+MWM5dwhYXLTZ5wWWP5
+ 75zxl7bRWAywOuAFNQ/TbAnDPk06ta/stAXveijIcnnQ5k2BNNCUkfg==
+X-Gm-Gg: ASbGncsLfTblqR+84qm0wXihSZohB+zw3rJrSG8M5+K4p7cdgl6qITWXctG4KIMzJYF
+ WTmwqEAdwvdb0id3PVn5VKAQ1hpMArv7d+aOz7952VYsqXC83gQh2lV0hJeEvwYjzDPWBDN+jUi
+ 8NpR3GK4vf4OSf5A/mLCiEtqx4/TPtIysL3NpJRsfxmHmC4qPKbxxsvUgMjXny6xXyiNcim9/b/
+ 2PisPGSa5bQrvs+FwxV+izEgoN4Be/3oeEqZMx512nMcDSV5Pw/5mtbX49ODWf8sF2wtdzzGLxS
+ 09zEiXENJlifZTkrPMiBRc1Ib+v6cAaB
+X-Received: by 2002:a05:620a:3943:b0:82a:930:9cea with SMTP id
+ af79cd13be357-85aeada8fccmr2056499085a.76.1759159521439; 
+ Mon, 29 Sep 2025 08:25:21 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHHCBowV5FOyjIVNzReesHH2xY7wHGNv48xQqqDXQqpj8dHoBhMcqnGhNN7SiEkjWOFA10JqQ==
+X-Received: by 2002:a05:620a:3943:b0:82a:930:9cea with SMTP id
+ af79cd13be357-85aeada8fccmr2056489885a.76.1759159520489; 
+ Mon, 29 Sep 2025 08:25:20 -0700 (PDT)
+Received: from x1.local ([142.188.210.50]) by smtp.gmail.com with ESMTPSA id
+ d75a77b69052e-4db09f19d73sm79490771cf.1.2025.09.29.08.25.18
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 29 Sep 2025 08:25:19 -0700 (PDT)
+Date: Mon, 29 Sep 2025 11:25:17 -0400
+From: Peter Xu <peterx@redhat.com>
+To: Fabiano Rosas <farosas@suse.de>
+Cc: Arun Menon <armenon@redhat.com>, qemu-devel@nongnu.org,
+ Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>,
+ Dmitry Osipenko <dmitry.osipenko@collabora.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Cornelia Huck <cohuck@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
+ Eric Farman <farman@linux.ibm.com>, Thomas Huth <thuth@redhat.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Matthew Rosato <mjrosato@linux.ibm.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ David Hildenbrand <david@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
+ Nicholas Piggin <npiggin@gmail.com>,
+ Harsh Prateek Bora <harshpb@linux.ibm.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Fam Zheng <fam@euphon.net>,
+ Alex Williamson <alex.williamson@redhat.com>,
+ =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@redhat.com>,
+ Steve Sistare <steven.sistare@oracle.com>,
+ =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
+ qemu-s390x@nongnu.org, qemu-ppc@nongnu.org,
+ Hailiang Zhang <zhanghailiang@xfusion.com>,
+ Stefan Berger <stefanb@linux.vnet.ibm.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+Subject: Re: [PATCH v14 00/27] migration: propagate vTPM errors using Error
+ objects
+Message-ID: <aNqk3ecJ1rMndtky@x1.local>
+References: <20250918-propagate_tpm_error-v14-0-36f11a6fb9d3@redhat.com>
+ <aNpILAhr8LaMFbcL@armenon-kvm.bengluru.csb>
+ <aNqN05aj0CYttxd6@x1.local> <877bxhwcub.fsf@suse.de>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 08/14] hw/arm/smmuv3: Add security-state handling for
- page table walks
-To: Peter Maydell <peter.maydell@linaro.org>,
- Eric Auger <eric.auger@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Chen Baozi <chenbaozi@phytium.com.cn>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Mostafa Saleh <smostafa@google.com>,
- Jean-Philippe Brucker <jean-philippe@linaro.org>
-References: <20250925162618.191242-1-tangtao1634@phytium.com.cn>
- <20250925162618.191242-9-tangtao1634@phytium.com.cn>
- <a9fe0e74-652d-48b7-89b1-73f28d1c63a4@redhat.com>
-From: Tao Tang <tangtao1634@phytium.com.cn>
-In-Reply-To: <a9fe0e74-652d-48b7-89b1-73f28d1c63a4@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: AQAAfwD3WecepNpoTmIvAA--.28826S2
-X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQAIBWjZjscNDwADs1
-Authentication-Results: hzbj-icmmx-6; spf=neutral smtp.mail=tangtao163
- 4@phytium.com.cn;
-X-Coremail-Antispam: 1Uk129KBjvJXoW3JFW7ZFy3JrWfZrWfWr13twb_yoW7ArWDp3
- ykG3Z8Kws7GF1Ivrn3Zr4293WFg395GF4UGr1agr95Ar4YqryfJF1IkF1YkFyDCrn5AF42
- vF1jgr98Ca15ArJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
- DUYxn0WfASr-VFAU7a7-sFnT9fnUUIcSsGvfJ3UbIYCTnIWIevJa73UjIFyTuYvj4RJUUU
- UUUUU
-Received-SPF: pass client-ip=162.243.164.118;
- envelope-from=tangtao1634@phytium.com.cn;
- helo=zg8tmtyylji0my4xnjqumte4.icoremail.net
+In-Reply-To: <877bxhwcub.fsf@suse.de>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: juxmFpHhHNbkPNIrDvD_oQcRZi63yTFYXkIflrKGgs4_1759159522
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=peterx@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -25
 X-Spam_score: -2.6
 X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
+X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.513,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -78,162 +134,27 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Eric,
+On Mon, Sep 29, 2025 at 11:30:20AM -0300, Fabiano Rosas wrote:
+> Peter Xu <peterx@redhat.com> writes:
+> 
+> > On Mon, Sep 29, 2025 at 02:19:48PM +0530, Arun Menon wrote:
+> >> Hi,
+> >> Gentle ping for the series.
+> >> Is there something more to be done to improve this before queueing it?
+> >> TIA.
+> >
+> > Arun, don't worry - I believe this is on Fabiano's radar.
+> >
+> 
+> Wait, have I forgot and I should be the one doing the PRs?
+> 
+> The series looks good to me. I forgot (again?) to add a t-b last week:
+> 
+> Tested-by: Fabiano Rosas <farosas@suse.de>
 
-On 2025/9/29 22:21, Eric Auger wrote:
-> Hi Tao,
->
-> On 9/25/25 6:26 PM, Tao Tang wrote:
->> This patch introduces the necessary logic to handle security states
->> during the page table translation process.
->>
->> Support for the NS (Non-secure) attribute bit is added to the parsing of
->> various translation structures, including CD and PTEs. This allows the
->> SMMU model to correctly determine the security properties of memory
->> during a translation.
->>
->> With this change, a new translation stage is added:
->>
->> - Secure Stage 1 translation
->>
->> Note that this commit does not include support for Secure Stage 2
->> translation, which will be addressed in the future.
->>
->> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
->> ---
->>   hw/arm/smmu-common.c         | 55 ++++++++++++++++++++++++++++++++----
->>   hw/arm/smmu-internal.h       |  7 +++++
->>   hw/arm/smmuv3-internal.h     |  2 ++
->>   hw/arm/smmuv3.c              |  2 ++
->>   hw/arm/trace-events          |  2 +-
->>   include/hw/arm/smmu-common.h |  4 +++
->>   6 files changed, 66 insertions(+), 6 deletions(-)
->>
->> diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
->> index bc13b00f1d..f563cba023 100644
->> --- a/hw/arm/smmu-common.c
->> +++ b/hw/arm/smmu-common.c
->> @@ -398,20 +398,25 @@ void smmu_iotlb_inv_vmid_s1(SMMUState *s, int vmid)
->>    * @base_addr[@index]
-> Wile we add some new params it may be relevant to add some new doc
-> comments above
+Queued.. thanks!
 
-
-Thank you for another incredibly thorough and insightful review. I 
-sincerely appreciate you taking the time to go through the code in such 
-detail.
-
-
-You're right. I missed some necessary comments when adding new 
-parameters. I will add them in next series.
-
->>    */
->>   static int get_pte(dma_addr_t baseaddr, uint32_t index, uint64_t *pte,
->> -                   SMMUPTWEventInfo *info)
->> +                   SMMUPTWEventInfo *info, SMMUTransCfg *cfg, int walk_ns)
-> I see a cfg param is added while not used.
-
-My original plan was to cache the NS attr in a cfg->walk_ns field, which 
-is why I passed cfg into this function. I later realized this caching 
-wasn't necessary and removed the walk_ns member from the struct, but I 
-clearly missed removing the now-redundant cfg parameter from the 
-function signature. Thanks for spotting this oversight; I will remove it 
-in v3.
-
-> why walk_ns is an int while it seems to match a SecureIndex type? while
-> not directly passing the sec_sid?
-
-
-You're right. I will replace 'int walk_ns '  with sec_sid in v3.
-
->>
->> diff --git a/hw/arm/smmu-internal.h b/hw/arm/smmu-internal.h
->> index d143d296f3..cb3a6eb8d1 100644
->> --- a/hw/arm/smmu-internal.h
->> +++ b/hw/arm/smmu-internal.h
->> @@ -58,6 +58,10 @@
->>       ((level == 3) &&                                                    \
->>        ((pte & ARM_LPAE_PTE_TYPE_MASK) == ARM_LPAE_L3_PTE_TYPE_PAGE))
->>   
->> +/* Non-secure bit */
->> +#define PTE_NS(pte) \
->> +    (extract64(pte, 5, 1))
->> +
-> I have not read that code for a while. Might be worth to create
-> differentiated sections for the different kinds of descriptors
-> For instance NS belongs to block & page descriptor while NSTable belongs
-> to a table descriptor.
-
-
-The original code didn't have clear comments to differentiate between 
-the descriptor types. Now that I've introduced the new NS and NSTable 
-attribute bits, which can be easily confused, it has become necessary to 
-add these clarifying sections. I will add comments to group the macros 
-by descriptor type to improve readability in the next version. Thanks 
-for the suggestion.
-
->>   
->>   
->>   /**
->>    * tg2granule - Decodes the CD translation granule size field according
->> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
->> index eba709ae2b..2f8494c346 100644
->> --- a/hw/arm/smmuv3.c
->> +++ b/hw/arm/smmuv3.c
->> @@ -832,6 +832,7 @@ static int decode_cd(SMMUv3State *s, SMMUTransCfg *cfg,
->>               tt->ttb = CACHED_ENTRY_TO_ADDR(entry, tt->ttb);
->>           }
->>   
->> +        tt->nscfg = i ? CD_NSCFG1(cd) : CD_NSCFG0(cd);
->>           tt->had = CD_HAD(cd, i);
->>           trace_smmuv3_decode_cd_tt(i, tt->tsz, tt->ttb, tt->granule_sz, tt->had);
->>       }
->> @@ -929,6 +930,7 @@ static SMMUTransCfg *smmuv3_get_config(SMMUDevice *sdev, SMMUEventInfo *event,
->>           cfg->sec_idx = sec_idx;
->>           cfg->txattrs = smmu_get_txattrs(sec_idx);
->>           cfg->as = smmu_get_address_space(sec_idx);
->> +        cfg->sel2 = s->bank[SMMU_SEC_IDX_S].idr[1];
-> S_IDR1 contains other feilds than SEL2 such as S_SIDSIZE?
->
-> Can't you split that patch again into 2 patches:
-> one related to the config data extraction and another one related to
-> page table walk according to the config settings?
-
-
-Sure. I'll split it into 2 patchs in v3 and cfg->sel2 will be corrected.
-
->>   
->>
->>   
->>   typedef struct SMMUTLBEntry {
->> @@ -116,6 +117,7 @@ typedef struct SMMUTLBEntry {
->>       uint8_t level;
->>       uint8_t granule;
->>       IOMMUAccessFlags parent_perm;
->> +    SMMUSecurityIndex sec_idx;
->>   } SMMUTLBEntry;
->>   
->>   /* Stage-2 configuration. */
->> @@ -156,6 +158,8 @@ typedef struct SMMUTransCfg {
->>       SMMUSecurityIndex sec_idx; /* cached security index */
->>       MemTxAttrs txattrs;        /* cached transaction attributes */
->>       AddressSpace *as;          /* cached address space */
->> +    bool current_walk_ns;      /* cached if the current walk is non-secure */
-> this does not seem to be used?
->> +    bool sel2;
-> would require a comment to remind the reader what sel2 is.
->>   } SMMUTransCfg;
->>   
->>   typedef struct SMMUDevice {
-> Thanks
->
-> Eric
-
-
-Yes. current_walk_ns will be removed and comment will be add in v3.
-
-Thanks,
-
-Tao
+-- 
+Peter Xu
 
 

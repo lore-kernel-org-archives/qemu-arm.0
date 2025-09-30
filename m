@@ -4,119 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F8E4CAC5B8
-	for <qemu-arm@archiver.kernel.org>; Tue, 30 Sep 2025 20:15:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00E54CAC5B8
+	for <qemu-arm@archiver.kernel.org>; Tue, 30 Sep 2025 22:18:09 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v3gka-00060L-Hb; Tue, 30 Sep 2025 16:15:04 -0400
+	id 1v3ifI-0000Zd-7k; Tue, 30 Sep 2025 18:17:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1v3gkU-0005zI-UT
- for qemu-arm@nongnu.org; Tue, 30 Sep 2025 16:15:02 -0400
-Received: from 7.mo552.mail-out.ovh.net ([188.165.59.253])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1v3gkI-0004Lp-Sm
- for qemu-arm@nongnu.org; Tue, 30 Sep 2025 16:14:58 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.110.43.55])
- by mo552.mail-out.ovh.net (Postfix) with ESMTPS id 4cbq641CR6z6SpT;
- Tue, 30 Sep 2025 20:14:36 +0000 (UTC)
-Received: from kaod.org (37.59.142.98) by DAG8EX2.mxp5.local (172.16.2.72)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.59; Tue, 30 Sep
- 2025 22:14:35 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-98R002505451f8-9179-48be-b3c2-ff00e255ac66,
- 012DEA80DA8F652C9231DB37D1304F33C12A2C6A) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <8850fa0e-90c2-44ee-8871-4df46c740cdf@kaod.org>
-Date: Tue, 30 Sep 2025 22:14:34 +0200
+ (Exim 4.90_1) (envelope-from <yubinz@google.com>) id 1v3ifG-0000Xn-2E
+ for qemu-arm@nongnu.org; Tue, 30 Sep 2025 18:17:42 -0400
+Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <yubinz@google.com>) id 1v3ifB-0001pi-9d
+ for qemu-arm@nongnu.org; Tue, 30 Sep 2025 18:17:41 -0400
+Received: by mail-ed1-x535.google.com with SMTP id
+ 4fb4d7f45d1cf-633c627d04eso3009a12.0
+ for <qemu-arm@nongnu.org>; Tue, 30 Sep 2025 15:17:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=google.com; s=20230601; t=1759270651; x=1759875451; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=N0PNwjSWW4mY++FnCbbuWlgH6ra9GvXDdDwnj9jSvME=;
+ b=RzW+hiT3XqjFt6lDvNcbFmR+dB4pD72rndNxcwAaa8a1XwoJjp6IKE83tMjl6GUcEo
+ XIJgzugYzp+YfFLW7pyiA9jJph9ItSImE5yvxsD9yvYtT/YR4BAU2t98qVYmT9fm+d9J
+ AIIesn5L4ITcHTKYZVqOACjYPEV+t52La5PukBynt6OQalUiy3EIcPHJk4/8XI9o+6CD
+ GvWTGgQqZOhNPXoyBlJmd+NDQaSYpFWUDwC9xSRJjefV+nG6A41JqZIVmlDA+AdQKtnp
+ j8T2KR6T8LxmxIu3qUQLAx5DXn55TEOt/BjRpTFi8kjgvlXZPvhHNBeMv2xeE445f3YP
+ WJLg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1759270651; x=1759875451;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=N0PNwjSWW4mY++FnCbbuWlgH6ra9GvXDdDwnj9jSvME=;
+ b=vFkQX5boduxrb7Dbj3tNYg+fX2LVIhJKXhE6X9ASL/paFiiaKtO1cxfR/EBlYOb5gy
+ HW/2ASMtu3huyhVQEJ5NPcOCN+yFh1/mX9IC49WyK2nR1abiYxRNsp9IDJjyp0NSTnmF
+ AqfstbwA0eDsxUunNr0WO4IFZ/+ulwsxK76ttgz1NU/R1mj2qIlnrO1fpGSKDPd8XqT+
+ wDrim0s5aZPXOQeM2sUWemmKkYpm0qy0QWOfz2fLrBwNKAfuCbZqbes7lxbrRRfRhCBK
+ tviviWTP3A4L8c7gDWWCgTDjTKmrPp5KzBe0P8zzIylqI79+W2xherCvKq5j40u1UB7W
+ tjQg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWTavDVVHTeXEFHCrrVTX8C/ah4ITl9P+i11QaNlzm9zlzb1HExdho9HlnLWb9zFG8ItiXS9HaCZw==@nongnu.org
+X-Gm-Message-State: AOJu0Yxwv0M8tfwnM2L1aeCuUPdkf5pS51FA2pGgYCVFA25SBzWoiSH7
+ PHhKx1qvAb5DYn98FbyHb5CX8rVN1ktgD4lZYarwHnSBcGaRJILWHKU77EIxbs8Wjx39U+qzPts
+ sbj6kmw8mq8ALn31FUWW4Fk5drMYQk/bYa5JtNsCG
+X-Gm-Gg: ASbGnctQyaS7AvIArP0TVR1boj67oRl2+NM3kpFEOcb92IvBray64f2Rl+hCS7OtTx+
+ I1i50IFrIUeVbQQXEh+gVpeKohDUsGtgA1FXOk1BaqS2KxVR0G7k00cvGlHqgF7D/IX+iXkVP10
+ N2Kby9umQSnPuIAVxyW7iVz7U/4M9i5+YGL/NGhhCTnbOvrfjLGlrUlS2XBkKxbekn7rv8XL97w
+ xZx0XB9Ww0c6xzGJjy6uMcb0zk9HB01S+YVjkxp4DDHWG/FFzmaFQWeU6ngjYfpfuZaL8T6oiO9
+ A+g=
+X-Google-Smtp-Source: AGHT+IFN1zh9OMPICqCcTD10Hj0QdS7Sd6pFsMvt5iOG7FKEljkoz7C20dCtWL/dBUxm66aDZ8r2bvXVrRUVgHKMQxI=
+X-Received: by 2002:a50:d71d:0:b0:62f:9f43:2117 with SMTP id
+ 4fb4d7f45d1cf-6367a952f6dmr43826a12.0.1759270650469; Tue, 30 Sep 2025
+ 15:17:30 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/2] hw/arm: add eeproms to quanta-q7l1 board
-To: Yubin Zou <yubinz@google.com>
-CC: <qemu-devel@nongnu.org>, Peter Maydell <peter.maydell@linaro.org>, Steven
- Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, Jamin Lin
- <jamin_lin@aspeedtech.com>, Andrew Jeffery <andrew@codeconstruct.com.au>,
- Joel Stanley <joel@jms.id.au>, <qemu-arm@nongnu.org>, Patrick Venture
- <venture@google.com>
 References: <20250916-quanta-q71l-eeproms-v1-0-3648692cc441@google.com>
- <20250916-quanta-q71l-eeproms-v1-1-3648692cc441@google.com>
- <37f60533-8e6b-496c-850b-16aff7fb7be3@kaod.org>
- <CABU_6B+PVUAxc8HLNvP8ym=hRM27StXjhJcc+e1j6i8OkEDwxQ@mail.gmail.com>
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Content-Language: en-US, fr
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <CABU_6B+PVUAxc8HLNvP8ym=hRM27StXjhJcc+e1j6i8OkEDwxQ@mail.gmail.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.98]
-X-ClientProxiedBy: DAG3EX2.mxp5.local (172.16.2.22) To DAG8EX2.mxp5.local
- (172.16.2.72)
-X-Ovh-Tracer-GUID: 3a0c4bbb-d028-4072-8cc5-840a6a4182ba
-X-Ovh-Tracer-Id: 4191725356499372978
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTFMOZFcGmOjD6PI8LVBJsWoZ283zV+8p7OnX1K+UakkchumJC10xh/VyhR63cl2WAK5rEzSLUorINeLCbfJnfifHxqssjAOI2oJnqcNfuzn90o0PaYOWx3ltslZHps1HB5mJxCopnhYWVfyPFrYVP/PQTdOIwYh/b2Mg8wcdwR9KZwl2H5nTqhEG9msMBXgdxGFUngSSO9mw+YicNa+TUeopJFxv8dIz7yFbKqS0W2LaqX67dX4p+SZKdUfhS1katPch64c1MgjyOYM9oJhGR6c6Yq1/RRzW6tTYfQAxi3CCel3My/z1CsGhp1ewE943PKKFo2xoFkRzjd+9uP8wD7slZFLJg5LwIxJV3YIQUzS4A7MpdC8ThXqO4yXvw9bwDeBhMkIQLDNwIOLZ9+yKYkRG3ZpQKb1yDQiqjF2iP5Qqb01UpVXCULZsHRdhi3y1ukojgFDxyIAPdLwsog6bioql2cL4uPuSAXV3HNySynHAmue0xt5/rN0odNwvPieMAqmzx1zHl9cgR7CWVdf8UCks+P7t8lU1rCnhgDPUYLYp43SkaZGBQY2zSUEyvG//kjTCOcK9VMXxJ3rhWQVF8rSoiiPB6Ge78PytSfYhahUSYLqR3lgwZJKRJMKMSHv63ruuqJzJ+uJvWeJp4J/QeJPOE7mPbOywoaE3Xq6IUpawg
-DKIM-Signature: a=rsa-sha256; bh=M+o+K22gf3v2n6dg2VF6VVYW/h/oGmxUAjYQDjTYlBQ=; 
- c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1759263278; v=1;
- b=apHUGOgmYnMj3NmTLZCnB+BPZqa7rgd8B9JOLU5bovU/xUyuP9MIFTNh8bPhxY/NJm896MBF
- rOjFO4EcAcrQJ/L4lr9gVZKUk2INgQ2lh7tViiyg2eiUVDKFUyuyClvqNQoAgSHTrmTvsHoldV4
- AwhHnUTOTVKD+LO0/lWi5jBqxn/Sbbm9fen7dbPeGiONW1fQy/rVXDkPMve8nBiWPX8O8uyzyFs
- CGyngg+p1eQUl2UHvEHv+Wi+vy3vtAYeaGyy8xMoornTsYHJzTaZIRcsAHeO9aMxZvvaXDlcNNU
- lY963UCm/biyfkzeopkpn1LitlbyPqVZGLqiq++bhrBRA==
-Received-SPF: pass client-ip=188.165.59.253; envelope-from=clg@kaod.org;
- helo=7.mo552.mail-out.ovh.net
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
- DKIM_SIGNED=0.1, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001,
- RCVD_IN_MSPIKE_WL=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ <20250916-quanta-q71l-eeproms-v1-2-3648692cc441@google.com>
+ <08b6e571-bf4f-4e51-8a70-8c2c5c675277@kaod.org>
+In-Reply-To: <08b6e571-bf4f-4e51-8a70-8c2c5c675277@kaod.org>
+From: Yubin Zou <yubinz@google.com>
+Date: Tue, 30 Sep 2025 15:17:19 -0700
+X-Gm-Features: AS18NWCvjYNl1sDOsXPQKEGx37Wvfq-jCbo3DlCY6NYmLABjPv0DL6Ydj-jbzzA
+Message-ID: <CABU_6BJ5zZ2VWHo4pS7r815RtTjdv5iZj=wYbXm5xc=X0+dh9w@mail.gmail.com>
+Subject: Re: [PATCH 2/2] hw/arm: enable eeproms for quanta-q71l
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>, 
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, 
+ Jamin Lin <jamin_lin@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, 
+ Joel Stanley <joel@jms.id.au>, qemu-arm@nongnu.org,
+ Patrick Venture <venture@google.com>
+Content-Type: multipart/alternative; boundary="0000000000002fe9d106400c1ec0"
+Received-SPF: pass client-ip=2a00:1450:4864:20::535;
+ envelope-from=yubinz@google.com; helo=mail-ed1-x535.google.com
+X-Spam_score_int: -175
+X-Spam_score: -17.6
+X-Spam_bar: -----------------
+X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ ENV_AND_HDR_SPF_MATCH=-0.5, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -132,99 +101,186 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hello Yubin,
+--0000000000002fe9d106400c1ec0
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-On 9/30/25 21:25, Yubin Zou wrote:
-> Hi Cedric
-> 
-> Could you clarify what functional test you are referring to?
+Yes, I will include the patch containing the utility function of
+at24c_eeprom_init_one.
 
+Yubin
 
-It's a small python test downloading a FW image and booting
-the machine, possibly also testing that expected services are
-up and running, network, I2C devices, etc. This last part is
-optional.
+On Tue, Sep 16, 2025 at 11:07=E2=80=AFPM C=C3=A9dric Le Goater <clg@kaod.or=
+g> wrote:
 
-See the test_aspeed_*.py files under :
+> Hi,
+>
+> On 9/16/25 19:50, Yubin Zou wrote:
+> > From: Patrick Venture <venture@google.com>
+> >
+> > Tested: Quanta-q71l firmware booted to login and was populated via the
+> > -drives for the corresponding eeproms.
+> > Signed-off-by: Patrick Venture <venture@google.com>
+> > ---
+> >   hw/arm/aspeed.c | 10 +++++-----
+> >   1 file changed, 5 insertions(+), 5 deletions(-)
+> >
+> > diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+> > index
+> bae59ae7394882e3fc93863049a37ff5a8737ff8..8cef387a0b431576a87355370492088=
+6222cca86
+> 100644
+> > --- a/hw/arm/aspeed.c
+> > +++ b/hw/arm/aspeed.c
+> > @@ -562,16 +562,16 @@ static void
+> quanta_q71l_bmc_i2c_init(AspeedMachineState *bmc)
+> >       i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 1),
+> "tmp105", 0x4f);
+> >
+> >       /* Baseboard FRU */
+> > -    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 1), 0x54, 8192);
+> > +    at24c_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 1), 1, 0x54,
+> 8192, 0);
+>
+> Where is at24c_eeprom_init_one() implementation ?
+>
+>
+> Thanks,
+>
+> C.
+>
+>
+> >       /* Frontpanel FRU */
+> > -    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 1), 0x57, 8192);
+> > +    at24c_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 1), 1, 0x57,
+> 8192, 1);
+> >       /* TODO: Add Memory Riser i2c mux and eeproms. */
+> >
+> >       i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 2),
+> "pca9546", 0x74);
+> >       i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 2),
+> "pca9548", 0x77);
+> >
+> >       /* Add BIOS FRU */
+> > -    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 3), 0x56, 8192);
+> > +    at24c_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 3), 3, 0x56,
+> 8192, 2);
+> >
+> >       /* i2c-7 */
+> >       i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 7),
+> "pca9546", 0x70);
+> > @@ -581,9 +581,9 @@ static void
+> quanta_q71l_bmc_i2c_init(AspeedMachineState *bmc)
+> >       /*        - i2c@3: pmbus@59 */
+> >
+> >       /* PDB FRU */
+> > -    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 7), 0x52, 8192);
+> > +    at24c_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 7), 7, 0x52,
+> 8192, 3);
+> >       /* BMC FRU */
+> > -    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 8), 0x50, 8192);
+> > +    at24c_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 8), 8, 0x50,
+> 8192, 4);
+> >   }
+> >
+> >   static void ast2500_evb_i2c_init(AspeedMachineState *bmc)
+> >
+>
+>
 
-   https://gitlab.com/qemu-project/qemu/-/tree/master/tests/functional/arm?ref_type=heads
+--0000000000002fe9d106400c1ec0
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-test_aspeed_bletchley.py is minimum
-test_aspeed_ast2600.py is complex
+<div dir=3D"ltr">Yes, I will include the patch containing the utility funct=
+ion of at24c_eeprom_init_one.<br><br>Yubin</div><br><div class=3D"gmail_quo=
+te gmail_quote_container"><div dir=3D"ltr" class=3D"gmail_attr">On Tue, Sep=
+ 16, 2025 at 11:07=E2=80=AFPM C=C3=A9dric Le Goater &lt;<a href=3D"mailto:c=
+lg@kaod.org">clg@kaod.org</a>&gt; wrote:<br></div><blockquote class=3D"gmai=
+l_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,20=
+4,204);padding-left:1ex">Hi,<br>
+<br>
+On 9/16/25 19:50, Yubin Zou wrote:<br>
+&gt; From: Patrick Venture &lt;<a href=3D"mailto:venture@google.com" target=
+=3D"_blank">venture@google.com</a>&gt;<br>
+&gt; <br>
+&gt; Tested: Quanta-q71l firmware booted to login and was populated via the=
+<br>
+&gt; -drives for the corresponding eeproms.<br>
+&gt; Signed-off-by: Patrick Venture &lt;<a href=3D"mailto:venture@google.co=
+m" target=3D"_blank">venture@google.com</a>&gt;<br>
+&gt; ---<br>
+&gt;=C2=A0 =C2=A0hw/arm/aspeed.c | 10 +++++-----<br>
+&gt;=C2=A0 =C2=A01 file changed, 5 insertions(+), 5 deletions(-)<br>
+&gt; <br>
+&gt; diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c<br>
+&gt; index bae59ae7394882e3fc93863049a37ff5a8737ff8..8cef387a0b431576a87355=
+3704920886222cca86 100644<br>
+&gt; --- a/hw/arm/aspeed.c<br>
+&gt; +++ b/hw/arm/aspeed.c<br>
+&gt; @@ -562,16 +562,16 @@ static void quanta_q71l_bmc_i2c_init(AspeedMachi=
+neState *bmc)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0i2c_slave_create_simple(aspeed_i2c_get_bus(&=
+amp;soc-&gt;i2c, 1), &quot;tmp105&quot;, 0x4f);<br>
+&gt;=C2=A0 =C2=A0<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0/* Baseboard FRU */<br>
+&gt; -=C2=A0 =C2=A0 at24c_eeprom_init(aspeed_i2c_get_bus(&amp;soc-&gt;i2c, =
+1), 0x54, 8192);<br>
+&gt; +=C2=A0 =C2=A0 at24c_eeprom_init_one(aspeed_i2c_get_bus(&amp;soc-&gt;i=
+2c, 1), 1, 0x54, 8192, 0);<br>
+<br>
+Where is at24c_eeprom_init_one() implementation ?<br>
+<br>
+<br>
+Thanks,<br>
+<br>
+C.<br>
+<br>
+<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0/* Frontpanel FRU */<br>
+&gt; -=C2=A0 =C2=A0 at24c_eeprom_init(aspeed_i2c_get_bus(&amp;soc-&gt;i2c, =
+1), 0x57, 8192);<br>
+&gt; +=C2=A0 =C2=A0 at24c_eeprom_init_one(aspeed_i2c_get_bus(&amp;soc-&gt;i=
+2c, 1), 1, 0x57, 8192, 1);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0/* TODO: Add Memory Riser i2c mux and eeprom=
+s. */<br>
+&gt;=C2=A0 =C2=A0<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0i2c_slave_create_simple(aspeed_i2c_get_bus(&=
+amp;soc-&gt;i2c, 2), &quot;pca9546&quot;, 0x74);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0i2c_slave_create_simple(aspeed_i2c_get_bus(&=
+amp;soc-&gt;i2c, 2), &quot;pca9548&quot;, 0x77);<br>
+&gt;=C2=A0 =C2=A0<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0/* Add BIOS FRU */<br>
+&gt; -=C2=A0 =C2=A0 at24c_eeprom_init(aspeed_i2c_get_bus(&amp;soc-&gt;i2c, =
+3), 0x56, 8192);<br>
+&gt; +=C2=A0 =C2=A0 at24c_eeprom_init_one(aspeed_i2c_get_bus(&amp;soc-&gt;i=
+2c, 3), 3, 0x56, 8192, 2);<br>
+&gt;=C2=A0 =C2=A0<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0/* i2c-7 */<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0i2c_slave_create_simple(aspeed_i2c_get_bus(&=
+amp;soc-&gt;i2c, 7), &quot;pca9546&quot;, 0x70);<br>
+&gt; @@ -581,9 +581,9 @@ static void quanta_q71l_bmc_i2c_init(AspeedMachine=
+State *bmc)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0/*=C2=A0 =C2=A0 =C2=A0 =C2=A0 - i2c@3: pmbus=
+@59 */<br>
+&gt;=C2=A0 =C2=A0<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0/* PDB FRU */<br>
+&gt; -=C2=A0 =C2=A0 at24c_eeprom_init(aspeed_i2c_get_bus(&amp;soc-&gt;i2c, =
+7), 0x52, 8192);<br>
+&gt; +=C2=A0 =C2=A0 at24c_eeprom_init_one(aspeed_i2c_get_bus(&amp;soc-&gt;i=
+2c, 7), 7, 0x52, 8192, 3);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0/* BMC FRU */<br>
+&gt; -=C2=A0 =C2=A0 at24c_eeprom_init(aspeed_i2c_get_bus(&amp;soc-&gt;i2c, =
+8), 0x50, 8192);<br>
+&gt; +=C2=A0 =C2=A0 at24c_eeprom_init_one(aspeed_i2c_get_bus(&amp;soc-&gt;i=
+2c, 8), 8, 0x50, 8192, 4);<br>
+&gt;=C2=A0 =C2=A0}<br>
+&gt;=C2=A0 =C2=A0<br>
+&gt;=C2=A0 =C2=A0static void ast2500_evb_i2c_init(AspeedMachineState *bmc)<=
+br>
+&gt; <br>
+<br>
+</blockquote></div>
 
-Thanks,
-
-C.
-
-
-> 
-> Thanks
-> Yubin
-> 
-> On Tue, Sep 16, 2025 at 11:10 PM Cédric Le Goater <clg@kaod.org <mailto:clg@kaod.org>> wrote:
-> 
->     Hi,
-> 
->     On 9/16/25 19:50, Yubin Zou wrote:
->      > From: Patrick Venture <venture@google.com <mailto:venture@google.com>>
->      >
->      > Adds eeprom init for aspeed helper method and adds 24c64 eeproms to the
->      > quanta-q71l bmc board.
->      >
->      > Tested: Booted quanta-q71l bmc firmware to userspace.
-> 
->     Could you please provide a FW image and functional test for the
->     quanta-q7l1 board ?
-> 
->     Thanks,
-> 
->     C.
-> 
-> 
->      > Signed-off-by: Patrick Venture <venture@google.com <mailto:venture@google.com>>
->      > ---
->      >   hw/arm/aspeed.c | 15 ++++++++++-----
->      >   1 file changed, 10 insertions(+), 5 deletions(-)
->      >
->      > diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
->      > index c31bbe7701381f6980e874f9fca51805ff9fb9b4..bae59ae7394882e3fc93863049a37ff5a8737ff8 100644
->      > --- a/hw/arm/aspeed.c
->      > +++ b/hw/arm/aspeed.c
->      > @@ -561,14 +561,17 @@ static void quanta_q71l_bmc_i2c_init(AspeedMachineState *bmc)
->      >       i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 1), "tmp105", 0x4e);
->      >       i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 1), "tmp105", 0x4f);
->      >
->      > -    /* TODO: i2c-1: Add baseboard FRU eeprom@54 24c64 */
->      > -    /* TODO: i2c-1: Add Frontpanel FRU eeprom@57 24c64 */
->      > +    /* Baseboard FRU */
->      > +    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 1), 0x54, 8192);
->      > +    /* Frontpanel FRU */
->      > +    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 1), 0x57, 8192);
->      >       /* TODO: Add Memory Riser i2c mux and eeproms. */
->      >
->      >       i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 2), "pca9546", 0x74);
->      >       i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 2), "pca9548", 0x77);
->      >
->      > -    /* TODO: i2c-3: Add BIOS FRU eeprom@56 24c64 */
->      > +    /* Add BIOS FRU */
->      > +    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 3), 0x56, 8192);
->      >
->      >       /* i2c-7 */
->      >       i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 7), "pca9546", 0x70);
->      > @@ -577,8 +580,10 @@ static void quanta_q71l_bmc_i2c_init(AspeedMachineState *bmc)
->      >       /*        - i2c@2: pmbus@58 */
->      >       /*        - i2c@3: pmbus@59 */
->      >
->      > -    /* TODO: i2c-7: Add PDB FRU eeprom@52 */
->      > -    /* TODO: i2c-8: Add BMC FRU eeprom@50 */
->      > +    /* PDB FRU */
->      > +    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 7), 0x52, 8192);
->      > +    /* BMC FRU */
->      > +    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 8), 0x50, 8192);
->      >   }
->      >
->      >   static void ast2500_evb_i2c_init(AspeedMachineState *bmc)
->      >
-> 
-
+--0000000000002fe9d106400c1ec0--
 

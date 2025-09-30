@@ -4,116 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E478CCA470
-	for <qemu-arm@archiver.kernel.org>; Tue, 30 Sep 2025 11:13:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3EE9BCCA468
+	for <qemu-arm@archiver.kernel.org>; Tue, 30 Sep 2025 11:57:51 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v3YIQ-0007uA-G1; Tue, 30 Sep 2025 07:13:29 -0400
+	id 1v3Yz8-0000UD-Ri; Tue, 30 Sep 2025 07:57:35 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1v3YIH-0007sy-2k; Tue, 30 Sep 2025 07:13:18 -0400
-Received: from smtpout2.mo529.mail-out.ovh.net ([79.137.123.220])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1v3YIA-000174-RK; Tue, 30 Sep 2025 07:13:15 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.109.231.193])
- by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 4cbb595w06z5xHh;
- Tue, 30 Sep 2025 11:13:01 +0000 (UTC)
-Received: from kaod.org (37.59.142.100) by DAG8EX2.mxp5.local (172.16.2.72)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.59; Tue, 30 Sep
- 2025 13:13:01 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-100R003ce42045c-629d-492e-8d7e-a674b623c77e,
- 012DEA80DA8F652C9231DB37D1304F33C12A2C6A) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <e493e89d-d161-4c5b-abf2-053034aa82b4@kaod.org>
-Date: Tue, 30 Sep 2025 13:13:00 +0200
+ (Exim 4.90_1) (envelope-from <chigot@adacore.com>)
+ id 1v3Yz6-0000U0-1p
+ for qemu-arm@nongnu.org; Tue, 30 Sep 2025 07:57:32 -0400
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <chigot@adacore.com>)
+ id 1v3Yz0-0001bh-M3
+ for qemu-arm@nongnu.org; Tue, 30 Sep 2025 07:57:31 -0400
+Received: by mail-wr1-x42b.google.com with SMTP id
+ ffacd0b85a97d-3ee15b5435bso3287581f8f.0
+ for <qemu-arm@nongnu.org>; Tue, 30 Sep 2025 04:57:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=adacore.com; s=google; t=1759233442; x=1759838242; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=2QxmQxnMHNNlOF0Ia3HWTfpsW714bs+hZh+O79bMeAc=;
+ b=Ie4p1xuQ6B+rt/qFBHHYw+5evNkcZ0Us8iF1pyzq4d/c4sUHmDVjiQp+Rye1izidgC
+ xrwzksRg736MB6nr/q96lXYEuonlBqsSjsf7X8eS/oGG2e77VCIZBRBjOhm1Pyn5lCJL
+ 2iULqyzGMkzkf8/eVbwlOMIfRpMNlyKEW8O6JkkeVuGnX2asD8/sr0GfemDn3qgNF50z
+ MJim87X3wiyEDHEJ4XxB+Nf7GFHn7Myypdx7vJRy+r2RxDUAgnQsZJjQk0hGRUz68C3D
+ CUcmhaShpORQ89zzYm5txPcsyfDUejKurDtJg1Aod1Go7znYKuUYvdrGHLsw7g2JeS8o
+ XPSA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1759233442; x=1759838242;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=2QxmQxnMHNNlOF0Ia3HWTfpsW714bs+hZh+O79bMeAc=;
+ b=B+n85q5RmNHupytfPpw5G2bnOd+x6WfbxdUVWpGD44GaubRRycKDcgevTMuGD/MKCM
+ +s+hn4zbfKK3VOYWMX74o5iNFgFzo213FkBrvGDAcMTrPniuu088t01CbBS8JQV2/tfT
+ XCe9R0FubAb0K7hYg8OkeErcfxsvCPv782ColT9GSx4+aa9oE5YJWzcEJkC+8nK8bx30
+ OY/pwFHv4UfOulF3lUEYM85J3puxaHWyysQDCYI2HasY4a4o9ISiUwFuGCVWKNi/H5+o
+ SLWTPSd3WAVN2iHVr+wx6TPxTI3SnYX0yydI8gjQgIQLI22ck91R7AY9j8hxS0ARSE1P
+ qRzg==
+X-Gm-Message-State: AOJu0YxxLjpYFCxye9xTdN5oEeRGBwEddWZvZX1+1wrzcwKfaonvbRnj
+ 6Om6zKLLJjJ97jMJONFtGjyKhFJP+9YxQZrZ6mQt36tqOyJgC6OiI3pVZK+gQPF9Yw==
+X-Gm-Gg: ASbGncvPXznfaOtdU3rvIw0pXlnjbpXboH17iGMpub4UN8M9eD8oa2gM8MNXxg+4s3B
+ GRHaghSP+r1XDlnEBCS45ptZ7D/FQ6HWTmOYhvFn3jNdfHJOVL6NHfLbdSz3cN3Pb3Z1KyCr60A
+ SPqPfJsMbLXy7wm4obQOPizkxg9sXfbbGMUXm02frxi/XDSk4FT11MMQJ8dKjvKG48sPYpnUpuq
+ cak0TIiHbhhggix2JImTVeEdJK/Gbg+Vbkvk+IXyJU0aK4aCv8Ei+F3lUt0phZJUB9OBrz283Yw
+ 0Ros4TIZrwRB6UlfrkBmzC4aIIRR1rqWanh+63qxyGh+qV0u02ca7Adi+yyrv5525c8FlKrCy2f
+ 6GoCAVkyP8K3SNxREsMMe3InQkk0364fPBGwZ4jmFys0xzKZhdI6VseRLFnCPHKxfxKqqWcFMme
+ 2GveN5gJaJysNnG2z89o87Y92WNuZU5SwRgJZPe0LlDs2bdu7K110Hnw==
+X-Google-Smtp-Source: AGHT+IF8S9GkUI1VfCfMI81h6ppOs6aOk1q+lJg3st5w4fFqXsxM6p471t/cAbwLlmSqNPG9uf9mIw==
+X-Received: by 2002:a05:6000:1846:b0:3ee:15b4:846c with SMTP id
+ ffacd0b85a97d-40e44682b8dmr18819992f8f.28.1759233441629; 
+ Tue, 30 Sep 2025 04:57:21 -0700 (PDT)
+Received: from chigot-Dell.telnowedge.local
+ (lmontsouris-659-1-24-67.w81-250.abo.wanadoo.fr. [81.250.175.67])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-40fc7d3780asm22448289f8f.52.2025.09.30.04.57.20
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 30 Sep 2025 04:57:21 -0700 (PDT)
+From: =?UTF-8?q?Cl=C3=A9ment=20Chigot?= <chigot@adacore.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org, edgar.iglesias@gmail.com,
+ alistair@alistair23.me,
+ =?UTF-8?q?Cl=C3=A9ment=20Chigot?= <chigot@adacore.com>
+Subject: [PATCH 1/3] hw/arm/xlnx-zynqmp: move GIC_NUM_SPI_INTR define in header
+Date: Tue, 30 Sep 2025 13:57:16 +0200
+Message-Id: <20250930115718.437100-2-chigot@adacore.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20250930115718.437100-1-chigot@adacore.com>
+References: <20250930115718.437100-1-chigot@adacore.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] aspeed: Add Supermicro X11 SPI machine type
-To: Guenter Roeck <linux@roeck-us.net>
-CC: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery
- <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>, <qemu-arm@nongnu.org>,
- <qemu-devel@nongnu.org>
-References: <20221025165109.1226001-1-linux@roeck-us.net>
- <dbea5c97-071e-4d7c-a022-8cd5d9cf6171@kaod.org>
- <e6ad0500-29b5-422f-a584-34d33a5e9a0a@roeck-us.net>
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Content-Language: en-US, fr
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <e6ad0500-29b5-422f-a584-34d33a5e9a0a@roeck-us.net>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.100]
-X-ClientProxiedBy: DAG8EX1.mxp5.local (172.16.2.71) To DAG8EX2.mxp5.local
- (172.16.2.72)
-X-Ovh-Tracer-GUID: 0e066b3c-908a-4898-8671-8a5aa70ba92c
-X-Ovh-Tracer-Id: 13491940061823929126
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTEwimGix62z5d6ymBRsktbNn+Rff4WB+yiWe9qPmZYtq7+GRL2pgCyzXe+4F57PWh/iIa1R/1+AzoO1DkKYhIYTz781ov3rZ6NtSrzY7NTBbauH6RXCoeZGM0pWwtCgpq3gtvO3JFiaDP+rhixV8rWcnAiDjUrtQMABrpQAI059Y3uA0q7XcJDQfSEzzfK91TWMi8/LO9nlZX2n5SQ4RMN7+jbtHJgQwGgtNS6StYo++pOhf+wQGwUNNVywtYWtWhMeBnHkek2FtjPNMYtDCoB0ey72LGM2QIs/LYm0q3a5w6PjqFX9s5gYb9J8xd0Dj3YzSi/oKzo24seLjQyd8I7+thbv2ZzPIfgT1gBoDdL9Hn29Yr7QwvrJyjsUbwwJl2vuU9+VVYrmE/6stcwttPdvs4KJhYD3WEY+MvYUEMA4pj5/e8QGJulyC5Ql+Y3fZPmCRflJpWlTmfzvk0eRx4UOvA/zS96Jf3XjkXjifklhzwEgbLZ0Bq30sQHJhaPKzLufY9RCckj9mkqIUrmQN+rg36ILNOEVLhv0cWTM2SAFub6qyKItEZFCtf5Mc7fvcDCvfR2j5dnehX7i4Heu4TaLWP0Eo09/G/RvVEConznfQBIgGVDZujsTrxnMI0Wlha96NQhvyUeoUe0cuojk4q8FA2/lZykbQfwmEWz60u/OXg
-DKIM-Signature: a=rsa-sha256; bh=R+xvhpupGTYzNQ9a040wfBj7JORG0AwjbrY+8dkK9Fs=; 
- c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1759230782; v=1;
- b=k0hspo6qvhaSeXoKKvCOOl3HHE1Z0GU7cs1q/GbFYyW6EKLj1SQhVPuwF6CSZNekBLa579iG
- pCMO56uMYiW/82G2O3QZ7fH9mb4+d0wXgO28nkFA/ECKeNBdVlQ9Q6KKgurQ287QStO1EG9VbFw
- CW6aWlHI0uPKj6WF4jtxlN7zUXA3Flds54U/Q3iDNBQ1d0WFtIiqP+RbBhCw2MvGNknDGBekaW4
- JjvNWIm1RPmCRmBgtUiZ2o0+0BKpz59bYMiWozd/9h1tLL3J+9R/09HDpPFu6uxtunKR4v+2sbB
- +AJCGRr4Z+0aX/fnDreDEa927n8ocxO9vz+xivN+5nMcg==
-Received-SPF: pass client-ip=79.137.123.220; envelope-from=clg@kaod.org;
- helo=smtpout2.mo529.mail-out.ovh.net
+Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
+ envelope-from=chigot@adacore.com; helo=mail-wr1-x42b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -129,42 +104,80 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 9/30/25 12:08, Guenter Roeck wrote:
-> On 9/29/25 22:55, Cédric Le Goater wrote:
->> On 10/25/22 18:51, Guenter Roeck wrote:
->>> supermicrox11-bmc is configured with ast2400-a1 SoC. This does not match
->>> the Supermicro documentation for X11 BMCs, and it does not match the
->>> devicetree file in the Linux kernel.
->>>
->>> As it turns out, some Supermicro X11 motherboards use AST2400 SoCs,
->>> while others use AST2500.
->>>
->>> Introduce new machine type supermicrox11-spi-bmc with AST2500 SoC
->>> to match the devicetree description in the Linux kernel. Hardware
->>> configuration details for this machine type are guesswork and taken
->>> from defaults as well as from the Linux kernel devicetree file.
->>>
->>> The new machine type was tested with aspeed-bmc-supermicro-x11spi.dts
->>> from the Linux kernel and with Linux versions 6.0.3 and 6.1-rc2.
->>> Linux booted successfully from initrd and from both SPI interfaces.
->>> Ethernet interfaces were confirmed to be operational.
->>>
->>> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
->>
->> Hello Guenter
->>
->> Would it be possible to contribute a functional test for this
->> machine ?
->>
->> Since this machine contributes little to the Aspeed models,
->> its value lies in the firmware it can run to exercise the
->> models. Without functional tests, I plan to schedule the
->> removal in the QEMU 10.2 cycle.
->>
-> 
-> I use it to test the Linux kernel. Nor worth enough to spend more time on.
-> Just drop it; I'll drop the respective test runs.
-Can the FW be downloaded ?
+This define will be needed in a later patch in XlnxZynqMPState
+structure, hence move it within xlnx-zynqmp header.
 
-C.
+Add XLXN_ZYNQMP prefix as it's now public.
+
+Signed-off-by: Clément Chigot <chigot@adacore.com>
+---
+ hw/arm/xlnx-zynqmp.c         | 11 +++++------
+ include/hw/arm/xlnx-zynqmp.h |  1 +
+ 2 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
+index ec96a46eec..d7adc070f8 100644
+--- a/hw/arm/xlnx-zynqmp.c
++++ b/hw/arm/xlnx-zynqmp.c
+@@ -26,8 +26,6 @@
+ #include "target/arm/cpu-qom.h"
+ #include "target/arm/gtimer.h"
+ 
+-#define GIC_NUM_SPI_INTR 160
+-
+ #define ARM_PHYS_TIMER_PPI  30
+ #define ARM_VIRT_TIMER_PPI  27
+ #define ARM_HYP_TIMER_PPI   26
+@@ -206,7 +204,7 @@ static const XlnxZynqMPGICRegion xlnx_zynqmp_gic_regions[] = {
+ 
+ static inline int arm_gic_ppi_index(int cpu_nr, int ppi_index)
+ {
+-    return GIC_NUM_SPI_INTR + cpu_nr * GIC_INTERNAL + ppi_index;
++    return XLNX_ZYNQMP_GIC_NUM_SPI_INTR + cpu_nr * GIC_INTERNAL + ppi_index;
+ }
+ 
+ static void xlnx_zynqmp_create_rpu(MachineState *ms, XlnxZynqMPState *s,
+@@ -454,7 +452,7 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
+     int num_apus = MIN(ms->smp.cpus, XLNX_ZYNQMP_NUM_APU_CPUS);
+     const char *boot_cpu = s->boot_cpu ? s->boot_cpu : "apu-cpu[0]";
+     ram_addr_t ddr_low_size, ddr_high_size;
+-    qemu_irq gic_spi[GIC_NUM_SPI_INTR];
++    qemu_irq gic_spi[XLNX_ZYNQMP_GIC_NUM_SPI_INTR];
+     Error *err = NULL;
+ 
+     ram_size = memory_region_size(s->ddr_ram);
+@@ -502,7 +500,8 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
+         g_free(ocm_name);
+     }
+ 
+-    qdev_prop_set_uint32(DEVICE(&s->gic), "num-irq", GIC_NUM_SPI_INTR + 32);
++    qdev_prop_set_uint32(DEVICE(&s->gic), "num-irq",
++                         XLNX_ZYNQMP_GIC_NUM_SPI_INTR + 32);
+     qdev_prop_set_uint32(DEVICE(&s->gic), "revision", 2);
+     qdev_prop_set_uint32(DEVICE(&s->gic), "num-cpu", num_apus);
+     qdev_prop_set_bit(DEVICE(&s->gic), "has-security-extensions", s->secure);
+@@ -613,7 +612,7 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
+         return;
+     }
+ 
+-    for (i = 0; i < GIC_NUM_SPI_INTR; i++) {
++    for (i = 0; i < XLNX_ZYNQMP_GIC_NUM_SPI_INTR; i++) {
+         gic_spi[i] = qdev_get_gpio_in(DEVICE(&s->gic), i);
+     }
+ 
+diff --git a/include/hw/arm/xlnx-zynqmp.h b/include/hw/arm/xlnx-zynqmp.h
+index c137ac59e8..6a407c2962 100644
+--- a/include/hw/arm/xlnx-zynqmp.h
++++ b/include/hw/arm/xlnx-zynqmp.h
+@@ -67,6 +67,7 @@ OBJECT_DECLARE_SIMPLE_TYPE(XlnxZynqMPState, XLNX_ZYNQMP)
+ #define XLNX_ZYNQMP_OCM_RAM_SIZE 0x10000
+ 
+ #define XLNX_ZYNQMP_GIC_REGIONS 6
++#define XLNX_ZYNQMP_GIC_NUM_SPI_INTR 160
+ 
+ /*
+  * ZynqMP maps the ARM GIC regions (GICC, GICD ...) at consecutive 64k offsets
+-- 
+2.34.1
+
 

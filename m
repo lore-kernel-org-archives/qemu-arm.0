@@ -4,64 +4,142 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89958CCA470
-	for <qemu-arm@archiver.kernel.org>; Tue, 30 Sep 2025 16:55:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6CD22CCA470
+	for <qemu-arm@archiver.kernel.org>; Tue, 30 Sep 2025 17:36:22 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v3dcK-0007fT-FE; Tue, 30 Sep 2025 12:54:22 -0400
+	id 1v3eGj-0001pY-0E; Tue, 30 Sep 2025 13:36:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tangtao1634@phytium.com.cn>)
- id 1v3dcF-0007dj-W7; Tue, 30 Sep 2025 12:54:16 -0400
-Received: from sgoci-sdnproxy-4.icoremail.net ([129.150.39.64])
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <tangtao1634@phytium.com.cn>)
- id 1v3dcA-0007tB-Ia; Tue, 30 Sep 2025 12:54:15 -0400
-Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
- by hzbj-icmmx-6 (Coremail) with SMTP id AQAAfwDnpF0kC9xoGuMDAA--.7073S2;
- Wed, 01 Oct 2025 00:53:56 +0800 (CST)
-Received: from phytium.com.cn (unknown [113.246.232.83])
- by mail (Coremail) with SMTP id AQAAfwAHbOkaC9xoFaU1AA--.36915S5;
- Wed, 01 Oct 2025 00:53:55 +0800 (CST)
-From: tangtao1634 <tangtao1634@phytium.com.cn>
-To: pbonzini@redhat.com, farosas@suse.de, lvivier@redhat.com,
- Eric Auger <eric.auger@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Chen Baozi <chenbaozi@phytium.com.cn>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Jean-Philippe Brucker <jean-philippe@linaro.org>,
- Mostafa Saleh <smostafa@google.com>, Tao Tang <tangtao1634@phytium.com.cn>
-Subject: [RFC v2 2/2] tests/qtest: add SMMUv3 smoke test using smmu-testdev
- DMA source
-Date: Wed,  1 Oct 2025 00:53:40 +0800
-Message-Id: <20250930165340.42788-3-tangtao1634@phytium.com.cn>
-X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20250930165340.42788-1-tangtao1634@phytium.com.cn>
-References: <20250930165340.42788-1-tangtao1634@phytium.com.cn>
+ (Exim 4.90_1) (envelope-from <groeck7@gmail.com>) id 1v3eGe-0001mQ-Ej
+ for qemu-arm@nongnu.org; Tue, 30 Sep 2025 13:36:00 -0400
+Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <groeck7@gmail.com>) id 1v3eGa-0006TJ-DV
+ for qemu-arm@nongnu.org; Tue, 30 Sep 2025 13:35:59 -0400
+Received: by mail-pj1-x1035.google.com with SMTP id
+ 98e67ed59e1d1-3307de086d8so5696417a91.2
+ for <qemu-arm@nongnu.org>; Tue, 30 Sep 2025 10:35:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1759253746; x=1759858546; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from
+ :content-language:references:cc:to:subject:user-agent:mime-version
+ :date:message-id:sender:from:to:cc:subject:date:message-id:reply-to;
+ bh=TFe81CTNYwvWQneCAPLWT9qgKRHJ0lFjiIQHJPODoTo=;
+ b=Fq1GIbwK+GUjQcvwroChBnFqVvRJSlg83Vwp9Z5dbzNpfegZHXF77HA2FtxqSm8FDR
+ xM3rCWvRyDpG8Avu+zpSySEa8HX9FY8Tuq2drqWf8wh+oT+bVPJhsNf1pQbJWPX6dzP9
+ hT4+TuhdNIybAULXulhgUgSgWhE0pDzPeq/h3YXvjn/WwB0hWzldYmj/DBNl3iZpFKrc
+ kuq9LIFUL++ulRywt8bqIr5np8Wpp/mSShdPlR8WTTdHfsHxwSmpRoQ7ngs4sZm+3ZNJ
+ Uiaj59og0ItZHG+8iWQSgvFgq3UsvouyXgHnPgrXd3tKofUM5QwVjV4q8pzfCXpvp+ub
+ 0cRA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1759253746; x=1759858546;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from
+ :content-language:references:cc:to:subject:user-agent:mime-version
+ :date:message-id:sender:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=TFe81CTNYwvWQneCAPLWT9qgKRHJ0lFjiIQHJPODoTo=;
+ b=QvW3ONosIDBQeOX5iGTVYpp4HSGXfauFo+uNeBXauThub4r/gvWNSBr4tONE+Fg1QS
+ iT9WqhBXOBBYF420g6VhcwuLYXw17J3SIfsyZb4Bbd4r4FC2i2t5jfv+yPA1EOb35ThR
+ yBWEeRr5TJJKmLTGyqoPOC5hKy8kqzzF1i12m9JHc77i55sD0TIAL2XVf9CKz3XIysbg
+ EZ0CZrrMk5+erzKOIuH9p+HFEFDp4aNUgJdaacnhMsgZX3RLlUQaX+QUcyL8vEyDy/Xe
+ v3LIsQzRQxe7vNLlz1o17C3hYIyv7CmRPlQOVlMJoD5aCueAMoJ4sEKfWypV3Nu4NOqe
+ QfEw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXUjmsBl3TDe/Nxb+K+Q0fGBluxcMvlJEBqTDdnxyDYNsJ+HvsOXhYSy3IN8FkiBs+e6qe3EbWh4Q==@nongnu.org
+X-Gm-Message-State: AOJu0Yz06sZ77SURGPV4FT6UJgotYLmAhqne7OOnMHiLCC5DQzPWcu5z
+ QcxZiU9J2JUHYvkziE30sIhStuBndrzy7od9P2E+0CBjbZFmOlCHuns/
+X-Gm-Gg: ASbGncs2pPr2+TU5npvEwAaxOs1J7AKTuiNEofproT0Eisiou6hZcT9idSSXqYn1i/k
+ PhmZX1erVR6aPRGbkMm/ZbcIlWAlr/Alsi5d7vBSEggDpfCncr9i1fiEiAwf5WxavcvyjIFrPfI
+ foIVWyoDziIUwc6WW1H9qAK8OHQy/I7Ao8Q7V4XRsD3aDaHEYPjVUdzN6vt+iLDLqRzmtP7z3Xs
+ 8Don4WdIh+wVttJgyVFzeiY1h7euICgD0xgwsCb7FeG2bFf8cQTHIOsjVNbK3qacCU/JqBMeXbg
+ evsTq+vySn8CU1MKLBvtfux6PO03biin+GOgs/KqkSGcqMk2bnm8Vt/3vVr3qwDcN5MgqvjCwVp
+ ZPRt/TguL6xrPMU/nnLpoCOuVQ/GlMkXW9SExu7e0ncKTLygfr1Ee08EX/+56sLjieJApBJ5Xuv
+ 62kjmP/8GdciIjiUzMNZp0AgSqfPNyrw==
+X-Google-Smtp-Source: AGHT+IHCz8a1iEuee5xlZWTnSPShlBYEvkosMxFoVsbA6YwO2ft+RR5SRTpDENqELKVn4wxCry8kLg==
+X-Received: by 2002:a17:90b:1652:b0:32a:e706:b7b6 with SMTP id
+ 98e67ed59e1d1-339a6e75590mr335937a91.11.1759253745770; 
+ Tue, 30 Sep 2025 10:35:45 -0700 (PDT)
+Received: from ?IPV6:2600:1700:e321:62f0:da43:aeff:fecc:bfd5?
+ ([2600:1700:e321:62f0:da43:aeff:fecc:bfd5])
+ by smtp.gmail.com with ESMTPSA id
+ 98e67ed59e1d1-339a7039781sm121848a91.26.2025.09.30.10.35.44
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 30 Sep 2025 10:35:45 -0700 (PDT)
+Message-ID: <f480cd3d-ee99-430a-b32f-0fa6ce549b68@roeck-us.net>
+Date: Tue, 30 Sep 2025 10:35:44 -0700
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] aspeed: Add Supermicro X11 SPI machine type
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery
+ <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20221025165109.1226001-1-linux@roeck-us.net>
+ <dbea5c97-071e-4d7c-a022-8cd5d9cf6171@kaod.org>
+ <e6ad0500-29b5-422f-a584-34d33a5e9a0a@roeck-us.net>
+ <e493e89d-d161-4c5b-abf2-053034aa82b4@kaod.org>
+ <69494307-46ce-41b7-b8ee-c7e0aa462566@roeck-us.net>
+ <fc857b89-6b57-4200-a21a-a60d49ba000b@kaod.org>
+Content-Language: en-US
+From: Guenter Roeck <linux@roeck-us.net>
+Autocrypt: addr=linux@roeck-us.net; keydata=
+ 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
+ np3900V20aS7eD9K8GTU0TGC1pyz6IVJwIE=
+In-Reply-To: <fc857b89-6b57-4200-a21a-a60d49ba000b@kaod.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: AQAAfwAHbOkaC9xoFaU1AA--.36915S5
-X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQAJBWja4KgF5AAAsW
-Authentication-Results: hzbj-icmmx-6; spf=neutral smtp.mail=tangtao163
- 4@phytium.com.cn;
-X-Coremail-Antispam: 1Uk129KBjvAXoW3try3Wr4UCFy5Wr4xXryDGFg_yoW8JF4xuo
- WS9Fsxua1xGF17Ar48Crn7G347Xr1I9FnxAF15Wr45Ga4FkF15Gw1rtw43G3s5trsYkFW7
- WFZ7Kw1ftr17X3s3n29KB7ZKAUJUUUU8529EdanIXcx71UUUUU7KY7ZEXasCq-sGcSsGvf
- J3UbIjqfuFe4nvWSU8nxnvy29KBjDU0xBIdaVrnUUvcSsGvfC2KfnxnUUI43ZEXa7xR_UU
- UUUUUUU==
-Received-SPF: pass client-ip=129.150.39.64;
- envelope-from=tangtao1634@phytium.com.cn; helo=sgoci-sdnproxy-4.icoremail.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1035;
+ envelope-from=groeck7@gmail.com; helo=mail-pj1-x1035.google.com
+X-Spam_score_int: -16
+X-Spam_score: -1.7
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_ENVFROM_END_DIGIT=0.25,
+ FREEMAIL_FORGED_FROMDOMAIN=0.001, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -77,372 +155,91 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Tao Tang <tangtao1634@phytium.com.cn>
+On 9/30/25 07:54, Cédric Le Goater wrote:
+> On 9/30/25 16:35, Guenter Roeck wrote:
+>> On 9/30/25 04:13, Cédric Le Goater wrote:
+>>> On 9/30/25 12:08, Guenter Roeck wrote:
+>>>> On 9/29/25 22:55, Cédric Le Goater wrote:
+>>>>> On 10/25/22 18:51, Guenter Roeck wrote:
+>>>>>> supermicrox11-bmc is configured with ast2400-a1 SoC. This does not match
+>>>>>> the Supermicro documentation for X11 BMCs, and it does not match the
+>>>>>> devicetree file in the Linux kernel.
+>>>>>>
+>>>>>> As it turns out, some Supermicro X11 motherboards use AST2400 SoCs,
+>>>>>> while others use AST2500.
+>>>>>>
+>>>>>> Introduce new machine type supermicrox11-spi-bmc with AST2500 SoC
+>>>>>> to match the devicetree description in the Linux kernel. Hardware
+>>>>>> configuration details for this machine type are guesswork and taken
+>>>>>> from defaults as well as from the Linux kernel devicetree file.
+>>>>>>
+>>>>>> The new machine type was tested with aspeed-bmc-supermicro-x11spi.dts
+>>>>>> from the Linux kernel and with Linux versions 6.0.3 and 6.1-rc2.
+>>>>>> Linux booted successfully from initrd and from both SPI interfaces.
+>>>>>> Ethernet interfaces were confirmed to be operational.
+>>>>>>
+>>>>>> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+>>>>>
+>>>>> Hello Guenter
+>>>>>
+>>>>> Would it be possible to contribute a functional test for this
+>>>>> machine ?
+>>>>>
+>>>>> Since this machine contributes little to the Aspeed models,
+>>>>> its value lies in the firmware it can run to exercise the
+>>>>> models. Without functional tests, I plan to schedule the
+>>>>> removal in the QEMU 10.2 cycle.
+>>>>>
+>>>>
+>>>> I use it to test the Linux kernel. Nor worth enough to spend more time on.
+>>>> Just drop it; I'll drop the respective test runs.
+>>> Can the FW be downloaded ?
+>>>
+>>
+>> I have no idea. I only test the Linux kernel (more specifically, the Linux kernel
+>> drivers). 
+> 
+> OK. you boot with -kernel and a custom rootfs I guess. That's OK
+> for a functional test too.
+> 
+>> I already have to work around issues with the board that because the
+>> Linux kernel no longer supports the Macronix flash on that board as emulated
+>> by qemu. 
+> 
+> Ah. I am the kernel maintainer of the spi driver. So interested
+> to know more. Is that related to the fact that there are mx25l25635e
+> and mx25l25635f flash devices with the same device ID but different
+> SFDP tables ? One has 4B support, the other not.
+> 
+>> My patch to let me specify the flash model for aspeed boards in qemu
+>> was rejected. 
+> q
+> The aspeed machines have these options :
+> 
+>    fmc-model=<string>     - Change the FMC Flash model
+>    spi-model=<string>     - Change the SPI Flash model
+> 
+> Isn't that enough ?
+> 
+>> So I already have to carry a downstream qemu change to support it.
+> 
+> I don't see any change under :
+> 
+>     https://github.com/groeck/qemu/commits/v10.0.2-local/
+> 
+> May be you are mistaking with the Nuvoton boards ?
+> 
 
-Introduce a bare-metal qtest that drives the new smmu-testdev to exercise
-the SMMUv3 emulation without guest firmware or drivers. The test programs
-a minimal Non-Secure context (STE/CD/PTE), triggers a DMA, and asserts
-translation results.
+Yes. Sorry, I am confused. That was for quanta-gsj and kudo-bmc where I had
+the same problem with Macronix flashes.
 
-Motivation
-----------
-SMMU testing in emulation often requires a large software stack and a
-realistic PCIe fabric, which adds flakiness and obscures failures. This
-qtest keeps the surface small and deterministic by using a hermetic DMA
-source that feeds the SMMU directly.
+> Upstream lacks your UHCI proposal. Unfortunately, I don't know any
+> reviewers who could help us merge.
+> 
 
-What the test covers
---------------------
-* Builds a Non-Secure STE/CD/PTE for a chosen stream_id/ssid.
-* Primes source and destination host buffers.
-* Kicks a DMA via smmu-testdev and waits for completion.
-* Verifies translated access and payload equality.
+I'll just carry it downstream until I am getting tired of maintaining it.
 
-Non-goals and scope limits
---------------------------
-* Secure bank flows are omitted because Secure SMMU support is still RFC.
-  A local Secure test exists and can be posted once the upstream series
-  lands.
-* PCIe discovery, MSI/INTx, ATS/PRI, and driver bring-up are out of scope
-  as smmu-testdev is not a realistic PCIe Endpoint nor a platform device.
-
-Rationale for a dedicated path
-------------------------------
-Using a generic PCI or virtio device would still require driver init and a
-richer bus model, undermining determinism for this focused purpose. This
-qtest, paired with smmu-testdev, keeps failures attributable to the SMMU
-translation path.
-
-Finally we document the smmu-testdev device in docs/specs.
-
-Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
----
- docs/specs/index.rst             |   1 +
- docs/specs/smmu-testdev.rst      |  45 ++++++
- tests/qtest/meson.build          |   1 +
- tests/qtest/smmu-testdev-qtest.c | 238 +++++++++++++++++++++++++++++++
- 4 files changed, 285 insertions(+)
- create mode 100644 docs/specs/smmu-testdev.rst
- create mode 100644 tests/qtest/smmu-testdev-qtest.c
-
-diff --git a/docs/specs/index.rst b/docs/specs/index.rst
-index f19d73c9f6..47a18c48f1 100644
---- a/docs/specs/index.rst
-+++ b/docs/specs/index.rst
-@@ -39,3 +39,4 @@ guest hardware that is specific to QEMU.
-    riscv-iommu
-    riscv-aia
-    aspeed-intc
-+   smmu-testdev
-\ No newline at end of file
-diff --git a/docs/specs/smmu-testdev.rst b/docs/specs/smmu-testdev.rst
-new file mode 100644
-index 0000000000..2599b46e4f
---- /dev/null
-+++ b/docs/specs/smmu-testdev.rst
-@@ -0,0 +1,45 @@
-+smmu-testdev — Minimal SMMUv3 DMA test device
-+=============================================
-+
-+Overview
-+--------
-+``smmu-testdev`` is a tiny, test-only DMA source intended to exercise the
-+SMMUv3 emulation without booting firmware or a guest OS. It lets tests
-+populate STE/CD/PTE with known values and trigger a DMA that flows through
-+the SMMU translation path. It is **not** a faithful PCIe endpoint nor a
-+platform device and must be considered a QEMU-internal test vehicle.
-+
-+Status
-+------
-+* Location: ``hw/misc/smmu-testdev.c``
-+* Build guard: ``CONFIG_SMMU_TESTDEV``
-+* Default machines: none (tests instantiate it explicitly)
-+* Intended use: qtests under ``tests/qtest/smmu-testdev-qtest.c``
-+
-+Running the qtest
-+-----------------
-+The smoke test ships with this device and is the recommended entry point::
-+
-+    QTEST_QEMU_BINARY=qemu-system-aarch64 ./tests/qtest/smmu-testdev-qtest
-+     --tap -k
-+
-+This programs a minimal Non-Secure SMMU context, kicks a DMA, and verifies
-+translation + data integrity.
-+
-+Instantiation (advanced)
-+------------------------
-+The device is not wired into any board by default. For ad-hoc experiments,
-+tests (or developers) can create it dynamically via qtest or the QEMU
-+monitor. It exposes a single MMIO window that the test drives directly.
-+
-+Limitations
-+-----------
-+* Non-Secure bank only in this version; Secure SMMU tests are planned once
-+  upstream Secure support lands.
-+* No PCIe discovery, MSI, ATS/PRI, or driver bring-up is modeled.
-+* The device is test-only; do not rely on it for machine realism.
-+
-+See also
-+--------
-+* ``tests/qtest/smmu-testdev-qtest.c`` — the companion smoke test
-+* SMMUv3 emulation and documentation under ``hw/arm/smmu*``
-diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index 669d07c06b..bcdb51e141 100644
---- a/tests/qtest/meson.build
-+++ b/tests/qtest/meson.build
-@@ -263,6 +263,7 @@ qtests_aarch64 = \
-    config_all_devices.has_key('CONFIG_TPM_TIS_I2C') ? ['tpm-tis-i2c-test'] : []) + \
-   (config_all_devices.has_key('CONFIG_ASPEED_SOC') ? qtests_aspeed64 : []) + \
-   (config_all_devices.has_key('CONFIG_NPCM8XX') ? qtests_npcm8xx : []) + \
-+  (config_all_devices.has_key('CONFIG_SMMU_TESTDEV') ? ['smmu-testdev-qtest'] : []) + \
-   qtests_cxl +                                                                                  \
-   ['arm-cpu-features',
-    'numa-test',
-diff --git a/tests/qtest/smmu-testdev-qtest.c b/tests/qtest/smmu-testdev-qtest.c
-new file mode 100644
-index 0000000000..d89e45757b
---- /dev/null
-+++ b/tests/qtest/smmu-testdev-qtest.c
-@@ -0,0 +1,238 @@
-+/*
-+ * QTest for smmu-testdev
-+ *
-+ * This QTest file is used to test the smmu-testdev so that we can test SMMU
-+ * without any guest kernel or firmware.
-+ *
-+ * Copyright (c) 2025 Phytium Technology
-+ *
-+ * Author:
-+ *  Tao Tang <tangtao1634@phytium.com.cn>
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "libqtest.h"
-+#include "libqos/pci.h"
-+#include "libqos/generic-pcihost.h"
-+#include "hw/pci/pci_regs.h"
-+#include "hw/misc/smmu-testdev.h"
-+
-+#define VIRT_SMMU_BASE    0x0000000009050000ULL
-+#define DMA_LEN           0x20U
-+
-+static inline uint64_t smmu_bank_base(uint64_t base, SMMUTestDevSpace sp)
-+{
-+    /* Map only the Non-Secure bank for now; future domains may offset. */
-+    (void)sp;
-+    return base;
-+}
-+
-+static uint32_t expected_dma_result(uint32_t mode,
-+                                    SMMUTestDevSpace s1_space,
-+                                    SMMUTestDevSpace s2_space)
-+{
-+    (void)mode;
-+    if (s1_space != STD_SPACE_NONSECURE || s2_space != STD_SPACE_NONSECURE) {
-+        return STD_DMA_ERR_TX_FAIL;
-+    }
-+    return 0u;
-+}
-+
-+static void smmu_prog_bank(QTestState *qts, uint64_t B, SMMUTestDevSpace sp)
-+{
-+    g_assert_cmpuint(sp, ==, STD_SPACE_NONSECURE);
-+    /* Program minimal SMMUv3 state in a given control bank. */
-+    qtest_writel(qts, B + 0x0044, 0x80000000); /* GBPA UPDATE */
-+    qtest_writel(qts, B + 0x0020, 0x0);       /* CR0 */
-+    qtest_writel(qts, B + 0x0028, 0x0d75);    /* CR1 */
-+    {
-+        /* CMDQ_BASE: add address-space offset (S/NS/Root/Realm). */
-+        uint64_t v = 0x400000000e16b00aULL + std_space_offset(sp);
-+        qtest_writeq(qts, B + 0x0090, v);
-+    }
-+    qtest_writel(qts, B + 0x009c, 0x0);       /* CMDQ_CONS */
-+    qtest_writel(qts, B + 0x0098, 0x0);       /* CMDQ_PROD */
-+    {
-+        /* EVENTQ_BASE: add address-space offset (S/NS/Root/Realm). */
-+        uint64_t v = 0x400000000e17000aULL + std_space_offset(sp);
-+        qtest_writeq(qts, B + 0x00a0, v);
-+    }
-+    qtest_writel(qts, B + 0x00a8, 0x0);       /* EVENTQ_PROD */
-+    qtest_writel(qts, B + 0x00ac, 0x0);       /* EVENTQ_CONS */
-+    qtest_writel(qts, B + 0x0088, 0x5);       /* STRTAB_BASE_CFG */
-+    {
-+        /* STRTAB_BASE: add address-space offset (S/NS/Root/Realm). */
-+        uint64_t v = 0x400000000e179000ULL + std_space_offset(sp);
-+        qtest_writeq(qts, B + 0x0080, v);
-+    }
-+    qtest_writel(qts, B + 0x003C, 0x1);       /* INIT */
-+    qtest_writel(qts, B + 0x0020, 0xD);       /* CR0 */
-+}
-+
-+static void smmu_prog_minimal(QTestState *qts, SMMUTestDevSpace space)
-+{
-+    /* Always program Non-Secure bank, then the requested space. */
-+    uint64_t ns_base = smmu_bank_base(VIRT_SMMU_BASE, STD_SPACE_NONSECURE);
-+    smmu_prog_bank(qts, ns_base, STD_SPACE_NONSECURE);
-+
-+    uint64_t sp_base = smmu_bank_base(VIRT_SMMU_BASE, space);
-+    if (sp_base != ns_base) {
-+        smmu_prog_bank(qts, sp_base, space);
-+    }
-+}
-+
-+static uint32_t poll_dma_result(QPCIDevice *dev, QPCIBar bar,
-+                                QTestState *qts)
-+{
-+    /* Trigger side effects (DMA) via REG_ID read once. */
-+    (void)qpci_io_readl(dev, bar, STD_REG_ID);
-+
-+    /* Poll until not BUSY, then return the result. */
-+    for (int i = 0; i < 1000; i++) {
-+        uint32_t r = qpci_io_readl(dev, bar, STD_REG_DMA_RESULT);
-+        if (r != STD_DMA_RESULT_BUSY) {
-+            return r;
-+        }
-+        /* Small backoff to avoid busy spinning. */
-+        g_usleep(1000);
-+    }
-+    /* Timeout treated as failure-like non-zero. */
-+    return STD_DMA_RESULT_BUSY;
-+}
-+
-+static void test_mmio_access(void)
-+{
-+    QTestState *qts;
-+    QGenericPCIBus gbus;
-+    QPCIDevice *dev;
-+    QPCIBar bar;
-+    uint8_t buf[DMA_LEN];
-+    uint32_t attr_ns;
-+    qts = qtest_init("-machine virt,acpi=off,gic-version=3,iommu=smmuv3 " \
-+                     "-display none -smp 1  -m 512 -cpu max -net none "
-+                     "-device smmu-testdev,device=0x0,function=0x1 ");
-+
-+    qpci_init_generic(&gbus, qts, NULL, false);
-+
-+    /* Find device by vendor/device ID to avoid slot surprises. */
-+    dev = NULL;
-+    for (int slot = 0; slot < 32 && !dev; slot++) {
-+        for (int fn = 0; fn < 8 && !dev; fn++) {
-+            QPCIDevice *cand = qpci_device_find(&gbus.bus,
-+                                               QPCI_DEVFN(slot, fn));
-+            if (!cand) {
-+                continue;
-+            }
-+            uint16_t vid = qpci_config_readw(cand, PCI_VENDOR_ID);
-+            uint16_t did = qpci_config_readw(cand, PCI_DEVICE_ID);
-+            if (vid == 0x1b36 && did == 0x0005) {
-+                dev = cand;
-+            } else {
-+                g_free(cand);
-+            }
-+        }
-+    }
-+    g_assert_nonnull(dev);
-+
-+    qpci_device_enable(dev);
-+    bar = qpci_iomap(dev, 0, NULL);
-+    g_assert_false(bar.is_io);
-+
-+    /* Baseline attribute reads. */
-+    attr_ns = qpci_io_readl(dev, bar, STD_REG_ATTR_NS);
-+    g_assert_cmpuint(attr_ns, ==, 0x2);
-+
-+    /* Program SMMU base and DMA parameters. */
-+    qpci_io_writel(dev, bar, STD_REG_SMMU_BASE_LO, (uint32_t)VIRT_SMMU_BASE);
-+    qpci_io_writel(dev, bar, STD_REG_SMMU_BASE_HI,
-+                   (uint32_t)(VIRT_SMMU_BASE >> 32));
-+    qpci_io_writel(dev, bar, STD_REG_DMA_IOVA_LO, (uint32_t)STD_IOVA);
-+    qpci_io_writel(dev, bar, STD_REG_DMA_IOVA_HI,
-+                   (uint32_t)(STD_IOVA >> 32));
-+    qpci_io_writel(dev, bar, STD_REG_DMA_LEN, DMA_LEN);
-+    qpci_io_writel(dev, bar, STD_REG_DMA_DIR, 0); /* device -> host */
-+
-+    qtest_memset(qts, STD_IOVA, 0x00, DMA_LEN);
-+    qtest_memread(qts, STD_IOVA, buf, DMA_LEN);
-+
-+    /* Refresh attrs via write to ensure legacy functionality still works. */
-+    qpci_io_writel(dev, bar, STD_REG_ID, 0x1);
-+    /*
-+     * invoke translation builder for multiple
-+     * stage/security-space combinations (readable/refactored).
-+     */
-+    const uint32_t modes[] = { 0u, 1u, 2u }; /* Stage1, Stage2, Nested stage */
-+    const SMMUTestDevSpace spaces[] = { STD_SPACE_NONSECURE };
-+    /* Use attrs-DMA path for end-to-end */
-+    qpci_io_writel(dev, bar, STD_REG_DMA_MODE, 1);
-+    for (size_t mi = 0; mi < sizeof(modes) / sizeof(modes[0]); mi++) {
-+        const SMMUTestDevSpace *s1_set = NULL;
-+        size_t s1_count = 0;
-+        const SMMUTestDevSpace *s2_set = NULL;
-+        size_t s2_count = 0;
-+
-+        switch (modes[mi]) {
-+        case 0u:
-+        case 1u:
-+        case 2u:
-+            s1_set = spaces;
-+            s1_count = sizeof(spaces) / sizeof(spaces[0]);
-+            s2_set = spaces;
-+            s2_count = sizeof(spaces) / sizeof(spaces[0]);
-+            break;
-+        default:
-+            g_assert_not_reached();
-+        }
-+
-+        for (size_t si = 0; si < s1_count; si++) {
-+            for (size_t sj = 0; sj < s2_count; sj++) {
-+                qpci_io_writel(dev, bar, STD_REG_TRANS_MODE, modes[mi]);
-+                qpci_io_writel(dev, bar, STD_REG_S1_SPACE, s1_set[si]);
-+                qpci_io_writel(dev, bar, STD_REG_S2_SPACE, s2_set[sj]);
-+                qpci_io_writel(dev, bar, STD_REG_TRANS_DBELL, 0x2);
-+                qpci_io_writel(dev, bar, STD_REG_TRANS_DBELL, 0x1);
-+
-+                uint32_t st = qpci_io_readl(dev, bar,
-+                                            STD_REG_TRANS_STATUS);
-+                g_test_message("build: stage=%s s1=%s s2=%s status=0x%x",
-+                                std_mode_to_str(modes[mi]),
-+                                std_space_to_str(s1_set[si]),
-+                                std_space_to_str(s2_set[sj]), st);
-+                /* Program SMMU registers in selected control bank. */
-+                smmu_prog_minimal(qts, s1_set[si]);
-+
-+                /* End-to-end DMA using tx_space per mode. */
-+                SMMUTestDevSpace tx_space =
-+                    (modes[mi] == 0u) ? s1_set[si] : s2_set[sj];
-+                uint32_t dma_attrs = ((uint32_t)tx_space << 1);
-+                qpci_io_writel(dev, bar, STD_REG_DMA_ATTRS,
-+                                dma_attrs);
-+                qpci_io_writel(dev, bar, STD_REG_DMA_DBELL, 1);
-+                /* Wait for DMA completion and assert success. */
-+                {
-+                    uint32_t dr = poll_dma_result(dev, bar, qts);
-+                    uint32_t exp = expected_dma_result(modes[mi],
-+                                                        spaces[si],
-+                                                        spaces[sj]);
-+                    g_assert_cmpuint(dr, ==, exp);
-+                    g_test_message("polling end. attrs=0x%x res=0x%x",
-+                                   dma_attrs, dr);
-+                }
-+                /* Clear CD/STE/PTE built by the device for next round. */
-+                qpci_io_writel(dev, bar, STD_REG_TRANS_CLEAR, 1);
-+                g_test_message("clear cache end.");
-+            }
-+        }
-+    }
-+
-+    qtest_quit(qts);
-+}
-+
-+int main(int argc, char **argv)
-+{
-+    g_test_init(&argc, &argv, NULL);
-+    qtest_add_func("/smmu-testdev/mmio", test_mmio_access);
-+    return g_test_run();
-+}
--- 
-2.49.0
+Thanks,
+Guenter
 
 

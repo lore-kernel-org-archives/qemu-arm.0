@@ -4,94 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F3A4CCA470
-	for <qemu-arm@archiver.kernel.org>; Wed,  1 Oct 2025 15:14:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C413CCA474
+	for <qemu-arm@archiver.kernel.org>; Wed,  1 Oct 2025 15:15:17 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v3yQX-0001Pm-Kj; Wed, 01 Oct 2025 11:07:33 -0400
+	id 1v3yTV-00059S-BF; Wed, 01 Oct 2025 11:10:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v3yQA-000185-On
- for qemu-arm@nongnu.org; Wed, 01 Oct 2025 11:07:10 -0400
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v3yTC-00051t-Kk
+ for qemu-arm@nongnu.org; Wed, 01 Oct 2025 11:10:22 -0400
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v3yPC-0000gT-51
- for qemu-arm@nongnu.org; Wed, 01 Oct 2025 11:07:06 -0400
-Received: by mail-wm1-x332.google.com with SMTP id
- 5b1f17b1804b1-46e491a5b96so34173555e9.2
- for <qemu-arm@nongnu.org>; Wed, 01 Oct 2025 08:06:06 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v3yRM-000103-1y
+ for qemu-arm@nongnu.org; Wed, 01 Oct 2025 11:10:17 -0400
+Received: by mail-wm1-x333.google.com with SMTP id
+ 5b1f17b1804b1-46e6674caa5so3703845e9.0
+ for <qemu-arm@nongnu.org>; Wed, 01 Oct 2025 08:08:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1759331163; x=1759935963; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=euVgIeZJHIZBB4YFcdJbP7PY3/zoj3Ofxhi7NManz1g=;
- b=cvb1udqPLK+uvqZW5Bcao+00jOPDaZ2WMsZm3dkoUlDn/iC+9aSX59aUYYP+PMax0+
- jwjEIu7tEB1xLGRozPMdgWsy3hCX9WnOTIOnkOya3QdgJpqE1u8HBrAUR3vhuKGtFHFL
- cMEsOVzMHA6AvsM5q8ejhGji7kAzFbRwTG+OjkwumeNUb7Nmb4GgRsd67vUQ6RLE3Hm6
- IwOlivKXUYAdR2UTX4mZ9O7KSFVHGqrSPlOqK6CYa96Z3uv80fujlj1PYMz85ttXyVX1
- qYJoNkCfDMjp4DOzbIpsvIhufxEC7Y0Q5/EaengJdAFzACXTpHMXP2X+/kchnCLM8mRu
- mxFA==
+ d=linaro.org; s=google; t=1759331297; x=1759936097; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=AIzO+so5KPpKzYj7ZNyXWUr3LlH8ilSE/g0AxNVpzLk=;
+ b=frX/pU08FU3nH0HNXJNevCrdIKND5TwEvt4g/ZLwm6F/axJCF8831FIDag2g6BqnTw
+ XWc4EbXNoHROVeaCcnFxBsQBGZMU6oomNTHesmXBPY+rAilcJ5JMR1TO+KWkJMHcLkt2
+ vV90WZIywuyW1Rpg1EydMjJi2L5w89DJu911O/5bwBU/mT6jRlabNDDdjZ6GMtyKBzlG
+ gB9aCNWbVf4TGyL2aaZYir2S1gYgarv1lS7eZs2bd/Plcwr6O8BnPiU+qTcjsK11heC0
+ CFpeIlpazO+NCLMjqPKHMjTE7oSG2MWr33/N6HIJIQc9ubKdtU1lnrMGRmru/V2A+gac
+ GzTg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759331163; x=1759935963;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=euVgIeZJHIZBB4YFcdJbP7PY3/zoj3Ofxhi7NManz1g=;
- b=C7GZJYCqWUwhFsgPA5PpoJupI8P3TYZDAYoJZj5+vBwOf9O+l16RUnVGTGjS+zyiFF
- 2BuV914ySdxnSIHbaCkwnpEWffUnoKaR3xhnHBb7zUKwIIjmAlC81kQaJunVgklYM//q
- KJf3iqhAv+UA2WG1SI5VDD6hsTcZRNq7EXSxktdkE1Z+Rvg0OyUjisBlb55QRCD9rVYP
- hhSPAxEWCkiS6yUhF5uD7nbdUadHL0TpZWFjtG+mOknNVOLcY3KzKuxhJtfpqMZjbKZd
- 77Np59qmstmZtEqK1lhyGBfj6vgZ/u1bdnR26ZAiROGNZoW3cn4meQZnkUq3OeEJS6fH
- iL/Q==
-X-Gm-Message-State: AOJu0YyslP04E2V5tRZhLJecVA1e58WN0xBKea4i/7coPX89GS4qDE3n
- aa+04OWId3rcTP9BdtaO8KvPWNGLdwY4r1kY7yKHcoWKFT9l/ve/coXa8DVnrJT/+CY=
-X-Gm-Gg: ASbGnctANAH8N8xH1SNYt8XD3jnSz5S2TefM9GD0HV6tmbqIXAanejU5fvR5oF3S+rG
- gxq2gDXInkXqqnGqS9Y3C2H9jCvPqjbDPIGSP1tPV0cNblR1YTEZ+qU8nQ4vBo25KDO2nlUG8y7
- z6Yyhys7XMmsnT4x6hAXXgKGVa/yA4+K97ugWw86dK4W83r6X3pJseRvZeEg2qzi4QjaBpfUjJC
- 21UTZyRWUJwW8TvTI1I14xiltg0GOSFip4swm2O4FSK3zaV0Nk4zXy26ZgzjBqFvZZK4qrR0Pxo
- saunOmaGa0L1JttQ5w2gQUAVr5Tl9RMaYmYRuOMCRpvNrLvkr+d2JIh6373Zf0QYbTpXxOEhQTM
- T3ZQocgzX4iJ7Kr9DPi8OqLnrwLjV+R0k/BopRShPPcgjgI1ihWo5rPtNZJoM6wI3JpCagV9hKT
- vYuc9Jk0OOoKCDH3oBNv8W
-X-Google-Smtp-Source: AGHT+IGzXR0Dkt5MMU7ttnv9s9jwILY1OZIbTD4RyJ+s9yDyfL+98y3Pen4wfa8ji9b+co3j6DmrEA==
-X-Received: by 2002:a05:600c:8b2c:b0:46e:37af:f90e with SMTP id
- 5b1f17b1804b1-46e6126245cmr38125115e9.6.1759331162740; 
- Wed, 01 Oct 2025 08:06:02 -0700 (PDT)
-Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
+ d=1e100.net; s=20230601; t=1759331297; x=1759936097;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=AIzO+so5KPpKzYj7ZNyXWUr3LlH8ilSE/g0AxNVpzLk=;
+ b=RIRZTaFG+g0o2r/1A9FRgzN7HzW+bcot/LuX+lBMwJ7pLk3DMd0s6Z9i01WsfSCDXR
+ 9iSgP2wJ//lCSCbzmpHfWBh/RgjjQevfXUTGEveUXY17FqYYzOEn93nCj6b0XPbL1Tz1
+ +rgUvZ/M39Zk884AquGj9RLbWbTMoJgqHyZ4zYqhd+roAlB5+dHJwyrBAkzYGBt0Q8zk
+ Csm8C+yEC3oHFp2UHWD54OflUUNkJDYtGt3b0BAgExPjxM+NAsBStORINPMRkAK+5AFI
+ Hz3C31Cz45PJFu83beuZm1EGD0HA1g/oAhvR3ZD8Jp5ImMdKK9XnGUA9Fy5EphdttyPp
+ 8HJg==
+X-Gm-Message-State: AOJu0YzMf7vunSXku3V0kZpFdMZA16RbUuAVMH/0oSPCIDWNc4dqn9VR
+ xatUUJiYJDSzotXjqbE1heU1K8bgqBOyqV/TpcP1HAZbQUoN0yGigvpjHQ0xug97+GNZjzolQM9
+ ZRw/r17bWOQ==
+X-Gm-Gg: ASbGnctqLJA6GRL+JMtEwg5oBvBgycZZWrmOn8GdPRnNrdNpwpqJx7kblg/mOkljJrf
+ 4xOD3Ze4CJJw66kNEDyCG5oHXvwDZgdO2nploZaJGTLt/P2ta25g/WEI8JuCeq6hK6RFi1oX5e1
+ /wyatYszxE6YsH+S13IdaLp1p7NZyrZEGBNte4W+gxex8lKd/4Gpp4nNcQFnTXF7xwfasrpKCiI
+ cq2zxrxcJH0Q2Akg+lrBuy0LvDHg2qW0kNekMECQt3/nUVShgSeL9ikHXw8f5+39lKf9otMlAwk
+ d3TEWCRFWy8EYPfKlXwuvIYtZx181Ls+xCpF7IWXNZXqQ6RmIaaBrbFfq3/TBvdHB+8oQf1gESp
+ PMyUaVol8jGtmUK5g6GL+R541+xei1IUdhAfkQ7LkDf8OTCiB8ff2naSfF2pPzmGsZB+rIlsXyc
+ TmE+DwdScGs0YeLQ==
+X-Google-Smtp-Source: AGHT+IF8lK0vCB6Jq0ASp5XON3vV1O5ddVDMpb/bh1bTP5csPrsFSBh6gHEnoWssD9AA1CELhwJX3Q==
+X-Received: by 2002:a05:600c:8414:b0:45b:8ac2:9761 with SMTP id
+ 5b1f17b1804b1-46e612c8a6fmr34590585e9.13.1759331297205; 
+ Wed, 01 Oct 2025 08:08:17 -0700 (PDT)
+Received: from [192.168.69.221] (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-40fb7203b8asm27682148f8f.9.2025.10.01.08.06.01
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 01 Oct 2025 08:06:02 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+ ffacd0b85a97d-40fb9768bdesm27674817f8f.23.2025.10.01.08.08.16
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 01 Oct 2025 08:08:16 -0700 (PDT)
+Message-ID: <755adcfb-95eb-46f4-8c73-34c43e6b85ab@linaro.org>
+Date: Wed, 1 Oct 2025 17:08:15 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 04/22] hw/core/loader: Get cpu first addr space with
+ cpu_get_address_space()
+Content-Language: en-US
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
  Richard Henderson <richard.henderson@linaro.org>, qemu-riscv@nongnu.org,
  Peter Maydell <peter.maydell@linaro.org>, qemu-ppc@nongnu.org,
  Paolo Bonzini <pbonzini@redhat.com>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- Peter Xu <peterx@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Thomas Huth <huth@tuxfamily.org>, Laurent Vivier <laurent@vivier.eu>
-Subject: [PATCH 06/22] hw/m86k: Get cpu first addr space with
- cpu_get_address_space()
-Date: Wed,  1 Oct 2025 17:05:11 +0200
-Message-ID: <20251001150529.14122-7-philmd@linaro.org>
-X-Mailer: git-send-email 2.51.0
-In-Reply-To: <20251001150529.14122-1-philmd@linaro.org>
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>, Peter Xu
+ <peterx@redhat.com>, Alistair Francis <alistair@alistair23.me>
 References: <20251001150529.14122-1-philmd@linaro.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+ <20251001150529.14122-5-philmd@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20251001150529.14122-5-philmd@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::332;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x332.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::333;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x333.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, T_SPF_HELO_TEMPERROR=0.01,
+ T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -107,129 +108,28 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-In order to remove the convenient CPUState::as field, access
-the vcpu first address space using the cpu_get_address_space()
-helper.
+On 1/10/25 17:05, Philippe Mathieu-Daudé wrote:
+> In order to remove the convenient CPUState::as field, access
+> the vcpu first address space using the cpu_get_address_space()
+> helper.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
+>   hw/core/generic-loader.c | 5 +++--
+>   1 file changed, 3 insertions(+), 2 deletions(-)
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- hw/m68k/mcf5208.c |  6 ++++--
- hw/m68k/q800.c    | 17 ++++++++++-------
- hw/m68k/virt.c    |  5 +++--
- 3 files changed, 17 insertions(+), 11 deletions(-)
 
-diff --git a/hw/m68k/mcf5208.c b/hw/m68k/mcf5208.c
-index 75cc076f787..9354829e8a4 100644
---- a/hw/m68k/mcf5208.c
-+++ b/hw/m68k/mcf5208.c
-@@ -206,12 +206,14 @@ static void m5208_rcm_write(void *opaque, hwaddr addr,
- {
-     M68kCPU *cpu = opaque;
-     CPUState *cs = CPU(cpu);
-+    AddressSpace *as = cpu_get_address_space(cs, 0);
-+
-     switch (addr) {
-     case 0x0: /* RCR */
-         if (value & RCR_SOFTRST) {
-             cpu_reset(cs);
--            cpu->env.aregs[7] = ldl_phys(cs->as, 0);
--            cpu->env.pc = ldl_phys(cs->as, 4);
-+            cpu->env.aregs[7] = ldl_phys(as, 0);
-+            cpu->env.pc = ldl_phys(as, 4);
-         }
-         break;
-     default:
-diff --git a/hw/m68k/q800.c b/hw/m68k/q800.c
-index 793b23f8155..9ec7122a4f8 100644
---- a/hw/m68k/q800.c
-+++ b/hw/m68k/q800.c
-@@ -107,10 +107,11 @@ static void main_cpu_reset(void *opaque)
- {
-     M68kCPU *cpu = opaque;
-     CPUState *cs = CPU(cpu);
-+    AddressSpace *as = cpu_get_address_space(cs, 0);
- 
-     cpu_reset(cs);
--    cpu->env.aregs[7] = ldl_phys(cs->as, 0);
--    cpu->env.pc = ldl_phys(cs->as, 4);
-+    cpu->env.aregs[7] = ldl_phys(as, 0);
-+    cpu->env.pc = ldl_phys(as, 4);
- }
- 
- static void rerandomize_rng_seed(void *opaque)
-@@ -263,6 +264,7 @@ static void q800_machine_init(MachineState *machine)
-     const char *bios_name = machine->firmware ?: MACROM_FILENAME;
-     hwaddr parameters_base;
-     CPUState *cs;
-+    AddressSpace *cpu_as;
-     DeviceState *dev;
-     SysBusESPState *sysbus_esp;
-     ESPState *esp;
-@@ -573,6 +575,7 @@ static void q800_machine_init(MachineState *machine)
-     macfb_mode = (NUBUS_MACFB(dev)->macfb).mode;
- 
-     cs = CPU(&m->cpu);
-+    cpu_as = cpu_get_address_space(cs, 0);
-     if (linux_boot) {
-         uint64_t high;
-         void *param_blob, *param_ptr, *param_rng_seed;
-@@ -590,7 +593,7 @@ static void q800_machine_init(MachineState *machine)
-             error_report("could not load kernel '%s'", kernel_filename);
-             exit(1);
-         }
--        stl_phys(cs->as, 4, elf_entry); /* reset initial PC */
-+        stl_phys(cpu_as, 4, elf_entry); /* reset initial PC */
-         parameters_base = (high + 1) & ~1;
-         param_ptr = param_blob;
- 
-@@ -647,9 +650,9 @@ static void q800_machine_init(MachineState *machine)
-         }
-         BOOTINFO0(param_ptr, BI_LAST);
-         rom_add_blob_fixed_as("bootinfo", param_blob, param_ptr - param_blob,
--                              parameters_base, cs->as);
-+                              parameters_base, cpu_as);
-         qemu_register_reset_nosnapshotload(rerandomize_rng_seed,
--                            rom_ptr_for_as(cs->as, parameters_base,
-+                            rom_ptr_for_as(cpu_as, parameters_base,
-                                            param_ptr - param_blob) +
-                             (param_rng_seed - param_blob));
-         g_free(param_blob);
-@@ -683,8 +686,8 @@ static void q800_machine_init(MachineState *machine)
- 
-             ptr = rom_ptr(MACROM_ADDR, bios_size);
-             assert(ptr != NULL);
--            stl_phys(cs->as, 0, ldl_be_p(ptr));    /* reset initial SP */
--            stl_phys(cs->as, 4,
-+            stl_phys(cpu_as, 0, ldl_be_p(ptr));    /* reset initial SP */
-+            stl_phys(cpu_as, 4,
-                      MACROM_ADDR + ldl_be_p(ptr + 4)); /* reset initial PC */
-         }
-     }
-diff --git a/hw/m68k/virt.c b/hw/m68k/virt.c
-index 98cfe43c73a..e5ce0c28878 100644
---- a/hw/m68k/virt.c
-+++ b/hw/m68k/virt.c
-@@ -219,6 +219,7 @@ static void virt_init(MachineState *machine)
- 
-     if (kernel_filename) {
-         CPUState *cs = CPU(cpu);
-+        AddressSpace *as = cpu_get_address_space(cs, 0);
-         uint64_t high;
-         void *param_blob, *param_ptr, *param_rng_seed;
- 
-@@ -301,9 +302,9 @@ static void virt_init(MachineState *machine)
-         }
-         BOOTINFO0(param_ptr, BI_LAST);
-         rom_add_blob_fixed_as("bootinfo", param_blob, param_ptr - param_blob,
--                              parameters_base, cs->as);
-+                              parameters_base, as);
-         qemu_register_reset_nosnapshotload(rerandomize_rng_seed,
--                            rom_ptr_for_as(cs->as, parameters_base,
-+                            rom_ptr_for_as(as, parameters_base,
-                                            param_ptr - param_blob) +
-                             (param_rng_seed - param_blob));
-         g_free(param_blob);
--- 
-2.51.0
+> @@ -130,7 +131,7 @@ static void generic_loader_realize(DeviceState *dev, Error **errp)
+>       }
+>   
+>       if (s->file) {
+> -        AddressSpace *as = s->cpu ? s->cpu->as :  NULL;
+> +        AddressSpace *as = cpu_get_address_space(s->cpu, 0);
+
+Oops, I missed the NULL check.
+
+>   
+>           if (!s->force_raw) {
+>               size = load_elf_as(s->file, NULL, NULL, NULL, &entry, NULL, NULL,
 
 

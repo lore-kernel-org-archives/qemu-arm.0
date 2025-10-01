@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A442CCA470
-	for <qemu-arm@archiver.kernel.org>; Wed,  1 Oct 2025 01:15:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B52B5CCA476
+	for <qemu-arm@archiver.kernel.org>; Wed,  1 Oct 2025 01:15:57 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v3lGM-0005f1-0S; Tue, 30 Sep 2025 21:04:12 -0400
+	id 1v3lFx-0005UN-U3; Tue, 30 Sep 2025 21:03:48 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <salil.mehta@opnsrc.net>)
- id 1v3lFl-0005QP-IW
- for qemu-arm@nongnu.org; Tue, 30 Sep 2025 21:03:34 -0400
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+ id 1v3lFZ-0005NH-Mk
+ for qemu-arm@nongnu.org; Tue, 30 Sep 2025 21:03:22 -0400
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <salil.mehta@opnsrc.net>)
- id 1v3lF8-00088H-Os
- for qemu-arm@nongnu.org; Tue, 30 Sep 2025 21:03:32 -0400
-Received: by mail-wm1-x331.google.com with SMTP id
- 5b1f17b1804b1-46e37d6c21eso44795915e9.0
- for <qemu-arm@nongnu.org>; Tue, 30 Sep 2025 18:02:52 -0700 (PDT)
+ id 1v3lF0-00085o-Md
+ for qemu-arm@nongnu.org; Tue, 30 Sep 2025 21:03:21 -0400
+Received: by mail-wr1-x433.google.com with SMTP id
+ ffacd0b85a97d-3ee15b5435bso3669569f8f.0
+ for <qemu-arm@nongnu.org>; Tue, 30 Sep 2025 18:02:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=opnsrc.net; s=google; t=1759280568; x=1759885368; darn=nongnu.org;
+ d=opnsrc.net; s=google; t=1759280560; x=1759885360; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=pxcfPHc8rOInaK/rBPQBZ9/nywW3P+jwOuWG6ZmnnIw=;
- b=LrUfQu/CRRqn+JPcbzo/gDpz7F3WiOkWEz0jnPSuKO06Pcl2yPND/qZPGmeqlJE6AB
- VQxbdXFbiAXsmAQM4KDfS2HY6qQxfu6NnpKoV/VXj6yIgYnNKsF0sD4Hj4M/H2aQYfBs
- nHJWuDet2quDVL9yQJEGTTDpHutflFmZkF542W1m01w1NIY9bFGBaID8u0TcBuZk2jwh
- 7vo95N7gXqhaGwOmh5JnJ0GePkwgl941RL47AfGxM+r8QcVHDzCKOufYOf7UeMvL1nWA
- xKufYxQ4FpmXx2KEExm/XQ0a2I7ENQBGOaA/cOm4ZbNf0Kerv3Qg99Eu3bdkNpnE3sVW
- Pn5Q==
+ bh=1KLKg1dYtstrbAJPk1FfINsXop7TJ4OcNXkn8NSh+1U=;
+ b=YD8fFwxrnhA/DmSuF/GXZXZwE8WHsv2nq16wNNCTihgR1NIIHF+aMRWKStcH38b3kB
+ 6SrkH3OM5i48F3qj3E+bwHwlyRjLNz12paZyU4bFoJWB4rAIIP+DH4/mDsukfN7Ah/VW
+ mJTMWlihV39VpibLIhmS/ZBbhv/Iu1bzaznboUX5hU90AKzS4Wlym6AGktJPuDlxOtu3
+ LF9jyzb/ObpkLrNze9sAlvYm2uaogUZqBO1C0daGTg0YYRCN2MDPHuqlVqApzLsgu78r
+ kxdVsOLsZN4Mr7+dPaV4vqMZpEkn4S/VbbwPMwRmco59M7Di5QxWEOfXIjNunG1onl8a
+ irng==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759280568; x=1759885368;
+ d=1e100.net; s=20230601; t=1759280560; x=1759885360;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=pxcfPHc8rOInaK/rBPQBZ9/nywW3P+jwOuWG6ZmnnIw=;
- b=wW2Sodv5cvnwsSVM2X9O2HJgSkYF41/a5jzx2BtZzVmFvrB0MOAxOhzu80o3O37fIS
- Ig8MGe3ktF3BkGaQlKOIr7+wWRyATvIVPXcXZluoLM1MRM0Kp1TZRunQvcTfLASXudOM
- 6exnQma+3GhMF67hJfaa0pmZIlEm0GNTppMpL8zsPf9wrbjrx+PTJE5r7/HxKUYYuXeW
- cHkbW12QoT7SY7wLlOaYf2XaYmil/lyXZypJg6SQvSjVV1ykOX8CMsKlgO+K/iw1ihFI
- Uh+UWIc3IDS4mZ7E8CI/zvXEau7iAW+Fw2SwcrdhzBzdXoaVpytDIZ/ncjeN1HT6RDHf
- UiGw==
+ bh=1KLKg1dYtstrbAJPk1FfINsXop7TJ4OcNXkn8NSh+1U=;
+ b=uN4s5c0N2lNqh3r1I0oj3vpK3pJDfDNGvd0SzvLgjOBIcKFs0RniO+MsNHKgX+96yp
+ NwFW8CBI07nL0Qg/hriv6tJ5zKV/1ZeIiS2FB1FPzkMdSCbLqbzpYF44MIBcJCGL6qnM
+ cPJi5tVZZrHd75d2M+eV2HW4gGgWAXPnPmPREr8WFVSz+WruoSReIGo9ZMJbblzB1Ie3
+ k8tv6VCSx3DojwOPSLx3roXAJr0tLyt17IbvhezjIASB778GTZAdAPPfNmTq7ILS6uJH
+ fHfg0K6HitMUhKPVa1fyjubwaeabN7C3h+o8EmkfNpSZEvMx0iyDIZgzKhZ0yhzCPLmB
+ Abpg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCU+pIiM05nkroNISqQgsPCHcXinnZVImqh4ttNriNgSakGY+FQEHlPy6rVG4ois/Ik1bpFRq6mtmQ==@nongnu.org
-X-Gm-Message-State: AOJu0YwIuCxjNC94StQk7yl0fJEBaFGssSv27lSF7V5ohAa2Pe1MhyF7
- 7DHiHw5ggK5F+UI+93t18nIxZTicP+Cx8k1Ft8ZNQvaZy1GqWsL1l7bPK50X1NXJ3jQ=
-X-Gm-Gg: ASbGnctpTw7/Ma95hPi8GPhXK0aMcHe1xy1JpE/IlkGb5wER3mHiul3G4UTQlq1UZ0l
- u2hkLuxEZCu2F5zNtwBjP/8Suje7J3vCnXvRz9baDyviemyZOXiTUsP8r6jaJH17ZvY0ZfbBPG9
- 6di+8yYKbBzD3YregCSwpnTzmwnu3Aqcs0SDCTiuwIHpiJ+cuW1CbBu0+yXFnJDIOEm9WguZOOC
- 4f2PE3n5P6Nks35OKDEfOwom6B/iDjoEzJLj7mDWQqfoY4S5TZt0as8MrqSr/soMVkbwcaQkyT+
- QRM+vsWhiuqURj5gBu8p4lkEecTWG6YOaoZqqVxtH1nQP3493hvV3OD09wUwTCD3IRFTEqHVcyD
- I7GbRiV5oMrF7/y8MjvUhb3UURFP7gZO6h8QOKLo9SK67dZT4DVsyjxx2xKuSZX85v/V9zqfh/w
- L1AnMwWP0ZXLP/tTz7c2FukXvEffz23oT2CycliloxgWU=
-X-Google-Smtp-Source: AGHT+IGj/RZIjav8CCq0VUnatmGH+py6HOaa0NVdgzVsL0LeYJoCeBhWny/xhFaB2PnT0N0oVITBkw==
-X-Received: by 2002:a5d:5f52:0:b0:3ff:d5c5:6b03 with SMTP id
- ffacd0b85a97d-4255781466fmr1134196f8f.35.1759280567800; 
- Tue, 30 Sep 2025 18:02:47 -0700 (PDT)
+ AJvYcCUicWu664ZxO5B4GyDCl2cq5KnbKiNfOAJlC2TgEVpdy+XxtSTleeJ8mF+CWtItIqshHhp7DxogGQ==@nongnu.org
+X-Gm-Message-State: AOJu0YxI/W0r52GYsWheS/gtDtx8/LohNyIftZVjFvcJoFpEre9yzXDt
+ vgjZTwuFZYl76y/L6KrTb4+AyW1nndzmki+KGoUL1sL0TR/e7ASyGPaUZM7l/1m32g4=
+X-Gm-Gg: ASbGncs6lSqwmBBnmNv3KpNNrXe6U1hFF7scW5T739QaYaRYkxoAhj3S0Atla9dbNLp
+ 4zw3SmY6+WSYVU/FjWoQDq0ZcRrskIHXifRSF/Jc/dGDsDB2Mp/5Crx59mrTG4m6Qcbibp4qLck
+ cEctfTIK3wLSsFvRNGl4hTHfJXTA99vUhdsa9h+VoRiPtj0g6Wh0orpzdTxP0mJ7OB1Ue2dqLVK
+ lRsbnQbCh2wlM0lVxkPirfylZ+pMZFytNVyL2Wd0utViPvHREeiXDEfBFw61ZXfJ9rvLLuLtP31
+ F7kFXsUH9d2TQm1oirRtJaPBVAvmCP/spiY8dr3bdm3M4JbqxHC61aLUfyIwMuIxgnmGPcrahR2
+ xEP6iLQhc/k4l/rtO04zcMMWE3a3fpoXRxfmKmpYAA6j7w6QrbSAjNhj/caonoL7p1BsWUbuva3
+ 6KSVyR/oeQpy7K1mmh2MB3hqQBgvBAnyyZGskcYBq7NpR8eBATkekiIQ==
+X-Google-Smtp-Source: AGHT+IEOa1mZRIiEXaGp9MtU8lnJshhWrjQdcEIYtIFQ8APD4eiEb81HC4qUqKb3ooyAax2ioj3igg==
+X-Received: by 2002:a05:6000:240c:b0:3ea:6680:8f97 with SMTP id
+ ffacd0b85a97d-425577ed8a3mr1099336f8f.2.1759280559992; 
+ Tue, 30 Sep 2025 18:02:39 -0700 (PDT)
 Received: from localhost.localdomain ([90.209.204.182])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-40fb985e080sm24587426f8f.24.2025.09.30.18.02.45
+ ffacd0b85a97d-40fb985e080sm24587426f8f.24.2025.09.30.18.02.38
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 30 Sep 2025 18:02:46 -0700 (PDT)
+ Tue, 30 Sep 2025 18:02:39 -0700 (PDT)
 From: salil.mehta@opnsrc.net
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org,
@@ -87,17 +87,18 @@ Cc: salil.mehta@huawei.com, maz@kernel.org, jean-philippe@linaro.org,
  wangxiongfeng2@huawei.com, wangyanan55@huawei.com, wangzhou1@hisilicon.com,
  linuxarm@huawei.com, jiakernel2@gmail.com, maobibo@loongson.cn,
  lixianglai@loongson.cn, shahuang@redhat.com, zhao1.liu@intel.com
-Subject: [PATCH RFC V6 15/24] acpi/ged: Notify OSPM of CPU administrative
- state changes via GED
-Date: Wed,  1 Oct 2025 01:01:18 +0000
-Message-Id: <20251001010127.3092631-16-salil.mehta@opnsrc.net>
+Subject: [PATCH RFC V6 12/24] hw/core: Introduce generic device power-state
+ handler interface
+Date: Wed,  1 Oct 2025 01:01:15 +0000
+Message-Id: <20251001010127.3092631-13-salil.mehta@opnsrc.net>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20251001010127.3092631-1-salil.mehta@opnsrc.net>
 References: <20251001010127.3092631-1-salil.mehta@opnsrc.net>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::331;
- envelope-from=salil.mehta@opnsrc.net; helo=mail-wm1-x331.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::433;
+ envelope-from=salil.mehta@opnsrc.net; helo=mail-wr1-x433.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -122,323 +123,457 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Salil Mehta <salil.mehta@huawei.com>
 
-When vCPUs are administratively enabled or disabled, the guest OSPM must be
-notified so it can coordinate the corresponding operational transitions and
-preserve system stability.
+Device power-state transitions such as powering on, powering off, or entering
+standby may be triggered by administrative state changes (enable to disable or
+disable to enable), guest OSPM requests in response to workload or policy, or
+platform-specific control flows (e.g. ACPI, firmware, or machine hooks). These
+varied triggers require coordinated handling to ensure consistent behavior
+across devices.
 
-When a CPU is administratively enabled, GED raises a Device Check event. OSPM
-then uses the ACPI _EVT handler to identify the CPU device and evaluates its
-_STA, ensuring the CPU is identified, registered with the Linux device model,
-enabled in the guest kernel, and made available to the scheduler.
+Without a common interface, each device type must implement ad-hoc logic,
+making it harder to manage and extend power-state control in QEMU.
 
-When a CPU is administratively disabled, GED raises an Eject Request event. OSPM
-again uses the ACPI _EVT handler to identify the CPU device and evaluates its
-_STA, marking the CPU absent. This allows OSPM to invoke the _EJ0 path,
-gracefully offload tasks, and shut down state before removal. Without this
-coordination, CPUs may be forcefully removed, risking state loss or kernel
-instability.
+This patch introduces a generic PowerStateHandler QOM interface that allows
+devices to expose callbacks for operational power-state transitions. The model
+distinguishes between administrative state (enable/disable, host-driven) and
+operational state (on/off/standby, runtime). An administrative transition may
+trigger an operational change, with QEMU signaling the guest through platform
+interfaces and OSPM coordinating the transition. Some platforms may enforce
+transitions directly, without OSPM involvement.
 
-Platform code (e.g. Arm virt machine) calls PowerStateHandler hooks, which in
-turn drive the GED callbacks. Those callbacks use ACPI events to reflect the
-administrative change and let OSPM orchestrate the operational transition.
+Key features:
+ - New TYPE_POWERSTATE_HANDLER QOM interface.
+ - PowerStateHandlerClass with optional callbacks for operational transitions:
+      device_request_poweroff() – notify guest of internal logic to begin a
+                                  graceful shutdown sequence.
+      device_post_poweroff()    – complete disable after OSPM has powered off
+                                  operationally; device is inactive and freed.
+      device_pre_poweron()      – prepare for activation on administrative
+                                  enable; reinit state and notify guest/OSPM.
+      device_request_standby()  – request a standby state without full poweroff,
+                                  retaining sufficient state for resume.
+ - Helper functions in hw/core/powerstate.c to:
+      - Retrieve a device’s PowerStateHandler from the machine.
+      - Invoke the registered callbacks if present.
+ - Intended for use by any device type (CPU or non-CPU) that supports controlled
+   power transitions, regardless of whether it supports architectural hotplug.
+
+High-level flow:
+ QMP/HMP
+   |    user issues: {"execute":"device-set", ...} (in later patches)
+   v
+ QDEV (Prop: admin-power-state) (Administrative State Handling)
+   |    invokes PowerStateHandler callbacks via interface
+   v
+ Machine (PowerStateHandler) (Operational State Handling)
+   |    coordinates platform policy and may call firmware handler
+   v
+ ACPI GED (PowerStateHandler, firmware)
+   |    signals events/notifications to the guest
+   v
+ ACPI SCI (System Control Interrupt) to guest OS
+   |  SCI is delivered on GSI N (GED Interrupt() _CRS = N, with FADT
+   |  designating N as SCI)
+   |  OSPM receives SCI/GSI IRQ
+   v
+ OSPM (in-guest house keeping) evaluates ACPI methods from firmware tables
+        (e.g. _EJ0, _STA, _OST) and completes the transition
+
+Integration model:
+Both Machine and ACPI GED implement the PowerStateHandler interface.
+QDEV calls the handler hooks; Machine applies platform policy and can invoke
+GED to coordinate with OSPM. This keeps Qdev generic while arch-specific logic
+resides in Machine and firmware.
+
+This interface will be used in later patches to coordinate CPU administrative
+enable/disable operations on architectures that lack native CPU hotplug, and
+can also be adopted by other device classes requiring similar control.
 
 Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
 ---
- hw/acpi/generic_event_device.c         | 91 ++++++++++++++++++++++++++
- hw/arm/virt.c                          |  9 ++-
- include/hw/acpi/acpi_dev_interface.h   |  1 +
- include/hw/acpi/generic_event_device.h |  6 ++
- include/hw/arm/virt.h                  |  1 +
- 5 files changed, 107 insertions(+), 1 deletion(-)
+ hw/core/meson.build      |   1 +
+ hw/core/powerstate.c     | 100 +++++++++++++++++++++++
+ include/hw/boards.h      |   2 +
+ include/hw/powerstate.h  | 171 +++++++++++++++++++++++++++++++++++++++
+ stubs/meson.build        |   1 +
+ stubs/powerstate-stubs.c |  47 +++++++++++
+ 6 files changed, 322 insertions(+)
+ create mode 100644 hw/core/powerstate.c
+ create mode 100644 include/hw/powerstate.h
+ create mode 100644 stubs/powerstate-stubs.c
 
-diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
-index 95682b79a2..4fbf5aaa20 100644
---- a/hw/acpi/generic_event_device.c
-+++ b/hw/acpi/generic_event_device.c
-@@ -23,11 +23,13 @@
- #include "migration/vmstate.h"
- #include "qemu/error-report.h"
- #include "system/runstate.h"
+diff --git a/hw/core/meson.build b/hw/core/meson.build
+index b5a545a0ed..d9d716ce55 100644
+--- a/hw/core/meson.build
++++ b/hw/core/meson.build
+@@ -40,6 +40,7 @@ system_ss.add(files(
+   'numa.c',
+   'qdev-fw.c',
+   'qdev-hotplug.c',
++  'powerstate.c',
+   'qdev-properties-system.c',
+   'reset.c',
+   'sysbus.c',
+diff --git a/hw/core/powerstate.c b/hw/core/powerstate.c
+new file mode 100644
+index 0000000000..0e1d12b3f6
+--- /dev/null
++++ b/hw/core/powerstate.c
+@@ -0,0 +1,100 @@
++/*
++ * Device Power State transition handler interface
++ *
++ * An administrative request to 'enable' or 'disable' a device results in a
++ * change of its operational status. The transition may be performed either
++ * synchronously or asynchronously, with OSPM assistance where required.
++ *
++ * Copyright (c) 2025 Huawei Technologies R&D (UK) Ltd.
++ *
++ * Author: Salil Mehta <salil.mehta@huawei.com>
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ */
++#include "qemu/osdep.h"
 +#include "hw/powerstate.h"
- 
- static const uint32_t ged_supported_events[] = {
-     ACPI_GED_MEM_HOTPLUG_EVT,
-     ACPI_GED_PWR_DOWN_EVT,
-     ACPI_GED_NVDIMM_HOTPLUG_EVT,
-+    ACPI_GED_CPU_POWERSTATE_EVT,
-     ACPI_GED_CPU_HOTPLUG_EVT,
-     ACPI_GED_PCI_HOTPLUG_EVT,
- };
-@@ -112,6 +114,9 @@ void build_ged_aml(Aml *table, const char *name, HotplugHandler *hotplug_dev,
-                 aml_append(if_ctx, aml_call0(MEMORY_DEVICES_CONTAINER "."
-                                              MEMORY_SLOT_SCAN_METHOD));
-                 break;
-+            case ACPI_GED_CPU_POWERSTATE_EVT:
-+                aml_append(if_ctx, aml_call0(AML_GED_EVT_CPUPS_SCAN_METHOD));
-+                break;
-             case ACPI_GED_CPU_HOTPLUG_EVT:
-                 aml_append(if_ctx, aml_call0(AML_GED_EVT_CPU_SCAN_METHOD));
-                 break;
-@@ -302,12 +307,57 @@ static void acpi_ged_unplug_cb(HotplugHandler *hotplug_dev,
-     }
- }
- 
-+static void
-+acpi_ged_pre_poweron_cb(PowerStateHandler *handler, DeviceState *dev,
-+                        Error **errp)
-+{
-+    AcpiGedState *s = ACPI_GED(handler);
++#include "qemu/module.h"
++#include "qapi/error.h"
++#include "hw/boards.h"
 +
-+    if (object_dynamic_cast(OBJECT(dev), TYPE_CPU)) {
-+        acpi_cpu_device_check_cb(&s->cpuospm_state, dev,
-+                                  ACPI_CPU_POWERSTATE_STATUS, errp);
-+    } else {
-+        error_setg(errp, "acpi: poweron transition on unsupported device"
-+                   " type %s", object_get_typename(OBJECT(dev)));
++PowerStateHandler *powerstate_handler(DeviceState *dev)
++{
++    MachineState *machine = MACHINE(qdev_get_machine());
++    MachineClass *mc = MACHINE_GET_CLASS(machine);
++
++   if (mc->get_powerstate_handler) {
++        return (PowerStateHandler *)mc->get_powerstate_handler(machine, dev);
++   }
++
++    return NULL;
++}
++
++DeviceOperPowerState qdev_get_oper_power_state(DeviceState *dev)
++{
++    PowerStateHandler *h = powerstate_handler(dev);
++    PowerStateHandlerClass *pshc = h ? POWERSTATE_HANDLER_GET_CLASS(h) : NULL;
++
++    if (pshc && pshc->get_oper_state) {
++        return pshc->get_oper_state(dev, &error_warn);
++    }
++
++    return DEVICE_OPER_POWER_STATE_UNKNOWN;
++}
++
++void device_request_poweroff(DeviceState *dev, Error **errp)
++{
++    PowerStateHandler *h = powerstate_handler(dev);
++    PowerStateHandlerClass *pshc = h ? POWERSTATE_HANDLER_GET_CLASS(h) : NULL;
++
++    if (pshc && pshc->request_poweroff) {
++        pshc->request_poweroff(h, dev, errp);
 +    }
 +}
 +
-+static void
-+acpi_ged_request_poweroff_cb(PowerStateHandler *handler, DeviceState *dev,
-+                             Error **errp)
++void device_post_poweroff(DeviceState *dev, Error **errp)
 +{
-+    AcpiGedState *s = ACPI_GED(handler);
++    PowerStateHandler *h = powerstate_handler(dev);
++    PowerStateHandlerClass *pshc = h ? POWERSTATE_HANDLER_GET_CLASS(h) : NULL;
 +
-+    if (object_dynamic_cast(OBJECT(dev), TYPE_CPU)) {
-+        acpi_cpu_eject_request_cb(&s->cpuospm_state, dev,
-+                                  ACPI_CPU_POWERSTATE_STATUS, errp);
-+    } else {
-+        error_setg(errp, "acpi: poweroff transition request for unsupported"
-+                   " device type: %s", object_get_typename(OBJECT(dev)));
++    if (pshc && pshc->post_poweroff) {
++        pshc->post_poweroff(h, dev, errp);
 +    }
 +}
 +
-+static void
-+acpi_ged_post_poweroff_cb(PowerStateHandler *handler, DeviceState *dev,
-+                          Error **errp)
++void device_pre_poweron(DeviceState *dev, Error **errp)
 +{
-+    AcpiGedState *s = ACPI_GED(handler);
++    PowerStateHandler *h = powerstate_handler(dev);
++    PowerStateHandlerClass *pshc = h ? POWERSTATE_HANDLER_GET_CLASS(h) : NULL;
 +
-+    if (object_dynamic_cast(OBJECT(dev), TYPE_CPU)) {
-+        acpi_cpu_eject_cb(&s->cpuospm_state, dev, errp);
-+    } else {
-+        error_setg(errp, "acpi: post poweroff handling on unsupported device"
-+                   " type %s", object_get_typename(OBJECT(dev)));
++    if (pshc && pshc->pre_poweron) {
++        pshc->pre_poweron(h, dev, errp);
 +    }
 +}
 +
- static void acpi_ged_ospm_status(AcpiDeviceIf *adev, ACPIOSTInfoList ***list)
- {
-     AcpiGedState *s = ACPI_GED(adev);
- 
-     acpi_memory_ospm_status(&s->memhp_state, list);
-     acpi_cpu_ospm_status(&s->cpuhp_state, list);
-+    acpi_cpus_ospm_status(&s->cpuospm_state, list);
- }
- 
- static void acpi_ged_send_event(AcpiDeviceIf *adev, AcpiEventStatusBits ev)
-@@ -322,6 +372,8 @@ static void acpi_ged_send_event(AcpiDeviceIf *adev, AcpiEventStatusBits ev)
-         sel = ACPI_GED_PWR_DOWN_EVT;
-     } else if (ev & ACPI_NVDIMM_HOTPLUG_STATUS) {
-         sel = ACPI_GED_NVDIMM_HOTPLUG_EVT;
-+    } else if (ev & ACPI_CPU_POWERSTATE_STATUS) {
-+        sel = ACPI_GED_CPU_POWERSTATE_EVT;
-     } else if (ev & ACPI_CPU_HOTPLUG_STATUS) {
-         sel = ACPI_GED_CPU_HOTPLUG_EVT;
-     } else if (ev & ACPI_PCI_HOTPLUG_STATUS) {
-@@ -379,6 +431,24 @@ static const VMStateDescription vmstate_cpuhp_state = {
-     }
- };
- 
-+static bool cpuospm_needed(void *opaque)
++void device_request_standby(DeviceState *dev, Error **errp)
 +{
-+    MachineClass *mc = MACHINE_GET_CLASS(qdev_get_machine());
++    PowerStateHandler *h = powerstate_handler(dev);
++    PowerStateHandlerClass *pshc = h ? POWERSTATE_HANDLER_GET_CLASS(h) : NULL;
 +
-+    return mc->has_online_capable_cpus;
++    if (pshc && pshc->request_standby) {
++        pshc->request_standby(h, dev, errp);
++    }
 +}
 +
-+static const VMStateDescription vmstate_cpuospm_state = {
-+    .name = "acpi-ged/cpu-ospm",
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .needed = cpuospm_needed,
-+    .fields      = (VMStateField[]) {
-+        VMSTATE_CPU_OSPM_STATE(cpuospm_state, AcpiGedState),
-+        VMSTATE_END_OF_LIST()
-+    }
++static const TypeInfo powerstate_handler_info = {
++    .name          = TYPE_POWERSTATE_HANDLER,
++    .parent        = TYPE_INTERFACE,
++    .class_size = sizeof(PowerStateHandlerClass),
 +};
 +
- static const VMStateDescription vmstate_ged_state = {
-     .name = "acpi-ged-state",
-     .version_id = 1,
-@@ -447,6 +517,7 @@ static const VMStateDescription vmstate_acpi_ged = {
-     .subsections = (const VMStateDescription * const []) {
-         &vmstate_memhp_state,
-         &vmstate_cpuhp_state,
-+        &vmstate_cpuospm_state,
-         &vmstate_ghes_state,
-         &vmstate_pcihp_state,
-         NULL
-@@ -461,6 +532,8 @@ static void acpi_ged_realize(DeviceState *dev, Error **errp)
-     uint32_t ged_events;
-     int i;
- 
-+    s->cpuospm_state.acpi_dev = dev;
++static void powerstate_handler_register_types(void)
++{
++    type_register_static(&powerstate_handler_info);
++}
 +
-     if (pcihp_state->use_acpi_hotplug_bridge) {
-         s->ged_event_bitmap |= ACPI_GED_PCI_HOTPLUG_EVT;
-     }
-@@ -474,6 +547,18 @@ static void acpi_ged_realize(DeviceState *dev, Error **errp)
-         }
++type_init(powerstate_handler_register_types)
+diff --git a/include/hw/boards.h b/include/hw/boards.h
+index fe51ca58bf..161505911f 100644
+--- a/include/hw/boards.h
++++ b/include/hw/boards.h
+@@ -332,6 +332,8 @@ struct MachineClass {
  
-         switch (event) {
-+        case ACPI_GED_CPU_POWERSTATE_EVT:
-+            /* initialize regions related to CPU OSPM interface to be used
-+             * during notification of the power-on,off events to the OSPM
-+             */
-+            memory_region_init(&s->container_cpuospm, OBJECT(dev),
-+                               ACPI_CPUOSPM_REGION_NAME,
-+                               ACPI_CPU_OSPM_IF_REG_LEN);
-+            sysbus_init_mmio(sbd, &s->container_cpuospm);
-+            acpi_cpu_ospm_state_interface_init(&s->container_cpuospm,
-+                                               OBJECT(dev),
-+                                               &s->cpuospm_state, 0);
-+            break;
-         case ACPI_GED_CPU_HOTPLUG_EVT:
-             /* initialize CPU Hotplug related regions */
-             memory_region_init(&s->container_cpuhp, OBJECT(dev),
-@@ -544,6 +629,7 @@ static void acpi_ged_class_init(ObjectClass *class, const void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(class);
-     HotplugHandlerClass *hc = HOTPLUG_HANDLER_CLASS(class);
-+    PowerStateHandlerClass *pshc = POWERSTATE_HANDLER_CLASS(class);
-     AcpiDeviceIfClass *adevc = ACPI_DEVICE_IF_CLASS(class);
-     ResettableClass *rc = RESETTABLE_CLASS(class);
-     AcpiGedClass *gedc = ACPI_GED_CLASS(class);
-@@ -560,6 +646,10 @@ static void acpi_ged_class_init(ObjectClass *class, const void *data)
-     resettable_class_set_parent_phases(rc, NULL, ged_reset_hold, NULL,
-                                        &gedc->parent_phases);
- 
-+    pshc->pre_poweron = acpi_ged_pre_poweron_cb;
-+    pshc->request_poweroff = acpi_ged_request_poweroff_cb;
-+    pshc->post_poweroff = acpi_ged_post_poweroff_cb;
+     HotplugHandler *(*get_hotplug_handler)(MachineState *machine,
+                                            DeviceState *dev);
++    void *(*get_powerstate_handler)(MachineState *machine,
++                                                 DeviceState *dev);
+     bool (*hotplug_allowed)(MachineState *state, DeviceState *dev,
+                             Error **errp);
+     CpuInstanceProperties (*cpu_index_to_instance_props)(MachineState *machine,
+diff --git a/include/hw/powerstate.h b/include/hw/powerstate.h
+new file mode 100644
+index 0000000000..c16da0f24d
+--- /dev/null
++++ b/include/hw/powerstate.h
+@@ -0,0 +1,171 @@
++/*
++ * Device Power State transition handler interface
++ *
++ * An administrative request to 'enable' or 'disable' a device results in a
++ * change of its operational status. The transition may be performed either
++ * synchronously or asynchronously, with OSPM assistance where required.
++ *
++ * Copyright (c) 2025 Huawei Technologies R&D (UK) Ltd.
++ *
++ * Author: Salil Mehta <salil.mehta@huawei.com>
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ */
++#ifndef POWERSTATE_H
++#define POWERSTATE_H
 +
-     adevc->ospm_status = acpi_ged_ospm_status;
-     adevc->send_event = acpi_ged_send_event;
- }
-@@ -573,6 +663,7 @@ static const TypeInfo acpi_ged_info = {
-     .class_size    = sizeof(AcpiGedClass),
-     .interfaces = (const InterfaceInfo[]) {
-         { TYPE_HOTPLUG_HANDLER },
-+        { TYPE_POWERSTATE_HANDLER },
-         { TYPE_ACPI_DEVICE_IF },
-         { }
-     }
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 3980f553db..8d498708ab 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -188,6 +188,7 @@ static const MemMapEntry base_memmap[] = {
-     [VIRT_PVTIME] =             { 0x090a0000, 0x00010000 },
-     [VIRT_SECURE_GPIO] =        { 0x090b0000, 0x00001000 },
-     [VIRT_ACPI_PCIHP] =         { 0x090c0000, ACPI_PCIHP_SIZE },
-+    [VIRT_ACPI_CPUPS] =         { 0x090d0000, ACPI_CPU_OSPM_IF_REG_LEN },
-     [VIRT_MMIO] =               { 0x0a000000, 0x00000200 },
-     /* ...repeating for a total of NUM_VIRTIO_TRANSPORTS, each of that size */
-     [VIRT_PLATFORM_BUS] =       { 0x0c000000, 0x02000000 },
-@@ -688,9 +689,10 @@ static inline DeviceState *create_acpi_ged(VirtMachineState *vms)
- {
-     DeviceState *dev;
-     MachineState *ms = MACHINE(vms);
-+    MachineClass *mc = MACHINE_GET_CLASS(ms);
-     SysBusDevice *sbdev;
-     int irq = vms->irqmap[VIRT_ACPI_GED];
--    uint32_t event = ACPI_GED_PWR_DOWN_EVT;
-+    uint32_t event = ACPI_GED_PWR_DOWN_EVT | ACPI_GED_CPU_POWERSTATE_EVT;
-     bool acpi_pcihp;
- 
-     if (ms->ram_slots) {
-@@ -711,6 +713,11 @@ static inline DeviceState *create_acpi_ged(VirtMachineState *vms)
-     sysbus_mmio_map_name(sbdev, ACPI_MEMHP_REGION_NAME,
-                          vms->memmap[VIRT_PCDIMM_ACPI].base);
- 
-+    if (mc->has_online_capable_cpus) {
-+        sysbus_mmio_map_name(sbdev, ACPI_CPUOSPM_REGION_NAME,
-+                             vms->memmap[VIRT_ACPI_CPUPS].base);
-+    }
++#include "qom/object.h"
 +
-     acpi_pcihp = object_property_get_bool(OBJECT(dev),
-                                           ACPI_PM_PROP_ACPI_PCIHP_BRIDGE, NULL);
++#define TYPE_POWERSTATE_HANDLER "powerstate-handler"
++
++typedef struct PowerStateHandlerClass PowerStateHandlerClass;
++DECLARE_CLASS_CHECKERS(PowerStateHandlerClass, POWERSTATE_HANDLER,
++                       TYPE_POWERSTATE_HANDLER)
++#define POWERSTATE_HANDLER(obj) \
++     INTERFACE_CHECK(PowerStateHandler, (obj), TYPE_POWERSTATE_HANDLER)
++
++typedef struct PowerStateHandler PowerStateHandler;
++
++/**
++ * DeviceOperPowerState:
++ *
++ * Enumeration of operational power states for devices. These represent runtime
++ * states controlled through platform interfaces (e.g. ACPI, PSCI, or other
++ * OSPM mechanisms), and are distinct from administrative presence or enable/
++ * disable state.
++ *
++ * Transitions may be initiated by the guest OSPM in response to workload or
++ * policy, or triggered by administrative actions due to policy change. Please
++ * check PowerStateHandlerClass for more details on these.
++ *
++ * Platforms may optionally implement a callback to fetch the current state.
++ * That callback must map internal platform state to one of the values here.
++ *
++ * @DEVICE_OPER_POWER_STATE_UNKNOWN: State reporting unsupported, or state
++ *                                   could not be determined. If @errp is set,
++ *                                   this indicates an error. Platform firmware
++ *                                   may also enforce state changes directly;
++ *                                   the callback must return the resulting
++ *                                   state.
++ *
++ * @DEVICE_OPER_POWER_STATE_ON:      Device is powered on and fully active.
++ *
++ * @DEVICE_OPER_POWER_STATE_OFF:     Device is powered off and inactive. It
++ *                                   should not consume resources and may
++ *                                   require reinitialization on power on.
++ *
++ * @DEVICE_OPER_POWER_STATE_STANDBY: Device is in a low-power standby state.
++ *                                   It retains enough state to allow fast
++ *                                   resume without full reinitialization.
++ *
++ * See also: PowerStateHandlerClass, powerstate_get_fn
++ */
++typedef enum DeviceOperPowerState {
++    DEVICE_OPER_POWER_STATE_UNKNOWN = -1,
++    DEVICE_OPER_POWER_STATE_ON = 0,
++    DEVICE_OPER_POWER_STATE_OFF,
++    DEVICE_OPER_POWER_STATE_STANDBY,
++    DEVICE_OPER_POWER_STATE_MAX
++} DeviceOperPowerState;
++
++/**
++ * powerstate_fn:
++ * @handler: Power state handler for the device performing the transition.
++ * @dev: The device being transitioned as a result of an administrative
++ *       state change (e.g. enable-to-disable or disable-to-enable), which
++ *       in turn affects its operational state (on, off, standby).
++ * @errp: Pointer to return an error if the function fails.
++ *
++ * Generic function signature for device power state transitions. An
++ * administrative state change triggers the corresponding operational
++ * transition, which may be implemented synchronously or asynchronously.
++ */
++typedef void (*powerstate_fn)(PowerStateHandler *handler, DeviceState *dev,
++                              Error **errp);
++
++/**
++ * powerstate_get_fn:
++ * @dev:  The device whose operational state is being queried.
++ * @errp: Pointer to an error object, set on failure.
++ *
++ * Callback type to query the current operational power state of a device.
++ * Platforms may optionally implement this to expose their internal power
++ * management status. When present, the callback must map the platform’s
++ * internal state into one of the DeviceOperPowerState values.
++ *
++ * Returns: A DeviceOperPowerState value on success. If the platform does not
++ * support state reporting, returns DEVICE_OPER_POWER_STATE_UNKNOWN without
++ * setting @errp. If the state could not be determined due to an error, sets
++ * @errp and also returns DEVICE_OPER_POWER_STATE_UNKNOWN. In this case, the
++ * return value must be ignored when @errp is set.
++ */
++typedef DeviceOperPowerState (*powerstate_get_fn)(DeviceState *dev,
++                                                  Error **errp);
++
++/**
++ * PowerStateHandlerClass:
++ *
++ * Interface for devices that support transitions of their operational power
++ * state (on, off, standby). These transitions may be driven by changes in the
++ * device’s administrative state (enable to/from disable), or initiated by the
++ * guest OSPM based on runtime policy.
++ *
++ * Administrative changes are host-driven (e.g. 'device_set') and can trigger
++ * corresponding operational transitions. QEMU may signal the guest via platform
++ * interfaces (such as ACPI) so that OSPM coordinates the change. Some platforms
++ * may also enforce transitions directly, without OSPM involvement.
++ *
++ * @parent: Opaque parent interface.
++ *
++ * @get_oper_state: Optional callback to query the current operational state.
++ *                  Implementations must map the internal state to the
++ *                  'DeviceOperPowerState' enum.
++ *
++ * @request_poweroff: Optional callback to notify the guest of internal logic
++ *                    that the device is about to be disabled. Used to initiate
++ *                    graceful shutdown or cleanup within OSPM.
++ *
++ * @post_poweroff: Callback invoked after OSPM has powered off the device
++ *                 operationally. Completes the administrative transition to
++ *                 'disabled', ensuring the device is fully inactive and not
++ *                 consuming resources.
++ *
++ * @pre_poweron: Callback to prepare a device for re-activation after an
++ *               administrative 'enable'. May reinitialize state and notify the
++ *               guest that the device is available. Guest of internal OSPM may
++ *               or may not make the device become operationally active.
++ *
++ * @request_standby: Optional callback to place the device into a standby state
++ *                   without full power-off. The device is expected to retain
++ *                   sufficient state for efficient resume, e.g. CPU_SUSPEND.
++ */
++struct PowerStateHandlerClass {
++    /* <private> */
++    InterfaceClass parent;
++
++    /* <public> */
++    powerstate_get_fn get_oper_state;
++
++    powerstate_fn request_poweroff;
++    powerstate_fn post_poweroff;
++    powerstate_fn pre_poweron;
++    powerstate_fn request_standby;
++};
++
++PowerStateHandler *powerstate_handler(DeviceState *dev);
++
++DeviceOperPowerState qdev_get_oper_power_state(DeviceState *dev);
++
++void device_request_poweroff(DeviceState *dev, Error **errp);
++
++void device_post_poweroff(DeviceState *dev, Error **errp);
++
++void device_pre_poweron(DeviceState *dev, Error **errp);
++
++void device_request_standby(DeviceState *dev, Error **errp);
++#endif /* POWERSTATE_H */
+diff --git a/stubs/meson.build b/stubs/meson.build
+index cef046e685..f38cdd1947 100644
+--- a/stubs/meson.build
++++ b/stubs/meson.build
+@@ -95,5 +95,6 @@ if have_system or have_user
  
-diff --git a/include/hw/acpi/acpi_dev_interface.h b/include/hw/acpi/acpi_dev_interface.h
-index 68d9d15f50..eea03ca47d 100644
---- a/include/hw/acpi/acpi_dev_interface.h
-+++ b/include/hw/acpi/acpi_dev_interface.h
-@@ -13,6 +13,7 @@ typedef enum {
-     ACPI_NVDIMM_HOTPLUG_STATUS = 16,
-     ACPI_VMGENID_CHANGE_STATUS = 32,
-     ACPI_POWER_DOWN_STATUS = 64,
-+    ACPI_CPU_POWERSTATE_STATUS = 128,
- } AcpiEventStatusBits;
- 
- #define TYPE_ACPI_DEVICE_IF "acpi-device-interface"
-diff --git a/include/hw/acpi/generic_event_device.h b/include/hw/acpi/generic_event_device.h
-index 2c5b055327..87e4e5e6ce 100644
---- a/include/hw/acpi/generic_event_device.h
-+++ b/include/hw/acpi/generic_event_device.h
-@@ -64,6 +64,7 @@
- #include "hw/acpi/ghes.h"
- #include "hw/acpi/cpu.h"
- #include "hw/acpi/pcihp.h"
-+#include "hw/acpi/cpu_ospm_interface.h"
- #include "qom/object.h"
- 
- #define ACPI_POWER_BUTTON_DEVICE "PWRB"
-@@ -92,6 +93,7 @@ OBJECT_DECLARE_TYPE(AcpiGedState, AcpiGedClass, ACPI_GED)
- #define AML_GED_EVT_REG "EREG"
- #define AML_GED_EVT_SEL "ESEL"
- #define AML_GED_EVT_CPU_SCAN_METHOD "\\_SB.GED.CSCN"
-+#define AML_GED_EVT_CPUPS_SCAN_METHOD "\\_SB.GED.PSCN"  /* Power State Scan */
- 
- /*
-  * Platforms need to specify the GED event bitmap
-@@ -103,6 +105,7 @@ OBJECT_DECLARE_TYPE(AcpiGedState, AcpiGedClass, ACPI_GED)
- #define ACPI_GED_NVDIMM_HOTPLUG_EVT 0x4
- #define ACPI_GED_CPU_HOTPLUG_EVT    0x8
- #define ACPI_GED_PCI_HOTPLUG_EVT    0x10
-+#define ACPI_GED_CPU_POWERSTATE_EVT 0x20
- 
- typedef struct GEDState {
-     MemoryRegion evt;
-@@ -112,6 +115,7 @@ typedef struct GEDState {
- 
- #define ACPI_PCIHP_REGION_NAME "pcihp container"
- #define ACPI_MEMHP_REGION_NAME "memhp container"
-+#define ACPI_CPUOSPM_REGION_NAME "cpuospm container"
- 
- struct AcpiGedState {
-     SysBusDevice parent_obj;
-@@ -121,6 +125,8 @@ struct AcpiGedState {
-     MemoryRegion container_cpuhp;
-     AcpiPciHpState pcihp_state;
-     MemoryRegion container_pcihp;
-+    AcpiCpuOspmState cpuospm_state;
-+    MemoryRegion container_cpuospm;
-     GEDState ged_state;
-     uint32_t ged_event_bitmap;
-     qemu_irq irq;
-diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-index 02cc311452..68081b79bb 100644
---- a/include/hw/arm/virt.h
-+++ b/include/hw/arm/virt.h
-@@ -81,6 +81,7 @@ enum {
-     VIRT_NVDIMM_ACPI,
-     VIRT_PVTIME,
-     VIRT_ACPI_PCIHP,
-+    VIRT_ACPI_CPUPS,
-     VIRT_LOWMEMMAP_LAST,
- };
- 
+   # Also included in have_system for tests/unit/test-qdev-global-props
+   stub_ss.add(files('hotplug-stubs.c'))
++  stub_ss.add(files('powerstate-stubs.c'))
+   stub_ss.add(files('sysbus.c'))
+ endif
+diff --git a/stubs/powerstate-stubs.c b/stubs/powerstate-stubs.c
+new file mode 100644
+index 0000000000..01c615cda2
+--- /dev/null
++++ b/stubs/powerstate-stubs.c
+@@ -0,0 +1,47 @@
++/*
++ * Device Power State handler interface Stubs.
++ *
++ * Copyright (c) 2025 Huawei Technologies R&D (UK) Ltd.
++ *
++ * Author: Salil Mehta <salil.mehta@huawei.com>
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ */
++#include "qemu/osdep.h"
++#include "hw/powerstate.h"
++#include "hw/qdev-core.h"
++
++PowerStateHandler *powerstate_handler(DeviceState *dev)
++{
++    return NULL;
++}
++
++DeviceOperPowerState qdev_get_oper_power_state(DeviceState *dev)
++{
++    return DEVICE_OPER_POWER_STATE_UNKNOWN;
++}
++
++void device_request_poweroff(DeviceState *dev, Error **errp)
++{
++    g_assert_not_reached();
++}
++
++void device_post_poweroff(DeviceState *dev, Error **errp)
++{
++    g_assert_not_reached();
++}
++
++void device_pre_poweron(DeviceState *dev, Error **errp)
++{
++    g_assert_not_reached();
++}
++
++void device_request_standby(DeviceState *dev, Error **errp)
++{
++    g_assert_not_reached();
++}
 -- 
 2.34.1
 

@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 873B3CAC5B8
-	for <qemu-arm@archiver.kernel.org>; Wed,  1 Oct 2025 01:11:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD75ACCA470
+	for <qemu-arm@archiver.kernel.org>; Wed,  1 Oct 2025 01:11:06 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v3lHA-000661-8q; Tue, 30 Sep 2025 21:05:02 -0400
+	id 1v3lFz-0005UT-WB; Tue, 30 Sep 2025 21:03:48 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <salil.mehta@opnsrc.net>)
- id 1v3lGN-0005hA-5L
- for qemu-arm@nongnu.org; Tue, 30 Sep 2025 21:04:11 -0400
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
+ id 1v3lFY-0005Mb-JG
+ for qemu-arm@nongnu.org; Tue, 30 Sep 2025 21:03:20 -0400
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <salil.mehta@opnsrc.net>)
- id 1v3lFV-0008FY-LG
- for qemu-arm@nongnu.org; Tue, 30 Sep 2025 21:04:10 -0400
-Received: by mail-wr1-x434.google.com with SMTP id
- ffacd0b85a97d-42557c5cedcso216503f8f.0
- for <qemu-arm@nongnu.org>; Tue, 30 Sep 2025 18:03:10 -0700 (PDT)
+ id 1v3lEw-00083e-CP
+ for qemu-arm@nongnu.org; Tue, 30 Sep 2025 21:03:17 -0400
+Received: by mail-wr1-x42c.google.com with SMTP id
+ ffacd0b85a97d-3ece1102998so4447973f8f.2
+ for <qemu-arm@nongnu.org>; Tue, 30 Sep 2025 18:02:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=opnsrc.net; s=google; t=1759280587; x=1759885387; darn=nongnu.org;
+ d=opnsrc.net; s=google; t=1759280556; x=1759885356; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=A8WcCIp7AW8otz3wOJdViBKtHh2ab6qkb/xOpXEIFFU=;
- b=YqMa/7f+/5G/wVlrBQdSoL049gw7GfGzw+lLHRsHeHeiTbBZTz3q0AgmyaJfbc3q82
- 25hxREWkDYgqzRCpHUtLwko0bweO/nFDNVxsSGX0qAICYwpypP3ggCEeFeJDJtbMOapo
- qfkO+2d/79q/v2cX0CSZOhehxo1P3EAaUJ7dOgmGY3bFZEGihoiV8ss3hO5fKx/Tdc7b
- /kN3dNS6uU2TGXM5wei8vtEFnVkClzXIF+dAoBfe4dD6nebVXWnnTqGd2LVYSLC6YQta
- bdnTeiM6RITY4HQwLjcimMtjxhtw3guLL7xuP8K+WhFfXn5Jb81tCxyy9PGBiK72s6mg
- yc6Q==
+ bh=a+LKVy+uEs1gyTpMUsvOiaFbfXh40S7aK551rrhdKmI=;
+ b=hbhbNi2PG29T2NPRYvevo83wjbDO1Hz663MrMOE9MausRRdXvMNWrW+PySIhEeMybs
+ EpeFLu9g0GpZPQtyn0WcM0WDkwu+3II8ecFyq9rKnJqxPdDacVFAruiqLqFDIaEfhA9N
+ ITy1udYdaP0k6BaRf8puJHuWGUwryvcRUOtjskcR3RbaFJ0T49/qr04geZ4OGd+1/Bj3
+ /uRjU//bkpwUoBZAP+hQvwWnVsCmSIhQXIuoGi/3m5RDm1u/7wpbeaKPo/+BoKsUMTtb
+ dZ1TqyWA6hg5xIAiZdOxVj1oM8mYEAr1rEZPo3yUPD5k7glkB4kLxxZ5zNW/iABu1BcU
+ SGmQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759280587; x=1759885387;
+ d=1e100.net; s=20230601; t=1759280556; x=1759885356;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=A8WcCIp7AW8otz3wOJdViBKtHh2ab6qkb/xOpXEIFFU=;
- b=udN5KkstlFIPvT89zMU0b/AVavRT916lvAfn3NA+6PqDI3oEFbpbCqjqRMSb9k1Jkl
- xNQTG47xZkad60nUCawy6747+2SYlDPUtpLxczEHXYjYoPxfPRC1S82/E6v0aNmUaB+T
- u2ZxP60omqUymGyGukMuvKN3Ptq/zGh1WqoGdVw3TpUG8ZaFUj1Tl7yxjSDlky8+o/v7
- bpRD2XSNh7t9YNOBc/gkj8HuqTb36gjwjnfdy3mBrBywis5uS9+HNKSGwlV9kQQWBoCV
- rvcHk7KDvT55Dbhuk6dt8xsZyp6xcUx1Uf1KLCe7hs5x5xFlaLsSZT4A7AAsK9sM6Mw2
- ewVA==
+ bh=a+LKVy+uEs1gyTpMUsvOiaFbfXh40S7aK551rrhdKmI=;
+ b=vU4uosg2XXoqmQXK97YDxq4Zh4m72WuIDHLKWs6maOUq+0ozr/pKwr0ZO9g3RKpMyH
+ ljR7mB4PK1G82xXTTETyEtYoN5Kv+T8HMtmhjFjWORqPKwC8bDCqZjO10968pz4HCbTk
+ TTcpPaGflpn5Ffni46+t7r0/TxoApLhPCEy5ctKXhMKSL2/BOvfsGyxJQ9bwQkcSA8cR
+ DbCCuakQ9GuxiKYQn8D3UTc/VTxT/GInCib4EsGTETmKuznECLZzuZl6NKtNUe3v3zU4
+ 8SA4xgx6rHzq687C5rSOebEk4gX1IqNRw1EhH38vAfaFmno2GBruE4dj30Zgy3mLEoaA
+ d5BA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCX/x5b9UYvYscNhmnn3Y4P1kig13/KgqUIm+fvBCoH+BapvcnHztmQIFOaoqpVyCCOYboLo6mR68g==@nongnu.org
-X-Gm-Message-State: AOJu0YxoMg7Sc0NSb+EJqPtpHMC4EdSnCwKAEa5AFnjbmBaLeOMR1YDj
- EbD4WXvJdgmltac3DsJP4vza5Ew1NrCYX+tkBWkUqQ7z3LvGzLO9MhRcre1iXlvC7VM=
-X-Gm-Gg: ASbGncsCHEkx/Fa1zOqb3fe3lrQTu9HOq+fL6nnEWJi1kEz4nX1I4vQiSt9cQ6FCfYZ
- 4O1lPrl4+6zkBoUOXdjvv/Ca1JEkFhvBHCv/Wr5knLsY7y+9aK+k+WFH9kTanT0s/ExWZDlnKIv
- +AauLhUtwoWk9sqmc4Qq6+wWTI8g72AezK7GCVFiY+WPrSTC3W/UzKSvps4DuSjOmf0DG3eTGV9
- vBMFRrHlgTz8N3lIc5oOzWQmLpAvwMhT/L4h5OAJ8kBSoAeaifGVjf8tdIWGR3TLGCooS2tmtSz
- LeEldTzLk+L6DhBqXpFD1O/EEbK0DSYWteOIDvLk9b0GHy/+ROq59rVo6umrAKadzNbEBzZu62b
- fbMbWh0PMZKwPebKUXM8UJzZGVd45DbTEKHVVbquNXncFU5E4OEfFh/mMsgbcsjDOuYe3N/WPuh
- BrXDTjK8vr++VpgAU4eMxDn0ZWUSpBZeE6cPe1QOqPBXo=
-X-Google-Smtp-Source: AGHT+IGlokWyuAQ2aOYDbWjfOqnwWRIkap8UzDam0XIevWPLN9f+zE+7RFoc9UfCTkN4Aj3PvVw+Vw==
-X-Received: by 2002:a05:6000:2407:b0:3ec:db87:e8fa with SMTP id
- ffacd0b85a97d-425577fe66bmr1211377f8f.26.1759280586676; 
- Tue, 30 Sep 2025 18:03:06 -0700 (PDT)
+ AJvYcCVzPCCBLw87yLkn+1YrfSiIH5w3OvWZ9Av5UqVkUojfkWoeeBRNGBDZuEfOFRgAVhqwji+uXIOAyw==@nongnu.org
+X-Gm-Message-State: AOJu0YxlENW7s0SG89tapeeFjMtQapxyEmOqXxzoTyUf1YFe0KMM65fH
+ eIShw4l5j4qirrIzmsU/kpW0hkYAeLdoTURwk+E4o2paTH7ckYYmIuaECOb2TYZAJTo=
+X-Gm-Gg: ASbGncvbDzo0nyWYX9jQAzw6nncyjqww6ez6qzFGyv8eDLUW4HEPfVMsFDMki/pY1x+
+ 5Y8aVGX5UA5n85Z4iVxilu2dSfedEoz2eRY+1xS8T+EwOmvL+bze2/qXaZU04ii7+3ASt07Gv/g
+ QadtwX5EcNkOt+4sRYpcO3mnpXPSY7Ktt0NoM1BTqR58lfZ+jaEbLcCNEW0WE3R7sudR89rufaB
+ tPb2ZCTh91KHY7o82CFkpNUlru9IMc3BIrIFNeBfqtTazC/Qc6n28UNVR+bpEwUkjSRp6lcVUhX
+ GwyV9IX5XysbZ2ku3GdWBJQnjMglExao4xxwNkm3tZAyuBD/6yDCYGd8HFDonAj5yliZCW6Q14O
+ ngiN8D26EGjsBUFyNlFg6GU61g98GTHg0Br5Ws2x9Tn8hXLxnlA4XnrTR4l+HD3PA6h27nUhyNP
+ uSsyI6nVDZD7XSSLW8ZNKjRMURHJdKYG0xJf5frZXyfIs=
+X-Google-Smtp-Source: AGHT+IGIOt/MFONJUAOMgOm5H0GxVTM3YTOfkE8m8l8GQdsR9nUtBneNaBYLZrxSvSmST42T3XP8Aw==
+X-Received: by 2002:a05:6000:430a:b0:3eb:f3de:1a87 with SMTP id
+ ffacd0b85a97d-42557820cbdmr1157560f8f.56.1759280555752; 
+ Tue, 30 Sep 2025 18:02:35 -0700 (PDT)
 Received: from localhost.localdomain ([90.209.204.182])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-40fb985e080sm24587426f8f.24.2025.09.30.18.03.04
+ ffacd0b85a97d-40fb985e080sm24587426f8f.24.2025.09.30.18.02.34
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 30 Sep 2025 18:03:06 -0700 (PDT)
+ Tue, 30 Sep 2025 18:02:35 -0700 (PDT)
 From: salil.mehta@opnsrc.net
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org,
@@ -87,24 +87,24 @@ Cc: salil.mehta@huawei.com, maz@kernel.org, jean-philippe@linaro.org,
  wangxiongfeng2@huawei.com, wangyanan55@huawei.com, wangzhou1@hisilicon.com,
  linuxarm@huawei.com, jiakernel2@gmail.com, maobibo@loongson.cn,
  lixianglai@loongson.cn, shahuang@redhat.com, zhao1.liu@intel.com
-Subject: [PATCH RFC V6 24/24] tcg: Defer TB flush for 'lazy realized' vCPUs on
- first region alloc
-Date: Wed,  1 Oct 2025 01:01:27 +0000
-Message-Id: <20251001010127.3092631-25-salil.mehta@opnsrc.net>
+Subject: [PATCH RFC V6 10/24] arm/virt: Init PMU at host for all present vCPUs
+Date: Wed,  1 Oct 2025 01:01:13 +0000
+Message-Id: <20251001010127.3092631-11-salil.mehta@opnsrc.net>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20251001010127.3092631-1-salil.mehta@opnsrc.net>
 References: <20251001010127.3092631-1-salil.mehta@opnsrc.net>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::434;
- envelope-from=salil.mehta@opnsrc.net; helo=mail-wr1-x434.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
+ envelope-from=salil.mehta@opnsrc.net; helo=mail-wr1-x42c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -122,207 +122,145 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Salil Mehta <salil.mehta@huawei.com>
 
-The TCG code cache is split into regions shared by vCPUs under MTTCG. For
-cold-boot (early realized) vCPUs, regions are sized/allocated during bring-up.
-However, when a vCPU is *lazy_realized* (administratively "disabled" at boot
-and realized later on demand), its TCGContext may fail the very first code
-region allocation if the shared TB cache is saturated by already-running
-vCPUs.
+ARM architecture requires that all CPUs which form part of the VM must
+expose identical feature sets and consistent system components at creation
+time. This includes the Performance Monitoring Unit (PMU). If only the boot
+CPUs had their PMU state initialized, the remaining CPUs defined by
+`smp.disabled_cpus` would not match this architectural requirement, leading
+to inconsistencies and guest misbehavior.
 
-Flushing the TB cache is the right remediation, but `tb_flush()` must be
-performed from the safe execution context (cpu_exec_loop()/tb_gen_code()).
-This patch wires a deferred flush:
+To comply with this constraint, PMU initialization must cover the entire set
+of present vCPUs:
 
-  * In `tcg_region_initial_alloc__locked()`, treat an initial allocation
-    failure for a lazily realized vCPU as non-fatal: set `s->tbflush_pend`
-    and return.
+    present = smp.cpus + smp.disabled_cpus
 
-  * In `tcg_tb_alloc()`, if `s->tbflush_pend` is observed, clear it and
-    return NULL so the caller performs a synchronous `tb_flush()` and then
-    retries allocation.
+CPUs outside this set (`smp.max_cpus - present`) are not considered part of
+the machine at creation and are therefore not initialized.
 
-This avoids hangs observed when a newly realized vCPU cannot obtain its first
-region under TB-cache pressure, while keeping the flush at a safe point.
-
-No change for cold-boot vCPUs and when accel ops is KVM.
-
-In earlier series, this patch was with below named,
-'tcg: Update tcg_register_thread() leg to handle region alloc for hotplugged vCPU'
-
-Reported-by: Miguel Luis <miguel.luis@oracle.com>
-Signed-off-by: Miguel Luis <miguel.luis@oracle.com>
+Co-developed-by: Keqian Zhu <zhukeqian1@huawei.com>
+Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
 Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
 ---
- accel/tcg/tcg-accel-ops-mttcg.c |  2 +-
- accel/tcg/tcg-accel-ops-rr.c    |  2 +-
- hw/arm/virt.c                   |  5 +++++
- include/hw/core/cpu.h           |  1 +
- include/tcg/startup.h           |  6 ++++++
- include/tcg/tcg.h               |  1 +
- tcg/region.c                    | 16 ++++++++++++++++
- tcg/tcg.c                       | 19 ++++++++++++++++++-
- 8 files changed, 49 insertions(+), 3 deletions(-)
+ hw/arm/virt.c         | 13 +++++++---
+ include/hw/arm/virt.h |  1 +
+ include/hw/core/cpu.h | 57 +++++++++++++++++++++++++++++++++++++++++++
+ 3 files changed, 67 insertions(+), 4 deletions(-)
 
-diff --git a/accel/tcg/tcg-accel-ops-mttcg.c b/accel/tcg/tcg-accel-ops-mttcg.c
-index 337b993d3d..cdb7345340 100644
---- a/accel/tcg/tcg-accel-ops-mttcg.c
-+++ b/accel/tcg/tcg-accel-ops-mttcg.c
-@@ -73,7 +73,7 @@ static void *mttcg_cpu_thread_fn(void *arg)
-     force_rcu.notifier.notify = mttcg_force_rcu;
-     force_rcu.cpu = cpu;
-     rcu_add_force_rcu_notifier(&force_rcu.notifier);
--    tcg_register_thread();
-+    tcg_register_thread(cpu);
- 
-     bql_lock();
-     qemu_thread_get_self(cpu->thread);
-diff --git a/accel/tcg/tcg-accel-ops-rr.c b/accel/tcg/tcg-accel-ops-rr.c
-index 6eec5c9eee..18e713cada 100644
---- a/accel/tcg/tcg-accel-ops-rr.c
-+++ b/accel/tcg/tcg-accel-ops-rr.c
-@@ -186,7 +186,7 @@ static void *rr_cpu_thread_fn(void *arg)
-     rcu_register_thread();
-     force_rcu.notify = rr_force_rcu;
-     rcu_add_force_rcu_notifier(&force_rcu);
--    tcg_register_thread();
-+    tcg_register_thread(cpu);
- 
-     bql_lock();
-     qemu_thread_get_self(cpu->thread);
 diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 5e02d6749d..254303727b 100644
+index ee09aa19bd..3980f553db 100644
 --- a/hw/arm/virt.c
 +++ b/hw/arm/virt.c
-@@ -2482,6 +2482,11 @@ virt_setup_lazy_vcpu_realization(Object *cpuobj, VirtMachineState *vms)
-     if (kvm_enabled()) {
-         kvm_arm_create_host_vcpu(ARM_CPU(cpuobj));
-     }
-+
-+    /* we may have to nuke the TB cache */
-+    if (tcg_enabled()) {
-+        CPU(cpuobj)->lazy_realized = true;
-+    }
- }
+@@ -2087,12 +2087,13 @@ static void finalize_gic_version(VirtMachineState *vms)
+ static void virt_post_cpus_gic_realized(VirtMachineState *vms,
+                                         MemoryRegion *sysmem)
+ {
++    CPUArchIdList *possible_cpus = vms->parent.possible_cpus;
+     int max_cpus = MACHINE(vms)->smp.max_cpus;
+-    bool aarch64, pmu, steal_time;
++    bool aarch64, steal_time;
+     CPUState *cpu;
  
- static void machvirt_init(MachineState *machine)
+     aarch64 = object_property_get_bool(OBJECT(first_cpu), "aarch64", NULL);
+-    pmu = object_property_get_bool(OBJECT(first_cpu), "pmu", NULL);
++    vms->pmu = object_property_get_bool(OBJECT(first_cpu), "pmu", NULL);
+     steal_time = object_property_get_bool(OBJECT(first_cpu),
+                                           "kvm-steal-time", NULL);
+ 
+@@ -2123,8 +2124,12 @@ static void virt_post_cpus_gic_realized(VirtMachineState *vms,
+             exit(1);
+         }
+ 
+-        CPU_FOREACH(cpu) {
+-            if (pmu) {
++        CPU_FOREACH_POSSIBLE(cpu, possible_cpus) {
++            if (!cpu) {
++                continue;
++            }
++
++            if (vms->pmu) {
+                 assert(arm_feature(&ARM_CPU(cpu)->env, ARM_FEATURE_PMU));
+                 if (kvm_irqchip_in_kernel()) {
+                     kvm_arm_pmu_set_irq(ARM_CPU(cpu), VIRTUAL_PMU_IRQ);
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index ace4154cc6..02cc311452 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -154,6 +154,7 @@ struct VirtMachineState {
+     bool mte;
+     bool dtb_randomness;
+     bool second_ns_uart_present;
++    bool pmu;
+     OnOffAuto acpi;
+     VirtGICType gic_version;
+     VirtIOMMUType iommu;
 diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-index c9ce9bbdaf..c2d45fb494 100644
+index 5eaf41a566..2ee202a8a5 100644
 --- a/include/hw/core/cpu.h
 +++ b/include/hw/core/cpu.h
-@@ -486,6 +486,7 @@ struct CPUState {
-     bool stop;
-     bool stopped;
-     bool parked;
-+    bool lazy_realized; /* realized after machine init (lazy realization) */
+@@ -602,6 +602,63 @@ extern CPUTailQ cpus_queue;
+ #define CPU_FOREACH_SAFE(cpu, next_cpu) \
+     QTAILQ_FOREACH_SAFE_RCU(cpu, &cpus_queue, node, next_cpu)
  
-     /* Should CPU start in powered-off state? */
-     bool start_powered_off;
-diff --git a/include/tcg/startup.h b/include/tcg/startup.h
-index 95f574af2b..f9126bb0bd 100644
---- a/include/tcg/startup.h
-+++ b/include/tcg/startup.h
-@@ -25,6 +25,8 @@
- #ifndef TCG_STARTUP_H
- #define TCG_STARTUP_H
- 
-+#include "hw/core/cpu.h"
 +
++/**
++ * CPU_FOREACH_POSSIBLE(cpu_, archid_list_)
++ *
++ * Iterate over all entries in a CPUArchIdList, assigning each entry’s
++ * CPUState* to @cpu_. This hides the loop index and reads like a normal
++ * C for-loop.
++ *
++ * A CPUArchIdList represents the set of *possible* CPUs for a machine.
++ * Each entry contains:
++ *   - @cpu:        CPUState pointer, or NULL if not realized yet
++ *   - @arch_id:    architecture-specific identifier (e.g. MPIDR)
++ *   - @vcpus_count: number of vCPUs represented (usually 1)
++ *
++ * The list models *possible* CPUs: it includes (a) currently plugged vCPUs
++ * made available through hotplug, (b) present (and perhaps visible to OSPM)
++ * but kept ACPI-disabled vCPUs, and (c) reserved slots for CPUs that may be
++ * created in the future. This supports co-existence of hotpluggable and
++ * admin-disabled vCPUs if architectures permit.
++ *
++ * Example:
++ *
++ *   CPUArchIdList *alist = machine_possible_cpus(ms);
++ *   CPUState *cpu;
++ *
++ *   CPU_FOREACH_POSSIBLE(cpu, alist) {
++ *       if (!cpu) {
++ *           continue; // reserved slot for hotplug case
++ *       }
++ *
++ *       < Do Something >
++ *   }
++ *
++ * Expanded equivalent:
++ *
++ *   for (int __cpu_idx = 0; alist && __cpu_idx < alist->len; __cpu_idx++) {
++ *       if ((cpu = alist->cpus[__cpu_idx].cpu, 1)) {
++ *           if (!cpu) {
++ *               continue;
++ *           }
++ *
++ *           < Do Something >
++ *       }
++ *   }
++ *
++ * Notes:
++ *   - Callers must check @cpu for NULL when filtering unplugged CPUs.
++ *   - Mirrors the style of CPU_FOREACH(), but iterates all *possible* CPUs
++ *     (plugged, ACPI-disabled, and reserved slots) rather than only present
++ *     and enabled vCPUs.
++ */
++#define CPU_FOREACH_POSSIBLE(cpu_, archid_list_) \
++    for (int __cpu_idx = 0; \
++         (archid_list_) && __cpu_idx < (archid_list_)->len; \
++         __cpu_idx++) \
++        if (((cpu_) = (archid_list_)->cpus[__cpu_idx].cpu, 1))
++
+ extern __thread CPUState *current_cpu;
+ 
  /**
-  * tcg_init: Initialize the TCG runtime
-  * @tb_size: translation buffer size
-@@ -43,7 +45,11 @@ void tcg_init(size_t tb_size, int splitwx, unsigned max_threads);
-  * accelerator's init_machine() method) must register with this
-  * function before initiating translation.
-  */
-+#ifdef CONFIG_USER_ONLY
- void tcg_register_thread(void);
-+#else
-+void tcg_register_thread(CPUState *cpu);
-+#endif
- 
- /**
-  * tcg_prologue_init(): Generate the code for the TCG prologue
-diff --git a/include/tcg/tcg.h b/include/tcg/tcg.h
-index a6d9aa50d4..e197ee03c0 100644
---- a/include/tcg/tcg.h
-+++ b/include/tcg/tcg.h
-@@ -396,6 +396,7 @@ struct TCGContext {
- 
-     /* Track which vCPU triggers events */
-     CPUState *cpu;                      /* *_trans */
-+    bool tbflush_pend; /* TB flush pending due to lazy vCPU realization */
- 
-     /* These structures are private to tcg-target.c.inc.  */
-     QSIMPLEQ_HEAD(, TCGLabelQemuLdst) ldst_labels;
-diff --git a/tcg/region.c b/tcg/region.c
-index 7ea0b37a84..23635e0194 100644
---- a/tcg/region.c
-+++ b/tcg/region.c
-@@ -393,6 +393,22 @@ bool tcg_region_alloc(TCGContext *s)
- static void tcg_region_initial_alloc__locked(TCGContext *s)
- {
-     bool err = tcg_region_alloc__locked(s);
-+
-+    /*
-+     * Lazily realized vCPUs (administratively "disabled" at boot and realized
-+     * later on demand) may initially fail to obtain even a single code region
-+     * if the shared TB cache is under pressure from already running vCPUs.
-+     *
-+     * Treat this first-allocation failure as non-fatal: mark this TCGContext
-+     * to request a TB cache flush and return. The flush is performed later,
-+     * synchronously in the vCPU execution path (cpu_exec_loop()/tb_gen_code()),
-+     * which is the safe place for tb_flush().
-+     */
-+    if (err && s->cpu && s->cpu->lazy_realized) {
-+        s->tbflush_pend = true;
-+        return;
-+    }
-+
-     g_assert(!err);
- }
- 
-diff --git a/tcg/tcg.c b/tcg/tcg.c
-index afac55a203..5867952ae7 100644
---- a/tcg/tcg.c
-+++ b/tcg/tcg.c
-@@ -1285,12 +1285,14 @@ void tcg_register_thread(void)
-     tcg_ctx = &tcg_init_ctx;
- }
- #else
--void tcg_register_thread(void)
-+void tcg_register_thread(CPUState *cpu)
- {
-     TCGContext *s = g_malloc(sizeof(*s));
-     unsigned int i, n;
- 
-     *s = tcg_init_ctx;
-+     s->cpu = cpu;
-+     s->tbflush_pend = false;
- 
-     /* Relink mem_base.  */
-     for (i = 0, n = tcg_init_ctx.nb_globals; i < n; ++i) {
-@@ -1871,6 +1873,21 @@ TranslationBlock *tcg_tb_alloc(TCGContext *s)
-     TranslationBlock *tb;
-     void *next;
- 
-+    /*
-+     * Lazy realization:
-+     * A vCPU that was realized after machine init may have failed its first
-+     * code-region allocation (see tcg_region_initial_alloc__locked()) and
-+     * requested a deferred TB-cache flush by setting s->tbflush_pend.
-+     *
-+     * If the flag is set, do not attempt allocation here. Clear the flag and
-+     * return NULL so the caller (tb_gen_code()/cpu_exec_loop()) can perform a
-+     * safe tb_flush() and then retry TB allocation.
-+     */
-+    if (s->tbflush_pend) {
-+        s->tbflush_pend = false;
-+        return NULL;
-+    }
-+
-  retry:
-     tb = (void *)ROUND_UP((uintptr_t)s->code_gen_ptr, align);
-     next = (void *)ROUND_UP((uintptr_t)(tb + 1), align);
 -- 
 2.34.1
 

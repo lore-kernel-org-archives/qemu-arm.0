@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD1E5CCA471
-	for <qemu-arm@archiver.kernel.org>; Wed,  1 Oct 2025 01:09:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 873B3CAC5B8
+	for <qemu-arm@archiver.kernel.org>; Wed,  1 Oct 2025 01:11:02 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v3lFX-0005Mc-Qy; Tue, 30 Sep 2025 21:03:20 -0400
+	id 1v3lHA-000661-8q; Tue, 30 Sep 2025 21:05:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <salil.mehta@opnsrc.net>)
- id 1v3lFU-0005Lr-Pb
- for qemu-arm@nongnu.org; Tue, 30 Sep 2025 21:03:18 -0400
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
+ id 1v3lGN-0005hA-5L
+ for qemu-arm@nongnu.org; Tue, 30 Sep 2025 21:04:11 -0400
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <salil.mehta@opnsrc.net>)
- id 1v3lEx-00084T-Hj
- for qemu-arm@nongnu.org; Tue, 30 Sep 2025 21:03:15 -0400
-Received: by mail-wr1-x432.google.com with SMTP id
- ffacd0b85a97d-414f48bd5a7so4359671f8f.2
- for <qemu-arm@nongnu.org>; Tue, 30 Sep 2025 18:02:40 -0700 (PDT)
+ id 1v3lFV-0008FY-LG
+ for qemu-arm@nongnu.org; Tue, 30 Sep 2025 21:04:10 -0400
+Received: by mail-wr1-x434.google.com with SMTP id
+ ffacd0b85a97d-42557c5cedcso216503f8f.0
+ for <qemu-arm@nongnu.org>; Tue, 30 Sep 2025 18:03:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=opnsrc.net; s=google; t=1759280558; x=1759885358; darn=nongnu.org;
+ d=opnsrc.net; s=google; t=1759280587; x=1759885387; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=AIp1fTDpYUODV+o3H7vcfIGfQr/6T5pDk40yx4w9U+c=;
- b=QZno1tdt4viyyeratTyfGlK0oYCqKDssUHCNjoA88f80xrm2HA4Y/zXw1mjqFaCIch
- 2zg/wBOAU+29e5A8FR/0MpyvkSSHkovTV2POe8xQfWYkLbxG2oY8rdb9D016+aTy9h9m
- ywdhyeeg5BS4utJ3ZmFS69xaiEsOpTCWhXflCqo9f61ViXRg2kvrT+S0DwymhgpcBm/p
- 2161sUt8KwwQDCQserGUqN3fWjDtYtMyFBm0WxTc9JU3BpX9W1XQshP7Aq6UeKPlj/Cy
- AXkNozTA6+5Vh2m4t22SDR7Z/EZsnPkzmQntjFmK/te6SuVuJ7lvIXH8oME15nLkTc1B
- GOdQ==
+ bh=A8WcCIp7AW8otz3wOJdViBKtHh2ab6qkb/xOpXEIFFU=;
+ b=YqMa/7f+/5G/wVlrBQdSoL049gw7GfGzw+lLHRsHeHeiTbBZTz3q0AgmyaJfbc3q82
+ 25hxREWkDYgqzRCpHUtLwko0bweO/nFDNVxsSGX0qAICYwpypP3ggCEeFeJDJtbMOapo
+ qfkO+2d/79q/v2cX0CSZOhehxo1P3EAaUJ7dOgmGY3bFZEGihoiV8ss3hO5fKx/Tdc7b
+ /kN3dNS6uU2TGXM5wei8vtEFnVkClzXIF+dAoBfe4dD6nebVXWnnTqGd2LVYSLC6YQta
+ bdnTeiM6RITY4HQwLjcimMtjxhtw3guLL7xuP8K+WhFfXn5Jb81tCxyy9PGBiK72s6mg
+ yc6Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759280558; x=1759885358;
+ d=1e100.net; s=20230601; t=1759280587; x=1759885387;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=AIp1fTDpYUODV+o3H7vcfIGfQr/6T5pDk40yx4w9U+c=;
- b=ZeJK0CKxCtuFyy3zX1Mm/o98KT33oNqe5AQHwk5alzsJE5D4vPNhozJQ+IisZpNevW
- O/OBaU8u8vXiVos7FK2QgzQPr9uDupsJncPF/pjfUU2/vkVnELKetDWfD1mcDzpwzQLq
- GepQ61MCcfxfxSWGlsVPxSaUBmXqntpH8wwbQFlGJxzF00WsUgUpQ0dxYK8zfrjmclgr
- w/OeCHeWEYy80714TWJL0AC30+Q3tI2PRtqhB1aJjf2c9r5p51/XewRsxgP9HWKJni64
- 1Q5HglBNaqgmsCLc5ZUMQbWYmXkTwrjjf7tu2b7qx74jQ3tZRUtUyUfZ2WR6z5xkZSt/
- ADNw==
+ bh=A8WcCIp7AW8otz3wOJdViBKtHh2ab6qkb/xOpXEIFFU=;
+ b=udN5KkstlFIPvT89zMU0b/AVavRT916lvAfn3NA+6PqDI3oEFbpbCqjqRMSb9k1Jkl
+ xNQTG47xZkad60nUCawy6747+2SYlDPUtpLxczEHXYjYoPxfPRC1S82/E6v0aNmUaB+T
+ u2ZxP60omqUymGyGukMuvKN3Ptq/zGh1WqoGdVw3TpUG8ZaFUj1Tl7yxjSDlky8+o/v7
+ bpRD2XSNh7t9YNOBc/gkj8HuqTb36gjwjnfdy3mBrBywis5uS9+HNKSGwlV9kQQWBoCV
+ rvcHk7KDvT55Dbhuk6dt8xsZyp6xcUx1Uf1KLCe7hs5x5xFlaLsSZT4A7AAsK9sM6Mw2
+ ewVA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCV9ERpOeeC0n4moHO0htGzg3NA4vS4FRUOFLR1391IBSkmPKv3DtMxY8eE6OkV7odnl7z5rQRGDYw==@nongnu.org
-X-Gm-Message-State: AOJu0YwOMPSvU+s7edJz8Vnux3m19v/PD2xMTJbwp5OPbM1aJJjCIA2x
- kN2op0OrdlncybNmxGwL733lLzAs+0lav3rcpHeqgOdciKJOnZCtvJ+rr5CK9kN/44s=
-X-Gm-Gg: ASbGncsCd+cI7sMEQ8sxCCSYSM0JhSTX4f5xlOaeDx6HHaY7wpcTVnLIj7CjcIwsPLk
- BtPIg3yn5qoSF6eTKwFj3Tl/5v8ILjmkHOLlszIkPGgmZg8HKQ1jOhLLgSZgHk674mUKk49ZRED
- LEoBRT1fZXbbmKV8Y5tlvJ00VlHorjWD14zaz+iD9FfsXAvgxzSOueG9awhpFuEpqo8r8lePeGw
- ixk3e/F3AnW2gHdDYikBz5k3rIShLfDs13Pyw//SkT1JGlPWgtMtX53oozWQ83ewvbHo3Q/HJBL
- vxEbJ0Wv+/wXCdLQrj5DGoyRxFw0QWm8zAWBfah8wMI93ieEgIBx+oYfnrtMi7/0cdccxiDRRwz
- WxEeUHA+Rsb46m0qZwEeBMaAFf53xZ90qnAGIEaILwT9YGNPeC5MuaQ/qCoicLZ31QfVOD/rbaM
- QuUbJ2VQT1kFLnmBpO0DBXMxpyTfgH9T/w53lXBeV/Oaw=
-X-Google-Smtp-Source: AGHT+IHFSLI7/UdL6eC6mrr3Se5gLK2/8fPG8GzP/SKGovwybfxzCRv6ENVVmMVAr4Fr3OU7PXKjdQ==
-X-Received: by 2002:a05:6000:22c3:b0:3ee:114f:f88f with SMTP id
- ffacd0b85a97d-4255782044bmr1069193f8f.59.1759280558171; 
- Tue, 30 Sep 2025 18:02:38 -0700 (PDT)
+ AJvYcCX/x5b9UYvYscNhmnn3Y4P1kig13/KgqUIm+fvBCoH+BapvcnHztmQIFOaoqpVyCCOYboLo6mR68g==@nongnu.org
+X-Gm-Message-State: AOJu0YxoMg7Sc0NSb+EJqPtpHMC4EdSnCwKAEa5AFnjbmBaLeOMR1YDj
+ EbD4WXvJdgmltac3DsJP4vza5Ew1NrCYX+tkBWkUqQ7z3LvGzLO9MhRcre1iXlvC7VM=
+X-Gm-Gg: ASbGncsCHEkx/Fa1zOqb3fe3lrQTu9HOq+fL6nnEWJi1kEz4nX1I4vQiSt9cQ6FCfYZ
+ 4O1lPrl4+6zkBoUOXdjvv/Ca1JEkFhvBHCv/Wr5knLsY7y+9aK+k+WFH9kTanT0s/ExWZDlnKIv
+ +AauLhUtwoWk9sqmc4Qq6+wWTI8g72AezK7GCVFiY+WPrSTC3W/UzKSvps4DuSjOmf0DG3eTGV9
+ vBMFRrHlgTz8N3lIc5oOzWQmLpAvwMhT/L4h5OAJ8kBSoAeaifGVjf8tdIWGR3TLGCooS2tmtSz
+ LeEldTzLk+L6DhBqXpFD1O/EEbK0DSYWteOIDvLk9b0GHy/+ROq59rVo6umrAKadzNbEBzZu62b
+ fbMbWh0PMZKwPebKUXM8UJzZGVd45DbTEKHVVbquNXncFU5E4OEfFh/mMsgbcsjDOuYe3N/WPuh
+ BrXDTjK8vr++VpgAU4eMxDn0ZWUSpBZeE6cPe1QOqPBXo=
+X-Google-Smtp-Source: AGHT+IGlokWyuAQ2aOYDbWjfOqnwWRIkap8UzDam0XIevWPLN9f+zE+7RFoc9UfCTkN4Aj3PvVw+Vw==
+X-Received: by 2002:a05:6000:2407:b0:3ec:db87:e8fa with SMTP id
+ ffacd0b85a97d-425577fe66bmr1211377f8f.26.1759280586676; 
+ Tue, 30 Sep 2025 18:03:06 -0700 (PDT)
 Received: from localhost.localdomain ([90.209.204.182])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-40fb985e080sm24587426f8f.24.2025.09.30.18.02.35
+ ffacd0b85a97d-40fb985e080sm24587426f8f.24.2025.09.30.18.03.04
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 30 Sep 2025 18:02:37 -0700 (PDT)
+ Tue, 30 Sep 2025 18:03:06 -0700 (PDT)
 From: salil.mehta@opnsrc.net
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org,
@@ -87,24 +87,24 @@ Cc: salil.mehta@huawei.com, maz@kernel.org, jean-philippe@linaro.org,
  wangxiongfeng2@huawei.com, wangyanan55@huawei.com, wangzhou1@hisilicon.com,
  linuxarm@huawei.com, jiakernel2@gmail.com, maobibo@loongson.cn,
  lixianglai@loongson.cn, shahuang@redhat.com, zhao1.liu@intel.com
-Subject: [PATCH RFC V6 11/24] hw/arm/acpi: MADT change to size the guest with
- possible vCPUs
-Date: Wed,  1 Oct 2025 01:01:14 +0000
-Message-Id: <20251001010127.3092631-12-salil.mehta@opnsrc.net>
+Subject: [PATCH RFC V6 24/24] tcg: Defer TB flush for 'lazy realized' vCPUs on
+ first region alloc
+Date: Wed,  1 Oct 2025 01:01:27 +0000
+Message-Id: <20251001010127.3092631-25-salil.mehta@opnsrc.net>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20251001010127.3092631-1-salil.mehta@opnsrc.net>
 References: <20251001010127.3092631-1-salil.mehta@opnsrc.net>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::432;
- envelope-from=salil.mehta@opnsrc.net; helo=mail-wr1-x432.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::434;
+ envelope-from=salil.mehta@opnsrc.net; helo=mail-wr1-x434.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- T_SPF_TEMPERROR=0.01 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -122,159 +122,207 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Salil Mehta <salil.mehta@huawei.com>
 
-When QEMU builds the MADT table, modifications are needed to include information
-about possible vCPUs that are exposed as ACPI-disabled (i.e., `_STA.Enabled=0`).
-This new information will help the guest kernel pre-size its resources during
-boot time. Pre-sizing based on possible vCPUs will facilitate the future
-hot-plugging of the currently disabled vCPUs.
+The TCG code cache is split into regions shared by vCPUs under MTTCG. For
+cold-boot (early realized) vCPUs, regions are sized/allocated during bring-up.
+However, when a vCPU is *lazy_realized* (administratively "disabled" at boot
+and realized later on demand), its TCGContext may fail the very first code
+region allocation if the shared TB cache is saturated by already-running
+vCPUs.
 
-Additionally, this change addresses updates to the ACPI MADT GIC CPU interface
-flags, as introduced in the UEFI ACPI 6.5 specification [1]. These updates
-enable deferred virtual CPU onlining in the guest kernel.
+Flushing the TB cache is the right remediation, but `tb_flush()` must be
+performed from the safe execution context (cpu_exec_loop()/tb_gen_code()).
+This patch wires a deferred flush:
 
-Reference:
-[1] 5.2.12.14. GIC CPU Interface (GICC) Structure (Table 5.37 GICC CPU Interface Flags)
-    Link: https://uefi.org/specs/ACPI/6.5/05_ACPI_Software_Programming_Model.html#gic-cpu-interface-gicc-structure
+  * In `tcg_region_initial_alloc__locked()`, treat an initial allocation
+    failure for a lazily realized vCPU as non-fatal: set `s->tbflush_pend`
+    and return.
 
-Co-developed-by: Keqian Zhu <zhukeqian1@huawei.com>
-Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
+  * In `tcg_tb_alloc()`, if `s->tbflush_pend` is observed, clear it and
+    return NULL so the caller performs a synchronous `tb_flush()` and then
+    retries allocation.
+
+This avoids hangs observed when a newly realized vCPU cannot obtain its first
+region under TB-cache pressure, while keeping the flush at a safe point.
+
+No change for cold-boot vCPUs and when accel ops is KVM.
+
+In earlier series, this patch was with below named,
+'tcg: Update tcg_register_thread() leg to handle region alloc for hotplugged vCPU'
+
+Reported-by: Miguel Luis <miguel.luis@oracle.com>
+Signed-off-by: Miguel Luis <miguel.luis@oracle.com>
 Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
 ---
- hw/arm/virt-acpi-build.c | 40 ++++++++++++++++++++++++++++++++++------
- hw/core/machine.c        | 14 ++++++++++++++
- include/hw/boards.h      | 20 ++++++++++++++++++++
- 3 files changed, 68 insertions(+), 6 deletions(-)
+ accel/tcg/tcg-accel-ops-mttcg.c |  2 +-
+ accel/tcg/tcg-accel-ops-rr.c    |  2 +-
+ hw/arm/virt.c                   |  5 +++++
+ include/hw/core/cpu.h           |  1 +
+ include/tcg/startup.h           |  6 ++++++
+ include/tcg/tcg.h               |  1 +
+ tcg/region.c                    | 16 ++++++++++++++++
+ tcg/tcg.c                       | 19 ++++++++++++++++++-
+ 8 files changed, 49 insertions(+), 3 deletions(-)
 
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index b01fc4f8ef..7c24dd6369 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -760,6 +760,32 @@ static void build_append_gicr(GArray *table_data, uint64_t base, uint32_t size)
-     build_append_int_noprefix(table_data, size, 4); /* Discovery Range Length */
+diff --git a/accel/tcg/tcg-accel-ops-mttcg.c b/accel/tcg/tcg-accel-ops-mttcg.c
+index 337b993d3d..cdb7345340 100644
+--- a/accel/tcg/tcg-accel-ops-mttcg.c
++++ b/accel/tcg/tcg-accel-ops-mttcg.c
+@@ -73,7 +73,7 @@ static void *mttcg_cpu_thread_fn(void *arg)
+     force_rcu.notifier.notify = mttcg_force_rcu;
+     force_rcu.cpu = cpu;
+     rcu_add_force_rcu_notifier(&force_rcu.notifier);
+-    tcg_register_thread();
++    tcg_register_thread(cpu);
+ 
+     bql_lock();
+     qemu_thread_get_self(cpu->thread);
+diff --git a/accel/tcg/tcg-accel-ops-rr.c b/accel/tcg/tcg-accel-ops-rr.c
+index 6eec5c9eee..18e713cada 100644
+--- a/accel/tcg/tcg-accel-ops-rr.c
++++ b/accel/tcg/tcg-accel-ops-rr.c
+@@ -186,7 +186,7 @@ static void *rr_cpu_thread_fn(void *arg)
+     rcu_register_thread();
+     force_rcu.notify = rr_force_rcu;
+     rcu_add_force_rcu_notifier(&force_rcu);
+-    tcg_register_thread();
++    tcg_register_thread(cpu);
+ 
+     bql_lock();
+     qemu_thread_get_self(cpu->thread);
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 5e02d6749d..254303727b 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -2482,6 +2482,11 @@ virt_setup_lazy_vcpu_realization(Object *cpuobj, VirtMachineState *vms)
+     if (kvm_enabled()) {
+         kvm_arm_create_host_vcpu(ARM_CPU(cpuobj));
+     }
++
++    /* we may have to nuke the TB cache */
++    if (tcg_enabled()) {
++        CPU(cpuobj)->lazy_realized = true;
++    }
  }
  
-+static uint32_t virt_acpi_get_gicc_flags(CPUState *cpu)
-+{
-+    MachineClass *mc = MACHINE_GET_CLASS(qdev_get_machine());
-+    const uint32_t GICC_FLAG_ENABLED = BIT(0);
-+    const uint32_t GICC_FLAG_ONLINE_CAPABLE = BIT(3);
+ static void machvirt_init(MachineState *machine)
+diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+index c9ce9bbdaf..c2d45fb494 100644
+--- a/include/hw/core/cpu.h
++++ b/include/hw/core/cpu.h
+@@ -486,6 +486,7 @@ struct CPUState {
+     bool stop;
+     bool stopped;
+     bool parked;
++    bool lazy_realized; /* realized after machine init (lazy realization) */
+ 
+     /* Should CPU start in powered-off state? */
+     bool start_powered_off;
+diff --git a/include/tcg/startup.h b/include/tcg/startup.h
+index 95f574af2b..f9126bb0bd 100644
+--- a/include/tcg/startup.h
++++ b/include/tcg/startup.h
+@@ -25,6 +25,8 @@
+ #ifndef TCG_STARTUP_H
+ #define TCG_STARTUP_H
+ 
++#include "hw/core/cpu.h"
 +
-+    /* ARM architecture does not support vCPU hotplug yet */
-+    if (!cpu) {
-+        return 0;
-+    }
-+
-+    /*
-+     * If the machine does not support online-capable CPUs, report the GICC as
-+     * 'enabled' only.
-+     */
-+    if (!mc->has_online_capable_cpus) {
-+        return GICC_FLAG_ENABLED;
-+    }
-+
-+    /*
-+     * ACPI 6.5, 5.2.12.14 (GICC): mark the boot CPU 'enabled' and all others
-+     * 'online-capable'.
-+     */
-+    return (cpu == first_cpu) ? GICC_FLAG_ENABLED : GICC_FLAG_ONLINE_CAPABLE;
-+}
-+
- static void
- build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+ /**
+  * tcg_init: Initialize the TCG runtime
+  * @tb_size: translation buffer size
+@@ -43,7 +45,11 @@ void tcg_init(size_t tb_size, int splitwx, unsigned max_threads);
+  * accelerator's init_machine() method) must register with this
+  * function before initiating translation.
+  */
++#ifdef CONFIG_USER_ONLY
+ void tcg_register_thread(void);
++#else
++void tcg_register_thread(CPUState *cpu);
++#endif
+ 
+ /**
+  * tcg_prologue_init(): Generate the code for the TCG prologue
+diff --git a/include/tcg/tcg.h b/include/tcg/tcg.h
+index a6d9aa50d4..e197ee03c0 100644
+--- a/include/tcg/tcg.h
++++ b/include/tcg/tcg.h
+@@ -396,6 +396,7 @@ struct TCGContext {
+ 
+     /* Track which vCPU triggers events */
+     CPUState *cpu;                      /* *_trans */
++    bool tbflush_pend; /* TB flush pending due to lazy vCPU realization */
+ 
+     /* These structures are private to tcg-target.c.inc.  */
+     QSIMPLEQ_HEAD(, TCGLabelQemuLdst) ldst_labels;
+diff --git a/tcg/region.c b/tcg/region.c
+index 7ea0b37a84..23635e0194 100644
+--- a/tcg/region.c
++++ b/tcg/region.c
+@@ -393,6 +393,22 @@ bool tcg_region_alloc(TCGContext *s)
+ static void tcg_region_initial_alloc__locked(TCGContext *s)
  {
-@@ -785,12 +811,14 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-     build_append_int_noprefix(table_data, vms->gic_version, 1);
-     build_append_int_noprefix(table_data, 0, 3);   /* Reserved */
- 
--    for (i = 0; i < MACHINE(vms)->smp.cpus; i++) {
--        ARMCPU *armcpu = ARM_CPU(qemu_get_cpu(i));
-+    for (i = 0; i < MACHINE(vms)->smp.max_cpus; i++) {
-+        CPUState *cpu = machine_get_possible_cpu(i);
-         uint64_t physical_base_address = 0, gich = 0, gicv = 0;
-         uint32_t vgic_interrupt = vms->virt ? ARCH_GIC_MAINT_IRQ : 0;
--        uint32_t pmu_interrupt = arm_feature(&armcpu->env, ARM_FEATURE_PMU) ?
--                                             VIRTUAL_PMU_IRQ : 0;
-+        uint32_t pmu_interrupt = vms->pmu ? VIRTUAL_PMU_IRQ : 0;
-+        CPUArchId *archid = machine_get_possible_cpu_arch_id(i);
-+        uint32_t flags = virt_acpi_get_gicc_flags(cpu);
-+        uint64_t mpidr = archid->arch_id;
- 
-         if (vms->gic_version == VIRT_GIC_VERSION_2) {
-             physical_base_address = memmap[VIRT_GIC_CPU].base;
-@@ -805,7 +833,7 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-         build_append_int_noprefix(table_data, i, 4);    /* GIC ID */
-         build_append_int_noprefix(table_data, i, 4);    /* ACPI Processor UID */
-         /* Flags */
--        build_append_int_noprefix(table_data, 1, 4);    /* Enabled */
-+        build_append_int_noprefix(table_data, flags, 4);
-         /* Parking Protocol Version */
-         build_append_int_noprefix(table_data, 0, 4);
-         /* Performance Interrupt GSIV */
-@@ -819,7 +847,7 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-         build_append_int_noprefix(table_data, vgic_interrupt, 4);
-         build_append_int_noprefix(table_data, 0, 8);    /* GICR Base Address*/
-         /* MPIDR */
--        build_append_int_noprefix(table_data, arm_cpu_mp_affinity(armcpu), 8);
-+        build_append_int_noprefix(table_data, mpidr, 8);
-         /* Processor Power Efficiency Class */
-         build_append_int_noprefix(table_data, 0, 1);
-         /* Reserved */
-diff --git a/hw/core/machine.c b/hw/core/machine.c
-index 69d5632464..65388d859a 100644
---- a/hw/core/machine.c
-+++ b/hw/core/machine.c
-@@ -1383,6 +1383,20 @@ CPUState *machine_get_possible_cpu(int64_t cpu_index)
-     return NULL;
+     bool err = tcg_region_alloc__locked(s);
++
++    /*
++     * Lazily realized vCPUs (administratively "disabled" at boot and realized
++     * later on demand) may initially fail to obtain even a single code region
++     * if the shared TB cache is under pressure from already running vCPUs.
++     *
++     * Treat this first-allocation failure as non-fatal: mark this TCGContext
++     * to request a TB cache flush and return. The flush is performed later,
++     * synchronously in the vCPU execution path (cpu_exec_loop()/tb_gen_code()),
++     * which is the safe place for tb_flush().
++     */
++    if (err && s->cpu && s->cpu->lazy_realized) {
++        s->tbflush_pend = true;
++        return;
++    }
++
+     g_assert(!err);
  }
  
-+CPUArchId *machine_get_possible_cpu_arch_id(int64_t cpu_index)
-+{
-+    MachineState *ms = MACHINE(qdev_get_machine());
-+    CPUArchIdList *possible_cpus = ms->possible_cpus;
-+
-+    for (int i = 0; i < possible_cpus->len; i++) {
-+        if (possible_cpus->cpus[i].cpu &&
-+            possible_cpus->cpus[i].cpu->cpu_index == cpu_index) {
-+            return &possible_cpus->cpus[i];
-+        }
-+    }
-+    return NULL;
-+}
-+
- static char *cpu_slot_to_string(const CPUArchId *cpu)
+diff --git a/tcg/tcg.c b/tcg/tcg.c
+index afac55a203..5867952ae7 100644
+--- a/tcg/tcg.c
++++ b/tcg/tcg.c
+@@ -1285,12 +1285,14 @@ void tcg_register_thread(void)
+     tcg_ctx = &tcg_init_ctx;
+ }
+ #else
+-void tcg_register_thread(void)
++void tcg_register_thread(CPUState *cpu)
  {
-     GString *s = g_string_new(NULL);
-diff --git a/include/hw/boards.h b/include/hw/boards.h
-index 3ff77a8b3a..fe51ca58bf 100644
---- a/include/hw/boards.h
-+++ b/include/hw/boards.h
-@@ -461,6 +461,26 @@ struct MachineState {
-     bool acpi_spcr_enabled;
- };
+     TCGContext *s = g_malloc(sizeof(*s));
+     unsigned int i, n;
  
-+/*
-+ * machine_get_possible_cpu_arch_id:
-+ * @cpu_index: logical cpu_index to search for
-+ *
-+ * Return a pointer to the CPUArchId entry matching the given @cpu_index
-+ * in the current machine's MachineState. The possible_cpus array holds
-+ * the full set of CPUs that the machine could support, including those
-+ * that may be created as disabled or taken offline.
-+ *
-+ * The slot index in ms->possible_cpus[] is always sequential, but the
-+ * logical cpu_index values are assigned by QEMU and may or may not be
-+ * sequential depending on the implementation of a particular machine.
-+ * Direct indexing by cpu_index is therefore unsafe in general. This
-+ * helper performs a linear search of the possible_cpus array to find
-+ * the matching entry.
-+ *
-+ * Returns: pointer to the matching CPUArchId, or NULL if not found.
-+ */
-+CPUArchId *machine_get_possible_cpu_arch_id(int64_t cpu_index);
+     *s = tcg_init_ctx;
++     s->cpu = cpu;
++     s->tbflush_pend = false;
+ 
+     /* Relink mem_base.  */
+     for (i = 0, n = tcg_init_ctx.nb_globals; i < n; ++i) {
+@@ -1871,6 +1873,21 @@ TranslationBlock *tcg_tb_alloc(TCGContext *s)
+     TranslationBlock *tb;
+     void *next;
+ 
++    /*
++     * Lazy realization:
++     * A vCPU that was realized after machine init may have failed its first
++     * code-region allocation (see tcg_region_initial_alloc__locked()) and
++     * requested a deferred TB-cache flush by setting s->tbflush_pend.
++     *
++     * If the flag is set, do not attempt allocation here. Clear the flag and
++     * return NULL so the caller (tb_gen_code()/cpu_exec_loop()) can perform a
++     * safe tb_flush() and then retry TB allocation.
++     */
++    if (s->tbflush_pend) {
++        s->tbflush_pend = false;
++        return NULL;
++    }
 +
- /*
-  * The macros which follow are intended to facilitate the
-  * definition of versioned machine types, using a somewhat
+  retry:
+     tb = (void *)ROUND_UP((uintptr_t)s->code_gen_ptr, align);
+     next = (void *)ROUND_UP((uintptr_t)(tb + 1), align);
 -- 
 2.34.1
 

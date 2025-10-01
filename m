@@ -4,100 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09C8CCAC5BB
-	for <qemu-arm@archiver.kernel.org>; Wed,  1 Oct 2025 08:31:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 011A8CAC5BB
+	for <qemu-arm@archiver.kernel.org>; Wed,  1 Oct 2025 08:32:02 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v3s7s-0001Z9-G6; Wed, 01 Oct 2025 04:23:52 -0400
+	id 1v3s9s-0005RU-VH; Wed, 01 Oct 2025 04:25:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v3s7c-0001NM-9M
- for qemu-arm@nongnu.org; Wed, 01 Oct 2025 04:23:36 -0400
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v3s9o-0005Os-Sk
+ for qemu-arm@nongnu.org; Wed, 01 Oct 2025 04:25:53 -0400
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v3s6v-00062U-V1
- for qemu-arm@nongnu.org; Wed, 01 Oct 2025 04:23:35 -0400
-Received: by mail-wm1-x32f.google.com with SMTP id
- 5b1f17b1804b1-46e430494ccso32090735e9.1
- for <qemu-arm@nongnu.org>; Wed, 01 Oct 2025 01:22:48 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v3s9d-0007mm-P1
+ for qemu-arm@nongnu.org; Wed, 01 Oct 2025 04:25:52 -0400
+Received: by mail-wm1-x329.google.com with SMTP id
+ 5b1f17b1804b1-46e3ea0445fso29446275e9.1
+ for <qemu-arm@nongnu.org>; Wed, 01 Oct 2025 01:25:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1759306965; x=1759911765; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=ar/YH35Ozey5kVfE4PeoBGaZy8MaPZNMvHfkarTLI30=;
- b=B2FUP/8R3R01lg5UEK8a5mq27Ly7wjaYz9FCOXo0CiZUIjGx6IO5DoGHm5lBk1Xivx
- 7CI5QqRSqxzcJTy2Ja4bTHZLThbBcSw4bFus4IpMEo9rUsPwbegcxYdlLibkercO9XWT
- ajn3HB67+Urv1omU9pXYO4uaEu2fckMYK7BZngee9z+xWzmn4aq3oidwoDOldnwVEr3r
- cphEQTgrpqyrxiec3adzjO6Cb9xxjxGChCuoCWKc5HkFCFe8b4Up1c8wTu6YRkvJrKOI
- ZLFxvopTZSLvqIWIk6bvLmlEcwj6r8Po4IPgHstTvkVwStGSNxcT1g9KJyfgRbdzrLma
- 6v9Q==
+ d=linaro.org; s=google; t=1759307126; x=1759911926; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=3q5iaS9tln87d74VeEF3Gfdu85ykgDy7G0fLQJRBnqE=;
+ b=Z9TrpVWOzHjPgSM1XnLnRZouDEcf4cqkSXnJ+w4zx9TrWSb7cXfFCVhykHxmhbGCxy
+ GHxB/cHeOjBPS9hL7pYeWb0hxn/ZwreiJZytIf4etOwQH06d17ZkQ0gtVESaacjkhdMs
+ bi9KRQbf0NsXGXJmGDLFAWf19IXNP6T9S/BtoUenFW79r16yV10sWhd+EQtFTMrml740
+ a+UP9NMLBLa5VV/jg5zdbwBRQArXZvMnQo5SsEqrJbCRUQO1Hs2Qo+5fp3ME8AkQCnw+
+ LXYa5Gtr4cn+TC8OSQ6UH5JCRspQlABUdE+3YYPwyq+vcDHy+1DCfrNW0GkSg04gAEvj
+ d5yw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759306965; x=1759911765;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=ar/YH35Ozey5kVfE4PeoBGaZy8MaPZNMvHfkarTLI30=;
- b=euQ0FLFW6tBUBywJr636CcvByaI9wSv21BAEbLxtMRrryW4ydwAiuSeJA76VA8HKkE
- 7QQZhi5SGRyXOF5QbKLTH3REUfiOGt3HubXeIttatZWXDRYcyiz96TdYfAvQKggmqNLa
- gg6s4JiR0vsQqxSzFaM/ZQBvOURz39bTDzQrbJdeEPVMjtoeSJ/VjI9tQI74xZ3lPl1R
- p1r0w3jQ6xNxIZvNGLcpDwrFxoZ/CA3fUlrCEE2kxq32EBaXqHn+i0DcSJOeLNPNAgZL
- zBbOueYhmKnmNGdRdJjGgs6P/4Lye0fThi7woho5Iw4KoEQSrpFF7o+W0I+cLu8hpGVy
- /Q3g==
+ d=1e100.net; s=20230601; t=1759307126; x=1759911926;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=3q5iaS9tln87d74VeEF3Gfdu85ykgDy7G0fLQJRBnqE=;
+ b=wJvrStt6uVDFVJIFlJ/P6N9s/SBv27zFUvwibrCVXtUpDV2n1iEd8lJW6qTHkaJ//G
+ EA5yEx03OlYNMSy36YQYmZjiUSDYJqcpu2MGxEo7DzpMPslWrDwQQwi1NScmSAEp8Jpx
+ 0ifQyDAbujlBPGW+zWnqzpO7gXLPlufCcu3ouRCYWq8rP4GNbciIjh6cPBzqo73/QmwH
+ ZqsaJnbR78Z+ef24Qa/ddd4Be1FKaQfr4gz+U2e4SnOCSnribn39JCbknvF81hV8+pCq
+ 9EW9535ji5FbdO67AjqWyZTwAXNTCGaB9BQFMoVsAa2GvODYFNAIkO+MtXUQp88gJPLw
+ MokQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVb4cgLnu3GtfoMm6GQFmoE831WWMa6oY3QW3qkxDotNcQnfX6Kfv1VvPWvs8CQBzsxdRpmEaXFhw==@nongnu.org
-X-Gm-Message-State: AOJu0YzfSjrZv7k2SP8HTTcxVXDf0jZQWTIgIgQxmHXoMaRR/FD8vRum
- G7uYdXIrmVzNfJpTpoyqbbvkFrLrb2XzNOg9bFRR4fzHn2r2w2IEFHB2A2ejNEyZnskOn5XgqKm
- /FLq+gmIJ/g==
-X-Gm-Gg: ASbGncs2h4I2qt4xGfMpbzi9Mc04seBbP7aqf93w6SBzWHNMj1U4Agnk7+GcTka63HD
- q+fU5c6Psvxm2Ew1/MA9qHjIjXpniH7Ijd3fd3Dfi+VG4IEFThrZIYHmWG+erYXbUX4SuipQDUO
- czPG8x8G9jRI0+w19DZ62RVLOZG7IfWCCnZ2vDy5D8HggQ1LQdetjsLDl5v51ckdkHXN5WpqgiJ
- 9u6ZPcByAt/CgtJ6aDrUTTeXIFSXsI6DbdKTJg69bR57BE98CYgbiVs0ZXA0Ll6jXV+GMOimm1t
- W30Cz1HD1YwFlL2b5HxScomVOZAv0ux7fE2vTe1XGuaxNzySBQEjm8l3vlockpH5TcmVvh9wKZ4
- hWn19SnyS4FH3m76xLY8CAijiPhw63AYZLwalX/Snfk4QN2mfinjQJmu3N0IEhRH6TowKS09qz3
- TnwJakRDFFpWLfClkUfoOV
-X-Google-Smtp-Source: AGHT+IGN+bWrg5qo2djMQfrLkRUz4RRvn5SYFKJUC7nTMlaMtjSHo8h3I9oI8EbvaN2VVWqyt7ac8Q==
-X-Received: by 2002:a05:600c:154e:b0:46e:49fd:5e30 with SMTP id
- 5b1f17b1804b1-46e61201fd8mr25182005e9.6.1759306964804; 
- Wed, 01 Oct 2025 01:22:44 -0700 (PDT)
-Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
+ AJvYcCV5Vg/+FofvJaNG+nKgXuo71E8BqXcMjkT4Fg4kjhXtr+L4VgG6JyvYenuHP1KnPI8jBNo5+YYWqw==@nongnu.org
+X-Gm-Message-State: AOJu0YyXiN+IRIbWZ7s68cS4djdT9UZUu+boadk08cabwhcCPzSpy0mr
+ a073unWBK2FlZD77ZUtZaI/p43vABwqrY/9H9kr37ao4w9YvKWYk57Eq4e6duxy96aE=
+X-Gm-Gg: ASbGncvO0AhMoRldPPXL4VHw4rEZNh/Xye6/AJoIBVc511T5BTjKJL+D8FhCtkycZKc
+ c/MjaYOYDhzBJ8n7+/LepXKpGeruFvqYlxjx0RLhICOjEjX0JBM0DawA9bayonUDeS0bNQGaYFk
+ wMye7jDLgVNoxjcPMQtr8YZjgR89rqg3+ePLkqykJv9gcN0Dsa2iUDN6OO1+0AxBXZ0TLpVdx3V
+ fJW5GvqvH48LEHIeoMrtp8UEIzXJB06Ba72yXm029vaWocYjlZ1k7PoZMDjELHCdC6fBmi0h67u
+ r+fmShIovo4bltOo4FkUemlPsjswYyynbDj3cB05mPIfW9oqtGAAOW+G3ngYGQ8kX3NafN5hIIr
+ GaKd6eZj1vF+lIMo8XL8vwOCUPhI/FbnexOVHLc/D8kCpQLYsSVoWpINMAxCB+DOkVe+htUAisP
+ Dds/MSBc+HmJ1Qcg==
+X-Google-Smtp-Source: AGHT+IEZAHf/wHARZpDbZ993bwutM8qvOrkRXrkInJUiDKq1+IE0zn6/NvpDfqgLgXAg/Kd3uTTtKA==
+X-Received: by 2002:a05:600c:8b84:b0:46e:53cb:9e7f with SMTP id
+ 5b1f17b1804b1-46e6126a722mr20289285e9.18.1759307125709; 
+ Wed, 01 Oct 2025 01:25:25 -0700 (PDT)
+Received: from [192.168.69.221] (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-46e619c3ac3sm28907875e9.9.2025.10.01.01.22.43
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 01 Oct 2025 01:22:44 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+ 5b1f17b1804b1-46e6199fc34sm31732475e9.8.2025.10.01.01.25.24
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 01 Oct 2025 01:25:25 -0700 (PDT)
+Message-ID: <ef4baceb-671f-4afe-8a41-cafb89ea1707@linaro.org>
+Date: Wed, 1 Oct 2025 10:25:23 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 00/25] system/physmem: Extract API out of
+ 'system/ram_addr.h' header
+Content-Language: en-US
 To: qemu-devel@nongnu.org
-Cc: "Michael S. Tsirkin" <mst@redhat.com>, Nicholas Piggin <npiggin@gmail.com>,
- Elena Ufimtseva <elena.ufimtseva@oracle.com>, qemu-arm@nongnu.org,
- Jagannathan Raman <jag.raman@oracle.com>,
- David Hildenbrand <david@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Halil Pasic <pasic@linux.ibm.com>, Eric Farman <farman@linux.ibm.com>,
- Thomas Huth <thuth@redhat.com>, Matthew Rosato <mjrosato@linux.ibm.com>,
- Jason Herne <jjherne@linux.ibm.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
+Cc: "Michael S. Tsirkin" <mst@redhat.com>, Nicholas Piggin
+ <npiggin@gmail.com>, Elena Ufimtseva <elena.ufimtseva@oracle.com>,
+ qemu-arm@nongnu.org, Jagannathan Raman <jag.raman@oracle.com>,
+ David Hildenbrand <david@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
+ Eric Farman <farman@linux.ibm.com>, Thomas Huth <thuth@redhat.com>,
+ Matthew Rosato <mjrosato@linux.ibm.com>, Jason Herne
+ <jjherne@linux.ibm.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>,
  kvm@vger.kernel.org, Christian Borntraeger <borntraeger@linux.ibm.com>,
  Ilya Leoshkevich <iii@linux.ibm.com>,
  Peter Maydell <peter.maydell@linaro.org>, qemu-ppc@nongnu.org,
- Harsh Prateek Bora <harshpb@linux.ibm.com>,
- Fabiano Rosas <farosas@suse.de>,
+ Harsh Prateek Bora <harshpb@linux.ibm.com>, Fabiano Rosas <farosas@suse.de>,
  Richard Henderson <richard.henderson@linaro.org>,
  Alex Williamson <alex.williamson@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>, qemu-s390x@nongnu.org,
  Peter Xu <peterx@redhat.com>
-Subject: [PATCH 14/25] system/physmem: Un-inline
- cpu_physical_memory_range_includes_clean()
-Date: Wed,  1 Oct 2025 10:21:14 +0200
-Message-ID: <20251001082127.65741-15-philmd@linaro.org>
-X-Mailer: git-send-email 2.51.0
-In-Reply-To: <20251001082127.65741-1-philmd@linaro.org>
 References: <20251001082127.65741-1-philmd@linaro.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20251001082127.65741-1-philmd@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::329;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x329.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -120,167 +117,48 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Avoid maintaining large functions in header, rely on the
-linker to optimize at linking time.
+On 1/10/25 10:21, Philippe Mathieu-Daudé wrote:
+> Following a previous comment from Richard in [*],
+> reduce "system/ram_addr.h" size by un-inlining a
+> lot of huge functions that aren't really justified,
+> and extract the API to the hew "system/physmem.h"
+> header, after renaming the functions (removing the
+> confusing 'cpu_' prefix).
 
-cpu_physical_memory_all_dirty() doesn't involve any CPU,
-remove the 'cpu_' prefix.
+Based-on: <20250930082126.28618-1-philmd@linaro.org>
+"system/physmem: Remove cpu_physical_memory _is_io() and _rw()"
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- include/system/ram_addr.h | 62 ++-------------------------------------
- system/physmem.c          | 60 +++++++++++++++++++++++++++++++++++++
- 2 files changed, 63 insertions(+), 59 deletions(-)
+> Philippe Mathieu-Daudé (25):
+>    system/ram_addr: Remove unnecessary 'exec/cpu-common.h' header
+>    accel/kvm: Include missing 'exec/target_page.h' header
+>    hw/s390x/s390-stattrib: Include missing 'exec/target_page.h' header
+>    hw/vfio/listener: Include missing 'exec/target_page.h' header
+>    target/arm/tcg/mte: Include missing 'exec/target_page.h' header
+>    hw: Remove unnecessary 'system/ram_addr.h' header
+>    accel/tcg: Document rcu_read_lock is held when calling
+>      tlb_reset_dirty()
+>    accel/tcg: Rename @start argument of tlb_reset_dirty*()
+>    system/physmem: Rename @start argument of physical_memory_get_dirty()
+>    system/physmem: Un-inline cpu_physical_memory_get_dirty_flag()
+>    system/physmem: Un-inline cpu_physical_memory_is_clean()
+>    system/physmem: Rename @start argument of physical_memory_all_dirty()
+>    system/physmem: Rename @start argument of physical_memory_range*()
+>    system/physmem: Un-inline cpu_physical_memory_range_includes_clean()
+>    system/physmem: Un-inline cpu_physical_memory_set_dirty_flag()
+>    system/physmem: Rename @start argument of physical_memory_*range()
+>    system/physmem: Un-inline cpu_physical_memory_set_dirty_range()
+>    system/physmem: Un-inline cpu_physical_memory_set_dirty_lebitmap()
+>    system/physmem: Rename @start argument of physmem_dirty_bits_cleared()
+>    system/physmem: Un-inline cpu_physical_memory_dirty_bits_cleared()
+>    system/physmem: Rename @start argument of
+>      physmem_test_and_clear_dirty()
+>    system/physmem: Reduce cpu_physical_memory_clear_dirty_range() scope
+>    system/physmem: Reduce cpu_physical_memory_sync_dirty_bitmap() scope
+>    system/physmem: Drop 'cpu_' prefix in Physical Memory API
+>    system/physmem: Extract API out of 'system/ram_addr.h' header
 
-diff --git a/include/system/ram_addr.h b/include/system/ram_addr.h
-index e06cc4d0c52..809169b9903 100644
---- a/include/system/ram_addr.h
-+++ b/include/system/ram_addr.h
-@@ -142,69 +142,13 @@ static inline void qemu_ram_block_writeback(RAMBlock *block)
- #define DIRTY_CLIENTS_ALL     ((1 << DIRTY_MEMORY_NUM) - 1)
- #define DIRTY_CLIENTS_NOCODE  (DIRTY_CLIENTS_ALL & ~(1 << DIRTY_MEMORY_CODE))
- 
--static inline bool cpu_physical_memory_all_dirty(ram_addr_t addr,
--                                                 ram_addr_t length,
--                                                 unsigned client)
--{
--    DirtyMemoryBlocks *blocks;
--    unsigned long end, page;
--    unsigned long idx, offset, base;
--    bool dirty = true;
--
--    assert(client < DIRTY_MEMORY_NUM);
--
--    end = TARGET_PAGE_ALIGN(addr + length) >> TARGET_PAGE_BITS;
--    page = addr >> TARGET_PAGE_BITS;
--
--    RCU_READ_LOCK_GUARD();
--
--    blocks = qatomic_rcu_read(&ram_list.dirty_memory[client]);
--
--    idx = page / DIRTY_MEMORY_BLOCK_SIZE;
--    offset = page % DIRTY_MEMORY_BLOCK_SIZE;
--    base = page - offset;
--    while (page < end) {
--        unsigned long next = MIN(end, base + DIRTY_MEMORY_BLOCK_SIZE);
--        unsigned long num = next - base;
--        unsigned long found = find_next_zero_bit(blocks->blocks[idx], num, offset);
--        if (found < num) {
--            dirty = false;
--            break;
--        }
--
--        page = next;
--        idx++;
--        offset = 0;
--        base += DIRTY_MEMORY_BLOCK_SIZE;
--    }
--
--    return dirty;
--}
--
- bool cpu_physical_memory_get_dirty_flag(ram_addr_t addr, unsigned client);
- 
- bool cpu_physical_memory_is_clean(ram_addr_t addr);
- 
--static inline uint8_t cpu_physical_memory_range_includes_clean(ram_addr_t addr,
--                                                               ram_addr_t length,
--                                                               uint8_t mask)
--{
--    uint8_t ret = 0;
--
--    if (mask & (1 << DIRTY_MEMORY_VGA) &&
--        !cpu_physical_memory_all_dirty(addr, length, DIRTY_MEMORY_VGA)) {
--        ret |= (1 << DIRTY_MEMORY_VGA);
--    }
--    if (mask & (1 << DIRTY_MEMORY_CODE) &&
--        !cpu_physical_memory_all_dirty(addr, length, DIRTY_MEMORY_CODE)) {
--        ret |= (1 << DIRTY_MEMORY_CODE);
--    }
--    if (mask & (1 << DIRTY_MEMORY_MIGRATION) &&
--        !cpu_physical_memory_all_dirty(addr, length, DIRTY_MEMORY_MIGRATION)) {
--        ret |= (1 << DIRTY_MEMORY_MIGRATION);
--    }
--    return ret;
--}
-+uint8_t cpu_physical_memory_range_includes_clean(ram_addr_t addr,
-+                                                 ram_addr_t length,
-+                                                 uint8_t mask);
- 
- static inline void cpu_physical_memory_set_dirty_flag(ram_addr_t addr,
-                                                       unsigned client)
-diff --git a/system/physmem.c b/system/physmem.c
-index b27519c3075..11b08570b62 100644
---- a/system/physmem.c
-+++ b/system/physmem.c
-@@ -955,6 +955,66 @@ bool cpu_physical_memory_is_clean(ram_addr_t addr)
-     return !(vga && code && migration);
- }
- 
-+static bool physical_memory_all_dirty(ram_addr_t addr, ram_addr_t length,
-+                                      unsigned client)
-+{
-+    DirtyMemoryBlocks *blocks;
-+    unsigned long end, page;
-+    unsigned long idx, offset, base;
-+    bool dirty = true;
-+
-+    assert(client < DIRTY_MEMORY_NUM);
-+
-+    end = TARGET_PAGE_ALIGN(addr + length) >> TARGET_PAGE_BITS;
-+    page = addr >> TARGET_PAGE_BITS;
-+
-+    RCU_READ_LOCK_GUARD();
-+
-+    blocks = qatomic_rcu_read(&ram_list.dirty_memory[client]);
-+
-+    idx = page / DIRTY_MEMORY_BLOCK_SIZE;
-+    offset = page % DIRTY_MEMORY_BLOCK_SIZE;
-+    base = page - offset;
-+    while (page < end) {
-+        unsigned long next = MIN(end, base + DIRTY_MEMORY_BLOCK_SIZE);
-+        unsigned long num = next - base;
-+        unsigned long found = find_next_zero_bit(blocks->blocks[idx],
-+                                                 num, offset);
-+        if (found < num) {
-+            dirty = false;
-+            break;
-+        }
-+
-+        page = next;
-+        idx++;
-+        offset = 0;
-+        base += DIRTY_MEMORY_BLOCK_SIZE;
-+    }
-+
-+    return dirty;
-+}
-+
-+uint8_t cpu_physical_memory_range_includes_clean(ram_addr_t addr,
-+                                                 ram_addr_t length,
-+                                                 uint8_t mask)
-+{
-+    uint8_t ret = 0;
-+
-+    if (mask & (1 << DIRTY_MEMORY_VGA) &&
-+        !physical_memory_all_dirty(addr, length, DIRTY_MEMORY_VGA)) {
-+        ret |= (1 << DIRTY_MEMORY_VGA);
-+    }
-+    if (mask & (1 << DIRTY_MEMORY_CODE) &&
-+        !physical_memory_all_dirty(addr, length, DIRTY_MEMORY_CODE)) {
-+        ret |= (1 << DIRTY_MEMORY_CODE);
-+    }
-+    if (mask & (1 << DIRTY_MEMORY_MIGRATION) &&
-+        !physical_memory_all_dirty(addr, length, DIRTY_MEMORY_MIGRATION)) {
-+        ret |= (1 << DIRTY_MEMORY_MIGRATION);
-+    }
-+    return ret;
-+}
-+
- /* Note: start and end must be within the same ram block.  */
- bool cpu_physical_memory_test_and_clear_dirty(ram_addr_t start,
-                                               ram_addr_t length,
--- 
-2.51.0
-
+>   include/system/physmem.h          |  56 ++++
+>   include/system/ram_addr.h         | 413 ------------------------------
+>   system/physmem.c                  | 342 +++++++++++++++++++++++--
+(highlight on diff-stat)
 

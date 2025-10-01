@@ -4,82 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B9E2CCA470
-	for <qemu-arm@archiver.kernel.org>; Wed,  1 Oct 2025 11:29:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18BB0CCA470
+	for <qemu-arm@archiver.kernel.org>; Wed,  1 Oct 2025 12:57:03 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v3v12-0002CE-MJ; Wed, 01 Oct 2025 07:29:00 -0400
+	id 1v3wNt-0007sr-Mv; Wed, 01 Oct 2025 08:56:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <chigot@adacore.com>)
- id 1v3v0y-0002C0-Oe
- for qemu-arm@nongnu.org; Wed, 01 Oct 2025 07:28:57 -0400
-Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <chigot@adacore.com>)
- id 1v3v0n-0000Rw-M1
- for qemu-arm@nongnu.org; Wed, 01 Oct 2025 07:28:56 -0400
-Received: by mail-ej1-x62b.google.com with SMTP id
- a640c23a62f3a-b3b27b50090so737989566b.0
- for <qemu-arm@nongnu.org>; Wed, 01 Oct 2025 04:28:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=adacore.com; s=google; t=1759318114; x=1759922914; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=AiCDIFaqJwQY91D+SMGBe0Fmhmk+CzAIEWNjJfnJzwM=;
- b=QiVpvDRRqt3p+8sORwAc/Ll3+0fn1X0gbjx91EU4Z0M96cAn1i+NMAkGQtHaFpd2d1
- am4oN3YJkYfspp9IF6CLSbgriEEWiXwEnNzCJNJCM9mPqm39e/7QHIxRc/MgiBYC+QaL
- gCdnyN8v5SrcPnfjuGbL4kKc0VSZ2lOkLvzj4khr14DaIGgmbSgirtIsoZcHeyxeZ2hw
- vFO9sNdK3mr1TXC5VQ2fCm2+raMq64laQCZ5eR5oYGiRj/xp56UzbwccKFlhKkXz/07a
- hDZ2SLCofCczWMnev05eb3RSKMfVkPm2NoXJ6LRypftmd//RUzmAFBzBpBceho/W8K8p
- LEWg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759318114; x=1759922914;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=AiCDIFaqJwQY91D+SMGBe0Fmhmk+CzAIEWNjJfnJzwM=;
- b=WC1jACtKr0bYLHWu5wdTJr4rsJ9SGQLZnYxkvFm0XNC2uVeIgulZ9QlcUVWsn4kpvD
- VaQMfkA+SZsFCInP1BzZFevZx73eXm05KUxHuHsFC1G7Tuua7TspPN+A35S3NM02dYww
- bsIz0C6n9E7KJUfnt7lJ8wWlF+neF2fanU+Hh/cNoGVPcGFC7PhPga9kGBbcgTuK1QpC
- ytk/z0UeLwoNYMIeisvHujokEfWFCDazoTHBtGuM8gShED9vycfPXFbcLq5+lH/uxzkJ
- 1r5daeC1yS+OwdHAOmIuTLrCoao/2Ea6ClBzQcgaU9jAykVMVsRlrVS4DaUxnLrGg6tL
- 74tg==
-X-Gm-Message-State: AOJu0YyMNqp8TwkQrbVRhqRevAyAJEdn8fbSOCDXcPM5BTvAjbTL6a/P
- wLzUjYKg7qxdBp4moXcBS8dyGfus5lbWaIyTzMEepW0oDgjzAOKvtylmYHkxvhKgT/1W0jwsanB
- n/yReh0zHOw4x7omDr1YS9nvEcwOwohqR+xDShQr6
-X-Gm-Gg: ASbGncszC1R5eEz/VDJQuxyTAKdqrIIG5Gfh0PoV3ozJxwW7RO257BTdu3t09383+xo
- SN2wzxsh5Wu2ibGpJsupsIoTbieNK4DXnl4lDN8gEyAhFOOb7bbQDoq7Wad5THpNz9AVCh1gwvQ
- 7TUE9XJ5nJ5iQI3QHJszWhAP3JwaRsXpyLwKfqAQgAu7bC1X6yhFj795V2wSLD1/MrJ+MF3v2TB
- UdJs3xr4s+ctJlrESq9gcT9CA9UbPw=
-X-Google-Smtp-Source: AGHT+IEVZFz71EDPKG7bXi26C61tMgFMUVyXT0m8qosD37F3cHMoOp9wjK90woVU/i8ePWgmN6XegusZC5Z4Qrub9vc=
-X-Received: by 2002:a17:907:9709:b0:b45:592f:74ac with SMTP id
- a640c23a62f3a-b46e4791098mr386721966b.38.1759318113821; Wed, 01 Oct 2025
- 04:28:33 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1v3wNm-0007rC-FI; Wed, 01 Oct 2025 08:56:35 -0400
+Received: from [185.176.79.56] (helo=frasgout.his.huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1v3wNZ-0008D8-17; Wed, 01 Oct 2025 08:56:30 -0400
+Received: from mail.maildlp.com (unknown [172.18.186.31])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4ccFG239f1z6M4Wf;
+ Wed,  1 Oct 2025 20:52:58 +0800 (CST)
+Received: from dubpeml100005.china.huawei.com (unknown [7.214.146.113])
+ by mail.maildlp.com (Postfix) with ESMTPS id C7FD314014C;
+ Wed,  1 Oct 2025 20:56:06 +0800 (CST)
+Received: from localhost (10.203.177.15) by dubpeml100005.china.huawei.com
+ (7.214.146.113) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.11; Wed, 1 Oct
+ 2025 13:56:05 +0100
+Date: Wed, 1 Oct 2025 13:56:04 +0100
+To: Shameer Kolothum <skolothumtho@nvidia.com>
+CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, <eric.auger@redhat.com>,
+ <peter.maydell@linaro.org>, <jgg@nvidia.com>, <nicolinc@nvidia.com>,
+ <ddutile@redhat.com>, <berrange@redhat.com>, <nathanc@nvidia.com>,
+ <mochs@nvidia.com>, <smostafa@google.com>, <wangzhou1@hisilicon.com>,
+ <jiangkunkun@huawei.com>, <zhangfei.gao@linaro.org>,
+ <zhenzhong.duan@intel.com>, <yi.l.liu@intel.com>, <shameerkolothum@gmail.com>
+Subject: Re: [PATCH v4 14/27] hw/arm/smmuv3-accel: Get host SMMUv3 hw info
+ and validate
+Message-ID: <20251001135604.00006776@huawei.com>
+In-Reply-To: <20250929133643.38961-15-skolothumtho@nvidia.com>
+References: <20250929133643.38961-1-skolothumtho@nvidia.com>
+ <20250929133643.38961-15-skolothumtho@nvidia.com>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
 MIME-Version: 1.0
-References: <CAJ307Eg67ri0=-ocEr-q=Y9+OY-9XKGFb5AYh59-X8szH+3Ryg@mail.gmail.com>
- <CAFEAcA8MBFd45meJ5baOAacRTwnb+9VAUB_tMYsg3OQvXKcBgw@mail.gmail.com>
-In-Reply-To: <CAFEAcA8MBFd45meJ5baOAacRTwnb+9VAUB_tMYsg3OQvXKcBgw@mail.gmail.com>
-From: =?UTF-8?Q?Cl=C3=A9ment_Chigot?= <chigot@adacore.com>
-Date: Wed, 1 Oct 2025 13:28:22 +0200
-X-Gm-Features: AS18NWBrkRepFd-7u2_A_VLmgYLi4SqE8-th1OuEilT58d1-658Do-0NjCH2AD0
-Message-ID: <CAJ307EjniiV_4eWY5=iu502DKvPi2wXQ+5MiaTRKTAm17b-FNA@mail.gmail.com>
-Subject: Re: [QUESTION] aarch64=off with TCG
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org, 
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::62b;
- envelope-from=chigot@adacore.com; helo=mail-ej1-x62b.google.com
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
- DKIM_SIGNED=0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Content-Type: text/plain; charset="US-ASCII"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.203.177.15]
+X-ClientProxiedBy: lhrpeml100009.china.huawei.com (7.191.174.83) To
+ dubpeml100005.china.huawei.com (7.214.146.113)
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 185.176.79.56 (deferred)
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -33
+X-Spam_score: -3.4
+X-Spam_bar: ---
+X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -92,57 +72,178 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jonathan Cameron <jonathan.cameron@huawei.com>
+From:  Jonathan Cameron via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Wed, Oct 1, 2025 at 11:50=E2=80=AFAM Peter Maydell <peter.maydell@linaro=
-.org> wrote:
->
-> On Wed, 1 Oct 2025 at 09:55, Cl=C3=A9ment Chigot <chigot@adacore.com> wro=
-te:
-> > I'm wondering if the check [1] preventing "aarch64=3Doff" without KMV i=
-s
-> > still valid nowadays and if yes, if anyone has ideas about what are
-> > the remaining blockers ?
->
-> I did have a look at this a while back. A lot of it was "audit
-> the code to make sure it's not relying on an assumption we will
-> now be breaking", which I think I did most of. Some of the
-> preliminary patches I already upstreamed (e.g. the elimination of
-> the TYPE_AARCH64_CPU subclass). My TODO list from my notes is
-> down to basically enforcing that the user doesn't select invalid
-> option combinations:
->
->  * forbid weird prop configs like aarch64=3Doff,sve=3Don if we don't alre=
-ady
->  * forbid -cpu max,aarch64=3Doff for usermode
->  * forbid -cpu whatever,aarch64=3Doff when it doesn't implement AArch32
->    at the relevant EL
->
-> so my "allow aarch64=3Doff" patch is a bit more complicated than
-> just removing the check because it tries to enforce at least
-> some of those.
->
-> I also have some local patches which make an AArch64 CPU with
-> aarch64=3Doff manually zero out all the aa64_ ID reg values, so
-> that feature checks on an aa64_foo feature don't pass. This
-> lets us avoid having to go through and manually add extra
-> "if AARCH64 && ..." clauses to all those feature checks.
-> I need to rebase those and look at whether they're ready to
-> send out.
->
-> Other than that, I think it's mostly testing.
+On Mon, 29 Sep 2025 14:36:30 +0100
+Shameer Kolothum <skolothumtho@nvidia.com> wrote:
 
-> I'll see if I can do that rebase and at least send it out as
-> an RFC patchset.
+> Just before the device gets attached to the SMMUv3, make sure QEMU SMMUv3
+> features are compatible with the host SMMUv3.
+> 
+> Not all fields in the host SMMUv3 IDR registers are meaningful for userspace.
+> Only the following fields can be used:
+> 
+>   - IDR0: ST_LEVEL, TERM_MODEL, STALL_MODEL, TTENDIAN, CD2L, ASID16, TTF
+>   - IDR1: SIDSIZE, SSIDSIZE
+>   - IDR3: BBML, RIL
+>   - IDR5: VAX, GRAN64K, GRAN16K, GRAN4K
+> 
+> For now, the check is to make sure the features are in sync to enable
+> basic accelerated SMMUv3 support.
+> 
+> One other related change is, move the smmuv3_init_regs() to smmu_realize()
+> so that we do have that early enough for the check mentioned above.
+> 
+> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
 
-Alright thanks a lot for all those details. No urgency at all though,
-I was just wondering if executing 32 bit ARM on cortex-a53 was
-feasible within QEMU.
+Hi Shameer,
 
-Thanks,
-Cl=C3=A9ment
+Back to this series...
 
-> thanks
-> -- PMM
+Various things in the checks in here.
+
+Jonathan
+
+> ---
+>  hw/arm/smmuv3-accel.c | 98 +++++++++++++++++++++++++++++++++++++++++++
+>  hw/arm/smmuv3.c       |  4 +-
+>  2 files changed, 100 insertions(+), 2 deletions(-)
+> 
+> diff --git a/hw/arm/smmuv3-accel.c b/hw/arm/smmuv3-accel.c
+> index 9ad8595ce2..defeddbd8c 100644
+> --- a/hw/arm/smmuv3-accel.c
+> +++ b/hw/arm/smmuv3-accel.c
+> @@ -39,6 +39,96 @@
+>  #define STE1_MASK     (STE1_ETS | STE1_S1STALLD | STE1_S1CSH | STE1_S1COR | \
+>                         STE1_S1CIR | STE1_S1DSS)
+>  
+> +static bool
+> +smmuv3_accel_check_hw_compatible(SMMUv3State *s,
+> +                                 struct iommu_hw_info_arm_smmuv3 *info,
+> +                                 Error **errp)
+> +{
+> +    uint32_t val;
+> +
+> +    /*
+> +     * QEMU SMMUv3 supports both linear and 2-level stream tables.
+> +     */
+
+Single line comment would be more consistent with below and looks to be under 80 chars.
+
+> +    val = FIELD_EX32(info->idr[0], IDR0, STLEVEL);
+> +    if (val != FIELD_EX32(s->idr[0], IDR0, STLEVEL)) {
+> +        s->idr[0] = FIELD_DP32(s->idr[0], IDR0, STLEVEL, val);
+
+This seems a rather odd side effect to have.  Perhaps a comment on why
+in error path it make sense to change s->idr[0]?
+
+> +        error_setg(errp, "Host SUMMUv3 differs in Stream Table format");
+> +        return false;
+> +    }
+> +
+> +    /* QEMU SMMUv3 supports only little-endian translation table walks */
+> +    val = FIELD_EX32(info->idr[0], IDR0, TTENDIAN);
+> +    if (!val && val > FIELD_EX32(s->idr[0], IDR0, TTENDIAN)) {
+
+This is a weird check.  || maybe?
+
+Otherwise if !val is true, then val is not likely to be greater than anything.
+
+> +        error_setg(errp, "Host SUMMUv3 doesn't support Little-endian "
+> +                   "translation table");
+> +        return false;
+> +    }
+> +
+> +    /* QEMU SMMUv3 supports only AArch64 translation table format */
+> +    val = FIELD_EX32(info->idr[0], IDR0, TTF);
+> +    if (val < FIELD_EX32(s->idr[0], IDR0, TTF)) {
+> +        error_setg(errp, "Host SUMMUv3 deosn't support Arch64 Translation "
+
+Spell check the messages. doesn't.
+
+> +                   "table format");
+> +        return false;
+> +    }
+> +
+> +    /* QEMU SMMUv3 supports SIDSIZE 16 */
+> +    val = FIELD_EX32(info->idr[1], IDR1, SIDSIZE);
+> +    if (val < FIELD_EX32(s->idr[1], IDR1, SIDSIZE)) {
+
+Why not
+    if (FIELD_EX32(info->idr[1], IDR1, SIDSIZE) <
+	FIELD_EX32(s->idr[1], IDR1, SIDSIZE))
+I.e. why does the local variable make sense in cases where the value is
+only used once.  To me if anything this is slightly easier to read.   You could
+even align the variables so it's obvious it's comparing one field.
+
+    if (FIELD_EX32(info->idr[1], IDR1, SIDSIZE) <
+	FIELD_EX32(s->idr[1],    IDR1, SIDSIZE))
+  
+> +        error_setg(errp, "Host SUMMUv3 SIDSIZE not compatible");
+> +        return false;
+> +    }
+> +
+> +    /* QEMU SMMUv3 supports Range Invalidation by default */
+> +    val = FIELD_EX32(info->idr[3], IDR3, RIL);
+> +    if (val != FIELD_EX32(s->idr[3], IDR3, RIL)) {
+> +        error_setg(errp, "Host SUMMUv3 deosn't support Range Invalidation");
+
+doesn't.
+
+> +        return false;
+> +    }
+> +
+> +    val = FIELD_EX32(info->idr[5], IDR5, GRAN4K);
+> +    if (val != FIELD_EX32(s->idr[5], IDR5, GRAN4K)) {
+> +        error_setg(errp, "Host SMMUv3 doesn't support 64K translation granule");
+That doesn't smell like it's checking 64K
+> +        return false;
+> +    }
+> +    val = FIELD_EX32(info->idr[5], IDR5, GRAN16K);
+> +    if (val != FIELD_EX32(s->idr[5], IDR5, GRAN16K)) {
+> +        error_setg(errp, "Host SMMUv3 doesn't support 16K translation granule");
+> +        return false;
+> +    }
+> +    val = FIELD_EX32(info->idr[5], IDR5, GRAN64K);
+> +    if (val != FIELD_EX32(s->idr[5], IDR5, GRAN64K)) {
+> +        error_setg(errp, "Host SMMUv3 doesn't support 16K translation granule");
+Nor is this one seem likely to be checking 16K. 
+> +        return false;
+> +    }
+> +    return true;
+> +}
+> +
+> +static bool
+> +smmuv3_accel_hw_compatible(SMMUv3State *s, HostIOMMUDeviceIOMMUFD *idev,
+> +                           Error **errp)
+> +{
+> +    struct iommu_hw_info_arm_smmuv3 info;
+> +    uint32_t data_type;
+> +    uint64_t caps;
+> +
+> +    if (!iommufd_backend_get_device_info(idev->iommufd, idev->devid, &data_type,
+> +                                         &info, sizeof(info), &caps, errp)) {
+> +        return false;
+> +    }
+> +
+> +    if (data_type != IOMMU_HW_INFO_TYPE_ARM_SMMUV3) {
+> +        error_setg(errp, "Wrong data type (%d) for Host SMMUv3 device info",
+> +                     data_type);
+
+Alignment looks off.
+
+> +        return false;
+> +    }
+> +
+> +    if (!smmuv3_accel_check_hw_compatible(s, &info, errp)) {
+> +        return false;
+> +    }
+> +    return true;
+> +}
+> +
+
+
 

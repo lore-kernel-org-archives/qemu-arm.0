@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C57ACAC5B8
-	for <qemu-arm@archiver.kernel.org>; Wed,  1 Oct 2025 01:09:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD1E5CCA471
+	for <qemu-arm@archiver.kernel.org>; Wed,  1 Oct 2025 01:09:26 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v3lF1-0005F0-A1; Tue, 30 Sep 2025 21:02:47 -0400
+	id 1v3lFX-0005Mc-Qy; Tue, 30 Sep 2025 21:03:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <salil.mehta@opnsrc.net>)
- id 1v3lEx-0005DK-8V
- for qemu-arm@nongnu.org; Tue, 30 Sep 2025 21:02:43 -0400
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+ id 1v3lFU-0005Lr-Pb
+ for qemu-arm@nongnu.org; Tue, 30 Sep 2025 21:03:18 -0400
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <salil.mehta@opnsrc.net>)
- id 1v3lEc-0007xE-7g
- for qemu-arm@nongnu.org; Tue, 30 Sep 2025 21:02:40 -0400
-Received: by mail-wm1-x32c.google.com with SMTP id
- 5b1f17b1804b1-46b303f755aso58083885e9.1
- for <qemu-arm@nongnu.org>; Tue, 30 Sep 2025 18:02:21 -0700 (PDT)
+ id 1v3lEx-00084T-Hj
+ for qemu-arm@nongnu.org; Tue, 30 Sep 2025 21:03:15 -0400
+Received: by mail-wr1-x432.google.com with SMTP id
+ ffacd0b85a97d-414f48bd5a7so4359671f8f.2
+ for <qemu-arm@nongnu.org>; Tue, 30 Sep 2025 18:02:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=opnsrc.net; s=google; t=1759280536; x=1759885336; darn=nongnu.org;
+ d=opnsrc.net; s=google; t=1759280558; x=1759885358; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=E95z1LitnEsQAC+IDKkKPOZh6LcS9ALCsacoPjved+U=;
- b=DhnrnXn4Tc0q4q2rZjfCzaLGWLVay6+CVDzrSaJNYV4VX9586P0PjrYaFAu/aOjBXM
- fzULzfBw02hFDU3sNYjvRCuQ4pMWonFpUF3SfrsWmRmbs8PcSuPbAiEDZ/7CkvN7ZPqE
- iPNDTGGuEukcnMJ4CwWcqIRaigC6C+pFI+GF/oXUxxXgXQlLgale+BLANvFVDywXfxtn
- KqeA5S+xbo5i18hO30fo/Cr3OQV8YCUAhBdI4rch2yyyinEP3ZCvuwAHqXdVUffEBIbJ
- P04vOvdwswppwCIMS38Q50jv2KAXHrSRTp5xW4U9uEy5F6RAIaHrd+XbHpQwbY9PTdtR
- lyaA==
+ bh=AIp1fTDpYUODV+o3H7vcfIGfQr/6T5pDk40yx4w9U+c=;
+ b=QZno1tdt4viyyeratTyfGlK0oYCqKDssUHCNjoA88f80xrm2HA4Y/zXw1mjqFaCIch
+ 2zg/wBOAU+29e5A8FR/0MpyvkSSHkovTV2POe8xQfWYkLbxG2oY8rdb9D016+aTy9h9m
+ ywdhyeeg5BS4utJ3ZmFS69xaiEsOpTCWhXflCqo9f61ViXRg2kvrT+S0DwymhgpcBm/p
+ 2161sUt8KwwQDCQserGUqN3fWjDtYtMyFBm0WxTc9JU3BpX9W1XQshP7Aq6UeKPlj/Cy
+ AXkNozTA6+5Vh2m4t22SDR7Z/EZsnPkzmQntjFmK/te6SuVuJ7lvIXH8oME15nLkTc1B
+ GOdQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759280536; x=1759885336;
+ d=1e100.net; s=20230601; t=1759280558; x=1759885358;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=E95z1LitnEsQAC+IDKkKPOZh6LcS9ALCsacoPjved+U=;
- b=WKP6dnV5d976Dd75dMMCuEZ9oe09dl1yX7rCfUXRACfj1xVQmAyDEEyzU5/fllOXTM
- tm9286fQjBHl1xlRMFYh5OYP4znLu/i0YCKPJNxS/htlyUcSxj4q/J3PCHgRTESm0vgX
- 9YEKkKy004b+9qvCRlhJ7OfcKcij0IKF3OVq0/ds9vJwwvrtzy+g7LUCv54911SoErp7
- NEtf8h7b63PkcMNYGGcEShBrN6ZczJlnCuoL+bF4ZOCDvTXil94W6noEib/gMp1nScBr
- GB4RqmlEdy6+Irlezz813K/gN1tUT7hBJt0ywVWh8CUP1I8J5Bs5OaNnrWncWnydEQJv
- nAkA==
+ bh=AIp1fTDpYUODV+o3H7vcfIGfQr/6T5pDk40yx4w9U+c=;
+ b=ZeJK0CKxCtuFyy3zX1Mm/o98KT33oNqe5AQHwk5alzsJE5D4vPNhozJQ+IisZpNevW
+ O/OBaU8u8vXiVos7FK2QgzQPr9uDupsJncPF/pjfUU2/vkVnELKetDWfD1mcDzpwzQLq
+ GepQ61MCcfxfxSWGlsVPxSaUBmXqntpH8wwbQFlGJxzF00WsUgUpQ0dxYK8zfrjmclgr
+ w/OeCHeWEYy80714TWJL0AC30+Q3tI2PRtqhB1aJjf2c9r5p51/XewRsxgP9HWKJni64
+ 1Q5HglBNaqgmsCLc5ZUMQbWYmXkTwrjjf7tu2b7qx74jQ3tZRUtUyUfZ2WR6z5xkZSt/
+ ADNw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUZs9WhctfoHjmxjhXYThK9NuI0qHMdfsJfQvoZmJs3u1WB+QAZcNOsSG1U1ANR/uZUHXZWE7pZvA==@nongnu.org
-X-Gm-Message-State: AOJu0Yz6ntSWwWoDKQ0jBt9tAkD41Sq/VrtLgqj7swHQpW5rFt7EBRzV
- 7BNUqorr4qvs2iPaz6fLMptjuHj0y6wDlj5Lvx0Izcj2dtKUwGsiq3TZXK5GL63dY8s=
-X-Gm-Gg: ASbGncsER2oJpqlgcLoa9m3uU7Bc3P4+ZRg8lhYmBVpxxZjXqzp+avunqSQ1VWiEUDJ
- f3S3FvFlkOmlUsw8BMN6OpbF/dVuNPNDed56ITwzka/sa0EyQA1CsZxDopq+EaFHqe3enDE5A2Y
- 6dYsOf+BjpGT56dJP/PvxoZcKh+Ezt5092IImMaOe/CUgyW8zvTo3xUa9neQPPCnVv79UBuOfmm
- GVtmXdoWdPn/oPVnuAU8F5qjFHGNjSEJSNHGKLkY6y9dGl4AmuDZJj885AVM+pbiTTfrrVv+4rh
- eWWB8dsg63c1RLVisQryRjIZXvIDY3NZm4IpBbXYuo/KW5Xyy/eLHXteAUDg0RDFdecjoCOGRFk
- N6jSadeM1TnuVeCHWA7YfFVo//YQRFiI3FjKa3ZNPWmLxB2ha6ufx4u21taLTGFXgVabMzKQJuT
- v2C12GySAnzmi91zfB3ztlY95+GqOhYDVRzj4rdqH4EP5GZY6yMq0DZg==
-X-Google-Smtp-Source: AGHT+IH40O7EwScL5QaCUo3bATKbMaaGb/W4QizlO/YTtsqCqCReWYP7rh5t8KrEv01hrhpIzc8IZQ==
-X-Received: by 2002:a05:600c:4748:b0:46e:5df3:190d with SMTP id
- 5b1f17b1804b1-46e61285eb1mr11032815e9.11.1759280536078; 
- Tue, 30 Sep 2025 18:02:16 -0700 (PDT)
+ AJvYcCV9ERpOeeC0n4moHO0htGzg3NA4vS4FRUOFLR1391IBSkmPKv3DtMxY8eE6OkV7odnl7z5rQRGDYw==@nongnu.org
+X-Gm-Message-State: AOJu0YwOMPSvU+s7edJz8Vnux3m19v/PD2xMTJbwp5OPbM1aJJjCIA2x
+ kN2op0OrdlncybNmxGwL733lLzAs+0lav3rcpHeqgOdciKJOnZCtvJ+rr5CK9kN/44s=
+X-Gm-Gg: ASbGncsCd+cI7sMEQ8sxCCSYSM0JhSTX4f5xlOaeDx6HHaY7wpcTVnLIj7CjcIwsPLk
+ BtPIg3yn5qoSF6eTKwFj3Tl/5v8ILjmkHOLlszIkPGgmZg8HKQ1jOhLLgSZgHk674mUKk49ZRED
+ LEoBRT1fZXbbmKV8Y5tlvJ00VlHorjWD14zaz+iD9FfsXAvgxzSOueG9awhpFuEpqo8r8lePeGw
+ ixk3e/F3AnW2gHdDYikBz5k3rIShLfDs13Pyw//SkT1JGlPWgtMtX53oozWQ83ewvbHo3Q/HJBL
+ vxEbJ0Wv+/wXCdLQrj5DGoyRxFw0QWm8zAWBfah8wMI93ieEgIBx+oYfnrtMi7/0cdccxiDRRwz
+ WxEeUHA+Rsb46m0qZwEeBMaAFf53xZ90qnAGIEaILwT9YGNPeC5MuaQ/qCoicLZ31QfVOD/rbaM
+ QuUbJ2VQT1kFLnmBpO0DBXMxpyTfgH9T/w53lXBeV/Oaw=
+X-Google-Smtp-Source: AGHT+IHFSLI7/UdL6eC6mrr3Se5gLK2/8fPG8GzP/SKGovwybfxzCRv6ENVVmMVAr4Fr3OU7PXKjdQ==
+X-Received: by 2002:a05:6000:22c3:b0:3ee:114f:f88f with SMTP id
+ ffacd0b85a97d-4255782044bmr1069193f8f.59.1759280558171; 
+ Tue, 30 Sep 2025 18:02:38 -0700 (PDT)
 Received: from localhost.localdomain ([90.209.204.182])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-40fb985e080sm24587426f8f.24.2025.09.30.18.02.14
+ ffacd0b85a97d-40fb985e080sm24587426f8f.24.2025.09.30.18.02.35
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 30 Sep 2025 18:02:15 -0700 (PDT)
+ Tue, 30 Sep 2025 18:02:37 -0700 (PDT)
 From: salil.mehta@opnsrc.net
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org,
@@ -87,25 +87,24 @@ Cc: salil.mehta@huawei.com, maz@kernel.org, jean-philippe@linaro.org,
  wangxiongfeng2@huawei.com, wangyanan55@huawei.com, wangzhou1@hisilicon.com,
  linuxarm@huawei.com, jiakernel2@gmail.com, maobibo@loongson.cn,
  lixianglai@loongson.cn, shahuang@redhat.com, zhao1.liu@intel.com
-Subject: [PATCH RFC V6 01/24] hw/core: Introduce administrative power-state
- property and its accessors
-Date: Wed,  1 Oct 2025 01:01:04 +0000
-Message-Id: <20251001010127.3092631-2-salil.mehta@opnsrc.net>
+Subject: [PATCH RFC V6 11/24] hw/arm/acpi: MADT change to size the guest with
+ possible vCPUs
+Date: Wed,  1 Oct 2025 01:01:14 +0000
+Message-Id: <20251001010127.3092631-12-salil.mehta@opnsrc.net>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20251001010127.3092631-1-salil.mehta@opnsrc.net>
 References: <20251001010127.3092631-1-salil.mehta@opnsrc.net>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=salil.mehta@opnsrc.net; helo=mail-wm1-x32c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::432;
+ envelope-from=salil.mehta@opnsrc.net; helo=mail-wr1-x432.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
+ T_SPF_TEMPERROR=0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -123,236 +122,159 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Salil Mehta <salil.mehta@huawei.com>
 
-Some devices cannot be hot-unplugged, either because removal is not meaningful
-(e.g. on-board devices) or not supported (e.g. certain PCIe devices). Others,
-such as CPUs on architectures like ARM, lack native hotplug support but can
-still have their availability controlled through host policy. In all these
-cases, a mechanism is needed to track and control a device’s *administrative*
-power state — independent of its runtime operational state — so QEMU can:
+When QEMU builds the MADT table, modifications are needed to include information
+about possible vCPUs that are exposed as ACPI-disabled (i.e., `_STA.Enabled=0`).
+This new information will help the guest kernel pre-size its resources during
+boot time. Pre-sizing based on possible vCPUs will facilitate the future
+hot-plugging of the currently disabled vCPUs.
 
-  - Disable a device while keeping it described in firmware, ACPI, or other
-    configuration.
-  - Prevent guest use until explicitly re-enabled.
-  - Coordinate transitions with platform-specific power handlers and migration
-    logic.
+Additionally, this change addresses updates to the ACPI MADT GIC CPU interface
+flags, as introduced in the UEFI ACPI 6.5 specification [1]. These updates
+enable deferred virtual CPU onlining in the guest kernel.
 
-This patch introduces the core qdev support for administrative power state —
-defining the property, enum, and accessors — without yet applying it to any
-device. Later patches in this series integrate it with helper APIs
-(qdev_disable(), qdev_enable(), etc.) and specific device types such as CPUs,
-completing the flow with platform-specific handlers.
+Reference:
+[1] 5.2.12.14. GIC CPU Interface (GICC) Structure (Table 5.37 GICC CPU Interface Flags)
+    Link: https://uefi.org/specs/ACPI/6.5/05_ACPI_Software_Programming_Model.html#gic-cpu-interface-gicc-structure
 
-Key additions:
-  - New enum DeviceAdminPowerState with ENABLED, DISABLED, and REMOVED states,
-    defaulting to ENABLED.
-  - New DeviceClass flag admin_power_state_supported to advertise support for
-    administrative transitions.
-  - New QOM property "admin_power_state" to query or set the state on supported
-    devices.
-  - Internal accessors device_get_admin_power_state() and
-    device_set_admin_power_state() to manage state changes, including safe
-    handling when the device is not yet realized.
-
-The enum models *policy* rather than electrical or functional power state, and
-is distinct from runtime mechanisms (e.g. PSCI for ARM CPUs). The actual
-operational state of a device is maintained by platform-specific or device-
-specific code, which enforces runtime behaviour based on the administrative
-setting. Every device starts administratively ENABLED by default. A DISABLED
-device remains logically present but blocked from operation; a REMOVED device
-is logically absent.
-
+Co-developed-by: Keqian Zhu <zhukeqian1@huawei.com>
+Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
 Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
 ---
- hw/core/qdev.c         | 62 ++++++++++++++++++++++++++++++++++++++++++
- include/hw/qdev-core.h | 54 ++++++++++++++++++++++++++++++++++++
- target/arm/cpu.c       |  1 +
- 3 files changed, 117 insertions(+)
+ hw/arm/virt-acpi-build.c | 40 ++++++++++++++++++++++++++++++++++------
+ hw/core/machine.c        | 14 ++++++++++++++
+ include/hw/boards.h      | 20 ++++++++++++++++++++
+ 3 files changed, 68 insertions(+), 6 deletions(-)
 
-diff --git a/hw/core/qdev.c b/hw/core/qdev.c
-index f600226176..8502d6216f 100644
---- a/hw/core/qdev.c
-+++ b/hw/core/qdev.c
-@@ -633,6 +633,53 @@ static bool device_get_hotplugged(Object *obj, Error **errp)
-     return dev->hotplugged;
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index b01fc4f8ef..7c24dd6369 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -760,6 +760,32 @@ static void build_append_gicr(GArray *table_data, uint64_t base, uint32_t size)
+     build_append_int_noprefix(table_data, size, 4); /* Discovery Range Length */
  }
  
-+static int device_get_admin_power_state(Object *obj, Error **errp)
++static uint32_t virt_acpi_get_gicc_flags(CPUState *cpu)
 +{
-+    DeviceState *dev = DEVICE(obj);
++    MachineClass *mc = MACHINE_GET_CLASS(qdev_get_machine());
++    const uint32_t GICC_FLAG_ENABLED = BIT(0);
++    const uint32_t GICC_FLAG_ONLINE_CAPABLE = BIT(3);
 +
-+    return dev->admin_power_state;
-+}
-+
-+static void
-+device_set_admin_power_state(Object *obj, int new_state, Error **errp)
-+{
-+    DeviceState *dev = DEVICE(obj);
-+    DeviceClass *dc = DEVICE_GET_CLASS(dev);
-+
-+    if (!dc->admin_power_state_supported) {
-+        error_setg(errp, "Device '%s' admin power state change not supported",
-+                   object_get_typename(obj));
-+        return;
++    /* ARM architecture does not support vCPU hotplug yet */
++    if (!cpu) {
++        return 0;
 +    }
 +
-+    switch (new_state) {
-+    case DEVICE_ADMIN_POWER_STATE_DISABLED: {
-+        /*
-+         * TODO: Operational state transition triggered by administrative action
-+         * Powering off the realized device either synchronously or via OSPM.
-+         */
-+
-+        qatomic_set(&dev->admin_power_state, DEVICE_ADMIN_POWER_STATE_DISABLED);
-+        smp_wmb();
-+        break;
-+    }
-+    case DEVICE_ADMIN_POWER_STATE_ENABLED: {
-+        /*
-+         * TODO: Operational state transition triggered by administrative action
-+         * Powering on the device and restoring migration registration.
-+         */
-+
-+        qatomic_set(&dev->admin_power_state, DEVICE_ADMIN_POWER_STATE_ENABLED);
-+        smp_wmb();
-+        break;
-+    }
-+    default:
-+        error_setg(errp, "Invalid admin power state %d for device '%s'",
-+                   new_state, dev->id);
-+        break;
-+    }
-+}
-+
- static void device_initfn(Object *obj)
- {
-     DeviceState *dev = DEVICE(obj);
-@@ -644,6 +691,7 @@ static void device_initfn(Object *obj)
- 
-     dev->instance_id_alias = -1;
-     dev->realized = false;
-+    dev->admin_power_state = DEVICE_ADMIN_POWER_STATE_ENABLED;
-     dev->allow_unplug_during_migration = false;
- 
-     QLIST_INIT(&dev->gpios);
-@@ -731,6 +779,15 @@ device_vmstate_if_get_id(VMStateIf *obj)
-     return qdev_get_dev_path(dev);
- }
- 
-+static const QEnumLookup device_admin_power_state_lookup = {
-+    .array = (const char *const[]) {
-+        [DEVICE_ADMIN_POWER_STATE_ENABLED]  = "enabled",
-+        [DEVICE_ADMIN_POWER_STATE_REMOVED]  = "removed",
-+        [DEVICE_ADMIN_POWER_STATE_DISABLED] = "disabled",
-+    },
-+    .size = DEVICE_ADMIN_POWER_STATE_MAX,
-+};
-+
- static void device_class_init(ObjectClass *class, const void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(class);
-@@ -765,6 +822,11 @@ static void device_class_init(ObjectClass *class, const void *data)
-                                    device_get_hotpluggable, NULL);
-     object_class_property_add_bool(class, "hotplugged",
-                                    device_get_hotplugged, NULL);
-+    object_class_property_add_enum(class, "admin_power_state",
-+                                   "DeviceAdminPowerState",
-+                                   &device_admin_power_state_lookup,
-+                                   device_get_admin_power_state,
-+                                   device_set_admin_power_state);
-     object_class_property_add_link(class, "parent_bus", TYPE_BUS,
-                                    offsetof(DeviceState, parent_bus), NULL, 0);
- }
-diff --git a/include/hw/qdev-core.h b/include/hw/qdev-core.h
-index 530f3da702..3bc212ab3a 100644
---- a/include/hw/qdev-core.h
-+++ b/include/hw/qdev-core.h
-@@ -159,6 +159,7 @@ struct DeviceClass {
-      */
-     bool user_creatable;
-     bool hotpluggable;
-+    bool admin_power_state_supported;
- 
-     /* callbacks */
-     /**
-@@ -217,6 +218,55 @@ typedef QLIST_HEAD(, NamedGPIOList) NamedGPIOListHead;
- typedef QLIST_HEAD(, NamedClockList) NamedClockListHead;
- typedef QLIST_HEAD(, BusState) BusStateHead;
- 
-+/**
-+ * enum DeviceAdminPowerState - Administrative control states for a device
-+ *
-+ * This enum defines abstract administrative states used by QEMU to enable,
-+ * disable, or logically remove a device from the virtual machine. These
-+ * states reflect administrative control over a device's power availability
-+ * and presence in the system. These administrative states are distinct from
-+ * runtime operational power states (e.g., PSCI states for ARM CPUs). They
-+ * represent administrative *policy* rather than physical, electrical, or
-+ * functional state.
-+ *
-+ * Administrative state is managed externally "via QMP, firmware, or other
-+ * host-side policy agents" and acts as a gating policy that determines
-+ * whether guest software is permitted to interact with the device. Most
-+ * devices default to the ENABLED state unless explicitly disabled or removed.
-+ *
-+ * Changing a device administrative state may directly or indirectly affect
-+ * its operational behavior. For example, a DISABLED device will reject guest
-+ * attempts to power it on or transition it out of a suspended state. Not all
-+ * devices support dynamic transitions between administrative states.
-+ *
-+ * - DEVICE_ADMIN_POWER_STATE_ENABLED:
-+ *     The device is administratively enabled (i.e., logically present and
-+ *     permitted to operate). Guest software may change its operational state
-+ *     (e.g., activate, deactivate, suspend) within allowed architectural
-+ *     semantics. This is the default state for most devices unless explicitly
-+ *     disabled or unplugged.
-+ *
-+ * - DEVICE_ADMIN_POWER_STATE_DISABLED:
-+ *     The device is administratively disabled. It remains logically present
-+ *     but is blocked from functional operation. Guest-initiated transitions
-+ *     are either suppressed or ignored. This is typically used to enforce
-+ *     shutdown, deny execution, or offline the device without removing it.
-+ *
-+ * - DEVICE_ADMIN_POWER_STATE_REMOVED:
-+ *     The device has been logically removed (e.g., via hot-unplug). It is no
-+ *     longer considered present or visible to the guest. This state exists
-+ *     for representational or transitional purposes only. In most cases,
-+ *     once removed, the corresponding DeviceState object is destroyed and
-+ *     no longer tracked. This concept may not apply to some devices as
-+ *     architectural limitations might make unplug not meaningful.
-+ */
-+typedef enum DeviceAdminPowerState {
-+    DEVICE_ADMIN_POWER_STATE_ENABLED = 0,
-+    DEVICE_ADMIN_POWER_STATE_DISABLED,
-+    DEVICE_ADMIN_POWER_STATE_REMOVED,
-+    DEVICE_ADMIN_POWER_STATE_MAX
-+} DeviceAdminPowerState;
-+
- /**
-  * struct DeviceState - common device state, accessed with qdev helpers
-  *
-@@ -240,6 +290,10 @@ struct DeviceState {
-      * @realized: has device been realized?
-      */
-     bool realized;
-+    /**
-+     * @admin_power_state: device administrative power state
++    /*
++     * If the machine does not support online-capable CPUs, report the GICC as
++     * 'enabled' only.
 +     */
-+    DeviceAdminPowerState admin_power_state;
-     /**
-      * @pending_deleted_event: track pending deletion events during unplug
-      */
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index e2b2337399..0c9a2e7ea4 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -2765,6 +2765,7 @@ static void arm_cpu_class_init(ObjectClass *oc, const void *data)
-     cc->gdb_get_core_xml_file = arm_gdb_get_core_xml_file;
-     cc->gdb_stop_before_watchpoint = true;
-     cc->disas_set_info = arm_disas_set_info;
-+    dc->admin_power_state_supported = true;
++    if (!mc->has_online_capable_cpus) {
++        return GICC_FLAG_ENABLED;
++    }
++
++    /*
++     * ACPI 6.5, 5.2.12.14 (GICC): mark the boot CPU 'enabled' and all others
++     * 'online-capable'.
++     */
++    return (cpu == first_cpu) ? GICC_FLAG_ENABLED : GICC_FLAG_ONLINE_CAPABLE;
++}
++
+ static void
+ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+ {
+@@ -785,12 +811,14 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+     build_append_int_noprefix(table_data, vms->gic_version, 1);
+     build_append_int_noprefix(table_data, 0, 3);   /* Reserved */
  
- #ifdef CONFIG_TCG
-     cc->tcg_ops = &arm_tcg_ops;
+-    for (i = 0; i < MACHINE(vms)->smp.cpus; i++) {
+-        ARMCPU *armcpu = ARM_CPU(qemu_get_cpu(i));
++    for (i = 0; i < MACHINE(vms)->smp.max_cpus; i++) {
++        CPUState *cpu = machine_get_possible_cpu(i);
+         uint64_t physical_base_address = 0, gich = 0, gicv = 0;
+         uint32_t vgic_interrupt = vms->virt ? ARCH_GIC_MAINT_IRQ : 0;
+-        uint32_t pmu_interrupt = arm_feature(&armcpu->env, ARM_FEATURE_PMU) ?
+-                                             VIRTUAL_PMU_IRQ : 0;
++        uint32_t pmu_interrupt = vms->pmu ? VIRTUAL_PMU_IRQ : 0;
++        CPUArchId *archid = machine_get_possible_cpu_arch_id(i);
++        uint32_t flags = virt_acpi_get_gicc_flags(cpu);
++        uint64_t mpidr = archid->arch_id;
+ 
+         if (vms->gic_version == VIRT_GIC_VERSION_2) {
+             physical_base_address = memmap[VIRT_GIC_CPU].base;
+@@ -805,7 +833,7 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+         build_append_int_noprefix(table_data, i, 4);    /* GIC ID */
+         build_append_int_noprefix(table_data, i, 4);    /* ACPI Processor UID */
+         /* Flags */
+-        build_append_int_noprefix(table_data, 1, 4);    /* Enabled */
++        build_append_int_noprefix(table_data, flags, 4);
+         /* Parking Protocol Version */
+         build_append_int_noprefix(table_data, 0, 4);
+         /* Performance Interrupt GSIV */
+@@ -819,7 +847,7 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+         build_append_int_noprefix(table_data, vgic_interrupt, 4);
+         build_append_int_noprefix(table_data, 0, 8);    /* GICR Base Address*/
+         /* MPIDR */
+-        build_append_int_noprefix(table_data, arm_cpu_mp_affinity(armcpu), 8);
++        build_append_int_noprefix(table_data, mpidr, 8);
+         /* Processor Power Efficiency Class */
+         build_append_int_noprefix(table_data, 0, 1);
+         /* Reserved */
+diff --git a/hw/core/machine.c b/hw/core/machine.c
+index 69d5632464..65388d859a 100644
+--- a/hw/core/machine.c
++++ b/hw/core/machine.c
+@@ -1383,6 +1383,20 @@ CPUState *machine_get_possible_cpu(int64_t cpu_index)
+     return NULL;
+ }
+ 
++CPUArchId *machine_get_possible_cpu_arch_id(int64_t cpu_index)
++{
++    MachineState *ms = MACHINE(qdev_get_machine());
++    CPUArchIdList *possible_cpus = ms->possible_cpus;
++
++    for (int i = 0; i < possible_cpus->len; i++) {
++        if (possible_cpus->cpus[i].cpu &&
++            possible_cpus->cpus[i].cpu->cpu_index == cpu_index) {
++            return &possible_cpus->cpus[i];
++        }
++    }
++    return NULL;
++}
++
+ static char *cpu_slot_to_string(const CPUArchId *cpu)
+ {
+     GString *s = g_string_new(NULL);
+diff --git a/include/hw/boards.h b/include/hw/boards.h
+index 3ff77a8b3a..fe51ca58bf 100644
+--- a/include/hw/boards.h
++++ b/include/hw/boards.h
+@@ -461,6 +461,26 @@ struct MachineState {
+     bool acpi_spcr_enabled;
+ };
+ 
++/*
++ * machine_get_possible_cpu_arch_id:
++ * @cpu_index: logical cpu_index to search for
++ *
++ * Return a pointer to the CPUArchId entry matching the given @cpu_index
++ * in the current machine's MachineState. The possible_cpus array holds
++ * the full set of CPUs that the machine could support, including those
++ * that may be created as disabled or taken offline.
++ *
++ * The slot index in ms->possible_cpus[] is always sequential, but the
++ * logical cpu_index values are assigned by QEMU and may or may not be
++ * sequential depending on the implementation of a particular machine.
++ * Direct indexing by cpu_index is therefore unsafe in general. This
++ * helper performs a linear search of the possible_cpus array to find
++ * the matching entry.
++ *
++ * Returns: pointer to the matching CPUArchId, or NULL if not found.
++ */
++CPUArchId *machine_get_possible_cpu_arch_id(int64_t cpu_index);
++
+ /*
+  * The macros which follow are intended to facilitate the
+  * definition of versioned machine types, using a somewhat
 -- 
 2.34.1
 

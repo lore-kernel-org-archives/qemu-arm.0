@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 734F0CCA470
-	for <qemu-arm@archiver.kernel.org>; Wed,  1 Oct 2025 01:13:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02C29CCA471
+	for <qemu-arm@archiver.kernel.org>; Wed,  1 Oct 2025 01:14:07 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v3lGh-0005u7-BH; Tue, 30 Sep 2025 21:04:33 -0400
+	id 1v3lGI-0005aD-Ri; Tue, 30 Sep 2025 21:04:06 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <salil.mehta@opnsrc.net>)
- id 1v3lGH-0005aC-Re
- for qemu-arm@nongnu.org; Tue, 30 Sep 2025 21:04:05 -0400
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+ id 1v3lFk-0005Ql-QD
+ for qemu-arm@nongnu.org; Tue, 30 Sep 2025 21:03:32 -0400
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <salil.mehta@opnsrc.net>)
- id 1v3lFL-0008D6-Am
- for qemu-arm@nongnu.org; Tue, 30 Sep 2025 21:04:04 -0400
-Received: by mail-wm1-x32e.google.com with SMTP id
- 5b1f17b1804b1-46e34052bb7so65873615e9.2
- for <qemu-arm@nongnu.org>; Tue, 30 Sep 2025 18:03:04 -0700 (PDT)
+ id 1v3lF5-00087C-Oh
+ for qemu-arm@nongnu.org; Tue, 30 Sep 2025 21:03:32 -0400
+Received: by mail-wr1-x42d.google.com with SMTP id
+ ffacd0b85a97d-3ee64bc6b90so4136405f8f.0
+ for <qemu-arm@nongnu.org>; Tue, 30 Sep 2025 18:02:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=opnsrc.net; s=google; t=1759280581; x=1759885381; darn=nongnu.org;
+ d=opnsrc.net; s=google; t=1759280565; x=1759885365; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=LkorhTYVdtNEc2JK9JCYJPvsAtCb3dSBOdMaKNrFs7Y=;
- b=c/IBDRZdX2QyTxvPUieuUL1mGP6FJHpv0VtlQwU4gLSkD/DqR+0t6Du5lRGXf9MOQ3
- yQqG6W6msiTNi7HOseCvKC5qmNIhC6HC0Qfr/ywrIH9ttr7wB+BHLSjtKJqx0z6cFdWJ
- JwNRkYyDLi9vRVsJStmgErvssviuF38UaYgPU+hkOh/xZMRy4Lo2eSdO0JWMfuUtSNPP
- keP5pvwrk9WGP4i25niOj4//HhYinjoOUeqcvtQk9PMio9OEC8UdbLtIhzXtmQRi9HvI
- +/7mgRjkVj4gdwn8DUHIeefzHfhOQUYn9rH1JDTd/R7AQNHVKbrGs2bwVVFLqizsa1el
- SJ5w==
+ bh=F+Wd6GIBEkYM6mFg5BXGG8t9TBuYY5DbN7lfkRVErL8=;
+ b=KpnehI7i1dq82VK2CzZ1A6mRo69WOgitluz7r5459zb7u4W+7D/dgqFFJCtyfaZvX+
+ Urm38vCJBMbHhC4sIhNwTFi4sRoSzOwHu9Jklq5ysiHXuYphwbUNtjgWFyB/OrZBEyRh
+ NnqBKUObPtLQOlAsdPRJCS6oFrj+3A+Hxc8ogqJcp5ljI1fo8acp89KNuTstx2DClyAp
+ y/UF8VX4cjyVmPsLSVkr/6QkNFq5PcSoSATtYIS1Roq1GA4fN8dooxLAVxLwpQKBOP2a
+ aIFNaGLZMOO8KSDWwGz4vIO9+Qvwxwqag8aXk8/8Sp84mfeWKrYOm6bsxDGgUcEX8ew2
+ NZvw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759280581; x=1759885381;
+ d=1e100.net; s=20230601; t=1759280565; x=1759885365;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=LkorhTYVdtNEc2JK9JCYJPvsAtCb3dSBOdMaKNrFs7Y=;
- b=Dy5GjwEFq8ZdlBiiYVqT2T2oL215lKdxzfkDTGU4cyLR9XOHlmGCO7BI+zHUXZ8xwj
- ypcf/O5nGb0yaOXM4gw9abj1InPZXatsOzok3WyWGebt/dDTn50T+q+JD2CCDr19AFn8
- I/ouSAL67K+TtgVwIOQF+vbbPEAAH/eak37gHQ4aUEC7sRsfQuK/zFcmawkp6htrYpIS
- EKZ3eUrVAxpxKSOXSUxTg2N33eruHg1WUOyhMccOQxs5jGqaTUpXQsKbyDuw5Lah4UFV
- hXGc6U+m8UEeBSvxWKGSz6icxIkIMpAwFMXKQ4oo+kHlej0dUJH552UXnFBt0ggbWnYs
- foDw==
+ bh=F+Wd6GIBEkYM6mFg5BXGG8t9TBuYY5DbN7lfkRVErL8=;
+ b=M8AOhw2/DWXpm7bgayYIqe0rgRqskvbsLfnm2eQOexMOLA0sCPERyYoH5+Jh+VWJ9F
+ VwBU1xaU2EW80fN4ppJQT/k4XF4YyVnlfIFvFGoeLaUQVCWct9oBE/41TfD5AtzktVin
+ 9BdwgS4XOd29tLhHcE/IapckCbCUsy9xvjmDiu5WFA9b9rhT+lewRhnMySCPbChAMvBK
+ uwByNklL8TTmQQ8NboMa5KWZL3YkNuHl58AQ+xtMFcBD3ydU0iZ1nKiBOkUx+S+tS/sJ
+ X9gCecKswLXGn/e+Q0E0su7X4+DyunwWNrxxB84WLf4gAfJIlfrVHugNFJCR3nZgKgs2
+ 0YTg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCW7YtIYi5Z3BiEwDipTW7xh5aMRY/D6J5zekwn874p/T2HOehWbyTbqPCXW0Ova3XgWLDhd6FZ+pg==@nongnu.org
-X-Gm-Message-State: AOJu0YwTG/v1CT5OpLPxHVMgPgYRJxPBTI+KSC5JYWb6znOmSx7IWcdp
- AbR8aftNVlkM019HDtSqsXFVaOr/7ZJ/0yegUdScLD8oGaw6tzCkHVsPxKeQtytcCKs=
-X-Gm-Gg: ASbGnctid+gO2dqiXWJqYM1xHroWTaAlq+aSM/iIeNFSoM9vqXWd7sjWjKLGD6jCZaW
- YlYr+B4D8BkNR5zAH0TFOvH6pMkGEuQj4dLcZabOC8kSQVDB4cppWR/u0LIcYs9QMm13Aa+oz2z
- z0YgwYXCgGmvk8TMYiQab20dgDBvxIJT9UtTkXerrquiPQdKNqNda8BoPfwTLBycyHd3aAL5J0t
- MPNxKvXFZYVd+IuF4NRgR6sPWJQYnY2n4FTmlTST/5NeoZtcGeu50xrxNz6OHwumLQrhAGypaRo
- C8uD37wKNJSW/1Pa/kcTWIjfHgW+oe+R97PpeZNc5e1tj96vK8VGmh7yaoqvWHUnmGUClsTkeMT
- 1mE5ZSC/39I47b1w/v6osH77Lrzi938o/KGgH83bVEhQfa+qcmb5iNkOpDMiYWReux1UH/eM2cK
- UhOgter0jrBPwu2iYRTOcB2vtgwFm5e35KJ5O2WjdS0WI=
-X-Google-Smtp-Source: AGHT+IGtiMfNDTwBfFlWDk5u04zD0uoanejP/L9zghp74Y9gIVBsMBao7ceLjywLt+u/Os5JnWjkgg==
-X-Received: by 2002:a05:600c:198b:b0:45b:80ff:58f7 with SMTP id
- 5b1f17b1804b1-46e612e57c3mr13281575e9.36.1759280580648; 
- Tue, 30 Sep 2025 18:03:00 -0700 (PDT)
+ AJvYcCWCN2Dt3Z8E7n3giVdiF96i+kPU7smGkwti+QbBsrXfW0TO/WfmeVGsF2pjWbXhvqjbI+iX03V9hQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yz95bZ80OOgagmvLy3WGF5y5M/3tX872ci6RTivER+s79k6YK1k
+ xbm6oDnB/q3UnyrWynL7HZuMzGKCRk+S9h23sLZlh7wjY9v/tfkbEnm3GnI9HkCnxP4=
+X-Gm-Gg: ASbGncvtJYQifSAs0I08ymcOkg18K/SC3hHx8jbdWsbs1PO9unDLJ+L+O9gJXl4uiMo
+ 2vxFfyv5LSrMbsOf0eDkoE66tNm1l/FphyOPdP2p4epNeSnti1JDXTeqisY9R5sHAUC/iPdAeg2
+ kBTqhI+ChjdBFDv7uQJTaQEKOnGGXavsenEBYxtA9LmNdree4eE6v4DTrzXvhsbUu11OpHqiDNl
+ yc8fy2ebJiBmdTcfR27N/LtW2J36z6EN7dJ4uqiZhB0n26E/9dAbFr2zKwJYUxhKvgN+YQDR/Ua
+ 5Ix7AJ66cQh7z0rrIgyLND1YKko0h+48+HTf8Y7wtItrdaDMXpMu4X2mTfPHJxqJpBDvqSEAXKn
+ bbRpLCGN2mGJy9R2mWtWgibBicxW8Rd83xEVkP2jM/KD85Wr6RRS4YJ75jhiQybko0dsE7bPDHb
+ gv/BuJ0ulJAHLT5qLeIzOjjFaDqSb763AbgVHgPyb9CYU=
+X-Google-Smtp-Source: AGHT+IHgOYDCJ5mKjVRpXTQ1RHEh8Z8GT+M1FCMYfv4F9PeMlWj+KPIyjMVs/sZIq3PnM/ck2SrOTg==
+X-Received: by 2002:a05:6000:2282:b0:3ec:df2b:14ff with SMTP id
+ ffacd0b85a97d-4255780b81dmr1259111f8f.40.1759280565260; 
+ Tue, 30 Sep 2025 18:02:45 -0700 (PDT)
 Received: from localhost.localdomain ([90.209.204.182])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-40fb985e080sm24587426f8f.24.2025.09.30.18.02.59
+ ffacd0b85a97d-40fb985e080sm24587426f8f.24.2025.09.30.18.02.42
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 30 Sep 2025 18:03:00 -0700 (PDT)
+ Tue, 30 Sep 2025 18:02:43 -0700 (PDT)
 From: salil.mehta@opnsrc.net
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org,
@@ -87,25 +87,24 @@ Cc: salil.mehta@huawei.com, maz@kernel.org, jean-philippe@linaro.org,
  wangxiongfeng2@huawei.com, wangyanan55@huawei.com, wangzhou1@hisilicon.com,
  linuxarm@huawei.com, jiakernel2@gmail.com, maobibo@loongson.cn,
  lixianglai@loongson.cn, shahuang@redhat.com, zhao1.liu@intel.com
-Subject: [PATCH RFC V6 21/24] hw/intc/arm-gicv3-kvm: Pause all vCPUs & cache
- ICC_CTLR_EL1 for userspace PSCI CPU_ON
-Date: Wed,  1 Oct 2025 01:01:24 +0000
-Message-Id: <20251001010127.3092631-22-salil.mehta@opnsrc.net>
+Subject: [PATCH RFC V6 14/24] arm/acpi: Introduce dedicated CPU OSPM interface
+ for ARM-like platforms
+Date: Wed,  1 Oct 2025 01:01:17 +0000
+Message-Id: <20251001010127.3092631-15-salil.mehta@opnsrc.net>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20251001010127.3092631-1-salil.mehta@opnsrc.net>
 References: <20251001010127.3092631-1-salil.mehta@opnsrc.net>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
- envelope-from=salil.mehta@opnsrc.net; helo=mail-wm1-x32e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
+ envelope-from=salil.mehta@opnsrc.net; helo=mail-wr1-x42d.google.com
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
+ DKIM_SIGNED=0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -123,278 +122,993 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Salil Mehta <salil.mehta@huawei.com>
 
-Problem:
-=======
+The existing ACPI CPU hotplug interface is built for x86 platforms where CPUs
+can be inserted or removed and resources are allocated dynamically. On ARM, CPUs
+are never hotpluggable: resources are allocated at boot and QOM vCPU objects
+always exist. Instead, CPUs are administratively managed by toggling ACPI _STA
+to enable or disable them, which gives a hotplug-like effect but does not match
+the x86 model.
 
-When PSCI CPU_ON was handled entirely in KVM, the operation executed under
-VGIC/KVM locks at EL2 and appeared atomic to other vCPU threads (intermediate
-states were not observable). With the SMCCC forward-to-userspace filter enabled,
-PSCI ON/OFF calls now exit to QEMU, where policy checks are performed.
+Reusing the x86 hotplug AML code would complicate maintenance since much of its
+logic relies on toggling the _STA.Present bit to notify OSPM about CPU insertion
+or removal. Such usage is not architecturally valid on ARM, where CPUs cannot
+appear or disappear at runtime. Mixing both models in one interface would
+increase complexity and make the AML harder to extend. A separate path is
+therefore required. The new design is heavily inspired by the CPU hotplug
+interface but avoids its unsuitable semantics.
 
-In the userspace CPU_ON handling (during cpu_reset?), QEMU must perform IOCTLs
-to fetch ICC_CTLR_EL1 fields that reflect supported features and IRQ-related
-configuration (e.g. EOImode, PMHE, CBPR). While these IOCTLs are in flight,
-other vCPUs can run and cause transient inconsistency. KVM enforces atomicity by
-trying to take all vCPU locks (kvm_trylock_all_vcpus() -> -EBUSY). QEMU
-therefore pauses all vCPUs before issuing these IOCTLs to avoid contending for
-locks and to prevent -EBUSY failures during cpu_reset.
-
-KVM Details: (As I understand and stand ready to be corrected! :))
-
-Userspace fetch of sysreg ICC_CTLR_EL1 results in access of ICH_VMCR_EL2 reg.
-VMCR is per-vCPU and controls the CPU interface. Pending state is recorded in
-the distributor for SPIs, and in each redistributor for SGIs and PPIs. Delivery
-to the PE depends on the CPU interface configuration (VMCR fields such as PMR,
-IGRPEN, EOImode, BPR). Updates to VMCR must therefore be applied atomically with
-respect to interrupt injection and deactivation. The KVM ioctl layer first
-attempts to lock all vCPU mutexes, and only then takes the VM lock before
-calling vgic_v3_attr_regs_access(). This ordering serializes userspace accesses
-with IRQ handling (IAR/EOI and SGI delivery?).
-
-ICC_CTLR_EL1 initially reflects architectural defaults (e.g. EOImode, PMR).
-Most fields are read-only feature indicators that never change. Writable
-fields such as EOImode, PMHE and CBPR are configured once by the guest GICv3
-driver and then remain pseudo-static. Both the initial defaults and the
-guest-configured values can be cached and reused across resets, avoiding
-repeated VM-wide pauses to fetch ICC_CTLR_EL1 from KVM on every cpu_reset().
-
-Appendix: ICC_CTLR_EL1 layout (for reviewers)
-=============================================
-
-ICC_CTLR_EL1 [63:0]
-
-  63                                                                        32
- +----------------------------------------------------------------------------+
- |                                   RES0                                     |
- +----------------------------------------------------------------------------+
-  31        20 19 18 17 16 15 14 13 12 11 10   9   8  7  6   5  4  3  2  1  0
- +------------+--+--+--+--+--+--+--+--+--+---+---+---+--+--+--+--+--+--+--+--+
- |    RES0    |Ex|RS|RES0 |A3|SE| IDbits |  PRIbits  |R0|PM|  RES0     |EO|CB|
- +------------+--+--+--+--+--+--+--+--+--+---+---+---+--+--+--+--+--+--+--+--+
-              |  |        |  |                       |   |             |  |
-              |  |        |  |                       |   |             |  +CBPR
-              |  |        |  |                       |   |             +EOImode
-              |  |        |  |                       |   +-PMHE
-              |  |        |  |                       +----RES0
-              |  |        |  +--SEIS
-              |  |        +-----A3V
-              |  +--------------RSS
-              +-----------------ExtRange
-
- Access: {Ex, RS, A3, SE, IDbits, PRIbits} = RO;
-         {PMHE} = RW*;
-         {EO, CB} = RW**;
-	 others = RES0.
- Notes : * impl-def (may be RO when DS=0)
-         ** CB may be RO when DS=0 (EO stays RW)
-
- Source: Arm GIC Architecture Specification (IHI 0069H.b),
-         §12.2.6 “ICC_CTLR_EL1”, pp. 12-233…12-237
-
-Resets that may trigger ICC_CTLR_EL1 fetch include:
-  1. PSCI CPU_ON
-  2. qemu_system_reset() during full VM reset
-  3. Post-load path on migration
-  4. Lazy realization via device_set/-deviceset
-
-It can be expensive to pause the entire VM just to reset one vCPU, especially
-for long-lived workloads where hundreds of resets may occur. For such systems,
-frequent VM-wide pauses are unacceptable.
-
-Solution:
-========
-
-This patch caches ICC_CTLR_EL1 early, seeding it either from architectural
-defaults or on the first PSCI CPU_ON when the guest GICv3 driver has initialized
-the interface. The cached value is then reused on every cpu_reset(), avoiding
-repeated VM-wide pauses and heavy IOCTLs. The IOCTL path is retained only as a
-fallback if the cached shadow is not valid.
+This patch adds a dedicated CPU OSPM (Operating System Power Management)
+interface. It provides a memory-mapped control region with selector, flags,
+command, and data fields, and AML methods for device-check, eject request, and
+_OST reporting. OSPM is notified through GED events and can coordinate CPU
+events directly with QEMU. Other ARM-like architectures may also use this
+interface.
 
 Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
 ---
- hw/intc/arm_gicv3_kvm.c            | 93 ++++++++++++++++++++++++++++--
- include/hw/intc/arm_gicv3_common.h | 10 ++++
- target/arm/arm-powerctl.c          |  1 +
- target/arm/cpu.h                   |  1 +
- 4 files changed, 100 insertions(+), 5 deletions(-)
+ hw/acpi/Kconfig                        |   3 +
+ hw/acpi/acpi-cpu-ospm-interface-stub.c |  41 ++
+ hw/acpi/cpu_ospm_interface.c           | 747 +++++++++++++++++++++++++
+ hw/acpi/meson.build                    |   2 +
+ hw/acpi/trace-events                   |  17 +
+ hw/arm/Kconfig                         |   1 +
+ include/hw/acpi/cpu_ospm_interface.h   |  78 +++
+ 7 files changed, 889 insertions(+)
+ create mode 100644 hw/acpi/acpi-cpu-ospm-interface-stub.c
+ create mode 100644 hw/acpi/cpu_ospm_interface.c
+ create mode 100644 include/hw/acpi/cpu_ospm_interface.h
 
-diff --git a/hw/intc/arm_gicv3_kvm.c b/hw/intc/arm_gicv3_kvm.c
-index e97578f59a..62d6016e8a 100644
---- a/hw/intc/arm_gicv3_kvm.c
-+++ b/hw/intc/arm_gicv3_kvm.c
-@@ -27,6 +27,7 @@
- #include "qemu/module.h"
- #include "system/kvm.h"
- #include "system/runstate.h"
-+#include "system/cpus.h"
- #include "kvm_arm.h"
- #include "gicv3_internal.h"
- #include "vgic_common.h"
-@@ -681,13 +682,73 @@ static void kvm_arm_gicv3_get(GICv3State *s)
-     }
- }
+diff --git a/hw/acpi/Kconfig b/hw/acpi/Kconfig
+index 1d4e9f0845..aa52f0468f 100644
+--- a/hw/acpi/Kconfig
++++ b/hw/acpi/Kconfig
+@@ -21,6 +21,9 @@ config ACPI_ICH9
+ config ACPI_CPU_HOTPLUG
+     bool
  
-+/* Caller must hold the iothread (BQL). */
-+static inline void
-+kvm_gicc_get_cached_icc_ctlr_el1(GICv3CPUState *c, uint64_t regval[2],
-+                                      bool *valid)
++config ACPI_CPU_OSPM_INTERFACE
++    bool
++
+ config ACPI_MEMORY_HOTPLUG
+     bool
+     select MEM_DEVICE
+diff --git a/hw/acpi/acpi-cpu-ospm-interface-stub.c b/hw/acpi/acpi-cpu-ospm-interface-stub.c
+new file mode 100644
+index 0000000000..f6f333f641
+--- /dev/null
++++ b/hw/acpi/acpi-cpu-ospm-interface-stub.c
+@@ -0,0 +1,41 @@
++/*
++ * ACPI CPU OSPM Interface Handling.
++ *
++ * Copyright (c) 2025 Huawei Technologies R&D (UK) Ltd.
++ *
++ * Author: Salil Mehta <salil.mehta@huawei.com>
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ */
++
++#include "qemu/osdep.h"
++#include "hw/acpi/cpu_ospm_interface.h"
++
++void acpi_cpu_device_check_cb(AcpiCpuOspmState *cpu_st, DeviceState *dev,
++                              uint32_t event_st, Error **errp)
 +{
-+    const uint64_t attr = (uint64_t)KVM_VGIC_ATTR(ICC_CTLR_EL1, c->gicr_typer);
-+    const int group = KVM_DEV_ARM_VGIC_GRP_CPU_SYSREGS;
-+    GICv3State *s = c->gic;
-+    uint64_t val = 0;
-+    int ret;
-+
-+    assert(regval && valid);
-+
-+    if (*valid) {
-+        /* Fast path: return cached (no vCPU pausing required). */
-+        c->icc_ctlr_el1[GICV3_NS] = regval[GICV3_NS];
-+        c->icc_ctlr_el1[GICV3_S] = regval[GICV3_S];
-+        return;
-+    }
-+
-+    ret = kvm_device_access(s->dev_fd, group, attr, &val, false, NULL);
-+    if (ret == -EBUSY || ret == -EAGAIN) {
-+        int tries;
-+
-+        /* One-time heavy path: avoid contention by pausing all vCPUs. */
-+        pause_all_vcpus();
-+        /*
-+         * Even with vCPUs paused, we cannot fully rule out a non-vCPU context
-+         * temporarily holding KVM vCPU mutexes; treat -EBUSY/-EAGAIN as
-+         * transient and retry a few times. Final attempt aborts in-loop.
-+         */
-+        for (tries = 0; tries < 5; tries++) {
-+            Error **errp = (tries == 4) ? &error_abort : NULL;
-+
-+            ret = kvm_device_access(s->dev_fd, group, attr, &val, false, errp);
-+            if (!ret) {
-+                break;
-+            }
-+            if (ret != -EBUSY && ret != -EAGAIN) {
-+               error_setg_errno(&error_abort, -ret,
-+                                "KVM_GET_DEVICE_ATTR failed: Group %d "
-+                                "attr 0x%016" PRIx64, group, attr);
-+               /* not reached */
-+            }
-+            g_usleep(50);
-+        }
-+        resume_all_vcpus();
-+    }
-+
-+    /* Success: publish and seed cache. */
-+    c->icc_ctlr_el1[GICV3_NS] = val;
-+    c->icc_ctlr_el1[GICV3_S] = val;
-+
-+    regval[GICV3_NS] = c->icc_ctlr_el1[GICV3_NS];
-+    regval[GICV3_S] = c->icc_ctlr_el1[GICV3_S];
-+    *valid = true;
 +}
 +
- static void arm_gicv3_icc_reset(CPUARMState *env, const ARMCPRegInfo *ri)
- {
-     GICv3State *s;
-     GICv3CPUState *c;
-+    ARMCPU *cpu;
- 
-     c = (GICv3CPUState *)env->gicv3state;
-     s = c->gic;
-+    cpu = ARM_CPU(c->cpu);
- 
-     c->icc_pmr_el1 = 0;
-     /*
-@@ -713,11 +774,33 @@ static void arm_gicv3_icc_reset(CPUARMState *env, const ARMCPRegInfo *ri)
-     }
- 
-     /* Initialize to actual HW supported configuration */
--    kvm_device_access(s->dev_fd, KVM_DEV_ARM_VGIC_GRP_CPU_SYSREGS,
--                      KVM_VGIC_ATTR(ICC_CTLR_EL1, c->gicr_typer),
--                      &c->icc_ctlr_el1[GICV3_NS], false, &error_abort);
--
--    c->icc_ctlr_el1[GICV3_S] = c->icc_ctlr_el1[GICV3_NS];
-+    /*
-+     * Avoid racy VGIC CPU sysreg reads while vCPUs are running. KVM requires
-+     * pausing all vCPUs for ICC_* sysregs accesses to prevent races with
-+     * in-flight IRQ delivery (e.g. EOImode etc.).
-+     *
-+     * To keep the reset path fast, cache the architectural default and the
-+     * guest GICv3 driver configured ICC_CTLR_EL1 on the first access and then
-+     * reuse that for subsequent resets. Most fields in this register are
-+     * invariants throughout the life of VM. Fields EOImode, PMHE and CBPR are
-+     * pseudo static and dont change once configured by guest driver.
-+     */
-+    if (cpu->first_psci_on_request_seen || s->guest_gicc_initialized) {
-+        if (!s->guest_gicc_initialized) {
-+            s->guest_gicc_initialized = true;
++void acpi_cpu_eject_request_cb(AcpiCpuOspmState *cpu_st, DeviceState *dev,
++                               uint32_t event_st, Error **errp)
++{
++}
++
++void acpi_cpu_eject_cb(AcpiCpuOspmState *cpu_st, DeviceState *dev, Error **errp)
++{
++}
++
++void acpi_cpu_ospm_state_interface_init(MemoryRegion *as, Object *owner,
++                                        AcpiCpuOspmState *state,
++                                        hwaddr base_addr)
++{
++}
++
++void acpi_cpus_ospm_status(AcpiCpuOspmState *cpu_st, ACPIOSTInfoList ***list)
++{
++}
+diff --git a/hw/acpi/cpu_ospm_interface.c b/hw/acpi/cpu_ospm_interface.c
+new file mode 100644
+index 0000000000..61aab8a793
+--- /dev/null
++++ b/hw/acpi/cpu_ospm_interface.c
+@@ -0,0 +1,747 @@
++/*
++ * ACPI CPU OSPM Interface Handling.
++ *
++ * Copyright (c) 2025 Huawei Technologies R&D (UK) Ltd.
++ *
++ * Author: Salil Mehta <salil.mehta@huawei.com>
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ */
++
++#include "qemu/osdep.h"
++#include "migration/vmstate.h"
++#include "hw/core/cpu.h"
++#include "qapi/error.h"
++#include "trace.h"
++#include "qapi/qapi-events-acpi.h"
++#include "hw/acpi/cpu_ospm_interface.h"
++
++/* CPU identifier and resource device */
++#define CPU_NAME_FMT      "C%.03X" /* CPU name format (e.g., C001) */
++#define CPU_RES_DEVICE    "CPUR" /* CPU resource device name */
++#define CPU_DEVICE        "CPUS" /* CPUs device name */
++#define CPU_LOCK          "CPLK" /* CPU lock object */
++/* ACPI method(_STA, _EJ0, etc.) handlers */
++#define CPU_STS_METHOD    "CSTA" /* CPU status method (_STA.Enabled) */
++#define CPU_SCAN_METHOD   "CSCN" /* CPU scan method for enumeration */
++#define CPU_NOTIFY_METHOD "CTFY" /* Notify method for CPU events */
++#define CPU_EJECT_METHOD  "CEJ0" /* CPU eject method (_EJ0) */
++#define CPU_OST_METHOD    "COST" /* OSPM status reporting (_OST) */
++/* CPU MMIO region fields (in PRST region) */
++#define CPU_SELECTOR      "CSEL" /* CPU selector index (WO) */
++#define CPU_ENABLED_F     "CPEN" /* Flag: CPU enabled status(_STA) (RO) */
++#define CPU_DEVCHK_F      "CDCK" /* Flag: Device-check event (RW) */
++#define CPU_EJECTRQ_F     "CEJR" /* Flag: Eject-request event (RW)*/
++#define CPU_EJECT_F       "CEJ0" /* Flag: Ejection trigger (WO) */
++#define CPU_COMMAND       "CCMD" /* Command register (RW) */
++#define CPU_DATA          "CDAT" /* Data register (RW) */
++
++ /*
++ * CPU OSPM Interface MMIO Layout (Total: 16 bytes)
++ *
++ * +--------+--------+--------+--------+--------+--------+--------+--------+
++ * |  0x00  |  0x01  |  0x02  |  0x03  |  0x04  |  0x05  |  0x06  |  0x07  |
++ * +--------+--------+--------+--------+--------+--------+--------+--------+
++ * |       Selector (DWord, write-only)         | Flags  |Command |Reserved|
++ * |                                            | (RO/RW)|  (WO)  |(2B pad)|
++ * |        4 bytes (32 bits)                   | 1B     |   1B   | 2B     |
++ * +-----------------------------------------------------------------------+
++ * |  0x08  |  0x09  |  0x0A  |  0x0B  |  0x0C  |  0x0D  |  0x0E  |  0x0F  |
++ * +--------+--------+--------+--------+--------+--------+--------+--------+
++ * |                        Data (QWord, read/write)                       |
++ * |               Used by CPU scan and _OST methods (64 bits)             |
++ * +-----------------------------------------------------------------------+
++ *
++ * Field Overview:
++ *
++ * - Selector: 4 bytes @0x00 (DWord, WO)
++ *               - Selects target CPU index for the current operation.
++ * - Flags:    1 byte  @0x04 (RO/RW)
++ *               - Bit 0: ENABLED  – CPU is powered on (RO)
++ *               - Bit 1: DEVCHK   – Device-check completed (RW)
++ *               - Bit 2: EJECTRQ  – Guest requests CPU eject (RW)
++ *               - Bit 3: EJECT    – Trigger CPU ejection (WO)
++ *               - Bits 4–7: Reserved (write 0)
++ * - Command:  1 byte  @0x05 (WO)
++ *               - Specifies control operation (e.g., scan, _OST, eject).
++ * - Reserved: 2 bytes @0x06–0x07
++ *               - Alignment padding; must be zero on write.
++ * - Data:     8 bytes @0x08 (QWord, RW)
++ *               - Input/output for command-specific data.
++ *               - Used by CPU scan or _OST.
++ */
++
++/*
++ * Macros defining the CPU MMIO region layout. Change field sizes here to
++ * alter the overall MMIO region size.
++ */
++/* Sub-Field sizes (in bytes) */
++#define ACPI_CPU_MR_SELECTOR_SIZE  4 /* Write-only (DWord access) */
++#define ACPI_CPU_MR_FLAGS_SIZE     1 /* Read-write (Byte access) */
++#define ACPI_CPU_MR_RES_FLAGS_SIZE 0 /* Reserved padding */
++#define ACPI_CPU_MR_CMD_SIZE       1 /* Write-only (Byte access) */
++#define ACPI_CPU_MR_RES_CMD_SIZE   2 /* Reserved padding */
++#define ACPI_CPU_MR_CMD_DATA_SIZE  8 /* Read-write (QWord access) */
++
++#define ACPI_CPU_OSPM_IF_MAX_FIELD_SIZE \
++    MAX_CONST(ACPI_CPU_MR_CMD_DATA_SIZE, \
++    MAX_CONST(ACPI_CPU_MR_SELECTOR_SIZE, \
++    MAX_CONST(ACPI_CPU_MR_CMD_SIZE, ACPI_CPU_MR_FLAGS_SIZE)))
++
++/* Validate layout against exported total length */
++_Static_assert(ACPI_CPU_OSPM_IF_REG_LEN ==
++               (ACPI_CPU_MR_SELECTOR_SIZE +
++                ACPI_CPU_MR_FLAGS_SIZE +
++                ACPI_CPU_MR_RES_FLAGS_SIZE +
++                ACPI_CPU_MR_CMD_SIZE +
++                ACPI_CPU_MR_RES_CMD_SIZE +
++                ACPI_CPU_MR_CMD_DATA_SIZE),
++               "ACPI_CPU_OSPM_IF_REG_LEN mismatch with internal MMIO layout");
++
++/* Sub-Field sizes (in bits) */
++#define ACPI_CPU_MR_SELECTOR_SIZE_BITS \
++    (ACPI_CPU_MR_SELECTOR_SIZE * BITS_PER_BYTE)  /* Write-only (DWord Acc) */
++#define ACPI_CPU_MR_FLAGS_SIZE_BITS \
++    (ACPI_CPU_MR_FLAGS_SIZE * BITS_PER_BYTE)     /* Read-write (Byte Acc) */
++#define ACPI_CPU_MR_RES_FLAGS_SIZE_BITS \
++    (ACPI_CPU_MR_RES_FLAGS_SIZE * BITS_PER_BYTE) /* Reserved padding */
++#define ACPI_CPU_MR_CMD_SIZE_BITS \
++    (ACPI_CPU_MR_CMD_SIZE * BITS_PER_BYTE)       /* Write-only (Byte Acc) */
++#define ACPI_CPU_MR_RES_CMD_SIZE_BITS \
++    (ACPI_CPU_MR_RES_CMD_SIZE * BITS_PER_BYTE)   /* Reserved padding */
++#define ACPI_CPU_MR_CMD_DATA_SIZE_BITS \
++    (ACPI_CPU_MR_CMD_DATA_SIZE * BITS_PER_BYTE)  /* Read-write (QWord Acc) */
++
++/* Field offsets (in bytes) */
++#define ACPI_CPU_MR_SELECTOR_OFFSET_WO  0
++#define ACPI_CPU_MR_FLAGS_OFFSET_RW \
++    (ACPI_CPU_MR_SELECTOR_OFFSET_WO + \
++     ACPI_CPU_MR_SELECTOR_SIZE)
++#define ACPI_CPU_MR_CMD_OFFSET_WO \
++    (ACPI_CPU_MR_FLAGS_OFFSET_RW + \
++     ACPI_CPU_MR_FLAGS_SIZE + \
++     ACPI_CPU_MR_RES_FLAGS_SIZE)
++#define ACPI_CPU_MR_CMD_DATA_OFFSET_RW \
++    (ACPI_CPU_MR_CMD_OFFSET_WO + \
++     ACPI_CPU_MR_CMD_SIZE + \
++     ACPI_CPU_MR_RES_CMD_SIZE)
++
++/* ensure all offsets are at their natural size alignment boundaries */
++#define STATIC_ASSERT_FIELD_ALIGNMENT(offset, type, field_name)               \
++    _Static_assert((offset) % sizeof(type) == 0,                              \
++                   field_name " is not aligned to its natural boundary")
++
++STATIC_ASSERT_FIELD_ALIGNMENT(ACPI_CPU_MR_SELECTOR_OFFSET_WO,
++                              uint32_t, "Selector");
++STATIC_ASSERT_FIELD_ALIGNMENT(ACPI_CPU_MR_FLAGS_OFFSET_RW,
++                              uint8_t, "Flags");
++STATIC_ASSERT_FIELD_ALIGNMENT(ACPI_CPU_MR_CMD_OFFSET_WO,
++                              uint8_t, "Command");
++STATIC_ASSERT_FIELD_ALIGNMENT(ACPI_CPU_MR_CMD_DATA_OFFSET_RW,
++                              uint64_t, "Command Data");
++
++/* Flag bit positions (used within 'flags' subfield) */
++#define ACPI_CPU_FLAGS_USED_BITS 4
++#define ACPI_CPU_MR_FLAGS_BIT_ENABLED BIT(0)
++#define ACPI_CPU_MR_FLAGS_BIT_DEVCHK  BIT(1)
++#define ACPI_CPU_MR_FLAGS_BIT_EJECTRQ BIT(2)
++#define ACPI_CPU_MR_FLAGS_BIT_EJECT   BIT(ACPI_CPU_FLAGS_USED_BITS - 1)
++
++#define ACPI_CPU_MR_RES_FLAG_BITS (BITS_PER_BYTE - ACPI_CPU_FLAGS_USED_BITS)
++
++enum {
++    ACPI_GET_NEXT_CPU_WITH_EVENT_CMD = 0,
++    ACPI_OST_EVENT_CMD = 1,
++    ACPI_OST_STATUS_CMD = 2,
++    ACPI_CMD_MAX
++};
++
++#define AML_APPEND_MR_RESVD_FIELD(mr_field, size_bits)       \
++    do {                                                        \
++        if ((size_bits) != 0) {                                 \
++            aml_append((mr_field), aml_reserved_field(size_bits)); \
++        }                                                       \
++    } while (0)
++
++#define AML_APPEND_MR_NAMED_FIELD(mr_field, name, size_bits)    \
++    do {                                                        \
++        if ((size_bits) != 0) {                                 \
++            aml_append((mr_field), aml_named_field((name), (size_bits))); \
++        }                                                       \
++    } while (0)
++
++#define AML_CPU_RES_DEV(base, field) \
++        aml_name("%s.%s.%s", (base), CPU_RES_DEVICE, (field))
++
++static ACPIOSTInfo *
++acpi_cpu_ospm_ost_status(int idx, AcpiCpuOspmStateStatus *cdev)
++{
++    ACPIOSTInfo *info = g_new0(ACPIOSTInfo, 1);
++
++    info->source = cdev->ost_event;
++    info->status = cdev->ost_status;
++    if (cdev->cpu) {
++        DeviceState *dev = DEVICE(cdev->cpu);
++        if (dev->id) {
++            info->device = g_strdup(dev->id);
 +        }
-+        kvm_gicc_get_cached_icc_ctlr_el1(c, c->icc_ctlr_configured,
-+                                         &c->icc_ctlr_configured_valid);
-+    } else {
-+        /*
-+         * kernel has not loded yet. It safe to assume not other vCPU is in
-+         * KVM_RUN except vCPU 0 at this moment. Just in case, if there is
-+         * other priviledged context of KVM accessing the register then we
-+         * KVM device access can potentially return -EBUSY.
-+         */
-+        kvm_gicc_get_cached_icc_ctlr_el1(c, c->icc_ctlr_arch_def,
-+                                         &c->icc_ctlr_arch_def_valid);
 +    }
- }
- 
- static void kvm_arm_gicv3_reset_hold(Object *obj, ResetType type)
-diff --git a/include/hw/intc/arm_gicv3_common.h b/include/hw/intc/arm_gicv3_common.h
-index a8a84c4687..0282a94edc 100644
---- a/include/hw/intc/arm_gicv3_common.h
-+++ b/include/hw/intc/arm_gicv3_common.h
-@@ -165,6 +165,15 @@ struct GICv3CPUState {
-     uint64_t icc_apr[3][4];
-     uint64_t icc_igrpen[3];
-     uint64_t icc_ctlr_el3;
++    return info;
++}
++
++void acpi_cpus_ospm_status(AcpiCpuOspmState *cpu_st, ACPIOSTInfoList ***list)
++{
++    ACPIOSTInfoList ***tail = list;
++    int i;
++
++    for (i = 0; i < cpu_st->dev_count; i++) {
++        QAPI_LIST_APPEND(*tail, acpi_cpu_ospm_ost_status(i, &cpu_st->devs[i]));
++    }
++}
++
++static uint64_t
++acpi_cpu_ospm_intf_mr_read(void *opaque, hwaddr addr, unsigned size)
++{
++    AcpiCpuOspmState *cpu_st = opaque;
++    AcpiCpuOspmStateStatus *cdev;
++    uint64_t val = 0;
++
++    if (cpu_st->selector >= cpu_st->dev_count) {
++        return val;
++    }
++    cdev = &cpu_st->devs[cpu_st->selector];
++    switch (addr) {
++    case ACPI_CPU_MR_FLAGS_OFFSET_RW:
++        val |= qdev_check_enabled(DEVICE(cdev->cpu)) ?
++                                  ACPI_CPU_MR_FLAGS_BIT_ENABLED : 0;
++        val |= cdev->devchk_pending ? ACPI_CPU_MR_FLAGS_BIT_DEVCHK : 0;
++        val |= cdev->ejrqst_pending ? ACPI_CPU_MR_FLAGS_BIT_EJECTRQ : 0;
++        trace_acpi_cpuos_if_read_flags(cpu_st->selector, val);
++        break;
++    case ACPI_CPU_MR_CMD_DATA_OFFSET_RW:
++        switch (cpu_st->command) {
++        case ACPI_GET_NEXT_CPU_WITH_EVENT_CMD:
++           val = cpu_st->selector;
++           break;
++        default:
++           trace_acpi_cpuos_if_read_invalid_cmd_data(cpu_st->selector,
++                                                     cpu_st->command);
++           break;
++        }
++        trace_acpi_cpuos_if_read_cmd_data(cpu_st->selector, val);
++        break;
++    default:
++        break;
++    }
++    return val;
++}
++
++static void
++acpi_cpu_ospm_intf_mr_write(void *opaque, hwaddr addr, uint64_t data,
++                            unsigned int size)
++{
++    AcpiCpuOspmState *cpu_st = opaque;
++    AcpiCpuOspmStateStatus *cdev;
++    ACPIOSTInfo *info;
++
++    assert(cpu_st->dev_count);
++    if (addr) {
++        if (cpu_st->selector >= cpu_st->dev_count) {
++            trace_acpi_cpuos_if_invalid_idx_selected(cpu_st->selector);
++            return;
++        }
++    }
++
++    switch (addr) {
++    case ACPI_CPU_MR_SELECTOR_OFFSET_WO: /* current CPU selector */
++        cpu_st->selector = data;
++        trace_acpi_cpuos_if_write_idx(cpu_st->selector);
++        break;
++    case ACPI_CPU_MR_FLAGS_OFFSET_RW: /* set is_* fields  */
++        cdev = &cpu_st->devs[cpu_st->selector];
++        if (data & ACPI_CPU_MR_FLAGS_BIT_DEVCHK) {
++            /* clear device-check pending event */
++            cdev->devchk_pending = false;
++            trace_acpi_cpuos_if_clear_devchk_evt(cpu_st->selector);
++        } else if (data & ACPI_CPU_MR_FLAGS_BIT_EJECTRQ) {
++            /* clear eject-request pending event */
++            cdev->ejrqst_pending = false;
++            trace_acpi_cpuos_if_clear_ejrqst_evt(cpu_st->selector);
++        } else if (data & ACPI_CPU_MR_FLAGS_BIT_EJECT) {
++            DeviceState *dev = NULL;
++            if (!cdev->cpu || cdev->cpu == first_cpu) {
++                trace_acpi_cpuos_if_ejecting_invalid_cpu(cpu_st->selector);
++                break;
++            }
++            /*
++             * OSPM has returned with eject. Hence, it is now safe to put the
++             * cpu device on powered-off state.
++             */
++            trace_acpi_cpuos_if_ejecting_cpu(cpu_st->selector);
++            dev = DEVICE(cdev->cpu);
++            qdev_sync_disable(dev, &error_fatal);
++        }
++        break;
++    case ACPI_CPU_MR_CMD_OFFSET_WO:
++        trace_acpi_cpuos_if_write_cmd(cpu_st->selector, data);
++        if (data < ACPI_CMD_MAX) {
++            cpu_st->command = data;
++            if (cpu_st->command == ACPI_GET_NEXT_CPU_WITH_EVENT_CMD) {
++                uint32_t iter = cpu_st->selector;
++
++                do {
++                    cdev = &cpu_st->devs[iter];
++                    if (cdev->devchk_pending || cdev->ejrqst_pending) {
++                        cpu_st->selector = iter;
++                        trace_acpi_cpuos_if_cpu_has_events(cpu_st->selector,
++                            cdev->devchk_pending, cdev->ejrqst_pending);
++                        break;
++                    }
++                    iter = iter + 1 < cpu_st->dev_count ? iter + 1 : 0;
++                } while (iter != cpu_st->selector);
++            }
++        }
++        break;
++    case ACPI_CPU_MR_CMD_DATA_OFFSET_RW:
++        switch (cpu_st->command) {
++        case ACPI_OST_EVENT_CMD: {
++           cdev = &cpu_st->devs[cpu_st->selector];
++           cdev->ost_event = data;
++           trace_acpi_cpuos_if_write_ost_ev(cpu_st->selector, cdev->ost_event);
++           break;
++        }
++        case ACPI_OST_STATUS_CMD: {
++           cdev = &cpu_st->devs[cpu_st->selector];
++           cdev->ost_status = data;
++           info = acpi_cpu_ospm_ost_status(cpu_st->selector, cdev);
++           qapi_event_send_acpi_device_ost(info);
++           qapi_free_ACPIOSTInfo(info);
++           trace_acpi_cpuos_if_write_ost_status(cpu_st->selector,
++                                                cdev->ost_status);
++           break;
++        }
++        default:
++           trace_acpi_cpuos_if_write_invalid_cmd(cpu_st->selector,
++                                                 cpu_st->command);
++           break;
++        }
++        break;
++    default:
++        trace_acpi_cpuos_if_write_invalid_offset(cpu_st->selector, addr);
++        break;
++    }
++}
++
++static const MemoryRegionOps cpu_common_mr_ops = {
++    .read = acpi_cpu_ospm_intf_mr_read,
++    .write = acpi_cpu_ospm_intf_mr_write,
++    .endianness = DEVICE_LITTLE_ENDIAN,
++    .valid = {
++        .min_access_size = 1,
++        .max_access_size = ACPI_CPU_OSPM_IF_MAX_FIELD_SIZE,
++    },
++    .impl = {
++        .min_access_size = 1,
++        .max_access_size = ACPI_CPU_OSPM_IF_MAX_FIELD_SIZE,
++        .unaligned = false,
++    },
++};
++
++void acpi_cpu_ospm_state_interface_init(MemoryRegion *as, Object *owner,
++                                        AcpiCpuOspmState *state,
++                                        hwaddr base_addr)
++{
++    MachineState *machine = MACHINE(qdev_get_machine());
++    MachineClass *mc = MACHINE_GET_CLASS(machine);
++    const CPUArchIdList *id_list;
++    int i;
++
++    assert(mc->possible_cpu_arch_ids);
++    id_list = mc->possible_cpu_arch_ids(machine);
++    state->dev_count = id_list->len;
++    state->devs = g_new0(typeof(*state->devs), state->dev_count);
++    for (i = 0; i < id_list->len; i++) {
++        state->devs[i].cpu =  CPU(id_list->cpus[i].cpu);
++        state->devs[i].arch_id = id_list->cpus[i].arch_id;
++    }
++    memory_region_init_io(&state->ctrl_reg, owner, &cpu_common_mr_ops, state,
++                          "ACPI CPU OSPM State Interface Memory Region",
++                          ACPI_CPU_OSPM_IF_REG_LEN);
++    memory_region_add_subregion(as, base_addr, &state->ctrl_reg);
++}
++
++static AcpiCpuOspmStateStatus *
++acpi_get_cpu_status(AcpiCpuOspmState *cpu_st, DeviceState *dev)
++{
++    CPUClass *k = CPU_GET_CLASS(dev);
++    uint64_t cpu_arch_id = k->get_arch_id(CPU(dev));
++    int i;
++
++    for (i = 0; i < cpu_st->dev_count; i++) {
++        if (cpu_arch_id == cpu_st->devs[i].arch_id) {
++            return &cpu_st->devs[i];
++        }
++    }
++    return NULL;
++}
++
++void acpi_cpu_device_check_cb(AcpiCpuOspmState *cpu_st, DeviceState *dev,
++                              uint32_t event_st, Error **errp)
++{
++    AcpiCpuOspmStateStatus *cdev;
++    cdev = acpi_get_cpu_status(cpu_st, dev);
++    if (!cdev) {
++        return;
++    }
++    assert(cdev->cpu);
++
 +    /*
-+     * Shadow copy of ICC_CTLR_EL1 architectural default. Fetched once per-vCPU
-+     * when no vCPUs are running, and reused on reset to avoid calling
-+     * kvm_device_access() in the hot path.
++     * Tell OSPM via GED IRQ(GSI) that a powered-off cpu is being powered-on.
++     * Also, mark 'device-check' event pending for this cpu. This will
++     * eventually result in OSPM evaluating the ACPI _EVT method and scan of
++     * cpus
 +     */
-+    uint64_t icc_ctlr_arch_def[2]; /* per-secstate (NS=0,S=1) */
-+    bool icc_ctlr_arch_def_valid;
-+    uint64_t icc_ctlr_configured[2];
-+    bool icc_ctlr_configured_valid;
-     bool gicc_accessible;
++    cdev->devchk_pending = true;
++    acpi_send_event(cpu_st->acpi_dev, event_st);
++}
++
++void acpi_cpu_eject_request_cb(AcpiCpuOspmState *cpu_st, DeviceState *dev,
++                              uint32_t event_st, Error **errp)
++{
++    AcpiCpuOspmStateStatus *cdev;
++    cdev = acpi_get_cpu_status(cpu_st, dev);
++    if (!cdev) {
++        return;
++    }
++    assert(cdev->cpu);
++
++    /*
++     * Tell OSPM via GED IRQ(GSI) that a cpu wants to power-off or go on standby
++     * Also,mark 'eject-request' event pending for this cpu. (graceful shutdown)
++     */
++    cdev->ejrqst_pending = true;
++    acpi_send_event(cpu_st->acpi_dev, event_st);
++}
++
++void
++acpi_cpu_eject_cb(AcpiCpuOspmState *cpu_st, DeviceState *dev, Error **errp)
++{
++    /* TODO: possible handling here */
++}
++
++static const VMStateDescription vmstate_cpu_ospm_state_sts = {
++    .name = "CPU OSPM state status",
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .fields = (const VMStateField[]) {
++        VMSTATE_BOOL(devchk_pending, AcpiCpuOspmStateStatus),
++        VMSTATE_BOOL(ejrqst_pending, AcpiCpuOspmStateStatus),
++        VMSTATE_UINT32(ost_event, AcpiCpuOspmStateStatus),
++        VMSTATE_UINT32(ost_status, AcpiCpuOspmStateStatus),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
++const VMStateDescription vmstate_cpu_ospm_state = {
++    .name = "CPU OSPM state",
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .fields = (const VMStateField[]) {
++        VMSTATE_UINT32(selector, AcpiCpuOspmState),
++        VMSTATE_UINT8(command, AcpiCpuOspmState),
++        VMSTATE_STRUCT_VARRAY_POINTER_UINT32(devs, AcpiCpuOspmState,
++                                             dev_count,
++                                             vmstate_cpu_ospm_state_sts,
++                                             AcpiCpuOspmStateStatus),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
++void acpi_build_cpus_aml(Aml *table, hwaddr base_addr, const char *root,
++                         const char *event_handler_method)
++{
++    MachineState *machine = MACHINE(qdev_get_machine());
++    MachineClass *mc = MACHINE_GET_CLASS(machine);
++    const CPUArchIdList *arch_ids = mc->possible_cpu_arch_ids(machine);
++    Aml *sb_scope = aml_scope("_SB"); /* System Bus Scope */
++    Aml *ifctx, *field, *method, *cpu_res_dev, *cpus_dev;
++    Aml *zero = aml_int(0);
++    Aml *one = aml_int(1);
++
++    cpu_res_dev = aml_device("%s.%s", root, CPU_RES_DEVICE);
++    {
++        Aml *crs;
++
++        aml_append(cpu_res_dev,
++            aml_name_decl("_HID", aml_eisaid("PNP0A06")));
++        aml_append(cpu_res_dev,
++            aml_name_decl("_UID", aml_string("CPU OSPM Interface resources")));
++        aml_append(cpu_res_dev, aml_mutex(CPU_LOCK, 0));
++
++        crs = aml_resource_template();
++        aml_append(crs, aml_memory32_fixed(base_addr, ACPI_CPU_OSPM_IF_REG_LEN,
++                   AML_READ_WRITE));
++
++        aml_append(cpu_res_dev, aml_name_decl("_CRS", crs));
++
++        /* declare CPU OSPM Interface MMIO region related access fields */
++        aml_append(cpu_res_dev,
++                   aml_operation_region("PRST", AML_SYSTEM_MEMORY,
++                                        aml_int(base_addr),
++                                        ACPI_CPU_OSPM_IF_REG_LEN));
++
++        /*
++         * define named fields within PRST region with 'Byte' access widths
++         * and reserve fields with other access width
++         */
++        field = aml_field("PRST", AML_BYTE_ACC, AML_NOLOCK, AML_PRESERVE);
++        /* reserve CPU 'selector' field (size in bits) */
++        AML_APPEND_MR_RESVD_FIELD(field, ACPI_CPU_MR_SELECTOR_SIZE_BITS);
++        /* Flag::Enabled Bit(RO) - Read '1' if enabled */
++        AML_APPEND_MR_NAMED_FIELD(field, CPU_ENABLED_F, 1);
++        /* Flag::Devchk Bit(RW) - Read '1', has a event. Write '1', to clear */
++        AML_APPEND_MR_NAMED_FIELD(field, CPU_DEVCHK_F, 1);
++        /* Flag::Ejectrq Bit(RW) - Read 1, has event. Write 1 to clear */
++        AML_APPEND_MR_NAMED_FIELD(field, CPU_EJECTRQ_F, 1);
++        /* Flag::Eject Bit(WO) - OSPM evals _EJx, initiates CPU Eject in Qemu*/
++        AML_APPEND_MR_NAMED_FIELD(field, CPU_EJECT_F, 1);
++        /* Flag::Bit(ACPI_CPU_FLAGS_USED_BITS)-Bit(7) - Reserve left over bits*/
++        AML_APPEND_MR_RESVD_FIELD(field, ACPI_CPU_MR_RES_FLAG_BITS);
++        /* Reserved space: padding after flags */
++        AML_APPEND_MR_RESVD_FIELD(field, ACPI_CPU_MR_RES_FLAGS_SIZE_BITS);
++        /* Command field written by OSPM */
++        AML_APPEND_MR_NAMED_FIELD(field, CPU_COMMAND,
++                                  ACPI_CPU_MR_CMD_SIZE_BITS);
++        /* Reserved space: padding after command field */
++        AML_APPEND_MR_RESVD_FIELD(field, ACPI_CPU_MR_RES_CMD_SIZE_BITS);
++        /* Command data: 64-bit payload associated with command */
++        AML_APPEND_MR_RESVD_FIELD(field, ACPI_CPU_MR_CMD_DATA_SIZE_BITS);
++        aml_append(cpu_res_dev, field);
++
++        /*
++         * define named fields with 'Dword' access widths and reserve fields
++         * with other access width
++         */
++        field = aml_field("PRST", AML_DWORD_ACC, AML_NOLOCK, AML_PRESERVE);
++        /* CPU selector, write only */
++        AML_APPEND_MR_NAMED_FIELD(field, CPU_SELECTOR,
++                                  ACPI_CPU_MR_SELECTOR_SIZE_BITS);
++        aml_append(cpu_res_dev, field);
++
++        /*
++         * define named fields with 'Qword' access widths and reserve fields
++         * with other access width
++         */
++        field = aml_field("PRST", AML_QWORD_ACC, AML_NOLOCK, AML_PRESERVE);
++        /*
++         * Reserve space: selector, flags, reserved flags, command, reserved
++         * command for Qword alignment.
++         */
++        AML_APPEND_MR_RESVD_FIELD(field, ACPI_CPU_MR_SELECTOR_SIZE_BITS +
++                                            ACPI_CPU_MR_FLAGS_SIZE_BITS +
++                                            ACPI_CPU_MR_RES_FLAGS_SIZE_BITS +
++                                            ACPI_CPU_MR_CMD_SIZE_BITS +
++                                            ACPI_CPU_MR_RES_CMD_SIZE_BITS);
++        /* Command data accessible via Qword */
++        AML_APPEND_MR_NAMED_FIELD(field, CPU_DATA,
++                                  ACPI_CPU_MR_CMD_DATA_SIZE_BITS);
++        aml_append(cpu_res_dev, field);
++    }
++    aml_append(sb_scope, cpu_res_dev);
++
++    cpus_dev = aml_device("%s.%s", root, CPU_DEVICE);
++    {
++        Aml *ctrl_lock = AML_CPU_RES_DEV(root, CPU_LOCK);
++        Aml *cpu_selector = AML_CPU_RES_DEV(root, CPU_SELECTOR);
++        Aml *is_enabled = AML_CPU_RES_DEV(root, CPU_ENABLED_F);
++        Aml *dvchk_evt = AML_CPU_RES_DEV(root, CPU_DEVCHK_F);
++        Aml *ejrq_evt = AML_CPU_RES_DEV(root, CPU_EJECTRQ_F);
++        Aml *ej_evt = AML_CPU_RES_DEV(root, CPU_EJECT_F);
++        Aml *cpu_cmd = AML_CPU_RES_DEV(root, CPU_COMMAND);
++        Aml *cpu_data = AML_CPU_RES_DEV(root, CPU_DATA);
++        int i;
++
++        aml_append(cpus_dev, aml_name_decl("_HID", aml_string("ACPI0010")));
++        aml_append(cpus_dev, aml_name_decl("_CID", aml_eisaid("PNP0A05")));
++
++        method = aml_method(CPU_NOTIFY_METHOD, 2, AML_NOTSERIALIZED);
++        for (i = 0; i < arch_ids->len; i++) {
++            Aml *cpu = aml_name(CPU_NAME_FMT, i);
++            Aml *uid = aml_arg(0);
++            Aml *event = aml_arg(1);
++
++            ifctx = aml_if(aml_equal(uid, aml_int(i)));
++            {
++                aml_append(ifctx, aml_notify(cpu, event));
++            }
++            aml_append(method, ifctx);
++        }
++        aml_append(cpus_dev, method);
++
++        method = aml_method(CPU_STS_METHOD, 1, AML_SERIALIZED);
++        {
++            Aml *idx = aml_arg(0);
++            Aml *sta = aml_local(0);
++            Aml *else_ctx;
++
++            aml_append(method, aml_acquire(ctrl_lock, 0xFFFF));
++            aml_append(method, aml_store(idx, cpu_selector));
++            aml_append(method, aml_store(zero, sta));
++            ifctx = aml_if(aml_equal(is_enabled, one));
++            {
++                /* cpu is present and enabled */
++                aml_append(ifctx, aml_store(aml_int(0xF), sta));
++            }
++            aml_append(method, ifctx);
++            else_ctx = aml_else();
++            {
++                /* cpu is present but disabled */
++                aml_append(else_ctx, aml_store(aml_int(0xD), sta));
++            }
++            aml_append(method, else_ctx);
++            aml_append(method, aml_release(ctrl_lock));
++            aml_append(method, aml_return(sta));
++        }
++        aml_append(cpus_dev, method);
++
++        method = aml_method(CPU_EJECT_METHOD, 1, AML_SERIALIZED);
++        {
++            Aml *idx = aml_arg(0);
++
++            aml_append(method, aml_acquire(ctrl_lock, 0xFFFF));
++            aml_append(method, aml_store(idx, cpu_selector));
++            aml_append(method, aml_store(one, ej_evt));
++            aml_append(method, aml_release(ctrl_lock));
++        }
++        aml_append(cpus_dev, method);
++
++        method = aml_method(CPU_SCAN_METHOD, 0, AML_SERIALIZED);
++        {
++            Aml *has_event = aml_local(0); /* Local0: Loop control flag */
++            Aml *uid = aml_local(1); /* Local1: Current CPU UID */
++            /* Constants */
++            Aml *dev_chk = aml_int(1); /* Notify: device check to enable */
++            Aml *eject_req = aml_int(3); /* Notify: eject for removal */
++            Aml *next_cpu_cmd = aml_int(ACPI_GET_NEXT_CPU_WITH_EVENT_CMD);
++
++            /* Acquire CPU lock */
++            aml_append(method, aml_acquire(ctrl_lock, 0xFFFF));
++
++            /* Initialize loop */
++            aml_append(method, aml_store(zero, uid));
++            aml_append(method, aml_store(one, has_event));
++
++            Aml *while_ctx = aml_while(aml_land(
++                aml_equal(has_event, one),
++                aml_lless(uid, aml_int(arch_ids->len))
++            ));
++            {
++                aml_append(while_ctx, aml_store(zero, has_event));
++                /*
++                 * Issue scan cmd: QEMU will return next CPU with event in
++                 * cpu_data
++                 */
++                aml_append(while_ctx, aml_store(uid, cpu_selector));
++                aml_append(while_ctx, aml_store(next_cpu_cmd, cpu_cmd));
++
++                /* If scan wrapped around to an earlier UID, exit loop */
++                Aml *wrap_check = aml_if(aml_lless(cpu_data, uid));
++                aml_append(wrap_check, aml_break());
++                aml_append(while_ctx, wrap_check);
++
++                /* Set UID to scanned result */
++                aml_append(while_ctx, aml_store(cpu_data, uid));
++
++                /* send CPU device-check(resume) event to OSPM */
++                Aml *if_devchk = aml_if(aml_equal(dvchk_evt, one));
++                {
++                    aml_append(if_devchk,
++                        aml_call2(CPU_NOTIFY_METHOD, uid, dev_chk));
++                    /* clear local device-check event sent flag */
++                    aml_append(if_devchk, aml_store(one, dvchk_evt));
++                    aml_append(if_devchk, aml_store(one, has_event));
++                }
++                aml_append(while_ctx, if_devchk);
++
++                /*
++                 * send CPU eject-request event to OSPM to gracefully handle
++                 * OSPM related tasks running on this CPU
++                 */
++                Aml *else_ctx = aml_else();
++                Aml *if_ejrq = aml_if(aml_equal(ejrq_evt, one));
++                {
++                    aml_append(if_ejrq,
++                        aml_call2(CPU_NOTIFY_METHOD, uid, eject_req));
++                    /* clear local eject-request event sent flag */
++                    aml_append(if_ejrq, aml_store(one, ejrq_evt));
++                    aml_append(if_ejrq, aml_store(one, has_event));
++                }
++                aml_append(else_ctx, if_ejrq);
++                aml_append(while_ctx, else_ctx);
++
++                /* Increment UID */
++                aml_append(while_ctx, aml_increment(uid));
++            }
++            aml_append(method, while_ctx);
++
++            /* Release cpu lock */
++            aml_append(method, aml_release(ctrl_lock));
++        }
++        aml_append(cpus_dev, method);
++
++        method = aml_method(CPU_OST_METHOD, 4, AML_SERIALIZED);
++        {
++            Aml *uid = aml_arg(0);
++            Aml *ev_cmd = aml_int(ACPI_OST_EVENT_CMD);
++            Aml *st_cmd = aml_int(ACPI_OST_STATUS_CMD);
++
++            aml_append(method, aml_acquire(ctrl_lock, 0xFFFF));
++            aml_append(method, aml_store(uid, cpu_selector));
++            aml_append(method, aml_store(ev_cmd, cpu_cmd));
++            aml_append(method, aml_store(aml_arg(1), cpu_data));
++            aml_append(method, aml_store(st_cmd, cpu_cmd));
++            aml_append(method, aml_store(aml_arg(2), cpu_data));
++            aml_append(method, aml_release(ctrl_lock));
++        }
++        aml_append(cpus_dev, method);
++
++        /* build Processor object for each processor */
++        for (i = 0; i < arch_ids->len; i++) {
++            Aml *dev;
++            Aml *uid = aml_int(i);
++
++            dev = aml_device(CPU_NAME_FMT, i);
++            aml_append(dev, aml_name_decl("_HID", aml_string("ACPI0007")));
++            aml_append(dev, aml_name_decl("_UID", uid));
++
++            method = aml_method("_STA", 0, AML_SERIALIZED);
++            aml_append(method, aml_return(aml_call1(CPU_STS_METHOD, uid)));
++            aml_append(dev, method);
++
++            if (CPU(arch_ids->cpus[i].cpu) != first_cpu) {
++                method = aml_method("_EJ0", 1, AML_NOTSERIALIZED);
++                aml_append(method, aml_call1(CPU_EJECT_METHOD, uid));
++                aml_append(dev, method);
++            }
++
++            method = aml_method("_OST", 3, AML_SERIALIZED);
++            aml_append(method,
++                aml_call4(CPU_OST_METHOD, uid, aml_arg(0),
++                          aml_arg(1), aml_arg(2))
++            );
++            aml_append(dev, method);
++            aml_append(cpus_dev, dev);
++        }
++    }
++    aml_append(sb_scope, cpus_dev);
++    aml_append(table, sb_scope);
++
++    method = aml_method(event_handler_method, 0, AML_NOTSERIALIZED);
++    aml_append(method, aml_call0("\\_SB.CPUS." CPU_SCAN_METHOD));
++    aml_append(table, method);
++}
+diff --git a/hw/acpi/meson.build b/hw/acpi/meson.build
+index 73f02b9691..6d83396ab4 100644
+--- a/hw/acpi/meson.build
++++ b/hw/acpi/meson.build
+@@ -8,6 +8,8 @@ acpi_ss.add(files(
+ ))
+ acpi_ss.add(when: 'CONFIG_ACPI_CPU_HOTPLUG', if_true: files('cpu.c', 'cpu_hotplug.c'))
+ acpi_ss.add(when: 'CONFIG_ACPI_CPU_HOTPLUG', if_false: files('acpi-cpu-hotplug-stub.c'))
++acpi_ss.add(when: 'CONFIG_ACPI_CPU_OSPM_INTERFACE', if_true: files('cpu_ospm_interface.c'))
++acpi_ss.add(when: 'CONFIG_ACPI_CPU_OSPM_INTERFACE', if_false: files('acpi-cpu-ospm-interface-stub.c'))
+ acpi_ss.add(when: 'CONFIG_ACPI_MEMORY_HOTPLUG', if_true: files('memory_hotplug.c'))
+ acpi_ss.add(when: 'CONFIG_ACPI_MEMORY_HOTPLUG', if_false: files('acpi-mem-hotplug-stub.c'))
+ acpi_ss.add(when: 'CONFIG_ACPI_NVDIMM', if_true: files('nvdimm.c'))
+diff --git a/hw/acpi/trace-events b/hw/acpi/trace-events
+index edc93e703c..c0ecbdd48f 100644
+--- a/hw/acpi/trace-events
++++ b/hw/acpi/trace-events
+@@ -40,6 +40,23 @@ cpuhp_acpi_fw_remove_cpu(uint32_t idx) "0x%"PRIx32
+ cpuhp_acpi_write_ost_ev(uint32_t slot, uint32_t ev) "idx[0x%"PRIx32"] OST EVENT: 0x%"PRIx32
+ cpuhp_acpi_write_ost_status(uint32_t slot, uint32_t st) "idx[0x%"PRIx32"] OST STATUS: 0x%"PRIx32
  
-     /* Virtualization control interface */
-@@ -240,6 +249,7 @@ struct GICv3State {
-     bool force_8bit_prio;
-     bool irq_reset_nonsecure;
-     bool gicd_no_migration_shift_bug;
-+    bool guest_gicc_initialized;
++#cpu_ospm_interface.c
++acpi_cpuos_if_invalid_idx_selected(uint32_t idx) "selector idx[0x%"PRIx32"]"
++acpi_cpuos_if_read_flags(uint32_t idx, uint8_t flags) "cpu idx[0x%"PRIx32"] flags: 0x%"PRIx8
++acpi_cpuos_if_write_idx(uint32_t idx) "set active cpu idx: 0x%"PRIx32
++acpi_cpuos_if_write_cmd(uint32_t idx, uint8_t cmd) "cpu idx[0x%"PRIx32"] cmd: 0x%"PRIx8
++acpi_cpuos_if_write_invalid_cmd(uint32_t idx, uint8_t cmd) "cpu idx[0x%"PRIx32"] invalid cmd: 0x%"PRIx8
++acpi_cpuos_if_write_invalid_offset(uint32_t idx, uint64_t addr) "cpu idx[0x%"PRIx32"] invalid offset: 0x%"PRIx64
++acpi_cpuos_if_read_cmd_data(uint32_t idx, uint32_t data) "cpu idx[0x%"PRIx32"] data: 0x%"PRIx32
++acpi_cpuos_if_read_invalid_cmd_data(uint32_t idx, uint8_t cmd) "cpu idx[0x%"PRIx32"] invalid cmd: 0x%"PRIx8
++acpi_cpuos_if_cpu_has_events(uint32_t idx, bool devchk, bool ejrqst) "cpu idx[0x%"PRIx32"] device-check pending: %d, eject-request pending: %d"
++acpi_cpuos_if_clear_devchk_evt(uint32_t idx) "cpu idx[0x%"PRIx32"]"
++acpi_cpuos_if_clear_ejrqst_evt(uint32_t idx) "cpu idx[0x%"PRIx32"]"
++acpi_cpuos_if_ejecting_invalid_cpu(uint32_t idx) "invalid cpu idx[0x%"PRIx32"]"
++acpi_cpuos_if_ejecting_cpu(uint32_t idx) "cpu idx[0x%"PRIx32"]"
++acpi_cpuos_if_write_ost_ev(uint32_t idx, uint32_t ev) "cpu idx[0x%"PRIx32"] OST Event: 0x%"PRIx32
++acpi_cpuos_if_write_ost_status(uint32_t idx, uint32_t st) "cpu idx[0x%"PRIx32"] OST Status: 0x%"PRIx32
++
+ # pcihp.c
+ acpi_pci_eject_slot(unsigned bsel, unsigned slot) "bsel: %u slot: %u"
+ acpi_pci_unplug(int bsel, int slot) "bsel: %d slot: %d"
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index 2aa4b5d778..c9991e00c7 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -39,6 +39,7 @@ config ARM_VIRT
+     select VIRTIO_MEM_SUPPORTED
+     select ACPI_CXL
+     select ACPI_HMAT
++    select ACPI_CPU_OSPM_INTERFACE
  
-     int dev_fd; /* kvm device fd if backed by kvm vgic support */
-     Error *migration_blocker;
-diff --git a/target/arm/arm-powerctl.c b/target/arm/arm-powerctl.c
-index 89074918a9..0b65898cec 100644
---- a/target/arm/arm-powerctl.c
-+++ b/target/arm/arm-powerctl.c
-@@ -68,6 +68,7 @@ static void arm_set_cpu_on_async_work(CPUState *target_cpu_state,
-     ARMCPU *target_cpu = ARM_CPU(target_cpu_state);
-     struct CpuOnInfo *info = (struct CpuOnInfo *) data.host_ptr;
- 
-+    target_cpu->first_psci_on_request_seen = true;
-     /* Initialize the cpu we are turning on */
-     cpu_reset(target_cpu_state);
-     arm_emulate_firmware_reset(target_cpu_state, info->target_el);
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index cd5982d362..603e482b3a 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -974,6 +974,7 @@ struct ArchCPU {
- 
-     /* Current power state, access guarded by BQL */
-     ARMPSCIState power_state;
-+    bool first_psci_on_request_seen;
- 
-     /* CPU has virtualization extension */
-     bool has_el2;
+ config CUBIEBOARD
+     bool
+diff --git a/include/hw/acpi/cpu_ospm_interface.h b/include/hw/acpi/cpu_ospm_interface.h
+new file mode 100644
+index 0000000000..5dda327a34
+--- /dev/null
++++ b/include/hw/acpi/cpu_ospm_interface.h
+@@ -0,0 +1,78 @@
++/*
++ * ACPI CPU OSPM Interface Handling.
++ *
++ * Copyright (c) 2025 Huawei Technologies R&D (UK) Ltd.
++ *
++ * Author: Salil Mehta <salil.mehta@huawei.com>
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the ree Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ */
++#ifndef CPU_OSPM_INTERFACE_H
++#define CPU_OSPM_INTERFACE_H
++
++#include "qapi/qapi-types-acpi.h"
++#include "hw/qdev-core.h"
++#include "hw/acpi/acpi.h"
++#include "hw/acpi/aml-build.h"
++#include "hw/boards.h"
++
++/**
++ * Total size (in bytes) of the ACPI CPU OSPM Interface MMIO region.
++ *
++ * This region contains control and status fields such as CPU selector,
++ * flags, command register, and data register. It must exactly match the
++ * layout defined in the AML code and the memory region implementation.
++ *
++ * Any mismatch between this definition and the AML layout may result in
++ * runtime errors or build-time assertion failures (e.g., _Static_assert),
++ * breaking correct device emulation and guest OS coordination.
++ */
++#define ACPI_CPU_OSPM_IF_REG_LEN 16
++
++typedef struct  {
++    CPUState *cpu;
++    uint64_t arch_id;
++    bool devchk_pending; /* device-check pending */
++    bool ejrqst_pending; /* eject-request pending */
++    uint32_t ost_event;
++    uint32_t ost_status;
++} AcpiCpuOspmStateStatus;
++
++typedef struct AcpiCpuOspmState {
++    DeviceState *acpi_dev;
++    MemoryRegion ctrl_reg;
++    uint32_t selector;
++    uint8_t command;
++    uint32_t dev_count;
++    AcpiCpuOspmStateStatus *devs;
++} AcpiCpuOspmState;
++
++void acpi_cpu_device_check_cb(AcpiCpuOspmState *cpu_st, DeviceState *dev,
++                              uint32_t event_st, Error **errp);
++
++void acpi_cpu_eject_request_cb(AcpiCpuOspmState *cpu_st, DeviceState *dev,
++                               uint32_t event_st, Error **errp);
++
++void acpi_cpu_eject_cb(AcpiCpuOspmState *cpu_st, DeviceState *dev,
++                       Error **errp);
++
++void acpi_cpu_ospm_state_interface_init(MemoryRegion *as, Object *owner,
++                                        AcpiCpuOspmState *state,
++                                        hwaddr base_addr);
++
++void acpi_build_cpus_aml(Aml *table, hwaddr base_addr, const char *root,
++                         const char *event_handler_method);
++
++void acpi_cpus_ospm_status(AcpiCpuOspmState *cpu_st,
++                           ACPIOSTInfoList ***list);
++
++extern const VMStateDescription vmstate_cpu_ospm_state;
++#define VMSTATE_CPU_OSPM_STATE(cpuospm, state) \
++    VMSTATE_STRUCT(cpuospm, state, 1, \
++                   vmstate_cpu_ospm_state, AcpiCpuOspmState)
++#endif  /* CPU_OSPM_INTERFACE_H */
 -- 
 2.34.1
 

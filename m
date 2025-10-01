@@ -4,71 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6005FCAC5BB
-	for <qemu-arm@archiver.kernel.org>; Wed,  1 Oct 2025 08:55:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05767CAC5BB
+	for <qemu-arm@archiver.kernel.org>; Wed,  1 Oct 2025 09:54:00 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v3sbP-0000hs-FL; Wed, 01 Oct 2025 04:54:23 -0400
+	id 1v3tUK-0005ZJ-Q3; Wed, 01 Oct 2025 05:51:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <chigot@adacore.com>)
- id 1v3sbN-0000hI-3l
- for qemu-arm@nongnu.org; Wed, 01 Oct 2025 04:54:21 -0400
-Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1v3tUI-0005YN-Mk
+ for qemu-arm@nongnu.org; Wed, 01 Oct 2025 05:51:06 -0400
+Received: from mail-yw1-x112c.google.com ([2607:f8b0:4864:20::112c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <chigot@adacore.com>)
- id 1v3sbD-0004ds-5T
- for qemu-arm@nongnu.org; Wed, 01 Oct 2025 04:54:18 -0400
-Received: by mail-ej1-x634.google.com with SMTP id
- a640c23a62f3a-b463f986f80so244824066b.2
- for <qemu-arm@nongnu.org>; Wed, 01 Oct 2025 01:54:06 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1v3tU7-0005y3-Ad
+ for qemu-arm@nongnu.org; Wed, 01 Oct 2025 05:51:05 -0400
+Received: by mail-yw1-x112c.google.com with SMTP id
+ 00721157ae682-71d603acc23so69260437b3.1
+ for <qemu-arm@nongnu.org>; Wed, 01 Oct 2025 02:50:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=adacore.com; s=google; t=1759308844; x=1759913644; darn=nongnu.org;
+ d=linaro.org; s=google; t=1759312243; x=1759917043; darn=nongnu.org;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=5Zh10HA3jd3BGFgUDTi6jZ+9AfEQlb5Kz3AUdlvCQRc=;
- b=eiIl+rco0kyIgKA3VmALGk7KsfCXPL1dT75oMrjtjHEyssPj6mVWCVTGbmntmWxd0y
- HKw/gbcAXhNoy37jlJmQWhsZ0FbS36x3lQCWzrBdQZJJ74bZSG1/4HCwJRU8ru1/Dtf3
- HaEn6TK17pCuQZWGZz7IT2VwjtA8TtEEMhFju49aF7PYpvqS3ZH1fgDV8/hvKkVmAR2D
- 9uP1phliu4by3hreJK2sHGifwTDaNprNBSyvjslS6Rcnre6qE8r8OvatpMZn83jBuydy
- 9/QlCHRDy/vKfe0gMlty4tDoi9cFpLY+v0V3PDUUy5lTKY2qPtwyw1my37MP9JobFtBT
- 7FtQ==
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=vxES0pfI3HKwE+3of0zLPi5rklnQ2/Ap40KbdY26wr8=;
+ b=I8i9R02LFuNGbXIrseaEcDoyNccLHMXiARut0XRvuJKiNB91Tk79VCmCiaBqsWmFaI
+ a6INARgoEuC5h0t3v3j/fRQbT3re+9zTO9k+jO6Qz9tgZbjvEIOKInuLz7qEm4eQb+Lt
+ fRPxtH+lyelv3K9Sr6MLSV/2X2KzAR+1FXZTi+zvp/An3sigTitP8Vz2vJTK3Tl3DMND
+ DlyQ9w39py9zI5Zr0LZ6D9a6jFcOjTFUvCGtS8SJzd5apu13dNbyY+xmFzZXZ1mkSkLK
+ NXtWCgNJpp/QdcI5Cl99AU+BSHhGf5IglPBmywU6SccdA0/zEotUbB8I8RyvJcv9UqbJ
+ rOoQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759308844; x=1759913644;
+ d=1e100.net; s=20230601; t=1759312243; x=1759917043;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=5Zh10HA3jd3BGFgUDTi6jZ+9AfEQlb5Kz3AUdlvCQRc=;
- b=dR8kxomQCaoi4MDtpJ8+fX3jlgG1aB5k4lNljZueNLAx941tjbPVuZMUmtQUux/HaB
- QKyxCz7KO1M5RnxJWu0DSqD2fw7elRA5u6/WJw8gveQTW0xQLcnBAVfw5x7YwjDtYwaF
- jzimhVyERJwNSJAEDY4l0dzPE1KB3+qYSbkoD8btv7uMOEVw9d0PqnigQbEOgIi86zIv
- zgGfDZ01v9mEjZ7II9t0AIzUaVEmpokLKXYZwp6VxANTdacRlzLYrbmw0rFRMFAlbHYY
- TvPB+XDVLmpKqSZgIqiOe7yGJW/n6zQ71rtkMkBIAjYuBHrkfW/iPJbQAmdpZDRzbG68
- Fssg==
-X-Gm-Message-State: AOJu0YwRH5UFLQ/NcIyp3wLKvUK7oMgh26PErYmWhM9bfh2ogVyHynWa
- nEXS+XYPQul4IxBOaf+CHHBkRZm1iZVjjT+ns6MpRV6VzDQg5D8j8bYkYDX3jtdQd7Y8SgsH/7d
- SfALxd+/xQ97W6XREi3r/O/Qn3gxbXaH0HlYIKvPt3Yq4oAJw9C8Qnw==
-X-Gm-Gg: ASbGncukrrHOAgRo9TVzfPa5UwIoYBClxhXruXNFsoWeO5+kL6oP7uRPwhksFEHx1uz
- VbPe9ZSGNRGilWhfhkZc80S9/SSilvA7AGPUUA2Jomt0HTX60zKm1dUiSugFlo619j3y45Fv4JK
- UqOapKrVESyyz0gF/fFUIY9uXCVAaC1OdMqvmMNM2gNKYm7HfxFqWtt2NIsMNKhVylC8jU/BsZ5
- 2NQKlFCJn43uFRLIchQZWLWRKOYVf8=
-X-Google-Smtp-Source: AGHT+IGFBL4zsWyLpF3k8R2ybT951kwllSJWAlf6Wa5RkOI4YUsgHRU35nq9BYGkQ3ol1Txmlhe6CaigrXG4TyqjyJs=
-X-Received: by 2002:a17:907:da1:b0:b2d:9286:506d with SMTP id
- a640c23a62f3a-b46e612bed0mr345459066b.38.1759308843815; Wed, 01 Oct 2025
- 01:54:03 -0700 (PDT)
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=vxES0pfI3HKwE+3of0zLPi5rklnQ2/Ap40KbdY26wr8=;
+ b=h4m7F7qYTKOrjU6iT9QtrF597TkPvas3DSAUmXImm/0nlSVwQqgY1BJePK80TarnYI
+ /MWojijzM7IWb/k5pkIQHk1LnMTm56/OdqooCqBumg0Ja/LCWWmLFtw2KxgfUj/cUYUn
+ EtKrGxk0VUzEmFidCCU50a9nyOCc+7M65Q33wFzMZMYe5xXbwjuefus9pd5Ra0U0DfcM
+ qpJIYNiZGM9OrcLbcCTEFcfEtc3F27swpO5YCZhsJ60rTOHWJD0aw0o2l1m8FDcuuWnH
+ /V1qrz5LtOxs2ZG7MPTn1/LYH9Vt6DSxUS0svRZIHQH/eh+juENEZvpic3dQiJUPFBdh
+ fINA==
+X-Gm-Message-State: AOJu0Yx5lCZy0BpmPOBIWHNe8mw0XqKrofUUQlbM+sv/FGHAWei78a7t
+ Oc5SG/g4AZBtaCeLJzVG519yaMegA/ilAZ6GfHoRM+a4Gsx1/WtwEEc/sKbp7m3TiTiMEn/NIgd
+ LJY8/zMfTav9KrEY6ibJvICbjkJtXWWb3jRcr5Ms0XA==
+X-Gm-Gg: ASbGncuEuR5ljDJJh8Ef/GCAXslxJTC6K4RyJL6jFhn4LVlZIzolmJcEzQGwTvvVmo/
+ rdrirzJ8wJp7w4JTpny05qdERCQInDPxRMzv0iSuQreXqUUsAHfLrDSxAMSCZWFLddoQRiTr6Wr
+ lKiy4b6fvurm4d6bSbsH+G1FS0iG2BSRJJa+E+madAiWmNm6XkcoYl1bkAmAwiTmWkmEnFXrj+j
+ qmJ5OGQ2WMgM2hiCOvmP+S2zbltV8LD
+X-Google-Smtp-Source: AGHT+IGoTT2hGX0cT8ZRmvu/PArcEeVl6Y2NlXRuEGSIhm920DMiLD6pNN+aZdku9kFkFOaBgfX8PUG13IHVasfkDeM=
+X-Received: by 2002:a05:690e:2490:b0:635:4ed0:5730 with SMTP id
+ 956f58d0204a3-63b700cfb19mr3000791d50.52.1759312242626; Wed, 01 Oct 2025
+ 02:50:42 -0700 (PDT)
 MIME-Version: 1.0
-From: =?UTF-8?Q?Cl=C3=A9ment_Chigot?= <chigot@adacore.com>
-Date: Wed, 1 Oct 2025 10:53:53 +0200
-X-Gm-Features: AS18NWAc5OXjaU_6ylbXYWtac8HygHEdbA7wCtqpIDFk3fZIL5YU3laO9cBeKWk
-Message-ID: <CAJ307Eg67ri0=-ocEr-q=Y9+OY-9XKGFb5AYh59-X8szH+3Ryg@mail.gmail.com>
-Subject: [QUESTION] aarch64=off with TCG
-To: qemu-arm@nongnu.org
-Cc: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
+References: <CAJ307Eg67ri0=-ocEr-q=Y9+OY-9XKGFb5AYh59-X8szH+3Ryg@mail.gmail.com>
+In-Reply-To: <CAJ307Eg67ri0=-ocEr-q=Y9+OY-9XKGFb5AYh59-X8szH+3Ryg@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 1 Oct 2025 10:50:30 +0100
+X-Gm-Features: AS18NWAFJPmxPV8ov0rLfCjyNtFatv2hM8pKUv0tQG4IGJ0X0eTY_9pUeGZedtg
+Message-ID: <CAFEAcA8MBFd45meJ5baOAacRTwnb+9VAUB_tMYsg3OQvXKcBgw@mail.gmail.com>
+Subject: Re: [QUESTION] aarch64=off with TCG
+To: =?UTF-8?Q?Cl=C3=A9ment_Chigot?= <chigot@adacore.com>
+Cc: qemu-arm@nongnu.org, 
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::634;
- envelope-from=chigot@adacore.com; helo=mail-ej1-x634.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -91,38 +95,43 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi,
+On Wed, 1 Oct 2025 at 09:55, Cl=C3=A9ment Chigot <chigot@adacore.com> wrote=
+:
+> I'm wondering if the check [1] preventing "aarch64=3Doff" without KMV is
+> still valid nowadays and if yes, if anyone has ideas about what are
+> the remaining blockers ?
 
-I'm wondering if the check [1] preventing "aarch64=3Doff" without KMV is
-still valid nowadays and if yes, if anyone has ideas about what are
-the remaining blockers ?
+I did have a look at this a while back. A lot of it was "audit
+the code to make sure it's not relying on an assumption we will
+now be breaking", which I think I did most of. Some of the
+preliminary patches I already upstreamed (e.g. the elimination of
+the TYPE_AARCH64_CPU subclass). My TODO list from my notes is
+down to basically enforcing that the user doesn't select invalid
+option combinations:
 
-For the record, I was able to boot the Fedora kernel coming for our
-function/arm/test_virt on cortex-a53, after having removed that check.
-  | qemu-system-aarch64 -cpu cortex-a53,aarch64=3Doff -M virt -kernel vmlin=
-uz \
-    -append "printk.time=3D0 console=3DttyAMA0" -nographic
-  | Booting Linux on physical CPU 0x0
-  | Linux version 4.18.16-300.fc29.armv7hl
-(mockbuild@buildvm-armv7-06.arm.fedoraproject.org)      (gcc version
-8.2.1 20180801 (Red Hat 8.2.1-2) (GCC)) #1 SMP Sun Oct 21 00:56:28 UTC
-2018
-  | CPU: ARMv7 Processor [410fd034] revision 4 (ARMv7), cr=3D10c5387d
-   ...
+ * forbid weird prop configs like aarch64=3Doff,sve=3Don if we don't alread=
+y
+ * forbid -cpu max,aarch64=3Doff for usermode
+ * forbid -cpu whatever,aarch64=3Doff when it doesn't implement AArch32
+   at the relevant EL
 
-[1] https://gitlab.com/qemu-project/qemu/-/blob/master/target/arm/cpu.c?ref=
-_type=3Dheads#L1213
-  | static void aarch64_cpu_set_aarch64(Object *obj, bool value, Error **er=
-rp)
-  | {
-  |  [...]
-  |         if (!kvm_enabled() || !kvm_arm_aarch32_supported()) {
-  |             error_setg(errp, "'aarch64' feature cannot be disabled "
-  |                              "unless KVM is enabled and 32-bit EL1 "
-  |                              "is supported");
-  |             return;
-  |         }
+so my "allow aarch64=3Doff" patch is a bit more complicated than
+just removing the check because it tries to enforce at least
+some of those.
 
-Thanks,
-Cl=C3=A9ment
+I also have some local patches which make an AArch64 CPU with
+aarch64=3Doff manually zero out all the aa64_ ID reg values, so
+that feature checks on an aa64_foo feature don't pass. This
+lets us avoid having to go through and manually add extra
+"if AARCH64 && ..." clauses to all those feature checks.
+I need to rebase those and look at whether they're ready to
+send out.
+
+Other than that, I think it's mostly testing.
+
+I'll see if I can do that rebase and at least send it out as
+an RFC patchset.
+
+thanks
+-- PMM
 

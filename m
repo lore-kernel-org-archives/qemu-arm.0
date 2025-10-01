@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3932ACAC5B8
-	for <qemu-arm@archiver.kernel.org>; Wed,  1 Oct 2025 01:15:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A442CCA470
+	for <qemu-arm@archiver.kernel.org>; Wed,  1 Oct 2025 01:15:56 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v3lFR-0005Lg-P3; Tue, 30 Sep 2025 21:03:14 -0400
+	id 1v3lGM-0005f1-0S; Tue, 30 Sep 2025 21:04:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <salil.mehta@opnsrc.net>)
- id 1v3lFE-0005HX-S6
- for qemu-arm@nongnu.org; Tue, 30 Sep 2025 21:03:01 -0400
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+ id 1v3lFl-0005QP-IW
+ for qemu-arm@nongnu.org; Tue, 30 Sep 2025 21:03:34 -0400
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <salil.mehta@opnsrc.net>)
- id 1v3lEo-000823-SX
- for qemu-arm@nongnu.org; Tue, 30 Sep 2025 21:02:56 -0400
-Received: by mail-wm1-x32b.google.com with SMTP id
- 5b1f17b1804b1-46e491a5b96so28448755e9.2
- for <qemu-arm@nongnu.org>; Tue, 30 Sep 2025 18:02:32 -0700 (PDT)
+ id 1v3lF8-00088H-Os
+ for qemu-arm@nongnu.org; Tue, 30 Sep 2025 21:03:32 -0400
+Received: by mail-wm1-x331.google.com with SMTP id
+ 5b1f17b1804b1-46e37d6c21eso44795915e9.0
+ for <qemu-arm@nongnu.org>; Tue, 30 Sep 2025 18:02:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=opnsrc.net; s=google; t=1759280549; x=1759885349; darn=nongnu.org;
+ d=opnsrc.net; s=google; t=1759280568; x=1759885368; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=WtDeaYzA1MV6zzT9oYsDOCleQdedNz0SYja7ELSAFkY=;
- b=d1Aib1xF9goxnwiMn5MC5gqn5ynB0+OU/wo1H+IbRZQfTQdR1lPUjdNiVzuAg5KKYy
- SqSk+pwunjI6f6CedgLGCxZqZibDgc/bcITkycScu5Jqer11UI79p22iHxIQM0xwlOZd
- GljJTy3iIAhA9PWX1bQnA+bi4lg+blZfpVjYGZmRKmFLuBh9nyAIKhePJBdrjdk68raA
- A29S4lumxkBXb3QFLhzh6TtJiO4HQ+ka4a/RokTDC+JYAMM1+fhtrQqgS5jtko6xTHOs
- 71H3hCp6NOR/tuyo/14Y8Ft4/FsVelDCIsJktqeo4gSxKJ0dATC5GGyvakPMa4iimDh/
- ncwA==
+ bh=pxcfPHc8rOInaK/rBPQBZ9/nywW3P+jwOuWG6ZmnnIw=;
+ b=LrUfQu/CRRqn+JPcbzo/gDpz7F3WiOkWEz0jnPSuKO06Pcl2yPND/qZPGmeqlJE6AB
+ VQxbdXFbiAXsmAQM4KDfS2HY6qQxfu6NnpKoV/VXj6yIgYnNKsF0sD4Hj4M/H2aQYfBs
+ nHJWuDet2quDVL9yQJEGTTDpHutflFmZkF542W1m01w1NIY9bFGBaID8u0TcBuZk2jwh
+ 7vo95N7gXqhaGwOmh5JnJ0GePkwgl941RL47AfGxM+r8QcVHDzCKOufYOf7UeMvL1nWA
+ xKufYxQ4FpmXx2KEExm/XQ0a2I7ENQBGOaA/cOm4ZbNf0Kerv3Qg99Eu3bdkNpnE3sVW
+ Pn5Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759280549; x=1759885349;
+ d=1e100.net; s=20230601; t=1759280568; x=1759885368;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=WtDeaYzA1MV6zzT9oYsDOCleQdedNz0SYja7ELSAFkY=;
- b=BH4rFBLUTnuib4Koh1537W6MsiivVxB8FHgV7LJDDgajKu30g6HTpHgmJBNak7NByR
- 7GCA4X9kBZRHTKrckzshbPKXrii0NuKQyYXgfuWMG19edSH49aWy5rWjR64E2aJvNCRR
- wH/CSQHM7U9tqb2lTVFwzKX7EnI3l5PvjlQ/q/DoADFCerVNaiKMc5izD398rvblsdi5
- gtIeVPNL5MbruKNsGTkq6exCsnOg4LLPfZKtwOZyK91OXybky1LRiwoXHHMgKZhjdDkK
- H9NapRcou0GGzE9eeVOMHLM9KphEmoaJgz5bzaCgKhJBLrfkNMcEWlw0vR89JyE51ptP
- jqbQ==
+ bh=pxcfPHc8rOInaK/rBPQBZ9/nywW3P+jwOuWG6ZmnnIw=;
+ b=wW2Sodv5cvnwsSVM2X9O2HJgSkYF41/a5jzx2BtZzVmFvrB0MOAxOhzu80o3O37fIS
+ Ig8MGe3ktF3BkGaQlKOIr7+wWRyATvIVPXcXZluoLM1MRM0Kp1TZRunQvcTfLASXudOM
+ 6exnQma+3GhMF67hJfaa0pmZIlEm0GNTppMpL8zsPf9wrbjrx+PTJE5r7/HxKUYYuXeW
+ cHkbW12QoT7SY7wLlOaYf2XaYmil/lyXZypJg6SQvSjVV1ykOX8CMsKlgO+K/iw1ihFI
+ Uh+UWIc3IDS4mZ7E8CI/zvXEau7iAW+Fw2SwcrdhzBzdXoaVpytDIZ/ncjeN1HT6RDHf
+ UiGw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXx+TmOgSPFaDEtcA+VyF1NAQPZy6iUXCRMkG0iarYSqjMjrLyCv4WaAIY4PiiW+Kz2rw7pxgazHw==@nongnu.org
-X-Gm-Message-State: AOJu0Yz/1x61wL0X5E1RZsYqATl6XLwnbTkBxb1syQEDAOnnQO853o6T
- wT5OmJwMehbmPfcjAvCHA4cmZSO380SCBJV6XwwGfCeEp4aOKh87RJLpSM70mM6GMaM=
-X-Gm-Gg: ASbGncvge+iyIN28+Rq0jlfrJ5DR4tRXU5u8BBVp9uX7G/19piq3b8ii+CzCYHrnZd2
- Me3zpQ0ghW+tficRj6xRNO8lb093Ifv+dhWEpzw/pHuqXibp27tWXN740g21T3rZzJZQvZzmRE2
- gm9+uMFD4Xwn1gABjomgIMzzFRIg/K+uzh2ITVimexPw68QOlBYQ1ENvQ3HIzMda1+PZX+xFXmd
- RKSFzdb8ahSwKlRKI1+5jSWf38JrzUS38bd0kxXjLCIh2GUgIM2GaJwVa1pgsz9cwuGm/1hBTLj
- TJH+OCgDDVDbwbf+8K2TRBOuSnjpdZdXoUx6QoSqI20K2ZWrK+Do23ms/p3plru8pOtI7Tw8Gv0
- ECLeoZn/5+dv6SIxN9m9QlhrYYik0iath4ycoTDX+c+Qw9Mtk4Tq724nYFcyKDbaahKoiX7sgS4
- wMLMzEnq1uDjDdfOyzjQQE2povgM06P7m3z37jVnneO0M=
-X-Google-Smtp-Source: AGHT+IGmImWBLExOHMlhhQZSBnRbv0NKvnMBuXTQlTH3hM2ZcVnond1I1jMy53iy5AXLeDb5OLHr7Q==
-X-Received: by 2002:a05:600c:3543:b0:46e:4921:9443 with SMTP id
- 5b1f17b1804b1-46e612e3f92mr13058985e9.37.1759280548909; 
- Tue, 30 Sep 2025 18:02:28 -0700 (PDT)
+ AJvYcCU+pIiM05nkroNISqQgsPCHcXinnZVImqh4ttNriNgSakGY+FQEHlPy6rVG4ois/Ik1bpFRq6mtmQ==@nongnu.org
+X-Gm-Message-State: AOJu0YwIuCxjNC94StQk7yl0fJEBaFGssSv27lSF7V5ohAa2Pe1MhyF7
+ 7DHiHw5ggK5F+UI+93t18nIxZTicP+Cx8k1Ft8ZNQvaZy1GqWsL1l7bPK50X1NXJ3jQ=
+X-Gm-Gg: ASbGnctpTw7/Ma95hPi8GPhXK0aMcHe1xy1JpE/IlkGb5wER3mHiul3G4UTQlq1UZ0l
+ u2hkLuxEZCu2F5zNtwBjP/8Suje7J3vCnXvRz9baDyviemyZOXiTUsP8r6jaJH17ZvY0ZfbBPG9
+ 6di+8yYKbBzD3YregCSwpnTzmwnu3Aqcs0SDCTiuwIHpiJ+cuW1CbBu0+yXFnJDIOEm9WguZOOC
+ 4f2PE3n5P6Nks35OKDEfOwom6B/iDjoEzJLj7mDWQqfoY4S5TZt0as8MrqSr/soMVkbwcaQkyT+
+ QRM+vsWhiuqURj5gBu8p4lkEecTWG6YOaoZqqVxtH1nQP3493hvV3OD09wUwTCD3IRFTEqHVcyD
+ I7GbRiV5oMrF7/y8MjvUhb3UURFP7gZO6h8QOKLo9SK67dZT4DVsyjxx2xKuSZX85v/V9zqfh/w
+ L1AnMwWP0ZXLP/tTz7c2FukXvEffz23oT2CycliloxgWU=
+X-Google-Smtp-Source: AGHT+IGj/RZIjav8CCq0VUnatmGH+py6HOaa0NVdgzVsL0LeYJoCeBhWny/xhFaB2PnT0N0oVITBkw==
+X-Received: by 2002:a5d:5f52:0:b0:3ff:d5c5:6b03 with SMTP id
+ ffacd0b85a97d-4255781466fmr1134196f8f.35.1759280567800; 
+ Tue, 30 Sep 2025 18:02:47 -0700 (PDT)
 Received: from localhost.localdomain ([90.209.204.182])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-40fb985e080sm24587426f8f.24.2025.09.30.18.02.26
+ ffacd0b85a97d-40fb985e080sm24587426f8f.24.2025.09.30.18.02.45
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 30 Sep 2025 18:02:27 -0700 (PDT)
+ Tue, 30 Sep 2025 18:02:46 -0700 (PDT)
 From: salil.mehta@opnsrc.net
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org,
@@ -87,25 +87,24 @@ Cc: salil.mehta@huawei.com, maz@kernel.org, jean-philippe@linaro.org,
  wangxiongfeng2@huawei.com, wangyanan55@huawei.com, wangzhou1@hisilicon.com,
  linuxarm@huawei.com, jiakernel2@gmail.com, maobibo@loongson.cn,
  lixianglai@loongson.cn, shahuang@redhat.com, zhao1.liu@intel.com
-Subject: [PATCH RFC V6 07/24] arm/gicv3: Refactor CPU interface init for
- shared TCG/KVM use
-Date: Wed,  1 Oct 2025 01:01:10 +0000
-Message-Id: <20251001010127.3092631-8-salil.mehta@opnsrc.net>
+Subject: [PATCH RFC V6 15/24] acpi/ged: Notify OSPM of CPU administrative
+ state changes via GED
+Date: Wed,  1 Oct 2025 01:01:18 +0000
+Message-Id: <20251001010127.3092631-16-salil.mehta@opnsrc.net>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20251001010127.3092631-1-salil.mehta@opnsrc.net>
 References: <20251001010127.3092631-1-salil.mehta@opnsrc.net>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
- envelope-from=salil.mehta@opnsrc.net; helo=mail-wm1-x32b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::331;
+ envelope-from=salil.mehta@opnsrc.net; helo=mail-wm1-x331.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -123,419 +122,323 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Salil Mehta <salil.mehta@huawei.com>
 
-GICv3 CPU interface initialization currently has separate logic paths for TCG
-and KVM accelerators, even though much of the flow—such as iterating over vCPUs
-and applying common setup—should be identical. This separation makes it harder
-to add new CPU interface features that apply to both backends, as each needs to
-be updated individually.
+When vCPUs are administratively enabled or disabled, the guest OSPM must be
+notified so it can coordinate the corresponding operational transitions and
+preserve system stability.
 
-To address this, the common CPU interface setup is now centralized in
-‘gicv3_init_cpuif()’, called during GIC realization. Accelerator-specific code
-is still handled via a class hook for register-level initialization, but all
-iteration and shared setup is unified.
+When a CPU is administratively enabled, GED raises a Device Check event. OSPM
+then uses the ACPI _EVT handler to identify the CPU device and evaluates its
+_STA, ensuring the CPU is identified, registered with the Linux device model,
+enabled in the guest kernel, and made available to the scheduler.
 
-This refactoring is required to:
- - Ensure later patches can set ‘gicc_accessible‘ for all vCPUs in a consistent
-   manner.
- - Provide a single entry point for any future common initialization, avoiding
-   duplication between TCG and KVM.
- - Maintain correct initialization for both enabled and administratively
-   disabled but present vCPUs.
+When a CPU is administratively disabled, GED raises an Eject Request event. OSPM
+again uses the ACPI _EVT handler to identify the CPU device and evaluates its
+_STA, marking the CPU absent. This allows OSPM to invoke the _EJ0 path,
+gracefully offload tasks, and shut down state before removal. Without this
+coordination, CPUs may be forcefully removed, risking state loss or kernel
+instability.
 
-No functional change intended here.
+Platform code (e.g. Arm virt machine) calls PowerStateHandler hooks, which in
+turn drive the GED callbacks. Those callbacks use ACPI events to reflect the
+administrative change and let OSPM orchestrate the operational transition.
 
-Co-developed-by: Keqian Zhu <zhukeqian1@huawei.com>
-Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
 Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
 ---
- hw/intc/arm_gicv3.c                |   1 +
- hw/intc/arm_gicv3_cpuif.c          | 262 ++++++++++++++---------------
- hw/intc/arm_gicv3_cpuif_common.c   |  11 ++
- hw/intc/arm_gicv3_kvm.c            |  12 +-
- hw/intc/gicv3_internal.h           |   1 +
- include/hw/intc/arm_gicv3_common.h |   1 +
- 6 files changed, 150 insertions(+), 138 deletions(-)
+ hw/acpi/generic_event_device.c         | 91 ++++++++++++++++++++++++++
+ hw/arm/virt.c                          |  9 ++-
+ include/hw/acpi/acpi_dev_interface.h   |  1 +
+ include/hw/acpi/generic_event_device.h |  6 ++
+ include/hw/arm/virt.h                  |  1 +
+ 5 files changed, 107 insertions(+), 1 deletion(-)
 
-diff --git a/hw/intc/arm_gicv3.c b/hw/intc/arm_gicv3.c
-index 6059ce926a..8ca61413d2 100644
---- a/hw/intc/arm_gicv3.c
-+++ b/hw/intc/arm_gicv3.c
-@@ -459,6 +459,7 @@ static void arm_gicv3_class_init(ObjectClass *klass, const void *data)
-     ARMGICv3Class *agc = ARM_GICV3_CLASS(klass);
+diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
+index 95682b79a2..4fbf5aaa20 100644
+--- a/hw/acpi/generic_event_device.c
++++ b/hw/acpi/generic_event_device.c
+@@ -23,11 +23,13 @@
+ #include "migration/vmstate.h"
+ #include "qemu/error-report.h"
+ #include "system/runstate.h"
++#include "hw/powerstate.h"
  
-     agcc->post_load = arm_gicv3_post_load;
-+    agcc->init_cpu_reginfo = gicv3_init_cpu_reginfo;
-     device_class_set_parent_realize(dc, arm_gic_realize, &agc->parent_realize);
- }
- 
-diff --git a/hw/intc/arm_gicv3_cpuif.c b/hw/intc/arm_gicv3_cpuif.c
-index 4b4cf09157..a7904237ac 100644
---- a/hw/intc/arm_gicv3_cpuif.c
-+++ b/hw/intc/arm_gicv3_cpuif.c
-@@ -3016,154 +3016,150 @@ static void gicv3_cpuif_el_change_hook(ARMCPU *cpu, void *opaque)
-     gicv3_cpuif_virt_irq_fiq_update(cs);
- }
- 
--void gicv3_init_cpuif(GICv3State *s)
-+void gicv3_init_cpu_reginfo(CPUState *cs)
- {
-     /* Called from the GICv3 realize function; register our system
-      * registers with the CPU
-      */
--    int i;
--
--    for (i = 0; i < s->num_cpu; i++) {
--        ARMCPU *cpu = ARM_CPU(qemu_get_cpu(i));
--        GICv3CPUState *cs = &s->cpu[i];
-+    ARMCPU *cpu = ARM_CPU(cs);
-+    GICv3CPUState *gcs = icc_cs_from_env(&cpu->env);
- 
--        /*
--         * If the CPU doesn't define a GICv3 configuration, probably because
--         * in real hardware it doesn't have one, then we use default values
--         * matching the one used by most Arm CPUs. This applies to:
--         *  cpu->gic_num_lrs
--         *  cpu->gic_vpribits
--         *  cpu->gic_vprebits
--         *  cpu->gic_pribits
--         */
-+    /*
-+     * If the CPU doesn't define a GICv3 configuration, probably because
-+     * in real hardware it doesn't have one, then we use default values
-+     * matching the one used by most Arm CPUs. This applies to:
-+     *  cpu->gic_num_lrs
-+     *  cpu->gic_vpribits
-+     *  cpu->gic_vprebits
-+     *  cpu->gic_pribits
-+     */
- 
--        /* Note that we can't just use the GICv3CPUState as an opaque pointer
--         * in define_arm_cp_regs_with_opaque(), because when we're called back
--         * it might be with code translated by CPU 0 but run by CPU 1, in
--         * which case we'd get the wrong value.
--         * So instead we define the regs with no ri->opaque info, and
--         * get back to the GICv3CPUState from the CPUARMState.
--         *
--         * These CP regs callbacks can be called from either TCG or HVF code.
--         */
--        define_arm_cp_regs(cpu, gicv3_cpuif_reginfo);
-+    /* Note that we can't just use the GICv3CPUState as an opaque pointer
-+     * in define_arm_cp_regs_with_opaque(), because when we're called back
-+     * it might be with code translated by CPU 0 but run by CPU 1, in
-+     * which case we'd get the wrong value.
-+     * So instead we define the regs with no ri->opaque info, and
-+     * get back to the GICv3CPUState from the CPUARMState.
-+     *
-+     * These CP regs callbacks can be called from either TCG or HVF code.
-+     */
-+    define_arm_cp_regs(cpu, gicv3_cpuif_reginfo);
- 
--        /*
--         * If the CPU implements FEAT_NMI and FEAT_GICv3 it must also
--         * implement FEAT_GICv3_NMI, which is the CPU interface part
--         * of NMI support. This is distinct from whether the GIC proper
--         * (redistributors and distributor) have NMI support. In QEMU
--         * that is a property of the GIC device in s->nmi_support;
--         * cs->nmi_support indicates the CPU interface's support.
--         */
--        if (cpu_isar_feature(aa64_nmi, cpu)) {
--            cs->nmi_support = true;
--            define_arm_cp_regs(cpu, gicv3_cpuif_gicv3_nmi_reginfo);
--        }
-+    /*
-+     * If the CPU implements FEAT_NMI and FEAT_GICv3 it must also
-+     * implement FEAT_GICv3_NMI, which is the CPU interface part
-+     * of NMI support. This is distinct from whether the GIC proper
-+     * (redistributors and distributor) have NMI support. In QEMU
-+     * that is a property of the GIC device in s->nmi_support;
-+     * gcs->nmi_support indicates the CPU interface's support.
-+     */
-+    if (cpu_isar_feature(aa64_nmi, cpu)) {
-+        gcs->nmi_support = true;
-+        define_arm_cp_regs(cpu, gicv3_cpuif_gicv3_nmi_reginfo);
-+    }
- 
--        /*
--         * The CPU implementation specifies the number of supported
--         * bits of physical priority. For backwards compatibility
--         * of migration, we have a compat property that forces use
--         * of 8 priority bits regardless of what the CPU really has.
--         */
--        if (s->force_8bit_prio) {
--            cs->pribits = 8;
--        } else {
--            cs->pribits = cpu->gic_pribits ?: 5;
--        }
-+    /*
-+     * The CPU implementation specifies the number of supported
-+     * bits of physical priority. For backwards compatibility
-+     * of migration, we have a compat property that forces use
-+     * of 8 priority bits regardless of what the CPU really has.
-+     */
-+    if (gcs->gic->force_8bit_prio) {
-+        gcs->pribits = 8;
-+    } else {
-+        gcs->pribits = cpu->gic_pribits ?: 5;
-+    }
- 
--        /*
--         * The GICv3 has separate ID register fields for virtual priority
--         * and preemption bit values, but only a single ID register field
--         * for the physical priority bits. The preemption bit count is
--         * always the same as the priority bit count, except that 8 bits
--         * of priority means 7 preemption bits. We precalculate the
--         * preemption bits because it simplifies the code and makes the
--         * parallels between the virtual and physical bits of the GIC
--         * a bit clearer.
--         */
--        cs->prebits = cs->pribits;
--        if (cs->prebits == 8) {
--            cs->prebits--;
--        }
--        /*
--         * Check that CPU code defining pribits didn't violate
--         * architectural constraints our implementation relies on.
--         */
--        g_assert(cs->pribits >= 4 && cs->pribits <= 8);
-+    /*
-+     * The GICv3 has separate ID register fields for virtual priority
-+     * and preemption bit values, but only a single ID register field
-+     * for the physical priority bits. The preemption bit count is
-+     * always the same as the priority bit count, except that 8 bits
-+     * of priority means 7 preemption bits. We precalculate the
-+     * preemption bits because it simplifies the code and makes the
-+     * parallels between the virtual and physical bits of the GIC
-+     * a bit clearer.
-+     */
-+    gcs->prebits = gcs->pribits;
-+    if (gcs->prebits == 8) {
-+        gcs->prebits--;
-+    }
-+    /*
-+     * Check that CPU code defining pribits didn't violate
-+     * architectural constraints our implementation relies on.
-+     */
-+    g_assert(gcs->pribits >= 4 && gcs->pribits <= 8);
- 
--        /*
--         * gicv3_cpuif_reginfo[] defines ICC_AP*R0_EL1; add definitions
--         * for ICC_AP*R{1,2,3}_EL1 if the prebits value requires them.
--         */
--        if (cs->prebits >= 6) {
--            define_arm_cp_regs(cpu, gicv3_cpuif_icc_apxr1_reginfo);
--        }
--        if (cs->prebits == 7) {
--            define_arm_cp_regs(cpu, gicv3_cpuif_icc_apxr23_reginfo);
--        }
-+    /*
-+     * gicv3_cpuif_reginfo[] defines ICC_AP*R0_EL1; add definitions
-+     * for ICC_AP*R{1,2,3}_EL1 if the prebits value requires them.
-+     */
-+    if (gcs->prebits >= 6) {
-+        define_arm_cp_regs(cpu, gicv3_cpuif_icc_apxr1_reginfo);
-+    }
-+    if (gcs->prebits == 7) {
-+        define_arm_cp_regs(cpu, gicv3_cpuif_icc_apxr23_reginfo);
-+    }
- 
--        if (arm_feature(&cpu->env, ARM_FEATURE_EL2)) {
--            int j;
-+    if (arm_feature(&cpu->env, ARM_FEATURE_EL2)) {
-+        int j;
- 
--            cs->num_list_regs = cpu->gic_num_lrs ?: 4;
--            cs->vpribits = cpu->gic_vpribits ?: 5;
--            cs->vprebits = cpu->gic_vprebits ?: 5;
-+        gcs->num_list_regs = cpu->gic_num_lrs ?: 4;
-+        gcs->vpribits = cpu->gic_vpribits ?: 5;
-+        gcs->vprebits = cpu->gic_vprebits ?: 5;
- 
--            /* Check against architectural constraints: getting these
--             * wrong would be a bug in the CPU code defining these,
--             * and the implementation relies on them holding.
--             */
--            g_assert(cs->vprebits <= cs->vpribits);
--            g_assert(cs->vprebits >= 5 && cs->vprebits <= 7);
--            g_assert(cs->vpribits >= 5 && cs->vpribits <= 8);
-+        /* Check against architectural constraints: getting these
-+         * wrong would be a bug in the CPU code defining these,
-+         * and the implementation relies on them holding.
-+         */
-+        g_assert(gcs->vprebits <= gcs->vpribits);
-+        g_assert(gcs->vprebits >= 5 && gcs->vprebits <= 7);
-+        g_assert(gcs->vpribits >= 5 && gcs->vpribits <= 8);
- 
--            define_arm_cp_regs(cpu, gicv3_cpuif_hcr_reginfo);
-+        define_arm_cp_regs(cpu, gicv3_cpuif_hcr_reginfo);
- 
--            for (j = 0; j < cs->num_list_regs; j++) {
--                /* Note that the AArch64 LRs are 64-bit; the AArch32 LRs
--                 * are split into two cp15 regs, LR (the low part, with the
--                 * same encoding as the AArch64 LR) and LRC (the high part).
--                 */
--                ARMCPRegInfo lr_regset[] = {
--                    { .name = "ICH_LRn_EL2", .state = ARM_CP_STATE_BOTH,
--                      .opc0 = 3, .opc1 = 4, .crn = 12,
--                      .crm = 12 + (j >> 3), .opc2 = j & 7,
--                      .type = ARM_CP_IO | ARM_CP_NO_RAW,
--                      .nv2_redirect_offset = 0x400 + 8 * j,
--                      .access = PL2_RW,
--                      .readfn = ich_lr_read,
--                      .writefn = ich_lr_write,
--                    },
--                    { .name = "ICH_LRCn_EL2", .state = ARM_CP_STATE_AA32,
--                      .cp = 15, .opc1 = 4, .crn = 12,
--                      .crm = 14 + (j >> 3), .opc2 = j & 7,
--                      .type = ARM_CP_IO | ARM_CP_NO_RAW,
--                      .access = PL2_RW,
--                      .readfn = ich_lr_read,
--                      .writefn = ich_lr_write,
--                    },
--                };
--                define_arm_cp_regs(cpu, lr_regset);
--            }
--            if (cs->vprebits >= 6) {
--                define_arm_cp_regs(cpu, gicv3_cpuif_ich_apxr1_reginfo);
--            }
--            if (cs->vprebits == 7) {
--                define_arm_cp_regs(cpu, gicv3_cpuif_ich_apxr23_reginfo);
--            }
--        }
--        if (tcg_enabled() || qtest_enabled()) {
--            /*
--             * We can only trap EL changes with TCG. However the GIC interrupt
--             * state only changes on EL changes involving EL2 or EL3, so for
--             * the non-TCG case this is OK, as EL2 and EL3 can't exist.
-+        for (j = 0; j < gcs->num_list_regs; j++) {
-+            /* Note that the AArch64 LRs are 64-bit; the AArch32 LRs
-+             * are split into two cp15 regs, LR (the low part, with the
-+             * same encoding as the AArch64 LR) and LRC (the high part).
-              */
--            arm_register_el_change_hook(cpu, gicv3_cpuif_el_change_hook, cs);
--        } else {
--            assert(!arm_feature(&cpu->env, ARM_FEATURE_EL2));
--            assert(!arm_feature(&cpu->env, ARM_FEATURE_EL3));
--        }
-+            ARMCPRegInfo lr_regset[] = {
-+                { .name = "ICH_LRn_EL2", .state = ARM_CP_STATE_BOTH,
-+                  .opc0 = 3, .opc1 = 4, .crn = 12,
-+                  .crm = 12 + (j >> 3), .opc2 = j & 7,
-+                  .type = ARM_CP_IO | ARM_CP_NO_RAW,
-+                  .nv2_redirect_offset = 0x400 + 8 * j,
-+                  .access = PL2_RW,
-+                  .readfn = ich_lr_read,
-+                  .writefn = ich_lr_write,
-+                },
-+                { .name = "ICH_LRCn_EL2", .state = ARM_CP_STATE_AA32,
-+                  .cp = 15, .opc1 = 4, .crn = 12,
-+                  .crm = 14 + (j >> 3), .opc2 = j & 7,
-+                  .type = ARM_CP_IO | ARM_CP_NO_RAW,
-+                  .access = PL2_RW,
-+                  .readfn = ich_lr_read,
-+                  .writefn = ich_lr_write,
-+                },
-+            };
-+            define_arm_cp_regs(cpu, lr_regset);
-+        }
-+        if (gcs->vprebits >= 6) {
-+            define_arm_cp_regs(cpu, gicv3_cpuif_ich_apxr1_reginfo);
-+        }
-+        if (gcs->vprebits == 7) {
-+            define_arm_cp_regs(cpu, gicv3_cpuif_ich_apxr23_reginfo);
-+        }
-+    }
-+    if (tcg_enabled() || qtest_enabled()) {
-+        /*
-+         * We can only trap EL changes with TCG. However the GIC interrupt
-+         * state only changes on EL changes involving EL2 or EL3, so for
-+         * the non-TCG case this is OK, as EL2 and EL3 can't exist.
-+         */
-+        arm_register_el_change_hook(cpu, gicv3_cpuif_el_change_hook, gcs);
-+    } else {
-+        assert(!arm_feature(&cpu->env, ARM_FEATURE_EL2));
-+        assert(!arm_feature(&cpu->env, ARM_FEATURE_EL3));
-     }
- }
-diff --git a/hw/intc/arm_gicv3_cpuif_common.c b/hw/intc/arm_gicv3_cpuif_common.c
-index ff1239f65d..f9a9b2d8a3 100644
---- a/hw/intc/arm_gicv3_cpuif_common.c
-+++ b/hw/intc/arm_gicv3_cpuif_common.c
-@@ -20,3 +20,14 @@ void gicv3_set_gicv3state(CPUState *cpu, GICv3CPUState *s)
- 
-     env->gicv3state = (void *)s;
+ static const uint32_t ged_supported_events[] = {
+     ACPI_GED_MEM_HOTPLUG_EVT,
+     ACPI_GED_PWR_DOWN_EVT,
+     ACPI_GED_NVDIMM_HOTPLUG_EVT,
++    ACPI_GED_CPU_POWERSTATE_EVT,
+     ACPI_GED_CPU_HOTPLUG_EVT,
+     ACPI_GED_PCI_HOTPLUG_EVT,
  };
-+
-+void gicv3_init_cpuif(GICv3State *s)
-+{
-+    ARMGICv3CommonClass *agcc = ARM_GICV3_COMMON_GET_CLASS(s);
-+    int i;
-+
-+    /* define and register `system registers` with the vCPU  */
-+    for (i = 0; i < s->num_cpu; i++) {
-+        agcc->init_cpu_reginfo(s->cpu[i].cpu);
-+    }
-+}
-diff --git a/hw/intc/arm_gicv3_kvm.c b/hw/intc/arm_gicv3_kvm.c
-index 6166283cd1..4ca889da45 100644
---- a/hw/intc/arm_gicv3_kvm.c
-+++ b/hw/intc/arm_gicv3_kvm.c
-@@ -776,6 +776,10 @@ static void vm_change_state_handler(void *opaque, bool running,
+@@ -112,6 +114,9 @@ void build_ged_aml(Aml *table, const char *name, HotplugHandler *hotplug_dev,
+                 aml_append(if_ctx, aml_call0(MEMORY_DEVICES_CONTAINER "."
+                                              MEMORY_SLOT_SCAN_METHOD));
+                 break;
++            case ACPI_GED_CPU_POWERSTATE_EVT:
++                aml_append(if_ctx, aml_call0(AML_GED_EVT_CPUPS_SCAN_METHOD));
++                break;
+             case ACPI_GED_CPU_HOTPLUG_EVT:
+                 aml_append(if_ctx, aml_call0(AML_GED_EVT_CPU_SCAN_METHOD));
+                 break;
+@@ -302,12 +307,57 @@ static void acpi_ged_unplug_cb(HotplugHandler *hotplug_dev,
      }
  }
  
-+static void kvm_gicv3_init_cpu_reginfo(CPUState *cs)
++static void
++acpi_ged_pre_poweron_cb(PowerStateHandler *handler, DeviceState *dev,
++                        Error **errp)
 +{
-+    define_arm_cp_regs(ARM_CPU(cs), gicv3_cpuif_reginfo);
++    AcpiGedState *s = ACPI_GED(handler);
++
++    if (object_dynamic_cast(OBJECT(dev), TYPE_CPU)) {
++        acpi_cpu_device_check_cb(&s->cpuospm_state, dev,
++                                  ACPI_CPU_POWERSTATE_STATUS, errp);
++    } else {
++        error_setg(errp, "acpi: poweron transition on unsupported device"
++                   " type %s", object_get_typename(OBJECT(dev)));
++    }
 +}
- 
- static void kvm_arm_gicv3_realize(DeviceState *dev, Error **errp)
++
++static void
++acpi_ged_request_poweroff_cb(PowerStateHandler *handler, DeviceState *dev,
++                             Error **errp)
++{
++    AcpiGedState *s = ACPI_GED(handler);
++
++    if (object_dynamic_cast(OBJECT(dev), TYPE_CPU)) {
++        acpi_cpu_eject_request_cb(&s->cpuospm_state, dev,
++                                  ACPI_CPU_POWERSTATE_STATUS, errp);
++    } else {
++        error_setg(errp, "acpi: poweroff transition request for unsupported"
++                   " device type: %s", object_get_typename(OBJECT(dev)));
++    }
++}
++
++static void
++acpi_ged_post_poweroff_cb(PowerStateHandler *handler, DeviceState *dev,
++                          Error **errp)
++{
++    AcpiGedState *s = ACPI_GED(handler);
++
++    if (object_dynamic_cast(OBJECT(dev), TYPE_CPU)) {
++        acpi_cpu_eject_cb(&s->cpuospm_state, dev, errp);
++    } else {
++        error_setg(errp, "acpi: post poweroff handling on unsupported device"
++                   " type %s", object_get_typename(OBJECT(dev)));
++    }
++}
++
+ static void acpi_ged_ospm_status(AcpiDeviceIf *adev, ACPIOSTInfoList ***list)
  {
-@@ -811,11 +815,8 @@ static void kvm_arm_gicv3_realize(DeviceState *dev, Error **errp)
+     AcpiGedState *s = ACPI_GED(adev);
  
-     gicv3_init_irqs_and_mmio(s, kvm_arm_gicv3_set_irq, NULL);
+     acpi_memory_ospm_status(&s->memhp_state, list);
+     acpi_cpu_ospm_status(&s->cpuhp_state, list);
++    acpi_cpus_ospm_status(&s->cpuospm_state, list);
+ }
  
--    for (i = 0; i < s->num_cpu; i++) {
--        ARMCPU *cpu = ARM_CPU(qemu_get_cpu(i));
--
--        define_arm_cp_regs(cpu, gicv3_cpuif_reginfo);
--    }
-+    /* initialize vCPU interface */
-+    gicv3_init_cpuif(s);
- 
-     /* Try to create the device via the device control API */
-     s->dev_fd = kvm_create_device(kvm_state, KVM_DEV_TYPE_ARM_VGIC_V3, false);
-@@ -929,6 +930,7 @@ static void kvm_arm_gicv3_class_init(ObjectClass *klass, const void *data)
- 
-     agcc->pre_save = kvm_arm_gicv3_get;
-     agcc->post_load = kvm_arm_gicv3_put;
-+    agcc->init_cpu_reginfo = kvm_gicv3_init_cpu_reginfo;
-     device_class_set_parent_realize(dc, kvm_arm_gicv3_realize,
-                                     &kgc->parent_realize);
-     resettable_class_set_parent_phases(rc, NULL, kvm_arm_gicv3_reset_hold, NULL,
-diff --git a/hw/intc/gicv3_internal.h b/hw/intc/gicv3_internal.h
-index bc9f518fe8..cc8edc499b 100644
---- a/hw/intc/gicv3_internal.h
-+++ b/hw/intc/gicv3_internal.h
-@@ -722,6 +722,7 @@ void gicv3_redist_vinvall(GICv3CPUState *cs, uint64_t vptaddr);
- 
- void gicv3_redist_send_sgi(GICv3CPUState *cs, int grp, int irq, bool ns);
- void gicv3_init_cpuif(GICv3State *s);
-+void gicv3_init_cpu_reginfo(CPUState *cs);
- 
- /**
-  * gicv3_cpuif_update:
-diff --git a/include/hw/intc/arm_gicv3_common.h b/include/hw/intc/arm_gicv3_common.h
-index c18503869f..3720728227 100644
---- a/include/hw/intc/arm_gicv3_common.h
-+++ b/include/hw/intc/arm_gicv3_common.h
-@@ -313,6 +313,7 @@ struct ARMGICv3CommonClass {
- 
-     void (*pre_save)(GICv3State *s);
-     void (*post_load)(GICv3State *s);
-+    void (*init_cpu_reginfo)(CPUState *cs);
+ static void acpi_ged_send_event(AcpiDeviceIf *adev, AcpiEventStatusBits ev)
+@@ -322,6 +372,8 @@ static void acpi_ged_send_event(AcpiDeviceIf *adev, AcpiEventStatusBits ev)
+         sel = ACPI_GED_PWR_DOWN_EVT;
+     } else if (ev & ACPI_NVDIMM_HOTPLUG_STATUS) {
+         sel = ACPI_GED_NVDIMM_HOTPLUG_EVT;
++    } else if (ev & ACPI_CPU_POWERSTATE_STATUS) {
++        sel = ACPI_GED_CPU_POWERSTATE_EVT;
+     } else if (ev & ACPI_CPU_HOTPLUG_STATUS) {
+         sel = ACPI_GED_CPU_HOTPLUG_EVT;
+     } else if (ev & ACPI_PCI_HOTPLUG_STATUS) {
+@@ -379,6 +431,24 @@ static const VMStateDescription vmstate_cpuhp_state = {
+     }
  };
  
- void gicv3_init_irqs_and_mmio(GICv3State *s, qemu_irq_handler handler,
++static bool cpuospm_needed(void *opaque)
++{
++    MachineClass *mc = MACHINE_GET_CLASS(qdev_get_machine());
++
++    return mc->has_online_capable_cpus;
++}
++
++static const VMStateDescription vmstate_cpuospm_state = {
++    .name = "acpi-ged/cpu-ospm",
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .needed = cpuospm_needed,
++    .fields      = (VMStateField[]) {
++        VMSTATE_CPU_OSPM_STATE(cpuospm_state, AcpiGedState),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
+ static const VMStateDescription vmstate_ged_state = {
+     .name = "acpi-ged-state",
+     .version_id = 1,
+@@ -447,6 +517,7 @@ static const VMStateDescription vmstate_acpi_ged = {
+     .subsections = (const VMStateDescription * const []) {
+         &vmstate_memhp_state,
+         &vmstate_cpuhp_state,
++        &vmstate_cpuospm_state,
+         &vmstate_ghes_state,
+         &vmstate_pcihp_state,
+         NULL
+@@ -461,6 +532,8 @@ static void acpi_ged_realize(DeviceState *dev, Error **errp)
+     uint32_t ged_events;
+     int i;
+ 
++    s->cpuospm_state.acpi_dev = dev;
++
+     if (pcihp_state->use_acpi_hotplug_bridge) {
+         s->ged_event_bitmap |= ACPI_GED_PCI_HOTPLUG_EVT;
+     }
+@@ -474,6 +547,18 @@ static void acpi_ged_realize(DeviceState *dev, Error **errp)
+         }
+ 
+         switch (event) {
++        case ACPI_GED_CPU_POWERSTATE_EVT:
++            /* initialize regions related to CPU OSPM interface to be used
++             * during notification of the power-on,off events to the OSPM
++             */
++            memory_region_init(&s->container_cpuospm, OBJECT(dev),
++                               ACPI_CPUOSPM_REGION_NAME,
++                               ACPI_CPU_OSPM_IF_REG_LEN);
++            sysbus_init_mmio(sbd, &s->container_cpuospm);
++            acpi_cpu_ospm_state_interface_init(&s->container_cpuospm,
++                                               OBJECT(dev),
++                                               &s->cpuospm_state, 0);
++            break;
+         case ACPI_GED_CPU_HOTPLUG_EVT:
+             /* initialize CPU Hotplug related regions */
+             memory_region_init(&s->container_cpuhp, OBJECT(dev),
+@@ -544,6 +629,7 @@ static void acpi_ged_class_init(ObjectClass *class, const void *data)
+ {
+     DeviceClass *dc = DEVICE_CLASS(class);
+     HotplugHandlerClass *hc = HOTPLUG_HANDLER_CLASS(class);
++    PowerStateHandlerClass *pshc = POWERSTATE_HANDLER_CLASS(class);
+     AcpiDeviceIfClass *adevc = ACPI_DEVICE_IF_CLASS(class);
+     ResettableClass *rc = RESETTABLE_CLASS(class);
+     AcpiGedClass *gedc = ACPI_GED_CLASS(class);
+@@ -560,6 +646,10 @@ static void acpi_ged_class_init(ObjectClass *class, const void *data)
+     resettable_class_set_parent_phases(rc, NULL, ged_reset_hold, NULL,
+                                        &gedc->parent_phases);
+ 
++    pshc->pre_poweron = acpi_ged_pre_poweron_cb;
++    pshc->request_poweroff = acpi_ged_request_poweroff_cb;
++    pshc->post_poweroff = acpi_ged_post_poweroff_cb;
++
+     adevc->ospm_status = acpi_ged_ospm_status;
+     adevc->send_event = acpi_ged_send_event;
+ }
+@@ -573,6 +663,7 @@ static const TypeInfo acpi_ged_info = {
+     .class_size    = sizeof(AcpiGedClass),
+     .interfaces = (const InterfaceInfo[]) {
+         { TYPE_HOTPLUG_HANDLER },
++        { TYPE_POWERSTATE_HANDLER },
+         { TYPE_ACPI_DEVICE_IF },
+         { }
+     }
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 3980f553db..8d498708ab 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -188,6 +188,7 @@ static const MemMapEntry base_memmap[] = {
+     [VIRT_PVTIME] =             { 0x090a0000, 0x00010000 },
+     [VIRT_SECURE_GPIO] =        { 0x090b0000, 0x00001000 },
+     [VIRT_ACPI_PCIHP] =         { 0x090c0000, ACPI_PCIHP_SIZE },
++    [VIRT_ACPI_CPUPS] =         { 0x090d0000, ACPI_CPU_OSPM_IF_REG_LEN },
+     [VIRT_MMIO] =               { 0x0a000000, 0x00000200 },
+     /* ...repeating for a total of NUM_VIRTIO_TRANSPORTS, each of that size */
+     [VIRT_PLATFORM_BUS] =       { 0x0c000000, 0x02000000 },
+@@ -688,9 +689,10 @@ static inline DeviceState *create_acpi_ged(VirtMachineState *vms)
+ {
+     DeviceState *dev;
+     MachineState *ms = MACHINE(vms);
++    MachineClass *mc = MACHINE_GET_CLASS(ms);
+     SysBusDevice *sbdev;
+     int irq = vms->irqmap[VIRT_ACPI_GED];
+-    uint32_t event = ACPI_GED_PWR_DOWN_EVT;
++    uint32_t event = ACPI_GED_PWR_DOWN_EVT | ACPI_GED_CPU_POWERSTATE_EVT;
+     bool acpi_pcihp;
+ 
+     if (ms->ram_slots) {
+@@ -711,6 +713,11 @@ static inline DeviceState *create_acpi_ged(VirtMachineState *vms)
+     sysbus_mmio_map_name(sbdev, ACPI_MEMHP_REGION_NAME,
+                          vms->memmap[VIRT_PCDIMM_ACPI].base);
+ 
++    if (mc->has_online_capable_cpus) {
++        sysbus_mmio_map_name(sbdev, ACPI_CPUOSPM_REGION_NAME,
++                             vms->memmap[VIRT_ACPI_CPUPS].base);
++    }
++
+     acpi_pcihp = object_property_get_bool(OBJECT(dev),
+                                           ACPI_PM_PROP_ACPI_PCIHP_BRIDGE, NULL);
+ 
+diff --git a/include/hw/acpi/acpi_dev_interface.h b/include/hw/acpi/acpi_dev_interface.h
+index 68d9d15f50..eea03ca47d 100644
+--- a/include/hw/acpi/acpi_dev_interface.h
++++ b/include/hw/acpi/acpi_dev_interface.h
+@@ -13,6 +13,7 @@ typedef enum {
+     ACPI_NVDIMM_HOTPLUG_STATUS = 16,
+     ACPI_VMGENID_CHANGE_STATUS = 32,
+     ACPI_POWER_DOWN_STATUS = 64,
++    ACPI_CPU_POWERSTATE_STATUS = 128,
+ } AcpiEventStatusBits;
+ 
+ #define TYPE_ACPI_DEVICE_IF "acpi-device-interface"
+diff --git a/include/hw/acpi/generic_event_device.h b/include/hw/acpi/generic_event_device.h
+index 2c5b055327..87e4e5e6ce 100644
+--- a/include/hw/acpi/generic_event_device.h
++++ b/include/hw/acpi/generic_event_device.h
+@@ -64,6 +64,7 @@
+ #include "hw/acpi/ghes.h"
+ #include "hw/acpi/cpu.h"
+ #include "hw/acpi/pcihp.h"
++#include "hw/acpi/cpu_ospm_interface.h"
+ #include "qom/object.h"
+ 
+ #define ACPI_POWER_BUTTON_DEVICE "PWRB"
+@@ -92,6 +93,7 @@ OBJECT_DECLARE_TYPE(AcpiGedState, AcpiGedClass, ACPI_GED)
+ #define AML_GED_EVT_REG "EREG"
+ #define AML_GED_EVT_SEL "ESEL"
+ #define AML_GED_EVT_CPU_SCAN_METHOD "\\_SB.GED.CSCN"
++#define AML_GED_EVT_CPUPS_SCAN_METHOD "\\_SB.GED.PSCN"  /* Power State Scan */
+ 
+ /*
+  * Platforms need to specify the GED event bitmap
+@@ -103,6 +105,7 @@ OBJECT_DECLARE_TYPE(AcpiGedState, AcpiGedClass, ACPI_GED)
+ #define ACPI_GED_NVDIMM_HOTPLUG_EVT 0x4
+ #define ACPI_GED_CPU_HOTPLUG_EVT    0x8
+ #define ACPI_GED_PCI_HOTPLUG_EVT    0x10
++#define ACPI_GED_CPU_POWERSTATE_EVT 0x20
+ 
+ typedef struct GEDState {
+     MemoryRegion evt;
+@@ -112,6 +115,7 @@ typedef struct GEDState {
+ 
+ #define ACPI_PCIHP_REGION_NAME "pcihp container"
+ #define ACPI_MEMHP_REGION_NAME "memhp container"
++#define ACPI_CPUOSPM_REGION_NAME "cpuospm container"
+ 
+ struct AcpiGedState {
+     SysBusDevice parent_obj;
+@@ -121,6 +125,8 @@ struct AcpiGedState {
+     MemoryRegion container_cpuhp;
+     AcpiPciHpState pcihp_state;
+     MemoryRegion container_pcihp;
++    AcpiCpuOspmState cpuospm_state;
++    MemoryRegion container_cpuospm;
+     GEDState ged_state;
+     uint32_t ged_event_bitmap;
+     qemu_irq irq;
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index 02cc311452..68081b79bb 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -81,6 +81,7 @@ enum {
+     VIRT_NVDIMM_ACPI,
+     VIRT_PVTIME,
+     VIRT_ACPI_PCIHP,
++    VIRT_ACPI_CPUPS,
+     VIRT_LOWMEMMAP_LAST,
+ };
+ 
 -- 
 2.34.1
 

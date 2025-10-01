@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B52B5CCA476
-	for <qemu-arm@archiver.kernel.org>; Wed,  1 Oct 2025 01:15:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C92ACAC5B8
+	for <qemu-arm@archiver.kernel.org>; Wed,  1 Oct 2025 01:16:01 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v3lFx-0005UN-U3; Tue, 30 Sep 2025 21:03:48 -0400
+	id 1v3lGM-0005fZ-S8; Tue, 30 Sep 2025 21:04:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <salil.mehta@opnsrc.net>)
- id 1v3lFZ-0005NH-Mk
- for qemu-arm@nongnu.org; Tue, 30 Sep 2025 21:03:22 -0400
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
+ id 1v3lFv-0005S4-7V
+ for qemu-arm@nongnu.org; Tue, 30 Sep 2025 21:03:43 -0400
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <salil.mehta@opnsrc.net>)
- id 1v3lF0-00085o-Md
- for qemu-arm@nongnu.org; Tue, 30 Sep 2025 21:03:21 -0400
-Received: by mail-wr1-x433.google.com with SMTP id
- ffacd0b85a97d-3ee15b5435bso3669569f8f.0
- for <qemu-arm@nongnu.org>; Tue, 30 Sep 2025 18:02:44 -0700 (PDT)
+ id 1v3lFE-0008BW-JN
+ for qemu-arm@nongnu.org; Tue, 30 Sep 2025 21:03:38 -0400
+Received: by mail-wm1-x334.google.com with SMTP id
+ 5b1f17b1804b1-46e47cca387so47368975e9.3
+ for <qemu-arm@nongnu.org>; Tue, 30 Sep 2025 18:02:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=opnsrc.net; s=google; t=1759280560; x=1759885360; darn=nongnu.org;
+ d=opnsrc.net; s=google; t=1759280575; x=1759885375; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=1KLKg1dYtstrbAJPk1FfINsXop7TJ4OcNXkn8NSh+1U=;
- b=YD8fFwxrnhA/DmSuF/GXZXZwE8WHsv2nq16wNNCTihgR1NIIHF+aMRWKStcH38b3kB
- 6SrkH3OM5i48F3qj3E+bwHwlyRjLNz12paZyU4bFoJWB4rAIIP+DH4/mDsukfN7Ah/VW
- mJTMWlihV39VpibLIhmS/ZBbhv/Iu1bzaznboUX5hU90AKzS4Wlym6AGktJPuDlxOtu3
- LF9jyzb/ObpkLrNze9sAlvYm2uaogUZqBO1C0daGTg0YYRCN2MDPHuqlVqApzLsgu78r
- kxdVsOLsZN4Mr7+dPaV4vqMZpEkn4S/VbbwPMwRmco59M7Di5QxWEOfXIjNunG1onl8a
- irng==
+ bh=7h307QOx44Ki9SH92ohHJPER/ZS3m1zJos18uaOTvw0=;
+ b=C6QyghUrCxfJ+KRNmYgHfY+dcYHY7SAjydkStHZg5q7TQJWhfaKqBJUZkCk2+jqemb
+ xWONMyeZMz8np6A2l6cHc9y2kc3vhARRLm02uk/z9/g1eJm0xe7gPuairKURQUWEqqj8
+ Ui4ujIa2StkQweL/OVzKtkxSQOUlY9vGC6RWEA4thzgiBmgvvDX+S5OrZbQ1FlsAGpt5
+ EaT7ToL+KGnV8bCUmxoZD17DzE7pxlpqntl2ouSvb8lIMByyh4xQANZStIg7wOIB8TBd
+ CgaJ8kK8UM7DKhBt31oiwxg4ArtbS8UW3YsTtGxtUpg/NLg7Fx7vj8BXwKrMqmKv37yL
+ f4Mg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759280560; x=1759885360;
+ d=1e100.net; s=20230601; t=1759280575; x=1759885375;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=1KLKg1dYtstrbAJPk1FfINsXop7TJ4OcNXkn8NSh+1U=;
- b=uN4s5c0N2lNqh3r1I0oj3vpK3pJDfDNGvd0SzvLgjOBIcKFs0RniO+MsNHKgX+96yp
- NwFW8CBI07nL0Qg/hriv6tJ5zKV/1ZeIiS2FB1FPzkMdSCbLqbzpYF44MIBcJCGL6qnM
- cPJi5tVZZrHd75d2M+eV2HW4gGgWAXPnPmPREr8WFVSz+WruoSReIGo9ZMJbblzB1Ie3
- k8tv6VCSx3DojwOPSLx3roXAJr0tLyt17IbvhezjIASB778GTZAdAPPfNmTq7ILS6uJH
- fHfg0K6HitMUhKPVa1fyjubwaeabN7C3h+o8EmkfNpSZEvMx0iyDIZgzKhZ0yhzCPLmB
- Abpg==
+ bh=7h307QOx44Ki9SH92ohHJPER/ZS3m1zJos18uaOTvw0=;
+ b=MR/n8V0pN8U6D5kwziEFkwMzGxPiGjb+Pizfj7tgqO0fyqj0Wz28EgXjUzycxbO58v
+ xwFHjnDXbcJ2gvLUKGW9boRlk9tNhG5yYPE+JLmOc3YAeYKp7ONZdNrR07gOCeHGDzPb
+ Sl2w6jjY7DWPyynRplbYUFTrda0aS4p9oq75N3Dcv5tCL//fL1zMyp3x654g1vVoOPVO
+ zsDmdNS2r1rjw3VHln7WuwQ+DVzBEEssGLB2pNE+RhlsKZDR9ktTUvNOP6ueDNPunvq5
+ 0bBNSqaRc41b2nGyexOm7d19B5zzpDbyiJ9HxlA4X8XYHXd9vV9HKlrNiR8StymOojCy
+ aruQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUicWu664ZxO5B4GyDCl2cq5KnbKiNfOAJlC2TgEVpdy+XxtSTleeJ8mF+CWtItIqshHhp7DxogGQ==@nongnu.org
-X-Gm-Message-State: AOJu0YxI/W0r52GYsWheS/gtDtx8/LohNyIftZVjFvcJoFpEre9yzXDt
- vgjZTwuFZYl76y/L6KrTb4+AyW1nndzmki+KGoUL1sL0TR/e7ASyGPaUZM7l/1m32g4=
-X-Gm-Gg: ASbGncs6lSqwmBBnmNv3KpNNrXe6U1hFF7scW5T739QaYaRYkxoAhj3S0Atla9dbNLp
- 4zw3SmY6+WSYVU/FjWoQDq0ZcRrskIHXifRSF/Jc/dGDsDB2Mp/5Crx59mrTG4m6Qcbibp4qLck
- cEctfTIK3wLSsFvRNGl4hTHfJXTA99vUhdsa9h+VoRiPtj0g6Wh0orpzdTxP0mJ7OB1Ue2dqLVK
- lRsbnQbCh2wlM0lVxkPirfylZ+pMZFytNVyL2Wd0utViPvHREeiXDEfBFw61ZXfJ9rvLLuLtP31
- F7kFXsUH9d2TQm1oirRtJaPBVAvmCP/spiY8dr3bdm3M4JbqxHC61aLUfyIwMuIxgnmGPcrahR2
- xEP6iLQhc/k4l/rtO04zcMMWE3a3fpoXRxfmKmpYAA6j7w6QrbSAjNhj/caonoL7p1BsWUbuva3
- 6KSVyR/oeQpy7K1mmh2MB3hqQBgvBAnyyZGskcYBq7NpR8eBATkekiIQ==
-X-Google-Smtp-Source: AGHT+IEOa1mZRIiEXaGp9MtU8lnJshhWrjQdcEIYtIFQ8APD4eiEb81HC4qUqKb3ooyAax2ioj3igg==
-X-Received: by 2002:a05:6000:240c:b0:3ea:6680:8f97 with SMTP id
- ffacd0b85a97d-425577ed8a3mr1099336f8f.2.1759280559992; 
- Tue, 30 Sep 2025 18:02:39 -0700 (PDT)
+ AJvYcCUCsY6fq6Skjf94hLla2E+KZ6VHl+/qRJeGM3KJsqhmFAQkrlpFDesEFfIsYQwE9uKV8niBRDMVGw==@nongnu.org
+X-Gm-Message-State: AOJu0Yzi+m2wVXqLJunF+ACO5mIkVp5R5xP2CqKFr6Sd4Hi4H5byKBrB
+ 7FZJBYQwHSnD6DNgQaZUtQRipeLK+c0TLXEUCE9y0KwaXLOYJurdWmrAEyjC3PovSCE=
+X-Gm-Gg: ASbGnctE/Q7yT1QOTKe80S9JGy/hX6/JG3ifDoGzYehOIzivtgDhzRv9b9ICtZXlXKY
+ 2XruLdI9PKmPjjqlP6l5d70TWNj8lDP3wC12E39XYw4HCe/+XnbmWi1STuau6geZGy5u2r8wfXk
+ bniZA6p1efK3eUkhZ9tB9xNdX6PQzUqgTKkK3etrZne9pdssVLzw/MdNQl+vcS6Gk+4FHWui4Ki
+ 7UqA2qg5iSGRhS5JXWf2UhcogTxZHXZr3uAP4ryz0sU5cdWwkEjm1P/ldqQUHuqgq9azfMfNka3
+ SPrUMc9SnZ6HVtdv6BzDPsa/nT2diydcYkEBqlTOFVdoBuH4f74y2QtA/IWbnCpXQLvGOfG8CtT
+ 74Qm4NHDITwDVvP21YP+vsfhbvlajRqH9eMhesdch9Tu3zfC6hSkUhV2y7enjMnJIjv5agNYQtF
+ bhAxnX6hn8yiDEweEPTKY521wzG8OVNBqIys5lOzfmPKA=
+X-Google-Smtp-Source: AGHT+IEnY0uugUJqIG/xkP/LpPRxljbK0+8Z0BcVIT+7ekPwlS5/mNaj9Fu6cCj6dxs1BSLKaSxR2g==
+X-Received: by 2002:a05:6000:26c3:b0:3eb:5e99:cbd3 with SMTP id
+ ffacd0b85a97d-425577ed539mr1014530f8f.2.1759280574636; 
+ Tue, 30 Sep 2025 18:02:54 -0700 (PDT)
 Received: from localhost.localdomain ([90.209.204.182])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-40fb985e080sm24587426f8f.24.2025.09.30.18.02.38
+ ffacd0b85a97d-40fb985e080sm24587426f8f.24.2025.09.30.18.02.53
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 30 Sep 2025 18:02:39 -0700 (PDT)
+ Tue, 30 Sep 2025 18:02:54 -0700 (PDT)
 From: salil.mehta@opnsrc.net
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org,
@@ -87,25 +87,24 @@ Cc: salil.mehta@huawei.com, maz@kernel.org, jean-philippe@linaro.org,
  wangxiongfeng2@huawei.com, wangyanan55@huawei.com, wangzhou1@hisilicon.com,
  linuxarm@huawei.com, jiakernel2@gmail.com, maobibo@loongson.cn,
  lixianglai@loongson.cn, shahuang@redhat.com, zhao1.liu@intel.com
-Subject: [PATCH RFC V6 12/24] hw/core: Introduce generic device power-state
- handler interface
-Date: Wed,  1 Oct 2025 01:01:15 +0000
-Message-Id: <20251001010127.3092631-13-salil.mehta@opnsrc.net>
+Subject: [PATCH RFC V6 18/24] target/arm/kvm,
+ tcg: Handle SMCCC hypercall exits in VMM during PSCI_CPU_{ON, OFF}
+Date: Wed,  1 Oct 2025 01:01:21 +0000
+Message-Id: <20251001010127.3092631-19-salil.mehta@opnsrc.net>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20251001010127.3092631-1-salil.mehta@opnsrc.net>
 References: <20251001010127.3092631-1-salil.mehta@opnsrc.net>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::433;
- envelope-from=salil.mehta@opnsrc.net; helo=mail-wr1-x433.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::334;
+ envelope-from=salil.mehta@opnsrc.net; helo=mail-wm1-x334.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -121,459 +120,344 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Salil Mehta <salil.mehta@huawei.com>
+From: Author Salil Mehta <salil.mehta@huawei.com>
 
-Device power-state transitions such as powering on, powering off, or entering
-standby may be triggered by administrative state changes (enable to disable or
-disable to enable), guest OSPM requests in response to workload or policy, or
-platform-specific control flows (e.g. ACPI, firmware, or machine hooks). These
-varied triggers require coordinated handling to ensure consistent behavior
-across devices.
+To support vCPU hotplug-like feature, we must trap any `HVC`/`SMC`
+`PSCI_CPU_{ON,OFF}` hypercalls from the host KVM to QEMU for policy checks. This
+ensures the following when a vCPU is brought online:
 
-Without a common interface, each device type must implement ad-hoc logic,
-making it harder to manage and extend power-state control in QEMU.
+1. The vCPU is actually plugged in (i.e., present).
+2. The vCPU is not administratively disabled. (Policy Checks)
 
-This patch introduces a generic PowerStateHandler QOM interface that allows
-devices to expose callbacks for operational power-state transitions. The model
-distinguishes between administrative state (enable/disable, host-driven) and
-operational state (on/off/standby, runtime). An administrative transition may
-trigger an operational change, with QEMU signaling the guest through platform
-interfaces and OSPM coordinating the transition. Some platforms may enforce
-transitions directly, without OSPM involvement.
+Implement the registration and handling of `HVC`/`SMC` hypercall exits within
+the VMM, ensuring that proper policy checks and control flow are enforced during
+the vCPU onlining and offlining processes.
 
-Key features:
- - New TYPE_POWERSTATE_HANDLER QOM interface.
- - PowerStateHandlerClass with optional callbacks for operational transitions:
-      device_request_poweroff() – notify guest of internal logic to begin a
-                                  graceful shutdown sequence.
-      device_post_poweroff()    – complete disable after OSPM has powered off
-                                  operationally; device is inactive and freed.
-      device_pre_poweron()      – prepare for activation on administrative
-                                  enable; reinit state and notify guest/OSPM.
-      device_request_standby()  – request a standby state without full poweroff,
-                                  retaining sufficient state for resume.
- - Helper functions in hw/core/powerstate.c to:
-      - Retrieve a device’s PowerStateHandler from the machine.
-      - Invoke the registered callbacks if present.
- - Intended for use by any device type (CPU or non-CPU) that supports controlled
-   power transitions, regardless of whether it supports architectural hotplug.
-
-High-level flow:
- QMP/HMP
-   |    user issues: {"execute":"device-set", ...} (in later patches)
-   v
- QDEV (Prop: admin-power-state) (Administrative State Handling)
-   |    invokes PowerStateHandler callbacks via interface
-   v
- Machine (PowerStateHandler) (Operational State Handling)
-   |    coordinates platform policy and may call firmware handler
-   v
- ACPI GED (PowerStateHandler, firmware)
-   |    signals events/notifications to the guest
-   v
- ACPI SCI (System Control Interrupt) to guest OS
-   |  SCI is delivered on GSI N (GED Interrupt() _CRS = N, with FADT
-   |  designating N as SCI)
-   |  OSPM receives SCI/GSI IRQ
-   v
- OSPM (in-guest house keeping) evaluates ACPI methods from firmware tables
-        (e.g. _EJ0, _STA, _OST) and completes the transition
-
-Integration model:
-Both Machine and ACPI GED implement the PowerStateHandler interface.
-QDEV calls the handler hooks; Machine applies platform policy and can invoke
-GED to coordinate with OSPM. This keeps Qdev generic while arch-specific logic
-resides in Machine and firmware.
-
-This interface will be used in later patches to coordinate CPU administrative
-enable/disable operations on architectures that lack native CPU hotplug, and
-can also be adopted by other device classes requiring similar control.
-
+Co-developed-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
+Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
 Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
 ---
- hw/core/meson.build      |   1 +
- hw/core/powerstate.c     | 100 +++++++++++++++++++++++
- include/hw/boards.h      |   2 +
- include/hw/powerstate.h  | 171 +++++++++++++++++++++++++++++++++++++++
- stubs/meson.build        |   1 +
- stubs/powerstate-stubs.c |  47 +++++++++++
- 6 files changed, 322 insertions(+)
- create mode 100644 hw/core/powerstate.c
- create mode 100644 include/hw/powerstate.h
- create mode 100644 stubs/powerstate-stubs.c
+ target/arm/arm-powerctl.c   | 27 ++++++++---
+ target/arm/helper.c         |  2 +-
+ target/arm/internals.h      |  2 +-
+ target/arm/kvm.c            | 93 +++++++++++++++++++++++++++++++++++++
+ target/arm/kvm_arm.h        | 14 ++++++
+ target/arm/meson.build      |  1 +
+ target/arm/{tcg => }/psci.c |  9 ++++
+ target/arm/tcg/meson.build  |  4 --
+ 8 files changed, 139 insertions(+), 13 deletions(-)
+ rename target/arm/{tcg => }/psci.c (96%)
 
-diff --git a/hw/core/meson.build b/hw/core/meson.build
-index b5a545a0ed..d9d716ce55 100644
---- a/hw/core/meson.build
-+++ b/hw/core/meson.build
-@@ -40,6 +40,7 @@ system_ss.add(files(
-   'numa.c',
-   'qdev-fw.c',
-   'qdev-hotplug.c',
-+  'powerstate.c',
-   'qdev-properties-system.c',
-   'reset.c',
-   'sysbus.c',
-diff --git a/hw/core/powerstate.c b/hw/core/powerstate.c
-new file mode 100644
-index 0000000000..0e1d12b3f6
---- /dev/null
-+++ b/hw/core/powerstate.c
-@@ -0,0 +1,100 @@
-+/*
-+ * Device Power State transition handler interface
-+ *
-+ * An administrative request to 'enable' or 'disable' a device results in a
-+ * change of its operational status. The transition may be performed either
-+ * synchronously or asynchronously, with OSPM assistance where required.
-+ *
-+ * Copyright (c) 2025 Huawei Technologies R&D (UK) Ltd.
-+ *
-+ * Author: Salil Mehta <salil.mehta@huawei.com>
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ *
-+ * This program is free software; you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License as published by
-+ * the Free Software Foundation; either version 2 of the License, or
-+ * (at your option) any later version.
-+ */
-+#include "qemu/osdep.h"
-+#include "hw/powerstate.h"
-+#include "qemu/module.h"
-+#include "qapi/error.h"
+diff --git a/target/arm/arm-powerctl.c b/target/arm/arm-powerctl.c
+index 20c70c7d6b..ab4422b261 100644
+--- a/target/arm/arm-powerctl.c
++++ b/target/arm/arm-powerctl.c
+@@ -17,6 +17,7 @@
+ #include "qemu/main-loop.h"
+ #include "system/tcg.h"
+ #include "target/arm/multiprocessing.h"
 +#include "hw/boards.h"
-+
-+PowerStateHandler *powerstate_handler(DeviceState *dev)
-+{
-+    MachineState *machine = MACHINE(qdev_get_machine());
-+    MachineClass *mc = MACHINE_GET_CLASS(machine);
-+
-+   if (mc->get_powerstate_handler) {
-+        return (PowerStateHandler *)mc->get_powerstate_handler(machine, dev);
-+   }
-+
-+    return NULL;
-+}
-+
-+DeviceOperPowerState qdev_get_oper_power_state(DeviceState *dev)
-+{
-+    PowerStateHandler *h = powerstate_handler(dev);
-+    PowerStateHandlerClass *pshc = h ? POWERSTATE_HANDLER_GET_CLASS(h) : NULL;
-+
-+    if (pshc && pshc->get_oper_state) {
-+        return pshc->get_oper_state(dev, &error_warn);
-+    }
-+
-+    return DEVICE_OPER_POWER_STATE_UNKNOWN;
-+}
-+
-+void device_request_poweroff(DeviceState *dev, Error **errp)
-+{
-+    PowerStateHandler *h = powerstate_handler(dev);
-+    PowerStateHandlerClass *pshc = h ? POWERSTATE_HANDLER_GET_CLASS(h) : NULL;
-+
-+    if (pshc && pshc->request_poweroff) {
-+        pshc->request_poweroff(h, dev, errp);
-+    }
-+}
-+
-+void device_post_poweroff(DeviceState *dev, Error **errp)
-+{
-+    PowerStateHandler *h = powerstate_handler(dev);
-+    PowerStateHandlerClass *pshc = h ? POWERSTATE_HANDLER_GET_CLASS(h) : NULL;
-+
-+    if (pshc && pshc->post_poweroff) {
-+        pshc->post_poweroff(h, dev, errp);
-+    }
-+}
-+
-+void device_pre_poweron(DeviceState *dev, Error **errp)
-+{
-+    PowerStateHandler *h = powerstate_handler(dev);
-+    PowerStateHandlerClass *pshc = h ? POWERSTATE_HANDLER_GET_CLASS(h) : NULL;
-+
-+    if (pshc && pshc->pre_poweron) {
-+        pshc->pre_poweron(h, dev, errp);
-+    }
-+}
-+
-+void device_request_standby(DeviceState *dev, Error **errp)
-+{
-+    PowerStateHandler *h = powerstate_handler(dev);
-+    PowerStateHandlerClass *pshc = h ? POWERSTATE_HANDLER_GET_CLASS(h) : NULL;
-+
-+    if (pshc && pshc->request_standby) {
-+        pshc->request_standby(h, dev, errp);
-+    }
-+}
-+
-+static const TypeInfo powerstate_handler_info = {
-+    .name          = TYPE_POWERSTATE_HANDLER,
-+    .parent        = TYPE_INTERFACE,
-+    .class_size = sizeof(PowerStateHandlerClass),
-+};
-+
-+static void powerstate_handler_register_types(void)
-+{
-+    type_register_static(&powerstate_handler_info);
-+}
-+
-+type_init(powerstate_handler_register_types)
-diff --git a/include/hw/boards.h b/include/hw/boards.h
-index fe51ca58bf..161505911f 100644
---- a/include/hw/boards.h
-+++ b/include/hw/boards.h
-@@ -332,6 +332,8 @@ struct MachineClass {
  
-     HotplugHandler *(*get_hotplug_handler)(MachineState *machine,
-                                            DeviceState *dev);
-+    void *(*get_powerstate_handler)(MachineState *machine,
-+                                                 DeviceState *dev);
-     bool (*hotplug_allowed)(MachineState *state, DeviceState *dev,
-                             Error **errp);
-     CpuInstanceProperties (*cpu_index_to_instance_props)(MachineState *machine,
-diff --git a/include/hw/powerstate.h b/include/hw/powerstate.h
-new file mode 100644
-index 0000000000..c16da0f24d
---- /dev/null
-+++ b/include/hw/powerstate.h
-@@ -0,0 +1,171 @@
-+/*
-+ * Device Power State transition handler interface
-+ *
-+ * An administrative request to 'enable' or 'disable' a device results in a
-+ * change of its operational status. The transition may be performed either
-+ * synchronously or asynchronously, with OSPM assistance where required.
-+ *
-+ * Copyright (c) 2025 Huawei Technologies R&D (UK) Ltd.
-+ *
-+ * Author: Salil Mehta <salil.mehta@huawei.com>
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ *
-+ * This program is free software; you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License as published by
-+ * the Free Software Foundation; either version 2 of the License, or
-+ * (at your option) any later version.
-+ */
-+#ifndef POWERSTATE_H
-+#define POWERSTATE_H
-+
-+#include "qom/object.h"
-+
-+#define TYPE_POWERSTATE_HANDLER "powerstate-handler"
-+
-+typedef struct PowerStateHandlerClass PowerStateHandlerClass;
-+DECLARE_CLASS_CHECKERS(PowerStateHandlerClass, POWERSTATE_HANDLER,
-+                       TYPE_POWERSTATE_HANDLER)
-+#define POWERSTATE_HANDLER(obj) \
-+     INTERFACE_CHECK(PowerStateHandler, (obj), TYPE_POWERSTATE_HANDLER)
-+
-+typedef struct PowerStateHandler PowerStateHandler;
-+
-+/**
-+ * DeviceOperPowerState:
-+ *
-+ * Enumeration of operational power states for devices. These represent runtime
-+ * states controlled through platform interfaces (e.g. ACPI, PSCI, or other
-+ * OSPM mechanisms), and are distinct from administrative presence or enable/
-+ * disable state.
-+ *
-+ * Transitions may be initiated by the guest OSPM in response to workload or
-+ * policy, or triggered by administrative actions due to policy change. Please
-+ * check PowerStateHandlerClass for more details on these.
-+ *
-+ * Platforms may optionally implement a callback to fetch the current state.
-+ * That callback must map internal platform state to one of the values here.
-+ *
-+ * @DEVICE_OPER_POWER_STATE_UNKNOWN: State reporting unsupported, or state
-+ *                                   could not be determined. If @errp is set,
-+ *                                   this indicates an error. Platform firmware
-+ *                                   may also enforce state changes directly;
-+ *                                   the callback must return the resulting
-+ *                                   state.
-+ *
-+ * @DEVICE_OPER_POWER_STATE_ON:      Device is powered on and fully active.
-+ *
-+ * @DEVICE_OPER_POWER_STATE_OFF:     Device is powered off and inactive. It
-+ *                                   should not consume resources and may
-+ *                                   require reinitialization on power on.
-+ *
-+ * @DEVICE_OPER_POWER_STATE_STANDBY: Device is in a low-power standby state.
-+ *                                   It retains enough state to allow fast
-+ *                                   resume without full reinitialization.
-+ *
-+ * See also: PowerStateHandlerClass, powerstate_get_fn
-+ */
-+typedef enum DeviceOperPowerState {
-+    DEVICE_OPER_POWER_STATE_UNKNOWN = -1,
-+    DEVICE_OPER_POWER_STATE_ON = 0,
-+    DEVICE_OPER_POWER_STATE_OFF,
-+    DEVICE_OPER_POWER_STATE_STANDBY,
-+    DEVICE_OPER_POWER_STATE_MAX
-+} DeviceOperPowerState;
-+
-+/**
-+ * powerstate_fn:
-+ * @handler: Power state handler for the device performing the transition.
-+ * @dev: The device being transitioned as a result of an administrative
-+ *       state change (e.g. enable-to-disable or disable-to-enable), which
-+ *       in turn affects its operational state (on, off, standby).
-+ * @errp: Pointer to return an error if the function fails.
-+ *
-+ * Generic function signature for device power state transitions. An
-+ * administrative state change triggers the corresponding operational
-+ * transition, which may be implemented synchronously or asynchronously.
-+ */
-+typedef void (*powerstate_fn)(PowerStateHandler *handler, DeviceState *dev,
-+                              Error **errp);
-+
-+/**
-+ * powerstate_get_fn:
-+ * @dev:  The device whose operational state is being queried.
-+ * @errp: Pointer to an error object, set on failure.
-+ *
-+ * Callback type to query the current operational power state of a device.
-+ * Platforms may optionally implement this to expose their internal power
-+ * management status. When present, the callback must map the platform’s
-+ * internal state into one of the DeviceOperPowerState values.
-+ *
-+ * Returns: A DeviceOperPowerState value on success. If the platform does not
-+ * support state reporting, returns DEVICE_OPER_POWER_STATE_UNKNOWN without
-+ * setting @errp. If the state could not be determined due to an error, sets
-+ * @errp and also returns DEVICE_OPER_POWER_STATE_UNKNOWN. In this case, the
-+ * return value must be ignored when @errp is set.
-+ */
-+typedef DeviceOperPowerState (*powerstate_get_fn)(DeviceState *dev,
-+                                                  Error **errp);
-+
-+/**
-+ * PowerStateHandlerClass:
-+ *
-+ * Interface for devices that support transitions of their operational power
-+ * state (on, off, standby). These transitions may be driven by changes in the
-+ * device’s administrative state (enable to/from disable), or initiated by the
-+ * guest OSPM based on runtime policy.
-+ *
-+ * Administrative changes are host-driven (e.g. 'device_set') and can trigger
-+ * corresponding operational transitions. QEMU may signal the guest via platform
-+ * interfaces (such as ACPI) so that OSPM coordinates the change. Some platforms
-+ * may also enforce transitions directly, without OSPM involvement.
-+ *
-+ * @parent: Opaque parent interface.
-+ *
-+ * @get_oper_state: Optional callback to query the current operational state.
-+ *                  Implementations must map the internal state to the
-+ *                  'DeviceOperPowerState' enum.
-+ *
-+ * @request_poweroff: Optional callback to notify the guest of internal logic
-+ *                    that the device is about to be disabled. Used to initiate
-+ *                    graceful shutdown or cleanup within OSPM.
-+ *
-+ * @post_poweroff: Callback invoked after OSPM has powered off the device
-+ *                 operationally. Completes the administrative transition to
-+ *                 'disabled', ensuring the device is fully inactive and not
-+ *                 consuming resources.
-+ *
-+ * @pre_poweron: Callback to prepare a device for re-activation after an
-+ *               administrative 'enable'. May reinitialize state and notify the
-+ *               guest that the device is available. Guest of internal OSPM may
-+ *               or may not make the device become operationally active.
-+ *
-+ * @request_standby: Optional callback to place the device into a standby state
-+ *                   without full power-off. The device is expected to retain
-+ *                   sufficient state for efficient resume, e.g. CPU_SUSPEND.
-+ */
-+struct PowerStateHandlerClass {
-+    /* <private> */
-+    InterfaceClass parent;
-+
-+    /* <public> */
-+    powerstate_get_fn get_oper_state;
-+
-+    powerstate_fn request_poweroff;
-+    powerstate_fn post_poweroff;
-+    powerstate_fn pre_poweron;
-+    powerstate_fn request_standby;
-+};
-+
-+PowerStateHandler *powerstate_handler(DeviceState *dev);
-+
-+DeviceOperPowerState qdev_get_oper_power_state(DeviceState *dev);
-+
-+void device_request_poweroff(DeviceState *dev, Error **errp);
-+
-+void device_post_poweroff(DeviceState *dev, Error **errp);
-+
-+void device_pre_poweron(DeviceState *dev, Error **errp);
-+
-+void device_request_standby(DeviceState *dev, Error **errp);
-+#endif /* POWERSTATE_H */
-diff --git a/stubs/meson.build b/stubs/meson.build
-index cef046e685..f38cdd1947 100644
---- a/stubs/meson.build
-+++ b/stubs/meson.build
-@@ -95,5 +95,6 @@ if have_system or have_user
+ #ifndef DEBUG_ARM_POWERCTL
+ #define DEBUG_ARM_POWERCTL 0
+@@ -31,14 +32,17 @@
  
-   # Also included in have_system for tests/unit/test-qdev-global-props
-   stub_ss.add(files('hotplug-stubs.c'))
-+  stub_ss.add(files('powerstate-stubs.c'))
-   stub_ss.add(files('sysbus.c'))
- endif
-diff --git a/stubs/powerstate-stubs.c b/stubs/powerstate-stubs.c
-new file mode 100644
-index 0000000000..01c615cda2
---- /dev/null
-+++ b/stubs/powerstate-stubs.c
-@@ -0,0 +1,47 @@
-+/*
-+ * Device Power State handler interface Stubs.
+ CPUState *arm_get_cpu_by_id(uint64_t id)
+ {
++    MachineState *ms = MACHINE(qdev_get_machine());
+     CPUState *cpu;
+ 
+     DPRINTF("cpu %" PRId64 "\n", id);
+ 
+-    CPU_FOREACH(cpu) {
+-        ARMCPU *armcpu = ARM_CPU(cpu);
+-
+-        if (arm_cpu_mp_affinity(armcpu) == id) {
++    /*
++     * with vCPU standy/hotplug support, we must now check for all
++     * possible vCPUs
++     */
++    CPU_FOREACH_POSSIBLE(cpu, ms->possible_cpus) {
++        if (cpu && (arm_cpu_mp_affinity(ARM_CPU(cpu)) == id)) {
+             return cpu;
+         }
+     }
+@@ -119,9 +123,18 @@ int arm_set_cpu_on(uint64_t cpuid, uint64_t entry, uint64_t context_id,
+ 
+     /* Retrieve the cpu we are powering up */
+     target_cpu_state = arm_get_cpu_by_id(cpuid);
+-    if (!target_cpu_state) {
+-        /* The cpu was not found */
+-        return QEMU_ARM_POWERCTL_INVALID_PARAM;
++
++    /* Policy check: verify 'administrative' power state of target CPU */
++    if (!target_cpu_state || !qdev_check_enabled(DEVICE(target_cpu_state))) {
++        /*
++         * The cpu is not plugged in or disabled. We should return appropriate
++         * value as introduced in DEN0022E PSCI 1.2 issue E
++         */
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "[ARM]%s: Denying attempt to online ACPI disabled"
++                      "(_STA.Ena=0)CPU%" PRId64", needs admin action first!\n",
++                      __func__, cpuid);
++        return QEMU_ARM_POWERCTL_IS_OFF;
+     }
+ 
+     target_cpu = ARM_CPU(target_cpu_state);
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 0c1299ff84..814fe719da 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -9110,7 +9110,7 @@ void arm_cpu_do_interrupt(CPUState *cs)
+                       env->exception.syndrome);
+     }
+ 
+-    if (tcg_enabled() && arm_is_psci_call(cpu, cs->exception_index)) {
++    if (arm_is_psci_call(cpu, cs->exception_index)) {
+         arm_handle_psci_call(cpu);
+         qemu_log_mask(CPU_LOG_INT, "...handled as PSCI call\n");
+         return;
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index 1b3d0244fd..ffd82a7ace 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -645,7 +645,7 @@ vaddr arm_adjust_watchpoint_address(CPUState *cs, vaddr addr, int len);
+ /* Callback function for when a watchpoint or breakpoint triggers. */
+ void arm_debug_excp_handler(CPUState *cs);
+ 
+-#if defined(CONFIG_USER_ONLY) || !defined(CONFIG_TCG)
++#if defined(CONFIG_USER_ONLY)
+ static inline bool arm_is_psci_call(ARMCPU *cpu, int excp_type)
+ {
+     return false;
+diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+index 1962eb29b2..98eb6db9ed 100644
+--- a/target/arm/kvm.c
++++ b/target/arm/kvm.c
+@@ -529,9 +529,51 @@ int kvm_arch_get_default_type(MachineState *ms)
+     return fixed_ipa ? 0 : size;
+ }
+ 
++static bool kvm_arm_set_vm_attr(struct kvm_device_attr *attr, const char *name)
++{
++    int err;
++
++    err = kvm_vm_ioctl(kvm_state, KVM_HAS_DEVICE_ATTR, attr);
++    if (err != 0) {
++        error_report("%s: KVM_HAS_DEVICE_ATTR: %s", name, strerror(-err));
++        return false;
++    }
++
++    err = kvm_vm_ioctl(kvm_state, KVM_SET_DEVICE_ATTR, attr);
++    if (err != 0) {
++        error_report("%s: KVM_SET_DEVICE_ATTR: %s", name, strerror(-err));
++        return false;
++    }
++
++    return true;
++}
++
++int kvm_arm_set_smccc_filter(uint64_t func, uint8_t faction)
++{
++    struct kvm_smccc_filter filter = {
++        .base = func,
++        .nr_functions = 1,
++        .action = faction,
++    };
++    struct kvm_device_attr attr = {
++        .group = KVM_ARM_VM_SMCCC_CTRL,
++        .attr = KVM_ARM_VM_SMCCC_FILTER,
++        .flags = 0,
++        .addr = (uintptr_t)&filter,
++    };
++
++    if (!kvm_arm_set_vm_attr(&attr, "SMCCC Filter")) {
++        error_report("failed to set SMCCC filter in KVM Host");
++        return -1;
++    }
++
++    return 0;
++}
++
+ int kvm_arch_init(MachineState *ms, KVMState *s)
+ {
+     int ret = 0;
++
+     /* For ARM interrupt delivery is always asynchronous,
+      * whether we are using an in-kernel VGIC or not.
+      */
+@@ -594,6 +636,22 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
+     hw_breakpoints = g_array_sized_new(true, true,
+                                        sizeof(HWBreakpoint), max_hw_bps);
+ 
++    /*
++     * To be able to handle PSCI CPU ON calls in QEMU, we need to install SMCCC
++     * filter in the Host KVM. This is required to support features like
++     * virtual CPU Hotplug on ARM platforms.
++     */
++    if (kvm_arm_set_smccc_filter(PSCI_0_2_FN64_CPU_ON,
++                                 KVM_SMCCC_FILTER_FWD_TO_USER)) {
++        error_report("CPU On PSCI-to-user-space fwd filter install failed");
++        abort();
++    }
++    if (kvm_arm_set_smccc_filter(PSCI_0_2_FN_CPU_OFF,
++                                 KVM_SMCCC_FILTER_FWD_TO_USER)) {
++        error_report("CPU Off PSCI-to-user-space fwd filter install failed");
++        abort();
++    }
++
+     return ret;
+ }
+ 
+@@ -1440,6 +1498,38 @@ static bool kvm_arm_handle_debug(ARMCPU *cpu,
+     return false;
+ }
+ 
++static int kvm_arm_handle_hypercall(CPUState *cs, struct kvm_run *run)
++{
++    ARMCPU *cpu = ARM_CPU(cs);
++    CPUARMState *env = &cpu->env;
++
++    kvm_cpu_synchronize_state(cs);
++
++    /*
++     * hard coding immediate to 0 as we dont expect non-zero value as of now
++     * This might change in future versions. Hence, KVM_GET_ONE_REG  could be
++     * used in such cases but it must be enhanced then only synchronize will
++     * also fetch ESR_EL2 value.
++     */
++    if (run->hypercall.flags == KVM_HYPERCALL_EXIT_SMC) {
++        cs->exception_index = EXCP_SMC;
++        env->exception.syndrome = syn_aa64_smc(0);
++    } else {
++        cs->exception_index = EXCP_HVC;
++        env->exception.syndrome = syn_aa64_hvc(0);
++    }
++    env->exception.target_el = 1;
++    bql_lock();
++    arm_cpu_do_interrupt(cs);
++    bql_unlock();
++
++    /*
++     * For PSCI, exit the kvm_run loop and process the work. Especially
++     * important if this was a CPU_OFF command and we can't return to the guest.
++     */
++    return EXCP_INTERRUPT;
++}
++
+ int kvm_arch_handle_exit(CPUState *cs, struct kvm_run *run)
+ {
+     ARMCPU *cpu = ARM_CPU(cs);
+@@ -1456,6 +1546,9 @@ int kvm_arch_handle_exit(CPUState *cs, struct kvm_run *run)
+         ret = kvm_arm_handle_dabt_nisv(cpu, run->arm_nisv.esr_iss,
+                                        run->arm_nisv.fault_ipa);
+         break;
++    case KVM_EXIT_HYPERCALL:
++          ret = kvm_arm_handle_hypercall(cs, run);
++        break;
+     default:
+         qemu_log_mask(LOG_UNIMP, "%s: un-handled exit reason %d\n",
+                       __func__, run->exit_reason);
+diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
+index ec9dc95ee8..bb2dfde3af 100644
+--- a/target/arm/kvm_arm.h
++++ b/target/arm/kvm_arm.h
+@@ -216,6 +216,15 @@ bool kvm_arm_mte_supported(void);
+  * Returns true if KVM can enable EL2 and false otherwise.
+  */
+ bool kvm_arm_el2_supported(void);
++
++/**
++ * kvm_arm_set_smccc_filter
++ * @func: funcion
++ * @faction: SMCCC filter action(handle, deny, fwd-to-user) to be deployed
 + *
-+ * Copyright (c) 2025 Huawei Technologies R&D (UK) Ltd.
-+ *
-+ * Author: Salil Mehta <salil.mehta@huawei.com>
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ *
-+ * This program is free software; you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License as published by
-+ * the Free Software Foundation; either version 2 of the License, or
-+ * (at your option) any later version.
++ * Sets the ARMs SMC-CC filter in KVM Host for selective hypercall exits
 + */
-+#include "qemu/osdep.h"
-+#include "hw/powerstate.h"
-+#include "hw/qdev-core.h"
++int kvm_arm_set_smccc_filter(uint64_t func, uint8_t faction);
+ #else
+ 
+ static inline bool kvm_arm_aarch32_supported(void)
+@@ -242,6 +251,11 @@ static inline bool kvm_arm_el2_supported(void)
+ {
+     return false;
+ }
 +
-+PowerStateHandler *powerstate_handler(DeviceState *dev)
-+{
-+    return NULL;
-+}
-+
-+DeviceOperPowerState qdev_get_oper_power_state(DeviceState *dev)
-+{
-+    return DEVICE_OPER_POWER_STATE_UNKNOWN;
-+}
-+
-+void device_request_poweroff(DeviceState *dev, Error **errp)
++static inline int kvm_arm_set_smccc_filter(uint64_t func, uint8_t faction)
 +{
 +    g_assert_not_reached();
 +}
-+
-+void device_post_poweroff(DeviceState *dev, Error **errp)
-+{
-+    g_assert_not_reached();
-+}
-+
-+void device_pre_poweron(DeviceState *dev, Error **errp)
-+{
-+    g_assert_not_reached();
-+}
-+
-+void device_request_standby(DeviceState *dev, Error **errp)
-+{
-+    g_assert_not_reached();
-+}
+ #endif
+ 
+ /**
+diff --git a/target/arm/meson.build b/target/arm/meson.build
+index 07d9271aa4..ae4e75c4a9 100644
+--- a/target/arm/meson.build
++++ b/target/arm/meson.build
+@@ -15,6 +15,7 @@ arm_system_ss.add(files(
+ ))
+ arm_system_ss.add(when: 'CONFIG_KVM', if_true: files('hyp_gdbstub.c', 'kvm.c'))
+ arm_system_ss.add(when: 'CONFIG_HVF', if_true: files('hyp_gdbstub.c'))
++arm_system_ss.add(files('psci.c'))
+ 
+ arm_user_ss = ss.source_set()
+ arm_user_ss.add(files('cpu.c'))
+diff --git a/target/arm/tcg/psci.c b/target/arm/psci.c
+similarity index 96%
+rename from target/arm/tcg/psci.c
+rename to target/arm/psci.c
+index cabed43e8a..fbd2bd2d6f 100644
+--- a/target/arm/tcg/psci.c
++++ b/target/arm/psci.c
+@@ -21,10 +21,13 @@
+ #include "exec/helper-proto.h"
+ #include "kvm-consts.h"
+ #include "qemu/main-loop.h"
++#include "qemu/error-report.h"
+ #include "system/runstate.h"
++#include "system/tcg.h"
+ #include "internals.h"
+ #include "arm-powerctl.h"
+ #include "target/arm/multiprocessing.h"
++#include "exec/target_long.h"
+ 
+ bool arm_is_psci_call(ARMCPU *cpu, int excp_type)
+ {
+@@ -158,6 +161,11 @@ void arm_handle_psci_call(ARMCPU *cpu)
+     case QEMU_PSCI_0_1_FN_CPU_SUSPEND:
+     case QEMU_PSCI_0_2_FN_CPU_SUSPEND:
+     case QEMU_PSCI_0_2_FN64_CPU_SUSPEND:
++       if (!tcg_enabled()) {
++            warn_report("CPU suspend not supported in non-tcg mode");
++            break;
++       }
++#ifdef CONFIG_TCG
+         /* Affinity levels are not supported in QEMU */
+         if (param[1] & 0xfffe0000) {
+             ret = QEMU_PSCI_RET_INVALID_PARAMS;
+@@ -170,6 +178,7 @@ void arm_handle_psci_call(ARMCPU *cpu)
+             env->regs[0] = 0;
+         }
+         helper_wfi(env, 4);
++#endif
+         break;
+     case QEMU_PSCI_1_0_FN_PSCI_FEATURES:
+         switch (param[1]) {
+diff --git a/target/arm/tcg/meson.build b/target/arm/tcg/meson.build
+index 895facdc30..f4d8db0f79 100644
+--- a/target/arm/tcg/meson.build
++++ b/target/arm/tcg/meson.build
+@@ -49,10 +49,6 @@ arm_ss.add(when: 'TARGET_AARCH64', if_true: files(
+   'sve_helper.c',
+ ))
+ 
+-arm_system_ss.add(files(
+-  'psci.c',
+-))
+-
+ arm_system_ss.add(when: 'CONFIG_ARM_V7M', if_true: files('cpu-v7m.c'))
+ arm_user_ss.add(when: 'TARGET_AARCH64', if_false: files('cpu-v7m.c'))
+ 
 -- 
 2.34.1
 

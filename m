@@ -4,122 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28F75CAC5BB
-	for <qemu-arm@archiver.kernel.org>; Wed,  1 Oct 2025 06:05:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD9BCCAC5BB
+	for <qemu-arm@archiver.kernel.org>; Wed,  1 Oct 2025 06:47:27 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v3pxW-0000k3-SM; Wed, 01 Oct 2025 02:05:03 -0400
+	id 1v3qcA-0003jP-DK; Wed, 01 Oct 2025 02:47:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1v3pxV-0000iK-6I
- for qemu-arm@nongnu.org; Wed, 01 Oct 2025 02:05:01 -0400
-Received: from smtpout1.mo529.mail-out.ovh.net ([178.32.125.2])
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1v3qbx-0003fZ-Ig; Wed, 01 Oct 2025 02:46:50 -0400
+Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1v3pxM-00050g-P5
- for qemu-arm@nongnu.org; Wed, 01 Oct 2025 02:05:00 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.109.254.165])
- by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 4cc4Br0mfrz5wwC;
- Wed,  1 Oct 2025 06:04:35 +0000 (UTC)
-Received: from kaod.org (37.59.142.113) by DAG8EX2.mxp5.local (172.16.2.72)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.59; Wed, 1 Oct
- 2025 08:04:34 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-113S0077bb8fe41-ce1b-407b-b450-54411d6ecc26,
- D9D4E9C7278927B1F3584C3B5B4DCE3027F8E762) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <c722296a-226d-4ffb-aaf6-47c4541c893e@kaod.org>
-Date: Wed, 1 Oct 2025 08:04:33 +0200
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1v3qbn-0003bh-9c; Wed, 01 Oct 2025 02:46:47 -0400
+Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
+ (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Wed, 1 Oct
+ 2025 14:46:26 +0800
+Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
+ (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
+ Transport; Wed, 1 Oct 2025 14:46:26 +0800
+To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
+ <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
+ <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
+ Stanley" <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>
+Subject: [PATCH v4 0/3] Support VBOOTROM to ast2700fc machine
+Date: Wed, 1 Oct 2025 14:46:21 +0800
+Message-ID: <20251001064625.1058680-1-jamin_lin@aspeedtech.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [SPAM] [PATCH v5 14/14] tests/functional/aarch64/aspeed_ast2700:
- Add PCIe and network tests
-To: Jamin Lin <jamin_lin@aspeedtech.com>, Paolo Bonzini <pbonzini@redhat.com>, 
- Peter Maydell <peter.maydell@linaro.org>, Steven Lee
- <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, Andrew Jeffery
- <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, "Michael S.
- Tsirkin" <mst@redhat.com>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>, "open list:All patches CC
- here" <qemu-devel@nongnu.org>
-CC: <troy_lee@aspeedtech.com>, <nabihestefan@google.com>,
- <wuhaotsh@google.com>, <titusr@google.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
- <clg@redhat.com>
-References: <20250919093017.338309-1-jamin_lin@aspeedtech.com>
- <20250919093017.338309-15-jamin_lin@aspeedtech.com>
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Content-Language: en-US, fr
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <20250919093017.338309-15-jamin_lin@aspeedtech.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.113]
-X-ClientProxiedBy: DAG2EX2.mxp5.local (172.16.2.12) To DAG8EX2.mxp5.local
- (172.16.2.72)
-X-Ovh-Tracer-GUID: 684dfc77-7078-469e-909f-e94c89601749
-X-Ovh-Tracer-Id: 14155658055282035588
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTFn99UYNNsMrPJyHGl4AvVnYPnjFU76d7nZBfLkPP6oKhyasxMmHlfaQKOyd/A3IEVAXHIx2+g5hIsfyK61GwXuWmTV6GOmjHvuTgwfy/Vrk1n6/hMMAZ9eQEUMBvK6lqk4ohpTrULMPiDpgXfnX1QlP/bTL7SB7+Qlf4D6hjytH5c/OGDpVIx5FjklEXhaR9t+o2wUiw3wYGhuqb5d3nBlPQC6uIA7cDSHgDzihrZ8Ipw4YXA4Ba1YozvjX8reI6DmA9/3N8rvh/RZKexym8bHnOHidMV/FC9hWbvWeKIuxCxtT1ZRaQY98e2YwsMfvRR7HGx8KgkHsFDSpvX5o5WSuCqcXk1eh/2B0r6KI+2+C51NYhqY6/9aPapqNmNVWV+dXGDga99bbqRRqkbFcW10D+PHOLSzulNidMx60+hW2gxCJGt1mVtsPqiEJBBI7/v97EbpTnzCtBkX1w7v7KGhZQUmkg7K7xw2U4qXJcVLVb9IjdyRLlvjjTfUSIkCQcgacHRtQmlcI0ccE4ADeL5YGaeNwM+rszOLJDvzLffcG6G/ikwjf5jedEAEAO5rXGhcduWnCcwwJelPH2CzzzRzQagHeSDQlhYfUNXDd8l1EzMZeTbT2OIed1eAeImg2PF871pBoTuCLtZbXQQVDrSHv+ngbuFK2haVnkvy0sMBig
-DKIM-Signature: a=rsa-sha256; bh=7Lalvdwtwj4QbZuomZxqYYBaBrBmvPV2hxUGJBt3shw=; 
- c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1759298677; v=1;
- b=roCDR/IBAFjBMSfqAcXJFxm4HPpKRpDJg00Apd3Ppli6+hLA67tLq29yv/DXa5cfNepKp90N
- pZ7FWmcLU5xja2kHcpwNwV/wSBufVWAyXYcVk34dz5MMYAecWsZjQsCNYjNyhxEiztN3MVhs2Cn
- Dj0eMNv4/NEeyHii6FuJ7Sb39PjWembvVh9hQzTecuEhWRFesCBjiCCre0P5aPsVSQFGYb2Xrg7
- kxKYqMFyP6jnQHgFuxo4S3yhaiMXjF4MfE783tNDFyp6mafSa9WhfBHMWwfwy+ifnvKryROS8U6
- l5BzxUDFc0TckHGvZCFgUCWx3oFD4jBllRCZSkT510ONg==
-Received-SPF: pass client-ip=178.32.125.2; envelope-from=clg@kaod.org;
- helo=smtpout1.mo529.mail-out.ovh.net
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+Received-SPF: pass client-ip=211.20.114.72;
+ envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX01.aspeed.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -132,38 +58,48 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
+From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 9/19/25 11:30, Jamin Lin wrote:
-> Extend the AST2700 and AST2700fc functional tests with PCIe and network
-> checks.
-> 
-> This patch introduces a helper "do_ast2700_pcie_test()" that runs "lspci"
-> on the emulated system and verifies the expected PCIe devices:
-> 
-> - 0002:00:00.0 PCI bridge: ASPEED Technology, Inc. AST1150 PCI-to-PCI Bridge
-> - 0002:01:00.0 Ethernet controller: Intel Corporation 82574L Gigabit Network Connection
-> 
-> Additional changes:
-> - Add `-device e1000e,netdev=net1,bus=pcie.2 -netdev user,id=net1` to the
->    AST2700 and AST2700fc test machines.
-> - In the AST2700 vbootrom test, assign an IP address to the e1000e
->    interface and verify it using `ip addr`.
-> 
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-> Reviewed-by: Cédric Le Goater <clg@redhat.com>
-> ---
->   .../functional/aarch64/test_aspeed_ast2700.py | 21 +++++++++++++++++++
->   .../aarch64/test_aspeed_ast2700fc.py          | 13 ++++++++++++
->   2 files changed, 34 insertions(+)
+v1
+ 1. Added support for Vboot ROM.
+ 2. Moved coprocessor initialization from machine level to SoC level
+ 3. Unified SCU controllers between PSP and coprocessors
+ 4. Shared the same SRAM between PSP and coprocessors
+ 5. Support PSP DRAM remaps coprocessor SDRAM
+ 6. Added support for controlling coprocessor reset via SCU registers.
 
+v2
+Split the original patch set into smaller sub-patches for review.
+ This patch focuses on:
+  1. Adding support for Vboot ROM.
+  2. Moving common APIs to SoC-level code for reuse in different
+     platforms and reducing duplication.
 
-Applied to aspeed-next (since I forgot this patch in the previous PR)
+v3
+  1. Drop dead return checks.
+  2. Make sub-init functions return bool with errp.
 
-Thanks,
+v4:
+  1. Add ast2700fc with vbootrom functional test.
+  2. update commit log
 
-C.
+Dependencies
 
+Based on https://github.com/legoater/qemu at the aspeed-next branch.
+
+Jamin Lin (3):
+  hw/arm/aspeed_ast27x0-fc: Map FMC0 flash contents into CA35 boot ROM
+  hw/arm/aspeed_ast27x0-fc: Add VBOOTROM support
+  tests/functional/aarch64/test_aspeed_ast2700fc: Add vbootrom test
+
+ hw/arm/aspeed_ast27x0-fc.c                    | 19 +++++++++-
+ .../aarch64/test_aspeed_ast2700fc.py          | 37 ++++++++++++++-----
+ 2 files changed, 45 insertions(+), 11 deletions(-)
+
+-- 
+2.43.0
 
 

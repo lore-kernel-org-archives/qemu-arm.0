@@ -4,70 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A807CCA470
-	for <qemu-arm@archiver.kernel.org>; Wed,  1 Oct 2025 01:03:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8D50CCA470
+	for <qemu-arm@archiver.kernel.org>; Wed,  1 Oct 2025 01:04:19 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v3lFI-0005IM-H1; Tue, 30 Sep 2025 21:03:05 -0400
+	id 1v3lFP-0005Kp-A2; Tue, 30 Sep 2025 21:03:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <salil.mehta@opnsrc.net>)
- id 1v3lF2-0005FK-ME
- for qemu-arm@nongnu.org; Tue, 30 Sep 2025 21:02:48 -0400
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+ id 1v3lFO-0005Jy-CS
+ for qemu-arm@nongnu.org; Tue, 30 Sep 2025 21:03:10 -0400
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <salil.mehta@opnsrc.net>)
- id 1v3lEi-0007yb-Am
- for qemu-arm@nongnu.org; Tue, 30 Sep 2025 21:02:48 -0400
-Received: by mail-wm1-x32e.google.com with SMTP id
- 5b1f17b1804b1-46e4473d7f6so31725035e9.1
- for <qemu-arm@nongnu.org>; Tue, 30 Sep 2025 18:02:23 -0700 (PDT)
+ id 1v3lEq-00082K-Eo
+ for qemu-arm@nongnu.org; Tue, 30 Sep 2025 21:03:10 -0400
+Received: by mail-wr1-x42e.google.com with SMTP id
+ ffacd0b85a97d-3f42b54d1b9so1580827f8f.0
+ for <qemu-arm@nongnu.org>; Tue, 30 Sep 2025 18:02:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=opnsrc.net; s=google; t=1759280541; x=1759885341; darn=nongnu.org;
+ d=opnsrc.net; s=google; t=1759280551; x=1759885351; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=+8XfMldxxVCrNmv0kqbSVtv1GLDt+68S/R+Hgz9Z4xw=;
- b=GZPkvM/T37vSapIx7l9E8hJRAlAV+RLMzovz7/tXOHZPNU/Z3yqheRp+9xlADBjI1L
- 9PTzXwFvSFUXS/wi/E0ZOGfisMECCvgQh1AnMCAP6OyvN7BEGlQEC4x3+98Cr+OUG3//
- vIQH9UQFJluJUat1M6dMEzxGcV7r1pxv1ESqZaXsRnwhH7hPeAKyGljFNlSn3LaDaCq7
- E9xlwwhEkVzJ3xBKlF6zseR2hH+2LFt1huzUHkadt5L7gyH9ul3fhIBvPZ4x1O6T9E0c
- 5i07KJQUcSMyIqSQKBW/ZKE6hFKAhJXUpJr4xOMvsMzgYtukyeiZ677tCYKIA4Z5bM03
- LBig==
+ bh=QaYYeBmAaJYjpweUU9UC+NfBTdgZDvDM0RYomvcmv9U=;
+ b=I1LXizBYH49rCwF+PGkprUlMHRkBfSopZ3HgXUU2fswlYI7W0x8cYA8zH1K2yAOeqG
+ 35xmNUEUS5wBwALARleTq0m71w4lSszGd93NWmVp7fhrX0T0ZPHcUaqxOwJMOek4T6We
+ blJexb3tSiwtNQB7Gl9m0X66Fu4JoY8ZGReD3QfkEtZP/9JMKxdGwfD86klWQzt8oQ7x
+ Blv/ysJbX7qcr9WqMK86RY0TSv1UOJti6UjF2wOdFERokCPivXkaar2B+6jRE4jfw0Wk
+ Die6ugtFZd5f+1wKvsO2nJDV91b6ytCP7tqxLhOUvnw+Oc4Y4vQmk4eQIPQbKKVb5j6K
+ hd2g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759280541; x=1759885341;
+ d=1e100.net; s=20230601; t=1759280551; x=1759885351;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=+8XfMldxxVCrNmv0kqbSVtv1GLDt+68S/R+Hgz9Z4xw=;
- b=eXH8Zqd4IOGXFGHXACd4N9OQa2o/Z9zFj+msVJ+rqn7o5Jn4NjGpYWSolIfEvp4Hb1
- sj95/uaktmTjkurLCOs9tY7K0GVpkKucxR6mFN6JQwBVdYaiss6doO4ln2xvWf6TGMR0
- Ifw4imkYLxFFeVhEh8H9Fy3RclUsBOHBktEMVAqz03he4XdR95cbTbVtdW6xS+oU9ifR
- 0iRvo501WPkEKEyABQqM8cBgVJJYG8sGaGplcIS0HoK+3IDITVV7BLBH8tIuKoEdSvNQ
- KqsDh6m0/EmNtLTdgiGW/njDBwJ431vIP0C97c+RVP5sq06ywbdLqehfXndTnWDfBLz7
- FZVw==
+ bh=QaYYeBmAaJYjpweUU9UC+NfBTdgZDvDM0RYomvcmv9U=;
+ b=ty7H81QEDyFod3EqmZM2mDPxauDQLgtHU2hlCc/rqETLNjI4C2RWu3v7jIVnG4QU6m
+ EQM3vTN/aA/+PcrgB41Y8+fuqL8ZNt/UebzqAxVhYvVq1a7VcVZ0aqhS0OO/6mgb47Wb
+ bcu96aHsxLsH9KMAJLssHrwPy8sLMxoWIaFbBWyL91UnQosUBI8x1UY6OGPga8Tqb8PX
+ v9rVQA3N5UH3KwbvoIF6zOGeLc6Nc8QT6DhPAtTP6F0bxzDuSaS9JPKVi6aWNBHZ20yG
+ PUt6cz2McB+DBXN5i7s30g+2A713QZ7xgH1QPqXvEfYcF3g3OFqOg7WPWM0yCAzUW1oT
+ E+hA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUpCyQ3VeW0R8wzT54m/ze/KejU662hLVAOChnra+aeU8kA3/SEvU8QSt00SSpqu8RxEezDyCF3HQ==@nongnu.org
-X-Gm-Message-State: AOJu0YxOCjJSOkdEjlQJEa2RnqkMl9nuP5UQqyCZjkfbAr9EhgYatRnb
- Fn7qCtFLZKImGl0ASir5FCFb4JZWjgHw7rCka1FGH6+WiBwOLja2xw9SuPK/UJ1yD71y2fvJCbW
- r/dCyUEFK2Q==
-X-Gm-Gg: ASbGncuBXNlQ6hqHLL6X3jA6B4MasZ0uGU6ExA+4qpo9im7nwVjIwXcucYJnHRxyMRi
- +VjRQh/6MLunA/fLENqR/Vur3cpXRlQXCwOAKn8btxXIXOdw07oLTiZoDNxBSB5doEoarNSad+M
- 9K9Tjcfxu0ZJiq3DKgZqrp0EjwvxqUfPXfwW5/+fy7eT0OctWI258nmYwHOzswDKw+S+U3T5cFK
- rPzeKuZDQdE9HcLrKdR6QfOGik1d+pzQBTZoBQeW4/PWRBoOGmR1+a2w3VQOQTeLWnoHsLPAbH7
- c8WKQJVn8TFtnyEazroHlV4xR7LkUVSVxeiG6w2qGLgJsvgOgSZGBF03eowr2rZ9eTKZjFoTetJ
- NUdcuo4lUfOBr9hp2glCq1VoOANil1KFmGqCzXbrrsMVeg0r/ubfiPkVrlRQYTW+eAtTOQ09bJU
- CSdPhILRvdx2axqRu2L+ab2z7aqLKqg6WkSvhD2gjwOpE=
-X-Google-Smtp-Source: AGHT+IHq/D/wM1ROCaoz7TPSt/zRIizaBtVxINQT1Wi3V79bOXPFSKj0yC6hHR65I5ACPNuCq/g28Q==
-X-Received: by 2002:a05:600c:474b:b0:46e:477a:16cc with SMTP id
- 5b1f17b1804b1-46e612bdb1dmr14093585e9.24.1759280540352; 
- Tue, 30 Sep 2025 18:02:20 -0700 (PDT)
+ AJvYcCUhaR3G6nAvZJQCEbYt3YNM0fPmFjDADyX9TidaFMcJ5a3fujaSwaHcQ4bmdvb4AHC5MuTym6qAlQ==@nongnu.org
+X-Gm-Message-State: AOJu0YxwMRyQLlF2xGHubqmll98CTg24Q7EQFq4ge0jmRtWCJBUc5mOX
+ N4E8VAebkJfZvl7brWu/xDM6TBc0jfpdyVNNPr7wgemKSuiF7BTmMOw6tToNyF3YhkY=
+X-Gm-Gg: ASbGncv8Q462zFMV0ARcqlnugq59BU2CB4hwrY6S1ibdoAH/xeVYNIOnZ4DOjXb2N7p
+ 51HpXUMBfXh9fG/U4Ua3XM+yd59bM2QxUcKWN2E4YBkK9v6K9SG52Gby8ChyVtyyl19gSF1GJat
+ T/eBTtPYGEJPrt4QG9q1hCxrEWcp480awxF2hn0olPcPj/rmsS7DxgqGxhfnzheVWIzx6OTFqfG
+ 0kJwRkAiFCfCtR978HQ9pXZtfPN0RJQA1hKDT3QH6mS8oZQirIlHFet9nsdfiU0N4V9fbXbsnyX
+ +E9zcHPjm6sZ0HwKnRGOLI/6WmNrOSRmCfISX8tZhmP1HmckA13rX06eXGv9YvGs1/4sH0FvbZV
+ eEchSZb49JpmkWQkbcHiJpoYR0zObZU5rSkY7ZanrtM1NDBiDyobGVjnGPQ7pJ2KJ0IHwaxzUwU
+ E9wqwOcpwdKoRpp1ppkwjUR+OXtioR4PRtGLmdWpENqpbJhonucPXRDA==
+X-Google-Smtp-Source: AGHT+IHPw2sry/eKwPyGgmP14A0iWV/z5t3/11TVgLFSjP3KX2o+Ub2UflZ+bY56rCT737vPKwa/sw==
+X-Received: by 2002:a05:6000:3105:b0:40d:86c9:5c9e with SMTP id
+ ffacd0b85a97d-42557805113mr1324053f8f.40.1759280550658; 
+ Tue, 30 Sep 2025 18:02:30 -0700 (PDT)
 Received: from localhost.localdomain ([90.209.204.182])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-40fb985e080sm24587426f8f.24.2025.09.30.18.02.18
+ ffacd0b85a97d-40fb985e080sm24587426f8f.24.2025.09.30.18.02.29
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 30 Sep 2025 18:02:19 -0700 (PDT)
+ Tue, 30 Sep 2025 18:02:30 -0700 (PDT)
 From: salil.mehta@opnsrc.net
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org,
@@ -88,24 +87,25 @@ Cc: salil.mehta@huawei.com, maz@kernel.org, jean-philippe@linaro.org,
  wangxiongfeng2@huawei.com, wangyanan55@huawei.com, wangzhou1@hisilicon.com,
  linuxarm@huawei.com, jiakernel2@gmail.com, maobibo@loongson.cn,
  lixianglai@loongson.cn, shahuang@redhat.com, zhao1.liu@intel.com
-Subject: [PATCH RFC V6 03/24] hw/arm/virt: Clamp 'maxcpus' as-per machine's
- vCPU deferred online-capability
-Date: Wed,  1 Oct 2025 01:01:06 +0000
-Message-Id: <20251001010127.3092631-4-salil.mehta@opnsrc.net>
+Subject: [PATCH RFC V6 08/24] arm/virt,
+ gicv3: Guard CPU interface access for admin disabled vCPUs
+Date: Wed,  1 Oct 2025 01:01:11 +0000
+Message-Id: <20251001010127.3092631-9-salil.mehta@opnsrc.net>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20251001010127.3092631-1-salil.mehta@opnsrc.net>
 References: <20251001010127.3092631-1-salil.mehta@opnsrc.net>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
- envelope-from=salil.mehta@opnsrc.net; helo=mail-wm1-x32e.google.com
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
- DKIM_SIGNED=0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- T_SPF_TEMPERROR=0.01 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
+ envelope-from=salil.mehta@opnsrc.net; helo=mail-wr1-x42e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, T_SPF_HELO_TEMPERROR=0.01,
+ T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -123,176 +123,323 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Salil Mehta <salil.mehta@huawei.com>
 
-To support a vCPU hot-add–like model on ARM, the virt machine may be setup with
-more CPUs than are active at boot. These additional CPUs are fully realized in
-KVM and listed in ACPI tables from the start, but begin in a disabled state.
-They can later be brought online or taken offline under host or platform policy
-control. The CPU topology is fixed at VM creation time and cannot change
-dynamically on ARM. Therefore, we must determine precisely the 'maxcpus' value
-that applies for the full lifetime of the VM.
+Per Arm GIC Architecture Specification (IHI0069H_b, §11.1), the CPU interface
+and its Processing Element (PE) share a power domain. If the PE is powered down
+or administratively disabled, the CPU interface must be quiescent or off, and
+any access is architecturally UNPREDICTABLE. Without explicit checks, QEMU may
+issue GICC register operations for vCPUs that are offline, removed, or
+otherwise unavailable—risking inconsistent state or undefined behavior in both
+TCG and KVM accelerators.
 
-On ARM, this deferred online-capable model is only valid if:
-  - The GIC version is 3 or higher, and
-  - Each non-boot CPU’s GIC CPU Interface is marked “online-capable” in its
-    ACPI GICC structure (UEFI ACPI Specification 6.5, §5.2.12.14, Table 5.37
-    “GICC CPU Interface Flags”), and
-  - The chosen accelerator supports safe deferred CPU online:
-      * TCG with multi-threaded TCG (MTTCG) enabled
-      * KVM (on supported hosts)
-      * Not HVF or QTest
+To address this, introduce a per-vCPU gicc_accessible flag that reflects the
+administrative enablement of the corresponding QOM vCPU in accordance with the
+policy. This is permissible when the GICC (GIC CPU Interface) is online-capable,
+meaning vCPUs can be brought online in the guest kernel after boot. The flag is
+set during GIC realization and used to skip VGIC register reads/writes, SGI
+generation, and CPU interface updates when the GICC is not accessible. This
+prevents unsafe operations and ensures compliance when managing administratively
+disabled but present vCPUs.
 
-This patch sizes the machine’s max-possible CPUs during VM init:
-  - If all conditions are satisfied, retain the full set of CPUs corresponding
-    to (`-smp cpus` + `-smp disabledcpus`), allowing the additional (initially
-    disabled) CPUs to participate in later policy-driven online.
-  - Otherwise, clamp the max-possible CPUs to the boot-enabled count
-    (`-smp disabledcpus=0` equivalent) to avoid advertising CPUs the guest can
-    never use.
-
-A new MachineClass flag, `has_online_capable_cpus`, records whether the machine
-supports deferred vCPU online. This is usable by other machine types as well.
-
+Co-developed-by: Keqian Zhu <zhukeqian1@huawei.com>
+Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
 Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
 ---
- hw/arm/virt.c       | 84 ++++++++++++++++++++++++++++++---------------
- include/hw/boards.h |  1 +
- 2 files changed, 57 insertions(+), 28 deletions(-)
+ hw/core/qdev.c                     | 26 +++++++++++++++++
+ hw/intc/arm_gicv3_common.c         | 23 +++++++++++++++
+ hw/intc/arm_gicv3_cpuif.c          |  8 +++++
+ hw/intc/arm_gicv3_cpuif_common.c   | 47 ++++++++++++++++++++++++++++++
+ hw/intc/arm_gicv3_kvm.c            | 18 ++++++++++++
+ include/hw/intc/arm_gicv3_common.h | 24 +++++++++++++++
+ include/hw/qdev-core.h             | 24 +++++++++++++++
+ 7 files changed, 170 insertions(+)
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index ef6be3660f..76f21bd56a 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -2168,8 +2168,7 @@ static void machvirt_init(MachineState *machine)
-     bool has_ged = !vmc->no_ged;
-     unsigned int smp_cpus = machine->smp.cpus;
-     unsigned int max_cpus = machine->smp.max_cpus;
--
--    possible_cpus = mc->possible_cpu_arch_ids(machine);
+diff --git a/hw/core/qdev.c b/hw/core/qdev.c
+index 5816abae39..8e9a4da6b5 100644
+--- a/hw/core/qdev.c
++++ b/hw/core/qdev.c
+@@ -326,6 +326,32 @@ bool qdev_disable(DeviceState *dev, BusState *bus, Error **errp)
+                                    errp);
+ }
+ 
++int qdev_get_admin_power_state(DeviceState *dev)
++{
 +    DeviceClass *dc;
++
++    if (!dev) {
++        return DEVICE_ADMIN_POWER_STATE_REMOVED;
++    }
++
++    dc = DEVICE_GET_CLASS(dev);
++    if (dc->admin_power_state_supported) {
++        return object_property_get_enum(OBJECT(dev), "admin_power_state",
++                                        "DeviceAdminPowerState", NULL);
++    }
++
++    return DEVICE_ADMIN_POWER_STATE_ENABLED;
++}
++
++bool qdev_check_enabled(DeviceState *dev)
++{
++   /*
++    * if device supports power state transitions, check if it is not in
++    * 'disabled' state.
++    */
++    return qdev_get_admin_power_state(dev) == DEVICE_ADMIN_POWER_STATE_ENABLED;
++}
++
+ bool qdev_machine_modified(void)
+ {
+     return qdev_hot_added || qdev_hot_removed;
+diff --git a/hw/intc/arm_gicv3_common.c b/hw/intc/arm_gicv3_common.c
+index f6a9f1c68b..f4428ad165 100644
+--- a/hw/intc/arm_gicv3_common.c
++++ b/hw/intc/arm_gicv3_common.c
+@@ -439,6 +439,29 @@ static void arm_gicv3_common_realize(DeviceState *dev, Error **errp)
+         CPUState *cpu = machine_get_possible_cpu(i);
+         uint64_t cpu_affid;
  
-     /*
-      * In accelerated mode, the memory map is computed earlier in kvm_type()
-@@ -2186,7 +2185,7 @@ static void machvirt_init(MachineState *machine)
-          * we are about to deal with. Once this is done, get rid of
-          * the object.
-          */
--        cpuobj = object_new(possible_cpus->cpus[0].type);
-+        cpuobj = object_new(machine->cpu_type);
-         armcpu = ARM_CPU(cpuobj);
++        /*
++         * Ref: Arm Generic Interrupt Controller Architecture Specification
++         * (GIC Architecture version 3 and version 4), IHI0069H_b,
++         * Section 11.1: Power Management
++         * https://developer.arm.com/documentation/ihi0069
++         *
++         * According to this specification, the CPU interface and the
++         * Processing Element (PE) must reside in the same power domain.
++         * Therefore, when a CPU/PE is powered off, its corresponding CPU
++         * interface must also be in the off state or in a quiescent state—
++         * depending on the state of the associated Redistributor.
++         *
++         * The Redistributor may reside in a separate power domain and may
++         * remain powered even when the associated PE is turned off.
++         *
++         * Accessing the GIC CPU interface while the PE is powered down can
++         * lead to UNPREDICTABLE behavior.
++         *
++         * Accordingly, the QOM object `GICv3CPUState` should be marked as
++         * either accessible or inaccessible based on the power state of the
++         * associated `CPUState` vCPU.
++         */
++        s->cpu[i].gicc_accessible = qdev_check_enabled(DEVICE(cpu));
+         s->cpu[i].cpu = cpu;
+         s->cpu[i].gic = s;
+         /* Store GICv3CPUState in CPUARMState gicv3state pointer */
+diff --git a/hw/intc/arm_gicv3_cpuif.c b/hw/intc/arm_gicv3_cpuif.c
+index a7904237ac..6430b2c649 100644
+--- a/hw/intc/arm_gicv3_cpuif.c
++++ b/hw/intc/arm_gicv3_cpuif.c
+@@ -1052,6 +1052,10 @@ void gicv3_cpuif_update(GICv3CPUState *cs)
+     ARMCPU *cpu = ARM_CPU(cs->cpu);
+     CPUARMState *env = &cpu->env;
  
-         pa_bits = arm_pamax(armcpu);
-@@ -2201,6 +2200,57 @@ static void machvirt_init(MachineState *machine)
-      */
-     finalize_gic_version(vms);
++    if (!gicv3_gicc_accessible(OBJECT(cs->gic), CPU(cpu)->cpu_index)) {
++        return;
++    }
++
+     g_assert(bql_locked());
  
-+    /*
-+     * The maximum number of CPUs depends on the GIC version, or on how
-+     * many redistributors we can fit into the memory map (which in turn
-+     * depends on whether this is a GICv3 or v4).
-+     */
-+    if (vms->gic_version == VIRT_GIC_VERSION_2) {
-+        virt_max_cpus = GIC_NCPU;
-+    } else {
-+        virt_max_cpus = virt_redist_capacity(vms, VIRT_GIC_REDIST);
-+        if (vms->highmem_redists) {
-+            virt_max_cpus += virt_redist_capacity(vms, VIRT_HIGH_GIC_REDIST2);
-+        }
-+    }
-+
-+    if ((tcg_enabled() && !qemu_tcg_mttcg_enabled()) || hvf_enabled() ||
-+        qtest_enabled() || vms->gic_version == VIRT_GIC_VERSION_2) {
-+        max_cpus = machine->smp.max_cpus = smp_cpus;
-+        if (mc->has_online_capable_cpus) {
-+            if (vms->gic_version == VIRT_GIC_VERSION_2) {
-+                warn_report("GICv2 does not support online-capable CPUs");
-+            }
-+            mc->has_online_capable_cpus = false;
-+        }
-+    }
-+
-+    if (mc->has_online_capable_cpus) {
-+        max_cpus = smp_cpus + machine->smp.disabledcpus;
-+        machine->smp.max_cpus = max_cpus;
-+    }
-+
-+    if (max_cpus > virt_max_cpus) {
-+        error_report("Number of SMP CPUs requested (%d) exceeds max CPUs "
-+                     "supported by machine 'mach-virt' (%d)",
-+                     max_cpus, virt_max_cpus);
-+        if (vms->gic_version != VIRT_GIC_VERSION_2 && !vms->highmem_redists) {
-+            error_printf("Try 'highmem-redists=on' for more CPUs\n");
+     trace_gicv3_cpuif_update(gicv3_redist_affid(cs), cs->hppi.irq,
+@@ -2036,6 +2040,10 @@ static void icc_generate_sgi(CPUARMState *env, GICv3CPUState *cs,
+     for (i = 0; i < s->num_cpu; i++) {
+         GICv3CPUState *ocs = &s->cpu[i];
+ 
++        if (!gicv3_gicc_accessible(OBJECT(s), i)) {
++            continue;
 +        }
 +
-+        exit(1);
+         if (irm) {
+             /* IRM == 1 : route to all CPUs except self */
+             if (cs == ocs) {
+diff --git a/hw/intc/arm_gicv3_cpuif_common.c b/hw/intc/arm_gicv3_cpuif_common.c
+index f9a9b2d8a3..8f9a5b6fa2 100644
+--- a/hw/intc/arm_gicv3_cpuif_common.c
++++ b/hw/intc/arm_gicv3_cpuif_common.c
+@@ -12,6 +12,9 @@
+ #include "qemu/osdep.h"
+ #include "gicv3_internal.h"
+ #include "cpu.h"
++#include "qemu/log.h"
++#include "monitor/monitor.h"
++#include "qapi/visitor.h"
+ 
+ void gicv3_set_gicv3state(CPUState *cpu, GICv3CPUState *s)
+ {
+@@ -21,6 +24,41 @@ void gicv3_set_gicv3state(CPUState *cpu, GICv3CPUState *s)
+     env->gicv3state = (void *)s;
+ };
+ 
++static void
++gicv3_get_gicc_accessibility(Object *obj, Visitor *v, const char *name,
++                             void *opaque, Error **errp)
++{
++    GICv3CPUState *cs = (GICv3CPUState *)opaque;
++    bool value = cs->gicc_accessible;
++
++    visit_type_bool(v, name, &value, errp);
++}
++
++static void
++gicv3_set_gicc_accessibility(Object *obj, Visitor *v, const char *name,
++                             void *opaque, Error **errp)
++{
++    GICv3CPUState *gcs = opaque;
++    CPUState *cs = gcs->cpu;
++    bool value;
++
++    visit_type_bool(v, name, &value, errp);
++
++    /* Block external attempts to set */
++    if (monitor_cur_is_qmp()) {
++        error_setg(errp, "Property 'gicc-accessible' is read-only externally");
++        return;
 +    }
 +
-+    dc = DEVICE_CLASS(object_class_by_name(machine->cpu_type));
-+    if (!dc) {
-+        error_report("CPU type '%s' not registered", machine->cpu_type);
-+        exit(1);
++    if (gcs->gicc_accessible != value) {
++        gcs->gicc_accessible = value;
++
++        qemu_log_mask(LOG_UNIMP,
++                      "GICC accessibility changed: vCPU %d = %s\n",
++                      cs->cpu_index, value ? "accessible" : "inaccessible");
 +    }
-+    dc->admin_power_state_supported = mc->has_online_capable_cpus;
++}
 +
-+    /* uses smp.max_cpus to initialize all possible vCPUs */
-+    possible_cpus = mc->possible_cpu_arch_ids(machine);
+ void gicv3_init_cpuif(GICv3State *s)
+ {
+     ARMGICv3CommonClass *agcc = ARM_GICV3_COMMON_GET_CLASS(s);
+@@ -28,6 +66,15 @@ void gicv3_init_cpuif(GICv3State *s)
+ 
+     /* define and register `system registers` with the vCPU  */
+     for (i = 0; i < s->num_cpu; i++) {
++        g_autofree char *propname = g_strdup_printf("gicc-accessible[%d]", i);
++        object_property_add(OBJECT(s), propname, "bool",
++                            gicv3_get_gicc_accessibility,
++                            gicv3_set_gicc_accessibility,
++                            NULL, &s->cpu[i]);
 +
-     if (vms->secure) {
-         /*
-          * The Secure view of the world is the same as the NonSecure,
-@@ -2235,31 +2285,6 @@ static void machvirt_init(MachineState *machine)
-         vms->psci_conduit = QEMU_PSCI_CONDUIT_HVC;
++        object_property_set_description(OBJECT(s), propname,
++            "Per-vCPU GICC interface accessibility (internal set only)");
++
+         agcc->init_cpu_reginfo(s->cpu[i].cpu);
      }
+ }
+diff --git a/hw/intc/arm_gicv3_kvm.c b/hw/intc/arm_gicv3_kvm.c
+index 4ca889da45..e97578f59a 100644
+--- a/hw/intc/arm_gicv3_kvm.c
++++ b/hw/intc/arm_gicv3_kvm.c
+@@ -457,6 +457,16 @@ static void kvm_arm_gicv3_put(GICv3State *s)
+         GICv3CPUState *c = &s->cpu[ncpu];
+         int num_pri_bits;
  
--    /*
--     * The maximum number of CPUs depends on the GIC version, or on how
--     * many redistributors we can fit into the memory map (which in turn
--     * depends on whether this is a GICv3 or v4).
--     */
--    if (vms->gic_version == VIRT_GIC_VERSION_2) {
--        virt_max_cpus = GIC_NCPU;
--    } else {
--        virt_max_cpus = virt_redist_capacity(vms, VIRT_GIC_REDIST);
--        if (vms->highmem_redists) {
--            virt_max_cpus += virt_redist_capacity(vms, VIRT_HIGH_GIC_REDIST2);
--        }
--    }
--
--    if (max_cpus > virt_max_cpus) {
--        error_report("Number of SMP CPUs requested (%d) exceeds max CPUs "
--                     "supported by machine 'mach-virt' (%d)",
--                     max_cpus, virt_max_cpus);
--        if (vms->gic_version != VIRT_GIC_VERSION_2 && !vms->highmem_redists) {
--            error_printf("Try 'highmem-redists=on' for more CPUs\n");
--        }
--
--        exit(1);
--    }
--
-     if (vms->secure && !tcg_enabled() && !qtest_enabled()) {
-         error_report("mach-virt: %s does not support providing "
-                      "Security extensions (TrustZone) to the guest CPU",
-@@ -3245,6 +3270,9 @@ static void virt_machine_class_init(ObjectClass *oc, const void *data)
-     hc->plug = virt_machine_device_plug_cb;
-     hc->unplug_request = virt_machine_device_unplug_request_cb;
-     hc->unplug = virt_machine_device_unplug_cb;
++        /*
++         * We must ensure that we do not attempt to access or update KVM GICC
++         * registers if their corresponding QOM `GICv3CPUState` is marked as
++         * 'inaccessible', because their corresponding QOM vCPU objects
++         * are in administratively 'disabled' state.
++         */
++        if (!gicv3_gicc_accessible(OBJECT(s), ncpu)) {
++            continue;
++        }
 +
-+    mc->has_online_capable_cpus = true;
+         kvm_gicc_access(s, ICC_SRE_EL1, ncpu, &c->icc_sre_el1, true);
+         kvm_gicc_access(s, ICC_CTLR_EL1, ncpu,
+                         &c->icc_ctlr_el1[GICV3_NS], true);
+@@ -615,6 +625,14 @@ static void kvm_arm_gicv3_get(GICv3State *s)
+         GICv3CPUState *c = &s->cpu[ncpu];
+         int num_pri_bits;
+ 
++        /*
++         * don't attempt to access KVM VGIC for the disabled vCPUs where
++         * GICv3CPUState is inaccessible.
++         */
++        if (!gicv3_gicc_accessible(OBJECT(s), ncpu)) {
++            continue;
++        }
 +
-     mc->nvdimm_supported = true;
-     mc->smp_props.clusters_supported = true;
-     mc->auto_enable_numa_with_memhp = true;
-diff --git a/include/hw/boards.h b/include/hw/boards.h
-index 2b182d7817..b27c2326a2 100644
---- a/include/hw/boards.h
-+++ b/include/hw/boards.h
-@@ -302,6 +302,7 @@ struct MachineClass {
-     bool rom_file_has_mr;
-     int minimum_page_bits;
-     bool has_hotpluggable_cpus;
-+    bool has_online_capable_cpus;
-     bool ignore_memory_transaction_failures;
-     int numa_mem_align_shift;
-     const char * const *valid_cpu_types;
+         kvm_gicc_access(s, ICC_SRE_EL1, ncpu, &c->icc_sre_el1, false);
+         kvm_gicc_access(s, ICC_CTLR_EL1, ncpu,
+                         &c->icc_ctlr_el1[GICV3_NS], false);
+diff --git a/include/hw/intc/arm_gicv3_common.h b/include/hw/intc/arm_gicv3_common.h
+index 3720728227..bbf899184e 100644
+--- a/include/hw/intc/arm_gicv3_common.h
++++ b/include/hw/intc/arm_gicv3_common.h
+@@ -27,6 +27,7 @@
+ #include "hw/sysbus.h"
+ #include "hw/intc/arm_gic_common.h"
+ #include "qom/object.h"
++#include "qapi/error.h"
+ 
+ /*
+  * Maximum number of possible interrupts, determined by the GIC architecture.
+@@ -164,6 +165,7 @@ struct GICv3CPUState {
+     uint64_t icc_apr[3][4];
+     uint64_t icc_igrpen[3];
+     uint64_t icc_ctlr_el3;
++    bool gicc_accessible;
+ 
+     /* Virtualization control interface */
+     uint64_t ich_apr[3][4]; /* ich_apr[GICV3_G1][x] never used */
+@@ -329,4 +331,26 @@ void gicv3_init_irqs_and_mmio(GICv3State *s, qemu_irq_handler handler,
+  */
+ const char *gicv3_class_name(void);
+ 
++/**
++ * gicv3_gicc_accessible:
++ * @obj: QOM object implementing the GICv3 device
++ * @cpu: Index of the vCPU whose GICC accessibility is being queried
++ *
++ * Returns: true if the GICC interface for vCPU @cpu is accessible.
++ * Uses QOM property lookup for "gicc-accessible[%d]".
++ */
++static inline bool gicv3_gicc_accessible(Object *obj, int cpu)
++{
++    g_autofree gchar *propname = g_strdup_printf("gicc-accessible[%d]", cpu);
++    Error *local_err = NULL;
++    bool value;
++
++    value = object_property_get_bool(obj, propname, &local_err);
++    if (local_err) {
++        error_report_err(local_err);
++        return false;
++    }
++
++    return value;
++}
+ #endif
+diff --git a/include/hw/qdev-core.h b/include/hw/qdev-core.h
+index 2c22b32a3f..b1d3fa4a25 100644
+--- a/include/hw/qdev-core.h
++++ b/include/hw/qdev-core.h
+@@ -589,6 +589,30 @@ bool qdev_realize_and_unref(DeviceState *dev, BusState *bus, Error **errp);
+  */
+ bool qdev_disable(DeviceState *dev, BusState *bus, Error **errp);
+ 
++/**
++ * qdev_check_enabled - Check if a device is administratively enabled
++ * @dev:  The device to check
++ *
++ * This function returns whether the device is currently in administrative
++ * ENABLED state. It does not reflect runtime operational power state, but
++ * rather the host policy on whether the guest may interact with the device.
++ *
++ * Returns true if the device is administratively enabled; false otherwise.
++ */
++bool qdev_check_enabled(DeviceState *dev);
++
++/**
++ * qdev_get_admin_power_state - Query administrative power state of a device
++ * @dev:  The device whose state is being queried
++ *
++ * Returns the current administrative power state (ENABLED or DISABLED),
++ * as stored in the device's internal admin state field. This reflects
++ * host-level policy—not the operational runtime state seen by the guest.
++ *
++ * Returns an integer from the DeviceAdminPowerState enum.
++ */
++int qdev_get_admin_power_state(DeviceState *dev);
++
+ /**
+  * qdev_unrealize: Unrealize a device
+  * @dev: device to unrealize
 -- 
 2.34.1
 

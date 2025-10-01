@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8FDA2CAC5B8
-	for <qemu-arm@archiver.kernel.org>; Wed,  1 Oct 2025 01:04:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 517B3CAC5B8
+	for <qemu-arm@archiver.kernel.org>; Wed,  1 Oct 2025 01:05:09 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v3lGH-0005aa-74; Tue, 30 Sep 2025 21:04:06 -0400
+	id 1v3lFH-0005IN-HP; Tue, 30 Sep 2025 21:03:04 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <salil.mehta@opnsrc.net>)
- id 1v3lFe-0005OQ-3c
- for qemu-arm@nongnu.org; Tue, 30 Sep 2025 21:03:26 -0400
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+ id 1v3lF8-0005H4-5l
+ for qemu-arm@nongnu.org; Tue, 30 Sep 2025 21:02:55 -0400
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <salil.mehta@opnsrc.net>)
- id 1v3lF4-000869-VS
- for qemu-arm@nongnu.org; Tue, 30 Sep 2025 21:03:24 -0400
-Received: by mail-wm1-x334.google.com with SMTP id
- 5b1f17b1804b1-45b4d89217aso43359105e9.2
- for <qemu-arm@nongnu.org>; Tue, 30 Sep 2025 18:02:44 -0700 (PDT)
+ id 1v3lEm-00081D-PK
+ for qemu-arm@nongnu.org; Tue, 30 Sep 2025 21:02:53 -0400
+Received: by mail-wm1-x32b.google.com with SMTP id
+ 5b1f17b1804b1-46e37d6c21eso44793355e9.0
+ for <qemu-arm@nongnu.org>; Tue, 30 Sep 2025 18:02:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=opnsrc.net; s=google; t=1759280562; x=1759885362; darn=nongnu.org;
+ d=opnsrc.net; s=google; t=1759280544; x=1759885344; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=k9fDeb8+ggS1YDDck/5nKVP/FJk0yCNkZrkXIxC5GuQ=;
- b=Ct+mOKJD1WP/L0Kx2uoNv2ZJAVyn2LzileatBLrtHgKXuQTXVr9RN9zuN1s7uz9S2v
- fqaYoJxd+EWM++aCxR1AeFrGzuVmnOKEZ4HyEt+L6tJ4DVMX6Dodth1C39vINUunjlxG
- E6ovFO3WdFKBa4MCAEXnLlmJmbcqQdjvxGSdwGA64rqLoM2M+dg2tVKgzSbB7WDJPLFR
- tlF3JKX7OeZP43L8tAz4PBHlAbbAyORF5PfmucmYb6oLjeF034Mj8dnQcNIHPe8E5kID
- bp7tmi4unbyo8wJiXkGcWo6lW6fb0Vh4mVdNa4xMy/DN+rAy9Z5dPjowtAMhkP11tvTC
- HYsA==
+ bh=UQKJ1SD5xckgEaV2WySv/XUYqgNyxKKJdcvcoJuQPMY=;
+ b=YkmKU4OA7em/rLP/3WZuO3G56huL9f7Nyv8YS5T/R6MOpeyK5Q/GQB8Y3kZ8zJH5c7
+ TP/WIVtpM/mrWSID34C7EwGsW7QzsesRs45kR4bD5t3YZVzVnGdyl5Y3p/0k7zI+nCjk
+ PETLo2jc9tRp+pJM29vXztAfgC2RtqBfBTKKzQFKuDufVWuLXp7np+xvQNZ8sIey6pal
+ FOlV3wDtdJLvknolI7kQKHu45gZAtMmsAt+Xd1FRScdWrRSGvcqDyOfQUoM4U6HS5pbj
+ t626a9Ms3Zy+rjB632R8DeMJMtcpEcCZhkP2IZlO6YM3JAIXEaP0j1tDetGnLrWuJKvg
+ Mrfg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759280562; x=1759885362;
+ d=1e100.net; s=20230601; t=1759280544; x=1759885344;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=k9fDeb8+ggS1YDDck/5nKVP/FJk0yCNkZrkXIxC5GuQ=;
- b=BoVVgjj/RXu32p7wRuAkVFhBSCyj/NhkH/A0+LehEr8AHSnxC+AFNQEhrtIwTnNcft
- llvX9IwOZ+OLb6AWoZeN3no9xp+TAHdyyXvkF/zmqmp0VOUSckIU5EOZFSKVIB2SPZAu
- 41DRXl/KpnhuArmfrbZ609ny6XvygGwroNYnSaOzbIvTu/PtfDvIpBwelJoO+1AodTNw
- DjerQz7G1sKJtYXVUbyHGT2PfaGQzjHHSfNVtO20ZzxGodOBCDfyu911W+j0MLgmwUr8
- Tqw3Z3KVsxnU+UzQ6SC299YhFYWx0+pf0gr3y1TdRtF9VbgXadix3m1jkB2aVJuD7yjW
- oaVA==
+ bh=UQKJ1SD5xckgEaV2WySv/XUYqgNyxKKJdcvcoJuQPMY=;
+ b=UO+Rq/MlYIE9XCpO/TALEASogssG/mzUgPfaxDatu71SfyXsdmqjQ4GRLMRb+RXSBd
+ pYJC2L2Ky5Dzkw9RHZgmM4lwb3KMiSlZn3z+CUgonjxlwsBjbLqyr2yH5YatjtNTRt6w
+ IKVHFqw6kdPlqKjZDvcpBqmuaByApia5FLnOdj31/ofusd93g//Qe40X28ctaphVHbNY
+ NXWJa0M5mXUQvS0+D4OdCbnsg6YmkDl6U8zsf/wBHXFD15lUAOMAdFvXinB1Jcvc/ra7
+ mzcarnC+bPNhHOZbg6J3wAwTXcvyXldVZ7L1m/jp1ZHtIGVlVIsUC1Cw7GEpFKrGX0pK
+ z0VQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWGZZsN6nKU+RvPU38m+2sPKs2oz9I1mzkdFbij/YK5QvhNIwI9RTFFaJC9ztWUJ+aQJxf8iTidSw==@nongnu.org
-X-Gm-Message-State: AOJu0YwgqZ51rBQGpm4/OTA+cF/X7l22vFFXzoYH2E9R9gDDjbHcYNqb
- UIURmQQi25ZWUqAv9cEDqaQ5XIJ26Iq/sDPVPoTHXwZq+ZjPBjJk17rBOjaTogaTg3w=
-X-Gm-Gg: ASbGncs31/qaaCnlcX9EF2khD//UyLQ6yhVFa2AMPi4cNiS4niSwALttXIO1NSTahE/
- 8srUJQJI0b90cHeK9KonYKOx7IPB1N6+Vs0SAVlK5/pWCy2qaaN+qym9iNCrzRj4qe4r3RW1aOF
- sFz7Lo8FzBk5jYUr4Nc6iU7BlUPwfp/GCLtThwtwep0UFmlttO1t4c0Fy0MVj8/CuDhCnAXeerE
- CyFlV8lr960FA3X7UIbEEq8iJaGFLIatBT6Mb/qmfmpB8+EHwQ3uiny/CsYDJ7qHTrRS7as/fNY
- lYKr5N7HTvkkZd2YClJYYo26z1W/Hab8SAKoqW6VM0EOUvIQeB4rCvVCTSj0UeaQQLoE21mBhH8
- Bs85kf8UcJMWDO+Pglxo3KOt5j51Lyn2lJxcptRjR/RHaYVIK6/EruWfwUpmYH+i684l/nQhtCf
- hLLm/UMZ9ZHzEhDirV54GOsmnMpXEwHtBpad5o4S+IZ9k=
-X-Google-Smtp-Source: AGHT+IEnd2PaqW6xu2ucnLxNykBidkIjmN42qSgNnmmcJo0aFvhgoqz5Kf6BhzlGTK++4h4Q5DSzog==
-X-Received: by 2002:a05:6000:2c01:b0:3ec:b899:bc39 with SMTP id
- ffacd0b85a97d-42557a1b40dmr1064969f8f.58.1759280562511; 
- Tue, 30 Sep 2025 18:02:42 -0700 (PDT)
+ AJvYcCXaWILEPvTIpKX0Hv0B6VGLrYYZ+SLtb7JOtVeBxDLvFixAoJKi0uW7QhhobRqwSCLRmdrMCeB4tA==@nongnu.org
+X-Gm-Message-State: AOJu0Yz8DM7A1jlWi8uvXPYvuRenFjfhGp8v7LP7I9nyR3v8ZyIHY5dE
+ gg/nYa7uWKSigUu4eCaVgato1AnVKyXlLFfVT6yK4FxAZRpZArSLpZJVpaj30HmldEw=
+X-Gm-Gg: ASbGnctkkcA94xvLkkAPyQ7mZK/stDc84F++CIwadKZuQIi9UYElV9JeZklSdk3n7aO
+ rYbg10E3GUsxa+29vAR0HqCKvytRovVwOb5T7KgVEm7gxPBTmLpuG44RRuTWBbjv4Dc1yvhTk68
+ 96sXaov1sdtQEmdjBrbfm7zwE25qDPbUfSOd+X/dkkFOl6nynq10HOAhF3Lx1xA5sH6CStvLsd6
+ /2cticDfz8NzrcZSN+jXu4f+vCVxh71q8WK6j4wAnRFS9oKgtkVOQkdOvzWhuvmP1q41QjzkoWB
+ sCKE3z9gKnjp4W3YIXGdgNWQUDn7456cUK6NC7uimm9BurFB92jA0j2bpq5dxs3DhaFuXbgpJRg
+ exDkIx/9D2KoGxx5eYYU4Esr6cM9jo7d5iaPy1hWQSx205D6EnuKKBNTbLGIRpZvLv+4UatZ158
+ CccmxOldZedFx/voYucYDYTBWTTPkrtHvEO5gfo1+C0fw=
+X-Google-Smtp-Source: AGHT+IFf7XYAckpJw8j1JA8eb8qMz4/K94d8qJkSnt184ST0tllV9oC3FK71HQ5ngVT+BL3XoDVweA==
+X-Received: by 2002:a05:600c:8b65:b0:43c:ec4c:25b4 with SMTP id
+ 5b1f17b1804b1-46e6127cccfmr13217285e9.10.1759280543774; 
+ Tue, 30 Sep 2025 18:02:23 -0700 (PDT)
 Received: from localhost.localdomain ([90.209.204.182])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-40fb985e080sm24587426f8f.24.2025.09.30.18.02.40
+ ffacd0b85a97d-40fb985e080sm24587426f8f.24.2025.09.30.18.02.22
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 30 Sep 2025 18:02:42 -0700 (PDT)
+ Tue, 30 Sep 2025 18:02:23 -0700 (PDT)
 From: salil.mehta@opnsrc.net
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org,
@@ -86,18 +86,20 @@ Cc: salil.mehta@huawei.com, maz@kernel.org, jean-philippe@linaro.org,
  miguel.luis@oracle.com, salil.mehta@opnsrc.net, zhukeqian1@huawei.com,
  wangxiongfeng2@huawei.com, wangyanan55@huawei.com, wangzhou1@hisilicon.com,
  linuxarm@huawei.com, jiakernel2@gmail.com, maobibo@loongson.cn,
- lixianglai@loongson.cn, shahuang@redhat.com, zhao1.liu@intel.com
-Subject: [PATCH RFC V6 13/24] qdev: make admin power state changes trigger
- platform transitions via ACPI
-Date: Wed,  1 Oct 2025 01:01:16 +0000
-Message-Id: <20251001010127.3092631-14-salil.mehta@opnsrc.net>
+ lixianglai@loongson.cn, shahuang@redhat.com, zhao1.liu@intel.com,
+ Keqian Zhu <zhuqian1@huawei.com>
+Subject: [PATCH RFC V6 05/24] arm/virt,
+ kvm: Pre-create KVM vCPUs for 'disabled' QOM vCPUs at machine init
+Date: Wed,  1 Oct 2025 01:01:08 +0000
+Message-Id: <20251001010127.3092631-6-salil.mehta@opnsrc.net>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20251001010127.3092631-1-salil.mehta@opnsrc.net>
 References: <20251001010127.3092631-1-salil.mehta@opnsrc.net>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::334;
- envelope-from=salil.mehta@opnsrc.net; helo=mail-wm1-x334.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
+ envelope-from=salil.mehta@opnsrc.net; helo=mail-wm1-x32b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -122,185 +124,336 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Salil Mehta <salil.mehta@huawei.com>
 
-Changing a device's administrative power state must trigger a concrete
-operational transition at the platform layer via ACPI coordination with OSPM.
-The platform is responsible for actually powering devices off or on and for
-notifying the guest when required.
+ARM CPU architecture does not allow CPUs to be plugged after system has
+initialized. This is a constraint. Hence, the Kernel must know all the CPUs
+being booted during its initialization. This applies to the Guest Kernel as
+well and therefore, the number of KVM vCPU descriptors in the host must be
+fixed at VM initialization time.
 
-Some machines can coordinate transitions asynchronously with OSPM using ACPI
-methods and events (e.g. _EJx, device-check, _OST), while others cannot or
-may not be ready when policy flips. Without a defined linkage, admin policy
-can drift from runtime reality, leaving devices active while 'disabled', or
-disappearing without guest notification, and migration metadata out of sync.
+Also, the GIC must know all the CPUs it is connected to during its
+initialization, and this cannot change afterward. This must also be ensured
+during the initialization of the VGIC in KVM. This is necessary because:
 
-This change establishes that linkage: administrative DISABLED/ENABLED requests
-first drive the platform's operational transition via ACPI (prefer OSPM
-coordination; otherwise fall back to a synchronous in-QEMU path) and only
-then update QOM state and migration registration. This provides uniform
-semantics and a reliable contract for management and tests.
+1. The association between GICR and MPIDR must be fixed at VM initialization
+   time. This is represented by the register
+   `GICR_TYPER(mp_affinity, proc_num)`.
+2. Memory regions associated with GICR, etc., cannot be changed (added,
+   deleted, or modified) after the VM has been initialized. This is not an
+   ARM architectural constraint but rather invites a difficult and messy
+   change in VGIC data structures.
 
+To enable a hot-add–like model while preserving these constraints, the virt
+machine may enumerate more CPUs than are enabled at boot using
+`-smp disabledcpus=N`. Such CPUs are present but start offline (i.e.,
+administratively disabled at init). The topology remains fixed at VM
+creation time; only the online/offline status may change later.
+
+Administratively disabled vCPUs are not realized in QOM until first enabled,
+avoiding creation of unnecessary vCPU threads at boot. On large systems, this
+reduces startup time proportionally to the number of disabled vCPUs. Once a
+QOM vCPU is realized and its thread created, subsequent enable/disable actions
+do not unrealize it. This behaviour was adopted following review feedback and
+differs from earlier RFC versions.
+
+Co-developed-by: Keqian Zhu <zhuqian1@huawei.com>
+Signed-off-by: Keqian Zhu <zhuqian1@huawei.com>
 Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
 ---
- hw/core/qdev.c          | 68 ++++++++++++++++++++++++++++++++++++-----
- include/hw/powerstate.h |  6 ++++
- include/hw/qdev-core.h  | 17 +++++++++++
- 3 files changed, 84 insertions(+), 7 deletions(-)
+ accel/kvm/kvm-all.c    |  2 +-
+ hw/arm/virt.c          | 77 ++++++++++++++++++++++++++++++++++++++----
+ hw/core/qdev.c         | 17 ++++++++++
+ include/hw/qdev-core.h | 19 +++++++++++
+ include/system/kvm.h   |  8 +++++
+ target/arm/cpu.c       |  2 ++
+ target/arm/kvm.c       | 40 +++++++++++++++++++++-
+ target/arm/kvm_arm.h   | 11 ++++++
+ 8 files changed, 168 insertions(+), 8 deletions(-)
 
-diff --git a/hw/core/qdev.c b/hw/core/qdev.c
-index 23b84a7756..3aba99b912 100644
---- a/hw/core/qdev.c
-+++ b/hw/core/qdev.c
-@@ -326,6 +326,30 @@ bool qdev_disable(DeviceState *dev, BusState *bus, Error **errp)
-                                    errp);
+diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
+index 890d5ea9f8..0e7d9d5c3d 100644
+--- a/accel/kvm/kvm-all.c
++++ b/accel/kvm/kvm-all.c
+@@ -460,7 +460,7 @@ static void kvm_reset_parked_vcpus(KVMState *s)
+  *
+  * @returns: 0 when success, errno (<0) when failed.
+  */
+-static int kvm_create_vcpu(CPUState *cpu)
++int kvm_create_vcpu(CPUState *cpu)
+ {
+     unsigned long vcpu_id = kvm_arch_vcpu_id(cpu);
+     KVMState *s = kvm_state;
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 4ded19dc69..f4eeeacf6c 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -2152,6 +2152,49 @@ static void virt_post_cpus_gic_realized(VirtMachineState *vms,
+     }
  }
  
-+void qdev_sync_disable(DeviceState *dev, Error **errp)
++static void
++virt_setup_lazy_vcpu_realization(Object *cpuobj, VirtMachineState *vms)
 +{
-+    g_assert(dev);
-+    g_assert(powerstate_handler(dev));
-+
 +    /*
-+     * Administrative disable triggered either after OSPM completes _EJx
-+     * (post Notify(..., 0x03)), or due to lack of async shutdown support.
++     * Present & administratively disabled vCPUs:
 +     *
-+     * Device may still appear in ACPI namespace but remains disabled at
-+     * the platform level. Guest cannot re-enable it until host allows.
++     * These CPUs are marked offline at init via '-smp disabledcpus=N'. We
++     * intentionally do not realize them during the first boot, since it is
++     * not known if or when they will ever be enabled. The decision to enable
++     * such CPUs depends on policy (e.g. guided by SLAs or other deployment
++     * requirements).
++     *
++     * Realizing all disabled vCPUs up front would make boot time proportional
++     * to 'maxcpus', even if policy permits only a small subset to be enabled.
++     * This can lead to unacceptable boot delays in some scenarios.
++     *
++     * Instead, these CPUs remain administratively disabled and unrealized at
++     * boot, to be instantiated and brought online only if policy later allows
++     * it.
 +     */
 +
-+    /* Perform operational shutdown */
-+    device_post_poweroff(dev, errp);
-+    if (*errp) {
-+        return;
++    /* set this vCPU to be administratively 'disabled' in QOM */
++    qdev_disable(DEVICE(cpuobj), NULL, &error_fatal);
++
++    if (vms->psci_conduit != QEMU_PSCI_CONDUIT_DISABLED) {
++        object_property_set_int(cpuobj, "psci-conduit", vms->psci_conduit,
++                                NULL);
 +    }
 +
-+    /* Mark the device administratively disabled */
-+    qatomic_set(&dev->admin_power_state, DEVICE_ADMIN_POWER_STATE_DISABLED);
-+    smp_wmb();
++    /*
++     * [!] Constraint: The ARM CPU architecture does not permit new CPUs
++     * to be added after system initialization.
++     *
++     * Workaround: Pre-create KVM vCPUs even for those that are not yet
++     * online i.e. powered-off, keeping them `parked` and in an
++     * `unrealized (at-least during boot time)` state within QEMU until
++     * they are powered-on and made online.
++     */
++    if (kvm_enabled()) {
++        kvm_arm_create_host_vcpu(ARM_CPU(cpuobj));
++    }
 +}
 +
- bool qdev_enable(DeviceState *dev, BusState *bus, Error **errp)
+ static void machvirt_init(MachineState *machine)
  {
-     g_assert(dev);
-@@ -705,6 +729,7 @@ device_set_admin_power_state(Object *obj, int new_state, Error **errp)
- {
-     DeviceState *dev = DEVICE(obj);
-     DeviceClass *dc = DEVICE_GET_CLASS(dev);
-+    DeviceAdminPowerState old_state;
+     VirtMachineState *vms = VIRT_MACHINE(machine);
+@@ -2319,10 +2362,6 @@ static void machvirt_init(MachineState *machine)
+         Object *cpuobj;
+         CPUState *cs;
  
-     if (!dc->admin_power_state_supported) {
-         error_setg(errp, "Device '%s' admin power state change not supported",
-@@ -712,25 +737,54 @@ device_set_admin_power_state(Object *obj, int new_state, Error **errp)
-         return;
-     }
+-        if (n >= smp_cpus) {
+-            break;
+-        }
+-
+         cpuobj = object_new(possible_cpus->cpus[n].type);
+         object_property_set_int(cpuobj, "mp-affinity",
+                                 possible_cpus->cpus[n].arch_id, NULL);
+@@ -2427,8 +2466,34 @@ static void machvirt_init(MachineState *machine)
+             }
+         }
  
-+    g_assert(powerstate_handler(dev));
-+    old_state = qatomic_read(&dev->admin_power_state);
-+
-     switch (new_state) {
-     case DEVICE_ADMIN_POWER_STATE_DISABLED: {
-+        if (old_state == DEVICE_ADMIN_POWER_STATE_DISABLED) {
-+            break;
+-        qdev_realize(DEVICE(cpuobj), NULL, &error_fatal);
+-        object_unref(cpuobj);
++        /* start secondary vCPUs in a powered-down state */
++        if(n && mc->has_online_capable_cpus) {
++            object_property_set_bool(cpuobj, "start-powered-off", true, NULL);
 +        }
 +
-         /*
--         * TODO: Operational state transition triggered by administrative action
-+         * Operational state transition triggered by administrative action
-          * Powering off the realized device either synchronously or via OSPM.
-          */
-+        if (device_graceful_poweroff_supported(dev)) {
-+            /* Graceful shutdown via guest coordination */
-+            device_request_poweroff(dev, errp);
-+            if (*errp) {
-+                return;
-+            }
- 
--        qatomic_set(&dev->admin_power_state, DEVICE_ADMIN_POWER_STATE_DISABLED);
--        smp_wmb();
-+            qatomic_set(&dev->admin_power_state,
-+                        DEVICE_ADMIN_POWER_STATE_DISABLED);
-+            smp_wmb();
++        if (n < smp_cpus) {
++            /* 'Present' & 'Enabled' vCPUs */
++            qdev_realize(DEVICE(cpuobj), NULL, &error_fatal);
++            object_unref(cpuobj);
 +        } else {
-+            /* Immediate shutdown within QEMU synchronously */
-+            qdev_sync_disable(dev, errp);
-+            if (*errp) {
-+                return;
-+            }
++            /* 'Present' & 'Disabled' vCPUs */
++            virt_setup_lazy_vcpu_realization(cpuobj, vms);
 +        }
-         break;
-     }
-     case DEVICE_ADMIN_POWER_STATE_ENABLED: {
--        /*
--         * TODO: Operational state transition triggered by administrative action
--         * Powering on the device and restoring migration registration.
--         */
-+        if (old_state == DEVICE_ADMIN_POWER_STATE_ENABLED) {
-+            break;
-+        }
- 
-         qatomic_set(&dev->admin_power_state, DEVICE_ADMIN_POWER_STATE_ENABLED);
-         smp_wmb();
 +
 +        /*
-+         * Operational state transition triggered by administrative action
-+         * Powering on the device and restoring migration registration.
++         * All possible vCPUs should have QOM vCPU Object pointer & arch-id.
++         * 'cpus_queue' (accessed via qemu_get_cpu()) contains only realized and
++         * enabled vCPUs. Hence, we must now populate the 'possible_cpus' list.
 +         */
-+        device_pre_poweron(dev, errp);
-+        if (*errp) {
-+            return;
++        if (kvm_enabled()) {
++            /*
++             * Override the default architecture ID with the one retrieved
++             * from KVM, as they currently differ.
++             */
++            machine->possible_cpus->cpus[n].arch_id =
++                arm_cpu_mp_affinity(ARM_CPU(cs));
 +        }
-         break;
++        machine->possible_cpus->cpus[n].cpu = cs;
      }
-     default:
-diff --git a/include/hw/powerstate.h b/include/hw/powerstate.h
-index c16da0f24d..b35650bac4 100644
---- a/include/hw/powerstate.h
-+++ b/include/hw/powerstate.h
-@@ -168,4 +168,10 @@ void device_post_poweroff(DeviceState *dev, Error **errp);
- void device_pre_poweron(DeviceState *dev, Error **errp);
  
- void device_request_standby(DeviceState *dev, Error **errp);
-+
-+static inline bool device_graceful_poweroff_supported(DeviceState *dev)
+     /* Now we've created the CPUs we can see if they have the hypvirt timer */
+diff --git a/hw/core/qdev.c b/hw/core/qdev.c
+index 8502d6216f..5816abae39 100644
+--- a/hw/core/qdev.c
++++ b/hw/core/qdev.c
+@@ -309,6 +309,23 @@ void qdev_assert_realized_properly(void)
+                                    qdev_assert_realized_properly_cb, NULL);
+ }
+ 
++bool qdev_disable(DeviceState *dev, BusState *bus, Error **errp)
 +{
-+    PowerStateHandler *h = powerstate_handler(dev);
-+    return h && POWERSTATE_HANDLER_GET_CLASS(h)->request_poweroff;
++    g_assert(dev);
++
++    if (bus) {
++        error_setg(errp, "Device %s 'disable' operation not supported",
++                   object_get_typename(OBJECT(dev)));
++        return false;
++    }
++
++    /* devices like cpu don't have bus */
++    g_assert(!DEVICE_GET_CLASS(dev)->bus_type);
++
++    return object_property_set_str(OBJECT(dev), "admin_power_state", "disabled",
++                                   errp);
 +}
- #endif /* POWERSTATE_H */
++
+ bool qdev_machine_modified(void)
+ {
+     return qdev_hot_added || qdev_hot_removed;
 diff --git a/include/hw/qdev-core.h b/include/hw/qdev-core.h
-index 855ff865ba..3e08cfb59f 100644
+index 3bc212ab3a..2c22b32a3f 100644
 --- a/include/hw/qdev-core.h
 +++ b/include/hw/qdev-core.h
-@@ -8,6 +8,7 @@
- #include "qemu/rcu_queue.h"
- #include "qom/object.h"
- #include "hw/hotplug.h"
-+#include "hw/powerstate.h"
- #include "hw/resettable.h"
- 
- /**
-@@ -589,6 +590,22 @@ bool qdev_realize_and_unref(DeviceState *dev, BusState *bus, Error **errp);
+@@ -570,6 +570,25 @@ bool qdev_realize(DeviceState *dev, BusState *bus, Error **errp);
   */
- bool qdev_disable(DeviceState *dev, BusState *bus, Error **errp);
+ bool qdev_realize_and_unref(DeviceState *dev, BusState *bus, Error **errp);
  
 +/**
-+ * qdev_sync_disable - Force immediate power-off and administrative disable
-+ * @dev:   The device to be powered off and administratively disabled
++ * qdev_disable - Initiate administrative disablement and power-off of device
++ * @dev:   The device to be administratively powered off
++ * @bus:   The bus on which the device resides (may be NULL for CPUs)
 + * @errp:  Pointer to a location where an error can be reported
 + *
-+ * This function performs a synchronous power-off of the device and marks it
-+ * as administratively DISABLED. It assumes that prior graceful handling (e.g.,
-+ * ACPI _EJx) has already been completed, or that asynchronous mechanisms are
-+ * unsupported.
++ * This function initiates an administrative transition of the device into a
++ * DISABLED state. This may trigger a graceful shutdown process depending on
++ * platform capabilities. For ACPI platforms, this typically involves notifying
++ * the guest via events such as Notify(..., 0x03) and executing _EJx.
 + *
-+ * After execution, the device remains visible to the guest (e.g. via ACPI),
-+ * but cannot be brought back online unless explicitly re-enabled via admin
-+ * policy. This function also removes the device from the migration stream.
++ * Once completed, the device's operational power is turned off and it is
++ * marked as administratively DISABLED. Further guest usage is blocked until
++ * re-enabled by host-side policy.
++ *
++ * Returns true on success; false if an error occurs, with @errp populated.
 + */
-+void qdev_sync_disable(DeviceState *dev, Error **errp);
++bool qdev_disable(DeviceState *dev, BusState *bus, Error **errp);
 +
  /**
-  * qdev_enable - Power on and administratively enable a device
-  * @dev:   The device to be powered on and administratively enabled
+  * qdev_unrealize: Unrealize a device
+  * @dev: device to unrealize
+diff --git a/include/system/kvm.h b/include/system/kvm.h
+index 3c7d314736..4896a3c9c5 100644
+--- a/include/system/kvm.h
++++ b/include/system/kvm.h
+@@ -317,6 +317,14 @@ int kvm_create_device(KVMState *s, uint64_t type, bool test);
+  */
+ bool kvm_device_supported(int vmfd, uint64_t type);
+ 
++/**
++ * kvm_create_vcpu - Gets a parked KVM vCPU or creates a KVM vCPU
++ * @cpu: QOM CPUState object for which KVM vCPU has to be fetched/created.
++ *
++ * @returns: 0 when success, errno (<0) when failed.
++ */
++int kvm_create_vcpu(CPUState *cpu);
++
+ /**
+  * kvm_park_vcpu - Park QEMU KVM vCPU context
+  * @cpu: QOM CPUState object for which QEMU KVM vCPU context has to be parked.
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 7e0d5b2ed8..a5906d1672 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -1500,6 +1500,8 @@ static void arm_cpu_initfn(Object *obj)
+         /* TCG and HVF implement PSCI 1.1 */
+         cpu->psci_version = QEMU_PSCI_VERSION_1_1;
+     }
++
++    CPU(obj)->thread_id = 0;
+ }
+ 
+ /*
+diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+index 6672344855..1962eb29b2 100644
+--- a/target/arm/kvm.c
++++ b/target/arm/kvm.c
+@@ -991,6 +991,38 @@ void kvm_arm_reset_vcpu(ARMCPU *cpu)
+     write_list_to_cpustate(cpu);
+ }
+ 
++void kvm_arm_create_host_vcpu(ARMCPU *cpu)
++{
++    CPUState *cs = CPU(cpu);
++    unsigned long vcpu_id = cs->cpu_index;
++    int ret;
++
++    ret = kvm_create_vcpu(cs);
++    if (ret < 0) {
++        error_report("Failed to create host vcpu %ld", vcpu_id);
++        abort();
++    }
++
++    /*
++     * Initialize the vCPU in the host. This will reset the sys regs
++     * for this vCPU and related registers like MPIDR_EL1 etc. also
++     * get programmed during this call to host. These are referenced
++     * later while setting device attributes of the GICR during GICv3
++     * reset.
++     */
++    ret = kvm_arch_init_vcpu(cs);
++    if (ret < 0) {
++        error_report("Failed to initialize host vcpu %ld", vcpu_id);
++        abort();
++    }
++
++    /*
++     * park the created vCPU. shall be used during kvm_get_vcpu() when
++     * threads are created during realization of ARM vCPUs.
++     */
++    kvm_park_vcpu(cs);
++}
++
+ /*
+  * Update KVM's MP_STATE based on what QEMU thinks it is
+  */
+@@ -1876,7 +1908,13 @@ int kvm_arch_init_vcpu(CPUState *cs)
+         return -EINVAL;
+     }
+ 
+-    qemu_add_vm_change_state_handler(kvm_arm_vm_state_change, cpu);
++    /*
++     * Install VM change handler only when vCPU thread has been spawned
++     * i.e. vCPU is being realized
++     */
++    if (cs->thread_id) {
++        qemu_add_vm_change_state_handler(kvm_arm_vm_state_change, cpu);
++    }
+ 
+     /* Determine init features for this CPU */
+     memset(cpu->kvm_init_features, 0, sizeof(cpu->kvm_init_features));
+diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
+index 6a9b6374a6..ec9dc95ee8 100644
+--- a/target/arm/kvm_arm.h
++++ b/target/arm/kvm_arm.h
+@@ -98,6 +98,17 @@ bool kvm_arm_cpu_post_load(ARMCPU *cpu);
+ void kvm_arm_reset_vcpu(ARMCPU *cpu);
+ 
+ struct kvm_vcpu_init;
++
++/**
++ * kvm_arm_create_host_vcpu:
++ * @cpu: ARMCPU
++ *
++ * Called to pre-create possible KVM vCPU within the host during the
++ * `virt_machine` initialization phase. This pre-created vCPU will be parked and
++ * will be reused when ARM QOM vCPU is actually hotplugged.
++ */
++void kvm_arm_create_host_vcpu(ARMCPU *cpu);
++
+ /**
+  * kvm_arm_create_scratch_host_vcpu:
+  * @fdarray: filled in with kvmfd, vmfd, cpufd file descriptors in that order
 -- 
 2.34.1
 

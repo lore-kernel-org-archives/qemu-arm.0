@@ -4,112 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE47ECCA470
-	for <qemu-arm@archiver.kernel.org>; Wed,  1 Oct 2025 16:11:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E296CCA470
+	for <qemu-arm@archiver.kernel.org>; Wed,  1 Oct 2025 16:24:09 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v3zQZ-000125-Gh; Wed, 01 Oct 2025 12:11:43 -0400
+	id 1v3zcP-0000mh-Lb; Wed, 01 Oct 2025 12:23:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1v3zQW-0000xs-9l
- for qemu-arm@nongnu.org; Wed, 01 Oct 2025 12:11:36 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1v3zQL-0004Cu-0h
- for qemu-arm@nongnu.org; Wed, 01 Oct 2025 12:11:35 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1759335079;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=2bm8nZkgQRRWW96fb3Oan/JNmjtAfHhBVULcb2tTdNY=;
- b=ChCOBfBJyBIhOMp12HltYAN1xXVZKYV/6+c6G0qRaxfn5UX9B6OO7tp4fyMridQTXD3mKD
- CEhOMGNbVOHj5ijtD7860IaBXCUHeMab/PTFqt6XrQGnRjYL1IlfKOXPSYu5Y2WGYqoeZr
- /zCB/3OOYI7AkDUEq3flo8V+P6Lrm5E=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-84-MsdWc68rOVaV-hCupoN64A-1; Wed, 01 Oct 2025 12:11:18 -0400
-X-MC-Unique: MsdWc68rOVaV-hCupoN64A-1
-X-Mimecast-MFC-AGG-ID: MsdWc68rOVaV-hCupoN64A_1759335077
-Received: by mail-wm1-f70.google.com with SMTP id
- 5b1f17b1804b1-46e32eb4798so38218385e9.2
- for <qemu-arm@nongnu.org>; Wed, 01 Oct 2025 09:11:18 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759335077; x=1759939877;
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v3zcN-0000lw-Iy
+ for qemu-arm@nongnu.org; Wed, 01 Oct 2025 12:23:51 -0400
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v3zc9-0005kB-5H
+ for qemu-arm@nongnu.org; Wed, 01 Oct 2025 12:23:50 -0400
+Received: by mail-wm1-x329.google.com with SMTP id
+ 5b1f17b1804b1-46e2e363118so71442185e9.0
+ for <qemu-arm@nongnu.org>; Wed, 01 Oct 2025 09:23:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1759335811; x=1759940611; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=2bm8nZkgQRRWW96fb3Oan/JNmjtAfHhBVULcb2tTdNY=;
- b=kb+6VC1I0UW4gIt2h1gS7RrRkJlfhkIetcA5fn4LcIdwqn+s1zcXrwChhb3Rb9UuYF
- bXoR9VUb+accdkL1VtQ/MKA/04am7/a0UHMp0A70nHSZ4a1p2+hmaC0JzVsLXISrsNhS
- gijo7MtOHtrs9UjBSRNrqdUFLWV5J+/uamxUqkReHPxSX82KfN5gcWtQ5AftTgleRJJh
- nzoIApV+I9c/t8R3qT+LZANR322S9YPa6P6YH+v8jnlTfeTPByfSI39Tt6BQHxEQ+XnB
- QnbLvK0kyBq9PHYBKwR0DF1wAQgxEYPyMmUKRdUnzqZ8e/wii2EFfb2GrsKgen0ypiln
- HS+g==
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=VsyErOj0C4qTR0dhaSEh2ia15dVXw2WZRvV5/OWw62I=;
+ b=Rp2+eXDETiO4RXtuEAbadvQ3UXRjyTJFfKQVPCNChl14wpSgpURAoRyz+XvOdk5lng
+ 8/UY0wy1fUA12ILNY9K3ZD8KC6N+83VeANd7CYUNLqc63I2X3VuuOPJEIyodq8XcAIGB
+ sn/FHvWLTiUoGcIjE8lQVmZZ8TRGC6GQEV+1u55fxq2X7m5XlZhMn7Y5tGvdzqQQSKYU
+ pJzXHllHcnTw/wyT2cYo0HBXxBCj2UGsXtLqkTbV2AMLf3l2Foa26ATIrxlqeRYrdH8X
+ zA3Z4mkrzmIG02eP8IZjjpkBH5GGYChMZTrFsuQDC84YAlN1EiKhgpTEy+RO7dofHm04
+ 5o6Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1759335811; x=1759940611;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=VsyErOj0C4qTR0dhaSEh2ia15dVXw2WZRvV5/OWw62I=;
+ b=IrbRDjfwAgbezM0bo3ZEzA4KThlqI8GDkf6g+Kfxlx/nonQ+HX0W6ror4+mrWmMWbE
+ pAyzxQdrZuTt3gE+uXQcVMyBWlo6MDvnBbSZZYgaa/COugwt2QUFCnOmrY+OkGUunKg4
+ H7330+h5cT9gExOWAZw7PmEnXlgzt1Bh06tMDjNIOMVSn57FKWM0m2N2wTk+fRnBs95L
+ BlEifeFgakxMhcNMwta2lZLN0EnDTKbArHj2EWh1JINor5ZEZJOD7s1z5NemF/KQ/R+D
+ +V/0GjkWclkRo1rFa+NiVu7UpHPYMJO1Ik7fijzgWnuFfPepxE2C4VWUMXlLp/Gntn7w
+ XRDQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUMZk1zK6qlyk2ysypQGYm96Et9JzvWvjehhKBm4VbiRNbhy/cYg8pibwZJj6gX3UT1WfJkOiqOmg==@nongnu.org
-X-Gm-Message-State: AOJu0Yx+Q1oUyMUaJQrLULuFCPQwEERBdoCDY1HstW49a+Au88U4MUbc
- ENM2egT15urxij/apL06ptZT5sYbt58OEN6cK9Re/VWuiODcm+wiylGJ+7QoRTVrO6JoIbcpLZ4
- KsczfZdAKs1cToPHr+ncw+Dw6JNz7Fw7vQY/kc65x+x9AdDOCvaWS2A==
-X-Gm-Gg: ASbGncvPEH1e0bS3gyuL+Y/V6pXQTIQzDDO0C9aAETLliiYBSJ0e1CCBVPV56BQzQ+7
- Jzqiv+M+Cl6HILgk0InQPIlQv7ljxXSj6niK8wpvX7g1P7quDAG+SRqFVimpBf34paOdGzKw4dP
- sWWRgxV/utRY4VHgC65U6L3HwprpREFZ6P3VBonkMR0kH6ZY4aqEet1tOQWKTI1Q0ao/uJ0PlZR
- 22U2xlOql7Ty/JqB4XtBz6UV4OnRvhyjJT3eqqFW3c/rP7YdrlMsqCMXvtorRGu8t1NkjNdiOFh
- VWtwVvsY4cb0qbD0rcQt7mZyu0DJEbN5eE4ZkFo9Up+Nup74oKuyQz3BVqVgCycO/axy4AYVKlh
- SzLDWlkjragM5GO17
-X-Received: by 2002:a05:600c:8b71:b0:45b:868e:7f7f with SMTP id
- 5b1f17b1804b1-46e612c2374mr40659285e9.17.1759335077172; 
- Wed, 01 Oct 2025 09:11:17 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGgN3B+NF5BIWOsWWRI4QVZIyAuiQyr8UW/tcE/XX4myve12HKHYjK/EkEMdiXz2AUb6Kw8sA==
-X-Received: by 2002:a05:600c:8b71:b0:45b:868e:7f7f with SMTP id
- 5b1f17b1804b1-46e612c2374mr40659015e9.17.1759335076726; 
- Wed, 01 Oct 2025 09:11:16 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-40fc5602efdsm29306256f8f.34.2025.10.01.09.11.15
+ AJvYcCVMEXraq2P7gnU3jpUXFndlWhGzARzyGY6hzHhjmiRVdzhgay5HIHSM2hd33+v7kRIObYoY/h3ssQ==@nongnu.org
+X-Gm-Message-State: AOJu0YwiE5bF/UeN8cA2+d7vyZFL7F+acG3oWXSTEGQ7WPJqpbUtlEeR
+ N3NJ3Y8tbntGdbLOSK+prND2LbXhQUoK71G2z41IehfPP0UTs4n903+ZSVwU47rdO3w=
+X-Gm-Gg: ASbGnctkS/+MunNIP71/D4iMsg8k/86JyqmuBTRT/M22QZen4gbdpwy265So/zi0LHh
+ QTAbqe05zwoqepNq/Pjdp7wyH7kZ68LA8XT5ya4T3QFftTW5vQ0aPbPP2YtsThvhIQ0TM4uljhi
+ 9NIMAQdqeaBVzf8UcGx4hDnth67wKHYoE4Tbbnd01U27w7sjV0pbHZCKe6nN0RR9gnHfq7F12cr
+ 8hDLyk3MKH8ekL2l2OViaRYTTt8JIDWJpVkz9cOn8lldYLgwN1i6GZ2gx0CfrHVFSkCm7c/9Yyv
+ 7Gya5RWruR4bXZQ7cux7i7EYVQFYx1zTSE39jux9ybzh579l+rP8bp+4fazF0fbgGWMmWMWj/Hw
+ r6CEK6uIP8zVVq0L/SNjURupedXb/VzqmU0+KrOmBpQPsy4SSw4pYcXL24C4rKs35jpbeF3aPLf
+ IcgEoZJ0BRG46J8Q==
+X-Google-Smtp-Source: AGHT+IHeoZu0ymi8Pfk0X0YHUUowtYfUT6O7ZFYxwRepAEs318Ow0exFrX3Q4sJq+PIpUItFz2JAAg==
+X-Received: by 2002:a05:600c:c4a4:b0:46d:996b:826f with SMTP id
+ 5b1f17b1804b1-46e612dcfd0mr38375745e9.25.1759335811038; 
+ Wed, 01 Oct 2025 09:23:31 -0700 (PDT)
+Received: from [192.168.69.221] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-46e619b86e1sm44201225e9.5.2025.10.01.09.23.29
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 01 Oct 2025 09:11:16 -0700 (PDT)
-Message-ID: <6bc5a210-2c08-47a1-b7c6-f421d99505dc@redhat.com>
-Date: Wed, 1 Oct 2025 18:11:14 +0200
+ Wed, 01 Oct 2025 09:23:30 -0700 (PDT)
+Message-ID: <0c60b6e7-9e87-49aa-b00b-751c038ab8fa@linaro.org>
+Date: Wed, 1 Oct 2025 18:23:29 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 04/27] hw/arm/smmu-common:Make iommu ops part of
- SMMUState
-To: Shameer Kolothum <skolothumtho@nvidia.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, jgg@nvidia.com, nicolinc@nvidia.com,
- ddutile@redhat.com, berrange@redhat.com, nathanc@nvidia.com,
- mochs@nvidia.com, smostafa@google.com, wangzhou1@hisilicon.com,
- jiangkunkun@huawei.com, jonathan.cameron@huawei.com,
- zhangfei.gao@linaro.org, zhenzhong.duan@intel.com, yi.l.liu@intel.com,
- shameerkolothum@gmail.com
-References: <20250929133643.38961-1-skolothumtho@nvidia.com>
- <20250929133643.38961-5-skolothumtho@nvidia.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20250929133643.38961-5-skolothumtho@nvidia.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: _t9qKwcg3tPgI1Y-xlTh-VoTAPUuFzyjQYNwDpGXO98_1759335077
-X-Mimecast-Originator: redhat.com
+Subject: Re: [PATCH 03/22] monitor/hmp-cmds: Get cpu first addr space with
+ cpu_get_address_space()
+To: BALATON Zoltan <balaton@eik.bme.hu>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-riscv@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-ppc@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>, Peter Xu
+ <peterx@redhat.com>, "Dr. David Alan Gilbert" <dave@treblig.org>
+References: <20251001150529.14122-1-philmd@linaro.org>
+ <20251001150529.14122-4-philmd@linaro.org>
+ <2b87c3ee-2b25-bea5-3f73-bd089848d19e@eik.bme.hu>
 Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <2b87c3ee-2b25-bea5-3f73-bd089848d19e@eik.bme.hu>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -25
-X-Spam_score: -2.6
-X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.518,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::329;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x329.google.com
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
+ DKIM_SIGNED=0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -122,63 +106,52 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+On 1/10/25 17:35, BALATON Zoltan wrote:
+> On Wed, 1 Oct 2025, Philippe Mathieu-Daudé wrote:
+>> In order to remove the convenient CPUState::as field, access
+>> the vcpu first address space using the cpu_get_address_space()
+>> helper.
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>> ---
+>> monitor/hmp-cmds-target.c | 3 ++-
+>> 1 file changed, 2 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/monitor/hmp-cmds-target.c b/monitor/hmp-cmds-target.c
+>> index e9820611466..602af851328 100644
+>> --- a/monitor/hmp-cmds-target.c
+>> +++ b/monitor/hmp-cmds-target.c
+>> @@ -128,6 +128,8 @@ static void memory_dump(Monitor *mon, int count, 
+>> int format, int wsize,
+>>     uint8_t buf[16];
+>>     uint64_t v;
+>>     CPUState *cs = mon_get_cpu(mon);
+>> +    AddressSpace *as = cs ? cpu_get_address_space(cs, 0)
+>> +                          : &address_space_memory;
+> 
+> Why move from local scope to an upper level?
 
+Out of the while() loop to call it once only.
 
-On 9/29/25 3:36 PM, Shameer Kolothum wrote:
-> And set to the current default smmu_ops. No functional change intended.
-> This will allow SMMUv3 accel implementation to set a different iommu ops
-> later.
->
-> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
-
-Eric
-> ---
->  hw/arm/smmu-common.c         | 7 +++++--
->  include/hw/arm/smmu-common.h | 1 +
->  2 files changed, 6 insertions(+), 2 deletions(-)
->
-> diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
-> index 59d6147ec9..4d6516443e 100644
-> --- a/hw/arm/smmu-common.c
-> +++ b/hw/arm/smmu-common.c
-> @@ -952,6 +952,9 @@ static void smmu_base_realize(DeviceState *dev, Error **errp)
->          return;
->      }
->  
-> +    if (!s->iommu_ops) {
-> +        s->iommu_ops = &smmu_ops;
-> +    }
->      /*
->       * We only allow default PCIe Root Complex(pcie.0) or pxb-pcie based extra
->       * root complexes to be associated with SMMU.
-> @@ -971,9 +974,9 @@ static void smmu_base_realize(DeviceState *dev, Error **errp)
->          }
->  
->          if (s->smmu_per_bus) {
-> -            pci_setup_iommu_per_bus(pci_bus, &smmu_ops, s);
-> +            pci_setup_iommu_per_bus(pci_bus, s->iommu_ops, s);
->          } else {
-> -            pci_setup_iommu(pci_bus, &smmu_ops, s);
-> +            pci_setup_iommu(pci_bus, s->iommu_ops, s);
->          }
->          return;
->      }
-> diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
-> index c6f899e403..75b83b2b4a 100644
-> --- a/include/hw/arm/smmu-common.h
-> +++ b/include/hw/arm/smmu-common.h
-> @@ -162,6 +162,7 @@ struct SMMUState {
->      uint8_t bus_num;
->      PCIBus *primary_bus;
->      bool smmu_per_bus; /* SMMU is specific to the primary_bus */
-> +    const PCIIOMMUOps *iommu_ops;
->  };
->  
->  struct SMMUBaseClass {
+> 
+> Regards,
+> BALATON Zoltan
+> 
+>>     if (!cs && (format == 'i' || !is_physical)) {
+>>         monitor_printf(mon, "Can not dump without CPU\n");
+>> @@ -174,7 +176,6 @@ static void memory_dump(Monitor *mon, int count, 
+>> int format, int wsize,
+>>         if (l > line_size)
+>>             l = line_size;
+>>         if (is_physical) {
+>> -            AddressSpace *as = cs ? cs->as : &address_space_memory;
+>>             MemTxResult r = address_space_read(as, addr,
+>>                                                MEMTXATTRS_UNSPECIFIED, 
+>> buf, l);
+>>             if (r != MEMTX_OK) {
+>>
 
 

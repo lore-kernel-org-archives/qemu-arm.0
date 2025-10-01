@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 517B3CAC5B8
-	for <qemu-arm@archiver.kernel.org>; Wed,  1 Oct 2025 01:05:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9537DCCA470
+	for <qemu-arm@archiver.kernel.org>; Wed,  1 Oct 2025 01:05:27 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v3lFH-0005IN-HP; Tue, 30 Sep 2025 21:03:04 -0400
+	id 1v3lGo-0005wI-3l; Tue, 30 Sep 2025 21:04:40 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <salil.mehta@opnsrc.net>)
- id 1v3lF8-0005H4-5l
- for qemu-arm@nongnu.org; Tue, 30 Sep 2025 21:02:55 -0400
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+ id 1v3lGJ-0005cU-CG
+ for qemu-arm@nongnu.org; Tue, 30 Sep 2025 21:04:07 -0400
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <salil.mehta@opnsrc.net>)
- id 1v3lEm-00081D-PK
- for qemu-arm@nongnu.org; Tue, 30 Sep 2025 21:02:53 -0400
-Received: by mail-wm1-x32b.google.com with SMTP id
- 5b1f17b1804b1-46e37d6c21eso44793355e9.0
- for <qemu-arm@nongnu.org>; Tue, 30 Sep 2025 18:02:28 -0700 (PDT)
+ id 1v3lFN-0008E9-Fq
+ for qemu-arm@nongnu.org; Tue, 30 Sep 2025 21:04:05 -0400
+Received: by mail-wm1-x32c.google.com with SMTP id
+ 5b1f17b1804b1-46b303f755aso58090175e9.1
+ for <qemu-arm@nongnu.org>; Tue, 30 Sep 2025 18:03:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=opnsrc.net; s=google; t=1759280544; x=1759885344; darn=nongnu.org;
+ d=opnsrc.net; s=google; t=1759280583; x=1759885383; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=UQKJ1SD5xckgEaV2WySv/XUYqgNyxKKJdcvcoJuQPMY=;
- b=YkmKU4OA7em/rLP/3WZuO3G56huL9f7Nyv8YS5T/R6MOpeyK5Q/GQB8Y3kZ8zJH5c7
- TP/WIVtpM/mrWSID34C7EwGsW7QzsesRs45kR4bD5t3YZVzVnGdyl5Y3p/0k7zI+nCjk
- PETLo2jc9tRp+pJM29vXztAfgC2RtqBfBTKKzQFKuDufVWuLXp7np+xvQNZ8sIey6pal
- FOlV3wDtdJLvknolI7kQKHu45gZAtMmsAt+Xd1FRScdWrRSGvcqDyOfQUoM4U6HS5pbj
- t626a9Ms3Zy+rjB632R8DeMJMtcpEcCZhkP2IZlO6YM3JAIXEaP0j1tDetGnLrWuJKvg
- Mrfg==
+ bh=YvbFfcp7wnei5ZfqWSO2jElDFuBlDIo3JfgLZwsSQVw=;
+ b=dOxxtRihKw/NLqS/obje+pwTWj2iqhA0d7YZ/kEjLal2m+O7CWzKv82VANuDwtUNfF
+ tqnrBREsCpQBw8K8ZGPpyrwGWy/dfrTlITQCwnukooQVSOB1ViX6vbBly3paqG9OtZmD
+ YSSmTlqH5duPgPSPcylfBJOjBMoqMZu20bIJfP4JxdUVGhViu+dfovgSq6YNbT3GW2w4
+ d6XI/pGojEgC0WfW6XWQHPDzpw94bUw8cg/ukYOf3F7uAwKCVD5M2ZQf77zzSK0h9Jcy
+ GFN8hCsl9/9ka1/VXPp958yPS+COU1CEqg/mae+q5KKruwpmmyiLE4L9nwddtvAqqrpK
+ rz+w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759280544; x=1759885344;
+ d=1e100.net; s=20230601; t=1759280583; x=1759885383;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=UQKJ1SD5xckgEaV2WySv/XUYqgNyxKKJdcvcoJuQPMY=;
- b=UO+Rq/MlYIE9XCpO/TALEASogssG/mzUgPfaxDatu71SfyXsdmqjQ4GRLMRb+RXSBd
- pYJC2L2Ky5Dzkw9RHZgmM4lwb3KMiSlZn3z+CUgonjxlwsBjbLqyr2yH5YatjtNTRt6w
- IKVHFqw6kdPlqKjZDvcpBqmuaByApia5FLnOdj31/ofusd93g//Qe40X28ctaphVHbNY
- NXWJa0M5mXUQvS0+D4OdCbnsg6YmkDl6U8zsf/wBHXFD15lUAOMAdFvXinB1Jcvc/ra7
- mzcarnC+bPNhHOZbg6J3wAwTXcvyXldVZ7L1m/jp1ZHtIGVlVIsUC1Cw7GEpFKrGX0pK
- z0VQ==
+ bh=YvbFfcp7wnei5ZfqWSO2jElDFuBlDIo3JfgLZwsSQVw=;
+ b=HjM6+BtnU/h1xtK1fczBvKuuCM8z63DeFt80xgchpy5Z7lqBUjW3HCsDMCySBwKblK
+ yV12Jnrcr15vyKvsACuIdMhirwU+4wMQBqh7s6p2j9v5brupnAfnZZMewO4veuMeK9FJ
+ 4yUU8XoeF+K7N0M8oVb6747ng3WvmtCw5eImoNj2N7eTiW4fw4L6mHs2uPyGFO8LBK6k
+ FsN9p+hthAscY0Y+0z6PGf91n/uhJ4Bgiv3OMc9dSIqrbS5cQCY3Y9F8/tKE+2azN4kc
+ yk5DV4a4oWlwiEbz03NgnrzbNHh2dxPEIWVSBhAvMmTC+cQONv/Gcj1uXQ18pExe2co8
+ Lo6w==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXaWILEPvTIpKX0Hv0B6VGLrYYZ+SLtb7JOtVeBxDLvFixAoJKi0uW7QhhobRqwSCLRmdrMCeB4tA==@nongnu.org
-X-Gm-Message-State: AOJu0Yz8DM7A1jlWi8uvXPYvuRenFjfhGp8v7LP7I9nyR3v8ZyIHY5dE
- gg/nYa7uWKSigUu4eCaVgato1AnVKyXlLFfVT6yK4FxAZRpZArSLpZJVpaj30HmldEw=
-X-Gm-Gg: ASbGnctkkcA94xvLkkAPyQ7mZK/stDc84F++CIwadKZuQIi9UYElV9JeZklSdk3n7aO
- rYbg10E3GUsxa+29vAR0HqCKvytRovVwOb5T7KgVEm7gxPBTmLpuG44RRuTWBbjv4Dc1yvhTk68
- 96sXaov1sdtQEmdjBrbfm7zwE25qDPbUfSOd+X/dkkFOl6nynq10HOAhF3Lx1xA5sH6CStvLsd6
- /2cticDfz8NzrcZSN+jXu4f+vCVxh71q8WK6j4wAnRFS9oKgtkVOQkdOvzWhuvmP1q41QjzkoWB
- sCKE3z9gKnjp4W3YIXGdgNWQUDn7456cUK6NC7uimm9BurFB92jA0j2bpq5dxs3DhaFuXbgpJRg
- exDkIx/9D2KoGxx5eYYU4Esr6cM9jo7d5iaPy1hWQSx205D6EnuKKBNTbLGIRpZvLv+4UatZ158
- CccmxOldZedFx/voYucYDYTBWTTPkrtHvEO5gfo1+C0fw=
-X-Google-Smtp-Source: AGHT+IFf7XYAckpJw8j1JA8eb8qMz4/K94d8qJkSnt184ST0tllV9oC3FK71HQ5ngVT+BL3XoDVweA==
-X-Received: by 2002:a05:600c:8b65:b0:43c:ec4c:25b4 with SMTP id
- 5b1f17b1804b1-46e6127cccfmr13217285e9.10.1759280543774; 
- Tue, 30 Sep 2025 18:02:23 -0700 (PDT)
+ AJvYcCWsdT3tjhxnaUrJB06DavIcy3xCGUqWJVhLTPR1kEzZnGBt3BshTNK0Rb5sE5by85yowN2MJDdGEQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yz3nnuCHG5G3FGnCxMvm47lB3lYjGyrqnw9yMCntG6LLvOzunP6
+ Q5jT61/CxkuzEa+7vW5D/ryC++88BLMqWiY7oGWu8qs8Q/WLR3SenUYYczktdRrKF/g=
+X-Gm-Gg: ASbGncs8LGveruk6Gm7w+MgxBh6VT3rxrfomMiKM0ixwCx3Xy1CzQbRGFGGlbgPEgfw
+ nbz+QWvoMffu5olTwlCl4jfwSdda4WyDhzhomW3w3cblnObnOuF5cIUKW650sGbOKkHXfR1gfw4
+ CU6BbB8LYWshl8qi8z2dy22ciRm0XWOrsuQm2N1xZyQZVRhNr3IPyMueICrHeonmL+WDrFxaYaC
+ TSWVFNkZELtu5NDFk5lMI5lpIrA6kFArV0aTyYK6srOkUc6erEb9Eg0kbrWDnxE/k5RWuWKGm27
+ HuP3vpIqpb23fdZu+VSb8hEPEMoiXwytETEkOx4mQkL0SrrBQoZXY8AEHmFcS+427fOQ6AajhR7
+ /KVq6YGqkzzxg0g5Co+x0XTdg253KHAS5nZRG2P8aYVUtso6s1kFz3Z0OJ2nS/F+JTMiV/8hO2D
+ GEw6nq0AyIlzdLn607vFwi8F+5MVD15xt+GkgMoDdHyaM=
+X-Google-Smtp-Source: AGHT+IHz5zJvRAfTPBo9M5sp5y9ZSQpGXLUE6GRT5+Sd8Ti2k3C3x23ab/qaxyHFH3BNL5MCzuLhNQ==
+X-Received: by 2002:a05:600c:c4aa:b0:45f:2cb5:ecff with SMTP id
+ 5b1f17b1804b1-46e612cb719mr15530685e9.31.1759280582488; 
+ Tue, 30 Sep 2025 18:03:02 -0700 (PDT)
 Received: from localhost.localdomain ([90.209.204.182])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-40fb985e080sm24587426f8f.24.2025.09.30.18.02.22
+ ffacd0b85a97d-40fb985e080sm24587426f8f.24.2025.09.30.18.03.00
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 30 Sep 2025 18:02:23 -0700 (PDT)
+ Tue, 30 Sep 2025 18:03:02 -0700 (PDT)
 From: salil.mehta@opnsrc.net
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org,
@@ -86,27 +86,25 @@ Cc: salil.mehta@huawei.com, maz@kernel.org, jean-philippe@linaro.org,
  miguel.luis@oracle.com, salil.mehta@opnsrc.net, zhukeqian1@huawei.com,
  wangxiongfeng2@huawei.com, wangyanan55@huawei.com, wangzhou1@hisilicon.com,
  linuxarm@huawei.com, jiakernel2@gmail.com, maobibo@loongson.cn,
- lixianglai@loongson.cn, shahuang@redhat.com, zhao1.liu@intel.com,
- Keqian Zhu <zhuqian1@huawei.com>
-Subject: [PATCH RFC V6 05/24] arm/virt,
- kvm: Pre-create KVM vCPUs for 'disabled' QOM vCPUs at machine init
-Date: Wed,  1 Oct 2025 01:01:08 +0000
-Message-Id: <20251001010127.3092631-6-salil.mehta@opnsrc.net>
+ lixianglai@loongson.cn, shahuang@redhat.com, zhao1.liu@intel.com
+Subject: [PATCH RFC V6 22/24] monitor,
+ qdev: Introduce 'device_set' to change admin state of existing devices
+Date: Wed,  1 Oct 2025 01:01:25 +0000
+Message-Id: <20251001010127.3092631-23-salil.mehta@opnsrc.net>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20251001010127.3092631-1-salil.mehta@opnsrc.net>
 References: <20251001010127.3092631-1-salil.mehta@opnsrc.net>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
- envelope-from=salil.mehta@opnsrc.net; helo=mail-wm1-x32b.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
+ envelope-from=salil.mehta@opnsrc.net; helo=mail-wm1-x32c.google.com
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
+ DKIM_SIGNED=0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -124,336 +122,773 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Salil Mehta <salil.mehta@huawei.com>
 
-ARM CPU architecture does not allow CPUs to be plugged after system has
-initialized. This is a constraint. Hence, the Kernel must know all the CPUs
-being booted during its initialization. This applies to the Guest Kernel as
-well and therefore, the number of KVM vCPU descriptors in the host must be
-fixed at VM initialization time.
+This patch adds a "device_set" interface for modifying properties of devices
+that already exist in the guest topology. Unlike 'device_add'/'device_del'
+(hot-plug), 'device_set' does not create or destroy devices. It is intended
+for guest-visible hot-add semantics where hardware is provisioned at boot but
+logically enabled/disabled later via administrative policy.
 
-Also, the GIC must know all the CPUs it is connected to during its
-initialization, and this cannot change afterward. This must also be ensured
-during the initialization of the VGIC in KVM. This is necessary because:
+Compared to the existing 'qom-set' command, which is less intuitive and works
+only with object IDs, device_set provides a more device-oriented interface.
+It can be invoked at the QEMU prompt using natural device arguments, and the
+new '-deviceset' CLI option allows properties to be set at boot time, similar
+to how '-device' specifies device creation.
 
-1. The association between GICR and MPIDR must be fixed at VM initialization
-   time. This is represented by the register
-   `GICR_TYPER(mp_affinity, proc_num)`.
-2. Memory regions associated with GICR, etc., cannot be changed (added,
-   deleted, or modified) after the VM has been initialized. This is not an
-   ARM architectural constraint but rather invites a difficult and messy
-   change in VGIC data structures.
+While the initial implementation focuses on "admin-state" changes (e.g.,
+enable/disable a CPU already described by ACPI/DT), the interface is designed
+to be generic. In future, it could be used for other per-device set/unset
+style controls — beyond administrative power-states — provided the target
+device explicitly allows such changes. This enables fine-grained runtime
+control of device properties.
 
-To enable a hot-add–like model while preserving these constraints, the virt
-machine may enumerate more CPUs than are enabled at boot using
-`-smp disabledcpus=N`. Such CPUs are present but start offline (i.e.,
-administratively disabled at init). The topology remains fixed at VM
-creation time; only the online/offline status may change later.
+Key pieces:
+  * QMP: qmp_device_set() to update an existing device. The device can be
+    located by "id" or via driver+property match using a DeviceListener
+    callback (qdev_find_device()).
+  * HMP: "device_set" command with tab-completion. Errors are surfaced via
+    hmp_handle_error().
+  * CLI: "-deviceset" option for setting startup/admin properties at boot,
+    including a JSON form. Options are parsed into qemu_deviceset_opts and
+    applied after device creation.
+  * Docs/help: HMP help text and qemu-options.hx additions explain usage and
+    explicitly note that no hot-plug occurs.
+  * Safety: disallowed during live migration (migration_is_idle() check).
 
-Administratively disabled vCPUs are not realized in QOM until first enabled,
-avoiding creation of unnecessary vCPU threads at boot. On large systems, this
-reduces startup time proportionally to the number of disabled vCPUs. Once a
-QOM vCPU is realized and its thread created, subsequent enable/disable actions
-do not unrealize it. This behaviour was adopted following review feedback and
-differs from earlier RFC versions.
+Semantics:
+  * Operates on an existing DeviceState; no enumeration/new device appears.
+  * Complements device_add/device_del by providing state mutation only.
+  * Backward compatible: no behavior change unless "device_set"/"-deviceset"
+    is used.
 
-Co-developed-by: Keqian Zhu <zhuqian1@huawei.com>
-Signed-off-by: Keqian Zhu <zhuqian1@huawei.com>
+Examples:
+  HMP:
+    (qemu) device_set host-arm-cpu,core-id=3,admin-state=enable
+
+  CLI (at boot):
+    -smp cpus=4,maxcpus=4 \
+    -deviceset host-arm-cpu,core-id=2,admin-state=disable
+
+  QMP (JSON form):
+    { "execute": "device_set",
+      "arguments": {
+        "driver": "host-arm-cpu",
+        "core-id": 1,
+        "admin-state": "disable"
+      }
+    }
+
+NOTE: The qdev_enable()/qdev_disable() hooks for acting on admin-state will be
+added in subsequent patches. Device classes must explicitly support any
+property they want to expose through device_set.
+
 Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
 ---
- accel/kvm/kvm-all.c    |  2 +-
- hw/arm/virt.c          | 77 ++++++++++++++++++++++++++++++++++++++----
- hw/core/qdev.c         | 17 ++++++++++
- include/hw/qdev-core.h | 19 +++++++++++
- include/system/kvm.h   |  8 +++++
- target/arm/cpu.c       |  2 ++
- target/arm/kvm.c       | 40 +++++++++++++++++++++-
- target/arm/kvm_arm.h   | 11 ++++++
- 8 files changed, 168 insertions(+), 8 deletions(-)
+ hmp-commands.hx         |  30 +++++++++
+ hw/arm/virt.c           |  86 +++++++++++++++++++++++++
+ hw/core/cpu-common.c    |  12 ++++
+ hw/core/qdev.c          |  21 ++++++
+ include/hw/arm/virt.h   |   1 +
+ include/hw/core/cpu.h   |  11 ++++
+ include/hw/qdev-core.h  |  22 +++++++
+ include/monitor/hmp.h   |   2 +
+ include/monitor/qdev.h  |  30 +++++++++
+ include/system/system.h |   1 +
+ qemu-options.hx         |  51 +++++++++++++--
+ system/qdev-monitor.c   | 139 +++++++++++++++++++++++++++++++++++++++-
+ system/vl.c             |  39 +++++++++++
+ 13 files changed, 440 insertions(+), 5 deletions(-)
 
-diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
-index 890d5ea9f8..0e7d9d5c3d 100644
---- a/accel/kvm/kvm-all.c
-+++ b/accel/kvm/kvm-all.c
-@@ -460,7 +460,7 @@ static void kvm_reset_parked_vcpus(KVMState *s)
-  *
-  * @returns: 0 when success, errno (<0) when failed.
-  */
--static int kvm_create_vcpu(CPUState *cpu)
-+int kvm_create_vcpu(CPUState *cpu)
- {
-     unsigned long vcpu_id = kvm_arch_vcpu_id(cpu);
-     KVMState *s = kvm_state;
+diff --git a/hmp-commands.hx b/hmp-commands.hx
+index d0e4f35a30..18056cf21d 100644
+--- a/hmp-commands.hx
++++ b/hmp-commands.hx
+@@ -707,6 +707,36 @@ SRST
+   or a QOM object path.
+ ERST
+ 
++{
++    .name       = "device_set",
++    .args_type  = "device:O",
++    .params     = "driver[,prop=value][,...]",
++    .help       = "set/unset existing device property",
++    .cmd        = hmp_device_set,
++    .command_completion = device_set_completion,
++},
++
++SRST
++``device_set`` *driver[,prop=value][,...]*
++  Change the administrative power state of an existing device.
++
++  This command enables or disables a known device (e.g., CPU) using the
++  "device_set" interface. It does not hotplug or add a new device.
++
++  Depending on platform support (e.g., PSCI or ACPI), this may trigger
++  corresponding operational changes — such as powering down a CPU or
++  transitioning it to active use.
++
++  Administrative state:
++    * *enabled*  — Allows the guest to use the device (e.g., CPU_ON)
++    * *disabled* — Prevents guest use; device is powered off (e.g., CPU_OFF)
++
++  Note: The device must already exist (be declared during machine creation).
++
++  Example:
++      (qemu) device_set host-arm-cpu,core-id=3,admin-state=disabled
++ERST
++
+     {
+         .name       = "cpu",
+         .args_type  = "index:i",
 diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 4ded19dc69..f4eeeacf6c 100644
+index 9a41a0682b..7bd37ffb75 100644
 --- a/hw/arm/virt.c
 +++ b/hw/arm/virt.c
-@@ -2152,6 +2152,49 @@ static void virt_post_cpus_gic_realized(VirtMachineState *vms,
-     }
+@@ -74,6 +74,7 @@
+ #include "qapi/visitor.h"
+ #include "qapi/qapi-visit-common.h"
+ #include "qobject/qlist.h"
++#include "qobject/qdict.h"
+ #include "standard-headers/linux/input.h"
+ #include "hw/arm/smmuv3.h"
+ #include "hw/acpi/acpi.h"
+@@ -1824,6 +1825,88 @@ void virt_machine_done(Notifier *notifier, void *data)
+     virt_build_smbios(vms);
  }
  
-+static void
-+virt_setup_lazy_vcpu_realization(Object *cpuobj, VirtMachineState *vms)
++static DeviceState *virt_find_cpu(const QDict *opts, Error **errp)
 +{
-+    /*
-+     * Present & administratively disabled vCPUs:
-+     *
-+     * These CPUs are marked offline at init via '-smp disabledcpus=N'. We
-+     * intentionally do not realize them during the first boot, since it is
-+     * not known if or when they will ever be enabled. The decision to enable
-+     * such CPUs depends on policy (e.g. guided by SLAs or other deployment
-+     * requirements).
-+     *
-+     * Realizing all disabled vCPUs up front would make boot time proportional
-+     * to 'maxcpus', even if policy permits only a small subset to be enabled.
-+     * This can lead to unacceptable boot delays in some scenarios.
-+     *
-+     * Instead, these CPUs remain administratively disabled and unrealized at
-+     * boot, to be instantiated and brought online only if policy later allows
-+     * it.
-+     */
++    int64_t socket_id, cluster_id, core_id, thread_id;
++    MachineState *ms = MACHINE(qdev_get_machine());
++    int64_t T, C, K, cpu_id;
++    CPUState *cpu;
++    const char *s;
 +
-+    /* set this vCPU to be administratively 'disabled' in QOM */
-+    qdev_disable(DEVICE(cpuobj), NULL, &error_fatal);
++    /* parse topology */
++    socket_id  = (s = qdict_get_try_str(opts, "socket-id")) ?
++                  strtoll(s, NULL, 10) : 0;
++    cluster_id = (s = qdict_get_try_str(opts, "cluster-id")) ?
++                 strtoll(s, NULL, 10) : 0;
++    core_id    = (s = qdict_get_try_str(opts, "core-id")) ?
++                 strtoll(s, NULL, 10) : 0;
++    thread_id  = (s = qdict_get_try_str(opts, "thread-id")) ?
++                 strtoll(s, NULL, 10) : 0;
 +
-+    if (vms->psci_conduit != QEMU_PSCI_CONDUIT_DISABLED) {
-+        object_property_set_int(cpuobj, "psci-conduit", vms->psci_conduit,
-+                                NULL);
++    /* Range checks */
++    if (thread_id < 0 || thread_id >= ms->smp.threads) {
++        error_setg(errp,
++                   "Couldn't find cpu(%ld:%ld:%ld:%ld), Invalid thread-id %ld",
++                   socket_id, cluster_id, core_id, thread_id, thread_id);
++        return NULL;
++    }
++    if (core_id < 0 || core_id >= ms->smp.cores) {
++        error_setg(errp,
++                   "Couldn't find cpu(%ld:%ld:%ld:%ld), Invalid core-id %ld",
++                   socket_id, cluster_id, core_id, thread_id, core_id);
++        return NULL;
++    }
++    if (cluster_id < 0 || cluster_id >= ms->smp.clusters) {
++        error_setg(errp,
++                   "Couldn't find cpu(%ld:%ld:%ld:%ld), Invalid cluster-id %ld",
++                   socket_id, cluster_id, core_id, thread_id, cluster_id);
++        return NULL;
++    }
++    if (socket_id < 0 || socket_id >= ms->smp.sockets) {
++        error_setg(errp,
++                   "Couldn't find cpu(%ld:%ld:%ld:%ld), Invalid socket-id %ld",
++                   socket_id, cluster_id, core_id, thread_id, socket_id);
++        return NULL;
 +    }
 +
-+    /*
-+     * [!] Constraint: The ARM CPU architecture does not permit new CPUs
-+     * to be added after system initialization.
-+     *
-+     * Workaround: Pre-create KVM vCPUs even for those that are not yet
-+     * online i.e. powered-off, keeping them `parked` and in an
-+     * `unrealized (at-least during boot time)` state within QEMU until
-+     * they are powered-on and made online.
-+     */
-+    if (kvm_enabled()) {
-+        kvm_arm_create_host_vcpu(ARM_CPU(cpuobj));
++    /* Compute logical CPU index: t + T*(c + C*(k + K*s)). */
++    T = ms->smp.threads;
++    C = ms->smp.cores;
++    K = ms->smp.clusters;
++    cpu_id = thread_id + T * (core_id + C * (cluster_id + K * socket_id));
++
++    cpu = machine_get_possible_cpu((int)cpu_id);
++    if (!cpu) {
++        error_setg(errp,
++                   "Couldn't find cpu(%ld:%ld:%ld:%ld), Invalid cpu-index %ld",
++                   socket_id, cluster_id, core_id, thread_id, cpu_id);
++        return NULL;
 +    }
++
++    return DEVICE(cpu);
 +}
 +
- static void machvirt_init(MachineState *machine)
++static DeviceState *
++virt_find_device(DeviceListener *listener, const QDict *opts, Error **errp)
++{
++    const char *typename;
++
++    g_assert(opts);
++
++    typename = qdict_get_try_str(opts, "driver");
++    if (!typename)
++    {
++        error_setg(errp, "no driver specified");
++        return NULL;
++    }
++
++    if (cpu_typename_is_a(typename, TYPE_ARM_CPU)) {
++        return virt_find_cpu(opts, errp);
++    }
++
++    return NULL;
++}
++
+ static void virt_park_cpu_in_userspace(CPUState *cs)
  {
-     VirtMachineState *vms = VIRT_MACHINE(machine);
-@@ -2319,10 +2362,6 @@ static void machvirt_init(MachineState *machine)
+     /* we don't want to migrate 'disabled' vCPU state(even if realized) */
+@@ -2545,6 +2628,9 @@ static void machvirt_init(MachineState *machine)
+ 
+     create_fdt(vms);
+ 
++    vms->device_listener.find_device = virt_find_device;
++    device_listener_register(&vms->device_listener);
++
+     assert(possible_cpus->len == max_cpus);
+     for (n = 0; n < possible_cpus->len; n++) {
          Object *cpuobj;
-         CPUState *cs;
- 
--        if (n >= smp_cpus) {
--            break;
--        }
--
-         cpuobj = object_new(possible_cpus->cpus[n].type);
-         object_property_set_int(cpuobj, "mp-affinity",
-                                 possible_cpus->cpus[n].arch_id, NULL);
-@@ -2427,8 +2466,34 @@ static void machvirt_init(MachineState *machine)
-             }
-         }
- 
--        qdev_realize(DEVICE(cpuobj), NULL, &error_fatal);
--        object_unref(cpuobj);
-+        /* start secondary vCPUs in a powered-down state */
-+        if(n && mc->has_online_capable_cpus) {
-+            object_property_set_bool(cpuobj, "start-powered-off", true, NULL);
-+        }
-+
-+        if (n < smp_cpus) {
-+            /* 'Present' & 'Enabled' vCPUs */
-+            qdev_realize(DEVICE(cpuobj), NULL, &error_fatal);
-+            object_unref(cpuobj);
-+        } else {
-+            /* 'Present' & 'Disabled' vCPUs */
-+            virt_setup_lazy_vcpu_realization(cpuobj, vms);
-+        }
-+
-+        /*
-+         * All possible vCPUs should have QOM vCPU Object pointer & arch-id.
-+         * 'cpus_queue' (accessed via qemu_get_cpu()) contains only realized and
-+         * enabled vCPUs. Hence, we must now populate the 'possible_cpus' list.
-+         */
-+        if (kvm_enabled()) {
-+            /*
-+             * Override the default architecture ID with the one retrieved
-+             * from KVM, as they currently differ.
-+             */
-+            machine->possible_cpus->cpus[n].arch_id =
-+                arm_cpu_mp_affinity(ARM_CPU(cs));
-+        }
-+        machine->possible_cpus->cpus[n].cpu = cs;
-     }
- 
-     /* Now we've created the CPUs we can see if they have the hypvirt timer */
-diff --git a/hw/core/qdev.c b/hw/core/qdev.c
-index 8502d6216f..5816abae39 100644
---- a/hw/core/qdev.c
-+++ b/hw/core/qdev.c
-@@ -309,6 +309,23 @@ void qdev_assert_realized_properly(void)
-                                    qdev_assert_realized_properly_cb, NULL);
+diff --git a/hw/core/cpu-common.c b/hw/core/cpu-common.c
+index 39e674aca2..6883dba75e 100644
+--- a/hw/core/cpu-common.c
++++ b/hw/core/cpu-common.c
+@@ -170,6 +170,18 @@ char *cpu_model_from_type(const char *typename)
+     return g_strdup(typename);
  }
  
-+bool qdev_disable(DeviceState *dev, BusState *bus, Error **errp)
++bool cpu_typename_is_a(const char *typename, const char *base_typename)
 +{
-+    g_assert(dev);
++    ObjectClass *oc;
 +
-+    if (bus) {
-+        error_setg(errp, "Device %s 'disable' operation not supported",
-+                   object_get_typename(OBJECT(dev)));
++    if (!typename || !base_typename) {
 +        return false;
 +    }
 +
-+    /* devices like cpu don't have bus */
-+    g_assert(!DEVICE_GET_CLASS(dev)->bus_type);
-+
-+    return object_property_set_str(OBJECT(dev), "admin_power_state", "disabled",
-+                                   errp);
++    oc = object_class_by_name(typename);
++    return oc && object_class_dynamic_cast(oc, base_typename);
 +}
 +
- bool qdev_machine_modified(void)
+ static void cpu_common_parse_features(const char *typename, char *features,
+                                       Error **errp)
  {
-     return qdev_hot_added || qdev_hot_removed;
+diff --git a/hw/core/qdev.c b/hw/core/qdev.c
+index 3aba99b912..4fa2988ca0 100644
+--- a/hw/core/qdev.c
++++ b/hw/core/qdev.c
+@@ -226,6 +226,27 @@ bool qdev_should_hide_device(const QDict *opts, bool from_json, Error **errp)
+     return false;
+ }
+ 
++DeviceState *
++qdev_find_device(const QDict *opts, Error **errp)
++{
++    ERRP_GUARD();
++    DeviceListener *listener;
++    DeviceState *dev;
++
++    QTAILQ_FOREACH(listener, &device_listeners, link) {
++        if (listener->find_device) {
++            dev = listener->find_device(listener, opts, errp);
++            if (*errp) {
++                return NULL;
++            } else if (dev) {
++                return dev;
++            }
++        }
++    }
++
++    return NULL;
++}
++
+ void qdev_set_legacy_instance_id(DeviceState *dev, int alias_id,
+                                  int required_for_version)
+ {
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index 0898e8eed3..de4a08175e 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -182,6 +182,7 @@ struct VirtMachineState {
+     char *oem_table_id;
+     bool ns_el2_virt_timer_irq;
+     CXLState cxl_devices_state;
++    DeviceListener device_listener;
+ };
+ 
+ #define VIRT_ECAM_ID(high) (high ? VIRT_HIGH_PCIE_ECAM : VIRT_PCIE_ECAM)
+diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+index ccf5588011..c9ce9bbdaf 100644
+--- a/include/hw/core/cpu.h
++++ b/include/hw/core/cpu.h
+@@ -853,6 +853,17 @@ ObjectClass *cpu_class_by_name(const char *typename, const char *cpu_model);
+  */
+ char *cpu_model_from_type(const char *typename);
+ 
++/**
++ * cpu_typename_is_a:
++ * @typename: QOM type name to check (e.g. "host-arm-cpu").
++ * @base_typename: Base QOM typename to test against (e.g. TYPE_ARM_CPU).
++ *
++ * Return: true if @typename names a class that is-a @base_typename, else false.
++ *
++ * Notes: Safe for common code; depends only on QOM (no target headers).
++ */
++bool cpu_typename_is_a(const char *typename, const char *base_typename);
++
+ /**
+  * cpu_create:
+  * @typename: The CPU type.
 diff --git a/include/hw/qdev-core.h b/include/hw/qdev-core.h
-index 3bc212ab3a..2c22b32a3f 100644
+index 3e08cfb59f..19d1d1a144 100644
 --- a/include/hw/qdev-core.h
 +++ b/include/hw/qdev-core.h
-@@ -570,6 +570,25 @@ bool qdev_realize(DeviceState *dev, BusState *bus, Error **errp);
+@@ -371,6 +371,15 @@ struct DeviceListener {
+      */
+     bool (*hide_device)(DeviceListener *listener, const QDict *device_opts,
+                         bool from_json, Error **errp);
++    /*
++     * Used by qdev to find any device corresponding to the device opts
++     *
++     * Returns the `DeviceState` on sucess and NULL if device was not found.
++     * On errors, it returns NULL and errp is set
++     */
++    DeviceState * (*find_device)(DeviceListener *listener,
++                                 const QDict *device_opts,
++                                 Error **errp);
+     QTAILQ_ENTRY(DeviceListener) link;
+ };
+ 
+@@ -1252,6 +1261,19 @@ void device_listener_unregister(DeviceListener *listener);
   */
- bool qdev_realize_and_unref(DeviceState *dev, BusState *bus, Error **errp);
+ bool qdev_should_hide_device(const QDict *opts, bool from_json, Error **errp);
  
 +/**
-+ * qdev_disable - Initiate administrative disablement and power-off of device
-+ * @dev:   The device to be administratively powered off
-+ * @bus:   The bus on which the device resides (may be NULL for CPUs)
-+ * @errp:  Pointer to a location where an error can be reported
++ * qdev_find_device() - find the device
 + *
-+ * This function initiates an administrative transition of the device into a
-+ * DISABLED state. This may trigger a graceful shutdown process depending on
-+ * platform capabilities. For ACPI platforms, this typically involves notifying
-+ * the guest via events such as Notify(..., 0x03) and executing _EJx.
++ * @opts: options QDict
++ * @errp: pointer to error object
 + *
-+ * Once completed, the device's operational power is turned off and it is
-+ * marked as administratively DISABLED. Further guest usage is blocked until
-+ * re-enabled by host-side policy.
++ * Called when device state is toggled via qdev_device_state()
 + *
-+ * Returns true on success; false if an error occurs, with @errp populated.
++ * Return: a DeviceState on success and NULL on failure
 + */
-+bool qdev_disable(DeviceState *dev, BusState *bus, Error **errp);
++DeviceState *
++qdev_find_device(const QDict *opts, Error **errp);
 +
- /**
-  * qdev_unrealize: Unrealize a device
-  * @dev: device to unrealize
-diff --git a/include/system/kvm.h b/include/system/kvm.h
-index 3c7d314736..4896a3c9c5 100644
---- a/include/system/kvm.h
-+++ b/include/system/kvm.h
-@@ -317,6 +317,14 @@ int kvm_create_device(KVMState *s, uint64_t type, bool test);
-  */
- bool kvm_device_supported(int vmfd, uint64_t type);
- 
+ typedef enum MachineInitPhase {
+     /* current_machine is NULL.  */
+     PHASE_NO_MACHINE,
+diff --git a/include/monitor/hmp.h b/include/monitor/hmp.h
+index ae116d9804..3e8c492c28 100644
+--- a/include/monitor/hmp.h
++++ b/include/monitor/hmp.h
+@@ -84,6 +84,7 @@ void hmp_change_medium(Monitor *mon, const char *device, const char *target,
+ void hmp_migrate(Monitor *mon, const QDict *qdict);
+ void hmp_device_add(Monitor *mon, const QDict *qdict);
+ void hmp_device_del(Monitor *mon, const QDict *qdict);
++void hmp_device_set(Monitor *mon, const QDict *qdict);
+ void hmp_dump_guest_memory(Monitor *mon, const QDict *qdict);
+ void hmp_netdev_add(Monitor *mon, const QDict *qdict);
+ void hmp_netdev_del(Monitor *mon, const QDict *qdict);
+@@ -117,6 +118,7 @@ void object_add_completion(ReadLineState *rs, int nb_args, const char *str);
+ void object_del_completion(ReadLineState *rs, int nb_args, const char *str);
+ void device_add_completion(ReadLineState *rs, int nb_args, const char *str);
+ void device_del_completion(ReadLineState *rs, int nb_args, const char *str);
++void device_set_completion(ReadLineState *rs, int nb_args, const char *str);
+ void sendkey_completion(ReadLineState *rs, int nb_args, const char *str);
+ void chardev_remove_completion(ReadLineState *rs, int nb_args, const char *str);
+ void chardev_add_completion(ReadLineState *rs, int nb_args, const char *str);
+diff --git a/include/monitor/qdev.h b/include/monitor/qdev.h
+index 1d57bf6577..b10040e27f 100644
+--- a/include/monitor/qdev.h
++++ b/include/monitor/qdev.h
+@@ -6,6 +6,36 @@
+ void hmp_info_qtree(Monitor *mon, const QDict *qdict);
+ void hmp_info_qdm(Monitor *mon, const QDict *qdict);
+ void qmp_device_add(QDict *qdict, QObject **ret_data, Error **errp);
 +/**
-+ * kvm_create_vcpu - Gets a parked KVM vCPU or creates a KVM vCPU
-+ * @cpu: QOM CPUState object for which KVM vCPU has to be fetched/created.
++ * qmp_device_set:
++ * @qdict: Boxed arguments identifying the target device and property changes.
 + *
-+ * @returns: 0 when success, errno (<0) when failed.
++ *         The device can be identified in one of two ways:
++ *           1. By "id":      Device instance ID (string), or
++ *           2. By "driver":  Device type (string) plus one or more
++ *                            property=value pairs to match.
++ *
++ *         Must also include at least one property assignment to change.
++ *         Currently used for:
++ *           - "admin-state": "enable" | "disable"
++ *
++ *         Additional properties may be supported by specific devices
++ *         in future.
++ *
++ * @errp:  Pointer to error object (set on failure).
++ *
++ * Change one or more mutable properties of an existing device at runtime.
++ * Initially intended for administrative CPU power-state control via
++ * "admin-state" on CPU devices, but may be extended to support other
++ * per-device set/unset controls when allowed by the target device class.
++ *
++ * Returns: Nothing. On success, replies with `{ "return": true }` via QMP.
++ *
++ * Errors:
++ *  - DeviceNotFound:  No matching device found
++ *  - GenericError:    Parameter validation failed or operation unsupported
 + */
-+int kvm_create_vcpu(CPUState *cpu);
++void qmp_device_set(const QDict *qdict, Error **errp);
+ 
+ int qdev_device_help(QemuOpts *opts);
+ DeviceState *qdev_device_add(QemuOpts *opts, Error **errp);
+diff --git a/include/system/system.h b/include/system/system.h
+index a7effe7dfd..3702325cfb 100644
+--- a/include/system/system.h
++++ b/include/system/system.h
+@@ -116,6 +116,7 @@ extern QemuOptsList qemu_drive_opts;
+ extern QemuOptsList bdrv_runtime_opts;
+ extern QemuOptsList qemu_chardev_opts;
+ extern QemuOptsList qemu_device_opts;
++extern QemuOptsList qemu_deviceset_opts;
+ extern QemuOptsList qemu_netdev_opts;
+ extern QemuOptsList qemu_nic_opts;
+ extern QemuOptsList qemu_net_opts;
+diff --git a/qemu-options.hx b/qemu-options.hx
+index 83ccde341b..f517b91042 100644
+--- a/qemu-options.hx
++++ b/qemu-options.hx
+@@ -375,7 +375,10 @@ SRST
+     This is different from CPU hotplug where additional CPUs are not even
+     present in the system description. Administratively disabled CPUs appear in
+     ACPI tables i.e. are provisioned, but cannot be used until explicitly
+-    enabled via QMP/HMP or the deviceset API.
++    enabled via QMP/HMP or the deviceset API. On ACPI guests, each vCPU counted
++    by 'disabledcpus=' is provisioned with '\ ``_STA``\ ' reporting Present=1
++    and Enabled=0 (present-offline) at boot; it becomes Enabled=1 when brought
++    online via 'device_set ... admin-state=enable'.
+ 
+     On boards supporting CPU hotplug, the optional '\ ``maxcpus``\ ' parameter
+     can be set to enable further CPUs to be added at runtime. When both
+@@ -455,6 +458,15 @@ SRST
+ 
+         -smp 2
+ 
++    Note: The cluster topology will only be generated in ACPI and exposed
++    to guest if it's explicitly specified in -smp.
 +
- /**
-  * kvm_park_vcpu - Park QEMU KVM vCPU context
-  * @cpu: QOM CPUState object for which QEMU KVM vCPU context has to be parked.
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 7e0d5b2ed8..a5906d1672 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -1500,6 +1500,8 @@ static void arm_cpu_initfn(Object *obj)
-         /* TCG and HVF implement PSCI 1.1 */
-         cpu->psci_version = QEMU_PSCI_VERSION_1_1;
++    Note: Administratively disabled CPUs (specified via 'disabledcpus=' and
++    '-deviceset' at CLI during boot) are especially useful for platforms like
++    ARM that lack native CPU hotplug support. These CPUs will appear to the
++    guest as unavailable, and any attempt to bring them online must go through
++    QMP/HMP commands like 'device_set'.
++
+     Examples using 'disabledcpus':
+ 
+     For a board without CPU hotplug, enable 4 CPUs at boot and provision
+@@ -472,9 +484,6 @@ SRST
+     ::
+ 
+         -smp cpus=4,disabledcpus=2,maxcpus=8
+-
+-    Note: The cluster topology will only be generated in ACPI and exposed
+-    to guest if it's explicitly specified in -smp.
+ ERST
+ 
+ DEF("numa", HAS_ARG, QEMU_OPTION_numa,
+@@ -1281,6 +1290,40 @@ SRST
+ 
+ ERST
+ 
++DEF("deviceset", HAS_ARG, QEMU_OPTION_deviceset,
++    "-deviceset driver[,prop[=value]][,...]\n"
++    "                Set administrative power state of an existing device.\n"
++    "                Does not hotplug a new device. Can disable or enable\n"
++    "                devices (such as CPUs) at boot based on policy.\n"
++    "                Example:\n"
++    "                    -deviceset host-arm-cpu,core-id=2,admin-state=disabled\n"
++    "                Use '-deviceset help' for supported drivers\n"
++    "                Use '-deviceset driver,help' for driver-specific properties\n",
++    QEMU_ARCH_ALL)
++SRST
++``-deviceset driver[,prop[=value]][,...]``
++    Configure an existing device's administrative power state or properties.
++
++    Unlike ``-device``, this option does not create a new device. Instead,
++    it sets startup properties (such as administrative power state) for
++    a device already declared via -smp or other machine configuration.
++
++    Example:
++        -smp cpus=4
++        -deviceset host-arm-cpu,core-id=2,admin-state=disabled
++
++    The above disables CPU core 2 at boot using administrative offlining.
++    The guest may later re-enable the core (if permitted by platform policy).
++
++    ``state=enabled|disabled``
++        Sets the administrative state of the device:
++        - ``enabled``: device is made available at boot
++        - ``disabled``: device is administratively disabled and powered off
++
++    Use ``-deviceset help`` to view all supported drivers.
++    Use ``-deviceset driver,help`` for property-specific help.
++ERST
++
+ DEF("name", HAS_ARG, QEMU_OPTION_name,
+     "-name string1[,process=string2][,debug-threads=on|off]\n"
+     "                set the name of the guest\n"
+diff --git a/system/qdev-monitor.c b/system/qdev-monitor.c
+index 2ac92d0a07..1099b1237d 100644
+--- a/system/qdev-monitor.c
++++ b/system/qdev-monitor.c
+@@ -263,12 +263,20 @@ static DeviceClass *qdev_get_device_class(const char **driver, Error **errp)
      }
+ 
+     dc = DEVICE_CLASS(oc);
+-    if (!dc->user_creatable) {
++    if (!dc->user_creatable && !dc->admin_power_state_supported) {
+         error_setg(errp, QERR_INVALID_PARAMETER_VALUE, "driver",
+                    "a pluggable device type");
+         return NULL;
+     }
+ 
++    if (phase_check(PHASE_MACHINE_READY) &&
++        (!dc->hotpluggable || !dc->admin_power_state_supported)) {
++        error_setg(errp, QERR_INVALID_PARAMETER_VALUE, "driver",
++                   "a pluggable device type or which supports changing power-"
++                   "state administratively");
++        return NULL;
++    }
 +
-+    CPU(obj)->thread_id = 0;
+     if (object_class_dynamic_cast(oc, TYPE_SYS_BUS_DEVICE)) {
+         /* sysbus devices need to be allowed by the machine */
+         MachineClass *mc = MACHINE_CLASS(object_get_class(qdev_get_machine()));
+@@ -939,6 +947,76 @@ void qmp_device_del(const char *id, Error **errp)
+     }
  }
  
- /*
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index 6672344855..1962eb29b2 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -991,6 +991,38 @@ void kvm_arm_reset_vcpu(ARMCPU *cpu)
-     write_list_to_cpustate(cpu);
- }
- 
-+void kvm_arm_create_host_vcpu(ARMCPU *cpu)
++void qmp_device_set(const QDict *qdict, Error **errp)
 +{
-+    CPUState *cs = CPU(cpu);
-+    unsigned long vcpu_id = cs->cpu_index;
-+    int ret;
++    const char *state;
++    const char *driver;
++    DeviceState *dev;
++    DeviceClass *dc;
++    const char *id;
 +
-+    ret = kvm_create_vcpu(cs);
-+    if (ret < 0) {
-+        error_report("Failed to create host vcpu %ld", vcpu_id);
-+        abort();
++    driver = qdict_get_try_str(qdict, "driver");
++    if (!driver) {
++        error_setg(errp, "Parameter 'driver' is missing");
++        return;
 +    }
 +
-+    /*
-+     * Initialize the vCPU in the host. This will reset the sys regs
-+     * for this vCPU and related registers like MPIDR_EL1 etc. also
-+     * get programmed during this call to host. These are referenced
-+     * later while setting device attributes of the GICR during GICv3
-+     * reset.
-+     */
-+    ret = kvm_arch_init_vcpu(cs);
-+    if (ret < 0) {
-+        error_report("Failed to initialize host vcpu %ld", vcpu_id);
-+        abort();
++    /* check driver exists and we are at the right phase of machine init */
++    dc = qdev_get_device_class(&driver, errp);
++    if (!dc) {
++        error_setg(errp, "driver '%s' not supported", driver);
++        return;
 +    }
 +
-+    /*
-+     * park the created vCPU. shall be used during kvm_get_vcpu() when
-+     * threads are created during realization of ARM vCPUs.
-+     */
-+    kvm_park_vcpu(cs);
++    if (migration_is_running()) {
++        error_setg(errp, "device_set not allowed while migrating");
++        return;
++    }
++
++    id = qdict_get_try_str(qdict, "id");
++
++    if (id) {
++        /* Lookup by ID */
++        dev = find_device_state(id, false, errp);
++        if (errp && *errp) {
++            error_prepend(errp, "Device lookup failed for ID '%s': ", id);
++            return;
++        }
++    } else {
++        /* Lookup using driver and properties */
++        dev = qdev_find_device(qdict, errp);
++        if (errp && *errp) {
++            error_prepend(errp, "Device lookup for %s failed: ", driver);
++            return;
++        }
++    }
++    if (!dev) {
++        error_set(errp, ERROR_CLASS_DEVICE_NOT_FOUND,
++                  "No device found for driver '%s'", driver);
++        return;
++    }
++
++    state = qdict_get_try_str(qdict, "admin-state");
++    if (!state) {
++        error_setg(errp, "no device state change specified for device %s ",
++                   dev->id);
++        return;
++    } else if (!strcmp(state, "enable")) {
++
++        if (!qdev_enable(dev, qdev_get_parent_bus(DEVICE(dev)), errp)) {
++            return;
++        }
++    } else if (!strcmp(state, "disable")) {
++        if (!qdev_disable(dev, qdev_get_parent_bus(DEVICE(dev)), errp)) {
++            return;
++        }
++    } else {
++        error_setg(errp, "unrecognized specified state *%s* for device %s",
++                   state, dev->id);
++        return;
++    }
 +}
 +
- /*
-  * Update KVM's MP_STATE based on what QEMU thinks it is
-  */
-@@ -1876,7 +1908,13 @@ int kvm_arch_init_vcpu(CPUState *cs)
-         return -EINVAL;
-     }
+ int qdev_sync_config(DeviceState *dev, Error **errp)
+ {
+     DeviceClass *dc = DEVICE_GET_CLASS(dev);
+@@ -1019,6 +1097,14 @@ void hmp_device_del(Monitor *mon, const QDict *qdict)
+     hmp_handle_error(mon, err);
+ }
  
--    qemu_add_vm_change_state_handler(kvm_arm_vm_state_change, cpu);
-+    /*
-+     * Install VM change handler only when vCPU thread has been spawned
-+     * i.e. vCPU is being realized
-+     */
-+    if (cs->thread_id) {
-+        qemu_add_vm_change_state_handler(kvm_arm_vm_state_change, cpu);
++void hmp_device_set(Monitor *mon, const QDict *qdict)
++{
++    Error *err = NULL;
++
++    qmp_device_set(qdict, &err);
++    hmp_handle_error(mon, err);
++}
++
+ void device_add_completion(ReadLineState *rs, int nb_args, const char *str)
+ {
+     GSList *list, *elt;
+@@ -1101,6 +1187,41 @@ void device_del_completion(ReadLineState *rs, int nb_args, const char *str)
+     peripheral_device_del_completion(rs, str);
+ }
+ 
++void device_set_completion(ReadLineState *rs, int nb_args, const char *str)
++{
++    GSList *list, *elt;
++    size_t len;
++
++    if (nb_args == 2) {
++        len = strlen(str);
++        readline_set_completion_index(rs, len);
++
++        list = elt = object_class_get_list(TYPE_DEVICE, false);
++        while (elt) {
++            DeviceClass *dc = OBJECT_CLASS_CHECK(DeviceClass, elt->data,
++                                                 TYPE_DEVICE);
++            readline_add_completion_of(
++                rs, str, object_class_get_name(OBJECT_CLASS(dc)));
++            elt = elt->next;
++        }
++        g_slist_free(list);
++        return;
 +    }
- 
-     /* Determine init features for this CPU */
-     memset(cpu->kvm_init_features, 0, sizeof(cpu->kvm_init_features));
-diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
-index 6a9b6374a6..ec9dc95ee8 100644
---- a/target/arm/kvm_arm.h
-+++ b/target/arm/kvm_arm.h
-@@ -98,6 +98,17 @@ bool kvm_arm_cpu_post_load(ARMCPU *cpu);
- void kvm_arm_reset_vcpu(ARMCPU *cpu);
- 
- struct kvm_vcpu_init;
 +
-+/**
-+ * kvm_arm_create_host_vcpu:
-+ * @cpu: ARMCPU
-+ *
-+ * Called to pre-create possible KVM vCPU within the host during the
-+ * `virt_machine` initialization phase. This pre-created vCPU will be parked and
-+ * will be reused when ARM QOM vCPU is actually hotplugged.
-+ */
-+void kvm_arm_create_host_vcpu(ARMCPU *cpu);
++    if (nb_args == 3) {
++        readline_set_completion_index(rs, strlen(str));
++        readline_add_completion_of(rs, str, "admin-state");
++        return;
++    }
 +
- /**
-  * kvm_arm_create_scratch_host_vcpu:
-  * @fdarray: filled in with kvmfd, vmfd, cpufd file descriptors in that order
++    if (nb_args == 4) {
++        readline_set_completion_index(rs, strlen(str));
++        readline_add_completion_of(rs, str, "enable");
++        readline_add_completion_of(rs, str, "disable");
++        return;
++    }
++}
++
+ BlockBackend *blk_by_qdev_id(const char *id, Error **errp)
+ {
+     DeviceState *dev;
+@@ -1134,6 +1255,22 @@ QemuOptsList qemu_device_opts = {
+     },
+ };
+ 
++QemuOptsList qemu_deviceset_opts = {
++    .name = "deviceset",
++    .implied_opt_name = "driver",
++    .head = QTAILQ_HEAD_INITIALIZER(qemu_deviceset_opts.head),
++    .desc = {
++        /*
++         * no fixed schema; parameters include:
++         * - driver=<device-name>
++         * - id=<device-id> (optional)
++         * - admin-state=enabled|disabled
++         * - other optional props for locating the device
++         */
++        { /* end of list */ }
++    },
++};
++
+ QemuOptsList qemu_global_opts = {
+     .name = "global",
+     .head = QTAILQ_HEAD_INITIALIZER(qemu_global_opts.head),
+diff --git a/system/vl.c b/system/vl.c
+index 2f0fd21a1f..c1731de202 100644
+--- a/system/vl.c
++++ b/system/vl.c
+@@ -1218,6 +1218,16 @@ static int device_init_func(void *opaque, QemuOpts *opts, Error **errp)
+     return 0;
+ }
+ 
++static int deviceset_init_func(void *opaque, QemuOpts *opts, Error **errp)
++{
++    QDict *qdict = qemu_opts_to_qdict(opts, NULL);
++
++    qmp_device_set(qdict, errp);
++    qobject_unref(qdict);
++
++    return *errp ? -1 : 0;
++}
++
+ static int chardev_init_func(void *opaque, QemuOpts *opts, Error **errp)
+ {
+     Error *local_err = NULL;
+@@ -2755,6 +2765,10 @@ static void qemu_create_cli_devices(void)
+         assert(ret_data == NULL); /* error_fatal aborts */
+         loc_pop(&opt->loc);
+     }
++
++    /* add deferred 'deviceset' list handling - common to JSON/non-JSON path */
++    qemu_opts_foreach(qemu_find_opts("deviceset"), deviceset_init_func, NULL,
++                      &error_fatal);
+ }
+ 
+ static bool qemu_machine_creation_done(Error **errp)
+@@ -2855,6 +2869,7 @@ void qemu_init(int argc, char **argv)
+     qemu_add_drive_opts(&bdrv_runtime_opts);
+     qemu_add_opts(&qemu_chardev_opts);
+     qemu_add_opts(&qemu_device_opts);
++    qemu_add_opts(&qemu_deviceset_opts);
+     qemu_add_opts(&qemu_netdev_opts);
+     qemu_add_opts(&qemu_nic_opts);
+     qemu_add_opts(&qemu_net_opts);
+@@ -3458,6 +3473,30 @@ void qemu_init(int argc, char **argv)
+                     }
+                 }
+                 break;
++            case QEMU_OPTION_deviceset:
++                if (optarg[0] == '{') {
++                     /* JSON input: convert to QDict and then to QemuOpts */
++                     QObject *obj = qobject_from_json(optarg, &error_fatal);
++                     QDict *qdict = qobject_to(QDict, obj);
++                     if (!qdict) {
++                         error_report("Invalid JSON object for -deviceset");
++                         exit(1);
++                     }
++
++                     opts = qemu_opts_from_qdict(qemu_find_opts("deviceset"),
++                                                 qdict, &error_fatal);
++                     qobject_unref(qdict);
++                     if (!opts) {
++                         error_report_err(error_fatal);
++                         exit(1);
++                     }
++                } else {
++                    if (!qemu_opts_parse_noisily(qemu_find_opts("deviceset"),
++                                                 optarg, true)) {
++                        exit(1);
++                    }
++                }
++                break;
+             case QEMU_OPTION_smp:
+                 machine_parse_property_opt(qemu_find_opts("smp-opts"),
+                                            "smp", optarg);
 -- 
 2.34.1
 

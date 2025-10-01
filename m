@@ -4,65 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22DFBCCA474
-	for <qemu-arm@archiver.kernel.org>; Wed,  1 Oct 2025 15:21:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6707ACCA470
+	for <qemu-arm@archiver.kernel.org>; Wed,  1 Oct 2025 15:21:44 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v3yRu-0003Tm-R8; Wed, 01 Oct 2025 11:09:00 -0400
+	id 1v3yQT-0001Mq-Uu; Wed, 01 Oct 2025 11:07:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v3yRr-0003FC-5n
- for qemu-arm@nongnu.org; Wed, 01 Oct 2025 11:08:55 -0400
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v3yPm-00011x-CH
+ for qemu-arm@nongnu.org; Wed, 01 Oct 2025 11:06:49 -0400
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v3yQA-0000nj-LP
- for qemu-arm@nongnu.org; Wed, 01 Oct 2025 11:08:54 -0400
-Received: by mail-wr1-x42d.google.com with SMTP id
- ffacd0b85a97d-3ee15505cdeso1038300f8f.0
- for <qemu-arm@nongnu.org>; Wed, 01 Oct 2025 08:06:55 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v3yP6-0000fk-3W
+ for qemu-arm@nongnu.org; Wed, 01 Oct 2025 11:06:43 -0400
+Received: by mail-wm1-x32d.google.com with SMTP id
+ 5b1f17b1804b1-46e504975dbso29328875e9.1
+ for <qemu-arm@nongnu.org>; Wed, 01 Oct 2025 08:05:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1759331213; x=1759936013; darn=nongnu.org;
+ d=linaro.org; s=google; t=1759331158; x=1759935958; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=u2utxhkX+sqm/78vx0PLpcnsUSPgNTq+5sqtMIdFotg=;
- b=gmTigabxhSUEiqAxFF041PIODyZBMpAZkqZ5qoF/N/9xO8f+7B3trs98mGZ2cVe8Dc
- pQiaavG7YzIf4edTIvC8Q14Q8pin1bu3tol64yLfr0L0nXS9DpqIfj2h2hmUK9HxBXZl
- fKviHNLALeoC1Xif2ZTEBVBzvga2B/4l9VluPb5vGHPQ04X31622XgEOjX4/NAjJc1h5
- Qae5aRnPSne2xAYzncDFNY/CTU8tTiRNFpiS0jqLgiT5gp/TU7jFqtDg8i24TO+1Mt9O
- cVv6RPqhIYN/+zyzmW2hj2YVNwtredrkbkPrVLJvt0YyP0aHm90Hm6C4GvCWGixiZ4Lu
- tzag==
+ bh=vZDMg8yz9ap9OumTYn6OrEsRwS7EEn+Yq0e/iZiL7js=;
+ b=l/IeugX2vv5MdO7zskiLAGkXlqu8K+D1pJhRdtsXVr7bQkIL3W3n8OHTSHcohPjhf2
+ pFeargWHQXL8USRCigp3rZ7IziA8qXLODD5FU/n5hqxUMcpndOfp0uu+LKaJSDcKOnzO
+ EU/hRJojnv4UPo7LT4nnlldXqzq5gnOuW/0TuEdTBNaERHIDcyhOcUayAvwQULmo/EvK
+ 8LjEzczqYXln40jCb6ah5Uy06cNixZc84ZR2D7kNjAgOYR/YpB3ST2xCf0hanfmvxBPk
+ crfX7xxACj4MHtfbviZ3K9ThTKjG0HNHT0xBoaJ6DpeAXRyv3S3NEe0oMRPZlrbviHbZ
+ aOZg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759331213; x=1759936013;
+ d=1e100.net; s=20230601; t=1759331158; x=1759935958;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=u2utxhkX+sqm/78vx0PLpcnsUSPgNTq+5sqtMIdFotg=;
- b=QA8yewYK3cdaKY+kDMCnwIxfZUlKfaESrfp5FT4jFzZxKH1pXbOfEhg3XMwO1pkLqZ
- qM+UAf+3J5kpkoZ9vlUb7HRSnjUoVe+myUa3TYz+Vvd2snP/ZbTWb59Yd4L6i0m2tZwz
- DbJdmkRtvoQGFBx0DqZ7zIy+WmVGLBawFRuLYTF+PfSDyUjqKSKyoDx2XnZf06SI5ejN
- LS3EQPcAtAn69ywWzcaQCmgPc7j0pxjI7Ip5cV8j+aK4Xfbep8RzE2cMcwicprBjnTiL
- c8QE+2Z4FMPQW+rMNNZZKzicb5iCA7O/KduufVhfMOkwI1lUxbeuTO+Y51vyRHNSqBlN
- EM4Q==
-X-Gm-Message-State: AOJu0YwepXYHFQBKtj4XZeGBgO1Hb99MnXVVxOx8mNLZmmoNud7Nj963
- 0TRbubr4CMVjVDH02eGlMQLDdc5tuDmmsgm/i1eP7Z/XurC8UZ698Jh0NCU/pecCygk=
-X-Gm-Gg: ASbGnct0MWS93HezymgL6ye4LbcgrSRoCIIyMsnVCerZGmKa4pb4LOJg3VQqeBPTWpQ
- tXa52G4TWNM4ACNNG+TNR2fxu+MpOA/G2zfVT7ldHFkoHhkZAw2Ilqp55MeiwuTpQrzufljCO7M
- xUAj5Egk4TECtNvOQuYnab0Cfdorz5PvMdWb1Hmcr+4y4lao9d4wbvlgB45iSebDzExGLEN8Jd8
- R98TqVUF+2Zrv/+o3nNSh3v3ffkf5xTGeLzu3X+IaiwmliaDukzpGggEuX1/iRBxpwZIw3rd9hr
- pLbvWndieL4VvSR/1IG6thEfWLK+dLFQQA/yZsSrQvYkeD2o3tJ6dfywqgBzuWTzQQzrXMdTJ6Y
- Gey8qTBmRfl4wUj6QeY5S7r3tTa6XrXg08gHt2daVNEAYZ+iAArvZNbMq+gdo0/uXtxHUb2hFn0
- UJ4AOkyZPexgMdbfXex6dO
-X-Google-Smtp-Source: AGHT+IHQlTiEIstk+7CUIQ9ughVxQI2O9HjYcxri7FE/tcqSvLzS7IOVOzvkQ6bzZxQnQnC8KmW1Tg==
-X-Received: by 2002:a05:6000:2282:b0:415:15eb:216f with SMTP id
- ffacd0b85a97d-425577761d4mr3497423f8f.2.1759331213296; 
- Wed, 01 Oct 2025 08:06:53 -0700 (PDT)
+ bh=vZDMg8yz9ap9OumTYn6OrEsRwS7EEn+Yq0e/iZiL7js=;
+ b=SKXy/Lp/tHyFxp3dsH0rmXhd5UE4pfkvfZl1/YOkGZfN76L5sGWzKkQ2Rcd5fRS+6M
+ xdHkTLIU/r/CEDK4YrprHLTtwkiWYwJUHglodNSeN58HGGPPyEHdbOY3E81s9NiELoR5
+ O+AxVnMFSP+Lus04Kmr/h3kBCkGNBHUZxiRdn4tQGUMTNzGUCwMis9k3BTC9+pGEKQVf
+ SRJ+KLuAg9Rhgw1VHtKtVExRzwzUZeR+TbyfpfF2bdSmwwx1LPOPlDdDc8zq2ZMw+OZt
+ faqIlvOVdGUrIiDez2uYFOYZ4f1SWa0Tg4tFMbLmZHljXJblMbr8EjHaWJP0zirdTfjg
+ ZxnQ==
+X-Gm-Message-State: AOJu0Yy6cua/wZpCzKKL7tZU3191gJogF+3qUhPVEnEW5vfaLbu1vit+
+ +qiYrFDJC9XYmuV9Xsg7MCWV+K8ImvXrArjFf2kKnjCp262O0hMPwDBaMWWwa2rftiQ=
+X-Gm-Gg: ASbGncv3GwFse+2752nRwPWs/DoA5IwzfCuohqqae61aGuZaDarmZugGGsnxfCMYIfc
+ Qr4KIJM2nQJqkCBH5Sks2/xXuQ8hU/bf9ipbqMfgZLQTuuqbn6Ibrhbmyi6LREiG1IWT0HaS0vb
+ vJnaRIRONEUsz5uR3CwE7sF9nGpQohUFX+M1yD+GGzaKMRa9W7tqE31H4w4CODHr94U1/mKalHz
+ 7TnMlNSljPporrlPo7uJtCSqWnrOC4vaKid3Sgubb2oIVrMdG8MOZ/HjS9QrEfVOiUGG5xuc5HG
+ EmiAFl7luYnado0FF+l7jbWsA2/argxbpiutU89CL+uDsJLXod3zo/oegzmGZmoy8itQb+fokgu
+ REMRcIGH8snVAZRFYEc+tyP93BNR5WGBF5Q2R5lmuIea2EjumY1StpxxFgJWSzQZtPu2m5d4fkh
+ o0oMfhdqvFF0ay8coBKV36
+X-Google-Smtp-Source: AGHT+IESajM98h7Ak1tY0MCnBMGr+gpyX2SKXeZl9gH2ut0A/a003ZIMHK8a6IQpnO45kpRT3UEyIg==
+X-Received: by 2002:a05:600c:34cb:b0:45b:47e1:ef6d with SMTP id
+ 5b1f17b1804b1-46e613dd3cemr36736665e9.36.1759331157660; 
+ Wed, 01 Oct 2025 08:05:57 -0700 (PDT)
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-40fb72fb017sm27360874f8f.3.2025.10.01.08.06.52
+ ffacd0b85a97d-40fc5602dfdsm27281395f8f.33.2025.10.01.08.05.56
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 01 Oct 2025 08:06:52 -0700 (PDT)
+ Wed, 01 Oct 2025 08:05:56 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
@@ -72,24 +72,28 @@ Cc: qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>,
  Peter Xu <peterx@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Subject: [PATCH 16/22] target/microblaze: Get cpu first addr space with
+ Nicholas Piggin <npiggin@gmail.com>,
+ Harsh Prateek Bora <harshpb@linux.ibm.com>,
+ Gautam Menghani <gautam@linux.ibm.com>, Glenn Miles <milesg@linux.ibm.com>,
+ BALATON Zoltan <balaton@eik.bme.hu>
+Subject: [PATCH 05/22] hw/ppc: Get cpu first addr space with
  cpu_get_address_space()
-Date: Wed,  1 Oct 2025 17:05:21 +0200
-Message-ID: <20251001150529.14122-17-philmd@linaro.org>
+Date: Wed,  1 Oct 2025 17:05:10 +0200
+Message-ID: <20251001150529.14122-6-philmd@linaro.org>
 X-Mailer: git-send-email 2.51.0
 In-Reply-To: <20251001150529.14122-1-philmd@linaro.org>
 References: <20251001150529.14122-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  T_SPF_TEMPERROR=0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -112,35 +116,496 @@ helper.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- target/microblaze/op_helper.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+ hw/intc/spapr_xive.c  |  5 ++--
+ hw/ppc/pegasos2.c     |  2 +-
+ hw/ppc/spapr.c        | 12 +++++-----
+ hw/ppc/spapr_hcall.c  | 55 +++++++++++++++++++++++--------------------
+ hw/ppc/spapr_iommu.c  |  4 ++--
+ hw/ppc/spapr_nested.c | 43 ++++++++++++++++++---------------
+ 6 files changed, 65 insertions(+), 56 deletions(-)
 
-diff --git a/target/microblaze/op_helper.c b/target/microblaze/op_helper.c
-index b8365b3b1d2..f07d795bdf3 100644
---- a/target/microblaze/op_helper.c
-+++ b/target/microblaze/op_helper.c
-@@ -448,8 +448,9 @@ void mb_cpu_transaction_failed(CPUState *cs, hwaddr physaddr, vaddr addr,
- uint32_t HELPER(NAME)(CPUMBState *env, uint64_t ea)                     \
- {                                                                       \
-     CPUState *cs = env_cpu(env);                                        \
-+    AddressSpace *as = cpu_get_address_space(cs, 0);                    \
-     MemTxResult txres;                                                  \
--    TYPE ret = FUNC(cs->as, ea, MEMTXATTRS_UNSPECIFIED, &txres);        \
-+    TYPE ret = FUNC(as, ea, MEMTXATTRS_UNSPECIFIED, &txres);            \
-     if (unlikely(txres != MEMTX_OK)) {                                  \
-         mb_transaction_failed_internal(cs, ea, ea, sizeof(TYPE),        \
-                                        MMU_DATA_LOAD, GETPC());         \
-@@ -467,8 +468,9 @@ LD_EA(lwea_le, uint32_t, address_space_ldl_le)
- void HELPER(NAME)(CPUMBState *env, uint32_t data, uint64_t ea)          \
- {                                                                       \
-     CPUState *cs = env_cpu(env);                                        \
-+    AddressSpace *as = cpu_get_address_space(cs, 0);                    \
-     MemTxResult txres;                                                  \
--    FUNC(cs->as, ea, data, MEMTXATTRS_UNSPECIFIED, &txres);             \
-+    FUNC(as, ea, data, MEMTXATTRS_UNSPECIFIED, &txres);                 \
-     if (unlikely(txres != MEMTX_OK)) {                                  \
-         mb_transaction_failed_internal(cs, ea, ea, sizeof(TYPE),        \
-                                        MMU_DATA_STORE, GETPC());        \
+diff --git a/hw/intc/spapr_xive.c b/hw/intc/spapr_xive.c
+index e393f5dcdcc..b68961e1bf5 100644
+--- a/hw/intc/spapr_xive.c
++++ b/hw/intc/spapr_xive.c
+@@ -1391,6 +1391,7 @@ static target_ulong h_int_set_queue_config(PowerPCCPU *cpu,
+     }
+ 
+     if (qsize) {
++        AddressSpace *as = cpu_get_address_space(CPU(cpu), 0);
+         hwaddr plen = 1 << qsize;
+         void *eq;
+ 
+@@ -1398,14 +1399,14 @@ static target_ulong h_int_set_queue_config(PowerPCCPU *cpu,
+          * Validate the guest EQ. We should also check that the queue
+          * has been zeroed by the OS.
+          */
+-        eq = address_space_map(CPU(cpu)->as, qpage, &plen, true,
++        eq = address_space_map(as, qpage, &plen, true,
+                                MEMTXATTRS_UNSPECIFIED);
+         if (plen != 1 << qsize) {
+             qemu_log_mask(LOG_GUEST_ERROR, "XIVE: failed to map EQ @0x%"
+                           HWADDR_PRIx "\n", qpage);
+             return H_P4;
+         }
+-        address_space_unmap(CPU(cpu)->as, eq, plen, true, plen);
++        address_space_unmap(as, eq, plen, true, plen);
+     }
+ 
+     /* "target" should have been validated above */
+diff --git a/hw/ppc/pegasos2.c b/hw/ppc/pegasos2.c
+index e15cf964278..86c6a73236b 100644
+--- a/hw/ppc/pegasos2.c
++++ b/hw/ppc/pegasos2.c
+@@ -451,7 +451,7 @@ enum pegasos2_rtas_tokens {
+ static target_ulong pegasos2_rtas(PowerPCCPU *cpu, Pegasos2MachineState *pm,
+                                   target_ulong args_real)
+ {
+-    AddressSpace *as = CPU(cpu)->as;
++    AddressSpace *as = cpu_get_address_space(CPU(cpu), 0);
+     uint32_t token = ldl_be_phys(as, args_real);
+     uint32_t nargs = ldl_be_phys(as, args_real + 4);
+     uint32_t nrets = ldl_be_phys(as, args_real + 8);
+diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
+index 15d09ef9618..b8aa0352ab2 100644
+--- a/hw/ppc/spapr.c
++++ b/hw/ppc/spapr.c
+@@ -4550,10 +4550,10 @@ static void spapr_cpu_exec_enter(PPCVirtualHypervisor *vhyp, PowerPCCPU *cpu)
+ 
+     spapr_cpu->prod = false;
+     if (spapr_cpu->vpa_addr) {
+-        CPUState *cs = CPU(cpu);
++        AddressSpace *as = cpu_get_address_space(CPU(cpu), 0);
+         uint32_t dispatch;
+ 
+-        dispatch = ldl_be_phys(cs->as,
++        dispatch = ldl_be_phys(as,
+                                spapr_cpu->vpa_addr + VPA_DISPATCH_COUNTER);
+         dispatch++;
+         if ((dispatch & 1) != 0) {
+@@ -4562,7 +4562,7 @@ static void spapr_cpu_exec_enter(PPCVirtualHypervisor *vhyp, PowerPCCPU *cpu)
+                           "dispatched partition %u, correcting.\n", dispatch);
+             dispatch++;
+         }
+-        stl_be_phys(cs->as,
++        stl_be_phys(as,
+                     spapr_cpu->vpa_addr + VPA_DISPATCH_COUNTER, dispatch);
+     }
+ }
+@@ -4572,10 +4572,10 @@ static void spapr_cpu_exec_exit(PPCVirtualHypervisor *vhyp, PowerPCCPU *cpu)
+     SpaprCpuState *spapr_cpu = spapr_cpu_state(cpu);
+ 
+     if (spapr_cpu->vpa_addr) {
+-        CPUState *cs = CPU(cpu);
++    AddressSpace *as = cpu_get_address_space(CPU(cpu), 0);
+         uint32_t dispatch;
+ 
+-        dispatch = ldl_be_phys(cs->as,
++        dispatch = ldl_be_phys(as,
+                                spapr_cpu->vpa_addr + VPA_DISPATCH_COUNTER);
+         dispatch++;
+         if ((dispatch & 1) != 1) {
+@@ -4584,7 +4584,7 @@ static void spapr_cpu_exec_exit(PPCVirtualHypervisor *vhyp, PowerPCCPU *cpu)
+                           "preempted partition %u, correcting.\n", dispatch);
+             dispatch++;
+         }
+-        stl_be_phys(cs->as,
++        stl_be_phys(as,
+                     spapr_cpu->vpa_addr + VPA_DISPATCH_COUNTER, dispatch);
+     }
+ }
+diff --git a/hw/ppc/spapr_hcall.c b/hw/ppc/spapr_hcall.c
+index 8c1e0a4817b..be83b5591b5 100644
+--- a/hw/ppc/spapr_hcall.c
++++ b/hw/ppc/spapr_hcall.c
+@@ -321,7 +321,7 @@ unmap_out:
+ 
+ static target_ulong register_vpa(PowerPCCPU *cpu, target_ulong vpa)
+ {
+-    CPUState *cs = CPU(cpu);
++    AddressSpace *as = cpu_get_address_space(CPU(cpu), 0);
+     CPUPPCState *env = &cpu->env;
+     SpaprCpuState *spapr_cpu = spapr_cpu_state(cpu);
+     uint16_t size;
+@@ -337,7 +337,7 @@ static target_ulong register_vpa(PowerPCCPU *cpu, target_ulong vpa)
+     }
+     /* FIXME: bounds check the address */
+ 
+-    size = lduw_be_phys(cs->as, vpa + 0x4);
++    size = lduw_be_phys(as, vpa + 0x4);
+ 
+     if (size < VPA_MIN_SIZE) {
+         return H_PARAMETER;
+@@ -350,9 +350,9 @@ static target_ulong register_vpa(PowerPCCPU *cpu, target_ulong vpa)
+ 
+     spapr_cpu->vpa_addr = vpa;
+ 
+-    tmp = ldub_phys(cs->as, spapr_cpu->vpa_addr + VPA_SHARED_PROC_OFFSET);
++    tmp = ldub_phys(as, spapr_cpu->vpa_addr + VPA_SHARED_PROC_OFFSET);
+     tmp |= VPA_SHARED_PROC_VAL;
+-    stb_phys(cs->as, spapr_cpu->vpa_addr + VPA_SHARED_PROC_OFFSET, tmp);
++    stb_phys(as, spapr_cpu->vpa_addr + VPA_SHARED_PROC_OFFSET, tmp);
+ 
+     return H_SUCCESS;
+ }
+@@ -375,6 +375,7 @@ static target_ulong deregister_vpa(PowerPCCPU *cpu, target_ulong vpa)
+ 
+ static target_ulong register_slb_shadow(PowerPCCPU *cpu, target_ulong addr)
+ {
++    AddressSpace *as = cpu_get_address_space(CPU(cpu), 0);
+     SpaprCpuState *spapr_cpu = spapr_cpu_state(cpu);
+     uint32_t size;
+ 
+@@ -383,7 +384,7 @@ static target_ulong register_slb_shadow(PowerPCCPU *cpu, target_ulong addr)
+         return H_HARDWARE;
+     }
+ 
+-    size = ldl_be_phys(CPU(cpu)->as, addr + 0x4);
++    size = ldl_be_phys(as, addr + 0x4);
+     if (size < 0x8) {
+         return H_PARAMETER;
+     }
+@@ -413,6 +414,7 @@ static target_ulong deregister_slb_shadow(PowerPCCPU *cpu, target_ulong addr)
+ 
+ static target_ulong register_dtl(PowerPCCPU *cpu, target_ulong addr)
+ {
++    AddressSpace *as = cpu_get_address_space(CPU(cpu), 0);
+     SpaprCpuState *spapr_cpu = spapr_cpu_state(cpu);
+     uint32_t size;
+ 
+@@ -421,7 +423,7 @@ static target_ulong register_dtl(PowerPCCPU *cpu, target_ulong addr)
+         return H_HARDWARE;
+     }
+ 
+-    size = ldl_be_phys(CPU(cpu)->as, addr + 0x4);
++    size = ldl_be_phys(as, addr + 0x4);
+ 
+     if (size < 48) {
+         return H_PARAMETER;
+@@ -579,6 +581,7 @@ static target_ulong h_confer(PowerPCCPU *cpu, SpaprMachineState *spapr,
+     target_long target = args[0];
+     uint32_t dispatch = args[1];
+     CPUState *cs = CPU(cpu);
++    AddressSpace *as = cpu_get_address_space(CPU(cpu), 0);
+     SpaprCpuState *spapr_cpu;
+ 
+     assert(tcg_enabled()); /* KVM will have handled this */
+@@ -608,7 +611,7 @@ static target_ulong h_confer(PowerPCCPU *cpu, SpaprMachineState *spapr,
+             return H_SUCCESS;
+         }
+ 
+-        target_dispatch = ldl_be_phys(cs->as,
++        target_dispatch = ldl_be_phys(as,
+                                   spapr_cpu->vpa_addr + VPA_DISPATCH_COUNTER);
+         if (target_dispatch != dispatch) {
+             return H_SUCCESS;
+@@ -667,22 +670,22 @@ static target_ulong h_rtas(PowerPCCPU *cpu, SpaprMachineState *spapr,
+ static target_ulong h_logical_load(PowerPCCPU *cpu, SpaprMachineState *spapr,
+                                    target_ulong opcode, target_ulong *args)
+ {
+-    CPUState *cs = CPU(cpu);
++    AddressSpace *as = cpu_get_address_space(CPU(cpu), 0);
+     target_ulong size = args[0];
+     target_ulong addr = args[1];
+ 
+     switch (size) {
+     case 1:
+-        args[0] = ldub_phys(cs->as, addr);
++        args[0] = ldub_phys(as, addr);
+         return H_SUCCESS;
+     case 2:
+-        args[0] = lduw_phys(cs->as, addr);
++        args[0] = lduw_phys(as, addr);
+         return H_SUCCESS;
+     case 4:
+-        args[0] = ldl_phys(cs->as, addr);
++        args[0] = ldl_phys(as, addr);
+         return H_SUCCESS;
+     case 8:
+-        args[0] = ldq_phys(cs->as, addr);
++        args[0] = ldq_phys(as, addr);
+         return H_SUCCESS;
+     }
+     return H_PARAMETER;
+@@ -691,7 +694,7 @@ static target_ulong h_logical_load(PowerPCCPU *cpu, SpaprMachineState *spapr,
+ static target_ulong h_logical_store(PowerPCCPU *cpu, SpaprMachineState *spapr,
+                                     target_ulong opcode, target_ulong *args)
+ {
+-    CPUState *cs = CPU(cpu);
++    AddressSpace *as = cpu_get_address_space(CPU(cpu), 0);
+ 
+     target_ulong size = args[0];
+     target_ulong addr = args[1];
+@@ -699,16 +702,16 @@ static target_ulong h_logical_store(PowerPCCPU *cpu, SpaprMachineState *spapr,
+ 
+     switch (size) {
+     case 1:
+-        stb_phys(cs->as, addr, val);
++        stb_phys(as, addr, val);
+         return H_SUCCESS;
+     case 2:
+-        stw_phys(cs->as, addr, val);
++        stw_phys(as, addr, val);
+         return H_SUCCESS;
+     case 4:
+-        stl_phys(cs->as, addr, val);
++        stl_phys(as, addr, val);
+         return H_SUCCESS;
+     case 8:
+-        stq_phys(cs->as, addr, val);
++        stq_phys(as, addr, val);
+         return H_SUCCESS;
+     }
+     return H_PARAMETER;
+@@ -717,7 +720,7 @@ static target_ulong h_logical_store(PowerPCCPU *cpu, SpaprMachineState *spapr,
+ static target_ulong h_logical_memop(PowerPCCPU *cpu, SpaprMachineState *spapr,
+                                     target_ulong opcode, target_ulong *args)
+ {
+-    CPUState *cs = CPU(cpu);
++    AddressSpace *as = cpu_get_address_space(CPU(cpu), 0);
+ 
+     target_ulong dst   = args[0]; /* Destination address */
+     target_ulong src   = args[1]; /* Source address */
+@@ -745,16 +748,16 @@ static target_ulong h_logical_memop(PowerPCCPU *cpu, SpaprMachineState *spapr,
+     while (count--) {
+         switch (esize) {
+         case 0:
+-            tmp = ldub_phys(cs->as, src);
++            tmp = ldub_phys(as, src);
+             break;
+         case 1:
+-            tmp = lduw_phys(cs->as, src);
++            tmp = lduw_phys(as, src);
+             break;
+         case 2:
+-            tmp = ldl_phys(cs->as, src);
++            tmp = ldl_phys(as, src);
+             break;
+         case 3:
+-            tmp = ldq_phys(cs->as, src);
++            tmp = ldq_phys(as, src);
+             break;
+         default:
+             return H_PARAMETER;
+@@ -764,16 +767,16 @@ static target_ulong h_logical_memop(PowerPCCPU *cpu, SpaprMachineState *spapr,
+         }
+         switch (esize) {
+         case 0:
+-            stb_phys(cs->as, dst, tmp);
++            stb_phys(as, dst, tmp);
+             break;
+         case 1:
+-            stw_phys(cs->as, dst, tmp);
++            stw_phys(as, dst, tmp);
+             break;
+         case 2:
+-            stl_phys(cs->as, dst, tmp);
++            stl_phys(as, dst, tmp);
+             break;
+         case 3:
+-            stq_phys(cs->as, dst, tmp);
++            stq_phys(as, dst, tmp);
+             break;
+         }
+         dst = dst + step;
+diff --git a/hw/ppc/spapr_iommu.c b/hw/ppc/spapr_iommu.c
+index c2432a0c00c..8b0c8bff8ef 100644
+--- a/hw/ppc/spapr_iommu.c
++++ b/hw/ppc/spapr_iommu.c
+@@ -485,7 +485,7 @@ static target_ulong h_put_tce_indirect(PowerPCCPU *cpu,
+     target_ulong npages = args[3];
+     target_ulong ret = H_PARAMETER, tce = 0;
+     SpaprTceTable *tcet = spapr_tce_find_by_liobn(liobn);
+-    CPUState *cs = CPU(cpu);
++    AddressSpace *as = cpu_get_address_space(CPU(cpu), 0);
+     hwaddr page_mask, page_size;
+ 
+     if (!tcet) {
+@@ -501,7 +501,7 @@ static target_ulong h_put_tce_indirect(PowerPCCPU *cpu,
+     ioba &= page_mask;
+ 
+     for (i = 0; i < npages; ++i, ioba += page_size) {
+-        tce = ldq_be_phys(cs->as, tce_list + i * sizeof(target_ulong));
++        tce = ldq_be_phys(as, tce_list + i * sizeof(target_ulong));
+ 
+         ret = put_tce_emu(tcet, ioba, tce);
+         if (ret) {
+diff --git a/hw/ppc/spapr_nested.c b/hw/ppc/spapr_nested.c
+index 10cf634da19..0486820e2ce 100644
+--- a/hw/ppc/spapr_nested.c
++++ b/hw/ppc/spapr_nested.c
+@@ -36,6 +36,7 @@ uint8_t spapr_nested_api(SpaprMachineState *spapr)
+ bool spapr_get_pate_nested_hv(SpaprMachineState *spapr, PowerPCCPU *cpu,
+                               target_ulong lpid, ppc_v3_pate_t *entry)
+ {
++    AddressSpace *as = cpu_get_address_space(CPU(cpu), 0);
+     uint64_t patb, pats;
+ 
+     assert(lpid != 0);
+@@ -56,8 +57,8 @@ bool spapr_get_pate_nested_hv(SpaprMachineState *spapr, PowerPCCPU *cpu,
+ 
+     /* Grab entry */
+     patb += 16 * lpid;
+-    entry->dw0 = ldq_phys(CPU(cpu)->as, patb);
+-    entry->dw1 = ldq_phys(CPU(cpu)->as, patb + 8);
++    entry->dw0 = ldq_phys(as, patb);
++    entry->dw1 = ldq_phys(as, patb + 8);
+     return true;
+ }
+ 
+@@ -329,6 +330,7 @@ static target_ulong h_enter_nested(PowerPCCPU *cpu,
+     PowerPCCPUClass *pcc = POWERPC_CPU_GET_CLASS(cpu);
+     CPUPPCState *env = &cpu->env;
+     CPUState *cs = CPU(cpu);
++    AddressSpace *as = cpu_get_address_space(cs, 0);
+     SpaprCpuState *spapr_cpu = spapr_cpu_state(cpu);
+     struct nested_ppc_state l2_state;
+     target_ulong hv_ptr = args[0];
+@@ -345,16 +347,16 @@ static target_ulong h_enter_nested(PowerPCCPU *cpu,
+     }
+ 
+     len = sizeof(*hvstate);
+-    hvstate = address_space_map(CPU(cpu)->as, hv_ptr, &len, false,
++    hvstate = address_space_map(as, hv_ptr, &len, false,
+                                 MEMTXATTRS_UNSPECIFIED);
+     if (len != sizeof(*hvstate)) {
+-        address_space_unmap(CPU(cpu)->as, hvstate, len, 0, false);
++        address_space_unmap(as, hvstate, len, 0, false);
+         return H_PARAMETER;
+     }
+ 
+     memcpy(&hv_state, hvstate, len);
+ 
+-    address_space_unmap(CPU(cpu)->as, hvstate, len, len, false);
++    address_space_unmap(as, hvstate, len, len, false);
+ 
+     /*
+      * We accept versions 1 and 2. Version 2 fields are unused because TCG
+@@ -378,10 +380,10 @@ static target_ulong h_enter_nested(PowerPCCPU *cpu,
+     nested_save_state(spapr_cpu->nested_host_state, cpu);
+ 
+     len = sizeof(*regs);
+-    regs = address_space_map(CPU(cpu)->as, regs_ptr, &len, false,
++    regs = address_space_map(as, regs_ptr, &len, false,
+                                 MEMTXATTRS_UNSPECIFIED);
+     if (!regs || len != sizeof(*regs)) {
+-        address_space_unmap(CPU(cpu)->as, regs, len, 0, false);
++        address_space_unmap(as, regs, len, 0, false);
+         g_free(spapr_cpu->nested_host_state);
+         return H_P2;
+     }
+@@ -397,7 +399,7 @@ static target_ulong h_enter_nested(PowerPCCPU *cpu,
+     l2_state.msr = regs->msr;
+     l2_state.nip = regs->nip;
+ 
+-    address_space_unmap(CPU(cpu)->as, regs, len, len, false);
++    address_space_unmap(as, regs, len, len, false);
+ 
+     l2_state.cfar = hv_state.cfar;
+     l2_state.lpidr = hv_state.lpid;
+@@ -460,6 +462,7 @@ static void spapr_exit_nested_hv(PowerPCCPU *cpu, int excp)
+ {
+     CPUPPCState *env = &cpu->env;
+     CPUState *cs = CPU(cpu);
++    AddressSpace *as = cpu_get_address_space(cs, 0);
+     SpaprCpuState *spapr_cpu = spapr_cpu_state(cpu);
+     struct nested_ppc_state l2_state;
+     target_ulong hv_ptr = spapr_cpu->nested_host_state->gpr[4];
+@@ -492,10 +495,10 @@ static void spapr_exit_nested_hv(PowerPCCPU *cpu, int excp)
+     spapr_cpu->nested_host_state = NULL;
+ 
+     len = sizeof(*hvstate);
+-    hvstate = address_space_map(CPU(cpu)->as, hv_ptr, &len, true,
++    hvstate = address_space_map(as, hv_ptr, &len, true,
+                                 MEMTXATTRS_UNSPECIFIED);
+     if (len != sizeof(*hvstate)) {
+-        address_space_unmap(CPU(cpu)->as, hvstate, len, 0, true);
++        address_space_unmap(as, hvstate, len, 0, true);
+         env->gpr[3] = H_PARAMETER;
+         return;
+     }
+@@ -525,13 +528,13 @@ static void spapr_exit_nested_hv(PowerPCCPU *cpu, int excp)
+     hvstate->ppr = l2_state.ppr;
+ 
+     /* Is it okay to specify write length larger than actual data written? */
+-    address_space_unmap(CPU(cpu)->as, hvstate, len, len, true);
++    address_space_unmap(as, hvstate, len, len, true);
+ 
+     len = sizeof(*regs);
+-    regs = address_space_map(CPU(cpu)->as, regs_ptr, &len, true,
++    regs = address_space_map(as, regs_ptr, &len, true,
+                                 MEMTXATTRS_UNSPECIFIED);
+     if (!regs || len != sizeof(*regs)) {
+-        address_space_unmap(CPU(cpu)->as, regs, len, 0, true);
++        address_space_unmap(as, regs, len, 0, true);
+         env->gpr[3] = H_P2;
+         return;
+     }
+@@ -556,7 +559,7 @@ static void spapr_exit_nested_hv(PowerPCCPU *cpu, int excp)
+     }
+ 
+     /* Is it okay to specify write length larger than actual data written? */
+-    address_space_unmap(CPU(cpu)->as, regs, len, len, true);
++    address_space_unmap(as, regs, len, len, true);
+ }
+ 
+ static bool spapr_nested_vcpu_check(SpaprMachineStateNestedGuest *guest,
+@@ -1506,6 +1509,7 @@ static target_ulong map_and_getset_state(PowerPCCPU *cpu,
+                                          uint64_t vcpuid,
+                                          struct guest_state_request *gsr)
+ {
++    AddressSpace *as = cpu_get_address_space(CPU(cpu), 0);
+     target_ulong rc;
+     int64_t len;
+     bool is_write;
+@@ -1513,7 +1517,7 @@ static target_ulong map_and_getset_state(PowerPCCPU *cpu,
+     len = gsr->len;
+     /* only get_state would require write access to the provided buffer */
+     is_write = (gsr->flags & GUEST_STATE_REQUEST_SET) ? false : true;
+-    gsr->gsb = address_space_map(CPU(cpu)->as, gsr->buf, (uint64_t *)&len,
++    gsr->gsb = address_space_map(as, gsr->buf, (uint64_t *)&len,
+                                  is_write, MEMTXATTRS_UNSPECIFIED);
+     if (!gsr->gsb) {
+         rc = H_P3;
+@@ -1528,7 +1532,7 @@ static target_ulong map_and_getset_state(PowerPCCPU *cpu,
+     rc = getset_state(spapr, guest, vcpuid, gsr);
+ 
+ out1:
+-    address_space_unmap(CPU(cpu)->as, gsr->gsb, len, is_write, len);
++    address_space_unmap(as, gsr->gsb, len, is_write, len);
+     return rc;
+ }
+ 
+@@ -1699,6 +1703,7 @@ static void exit_process_output_buffer(SpaprMachineState *spapr,
+                                        target_ulong vcpuid,
+                                        target_ulong *r3)
+ {
++    AddressSpace *as = cpu_get_address_space(CPU(cpu), 0);
+     SpaprMachineStateNestedGuestVcpu *vcpu = &guest->vcpus[vcpuid];
+     struct guest_state_request gsr;
+     struct guest_state_buffer *gsb;
+@@ -1709,10 +1714,10 @@ static void exit_process_output_buffer(SpaprMachineState *spapr,
+     hwaddr len;
+ 
+     len = vcpu->runbufout.size;
+-    gsb = address_space_map(CPU(cpu)->as, vcpu->runbufout.addr, &len, true,
++    gsb = address_space_map(as, vcpu->runbufout.addr, &len, true,
+                             MEMTXATTRS_UNSPECIFIED);
+     if (!gsb || len != vcpu->runbufout.size) {
+-        address_space_unmap(CPU(cpu)->as, gsb, len, true, len);
++        address_space_unmap(as, gsb, len, true, len);
+         *r3 = H_P2;
+         return;
+     }
+@@ -1734,7 +1739,7 @@ static void exit_process_output_buffer(SpaprMachineState *spapr,
+     gsr.flags = 0; /* get + never guest wide */
+     getset_state(spapr, guest, vcpuid, &gsr);
+ 
+-    address_space_unmap(CPU(cpu)->as, gsb, len, true, len);
++    address_space_unmap(as, gsb, len, true, len);
+ }
+ 
+ static
 -- 
 2.51.0
 

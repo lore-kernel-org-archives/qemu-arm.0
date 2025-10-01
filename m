@@ -4,67 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A63FCCA470
-	for <qemu-arm@archiver.kernel.org>; Wed,  1 Oct 2025 08:24:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6FB5CCA470
+	for <qemu-arm@archiver.kernel.org>; Wed,  1 Oct 2025 08:24:25 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v3s6G-0000aP-MX; Wed, 01 Oct 2025 04:22:12 -0400
+	id 1v3s5s-0000Tt-1B; Wed, 01 Oct 2025 04:21:48 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v3s6F-0000Zy-3C
- for qemu-arm@nongnu.org; Wed, 01 Oct 2025 04:22:11 -0400
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v3s5q-0000TC-K6
+ for qemu-arm@nongnu.org; Wed, 01 Oct 2025 04:21:46 -0400
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v3s5v-0005P9-OO
- for qemu-arm@nongnu.org; Wed, 01 Oct 2025 04:22:10 -0400
-Received: by mail-wm1-x32b.google.com with SMTP id
- 5b1f17b1804b1-46e37d10f3eso53838825e9.0
- for <qemu-arm@nongnu.org>; Wed, 01 Oct 2025 01:21:48 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v3s5f-0005Ds-Uu
+ for qemu-arm@nongnu.org; Wed, 01 Oct 2025 04:21:44 -0400
+Received: by mail-wr1-x441.google.com with SMTP id
+ ffacd0b85a97d-3f0308469a4so3883479f8f.0
+ for <qemu-arm@nongnu.org>; Wed, 01 Oct 2025 01:21:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1759306906; x=1759911706; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=CUDa5xnsT6LdBUx7EhioTD823LxktxWEacMY6wYwfL0=;
- b=wS6jbWkqK+orFiqUpEPvKIYf7Sbu8PlcNigg5guw/sycdxFiWmG7s10vuLq79yj6Pl
- 9mxonH6YRH+37s8J15xtqeDSqeonG+xgN84jt9C6irhlkJMGPN2MgYRTGrhr7YArMuzm
- dUVOeb2bw9SjxNpnnOod90X24BKeAA9weYSHxyBnhrPFzSQSTGmw+ZlP4g2LhCWlripP
- ozkKHQc+3A5lN8rp+/dcJW2OKYiaGHYeyD7PGLSueo7utIAU8oWQmynyLjQTdpzwoCTi
- JR4glau7EEdbwh1f+iVzD0H6NlCnSZvg8QOxFX4tLnCKAYY6wnZgJJOx903vuL1d5zbK
- QSuA==
+ d=linaro.org; s=google; t=1759306890; x=1759911690; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=UYQLfS3wHinTh/qC50pdHFAAD2+v7Vtk7mze5MUxp5E=;
+ b=m8DBcgSqy5iKPr0jgb08yr1FAKc89RUTK2Se0PZI/BgV7swMhx36gscid2tE5E2BJ3
+ /Q4GHI7Csc69lmt2My4dY9helUQ81MqZp3CGimyPyTL6BHjsheWPtCGLnWTnTddzhpgZ
+ ODGHNgicG0mEXe8iTYf2vLM1IAUBBNNMq5T7JEcLqNXJM8aFempU/wgOwk5hrRvpTJew
+ azfHRJkgPEIxydhTW9Plov2FY9OX+5WpMsaiMfLkLaoWABMgJaevDld8RbNp05PKbTAs
+ e18eGdKQunAx0eQuLMmHNGBYtmTRXAQ4O9MC2hABtb9BVvlcEwe/dqcem5nKiLem97bA
+ UOAA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759306906; x=1759911706;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=CUDa5xnsT6LdBUx7EhioTD823LxktxWEacMY6wYwfL0=;
- b=i225d1ICJZLGVMzUw8mCZwH8s+7mflmOsGNVEFfrIzm9hVmp0ui1m4c6iy194fpLQx
- OkBO/65nsBcW5/IPyjjB7h1iDrKBm0KJn1QH82FFVGdioM0LaB400hPq6ihmGkWSqE5R
- isxe6Vkyw4xM0/+p+xhiG5Sy92sSeLU5Nt3zQnzJ37Cq1jWDbgjpxETlmcqWkZ+zWxDd
- /1Lrmh9Wu45/Uly+xH3m+oATYhNzQ/CU66kqZ+LPUbvivFuJFFdvAS4Q/y2ZbrxXhfun
- rviL92Jg1txsPDlW8IQPhZNh6qNS5LZfE81QjZr72KOkyl9W2Mmucw+Ru3pLfBcpqNBU
- 7c3w==
+ d=1e100.net; s=20230601; t=1759306890; x=1759911690;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=UYQLfS3wHinTh/qC50pdHFAAD2+v7Vtk7mze5MUxp5E=;
+ b=LFuBd60YNnrmMXAU9YOYq8RM+xfXwChGTP5mLjZZShUuGJIHM2zPG0b3O3nONUangc
+ 230cPL8TOAQ0RzloOJxGVhg74UPwubcnuMgpfyvLsTqoRMsJYazHmI49bKIqncRxZZCH
+ PuIjQlRw/lSd9axDYjFkRbMokHxtEXbZsRfBMmiWXz5qJBKsLQsA1d9VanJYQUg0tcv4
+ 7LZBMK6MHQ7g56Asgg/RLD04mrSnin5cA3hkLTNoGc9fJVmBkqqtBD0nBHYHg6p9XHA6
+ no8KtKSl658HRE9xvE0vA2sK5UI1pGYWsVA9wDUe9xcBXFzUMXZDJoQSzBQTApVnrzQm
+ tMlw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUYjY5w5W/RYGIbkeP/ikZ0o01wdxPZoI0vmRJWV4PkncVScfPYkxDtb19sgqxxkouBqirInIKs8A==@nongnu.org
-X-Gm-Message-State: AOJu0Yy25kDzFv4OhgO6UKPlw+WvUTMInxIqkf2b3r2KXO96kNu/uS3N
- wRurz0EWIjEmxB0tPkkJDcx0mIvVBf0pHkuUWKRLdZZ6Vnx5ITOlN1PGrIMvh7jggZo=
-X-Gm-Gg: ASbGnctKm9wXZTw+qyxhigvbGK3QRYt4f0hr1XXbXNPevOeo9jUsn6nxOVlQREctUYD
- 4AbQ6EO5WHm3c2iZj3Gg/S+/Vam9FSG9jUlepVXNI7l87qb5/yGizypvPgJhR6Vo8CAyMOdVpK6
- +3Ql+x19rs4fkKqnpGRB0DD/c7tlaGWeNu1gEF8NJSo5iiAgCpm6stGnqgZnyVyAHjGuQUZzwL9
- CjoYu39zuK8I5L3lKm0dQoBBrv+tzrUXPcpDoLEcii/5k8c3rYXNMa4LaTt5D1hvuM6n8pYqo7S
- GAZFBLRxfQun4X+chIpt2WQo0LpjmbdtWbb+V3gDPZdIVPhRGuJXiEYbzOFwOGkAospbIqzffqu
- csRb8pv/vAX+OMHInDRGuQRB1fAwrKIHdcIiyRGn7VOiQQkMMtIDrjXSqnC+/7gBiAvv5tdtpvX
- 5c4Ik0Ln2tO2ygZPxn0Z+m
-X-Google-Smtp-Source: AGHT+IGupbg9/lAN7fK0YZ5iNSEbaJIxNUI7X13KRbrcfs3DgvFIGFl1v0k+/aPUDlPoG1Y+QWnAwA==
-X-Received: by 2002:a05:600c:1f10:b0:46e:32f5:2d4b with SMTP id
- 5b1f17b1804b1-46e6129588emr20005035e9.37.1759306905959; 
- Wed, 01 Oct 2025 01:21:45 -0700 (PDT)
+ AJvYcCVHLno5M4VEH6l4/0sz0rl3oNACxBtt+d8ajfaUrXgmISS9Z+BTfRILxGdhAtzku9zikbfs/sdkyQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yx77acA8jRqEKnas/XUfuy4xpdR1Qs0VhCn/4xNofdUGYq34zMk
+ mEfID1uagCtR3tLCDI+lDOmao7fRtfvL0W20TMuZi2Z0c1nMqfPneYCtihtBFkvMfwA=
+X-Gm-Gg: ASbGnctNPsfyy2AK2nO3uQkSuL/UYFg89/uZ7nE/S/WcXb4CwrJaXLCNJ18MwIhTGC9
+ Zk4opt0xSuX0FHwbUr7Xb/Eo70hunOqlrc8r6rW/SidqOEEJRwgmeAp/9VnUfe76tdxHaE0Fru/
+ f2dwQ1lpRW2Zn5ZH1qHnuEzopkWQB5M5p+9Evy53RZkaaBAvuJg7GLeUP1Ospa3yyY7YB98qQp+
+ SYRiPsLhVJ8XWd8pMzdCSuHpxShc8YmwICJq0iD4TDv8LvOKwXbghCWpl9GVncOJXf6jc/L3C8V
+ F7fLkFrzmKrIhQMsOJYKzOZjqirWZCRW04Qn9ZxC7ykbqmaYvwHDInZDNZ1X5w76YmL67sHHEvB
+ 9+U9UfGoTYoVJSkXgkYZDurazTm8VEGijGhlHCSBnMkbj7bkWu3DSzCFrf/rng1wO+ksj6v6G6t
+ 09HgZZZSSFuerzYC/C4JF5
+X-Google-Smtp-Source: AGHT+IHKt/ivTsoC6PZcZTjZzL5LDs95xiGR88ZSKusdRALPX64xSrvTFt9lt4nGAnJGd8G2pFxftQ==
+X-Received: by 2002:a05:6000:310d:b0:3ee:af89:a68 with SMTP id
+ ffacd0b85a97d-425577f321dmr1791557f8f.22.1759306889640; 
+ Wed, 01 Oct 2025 01:21:29 -0700 (PDT)
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-40fb72fb1a3sm26551095f8f.10.2025.10.01.01.21.44
+ ffacd0b85a97d-40fc8aa0078sm25842872f8f.59.2025.10.01.01.21.28
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 01 Oct 2025 01:21:45 -0700 (PDT)
+ Wed, 01 Oct 2025 01:21:29 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: "Michael S. Tsirkin" <mst@redhat.com>, Nicholas Piggin <npiggin@gmail.com>,
@@ -85,25 +84,23 @@ Cc: "Michael S. Tsirkin" <mst@redhat.com>, Nicholas Piggin <npiggin@gmail.com>,
  Alex Williamson <alex.williamson@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>, qemu-s390x@nongnu.org,
  Peter Xu <peterx@redhat.com>
-Subject: [PATCH 03/25] hw/s390x/s390-stattrib: Include missing
- 'exec/target_page.h' header
-Date: Wed,  1 Oct 2025 10:21:03 +0200
-Message-ID: <20251001082127.65741-4-philmd@linaro.org>
+Subject: [PATCH 00/25] system/physmem: Extract API out of 'system/ram_addr.h'
+ header
+Date: Wed,  1 Oct 2025 10:21:00 +0200
+Message-ID: <20251001082127.65741-1-philmd@linaro.org>
 X-Mailer: git-send-email 2.51.0
-In-Reply-To: <20251001082127.65741-1-philmd@linaro.org>
-References: <20251001082127.65741-1-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::441;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x441.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,61 +116,75 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The "exec/target_page.h" header is indirectly pulled from
-"system/ram_addr.h". Include it explicitly, in order to
-avoid unrelated issues when refactoring "system/ram_addr.h":
+Following a previous comment from Richard in [*],
+reduce "system/ram_addr.h" size by un-inlining a
+lot of huge functions that aren't really justified,
+and extract the API to the hew "system/physmem.h"
+header, after renaming the functions (removing the
+confusing 'cpu_' prefix).
 
-  hw/s390x/s390-stattrib-kvm.c: In function ‘kvm_s390_stattrib_set_stattr’:
-  hw/s390x/s390-stattrib-kvm.c:89:57: error: ‘TARGET_PAGE_SIZE’ undeclared (first use in this function); did you mean ‘TARGET_PAGE_BITS’?
-     89 |     unsigned long max = s390_get_memory_limit(s390ms) / TARGET_PAGE_SIZE;
-        |                                                         ^~~~~~~~~~~~~~~~
-        |                                                         TARGET_PAGE_BITS
+(I plan to eventually merge this myself due to the
+likelyness of conflicts).
 
-Since "system/ram_addr.h" is actually not needed, remove it.
+[*] https://lore.kernel.org/qemu-devel/9151205a-13d3-401e-b403-f9195cdb1a45@linaro.org/
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- hw/s390x/s390-stattrib-kvm.c | 2 +-
- hw/s390x/s390-stattrib.c     | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+Philippe Mathieu-Daudé (25):
+  system/ram_addr: Remove unnecessary 'exec/cpu-common.h' header
+  accel/kvm: Include missing 'exec/target_page.h' header
+  hw/s390x/s390-stattrib: Include missing 'exec/target_page.h' header
+  hw/vfio/listener: Include missing 'exec/target_page.h' header
+  target/arm/tcg/mte: Include missing 'exec/target_page.h' header
+  hw: Remove unnecessary 'system/ram_addr.h' header
+  accel/tcg: Document rcu_read_lock is held when calling
+    tlb_reset_dirty()
+  accel/tcg: Rename @start argument of tlb_reset_dirty*()
+  system/physmem: Rename @start argument of physical_memory_get_dirty()
+  system/physmem: Un-inline cpu_physical_memory_get_dirty_flag()
+  system/physmem: Un-inline cpu_physical_memory_is_clean()
+  system/physmem: Rename @start argument of physical_memory_all_dirty()
+  system/physmem: Rename @start argument of physical_memory_range*()
+  system/physmem: Un-inline cpu_physical_memory_range_includes_clean()
+  system/physmem: Un-inline cpu_physical_memory_set_dirty_flag()
+  system/physmem: Rename @start argument of physical_memory_*range()
+  system/physmem: Un-inline cpu_physical_memory_set_dirty_range()
+  system/physmem: Un-inline cpu_physical_memory_set_dirty_lebitmap()
+  system/physmem: Rename @start argument of physmem_dirty_bits_cleared()
+  system/physmem: Un-inline cpu_physical_memory_dirty_bits_cleared()
+  system/physmem: Rename @start argument of
+    physmem_test_and_clear_dirty()
+  system/physmem: Reduce cpu_physical_memory_clear_dirty_range() scope
+  system/physmem: Reduce cpu_physical_memory_sync_dirty_bitmap() scope
+  system/physmem: Drop 'cpu_' prefix in Physical Memory API
+  system/physmem: Extract API out of 'system/ram_addr.h' header
 
-diff --git a/hw/s390x/s390-stattrib-kvm.c b/hw/s390x/s390-stattrib-kvm.c
-index e1fee361dc3..73df1f600b9 100644
---- a/hw/s390x/s390-stattrib-kvm.c
-+++ b/hw/s390x/s390-stattrib-kvm.c
-@@ -10,13 +10,13 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include "exec/target_page.h"
- #include "hw/s390x/s390-virtio-ccw.h"
- #include "migration/qemu-file.h"
- #include "hw/s390x/storage-attributes.h"
- #include "qemu/error-report.h"
- #include "system/kvm.h"
- #include "system/memory_mapping.h"
--#include "system/ram_addr.h"
- #include "kvm/kvm_s390x.h"
- #include "qapi/error.h"
- 
-diff --git a/hw/s390x/s390-stattrib.c b/hw/s390x/s390-stattrib.c
-index 13a678a8037..aa185372914 100644
---- a/hw/s390x/s390-stattrib.c
-+++ b/hw/s390x/s390-stattrib.c
-@@ -11,12 +11,12 @@
- 
- #include "qemu/osdep.h"
- #include "qemu/units.h"
-+#include "exec/target_page.h"
- #include "migration/qemu-file.h"
- #include "migration/register.h"
- #include "hw/qdev-properties.h"
- #include "hw/s390x/storage-attributes.h"
- #include "qemu/error-report.h"
--#include "system/ram_addr.h"
- #include "qapi/error.h"
- #include "qobject/qdict.h"
- #include "cpu.h"
+ MAINTAINERS                       |   1 +
+ include/exec/cputlb.h             |   5 +-
+ include/system/physmem.h          |  56 ++++
+ include/system/ram_addr.h         | 413 ------------------------------
+ accel/kvm/kvm-all.c               |   5 +-
+ accel/tcg/cputlb.c                |  19 +-
+ hw/ppc/spapr.c                    |   1 -
+ hw/ppc/spapr_caps.c               |   1 -
+ hw/ppc/spapr_pci.c                |   1 -
+ hw/remote/memory.c                |   1 -
+ hw/remote/proxy-memory-listener.c |   1 -
+ hw/s390x/s390-stattrib-kvm.c      |   2 +-
+ hw/s390x/s390-stattrib.c          |   2 +-
+ hw/s390x/s390-virtio-ccw.c        |   1 -
+ hw/vfio/container-legacy.c        |  10 +-
+ hw/vfio/container.c               |   5 +-
+ hw/vfio/listener.c                |   2 +-
+ hw/vfio/spapr.c                   |   1 -
+ hw/virtio/virtio-mem.c            |   1 -
+ migration/ram.c                   |  79 +++++-
+ system/memory.c                   |   9 +-
+ system/physmem.c                  | 342 +++++++++++++++++++++++--
+ target/arm/tcg/mte_helper.c       |   5 +-
+ system/memory_ldst.c.inc          |   2 +-
+ tests/tsan/ignore.tsan            |   4 +-
+ 25 files changed, 495 insertions(+), 474 deletions(-)
+ create mode 100644 include/system/physmem.h
+
 -- 
 2.51.0
 

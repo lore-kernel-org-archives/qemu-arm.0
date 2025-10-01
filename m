@@ -4,95 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C413CCA474
-	for <qemu-arm@archiver.kernel.org>; Wed,  1 Oct 2025 15:15:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87BF3CAC5BB
+	for <qemu-arm@archiver.kernel.org>; Wed,  1 Oct 2025 15:15:40 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v3yTV-00059S-BF; Wed, 01 Oct 2025 11:10:42 -0400
+	id 1v3yRn-000314-8d; Wed, 01 Oct 2025 11:08:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v3yTC-00051t-Kk
- for qemu-arm@nongnu.org; Wed, 01 Oct 2025 11:10:22 -0400
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v3yRA-00027y-Jg
+ for qemu-arm@nongnu.org; Wed, 01 Oct 2025 11:08:13 -0400
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v3yRM-000103-1y
- for qemu-arm@nongnu.org; Wed, 01 Oct 2025 11:10:17 -0400
-Received: by mail-wm1-x333.google.com with SMTP id
- 5b1f17b1804b1-46e6674caa5so3703845e9.0
- for <qemu-arm@nongnu.org>; Wed, 01 Oct 2025 08:08:21 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v3yPk-0000lA-QC
+ for qemu-arm@nongnu.org; Wed, 01 Oct 2025 11:08:07 -0400
+Received: by mail-wm1-x32e.google.com with SMTP id
+ 5b1f17b1804b1-46e2e363118so70575805e9.0
+ for <qemu-arm@nongnu.org>; Wed, 01 Oct 2025 08:06:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1759331297; x=1759936097; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=AIzO+so5KPpKzYj7ZNyXWUr3LlH8ilSE/g0AxNVpzLk=;
- b=frX/pU08FU3nH0HNXJNevCrdIKND5TwEvt4g/ZLwm6F/axJCF8831FIDag2g6BqnTw
- XWc4EbXNoHROVeaCcnFxBsQBGZMU6oomNTHesmXBPY+rAilcJ5JMR1TO+KWkJMHcLkt2
- vV90WZIywuyW1Rpg1EydMjJi2L5w89DJu911O/5bwBU/mT6jRlabNDDdjZ6GMtyKBzlG
- gB9aCNWbVf4TGyL2aaZYir2S1gYgarv1lS7eZs2bd/Plcwr6O8BnPiU+qTcjsK11heC0
- CFpeIlpazO+NCLMjqPKHMjTE7oSG2MWr33/N6HIJIQc9ubKdtU1lnrMGRmru/V2A+gac
- GzTg==
+ d=linaro.org; s=google; t=1759331193; x=1759935993; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=dcFSHzwi7uBOl2YyW6dgGkKIyMLR1GvdjSiz7OthsV4=;
+ b=l4WCmZ46q3O2rseWf0Lq9gMGspWTbGll+/eIQRZWw7bHWMGNZWyKx0xR/T5cpNkRTS
+ FJoek2LnaQUy2TQauUNJL7/ILrvsH10xBpGc9SGqY7jzuriojr0RxxVI3gLQRakJTevq
+ dZqsGTUQc2iufIgEmPL2v7OAw1/llIFhlsFt6M3QGaCKWeEHjS6Q46cS2JVLIv5+Mvra
+ mLLAYpNmxjJED1LEh0M1zEQBZfzoYTQeXo4NtaV4ZEBsImoR6OMAmZoRvusLNTCbVw6m
+ aLtr96e5de3Hg8SZghqUBzJvF/Qk5ineIw3rHVJd7ouuW4BhDgHES2cWBHUfcoQafKas
+ orXA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759331297; x=1759936097;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=AIzO+so5KPpKzYj7ZNyXWUr3LlH8ilSE/g0AxNVpzLk=;
- b=RIRZTaFG+g0o2r/1A9FRgzN7HzW+bcot/LuX+lBMwJ7pLk3DMd0s6Z9i01WsfSCDXR
- 9iSgP2wJ//lCSCbzmpHfWBh/RgjjQevfXUTGEveUXY17FqYYzOEn93nCj6b0XPbL1Tz1
- +rgUvZ/M39Zk884AquGj9RLbWbTMoJgqHyZ4zYqhd+roAlB5+dHJwyrBAkzYGBt0Q8zk
- Csm8C+yEC3oHFp2UHWD54OflUUNkJDYtGt3b0BAgExPjxM+NAsBStORINPMRkAK+5AFI
- Hz3C31Cz45PJFu83beuZm1EGD0HA1g/oAhvR3ZD8Jp5ImMdKK9XnGUA9Fy5EphdttyPp
- 8HJg==
-X-Gm-Message-State: AOJu0YzMf7vunSXku3V0kZpFdMZA16RbUuAVMH/0oSPCIDWNc4dqn9VR
- xatUUJiYJDSzotXjqbE1heU1K8bgqBOyqV/TpcP1HAZbQUoN0yGigvpjHQ0xug97+GNZjzolQM9
- ZRw/r17bWOQ==
-X-Gm-Gg: ASbGnctqLJA6GRL+JMtEwg5oBvBgycZZWrmOn8GdPRnNrdNpwpqJx7kblg/mOkljJrf
- 4xOD3Ze4CJJw66kNEDyCG5oHXvwDZgdO2nploZaJGTLt/P2ta25g/WEI8JuCeq6hK6RFi1oX5e1
- /wyatYszxE6YsH+S13IdaLp1p7NZyrZEGBNte4W+gxex8lKd/4Gpp4nNcQFnTXF7xwfasrpKCiI
- cq2zxrxcJH0Q2Akg+lrBuy0LvDHg2qW0kNekMECQt3/nUVShgSeL9ikHXw8f5+39lKf9otMlAwk
- d3TEWCRFWy8EYPfKlXwuvIYtZx181Ls+xCpF7IWXNZXqQ6RmIaaBrbFfq3/TBvdHB+8oQf1gESp
- PMyUaVol8jGtmUK5g6GL+R541+xei1IUdhAfkQ7LkDf8OTCiB8ff2naSfF2pPzmGsZB+rIlsXyc
- TmE+DwdScGs0YeLQ==
-X-Google-Smtp-Source: AGHT+IF8lK0vCB6Jq0ASp5XON3vV1O5ddVDMpb/bh1bTP5csPrsFSBh6gHEnoWssD9AA1CELhwJX3Q==
-X-Received: by 2002:a05:600c:8414:b0:45b:8ac2:9761 with SMTP id
- 5b1f17b1804b1-46e612c8a6fmr34590585e9.13.1759331297205; 
- Wed, 01 Oct 2025 08:08:17 -0700 (PDT)
-Received: from [192.168.69.221] (88-187-86-199.subs.proxad.net.
+ d=1e100.net; s=20230601; t=1759331193; x=1759935993;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=dcFSHzwi7uBOl2YyW6dgGkKIyMLR1GvdjSiz7OthsV4=;
+ b=AYeTEDoGaKbyL/ZrPddZyFg3Dx+821jdmDkxleP/WsEtZL6gGLowEHlQEtjmUhTwVt
+ cKnU0CFf/tMb073OxdxBsKist+fkDihsnK68aXkrbUJhrZoLMQH90UL2+gvlVmy+Jdtk
+ DYX8zktZLOQlYPRq/B0XFtnOS/WoR9kxmlnBD2uP6hyWdwOUty2Z57kITkUDAtcx7uDV
+ JpO0R0mAs9KBmTyHE2ziAKvElkVCi3/PmtOaToSRFQzHoSIfsrjO+qTS1eni9LZjZKWH
+ hbnWvYCQnqtQj+u8yLiyEtQ/gvohqrArI+rORJEFOZSsnJpZei8A8XCEkgF5NlMN4IoT
+ 62XA==
+X-Gm-Message-State: AOJu0YzVHHJbsgob93LMuUGJGXpCtBfirlDHhGztjfexhRsN3Im8PCR2
+ Uxb1zsNNHZTeqtSvOqtH+bQE352WKXDeTvCjDYJj6rXrC8WokleN9SCDWq56Iuyy45o=
+X-Gm-Gg: ASbGncvrbPs2SX8EGyZ3jKv5vTCXNX+4CBHBMvOPV5HWsoH3IJFom0AvxWYz7OTt4O9
+ TAhaNQ4zVx3skUOYhOaZ1Klws+OzLHsFTiQP07BL5vA5WJUHZuw1etBDCzCbrd35g9C8nQnbGMJ
+ OIHvKc05t/ikw8nQjXmVrEXYK+4oCB6HhNaDO6Iw+icAuw5OPCqPar/Y+tSA/0tZfzVzPh5STGe
+ letxCpNKXOXOFdvs45pQNB/eU/fHFbpiYuIYcu4Gxk8f1C+CW5t5OynWRmI97ZWGsp91t0xf4TP
+ ax75EaTn1J8aQ5uw18M/wFST2BsboT7NpIVaHkSH5jVRqsz4JcVicqDEx8hxFCqu5e8u7zBV9Wv
+ 61iQTYsxyh2cCHvhsiemhfRN3SArbnZUOUx3DAQxUVSUIdStZdQBkRzqehClJE3WBo78dTP3Nfj
+ S5KYQH7DYiF9h78cqhqC+O
+X-Google-Smtp-Source: AGHT+IG1J0a47sLtwxFcaDSrout4RLN5hlQ7CnmTr7At+cHLbk6rWfBZ9Y0L1CqSK/VyWdUPHPzjcA==
+X-Received: by 2002:a05:600c:1d12:b0:46e:3d41:5fe7 with SMTP id
+ 5b1f17b1804b1-46e612dcff2mr30889775e9.29.1759331192779; 
+ Wed, 01 Oct 2025 08:06:32 -0700 (PDT)
+Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-40fb9768bdesm27674817f8f.23.2025.10.01.08.08.16
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 01 Oct 2025 08:08:16 -0700 (PDT)
-Message-ID: <755adcfb-95eb-46f4-8c73-34c43e6b85ab@linaro.org>
-Date: Wed, 1 Oct 2025 17:08:15 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 04/22] hw/core/loader: Get cpu first addr space with
- cpu_get_address_space()
-Content-Language: en-US
+ 5b1f17b1804b1-46e6199f17asm43113885e9.6.2025.10.01.08.06.31
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Wed, 01 Oct 2025 08:06:32 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
  Richard Henderson <richard.henderson@linaro.org>, qemu-riscv@nongnu.org,
  Peter Maydell <peter.maydell@linaro.org>, qemu-ppc@nongnu.org,
  Paolo Bonzini <pbonzini@redhat.com>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>, Peter Xu
- <peterx@redhat.com>, Alistair Francis <alistair@alistair23.me>
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ Peter Xu <peterx@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Helge Deller <deller@gmx.de>
+Subject: [PATCH 12/22] target/hppa: Get cpu first addr space with
+ cpu_get_address_space()
+Date: Wed,  1 Oct 2025 17:05:17 +0200
+Message-ID: <20251001150529.14122-13-philmd@linaro.org>
+X-Mailer: git-send-email 2.51.0
+In-Reply-To: <20251001150529.14122-1-philmd@linaro.org>
 References: <20251001150529.14122-1-philmd@linaro.org>
- <20251001150529.14122-5-philmd@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20251001150529.14122-5-philmd@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::333;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x333.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, T_SPF_HELO_TEMPERROR=0.01,
- T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -108,28 +106,37 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 1/10/25 17:05, Philippe Mathieu-Daudé wrote:
-> In order to remove the convenient CPUState::as field, access
-> the vcpu first address space using the cpu_get_address_space()
-> helper.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> ---
->   hw/core/generic-loader.c | 5 +++--
->   1 file changed, 3 insertions(+), 2 deletions(-)
+In order to remove the convenient CPUState::as field, access
+the vcpu first address space using the cpu_get_address_space()
+helper.
 
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ target/hppa/int_helper.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-> @@ -130,7 +131,7 @@ static void generic_loader_realize(DeviceState *dev, Error **errp)
->       }
->   
->       if (s->file) {
-> -        AddressSpace *as = s->cpu ? s->cpu->as :  NULL;
-> +        AddressSpace *as = cpu_get_address_space(s->cpu, 0);
-
-Oops, I missed the NULL check.
-
->   
->           if (!s->force_raw) {
->               size = load_elf_as(s->file, NULL, NULL, NULL, &entry, NULL, NULL,
+diff --git a/target/hppa/int_helper.c b/target/hppa/int_helper.c
+index 191ae19404b..4dd281e6c95 100644
+--- a/target/hppa/int_helper.c
++++ b/target/hppa/int_helper.c
+@@ -160,6 +160,7 @@ void hppa_cpu_do_interrupt(CPUState *cs)
+                 /* ??? An alternate fool-proof method would be to store the
+                    instruction data into the unwind info.  That's probably
+                    a bit too much in the way of extra storage required.  */
++                AddressSpace *as = cpu_get_address_space(cs, 0);
+                 vaddr vaddr = env->iaoq_f & -4;
+                 hwaddr paddr = vaddr;
+ 
+@@ -176,7 +177,7 @@ void hppa_cpu_do_interrupt(CPUState *cs)
+                         break;
+                     }
+                 }
+-                env->cr[CR_IIR] = ldl_phys(cs->as, paddr);
++                env->cr[CR_IIR] = ldl_phys(as, paddr);
+                 if (i == EXCP_ASSIST) {
+                     /* stuff insn code into bits of FP exception register #1 */
+                     env->fr[0] |= (env->cr[CR_IIR] & 0x03ffffff);
+-- 
+2.51.0
 
 

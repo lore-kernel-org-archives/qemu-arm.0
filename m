@@ -4,31 +4,31 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76D0FCAC5BB
-	for <qemu-arm@archiver.kernel.org>; Wed,  1 Oct 2025 13:47:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E129BCAC5BB
+	for <qemu-arm@archiver.kernel.org>; Wed,  1 Oct 2025 13:51:10 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v3xB0-0007XF-Ev; Wed, 01 Oct 2025 09:47:29 -0400
+	id 1v3xEK-0000iC-Ft; Wed, 01 Oct 2025 09:50:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1v3xAu-0007WZ-PE; Wed, 01 Oct 2025 09:47:20 -0400
+ id 1v3xEE-0000gy-8t; Wed, 01 Oct 2025 09:50:46 -0400
 Received: from [185.176.79.56] (helo=frasgout.his.huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1v3xAk-0003zq-Bv; Wed, 01 Oct 2025 09:47:20 -0400
-Received: from mail.maildlp.com (unknown [172.18.186.231])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4ccGNg62rqz6M4Qg;
- Wed,  1 Oct 2025 21:43:47 +0800 (CST)
+ id 1v3xE2-0004iP-SE; Wed, 01 Oct 2025 09:50:43 -0400
+Received: from mail.maildlp.com (unknown [172.18.186.216])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4ccGSN6ff8z6M4Gw;
+ Wed,  1 Oct 2025 21:47:00 +0800 (CST)
 Received: from dubpeml100005.china.huawei.com (unknown [7.214.146.113])
- by mail.maildlp.com (Postfix) with ESMTPS id 4336F1404FE;
- Wed,  1 Oct 2025 21:46:56 +0800 (CST)
+ by mail.maildlp.com (Postfix) with ESMTPS id 59B6B140114;
+ Wed,  1 Oct 2025 21:50:09 +0800 (CST)
 Received: from localhost (10.203.177.15) by dubpeml100005.china.huawei.com
  (7.214.146.113) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.11; Wed, 1 Oct
- 2025 14:46:55 +0100
-Date: Wed, 1 Oct 2025 14:46:53 +0100
+ 2025 14:50:08 +0100
+Date: Wed, 1 Oct 2025 14:50:06 +0100
 To: Shameer Kolothum <skolothumtho@nvidia.com>
 CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, <eric.auger@redhat.com>,
  <peter.maydell@linaro.org>, <jgg@nvidia.com>, <nicolinc@nvidia.com>,
@@ -36,12 +36,12 @@ CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, <eric.auger@redhat.com>,
  <mochs@nvidia.com>, <smostafa@google.com>, <wangzhou1@hisilicon.com>,
  <jiangkunkun@huawei.com>, <zhangfei.gao@linaro.org>,
  <zhenzhong.duan@intel.com>, <yi.l.liu@intel.com>, <shameerkolothum@gmail.com>
-Subject: Re: [PATCH v4 23/27] hw/arm/smmuv3-accel: Add property to specify
- OAS bits
-Message-ID: <20251001144653.0000456b@huawei.com>
-In-Reply-To: <20250929133643.38961-24-skolothumtho@nvidia.com>
+Subject: Re: [PATCH v4 24/27] backends/iommufd: Retrieve PASID width from
+ iommufd_backend_get_device_info()
+Message-ID: <20251001145006.00001837@huawei.com>
+In-Reply-To: <20250929133643.38961-25-skolothumtho@nvidia.com>
 References: <20250929133643.38961-1-skolothumtho@nvidia.com>
- <20250929133643.38961-24-skolothumtho@nvidia.com>
+ <20250929133643.38961-25-skolothumtho@nvidia.com>
 X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
 MIME-Version: 1.0
 Content-Type: text/plain; charset="US-ASCII"
@@ -56,6 +56,7 @@ X-Spam_score_int: -33
 X-Spam_score: -3.4
 X-Spam_bar: ---
 X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
  RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
@@ -76,49 +77,66 @@ From:  Jonathan Cameron via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, 29 Sep 2025 14:36:39 +0100
+On Mon, 29 Sep 2025 14:36:40 +0100
 Shameer Kolothum <skolothumtho@nvidia.com> wrote:
 
-> QEMU SMMUv3 currently sets the output address size (OAS) to 44 bits. With
-> accelerator mode enabled, a guest device may use SVA where CPU page tables
-> are shared with SMMUv3, requiring OAS at least equal to the CPU OAS. Add
-> a user option to set this.
-> 
-> Note: Linux kernel docs currently state the OAS field in the IDR register
-> is not meaningful for users. But looks like we need this information.
+Bring the bit of the description in the title down here as well.
+Depending on what tools people use for browsing git it might
+end up in very different places on their screen.
 
-So is there a kernel documentation fix pending? :)
-
-Mind you I think we should ensure this is true anyway in QEMU as some other
-OS might do weird things if it's not.
-
-Maybe we should just raise the default QEMU uses (with compat stuff for older
-qemu) and not worry about an exposed control for this?
+> And store it in HostIOMMUDeviceCaps for later use.
 > 
 > Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
+Trivial comment inline.
+
+Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
+
 > ---
->  hw/arm/smmuv3-accel.c    | 15 +++++++++++++++
->  hw/arm/smmuv3-internal.h |  3 ++-
->  hw/arm/smmuv3.c          | 15 ++++++++++++++-
->  include/hw/arm/smmuv3.h  |  1 +
->  4 files changed, 32 insertions(+), 2 deletions(-)
-> 
-> diff --git a/hw/arm/smmuv3-accel.c b/hw/arm/smmuv3-accel.c
-> index eee54316bf..ba37d690ad 100644
-> --- a/hw/arm/smmuv3-accel.c
-> +++ b/hw/arm/smmuv3-accel.c
-> @@ -86,6 +86,17 @@ smmuv3_accel_check_hw_compatible(SMMUv3State *s,
->          return false;
->      }
->  
-> +    /*
-> +     * ToDo: OAS is not something Linux kernel doc says meaningful for user.
-> +     * But looks like OAS needs to be compatibe for accelerator support. Please
+>  backends/iommufd.c                 | 6 +++++-
+>  hw/arm/smmuv3-accel.c              | 3 ++-
+>  hw/vfio/iommufd.c                  | 7 +++++--
+>  include/system/host_iommu_device.h | 2 ++
+>  include/system/iommufd.h           | 3 ++-
+>  5 files changed, 16 insertions(+), 5 deletions(-)
 
-spell check this too..
+...
 
-> +     * check.
-> +     */
+> diff --git a/include/system/host_iommu_device.h b/include/system/host_iommu_device.h
+> index ab849a4a82..c6a2a3899a 100644
+> --- a/include/system/host_iommu_device.h
+> +++ b/include/system/host_iommu_device.h
+> @@ -29,6 +29,7 @@ typedef union VendorCaps {
+>   *
+>   * @hw_caps: host platform IOMMU capabilities (e.g. on IOMMUFD this represents
+>   *           the @out_capabilities value returned from IOMMU_GET_HW_INFO ioctl)
 
+Blank line here to match local style. 
+
+> + * @max_pasid_log2: width of PASIDs supported by host IOMMU device
+>   *
+>   * @vendor_caps: host platform IOMMU vendor specific capabilities (e.g. on
+>   *               IOMMUFD this represents a user-space buffer filled by kernel
+> @@ -37,6 +38,7 @@ typedef union VendorCaps {
+>  typedef struct HostIOMMUDeviceCaps {
+>      uint32_t type;
+>      uint64_t hw_caps;
+> +    uint8_t max_pasid_log2;
+>      VendorCaps vendor_caps;
+>  } HostIOMMUDeviceCaps;
+>  #endif
+> diff --git a/include/system/iommufd.h b/include/system/iommufd.h
+> index e852193f35..d3efcffc45 100644
+> --- a/include/system/iommufd.h
+> +++ b/include/system/iommufd.h
+> @@ -71,7 +71,8 @@ int iommufd_backend_unmap_dma(IOMMUFDBackend *be, uint32_t ioas_id,
+>                                hwaddr iova, ram_addr_t size);
+>  bool iommufd_backend_get_device_info(IOMMUFDBackend *be, uint32_t devid,
+>                                       uint32_t *type, void *data, uint32_t len,
+> -                                     uint64_t *caps, Error **errp);
+> +                                     uint64_t *caps, uint8_t *pasid_log2,
+> +                                     Error **errp);
+>  bool iommufd_backend_alloc_hwpt(IOMMUFDBackend *be, uint32_t dev_id,
+>                                  uint32_t pt_id, uint32_t flags,
+>                                  uint32_t data_type, uint32_t data_len,
 
 

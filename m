@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E63F8CCA470
-	for <qemu-arm@archiver.kernel.org>; Wed,  1 Oct 2025 01:12:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 734F0CCA470
+	for <qemu-arm@archiver.kernel.org>; Wed,  1 Oct 2025 01:13:04 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v3lGK-0005ci-En; Tue, 30 Sep 2025 21:04:08 -0400
+	id 1v3lGh-0005u7-BH; Tue, 30 Sep 2025 21:04:33 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <salil.mehta@opnsrc.net>)
- id 1v3lFo-0005RM-9F
- for qemu-arm@nongnu.org; Tue, 30 Sep 2025 21:03:36 -0400
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+ id 1v3lGH-0005aC-Re
+ for qemu-arm@nongnu.org; Tue, 30 Sep 2025 21:04:05 -0400
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <salil.mehta@opnsrc.net>)
- id 1v3lFA-00089A-VQ
- for qemu-arm@nongnu.org; Tue, 30 Sep 2025 21:03:35 -0400
-Received: by mail-wm1-x334.google.com with SMTP id
- 5b1f17b1804b1-46e384dfde0so68966795e9.2
- for <qemu-arm@nongnu.org>; Tue, 30 Sep 2025 18:02:53 -0700 (PDT)
+ id 1v3lFL-0008D6-Am
+ for qemu-arm@nongnu.org; Tue, 30 Sep 2025 21:04:04 -0400
+Received: by mail-wm1-x32e.google.com with SMTP id
+ 5b1f17b1804b1-46e34052bb7so65873615e9.2
+ for <qemu-arm@nongnu.org>; Tue, 30 Sep 2025 18:03:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=opnsrc.net; s=google; t=1759280571; x=1759885371; darn=nongnu.org;
+ d=opnsrc.net; s=google; t=1759280581; x=1759885381; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=3d/1PkHX+6ySvY2cHkD8QFKwUFKHxum1HSH+EnGsK+0=;
- b=ie+Wpi+NqHkLSNBCJGSqLtlniguWh0bA7VYS5WUGwL9sZ69Ox6v3JyHR/a2FEpTdI+
- Pya+ZTDFbVE9BjH95cVdyhut95D3gcULHx0ARTvR2shfVNF3NNv2AJ9r5W3bTnrx20/V
- Xk7r1OOjYue/mMV7NaU1QSP5YokojK95pXwKNtAi8Is0wofx1hJ4Ue6pug94Jc5yOE5c
- I9gPdgTsZiXGiC6fCytE5gKeRURBsudPzWxM/qjvuCDQLPlHXl3EntcUqyzKxXXT7Msp
- 5x6jVMpkzftL0Xg06PcCMNBbQeW1CRgQsxjQBlgvPtjxqBN3u+akF8i7QFlNmrHwPaiE
- F6Bg==
+ bh=LkorhTYVdtNEc2JK9JCYJPvsAtCb3dSBOdMaKNrFs7Y=;
+ b=c/IBDRZdX2QyTxvPUieuUL1mGP6FJHpv0VtlQwU4gLSkD/DqR+0t6Du5lRGXf9MOQ3
+ yQqG6W6msiTNi7HOseCvKC5qmNIhC6HC0Qfr/ywrIH9ttr7wB+BHLSjtKJqx0z6cFdWJ
+ JwNRkYyDLi9vRVsJStmgErvssviuF38UaYgPU+hkOh/xZMRy4Lo2eSdO0JWMfuUtSNPP
+ keP5pvwrk9WGP4i25niOj4//HhYinjoOUeqcvtQk9PMio9OEC8UdbLtIhzXtmQRi9HvI
+ +/7mgRjkVj4gdwn8DUHIeefzHfhOQUYn9rH1JDTd/R7AQNHVKbrGs2bwVVFLqizsa1el
+ SJ5w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759280571; x=1759885371;
+ d=1e100.net; s=20230601; t=1759280581; x=1759885381;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=3d/1PkHX+6ySvY2cHkD8QFKwUFKHxum1HSH+EnGsK+0=;
- b=NNi8bfw7907qwr9bJQTjMXaPUHvGPaWOg3eX11Tfw2HHh/SMjw08eQfJhafzITguZ5
- An6KZC51DICQi6YSsyP5i00Y74BZYD1pbuDhD4hdZnGpeTmhCO+daEP7LqdIuRIK81eH
- 6xFMdtwpaTz0PLkdAGlGDSfWhasDaamc1y/L1+3+aeKBkfUlqk1eA+6T0SIs2dfgVBmZ
- qrdnRK7PM9meHKNEQlkGTEyGL5LgqKKiZkrWIxWf2qIDjLNFEjDqIUHKq9WgXfqpKT+v
- ks5KGN9/Cj4E5FKYudafMRNUijFBQL/0vdUSorg2EgV/VFy35zLDigIkiThGgnRDawIu
- QTQg==
+ bh=LkorhTYVdtNEc2JK9JCYJPvsAtCb3dSBOdMaKNrFs7Y=;
+ b=Dy5GjwEFq8ZdlBiiYVqT2T2oL215lKdxzfkDTGU4cyLR9XOHlmGCO7BI+zHUXZ8xwj
+ ypcf/O5nGb0yaOXM4gw9abj1InPZXatsOzok3WyWGebt/dDTn50T+q+JD2CCDr19AFn8
+ I/ouSAL67K+TtgVwIOQF+vbbPEAAH/eak37gHQ4aUEC7sRsfQuK/zFcmawkp6htrYpIS
+ EKZ3eUrVAxpxKSOXSUxTg2N33eruHg1WUOyhMccOQxs5jGqaTUpXQsKbyDuw5Lah4UFV
+ hXGc6U+m8UEeBSvxWKGSz6icxIkIMpAwFMXKQ4oo+kHlej0dUJH552UXnFBt0ggbWnYs
+ foDw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCV22ezd5tD4wCOzzLio5Al2UrvbyLW6y4WIXhH5UqTV4ax4RNR3syM8Qegrkivqjd7RQax2uJhAhg==@nongnu.org
-X-Gm-Message-State: AOJu0YywKEe9mzFOThHv80NT3k7VhteycuQPsebkT600VIES9bf3KLMI
- buAAbvmGCu3Yr9q5GuAlK0D7FivkbMwkHiJsgCWO0HWKfxGgJpE+LA2JkduN3aFyJjY=
-X-Gm-Gg: ASbGncsQhkUBFD6i5w9racjKoIfsE9yC3H5vnHzSZz+FXk0D9ZJbnQP77fYTtIwIw39
- BD29yXS/Mv5fw5s6cxQ4x6rTDYkxIh9/y6/NmNDsCXJf6HTd7JFpZwcQ1wJy3wXJACxRyJR6oGk
- 2vxadQUul92nmN19sklDqfP6lOdn6jWQRd0GxQ0B2YCF5Klicb4PJUm4JImEZK516pWd3vqjtDv
- /88N62yDTSbgXYHDdFFmqVcbSRPp5TwEtr+/bkimGLntJy0w8HvlY9d4ilP3QUHjELdrNw0vqTl
- dKZ/iBnKoYxHxH5LB6vPPXKXsRtTmJ6JJAdKnqmYTiCpv1HIkdzp4r+SlX3x6OLHdKwURSxd2iX
- Laf1vDSLmhznsx2JSk+FwzdyA+sW6GxUvmS6rWj3flGyw45VZo3WuNCYEcH2JyQKufoluy6MUKj
- /cOO6fChbkx4ZtpgSCC5GrULtKziWt6A8MszD+fOM7blU=
-X-Google-Smtp-Source: AGHT+IHRdDsT1RAOSF3kAiKK2Tu3EectRNRiOrgC1ZbY7bH5hpBDTXxVCHt05ceFQOLhIYQooXwHcA==
-X-Received: by 2002:a05:600c:468f:b0:46e:447d:858e with SMTP id
- 5b1f17b1804b1-46e612dce3dmr13937645e9.28.1759280571088; 
- Tue, 30 Sep 2025 18:02:51 -0700 (PDT)
+ AJvYcCW7YtIYi5Z3BiEwDipTW7xh5aMRY/D6J5zekwn874p/T2HOehWbyTbqPCXW0Ova3XgWLDhd6FZ+pg==@nongnu.org
+X-Gm-Message-State: AOJu0YwTG/v1CT5OpLPxHVMgPgYRJxPBTI+KSC5JYWb6znOmSx7IWcdp
+ AbR8aftNVlkM019HDtSqsXFVaOr/7ZJ/0yegUdScLD8oGaw6tzCkHVsPxKeQtytcCKs=
+X-Gm-Gg: ASbGnctid+gO2dqiXWJqYM1xHroWTaAlq+aSM/iIeNFSoM9vqXWd7sjWjKLGD6jCZaW
+ YlYr+B4D8BkNR5zAH0TFOvH6pMkGEuQj4dLcZabOC8kSQVDB4cppWR/u0LIcYs9QMm13Aa+oz2z
+ z0YgwYXCgGmvk8TMYiQab20dgDBvxIJT9UtTkXerrquiPQdKNqNda8BoPfwTLBycyHd3aAL5J0t
+ MPNxKvXFZYVd+IuF4NRgR6sPWJQYnY2n4FTmlTST/5NeoZtcGeu50xrxNz6OHwumLQrhAGypaRo
+ C8uD37wKNJSW/1Pa/kcTWIjfHgW+oe+R97PpeZNc5e1tj96vK8VGmh7yaoqvWHUnmGUClsTkeMT
+ 1mE5ZSC/39I47b1w/v6osH77Lrzi938o/KGgH83bVEhQfa+qcmb5iNkOpDMiYWReux1UH/eM2cK
+ UhOgter0jrBPwu2iYRTOcB2vtgwFm5e35KJ5O2WjdS0WI=
+X-Google-Smtp-Source: AGHT+IGtiMfNDTwBfFlWDk5u04zD0uoanejP/L9zghp74Y9gIVBsMBao7ceLjywLt+u/Os5JnWjkgg==
+X-Received: by 2002:a05:600c:198b:b0:45b:80ff:58f7 with SMTP id
+ 5b1f17b1804b1-46e612e57c3mr13281575e9.36.1759280580648; 
+ Tue, 30 Sep 2025 18:03:00 -0700 (PDT)
 Received: from localhost.localdomain ([90.209.204.182])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-40fb985e080sm24587426f8f.24.2025.09.30.18.02.47
+ ffacd0b85a97d-40fb985e080sm24587426f8f.24.2025.09.30.18.02.59
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 30 Sep 2025 18:02:49 -0700 (PDT)
+ Tue, 30 Sep 2025 18:03:00 -0700 (PDT)
 From: salil.mehta@opnsrc.net
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org,
@@ -87,23 +87,25 @@ Cc: salil.mehta@huawei.com, maz@kernel.org, jean-philippe@linaro.org,
  wangxiongfeng2@huawei.com, wangyanan55@huawei.com, wangzhou1@hisilicon.com,
  linuxarm@huawei.com, jiakernel2@gmail.com, maobibo@loongson.cn,
  lixianglai@loongson.cn, shahuang@redhat.com, zhao1.liu@intel.com
-Subject: [PATCH RFC V6 16/24] arm/virt/acpi: Update ACPI DSDT Tbl to include
- 'Online-Capable' CPUs AML
-Date: Wed,  1 Oct 2025 01:01:19 +0000
-Message-Id: <20251001010127.3092631-17-salil.mehta@opnsrc.net>
+Subject: [PATCH RFC V6 21/24] hw/intc/arm-gicv3-kvm: Pause all vCPUs & cache
+ ICC_CTLR_EL1 for userspace PSCI CPU_ON
+Date: Wed,  1 Oct 2025 01:01:24 +0000
+Message-Id: <20251001010127.3092631-22-salil.mehta@opnsrc.net>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20251001010127.3092631-1-salil.mehta@opnsrc.net>
 References: <20251001010127.3092631-1-salil.mehta@opnsrc.net>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::334;
- envelope-from=salil.mehta@opnsrc.net; helo=mail-wm1-x334.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=salil.mehta@opnsrc.net; helo=mail-wm1-x32e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_FILL_THIS_FORM_SHORT=0.01 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -121,194 +123,278 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Salil Mehta <salil.mehta@huawei.com>
 
-This change emits AML in DSDT to support vCPU deferred online-capability on
-arm/virt. It wires the CPU OSPM coordination paths so that CPUs which are
-administratively disabled at boot can be brought online later under policy,
-providing hotplug-like functionality without claiming full hotplug support.
+Problem:
+=======
 
-The AML connects the CPUS scan method to a GED handler so QEMU and the
-guest OSPM can coordinate CPU add/remove while the VM is running (e.g.
-device-check, eject-request, _EJ0, CPU scan, _OST status reporting).
+When PSCI CPU_ON was handled entirely in KVM, the operation executed under
+VGIC/KVM locks at EL2 and appeared atomic to other vCPU threads (intermediate
+states were not observable). With the SMCCC forward-to-userspace filter enabled,
+PSCI ON/OFF calls now exit to QEMU, where policy checks are performed.
 
-It also fixes an ACPI namespace load error:
-  AE_NOT_FOUND resolving \_SB.GED.PSCN
-Error excerpt:
-[    0.070518] ACPI BIOS Error (bug): Object does not exist: GED_
-[    0.071457] ACPI BIOS Error (bug): Could not resolve symbol [\_SB.GED.PSCN],
-[    0.073084] ACPI Error: AE_NOT_FOUND, During name lookup/catalog
+In the userspace CPU_ON handling (during cpu_reset?), QEMU must perform IOCTLs
+to fetch ICC_CTLR_EL1 fields that reflect supported features and IRQ-related
+configuration (e.g. EOImode, PMHE, CBPR). While these IOCTLs are in flight,
+other vCPUs can run and cause transient inconsistency. KVM enforces atomicity by
+trying to take all vCPU locks (kvm_trylock_all_vcpus() -> -EBUSY). QEMU
+therefore pauses all vCPUs before issuing these IOCTLs to avoid contending for
+locks and to prevent -EBUSY failures during cpu_reset.
 
-Root cause was build order and naming: the PSCN handler must be created
-under \_SB.GED using a short ACPI 'NameSeg', and referenced elsewhere by its
-fully qualified path. The GED device (and PSCN) are now defined before the CPUS
-AML, preventing the early lookup failure.
+KVM Details: (As I understand and stand ready to be corrected! :))
 
-Notes:
-  * CPU enumeration remains from MADT (GICC). CPU0 is Enabled; other CPUs
-    may be Disabled but Online-Capable.
-  * Policy (which CPUs start disabled, later enabled) is administrative
-    and not decided by OSPM.
+Userspace fetch of sysreg ICC_CTLR_EL1 results in access of ICH_VMCR_EL2 reg.
+VMCR is per-vCPU and controls the CPU interface. Pending state is recorded in
+the distributor for SPIs, and in each redistributor for SGIs and PPIs. Delivery
+to the PE depends on the CPU interface configuration (VMCR fields such as PMR,
+IGRPEN, EOImode, BPR). Updates to VMCR must therefore be applied atomically with
+respect to interrupt injection and deactivation. The KVM ioctl layer first
+attempts to lock all vCPU mutexes, and only then takes the VM lock before
+calling vgic_v3_attr_regs_access(). This ordering serializes userspace accesses
+with IRQ handling (IAR/EOI and SGI delivery?).
 
-Tested: boot with EDK2/ACPI; no AE_NOT_FOUND for \_SB.GED.PSCN; generic CPU
-devices register; sysfs topology group warnings do not occur.
+ICC_CTLR_EL1 initially reflects architectural defaults (e.g. EOImode, PMR).
+Most fields are read-only feature indicators that never change. Writable
+fields such as EOImode, PMHE and CBPR are configured once by the guest GICv3
+driver and then remain pseudo-static. Both the initial defaults and the
+guest-configured values can be cached and reused across resets, avoiding
+repeated VM-wide pauses to fetch ICC_CTLR_EL1 from KVM on every cpu_reset().
 
-           DSDT.dsl (Not Working)                                                    DSDT.dsl (Working)
-           ---------------------                                                     ------------------
+Appendix: ICC_CTLR_EL1 layout (for reviewers)
+=============================================
 
-DefinitionBlock ("", "DSDT", 2, "BOCHS ", "BXPC    ", 0x00000001)        DefinitionBlock ("", "DSDT", 2, "BOCHS ", "BXPC    ", 0x00000001)
-{                                                                        {
-    Scope (\_SB)                                                             Scope (\_SB)
-    {                                                                        {
-        Scope (_SB)                                                              Device (\_SB.GED)
-        {                                                                        {
-            Device (\_SB.CPUR)                                                       Name (_HID, "ACPI0013"
-            {                                                                        Name (_UID, "GED")
-	    [...]                                                                    Name (_CRS, ResourceTemplate ()
-            Device (\_SB.CPUS)                                                 	     [...]
-            {                                                                        Method (_EVT, 1, Serialized)
-                Name (_HID, "ACPI0010")                                              {
-                Name (_CID, EisaId ("PNP0A05"))                                          Local0 = ESEL /* \_SB_.GED_.ESEL */
-                Method (CTFY, 2, NotSerialized)                                          If (((Local0 & 0x02) == 0x02))
-                {	                                                                 {
-	    [...]                                                                             Notify (PWRB, 0x80)
-                Method (CSTA, 1, Serialized)                                             }
-                {
-	    [...]                                                                        If (((Local0 & 0x08) == 0x08))
-                Method (CEJ0, 1, Serialized)                                             {
-                {                                                                            \_SB.GED.PSCN ()
-	    [...]                                                                        }
-                Method (CSCN, 0, Serialized)                                         }
-                {                                                                }
-	    [...]
-                Method (COST, 4, Serialized)                                     Scope (_SB)
-                {			                                         {
-	    [...]                                                                    Device (\_SB.CPUR)
-                Device (C000)                                                        {
-                {		                                                    	  [...]
-	    [...]                                                                    Device (\_SB.CPUS)
-                Device (C001)                                                        {
-                {                                                                         Name (_HID, "ACPI0010")
-	    [...]                                                                         Name (_CID, EisaId ("PNP0A05"))
-                Device (C002)                                                             Method (CTFY, 2, NotSerialized)
-                {		                                                          {
-	    [...]                                                                    [...]
-                Device (C003)                                                             Method (CSTA, 1, Serialized)
-                {                                                                         {
-	    [...]                                                                    [...]
-                Device (C004)                                                             Method (CEJ0, 1, Serialized)
-                {		                                                          {
-	    [...]                                                                    [...]
-                Device (C005)                                                             Method (CSCN, 0, Serialized)
-                {			                                                  {
-            }                                                                        [...]
-        }                                                                                 Method (COST, 4, Serialized)
-                                                                                          {
-        Method (\_SB.GED.PSCN, 0, NotSerialized)                                     [...]
-        {                                                                                 Device (C000)
-            \_SB.CPUS.CSCN ()                                                             {
-        }                                                                            [...]
-                                                                                          Device (C001)
-        Device (COM0)                                                                     {
-        {	                                                                     [...]
-	    [...]                                                                         Device (C002)
-                                                                                          {
-        Device (\_SB.GED)                                                            [...]
-        {                                                                                 Device (C003)
-            Name (_HID, "ACPI0013")                                                       {
-            Name (_UID, "GED")                                                       [...]
-            Name (_CRS, ResourceTemplate ()                                               Device (C004)
-            {	                                                                          {
-	    [...]                                                                    [...]
-            OperationRegion (EREG, SystemMemory, 0x09080000, 0x04)                        Device (C005)
-            Field (EREG, DWordAcc, NoLock, WriteAsZeros)                                  {
-            {	                                                                      }
-	    [...]                                                                 }
+ICC_CTLR_EL1 [63:0]
 
-            Method (_EVT, 1, Serialized)                                          Method (\_SB.GED.PSCN, 0, NotSerialized)
-            {                                                                     {
-                Local0 = ESEL                                                         \_SB.CPUS.CSCN ()
-                If (((Local0 & 0x02) == 0x02))                                    }
-                {
-                    Notify (PWRB, 0x80)                                           Device (COM0)
-                }                                                                 {
-                                                                                      [...]
-                If (((Local0 & 0x08) == 0x08))                               }
-                {                                                        }
-                    \_SB.GED.PSCN ()
-                }
-            }
-        }
+  63                                                                        32
+ +----------------------------------------------------------------------------+
+ |                                   RES0                                     |
+ +----------------------------------------------------------------------------+
+  31        20 19 18 17 16 15 14 13 12 11 10   9   8  7  6   5  4  3  2  1  0
+ +------------+--+--+--+--+--+--+--+--+--+---+---+---+--+--+--+--+--+--+--+--+
+ |    RES0    |Ex|RS|RES0 |A3|SE| IDbits |  PRIbits  |R0|PM|  RES0     |EO|CB|
+ +------------+--+--+--+--+--+--+--+--+--+---+---+---+--+--+--+--+--+--+--+--+
+              |  |        |  |                       |   |             |  |
+              |  |        |  |                       |   |             |  +CBPR
+              |  |        |  |                       |   |             +EOImode
+              |  |        |  |                       |   +-PMHE
+              |  |        |  |                       +----RES0
+              |  |        |  +--SEIS
+              |  |        +-----A3V
+              |  +--------------RSS
+              +-----------------ExtRange
 
-        Device (PWRB)
-        {
-	    [...]
-    }
-}
+ Access: {Ex, RS, A3, SE, IDbits, PRIbits} = RO;
+         {PMHE} = RW*;
+         {EO, CB} = RW**;
+	 others = RES0.
+ Notes : * impl-def (may be RO when DS=0)
+         ** CB may be RO when DS=0 (EO stays RW)
+
+ Source: Arm GIC Architecture Specification (IHI 0069H.b),
+         §12.2.6 “ICC_CTLR_EL1”, pp. 12-233…12-237
+
+Resets that may trigger ICC_CTLR_EL1 fetch include:
+  1. PSCI CPU_ON
+  2. qemu_system_reset() during full VM reset
+  3. Post-load path on migration
+  4. Lazy realization via device_set/-deviceset
+
+It can be expensive to pause the entire VM just to reset one vCPU, especially
+for long-lived workloads where hundreds of resets may occur. For such systems,
+frequent VM-wide pauses are unacceptable.
+
+Solution:
+========
+
+This patch caches ICC_CTLR_EL1 early, seeding it either from architectural
+defaults or on the first PSCI CPU_ON when the guest GICv3 driver has initialized
+the interface. The cached value is then reused on every cpu_reset(), avoiding
+repeated VM-wide pauses and heavy IOCTLs. The IOCTL path is retained only as a
+fallback if the cached shadow is not valid.
 
 Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
 ---
- hw/arm/virt-acpi-build.c | 35 +++++++++++++++++++++++++----------
- 1 file changed, 25 insertions(+), 10 deletions(-)
+ hw/intc/arm_gicv3_kvm.c            | 93 ++++++++++++++++++++++++++++--
+ include/hw/intc/arm_gicv3_common.h | 10 ++++
+ target/arm/arm-powerctl.c          |  1 +
+ target/arm/cpu.h                   |  1 +
+ 4 files changed, 100 insertions(+), 5 deletions(-)
 
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index 7c24dd6369..5e5acb3026 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -931,6 +931,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-     VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
-     Aml *scope, *dsdt;
-     MachineState *ms = MACHINE(vms);
-+    MachineClass *mc = MACHINE_GET_CLASS(ms);
-     const MemMapEntry *memmap = vms->memmap;
-     const int *irqmap = vms->irqmap;
-     AcpiTable table = { .sig = "DSDT", .rev = 2, .oem_id = vms->oem_id,
-@@ -946,7 +947,30 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-      * the RTC ACPI device at all when using UEFI.
-      */
-     scope = aml_scope("\\_SB");
--    acpi_dsdt_add_cpus(scope, vms);
-+    if (vms->acpi_dev) {
-+        build_ged_aml(scope, "\\_SB."GED_DEVICE,
-+                      HOTPLUG_HANDLER(vms->acpi_dev),
-+                      irqmap[VIRT_ACPI_GED] + ARM_SPI_BASE, AML_SYSTEM_MEMORY,
-+                      memmap[VIRT_ACPI_GED].base);
-+    } else {
-+        acpi_dsdt_add_gpio(scope, &memmap[VIRT_GPIO],
-+                           (irqmap[VIRT_GPIO] + ARM_SPI_BASE));
-+    }
-+
-+    /*
-+     * If the machine supports bringing administratively disabled vCPUs
-+     * deferred-online under policy, build AML to coordinate the addition and
-+     * removal of CPUs gracefully with the OSPM while the VM is running. This
-+     * includes events such as device-check, eject-request, ejection (_EJ0),
-+     * CPU scan, _OST status reporting, etc.
-+     */
-+    if (vms->acpi_dev && mc->has_online_capable_cpus) {
-+        acpi_build_cpus_aml(scope, memmap[VIRT_ACPI_CPUPS].base, "\\_SB",
-+                            AML_GED_EVT_CPUPS_SCAN_METHOD);
-+    } else {
-+        acpi_dsdt_add_cpus(scope, vms);
-+    }
-+
-     acpi_dsdt_add_uart(scope, &memmap[VIRT_UART0],
-                        (irqmap[VIRT_UART0] + ARM_SPI_BASE), 0);
-     if (vms->second_ns_uart_present) {
-@@ -961,15 +985,6 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-                          (irqmap[VIRT_MMIO] + ARM_SPI_BASE),
-                          0, NUM_VIRTIO_TRANSPORTS);
-     acpi_dsdt_add_pci(scope, memmap, irqmap[VIRT_PCIE] + ARM_SPI_BASE, vms);
--    if (vms->acpi_dev) {
--        build_ged_aml(scope, "\\_SB."GED_DEVICE,
--                      HOTPLUG_HANDLER(vms->acpi_dev),
--                      irqmap[VIRT_ACPI_GED] + ARM_SPI_BASE, AML_SYSTEM_MEMORY,
--                      memmap[VIRT_ACPI_GED].base);
--    } else {
--        acpi_dsdt_add_gpio(scope, &memmap[VIRT_GPIO],
--                           (irqmap[VIRT_GPIO] + ARM_SPI_BASE));
--    }
+diff --git a/hw/intc/arm_gicv3_kvm.c b/hw/intc/arm_gicv3_kvm.c
+index e97578f59a..62d6016e8a 100644
+--- a/hw/intc/arm_gicv3_kvm.c
++++ b/hw/intc/arm_gicv3_kvm.c
+@@ -27,6 +27,7 @@
+ #include "qemu/module.h"
+ #include "system/kvm.h"
+ #include "system/runstate.h"
++#include "system/cpus.h"
+ #include "kvm_arm.h"
+ #include "gicv3_internal.h"
+ #include "vgic_common.h"
+@@ -681,13 +682,73 @@ static void kvm_arm_gicv3_get(GICv3State *s)
+     }
+ }
  
-     if (vms->acpi_dev) {
-         uint32_t event = object_property_get_uint(OBJECT(vms->acpi_dev),
++/* Caller must hold the iothread (BQL). */
++static inline void
++kvm_gicc_get_cached_icc_ctlr_el1(GICv3CPUState *c, uint64_t regval[2],
++                                      bool *valid)
++{
++    const uint64_t attr = (uint64_t)KVM_VGIC_ATTR(ICC_CTLR_EL1, c->gicr_typer);
++    const int group = KVM_DEV_ARM_VGIC_GRP_CPU_SYSREGS;
++    GICv3State *s = c->gic;
++    uint64_t val = 0;
++    int ret;
++
++    assert(regval && valid);
++
++    if (*valid) {
++        /* Fast path: return cached (no vCPU pausing required). */
++        c->icc_ctlr_el1[GICV3_NS] = regval[GICV3_NS];
++        c->icc_ctlr_el1[GICV3_S] = regval[GICV3_S];
++        return;
++    }
++
++    ret = kvm_device_access(s->dev_fd, group, attr, &val, false, NULL);
++    if (ret == -EBUSY || ret == -EAGAIN) {
++        int tries;
++
++        /* One-time heavy path: avoid contention by pausing all vCPUs. */
++        pause_all_vcpus();
++        /*
++         * Even with vCPUs paused, we cannot fully rule out a non-vCPU context
++         * temporarily holding KVM vCPU mutexes; treat -EBUSY/-EAGAIN as
++         * transient and retry a few times. Final attempt aborts in-loop.
++         */
++        for (tries = 0; tries < 5; tries++) {
++            Error **errp = (tries == 4) ? &error_abort : NULL;
++
++            ret = kvm_device_access(s->dev_fd, group, attr, &val, false, errp);
++            if (!ret) {
++                break;
++            }
++            if (ret != -EBUSY && ret != -EAGAIN) {
++               error_setg_errno(&error_abort, -ret,
++                                "KVM_GET_DEVICE_ATTR failed: Group %d "
++                                "attr 0x%016" PRIx64, group, attr);
++               /* not reached */
++            }
++            g_usleep(50);
++        }
++        resume_all_vcpus();
++    }
++
++    /* Success: publish and seed cache. */
++    c->icc_ctlr_el1[GICV3_NS] = val;
++    c->icc_ctlr_el1[GICV3_S] = val;
++
++    regval[GICV3_NS] = c->icc_ctlr_el1[GICV3_NS];
++    regval[GICV3_S] = c->icc_ctlr_el1[GICV3_S];
++    *valid = true;
++}
++
+ static void arm_gicv3_icc_reset(CPUARMState *env, const ARMCPRegInfo *ri)
+ {
+     GICv3State *s;
+     GICv3CPUState *c;
++    ARMCPU *cpu;
+ 
+     c = (GICv3CPUState *)env->gicv3state;
+     s = c->gic;
++    cpu = ARM_CPU(c->cpu);
+ 
+     c->icc_pmr_el1 = 0;
+     /*
+@@ -713,11 +774,33 @@ static void arm_gicv3_icc_reset(CPUARMState *env, const ARMCPRegInfo *ri)
+     }
+ 
+     /* Initialize to actual HW supported configuration */
+-    kvm_device_access(s->dev_fd, KVM_DEV_ARM_VGIC_GRP_CPU_SYSREGS,
+-                      KVM_VGIC_ATTR(ICC_CTLR_EL1, c->gicr_typer),
+-                      &c->icc_ctlr_el1[GICV3_NS], false, &error_abort);
+-
+-    c->icc_ctlr_el1[GICV3_S] = c->icc_ctlr_el1[GICV3_NS];
++    /*
++     * Avoid racy VGIC CPU sysreg reads while vCPUs are running. KVM requires
++     * pausing all vCPUs for ICC_* sysregs accesses to prevent races with
++     * in-flight IRQ delivery (e.g. EOImode etc.).
++     *
++     * To keep the reset path fast, cache the architectural default and the
++     * guest GICv3 driver configured ICC_CTLR_EL1 on the first access and then
++     * reuse that for subsequent resets. Most fields in this register are
++     * invariants throughout the life of VM. Fields EOImode, PMHE and CBPR are
++     * pseudo static and dont change once configured by guest driver.
++     */
++    if (cpu->first_psci_on_request_seen || s->guest_gicc_initialized) {
++        if (!s->guest_gicc_initialized) {
++            s->guest_gicc_initialized = true;
++        }
++        kvm_gicc_get_cached_icc_ctlr_el1(c, c->icc_ctlr_configured,
++                                         &c->icc_ctlr_configured_valid);
++    } else {
++        /*
++         * kernel has not loded yet. It safe to assume not other vCPU is in
++         * KVM_RUN except vCPU 0 at this moment. Just in case, if there is
++         * other priviledged context of KVM accessing the register then we
++         * KVM device access can potentially return -EBUSY.
++         */
++        kvm_gicc_get_cached_icc_ctlr_el1(c, c->icc_ctlr_arch_def,
++                                         &c->icc_ctlr_arch_def_valid);
++    }
+ }
+ 
+ static void kvm_arm_gicv3_reset_hold(Object *obj, ResetType type)
+diff --git a/include/hw/intc/arm_gicv3_common.h b/include/hw/intc/arm_gicv3_common.h
+index a8a84c4687..0282a94edc 100644
+--- a/include/hw/intc/arm_gicv3_common.h
++++ b/include/hw/intc/arm_gicv3_common.h
+@@ -165,6 +165,15 @@ struct GICv3CPUState {
+     uint64_t icc_apr[3][4];
+     uint64_t icc_igrpen[3];
+     uint64_t icc_ctlr_el3;
++    /*
++     * Shadow copy of ICC_CTLR_EL1 architectural default. Fetched once per-vCPU
++     * when no vCPUs are running, and reused on reset to avoid calling
++     * kvm_device_access() in the hot path.
++     */
++    uint64_t icc_ctlr_arch_def[2]; /* per-secstate (NS=0,S=1) */
++    bool icc_ctlr_arch_def_valid;
++    uint64_t icc_ctlr_configured[2];
++    bool icc_ctlr_configured_valid;
+     bool gicc_accessible;
+ 
+     /* Virtualization control interface */
+@@ -240,6 +249,7 @@ struct GICv3State {
+     bool force_8bit_prio;
+     bool irq_reset_nonsecure;
+     bool gicd_no_migration_shift_bug;
++    bool guest_gicc_initialized;
+ 
+     int dev_fd; /* kvm device fd if backed by kvm vgic support */
+     Error *migration_blocker;
+diff --git a/target/arm/arm-powerctl.c b/target/arm/arm-powerctl.c
+index 89074918a9..0b65898cec 100644
+--- a/target/arm/arm-powerctl.c
++++ b/target/arm/arm-powerctl.c
+@@ -68,6 +68,7 @@ static void arm_set_cpu_on_async_work(CPUState *target_cpu_state,
+     ARMCPU *target_cpu = ARM_CPU(target_cpu_state);
+     struct CpuOnInfo *info = (struct CpuOnInfo *) data.host_ptr;
+ 
++    target_cpu->first_psci_on_request_seen = true;
+     /* Initialize the cpu we are turning on */
+     cpu_reset(target_cpu_state);
+     arm_emulate_firmware_reset(target_cpu_state, info->target_el);
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index cd5982d362..603e482b3a 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -974,6 +974,7 @@ struct ArchCPU {
+ 
+     /* Current power state, access guarded by BQL */
+     ARMPSCIState power_state;
++    bool first_psci_on_request_seen;
+ 
+     /* CPU has virtualization extension */
+     bool has_el2;
 -- 
 2.34.1
 

@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FAB5CCA470
-	for <qemu-arm@archiver.kernel.org>; Wed,  1 Oct 2025 17:58:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B10EDCCA471
+	for <qemu-arm@archiver.kernel.org>; Wed,  1 Oct 2025 17:58:28 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v414N-0003NF-77; Wed, 01 Oct 2025 13:56:51 -0400
+	id 1v4140-0002kH-AE; Wed, 01 Oct 2025 13:56:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v414G-0003De-8J
- for qemu-arm@nongnu.org; Wed, 01 Oct 2025 13:56:44 -0400
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v413a-0002Gf-Q1
+ for qemu-arm@nongnu.org; Wed, 01 Oct 2025 13:56:06 -0400
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v413g-0001AU-NH
- for qemu-arm@nongnu.org; Wed, 01 Oct 2025 13:56:44 -0400
-Received: by mail-wr1-x431.google.com with SMTP id
- ffacd0b85a97d-414f48bd5a7so66751f8f.2
- for <qemu-arm@nongnu.org>; Wed, 01 Oct 2025 10:56:01 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v4137-000138-C7
+ for qemu-arm@nongnu.org; Wed, 01 Oct 2025 13:56:02 -0400
+Received: by mail-wm1-x330.google.com with SMTP id
+ 5b1f17b1804b1-46e501a9034so387155e9.3
+ for <qemu-arm@nongnu.org>; Wed, 01 Oct 2025 10:55:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1759341356; x=1759946156; darn=nongnu.org;
+ d=linaro.org; s=google; t=1759341324; x=1759946124; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=DlChLU8Sv66u34cuVfj2m981SsQ1riJ99O+cWJLK7Og=;
- b=RQeWcW61Zr447L8khS+L2dNr9h0CbH7PLQ4QtHDIMcb0PloHleY/6WEBSmX0a+fuAm
- xCN/3JIIbezfaNd3TCboNOHzFVOZctLZPwJRWnUoJcy62Lonp1vkCqESMAmwkQaXwLAk
- WOjrxs5j70OVxLewm4Mt950Sfkf7Ca0DOFDEOzsizp+fbCnjvJXP0UVTWplI8TTYAa7H
- Ta8WSzz+YOXxwPjkxdEKJZQyGbfLUtxn10hSjswpWHyD8NPPja/PIER4wOb4wJ+1ZwZQ
- Hla/qriNBdKz+RQExYIb8UbV8hWJSoHr+RUSJDeUeQoZj1jLPaWHA6iuMr94kGbajVO2
- XfKA==
+ bh=Aokqeion6vg/XBK7zMSfidbyVnYpQrHhaMRTyeMkDMQ=;
+ b=ZBU9Lr4SAacljZ5A6FC3HGsMdbjhrrjuoQkfQ2QQ6phMbVB0QJLTgVDxTWqNxqhwgZ
+ gnp6VzkrPjIByNKQ15LjmV7X5dtj5N7AAXCzppSsJxu9iUzT+KteZRB4WyECYUwHxSZ0
+ WUsuiQ8be+nZdT1SKYk9/2NciFYf66Z7PJjAG21z9OezKBYrzwx6rQ1PWeGzeJDzZL9t
+ umiEPasOvGs+tZwl1VxfZCeC2ywhsOV8k77Bjz7X0cF+ar5OHdtgWgoEwS1A8ONqWnf+
+ g6wOK9qUrfKD1z71s7n2URCL6TxgbB/hDOKWlrsSpMGx+CUFyB6K4CQ4YSWgex1xlQ3r
+ taIA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759341356; x=1759946156;
+ d=1e100.net; s=20230601; t=1759341324; x=1759946124;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=DlChLU8Sv66u34cuVfj2m981SsQ1riJ99O+cWJLK7Og=;
- b=NBR3VMtt5C3nBjb8zWRDJIaJ1XWirHXHUT2vv3/q2uAIgSG+vVptepipKYgh4OTC75
- f6yFlXGWCziN0wIWjosIp12d9rR6xRnRKPRkw9xUGGjP6S7VkQxggNNvyXRBPtqNSpJV
- 5BedqEv5oLYaYhS0qDz+F5bSbOKK/6rEWK7YWyklet365Etk9excWNVs2AMh4r54fwIu
- kI0mzpSJc8oZwSG3A00KGaCQncN7td/VYUknnaaSKbMwAMhVGTjhUWvKcYF2FvAl71tH
- h4AsYf9rWSNbfIGDKzi8pzDDY7dMTI/wsfR5Hr/9LMhmg4qxYcBzU7Rqzp0NTc45k6n/
- SKtg==
+ bh=Aokqeion6vg/XBK7zMSfidbyVnYpQrHhaMRTyeMkDMQ=;
+ b=LchXtwl3mTkYHBnXrTYMhAOmURacbdpowPWFsDcozWR0XgmAeqhpE5DsZLMoJiGOQP
+ HBONyupWqoWLH9M9/YGN4z1LDvWWaD036yPT2CkdI2Jx3ETj4cFmNiYKtIsa7cckpbkz
+ NH5NQxGfCpukjXu1V78zqDVmyXO1bsXzkkqEJuLbHX8+ojLn/MP5wPfhxXG/gmGaVRbL
+ 3lBdzuomcxTRjlrhHDavSU82bE6hOiUJ8ub64YTPRBniIl6ftQsAoCbjhKgpkMg5WvBK
+ CRsZIWOxWpZtU3fUMKUtX4LTlWAzhFJdmghChWDHdVfjeO6Q2RGa7ykHNiyYDRQ+0LGD
+ NQXg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWHKiPhK2tvw0UrYK4fkc2ITr1+e9NQ4MymgYr6nK3pb7StL3kKpH96/tY5XPlrqaw2pi1Q1HEHig==@nongnu.org
-X-Gm-Message-State: AOJu0YyE3Ere+HWJq6uflX/5BXRaVRTqh97q54CjMQYnvVCaPNg9dj4t
- Xc3eFlUSGAdDNHpvo6J/NsdfliISZKfNXmpU2j5KWr0ZrrdCoOsCDnJnaqBcel3vksE=
-X-Gm-Gg: ASbGnctlaJai51zxD4DZ74QE5FiAEV+5oxLJB9YcF0VTu5N5ZfwX9ws61fAuIvSv+aD
- pRc7jqHTcxHjgI0LEWLymjoGQxZO9fjdRmfgop3vBV2PnhmgjAsX6SNBG5iTbvzQvgXN8ZPUQqx
- jFlJ12pukKNYwtLa0qNqNZlsmmG9zXb6eBOGynFtQKz/WaZb4dVAjuhRqFHwtWw38g5S67/2lZ8
- CMg21pBVMIgANnT0xU/7YdW6zQ5bLRZwJRRoePfuiv3UlCNS0cQ0BxBBZppau9b7pmyrr3Q4BxR
- k/eL60ylZyON0jq1St0eGZVVw8A6OXFk5p1gL8LxlTIYEwlWHF9p5i0nHDT3ZcWx062zDyAmd0O
- 0AzA+hKJIZSx6FGvkxIt9cpZYrlPyazKJV9tPrzNLuQa1aAM4GZSokxf0OaBm6ZxHo+HSb0HM7Z
- e89fBLjNH3YTBz8mZ2bZ+qk658uA==
-X-Google-Smtp-Source: AGHT+IHfeO7OH/QdtcggUnA5uGklDQpIabKZxQPr/EBAMEwVNTVFueen9PGLslG1prHgPOf0O5ib5g==
-X-Received: by 2002:a05:6000:288b:b0:3e0:e23f:c6d9 with SMTP id
- ffacd0b85a97d-425577f3550mr2999587f8f.17.1759341355760; 
- Wed, 01 Oct 2025 10:55:55 -0700 (PDT)
+ AJvYcCWG3H3mHazafkvOHTyRFlfZY3BMZPEhy1XBPGFUqVgkmului8qgOiXb7O1YIiPsankJDhamlhpcCw==@nongnu.org
+X-Gm-Message-State: AOJu0YweDO96KmhadOjEpJC72eYKCHw+21xkXo/9Ke03XX9HaI/cYLyl
+ LA6YTr2fIHZ1aCO9ngTxEwY2Bk7ZIxJomIXrvY5PcGNWWlPc7UakTCKFuGaZZRSS8EQ=
+X-Gm-Gg: ASbGncuGw57qFSMF7WPK4GUu7gcnq4CQh+Jazbxe9pgsf9+32TRwEz6NLnLlWg5+bZa
+ /53yMpx8NxfdzcQIqaaJVNGQHtO99J6ZleeyZ9bm6s3Rrnnb+KCkIMx4WtvldG+2wWmSv1T1cGj
+ jBMYX6m6bxIaEi03dOJ7frDpEm3lleuUuaBn3022VvBBEWxmtvc4R0Vio8mecGfofP68CniqcAz
+ 1dHVjfHVhWnJ2zstXJu8bIun0p+cEVglMtJv4u2pOk8lrV76viU5z33qle82qDT9u931YYI1UdQ
+ u2ckifoO9+j9MISroDghuGQNk7cOqNM0BVGfSGc1MJzZe5+D1yukwdvk1Hw/4ldNU2zWKWiBi6W
+ /8UkGx9pYtfJXO+/CIcREZjmPrOqq8Eep8Yye8BGvIoZIdrw/bui+9t0hrTxty2gQr9YnjUp4Ef
+ LcpN8ZCqTr3YQXRhleKxrQ4MwG/g==
+X-Google-Smtp-Source: AGHT+IGTdM+ShrsSYsYPJCqJA4n0otn39Exzcd9EGo7lsVQICK9Ecvf0H7UF6pHszRiQWBgo2Y4+Cw==
+X-Received: by 2002:a05:6000:240a:b0:3e7:6197:9947 with SMTP id
+ ffacd0b85a97d-42557a15b6fmr3507602f8f.53.1759341323415; 
+ Wed, 01 Oct 2025 10:55:23 -0700 (PDT)
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4255d8a6e1bsm144312f8f.8.2025.10.01.10.55.54
+ ffacd0b85a97d-4255d8a6c49sm143400f8f.3.2025.10.01.10.55.21
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 01 Oct 2025 10:55:55 -0700 (PDT)
+ Wed, 01 Oct 2025 10:55:22 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -84,24 +84,23 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  David Hildenbrand <david@redhat.com>,
  Alex Williamson <alex.williamson@redhat.com>,
  Nicholas Piggin <npiggin@gmail.com>
-Subject: [PATCH v2 12/18] system/physmem: Remove _WIN32 #ifdef'ry
-Date: Wed,  1 Oct 2025 19:54:41 +0200
-Message-ID: <20251001175448.18933-13-philmd@linaro.org>
+Subject: [PATCH v2 06/18] hw: Remove unnecessary 'system/ram_addr.h' header
+Date: Wed,  1 Oct 2025 19:54:35 +0200
+Message-ID: <20251001175448.18933-7-philmd@linaro.org>
 X-Mailer: git-send-email 2.51.0
 In-Reply-To: <20251001175448.18933-1-philmd@linaro.org>
 References: <20251001175448.18933-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::431;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x431.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::330;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
+ DKIM_SIGNED=0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -117,39 +116,118 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Commit fb3ecb7ea40 ("exec: Exclude non portable function for
-MinGW") guarded cpu_physical_memory_set_dirty_lebitmap() within
-_WIN32 #ifdef'ry because of the non-portable ffsl() call, which
-was later replaced for the same reason by commit 7224f66ec3c
-("exec: replace ffsl with ctzl"); we don't need that anymore.
+None of these files require definition exposed by "system/ram_addr.h",
+remove its inclusion.
 
-Reported-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- include/system/ram_addr.h | 3 ---
- 1 file changed, 3 deletions(-)
+ hw/ppc/spapr.c                    | 1 -
+ hw/ppc/spapr_caps.c               | 1 -
+ hw/ppc/spapr_pci.c                | 1 -
+ hw/remote/memory.c                | 1 -
+ hw/remote/proxy-memory-listener.c | 1 -
+ hw/s390x/s390-virtio-ccw.c        | 1 -
+ hw/vfio/spapr.c                   | 1 -
+ hw/virtio/virtio-mem.c            | 1 -
+ 8 files changed, 8 deletions(-)
 
-diff --git a/include/system/ram_addr.h b/include/system/ram_addr.h
-index ca5ae842442..fbf57a05b2a 100644
---- a/include/system/ram_addr.h
-+++ b/include/system/ram_addr.h
-@@ -155,8 +155,6 @@ void cpu_physical_memory_set_dirty_flag(ram_addr_t addr, unsigned client);
- void cpu_physical_memory_set_dirty_range(ram_addr_t start, ram_addr_t length,
-                                          uint8_t mask);
+diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
+index 82fb23beaa8..97ab6bebd25 100644
+--- a/hw/ppc/spapr.c
++++ b/hw/ppc/spapr.c
+@@ -77,7 +77,6 @@
+ #include "hw/virtio/virtio-scsi.h"
+ #include "hw/virtio/vhost-scsi-common.h"
  
--#if !defined(_WIN32)
--
- /*
-  * Contrary to cpu_physical_memory_sync_dirty_bitmap() this function returns
-  * the number of dirty pages in @bitmap passed as argument. On the other hand,
-@@ -265,7 +263,6 @@ uint64_t cpu_physical_memory_set_dirty_lebitmap(unsigned long *bitmap,
+-#include "system/ram_addr.h"
+ #include "system/confidential-guest-support.h"
+ #include "hw/usb.h"
+ #include "qemu/config-file.h"
+diff --git a/hw/ppc/spapr_caps.c b/hw/ppc/spapr_caps.c
+index f2f5722d8ad..0f94c192fd4 100644
+--- a/hw/ppc/spapr_caps.c
++++ b/hw/ppc/spapr_caps.c
+@@ -27,7 +27,6 @@
+ #include "qapi/error.h"
+ #include "qapi/visitor.h"
+ #include "system/hw_accel.h"
+-#include "system/ram_addr.h"
+ #include "target/ppc/cpu.h"
+ #include "target/ppc/mmu-hash64.h"
+ #include "cpu-models.h"
+diff --git a/hw/ppc/spapr_pci.c b/hw/ppc/spapr_pci.c
+index 1ac1185825e..f9095552e86 100644
+--- a/hw/ppc/spapr_pci.c
++++ b/hw/ppc/spapr_pci.c
+@@ -34,7 +34,6 @@
+ #include "hw/pci/pci_host.h"
+ #include "hw/ppc/spapr.h"
+ #include "hw/pci-host/spapr.h"
+-#include "system/ram_addr.h"
+ #include <libfdt.h>
+ #include "trace.h"
+ #include "qemu/error-report.h"
+diff --git a/hw/remote/memory.c b/hw/remote/memory.c
+index 00193a552fa..8195aa5fb83 100644
+--- a/hw/remote/memory.c
++++ b/hw/remote/memory.c
+@@ -11,7 +11,6 @@
+ #include "qemu/osdep.h"
  
-     return num_dirty;
- }
--#endif /* not _WIN32 */
+ #include "hw/remote/memory.h"
+-#include "system/ram_addr.h"
+ #include "qapi/error.h"
  
- static inline void cpu_physical_memory_dirty_bits_cleared(ram_addr_t start,
-                                                           ram_addr_t length)
+ static void remote_sysmem_reset(void)
+diff --git a/hw/remote/proxy-memory-listener.c b/hw/remote/proxy-memory-listener.c
+index 30ac74961dd..e1a52d24f0b 100644
+--- a/hw/remote/proxy-memory-listener.c
++++ b/hw/remote/proxy-memory-listener.c
+@@ -12,7 +12,6 @@
+ #include "qemu/range.h"
+ #include "system/memory.h"
+ #include "exec/cpu-common.h"
+-#include "system/ram_addr.h"
+ #include "qapi/error.h"
+ #include "qemu/error-report.h"
+ #include "hw/remote/mpqemu-link.h"
+diff --git a/hw/s390x/s390-virtio-ccw.c b/hw/s390x/s390-virtio-ccw.c
+index d0c6e80cb05..ad2c48188a8 100644
+--- a/hw/s390x/s390-virtio-ccw.c
++++ b/hw/s390x/s390-virtio-ccw.c
+@@ -13,7 +13,6 @@
+ 
+ #include "qemu/osdep.h"
+ #include "qapi/error.h"
+-#include "system/ram_addr.h"
+ #include "system/confidential-guest-support.h"
+ #include "hw/boards.h"
+ #include "hw/s390x/sclp.h"
+diff --git a/hw/vfio/spapr.c b/hw/vfio/spapr.c
+index 8d9d68da4ec..0f23681a3f9 100644
+--- a/hw/vfio/spapr.c
++++ b/hw/vfio/spapr.c
+@@ -17,7 +17,6 @@
+ 
+ #include "hw/vfio/vfio-container-legacy.h"
+ #include "hw/hw.h"
+-#include "system/ram_addr.h"
+ #include "qemu/error-report.h"
+ #include "qapi/error.h"
+ #include "trace.h"
+diff --git a/hw/virtio/virtio-mem.c b/hw/virtio/virtio-mem.c
+index 1de2d3de521..15ba6799f22 100644
+--- a/hw/virtio/virtio-mem.c
++++ b/hw/virtio/virtio-mem.c
+@@ -25,7 +25,6 @@
+ #include "hw/virtio/virtio-mem.h"
+ #include "qapi/error.h"
+ #include "qapi/visitor.h"
+-#include "system/ram_addr.h"
+ #include "migration/misc.h"
+ #include "hw/boards.h"
+ #include "hw/qdev-properties.h"
 -- 
 2.51.0
 

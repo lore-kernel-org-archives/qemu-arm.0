@@ -4,65 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FE45CCA470
-	for <qemu-arm@archiver.kernel.org>; Wed,  1 Oct 2025 15:19:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13E45CAC5BB
+	for <qemu-arm@archiver.kernel.org>; Wed,  1 Oct 2025 15:19:20 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v3ySO-0004K5-GY; Wed, 01 Oct 2025 11:09:29 -0400
+	id 1v3ySN-0004GU-2V; Wed, 01 Oct 2025 11:09:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v3ySK-0004Ew-Va
- for qemu-arm@nongnu.org; Wed, 01 Oct 2025 11:09:25 -0400
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v3ySH-000463-Ee
+ for qemu-arm@nongnu.org; Wed, 01 Oct 2025 11:09:21 -0400
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v3yQN-0000rM-Mt
- for qemu-arm@nongnu.org; Wed, 01 Oct 2025 11:09:24 -0400
-Received: by mail-wm1-x329.google.com with SMTP id
- 5b1f17b1804b1-46e2c3b6d4cso56538285e9.3
- for <qemu-arm@nongnu.org>; Wed, 01 Oct 2025 08:07:19 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v3yQG-0000qa-3M
+ for qemu-arm@nongnu.org; Wed, 01 Oct 2025 11:09:18 -0400
+Received: by mail-wr1-x436.google.com with SMTP id
+ ffacd0b85a97d-3c68ac7e18aso4988829f8f.2
+ for <qemu-arm@nongnu.org>; Wed, 01 Oct 2025 08:07:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1759331234; x=1759936034; darn=nongnu.org;
+ d=linaro.org; s=google; t=1759331228; x=1759936028; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=AoPTdg5MwxI4gUrOUKUWisdEEc5+5afMb5BWjaZNRgo=;
- b=ssUBkp0QeGEDnWPL6KPrBCD9w1eJOiMDYWR9p5u3R9v6/U+eMNp7hnpFO4dVhpNLB9
- ui+r38KglthQnSA+/LQPPCwcIU7ymQq8QV3k4o8GiJmoZa5l07tl5g53z7O4YnDFWqG7
- U0DPnQPwwcrxUCOucic3Kl+pjXzgJl1X97RAght4T8G6WtKzDLbl3airma8NemJvAA9R
- UrjkXoK6vmUstXQ2zyCk17lQnwPazDW1j8xlZQjowG8kX7U5MEdKvU6PxSyFPUhvr7DA
- 7qwZo7bf9+88u7437HuwQy+l3CLtiTzmM52B9JAcauidovix6Et535LxymVDAibWhOO1
- B3Mg==
+ bh=7mq73JsY80I+RbmAdLEU0nyn7j5rR3V80UMFQRUniNk=;
+ b=Nr/9gZk8n/Vz5sZ6T/75ZMR9t4N3PoCSPoYey179RFE73fQfEOnuv1dSC8YhoYcbOt
+ J0c4y8710yjUJSYlgnVwav9rYC8GrPF7WmY0zho0TZae+wo8JY3h/16Caa5L/9DwU+Nd
+ VOOh8vnv8P5u+2/FeWFtCZYtI7fFGloKfzeWD0wA+49130/F/F4vo7QROEWtTK3nwMBw
+ y7W3iI3P4Kscn/Z40gUYUzN3d2cOmlSI3Ys8x2giz3u/eCgqQIREVAMiHHiGZQzvc4OO
+ 48yBWOixB5u35LJf0LwWA9JKkhyw/tpVxdLlp18oMcaJeeOVNiGEsgU0JoKFsIEnKbIk
+ sv+w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759331234; x=1759936034;
+ d=1e100.net; s=20230601; t=1759331228; x=1759936028;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=AoPTdg5MwxI4gUrOUKUWisdEEc5+5afMb5BWjaZNRgo=;
- b=Tt8N3YhTFYQMdJ+a1t/OiZMYTpyC+J708B8IMAVk7QtcJuW8j73jxPHmFJiYSjtJ75
- 58RtHpVhMMWn+qPqEb2xq8srXVjhKQdjbhWtYyouK6W372BCKfxKEZs7DA3VGyfbkEHf
- B/1u++W2AR+e+qKm5h6DhxFBBU1wHjhJAJOrNoG/7yEPdOV4k9332Kc9LiWj05YOJsrY
- XJiUiE/NKKlCi0CpGOqZjwHnOK+lJp3gvsZ+gZ/3aCazXXBfH9c7WMnlv2qshs1m1qWf
- R5TUO4v6xY5/R+ySHh5zs2EGf7LYXYRKo6iy+JnzBX/djwhQzOzzdcuhezvAXbPwyaIT
- UIWA==
-X-Gm-Message-State: AOJu0Yzc7Mzr8JJA1bWyrYesiqRZMYgF0DrjrTnHJmgKfPYduNUvPWOk
- munNVSzw+Dv3Wp6qZ/WdutW3OwkwPLq+ueGyyMSdd9qHLbhOJWcXLR20KFa4iLctRUs=
-X-Gm-Gg: ASbGncuOY5ANhsV+qCZMFKCleDepl09lqaHa+FsOP2dXDWxvx1ysrJg69MMDeqT3LzC
- LCQgO6jLvic7PrkqYcOY7xpUAMmJtDGAAM29qB03kkWy0vQ0dpkLvVmA1EvprIK5tEC5lOrp0pQ
- nTX9Zq1InMVMs2iG0GqBiRLhvs0d1tzpeq95m3D4+HOsEmfsrk6/qbpH2sIWL1yN8XuL37h0SHx
- CEQsF3D3b5Yhip8Bmm4dOY1N1Xij/S17OSCaEp3kvRPd6Wx87xcnmtJUpHx1HgqmeGqxhDjuZA8
- +TyolTsKeyS5YZCtLvnpF39ZtoSf9xZIACxEH0nmeHFRP+8uK/ycgNmW4hmXbNl56E6JkbNqk6j
- EmYxlNj6RvSbrubj6en91VOnXZ2UN8L1rNHyAaBHvapL17/5n+LgZdzNaslaxmROvlZRzlCqUcz
- /x2bdmwyc7UGXR5j2GYpYk
-X-Google-Smtp-Source: AGHT+IG4XxMj0/+XRjkxBKqGWeT9h7Y0BLEBnyZwHWXRoLQtC3MKtNYoHlq4F6Q4cvmSoGl7zqJatA==
-X-Received: by 2002:a05:600c:6094:b0:45d:d88b:cca with SMTP id
- 5b1f17b1804b1-46e6125cf67mr30505065e9.1.1759331233664; 
- Wed, 01 Oct 2025 08:07:13 -0700 (PDT)
+ bh=7mq73JsY80I+RbmAdLEU0nyn7j5rR3V80UMFQRUniNk=;
+ b=OuFwfm7BVN+wFSQCDHEYihTuv8RVSVitu7+4lgkcMAe3+wffJq18qtXRANaTv9RsQe
+ MzJC+nNiTzyuCENaE2ngGEvqBJjB8t+7C8+9uZjYydc+SBVViHR4JCCNpqxN1doGGPtk
+ zUJbgEPTDN/ZftK72mxUsPHMswW3mp/R1WCVRYHrpfXVPFOdexpuJ5T92/vvG0CH/RA3
+ bR5slVZA0MiUupGHXFSR/1pfyg43iNJqy4tqtxuYjUKeOySKjetY7If8I40dcdJDc1Kt
+ Eaa86yzKT39xuhsvs3DqxPTAkxjYO0RNLWgOHwBUyo3IepKCIPuba5H61V8zZ2ZEfjRJ
+ 2QGQ==
+X-Gm-Message-State: AOJu0YyT6290sUnbarhHR9vk2XUIjAJZ+TN78ezJ3rDAhHMP0eV0jQt+
+ 5lTTmSb4c9NGpM2G5xnbigKV/MXfR1QbjkczGeMfH+2S/ysyGhkRW9cZQzvjRXidKmpxBZUbEjr
+ qxLLr5cJHUA==
+X-Gm-Gg: ASbGncshq8c7suIwizc2X91T+YEZrW38yObOLQtjX/ZAT0RFqaPbcU3/0daBj+bi/Kw
+ swAWKd2UkB55Izokj5XL4+fXQ8PjDwMbt5JnW8EwYgBm3md6RLclRAO9puox5L/JamCGoH1sw4T
+ auYi2rOlOQvbiUyuVUhl1PVyawVXThlnuDxZ8xX+mVJbZaJ8y6ZY690xp5EZMHg3qabaSsHBBms
+ boA1YNlBSaVkjaVYL5pACrUmItaldPC/BdN1cLMu+KNq5PTtmZ0tpOUJG61jEN+D6tUTzWpDVUi
+ 2iXWSaXrOv9jYVL5FgS5p07P6srM46FLwsTDPfbh6b7pnfoZ8Ba/dHX/myb7Qp00UDNVS206TY7
+ WtnF770gGHeHZnKKfMic6bWMY6VD1q11YmHtLXq4fkdb4tnIe5JmpNOW4OupcBBmgnL6XThKaoy
+ nJA4ihZ3eUx/FhQzUkI285qK/EsiKlPy8=
+X-Google-Smtp-Source: AGHT+IG9M1GfxjLnXSzyU42V3GnIoott0XjWEOplId5rUVd+pmxzyuqf9S4f9T1BZ0baGFoBOjykwQ==
+X-Received: by 2002:a05:6000:420a:b0:3f3:3c88:505e with SMTP id
+ ffacd0b85a97d-4255780522fmr2660404f8f.29.1759331228550; 
+ Wed, 01 Oct 2025 08:07:08 -0700 (PDT)
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-46e611970easm25177495e9.2.2025.10.01.08.07.12
+ ffacd0b85a97d-40fc5602f15sm27444186f8f.39.2025.10.01.08.07.07
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 01 Oct 2025 08:07:13 -0700 (PDT)
+ Wed, 01 Oct 2025 08:07:07 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
@@ -72,21 +73,20 @@ Cc: qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>,
  Peter Xu <peterx@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Yanan Wang <wangyanan55@huawei.com>, Zhao Liu <zhao1.liu@intel.com>,
- David Hildenbrand <david@redhat.com>
-Subject: [PATCH 20/22] hw/core/cpu: Remove @CPUState::as field
-Date: Wed,  1 Oct 2025 17:05:25 +0200
-Message-ID: <20251001150529.14122-21-philmd@linaro.org>
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Artyom Tarasenko <atar4qemu@gmail.com>
+Subject: [PATCH 19/22] target/sparc: Get cpu first addr space with
+ cpu_get_address_space()
+Date: Wed,  1 Oct 2025 17:05:24 +0200
+Message-ID: <20251001150529.14122-20-philmd@linaro.org>
 X-Mailer: git-send-email 2.51.0
 In-Reply-To: <20251001150529.14122-1-philmd@linaro.org>
 References: <20251001150529.14122-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::329;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x329.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::436;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x436.google.com
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,92 +101,208 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-All code now get the vcpu first address space using
-cpu_get_address_space(). Nothing uses the CPUState::as
-field anymore: remove it.
+In order to remove the convenient CPUState::as field, access
+the vcpu first address space using the cpu_get_address_space()
+helper.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- include/hw/core/cpu.h |  3 ---
- hw/core/cpu-common.c  |  1 -
- system/cpus.c         |  2 +-
- system/physmem.c      | 10 ----------
- 4 files changed, 1 insertion(+), 15 deletions(-)
+ target/sparc/ldst_helper.c | 22 ++++++++++++----------
+ target/sparc/mmu_helper.c  | 21 ++++++++++++---------
+ 2 files changed, 24 insertions(+), 19 deletions(-)
 
-diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-index c9f40c25392..0f7eda1a10d 100644
---- a/include/hw/core/cpu.h
-+++ b/include/hw/core/cpu.h
-@@ -443,8 +443,6 @@ struct qemu_work_item;
-  * @cpu_ases: Pointer to array of CPUAddressSpaces (which define the
-  *            AddressSpaces this CPU has)
-  * @num_ases: number of CPUAddressSpaces in @cpu_ases
-- * @as: Pointer to the first AddressSpace, for the convenience of targets which
-- *      only have a single AddressSpace
-  * @gdb_regs: Additional GDB registers.
-  * @gdb_num_regs: Number of total registers accessible to GDB.
-  * @gdb_num_g_regs: Number of registers in GDB 'g' packets.
-@@ -517,7 +515,6 @@ struct CPUState {
-     struct CPUAddressSpace *cpu_ases;
-     int cpu_ases_count;
-     int num_ases;
--    AddressSpace *as;
-     MemoryRegion *memory;
+diff --git a/target/sparc/ldst_helper.c b/target/sparc/ldst_helper.c
+index 2c63eb9e036..35d1f63fd2a 100644
+--- a/target/sparc/ldst_helper.c
++++ b/target/sparc/ldst_helper.c
+@@ -700,23 +700,24 @@ uint64_t helper_ld_asi(CPUSPARCState *env, target_ulong addr,
+     {
+         MemTxResult result;
+         hwaddr access_addr = (hwaddr)addr | ((hwaddr)(asi & 0xf) << 32);
++        AddressSpace *as = cpu_get_address_space(cs, 0);
  
-     struct CPUJumpCache *tb_jmp_cache;
-diff --git a/hw/core/cpu-common.c b/hw/core/cpu-common.c
-index 41a339903ca..e46863d9e1d 100644
---- a/hw/core/cpu-common.c
-+++ b/hw/core/cpu-common.c
-@@ -307,7 +307,6 @@ static void cpu_common_initfn(Object *obj)
+         switch (size) {
+         case 1:
+-            ret = address_space_ldub(cs->as, access_addr,
++            ret = address_space_ldub(as, access_addr,
+                                      MEMTXATTRS_UNSPECIFIED, &result);
+             break;
+         case 2:
+-            ret = address_space_lduw(cs->as, access_addr,
++            ret = address_space_lduw(as, access_addr,
+                                      MEMTXATTRS_UNSPECIFIED, &result);
+             break;
+         default:
+         case 4:
+-            ret = address_space_ldl(cs->as, access_addr,
++            ret = address_space_ldl(as, access_addr,
+                                     MEMTXATTRS_UNSPECIFIED, &result);
+             break;
+         case 8:
+-            ret = address_space_ldq(cs->as, access_addr,
++            ret = address_space_ldq(as, access_addr,
+                                     MEMTXATTRS_UNSPECIFIED, &result);
+             break;
+         }
+@@ -809,6 +810,7 @@ void helper_st_asi(CPUSPARCState *env, target_ulong addr, uint64_t val,
+ {
+     int size = 1 << (memop & MO_SIZE);
+     CPUState *cs = env_cpu(env);
++    AddressSpace *as = cpu_get_address_space(cs, 0);
  
-     cpu->cpu_index = UNASSIGNED_CPU_INDEX;
-     cpu->cluster_index = UNASSIGNED_CLUSTER_INDEX;
--    cpu->as = NULL;
-     cpu->num_ases = 0;
-     /* user-mode doesn't have configurable SMP topology */
-     /* the default value is changed by qemu_init_vcpu() for system-mode */
-diff --git a/system/cpus.c b/system/cpus.c
-index aa7bfcf56e5..ecd025a611d 100644
---- a/system/cpus.c
-+++ b/system/cpus.c
-@@ -704,7 +704,7 @@ void qemu_init_vcpu(CPUState *cpu)
-     cpu->stopped = true;
-     cpu->random_seed = qemu_guest_random_seed_thread_part1();
+     do_check_align(env, addr, size - 1, GETPC());
+     switch (asi) {
+@@ -878,7 +880,7 @@ void helper_st_asi(CPUSPARCState *env, target_ulong addr, uint64_t val,
+                 MemTxResult result;
+                 hwaddr access_addr = (env->mxccregs[0] & 0xffffffffULL) + 8 * i;
  
--    if (!cpu->as) {
-+    if (cpu->num_ases == 0) {
-         /* If the target cpu hasn't set up any address spaces itself,
-          * give it the default one.
-          */
-diff --git a/system/physmem.c b/system/physmem.c
-index b245cd14d43..31286b3c13f 100644
---- a/system/physmem.c
-+++ b/system/physmem.c
-@@ -791,11 +791,6 @@ void cpu_address_space_init(CPUState *cpu, int asidx,
-     /* Target code should have set num_ases before calling us */
-     assert(asidx < cpu->num_ases);
+-                env->mxccdata[i] = address_space_ldq(cs->as,
++                env->mxccdata[i] = address_space_ldq(as,
+                                                      access_addr,
+                                                      MEMTXATTRS_UNSPECIFIED,
+                                                      &result);
+@@ -906,7 +908,7 @@ void helper_st_asi(CPUSPARCState *env, target_ulong addr, uint64_t val,
+                 MemTxResult result;
+                 hwaddr access_addr = (env->mxccregs[1] & 0xffffffffULL) + 8 * i;
  
--    if (asidx == 0) {
--        /* address space 0 gets the convenience alias */
--        cpu->as = as;
--    }
--
-     if (!cpu->cpu_ases) {
-         cpu->cpu_ases = g_new0(CPUAddressSpace, cpu->num_ases);
-         cpu->cpu_ases_count = cpu->num_ases;
-@@ -827,11 +822,6 @@ void cpu_address_space_destroy(CPUState *cpu, int asidx)
-     address_space_destroy(cpuas->as);
-     g_free_rcu(cpuas->as, rcu);
+-                address_space_stq(cs->as, access_addr, env->mxccdata[i],
++                address_space_stq(as, access_addr, env->mxccdata[i],
+                                   MEMTXATTRS_UNSPECIFIED, &result);
  
--    if (asidx == 0) {
--        /* reset the convenience alias for address space 0 */
--        cpu->as = NULL;
--    }
--
-     if (--cpu->cpu_ases_count == 0) {
-         g_free(cpu->cpu_ases);
-         cpu->cpu_ases = NULL;
+                 if (result != MEMTX_OK) {
+@@ -1068,20 +1070,20 @@ void helper_st_asi(CPUSPARCState *env, target_ulong addr, uint64_t val,
+ 
+             switch (size) {
+             case 1:
+-                address_space_stb(cs->as, access_addr, val,
++                address_space_stb(as, access_addr, val,
+                                   MEMTXATTRS_UNSPECIFIED, &result);
+                 break;
+             case 2:
+-                address_space_stw(cs->as, access_addr, val,
++                address_space_stw(as, access_addr, val,
+                                   MEMTXATTRS_UNSPECIFIED, &result);
+                 break;
+             case 4:
+             default:
+-                address_space_stl(cs->as, access_addr, val,
++                address_space_stl(as, access_addr, val,
+                                   MEMTXATTRS_UNSPECIFIED, &result);
+                 break;
+             case 8:
+-                address_space_stq(cs->as, access_addr, val,
++                address_space_stq(as, access_addr, val,
+                                   MEMTXATTRS_UNSPECIFIED, &result);
+                 break;
+             }
+diff --git a/target/sparc/mmu_helper.c b/target/sparc/mmu_helper.c
+index 217580a4d8c..1e13ef3da40 100644
+--- a/target/sparc/mmu_helper.c
++++ b/target/sparc/mmu_helper.c
+@@ -80,6 +80,7 @@ static int get_physical_address(CPUSPARCState *env, CPUTLBEntryFull *full,
+     unsigned long page_offset;
+     CPUState *cs = env_cpu(env);
+     MemTxResult result;
++    AddressSpace *as;
+ 
+     is_user = mmu_idx == MMU_USER_IDX;
+ 
+@@ -96,13 +97,14 @@ static int get_physical_address(CPUSPARCState *env, CPUTLBEntryFull *full,
+         return 0;
+     }
+ 
++    as = cpu_get_address_space(cs, 0);
+     *access_index = ((rw & 1) << 2) | (rw & 2) | (is_user ? 0 : 1);
+     full->phys_addr = 0xffffffffffff0000ULL;
+ 
+     /* SPARC reference MMU table walk: Context table->L1->L2->PTE */
+     /* Context base + context number */
+     pde_ptr = (env->mmuregs[1] << 4) + (env->mmuregs[2] << 2);
+-    pde = address_space_ldl(cs->as, pde_ptr, MEMTXATTRS_UNSPECIFIED, &result);
++    pde = address_space_ldl(as, pde_ptr, MEMTXATTRS_UNSPECIFIED, &result);
+     if (result != MEMTX_OK) {
+         return 4 << 2; /* Translation fault, L = 0 */
+     }
+@@ -117,7 +119,7 @@ static int get_physical_address(CPUSPARCState *env, CPUTLBEntryFull *full,
+         return 4 << 2;
+     case 1: /* L0 PDE */
+         pde_ptr = ((address >> 22) & ~3) + ((pde & ~3) << 4);
+-        pde = address_space_ldl(cs->as, pde_ptr,
++        pde = address_space_ldl(as, pde_ptr,
+                                 MEMTXATTRS_UNSPECIFIED, &result);
+         if (result != MEMTX_OK) {
+             return (1 << 8) | (4 << 2); /* Translation fault, L = 1 */
+@@ -131,7 +133,7 @@ static int get_physical_address(CPUSPARCState *env, CPUTLBEntryFull *full,
+             return (1 << 8) | (4 << 2);
+         case 1: /* L1 PDE */
+             pde_ptr = ((address & 0xfc0000) >> 16) + ((pde & ~3) << 4);
+-            pde = address_space_ldl(cs->as, pde_ptr,
++            pde = address_space_ldl(as, pde_ptr,
+                                     MEMTXATTRS_UNSPECIFIED, &result);
+             if (result != MEMTX_OK) {
+                 return (2 << 8) | (4 << 2); /* Translation fault, L = 2 */
+@@ -145,7 +147,7 @@ static int get_physical_address(CPUSPARCState *env, CPUTLBEntryFull *full,
+                 return (2 << 8) | (4 << 2);
+             case 1: /* L2 PDE */
+                 pde_ptr = ((address & 0x3f000) >> 10) + ((pde & ~3) << 4);
+-                pde = address_space_ldl(cs->as, pde_ptr,
++                pde = address_space_ldl(as, pde_ptr,
+                                         MEMTXATTRS_UNSPECIFIED, &result);
+                 if (result != MEMTX_OK) {
+                     return (3 << 8) | (4 << 2); /* Translation fault, L = 3 */
+@@ -189,7 +191,7 @@ static int get_physical_address(CPUSPARCState *env, CPUTLBEntryFull *full,
+         if (is_dirty) {
+             pde |= PG_MODIFIED_MASK;
+         }
+-        stl_phys_notdirty(cs->as, pde_ptr, pde);
++        stl_phys_notdirty(as, pde_ptr, pde);
+     }
+ 
+     /* the page can be put in the TLB */
+@@ -264,6 +266,7 @@ bool sparc_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
+ target_ulong mmu_probe(CPUSPARCState *env, target_ulong address, int mmulev)
+ {
+     CPUState *cs = env_cpu(env);
++    AddressSpace *as = cpu_get_address_space(cs, 0);
+     hwaddr pde_ptr;
+     uint32_t pde;
+     MemTxResult result;
+@@ -276,7 +279,7 @@ target_ulong mmu_probe(CPUSPARCState *env, target_ulong address, int mmulev)
+     /* Context base + context number */
+     pde_ptr = (hwaddr)(env->mmuregs[1] << 4) +
+         (env->mmuregs[2] << 2);
+-    pde = address_space_ldl(cs->as, pde_ptr, MEMTXATTRS_UNSPECIFIED, &result);
++    pde = address_space_ldl(as, pde_ptr, MEMTXATTRS_UNSPECIFIED, &result);
+     if (result != MEMTX_OK) {
+         return 0;
+     }
+@@ -292,7 +295,7 @@ target_ulong mmu_probe(CPUSPARCState *env, target_ulong address, int mmulev)
+             return pde;
+         }
+         pde_ptr = ((address >> 22) & ~3) + ((pde & ~3) << 4);
+-        pde = address_space_ldl(cs->as, pde_ptr,
++        pde = address_space_ldl(as, pde_ptr,
+                                 MEMTXATTRS_UNSPECIFIED, &result);
+         if (result != MEMTX_OK) {
+             return 0;
+@@ -310,7 +313,7 @@ target_ulong mmu_probe(CPUSPARCState *env, target_ulong address, int mmulev)
+                 return pde;
+             }
+             pde_ptr = ((address & 0xfc0000) >> 16) + ((pde & ~3) << 4);
+-            pde = address_space_ldl(cs->as, pde_ptr,
++            pde = address_space_ldl(as, pde_ptr,
+                                     MEMTXATTRS_UNSPECIFIED, &result);
+             if (result != MEMTX_OK) {
+                 return 0;
+@@ -328,7 +331,7 @@ target_ulong mmu_probe(CPUSPARCState *env, target_ulong address, int mmulev)
+                     return pde;
+                 }
+                 pde_ptr = ((address & 0x3f000) >> 10) + ((pde & ~3) << 4);
+-                pde = address_space_ldl(cs->as, pde_ptr,
++                pde = address_space_ldl(as, pde_ptr,
+                                         MEMTXATTRS_UNSPECIFIED, &result);
+                 if (result != MEMTX_OK) {
+                     return 0;
 -- 
 2.51.0
 

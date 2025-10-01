@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B0A5CAC5B8
-	for <qemu-arm@archiver.kernel.org>; Wed,  1 Oct 2025 01:06:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65550CAC5B8
+	for <qemu-arm@archiver.kernel.org>; Wed,  1 Oct 2025 01:07:31 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v3lFe-0005Of-JJ; Tue, 30 Sep 2025 21:03:28 -0400
+	id 1v3lGS-0005k5-Kk; Tue, 30 Sep 2025 21:04:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <salil.mehta@opnsrc.net>)
- id 1v3lFP-0005KZ-6H
- for qemu-arm@nongnu.org; Tue, 30 Sep 2025 21:03:13 -0400
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
+ id 1v3lG7-0005X5-T6
+ for qemu-arm@nongnu.org; Tue, 30 Sep 2025 21:04:00 -0400
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <salil.mehta@opnsrc.net>)
- id 1v3lEw-000839-Du
- for qemu-arm@nongnu.org; Tue, 30 Sep 2025 21:03:10 -0400
-Received: by mail-wr1-x429.google.com with SMTP id
- ffacd0b85a97d-3fa528f127fso327688f8f.1
- for <qemu-arm@nongnu.org>; Tue, 30 Sep 2025 18:02:38 -0700 (PDT)
+ id 1v3lFK-0008Bl-RM
+ for qemu-arm@nongnu.org; Tue, 30 Sep 2025 21:03:55 -0400
+Received: by mail-wr1-x436.google.com with SMTP id
+ ffacd0b85a97d-3ecdf2b1751so4399781f8f.0
+ for <qemu-arm@nongnu.org>; Tue, 30 Sep 2025 18:03:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=opnsrc.net; s=google; t=1759280554; x=1759885354; darn=nongnu.org;
+ d=opnsrc.net; s=google; t=1759280577; x=1759885377; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=o21SQbmHJ5c7GKJfo1w8RsDWnLTVYYuhCdCc7+7iYhg=;
- b=YIO9J+KrmL96QSgo3783pq/q893m/yJarvyCp7D1uMFCdy2Fd152BAvVu2TECNUtOr
- apScjBxT/JDtCQCaJUSWzdORZDvyQNQ0L5O5EiXD8s8J1guV1d0s/IS97xJ42SY5VoNJ
- K/8QT0vu75CxGkP77AWoahKwvGHBb7pFyYPAMpArYvs3Lr2w1VwxRtcxS0Z8XMCUilEF
- JE4zSt4bd+c1x/EE1IQ99Zh6veF6GuhtEQEdMTHnz4s9C2jy5vyjpVEzHIgRQW4+iLqq
- bo8URDm3zUBeLxBmlHOuN9GIbtPnL/7+kFWCurCGcfOvYqq2bBXLUfSL+zXZ6Q2K0o5H
- tkUg==
+ bh=QA9K9skWXs/r/1oOXj8qZ7/XkHpNtPZnS1Ie9dQypSg=;
+ b=AAlGIlWniK4N1vwxtk3cvsXVPNMXZIYId/FV9PPvC50x2hC2KpL4HkgmA9Jo3wW+Ec
+ sskeVjDbhMF1jfo3bbDGtgBoufnxHarEHAcvOwNHVp10usuQfFFXLDy317wndCNqV54L
+ wA/novoAuHDVaEbIqgazVuUJJyRnsW/Ez3ceXq76MrLKF+WejrGV49i8FQPAXlw1Xe0c
+ oAu4gL+JPkpjLJbXdb/dNybJ2OR491PPVVLFm/OMjmKdpl9RUkOsRcRPttXdT6l7yd6Y
+ k72XF2wRCWHXE0F1mXCpvxWRWaIGmMeajpR5dNbpGdxui6TAbzCalyMsJkTtlXrPgNlE
+ pcuQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759280554; x=1759885354;
+ d=1e100.net; s=20230601; t=1759280577; x=1759885377;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=o21SQbmHJ5c7GKJfo1w8RsDWnLTVYYuhCdCc7+7iYhg=;
- b=A7YwR571t8EDjuS76OLXc+j78/p9VbMhUjKay5Dip485ehOav4IQVQNWY3F9l+GmCL
- wm4xFDYRT/crvlfNoU5mppfni0E+1tM242uIvFV0xivDI98CA4j5TuMizRr4WPkdSXWJ
- kX+kcghxuFSLZln46wHShMIFRhhmmDvHJK5r6VktdhwsY1CUJStg3BtnYh1dLAS4hEv1
- HzkjvnP2QjHOih5ikS3SekDWJpe2IZXtngsWvXiMcohss9dg9GRQxJc2BeoYSeleF5lR
- RHlPoSN6+xM4aSHziROYya35pl50VaV1iMZ1R8WPHCWQKA5klWp+8L6cLxYm/EDcpfiG
- DNag==
+ bh=QA9K9skWXs/r/1oOXj8qZ7/XkHpNtPZnS1Ie9dQypSg=;
+ b=BYU+p7fZDcqNbqrw+RwBQBqJd2xhLKfmF6+g/Om5ufrpxgJJDOPyYgUmQMpiLLksHv
+ 0+O9uUTY0NXEQ8cfFQj5BtubQEIk7CoUB/aAf00dKTkErk7TeZ8KB6Ym1u81DjS0zHuu
+ Cc5lgFiBdgXMcvWpruhRWz0NPeLuagZJetaL11xsF0GExFKLiq1SdbDnpWrDFWjXVZ+Y
+ Xl8sTYnYVGxuCRkPSFJ6tFK/1KSCpPzr0HTZr3IZX1jULxTVcy+N3tw+YgvsFzsYMMG2
+ GEc/WoSicPaukSylL/9dK9pQcYdvgk+H4LTSE9JSGuR6hM5898r0h7JgvfPD7G4akiaQ
+ 8aRw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWy2LtFNQaAApFpHY0AstcoUm+GFHLzHhKSUEcozptOFg+gEiKbc0QVKlHG/PY/uW0KTwWLrIW3hg==@nongnu.org
-X-Gm-Message-State: AOJu0Yx19Jdu8Na6IAQAQVtMdNQiyI9oeJO7gb0rufkw31iiL7Ql96kO
- twysLN3V3yfpAkdsr7clc8HPIlexD4ir6Pw1ze5fFQyLb2yBJB1FeJjj5ZFBZdDojUo=
-X-Gm-Gg: ASbGncub6x4Vjz6h0iAGZC0c+i2KDfpzwoEmHCxP5IuGSQYU1uZD+56vO7wSiy8TvbH
- jNcJkZ/vXdWuW9TlYeuaIN5Quf+P4qKljX6iMiqogdXcBvh86BX4icm8eUcAl9B9z9ZB58vGqSi
- M+rLTAu1AyniG4chpL5/8ehvAqOeCAdOZBt4KpxeuwJjWaVQwSbSsQFezWZiqPJ64BVFlqhgQ5t
- zCgtqFlFYWdoQxnDYf1H9SK8vp7fbwo/yCxkRf5a/n6EltDK5cwFbc3e5FptfVEh6yU+2vVxfzR
- BR7zxYPBN+t2phwJBwMpehQ+LloM9ORysnvuacPo/W5H+zKrTXq6RC0EeU/jlkhVub0uRhqix/Q
- urDhteSOrmsrZ7lnzRI/OLiSU6C4oZ0BgfvQvIlikQFZrA03kJ0J45f91Vah5d/W9qrn9S5nRiQ
- hd8RGNRW0jL/7LtJYh35KX/bpI1wptVW0YIwl9raiKB0Y=
-X-Google-Smtp-Source: AGHT+IFKH6S+0qB6r4/RQVzP5vbIJk7BN/G8gLBzoKRJmf/V1TTep5dRu4XD49WOztrcdBIL24geCg==
-X-Received: by 2002:a5d:5d87:0:b0:3fd:271d:e2a5 with SMTP id
- ffacd0b85a97d-4240f823772mr5992988f8f.11.1759280553959; 
- Tue, 30 Sep 2025 18:02:33 -0700 (PDT)
+ AJvYcCVBMzApwBGFpptJtd+5ka6UZV+8CXkvJ9LhBSGo1LchxNknL4rqzwBYq2LAvK5suPt/j5H814Y1iQ==@nongnu.org
+X-Gm-Message-State: AOJu0YyXfpUzRGwJ5BzcXjKJZOPaNIr/Wv8bRiJXP7SfQ82ppzY7Ft4F
+ eLQAWy0mKM3O3jeSwtuC0GmwtCWTNWFjr1L1Si+5Flf5UdOz8Q5LmbyEFvUQ/lk6qis=
+X-Gm-Gg: ASbGncuAB644zdfjhVSychwX9pS5XfQAWqQG7ieHIBlUzx/oJHw7cs4kp685vBRo4um
+ T94lkV3VJrcUXaAO79fIKUHD7XCSzBr8lK82MN/+Gcw3+UH5N/cBo1fTngsqeHNNzrxb0hkZPGP
+ P1tLHeLB84vRBpxJm1P8p8HNCbFUEW662v3xaxaJXPXoIph9eM6ZeJAuGxwTxocKglpG7UFdPZE
+ KzkbpU+qCAQ2+xI4bc820+6ctbXZATs08zGYml/BL5PadL3ojWNF3eTsepr29PTsiFMhMbR1TDw
+ hC7UbDvCzMrGKlc/FvsO8DuX4p2b5NKQZStPkvBD9IQhZ/uoiRg4tN2+jkQazmGBStJuEFKMK/g
+ tMSU+Ne5V1eCIcp8xLFNMxkdJOTsqTIW5sdIIOTE09t0XnweP/x0D10YnvaRcQvC7tiQwIeXOLC
+ MLUnUWZNJWvrZ4Tj1G31bUvJ2YjQAClK2l3wPEthyJa8I=
+X-Google-Smtp-Source: AGHT+IFThuu0ki8xLIEofWJj296f6f32+rIbtRYw4hrXRdchJwH+Ge/B0avOu62ues1Sp8GocB88Qg==
+X-Received: by 2002:a05:6000:2c01:b0:3ec:b899:bc39 with SMTP id
+ ffacd0b85a97d-42557a1b40dmr1065274f8f.58.1759280577175; 
+ Tue, 30 Sep 2025 18:02:57 -0700 (PDT)
 Received: from localhost.localdomain ([90.209.204.182])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-40fb985e080sm24587426f8f.24.2025.09.30.18.02.30
+ ffacd0b85a97d-40fb985e080sm24587426f8f.24.2025.09.30.18.02.54
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 30 Sep 2025 18:02:32 -0700 (PDT)
+ Tue, 30 Sep 2025 18:02:55 -0700 (PDT)
 From: salil.mehta@opnsrc.net
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org,
@@ -87,17 +87,17 @@ Cc: salil.mehta@huawei.com, maz@kernel.org, jean-philippe@linaro.org,
  wangxiongfeng2@huawei.com, wangyanan55@huawei.com, wangzhou1@hisilicon.com,
  linuxarm@huawei.com, jiakernel2@gmail.com, maobibo@loongson.cn,
  lixianglai@loongson.cn, shahuang@redhat.com, zhao1.liu@intel.com
-Subject: [PATCH RFC V6 09/24] hw/intc/arm_gicv3_common: Migrate & check
- 'GICv3CPUState' accessibility mismatch
-Date: Wed,  1 Oct 2025 01:01:12 +0000
-Message-Id: <20251001010127.3092631-10-salil.mehta@opnsrc.net>
+Subject: [PATCH RFC V6 19/24] target/arm/cpu: Add the Accessor hook to fetch
+ ARM CPU arch-id
+Date: Wed,  1 Oct 2025 01:01:22 +0000
+Message-Id: <20251001010127.3092631-20-salil.mehta@opnsrc.net>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20251001010127.3092631-1-salil.mehta@opnsrc.net>
 References: <20251001010127.3092631-1-salil.mehta@opnsrc.net>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::429;
- envelope-from=salil.mehta@opnsrc.net; helo=mail-wr1-x429.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::436;
+ envelope-from=salil.mehta@opnsrc.net; helo=mail-wr1-x436.google.com
 X-Spam_score_int: -16
 X-Spam_score: -1.7
 X-Spam_bar: -
@@ -121,153 +121,41 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Salil Mehta <salil.mehta@huawei.com>
 
-At the source, administratively disabled vCPUs may lack a CPU VMSD: either they
-were never realized (never enabled once), or they were realized and later
-disabled, causing the VMSD to be unregistered. Such vCPUs are not migrated as
-CPU devices. However, the GICv3CpuState for all vCPUs is still migrated to the
-destination VM and must be checked for mismatches in their CPU interface
-accessibility.
-
-To preserve correctness, migrate the per-vCPU `gicc_accessible` bit as part of
-the GICv3 device state, and fail migration on load if a mismatch is detected.
-Administrators must ensure that the number of possible vCPUs and the number of
-administratively disabled vCPUs remain consistent across hosts.
-
-Changes:
- - Add `VMSTATE_BOOL(gicc_accessible)` to the per-vCPU GICv3 state.
- - Add `post_load` hook that checks for mismatch in disabled vCPUs by verifying
-   GIC CPU interface accessibility.
+ACPI 'acpi_cpu_{device_check,eject_request}_cb()' uses 'get_cpu_status()'
+API to get the existing 'AcpiCpuOspmStateStatus' of the CPU being 'online'd or
+offline'd' after VM has initialized. Later usesCPUClass::get_arch_id` to match
+the CPU. Hence, we must add ARM CPU architecture specific accessor hook to fetch
+`mp-affinity` programmed in the KVM host.
 
 Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
 ---
- hw/core/qdev.c             | 17 +++++++++++++++++
- hw/intc/arm_gicv3_common.c | 37 +++++++++++++++++++++++++++++++++++++
- include/hw/qdev-core.h     | 15 +++++++++++++++
- 3 files changed, 69 insertions(+)
+ target/arm/cpu.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-diff --git a/hw/core/qdev.c b/hw/core/qdev.c
-index 8e9a4da6b5..23b84a7756 100644
---- a/hw/core/qdev.c
-+++ b/hw/core/qdev.c
-@@ -326,6 +326,23 @@ bool qdev_disable(DeviceState *dev, BusState *bus, Error **errp)
-                                    errp);
- }
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 0ceaf69092..d147e786c1 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -2744,6 +2744,11 @@ static const TCGCPUOps arm_tcg_ops = {
+ };
+ #endif /* CONFIG_TCG */
  
-+bool qdev_enable(DeviceState *dev, BusState *bus, Error **errp)
++static int64_t arm_cpu_get_arch_id(CPUState *cs)
 +{
-+    g_assert(dev);
-+
-+    if (bus) {
-+        error_setg(errp, "Device %s does not supports 'enable' operation",
-+                   object_get_typename(OBJECT(dev)));
-+        return false;
-+    }
-+
-+    /* devices like cpu don't have bus */
-+    g_assert(!DEVICE_GET_CLASS(dev)->bus_type);
-+
-+    return object_property_set_str(OBJECT(dev), "admin_power_state", "enabled",
-+                                    errp);
++    return arm_cpu_mp_affinity(ARM_CPU(cs));
 +}
 +
- int qdev_get_admin_power_state(DeviceState *dev)
+ static void arm_cpu_class_init(ObjectClass *oc, const void *data)
  {
-     DeviceClass *dc;
-diff --git a/hw/intc/arm_gicv3_common.c b/hw/intc/arm_gicv3_common.c
-index f4428ad165..9139352330 100644
---- a/hw/intc/arm_gicv3_common.c
-+++ b/hw/intc/arm_gicv3_common.c
-@@ -84,6 +84,15 @@ static int gicv3_post_load(void *opaque, int version_id)
- {
-     GICv3State *s = (GICv3State *)opaque;
-     ARMGICv3CommonClass *c = ARM_GICV3_COMMON_GET_CLASS(s);
-+    MachineState *ms = MACHINE(qdev_get_machine());
-+
-+    /* ensure source and destination VM 'maxcpu' count matches */
-+    if (s->num_cpu != ms->smp.max_cpus) {
-+        error_report("GICv3: source num_cpu(%u) != dest maxcpus(%u). "
-+                     "Launch dest with -smp maxcpus=%u",
-+                     s->num_cpu, ms->smp.max_cpus, s->num_cpu);
-+        return -1;
-+    }
- 
-     gicv3_gicd_no_migration_shift_bug_post_load(s);
- 
-@@ -127,6 +136,32 @@ static int vmstate_gicv3_cpu_pre_load(void *opaque)
-     return 0;
- }
- 
-+static int vmstate_gicv3_cpu_post_load(void *opaque, int version_id)
-+{
-+    bool src_enabled, dst_enabled;
-+    GICv3CPUState *gcs = opaque;
-+    CPUState *cs = gcs->cpu;
-+
-+    if (!cs) {
-+        return 0;
-+    }
-+
-+    /* we derive the source vCPU admin state via GIC CPU Interface */
-+    src_enabled = gicv3_gicc_accessible(OBJECT(gcs->gic), cs->cpu_index);
-+    dst_enabled = qdev_check_enabled(DEVICE(cs));
-+
-+    if (dst_enabled != src_enabled) {
-+        error_report("GICv3: CPU %d admin-state mismatch: dst=%s, src=%s;"
-+                     " Aborting!", cs->cpu_index,
-+                    dst_enabled ? "enabled" : "disabled",
-+                    src_enabled ? "enabled" : "disabled");
-+
-+        return -1;
-+    }
-+
-+    return 0;
-+}
-+
- static bool icc_sre_el1_reg_needed(void *opaque)
- {
-     GICv3CPUState *cs = opaque;
-@@ -187,6 +222,7 @@ static const VMStateDescription vmstate_gicv3_cpu = {
-     .version_id = 1,
-     .minimum_version_id = 1,
-     .pre_load = vmstate_gicv3_cpu_pre_load,
-+    .post_load = vmstate_gicv3_cpu_post_load,
-     .fields = (const VMStateField[]) {
-         VMSTATE_UINT32(level, GICv3CPUState),
-         VMSTATE_UINT32(gicr_ctlr, GICv3CPUState),
-@@ -208,6 +244,7 @@ static const VMStateDescription vmstate_gicv3_cpu = {
-         VMSTATE_UINT64_2DARRAY(icc_apr, GICv3CPUState, 3, 4),
-         VMSTATE_UINT64_ARRAY(icc_igrpen, GICv3CPUState, 3),
-         VMSTATE_UINT64(icc_ctlr_el3, GICv3CPUState),
-+        VMSTATE_BOOL(gicc_accessible, GICv3CPUState),
-         VMSTATE_END_OF_LIST()
-     },
-     .subsections = (const VMStateDescription * const []) {
-diff --git a/include/hw/qdev-core.h b/include/hw/qdev-core.h
-index b1d3fa4a25..855ff865ba 100644
---- a/include/hw/qdev-core.h
-+++ b/include/hw/qdev-core.h
-@@ -589,6 +589,21 @@ bool qdev_realize_and_unref(DeviceState *dev, BusState *bus, Error **errp);
-  */
- bool qdev_disable(DeviceState *dev, BusState *bus, Error **errp);
- 
-+/**
-+ * qdev_enable - Power on and administratively enable a device
-+ * @dev:   The device to be powered on and administratively enabled
-+ * @bus:   The bus on which the device is connected (may be NULL for CPUs)
-+ * @errp:  Pointer to a location where an error can be reported
-+ *
-+ * This function performs both administrative and operational power-on of
-+ * the specified device. It transitions the device into ENABLED state and
-+ * restores runtime availability. If applicable, the device is also re-added
-+ * to the migration stream.
-+ *
-+ * Returns true if the operation succeeds; false otherwise, with @errp set.
-+ */
-+bool qdev_enable(DeviceState *dev, BusState *bus, Error **errp);
-+
- /**
-  * qdev_check_enabled - Check if a device is administratively enabled
-  * @dev:  The device to check
+     ARMCPUClass *acc = ARM_CPU_CLASS(oc);
+@@ -2763,6 +2768,7 @@ static void arm_cpu_class_init(ObjectClass *oc, const void *data)
+     cc->dump_state = arm_cpu_dump_state;
+     cc->set_pc = arm_cpu_set_pc;
+     cc->get_pc = arm_cpu_get_pc;
++    cc->get_arch_id = arm_cpu_get_arch_id;
+     cc->gdb_read_register = arm_cpu_gdb_read_register;
+     cc->gdb_write_register = arm_cpu_gdb_write_register;
+ #ifndef CONFIG_USER_ONLY
 -- 
 2.34.1
 

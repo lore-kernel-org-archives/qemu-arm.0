@@ -4,96 +4,113 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E296CCA470
-	for <qemu-arm@archiver.kernel.org>; Wed,  1 Oct 2025 16:24:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 766A4CCA470
+	for <qemu-arm@archiver.kernel.org>; Wed,  1 Oct 2025 16:26:45 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v3zcP-0000mh-Lb; Wed, 01 Oct 2025 12:23:53 -0400
+	id 1v3zeD-0001kq-7T; Wed, 01 Oct 2025 12:25:45 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v3zcN-0000lw-Iy
- for qemu-arm@nongnu.org; Wed, 01 Oct 2025 12:23:51 -0400
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v3zc9-0005kB-5H
- for qemu-arm@nongnu.org; Wed, 01 Oct 2025 12:23:50 -0400
-Received: by mail-wm1-x329.google.com with SMTP id
- 5b1f17b1804b1-46e2e363118so71442185e9.0
- for <qemu-arm@nongnu.org>; Wed, 01 Oct 2025 09:23:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1759335811; x=1759940611; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=VsyErOj0C4qTR0dhaSEh2ia15dVXw2WZRvV5/OWw62I=;
- b=Rp2+eXDETiO4RXtuEAbadvQ3UXRjyTJFfKQVPCNChl14wpSgpURAoRyz+XvOdk5lng
- 8/UY0wy1fUA12ILNY9K3ZD8KC6N+83VeANd7CYUNLqc63I2X3VuuOPJEIyodq8XcAIGB
- sn/FHvWLTiUoGcIjE8lQVmZZ8TRGC6GQEV+1u55fxq2X7m5XlZhMn7Y5tGvdzqQQSKYU
- pJzXHllHcnTw/wyT2cYo0HBXxBCj2UGsXtLqkTbV2AMLf3l2Foa26ATIrxlqeRYrdH8X
- zA3Z4mkrzmIG02eP8IZjjpkBH5GGYChMZTrFsuQDC84YAlN1EiKhgpTEy+RO7dofHm04
- 5o6Q==
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1v3zeA-0001kN-P3
+ for qemu-arm@nongnu.org; Wed, 01 Oct 2025 12:25:43 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1v3ze2-0006Cf-0C
+ for qemu-arm@nongnu.org; Wed, 01 Oct 2025 12:25:42 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1759335929;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=451ofA1mqmEEQNSKFV2BxE045rqyo3qnKF1sK4cAmVA=;
+ b=bgQL+XYmjQLFL60Ixod/Dnpla67L1UyojB34RnfigDTavhoHzm8MWVF52aM9WS653zcUe2
+ aNBVMlO+PsHGl7f6JzUjzltQvXdVkvLg0APFVMPq+oNetnvqYIvcofvh+odB/RTnBIEe/r
+ RGfXlT1MPl/NiqTOmkr3eDClIwXxl5c=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-115-5KxXIGyJM5-Jin0IMRWojg-1; Wed, 01 Oct 2025 12:25:27 -0400
+X-MC-Unique: 5KxXIGyJM5-Jin0IMRWojg-1
+X-Mimecast-MFC-AGG-ID: 5KxXIGyJM5-Jin0IMRWojg_1759335926
+Received: by mail-wr1-f70.google.com with SMTP id
+ ffacd0b85a97d-3ee10a24246so4144223f8f.3
+ for <qemu-arm@nongnu.org>; Wed, 01 Oct 2025 09:25:27 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759335811; x=1759940611;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=VsyErOj0C4qTR0dhaSEh2ia15dVXw2WZRvV5/OWw62I=;
- b=IrbRDjfwAgbezM0bo3ZEzA4KThlqI8GDkf6g+Kfxlx/nonQ+HX0W6ror4+mrWmMWbE
- pAyzxQdrZuTt3gE+uXQcVMyBWlo6MDvnBbSZZYgaa/COugwt2QUFCnOmrY+OkGUunKg4
- H7330+h5cT9gExOWAZw7PmEnXlgzt1Bh06tMDjNIOMVSn57FKWM0m2N2wTk+fRnBs95L
- BlEifeFgakxMhcNMwta2lZLN0EnDTKbArHj2EWh1JINor5ZEZJOD7s1z5NemF/KQ/R+D
- +V/0GjkWclkRo1rFa+NiVu7UpHPYMJO1Ik7fijzgWnuFfPepxE2C4VWUMXlLp/Gntn7w
- XRDQ==
+ d=1e100.net; s=20230601; t=1759335926; x=1759940726;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=451ofA1mqmEEQNSKFV2BxE045rqyo3qnKF1sK4cAmVA=;
+ b=TMgXfOmsWpYooJHGY698PdwcrzAMp4KsA8ZiT9xhNkSbwpUbStwvEN4zDHVEbRg1Y1
+ zaZwlC28XSuV07c1EHpcYKfugOcTeq6fOQNIKwu9Dcs5wAWqHbMOmgV+Vd3PxKgGaxGe
+ o9pYFna6Tfn4IrRN+6IU/iTLOzGT1qwp3AoCRmKVs8lIoQkcZC2fkVJsLCUFPUzXmbhS
+ Reg4Us8+Inffo3rqB2mYqdQJf03sN3gkT9eq0sg79LH1it7xK+xwy18xUvJyQjqSHpNC
+ qNST8dFOs+NPu9qmoJdbO7kC+cQi4eLYpvskhXNvON1FCAhJAu13iCvmYes6U9pBj7hR
+ l13g==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVMEXraq2P7gnU3jpUXFndlWhGzARzyGY6hzHhjmiRVdzhgay5HIHSM2hd33+v7kRIObYoY/h3ssQ==@nongnu.org
-X-Gm-Message-State: AOJu0YwiE5bF/UeN8cA2+d7vyZFL7F+acG3oWXSTEGQ7WPJqpbUtlEeR
- N3NJ3Y8tbntGdbLOSK+prND2LbXhQUoK71G2z41IehfPP0UTs4n903+ZSVwU47rdO3w=
-X-Gm-Gg: ASbGnctkS/+MunNIP71/D4iMsg8k/86JyqmuBTRT/M22QZen4gbdpwy265So/zi0LHh
- QTAbqe05zwoqepNq/Pjdp7wyH7kZ68LA8XT5ya4T3QFftTW5vQ0aPbPP2YtsThvhIQ0TM4uljhi
- 9NIMAQdqeaBVzf8UcGx4hDnth67wKHYoE4Tbbnd01U27w7sjV0pbHZCKe6nN0RR9gnHfq7F12cr
- 8hDLyk3MKH8ekL2l2OViaRYTTt8JIDWJpVkz9cOn8lldYLgwN1i6GZ2gx0CfrHVFSkCm7c/9Yyv
- 7Gya5RWruR4bXZQ7cux7i7EYVQFYx1zTSE39jux9ybzh579l+rP8bp+4fazF0fbgGWMmWMWj/Hw
- r6CEK6uIP8zVVq0L/SNjURupedXb/VzqmU0+KrOmBpQPsy4SSw4pYcXL24C4rKs35jpbeF3aPLf
- IcgEoZJ0BRG46J8Q==
-X-Google-Smtp-Source: AGHT+IHeoZu0ymi8Pfk0X0YHUUowtYfUT6O7ZFYxwRepAEs318Ow0exFrX3Q4sJq+PIpUItFz2JAAg==
-X-Received: by 2002:a05:600c:c4a4:b0:46d:996b:826f with SMTP id
- 5b1f17b1804b1-46e612dcfd0mr38375745e9.25.1759335811038; 
- Wed, 01 Oct 2025 09:23:31 -0700 (PDT)
-Received: from [192.168.69.221] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-46e619b86e1sm44201225e9.5.2025.10.01.09.23.29
+ AJvYcCXf7aLdCoNt7U/B0PWvHGMP456QmxkP1R4FO3iGVQJraMoWdHc5TaEoxcZq+5CIpVIw88Uhwut4SQ==@nongnu.org
+X-Gm-Message-State: AOJu0YygNPHywVg3L57NxgoT0yDRLlC5tCwXa4G1lAGIGVd65R6Jf1p9
+ YYZK6SY17F9rSHH+mnnGZ9dEWrFRvxVHimxDx1ETVDhMoYIDoTZb7WcuK/H+ljmgyxxWkdTMGqX
+ CO0p9F9mBZv94a2uM/+rOw/2aaFM0kY7zgylDfGD/D3Djz5cAj7/LsQ==
+X-Gm-Gg: ASbGncscrK04Cv4w0d7NZN7idTEy15Ao253IDDLszq3a9NYHomuy5aYDLRVd2D5bCx1
+ Xv5d3LTj/tt4KiUFbQ4Z0plB5Mrk+09Pvu2zSmornvNGe1ACQAuSkO7lp3f6A6WG8L1RTYZKJRZ
+ airHCuDZO6qqWdU/Kt7tXk2+D1cSEHZAEHnpgmZ7/tU1r4XfCZbw1WTziMQPiyjPXdob9Gy1s6a
+ 8E62qE46X7rf3Gv6k0VjZWgr4Nz1pj/PhEgPfilWdB1GfkOG5EuPN41MYSJXo76n8VLxSLVWGkv
+ HknRxN39J1U74PMq+RFaUi/0JN1AxH8yDQ9BWWpJ8DPfH7IOA89GTqwidNvqxXqyloFg5pczQ74
+ M9frc2sp93Pe77sjY
+X-Received: by 2002:a05:6000:2910:b0:3ea:e0fd:28e8 with SMTP id
+ ffacd0b85a97d-42557816d76mr2910260f8f.32.1759335926086; 
+ Wed, 01 Oct 2025 09:25:26 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IE1rr+ZoKLEqTdSuKl3u6YTjvdJwXC3VPBvwBaYlIe1OUEzXQHWRTE7Jf3VrpxW5o6gyPNnwA==
+X-Received: by 2002:a05:6000:2910:b0:3ea:e0fd:28e8 with SMTP id
+ ffacd0b85a97d-42557816d76mr2910226f8f.32.1759335925600; 
+ Wed, 01 Oct 2025 09:25:25 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-40fb72facf9sm28472904f8f.13.2025.10.01.09.25.24
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 01 Oct 2025 09:23:30 -0700 (PDT)
-Message-ID: <0c60b6e7-9e87-49aa-b00b-751c038ab8fa@linaro.org>
-Date: Wed, 1 Oct 2025 18:23:29 +0200
+ Wed, 01 Oct 2025 09:25:25 -0700 (PDT)
+Message-ID: <b36b05e2-3453-4655-b060-7259624feb08@redhat.com>
+Date: Wed, 1 Oct 2025 18:25:23 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 03/22] monitor/hmp-cmds: Get cpu first addr space with
- cpu_get_address_space()
-To: BALATON Zoltan <balaton@eik.bme.hu>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
- Richard Henderson <richard.henderson@linaro.org>, qemu-riscv@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>, qemu-ppc@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>, Peter Xu
- <peterx@redhat.com>, "Dr. David Alan Gilbert" <dave@treblig.org>
-References: <20251001150529.14122-1-philmd@linaro.org>
- <20251001150529.14122-4-philmd@linaro.org>
- <2b87c3ee-2b25-bea5-3f73-bd089848d19e@eik.bme.hu>
+Subject: Re: [PATCH v4 05/27] hw/arm/smmuv3-accel: Introduce smmuv3 accel
+ device
+To: Shameer Kolothum <skolothumtho@nvidia.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, jgg@nvidia.com, nicolinc@nvidia.com,
+ ddutile@redhat.com, berrange@redhat.com, nathanc@nvidia.com,
+ mochs@nvidia.com, smostafa@google.com, wangzhou1@hisilicon.com,
+ jiangkunkun@huawei.com, jonathan.cameron@huawei.com,
+ zhangfei.gao@linaro.org, zhenzhong.duan@intel.com, yi.l.liu@intel.com,
+ shameerkolothum@gmail.com
+References: <20250929133643.38961-1-skolothumtho@nvidia.com>
+ <20250929133643.38961-6-skolothumtho@nvidia.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <20250929133643.38961-6-skolothumtho@nvidia.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: SWnCWOq8Zre82PlF_MNC5q7P_sPahbK2RNOI2zN7DO8_1759335926
+X-Mimecast-Originator: redhat.com
 Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <2b87c3ee-2b25-bea5-3f73-bd089848d19e@eik.bme.hu>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::329;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x329.google.com
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
- DKIM_SIGNED=0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -25
+X-Spam_score: -2.6
+X-Spam_bar: --
+X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.518,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -106,52 +123,203 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 1/10/25 17:35, BALATON Zoltan wrote:
-> On Wed, 1 Oct 2025, Philippe Mathieu-Daudé wrote:
->> In order to remove the convenient CPUState::as field, access
->> the vcpu first address space using the cpu_get_address_space()
->> helper.
->>
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->> ---
->> monitor/hmp-cmds-target.c | 3 ++-
->> 1 file changed, 2 insertions(+), 1 deletion(-)
->>
->> diff --git a/monitor/hmp-cmds-target.c b/monitor/hmp-cmds-target.c
->> index e9820611466..602af851328 100644
->> --- a/monitor/hmp-cmds-target.c
->> +++ b/monitor/hmp-cmds-target.c
->> @@ -128,6 +128,8 @@ static void memory_dump(Monitor *mon, int count, 
->> int format, int wsize,
->>     uint8_t buf[16];
->>     uint64_t v;
->>     CPUState *cs = mon_get_cpu(mon);
->> +    AddressSpace *as = cs ? cpu_get_address_space(cs, 0)
->> +                          : &address_space_memory;
-> 
-> Why move from local scope to an upper level?
+Hi Shameer,
 
-Out of the while() loop to call it once only.
+On 9/29/25 3:36 PM, Shameer Kolothum wrote:
+> Set up dedicated PCIIOMMUOps for the accel SMMUv3, since it will need
+> different callback handling in upcoming patches. This also adds a
+> CONFIG_ARM_SMMUV3_ACCEL build option so the feature can be disabled
+> at compile time. Because we now include CONFIG_DEVICES in the header to
+> check for ARM_SMMUV3_ACCEL, the meson file entry for smmuv3.c needs to
+> be changed as well.
+>
+> The “accel” property isn’t user visible yet, it will be introduced in
+> a later patch once all the supporting pieces are ready.
+>
+> Reviewed-by: Nicolin Chen <nicolinc@nvidia.com>
+> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
 
-> 
-> Regards,
-> BALATON Zoltan
-> 
->>     if (!cs && (format == 'i' || !is_physical)) {
->>         monitor_printf(mon, "Can not dump without CPU\n");
->> @@ -174,7 +176,6 @@ static void memory_dump(Monitor *mon, int count, 
->> int format, int wsize,
->>         if (l > line_size)
->>             l = line_size;
->>         if (is_physical) {
->> -            AddressSpace *as = cs ? cs->as : &address_space_memory;
->>             MemTxResult r = address_space_read(as, addr,
->>                                                MEMTXATTRS_UNSPECIFIED, 
->> buf, l);
->>             if (r != MEMTX_OK) {
->>
+Eric
+> ---
+>  hw/arm/Kconfig          |  5 ++++
+>  hw/arm/meson.build      |  3 ++-
+>  hw/arm/smmuv3-accel.c   | 52 +++++++++++++++++++++++++++++++++++++++++
+>  hw/arm/smmuv3-accel.h   | 27 +++++++++++++++++++++
+>  hw/arm/smmuv3.c         |  5 ++++
+>  include/hw/arm/smmuv3.h |  3 +++
+>  6 files changed, 94 insertions(+), 1 deletion(-)
+>  create mode 100644 hw/arm/smmuv3-accel.c
+>  create mode 100644 hw/arm/smmuv3-accel.h
+>
+> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+> index 3baa6c6c74..157c0f3517 100644
+> --- a/hw/arm/Kconfig
+> +++ b/hw/arm/Kconfig
+> @@ -12,6 +12,7 @@ config ARM_VIRT
+>      select ARM_GIC
+>      select ACPI
+>      select ARM_SMMUV3
+> +    select ARM_SMMUV3_ACCEL
+>      select GPIO_KEY
+>      select DEVICE_TREE
+>      select FW_CFG_DMA
+> @@ -625,6 +626,10 @@ config FSL_IMX8MP_EVK
+>  config ARM_SMMUV3
+>      bool
+>  
+> +config ARM_SMMUV3_ACCEL
+> +    bool
+> +    depends on ARM_SMMUV3 && IOMMUFD
+> +
+>  config FSL_IMX6UL
+>      bool
+>      default y
+> diff --git a/hw/arm/meson.build b/hw/arm/meson.build
+> index dc68391305..bcb27c0bf6 100644
+> --- a/hw/arm/meson.build
+> +++ b/hw/arm/meson.build
+> @@ -61,7 +61,8 @@ arm_common_ss.add(when: 'CONFIG_ARMSSE', if_true: files('armsse.c'))
+>  arm_common_ss.add(when: 'CONFIG_FSL_IMX7', if_true: files('fsl-imx7.c', 'mcimx7d-sabre.c'))
+>  arm_common_ss.add(when: 'CONFIG_FSL_IMX8MP', if_true: files('fsl-imx8mp.c'))
+>  arm_common_ss.add(when: 'CONFIG_FSL_IMX8MP_EVK', if_true: files('imx8mp-evk.c'))
+> -arm_common_ss.add(when: 'CONFIG_ARM_SMMUV3', if_true: files('smmuv3.c'))
+> +arm_ss.add(when: 'CONFIG_ARM_SMMUV3', if_true: files('smmuv3.c'))
+> +arm_ss.add(when: 'CONFIG_ARM_SMMUV3_ACCEL', if_true: files('smmuv3-accel.c'))
+>  arm_common_ss.add(when: 'CONFIG_FSL_IMX6UL', if_true: files('fsl-imx6ul.c', 'mcimx6ul-evk.c'))
+>  arm_common_ss.add(when: 'CONFIG_NRF51_SOC', if_true: files('nrf51_soc.c'))
+>  arm_ss.add(when: 'CONFIG_XEN', if_true: files(
+> diff --git a/hw/arm/smmuv3-accel.c b/hw/arm/smmuv3-accel.c
+> new file mode 100644
+> index 0000000000..79f1713be6
+> --- /dev/null
+> +++ b/hw/arm/smmuv3-accel.c
+> @@ -0,0 +1,52 @@
+> +/*
+> + * Copyright (c) 2025 Huawei Technologies R & D (UK) Ltd
+> + * Copyright (C) 2025 NVIDIA
+> + * Written by Nicolin Chen, Shameer Kolothum
+> + *
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +
+> +#include "hw/arm/smmuv3.h"
+> +#include "smmuv3-accel.h"
+> +
+> +static SMMUv3AccelDevice *smmuv3_accel_get_dev(SMMUState *bs, SMMUPciBus *sbus,
+> +                                               PCIBus *bus, int devfn)
+> +{
+> +    SMMUDevice *sdev = sbus->pbdev[devfn];
+> +    SMMUv3AccelDevice *accel_dev;
+> +
+> +    if (sdev) {
+> +        return container_of(sdev, SMMUv3AccelDevice, sdev);
+> +    }
+> +
+> +    accel_dev = g_new0(SMMUv3AccelDevice, 1);
+> +    sdev = &accel_dev->sdev;
+> +
+> +    sbus->pbdev[devfn] = sdev;
+> +    smmu_init_sdev(bs, sdev, bus, devfn);
+> +    return accel_dev;
+> +}
+> +
+> +static AddressSpace *smmuv3_accel_find_add_as(PCIBus *bus, void *opaque,
+> +                                              int devfn)
+> +{
+> +    SMMUState *bs = opaque;
+> +    SMMUPciBus *sbus = smmu_get_sbus(bs, bus);
+> +    SMMUv3AccelDevice *accel_dev = smmuv3_accel_get_dev(bs, sbus, bus, devfn);
+> +    SMMUDevice *sdev = &accel_dev->sdev;
+> +
+> +    return &sdev->as;
+> +}
+> +
+> +static const PCIIOMMUOps smmuv3_accel_ops = {
+> +    .get_address_space = smmuv3_accel_find_add_as,
+> +};
+> +
+> +void smmuv3_accel_init(SMMUv3State *s)
+> +{
+> +    SMMUState *bs = ARM_SMMU(s);
+> +
+> +    bs->iommu_ops = &smmuv3_accel_ops;
+> +}
+> diff --git a/hw/arm/smmuv3-accel.h b/hw/arm/smmuv3-accel.h
+> new file mode 100644
+> index 0000000000..70da16960f
+> --- /dev/null
+> +++ b/hw/arm/smmuv3-accel.h
+> @@ -0,0 +1,27 @@
+> +/*
+> + * Copyright (c) 2025 Huawei Technologies R & D (UK) Ltd
+> + * Copyright (C) 2025 NVIDIA
+> + * Written by Nicolin Chen, Shameer Kolothum
+> + *
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + */
+> +
+> +#ifndef HW_ARM_SMMUV3_ACCEL_H
+> +#define HW_ARM_SMMUV3_ACCEL_H
+> +
+> +#include "hw/arm/smmu-common.h"
+> +#include CONFIG_DEVICES
+> +
+> +typedef struct SMMUv3AccelDevice {
+> +    SMMUDevice  sdev;
+> +} SMMUv3AccelDevice;
+> +
+> +#ifdef CONFIG_ARM_SMMUV3_ACCEL
+> +void smmuv3_accel_init(SMMUv3State *s);
+> +#else
+> +static inline void smmuv3_accel_init(SMMUv3State *s)
+> +{
+> +}
+> +#endif
+> +
+> +#endif /* HW_ARM_SMMUV3_ACCEL_H */
+> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+> index bcf8af8dc7..ef991cb7d8 100644
+> --- a/hw/arm/smmuv3.c
+> +++ b/hw/arm/smmuv3.c
+> @@ -32,6 +32,7 @@
+>  #include "qapi/error.h"
+>  
+>  #include "hw/arm/smmuv3.h"
+> +#include "smmuv3-accel.h"
+>  #include "smmuv3-internal.h"
+>  #include "smmu-internal.h"
+>  
+> @@ -1882,6 +1883,10 @@ static void smmu_realize(DeviceState *d, Error **errp)
+>      SysBusDevice *dev = SYS_BUS_DEVICE(d);
+>      Error *local_err = NULL;
+>  
+> +    if (s->accel) {
+> +        smmuv3_accel_init(s);
+> +    }
+> +
+>      c->parent_realize(d, &local_err);
+>      if (local_err) {
+>          error_propagate(errp, local_err);
+> diff --git a/include/hw/arm/smmuv3.h b/include/hw/arm/smmuv3.h
+> index d183a62766..bb7076286b 100644
+> --- a/include/hw/arm/smmuv3.h
+> +++ b/include/hw/arm/smmuv3.h
+> @@ -63,6 +63,9 @@ struct SMMUv3State {
+>      qemu_irq     irq[4];
+>      QemuMutex mutex;
+>      char *stage;
+> +
+> +    /* SMMU has HW accelerator support for nested S1 + s2 */
+> +    bool accel;
+>  };
+>  
+>  typedef enum {
 
 

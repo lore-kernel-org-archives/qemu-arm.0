@@ -4,65 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87BF3CAC5BB
-	for <qemu-arm@archiver.kernel.org>; Wed,  1 Oct 2025 15:15:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05F9FCAC5BB
+	for <qemu-arm@archiver.kernel.org>; Wed,  1 Oct 2025 15:18:06 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v3yRn-000314-8d; Wed, 01 Oct 2025 11:08:51 -0400
+	id 1v3yRM-0002Kx-N9; Wed, 01 Oct 2025 11:08:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v3yRA-00027y-Jg
- for qemu-arm@nongnu.org; Wed, 01 Oct 2025 11:08:13 -0400
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v3yQv-0001mS-OC
+ for qemu-arm@nongnu.org; Wed, 01 Oct 2025 11:07:58 -0400
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v3yPk-0000lA-QC
- for qemu-arm@nongnu.org; Wed, 01 Oct 2025 11:08:07 -0400
-Received: by mail-wm1-x32e.google.com with SMTP id
- 5b1f17b1804b1-46e2e363118so70575805e9.0
- for <qemu-arm@nongnu.org>; Wed, 01 Oct 2025 08:06:37 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v3yPd-0000kT-1r
+ for qemu-arm@nongnu.org; Wed, 01 Oct 2025 11:07:57 -0400
+Received: by mail-wr1-x42a.google.com with SMTP id
+ ffacd0b85a97d-3ece0e4c5faso5914506f8f.1
+ for <qemu-arm@nongnu.org>; Wed, 01 Oct 2025 08:06:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1759331193; x=1759935993; darn=nongnu.org;
+ d=linaro.org; s=google; t=1759331188; x=1759935988; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=dcFSHzwi7uBOl2YyW6dgGkKIyMLR1GvdjSiz7OthsV4=;
- b=l4WCmZ46q3O2rseWf0Lq9gMGspWTbGll+/eIQRZWw7bHWMGNZWyKx0xR/T5cpNkRTS
- FJoek2LnaQUy2TQauUNJL7/ILrvsH10xBpGc9SGqY7jzuriojr0RxxVI3gLQRakJTevq
- dZqsGTUQc2iufIgEmPL2v7OAw1/llIFhlsFt6M3QGaCKWeEHjS6Q46cS2JVLIv5+Mvra
- mLLAYpNmxjJED1LEh0M1zEQBZfzoYTQeXo4NtaV4ZEBsImoR6OMAmZoRvusLNTCbVw6m
- aLtr96e5de3Hg8SZghqUBzJvF/Qk5ineIw3rHVJd7ouuW4BhDgHES2cWBHUfcoQafKas
- orXA==
+ bh=HoIBFbfrsz0t0Xevzl+WovcI4TEmiT7XaJGhm9ak06U=;
+ b=nlRfxxewELkEOoBWYOA6cRJ89bc1Z59JARKf3fadJUd/Ph/WL0EPsLYlsO1spmPER0
+ yJ+trwz4rBlfLMd/aHhbNnzGrPq1gfW7EF0kRB4L5uehy7ciqhqRXjrjEeIrAvI9Yvtz
+ h5sGzM98beDX1e5FiUhRZC4f/V+mRO05sbvgWxJ/mJ6hykC8tbvEs7TplkBJHAGCvaLT
+ 4nJ2aGANSuliJWXHgiavbtgdYnOazKL10ga6ieuLpWFjxLUr/2bJDFL5VrWcxqBcjnch
+ MavihMDuj8OvI3r9oVMkSZkbaaKS0IpUHTfeL6ExoXrbGxx4R9phWaMMl9kILfurr4eC
+ rzrg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759331193; x=1759935993;
+ d=1e100.net; s=20230601; t=1759331188; x=1759935988;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=dcFSHzwi7uBOl2YyW6dgGkKIyMLR1GvdjSiz7OthsV4=;
- b=AYeTEDoGaKbyL/ZrPddZyFg3Dx+821jdmDkxleP/WsEtZL6gGLowEHlQEtjmUhTwVt
- cKnU0CFf/tMb073OxdxBsKist+fkDihsnK68aXkrbUJhrZoLMQH90UL2+gvlVmy+Jdtk
- DYX8zktZLOQlYPRq/B0XFtnOS/WoR9kxmlnBD2uP6hyWdwOUty2Z57kITkUDAtcx7uDV
- JpO0R0mAs9KBmTyHE2ziAKvElkVCi3/PmtOaToSRFQzHoSIfsrjO+qTS1eni9LZjZKWH
- hbnWvYCQnqtQj+u8yLiyEtQ/gvohqrArI+rORJEFOZSsnJpZei8A8XCEkgF5NlMN4IoT
- 62XA==
-X-Gm-Message-State: AOJu0YzVHHJbsgob93LMuUGJGXpCtBfirlDHhGztjfexhRsN3Im8PCR2
- Uxb1zsNNHZTeqtSvOqtH+bQE352WKXDeTvCjDYJj6rXrC8WokleN9SCDWq56Iuyy45o=
-X-Gm-Gg: ASbGncvrbPs2SX8EGyZ3jKv5vTCXNX+4CBHBMvOPV5HWsoH3IJFom0AvxWYz7OTt4O9
- TAhaNQ4zVx3skUOYhOaZ1Klws+OzLHsFTiQP07BL5vA5WJUHZuw1etBDCzCbrd35g9C8nQnbGMJ
- OIHvKc05t/ikw8nQjXmVrEXYK+4oCB6HhNaDO6Iw+icAuw5OPCqPar/Y+tSA/0tZfzVzPh5STGe
- letxCpNKXOXOFdvs45pQNB/eU/fHFbpiYuIYcu4Gxk8f1C+CW5t5OynWRmI97ZWGsp91t0xf4TP
- ax75EaTn1J8aQ5uw18M/wFST2BsboT7NpIVaHkSH5jVRqsz4JcVicqDEx8hxFCqu5e8u7zBV9Wv
- 61iQTYsxyh2cCHvhsiemhfRN3SArbnZUOUx3DAQxUVSUIdStZdQBkRzqehClJE3WBo78dTP3Nfj
- S5KYQH7DYiF9h78cqhqC+O
-X-Google-Smtp-Source: AGHT+IG1J0a47sLtwxFcaDSrout4RLN5hlQ7CnmTr7At+cHLbk6rWfBZ9Y0L1CqSK/VyWdUPHPzjcA==
-X-Received: by 2002:a05:600c:1d12:b0:46e:3d41:5fe7 with SMTP id
- 5b1f17b1804b1-46e612dcff2mr30889775e9.29.1759331192779; 
- Wed, 01 Oct 2025 08:06:32 -0700 (PDT)
+ bh=HoIBFbfrsz0t0Xevzl+WovcI4TEmiT7XaJGhm9ak06U=;
+ b=J49DNReg/l/UUY0HVVq733cXVrQU4LQF2UqmObSdtwZsjygUvH3bfPKI7qk9FgBFWX
+ SPVJZWkH/y5UfGemqPHipN+a6Lwx6ncgk9j6/aHUgV+XOjK090LeoGfuPmEa4azvvEc4
+ d1ntDXkAuRJvM8UEKp6qKJGX7ZI5BmFQ4Cu6XTI8+iXfda5uB+XUz9ydA//j5D0R0xC0
+ IIKUdQDsXoCpDx+8sd6PEK6kNGVhvBWiAW5Grz5tYbC6gQ7ibddpxkbj1sj/2lY2f/+c
+ /Kg+unJNIN6Q4zcIErfTY38mBL02NUj85Db5LC5Mc5ZqNRt+hw0mofbpdRVvUKXTcp9i
+ dJaw==
+X-Gm-Message-State: AOJu0YyrjR/6E3KCUsCdBzQb9YJyw9FF/kNiCuinAk6x+5G/osJVY0vL
+ xjCUKLppXvZv4H1tMPGfJOCdYAuiuvMyHw3gCS68LAq0lnZyA5qp8vAZxvxCNFB1/AU=
+X-Gm-Gg: ASbGncuNreFGZr66Iae1AtiEiakT1eSCatz17jz8H0FAXOXBYidJJxVzki5vor0Nwga
+ g51RgWXE0OQiaiuA/4IaWssc95oEhuaS+MS6LwVqE33CgAxuqxX2zPWC7gT81JSznJvNBK4uDtp
+ WU6bETpTaGVgZT5de1zVl9MzSDQ5VKUZr72KJwvaVnZFkyF6lfU6rD5lPUdfAXcoaFjUtabSpiL
+ GwcGDVhR0ypTUuRx74PNdKup+A57hHE9d4imrYIG0adF9Xb1VTvHzAOHqtBHvOa/AvozwIupY51
+ WhCgfyEwtcGDzK9D3T8BLCFdazrNKj0u/pPil3/liqQszc3B5QfrDvfKU9rkAkTDcrvGLix6VyI
+ O98wuoqF1SFJTT+JjM9Yyf+6w9qKj21A8zgEAjHANIqGvXWv1YpZa2G6C2TYSP0tKAkJgNI8gQP
+ kDKZ/LEgpyCnvLyxC/OJY4
+X-Google-Smtp-Source: AGHT+IEJ81qtfG04DHe/4mEazGBmhdqjREcWngyjsG2pu87Vb24G+7/Rah+ejZND5Mr0zO8mHcd6Fw==
+X-Received: by 2002:a05:6000:2907:b0:3e0:2a95:dc90 with SMTP id
+ ffacd0b85a97d-4255780b9dfmr3190951f8f.35.1759331187866; 
+ Wed, 01 Oct 2025 08:06:27 -0700 (PDT)
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-46e6199f17asm43113885e9.6.2025.10.01.08.06.31
+ ffacd0b85a97d-40fb9e1b665sm27390018f8f.27.2025.10.01.08.06.26
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 01 Oct 2025 08:06:32 -0700 (PDT)
+ Wed, 01 Oct 2025 08:06:27 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
@@ -71,25 +71,25 @@ Cc: qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
  Paolo Bonzini <pbonzini@redhat.com>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>,
  Peter Xu <peterx@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Helge Deller <deller@gmx.de>
-Subject: [PATCH 12/22] target/hppa: Get cpu first addr space with
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH 11/22] target/arm: Get cpu first addr space with
  cpu_get_address_space()
-Date: Wed,  1 Oct 2025 17:05:17 +0200
-Message-ID: <20251001150529.14122-13-philmd@linaro.org>
+Date: Wed,  1 Oct 2025 17:05:16 +0200
+Message-ID: <20251001150529.14122-12-philmd@linaro.org>
 X-Mailer: git-send-email 2.51.0
 In-Reply-To: <20251001150529.14122-1-philmd@linaro.org>
 References: <20251001150529.14122-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -112,30 +112,41 @@ helper.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- target/hppa/int_helper.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ target/arm/cpu.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
 
-diff --git a/target/hppa/int_helper.c b/target/hppa/int_helper.c
-index 191ae19404b..4dd281e6c95 100644
---- a/target/hppa/int_helper.c
-+++ b/target/hppa/int_helper.c
-@@ -160,6 +160,7 @@ void hppa_cpu_do_interrupt(CPUState *cs)
-                 /* ??? An alternate fool-proof method would be to store the
-                    instruction data into the unwind info.  That's probably
-                    a bit too much in the way of extra storage required.  */
-+                AddressSpace *as = cpu_get_address_space(cs, 0);
-                 vaddr vaddr = env->iaoq_f & -4;
-                 hwaddr paddr = vaddr;
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 30e29fd3153..f781d1cfd80 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -371,6 +371,7 @@ static void arm_cpu_reset_hold(Object *obj, ResetType type)
  
-@@ -176,7 +177,7 @@ void hppa_cpu_do_interrupt(CPUState *cs)
-                         break;
-                     }
-                 }
--                env->cr[CR_IIR] = ldl_phys(cs->as, paddr);
-+                env->cr[CR_IIR] = ldl_phys(as, paddr);
-                 if (i == EXCP_ASSIST) {
-                     /* stuff insn code into bits of FP exception register #1 */
-                     env->fr[0] |= (env->cr[CR_IIR] & 0x03ffffff);
+     if (arm_feature(env, ARM_FEATURE_M)) {
+ #ifndef CONFIG_USER_ONLY
++        AddressSpace *as = cpu_get_address_space(cs, 0);
+         uint32_t initial_msp; /* Loaded from 0x0 */
+         uint32_t initial_pc; /* Loaded from 0x4 */
+         uint8_t *rom;
+@@ -439,7 +440,7 @@ static void arm_cpu_reset_hold(Object *obj, ResetType type)
+ 
+         /* Load the initial SP and PC from offset 0 and 4 in the vector table */
+         vecbase = env->v7m.vecbase[env->v7m.secure];
+-        rom = rom_ptr_for_as(cs->as, vecbase, 8);
++        rom = rom_ptr_for_as(as, vecbase, 8);
+         if (rom) {
+             /* Address zero is covered by ROM which hasn't yet been
+              * copied into physical memory.
+@@ -452,8 +453,8 @@ static void arm_cpu_reset_hold(Object *obj, ResetType type)
+              * it got copied into memory. In the latter case, rom_ptr
+              * will return a NULL pointer and we should use ldl_phys instead.
+              */
+-            initial_msp = ldl_phys(cs->as, vecbase);
+-            initial_pc = ldl_phys(cs->as, vecbase + 4);
++            initial_msp = ldl_phys(as, vecbase);
++            initial_pc = ldl_phys(as, vecbase + 4);
+         }
+ 
+         qemu_log_mask(CPU_LOG_INT,
 -- 
 2.51.0
 

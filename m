@@ -4,64 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3630FCCA470
-	for <qemu-arm@archiver.kernel.org>; Wed,  1 Oct 2025 15:06:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5AF3BCAC5BB
+	for <qemu-arm@archiver.kernel.org>; Wed,  1 Oct 2025 15:07:26 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v3yP0-0000b6-D4; Wed, 01 Oct 2025 11:05:58 -0400
+	id 1v3yQA-00018i-UZ; Wed, 01 Oct 2025 11:07:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v3yOs-0000Yt-Ro
- for qemu-arm@nongnu.org; Wed, 01 Oct 2025 11:05:53 -0400
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v3yPj-00011M-BU
+ for qemu-arm@nongnu.org; Wed, 01 Oct 2025 11:06:45 -0400
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v3yOl-0000c7-2Z
- for qemu-arm@nongnu.org; Wed, 01 Oct 2025 11:05:49 -0400
-Received: by mail-wr1-x42d.google.com with SMTP id
- ffacd0b85a97d-42421b1514fso1307417f8f.2
- for <qemu-arm@nongnu.org>; Wed, 01 Oct 2025 08:05:36 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v3yP5-0000f7-M7
+ for qemu-arm@nongnu.org; Wed, 01 Oct 2025 11:06:39 -0400
+Received: by mail-wm1-x330.google.com with SMTP id
+ 5b1f17b1804b1-46b303f7469so50908455e9.1
+ for <qemu-arm@nongnu.org>; Wed, 01 Oct 2025 08:05:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1759331131; x=1759935931; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=bX1keC/9mpclBrFaOQD5CnQBdOGk2TIdIpvuGAEFtoQ=;
- b=k5Apk4xEkTwwA2nCV6pB7+qn/5PfgsI/a4KeiB/FBMHpv7aaP4gRyXPVGvMoKm73dc
- KzysThC6B7r6EIgBumVHhGqW2JjPwZbViAz/6kkiRLzXGU0rS0IRK4yCJCx8Quq+R/4q
- JGJlTbwZS5Hrvdjic641q1xXZfP/Bau0HwDa2CH7hFYGKo7DzhQAJPnwtwnOE50wa/2X
- Utjs9oF0LC1Q0H9wXyMAJ0KME3kKruDcEp+3BOAQCdkPBKuCJIaMAnbZ9RHreyGcFjDB
- DytSkNtj+cs6WBXib/fDvoDxhAh4GjHApsfk/6vKc2jOu2BaXj0vjGZ7DAkraA6yh2FK
- 4H1g==
+ d=linaro.org; s=google; t=1759331152; x=1759935952; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=RzVIXRWuWGr9aTJxzc0zYs0L20Pybb+agvUMr6jmaGc=;
+ b=IFqIhhKLs0C16+ZcGsqHoYJLIZ/wEo4/wPj7HyJ15ZkzrlLm3vxflCBX02QVL8edSa
+ eEaAeAtYWc2Cy/oclB1osQv5j75XIATVcLhXhsY3N7fcQhUDdFGfez0J49MBJLdN4t6u
+ 8iu+HxXL+row7GHXZ9L0QuL4aim9gKHZVA4nTkINMO3L6qmGFr03rjJ7HwIJ94/rLGw3
+ vzzr8ZLe3gxLNuDDUyEkUVHvMgAHa5Q/Le1ficB7mF2PMxrTNvrM7DCZ6Ji5K+KLMcPw
+ t14Rf1ysM1xk9TybdZZaO2zTpMzEzTGUYz89x5qXMMVcHXCUu7n2yL0Rkj/JWilf3HvU
+ SzuA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759331131; x=1759935931;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=bX1keC/9mpclBrFaOQD5CnQBdOGk2TIdIpvuGAEFtoQ=;
- b=kGUkzcdJBJauD2m51fWANOmkfqsaJJO/6myxqfBnprQ20wORo6ThDHoVZB6I0x7eix
- 1Xxl/OQ73RQw1nhu/7JYsABz2jM7pnGyIlac/mfO+GQYYntMfNonb/ERgCvog7s/LNOo
- ViuIqXQGqB9uBVGK8WB23hSSMHIYlyMZfLifxCWa/PWkCrapWdSfFK2/Sioq6I6tW/Q6
- PilIxyrcOjGAYyZ1V1tCy377kxsxYLi+ZLNNXH0p34cPjBRlk8vob4fVXqIkMhssgTo6
- u/Yxi8XpIy16FI2M3Km/Fg/2udtR5UpJHXSDu3t4z8tvHtzUToNYvXj/pnwiUPA+wY50
- 0LEw==
-X-Gm-Message-State: AOJu0YyTtxnOrR0PdcIjr4Q3NsIiIXUpsgZmojdBeXsmgCRhrfewMFdM
- 49AqbxFZ1E1xj3gnPg4ctmn+NaV77HYRar4cApmPvN3WQlNuQR4Gx4/KnY5W8VDbMI8=
-X-Gm-Gg: ASbGncs5z28nu2mGXZeD2Aym5S2sNJxPWjmnJFFIhinJTJvcLeCEwMLCVQ44y04I4YF
- JY7aPAw1KKR/+7JrsatoWHkaK2OqBDQgn/07Tb4OCYeT2yfgLRqixrSJfRx0vzdLh8k7isK4Xmp
- +YySgZKy7ISxlp7NQbvOFqPKd1IDDt0QRd52NbiCequ8c0uShyH3TV+4qCG9wwSaBoGLWKl+u6p
- QP3ZztqY+ieavcbHgelnEYHSA4bmZCcX+mcQoL11kyKZKYgbLq6nqs6OOA8b7iLu766inIriR37
- GkQpZmUI48vtkIlsajQ51Yp7qnSYxmo/cNBAObWNqYV2yV6H/75PEprIe4+/hrDJMToZUfZqhZU
- wDWI2fPeq3D6eKTfA4yUm3MRHt2fVQOfBc56yxOTXeQpqKZW99brV/31101X8LUT3LvrE5v8e1L
- /V7WDvNPbr+bIcA2Z2w2wF8vPCcZ1qCuk=
-X-Google-Smtp-Source: AGHT+IE5bhum517hVkgU+gzfCFhPtdaNIrGi0XfxSJacAGZiwEMZLs8k8e8gb1GkqoMBBwDEaDIpdA==
-X-Received: by 2002:a05:6000:200d:b0:400:1bbb:d279 with SMTP id
- ffacd0b85a97d-4255780b23dmr2887842f8f.39.1759331131328; 
- Wed, 01 Oct 2025 08:05:31 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1759331152; x=1759935952;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=RzVIXRWuWGr9aTJxzc0zYs0L20Pybb+agvUMr6jmaGc=;
+ b=pbQ4Lzb61eztAWkdnrIHGgtpUIUddlJZtXOBNQK47OLcWnRRqHWCGI95dRiQcEUmc+
+ ubOcp+Cd+9Kj5SbbcipCrnLMgFouq/q2esui9OSRBzUYZws+OItM0HcbUp7bNxgElyQ7
+ wDEtcZZ59hRhmsuAnn1nOjm6e8B5WvEAgbfNcZYdCPfcvz4kdpgWYi1dwUWfieTLJ8zA
+ 5UWO1uW4pISDaYaHdnRwj5pbbZV73lzK0k3Wjk56VFxJgPT+jneh9hYI7ws1Qyuu8+lp
+ QjtsznvWuZfJXGF8JNsAoHhxOwN6WtGXNnzlj2hoxC1g+2qq4tJyoIJWHTohIOOOSfMV
+ yD2w==
+X-Gm-Message-State: AOJu0YwBWWa3b3DyU2+YJX27waPdsExdy6yZGb74G9XVgf5sO7PATFr1
+ 1yE3+F80G1P2pxarAuMcHyH6WcR0uzkRI2J7jxqO3+N0hxA5FjnzDymjMcDAOVg4n7JOJOHLPi5
+ +rz0gwONkwg==
+X-Gm-Gg: ASbGncv7GK0v7ATqVzxowiwCxSW9FOKtJhzU2n6vYOcRCuJJBqm1PY52LQAMPSRRkUv
+ At/ss1ZSx/IH/za+wHxzqbPJkD+dhbVkhC9x/kHiA2D+zg16kp/lYGZCyuvk0e34oFMvqzuI6h0
+ E2pl1HjmLWuONgw/k6uRfOT/9mjvvTH0jLRbjIhm3lmVW1eXhIspRco62q4GB2T8xq2+oeKikN7
+ zPJYLkjpKiyJyS5eHpCyQugucCHbx05DPaOUkDFagkojtik3guIPdzdz9wNqPZK6B7kw6/gp/+i
+ rOpfy87Oib7CvQUlv/WbtRlrb6tEck8PnQAMSmQWiXtdSY9qgd7HEldZ5noBs6AQWUsp7dZau38
+ iC/dYoVcL2TN5lGn9qd++ECobgIOQF5Dog8ra+4HDHb+9iuwcr6hdt9Zkmwz26J4qg1AkqxixL6
+ T7J4qf/adT80++2KTIFTPL
+X-Google-Smtp-Source: AGHT+IFLHawgvzRRR9giVgia0mvWSnvz0hRd72bjATPATk4foHjp7wT3xHqdxQtb6jCh5XRxIdg0vA==
+X-Received: by 2002:a05:600c:3b08:b0:468:4350:c84d with SMTP id
+ 5b1f17b1804b1-46e6125ce14mr30601145e9.7.1759331152089; 
+ Wed, 01 Oct 2025 08:05:52 -0700 (PDT)
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-40fb89fb2fcsm29386920f8f.22.2025.10.01.08.05.30
+ 5b1f17b1804b1-46e5c4c0321sm36203765e9.8.2025.10.01.08.05.50
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 01 Oct 2025 08:05:30 -0700 (PDT)
+ Wed, 01 Oct 2025 08:05:51 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
@@ -70,23 +72,27 @@ Cc: qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
  Paolo Bonzini <pbonzini@redhat.com>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>,
  Peter Xu <peterx@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 00/22] hw/core/cpu: Remove @CPUState::as field
-Date: Wed,  1 Oct 2025 17:05:05 +0200
-Message-ID: <20251001150529.14122-1-philmd@linaro.org>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Alistair Francis <alistair@alistair23.me>
+Subject: [PATCH 04/22] hw/core/loader: Get cpu first addr space with
+ cpu_get_address_space()
+Date: Wed,  1 Oct 2025 17:05:09 +0200
+Message-ID: <20251001150529.14122-5-philmd@linaro.org>
 X-Mailer: git-send-email 2.51.0
+In-Reply-To: <20251001150529.14122-1-philmd@linaro.org>
+References: <20251001150529.14122-1-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::330;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -102,89 +108,39 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Instead of using the convenient @CPUState::as shortcut, use
-cpu_get_address_space(asidx=0) to get the vCPU first address
-space.
+In order to remove the convenient CPUState::as field, access
+the vcpu first address space using the cpu_get_address_space()
+helper.
 
-The goal is to reduce the risk of AS mis-use for targets
-that uses multiple ASes per vCPU.
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ hw/core/generic-loader.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-Based-on: <20251001082127.65741-1-philmd@linaro.org>
-
-Philippe Mathieu-Daudé (22):
-  system/qtest: Use &address_space_memory for first vCPU address space
-  disas/disas-mon: Get cpu first addr space with cpu_get_address_space()
-  monitor/hmp-cmds: Get cpu first addr space with
-    cpu_get_address_space()
-  hw/core/loader: Get cpu first addr space with cpu_get_address_space()
-  hw/ppc: Get cpu first addr space with cpu_get_address_space()
-  hw/m86k: Get cpu first addr space with cpu_get_address_space()
-  target/xtensa: Get cpu first addr space with cpu_get_address_space()
-  target/riscv: Get cpu first addr space with cpu_get_address_space()
-  semihosting: Get cpu first addr space with cpu_get_address_space()
-  target/alpha: Get cpu first addr space with cpu_get_address_space()
-  target/arm: Get cpu first addr space with cpu_get_address_space()
-  target/hppa: Get cpu first addr space with cpu_get_address_space()
-  target/i386: Get cpu first addr space with cpu_get_address_space()
-  target/loongarch: Get cpu first addr space with
-    cpu_get_address_space()
-  target/m68k: Get cpu first addr space with cpu_get_address_space()
-  target/microblaze: Get cpu first addr space with
-    cpu_get_address_space()
-  target/ppc: Get cpu first addr space with cpu_get_address_space()
-  target/s390x: Get cpu first addr space with cpu_get_address_space()
-  target/sparc: Get cpu first addr space with cpu_get_address_space()
-  hw/core/cpu: Remove @CPUState::as field
-  exec/cpu: Declare cpu_memory_rw_debug() in 'hw/core/cpu.h' and
-    document
-  target/sparc: Reduce inclusions of 'exec/cpu-common.h'
-
- include/exec/cpu-common.h         |  4 ---
- include/hw/core/cpu.h             | 23 +++++++++++--
- target/ppc/mmu-hash32.h           | 12 ++++---
- target/sparc/cpu.h                |  1 -
- disas/disas-mon.c                 |  3 +-
- hw/core/cpu-common.c              |  1 -
- hw/core/generic-loader.c          |  5 +--
- hw/intc/spapr_xive.c              |  5 +--
- hw/m68k/mcf5208.c                 |  6 ++--
- hw/m68k/q800.c                    | 17 ++++++----
- hw/m68k/virt.c                    |  5 +--
- hw/ppc/pegasos2.c                 |  2 +-
- hw/ppc/spapr.c                    | 12 +++----
- hw/ppc/spapr_hcall.c              | 55 ++++++++++++++++---------------
- hw/ppc/spapr_iommu.c              |  4 +--
- hw/ppc/spapr_nested.c             | 43 +++++++++++++-----------
- monitor/hmp-cmds-target.c         |  3 +-
- semihosting/arm-compat-semi.c     |  4 ++-
- system/cpus.c                     |  2 +-
- system/physmem.c                  | 10 ------
- system/qtest.c                    | 27 +++++++--------
- target/alpha/helper.c             |  8 +++--
- target/arm/cpu.c                  |  7 ++--
- target/hppa/int_helper.c          |  3 +-
- target/i386/arch_memory_mapping.c | 10 +++---
- target/loongarch/cpu_helper.c     |  5 +--
- target/loongarch/tcg/tlb_helper.c |  7 ++--
- target/m68k/helper.c              | 28 ++++++++--------
- target/microblaze/op_helper.c     |  6 ++--
- target/ppc/excp_helper.c          |  4 +--
- target/ppc/mmu-book3s-v3.c        |  5 +--
- target/ppc/mmu-hash32.c           |  6 ++--
- target/ppc/mmu-hash64.c           | 12 ++++---
- target/ppc/mmu-radix64.c          | 13 ++++----
- target/riscv/cpu_helper.c         |  7 ++--
- target/s390x/cpu-system.c         |  4 ++-
- target/s390x/mmu_helper.c         |  9 ++---
- target/s390x/tcg/excp_helper.c    | 10 +++---
- target/s390x/tcg/mem_helper.c     |  6 ++--
- target/sparc/helper.c             |  1 +
- target/sparc/int64_helper.c       |  1 +
- target/sparc/ldst_helper.c        | 22 +++++++------
- target/sparc/mmu_helper.c         | 21 +++++++-----
- target/xtensa/mmu_helper.c        |  3 +-
- 44 files changed, 253 insertions(+), 189 deletions(-)
-
+diff --git a/hw/core/generic-loader.c b/hw/core/generic-loader.c
+index e72bbde2a23..cc8eacdf067 100644
+--- a/hw/core/generic-loader.c
++++ b/hw/core/generic-loader.c
+@@ -52,8 +52,9 @@ static void generic_loader_reset(void *opaque)
+     }
+ 
+     if (s->data_len) {
++        AddressSpace *as = cpu_get_address_space(s->cpu, 0);
+         assert(s->data_len <= sizeof(s->data));
+-        dma_memory_write(s->cpu->as, s->addr, &s->data, s->data_len,
++        dma_memory_write(as, s->addr, &s->data, s->data_len,
+                          MEMTXATTRS_UNSPECIFIED);
+     }
+ }
+@@ -130,7 +131,7 @@ static void generic_loader_realize(DeviceState *dev, Error **errp)
+     }
+ 
+     if (s->file) {
+-        AddressSpace *as = s->cpu ? s->cpu->as :  NULL;
++        AddressSpace *as = cpu_get_address_space(s->cpu, 0);
+ 
+         if (!s->force_raw) {
+             size = load_elf_as(s->file, NULL, NULL, NULL, &entry, NULL, NULL,
 -- 
 2.51.0
 

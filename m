@@ -4,95 +4,143 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 166DCCAC5B0
-	for <qemu-arm@archiver.kernel.org>; Thu,  2 Oct 2025 07:34:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 339D9CAC5B8
+	for <qemu-arm@archiver.kernel.org>; Thu,  2 Oct 2025 07:35:42 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v4Dpc-000488-Gt; Thu, 02 Oct 2025 03:34:28 -0400
+	id 1v4DqS-0004i4-NG; Thu, 02 Oct 2025 03:35:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1v4DpY-00045a-4k
- for qemu-arm@nongnu.org; Thu, 02 Oct 2025 03:34:24 -0400
-Received: from mail-lj1-x22b.google.com ([2a00:1450:4864:20::22b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1v4DpJ-0007uq-0V
- for qemu-arm@nongnu.org; Thu, 02 Oct 2025 03:34:22 -0400
-Received: by mail-lj1-x22b.google.com with SMTP id
- 38308e7fff4ca-36453927ffaso6723351fa.2
- for <qemu-arm@nongnu.org>; Thu, 02 Oct 2025 00:34:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1759390441; x=1759995241; darn=nongnu.org;
- h=user-agent:in-reply-to:content-transfer-encoding
- :content-disposition:mime-version:references:message-id:subject:cc
- :to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=ei5hri8GsRIEFPpEv/7Nz/nPxR7vyTwAM5TTfLk0evw=;
- b=ZvoL/OVtZsOsVkhc5RDExC9KkBMQrHihxvGI0zyqJDtMKttMD6BvF6ttd0xU7eGj+2
- lbZEyCERwuNzVBPrXllCcv0ThuBSBrRVgucBKKugc5X7p4H514yPXsfa5caW40Fz3jsR
- UCX76VLwua5Z6cOKenuG5cRW334UAklGTZeqA1O1Fwzw7OYFm2pCWCK9C5YgwD0sEY22
- MfLvC2woUJZ1FCaFdAHZmOWXTHRBOqJoS9YFn2ZE29vgKsVVhheI/gGjbYbQk60iOEi6
- 0x8EzqM+LrLONHCnPZK1t6QrLYVQYiz2nwG4fuG8eN+1Y8sPSo/ES1GjOJi1tXxZk9Vh
- iQdw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759390441; x=1759995241;
- h=user-agent:in-reply-to:content-transfer-encoding
- :content-disposition:mime-version:references:message-id:subject:cc
- :to:from:date:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=ei5hri8GsRIEFPpEv/7Nz/nPxR7vyTwAM5TTfLk0evw=;
- b=ExXF6fHQci4gS7r2tZSfL2799/uhKJxkJOML1U1F9jn/pUv3Gz7ZiWmIkhZEnwNtoz
- YhImR/4bRinrl/u8GjWvrmccWlvFBqTX+r8JVuvUEMFJTSEQeCPJf6xi2LJUrdD4Cy5z
- ABh/emS19xhzx2/zh5MUYQLMu1+TZbEB2StekjnSMo8jD1KJEcrz7Lr8xtm0b82DC3HO
- ziL3OIrhCjPTLs9SET6ld0l0rXSZwVf2U0Cst9+neKireZhb/DfZ2Sfpl5XibeU/TB6V
- xhspTSQGlD+dhZPR750/I8QMpHwtI8tppRgiYPl0rPThAXPChfQTcdXGA4XdOeq6a559
- MWSw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVyh4r3v/pRUpzo+BEpexxrqz9whkeO5RqsdD72ze0Jl2iUPchp1957mXnF8rs8MC7UY8Ph6RJoXQ==@nongnu.org
-X-Gm-Message-State: AOJu0YwxnatTQTz4m4h4iApLeie13AWOU4wr943TEEk/w3I5wvRP/nJC
- jGz5OX18+3+y2Kdr++KFO5zRqeP7brWCw1LJZJpm+sy7SCMufQw1+NG5
-X-Gm-Gg: ASbGncvVd93xL+mFsgGTSFQ2j7z4wANwcL18iW3hRZ0Q3TuHmi9Bfj0FHsOEKukA71+
- P90JytFkFI4ry3sf1OcX8cNzVuz2Wa9dj2es27i5nH/FM9Sqy+AAXwWYHZjipqkVopYf6H2F37d
- Iq1DSgM1l5yw0CCKpucKF5asGmi0zdUpojy0LrTPU7IzX8peDL7iZe9me590U5Lb8jLL3AS5duf
- shvj76t6h19rj1/bYtHo8KC9HhhkQy2+G/8F49plSUcUjZZInlg4KyzZDvy3k+MRa5jF5m6pYmI
- OLUmdWozilYQckIDx9YkR5y7bbLTWnwlIfbiZ/0ovhXIq5ulnxxeGoEpFkiCfs8dBuTpv1zmMUE
- sD6HTDk5F7A9vXo1dsmNO4UcvhrZAscq8dJzStBZIWmkr/ZDc1rtyCNsA5dulOPO+RHJQ8/FRKE
- 91MYf36Fc=
-X-Google-Smtp-Source: AGHT+IGbEzvxzeRniuCXp5pi8Yv7+yk+U7MOSb1ZBYe46ZTMnvXOmaz12kfdQRLrDx8qn7TVoajubw==
-X-Received: by 2002:a2e:a88a:0:b0:336:9427:3527 with SMTP id
- 38308e7fff4ca-373a742da79mr14882371fa.21.1759390440691; 
- Thu, 02 Oct 2025 00:34:00 -0700 (PDT)
-Received: from gmail.com (213-67-3-247-no600.tbcn.telia.com. [213.67.3.247])
- by smtp.gmail.com with ESMTPSA id
- 38308e7fff4ca-373ba274b6fsm4962731fa.5.2025.10.02.00.33.59
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 02 Oct 2025 00:33:59 -0700 (PDT)
-Date: Thu, 2 Oct 2025 09:33:58 +0200
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-To: =?iso-8859-1?Q?Cl=E9ment?= Chigot <chigot@adacore.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
- alistair@alistair23.me
-Subject: Re: [PATCH 1/3] hw/arm/xlnx-zynqmp: move GIC_NUM_SPI_INTR define in
- header
-Message-ID: <aN4q5uBfbvkI54Cc@zapote>
-References: <20250930115718.437100-1-chigot@adacore.com>
- <20250930115718.437100-2-chigot@adacore.com>
+ (Exim 4.90_1) (envelope-from <Luc.Michel@amd.com>)
+ id 1v4DqM-0004aW-Pn; Thu, 02 Oct 2025 03:35:14 -0400
+Received: from mail-northcentralusazlp170130007.outbound.protection.outlook.com
+ ([2a01:111:f403:c105::7] helo=CH4PR04CU002.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <Luc.Michel@amd.com>)
+ id 1v4Dq6-0008HS-N4; Thu, 02 Oct 2025 03:35:13 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=c9rZBCnddEFZsdIgvkzRmsG0G3BCmknvFyk5tk7onfz1udLSFDtt3zSzugX3wa1M+hOzXW+XRAUQmOo/zo5JpN+nNdnNidf1DdtnPGzGh3Rz/ed1njaCoaAzvOEA9Nazj9xUQyvEyJBSJn0NZWtJqSt7qC5xDXm9DCINRFAzHBr+0KvjnPVsVyfWQTALWPYROYPsbkuiF+ReIBPr2+BCp4XCwIVjqovlOsW3QnKAIUgMJ4zLkAB50gKaB6V40eWBXYpd3fNooJewbwT9yZSCSd8wfNNjohuakt7Orp8PbjS2bpejYnAaLh/n6xPiz0ZtMVL6Zj1TXjk1rlVySjrQEg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=+JRssaRE6Uw5wWT92e7mCMNS/nzxR6wP+/p9K8WAX4I=;
+ b=SspxrG8h+befEg/UM/9HJHMM+4d4MgkUn+V7+pi/gVyFEJ+ELfu4nn1/zbKjKgdbrvd+1a3aorgZDRmmHBB0yRIsBh9SQZ8wpayvK1NSa/scBKyYhKSutrIWvhBv+KOWU1uBVIKc1npjhbdn40F8w2/BqbpIB6NJAp8r28W3TntP4zak+Mse402J2+eOYE2/IW74sdVqY/0JGWfidvPwMJAZOy49cTW1OfL4TY4mtDGxlqckGtClt1gtDTaZ+77PykOp3+8Xw9ZzEYxWx+x4VWX06ldl80L9bn4lvVNq2DkcgsgghQDGUq/c1dMl1l1s2rV0SPqZxvT9E6XSLAK6Jg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 165.204.84.17) smtp.rcpttodomain=nongnu.org smtp.mailfrom=amd.com; dmarc=pass
+ (p=quarantine sp=quarantine pct=100) action=none header.from=amd.com;
+ dkim=none (message not signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1; 
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=+JRssaRE6Uw5wWT92e7mCMNS/nzxR6wP+/p9K8WAX4I=;
+ b=XWDWTFOAlvexAqIjh+Y3vQZSBL1PY5fuKJWcwZCYz+0WfHggXUFGe6mKs3p3FoalUEAa+cyTByHDJwCGDVp5/sW3DlCEwuDxVVF0SnmY+ZN5+4SK7FkOYS6i5x7XSXNRi8dt+Dgm6jetxMyIuNIWsbevoeTqqEyQ2HtFpjzf4hs=
+Received: from MW4PR03CA0080.namprd03.prod.outlook.com (2603:10b6:303:b6::25)
+ by SA3PR12MB9089.namprd12.prod.outlook.com (2603:10b6:806:39f::7)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9160.18; Thu, 2 Oct
+ 2025 07:34:35 +0000
+Received: from BY1PEPF0001AE1D.namprd04.prod.outlook.com
+ (2603:10b6:303:b6:cafe::d4) by MW4PR03CA0080.outlook.office365.com
+ (2603:10b6:303:b6::25) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.9160.16 via Frontend Transport; Thu,
+ 2 Oct 2025 07:34:35 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 165.204.84.17)
+ smtp.mailfrom=amd.com; dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=amd.com;
+Received-SPF: Pass (protection.outlook.com: domain of amd.com designates
+ 165.204.84.17 as permitted sender) receiver=protection.outlook.com;
+ client-ip=165.204.84.17; helo=satlexmb08.amd.com; pr=C
+Received: from satlexmb08.amd.com (165.204.84.17) by
+ BY1PEPF0001AE1D.mail.protection.outlook.com (10.167.242.106) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.9182.15 via Frontend Transport; Thu, 2 Oct 2025 07:34:34 +0000
+Received: from SATLEXMB04.amd.com (10.181.40.145) by satlexmb08.amd.com
+ (10.181.42.217) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.2.2562.17; Thu, 2 Oct
+ 2025 00:34:34 -0700
+Received: from satlexmb08.amd.com (10.181.42.217) by SATLEXMB04.amd.com
+ (10.181.40.145) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.39; Thu, 2 Oct
+ 2025 02:34:33 -0500
+Received: from XFR-LUMICHEL-L2.xilinx.com (10.180.168.240) by
+ satlexmb08.amd.com (10.181.42.217) with Microsoft SMTP Server id 15.2.2562.17
+ via Frontend Transport; Thu, 2 Oct 2025 00:34:32 -0700
+From: Luc Michel <luc.michel@amd.com>
+To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
+CC: Luc Michel <luc.michel@amd.com>, Peter Maydell <peter.maydell@linaro.org>, 
+ Francisco Iglesias <francisco.iglesias@amd.com>, "Edgar E . Iglesias"
+ <edgar.iglesias@amd.com>, =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>, Alistair Francis <alistair@alistair23.me>, "Vikram
+ Garhwal" <vikram.garhwal@bytedance.com>, Alistair Francis
+ <alistair.francis@wdc.com>
+Subject: [PATCH v2 1/7] hw/core/register: remove the REGISTER device type
+Date: Thu, 2 Oct 2025 09:34:10 +0200
+Message-ID: <20251002073418.109375-2-luc.michel@amd.com>
+X-Mailer: git-send-email 2.51.0
+In-Reply-To: <20251002073418.109375-1-luc.michel@amd.com>
+References: <20251002073418.109375-1-luc.michel@amd.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20250930115718.437100-2-chigot@adacore.com>
-User-Agent: Mutt/2.2.14+84 (2efcabc4) (2025-03-23)
-Received-SPF: pass client-ip=2a00:1450:4864:20::22b;
- envelope-from=edgar.iglesias@gmail.com; helo=mail-lj1-x22b.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
+Content-Type: text/plain
+Received-SPF: None (SATLEXMB04.amd.com: luc.michel@amd.com does not designate
+ permitted sender hosts)
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: BY1PEPF0001AE1D:EE_|SA3PR12MB9089:EE_
+X-MS-Office365-Filtering-Correlation-Id: 55c61802-bebd-424e-9ecd-08de01862272
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|376014|1800799024|36860700013|82310400026; 
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?4UR390xTbmEEFq/buwvJuHQfgLM1THJejA+Gj6xTiTnc0jMi2Vi23wuKGxjZ?=
+ =?us-ascii?Q?Iz57t3yNc+B9sSdvxL28fjFszZ0cwLbtceQEtQhBHLpxv1R21PcIGSsMAwxy?=
+ =?us-ascii?Q?EG5SCpy9m7sEHSTFKebMeBILTPm04KL2xZmDHYzrFxifBWsFgnhqjQYdGpAY?=
+ =?us-ascii?Q?zBLptKtuTizaUaeUQHY502ARFXbkQCjpY6azqo2AYoQ1VNrCe1EVwV09JyUy?=
+ =?us-ascii?Q?eS9MEsUZWJHi8k7EoGt4gNtz+pht0wGQTTn4u/NdWAsya3GO3Lc5T+jr2szQ?=
+ =?us-ascii?Q?pkNnIoPFzyZEBG7dnxHyWQmkugBVVHVHJ7YvpLWgO9Q5VKblLyIUmokZTzQD?=
+ =?us-ascii?Q?DWUBmBRmBaV3wAQFVdkX3nXD7szHbWINd5qX/GhervpSjE9XkqiXbiRZZJUd?=
+ =?us-ascii?Q?zL4ZeRQz593o6nKUzdrSjFx7CL+ZYiVrt29OpnM8t5DtBKRSbCz29UrVGWTv?=
+ =?us-ascii?Q?MpP0dOwa7wnY/QO1AUl4/OjOpmkbhD3ZbNH92jeT96yduKK3tXDau8oJ++oQ?=
+ =?us-ascii?Q?Q11+vmQtQksXAF+NkYx5EKgF99sarUk7cpiutPkU0xHogB2c9oMGznPcLhqZ?=
+ =?us-ascii?Q?SV/9AoFTosmhZZRxofc13XiAi+XX9+nPnjrjgxGKKOniUfz4G1T1WfZiBuKE?=
+ =?us-ascii?Q?dBuTDQbz/CCPABnlywqyvsI9vv+aBMOuoJOLPdLRVApYXpy2w7bRrrylU3nV?=
+ =?us-ascii?Q?sR8KlQVdlbLLA8/TQJeDGnWbECpV1XX6GMuChliiCBXOff77vNqwSdTv6kbw?=
+ =?us-ascii?Q?yTdK8+Csduj+GnXM4Kj4RfFwNbfVv8Gdbyg0fNhMF6xq7Briw2kQFPPFm0C6?=
+ =?us-ascii?Q?SZ4lXGm30Jj6LwN+Uu4roqQkavioln6jc81ka0dFQD8kIuXMxT/0QY+fdaUD?=
+ =?us-ascii?Q?0O/LbnjN5gtEcE/zRK8rV6/0saiNTkIT7lSPfPjwMQGCdCXeqn+1e/NSCcix?=
+ =?us-ascii?Q?Zwgdk4PliHLI1XOl75xjdvIbDnJHDkPJUV1nYd3Q2NWGhTWRGurJN7AE8c/y?=
+ =?us-ascii?Q?Lq4kjINmIPpD8DKHS7OEBZpFm8MzMG3eTRmBGvEfndtGDf0qvFu82TLOTkS3?=
+ =?us-ascii?Q?rEpWMJYjM5ed9ishnZbYpGB7ou85C7Say/UZiHNFRlV80l2VKBn1tIAdR1KS?=
+ =?us-ascii?Q?sQeziD/fdd6WcIf3hXFgfQf8t9LpisBfLROT1BDELQ2NXKVRG36eMTsBkapV?=
+ =?us-ascii?Q?QbfjfvzXs3BwbSf0gnJA75uQRUCUZo61o0mBY/ub6d9qKFq+vd2sKQimNrMx?=
+ =?us-ascii?Q?Xun1zElnnPwTAirTR3MiEmznRyhBtu1CQAmwitryiL/+TIrGXK/EJgRJmlxq?=
+ =?us-ascii?Q?mQLgneAaWLdyEgHHfX2yl4lUKJhT60Gm+X0G6BYH4sB8hpuPQoleDv/dwKXp?=
+ =?us-ascii?Q?XdqbhEFq6gR3p/qaihK3RQfsVSzfVhabNAuPq5ByY4fScmoLYFHDnlLWXhQl?=
+ =?us-ascii?Q?gk3W3h9WxbY=3D?=
+X-Forefront-Antispam-Report: CIP:165.204.84.17; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:CAL; SFV:NSPM; H:satlexmb08.amd.com; PTR:InfoDomainNonexistent; CAT:NONE;
+ SFS:(13230040)(376014)(1800799024)(36860700013)(82310400026); DIR:OUT;
+ SFP:1101; 
+X-OriginatorOrg: amd.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 02 Oct 2025 07:34:34.7120 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 55c61802-bebd-424e-9ecd-08de01862272
+X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3dd8961f-e488-4e60-8e11-a82d994e183d; Ip=[165.204.84.17];
+ Helo=[satlexmb08.amd.com]
+X-MS-Exchange-CrossTenant-AuthSource: BY1PEPF0001AE1D.namprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA3PR12MB9089
+Received-SPF: permerror client-ip=2a01:111:f403:c105::7;
+ envelope-from=Luc.Michel@amd.com;
+ helo=CH4PR04CU002.outbound.protection.outlook.com
+X-Spam_score_int: -15
+X-Spam_score: -1.6
+X-Spam_bar: -
+X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.518,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FORGED_SPF_HELO=1, SPF_HELO_PASS=-0.001,
+ T_SPF_TEMPERROR=0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -108,86 +156,105 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, Sep 30, 2025 at 01:57:16PM +0200, Clément Chigot wrote:
-> This define will be needed in a later patch in XlnxZynqMPState
-> structure, hence move it within xlnx-zynqmp header.
-> 
-> Add XLXN_ZYNQMP prefix as it's now public.
-> 
-> Signed-off-by: Clément Chigot <chigot@adacore.com>
+The REGISTER class (RegisterInfo struct) is currently a QOM type
+inheriting from DEVICE. This class has no real purpose:
+   - the qdev API is not used,
+   - according to the comment preceding it, the object_initialize call
+     is here to zero-initialize the struct. However all the effective
+     struct attributes are then initialized explicitly.
+   - the object is never parented.
 
+This commits drops the REGISTER QOM type completely, leaving the
+RegisterInfo struct as a bare C struct.
+
+The register_register_types function is left empty here because it is
+reused in the next commit.
+
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+Reviewed-by: Francisco Iglesias <francisco.iglesias@amd.com>
 Reviewed-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
+Signed-off-by: Luc Michel <luc.michel@amd.com>
+---
+ include/hw/register.h |  7 -------
+ hw/core/register.c    | 18 ------------------
+ 2 files changed, 25 deletions(-)
 
+diff --git a/include/hw/register.h b/include/hw/register.h
+index a913c52aee5..4d13ea183c7 100644
+--- a/include/hw/register.h
++++ b/include/hw/register.h
+@@ -73,25 +73,18 @@ struct RegisterAccessInfo {
+  *
+  * @opaque: Opaque data for the register
+  */
+ 
+ struct RegisterInfo {
+-    /* <private> */
+-    DeviceState parent_obj;
+-
+-    /* <public> */
+     void *data;
+     int data_size;
+ 
+     const RegisterAccessInfo *access;
+ 
+     void *opaque;
+ };
+ 
+-#define TYPE_REGISTER "qemu-register"
+-DECLARE_INSTANCE_CHECKER(RegisterInfo, REGISTER,
+-                         TYPE_REGISTER)
+ 
+ /**
+  * This structure is used to group all of the individual registers which are
+  * modeled using the RegisterInfo structure.
+  *
+diff --git a/hw/core/register.c b/hw/core/register.c
+index 3340df70b06..2553cb15aba 100644
+--- a/hw/core/register.c
++++ b/hw/core/register.c
+@@ -256,13 +256,10 @@ static RegisterInfoArray *register_init_block(DeviceState *owner,
+ 
+     for (i = 0; i < num; i++) {
+         int index = rae[i].addr / data_size;
+         RegisterInfo *r = &ri[index];
+ 
+-        /* Init the register, this will zero it. */
+-        object_initialize((void *)r, sizeof(*r), TYPE_REGISTER);
+-
+         /* Set the properties of the register */
+         r->data = data + data_size * index;
+         r->data_size = data_size;
+         r->access = &rae[i];
+         r->opaque = owner;
+@@ -316,26 +313,11 @@ void register_finalize_block(RegisterInfoArray *r_array)
+ {
+     g_free(r_array->r);
+     g_free(r_array);
+ }
+ 
+-static void register_class_init(ObjectClass *oc, const void *data)
+-{
+-    DeviceClass *dc = DEVICE_CLASS(oc);
+-
+-    /* Reason: needs to be wired up to work */
+-    dc->user_creatable = false;
+-}
+-
+-static const TypeInfo register_info = {
+-    .name  = TYPE_REGISTER,
+-    .parent = TYPE_DEVICE,
+-    .class_init = register_class_init,
+-    .instance_size = sizeof(RegisterInfo),
+-};
+ 
+ static void register_register_types(void)
+ {
+-    type_register_static(&register_info);
+ }
+ 
+ type_init(register_register_types)
+-- 
+2.51.0
 
-
-> ---
->  hw/arm/xlnx-zynqmp.c         | 11 +++++------
->  include/hw/arm/xlnx-zynqmp.h |  1 +
->  2 files changed, 6 insertions(+), 6 deletions(-)
-> 
-> diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
-> index ec96a46eec..d7adc070f8 100644
-> --- a/hw/arm/xlnx-zynqmp.c
-> +++ b/hw/arm/xlnx-zynqmp.c
-> @@ -26,8 +26,6 @@
->  #include "target/arm/cpu-qom.h"
->  #include "target/arm/gtimer.h"
->  
-> -#define GIC_NUM_SPI_INTR 160
-> -
->  #define ARM_PHYS_TIMER_PPI  30
->  #define ARM_VIRT_TIMER_PPI  27
->  #define ARM_HYP_TIMER_PPI   26
-> @@ -206,7 +204,7 @@ static const XlnxZynqMPGICRegion xlnx_zynqmp_gic_regions[] = {
->  
->  static inline int arm_gic_ppi_index(int cpu_nr, int ppi_index)
->  {
-> -    return GIC_NUM_SPI_INTR + cpu_nr * GIC_INTERNAL + ppi_index;
-> +    return XLNX_ZYNQMP_GIC_NUM_SPI_INTR + cpu_nr * GIC_INTERNAL + ppi_index;
->  }
->  
->  static void xlnx_zynqmp_create_rpu(MachineState *ms, XlnxZynqMPState *s,
-> @@ -454,7 +452,7 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
->      int num_apus = MIN(ms->smp.cpus, XLNX_ZYNQMP_NUM_APU_CPUS);
->      const char *boot_cpu = s->boot_cpu ? s->boot_cpu : "apu-cpu[0]";
->      ram_addr_t ddr_low_size, ddr_high_size;
-> -    qemu_irq gic_spi[GIC_NUM_SPI_INTR];
-> +    qemu_irq gic_spi[XLNX_ZYNQMP_GIC_NUM_SPI_INTR];
->      Error *err = NULL;
->  
->      ram_size = memory_region_size(s->ddr_ram);
-> @@ -502,7 +500,8 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
->          g_free(ocm_name);
->      }
->  
-> -    qdev_prop_set_uint32(DEVICE(&s->gic), "num-irq", GIC_NUM_SPI_INTR + 32);
-> +    qdev_prop_set_uint32(DEVICE(&s->gic), "num-irq",
-> +                         XLNX_ZYNQMP_GIC_NUM_SPI_INTR + 32);
->      qdev_prop_set_uint32(DEVICE(&s->gic), "revision", 2);
->      qdev_prop_set_uint32(DEVICE(&s->gic), "num-cpu", num_apus);
->      qdev_prop_set_bit(DEVICE(&s->gic), "has-security-extensions", s->secure);
-> @@ -613,7 +612,7 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
->          return;
->      }
->  
-> -    for (i = 0; i < GIC_NUM_SPI_INTR; i++) {
-> +    for (i = 0; i < XLNX_ZYNQMP_GIC_NUM_SPI_INTR; i++) {
->          gic_spi[i] = qdev_get_gpio_in(DEVICE(&s->gic), i);
->      }
->  
-> diff --git a/include/hw/arm/xlnx-zynqmp.h b/include/hw/arm/xlnx-zynqmp.h
-> index c137ac59e8..6a407c2962 100644
-> --- a/include/hw/arm/xlnx-zynqmp.h
-> +++ b/include/hw/arm/xlnx-zynqmp.h
-> @@ -67,6 +67,7 @@ OBJECT_DECLARE_SIMPLE_TYPE(XlnxZynqMPState, XLNX_ZYNQMP)
->  #define XLNX_ZYNQMP_OCM_RAM_SIZE 0x10000
->  
->  #define XLNX_ZYNQMP_GIC_REGIONS 6
-> +#define XLNX_ZYNQMP_GIC_NUM_SPI_INTR 160
->  
->  /*
->   * ZynqMP maps the ARM GIC regions (GICC, GICD ...) at consecutive 64k offsets
-> -- 
-> 2.34.1
-> 
 

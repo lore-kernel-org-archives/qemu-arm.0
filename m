@@ -4,93 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D668ECAC5B8
-	for <qemu-arm@archiver.kernel.org>; Thu,  2 Oct 2025 04:31:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7EB41CAC5B8
+	for <qemu-arm@archiver.kernel.org>; Thu,  2 Oct 2025 05:14:45 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v4Axt-0003WZ-Fb; Thu, 02 Oct 2025 00:30:49 -0400
+	id 1v4Bdt-0007w1-Vj; Thu, 02 Oct 2025 01:14:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1v4Axr-0003Uk-Ij
- for qemu-arm@nongnu.org; Thu, 02 Oct 2025 00:30:47 -0400
-Received: from p-east3-cluster2-host12-snip4-10.eps.apple.com ([57.103.87.251]
- helo=outbound.qs.icloud.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1v4Axa-0007kA-Pj
- for qemu-arm@nongnu.org; Thu, 02 Oct 2025 00:30:44 -0400
-Received: from outbound.qs.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-east-2d-100-percent-0 (Postfix) with ESMTPS id
- A843D1800346; Thu,  2 Oct 2025 04:30:15 +0000 (UTC)
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; bh=AMnypSY+zGdob6ZQeFJ+VngD412wfTVoUZjiugy7xXE=;
- h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To:x-icloud-hme;
- b=CO1jQybVIERiU2dhddqkSq0fDKKUErWUWDJKdjPsnbXIUQcUaOhGAUubmSp0vVdG6nUIwdNItJgvOavGYhigE3E5OX44SQpHzOQV9995hg1eOFWks62NbWlgymyzkROX2oIK9qGUH3ASfgTYD759b/90t1ZcGFjEPMGLzJTw9XHYuPaWhVtf1RyxIkbtbw9+Qoi2nAJtC9H6zEKUc+faduv2HNj3xks08RY0q5JTjwN4HoGss/uIHc2Zwwf5y4mZGu7qgahvKBvz2hGD2dPWpJtpOWn68I0nf4KVSIPmdO2zVBJ4T5g1k5jTcbVhhDxK13TZPrY8Qh9T+BNTRf5EeQ==
-mail-alias-created-date: 1752046281608
-Received: from smtpclient.apple (unknown [17.57.155.37])
- by p00-icloudmta-asmtp-us-east-2d-100-percent-0 (Postfix) with ESMTPSA id
- 4DA6718000A7; Thu,  2 Oct 2025 04:30:12 +0000 (UTC)
-Content-Type: text/plain;
-	charset=utf-8
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3864.100.1.1.5\))
-Subject: Re: [PATCH v6 03/23] hw/arm: virt: add GICv2m for the case when ITS
- is not available
-From: Mohamed Mediouni <mohamed@unpredictable.fr>
-In-Reply-To: <CAFEAcA-398ZMeLUbHWyUw4np81mLikEn2PkQnFQMY4oY_iWRFA@mail.gmail.com>
-Date: Thu, 2 Oct 2025 06:30:00 +0200
-Cc: qemu-devel@nongnu.org, Shannon Zhao <shannon.zhaosl@gmail.com>,
- Yanan Wang <wangyanan55@huawei.com>,
- Phil Dennis-Jordan <phil@philjordan.eu>,
- =?utf-8?B?IkRhbmllbCBQLiBCZXJyYW5nw6ki?= <berrange@redhat.com>,
- =?utf-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- Mads Ynddal <mads@ynddal.dk>,
- =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v4Bdr-0007v9-FK
+ for qemu-arm@nongnu.org; Thu, 02 Oct 2025 01:14:11 -0400
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v4Bdh-0005MG-Sr
+ for qemu-arm@nongnu.org; Thu, 02 Oct 2025 01:14:11 -0400
+Received: by mail-wr1-x429.google.com with SMTP id
+ ffacd0b85a97d-3fa528f127fso367403f8f.1
+ for <qemu-arm@nongnu.org>; Wed, 01 Oct 2025 22:13:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1759382035; x=1759986835; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=ReRBTBalpXsueh+TsF1pHYsiu5KMMWmDk/Bn5JLfYwQ=;
+ b=jiXvAR7WV9RMWBQF7u6YrrJ0UopOgcJz0Nwp5pd+D4gcseGGd9WZrNTJcyFE6Pg0at
+ 8wVQEj90bpKO0zLuqBlrKs0JZFBf/SGgCIIf4RJWc36m6GMnxxsvSfDCC4hQzjX/URKT
+ zopznEBQLFeeQc25wFhbSkPe2+4/POk2p2LzqkdDNVsPeHDCPXAE4sFbPTSpr+KmNot9
+ 6vQAitqBc0Jmk8e94vILvEWZNSQRDUXocZ0zAXTPJF+2SuCWZEtC/i0cjztEWfAYo60p
+ 0pHEX/TW2yp2E23jh7s+EzenzDIxfB6TPVSNFJW4KpnWBgdIoBFf0GNf6970xTzgr1C8
+ Wxhw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1759382035; x=1759986835;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=ReRBTBalpXsueh+TsF1pHYsiu5KMMWmDk/Bn5JLfYwQ=;
+ b=vKAvC1pOMBBeVX13G4hTStlKuisHaJrDUp5UNGWBUFUIn3Tw/P2E6Q36yNJqKVWb6n
+ r6wzocUeOJLfA8vQFpLruPJzjarruCxxPH/bP0fIFlewnvZbQ/rD4ggkf5waUjUuT4Qi
+ RTbxhJ50SteWvUUkMnT9vSjGlkydHUUPnosnNu/xSk/Rr1fjrBpg+8bhthNRHtGBphgO
+ WAqnZIUx9A5xs5rjsdsIvJFW7I1gnEU5kAS8563RTnRbo5CCqYh7YmKixkUkaNmuNYy4
+ Ra/g0Io7P5ADQxuxjpMUHTVSCpLTqnmy0ITnPJ/S39Cc+65RILUhENj9DMYvRAGAy8ID
+ 9oZA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUzCh9KDyiyHUSpvb3rs2xQbXDlyM1jX6V2UfZyPfVkxkJsUXOI+marzQSn4IuGuh3FdKl4h6rULQ==@nongnu.org
+X-Gm-Message-State: AOJu0YyNyKvr83JwqfVXe7/ZTlUXUtaYEuxV8+6P895C8ZRpfzcVTNNe
+ Z3JYen5LdNOvcqz4APaSZVEQ6fUdlbLwSffOJ9JMaoF++wm+otTBzCUTkXXZSEzDM0M=
+X-Gm-Gg: ASbGnctAk0vQn26RpE0+HXBZrjBDeEw55NvvMjeSwugksa0lkDy5K4EWdCZ/f1tjYsV
+ pMnDgACk7EjoGJDckYRruVs9dCuNqSWFC5MH9g+WjvV2HXfv5RBKtiB/tSi1731yOuKDNxAo6kB
+ eBsOtTDHh6H7hKbWIIWgnJVBRUIqUBioLUaiEJM1nL3+6IS8sJbwLjWJ7rpCM1UhihAThLgziU0
+ 6fdvSfhB1mc735K4jlZUxKfUvmojAkqTYfy64cgJDckaxUFUpO/JzyjDwLzlF28QIPFrcDDEuwS
+ lPX9D7TDiuGx/w3N+PEcutDrHfaZfe9tBHp9h1VkJTl34MK4hybtLTwYtmagpP63ZyPwd6z4nfT
+ swV+zhVsK5FXLf6unQ5X9fJ44HOyZ1i16jmnr+MTxFyQrcw1n6if3YgiVuf37tzDAT5Dt8ZHKjH
+ BCyN8TMqeLSao+g0kdtnB1NvNU0U6MhLde/g==
+X-Google-Smtp-Source: AGHT+IGu8zkDxeaLR+haP7gROe9lLguDX6Q2Ka0iyfeayjeG0zV0XhPYG/6/TcB+b7nkClimerFCGw==
+X-Received: by 2002:a05:6000:22c9:b0:3fa:ebaf:4c53 with SMTP id
+ ffacd0b85a97d-4255d2d64d2mr1205748f8f.29.1759382034588; 
+ Wed, 01 Oct 2025 22:13:54 -0700 (PDT)
+Received: from [192.168.69.221] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-4255d8a6b5csm1971355f8f.5.2025.10.01.22.13.53
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 01 Oct 2025 22:13:53 -0700 (PDT)
+Message-ID: <749894d1-7301-419c-8a10-3ffbada016e3@linaro.org>
+Date: Thu, 2 Oct 2025 07:13:52 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v6 11/23] whpx: add arm64 support
+Content-Language: en-US
+To: Mohamed Mediouni <mohamed@unpredictable.fr>, qemu-devel@nongnu.org,
+ Richard Henderson <richard.henderson@linaro.org>
+Cc: Shannon Zhao <shannon.zhaosl@gmail.com>,
+ Yanan Wang <wangyanan55@huawei.com>, Phil Dennis-Jordan
+ <phil@philjordan.eu>, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
+ <berrange@redhat.com>, =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?=
+ <marcandre.lureau@redhat.com>, Mads Ynddal <mads@ynddal.dk>,
  Cameron Esfahani <dirty@apple.com>, Paolo Bonzini <pbonzini@redhat.com>,
  Zhao Liu <zhao1.liu@intel.com>, "Michael S. Tsirkin" <mst@redhat.com>,
  kvm@vger.kernel.org, Igor Mammedov <imammedo@redhat.com>,
- qemu-arm@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
- Roman Bolshakov <rbolshakov@ddn.com>,
+ qemu-arm@nongnu.org, Roman Bolshakov <rbolshakov@ddn.com>,
  Pedro Barbuda <pbarbuda@microsoft.com>, Alexander Graf <agraf@csgraf.de>,
  Sunil Muthuswamy <sunilmut@microsoft.com>,
  Eduardo Habkost <eduardo@habkost.net>, Ani Sinha <anisinha@redhat.com>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Content-Transfer-Encoding: quoted-printable
-Message-Id: <29E39B1C-40D3-4BBA-8B0B-C39594BA9B29@unpredictable.fr>
 References: <20250920140124.63046-1-mohamed@unpredictable.fr>
- <20250920140124.63046-4-mohamed@unpredictable.fr>
- <CAFEAcA-398ZMeLUbHWyUw4np81mLikEn2PkQnFQMY4oY_iWRFA@mail.gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-X-Mailer: Apple Mail (2.3864.100.1.1.5)
-X-Proofpoint-GUID: CJFpDVIwmkAu2IlkIvD6zUEkt3yFB_Jr
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMDAyMDAzNiBTYWx0ZWRfX+j4lSbyT82c1
- GicabodNmbkEEp+tXIyKOa1mqlkx4ZEpi6CdQ0Uafpt8QC8RnQ5Ih6xJIInbgops15A4oC3JPkd
- FrUbYZLQhQcHC9lsCMsqHgFN37E9iLxswUDJu/SuCZ5yKkHb34aoYVbj9RKB8hgxbypkSmaYpgl
- eIfEHT5RP8MveirDjgCceDw4sMB/EWTok4Wr5G9UzOTgkm9+NGl6OedioW5Kr7SXqqyPaSlW98q
- llQR2dT3HnNI/CspZE1oo5nQnKEKj4AgRO9aul59LEaShDDWsCawndqkdoFCQ+izNQP6sJjds=
-X-Proofpoint-ORIG-GUID: CJFpDVIwmkAu2IlkIvD6zUEkt3yFB_Jr
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1117,Hydra:6.1.9,FMLib:17.12.80.40
- definitions=2025-10-02_02,2025-09-29_04,2025-03-28_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=999
- spamscore=0 mlxscore=0 malwarescore=0 clxscore=1030
- adultscore=0
- suspectscore=0 phishscore=0 bulkscore=0 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.22.0-2506270000 definitions=main-2510020036
-X-JNJ: AAAAAAABW4m61AJpsvVrk0/fj+8K4NGZOs8trT0wgKIFbmzFZAi0PRTBsH5xx86cKOLWGb80fK+vNIgvhx9yNLpEwOGaqVlmLuzgCcSktq7ZM4OmwwG90iGtljAM9ZjIgJ9T1o58n9bWcRo//0kSDuUBx5MqvjInB+pzQE+uOsTsN3AlU2IefYsg2rqNJjGWGyRLOmrgTY+37ML5WYA+ck1tCcEHSc6j9KLYZFSj06VvOyF2abUnb7OAY8xvgXvPmcdpvzOxkLn3COYn+ZQ/ziSrpQ8AcQeikd5DtwRkEqH+h6niTL/F61xkhWOZ+BQE6Jx8sr/Abv3a0yWL5m/TbYs5oVtnxNIT5/gj+WrdxAh019+V+fqfnuwlt1r51BpYgZwTlNvkPGMNcyN21Z/c5Xs+LHG9Lfa1wa/fqEFg/rUxBliV+HwSH28tLO2MUUMKeFu7NG6B44gQe+uzi87XC/pTCZWoP1DYfoUGnGmMNX0Mg0B1TSu9La01FglVuD0yrPOTVOQTplEzvsAGTTmsLQW+9DUsrQw7zoqDbKeQWmYIWDjsrgqlO+D/OtX3v3h/p6EHVO+UQZlVfjwEG5ZOAI3xnUqjdJ9vQpVtacjBXYzy2+Y5Fdy5zcwkA02XEJ4KAWso8lBDLuXVr8Rz5NSZjsQp7uVXkTtHTyP4fN9Eyf3YW5gcJLQsoaLTlPQu/5Wm7H92xHwjwzIQOAagEd8X9EtqKcW7CnDo1LWqBrDiaIaxotiRdpNHGCaMQwU1jDnPsxzoDYWlcQ3lY9AKLUp90kH0//z8G+klFbx3Q0VwExukrG9T/M4hmIwMcNs7mTD5Pnz2UWhUvYBedO0vFaQD5KB5IHhpHwz6Tsy0xbnVBkDr7DyM8XC4TEvA7BY4/DrZ4lUhZgCHZ7WOdgP4mDsEOewVhEnFdJbRdjUuDVJ9+WVJ058fY+5I1DDgBNuLmDtGvPcgEs5+rrwKWDqHzQY=
-Received-SPF: pass client-ip=57.103.87.251;
- envelope-from=mohamed@unpredictable.fr; helo=outbound.qs.icloud.com
-X-Spam_score_int: -13
-X-Spam_score: -1.4
-X-Spam_bar: -
-X-Spam_report: (-1.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ <20250920140124.63046-12-mohamed@unpredictable.fr>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20250920140124.63046-12-mohamed@unpredictable.fr>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::429;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x429.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_BL_SPAMCOP_NET=1.347, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, T_SPF_HELO_TEMPERROR=0.01,
- T_SPF_TEMPERROR=0.01 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -106,81 +118,253 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+Hi Mohamed,
+
+On 20/9/25 16:01, Mohamed Mediouni wrote:
+> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+> 
+> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+> ---
+>   accel/whpx/whpx-common.c    |   1 +
+>   target/arm/meson.build      |   1 +
+>   target/arm/whpx/meson.build |   3 +
+>   target/arm/whpx/whpx-all.c  | 848 ++++++++++++++++++++++++++++++++++++
+>   4 files changed, 853 insertions(+)
+>   create mode 100644 target/arm/whpx/meson.build
+>   create mode 100644 target/arm/whpx/whpx-all.c
 
 
-> On 25. Sep 2025, at 18:24, Peter Maydell <peter.maydell@linaro.org> =
-wrote:
->=20
-> On Sat, 20 Sept 2025 at 15:02, Mohamed Mediouni
-> <mohamed@unpredictable.fr> wrote:
->>=20
->> On Hypervisor.framework for macOS and WHPX for Windows, the provided =
-environment is a GICv3 without ITS.
->>=20
->> As such, support a GICv3 w/ GICv2m for that scenario.
->>=20
->> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
->>=20
->> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
->> ---
->> hw/arm/virt-acpi-build.c | 4 +++-
->> hw/arm/virt.c            | 8 ++++++++
->> include/hw/arm/virt.h    | 2 ++
->> 3 files changed, 13 insertions(+), 1 deletion(-)
->=20
-> Looking at this I find myself wondering whether we need the
-> old-version back compat handling. The cases I think we have
-> at the moment are:
->=20
-> (1) TCG, virt-6.1 and earlier: no_tcg_its is set
->   -- you can have a gicv2 (always with a gicv2m)
->   -- if you specify gic-version=3D3 you get a GICv3 without ITS
-> (2) TCG, virt-6.2 and later:
->   -- gic-version=3D2 still has gicv2m
->   -- gic-version=3D3 by default gives you an ITS; if you also
->      say its=3Doff you get GICv3 with no ITS
->   -- there is no case where we provide a GICv3 and are
->      unable to provide an ITS for it
-> (3) KVM (any version):
->   -- gic-version=3D2 has a gicv2m
->   -- gic-version=3D3 gives you an ITS by default; its=3Doff
->      will remove it
->   -- there is no case where we provide a GICv3 and are
->      unable to provide an ITS for it
-> (4) HVF:
->   -- only gic-version=3D2 works, you get a gicv2m
->=20
-> and I think what we want is:
-> (a) if you explicitly disable the ITS (with its=3Doff or via
->     no_tcg_its) you get no ITS (and no gicv2m)
-> (b) if you explicitly enable the ITS you should get an
->     actual ITS or an error message
-> (c) the default should be its=3Dauto which gives
->     you "ITS if we can, gicv2m if we can't".
->     This is repurposing the its=3D property as "message signaled
->     interrupt support", which is a little bit of a hack
->     but I think OK if we're clear about it in the docs.
->     (We could rename the property to "msi=3D(off,its,gicv2m,auto)"
->     with back-compat support for "its=3D" but I don't know if
->     that's worth the effort.)
->=20
-> And then that doesn't need any back-compat handling for pre-10.2
-> machine types or a "no_gicv3_with_gicv2m" flag, because for
-> 10.1 and earlier there is no case that currently works and
-> which falls into category (c) and which doesn't give you an ITS.
-> (because we don't yet have hvf gicv3 implemented: that's a new
-> feature that never worked in 10.1.)
->=20
-> What do you think?
+> +struct whpx_reg_match {
+> +    WHV_REGISTER_NAME reg;
+> +    uint64_t offset;
+> +};
+> +
+> +static const struct whpx_reg_match whpx_reg_match[] = {
+> +    { WHvArm64RegisterX0,   offsetof(CPUARMState, xregs[0]) },
+> +    { WHvArm64RegisterX1,   offsetof(CPUARMState, xregs[1]) },
+> +    { WHvArm64RegisterX2,   offsetof(CPUARMState, xregs[2]) },
+> +    { WHvArm64RegisterX3,   offsetof(CPUARMState, xregs[3]) },
+> +    { WHvArm64RegisterX4,   offsetof(CPUARMState, xregs[4]) },
+> +    { WHvArm64RegisterX5,   offsetof(CPUARMState, xregs[5]) },
+> +    { WHvArm64RegisterX6,   offsetof(CPUARMState, xregs[6]) },
+> +    { WHvArm64RegisterX7,   offsetof(CPUARMState, xregs[7]) },
+> +    { WHvArm64RegisterX8,   offsetof(CPUARMState, xregs[8]) },
+> +    { WHvArm64RegisterX9,   offsetof(CPUARMState, xregs[9]) },
+> +    { WHvArm64RegisterX10,  offsetof(CPUARMState, xregs[10]) },
+> +    { WHvArm64RegisterX11,  offsetof(CPUARMState, xregs[11]) },
+> +    { WHvArm64RegisterX12,  offsetof(CPUARMState, xregs[12]) },
+> +    { WHvArm64RegisterX13,  offsetof(CPUARMState, xregs[13]) },
+> +    { WHvArm64RegisterX14,  offsetof(CPUARMState, xregs[14]) },
+> +    { WHvArm64RegisterX15,  offsetof(CPUARMState, xregs[15]) },
+> +    { WHvArm64RegisterX16,  offsetof(CPUARMState, xregs[16]) },
+> +    { WHvArm64RegisterX17,  offsetof(CPUARMState, xregs[17]) },
+> +    { WHvArm64RegisterX18,  offsetof(CPUARMState, xregs[18]) },
+> +    { WHvArm64RegisterX19,  offsetof(CPUARMState, xregs[19]) },
+> +    { WHvArm64RegisterX20,  offsetof(CPUARMState, xregs[20]) },
+> +    { WHvArm64RegisterX21,  offsetof(CPUARMState, xregs[21]) },
+> +    { WHvArm64RegisterX22,  offsetof(CPUARMState, xregs[22]) },
+> +    { WHvArm64RegisterX23,  offsetof(CPUARMState, xregs[23]) },
+> +    { WHvArm64RegisterX24,  offsetof(CPUARMState, xregs[24]) },
+> +    { WHvArm64RegisterX25,  offsetof(CPUARMState, xregs[25]) },
+> +    { WHvArm64RegisterX26,  offsetof(CPUARMState, xregs[26]) },
+> +    { WHvArm64RegisterX27,  offsetof(CPUARMState, xregs[27]) },
+> +    { WHvArm64RegisterX28,  offsetof(CPUARMState, xregs[28]) },
+> +    { WHvArm64RegisterFp,  offsetof(CPUARMState, xregs[29]) },
+> +    { WHvArm64RegisterLr,  offsetof(CPUARMState, xregs[30]) },
+> +    { WHvArm64RegisterPc,   offsetof(CPUARMState, pc) },
+> +};
+> +
+> +static const struct whpx_reg_match whpx_fpreg_match[] = {
+> +    { WHvArm64RegisterQ0,  offsetof(CPUARMState, vfp.zregs[0]) },
+> +    { WHvArm64RegisterQ1,  offsetof(CPUARMState, vfp.zregs[1]) },
+> +    { WHvArm64RegisterQ2,  offsetof(CPUARMState, vfp.zregs[2]) },
+> +    { WHvArm64RegisterQ3,  offsetof(CPUARMState, vfp.zregs[3]) },
+> +    { WHvArm64RegisterQ4,  offsetof(CPUARMState, vfp.zregs[4]) },
+> +    { WHvArm64RegisterQ5,  offsetof(CPUARMState, vfp.zregs[5]) },
+> +    { WHvArm64RegisterQ6,  offsetof(CPUARMState, vfp.zregs[6]) },
+> +    { WHvArm64RegisterQ7,  offsetof(CPUARMState, vfp.zregs[7]) },
+> +    { WHvArm64RegisterQ8,  offsetof(CPUARMState, vfp.zregs[8]) },
+> +    { WHvArm64RegisterQ9,  offsetof(CPUARMState, vfp.zregs[9]) },
+> +    { WHvArm64RegisterQ10, offsetof(CPUARMState, vfp.zregs[10]) },
+> +    { WHvArm64RegisterQ11, offsetof(CPUARMState, vfp.zregs[11]) },
+> +    { WHvArm64RegisterQ12, offsetof(CPUARMState, vfp.zregs[12]) },
+> +    { WHvArm64RegisterQ13, offsetof(CPUARMState, vfp.zregs[13]) },
+> +    { WHvArm64RegisterQ14, offsetof(CPUARMState, vfp.zregs[14]) },
+> +    { WHvArm64RegisterQ15, offsetof(CPUARMState, vfp.zregs[15]) },
+> +    { WHvArm64RegisterQ16, offsetof(CPUARMState, vfp.zregs[16]) },
+> +    { WHvArm64RegisterQ17, offsetof(CPUARMState, vfp.zregs[17]) },
+> +    { WHvArm64RegisterQ18, offsetof(CPUARMState, vfp.zregs[18]) },
+> +    { WHvArm64RegisterQ19, offsetof(CPUARMState, vfp.zregs[19]) },
+> +    { WHvArm64RegisterQ20, offsetof(CPUARMState, vfp.zregs[20]) },
+> +    { WHvArm64RegisterQ21, offsetof(CPUARMState, vfp.zregs[21]) },
+> +    { WHvArm64RegisterQ22, offsetof(CPUARMState, vfp.zregs[22]) },
+> +    { WHvArm64RegisterQ23, offsetof(CPUARMState, vfp.zregs[23]) },
+> +    { WHvArm64RegisterQ24, offsetof(CPUARMState, vfp.zregs[24]) },
+> +    { WHvArm64RegisterQ25, offsetof(CPUARMState, vfp.zregs[25]) },
+> +    { WHvArm64RegisterQ26, offsetof(CPUARMState, vfp.zregs[26]) },
+> +    { WHvArm64RegisterQ27, offsetof(CPUARMState, vfp.zregs[27]) },
+> +    { WHvArm64RegisterQ28, offsetof(CPUARMState, vfp.zregs[28]) },
+> +    { WHvArm64RegisterQ29, offsetof(CPUARMState, vfp.zregs[29]) },
+> +    { WHvArm64RegisterQ30, offsetof(CPUARMState, vfp.zregs[30]) },
+> +    { WHvArm64RegisterQ31, offsetof(CPUARMState, vfp.zregs[31]) },
+> +};
+> +
+> +#define WHPX_SYSREG(crn, crm, op0, op1, op2) \
+> +        ENCODE_AA64_CP_REG(CP_REG_ARM64_SYSREG_CP, crn, crm, op0, op1, op2)
+> +
+> +struct whpx_sreg_match {
+> +    WHV_REGISTER_NAME reg;
+> +    uint32_t key;
+> +    bool global;
+> +    uint32_t cp_idx;
+> +};
+> +
+> +static struct whpx_sreg_match whpx_sreg_match[] = {
+> +    { WHvArm64RegisterDbgbvr0El1, WHPX_SYSREG(0, 0, 2, 0, 4) },
+> +    { WHvArm64RegisterDbgbcr0El1, WHPX_SYSREG(0, 0, 2, 0, 5) },
+> +    { WHvArm64RegisterDbgwvr0El1, WHPX_SYSREG(0, 0, 2, 0, 6) },
+> +    { WHvArm64RegisterDbgwcr0El1, WHPX_SYSREG(0, 0, 2, 0, 7) },
+> +
+> +    { WHvArm64RegisterDbgbvr0El1, WHPX_SYSREG(0, 1, 2, 0, 4) },
+> +    { WHvArm64RegisterDbgbcr0El1, WHPX_SYSREG(0, 1, 2, 0, 5) },
+> +    { WHvArm64RegisterDbgwvr0El1, WHPX_SYSREG(0, 1, 2, 0, 6) },
+> +    { WHvArm64RegisterDbgwcr0El1, WHPX_SYSREG(0, 1, 2, 0, 7) },
+> +
+> +    { WHvArm64RegisterDbgbvr2El1, WHPX_SYSREG(0, 2, 2, 0, 4) },
+> +    { WHvArm64RegisterDbgbcr2El1, WHPX_SYSREG(0, 2, 2, 0, 5) },
+> +    { WHvArm64RegisterDbgwvr2El1, WHPX_SYSREG(0, 2, 2, 0, 6) },
+> +    { WHvArm64RegisterDbgwcr2El1, WHPX_SYSREG(0, 2, 2, 0, 7) },
+> +
+> +    { WHvArm64RegisterDbgbvr3El1, WHPX_SYSREG(0, 3, 2, 0, 4) },
+> +    { WHvArm64RegisterDbgbcr3El1, WHPX_SYSREG(0, 3, 2, 0, 5) },
+> +    { WHvArm64RegisterDbgwvr3El1, WHPX_SYSREG(0, 3, 2, 0, 6) },
+> +    { WHvArm64RegisterDbgwcr3El1, WHPX_SYSREG(0, 3, 2, 0, 7) },
+> +
+> +    { WHvArm64RegisterDbgbvr4El1, WHPX_SYSREG(0, 4, 2, 0, 4) },
+> +    { WHvArm64RegisterDbgbcr4El1, WHPX_SYSREG(0, 4, 2, 0, 5) },
+> +    { WHvArm64RegisterDbgwvr4El1, WHPX_SYSREG(0, 4, 2, 0, 6) },
+> +    { WHvArm64RegisterDbgwcr4El1, WHPX_SYSREG(0, 4, 2, 0, 7) },
+> +
+> +    { WHvArm64RegisterDbgbvr5El1, WHPX_SYSREG(0, 5, 2, 0, 4) },
+> +    { WHvArm64RegisterDbgbcr5El1, WHPX_SYSREG(0, 5, 2, 0, 5) },
+> +    { WHvArm64RegisterDbgwvr5El1, WHPX_SYSREG(0, 5, 2, 0, 6) },
+> +    { WHvArm64RegisterDbgwcr5El1, WHPX_SYSREG(0, 5, 2, 0, 7) },
+> +
+> +    { WHvArm64RegisterDbgbvr6El1, WHPX_SYSREG(0, 6, 2, 0, 4) },
+> +    { WHvArm64RegisterDbgbcr6El1, WHPX_SYSREG(0, 6, 2, 0, 5) },
+> +    { WHvArm64RegisterDbgwvr6El1, WHPX_SYSREG(0, 6, 2, 0, 6) },
+> +    { WHvArm64RegisterDbgwcr6El1, WHPX_SYSREG(0, 6, 2, 0, 7) },
+> +
+> +    { WHvArm64RegisterDbgbvr7El1, WHPX_SYSREG(0, 7, 2, 0, 4) },
+> +    { WHvArm64RegisterDbgbcr7El1, WHPX_SYSREG(0, 7, 2, 0, 5) },
+> +    { WHvArm64RegisterDbgwvr7El1, WHPX_SYSREG(0, 7, 2, 0, 6) },
+> +    { WHvArm64RegisterDbgwcr7El1, WHPX_SYSREG(0, 7, 2, 0, 7) },
+> +
+> +    { WHvArm64RegisterDbgbvr8El1, WHPX_SYSREG(0, 8, 2, 0, 4) },
+> +    { WHvArm64RegisterDbgbcr8El1, WHPX_SYSREG(0, 8, 2, 0, 5) },
+> +    { WHvArm64RegisterDbgwvr8El1, WHPX_SYSREG(0, 8, 2, 0, 6) },
+> +    { WHvArm64RegisterDbgwcr8El1, WHPX_SYSREG(0, 8, 2, 0, 7) },
+> +
+> +    { WHvArm64RegisterDbgbvr9El1, WHPX_SYSREG(0, 9, 2, 0, 4) },
+> +    { WHvArm64RegisterDbgbcr9El1, WHPX_SYSREG(0, 9, 2, 0, 5) },
+> +    { WHvArm64RegisterDbgwvr9El1, WHPX_SYSREG(0, 9, 2, 0, 6) },
+> +    { WHvArm64RegisterDbgwcr9El1, WHPX_SYSREG(0, 9, 2, 0, 7) },
+> +
+> +    { WHvArm64RegisterDbgbvr10El1, WHPX_SYSREG(0, 10, 2, 0, 4) },
+> +    { WHvArm64RegisterDbgbcr10El1, WHPX_SYSREG(0, 10, 2, 0, 5) },
+> +    { WHvArm64RegisterDbgwvr10El1, WHPX_SYSREG(0, 10, 2, 0, 6) },
+> +    { WHvArm64RegisterDbgwcr10El1, WHPX_SYSREG(0, 10, 2, 0, 7) },
+> +
+> +    { WHvArm64RegisterDbgbvr11El1, WHPX_SYSREG(0, 11, 2, 0, 4) },
+> +    { WHvArm64RegisterDbgbcr11El1, WHPX_SYSREG(0, 11, 2, 0, 5) },
+> +    { WHvArm64RegisterDbgwvr11El1, WHPX_SYSREG(0, 11, 2, 0, 6) },
+> +    { WHvArm64RegisterDbgwcr11El1, WHPX_SYSREG(0, 11, 2, 0, 7) },
+> +
+> +    { WHvArm64RegisterDbgbvr12El1, WHPX_SYSREG(0, 12, 2, 0, 4) },
+> +    { WHvArm64RegisterDbgbcr12El1, WHPX_SYSREG(0, 12, 2, 0, 5) },
+> +    { WHvArm64RegisterDbgwvr12El1, WHPX_SYSREG(0, 12, 2, 0, 6) },
+> +    { WHvArm64RegisterDbgwcr12El1, WHPX_SYSREG(0, 12, 2, 0, 7) },
+> +
+> +    { WHvArm64RegisterDbgbvr13El1, WHPX_SYSREG(0, 13, 2, 0, 4) },
+> +    { WHvArm64RegisterDbgbcr13El1, WHPX_SYSREG(0, 13, 2, 0, 5) },
+> +    { WHvArm64RegisterDbgwvr13El1, WHPX_SYSREG(0, 13, 2, 0, 6) },
+> +    { WHvArm64RegisterDbgwcr13El1, WHPX_SYSREG(0, 13, 2, 0, 7) },
+> +
+> +    { WHvArm64RegisterDbgbvr14El1, WHPX_SYSREG(0, 14, 2, 0, 4) },
+> +    { WHvArm64RegisterDbgbcr14El1, WHPX_SYSREG(0, 14, 2, 0, 5) },
+> +    { WHvArm64RegisterDbgwvr14El1, WHPX_SYSREG(0, 14, 2, 0, 6) },
+> +    { WHvArm64RegisterDbgwcr14El1, WHPX_SYSREG(0, 14, 2, 0, 7) },
+> +
+> +    { WHvArm64RegisterDbgbvr15El1, WHPX_SYSREG(0, 15, 2, 0, 4) },
+> +    { WHvArm64RegisterDbgbcr15El1, WHPX_SYSREG(0, 15, 2, 0, 5) },
+> +    { WHvArm64RegisterDbgwvr15El1, WHPX_SYSREG(0, 15, 2, 0, 6) },
+> +    { WHvArm64RegisterDbgwcr15El1, WHPX_SYSREG(0, 15, 2, 0, 7) },
+> +#ifdef SYNC_NO_RAW_REGS
+> +    /*
+> +     * The registers below are manually synced on init because they are
+> +     * marked as NO_RAW. We still list them to make number space sync easier.
+> +     */
+> +    { WHvArm64RegisterMidrEl1, WHPX_SYSREG(0, 0, 3, 0, 0) },
+> +    { WHvArm64RegisterMpidrEl1, WHPX_SYSREG(0, 0, 3, 0, 5) },
+> +    { WHvArm64RegisterIdPfr0El1, WHPX_SYSREG(0, 4, 3, 0, 0) },
+> +#endif
+> +    { WHvArm64RegisterIdAa64Pfr1El1, WHPX_SYSREG(0, 4, 3, 0, 1), true },
+> +    { WHvArm64RegisterIdAa64Dfr0El1, WHPX_SYSREG(0, 5, 3, 0, 0), true },
+> +    { WHvArm64RegisterIdAa64Dfr1El1, WHPX_SYSREG(0, 5, 3, 0, 1), true },
+> +    { WHvArm64RegisterIdAa64Isar0El1, WHPX_SYSREG(0, 6, 3, 0, 0), true },
+> +    { WHvArm64RegisterIdAa64Isar1El1, WHPX_SYSREG(0, 6, 3, 0, 1), true },
+> +#ifdef SYNC_NO_MMFR0
+> +    /* We keep the hardware MMFR0 around. HW limits are there anyway */
+> +    { WHvArm64RegisterIdAa64Mmfr0El1, WHPX_SYSREG(0, 7, 3, 0, 0) },
+> +#endif
+> +    { WHvArm64RegisterIdAa64Mmfr1El1, WHPX_SYSREG(0, 7, 3, 0, 1), true },
+> +    { WHvArm64RegisterIdAa64Mmfr2El1, WHPX_SYSREG(0, 7, 3, 0, 2), true },
+> +    { WHvArm64RegisterIdAa64Mmfr3El1, WHPX_SYSREG(0, 7, 3, 0, 3), true },
+> +
+> +    { WHvArm64RegisterMdscrEl1, WHPX_SYSREG(0, 2, 2, 0, 2) },
+> +    { WHvArm64RegisterSctlrEl1, WHPX_SYSREG(1, 0, 3, 0, 0) },
+> +    { WHvArm64RegisterCpacrEl1, WHPX_SYSREG(1, 0, 3, 0, 2) },
+> +    { WHvArm64RegisterTtbr0El1, WHPX_SYSREG(2, 0, 3, 0, 0) },
+> +    { WHvArm64RegisterTtbr1El1, WHPX_SYSREG(2, 0, 3, 0, 1) },
+> +    { WHvArm64RegisterTcrEl1, WHPX_SYSREG(2, 0, 3, 0, 2) },
+> +
+> +    { WHvArm64RegisterApiAKeyLoEl1, WHPX_SYSREG(2, 1, 3, 0, 0) },
+> +    { WHvArm64RegisterApiAKeyHiEl1, WHPX_SYSREG(2, 1, 3, 0, 1) },
+> +    { WHvArm64RegisterApiBKeyLoEl1, WHPX_SYSREG(2, 1, 3, 0, 2) },
+> +    { WHvArm64RegisterApiBKeyHiEl1, WHPX_SYSREG(2, 1, 3, 0, 3) },
+> +    { WHvArm64RegisterApdAKeyLoEl1, WHPX_SYSREG(2, 2, 3, 0, 0) },
+> +    { WHvArm64RegisterApdAKeyHiEl1, WHPX_SYSREG(2, 2, 3, 0, 1) },
+> +    { WHvArm64RegisterApdBKeyLoEl1, WHPX_SYSREG(2, 2, 3, 0, 2) },
+> +    { WHvArm64RegisterApdBKeyHiEl1, WHPX_SYSREG(2, 2, 3, 0, 3) },
+> +    { WHvArm64RegisterApgAKeyLoEl1, WHPX_SYSREG(2, 3, 3, 0, 0) },
+> +    { WHvArm64RegisterApgAKeyHiEl1, WHPX_SYSREG(2, 3, 3, 0, 1) },
+> +
+> +    { WHvArm64RegisterSpsrEl1, WHPX_SYSREG(4, 0, 3, 0, 0) },
+> +    { WHvArm64RegisterElrEl1, WHPX_SYSREG(4, 0, 3, 0, 1) },
+> +    { WHvArm64RegisterSpEl1, WHPX_SYSREG(4, 1, 3, 0, 0) },
+> +    { WHvArm64RegisterEsrEl1, WHPX_SYSREG(5, 2, 3, 0, 0) },
+> +    { WHvArm64RegisterFarEl1, WHPX_SYSREG(6, 0, 3, 0, 0) },
+> +    { WHvArm64RegisterParEl1, WHPX_SYSREG(7, 4, 3, 0, 0) },
+> +    { WHvArm64RegisterMairEl1, WHPX_SYSREG(10, 2, 3, 0, 0) },
+> +    { WHvArm64RegisterVbarEl1, WHPX_SYSREG(12, 0, 3, 0, 0) },
+> +    { WHvArm64RegisterContextidrEl1, WHPX_SYSREG(13, 0, 3, 0, 1) },
+> +    { WHvArm64RegisterTpidrEl1, WHPX_SYSREG(13, 0, 3, 0, 4) },
+> +    { WHvArm64RegisterCntkctlEl1, WHPX_SYSREG(14, 1, 3, 0, 0) },
+> +    { WHvArm64RegisterCsselrEl1, WHPX_SYSREG(0, 0, 3, 2, 0) },
+> +    { WHvArm64RegisterTpidrEl0, WHPX_SYSREG(13, 0, 3, 3, 2) },
+> +    { WHvArm64RegisterTpidrroEl0, WHPX_SYSREG(13, 0, 3, 3, 3) },
+> +    { WHvArm64RegisterCntvCtlEl0, WHPX_SYSREG(14, 3, 3, 3, 1) },
+> +    { WHvArm64RegisterCntvCvalEl0, WHPX_SYSREG(14, 3, 3, 3, 2) },
+> +    { WHvArm64RegisterSpEl1, WHPX_SYSREG(4, 1, 3, 4, 0) },
+> +};
+To ease maintenance, this array should follow this equivalent
+changeset:
 
-Would it be wanted to provide MSI-X support in all scenarios even with =
-its=3Doff?
-And there=E2=80=99s the consequence of that making GICv3 + GICv2m only =
-testable with auto and not with TCG or kvm, which doesn=E2=80=99t sound =
-ideal.
-
-Thanks,
-> thanks
-> -- PMM
-
+$ git log --oneline a648af4885b~..bffe756ea10
+bffe756ea10 target/arm/hvf: Sort the cpreg_indexes array
+98c2af435e6 target/arm/hvf: Replace hvf_sreg_match with hvf_sreg_list
+e6728fb3492 target/arm/hvf: Remove hvf_sreg_match.key
+7d4d89a4377 target/arm/hvf: Add KVMID_TO_HVF, HVF_TO_KVMID
+8da60618b6d target/arm/hvf: Reorder DEF_SYSREG arguments
+a648af4885b target/arm/hvf: Split out sysreg.c.inc
 

@@ -4,143 +4,141 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF4E4CAC5B8
-	for <qemu-arm@archiver.kernel.org>; Thu,  2 Oct 2025 07:35:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16EFBCAC5B0
+	for <qemu-arm@archiver.kernel.org>; Thu,  2 Oct 2025 07:36:07 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v4DqR-0004fl-MB; Thu, 02 Oct 2025 03:35:19 -0400
+	id 1v4DqQ-0004fG-Af; Thu, 02 Oct 2025 03:35:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <Luc.Michel@amd.com>)
- id 1v4DqJ-0004Tf-NC; Thu, 02 Oct 2025 03:35:11 -0400
-Received: from mail-westus2azlp170120002.outbound.protection.outlook.com
- ([2a01:111:f403:c007::2] helo=MW6PR02CU001.outbound.protection.outlook.com)
+ id 1v4DqI-0004Rd-Ie; Thu, 02 Oct 2025 03:35:12 -0400
+Received: from mail-westcentralusazlp170100005.outbound.protection.outlook.com
+ ([2a01:111:f403:c112::5] helo=CY7PR03CU001.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <Luc.Michel@amd.com>)
- id 1v4Dq5-0008HB-83; Thu, 02 Oct 2025 03:35:09 -0400
+ id 1v4Dq6-0008Gl-MT; Thu, 02 Oct 2025 03:35:08 -0400
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=xlEf3WWeQ/h2m7tXnkLkHZdBm67hZ/5FTQ4UA04Qu6h2QNzN1fHnAwOpYmZ+Uc2POSTqxFB4duWshqzbxSehyf9/jjH3cBz9/gnI49zBktpaxLHvjXuYU8dGv0y6tQkdyVcX8T1nylPh9GkMCGOzFZtrVFzwxIb9sQJS0pjjIeb2vMZPATwB2e56st22AvQVyHDhRzq26bG6UAgRkdq8E0PVkU5FJwnWCXDXbWla3uUj/LBG3Yyqj/0Avg8EJ6rtB/YDDGfh9qEFU4RA3FLN0zvjxPpNAw9ExRg/R0VmSeP8lyqr5orVlbBGitYAdax6xNyFoAp8Urjm7nZWcZWKcA==
+ b=XHklVENJeQd2m3R65ErXRrowffHYNRnhP5A9KN1sfsH/0U8CEOXBh16j669tpYdkgbeoERWG/Q3bqskmDq2qcheIGJXLGCKu3ojnwTiQNJl4CRNvcbJEkAtaX0BU2VbzJaG+kg1yRlXC8fHasAoWnRMBFFi87d/CKLUsDlWP97s+qXL/6Yu4jzHjOup9Lc9p02qx2NyuUXsJVgJn4JlZoZdmY/X4ZBYlnCjK91FChsf4mGCwS39KzyOZkJM6Ac+CCwj1oYFE7IzTqfNXbXCPsVgLpqApclE+Ab8iHD55DxNDhmCV4nN98y41G7gs8YYImI0RO99s8qrttiuj64M9Fg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=sMelwTkH0ReVAXnWxYM6l9gkyJyBrIJ2t58MbtxOWw0=;
- b=c9AwLAA+WNGe45O92zGG+5lNa0RYRRxAoFLFOHvYh0F/GfdQe7lfup17tPyGE0SvwTd3ZlV+Wbid0lw3gOrk8enD4hZ8JkuE5/kINEdar7eNzEgu7i2ckIc1hy+DU5okkwVT/I8VRnZC3iwjSPOc/oGokei7YIf0jUzOsppX0xzVWlY9ssRgfrizl3NmcnwbLPIxLGclKjx7cSR9QFk6Usgi8W/IbIMcOw9XXwZBjGXV18EFXrplptEgWnV9RBBmvt4/nBrw/v8BUOBg2iWJVZVtHbdY/GW/ruSOnzg+CGGBXBWv2PdqMjZXef9scuWhM0RywMQ75fELbeu+pZetEQ==
+ bh=WptSizy55//3dhiOOO+WmBknzB0K6E5Km3B2KBaQFWw=;
+ b=nH3MdZm8p8aGzhXJfl/s4wHuSakO/1/cx4ZNXpKep42lJI4oCH+JGNGwi2wgK+vgkyv3ovaEXMjR65qWP6KOzBzeWhHCn//AD0Sr66nzPHR7Pqyl6oUTP2yymKCoYzwaSezOdh2elj3FljQw5YdZdTS1uOK/P7ZA5PyQzuMbrKCODNENf44oLgWFnPTAHG081LGgP/X/3lgDaxnJFvLRLqEyC8bgJKkc3TueNFhrpBlHAkT7SPSwmuTgF3L0RO9e9/iWqw4ylXn2vmp+7or2G3yUpToXX/X6/4/o88DvlHkjH19ZmckRKjv2+uxVo4JvbwXk1q3gqpDH9MXnesEgEQ==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
  165.204.84.17) smtp.rcpttodomain=nongnu.org smtp.mailfrom=amd.com; dmarc=pass
  (p=quarantine sp=quarantine pct=100) action=none header.from=amd.com;
  dkim=none (message not signed); arc=none (0)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1; 
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=sMelwTkH0ReVAXnWxYM6l9gkyJyBrIJ2t58MbtxOWw0=;
- b=G0D7k+gXEsEZVk75xJDX3wh3vGtFDoRAmLhfYOJoL0v1thL3igvDoXAlAH2o0xlXLOuMaDT39XU0NaJ9FlWOC5x1vnJytbJ1xJad+mAfRApDBIchuOuU87lLTRpsq+/dd5hBPCkO+XFroI80wIOFcxdgyri3uJSIl+4Q7XjTKZc=
-Received: from MW4PR03CA0327.namprd03.prod.outlook.com (2603:10b6:303:dd::32)
- by SA0PR12MB7002.namprd12.prod.outlook.com (2603:10b6:806:2c0::18)
+ bh=WptSizy55//3dhiOOO+WmBknzB0K6E5Km3B2KBaQFWw=;
+ b=NKDCHYbrLltkCZ3wbH8u9kR0oSpPoJzof5jD3bj3Dm7+Kmvi0wwN37aAxp6wF1OPoK43HxTCVuPNpi0aSXTr3Ri1SRwmsu/tV7zaINivTDAv43GHdYQ1IEa7dQhJguJrqH9c+gcQFM2w9h+CjxCwQ6RKdR/Ph4oba1L+n2ajYrc=
+Received: from BY3PR04CA0030.namprd04.prod.outlook.com (2603:10b6:a03:217::35)
+ by MN0PR12MB5764.namprd12.prod.outlook.com (2603:10b6:208:377::8)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9160.18; Thu, 2 Oct
- 2025 07:34:40 +0000
-Received: from BY1PEPF0001AE18.namprd04.prod.outlook.com
- (2603:10b6:303:dd:cafe::91) by MW4PR03CA0327.outlook.office365.com
- (2603:10b6:303:dd::32) with Microsoft SMTP Server (version=TLS1_3,
- cipher=TLS_AES_256_GCM_SHA384) id 15.20.9137.20 via Frontend Transport; Thu,
- 2 Oct 2025 07:34:40 +0000
+ 2025 07:34:34 +0000
+Received: from CO1PEPF000044F1.namprd05.prod.outlook.com
+ (2603:10b6:a03:217:cafe::b3) by BY3PR04CA0030.outlook.office365.com
+ (2603:10b6:a03:217::35) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.9182.14 via Frontend Transport; Thu,
+ 2 Oct 2025 07:34:21 +0000
 X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 165.204.84.17)
  smtp.mailfrom=amd.com; dkim=none (message not signed)
  header.d=none;dmarc=pass action=none header.from=amd.com;
 Received-SPF: Pass (protection.outlook.com: domain of amd.com designates
  165.204.84.17 as permitted sender) receiver=protection.outlook.com;
- client-ip=165.204.84.17; helo=satlexmb08.amd.com; pr=C
-Received: from satlexmb08.amd.com (165.204.84.17) by
- BY1PEPF0001AE18.mail.protection.outlook.com (10.167.242.100) with Microsoft
+ client-ip=165.204.84.17; helo=satlexmb07.amd.com; pr=C
+Received: from satlexmb07.amd.com (165.204.84.17) by
+ CO1PEPF000044F1.mail.protection.outlook.com (10.167.241.71) with Microsoft
  SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.9182.15 via Frontend Transport; Thu, 2 Oct 2025 07:34:39 +0000
-Received: from Satlexmb09.amd.com (10.181.42.218) by satlexmb08.amd.com
- (10.181.42.217) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.17; Thu, 2 Oct
- 2025 00:34:39 -0700
-Received: from satlexmb08.amd.com (10.181.42.217) by satlexmb09.amd.com
- (10.181.42.218) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.17; Thu, 2 Oct
- 2025 00:34:39 -0700
+ 15.20.9182.15 via Frontend Transport; Thu, 2 Oct 2025 07:34:33 +0000
+Received: from SATLEXMB04.amd.com (10.181.40.145) by satlexmb07.amd.com
+ (10.181.42.216) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.2.2562.17; Thu, 2 Oct
+ 2025 00:34:32 -0700
+Received: from satlexmb08.amd.com (10.181.42.217) by SATLEXMB04.amd.com
+ (10.181.40.145) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.39; Thu, 2 Oct
+ 2025 02:34:31 -0500
 Received: from XFR-LUMICHEL-L2.xilinx.com (10.180.168.240) by
  satlexmb08.amd.com (10.181.42.217) with Microsoft SMTP Server id 15.2.2562.17
- via Frontend Transport; Thu, 2 Oct 2025 00:34:37 -0700
+ via Frontend Transport; Thu, 2 Oct 2025 00:34:30 -0700
 From: Luc Michel <luc.michel@amd.com>
 To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
 CC: Luc Michel <luc.michel@amd.com>, Peter Maydell <peter.maydell@linaro.org>, 
  Francisco Iglesias <francisco.iglesias@amd.com>, "Edgar E . Iglesias"
  <edgar.iglesias@amd.com>, =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?=
  <philmd@linaro.org>, Alistair Francis <alistair@alistair23.me>, "Vikram
- Garhwal" <vikram.garhwal@bytedance.com>, Alistair Francis
- <alistair.francis@wdc.com>
-Subject: [PATCH v2 4/7] hw/core/register: remove the `register_finalize_block'
- function
-Date: Thu, 2 Oct 2025 09:34:13 +0200
-Message-ID: <20251002073418.109375-5-luc.michel@amd.com>
+ Garhwal" <vikram.garhwal@bytedance.com>
+Subject: [PATCH v2 0/7] Register API leaks fixes
+Date: Thu, 2 Oct 2025 09:34:09 +0200
+Message-ID: <20251002073418.109375-1-luc.michel@amd.com>
 X-Mailer: git-send-email 2.51.0
-In-Reply-To: <20251002073418.109375-1-luc.michel@amd.com>
-References: <20251002073418.109375-1-luc.michel@amd.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
+Received-SPF: None (SATLEXMB04.amd.com: luc.michel@amd.com does not designate
+ permitted sender hosts)
 X-EOPAttributedMessage: 0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: BY1PEPF0001AE18:EE_|SA0PR12MB7002:EE_
-X-MS-Office365-Filtering-Correlation-Id: 3697c897-4480-4f88-7408-08de01862589
+X-MS-TrafficTypeDiagnostic: CO1PEPF000044F1:EE_|MN0PR12MB5764:EE_
+X-MS-Office365-Filtering-Correlation-Id: 6cec2387-a7f1-49ec-0f71-08de01862170
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
- ARA:13230040|1800799024|36860700013|82310400026|376014; 
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?rVIiz5valujUDSVZ0QqfLoJLwxZGyFiAVqViyAjLGWTKWu3oeT9M/nuLSHDd?=
- =?us-ascii?Q?BpD+/v17LAOrPvL+8PkSPJoEw2ZuBRIhxO8H0BRzdOMsRAZIH1QGLpUntVxe?=
- =?us-ascii?Q?CyX1Or6ZxaBvJbBaA7hF7p4bSeG3psMwu76d0jDwjJSKwxKPO3veJOUwvBZ3?=
- =?us-ascii?Q?IlKgSreMfboj7O/WS8Qe88BZlhIW2TZe/XQs8KHN/KNSBV5afxUN7QvQVS33?=
- =?us-ascii?Q?MBYMJFUHa/J/HMfxwptdqGIyn3FII5fuhT60XWi2JVke5scvDSuMCU8nY2TO?=
- =?us-ascii?Q?vVuXWtMGfp/FPhhbIGgH7aTxpwTQf13YCy4WNIMpCZVQnldzFz9d0HsYPFom?=
- =?us-ascii?Q?2djQNpJh2ga4jY2QGKaongEfSYyV2M8iz+wKZJB9Pa4sxhqSDLZhtkULZ3xH?=
- =?us-ascii?Q?6IIgYpZ53m19f86JjLFPQcQXSimwpClyrPDJatD+VJyUNHhyE5GF+YEiW0Jy?=
- =?us-ascii?Q?hzyYOXLxtRVGEXGP8f1rjWw/bwaR5Ul5vby2pSk88Jlytpg37QppotPYOibh?=
- =?us-ascii?Q?TsDV4Tz0kqUCC3qNkFG4K6l+2LApxJzun8Ugwf7bpB+EIUzifmA9oADcVRgl?=
- =?us-ascii?Q?/Jn3VngdKjt/pr2jFoGS1GbmiRWEOPTQFHYHG3t1lv6ksejIX4uoJeYu5S2J?=
- =?us-ascii?Q?Ume1Tde97Ss3SIKhv0Wi67WS23DrcfdfXDfY+oIC32cSkSAQdkyx2jlRAkBS?=
- =?us-ascii?Q?TZd/jIWkbq6Mug210falrblN6KLfhaWGAJoeWGbKQMHC1pQ9ZE8GfEPs9xZ2?=
- =?us-ascii?Q?i1RPT0Sl+SQSi9IsOl55aq93u2tebAdgNjzIYYTA1yc9n5son/5ekN/Q7utJ?=
- =?us-ascii?Q?GbtX74w4kLkkTfDy7vWH2nsZ7FOCMyNDzA/vdeD+SZ0vI/xv/OnSLKLTeiOM?=
- =?us-ascii?Q?jrr80qAEgprYSDn0IqnJrMt/QyBRHW7iOwvsaRa0qgPJOjZlfiKv2+NlAFRI?=
- =?us-ascii?Q?lKNdKPfy1bqFG//NeY1ZSh6+DYzRpjOJfkDzzndGkxAuHwZdAIGHobZNEIql?=
- =?us-ascii?Q?w7YZeviC6V4MiXptoT/U3sShwRej/BmY6QVcGZjPtzPZBMUAh+FAzP++nOLH?=
- =?us-ascii?Q?7Rkw3gN+A3p3OkOTxYHZUvGrtt4XQxrO38cAPwAXeyfV0WWZWUp7Y16XfwgF?=
- =?us-ascii?Q?H9uSqQrap/vwC55gAG2wiXanR1RYBuw0ylY56HP4eUabROm495Hpn0NwXWRp?=
- =?us-ascii?Q?K2gl0jDDYLGioPnixPABJobL5A/SQhJnkucEhfUl02G/qseGnaSoFSDEd8wi?=
- =?us-ascii?Q?rF4npEgzRUTXhatiWHzmQ1g/A/f5qP1KeFKVWwb9d0wITwjN8FiN4OCOJL4U?=
- =?us-ascii?Q?/wQve6Z8PKCfUiq+A6IqaNs6ULQQJHpGRaC6RWDXwAoZiXrflkKSUiFFT3er?=
- =?us-ascii?Q?6QpIsN2Fhm+CqkHtzGNuP6bgxS/b5M+outx84Aq7fuxlkICh9MoI1itgercj?=
- =?us-ascii?Q?VR84W3KqC8uLk/tY9EgOHbLCnVfwIePq4hrMz+DoNEU5+srxA/IwRjOC/CAT?=
- =?us-ascii?Q?Ksg/clv+y43/eRUCj+GmzoID14DewLaa0kFraYrOEFljnv+WTuGC7fcgFNb/?=
- =?us-ascii?Q?ccRrfhEAO6ueazt89m4=3D?=
+ ARA:13230040|36860700013|376014|82310400026|1800799024; 
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?/WsF/2+5+Dwd5g77xcYC5udehbO3vesHyfq2jbj0iScQojLumxKTK9QFStlU?=
+ =?us-ascii?Q?B+GaYWeVn+QNl8m2OksSYOX8mjAYBTupeXR+rJ+Y+gWqIY7cQ3Evwijlzd7a?=
+ =?us-ascii?Q?lDQ5J1dfuiafXi2tTGaTXdLrD8cI9q05B9gdsPR9a0ZFPOKX9NSkImtU8wzw?=
+ =?us-ascii?Q?h0CpBbXDkco8278NuJqV1A7HcIygJEZt7PYiFPO1vgrVR0oxdnucA/kafRtb?=
+ =?us-ascii?Q?ND3ZBn42wTMjxfLLsLGPATIdeevEDnZv22wPYZ+zHgWgsa/OEDqP8mSaV1XJ?=
+ =?us-ascii?Q?aXxkUsl0YlwiNyQbbGT6xOIIRYDQjc3V7L27GE3M3LI7v7ejZq3W0wTqe0t3?=
+ =?us-ascii?Q?Lb+BIIAKN6izYynN2Z5HBaV0CWMLRXIWUWqyOwMeGnjD6xbK8vn9C1GcR3ob?=
+ =?us-ascii?Q?lUS/NEko6Q8e18tS7ynfFzmrNWzT62qe//NtfjS5v9OjtDLseAikAc7MyMlO?=
+ =?us-ascii?Q?CEkJlqPFoZyvIWhxpx8jxYZG79pGKZ4ERiNxYCKZ56TjkgILTc7oM0R0BbBH?=
+ =?us-ascii?Q?A6xU8tbw/aBk1SGfcwTXOgn3suSHCuGL6pexnz2Nvo8cebIFuvQ6w/PVy2xr?=
+ =?us-ascii?Q?2KSflb0SLjtyFELCEr6bWOkBMIOiyZkPhzVEVDxE1lVzUL4BJiEqmPxmhG8r?=
+ =?us-ascii?Q?6Dj9LxfX6OOqKQY69F1UhtKs/XQLGEnObGtsoL3NUAgWWWQWSR7y+nyusywd?=
+ =?us-ascii?Q?BJhRoHD5nCBu9X9UtE1nAFiEXrzcpb+4mQjQFCpZJi0SzHtOcue2JnRo5aAR?=
+ =?us-ascii?Q?SkvvlvmvGYnHPlkewOTWlLoWXi5gxbSIzvjB7EQI/2QG3NeTOnFx9bF0OUiy?=
+ =?us-ascii?Q?TEtYAprhDi/+bVLJtG1EsjobtjIqpEQ0qQ/ozX8LjfHQh6KDSCOHPb9XzO+O?=
+ =?us-ascii?Q?Gv6FhHJN6lDqC/M0FoFMlOYCqELTnWED9+g8PUVqKH2gMFGkstvn8l/EgPs1?=
+ =?us-ascii?Q?VkjVQJkLU6+5n34PjRKHoGK2H2NSvDJKP0YMtsyFFXV+OTHAR5TkoG1Ve6DG?=
+ =?us-ascii?Q?BNT/Fg96gsQr7+1xabwjD0ItYIAydZyMaSshUvY+o5hBXERNmzRNP0KhIFtH?=
+ =?us-ascii?Q?CXZeZsBD7i22UP9XAIcVTxYEB9TTLADBcnBWJtgdbZTPszABSmstMzl9j60R?=
+ =?us-ascii?Q?8V+u67FMHsJ8AL15Iabj2pneZUipFLRvDRVqeKb82+B9cCTzVO+UKSE+G3H8?=
+ =?us-ascii?Q?nC430XCNr39vwK8MqWboNh6HPXM2Q87RD2DRgFhTg3xzUmC2El5ZZKoAtng+?=
+ =?us-ascii?Q?loCq/XosuYEvYKY2mPKvvxZOrHO3Jo3K49zxNyfvs76zQL+NUUUaRUrG4Cri?=
+ =?us-ascii?Q?JXxOo7nq00Jb8Au+Pk8SlXuKrsDhAd/SeB8gSIbzOLXZOvJMhMLeIxagdNoH?=
+ =?us-ascii?Q?GA55a9PwcDg4oNt7OmZOIeEKNCdkmLCJk2UEy0aY9su9+pRrK5s/H4E7UwWt?=
+ =?us-ascii?Q?DUqU3Gt1M1TRhwtdyh4ZvqJiquSyrIZ1lTR71p7DDc+G07C7wa9wF2aYka11?=
+ =?us-ascii?Q?BTVHG39Ho/wfhNWgiuGL5omifAWyTv5JD3LMeLyq9uh6VnjMt1zEhJCxN5y2?=
+ =?us-ascii?Q?r3/XHIAT8EWxzO4COIc=3D?=
 X-Forefront-Antispam-Report: CIP:165.204.84.17; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:CAL; SFV:NSPM; H:satlexmb08.amd.com; PTR:InfoDomainNonexistent; CAT:NONE;
- SFS:(13230040)(1800799024)(36860700013)(82310400026)(376014); DIR:OUT;
+ IPV:CAL; SFV:NSPM; H:satlexmb07.amd.com; PTR:InfoDomainNonexistent; CAT:NONE;
+ SFS:(13230040)(36860700013)(376014)(82310400026)(1800799024); DIR:OUT;
  SFP:1101; 
 X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 02 Oct 2025 07:34:39.8944 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 3697c897-4480-4f88-7408-08de01862589
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 02 Oct 2025 07:34:33.0045 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 6cec2387-a7f1-49ec-0f71-08de01862170
 X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
 X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3dd8961f-e488-4e60-8e11-a82d994e183d; Ip=[165.204.84.17];
- Helo=[satlexmb08.amd.com]
-X-MS-Exchange-CrossTenant-AuthSource: BY1PEPF0001AE18.namprd04.prod.outlook.com
+ Helo=[satlexmb07.amd.com]
+X-MS-Exchange-CrossTenant-AuthSource: CO1PEPF000044F1.namprd05.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Anonymous
 X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA0PR12MB7002
-Received-SPF: permerror client-ip=2a01:111:f403:c007::2;
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN0PR12MB5764
+Received-SPF: permerror client-ip=2a01:111:f403:c112::5;
  envelope-from=Luc.Michel@amd.com;
- helo=MW6PR02CU001.outbound.protection.outlook.com
-X-Spam_score_int: -12
-X-Spam_score: -1.3
-X-Spam_bar: -
-X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
- DKIM_SIGNED=0.1, KHOP_HELO_FCRDNS=0.399, SPF_HELO_NONE=0.001,
- T_SPF_TEMPERROR=0.01 autolearn=no autolearn_force=no
+ helo=CY7PR03CU001.outbound.protection.outlook.com
+X-Spam_score_int: -25
+X-Spam_score: -2.6
+X-Spam_bar: --
+X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.518,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -156,61 +154,87 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This function is now unused. Drop it.
+Based-on: 20250926070806.292065-1-luc.michel@amd.com ([PATCH v6 00/47] AMD Versal Gen 2 support)
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
-Reviewed-by: Francisco Iglesias <francisco.iglesias@amd.com>
-Reviewed-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
-Signed-off-by: Luc Michel <luc.michel@amd.com>
----
- include/hw/register.h | 14 --------------
- hw/core/register.c    |  4 ----
- 2 files changed, 18 deletions(-)
+v2:
+  - Rebased, now applies cleanly. The conflict came from f9ce0848942490
+    that was merged in the mean time.
+    As discussed with Phil, this is still based on Versal 2 series to
+    avoid having to rebase the later on this one, as it is basically
+    ready to be merged. [Phil]
 
-diff --git a/include/hw/register.h b/include/hw/register.h
-index 65c82600e06..7b0f4c8b7a6 100644
---- a/include/hw/register.h
-+++ b/include/hw/register.h
-@@ -207,20 +207,6 @@ RegisterInfoArray *register_init_block64(DeviceState *owner,
-                                          uint64_t *data,
-                                          const MemoryRegionOps *ops,
-                                          bool debug_enabled,
-                                          uint64_t memory_size);
- 
--/**
-- * This function should be called to cleanup the registers that were initialized
-- * when calling register_init_block32(). This function should only be called
-- * from the device's instance_finalize function.
-- *
-- * Any memory operations that the device performed that require cleanup (such
-- * as creating subregions) need to be called before calling this function.
-- *
-- * @r_array: A structure containing all of the registers, as returned by
-- *           register_init_block32()
-- */
--
--void register_finalize_block(RegisterInfoArray *r_array);
--
- #endif
-diff --git a/hw/core/register.c b/hw/core/register.c
-index 70c33d97d8b..a4e12c81870 100644
---- a/hw/core/register.c
-+++ b/hw/core/register.c
-@@ -320,14 +320,10 @@ static void register_array_finalize(Object *obj)
-     RegisterInfoArray *r_array = REGISTER_ARRAY(obj);
- 
-     g_free(r_array->r);
- }
- 
--void register_finalize_block(RegisterInfoArray *r_array)
--{
--}
--
- static const TypeInfo register_array_info = {
-     .name  = TYPE_REGISTER_ARRAY,
-     .parent = TYPE_OBJECT,
-     .instance_size = sizeof(RegisterInfoArray),
-     .instance_finalize = register_array_finalize,
+Hello,
+
+This series addresses the memory leaks caused by the register API. The
+first patches fix the API itself while the last ones take care of the
+CANFD model.
+
+The leaks in the register API were caused by:
+   - the REGISTER device being initialized without being realized nor
+     finalized. Those devices were not parented to anything and were
+     not using the qdev API. So in the end I chose to drop the REGISTER
+     object completely (patch 1).
+   - Register API users not calling `register_finalize_block' on the
+     RegisterInfoArray returned by `register_init_block'. Instead of
+     fixing all the users, I chose to simplify the API by removing the
+     need for this call. I turned the RegisterInfoArray struct into a QOM
+     object and parented it to the device in `register_init_block'. This
+     way it has its own finalize function that gets called when the
+     parent device is finalized. This implies a small API change: the
+     `register_finalize_block' function is removed (patch 2, 3, 4).
+
+The CANFD model needed special care. It was rolling out its own version
+of `register_init_block', including the discrepancies leading to the
+memory leaks. This is because the register map of this device is
+composed of main registers (from 0x0 to 0xec), followed by several banks
+of multiple registers (Tx banks, filter banks, Txe banks, ...). The
+register API is not suited for this kind of layout and the resulting
+code to handle that is convoluted. However a simple decoding logic is
+easily written for this, those registers having basically no side effect
+upon access.
+
+Patch 6 introduces this decoding logic for the banked registers, patch 7
+removes the register API bits for those, keeping the one for the base
+registers.
+
+Note: this series is based on my Versal 2 series. It modifies the CRL
+device during the register API refactoring. It can easily be rebased on
+master if needed.
+
+Thanks
+
+Luc
+
+
+Luc Michel (7):
+  hw/core/register: remove the REGISTER device type
+  hw/core/register: add the REGISTER_ARRAY type
+  hw/core/register: remove the calls to `register_finalize_block'
+  hw/core/register: remove the `register_finalize_block' function
+  hw/net/can/xlnx-versal-canfd: remove unused include directives
+  hw/net/can/xlnx-versal-canfd: refactor the banked registers logic
+  hw/net/can/xlnx-versal-canfd: remove register API usage for banked
+    regs
+
+ include/hw/misc/xlnx-versal-crl.h      |   1 -
+ include/hw/misc/xlnx-versal-xramc.h    |   1 -
+ include/hw/misc/xlnx-zynqmp-apu-ctrl.h |   1 -
+ include/hw/misc/xlnx-zynqmp-crf.h      |   1 -
+ include/hw/net/xlnx-versal-canfd.h     |   8 -
+ include/hw/nvram/xlnx-bbram.h          |   1 -
+ include/hw/register.h                  |  25 +-
+ hw/core/register.c                     |  36 +-
+ hw/misc/xlnx-versal-crl.c              |  38 +--
+ hw/misc/xlnx-versal-trng.c             |   1 -
+ hw/misc/xlnx-versal-xramc.c            |  12 +-
+ hw/misc/xlnx-zynqmp-apu-ctrl.c         |  12 +-
+ hw/misc/xlnx-zynqmp-crf.c              |  12 +-
+ hw/net/can/xlnx-versal-canfd.c         | 434 +++++++++----------------
+ hw/nvram/xlnx-bbram.c                  |  13 +-
+ hw/nvram/xlnx-versal-efuse-ctrl.c      |   1 -
+ hw/nvram/xlnx-zynqmp-efuse.c           |   8 -
+ 17 files changed, 196 insertions(+), 409 deletions(-)
+
 -- 
 2.51.0
 

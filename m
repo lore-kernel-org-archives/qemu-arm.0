@@ -4,119 +4,113 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17308CAC5B8
-	for <qemu-arm@archiver.kernel.org>; Thu,  2 Oct 2025 06:34:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1339FCAC5B8
+	for <qemu-arm@archiver.kernel.org>; Thu,  2 Oct 2025 06:54:31 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v4Csw-0001TY-Ei; Thu, 02 Oct 2025 02:33:52 -0400
+	id 1v4DBu-0001tN-Mn; Thu, 02 Oct 2025 02:53:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1v4Cso-0001SE-CQ
- for qemu-arm@nongnu.org; Thu, 02 Oct 2025 02:33:44 -0400
-Received: from 3.mo552.mail-out.ovh.net ([178.33.254.192])
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1v4DBr-0001sa-RZ
+ for qemu-arm@nongnu.org; Thu, 02 Oct 2025 02:53:25 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1v4CsX-0008OU-9C
- for qemu-arm@nongnu.org; Thu, 02 Oct 2025 02:33:39 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.109.254.252])
- by mo552.mail-out.ovh.net (Postfix) with ESMTPS id 4cchn91dVSz5xyP;
- Thu,  2 Oct 2025 06:33:01 +0000 (UTC)
-Received: from kaod.org (37.59.142.105) by DAG8EX2.mxp5.local (172.16.2.72)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.59; Thu, 2 Oct
- 2025 08:33:00 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-105G0063673733e-4d42-4dc3-a209-83a7baf98e1f,
- 3289BCBDFD1086C5677F9DFD0C8EC2DEF9D0CC42) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <949cc59c-d5eb-4550-9cab-1abd53b19513@kaod.org>
-Date: Thu, 2 Oct 2025 08:32:59 +0200
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1v4DBj-00015A-NV
+ for qemu-arm@nongnu.org; Thu, 02 Oct 2025 02:53:23 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1759387984;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=bPsY3CfUUFwCkoL++FUa8+ITS2ZV56ABrofUnGO7PGU=;
+ b=QhWoHgWvwO4dRioPwh5VyIAFKOYhbHWKtIA+CImHyEaoy0E44lFUGMV1s3w30XpSgUg2tm
+ 82TkQ0i2YrRCQBKfRaG4Iast1dVj/Jb9JlC5kajGGxQEWg/EK0TBdDhDFKKyYI8TAWXvGi
+ Ye8Ig3CXvhqJ623P7qVf5NF2KRRwSPM=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-271-0uEMH5EfN-i6mB5XFMShrQ-1; Thu, 02 Oct 2025 02:53:03 -0400
+X-MC-Unique: 0uEMH5EfN-i6mB5XFMShrQ-1
+X-Mimecast-MFC-AGG-ID: 0uEMH5EfN-i6mB5XFMShrQ_1759387982
+Received: by mail-wr1-f71.google.com with SMTP id
+ ffacd0b85a97d-40fd1b17d2bso225768f8f.1
+ for <qemu-arm@nongnu.org>; Wed, 01 Oct 2025 23:53:03 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1759387982; x=1759992782;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=bPsY3CfUUFwCkoL++FUa8+ITS2ZV56ABrofUnGO7PGU=;
+ b=QvBRVgBj//bqULZ4CVD6dUseP1RPVZWeYUIrEZnSKFZXYe8aVWi+Z8uP1Q5NYmGUNz
+ 4Kpayex9epvxZcmVx5Nts2XAamZ30oMT/4CcFLjgAFtkvERRuLLLwcaazX3a9xgsAjiD
+ srcL0sNAYXQiw0YyB9J4TRHTr1Q67cZDGJVAke5CgfIDxCLrPHg0DzUsABi6ijij3Vdo
+ ngghXRiZ9T3Z6EvPFE/SrebcugMoYLWkwdH8i8A9ApKZMPk1eaiOx/1pghVXYjVNWXzu
+ CxFNiaydW3zggiF87nTODPzQMWvEp9r2ESfW7xzatO+o93/nxo1jJ4ISJSQc7+2m3tT9
+ rgwQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVHaTnFPpgNhB3lmLOX65kwYl4QVdg9NahlqGsbP3RMiTquS7z0eZ8yFxEDDRdMSFIIapeImSCj1A==@nongnu.org
+X-Gm-Message-State: AOJu0Yy9shQcyrf1xcn45hvEIh7krrswipxTizJcZcck2E71m7LsLDqf
+ VzbutXh8Q9EQloguIoBHwpmbvMiPO4ar/4w/Frj7FfsJoWShuW4ODmGlXC9QXz/0Q7NAFVwYTDF
+ KR2Z2xYOVgRAAPprS44DEff4ef6JMp5ob0I+/MmOv+Z4H8H6cE+HKWw==
+X-Gm-Gg: ASbGncvuXdD2jDqK7LF/fcX364ZKeB0IGYP9dE9Glre4sImabtIu9QbDJ3zpPJBjY0U
+ 0l3bw2ZD9EZbKravO/Olzkw9Ou9dIoUEJI0QZez2+CqqPJt/c074tieWrIQwdiPBZsB66ocUW+K
+ AWU+j/uPnfcoUtMtMFYlp6n2+6FZprW141OSb7dTO9sn5b8HP4EOq1nAaXaZYPbt3EEDyu8YTIo
+ 7tdS0dCiktc4n+/GpKxuxzOaqtRWkS+p7+w8GibQng+2CDo+aUYRmJzN5XNvUPAgavbR3JWCOqG
+ WFaCIaHB2CCU1gF6Fl1+IHF0j0QfXtAbN8X0oVFKmMN35H5Mx6qpr7JMoXb8J4nQR/F0YYbIqkI
+ yTtg5freVEboO4iaN
+X-Received: by 2002:a05:6000:4382:b0:3ea:c893:95a7 with SMTP id
+ ffacd0b85a97d-4255780b1b8mr4352595f8f.31.1759387981601; 
+ Wed, 01 Oct 2025 23:53:01 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEiGuxTmVYJqEsiAblpRxkylI6pVQPxNzZH+RSjaslG/dYz+gEJ8HUIEbG78AIHKIfd9BXdWg==
+X-Received: by 2002:a05:6000:4382:b0:3ea:c893:95a7 with SMTP id
+ ffacd0b85a97d-4255780b1b8mr4352563f8f.31.1759387981083; 
+ Wed, 01 Oct 2025 23:53:01 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-4255d8e9762sm2252557f8f.38.2025.10.01.23.52.58
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 01 Oct 2025 23:52:59 -0700 (PDT)
+Message-ID: <7167d287-f0d0-4bb8-8750-e38e9e31df10@redhat.com>
+Date: Thu, 2 Oct 2025 08:52:58 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3] aspeed: Add support for the sonorapass-bmc board
-To: Patrick Williams <patrick@stwcx.xyz>
-CC: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery
- <andrew@aj.id.au>, Amithash Prasad <amithash@fb.com>, "open list:All patches
- CC here" <qemu-devel@nongnu.org>, "open list:ASPEED BMCs"
- <qemu-arm@nongnu.org>, Vijay Khemka <vijaykhemka@fb.com>, Joel Stanley
- <joel@jms.id.au>, Karthikeyan Pasupathi <pkarthikeyan1509@gmail.com>, Peter
- Delevoryas <pdel@fb.com>
-References: <20200506173035.2154053-1-patrick@stwcx.xyz>
- <20200506183219.2166987-1-patrick@stwcx.xyz>
- <0165086d-3ab4-4986-84ff-452984d16153@kaod.org> <aN3ht1MdFppiDcPz@heinlein>
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Content-Language: en-US, fr
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <aN3ht1MdFppiDcPz@heinlein>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
+Subject: Re: [PATCH v4 08/27] hw/arm/smmuv3-accel: Add set/unset_iommu_device
+ callback
+To: Shameer Kolothum <skolothumtho@nvidia.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, jgg@nvidia.com, nicolinc@nvidia.com,
+ ddutile@redhat.com, berrange@redhat.com, nathanc@nvidia.com,
+ mochs@nvidia.com, smostafa@google.com, wangzhou1@hisilicon.com,
+ jiangkunkun@huawei.com, jonathan.cameron@huawei.com,
+ zhangfei.gao@linaro.org, zhenzhong.duan@intel.com, yi.l.liu@intel.com,
+ shameerkolothum@gmail.com
+References: <20250929133643.38961-1-skolothumtho@nvidia.com>
+ <20250929133643.38961-9-skolothumtho@nvidia.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <20250929133643.38961-9-skolothumtho@nvidia.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: 5VXQuBxUwb_XxTiho3NOANY7ir1VKs7yowqbJ9C9JtQ_1759387982
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.105]
-X-ClientProxiedBy: DAG4EX1.mxp5.local (172.16.2.31) To DAG8EX2.mxp5.local
- (172.16.2.72)
-X-Ovh-Tracer-GUID: b6d5c78c-45f4-4c45-a9b2-07d4b2ee487a
-X-Ovh-Tracer-Id: 2061804206045563826
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTEvE8MH0JYc2dC86obgQXi4Z1plEhb1olXRXhXlNlnTdP7qxTUq9VYW5cg1DBYis0FAX3pwwb/QtaHqjcHI+fOnleZk+Z6p4Fd1rUZPGKexm8atheaiHDfSgAvmohvBrk68nHY4JqP8EAAk+925DK5nkjf0tbwFlsBf4+qdRnZowu7Bb/I0I1I0lTukhI+0peaZFdcqVJgIr7lnLRM5suYKTyKqwmEtHn5PeGNJN1h1acFlaZraI5lWBwPtY7bbygmb+O7iNijHh1nDb84TqtcUFgZBi+c1OfPzGHY+mMDNfup87rk1ouPpf5r9U5c/yRxav6UREftlfu5f/BItShCbrkwl7a07+dmITb4BPpgpLBMRdiWaeydRaE0Z7eylZUmUmjurux+O9GvSmhm+bJnrZeqSWeaGV5ZQqS5MGFHgOae68DxlwJrC10HQrO5t245bmIxTbRVPFixGyeWoFDlzPsIyr+NlxHE8NXT1DM0nHZcyYF2/16qaohjbQGVwBqajpFb+pKYe6ewrz4d+LMZWjNb6ntnwBNcgdksRCNjikG+HONMtBarmTznfWGYnMAwSZiC4nvKXoEE9lnAEhnEYU7wBZbrjKpBBmsLrKTUKuEJ3QQ5BrtuOlYcWqJ9MoEUYfp9ji9ZS6jb7xlt7CjBZdzgPu0GnZT43BFPtxpgBMw
-DKIM-Signature: a=rsa-sha256; bh=Lnr3EAB9ep6FPnWLuszLSFNJO0gBlf+stX1hXPd+AJo=; 
- c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1759386782; v=1;
- b=fvtlEZrh/QCCAo8sW/htTGirfHTWUyXX4IdVOU8KS9e5BKIpSQ2HmwCESUWa13sgkkcnaqJj
- 038ZF+Bh3wtD5xJdEoka//xrgpqGLUV+Dx3PVIxuN/sRBFnNzh2XAntNiL9i4MKFT1g7epxKAVp
- JxOo2rVy6Mh5J4AGqkPY5v+nBrGz79BVvVoV+2CTd03tXhb7npwICd1Ocy03V5rIb0SWnGI8T59
- 88uobF38HTrXjTIu8qhghMBff0xMGGXK0lzunqUt/AfMzkilu9RTQjK1WH4Km5w0+zobo2Ph0ym
- 6Y1vllnBwlGAMt7AJzzRkZMSCEvzef5xR+cmmLEDbw/xA==
-Received-SPF: pass client-ip=178.33.254.192; envelope-from=clg@kaod.org;
- helo=3.mo552.mail-out.ovh.net
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001,
- T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -129,93 +123,316 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hello Patrick
+Hi Shameer,
 
-On 10/2/25 04:21, Patrick Williams wrote:
-> On Tue, Sep 30, 2025 at 07:51:15AM +0200, Cédric Le Goater wrote:
->> Hello Patrick
->>
->> Would it be possible to contribute a functional test for this
->> machine ?
->>
->> The request applies to these Facebook machines :
->>
->>     sonorapass-bmc
-> 
-> This machine type is deprecated and never went to production.
+On 9/29/25 3:36 PM, Shameer Kolothum wrote:
+> From: Nicolin Chen <nicolinc@nvidia.com>
+the original intent of this callback is
 
-OK. Let's deprecate then.
+     * @set_iommu_device: attach a HostIOMMUDevice to a vIOMMU
+     *
+     * Optional callback, if not implemented in vIOMMU, then vIOMMU can't
+     * retrieve host information from the associated HostIOMMUDevice.
+     *
 
-> 
->>     yosemitev2-bmc
->>     tiogapass-bmc
->>     fuji-bmc
->>     fby35-bmc
-> 
-> All of these are used by OpenBMC and/or Meta for QEMU validation of
-> new BMC images.  I can get you an image for these if necessary.
+The implementation below goes way behond the simple "attachment" of the
+HostIOMMUDevice to the vIOMMU.
+allocation of a vIOMMU; allocation of 2 HWPTs, creation of a new
+SMMUv3AccelState
+>
+> Implement a set_iommu_device callback:
+>  -If found an existing viommu reuse that.
+I think you need to document why you need a vIOMMU object.
+>  -Else,
+>     Allocate a vIOMMU with the nested parent S2 hwpt allocated by VFIO.
+>     Though, iommufd’s vIOMMU model supports nested translation by
+>     encapsulating a S2 nesting parent HWPT, devices cannot attach to this
+>     parent HWPT directly. So two proxy nested HWPTs (bypass and abort) are
+>     allocated to handle device attachments.
 
-That would be great ! Pointing to the latest images would be preferred.
-  
->> Since these machines contribute little to the Aspeed models,
->> their value lies in the firmware they can run to exercise the
->> models. Without functional tests, I plan to schedule their
->> removal in the QEMU 10.2 cycle.
-> 
-> I don't understand this statement.  What does "little value to the
-> Aspeed models" have to do with keeping machines in place. If we are> only going to have support for machines that you deem as "valuable" why
-> would anyone contribute a new machine?  
+"devices cannot attach to this parent HWPT directly".  Why? It is not clear to me what those hwpt are used for compared to the original one. Why are they mandated? To me this deserves some additional explanations. If they are s2 ones, I would use an s2 prefix too.
 
-This is specific to the Aspeed machines.
+>  -And add the dev to viommu device list
+this is the initial objective of the callback
+>
+> Also add an unset_iommu_device to unwind/cleanup above.
 
-We maintain *many* Aspeed machines with only minor differences. If
-the only distinction is the flash model, the 'ast2600-evb' machine
-can be used with the 'fmc-model' option to specify the flash type.
+I think you shall document the introduction of SMMUv3AccelState.It
+currently contains a single member, do you plan to add others.
+> Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
+> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com
+> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
+> ---
+>  hw/arm/smmuv3-accel.c   | 150 ++++++++++++++++++++++++++++++++++++++++
+>  hw/arm/smmuv3-accel.h   |  17 +++++
+>  hw/arm/trace-events     |   4 ++
+>  include/hw/arm/smmuv3.h |   1 +
+>  4 files changed, 172 insertions(+)
+>
+> diff --git a/hw/arm/smmuv3-accel.c b/hw/arm/smmuv3-accel.c
+> index 6b0e512d86..81fa738f6f 100644
+> --- a/hw/arm/smmuv3-accel.c
+> +++ b/hw/arm/smmuv3-accel.c
+> @@ -8,6 +8,7 @@
+>  
+>  #include "qemu/osdep.h"
+>  #include "qemu/error-report.h"
+> +#include "trace.h"
+>  
+>  #include "hw/arm/smmuv3.h"
+>  #include "hw/iommu.h"
+> @@ -17,6 +18,9 @@
+>  
+>  #include "smmuv3-accel.h"
+>  
+> +#define SMMU_STE_VALID      (1ULL << 0)
+> +#define SMMU_STE_CFG_BYPASS (1ULL << 3)
+I would rather put that in smmuv3-internal.h where you have other STE
+macros. Look for "/* STE fields */
+> +
+>  static SMMUv3AccelDevice *smmuv3_accel_get_dev(SMMUState *bs, SMMUPciBus *sbus,
+>                                                 PCIBus *bus, int devfn)
+>  {
+> @@ -35,6 +39,149 @@ static SMMUv3AccelDevice *smmuv3_accel_get_dev(SMMUState *bs, SMMUPciBus *sbus,
+>      return accel_dev;
+>  }
+>  
+> +static bool
+> +smmuv3_accel_dev_alloc_viommu(SMMUv3AccelDevice *accel_dev,
+> +                              HostIOMMUDeviceIOMMUFD *idev, Error **errp)
+> +{
+> +    struct iommu_hwpt_arm_smmuv3 bypass_data = {
+> +        .ste = { SMMU_STE_CFG_BYPASS | SMMU_STE_VALID, 0x0ULL },
+> +    };
+> +    struct iommu_hwpt_arm_smmuv3 abort_data = {
+> +        .ste = { SMMU_STE_VALID, 0x0ULL },
+> +    };
+> +    SMMUDevice *sdev = &accel_dev->sdev;
+> +    SMMUState *bs = sdev->smmu;
+> +    SMMUv3State *s = ARM_SMMUV3(bs);
+> +    SMMUv3AccelState *s_accel = s->s_accel;
+> +    uint32_t s2_hwpt_id = idev->hwpt_id;
+> +    SMMUViommu *viommu;
+> +    uint32_t viommu_id;
+> +
+> +    if (s_accel->viommu) {
+> +        accel_dev->viommu = s_accel->viommu;
+> +        return true;
+> +    }
+> +
+> +    if (!iommufd_backend_alloc_viommu(idev->iommufd, idev->devid,
+> +                                      IOMMU_VIOMMU_TYPE_ARM_SMMUV3,
+> +                                      s2_hwpt_id, &viommu_id, errp)) {
+> +        return false;
+> +    }
+> +
+> +    viommu = g_new0(SMMUViommu, 1);
+> +    viommu->core.viommu_id = viommu_id;
+> +    viommu->core.s2_hwpt_id = s2_hwpt_id;
+> +    viommu->core.iommufd = idev->iommufd;
+> +
+> +    if (!iommufd_backend_alloc_hwpt(idev->iommufd, idev->devid,
+> +                                    viommu->core.viommu_id, 0,
+> +                                    IOMMU_HWPT_DATA_ARM_SMMUV3,
+> +                                    sizeof(abort_data), &abort_data,
+> +                                    &viommu->abort_hwpt_id, errp)) {
+> +        goto free_viommu;
+> +    }
+> +
+> +    if (!iommufd_backend_alloc_hwpt(idev->iommufd, idev->devid,
+> +                                    viommu->core.viommu_id, 0,
+> +                                    IOMMU_HWPT_DATA_ARM_SMMUV3,
+> +                                    sizeof(bypass_data), &bypass_data,
+> +                                    &viommu->bypass_hwpt_id, errp)) {
+> +        goto free_abort_hwpt;
+> +    }
+> +
+> +    viommu->iommufd = idev->iommufd;
+> +
+> +    s_accel->viommu = viommu;
+> +    accel_dev->viommu = viommu;
+> +    return true;
+> +
+> +free_abort_hwpt:
+> +    iommufd_backend_free_id(idev->iommufd, viommu->abort_hwpt_id);
+> +free_viommu:
+> +    iommufd_backend_free_id(idev->iommufd, viommu->core.viommu_id);
+> +    g_free(viommu);
+> +    return false;
+> +}
+> +
+> +static bool smmuv3_accel_set_iommu_device(PCIBus *bus, void *opaque, int devfn,
+> +                                          HostIOMMUDevice *hiod, Error **errp)
+> +{
+> +    HostIOMMUDeviceIOMMUFD *idev = HOST_IOMMU_DEVICE_IOMMUFD(hiod);
+> +    SMMUState *bs = opaque;
+> +    SMMUv3State *s = ARM_SMMUV3(bs);
+> +    SMMUv3AccelState *s_accel = s->s_accel;
+> +    SMMUPciBus *sbus = smmu_get_sbus(bs, bus);
+> +    SMMUv3AccelDevice *accel_dev = smmuv3_accel_get_dev(bs, sbus, bus, devfn);
+you are using smmuv3_accel_get_dev but logically the function was
+already called once before in smmuv3_accel_find_add_as()? Meaning the
+add/allocate part of the function is not something that should happen
+here. Shouldn't we add a new helper that does SMMUPciBus *sbus =
+g_hash_table_lookup(bs->smmu_pcibus_by_busptr, bus); if (!sbus) {
+return; } sdev = sbus->pbdev[devfn]; if (!sdev) { return; } that would
+be used both set and unset()?
+> +    SMMUDevice *sdev = &accel_dev->sdev;
+> +    uint16_t sid = smmu_get_sid(sdev);
+> +
+> +    if (!idev) {
+> +        return true;
+> +    }
+> +
+> +    if (accel_dev->idev) {
+> +        if (accel_dev->idev != idev) {
+> +            error_setg(errp, "Device 0x%x already has an associated IOMMU dev",
+> +                       sid);
+> +            return false;
+> +        }
+> +        return true;
+> +    }
+> +
+> +    if (!smmuv3_accel_dev_alloc_viommu(accel_dev, idev, errp)) {
+> +        error_setg(errp, "Device 0x%x: Unable to alloc viommu", sid);
+> +        return false;
+> +    }
+> +
+> +    accel_dev->idev = idev;
+> +    QLIST_INSERT_HEAD(&s_accel->viommu->device_list, accel_dev, next);
+> +    trace_smmuv3_accel_set_iommu_device(devfn, sid);
+> +    return true;
+> +}
+> +
+> +static void smmuv3_accel_unset_iommu_device(PCIBus *bus, void *opaque,
+> +                                            int devfn)
+> +{
+> +    SMMUState *bs = opaque;
+> +    SMMUv3State *s = ARM_SMMUV3(bs);
+> +    SMMUPciBus *sbus = g_hash_table_lookup(bs->smmu_pcibus_by_busptr, bus);
+> +    SMMUv3AccelDevice *accel_dev;
+> +    SMMUViommu *viommu;
+> +    SMMUDevice *sdev;
+> +    uint16_t sid;
+> +
+> +    if (!sbus) {
+> +        return;
+> +    }
+> +
+> +    sdev = sbus->pbdev[devfn];
+> +    if (!sdev) {
+> +        return;
+> +    }
+> +
+> +    sid = smmu_get_sid(sdev);
+> +    accel_dev = container_of(sdev, SMMUv3AccelDevice, sdev);
+> +    if (!host_iommu_device_iommufd_attach_hwpt(accel_dev->idev,
+> +                                               accel_dev->idev->hwpt_id,
+> +                                               NULL)) {
+> +        error_report("Unable to attach dev 0x%x to the default HW pagetable",
+> +                     sid);
+> +    }
+> +
+> +    accel_dev->idev = NULL;
+> +    QLIST_REMOVE(accel_dev, next);
+> +    trace_smmuv3_accel_unset_iommu_device(devfn, sid);
+> +
+> +    viommu = s->s_accel->viommu;
+> +    if (QLIST_EMPTY(&viommu->device_list)) {
+> +        iommufd_backend_free_id(viommu->iommufd, viommu->bypass_hwpt_id);
+> +        iommufd_backend_free_id(viommu->iommufd, viommu->abort_hwpt_id);
+> +        iommufd_backend_free_id(viommu->iommufd, viommu->core.viommu_id);
+> +        g_free(viommu);
+> +        s->s_accel->viommu = NULL;
+> +    }
+> +}
+> +
+>  static bool smmuv3_accel_pdev_allowed(PCIDevice *pdev, bool *vfio_pci)
+>  {
+>  
+> @@ -121,6 +268,8 @@ static uint64_t smmuv3_accel_get_viommu_flags(void *opaque)
+>  static const PCIIOMMUOps smmuv3_accel_ops = {
+>      .get_address_space = smmuv3_accel_find_add_as,
+>      .get_viommu_flags = smmuv3_accel_get_viommu_flags,
+> +    .set_iommu_device = smmuv3_accel_set_iommu_device,
+> +    .unset_iommu_device = smmuv3_accel_unset_iommu_device,
+>  };
+>  
+>  void smmuv3_accel_init(SMMUv3State *s)
+> @@ -128,4 +277,5 @@ void smmuv3_accel_init(SMMUv3State *s)
+>      SMMUState *bs = ARM_SMMU(s);
+>  
+>      bs->iommu_ops = &smmuv3_accel_ops;
+> +    s->s_accel = g_new0(SMMUv3AccelState, 1);
+>  }
+> diff --git a/hw/arm/smmuv3-accel.h b/hw/arm/smmuv3-accel.h
+> index 70da16960f..3c8506d1e6 100644
+> --- a/hw/arm/smmuv3-accel.h
+> +++ b/hw/arm/smmuv3-accel.h
+> @@ -10,12 +10,29 @@
+>  #define HW_ARM_SMMUV3_ACCEL_H
+>  
+>  #include "hw/arm/smmu-common.h"
+> +#include "system/iommufd.h"
+> +#include <linux/iommufd.h>
+>  #include CONFIG_DEVICES
+>  
+> +typedef struct SMMUViommu {
+would deserve to be documented with explanation of what it does abstract
+> +    IOMMUFDBackend *iommufd;
+> +    IOMMUFDViommu core;
+> +    uint32_t bypass_hwpt_id;
+> +    uint32_t abort_hwpt_id;
+> +    QLIST_HEAD(, SMMUv3AccelDevice) device_list;
+> +} SMMUViommu;
+> +
+>  typedef struct SMMUv3AccelDevice {
+>      SMMUDevice  sdev;
+> +    HostIOMMUDeviceIOMMUFD *idev;
+> +    SMMUViommu *viommu;
+> +    QLIST_ENTRY(SMMUv3AccelDevice) next;
+>  } SMMUv3AccelDevice;
+>  
+> +typedef struct SMMUv3AccelState {
+> +    SMMUViommu *viommu;
+> +} SMMUv3AccelState;
+> +
+>  #ifdef CONFIG_ARM_SMMUV3_ACCEL
+>  void smmuv3_accel_init(SMMUv3State *s);
+>  #else
+> diff --git a/hw/arm/trace-events b/hw/arm/trace-events
+> index f3386bd7ae..86370d448a 100644
+> --- a/hw/arm/trace-events
+> +++ b/hw/arm/trace-events
+> @@ -66,6 +66,10 @@ smmuv3_notify_flag_del(const char *iommu) "DEL SMMUNotifier node for iommu mr=%s
+>  smmuv3_inv_notifiers_iova(const char *name, int asid, int vmid, uint64_t iova, uint8_t tg, uint64_t num_pages, int stage) "iommu mr=%s asid=%d vmid=%d iova=0x%"PRIx64" tg=%d num_pages=0x%"PRIx64" stage=%d"
+>  smmu_reset_exit(void) ""
+>  
+> +#smmuv3-accel.c
+> +smmuv3_accel_set_iommu_device(int devfn, uint32_t sid) "devfn=0x%x (sid=0x%x)"
+> +smmuv3_accel_unset_iommu_device(int devfn, uint32_t sid) "devfn=0x%x (sid=0x%x)"
+> +
+>  # strongarm.c
+>  strongarm_uart_update_parameters(const char *label, int speed, char parity, int data_bits, int stop_bits) "%s speed=%d parity=%c data=%d stop=%d"
+>  strongarm_ssp_read_underrun(void) "SSP rx underrun"
+> diff --git a/include/hw/arm/smmuv3.h b/include/hw/arm/smmuv3.h
+> index bb7076286b..5f3e9089a7 100644
+> --- a/include/hw/arm/smmuv3.h
+> +++ b/include/hw/arm/smmuv3.h
+> @@ -66,6 +66,7 @@ struct SMMUv3State {
+>  
+>      /* SMMU has HW accelerator support for nested S1 + s2 */
+>      bool accel;
+> +    struct SMMUv3AccelState  *s_accel;
+>  };
+>  
+>  typedef enum {
+Thanks
 
-The I2C devices attached to the board do introduce differences, but
-if upstream is to maintain the QEMU machine, there must be a way to
-test it. By the way, I liked the idea of introducing a file per
-machine.
-
-Finally, without tests, it is harder to determine when something
-becomes deprecated/unused.
-
-> Is this a new policy that QEMU
-> only wants specific machine models for any particular SOC?
-
-This is not a new policy, but it is strongly recommended to have
-a way to test the machine, and I try to enforce that. However, if
-someone indicates that a board is being used for kernel testing
-but lacks an image, I consider that sufficient to conclude it is
-not deprecated (and that providing a functional test is possible ;)
-
-I hope this clarifies the intentions. It's more about making tests
-available than limiting contributions.
-
-> 
->> The fby35-bmc value is in its multisoc nature. We now have the
->> ast2700fc available as its replacement
-> 
-> We actually don't use the multisoc aspect of this machine.  I'd be fine
-> if we drop those pieces specifically but the general "can the BMC image
-> boot" is regularly used.
-
-ok. I am fine with that if we don't need to boot the coprocessor.
-Peter provided me images in the past (2022) and I am using :
-
-   $qemu -machine fby35 \
-      -drive file=$flash,format=raw,if=mtd \
-      -device loader,file=Y35BCL.elf,addr=0,cpu-num=2 \
-      -nographic  -display none -serial pty -serial pty -serial mon:stdio
-
-and it seems that without Y35BCL.elf, the machine crashes.
-
-Thanks,
-
-C.
-
+Eric
 
 

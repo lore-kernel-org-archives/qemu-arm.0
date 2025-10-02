@@ -4,77 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B4B4CAC5B0
-	for <qemu-arm@archiver.kernel.org>; Thu,  2 Oct 2025 13:09:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2422DCAC5B8
+	for <qemu-arm@archiver.kernel.org>; Thu,  2 Oct 2025 13:13:45 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v4J3E-0001Y9-MC; Thu, 02 Oct 2025 09:08:52 -0400
+	id 1v4J71-0004vt-B7; Thu, 02 Oct 2025 09:12:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1v4J3A-0001X9-9Q
- for qemu-arm@nongnu.org; Thu, 02 Oct 2025 09:08:48 -0400
+ id 1v4J6y-0004uY-32
+ for qemu-arm@nongnu.org; Thu, 02 Oct 2025 09:12:44 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1v4J2t-00079w-Ou
- for qemu-arm@nongnu.org; Thu, 02 Oct 2025 09:08:48 -0400
+ id 1v4J6d-0002rN-PC
+ for qemu-arm@nongnu.org; Thu, 02 Oct 2025 09:12:40 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1759410507;
+ s=mimecast20190719; t=1759410723;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=hhd9dvTwvg7DnvF+Bds/FeO0/pgvZKlnZAqjGk/Y1Ew=;
- b=WRI204DHqzFbBDnuDfvQK4ma2m/7LXDTGm5EdHdtNvit+Sun46Knd6cIs2e4+i5YoRGxlL
- 1qaNHnAXbOqtwhfut44fck4/bnSrHYUqclnfKnQwVGWRQEqAgN3L0Z9Ac07/CIY7JqRjRR
- MORtDgH8650rwHRXj1EYvYbQhgvsgPQ=
+ bh=vyn6xn0J8UWIgRZtR3BPERAZiKzxlPMdmoQ8/5pqJD0=;
+ b=WC33+lDPejYjoBFkIzz5GC1fgLKpcYDhu0qJulu85Y45ok97+YOCvQcYi43QkfYbu8APrk
+ eVPfeuUc6/9UEgJk6KWDRUuAjGV6rl+05uGZnwdcFoQBtvBwG4nCCxLrYtx/Ikn9Jp1o21
+ /jgFQgYHn5vEyPwMy+JMlkvQ6BeQ36E=
 Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-7-ASNhocA0OqeP7y4wsJKVQg-1; Thu,
- 02 Oct 2025 09:08:25 -0400
-X-MC-Unique: ASNhocA0OqeP7y4wsJKVQg-1
-X-Mimecast-MFC-AGG-ID: ASNhocA0OqeP7y4wsJKVQg_1759410504
-Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-395-xfiqxt8uMaCs8kQs2HCXtw-1; Thu,
+ 02 Oct 2025 09:12:00 -0400
+X-MC-Unique: xfiqxt8uMaCs8kQs2HCXtw-1
+X-Mimecast-MFC-AGG-ID: xfiqxt8uMaCs8kQs2HCXtw_1759410719
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 00BC6180057D; Thu,  2 Oct 2025 13:08:24 +0000 (UTC)
+ id 6A39D1800451; Thu,  2 Oct 2025 13:11:59 +0000 (UTC)
 Received: from redhat.com (unknown [10.42.28.93])
- by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id B4647180047F; Thu,  2 Oct 2025 13:08:21 +0000 (UTC)
-Date: Thu, 2 Oct 2025 14:08:18 +0100
+ by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 86ADF1955F19; Thu,  2 Oct 2025 13:11:57 +0000 (UTC)
+Date: Thu, 2 Oct 2025 14:11:54 +0100
 From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 To: Gustavo Romero <gustavo.romero@linaro.org>
 Cc: qemu-devel@nongnu.org, alex.bennee@linaro.org, thuth@redhat.com,
  qemu-arm@nongnu.org
-Subject: Re: [PATCH v5 3/9] tests/functional: Provide GDB to the functional
- tests
-Message-ID: <aN55Qhfia3Sa9Da6@redhat.com>
+Subject: Re: [PATCH v5 4/9] tests/functional: Add GDB class
+Message-ID: <aN56GkbIFxs5IDRR@redhat.com>
 References: <20251002020432.54443-1-gustavo.romero@linaro.org>
- <20251002020432.54443-4-gustavo.romero@linaro.org>
+ <20251002020432.54443-5-gustavo.romero@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20251002020432.54443-4-gustavo.romero@linaro.org>
+In-Reply-To: <20251002020432.54443-5-gustavo.romero@linaro.org>
 User-Agent: Mutt/2.2.14 (2025-02-20)
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
 Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
- DKIM_SIGNED=0.1, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001,
- RCVD_IN_MSPIKE_WL=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, T_SPF_HELO_TEMPERROR=0.01,
- T_SPF_TEMPERROR=0.01 autolearn=no autolearn_force=no
+X-Spam_score_int: -24
+X-Spam_score: -2.5
+X-Spam_bar: --
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.451,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001,
+ T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -91,24 +91,45 @@ Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, Oct 02, 2025 at 02:04:26AM +0000, Gustavo Romero wrote:
-> The probe of GDB is done in 'configure' and the full path is passed to
-> meson.build via the -Dgdb=option.
+On Thu, Oct 02, 2025 at 02:04:27AM +0000, Gustavo Romero wrote:
+> Add GDB class, which provides methods to run GDB commands and capture
+> their output. The GDB class is a wrapper around the pygdbmi module and
+> interacts with GDB via GDB's machine interface (MI).
 > 
-> Meson then can pass the location of GDB to the functional tests via an
-> environment variable: QEMU_TEST_GDB.
-> 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> Acked-by: Thomas Huth <thuth@redhat.com>
 > Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
-> Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
 > ---
->  configure                     | 2 ++
->  meson_options.txt             | 2 ++
->  scripts/meson-buildoptions.sh | 2 ++
->  tests/functional/meson.build  | 6 ++++++
->  4 files changed, 12 insertions(+)
+>  tests/functional/qemu_test/__init__.py |  1 +
+>  tests/functional/qemu_test/gdb.py      | 88 ++++++++++++++++++++++++++
+>  2 files changed, 89 insertions(+)
+>  create mode 100644 tests/functional/qemu_test/gdb.py
 
-Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+
+> diff --git a/tests/functional/qemu_test/gdb.py b/tests/functional/qemu_test/gdb.py
+> new file mode 100644
+> index 0000000000..05e4c29c2a
+> --- /dev/null
+> +++ b/tests/functional/qemu_test/gdb.py
+> @@ -0,0 +1,88 @@
+> +# SPDX-License-Identifier: GPL-2.0-or-later
+> +#
+> +# A simple interface module built around pygdbmi for handling GDB commands.
+> +#
+> +# Copyright (c) 2025 Linaro Limited
+> +#
+> +# Author:
+> +#  Gustavo Romero <gustavo.romero@linaro.org>
+> +#
+> +# This work is licensed under the terms of the GNU GPL, version 2 or
+> +# later.  See the COPYING file in the top-level directory.
+
+Please remove these two lines - they should not be included in any
+newly authored files - SPDX alone is desired.
+
+If that is removed, then
+
+ Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+
 
 With regards,
 Daniel

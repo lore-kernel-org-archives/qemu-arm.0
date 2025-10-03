@@ -4,87 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 243E2CCA471
-	for <qemu-arm@archiver.kernel.org>; Fri,  3 Oct 2025 17:44:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A846CCA471
+	for <qemu-arm@archiver.kernel.org>; Fri,  3 Oct 2025 17:45:44 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v4jH2-0001bJ-KD; Fri, 03 Oct 2025 13:08:52 -0400
+	id 1v4jqJ-0007Gc-Lk; Fri, 03 Oct 2025 13:45:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1v4jH0-0001aC-5m
- for qemu-arm@nongnu.org; Fri, 03 Oct 2025 13:08:50 -0400
-Received: from mail-pg1-x52a.google.com ([2607:f8b0:4864:20::52a])
+ (Exim 4.90_1) (envelope-from <lixiaoyan@google.com>)
+ id 1v4jq4-0006y2-7w
+ for qemu-arm@nongnu.org; Fri, 03 Oct 2025 13:45:09 -0400
+Received: from mail-qt1-x82d.google.com ([2607:f8b0:4864:20::82d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1v4jGU-0006GF-CG
- for qemu-arm@nongnu.org; Fri, 03 Oct 2025 13:08:49 -0400
-Received: by mail-pg1-x52a.google.com with SMTP id
- 41be03b00d2f7-b551350adfaso2276036a12.3
- for <qemu-arm@nongnu.org>; Fri, 03 Oct 2025 10:08:15 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <lixiaoyan@google.com>)
+ id 1v4jps-00077A-3q
+ for qemu-arm@nongnu.org; Fri, 03 Oct 2025 13:45:03 -0400
+Received: by mail-qt1-x82d.google.com with SMTP id
+ d75a77b69052e-4e576fef9c6so37331cf.0
+ for <qemu-arm@nongnu.org>; Fri, 03 Oct 2025 10:44:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1759511293; x=1760116093; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ d=google.com; s=20230601; t=1759513482; x=1760118282; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=pjDdAknr01k7YxkbZX1BtFHr9eMT0hUzaWlnonFMe1U=;
- b=Gu4ff+GdR57q0bvm+ZrSbKFZLDkn8W14XHb6mkvNMyLAKBgnnDtmtmooHQroaR4WG9
- cUsphHz0cbOq12jCNU3438XO2IBU+nauQ5CD+vVQN7E5xNqMYyLoaYhiNzD1EqZ5Dhlv
- SUoitsmG1VXWnANkcyER300EfQG6gbaM0pyO6Mgt6PMsriEiKhuBQkNjx0xSEBF8g31S
- eIYwhdbDyPr3WrD7A79b+Qff+GHl753+vG+G2+hdK6JBRTqVS9DCBjXwy4ASxNy5EMVw
- sr9kCv7Lqujpry0xVFEK+P1/6LKKU/b8L9j3j666vITcBQpNvXJdpfzu1k3ijNJyVDcY
- 1veA==
+ bh=ouzL6b3ma7uZ+1yon8bzp0WKYyNokwvTaK0TPZlUgk8=;
+ b=ajy+3/OOHSK5nMCeNNDdgb/Sbbdwrqz0+pzGieel0Osv5ScH+9e92xqqWf9fYkOTP5
+ iZBhvvuMHk/oLpqxTCukGP5k/VnGIWR2TOgNvK0T2tgRLtL/Si2Exv0VZZwKTAc9yu0m
+ QFF1Dp1T7OCi9iE7nbvwBnTXpJ22r12GTy7Yq+8eA4M5zz2knWQZs/yVz2m8XU2seyvC
+ eFKXCxkACCdiOy2TiuAsUJvfQ6GGsmvbnIHK7vTDRnK1koOGYZ1BnqCR2jswQqO/ZrOT
+ 9rtAtW5yuEzUM4R520RC99MH2PbIHsJFHfbqhHkViDzDlaMtGTutvi/3hZTec1AGaGG5
+ rOJA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759511293; x=1760116093;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ d=1e100.net; s=20230601; t=1759513482; x=1760118282;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=pjDdAknr01k7YxkbZX1BtFHr9eMT0hUzaWlnonFMe1U=;
- b=gNEW5ZIMzn7TscOOeEDKO9jWJUTknBm3ifR8BtWbrDdEQsevJs70ehVOaVYxTuJuVm
- kXgbl+YsUR/ZYCaxfZtR4m4JmgT6e2muLL5bTtXUboZRXHLGla9SmbpPMSRSUQjRgOSN
- JgSdkRhRdQenFsWKMRCYtR+NoczFuv5ggcZR+1y692FZKH8tGowONdec6u4uRggHy7rH
- TdeKrd8g7RehsOjrSpCCnM9dr7ubmoDpAfZAfX9hZE/jbEq68+D4j2Fag9SDgnVBkBVA
- CkbR68KlvHp8P3MTvCyAg+KsVh+20dv6RSjQvA2asQO8P1DSoXGj6++HwbpPr1W+ySXj
- RlLQ==
-X-Gm-Message-State: AOJu0YzD2+QSTw5HlXbHefvo7xtMbfK67S5+bb8W45dLtkp4HseN5gLA
- HW7ZGr47m8D5QO1fDrMR1KkcjgfloCFjozo0CEo5Stx0DW8ejgMXP4oSpbxidSr8+OQ=
-X-Gm-Gg: ASbGncufr651ryxySTMjfQUVraJzjLTtrTmhQJNqgqhmkp/Kr7+EJ6r7y7e7hwBgIRO
- e5r7UoVtFRUhIZ0qr9tGyy4oeDwOKYLn5RfvHwGPI3p6Bp6nBGwFj5TSy4mqjCo47pBsc105A5P
- 3hl9VFFVMMDJ8ytWfBf+ky65lmMDy9kZ50p3nryUg8lCLUAhpSjtCjUIMheukCEQPMTvVSQw1f5
- EP47i6j2AcDLq1SZBBUxKd1QkxZfIfJ+fiSjevFPExqz7WEEfyhmgRJKbmhezz/IgSWeXLhFc5S
- ihMUuWCeeL1sgt1tZB53Oi2DWAW7mKI5LpmvLpln6gBl4oAJxOPlYHUgYhLdBZz2/B74LelkVfA
- b1lVz3Cy+k/WRI+S1kMSZ8cIqGUq1LH+O++p/PGguIscz7RO4kR7wcaQr
-X-Google-Smtp-Source: AGHT+IGKXwgtMDLS5kT7nVwrbhWP9lenr3DICGBR/qIAz/T1BY5P8QQaP+TT0r6zZfyTLb+vMcGWmw==
-X-Received: by 2002:a17:903:3c24:b0:263:b8f:77dd with SMTP id
- d9443c01a7336-28e9a6b1caemr44484245ad.57.1759511293426; 
- Fri, 03 Oct 2025 10:08:13 -0700 (PDT)
-Received: from stoup.. ([71.212.157.132]) by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-28e8d110d86sm55327115ad.6.2025.10.03.10.08.12
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 03 Oct 2025 10:08:12 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v6 13/73] target/arm: Enable FEAT_S1PIE and FEAT_S2PIE on -cpu
- max
-Date: Fri,  3 Oct 2025 10:07:00 -0700
-Message-ID: <20251003170800.997167-14-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20251003170800.997167-1-richard.henderson@linaro.org>
-References: <20251003170800.997167-1-richard.henderson@linaro.org>
+ bh=ouzL6b3ma7uZ+1yon8bzp0WKYyNokwvTaK0TPZlUgk8=;
+ b=jeutofnP3lZCnGTYNmbh7cQIGua+2SHiSl9Te6ZJouX6D9wiDfr7f951Yp6gJGiMmr
+ dWhCIc6RdHUcMQziOWmY5lZLdykVRPB364yV5O1tde3njA5weVGbW2H8LCwJ4OPgUb4s
+ lzc3JiO4/HvwrzqxpjwqX8ZJF6LL+jkArNdeOy98o/LY4f62/bpk36FB1vQr9dBzvGDm
+ 8hH19vlt/Pkb7nGauM+Lg5aqoTokaddIeyof8bOCSrIeiAhMEsn7oKXMz9AJGwkW/rr1
+ 1azDf8FNqF35i6swjvDhzaRvyBsKCtjWGW160OeQ8TP8SBdYQzQeMWHPIcLpj2yZ0X8+
+ gNCg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWRkRTflxgUVJ5OG3Hbcr/o5aOBWEDNqUT4+KC2JDrdwzAb8s6aRBbuK3PUBBplKQGmLCwxu41eHw==@nongnu.org
+X-Gm-Message-State: AOJu0YzA6g0jQdcSo2pFg+KrP7WvGMJ+6V2Y0ujX5zbGXJIk6D4awzvC
+ atU7WYr071KqD0gXBb+VD7xoyui4qea6OlJ4L/doHShloftUmLtTfUeJ5/mKa/EAHSyTYOJt7ne
+ G8Y2y1BK2kZBsjVvhUAb78rRkbTJBEBBFtLNmnXtf
+X-Gm-Gg: ASbGnct9p/kdmiUznpPGSAC76Y8sMoj6g7S/+Sm9CHpmsFdP+fz9rRnHAth4s9fnPGb
+ csmbknMG3jhCCHRjquiMbcnKI2df6M7xnnkywaq3mseCEQB8ElKPSGEVAkfAoBwVx9/NS0RSKFo
+ b0KqaL9W+QuCOKEIAzCNPdWyKmmejiEJEx8pvnQaxRJr0966QdvP58LqsukXJa+H/uMgukg4kCe
+ SvIjJfgkgXwTCBjgtUeDwqWqfE1YdpA6tE89YiPibRFTm77kNrJP80aLzmV5PYNrujqUeI+QA6P
+ YFbmIoDyL15aMTsaqXOKmAHsHuYqPLGPPdPIaw==
+X-Google-Smtp-Source: AGHT+IGRtFY63kXj4PS9yermT3SftLbMgFoR+eGDqnkWAzxSAfwW9VE7N7h388IpoZINU9dnCRwSeXF2pmvG6dPsdJQ=
+X-Received: by 2002:a05:622a:311:b0:4b7:9b06:ca9f with SMTP id
+ d75a77b69052e-4e581f23eccmr340731cf.2.1759513481195; Fri, 03 Oct 2025
+ 10:44:41 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::52a;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x52a.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20250925005832.3708492-1-lixiaoyan@google.com>
+ <20250925005832.3708492-2-lixiaoyan@google.com>
+ <b601f750adc19ea0fe8ec8f2c578f9f23d7259cc.camel@codeconstruct.com.au>
+In-Reply-To: <b601f750adc19ea0fe8ec8f2c578f9f23d7259cc.camel@codeconstruct.com.au>
+From: Coco Li <lixiaoyan@google.com>
+Date: Fri, 3 Oct 2025 10:44:27 -0700
+X-Gm-Features: AS18NWB1lZy_1CXrTQrf3ICdgwHTA-d7f9w_FRfL4FxnWxLqce5X-6W1p3zAEGI
+Message-ID: <CADjXwjguvA6tsAjc65Fc=6S+k=pz1xry6Gd=mz6093GozuWDDQ@mail.gmail.com>
+Subject: Re: [PATCH v1 1/5] hw/gpio: Add property for ASPEED GPIO in 32 bits
+ basis
+To: Andrew Jeffery <andrew@codeconstruct.com.au>
+Cc: clg@kaod.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org, flwu@google.com, 
+ Peter Maydell <peter.maydell@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::82d;
+ envelope-from=lixiaoyan@google.com; helo=mail-qt1-x82d.google.com
+X-Spam_score_int: -85
+X-Spam_score: -8.6
+X-Spam_bar: --------
+X-Spam_report: (-8.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ HK_RANDOM_ENVFROM=0.001, HK_RANDOM_FROM=0.998, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, T_SPF_TEMPERROR=0.01,
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -100,40 +102,131 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/tcg/cpu64.c        | 2 ++
- docs/system/arm/emulation.rst | 2 ++
- 2 files changed, 4 insertions(+)
+On Wed, Oct 1, 2025 at 4:24=E2=80=AFPM Andrew Jeffery
+<andrew@codeconstruct.com.au> wrote:
+>
+> On Thu, 2025-09-25 at 00:58 +0000, Coco Li wrote:
+> > From: Felix Wu <flwu@google.com>
+> >
+> > Added 32 bits property for ASPEED GPIO. Previously it can only be acces=
+s in bitwise manner.
+> >
+> > This change gives ASPEED similar behavior as Nuvoton.
+>
+> I don't think this has adequately addressed my request on the prior
+> series:
+>
+> https://lore.kernel.org/all/e244fdb5d2d889674a583df8f8b9bc4bf8d476f4.came=
+l@codeconstruct.com.au/
+>
+> Can you please improve the commit message?
+>
+> I don't have any particular concern with the implementation, other than
+> understanding whether it's something that's reasonable to add to begin
+> with. The "sets" and their indexes are somewhat an implementation
+> detail. Exposing them might preclude a different implementation design,
+> though I'm also not sure why we'd change at this point.
+>
+> Andrew
+>
 
-diff --git a/target/arm/tcg/cpu64.c b/target/arm/tcg/cpu64.c
-index abef6a246e..76193826ce 100644
---- a/target/arm/tcg/cpu64.c
-+++ b/target/arm/tcg/cpu64.c
-@@ -1253,6 +1253,8 @@ void aarch64_max_tcg_initfn(Object *obj)
-     t = FIELD_DP64(t, ID_AA64MMFR3, TCRX, 1);       /* FEAT_TCR2 */
-     t = FIELD_DP64(t, ID_AA64MMFR3, SCTLRX, 1);     /* FEAT_SCTLR2 */
-     t = FIELD_DP64(t, ID_AA64MMFR3, SPEC_FPACC, 1); /* FEAT_FPACC_SPEC */
-+    t = FIELD_DP64(t, ID_AA64MMFR3, S1PIE, 1);    /* FEAT_S1PIE */
-+    t = FIELD_DP64(t, ID_AA64MMFR3, S2PIE, 1);    /* FEAT_S2PIE */
-     SET_IDREG(isar, ID_AA64MMFR3, t);
- 
-     t = GET_IDREG(isar, ID_AA64ZFR0);
-diff --git a/docs/system/arm/emulation.rst b/docs/system/arm/emulation.rst
-index 6b04c96c8c..94a6192fa9 100644
---- a/docs/system/arm/emulation.rst
-+++ b/docs/system/arm/emulation.rst
-@@ -122,6 +122,8 @@ the following architecture extensions:
- - FEAT_RME (Realm Management Extension) (NB: support status in QEMU is experimental)
- - FEAT_RNG (Random number generator)
- - FEAT_RPRES (Increased precision of FRECPE and FRSQRTE)
-+- FEAT_S1PIE (Stage 1 permission indirections)
-+- FEAT_S2PIE (Stage 2 permission indirections)
- - FEAT_S2FWB (Stage 2 forced Write-Back)
- - FEAT_SB (Speculation Barrier)
- - FEAT_SCTLR2 (Extension to SCTLR_ELx)
--- 
-2.43.0
+Hello Andrew,
 
+To confirm that I understand your request, I should do the following:
+
+1) remove the reference to Nuvoton behavior in the ASPEED patches
+(will do in follow up)
+2) you asked for discussion of complex simulations, is the addition in
+the cover patch sufficient? Otherwise, could you elaborate on your
+comment here on what I can help provide please?
+
+Best,
+Coco
+
+
+> >
+> > Signed-off-by: Felix Wu <flwu@google.com>
+> > ---
+> >  hw/gpio/aspeed_gpio.c | 57 +++++++++++++++++++++++++++++++++++++++++++
+> >  1 file changed, 57 insertions(+)
+> >
+> > diff --git a/hw/gpio/aspeed_gpio.c b/hw/gpio/aspeed_gpio.c
+> > index 609a556908..2d78bf9515 100644
+> > --- a/hw/gpio/aspeed_gpio.c
+> > +++ b/hw/gpio/aspeed_gpio.c
+> > @@ -1308,6 +1308,57 @@ static void aspeed_gpio_2700_write(void *opaque,=
+ hwaddr offset,
+> >  }
+> >
+> >  /* Setup functions */
+> > +static void aspeed_gpio_set_set(Object *obj, Visitor *v,
+> > +                                        const char *name, void *opaque=
+,
+> > +                                        Error **errp)
+> > +{
+> > +    uint32_t set_val =3D 0;
+> > +    AspeedGPIOState *s =3D ASPEED_GPIO(obj);
+> > +    AspeedGPIOClass *agc =3D ASPEED_GPIO_GET_CLASS(s);
+> > +    int set_idx =3D 0;
+> > +
+> > +    if (!visit_type_uint32(v, name, &set_val, errp)) {
+> > +        return;
+> > +    }
+> > +
+> > +    if (sscanf(name, "gpio-set[%d]", &set_idx) !=3D 1) {
+> > +        error_setg(errp, "%s: error reading %s", __func__, name);
+> > +        return;
+> > +    }
+> > +
+> > +    if (set_idx >=3D agc->nr_gpio_sets || set_idx < 0) {
+> > +        error_setg(errp, "%s: invalid set_idx %s", __func__, name);
+> > +        return;
+> > +    }
+> > +
+> > +    aspeed_gpio_update(s, &s->sets[set_idx], set_val,
+> > +                       ~s->sets[set_idx].direction);
+> > +}
+> > +
+> > +static void aspeed_gpio_get_set(Object *obj, Visitor *v,
+> > +                                        const char *name, void *opaque=
+,
+> > +                                        Error **errp)
+> > +{
+> > +    uint32_t set_val =3D 0;
+> > +    AspeedGPIOState *s =3D ASPEED_GPIO(obj);
+> > +    AspeedGPIOClass *agc =3D ASPEED_GPIO_GET_CLASS(s);
+> > +    int set_idx =3D 0;
+> > +
+> > +    if (sscanf(name, "gpio-set[%d]", &set_idx) !=3D 1) {
+> > +        error_setg(errp, "%s: error reading %s", __func__, name);
+> > +        return;
+> > +    }
+> > +
+> > +    if (set_idx >=3D agc->nr_gpio_sets || set_idx < 0) {
+> > +        error_setg(errp, "%s: invalid set_idx %s", __func__, name);
+> > +        return;
+> > +    }
+> > +
+> > +    set_val =3D s->sets[set_idx].data_value;
+> > +    visit_type_uint32(v, name, &set_val, errp);
+> > +}
+> > +
+> > +/****************** Setup functions ******************/
+> >  static const GPIOSetProperties ast2400_set_props[ASPEED_GPIO_MAX_NR_SE=
+TS] =3D {
+> >      [0] =3D {0xffffffff,  0xffffffff,  {"A", "B", "C", "D"} },
+> >      [1] =3D {0xffffffff,  0xffffffff,  {"E", "F", "G", "H"} },
+> > @@ -1435,6 +1486,12 @@ static void aspeed_gpio_init(Object *obj)
+> >              g_free(name);
+> >          }
+> >      }
+> > +
+> > +    for (int i =3D 0; i < agc->nr_gpio_sets; i++) {
+> > +        char *name =3D g_strdup_printf("gpio-set[%d]", i);
+> > +        object_property_add(obj, name, "uint32", aspeed_gpio_get_set,
+> > +        aspeed_gpio_set_set, NULL, NULL);
+> > +    }
+> >  }
+> >
+> >  static const VMStateDescription vmstate_gpio_regs =3D {
 

@@ -4,93 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E10ECCA470
-	for <qemu-arm@archiver.kernel.org>; Fri,  3 Oct 2025 08:32:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A493CCA471
+	for <qemu-arm@archiver.kernel.org>; Fri,  3 Oct 2025 09:30:10 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v4bCW-0002ty-53; Fri, 03 Oct 2025 04:31:42 -0400
+	id 1v4c6W-0004ZS-E8; Fri, 03 Oct 2025 05:29:32 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v4bCO-0002sy-IS
- for qemu-arm@nongnu.org; Fri, 03 Oct 2025 04:31:34 -0400
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+ (Exim 4.90_1) (envelope-from <chigot@adacore.com>)
+ id 1v4c6U-0004Z7-6v
+ for qemu-arm@nongnu.org; Fri, 03 Oct 2025 05:29:30 -0400
+Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v4bBT-00054p-66
- for qemu-arm@nongnu.org; Fri, 03 Oct 2025 04:31:32 -0400
-Received: by mail-wr1-x42d.google.com with SMTP id
- ffacd0b85a97d-3ed20bdfdffso1816829f8f.2
- for <qemu-arm@nongnu.org>; Fri, 03 Oct 2025 01:30:26 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <chigot@adacore.com>)
+ id 1v4c6K-0002cl-Hn
+ for qemu-arm@nongnu.org; Fri, 03 Oct 2025 05:29:28 -0400
+Received: by mail-ej1-x634.google.com with SMTP id
+ a640c23a62f3a-b3c2db014easo79498166b.0
+ for <qemu-arm@nongnu.org>; Fri, 03 Oct 2025 02:29:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1759480221; x=1760085021; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=rwuRZW6FgmkQHyMckSYAn+D7EQWqvO+qAeyjKGEmOXo=;
- b=p0iri+QkfBF0GnOdO8wG84hx+qqDNzjGDFbTStbo0vxjAum6Kfu+I+p7QNi0sjxepF
- PidBJfnkiqzarVndhk2fOiiF8LPmZnQgfX3eRF32I/c0H6++UTDh2+3fKft/F2SsbG5G
- ZIoL7EZ/aG/aHAhb7XXYe/CGEjHnNr0z4QxT/iyTdyrUIN7vPQjv926PSuaP9PzsTbqS
- so9/U+roF/5q9kXWYO9+GB0SKlCuY3VRrm0sNV4FjvckjLrh3KkrcQ/JurytEapN6BrO
- 8hEGaSlwSMsufXpA+zcvjjiCk4h4DfuK+dkSgWXeO6emPk/rP/VzBekzMw9bzmDBwAp+
- aonw==
+ d=adacore.com; s=google; t=1759483748; x=1760088548; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=Vy/tvwA0KhBlVA0wpXWM9Aqirz5rR3/wPq2Zlnq5zcY=;
+ b=gPdb0kPzpfZ7jFilZlXoz9jJHDlhGudmDuNzoatz/cUwwCq3cd6R7nNu8XkEKInkkE
+ MAHj2zDYO76jpN3IenIEgRdvikU6VIuvd+nsnCA7Yjyg6YLfxKmMnAn5kU7xN8diiUTN
+ OuL9k8R9lrGoeVID211vTM/idEnZju+DooWqJjfotyj18v7s48VSNwK+96nOBEi61zMT
+ 4n3fcRZKJ34U/EGQwv6oQ5fS7VQ7J+vk+hizD5rPxRLNqyMTmNDhPWjKyAB4c/FP32ee
+ koqb7bRr9A/efWvOteS81HBSTcw8/73D6qkTlSi+OpP4dwgP6E2e1zbIWrLn3RsjpPn4
+ iIsw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759480221; x=1760085021;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=rwuRZW6FgmkQHyMckSYAn+D7EQWqvO+qAeyjKGEmOXo=;
- b=iOIOX8OA16stb+N8pT9f4z7z77clvR7dnyrlEDXT04yn6gReJx/uQo1VOJi2diT3OK
- xCq1eAx2OYc+q41TO290NyiIQrlxOboQ15ggl2SrJSDhIfXaopEse55l1zc1+9akseCg
- gErwtzsYlCFPSp0lL1F4G0I/1LimowT2lV/1KXG0Kj/+AdPSIqpN4YSQc4enB4DSlyDr
- dcWJETZuOTt7+oz3dfd6ITWikEsXO5wAxK/CEKjpk3bkPnCoDr+MiPy43U/O2ucAechI
- xu6ws7dije3X5bpypcYaCvWNDNw53ASwJ7s+BnuIwFQL4WMDExGQV3BA322W7IPZ//L+
- DA2w==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVxf2bnVxJsAbwSaS64Q2wQcST2M89omw6kLJRNLWkBK2O6kCS4hVwXuflq4gCFkxijd8eL4aE6Gg==@nongnu.org
-X-Gm-Message-State: AOJu0YwnlKUYTTIsInWFynlg2V1Dz1Q+ZodMFHX23EObckImNHeY2wvx
- kDqcxL3Tjntungl0J+SyDXqiS29f/b1uTNTdIsxpCt2hInLq9DuWvihhXEFahiX1dvM=
-X-Gm-Gg: ASbGncsPZ0BmMxWst0Bzr9wdVsSPSa4+9TS3SYz++8wbyisR+fAXSbkQbGPRtX1JSpr
- 1vZwg/ONZh2YqhOe0Q5ho+paTDY7lKgD1/FV8Q24VK7XfCwpa8W5AS/CrAIch8rCLSLU8xQH5eq
- BFi9i3MNmAQLSv/vxCXF1GFMsbl/idfq7yC8oq3X2vNoO5fLwBuz6CTLlXOIRcyGrEfSDH1BPSH
- CRtKY7uqU9Ncz9F/54Wk1U9fOoXBwDw56giBUGyCkRB3mg0WnAX8U8f5f3V20igtKXd0NBPp4oW
- 8WvjnL+hFuKPA/3t62XG4izEJG1hUrXPpOrNPcu+j5arVBMwSZ7Ca4axnSyP2Au6To/oKOxR5L7
- zn2wYhsqyaRcQowmBcZ0+nqv9LE8BwMw7F045dNwO8YrWKkyNkNfl6hrvFyLTQOTHkgSvVbLGr/
- dKDPoSiVHZOfBdp98r1CsufaMmWMWvY0JZoamLV4s=
-X-Google-Smtp-Source: AGHT+IFl8GMja8YEeD3d95FM8/Zg6YC+4+nl3/eDvuPYBpheuixCNqmeoA2Qv91KuemVs0HcaCfqkQ==
-X-Received: by 2002:a05:6000:2386:b0:3ee:1357:e191 with SMTP id
- ffacd0b85a97d-425671a92f2mr961271f8f.30.1759480221060; 
- Fri, 03 Oct 2025 01:30:21 -0700 (PDT)
-Received: from [192.168.69.221] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4255d8f083asm6874915f8f.43.2025.10.03.01.30.19
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 03 Oct 2025 01:30:20 -0700 (PDT)
-Message-ID: <94e114ff-25d9-4feb-9c7b-9323ff29c195@linaro.org>
-Date: Fri, 3 Oct 2025 10:30:19 +0200
+ d=1e100.net; s=20230601; t=1759483748; x=1760088548;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=Vy/tvwA0KhBlVA0wpXWM9Aqirz5rR3/wPq2Zlnq5zcY=;
+ b=SjSavi9MyP+sm3jpRL6GoK6+dzF0t4utW+YjP+pohoAC8E6Py18EoYaNFUtpveNhfG
+ YX2nMT+UTj9BLdLBx3+/cYL52vJCsHJTY+CpuRHPgFWuHR/YVVfbedvzzXvInnmj997w
+ cdHtfq6+VPzd1zGGPQiLoFPD+fCuv98LRcoNjwXLz7/Vnekc/pJ1JD5uchEIZYiTigkN
+ VgvFDyvnbxbABYqbpLZ8WIwRaR/aI8+7bhsshC4H1LiEXZSW30BgnHGqOSOIKzlawkkC
+ Y10FqUh3f656IS6aOb4Bq6wI/JRSBevU+b1enqHPSuvVmdZvJDuDPJUBU2bCVKCCOnzb
+ U32A==
+X-Gm-Message-State: AOJu0YwaqEXCxA+ygdbgw/mM1b+JBCuSBisnSfgF36Pg3A9y8U3KrHL2
+ G4P2qCGV9vqQ+YmKXiYheUfKFJMeiaaGopwqsOQT3frEQ2s/3sj7VCxVO+pinYawCzPPM25ZxWl
+ chmlKGi/rLhYYrXlI78A4OtoJiEvruadQlzX4v7U9
+X-Gm-Gg: ASbGncv7AGN6Yboosz1RabXSQjJSL9JJrPaZ0geKY+w3TEaQixojvtDQBP1h8Y8BJQB
+ 5LqHXtoWx5cr2xj/mVtwgqDbOyNhK4eCASmzkRaziOvmuzhnZ+Hh3cphHOAPTGtQ/p6l+ZdTSWh
+ CJx1lDeMuM7vYwamNLaLeSgI3lMm1JLp7bLUKVBLqXg2n5Myb5zBpyxICLemertAAa3QQ4fUEUW
+ 8+l0HK/6rymSXoq9WGWCbrculuRPX0Jc/ZMC0t+0E0nxm7P3AZExcSekLtqam5P
+X-Google-Smtp-Source: AGHT+IE079VKQEiHKEphnuoENyhXs7yaS3pF5UGMtptswuIGF8oeO1SFA0wXLsnNpP6NX1UD3/xHIE1qTfxe8PeXFtk=
+X-Received: by 2002:a17:907:9449:b0:b48:44bc:44e7 with SMTP id
+ a640c23a62f3a-b49c2d56beamr308375266b.48.1759483747718; Fri, 03 Oct 2025
+ 02:29:07 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] aspeed: Set 'auto_create_sdcard' to false
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>
-References: <20250930142448.1030476-1-clg@redhat.com>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20250930142448.1030476-1-clg@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42d.google.com
+References: <20251002101648.2455374-1-peter.maydell@linaro.org>
+In-Reply-To: <20251002101648.2455374-1-peter.maydell@linaro.org>
+From: =?UTF-8?Q?Cl=C3=A9ment_Chigot?= <chigot@adacore.com>
+Date: Fri, 3 Oct 2025 11:28:55 +0200
+X-Gm-Features: AS18NWASPQh4vjBbQoCZ2MASxpZnRIGX_OSQGIJAClg-oBRXlPUQ92vUiVB6EXk
+Message-ID: <CAJ307EhvkG4PB4wUJieeJRNzBzwdB=4y04CiiGo-=7Q-nz=KfA@mail.gmail.com>
+Subject: Re: [RFC PATCH 0/2] target/arm: Allow aarch64=off for TCG
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::634;
+ envelope-from=chigot@adacore.com; helo=mail-ej1-x634.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -106,45 +94,68 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hello,
+On Thu, Oct 2, 2025 at 12:16=E2=80=AFPM Peter Maydell <peter.maydell@linaro=
+.org> wrote:
+>
+> This patchset relaxes our current constraint that we only permit
+> -cpu foo,aarch64=3Doff on KVM CPUs, so that you can also use this
+> to run a TCG CPU with aarch64 disabled. This is useful because
+> currently if you want a 32-bit TCG CPU you're limited to either
+> 'max' in qemu-system-arm or else the old v7-only CPUs like a15.
+>
+> I had a look at this last year, but never actually got the changes
+> into a completed state before I moved onto other things. Cl=C3=A9ment
+> asked about this the other day, so I figured I'd send out the
+> patches I had.
 
-On 30/9/25 16:24, Cédric Le Goater wrote:
-> Don't create a default SD card device at init time.
-> 
-> Cc: Philippe Mathieu-Daudé <philmd@linaro.org>
-> Fixes: cdc8d7cadaac ("hw/boards: Rename no_sdcard -> auto_create_sdcard")
+Thanks for the patches.
+I've been able to test a couple of our internal testsuites over ARM
+Linux (based on Yocto images) using both `cortex-a53,aarch64=3Doff` and
+`max,aarch64=3Doff` on the virt machine. Everything went right including
+the migration features we are using (basically, "migrate" to file and
+later -incoming from that file). Hence,
 
-The "Fixes:" tag doesn't seem appropriate here, since that commit does
-not have any logical change.
+Tested-by: Cl=C3=A9ment Chigot <chigot@adacore.com>
 
-I suspect Aspeed boards have a pre-existing copy/paste issue, and should
-not set the auto_create_sdcard bit, using the default @false value.
-Which is what you ended doing :) See commit the following commit,
-5824fad4e92 ("hw/boards: Do not create unusable default if=sd drives").
+I'll let more relevant people do the review though.
 
-I'd be OK for a v2 with an update description, just removing the lines
-in the patch (no need to explicit "auto_create_sdcard = false" since
-this is the field we want to eventually remove).
+Side note, IMO it would make sense to add another test under
+function/arm/virt asserting this feature.
 
-Regards,
+Thanks,
+Cl=C3=A9ment
 
-Phil.
-
-> Signed-off-by: Cédric Le Goater <clg@redhat.com>
-> ---
->   hw/arm/aspeed.c | 44 ++++++++++++++++++++++----------------------
->   1 file changed, 22 insertions(+), 22 deletions(-)
-> 
-> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-> index a3659ffea475..0d1f043ac214 100644
-> --- a/hw/arm/aspeed.c
-> +++ b/hw/arm/aspeed.c
-> @@ -1450,7 +1450,7 @@ static void aspeed_machine_palmetto_class_init(ObjectClass *oc,
->       amc->spi_model = "mx25l25635f";
->       amc->num_cs    = 1;
->       amc->i2c_init  = palmetto_bmc_i2c_init;
-> -    mc->auto_create_sdcard = true;
-> +    mc->auto_create_sdcard = false;
->       mc->default_ram_size       = 256 * MiB;
->       aspeed_machine_class_init_cpus_defaults(mc);
+> The series is RFC because:
+>  * I haven't tested it enough; in particular I don't think
+>    I checked that the "clear the AArch64 ID register values"
+>    patch doesn't break KVM aarch64=3Doff (including not breaking
+>    migration). If it does we might have to make the "clear regs"
+>    only be done for TCG, but that seems a bit hacky...
+>  * I haven't checked that we forbid weird property combos like
+>    '-cpu max,aarch64=3Doff,sve=3Don'
+>
+> But I did do the work of looking through the codebase at where
+> we test ARM_FEATURE_AARCH64 to confirm that it really is the
+> right thing to test and we weren't using it any places where we
+> should instead have been checking ARM_FEATURE_V8 or something
+> else instead.
+>
+> thanks
+> -- PMM
+>
+> Peter Maydell (2):
+>   target/arm: Clear AArch64 ID regs from ARMISARegisters if AArch64
+>     disabled
+>   target/arm: Allow 'aarch64=3Doff' to be set for TCG CPUs
+>
+>  docs/system/arm/cpu-features.rst |  7 ++--
+>  target/arm/cpu-features.h        |  5 +++
+>  target/arm/cpu.h                 |  3 +-
+>  target/arm/cpu.c                 | 61 +++++++++++++++++++++++++++++---
+>  tests/qtest/arm-cpu-features.c   |  8 ++---
+>  5 files changed, 70 insertions(+), 14 deletions(-)
+>
+> --
+> 2.43.0
+>
 

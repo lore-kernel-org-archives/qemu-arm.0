@@ -4,86 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D09ECCCA471
-	for <qemu-arm@archiver.kernel.org>; Fri,  3 Oct 2025 17:10:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42179CAC5B0
+	for <qemu-arm@archiver.kernel.org>; Fri,  3 Oct 2025 17:10:36 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v4jHB-0001eC-Ar; Fri, 03 Oct 2025 13:09:01 -0400
+	id 1v4jHN-0001mD-Kc; Fri, 03 Oct 2025 13:09:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1v4jH9-0001de-VT
- for qemu-arm@nongnu.org; Fri, 03 Oct 2025 13:09:00 -0400
-Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
+ id 1v4jHH-0001jJ-5Y
+ for qemu-arm@nongnu.org; Fri, 03 Oct 2025 13:09:07 -0400
+Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1v4jGU-0006Et-HZ
- for qemu-arm@nongnu.org; Fri, 03 Oct 2025 13:08:59 -0400
-Received: by mail-pl1-x630.google.com with SMTP id
- d9443c01a7336-2897522a1dfso24244495ad.1
- for <qemu-arm@nongnu.org>; Fri, 03 Oct 2025 10:08:09 -0700 (PDT)
+ id 1v4jGW-0006G4-PA
+ for qemu-arm@nongnu.org; Fri, 03 Oct 2025 13:09:06 -0400
+Received: by mail-pl1-x632.google.com with SMTP id
+ d9443c01a7336-27c369f898fso27970085ad.3
+ for <qemu-arm@nongnu.org>; Fri, 03 Oct 2025 10:08:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1759511287; x=1760116087; darn=nongnu.org;
+ d=linaro.org; s=google; t=1759511292; x=1760116092; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=PVdjjmeNl369fORWFFYrAmuAxl5OexK+Goh2FzAHrEY=;
- b=cbn3Oo440JYyjLJNsXP0iezSlZde3jTjGksEezK16uWzlSBF72ocHIONJV7orTJoDz
- 7oFjgbFVF1qzHXOyMeRAMeGmfgc8JKgjcEaTksQpoch46j9+TtKXhKjMaBmTX8eFMyNF
- ZGSGb0krxCvrQcfSiQQzZ9hff4oSA/fOrtfUrFs81ZAQJRwwZL71nz1svGSFPwWLWvmk
- Kf3wA81Ac3UqqOr5C8jZNqNZrywfFAhfhqGmJk/wNdTYigZHhL07KfOBKT9kEtCclWdO
- nwDr5svExr/+aiQxWKZ7BcNl/+uXkaBBpxy6P8tnwFstpKyivvLxVdJWxe19OTSl9xQ9
- TYWw==
+ bh=fk0M7+H7OSU4hjsFazXAnMbgIuwLl8ecHreaXxde3sg=;
+ b=jm7vPmo86NdVL0TrR7RvhIFXk1xEfkOdP8zgYoXpsxWIT5kPAF0nnGFZ8pw0TK6GV+
+ /beo65WW+OpZ4LL7Hr2cnmrULF6LZ8pEUrhKWs38P3C9f7cozHB4AW+aJ02DXYFTWYFF
+ EmMHGi2vz881xiuEeQAnFHF+SGGxmLbe10NUi2RXQ/YASFm9JEexS25O19S7tBVMCY07
+ ytPvIGHUNyfo5z/8bVhKUVDlrwQmrsJ6epgosVcylQ151HaNaCKuAnBUwm5GWALcfQat
+ LXNOEUU3vf9C1Sq5uLrtF5MDh5cCeSBEdNfpHmrLF8gzIQm/p2yRHSXpFyzZL6JxHDJa
+ O8RQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759511287; x=1760116087;
+ d=1e100.net; s=20230601; t=1759511292; x=1760116092;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=PVdjjmeNl369fORWFFYrAmuAxl5OexK+Goh2FzAHrEY=;
- b=lN42QdMA/XM9T52ql2q3B/ufpMwCbpieNdFih1Y24rfb49RddNRK1p9ZNEOYF9xH+U
- 2G1gtUx0CxULeHF0R9FeSPOagd6aFC18m0BRvg8tvU3kL+g/sLMhuOgY7JEqR2rSHewx
- gAx9NqHb4Ky9tU0OHqYJknnImZRfyScYpP4y6DChlgx4c+u3bZbvhmxFLc/HMBxPCbWW
- 81UsK+NJ5xxw0hJNlD3qhAQGjmV5JqSTp/Ent4LhxmMmFipsuf9BQpjZtc5zbfCfHgWx
- 8ajLpiciGUa9RB4pOrD+6My29Vta90aOnDNEuQ0mypiyFzDf6vmD3yRBLavrMgpSyCpd
- n51w==
-X-Gm-Message-State: AOJu0YzntMQUxSamRWrgU34/me5ld0UEzG8I5oP1CmPuu75kBCt2puGK
- RwQew96rqhisBSTO+n+EY2NDgoNeA+rKOwpvwwtW5DQGLaB4KiyemGkgeOAdDP0by7v7ieq0/Iy
- pBhoR4VQ=
-X-Gm-Gg: ASbGncvMWK/mvdi/ojTFjDuvC5tVauQquLF4Hd4bXz80pqQHcPAI2OpwkLkJP+LZaW2
- 3FYwuAv0tBSG7i8KaAln85mCBB9zYqoEVeEYLthHxxp9NvUjC1UffMlVkCRS2MI1ZJx5JVpQZDy
- o/Pgz2Wc9Dbf9SsV4tyCoLgAWzc9G70EWL450oApNPmzQrfVVQLMw+X86EV7j7c6awLjdkHBIgl
- fIig4eN8fvsewcD3kkPx3vf36yoKilBBsRF0SO8MERkWo57C8Iu9lsvDo/BhmlfKhex7FrPaKXd
- KTIXecfy6xruuMfLbRmg7gfEHvnHjsCWhn5+lJ5cs2j/pOo11zVwZNvzHALxzLwGpd5Nrkfm1T/
- Y/WsX9ho3oQ6bZU9TiYd/OzedH4FceBtdoCygFbgO7X3+DS7nm9UILaPO
-X-Google-Smtp-Source: AGHT+IHvfTNb+qoz9SMrc4TkGjPndigteGGKkkJLSqCpXhjbJGh/mCzNmDm5Sam6c9ztGxPza7fdhA==
-X-Received: by 2002:a17:903:2f4b:b0:272:f27d:33c7 with SMTP id
- d9443c01a7336-28e9a2fe26emr41738785ad.0.1759511287286; 
- Fri, 03 Oct 2025 10:08:07 -0700 (PDT)
+ bh=fk0M7+H7OSU4hjsFazXAnMbgIuwLl8ecHreaXxde3sg=;
+ b=WrU+ztMOLFB7DVCKI+Ckoy7FZeAqlJn7F4i9RRw2ZfUGsuFTm+7m05x8Ec1FloWpHr
+ 4KhOqWO07Jj4zC5WwNqyGcc37amhl5m+KyUif+HABnPxLPH2bEBwIqXsCaKZHQSmE5N4
+ ymmkp6odgTO8o6NH4GK/VaoMzEu5cRm4B9YB/n1kg/nqgo16CAWBzTEYVgFNDrjWK1V8
+ H0JzbU89xqpSN/FH/oKRPIgDCQcKEH9BUQyiVE/30AgEbgBLBye6jg5VQVK89W6OuwnJ
+ YJinbPti8PVYAPu1NgZvfsr8JPOJWG6r8orp2Duns/wTEDTv3fQRNvbnCeyXXYyzq49O
+ hJBA==
+X-Gm-Message-State: AOJu0YyJm57dvfPpb0FawDFJTooVebGyBMA+nTuMehzY5I0a/RQRevyM
+ KynXEst7oV+Q97gbKINyPOtky4FSAKqEDJ76SnPD0Jow81GKGcOTFp/wQg72xPTvhHM=
+X-Gm-Gg: ASbGncuqcDuwoU7aBIr1ct/DpfHBJYwyFCFtKWRF/If/+jPzXoPu9YuSAYB4oDsIRDp
+ T/iQRGgoKzqBT9IbcGgAUDoGWhZwlQxFJyToi3C/2ACgWFTopw70q+BTsqYgRjXWvjBaoBnQGxG
+ 0SUkjlbVQoLx1i7RMTXZWAaE5YSXpaQCXSZG4bm8V7tNf/FCAWlQ3D9V2P8MNtvbMPlONBMLG0s
+ DJ3ysBOasLQB3CYKG8AM2ABtoTNnuK8KbBoEUbDj9H4i8cpq1FylNeOGSsr5JtrYkZR9cyVG44T
+ 6YdoAhVkOMNgXGjUDSxEtiACr9Z5b/N6jrzZ05Frq13Gp9VWhkG6t3IkwbFy+GmwwwxU354PTJE
+ it9IAK9otYnzmmkutulsdx/4YM94RkSuKxvYkN8aAcD+z1Reosqe1EInf
+X-Google-Smtp-Source: AGHT+IFmK29FNwIxJE4EQieOE2WOhwFTE36Jwax8lab3+fKoAGYrsJ0xOebjGNFmyakuSTY8XU9Hpw==
+X-Received: by 2002:a17:903:2f8e:b0:267:b0e4:314e with SMTP id
+ d9443c01a7336-28e9a58cebbmr43091605ad.23.1759511292482; 
+ Fri, 03 Oct 2025 10:08:12 -0700 (PDT)
 Received: from stoup.. ([71.212.157.132]) by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-28e8d110d86sm55327115ad.6.2025.10.03.10.08.06
+ d9443c01a7336-28e8d110d86sm55327115ad.6.2025.10.03.10.08.11
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 03 Oct 2025 10:08:06 -0700 (PDT)
+ Fri, 03 Oct 2025 10:08:12 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v6 06/73] target/arm: Cache NV1 early in get_phys_addr_lpae
-Date: Fri,  3 Oct 2025 10:06:53 -0700
-Message-ID: <20251003170800.997167-7-richard.henderson@linaro.org>
+Subject: [PATCH v6 12/73] target/arm: Implement dirtybit check for PIE
+Date: Fri,  3 Oct 2025 10:06:59 -0700
+Message-ID: <20251003170800.997167-13-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20251003170800.997167-1-richard.henderson@linaro.org>
 References: <20251003170800.997167-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::630;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x630.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::632;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x632.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, T_SPF_HELO_TEMPERROR=0.01,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  T_SPF_TEMPERROR=0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -100,69 +99,98 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-We were not using the correct security space in the existing call
-to nv_nv1_enabled, because it may have been modified for NSTable.
-
-Cache it early, as we will shortly need it elsewhere as well.
+Both S1PIE and S2PIE have a bit to make software tracking
+of dirty pages easier.
 
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/ptw.c | 20 +++++++++++++-------
- 1 file changed, 13 insertions(+), 7 deletions(-)
+ target/arm/internals.h      |  1 +
+ target/arm/ptw.c            | 16 ++++++++++++++++
+ target/arm/tcg/tlb_helper.c | 12 +++++++++---
+ 3 files changed, 26 insertions(+), 3 deletions(-)
 
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index b59650959e..69eb1df617 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -752,6 +752,7 @@ struct ARMMMUFaultInfo {
+     bool s1ptw;
+     bool s1ns;
+     bool ea;
++    bool dirtybit;  /* FEAT_S1PIE, FEAT_S2PIE */
+ };
+ 
+ /**
 diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-index ebb260d54d..d6d704e2a9 100644
+index 6dcd3adbdf..be3629a745 100644
 --- a/target/arm/ptw.c
 +++ b/target/arm/ptw.c
-@@ -76,6 +76,8 @@ typedef struct S1Translate {
-      * may be suppressed for debug or AT insns.
-      */
-     uint8_t in_prot_check;
-+    /* Cached EffectiveHCR_EL2_NVx() bit */
-+    bool in_nv1;
-     bool out_rw;
-     bool out_be;
-     ARMSecuritySpace out_space;
-@@ -1641,12 +1643,6 @@ static bool lpae_block_desc_valid(ARMCPU *cpu, bool ds,
+@@ -2311,6 +2311,22 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
+         goto do_fault;
      }
+ 
++    /* S1PIE and S2PIE both have a bit for software dirty page tracking. */
++    if (access_type == MMU_DATA_STORE && param.pie) {
++        /*
++         * For S1PIE, bit 7 is nDirty and both HA and HD are checked.
++         * For S2PIE, bit 7 is Dirty and only HD is checked.
++         */
++        bool bit7 = extract64(attrs, 7, 1);
++        if (regime_is_stage2(mmu_idx)
++            ? !bit7 && !param.hd
++            : bit7 && !(param.ha && param.hd)) {
++            fi->type = ARMFault_Permission;
++            fi->dirtybit = true;
++            goto do_fault;
++        }
++    }
++
+     /* If FEAT_HAFDBS has made changes, update the PTE. */
+     if (new_descriptor != descriptor) {
+         new_descriptor = arm_casq_ptw(env, descriptor, new_descriptor, ptw, fi);
+diff --git a/target/arm/tcg/tlb_helper.c b/target/arm/tcg/tlb_helper.c
+index 23c72a99f5..ae2acd6727 100644
+--- a/target/arm/tcg/tlb_helper.c
++++ b/target/arm/tcg/tlb_helper.c
+@@ -24,13 +24,13 @@ bool arm_s1_regime_using_lpae_format(CPUARMState *env, ARMMMUIdx mmu_idx)
+     return regime_using_lpae_format(env, mmu_idx);
  }
  
--static bool nv_nv1_enabled(CPUARMState *env, S1Translate *ptw)
--{
--    uint64_t hcr = arm_hcr_el2_eff_secstate(env, ptw->in_space);
--    return (hcr & (HCR_NV | HCR_NV1)) == (HCR_NV | HCR_NV1);
--}
--
- /**
-  * get_phys_addr_lpae: perform one stage of page table walk, LPAE format
-  *
-@@ -1698,6 +1694,16 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
-                                    !arm_el_is_aa64(env, 1));
-         level = 0;
+-static inline uint32_t merge_syn_data_abort(uint32_t template_syn,
++static inline uint64_t merge_syn_data_abort(uint32_t template_syn,
+                                             ARMMMUFaultInfo *fi,
+                                             unsigned int target_el,
+                                             bool same_el, bool is_write,
+                                             int fsc)
+ {
+-    uint32_t syn;
++    uint64_t syn;
  
-+        /*
-+         * Cache NV1 before we adjust ptw->in_space for NSTable.
-+         * Note that this is only relevant for EL1&0, and that
-+         * computing it would assert for ARMSS_Root.
-+         */
-+        if (el == 1) {
-+            uint64_t hcr = arm_hcr_el2_eff_secstate(env, ptw->in_space);
-+            ptw->in_nv1 = (hcr & (HCR_NV | HCR_NV1)) == (HCR_NV | HCR_NV1);
-+        }
+     /*
+      * ISV is only set for stage-2 data aborts routed to EL2 and
+@@ -75,6 +75,10 @@ static inline uint32_t merge_syn_data_abort(uint32_t template_syn,
+         /* Merge the runtime syndrome with the template syndrome.  */
+         syn |= template_syn;
+     }
 +
-         /*
-          * If TxSZ is programmed to a value larger than the maximum,
-          * or smaller than the effective minimum, it is IMPLEMENTATION
-@@ -2073,7 +2079,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
-         xn = extract64(attrs, 54, 1);
-         pxn = extract64(attrs, 53, 1);
++    /* Form ISS2 at the top of the syndrome. */
++    syn |= (uint64_t)fi->dirtybit << 37;
++
+     return syn;
+ }
  
--        if (el == 1 && nv_nv1_enabled(env, ptw)) {
-+        if (el == 1 && ptw->in_nv1) {
-             /*
-              * With FEAT_NV, when HCR_EL2.{NV,NV1} == {1,1}, the block/page
-              * descriptor bit 54 holds PXN, 53 is RES0, and the effective value
+@@ -176,7 +180,9 @@ void arm_deliver_fault(ARMCPU *cpu, vaddr addr,
+     int target_el = exception_target_el(env);
+     int current_el = arm_current_el(env);
+     bool same_el;
+-    uint32_t syn, exc, fsr, fsc;
++    uint32_t exc, fsr, fsc;
++    uint64_t syn;
++
+     /*
+      * We know this must be a data or insn abort, and that
+      * env->exception.syndrome contains the template syndrome set
 -- 
 2.43.0
 

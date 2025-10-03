@@ -4,20 +4,20 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13471CCA470
-	for <qemu-arm@archiver.kernel.org>; Fri,  3 Oct 2025 07:22:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4AB2FCAC5B0
+	for <qemu-arm@archiver.kernel.org>; Fri,  3 Oct 2025 07:23:10 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v4a7G-00069s-SE; Fri, 03 Oct 2025 03:22:11 -0400
+	id 1v4a7v-0006Vj-5D; Fri, 03 Oct 2025 03:22:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1v4a7F-00069A-2z; Fri, 03 Oct 2025 03:22:09 -0400
+ id 1v4a7s-0006Tz-RO; Fri, 03 Oct 2025 03:22:49 -0400
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1v4a7A-0001f4-L6; Fri, 03 Oct 2025 03:22:07 -0400
+ id 1v4a7p-0001f4-Eb; Fri, 03 Oct 2025 03:22:48 -0400
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Fri, 3 Oct
@@ -31,10 +31,10 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  Stanley" <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
  "open list:All patches CC here" <qemu-devel@nongnu.org>
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>
-Subject: [PATCH v1 2/5] tests/functional/arm/test_aspeed_ast2500: Update test
- ASPEED SDK v09.08
-Date: Fri, 3 Oct 2025 15:21:03 +0800
-Message-ID: <20251003072107.3530642-3-jamin_lin@aspeedtech.com>
+Subject: [PATCH v1 5/5] tests/functional/aarch64/test_aspeed_ast2700: Move
+ eth2 IP check into common function
+Date: Fri, 3 Oct 2025 15:21:06 +0800
+Message-ID: <20251003072107.3530642-6-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20251003072107.3530642-1-jamin_lin@aspeedtech.com>
 References: <20251003072107.3530642-1-jamin_lin@aspeedtech.com>
@@ -66,34 +66,40 @@ From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+The eth2 IP address check was previously only performed in
+test_aarch64_ast2700a1_evb_sdk_vbootrom_v09_08. This patch moves the
+check into do_ast2700_pcie_test(), ensuring it is executed consistently
+across all AST2700 PCIe test runs. This avoids code duplication.
+
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 ---
- tests/functional/arm/test_aspeed_ast2500.py | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ tests/functional/aarch64/test_aspeed_ast2700.py | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/tests/functional/arm/test_aspeed_ast2500.py b/tests/functional/arm/test_aspeed_ast2500.py
-index 4fdd81e2f9..5efd104c2b 100755
---- a/tests/functional/arm/test_aspeed_ast2500.py
-+++ b/tests/functional/arm/test_aspeed_ast2500.py
-@@ -37,14 +37,14 @@ def test_arm_ast2500_evb_buildroot(self):
+diff --git a/tests/functional/aarch64/test_aspeed_ast2700.py b/tests/functional/aarch64/test_aspeed_ast2700.py
+index 0e9f10d991..ef7ed522af 100755
+--- a/tests/functional/aarch64/test_aspeed_ast2700.py
++++ b/tests/functional/aarch64/test_aspeed_ast2700.py
+@@ -74,6 +74,9 @@ def do_ast2700_pcie_test(self):
+             'lspci -s 0002:01:00.0',
+             '0002:01:00.0 Ethernet controller: '
+             'Intel Corporation 82574L Gigabit Network Connection')
++        exec_command_and_wait_for_pattern(self,
++            'ip addr show dev eth2',
++            'inet 10.0.2.15/24')
  
-         self.do_test_arm_aspeed_buildroot_poweroff()
+     def start_ast2700_test(self, name):
+         num_cpu = 4
+@@ -153,9 +156,6 @@ def test_aarch64_ast2700a1_evb_sdk_vbootrom_v09_08(self):
+         self.verify_openbmc_boot_and_login('ast2700-default')
+         self.do_ast2700_i2c_test()
+         self.do_ast2700_pcie_test()
+-        exec_command_and_wait_for_pattern(self,
+-            'ip addr show dev eth2',
+-            'inet 10.0.2.15/24')
  
--    ASSET_SDK_V907_AST2500 = Asset(
--        'https://github.com/AspeedTech-BMC/openbmc/releases/download/v09.07/ast2500-default-obmc.tar.gz',
--        'd52bcc279a37c8d7679b3e4ef22cc77c36f0f6624c687b37334f798828afb077')
-+    ASSET_SDK_V908_AST2500 = Asset(
-+        'https://github.com/AspeedTech-BMC/openbmc/releases/download/v09.08/ast2500-default-obmc.tar.gz',
-+        'c0a2ba169efd19be5eb77c50ec2a6afd9d826e196a0be3432f969fc72d4b7c0e')
- 
-     def test_arm_ast2500_evb_sdk(self):
-         self.set_machine('ast2500-evb')
- 
--        self.archive_extract(self.ASSET_SDK_V907_AST2500)
-+        self.archive_extract(self.ASSET_SDK_V908_AST2500)
- 
-         self.do_test_arm_aspeed_sdk_start(
-             self.scratch_file("ast2500-default", "image-bmc"))
+ if __name__ == '__main__':
+     QemuSystemTest.main()
 -- 
 2.43.0
 

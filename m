@@ -4,86 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4D08CCA471
-	for <qemu-arm@archiver.kernel.org>; Fri,  3 Oct 2025 17:22:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3A27CAC5B0
+	for <qemu-arm@archiver.kernel.org>; Fri,  3 Oct 2025 17:22:27 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v4jKc-0005QH-DM; Fri, 03 Oct 2025 13:12:35 -0400
+	id 1v4jLk-0007mg-Uo; Fri, 03 Oct 2025 13:13:45 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1v4jIb-0002k1-Cv
- for qemu-arm@nongnu.org; Fri, 03 Oct 2025 13:10:31 -0400
-Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
+ id 1v4jKP-00057k-My
+ for qemu-arm@nongnu.org; Fri, 03 Oct 2025 13:12:26 -0400
+Received: from mail-pf1-x42e.google.com ([2607:f8b0:4864:20::42e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1v4jGn-0006JW-7x
- for qemu-arm@nongnu.org; Fri, 03 Oct 2025 13:10:21 -0400
-Received: by mail-pl1-x632.google.com with SMTP id
- d9443c01a7336-279e2554b5fso18833315ad.1
- for <qemu-arm@nongnu.org>; Fri, 03 Oct 2025 10:08:30 -0700 (PDT)
+ id 1v4jJt-0007g0-Kp
+ for qemu-arm@nongnu.org; Fri, 03 Oct 2025 13:12:20 -0400
+Received: by mail-pf1-x42e.google.com with SMTP id
+ d2e1a72fcca58-7800ff158d5so2382212b3a.1
+ for <qemu-arm@nongnu.org>; Fri, 03 Oct 2025 10:11:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1759511308; x=1760116108; darn=nongnu.org;
+ d=linaro.org; s=google; t=1759511497; x=1760116297; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=ZnGv3gaWQ9shrmt0WGxn8YCEO4EdUIFI2jl/MhJPR7Y=;
- b=Do/SFVuc2pdXoTGO2rZoaedAG0cOStAxmmZH2gziojXed0C2zG7QYfa5QsGILB4rxR
- bnoFqJmwnL3ewfqvhsDK92SFIrBN27c53ULm+1s1SUe93YqJoneZMkrBE2myF8xpa+Mc
- oW0NCYvwkxC669aTvFOo2ay6wplVcpbS6/c5vBLJyuYmPmuwQgNweZ25EVDs8EpGxjtZ
- IdptExWbtGrubZF/tyv8lRu64IwGKXqCQ0AMa5kWm7MNQTBFrxojqKrSxtkWdZ+5Jqt+
- TMLVmFigLAaWebNOCWNxAHeg0Wq4YvqmiI3F8ep/SJqnvVMeLZe03mAKEfWvDvhqXLBZ
- Avqg==
+ bh=vginp/BWCazHuQzqIb8BXHBvPZrCFhK+/22L3/T0m/s=;
+ b=Ot72X9WKFKRpKJihoWqYIB4t0XUSxwdwmI2/70k8ZMCQqKeVh6UExexkKOoq8XvimG
+ j7bSNKflBw2ku/hauvKwjJDOnY99EGqqMwQ6Ba0Gi+l5wZ6eABR74g9KB45d6gVtkD6I
+ YHbg6KGyjCiUe8OW2pzgOVfTR5yN3lTQX07LVQnKXvCOhKeC1Ext7w5OBF6fKe6jtrIT
+ Z8e/odh7aheO5hd6tVKEGPzyUdR1h3we6VPVPI061M0J1M56ndu+85gk8FmOxANImrU3
+ UYBVkFtJ/YzvQZ2ujQw7yfjxb4+XbweROp8mjehMp+N38sSqlAN6r8/g2yymfEFst2yt
+ ZjhQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759511308; x=1760116108;
+ d=1e100.net; s=20230601; t=1759511497; x=1760116297;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=ZnGv3gaWQ9shrmt0WGxn8YCEO4EdUIFI2jl/MhJPR7Y=;
- b=Xtcdg3EJTXY4ma193om8JrbyE/2xPHg1rVb2kOkgRsEHyq8b24oSth+owvrlyKhFhz
- LGCivGvGbhxushdMZ4xudbA2/kHI946O85v71Zm/+fI70FrZgzIOsitwJK1xyZfpxYcj
- cd9cETHbeSyBy4hRGUg8nZ/DrvNskUqvz6TTywhNknJmTrPddltKbbXwNjlNv/+WZWqw
- TPDp2K0kufi1m7aTiKPvrwvCklM48c5sEmZWbcMU7g0jXibRu/vzY3bMDEKfYmibYDrC
- uI2oOQ6oIL1uIecFFyy3JR1Sk8VDXkoLU6yY7Nk2FrNhT5W5ruGcvJFHurPT6vfFhYZQ
- BeTQ==
-X-Gm-Message-State: AOJu0YzelC9rQ+JnPUlapJr+RCeoFX8fQ3ORq1RnbZSop/3kUjI4Ib+s
- F1Mu054O98SV8aFuMfyaDA5QhXbfB+Hin6FGdMCGHRJnv8qAxFUnupiRdvTZgCWpJBI=
-X-Gm-Gg: ASbGnctxa2ZMpfiyFM0jhj28J1jgwWdjUeG49fjFKIRGUuaCWwefxekL1q/zZaGXVwE
- zvxgc5U05vOEd+US4AQl4+e+540n6jpQUzHWnG+LFyQ0tWcNcSYdf+3IxhdJ76DW4QSnt+i5VW8
- ruQifM5Ghveq2Ih1zTveKyZI0eyq3oWRzOsyyKRpsBhkvj+ktNfZRPtMAY00RG84lIf/SZnJBeW
- 8RZLUg01EizqXIrAKhDmb9CZxeKtFNA9TcLky3Y0njDFIiUZwXvGtxlRiRUnEpkVndbnMiGoJbP
- 5VwpyqbMDVE+pZzMJGEt2+5WJL8H1q0EgOZmJvIhubXViRysD+NNuRkO+G36b22pavWzsDzHAwc
- InIlfW5x81njfLraC9W/YyEthhj02Xp+JzYIuPAek2i/nnvuSP4z4+aSP
-X-Google-Smtp-Source: AGHT+IF08Qb1ZTCf8uYJaQEde8WiCdifUCrVA9ZUy2q8d989x069rCnd0LaEXacj6aquf7iDaA+rlA==
-X-Received: by 2002:a17:902:cf0e:b0:278:f46b:d49c with SMTP id
- d9443c01a7336-28e8d038c23mr93721845ad.9.1759511308381; 
- Fri, 03 Oct 2025 10:08:28 -0700 (PDT)
+ bh=vginp/BWCazHuQzqIb8BXHBvPZrCFhK+/22L3/T0m/s=;
+ b=CxDIE5sOg5eVLQ7T9T/6n69ki4E/lpXBYn0TGPIEArDae2kNZHvKsone1cQ/UVgpFz
+ Epcen/RkDjKxbgdnNaBu477vZ2fImvnsYljYK4+1x67bEzt3ZRnCAkEcOvtyKMFTGq10
+ 1h5/CexZk3Rf9Ll7q7m5gqTsYJQWhNxCh0R9UFOX6dwK6SMsPQ+BYFjzCAJeUtHzI1yF
+ YTV3bUwXQaq5+h3HWkXezwIetu3o18ml6Rw3i+h+k86IAS/cvrAHb9sFs2ruGJFh54HL
+ GGItVvN+x6nlo7E4jHZdBeRkmgi3gU78tquS/bemORgn7Yg9k7hbICfF/+fTjTwDHd/H
+ 5ndQ==
+X-Gm-Message-State: AOJu0YzHRqjebyXlMdQ4t7zJTDOARajpQcDz8NYKL0sz7eVntuNM+cj8
+ 8PJZzPPT1Zzb2SjRhnTt/ChRYP+QBS75PPkfYvsn30SZ7sZYyy/bbflqP82LXrZxXHfaxAKlBnd
+ FXQ/ea/M=
+X-Gm-Gg: ASbGnct+O7VZX7wpW/2j2pR+N5n6qSDDExqQXzYDxcdLQqiZt+W+d2A0bNCbi+JEsaq
+ /bbH1sMfeLvng2kRXpIiWQFjMaIzwbR345NPNlbJfA/JrvZx2W5qZ7te+8DdlWiXyB8TpDwRvHJ
+ lFJfw9S4Z/PTGHDLz8ihLzRUu2RmnmHpBXoClIMeo5YZXp07+0bTTWW+lEb9ECaIYM68tj8G8Ov
+ xnc2/YZd7CLiUBRwazyhk80InkIlb2mlcy8js8fizmqsk1HJwEt1nvNx09D1ij86fV4frgog1j8
+ Ek8rb0GA0T6V73rBptyisjHMKnNfhQk7+vPuJWRyGs25o5F+GSdhYwuA9bf/7mQl+44w2f5HC/w
+ lhKgT+PKRCi9WfJS7kxE+PGiIu5Lztu/IlijrU3wzYVippWXPEFNwFF9cxYyeq0ZYN6Q=
+X-Google-Smtp-Source: AGHT+IEG6FGpOW48MNKQkH8t5RSiOa0v/ft8aHrv4ADtS29Kl+R8gVamgSMhBpMcHiQbl0iWlrU5rw==
+X-Received: by 2002:a05:6a00:8c4:b0:781:18dd:31de with SMTP id
+ d2e1a72fcca58-78c98a77c8cmr4806661b3a.12.1759511496917; 
+ Fri, 03 Oct 2025 10:11:36 -0700 (PDT)
 Received: from stoup.. ([71.212.157.132]) by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-28e8d110d86sm55327115ad.6.2025.10.03.10.08.27
+ d2e1a72fcca58-78b02053a51sm5418769b3a.46.2025.10.03.10.11.36
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 03 Oct 2025 10:08:28 -0700 (PDT)
+ Fri, 03 Oct 2025 10:11:36 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v6 30/73] target/arm: Implement gcs bit for data abort
-Date: Fri,  3 Oct 2025 10:07:17 -0700
-Message-ID: <20251003170800.997167-31-richard.henderson@linaro.org>
+Cc: qemu-arm@nongnu.org
+Subject: [PATCH v6 40/73] target/arm: Split out access_nv1_with_nvx
+Date: Fri,  3 Oct 2025 10:07:27 -0700
+Message-ID: <20251003170800.997167-41-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20251003170800.997167-1-richard.henderson@linaro.org>
 References: <20251003170800.997167-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::632;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x632.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42e;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -99,45 +99,37 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/tcg/tlb_helper.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+ target/arm/helper.c | 11 ++++++-----
+ 1 file changed, 6 insertions(+), 5 deletions(-)
 
-diff --git a/target/arm/tcg/tlb_helper.c b/target/arm/tcg/tlb_helper.c
-index ae2acd6727..f1983a5732 100644
---- a/target/arm/tcg/tlb_helper.c
-+++ b/target/arm/tcg/tlb_helper.c
-@@ -28,7 +28,7 @@ static inline uint64_t merge_syn_data_abort(uint32_t template_syn,
-                                             ARMMMUFaultInfo *fi,
-                                             unsigned int target_el,
-                                             bool same_el, bool is_write,
--                                            int fsc)
-+                                            int fsc, bool gcs)
- {
-     uint64_t syn;
- 
-@@ -78,6 +78,7 @@ static inline uint64_t merge_syn_data_abort(uint32_t template_syn,
- 
-     /* Form ISS2 at the top of the syndrome. */
-     syn |= (uint64_t)fi->dirtybit << 37;
-+    syn |= (uint64_t)gcs << 40;
- 
-     return syn;
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index b84cd3fbbd..8ab1b3810e 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -3423,15 +3423,16 @@ static void mdcr_el2_write(CPUARMState *env, const ARMCPRegInfo *ri,
+     }
  }
-@@ -252,9 +253,10 @@ void arm_deliver_fault(ARMCPU *cpu, vaddr addr,
-         syn = syn_insn_abort(same_el, fi->ea, fi->s1ptw, fsc);
-         exc = EXCP_PREFETCH_ABORT;
-     } else {
-+        bool gcs = regime_is_gcs(core_to_arm_mmu_idx(env, mmu_idx));
-         syn = merge_syn_data_abort(env->exception.syndrome, fi, target_el,
-                                    same_el, access_type == MMU_DATA_STORE,
--                                   fsc);
-+                                   fsc, gcs);
-         if (access_type == MMU_DATA_STORE
-             && arm_feature(env, ARM_FEATURE_V6)) {
-             fsr |= (1 << 11);
+ 
++static CPAccessResult access_nv1_with_nvx(uint64_t hcr_nv)
++{
++    return hcr_nv == (HCR_NV | HCR_NV1) ? CP_ACCESS_TRAP_EL2 : CP_ACCESS_OK;
++}
++
+ static CPAccessResult access_nv1(CPUARMState *env, const ARMCPRegInfo *ri,
+                                  bool isread)
+ {
+     if (arm_current_el(env) == 1) {
+-        uint64_t hcr_nv = arm_hcr_el2_nvx_eff(env);
+-
+-        if (hcr_nv == (HCR_NV | HCR_NV1)) {
+-            return CP_ACCESS_TRAP_EL2;
+-        }
++        return access_nv1_with_nvx(arm_hcr_el2_nvx_eff(env));
+     }
+     return CP_ACCESS_OK;
+ }
 -- 
 2.43.0
 

@@ -4,87 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1DACCAC5B0
-	for <qemu-arm@archiver.kernel.org>; Fri,  3 Oct 2025 17:20:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F04CFCCA472
+	for <qemu-arm@archiver.kernel.org>; Fri,  3 Oct 2025 17:20:27 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v4jHu-00025q-0w; Fri, 03 Oct 2025 13:09:46 -0400
+	id 1v4jLe-0007ds-Ee; Fri, 03 Oct 2025 13:13:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1v4jHr-00023k-9M
- for qemu-arm@nongnu.org; Fri, 03 Oct 2025 13:09:43 -0400
-Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
+ id 1v4jKL-000577-VG
+ for qemu-arm@nongnu.org; Fri, 03 Oct 2025 13:12:22 -0400
+Received: from mail-pf1-x432.google.com ([2607:f8b0:4864:20::432])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1v4jGc-0006HN-DT
- for qemu-arm@nongnu.org; Fri, 03 Oct 2025 13:09:43 -0400
-Received: by mail-pl1-x633.google.com with SMTP id
- d9443c01a7336-27eed7bdfeeso32512515ad.0
- for <qemu-arm@nongnu.org>; Fri, 03 Oct 2025 10:08:21 -0700 (PDT)
+ id 1v4jJr-0007gv-Ph
+ for qemu-arm@nongnu.org; Fri, 03 Oct 2025 13:12:16 -0400
+Received: by mail-pf1-x432.google.com with SMTP id
+ d2e1a72fcca58-782e93932ffso2382540b3a.3
+ for <qemu-arm@nongnu.org>; Fri, 03 Oct 2025 10:11:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1759511298; x=1760116098; darn=nongnu.org;
+ d=linaro.org; s=google; t=1759511500; x=1760116300; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=/DQH/naaKL4jZf70YHLxeZy3QnV+5FKxGGXMDFqArqY=;
- b=BAd2Mpz/eRqfTb+KM6fDeycoKH3jdkMPIxtFKvqQGPr1tOSdr1RJg8vRaBq0TcjHFq
- mP93jhOZhua5CORVSKYeDsCGO1UuaLfJSHQWHidlA3BO++xrV0yJC5/n5vbCDYh1sNDo
- t3cdysm7X/KPiubEYkktBZD5pkSAMsBRHwgcANbPYcbiGX+GeN0QPn6sqHKMfP12o6VW
- /zIqy+xxLT235yIcyGOr5hUeKQAGdm7mYpekAkJXcrfWLx9t8HAh1slz+1Ki5hv87eUZ
- +kJvMbVk/RcEYbHw6EgRX5tVBKSNcwNUmVn1FVU1F5+4MxxOVjGDzrY+Ei5iq3dZv4lo
- o2Jg==
+ bh=9NNf1WmXSTI58NaZyRuQIPA+gxIE0nBNVq/aWBPGCWw=;
+ b=xTguVO8gOcrfwHIplj561xyJzMSF6Jle2daZSmYoi3/ceXkA5LP2YhdMDYo9vQi9Wr
+ gNeazMiumVG/kD0HB8l4b1kLnxNXEHF9psCgqpM2USlc4D7frEQbhevs9oAyG03kZ6xn
+ mHHjihdyjXCjco9vjwtkZy7a5f1iyxZ8uDx6VYmezd3Z1z/LNnm35K4+Pzjn4Eajbu8i
+ /4SXPDBnJ1sCheSYVayP7/mP9OAOHKQPXrQisL1jFCGLmLeWiFNF6tkuIOkn8p89K2AF
+ xjViNJB40fZ+9IQRVboNl+zVtQWWY6y9f/B9wqRsyguPUOdVhwEYH6qi1e5aCA0Pb+vQ
+ jS0Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759511298; x=1760116098;
+ d=1e100.net; s=20230601; t=1759511500; x=1760116300;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=/DQH/naaKL4jZf70YHLxeZy3QnV+5FKxGGXMDFqArqY=;
- b=paq9f0AOLXL/va0Ien2+zT6YeWoJwnUZu2aOr+BG0gdsIrD6nrb9tqFqx2SD8rwEo+
- n+3AZfcwH4zr3QACHYH0VMr4q6Zn2OZo1IuJg3byGi0m3J6hh7Zi2vGc7llb1SD42e0K
- lTzRFqkj9s3CJw65kTtLw7CYCrgEiGpTead6E7Z75zCl+86PqyDs2Hr96wNgT5ciX2F4
- 69WIICgP2uJJF5lkiEMTKm68tqQ8aqYBqEiqstv5MS76EmTzR3yRG6DM6fwDPBY3ncxp
- P8Oq3tfbkCMRvpraVm+mUnSBZOrh0VOmTNHpGQha6N+G4NpHZNjCd70xkZ6/qNDSQH3V
- /OHA==
-X-Gm-Message-State: AOJu0Yz1hYtodkuTlbqS2IhdE/4qOVmU1p3CAVPCuHJp2mLw3ti+5Oog
- WoIXZ2beRobYwuNvhv9GIMKGiAVpG9fOzxqYvfLpI/sbUoaDm9X3E6+MRyK82swGeOc=
-X-Gm-Gg: ASbGncuFTJcFF07VxZZNXYUdBq+t47b16zTzVDzU+Tszb+ilNbCOzSkA8BOnSZBOUmA
- IAvo3BVz52qw1zVjhwp921O7tV8Rx/b6/xcwcvKEWwbdTdfcCcFhTuJtLvYjUPQUr3jUvwzzXmU
- UtpuWuHEi1wcwqwNENR+R463U5+P9CSuYz4Kd5JD4iuUUvXeZ1jJNld9/AYMRo7R0Fhb9tzUtIa
- gvs7Uxl5/6pyyLMcl3KNwl4SOqELbLYuD9b+v9o5bAsVlcd8Vihasuphea2NgT0z/OZwBSy37tY
- 3tj3MBlRZHwx6lxlJuIgYR7wWlIhEjc4y52dUIjyXgciLr694YsZqtBi3Mh3XjO/Z1PK85L3QHf
- 5xw1zICEzykiij77exrNpt46HwxueaFj3ZzP9k/ZCDCuwZdAa9iPkIMjr
-X-Google-Smtp-Source: AGHT+IGVY9fBOa2bmc7W02Kaw3SlE8CyqGFW1r4X2fECkVQg/M5PgIyhNKZkOX8RWE7uFdyhQdYE4Q==
-X-Received: by 2002:a17:903:1249:b0:265:e815:fcdf with SMTP id
- d9443c01a7336-28e8d0a1a55mr94697005ad.17.1759511298380; 
- Fri, 03 Oct 2025 10:08:18 -0700 (PDT)
+ bh=9NNf1WmXSTI58NaZyRuQIPA+gxIE0nBNVq/aWBPGCWw=;
+ b=R/0MBVHvSbKqOO1E1Lu/mJOa3/meJE8KaXANXQvXceFapT+timXr+VVT1yZthk+Tsc
+ cUiugXPbD8ji50kwWTwR5CXVwGkXeLyi4R6sR0uWjh2A8GfnYAruchi7aQCBZRQC2LFN
+ aJp3Jb5bRqNSrAgf+KpqFnIvXZVVlPu4g5iaxERPW5WhrtXGqa80sU5dA5DRPjpP/XFV
+ hPLMpxtasNSF4e3A7cLLq3Hk5yWz4fV3yfqGS1QkUQfRriLt5mAeZznQCqQjshNDG5bS
+ fUWB49SJ6GaboZYjWk1+/uTCEot+hSjmiA72A4HAkBMyiCAbKyFlgUReqPRf/nWGtQrL
+ SKvw==
+X-Gm-Message-State: AOJu0YyvHUOi8knpCLaJ41Wbult003+MOiGXlBFUbCAJ9IR33UsNyi3D
+ k04xJ30SDLenwUi6sB+r9/WsOgEuHZ/IyUNlsIin6eus5KCeN6BlMkMsOBY2XyEc9yfGKomQXJU
+ UqrDtNnw=
+X-Gm-Gg: ASbGncuxEJiZI8QCr7Xqz6zdspKGLEHGSJ1EIVbZtaeDves8IlSADtkJHvyw+Y6Bl8p
+ F5G72wKQ3GUopocVPoh9tGcIf/h7PKlT/ssQcUEv95K2GR8ctkG5BzjLfDjcLX1b7/luIXKSg4N
+ fX3YnmMkK+5x6fHIID6i0gROYqJET50u4/lXsnmSUwoRO4Imrkej199yuxq21ZNCrfavaZTgb/L
+ VINq9SUgev05pq2Et++c1/CjRUZ3tDkzrBo3KFrA9Caa1wJD3O1WCP3L9AmQl/r2tiDUbXEqOsK
+ Im5JY67V9BhbIjkMiegRB6zbnaZ2meD701Ik9HFuFD8aqrYHmGxhsBp+e9tVAXM0y480nFh9a1R
+ sU6ZJNDWPPtRHGSrVEaoMbC/vmAtxh1nwTq7oo0NoKUp32uXpNFz+S0XFmWloqPzMTdg=
+X-Google-Smtp-Source: AGHT+IHk9b1ZGhEfBxMKtwTCGyYw+7H6cpCqG4xB6kcAlyj1Fv37Gi2qiTviQxt0eZnMNnvx7+plkw==
+X-Received: by 2002:a05:6a00:94a7:b0:78c:99a8:b748 with SMTP id
+ d2e1a72fcca58-78c99a8b97bmr4549535b3a.0.1759511500254; 
+ Fri, 03 Oct 2025 10:11:40 -0700 (PDT)
 Received: from stoup.. ([71.212.157.132]) by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-28e8d110d86sm55327115ad.6.2025.10.03.10.08.17
+ d2e1a72fcca58-78b02053a51sm5418769b3a.46.2025.10.03.10.11.39
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 03 Oct 2025 10:08:17 -0700 (PDT)
+ Fri, 03 Oct 2025 10:11:39 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v6 18/73] target/arm: Remove unused env argument from regime_el
-Date: Fri,  3 Oct 2025 10:07:05 -0700
-Message-ID: <20251003170800.997167-19-richard.henderson@linaro.org>
+	Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Subject: [PATCH v6 43/73] target/arm: Introduce delay_exception{_el}
+Date: Fri,  3 Oct 2025 10:07:30 -0700
+Message-ID: <20251003170800.997167-44-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20251003170800.997167-1-richard.henderson@linaro.org>
 References: <20251003170800.997167-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::633;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x633.google.com
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
- DKIM_SIGNED=0.1, RCVD_IN_DNSWL_NONE=-0.0001, T_SPF_HELO_TEMPERROR=0.01,
- T_SPF_TEMPERROR=0.01 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=2607:f8b0:4864:20::432;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x432.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -100,231 +100,141 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Add infrastructure to raise an exception out of line.
+
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/internals.h      |  8 ++++----
- target/arm/helper.c         |  2 +-
- target/arm/ptw.c            | 34 +++++++++++++++++-----------------
- target/arm/tcg/mte_helper.c |  2 +-
- 4 files changed, 23 insertions(+), 23 deletions(-)
+ target/arm/tcg/translate.h     | 20 +++++++++++++
+ target/arm/tcg/translate-a64.c |  2 ++
+ target/arm/tcg/translate.c     | 53 ++++++++++++++++++++++++++++++++++
+ 3 files changed, 75 insertions(+)
 
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 1a234d41c2..bd7ea82067 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -1074,7 +1074,7 @@ static inline bool regime_is_stage2(ARMMMUIdx mmu_idx)
- }
+diff --git a/target/arm/tcg/translate.h b/target/arm/tcg/translate.h
+index 943dfd45fe..9a85ea74db 100644
+--- a/target/arm/tcg/translate.h
++++ b/target/arm/tcg/translate.h
+@@ -21,9 +21,25 @@ typedef struct DisasLabel {
+     target_ulong pc_save;
+ } DisasLabel;
  
- /* Return the exception level which controls this address translation regime */
--static inline uint32_t regime_el(CPUARMState *env, ARMMMUIdx mmu_idx)
-+static inline uint32_t regime_el(ARMMMUIdx mmu_idx)
- {
-     switch (mmu_idx) {
-     case ARMMMUIdx_E20_0:
-@@ -1128,7 +1128,7 @@ static inline bool regime_is_user(CPUARMState *env, ARMMMUIdx mmu_idx)
- /* Return the SCTLR value which controls this address translation regime */
- static inline uint64_t regime_sctlr(CPUARMState *env, ARMMMUIdx mmu_idx)
- {
--    return env->cp15.sctlr_el[regime_el(env, mmu_idx)];
-+    return env->cp15.sctlr_el[regime_el(mmu_idx)];
- }
++/*
++ * Emit an exception call out of line.
++ */
++typedef struct DisasDelayException {
++    struct DisasDelayException *next;
++    TCGLabel *lab;
++    target_long pc_curr;
++    target_long pc_save;
++    int condexec_mask;
++    int condexec_cond;
++    uint32_t excp;
++    uint32_t syn;
++    uint32_t target_el;
++} DisasDelayException;
++
+ typedef struct DisasContext {
+     DisasContextBase base;
+     const ARMISARegisters *isar;
++    DisasDelayException *delay_excp_list;
  
- /*
-@@ -1160,13 +1160,13 @@ static inline uint64_t regime_tcr(CPUARMState *env, ARMMMUIdx mmu_idx)
-         v |= env->cp15.vtcr_el2 & VTCR_SHARED_FIELD_MASK;
-         return v;
-     }
--    return env->cp15.tcr_el[regime_el(env, mmu_idx)];
-+    return env->cp15.tcr_el[regime_el(mmu_idx)];
- }
+     /* The address of the current instruction being translated. */
+     target_ulong pc_curr;
+@@ -365,6 +381,10 @@ void gen_exception_insn_el(DisasContext *s, target_long pc_diff, int excp,
+                            uint32_t syn, uint32_t target_el);
+ void gen_exception_insn(DisasContext *s, target_long pc_diff,
+                         int excp, uint32_t syn);
++TCGLabel *delay_exception_el(DisasContext *s, int excp,
++                             uint32_t syn, uint32_t target_el);
++TCGLabel *delay_exception(DisasContext *s, int excp, uint32_t syn);
++void emit_delayed_exceptions(DisasContext *s);
  
- /* Return true if the translation regime is using LPAE format page tables */
- static inline bool regime_using_lpae_format(CPUARMState *env, ARMMMUIdx mmu_idx)
- {
--    int el = regime_el(env, mmu_idx);
-+    int el = regime_el(mmu_idx);
-     if (el == 2 || arm_el_is_aa64(env, el)) {
-         return true;
-     }
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index d54b3e784d..b540f4dd36 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -9385,7 +9385,7 @@ ARMVAParameters aa64_va_parameters(CPUARMState *env, uint64_t va,
-     ARMGranuleSize gran;
-     ARMCPU *cpu = env_archcpu(env);
-     bool stage2 = regime_is_stage2(mmu_idx);
--    int r_el = regime_el(env, mmu_idx);
-+    int r_el = regime_el(mmu_idx);
- 
-     if (!regime_has_2_ranges(mmu_idx)) {
-         select = 0;
-diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-index be3629a745..622b5cf520 100644
---- a/target/arm/ptw.c
-+++ b/target/arm/ptw.c
-@@ -232,9 +232,9 @@ static uint64_t regime_ttbr(CPUARMState *env, ARMMMUIdx mmu_idx, int ttbrn)
-         return env->cp15.vsttbr_el2;
-     }
-     if (ttbrn == 0) {
--        return env->cp15.ttbr0_el[regime_el(env, mmu_idx)];
-+        return env->cp15.ttbr0_el[regime_el(mmu_idx)];
-     } else {
--        return env->cp15.ttbr1_el[regime_el(env, mmu_idx)];
-+        return env->cp15.ttbr1_el[regime_el(mmu_idx)];
-     }
- }
- 
-@@ -1023,7 +1023,7 @@ static bool get_phys_addr_v5(CPUARMState *env, S1Translate *ptw,
-     }
-     type = (desc & 3);
-     domain = (desc >> 5) & 0x0f;
--    if (regime_el(env, ptw->in_mmu_idx) == 1) {
-+    if (regime_el(ptw->in_mmu_idx) == 1) {
-         dacr = env->cp15.dacr_ns;
-     } else {
-         dacr = env->cp15.dacr_s;
-@@ -1162,7 +1162,7 @@ static bool get_phys_addr_v6(CPUARMState *env, S1Translate *ptw,
-         /* Page or Section.  */
-         domain = (desc >> 5) & 0x0f;
-     }
--    if (regime_el(env, mmu_idx) == 1) {
-+    if (regime_el(mmu_idx) == 1) {
-         dacr = env->cp15.dacr_ns;
-     } else {
-         dacr = env->cp15.dacr_s;
-@@ -1453,7 +1453,7 @@ static int get_S1prot(CPUARMState *env, ARMMMUIdx mmu_idx, bool is_aa64,
-             xn = pxn || (user_rw & PAGE_WRITE);
+ /* Return state of Alternate Half-precision flag, caller frees result */
+ static inline TCGv_i32 get_ahp_flag(void)
+diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
+index 1337e16a96..c037119cdf 100644
+--- a/target/arm/tcg/translate-a64.c
++++ b/target/arm/tcg/translate-a64.c
+@@ -10601,6 +10601,8 @@ static void aarch64_tr_tb_stop(DisasContextBase *dcbase, CPUState *cpu)
+             break;
          }
-     } else if (arm_feature(env, ARM_FEATURE_V7)) {
--        switch (regime_el(env, mmu_idx)) {
-+        switch (regime_el(mmu_idx)) {
-         case 1:
-         case 3:
-             if (is_user) {
-@@ -1509,7 +1509,7 @@ static int get_S1prot_indirect(CPUARMState *env, S1Translate *ptw,
-         /* F */ 0,             /* reserved */
-     };
+     }
++
++    emit_delayed_exceptions(dc);
+ }
  
--    uint32_t el = regime_el(env, mmu_idx);
-+    uint32_t el = regime_el(mmu_idx);
-     uint64_t pir = env->cp15.pir_el[el];
-     uint64_t pire0 = 0;
-     int perm;
-@@ -1584,7 +1584,7 @@ static ARMVAParameters aa32_va_parameters(CPUARMState *env, uint32_t va,
-                                           ARMMMUIdx mmu_idx)
+ const TranslatorOps aarch64_translator_ops = {
+diff --git a/target/arm/tcg/translate.c b/target/arm/tcg/translate.c
+index e62dcc5d85..78d26aac04 100644
+--- a/target/arm/tcg/translate.c
++++ b/target/arm/tcg/translate.c
+@@ -1088,6 +1088,57 @@ void gen_exception_insn(DisasContext *s, target_long pc_diff,
+     s->base.is_jmp = DISAS_NORETURN;
+ }
+ 
++TCGLabel *delay_exception_el(DisasContext *s, int excp,
++                             uint32_t syn, uint32_t target_el)
++{
++    /* Use tcg_malloc for automatic release on longjmp out of translation. */
++    DisasDelayException *e = tcg_malloc(sizeof(DisasDelayException));
++
++    memset(e, 0, sizeof(*e));
++
++    /* Save enough of the current state to satisfy gen_exception_insn. */
++    e->pc_curr = s->pc_curr;
++    e->pc_save = s->pc_save;
++    if (!s->aarch64) {
++        e->condexec_cond = s->condexec_cond;
++        e->condexec_mask = s->condexec_mask;
++    }
++
++    e->excp = excp;
++    e->syn = syn;
++    e->target_el = target_el;
++
++    e->next = s->delay_excp_list;
++    s->delay_excp_list = e;
++
++    e->lab = gen_new_label();
++    return e->lab;
++}
++
++TCGLabel *delay_exception(DisasContext *s, int excp, uint32_t syn)
++{
++    return delay_exception_el(s, excp, syn, 0);
++}
++
++void emit_delayed_exceptions(DisasContext *s)
++{
++    for (DisasDelayException *e = s->delay_excp_list; e ; e = e->next) {
++        gen_set_label(e->lab);
++
++        /* Restore the insn state to satisfy gen_exception_insn. */
++        s->pc_curr = e->pc_curr;
++        s->pc_save = e->pc_save;
++        s->condexec_cond = e->condexec_cond;
++        s->condexec_mask = e->condexec_mask;
++
++        if (e->target_el) {
++            gen_exception_insn_el(s, 0, e->excp, e->syn, e->target_el);
++        } else {
++            gen_exception_insn(s, 0, e->excp, e->syn);
++        }
++    }
++}
++
+ static void gen_exception_bkpt_insn(DisasContext *s, uint32_t syn)
  {
-     uint64_t tcr = regime_tcr(env, mmu_idx);
--    uint32_t el = regime_el(env, mmu_idx);
-+    uint32_t el = regime_el(mmu_idx);
-     int select, tsz;
-     bool epd, hpd;
- 
-@@ -1810,7 +1810,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
-     int addrsize, inputsize, outputsize;
-     uint64_t tcr = regime_tcr(env, mmu_idx);
-     int ap, prot;
--    uint32_t el = regime_el(env, mmu_idx);
-+    uint32_t el = regime_el(mmu_idx);
-     uint64_t descaddrmask;
-     bool aarch64 = arm_el_is_aa64(env, el);
-     uint64_t descriptor, new_descriptor;
-@@ -2264,7 +2264,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
- 
-         /* Index into MAIR registers for cache attributes */
-         attrindx = extract32(attrs, 2, 3);
--        mair = env->cp15.mair_el[regime_el(env, mmu_idx)];
-+        mair = env->cp15.mair_el[regime_el(mmu_idx)];
-         assert(attrindx <= 7);
-         result->cacheattrs.is_s2_format = false;
-         result->cacheattrs.attrs = extract64(mair, attrindx * 8, 8);
-@@ -2742,7 +2742,7 @@ static bool get_phys_addr_pmsav7(CPUARMState *env,
- static uint32_t *regime_rbar(CPUARMState *env, ARMMMUIdx mmu_idx,
-                              uint32_t secure)
- {
--    if (regime_el(env, mmu_idx) == 2) {
-+    if (regime_el(mmu_idx) == 2) {
-         return env->pmsav8.hprbar;
-     } else {
-         return env->pmsav8.rbar[secure];
-@@ -2752,7 +2752,7 @@ static uint32_t *regime_rbar(CPUARMState *env, ARMMMUIdx mmu_idx,
- static uint32_t *regime_rlar(CPUARMState *env, ARMMMUIdx mmu_idx,
-                              uint32_t secure)
- {
--    if (regime_el(env, mmu_idx) == 2) {
-+    if (regime_el(mmu_idx) == 2) {
-         return env->pmsav8.hprlar;
-     } else {
-         return env->pmsav8.rlar[secure];
-@@ -2784,7 +2784,7 @@ bool pmsav8_mpu_lookup(CPUARMState *env, uint32_t address,
-     uint32_t addr_page_limit = addr_page_base + (TARGET_PAGE_SIZE - 1);
-     int region_counter;
- 
--    if (regime_el(env, mmu_idx) == 2) {
-+    if (regime_el(mmu_idx) == 2) {
-         region_counter = cpu->pmsav8r_hdregion;
-     } else {
-         region_counter = cpu->pmsav7_dregion;
-@@ -2910,7 +2910,7 @@ bool pmsav8_mpu_lookup(CPUARMState *env, uint32_t address,
-             xn = 1;
+     gen_set_condexec(s);
+@@ -6791,6 +6842,8 @@ static void arm_tr_tb_stop(DisasContextBase *dcbase, CPUState *cpu)
+             gen_goto_tb(dc, 1, curr_insn_len(dc));
          }
+     }
++
++    emit_delayed_exceptions(dc);
+ }
  
--        if (regime_el(env, mmu_idx) == 2) {
-+        if (regime_el(mmu_idx) == 2) {
-             result->f.prot = simple_ap_to_rw_prot_is_user(ap,
-                                             mmu_idx != ARMMMUIdx_E2);
-         } else {
-@@ -2919,7 +2919,7 @@ bool pmsav8_mpu_lookup(CPUARMState *env, uint32_t address,
- 
-         if (!arm_feature(env, ARM_FEATURE_M)) {
-             uint8_t attrindx = extract32(matched_rlar, 1, 3);
--            uint64_t mair = env->cp15.mair_el[regime_el(env, mmu_idx)];
-+            uint64_t mair = env->cp15.mair_el[regime_el(mmu_idx)];
-             uint8_t sh = extract32(matched_rlar, 3, 2);
- 
-             if (regime_sctlr(env, mmu_idx) & SCTLR_WXN &&
-@@ -2927,7 +2927,7 @@ bool pmsav8_mpu_lookup(CPUARMState *env, uint32_t address,
-                 xn = 0x1;
-             }
- 
--            if ((regime_el(env, mmu_idx) == 1) &&
-+            if ((regime_el(mmu_idx) == 1) &&
-                 regime_sctlr(env, mmu_idx) & SCTLR_UWXN && ap == 0x1) {
-                 pxn = 0x1;
-             }
-@@ -3412,7 +3412,7 @@ static bool get_phys_addr_disabled(CPUARMState *env,
-         break;
- 
-     default:
--        r_el = regime_el(env, mmu_idx);
-+        r_el = regime_el(mmu_idx);
-         if (arm_el_is_aa64(env, r_el)) {
-             int pamax = arm_pamax(env_archcpu(env));
-             uint64_t tcr = env->cp15.tcr_el[r_el];
-@@ -3664,7 +3664,7 @@ static bool get_phys_addr_nogpc(CPUARMState *env, S1Translate *ptw,
-      */
-     if (address < 0x02000000 && mmu_idx != ARMMMUIdx_Stage2
-         && !arm_feature(env, ARM_FEATURE_V8)) {
--        if (regime_el(env, mmu_idx) == 3) {
-+        if (regime_el(mmu_idx) == 3) {
-             address += env->cp15.fcseidr_s;
-         } else {
-             address += env->cp15.fcseidr_ns;
-diff --git a/target/arm/tcg/mte_helper.c b/target/arm/tcg/mte_helper.c
-index 302e899287..99172c70d7 100644
---- a/target/arm/tcg/mte_helper.c
-+++ b/target/arm/tcg/mte_helper.c
-@@ -604,7 +604,7 @@ void mte_check_fail(CPUARMState *env, uint32_t desc,
-     int el, reg_el, tcf;
-     uint64_t sctlr;
- 
--    reg_el = regime_el(env, arm_mmu_idx);
-+    reg_el = regime_el(arm_mmu_idx);
-     sctlr = env->cp15.sctlr_el[reg_el];
- 
-     switch (arm_mmu_idx) {
+ static const TranslatorOps arm_translator_ops = {
 -- 
 2.43.0
 

@@ -4,79 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8F34CCA471
-	for <qemu-arm@archiver.kernel.org>; Fri,  3 Oct 2025 17:43:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA228CCA471
+	for <qemu-arm@archiver.kernel.org>; Fri,  3 Oct 2025 17:44:05 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v4jL2-0006ba-Hc; Fri, 03 Oct 2025 13:13:01 -0400
+	id 1v4jH1-0001Zk-Fe; Fri, 03 Oct 2025 13:08:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1v4jKI-00053w-Nl
- for qemu-arm@nongnu.org; Fri, 03 Oct 2025 13:12:17 -0400
-Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433])
+ id 1v4jGw-0001Wc-9O
+ for qemu-arm@nongnu.org; Fri, 03 Oct 2025 13:08:47 -0400
+Received: from mail-pg1-x533.google.com ([2607:f8b0:4864:20::533])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1v4jJs-0007hJ-F7
- for qemu-arm@nongnu.org; Fri, 03 Oct 2025 13:12:13 -0400
-Received: by mail-pf1-x433.google.com with SMTP id
- d2e1a72fcca58-7811a02316bso1884962b3a.3
- for <qemu-arm@nongnu.org>; Fri, 03 Oct 2025 10:11:45 -0700 (PDT)
+ id 1v4jGT-0006Fb-8z
+ for qemu-arm@nongnu.org; Fri, 03 Oct 2025 13:08:45 -0400
+Received: by mail-pg1-x533.google.com with SMTP id
+ 41be03b00d2f7-b593def09e3so1866677a12.2
+ for <qemu-arm@nongnu.org>; Fri, 03 Oct 2025 10:08:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1759511502; x=1760116302; darn=nongnu.org;
+ d=linaro.org; s=google; t=1759511291; x=1760116091; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=UArNSBfDRY0R4yQf7I4KwaZGkKosB9HEkNsmXAhE3vY=;
- b=nvN54+IRbRSuI/Sl/wlHdJF7TAOqWakkQlHGhdS+ecCLlOazY9DOljovnWFuaeUwFy
- y8PvGtlrjFQEmnpZKJ9sEAVLM+8qYpZK+sxSWQW4mDHhcKQWd69hfnYowwTMTw40oXrj
- rEY0Jz9AW/KUsCSARz4ScWn9ZgZ7SBB/z9W9DhJii2ZFCuqa9JvfFLShbG+4zDOOTJXH
- 0+ljoUSViGB3o3nwHFf6MJh6b31nNxqQ8nNTXmOthpTYyiCRKnkRr+Wg9FIsz++QTPQq
- i57c8tYGKo4tW691Yb6gQnlAbdmD2LN9/oqRz8BLKPJYVu7A0CdY5IZ6ahaLsirL1LkR
- qW2w==
+ bh=VqJ39C2YIa9w+PuGzpKdBwZww4qTnjylq+zTMQPOtFI=;
+ b=mD+ZOnaRVDo40J6Bf6yxglz1tAWeP6W+DHzD7FOwvuEMfkxjHG3TkbcDbMuyAHtlIO
+ j0vx4ZN7kKuGVQWWsC6z/s8MbhtJOYjL0GcpvfWrWe+5P4sW9HrVLaCP7H5Sq1UYInHN
+ MZoHK5uIr/7GG2oIycqgDTeDg3nbRqHI5lImr5Lou+7sqp6lkV9Fs5T2IJhBFgvWcFI8
+ XoHIY6zX2Ast65u+0itiXmog4Dtl0yUaflCZ36j5T35vvv5Rn+Y14aWxo/10okojaMVr
+ DaVoTd+iejCrma5bjzauTaoO0uLx6FwJxq1ZHbb+AfmW4DNU0fBYeO8MeQyZmnqK0OjL
+ u8MA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759511502; x=1760116302;
+ d=1e100.net; s=20230601; t=1759511291; x=1760116091;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=UArNSBfDRY0R4yQf7I4KwaZGkKosB9HEkNsmXAhE3vY=;
- b=kRJxvDPxsJkat+ee43ob9A5aEUcjUcbBjpDBcP4Fui4uw/B5kM8yeqO7l1ksvUIbVE
- rhBSHI8VKlwSaN725WyvIUt/ULekeSw9GdhniwW2WvsVTQhdTTwnjz3dpGcRKJlHGe3d
- 6I5/EY07FpTS9+nhiZOBSgyj0stUqc42EYWRH3iVje0yYb9L1lZR7bmmmefqAmtNMYL/
- Vos9allqTVch/q2Anr4dWu/0Io7oOWo0fDVRNAI2N2YQ+DXbXyMykyM4/vMMK4HU0wC+
- M6htBNLnBlAt4XwZSRzNoD43BBMvLueFPUpmhHYppiiOBME5dxhQ6r5YiMCq8kjm0+oL
- 0y/w==
-X-Gm-Message-State: AOJu0YxfwGkb1elOXux6c5ghTVSjn7AHDoNjoEhSAw/+jMR/HqvHWg3b
- WmhVYHQ9K5S0AFxkv9mNZeX7GcW6SSSkXFNButVoB+AysVhJiqJ36V5eTLwu+UIzdoM=
-X-Gm-Gg: ASbGncu5NwW5GT1rIsJZijbhqSp7mnDHb3XHfLITBkbOIGf0pJeeCSZriO9zLPvfZjZ
- 3IXf7U0VGRXbGCmN0EZHCh1lSBgSurR28KGaQxBOn3XTtUWCGXXKHoEHw7Z1KTrKu9ZseUve5Hd
- ytfgiCyRWY3GgCsFIS+g5LVJY4Tq0qu6Id48fFz/mJrqCz7TXf5SoppnHB3wM+4+RdAMThzdE2w
- 2B7sEOHgQYqvd1/YxtUfTkJ7s/sPo3E3O3DaqoETK6UlkymSTdyBxJtpl3CzSm5nMJUA2aLIQft
- JTGDRGr2Y5mov6F1rW2SEgC8KPflXD2w0Z9Z4i6WXZgialEkU2iWfu01aRRfwBS6AsL45RKOVPp
- SECUUiENsU4RQt+ekT08pLfe8ntAJ94qFFS6o6YlTV3guz77FHM5nZHo6SQLZHFvQ7QI=
-X-Google-Smtp-Source: AGHT+IFmUdzVlJvyzLPmXSzo2O0GXxtaEBghmUqeIYfw3vpGhpYkJRerYy++NRHyEpXYY0nO3BQxjQ==
-X-Received: by 2002:a05:6a00:2e85:b0:772:4319:e7ed with SMTP id
- d2e1a72fcca58-78c98e072camr4814502b3a.29.1759511502171; 
- Fri, 03 Oct 2025 10:11:42 -0700 (PDT)
+ bh=VqJ39C2YIa9w+PuGzpKdBwZww4qTnjylq+zTMQPOtFI=;
+ b=JrYeSIQyRpzYciHcPylAFG8OaxDdwsp+wHRK8ubbbflq7cFkXbgoWOx19n2Y2kxcNI
+ k1owOBiLKXK9E+AqTAuVhTysZfS+tQaHgS1eRkILUo3WlDy6Vl8Y9eAytp1xIbqdjL0B
+ QpBUjYj7Yf33Em8xOohZiCo9DXhdB3PAwm5MarXB7noOcgBVQTGOLh9zFAVnnpjxy47W
+ 5BG0RIukYCUHtyQ5Neydf9Q9udFoEm2ZUdVKw2/9+cwSx0MBat9mgbUn5OnSynIMJstf
+ PLLDk6RAs85zDu/DL5wioTfPX5cnSk89Th+e1mT9G14ddMaeolEFyO2uuCkPtapsJ00U
+ YC7g==
+X-Gm-Message-State: AOJu0YwP8tBL2oKruOxKbA0DGlt1J1o19Hu8u70S1P/OO6T7fN7e2qq9
+ TvOsBhIRZq74L4Wi1rZefzFPQemu+MiO7f3KC8KbA/Bs24jKGNWbBCBhLnvNBKnd7G49zpEsGKw
+ Egtq5osM=
+X-Gm-Gg: ASbGncuL/ggUMTcL0+nsVJUD+L9fcLNeDMIpddDUvVhoxiAV2c1QoJROmu3JYAIywbw
+ bNM8JqPseSRd4NOueq22hb4IjFCK3eWXGCLKR5KHGmswu5rTI50x1LuUFUaJI2oUgNt5DLAfbKj
+ 5uyT9mr1n3ZCNn+jmTEcEJVEScKVUESrDuDzn3BKWTSYeSZA9oQjSTU+c1s/rSzkuKltCYkSqzO
+ n9+J+wggW0Glw9I6HCzL9cA5NeWE2LIxxCUEdEzWY3G56jvDitwa+QsUtIyOdAtSBRDZyLO2YYJ
+ jcX4vsLyp48B5eGGl8NBfKLKtat/sAsgPsqxO4WN2C83ULTPwN0iT9FqIdi8ZGCGTHZgdNvZAXn
+ au7vExuXgZJYseeYdyRxv2MGXBqO+NbGSW3m87N8FW0aR4YYErSDa6zzRcx0uVuYiD8E=
+X-Google-Smtp-Source: AGHT+IFVfUSzMiVBe13/eexFXkgvSkcrFIzucZQXU7XrqEeBTPCHCMxpaxKAc9RYTv8nWzynTl8sGA==
+X-Received: by 2002:a17:903:2c7:b0:269:96ee:17d3 with SMTP id
+ d9443c01a7336-28e9a6fd7c4mr40583255ad.51.1759511290906; 
+ Fri, 03 Oct 2025 10:08:10 -0700 (PDT)
 Received: from stoup.. ([71.212.157.132]) by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-78b02053a51sm5418769b3a.46.2025.10.03.10.11.41
+ d9443c01a7336-28e8d110d86sm55327115ad.6.2025.10.03.10.08.10
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 03 Oct 2025 10:11:41 -0700 (PDT)
+ Fri, 03 Oct 2025 10:08:10 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v6 45/73] target/arm: Emit v7m LTPSIZE exception out of line
-Date: Fri,  3 Oct 2025 10:07:32 -0700
-Message-ID: <20251003170800.997167-46-richard.henderson@linaro.org>
+Subject: [PATCH v6 10/73] target/arm: Expand CPUARMState.exception.syndrome to
+ 64 bits
+Date: Fri,  3 Oct 2025 10:06:57 -0700
+Message-ID: <20251003170800.997167-11-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20251003170800.997167-1-richard.henderson@linaro.org>
 References: <20251003170800.997167-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::433;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x433.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::533;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x533.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -99,31 +101,111 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+This will be used for storing the ISS2 portion of the
+ESR_ELx registers in aarch64 state.  Re-order the fsr
+member to eliminate two structure holes.
+
+Drop the comment about "if we implement EL2" since we
+have already done so.
+
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/tcg/translate.c | 7 +++----
- 1 file changed, 3 insertions(+), 4 deletions(-)
+ target/arm/cpu.h     |  7 ++-----
+ target/arm/helper.c  |  2 +-
+ target/arm/machine.c | 32 +++++++++++++++++++++++++++++++-
+ 3 files changed, 34 insertions(+), 7 deletions(-)
 
-diff --git a/target/arm/tcg/translate.c b/target/arm/tcg/translate.c
-index 57bc8ea4c5..3df0bbcb7f 100644
---- a/target/arm/tcg/translate.c
-+++ b/target/arm/tcg/translate.c
-@@ -5598,11 +5598,10 @@ static bool trans_LE(DisasContext *s, arg_LE *a)
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 55c00f484b..eef4ae62ac 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -633,13 +633,10 @@ typedef struct CPUArchState {
+      * entry process.
+      */
+     struct {
+-        uint32_t syndrome; /* AArch64 format syndrome register */
+-        uint32_t fsr; /* AArch32 format fault status register info */
++        uint64_t syndrome; /* AArch64 format syndrome register */
+         uint64_t vaddress; /* virtual addr associated with exception, if any */
++        uint32_t fsr; /* AArch32 format fault status register info */
+         uint32_t target_el; /* EL the exception should be targeted for */
+-        /* If we implement EL2 we will also need to store information
+-         * about the intermediate physical address for stage 2 faults.
+-         */
+     } exception;
  
-     if (!a->tp && dc_isar_feature(aa32_mve, s) && fpu_active) {
-         /* Need to do a runtime check for LTPSIZE != 4 */
--        DisasLabel skipexc = gen_disas_label(s);
-+        TCGLabel *fail = delay_exception(s, EXCP_INVSTATE, syn_uncategorized());
-+
-         tmp = load_cpu_field(v7m.ltpsize);
--        tcg_gen_brcondi_i32(TCG_COND_EQ, tmp, 4, skipexc.label);
--        gen_exception_insn(s, 0, EXCP_INVSTATE, syn_uncategorized());
--        set_disas_label(s, skipexc);
-+        tcg_gen_brcondi_i32(TCG_COND_NE, tmp, 4, fail);
+     /* Information associated with an SError */
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index ae8948d410..ed046c4421 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -9190,7 +9190,7 @@ void arm_cpu_do_interrupt(CPUState *cs)
+                   new_el);
+     if (qemu_loglevel_mask(CPU_LOG_INT)
+         && !excp_is_internal(cs->exception_index)) {
+-        qemu_log_mask(CPU_LOG_INT, "...with ESR 0x%x/0x%" PRIx32 "\n",
++        qemu_log_mask(CPU_LOG_INT, "...with ESR 0x%x/0x%" PRIx64 "\n",
+                       syn_get_ec(env->exception.syndrome),
+                       env->exception.syndrome);
      }
+diff --git a/target/arm/machine.c b/target/arm/machine.c
+index 6666a0c50c..ce20b46f50 100644
+--- a/target/arm/machine.c
++++ b/target/arm/machine.c
+@@ -848,6 +848,23 @@ static const VMStateInfo vmstate_powered_off = {
+     .put = put_power,
+ };
  
-     if (a->f) {
++static bool syndrome64_needed(void *opaque)
++{
++    ARMCPU *cpu = opaque;
++    return cpu->env.exception.syndrome > UINT32_MAX;
++}
++
++static const VMStateDescription vmstate_syndrome64 = {
++    .name = "cpu/syndrome64",
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .needed = syndrome64_needed,
++    .fields = (const VMStateField[]) {
++        VMSTATE_UINT64(env.exception.syndrome, ARMCPU),
++        VMSTATE_END_OF_LIST()
++    },
++};
++
+ static int cpu_pre_save(void *opaque)
+ {
+     ARMCPU *cpu = opaque;
+@@ -1065,7 +1082,19 @@ const VMStateDescription vmstate_arm_cpu = {
+         VMSTATE_UINT64(env.exclusive_val, ARMCPU),
+         VMSTATE_UINT64(env.exclusive_high, ARMCPU),
+         VMSTATE_UNUSED(sizeof(uint64_t)),
+-        VMSTATE_UINT32(env.exception.syndrome, ARMCPU),
++        /*
++         * If any bits are set in the upper 32 bits of syndrome,
++         * then the cpu/syndrome64 subsection will override this
++         * with the full 64 bit state.
++         */
++        {
++            .name = "env.exception.syndrome",
++            .version_id = 0,
++            .size = sizeof(uint32_t),
++            .info = &vmstate_info_uint32,
++            .flags = VMS_SINGLE,
++            .offset = offsetoflow32(ARMCPU, env.exception.syndrome),
++        },
+         VMSTATE_UINT32(env.exception.fsr, ARMCPU),
+         VMSTATE_UINT64(env.exception.vaddress, ARMCPU),
+         VMSTATE_TIMER_PTR(gt_timer[GTIMER_PHYS], ARMCPU),
+@@ -1098,6 +1127,7 @@ const VMStateDescription vmstate_arm_cpu = {
+         &vmstate_serror,
+         &vmstate_irq_line_state,
+         &vmstate_wfxt_timer,
++        &vmstate_syndrome64,
+         NULL
+     }
+ };
 -- 
 2.43.0
 

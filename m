@@ -4,81 +4,116 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A493CCA471
-	for <qemu-arm@archiver.kernel.org>; Fri,  3 Oct 2025 09:30:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B87BCAC5B0
+	for <qemu-arm@archiver.kernel.org>; Fri,  3 Oct 2025 10:22:57 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v4c6W-0004ZS-E8; Fri, 03 Oct 2025 05:29:32 -0400
+	id 1v4cvr-0003mh-Ti; Fri, 03 Oct 2025 06:22:36 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <chigot@adacore.com>)
- id 1v4c6U-0004Z7-6v
- for qemu-arm@nongnu.org; Fri, 03 Oct 2025 05:29:30 -0400
-Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <chigot@adacore.com>)
- id 1v4c6K-0002cl-Hn
- for qemu-arm@nongnu.org; Fri, 03 Oct 2025 05:29:28 -0400
-Received: by mail-ej1-x634.google.com with SMTP id
- a640c23a62f3a-b3c2db014easo79498166b.0
- for <qemu-arm@nongnu.org>; Fri, 03 Oct 2025 02:29:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=adacore.com; s=google; t=1759483748; x=1760088548; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=Vy/tvwA0KhBlVA0wpXWM9Aqirz5rR3/wPq2Zlnq5zcY=;
- b=gPdb0kPzpfZ7jFilZlXoz9jJHDlhGudmDuNzoatz/cUwwCq3cd6R7nNu8XkEKInkkE
- MAHj2zDYO76jpN3IenIEgRdvikU6VIuvd+nsnCA7Yjyg6YLfxKmMnAn5kU7xN8diiUTN
- OuL9k8R9lrGoeVID211vTM/idEnZju+DooWqJjfotyj18v7s48VSNwK+96nOBEi61zMT
- 4n3fcRZKJ34U/EGQwv6oQ5fS7VQ7J+vk+hizD5rPxRLNqyMTmNDhPWjKyAB4c/FP32ee
- koqb7bRr9A/efWvOteS81HBSTcw8/73D6qkTlSi+OpP4dwgP6E2e1zbIWrLn3RsjpPn4
- iIsw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759483748; x=1760088548;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=Vy/tvwA0KhBlVA0wpXWM9Aqirz5rR3/wPq2Zlnq5zcY=;
- b=SjSavi9MyP+sm3jpRL6GoK6+dzF0t4utW+YjP+pohoAC8E6Py18EoYaNFUtpveNhfG
- YX2nMT+UTj9BLdLBx3+/cYL52vJCsHJTY+CpuRHPgFWuHR/YVVfbedvzzXvInnmj997w
- cdHtfq6+VPzd1zGGPQiLoFPD+fCuv98LRcoNjwXLz7/Vnekc/pJ1JD5uchEIZYiTigkN
- VgvFDyvnbxbABYqbpLZ8WIwRaR/aI8+7bhsshC4H1LiEXZSW30BgnHGqOSOIKzlawkkC
- Y10FqUh3f656IS6aOb4Bq6wI/JRSBevU+b1enqHPSuvVmdZvJDuDPJUBU2bCVKCCOnzb
- U32A==
-X-Gm-Message-State: AOJu0YwaqEXCxA+ygdbgw/mM1b+JBCuSBisnSfgF36Pg3A9y8U3KrHL2
- G4P2qCGV9vqQ+YmKXiYheUfKFJMeiaaGopwqsOQT3frEQ2s/3sj7VCxVO+pinYawCzPPM25ZxWl
- chmlKGi/rLhYYrXlI78A4OtoJiEvruadQlzX4v7U9
-X-Gm-Gg: ASbGncv7AGN6Yboosz1RabXSQjJSL9JJrPaZ0geKY+w3TEaQixojvtDQBP1h8Y8BJQB
- 5LqHXtoWx5cr2xj/mVtwgqDbOyNhK4eCASmzkRaziOvmuzhnZ+Hh3cphHOAPTGtQ/p6l+ZdTSWh
- CJx1lDeMuM7vYwamNLaLeSgI3lMm1JLp7bLUKVBLqXg2n5Myb5zBpyxICLemertAAa3QQ4fUEUW
- 8+l0HK/6rymSXoq9WGWCbrculuRPX0Jc/ZMC0t+0E0nxm7P3AZExcSekLtqam5P
-X-Google-Smtp-Source: AGHT+IE079VKQEiHKEphnuoENyhXs7yaS3pF5UGMtptswuIGF8oeO1SFA0wXLsnNpP6NX1UD3/xHIE1qTfxe8PeXFtk=
-X-Received: by 2002:a17:907:9449:b0:b48:44bc:44e7 with SMTP id
- a640c23a62f3a-b49c2d56beamr308375266b.48.1759483747718; Fri, 03 Oct 2025
- 02:29:07 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1v4cvq-0003lo-5J; Fri, 03 Oct 2025 06:22:34 -0400
+Received: from smtpout1.mo529.mail-out.ovh.net ([178.32.125.2])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1v4cvc-0000n0-T7; Fri, 03 Oct 2025 06:22:32 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.110.54.52])
+ by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 4cdPmY026sz5vpq;
+ Fri,  3 Oct 2025 10:19:56 +0000 (UTC)
+Received: from kaod.org (37.59.142.95) by DAG8EX2.mxp5.local (172.16.2.72)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.59; Fri, 3 Oct
+ 2025 12:19:55 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-95G001540a0a35-1206-4079-ad75-a2169826dce5,
+ 349CA5FF44761F4550B17CF5D92D29A3052BAEBA) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <3212be05-6bf8-4fa5-93af-6592cf561f9f@kaod.org>
+Date: Fri, 3 Oct 2025 12:19:54 +0200
 MIME-Version: 1.0
-References: <20251002101648.2455374-1-peter.maydell@linaro.org>
-In-Reply-To: <20251002101648.2455374-1-peter.maydell@linaro.org>
-From: =?UTF-8?Q?Cl=C3=A9ment_Chigot?= <chigot@adacore.com>
-Date: Fri, 3 Oct 2025 11:28:55 +0200
-X-Gm-Features: AS18NWASPQh4vjBbQoCZ2MASxpZnRIGX_OSQGIJAClg-oBRXlPUQ92vUiVB6EXk
-Message-ID: <CAJ307EhvkG4PB4wUJieeJRNzBzwdB=4y04CiiGo-=7Q-nz=KfA@mail.gmail.com>
-Subject: Re: [RFC PATCH 0/2] target/arm: Allow aarch64=off for TCG
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::634;
- envelope-from=chigot@adacore.com; helo=mail-ej1-x634.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [SPAM] [PATCH v1 0/5] Update to test ASPEED SDK v09.08
+To: Jamin Lin <jamin_lin@aspeedtech.com>, Peter Maydell
+ <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
+ <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, Joel
+ Stanley <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+CC: <troy_lee@aspeedtech.com>
+References: <20251003072107.3530642-1-jamin_lin@aspeedtech.com>
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Content-Language: en-US, fr
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <20251003072107.3530642-1-jamin_lin@aspeedtech.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [37.59.142.95]
+X-ClientProxiedBy: DAG4EX2.mxp5.local (172.16.2.32) To DAG8EX2.mxp5.local
+ (172.16.2.72)
+X-Ovh-Tracer-GUID: d7fef9b9-2dbe-4f34-b8df-7f589535f723
+X-Ovh-Tracer-Id: 11766779927492922159
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: dmFkZTECImF3eG2S7NwCSEQ45DIPK7LI2buKw3l/NFh2eciXE6n19aQiK2DPPXN3uj02y93XNZuakk1aOyVnG6kixPax41MNwQnHcJe7nUIDrInDEaF176KXWuMoXQyph+yIYPjDHnzh0k8pwmMavkG2APUkL5LoveenDhv3cfukci1nAeN2YPmc7X+d26OxVD5WR2H4VWFybTn54YwWWwda9CNQnGJpSaXYWSzXvVgJBr3DTl8c59JTBkH+egzIP/+jUgMfwKnz1plHXpQHW2Wc41ZLNvi8/Q9lIVQM4qdtCd+l/p60W8Fubzt2ZyUNd3wx/zI2RmqMkC4Xen3FT4cMjGBBTOEmel3Kcs+yy0bGxoUkC5Va5PA5IP+sng0NwwuSvBDoi5jWjvsY2KOratgECHXP6bZnd/VP24Ej5D8CJHo+22z3ekT9eo6HLaCiz3LcTTh9yRwjtk4gjkKk3mk+rAN+0TIz0H9PaXyjqaESTZCo5BWQPi3iYhFU9/DUDGDHFNA34vArs3B2kj3kGWvj6Ti25k5gvLWUGBUm5NqnriAGIoziXvvS/2FC7OwnyTDOU0Xt5TTNZOOm1LYFHfOxvPEq/pwLGzSEo9kw2Elrco1yvoO0NUjk7pgMi1YVZ1500bXgWmZYR/a4/+L/wg9Vf9ZpTC3ZLYZ2umLLCGWRAjdj9A
+DKIM-Signature: a=rsa-sha256; bh=SUr3yaIKfhyti8sxoxmiKX6fvZJEmWA0YQIjRPxnlws=; 
+ c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
+ t=1759486798; v=1;
+ b=ASJtGCCxkhJeQC7wlRqIKUkku6CAxZ292Zb63V74Pp+vtqQPY1zlmDXTlUinqUPwGajk6oKD
+ f4BIXMGH2YzBFb+lROCoVlbcEt0+Gcj1EHiQiL57OLx4+J0hAQi6QMJxvo4vT99MYpCzmDPBiqH
+ t3RVcubxSb+4qztzkidkmpT7tXodAxWLtktIlURd7qnErSNTRiD8HqavW0oYAwvnKr95zQtFQWN
+ Aa8PStlXNXnpk5Kb0UoUgT5896Fo4sFwfzW59LJJAt11R7Y9+WxCVmNeL1lQlDoq97GAI6cTRA4
+ iPlWK+iT+2Q8AEX4VumGzE+BVQt7l4e+404XJG6fQKqlA==
+Received-SPF: pass client-ip=178.32.125.2; envelope-from=clg@kaod.org;
+ helo=smtpout1.mo529.mail-out.ovh.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -94,68 +129,41 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, Oct 2, 2025 at 12:16=E2=80=AFPM Peter Maydell <peter.maydell@linaro=
-.org> wrote:
->
-> This patchset relaxes our current constraint that we only permit
-> -cpu foo,aarch64=3Doff on KVM CPUs, so that you can also use this
-> to run a TCG CPU with aarch64 disabled. This is useful because
-> currently if you want a 32-bit TCG CPU you're limited to either
-> 'max' in qemu-system-arm or else the old v7-only CPUs like a15.
->
-> I had a look at this last year, but never actually got the changes
-> into a completed state before I moved onto other things. Cl=C3=A9ment
-> asked about this the other day, so I figured I'd send out the
-> patches I had.
+On 10/3/25 09:21, Jamin Lin wrote:
+> v1
+>   1. Update to test ASPEED SDK v09.08 for AST2500, AST2600 and AST2700 A1
+>   2. Update to test ASPEED SDK v03.03 for AST1030
+> 
+> Dependencies
+> 
+> Based on https://github.com/legoater/qemu at the aspeed-next branch.
+>   
+> Jamin Lin (5):
+>    tests/functional/arm/test_aspeed_ast1030: Update test ASPEED SDK
+>      v03.03
+>    tests/functional/arm/test_aspeed_ast2500: Update test ASPEED SDK
+>      v09.08
+>    tests/functional/arm/test_aspeed_ast2600: Update test ASPEED SDK
+>      v09.08
+>    tests/functional/aarch64/test_aspeed_ast2700: Update test ASPEED SDK
+>      v09.08 for A1
+>    tests/functional/aarch64/test_aspeed_ast2700: Move eth2 IP check into
+>      common function
+> 
+>   .../functional/aarch64/test_aspeed_ast2700.py | 24 ++++++++-----------
+>   tests/functional/arm/test_aspeed_ast1030.py   | 17 ++++++-------
+>   tests/functional/arm/test_aspeed_ast2500.py   |  8 +++----
+>   tests/functional/arm/test_aspeed_ast2600.py   | 10 ++++----
+>   4 files changed, 28 insertions(+), 31 deletions(-)
+> 
 
-Thanks for the patches.
-I've been able to test a couple of our internal testsuites over ARM
-Linux (based on Yocto images) using both `cortex-a53,aarch64=3Doff` and
-`max,aarch64=3Doff` on the virt machine. Everything went right including
-the migration features we are using (basically, "migrate" to file and
-later -incoming from that file). Hence,
+For all series
 
-Tested-by: Cl=C3=A9ment Chigot <chigot@adacore.com>
-
-I'll let more relevant people do the review though.
-
-Side note, IMO it would make sense to add another test under
-function/arm/virt asserting this feature.
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
 
 Thanks,
-Cl=C3=A9ment
 
-> The series is RFC because:
->  * I haven't tested it enough; in particular I don't think
->    I checked that the "clear the AArch64 ID register values"
->    patch doesn't break KVM aarch64=3Doff (including not breaking
->    migration). If it does we might have to make the "clear regs"
->    only be done for TCG, but that seems a bit hacky...
->  * I haven't checked that we forbid weird property combos like
->    '-cpu max,aarch64=3Doff,sve=3Don'
->
-> But I did do the work of looking through the codebase at where
-> we test ARM_FEATURE_AARCH64 to confirm that it really is the
-> right thing to test and we weren't using it any places where we
-> should instead have been checking ARM_FEATURE_V8 or something
-> else instead.
->
-> thanks
-> -- PMM
->
-> Peter Maydell (2):
->   target/arm: Clear AArch64 ID regs from ARMISARegisters if AArch64
->     disabled
->   target/arm: Allow 'aarch64=3Doff' to be set for TCG CPUs
->
->  docs/system/arm/cpu-features.rst |  7 ++--
->  target/arm/cpu-features.h        |  5 +++
->  target/arm/cpu.h                 |  3 +-
->  target/arm/cpu.c                 | 61 +++++++++++++++++++++++++++++---
->  tests/qtest/arm-cpu-features.c   |  8 ++---
->  5 files changed, 70 insertions(+), 14 deletions(-)
->
-> --
-> 2.43.0
->
+C.
+
+
 

@@ -4,85 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DB01CCA471
-	for <qemu-arm@archiver.kernel.org>; Fri,  3 Oct 2025 17:27:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F7DFCAC5B0
+	for <qemu-arm@archiver.kernel.org>; Fri,  3 Oct 2025 17:28:20 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v4jOO-0002Lq-NY; Fri, 03 Oct 2025 13:16:31 -0400
+	id 1v4jQ0-0004IA-Ub; Fri, 03 Oct 2025 13:18:10 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1v4jLL-0006zD-T2
- for qemu-arm@nongnu.org; Fri, 03 Oct 2025 13:13:20 -0400
-Received: from mail-pf1-x42e.google.com ([2607:f8b0:4864:20::42e])
+ id 1v4jLp-0007t5-7r
+ for qemu-arm@nongnu.org; Fri, 03 Oct 2025 13:13:49 -0400
+Received: from mail-pf1-x431.google.com ([2607:f8b0:4864:20::431])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1v4jK8-0007mZ-CG
- for qemu-arm@nongnu.org; Fri, 03 Oct 2025 13:13:19 -0400
-Received: by mail-pf1-x42e.google.com with SMTP id
- d2e1a72fcca58-77f1f29a551so3463832b3a.3
- for <qemu-arm@nongnu.org>; Fri, 03 Oct 2025 10:11:54 -0700 (PDT)
+ id 1v4jKF-0007uj-EL
+ for qemu-arm@nongnu.org; Fri, 03 Oct 2025 13:13:48 -0400
+Received: by mail-pf1-x431.google.com with SMTP id
+ d2e1a72fcca58-7833765433cso3306383b3a.0
+ for <qemu-arm@nongnu.org>; Fri, 03 Oct 2025 10:12:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1759511511; x=1760116311; darn=nongnu.org;
+ d=linaro.org; s=google; t=1759511524; x=1760116324; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=qNWWc9PYZg2oYaXEvoVmQ8tq5QwlzbwlgJ3smVZg6WM=;
- b=rhjVeji7SXjmb/peue0Rz0K7vIxqkNnLzO0VxhXb3Mil90Pl1e0us13tW/XnA2xR63
- CPZhv/vXWBKIMdtyM7JVVie+YdPVC8ba8ZL8gqiRMM/aa/grJ0hHC8aOrpFErb0PgxY9
- qRoFTw+LkHCC03hAjlSKWktTHE6WmUuXrUS5NbExEAoUH28WSpz30HTnUcmlGV1nbXnk
- O31pkKubfpJog/R0zRuouu3qrzdHJIaTY2lGqPXgnMMRHWM3aBxHNMSx8PNK7UoyceYp
- +N7uPbULUm3V6JiygfGU0RNSMjI89yzuwqEV9Tzal9O6IdF11dCzLxEQiDWhjKM2YYiH
- vvjQ==
+ bh=jUo2eLEQH3tvadRbtyXeqZmXKqgrSzHJmdQtpKn9Hto=;
+ b=JHK2p7tKJAFNh9fpzutI8AGUdj0SSJZQa2NnAdIxKl2+yhDIyIHdkcfc+S4M2lJ7t0
+ tLxdwpi/cqtt6/dywg0IXl4VbcRoLe6B/ccBEuORvV7odZTISS9eoVR8ugwiNYKpUjK8
+ 2MTNvrBpf+NEY3QpncH6tYGK7V4wupOttEuTTNs1lWNsrn+jxLBStpu1DEshjVC/riSp
+ mkGH1tOwpGK5Qxl1OU8/p3zz/xJLoGWLGmzUFlTRL7HznrD52Xipju+Z7LhUdRvCgLzD
+ CmyujaupDQdO6c+OYfRPTPEtqewlxpByXmuWNF/Pxi/OyR6lz5xoYoC1GddNYpxgj4dF
+ 19Og==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759511511; x=1760116311;
+ d=1e100.net; s=20230601; t=1759511524; x=1760116324;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=qNWWc9PYZg2oYaXEvoVmQ8tq5QwlzbwlgJ3smVZg6WM=;
- b=tRcyrxsG03ImOPOjiwdfUBd5ZLuduUuhfQ1drxoHAbQV+Xe1o9biE46MzIErZZ/b8q
- Q7mr6r2i/hcQaeX/7Koyri3+Sox+8QeebzXfFg3rharE/KxUqMFXAHEEyESd9+HMrDJp
- 9nOpYzj/JbYMiLx4AqdRcIF+46SQ2mmQDflF3xsfcMjb5i/WoMEKcr48HZ6pEQk83zCt
- SGtZ5B0Kcc57jtBDSK96JcZKKEiU0tirZc7pwnE5BoVj2M/5yjlqFIWrVM1Gt7D3tKD0
- Bo6G2acDywz/N26DXQEoC6BseMPAtofmsiTe8vnnJxo8ykNcmkAsygaXVaFmkzM1iHcP
- 9UxQ==
-X-Gm-Message-State: AOJu0Yx3cbYoEQbFH5fMRQwFYjcKRwipmVx7xS7ecEDIw3W9ozNDK7fj
- PmMI7aIhe5hRoWnnDGdVf2sQxq+7A1ZJcwI5jKSsYaWyd/uqTBf7UUh0xb7HVxzw4CA=
-X-Gm-Gg: ASbGncsCEqtrj0UP+5JmhFcwHL4uv3ITQIc8ltmvddz/nOdIu2c3hp7R+FOSMry37Gp
- KvAMLtAS5YDKjNHzHFsbGMSFuFKlKelNwX8KVeiJb6xpMQfBIJkHQB++EPBwdJIO8sA6DAmWo/W
- 1tVb8TI5K+gPMroip6adaEc/LmgITTIFkA+0b3wXFPKGVUOBWK4q4sDiq+XxLEZ6ZHEvKqNCgS2
- T3jqLK6B20suuLM0M2RXOFZIzaBfqFYXYNQx39ZnKHXAFeTX9NeDPJ3+ZjHYPC03e6KUQjc/XjD
- bnRq3PrXJL+9eW1G3k9is0T4JWfOKtxbtbhSwdL14zxKXaPM1vea72jLCcIxn56oGoAuhYUfbJP
- nkyijHrfYYreZQWeTcIk4n3ydRVUS8+aNTgpeM9L6gDwOdqV/1jnelyeY
-X-Google-Smtp-Source: AGHT+IEeLuzQl52CTHjDdoBx4d9QRhOHbNmN6OlqWkVR2r99uIol0oPs23E6puV5KWO22GWJe38pOg==
-X-Received: by 2002:a05:6a20:7d86:b0:2d4:5667:8da1 with SMTP id
- adf61e73a8af0-32b61f7f659mr5094543637.25.1759511510958; 
- Fri, 03 Oct 2025 10:11:50 -0700 (PDT)
+ bh=jUo2eLEQH3tvadRbtyXeqZmXKqgrSzHJmdQtpKn9Hto=;
+ b=oTDRm7x3CC9H3sB+9DFbIujOyfGu7wV78sPD+K/PQKfPfHBbUzdceHnkzJ77//o5/E
+ Ku1Sws986emTTRDHTcnNKuueCgZ4iWfH1udMELIz5KCU32njZImmRgj3fm4k286zW17a
+ CB4Et95Ow2s45I+8LI65/eXcbtf9N80xcvYJd7IstlGCK11yZ8AO2ZtGkn2ag/PXV6ti
+ u8Om5UDpRvDLXvTuocZnxReOvGHCZTrEeLtajKEtcK7q2xHBiLRedlKkNWq4OiQ3nm8m
+ 4K8p+9i8Wj3/YRzUOv22nnIAzEEUU90TU4qgA8IwwkwvzCmgJKuAMTHozBHW8r8itjQA
+ 6PjA==
+X-Gm-Message-State: AOJu0Yw8+j6hbgJF0ixfQ2PH1FwsppaJamPkC21ZsxWGZN0b639HjzzR
+ Tn/PivfQtx1nyZ5ExjFp8yjnm3YnyQXFfZqUFQewImYs+4dRXjD14Eg1vvuGm10054w=
+X-Gm-Gg: ASbGncsXWI/TUzlTybBYVFXce8/ZZOql98wynaBxmmBNgIvH13qOKaH/Zqu2FWBq8Sp
+ zT6AS44Y4c4TeP64JKF7aamm00HW6SegBKbqMp3pwy/oxzd+XPqEwSfboqvAJW+VU55j9et8htM
+ xdpY0pW15PB0vmXhC2N8OXw8TUWN6ZBazA1w7+CR+lU9hdvEzz21nvG0gvI7wVsKzakvo6As3LG
+ iHZMBqwv8fWPioUqajAJpYvqtcioviQh34m+VumlnfX0nVQGltx4YUwd6LaW4wPayjvoOSB0hEz
+ q+pzmqG8ILU0iFLH5Y9ocDaqtp1AHBPA/OA83v2mJsZ00cVo+JNj+bBvKfT91ttuG8lmOpQOhHb
+ qsXkPbIhXH7VLw7X7qpgdCH0cbOGBs5MG7vrKOdkOuyL9fd5x4oJAx6C3
+X-Google-Smtp-Source: AGHT+IHbH4XO0Yea9T8dtr6uh5NXxNJef2q4j7J/42XXfaicsF2bWwMMI9CE/FH6o4m5d01uKf7qug==
+X-Received: by 2002:a05:6a00:b8c:b0:77f:4b9b:8c3e with SMTP id
+ d2e1a72fcca58-78c98dfda99mr4570476b3a.22.1759511523862; 
+ Fri, 03 Oct 2025 10:12:03 -0700 (PDT)
 Received: from stoup.. ([71.212.157.132]) by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-78b02053a51sm5418769b3a.46.2025.10.03.10.11.50
+ d2e1a72fcca58-78b02053a51sm5418769b3a.46.2025.10.03.10.12.03
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 03 Oct 2025 10:11:50 -0700 (PDT)
+ Fri, 03 Oct 2025 10:12:03 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v6 54/73] target/arm: Implement GCSSS2
-Date: Fri,  3 Oct 2025 10:07:41 -0700
-Message-ID: <20251003170800.997167-55-richard.henderson@linaro.org>
+Subject: [PATCH v6 69/73] linux-user/aarch64: Generate GCS signal records
+Date: Fri,  3 Oct 2025 10:07:56 -0700
+Message-ID: <20251003170800.997167-70-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20251003170800.997167-1-richard.henderson@linaro.org>
 References: <20251003170800.997167-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42e;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=2607:f8b0:4864:20::431;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x431.google.com
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
+ DKIM_SIGNED=0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -98,92 +98,250 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+Here we must push and pop a cap on the GCS stack as
+well as the gcs record on the normal stack.
+
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/cpregs.h            |  1 +
- target/arm/cpregs-gcs.c        |  3 +++
- target/arm/tcg/translate-a64.c | 34 ++++++++++++++++++++++++++++++++++
- 3 files changed, 38 insertions(+)
+ linux-user/aarch64/signal.c | 138 ++++++++++++++++++++++++++++++++++--
+ 1 file changed, 132 insertions(+), 6 deletions(-)
 
-diff --git a/target/arm/cpregs.h b/target/arm/cpregs.h
-index e7e7050880..732c07506d 100644
---- a/target/arm/cpregs.h
-+++ b/target/arm/cpregs.h
-@@ -54,6 +54,7 @@ enum {
-     ARM_CP_GCSPOPX               = 0x000b,
-     ARM_CP_GCSPOPCX              = 0x000c,
-     ARM_CP_GCSSS1                = 0x000d,
-+    ARM_CP_GCSSS2                = 0x000e,
+diff --git a/linux-user/aarch64/signal.c b/linux-user/aarch64/signal.c
+index ef97be3ac7..f7edfa249e 100644
+--- a/linux-user/aarch64/signal.c
++++ b/linux-user/aarch64/signal.c
+@@ -22,6 +22,7 @@
+ #include "signal-common.h"
+ #include "linux-user/trace.h"
+ #include "target/arm/cpu-features.h"
++#include "gcs-internal.h"
  
-     /* Flag: reads produce resetvalue; writes ignored. */
-     ARM_CP_CONST                 = 1 << 4,
-diff --git a/target/arm/cpregs-gcs.c b/target/arm/cpregs-gcs.c
-index eda5c498d7..1ed52a211a 100644
---- a/target/arm/cpregs-gcs.c
-+++ b/target/arm/cpregs-gcs.c
-@@ -132,6 +132,9 @@ static const ARMCPRegInfo gcs_reginfo[] = {
-     { .name = "GCSSS1", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 3, .crn = 7, .crm = 7, .opc2 = 2,
-       .access = PL0_W, .type = ARM_CP_GCSSS1 },
-+    { .name = "GCSSS2", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 3, .crn = 7, .crm = 7, .opc2 = 3,
-+      .access = PL0_R, .type = ARM_CP_GCSSS2 },
-     { .name = "GCSPUSHX", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 0, .crn = 7, .crm = 7, .opc2 = 4,
-       .access = PL1_W, .accessfn = access_gcspushx, .fgt = FGT_NGCSEPP,
-diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-index b0831938ea..0fefb1301c 100644
---- a/target/arm/tcg/translate-a64.c
-+++ b/target/arm/tcg/translate-a64.c
-@@ -2668,6 +2668,35 @@ static void gen_gcsss1(DisasContext *s, int rt)
-     tcg_gen_andi_i64(gcspr, inptr, ~7);
+ struct target_sigcontext {
+     uint64_t fault_address;
+@@ -152,6 +153,16 @@ struct target_zt_context {
+ QEMU_BUILD_BUG_ON(TARGET_ZT_SIG_REG_BYTES != \
+                   sizeof_field(CPUARMState, za_state.zt0));
+ 
++#define TARGET_GCS_MAGIC       0x47435300
++#define GCS_SIGNAL_CAP(X)      ((X) & TARGET_PAGE_MASK)
++
++struct target_gcs_context {
++    struct target_aarch64_ctx head;
++    uint64_t gcspr;
++    uint64_t features_enabled;
++    uint64_t reserved;
++};
++
+ struct target_rt_sigframe {
+     struct target_siginfo info;
+     struct target_ucontext uc;
+@@ -322,6 +333,35 @@ static void target_setup_zt_record(struct target_zt_context *zt,
+     }
  }
  
-+static void gen_gcsss2(DisasContext *s, int rt)
++static bool target_setup_gcs_record(struct target_gcs_context *ctx,
++                                    CPUARMState *env, uint64_t return_addr)
 +{
-+    TCGv_i64 gcspr = cpu_gcspr[s->current_el];
-+    int mmuidx = core_gcs_mem_index(s->mmu_idx);
-+    MemOp mop = finalize_memop(s, MO_64 | MO_ALIGN);
-+    TCGv_i64 outptr = tcg_temp_new_i64();
-+    TCGv_i64 tmp = tcg_temp_new_i64();
-+    TCGLabel *fail_label =
-+        delay_exception(s, EXCP_UDEF, syn_gcs_data_check(GCS_IT_GCSSS2, rt));
++    uint64_t mode = gcs_get_el0_mode(env);
++    uint64_t gcspr = env->cp15.gcspr_el[0];
 +
-+    /* Validate that the new stack has an in-progress cap. */
-+    tcg_gen_qemu_ld_i64(outptr, gcspr, mmuidx, mop);
-+    tcg_gen_andi_i64(tmp, outptr, 7);
-+    tcg_gen_brcondi_i64(TCG_COND_NE, tmp, 5, fail_label);
++    if (mode & PR_SHADOW_STACK_ENABLE) {
++        /* Push a cap for the signal frame. */
++        gcspr -= 8;
++        if (put_user_u64(GCS_SIGNAL_CAP(gcspr), gcspr)) {
++            return false;
++        }
 +
-+    /* Push a valid cap to the old stack. */
-+    tcg_gen_andi_i64(outptr, outptr, ~7);
-+    tcg_gen_addi_i64(outptr, outptr, -8);
-+    tcg_gen_deposit_i64(tmp, outptr, tcg_constant_i64(1), 0, 12);
-+    tcg_gen_qemu_st_i64(tmp, outptr, mmuidx, mop);
-+    tcg_gen_mb(TCG_BAR_SC | TCG_MO_ALL);
++        /* Push a gcs entry for the trampoline. */
++        if (put_user_u64(return_addr, gcspr - 8)) {
++            return false;
++        }
++        env->cp15.gcspr_el[0] = gcspr - 8;
++    }
 +
-+    /* Pop the in-progress cap from the new stack. */
-+    tcg_gen_addi_i64(gcspr, gcspr, 8);
++    __put_user(TARGET_GCS_MAGIC, &ctx->head.magic);
++    __put_user(sizeof(*ctx), &ctx->head.size);
++    __put_user(gcspr, &ctx->gcspr);
++    __put_user(mode, &ctx->features_enabled);
++    __put_user(0, &ctx->reserved);
 +
-+    /* Return a pointer to the old stack cap. */
-+    tcg_gen_mov_i64(cpu_reg(s, rt), outptr);
++    return true;
 +}
 +
- /*
-  * Look up @key, returning the cpreg, which must exist.
-  * Additionally, the new cpreg must also be accessible.
-@@ -3014,6 +3043,11 @@ static void handle_sys(DisasContext *s, bool isread,
-             gen_gcsss1(s, rt);
-         }
-         return;
-+    case ARM_CP_GCSSS2:
-+        if (s->gcs_en) {
-+            gen_gcsss2(s, rt);
+ static void target_restore_general_frame(CPUARMState *env,
+                                          struct target_rt_sigframe *sf)
+ {
+@@ -502,6 +542,64 @@ static bool target_restore_zt_record(CPUARMState *env,
+     return true;
+ }
+ 
++static bool target_restore_gcs_record(CPUARMState *env,
++                                      struct target_gcs_context *ctx,
++                                      bool *rebuild_hflags)
++{
++    TaskState *ts = get_task_state(env_cpu(env));
++    uint64_t cur_mode = gcs_get_el0_mode(env);
++    uint64_t new_mode, gcspr;
++
++    __get_user(new_mode, &ctx->features_enabled);
++    __get_user(gcspr, &ctx->gcspr);
++
++    /*
++     * The kernel pushes the value through the hw register:
++     * write_sysreg_s(gcspr, SYS_GCSPR_EL0) in restore_gcs_context,
++     * then read_sysreg_s(SYS_GCSPR_EL0) in gcs_restore_signal.
++     * Since the bottom 3 bits are RES0, this can (CONSTRAINED UNPREDICTABLE)
++     * force align the value.  Mirror the choice from gcspr_write().
++     */
++    gcspr &= ~7;
++
++    if (new_mode & ~(PR_SHADOW_STACK_ENABLE |
++                     PR_SHADOW_STACK_WRITE |
++                     PR_SHADOW_STACK_PUSH)) {
++        return false;
++    }
++    if ((new_mode ^ cur_mode) & ts->gcs_el0_locked) {
++        return false;
++    }
++    if (new_mode & ~cur_mode & PR_SHADOW_STACK_ENABLE) {
++        return false;
++    }
++
++    if (new_mode & PR_SHADOW_STACK_ENABLE) {
++        uint64_t cap;
++
++        /* Pop and clear the signal cap. */
++        if (get_user_u64(cap, gcspr)) {
++            return false;
 +        }
-+        return;
-     default:
-         g_assert_not_reached();
++        if (cap != GCS_SIGNAL_CAP(gcspr)) {
++            return false;
++        }
++        if (put_user_u64(0, gcspr)) {
++            return false;
++        }
++        gcspr += 8;
++    } else {
++        new_mode = 0;
++    }
++
++    env->cp15.gcspr_el[0] = gcspr;
++    if (new_mode != cur_mode) {
++        *rebuild_hflags = true;
++        gcs_set_el0_mode(env, new_mode);
++    }
++    return true;
++}
++
+ static int target_restore_sigframe(CPUARMState *env,
+                                    struct target_rt_sigframe *sf)
+ {
+@@ -511,8 +609,10 @@ static int target_restore_sigframe(CPUARMState *env,
+     struct target_za_context *za = NULL;
+     struct target_tpidr2_context *tpidr2 = NULL;
+     struct target_zt_context *zt = NULL;
++    struct target_gcs_context *gcs = NULL;
+     uint64_t extra_datap = 0;
+     bool used_extra = false;
++    bool rebuild_hflags = false;
+     int sve_size = 0;
+     int za_size = 0;
+     int zt_size = 0;
+@@ -582,6 +682,15 @@ static int target_restore_sigframe(CPUARMState *env,
+             zt_size = size;
+             break;
+ 
++        case TARGET_GCS_MAGIC:
++            if (gcs
++                || size != sizeof(struct target_gcs_context)
++                || !cpu_isar_feature(aa64_gcs, env_archcpu(env))) {
++                goto err;
++            }
++            gcs = (struct target_gcs_context *)ctx;
++            break;
++
+         case TARGET_EXTRA_MAGIC:
+             if (extra || size != sizeof(struct target_extra_context)) {
+                 goto err;
+@@ -612,6 +721,10 @@ static int target_restore_sigframe(CPUARMState *env,
+         goto err;
      }
+ 
++    if (gcs && !target_restore_gcs_record(env, gcs, &rebuild_hflags)) {
++        goto err;
++    }
++
+     /* SVE data, if present, overwrites FPSIMD data.  */
+     if (sve && !target_restore_sve_record(env, sve, sve_size, &svcr)) {
+         goto err;
+@@ -631,6 +744,9 @@ static int target_restore_sigframe(CPUARMState *env,
+     }
+     if (env->svcr != svcr) {
+         env->svcr = svcr;
++        rebuild_hflags = true;
++    }
++    if (rebuild_hflags) {
+         arm_rebuild_hflags(env);
+     }
+     unlock_user(extra, extra_datap, 0);
+@@ -701,7 +817,7 @@ static void target_setup_frame(int usig, struct target_sigaction *ka,
+                                uc.tuc_mcontext.__reserved),
+     };
+     int fpsimd_ofs, fr_ofs, sve_ofs = 0, za_ofs = 0, tpidr2_ofs = 0;
+-    int zt_ofs = 0, esr_ofs = 0;
++    int zt_ofs = 0, esr_ofs = 0, gcs_ofs = 0;
+     int sve_size = 0, za_size = 0, tpidr2_size = 0, zt_size = 0;
+     struct target_rt_sigframe *frame;
+     struct target_rt_frame_record *fr;
+@@ -720,6 +836,11 @@ static void target_setup_frame(int usig, struct target_sigaction *ka,
+                                        &layout);
+     }
+ 
++    if (env->cp15.gcspr_el[0]) {
++        gcs_ofs = alloc_sigframe_space(sizeof(struct target_gcs_context),
++                                       &layout);
++    }
++
+     /* SVE state needs saving only if it exists.  */
+     if (cpu_isar_feature(aa64_sve, env_archcpu(env)) ||
+         cpu_isar_feature(aa64_sme, env_archcpu(env))) {
+@@ -779,6 +900,12 @@ static void target_setup_frame(int usig, struct target_sigaction *ka,
+         goto give_sigsegv;
+     }
+ 
++    if (ka->sa_flags & TARGET_SA_RESTORER) {
++        return_addr = ka->sa_restorer;
++    } else {
++        return_addr = default_rt_sigreturn;
++    }
++
+     target_setup_general_frame(frame, env, set);
+     target_setup_fpsimd_record((void *)frame + fpsimd_ofs, env);
+     if (esr_ofs) {
+@@ -786,6 +913,10 @@ static void target_setup_frame(int usig, struct target_sigaction *ka,
+         /* Leave ESR_EL1 clear while it's not relevant. */
+         env->cp15.esr_el[1] = 0;
+     }
++    if (gcs_ofs &&
++        !target_setup_gcs_record((void *)frame + gcs_ofs, env, return_addr)) {
++        goto give_sigsegv;
++    }
+     target_setup_end_record((void *)frame + layout.std_end_ofs);
+     if (layout.extra_ofs) {
+         target_setup_extra_record((void *)frame + layout.extra_ofs,
+@@ -811,11 +942,6 @@ static void target_setup_frame(int usig, struct target_sigaction *ka,
+     __put_user(env->xregs[29], &fr->fp);
+     __put_user(env->xregs[30], &fr->lr);
+ 
+-    if (ka->sa_flags & TARGET_SA_RESTORER) {
+-        return_addr = ka->sa_restorer;
+-    } else {
+-        return_addr = default_rt_sigreturn;
+-    }
+     env->xregs[0] = usig;
+     env->xregs[29] = frame_addr + fr_ofs;
+     env->xregs[30] = return_addr;
 -- 
 2.43.0
 

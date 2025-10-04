@@ -4,103 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B1C5CCA471
-	for <qemu-arm@archiver.kernel.org>; Fri,  3 Oct 2025 20:55:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A4E5CAC5BB
+	for <qemu-arm@archiver.kernel.org>; Sat,  4 Oct 2025 20:02:26 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v4mnt-0007ZJ-8I; Fri, 03 Oct 2025 16:55:03 -0400
+	id 1v58Ra-00013k-9A; Sat, 04 Oct 2025 16:01:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v4mnr-0007Ys-4k
- for qemu-arm@nongnu.org; Fri, 03 Oct 2025 16:54:59 -0400
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+ (Exim 4.90_1) (envelope-from <groeck7@gmail.com>) id 1v58RN-0000wE-6B
+ for qemu-arm@nongnu.org; Sat, 04 Oct 2025 16:01:14 -0400
+Received: from mail-pf1-x435.google.com ([2607:f8b0:4864:20::435])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v4mni-0003KE-Nb
- for qemu-arm@nongnu.org; Fri, 03 Oct 2025 16:54:58 -0400
-Received: by mail-wr1-x42c.google.com with SMTP id
- ffacd0b85a97d-3ee12807d97so2182243f8f.0
- for <qemu-arm@nongnu.org>; Fri, 03 Oct 2025 13:54:49 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <groeck7@gmail.com>) id 1v58RK-0006DK-0l
+ for qemu-arm@nongnu.org; Sat, 04 Oct 2025 16:01:12 -0400
+Received: by mail-pf1-x435.google.com with SMTP id
+ d2e1a72fcca58-7800ff158d5so3101552b3a.1
+ for <qemu-arm@nongnu.org>; Sat, 04 Oct 2025 13:01:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1759524887; x=1760129687; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=B3ldZEG5ScHR939V5D30GdFiXHB1AdjnHpqkcb2Cno8=;
- b=QQNaZNydv6Ij8R4OSDYuQSc7H4pfrHCbfZDkVhqY8bjf+0aGT8FX6nmG8K+WRbk2hI
- 5334/t90W5bRmAzW2F3ZbthMnu8j1w1yvQT7qTFnnQcVMsBFjTwkz8UV+mmCYL+4gilE
- XOsdra5bzzYpOdqhP6Modvc6TzPbE85p5SP5XvAEPbPnB55ym5U5oUj65hp7LqWHphja
- jeTsJr6JrO4qCO+hKXHu5Xma3uuWSQMAK0adePq7seubk2wcpzEqUS3Nx05gMZyahQrr
- gXztD5E7O4OusWjippfT7YrLvJ8u+J/g5RnSVenXQxQQIx04dH9T29NLSRBbqcb8DfUE
- 2wfg==
+ d=gmail.com; s=20230601; t=1759608062; x=1760212862; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:sender:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=s89LU7o1ZyXNcRb/2leqwVIsfipruP3UJlVfpKF2qgY=;
+ b=Olyk0q1LofsYdRMAlI3eSQBZvPiN/MNrQrH1XzW2V1TxKuWmmgCibjcn0jZ5k+z305
+ 6s3ZzSpO/ZVmpSnYOJ7GLCIzbGONci7RjwZaKQDz+Js3mox64wtN94QdoI7L+I6Avlpq
+ EcEHYlUBF77M/s05PUVhzMN2NT5dao3fRjw6r4qlHdCA1/QimCE69WopFFKS0nVzXBzI
+ BSOk0SMHDJbBo8P/ukfIAWFKdHmf06//DTVUljUzJJdD+GFFPrXK/9EiLsqwh1yg4MU+
+ Gyxviupo1gDCZ3rFmGgINRFk/TX/QgKTe67zaNkOtn0gOLmMmEkCo19AyQPpzjXmRC4M
+ s/bg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759524887; x=1760129687;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=B3ldZEG5ScHR939V5D30GdFiXHB1AdjnHpqkcb2Cno8=;
- b=WYefrrp/eOTxujaERsr2uBJokShhmqIsj1m1CDefBybECTKUgMxmf5Ao693K+IIqLb
- +14yLQicyu3TbTlYoB/Mmew3eWw8/ymVssSQ6JfzMNOrjeAWeEq+urLYNQLFX/uqk+MR
- 9415sHpeEYXm5kc4sZ1dqXjPfw0Z36JUrQkAcWwdWoueP8LL5bA6mYpihufUebpyMfjD
- fXfRY+dPJC8pdZic/eCUwPzlpjc7qDtGpwTHPN9LahQB55deL1idctJHBKwnc5xBnOVx
- uZBLDI+DoR4AJ7uLWIj1JvDcX67/JocwQCWl5JPrL3kSHOlxiilSbvYSBt+jLWNCEg1S
- UcEQ==
+ d=1e100.net; s=20230601; t=1759608062; x=1760212862;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:sender:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=s89LU7o1ZyXNcRb/2leqwVIsfipruP3UJlVfpKF2qgY=;
+ b=Kcrpskga7x5lihmu0G8O/J+v/cwccMGYP+62M0Gp0cqJYv1aEMEDIHgPQO5SPo7SVs
+ +9R4ZO9pfgibdbEqDQNLyNShBPQ0oHHXNaOWyoWjabIoUlFW9aXqMcIMflwiO6IXATIs
+ B6/DOpttsG/T4ioQcgfprDFl2WmvmCaH5MtPT8XFraJyg8eGyXQ2+6U2y+M74NwY78/C
+ 8gH01s2MfAEj9XuhCTY+W4iSIyjQNPBpCExvbCkg5NOBJPBcTwnbvjIr+bKRT7hJr87q
+ 7jG8QYJzbCrDP21uhDrqy0y/i13pgLPyWGinL4ST+oosPsgdiNVTrfrA5oobW4mlPm+F
+ BY9A==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVNALVSBj58lLkkhn87YXSDORU6gZxtgHUVKYcGfEwpqLwmsmPvzipbgkxVVzqrRoSnZvPDIBbphw==@nongnu.org
-X-Gm-Message-State: AOJu0YygdvORfsaNAUMx/ygLy7nb/IVDYTLQBXUfpyzKoWFP9clxBBYY
- 4MvNfZQx/pDwDjMDWNuqkHN9fegBWRTxSc5dJYzYiF0Q7tl1eF4WVl+eg/sWPUCSZmE=
-X-Gm-Gg: ASbGnctk8RpurqU/ctrh+rcN55wlaje075OI5uyvREMrj6j4hQ+HbkrPcM5pwsxw+Qk
- uWEvKlZtncOhDoA7xms61ZJF/timaiSKyxaNz9d/a3GodbFxNuwA2Vzz2hj4IiSqIlUvzfyUjSN
- 7qvTerJh7BzDxfKvPAEl/7xp4JlJCEz9aTh1CVUTlmjwLgup/+0vAEw2RDmGeSnbg/wJ5nS/Ptz
- mHegHUhEVRft6KFom1edsEcXxOrlraNOwcvOmTHw2fnWtI4gTqRaaQ/VR56Cveg81iJiTyaA0F0
- M9c/k22552KGZigTd+vmslDz1Y0vbGHxXTH60A3phhTdZ99hb4WiK2mh6GgnQxHHRmUdTznA3Nd
- gVsMovzbXiDQVRFUhbWb6GlwUBO4I20t1i+xVj3KBiPBydPEsB5b0suk7APPSnyBvhJyApuZx6K
- f2Z+3VLvI1yMI9/08iNAQLs1jfHlIE
-X-Google-Smtp-Source: AGHT+IF+YPiwwY9HDDgxpirJo38iH44mnenhG9cCLyC/enTPjWl/okcrtohvYzGU+mmB/W8I/zANPw==
-X-Received: by 2002:a5d:64e7:0:b0:3eb:c276:a347 with SMTP id
- ffacd0b85a97d-42566dff020mr2934384f8f.0.1759524887386; 
- Fri, 03 Oct 2025 13:54:47 -0700 (PDT)
-Received: from [192.168.69.221] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-46e61a0204fsm146130205e9.14.2025.10.03.13.54.46
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 03 Oct 2025 13:54:46 -0700 (PDT)
-Message-ID: <bacd25d5-fef8-46ca-9f8a-8edcd48e85d2@linaro.org>
-Date: Fri, 3 Oct 2025 22:54:45 +0200
+ AJvYcCXVB24fMvJOPvWSdOWhP4UPph+SbmcYxv5fWWKGL2JdGt5FaUh+Gulaq/8ifVd+9zUhbloyUs5wzw==@nongnu.org
+X-Gm-Message-State: AOJu0YwbTmHQMtZ3OObUGe7Ot6ZJAVuZAHZ0LMN2Ca2YtpoV43FzcxTd
+ RYO6fJbaitbeFSal8HUWDrkRlo02N3hmvSReh0i0Gp6fCqq0Ncdkyu+yj2x0i00U
+X-Gm-Gg: ASbGncs7CXZuVsZm7EE57BXK9QV6/clKQrYWcGkm9yZs2nODZTD75dsSTUFJtDmuZj8
+ R+S4/COEkug56SB4zh1m4FBOIxeuWG0IvAPHVsKfIV2rJAnhTcU8x5NbgKHJZU9koz8jMieylxQ
+ 2MWkSNafEkYwTRKA5Wpcy3Mmb9N3lZIN71XVNeXad19thSvugwEJo93jjoTUR2nZzpHAC1352HA
+ n9MEC4xh3uNKrWg1WtIGCe7K1R81+RoYhCdvK/RJPj1oSyVme0JZZpIspKuxRiE0PtgtGckdzg5
+ qP/e36nW6dW1GLcNk3qmdJy3F+KM6m+yqDYT3UBndWZLaOpa7qHtqCOV5NAFw8z0TSyuHvUE1N2
+ oQiyoJiiEjTCQQ3v/1I2J0740t3T3My/TR3MvCP0/REHr3BSIjBD0tPBC5JiKDeQYzMQcrLi5k5
+ CHUGKH
+X-Google-Smtp-Source: AGHT+IHw8v/+jlqZ+OZxtkzgJ8jrGBYKxC8Djf49qos3QDGh7kPSXGhr8DHaEVXrjgttf285zb6STg==
+X-Received: by 2002:a05:6a20:7d9e:b0:2e9:d6ce:e125 with SMTP id
+ adf61e73a8af0-32b61dedc3dmr9689123637.5.1759608061728; 
+ Sat, 04 Oct 2025 13:01:01 -0700 (PDT)
+Received: from server.roeck-us.net ([2600:1700:e321:62f0:da43:aeff:fecc:bfd5])
+ by smtp.gmail.com with ESMTPSA id
+ 41be03b00d2f7-b6099f3b819sm7998413a12.26.2025.10.04.13.01.01
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 04 Oct 2025 13:01:01 -0700 (PDT)
+From: Guenter Roeck <linux@roeck-us.net>
+To: "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Peter Maydell <peter.maydell@linaro.org>
+Cc: Jason Wang <jasowang@redhat.com>, Palmer Dabbelt <palmer@dabbelt.com>,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-riscv@nongnu.org,
+ Guenter Roeck <linux@roeck-us.net>
+Subject: [PATCH 1/4] hw/net/cadence_gem: Support two Ethernet interfaces
+ connected to single MDIO bus
+Date: Sat,  4 Oct 2025 13:00:46 -0700
+Message-ID: <20251004200049.871646-2-linux@roeck-us.net>
+X-Mailer: git-send-email 2.45.2
+In-Reply-To: <20251004200049.871646-1-linux@roeck-us.net>
+References: <20251004200049.871646-1-linux@roeck-us.net>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 00/18] system/physmem: Extract API out of
- 'system/ram_addr.h' header
-Content-Language: en-US
-To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Jagannathan Raman <jag.raman@oracle.com>, qemu-ppc@nongnu.org,
- Ilya Leoshkevich <iii@linux.ibm.com>, Thomas Huth <thuth@redhat.com>,
- Jason Herne <jjherne@linux.ibm.com>, Peter Xu <peterx@redhat.com>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>, kvm@vger.kernel.org,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- Halil Pasic <pasic@linux.ibm.com>, Matthew Rosato <mjrosato@linux.ibm.com>,
- Paolo Bonzini <pbonzini@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Elena Ufimtseva <elena.ufimtseva@oracle.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>, Fabiano Rosas <farosas@suse.de>,
- Eric Farman <farman@linux.ibm.com>, qemu-arm@nongnu.org,
- qemu-s390x@nongnu.org, David Hildenbrand <david@redhat.com>,
- Alex Williamson <alex.williamson@redhat.com>,
- Nicholas Piggin <npiggin@gmail.com>
-References: <20251001175448.18933-1-philmd@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20251001175448.18933-1-philmd@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42c.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::435;
+ envelope-from=groeck7@gmail.com; helo=mail-pf1-x435.google.com
 X-Spam_score_int: -16
 X-Spam_score: -1.7
 X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
- DKIM_SIGNED=0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_ENVFROM_END_DIGIT=0.25,
+ FREEMAIL_FORGED_FROMDOMAIN=0.001, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -116,27 +106,96 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 1/10/25 19:54, Philippe Mathieu-Daudé wrote:
+The Microchip PolarFire SoC Icicle Kit supports two Ethernet interfaces.
+The PHY on each may be connected to separate MDIO busses, or both may be
+connected on the same MDIO bus using different PHY addresses.
 
-> Philippe Mathieu-Daudé (18):
->    system/ram_addr: Remove unnecessary 'exec/cpu-common.h' header
->    accel/kvm: Include missing 'exec/target_page.h' header
->    hw/s390x/s390-stattrib: Include missing 'exec/target_page.h' header
->    hw/vfio/listener: Include missing 'exec/target_page.h' header
->    target/arm/tcg/mte: Include missing 'exec/target_page.h' header
->    hw: Remove unnecessary 'system/ram_addr.h' header
->    system/physmem: Un-inline cpu_physical_memory_get_dirty_flag()
->    system/physmem: Un-inline cpu_physical_memory_is_clean()
->    system/physmem: Un-inline cpu_physical_memory_range_includes_clean()
->    system/physmem: Un-inline cpu_physical_memory_set_dirty_flag()
->    system/physmem: Un-inline cpu_physical_memory_set_dirty_range()
->    system/physmem: Remove _WIN32 #ifdef'ry
->    system/physmem: Un-inline cpu_physical_memory_set_dirty_lebitmap()
->    system/physmem: Un-inline cpu_physical_memory_dirty_bits_cleared()
->    system/physmem: Reduce cpu_physical_memory_clear_dirty_range() scope
->    system/physmem: Reduce cpu_physical_memory_sync_dirty_bitmap() scope
->    system/physmem: Drop 'cpu_' prefix in Physical Memory API
->    system/physmem: Extract API out of 'system/ram_addr.h' header
+To be able to support two PHY instances on a single MDIO bus, two properties
+are needed: First, there needs to be a flag indicating if the MDIO bus on
+a given Ethernet interface is connected. If not, attempts to read from this
+bus must always return 0xffff. Implement this property as phy-connected.
+Second, if the MDIO bus on an interface is active, it needs a link to the
+consumer interface to be able to provide PHY access for it. Implement this
+property as phy-consumer.
 
-Series queued, thanks.
+Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+---
+ hw/net/cadence_gem.c         | 24 ++++++++++++++++++------
+ include/hw/net/cadence_gem.h |  3 +++
+ 2 files changed, 21 insertions(+), 6 deletions(-)
+
+diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
+index 44446666de..520324adfd 100644
+--- a/hw/net/cadence_gem.c
++++ b/hw/net/cadence_gem.c
+@@ -1541,12 +1541,20 @@ static void gem_handle_phy_access(CadenceGEMState *s)
+ {
+     uint32_t val = s->regs[R_PHYMNTNC];
+     uint32_t phy_addr, reg_num;
++    CadenceGEMState *ps = s;
++    uint32_t op;
+ 
+     phy_addr = FIELD_EX32(val, PHYMNTNC, PHY_ADDR);
++    op = FIELD_EX32(val, PHYMNTNC, OP);
+ 
+-    if (phy_addr != s->phy_addr) {
+-        /* no phy at this address */
+-        if (FIELD_EX32(val, PHYMNTNC, OP) == MDIO_OP_READ) {
++    /* Switch phy to consumer interface if there is an address match */
++    if (s->phy_consumer && phy_addr == s->phy_consumer->phy_addr) {
++        ps = s->phy_consumer;
++    }
++
++    if (!s->phy_connected || phy_addr != ps->phy_addr) {
++        /* phy not connected or no phy at this address */
++        if (op == MDIO_OP_READ) {
+             s->regs[R_PHYMNTNC] = FIELD_DP32(val, PHYMNTNC, DATA, 0xffff);
+         }
+         return;
+@@ -1554,14 +1562,14 @@ static void gem_handle_phy_access(CadenceGEMState *s)
+ 
+     reg_num = FIELD_EX32(val, PHYMNTNC, REG_ADDR);
+ 
+-    switch (FIELD_EX32(val, PHYMNTNC, OP)) {
++    switch (op) {
+     case MDIO_OP_READ:
+         s->regs[R_PHYMNTNC] = FIELD_DP32(val, PHYMNTNC, DATA,
+-                                         gem_phy_read(s, reg_num));
++                                         gem_phy_read(ps, reg_num));
+         break;
+ 
+     case MDIO_OP_WRITE:
+-        gem_phy_write(s, reg_num, val);
++        gem_phy_write(ps, reg_num, val);
+         break;
+ 
+     default:
+@@ -1813,6 +1821,10 @@ static const Property gem_properties[] = {
+                       num_type2_screeners, 4),
+     DEFINE_PROP_UINT16("jumbo-max-len", CadenceGEMState,
+                        jumbo_max_len, 10240),
++    DEFINE_PROP_BOOL("phy-connected", CadenceGEMState, phy_connected, true),
++    DEFINE_PROP_LINK("phy-consumer", CadenceGEMState, phy_consumer,
++                     TYPE_CADENCE_GEM, CadenceGEMState *),
++
+     DEFINE_PROP_LINK("dma", CadenceGEMState, dma_mr,
+                      TYPE_MEMORY_REGION, MemoryRegion *),
+ };
+diff --git a/include/hw/net/cadence_gem.h b/include/hw/net/cadence_gem.h
+index 91ebb5c8ae..21e7319f53 100644
+--- a/include/hw/net/cadence_gem.h
++++ b/include/hw/net/cadence_gem.h
+@@ -81,6 +81,9 @@ struct CadenceGEMState {
+ 
+     uint8_t phy_loop; /* Are we in phy loopback? */
+ 
++    bool phy_connected; /* true if connected */
++    struct CadenceGEMState *phy_consumer;
++
+     /* The current DMA descriptor pointers */
+     uint32_t rx_desc_addr[MAX_PRIORITY_QUEUES];
+     uint32_t tx_desc_addr[MAX_PRIORITY_QUEUES];
+-- 
+2.45.2
+
 

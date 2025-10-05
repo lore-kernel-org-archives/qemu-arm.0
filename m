@@ -4,89 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D1F0CAC5BB
-	for <qemu-arm@archiver.kernel.org>; Sat,  4 Oct 2025 20:30:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1C89CAC5B8
+	for <qemu-arm@archiver.kernel.org>; Sun,  5 Oct 2025 12:23:10 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v58tI-0000cN-6r; Sat, 04 Oct 2025 16:30:04 -0400
+	id 1v5Nl9-0001VJ-6j; Sun, 05 Oct 2025 08:22:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <xpahos@gmail.com>) id 1v58j2-0007JD-Qr
- for qemu-arm@nongnu.org; Sat, 04 Oct 2025 16:19:28 -0400
-Received: from mail-lj1-x230.google.com ([2a00:1450:4864:20::230])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <xpahos@gmail.com>) id 1v58iz-00081g-Eq
- for qemu-arm@nongnu.org; Sat, 04 Oct 2025 16:19:27 -0400
-Received: by mail-lj1-x230.google.com with SMTP id
- 38308e7fff4ca-36d77ae9de5so34104161fa.2
- for <qemu-arm@nongnu.org>; Sat, 04 Oct 2025 13:19:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1759609163; x=1760213963; darn=nongnu.org;
- h=to:cc:date:message-id:subject:mime-version
- :content-transfer-encoding:from:from:to:cc:subject:date:message-id
- :reply-to; bh=Qo7hddKpSdc6MpWwF5YtNaqmI9PS33MydNZ8ZzjevYc=;
- b=VGHBK01dXtjdl6luxlTSw/CNkO+fj/J7m1SmKxPzo34BaXkk6CI2KSt9tSfyDu57J3
- 65M9xnsfJJmeJekSNBj4DvTygimsVpR8jEvlcUEd5MnwDx5ysrXDL4l9Y46OTLA+1mSj
- KcDoLAj3A1znY8K71Wt3ebWTXgSRl8m43ePDdUJTDg2Kv9hxYC5Th43vvcw4gQYZ3aVF
- 8xU2B9j32Sr0BeFQj9WGGcEn0rbNGG+jztcHED/8KlgSvVlCNcU0dGTx+xN3lUdD3XLL
- eLg4u1BeETikMe8VdUSt9Wl1JaCy5fG5pT6LJprIRO3yBRzvJ5UYHcMpPOHmfFNa11HM
- rCFQ==
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1v5Nl5-0001V1-3w
+ for qemu-arm@nongnu.org; Sun, 05 Oct 2025 08:22:35 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1v5Nl2-0003Nb-Nh
+ for qemu-arm@nongnu.org; Sun, 05 Oct 2025 08:22:34 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1759666948;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=3uH/GB8TaEG7yh514K08ygSmxD+EPnFiaGKf1haB0Uc=;
+ b=PKrlEoyYHkArN35Q/oX+xWSxMP2aRcDZL52E7FkppldT7W/ALKG3Ngc6+O9BmNKEOo802x
+ U9fT3WeeZnwvnw8XHBsTHQhWveq0CpT5KC9R4g5lVnNA7hefimtneM/bBAgMbeoUaL/3wn
+ hYvVwt+5sS1bk70Ionat4JNN3qg9w20=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-605-UIpyvSrTO2uNlorQKwythQ-1; Sun, 05 Oct 2025 08:22:26 -0400
+X-MC-Unique: UIpyvSrTO2uNlorQKwythQ-1
+X-Mimecast-MFC-AGG-ID: UIpyvSrTO2uNlorQKwythQ_1759666945
+Received: by mail-wm1-f70.google.com with SMTP id
+ 5b1f17b1804b1-46e3e177893so21748365e9.2
+ for <qemu-arm@nongnu.org>; Sun, 05 Oct 2025 05:22:26 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759609163; x=1760213963;
- h=to:cc:date:message-id:subject:mime-version
- :content-transfer-encoding:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=Qo7hddKpSdc6MpWwF5YtNaqmI9PS33MydNZ8ZzjevYc=;
- b=SuLCd7bs9/f+TquNZxObI8Msmf/haewjbaO5p4zmT0A4A0sya0KgBXJzCQHjmUB/GP
- KKKw0PwhM/ca4HHIsZeRYt5fzCW2U+kxRthCwQmXZbdaTLtYVvh58WDwXXxtduj8L1/D
- ysZHB2xQx/MOuU9cH/swIQ2Uk4c4fu5FVE//GktR1dUxBmEIhQfNZpRQavX3Ov5QgiRA
- WQs9ac1BdPvLLdUFdDRWPLc2iMjaaaQMy7x+W4tI94pQgt5e30m0e3MsuWKYXmXHQE7R
- sRmP6tTx3bEa3DNWqKzx4APoIwIjmK1t6rXbNRyOztvqjKkPgszEAuGqUyBRK0RW2/nO
- bQmA==
+ d=1e100.net; s=20230601; t=1759666945; x=1760271745;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=3uH/GB8TaEG7yh514K08ygSmxD+EPnFiaGKf1haB0Uc=;
+ b=UBbbnX6rYMNAWXfLAio/ZE0S6V4V6Q5UTJTvJH6dj52P+eKDgBTgGiMDE+BiWhSFar
+ C6+mv/HF5wMkyGOuIzsZF6aU+RZtyeWq/dgfunqOnyoOz0povuSoxSl1GEn3OqrOZnEL
+ 8WNnhZcX77SsbXaGVRwqZCxnS4PFdDhQDO/UV1o/wZdS1ZhBm7mNbHGjiUHF3mccAb6S
+ mmUv0gExwET7E49cUOU71scLReeEVXqE+rSCPHLFKTj+wS2DE5chqZ41FmNtbv/lMqPq
+ k4CBhMttY+2H6n/9V1wK2oUkEQMp17+d0hdCvDebCUq1+wakf+gH40SA6qtmJdA4VcIM
+ p8HQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUz97vsbulRPiDb+ZiPjoOUjvpzfcrX/Z8UxZHoEvEW0F4sYjaEW0DI4368L8NEBn1/UxOAd7ypwQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yy2ZbMBhyU9IIEo5WIqTrb46JiBLWnIxoLSwfMDIxFXdKo9Z/QS
- GIw+6gLRFkYNMQakE5V+b4+6R+3bLJSRVZscuGRpxeCNmVL7qwIJHuMk
-X-Gm-Gg: ASbGncso2esXiLfeJu7ghgxhn+v822ClJsKAeDtMP+Bu7repnjkNwPuzJm3gU3+QeI3
- m6kqwT4yakGVmOiGB1dJybUT1V7LdMMvN8yCihzgNTqKgPiwl8IvFROQebM0g2Fp4lhVd6xBKBq
- IRNECLnWeu/1p3lyr1AMlDLn0Z2USAICm8sxu8b+DV8gda/vQRzNqKC39PWjC86ar5sdFmDlg6U
- yLfyShW4Y2RsKwme2mjYD1V9+fwznaVE1fl9blQd/gsZzVupV/EMY/YrNPulkBnVLqoRE9X/vap
- zz3ar8AidTjhm4D2ywxy1SAN8h7S+TuG4fVQ14K3AoznDV41JqoYgSVnPTgoDYoZgnUy7HmMpwq
- rMtQWrZl9prcv1Jz62wJnhiSw8vtBcEAv8D0a/QXx5jZtv1o7ZkyAoA==
-X-Google-Smtp-Source: AGHT+IFmQnlWQWl2OQhtk+OiUUcBSwh8IMzLFBO9I1by351N8N2FkY+4/GQjhFIxJR+z2x5o9JRCZQ==
-X-Received: by 2002:a2e:be9c:0:b0:36b:b439:93cc with SMTP id
- 38308e7fff4ca-374c389c921mr22620081fa.37.1759609162377; 
- Sat, 04 Oct 2025 13:19:22 -0700 (PDT)
-Received: from smtpclient.apple ([2a02:6bf:8080:446::1:2b])
+ AJvYcCU860FSOsRsUlgLqm1k60YksnLRwimugpwIzkIwbv/WuWMmsGHLlE+3hnlq2Exr+KbhKwBdYU0kxQ==@nongnu.org
+X-Gm-Message-State: AOJu0YyOl+USJEWvx1IRwlhRTuJc/AkoW/bFPBCwPHUlRckjrTSTdIOc
+ Azg28fvjg/6tgkLZ/+wz+onl1pCbprYdYReSQgG5+LAJSS+olIjuQ/SOdwZQ0MOo/pmu2wxrvI/
+ popf/0XdSBAFQI4pFkJ1tPKDcpp8p/owxiabODdW952A7s8f1KxYdOA==
+X-Gm-Gg: ASbGnctyCQ3+gTIwwf0mo6zuoxxY7kei8SdXNXv/Cet/16f8FSTPE85xXDkiHha/yNn
+ hTZjO+UkWiyxlaUfDtUEVMTplXyeBMOcbZHABEPb7ioH7XYqSBkk9MBB9gQW6S9LCoJWhX2NUJW
+ GclQ0+6mDXJxEwKnVAKpAkzCrsADbHbrWRYJzyyeROK3TYI1jhsgLwTn/q3G0t00YUcID4q9uyB
+ Vrybhy21eEqhWSR1qbrE2dx8Nd3/W27fhsvA/DHRNiYOit5f0ZqTi7GWikD6lZjqjRjzBF3vE4T
+ IuLth+YE7VvViNBP6nnIGpPF7Pziy6qnVGxhR7A=
+X-Received: by 2002:a5d:5d13:0:b0:3f7:b7ac:f3aa with SMTP id
+ ffacd0b85a97d-425671a9021mr5205856f8f.29.1759666945422; 
+ Sun, 05 Oct 2025 05:22:25 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHG1keuMZu665iO+IbiJSlMHjR2azOMigBt5fMWxeSQ4NRIhAMCkxk2rk3nz8YU5tZ4uo9RPQ==
+X-Received: by 2002:a5d:5d13:0:b0:3f7:b7ac:f3aa with SMTP id
+ ffacd0b85a97d-425671a9021mr5205842f8f.29.1759666944911; 
+ Sun, 05 Oct 2025 05:22:24 -0700 (PDT)
+Received: from redhat.com ([2a0d:6fc0:1518:6900:b69a:73e1:9698:9cd3])
  by smtp.gmail.com with ESMTPSA id
- 38308e7fff4ca-373ba2a536esm28391881fa.14.2025.10.04.13.19.19
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Sat, 04 Oct 2025 13:19:21 -0700 (PDT)
-From: Alexander Gryanko <xpahos@gmail.com>
-Content-Type: text/plain;
-	charset=us-ascii
-Content-Transfer-Encoding: 7bit
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3776.700.51.11.2\))
-Subject: [PATCH] hw/arm: add pvpanic mmio device for arm
-Message-Id: <CC5A0011-CD14-40F9-8023-8BF5F989BCCF@gmail.com>
-Date: Sat, 4 Oct 2025 23:19:09 +0300
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-trivial@nongnu.org,
- =?utf-8?B?0JDQu9C10LrRgdCw0L3QtNGAINCT0YDRj9C90LrQvg==?= <xpahos@gmail.com>
-To: qemu-devel@nongnu.org
-X-Mailer: Apple Mail (2.3776.700.51.11.2)
-Received-SPF: pass client-ip=2a00:1450:4864:20::230;
- envelope-from=xpahos@gmail.com; helo=mail-lj1-x230.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+ ffacd0b85a97d-4255d8f017esm16660799f8f.47.2025.10.05.05.22.23
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 05 Oct 2025 05:22:24 -0700 (PDT)
+Date: Sun, 5 Oct 2025 08:22:21 -0400
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Cc: Igor Mammedov <imammedo@redhat.com>,
+ Jonathan Cameron <Jonathan.Cameron@huawei.com>,
+ Shiju Jose <shiju.jose@huawei.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, Cleber Rosa <crosa@redhat.com>,
+ John Snow <jsnow@redhat.com>, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v12 17/17] scripts/ghes_inject: add a script to generate
+ GHES error inject
+Message-ID: <20251005082027-mutt-send-email-mst@kernel.org>
+References: <cover.1758610789.git.mchehab+huawei@kernel.org>
+ <5ea174638e33d23635332fa6d4ae9d751355f127.1758610789.git.mchehab+huawei@kernel.org>
+MIME-Version: 1.0
+In-Reply-To: <5ea174638e33d23635332fa6d4ae9d751355f127.1758610789.git.mchehab+huawei@kernel.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: qnBDra6PFvjKQY_Qh9nQyGsn3Pgkn79lqI5rcpIGfCc_1759666945
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=mst@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.43,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Sat, 04 Oct 2025 16:30:01 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,98 +115,16 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Currently, pvpanic is available in three device types: ISA,
-MMIO, and PCI. For early stages of system initialisation
-before PCI enumeration, only ISA and MMIO are suitable.
-ISA is specific to the x86 platform; only MMIO devices
-can be used for ARM. It is not possible to specify a
-device as on the x86 platform (-device pvpanic); the
-only possible way is to add an MMIO device to the dtb,
-which can be implemented by manually adding new functions
-to the QEMU code, as was done in the VMApple implementation.
-
-Signed-off-by: Alexander Gryanko <xpahos@gmail.com>
----
-hw/arm/virt.c         | 25 +++++++++++++++++++++++++
-include/hw/arm/virt.h |  1 +
-2 files changed, 26 insertions(+)
-
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 02209fadcf..1059584b67 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -39,6 +39,7 @@
-#include "hw/arm/virt.h"
-#include "hw/block/flash.h"
-#include "hw/display/ramfb.h"
-+#include "hw/misc/pvpanic.h"
-#include "net/net.h"
-#include "system/device_tree.h"
-#include "system/numa.h"
-@@ -182,6 +183,7 @@ static const MemMapEntry base_memmap[] = {
-    [VIRT_UART0] =              { 0x09000000, 0x00001000 },
-    [VIRT_RTC] =                { 0x09010000, 0x00001000 },
-    [VIRT_FW_CFG] =             { 0x09020000, 0x00000018 },
-+    [VIRT_PVPANIC] =            { 0x09021000, 0x00000002 },
-    [VIRT_GPIO] =               { 0x09030000, 0x00001000 },
-    [VIRT_UART1] =              { 0x09040000, 0x00001000 },
-    [VIRT_SMMU] =               { 0x09050000, SMMU_IO_LEN },
-@@ -276,6 +278,27 @@ static bool ns_el2_virt_timer_present(void)
-        arm_feature(env, ARM_FEATURE_EL2) && cpu_isar_feature(aa64_vh, cpu);
-}
-
-+static void create_pvpanic(VirtMachineState *vms)
-+{
-+    char *nodename;
-+    MachineState *ms = MACHINE(vms);
-+    DeviceState *dev = qdev_new(TYPE_PVPANIC_MMIO_DEVICE);
-+    SysBusDevice *s = SYS_BUS_DEVICE(dev);
-+
-+    hwaddr base = vms->memmap[VIRT_PVPANIC].base;
-+    hwaddr size = vms->memmap[VIRT_PVPANIC].size;
-+
-+    sysbus_realize_and_unref(s, &error_fatal);
-+    sysbus_mmio_map(s, 0, base);
-+
-+    nodename = g_strdup_printf("/pvpanic@%" PRIx64, base);
-+    qemu_fdt_add_subnode(ms->fdt, nodename);
-+    qemu_fdt_setprop_string(ms->fdt, nodename, "compatible",
-+                            "qemu,pvpanic-mmio");
-+    qemu_fdt_setprop_sized_cells(ms->fdt, nodename, "reg",
-+                                 2, base, 2, size);
-+}
-+
-static void create_fdt(VirtMachineState *vms)
-{
-    MachineState *ms = MACHINE(vms);
-@@ -2498,6 +2521,8 @@ static void machvirt_init(MachineState *machine)
-    create_pcie(vms);
-    create_cxl_host_reg_region(vms);
-
-+    create_pvpanic(vms);
-+
-    if (has_ged && aarch64 && firmware_loaded && virt_is_acpi_enabled(vms)) {
-        vms->acpi_dev = create_acpi_ged(vms);
-    } else {
-diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-index ea2cff05b0..39bf07c9c1 100644
---- a/include/hw/arm/virt.h
-+++ b/include/hw/arm/virt.h
-@@ -81,6 +81,7 @@ enum {
-    VIRT_NVDIMM_ACPI,
-    VIRT_PVTIME,
-    VIRT_ACPI_PCIHP,
-+    VIRT_PVPANIC,
-    VIRT_LOWMEMMAP_LAST,
-};
+On Tue, Sep 23, 2025 at 09:04:11AM +0200, Mauro Carvalho Chehab wrote:
+> +        # UEFI N.17 Integer values
+> +        g_pei.add_argument("-m", "--multiple-error", nargs="+",
+> +                        help="Number of errors: 0: Single error, 1: Multiple errors, 2-65535: Error count if known")
 
 
----
-base-commit: bd6aa0d1e59d71218c3eee055bc8d222c6e1a628
-change-id: 20251004-arm-pvpanic-84a7d7b67d8d
+While I'm merging this as is, I ask that you please address these
+unreasonably long lines in this patch by a patch on top please.
 
-Best regards,
 -- 
-Alexander Gryanko <xpahos@gmail.com>
+MST
 
 

@@ -4,104 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE71DCAC5B8
-	for <qemu-arm@archiver.kernel.org>; Sun,  5 Oct 2025 19:27:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2E27CAC5B8
+	for <qemu-arm@archiver.kernel.org>; Sun,  5 Oct 2025 20:17:48 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v5UDv-0007bB-9j; Sun, 05 Oct 2025 15:16:47 -0400
+	id 1v5VAh-0000vx-Jx; Sun, 05 Oct 2025 16:17:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1v5UDt-0007aJ-UP
- for qemu-arm@nongnu.org; Sun, 05 Oct 2025 15:16:45 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1v5UDs-0006PF-4m
- for qemu-arm@nongnu.org; Sun, 05 Oct 2025 15:16:45 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1759691803;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=G3bx+7LM3Llba1e5OHMznPMG9tdv+rmdE+oLgoJki90=;
- b=Wnh9HvbcU4TCRVStgpWCv8U2sUbj6BcWvWi16u2mOiuOYd5j0P8soZza+ufUXaPXGGmvf0
- 4uO6+5FBuFoVDy0/nCShiw1AECL86lzfBb6FwZG7QMuT3HEGIz1dyt+lD3/yQxfwRtHH/U
- h8SEomh6f4t/duKzMSscnh6HsrQx304=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-96-iNZV7QlNOkKAd7vy4cKt-Q-1; Sun, 05 Oct 2025 15:16:41 -0400
-X-MC-Unique: iNZV7QlNOkKAd7vy4cKt-Q-1
-X-Mimecast-MFC-AGG-ID: iNZV7QlNOkKAd7vy4cKt-Q_1759691800
-Received: by mail-wr1-f69.google.com with SMTP id
- ffacd0b85a97d-40cfb98eddbso2120873f8f.0
- for <qemu-arm@nongnu.org>; Sun, 05 Oct 2025 12:16:41 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <xpahos@gmail.com>) id 1v5VAY-0000u6-8M
+ for qemu-arm@nongnu.org; Sun, 05 Oct 2025 16:17:22 -0400
+Received: from mail-lj1-x234.google.com ([2a00:1450:4864:20::234])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <xpahos@gmail.com>) id 1v5VAT-0005IX-VL
+ for qemu-arm@nongnu.org; Sun, 05 Oct 2025 16:17:21 -0400
+Received: by mail-lj1-x234.google.com with SMTP id
+ 38308e7fff4ca-36d77ae9de5so40314111fa.2
+ for <qemu-arm@nongnu.org>; Sun, 05 Oct 2025 13:17:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1759695435; x=1760300235; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=X5uTlnB3NhUwPh8jYQG8VqFwbODJaHhYoBAK9FpIpFM=;
+ b=BFgUP3GjKt4T9Cbz4b1ZRiqKR7DO4gp0T/usHLrtarwL+LUqKCR4ya8uBNJNSqZJ3u
+ LaM+fMA2p8eL/wNrQnyJtqpIuPA+bc8k733rwdZLWrSJ9nIEDVtK2IfXQIN2r+Eg353D
+ mB9RANOZ1xT3xDVsTD0eps3ag6fUcuRbTOqVfZpm/YXR0cQ4iHAf/YabWdTizDehMlUs
+ 1bIma8Fqb/eCipqz5Z3H1pJCbzMSOaPMxaczQpNQdN0ubUTkkmpoPrrs0OUxwS7zB8XT
+ /2d/NNejph1kWeHbFSrrAeV2bpTPkG70d19m1gY+iLOyC2B7o8CKndp0+WW4UgOpY+RP
+ 4hMg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759691800; x=1760296600;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=G3bx+7LM3Llba1e5OHMznPMG9tdv+rmdE+oLgoJki90=;
- b=F7KuKIJtP8tOT9v9PklfHoLKxx6g2+RcfHrj7M8CD/fRlRXuP7tT2H0CqcQ0txN/j7
- fGi1jY7iKb82tBfdoGL/wY5jYLzIomY4J0H4ojR0uffmDXKNp4LQVbqe+VAISfF2eftQ
- w+5QhWo0pbcHOwICW9t8QalWDZXdRvlAyItzCwxT2xKrGxwQUaVEDf3Yw5spmql64Ivs
- yvbyyndb/9D3tBffEefiK8d2KIMyfPSIZMV0qqbE1Wha809z3DKI1ell88l3fSKf6/7R
- ugOVHCOVRcl82zCvn5L7DuJofFQi19GgRmG5quLiGgx2i0yqU3UndmHoae2ZddiQb19G
- GUKQ==
+ d=1e100.net; s=20230601; t=1759695435; x=1760300235;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=X5uTlnB3NhUwPh8jYQG8VqFwbODJaHhYoBAK9FpIpFM=;
+ b=WPLrxy4ZhoClc2o56RbOSGQVKmO4jVAxWmdl8vYdDLuKZ9Wu/lQMvmRBFToOQR7nuc
+ a3bpq5qj9M2ykzRl6fNNdC6gNlZx4v2Rf+QEzuA167Lfsn2KPe11NrXJZ2ts2eAHFQlW
+ XuZFzIVGq369qhnKY8cX7P9q3oC7xQkIHqqH8xvD9ICMrs/ZaYcF1Bwk8bHTAKBxSHwF
+ 1b/pltxNZYX1PjGoDC9tcPz7UvbZmMY/9PcnWNTxHzSMWWrwjW2F5FgQ4ighOQAGZZYq
+ l4gctdkVYfYkrwz/DBRzSSFNHiLzQYqB4tO44+YTEAuYRADiaAfcDKa/LP31ZSOCoM4q
+ AQLQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVhSkxx16c7PQ97PJ7UE3UCPfffCK1nI1FX9rWgh/jiP/hu8UVb7X7mqRl41VCM2d0/cd4pEWqqvQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yy0CqFrpSRX2FksNbYH5HsXEC2uMwRmNXOLahT7LQTeAWdBOQlT
- TiVpO6C29Q0gzEGAV5j4lEZ3YqXMYLGuXEjfAoGsTCyjRycJH/o1g9ijF8ssFE6tUUSW9ce1I1f
- AEZOQ+ZtSpk7D8FkTVN4LUgiCqZD3eRdxHr6m0oNlbTrQJCYkEkF4iUZ0k0Lbhw==
-X-Gm-Gg: ASbGncvWKR+wTyKsOTXTfGpMh/g8beY/Useb6N3QSwsS2f0C1SlelU6RFCDrGXZxJI/
- p/SoJ/mWwFo8A2cq2y3GQBqKsUxbFmvO04o9UQGA1Ae/jmuRdu2w9JpdEAve5ePFVusMVoGruDW
- KIXQflIpndnogLV4mQbUin/VgcqLaDuTafarsiFMKBTNKDyD4ODCvMHLnVmkVBngyIiFDJi60vs
- S7VQUBjVy9KEafOJLtz51bHEAlxi+Chv2LS+lYjorcn8LSUw2sSVpHGH8ABaM2d2XGR+brgniEG
- 4ht1NdDF1rUw3Sy4z1pWG4LlLMcWTvQ8kiM1eww=
-X-Received: by 2002:a05:600c:6b70:b0:46e:33ed:bca4 with SMTP id
- 5b1f17b1804b1-46e68c0753amr67499535e9.15.1759691799685; 
- Sun, 05 Oct 2025 12:16:39 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEuGB3l3pIDXSGVrRuUrUnctbOBh/MSrjC9rDycwWkkElXPcoaV30umY+0jkaNBvq5iVZK9zA==
-X-Received: by 2002:a05:600c:6b70:b0:46e:33ed:bca4 with SMTP id
- 5b1f17b1804b1-46e68c0753amr67499405e9.15.1759691799158; 
- Sun, 05 Oct 2025 12:16:39 -0700 (PDT)
-Received: from redhat.com ([2a0d:6fc0:1518:6900:b69a:73e1:9698:9cd3])
+ AJvYcCV2kDHtn3UxOOO+1stiFALkoL/0w+VV9coVadEjChfAUo8jSDPK5kIAq94/CFa60Cp24ITc0KOZ8w==@nongnu.org
+X-Gm-Message-State: AOJu0Yy1Vypz7j3e/BCE2Prkq0JAkYpldcAz3H1iDmAtUk8B3fEhu/Ou
+ DzGDeDf1H3vV33IiReHe/3hNnoirUJyDJSCxvhuwAwsgWlRC2L6oAIpY
+X-Gm-Gg: ASbGnct41yJId/SY0geIfYzMgG5MQXAkcfe1Rf4OkPvMO3UhM8Uxaxdp4dOMQUVEv0Q
+ 1+Ypa+NB7lQQe0IP7063oM791y5O2ftuemVc6BELsD7dSR6DSA74Z6NYf4jwxk4czDuytdJ4AvM
+ cHuKfP9bm1sYoCZcE4uvMU9AhgrD1WpRq7CGQad6DE/clm6n644220mFy8ZywRs8z6XzehmPXTt
+ wiblY0vmM048UMvyfEnd33YBgV7rfBKXDEQ/W4v6hHa0U/JsuXk+2wm6UxcF9mHSBo3Xa1hZGJA
+ NqY5uExczQP3zk/7B+pratJUjQh1TwJuIqDtsBJy71tm21TK+tNgY7SWMDXZpjsrCY1fW1P5jzK
+ bBNPupTHuSxqSJM9b8MB1RHaCF3xCWkfRwN9cqeGoEBBHvEMTyP0/DHakP4Q=
+X-Google-Smtp-Source: AGHT+IGKR8NwEjUi/nxpi6CipCp/3M4Nelq5KGh1KFZpePxbMC1ihlTVsXZ7lNha3wXP+mXepM022w==
+X-Received: by 2002:a2e:bd02:0:b0:372:17eb:1191 with SMTP id
+ 38308e7fff4ca-374c37511dcmr31991331fa.18.1759695434577; 
+ Sun, 05 Oct 2025 13:17:14 -0700 (PDT)
+Received: from xpahos-osx.yandex.net ([2a02:6bf:8080:c37::1:1])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-46f9c8873f1sm22226505e9.8.2025.10.05.12.16.37
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 05 Oct 2025 12:16:38 -0700 (PDT)
-Date: Sun, 5 Oct 2025 15:16:37 -0400
-From: "Michael S. Tsirkin" <mst@redhat.com>
+ 38308e7fff4ca-373ba44818csm38204561fa.41.2025.10.05.13.17.11
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Sun, 05 Oct 2025 13:17:13 -0700 (PDT)
+From: xpahos@gmail.com
 To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- Jonathan Cameron <Jonathan.Cameron@huawei.com>,
- Igor Mammedov <imammedo@redhat.com>, Ani Sinha <anisinha@redhat.com>,
- Dongjiu Geng <gengdongjiu1@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
- kvm@vger.kernel.org
-Subject: [PULL 16/75] acpi/ghes: Cleanup the code which gets ghes ged state
-Message-ID: <1547c5a5ff894eac9d3666ded3cbf80ce82a28e4.1759691708.git.mst@redhat.com>
-References: <cover.1759691708.git.mst@redhat.com>
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org,
+ Alexander Gryanko <xpahos@gmail.com>
+Subject: [PATCH v2] hw/arm: add pvpanic mmio device for arm
+Date: Sun,  5 Oct 2025 23:16:49 +0300
+Message-ID: <CC5A0011-CD14-40F9-8023-8BF5F989BCCF@gmail.com>
+X-Mailer: git-send-email 2.39.5 (Apple Git-154)
 MIME-Version: 1.0
-In-Reply-To: <cover.1759691708.git.mst@redhat.com>
-X-Mailer: git-send-email 2.27.0.106.g8ac3dc51b1
-X-Mutt-Fcc: =sent
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: iLMZFlWe8X9VcPQrwU8TrNk7GTTQ7q6DgPsvFWclKMM_1759691800
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=mst@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
+Content-Type: text/plain; charset="utf-8"
+X-Change-ID: 20251005-arm-pvpanic-8e3e8fd05e95
+X-Mailer: b4 0.14.3
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1759689277; l=3360;
+ i=xpahos@gmail.com; s=20251004; h=from:subject:message-id;
+ bh=8vahP4rJaiEcZHPpEIyes8fe5YhSlu876t+4bYa3n2I=;
+ b=vONAhLi4eVISLyW7o+8CipIPEObfmTUCcqjBA6B8U4KZFyvnayVlS3I/UIOAageN477CuaXAb
+ U1enPaZJZw4DFsk1B1Aeo+g+ZNj09r3sdN+WVEP76yahEAJGXt2RxG2
+X-Developer-Key: i=xpahos@gmail.com; a=ed25519;
+ pk=bsSvP3Tn7PVKgjJT3BMV3jlAwSqreKIM4099C1r51eg=
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::234;
+ envelope-from=xpahos@gmail.com; helo=mail-lj1-x234.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.43,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -116,213 +106,103 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
+Message-ID: <20251005201649.xRRl2oWXoyJrtcwr4C2UhOWmpWvO1IgiJxIPNk4KKCI@z>
 
-From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+From: Alexander Gryanko <xpahos@gmail.com>
 
-Move the check logic into a common function and simplify the
-code which checks if GHES is enabled and was properly setup.
+Currently, pvpanic is available in three device types: ISA,
+MMIO, and PCI. For early stages of system initialisation
+before PCI enumeration, only ISA and MMIO are suitable.
+ISA is specific to the x86 platform; only MMIO devices
+can be used for ARM. It is not possible to specify a
+device as on the x86 platform (-device pvpanic); the
+only possible way is to add an MMIO device to the dtb,
+which can be implemented by manually adding new functions
+to the QEMU code, as was done in the VMApple implementation.
 
-Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
-Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
-Message-ID: <2bbb1d3eb88b0a668114adef2f1c2a94deebba0e.1758610789.git.mchehab+huawei@kernel.org>
-Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
+Signed-off-by: Alexander Gryanko <xpahos@gmail.com>
 ---
- include/hw/acpi/ghes.h | 14 +++++++-------
- hw/acpi/ghes-stub.c    |  7 ++++---
- hw/acpi/ghes.c         | 38 +++++++++++---------------------------
- target/arm/kvm.c       |  7 +++++--
- 4 files changed, 27 insertions(+), 39 deletions(-)
+ hw/arm/virt.c         | 26 ++++++++++++++++++++++++++
+ include/hw/arm/virt.h |  1 +
+ 2 files changed, 27 insertions(+)
 
-diff --git a/include/hw/acpi/ghes.h b/include/hw/acpi/ghes.h
-index 39619a2457..f96ac3e85c 100644
---- a/include/hw/acpi/ghes.h
-+++ b/include/hw/acpi/ghes.h
-@@ -66,7 +66,6 @@ enum {
- 
- typedef struct AcpiGhesState {
-     uint64_t hw_error_le;
--    bool present; /* True if GHES is present at all on this board */
- } AcpiGhesState;
- 
- void acpi_build_hest(GArray *table_data, GArray *hardware_errors,
-@@ -74,15 +73,16 @@ void acpi_build_hest(GArray *table_data, GArray *hardware_errors,
-                      const char *oem_id, const char *oem_table_id);
- void acpi_ghes_add_fw_cfg(AcpiGhesState *vms, FWCfgState *s,
-                           GArray *hardware_errors);
--int acpi_ghes_memory_errors(uint16_t source_id, uint64_t error_physical_addr);
--void ghes_record_cper_errors(const void *cper, size_t len,
-+int acpi_ghes_memory_errors(AcpiGhesState *ags, uint16_t source_id,
-+                            uint64_t error_physical_addr);
-+void ghes_record_cper_errors(AcpiGhesState *ags, const void *cper, size_t len,
-                              uint16_t source_id, Error **errp);
- 
- /**
-- * acpi_ghes_present: Report whether ACPI GHES table is present
-+ * acpi_ghes_get_state: Get a pointer for ACPI ghes state
-  *
-- * Returns: true if the system has an ACPI GHES table and it is
-- * safe to call acpi_ghes_memory_errors() to record a memory error.
-+ * Returns: a pointer to ghes state if the system has an ACPI GHES table,
-+ * NULL, otherwise.
-  */
--bool acpi_ghes_present(void);
-+AcpiGhesState *acpi_ghes_get_state(void);
- #endif
-diff --git a/hw/acpi/ghes-stub.c b/hw/acpi/ghes-stub.c
-index 7cec1812da..40f660c246 100644
---- a/hw/acpi/ghes-stub.c
-+++ b/hw/acpi/ghes-stub.c
-@@ -11,12 +11,13 @@
- #include "qemu/osdep.h"
- #include "hw/acpi/ghes.h"
- 
--int acpi_ghes_memory_errors(uint16_t source_id, uint64_t physical_address)
-+int acpi_ghes_memory_errors(AcpiGhesState *ags, uint16_t source_id,
-+                            uint64_t physical_address)
- {
-     return -1;
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 02209fadcf..78e466f935 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -39,6 +39,7 @@
+ #include "hw/arm/virt.h"
+ #include "hw/block/flash.h"
+ #include "hw/display/ramfb.h"
++#include "hw/misc/pvpanic.h"
+ #include "net/net.h"
+ #include "system/device_tree.h"
+ #include "system/numa.h"
+@@ -182,6 +183,7 @@ static const MemMapEntry base_memmap[] = {
+     [VIRT_UART0] =              { 0x09000000, 0x00001000 },
+     [VIRT_RTC] =                { 0x09010000, 0x00001000 },
+     [VIRT_FW_CFG] =             { 0x09020000, 0x00000018 },
++    [VIRT_PVPANIC] =            { 0x09021000, 0x00000002 },
+     [VIRT_GPIO] =               { 0x09030000, 0x00001000 },
+     [VIRT_UART1] =              { 0x09040000, 0x00001000 },
+     [VIRT_SMMU] =               { 0x09050000, SMMU_IO_LEN },
+@@ -276,6 +278,28 @@ static bool ns_el2_virt_timer_present(void)
+         arm_feature(env, ARM_FEATURE_EL2) && cpu_isar_feature(aa64_vh, cpu);
  }
  
--bool acpi_ghes_present(void)
-+AcpiGhesState *acpi_ghes_get_state(void)
- {
--    return false;
-+    return NULL;
- }
-diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
-index b709c177cd..84b891fd3d 100644
---- a/hw/acpi/ghes.c
-+++ b/hw/acpi/ghes.c
-@@ -360,18 +360,12 @@ void acpi_ghes_add_fw_cfg(AcpiGhesState *ags, FWCfgState *s,
-     /* Create a read-write fw_cfg file for Address */
-     fw_cfg_add_file_callback(s, ACPI_HW_ERROR_ADDR_FW_CFG_FILE, NULL, NULL,
-         NULL, &(ags->hw_error_le), sizeof(ags->hw_error_le), false);
--
--    ags->present = true;
- }
- 
- static void get_hw_error_offsets(uint64_t ghes_addr,
-                                  uint64_t *cper_addr,
-                                  uint64_t *read_ack_register_addr)
- {
--    if (!ghes_addr) {
--        return;
--    }
--
-     /*
-      * non-HEST version supports only one source, so no need to change
-      * the start offset based on the source ID. Also, we can't validate
-@@ -390,35 +384,20 @@ static void get_hw_error_offsets(uint64_t ghes_addr,
-     *read_ack_register_addr = ghes_addr + sizeof(uint64_t);
- }
- 
--void ghes_record_cper_errors(const void *cper, size_t len,
-+void ghes_record_cper_errors(AcpiGhesState *ags, const void *cper, size_t len,
-                              uint16_t source_id, Error **errp)
- {
-     uint64_t cper_addr = 0, read_ack_register_addr = 0, read_ack_register;
--    AcpiGedState *acpi_ged_state;
--    AcpiGhesState *ags;
- 
-     if (len > ACPI_GHES_MAX_RAW_DATA_LENGTH) {
-         error_setg(errp, "GHES CPER record is too big: %zd", len);
-         return;
-     }
- 
--    acpi_ged_state = ACPI_GED(object_resolve_path_type("", TYPE_ACPI_GED,
--                                                       NULL));
--    if (!acpi_ged_state) {
--        error_setg(errp, "Can't find ACPI_GED object");
--        return;
--    }
--    ags = &acpi_ged_state->ghes_state;
--
-     assert(ACPI_GHES_ERROR_SOURCE_COUNT == 1);
-     get_hw_error_offsets(le64_to_cpu(ags->hw_error_le),
-                          &cper_addr, &read_ack_register_addr);
- 
--    if (!cper_addr) {
--        error_setg(errp, "can not find Generic Error Status Block");
--        return;
--    }
--
-     cpu_physical_memory_read(read_ack_register_addr,
-                              &read_ack_register, sizeof(read_ack_register));
- 
-@@ -444,7 +423,8 @@ void ghes_record_cper_errors(const void *cper, size_t len,
-     return;
- }
- 
--int acpi_ghes_memory_errors(uint16_t source_id, uint64_t physical_address)
-+int acpi_ghes_memory_errors(AcpiGhesState *ags, uint16_t source_id,
-+                            uint64_t physical_address)
- {
-     /* Memory Error Section Type */
-     const uint8_t guid[] =
-@@ -470,7 +450,7 @@ int acpi_ghes_memory_errors(uint16_t source_id, uint64_t physical_address)
-     acpi_ghes_build_append_mem_cper(block, physical_address);
- 
-     /* Report the error */
--    ghes_record_cper_errors(block->data, block->len, source_id, &errp);
-+    ghes_record_cper_errors(ags, block->data, block->len, source_id, &errp);
- 
-     g_array_free(block, true);
- 
-@@ -482,7 +462,7 @@ int acpi_ghes_memory_errors(uint16_t source_id, uint64_t physical_address)
-     return 0;
- }
- 
--bool acpi_ghes_present(void)
-+AcpiGhesState *acpi_ghes_get_state(void)
- {
-     AcpiGedState *acpi_ged_state;
-     AcpiGhesState *ags;
-@@ -491,8 +471,12 @@ bool acpi_ghes_present(void)
-                                                        NULL));
- 
-     if (!acpi_ged_state) {
--        return false;
-+        return NULL;
-     }
-     ags = &acpi_ged_state->ghes_state;
--    return ags->present;
++static void create_pvpanic(VirtMachineState *vms)
++{
++    char *nodename;
++    MachineState *ms = MACHINE(vms);
++    DeviceState *dev = qdev_new(TYPE_PVPANIC_MMIO_DEVICE);
++    SysBusDevice *s = SYS_BUS_DEVICE(dev);
 +
-+    if (!ags->hw_error_le) {
-+        return NULL;
-+    }
-+    return ags;
- }
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index b8a1c071f5..891d4fcde9 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -2433,10 +2433,12 @@ void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
++    hwaddr base = vms->memmap[VIRT_PVPANIC].base;
++    hwaddr size = vms->memmap[VIRT_PVPANIC].size;
++
++    sysbus_realize_and_unref(s, &error_fatal);
++    sysbus_mmio_map(s, 0, base);
++
++    nodename = g_strdup_printf("/pvpanic@%" PRIx64, base);
++    qemu_fdt_add_subnode(ms->fdt, nodename);
++    qemu_fdt_setprop_string(ms->fdt, nodename, "compatible",
++                            "qemu,pvpanic-mmio");
++    qemu_fdt_setprop_sized_cells(ms->fdt, nodename, "reg",
++                                 2, base, 2, size);
++    g_free(nodename);
++}
++
+ static void create_fdt(VirtMachineState *vms)
  {
-     ram_addr_t ram_addr;
-     hwaddr paddr;
-+    AcpiGhesState *ags;
+     MachineState *ms = MACHINE(vms);
+@@ -2498,6 +2522,8 @@ static void machvirt_init(MachineState *machine)
+     create_pcie(vms);
+     create_cxl_host_reg_region(vms);
  
-     assert(code == BUS_MCEERR_AR || code == BUS_MCEERR_AO);
++    create_pvpanic(vms);
++
+     if (has_ged && aarch64 && firmware_loaded && virt_is_acpi_enabled(vms)) {
+         vms->acpi_dev = create_acpi_ged(vms);
+     } else {
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index ea2cff05b0..39bf07c9c1 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -81,6 +81,7 @@ enum {
+     VIRT_NVDIMM_ACPI,
+     VIRT_PVTIME,
+     VIRT_ACPI_PCIHP,
++    VIRT_PVPANIC,
+     VIRT_LOWMEMMAP_LAST,
+ };
  
--    if (acpi_ghes_present() && addr) {
-+    ags = acpi_ghes_get_state();
-+    if (ags && addr) {
-         ram_addr = qemu_ram_addr_from_host(addr);
-         if (ram_addr != RAM_ADDR_INVALID &&
-             kvm_physical_memory_addr_from_host(c->kvm_state, addr, &paddr)) {
-@@ -2454,7 +2456,8 @@ void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
-              */
-             if (code == BUS_MCEERR_AR) {
-                 kvm_cpu_synchronize_state(c);
--                if (!acpi_ghes_memory_errors(ACPI_HEST_SRC_ID_SEA, paddr)) {
-+                if (!acpi_ghes_memory_errors(ags, ACPI_HEST_SRC_ID_SEA,
-+                                             paddr)) {
-                     kvm_inject_arm_sea(c);
-                 } else {
-                     error_report("failed to record the error");
+
+---
+base-commit: bd6aa0d1e59d71218c3eee055bc8d222c6e1a628
+change-id: 20251005-arm-pvpanic-8e3e8fd05e95
+
+Best regards,
 -- 
-MST
+Alexander Gryanko <xpahos@gmail.com>
 
 

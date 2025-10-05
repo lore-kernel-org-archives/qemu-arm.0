@@ -4,101 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97175CAC5BB
-	for <qemu-arm@archiver.kernel.org>; Sun,  5 Oct 2025 19:21:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE252CAC5B8
+	for <qemu-arm@archiver.kernel.org>; Sun,  5 Oct 2025 19:22:30 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v5UEe-0008BT-KS; Sun, 05 Oct 2025 15:17:33 -0400
+	id 1v5UEG-0007l2-CW; Sun, 05 Oct 2025 15:17:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1v5UEP-0007y1-Ho
- for qemu-arm@nongnu.org; Sun, 05 Oct 2025 15:17:23 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1v5UEA-0007hB-7U
+ for qemu-arm@nongnu.org; Sun, 05 Oct 2025 15:17:02 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1v5UEL-0006Tq-Uj
- for qemu-arm@nongnu.org; Sun, 05 Oct 2025 15:17:16 -0400
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1v5UE6-0006Rn-BF
+ for qemu-arm@nongnu.org; Sun, 05 Oct 2025 15:17:00 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1759691833;
+ s=mimecast20190719; t=1759691817;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=WnDfxrNxACMbmdDqRpMpScz5AxDAbZ6usd6ALPkfGkQ=;
- b=fFEuK8KzTDlEKJHWUcYICVZVmA+LFUFMjEuJRWpwTs8+FwrOZr1OmCaqqMZsi1YnC0nIe5
- avRwjER8MloBUdKFCjTtIKJqtsBlF2r8s/yFv4S8F+sU64c1MbTRXIvQ6xuyS19mhiJqBn
- 2tCjwTPTDJFIPexG8fpVezujR8IG22Q=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=xavtbsO28Ury7dy3GVu2kZqo6kk8GLRJLz1jzaO4qT4=;
+ b=GZT7I4CBzZn50goRAoNn6WTJk2A1g/ElWPT1QM8217u/iY2H756H5B1c6Tr+SkcWSgckU/
+ LHACx6Q222qDgsCJVCV64mwwTaXkhg5IMaDZivqz69z7XRb2NXMJ2SMu4sfzQNUnxQ6DY/
+ zRdROxM/u/1AfoBBBRd1Ts0Nt87yXIs=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-683-Vi6OGEfrNJqC-DNHCBHwdQ-1; Sun, 05 Oct 2025 15:17:12 -0400
-X-MC-Unique: Vi6OGEfrNJqC-DNHCBHwdQ-1
-X-Mimecast-MFC-AGG-ID: Vi6OGEfrNJqC-DNHCBHwdQ_1759691831
-Received: by mail-wr1-f72.google.com with SMTP id
- ffacd0b85a97d-3f030846a41so2461278f8f.2
- for <qemu-arm@nongnu.org>; Sun, 05 Oct 2025 12:17:11 -0700 (PDT)
+ us-mta-484-HPXyss3SNAOP9kig6NtCZQ-1; Sun, 05 Oct 2025 15:16:56 -0400
+X-MC-Unique: HPXyss3SNAOP9kig6NtCZQ-1
+X-Mimecast-MFC-AGG-ID: HPXyss3SNAOP9kig6NtCZQ_1759691815
+Received: by mail-wm1-f71.google.com with SMTP id
+ 5b1f17b1804b1-46e36686ca1so44515115e9.2
+ for <qemu-arm@nongnu.org>; Sun, 05 Oct 2025 12:16:56 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759691831; x=1760296631;
+ d=1e100.net; s=20230601; t=1759691815; x=1760296615;
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=WnDfxrNxACMbmdDqRpMpScz5AxDAbZ6usd6ALPkfGkQ=;
- b=pf2XMF9tp5yW5sK6OGbd10poNxOyL4z6p0h7ehMcOXxqk+JB8wukVyS7cw+Q6yM81W
- qi+xWW9eUAxkLhy8TmR0h+bC9BFt4TM7IKGDrpMyTsMHyczNSyu1yTdc148fGSc+cA7l
- C4nsEJoQZ3VnExt1rSWse/qyG3S2olo+wKpswfU2gli2ETiiV0CT9TdDmPAlLbXWiK0Q
- xQwN7qJC1tbAq5U1myVCr9dUh2Fep6JEpXPugigZQI2gIB0fOUnwNl06tIQA7LDMyEu4
- bswNiWqo9ZjFErwR/QByJ+1EAk+vK0B3JG0oeFXdXEvFsplh5PNRPiIuOlZiJHoXrb1X
- piew==
+ bh=xavtbsO28Ury7dy3GVu2kZqo6kk8GLRJLz1jzaO4qT4=;
+ b=gf4wrsl78IKDPyZqO51MTo9pN4JNClTIePus8AoDZ4OKIBLyj9mee81zAPkghjea5/
+ RS2n39Og6cGFoTSTJuaZT3Lx1cReArepG5uAXQwLgYVpdjDN1xFANJo5WIJfk7ChILXJ
+ XWm0LxBity6aY+l+8v/McKeIOEDB3r0DTgEQf5E8+JF2Gbgo3HJPdZfqPuLK7fzG1dto
+ spxzL58HxXbOp6nm8+6nJcDeLWBig0EXiHCEghJdA1/T+TlPO0WcPgLMLJSimdic5WDz
+ l3ze4pCFWTOT3UFKlOdWmDu4SNeTGl1p8FHw3BNxBwLsWh+kmOtwtXivbsbnPC89O/GX
+ pO/g==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXvJuzC4qucV8cfunh/WkReJBNUimSyuzwirJTG3WYaJ/fEZPn9DcJx12lUpyREyYQYgyHCe8BsuQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yyn+mx0ZZpZ4aK0glw9uVXGmc3W+Mgr5W9U8kscoOREdPY1Dk0i
- p+CVa/xg0mrLPkmEfA0cQZaRfJSOatGSZuqaGdqUDWJsjRksccOBuQPlv32gjOubgDSKZwLaVjg
- fi4UawKsYLxbFIc3tVo54He+0DyC1H9KOiODBd81q86DfMs7nWKIdzQ==
-X-Gm-Gg: ASbGncs9GhOkip4IBFhNawDn/gVf5+GrGBLFsKnsaodwVxKFd0A6bekGs8dy0J7jKcD
- +uDyt+Kz+JPivtc85SYO4Gh+d1y7iW+gpcGKmmhE6r7SSlztV3aAPAxgQ9FIbEWvKo2GP0mA4Nm
- jgSN7AHem1XYyoLHdzLYUrTWu8wT6iVxJzrDqhth8joZylPT4fIrjRGHihAqXuAPwYWcXuVkZkN
- H739RUdnjqyAd6z5hr8z/ND8Bu0Txe7eQWtNP0VRI0YRNXckoZxQ5JNYYZIEJKNDJuLHbvR9USL
- v7KycrdZK7825jnfh5KEJwL1js/nbO9Ai9t5I48=
-X-Received: by 2002:a05:600d:420d:b0:45b:47e1:ef6d with SMTP id
- 5b1f17b1804b1-46e71172104mr65548695e9.36.1759691830774; 
- Sun, 05 Oct 2025 12:17:10 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IF9KHgQKdExKVBqM1EG7cJqjJT/Waixo/3fiECA9mcAeyF3g2gDVdnVPPHr8FrKC3uk1qB7Lw==
-X-Received: by 2002:a05:600d:420d:b0:45b:47e1:ef6d with SMTP id
- 5b1f17b1804b1-46e71172104mr65548595e9.36.1759691830274; 
- Sun, 05 Oct 2025 12:17:10 -0700 (PDT)
+ AJvYcCURnubYlynsq+SMBrVuTjAWfcQOfEcs8x0vj37geeoAM2wEXKgxsYoHa0HlDcrdZnHotRnIm0zguw==@nongnu.org
+X-Gm-Message-State: AOJu0YwN7Vd6c4ecZSeSbWlbf8ebzMinSpNnqvJsye9le0F6Cy9vyObm
+ iNTghLGzNCbbk9cJn2KI2jDRNLrcmdrzWpJ4WU2/mr+/y+smD5obU2tXSAfhoounO3rCo6ZR201
+ LLG7ntuCR1FEVEJxv7Jg976N+utqtVWNNW7gBFWFjdYU6PNqZFnPvkA==
+X-Gm-Gg: ASbGncvuKCOZqCVw+TvXF10+518t2tHwNdbeiuq76kVkCF/g8a0Mw1Ny4yLEC85+28R
+ +aWqNQXXHNXY9WqEaKYX3sEuOsTQQKO8WHdHajccftquZiyTHJ8hj24VjhGZHw+Mn7hAhXD4FtO
+ BfpX72mjIYBSJTw7o/r96rG7ytYW1A4W/bN57w0pH8pcRrr8TPaqgpPsaYF8Rqka0YGX80CRMYB
+ E0UghVUJY93gv+lkQQtVClkSL2ldF9Y1c9deXChNzSxYw2OCnGRxysjntteJAhYvKYwFERmXaYB
+ j9g9qT4Dj251oyVZbvBPafOuLMqPPrq7PTQ+8B0=
+X-Received: by 2002:a05:600c:154a:b0:46e:45d3:82fa with SMTP id
+ 5b1f17b1804b1-46e7226ec1amr71530275e9.10.1759691815187; 
+ Sun, 05 Oct 2025 12:16:55 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEgwK2V48bBV5m648z4rnqwwnHr2PY/NKOjrKUyPg13UZLzoeVoUF8y4L8b9Nzty4+OleOLMA==
+X-Received: by 2002:a05:600c:154a:b0:46e:45d3:82fa with SMTP id
+ 5b1f17b1804b1-46e7226ec1amr71530125e9.10.1759691814751; 
+ Sun, 05 Oct 2025 12:16:54 -0700 (PDT)
 Received: from redhat.com ([2a0d:6fc0:1518:6900:b69a:73e1:9698:9cd3])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-46e723432c9sm124149855e9.1.2025.10.05.12.17.09
+ 5b1f17b1804b1-46e61a0241bsm215815915e9.11.2025.10.05.12.16.53
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 05 Oct 2025 12:17:09 -0700 (PDT)
-Date: Sun, 5 Oct 2025 15:17:08 -0400
+ Sun, 05 Oct 2025 12:16:54 -0700 (PDT)
+Date: Sun, 5 Oct 2025 15:16:52 -0400
 From: "Michael S. Tsirkin" <mst@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
  Jonathan Cameron <Jonathan.Cameron@huawei.com>,
- Igor Mammedov <imammedo@redhat.com>,
- Dongjiu Geng <gengdongjiu1@gmail.com>, qemu-arm@nongnu.org
-Subject: [PULL 30/75] docs: hest: add new "etc/acpi_table_hest_addr" and
- update workflow
-Message-ID: <92aad3fc4a0f511819a18a443797069aff77b9ba.1759691708.git.mst@redhat.com>
+ Igor Mammedov <imammedo@redhat.com>, Ani Sinha <anisinha@redhat.com>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Yanan Wang <wangyanan55@huawei.com>, Zhao Liu <zhao1.liu@intel.com>,
+ qemu-arm@nongnu.org
+Subject: [PULL 23/75] acpi/generic_event_device: add logic to detect if HEST
+ addr is available
+Message-ID: <f3f747ddcfc9af2c2c58f70a68723b99db82f778.1759691708.git.mst@redhat.com>
 References: <cover.1759691708.git.mst@redhat.com>
 MIME-Version: 1.0
 In-Reply-To: <cover.1759691708.git.mst@redhat.com>
 X-Mailer: git-send-email 2.27.0.106.g8ac3dc51b1
 X-Mutt-Fcc: =sent
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: qcU8JLF1cwLFqrIJjQuKYls2H46Mg6jESTxJ0EntyiA_1759691831
+X-Mimecast-MFC-PROC-ID: abaqYUq9VwOGdlCCtQakNjgsqOltioDRAfhMhKZnUpE_1759691815
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=mst@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=mst@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -24
 X-Spam_score: -2.5
 X-Spam_bar: --
 X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.43,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -118,65 +123,97 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 
-While the HEST layout didn't change, there are some internal
-changes related to how offsets are calculated and how memory error
-events are triggered.
-
-Update specs to reflect such changes.
+Create a new property (x-has-hest-addr) and use it to detect if
+the GHES table offsets can be calculated from the HEST address
+(qemu 10.0 and upper) or via the legacy way via an offset obtained
+from the hardware_errors firmware file.
 
 Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
 Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
-Message-ID: <e3e8bd92ce40d997c67ac1d4d973c0041b8f59fc.1758610789.git.mchehab+huawei@kernel.org>
+Message-ID: <c4eb3cf32a3f158ae62dac29e866ac3f373956c3.1758610789.git.mchehab+huawei@kernel.org>
 Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
 ---
- docs/specs/acpi_hest_ghes.rst | 28 +++++++++++++++++-----------
- 1 file changed, 17 insertions(+), 11 deletions(-)
+ hw/acpi/generic_event_device.c |  2 ++
+ hw/arm/virt-acpi-build.c       | 18 ++++++++++++++++--
+ hw/core/machine.c              |  5 ++++-
+ 3 files changed, 22 insertions(+), 3 deletions(-)
 
-diff --git a/docs/specs/acpi_hest_ghes.rst b/docs/specs/acpi_hest_ghes.rst
-index c3e9f8d9a7..aaf7b1ad11 100644
---- a/docs/specs/acpi_hest_ghes.rst
-+++ b/docs/specs/acpi_hest_ghes.rst
-@@ -89,12 +89,21 @@ Design Details
-     addresses in the "error_block_address" fields with a pointer to the
-     respective "Error Status Data Block" in the "etc/hardware_errors" blob.
+diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
+index 55998303c2..b1ff6ab74d 100644
+--- a/hw/acpi/generic_event_device.c
++++ b/hw/acpi/generic_event_device.c
+@@ -349,6 +349,8 @@ static const Property acpi_ged_properties[] = {
+                      pcihp_state.use_acpi_hotplug_bridge, 0),
+     DEFINE_PROP_LINK("bus", AcpiGedState, pcihp_state.root,
+                      TYPE_PCI_BUS, PCIBus *),
++    DEFINE_PROP_BOOL("x-has-hest-addr", AcpiGedState,
++                     ghes_state.use_hest_addr, false),
+ };
  
--(8) QEMU defines a third and write-only fw_cfg blob which is called
--    "etc/hardware_errors_addr". Through that blob, the firmware can send back
--    the guest-side allocation addresses to QEMU. The "etc/hardware_errors_addr"
--    blob contains a 8-byte entry. QEMU generates a single WRITE_POINTER command
--    for the firmware. The firmware will write back the start address of
--    "etc/hardware_errors" blob to the fw_cfg file "etc/hardware_errors_addr".
-+(8) QEMU defines a third and write-only fw_cfg blob to store the location
-+    where the error block offsets, read ack registers and CPER records are
-+    stored.
-+
-+    Up to QEMU 9.2, the location was at "etc/hardware_errors_addr", and
-+    contains a GPA for the beginning of "etc/hardware_errors".
-+
-+    Newer versions place the location at "etc/acpi_table_hest_addr",
-+    pointing to the GPA of the HEST table.
-+
-+    Using above mentioned 'fw_cfg' files, the firmware can send back the
-+    guest-side allocation addresses to QEMU. They contain a 8-byte entry.
-+    QEMU generates a single WRITE_POINTER command for the firmware. The
-+    firmware will write back the start address of either "etc/hardware_errors"
-+    or HEST table at the corresponding fw_cfg file.
+ static const VMStateDescription vmstate_memhp_state = {
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index c856d293c6..ff3b7a794b 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -1129,6 +1129,10 @@ static const AcpiNotificationSourceId hest_ghes_notify[] = {
+     { ACPI_HEST_SRC_ID_SYNC, ACPI_GHES_NOTIFY_SEA },
+ };
  
- (9) When QEMU gets a SIGBUS from the kernel, QEMU writes CPER into corresponding
-     "Error Status Data Block", guest memory, and then injects platform specific
-@@ -105,8 +114,5 @@ Design Details
-      kernel, on receiving notification, guest APEI driver could read the CPER error
-      and take appropriate action.
++static const AcpiNotificationSourceId hest_ghes_notify_10_0[] = {
++    { ACPI_HEST_SRC_ID_SYNC, ACPI_GHES_NOTIFY_SEA },
++};
++
+ static
+ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+ {
+@@ -1186,15 +1190,25 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
  
--(11) kvm_arch_on_sigbus_vcpu() uses source_id as index in "etc/hardware_errors" to
--     find out "Error Status Data Block" entry corresponding to error source. So supported
--     source_id values should be assigned here and not be changed afterwards to make sure
--     that guest will write error into expected "Error Status Data Block" even if guest was
--     migrated to a newer QEMU.
-+(11) kvm_arch_on_sigbus_vcpu() reports RAS errors via a SEA notifications,
-+     when a SIGBUS event is triggered.
+     if (vms->ras) {
+         AcpiGedState *acpi_ged_state;
++        static const AcpiNotificationSourceId *notify;
++        unsigned int notify_sz;
+         AcpiGhesState *ags;
+ 
+         acpi_ged_state = ACPI_GED(vms->acpi_dev);
+         ags = &acpi_ged_state->ghes_state;
+         if (ags) {
+             acpi_add_table(table_offsets, tables_blob);
++
++            if (!ags->use_hest_addr) {
++                notify = hest_ghes_notify_10_0;
++                notify_sz = ARRAY_SIZE(hest_ghes_notify_10_0);
++            } else {
++                notify = hest_ghes_notify;
++                notify_sz = ARRAY_SIZE(hest_ghes_notify);
++            }
++
+             acpi_build_hest(ags, tables_blob, tables->hardware_errors,
+-                            tables->linker, hest_ghes_notify,
+-                            ARRAY_SIZE(hest_ghes_notify),
++                            tables->linker, notify, notify_sz,
+                             vms->oem_id, vms->oem_table_id);
+         }
+     }
+diff --git a/hw/core/machine.c b/hw/core/machine.c
+index 38c949c4f2..7b7a381b0a 100644
+--- a/hw/core/machine.c
++++ b/hw/core/machine.c
+@@ -35,9 +35,12 @@
+ #include "hw/virtio/virtio-pci.h"
+ #include "hw/virtio/virtio-net.h"
+ #include "hw/virtio/virtio-iommu.h"
++#include "hw/acpi/generic_event_device.h"
+ #include "audio/audio.h"
+ 
+-GlobalProperty hw_compat_10_1[] = {};
++GlobalProperty hw_compat_10_1[] = {
++    { TYPE_ACPI_GED, "x-has-hest-addr", "false" },
++};
+ const size_t hw_compat_10_1_len = G_N_ELEMENTS(hw_compat_10_1);
+ 
+ GlobalProperty hw_compat_10_0[] = {
 -- 
 MST
 

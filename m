@@ -4,73 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3AC9CAC5BB
-	for <qemu-arm@archiver.kernel.org>; Sun,  5 Oct 2025 22:28:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC708CAC5BB
+	for <qemu-arm@archiver.kernel.org>; Sun,  5 Oct 2025 22:51:00 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v5XCy-0004En-Fy; Sun, 05 Oct 2025 18:28:01 -0400
+	id 1v5XYm-0007FW-Fq; Sun, 05 Oct 2025 18:50:32 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <xpahos@gmail.com>) id 1v5XCw-0004ET-N5
- for qemu-arm@nongnu.org; Sun, 05 Oct 2025 18:27:58 -0400
-Received: from mail-lj1-x236.google.com ([2a00:1450:4864:20::236])
+ (Exim 4.90_1) (envelope-from <xpahos@gmail.com>) id 1v5XYk-0007EY-O8
+ for qemu-arm@nongnu.org; Sun, 05 Oct 2025 18:50:30 -0400
+Received: from mail-lj1-x22c.google.com ([2a00:1450:4864:20::22c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <xpahos@gmail.com>) id 1v5XCs-0002Ps-Oo
- for qemu-arm@nongnu.org; Sun, 05 Oct 2025 18:27:58 -0400
-Received: by mail-lj1-x236.google.com with SMTP id
- 38308e7fff4ca-36453927ffaso41765041fa.2
- for <qemu-arm@nongnu.org>; Sun, 05 Oct 2025 15:27:54 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <xpahos@gmail.com>) id 1v5XYi-0004cU-N2
+ for qemu-arm@nongnu.org; Sun, 05 Oct 2025 18:50:30 -0400
+Received: by mail-lj1-x22c.google.com with SMTP id
+ 38308e7fff4ca-3737d0920e6so46756341fa.1
+ for <qemu-arm@nongnu.org>; Sun, 05 Oct 2025 15:50:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1759703272; x=1760308072; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1759704626; x=1760309426; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
  bh=X5uTlnB3NhUwPh8jYQG8VqFwbODJaHhYoBAK9FpIpFM=;
- b=ACm0RTa38sh6U4yv1jkk2kt01nOTZn622JimEKPvmrxRUzDd9jwwhwHtT3fECq7m8r
- qXvsPclSLqjKStuZFprnePMyNH6C0jrTIpFXrFJgzW+GnrgHkLGAIfAvT0HZtzaxEY17
- 8fBwG2wsOQcylPPUf3anrUpxtyvQsQ86XYnu0qIJstUd0sn3y61u0LVVlnzp7kbdpDwb
- vNwzr7VSc2k3mUHyrCi6LERpzaLUm7WZf/4Onsoq87dzEFnQk5DSaT6GaBkfbGxthY20
- GQTbBIV3Ao09I/74VAxaEbYQsbs6e7tw+WnQYPnRTC5Nsw/i8Feoactb0NgyXzFzTUYN
- nAeg==
+ b=K9uSTpBvKdtoYR4Ejn/lJn5iAo5y/hh2jbE1BxaWAUKD9Bxmemnx13sWK2MeK4tMTR
+ 6Ol0jjaxj375l739rVkouQewPQv1FKFs3KP8wJeMgfe/o2s//Kd2T0z9XZqJ7w57dvyV
+ SqHYStEH+FcYx+AM9CL5oNgWmg6N4OW07VVbOwMYGZ/7rk6SeqZ/3XDDAcDMS2/nBRRE
+ swu0dcx2K7mClCGii4Zx4lRBYPSHJlwf+DnITi1kKkJwyAsXeshuyjrByGVFiTAx2DCq
+ EZ5JAQU9E0s1GzkyDExdGeVA1Bhnh98ZYzZVIsTeZ23UBWOelOjZE6Z2PFevLjeEkadB
+ bZeg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759703272; x=1760308072;
+ d=1e100.net; s=20230601; t=1759704626; x=1760309426;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
  bh=X5uTlnB3NhUwPh8jYQG8VqFwbODJaHhYoBAK9FpIpFM=;
- b=pgamrnPzI4nw+tYzLGXjQZ8R44FxjYgiL1C0CC//x724auJIM/fkSHrOEGph5BCKMy
- j4y7nLTFhN4dZJPXMlW0wbVNOWUJrrujzbeq3MMIt8WvKL2puv3mNhlRirkBCH8aypJ4
- pFUNbbxTzHTktq500/pJXt1CBL4Fi14Ri8Xr/1bflB7MY5rWfPyDWZ04Rx/sHtQDErnR
- o4VBHEYYkuxC9DuGop98aeLlRe+b9cEimM5G/DzsEkl/J5DA7+JlOSG1j2mY+eUE21ca
- 0h4qdyoCL8Vyb2v0P1TnR8+vfmIe0DpbyrWRU2OQUSe9A9wICy9yMF24NfUmEkp0J0uV
- 8RWA==
+ b=r9KesAV6aUQEq8mcq199cgF4/YTwVdaP32wiOQSw+A9RyidJVjFFX76qSSJZV0/d7g
+ 2tOfAq3QVaFXFOG7ShGMyY2Ii8jdnmHgz/Pcq5ZufdyWWTsksXiRC9S+fKMlQleSN5LI
+ CyWMbuHeidayc4JJre+pXLC3JPFbxI4y5Xf1RlNmg4TxnhjDq73NQlASDALkv/nHuJ4A
+ WgFvFhK1BE6OWorIIsd2ty+lZjR/UOUcL/PjS+N5lj3+2wOHYoCyV+vAyfPvn1DBk1QC
+ VRhN5wy738FfAK3NrhsV1u9BC3NqhJMLlD6oabOKR1dD4k/1YgL7Yj16BfdjN5rfMwEC
+ Xcvw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCX6flpm1liD2Cuahh+1ggbZz1i9vfCKFRILkS072oCu4IAUuBADAUxXefCVzPegDof1/5D0S4t/Dw==@nongnu.org
-X-Gm-Message-State: AOJu0YzqQ6fCb3K7eUi4TlRsfE0t2JtIJ1F7FcR1klgUaDdvSAFsQ2W+
- m9K4aRNT6ERKRKqCNH+drd+MZoEfAAIgV3hBp5aPUrYfteJQTjN2QaC2
-X-Gm-Gg: ASbGncu2IEY5uiORBlQZhlaV/a3MA47fy45hM87wc4XSFtU6bbJANWhhcIUomuGIwut
- sssCAzujzU6AxfEPJbzhbcB3BFgBaOjT/+Uiopsezp+e+LnOI13KpYl4H/YI2M6OqVdD8OOGWdg
- c24Ax0CqPvVQitRLvggoAKm1A55KpZj64sFhsHYUkAhzF/VFCqsqDHbZudvrYCXmhuQfhy7tzCt
- sDN41hgMmDHVx8qXS6/JwfAUelwqm4NnOo8QPrjrGL6JnAMj3a37qFgIFvcTjhID4qNT0gbSbpR
- lesn3WJ0ypUNB64oMrz9fjAoag2JRKxqaFJU2D7uXJFTWSP7uXR0bxkfp43uXzoPrfBrEMJcrmo
- uct9EL85tXtHQ4Jizht0HphJW33tzhe198c40OjSnNIOERSaUe3xtqKMmgYw=
-X-Google-Smtp-Source: AGHT+IEBY5dBcu3MLYDF7IdOYTiO+zF1su8jNk5JgrpgIOiPAVkKHS5J/KRsbuc+pGayULcnQOlhMw==
-X-Received: by 2002:a2e:bd0c:0:b0:36b:2a0a:b906 with SMTP id
- 38308e7fff4ca-374c36cc018mr30769051fa.12.1759703271919; 
- Sun, 05 Oct 2025 15:27:51 -0700 (PDT)
-Received: from xpahos-osx.yandex.net ([2a02:6bf:8080:c37::1:1])
+ AJvYcCVU+geWNLdUi3+5yNVMPLwQlaqnwDY6BxwBcoxwUGZK4CpAPlRJvjcOXDqAXYdoszOPL0ncaYNX/A==@nongnu.org
+X-Gm-Message-State: AOJu0YxzgUYakOodmcYyTSzSPyLvZJQFAV1Dow2Or6mZBmJPCxtq22b1
+ p8ANoVIY1fiPw86R989JSEQs+bcUYcIse97FiWSjS9pf9FNCU29HmZECQc12TTlQHvbnzA==
+X-Gm-Gg: ASbGnctbtBXAYTHXOnjDPjm8B++1P+5BpkprG3aHnAtmQARBF3UilJtpA4PgZgcazSk
+ k8jSnETE0jEXmdkjZi+v23QRXx162qE/pMXpkJDyPM5B2XV5FzJpEAWRHmYGDDvU7kfF5fEY9j/
+ 0MPnRNP4W8mdJseeq4rEFx2oiXCicdmrns0RRmjFYpUPmgtSJGSgsBbwcvvO+JjQPwp/7HZzMSU
+ tKV5RpFgpZOkaerfjsyhCFlVAt4MQr0DedULwrYL1wBYBiRX7RNVGdcKEd+P3VLkVojbWtHwBra
+ QdUltmjS9l8ZCYMaIHZlYnXbDQgvuhUUhAADpmauni0H6APw9qusU4Do2qF8N/o/nHBKLixLZfa
+ klryprqeCG6fFqB11gGfImlyUZ64OLjARqxdGZsALsUWptIXLDQTXkJItjtsd
+X-Google-Smtp-Source: AGHT+IHay7KzOZh/r4sG251pC2HYHoRVDFj9mAu0PYz3ZujBSnTdqglHE6Y/ohthMgFe93kJX+PWmg==
+X-Received: by 2002:a05:651c:235a:10b0:372:80ac:a33a with SMTP id
+ 38308e7fff4ca-374c381c0efmr27286411fa.28.1759704625935; 
+ Sun, 05 Oct 2025 15:50:25 -0700 (PDT)
+Received: from xpahos-osx.yandex.net ([2a02:6bf:8080:a74::1:2e])
  by smtp.gmail.com with ESMTPSA id
- 38308e7fff4ca-373ba44441dsm37885831fa.37.2025.10.05.15.27.49
+ 38308e7fff4ca-373ba4bbb7csm37638971fa.47.2025.10.05.15.50.23
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Sun, 05 Oct 2025 15:27:50 -0700 (PDT)
+ Sun, 05 Oct 2025 15:50:24 -0700 (PDT)
 From: xpahos@gmail.com
 To: qemu-devel@nongnu.org
 Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org,
  Alexander Gryanko <xpahos@gmail.com>
 Subject: [PATCH v2] hw/arm: add pvpanic mmio device for arm
-Date: Mon,  6 Oct 2025 01:27:31 +0300
-Message-Id: <20251004-add-newline-guest-error-log-v1-1-a61df1599936@gmail.com>
+Date: Mon,  6 Oct 2025 01:50:16 +0300
+Message-Id: <20251005-arm-pvpanic-v1-1-1e473a735212@gmail.com>
 X-Mailer: git-send-email 2.39.5 (Apple Git-154)
 In-Reply-To: <CC5A0011-CD14-40F9-8023-8BF5F989BCCF@gmail.com>
 References: <CC5A0011-CD14-40F9-8023-8BF5F989BCCF@gmail.com>
@@ -86,15 +86,15 @@ X-Developer-Signature: v=1; a=ed25519-sha256; t=1759689277; l=3360;
 X-Developer-Key: i=xpahos@gmail.com; a=ed25519;
  pk=bsSvP3Tn7PVKgjJT3BMV3jlAwSqreKIM4099C1r51eg=
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::236;
- envelope-from=xpahos@gmail.com; helo=mail-lj1-x236.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::22c;
+ envelope-from=xpahos@gmail.com; helo=mail-lj1-x22c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29

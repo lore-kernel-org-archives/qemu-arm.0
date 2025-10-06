@@ -4,70 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4AD4CCCA471
-	for <qemu-arm@archiver.kernel.org>; Mon,  6 Oct 2025 11:51:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 677A9CCA471
+	for <qemu-arm@archiver.kernel.org>; Mon,  6 Oct 2025 11:53:05 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v5jjw-00069P-OJ; Mon, 06 Oct 2025 07:50:53 -0400
+	id 1v5jlm-0006TG-3j; Mon, 06 Oct 2025 07:52:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1v5jjv-000691-3U
- for qemu-arm@nongnu.org; Mon, 06 Oct 2025 07:50:51 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1v5jjj-0002WQ-Cu
- for qemu-arm@nongnu.org; Mon, 06 Oct 2025 07:50:49 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1759751432;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=HdZA+nm3WGRoPR55MxzrbWgStXcVMhpXQwNkBo3I5Iw=;
- b=Wjd2S+OusHway59aBr+icCyWaJFzxj96x39NWap0Xc0MOV/HTtzkjojRatMwK1PLKAcU4D
- LV9CtElVQaZL2x4bg7iE0VOWB0q9rLrLVHeJnH2ZU+9Z2X0gl2fbYZstFv6SDDaBh/2HNV
- 0BY2Ar9n9HskSoP1chf76hbBUjdWAjU=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-680-kvi_4MveMFKwAWClcxw8tA-1; Mon,
- 06 Oct 2025 07:50:28 -0400
-X-MC-Unique: kvi_4MveMFKwAWClcxw8tA-1
-X-Mimecast-MFC-AGG-ID: kvi_4MveMFKwAWClcxw8tA_1759751427
-Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 515D019560B0; Mon,  6 Oct 2025 11:50:27 +0000 (UTC)
-Received: from thuth-p1g4.redhat.com (unknown [10.44.34.132])
- by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 5261D1956056; Mon,  6 Oct 2025 11:50:24 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>,
-	qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org, Leif Lindholm <leif.lindholm@oss.qualcomm.com>,
- Radoslaw Biernacki <rad@semihalf.com>,
- =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH] tests/functional/aarch64: Skip some sbsaref_alpile tests by
- default
-Date: Mon,  6 Oct 2025 13:50:22 +0200
-Message-ID: <20251006115022.164004-1-thuth@redhat.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
+ (Exim 4.90_1) (envelope-from <xpahos@gmail.com>) id 1v5jll-0006Sf-12
+ for qemu-arm@nongnu.org; Mon, 06 Oct 2025 07:52:45 -0400
+Received: from mail-lf1-x12d.google.com ([2a00:1450:4864:20::12d])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <xpahos@gmail.com>) id 1v5jlc-0002ad-54
+ for qemu-arm@nongnu.org; Mon, 06 Oct 2025 07:52:44 -0400
+Received: by mail-lf1-x12d.google.com with SMTP id
+ 2adb3069b0e04-578ecc56235so2582977e87.0
+ for <qemu-arm@nongnu.org>; Mon, 06 Oct 2025 04:52:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1759751551; x=1760356351; darn=nongnu.org;
+ h=to:references:message-id:content-transfer-encoding:cc:date
+ :in-reply-to:from:subject:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=YskWGD68uJvBj0jMWXqhQa5vmb1tAxTHbSj3LJXf0EQ=;
+ b=HN8aIjbdfbtv8b+nHf8RLC/w9uC67cz9MP8jWyx+vHtgdj7lxYijr0xGSSIM5izPLM
+ uslly4vhnPkm6vhzOoSMtn2Zym7fASarBu2A7Xd11NDJtzep1ZQEPhA2BxH/hZZLI2jU
+ 6YITZP4aBEYYP1f3+gkzCUR9v4uII1WzW3zgGRoaVzzvWnvJePglF98raKk0i4lhZhyp
+ rtY/N0eLBMMDAA+/C8AIF69lp5q5RADzogOKXjSJcbTruCOSuaIDA0n/KGRrWYQbRf3e
+ KYmojeiVLmjgR93Rgyg71NbkKEDqeubzf2npfkYB54aBggKfDTY+Bug00gTTO9ReF5ws
+ NhRg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1759751551; x=1760356351;
+ h=to:references:message-id:content-transfer-encoding:cc:date
+ :in-reply-to:from:subject:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=YskWGD68uJvBj0jMWXqhQa5vmb1tAxTHbSj3LJXf0EQ=;
+ b=lCpCzRYYSZth5cuW3x28ja04fDE2+UKoy/KlSnZ3ZLo4tNhtN+E1wH2T8GjCTs+2CC
+ QoUCefi9h84iuSbj7LA4VrCNEPBDCFkrTeASQMkPmFqovrBcLmNJNYNOZWpJC13YDTB+
+ 4RruYHpD3tSY536powX+6MvipOu40LdOB6XwORW8bIXbGJ30/mVCuBT+eCA1MQlxdkNW
+ Ru4QvBXnSGjMreeEWfygEz17ZpRzqeV9RhqMiD0TbTTN03VFa30AX9ztFVSKmqRYPs5d
+ hSpklK4geQGq844oU39iLa9467oIpwZrGOHqkjIc8ylGZ1kRn6NhM/Pb/uhueEiYwQ0m
+ Q/iA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCU5EeYqluNMz2+EgTQLW1uuQ41J4eb1sEZRpJeifE3mNQlO8tYlGCamNmrPF82yNZfIhzyNGQe4yg==@nongnu.org
+X-Gm-Message-State: AOJu0Yx2lXnzMvDy05Rmbpckzr9nWik5p/H3V7Xz6ekcu/Gg7/CRkxHX
+ DirsUUwzQDmTvTsZrqqN4R7JkavgHyJzWU8oF4uvpDu2hpbDH5dNkAnS
+X-Gm-Gg: ASbGncud9EViVKgIr7vfTCdoPBOEAB7XR6vgLYGDHGGU3h78qCMwa2fCDQFIEI72yun
+ yY9R6AM8AyXklcVOjVdPWgCTGFFlU2e+dnUTvnBzXsJLyoOQHYvuU+6SnaADdoSywsxpYC7aBUx
+ 87m9wM0lZWzzs6O93XR29+gRrLv4LwZPqkZyej6yXID9YsDiBOgKN24QrqAdcR8sI1/5NHsdwH0
+ osbtD5QiDUTg27IUDdezpPPa+Ta0d5aoE10i8TqueCaXATqm84Msrar+kGtiQtsomhYMVeMfCeb
+ PEPJzfwq3hoqMs2AXJnWC7ILoevqIm+JPP4PfzAOWU1PnowXhMS8cZ5vaV/mLqm78dxCNknCQ/P
+ 62HWEi09w3d+ZmTZuiVo2kiEDdRvsSca8JvdNaAyF2a6+0Cz9YNA/f16qa9UuOKE+vl3sBoU=
+X-Google-Smtp-Source: AGHT+IH2DW8NUO2RXA2M2qymj65OLOc1M07jw495xWAisuZjiORubU0t862pejjdPOnmA1LRq4hMiA==
+X-Received: by 2002:a05:6512:3f05:b0:571:e01b:da9f with SMTP id
+ 2adb3069b0e04-58cbb06ade9mr3780461e87.31.1759751550501; 
+ Mon, 06 Oct 2025 04:52:30 -0700 (PDT)
+Received: from smtpclient.apple ([2a02:6bf:8011:f00:143:4fb8:4913:8a43])
+ by smtp.gmail.com with ESMTPSA id
+ 2adb3069b0e04-58b011b14aesm4995049e87.128.2025.10.06.04.52.29
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Mon, 06 Oct 2025 04:52:30 -0700 (PDT)
+Content-Type: text/plain;
+	charset=us-ascii
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3776.700.51.11.2\))
+Subject: Re: [PATCH] hw/arm: add pvpanic mmio device for arm
+From: Alexander Gryanko <xpahos@gmail.com>
+In-Reply-To: <CAFEAcA_PbfzTAW2qeFao1MhPG=jn9dtzt0AzwL-aPCEULijsuw@mail.gmail.com>
+Date: Mon, 6 Oct 2025 14:52:16 +0300
+Cc: qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org,
+ qemu-trivial@nongnu.org
+Content-Transfer-Encoding: quoted-printable
+Message-Id: <A1FB7B7D-603D-4D21-807E-17C1B18891CC@gmail.com>
+References: <CC5A0011-CD14-40F9-8023-8BF5F989BCCF@gmail.com>
+ <CAFEAcA_PbfzTAW2qeFao1MhPG=jn9dtzt0AzwL-aPCEULijsuw@mail.gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+X-Mailer: Apple Mail (2.3776.700.51.11.2)
+Received-SPF: pass client-ip=2a00:1450:4864:20::12d;
+ envelope-from=xpahos@gmail.com; helo=mail-lf1-x12d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.441,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -83,42 +104,31 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Thomas Huth <thuth@redhat.com>
+Would it be acceptable to add a new device like uefi-vars-sysbus that =
+can connect to the sysbus?
 
-test_sbsaref_alpine is one of the longest running tests in our testsuite,
-because it does a full Linux boot a couple of times, for various different
-CPU configurations. That's quite a lot of testing each time, for a rather
-small additional test coverage, so mark some of the tests with the
-@skipSlowTest() decorator.
 
-Suggested-by: Alex Bennée <alex.bennee@linaro.org>
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- See: https://lore.kernel.org/qemu-devel/87eczriaej.fsf@draig.linaro.org
- 
- tests/functional/aarch64/test_sbsaref_alpine.py | 2 ++
- 1 file changed, 2 insertions(+)
-
-diff --git a/tests/functional/aarch64/test_sbsaref_alpine.py b/tests/functional/aarch64/test_sbsaref_alpine.py
-index abb8f5114bd..33e77cc7049 100755
---- a/tests/functional/aarch64/test_sbsaref_alpine.py
-+++ b/tests/functional/aarch64/test_sbsaref_alpine.py
-@@ -41,12 +41,14 @@ def boot_alpine_linux(self, cpu=None):
-         self.vm.launch()
-         wait_for_console_pattern(self, "Welcome to Alpine Linux 3.17")
- 
-+    @skipSlowTest()
-     def test_sbsaref_alpine_linux_cortex_a57(self):
-         self.boot_alpine_linux("cortex-a57")
- 
-     def test_sbsaref_alpine_linux_default_cpu(self):
-         self.boot_alpine_linux()
- 
-+    @skipSlowTest()
-     def test_sbsaref_alpine_linux_max_pauth_off(self):
-         self.boot_alpine_linux("max,pauth=off")
- 
--- 
-2.51.0
+> On 6 Oct 2025, at 13:41, Peter Maydell <peter.maydell@linaro.org> =
+wrote:
+>=20
+> On Sat, 4 Oct 2025 at 21:19, Alexander Gryanko <xpahos@gmail.com> =
+wrote:
+>>=20
+>> Currently, pvpanic is available in three device types: ISA,
+>> MMIO, and PCI. For early stages of system initialisation
+>> before PCI enumeration, only ISA and MMIO are suitable.
+>> ISA is specific to the x86 platform; only MMIO devices
+>> can be used for ARM. It is not possible to specify a
+>> device as on the x86 platform (-device pvpanic); the
+>> only possible way is to add an MMIO device to the dtb,
+>> which can be implemented by manually adding new functions
+>> to the QEMU code, as was done in the VMApple implementation.
+>=20
+> No, thank you. I don't want to add more devices to "virt"
+> than we have to. There is a PCI pvpanic device -- use
+> that. Yes, you might have to do PCI enumeration in software.
+>=20
+> thanks
+> -- PMM
 
 

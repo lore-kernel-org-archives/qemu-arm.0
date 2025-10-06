@@ -4,83 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCD62CCA471
-	for <qemu-arm@archiver.kernel.org>; Mon,  6 Oct 2025 12:04:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9E12CAC5B8
+	for <qemu-arm@archiver.kernel.org>; Mon,  6 Oct 2025 12:08:37 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v5jwy-0000lU-0L; Mon, 06 Oct 2025 08:04:20 -0400
+	id 1v5k0q-0002Cq-FD; Mon, 06 Oct 2025 08:08:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1v5jwv-0000l8-RI
- for qemu-arm@nongnu.org; Mon, 06 Oct 2025 08:04:18 -0400
-Received: from mail-yx1-xb130.google.com ([2607:f8b0:4864:20::b130])
+ id 1v5k0p-0002C8-1Y
+ for qemu-arm@nongnu.org; Mon, 06 Oct 2025 08:08:19 -0400
+Received: from mail-yw1-x112c.google.com ([2607:f8b0:4864:20::112c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1v5jwm-0003oe-V9
- for qemu-arm@nongnu.org; Mon, 06 Oct 2025 08:04:17 -0400
-Received: by mail-yx1-xb130.google.com with SMTP id
- 956f58d0204a3-6354a4b4871so5935709d50.2
- for <qemu-arm@nongnu.org>; Mon, 06 Oct 2025 05:04:00 -0700 (PDT)
+ id 1v5k0d-0004BA-4C
+ for qemu-arm@nongnu.org; Mon, 06 Oct 2025 08:08:18 -0400
+Received: by mail-yw1-x112c.google.com with SMTP id
+ 00721157ae682-71d71bcab6fso48860897b3.0
+ for <qemu-arm@nongnu.org>; Mon, 06 Oct 2025 05:08:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1759752237; x=1760357037; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=UDE8Z7qyajMCaXMrzd0HtBzhao2U4HKL5heui9QTuYg=;
- b=aAIC29vrduOe2Fw3bFXqpE305mn2i+kz82FEg8xy2i3jRV8n1Ve4hPyHuJ2hld1hrC
- EbRZwlFZekuFk68kv70y4xDWdMBMsfmw2Un+coYo45bKdIOPr+JedMloXzBoWztKmM9l
- wPaigty4gYLz/I5nbwzYpBX7PXq0CwtFjzwLaeSM48sjPd48itIY0U5V6DBPIza2uyQM
- j4DI7FBCoVmdpYUE9GoXhuQDnOA7Q/82g7+DF2MlYqUs/blslXw4rzp+TXOmIhXkT76A
- HCbIMBYKh34IU+k6A9sDAg+UvGIShW4hsf4qpYTsyqkfdBZk59vjdnnXNZy0QvhH+fKy
- f05Q==
+ d=linaro.org; s=google; t=1759752483; x=1760357283; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=dWtN/BQNKDNruOvqhY6XFXqr6A4r08zr2pZxCpYPS44=;
+ b=x6/ES/obBv+99Ly/Oi5/jdoLyhjpAVEME6zMxt5RsYXgX2/mYkxztCXy/1aYkKaWgL
+ FW9bb728Z0qKMG/DwqVz8gwAsDnkFLbKJw591+9KVVTaTc7vugPqPpf/KYX0WZ0dwtqN
+ 33t0VMBGic4nys+w7NscCfYz1zvgYwIeSy0dmy8BRpEK9tYNkOVVd1OZw5/JXqLqF7s1
+ CkAu4o3L1gejzE4U/os1Lhrg6jrwVQuwy7dIQn4NAzKOZRCvTt/sotLfT0rWVXgvyKGx
+ pmZeTLkLGHNM/ue6EYChEGEj5jdwfwd6zmgS7aBbqdkmLTt2wx7MCAVHGxBxNl9QAY3g
+ uM+g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759752238; x=1760357038;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=UDE8Z7qyajMCaXMrzd0HtBzhao2U4HKL5heui9QTuYg=;
- b=ZCN/g2LzfPGOKXrxColI+MS2AGnVaTgr2LqSCffd/+jIoCTtX5YqPK9NTZspgNs98x
- vUsdFNRxs4n138/7KpOnKCydARJvxf71kiNRupbJF2s2S6Wif9CQIS92h+i1Ds+2V2tl
- gCm491pSqs+JWQToCzmJbhz879jGQxugotTI5WRP2Q/TQOSEc8Th/qnQRgmWguI4MSai
- hSfGXOlX9bxOJ/IFPT0kikEHJeOxwxImGJ1+j+lxi627O9BMvcZCdax/1UT745br29eC
- Fx4cTY7CwBAv6ifs8TrkPmRoWhAGTglgaGwuxJEPU+qfGCVMSBF/qRkfOrKglufBUeUK
- CCpw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCW9fQRJol+xRkW7+x7lu4oVz+0/AMo8LISV4IQjb1FpXA3OF3ezfadix5HIhVbMwN/BN9KP+vn7Eg==@nongnu.org
-X-Gm-Message-State: AOJu0Yx44PVJuYl0jhU7ktP446vqPaxa5E0mOvRMZrswFHLMGBCwsLZ4
- CFujV0xiVl0dRo1izFlb20aS1GlyxgIz8JJ5DZ9SU16GohykHcUQ9AI31xix8kAGtWraynjSx0T
- jJnbnjQzdEZhc2TztnOQJhcvFWw1Y7UfGjHispX5ZCg==
-X-Gm-Gg: ASbGncuoVwQCsPpeOxhUT7o/z7U4TczD+kwOFE2g9wjAOCnAfLSO/1HYsed4Dtc8PEv
- tWXHlUU8cyg34T/BSehOAuEh/X1Iwe8xryidyvWwsi8FcfSlYI+bc8mGkQ4Z07ZmbNg6AJwasn7
- Z50QFrUHh2dl3oFdmGMJp5Gmi9MqRUoGb61mlZ/MHTvTKXUNZ7FVmCa67LrjaPiSByaS1FasQ/K
- yBYt45bLKFt+QB3IP2fgrmM1iCVwWPEgU4J
-X-Google-Smtp-Source: AGHT+IFXqHZtrVuGjLZn1QobnOxMXN/Jcf2T2mSyTeyzJwvvKcfV62sSz9/Nq1M5CdubhOHsDhig01Poxi0vNmK/jEo=
-X-Received: by 2002:a05:690e:ec7:b0:633:9631:2fe1 with SMTP id
- 956f58d0204a3-63b9a05cdb5mr8677254d50.4.1759752237361; Mon, 06 Oct 2025
- 05:03:57 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1759752483; x=1760357283;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=dWtN/BQNKDNruOvqhY6XFXqr6A4r08zr2pZxCpYPS44=;
+ b=XlVWrJMqSC2OueyIUGYQggwxotXW68IySUWozPn4SHq4V5v2mAUoWj/1jqhp2boj9r
+ d/9E7nGB/GtgfpTDMujP3jDDFXz36CvLx0xGYJEFYSljaQOp4PjWk+Bad6M3uisk+Ke+
+ XXSDoY9R2l7bl892Qs7Rx/0NqUxddWSXiWCTPcvjrsg1AAHqz4SomdtdUJLyxB4ztmc9
+ Y+YpKXrrsB/iPsoIglO+h/3Re9FmS/vpKv2gJlz0BhM71BexJ9Ds78rgHbItU6Ez9ecJ
+ wyMNvGEGehXlKk0CTSaHhxMW/Q9ChLEaem4JHNlU0zm9VD7sAEW4CMlw/DyEez3GJce2
+ PE4Q==
+X-Gm-Message-State: AOJu0Yx4P15SD+8SJfAiwGuTHD2zDF4Fei2trdUG2/q8bqZkPzYbFxpW
+ zLELiE1DaySUvl9iyFGdENtZa+swMN0rDR4m8DbEk8Px56b7oD93ysGcRSKghTcAA7PEq0TrPvI
+ le7T/LmLY3vweWq8UWMzLEkZK0f6hx+EdQmd1ixEnNA==
+X-Gm-Gg: ASbGnctRvEHGeorEDahFNn0dcCnfv1CjvjgNCwlZ+9u6oSUNSgM1LmH/itlemGxj5Kj
+ HC9/OO42i++Z8wLJAg4PKuN8YORdED5C47DqdQbSMzjP0HOIjXzWphBu705de1K9qyIB4Itta7B
+ 6XsURMrm95H1Y+LDpZ/YPtqfYxXGGHLXhOMQKQEi/B697BFEN1AHlFfZ6v/Avk7w8iq4pTXLpqW
+ V7jD9NC8CG5FqCOvaSmHH4kC/nlNxdrU0q8AqN0ETaV6Ck=
+X-Google-Smtp-Source: AGHT+IHe6lNjA2RTEGS3da0GpUv/2yNzdnWYSJePsZE6sMe4TvT9UtD8R8DftfQiyKjsMB23lxPooM0Lidio3WKJAOI=
+X-Received: by 2002:a05:690e:1650:b0:63b:a404:6c46 with SMTP id
+ 956f58d0204a3-63ba4046e59mr9126158d50.24.1759752482853; Mon, 06 Oct 2025
+ 05:08:02 -0700 (PDT)
 MIME-Version: 1.0
-References: <CC5A0011-CD14-40F9-8023-8BF5F989BCCF@gmail.com>
- <CAFEAcA_PbfzTAW2qeFao1MhPG=jn9dtzt0AzwL-aPCEULijsuw@mail.gmail.com>
- <A1FB7B7D-603D-4D21-807E-17C1B18891CC@gmail.com>
-In-Reply-To: <A1FB7B7D-603D-4D21-807E-17C1B18891CC@gmail.com>
+References: <20251006115022.164004-1-thuth@redhat.com>
+In-Reply-To: <20251006115022.164004-1-thuth@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 6 Oct 2025 13:03:45 +0100
-X-Gm-Features: AS18NWApgEMzNDZO0kxtQwB4du5YI0fAGqNypH-mlecyAMviTJQmK4da_dNMK_4
-Message-ID: <CAFEAcA_F1OGcOQBw0xVG8g51t8v_kFz+oAtAve8mFMbKuJ6pog@mail.gmail.com>
-Subject: Re: [PATCH] hw/arm: add pvpanic mmio device for arm
-To: Alexander Gryanko <xpahos@gmail.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-trivial@nongnu.org
+Date: Mon, 6 Oct 2025 13:07:51 +0100
+X-Gm-Features: AS18NWDJ6wturVsYa0FoLwVMDUvREB-OQBILppdFs1cITMv00JYyBLSU2EZrCwg
+Message-ID: <CAFEAcA_vKwfX-G8rJpSH-_+6VcEHa8wdMh66Yreh5PB6tcSJQA@mail.gmail.com>
+Subject: Re: [PATCH] tests/functional/aarch64: Skip some sbsaref_alpile tests
+ by default
+To: Thomas Huth <thuth@redhat.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
+ Leif Lindholm <leif.lindholm@oss.qualcomm.com>,
+ Radoslaw Biernacki <rad@semihalf.com>, 
+ =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b130;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb130.google.com
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -96,16 +97,51 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, 6 Oct 2025 at 12:52, Alexander Gryanko <xpahos@gmail.com> wrote:
+On Mon, 6 Oct 2025 at 12:50, Thomas Huth <thuth@redhat.com> wrote:
 >
-> Would it be acceptable to add a new device like uefi-vars-sysbus that can connect to the sysbus?
+> From: Thomas Huth <thuth@redhat.com>
+>
+> test_sbsaref_alpine is one of the longest running tests in our testsuite,
+> because it does a full Linux boot a couple of times, for various differen=
+t
+> CPU configurations. That's quite a lot of testing each time, for a rather
+> small additional test coverage, so mark some of the tests with the
+> @skipSlowTest() decorator.
+>
+> Suggested-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>  See: https://lore.kernel.org/qemu-devel/87eczriaej.fsf@draig.linaro.org
 
-I'm not a fan of the dynamic-sysbus mechanism either.
-We end up using it for annoying cases where there is
-no way to use cleanly dynamically pluggable probeable
-bus for something. For pvpanic, there is a PCI pvpanic
-device, and PCI is dynamically pluggable and probeable
-in software.
+That suggests dropping the subtests entirely, not merely
+marking them as "slow". I think I agree with that.
+
+>  tests/functional/aarch64/test_sbsaref_alpine.py | 2 ++
+>  1 file changed, 2 insertions(+)
+>
+> diff --git a/tests/functional/aarch64/test_sbsaref_alpine.py b/tests/func=
+tional/aarch64/test_sbsaref_alpine.py
+> index abb8f5114bd..33e77cc7049 100755
+> --- a/tests/functional/aarch64/test_sbsaref_alpine.py
+> +++ b/tests/functional/aarch64/test_sbsaref_alpine.py
+> @@ -41,12 +41,14 @@ def boot_alpine_linux(self, cpu=3DNone):
+>          self.vm.launch()
+>          wait_for_console_pattern(self, "Welcome to Alpine Linux 3.17")
+>
+> +    @skipSlowTest()
+>      def test_sbsaref_alpine_linux_cortex_a57(self):
+>          self.boot_alpine_linux("cortex-a57")
+>
+>      def test_sbsaref_alpine_linux_default_cpu(self):
+>          self.boot_alpine_linux()
+>
+> +    @skipSlowTest()
+>      def test_sbsaref_alpine_linux_max_pauth_off(self):
+>          self.boot_alpine_linux("max,pauth=3Doff")
+
+This is odd, because the slow case is the default CPU
+one, not the pauth=3Doff one (which is faster because we
+are disabling the slow pauth checks).
 
 thanks
 -- PMM

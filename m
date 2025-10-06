@@ -4,89 +4,143 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E6E1CAC5BB
-	for <qemu-arm@archiver.kernel.org>; Mon,  6 Oct 2025 00:12:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C56A4CCA471
+	for <qemu-arm@archiver.kernel.org>; Mon,  6 Oct 2025 06:31:13 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v5Yos-0000Fg-Hh; Sun, 05 Oct 2025 20:11:14 -0400
+	id 1v5ek7-000066-3n; Mon, 06 Oct 2025 02:30:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
- id 1v5Yoc-0000Cp-JV
- for qemu-arm@nongnu.org; Sun, 05 Oct 2025 20:11:03 -0400
-Received: from mail-pg1-x533.google.com ([2607:f8b0:4864:20::533])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
- id 1v5YoY-0004EO-9G
- for qemu-arm@nongnu.org; Sun, 05 Oct 2025 20:10:57 -0400
-Received: by mail-pg1-x533.google.com with SMTP id
- 41be03b00d2f7-b4755f37c3eso3780758a12.3
- for <qemu-arm@nongnu.org>; Sun, 05 Oct 2025 17:10:53 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1759709453; x=1760314253; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=EVN+YmNfQibnEdc6QDAq+Bm5hOFHwnqw16eCPdTiIqo=;
- b=a2+d+17+vaP1ZSAyh+6e8Wu9p++Luboo9YkLUayeZtkGEoC9beA5g0fDrMb4FUD1Q4
- xKIWnFe/lZTqB99/Z6QvtHZNOYKQn6Dx9YFbxuP4cy06gAJObCUOXF/KjnNFyPGp+uuV
- e/MapSQEDiih0N9TFUROmv+rNT998SeDxfOPdQVc0U8Fw9weN2fpD5p/1I9eUDtjHmDV
- WdqL4NX3FEJYleox/eBwcrBSOzTan2LOGSP+jyERT4SYNjWOzoIXMIMBIq4wut7VHJOX
- W6Y49mxktd5mbH/dwaj1cp33sTAEUqq6aFIVsSffEeL51lHskN5s3U9HbvPvJreHokWW
- uSaw==
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1v5ek4-00005k-MH
+ for qemu-arm@nongnu.org; Mon, 06 Oct 2025 02:30:40 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1v5ek2-0004HG-HU
+ for qemu-arm@nongnu.org; Mon, 06 Oct 2025 02:30:40 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1759732235;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=lB120EpvNInxPpvYcMAZ+rI/mwe5jB68SwJ//QSBct0=;
+ b=VVZLRrUIKEsdRxoRh4EEvIVJaNc3UNJo+KWwuVOpn4tNpenPmiOAUauTsR9pAdIzLYQ9Lx
+ H+NX2OKrRCqQI7tQi7DRzuzyifLlguJBigGR54JmjTg5H77Y4ggrT1+l28jDY79TMRthIb
+ ndmKw2o31Wx3kOj2KUEMUxIjmlm+a7g=
+Received: from mail-ej1-f69.google.com (mail-ej1-f69.google.com
+ [209.85.218.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-504-WfkugYTIPj2jNBV0yAP_Dw-1; Mon, 06 Oct 2025 02:30:34 -0400
+X-MC-Unique: WfkugYTIPj2jNBV0yAP_Dw-1
+X-Mimecast-MFC-AGG-ID: WfkugYTIPj2jNBV0yAP_Dw_1759732233
+Received: by mail-ej1-f69.google.com with SMTP id
+ a640c23a62f3a-b41c67edce5so461624166b.3
+ for <qemu-arm@nongnu.org>; Sun, 05 Oct 2025 23:30:33 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759709453; x=1760314253;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=EVN+YmNfQibnEdc6QDAq+Bm5hOFHwnqw16eCPdTiIqo=;
- b=jY11k0xgKSmxsEkL2WFwGrQdrlUJvdCm9zIsT+UnHESMznDzt1K7ZrZVo52xa0XCiH
- wuOSSx49oWffLDwgepTdEzIKWDqRXOIuF5hCMH8mhYil3e+AA+sLdYC84NKuVbIGgya/
- tjzjlQIipBTlGqlwNKWLS7QCYLzpniioXwiyrnqmx49xS+N1AcIaBpucIkI1uOBBW+u1
- vfgSu3q5tFwReeXqr5l/V7Jbgjn7Xu6JXyxzK3/zbv5Sb1wSdo2sjno1RUFt/iD85plp
- s5e2r1SBv53qZ0hU+x1mYj7hS9aQ90cyLicejbD0HyvzAgVphG2x/zo1vQa2cHbA8IJg
- uuJQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWvf7OqIeoH0iT8cdF3h0Mrpu9C2JOcAj2rRoaRqkRSTvquQtIRozuplHf6jTI3Ch1p8JemGhBZCw==@nongnu.org
-X-Gm-Message-State: AOJu0YydPJo1e5neK+xiNEOqKXhJaqv5g1wZhliSEuOlMa049f7W2cMQ
- kLh5tUKiGhn3rWLvwiQdUDlHf6qRKftAi+6DCuvdKXmQDzjd1NQG2cKj/BMCu/gq0qo=
-X-Gm-Gg: ASbGncvI4+zKSXXVPGo90hwSac+Nm14pOUN9qXove0ERzVY+OjQn2HZqbApwSUFhckR
- OXdyKJT4xCGOgnFGWWUMDZFGbTI/V9N+mfXWjvq+WSqG7gRKWUNAZNMu4Y54ZFj9X9hoCimCliI
- aA9kSKGHLJ132cDg43ZFa8cUy5xpzON7Zs4QFzfn5VhUUK/mtIVe/puugTjWMBf0qBZqZQxC6jv
- qy0bzMU2aP8d7RgHjEsu+YtgxMqbFpTSZKbHzy63g6TOSukUmRB0KOtmMxdgfOTtm+pdXy/8ORn
- nk/WlOux20HRdIk8bEZSNdHlaCHEF5wMUvRkQcxMlLgUYfvPuRPr9IhOlvKmH9Vp+RvtRC+FK1j
- mUVw5aeNlul1MR0ubh1EtNqJB4YfavuC2ONx5WWQ1a5/bNTEguRMyBLdCfaKLXD6O630=
-X-Google-Smtp-Source: AGHT+IGeEEl3TCsZdatHpH3OSHlnNhLIIBFeYyLkcKJvD+1ZWJetGFCkYmIN4kcHk8MuzU+tTE5uFQ==
-X-Received: by 2002:a17:903:198b:b0:269:a4ed:13c9 with SMTP id
- d9443c01a7336-28e9a693f79mr97822355ad.30.1759709452742; 
- Sun, 05 Oct 2025 17:10:52 -0700 (PDT)
-Received: from gromero0.. ([186.215.59.111]) by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-339c4a48584sm8804881a91.23.2025.10.05.17.10.50
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 05 Oct 2025 17:10:52 -0700 (PDT)
-From: Gustavo Romero <gustavo.romero@linaro.org>
-To: qemu-devel@nongnu.org, qemu-arm@nongnu.org, richard.henderson@linaro.org,
- peter.maydell@linaro.org
-Cc: alex.bennee@linaro.org,
-	gustavo.romero@linaro.org
-Subject: [PATCH v10 2/3] target/arm: Implement FEAT_MEC registers
-Date: Mon,  6 Oct 2025 00:10:17 +0000
-Message-Id: <20251006001018.219756-3-gustavo.romero@linaro.org>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20251006001018.219756-1-gustavo.romero@linaro.org>
-References: <20251006001018.219756-1-gustavo.romero@linaro.org>
+ d=1e100.net; s=20230601; t=1759732233; x=1760337033;
+ h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=lB120EpvNInxPpvYcMAZ+rI/mwe5jB68SwJ//QSBct0=;
+ b=e81ra3Xw6Y/uPo32kxZFCPu0QuPgCYHWFoAnx0m5Z3+cG+BnbW9TLUZwipZ2JxbA3B
+ 0pZNdNO6pTp3XEOFGm+EiMAf5yJYmSE9BEn6FxUaweaKM6EIWIwPUv6aQVegehJbWTMX
+ ExK34CIDFGBjEoqNjaFvhQ+24BuqdcUuExGLHgkCiStCGJe8edK1A3krKpga34hAZ2HE
+ LGerK+HW98YUn8nuBVHNDIyE/l/c7qLdwvoxf5QESY8RRgOHdVsMECATzp1Dit659XPx
+ mwjwGBTaW5+tqUuTmdlppeIzse8SAgCs57CJ+auLyfB+xpB5UXNsvlXpV9qZxluy4xOJ
+ oWyw==
+X-Gm-Message-State: AOJu0YzgqfAf6CwD+Fz6DWSMAvPmO3C/12f2Ibn+VmPfauEJt2iqusEZ
+ i0NBr8+5PiHiiJCi+eyeJ9ElWYWH4f1/+60JvQr5aKCIspn4PnWiXhF958Nhb8SgO4/aTXsOo9p
+ G3ZUHuAmHxVTVxkr4nWPJcezvFLWBi8MTdExqtMymJ7Rcej3bLwjLiA==
+X-Gm-Gg: ASbGncuUgT5RjCa9Y0knSb9uA7xWg04e1MCF/NmBh1nMXnq4gegUxcf83zQ91cGVFx3
+ sulki30QAYZpUOz5gDNCvYIY9o/Uf8KUMcbwLqVuw/HgiJs6qbgrS8xtCerLyt6Yk8mg4AaCule
+ FkcGjjFUDXovo+kgCiPqXTYdIr75gyEgEF4UGKJcqI6Er0Bhtg4L2gvPdGQaYP/Fnk1EGwOtr/Q
+ MYEEmJP+rY2FEuCwM3pKbh4d0Jqf3WmZXWFBTe5vnIbdfMRT3XU8nuUQpNlFDOsTjWhcPRfpWfW
+ tyHihWvrSDEVag7mhI9N/1voTHMiatEL2Zy+Q2q5Lj1Kr8iTIhJZULDgaNoMNbEsb+jOKRtxzBT
+ lA/32Kt/7KA==
+X-Received: by 2002:a17:907:3c89:b0:b3c:896:abdc with SMTP id
+ a640c23a62f3a-b49c525eccamr1336933166b.60.1759732232815; 
+ Sun, 05 Oct 2025 23:30:32 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGvvtRHiGi+JN1dCDKNvRstMBdzNGVxT8oZI+lBCa0DHDMFHl93AfLw3V1NziSK6IGixR0ygw==
+X-Received: by 2002:a17:907:3c89:b0:b3c:896:abdc with SMTP id
+ a640c23a62f3a-b49c525eccamr1336930366b.60.1759732232364; 
+ Sun, 05 Oct 2025 23:30:32 -0700 (PDT)
+Received: from [192.168.0.7] (ltea-047-064-114-056.pools.arcor-ip.net.
+ [47.64.114.56]) by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-b486606bd5csm1069244566b.44.2025.10.05.23.30.31
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 05 Oct 2025 23:30:31 -0700 (PDT)
+Message-ID: <7aae5daa-5e07-463c-bc3a-6581050688af@redhat.com>
+Date: Mon, 6 Oct 2025 08:30:30 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v6 4/9] tests/functional: Add GDB class
+To: Gustavo Romero <gustavo.romero@linaro.org>, qemu-devel@nongnu.org,
+ alex.bennee@linaro.org, berrange@redhat.com
+Cc: qemu-arm@nongnu.org
+References: <20251003141820.85278-1-gustavo.romero@linaro.org>
+ <20251003141820.85278-5-gustavo.romero@linaro.org>
+From: Thomas Huth <thuth@redhat.com>
+Autocrypt: addr=thuth@redhat.com; keydata=
+ xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
+ yYkTm9+7zBUc0sW5AuPGR/dp3pSLX/yFWsA/UB4nJsHqgDvDU7BImSeiTrnpMOTXb7Arw2a2
+ 4CflIyFqjCpfDM4MuTmzTjXq4Uov1giGE9X6viNo1pxyEpd7PanlKNnf4PqEQp06X4IgUacW
+ tSGj6Gcns1bCuHV8OPWLkf4hkRnu8hdL6i60Yxz4E6TqlrpxsfYwLXgEeswPHOA6Mn4Cso9O
+ 0lewVYfFfsmokfAVMKWzOl1Sr0KGI5T9CpmRfAiSHpthhHWnECcJFwl72NTi6kUcUzG4se81
+ O6n9d/kTj7pzTmBdfwuOZ0YUSqcqs0W+l1NcASSYZQaDoD3/SLk+nqVeCBB4OnYOGhgmIHNW
+ 0CwMRO/GK+20alxzk//V9GmIM2ACElbfF8+Uug3pqiHkVnKqM7W9/S1NH2qmxB6zMiJUHlTH
+ gnVeZX0dgH27mzstcF786uPcdEqS0KJuxh2kk5IvUSL3Qn3ZgmgdxBMyCPciD/1cb7/Ahazr
+ 3ThHQXSHXkH/aDXdfLsKVuwDzHLVSkdSnZdt5HHh75/NFHxwaTlydgfHmFFwodK8y/TjyiGZ
+ zg2Kje38xnz8zKn9iesFBCcONXS7txENTzX0z80WKBhK+XSFJwARAQABzR5UaG9tYXMgSHV0
+ aCA8dGh1dGhAcmVkaGF0LmNvbT7CwXgEEwECACIFAlVgX6oCGwMGCwkIBwMCBhUIAgkKCwQW
+ AgMBAh4BAheAAAoJEC7Z13T+cC21EbIP/ii9cvT2HHGbFRl8HqGT6+7Wkb+XLMqJBMAIGiQK
+ QIP3xk1HPTsLfVG0ao4hy/oYkGNOP8+ubLnZen6Yq3zAFiMhQ44lvgigDYJo3Ve59gfe99KX
+ EbtB+X95ODARkq0McR6OAsPNJ7gpEUzfkQUUJTXRDQXfG/FX303Gvk+YU0spm2tsIKPl6AmV
+ 1CegDljzjycyfJbk418MQmMu2T82kjrkEofUO2a24ed3VGC0/Uz//XCR2ZTo+vBoBUQl41BD
+ eFFtoCSrzo3yPFS+w5fkH9NT8ChdpSlbNS32NhYQhJtr9zjWyFRf0Zk+T/1P7ECn6gTEkp5k
+ ofFIA4MFBc/fXbaDRtBmPB0N9pqTFApIUI4vuFPPO0JDrII9dLwZ6lO9EKiwuVlvr1wwzsgq
+ zJTPBU3qHaUO4d/8G+gD7AL/6T4zi8Jo/GmjBsnYaTzbm94lf0CjXjsOX3seMhaE6WAZOQQG
+ tZHAO1kAPWpaxne+wtgMKthyPLNwelLf+xzGvrIKvLX6QuLoWMnWldu22z2ICVnLQChlR9d6
+ WW8QFEpo/FK7omuS8KvvopFcOOdlbFMM8Y/8vBgVMSsK6fsYUhruny/PahprPbYGiNIhKqz7
+ UvgyZVl4pBFjTaz/SbimTk210vIlkDyy1WuS8Zsn0htv4+jQPgo9rqFE4mipJjy/iboDzsFN
+ BFH7eUwBEAC2nzfUeeI8dv0C4qrfCPze6NkryUflEut9WwHhfXCLjtvCjnoGqFelH/PE9NF4
+ 4VPSCdvD1SSmFVzu6T9qWdcwMSaC+e7G/z0/AhBfqTeosAF5XvKQlAb9ZPkdDr7YN0a1XDfa
+ +NgA+JZB4ROyBZFFAwNHT+HCnyzy0v9Sh3BgJJwfpXHH2l3LfncvV8rgFv0bvdr70U+On2XH
+ 5bApOyW1WpIG5KPJlDdzcQTyptOJ1dnEHfwnABEfzI3dNf63rlxsGouX/NFRRRNqkdClQR3K
+ gCwciaXfZ7ir7fF0u1N2UuLsWA8Ei1JrNypk+MRxhbvdQC4tyZCZ8mVDk+QOK6pyK2f4rMf/
+ WmqxNTtAVmNuZIwnJdjRMMSs4W4w6N/bRvpqtykSqx7VXcgqtv6eqoDZrNuhGbekQA0sAnCJ
+ VPArerAZGArm63o39me/bRUQeQVSxEBmg66yshF9HkcUPGVeC4B0TPwz+HFcVhheo6hoJjLq
+ knFOPLRj+0h+ZL+D0GenyqD3CyuyeTT5dGcNU9qT74bdSr20k/CklvI7S9yoQje8BeQAHtdV
+ cvO8XCLrpGuw9SgOS7OP5oI26a0548M4KldAY+kqX6XVphEw3/6U1KTf7WxW5zYLTtadjISB
+ X9xsRWSU+Yqs3C7oN5TIPSoj9tXMoxZkCIHWvnqGwZ7JhwARAQABwsFfBBgBAgAJBQJR+3lM
+ AhsMAAoJEC7Z13T+cC21hPAQAIsBL9MdGpdEpvXs9CYrBkd6tS9mbaSWj6XBDfA1AEdQkBOn
+ ZH1Qt7HJesk+qNSnLv6+jP4VwqK5AFMrKJ6IjE7jqgzGxtcZnvSjeDGPF1h2CKZQPpTw890k
+ fy18AvgFHkVk2Oylyexw3aOBsXg6ukN44vIFqPoc+YSU0+0QIdYJp/XFsgWxnFIMYwDpxSHS
+ 5fdDxUjsk3UBHZx+IhFjs2siVZi5wnHIqM7eK9abr2cK2weInTBwXwqVWjsXZ4tq5+jQrwDK
+ cvxIcwXdUTLGxc4/Z/VRH1PZSvfQxdxMGmNTGaXVNfdFZjm4fz0mz+OUi6AHC4CZpwnsliGV
+ ODqwX8Y1zic9viSTbKS01ZNp175POyWViUk9qisPZB7ypfSIVSEULrL347qY/hm9ahhqmn17
+ Ng255syASv3ehvX7iwWDfzXbA0/TVaqwa1YIkec+/8miicV0zMP9siRcYQkyTqSzaTFBBmqD
+ oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
+ IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
+ yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
+In-Reply-To: <20251003141820.85278-5-gustavo.romero@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: Ick5PL3E_I7ysFKB95a91HGdE3uAQDyXZZ8yL9y1XxU_1759732233
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::533;
- envelope-from=gustavo.romero@linaro.org; helo=mail-pg1-x533.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.43,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -102,249 +156,53 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Add all FEAT_MEC registers.  Enable access to the registers via the
-SCTLR2 and TCR2 control bits.  Add the two new cache management
-instructions, which are nops in QEMU because we do not model caches.
+On 03/10/2025 16.18, Gustavo Romero wrote:
+> Add GDB class, which provides methods to run GDB commands and capture
+> their output. The GDB class is a wrapper around the pygdbmi module and
+> interacts with GDB via GDB's machine interface (MI).
+> 
+> Acked-by: Thomas Huth <thuth@redhat.com>
+> Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+> Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
+> ---
+>   tests/functional/qemu_test/__init__.py |  1 +
+>   tests/functional/qemu_test/gdb.py      | 88 ++++++++++++++++++++++++++
+>   2 files changed, 89 insertions(+)
+>   create mode 100644 tests/functional/qemu_test/gdb.py
+> 
+> diff --git a/tests/functional/qemu_test/__init__.py b/tests/functional/qemu_test/__init__.py
+> index 6e666a059f..60d19891bf 100644
+> --- a/tests/functional/qemu_test/__init__.py
+> +++ b/tests/functional/qemu_test/__init__.py
+> @@ -18,3 +18,4 @@
+>       skipIfMissingImports, skipIfOperatingSystem, skipLockedMemoryTest
+>   from .archive import archive_extract
+>   from .uncompress import uncompress
+> +from .gdb import GDB
+> diff --git a/tests/functional/qemu_test/gdb.py b/tests/functional/qemu_test/gdb.py
+> new file mode 100644
+> index 0000000000..05e4c29c2a
+> --- /dev/null
+> +++ b/tests/functional/qemu_test/gdb.py
+> @@ -0,0 +1,88 @@
+> +# SPDX-License-Identifier: GPL-2.0-or-later
+> +#
+> +# A simple interface module built around pygdbmi for handling GDB commands.
+> +#
+> +# Copyright (c) 2025 Linaro Limited
+> +#
+> +# Author:
+> +#  Gustavo Romero <gustavo.romero@linaro.org>
+> +#
+> +# This work is licensed under the terms of the GNU GPL, version 2 or
+> +# later.  See the COPYING file in the top-level directory.
 
-Message-ID: <20250711140828.1714666-3-gustavo.romero@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-[rth: Squash 3 patches to add all registers at once.]
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
----
- target/arm/cpu-features.h |   5 ++
- target/arm/cpu.c          |   3 ++
- target/arm/cpu.h          |  10 ++++
- target/arm/helper.c       | 109 ++++++++++++++++++++++++++++++++++++++
- target/arm/internals.h    |   3 ++
- 5 files changed, 130 insertions(+)
+  Hi,
 
-diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
-index 602f6a88e5..206c807530 100644
---- a/target/arm/cpu-features.h
-+++ b/target/arm/cpu-features.h
-@@ -1344,6 +1344,11 @@ static inline bool isar_feature_aa64_sctlr2(const ARMISARegisters *id)
-     return FIELD_EX64_IDREG(id, ID_AA64MMFR3, SCTLRX) != 0;
- }
- 
-+static inline bool isar_feature_aa64_mec(const ARMISARegisters *id)
-+{
-+    return FIELD_EX64_IDREG(id, ID_AA64MMFR3, MEC) != 0;
-+}
-+
- static inline bool isar_feature_aa64_pmuv3p1(const ARMISARegisters *id)
- {
-     return FIELD_EX64_IDREG(id, ID_AA64DFR0, PMUVER) >= 4 &&
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 30e29fd315..baab2ff9b6 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -641,6 +641,9 @@ void arm_emulate_firmware_reset(CPUState *cpustate, int target_el)
-             if (cpu_isar_feature(aa64_sctlr2, cpu)) {
-                 env->cp15.scr_el3 |= SCR_SCTLR2EN;
-             }
-+            if (cpu_isar_feature(aa64_mec, cpu)) {
-+                env->cp15.scr_el3 |= SCR_MECEN;
-+            }
-         }
- 
-         if (target_el == 2) {
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 2b9585dc80..6b9613a5d3 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -576,6 +576,15 @@ typedef struct CPUArchState {
- 
-         /* NV2 register */
-         uint64_t vncr_el2;
-+
-+        /* MEC registers */
-+        uint64_t mecid_p0_el2;
-+        uint64_t mecid_a0_el2;
-+        uint64_t mecid_p1_el2;
-+        uint64_t mecid_a1_el2;
-+        uint64_t mecid_rl_a_el3;
-+        uint64_t vmecid_p_el2;
-+        uint64_t vmecid_a_el2;
-     } cp15;
- 
-     struct {
-@@ -1721,6 +1730,7 @@ static inline void xpsr_write(CPUARMState *env, uint32_t val, uint32_t mask)
- #define SCR_TCR2EN            (1ULL << 43)
- #define SCR_SCTLR2EN          (1ULL << 44)
- #define SCR_GPF               (1ULL << 48)
-+#define SCR_MECEN             (1ULL << 49)
- #define SCR_NSE               (1ULL << 62)
- 
- /* Return the current FPSCR value.  */
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index aa730addf2..c2c450617d 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -770,6 +770,9 @@ static void scr_write(CPUARMState *env, const ARMCPRegInfo *ri, uint64_t value)
-         if (cpu_isar_feature(aa64_sctlr2, cpu)) {
-             valid_mask |= SCR_SCTLR2EN;
-         }
-+        if (cpu_isar_feature(aa64_mec, cpu)) {
-+            valid_mask |= SCR_MECEN;
-+        }
-     } else {
-         valid_mask &= ~(SCR_RW | SCR_ST);
-         if (cpu_isar_feature(aa32_ras, cpu)) {
-@@ -4994,6 +4997,96 @@ static const ARMCPRegInfo nmi_reginfo[] = {
-       .resetfn = arm_cp_reset_ignore },
- };
- 
-+static CPAccessResult mecid_access(CPUARMState *env,
-+                                   const ARMCPRegInfo *ri, bool isread)
-+{
-+    int el = arm_current_el(env);
-+
-+    if (el == 2) {
-+        if (arm_security_space(env) != ARMSS_Realm) {
-+            return CP_ACCESS_UNDEFINED;
-+        }
-+
-+        if (!(env->cp15.scr_el3 & SCR_MECEN)) {
-+            return CP_ACCESS_TRAP_EL3;
-+        }
-+    }
-+
-+    return CP_ACCESS_OK;
-+}
-+
-+static void mecid_write(CPUARMState *env, const ARMCPRegInfo *ri,
-+                        uint64_t value)
-+{
-+    value = extract64(value, 0, MECID_WIDTH);
-+    raw_write(env, ri, value);
-+}
-+
-+static CPAccessResult cipae_access(CPUARMState *env, const ARMCPRegInfo *ri,
-+                                   bool isread)
-+{
-+    switch (arm_security_space(env)) {
-+    case ARMSS_Root:  /* EL3 */
-+    case ARMSS_Realm: /* Realm EL2 */
-+        return CP_ACCESS_OK;
-+    default:
-+        return CP_ACCESS_UNDEFINED;
-+    }
-+}
-+
-+static const ARMCPRegInfo mec_reginfo[] = {
-+    { .name = "MECIDR_EL2", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 4, .opc2 = 7, .crn = 10, .crm = 8,
-+      .access = PL2_R, .type = ARM_CP_CONST | ARM_CP_NV_NO_TRAP,
-+      .resetvalue = MECID_WIDTH - 1 },
-+    { .name = "MECID_P0_EL2", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 4, .opc2 = 0, .crn = 10, .crm = 8,
-+      .access = PL2_RW, .type = ARM_CP_NV_NO_TRAP,
-+      .accessfn = mecid_access, .writefn = mecid_write,
-+      .fieldoffset = offsetof(CPUARMState, cp15.mecid_p0_el2) },
-+    { .name = "MECID_A0_EL2", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 4, .opc2 = 1, .crn = 10, .crm = 8,
-+      .access = PL2_RW, .type = ARM_CP_NV_NO_TRAP,
-+      .accessfn = mecid_access, .writefn = mecid_write,
-+      .fieldoffset = offsetof(CPUARMState, cp15.mecid_a0_el2) },
-+    { .name = "MECID_P1_EL2", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 4, .opc2 = 2, .crn = 10, .crm = 8,
-+      .access = PL2_RW, .type = ARM_CP_NV_NO_TRAP,
-+      .accessfn = mecid_access, .writefn = mecid_write,
-+      .fieldoffset = offsetof(CPUARMState, cp15.mecid_p1_el2) },
-+    { .name = "MECID_A1_EL2", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 4, .opc2 = 3, .crn = 10, .crm = 8,
-+      .access = PL2_RW, .type = ARM_CP_NV_NO_TRAP,
-+      .accessfn = mecid_access, .writefn = mecid_write,
-+      .fieldoffset = offsetof(CPUARMState, cp15.mecid_a1_el2) },
-+    { .name = "MECID_RL_A_EL3", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 6, .opc2 = 1, .crn = 10, .crm = 10,
-+      .access = PL3_RW, .accessfn = mecid_access,
-+      .writefn = mecid_write,
-+      .fieldoffset = offsetof(CPUARMState, cp15.mecid_rl_a_el3) },
-+    { .name = "VMECID_P_EL2", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 4, .opc2 = 0, .crn = 10, .crm = 9,
-+      .access = PL2_RW, .type = ARM_CP_NV_NO_TRAP,
-+      .accessfn = mecid_access, .writefn = mecid_write,
-+      .fieldoffset = offsetof(CPUARMState, cp15.vmecid_p_el2) },
-+    { .name = "VMECID_A_EL2", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 4, .opc2 = 1, .crn = 10, .crm = 9,
-+      .access = PL2_RW, .type = ARM_CP_NV_NO_TRAP,
-+      .accessfn = mecid_access, .writefn = mecid_write,
-+      .fieldoffset = offsetof(CPUARMState, cp15.vmecid_a_el2) },
-+    { .name = "DC_CIPAE", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 4, .crn = 7, .crm = 14, .opc2 = 0,
-+      .access = PL2_W, .type = ARM_CP_NOP | ARM_CP_NV_NO_TRAP,
-+      .accessfn = cipae_access },
-+};
-+
-+static const ARMCPRegInfo mec_mte_reginfo[] = {
-+    { .name = "DC_CIGDPAE", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 4, .crn = 7, .crm = 14, .opc2 = 7,
-+      .access = PL2_W, .type = ARM_CP_NOP | ARM_CP_NV_NO_TRAP,
-+      .accessfn = cipae_access },
-+};
-+
- #ifndef CONFIG_USER_ONLY
- /*
-  * We don't know until after realize whether there's a GICv3
-@@ -5836,6 +5929,9 @@ static void sctlr2_el2_write(CPUARMState *env, const ARMCPRegInfo *ri,
- {
-     uint64_t valid_mask = 0;
- 
-+    if (cpu_isar_feature(aa64_mec, env_archcpu(env))) {
-+        valid_mask |= SCTLR2_EMEC;
-+    }
-     value &= valid_mask;
-     raw_write(env, ri, value);
- }
-@@ -5845,6 +5941,9 @@ static void sctlr2_el3_write(CPUARMState *env, const ARMCPRegInfo *ri,
- {
-     uint64_t valid_mask = 0;
- 
-+    if (cpu_isar_feature(aa64_mec, env_archcpu(env))) {
-+        valid_mask |= SCTLR2_EMEC;
-+    }
-     value &= valid_mask;
-     raw_write(env, ri, value);
- }
-@@ -5907,6 +6006,9 @@ static void tcr2_el2_write(CPUARMState *env, const ARMCPRegInfo *ri,
- {
-     uint64_t valid_mask = 0;
- 
-+    if (cpu_isar_feature(aa64_mec, env_archcpu(env))) {
-+        valid_mask |= TCR2_AMEC0 | TCR2_AMEC1;
-+    }
-     value &= valid_mask;
-     raw_write(env, ri, value);
- }
-@@ -7159,6 +7261,13 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-         define_arm_cp_regs(cpu, tcr2_reginfo);
-     }
- 
-+    if (cpu_isar_feature(aa64_mec, cpu)) {
-+        define_arm_cp_regs(cpu, mec_reginfo);
-+        if (cpu_isar_feature(aa64_mte, cpu)) {
-+            define_arm_cp_regs(cpu, mec_mte_reginfo);
-+        }
-+    }
-+
-     if (cpu_isar_feature(any_predinv, cpu)) {
-         define_arm_cp_regs(cpu, predinv_reginfo);
-     }
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 1d958dbf68..6bd9f8310c 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -2007,4 +2007,7 @@ bool arm_pan_enabled(CPUARMState *env);
- /* Compare uint64_t for qsort and bsearch. */
- int compare_u64(const void *a, const void *b);
- 
-+/* Used in FEAT_MEC to set the MECIDWidthm1 field in the MECIDR_EL2 register. */
-+#define MECID_WIDTH 16
-+
- #endif
--- 
-2.34.1
+just as a reminder, this still needs the change requested by Daniel:
+
+https://lore.kernel.org/qemu-devel/aN56GkbIFxs5IDRR@redhat.com/
+
+  Thomas
 
 

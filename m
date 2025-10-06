@@ -4,88 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 776E2CAC5B8
-	for <qemu-arm@archiver.kernel.org>; Mon,  6 Oct 2025 10:14:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE172CAC5B8
+	for <qemu-arm@archiver.kernel.org>; Mon,  6 Oct 2025 10:42:10 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v5iEI-0002R1-1j; Mon, 06 Oct 2025 06:14:06 -0400
+	id 1v5if7-0004oT-E9; Mon, 06 Oct 2025 06:41:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1v5iEG-0002ON-7S
- for qemu-arm@nongnu.org; Mon, 06 Oct 2025 06:14:04 -0400
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1v5if1-0004mp-Tr
+ for qemu-arm@nongnu.org; Mon, 06 Oct 2025 06:41:46 -0400
+Received: from mail-yx1-xb12d.google.com ([2607:f8b0:4864:20::b12d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1v5iEC-0006Sg-LH
- for qemu-arm@nongnu.org; Mon, 06 Oct 2025 06:14:02 -0400
-Received: by mail-wr1-x42a.google.com with SMTP id
- ffacd0b85a97d-3ee130237a8so3153683f8f.0
- for <qemu-arm@nongnu.org>; Mon, 06 Oct 2025 03:13:59 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1v5iew-0001XX-LC
+ for qemu-arm@nongnu.org; Mon, 06 Oct 2025 06:41:43 -0400
+Received: by mail-yx1-xb12d.google.com with SMTP id
+ 956f58d0204a3-635283199a9so4238961d50.1
+ for <qemu-arm@nongnu.org>; Mon, 06 Oct 2025 03:41:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1759745638; x=1760350438; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:user-agent
- :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=r0bNarigZEgbemk+5mzAoK/LWW+rtg0TJaG5TSrT740=;
- b=mfDkuv79qR0E10VYXLa0Ggt3MC0QeMsAuIP0BlHvDEz7DyR6xGUqcMZAcBGbyfhZtZ
- t6H6KsVPHYwMbmGmWFCCsoLcFbgUCPI3eJQ3tylmb/bbyPAsotIZEY+4453XCWOu5jNT
- qXMPVLgnNQEiBn2rRGhxPa9dWs06gYTXeXOMouusPDlusU4rhOBwVGjpCsA/kWfibvbd
- 3Me+vyffMuGeTBYR92yWQTYqB0JVIi7y4VD/XHfBNhzdoequW6QddPuZfUPLsl3ukvZD
- bPUpXrkBZ1H0ZWzSbIHySB0vidE/U9Mh7TGx+jL4i+EsRhu4/+31KsVw+msJLc+Tm9i9
- va/Q==
+ d=linaro.org; s=google; t=1759747297; x=1760352097; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=vwrQcCJGIbsxvMRi/b1fe24qLHYm9LI3TINLoCmsLMc=;
+ b=t4bQSWbS/xP4RpK/V46JyDHY8X0mBi3sdXeeWn0SSwva/1lAKHBD9DCu5JMYgzQXR0
+ q/i6+NQMv9sRY9aT9ytP8DhjeT3DiZApEwfV7nJqpB3SbkKDqkp6D534QSksDjBIg6Hq
+ LXjh5Gey8b/8smZJi+s86+A5xqrgQsgf3XV4QWkEOMfH2o7BzL/Lq/bmVWBbxUl6XIw2
+ IbutdHa2AOiqZEjVdYzcTkXgeDgM4Z0ib/gqrqXlyp6wfp02pxW7+MDdKZ7U3H3Fuowf
+ oYWCwj+DArrWE8waChFk17zJACh7TpAT56vu814WPwGxb6KMuP15BvBsD5dSqfKULNKM
+ 4u1g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759745638; x=1760350438;
- h=content-transfer-encoding:mime-version:message-id:date:user-agent
- :references:in-reply-to:subject:cc:to:from:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=r0bNarigZEgbemk+5mzAoK/LWW+rtg0TJaG5TSrT740=;
- b=R3GINcDDknipDu8iCGnfsRgrtD6z2yABw84Eb/TPQJXVt3Q6UA7wognAz6xRhEQmtV
- ksdaHBStZxbYg07eQznx0JHPVoy6HvId/8NPO+H64OSBde/hEVXeNPQbu1ddnS7U7lx9
- a2dfthYPkm48P0ZzKkeclyoYNN4GpQNeAJjzzMZB2+0km/MmLsTwOaxQigk47EOu8en+
- Ey7iFqo93NLlPKSfGqw9ncwEKSK81YrXlZSafd2g7G37hnajBKAqK/VisHZdoVfOcikK
- MgOwg/hDnPlR9NscdUWDTMrWhdLgW8PEi96TGduvGz6g8x9VYZzeMBptTS0QKxd3+AkV
- L04g==
+ d=1e100.net; s=20230601; t=1759747297; x=1760352097;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=vwrQcCJGIbsxvMRi/b1fe24qLHYm9LI3TINLoCmsLMc=;
+ b=mYiQ7NkmzmgA+EW4GDouMUCgqQWYoZNCnVbtX0UwoLtJXA8pluUF8hX4IkOxxDf8+d
+ H0wrBITW/GjGwRbb6QAomCvYLB7L+2CVIGByBCvxxX+aM7c9rhvH5rjgD8hhtNf/oOo/
+ Pyuef795VOZe5URtTmYEPf69lAHPvpUAwGYYxnACnh8Z3MaejLGDASbFUqsVU6pV2stO
+ 1hyHFmcyYfIrXCZM4OY2W3++MciqcDju8EYHYGOqJRYvtWh9zJ/7eJuTUrbPUJUOxWQ6
+ Q9WWgojF8Uu7AIzmsaikMUbIU2KZZ9ZPTTcqDXTF0bU1+qfubMkxmppGduj/6sFb26kl
+ kHYw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVUfVITPZEFEvPbFbnCDqQ+mo8Yx6OG4LMmdTVKicB2ESzHGj1F43Ma+OAC0ZiljcECFwnJnK3Uig==@nongnu.org
-X-Gm-Message-State: AOJu0YxfC5bTMJLecwkdKaqaLuGEJfD16lRRFnWH+4wkcB3MqWAsKu6z
- JCHfZPWfCP236EVKaQu7u0nudP6CodWf4hK2pVKfZIAwOhZMvL7Ai+Qc+dT8MTA7GNc=
-X-Gm-Gg: ASbGnct2KHuAlgW+5vfhbvE9XDURyyQvqxkubBhVukD4hnIAKl83Ad9yp2bw1xAvMHF
- 3UMNnSGcPDuJesbcPlpcEa0wVfPBRFCJPnbbPHaFJUvlet19z/JBSuTOhbFu0LsZnqm7cYOEOPq
- 16XXfZsl1mSMYteImZDUULo7EUWP0eZP9YNtCBCJniht30HaKUf4na7Z7/IkTjAdiOezlN3lECp
- cjkrTnRqlyLglXKl++h1yKw/uyabBZLBFaWf8d3bZg9FJyXqW7hLDNtVuqRGkKHglKcPbw68Ihf
- olCk3/kBNU1WVSeIvBnupvux+tprRLEG9JXwtjT4vtd/g2rdaKevTdrc4WZ7+jepSnEU+rmYMGa
- KBXMtllSfSYcaDU70KKzwNsWL2M6jXjdQAbqmSPoYfEvl3sgqxWI=
-X-Google-Smtp-Source: AGHT+IFf+BQ5LDbwkxM+4Mp+c2QOx01KywDGnJyvUWc5ZlxwitnMKRIKFaHdOlfjAIdhLsvSn7md1w==
-X-Received: by 2002:a05:6000:250c:b0:3e7:492f:72b4 with SMTP id
- ffacd0b85a97d-425671b0b13mr7435773f8f.42.1759745637915; 
- Mon, 06 Oct 2025 03:13:57 -0700 (PDT)
-Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4255d8a6c3esm20377132f8f.1.2025.10.06.03.13.56
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 06 Oct 2025 03:13:57 -0700 (PDT)
-Received: from draig (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 8BF905F845;
- Mon, 06 Oct 2025 11:13:56 +0100 (BST)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Thomas Huth <thuth@redhat.com>
-Cc: Gustavo Romero <gustavo.romero@linaro.org>,  qemu-devel@nongnu.org,
- berrange@redhat.com,  qemu-arm@nongnu.org
-Subject: Re: [PATCH v6 0/9] tests/functional: Adapt reverse_debugging to run
- w/o Avocado
-In-Reply-To: <8cdf9d77-8801-4c25-93a2-06c81b9d1f3d@redhat.com> (Thomas Huth's
- message of "Mon, 6 Oct 2025 09:43:15 +0200")
-References: <20251003141820.85278-1-gustavo.romero@linaro.org>
- <8cdf9d77-8801-4c25-93a2-06c81b9d1f3d@redhat.com>
-User-Agent: mu4e 1.12.14-dev1; emacs 30.1
-Date: Mon, 06 Oct 2025 11:13:56 +0100
-Message-ID: <87a5241gnv.fsf@draig.linaro.org>
+ AJvYcCXY0VLo2p4kQHnvWZ0p8x477g8LzS6WU33YIltrIEHceQ2V2+kRdnMIJ2i4LweygHuaK/CU+GGXPA==@nongnu.org
+X-Gm-Message-State: AOJu0YxEtXMywbuXA3F1h/OxJfhh3oV3D00DJyNbiYp7WCUTIKPx5HI3
+ JwBXNXC+Jwaphui0vMhPB2bsKAXHk//J4wS8GU0Q9XUbIvQpD58bKsIggmFqH447Xrr9/Ideowe
+ a5kF2w0oVoa2Dw0ho03c1/5bG5yQiPOqppYA/Y55IFg==
+X-Gm-Gg: ASbGncti9mHBUELEm57AiQMai/F92SlGuoGVRo8nlrxOM0Yy7EDAhRRekvsnECW+WVK
+ KNEKT7oXuKdnj6R8kR1j87CXMBarsrnOs7uyp1V8vjlJdEtBFEd+PoVGH5bvCvHEo2iikv9lvVx
+ GnHAOL6XaPCxLLwAR3LJxYmtcLfeZIIzy3IueXZTkHsr8JnwWSHD+1tn6Jysz0Z9Sv+4cjKnmV2
+ qwm8iXQISm6CktqVvoOghejw2/h1qEO5FUJDr6zCW/NCmA=
+X-Google-Smtp-Source: AGHT+IHMERTFx5EYN3CVOYqNP9Lw1HGa0Td0sIWgKn2ytuLOFeid3ejTjZUf5dSxY8/3eAbvuV97bsLfFKiYQrnFcHI=
+X-Received: by 2002:a05:690e:686:b0:636:1bb3:2d2d with SMTP id
+ 956f58d0204a3-63b9a07fdf7mr8736537d50.22.1759747297216; Mon, 06 Oct 2025
+ 03:41:37 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
- envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x42a.google.com
+References: <CC5A0011-CD14-40F9-8023-8BF5F989BCCF@gmail.com>
+In-Reply-To: <CC5A0011-CD14-40F9-8023-8BF5F989BCCF@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 6 Oct 2025 11:41:25 +0100
+X-Gm-Features: AS18NWB7RZ1o_mn8Z-KGl28zNr88Ka_Hgag4hcQFKeBpYzqAoYX_71A_p7MS-eQ
+Message-ID: <CAFEAcA_PbfzTAW2qeFao1MhPG=jn9dtzt0AzwL-aPCEULijsuw@mail.gmail.com>
+Subject: Re: [PATCH] hw/arm: add pvpanic mmio device for arm
+To: Alexander Gryanko <xpahos@gmail.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-trivial@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b12d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -108,93 +94,22 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Thomas Huth <thuth@redhat.com> writes:
-
-> On 03/10/2025 16.18, Gustavo Romero wrote:
->> The goal of this series is to remove Avocado as a dependency for running
->> the reverse_debugging functional test.
->> After several rounds of discussions about v1 and v2, and experiments
->> done by Daniel and Thomas (thanks for all the experiments and comments
->> so far), I've taken a new approach and moved away from using a runner
->> for GDB. The changes, I believe, are much simpler now.
->> This new series uses GDB's machine interface (MI) via the pygdbmi
->> module
->> (thanks Manos and Peter for the inputs). pygdbmi provides a controller
->> to start GDB and communicate with it through MI, so there is no longer a
->> risk of version clashes between libpython in GDB and Python modules in
->> the pyvenv, as it could, in theory, happen when GDB executes the test
->> script via -x option.
->> Also, as Daniel pointed out, the overall test output is pretty bad
->> and
->> currently does not allow one to easily follow the sequence of GDB
->> commands used in the test. I took this opportunity to improve the output
->> and it now prints the sequence in a format that can be copied and pasted
->> directly into GDB.
->> The TAP protocol is respected, and Meson correctly displays GDB's
->> test
->> output in testlog-thorough.txt.
->> Because the pygdbmi "shim" is so thin, I had to write a trivial GDB
->> class around it to easily capture and print the payloads returned by its
->> write() method. The GDB class allows clean, single-line commands to be
->> used in the tests through method chaining, making them easier to follow,
->> for example:
->> pc =3D gdb.cli("print $pc").get_add()
->> The test is kept =E2=80=9Cskipped=E2=80=9D for aarch64, ppc64, and x86_6=
-4, so it is
->> necessary to set QEMU_TEST_FLAKY_TESTS=3D1 in the test environment to
->> effectively run the test on these archs.
->> On aarch64, the test is flaky, but there is a fix that I=E2=80=99ve test=
-ed
->> while
->> writing this series [0] that resolves it. On ppc64 and x86_64, the test
->> always fails: on ppc64, GDB gets a bogus PC, and on x86_64, the last
->> part of the test (reverse-continue) does not hit the last executed PC
->> (as it should happen) but instead jumps to the beginning of the code
->> (first PC in forward order).
->> Thus, to effectively run the reverse_debugging test on aarch64:
->> $ export QEMU_TEST_FLAKY_TESTS=3D1
->> $ make check-functional
->> or:
->> $ make check-functional-aarch64
->> or even, to run only the reverse_debug test after 'make
->> check-functional':
->> $ ./pyvenv/bin/meson test --verbose --no-rebuild -t 1 --setup thorough -=
--suite func-thorough func-aarch64-reverse_debug
->> Cheers,
->> Gustavo
->> v1:
->> https://patchew.org/QEMU/20250819143916.4138035-1-gustavo.romero@linaro.=
-org/
->> v2:
->> https://patchew.org/QEMU/20250904154640.52687-1-gustavo.romero@linaro.or=
-g/
->> v3:
->> https://patchew.org/QEMU/20250922054351.14289-1-gustavo.romero@linaro.or=
-g/
->> v4:
->> https://patchew.org/QEMU/20250926051542.104432-1-gustavo.romero@linaro.o=
-rg/
->> v5:
->> https://patchew.org/QEMU/20251002020432.54443-1-gustavo.romero@linaro.or=
-g/
->> v6:
->> - Fixed skipping test when no GDB is installed in the test environment
+On Sat, 4 Oct 2025 at 21:19, Alexander Gryanko <xpahos@gmail.com> wrote:
 >
-> With this v6, the test now gets skipped in my incremental build
-> directory, and it works when I compile QEMU in a new folder. I guess
-> that's good enough, so from my side, it's fine to include this now:
->
-> Tested-by: Thomas Huth <thuth@redhat.com>
->
-> Alex, will you queue the patches?
+> Currently, pvpanic is available in three device types: ISA,
+> MMIO, and PCI. For early stages of system initialisation
+> before PCI enumeration, only ISA and MMIO are suitable.
+> ISA is specific to the x86 platform; only MMIO devices
+> can be used for ARM. It is not possible to specify a
+> device as on the x86 platform (-device pvpanic); the
+> only possible way is to add an MMIO device to the dtb,
+> which can be implemented by manually adding new functions
+> to the QEMU code, as was done in the VMApple implementation.
 
-Yep - I'm just doing the final checks with my personal gitlab runners
-before posting.
+No, thank you. I don't want to add more devices to "virt"
+than we have to. There is a PCI pvpanic device -- use
+that. Yes, you might have to do PCI enumeration in software.
 
->
->  Thomas
-
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
+thanks
+-- PMM
 

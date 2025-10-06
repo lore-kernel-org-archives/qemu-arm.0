@@ -4,81 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0335DCAC5B8
-	for <qemu-arm@archiver.kernel.org>; Mon,  6 Oct 2025 13:01:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F298ECAC5B8
+	for <qemu-arm@archiver.kernel.org>; Mon,  6 Oct 2025 13:03:11 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v5kqH-0004R5-HY; Mon, 06 Oct 2025 09:01:30 -0400
+	id 1v5krM-0004hO-AV; Mon, 06 Oct 2025 09:02:36 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1v5kqG-0004Qm-2L
- for qemu-arm@nongnu.org; Mon, 06 Oct 2025 09:01:28 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1v5krK-0004hB-20
+ for qemu-arm@nongnu.org; Mon, 06 Oct 2025 09:02:34 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1v5kq9-0001Vf-4q
- for qemu-arm@nongnu.org; Mon, 06 Oct 2025 09:01:27 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1v5krC-0001gE-8L
+ for qemu-arm@nongnu.org; Mon, 06 Oct 2025 09:02:33 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1759755677;
+ s=mimecast20190719; t=1759755737;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=tbg/jdlMLCmitobHajNdFI55jOdnqoy47OONdMKjRyA=;
- b=GizubFtr0KWE0XvZwfSBZMclCPXKNpekBHssHGqs9L1nHNF4HLJikNCHnZ31HtcHpgCzl/
- DGUOwG3ZW3PqlxB9n3LKIBRLRwPX9Ty7CpxXFaCaWfViFBKB/PSgRuHXu6k3x8qXQd0Kmt
- ViOKEhf9OpPV6HmxaxqiB5ZoibK3V7I=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=8XP+/L6ShZ+ErNDo2j7T4i24j2ImOHXB2awMNPB8ugI=;
+ b=UK7Av57VhUs7SShFTz+iYT4Yj2ks5z922feR1sr5w7a9HQB5Ilu54watiALWjwLwDIGYGd
+ mQkP9TkS9dEjgfr7kLARVYHXv43VwVNfT/iTDrbXbxZw538scXVmy+DevKL2xbCOhfXet1
+ LaKzwYqpCpzLkN2/xFxJjy/Rz7oKDUU=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-647-Ky1xJFXnM9-mZ1Z-OdSj0w-1; Mon, 06 Oct 2025 09:01:16 -0400
-X-MC-Unique: Ky1xJFXnM9-mZ1Z-OdSj0w-1
-X-Mimecast-MFC-AGG-ID: Ky1xJFXnM9-mZ1Z-OdSj0w_1759755674
-Received: by mail-wm1-f71.google.com with SMTP id
- 5b1f17b1804b1-46e32eb4798so29151905e9.2
- for <qemu-arm@nongnu.org>; Mon, 06 Oct 2025 06:01:14 -0700 (PDT)
+ us-mta-693-jviPu_DEOBC0Uw8n62Bxvg-1; Mon, 06 Oct 2025 09:02:16 -0400
+X-MC-Unique: jviPu_DEOBC0Uw8n62Bxvg-1
+X-Mimecast-MFC-AGG-ID: jviPu_DEOBC0Uw8n62Bxvg_1759755735
+Received: by mail-wm1-f69.google.com with SMTP id
+ 5b1f17b1804b1-46e4c8fa2b1so21085525e9.0
+ for <qemu-arm@nongnu.org>; Mon, 06 Oct 2025 06:02:16 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759755674; x=1760360474;
+ d=1e100.net; s=20230601; t=1759755735; x=1760360535;
  h=content-transfer-encoding:in-reply-to:autocrypt:content-language
  :from:references:cc:to:subject:user-agent:mime-version:date
  :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=tbg/jdlMLCmitobHajNdFI55jOdnqoy47OONdMKjRyA=;
- b=h+IVOdzQDZCZoifLRZwoJnWEjCgIisOxtCdQga89olO/4FkSX1PH/TaerZEyshe8mi
- VMYrkvhojNjT9sQZo08cKZMJLb1rl6M3AKeZjJ5+w00SQOlmCi7AaFNAA07PaOgkPxXG
- GeM2vdIklwHEFGVEmqQrxUzFQN6EOED+qe1GxtcCKHRSSMj+jcqZzplnp1/TId/YA6sx
- prG5xEdxSdso/X2SsHrvdPKIlmCeBSghYENbYtpnRnmg4NMHfvDnc2Vs2tlwygzGLSzX
- e+u8VThzMgg+EKSv2AK6t/nnCHowAck/Z1SUmP8SNIK63xh6rLH6cTCm8EcdhDkB8R/l
- n3Hw==
+ bh=8XP+/L6ShZ+ErNDo2j7T4i24j2ImOHXB2awMNPB8ugI=;
+ b=JTbb/bKYvLMN6rr6dNayVvq4HKv3nccmi7g/zqlbF1A4A+xrDU/h5PiLC23vbF3dyI
+ maj6/5D8sHqgB4wRsO6ndrDLv6xeqxfIKh5gwlWxJYvEMlcFC0ie1MXk4PX/46U0FtjQ
+ Ux70GniEEhz6kc/5SFPNcflhrxXV95xZGkBsHnm3F3wR0QceFKvi4nq1EBSqQcI7psZT
+ qP0Bu8uSnQH1lvBXr1zzXcxeKTicg8bWRXYPV/4A8asQLMJzNCcd9RTcYIl9x4PADXuo
+ sxbcjmLPESp1KYZoPfwXVYSm/KypdyIM1zxmewO+9XbmpBlAQg22p9qQXDTqEjdk81y8
+ auww==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWD2iO6Z65mjb9t8zTWdZyAh5be/ALN5Pf5es0XfZyKJLjIW2hMj910cvrtz161FMfvIaJn+awe7w==@nongnu.org
-X-Gm-Message-State: AOJu0Yx1puUPvwwMAyYDrs35VOlg7bjI+D6cpVWkn6mH4MTx5hcN/17N
- 0VvzzhEzS5JpHuTV/X3aOYWrptMz0rmpbz/FGLEoR1duDWkad2gkY7iybuY9sOacxSYw7CzosFt
- JFxXcVnfHjdnh29gjc9g+wl4phYK+7MThzPskvVBPWD06f41Ut9IcrA==
-X-Gm-Gg: ASbGnctDpiaZ0j6TfOIscxRO0UQg7u/vweaofvjkayPSBdNWBB+3A216niGBUAbNbB2
- Vaw1G+6MJwNELU/BBBHm2jIK/niqPMTCCJMIO2KY8LjNDqY2l9+SmXmxMlEwBfst0RaBHDMItdR
- G6yfWJEKpRB4+4oiUoMWPbqgm94SPPzPXcUe3ro2PW21Ub7aFFsAHOxwSENgpOoEZDY6/1dLPwg
- pue7Wdn5jdmkoS9GfemG8FQrjknuUvV/WxnAYFL+lk2am+x84IxqnuUzUp4PK1Dj5kc024lVcIw
- znSmT1Ln1bXIF3oY7mCsUklpBLfzUaVH9dYbacpBeDzBDdU11zqr2VsojP/tz1cdkm0MCSPzsyk
- RdvczxLVTaQ==
-X-Received: by 2002:a05:600c:4fc6:b0:46c:adf8:c845 with SMTP id
- 5b1f17b1804b1-46e71124395mr99858465e9.16.1759755672212; 
- Mon, 06 Oct 2025 06:01:12 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IH/RFmdQCBtd4GU/CABKhL7qsIvB+A+AXJ+ouRDj1zbgXPndLNpU2GqgLCh7IjJLD/drew79w==
-X-Received: by 2002:a05:600c:4fc6:b0:46c:adf8:c845 with SMTP id
- 5b1f17b1804b1-46e71124395mr99857655e9.16.1759755671596; 
- Mon, 06 Oct 2025 06:01:11 -0700 (PDT)
+ AJvYcCXP7N7PTaUCLu+dT9Yen1/6kvocQCo87MpCwCMjpKunnu0poR4kpAYeEWGyapE3izQzg467iOgGEQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yw8HxjzlDFp5tWtRMzAdOMQbT8BoEeuw4iSpuLTF/O7OwT2fPSp
+ bFU6rKZ9c5jfjqaITmTMxmGGGTEM91kjuqtxl6ahUn7CjDOiLw4R0MVXfK1nRgS+sZvqOCGgOsd
+ YOD1jpATSmY5ts/fH3SGHTE9Er329f/T6LE6kHv6ceFbYDIj8sRu0wA==
+X-Gm-Gg: ASbGnctyamcSY7chkMMi0+QJuw/yrtc4OcySd5qusvbr2uV1uJx7QvawouZH9Vt1jys
+ vmhwtSbJrrwePtgLaHnWwixmxzC6UaXOFWLjQXp/8ZDOsNdMLUF471W+CwJZQkLkErBvRPMZucO
+ ejv/Pl3VDedK4ir5O5LLi7yKUWGo8iRgStwJAq6QqwHOSS/sdPSK3ImsTYZupSwG5fGswxfrJfK
+ OqV2XIL3CpD9OPJrwE2YXw56Q6xgH7K6OlLb4mg4eoMLwgi1mvzdqHxALJ5MwPZE8hnk7+0u9K7
+ IohJCg+a1VEsypSqImjG2ELvegxfvHTeNvBBJkWk7j5uIZ/TxEI/jBX1KEEHGdbDOBClKIKc0Hd
+ eL+WoHVMVJg==
+X-Received: by 2002:a05:600c:474d:b0:46e:3901:4a25 with SMTP id
+ 5b1f17b1804b1-46e7116411emr74067995e9.20.1759755735240; 
+ Mon, 06 Oct 2025 06:02:15 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IH5c3nOdBnQ9j37P39o/Q5Li46dr79sX1W7PgBCfxkuek9zYsqmOCp+rbWk9IR7bBwE9cCAYw==
+X-Received: by 2002:a05:600c:474d:b0:46e:3901:4a25 with SMTP id
+ 5b1f17b1804b1-46e7116411emr74067525e9.20.1759755734647; 
+ Mon, 06 Oct 2025 06:02:14 -0700 (PDT)
 Received: from [192.168.0.7] (ltea-047-064-114-056.pools.arcor-ip.net.
  [47.64.114.56]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-46e72374b8dsm174600995e9.19.2025.10.06.06.01.09
+ 5b1f17b1804b1-46e78c5d290sm117768045e9.0.2025.10.06.06.02.13
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 06 Oct 2025 06:01:11 -0700 (PDT)
-Message-ID: <932a0061-a673-4ca9-a935-99edca9af9da@redhat.com>
-Date: Mon, 6 Oct 2025 15:01:08 +0200
+ Mon, 06 Oct 2025 06:02:14 -0700 (PDT)
+Message-ID: <3209475c-ea4e-4b73-942c-6354aaa36f52@redhat.com>
+Date: Mon, 6 Oct 2025 15:02:12 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 03/25] hw/s390x/s390-stattrib: Include missing
- 'exec/target_page.h' header
+Subject: Re: [PATCH 06/25] hw: Remove unnecessary 'system/ram_addr.h' header
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  qemu-devel@nongnu.org
 Cc: "Michael S. Tsirkin" <mst@redhat.com>, Nicholas Piggin
@@ -97,7 +96,7 @@ Cc: "Michael S. Tsirkin" <mst@redhat.com>, Nicholas Piggin
  Paolo Bonzini <pbonzini@redhat.com>, qemu-s390x@nongnu.org,
  Peter Xu <peterx@redhat.com>
 References: <20251001082127.65741-1-philmd@linaro.org>
- <20251001082127.65741-4-philmd@linaro.org>
+ <20251001082127.65741-7-philmd@linaro.org>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -141,9 +140,9 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20251001082127.65741-4-philmd@linaro.org>
+In-Reply-To: <20251001082127.65741-7-philmd@linaro.org>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 1VwL61DHAXq11WzQ44fsnTlQjen8FGeQWRk7aNhgVkI_1759755674
+X-Mimecast-MFC-PROC-ID: 87ktNlhj_R280l-fZ47r1FbtG7XbJ48dxaaP4fRF8tk_1759755735
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
@@ -157,7 +156,7 @@ X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.441,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -174,20 +173,20 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 01/10/2025 10.21, Philippe Mathieu-Daudé wrote:
-> The "exec/target_page.h" header is indirectly pulled from
-> "system/ram_addr.h". Include it explicitly, in order to
-> avoid unrelated issues when refactoring "system/ram_addr.h":
-> 
->    hw/s390x/s390-stattrib-kvm.c: In function ‘kvm_s390_stattrib_set_stattr’:
->    hw/s390x/s390-stattrib-kvm.c:89:57: error: ‘TARGET_PAGE_SIZE’ undeclared (first use in this function); did you mean ‘TARGET_PAGE_BITS’?
->       89 |     unsigned long max = s390_get_memory_limit(s390ms) / TARGET_PAGE_SIZE;
->          |                                                         ^~~~~~~~~~~~~~~~
->          |                                                         TARGET_PAGE_BITS
-> 
-> Since "system/ram_addr.h" is actually not needed, remove it.
+> None of these files require definition exposed by "system/ram_addr.h",
+> remove its inclusion.
 > 
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > ---
+>   hw/ppc/spapr.c                    | 1 -
+>   hw/ppc/spapr_caps.c               | 1 -
+>   hw/ppc/spapr_pci.c                | 1 -
+>   hw/remote/memory.c                | 1 -
+>   hw/remote/proxy-memory-listener.c | 1 -
+>   hw/s390x/s390-virtio-ccw.c        | 1 -
+>   hw/vfio/spapr.c                   | 1 -
+>   hw/virtio/virtio-mem.c            | 1 -
+>   8 files changed, 8 deletions(-)
 
 Reviewed-by: Thomas Huth <thuth@redhat.com>
 

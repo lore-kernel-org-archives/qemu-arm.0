@@ -4,77 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 314D1CCA476
-	for <qemu-arm@archiver.kernel.org>; Tue,  7 Oct 2025 09:51:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A35BDCCA476
+	for <qemu-arm@archiver.kernel.org>; Tue,  7 Oct 2025 09:55:27 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v64Ku-0007Ee-Am; Tue, 07 Oct 2025 05:50:24 -0400
+	id 1v64PX-0000Kq-Nk; Tue, 07 Oct 2025 05:55:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1v64Ks-0007E2-Tl
- for qemu-arm@nongnu.org; Tue, 07 Oct 2025 05:50:22 -0400
-Received: from mail-yw1-x1135.google.com ([2607:f8b0:4864:20::1135])
+ id 1v64PW-0000Ja-Hq
+ for qemu-arm@nongnu.org; Tue, 07 Oct 2025 05:55:10 -0400
+Received: from mail-yx1-xb130.google.com ([2607:f8b0:4864:20::b130])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1v64Kq-0003I8-9V
- for qemu-arm@nongnu.org; Tue, 07 Oct 2025 05:50:22 -0400
-Received: by mail-yw1-x1135.google.com with SMTP id
- 00721157ae682-77636fb28f6so54851197b3.1
- for <qemu-arm@nongnu.org>; Tue, 07 Oct 2025 02:50:19 -0700 (PDT)
+ id 1v64PU-0003oM-Uh
+ for qemu-arm@nongnu.org; Tue, 07 Oct 2025 05:55:10 -0400
+Received: by mail-yx1-xb130.google.com with SMTP id
+ 956f58d0204a3-63bcfcb800aso3250086d50.0
+ for <qemu-arm@nongnu.org>; Tue, 07 Oct 2025 02:55:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1759830618; x=1760435418; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=dd3HAV1p80VpWKfyRd4aQR0J95DXAq/zpGcN7qI7ITA=;
- b=nGyLCvIb+1fqerjozO/MyNuoKtKoaLT8VKEYqP1KVmndxs0PoBEStVQooIEm36f6v8
- +Dhn9MCAfZKA4o+zdSbKpEURGZg9Pq1nGcDqTZG38nmROBFQHfvBgBwQ82k2auHWLHLP
- ib6KBFWG5AN72EIxroUjsWU+P8g/18KBHNjmSSBNk5utyhKzNvKLMQMJT3KS8HQ+FwWf
- pFCn4uAQjjUgQZ/9qQIh+g32jXzP4pkj9HlNmAjwbB3QkPjnfDltyDMBH+YqX3XWgvTU
- 6eV2K9wRwoQciTmxbd8eEfy7cphWRNJUEHvn+KZSde9BBKENaMyxUXj6eu5tuDW4g9lr
- 53ug==
+ d=linaro.org; s=google; t=1759830908; x=1760435708; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=rCIvTZGGGTDqzmDo1tWcfqGgWXa3PVzNi04H2DduP7g=;
+ b=ABGJbpROkNsgJR547+7XwhXLUf8VZaJW83oWLsu5LwRhOToqTh5V4J48joKqd2JBOg
+ TzSqlm5bOQk9RcZkSikY+T3DjVU9G3B6MCqD2KI9vjI93maaCL+FmkcroJJNYAA/BVgK
+ ueN7AzDY432Enuag+7QeA+JLDRu4pSXLmbs6LHLSIauCeFotCqTc0TX0UlPnrxQXQSnH
+ 0SWiLM9g33TpROAeKLeew3PYOpVXBq+k5P22WGIZ9eacYJS9aiLYodxHEJO0CLxeJajW
+ 37w4QrZ/4EDHlUVzRURDSOUgULAQb3+hiKx2PNE7MGxkRYC7czeH3IHgworMPYUPk3Em
+ XGlg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759830618; x=1760435418;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=dd3HAV1p80VpWKfyRd4aQR0J95DXAq/zpGcN7qI7ITA=;
- b=Utr01zTiZSG50L8EyYu9K75xAcIXey8eloWvCh+R/CLyi8yQVPlEvaQGp7aAfzfWoG
- jW+OgriIzw9aJr5kXzIXXjMeNcCKQQiFNzIUCJ0Ag2Ewrk2ccPaHHOrQ4QnK06yFlXoG
- 33V5bpbD//4WKC8eWrvDB0KauVaXIYMXmQ5OhMJfZhUPQN5ymnay+1bB/Ndbm0ZPFMWH
- HrgdET03EPJ95dQoMF4VLNaYGPoPSaa5awcZ0xdqlqAnKfPmxIwc7DStr4FojlkMPwAk
- wduDEG7d5cvh7RLn15AbDjM9eEEZ5NGS9DJIK1lPso7m0o7wVs2/mhrNvWK1sN22hFqr
- uiSg==
+ d=1e100.net; s=20230601; t=1759830908; x=1760435708;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=rCIvTZGGGTDqzmDo1tWcfqGgWXa3PVzNi04H2DduP7g=;
+ b=KZvvj6RocVi8e+LAlDspNYTwmdh2VVjWbE6ThuG8GA7SDIwUN6Z/TJJdrZRIS9Ik6o
+ H/ZrcgHMoMGSgCr5P/swdyg/hDbiL13Cq3GZS5VeOUg451Ft0I2gOz341eK8vJQE6YqZ
+ xX5VpyjQ95Tvo9nmm8wpcMB7JffrtGihD3/41Sni17CMKlthjgM7AHA7L0Ph1ddBAwOM
+ QSlPr9kjZ3dJZ3pExhJHA36wGmp+fLBop7z1M1UbeScDDMETxvkPbj5ZFys2LpEcDKqU
+ DWCng0gtmAOUs8laEIWYrfsAyiU0oMN3ttPJ2J/9A3KKFJzbIVnT/3C1FcUhejLNcEwL
+ mdbw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUKDJEfbRwKJOx9bXEa9DL2+lcfLfPMeWHn8DJ7I36GzgMzT6s64AAbhhsuqeKXdPB8LfeNMNrDIA==@nongnu.org
-X-Gm-Message-State: AOJu0YwcyFeU52KiQI9cK6GywuzfDBqvL63A8dJGMa9LiBm5l8/BNA52
- bVlMnnix0FN4PvltlYsyIerXVzquzy7K/w0etdBDV9TsO+OuwvfGml5ONNi0Lyw3toa9TEUvlSf
- bQ9Cr6hFO3DidzXxrjo6oKA5Ls05Zui08N9pGK3o1ug==
-X-Gm-Gg: ASbGncvKQ9YoLkKFe838kLScj1tmEHNz3O9jDCa2aSAf/7VIYnYkpn+J73deejtlTDN
- rOMcINlVpyxUoCSv39+FybWtKmSrDD29Xer4MpQIqAqZKO5C+30pAp/YKE/Bw3VNQjeAeyT83A3
- voC/VU3iVO3fx/Q0A7n4Tm57AAVsMYUIEEkp302yb3vFNrPUu8RtU+0k9CHpgpiqeTSl9KMaW9S
- MqXaZIDk3xRYCmY7eZJ/5o4MgGyGhrGw3Rm
-X-Google-Smtp-Source: AGHT+IFBSDZaRfUA0PhdtuZfWsUfNh++pegHP6ING5ZFSMqlU5Zr97ceSyexfYE6nBD6OvL5boyw32b+GV3jkA45qeI=
-X-Received: by 2002:a05:690c:62ca:b0:77f:90dd:af46 with SMTP id
- 00721157ae682-77f945930b1mr244167027b3.3.1759830618282; Tue, 07 Oct 2025
- 02:50:18 -0700 (PDT)
+ AJvYcCUnxKaIMffjbbDcvAkLahzS79VNa+UzlfZc2uv6bYM/skiOdh3TvfmrjV1TsZaz1Qt7HAQQ6iDclw==@nongnu.org
+X-Gm-Message-State: AOJu0Yy7OeA6nuskwsyEwiAMtHK85+jIL3YMdcjlXA4buc70Jj58ntpA
+ Ta6aSL9JnsToc56upCAorlkJ/ufq3I1P1Mfm1NHvp/jEVm9VTpooiUAITlR5XD1UUZYZJFSN488
+ 5VqYq8x/gyfd6eEMhGV0tbagY0AKL+rHMSUg5ssNdoA==
+X-Gm-Gg: ASbGnctu5RVCRG/lmumBQCzHzoK5g/l5qBzXtRTQgvDYGoMzTmL/1oIFw9JE3svKndB
+ oAvjgDyvjzxt5h+k+IEKA6SZWoISHoUkLeZayhDFpRPD2ExOkrhLirtwP4ycKhz1bcZJ34nQ3uw
+ gg1sEs9AQ8n7S/QJLzplMiXTCyXZV0x2thPUAC9T/hsx4FN83V89XGmhV58n2ty/pZiCx4WHW9x
+ yZ/0OrqE1YYpBYGvFHOBDsxucF8CnXbAFWsJQreu8WYOSQ=
+X-Google-Smtp-Source: AGHT+IESDk5ZPp4UAdQuLEt5Uno382eWPQYMajQ8ytcaRfUTj+tCMf0ivEYmH/2zS2hy9AGyevo85f+5A7z+etLh/i8=
+X-Received: by 2002:a05:690e:ec8:b0:633:a260:14a1 with SMTP id
+ 956f58d0204a3-63b9a07c6b6mr12020483d50.18.1759830907412; Tue, 07 Oct 2025
+ 02:55:07 -0700 (PDT)
 MIME-Version: 1.0
-References: <20251001084047.67423-1-philmd@linaro.org>
-In-Reply-To: <20251001084047.67423-1-philmd@linaro.org>
+References: <20251003170800.997167-1-richard.henderson@linaro.org>
+ <20251003170800.997167-35-richard.henderson@linaro.org>
+In-Reply-To: <20251003170800.997167-35-richard.henderson@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 7 Oct 2025 10:50:06 +0100
-X-Gm-Features: AS18NWDc_Dwl6juhRQ_ZxETKrD6zuLry2BB3t0yD1C3-mW6O2QHvLSHkTHTmRNE
-Message-ID: <CAFEAcA9_Ysh7CEj5UcEadR-mDSGPcBFQN7V-PvkVg8yLLZnRjA@mail.gmail.com>
-Subject: Re: [PATCH] hw/arm: Remove sl_bootparam_write() and
- 'hw/arm/sharpsl.h' header
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Date: Tue, 7 Oct 2025 10:54:56 +0100
+X-Gm-Features: AS18NWD_-HpjFXl_4LKhUYfMysKMFdgnj3jisOUCBe_jibOEOfpFbkh-YEpuWXE
+Message-ID: <CAFEAcA_vn2hLx=PzEW3z8-BFZoq75Hs04FLyPD_zsrmfAyvyPQ@mail.gmail.com>
+Subject: Re: [PATCH v6 34/73] target/arm: Make helper_exception_return
+ system-only
+To: Richard Henderson <richard.henderson@linaro.org>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1135;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1135.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b130;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb130.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -97,19 +96,18 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Wed, 1 Oct 2025 at 09:40, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org=
-> wrote:
+On Fri, 3 Oct 2025 at 18:36, Richard Henderson
+<richard.henderson@linaro.org> wrote:
 >
-> When removing the spitz and tosa board, commit b62151489ae
-> ("hw/arm: Remove deprecated akita, borzoi spitz, terrier,
-> tosa boards") removed the last calls to sl_bootparam_write().
-> Remove it, along with the "hw/arm/sharpsl.h" header.
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>  target/arm/tcg/helper-a64.h    | 5 ++++-
+>  target/arm/tcg/helper-a64.c    | 2 ++
+>  target/arm/tcg/translate-a64.c | 8 ++++++++
+>  3 files changed, 14 insertions(+), 1 deletion(-)
 
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-
-Applied to target-arm.next, thanks.
-
+thanks
 -- PMM
 

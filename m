@@ -4,60 +4,134 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 075DFCCA470
-	for <qemu-arm@archiver.kernel.org>; Tue,  7 Oct 2025 10:58:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EEAC5CCA470
+	for <qemu-arm@archiver.kernel.org>; Tue,  7 Oct 2025 12:07:40 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v65OW-0007Dn-0Q; Tue, 07 Oct 2025 06:58:12 -0400
+	id 1v66Su-0004P6-1u; Tue, 07 Oct 2025 08:06:48 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mchehab+huawei@kernel.org>)
- id 1v65OV-0007DU-Cx; Tue, 07 Oct 2025 06:58:11 -0400
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1v66St-0004Oh-3J
+ for qemu-arm@nongnu.org; Tue, 07 Oct 2025 08:06:47 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mchehab+huawei@kernel.org>)
- id 1v65OR-0002Tf-DC; Tue, 07 Oct 2025 06:58:11 -0400
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sea.source.kernel.org (Postfix) with ESMTP id 17CD044BD3;
- Tue,  7 Oct 2025 10:58:05 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7BF96C4CEF1;
- Tue,  7 Oct 2025 10:58:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1759834684;
- bh=o6kW3qUTq/z0FyCBXP7hcloetsUO3PKuqHlCXWaAczU=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=GI0T4jsYiGVhhLbmKE/WfoP5Vb0h9upME1tavZ2IZObeH2GDXuCkFw0VOYB8ZPZCB
- fJ+32r2J4K1OEgmy6oi3DoDIEi0rvef6Bx9eJs4shWAfxgV/Q5SQtTHuX2TnfaZcoR
- RIBOU5NIxDVBk+dCRJQkh0VbCVfZwv33DSkk/OG+oag7ueTF79Wqn+QthxuhuqCX2Z
- xG5v8gRNFiqk1u0Gca5rGPqxbxreYZkiv/BTW8AsC1Qw7ln602dXFoiEG2HKdO5GNE
- IrgxF4fNy2cd8ymiMM15Vm3al1ClAWAQH3xR0HCY+PFqpi/tw7I35pgY2Nq/dkRe71
- UkGnoBNdp2n5A==
-Date: Tue, 7 Oct 2025 12:57:59 +0200
-From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: Gavin Shan <gshan@redhat.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, mst@redhat.com,
- imammedo@redhat.com, anisinha@redhat.com, gengdongjiu1@gmail.com,
- peter.maydell@linaro.org, pbonzini@redhat.com, Jonathan.Cameron@huawei.com,
- shan.gavin@gmail.com
-Subject: Re: [PATCH RESEND v2 3/3] target/arm/kvm: Support multiple memory
- CPERs injection
-Message-ID: <20251007125759.48849939@foz.lan>
-In-Reply-To: <20251007060810.258536-4-gshan@redhat.com>
-References: <20251007060810.258536-1-gshan@redhat.com>
- <20251007060810.258536-4-gshan@redhat.com>
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1v66Se-0002dN-W9
+ for qemu-arm@nongnu.org; Tue, 07 Oct 2025 08:06:46 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1759838784;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=pVk8Zb58ssVNm3jJdpg8057OQA0TXm4AFj/u7c91Zjw=;
+ b=SyQgmJ82x08kVwl24heWMqpwI0BdOdRijW+a0tnRN6Qo3F05IjGRBQFzbuxQU4NGCJP+Sf
+ SOMEAgHFlNZuPx+QMqac/WrBSn2PNY4t9BJxQWUAmPQqiKdv7+iMBxw/+X1W3irp6D/SpW
+ w9lb0JsxIA6hBolQYP54bBo+TKkM/jo=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-401-sVPJ7DLoMZKkSHeuB3ui5Q-1; Tue, 07 Oct 2025 08:06:21 -0400
+X-MC-Unique: sVPJ7DLoMZKkSHeuB3ui5Q-1
+X-Mimecast-MFC-AGG-ID: sVPJ7DLoMZKkSHeuB3ui5Q_1759838780
+Received: by mail-wr1-f70.google.com with SMTP id
+ ffacd0b85a97d-3ece0fd841cso3421143f8f.0
+ for <qemu-arm@nongnu.org>; Tue, 07 Oct 2025 05:06:20 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1759838780; x=1760443580;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=Sqg0lIYXAGYR+a02nHb3cUWYTCxW8vubx8DOTT1agjA=;
+ b=mH7CY66ijPYZ0Q+J93iHvUlTyW/CEqir+VWkrmvyLU/MMzDoM4V/Uqil2ZL+D4rKv5
+ zEtaSBj0RLo82dKAd35euEyISZ4nvdjuOGRBig2zrGWsYfdnd5XOCWXceC4TaRHdhBib
+ DvSsLiCojYN4hi05S76J9HaqTDPzpY5SLDSmSCaADhcDOZZW+xKFfbaKNGuTYk7J8lAp
+ 1j5ZW4YWRmwD7otJ8lQbOzJeZXtPaxWtNQfRkCBzIaFDP6WoWj9SEVGJlILqfEVur5z0
+ xAj9mxRm08zIJIzA/0itfQA/TZdnO2AckVKwUfzUoio3lBLYQs6Zb2/HI2eoBh5WHHiK
+ d9DA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCX48V/Xioxo/TzCXu/tdTgthYYFtuSD6rd2Y5ugSvqENN8uq3Qtnk83ZDJrF6RzH8uYMYLsjTjYMQ==@nongnu.org
+X-Gm-Message-State: AOJu0YwqgQut5TAtBoHD1njXi0lviu+reMP2JLsGg5UPABoi6lJhTXyq
+ iE7OwRkxDQxKn8uB+i4QL+J9VlfRad6Rr1AZ7Ywe6sEltedrUsOptCBEmOqAjKPT/9PRgYfo1r/
+ 6iNLznzt56EvhzjtU6vdKr2xr0ALluvMHbNahuHS/UPLxD+PwE+r+Ig==
+X-Gm-Gg: ASbGncshpDjSFQsKKGwxeIuZgOCUmDGP5VEwR5/1sSkNVyGoCDdZm9SKoNvCAJwrBHu
+ EdEY9W1W6W5HFEO0BOEmi2iOK6uNx3N2TEENHsByQtLviCkqSHtUkkScxrs7vlq1YzupmHqPWuj
+ 490cUFLfYd/Riqs9oqcM67hzGFYIZ9t7zIxL+On9hwu5TQi6X8P6nvM88zhXa0jIm65mO1mUnNm
+ zQjtRd8xOuhZ7dtnFE6onz0Xntm2J4kogTNjFDtVeIsZ/+i6VZvQ9V6TMbWDnvVF66Y51ib9bgR
+ Q+fFnazGpLq+Q4D9lsVQlSzm7neqavQBxYBx
+X-Received: by 2002:a5d:5d85:0:b0:3e3:24c3:6d71 with SMTP id
+ ffacd0b85a97d-42567158018mr8652974f8f.1.1759838779246; 
+ Tue, 07 Oct 2025 05:06:19 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHAquwys3RLZHp/SS1eQVYIFQ16NrQfetZSWjwcEIEp9ktitvcImR8zGT/1/X51QjrEEWikKw==
+X-Received: by 2002:a5d:5d85:0:b0:3e3:24c3:6d71 with SMTP id
+ ffacd0b85a97d-42567158018mr8652911f8f.1.1759838778354; 
+ Tue, 07 Oct 2025 05:06:18 -0700 (PDT)
+Received: from fedora ([85.93.96.130]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-4255d8f4ab0sm25249410f8f.52.2025.10.07.05.06.16
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 07 Oct 2025 05:06:17 -0700 (PDT)
+Date: Tue, 7 Oct 2025 14:06:13 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Salil Mehta <salil.mehta@huawei.com>
+Cc: "salil.mehta@opnsrc.net" <salil.mehta@opnsrc.net>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
+ <qemu-arm@nongnu.org>, "mst@redhat.com" <mst@redhat.com>, "maz@kernel.org"
+ <maz@kernel.org>, "jean-philippe@linaro.org" <jean-philippe@linaro.org>,
+ Jonathan Cameron <jonathan.cameron@huawei.com>, "lpieralisi@kernel.org"
+ <lpieralisi@kernel.org>, "peter.maydell@linaro.org"
+ <peter.maydell@linaro.org>, "richard.henderson@linaro.org"
+ <richard.henderson@linaro.org>, "armbru@redhat.com" <armbru@redhat.com>,
+ "andrew.jones@linux.dev" <andrew.jones@linux.dev>, "david@redhat.com"
+ <david@redhat.com>, "philmd@linaro.org" <philmd@linaro.org>,
+ "eric.auger@redhat.com" <eric.auger@redhat.com>, "will@kernel.org"
+ <will@kernel.org>, "ardb@kernel.org" <ardb@kernel.org>,
+ "oliver.upton@linux.dev" <oliver.upton@linux.dev>, "pbonzini@redhat.com"
+ <pbonzini@redhat.com>, "gshan@redhat.com" <gshan@redhat.com>,
+ "rafael@kernel.org" <rafael@kernel.org>, "borntraeger@linux.ibm.com"
+ <borntraeger@linux.ibm.com>, "alex.bennee@linaro.org"
+ <alex.bennee@linaro.org>, "gustavo.romero@linaro.org"
+ <gustavo.romero@linaro.org>, "npiggin@gmail.com" <npiggin@gmail.com>,
+ "harshpb@linux.ibm.com" <harshpb@linux.ibm.com>, "linux@armlinux.org.uk"
+ <linux@armlinux.org.uk>, "darren@os.amperecomputing.com"
+ <darren@os.amperecomputing.com>, "ilkka@os.amperecomputing.com"
+ <ilkka@os.amperecomputing.com>, "vishnu@os.amperecomputing.com"
+ <vishnu@os.amperecomputing.com>, "gankulkarni@os.amperecomputing.com"
+ <gankulkarni@os.amperecomputing.com>, "karl.heubaum@oracle.com"
+ <karl.heubaum@oracle.com>, "miguel.luis@oracle.com"
+ <miguel.luis@oracle.com>, zhukeqian <zhukeqian1@huawei.com>, "wangxiongfeng
+ (C)" <wangxiongfeng2@huawei.com>, "wangyanan (Y)" <wangyanan55@huawei.com>,
+ "Wangzhou (B)" <wangzhou1@hisilicon.com>, Linuxarm <linuxarm@huawei.com>,
+ "jiakernel2@gmail.com" <jiakernel2@gmail.com>, "maobibo@loongson.cn"
+ <maobibo@loongson.cn>, "lixianglai@loongson.cn" <lixianglai@loongson.cn>,
+ "shahuang@redhat.com" <shahuang@redhat.com>, "zhao1.liu@intel.com"
+ <zhao1.liu@intel.com>
+Subject: Re: [PATCH RFC V6 14/24] arm/acpi: Introduce dedicated CPU OSPM
+ interface for ARM-like platforms
+Message-ID: <20251007140613.5916df08@fedora>
+In-Reply-To: <7da6a9c470684754810414f0abd23a62@huawei.com>
+References: <20251001010127.3092631-1-salil.mehta@opnsrc.net>
+ <20251001010127.3092631-15-salil.mehta@opnsrc.net>
+ <20251003165816.53821040@fedora>
+ <7da6a9c470684754810414f0abd23a62@huawei.com>
 X-Mailer: Claws Mail 4.3.1 (GTK 3.24.49; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2600:3c0a:e001:78e:0:1991:8:25;
- envelope-from=mchehab+huawei@kernel.org; helo=sea.source.kernel.org
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: qEB_eepAorRzpRVu6LjlqoqAWhV_PPaSn0phUFEUbmM_1759838780
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=imammedo@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -24
 X-Spam_score: -2.5
 X-Spam_bar: --
 X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.422,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -73,676 +147,1299 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Em Tue,  7 Oct 2025 16:08:10 +1000
-Gavin Shan <gshan@redhat.com> escreveu:
+On Tue, 7 Oct 2025 11:15:47 +0000
+Salil Mehta <salil.mehta@huawei.com> wrote:
 
-> In the combination of 64KB host and 4KB guest, a problematic host page
-> affects 16x guest pages. In this specific case, it's reasonable to
-> push 16 consecutive memory CPERs. Otherwise, QEMU can run into core
-> dump due to the current error can't be delivered as the previous error
-> isn't acknoledges. It's caused by the nature the host page can be
-> accessed in parallel due to the mismatched host and guest page sizes.
-> 
-> Imporve push_ghes_memory_errors() to push 16x consecutive memory CPERs
-> for this specific case. The maximal error block size is bumped to 4KB,
-> providing enough storage space for those 16x memory CPERs.
-> 
-> Signed-off-by: Gavin Shan <gshan@redhat.com>
-> ---
->  hw/acpi/ghes.c   |  2 +-
->  target/arm/kvm.c | 46 +++++++++++++++++++++++++++++++++++++++++++++-
->  2 files changed, 46 insertions(+), 2 deletions(-)
-> 
-> diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
-> index 045b77715f..5c87b3a027 100644
-> --- a/hw/acpi/ghes.c
-> +++ b/hw/acpi/ghes.c
-> @@ -33,7 +33,7 @@
->  #define ACPI_HEST_ADDR_FW_CFG_FILE          "etc/acpi_table_hest_addr"
->  
->  /* The max size in bytes for one error block */
-> -#define ACPI_GHES_MAX_RAW_DATA_LENGTH   (1 * KiB)
-> +#define ACPI_GHES_MAX_RAW_DATA_LENGTH   (4 * KiB)
+> Hi Igor,
+>=20
+> Thanks for the reviews and sorry for the late reply. Please find my repli=
+es inline.
+>=20
+>=20
+> > From: Igor Mammedov <imammedo@redhat.com>
+> > Sent: Friday, October 3, 2025 3:58 PM
+> >=20
+> > On Wed,  1 Oct 2025 01:01:17 +0000
+> > salil.mehta@opnsrc.net wrote:
+> >  =20
+> > > From: Salil Mehta <salil.mehta@huawei.com>
+> > >
+> > > The existing ACPI CPU hotplug interface is built for x86 platforms
+> > > where CPUs can be inserted or removed and resources are allocated
+> > > dynamically. On ARM, CPUs are never hotpluggable: resources are
+> > > allocated at boot and QOM vCPU objects always exist. Instead, CPUs ar=
+e
+> > > administratively managed by toggling ACPI _STA to enable or disable
+> > > them, which gives a hotplug-like effect but does not match the x86 mo=
+del.
+> > >
+> > > Reusing the x86 hotplug AML code would complicate maintenance since
+> > > much of its logic relies on toggling the _STA.Present bit to notify
+> > > OSPM about CPU insertion or removal. Such usage is not architecturall=
+y
+> > > valid on ARM, where CPUs cannot appear or disappear at runtime. Mixin=
+g
+> > > both models in one interface would increase complexity and make the
+> > > AML harder to extend. A separate path is therefore required. The new
+> > > design is heavily inspired by the CPU hotplug interface but avoids it=
+s =20
+> > unsuitable semantics.
+> >=20
+> > Let me ask how much existing CPUHP AML code will become, if you reuse i=
+t
+> > and add handling of 'enabled' bit there?
+> >=20
+> > Would it be the same 700LOC as in this patch, which is basically duplic=
+ation of
+> > existing CPUHP ACPI interface? =20
+>=20
+>=20
+> It is by design as we have adopted non-hotplug approach now and closely a=
+ligned
+> ourselves with what PSCI standard perceives to be the definition of CPU h=
+otplug on ARM
+> platforms - at least, as of today! And it is *NOT* what 'CPU hotplug' mea=
+ns on x86 platform.=20
 
-I had a patch doing the same on my queue. Anyway, I'm OK if you do it,
-but don't forget to also update the docs:
+There is no argument that they are different but,
+Could you point to PSCI specific parts in this patch?
 
-diff --git a/docs/specs/acpi_hest_ghes.rst b/docs/specs/acpi_hest_ghes.rst
-index aaf7b1ad11a5..acf31d6eeb7c 100644
---- a/docs/specs/acpi_hest_ghes.rst
-+++ b/docs/specs/acpi_hest_ghes.rst
-@@ -68,7 +68,7 @@ Design Details
-     and N Read Ack Register entries. The size for each entry is 8-byte.
-     The Error Status Data Block table contains N Error Status Data Block
-     entries. The size for each entry is defined at the source code as
--    ACPI_GHES_MAX_RAW_DATA_LENGTH (currently 1024 bytes). The total size
-+    ACPI_GHES_MAX_RAW_DATA_LENGTH (currently 4096 bytes). The total size
-     for the "etc/hardware_errors" fw_cfg blob is
-     (N * 8 * 2 + N * ACPI_GHES_MAX_RAW_DATA_LENGTH) bytes.
-     N is the number of the kinds of hardware error sources.
+> In crux, this means,
+> 1. Dropping any hotplug/unplug infrastructure and its related paraphernal=
+ia from the
+>     ARM implementation till the time the meaning of physical CPU hotplug =
+is not clear as
+>     per the specification. We do not want to model in Qemu something whic=
+h does not
+>     exist or defined, especially for the CPU hotplug case.
 
-Btw, IMO better to place th4 4K size change on a separate patch.
+there is 'opts' config struct that lets user to opt in/out from specific AM=
+L
+being generated. You could use that to disable some hotplug only bits of AM=
+L.
+Other bits that are more generic/reusable, just refactor/rename them to a m=
+ore
+generic names.
 
-That's said, as GHES table is now part of ACPI tests, you need to have
-a patch before/after GHES table changes to update BIOS test.
+> 2. This also means *NOT* enabling the  ACPI_CPU_HOTPLUG compilation switc=
+h to=20
+>      preserve the sanctity of the clean design.
 
-You'll likely need something similar to those:
+that's semantics, I'd suggest renaming that to ACPI_CPU.
 
-	8d5613d2eefa ("tests/acpi: virt: add an empty HEST file")
-	cd16f08ad4bd ("tests/acpi: virt: update HEST file with its current data")
+> 3. Yes, there is a code duplicity for now but that=E2=80=99s a case of fu=
+rther optimization and
+>     cleanup not a design issue. Some of them are:
+>     (1)  ACPI device-check and eject-request  handling code can be extrac=
+ted and
+>     made generic for all devices not just for CPUs.
 
-There are more details about how to do it at the comments on this file:
+make it more generic in acpi/cpu.c, instead of copying.
+I don't have any objections to refactoring existing code if it makes sense =
+and
+we can share the code.
 
-	tests/qtest/bios-tables-test.c
+>     (2)  Right now, acpi/cpu.c is assuming that resources and templates s=
+hould be
+>      same for all the CPUs using CPUs AML described in it. There is no ne=
+ed for
+>      such a restriction. Every platform should be free to choose the way =
+it wants to
+>      manage the resources and the interpretation of the fields inside it.
 
-Thanks,
-Mauro
+be more specific why you'd need different resources/MMIO layout for this se=
+ries?
 
----
+The thing is if we copied every time when we needed something that's a bit =
+different,
+we would end up with unsupportable/bloated QEMU.
 
-Btw, this is the patch I had increasing the size. It was submitted
-arlready on one of the several version releases, but Igor asked me
-to postpone it to sent it after having the main stuff merged.
+>     (3) Call backs used with GED  makes an assumption of HOTPLUG interfac=
+e etc.
+>     (4) In fact, the prototype of the GED event handler makes a similar m=
+istake of
+>      assuming that GED is only meant for devices supporting hotplug when =
+this is not
+>      the case even as per the ACPI specification.
+please be more specific and point to problematic code.
 
-[PATCH] hw/acpi/ghes: increase max CPER size to 4K
+current acpi/cpu.c might be compiled under ACPI_CPU_HOTPLUG knob but it's n=
+ot really
+limited to hotplug, the reason for being compiled as such is that hotplug w=
+as
+the sole reason for building CPUs AML at all.
 
-The max limit there is just made up, and it is not in sync with
-what is specified at acpi_hest_ghes.rst.
+What I see in the patch is simplifying current code somewhat by dropping
+some hotplug related bits and a bunch of renaming.
+Otherwise it's pretty much duplicating current acpi/cpu.c.
 
-Increase it to 4K to match what's written there.
+Beside that simplification, I don't see any reason why duplicating such amo=
+unt is good idea.
+Consider making exiting acpi/cpu.c more generic instead.
 
-Tested with this fake CPER:
-    GUID: e19e3d16-bc11-11e4-9caa-c2051d5d46b0
-    CPER:
-      00000000  05 00 00 00 08 00 01 00 44 0f 00 00 00 00 00 00   ........D.......
-      00000010  00 00 00 80 00 00 00 00 10 05 0f 00 00 00 00 00   ................
-      00000020  00 00 00 00 00 00 00 00 00 20 04 00 02 01 00 03   ......... ......
-      00000030  0f 00 91 00 00 00 00 00 ef be ad de 00 00 00 00   ................
-      00000040  ad 0b ba ab 00 00 00 00 00 20 04 00 04 01 00 03   ......... ......
-      00000050  7f 00 54 00 00 00 00 00 ef be ad de 00 00 00 00   ..T.............
-      00000060  ad 0b ba ab 00 00 00 00 00 20 04 00 08 01 00 03   ......... ......
-      00000070  ff 0f 46 d6 80 00 00 00 ef be ad de 00 00 00 00   ..F.............
-      00000080  ad 0b ba ab 00 00 00 00 00 20 04 00 10 01 00 03   ......... ......
-      00000090  ff 03 da 78 00 00 00 00 ef be ad de 00 00 00 00   ...x............
-      000000a0  ad 0b ba ab 00 00 00 00 00 20 04 00 02 01 00 03   ......... ......
-      000000b0  0f 00 91 00 00 00 00 00 ef be ad de 00 00 00 00   ................
-      000000c0  ad 0b ba ab 00 00 00 00 00 20 04 00 04 01 00 03   ......... ......
-      000000d0  7f 00 54 00 00 00 00 00 ef be ad de 00 00 00 00   ..T.............
-      000000e0  ad 0b ba ab 00 00 00 00 00 20 04 00 08 01 00 03   ......... ......
-      000000f0  ff 0f 46 d6 80 00 00 00 ef be ad de 00 00 00 00   ..F.............
-      00000100  ad 0b ba ab 00 00 00 00 00 20 04 00 10 01 00 04   ......... ......
-      00000110  ff 04 da 78 00 00 00 00 ef be ad de 00 00 00 00   ...x............
-      00000120  ad 0b ba ab 00 00 00 00 00 00 04 00 00 01 00 00   ................
-      00000130  ef be ad de 00 00 00 00 00 00 00 00 00 00 00 00   ................
-      00000140  00 00 10 04 0f 00 00 00 00 00 00 00 00 00 00 00   ................
-      00000150  00 20 04 00 02 01 00 0f 00 00 00 00 00 00 ef be   . ..............
-      00000160  ad de 00 00 00 ad 0b ba 00 00 00 00 00 20 04 00   ............. ..
-      00000170  04 01 00 7f 00 54 00 00 00 00 ef be ad de 00 00   .....T..........
-      00000180  00 ad 0b ba ab 00 00 00 00 20 04 00 08 01 00 ff   ......... ......
-      00000190  0f 46 d6 80 00 00 ef be ad de 00 00 00 ad 0b ba   .F..............
-      000001a0  ab 00 00 00 00 20 04 00 10 01 00 ff 03 da 78 00   ..... ........x.
-      000001b0  00 00 00 be ad de 00 00 00 ad 0b ba ab 00 00 00   ................
-      000001c0  00 00 04 00 02 01 00 0f 00 91 00 00 00 00 00 ef   ................
-      000001d0  be de 00 00 00 ad 0b ba ab 00 00 00 00 00 20 04   .............. .
-      000001e0  04 01 00 7f 00 54 00 00 00 00 00 ef be ad de 00   .....T..........
-      000001f0  00 ad 0b ba ab 00 00 00 00 00 20 04 00 08 00 ff   .......... .....
-      00000200  0f 46 d6 80 00 00 00 ef be ad de 00 00 ad 0b ba   .F..............
-      00000210  ab 00 00 00 00 00 20 04 00 10 01 00 03 da 78 00   ...... .......x.
-      00000220  00 00 00 ef be ad de 00 00 00 ad ba ab 00 00 00   ................
-      00000230  00 de ad be 05 00 00 00 01 00 00 28 02 00 00 00   ...........(....
-      00000240  00 00 00 00 80 00 00 00 00 05 0f 00 00 00 00 00   ................
-      00000250  00 00 00 00 00 00 00 20 00 02 01 00 0f 00 00 00   ....... ........
-      00000260  00 00 00 ef be ad de 00 00 8f 71 96 1c 12 fe 95   ..........q.....
-      00000270  80 a0 10 36 04 6e 43 3d 1d 1c 31 09 2d 13 bd 5e   ...6.nC=..1.-..^
-      00000280  dc e2 45 e9 1f 37 ec 09 ab 4c 35 41 93 e8 04 a7   ..E..7...L5A....
-      00000290  cd 05 50 c1 c7 03 55 a1 78 f3 95 c5 98 85 84 1f   ..P...U.x.......
-      000002a0  a1 b7 b9 cd e6 9b 0b 89 0d f5 61 8f 71 96 8a 1c   ..........a.q...
-      000002b0  12 fe a0 10 36 04 6e fe 43 3d 1d 1c e9 31 09 2d   ....6.n.C=...1.-
-      000002c0  13 dc e2 45 e9 1f e7 37 ec 09 00 ab 4c 35 41 e8   ...E...7....L5A.
-      000002d0  a7 cd 05 50 c1 f8 c7 03 73 55 a1 78 f3 c5 98 84   ...P....sU.x....
-      000002e0  1f a1 b7 b9 58 cd c4 e6 9b 0b 89 f5 61 8f 96 8a   ....X.......a...
-      000002f0  1c 12 fe 95 80 a0 10 36 04 fe 43 3d 1d e9 31 09   .......6..C=..1.
-      00000300  2d 13 bd 5e dc e2 45 1f e7 37 ec 09 ab 4c 35 41   -..^..E..7...L5A
-      00000310  93 e8 04 a7 cd 50 c1 f8 c7 03 73 a1 78 f3 95 c5   .....P....s.x...
-      00000320  98 85 84 a1 b7 b9 58 cd c4 e6 0b 89 0d f5 61 05   ......X.......a.
-      00000330  00 00 01 00 00 00 48 00 00 00 00 00 00 00 00 00   ......H.........
-      00000340  00 00 00 10 05 0f 00 00 00 00 00 00 00 00 00 00   ................
-      00000350  00 20 04 00 02 01 00 00 91 00 00 00 00 ef be ad   . ..............
-      00000360  de 00 00 00 8f 71 8a 1c 12 95 80 a0 10 36 04 6e   .....q.......6.n
-      00000370  fe 43 3d 1d 1c 31 09 13 bd 5e dc e2 45 e9 1f e7   .C=..1...^..E...
-      00000380  37 ec 09 00 4c 41 93 e8 04 a7 cd 05 50 c1 f8 c7   7...LA......P...
-      00000390  03 73 55 f3 95 c5 98 85 84 1f a1 b7 b9 58 cd c4   .sU..........X..
-      000003a0  e6 9b 0d f5 61 8f 71 96 8a 1c 12 fe 95 80 a0 10   ....a.q.........
-      000003b0  04 fe 43 3d 1d 1c e9 31 09 2d 13 bd 5e dc 45 e9   ..C=...1.-..^.E.
-      000003c0  e7 37 ec 09 00 ab 4c 35 41 93 e8 04 cd 05 50 f8   .7....L5A.....P.
-      000003d0  c7 03 73 55 a1 78 f3 95 c5 98 84 1f a1 b7 58 cd   ..sU.x........X.
-      000003e0  c4 e6 9b 0b 89 0d f5 61 71 96 8a 1c 12 95 80 a0   .......aq.......
-      000003f0  10 36 04 6e fe 43 1d 1c e9 31 09 2d bd 5e dc e2   .6.n.C...1.-.^..
-      00000400  45 e9 1f e7 ec 09 00 ab 4c 35 41 e8 04 a7 cd 05   E.......L5A.....
-      00000410  50 c1 c7 03 73 55 a1 78 f3 95 98 85 84 1f a1 b7   P...sU.x........
-      00000420  58 cd c4 e6 9b 0b 89 0d f5 05 00 00 00 01 00 00   X...............
-      00000430  48 00 00 00 00 00 00 00 00 80 00 00 00 10 05 0f   H...............
-      00000440  00 00 00 00 00 00 00 00 00 00 00 20 04 00 02 01   ........... ....
-      00000450  00 0f 00 91 00 00 00 00 be ad de 00 00 00 8f 71   ...............q
-      00000460  96 8a 1c 12 fe 80 10 36 04 6e fe 43 3d 1d 1c e9   .......6.n.C=...
-      00000470  31 09 2d 13 dc e2 45 e9 1f e7 37 ec 09 00 ab 4c   1.-...E...7....L
-      00000480  35 41 93 a7 cd 05 50 c1 f8 c7 03 73 55 a1 78 f3   5A....P....sU.x.
-      00000490  95 98 84 1f a1 b7 b9 58 cd c4 e6 9b 0b 89 0d 61   .......X.......a
-      000004a0  8f 96 8a 1c 12 fe 95 80 a0 10 36 04 6e 43 3d 1d   ..........6.nC=.
-      000004b0  e9 31 09 2d 13 bd 5e dc e2 45 e9 e7 37 ec 09 ab   .1.-..^..E..7...
-      000004c0  4c 35 41 93 e8 04 a7 cd 05 c1 f8 c7 03 73 a1 78   L5A..........s.x
-      000004d0  f3 95 c5 98 85 84 1f b7 b9 58 cd c4 e6 0b 89 0d   .........X......
-      000004e0  f5 61 8f 71 96 1c 12 fe 95 80 a0 10 04 6e fe 43   .a.q.........n.C
-      000004f0  3d 1d 1c 31 09 2d 13 bd 5e dc e2 e9 1f e7 37 ec   =..1.-..^.....7.
-      00000500  09 ab 4c 35 41 93 e8 04 a7 cd 50 c1 f8 c7 03 55   ..L5A.....P....U
-      00000510  a1 78 f3 95 c5 98 85 84 1f b7 b9 58 cd e6 9b 0b   .x.........X....
-      00000520  89 0d f5 61 05 00 00 00 00 00 00 00 00 00 00 00   ...a............
-      00000530  00 00 00 00 80 00 00 00 10 0f 00 00 00 00 00 00   ................
-      00000540  00 00 00 00 00 00 20 00 02 01 00 0f 00 91 00 00   ...... .........
-      00000550  00 00 00 ef be 00 00 00 8f 71 96 8a 1c 12 fe 95   .........q......
-      00000560  80 a0 10 36 fe 43 3d 1d 1c e9 31 09 2d 13 bd 5e   ...6.C=...1.-..^
-      00000570  dc e2 e9 e7 37 ec 09 00 ab 4c 35 41 93 e8 04 a7   ....7....L5A....
-      00000580  05 50 f8 c7 03 73 55 a1 78 f3 95 c5 98 85 1f a1   .P...sU.x.......
-      00000590  b7 58 cd c4 e6 9b 0b 89 0d f5 61 8f 96 8a 1c 12   .X........a.....
-      000005a0  95 80 a0 10 36 04 6e fe 43 3d 1c e9 31 09 2d bd   ....6.n.C=..1.-.
-      000005b0  5e dc e2 45 e9 1f e7 37 09 00 ab 4c 35 41 0b 89   ^..E...7...L5A..
-      000005c0  0d f5 61 8f 71 96 1c 12 fe 95 80 a0 10 04 6e fe   ..a.q.........n.
-      000005d0  43 3d 1d 1c 31 09 2d 13 bd 5e dc e2 e9 1f e7 37   C=..1.-..^.....7
-      000005e0  ec 09 ab 4c 35 41 93 e8 04 a7 cd 50 c1 f8 c7 03   ...L5A.....P....
-      000005f0  55 a1 78 f3 95 c5 98 85 84 1f b7 b9 58 cd e6 9b   U.x.........X...
-      00000600  0b 89 0d f5 61 05 00 00 00 00 00 00 00 00 00 00   ....a...........
-      00000610  00 00 00 00 00 80 00 00 00 10 0f 00 00 00 00 00   ................
-      00000620  00 00 00 00 00 00 00 20 00 02 01 00 0f 00 91 00   ....... ........
-      00000630  00 00 00 00 ef be 00 00 00 8f 71 96 8a 1c 12 fe   ..........q.....
-      00000640  95 80 a0 10 36 fe 43 3d 1d 1c e9 31 09 2d 13 bd   ....6.C=...1.-..
-      00000650  5e dc e2 e9 e7 37 ec 09 00 ab 4c 35 41 93 e8 04   ^....7....L5A...
-      00000660  a7 05 50 f8 c7 03 73 55 a1 78 f3 95 c5 98 85 1f   ..P...sU.x......
-      00000670  a1 b7 58 cd c4 e6 9b 0b 89 0d f5 61 8f 96 8a 1c   ..X........a....
-      00000680  12 95 80 a0 10 36 04 6e fe 43 3d 1c e9 31 09 2d   .....6.n.C=..1.-
-      00000690  bd 5e dc e2 45 e9 1f e7 37 09 00 ab 4c 35 41 e8   .^..E...7...L5A.
-      000006a0  04 a7 cd 05 50 c1 f8 03 73 55 a1 78 f3 95 98 85   ....P...sU.x....
-      000006b0  84 1f a1 b7 b9 cd c4 e6 9b 0b 89 0d f5 8f 71 96   ..............q.
-      000006c0  8a 1c 12 95 80 a0 10 36 04 6e fe 43 1d 1c e9 31   .......6.n.C...1
-      000006d0  09 13 bd 5e dc e2 45 e9 1f e7 37 09 00 ab 4c 41   ...^..E...7...LA
-      000006e0  93 e8 04 a7 cd 05 50 c1 f8 c7 73 55 a1 f3 95 c5   ......P...sU....
-      000006f0  98 85 84 1f a1 b7 b9 58 cd e6 9b 89 0d f5 98 85   .......X........
-      00000700  84 1f a1 b7 b9 58 cd c4 9b 0b 89 0d 61 8f 71 96   .....X......a.q.
-      00000710  8a 1c 12 fe 95 80 a0 36 04 6e 43 3d 1d 1c e9 31   .......6.nC=...1
-      00000720  09 2d 13 bd 5e dc 45 e9 e7 37 ec 09 00 ab 4c 35   .-..^.E..7....L5
-      00000730  41 93 e8 04 a7 05 c1 f8 c7 03 73 55 a1 78 f3 95   A.........sU.x..
-      00000740  c5 98 85 84 b7 b9 58 cd c4 e6 9b 0b 89 0d f5 61   ......X........a
-      00000750  8f 71 96 12 fe 95 80 a0 10 36 04 6e fe 43 3d 1d   .q.......6.n.C=.
-      00000760  1c 31 2d 13 bd 5e dc e2 45 e9 1f e7 37 ec 09 ab   .1-..^..E...7...
-      00000770  4c 41 93 e8 04 a7 cd 05 50 c1 f8 c7 03 55 a1 78   LA......P....U.x
-      00000780  95 c5 98 85 84 1f a1 b7 b9 58 cd 98 85 84 1f b7   .........X......
-      00000790  b9 58 cd c4 e6 9b 0b 89 0d 61 8f 71 96 8a 12 fe   .X.......a.q....
-      000007a0  95 80 a0 10 36 04 6e 43 3d 1d 1c e9 31 2d 13 bd   ....6.nC=...1-..
-      000007b0  5e dc e2 45 e9 e7 37 ec 09 00 ab 4c 41 93 e8 04   ^..E..7....LA...
-      000007c0  a7 cd 05 c1 f8 c7 03 73 55 a1 78 95 c5 98 85 84   .......sU.x.....
-      000007d0  1f b7 b9 58 cd c4 e6 9b 0b 89 f5 61 8f 71 96 1c   ...X.......a.q..
-      000007e0  12 fe 95 80 a0 10 36 04 6e 43 3d 1d 1c 31 09 2d   ......6.nC=..1.-
-      000007f0  13 bd 5e dc e2 45 e9 1f 37 ec 09 ab 4c 35 41 93   ..^..E..7...L5A.
-      00000800  e8 04 a7 cd 05 50 c1 c7 03 55 a1 78 f3 95 c5 98   .....P...U.x....
-      00000810  85 84 1f a1 b7 b9 cd 50 c1 f8 c7 03 73 55 a1 78   .......P....sU.x
-      00000820  f3 95 c5 98 85 a1 b7 b9 58 cd c4 e6 9b 0b 89 0d   ........X.......
-      00000830  f5 61 05 00 01 00 00 00 48 00 00 00 00 00 00 00   .a......H.......
-      00000840  00 00 00 00 00 10 05 0f 00 00 00 00 00 00 00 00   ................
-      00000850  00 00 00 20 04 00 02 01 00 0f 00 91 00 00 00 00   ... ............
-      00000860  ef ad de 00 00 00 8f 71 96 8a 1c 12 95 80 a0 10   .......q........
-      00000870  04 6e fe 43 3d 1d 1c e9 31 09 13 bd 5e dc e2 e9   .n.C=...1...^...
-      00000880  1f e7 37 ec 09 00 ab 4c 41 93 e8 04 a7 cd 50 c1   ..7....LA.....P.
-      00000890  f8 c7 03 73 55 a1 f3 95 c5 98 85 84 1f b7 b9 58   ...sU..........X
-      000008a0  cd c4 e6 9b 89 0d f5 61 8f 71 96 8a 12 fe 95 80   .......a.q......
-      000008b0  a0 10 04 6e fe 43 3d 1d 1c e9 31 2d 13 bd 5e dc   ...n.C=...1-..^.
-      000008c0  45 e9 1f e7 37 ec 09 00 ab 4c 41 93 e8 04 cd 05   E...7....LA.....
-      000008d0  50 c1 f8 c7 03 73 55 a1 78 95 c5 98 84 1f a1 b7   P....sU.x.......
-      000008e0  b9 58 cd c4 e6 9b 0b 89 f5 61 71 96 8a 1c 12 fe   .X.......aq.....
-      000008f0  95 80 a0 10 36 04 6e 43 1d 1c e9 31 09 2d 13 bd   ....6.nC...1.-..
-      00000900  5e dc e2 45 e9 1f ec 09 00 ab 4c 35 41 93 e8 04   ^..E......L5A...
-      00000910  a7 cd 05 50 c1 03 73 55 a1 78 f3 95 c5 98 85 84   ...P..sU.x......
-      00000920  1f a1 b7 58 c4 e6 9b 0b 89 0d f5 61 05 00 00 00   ...X.......a....
-      00000930  01 00 00 00 00 00 00 00 00 00 00 00 80 00 00 00   ................
-      00000940  10 05 00 00 00 00 00 00 00 00 00 00 00 00 20 04   .............. .
-      00000950  00 01 00 0f 00 91 00 00 00 00 00 be ad de 00 00   ................
-      00000960  8f 71 96 8a 1c 12 fe 95 80 10 36 04 6e fe 43 1d   .q........6.n.C.
-      00000970  1c e9 31 09 2d 13 bd dc e2 45 e9 1f e7 37 09 00   ..1.-....E...7..
-      00000980  ab 4c 35 41 93 04 a7 cd 05 50 c1 f8 c7 b7 b9 58   .L5A.....P.....X
-      00000990  cd c4 e6 9b 89 0d f5 61 8f 71 96 8a 12 fe 95 80   .......a.q......
-      000009a0  a0 10 04 6e fe 43 3d 1d 1c e9 31 2d 13 bd 5e dc   ...n.C=...1-..^.
-      000009b0  45 e9 1f e7 37 ec 09 00 ab 4c 41 93 e8 04 cd 05   E...7....LA.....
-      000009c0  50 c1 f8 c7 03 73 55 a1 78 95 c5 98 84 1f a1 b7   P....sU.x.......
-      000009d0  b9 58 cd c4 e6 9b 0b 89 f5 61 71 96 8a 1c 12 fe   .X.......aq.....
-      000009e0  95 80 a0 10 36 04 6e 43 1d 1c e9 31 09 2d 13 bd   ....6.nC...1.-..
-      000009f0  5e dc e2 45 e9 1f ec 09 00 ab 4c 35 41 93 e8 04   ^..E......L5A...
-      00000a00  a7 cd 05 50 c1 03 73 55 a1 78 f3 95 c5 98 85 84   ...P..sU.x......
-      00000a10  1f a1 b7 58 c4 e6 9b 0b 89 0d f5 61 05 00 00 00   ...X.......a....
-      00000a20  01 00 00 00 00 00 00 00 00 00 00 00 80 00 00 00   ................
-      00000a30  10 05 00 00 00 00 00 00 00 00 00 00 00 00 20 04   .............. .
-      00000a40  00 01 00 0f 00 91 00 00 00 00 00 be ad de 00 00   ................
-      00000a50  8f 71 96 8a 1c 12 fe 95 80 10 36 04 6e fe 43 1d   .q........6.n.C.
-      00000a60  1c e9 31 09 2d 13 bd dc e2 45 e9 1f e7 37 09 00   ..1.-....E...7..
-      00000a70  ab 4c 35 41 93 04 a7 cd 05 50 c1 f8 c7 b7 b9 58   .L5A.....P.....X
-      00000a80  cd c4 e6 9b 89 0d f5 61 8f 71 96 8a 12 fe 95 80   .......a.q......
-      00000a90  a0 10 04 6e fe 43 3d 1d 1c e9 31 2d 13 bd 5e dc   ...n.C=...1-..^.
-      00000aa0  45 e9 1f e7 37 ec 09 00 ab 4c 41 93 e8 04 cd 05   E...7....LA.....
-      00000ab0  50 c1 f8 c7 03 73 55 a1 78 95 c5 98 84 1f a1 b7   P....sU.x.......
-      00000ac0  b9 58 cd c4 e6 9b 0b 89 f5 61 71 96 8a 1c 12 fe   .X.......aq.....
-      00000ad0  95 80 a0 10 36 04 6e 43 1d 1c e9 31 09 2d 13 bd   ....6.nC...1.-..
-      00000ae0  5e dc e2 45 e9 1f ec 09 00 ab 4c 35 41 93 e8 04   ^..E......L5A...
-      00000af0  a7 cd 05 50 c1 03 73 55 a1 78 f3 95 c5 98 85 84   ...P..sU.x......
-      00000b00  1f a1 b7 58 c4 e6 9b 0b 89 0d f5 61 05 00 00 00   ...X.......a....
-      00000b10  01 00 00 00 00 00 00 00 00 00 00 00 80 00 00 00   ................
-      00000b20  10 05 00 00 00 00 00 00 00 00 00 00 00 00 20 04   .............. .
-      00000b30  00 01 00 0f 00 91 00 00 00 00 00 be ad de 00 00   ................
-      00000b40  8f 71 96 8a 1c 12 fe 95 80 10 36 04 6e fe 43 1d   .q........6.n.C.
-      00000b50  1c e9 31 09 2d 13 bd dc e2 45 e9 1f e7 37 09 00   ..1.-....E...7..
-      00000b60  ab 4c 35 41 93 04 a7 cd 05 50 c1 f8 c7 b7 b9 58   .L5A.....P.....X
-      00000b70  cd c4 e6 9b 89 0d f5 61 8f 71 96 8a 12 fe 95 80   .......a.q......
-      00000b80  a0 10 04 6e fe 43 3d 1d 1c e9 31 2d 13 bd 5e dc   ...n.C=...1-..^.
-      00000b90  45 e9 1f e7 37 ec 09 00 ab 4c 41 93 e8 04 cd 05   E...7....LA.....
-      00000ba0  50 c1 f8 c7 03 73 55 a1 78 95 c5 98 84 1f a1 b7   P....sU.x.......
-      00000bb0  b9 58 cd c4 e6 9b 0b 89 f5 61 71 96 8a 1c 12 fe   .X.......aq.....
-      00000bc0  95 80 a0 10 36 04 6e 43 1d 1c e9 31 09 2d 13 bd   ....6.nC...1.-..
-      00000bd0  5e dc e2 45 e9 1f ec 09 00 ab 4c 35 41 93 e8 04   ^..E......L5A...
-      00000be0  a7 cd 05 50 c1 03 73 55 a1 78 f3 95 c5 98 85 84   ...P..sU.x......
-      00000bf0  1f a1 b7 58 c4 e6 9b 0b 89 0d f5 61 05 00 00 00   ...X.......a....
-      00000c00  01 00 00 00 00 00 00 00 00 00 00 00 80 00 00 00   ................
-      00000c10  10 05 00 00 00 00 00 00 00 00 00 00 00 00 20 04   .............. .
-      00000c20  00 01 00 0f 00 91 00 00 00 00 00 be ad de 00 00   ................
-      00000c30  8f 71 96 8a 1c 12 fe 95 80 10 36 04 6e fe 43 1d   .q........6.n.C.
-      00000c40  1c e9 31 09 2d 13 bd dc e2 45 e9 1f e7 37 09 00   ..1.-....E...7..
-      00000c50  ab 4c 35 41 93 04 a7 cd 05 50 c1 f8 c7 96 8a 1c   .L5A.....P......
-      00000c60  12 fe 95 80 a0 10 36 04 fe 43 3d 1d e9 31 09 2d   ......6..C=..1.-
-      00000c70  13 bd 5e dc e2 45 1f e7 37 ec 09 ab 4c 35 41 93   ..^..E..7...L5A.
-      00000c80  e8 04 a7 cd 50 c1 f8 c7 03 73 a1 78 f3 95 c5 98   ....P....s.x....
-      00000c90  85 84 a1 b7 b9 58 cd c4 e6 0b 89 0d f5 61 05 00   .....X.......a..
-      00000ca0  00 01 00 00 00 48 00 00 00 00 00 00 00 00 00 00   .....H..........
-      00000cb0  00 00 10 05 0f 00 00 00 00 00 00 00 00 00 00 00   ................
-      00000cc0  20 04 00 02 01 00 00 91 00 00 00 00 ef be ad de    ...............
-      00000cd0  00 00 00 8f 71 8a 1c 12 95 80 a0 10 36 04 6e fe   ....q.......6.n.
-      00000ce0  43 3d 1d 1c 31 09 13 bd 5e dc e2 45 e9 1f e7 37   C=..1...^..E...7
-      00000cf0  ec 09 00 4c 41 93 e8 04 a7 cd 05 50 c1 f8 c7 03   ...LA......P....
-      00000d00  73 55 f3 95 c5 98 85 84 1f a1 b7 b9 58 cd c4 e6   sU..........X...
-      00000d10  9b 0d f5 61 8f 71 96 8a 1c 12 fe 95 80 a0 10 04   ...a.q..........
-      00000d20  fe 43 3d 1d 1c e9 31 09 2d 13 bd 5e dc 45 e9 e7   .C=...1.-..^.E..
-      00000d30  37 ec 09 00 ab 4c 35 41 93 e8 04 cd 05 50 f8 c7   7....L5A.....P..
-      00000d40  03 73 55 a1 78 f3 95 c5 98 84 1f a1 b7 58 cd c4   .sU.x........X..
-      00000d50  e6 9b 0b 89 0d f5 61 71 96 8a 1c 12 95 80 a0 10   ......aq........
-      00000d60  36 04 6e fe 43 1d 1c e9 31 09 2d bd 5e dc e2 45   6.n.C...1.-.^..E
-      00000d70  e9 1f e7 ec 09 00 ab 4c 35 41 e8 04 a7 cd 05 50   .......L5A.....P
-      00000d80  c1 c7 03 73 55 a1 78 f3 95 98 85 84 1f a1 b7 58   ...sU.x........X
-      00000d90  cd c4 e6 9b 0b 89 0d f5 05 00 00 00 01 00 00 48   ...............H
-      00000da0  00 00 00 00 00 00 00 00 80 00 00 00 10 05 0f 00   ................
-      00000db0  00 00 00 00 00 00 00 00 00 00 20 04 00 02 01 00   .......... .....
-      00000dc0  0f 00 91 00 00 00 00 be ad de 00 00 00 8f 71 96   ..............q.
-      00000dd0  8a 1c 12 fe 80 10 36 04 6e fe 43 3d 1d 1c e9 31   ......6.n.C=...1
-      00000de0  09 2d 13 dc e2 45 e9 1f e7 37 ec 09 00 ab 4c 35   .-...E...7....L5
-      00000df0  41 93 a7 cd 05 50 c1 f8 c7 03 73 55 a1 78 f3 95   A....P....sU.x..
-      00000e00  98 84 1f a1 b7 b9 58 cd c4 e6 9b 0b 89 0d 61 8f   ......X.......a.
-      00000e10  96 8a 1c 12 fe 95 80 a0 10 36 04 6e 43 3d 1d e9   .........6.nC=..
-      00000e20  31 09 2d 13 bd 5e dc e2 45 e9 e7 37 ec 09 ab 4c   1.-..^..E..7...L
-      00000e30  35 41 93 e8 04 a7 cd 05 c1 f8 c7 03 73 a1 78 f3   5A..........s.x.
-      00000e40  95 c5 98 85 84 1f b7 b9 58 cd c4 e6 0b 89 0d f5   ........X.......
-      00000e50  61 8f 71 96 1c 12 fe 95 80 a0 10 04 6e fe 43 3d   a.q.........n.C=
-      00000e60  1d 1c 31 09 2d 13 bd 5e dc e2 e9 1f e7 37 ec 09   ..1.-..^.....7..
-      00000e70  ab 4c 35 41 93 e8 04 a7 cd 50 c1 f8 c7 03 55 a1   .L5A.....P....U.
-      00000e80  78 f3 95 c5 98 85 84 1f b7 b9 58 cd e6 9b 0b 89   x.........X.....
-      00000e90  0d f5 61 05 00 00 00 00 00 00 00 00 00 00 00 00   ..a.............
-      00000ea0  00 00 00 80 00 00 00 10 0f 00 00 00 00 00 00 00   ................
-      00000eb0  00 00 00 00 00 20 00 02 01 00 0f 00 91 00 00 00   ..... ..........
-      00000ec0  00 00 ef be 00 00 00 8f 71 96 8a 1c 12 fe 95 80   ........q.......
-      00000ed0  a0 10 36 fe 43 3d 1d 1c e9 31 09 2d 13 bd 5e dc   ..6.C=...1.-..^.
-      00000ee0  e2 e9 e7 37 ec 09 00 ab 4c 35 41 93 e8 04 a7 05   ...7....L5A.....
-      00000ef0  50 f8 c7 03 73 55 a1 78 f3 95 c5 98 85 1f a1 b7   P...sU.x........
-
-And checked that Linux Kernel indeed received a big CPER:
-
- Hardware error from APEI Generic Hardware Error Source: 1
- event severity: recoverable
-  Error 0, type: recoverable
-   section_type: ARM processor error
-   MIDR: 0x00000000000f0510
-   Multiprocessor Affinity Register (MPIDR): 0x0000000080000000
-   running state: 0x0
-   Power State Coordination Interface state: 0
-   Error info structure 0:
-   num errors: 2
-    error_type: 0x02: cache error
-    error_info: 0x000000000091000f
-     transaction type: Data Access
-     cache error, operation type: Data write
-     cache level: 2
-     processor context not corrupted
-   Error info structure 1:
-   num errors: 2
-    error_type: 0x04: TLB error
-    error_info: 0x000000000054007f
-     transaction type: Instruction
-     TLB error, operation type: Instruction fetch
-     TLB level: 1
-     processor context not corrupted
-     the error has not been corrected
-     PC is imprecise
-   Error info structure 2:
-   num errors: 2
-    error_type: 0x08: bus error
-    error_info: 0x00000080d6460fff
-     transaction type: Generic
-     bus error, operation type: Generic read (type of instruction or data request cannot be determined)
-     affinity level at which the bus error occurred: 1
-     processor context corrupted
-     the error has been corrected
-     PC is imprecise
-     Program execution can be restarted reliably at the PC associated with the error.
-     participation type: Local processor observed
-     request timed out
-     address space: External Memory Access
-     memory access attributes:0x20
-     access mode: secure
-   Error info structure 3:
-   num errors: 2
-    error_type: 0x10: micro-architectural error
-    error_info: 0x0000000078da03ff
-   Error info structure 4:
-   num errors: 2
-    error_type: 0x02: cache error
-    error_info: 0x000000000091000f
-     transaction type: Data Access
-     cache error, operation type: Data write
-     cache level: 2
-     processor context not corrupted
-   Error info structure 5:
-   num errors: 2
-    error_type: 0x04: TLB error
-    error_info: 0x000000000054007f
-     transaction type: Instruction
-     TLB error, operation type: Instruction fetch
-     TLB level: 1
-     processor context not corrupted
-     the error has not been corrected
-     PC is imprecise
-   Error info structure 6:
-   num errors: 2
-    error_type: 0x08: bus error
-    error_info: 0x00000080d6460fff
-     transaction type: Generic
-     bus error, operation type: Generic read (type of instruction or data request cannot be determined)
-     affinity level at which the bus error occurred: 1
-     processor context corrupted
-     the error has been corrected
-     PC is imprecise
-     Program execution can be restarted reliably at the PC associated with the error.
-     participation type: Local processor observed
-     request timed out
-     address space: External Memory Access
-     memory access attributes:0x20
-     access mode: secure
-   Error info structure 7:
-   num errors: 2
-    error_type: 0x10: micro-architectural error
-    error_info: 0x0000000078da04ff
-   Context info structure 0:
-    register context type: AArch64 general purpose registers
-    00000000: deadbeef 00000000 00000000 00000000
-    00000010: 04100000 0000000f 00000000 00000000
-    00000020: 00042000 0f000102 00000000 beef0000
-    00000030: 0000dead ba0bad00 00000000 00042000
-    00000040: 7f000104 00005400 beef0000 0000dead
-    00000050: ba0bad00 000000ab 00042000 ff000108
-    00000060: 80d6460f beef0000 0000dead ba0bad00
-    00000070: 000000ab 00042000 ff000110 0078da03
-    00000080: be000000 0000dead ba0bad00 000000ab
-    00000090: 00040000 0f000102 00009100 ef000000
-    000000a0: 0000debe ba0bad00 000000ab 04200000
-    000000b0: 7f000104 00005400 ef000000 00deadbe
-    000000c0: ba0bad00 000000ab 04200000 ff000800
-    000000d0: 80d6460f ef000000 00deadbe ba0bad00
-    000000e0: 000000ab 04200000 00011000 0078da03
-    000000f0: ef000000 00deadbe baad0000 000000ab
-   Vendor specific error info has 3280 bytes:
-    00000000: beadde00 00000005 28000001 00000002  ...........(....
-    00000010: 00000000 00000080 000f0500 00000000  ................
-    00000020: 00000000 20000000 00010200 0000000f  ....... ........
-    00000030: ef000000 00deadbe 96718f00 95fe121c  ..........q.....
-    00000040: 3610a080 3d436e04 09311c1d 5ebd132d  ...6.nC=..1.-..^
-    00000050: e945e2dc 09ec371f 41354cab a704e893  ..E..7...L5A....
-    00000060: c15005cd a15503c7 c595f378 1f848598  ..P...U.x.......
-    00000070: cdb9b7a1 890b9be6 8f61f50d 1c8a9671  ..........a.q...
-    00000080: 10a0fe12 fe6e0436 1c1d3d43 2d0931e9  ....6.n.C=...1.-
-    00000090: 45e2dc13 37e71fe9 ab0009ec e841354c  ...E...7....L5A.
-    000000a0: 5005cda7 03c7f8c1 78a15573 8498c5f3  ...P....sU.x....
-    000000b0: b9b7a11f e6c4cd58 f5890b9b 8a968f61  ....X.......a...
-    000000c0: 95fe121c 3610a080 3d43fe04 0931e91d  .......6..C=..1.
-    000000d0: 5ebd132d 1f45e2dc 09ec37e7 41354cab  -..^..E..7...L5A
-    000000e0: a704e893 f8c150cd a17303c7 c595f378  .....P....s.x...
-    000000f0: a1848598 cd58b9b7 890be6c4 0561f50d  ......X.......a.
-    00000100: 00010000 00480000 00000000 00000000  ......H.........
-    00000110: 10000000 00000f05 00000000 00000000  ................
-    00000120: 00042000 00000102 00000091 adbeef00  . ..............
-    00000130: 000000de 1c8a718f a0809512 6e043610  .....q.......6.n
-    00000140: 1d3d43fe 1309311c e2dc5ebd e71fe945  .C=..1...^..E...
-    00000150: 0009ec37 e893414c 05cda704 c7f8c150  7...LA......P...
-    00000160: f3557303 8598c595 b7a11f84 c4cd58b9  .sU..........X..
-    00000170: f50d9be6 96718f61 fe121c8a 10a08095  ....a.q.........
-    00000180: 3d43fe04 31e91c1d bd132d09 e945dc5e  ..C=...1.-..^.E.
-    00000190: 09ec37e7 354cab00 04e89341 f85005cd  .7....L5A.....P.
-    000001a0: 557303c7 95f378a1 1f8498c5 cd58b7a1  ..sU.x........X.
-    000001b0: 0b9be6c4 61f50d89 1c8a9671 a0809512  .......aq.......
-    000001c0: 6e043610 1c1d43fe 2d0931e9 e2dc5ebd  .6.n.C...1.-.^..
-    000001d0: e71fe945 ab0009ec e841354c 05cda704  E.......L5A.....
-    000001e0: 03c7c150 78a15573 859895f3 b7a11f84  P...sU.x........
-    000001f0: e6c4cd58 0d890b9b 000005f5 00000100  X...............
-    00000200: 00000048 00000000 00008000 0f051000  H...............
-    00000210: 00000000 00000000 20000000 01020004  ........... ....
-    00000220: 91000f00 00000000 00deadbe 718f0000  ...............q
-    00000230: 121c8a96 361080fe 43fe6e04 e91c1d3d  .......6.n.C=...
-    00000240: 132d0931 e945e2dc ec37e71f 4cab0009  1.-...E...7....L
-    00000250: a7934135 c15005cd 7303c7f8 f378a155  5A....P....sU.x.
-    00000260: 1f849895 58b9b7a1 9be6c4cd 610d890b  .......X.......a
-    00000270: 1c8a968f 8095fe12 043610a0 1d3d436e  ..........6.nC=.
-    00000280: 2d0931e9 dc5ebd13 e7e945e2 ab09ec37  .1.-..^..E..7...
-    00000290: 9341354c cda704e8 c7f8c105 78a17303  L5A..........s.x
-    000002a0: 98c595f3 b71f8485 c4cd58b9 0d890be6  .........X......
-    000002b0: 718f61f5 fe121c96 10a08095 43fe6e04  .a.q.........n.C
-    000002c0: 311c1d3d bd132d09 e9e2dc5e ec37e71f  =..1.-..^.....7.
-    000002d0: 354cab09 04e89341 c150cda7 5503c7f8  ..L5A.....P....U
-    000002e0: 95f378a1 848598c5 58b9b71f 0b9be6cd  .x.........X....
-    000002f0: 61f50d89 00000005 00000000 00000000  ...a............
-    00000300: 00000000 00000080 00000f10 00000000  ................
-    00000310: 00000000 00200000 0f000102 00009100  ...... .........
-    00000320: ef000000 000000be 8a96718f 95fe121c  .........q......
-    00000330: 3610a080 1d3d43fe 0931e91c 5ebd132d  ...6.C=...1.-..^
-    00000340: e7e9e2dc 0009ec37 41354cab a704e893  ....7....L5A....
-    00000350: c7f85005 a1557303 c595f378 a11f8598  .P...sU.x.......
-    00000360: c4cd58b7 890b9be6 8f61f50d 121c8a96  .X........a.....
-    00000370: 10a08095 fe6e0436 e91c3d43 bd2d0931  ....6.n.C=..1.-.
-    00000380: 45e2dc5e 37e71fe9 4cab0009 890b4135  ^..E...7...L5A..
-    00000390: 8f61f50d 121c9671 a08095fe fe6e0410  ..a.q.........n.
-    000003a0: 1c1d3d43 132d0931 e2dc5ebd 37e71fe9  C=..1.-..^.....7
-    000003b0: 4cab09ec e8934135 50cda704 03c7f8c1  ...L5A.....P....
-    000003c0: f378a155 8598c595 b9b71f84 9be6cd58  U.x.........X...
-    000003d0: f50d890b 00000561 00000000 00000000  ....a...........
-    000003e0: 00000000 00008000 000f1000 00000000  ................
-    000003f0: 00000000 20000000 00010200 0091000f  ....... ........
-    00000400: 00000000 0000beef 96718f00 fe121c8a  ..........q.....
-    00000410: 10a08095 3d43fe36 31e91c1d bd132d09  ....6.C=...1.-..
-    00000420: e9e2dc5e 09ec37e7 354cab00 04e89341  ^....7....L5A...
-    00000430: f85005a7 557303c7 95f378a1 1f8598c5  ..P...sU.x......
-    00000440: cd58b7a1 0b9be6c4 61f50d89 1c8a968f  ..X........a....
-    00000450: a0809512 6e043610 1c3d43fe 2d0931e9  .....6.n.C=..1.-
-    00000460: e2dc5ebd e71fe945 ab000937 e841354c  .^..E...7...L5A.
-    00000470: 05cda704 03f8c150 78a15573 859895f3  ....P...sU.x....
-    00000480: b7a11f84 e6c4cdb9 0d890b9b 96718ff5  ..............q.
-    00000490: 95121c8a 3610a080 43fe6e04 31e91c1d  .......6.n.C...1
-    000004a0: 5ebd1309 e945e2dc 0937e71f 414cab00  ...^..E...7...LA
-    000004b0: a704e893 c15005cd 5573c7f8 c595f3a1  ......P...sU....
-    000004c0: 1f848598 58b9b7a1 899be6cd 8598f50d  .......X........
-    000004d0: b7a11f84 c4cd58b9 0d890b9b 96718f61  .....X......a.q.
-    000004e0: fe121c8a 36a08095 3d436e04 31e91c1d  .......6.nC=...1
-    000004f0: bd132d09 e945dc5e 09ec37e7 354cab00  .-..^.E..7....L5
-    00000500: 04e89341 f8c105a7 557303c7 95f378a1  A.........sU.x..
-    00000510: 848598c5 cd58b9b7 0b9be6c4 61f50d89  ......X........a
-    00000520: 1296718f a08095fe 6e043610 1d3d43fe  .q.......6.n.C=.
-    00000530: 132d311c e2dc5ebd e71fe945 ab09ec37  .1-..^..E...7...
-    00000540: e893414c 05cda704 c7f8c150 78a15503  LA......P....U.x
-    00000550: 8598c595 b7a11f84 98cd58b9 b71f8485  .........X......
-    00000560: c4cd58b9 890b9be6 718f610d fe128a96  .X.......a.q....
-    00000570: 10a08095 436e0436 e91c1d3d bd132d31  ....6.nC=...1-..
-    00000580: 45e2dc5e ec37e7e9 4cab0009 04e89341  ^..E..7....LA...
-    00000590: c105cda7 7303c7f8 9578a155 848598c5  .......sU.x.....
-    000005a0: 58b9b71f 9be6c4cd 61f5890b 1c96718f  ...X.......a.q..
-    000005b0: 8095fe12 043610a0 1d3d436e 2d09311c  ......6.nC=..1.-
-    000005c0: dc5ebd13 1fe945e2 ab09ec37 9341354c  ..^..E..7...L5A.
-    000005d0: cda704e8 c7c15005 78a15503 98c595f3  .....P...U.x....
-    000005e0: a11f8485 50cdb9b7 03c7f8c1 78a15573  .......P....sU.x
-    000005f0: 98c595f3 b9b7a185 e6c4cd58 0d890b9b  ........X.......
-    00000600: 000561f5 00000001 00000048 00000000  .a......H.......
-    00000610: 00000000 0f051000 00000000 00000000  ................
-    00000620: 20000000 01020004 91000f00 00000000  ... ............
-    00000630: 00deadef 718f0000 121c8a96 10a08095  .......q........
-    00000640: 43fe6e04 e91c1d3d bd130931 e9e2dc5e  .n.C=...1...^...
-    00000650: ec37e71f 4cab0009 04e89341 c150cda7  ..7....LA.....P.
-    00000660: 7303c7f8 95f3a155 848598c5 58b9b71f  ...sU..........X
-    00000670: 9be6c4cd 61f50d89 8a96718f 8095fe12  .......a.q......
-    00000680: 6e0410a0 1d3d43fe 2d31e91c dc5ebd13  ...n.C=...1-..^.
-    00000690: e71fe945 0009ec37 93414cab 05cd04e8  E...7....LA.....
-    000006a0: c7f8c150 a1557303 98c59578 b7a11f84  P....sU.x.......
-    000006b0: c4cd58b9 890b9be6 967161f5 fe121c8a  .X.......aq.....
-    000006c0: 10a08095 436e0436 31e91c1d bd132d09  ....6.nC...1.-..
-    000006d0: 45e2dc5e 09ec1fe9 354cab00 04e89341  ^..E......L5A...
-    000006e0: 5005cda7 557303c1 95f378a1 848598c5  ...P..sU.x......
-    000006f0: 58b7a11f 0b9be6c4 61f50d89 00000005  ...X.......a....
-    00000700: 00000001 00000000 00000000 00000080  ................
-    00000710: 00000510 00000000 00000000 04200000  .............. .
-    00000720: 0f000100 00009100 be000000 0000dead  ................
-    00000730: 8a96718f 95fe121c 04361080 1d43fe6e  .q........6.n.C.
-    00000740: 0931e91c dcbd132d 1fe945e2 000937e7  ..1.-....E...7..
-    00000750: 41354cab cda70493 f8c15005 58b9b7c7  .L5A.....P.....X
-    00000760: 9be6c4cd 61f50d89 8a96718f 8095fe12  .......a.q......
-    00000770: 6e0410a0 1d3d43fe 2d31e91c dc5ebd13  ...n.C=...1-..^.
-    00000780: e71fe945 0009ec37 93414cab 05cd04e8  E...7....LA.....
-    00000790: c7f8c150 a1557303 98c59578 b7a11f84  P....sU.x.......
-    000007a0: c4cd58b9 890b9be6 967161f5 fe121c8a  .X.......aq.....
-    000007b0: 10a08095 436e0436 31e91c1d bd132d09  ....6.nC...1.-..
-    000007c0: 45e2dc5e 09ec1fe9 354cab00 04e89341  ^..E......L5A...
-    000007d0: 5005cda7 557303c1 95f378a1 848598c5  ...P..sU.x......
-    000007e0: 58b7a11f 0b9be6c4 61f50d89 00000005  ...X.......a....
-    000007f0: 00000001 00000000 00000000 00000080  ................
-    00000800: 00000510 00000000 00000000 04200000  .............. .
-    00000810: 0f000100 00009100 be000000 0000dead  ................
-    00000820: 8a96718f 95fe121c 04361080 1d43fe6e  .q........6.n.C.
-    00000830: 0931e91c dcbd132d 1fe945e2 000937e7  ..1.-....E...7..
-    00000840: 41354cab cda70493 f8c15005 58b9b7c7  .L5A.....P.....X
-    00000850: 9be6c4cd 61f50d89 8a96718f 8095fe12  .......a.q......
-    00000860: 6e0410a0 1d3d43fe 2d31e91c dc5ebd13  ...n.C=...1-..^.
-    00000870: e71fe945 0009ec37 93414cab 05cd04e8  E...7....LA.....
-    00000880: c7f8c150 a1557303 98c59578 b7a11f84  P....sU.x.......
-    00000890: c4cd58b9 890b9be6 967161f5 fe121c8a  .X.......aq.....
-    000008a0: 10a08095 436e0436 31e91c1d bd132d09  ....6.nC...1.-..
-    000008b0: 45e2dc5e 09ec1fe9 354cab00 04e89341  ^..E......L5A...
-    000008c0: 5005cda7 557303c1 95f378a1 848598c5  ...P..sU.x......
-    000008d0: 58b7a11f 0b9be6c4 61f50d89 00000005  ...X.......a....
-    000008e0: 00000001 00000000 00000000 00000080  ................
-    000008f0: 00000510 00000000 00000000 04200000  .............. .
-    00000900: 0f000100 00009100 be000000 0000dead  ................
-    00000910: 8a96718f 95fe121c 04361080 1d43fe6e  .q........6.n.C.
-    00000920: 0931e91c dcbd132d 1fe945e2 000937e7  ..1.-....E...7..
-    00000930: 41354cab cda70493 f8c15005 58b9b7c7  .L5A.....P.....X
-    00000940: 9be6c4cd 61f50d89 8a96718f 8095fe12  .......a.q......
-    00000950: 6e0410a0 1d3d43fe 2d31e91c dc5ebd13  ...n.C=...1-..^.
-    00000960: e71fe945 0009ec37 93414cab 05cd04e8  E...7....LA.....
-    00000970: c7f8c150 a1557303 98c59578 b7a11f84  P....sU.x.......
-    00000980: c4cd58b9 890b9be6 967161f5 fe121c8a  .X.......aq.....
-    00000990: 10a08095 436e0436 31e91c1d bd132d09  ....6.nC...1.-..
-    000009a0: 45e2dc5e 09ec1fe9 354cab00 04e89341  ^..E......L5A...
-    000009b0: 5005cda7 557303c1 95f378a1 848598c5  ...P..sU.x......
-    000009c0: 58b7a11f 0b9be6c4 61f50d89 00000005  ...X.......a....
-    000009d0: 00000001 00000000 00000000 00000080  ................
-    000009e0: 00000510 00000000 00000000 04200000  .............. .
-    000009f0: 0f000100 00009100 be000000 0000dead  ................
-    00000a00: 8a96718f 95fe121c 04361080 1d43fe6e  .q........6.n.C.
-    00000a10: 0931e91c dcbd132d 1fe945e2 000937e7  ..1.-....E...7..
-    00000a20: 41354cab cda70493 f8c15005 1c8a96c7  .L5A.....P......
-    00000a30: 8095fe12 043610a0 1d3d43fe 2d0931e9  ......6..C=..1.-
-    00000a40: dc5ebd13 e71f45e2 ab09ec37 9341354c  ..^..E..7...L5A.
-    00000a50: cda704e8 c7f8c150 78a17303 98c595f3  ....P....s.x....
-    00000a60: b7a18485 c4cd58b9 0d890be6 000561f5  .....X.......a..
-    00000a70: 00000100 00004800 00000000 00000000  .....H..........
-    00000a80: 05100000 0000000f 00000000 00000000  ................
-    00000a90: 02000420 91000001 00000000 deadbeef   ...............
-    00000aa0: 8f000000 121c8a71 10a08095 fe6e0436  ....q.......6.n.
-    00000ab0: 1c1d3d43 bd130931 45e2dc5e 37e71fe9  C=..1...^..E...7
-    00000ac0: 4c0009ec 04e89341 5005cda7 03c7f8c1  ...LA......P....
-    00000ad0: 95f35573 848598c5 b9b7a11f e6c4cd58  sU..........X...
-    00000ae0: 61f50d9b 8a96718f 95fe121c 0410a080  ...a.q..........
-    00000af0: 1d3d43fe 0931e91c 5ebd132d e7e945dc  .C=...1.-..^.E..
-    00000b00: 0009ec37 41354cab cd04e893 c7f85005  7....L5A.....P..
-    00000b10: a1557303 c595f378 a11f8498 c4cd58b7  .sU.x........X..
-    00000b20: 890b9be6 7161f50d 121c8a96 10a08095  ......aq........
-    00000b30: fe6e0436 e91c1d43 bd2d0931 45e2dc5e  6.n.C...1.-.^..E
-    00000b40: ece71fe9 4cab0009 04e84135 5005cda7  .......L5A.....P
-    00000b50: 7303c7c1 f378a155 84859895 58b7a11f  ...sU.x........X
-    00000b60: 9be6c4cd f50d890b 00000005 48000001  ...............H
-    00000b70: 00000000 00000000 00000080 000f0510  ................
-    00000b80: 00000000 00000000 04200000 00010200  .......... .....
-    00000b90: 0091000f be000000 0000dead 96718f00  ..............q.
-    00000ba0: fe121c8a 04361080 3d43fe6e 31e91c1d  ......6.n.C=...1
-    00000bb0: dc132d09 1fe945e2 09ec37e7 354cab00  .-...E...7....L5
-    00000bc0: cda79341 f8c15005 557303c7 95f378a1  A....P....sU.x..
-    00000bd0: a11f8498 cd58b9b7 0b9be6c4 8f610d89  ......X.......a.
-    00000be0: 121c8a96 a08095fe 6e043610 e91d3d43  .........6.nC=..
-    00000bf0: 132d0931 e2dc5ebd 37e7e945 4cab09ec  1.-..^..E..7...L
-    00000c00: e8934135 05cda704 03c7f8c1 f378a173  5A..........s.x.
-    00000c10: 8598c595 b9b71f84 e6c4cd58 f50d890b  ........X.......
-    00000c20: 96718f61 95fe121c 0410a080 3d43fe6e  a.q.........n.C=
-    00000c30: 09311c1d 5ebd132d 1fe9e2dc 09ec37e7  ..1.-..^.....7..
-    00000c40: 41354cab a704e893 f8c150cd a15503c7  .L5A.....P....U.
-    00000c50: c595f378 1f848598 cd58b9b7 890b9be6  x.........X.....
-    00000c60: 0561f50d 00000000 00000000 00000000  ..a.............
-    00000c70: 80000000 10000000 0000000f 00000000  ................
-    00000c80: 00000000 02002000 000f0001 00000091  ..... ..........
-    00000c90: beef0000 8f000000 1c8a9671 8095fe12  ........q.......
-    00000ca0: fe3610a0 1c1d3d43 2d0931e9 dc5ebd13  ..6.C=...1.-..^.
-    00000cb0: 37e7e9e2 ab0009ec 9341354c 05a704e8  ...7....L5A.....
-    00000cc0: 03c7f850 78a15573 98c595f3 b7a11f85  P...sU.x........
-   GHES: Unhandled processor error type 0x02: cache error
-   GHES: Unhandled processor error type 0x04: TLB error
-   GHES: Unhandled processor error type 0x08: bus error
-   GHES: Unhandled processor error type 0x10: micro-architectural error
-   GHES: Unhandled processor error type 0x02: cache error
-   GHES: Unhandled processor error type 0x04: TLB error
-   GHES: Unhandled processor error type 0x08: bus error
-   GHES: Unhandled processor error type 0x10: micro-architectural error
-
-Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-
-diff --git a/docs/specs/acpi_hest_ghes.rst b/docs/specs/acpi_hest_ghes.rst
-index aaf7b1ad11a5..acf31d6eeb7c 100644
---- a/docs/specs/acpi_hest_ghes.rst
-+++ b/docs/specs/acpi_hest_ghes.rst
-@@ -68,7 +68,7 @@ Design Details
-     and N Read Ack Register entries. The size for each entry is 8-byte.
-     The Error Status Data Block table contains N Error Status Data Block
-     entries. The size for each entry is defined at the source code as
--    ACPI_GHES_MAX_RAW_DATA_LENGTH (currently 1024 bytes). The total size
-+    ACPI_GHES_MAX_RAW_DATA_LENGTH (currently 4096 bytes). The total size
-     for the "etc/hardware_errors" fw_cfg blob is
-     (N * 8 * 2 + N * ACPI_GHES_MAX_RAW_DATA_LENGTH) bytes.
-     N is the number of the kinds of hardware error sources.
-diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
-index d5d5ff7474f4..77631147cf21 100644
---- a/hw/acpi/ghes.c
-+++ b/hw/acpi/ghes.c
-@@ -33,7 +33,7 @@
- #define ACPI_HEST_ADDR_FW_CFG_FILE          "etc/acpi_table_hest_addr"
- 
- /* The max size in bytes for one error block */
--#define ACPI_GHES_MAX_RAW_DATA_LENGTH   (1 * KiB)
-+#define ACPI_GHES_MAX_RAW_DATA_LENGTH   (4 * KiB)
- 
- /* Generic Hardware Error Source version 2 */
- #define ACPI_GHES_SOURCE_GENERIC_ERROR_V2   10
-
-
+> RFC V5 was an attempt to implement this feature using the hotplug infrast=
+ructure
+> and this RFC V6 is a deviation from previous approach towards non-hotplug=
+. We do
+> not want a hotchpotch approach because that=E2=80=99s a recipe for future=
+ disaster.
+>=20
+>=20
+> Many Thanks!
+> Salil.
+>=20
+>=20
+> >  =20
+> > >
+> > > This patch adds a dedicated CPU OSPM (Operating System Power
+> > > Management) interface. It provides a memory-mapped control region wit=
+h
+> > > selector, flags, command, and data fields, and AML methods for
+> > > device-check, eject request, and _OST reporting. OSPM is notified
+> > > through GED events and can coordinate CPU events directly with QEMU.
+> > > Other ARM-like architectures may also use this interface.
+> > >
+> > > Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
+> > > ---
+> > >  hw/acpi/Kconfig                        |   3 +
+> > >  hw/acpi/acpi-cpu-ospm-interface-stub.c |  41 ++
+> > >  hw/acpi/cpu_ospm_interface.c           | 747 =20
+> > +++++++++++++++++++++++++ =20
+> > >  hw/acpi/meson.build                    |   2 +
+> > >  hw/acpi/trace-events                   |  17 +
+> > >  hw/arm/Kconfig                         |   1 +
+> > >  include/hw/acpi/cpu_ospm_interface.h   |  78 +++
+> > >  7 files changed, 889 insertions(+)
+> > >  create mode 100644 hw/acpi/acpi-cpu-ospm-interface-stub.c
+> > >  create mode 100644 hw/acpi/cpu_ospm_interface.c  create mode 100644
+> > > include/hw/acpi/cpu_ospm_interface.h
+> > >
+> > > diff --git a/hw/acpi/Kconfig b/hw/acpi/Kconfig index
+> > > 1d4e9f0845..aa52f0468f 100644
+> > > --- a/hw/acpi/Kconfig
+> > > +++ b/hw/acpi/Kconfig
+> > > @@ -21,6 +21,9 @@ config ACPI_ICH9
+> > >  config ACPI_CPU_HOTPLUG
+> > >      bool
+> > >
+> > > +config ACPI_CPU_OSPM_INTERFACE
+> > > +    bool
+> > > +
+> > >  config ACPI_MEMORY_HOTPLUG
+> > >      bool
+> > >      select MEM_DEVICE
+> > > diff --git a/hw/acpi/acpi-cpu-ospm-interface-stub.c
+> > > b/hw/acpi/acpi-cpu-ospm-interface-stub.c
+> > > new file mode 100644
+> > > index 0000000000..f6f333f641
+> > > --- /dev/null
+> > > +++ b/hw/acpi/acpi-cpu-ospm-interface-stub.c
+> > > @@ -0,0 +1,41 @@
+> > > +/*
+> > > + * ACPI CPU OSPM Interface Handling.
+> > > + *
+> > > + * Copyright (c) 2025 Huawei Technologies R&D (UK) Ltd.
+> > > + *
+> > > + * Author: Salil Mehta <salil.mehta@huawei.com>
+> > > + *
+> > > + * SPDX-License-Identifier: GPL-2.0-or-later
+> > > + *
+> > > + * This program is free software; you can redistribute it and/or
+> > > +modify
+> > > + * it under the terms of the GNU General Public License as published
+> > > +by
+> > > + * the Free Software Foundation; either version 2 of the License, or
+> > > + * (at your option) any later version.
+> > > + */
+> > > +
+> > > +#include "qemu/osdep.h"
+> > > +#include "hw/acpi/cpu_ospm_interface.h"
+> > > +
+> > > +void acpi_cpu_device_check_cb(AcpiCpuOspmState *cpu_st, DeviceState =
+=20
+> > *dev, =20
+> > > +                              uint32_t event_st, Error **errp) { }
+> > > +
+> > > +void acpi_cpu_eject_request_cb(AcpiCpuOspmState *cpu_st, =20
+> > DeviceState *dev, =20
+> > > +                               uint32_t event_st, Error **errp) { }
+> > > +
+> > > +void acpi_cpu_eject_cb(AcpiCpuOspmState *cpu_st, DeviceState *dev,
+> > > +Error **errp) { }
+> > > +
+> > > +void acpi_cpu_ospm_state_interface_init(MemoryRegion *as, Object =20
+> > *owner, =20
+> > > +                                        AcpiCpuOspmState *state,
+> > > +                                        hwaddr base_addr) { }
+> > > +
+> > > +void acpi_cpus_ospm_status(AcpiCpuOspmState *cpu_st, =20
+> > ACPIOSTInfoList =20
+> > > +***list) { }
+> > > diff --git a/hw/acpi/cpu_ospm_interface.c
+> > > b/hw/acpi/cpu_ospm_interface.c new file mode 100644 index
+> > > 0000000000..61aab8a793
+> > > --- /dev/null
+> > > +++ b/hw/acpi/cpu_ospm_interface.c
+> > > @@ -0,0 +1,747 @@
+> > > +/*
+> > > + * ACPI CPU OSPM Interface Handling.
+> > > + *
+> > > + * Copyright (c) 2025 Huawei Technologies R&D (UK) Ltd.
+> > > + *
+> > > + * Author: Salil Mehta <salil.mehta@huawei.com>
+> > > + *
+> > > + * SPDX-License-Identifier: GPL-2.0-or-later
+> > > + *
+> > > + * This program is free software; you can redistribute it and/or
+> > > +modify
+> > > + * it under the terms of the GNU General Public License as published
+> > > +by
+> > > + * the Free Software Foundation; either version 2 of the License, or
+> > > + * (at your option) any later version.
+> > > + */
+> > > +
+> > > +#include "qemu/osdep.h"
+> > > +#include "migration/vmstate.h"
+> > > +#include "hw/core/cpu.h"
+> > > +#include "qapi/error.h"
+> > > +#include "trace.h"
+> > > +#include "qapi/qapi-events-acpi.h"
+> > > +#include "hw/acpi/cpu_ospm_interface.h"
+> > > +
+> > > +/* CPU identifier and resource device */
+> > > +#define CPU_NAME_FMT      "C%.03X" /* CPU name format (e.g., C001) =
+=20
+> > */ =20
+> > > +#define CPU_RES_DEVICE    "CPUR" /* CPU resource device name */
+> > > +#define CPU_DEVICE        "CPUS" /* CPUs device name */
+> > > +#define CPU_LOCK          "CPLK" /* CPU lock object */
+> > > +/* ACPI method(_STA, _EJ0, etc.) handlers */
+> > > +#define CPU_STS_METHOD    "CSTA" /* CPU status method =20
+> > (_STA.Enabled) */ =20
+> > > +#define CPU_SCAN_METHOD   "CSCN" /* CPU scan method for =20
+> > enumeration */ =20
+> > > +#define CPU_NOTIFY_METHOD "CTFY" /* Notify method for CPU events =20
+> > */ =20
+> > > +#define CPU_EJECT_METHOD  "CEJ0" /* CPU eject method (_EJ0) */
+> > > +#define CPU_OST_METHOD    "COST" /* OSPM status reporting (_OST) */
+> > > +/* CPU MMIO region fields (in PRST region) */
+> > > +#define CPU_SELECTOR      "CSEL" /* CPU selector index (WO) */
+> > > +#define CPU_ENABLED_F     "CPEN" /* Flag: CPU enabled status(_STA) =
+=20
+> > (RO) */ =20
+> > > +#define CPU_DEVCHK_F      "CDCK" /* Flag: Device-check event (RW) */
+> > > +#define CPU_EJECTRQ_F     "CEJR" /* Flag: Eject-request event (RW)*/
+> > > +#define CPU_EJECT_F       "CEJ0" /* Flag: Ejection trigger (WO) */
+> > > +#define CPU_COMMAND       "CCMD" /* Command register (RW) */
+> > > +#define CPU_DATA          "CDAT" /* Data register (RW) */
+> > > +
+> > > + /*
+> > > + * CPU OSPM Interface MMIO Layout (Total: 16 bytes)
+> > > + *
+> > > + *
+> > > + +--------+--------+--------+--------+--------+--------+--------+---=
+-
+> > > + ----+
+> > > + * |  0x00  |  0x01  |  0x02  |  0x03  |  0x04  |  0x05  |  0x06  |
+> > > + 0x07  |
+> > > + * +--------+--------+--------+--------+--------+--------+--------+-=
+-------+
+> > > + * |       Selector (DWord, write-only)         | Flags  |Command |R=
+eserved|
+> > > + * |                                            | (RO/RW)|  (WO)  |(=
+2B pad)|
+> > > + * |        4 bytes (32 bits)                   | 1B     |   1B   | =
+2B     |
+> > > + *
+> > > + +------------------------------------------------------------------=
+-
+> > > + ----+
+> > > + * |  0x08  |  0x09  |  0x0A  |  0x0B  |  0x0C  |  0x0D  |  0x0E  |
+> > > + 0x0F  |
+> > > + * +--------+--------+--------+--------+--------+--------+--------+-=
+-------+
+> > > + * |                        Data (QWord, read/write)                =
+       |
+> > > + * |               Used by CPU scan and _OST methods (64 bits)      =
+       |
+> > > + *
+> > > + +------------------------------------------------------------------=
+-
+> > > + ----+
+> > > + *
+> > > + * Field Overview:
+> > > + *
+> > > + * - Selector: 4 bytes @0x00 (DWord, WO)
+> > > + *               - Selects target CPU index for the current operatio=
+n.
+> > > + * - Flags:    1 byte  @0x04 (RO/RW)
+> > > + *               - Bit 0: ENABLED  =E2=80=93 CPU is powered on (RO)
+> > > + *               - Bit 1: DEVCHK   =E2=80=93 Device-check completed =
+(RW)
+> > > + *               - Bit 2: EJECTRQ  =E2=80=93 Guest requests CPU ejec=
+t (RW)
+> > > + *               - Bit 3: EJECT    =E2=80=93 Trigger CPU ejection (W=
+O)
+> > > + *               - Bits 4=E2=80=937: Reserved (write 0)
+> > > + * - Command:  1 byte  @0x05 (WO)
+> > > + *               - Specifies control operation (e.g., scan, _OST, ej=
+ect).
+> > > + * - Reserved: 2 bytes @0x06=E2=80=930x07
+> > > + *               - Alignment padding; must be zero on write.
+> > > + * - Data:     8 bytes @0x08 (QWord, RW)
+> > > + *               - Input/output for command-specific data.
+> > > + *               - Used by CPU scan or _OST.
+> > > + */
+> > > +
+> > > +/*
+> > > + * Macros defining the CPU MMIO region layout. Change field sizes
+> > > +here to
+> > > + * alter the overall MMIO region size.
+> > > + */
+> > > +/* Sub-Field sizes (in bytes) */
+> > > +#define ACPI_CPU_MR_SELECTOR_SIZE  4 /* Write-only (DWord access) =
+=20
+> > */ =20
+> > > +#define ACPI_CPU_MR_FLAGS_SIZE     1 /* Read-write (Byte access) */
+> > > +#define ACPI_CPU_MR_RES_FLAGS_SIZE 0 /* Reserved padding */
+> > > +#define ACPI_CPU_MR_CMD_SIZE       1 /* Write-only (Byte access) */
+> > > +#define ACPI_CPU_MR_RES_CMD_SIZE   2 /* Reserved padding */
+> > > +#define ACPI_CPU_MR_CMD_DATA_SIZE  8 /* Read-write (QWord =20
+> > access) */ =20
+> > > +
+> > > +#define ACPI_CPU_OSPM_IF_MAX_FIELD_SIZE \
+> > > +    MAX_CONST(ACPI_CPU_MR_CMD_DATA_SIZE, \
+> > > +    MAX_CONST(ACPI_CPU_MR_SELECTOR_SIZE, \
+> > > +    MAX_CONST(ACPI_CPU_MR_CMD_SIZE, =20
+> > ACPI_CPU_MR_FLAGS_SIZE))) =20
+> > > +
+> > > +/* Validate layout against exported total length */
+> > > +_Static_assert(ACPI_CPU_OSPM_IF_REG_LEN =3D=3D
+> > > +               (ACPI_CPU_MR_SELECTOR_SIZE +
+> > > +                ACPI_CPU_MR_FLAGS_SIZE +
+> > > +                ACPI_CPU_MR_RES_FLAGS_SIZE +
+> > > +                ACPI_CPU_MR_CMD_SIZE +
+> > > +                ACPI_CPU_MR_RES_CMD_SIZE +
+> > > +                ACPI_CPU_MR_CMD_DATA_SIZE),
+> > > +               "ACPI_CPU_OSPM_IF_REG_LEN mismatch with internal MMIO
+> > > +layout");
+> > > +
+> > > +/* Sub-Field sizes (in bits) */
+> > > +#define ACPI_CPU_MR_SELECTOR_SIZE_BITS \
+> > > +    (ACPI_CPU_MR_SELECTOR_SIZE * BITS_PER_BYTE)  /* Write-only =20
+> > (DWord =20
+> > > +Acc) */ #define ACPI_CPU_MR_FLAGS_SIZE_BITS \
+> > > +    (ACPI_CPU_MR_FLAGS_SIZE * BITS_PER_BYTE)     /* Read-write (Byte=
+ =20
+> > Acc) */ =20
+> > > +#define ACPI_CPU_MR_RES_FLAGS_SIZE_BITS \
+> > > +    (ACPI_CPU_MR_RES_FLAGS_SIZE * BITS_PER_BYTE) /* Reserved =20
+> > padding =20
+> > > +*/ #define ACPI_CPU_MR_CMD_SIZE_BITS \
+> > > +    (ACPI_CPU_MR_CMD_SIZE * BITS_PER_BYTE)       /* Write-only (Byte=
+ =20
+> > Acc) */ =20
+> > > +#define ACPI_CPU_MR_RES_CMD_SIZE_BITS \
+> > > +    (ACPI_CPU_MR_RES_CMD_SIZE * BITS_PER_BYTE)   /* Reserved =20
+> > padding */ =20
+> > > +#define ACPI_CPU_MR_CMD_DATA_SIZE_BITS \
+> > > +    (ACPI_CPU_MR_CMD_DATA_SIZE * BITS_PER_BYTE)  /* Read-write =20
+> > (QWord =20
+> > > +Acc) */
+> > > +
+> > > +/* Field offsets (in bytes) */
+> > > +#define ACPI_CPU_MR_SELECTOR_OFFSET_WO  0 #define
+> > > +ACPI_CPU_MR_FLAGS_OFFSET_RW \
+> > > +    (ACPI_CPU_MR_SELECTOR_OFFSET_WO + \
+> > > +     ACPI_CPU_MR_SELECTOR_SIZE)
+> > > +#define ACPI_CPU_MR_CMD_OFFSET_WO \
+> > > +    (ACPI_CPU_MR_FLAGS_OFFSET_RW + \
+> > > +     ACPI_CPU_MR_FLAGS_SIZE + \
+> > > +     ACPI_CPU_MR_RES_FLAGS_SIZE)
+> > > +#define ACPI_CPU_MR_CMD_DATA_OFFSET_RW \
+> > > +    (ACPI_CPU_MR_CMD_OFFSET_WO + \
+> > > +     ACPI_CPU_MR_CMD_SIZE + \
+> > > +     ACPI_CPU_MR_RES_CMD_SIZE)
+> > > +
+> > > +/* ensure all offsets are at their natural size alignment boundaries=
+ */
+> > > +#define STATIC_ASSERT_FIELD_ALIGNMENT(offset, type, field_name) =20
+> > \ =20
+> > > +    _Static_assert((offset) % sizeof(type) =3D=3D 0,                =
+              \
+> > > +                   field_name " is not aligned to its natural
+> > > +boundary")
+> > > +
+> > > =20
+> > +STATIC_ASSERT_FIELD_ALIGNMENT(ACPI_CPU_MR_SELECTOR_OFFSET_W
+> > O, =20
+> > > +                              uint32_t, "Selector");
+> > > +STATIC_ASSERT_FIELD_ALIGNMENT(ACPI_CPU_MR_FLAGS_OFFSET_RW,
+> > > +                              uint8_t, "Flags");
+> > > +STATIC_ASSERT_FIELD_ALIGNMENT(ACPI_CPU_MR_CMD_OFFSET_WO,
+> > > +                              uint8_t, "Command");
+> > > =20
+> > +STATIC_ASSERT_FIELD_ALIGNMENT(ACPI_CPU_MR_CMD_DATA_OFFSET_
+> > RW, =20
+> > > +                              uint64_t, "Command Data");
+> > > +
+> > > +/* Flag bit positions (used within 'flags' subfield) */ #define
+> > > +ACPI_CPU_FLAGS_USED_BITS 4 #define =20
+> > ACPI_CPU_MR_FLAGS_BIT_ENABLED =20
+> > > +BIT(0) #define ACPI_CPU_MR_FLAGS_BIT_DEVCHK  BIT(1) #define
+> > > +ACPI_CPU_MR_FLAGS_BIT_EJECTRQ BIT(2)
+> > > +#define ACPI_CPU_MR_FLAGS_BIT_EJECT =20
+> > BIT(ACPI_CPU_FLAGS_USED_BITS - 1) =20
+> > > +
+> > > +#define ACPI_CPU_MR_RES_FLAG_BITS (BITS_PER_BYTE -
+> > > +ACPI_CPU_FLAGS_USED_BITS)
+> > > +
+> > > +enum {
+> > > +    ACPI_GET_NEXT_CPU_WITH_EVENT_CMD =3D 0,
+> > > +    ACPI_OST_EVENT_CMD =3D 1,
+> > > +    ACPI_OST_STATUS_CMD =3D 2,
+> > > +    ACPI_CMD_MAX
+> > > +};
+> > > +
+> > > +#define AML_APPEND_MR_RESVD_FIELD(mr_field, size_bits)       \
+> > > +    do {                                                        \
+> > > +        if ((size_bits) !=3D 0) {                                 \
+> > > +            aml_append((mr_field), aml_reserved_field(size_bits)); \
+> > > +        }                                                       \
+> > > +    } while (0)
+> > > +
+> > > +#define AML_APPEND_MR_NAMED_FIELD(mr_field, name, size_bits)    \
+> > > +    do {                                                        \
+> > > +        if ((size_bits) !=3D 0) {                                 \
+> > > +            aml_append((mr_field), aml_named_field((name), (size_bit=
+s))); \
+> > > +        }                                                       \
+> > > +    } while (0)
+> > > +
+> > > +#define AML_CPU_RES_DEV(base, field) \
+> > > +        aml_name("%s.%s.%s", (base), CPU_RES_DEVICE, (field))
+> > > +
+> > > +static ACPIOSTInfo *
+> > > +acpi_cpu_ospm_ost_status(int idx, AcpiCpuOspmStateStatus *cdev) {
+> > > +    ACPIOSTInfo *info =3D g_new0(ACPIOSTInfo, 1);
+> > > +
+> > > +    info->source =3D cdev->ost_event;
+> > > +    info->status =3D cdev->ost_status;
+> > > +    if (cdev->cpu) {
+> > > +        DeviceState *dev =3D DEVICE(cdev->cpu);
+> > > +        if (dev->id) {
+> > > +            info->device =3D g_strdup(dev->id);
+> > > +        }
+> > > +    }
+> > > +    return info;
+> > > +}
+> > > +
+> > > +void acpi_cpus_ospm_status(AcpiCpuOspmState *cpu_st, =20
+> > ACPIOSTInfoList =20
+> > > +***list) {
+> > > +    ACPIOSTInfoList ***tail =3D list;
+> > > +    int i;
+> > > +
+> > > +    for (i =3D 0; i < cpu_st->dev_count; i++) {
+> > > +        QAPI_LIST_APPEND(*tail, acpi_cpu_ospm_ost_status(i, &cpu_st-
+> > >devs[i]));
+> > > +    }
+> > > +}
+> > > +
+> > > +static uint64_t
+> > > +acpi_cpu_ospm_intf_mr_read(void *opaque, hwaddr addr, unsigned =20
+> > size) =20
+> > > +{
+> > > +    AcpiCpuOspmState *cpu_st =3D opaque;
+> > > +    AcpiCpuOspmStateStatus *cdev;
+> > > +    uint64_t val =3D 0;
+> > > +
+> > > +    if (cpu_st->selector >=3D cpu_st->dev_count) {
+> > > +        return val;
+> > > +    }
+> > > +    cdev =3D &cpu_st->devs[cpu_st->selector];
+> > > +    switch (addr) {
+> > > +    case ACPI_CPU_MR_FLAGS_OFFSET_RW:
+> > > +        val |=3D qdev_check_enabled(DEVICE(cdev->cpu)) ?
+> > > +                                  ACPI_CPU_MR_FLAGS_BIT_ENABLED : 0;
+> > > +        val |=3D cdev->devchk_pending ? ACPI_CPU_MR_FLAGS_BIT_DEVCHK=
+ : =20
+> > 0; =20
+> > > +        val |=3D cdev->ejrqst_pending ? ACPI_CPU_MR_FLAGS_BIT_EJECTR=
+Q : =20
+> > 0; =20
+> > > +        trace_acpi_cpuos_if_read_flags(cpu_st->selector, val);
+> > > +        break;
+> > > +    case ACPI_CPU_MR_CMD_DATA_OFFSET_RW:
+> > > +        switch (cpu_st->command) {
+> > > +        case ACPI_GET_NEXT_CPU_WITH_EVENT_CMD:
+> > > +           val =3D cpu_st->selector;
+> > > +           break;
+> > > +        default:
+> > > +           trace_acpi_cpuos_if_read_invalid_cmd_data(cpu_st->selecto=
+r,
+> > > +                                                     cpu_st->command=
+);
+> > > +           break;
+> > > +        }
+> > > +        trace_acpi_cpuos_if_read_cmd_data(cpu_st->selector, val);
+> > > +        break;
+> > > +    default:
+> > > +        break;
+> > > +    }
+> > > +    return val;
+> > > +}
+> > > +
+> > > +static void
+> > > +acpi_cpu_ospm_intf_mr_write(void *opaque, hwaddr addr, uint64_t =20
+> > data, =20
+> > > +                            unsigned int size) {
+> > > +    AcpiCpuOspmState *cpu_st =3D opaque;
+> > > +    AcpiCpuOspmStateStatus *cdev;
+> > > +    ACPIOSTInfo *info;
+> > > +
+> > > +    assert(cpu_st->dev_count);
+> > > +    if (addr) {
+> > > +        if (cpu_st->selector >=3D cpu_st->dev_count) {
+> > > +            trace_acpi_cpuos_if_invalid_idx_selected(cpu_st->selecto=
+r);
+> > > +            return;
+> > > +        }
+> > > +    }
+> > > +
+> > > +    switch (addr) {
+> > > +    case ACPI_CPU_MR_SELECTOR_OFFSET_WO: /* current CPU selector =20
+> > */ =20
+> > > +        cpu_st->selector =3D data;
+> > > +        trace_acpi_cpuos_if_write_idx(cpu_st->selector);
+> > > +        break;
+> > > +    case ACPI_CPU_MR_FLAGS_OFFSET_RW: /* set is_* fields  */
+> > > +        cdev =3D &cpu_st->devs[cpu_st->selector];
+> > > +        if (data & ACPI_CPU_MR_FLAGS_BIT_DEVCHK) {
+> > > +            /* clear device-check pending event */
+> > > +            cdev->devchk_pending =3D false;
+> > > +            trace_acpi_cpuos_if_clear_devchk_evt(cpu_st->selector);
+> > > +        } else if (data & ACPI_CPU_MR_FLAGS_BIT_EJECTRQ) {
+> > > +            /* clear eject-request pending event */
+> > > +            cdev->ejrqst_pending =3D false;
+> > > +            trace_acpi_cpuos_if_clear_ejrqst_evt(cpu_st->selector);
+> > > +        } else if (data & ACPI_CPU_MR_FLAGS_BIT_EJECT) {
+> > > +            DeviceState *dev =3D NULL;
+> > > +            if (!cdev->cpu || cdev->cpu =3D=3D first_cpu) {
+> > > +                trace_acpi_cpuos_if_ejecting_invalid_cpu(cpu_st->sel=
+ector);
+> > > +                break;
+> > > +            }
+> > > +            /*
+> > > +             * OSPM has returned with eject. Hence, it is now safe t=
+o put the
+> > > +             * cpu device on powered-off state.
+> > > +             */
+> > > +            trace_acpi_cpuos_if_ejecting_cpu(cpu_st->selector);
+> > > +            dev =3D DEVICE(cdev->cpu);
+> > > +            qdev_sync_disable(dev, &error_fatal);
+> > > +        }
+> > > +        break;
+> > > +    case ACPI_CPU_MR_CMD_OFFSET_WO:
+> > > +        trace_acpi_cpuos_if_write_cmd(cpu_st->selector, data);
+> > > +        if (data < ACPI_CMD_MAX) {
+> > > +            cpu_st->command =3D data;
+> > > +            if (cpu_st->command =3D=3D =20
+> > ACPI_GET_NEXT_CPU_WITH_EVENT_CMD) { =20
+> > > +                uint32_t iter =3D cpu_st->selector;
+> > > +
+> > > +                do {
+> > > +                    cdev =3D &cpu_st->devs[iter];
+> > > +                    if (cdev->devchk_pending || cdev->ejrqst_pending=
+) {
+> > > +                        cpu_st->selector =3D iter;
+> > > +                        trace_acpi_cpuos_if_cpu_has_events(cpu_st->s=
+elector,
+> > > +                            cdev->devchk_pending, cdev->ejrqst_pendi=
+ng);
+> > > +                        break;
+> > > +                    }
+> > > +                    iter =3D iter + 1 < cpu_st->dev_count ? iter + 1=
+ : 0;
+> > > +                } while (iter !=3D cpu_st->selector);
+> > > +            }
+> > > +        }
+> > > +        break;
+> > > +    case ACPI_CPU_MR_CMD_DATA_OFFSET_RW:
+> > > +        switch (cpu_st->command) {
+> > > +        case ACPI_OST_EVENT_CMD: {
+> > > +           cdev =3D &cpu_st->devs[cpu_st->selector];
+> > > +           cdev->ost_event =3D data;
+> > > +           trace_acpi_cpuos_if_write_ost_ev(cpu_st->selector, cdev-
+> > >ost_event);
+> > > +           break;
+> > > +        }
+> > > +        case ACPI_OST_STATUS_CMD: {
+> > > +           cdev =3D &cpu_st->devs[cpu_st->selector];
+> > > +           cdev->ost_status =3D data;
+> > > +           info =3D acpi_cpu_ospm_ost_status(cpu_st->selector, cdev)=
+;
+> > > +           qapi_event_send_acpi_device_ost(info);
+> > > +           qapi_free_ACPIOSTInfo(info);
+> > > +           trace_acpi_cpuos_if_write_ost_status(cpu_st->selector,
+> > > +                                                cdev->ost_status);
+> > > +           break;
+> > > +        }
+> > > +        default:
+> > > +           trace_acpi_cpuos_if_write_invalid_cmd(cpu_st->selector,
+> > > +                                                 cpu_st->command);
+> > > +           break;
+> > > +        }
+> > > +        break;
+> > > +    default:
+> > > +        trace_acpi_cpuos_if_write_invalid_offset(cpu_st->selector, a=
+ddr);
+> > > +        break;
+> > > +    }
+> > > +}
+> > > +
+> > > +static const MemoryRegionOps cpu_common_mr_ops =3D {
+> > > +    .read =3D acpi_cpu_ospm_intf_mr_read,
+> > > +    .write =3D acpi_cpu_ospm_intf_mr_write,
+> > > +    .endianness =3D DEVICE_LITTLE_ENDIAN,
+> > > +    .valid =3D {
+> > > +        .min_access_size =3D 1,
+> > > +        .max_access_size =3D ACPI_CPU_OSPM_IF_MAX_FIELD_SIZE,
+> > > +    },
+> > > +    .impl =3D {
+> > > +        .min_access_size =3D 1,
+> > > +        .max_access_size =3D ACPI_CPU_OSPM_IF_MAX_FIELD_SIZE,
+> > > +        .unaligned =3D false,
+> > > +    },
+> > > +};
+> > > +
+> > > +void acpi_cpu_ospm_state_interface_init(MemoryRegion *as, Object =20
+> > *owner, =20
+> > > +                                        AcpiCpuOspmState *state,
+> > > +                                        hwaddr base_addr) {
+> > > +    MachineState *machine =3D MACHINE(qdev_get_machine());
+> > > +    MachineClass *mc =3D MACHINE_GET_CLASS(machine);
+> > > +    const CPUArchIdList *id_list;
+> > > +    int i;
+> > > +
+> > > +    assert(mc->possible_cpu_arch_ids);
+> > > +    id_list =3D mc->possible_cpu_arch_ids(machine);
+> > > +    state->dev_count =3D id_list->len;
+> > > +    state->devs =3D g_new0(typeof(*state->devs), state->dev_count);
+> > > +    for (i =3D 0; i < id_list->len; i++) {
+> > > +        state->devs[i].cpu =3D  CPU(id_list->cpus[i].cpu);
+> > > +        state->devs[i].arch_id =3D id_list->cpus[i].arch_id;
+> > > +    }
+> > > +    memory_region_init_io(&state->ctrl_reg, owner, =20
+> > &cpu_common_mr_ops, state, =20
+> > > +                          "ACPI CPU OSPM State Interface Memory Regi=
+on",
+> > > +                          ACPI_CPU_OSPM_IF_REG_LEN);
+> > > +    memory_region_add_subregion(as, base_addr, &state->ctrl_reg); }
+> > > +
+> > > +static AcpiCpuOspmStateStatus *
+> > > +acpi_get_cpu_status(AcpiCpuOspmState *cpu_st, DeviceState *dev) {
+> > > +    CPUClass *k =3D CPU_GET_CLASS(dev);
+> > > +    uint64_t cpu_arch_id =3D k->get_arch_id(CPU(dev));
+> > > +    int i;
+> > > +
+> > > +    for (i =3D 0; i < cpu_st->dev_count; i++) {
+> > > +        if (cpu_arch_id =3D=3D cpu_st->devs[i].arch_id) {
+> > > +            return &cpu_st->devs[i];
+> > > +        }
+> > > +    }
+> > > +    return NULL;
+> > > +}
+> > > +
+> > > +void acpi_cpu_device_check_cb(AcpiCpuOspmState *cpu_st, DeviceState =
+=20
+> > *dev, =20
+> > > +                              uint32_t event_st, Error **errp) {
+> > > +    AcpiCpuOspmStateStatus *cdev;
+> > > +    cdev =3D acpi_get_cpu_status(cpu_st, dev);
+> > > +    if (!cdev) {
+> > > +        return;
+> > > +    }
+> > > +    assert(cdev->cpu);
+> > > +
+> > > +    /*
+> > > +     * Tell OSPM via GED IRQ(GSI) that a powered-off cpu is being po=
+wered- =20
+> > on. =20
+> > > +     * Also, mark 'device-check' event pending for this cpu. This wi=
+ll
+> > > +     * eventually result in OSPM evaluating the ACPI _EVT method and=
+ scan =20
+> > of =20
+> > > +     * cpus
+> > > +     */
+> > > +    cdev->devchk_pending =3D true;
+> > > +    acpi_send_event(cpu_st->acpi_dev, event_st); }
+> > > +
+> > > +void acpi_cpu_eject_request_cb(AcpiCpuOspmState *cpu_st, =20
+> > DeviceState *dev, =20
+> > > +                              uint32_t event_st, Error **errp) {
+> > > +    AcpiCpuOspmStateStatus *cdev;
+> > > +    cdev =3D acpi_get_cpu_status(cpu_st, dev);
+> > > +    if (!cdev) {
+> > > +        return;
+> > > +    }
+> > > +    assert(cdev->cpu);
+> > > +
+> > > +    /*
+> > > +     * Tell OSPM via GED IRQ(GSI) that a cpu wants to power-off or g=
+o on =20
+> > standby =20
+> > > +     * Also,mark 'eject-request' event pending for this cpu. (gracef=
+ul =20
+> > shutdown) =20
+> > > +     */
+> > > +    cdev->ejrqst_pending =3D true;
+> > > +    acpi_send_event(cpu_st->acpi_dev, event_st); }
+> > > +
+> > > +void
+> > > +acpi_cpu_eject_cb(AcpiCpuOspmState *cpu_st, DeviceState *dev, Error
+> > > +**errp) {
+> > > +    /* TODO: possible handling here */ }
+> > > +
+> > > +static const VMStateDescription vmstate_cpu_ospm_state_sts =3D {
+> > > +    .name =3D "CPU OSPM state status",
+> > > +    .version_id =3D 1,
+> > > +    .minimum_version_id =3D 1,
+> > > +    .fields =3D (const VMStateField[]) {
+> > > +        VMSTATE_BOOL(devchk_pending, AcpiCpuOspmStateStatus),
+> > > +        VMSTATE_BOOL(ejrqst_pending, AcpiCpuOspmStateStatus),
+> > > +        VMSTATE_UINT32(ost_event, AcpiCpuOspmStateStatus),
+> > > +        VMSTATE_UINT32(ost_status, AcpiCpuOspmStateStatus),
+> > > +        VMSTATE_END_OF_LIST()
+> > > +    }
+> > > +};
+> > > +
+> > > +const VMStateDescription vmstate_cpu_ospm_state =3D {
+> > > +    .name =3D "CPU OSPM state",
+> > > +    .version_id =3D 1,
+> > > +    .minimum_version_id =3D 1,
+> > > +    .fields =3D (const VMStateField[]) {
+> > > +        VMSTATE_UINT32(selector, AcpiCpuOspmState),
+> > > +        VMSTATE_UINT8(command, AcpiCpuOspmState),
+> > > +        VMSTATE_STRUCT_VARRAY_POINTER_UINT32(devs, =20
+> > AcpiCpuOspmState, =20
+> > > +                                             dev_count,
+> > > +                                             vmstate_cpu_ospm_state_=
+sts,
+> > > +                                             AcpiCpuOspmStateStatus)=
+,
+> > > +        VMSTATE_END_OF_LIST()
+> > > +    }
+> > > +};
+> > > +
+> > > +void acpi_build_cpus_aml(Aml *table, hwaddr base_addr, const char =
+=20
+> > *root, =20
+> > > +                         const char *event_handler_method) {
+> > > +    MachineState *machine =3D MACHINE(qdev_get_machine());
+> > > +    MachineClass *mc =3D MACHINE_GET_CLASS(machine);
+> > > +    const CPUArchIdList *arch_ids =3D mc->possible_cpu_arch_ids(mach=
+ine);
+> > > +    Aml *sb_scope =3D aml_scope("_SB"); /* System Bus Scope */
+> > > +    Aml *ifctx, *field, *method, *cpu_res_dev, *cpus_dev;
+> > > +    Aml *zero =3D aml_int(0);
+> > > +    Aml *one =3D aml_int(1);
+> > > +
+> > > +    cpu_res_dev =3D aml_device("%s.%s", root, CPU_RES_DEVICE);
+> > > +    {
+> > > +        Aml *crs;
+> > > +
+> > > +        aml_append(cpu_res_dev,
+> > > +            aml_name_decl("_HID", aml_eisaid("PNP0A06")));
+> > > +        aml_append(cpu_res_dev,
+> > > +            aml_name_decl("_UID", aml_string("CPU OSPM Interface =20
+> > resources"))); =20
+> > > +        aml_append(cpu_res_dev, aml_mutex(CPU_LOCK, 0));
+> > > +
+> > > +        crs =3D aml_resource_template();
+> > > +        aml_append(crs, aml_memory32_fixed(base_addr, =20
+> > ACPI_CPU_OSPM_IF_REG_LEN, =20
+> > > +                   AML_READ_WRITE));
+> > > +
+> > > +        aml_append(cpu_res_dev, aml_name_decl("_CRS", crs));
+> > > +
+> > > +        /* declare CPU OSPM Interface MMIO region related access fie=
+lds */
+> > > +        aml_append(cpu_res_dev,
+> > > +                   aml_operation_region("PRST", AML_SYSTEM_MEMORY,
+> > > +                                        aml_int(base_addr),
+> > > +                                        ACPI_CPU_OSPM_IF_REG_LEN));
+> > > +
+> > > +        /*
+> > > +         * define named fields within PRST region with 'Byte' access=
+ widths
+> > > +         * and reserve fields with other access width
+> > > +         */
+> > > +        field =3D aml_field("PRST", AML_BYTE_ACC, AML_NOLOCK, =20
+> > AML_PRESERVE); =20
+> > > +        /* reserve CPU 'selector' field (size in bits) */
+> > > +        AML_APPEND_MR_RESVD_FIELD(field, =20
+> > ACPI_CPU_MR_SELECTOR_SIZE_BITS); =20
+> > > +        /* Flag::Enabled Bit(RO) - Read '1' if enabled */
+> > > +        AML_APPEND_MR_NAMED_FIELD(field, CPU_ENABLED_F, 1);
+> > > +        /* Flag::Devchk Bit(RW) - Read '1', has a event. Write '1', =
+to clear */
+> > > +        AML_APPEND_MR_NAMED_FIELD(field, CPU_DEVCHK_F, 1);
+> > > +        /* Flag::Ejectrq Bit(RW) - Read 1, has event. Write 1 to cle=
+ar */
+> > > +        AML_APPEND_MR_NAMED_FIELD(field, CPU_EJECTRQ_F, 1);
+> > > +        /* Flag::Eject Bit(WO) - OSPM evals _EJx, initiates CPU Ejec=
+t in =20
+> > Qemu*/ =20
+> > > +        AML_APPEND_MR_NAMED_FIELD(field, CPU_EJECT_F, 1);
+> > > +        /* Flag::Bit(ACPI_CPU_FLAGS_USED_BITS)-Bit(7) - Reserve left=
+ over =20
+> > bits*/ =20
+> > > +        AML_APPEND_MR_RESVD_FIELD(field, =20
+> > ACPI_CPU_MR_RES_FLAG_BITS); =20
+> > > +        /* Reserved space: padding after flags */
+> > > +        AML_APPEND_MR_RESVD_FIELD(field, =20
+> > ACPI_CPU_MR_RES_FLAGS_SIZE_BITS); =20
+> > > +        /* Command field written by OSPM */
+> > > +        AML_APPEND_MR_NAMED_FIELD(field, CPU_COMMAND,
+> > > +                                  ACPI_CPU_MR_CMD_SIZE_BITS);
+> > > +        /* Reserved space: padding after command field */
+> > > +        AML_APPEND_MR_RESVD_FIELD(field, =20
+> > ACPI_CPU_MR_RES_CMD_SIZE_BITS); =20
+> > > +        /* Command data: 64-bit payload associated with command */
+> > > +        AML_APPEND_MR_RESVD_FIELD(field, =20
+> > ACPI_CPU_MR_CMD_DATA_SIZE_BITS); =20
+> > > +        aml_append(cpu_res_dev, field);
+> > > +
+> > > +        /*
+> > > +         * define named fields with 'Dword' access widths and reserv=
+e fields
+> > > +         * with other access width
+> > > +         */
+> > > +        field =3D aml_field("PRST", AML_DWORD_ACC, AML_NOLOCK, =20
+> > AML_PRESERVE); =20
+> > > +        /* CPU selector, write only */
+> > > +        AML_APPEND_MR_NAMED_FIELD(field, CPU_SELECTOR,
+> > > +                                  ACPI_CPU_MR_SELECTOR_SIZE_BITS);
+> > > +        aml_append(cpu_res_dev, field);
+> > > +
+> > > +        /*
+> > > +         * define named fields with 'Qword' access widths and reserv=
+e fields
+> > > +         * with other access width
+> > > +         */
+> > > +        field =3D aml_field("PRST", AML_QWORD_ACC, AML_NOLOCK, =20
+> > AML_PRESERVE); =20
+> > > +        /*
+> > > +         * Reserve space: selector, flags, reserved flags, command, =
+reserved
+> > > +         * command for Qword alignment.
+> > > +         */
+> > > +        AML_APPEND_MR_RESVD_FIELD(field, =20
+> > ACPI_CPU_MR_SELECTOR_SIZE_BITS + =20
+> > > +                                            ACPI_CPU_MR_FLAGS_SIZE_B=
+ITS +
+> > > +                                            ACPI_CPU_MR_RES_FLAGS_SI=
+ZE_BITS +
+> > > +                                            ACPI_CPU_MR_CMD_SIZE_BIT=
+S +
+> > > +                                            ACPI_CPU_MR_RES_CMD_SIZE=
+_BITS);
+> > > +        /* Command data accessible via Qword */
+> > > +        AML_APPEND_MR_NAMED_FIELD(field, CPU_DATA,
+> > > +                                  ACPI_CPU_MR_CMD_DATA_SIZE_BITS);
+> > > +        aml_append(cpu_res_dev, field);
+> > > +    }
+> > > +    aml_append(sb_scope, cpu_res_dev);
+> > > +
+> > > +    cpus_dev =3D aml_device("%s.%s", root, CPU_DEVICE);
+> > > +    {
+> > > +        Aml *ctrl_lock =3D AML_CPU_RES_DEV(root, CPU_LOCK);
+> > > +        Aml *cpu_selector =3D AML_CPU_RES_DEV(root, CPU_SELECTOR);
+> > > +        Aml *is_enabled =3D AML_CPU_RES_DEV(root, CPU_ENABLED_F);
+> > > +        Aml *dvchk_evt =3D AML_CPU_RES_DEV(root, CPU_DEVCHK_F);
+> > > +        Aml *ejrq_evt =3D AML_CPU_RES_DEV(root, CPU_EJECTRQ_F);
+> > > +        Aml *ej_evt =3D AML_CPU_RES_DEV(root, CPU_EJECT_F);
+> > > +        Aml *cpu_cmd =3D AML_CPU_RES_DEV(root, CPU_COMMAND);
+> > > +        Aml *cpu_data =3D AML_CPU_RES_DEV(root, CPU_DATA);
+> > > +        int i;
+> > > +
+> > > +        aml_append(cpus_dev, aml_name_decl("_HID", =20
+> > aml_string("ACPI0010"))); =20
+> > > +        aml_append(cpus_dev, aml_name_decl("_CID",
+> > > + aml_eisaid("PNP0A05")));
+> > > +
+> > > +        method =3D aml_method(CPU_NOTIFY_METHOD, 2, =20
+> > AML_NOTSERIALIZED); =20
+> > > +        for (i =3D 0; i < arch_ids->len; i++) {
+> > > +            Aml *cpu =3D aml_name(CPU_NAME_FMT, i);
+> > > +            Aml *uid =3D aml_arg(0);
+> > > +            Aml *event =3D aml_arg(1);
+> > > +
+> > > +            ifctx =3D aml_if(aml_equal(uid, aml_int(i)));
+> > > +            {
+> > > +                aml_append(ifctx, aml_notify(cpu, event));
+> > > +            }
+> > > +            aml_append(method, ifctx);
+> > > +        }
+> > > +        aml_append(cpus_dev, method);
+> > > +
+> > > +        method =3D aml_method(CPU_STS_METHOD, 1, AML_SERIALIZED);
+> > > +        {
+> > > +            Aml *idx =3D aml_arg(0);
+> > > +            Aml *sta =3D aml_local(0);
+> > > +            Aml *else_ctx;
+> > > +
+> > > +            aml_append(method, aml_acquire(ctrl_lock, 0xFFFF));
+> > > +            aml_append(method, aml_store(idx, cpu_selector));
+> > > +            aml_append(method, aml_store(zero, sta));
+> > > +            ifctx =3D aml_if(aml_equal(is_enabled, one));
+> > > +            {
+> > > +                /* cpu is present and enabled */
+> > > +                aml_append(ifctx, aml_store(aml_int(0xF), sta));
+> > > +            }
+> > > +            aml_append(method, ifctx);
+> > > +            else_ctx =3D aml_else();
+> > > +            {
+> > > +                /* cpu is present but disabled */
+> > > +                aml_append(else_ctx, aml_store(aml_int(0xD), sta));
+> > > +            }
+> > > +            aml_append(method, else_ctx);
+> > > +            aml_append(method, aml_release(ctrl_lock));
+> > > +            aml_append(method, aml_return(sta));
+> > > +        }
+> > > +        aml_append(cpus_dev, method);
+> > > +
+> > > +        method =3D aml_method(CPU_EJECT_METHOD, 1, AML_SERIALIZED);
+> > > +        {
+> > > +            Aml *idx =3D aml_arg(0);
+> > > +
+> > > +            aml_append(method, aml_acquire(ctrl_lock, 0xFFFF));
+> > > +            aml_append(method, aml_store(idx, cpu_selector));
+> > > +            aml_append(method, aml_store(one, ej_evt));
+> > > +            aml_append(method, aml_release(ctrl_lock));
+> > > +        }
+> > > +        aml_append(cpus_dev, method);
+> > > +
+> > > +        method =3D aml_method(CPU_SCAN_METHOD, 0, AML_SERIALIZED);
+> > > +        {
+> > > +            Aml *has_event =3D aml_local(0); /* Local0: Loop control=
+ flag */
+> > > +            Aml *uid =3D aml_local(1); /* Local1: Current CPU UID */
+> > > +            /* Constants */
+> > > +            Aml *dev_chk =3D aml_int(1); /* Notify: device check to =
+enable */
+> > > +            Aml *eject_req =3D aml_int(3); /* Notify: eject for remo=
+val */
+> > > +            Aml *next_cpu_cmd =3D
+> > > + aml_int(ACPI_GET_NEXT_CPU_WITH_EVENT_CMD);
+> > > +
+> > > +            /* Acquire CPU lock */
+> > > +            aml_append(method, aml_acquire(ctrl_lock, 0xFFFF));
+> > > +
+> > > +            /* Initialize loop */
+> > > +            aml_append(method, aml_store(zero, uid));
+> > > +            aml_append(method, aml_store(one, has_event));
+> > > +
+> > > +            Aml *while_ctx =3D aml_while(aml_land(
+> > > +                aml_equal(has_event, one),
+> > > +                aml_lless(uid, aml_int(arch_ids->len))
+> > > +            ));
+> > > +            {
+> > > +                aml_append(while_ctx, aml_store(zero, has_event));
+> > > +                /*
+> > > +                 * Issue scan cmd: QEMU will return next CPU with ev=
+ent in
+> > > +                 * cpu_data
+> > > +                 */
+> > > +                aml_append(while_ctx, aml_store(uid, cpu_selector));
+> > > +                aml_append(while_ctx, aml_store(next_cpu_cmd,
+> > > + cpu_cmd));
+> > > +
+> > > +                /* If scan wrapped around to an earlier UID, exit lo=
+op */
+> > > +                Aml *wrap_check =3D aml_if(aml_lless(cpu_data, uid))=
+;
+> > > +                aml_append(wrap_check, aml_break());
+> > > +                aml_append(while_ctx, wrap_check);
+> > > +
+> > > +                /* Set UID to scanned result */
+> > > +                aml_append(while_ctx, aml_store(cpu_data, uid));
+> > > +
+> > > +                /* send CPU device-check(resume) event to OSPM */
+> > > +                Aml *if_devchk =3D aml_if(aml_equal(dvchk_evt, one))=
+;
+> > > +                {
+> > > +                    aml_append(if_devchk,
+> > > +                        aml_call2(CPU_NOTIFY_METHOD, uid, dev_chk));
+> > > +                    /* clear local device-check event sent flag */
+> > > +                    aml_append(if_devchk, aml_store(one, dvchk_evt))=
+;
+> > > +                    aml_append(if_devchk, aml_store(one, has_event))=
+;
+> > > +                }
+> > > +                aml_append(while_ctx, if_devchk);
+> > > +
+> > > +                /*
+> > > +                 * send CPU eject-request event to OSPM to gracefull=
+y handle
+> > > +                 * OSPM related tasks running on this CPU
+> > > +                 */
+> > > +                Aml *else_ctx =3D aml_else();
+> > > +                Aml *if_ejrq =3D aml_if(aml_equal(ejrq_evt, one));
+> > > +                {
+> > > +                    aml_append(if_ejrq,
+> > > +                        aml_call2(CPU_NOTIFY_METHOD, uid, eject_req)=
+);
+> > > +                    /* clear local eject-request event sent flag */
+> > > +                    aml_append(if_ejrq, aml_store(one, ejrq_evt));
+> > > +                    aml_append(if_ejrq, aml_store(one, has_event));
+> > > +                }
+> > > +                aml_append(else_ctx, if_ejrq);
+> > > +                aml_append(while_ctx, else_ctx);
+> > > +
+> > > +                /* Increment UID */
+> > > +                aml_append(while_ctx, aml_increment(uid));
+> > > +            }
+> > > +            aml_append(method, while_ctx);
+> > > +
+> > > +            /* Release cpu lock */
+> > > +            aml_append(method, aml_release(ctrl_lock));
+> > > +        }
+> > > +        aml_append(cpus_dev, method);
+> > > +
+> > > +        method =3D aml_method(CPU_OST_METHOD, 4, AML_SERIALIZED);
+> > > +        {
+> > > +            Aml *uid =3D aml_arg(0);
+> > > +            Aml *ev_cmd =3D aml_int(ACPI_OST_EVENT_CMD);
+> > > +            Aml *st_cmd =3D aml_int(ACPI_OST_STATUS_CMD);
+> > > +
+> > > +            aml_append(method, aml_acquire(ctrl_lock, 0xFFFF));
+> > > +            aml_append(method, aml_store(uid, cpu_selector));
+> > > +            aml_append(method, aml_store(ev_cmd, cpu_cmd));
+> > > +            aml_append(method, aml_store(aml_arg(1), cpu_data));
+> > > +            aml_append(method, aml_store(st_cmd, cpu_cmd));
+> > > +            aml_append(method, aml_store(aml_arg(2), cpu_data));
+> > > +            aml_append(method, aml_release(ctrl_lock));
+> > > +        }
+> > > +        aml_append(cpus_dev, method);
+> > > +
+> > > +        /* build Processor object for each processor */
+> > > +        for (i =3D 0; i < arch_ids->len; i++) {
+> > > +            Aml *dev;
+> > > +            Aml *uid =3D aml_int(i);
+> > > +
+> > > +            dev =3D aml_device(CPU_NAME_FMT, i);
+> > > +            aml_append(dev, aml_name_decl("_HID", =20
+> > aml_string("ACPI0007"))); =20
+> > > +            aml_append(dev, aml_name_decl("_UID", uid));
+> > > +
+> > > +            method =3D aml_method("_STA", 0, AML_SERIALIZED);
+> > > +            aml_append(method, aml_return(aml_call1(CPU_STS_METHOD, =
+=20
+> > uid))); =20
+> > > +            aml_append(dev, method);
+> > > +
+> > > +            if (CPU(arch_ids->cpus[i].cpu) !=3D first_cpu) {
+> > > +                method =3D aml_method("_EJ0", 1, AML_NOTSERIALIZED);
+> > > +                aml_append(method, aml_call1(CPU_EJECT_METHOD, uid))=
+;
+> > > +                aml_append(dev, method);
+> > > +            }
+> > > +
+> > > +            method =3D aml_method("_OST", 3, AML_SERIALIZED);
+> > > +            aml_append(method,
+> > > +                aml_call4(CPU_OST_METHOD, uid, aml_arg(0),
+> > > +                          aml_arg(1), aml_arg(2))
+> > > +            );
+> > > +            aml_append(dev, method);
+> > > +            aml_append(cpus_dev, dev);
+> > > +        }
+> > > +    }
+> > > +    aml_append(sb_scope, cpus_dev);
+> > > +    aml_append(table, sb_scope);
+> > > +
+> > > +    method =3D aml_method(event_handler_method, 0, =20
+> > AML_NOTSERIALIZED); =20
+> > > +    aml_append(method, aml_call0("\\_SB.CPUS." CPU_SCAN_METHOD));
+> > > +    aml_append(table, method);
+> > > +}
+> > > diff --git a/hw/acpi/meson.build b/hw/acpi/meson.build index
+> > > 73f02b9691..6d83396ab4 100644
+> > > --- a/hw/acpi/meson.build
+> > > +++ b/hw/acpi/meson.build
+> > > @@ -8,6 +8,8 @@ acpi_ss.add(files(
+> > >  ))
+> > >  acpi_ss.add(when: 'CONFIG_ACPI_CPU_HOTPLUG', if_true: files('cpu.c',
+> > > 'cpu_hotplug.c'))
+> > >  acpi_ss.add(when: 'CONFIG_ACPI_CPU_HOTPLUG', if_false:
+> > > files('acpi-cpu-hotplug-stub.c'))
+> > > +acpi_ss.add(when: 'CONFIG_ACPI_CPU_OSPM_INTERFACE', if_true:
+> > > +files('cpu_ospm_interface.c'))
+> > > +acpi_ss.add(when: 'CONFIG_ACPI_CPU_OSPM_INTERFACE', if_false:
+> > > +files('acpi-cpu-ospm-interface-stub.c'))
+> > >  acpi_ss.add(when: 'CONFIG_ACPI_MEMORY_HOTPLUG', if_true:
+> > > files('memory_hotplug.c'))
+> > >  acpi_ss.add(when: 'CONFIG_ACPI_MEMORY_HOTPLUG', if_false:
+> > > files('acpi-mem-hotplug-stub.c'))
+> > >  acpi_ss.add(when: 'CONFIG_ACPI_NVDIMM', if_true: files('nvdimm.c'))
+> > > diff --git a/hw/acpi/trace-events b/hw/acpi/trace-events index
+> > > edc93e703c..c0ecbdd48f 100644
+> > > --- a/hw/acpi/trace-events
+> > > +++ b/hw/acpi/trace-events
+> > > @@ -40,6 +40,23 @@ cpuhp_acpi_fw_remove_cpu(uint32_t idx) =20
+> > "0x%"PRIx32 =20
+> > > cpuhp_acpi_write_ost_ev(uint32_t slot, uint32_t ev) "idx[0x%"PRIx32"]
+> > > OST EVENT: 0x%"PRIx32  cpuhp_acpi_write_ost_status(uint32_t slot,
+> > > uint32_t st) "idx[0x%"PRIx32"] OST STATUS: 0x%"PRIx32
+> > >
+> > > +#cpu_ospm_interface.c
+> > > +acpi_cpuos_if_invalid_idx_selected(uint32_t idx) "selector =20
+> > idx[0x%"PRIx32"]" =20
+> > > +acpi_cpuos_if_read_flags(uint32_t idx, uint8_t flags) "cpu
+> > > +idx[0x%"PRIx32"] flags: 0x%"PRIx8 acpi_cpuos_if_write_idx(uint32_t
+> > > +idx) "set active cpu idx: 0x%"PRIx32 acpi_cpuos_if_write_cmd(uint32_=
+t
+> > > +idx, uint8_t cmd) "cpu idx[0x%"PRIx32"] cmd: 0x%"PRIx8
+> > > +acpi_cpuos_if_write_invalid_cmd(uint32_t idx, uint8_t cmd) "cpu
+> > > +idx[0x%"PRIx32"] invalid cmd: 0x%"PRIx8
+> > > +acpi_cpuos_if_write_invalid_offset(uint32_t idx, uint64_t addr) "cpu
+> > > +idx[0x%"PRIx32"] invalid offset: 0x%"PRIx64 =20
+> > acpi_cpuos_if_read_cmd_data(uint32_t idx, uint32_t data) "cpu
+> > idx[0x%"PRIx32"] data: 0x%"PRIx32
+> > acpi_cpuos_if_read_invalid_cmd_data(uint32_t idx, uint8_t cmd) "cpu
+> > idx[0x%"PRIx32"] invalid cmd: 0x%"PRIx8
+> > acpi_cpuos_if_cpu_has_events(uint32_t idx, bool devchk, bool ejrqst) "c=
+pu
+> > idx[0x%"PRIx32"] device-check pending: %d, eject-request pending: %d" =
+=20
+> > > +acpi_cpuos_if_clear_devchk_evt(uint32_t idx) "cpu idx[0x%"PRIx32"]"
+> > > +acpi_cpuos_if_clear_ejrqst_evt(uint32_t idx) "cpu idx[0x%"PRIx32"]"
+> > > +acpi_cpuos_if_ejecting_invalid_cpu(uint32_t idx) "invalid cpu =20
+> > idx[0x%"PRIx32"]" =20
+> > > +acpi_cpuos_if_ejecting_cpu(uint32_t idx) "cpu idx[0x%"PRIx32"]"
+> > > +acpi_cpuos_if_write_ost_ev(uint32_t idx, uint32_t ev) "cpu
+> > > +idx[0x%"PRIx32"] OST Event: 0x%"PRIx32
+> > > +acpi_cpuos_if_write_ost_status(uint32_t idx, uint32_t st) "cpu
+> > > +idx[0x%"PRIx32"] OST Status: 0x%"PRIx32
+> > > +
+> > >  # pcihp.c
+> > >  acpi_pci_eject_slot(unsigned bsel, unsigned slot) "bsel: %u slot: %u=
+"
+> > >  acpi_pci_unplug(int bsel, int slot) "bsel: %d slot: %d"
+> > > diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig index
+> > > 2aa4b5d778..c9991e00c7 100644
+> > > --- a/hw/arm/Kconfig
+> > > +++ b/hw/arm/Kconfig
+> > > @@ -39,6 +39,7 @@ config ARM_VIRT
+> > >      select VIRTIO_MEM_SUPPORTED
+> > >      select ACPI_CXL
+> > >      select ACPI_HMAT
+> > > +    select ACPI_CPU_OSPM_INTERFACE
+> > >
+> > >  config CUBIEBOARD
+> > >      bool
+> > > diff --git a/include/hw/acpi/cpu_ospm_interface.h
+> > > b/include/hw/acpi/cpu_ospm_interface.h
+> > > new file mode 100644
+> > > index 0000000000..5dda327a34
+> > > --- /dev/null
+> > > +++ b/include/hw/acpi/cpu_ospm_interface.h
+> > > @@ -0,0 +1,78 @@
+> > > +/*
+> > > + * ACPI CPU OSPM Interface Handling.
+> > > + *
+> > > + * Copyright (c) 2025 Huawei Technologies R&D (UK) Ltd.
+> > > + *
+> > > + * Author: Salil Mehta <salil.mehta@huawei.com>
+> > > + *
+> > > + * SPDX-License-Identifier: GPL-2.0-or-later
+> > > + *
+> > > + * This program is free software; you can redistribute it and/or
+> > > +modify
+> > > + * it under the terms of the GNU General Public License as published
+> > > +by
+> > > + * the ree Software Foundation; either version 2 of the License, or
+> > > + * (at your option) any later version.
+> > > + */
+> > > +#ifndef CPU_OSPM_INTERFACE_H
+> > > +#define CPU_OSPM_INTERFACE_H
+> > > +
+> > > +#include "qapi/qapi-types-acpi.h"
+> > > +#include "hw/qdev-core.h"
+> > > +#include "hw/acpi/acpi.h"
+> > > +#include "hw/acpi/aml-build.h"
+> > > +#include "hw/boards.h"
+> > > +
+> > > +/**
+> > > + * Total size (in bytes) of the ACPI CPU OSPM Interface MMIO region.
+> > > + *
+> > > + * This region contains control and status fields such as CPU
+> > > +selector,
+> > > + * flags, command register, and data register. It must exactly match
+> > > +the
+> > > + * layout defined in the AML code and the memory region =20
+> > implementation. =20
+> > > + *
+> > > + * Any mismatch between this definition and the AML layout may resul=
+t
+> > > +in
+> > > + * runtime errors or build-time assertion failures (e.g.,
+> > > +_Static_assert),
+> > > + * breaking correct device emulation and guest OS coordination.
+> > > + */
+> > > +#define ACPI_CPU_OSPM_IF_REG_LEN 16
+> > > +
+> > > +typedef struct  {
+> > > +    CPUState *cpu;
+> > > +    uint64_t arch_id;
+> > > +    bool devchk_pending; /* device-check pending */
+> > > +    bool ejrqst_pending; /* eject-request pending */
+> > > +    uint32_t ost_event;
+> > > +    uint32_t ost_status;
+> > > +} AcpiCpuOspmStateStatus;
+> > > +
+> > > +typedef struct AcpiCpuOspmState {
+> > > +    DeviceState *acpi_dev;
+> > > +    MemoryRegion ctrl_reg;
+> > > +    uint32_t selector;
+> > > +    uint8_t command;
+> > > +    uint32_t dev_count;
+> > > +    AcpiCpuOspmStateStatus *devs;
+> > > +} AcpiCpuOspmState;
+> > > +
+> > > +void acpi_cpu_device_check_cb(AcpiCpuOspmState *cpu_st, DeviceState =
+=20
+> > *dev, =20
+> > > +                              uint32_t event_st, Error **errp);
+> > > +
+> > > +void acpi_cpu_eject_request_cb(AcpiCpuOspmState *cpu_st, =20
+> > DeviceState *dev, =20
+> > > +                               uint32_t event_st, Error **errp);
+> > > +
+> > > +void acpi_cpu_eject_cb(AcpiCpuOspmState *cpu_st, DeviceState *dev,
+> > > +                       Error **errp);
+> > > +
+> > > +void acpi_cpu_ospm_state_interface_init(MemoryRegion *as, Object =20
+> > *owner, =20
+> > > +                                        AcpiCpuOspmState *state,
+> > > +                                        hwaddr base_addr);
+> > > +
+> > > +void acpi_build_cpus_aml(Aml *table, hwaddr base_addr, const char =
+=20
+> > *root, =20
+> > > +                         const char *event_handler_method);
+> > > +
+> > > +void acpi_cpus_ospm_status(AcpiCpuOspmState *cpu_st,
+> > > +                           ACPIOSTInfoList ***list);
+> > > +
+> > > +extern const VMStateDescription vmstate_cpu_ospm_state; #define
+> > > +VMSTATE_CPU_OSPM_STATE(cpuospm, state) \
+> > > +    VMSTATE_STRUCT(cpuospm, state, 1, \
+> > > +                   vmstate_cpu_ospm_state, AcpiCpuOspmState) #endif
+> > > +/* CPU_OSPM_INTERFACE_H */ =20
+> >  =20
+>=20
 
 

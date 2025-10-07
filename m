@@ -4,82 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE1CCCCA470
-	for <qemu-arm@archiver.kernel.org>; Tue,  7 Oct 2025 14:36:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA824CCA476
+	for <qemu-arm@archiver.kernel.org>; Tue,  7 Oct 2025 14:48:44 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v68n3-0007Gt-Ar; Tue, 07 Oct 2025 10:35:45 -0400
+	id 1v68yy-0001p6-T4; Tue, 07 Oct 2025 10:48:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1v68n1-0007BX-2r
- for qemu-arm@nongnu.org; Tue, 07 Oct 2025 10:35:43 -0400
-Received: from mail-yx1-xb133.google.com ([2607:f8b0:4864:20::b133])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v68yx-0001oZ-Da
+ for qemu-arm@nongnu.org; Tue, 07 Oct 2025 10:48:03 -0400
+Received: from mail-lj1-x229.google.com ([2a00:1450:4864:20::229])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1v68ms-0005zc-Pg
- for qemu-arm@nongnu.org; Tue, 07 Oct 2025 10:35:42 -0400
-Received: by mail-yx1-xb133.google.com with SMTP id
- 956f58d0204a3-637dc2292cfso6935440d50.3
- for <qemu-arm@nongnu.org>; Tue, 07 Oct 2025 07:35:31 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v68yt-0006wM-4E
+ for qemu-arm@nongnu.org; Tue, 07 Oct 2025 10:48:02 -0400
+Received: by mail-lj1-x229.google.com with SMTP id
+ 38308e7fff4ca-3717780ea70so69254011fa.1
+ for <qemu-arm@nongnu.org>; Tue, 07 Oct 2025 07:47:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1759847730; x=1760452530; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=l817tQ0CAOwMh1yGmq7kpTPFN6crwASh92hQQUobZVc=;
- b=XEFJZ3K0SBA1cd8mgdaPt8jteachicwDWRcs9sI9Knz1TqPT3CW1g+JjjetnW2qZRZ
- iUb2XbkmbwkUPUm80l1FsBKG9miIsLEBrttwoyt0s69/gtefuoUU3YhDsBVSTA5ObSPe
- S2TRGVFicmoSn8Dg5n0+8P8MP7teJQpQ00zI1SQeXWGABSIbr98VhdeI6zDKvBp/7dA6
- X8NLDtw2QZViiaOfV2h4lHPnBPMyP7XlmzXvFD6TVY6nTWsART8QUApUcSXpOY1L/00Y
- 3zc8F0XQSv7qPgS3jgMI7Zx4zz7HdnLX/hYeLyKoy+BE8HCOxC5jEnzbw6XezWrmajZW
- MlkQ==
+ d=linaro.org; s=google; t=1759848471; x=1760453271; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:references:cc:to:from
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=BAsFBM0GpeFyw+RJe82sHa80SQfKdMwywvxBYVJ69mg=;
+ b=dC/2/KlXtoK4CA4TWwsTG4Zl7+GoXsETCD9b3zgxRBlxg3Pv2zSw7zxKu3kYkMYqgF
+ P9zluoqwXhOAQhU1HdD1prg6m7k642aB8E67e/7Jhd/IEYCu0Vp5Dr3jhcooVFy0Z5Ie
+ YzlrazoRVv5cm/HZzeRmxG7Y5VItr2BWaJJZmzrCxdUQwJVzUTXsqCVoPQ/HTVlnDhIL
+ nOfLk/OhK2L/o47R/43V29tkuxsXJmxMofZjdlGL4tN8o15igPnRQHJwl01mPaqOS7em
+ 6+4K7e/IE2xgTFJtOLcZdde3WWOIpFxiS94vbxREpang/KATYGjCp7xRGgF7sX8G6/ys
+ gGLg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759847730; x=1760452530;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=l817tQ0CAOwMh1yGmq7kpTPFN6crwASh92hQQUobZVc=;
- b=LVdMDZlWHj8XrBIGjigAAtiUJ7g5I+YjF8B6IMBQDh94XEdTeRPTfjUajV1srnBPvo
- vtNLcG5kH6F2ORkc+18pkPHZ/73sFpiCpl1vw1QfSUUk2ckziLp+dZE7+OnRe0RlGya9
- hvW5gcPmEsfFRbPczJMW/RDF/rC4qJd1wZd2Ag0uBKR7J0/mKKNuqw2cJ7Kl7IhnXOgr
- jSqEB4VJC75fQVbcSJMLZ+Q8k9ClhNru/0Lzx7ACvWiInNrG+94SH8Kot/fxOGyB9M82
- IPJS03EZHevI5YOc39L7IpCUAAnq80CJq4QHYPSr6emfHLTLoIesil1rtJYqWMjupcu6
- Y6zw==
+ d=1e100.net; s=20230601; t=1759848471; x=1760453271;
+ h=content-transfer-encoding:in-reply-to:references:cc:to:from
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=BAsFBM0GpeFyw+RJe82sHa80SQfKdMwywvxBYVJ69mg=;
+ b=XhiOzPiolcwr/7WH+2RYQl0/3kukQmVw+P0IJScygV1hdsxibOwBpj7wcW8vQ8K1eF
+ snRgZwAEzHLtykXujYt9v079ARzyvwFE2mGTC6n2s1jbajVOgTA4ahzD0uOOQnYfTCuY
+ o16/p466Iy1IK+prvkBa7GlJBLvic5OwSyzFKPb3Gc1ytNGqNj8KqY6CJVTZc0bzCcuU
+ 2ptZN7lk+BqpWAwFW4nRyoPKh9Psz/kQFzdWo6mws+UB9ZSbXzKquUU1ir/qqGwFPLlw
+ kha9YXTZpexk4pIB6L50CORiNKXxyZePA/hVr5f0ldj0iyCt5mf4DC8fe3soDJuvDb68
+ WpaQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXNr5MglRdgz2QfzTOwlZJ8rsmrcb17YqEKu4y4OouYS+7awitX45W5mZ5EFolYVWHFRQG9PN8gBQ==@nongnu.org
-X-Gm-Message-State: AOJu0YzG7+3UosRO3yB4WQeyxZvWEf0YxaUDi3xQRq/d7UJivQ+vSDJC
- 7DC3T2twW14Yx6LJVX1VOGXBDmVd4JEjqkZ54WlSFq8qbK0ez6ZB57yfP8V3vTsepmUSxA1d7M4
- coOo38BF7TA4345DO8ktvlWk0Q2sR4GJYcabCCRgYnYj4ovnbhj67
-X-Gm-Gg: ASbGnctTm92CJfK8aatq4vxfqKqdsAdB2rPCgF5QB3WNCs5uHmp7GWL/yMESEz2nAFt
- EDGF6q85YkSNAQpZ7CAzm299FQzddpvWobyM3LpSJfO+YMxxpdDDNLlRwj1KNXLaVj0EgBJFoKv
- 21nC+10uG9hxKDkf5Xug0jA1wI88Le1b4xQclHfOER+iSrr4ldj40IaZ1Jhp+ZMKTnU69eduY0/
- Lvp2aUHFHnbC82TP0DtegoCpD8n9cKyhXEL
-X-Google-Smtp-Source: AGHT+IFUypfGJZrFx9+ilj7+5Wx0ivve6ifNZ6S3vwiCSAx5xYNgofLxnJbLr9wfojC3ciDIpBspEdH5hnjJchecucY=
-X-Received: by 2002:a05:690c:3383:b0:72f:d215:60a2 with SMTP id
- 00721157ae682-77f94591e37mr265330207b3.7.1759847729743; Tue, 07 Oct 2025
- 07:35:29 -0700 (PDT)
+ AJvYcCVYSFu6yyyhMg9OAWV01t86GwNZXD13KCeVjn/9ZHMQN/8kAUsExg+0YTFyiNRiwh3RVyzi+m4I7g==@nongnu.org
+X-Gm-Message-State: AOJu0Yymxc3SLpwvzTF1Jh06+0N7xDJim6sg2U3cpZqY8Ps/B5wTt0Mu
+ ggo6vXXnRwG254KGh+cu628sKWQyIDyCzj/tJaImiLi+yZKSB8N4nMNfHygoAMNLhhA=
+X-Gm-Gg: ASbGncty4g2bbHYh0pdrKi+DaC/p/x3rDSKe08tuf4iQbyAgncaiN/deIBgvcVKxvVg
+ waMIoV7OwDm8rwBpXEgnMUVy4+REchR9fKH1JaWJjZsVAH6c5Y5FsPo+fpuwyPgAoR3zBbORpOl
+ AWCsc1Gl9EE+T0xXW1JwrE88j18xKLLlplfxqqjvxIoT70w9ubbQ5AwU084tH/Pz8PGEgFopjpa
+ AP3ymj9dZzjsNE2x3zpESuM1aMGjs1nNNdAh6MF/urYdhe0PBG4xT39YTjQ/BbYGprZF64WU/2e
+ xI7K9bi7JJgJLdi/2Sm2c3VrUG5X1vrDU0Gw6k0kZGeKJe26gJRUJryUPTmvXz4r97qYWef0JtX
+ JQ0HwtHjt/o+f/UbDEE86PjmJbUi8z/tHhWmN7ZP/rpmkZXd2OOVhKil2jIe5fV+unr4jCbm1Zh
+ PHD0N/7wAWzBYUnDMHjQ==
+X-Google-Smtp-Source: AGHT+IGrWX3cax3BfRBxA1WGzIRfFhaHuEY3YmyZOw38GauZr+nXj6BEncYtMwMAMOuLDtmv0SiUdg==
+X-Received: by 2002:a2e:a817:0:b0:332:1de5:c513 with SMTP id
+ 38308e7fff4ca-374c36633cdmr41770881fa.4.1759848471107; 
+ Tue, 07 Oct 2025 07:47:51 -0700 (PDT)
+Received: from [192.168.69.221] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 38308e7fff4ca-375f39d509bsm10869701fa.12.2025.10.07.07.47.49
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 07 Oct 2025 07:47:50 -0700 (PDT)
+Message-ID: <a7e21714-e19f-4465-96f1-dc27bd484cdf@linaro.org>
+Date: Tue, 7 Oct 2025 16:47:49 +0200
 MIME-Version: 1.0
-References: <20251006001018.219756-1-gustavo.romero@linaro.org>
-In-Reply-To: <20251006001018.219756-1-gustavo.romero@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 7 Oct 2025 15:35:17 +0100
-X-Gm-Features: AS18NWDTXZhYUUWImV8sYrX00LSfivqjE_Q37Tx5cuqnUwkM9_kG3aUZ3gs0K0w
-Message-ID: <CAFEAcA-S-U0nsDcEV9cYyZiyShRLN_yuKkUD9XJ_GrOiGh3=-Q@mail.gmail.com>
-Subject: Re: [PATCH v10 0/3] target/arm: Add FEAT_MEC to max cpu
-To: Gustavo Romero <gustavo.romero@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, richard.henderson@linaro.org, 
- alex.bennee@linaro.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b133;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb133.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] hw/misc/max78000_gcr: Do not ignore address_space_write()
+ errors
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Jackson Donaldson <jcksn@duck.com>,
+ Jackson Donaldson <jackson88044@gmail.com>,
+ Markus Armbruster <armbru@redhat.com>,
+ "Daniel P. Berrange" <berrange@redhat.com>
+References: <20251007024006.43166-1-philmd@linaro.org>
+ <CAFEAcA_ytH+AwTr9LAZBP2nbSTod0FkfuexbewW=T7Pbb3nkmw@mail.gmail.com>
+ <66dbc389-4c83-4552-b447-87c0e1ada48a@linaro.org>
+In-Reply-To: <66dbc389-4c83-4552-b447-87c0e1ada48a@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::229;
+ envelope-from=philmd@linaro.org; helo=mail-lj1-x229.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -95,22 +109,38 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, 6 Oct 2025 at 01:10, Gustavo Romero <gustavo.romero@linaro.org> wrote:
->
-> This series adds support for all FEAT_MEC registers and cache
-> instructions to the Arm64 max CPU.
->
-> It includes the FEAT_MEC registers and cache maintenance instructions,
-> but does not modify the translation regimes to support the MECIDs, so no
-> encryption is supported yet. However, software stacks that rely on
-> FEAT_MEC should work properly at this point.
+On 7/10/25 15:48, Philippe Mathieu-Daudé wrote:
+> On 7/10/25 10:27, Peter Maydell wrote:
+>> On Tue, 7 Oct 2025 at 03:40, Philippe Mathieu-Daudé 
+>> <philmd@linaro.org> wrote:
+>>>
+>>> Convert max78000_gcr_ops[] to take MemTxAttrs and return MemTxResult,
+>>> allowing the write() path to return error on failure.
+>>
+>> *Should* it return a MEMTX error on this failure, though?
+>> This is a question of what the hardware behaviour is,
+>> and there's no reference to the datasheet in this
+>> commit message...
+> 
+> Right. Thanks!
 
-I only had minor tweaks to suggests to comments in patch 1,
-so I can take this via target-arm.next and make those changes
-there to save you having to do another respin. (I've just
-sent out a pullreq, so this will be for the next one, some
-time next week.)
+Looking at "MAX78000 User Guide (UG7456; Rev 1; 3/2024)",
+chapter "4.7.2 RAM Zeroization" and table "4-67: Memory
+Zeroize Control Register", IIUC failure can not happen.
 
-thanks
--- PMM
+Would that change be OK?
+
+-      address_space_write(&s->sram_as, SYSRAM0_START,
+-                          MEMTXATTRS_UNSPECIFIED, zero, 0x8000);
++      /* RAM Zeroization can not fail */
++      (void)address_space_write(&s->sram_as, SYSRAM0_START,
++                                MEMTXATTRS_UNSPECIFIED, zero, 0x8000);
+
+Otherwise, what would be the recommended way to express return value
+has to be ignored? Assertion doesn't seem right, since this is not a
+programming error.
+
+Thanks,
+
+Phil.
 

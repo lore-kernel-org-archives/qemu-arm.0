@@ -4,83 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8742CCA476
-	for <qemu-arm@archiver.kernel.org>; Tue,  7 Oct 2025 09:59:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 207A7CCA476
+	for <qemu-arm@archiver.kernel.org>; Tue,  7 Oct 2025 10:14:00 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v64TU-0002RQ-I2; Tue, 07 Oct 2025 05:59:16 -0400
+	id 1v64hM-0004b8-SD; Tue, 07 Oct 2025 06:13:36 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1v64TT-0002Qp-Ac
- for qemu-arm@nongnu.org; Tue, 07 Oct 2025 05:59:15 -0400
-Received: from mail-yx1-xb136.google.com ([2607:f8b0:4864:20::b136])
+ id 1v64hL-0004al-26
+ for qemu-arm@nongnu.org; Tue, 07 Oct 2025 06:13:35 -0400
+Received: from mail-yw1-x112e.google.com ([2607:f8b0:4864:20::112e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1v64TR-00044R-HJ
- for qemu-arm@nongnu.org; Tue, 07 Oct 2025 05:59:15 -0400
-Received: by mail-yx1-xb136.google.com with SMTP id
- 956f58d0204a3-635401a8f5aso6547990d50.1
- for <qemu-arm@nongnu.org>; Tue, 07 Oct 2025 02:59:12 -0700 (PDT)
+ id 1v64hJ-0005fD-Hu
+ for qemu-arm@nongnu.org; Tue, 07 Oct 2025 06:13:34 -0400
+Received: by mail-yw1-x112e.google.com with SMTP id
+ 00721157ae682-749399349ddso78083697b3.3
+ for <qemu-arm@nongnu.org>; Tue, 07 Oct 2025 03:13:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1759831151; x=1760435951; darn=nongnu.org;
+ d=linaro.org; s=google; t=1759832012; x=1760436812; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=0WTpUXsfNB67Yw901XWHeIgLb02rVsYQ1S5cu0Ru0to=;
- b=eyPq96grH4GIyjb9vFw3dOGkqS5zSOiHdsP3YgQVy5uvJw0wm02cqEdo6qVIUKX0+2
- J1i2axznrUK8eOnZT0BuzplmxhLkiSwDpCxEQLanHkRBuxtJb02eASapqY6GZ5W5unFR
- NAk/dLigoJF4o30nuLBo/h3hzrU/EWVquLfzrZ8YPU/gn6CMTxqmbZ3AChX0GPe/bi8S
- C1quXW574WFfGoscLCv0MglHszdrsbgh1BlFjewDgYp/quDqwaeUtQ48Zk5bSPptjTF4
- OD0nQd9xqVHRXEqfIUeNpHE0eD2TolsbYsG1uzqOoC/BULTAQVViU6NJ7no639nnylZs
- bxuQ==
+ bh=MU2SNYZpn/hA1jxyI/T3LhwbWp9Pf3dNlmcOfsZd9CM=;
+ b=ZiAQROiLzJxBc340AOh8TbhRu8iPKW3PcKmNVM9NWTPaSLuIwlnbnELBIoZX8fwfLq
+ G2ffM81gcGcH4Yhc+6hUJTqmOUaL5WpSf4tBb4jqFzqFeRIGhqkv74kNzXsHzVjnr6lq
+ 1ZJHsHB5a9Zl3o/O2PQ77EWe7kWG3ZczYb2QpKDP0BQ7ufM09vBuBtVQFjQWXNrq1OAN
+ 3iVUlnr9g08Zn4nGTiWajam8kSGcoF3FnsFDFnef3Q1iskUv0XLSo3SK/M0yozqGRcYG
+ k3+SoymwsYvSdpzVGl1068h3BIHuaL2kC3f2TvgS+05ltsr09hdt1a+OdodNZVlobUJH
+ b6cw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759831151; x=1760435951;
+ d=1e100.net; s=20230601; t=1759832012; x=1760436812;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=0WTpUXsfNB67Yw901XWHeIgLb02rVsYQ1S5cu0Ru0to=;
- b=tBBGnhYM7+xNtIXfgnUhBD3Ri0k8cbKVmDwZzeWFO+rtFhitaTFn4OvW0KX48i7orS
- iNzDsx7zy0yfP1P0g/PRupAewY+NJnz2eztOq5sI3/ObDOzdad4perFO99zH+xfwYB/V
- 3t0bPmNTBSpM3vjCYqUMBbrxlWX/sRHKALCTsnU5ZoL/a6kzawccALoeZD3WWbuKYJlk
- h89bxinSTPVMaf80kw+hA9IHT+RVn+k6fXBesvmJwlJ+A82IoCRNZis9fjRCKWZ8Bl8W
- sZb+yicma1qlVGB/1Pil7XqcEm5oVCXpbYcSnLvfe4e6NwNT5fbn0jG0fMmNVhNGC8aG
- 0EHQ==
+ bh=MU2SNYZpn/hA1jxyI/T3LhwbWp9Pf3dNlmcOfsZd9CM=;
+ b=pDAgmt9KHB9n5ItEUeJWkk61K75jVm+6Q3TZbTsJ1ZQ7SBCq6PMiRC04brtcNZbU78
+ 6YUI8sVcig+1DtA++U4EX3TouB0e1JistwPeCY77M6/spdtjPBOTggBjqe/5h458IpiO
+ 0r079qwh6/LHJYlx4B6bnKjXjKCWmrxJpILKaUv4EvlokbiucWdlx7ZwFkVocaFgUdzA
+ KJMssZtl4ITheYsTT42bnk5BendM8jLI2T5DWuFRx98BQuHxvgJ1R8jbtfhuInK4ztdV
+ 7or/2a4v7iWkL2g6qSlGAe7IbWB9eBQM3NocZ4Ra6moPgXeOzyko+DRM4MSkCk9YUZV4
+ 4QOA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCU3TJtBsdU5rkRSaSkhWsKpxJPnGcAl66mgMVl/HIQj9IqJK7rF0/TwVaVPjxeS8yIGk5gprQf6Ag==@nongnu.org
-X-Gm-Message-State: AOJu0YzwZo2wO5UidEx56NLF3fUQ7dZDwR1G3kPniwFk9Voy9blKF1z8
- AjERofUD0TqTMqdJZafNye3tfUcSdKOrQo32fp9aZnVtNwjO/p/fAFOr7C8b4LFAOlxh3uuRgMs
- bIxGnP4Lp/Z4ue6KNHBTtMQW+HP1d4tsdOAJtJkz8/Q==
-X-Gm-Gg: ASbGnctTiPY90leQLfRnWwtuTLIXnr5PkNyNoBLGqFeVrKDqohWKNPUF7RRX9KMRtUx
- ucmVhKqcKQ/4TDdCl6ei6X9zoSzBtoM8izZoKm/BQerGwxZJXOAQEoOspIwbeD1xtb6UII4Yp+X
- 1+dodVHUamXyJ/kdiqZXOWvj+bPKv+12uRQCHtAmrj4qQi6H670OLlEKnQ91bVP92c7MKoeoBEk
- 7RWgo9kJwhYB2+giw8wZzLvI3ZpFVQ1ZBIeT34WgcxtWI0=
-X-Google-Smtp-Source: AGHT+IFbvFz81EZ/nNMwG93LSz25meD+v3147ZLvDyMf2Ekxg9KJ9yPuWExTgtVJRxemIWAgLkQ9ARgDCQBlCngd/30=
-X-Received: by 2002:a53:bacf:0:b0:63a:6778:7437 with SMTP id
- 956f58d0204a3-63b9a0f33b6mr12306593d50.37.1759831150936; Tue, 07 Oct 2025
- 02:59:10 -0700 (PDT)
+ AJvYcCWPanFM4Zj4Prr7Q8pYf6CNls90amoFYRum8SJEz8FzalLd5gBqDorzlPYrF7nU34mP0gOdB0LDwA==@nongnu.org
+X-Gm-Message-State: AOJu0YwdrEOAmSoolZmoEC97UPt5R4B75Ji5Qbc2JbRLR9aitCmB0hgT
+ hrIZhv/Wd1dPJTkNOBARvEQiYR9DfR35+yQh34Dtmrae1u7ZoY9eUS3/CkqCkhhHrmY4iauOsMi
+ RUJ3525U3Ct6NqGjo8Sutpj/pzQW0eV3Som2/wA4zqNA6+j0E/K98
+X-Gm-Gg: ASbGncv85Wzhuh17BWo43EGE/d5RoPvvh4M/gTc1pCYq37ILYZ+76DPJ3sY6M0lC7dk
+ VSD23QDu8pm8iJO1f40SIjPBjJ9KbV2UjNkQteQWANwxjLttf+m1dwR2VLMViwKsP3g/TyIML2b
+ lWV2V72cYYVpncjcURzAcVhK5FsO+IIqfQXzzxCXSSDqtta93cpGAxS1bXB+4HNnKWQEOa+V/CP
+ qFGR/kTfT6BjykFoDuW9TZLM6AA5fybSYJ+
+X-Google-Smtp-Source: AGHT+IGSyA7h4JkuIhXWF8AJj7jwP0nk0r0UGmxuI+FsGWY9MOTlbK3LBlq76PCz9ulHyv+hona9kf8bJ72o0Z1akXI=
+X-Received: by 2002:a53:c40d:0:b0:636:1fd9:1bc with SMTP id
+ 956f58d0204a3-63b9a060cbbmr9929473d50.8.1759832012052; Tue, 07 Oct 2025
+ 03:13:32 -0700 (PDT)
 MIME-Version: 1.0
 References: <20251003170800.997167-1-richard.henderson@linaro.org>
- <20251003170800.997167-37-richard.henderson@linaro.org>
-In-Reply-To: <20251003170800.997167-37-richard.henderson@linaro.org>
+ <20251003170800.997167-39-richard.henderson@linaro.org>
+In-Reply-To: <20251003170800.997167-39-richard.henderson@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 7 Oct 2025 10:58:59 +0100
-X-Gm-Features: AS18NWCf_5dg4llJU_-tX4IZ_VmPCrjZA8GFHcw9-uLH7FADt6UzpeWPiHpWym4
-Message-ID: <CAFEAcA8ZPaEboGDjBhkEENPP5EUW=-TbXRCaoKo9PqM04_ggbw@mail.gmail.com>
-Subject: Re: [PATCH v6 36/73] target/arm: Expand pstate to 64 bits
+Date: Tue, 7 Oct 2025 11:13:20 +0100
+X-Gm-Features: AS18NWBlNgrnsKg8CRJZ0w1WHOOTpWO9DgSuUWsSpP6nqVKKYYwH08v0KfkuOss
+Message-ID: <CAFEAcA_7iEN6VqXW=urCG6=wB2=Xgt1WMp0yxpJnd_34hddL2w@mail.gmail.com>
+Subject: Re: [PATCH v6 38/73] target/arm: Add arm_hcr_el2_nvx_eff
 To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
- Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b136;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb136.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -96,24 +95,13 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, 3 Oct 2025 at 18:25, Richard Henderson
+On Fri, 3 Oct 2025 at 18:13, Richard Henderson
 <richard.henderson@linaro.org> wrote:
 >
-> The ARM now defines 36 bits in SPSR_ELx in aarch64 mode, so
-> it's time to bite the bullet and extend PSTATE to match.
+> Implement the pseudocode function EffectiveHCR_EL2_NVx.
 >
-> Most changes are straightforward, adjusting printf formats,
-> changing local variable types.  More complex is migration,
-> where to maintain backward compatibility a new pstate64
-> record is introduced, and only when one of the extensions
-> that sets bits 32-35 are active.
->
-> The fate of gdbstub is left undecided for the moment.
->
-> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
-
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 

@@ -4,82 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D178CCA470
-	for <qemu-arm@archiver.kernel.org>; Tue,  7 Oct 2025 14:34:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE1CCCCA470
+	for <qemu-arm@archiver.kernel.org>; Tue,  7 Oct 2025 14:36:13 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v68mC-0006D5-9w; Tue, 07 Oct 2025 10:34:52 -0400
+	id 1v68n3-0007Gt-Ar; Tue, 07 Oct 2025 10:35:45 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1v68lw-000611-C0
- for qemu-arm@nongnu.org; Tue, 07 Oct 2025 10:34:37 -0400
-Received: from mail-yx1-xb12c.google.com ([2607:f8b0:4864:20::b12c])
+ id 1v68n1-0007BX-2r
+ for qemu-arm@nongnu.org; Tue, 07 Oct 2025 10:35:43 -0400
+Received: from mail-yx1-xb133.google.com ([2607:f8b0:4864:20::b133])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1v68lk-0005c4-G8
- for qemu-arm@nongnu.org; Tue, 07 Oct 2025 10:34:36 -0400
-Received: by mail-yx1-xb12c.google.com with SMTP id
- 956f58d0204a3-6360397e8c7so7299350d50.0
- for <qemu-arm@nongnu.org>; Tue, 07 Oct 2025 07:34:21 -0700 (PDT)
+ id 1v68ms-0005zc-Pg
+ for qemu-arm@nongnu.org; Tue, 07 Oct 2025 10:35:42 -0400
+Received: by mail-yx1-xb133.google.com with SMTP id
+ 956f58d0204a3-637dc2292cfso6935440d50.3
+ for <qemu-arm@nongnu.org>; Tue, 07 Oct 2025 07:35:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1759847660; x=1760452460; darn=nongnu.org;
+ d=linaro.org; s=google; t=1759847730; x=1760452530; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=up2pd2h+xw1eC4BsvbiSd4cik8lt2ycq2b2BMwznzo8=;
- b=V6q86VLqkzoicYiF4+KNAR44n1pG3xgZUszAtS2nDBIURyn/SJnjSgUAdNI5zCwwWY
- naMEhpOg1W+Fgp1Z2sEkunjggKdGZ5nQpcHzoylQKv8SNzK4RIG3bPTMCIg+iCvuI36D
- w6o8reBRvCgr1UJ5ptm8P7EvCzZ8p1n8mVxs0/xkBo8r8gblPbdM40VnQJaSUbj23+QJ
- RQO+IXCD3gwMnNJ3x3v2c3VKnPH+sgCRbJiwb5g1GW63o2H42LZYtJLtxDS1TC2FE4EI
- 0Tw1bR/p4x75xdkAmkz5om+DRNbu1h/Ecj4vFF1zpupS20WqCAhokij/K3NYXSAukVP6
- GCtA==
+ bh=l817tQ0CAOwMh1yGmq7kpTPFN6crwASh92hQQUobZVc=;
+ b=XEFJZ3K0SBA1cd8mgdaPt8jteachicwDWRcs9sI9Knz1TqPT3CW1g+JjjetnW2qZRZ
+ iUb2XbkmbwkUPUm80l1FsBKG9miIsLEBrttwoyt0s69/gtefuoUU3YhDsBVSTA5ObSPe
+ S2TRGVFicmoSn8Dg5n0+8P8MP7teJQpQ00zI1SQeXWGABSIbr98VhdeI6zDKvBp/7dA6
+ X8NLDtw2QZViiaOfV2h4lHPnBPMyP7XlmzXvFD6TVY6nTWsART8QUApUcSXpOY1L/00Y
+ 3zc8F0XQSv7qPgS3jgMI7Zx4zz7HdnLX/hYeLyKoy+BE8HCOxC5jEnzbw6XezWrmajZW
+ MlkQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759847660; x=1760452460;
+ d=1e100.net; s=20230601; t=1759847730; x=1760452530;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=up2pd2h+xw1eC4BsvbiSd4cik8lt2ycq2b2BMwznzo8=;
- b=vWppDKKJeM+tVDqV9TeSZinYjLhgimdLst8sE9ek4kVLquiInxR1TgY0Z1lGQTY/1/
- 9ivAzdUG7/MvFT4snXbUuKK+zUGNP7Omv79N6Eh+fmo38M0CMgBlRlJHEXjFw4vFhlnY
- pxlCanSsoeyCuT2wQILTLgwR+MGyCeT3BWs79BBHK93ISBi8565AMSNwNyxqwjSQoE4u
- c9mk7V610vRAwJhVDW1IWSwq2HT7k2qTKxyQ7nxdg9/I4j+1nExA99R4uOjTtbiMrPoP
- zewuzWioBB9WOKHIFDP3BXCZ/rJucE/fEx42mRl41DJ2nc/OtwrHhCth0fgrb9dQ774D
- I/ig==
+ bh=l817tQ0CAOwMh1yGmq7kpTPFN6crwASh92hQQUobZVc=;
+ b=LVdMDZlWHj8XrBIGjigAAtiUJ7g5I+YjF8B6IMBQDh94XEdTeRPTfjUajV1srnBPvo
+ vtNLcG5kH6F2ORkc+18pkPHZ/73sFpiCpl1vw1QfSUUk2ckziLp+dZE7+OnRe0RlGya9
+ hvW5gcPmEsfFRbPczJMW/RDF/rC4qJd1wZd2Ag0uBKR7J0/mKKNuqw2cJ7Kl7IhnXOgr
+ jSqEB4VJC75fQVbcSJMLZ+Q8k9ClhNru/0Lzx7ACvWiInNrG+94SH8Kot/fxOGyB9M82
+ IPJS03EZHevI5YOc39L7IpCUAAnq80CJq4QHYPSr6emfHLTLoIesil1rtJYqWMjupcu6
+ Y6zw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXATw17bk3/KwyW4wRVwwLpmuIRwTnC01LFqztPjCqvUaXuw/auQEKlVWV53KDZ58dfge8aGStwVQ==@nongnu.org
-X-Gm-Message-State: AOJu0YzB+KY77f9QZd+ZYIIWOuPcUspxbAYx3SNN67Nkwfx+/9gF0QAH
- fB1vrnDhhwhFkfMredyeOHeCZm5JX61YgYisOz2KFQptk9h4kbrMaHb/qQbrBc5BpwZb2AghJ8U
- H1TRIkCNW9xR9cAgOq7h6db1pOWpI3DcSm/uma6BeYQ==
-X-Gm-Gg: ASbGncuF/2gLQQ2sQMMrrTj0pALJuR28T4UrljQTmRXlEcqxgyrPaq10Xzn03TYBQ/O
- ehVUUUzyO0EeufnoiUvBcmBeKsXbE6aFyvSpLhgTVj8s8erXj/jM/VQr6QVM1fUDLtZD7d5LKoS
- wBMLa/6u+fNp4T1CmS6wJA8Uf+H5W/cMvKK7g5X1wh1Fk14+Hsbnge2oc2MRI1qVowxTryaWI8F
- Uejgu62W/yS3tFP4+zryJ3Wv9StSseqv2pqWV/fNaflCUs=
-X-Google-Smtp-Source: AGHT+IEus3RbHlNqq6rk6mGzCzdln51dHABWNqkN5+MtEJEwGR+B/kB8Tjg8+RnCAOA9eXK6t87ikfky0AND5yK7XOQ=
-X-Received: by 2002:a05:690e:1552:10b0:636:1fd9:d64c with SMTP id
- 956f58d0204a3-63b9a071c12mr12573769d50.8.1759847660445; Tue, 07 Oct 2025
- 07:34:20 -0700 (PDT)
+ AJvYcCXNr5MglRdgz2QfzTOwlZJ8rsmrcb17YqEKu4y4OouYS+7awitX45W5mZ5EFolYVWHFRQG9PN8gBQ==@nongnu.org
+X-Gm-Message-State: AOJu0YzG7+3UosRO3yB4WQeyxZvWEf0YxaUDi3xQRq/d7UJivQ+vSDJC
+ 7DC3T2twW14Yx6LJVX1VOGXBDmVd4JEjqkZ54WlSFq8qbK0ez6ZB57yfP8V3vTsepmUSxA1d7M4
+ coOo38BF7TA4345DO8ktvlWk0Q2sR4GJYcabCCRgYnYj4ovnbhj67
+X-Gm-Gg: ASbGnctTm92CJfK8aatq4vxfqKqdsAdB2rPCgF5QB3WNCs5uHmp7GWL/yMESEz2nAFt
+ EDGF6q85YkSNAQpZ7CAzm299FQzddpvWobyM3LpSJfO+YMxxpdDDNLlRwj1KNXLaVj0EgBJFoKv
+ 21nC+10uG9hxKDkf5Xug0jA1wI88Le1b4xQclHfOER+iSrr4ldj40IaZ1Jhp+ZMKTnU69eduY0/
+ Lvp2aUHFHnbC82TP0DtegoCpD8n9cKyhXEL
+X-Google-Smtp-Source: AGHT+IFUypfGJZrFx9+ilj7+5Wx0ivve6ifNZ6S3vwiCSAx5xYNgofLxnJbLr9wfojC3ciDIpBspEdH5hnjJchecucY=
+X-Received: by 2002:a05:690c:3383:b0:72f:d215:60a2 with SMTP id
+ 00721157ae682-77f94591e37mr265330207b3.7.1759847729743; Tue, 07 Oct 2025
+ 07:35:29 -0700 (PDT)
 MIME-Version: 1.0
 References: <20251006001018.219756-1-gustavo.romero@linaro.org>
- <20251006001018.219756-4-gustavo.romero@linaro.org>
-In-Reply-To: <20251006001018.219756-4-gustavo.romero@linaro.org>
+In-Reply-To: <20251006001018.219756-1-gustavo.romero@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 7 Oct 2025 15:34:09 +0100
-X-Gm-Features: AS18NWAblrMYWXxraQ7E94kBiphBp35BbAPRRhJJqYPBDjUQzkQQfH-4mzlT6rI
-Message-ID: <CAFEAcA_p-zJVmEGujPamQgecuoPENKG9ubi_0xAc42UCsMkYpA@mail.gmail.com>
-Subject: Re: [PATCH v10 3/3] target/arm: Enable FEAT_MEC in -cpu max
+Date: Tue, 7 Oct 2025 15:35:17 +0100
+X-Gm-Features: AS18NWDTXZhYUUWImV8sYrX00LSfivqjE_Q37Tx5cuqnUwkM9_kG3aUZ3gs0K0w
+Message-ID: <CAFEAcA-S-U0nsDcEV9cYyZiyShRLN_yuKkUD9XJ_GrOiGh3=-Q@mail.gmail.com>
+Subject: Re: [PATCH v10 0/3] target/arm: Add FEAT_MEC to max cpu
 To: Gustavo Romero <gustavo.romero@linaro.org>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, richard.henderson@linaro.org, 
  alex.bennee@linaro.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b12c;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12c.google.com
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
- DKIM_SIGNED=0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b133;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb133.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -97,25 +97,19 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On Mon, 6 Oct 2025 at 01:10, Gustavo Romero <gustavo.romero@linaro.org> wrote:
 >
-> Advertise FEAT_MEC in AA64MMFR3 ID register for the Arm64 cpu max as a
-> first step to fully support FEAT_MEC.
+> This series adds support for all FEAT_MEC registers and cache
+> instructions to the Arm64 max CPU.
 >
-> The FEAT_MEC is an extension to FEAT_RME that implements multiple
-> Memory Encryption Contexts (MEC) so the memory in a realm can be
-> encrypted and accessing it from the wrong encryption context is not
-> possible. An encryption context allow the selection of a memory
-> encryption engine.
->
-> At this point, no real memory encryption is supported, but software
-> stacks that rely on FEAT_MEC should work properly.
->
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-> Message-ID: <20250711140828.1714666-7-gustavo.romero@linaro.org>
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
-> ---
+> It includes the FEAT_MEC registers and cache maintenance instructions,
+> but does not modify the translation regimes to support the MECIDs, so no
+> encryption is supported yet. However, software stacks that rely on
+> FEAT_MEC should work properly at this point.
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+I only had minor tweaks to suggests to comments in patch 1,
+so I can take this via target-arm.next and make those changes
+there to save you having to do another respin. (I've just
+sent out a pullreq, so this will be for the next one, some
+time next week.)
 
 thanks
 -- PMM

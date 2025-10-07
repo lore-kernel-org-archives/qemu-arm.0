@@ -4,34 +4,34 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A27E2CCA476
-	for <qemu-arm@archiver.kernel.org>; Tue,  7 Oct 2025 20:19:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E234ACCA470
+	for <qemu-arm@archiver.kernel.org>; Tue,  7 Oct 2025 20:20:11 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v6E94-0004nl-M7; Tue, 07 Oct 2025 16:18:50 -0400
+	id 1v6E98-0004qQ-9L; Tue, 07 Oct 2025 16:18:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1v6E93-0004n4-1h
- for qemu-arm@nongnu.org; Tue, 07 Oct 2025 16:18:49 -0400
-Received: from p-east2-cluster4-host8-snip4-3.eps.apple.com ([57.103.78.244]
+ id 1v6E97-0004pM-Dh
+ for qemu-arm@nongnu.org; Tue, 07 Oct 2025 16:18:53 -0400
+Received: from p-east2-cluster4-host1-snip4-10.eps.apple.com ([57.103.78.161]
  helo=outbound.st.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1v6E90-0007Np-KO
- for qemu-arm@nongnu.org; Tue, 07 Oct 2025 16:18:48 -0400
+ id 1v6E95-0007Ob-TT
+ for qemu-arm@nongnu.org; Tue, 07 Oct 2025 16:18:53 -0400
 Received: from outbound.st.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-east-1a-10-percent-0 (Postfix) with ESMTPS id
- 06BFC180054D; Tue,  7 Oct 2025 20:18:41 +0000 (UTC)
+ 24E3F18016CC; Tue,  7 Oct 2025 20:18:49 +0000 (UTC)
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; bh=V+zJwX4L/DzvblDStAA8JGYXFzCokmls2vVKdItSBSo=;
- h=From:To:Subject:Date:Message-ID:Content-Type:MIME-Version:x-icloud-hme;
- b=NxWQ98E6ovHVVDrjqEjJUnduec/0udsllVbu7m68Mz7EooOaoKVQW29Xj8RzzIQWuqbWD+f0FKlptP3evlsf80hk/96rjsaiXd/CiDAK7nAKbOn32QipvVQB9cmr55quejDdJ1DYHkfeaYtSHnntVr/garKKBclu+sRai407uaotnWbPjuFhEr3OGuwAjCEHZZqc1iyy/jA6BWesXv2cAieiDBMlXyn0qNsOOQskaonXQ6o9vWFcSHEt4I4u9tvJh/RcPGKGrDnQxhZa2HyyiREsOO/O125Ok8//29bOESBAFn2j1BJWS2gm0TxMU0F0vKW/Jm+CLmyGTek6sW2XkQ==
+ s=sig1; bh=OSfJsyCDwAqS7oFBBDNRe2fV3jYPTUsP549HW/w547Y=;
+ h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
+ b=gj8kMHNmaVH7YcV2iB1Kvz54B4KzLgouWDqEMn/0B+LEvdUy25/VR8hzGoHCBTDtse0GpIlr12FrURTGCzbHgc9/cQcwZx1yd0sgGnZb24QIYtpmVdwwXAa77enRsCKFyYLJUr5CFhZnD2+MsKX4EXxVk/x2ESFLRj+LJT4KmTxBTokEFqqDzqkPLBjV5A8gxGuFCvHhQ4Fcn2YMPZHsq6eqqaPbnC9AAYegTSWRE7OWQmGqKFNLLBqpf4h5HUlIvWT3jG/vn5ZAzULthiZBeZeE2z6rpfJ8XkNjgjtguCvtE/Gc4+6qRk3RJHC6tL6DrApQqm3+Z71iQZBODg+65Q==
 mail-alias-created-date: 1752046281608
 Received: from localhost.localdomain (unknown [17.42.251.67])
  by p00-icloudmta-asmtp-us-east-1a-10-percent-0 (Postfix) with ESMTPSA id
- 92CF118001E0; Tue,  7 Oct 2025 20:18:40 +0000 (UTC)
+ 52C5D1800E99; Tue,  7 Oct 2025 20:18:47 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
@@ -39,37 +39,38 @@ Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  Mads Ynddal <mads@ynddal.dk>, Cameron Esfahani <dirty@apple.com>,
  Roman Bolshakov <rbolshakov@ddn.com>,
  Mohamed Mediouni <mohamed@unpredictable.fr>
-Subject: [RFC 0/4] vmapple: making it work on the latest macOS releaases and
- Apple M4
-Date: Tue,  7 Oct 2025 22:18:33 +0200
-Message-ID: <20251007201837.28992-1-mohamed@unpredictable.fr>
+Subject: [RFC 4/4] Revert "hw/arm: Do not build VMapple machine by default"
+Date: Tue,  7 Oct 2025 22:18:37 +0200
+Message-ID: <20251007201837.28992-5-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.50.1
-Content-Type: text/plain; charset="utf-8"
+In-Reply-To: <20251007201837.28992-1-mohamed@unpredictable.fr>
+References: <20251007201837.28992-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMDA3MDE1OSBTYWx0ZWRfX4Ujmz5LvGDpf
- m0KcrvKo6fekt12c2o+Fih3BDhUc2WcMfqia5pyfZfRYpSFsAzYQ6HRntcenPEPjS2Nt7yCs88E
- ZG6Z9Rrt2gpxd2ggnFRb+C153plsnHETQ7DlOtY2RxKo0JLMzY+GUSrzMk+ExEWntDTzzwico+M
- CI3etTXhHoQjmU7LIFzkBiZvMKiSu6QpkoctZQ5SuMKVnOm8asDuv70Vwav7PUUhX7ha9S6UGTt
- jxfbUxm9y8ilCr421za3MWluOqfcNCGIFv9J/Jh12SJVURLnZjeQBJM8Rk7z8D1ItXVpSFzJw=
-X-Proofpoint-GUID: RA5ay4XNHGQ-UpzO9p_yhspPjKa2XuLJ
-X-Proofpoint-ORIG-GUID: RA5ay4XNHGQ-UpzO9p_yhspPjKa2XuLJ
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMDA3MDE1OSBTYWx0ZWRfXz8Lcnf3pmn0h
+ b3xtaVPlAekeSJ6WoSIJXL3DQpW5Re8sCSz4RDRk30TGql7PxbGq3yqvaMkcXNxTTeGlaFAHt1I
+ S9KWx9p/yeaa5mXwTZpHKRP9t8a1i2pbrY/LiPsVbYR44DCEAmV6vUFjbNXNHP1+/PekX90h9Wv
+ JZD7CgIFuZYWlHURSeyC8uOlOr3C96T57aSYMPn7jsnpRDfcFsJSVN+XK1tIGFUohz0OSrvfCIt
+ nYcY8vWZYjzgn8JyFl+Rcr/rxwZrewqR2eH93BPTt/yCTN55HHXD+vLzS8DCoZqh74dRFUOwU=
+X-Proofpoint-GUID: LVkzgvITID59dIGjGnLrk4iEIQw_X8U-
+X-Proofpoint-ORIG-GUID: LVkzgvITID59dIGjGnLrk4iEIQw_X8U-
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1117,Hydra:6.1.9,FMLib:17.12.80.40
  definitions=2025-10-07_02,2025-10-06_01,2025-03-28_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
- bulkscore=0 spamscore=0 mlxlogscore=509 mlxscore=0 clxscore=1030 phishscore=0
- malwarescore=0 suspectscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.22.0-2506270000 definitions=main-2510070159
-Received-SPF: pass client-ip=57.103.78.244;
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
+ clxscore=1030 bulkscore=0 mlxlogscore=620 malwarescore=0 adultscore=0
+ suspectscore=0 mlxscore=0 phishscore=0 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.22.0-2506270000 definitions=main-2510070159
+Received-SPF: pass client-ip=57.103.78.161;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.st.icloud.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -85,25 +86,22 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-RFC as it's hacky code, especially for the Apple M4 support workaround part.
-Support for newer guest OSes isn't part of this series.
+This reverts commit 49551752e860f5e403cdacac11ee1d218141fd3d.
 
-Mohamed Mediouni (4):
-  hw: vmapple: include missing headers
-  hvf: arm64: add workaround for Apple M4 to run older macOS versions
-  vmapple: apple-gfx: make it work on the latest macOS release
-  Revert "hw/arm: Do not build VMapple machine by default"
+Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+---
+ configs/devices/aarch64-softmmu/default.mak | 1 -
+ 1 file changed, 1 deletion(-)
 
- accel/hvf/hvf-accel-ops.c                   |  4 +-
- configs/devices/aarch64-softmmu/default.mak |  1 -
- hw/display/apple-gfx-mmio.m                 | 56 +++++++++++-----
- hw/display/apple-gfx.h                      | 13 ++++
- hw/display/apple-gfx.m                      | 42 +++++++++++-
- hw/vmapple/vmapple.c                        |  2 +
- include/system/hvf_int.h                    |  4 ++
- target/arm/hvf/hvf.c                        | 71 +++++++++++++++++++++
- 8 files changed, 174 insertions(+), 19 deletions(-)
-
+diff --git a/configs/devices/aarch64-softmmu/default.mak b/configs/devices/aarch64-softmmu/default.mak
+index ad8028cfd4..93f4022ad6 100644
+--- a/configs/devices/aarch64-softmmu/default.mak
++++ b/configs/devices/aarch64-softmmu/default.mak
+@@ -9,4 +9,3 @@ include ../arm-softmmu/default.mak
+ # CONFIG_XLNX_VERSAL=n
+ # CONFIG_SBSA_REF=n
+ # CONFIG_NPCM8XX=n
+-CONFIG_VMAPPLE=n
 -- 
 2.50.1 (Apple Git-155)
 

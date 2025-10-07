@@ -4,75 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C509BCCA470
-	for <qemu-arm@archiver.kernel.org>; Tue,  7 Oct 2025 10:18:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD124CCA476
+	for <qemu-arm@archiver.kernel.org>; Tue,  7 Oct 2025 10:27:01 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v64ld-0007Bq-9n; Tue, 07 Oct 2025 06:18:01 -0400
+	id 1v64u9-0000am-0U; Tue, 07 Oct 2025 06:26:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1v64lb-0007BN-S9
- for qemu-arm@nongnu.org; Tue, 07 Oct 2025 06:17:59 -0400
-Received: from mail-yw1-x1136.google.com ([2607:f8b0:4864:20::1136])
+ id 1v64u7-0000aX-S0
+ for qemu-arm@nongnu.org; Tue, 07 Oct 2025 06:26:47 -0400
+Received: from mail-yw1-x112e.google.com ([2607:f8b0:4864:20::112e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1v64lZ-0006LU-Oe
- for qemu-arm@nongnu.org; Tue, 07 Oct 2025 06:17:59 -0400
-Received: by mail-yw1-x1136.google.com with SMTP id
- 00721157ae682-71d603b60cbso63523937b3.1
- for <qemu-arm@nongnu.org>; Tue, 07 Oct 2025 03:17:57 -0700 (PDT)
+ id 1v64u6-0007Oy-Dm
+ for qemu-arm@nongnu.org; Tue, 07 Oct 2025 06:26:47 -0400
+Received: by mail-yw1-x112e.google.com with SMTP id
+ 00721157ae682-72e565bf2f0so68239317b3.3
+ for <qemu-arm@nongnu.org>; Tue, 07 Oct 2025 03:26:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1759832276; x=1760437076; darn=nongnu.org;
+ d=linaro.org; s=google; t=1759832804; x=1760437604; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=OWQ+uwBNoEiqE5jydiMZXoo6byrxmjspieSK53RFY4Y=;
- b=jbO/vv1Cgk5RdjpAAmCGw0LxwS6Er1Ug2ErEV482ZuuTvo/iqAxErxHQOhn/2TAtBK
- JFbF52Ja7+8A1L4wmwbsS+7p+lyq2BdMFfQ8uQHzgOp10fUJOfx9taAfTWhT9pe3QA3U
- bmK0Q/RhUbVgQ8Glb0Pur+8Wc2+cQVKigDwLTbD1BeLIEnz2e2DMlM1zP5RuRpqDGAnE
- Pt3Xyh6ERakbkVDC81dNufUVukcQRfjHB3qk/HUXvLZGeJwANW8Vy6eqWMPZRJakwzH9
- SdAwL6SwEH98zTHZ6HEmHwJqC3m67s2bI9VTubdXihslPX/G1ImJIHrZ4rwuS4PmRKU+
- OFDQ==
+ bh=CJfBaHSeb2p+mhjbdkTcOnUg14vCHi5O+7cpMqX2D5w=;
+ b=ZzAFQa+VJVTm2V2+tRkTJ0eKVWX3ud3w2EpqukC7k83vYaVcCrrDHfSc3iVsrKnDOd
+ hbPB7fX/q1zErczfP79RLhMIK88OWIAmw8Y3yTFY4nmHsiVeFEY3kwBvPBygV2iF1NE4
+ g1iLoa9/8kb2tAFLtQLoECCcFAMcRp+CycRaWD+5lxbqvyX3zrLVYM4GqvpJMx9CO/0Y
+ 216JiUpNdPVxbXYRVjaq/uLfcrLtfGJF92/DouuR2JEsiPyPWolqpcJVuGZ0AgkeObMH
+ S+7Lzdh7n6YVA3aRwA9cQTzYORe7pHvZM+573Mh7lo9hTmjsYeFNnV5tpJcR1aH8dIyX
+ G4Nw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759832276; x=1760437076;
+ d=1e100.net; s=20230601; t=1759832804; x=1760437604;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=OWQ+uwBNoEiqE5jydiMZXoo6byrxmjspieSK53RFY4Y=;
- b=M8zSTJscmZ7yqvyt+LA1H10VET3LBd4Cf4J9z9o6JIdGXXm/sFoNwxlXMnMIH+wG8R
- vzlGqVa7H+7JXd7X1WCEvtxnCdlM9sALsXtwKBniY1xZqT40Nxz2ath+LD9gKOmBTOtL
- xa341VL1jdxX4DV/Q/h5bpB7LmHTdqmCTUjo+O+UGtzf2o0G7KANw89DbR8HxiI8sCKj
- xZUjikDzqrLO8Oqru9lHMg9ZpUNSBB319Wp+h2LmsMpFYyZRWQBjVrxg9tAXangQW1SJ
- yWKiOb17aLGNwMQQSK5VGw0R9MQa6y/8Xnuyd3NHOVNySyzNhNeYZuJ50xk2ngf28TLS
- onjw==
+ bh=CJfBaHSeb2p+mhjbdkTcOnUg14vCHi5O+7cpMqX2D5w=;
+ b=PLCt2GssmYMaq/ayeWJ+KEHLHgIXtIohWvfGvB5fYK6kVePDn1SV/lqDnutTBporqG
+ Ad88yWWw5MqqJMT5JPDQjRr6yKhm00U79xne4TxqOBYRtESNjoGiJ9oMhRuM9u19iZ8y
+ DzFF//TmXW8di3WsJPH4D8ZkrV2sZ8wAKbIsf771AjGBafDCYjLmAFLCYCa55iSh00RQ
+ 5iaEJ7SP8e3+tEGgVPzUtl55wU19UhLBcVWqX7yDwW6qFGlaPgoitOyZl2pSg0C/FsPo
+ nmMqY0U1sKP60JRmWZOxUlJmeovlFEMceMzGurjOV7k3sLGZhuI6fl2k2DOkIatUqUNP
+ X3TQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCU+xbFtmtcNgJDyGd8LKLUhdf+lM+l3nj1i7qJW8CsGYw3YNXcMfQd6OFgt/yXyohYT5WZlKXziVQ==@nongnu.org
-X-Gm-Message-State: AOJu0YxeB68v9//5cO3RE/YuEHv63tWVD93g3s+mCAwOBT9+1+62y88K
- FsH19yRr3OlxrEmLNVxdf3sgm8SSXM8/6AqsKyeYlELT1sSXIirHtZfduU6c86bSVFiCNb8+vbg
- iwui8vcZt1SMazL/Iw2D9T5SZrgU5qULbZWlK1Ac2Jw==
-X-Gm-Gg: ASbGncttZdeqh1xVhDt5P2X6naB00lg3dclmRZpqRnVHabihPa1r6cIFywQWDq7vcrO
- pzoiQN9QMoadzLKiMSSV6EbrwrriqrmWKUh8zFXBhtQqww5bQ3/Mb69c1a1NaJFheNQ3IOEy36e
- X3ZonkVW6cjgZU0yo40u3arQG6dsbCLGQlS1kvRGHCIcrUzpY9SbuKl/INwuILXf8a1kKhG7UXo
- aT4BsxxGn7Xj0NuOp7QknIIT6fsb1O1xKND
-X-Google-Smtp-Source: AGHT+IFifdlt9WqMCVFS//UYX3C0o2Z2i3NmyrDSOxVPxxQEIcW7cM2mSvcd669tQzzGxxVSx5B8dUvYDiXfgPluQfk=
-X-Received: by 2002:a05:690e:d56:b0:635:4ecc:fc22 with SMTP id
- 956f58d0204a3-63b9a0f2bf2mr16398397d50.42.1759832276175; Tue, 07 Oct 2025
- 03:17:56 -0700 (PDT)
+ AJvYcCXta+SW3J0z/TH5tkfDrwY/BkKMKStJuuA6h1ouuxGS4sMmn9h4tkrCnPVoem+mpANB13xWl84XtQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yx0ilyrVp8Go8WdyzWtVPblzcnv12lBEDOyZIIuvPgDsP04CI3I
+ Jgt0v02p4IjJCjrtA/nmXk52ixaT6u8GWV1d9LPJWYOvdDfGhseKuWJ8P4L3HaHRlPZB1O6THjN
+ P5ICEoCl/6JhS9PWpK1Mnak75i0mWS6oxepWjY6c1bA==
+X-Gm-Gg: ASbGncttufSY4nhF69NzYywRHgC0XpBCIk4IMAp0B309dnJP3X7dGgKdNOWvhonu6Sn
+ HrPl9a7Aaa6zMhXRPurhhXxFxOVrljx/WBS8kZNP+IwQGJvke2HsjbO6GFwoJfvjej9zE4OWVZi
+ njYWxzJW/2U+P3z+5mbR7w06sEP7Y+mf9yYc3rNMebjZkShcTKI/TkII7hYakPIq7O+Fjn/rEhb
+ 5Ub+N+KF2YGTnN6Dp1y7Pu7n7lYgyty8DyT
+X-Google-Smtp-Source: AGHT+IGjAR7oZm3W0hSqPgdWw693/wZ6pY7k31QPSErGKdxfUD/dNifeSsKibkCCYdx/v3ytybXm131wigXfIeQFWxQ=
+X-Received: by 2002:a53:ba89:0:b0:633:acda:8c77 with SMTP id
+ 956f58d0204a3-63b9a0724b1mr12888115d50.22.1759832804327; Tue, 07 Oct 2025
+ 03:26:44 -0700 (PDT)
 MIME-Version: 1.0
-References: <20251003170800.997167-1-richard.henderson@linaro.org>
- <20251003170800.997167-49-richard.henderson@linaro.org>
-In-Reply-To: <20251003170800.997167-49-richard.henderson@linaro.org>
+References: <20250926001134.295547-1-richard.henderson@linaro.org>
+In-Reply-To: <20250926001134.295547-1-richard.henderson@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 7 Oct 2025 11:17:45 +0100
-X-Gm-Features: AS18NWANxCA7g8HysTG5baBRYrhKwrkNhdHNIx5w5YquhQMYfBcHwrMUc1_gmIw
-Message-ID: <CAFEAcA-WzWDem=u8w4sGB3aMHEBkUFo1PJztbwM+mqe+REzasA@mail.gmail.com>
-Subject: Re: [PATCH v6 48/73] target/arm: Implement GCSPUSHM
+Date: Tue, 7 Oct 2025 11:26:33 +0100
+X-Gm-Features: AS18NWDwmlEkC2hOyR9yw4giDNpAU3Vg4AK4Vrg94-BQWq-H3yYA7jaABKrp8zY
+Message-ID: <CAFEAcA_th5UvJOv+a8L6Ezw8Qc-isprCXXUuW3HVCXmYprc1Rw@mail.gmail.com>
+Subject: Re: [PATCH 00/10] target/arm: Implement FEAT_RME_GPC2
 To: Richard Henderson <richard.henderson@linaro.org>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1136;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1136.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -95,50 +94,18 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, 3 Oct 2025 at 18:16, Richard Henderson
+On Fri, 26 Sept 2025 at 01:12, Richard Henderson
 <richard.henderson@linaro.org> wrote:
 >
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->  target/arm/cpregs.h            |  3 +++
->  target/arm/cpregs-gcs.c        | 15 +++++++++++++++
->  target/arm/tcg/translate-a64.c | 29 +++++++++++++++++++++++++++++
->  3 files changed, 47 insertions(+)
-
-
->  void define_gcs_cpregs(ARMCPU *cpu)
-> diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-> index 38a1f51ed5..4fb73f821b 100644
-> --- a/target/arm/tcg/translate-a64.c
-> +++ b/target/arm/tcg/translate-a64.c
-> @@ -26,6 +26,7 @@
->  #include "cpregs.h"
+> Note that patch 4 will conflict with patch 5 of the FEAT_GCS patch
+> set, and I'm inclined to think this cleanup might go first.
 >
->  static TCGv_i64 cpu_X[32];
-> +static TCGv_i64 cpu_gcspr[32];
-
-32 ?
-
->  static TCGv_i64 cpu_pc;
+> This is otherwise a reasonably simple extension.
+>
 
 
 
-> +    for (i = 0; i < 4; i++) {
-> +        cpu_gcspr[i] =
-> +            tcg_global_mem_new_i64(tcg_env,
-> +                                   offsetof(CPUARMState, cp15.gcspr_el[i]),
-> +                                   gcspr_names[i]);
-> +    }
->  }
+Applied to target-arm.next, thanks.
 
-
-We only initialize 4, so I assume that the array size
-should be 4 as well.
-
-Otherwise
-
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-
-thanks
 -- PMM
 

@@ -4,77 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12DF1CCA476
-	for <qemu-arm@archiver.kernel.org>; Tue,  7 Oct 2025 14:28:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FF36CCA470
+	for <qemu-arm@archiver.kernel.org>; Tue,  7 Oct 2025 14:30:23 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v68WZ-00058a-Ug; Tue, 07 Oct 2025 10:18:43 -0400
+	id 1v68e2-00082k-QL; Tue, 07 Oct 2025 10:26:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1v68VD-0002NK-IF
- for qemu-arm@nongnu.org; Tue, 07 Oct 2025 10:17:21 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1v68V3-0003Ua-QW
- for qemu-arm@nongnu.org; Tue, 07 Oct 2025 10:17:19 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1759846624;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=48wNYUj1L+ClzTNGgbodycFvjddsGr7fvSdA6msMzDE=;
- b=Ks8Ru1FHGd7CIRADoRVoHniQ+PS6O6xjoQsQTNaAylIiFannP6kOF36bdUqYHZ9OmidI4Q
- 2iKsnM3KDc218EEf/ZPGH2ragTGGwvNYhpahU/PM/4Niy9/CrJpUPnjm9RfPEwAT9I+7ZR
- o3E1Enny1rigHm3ZBE3hr7uJ1vAJKlU=
-Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-347-wcpLaLOFOLyrmZGqqi8GAQ-1; Tue,
- 07 Oct 2025 10:16:51 -0400
-X-MC-Unique: wcpLaLOFOLyrmZGqqi8GAQ-1
-X-Mimecast-MFC-AGG-ID: wcpLaLOFOLyrmZGqqi8GAQ_1759846604
-Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 41AFA19774F0; Tue,  7 Oct 2025 14:16:39 +0000 (UTC)
-Received: from corto.redhat.com (unknown [10.45.224.108])
- by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 6B77519560B1; Tue,  7 Oct 2025 14:16:34 +0000 (UTC)
-From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-To: qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>,
- Joel Stanley <joel@jms.id.au>, Thomas Huth <thuth@redhat.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PATCH 5/5] test/functional/aarch64: Split the ast2700a1-evb OpenBMC
- boot test
-Date: Tue,  7 Oct 2025 16:16:04 +0200
-Message-ID: <20251007141604.761686-6-clg@redhat.com>
-In-Reply-To: <20251007141604.761686-1-clg@redhat.com>
-References: <20251007141604.761686-1-clg@redhat.com>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1v68e1-0007yZ-0d
+ for qemu-arm@nongnu.org; Tue, 07 Oct 2025 10:26:25 -0400
+Received: from mail-yw1-x112b.google.com ([2607:f8b0:4864:20::112b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1v68dw-0004os-Sr
+ for qemu-arm@nongnu.org; Tue, 07 Oct 2025 10:26:24 -0400
+Received: by mail-yw1-x112b.google.com with SMTP id
+ 00721157ae682-74f6974175dso74969797b3.3
+ for <qemu-arm@nongnu.org>; Tue, 07 Oct 2025 07:26:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1759847175; x=1760451975; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=dI/+xF9c5C0CJKAVVpvG45vrmOQqi9/gLVngvJOEKeI=;
+ b=aXLXLkZVxL0T/SArAeNPOvgMHkc8vUQcB9gNKLQ6OdBCF5qtmlusaoWAiUyv6q5NHA
+ cCXR5Mb/WPTKfib57Dnjgb9Z+S99OWTBIexgCTyTpTvZNAzFlU7QA5/nKPI6VJgeJX4B
+ 3LIbnRUeuWAsAWkCw/mDk+mnhyAIVkRN4D/6jQKVyY6aD6gvQB6F/8eU39EUWsDMJvbQ
+ KE9sqz5XbKsZrkRwp9S3yd6spOikGLOKFyE4+vYFSFUtSotrxoh8zxZFmF8yq6m7XvMQ
+ eFdV1Itsgr6Z7w/ad98YaqrGvuIYkabG9NhHVaMo/pC7GUL1XuHhYmi32J53T6kOGBNe
+ qSkA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1759847175; x=1760451975;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=dI/+xF9c5C0CJKAVVpvG45vrmOQqi9/gLVngvJOEKeI=;
+ b=wjKE86OJf+wLVMxJe7WczIXFGRc0OF9xM/Vh7+IFYxG1/+E13jMGtkdqTih+2BqG+q
+ TI1U7q5IGookDtlrU/vnUMCf5u2m46loWAiFP0lERX3qYvnXq/4lrlP0/KaA2rsGelzW
+ OT2x8JQHuh6z9Q+4cjxIJ5gwTXLvqC8V93JrU6NAdbpfRAyXyiGD5ZSJ+IDab/cQqon2
+ bkZ21F/kzLkHa6kNoFCg0hmJiqJXVMQCuvF/GbvhYJk4XrHCkyau/cgCh5zM6GjX4qtl
+ z96ZL2iuAsZ5SgzBJcbxEIZHQwyEwD07GZtoKEsrTQy6xPNby81CaTF19Ge75QwCDkhX
+ CQdA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVYkc5u4dIM2ZzlzZiq6xaKkGFwJXwp67lAVCe5tcaSbfUU6Br246rPaTssxlwYsLSLEYFtPU+7Cg==@nongnu.org
+X-Gm-Message-State: AOJu0YyyC50ylIsW/lqsYKmA8duApoogDcQHfayVRnDrTjwPAL/g/gLc
+ uB9+6q9P5sUdO13T6Ves7Tn451beUxkki6G6XUs0zlvDZFa1/xMO1xjCQ9/VWnRHuhLFDrVoL8q
+ QX03A4X84b04eVWapCV2pq9QJqDWdZrLWy+M8gC0s0g==
+X-Gm-Gg: ASbGncvey5gIH1hhASA+x6sV0IEKiphEuepdaUQfniSfIlg5W8Am6RVic9mDXYuo96r
+ X2dXTgwS6NfmMDJ/nWetFq0aGED6Dgm2WHb5PV87DTjmmWP0KFtyGGwate0Iyf5/BavBSiwAKGj
+ HzueWAULCD4P8Me1VhmeF7l0kI2AfZwme8KIEgRxVnKdOl+nGjjYb9cSM3VCVL2DzmYoYjes8Lw
+ qAF8byrl33BE0fEQByTwa1N4Ls3JQZuZvWvjQnEdO7HEMI=
+X-Google-Smtp-Source: AGHT+IHzKTljwEunbKa+FNSKjQrRQv0JLDroM+spja3yji1VjMK604lmHohapAMidHKA6m+C719l2pAnPYt/PuBFTAc=
+X-Received: by 2002:a53:bbc2:0:b0:63b:7b61:df69 with SMTP id
+ 956f58d0204a3-63b9a10aaccmr12960332d50.47.1759847175072; Tue, 07 Oct 2025
+ 07:26:15 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
+References: <20251003170800.997167-1-richard.henderson@linaro.org>
+In-Reply-To: <20251003170800.997167-1-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 7 Oct 2025 15:26:03 +0100
+X-Gm-Features: AS18NWCtxZ978AAkLjYesGD7o8LHFxdwT1LxsOHfDcai8k6qPFi2zkyrmF7gdus
+Message-ID: <CAFEAcA_=B12vT2UOSBH2O209agNxNCrzONbQp08q=wiZ_036AQ@mail.gmail.com>
+Subject: Re: [PATCH v6 00/73] target/arm: Implement FEAT_GCS
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.422,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_PASS=-0.001,
- T_SPF_HELO_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -90,57 +94,28 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The 'ast2700a1-evb' machine has two functional tests: one loading
-firmware components into memory and another using a vbootrom
-image. Both tests perform a full OpenBMC boot and run checks on I2C
-and PCIe devices, which is redundant and time-consuming.
+On Fri, 3 Oct 2025 at 18:09, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> Changes from v5:
+>   - Master now includes the accel/tcg/ patches.
+>   - Updated TF-A/TF-RMM tests for FEAT_S1PIE and FEAT_GCS.
+>
+> Patches lacking review:
+>   34-target-arm-Make-helper_exception_return-system-on.patch
+>   35-target-arm-Export-cpsr_-read_for-write_from-_spsr.patch
+>   38-target-arm-Add-arm_hcr_el2_nvx_eff.patch
+>   39-target-arm-Use-arm_hcr_el2_nvx_eff-in-access_nv1.patch
+>   40-target-arm-Split-out-access_nv1_with_nvx.patch
+>   48-target-arm-Implement-GCSPUSHM.patch
 
-To save CI resources, the vbootrom test is refactored to focus on the
-firmware boot process only. The OpenBMC boot verification logic is
-split and a new verify_openbmc_boot_start() helper is introduced to
-only wait for the kernel to start.
 
-The vbootrom test now uses this function and the less essential I2C
-and PCIe checks have been removed from this test case.
+I've reviewed these; other than the 32 vs 4 array size thing I
+think we're good to go. I've put the FEAT_RME_GPC2 series that
+you reckoned would conflict with this into the arm pullreq I
+just sent out, so once that's upstream if you send out a
+rebased series we can get it in fairly quickly I think.
 
-Cc: Thomas Huth <thuth@redhat.com>
-Signed-off-by: Cédric Le Goater <clg@redhat.com>
----
- tests/functional/aarch64/test_aspeed_ast2700.py | 9 +++++----
- 1 file changed, 5 insertions(+), 4 deletions(-)
-
-diff --git a/tests/functional/aarch64/test_aspeed_ast2700.py b/tests/functional/aarch64/test_aspeed_ast2700.py
-index a60dc1259f69..32c971e13528 100755
---- a/tests/functional/aarch64/test_aspeed_ast2700.py
-+++ b/tests/functional/aarch64/test_aspeed_ast2700.py
-@@ -37,11 +37,14 @@ def verify_vbootrom_firmware_flow(self):
-         wait_for_console_pattern(self, 'done')
-         wait_for_console_pattern(self, 'Jumping to BL31 (Trusted Firmware-A)')
- 
--    def verify_openbmc_boot_and_login(self, name):
-+    def verify_openbmc_boot_start(self):
-         wait_for_console_pattern(self, 'U-Boot 2023.10')
-         wait_for_console_pattern(self, '## Loading kernel from FIT Image')
-         wait_for_console_pattern(self, 'Starting kernel ...')
- 
-+    def verify_openbmc_boot_and_login(self, name):
-+        self.verify_openbmc_boot_start()
-+
-         wait_for_console_pattern(self, f'{name} login:')
-         exec_command_and_wait_for_pattern(self, 'root', 'Password:')
-         exec_command_and_wait_for_pattern(self, '0penBmc', f'root@{name}:~#')
-@@ -141,9 +144,7 @@ def test_aarch64_ast2700a1_evb_sdk_vbootrom_v09_08(self):
-         self.vm.add_args('-netdev', 'user,id=net1')
-         self.start_ast2700_test_vbootrom('ast2700-default')
-         self.verify_vbootrom_firmware_flow()
--        self.verify_openbmc_boot_and_login('ast2700-default')
--        self.do_ast2700_i2c_test()
--        self.do_ast2700_pcie_test()
-+        self.verify_openbmc_boot_start()
- 
- if __name__ == '__main__':
-     QemuSystemTest.main()
--- 
-2.51.0
-
+thanks
+-- PMM
 

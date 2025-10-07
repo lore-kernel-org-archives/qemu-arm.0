@@ -4,93 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2476CCA470
-	for <qemu-arm@archiver.kernel.org>; Tue,  7 Oct 2025 13:49:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C23FBCCA476
+	for <qemu-arm@archiver.kernel.org>; Tue,  7 Oct 2025 14:04:53 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v683c-0007Fq-R2; Tue, 07 Oct 2025 09:48:50 -0400
+	id 1v68If-00041K-5F; Tue, 07 Oct 2025 10:04:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v683b-0007FK-8N
- for qemu-arm@nongnu.org; Tue, 07 Oct 2025 09:48:47 -0400
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1v68Ic-00040i-TQ
+ for qemu-arm@nongnu.org; Tue, 07 Oct 2025 10:04:19 -0400
+Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v683S-0007ag-Vv
- for qemu-arm@nongnu.org; Tue, 07 Oct 2025 09:48:45 -0400
-Received: by mail-wr1-x432.google.com with SMTP id
- ffacd0b85a97d-3ee1221ceaaso4737540f8f.3
- for <qemu-arm@nongnu.org>; Tue, 07 Oct 2025 06:48:36 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1v68IO-0000ue-3L
+ for qemu-arm@nongnu.org; Tue, 07 Oct 2025 10:04:17 -0400
+Received: by mail-pf1-x433.google.com with SMTP id
+ d2e1a72fcca58-793021f348fso524092b3a.1
+ for <qemu-arm@nongnu.org>; Tue, 07 Oct 2025 07:04:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1759844912; x=1760449712; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
+ d=linaro.org; s=google; t=1759845838; x=1760450638; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:content-language:from
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=k6ZG6KtDpB1f5Isb6p40/VGcJa3rDHywmdw6TLwXJEE=;
- b=JJRj3mwuJxgEEM9mBK8B2Tdy8VXajeY4SDGtIzfc5y8Z//t09AIU6tufdMgDUoAblt
- WJxNVjfkRFATH0cSBLyDjdy70bTK4f4O+t9cX0tFzjUv/Vxyd6fiJr7ZNC6kxjl9gaE6
- pLSDS3LeCwVG7IkQ5HkgX1h8pdUBcop3C25tYndg6n3fzdNc/ukIOP62WFXV5+4WtsQh
- zEiYGCUjqtEvoNchcZh1vaYqbfySGeZhIWayDQ+2ld5wa0bnvRBpC6ILc2NGf21puKhN
- Ek1yAWZNX2njABYOLmSshCzfvUDiz/4iGCN+b7UiglZMyUlVUP7b0ZvijNRLB+3I/Hud
- KUjw==
+ bh=ApEdG0JWlXFe7JyIqDbGlSVzERcTf+zqVSSaff7l2OQ=;
+ b=nAkhJnOqeRpQQT5Qx2muz+Wrkcn20eq+Ri4kyN6TnTc/RR6v5deifU4AiD0r2E5Mi4
+ 9i97JHUMaWDfB8CNdii5QCCpacUMFKSlNYWcUJ5ttLQLFdvio6WTZlwRK3E7fkyworE4
+ Edd4QQM8Rl6+OJKrZaYm7XSprlkAYtxcrz+JbDqDOatfT5+X7Bv6ulSgQ/yy3ednw8In
+ PyWq0hSuCuGPc/GgRTY0xIwYP9zTGU1SZyBoFzgEf3L/7OW/4V1a61l0yoi+nZDe4xT3
+ o3LG2x6G1kKbA+1f5IDDnV40me87JYqaATSy23V13qtHcLb4NYX7nsiYU55skHMLlfcJ
+ vpZA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759844912; x=1760449712;
- h=content-transfer-encoding:in-reply-to:from:content-language
+ d=1e100.net; s=20230601; t=1759845838; x=1760450638;
+ h=content-transfer-encoding:in-reply-to:content-language:from
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=k6ZG6KtDpB1f5Isb6p40/VGcJa3rDHywmdw6TLwXJEE=;
- b=mMg3uTEoP+ATt4haZLs9bYCoA0oOeQE0Cpey+5psCzlDDCGoxtDRRlwFKcPlkX7JCs
- 8sCEESDKu2SZTqDFygD6yny5CTgDr3hY8UtbrTgyY8FNwnhVh0BwoP5n2Koa5OTsEIly
- RsbDrHlvba8ecK0h1MBcQFlzBW8zsh6K2QdWQcu/MDlTiSMR9mcmPNpO359zgy2gItWh
- 5sJcxj25XIxKYxSLsu/ymNHgrUYNCc193JHA2LLzGRb6C5ZdKQ9uR1ts3mCz29nWM76u
- Lz+LXAPMsnhrtXkUlCnyOIUH+jd2cv87GXARHXhChPn2t6H1P5HLtiUP6kSnlLXLRS7S
- 694A==
+ bh=ApEdG0JWlXFe7JyIqDbGlSVzERcTf+zqVSSaff7l2OQ=;
+ b=tauzLpQdPET2HnAM4xWciCGiurPU4i0trOqr4EKjnce5DeJ+Ov8++sGDfYkX7Vo8pc
+ /0+ArTOL9hgwatQWEkAjbJvdwwS8Dz3aU1H1lTbWj0fkU0/q5dj8P6nQtpdGs2fT6PUQ
+ msBjqGAL07remhgpvudx+S7jCZxOUmztl+pRCup7MG/rGCOGFoov8WnuqPZrC6hibPjV
+ QhZSBZYLGNgp4b0XXlglhBbut2uRGXFMlNzHoAX94Cp902Wzs/02jK5ZHyXXNPtiZg3F
+ y1KuEVkRxI2An5SlRAyNEK8JWFYGRljGIJAom3Z6MOSGemaGd0LEe8LF7wYshasxXFz+
+ NL2A==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWE3c1ti2hhC714fmaxuAroQhWRmSTfLkBgMnkI44SVc6ZgUKm9xTcgQ9m3T0eBtp/nhkKK6BzMxQ==@nongnu.org
-X-Gm-Message-State: AOJu0YwRBJ76lKmn05ZYuGwOubtpDUnzFULVqT1k/sYos6vqarn7PIXH
- Zh5MZtbMJrsFXW3fCMCOlV22kuDFpK443O5jkHdVOSxdauC0ExkrgZx7qO9kEqzucFE=
-X-Gm-Gg: ASbGnct0sNmNc0tJgeTy4KVre7NtdeJoeAFy7LRRyAB7h8Wtx0QkODX2iZOn0thn0kv
- vAxJ/6MDPi9vsJh35rIr4MYKwv9NBJyEM3kdjXg9zPrfQ8GTtF/mKuRp+aLgALzfH0bSgQycaV1
- Ktt/Pq+MFWoEPhWzB+JAxQAFNidZWs+VQvkX3RpvXqFOzJ/FVizx4riHSLU6Mg+uXqVaOFL7Fao
- 8bpvyHREHX0vaFqyhR91qV0kgJOnGPJ9txJ5mBicw1NcwJQ2tTqbs3D3QMhcm8qTc3s0v7+RpDI
- fV6veafwM+gtKnwCNE0hOQ7R3vss9rCtA5niuoE4NfknjwJ2+rWRUOEH9j2XzQFlLsfzyQYv18v
- 54abfkjnFzGBcARWnH09ZFzx/9AKcbDE7J5zN7sW9lmF5dgATLe7QekFF17mPUMskodzBgeO6wI
- erpcrwE4D0eGfqVVKTmQ==
-X-Google-Smtp-Source: AGHT+IE+BWHDJYUOxUycI32bKtFoxGHlKeZV6KEvzq5EFqba3o48Z9/K80tz4ThEwbmbAtCgQYwjNg==
-X-Received: by 2002:a05:6000:1acb:b0:3fd:eb15:77a with SMTP id
- ffacd0b85a97d-42567137c93mr9628290f8f.6.1759844911866; 
- Tue, 07 Oct 2025 06:48:31 -0700 (PDT)
-Received: from [192.168.69.221] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4255d8abe49sm25800014f8f.21.2025.10.07.06.48.31
+ AJvYcCXTchmVefzrSQToaeV+STYLV+vFeOpC1/7f9ydbfKtR+n9D0AJQ9EK9xQog5AjFkMWvG+S40q9qUg==@nongnu.org
+X-Gm-Message-State: AOJu0YzAdzPU2LdK/PhqbrWp9prMiloHZMr3yYbar6k/bCddpDi6uN59
+ d1rG32SfCwbujjKslabIoNprm4nNSazy9YFkVfmYKzD69NCnxEq8iXtwM4J0PYAgCOc=
+X-Gm-Gg: ASbGnct8l5gqbnJlNXfhBzcPiVsopnidR8+o70fKPcokZxzz9IVEGBxlBi2bAtfZVyf
+ u9PxeJpIltB0ByQbW8XWPs8fMX+bUfTDEUeKnfLrMjXuxXtwbtY+2WYqRqJVyBF/cFf4dKE+37+
+ Cj8qRb78SwtpSVZ8DsEI64C9iRhPUeUbL3pD9WsOxJyekW9AAd9umnQ93Y3wZaJSmyOPK7YFmGp
+ Nltrtf5I7BCe6CiQLZfWlpcp7V6163jD7TduDA8+oU9aAxDYCp6WQH8TrNRTwww8eWmAFbeTjzR
+ RaeoVP91o+fcE3uGoC/6E9A69v3yjPs+oDPi6rqSGdBeqbYk/GsvHmMCbs1XuxRslNN2fPh2g/C
+ X2pq7oXnVE2kWfiDLwT+KL4hOBoQtYQaoXkZzu7fwDBd0tWLs5js0iOytn2Rhl2ko
+X-Google-Smtp-Source: AGHT+IF6bPrWDGwzPybS9Cy2Nv75p9dqDiB17CKK1+rYlYyBGsMjp/fdCzrRH9ZZK/Viuzw8U3Tbuw==
+X-Received: by 2002:a17:903:1b30:b0:267:ba92:4d19 with SMTP id
+ d9443c01a7336-28e9a4465c0mr196422335ad.0.1759845837662; 
+ Tue, 07 Oct 2025 07:03:57 -0700 (PDT)
+Received: from [192.168.0.4] ([71.212.157.132])
+ by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-28e8d1b845bsm167014335ad.79.2025.10.07.07.03.56
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 07 Oct 2025 06:48:31 -0700 (PDT)
-Message-ID: <66dbc389-4c83-4552-b447-87c0e1ada48a@linaro.org>
-Date: Tue, 7 Oct 2025 15:48:30 +0200
+ Tue, 07 Oct 2025 07:03:57 -0700 (PDT)
+Message-ID: <3040ccf2-8fdf-45e3-af07-440b80949ce3@linaro.org>
+Date: Tue, 7 Oct 2025 07:03:55 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] hw/misc/max78000_gcr: Do not ignore address_space_write()
- errors
+Subject: Re: [PATCH v6 48/73] target/arm: Implement GCSPUSHM
 To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Jackson Donaldson <jcksn@duck.com>,
- Jackson Donaldson <jackson88044@gmail.com>
-References: <20251007024006.43166-1-philmd@linaro.org>
- <CAFEAcA_ytH+AwTr9LAZBP2nbSTod0FkfuexbewW=T7Pbb3nkmw@mail.gmail.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+References: <20251003170800.997167-1-richard.henderson@linaro.org>
+ <20251003170800.997167-49-richard.henderson@linaro.org>
+ <CAFEAcA-WzWDem=u8w4sGB3aMHEBkUFo1PJztbwM+mqe+REzasA@mail.gmail.com>
+From: Richard Henderson <richard.henderson@linaro.org>
 Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <CAFEAcA_ytH+AwTr9LAZBP2nbSTod0FkfuexbewW=T7Pbb3nkmw@mail.gmail.com>
+In-Reply-To: <CAFEAcA-WzWDem=u8w4sGB3aMHEBkUFo1PJztbwM+mqe+REzasA@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::432;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x432.google.com
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::433;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x433.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -106,19 +105,44 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 7/10/25 10:27, Peter Maydell wrote:
-> On Tue, 7 Oct 2025 at 03:40, Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
+On 10/7/25 03:17, Peter Maydell wrote:
+> On Fri, 3 Oct 2025 at 18:16, Richard Henderson
+> <richard.henderson@linaro.org> wrote:
 >>
->> Convert max78000_gcr_ops[] to take MemTxAttrs and return MemTxResult,
->> allowing the write() path to return error on failure.
+>> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+>> ---
+>>   target/arm/cpregs.h            |  3 +++
+>>   target/arm/cpregs-gcs.c        | 15 +++++++++++++++
+>>   target/arm/tcg/translate-a64.c | 29 +++++++++++++++++++++++++++++
+>>   3 files changed, 47 insertions(+)
 > 
-> *Should* it return a MEMTX error on this failure, though?
-> This is a question of what the hardware behaviour is,
-> and there's no reference to the datasheet in this
-> commit message...
+> 
+>>   void define_gcs_cpregs(ARMCPU *cpu)
+>> diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
+>> index 38a1f51ed5..4fb73f821b 100644
+>> --- a/target/arm/tcg/translate-a64.c
+>> +++ b/target/arm/tcg/translate-a64.c
+>> @@ -26,6 +26,7 @@
+>>   #include "cpregs.h"
+>>
+>>   static TCGv_i64 cpu_X[32];
+>> +static TCGv_i64 cpu_gcspr[32];
+> 
+> 32 ?
 
-Right. Thanks!
+Oops.
 
+> We only initialize 4, so I assume that the array size
+> should be 4 as well.
+
+Yes indeed.
+
+r~
+
+> 
+> Otherwise
+> 
+> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 > 
 > thanks
 > -- PMM

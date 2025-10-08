@@ -4,86 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF6E7CAC5BB
-	for <qemu-arm@archiver.kernel.org>; Wed,  8 Oct 2025 21:59:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12B58CCA470
+	for <qemu-arm@archiver.kernel.org>; Wed,  8 Oct 2025 22:00:02 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v6c9K-0003v8-Hj; Wed, 08 Oct 2025 17:56:42 -0400
+	id 1v6cBS-0005hP-T4; Wed, 08 Oct 2025 17:58:55 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1v6c9H-0003tz-Hm
- for qemu-arm@nongnu.org; Wed, 08 Oct 2025 17:56:39 -0400
-Received: from mail-pg1-x52c.google.com ([2607:f8b0:4864:20::52c])
+ id 1v6cAW-0004TE-4r
+ for qemu-arm@nongnu.org; Wed, 08 Oct 2025 17:57:58 -0400
+Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1v6c8z-0006d5-SC
- for qemu-arm@nongnu.org; Wed, 08 Oct 2025 17:56:39 -0400
-Received: by mail-pg1-x52c.google.com with SMTP id
- 41be03b00d2f7-b550a522a49so209177a12.2
- for <qemu-arm@nongnu.org>; Wed, 08 Oct 2025 14:56:20 -0700 (PDT)
+ id 1v6c9J-0006kC-Ma
+ for qemu-arm@nongnu.org; Wed, 08 Oct 2025 17:57:55 -0400
+Received: by mail-pl1-x62e.google.com with SMTP id
+ d9443c01a7336-27ee41e074dso3402625ad.1
+ for <qemu-arm@nongnu.org>; Wed, 08 Oct 2025 14:56:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1759960579; x=1760565379; darn=nongnu.org;
+ d=linaro.org; s=google; t=1759960596; x=1760565396; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=mMlnh8zeYNwcYH9t58MHsQn/aIeWjLHUQw8sUnZOUp0=;
- b=DI1u872UZ3KGvyYmp1kdBz8bWAQ2eGbbZ7l3LH/yPZXDqXwKMSF3Lp0djN/DVs2M/A
- tXKoicIg533zAZCHVOzMvznwkuMylsXHpIFLmcLcq1TrGOohS21l5zdfWRYugM4rN/Tf
- UcyELHaI57t5dTbIJmf+S/+aZSIeqtKc/5AsiHVPPN7MUGdGvsDZ0+k+yX4UFBQwech2
- 80Db1NE1sLMr8nkC0jc4PRQWUQTueLOLYIMV9AMDsmhOrN+7Kx3fBwF8jKpFd+XRHicA
- OC65meieJ11gQ1M6vi+dPbPhpY/SvFbV9/Ui2dvMcm3Wqw/5h0TTI+rCroE7UF6dsn7C
- 58BA==
+ bh=pbP0PhacBN6OOtL0crNE7p92W9z6GBnRnTHJYePdcJk=;
+ b=AYmAyn1KTWLLBD67Ug//GiyMbYSa6Z6BMNbDxmOhWbF+KgVu9v0iMUlrBbqA8v1rGd
+ cbt6pzI8p4QTvkVnlbOB5vo1kUyKHXjCGKQf/urSq0sV3t4qcjsC/wHRDdkWJif2ifpU
+ UAf+uUMaeSuztcaTdbwnRC+oFnY1hSTlSt2X6fhORaxLeMRKIkFWDdwy0kVZNgqL9Kvb
+ i0Q8/eq1Atx582e8mJcBbnIBukSWbdDIjyMbD+N921Tk/VhxQxlfA+w/VblTOQIMA4LO
+ pL9tG4lzVouu3evi/ikvZMDTjlRMCHhzxJqz5ZPhI8D3d8bYRe7Pu7UMGj/0YzNwgmW3
+ mbHw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759960579; x=1760565379;
+ d=1e100.net; s=20230601; t=1759960596; x=1760565396;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=mMlnh8zeYNwcYH9t58MHsQn/aIeWjLHUQw8sUnZOUp0=;
- b=eFgy4/3BCaxXy1w4HiKJ5sVjaWNNQJWUAEOcRpl9L2qh0ETy/EUcjby+j00bafqIln
- pEGW6H0QqCaqddl4K0MKIal2D5fqZIEZLW0MpZWNKzuYPME259XYP/H0of+s+zMk2ue1
- pbEVBgmY9tVcYqqqV6ykZhnrkw2SyVUfCiNEiNRfWflHwR+mT6gu+AW6GTq+pLRVhh6s
- EX7Ajoz48LRn62/V0EkQPOs/jNiT1rRVmuEkpCC0AS+lcR02/6IQrsRbYHydiXg6QrvR
- HdR+HOeDLUXiVNhrmEUkxQJ6qNQcA82WFsfGUGAXR+6xUWs+F9kLMbLyZ+Ic5a4STuSj
- AO/w==
-X-Gm-Message-State: AOJu0Yy7yCCqAxHYAG1iqD5bcAw2tD4tU2Il5WSx+Ryy4q5XpmdC7wc6
- Tvj0vRDlVuvXQhc8nGavHgWuob+CUQ2beXQG45pLYEK0i5ez+YoCATufY80ZIr/LSzw=
-X-Gm-Gg: ASbGnctYRp5k5uqp4R3PNR+x3qIwa5O3SdejMwcCbJPZx9bWorft+lMw/BYuqdlCeCp
- kZ94Qt8sdeWZc21NBY5qZldw4e30x0/xAdOIPfhATr0GN3w0yQCyQJKK4VSIFpXL0mz2lsL4U5q
- B0iTXWirmsHXPSt9PtjHiQC2vmcIyzpDBpi6d2M7atizwQSDGpQwEmWuz42Qx/TkeHqULbnUTZ6
- qldpwqUvPyA0OcsmS2J3V1fpOKDZU8UtKw+F5RpdXzdGqVIB2a9nEBT45/trFQR12eaVzJQ07+4
- 04WscwWSwlmzY1KlESRdsFsnf7A/W25TFYLftmAzQv2XK4gcBelXtf/z1/ZdE8Av/qH+CnVVu77
- JT+feEq6pqtmH8Y4FZzqLS7dVRW0n2Lx+DV56K5pDZwgHgNnBwxxHtu0vFDwyzSTlgr8=
-X-Google-Smtp-Source: AGHT+IGKUJMgtTlHWw2o2IM+XK9NJdl39lmRv4DQjNRNl4uCeuXQSyhzPVZnqCh5rAYVcLLn91if7w==
-X-Received: by 2002:a17:903:a90:b0:27e:f201:ec90 with SMTP id
- d9443c01a7336-29027264d78mr66582075ad.25.1759960578669; 
- Wed, 08 Oct 2025 14:56:18 -0700 (PDT)
+ bh=pbP0PhacBN6OOtL0crNE7p92W9z6GBnRnTHJYePdcJk=;
+ b=brJrG6ML381wXUt+olZuUtpuX43GAynjdEUci68mNuNYbLHb5qLZ1QcoLKm/rRFDVP
+ zN2oGP+ZYCM3gP/+DAMbnY7nmnOZ1pSVag80cTNcKIWtGBfvPTJ1QHUJTMPmFNxpU6X5
+ 96OKu1seY0uRtRMpO6/UJDAYs677XSr9szBuVQojSJon13qZK41CxzQXNp7p+o4Fmc1a
+ 6sGfv48O3dIZ6BV2NnKr/BQ1qBK55y4Ki7I/618rESWN99IgouY4SJRtFDkBDJe3kkPn
+ 2QJYRQ5wCi3m2rarxiTNnrIZp+3VzC3CHWNFStiyvSTaDz6iGnKPxCZmnWfZyds2/p9J
+ Zadg==
+X-Gm-Message-State: AOJu0Yyh3GxtywDK9+aToGRWotFB52I/xn8nm+ItbFJ2geagJRXkvfpg
+ 23Q6qFy2zolI1XNDmCPVuDP3iAVBi38sgEFtu5La/2/Y3qwaqLBKE12xCqwG+jRPHSg=
+X-Gm-Gg: ASbGncv4763YUWyK+tyTXgYgHgDZrXA9bzAQ5UMIVA9ZlH/DEye0LXMlUFJM3SpGm5+
+ EQ0ftlE7u8AtBr0EL/qdG1l0DFwhsypUgVV9yrQGeuwIFHAmMRl7TFUn1JrSe5jeZ5DrnFupIlw
+ kdc6y7iYI3+8sxxA48kDi9Lxdr//6rKFJOvUO+MMB9tjiaiqamr/b8YKzSwkjZP187kqEevFFby
+ wma4QpOQzyObjTv/ieqwJZ6u+oRz61zF36AsEABsj9rBpUzNLovDv42ef00RkNRRI4dS+oxcNO9
+ fgQreGpCFsF/Prj+KRKUL0p+YbRYckwa+1QH0uhW0MEHRycCkzZzKO3WPIZMzgRtunQu/8P5CAr
+ iRRrM/GkxJJ0iBHB/IZYXifWoaZsDrDsUFl24iibFF6r7xfXKG1u1K4NV
+X-Google-Smtp-Source: AGHT+IEwSFGYKhI8k1o3/DKsm6yR54T04FqKgfCf0ZH43eTwtIpuxmPFY3WBV9oNcwUbrgi1WkGgqg==
+X-Received: by 2002:a17:903:37c7:b0:269:8edf:67f8 with SMTP id
+ d9443c01a7336-290272ff5b0mr65857895ad.52.1759960595839; 
+ Wed, 08 Oct 2025 14:56:35 -0700 (PDT)
 Received: from stoup.. ([71.212.157.132]) by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-29034e44ef9sm7354285ad.52.2025.10.08.14.56.18
+ d9443c01a7336-29034e44ef9sm7354285ad.52.2025.10.08.14.56.35
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 08 Oct 2025 14:56:18 -0700 (PDT)
+ Wed, 08 Oct 2025 14:56:35 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v7 06/73] target/arm: Cache NV1 early in get_phys_addr_lpae
-Date: Wed,  8 Oct 2025 14:55:06 -0700
-Message-ID: <20251008215613.300150-7-richard.henderson@linaro.org>
+Cc: qemu-arm@nongnu.org, Gustavo Romero <gustavo.romero@linaro.org>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Subject: [PATCH v7 33/73] target/arm: Implement FEAT_CHK
+Date: Wed,  8 Oct 2025 14:55:33 -0700
+Message-ID: <20251008215613.300150-34-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20251008215613.300150-1-richard.henderson@linaro.org>
 References: <20251008215613.300150-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::52c;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x52c.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62e;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ T_SPF_TEMPERROR=0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -99,69 +99,67 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-We were not using the correct security space in the existing call
-to nv_nv1_enabled, because it may have been modified for NSTable.
+This feature contains only the CHKFEAT instruction.  It has
+no ID enable, being back-allocated into the hint nop space.
 
-Cache it early, as we will shortly need it elsewhere as well.
-
+Reviewed-by: Gustavo Romero <gustavo.romero@linaro.org>
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/ptw.c | 20 +++++++++++++-------
- 1 file changed, 13 insertions(+), 7 deletions(-)
+ target/arm/tcg/translate-a64.c | 14 ++++++++++++++
+ docs/system/arm/emulation.rst  |  1 +
+ target/arm/tcg/a64.decode      |  1 +
+ 3 files changed, 16 insertions(+)
 
-diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-index 2657023120..e1515675eb 100644
---- a/target/arm/ptw.c
-+++ b/target/arm/ptw.c
-@@ -79,6 +79,8 @@ typedef struct S1Translate {
-      * may be suppressed for debug or AT insns.
-      */
-     uint8_t in_prot_check;
-+    /* Cached EffectiveHCR_EL2_NVx() bit */
-+    bool in_nv1;
-     bool out_rw;
-     bool out_be;
-     ARMSecuritySpace out_space;
-@@ -1677,12 +1679,6 @@ static bool lpae_block_desc_valid(ARMCPU *cpu, bool ds,
-     }
+diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
+index 693eab1c01..78b2881a15 100644
+--- a/target/arm/tcg/translate-a64.c
++++ b/target/arm/tcg/translate-a64.c
+@@ -2124,6 +2124,20 @@ static bool trans_AUTIBSP(DisasContext *s, arg_AUTIBSP *a)
+     return true;
  }
  
--static bool nv_nv1_enabled(CPUARMState *env, S1Translate *ptw)
--{
--    uint64_t hcr = arm_hcr_el2_eff_secstate(env, ptw->in_space);
--    return (hcr & (HCR_NV | HCR_NV1)) == (HCR_NV | HCR_NV1);
--}
--
- /**
-  * get_phys_addr_lpae: perform one stage of page table walk, LPAE format
-  *
-@@ -1734,6 +1730,16 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
-                                    !arm_el_is_aa64(env, 1));
-         level = 0;
- 
-+        /*
-+         * Cache NV1 before we adjust ptw->in_space for NSTable.
-+         * Note that this is only relevant for EL1&0, and that
-+         * computing it would assert for ARMSS_Root.
-+         */
-+        if (el == 1) {
-+            uint64_t hcr = arm_hcr_el2_eff_secstate(env, ptw->in_space);
-+            ptw->in_nv1 = (hcr & (HCR_NV | HCR_NV1)) == (HCR_NV | HCR_NV1);
-+        }
++static bool trans_CHKFEAT(DisasContext *s, arg_CHKFEAT *a)
++{
++    uint64_t feat_en = 0;
 +
-         /*
-          * If TxSZ is programmed to a value larger than the maximum,
-          * or smaller than the effective minimum, it is IMPLEMENTATION
-@@ -2109,7 +2115,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
-         xn = extract64(attrs, 54, 1);
-         pxn = extract64(attrs, 53, 1);
- 
--        if (el == 1 && nv_nv1_enabled(env, ptw)) {
-+        if (el == 1 && ptw->in_nv1) {
-             /*
-              * With FEAT_NV, when HCR_EL2.{NV,NV1} == {1,1}, the block/page
-              * descriptor bit 54 holds PXN, 53 is RES0, and the effective value
++    if (s->gcs_en) {
++        feat_en |= 1 << 0;
++    }
++    if (feat_en) {
++        TCGv_i64 x16 = cpu_reg(s, 16);
++        tcg_gen_andi_i64(x16, x16, ~feat_en);
++    }
++    return true;
++}
++
+ static bool trans_CLREX(DisasContext *s, arg_CLREX *a)
+ {
+     tcg_gen_movi_i64(cpu_exclusive_addr, -1);
+diff --git a/docs/system/arm/emulation.rst b/docs/system/arm/emulation.rst
+index c779a50570..68d9a4e734 100644
+--- a/docs/system/arm/emulation.rst
++++ b/docs/system/arm/emulation.rst
+@@ -28,6 +28,7 @@ the following architecture extensions:
+ - FEAT_BF16 (AArch64 BFloat16 instructions)
+ - FEAT_BTI (Branch Target Identification)
+ - FEAT_CCIDX (Extended cache index)
++- FEAT_CHK (Check Feature Status)
+ - FEAT_CMOW (Control for cache maintenance permission)
+ - FEAT_CRC32 (CRC32 instructions)
+ - FEAT_Crypto (Cryptographic Extension)
+diff --git a/target/arm/tcg/a64.decode b/target/arm/tcg/a64.decode
+index 55ff6c504f..8283a9c83d 100644
+--- a/target/arm/tcg/a64.decode
++++ b/target/arm/tcg/a64.decode
+@@ -256,6 +256,7 @@ ERETA           1101011 0100 11111 00001 m:1 11111 11111 &reta  # ERETAA, ERETAB
+     AUTIASP     1101 0101 0000 0011 0010 0011 101 11111
+     AUTIBZ      1101 0101 0000 0011 0010 0011 110 11111
+     AUTIBSP     1101 0101 0000 0011 0010 0011 111 11111
++    CHKFEAT     1101 0101 0000 0011 0010 0101 000 11111
+   ]
+   # The canonical NOP has CRm == op2 == 0, but all of the space
+   # that isn't specifically allocated to an instruction must NOP
 -- 
 2.43.0
 

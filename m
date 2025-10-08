@@ -4,86 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B7B4CCA470
-	for <qemu-arm@archiver.kernel.org>; Wed,  8 Oct 2025 22:07:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCF81CCA470
+	for <qemu-arm@archiver.kernel.org>; Wed,  8 Oct 2025 22:07:28 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v6cEW-00020a-Qs; Wed, 08 Oct 2025 18:02:06 -0400
+	id 1v6c9z-0004F1-L3; Wed, 08 Oct 2025 17:57:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1v6cDB-0001H4-KK
- for qemu-arm@nongnu.org; Wed, 08 Oct 2025 18:00:53 -0400
-Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
+ id 1v6c9x-0004Ds-N9
+ for qemu-arm@nongnu.org; Wed, 08 Oct 2025 17:57:21 -0400
+Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1v6cCV-0007P1-VA
- for qemu-arm@nongnu.org; Wed, 08 Oct 2025 18:00:38 -0400
-Received: by mail-pf1-x429.google.com with SMTP id
- d2e1a72fcca58-7811a02316bso198803b3a.3
- for <qemu-arm@nongnu.org>; Wed, 08 Oct 2025 14:59:55 -0700 (PDT)
+ id 1v6c9A-0006fj-Cy
+ for qemu-arm@nongnu.org; Wed, 08 Oct 2025 17:57:17 -0400
+Received: by mail-pl1-x62a.google.com with SMTP id
+ d9443c01a7336-2897522a1dfso3038215ad.1
+ for <qemu-arm@nongnu.org>; Wed, 08 Oct 2025 14:56:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1759960793; x=1760565593; darn=nongnu.org;
+ d=linaro.org; s=google; t=1759960586; x=1760565386; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Bjs2KSAaFbdAG1b499mTeRXJBukAcX/iNNZB5CfLwbQ=;
- b=eEOBtiihkPmma1eqLoJyn8m0MVL0ck+wCja8zrAovNBgh1CArO5oXPQ8jFaMkHYduN
- 9is67LWqvASkVYhXBJoPzuiglYTtrlZi1OLf3pDTlsBYI6LnxRyOwgxdHxjryQkLohgY
- 3riQQa52GN08sVu80DKoU3knI4fhN6ExVGCQnZd3SVuxz+yGPyLJcPfX7j8ZIoLHboUd
- kxXcZZu/XspHdXPOL4MpxrPsDPFLxfXkXZjGL5u2MLAseyLzUDIZwof/iuOkGR8bdkFT
- p4btRvaD93tC30nhswLczMr65oF0lAbTuIP7+4aWqdoc4HtrNjmXj5K4MpYxdxXVrLlo
- Q5AA==
+ bh=qzsy8UIkvSbR8Kg1jCRAVhHmlPSWiDpdwP0nL6me4gI=;
+ b=vNnKFEs/XFa1BXNuJremp2iymNnqSE5DPc+O+oF0284JhYg4K5ilnayZFStfEAJp4j
+ EYiG2woceYfRsZQXKFaXFuK6RfWbCKZ3ujeZpb2hP8hEug6eM/GhzKRGRzpIppCG3qYw
+ AMJsAoCpttpdbVbR8I0Kz2oK4YcmBAoEa1oNB/QAC1T+Ia+feHdwx6+04edHgAo3RuwZ
+ idio0IBAAToHXV4bRSa9+tb/6SN3YY4UVi0BmOdBxn5D/fK4TEqcUVmjNZMGf7tRHnll
+ Hz2d3HOnWhfiYr7g/8xbWYh7NvU4ouQSOiqdrrR3tbxpptglZscUhy+wIp1YIl8P97eZ
+ jzVQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759960793; x=1760565593;
+ d=1e100.net; s=20230601; t=1759960586; x=1760565386;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=Bjs2KSAaFbdAG1b499mTeRXJBukAcX/iNNZB5CfLwbQ=;
- b=namQZeErkF3ZQfZZ0b2j5XffayoYNT4xv0xadxnU18mxJ7aO/GiVGEKlNP5qhAAUhF
- TEHyspI7zISwAksh6P26TTxhMseG7M5NKJR2lKyqOqif3uhBre/kSFmui92jxN+MX6Xj
- oP0L/AsVJ7oKJL3Zmjr08kfIR2LgzJyiuRsKR1BC2M/feBW+WphLpwpiyM5mMMkr/cyH
- u5XfE1/BDOgBPl52gAwUm+qTpFI0mUMRhMttO/Xer8ublPxHmBf1s3ZpZVLuPCiELXJ3
- rHIy1usr7xkQpJGdJeeN73nYRnfii+YhW7QDb4oh86qxgCrktA0Ak+jIiAiJ2AXkFIrj
- rSGA==
-X-Gm-Message-State: AOJu0YwqlelDRIpuQ2GwtE59usPiRR7UjBV6YVzo84weW/64lt+47QNG
- ZeQpBKKrqGPN8mZK8dStMQVHyY7mr/EBGDXjQPRuj9N3lg2UQlhxSl9T0GHv2MUwpdI=
-X-Gm-Gg: ASbGncuC+rn6wNt6SOuizu/VNt0t5IEcltXT4QsG5uMTN5GxDkTxxnjARKpeCNQd2CY
- kVnmYSU9ulw2s0SnYTzJNqNhBHCY+qhNuh9uXsicuyavCLwz5oh55lQp1oVuKSQ5DOA+Vy4rxvL
- hLLaiv+3rqM98CDR6N8LLsCKm0R+bpqNWOU35L2ykBs+FaHnrDdsUbdnuYq19PR64URPdRE03Q0
- mfbxt2mA/pHKzz2oFHG7XgQ8FqSfJE/3yM3rrkkIDBbIOol3tTnFBvlASw2vnuWo/jbtrSKglKB
- sjzhoHhLKk54a2sNDbpYQIXdhUmOGvquzWefC8vu+BLWR/kmiA14rNVXO8xRy6YPaKrgl+uOMaV
- fIupHsOIc7OfkVU7InrvZZA7mGb4UWLd7sXq04hoeK8v5NW2qM8IGED3kAz3QOudtFr0=
-X-Google-Smtp-Source: AGHT+IHr6eY8VcJfZSP7GMbeh30NI8HiHwq2mgJDGRdmmxb2FMRk9D6ccta2XDYvZuYUgCTbEBIuww==
-X-Received: by 2002:a05:6a00:194d:b0:781:7e1:a315 with SMTP id
- d2e1a72fcca58-79387c17862mr5482444b3a.22.1759960793105; 
- Wed, 08 Oct 2025 14:59:53 -0700 (PDT)
+ bh=qzsy8UIkvSbR8Kg1jCRAVhHmlPSWiDpdwP0nL6me4gI=;
+ b=KvXwHF/PKQMbfQllu0L6piqAgStHGK4ndwddD+lv4TZgOw6qwE5HBRCiisu5Ty3OWc
+ U/zc/JkfNhhFKGRf8bG2fXf3nsMzPemhqvvECLIsBeOB609D8QwYUPAUwidyw9bDazyV
+ WZfMiqo96i+6ydmh/cUAjlmtDJ1QNNnU5+fbc1OoovOlxL7oyE66sYeFcoAEBRodI5Zt
+ SVuAs9NrJ4RZJxPhC/9mcmU6KtWuNIt0X8lgXTPwcSAoTnOYoKi2n/A13SPk0CaENlK7
+ uEIBhTwggAOZLen+oTUFWx9hS60k7Z0W772Kf31SNfJGKPZ8De/hlAYXzon0qFeFpIMG
+ xiiQ==
+X-Gm-Message-State: AOJu0YwK9sLm9sEmb/XfFg7nMXataQnv6gAG9Q+iNmfxn9bk7GfU1W/l
+ MEXZpwxEtTXQjyLMd72rQRD0oHNIpEQxL1jC1SCjOhOK5aaBM0rB3jkX2o9UzOCRR/4=
+X-Gm-Gg: ASbGncs0c9OcWb7dR2NswFd+JLS2ZK/wJlkKACyBUrs+QzKEZ234aURAXA/PNaIra/X
+ Eo0MY3HM5pSabRqFXYcHt2LBabCYChj2zWPKMbRn/8gLchwVKjfuONn8gQwHDvKqC578Vy6ukQ8
+ gTe0WHYvjzyezYxcLU57rr3IrqIGUdSQ0Mk2VeB1bZOT8BfTaZ/GJklDoWhUGSlwGLhyecUDShA
+ dMPNqBTtdd5m2VfFKCi+DZqXSWRl15EwyQzh4b37DDSJhEMv4FrLwWEheV5odjC/gglpTFDG5X0
+ BHuJfpSVQXrW1Nba7oDiJHXLROIgFCqnhja6yv8Pt6X5OKvN29a1LpFyb4wZnlmUo8gFoWl6Y7E
+ gfsIlLoChumsPtqrqmQaTgAySXqwltlKKKbk72gL3+c6glNrowPUJiu66
+X-Google-Smtp-Source: AGHT+IEwlHX/8EnLdH4c85UaTvP52ALAyNoUvPA/bnHog84SQcD00uS4SICW3vp5tcTLSG2f10GJzQ==
+X-Received: by 2002:a17:902:e788:b0:286:456f:8c8a with SMTP id
+ d9443c01a7336-290272dfad8mr61813815ad.50.1759960586067; 
+ Wed, 08 Oct 2025 14:56:26 -0700 (PDT)
 Received: from stoup.. ([71.212.157.132]) by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-794e1fc9db6sm740724b3a.66.2025.10.08.14.59.52
+ d9443c01a7336-29034e44ef9sm7354285ad.52.2025.10.08.14.56.25
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 08 Oct 2025 14:59:52 -0700 (PDT)
+ Wed, 08 Oct 2025 14:56:25 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
-	Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v7 59/73] target/arm: Load gcs record for RET with PAuth
-Date: Wed,  8 Oct 2025 14:55:59 -0700
-Message-ID: <20251008215613.300150-60-richard.henderson@linaro.org>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Subject: [PATCH v7 17/73] target/arm: Convert arm_mmu_idx_to_el from switch to
+ table
+Date: Wed,  8 Oct 2025 14:55:17 -0700
+Message-ID: <20251008215613.300150-18-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20251008215613.300150-1-richard.henderson@linaro.org>
 References: <20251008215613.300150-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::429;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x429.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62a;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62a.google.com
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
+ DKIM_SIGNED=0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -99,30 +101,182 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+In an effort to keep all ARMMMUIdx data in one place, begin construction
+of an info table describing all of the properties of the mmu_idx.  Begin
+with the access EL.
+
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/tcg/translate-a64.c | 7 ++++++-
- 1 file changed, 6 insertions(+), 1 deletion(-)
+ target/arm/internals.h       |  3 +--
+ target/arm/mmuidx-internal.h | 29 +++++++++++++++++++++++++
+ target/arm/helper.c          | 27 ------------------------
+ target/arm/mmuidx.c          | 41 ++++++++++++++++++++++++++++++++++++
+ target/arm/meson.build       |  7 +++++-
+ 5 files changed, 77 insertions(+), 30 deletions(-)
+ create mode 100644 target/arm/mmuidx-internal.h
+ create mode 100644 target/arm/mmuidx.c
 
-diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-index dfd5b17831..918d5ed112 100644
---- a/target/arm/tcg/translate-a64.c
-+++ b/target/arm/tcg/translate-a64.c
-@@ -1898,7 +1898,12 @@ static bool trans_RETA(DisasContext *s, arg_reta *a)
-     }
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index 69eb1df617..1a234d41c2 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -34,6 +34,7 @@
+ #include "system/memory.h"
+ #include "syndrome.h"
+ #include "cpu-features.h"
++#include "mmuidx-internal.h"
  
-     dst = auth_branch_target(s, cpu_reg(s, 30), cpu_X[31], !a->m);
--    gen_a64_set_pc(s, dst);
-+    if (s->gcs_en) {
-+        GCSInstructionType it = a->m ? GCS_IT_RET_PauthB : GCS_IT_RET_PauthA;
-+        gen_load_check_gcs_record(s, dst, it, 30);
-+    } else {
-+        gen_a64_set_pc(s, dst);
-+    }
-     s->base.is_jmp = DISAS_JUMP;
-     return true;
+ /* register banks for CPU modes */
+ #define BANK_USRSYS 0
+@@ -984,8 +985,6 @@ static inline ARMMMUIdx core_to_aa64_mmu_idx(int mmu_idx)
+     return mmu_idx | ARM_MMU_IDX_A;
  }
+ 
+-int arm_mmu_idx_to_el(ARMMMUIdx mmu_idx);
+-
+ /* Return the MMU index for a v7M CPU in the specified security state */
+ ARMMMUIdx arm_v7m_mmu_idx_for_secstate(CPUARMState *env, bool secstate);
+ 
+diff --git a/target/arm/mmuidx-internal.h b/target/arm/mmuidx-internal.h
+new file mode 100644
+index 0000000000..29bba4ecb5
+--- /dev/null
++++ b/target/arm/mmuidx-internal.h
+@@ -0,0 +1,29 @@
++/*
++ * QEMU Arm software mmu index internal definitions
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#ifndef TARGET_ARM_MMUIDX_INTERNAL_H
++#define TARGET_ARM_MMUIDX_INTERNAL_H
++
++#include "mmuidx.h"
++#include "tcg/debug-assert.h"
++#include "hw/registerfields.h"
++
++
++FIELD(MMUIDXINFO, EL, 0, 2)
++FIELD(MMUIDXINFO, ELVALID, 2, 1)
++
++extern const uint32_t arm_mmuidx_table[ARM_MMU_IDX_M + 8];
++
++#define arm_mmuidx_is_valid(x)  ((unsigned)(x) < ARRAY_SIZE(arm_mmuidx_table))
++
++/* Return the exception level associated with this mmu index. */
++static inline int arm_mmu_idx_to_el(ARMMMUIdx idx)
++{
++    tcg_debug_assert(arm_mmuidx_is_valid(idx));
++    tcg_debug_assert(FIELD_EX32(arm_mmuidx_table[idx], MMUIDXINFO, ELVALID));
++    return FIELD_EX32(arm_mmuidx_table[idx], MMUIDXINFO, EL);
++}
++
++#endif /* TARGET_ARM_MMUIDX_INTERNAL_H */
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index bd5321348a..b1d68da133 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -9653,33 +9653,6 @@ int fp_exception_el(CPUARMState *env, int cur_el)
+     return 0;
+ }
+ 
+-/* Return the exception level we're running at if this is our mmu_idx */
+-int arm_mmu_idx_to_el(ARMMMUIdx mmu_idx)
+-{
+-    if (mmu_idx & ARM_MMU_IDX_M) {
+-        return mmu_idx & ARM_MMU_IDX_M_PRIV;
+-    }
+-
+-    switch (mmu_idx) {
+-    case ARMMMUIdx_E10_0:
+-    case ARMMMUIdx_E20_0:
+-    case ARMMMUIdx_E30_0:
+-        return 0;
+-    case ARMMMUIdx_E10_1:
+-    case ARMMMUIdx_E10_1_PAN:
+-        return 1;
+-    case ARMMMUIdx_E2:
+-    case ARMMMUIdx_E20_2:
+-    case ARMMMUIdx_E20_2_PAN:
+-        return 2;
+-    case ARMMMUIdx_E3:
+-    case ARMMMUIdx_E30_3_PAN:
+-        return 3;
+-    default:
+-        g_assert_not_reached();
+-    }
+-}
+-
+ #ifndef CONFIG_TCG
+ ARMMMUIdx arm_v7m_mmu_idx_for_secstate(CPUARMState *env, bool secstate)
+ {
+diff --git a/target/arm/mmuidx.c b/target/arm/mmuidx.c
+new file mode 100644
+index 0000000000..309b1d68df
+--- /dev/null
++++ b/target/arm/mmuidx.c
+@@ -0,0 +1,41 @@
++/*
++ * QEMU Arm software mmu index definitions
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "qemu/osdep.h"
++#include "mmuidx-internal.h"
++
++
++#define EL(X)  ((X << R_MMUIDXINFO_EL_SHIFT) | R_MMUIDXINFO_ELVALID_MASK)
++
++const uint32_t arm_mmuidx_table[ARM_MMU_IDX_M + 8] = {
++    /*
++     * A-profile.
++     */
++    [ARMMMUIdx_E10_0]           = EL(0),
++    [ARMMMUIdx_E10_1]           = EL(1),
++    [ARMMMUIdx_E10_1_PAN]       = EL(1),
++
++    [ARMMMUIdx_E20_0]           = EL(0),
++    [ARMMMUIdx_E20_2]           = EL(2),
++    [ARMMMUIdx_E20_2_PAN]       = EL(2),
++
++    [ARMMMUIdx_E2]              = EL(2),
++
++    [ARMMMUIdx_E3]              = EL(3),
++    [ARMMMUIdx_E30_0]           = EL(0),
++    [ARMMMUIdx_E30_3_PAN]       = EL(3),
++
++    /*
++     * M-profile.
++     */
++    [ARMMMUIdx_MUser]           = EL(0),
++    [ARMMMUIdx_MPriv]           = EL(1),
++    [ARMMMUIdx_MUserNegPri]     = EL(0),
++    [ARMMMUIdx_MPrivNegPri]     = EL(1),
++    [ARMMMUIdx_MSUser]          = EL(0),
++    [ARMMMUIdx_MSPriv]          = EL(1),
++    [ARMMMUIdx_MSUserNegPri]    = EL(0),
++    [ARMMMUIdx_MSPrivNegPri]    = EL(1),
++};
+diff --git a/target/arm/meson.build b/target/arm/meson.build
+index 638ee62525..f9f0beef05 100644
+--- a/target/arm/meson.build
++++ b/target/arm/meson.build
+@@ -6,7 +6,12 @@ arm_ss.add(files(
+ 
+ arm_ss.add(when: 'TARGET_AARCH64', if_true: files(
+   'cpu64.c',
+-  'gdbstub64.c'))
++  'gdbstub64.c'
++))
++
++arm_common_ss.add(files(
++  'mmuidx.c',
++))
+ 
+ arm_system_ss = ss.source_set()
+ arm_common_system_ss = ss.source_set()
 -- 
 2.43.0
 

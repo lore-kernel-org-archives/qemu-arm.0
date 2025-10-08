@@ -4,86 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1EE56CCD184
-	for <qemu-arm@archiver.kernel.org>; Wed,  8 Oct 2025 22:11:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A18ECCA470
+	for <qemu-arm@archiver.kernel.org>; Wed,  8 Oct 2025 22:12:21 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v6cEl-0002Er-CS; Wed, 08 Oct 2025 18:02:19 -0400
+	id 1v6cD0-0000yT-U6; Wed, 08 Oct 2025 18:00:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1v6cDi-0001UT-8z
- for qemu-arm@nongnu.org; Wed, 08 Oct 2025 18:01:19 -0400
-Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433])
+ id 1v6cCh-0000Ej-Rl
+ for qemu-arm@nongnu.org; Wed, 08 Oct 2025 18:00:11 -0400
+Received: from mail-pf1-x42e.google.com ([2607:f8b0:4864:20::42e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1v6cCc-0007S1-MZ
- for qemu-arm@nongnu.org; Wed, 08 Oct 2025 18:01:08 -0400
-Received: by mail-pf1-x433.google.com with SMTP id
- d2e1a72fcca58-7930132f59aso412751b3a.0
- for <qemu-arm@nongnu.org>; Wed, 08 Oct 2025 15:00:04 -0700 (PDT)
+ id 1v6cCK-0007MO-W9
+ for qemu-arm@nongnu.org; Wed, 08 Oct 2025 18:00:08 -0400
+Received: by mail-pf1-x42e.google.com with SMTP id
+ d2e1a72fcca58-7833765433cso408459b3a.0
+ for <qemu-arm@nongnu.org>; Wed, 08 Oct 2025 14:59:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1759960802; x=1760565602; darn=nongnu.org;
+ d=linaro.org; s=google; t=1759960783; x=1760565583; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=cqQF3KdzeOa+e2b5cPo9hbNNnmvLOG1QQkCMhq6keuI=;
- b=M0MwX5LHQ83cJGB2UTZ8l8rsX48YMvPhfB2giaGo6hJvVDJgYXYVvRQcScRG1JRXEM
- 4FJJNd4aw8EaBueTUTHeKKWQTRF2hKhWfDNE1G194MbY1qIcsLgOGhoMgI6SYwVOTrcu
- hM6FHn6IIbR1KCXNWTA4lFmte04Iu9lSSFlHQyw7AtFEp5yhyZ/0rN6YehQ8n3D8rOFQ
- X7ohHjgMLic7GcVaUEg6W8Hf3O6/XFTDDnaJ2JbPlWxBpnwHscD4h84GIMYhZ74yEcOt
- p//3M4kUMe2bn3AGZtmwriSljeyA6VxcjlwskjRoUixZhKLdbyeAxuKy6jW85GjMP0AJ
- iztA==
+ bh=9NNf1WmXSTI58NaZyRuQIPA+gxIE0nBNVq/aWBPGCWw=;
+ b=fGmImTrHFR56+GkO8GF5KJzUD+8mNNKYiHtaAbNm3E1hNP+QSUt3/3s3Cc8rJikYlk
+ sYUJ+YK2Y6te8a4yE1bs1XjztOudg09uuYzTVh5fpEa9vO56tAfy1CkHaZbO38aHnf2S
+ auzES4JPQf+Scmr3b5M7w8OqHeEMYfdV3K6hwjFpJqJuCxRGnHLFxmy1UG1CwcVQBr5Q
+ Qo9EBxmaJKxok2jXJQ999vzDkQ82/nt3/GjZIEi0Uj2w/dNwdU8h8k/CbCaJCFrx06Oy
+ YqELFvtu4C40DzsvyZTTeEEn+HIfDke2dyN/TUrEkDGbXy5oRTGrVUxz2PNErGNFmXif
+ h6DQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759960802; x=1760565602;
+ d=1e100.net; s=20230601; t=1759960783; x=1760565583;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=cqQF3KdzeOa+e2b5cPo9hbNNnmvLOG1QQkCMhq6keuI=;
- b=B6Jk0J1lk6+6OqFvyqnl0C5xTYPfUteG3ytC7b9D27FDcP1sNqi8BCSAU/v92nTHSs
- zI0ligulKyGRixwVDcUv/VhbqLlZCyOD0PsT8k8KHLEcW5zmqFLyjqMqpKQ/iNx9a0+4
- MTBBkP13rYv5DZQekLDh+tr1inzh0OK09uM1Elh0zOjYpH5ua8JLXxsHkVJG1g5u9Vg+
- jAwaVE5UGe9gA8iWokecTlLKk27Q5UiHRe5lXgDiTQqDAFk9JtVQyMn9nY+crhaMEQVR
- l5vi9AUS41Yl88RDJMDDOUZgw+4nq8uMBLPEOPNZBWc9Uhnv1DewVDVlWYPdJehW5r7j
- 47PQ==
-X-Gm-Message-State: AOJu0YyzFOm2m7WYSWBqtAdC/WvBcCJ6u8Y8TFACcF1QDRFC70GAWBK6
- r31g1o1roUVmNxFENjdRMhG60zrDh6z+g6WfhVObKDbEAJtYFjo+s/GwoSohGTGeb/I=
-X-Gm-Gg: ASbGncv36MJq3LJV9S4rl7SDzJjv0gtQyZz12/MEZmG3w/urY/XO6gKJ+yuXeabvVJR
- byWLObrPJ2uKbUsO3CFK+sIGjULMDRpsJl/TjowcSmdwbfn23+Q/GgVdgPPvp2JQCEWixS47Zrr
- Uoc9vPdwb3bg9wgyjkSTjqaByJobJEd+zVLl2ClIBVc30UOjHAtSfIlLNy87HvIXbfWUR2TVp7T
- pOy4pazM1vkuMngDN3ps+5TauPNoSDdFlOsIQZCORXTQSQhhrwOMLr4id76PhfF2XGGfy1FZfaZ
- vhgeNdLunPawnwP3awTIfYKK8VyApsdhhxwWEcFLdraObd2//U6Ssori1ZurWv2E+cc5Gpf9dYk
- dtn8dy4jg+PpMex9H67AyonXnYK6xzctA/W//+ZWYCS/iIb5gw5pODyW1
-X-Google-Smtp-Source: AGHT+IEuN7QMzQZsApIjoT+KnOKnRZ0y1DzyjRktuKEFfv3COKFl2WgrI52Mt0sRMzOtHBdtbFvIDg==
-X-Received: by 2002:aa7:88d0:0:b0:792:574d:b25 with SMTP id
- d2e1a72fcca58-793858fb1f4mr6186771b3a.8.1759960801694; 
- Wed, 08 Oct 2025 15:00:01 -0700 (PDT)
+ bh=9NNf1WmXSTI58NaZyRuQIPA+gxIE0nBNVq/aWBPGCWw=;
+ b=h6AW6/mnVp8RVFPsTX41v4KIx0FQ/HF5wwzqXjA032AEK3SoW4Z4cvNAe8emkiyeP8
+ XQBRIfJOmyvxXAtFehaLr+fvtLMJpDRIWheWBRLfcoRHZDKH55aeoEBYzJv2j1UA7mT2
+ OdGkAr4mrBWYGx880CvpHoLv2llIs5p1uE5gJPVCalWHlRJhlhxJCLVKtb1126+YloDv
+ JMp4xfM0B1kzXk4EMiih5gSq/mBKuMmRclEcK9ulROS0CEYOXl0yPkP9ahoWiGcx3z4s
+ qGd8yD/ZcMLVpiOb0iIvh7DRkRU7eWIU1r8krYB0Hg8GFGa8vuDxLSWuiYdMFOUUVf5q
+ 3mUA==
+X-Gm-Message-State: AOJu0YxqAJCY11Hq91OOR6qXbdXNCP/TrDtp+wC0CnkJYVYqRxgo3wfl
+ 32lKIYTiFVVo6IEHN6khYL6Z5yfIEQ3J0RuL8vqmM6qr7rfr5OXyGsTWeL+/9cmRZFz7NeMz5ia
+ NlDwlUQA=
+X-Gm-Gg: ASbGncvtVEhBNrLEvXfqJrHOzj5dpOAF0tBO0Vbfa6/tNBpjUKoqZTabRTPOoHU1zlR
+ X+RDf1wznJIi/j/up22bSYcYSgSzgluPpjBVJNZN6hoFdCvMZDh3+f6wGoycTvp1QloCfK2I1j4
+ e/uxDz6W4NlvfZMvwj2eYBCawqJlWCBCvtCDWeHAhkAuIXPxVcLek4QDbDYqB+au82S7AGPIkad
+ yyHwoPYc3ZFYRNZgSmEpdanKldZKG9YXZcGoMaDcZDMrSlveGcqEQfk5AUjTE68L4p9IAlNNndo
+ 29cejp+DlJZGK//4vVT91XdhF8mgcX/+qGpVmBtr7HH8xOXT/8jRjuivDuCMZOAT5Z0oYrUdgD2
+ EKJTKkugZVL/vzfK6YC96r9yfZwJFERBmnS3AGzJzEMFf+6vbxfPLBIiCOYkYTs2GgSg=
+X-Google-Smtp-Source: AGHT+IEKraxerr7KDK+J1VWrt0poQ3RDi3rU4y3+Qr918KUA/Rks82Tgq3N3PJjmHnQt92ZDletBZw==
+X-Received: by 2002:a05:6a00:92a2:b0:781:16de:cc14 with SMTP id
+ d2e1a72fcca58-79387a23b05mr7098570b3a.32.1759960782683; 
+ Wed, 08 Oct 2025 14:59:42 -0700 (PDT)
 Received: from stoup.. ([71.212.157.132]) by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-794e1fc9db6sm740724b3a.66.2025.10.08.15.00.01
+ d2e1a72fcca58-794e1fc9db6sm740724b3a.66.2025.10.08.14.59.42
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 08 Oct 2025 15:00:01 -0700 (PDT)
+ Wed, 08 Oct 2025 14:59:42 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v7 71/73] tests/tcg/aarch64: Add gcsstr
-Date: Wed,  8 Oct 2025 14:56:11 -0700
-Message-ID: <20251008215613.300150-72-richard.henderson@linaro.org>
+Subject: [PATCH v7 43/73] target/arm: Introduce delay_exception{_el}
+Date: Wed,  8 Oct 2025 14:55:43 -0700
+Message-ID: <20251008215613.300150-44-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20251008215613.300150-1-richard.henderson@linaro.org>
 References: <20251008215613.300150-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::433;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x433.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42e;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -99,166 +100,141 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Add some infrastructure for testing gcs in userspace.
-Validate successful and trapped executions of GCSSTR.
+Add infrastructure to raise an exception out of line.
 
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- tests/tcg/aarch64/gcs.h           | 71 +++++++++++++++++++++++++++++++
- tests/tcg/aarch64/gcsstr.c        | 48 +++++++++++++++++++++
- tests/tcg/aarch64/Makefile.target |  5 +++
- 3 files changed, 124 insertions(+)
- create mode 100644 tests/tcg/aarch64/gcs.h
- create mode 100644 tests/tcg/aarch64/gcsstr.c
+ target/arm/tcg/translate.h     | 20 +++++++++++++
+ target/arm/tcg/translate-a64.c |  2 ++
+ target/arm/tcg/translate.c     | 53 ++++++++++++++++++++++++++++++++++
+ 3 files changed, 75 insertions(+)
 
-diff --git a/tests/tcg/aarch64/gcs.h b/tests/tcg/aarch64/gcs.h
-new file mode 100644
-index 0000000000..99cb4d4e38
---- /dev/null
-+++ b/tests/tcg/aarch64/gcs.h
-@@ -0,0 +1,71 @@
+diff --git a/target/arm/tcg/translate.h b/target/arm/tcg/translate.h
+index 943dfd45fe..9a85ea74db 100644
+--- a/target/arm/tcg/translate.h
++++ b/target/arm/tcg/translate.h
+@@ -21,9 +21,25 @@ typedef struct DisasLabel {
+     target_ulong pc_save;
+ } DisasLabel;
+ 
 +/*
-+ * Linux kernel fallback API definitions for GCS and test helpers.
-+ *
-+ * Copyright (c) 2025 Linaro Ltd
-+ * SPDX-License-Identifier: GPL-2.0-or-later
++ * Emit an exception call out of line.
 + */
++typedef struct DisasDelayException {
++    struct DisasDelayException *next;
++    TCGLabel *lab;
++    target_long pc_curr;
++    target_long pc_save;
++    int condexec_mask;
++    int condexec_cond;
++    uint32_t excp;
++    uint32_t syn;
++    uint32_t target_el;
++} DisasDelayException;
 +
-+#include <assert.h>
-+#include <string.h>
-+#include <stdlib.h>
-+#include <stdio.h>
-+#include <stdint.h>
-+#include <unistd.h>
-+#include <errno.h>
-+#include <signal.h>
-+#include <sys/mman.h>
-+#include <sys/prctl.h>
-+#include <sys/syscall.h>
+ typedef struct DisasContext {
+     DisasContextBase base;
+     const ARMISARegisters *isar;
++    DisasDelayException *delay_excp_list;
+ 
+     /* The address of the current instruction being translated. */
+     target_ulong pc_curr;
+@@ -365,6 +381,10 @@ void gen_exception_insn_el(DisasContext *s, target_long pc_diff, int excp,
+                            uint32_t syn, uint32_t target_el);
+ void gen_exception_insn(DisasContext *s, target_long pc_diff,
+                         int excp, uint32_t syn);
++TCGLabel *delay_exception_el(DisasContext *s, int excp,
++                             uint32_t syn, uint32_t target_el);
++TCGLabel *delay_exception(DisasContext *s, int excp, uint32_t syn);
++void emit_delayed_exceptions(DisasContext *s);
+ 
+ /* Return state of Alternate Half-precision flag, caller frees result */
+ static inline TCGv_i32 get_ahp_flag(void)
+diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
+index 1337e16a96..c037119cdf 100644
+--- a/target/arm/tcg/translate-a64.c
++++ b/target/arm/tcg/translate-a64.c
+@@ -10601,6 +10601,8 @@ static void aarch64_tr_tb_stop(DisasContextBase *dcbase, CPUState *cpu)
+             break;
+         }
+     }
 +
-+#ifndef PR_GET_SHADOW_STACK_STATUS
-+#define PR_GET_SHADOW_STACK_STATUS	74
-+#endif
-+#ifndef PR_SET_SHADOW_STACK_STATUS
-+#define PR_SET_SHADOW_STACK_STATUS      75
-+#endif
-+#ifndef PR_LOCK_SHADOW_STACK_STATUS
-+#define PR_LOCK_SHADOW_STACK_STATUS     76
-+#endif
-+#ifndef PR_SHADOW_STACK_ENABLE
-+# define PR_SHADOW_STACK_ENABLE         (1 << 0)
-+# define PR_SHADOW_STACK_WRITE		(1 << 1)
-+# define PR_SHADOW_STACK_PUSH		(1 << 2)
-+#endif
-+#ifndef SHADOW_STACK_SET_TOKEN
-+#define SHADOW_STACK_SET_TOKEN          (1 << 0)
-+#endif
-+#ifndef SHADOW_STACK_SET_MARKER
-+#define SHADOW_STACK_SET_MARKER         (1 << 1)
-+#endif
-+#ifndef SEGV_CPERR
-+#define SEGV_CPERR  10
-+#endif
-+#ifndef __NR_map_shadow_stack
-+#define __NR_map_shadow_stack  453
-+#endif
-+
-+/*
-+ * Macros, and implement the syscall inline, lest we fail
-+ * the checked return from any function call.
-+ */
-+#define enable_gcs(flags) \
-+    do {                                                                     \
-+        register long num  __asm__ ("x8") = __NR_prctl;                      \
-+        register long arg1 __asm__ ("x0") = PR_SET_SHADOW_STACK_STATUS;      \
-+        register long arg2 __asm__ ("x1") = PR_SHADOW_STACK_ENABLE | flags;  \
-+        register long arg3 __asm__ ("x2") = 0;                               \
-+        register long arg4 __asm__ ("x3") = 0;                               \
-+        register long arg5 __asm__ ("x4") = 0;                               \
-+        asm volatile("svc #0"                                                \
-+                     : "+r"(arg1)                                            \
-+                     : "r"(arg2), "r"(arg3), "r"(arg4), "r"(arg5), "r"(num)  \
-+                     : "memory", "cc");                                      \
-+        if (arg1) {                                                          \
-+            errno = -arg1;                                                   \
-+            perror("PR_SET_SHADOW_STACK_STATUS");                            \
-+            exit(2);                                                         \
-+        }                                                                    \
-+    } while (0)
-+
-+#define gcspr() \
-+    ({ uint64_t *r; asm volatile("mrs %0, s3_3_c2_c5_1" : "=r"(r)); r; })
-diff --git a/tests/tcg/aarch64/gcsstr.c b/tests/tcg/aarch64/gcsstr.c
-new file mode 100644
-index 0000000000..b045aee925
---- /dev/null
-+++ b/tests/tcg/aarch64/gcsstr.c
-@@ -0,0 +1,48 @@
-+/* SPDX-License-Identifier: GPL-2.0-or-later */
-+
-+#include "gcs.h"
-+
-+/*
-+ * A single garbage store to the gcs stack.
-+ * The asm inside must be unique, so disallow inlining.
-+ */
-+void __attribute__((noinline))
-+test_gcsstr(void)
++    emit_delayed_exceptions(dc);
+ }
+ 
+ const TranslatorOps aarch64_translator_ops = {
+diff --git a/target/arm/tcg/translate.c b/target/arm/tcg/translate.c
+index e62dcc5d85..78d26aac04 100644
+--- a/target/arm/tcg/translate.c
++++ b/target/arm/tcg/translate.c
+@@ -1088,6 +1088,57 @@ void gen_exception_insn(DisasContext *s, target_long pc_diff,
+     s->base.is_jmp = DISAS_NORETURN;
+ }
+ 
++TCGLabel *delay_exception_el(DisasContext *s, int excp,
++                             uint32_t syn, uint32_t target_el)
 +{
-+    register uint64_t *ptr __asm__("x0") = gcspr();
-+    /* GCSSTR x1, x0 */
-+    __asm__("inst_gcsstr: .inst 0xd91f1c01" : : "r"(--ptr));
-+}
++    /* Use tcg_malloc for automatic release on longjmp out of translation. */
++    DisasDelayException *e = tcg_malloc(sizeof(DisasDelayException));
 +
-+static void test_sigsegv(int sig, siginfo_t *info, void *vuc)
-+{
-+    ucontext_t *uc = vuc;
-+    uint64_t inst_gcsstr;
++    memset(e, 0, sizeof(*e));
 +
-+    __asm__("adr %0, inst_gcsstr" : "=r"(inst_gcsstr));
-+    assert(uc->uc_mcontext.pc == inst_gcsstr);
-+    assert(info->si_code == SEGV_CPERR);
-+    /* TODO: Dig for ESR and verify syndrome. */
-+    exit(0);
-+}
-+
-+int main()
-+{
-+    struct sigaction sa = {
-+        .sa_sigaction = test_sigsegv,
-+        .sa_flags = SA_SIGINFO,
-+    };
-+
-+    /* Enable GCSSTR and test the store succeeds. */
-+    enable_gcs(PR_SHADOW_STACK_WRITE);
-+    test_gcsstr();
-+
-+    /* Disable GCSSTR and test the resulting sigsegv. */
-+    enable_gcs(0);
-+    if (sigaction(SIGSEGV, &sa, NULL) < 0) {
-+        perror("sigaction");
-+        exit(1);
++    /* Save enough of the current state to satisfy gen_exception_insn. */
++    e->pc_curr = s->pc_curr;
++    e->pc_save = s->pc_save;
++    if (!s->aarch64) {
++        e->condexec_cond = s->condexec_cond;
++        e->condexec_mask = s->condexec_mask;
 +    }
-+    test_gcsstr();
-+    abort();
-+}
-diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
-index 1755874bee..5e1b3a3385 100644
---- a/tests/tcg/aarch64/Makefile.target
-+++ b/tests/tcg/aarch64/Makefile.target
-@@ -75,6 +75,11 @@ AARCH64_TESTS += $(SME_TESTS)
- $(SME_TESTS): CFLAGS += $(CROSS_AS_HAS_ARMV9_SME)
- endif
- 
-+# GCS Tests
-+GCS_TESTS += gcsstr
-+AARCH64_TESTS += $(GCS_TESTS)
-+$(GCS_TESTS): gcs.h
 +
- # System Registers Tests
- AARCH64_TESTS += sysregs
++    e->excp = excp;
++    e->syn = syn;
++    e->target_el = target_el;
++
++    e->next = s->delay_excp_list;
++    s->delay_excp_list = e;
++
++    e->lab = gen_new_label();
++    return e->lab;
++}
++
++TCGLabel *delay_exception(DisasContext *s, int excp, uint32_t syn)
++{
++    return delay_exception_el(s, excp, syn, 0);
++}
++
++void emit_delayed_exceptions(DisasContext *s)
++{
++    for (DisasDelayException *e = s->delay_excp_list; e ; e = e->next) {
++        gen_set_label(e->lab);
++
++        /* Restore the insn state to satisfy gen_exception_insn. */
++        s->pc_curr = e->pc_curr;
++        s->pc_save = e->pc_save;
++        s->condexec_cond = e->condexec_cond;
++        s->condexec_mask = e->condexec_mask;
++
++        if (e->target_el) {
++            gen_exception_insn_el(s, 0, e->excp, e->syn, e->target_el);
++        } else {
++            gen_exception_insn(s, 0, e->excp, e->syn);
++        }
++    }
++}
++
+ static void gen_exception_bkpt_insn(DisasContext *s, uint32_t syn)
+ {
+     gen_set_condexec(s);
+@@ -6791,6 +6842,8 @@ static void arm_tr_tb_stop(DisasContextBase *dcbase, CPUState *cpu)
+             gen_goto_tb(dc, 1, curr_insn_len(dc));
+         }
+     }
++
++    emit_delayed_exceptions(dc);
+ }
  
+ static const TranslatorOps arm_translator_ops = {
 -- 
 2.43.0
 

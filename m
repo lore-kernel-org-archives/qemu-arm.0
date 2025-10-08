@@ -4,88 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCF81CCA470
-	for <qemu-arm@archiver.kernel.org>; Wed,  8 Oct 2025 22:07:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8FF9CAC5BB
+	for <qemu-arm@archiver.kernel.org>; Wed,  8 Oct 2025 22:07:47 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v6c9z-0004F1-L3; Wed, 08 Oct 2025 17:57:24 -0400
+	id 1v6cD1-0000zP-CA; Wed, 08 Oct 2025 18:00:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1v6c9x-0004Ds-N9
- for qemu-arm@nongnu.org; Wed, 08 Oct 2025 17:57:21 -0400
-Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
+ id 1v6cCj-0000Lb-B2
+ for qemu-arm@nongnu.org; Wed, 08 Oct 2025 18:00:14 -0400
+Received: from mail-pf1-x42e.google.com ([2607:f8b0:4864:20::42e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1v6c9A-0006fj-Cy
- for qemu-arm@nongnu.org; Wed, 08 Oct 2025 17:57:17 -0400
-Received: by mail-pl1-x62a.google.com with SMTP id
- d9443c01a7336-2897522a1dfso3038215ad.1
- for <qemu-arm@nongnu.org>; Wed, 08 Oct 2025 14:56:28 -0700 (PDT)
+ id 1v6cCM-0007Nj-KM
+ for qemu-arm@nongnu.org; Wed, 08 Oct 2025 18:00:12 -0400
+Received: by mail-pf1-x42e.google.com with SMTP id
+ d2e1a72fcca58-78125ed4052so366888b3a.0
+ for <qemu-arm@nongnu.org>; Wed, 08 Oct 2025 14:59:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1759960586; x=1760565386; darn=nongnu.org;
+ d=linaro.org; s=google; t=1759960788; x=1760565588; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=qzsy8UIkvSbR8Kg1jCRAVhHmlPSWiDpdwP0nL6me4gI=;
- b=vNnKFEs/XFa1BXNuJremp2iymNnqSE5DPc+O+oF0284JhYg4K5ilnayZFStfEAJp4j
- EYiG2woceYfRsZQXKFaXFuK6RfWbCKZ3ujeZpb2hP8hEug6eM/GhzKRGRzpIppCG3qYw
- AMJsAoCpttpdbVbR8I0Kz2oK4YcmBAoEa1oNB/QAC1T+Ia+feHdwx6+04edHgAo3RuwZ
- idio0IBAAToHXV4bRSa9+tb/6SN3YY4UVi0BmOdBxn5D/fK4TEqcUVmjNZMGf7tRHnll
- Hz2d3HOnWhfiYr7g/8xbWYh7NvU4ouQSOiqdrrR3tbxpptglZscUhy+wIp1YIl8P97eZ
- jzVQ==
+ bh=haWkr5zcG8B/3n1QyPkLOF9ZaZicyh1Td0H0H9j7CZE=;
+ b=F/zNpplECFb7kGgL6YA62FwgS5VxlrwMR/OgJpXlkdN7tnQ1XSrtI2x2PQ5+ME3pel
+ Oluv5+AKlp80xu/XiQ8V6bhsIPlY+K4L3tcH6sRO85Cca1nzhm8T8AGEouMY6TQKLkrX
+ vmNGXYxxMSy5nYx+XpiwSKKERWspZH/P9rkHXbCKxaC7iC7q92cFEW0AGyacrQJ8LRax
+ 2WfCSwWDZUiO7iZOcPAoZJsbQ41vgR7SCYvk8fzTrOc7NxLcEw/DREvdJujVk99FdcEL
+ AneqcRlxWCvoKoJp2SJd08lsRy1wti+xCogEEo0qumfFJJtOt+ZbC1B84FTjDDkcdJ/G
+ u1FQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759960586; x=1760565386;
+ d=1e100.net; s=20230601; t=1759960788; x=1760565588;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=qzsy8UIkvSbR8Kg1jCRAVhHmlPSWiDpdwP0nL6me4gI=;
- b=KvXwHF/PKQMbfQllu0L6piqAgStHGK4ndwddD+lv4TZgOw6qwE5HBRCiisu5Ty3OWc
- U/zc/JkfNhhFKGRf8bG2fXf3nsMzPemhqvvECLIsBeOB609D8QwYUPAUwidyw9bDazyV
- WZfMiqo96i+6ydmh/cUAjlmtDJ1QNNnU5+fbc1OoovOlxL7oyE66sYeFcoAEBRodI5Zt
- SVuAs9NrJ4RZJxPhC/9mcmU6KtWuNIt0X8lgXTPwcSAoTnOYoKi2n/A13SPk0CaENlK7
- uEIBhTwggAOZLen+oTUFWx9hS60k7Z0W772Kf31SNfJGKPZ8De/hlAYXzon0qFeFpIMG
- xiiQ==
-X-Gm-Message-State: AOJu0YwK9sLm9sEmb/XfFg7nMXataQnv6gAG9Q+iNmfxn9bk7GfU1W/l
- MEXZpwxEtTXQjyLMd72rQRD0oHNIpEQxL1jC1SCjOhOK5aaBM0rB3jkX2o9UzOCRR/4=
-X-Gm-Gg: ASbGncs0c9OcWb7dR2NswFd+JLS2ZK/wJlkKACyBUrs+QzKEZ234aURAXA/PNaIra/X
- Eo0MY3HM5pSabRqFXYcHt2LBabCYChj2zWPKMbRn/8gLchwVKjfuONn8gQwHDvKqC578Vy6ukQ8
- gTe0WHYvjzyezYxcLU57rr3IrqIGUdSQ0Mk2VeB1bZOT8BfTaZ/GJklDoWhUGSlwGLhyecUDShA
- dMPNqBTtdd5m2VfFKCi+DZqXSWRl15EwyQzh4b37DDSJhEMv4FrLwWEheV5odjC/gglpTFDG5X0
- BHuJfpSVQXrW1Nba7oDiJHXLROIgFCqnhja6yv8Pt6X5OKvN29a1LpFyb4wZnlmUo8gFoWl6Y7E
- gfsIlLoChumsPtqrqmQaTgAySXqwltlKKKbk72gL3+c6glNrowPUJiu66
-X-Google-Smtp-Source: AGHT+IEwlHX/8EnLdH4c85UaTvP52ALAyNoUvPA/bnHog84SQcD00uS4SICW3vp5tcTLSG2f10GJzQ==
-X-Received: by 2002:a17:902:e788:b0:286:456f:8c8a with SMTP id
- d9443c01a7336-290272dfad8mr61813815ad.50.1759960586067; 
- Wed, 08 Oct 2025 14:56:26 -0700 (PDT)
+ bh=haWkr5zcG8B/3n1QyPkLOF9ZaZicyh1Td0H0H9j7CZE=;
+ b=jPpc/ohKdZc6jLCx3BO+I5XZt8NlBuBQsWWDk93ww53HtUHJx0kL982ZYdLkEf+MVI
+ 832nIfJVq+DnyT/2gvooKSArV002d/MprR7H7hOypobHsBACY+FuIlt68JS03QTr0G7S
+ pfUxacXvOdA+xK/7M7QAL+O4HR/Hh1aWdbsBWNZFvQiE6djW9VGxu9yOX43V6wj+sDDC
+ EThDnd88Q5/l940s5DSCh1AFo5SimLiM/NxquRT3YqYuthkupZHXNSAvsajVNOaojjIx
+ b1MX/qLq9IkDDr+T4ot8WhhxwHviFPJFMhNPij32r3ghfFYvzIAslCVPsJM3xYDWBBho
+ qp9A==
+X-Gm-Message-State: AOJu0YxR92wodJWPpmeMBLJpWd29Prfpn9hJHelguQLNt4LODLJyvDbH
+ nRNvgXjuMMRNhl5SX5vyp377yods36kQxPQMlbRrPVxsONnumLFjbvVWpZKWhkIvomODn6B4khA
+ ggi1Rquw=
+X-Gm-Gg: ASbGncuMIfDFkrGU0Cs++nwM/5BQMkeiunVdaHyIvAtc7BrSqE8zNox2AxtZnJTFp0P
+ bu3/HAvvPicpGhF8WyV9OpNmQT4LKWWiu0uwPoH65Ryi+hYsqloCpUtSOw1rfvnquuD24oR2zE1
+ 7l17EmKe9LIAa+MQUwRFJwwQWTuY34ZMlt1uaNpvKzdBQaiiWDtBHNng+KSpE72fNzdfDUsq4HQ
+ fHBqCZLjjC7CFSDFO1BPWZJmUk/tLklCNlc0WeCg/r6bU2073kQFZh0s8CG5s0H+IinMo1WP8ym
+ V7ib3Sm2rXpX4j1gCx7042hGqSLI9FccdiAX+2DKOzcVPYr49uz6LQ81E0FE2i057EXN3jcV3GC
+ yZe7Icx1KIK3rVEB59Xfg6QEVYQY258umX8GuiBFWscrppfi0veYn5Xax9jDxTI2ZWpM=
+X-Google-Smtp-Source: AGHT+IFUoG8nmSQ8vrvXqn3p1yUZVrRADG7UJeQceFZJhuigs3UZPjE3PKPrYVufJ08qdyYpoZCcOw==
+X-Received: by 2002:a05:6a00:23d4:b0:77f:3ceb:92bb with SMTP id
+ d2e1a72fcca58-793858fb3b6mr6000776b3a.8.1759960788189; 
+ Wed, 08 Oct 2025 14:59:48 -0700 (PDT)
 Received: from stoup.. ([71.212.157.132]) by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-29034e44ef9sm7354285ad.52.2025.10.08.14.56.25
+ d2e1a72fcca58-794e1fc9db6sm740724b3a.66.2025.10.08.14.59.47
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 08 Oct 2025 14:56:25 -0700 (PDT)
+ Wed, 08 Oct 2025 14:59:47 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v7 17/73] target/arm: Convert arm_mmu_idx_to_el from switch to
- table
-Date: Wed,  8 Oct 2025 14:55:17 -0700
-Message-ID: <20251008215613.300150-18-richard.henderson@linaro.org>
+	Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Subject: [PATCH v7 51/73] target/arm: Implement GCSPOPX
+Date: Wed,  8 Oct 2025 14:55:51 -0700
+Message-ID: <20251008215613.300150-52-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20251008215613.300150-1-richard.henderson@linaro.org>
 References: <20251008215613.300150-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62a;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62a.google.com
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
- DKIM_SIGNED=0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42e;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -101,182 +100,93 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-In an effort to keep all ARMMMUIdx data in one place, begin construction
-of an info table describing all of the properties of the mmu_idx.  Begin
-with the access EL.
-
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/internals.h       |  3 +--
- target/arm/mmuidx-internal.h | 29 +++++++++++++++++++++++++
- target/arm/helper.c          | 27 ------------------------
- target/arm/mmuidx.c          | 41 ++++++++++++++++++++++++++++++++++++
- target/arm/meson.build       |  7 +++++-
- 5 files changed, 77 insertions(+), 30 deletions(-)
- create mode 100644 target/arm/mmuidx-internal.h
- create mode 100644 target/arm/mmuidx.c
+ target/arm/cpregs.h            |  1 +
+ target/arm/cpregs-gcs.c        |  3 +++
+ target/arm/tcg/translate-a64.c | 35 ++++++++++++++++++++++++++++++++++
+ 3 files changed, 39 insertions(+)
 
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 69eb1df617..1a234d41c2 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -34,6 +34,7 @@
- #include "system/memory.h"
- #include "syndrome.h"
- #include "cpu-features.h"
-+#include "mmuidx-internal.h"
+diff --git a/target/arm/cpregs.h b/target/arm/cpregs.h
+index 909916b7fd..ccf45fd136 100644
+--- a/target/arm/cpregs.h
++++ b/target/arm/cpregs.h
+@@ -51,6 +51,7 @@ enum {
+     ARM_CP_GCSPUSHM              = 0x0008,
+     ARM_CP_GCSPOPM               = 0x0009,
+     ARM_CP_GCSPUSHX              = 0x000a,
++    ARM_CP_GCSPOPX               = 0x000b,
  
- /* register banks for CPU modes */
- #define BANK_USRSYS 0
-@@ -984,8 +985,6 @@ static inline ARMMMUIdx core_to_aa64_mmu_idx(int mmu_idx)
-     return mmu_idx | ARM_MMU_IDX_A;
+     /* Flag: reads produce resetvalue; writes ignored. */
+     ARM_CP_CONST                 = 1 << 4,
+diff --git a/target/arm/cpregs-gcs.c b/target/arm/cpregs-gcs.c
+index e6c7025d02..5b5b895a09 100644
+--- a/target/arm/cpregs-gcs.c
++++ b/target/arm/cpregs-gcs.c
+@@ -120,6 +120,9 @@ static const ARMCPRegInfo gcs_reginfo[] = {
+       .opc0 = 1, .opc1 = 0, .crn = 7, .crm = 7, .opc2 = 4,
+       .access = PL1_W, .accessfn = access_gcspushx, .fgt = FGT_NGCSEPP,
+       .type = ARM_CP_GCSPUSHX },
++    { .name = "GCSPOPX", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 0, .crn = 7, .crm = 7, .opc2 = 6,
++      .access = PL1_W, .type = ARM_CP_GCSPOPX },
+ };
+ 
+ void define_gcs_cpregs(ARMCPU *cpu)
+diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
+index 0df1916d28..72b912a605 100644
+--- a/target/arm/tcg/translate-a64.c
++++ b/target/arm/tcg/translate-a64.c
+@@ -2568,6 +2568,33 @@ static void gen_gcspushx(DisasContext *s)
+     clear_pstate_bits(PSTATE_EXLOCK);
  }
  
--int arm_mmu_idx_to_el(ARMMMUIdx mmu_idx);
--
- /* Return the MMU index for a v7M CPU in the specified security state */
- ARMMMUIdx arm_v7m_mmu_idx_for_secstate(CPUARMState *env, bool secstate);
- 
-diff --git a/target/arm/mmuidx-internal.h b/target/arm/mmuidx-internal.h
-new file mode 100644
-index 0000000000..29bba4ecb5
---- /dev/null
-+++ b/target/arm/mmuidx-internal.h
-@@ -0,0 +1,29 @@
-+/*
-+ * QEMU Arm software mmu index internal definitions
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#ifndef TARGET_ARM_MMUIDX_INTERNAL_H
-+#define TARGET_ARM_MMUIDX_INTERNAL_H
-+
-+#include "mmuidx.h"
-+#include "tcg/debug-assert.h"
-+#include "hw/registerfields.h"
-+
-+
-+FIELD(MMUIDXINFO, EL, 0, 2)
-+FIELD(MMUIDXINFO, ELVALID, 2, 1)
-+
-+extern const uint32_t arm_mmuidx_table[ARM_MMU_IDX_M + 8];
-+
-+#define arm_mmuidx_is_valid(x)  ((unsigned)(x) < ARRAY_SIZE(arm_mmuidx_table))
-+
-+/* Return the exception level associated with this mmu index. */
-+static inline int arm_mmu_idx_to_el(ARMMMUIdx idx)
++static void gen_gcspopx(DisasContext *s)
 +{
-+    tcg_debug_assert(arm_mmuidx_is_valid(idx));
-+    tcg_debug_assert(FIELD_EX32(arm_mmuidx_table[idx], MMUIDXINFO, ELVALID));
-+    return FIELD_EX32(arm_mmuidx_table[idx], MMUIDXINFO, EL);
++    TCGv_i64 gcspr = cpu_gcspr[s->current_el];
++    int mmuidx = core_gcs_mem_index(s->mmu_idx);
++    MemOp mop = finalize_memop(s, MO_64 | MO_ALIGN);
++    TCGv_i64 addr = tcg_temp_new_i64();
++    TCGv_i64 tmp = tcg_temp_new_i64();
++    TCGLabel *fail_label =
++        delay_exception(s, EXCP_UDEF, syn_gcs_data_check(GCS_IT_GCSPOPX, 31));
++
++    /* The value at top-of-stack must be an exception token. */
++    tcg_gen_qemu_ld_i64(tmp, gcspr, mmuidx, mop);
++    tcg_gen_brcondi_i64(TCG_COND_NE, tmp, 0b1001, fail_label);
++
++    /*
++     * The other three values in the exception return record
++     * are ignored, but are loaded anyway to raise faults.
++     */
++    tcg_gen_addi_i64(addr, gcspr, 8);
++    tcg_gen_qemu_ld_i64(tmp, addr, mmuidx, mop);
++    tcg_gen_addi_i64(addr, addr, 8);
++    tcg_gen_qemu_ld_i64(tmp, addr, mmuidx, mop);
++    tcg_gen_addi_i64(addr, addr, 8);
++    tcg_gen_qemu_ld_i64(tmp, addr, mmuidx, mop);
++    tcg_gen_addi_i64(gcspr, addr, 8);
 +}
 +
-+#endif /* TARGET_ARM_MMUIDX_INTERNAL_H */
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index bd5321348a..b1d68da133 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -9653,33 +9653,6 @@ int fp_exception_el(CPUARMState *env, int cur_el)
-     return 0;
- }
- 
--/* Return the exception level we're running at if this is our mmu_idx */
--int arm_mmu_idx_to_el(ARMMMUIdx mmu_idx)
--{
--    if (mmu_idx & ARM_MMU_IDX_M) {
--        return mmu_idx & ARM_MMU_IDX_M_PRIV;
--    }
--
--    switch (mmu_idx) {
--    case ARMMMUIdx_E10_0:
--    case ARMMMUIdx_E20_0:
--    case ARMMMUIdx_E30_0:
--        return 0;
--    case ARMMMUIdx_E10_1:
--    case ARMMMUIdx_E10_1_PAN:
--        return 1;
--    case ARMMMUIdx_E2:
--    case ARMMMUIdx_E20_2:
--    case ARMMMUIdx_E20_2_PAN:
--        return 2;
--    case ARMMMUIdx_E3:
--    case ARMMMUIdx_E30_3_PAN:
--        return 3;
--    default:
--        g_assert_not_reached();
--    }
--}
--
- #ifndef CONFIG_TCG
- ARMMMUIdx arm_v7m_mmu_idx_for_secstate(CPUARMState *env, bool secstate)
- {
-diff --git a/target/arm/mmuidx.c b/target/arm/mmuidx.c
-new file mode 100644
-index 0000000000..309b1d68df
---- /dev/null
-+++ b/target/arm/mmuidx.c
-@@ -0,0 +1,41 @@
-+/*
-+ * QEMU Arm software mmu index definitions
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "mmuidx-internal.h"
-+
-+
-+#define EL(X)  ((X << R_MMUIDXINFO_EL_SHIFT) | R_MMUIDXINFO_ELVALID_MASK)
-+
-+const uint32_t arm_mmuidx_table[ARM_MMU_IDX_M + 8] = {
-+    /*
-+     * A-profile.
-+     */
-+    [ARMMMUIdx_E10_0]           = EL(0),
-+    [ARMMMUIdx_E10_1]           = EL(1),
-+    [ARMMMUIdx_E10_1_PAN]       = EL(1),
-+
-+    [ARMMMUIdx_E20_0]           = EL(0),
-+    [ARMMMUIdx_E20_2]           = EL(2),
-+    [ARMMMUIdx_E20_2_PAN]       = EL(2),
-+
-+    [ARMMMUIdx_E2]              = EL(2),
-+
-+    [ARMMMUIdx_E3]              = EL(3),
-+    [ARMMMUIdx_E30_0]           = EL(0),
-+    [ARMMMUIdx_E30_3_PAN]       = EL(3),
-+
-+    /*
-+     * M-profile.
-+     */
-+    [ARMMMUIdx_MUser]           = EL(0),
-+    [ARMMMUIdx_MPriv]           = EL(1),
-+    [ARMMMUIdx_MUserNegPri]     = EL(0),
-+    [ARMMMUIdx_MPrivNegPri]     = EL(1),
-+    [ARMMMUIdx_MSUser]          = EL(0),
-+    [ARMMMUIdx_MSPriv]          = EL(1),
-+    [ARMMMUIdx_MSUserNegPri]    = EL(0),
-+    [ARMMMUIdx_MSPrivNegPri]    = EL(1),
-+};
-diff --git a/target/arm/meson.build b/target/arm/meson.build
-index 638ee62525..f9f0beef05 100644
---- a/target/arm/meson.build
-+++ b/target/arm/meson.build
-@@ -6,7 +6,12 @@ arm_ss.add(files(
- 
- arm_ss.add(when: 'TARGET_AARCH64', if_true: files(
-   'cpu64.c',
--  'gdbstub64.c'))
-+  'gdbstub64.c'
-+))
-+
-+arm_common_ss.add(files(
-+  'mmuidx.c',
-+))
- 
- arm_system_ss = ss.source_set()
- arm_common_system_ss = ss.source_set()
+ /*
+  * Look up @key, returning the cpreg, which must exist.
+  * Additionally, the new cpreg must also be accessible.
+@@ -2893,6 +2920,14 @@ static void handle_sys(DisasContext *s, bool isread,
+             gen_gcspushx(s);
+         }
+         return;
++    case ARM_CP_GCSPOPX:
++        /* Choose the CONSTRAINED UNPREDICTABLE for UNDEF. */
++        if (rt != 31) {
++            unallocated_encoding(s);
++        } else if (s->gcs_en) {
++            gen_gcspopx(s);
++        }
++        return;
+     default:
+         g_assert_not_reached();
+     }
 -- 
 2.43.0
 

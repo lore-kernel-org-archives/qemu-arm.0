@@ -4,119 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C54E0CCD183
-	for <qemu-arm@archiver.kernel.org>; Wed,  8 Oct 2025 16:15:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4DB76CAC5BB
+	for <qemu-arm@archiver.kernel.org>; Wed,  8 Oct 2025 19:48:19 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v6WoM-0001nZ-F9; Wed, 08 Oct 2025 12:14:42 -0400
+	id 1v6a8h-0003nk-AH; Wed, 08 Oct 2025 15:47:55 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1v6WoE-0001m9-JG
- for qemu-arm@nongnu.org; Wed, 08 Oct 2025 12:14:35 -0400
-Received: from smtpout4.mo529.mail-out.ovh.net ([217.182.185.173])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1v6Wo4-0004gs-II
- for qemu-arm@nongnu.org; Wed, 08 Oct 2025 12:14:34 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.109.254.128])
- by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 4chdNy3K5Yz5vqn;
- Wed,  8 Oct 2025 16:14:09 +0000 (UTC)
-Received: from kaod.org (37.59.142.96) by DAG8EX2.mxp5.local (172.16.2.72)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.59; Wed, 8 Oct
- 2025 18:14:09 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-96R001108fd7b1-4cdc-43d3-a742-be5c593f9b66,
- 8C34243C2A945F502B3A5846113D703BCD413F3E) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <73c1f147-8251-48ff-8b3d-84afeb6b3186@kaod.org>
-Date: Wed, 8 Oct 2025 18:14:08 +0200
+ (Exim 4.90_1) (envelope-from <daan.j.demeyer@gmail.com>)
+ id 1v6ZfW-0005IJ-R3
+ for qemu-arm@nongnu.org; Wed, 08 Oct 2025 15:17:46 -0400
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <daan.j.demeyer@gmail.com>)
+ id 1v6ZfP-0001Ao-1f
+ for qemu-arm@nongnu.org; Wed, 08 Oct 2025 15:17:46 -0400
+Received: by mail-wm1-x32a.google.com with SMTP id
+ 5b1f17b1804b1-46e34052bb7so2325525e9.2
+ for <qemu-arm@nongnu.org>; Wed, 08 Oct 2025 12:17:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1759951053; x=1760555853; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=wjbuii0e1CL3zO3/XrtXR2PE1uALl+U9fRi/tNA5Kig=;
+ b=JvHlRD9AvuppI7+Hp9kb0t3UowIuvJH7dC49UPTGqgylB5fNLRF9xMhPBBlaV8YZd0
+ nlLAwb4z02jI8rXGNKmbmPqgsrPZOl/EiqF0ZtbUh2ToZr1c3mbOB2LEQE/Od8MiPzLo
+ jsJB08PxcUV9wDZIqKXlXdslt2meSarvPBlYyF7p4lmOC9V/hAewCmmC4+ARf2qlapJz
+ yIAaxI7K4ZwwLeBxCJG1by38M8PdKtpuFaprmyAPInhXRDmo3fgJM51Vm1AdiRI9hoVp
+ 0rRlrqVx35yAOToFUlbshlP/c+GaOe1VwYEIkHvagh+EVXwa1HKoqDIFPn94ya7LHC9P
+ VQZQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1759951053; x=1760555853;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=wjbuii0e1CL3zO3/XrtXR2PE1uALl+U9fRi/tNA5Kig=;
+ b=O3tFMbizX4pVqmB8W6dW0fpqP3TZCYerSPG4NPHa60lpj0/5dvR4M8OhP6D7meajOU
+ ifLYEwi9PGPyZnZpjmdriTBvzCDwkKutOUWUXf/vVnrknefGi3uG2rhY/B5j928giVsM
+ 3i35yRlqlBuIQtiyKsE93FmgG9F1QdLXGL/eWGPZviOJUx5/INBQkMkEoshEe3iigRzn
+ 0II4we1OgWaMCJmANlAOnDfP7ljeDa1Pdj0k7QyneNEfmgrJeNUoL54fQoiji+oPbuyz
+ hOWyTQmbpAhEkEmWureMaetSSaR9BfUPdwVOikFynbM8zYDfKJk5yMahBaCkkfeMI2Ld
+ eIBQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUF1LM2IqufLVOq6/f62iicT/CRnIi0qYcxTTIsn4Rqr3fQhtlyVSmnraObr4xZPdnTt2THQTn3ZQ==@nongnu.org
+X-Gm-Message-State: AOJu0YxRxcHyKXyi+ajoy29PwvsJAIxRCcm7WNvvWy3jz2/yP3ATCa/W
+ 3HN/IGIGXN5e2A1Kel25BcvRQgjRC4bVDqG8Y2TW5Z60Ysr/1sYk44tZ
+X-Gm-Gg: ASbGncu5lv/BpCBgSt2+81to3+w3TMhOBiy5cv8osAJaynqPUQigHsfpDfrzhTP1hyF
+ Wlp9q4GHsyw2GS+gb9TOKYWpohfi+T1THX2vr1J4bKozXF5sOALBDnK2T0W2+px1syZTwHE9EkK
+ JKcKCuawIo4ve6+Po8P2cMmkJ+EwOv2ZY6M8DAvm0iSHG963h4LZCHyGLvdIU3l5+3cUIEml0g4
+ BySGs83MfBuk7sKm4oHI99MR2UTLeVAdRxBwWD2lAyIABzNnfaikZjEAniYLuqBbbKDnmQSDbxH
+ KfbHUMqTV7L4CGO46eq9afq9OpebksNNV0GEuVMR6QDIwUVW5abrmXNm6wGIT3prwwpMvBa4Q1L
+ 0ODDKGkvsxMVxKPSRz1k/rwVH4MK28TKSqvu7zONLVWObsjWklxCM+tFlyOlDDIKLfdQWLjSIfF
+ 5p2xlFL9iG/ULSk3RrW/tw0ITBPQ==
+X-Google-Smtp-Source: AGHT+IESin8/p/qvBW28KCeDiA+O51TKVfgSVOQH2/8Ue4qJ1uiXfgoVK3AE/lxeLP12EnY+ziCdBg==
+X-Received: by 2002:a05:600c:8b22:b0:46e:4882:94c7 with SMTP id
+ 5b1f17b1804b1-46fa9b02c6amr31894405e9.28.1759951052693; 
+ Wed, 08 Oct 2025 12:17:32 -0700 (PDT)
+Received: from daandemeyer-fedora-PC1EV17T (d54C349CA.access.telenet.be.
+ [84.195.73.202]) by smtp.googlemail.com with ESMTPSA id
+ ffacd0b85a97d-42585989607sm8415997f8f.53.2025.10.08.12.17.31
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 08 Oct 2025 12:17:32 -0700 (PDT)
+From: Daan De Meyer <daan.j.demeyer@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: Gerd Hoffmann <kraxel@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Daan De Meyer <daan.j.demeyer@gmail.com>
+Subject: [PATCH] Add support for zboot images compressed with zstd
+Date: Wed,  8 Oct 2025 21:17:16 +0200
+Message-ID: <20251008191716.3005164-1-daan.j.demeyer@gmail.com>
+X-Mailer: git-send-email 2.51.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [SPAM] [PATCH v1 09/16] hw/arm/aspeed: Introduce
- AspeedCoprocessor class and base implementation
-To: Jamin Lin <jamin_lin@aspeedtech.com>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, Joel
- Stanley <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-CC: <troy_lee@aspeedtech.com>, <kane_chen@aspeedtech.com>
-References: <20251008032207.593353-1-jamin_lin@aspeedtech.com>
- <20251008032207.593353-10-jamin_lin@aspeedtech.com>
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Content-Language: en-US, fr
-Autocrypt: addr=clg@kaod.org; keydata=
- xsFNBFu8o3UBEADP+oJVJaWm5vzZa/iLgpBAuzxSmNYhURZH+guITvSySk30YWfLYGBWQgeo
- 8NzNXBY3cH7JX3/a0jzmhDc0U61qFxVgrPqs1PQOjp7yRSFuDAnjtRqNvWkvlnRWLFq4+U5t
- yzYe4SFMjFb6Oc0xkQmaK2flmiJNnnxPttYwKBPd98WfXMmjwAv7QfwW+OL3VlTPADgzkcqj
- 53bfZ4VblAQrq6Ctbtu7JuUGAxSIL3XqeQlAwwLTfFGrmpY7MroE7n9Rl+hy/kuIrb/TO8n0
- ZxYXvvhT7OmRKvbYuc5Jze6o7op/bJHlufY+AquYQ4dPxjPPVUT/DLiUYJ3oVBWFYNbzfOrV
- RxEwNuRbycttMiZWxgflsQoHF06q/2l4ttS3zsV4TDZudMq0TbCH/uJFPFsbHUN91qwwaN/+
- gy1j7o6aWMz+Ib3O9dK2M/j/O/Ube95mdCqN4N/uSnDlca3YDEWrV9jO1mUS/ndOkjxa34ia
- 70FjwiSQAsyIwqbRO3CGmiOJqDa9qNvd2TJgAaS2WCw/TlBALjVQ7AyoPEoBPj31K74Wc4GS
- Rm+FSch32ei61yFu6ACdZ12i5Edt+To+hkElzjt6db/UgRUeKfzlMB7PodK7o8NBD8outJGS
- tsL2GRX24QvvBuusJdMiLGpNz3uqyqwzC5w0Fd34E6G94806fwARAQABzSBDw6lkcmljIExl
- IEdvYXRlciA8Y2xnQGthb2Qub3JnPsLBeAQTAQIAIgUCW7yjdQIbAwYLCQgHAwIGFQgCCQoL
- BBYCAwECHgECF4AACgkQUaNDx8/77KGRSxAAuMJJMhJdj7acTcFtwof7CDSfoVX0owE2FJdd
- M43hNeTwPWlV5oLCj1BOQo0MVilIpSd9Qu5wqRD8KnN2Bv/rllKPqK2+i8CXymi9hsuzF56m
- 76wiPwbsX54jhv/VYY9Al7NBknh6iLYJiC/pgacRCHtSj/wofemSCM48s61s1OleSPSSvJE/
- jYRa0jMXP98N5IEn8rEbkPua/yrm9ynHqi4dKEBCq/F7WDQ+FfUaFQb4ey47A/aSHstzpgsl
- TSDTJDD+Ms8y9x2X5EPKXnI3GRLaCKXVNNtrvbUd9LsKymK3WSbADaX7i0gvMFq7j51P/8yj
- neaUSKSkktHauJAtBNXHMghWm/xJXIVAW8xX5aEiSK7DNp5AM478rDXn9NZFUdLTAScVf7LZ
- VzMFKR0jAVG786b/O5vbxklsww+YXJGvCUvHuysEsz5EEzThTJ6AC5JM2iBn9/63PKiS3ptJ
- QAqzasT6KkZ9fKLdK3qtc6yPaSm22C5ROM3GS+yLy6iWBkJ/nEYh/L/du+TLw7YNbKejBr/J
- ml+V3qZLfuhDjW0GbeJVPzsENuxiNiBbyzlSnAvKlzda/sBDvxmvWhC+nMRQCf47mFr8Xx3w
- WtDSQavnz3zTa0XuEucpwfBuVdk4RlPzNPri6p2KTBhPEvRBdC9wNOdRBtsP9rAPjd52d73O
- wU0EW7yjdQEQALyDNNMw/08/fsyWEWjfqVhWpOOrX2h+z4q0lOHkjxi/FRIRLfXeZjFfNQNL
- SoL8j1y2rQOs1j1g+NV3K5hrZYYcMs0xhmrZKXAHjjDx7FW3sG3jcGjFW5Xk4olTrZwFsZVU
- cP8XZlArLmkAX3UyrrXEWPSBJCXxDIW1hzwpbV/nVbo/K9XBptT/wPd+RPiOTIIRptjypGY+
- S23HYBDND3mtfTz/uY0Jytaio9GETj+fFis6TxFjjbZNUxKpwftu/4RimZ7qL+uM1rG1lLWc
- 9SPtFxRQ8uLvLOUFB1AqHixBcx7LIXSKZEFUCSLB2AE4wXQkJbApye48qnZ09zc929df5gU6
- hjgqV9Gk1rIfHxvTsYltA1jWalySEScmr0iSYBZjw8Nbd7SxeomAxzBv2l1Fk8fPzR7M616d
- tb3Z3HLjyvwAwxtfGD7VnvINPbzyibbe9c6gLxYCr23c2Ry0UfFXh6UKD83d5ybqnXrEJ5n/
- t1+TLGCYGzF2erVYGkQrReJe8Mld3iGVldB7JhuAU1+d88NS3aBpNF6TbGXqlXGF6Yua6n1c
- OY2Yb4lO/mDKgjXd3aviqlwVlodC8AwI0SdujWryzL5/AGEU2sIDQCHuv1QgzmKwhE58d475
- KdVX/3Vt5I9kTXpvEpfW18TjlFkdHGESM/JxIqVsqvhAJkalABEBAAHCwV8EGAECAAkFAlu8
- o3UCGwwACgkQUaNDx8/77KEhwg//WqVopd5k8hQb9VVdk6RQOCTfo6wHhEqgjbXQGlaxKHoX
- ywEQBi8eULbeMQf5l4+tHJWBxswQ93IHBQjKyKyNr4FXseUI5O20XVNYDJZUrhA4yn0e/Af0
- IX25d94HXQ5sMTWr1qlSK6Zu79lbH3R57w9jhQm9emQEp785ui3A5U2Lqp6nWYWXz0eUZ0Ta
- d2zC71Gg9VazU9MXyWn749s0nXbVLcLS0yops302Gf3ZmtgfXTX/W+M25hiVRRKCH88yr6it
- +OMJBUndQVAA/fE9hYom6t/zqA248j0QAV/pLHH3hSirE1mv+7jpQnhMvatrwUpeXrOiEw1n
- HzWCqOJUZ4SY+HmGFW0YirWV2mYKoaGO2YBUwYF7O9TI3GEEgRMBIRT98fHa0NPwtlTktVIS
- l73LpgVscdW8yg9Gc82oe8FzU1uHjU8b10lUXOMHpqDDEV9//r4ZhkKZ9C4O+YZcTFu+mvAY
- 3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
- ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
- KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20251008032207.593353-10-jamin_lin@aspeedtech.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [37.59.142.96]
-X-ClientProxiedBy: DAG8EX1.mxp5.local (172.16.2.71) To DAG8EX2.mxp5.local
- (172.16.2.72)
-X-Ovh-Tracer-GUID: 04b9511f-9912-4d7d-bb25-c437cf804383
-X-Ovh-Tracer-Id: 10218949031546882994
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTF+szbxCYun8zm+kSnnpY5y/tsdGaIMTZM+v6htFmktxolXkbRF10khI0CwWN+WUIOZf3oxTS1ghk46+RuI+0LyrJ6SP6545OU0l5an6uinMwmeqq3/MXITvzxtcfRAeUqN3EfPQa347Jy8899XQeOS1fjYIF+cslPbm3L/08jIVwqZKvZ7vf9qZJvMJNVu6jTzBSbOaPw6zmMfVwfcNgDSnvrqw0PzFVsBkFDoGKdX/baHvdh3PDQJig4+sGos2FSkSXKUgEiF+1O0Pq0Tfq3gGZSIbDRGrj3UR+zQGX8nnPO8Sr/uIGSp6WQeYroIKHFCltoQymItSbRxogiPonTQJ0lhuq1oIzrqqObdEHJisUH84jqTVQ9xFDvMCr7aB6MBxbdMEb2RkOCo0Rh3ca4oNfb+pd0ltzX4+uB0V5vE2JcOZuT6HyyjyaGj6EzzJ1uhqK+BbGxXQB8szLH9HLDp3r6YSzZri8LGt/Gy+TCGahZIbRwsu+/O8+LGps4MdyaDMrsIknVb2TQkkxCiPuDIsirD+rPtdxrnK4bI5z2BmeY+1//GD5c33+bKYFGc2gAAWM1tkIJ0ciTrA5PJQDOhkDAmfMaaeyLWQ2/zigInLMU17JG8uRIFAUFZ3AD24fxzzxJ1poN9KZGck7AU4F4nVXH0jKbeb86YJwZ2kJuK2w
-DKIM-Signature: a=rsa-sha256; bh=jAsj9OmQuDGAzHQEyxfLitHOKVl6bVSaAypTZlMunqw=; 
- c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1759940051; v=1;
- b=YIMAGl6hGPosSmyrx44cmzW8Pj1W85ZeTqiKC5ostllY4F+a7pSlvE+SrupR2qhjxlP9dW/W
- 9qSt+iH/D41cndrcYjcFyHSLwbbdWm6DcJHCKO2u56ZlRmDwpUEoTukVwI9bFSt+lH0nZdeLvWk
- c2jouawY3pSXRnE2lIixczfwx8zPkPK6kg/ryz9pH06sQrghtUTPlE0N22o3lEY7CwR2ZKpOC3m
- kghM537MFezTrSA47/ZOnlt8eA+hSaytXo46T50OrdhEhL16TekeNsrFD/DtrcAks9CL+DpITZT
- EtTqxs7/PYTxJz8ZZaKsuGeZDvEVoDMZds1F4Y0sflqxw==
-Received-SPF: pass client-ip=217.182.185.173; envelope-from=clg@kaod.org;
- helo=smtpout4.mo529.mail-out.ovh.net
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
+ envelope-from=daan.j.demeyer@gmail.com; helo=mail-wm1-x32a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Wed, 08 Oct 2025 15:47:53 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -131,176 +103,122 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Jamin,
+Signed-off-by: Daan De Meyer <daan.j.demeyer@gmail.com>
+---
+ hw/arm/boot.c       |  2 +-
+ hw/core/loader.c    | 36 ++++++++++++++++++++++++------------
+ hw/nvram/fw_cfg.c   |  2 +-
+ include/hw/loader.h |  2 +-
+ 4 files changed, 27 insertions(+), 15 deletions(-)
 
-On 10/8/25 05:21, Jamin Lin wrote:
-> Add a new AspeedCoprocessor class that defines the foundational structure for
-> ASPEED coprocessor models. This class encapsulates a base DeviceState with
-> links to system memory, clock, and peripheral components such as SCU, SCUIO,
-> Timer Controller, and UARTs.
-> 
-> Introduce the corresponding implementation file
-> aspeed_coprocessor_common.c, which provides the aspeed_coprocessor_realize()
-> method, property registration, and QOM type registration. The class is marked
-> as abstract and intended to serve as a common base for specific coprocessor
-> variants (e.g. SSP/TSP subsystems).
-> 
-> This establishes a reusable and extensible framework for modeling ASPEED
-> coprocessor devices.
-> 
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-> ---
->   include/hw/arm/aspeed_coprocessor.h | 45 ++++++++++++++++++++++++++
->   hw/arm/aspeed_coprocessor_common.c  | 49 +++++++++++++++++++++++++++++
->   hw/arm/meson.build                  |  3 +-
->   3 files changed, 96 insertions(+), 1 deletion(-)
->   create mode 100644 include/hw/arm/aspeed_coprocessor.h
->   create mode 100644 hw/arm/aspeed_coprocessor_common.c
-> 
-> diff --git a/include/hw/arm/aspeed_coprocessor.h b/include/hw/arm/aspeed_coprocessor.h
-> new file mode 100644
-> index 0000000000..6938dfe24c
-> --- /dev/null
-> +++ b/include/hw/arm/aspeed_coprocessor.h
-> @@ -0,0 +1,45 @@
-> +/*
-> + * ASPEED Coprocessor
-> + *
-> + * Copyright (C) 2025 ASPEED Technology Inc.
-> + *
-> + * SPDX-License-Identifier: GPL-2.0-or-later
-> + */
-> +
-> +#ifndef ASPEED_COPROCESSOR_H
-> +#define ASPEED_COPROCESSOR_H
-> +
-> +#include "qom/object.h"
-> +#include "hw/arm/aspeed_soc.h"
-> +
-> +struct AspeedCoprocessorState {
-> +    DeviceState parent;
-> +
-> +    MemoryRegion *memory;
-> +    MemoryRegion sram;
-> +    Clock *sysclk;
-> +
-> +    AspeedSCUState scu;
-> +    AspeedSCUState scuio;
-> +    AspeedTimerCtrlState timerctrl;
-> +    SerialMM uart[ASPEED_UARTS_NUM];
-> +};
-> +
-> +#define TYPE_ASPEED_COPROCESSOR "aspeed-coprocessor"
-> +OBJECT_DECLARE_TYPE(AspeedCoprocessorState, AspeedCoprocessorClass,
-> +                    ASPEED_COPROCESSOR)
-> +
-> +struct AspeedCoprocessorClass {
-> +    DeviceClass parent_class;
-> +
-> +    /** valid_cpu_types: NULL terminated array of a single CPU type. */
-> +    const char * const *valid_cpu_types;
-> +    uint32_t silicon_rev;
-> +    const hwaddr *memmap;
-> +    const int *irqmap;
-> +    int uarts_base;
-> +    int uarts_num;
-> +    qemu_irq (*get_irq)(void *ctx, int dev);
-> +};
-> +
-> +#endif /* ASPEED_COPROCESSOR_H */
-> diff --git a/hw/arm/aspeed_coprocessor_common.c b/hw/arm/aspeed_coprocessor_common.c
-> new file mode 100644
-> index 0000000000..8a94b44f07
-> --- /dev/null
-> +++ b/hw/arm/aspeed_coprocessor_common.c
-> @@ -0,0 +1,49 @@
-> +/*
-> + * ASPEED Coprocessor
-> + *
-> + * Copyright (C) 2025 ASPEED Technology Inc.
-> + *
-> + * SPDX-License-Identifier: GPL-2.0-or-later
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "qapi/error.h"
-> +#include "system/memory.h"
-> +#include "hw/qdev-properties.h"
-> +#include "hw/arm/aspeed_coprocessor.h"
-> +
-> +static void aspeed_coprocessor_realize(DeviceState *dev, Error **errp)
-> +{
-> +    AspeedCoprocessorState *s = ASPEED_COPROCESSOR(dev);
-> +
-> +    if (!s->memory) {
-> +        error_setg(errp, "'memory' link is not set");
-> +        return;
-> +    }
-> +}
-> +
-> +static const Property aspeed_coprocessor_properties[] = {
-> +    DEFINE_PROP_LINK("memory", AspeedCoprocessorState, memory,
-> +                     TYPE_MEMORY_REGION, MemoryRegion *),
-> +};
-> +
-> +static void aspeed_coprocessor_class_init(ObjectClass *oc, const void *data)
-> +{
-> +    DeviceClass *dc = DEVICE_CLASS(oc);
-> +
-> +    dc->realize = aspeed_coprocessor_realize;
-> +    device_class_set_props(dc, aspeed_coprocessor_properties);
-> +}
-> +
-> +static const TypeInfo aspeed_coprocessor_types[] = {
-> +    {
-> +        .name           = TYPE_ASPEED_COPROCESSOR,
-> +        .parent         = TYPE_DEVICE,
-> +        .instance_size  = sizeof(AspeedCoprocessorState),
-> +        .class_size     = sizeof(AspeedCoprocessorClass),
-> +        .class_init     = aspeed_coprocessor_class_init,
-> +        .abstract       = true,
-> +    },
-> +};
-> +
-> +DEFINE_TYPES(aspeed_coprocessor_types)
-> diff --git a/hw/arm/meson.build b/hw/arm/meson.build
-> index dc68391305..0b2c66e391 100644
-> --- a/hw/arm/meson.build
-> +++ b/hw/arm/meson.build
-> @@ -52,7 +52,8 @@ arm_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
->     'fby35.c'))
->   arm_common_ss.add(when: ['CONFIG_ASPEED_SOC', 'TARGET_AARCH64'], if_true: files(
->     'aspeed_ast27x0.c',
-> -  'aspeed_ast27x0-fc.c',))
-> +  'aspeed_ast27x0-fc.c',
-> +  'aspeed_coprocessor_common.c',))
-
-I don't think we need to keep the ending comma ','.
-
-
-More important, this list lacks source files :
-
-   'aspeed_ast27x0-ssp.c',
-   'aspeed_ast27x0-tsp.c',
-
-which are aarch64 specific and with the following changes of this
-series, 'make check' fails with :
-
-   Type 'aspeed27x0ssp-soc' is missing its parent 'aspeed-coprocessor'
-
-A preliminary fix is needed.
-
-Please run  'make check'  before sending.
-
-Thanks,
-
-C.
-
-
-
-
->   arm_common_ss.add(when: 'CONFIG_MPS2', if_true: files('mps2.c'))
->   arm_common_ss.add(when: 'CONFIG_MPS2', if_true: files('mps2-tz.c'))
->   arm_common_ss.add(when: 'CONFIG_MSF2', if_true: files('msf2-soc.c'))
+diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+index e77d8679d8..c0dec0343a 100644
+--- a/hw/arm/boot.c
++++ b/hw/arm/boot.c
+@@ -826,7 +826,7 @@ static uint64_t load_aarch64_image(const char *filename, hwaddr mem_base,
+     ssize_t size;
+ 
+     /* On aarch64, it's the bootloader's job to uncompress the kernel. */
+-    size = load_image_gzipped_buffer(filename, LOAD_IMAGE_MAX_GUNZIP_BYTES,
++    size = load_image_gzipped_buffer(filename, LOAD_IMAGE_MAX_DECOMPRESSED_BYTES,
+                                      &buffer);
+ 
+     if (size < 0) {
+diff --git a/hw/core/loader.c b/hw/core/loader.c
+index 477661a025..a2647b0c9a 100644
+--- a/hw/core/loader.c
++++ b/hw/core/loader.c
+@@ -67,6 +67,11 @@
+ 
+ #include <zlib.h>
+ 
++#ifdef CONFIG_ZSTD
++#include <zstd.h>
++#include <zstd_errors.h>
++#endif
++
+ static int roms_loaded;
+ 
+ /* return the size or -1 if error */
+@@ -796,8 +801,8 @@ ssize_t load_image_gzipped_buffer(const char *filename, uint64_t max_sz,
+         goto out;
+     }
+ 
+-    if (max_sz > LOAD_IMAGE_MAX_GUNZIP_BYTES) {
+-        max_sz = LOAD_IMAGE_MAX_GUNZIP_BYTES;
++    if (max_sz > LOAD_IMAGE_MAX_DECOMPRESSED_BYTES) {
++        max_sz = LOAD_IMAGE_MAX_DECOMPRESSED_BYTES;
+     }
+ 
+     data = g_malloc(max_sz);
+@@ -882,14 +887,6 @@ ssize_t unpack_efi_zboot_image(uint8_t **buffer, ssize_t *size)
+         return 0;
+     }
+ 
+-    if (strcmp(header->compression_type, "gzip") != 0) {
+-        fprintf(stderr,
+-                "unable to handle EFI zboot image with \"%.*s\" compression\n",
+-                (int)sizeof(header->compression_type) - 1,
+-                header->compression_type);
+-        return -1;
+-    }
+-
+     ploff = ldl_le_p(&header->payload_offset);
+     plsize = ldl_le_p(&header->payload_size);
+ 
+@@ -898,8 +895,23 @@ ssize_t unpack_efi_zboot_image(uint8_t **buffer, ssize_t *size)
+         return -1;
+     }
+ 
+-    data = g_malloc(LOAD_IMAGE_MAX_GUNZIP_BYTES);
+-    bytes = gunzip(data, LOAD_IMAGE_MAX_GUNZIP_BYTES, *buffer + ploff, plsize);
++    data = g_malloc(LOAD_IMAGE_MAX_DECOMPRESSED_BYTES);
++
++    if (strcmp(header->compression_type, "gzip") == 0) {
++        bytes = gunzip(data, LOAD_IMAGE_MAX_DECOMPRESSED_BYTES, *buffer + ploff, plsize);
++#ifdef CONFIG_ZSTD
++    } else if (strcmp(header->compression_type, "zstd") == 0) {
++        size_t ret = ZSTD_decompress(data, LOAD_IMAGE_MAX_DECOMPRESSED_BYTES, *buffer + ploff, plsize);
++        bytes = ZSTD_isError(ret) ? -1 : (ssize_t) ret;
++#endif
++    } else {
++        fprintf(stderr,
++                "unable to handle EFI zboot image with \"%.*s\" compression\n",
++                (int)sizeof(header->compression_type) - 1,
++                header->compression_type);
++        return -1;
++    }
++
+     if (bytes < 0) {
+         fprintf(stderr, "failed to decompress EFI zboot image\n");
+         g_free(data);
+diff --git a/hw/nvram/fw_cfg.c b/hw/nvram/fw_cfg.c
+index aa24050493..af3b112524 100644
+--- a/hw/nvram/fw_cfg.c
++++ b/hw/nvram/fw_cfg.c
+@@ -1115,7 +1115,7 @@ void load_image_to_fw_cfg(FWCfgState *fw_cfg, uint16_t size_key,
+ 
+     if (try_decompress) {
+         size = load_image_gzipped_buffer(image_name,
+-                                         LOAD_IMAGE_MAX_GUNZIP_BYTES, &data);
++                                         LOAD_IMAGE_MAX_DECOMPRESSED_BYTES, &data);
+     }
+ 
+     if (size == (size_t)-1) {
+diff --git a/include/hw/loader.h b/include/hw/loader.h
+index c96b5e141c..24b91ba02b 100644
+--- a/include/hw/loader.h
++++ b/include/hw/loader.h
+@@ -80,7 +80,7 @@ ssize_t load_image_mr(const char *filename, MemoryRegion *mr);
+  * load_image_gzipped_buffer() will read. It prevents
+  * g_malloc() in those functions from allocating a huge amount of memory.
+  */
+-#define LOAD_IMAGE_MAX_GUNZIP_BYTES (256 << 20)
++#define LOAD_IMAGE_MAX_DECOMPRESSED_BYTES (256 << 20)
+ 
+ ssize_t load_image_gzipped_buffer(const char *filename, uint64_t max_sz,
+                                   uint8_t **buffer);
+-- 
+2.51.0
 
 

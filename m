@@ -4,86 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E7FCCCD184
-	for <qemu-arm@archiver.kernel.org>; Wed,  8 Oct 2025 22:16:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89387CCA470
+	for <qemu-arm@archiver.kernel.org>; Wed,  8 Oct 2025 22:16:44 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v6cBv-0006xv-9m; Wed, 08 Oct 2025 17:59:29 -0400
+	id 1v6cEv-0002tY-J4; Wed, 08 Oct 2025 18:02:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1v6cAW-0004TF-50
- for qemu-arm@nongnu.org; Wed, 08 Oct 2025 17:57:58 -0400
-Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
+ id 1v6cDX-0001Rv-Ro
+ for qemu-arm@nongnu.org; Wed, 08 Oct 2025 18:01:10 -0400
+Received: from mail-pf1-x42c.google.com ([2607:f8b0:4864:20::42c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1v6c9I-0006kR-F7
- for qemu-arm@nongnu.org; Wed, 08 Oct 2025 17:57:54 -0400
-Received: by mail-pl1-x62e.google.com with SMTP id
- d9443c01a7336-267facf9b58so1971795ad.2
- for <qemu-arm@nongnu.org>; Wed, 08 Oct 2025 14:56:38 -0700 (PDT)
+ id 1v6cCa-0007RN-1Q
+ for qemu-arm@nongnu.org; Wed, 08 Oct 2025 18:01:03 -0400
+Received: by mail-pf1-x42c.google.com with SMTP id
+ d2e1a72fcca58-781997d195aso201746b3a.3
+ for <qemu-arm@nongnu.org>; Wed, 08 Oct 2025 15:00:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1759960596; x=1760565396; darn=nongnu.org;
+ d=linaro.org; s=google; t=1759960801; x=1760565601; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=9TlVHZpayQS/myvCVeAjxeyWQxv6D3ZZ+dMoMBNlFQc=;
- b=B0TtU5gZXVA4ReBA/hrI7UWMLvNkqAHHXIlgLk+ugEXTw0BrRlON7u4HM9zTzFklXi
- YaxOjE6hG7OaAGsvwjBUxP5Wajk8tZK/GgC7NIS1jvOHH3bSACY0F6U5J5mVImKmFqbP
- 8bn5vQlfvWNGlqu/HKMD3ZNtG9ccyRzqMUZSUk3+z6xE30bZqLmQ59gCJwGN2icoGCcM
- 2tczL5Nu0MHO0qtjNMiZD/PS1d37GNYYvGDZ6D8xOWRNLVVWK6VChOTxsY+0rSC9bZRm
- n7QW0ZdEo3Mm/IFKcib6s6FPGRix2CsYRbKGFG1sXPJ1XwwN5vNQZXUDEvz7VAbOUooW
- lL6A==
+ bh=jUo2eLEQH3tvadRbtyXeqZmXKqgrSzHJmdQtpKn9Hto=;
+ b=SX5R2+Mt/DZ+fk3dvM1EhzjTP6G7R1cOnnpsGSyPQDWYjyjwZ0MoIPMNLTOmbHislV
+ Qzm2Zz7DsIi+Sg7bjwSWeBwFfcglCAMetWsgdjad8o/VcYHnshlPgJykhWbnzuHC1uIK
+ KHsHyZ5emt+/fzR260s0exO6QlBc4WaQTgEFXQitE2CzCfHx6G4a3wpC3ZpFE+CkEQsJ
+ h5iQxOGFZoSMdTkRGpd5hHDIAb66Zu7J3CI08Xy/SQ0YgDQoGFa5U+75QCsnm4QS91o/
+ RlEPhvGzpSCsJ2jUki4tH0PY3emQmTGf4YTd+UyLVIunrQYx19/ZbP91AuoZYfAyAsw6
+ Jmtw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759960596; x=1760565396;
+ d=1e100.net; s=20230601; t=1759960801; x=1760565601;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=9TlVHZpayQS/myvCVeAjxeyWQxv6D3ZZ+dMoMBNlFQc=;
- b=kekJHbSu7FFECeHnW8SA41RwCWVSDWKs8Z3Imu/AaOZq5EzkL+iPeO4Yk8Xk7ze8cX
- tk7H1SQLzfm3tQRQuL1G7gKuiSLM64FOkf1OvYipYSEJRGLVPUAB7UAr7gJuIiHWJXxJ
- NtDWoGw5BAj8F0RTcO0yWWG15gUFLE0ne4HQFEzozOz1frVLq6cKLN0D+RiFTIIU7UTh
- WnMYsgqLX+VOWr2dd14podSvDDaWJ5oYRtgmWVxe136vpLpnThWQuupy0VOVdRYiQxP+
- 7TQ7CHfUD8Ubksqx29HVLUnGgjM4NYN+xd3lc/f73PR6Ra5FgSa0oAjwznUJp/lJzGoF
- Wh8g==
-X-Gm-Message-State: AOJu0Yzn1fRI4Ibs/jllPMsFDbokou77r9zyudNpQ3GxHRZfzgeLEDJ2
- xEraEYbI/Q3Emzk/OU36vcyDx8D4TIdkeXm3gBTDEoB5Kb/e8IP/FhDaVzxgjZTZqQc=
-X-Gm-Gg: ASbGncvcHPdUXrwCC+VhbLi1bMa6xfcHhPNwsUsPwuOGhX5FWjdchiCUGA7Vl/chszN
- n+w1FzaikEfbiclZ7BfKsUwGe7hexHOy/vUBmjjm3wfrDPYSk2ehK0oZfbb4jOVEpU3hkTOz0c9
- lAWE9mngX69OOaekGVuAFIJQTOexdUps2hCXL/i48u7vEg37R4e3bKYFHGQdIp/U+C7tJZjoQWK
- sPBeGlQL3FmCJcjQSR6+3MMYSPl/c5dTfWSGFQnimbfu5b/coI64p5yfu7NVWnqH6Ce+bCrIWC1
- +rWhO1yTjd0GzGyIqW1ZOgQEZwmqXkhqcjZtJfiza4Bkekc9CR4kWjjEbiurxExLH77e85D9pYZ
- mZh9E57wpanIAVWZRWfrj7Npxykx5rJDZ6XVXkAkhircyMV6WfRXDSc05
-X-Google-Smtp-Source: AGHT+IE0p8RUt69UVrY3m+ydEzkfC65aZWzrgJQ6t+dvNsP8c96qXcbMKX7L8EG9pyyaowt36WsPmA==
-X-Received: by 2002:a17:902:8a89:b0:27e:ec72:f67 with SMTP id
- d9443c01a7336-29027356abdmr47862115ad.6.1759960596465; 
- Wed, 08 Oct 2025 14:56:36 -0700 (PDT)
+ bh=jUo2eLEQH3tvadRbtyXeqZmXKqgrSzHJmdQtpKn9Hto=;
+ b=pQjt8yRuFZ9ggSIKebLtiJodwqYfQKqTEAdk7ih87ujSeA7bSjZkAukPpqplOphaaZ
+ ZTu+NGVNR1agEBJsY/5rnANMO6DAq8h3fDAVN5MrBWw7Pa75/i9rEVX3QKg4DP//EK5H
+ xFhicGnZiCkoggX/9pNCeB+gMg4NzexJidtQNCmuBI39Gw3KxhCMOMZtKgdTUhnJluna
+ x0AXtYUcAiUn/7zIs7k7Ddrx+MWGMGb3g5UUdFrofWL76JWZgvmpxZctXlCJZhPQlb1t
+ 5OZlAqZxRqVEy1xljyGW49V1U3UHmPEc87LgMWkowQoI9G3iZWWcaYlI1JC/LIl8f2j3
+ 5EFA==
+X-Gm-Message-State: AOJu0YxIQ/xrhJHQ0WlDzQs7dSBTD91SdKXK+5vEQpZubwl10N5YGlSx
+ B1aCsb0byMqy6tQY7S+Pz5W/ov/1FOpyym4GCw0RxdPq83tWB1G3gJv4nlWrouV9ZIA=
+X-Gm-Gg: ASbGnct/wwngJ/fqtTPvGj2xnBN5zT3m0lKmtphYyE0Yi0iKTF0RzL4aMFM4hkPGX69
+ mLl7GI+aDl59PkxN+fqHSvwwVTm7SqgV2IFfEdZvN3Gnq65dUhNwKdIwGgrwXakqNyvWAHwbedR
+ Ge2odegNaP7IdxN+qRYo+aeYqKcwscEo7WzwhcJyspnBeJTZNKgNpVcCH4cz5gDZV2Q36aZ+Avb
+ Oa0fWRRjce95GwwQDnr01tIA8KGH1JpDeBAChEbXpoZwJxDTYzC9Nj/OLFdRdEFgPvmnzS0ZpcR
+ klvDZlOfloALCrGNj7t4trWRqzhYuHHJeL8SO5klY14TvWr2MPHlgQJxz7qy7xezhpSffKVsXjH
+ Nuf4rebt+1d8khbqtK5EGalX0GrCiNUERK42fZ2hCo3GwYHzBlZUrnl1zD2XNcnluDCM=
+X-Google-Smtp-Source: AGHT+IGGWYcaFKaFoCMBMA5VTA3mg8dktTKgIXCGMmo56TAXwjgjAFJ8iVcatXl+9Kv+Bvckl8WrPg==
+X-Received: by 2002:a05:6a00:92a2:b0:783:c2c4:9aa5 with SMTP id
+ d2e1a72fcca58-79387d0f5aamr7090675b3a.32.1759960800496; 
+ Wed, 08 Oct 2025 15:00:00 -0700 (PDT)
 Received: from stoup.. ([71.212.157.132]) by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-29034e44ef9sm7354285ad.52.2025.10.08.14.56.36
+ d2e1a72fcca58-794e1fc9db6sm740724b3a.66.2025.10.08.15.00.00
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 08 Oct 2025 14:56:36 -0700 (PDT)
+ Wed, 08 Oct 2025 15:00:00 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v7 34/73] target/arm: Make helper_exception_return system-only
-Date: Wed,  8 Oct 2025 14:55:34 -0700
-Message-ID: <20251008215613.300150-35-richard.henderson@linaro.org>
+	Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Subject: [PATCH v7 69/73] linux-user/aarch64: Generate GCS signal records
+Date: Wed,  8 Oct 2025 14:56:09 -0700
+Message-ID: <20251008215613.300150-70-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20251008215613.300150-1-richard.henderson@linaro.org>
 References: <20251008215613.300150-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62e;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62e.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42c;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -99,91 +99,250 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Here we must push and pop a cap on the GCS stack as
+well as the gcs record on the normal stack.
+
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/tcg/helper-a64.h    | 5 ++++-
- target/arm/tcg/helper-a64.c    | 2 ++
- target/arm/tcg/translate-a64.c | 8 ++++++++
- 3 files changed, 14 insertions(+), 1 deletion(-)
+ linux-user/aarch64/signal.c | 138 ++++++++++++++++++++++++++++++++++--
+ 1 file changed, 132 insertions(+), 6 deletions(-)
 
-diff --git a/target/arm/tcg/helper-a64.h b/target/arm/tcg/helper-a64.h
-index 85023465b7..b6008b5a3a 100644
---- a/target/arm/tcg/helper-a64.h
-+++ b/target/arm/tcg/helper-a64.h
-@@ -80,7 +80,6 @@ DEF_HELPER_3(vfp_ah_maxh, f16, f16, f16, fpst)
- DEF_HELPER_3(vfp_ah_maxs, f32, f32, f32, fpst)
- DEF_HELPER_3(vfp_ah_maxd, f64, f64, f64, fpst)
+diff --git a/linux-user/aarch64/signal.c b/linux-user/aarch64/signal.c
+index ef97be3ac7..f7edfa249e 100644
+--- a/linux-user/aarch64/signal.c
++++ b/linux-user/aarch64/signal.c
+@@ -22,6 +22,7 @@
+ #include "signal-common.h"
+ #include "linux-user/trace.h"
+ #include "target/arm/cpu-features.h"
++#include "gcs-internal.h"
  
--DEF_HELPER_2(exception_return, void, env, i64)
- DEF_HELPER_FLAGS_2(dc_zva, TCG_CALL_NO_WG, void, env, i64)
+ struct target_sigcontext {
+     uint64_t fault_address;
+@@ -152,6 +153,16 @@ struct target_zt_context {
+ QEMU_BUILD_BUG_ON(TARGET_ZT_SIG_REG_BYTES != \
+                   sizeof_field(CPUARMState, za_state.zt0));
  
- DEF_HELPER_FLAGS_3(pacia, TCG_CALL_NO_WG, i64, env, i64, i64)
-@@ -145,3 +144,7 @@ DEF_HELPER_FLAGS_5(gvec_fmulx_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32
- DEF_HELPER_FLAGS_5(gvec_fmulx_idx_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
- DEF_HELPER_FLAGS_5(gvec_fmulx_idx_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
- DEF_HELPER_FLAGS_5(gvec_fmulx_idx_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, fpst, i32)
++#define TARGET_GCS_MAGIC       0x47435300
++#define GCS_SIGNAL_CAP(X)      ((X) & TARGET_PAGE_MASK)
 +
-+#ifndef CONFIG_USER_ONLY
-+DEF_HELPER_2(exception_return, void, env, i64)
-+#endif
-diff --git a/target/arm/tcg/helper-a64.c b/target/arm/tcg/helper-a64.c
-index 71c6c44ee8..6d77fd0113 100644
---- a/target/arm/tcg/helper-a64.c
-+++ b/target/arm/tcg/helper-a64.c
-@@ -576,6 +576,7 @@ uint32_t HELPER(advsimd_rinth)(uint32_t x, float_status *fp_status)
-     return ret;
++struct target_gcs_context {
++    struct target_aarch64_ctx head;
++    uint64_t gcspr;
++    uint64_t features_enabled;
++    uint64_t reserved;
++};
++
+ struct target_rt_sigframe {
+     struct target_siginfo info;
+     struct target_ucontext uc;
+@@ -322,6 +333,35 @@ static void target_setup_zt_record(struct target_zt_context *zt,
+     }
  }
  
-+#ifndef CONFIG_USER_ONLY
- static int el_from_spsr(uint32_t spsr)
++static bool target_setup_gcs_record(struct target_gcs_context *ctx,
++                                    CPUARMState *env, uint64_t return_addr)
++{
++    uint64_t mode = gcs_get_el0_mode(env);
++    uint64_t gcspr = env->cp15.gcspr_el[0];
++
++    if (mode & PR_SHADOW_STACK_ENABLE) {
++        /* Push a cap for the signal frame. */
++        gcspr -= 8;
++        if (put_user_u64(GCS_SIGNAL_CAP(gcspr), gcspr)) {
++            return false;
++        }
++
++        /* Push a gcs entry for the trampoline. */
++        if (put_user_u64(return_addr, gcspr - 8)) {
++            return false;
++        }
++        env->cp15.gcspr_el[0] = gcspr - 8;
++    }
++
++    __put_user(TARGET_GCS_MAGIC, &ctx->head.magic);
++    __put_user(sizeof(*ctx), &ctx->head.size);
++    __put_user(gcspr, &ctx->gcspr);
++    __put_user(mode, &ctx->features_enabled);
++    __put_user(0, &ctx->reserved);
++
++    return true;
++}
++
+ static void target_restore_general_frame(CPUARMState *env,
+                                          struct target_rt_sigframe *sf)
  {
-     /* Return the exception level that this SPSR is requesting a return to,
-@@ -787,6 +788,7 @@ illegal_return:
-     qemu_log_mask(LOG_GUEST_ERROR, "Illegal exception return at EL%d: "
-                   "resuming execution at 0x%" PRIx64 "\n", cur_el, env->pc);
- }
-+#endif /* !CONFIG_USER_ONLY */
- 
- void HELPER(dc_zva)(CPUARMState *env, uint64_t vaddr_in)
- {
-diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-index 78b2881a15..43c9bfef93 100644
---- a/target/arm/tcg/translate-a64.c
-+++ b/target/arm/tcg/translate-a64.c
-@@ -1870,6 +1870,9 @@ static bool trans_BLRA(DisasContext *s, arg_bra *a)
- 
- static bool trans_ERET(DisasContext *s, arg_ERET *a)
- {
-+#ifdef CONFIG_USER_ONLY
-+    return false;
-+#else
-     TCGv_i64 dst;
- 
-     if (s->current_el == 0) {
-@@ -1889,10 +1892,14 @@ static bool trans_ERET(DisasContext *s, arg_ERET *a)
-     /* Must exit loop to check un-masked IRQs */
-     s->base.is_jmp = DISAS_EXIT;
+@@ -502,6 +542,64 @@ static bool target_restore_zt_record(CPUARMState *env,
      return true;
-+#endif
  }
  
- static bool trans_ERETA(DisasContext *s, arg_reta *a)
++static bool target_restore_gcs_record(CPUARMState *env,
++                                      struct target_gcs_context *ctx,
++                                      bool *rebuild_hflags)
++{
++    TaskState *ts = get_task_state(env_cpu(env));
++    uint64_t cur_mode = gcs_get_el0_mode(env);
++    uint64_t new_mode, gcspr;
++
++    __get_user(new_mode, &ctx->features_enabled);
++    __get_user(gcspr, &ctx->gcspr);
++
++    /*
++     * The kernel pushes the value through the hw register:
++     * write_sysreg_s(gcspr, SYS_GCSPR_EL0) in restore_gcs_context,
++     * then read_sysreg_s(SYS_GCSPR_EL0) in gcs_restore_signal.
++     * Since the bottom 3 bits are RES0, this can (CONSTRAINED UNPREDICTABLE)
++     * force align the value.  Mirror the choice from gcspr_write().
++     */
++    gcspr &= ~7;
++
++    if (new_mode & ~(PR_SHADOW_STACK_ENABLE |
++                     PR_SHADOW_STACK_WRITE |
++                     PR_SHADOW_STACK_PUSH)) {
++        return false;
++    }
++    if ((new_mode ^ cur_mode) & ts->gcs_el0_locked) {
++        return false;
++    }
++    if (new_mode & ~cur_mode & PR_SHADOW_STACK_ENABLE) {
++        return false;
++    }
++
++    if (new_mode & PR_SHADOW_STACK_ENABLE) {
++        uint64_t cap;
++
++        /* Pop and clear the signal cap. */
++        if (get_user_u64(cap, gcspr)) {
++            return false;
++        }
++        if (cap != GCS_SIGNAL_CAP(gcspr)) {
++            return false;
++        }
++        if (put_user_u64(0, gcspr)) {
++            return false;
++        }
++        gcspr += 8;
++    } else {
++        new_mode = 0;
++    }
++
++    env->cp15.gcspr_el[0] = gcspr;
++    if (new_mode != cur_mode) {
++        *rebuild_hflags = true;
++        gcs_set_el0_mode(env, new_mode);
++    }
++    return true;
++}
++
+ static int target_restore_sigframe(CPUARMState *env,
+                                    struct target_rt_sigframe *sf)
  {
-+#ifdef CONFIG_USER_ONLY
-+    return false;
-+#else
-     TCGv_i64 dst;
+@@ -511,8 +609,10 @@ static int target_restore_sigframe(CPUARMState *env,
+     struct target_za_context *za = NULL;
+     struct target_tpidr2_context *tpidr2 = NULL;
+     struct target_zt_context *zt = NULL;
++    struct target_gcs_context *gcs = NULL;
+     uint64_t extra_datap = 0;
+     bool used_extra = false;
++    bool rebuild_hflags = false;
+     int sve_size = 0;
+     int za_size = 0;
+     int zt_size = 0;
+@@ -582,6 +682,15 @@ static int target_restore_sigframe(CPUARMState *env,
+             zt_size = size;
+             break;
  
-     if (!dc_isar_feature(aa64_pauth, s)) {
-@@ -1918,6 +1925,7 @@ static bool trans_ERETA(DisasContext *s, arg_reta *a)
-     /* Must exit loop to check un-masked IRQs */
-     s->base.is_jmp = DISAS_EXIT;
-     return true;
-+#endif
- }
++        case TARGET_GCS_MAGIC:
++            if (gcs
++                || size != sizeof(struct target_gcs_context)
++                || !cpu_isar_feature(aa64_gcs, env_archcpu(env))) {
++                goto err;
++            }
++            gcs = (struct target_gcs_context *)ctx;
++            break;
++
+         case TARGET_EXTRA_MAGIC:
+             if (extra || size != sizeof(struct target_extra_context)) {
+                 goto err;
+@@ -612,6 +721,10 @@ static int target_restore_sigframe(CPUARMState *env,
+         goto err;
+     }
  
- static bool trans_NOP(DisasContext *s, arg_NOP *a)
++    if (gcs && !target_restore_gcs_record(env, gcs, &rebuild_hflags)) {
++        goto err;
++    }
++
+     /* SVE data, if present, overwrites FPSIMD data.  */
+     if (sve && !target_restore_sve_record(env, sve, sve_size, &svcr)) {
+         goto err;
+@@ -631,6 +744,9 @@ static int target_restore_sigframe(CPUARMState *env,
+     }
+     if (env->svcr != svcr) {
+         env->svcr = svcr;
++        rebuild_hflags = true;
++    }
++    if (rebuild_hflags) {
+         arm_rebuild_hflags(env);
+     }
+     unlock_user(extra, extra_datap, 0);
+@@ -701,7 +817,7 @@ static void target_setup_frame(int usig, struct target_sigaction *ka,
+                                uc.tuc_mcontext.__reserved),
+     };
+     int fpsimd_ofs, fr_ofs, sve_ofs = 0, za_ofs = 0, tpidr2_ofs = 0;
+-    int zt_ofs = 0, esr_ofs = 0;
++    int zt_ofs = 0, esr_ofs = 0, gcs_ofs = 0;
+     int sve_size = 0, za_size = 0, tpidr2_size = 0, zt_size = 0;
+     struct target_rt_sigframe *frame;
+     struct target_rt_frame_record *fr;
+@@ -720,6 +836,11 @@ static void target_setup_frame(int usig, struct target_sigaction *ka,
+                                        &layout);
+     }
+ 
++    if (env->cp15.gcspr_el[0]) {
++        gcs_ofs = alloc_sigframe_space(sizeof(struct target_gcs_context),
++                                       &layout);
++    }
++
+     /* SVE state needs saving only if it exists.  */
+     if (cpu_isar_feature(aa64_sve, env_archcpu(env)) ||
+         cpu_isar_feature(aa64_sme, env_archcpu(env))) {
+@@ -779,6 +900,12 @@ static void target_setup_frame(int usig, struct target_sigaction *ka,
+         goto give_sigsegv;
+     }
+ 
++    if (ka->sa_flags & TARGET_SA_RESTORER) {
++        return_addr = ka->sa_restorer;
++    } else {
++        return_addr = default_rt_sigreturn;
++    }
++
+     target_setup_general_frame(frame, env, set);
+     target_setup_fpsimd_record((void *)frame + fpsimd_ofs, env);
+     if (esr_ofs) {
+@@ -786,6 +913,10 @@ static void target_setup_frame(int usig, struct target_sigaction *ka,
+         /* Leave ESR_EL1 clear while it's not relevant. */
+         env->cp15.esr_el[1] = 0;
+     }
++    if (gcs_ofs &&
++        !target_setup_gcs_record((void *)frame + gcs_ofs, env, return_addr)) {
++        goto give_sigsegv;
++    }
+     target_setup_end_record((void *)frame + layout.std_end_ofs);
+     if (layout.extra_ofs) {
+         target_setup_extra_record((void *)frame + layout.extra_ofs,
+@@ -811,11 +942,6 @@ static void target_setup_frame(int usig, struct target_sigaction *ka,
+     __put_user(env->xregs[29], &fr->fp);
+     __put_user(env->xregs[30], &fr->lr);
+ 
+-    if (ka->sa_flags & TARGET_SA_RESTORER) {
+-        return_addr = ka->sa_restorer;
+-    } else {
+-        return_addr = default_rt_sigreturn;
+-    }
+     env->xregs[0] = usig;
+     env->xregs[29] = frame_addr + fr_ofs;
+     env->xregs[30] = return_addr;
 -- 
 2.43.0
 

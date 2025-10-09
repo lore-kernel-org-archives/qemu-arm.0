@@ -4,86 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A04C8CCD184
-	for <qemu-arm@archiver.kernel.org>; Thu,  9 Oct 2025 13:30:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E02ECCD184
+	for <qemu-arm@archiver.kernel.org>; Thu,  9 Oct 2025 14:04:21 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v6qie-0001Ut-C8; Thu, 09 Oct 2025 09:30:09 -0400
+	id 1v6rFS-00015N-DT; Thu, 09 Oct 2025 10:04:06 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1v6qia-0001Tr-0D
- for qemu-arm@nongnu.org; Thu, 09 Oct 2025 09:30:04 -0400
-Received: from mail-yx1-xb12c.google.com ([2607:f8b0:4864:20::b12c])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v6rFQ-00014I-TS
+ for qemu-arm@nongnu.org; Thu, 09 Oct 2025 10:04:01 -0400
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1v6qiP-0002nC-Lr
- for qemu-arm@nongnu.org; Thu, 09 Oct 2025 09:30:02 -0400
-Received: by mail-yx1-xb12c.google.com with SMTP id
- 956f58d0204a3-63bcfcb800aso1070224d50.0
- for <qemu-arm@nongnu.org>; Thu, 09 Oct 2025 06:29:50 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v6rFI-0007NH-Bj
+ for qemu-arm@nongnu.org; Thu, 09 Oct 2025 10:04:00 -0400
+Received: by mail-wm1-x32a.google.com with SMTP id
+ 5b1f17b1804b1-46e2826d5c6so6804255e9.1
+ for <qemu-arm@nongnu.org>; Thu, 09 Oct 2025 07:03:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1760016588; x=1760621388; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=sbe2ohX3gBWx9TzEYThFBXKqR6DwYNml6WgtMjtxVEM=;
- b=xozwEUrDHWjdXg1NMR0eQQ+OimviZWaRGZk4+cmwhdD6jojF4LPkOAQqi1Ba/Go5iu
- X9KQ9VYbWkno4lCaVCL7xx9wj6Z7nnbV/Lbp8hNH+ECrTMiBeNY8JwENJkiDyPY0Yhb0
- +99+StwSYF4fAOPqM8W/rG5yJ/iQus2AeRi/FZRrYI8FdyskJcMoScup6nMX3BYjIKlB
- H5L/MPtfSXu97eLjlay/n9xONnJL2AAAQKpDi+ZxLlESaaNtAIJtWdwrq5Kt7heuEqKM
- Ym/SSRhnsPiSGeFubzTpQL4XbpGUOg3VChRfIPBlbaKvpTgc5ElYUR94yC9kFbxbdPkj
- 5R2Q==
+ d=linaro.org; s=google; t=1760018627; x=1760623427; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=isG008FQJssEySnXdvRxmB1JtzORDQiv7f0rDRCoK0E=;
+ b=ezHcyyLbLSgnDoY0iYGNP2vQyB50Hcvm0Yc7HV/PyF8DLHqZikP+C61o6cBhFJmZRR
+ DlG3It2mWh/zqe+gBLK2jCTMuOXsVr8K0BN2teGbVrF3QWYuB4x5zwuY1+F37slZgnHZ
+ bfMRAu8njZuFFezH0dBeDBTF5h2EdJbtMbJ9FUggMNk05lPh3DTaZ1AMXcurX8QWfjSP
+ 1duCHWdAD/UuoQYPpO7GVteR8knLpUcCxbd1CLFdI5ui3rmqJcrx9btMkU1eVxZMJLDE
+ par/LDLl2zqP6gbpzh6IPy7/NWXbP/nY7zJbbVMvL4yyuopKx7/K+JGc6syBksvCXgbE
+ FvlQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1760016588; x=1760621388;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=sbe2ohX3gBWx9TzEYThFBXKqR6DwYNml6WgtMjtxVEM=;
- b=F7D6xKnaP9peamn7L3lPCAn7aKwsKKdUEjmiRLmFxi/uzS6ZBl7ByvQNWp1R7ySxaI
- z+q5vZcTZhQGggI8zEZpveFnq2JuZJnrdCHvoCJZlTlI37EiKwOE3H86X/uVjur2Coz7
- kGVMnyw/JlUHXVkzeKE+rF7H/8cmaDbYFYcT4reoSn8F//EA0qJH+yykau7OXDX3fb1q
- 2jtafvA0Ucnm2gWyXHB5sRwPHLwd8OQ8jMRuQ8gn5cFhLnFRmxYX3xjJ7Rpuf6IrojkO
- H1SA8nQ8K4EHUDKsbj3x+hq5/FByo0EOtfpm8Yhyie5bvvUvxIjywX6Wi5hAlwWSpafy
- jJqw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUa6ja0CmWZ1iqLOuViGRSUb4zaBgbdgYk34+bAdyvglv2cCz1jHBzE4+gIn795se90kDvmcbrvvQ==@nongnu.org
-X-Gm-Message-State: AOJu0YzsJqzteg1LH+xn8QFV797acg/ceLQOwOZ+iDBIuVG6ovsANGez
- Zh+jLsZMmidRnh6ct2ZV6QW20oAmdLfBVpzXxk5ECSf+3IIQ7xXKQFuK4En4b3tM4O5Q2vfvmz/
- OvRi4l/Sf5l4pajIU01Cy84XMvJvgKcPVGqyQCiveoRvF+YQMcDKf
-X-Gm-Gg: ASbGncvswdEl+UCb+OVY6st9l/1EIKey6QtyeofWS11fmUyc4pr6sCUvfZhD9DQGpVc
- ddGPhtzf1erbBt2eZ8fPHxp1iyokx97f/fxb2mnL/j7KkWG3JBD22XzngqNwx1ZEo2fuH24Tcan
- f64hFFLGFADqmzENDoJZf7bIGfK3JaNh6pSO0EZSc0KShjUWZoXBk5RqkFYF0GBTs7Rwn6o00ju
- nf+gEYSolepeeIjRXxD2qcIha+1S3OCG9syKnthqyX/B8E=
-X-Google-Smtp-Source: AGHT+IH7Gq1Zbw2YoJORGs3HavzWbAbqOUe73lu9hljJfbhtwrvejjljWaJ5kl2jhEvXag1j4raHGr+fuzkIMl5rvwk=
-X-Received: by 2002:a53:c08c:0:b0:639:58f7:f6f2 with SMTP id
- 956f58d0204a3-63ccb91b8d5mr6030173d50.45.1760016588036; Thu, 09 Oct 2025
- 06:29:48 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1760018627; x=1760623427;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=isG008FQJssEySnXdvRxmB1JtzORDQiv7f0rDRCoK0E=;
+ b=p4OtB7zTxPO9T+7VU05ufcaUhzQCNlGIZen7mK7QEg0g5CGvAqD+jVM95cTLkICYLe
+ Ks39okNTdlDp5Opk8tGugKTDQ4PzNPPnXwHSQNhENaBttkWBtbERGnkQ4r8s2pXYMzRE
+ VNO8LzDRtQu8Egp5oeYanKXDGqX7h4+c6Dvleu+uvdtmZwqf2YXlo4k8837yGYA4EAkZ
+ t+Xam23wyvd7v+/xXme5nRta6aKQ/S/5PEGWRKorYdMTXcPAoo9TNp8A4n6O/F16+7Md
+ A4Gw8K5AFcbtuxDDDHbwQzxmaQkPlJYIC4k5BzFv0s26iSBBlTEIRYsFjA7ZM0cLk8y6
+ gT/w==
+X-Gm-Message-State: AOJu0Yyj5g+Gf7QyofHliDG177YFE3kbO2sHaQSqw088tcnBRw7YtBKz
+ nP7yjhgJfmKJaDFXeJ2BCGDhnppUlsMjusVnDAsMMXYvslZZDkhh+RstppGVelwlAqY=
+X-Gm-Gg: ASbGncvU+3g/xEdykM5wNeQNBluVcvvAqp1Rb2JqZTlF+zSw8xzVfyShtwE54Hem0i4
+ CxNanmwqJLlj7Pg88MnTbdK3JiOdXpaORx97u6/diQOMiiBh31WpaKfzzu2oQDXrNS3zPslvwrL
+ 9LM7cTV8vEndwNvrfJ8S/7S2cesgK3whcwYqRg0YQD7K23or1+ZoUD3LgyX2fFO2j08Tq51+YC+
+ upIY4gkV9iDQA00cxi39WMNC5v/ibCPrvQRvTEzSd04koLHv8uEzY60JadNI3NzR87xnEMu9Rfb
+ 9Y3L5+8WXraQ4G7YYy8oe2mdnZYGZWd50xNetLVPszSG1YqRuHbJrRUXAgY8iNZ3HAo3hFHojzD
+ /Sxyih38Sb5KTuQb/dvqr9nuHiNuizjc//Igtu5F1GZk32stqs8Knb8rWVFAOTrbHk0KdALoJkP
+ ixXhqP5vEltsknaNIDOw==
+X-Google-Smtp-Source: AGHT+IFGagHjZIA0p/4QMvDx7LiGAEIVH603xuASPfYxj98dyhWs9VpA14WG7tpLxAqD9OU387IeRA==
+X-Received: by 2002:a05:600c:1f93:b0:46e:376c:b1f0 with SMTP id
+ 5b1f17b1804b1-46fa9a8ca9fmr50714925e9.7.1760018626986; 
+ Thu, 09 Oct 2025 07:03:46 -0700 (PDT)
+Received: from [192.168.69.221] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-46faf16abf6sm50830395e9.12.2025.10.09.07.03.45
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 09 Oct 2025 07:03:46 -0700 (PDT)
+Message-ID: <a08aea35-960c-45a3-ab97-e4d1487feda9@linaro.org>
+Date: Thu, 9 Oct 2025 16:03:45 +0200
 MIME-Version: 1.0
-References: <CC5A0011-CD14-40F9-8023-8BF5F989BCCF@gmail.com>
- <20251007151157.5a601c3e@fedora>
- <DFAE42FB-786F-45D3-9FC5-C72DEC5A4301@gmail.com>
-In-Reply-To: <DFAE42FB-786F-45D3-9FC5-C72DEC5A4301@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 9 Oct 2025 14:29:36 +0100
-X-Gm-Features: AS18NWCziaeBCU380HB1vkLX8VJpnmIu0SBEocM74RLlbJr_6YVM8Q34MdZGMRY
-Message-ID: <CAFEAcA8LQi+nVztx7oz6yGaYgKvnECj_0Xom3NbxLAFK82hWTQ@mail.gmail.com>
-Subject: Re: [PATCH] hw/arm: add pvpanic mmio device for arm
-To: Alexander Gryanko <xpahos@gmail.com>
-Cc: Igor Mammedov <imammedo@redhat.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, qemu-trivial@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b12c;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12c.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v7 14/73] include/exec/memopidx: Adjust for 32 mmu indexes
+Content-Language: en-US
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Pierrick Bouvier <pierrick.bouvier@linaro.org>
+References: <20251008215613.300150-1-richard.henderson@linaro.org>
+ <20251008215613.300150-15-richard.henderson@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20251008215613.300150-15-richard.henderson@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -99,35 +100,13 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, 9 Oct 2025 at 14:26, Alexander Gryanko <xpahos@gmail.com> wrote:
->
->
->
-> > On 7 Oct 2025, at 16:11, Igor Mammedov <imammedo@redhat.com> wrote:
-> >
-> > On Sat, 4 Oct 2025 23:19:09 +0300
-> > Alexander Gryanko <xpahos@gmail.com> wrote:
-> >
-> >> Currently, pvpanic is available in three device types: ISA,
-> >> MMIO, and PCI. For early stages of system initialisation
-> >> before PCI enumeration, only ISA and MMIO are suitable.
-> >> ISA is specific to the x86 platform; only MMIO devices
-> >> can be used for ARM. It is not possible to specify a
-> >> device as on the x86 platform (-device pvpanic); the
-> >
-> > perhaps ARM folsk know better, don't we have some
-> > user create-able sysbus devices? Can it be implemented
-> > as such, so we would avoid creating built-in device?
->
-> As a QEMU user, I expected there to be a way to specify a dtb from a file=
- that could be used as the actual device tree inside the virtual machine. P=
-erhaps there is a way to do this, but I am not very familiar with the QEMU =
-code and do not know how it should work.
+On 8/10/25 23:55, Richard Henderson wrote:
+> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>   include/exec/memopidx.h | 9 +++++----
+>   1 file changed, 5 insertions(+), 4 deletions(-)
 
-You can generally use '-machine dtb=3Dfile.dtb'. But note that
-this entirely overrides any internally generated dtb file
-for machines that do that, so for those machine types it's
-mostly a helpful debugging tool.
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
--- PMM
 

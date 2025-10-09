@@ -4,75 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DAF97CCD185
-	for <qemu-arm@archiver.kernel.org>; Thu,  9 Oct 2025 13:12:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AEBB8CCD184
+	for <qemu-arm@archiver.kernel.org>; Thu,  9 Oct 2025 13:18:31 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v6qQm-00045j-M0; Thu, 09 Oct 2025 09:11:40 -0400
+	id 1v6qX6-00076W-Ns; Thu, 09 Oct 2025 09:18:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1v6qQl-00045M-J9
- for qemu-arm@nongnu.org; Thu, 09 Oct 2025 09:11:40 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1v6qX5-00075g-CX
+ for qemu-arm@nongnu.org; Thu, 09 Oct 2025 09:18:11 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1v6qQg-0000eP-RD
- for qemu-arm@nongnu.org; Thu, 09 Oct 2025 09:11:39 -0400
+ id 1v6qX0-0001Yj-90
+ for qemu-arm@nongnu.org; Thu, 09 Oct 2025 09:18:11 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1760015489;
+ s=mimecast20190719; t=1760015882;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=vNu4xeNDWxav9ODkiSs2XO2FM7QQLqv7Ue1Go19LTcM=;
- b=AsnYRGUP7hYXgNU6XWcct5i7E34r1Iurafy4W838kdJxGS/DVCXOPM0tfarEJVMSji9d28
- +Jccin2ILx8zEnDKHBvSwFCkWzqOkMyRp+jfEB8+QNAnM4J/QknWjFoXXjYyxnoxe3EX69
- dNuOwXcueXzaI0Ad2m7wwlNUCfrKOjw=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=5RXDeqnUUsvysPMMwA/P+NyKw8lS/AlFEb7N/B4Ay4o=;
+ b=OP0I4pmwHNMs/QEmt58Di87WwV0i0oAXFO8MgS7WQSsYX2aUkjXAe3KCtoN7SN8itGe2Z8
+ xmGm1l/4rSOIPg5BaEv5lCSS24o8S13AcnNvWZ7Rhk4WZ9BSXjxu8Q/lzN+S/i25NicSAh
+ B5SdHaCh3qlcq7Fcp9YS2nfY8+O4O7g=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-10-z4Z9dKYYONueYBQ5vSCc8w-1; Thu, 09 Oct 2025 09:11:28 -0400
-X-MC-Unique: z4Z9dKYYONueYBQ5vSCc8w-1
-X-Mimecast-MFC-AGG-ID: z4Z9dKYYONueYBQ5vSCc8w_1760015487
-Received: by mail-wm1-f71.google.com with SMTP id
- 5b1f17b1804b1-46e3d43bbc7so5076145e9.2
- for <qemu-arm@nongnu.org>; Thu, 09 Oct 2025 06:11:27 -0700 (PDT)
+ us-mta-665-aSPFI5dBPRug7korsKd9tA-1; Thu, 09 Oct 2025 09:18:01 -0400
+X-MC-Unique: aSPFI5dBPRug7korsKd9tA-1
+X-Mimecast-MFC-AGG-ID: aSPFI5dBPRug7korsKd9tA_1760015879
+Received: by mail-wr1-f72.google.com with SMTP id
+ ffacd0b85a97d-426c4d733c4so618062f8f.3
+ for <qemu-arm@nongnu.org>; Thu, 09 Oct 2025 06:17:59 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1760015486; x=1760620286;
+ d=1e100.net; s=20230601; t=1760015879; x=1760620679;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=Iva/Nb3cWdPry6GZHRxRFXTiqNI2SHYB4OJ+a5fLZHg=;
- b=vGOpeXN6iE4cIEMa/8XERZmtQ/XJmyKjoh509ENkHNQmP/tRWP8hgHXD/GmqVBzSsA
- /pySCd4Hu3qw+4KkDNb/a9UV/ticmBaR5h8OSkk4HqYfpcG8QqLTmUbD4d1HjHg1Z6Vt
- TsZv/J3Rg1wvA1VizxNB7h2NqbQXY8aFxlxbfM1O3QhhwCNb2n0Z1jxmA9mNF8kI9W1P
- GrRp1CVSSmp9O9J1Mlhjd/kl6k5ZxqnrRY/KAstWogEQgUZh8HrUQwmWTgc+8Yn/NgR5
- CLGVlcHIgIoa7yLzn5H17O8hE87ErZZgJMNzlMqi4QYgP99Z2ChyhikOXdeBUsRD4k8h
- 0h+A==
+ bh=st7eVCyZkUUFHwBZ/R5BE0OrccUBlLlfl4/YPTxfBPc=;
+ b=hxxDejlndmDsR/J1a5JaNIsvl0l6jjw7CxM3ef9phnubyJsKOKQrSBJbbehYMIBLaW
+ hDUwGJmjXrTj5TUEp6epojnbCEWN6R+jcEAAp5i/LFA18Ihv8Px0ZxM/Zb5XokYxr6eJ
+ T2XCtRLQ5wf3dnInOa4E/3P+5qoZWKXkGzOgwT4DG0BbOVxrmPpKruZwwNOTGKr5j91U
+ GtUnspB2Ri2tGUrM4whAo/+ql1KXP4R2N+u7OMwTyugWn5zj1Toqd3iPg2vrvGkXJXat
+ Wmqh4w+ccUGgvam+SLtHLmvUDW3uMtFanqPUUp4o6lTe7RY0G/GsahCnE9/ovMk+AmIi
+ EUAw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUudZdROiEzhk4ikMl7nPaAKX07CEV3IeNhO+PgyF3a4eXE5FvMGCamkwQu1kuLdFUK0kuF7LmxHg==@nongnu.org
-X-Gm-Message-State: AOJu0Yz4DKdRY4YZyEkMPPnjkVO//N0xLN+VKK4Uwa0eTfon48qT0o62
- fnMBu3YmezJNOK+DuCsV/Af9J2ln0pTSZhClfBSjcAtmlHrTVNtYj2wCsz2fb5IDYsLyqYy0vHh
- IRW2FmA2ULw2LjxIINL14KK5gCB72aSfD7sgUBlDWQkJCbpXAZPwGTw==
-X-Gm-Gg: ASbGncuK/tpDQTpMfY4Cz8N6L4HJ85Kxwvg/yPLzRq/4M5ssK4pzBmD09Hj9ER9S+IB
- kxXW4gvL/W3YcvaBCuzL3DDZN2rlZ9hdcWopT6KssTaMjwNN87xc7HYY8fQZoaRRBjNi+d3NIBg
- UPVPUgmQIV1z6EPSAQRaKH/VUDIJPMBMKXRL2EvikBzgXuKSTY/MNMw7fQZJSudsXOxhxOO6zTE
- 6mShlrwiQCU9vnmN5hbsOZOfONSdX3n/BEjKCstpcfo/dkOdO2kaxCCyjmD9Ln5zbXaYWUBE4XH
- bAg1LeBX5ZKyo6UK8USio6BRqaSdQXabi0+N
-X-Received: by 2002:a05:600c:4751:b0:46e:72df:a812 with SMTP id
- 5b1f17b1804b1-46fa9a8641fmr51398045e9.4.1760015486457; 
- Thu, 09 Oct 2025 06:11:26 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGeo0tKlGmBISyX/f0JRzgPK/1B66zmUIksEEqx32Vk6ZUMaoF9lI2RcApyl8G/x8OWuS0Q0g==
-X-Received: by 2002:a05:600c:4751:b0:46e:72df:a812 with SMTP id
- 5b1f17b1804b1-46fa9a8641fmr51397555e9.4.1760015485859; 
- Thu, 09 Oct 2025 06:11:25 -0700 (PDT)
+ AJvYcCWhK0kCdr71dUSrQwZvMifi/fqu7eEg27AHmjDy69C8r1AJJUsIh0nDQ6TGLkVvb/EixCdTPkeV6A==@nongnu.org
+X-Gm-Message-State: AOJu0YwrrH6C+LQo/5cdnUrKcfrdL3CLgfzSJ1EXNESrpc02w88pN2T1
+ o3kGJW9XEFH3h94NRz5LoecISKS++YJPWLHXj9aWhxE0/+puDK7P00enywsjcZHUxTAZAR5SWdf
+ eBsBha2CvutrMM5yRpgdlHLIgTJrC+HADsbwN1hRjAFN3i1S7aApHyg==
+X-Gm-Gg: ASbGncum86HQ7Q5cev806ETF9tVSRL4BolX0pYcUe+i95eMyAH6UnF8aEh6bcJaaEBb
+ KQURCv7BVO3WBvQRajs3DsuI8NncddcQktixJeX3LfIhNtwwsv4eFBx4gr8wgnseOR0E4Mic2A6
+ akD/ImqZ80YAq+tsO6es0pFJDg7cpmBIDh7+nn+6iGX8dkpSAniVSo1GDDVH6Vu63azEvuYMcuc
+ T5XuBLH6v/Qcu+vcYbZcQTUGlLHY3mUNxJYCLCs1XltzAYGZbsi604ZRnAvbnBJgocjDz0rq0Jp
+ lzrtVUvjal2VKRqPUborEo95zeucJb80uiIq
+X-Received: by 2002:a05:6000:1887:b0:3eb:8395:e2e0 with SMTP id
+ ffacd0b85a97d-4266e8de16amr4776012f8f.51.1760015878567; 
+ Thu, 09 Oct 2025 06:17:58 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGkKedZ0tMLcCJr9wNaCpRdcM4VsmKHaB50IdVXsF70AwutFWMmkb4XtduBuxDtXRapYO6Tmg==
+X-Received: by 2002:a05:6000:1887:b0:3eb:8395:e2e0 with SMTP id
+ ffacd0b85a97d-4266e8de16amr4775964f8f.51.1760015877950; 
+ Thu, 09 Oct 2025 06:17:57 -0700 (PDT)
 Received: from fedora ([85.93.96.130]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-46fb1e0f019sm27231095e9.10.2025.10.09.06.11.24
+ 5b1f17b1804b1-46fa9d62890sm81702145e9.14.2025.10.09.06.17.56
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 09 Oct 2025 06:11:25 -0700 (PDT)
-Date: Thu, 9 Oct 2025 15:11:23 +0200
+ Thu, 09 Oct 2025 06:17:57 -0700 (PDT)
+Date: Thu, 9 Oct 2025 15:17:55 +0200
 From: Igor Mammedov <imammedo@redhat.com>
 To: Miguel Luis <miguel.luis@oracle.com>
 Cc: "salil.mehta@opnsrc.net" <salil.mehta@opnsrc.net>,
@@ -107,22 +107,22 @@ Cc: "salil.mehta@opnsrc.net" <salil.mehta@opnsrc.net>,
  <linuxarm@huawei.com>, "jiakernel2@gmail.com" <jiakernel2@gmail.com>,
  "maobibo@loongson.cn" <maobibo@loongson.cn>, "lixianglai@loongson.cn"
  <lixianglai@loongson.cn>, "shahuang@redhat.com" <shahuang@redhat.com>,
- "zhao1.liu@intel.com" <zhao1.liu@intel.com>, <devel@lists.libvirt.org>
-Subject: Re: [PATCH RFC V6 03/24] hw/arm/virt: Clamp 'maxcpus' as-per
- machine's vCPU deferred online-capability
-Message-ID: <20251009151123.6741ac61@fedora>
-In-Reply-To: <4764573F-D108-40BB-AF23-B4B29E40BEF8@oracle.com>
+ "zhao1.liu@intel.com" <zhao1.liu@intel.com>
+Subject: Re: [PATCH RFC V6 02/24] hw/core, qemu-options.hx: Introduce
+ 'disabledcpus' SMP parameter
+Message-ID: <20251009151755.79b4e08f@fedora>
+In-Reply-To: <9143F5AE-967B-4499-8A12-E7A47A764E51@oracle.com>
 References: <20251001010127.3092631-1-salil.mehta@opnsrc.net>
- <20251001010127.3092631-4-salil.mehta@opnsrc.net>
- <4764573F-D108-40BB-AF23-B4B29E40BEF8@oracle.com>
+ <20251001010127.3092631-3-salil.mehta@opnsrc.net>
+ <9143F5AE-967B-4499-8A12-E7A47A764E51@oracle.com>
 X-Mailer: Claws Mail 4.3.1 (GTK 3.24.49; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: R68ypPHQU18ER07_W--irXS1EV6VZ9TsmbtM2RAN_Q4_1760015487
+X-Mimecast-MFC-PROC-ID: FJpCHrbyjbwNz-J2ufFPalcnmgSpz954u6NG7udi6A0_1760015879
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=imammedo@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -24
 X-Spam_score: -2.5
@@ -147,7 +147,7 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, 9 Oct 2025 12:32:15 +0000
+On Thu, 9 Oct 2025 11:28:40 +0000
 Miguel Luis <miguel.luis@oracle.com> wrote:
 
 > Hi Salil,
@@ -156,252 +156,382 @@ Miguel Luis <miguel.luis@oracle.com> wrote:
 > >=20
 > > From: Salil Mehta <salil.mehta@huawei.com>
 > >=20
-> > To support a vCPU hot-add=E2=80=93like model on ARM, the virt machine m=
-ay be setup with
-> > more CPUs than are active at boot. These additional CPUs are fully real=
-ized in
-> > KVM and listed in ACPI tables from the start, but begin in a disabled s=
-tate.
-> > They can later be brought online or taken offline under host or platfor=
-m policy
-> > control. The CPU topology is fixed at VM creation time and cannot chang=
-e
-> > dynamically on ARM. Therefore, we must determine precisely the 'maxcpus=
-' value
-> > that applies for the full lifetime of the VM.
+> > Add support for a new SMP configuration parameter, 'disabledcpus', whic=
+h
+> > specifies the number of additional CPUs that are present in the virtual
+> > machine but administratively disabled at boot. These CPUs are visible i=
+n
+> > firmware (e.g. ACPI tables) yet unavailable to the guest until explicit=
+ly
+> > enabled via QMP/HMP, or via the 'device_set' API (introduced in later
+> > patches).
 > >=20
-> > On ARM, this deferred online-capable model is only valid if:
-> >  - The GIC version is 3 or higher, and
-> >  - Each non-boot CPU=E2=80=99s GIC CPU Interface is marked =E2=80=9Conl=
-ine-capable=E2=80=9D in its
-> >    ACPI GICC structure (UEFI ACPI Specification 6.5, =C2=A75.2.12.14, T=
-able 5.37
-> >    =E2=80=9CGICC CPU Interface Flags=E2=80=9D), and
-> >  - The chosen accelerator supports safe deferred CPU online:
-> >      * TCG with multi-threaded TCG (MTTCG) enabled
-> >      * KVM (on supported hosts)
-> >      * Not HVF or QTest
+> > This feature is intended for architectures that lack native CPU hotplug
+> > support but can change the administrative power state of present CPUs.
+> > It allows simulating CPU hot-add=E2=80=93like scenarios while all CPUs =
+remain
+> > physically present in the topology at boot time.
 > >=20
-> > This patch sizes the machine=E2=80=99s max-possible CPUs during VM init=
-:
-> >  - If all conditions are satisfied, retain the full set of CPUs corresp=
-onding
-> >    to (`-smp cpus` + `-smp disabledcpus`), allowing the additional (ini=
-tially
-> >    disabled) CPUs to participate in later policy-driven online.
-> >  - Otherwise, clamp the max-possible CPUs to the boot-enabled count
-> >    (`-smp disabledcpus=3D0` equivalent) to avoid advertising CPUs the g=
-uest can
-> >    never use.
+> > Note: ARM is the first architecture to support this concept.
 > >=20
-> > A new MachineClass flag, `has_online_capable_cpus`, records whether the=
- machine
-> > supports deferred vCPU online. This is usable by other machine types as=
- well. =20
+> > Changes include:
+> > - Extend CpuTopology with a 'disabledcpus' field.
+> > - Update machine_parse_smp_config() to account for disabled CPUs when
+> >   computing 'cpus' and 'maxcpus'.
+> > - Update SMPConfiguration in QAPI to accept 'disabledcpus'.
+> > - Extend -smp option documentation to describe 'disabledcpus' usage and
+> >   behavior.
+> >  =20
 >=20
+> Specifying a new parameter for the user seems unnecessary when the system=
+ could
+> infer the number of present and disabled from (maxcpus - cpus) and those =
+this
+> patch calls "disabledcpus" could be obtained this way.
 >=20
-> By the definition of
+> Naming is hard although it is of my opinion that we shouldn't be
+> calling 'disabledcpus' here; I understand that gets carried by previous
+> administrative power state meanings but machine-smp level being at a diff=
+erent
+> abstraction level the administrative power state concept could be
+> decoupled from machine-smp realm.
+
+
+> My suggestion would be calling those cpus 'inactive' and not carry previo=
+us
+> patch's nomenclature.
 >=20
->  * @has_hotpluggable_cpus:
->  *    If true, board supports CPUs creation with -device/device_add.
+> CPUs in 'inactive' state are still present in the virtual machine althoug=
+h this
+> pre-condition may require post actions like being explicitly 'enabled'/ac=
+tive via
+> [QH]MP.
 >=20
->  in include/hw/boards.h
+> Overall, I believe the above should be all it takes to simplify acommodat=
+ion of
+> CPUs not to be brought online at boot time within this patch's context.
 
-It should be fine to rename it to has_pluggable_cpus.
+See my reply to cover letter, we shouldn't touch -smp at all.
+And make -device/device_add work with virt/arm cpus instead,
+that solves a number of issues that this and -deviceset patches introduce.=
+=20
 
-But we should add support to arm/virt for -device/device_add cpu_foo,
-to avoid awkward -device-set and mangling of -smp.
-
-device_add in arm/virt case probably should be limited non hotplug usecase.
-
-> seems one could take advantage of MachineClass's has_hotpluggable_cpus va=
-riable
-> instead of creating a new has_online_capable_cpus one.
-> (Again, IMHO =E2=80=98online capable=E2=80=99 is ACPI nomenclature and do=
-esn=E2=80=99t need to be brought
-> in MachineClass=E2=80=99s)
-
-the issue with has_hotpluggable_cpus might be QMP ABI,
-where libvirt migh use it to figure out if certain command are supported.
-
-CCing libvirt to check if that would break something.
-
->=20
-> Variable which would be initialized in machvirt_init on an assignment bas=
-ed on
-> GIC version and/or wether there's inactive CPUs and proceed from there an=
-yways,
-> making the default assignment in machine_virt_class_init superfluous.
->=20
-> We're at hw/arm/virt and we know these CPUs are administratively power st=
-ate
-> coordinated so admin_power_state_supported can still be set there in the
-> presence of inactive CPUs.
->=20
 > Thanks
 > Miguel
 >=20
-> >=20
+>=20
 > > Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
 > > ---
-> > hw/arm/virt.c       | 84 ++++++++++++++++++++++++++++++---------------
-> > include/hw/boards.h |  1 +
-> > 2 files changed, 57 insertions(+), 28 deletions(-)
+> > hw/core/machine-smp.c | 24 +++++++-----
+> > include/hw/boards.h   |  2 +
+> > qapi/machine.json     |  3 ++
+> > qemu-options.hx       | 86 +++++++++++++++++++++++++++++++++----------
+> > system/vl.c           |  3 ++
+> > 5 files changed, 89 insertions(+), 29 deletions(-)
 > >=20
-> > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> > index ef6be3660f..76f21bd56a 100644
-> > --- a/hw/arm/virt.c
-> > +++ b/hw/arm/virt.c
-> > @@ -2168,8 +2168,7 @@ static void machvirt_init(MachineState *machine)
-> >     bool has_ged =3D !vmc->no_ged;
-> >     unsigned int smp_cpus =3D machine->smp.cpus;
-> >     unsigned int max_cpus =3D machine->smp.max_cpus;
-> > -
-> > -    possible_cpus =3D mc->possible_cpu_arch_ids(machine);
-> > +    DeviceClass *dc;
+> > diff --git a/hw/core/machine-smp.c b/hw/core/machine-smp.c
+> > index 0be0ac044c..c1a09fdc3f 100644
+> > --- a/hw/core/machine-smp.c
+> > +++ b/hw/core/machine-smp.c
+> > @@ -87,6 +87,7 @@ void machine_parse_smp_config(MachineState *ms,
+> > {
+> >     MachineClass *mc =3D MACHINE_GET_CLASS(ms);
+> >     unsigned cpus    =3D config->has_cpus ? config->cpus : 0;
+> > +    unsigned disabledcpus =3D config->has_disabledcpus ? config->disab=
+ledcpus : 0;
+> >     unsigned drawers =3D config->has_drawers ? config->drawers : 0;
+> >     unsigned books   =3D config->has_books ? config->books : 0;
+> >     unsigned sockets =3D config->has_sockets ? config->sockets : 0;
+> > @@ -166,8 +167,13 @@ void machine_parse_smp_config(MachineState *ms,
+> >         sockets =3D sockets > 0 ? sockets : 1;
+> >         cores =3D cores > 0 ? cores : 1;
+> >         threads =3D threads > 0 ? threads : 1;
+> > +
+> > +        maxcpus =3D drawers * books * sockets * dies * clusters *
+> > +                    modules * cores * threads;
+> > +        cpus =3D maxcpus - disabledcpus;
+> >     } else {
+> > -        maxcpus =3D maxcpus > 0 ? maxcpus : cpus;
+> > +        maxcpus =3D maxcpus > 0 ? maxcpus : cpus + disabledcpus;
+> > +        cpus =3D cpus > 0 ? cpus : maxcpus - disabledcpus;
 > >=20
-> >     /*
-> >      * In accelerated mode, the memory map is computed earlier in kvm_t=
-ype()
-> > @@ -2186,7 +2185,7 @@ static void machvirt_init(MachineState *machine)
-> >          * we are about to deal with. Once this is done, get rid of
-> >          * the object.
-> >          */
-> > -        cpuobj =3D object_new(possible_cpus->cpus[0].type);
-> > +        cpuobj =3D object_new(machine->cpu_type);
-> >         armcpu =3D ARM_CPU(cpuobj);
-> >=20
-> >         pa_bits =3D arm_pamax(armcpu);
-> > @@ -2201,6 +2200,57 @@ static void machvirt_init(MachineState *machine)
-> >      */
-> >     finalize_gic_version(vms);
-> >=20
-> > +    /*
-> > +     * The maximum number of CPUs depends on the GIC version, or on ho=
-w
-> > +     * many redistributors we can fit into the memory map (which in tu=
-rn
-> > +     * depends on whether this is a GICv3 or v4).
-> > +     */
-> > +    if (vms->gic_version =3D=3D VIRT_GIC_VERSION_2) {
-> > +        virt_max_cpus =3D GIC_NCPU;
-> > +    } else {
-> > +        virt_max_cpus =3D virt_redist_capacity(vms, VIRT_GIC_REDIST);
-> > +        if (vms->highmem_redists) {
-> > +            virt_max_cpus +=3D virt_redist_capacity(vms, VIRT_HIGH_GIC=
-_REDIST2);
-> > +        }
-> > +    }
-> > +
-> > +    if ((tcg_enabled() && !qemu_tcg_mttcg_enabled()) || hvf_enabled() =
-||
-> > +        qtest_enabled() || vms->gic_version =3D=3D VIRT_GIC_VERSION_2)=
- {
-> > +        max_cpus =3D machine->smp.max_cpus =3D smp_cpus;
-> > +        if (mc->has_online_capable_cpus) {
-> > +            if (vms->gic_version =3D=3D VIRT_GIC_VERSION_2) {
-> > +                warn_report("GICv2 does not support online-capable CPU=
-s");
-> > +            }
-> > +            mc->has_online_capable_cpus =3D false;
-> > +        }
-> > +    }
-> > +
-> > +    if (mc->has_online_capable_cpus) {
-> > +        max_cpus =3D smp_cpus + machine->smp.disabledcpus;
-> > +        machine->smp.max_cpus =3D max_cpus;
-> > +    }
-> > +
-> > +    if (max_cpus > virt_max_cpus) {
-> > +        error_report("Number of SMP CPUs requested (%d) exceeds max CP=
-Us "
-> > +                     "supported by machine 'mach-virt' (%d)",
-> > +                     max_cpus, virt_max_cpus);
-> > +        if (vms->gic_version !=3D VIRT_GIC_VERSION_2 && !vms->highmem_=
-redists) {
-> > +            error_printf("Try 'highmem-redists=3Don' for more CPUs\n")=
-;
-> > +        }
-> > +
-> > +        exit(1);
-> > +    }
-> > +
-> > +    dc =3D DEVICE_CLASS(object_class_by_name(machine->cpu_type));
-> > +    if (!dc) {
-> > +        error_report("CPU type '%s' not registered", machine->cpu_type=
-);
-> > +        exit(1);
-> > +    }
-> > +    dc->admin_power_state_supported =3D mc->has_online_capable_cpus;
-> > +
-> > +    /* uses smp.max_cpus to initialize all possible vCPUs */
-> > +    possible_cpus =3D mc->possible_cpu_arch_ids(machine);
-> > +
-> >     if (vms->secure) {
-> >         /*
-> >          * The Secure view of the world is the same as the NonSecure,
-> > @@ -2235,31 +2285,6 @@ static void machvirt_init(MachineState *machine)
-> >         vms->psci_conduit =3D QEMU_PSCI_CONDUIT_HVC;
+> >         if (mc->smp_props.prefer_sockets) {
+> >             /* prefer sockets over cores before 6.2 */
+> > @@ -207,12 +213,8 @@ void machine_parse_smp_config(MachineState *ms,
+> >         }
 > >     }
 > >=20
-> > -    /*
-> > -     * The maximum number of CPUs depends on the GIC version, or on ho=
-w
-> > -     * many redistributors we can fit into the memory map (which in tu=
-rn
-> > -     * depends on whether this is a GICv3 or v4).
-> > -     */
-> > -    if (vms->gic_version =3D=3D VIRT_GIC_VERSION_2) {
-> > -        virt_max_cpus =3D GIC_NCPU;
-> > -    } else {
-> > -        virt_max_cpus =3D virt_redist_capacity(vms, VIRT_GIC_REDIST);
-> > -        if (vms->highmem_redists) {
-> > -            virt_max_cpus +=3D virt_redist_capacity(vms, VIRT_HIGH_GIC=
-_REDIST2);
-> > -        }
-> > -    }
+> > -    total_cpus =3D drawers * books * sockets * dies *
+> > -                 clusters * modules * cores * threads;
+> > -    maxcpus =3D maxcpus > 0 ? maxcpus : total_cpus;
+> > -    cpus =3D cpus > 0 ? cpus : maxcpus;
 > > -
-> > -    if (max_cpus > virt_max_cpus) {
-> > -        error_report("Number of SMP CPUs requested (%d) exceeds max CP=
-Us "
-> > -                     "supported by machine 'mach-virt' (%d)",
-> > -                     max_cpus, virt_max_cpus);
-> > -        if (vms->gic_version !=3D VIRT_GIC_VERSION_2 && !vms->highmem_=
-redists) {
-> > -            error_printf("Try 'highmem-redists=3Don' for more CPUs\n")=
-;
-> > -        }
-> > -
-> > -        exit(1);
-> > -    }
-> > -
-> >     if (vms->secure && !tcg_enabled() && !qtest_enabled()) {
-> >         error_report("mach-virt: %s does not support providing "
-> >                      "Security extensions (TrustZone) to the guest CPU"=
-,
-> > @@ -3245,6 +3270,9 @@ static void virt_machine_class_init(ObjectClass *=
-oc, const void *data)
-> >     hc->plug =3D virt_machine_device_plug_cb;
-> >     hc->unplug_request =3D virt_machine_device_unplug_request_cb;
-> >     hc->unplug =3D virt_machine_device_unplug_cb;
-> > +
-> > +    mc->has_online_capable_cpus =3D true;
-> > +
-> >     mc->nvdimm_supported =3D true;
-> >     mc->smp_props.clusters_supported =3D true;
-> >     mc->auto_enable_numa_with_memhp =3D true;
+> >     ms->smp.cpus =3D cpus;
+> > +    ms->smp.disabledcpus =3D disabledcpus;
+> >     ms->smp.drawers =3D drawers;
+> >     ms->smp.books =3D books;
+> >     ms->smp.sockets =3D sockets;
+> > @@ -226,6 +228,8 @@ void machine_parse_smp_config(MachineState *ms,
+> >     mc->smp_props.has_clusters =3D config->has_clusters;
+> >=20
+> >     /* sanity-check of the computed topology */
+> > +    total_cpus =3D maxcpus =3D drawers * books * sockets * dies * clus=
+ters *
+> > +                modules * cores * threads;
+> >     if (total_cpus !=3D maxcpus) {
+> >         g_autofree char *topo_msg =3D cpu_hierarchy_to_string(ms);
+> >         error_setg(errp, "Invalid CPU topology: "
+> > @@ -235,12 +239,12 @@ void machine_parse_smp_config(MachineState *ms,
+> >         return;
+> >     }
+> >=20
+> > -    if (maxcpus < cpus) {
+> > +    if (maxcpus < (cpus + disabledcpus)) {
+> >         g_autofree char *topo_msg =3D cpu_hierarchy_to_string(ms);
+> >         error_setg(errp, "Invalid CPU topology: "
+> > -                   "maxcpus must be equal to or greater than smp: "
+> > -                   "%s =3D=3D maxcpus (%u) < smp_cpus (%u)",
+> > -                   topo_msg, maxcpus, cpus);
+> > +                   "maxcpus must be equal to or greater than smp[+disa=
+bledcpus]:"
+> > +                   "%s =3D=3D maxcpus (%u) < smp_cpus (%u) [+ offline =
+cpus (%u)]",
+> > +                   topo_msg, maxcpus, cpus, disabledcpus);
+> >         return;
+> >     }
+> >=20
 > > diff --git a/include/hw/boards.h b/include/hw/boards.h
-> > index 2b182d7817..b27c2326a2 100644
+> > index f94713e6e2..2b182d7817 100644
 > > --- a/include/hw/boards.h
 > > +++ b/include/hw/boards.h
-> > @@ -302,6 +302,7 @@ struct MachineClass {
-> >     bool rom_file_has_mr;
-> >     int minimum_page_bits;
-> >     bool has_hotpluggable_cpus;
-> > +    bool has_online_capable_cpus;
-> >     bool ignore_memory_transaction_failures;
-> >     int numa_mem_align_shift;
-> >     const char * const *valid_cpu_types;
+> > @@ -361,6 +361,7 @@ typedef struct DeviceMemoryState {
+> > /**
+> >  * CpuTopology:
+> >  * @cpus: the number of present logical processors on the machine
+> > + * @disabledcpus: the number additional present but admin disabled cpu=
+s
+> >  * @drawers: the number of drawers on the machine
+> >  * @books: the number of books in one drawer
+> >  * @sockets: the number of sockets in one book
+> > @@ -373,6 +374,7 @@ typedef struct DeviceMemoryState {
+> >  */
+> > typedef struct CpuTopology {
+> >     unsigned int cpus;
+> > +    unsigned int disabledcpus;
+> >     unsigned int drawers;
+> >     unsigned int books;
+> >     unsigned int sockets;
+> > diff --git a/qapi/machine.json b/qapi/machine.json
+> > index 038eab281c..e45740da33 100644
+> > --- a/qapi/machine.json
+> > +++ b/qapi/machine.json
+> > @@ -1634,6 +1634,8 @@
+> > #
+> > # @cpus: number of virtual CPUs in the virtual machine
+> > #
+> > +# @disabledcpus: number of additional present but disabled(or offline)=
+ CPUs
+> > +#
+> > # @maxcpus: maximum number of hotpluggable virtual CPUs in the virtual
+> > #     machine
+> > #
+> > @@ -1657,6 +1659,7 @@
+> > ##
+> > { 'struct': 'SMPConfiguration', 'data': {
+> >      '*cpus': 'int',
+> > +     '*disabledcpus': 'int',
+> >      '*drawers': 'int',
+> >      '*books': 'int',
+> >      '*sockets': 'int',
+> > diff --git a/qemu-options.hx b/qemu-options.hx
+> > index ab23f14d21..83ccde341b 100644
+> > --- a/qemu-options.hx
+> > +++ b/qemu-options.hx
+> > @@ -326,12 +326,15 @@ SRST
+> > ERST
+> >=20
+> > DEF("smp", HAS_ARG, QEMU_OPTION_smp,
+> > -    "-smp [[cpus=3D]n][,maxcpus=3Dmaxcpus][,drawers=3Ddrawers][,books=
+=3Dbooks][,sockets=3Dsockets]\n"
+> > -    "               [,dies=3Ddies][,clusters=3Dclusters][,modules=3Dmo=
+dules][,cores=3Dcores]\n"
+> > -    "               [,threads=3Dthreads]\n"
+> > -    "                set the number of initial CPUs to 'n' [default=3D=
+1]\n"
+> > -    "                maxcpus=3D maximum number of total CPUs, includin=
+g\n"
+> > -    "                offline CPUs for hotplug, etc\n"
+> > +    "-smp [[cpus=3D]n][,disabledcpus=3Ddisabledcpus][,maxcpus=3Dmaxcpu=
+s][,drawers=3Ddrawers][,books=3Dbooks]\n"
+> > +    "               [,sockets=3Dsockets][,dies=3Ddies][,clusters=3Dclu=
+sters][,modules=3Dmodules]\n"
+> > +    "               [,cores=3Dcores][,threads=3Dthreads]\n"
+> > +    "                set the initial number of CPUs present and\n"
+> > +    "                  administratively enabled at boot time to 'n' [d=
+efault=3D1]\n"
+> > +    "                disabledcpus=3D number of present but administrat=
+ively\n"
+> > +    "                  disabled CPUs (unavailable to the guest at boot=
+)\n"
+> > +    "                maxcpus=3D maximum total CPUs (present + hotplugg=
+able)\n"
+> > +    "                  on machines without CPU hotplug, defaults to n =
++ disabledcpus\n"
+> >     "                drawers=3D number of drawers on the machine board\=
+n"
+> >     "                books=3D number of books in one drawer\n"
+> >     "                sockets=3D number of sockets in one book\n"
+> > @@ -351,22 +354,49 @@ DEF("smp", HAS_ARG, QEMU_OPTION_smp,
+> >     "      For a particular machine type board, an expected CPU topolog=
+y hierarchy\n"
+> >     "      can be defined through the supported sub-option. Unsupported=
+ parameters\n"
+> >     "      can also be provided in addition to the sub-option, but thei=
+r values\n"
+> > -    "      must be set as 1 in the purpose of correct parsing.\n",
+> > +    "      must be set as 1 in the purpose of correct parsing.\n"
+> > +    "                                                          \n"
+> > +    "      Administratively disabled CPUs: Some machine types do not s=
+upport vCPU\n"
+> > +    "      hotplug but their CPUs can be marked disabled (powered off)=
+ and kept\n"
+> > +    "      unavailable to the guest. Later, such CPUs can be enabled v=
+ia QMP/HMP\n"
+> > +    "      (e.g., 'device_set ... admin-state=3Denable'). This is simi=
+lar to hotplug,\n"
+> > +    "      except all disabled CPUs are already present at boot. Usefu=
+l on\n"
+> > +    "      architectures that lack architectural CPU hotplug.\n",
+> >     QEMU_ARCH_ALL)
+> > SRST
+> > -``-smp [[cpus=3D]n][,maxcpus=3Dmaxcpus][,drawers=3Ddrawers][,books=3Db=
+ooks][,sockets=3Dsockets][,dies=3Ddies][,clusters=3Dclusters][,modules=3Dmo=
+dules][,cores=3Dcores][,threads=3Dthreads]``
+> > -    Simulate a SMP system with '\ ``n``\ ' CPUs initially present on
+> > -    the machine type board. On boards supporting CPU hotplug, the opti=
+onal
+> > -    '\ ``maxcpus``\ ' parameter can be set to enable further CPUs to b=
+e
+> > -    added at runtime. When both parameters are omitted, the maximum nu=
+mber
+> > +``-smp [[cpus=3D]n][,disabledcpus=3Ddisabledcpus][,maxcpus=3Dmaxcpus][=
+,drawers=3Ddrawers][,books=3Dbooks][,sockets=3Dsockets][,dies=3Ddies][,clus=
+ters=3Dclusters][,modules=3Dmodules][,cores=3Dcores][,threads=3Dthreads]``
+> > +    Simulate a SMP system with '\ ``n``\ ' CPUs initially present & en=
+abled on
+> > +    the machine type board. Furthermore, on architectures that support=
+ changing
+> > +    the administrative power state of CPUs, optional '\ ``disabledcpus=
+``\ '
+> > +    parameter specifies *additional* CPUs that are present in firmware=
+ (e.g.,
+> > +    ACPI) but are administratively disabled (i.e., not usable by the g=
+uest at
+> > +    boot time).
+> > +
+> > +    This is different from CPU hotplug where additional CPUs are not e=
+ven
+> > +    present in the system description. Administratively disabled CPUs =
+appear in
+> > +    ACPI tables i.e. are provisioned, but cannot be used until explici=
+tly
+> > +    enabled via QMP/HMP or the deviceset API.
+> > +
+> > +    On boards supporting CPU hotplug, the optional '\ ``maxcpus``\ ' p=
+arameter
+> > +    can be set to enable further CPUs to be added at runtime. When bot=
+h
+> > +    '\ ``n``\ ' & '\ ``maxcpus``\ ' parameters are omitted, the maximu=
+m number
+> >     of CPUs will be calculated from the provided topology members and t=
+he
+> > -    initial CPU count will match the maximum number. When only one of =
+them
+> > -    is given then the omitted one will be set to its counterpart's val=
+ue.
+> > -    Both parameters may be specified, but the maximum number of CPUs m=
+ust
+> > -    be equal to or greater than the initial CPU count. Product of the
+> > -    CPU topology hierarchy must be equal to the maximum number of CPUs=
+.
+> > -    Both parameters are subject to an upper limit that is determined b=
+y
+> > -    the specific machine type chosen.
+> > +    initial CPU count will match the maximum number. When only one of =
+them is
+> > +    given then the omitted one will be set to its counterpart's value.=
+ Both
+> > +    parameters may be specified, but the maximum number of CPUs must b=
+e equal
+> > +    to or greater than the initial CPU count. Product of the CPU topol=
+ogy
+> > +    hierarchy must be equal to the maximum number of CPUs. Both parame=
+ters are
+> > +    subject to an upper limit that is determined by the specific machi=
+ne type
+> > +    chosen. Boards that support administratively disabled CPUs but do =
+*not*
+> > +    support CPU hotplug derive the maximum number of CPUs implicitly:
+> > +    '\ ``maxcpus``\ ' is treated as '\ ``n + disabledcpus``\ ' (the to=
+tal CPUs
+> > +    present in firmware). If '\ ``maxcpus``\ ' is provided, it must eq=
+ual
+> > +    '\ ``n + disabledcpus``\ '. The topology product must equal this d=
+erived
+> > +    maximum as well.
+> > +
+> > +    Note: Administratively disabled CPUs will appear to the guest as
+> > +    unavailable, and any attempt to bring them online must go through =
+QMP/HMP
+> > +    commands like 'device_set'.
+> >=20
+> >     To control reporting of CPU topology information, values of the top=
+ology
+> >     parameters can be specified. Machines may only support a subset of =
+the
+> > @@ -425,6 +455,24 @@ SRST
+> >=20
+> >         -smp 2
+> >=20
+> > +    Examples using 'disabledcpus':
+> > +
+> > +    For a board without CPU hotplug, enable 4 CPUs at boot and provisi=
+on
+> > +    2 additional administratively disabled CPUs (maximum is derived
+> > +    implicitly as 6 =3D 4 + 2):
+> > +
+> > +    ::
+> > +
+> > +        -smp cpus=3D4,disabledcpus=3D2
+> > +
+> > +    For a board that supports CPU hotplug and 'disabledcpus', enable 4=
+ CPUs
+> > +    at boot, provision 2 administratively disabled CPUs, and allow hot=
+plug of
+> > +    2 more CPUs (for a maximum of 8):
+> > +
+> > +    ::
+> > +
+> > +        -smp cpus=3D4,disabledcpus=3D2,maxcpus=3D8
+> > +
+> >     Note: The cluster topology will only be generated in ACPI and expos=
+ed
+> >     to guest if it's explicitly specified in -smp.
+> > ERST
+> > diff --git a/system/vl.c b/system/vl.c
+> > index 3b7057e6c6..2f0fd21a1f 100644
+> > --- a/system/vl.c
+> > +++ b/system/vl.c
+> > @@ -736,6 +736,9 @@ static QemuOptsList qemu_smp_opts =3D {
+> >         {
+> >             .name =3D "cpus",
+> >             .type =3D QEMU_OPT_NUMBER,
+> > +        }, {
+> > +            .name =3D "disabledcpus",
+> > +            .type =3D QEMU_OPT_NUMBER,
+> >         }, {
+> >             .name =3D "drawers",
+> >             .type =3D QEMU_OPT_NUMBER,
 > > --=20
 > > 2.34.1
 > >  =20

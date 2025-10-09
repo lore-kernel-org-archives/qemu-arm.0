@@ -4,259 +4,117 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 738A9CCD185
-	for <qemu-arm@archiver.kernel.org>; Thu,  9 Oct 2025 12:33:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66B36CCD184
+	for <qemu-arm@archiver.kernel.org>; Thu,  9 Oct 2025 12:52:24 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v6ppZ-0005ge-FM; Thu, 09 Oct 2025 08:33:14 -0400
+	id 1v6q7e-0002w3-MH; Thu, 09 Oct 2025 08:51:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <miguel.luis@oracle.com>)
- id 1v6ppW-0005gN-02; Thu, 09 Oct 2025 08:33:10 -0400
-Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1v6q7d-0002vp-Pj
+ for qemu-arm@nongnu.org; Thu, 09 Oct 2025 08:51:53 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <miguel.luis@oracle.com>)
- id 1v6ppQ-000306-D3; Thu, 09 Oct 2025 08:33:09 -0400
-Received: from pps.filterd (m0246632.ppops.net [127.0.0.1])
- by mx0b-00069f02.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 5997u26d009615;
- Thu, 9 Oct 2025 12:32:21 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=cc
- :content-id:content-transfer-encoding:content-type:date:from
- :in-reply-to:message-id:mime-version:references:subject:to; s=
- corp-2025-04-25; bh=+SbsczOpHTFVbCaISQqCeeyGKhKBB5SGoaxvc/hr4pQ=; b=
- djOrYSIIQZAFonw0KoXL2Ik/HjFnu7WWtZgx+YjjtcpqrPyd7hTQgH3+ERBhy9a7
- pvLE/+FsX1XxxVeu10iD98KmL+kylhP4L795pgs1aIUMEzL2INC0WiukHt6OHDK9
- Tow932UnbLf8IwpOTA8PJEXbDoC/N6Z6FhRTkaESJOKWyzXvpMtPHyJbtcj7TfJj
- ILrhV6691tGCKbcftD4Hqb6DDhKTUKjr2M0mXohAd5NKs+AiXkJ+mVr/mHY8UHKE
- txrd5uTHX20VFEj49qkwPTN/3v7vF4t+4idyh9I6EEph+7K7ruihnwqEzr5snucY
- 0lEmz87BPFQE6iB6xzG30g==
-Received: from iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com
- (iadpaimrmta03.appoci.oracle.com [130.35.103.27])
- by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 49nv6dsggd-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 09 Oct 2025 12:32:20 +0000 (GMT)
-Received: from pps.filterd
- (iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
- by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (8.18.1.2/8.18.1.2)
- with ESMTP id 599BObFR029035; Thu, 9 Oct 2025 12:32:19 GMT
-Received: from sa9pr02cu001.outbound.protection.outlook.com
- (mail-southcentralusazon11013057.outbound.protection.outlook.com
- [40.93.196.57])
- by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTPS id
- 49nv67ubkn-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 09 Oct 2025 12:32:19 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=XPjlvlAboO85cSX+Ln+5d1AKX0VlvWblIuuJyFwB6GR7KK4P0DHefXtUaBHfiB6qE5uyDqxZYMzW/4GFwL/GDc70xZJUglqavZlyalzCtQVcG4wgWoFopvV4du9GPSPwgcI4AfmjNuJvf5329vfSXMbpRXZu+uQIG6xWwMzSSQMnqdSkyhnctolqYCgpMPLR45aZpjbH8c7cYp2pS+g2e2WzzvyLSVskrXUGiFsskZubRkSDul1JwlsMc5HUnw/ALy95fIxM5z8CHUyTqQy25iLprexgNMEHc0BBzYHvLacxF3O11ytyT4x6tauCwO30pvAKbY9G174qDZEwNDqX7g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=+SbsczOpHTFVbCaISQqCeeyGKhKBB5SGoaxvc/hr4pQ=;
- b=OBgFuMwvn3m4Py2/arE4ECmbPCOLjJ+Mwkw1g+wGGZ3Mbaa8MBaYkp4THDtEPNTDynTSPUOV8EMav3MNMfpUZN00i9LZ3Q5mmawu2xHSnxKm/Q4weF/JFYkwWUyzfkBScSfErcWlvXZlfXF/nJvgaUZrNB2LUxW+MMKyG5FZtiYBducvrTnhqJlObAOQ65dnMt+ROgZoUbyoqqSW+ffIB4m0mV3yaKfUq19q+Cixky58elf6i9/Qv+z/6yLlrouLqfC5YkCTlQnHcpM7LNrP9KkM1/fcapjAh5pHQO4EoeVr0R7GFQ29UCdeTTqCojnozXX3CHNSfH8RKKOY6cmg4Q==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
- dkim=pass header.d=oracle.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=+SbsczOpHTFVbCaISQqCeeyGKhKBB5SGoaxvc/hr4pQ=;
- b=mEjPKl5uBrWccjauP+8jygrkNWcbIaNvQaB1hb3sSgJyjXi9q+FnujVJvh8trr+I8NVOuAI47h5ZwyLCrqdn2IRBZhpKUUCpCx+vl1QS088/qkGObenhw3ZrAd00HX6eUAd/YGYQqDm6XM/Jlhg6Cxd6oaDKs2j9+16BmkgTPjY=
-Received: from PH0PR10MB5894.namprd10.prod.outlook.com (2603:10b6:510:14b::22)
- by CY8PR10MB6516.namprd10.prod.outlook.com (2603:10b6:930:5c::19)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9203.9; Thu, 9 Oct
- 2025 12:32:15 +0000
-Received: from PH0PR10MB5894.namprd10.prod.outlook.com
- ([fe80::75ce:9a39:e0cc:96f7]) by PH0PR10MB5894.namprd10.prod.outlook.com
- ([fe80::75ce:9a39:e0cc:96f7%5]) with mapi id 15.20.9203.007; Thu, 9 Oct 2025
- 12:32:15 +0000
-From: Miguel Luis <miguel.luis@oracle.com>
-To: "salil.mehta@opnsrc.net" <salil.mehta@opnsrc.net>
-CC: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
- <qemu-arm@nongnu.org>, "mst@redhat.com" <mst@redhat.com>,
- "salil.mehta@huawei.com" <salil.mehta@huawei.com>, "maz@kernel.org"
- <maz@kernel.org>, "jean-philippe@linaro.org" <jean-philippe@linaro.org>,
- "jonathan.cameron@huawei.com" <jonathan.cameron@huawei.com>,
- "lpieralisi@kernel.org" <lpieralisi@kernel.org>, "peter.maydell@linaro.org"
- <peter.maydell@linaro.org>, "richard.henderson@linaro.org"
- <richard.henderson@linaro.org>,
- "imammedo@redhat.com" <imammedo@redhat.com>,
- "armbru@redhat.com" <armbru@redhat.com>, "andrew.jones@linux.dev"
- <andrew.jones@linux.dev>, "david@redhat.com" <david@redhat.com>,
- "philmd@linaro.org" <philmd@linaro.org>, "eric.auger@redhat.com"
- <eric.auger@redhat.com>, "will@kernel.org" <will@kernel.org>,
- "ardb@kernel.org" <ardb@kernel.org>, "oliver.upton@linux.dev"
- <oliver.upton@linux.dev>, "pbonzini@redhat.com" <pbonzini@redhat.com>,
- "gshan@redhat.com" <gshan@redhat.com>, "rafael@kernel.org"
- <rafael@kernel.org>,
- "borntraeger@linux.ibm.com" <borntraeger@linux.ibm.com>,
- "alex.bennee@linaro.org" <alex.bennee@linaro.org>,
- "gustavo.romero@linaro.org" <gustavo.romero@linaro.org>,
- "npiggin@gmail.com" <npiggin@gmail.com>,
- "harshpb@linux.ibm.com" <harshpb@linux.ibm.com>,
- "linux@armlinux.org.uk" <linux@armlinux.org.uk>,
- "darren@os.amperecomputing.com" <darren@os.amperecomputing.com>,
- "ilkka@os.amperecomputing.com" <ilkka@os.amperecomputing.com>,
- "vishnu@os.amperecomputing.com" <vishnu@os.amperecomputing.com>,
- "gankulkarni@os.amperecomputing.com" <gankulkarni@os.amperecomputing.com>,
- Karl Heubaum <karl.heubaum@oracle.com>, "zhukeqian1@huawei.com"
- <zhukeqian1@huawei.com>, "wangxiongfeng2@huawei.com"
- <wangxiongfeng2@huawei.com>, "wangyanan55@huawei.com"
- <wangyanan55@huawei.com>, "wangzhou1@hisilicon.com"
- <wangzhou1@hisilicon.com>, "linuxarm@huawei.com" <linuxarm@huawei.com>,
- "jiakernel2@gmail.com" <jiakernel2@gmail.com>, "maobibo@loongson.cn"
- <maobibo@loongson.cn>, "lixianglai@loongson.cn" <lixianglai@loongson.cn>,
- "shahuang@redhat.com" <shahuang@redhat.com>, "zhao1.liu@intel.com"
- <zhao1.liu@intel.com>
-Subject: Re: [PATCH RFC V6 03/24] hw/arm/virt: Clamp 'maxcpus' as-per
- machine's vCPU deferred online-capability
-Thread-Topic: [PATCH RFC V6 03/24] hw/arm/virt: Clamp 'maxcpus' as-per
- machine's vCPU deferred online-capability
-Thread-Index: AQHcMm8O+gl0XRu+g0GMqrY8zpvDsbS5zJEA
-Date: Thu, 9 Oct 2025 12:32:15 +0000
-Message-ID: <4764573F-D108-40BB-AF23-B4B29E40BEF8@oracle.com>
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1v6q7U-0005ff-05
+ for qemu-arm@nongnu.org; Thu, 09 Oct 2025 08:51:51 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1760014292;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=lkLjRbl6e1TSyN0u643v8PaACKSRQI2jhUFgjEU2c5s=;
+ b=KF6cneZ/k7JTwvPaMkNd6LRJ8CJAJrz6iC1L24i3LuS24LPau6kEFXewvLfFnQ9vnFw4Qq
+ WqDSDGNhiFrlhsxqjQlGv6KAy71pvwBR59v5vzatq00RLmeIyCpt1FCSzJk55jMqWWKoc3
+ p8+b691pTNzOVyK2IMFzqeayl391vjE=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-114-p5J875psPuWDJ7crHfXMTw-1; Thu, 09 Oct 2025 08:51:31 -0400
+X-MC-Unique: p5J875psPuWDJ7crHfXMTw-1
+X-Mimecast-MFC-AGG-ID: p5J875psPuWDJ7crHfXMTw_1760014290
+Received: by mail-wr1-f69.google.com with SMTP id
+ ffacd0b85a97d-3ecdd80ea44so931033f8f.1
+ for <qemu-arm@nongnu.org>; Thu, 09 Oct 2025 05:51:31 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1760014290; x=1760619090;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=zol2J4ObuodIwQfQ/7QAzSmiVw6roWxQLGHZuPMy4wU=;
+ b=A3g2/y8G2/GSwMoBVIGsN/vViy+/Eob+U+/Yd6R9GmGn03oqBiRd2S46y1PRxoXBKC
+ 9zD9hKL0tczX33qaz2+7xuBBsDsDW302g9Wh5AQzFf1ReOxdj/1KVVVrJ3/nj8kWZKr9
+ Get0fh3tPrSTasG0AnCtmTWoFmG59+VOGBe96+vQHEs9Qne92vHhphKihtK2gWOK56uS
+ 9raLmoWey5jiUOxr2rEB7vedkmSWUmMGX7N7INRhZVdTu9gz0Q7dWjQRd17uUryqUR+s
+ oyIDGSyL3DADi2WpXiKBBj77cPOoSgQgpkv41DLAoqyfaTE/I19YW3rUtUMFpOpPOpnc
+ 4x9w==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWFMR0tHzQzdmVJCEB93mNCO+1MYcmQoYRMgz84cn3gggE3LgttfNeV3LJ3ykiLWqAuj63XUAThOw==@nongnu.org
+X-Gm-Message-State: AOJu0YyzprIdPCGFipkZs1KHndFVE7YzGgtMJmojHgOJ/SsRmtJhCnYF
+ Drv5Ty1GdMuvt7qEhQ93HkUj8UAc1lV8v3yhVpx65YZil4sAznFYEsfLq0/GI+89kx0QsddcO3X
+ OjlJ82wuBLg/eUb/ZVXcYCQmm/mwApSIoQCyXDzBnzwEYGIhrbv+bgQ==
+X-Gm-Gg: ASbGnctqNw6KfvhK6+a2WPHPvICeALJOQLTPbqRwBObw4kQmHSJnGViLUgWeIFdmpb9
+ 4Cw/5TuJCgT7Vqgji/2DncCEs3jLFWidVojhTHRQW6aLOTzlPSFM1xG5UAHxvUWTztEUb/nLXIc
+ dNJkgjlMsvImz12ZyYfhyWHjmFoFbX2CWD8vZ+ksHZzsNAS+77Tb0cEio9jSNK6YRpQjPBUWzlg
+ n2qkNJmVF7b7QQUFa0jzxAc4a1AYPD547g8OWnRkG01cBHuejShLgKLSuhcEMJVj1QdGLPinl6j
+ 1C447PGKyhc25tn8CcK8sgZgre5DJ50EM/F5
+X-Received: by 2002:a05:6000:40d9:b0:404:c253:a38 with SMTP id
+ ffacd0b85a97d-42582a053d4mr8053085f8f.28.1760014289796; 
+ Thu, 09 Oct 2025 05:51:29 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHkNBloNj6n8d75gMpZvao+iiP90ewDmXHph980mr8fmR4pkfG6rD4lQnmLLfjFRFBwoBSDJA==
+X-Received: by 2002:a05:6000:40d9:b0:404:c253:a38 with SMTP id
+ ffacd0b85a97d-42582a053d4mr8053017f8f.28.1760014289167; 
+ Thu, 09 Oct 2025 05:51:29 -0700 (PDT)
+Received: from fedora ([85.93.96.130]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-4255d8b005dsm34180419f8f.25.2025.10.09.05.51.27
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 09 Oct 2025 05:51:28 -0700 (PDT)
+Date: Thu, 9 Oct 2025 14:51:25 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Markus Armbruster <armbru@redhat.com>
+Cc: salil.mehta@opnsrc.net, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ mst@redhat.com, salil.mehta@huawei.com, maz@kernel.org,
+ jean-philippe@linaro.org, jonathan.cameron@huawei.com,
+ lpieralisi@kernel.org, peter.maydell@linaro.org,
+ richard.henderson@linaro.org, andrew.jones@linux.dev, david@redhat.com,
+ philmd@linaro.org, eric.auger@redhat.com, will@kernel.org, ardb@kernel.org,
+ oliver.upton@linux.dev, pbonzini@redhat.com, gshan@redhat.com,
+ rafael@kernel.org, borntraeger@linux.ibm.com, alex.bennee@linaro.org,
+ gustavo.romero@linaro.org, npiggin@gmail.com, harshpb@linux.ibm.com,
+ linux@armlinux.org.uk, darren@os.amperecomputing.com,
+ ilkka@os.amperecomputing.com, vishnu@os.amperecomputing.com,
+ gankulkarni@os.amperecomputing.com, karl.heubaum@oracle.com,
+ miguel.luis@oracle.com, zhukeqian1@huawei.com, wangxiongfeng2@huawei.com,
+ wangyanan55@huawei.com, wangzhou1@hisilicon.com, linuxarm@huawei.com,
+ jiakernel2@gmail.com, maobibo@loongson.cn, lixianglai@loongson.cn,
+ shahuang@redhat.com, zhao1.liu@intel.com, devel@lists.libvirt.org
+Subject: Re: [PATCH RFC V6 22/24] monitor,qdev: Introduce 'device_set' to
+ change admin state of existing devices
+Message-ID: <20251009145125.6583a24a@fedora>
+In-Reply-To: <87plawh2sz.fsf@pond.sub.org>
 References: <20251001010127.3092631-1-salil.mehta@opnsrc.net>
- <20251001010127.3092631-4-salil.mehta@opnsrc.net>
-In-Reply-To: <20251001010127.3092631-4-salil.mehta@opnsrc.net>
-Accept-Language: en-GB, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: PH0PR10MB5894:EE_|CY8PR10MB6516:EE_
-x-ms-office365-filtering-correlation-id: d84bee31-37e0-4bbf-3b2c-08de072fe116
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|376014|7416014|366016|1800799024|7053199007|38070700021; 
-x-microsoft-antispam-message-info: =?utf-8?B?ckw4R0ZQaWZYS1N0NUk3RG94RHRnMzNFWTlReEpuS2ovTG9YZURsVkE0OWFk?=
- =?utf-8?B?S1p2K3dSNVFhWmFjVGU2UnR4NzVSdTZvVkF2c0U2RjBRVUV6ZVJVUm5YdWRX?=
- =?utf-8?B?M3FOdm5qamhQVlNJVnV5Qyt6ZnFiYXlyenRCTlE3WFVISVhuTWgxeGhUQXNK?=
- =?utf-8?B?aE55L3U1QjhKdStEOVhCSGJLZGtNVU1SK3hwQncvVGpZMVZTZFZRMHpzaXp6?=
- =?utf-8?B?a3B5MWZiT3VvbnV2cWZkOFhrWEoxb1Rlby9NUEROamduUzRCMlMxM1ZGaGEr?=
- =?utf-8?B?dXNNeWhZS0tWUEptbllJcWpYLzVBMisvSHZ5V3RXeWM2UWNYYnFCTDQwUXBC?=
- =?utf-8?B?UjVuUC9VaEFjSmREYW13MXFlRVFqRHlmcnBMc1c1cWtuak55NGI4bkc0d1Rk?=
- =?utf-8?B?Y2xZZ3VJdlUzYlcwVHl5OUhWeHErYzViQ3lqcVFZa0M3SnpXcGxHL1NhQzJv?=
- =?utf-8?B?T0lFMEE3N0N3cWlDMnNya2VQeWh3eVZqM0FJS2orUjdqdCtSVDg0YVYyNWF6?=
- =?utf-8?B?MzlxSFlkekFORTZqWUZzejVrdit3cHgrY0dxeFZtOW13Q1d3YlBGajRDUDFL?=
- =?utf-8?B?NDd0d0Y4ZElMMy9EWTZ5VGk0MHM5WC9YS242MFBJcmlGWmJhbXdRSnpGRkx0?=
- =?utf-8?B?NkN4VTNPSmxFZE5MRFh1Qkxpb3V4OThFZDl2UUY0L05FQjFFSmk5OXk3ZENt?=
- =?utf-8?B?cERFZi9NMGExMVhYMG4yekErWUhLaTNsZnN6YzNlbjk3dzRTYXZ2MnNtZms2?=
- =?utf-8?B?QzQycUtkeG9ZVktlRDIrNTlQcTdkZ0ZZK2JRLzVSTzYxVVFDdS9VZXA3cEVJ?=
- =?utf-8?B?NjBEeXVoWmVZT1VkcTFXWVJzbEJvU1ltMW9EMXVwQ3lPNmE5R0o2MllGa2Rj?=
- =?utf-8?B?UnJpVy9zTFR2Z3A4ZEwwMk9OT0x2amdkdkhrMTlqSjFkUFRqTHk1T2xoeW5m?=
- =?utf-8?B?dy96VDVGY3JQdTladytKZ0lSYnkrNVVWaFpsVTRxdkxvTmg3QnRIZi9xNEpi?=
- =?utf-8?B?b0N5cDljTjAzcE5CVTZyaHN4Z0R2SVBRZVFuZW54Ny94NWZIN1lUOWp3ZkhR?=
- =?utf-8?B?V0FZbFgrN1RCWFNPcG11T2JzaGd4RkRNM014eEJmTDJGMHhJNmxiSzVpQzZl?=
- =?utf-8?B?QWVYVDJVbkdwS01lNlJZRUx2MVpQNFVvRkZmT1dvWStWSjAvVmVPV1BYMkJo?=
- =?utf-8?B?SERWTWp6bldmVWhnRzVwOTVsYk13V3hjWEVIbG1BeVhiU2xMWDVoSlRkNnQ3?=
- =?utf-8?B?SlVkei9hYXVFRk1VVkhkR2tlbWRsRzdzUkthcm9xMnB4bDdvcGNTNlIyWExm?=
- =?utf-8?B?dEJFRk1MWDBpNzZwTUEzNDRWKzE1bENlaTFuTmxEeU1jZTNjOEZPZVNsOEw1?=
- =?utf-8?B?bThkMzMrazI5YVkxU0RRcFRVL3NzV0dUcWg2OHFkOTMvd0FqaDFrdWEvZ3Qv?=
- =?utf-8?B?U2dPdHJPZFg3d3VJbnpDaVJxMXJTNnJVSUQzSUhjZjloREIzMUpiSVBSNmNo?=
- =?utf-8?B?cEp5Q29wSjlqQUtYQWRYdW8vdVI3dkcwc2d3cC8vOFladm41aExqcnlpeTJU?=
- =?utf-8?B?REZWczlUVERlQWpCWFIxYktMYXRZWnovZTRCUDZUV0FpTkRFRXl3Mnhaak11?=
- =?utf-8?B?RnJ2NHcrRFBIUEZZalJwSTJiUXNlY2pqUFpoR21IcVNIOGZIOXRwVGNjeDVq?=
- =?utf-8?B?bXhlalI2YXA0K1pldEd5S2JpVFUybThDWFJ4Uk1Ud3FSamZRVUcyem1lWXpM?=
- =?utf-8?B?UU5adzVyek5kbGhVZTBTT3V6WklPSzhsa3k4dEUxQUFWTVlySU1ZMDFxcHEz?=
- =?utf-8?B?cmhLVlpRQ1FLTzYrc1Qyb1dvVG9wM0FZQTg2NEtuQzlEZjIzWFlZL29vRjln?=
- =?utf-8?B?K21YM2I1d0lGeXZSc0ZuRWlvZkN3Rk9hbjJzMTl0TjNLbGk0aWowU2hpR3lk?=
- =?utf-8?B?OWR3UEtsMEFUWEtGZ3RYWXMvdGc1cTlOa0pCMzJOc3BreVMzVnREWEkwUzBi?=
- =?utf-8?B?K0R2VEJkNnVEeDJLK0hIZ25nS2xheW9nVVN3Z2tFb2tNajBEWEFtQUhGcUow?=
- =?utf-8?Q?3C+XwQ?=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:PH0PR10MB5894.namprd10.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(376014)(7416014)(366016)(1800799024)(7053199007)(38070700021);
- DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?bHJnMk5lOTNhUWNaVHFlY0I5YXJIbkN5UXI2RlloODUzRmVlekJsNXVOOC9m?=
- =?utf-8?B?U0FGd2NJUlJtdzZuT0dteDc4alJGZDRkdFhSTkowR0E3MFhidll2UE1RSDIr?=
- =?utf-8?B?R2x6TUJMdi9DUnJUOS9YZzQ5VGhpYlNjTjlub0RVSk83UHkweWI4em1WTzU4?=
- =?utf-8?B?OS9HMWo2eWVBZEZiNlFJeEd6L25xeEdFOUpKNis4UllHV2dIQWFFVjlTOWc4?=
- =?utf-8?B?WlFaSE54ZERGelNyR252L2hoWThESUZrcDJtRk5mSC9BU084Q1V5L1pzYk83?=
- =?utf-8?B?RU54OEtlaEpwQ3k1eHZaTVBIZnRyQVB4U2pxT2JHZXhadVd1ODcxOURLcVA3?=
- =?utf-8?B?L09WMkRBYTFWTmxCNTAxY0dScUJZVjBZNFpTaGVXV3RWTExlUG5vWmpSLzlE?=
- =?utf-8?B?bnY0WTZVS3Ivdnd3YS91MEk5aUw1ZXRqQWZwVXg4cWtUYWZ3U2VqMUtVVitY?=
- =?utf-8?B?enFIdkNESlpZUElYWTRmRWw1dGlaVERoRXFGbTNmNEdEc3RqOTJsdWFwNGh0?=
- =?utf-8?B?dU9mV3NDZmJieFowdW4vdExvb09hZ29NMkFZaC94eVdMWFVnTUYrRGpjOXNS?=
- =?utf-8?B?VXdhUWxNa0RraHhscUw1c0RrMksxUjJQczFrOXk2UnBOR04xRTJoYUp3eWJx?=
- =?utf-8?B?dlVLRkwyd2lkRG9UeTBKaVdRU2xFejdaeWlBamF3Z0wrdnNXRm9BWXRTeEdI?=
- =?utf-8?B?RXdEQVJYZ0NGSUhvZXF6K2dMQjRJQzJ2NjlTQXJYTk5BaVFXWHRSZkE0aGRD?=
- =?utf-8?B?V2p5RmxYQ1JKQkt2enRUSUk3VDZnTUhiVmpBVzA3MEZoVEFZNG9VRU1OUmE0?=
- =?utf-8?B?dDE2Wm50THdOWklMQk9zaWJVOGxnelRYR0VPZ25iaEp6S0NCU2FuTk42UEow?=
- =?utf-8?B?NTcxWldtN0NFU0Q0UXZoaDNvOCtsMytWT044ekNxZkV3MW50RFMwYUxQNVNF?=
- =?utf-8?B?Sm9JcDVCeEdmTm9EaEJSWEk0VTZBTWFjME1jMnBUMi9kdmFVUGY5eWZ0UEpa?=
- =?utf-8?B?WGtoSVIzZUVwL0xHTFMzdSsxbXhuVVpQeFdWeC93TEtkbjRRcjUwRXkwSXc3?=
- =?utf-8?B?RkhmY3Jma1ZVMFZhYXpiSEdnYmxUZG5Tbjh6a1hlTmlkSlhKVG1JMkxFZmx3?=
- =?utf-8?B?WldNS1ZTcjJGWmd2T2tRZ2dpTkNNZmFuOFZ6Qzdhd3BKcUgrTStGa1ErbEZJ?=
- =?utf-8?B?SEF5bi8wYUhlVUxucnNnU0ZsRTVjTzFNVUk3dWM4eGxST3o2UTljQmdwMkRT?=
- =?utf-8?B?eFdqOGc0RWtJZnJqRzhvUW5oMFFUbit5V2VNK3NLMzRMbDBsMFBtK2RuTVFX?=
- =?utf-8?B?Wnd0YVdqK25EQmtzZFdqaUk3Q3hEdG9JU1dMN1YxZ0pENWVPTkhLRUQrVnJS?=
- =?utf-8?B?ZVhqV01iSTRET0pTQlBJVEZZMUZObHgxOGlMUkdEakFuclZUc09mR1dnYWhV?=
- =?utf-8?B?Y0VpTVJvZVNyNFh1b2ZqTThCZnFHaE8xTFJ3TUs2M052K2huVVUvd3RUSGhu?=
- =?utf-8?B?SnhlYjM4OCtNU2dDZ0hiV1dmSHd2anZJbnJ5MmNJMVJ3ZG1MWTZoZHYrZ0xz?=
- =?utf-8?B?Rkt1R1dYL2Z0ajZlNU9ZcW1MeXBOTWoxMjZUeUpZUU5VSXJFZC9WMEllUVNO?=
- =?utf-8?B?eG9qY1NoWFdhUUFvMEJNWnZHbTJieExudWs0Y0hhU2dhVkhJQVdNMENPaEEy?=
- =?utf-8?B?eThxOE1IN1M2V0M3RjhVUWFtRzlGK05CNWI5ZGU5b2NtaTMrSmxiWXVnMnVF?=
- =?utf-8?B?aUhhYlJscVRiSllKdjVsZTR2aXRZRXpPMnZNanRNOFpYOHpKTkRWV3B4VzJO?=
- =?utf-8?B?eDRqVFJZL0t1TGpqTWs2cFVidStkSkxYcUlLRk1uVEVDZUlJd0pZYnJveWg4?=
- =?utf-8?B?Ymp2aG5PVmV6eEYrQkMvZ2JvbmUyamFFRURWWDNSNVVhRXNJd0RJWWF5SWlU?=
- =?utf-8?B?TUxJb3pyU1V3Z3d6cXo4Q0RaalhNWmRnb1RFdHd2TFQvaG55N0Q4M0xMUFEz?=
- =?utf-8?B?cGxZNUkvamhHMlpNVVBCTlpJRmN5V3RnY3ByRCtsdVFBU3A1SEo4UDJrZkJh?=
- =?utf-8?B?UkFTcHp6RlhneUNFUVl0QitmSlVhY3hQVUg5Mk5HejhlZS8vZS9VN2NXNnFT?=
- =?utf-8?B?bVEwOFBvQmhtN0w0TkxKTis1RE02TXlWSklhbUtnaEdxMVFNSHJUU2k1UGU4?=
- =?utf-8?B?UkE9PQ==?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <23FDC4D9E37C374192A38A2A089BC2A7@namprd10.prod.outlook.com>
-Content-Transfer-Encoding: base64
+ <20251001010127.3092631-23-salil.mehta@opnsrc.net>
+ <87plawh2sz.fsf@pond.sub.org>
+X-Mailer: Claws Mail 4.3.1 (GTK 3.24.49; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-X-MS-Exchange-AntiSpam-ExternalHop-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-ExternalHop-MessageData-0: azHHeG7PkLv2LFbnZVif65qU2k7oYmVG/b6ysqVmfERCryKkWa8J1PH93XSbkR571aSTCiqbZjoSfLNHrAUGcfJCbgPJiF0Z/afNjhqfNlpa06jItA0bfJVMhiPBWq9+3pSwpz8ZhKqWdwvptRBt+qZCV736FlvqGCyTxNj/urcZzLyqZ1YA+e2UzSBL9fRkYM9mIo4GpFhKUlBrHRHRdUYrbUZe3TSGiRDsZLLtr8xM+NUrsk+skX0n6sAXssxjuJyJvM7PNuRzgO/LUZycB+1zLkD7FUgJSupcSGzjyipqa3zmEUSTkpMOhwMTlCwg2grXuoRuEl32nxa3+XW9fGtjRNvcSMp0aMaB/4fnHKtCvmcl5m3jYrntHIBYMqW99lh73MB5vYP1TpFqq6zepd9EmSDarAVznmZ439CxKKdGL8YOsiEnp60vZUrCgMcwNo6J83J0JRSm1K0ONgAe2SoRzCZIneOJNVD25JK7Ea6gFr50IjtRsDos/K0HBMq/Nwy1FgfCCW0SvI6ngaXEhAO8FKKW1N0aVUImVt2Wn5UYirVwrzDzSSkaWCwPLLET4fLjaSptCNHGp132NYy0YMirKhLu3ipWpjSEoHZQTGQ=
-X-OriginatorOrg: oracle.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: PH0PR10MB5894.namprd10.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: d84bee31-37e0-4bbf-3b2c-08de072fe116
-X-MS-Exchange-CrossTenant-originalarrivaltime: 09 Oct 2025 12:32:15.4030 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: PQBXfHZct4MBr5IZY1hEmpW8F78zzFDtaGLTcdUlXS4MjEucXjojrYZrkQ2Ipcyp5bTDaITe3X2qb+9VmT1whg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY8PR10MB6516
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1117,Hydra:6.1.9,FMLib:17.12.80.40
- definitions=2025-10-09_04,2025-10-06_01,2025-03-28_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=999
- phishscore=0
- suspectscore=0 adultscore=0 malwarescore=0 bulkscore=0 spamscore=0
- mlxscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2510020000 definitions=main-2510090073
-X-Proofpoint-ORIG-GUID: KTqAakK427sM50cViE8gSGXlxUJqnYX1
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMDA4MDEyMSBTYWx0ZWRfXxRodjj3IXqHl
- ygxesIPNJF7ppkyiduCtYaiirQZZ6eCDZ6f9+qCT4/lBg3GSrsJDxSWgTcHf6if3M8idwVjDCff
- ECK4Iv9fjK34myOunF+FGuIi5GmuCWs+mcB5Z5KJEt8vPx6bYBJePK0CXS50bT0wgOGSXjymSGf
- Q8kXcLPjYbSWkRA3HRoxsoBuw+PWqG7D6GQRMBSQcftQ/J1fJREao7w5bSirOEZD+7fnTEr2qe1
- u/nx2Ma01Ah9qm1jjZJ9BwkyJryMK34x1N+oNG83ikIGRIxToyN0PDoBnUOyVTBOFdzfFoSS5sP
- MzsvhepfqX4l8MFlG7+ihCSXNFdGCnU9VzCWMoIev/7GKuoBYKmneAy1sp6UtjOzMhtA2AwuCD1
- dZimFbvY17ifUutF6QQ4ALb1C6pLvqlZHGvxx2zQmRypOPgfBaY=
-X-Authority-Analysis: v=2.4 cv=etHSD4pX c=1 sm=1 tr=0 ts=68e7ab54 b=1 cx=c_pps
- a=qoll8+KPOyaMroiJ2sR5sw==:117
- a=qoll8+KPOyaMroiJ2sR5sw==:17
- a=z/mQ4Ysz8XfWz/Q5cLBRGdckG28=:19 a=lCpzRmAYbLLaTzLvsPZ7Mbvzbb8=:19
- a=xqWC_Br6kY4A:10 a=IkcTkHD0fZMA:10 a=x6icFKpwvdMA:10 a=GoEa3M9JfhUA:10
- a=N4eUw1WxAAAA:8 a=i0EeH86SAAAA:8 a=h31ryKHT28s1IHztJ-cA:9 a=QEXdDO2ut3YA:10
- a=TyhWUHtFaNKhBFvZzOnD:22 cc=ntf awl=host:12092
-X-Proofpoint-GUID: KTqAakK427sM50cViE8gSGXlxUJqnYX1
-Received-SPF: pass client-ip=205.220.177.32;
- envelope-from=miguel.luis@oracle.com; helo=mx0b-00069f02.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: _tjxCH0r5IfRq7gdj-bqNkC44T_kfv2ZNw6gDE5OtDs_1760014290
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -272,151 +130,513 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-SGkgU2FsaWwsDQoNCj4gT24gMSBPY3QgMjAyNSwgYXQgMDE6MDEsIHNhbGlsLm1laHRhQG9wbnNy
-Yy5uZXQgd3JvdGU6DQo+IA0KPiBGcm9tOiBTYWxpbCBNZWh0YSA8c2FsaWwubWVodGFAaHVhd2Vp
-LmNvbT4NCj4gDQo+IFRvIHN1cHBvcnQgYSB2Q1BVIGhvdC1hZGTigJNsaWtlIG1vZGVsIG9uIEFS
-TSwgdGhlIHZpcnQgbWFjaGluZSBtYXkgYmUgc2V0dXAgd2l0aA0KPiBtb3JlIENQVXMgdGhhbiBh
-cmUgYWN0aXZlIGF0IGJvb3QuIFRoZXNlIGFkZGl0aW9uYWwgQ1BVcyBhcmUgZnVsbHkgcmVhbGl6
-ZWQgaW4NCj4gS1ZNIGFuZCBsaXN0ZWQgaW4gQUNQSSB0YWJsZXMgZnJvbSB0aGUgc3RhcnQsIGJ1
-dCBiZWdpbiBpbiBhIGRpc2FibGVkIHN0YXRlLg0KPiBUaGV5IGNhbiBsYXRlciBiZSBicm91Z2h0
-IG9ubGluZSBvciB0YWtlbiBvZmZsaW5lIHVuZGVyIGhvc3Qgb3IgcGxhdGZvcm0gcG9saWN5DQo+
-IGNvbnRyb2wuIFRoZSBDUFUgdG9wb2xvZ3kgaXMgZml4ZWQgYXQgVk0gY3JlYXRpb24gdGltZSBh
-bmQgY2Fubm90IGNoYW5nZQ0KPiBkeW5hbWljYWxseSBvbiBBUk0uIFRoZXJlZm9yZSwgd2UgbXVz
-dCBkZXRlcm1pbmUgcHJlY2lzZWx5IHRoZSAnbWF4Y3B1cycgdmFsdWUNCj4gdGhhdCBhcHBsaWVz
-IGZvciB0aGUgZnVsbCBsaWZldGltZSBvZiB0aGUgVk0uDQo+IA0KPiBPbiBBUk0sIHRoaXMgZGVm
-ZXJyZWQgb25saW5lLWNhcGFibGUgbW9kZWwgaXMgb25seSB2YWxpZCBpZjoNCj4gIC0gVGhlIEdJ
-QyB2ZXJzaW9uIGlzIDMgb3IgaGlnaGVyLCBhbmQNCj4gIC0gRWFjaCBub24tYm9vdCBDUFXigJlz
-IEdJQyBDUFUgSW50ZXJmYWNlIGlzIG1hcmtlZCDigJxvbmxpbmUtY2FwYWJsZeKAnSBpbiBpdHMN
-Cj4gICAgQUNQSSBHSUNDIHN0cnVjdHVyZSAoVUVGSSBBQ1BJIFNwZWNpZmljYXRpb24gNi41LCDC
-pzUuMi4xMi4xNCwgVGFibGUgNS4zNw0KPiAgICDigJxHSUNDIENQVSBJbnRlcmZhY2UgRmxhZ3Pi
-gJ0pLCBhbmQNCj4gIC0gVGhlIGNob3NlbiBhY2NlbGVyYXRvciBzdXBwb3J0cyBzYWZlIGRlZmVy
-cmVkIENQVSBvbmxpbmU6DQo+ICAgICAgKiBUQ0cgd2l0aCBtdWx0aS10aHJlYWRlZCBUQ0cgKE1U
-VENHKSBlbmFibGVkDQo+ICAgICAgKiBLVk0gKG9uIHN1cHBvcnRlZCBob3N0cykNCj4gICAgICAq
-IE5vdCBIVkYgb3IgUVRlc3QNCj4gDQo+IFRoaXMgcGF0Y2ggc2l6ZXMgdGhlIG1hY2hpbmXigJlz
-IG1heC1wb3NzaWJsZSBDUFVzIGR1cmluZyBWTSBpbml0Og0KPiAgLSBJZiBhbGwgY29uZGl0aW9u
-cyBhcmUgc2F0aXNmaWVkLCByZXRhaW4gdGhlIGZ1bGwgc2V0IG9mIENQVXMgY29ycmVzcG9uZGlu
-Zw0KPiAgICB0byAoYC1zbXAgY3B1c2AgKyBgLXNtcCBkaXNhYmxlZGNwdXNgKSwgYWxsb3dpbmcg
-dGhlIGFkZGl0aW9uYWwgKGluaXRpYWxseQ0KPiAgICBkaXNhYmxlZCkgQ1BVcyB0byBwYXJ0aWNp
-cGF0ZSBpbiBsYXRlciBwb2xpY3ktZHJpdmVuIG9ubGluZS4NCj4gIC0gT3RoZXJ3aXNlLCBjbGFt
-cCB0aGUgbWF4LXBvc3NpYmxlIENQVXMgdG8gdGhlIGJvb3QtZW5hYmxlZCBjb3VudA0KPiAgICAo
-YC1zbXAgZGlzYWJsZWRjcHVzPTBgIGVxdWl2YWxlbnQpIHRvIGF2b2lkIGFkdmVydGlzaW5nIENQ
-VXMgdGhlIGd1ZXN0IGNhbg0KPiAgICBuZXZlciB1c2UuDQo+IA0KPiBBIG5ldyBNYWNoaW5lQ2xh
-c3MgZmxhZywgYGhhc19vbmxpbmVfY2FwYWJsZV9jcHVzYCwgcmVjb3JkcyB3aGV0aGVyIHRoZSBt
-YWNoaW5lDQo+IHN1cHBvcnRzIGRlZmVycmVkIHZDUFUgb25saW5lLiBUaGlzIGlzIHVzYWJsZSBi
-eSBvdGhlciBtYWNoaW5lIHR5cGVzIGFzIHdlbGwuDQoNCg0KQnkgdGhlIGRlZmluaXRpb24gb2YN
-Cg0KICogQGhhc19ob3RwbHVnZ2FibGVfY3B1czoNCiAqICAgIElmIHRydWUsIGJvYXJkIHN1cHBv
-cnRzIENQVXMgY3JlYXRpb24gd2l0aCAtZGV2aWNlL2RldmljZV9hZGQuDQoNCiBpbiBpbmNsdWRl
-L2h3L2JvYXJkcy5oDQoNCnNlZW1zIG9uZSBjb3VsZCB0YWtlIGFkdmFudGFnZSBvZiBNYWNoaW5l
-Q2xhc3MncyBoYXNfaG90cGx1Z2dhYmxlX2NwdXMgdmFyaWFibGUNCmluc3RlYWQgb2YgY3JlYXRp
-bmcgYSBuZXcgaGFzX29ubGluZV9jYXBhYmxlX2NwdXMgb25lLg0KKEFnYWluLCBJTUhPIOKAmG9u
-bGluZSBjYXBhYmxl4oCZIGlzIEFDUEkgbm9tZW5jbGF0dXJlIGFuZCBkb2VzbuKAmXQgbmVlZCB0
-byBiZSBicm91Z2h0DQppbiBNYWNoaW5lQ2xhc3PigJlzKQ0KDQpWYXJpYWJsZSB3aGljaCB3b3Vs
-ZCBiZSBpbml0aWFsaXplZCBpbiBtYWNodmlydF9pbml0IG9uIGFuIGFzc2lnbm1lbnQgYmFzZWQg
-b24NCkdJQyB2ZXJzaW9uIGFuZC9vciB3ZXRoZXIgdGhlcmUncyBpbmFjdGl2ZSBDUFVzIGFuZCBw
-cm9jZWVkIGZyb20gdGhlcmUgYW55d2F5cywNCm1ha2luZyB0aGUgZGVmYXVsdCBhc3NpZ25tZW50
-IGluIG1hY2hpbmVfdmlydF9jbGFzc19pbml0IHN1cGVyZmx1b3VzLg0KDQpXZSdyZSBhdCBody9h
-cm0vdmlydCBhbmQgd2Uga25vdyB0aGVzZSBDUFVzIGFyZSBhZG1pbmlzdHJhdGl2ZWx5IHBvd2Vy
-IHN0YXRlDQpjb29yZGluYXRlZCBzbyBhZG1pbl9wb3dlcl9zdGF0ZV9zdXBwb3J0ZWQgY2FuIHN0
-aWxsIGJlIHNldCB0aGVyZSBpbiB0aGUNCnByZXNlbmNlIG9mIGluYWN0aXZlIENQVXMuDQoNClRo
-YW5rcw0KTWlndWVsDQoNCj4gDQo+IFNpZ25lZC1vZmYtYnk6IFNhbGlsIE1laHRhIDxzYWxpbC5t
-ZWh0YUBodWF3ZWkuY29tPg0KPiAtLS0NCj4gaHcvYXJtL3ZpcnQuYyAgICAgICB8IDg0ICsrKysr
-KysrKysrKysrKysrKysrKysrKysrKysrKy0tLS0tLS0tLS0tLS0tLQ0KPiBpbmNsdWRlL2h3L2Jv
-YXJkcy5oIHwgIDEgKw0KPiAyIGZpbGVzIGNoYW5nZWQsIDU3IGluc2VydGlvbnMoKyksIDI4IGRl
-bGV0aW9ucygtKQ0KPiANCj4gZGlmZiAtLWdpdCBhL2h3L2FybS92aXJ0LmMgYi9ody9hcm0vdmly
-dC5jDQo+IGluZGV4IGVmNmJlMzY2MGYuLjc2ZjIxYmQ1NmEgMTAwNjQ0DQo+IC0tLSBhL2h3L2Fy
-bS92aXJ0LmMNCj4gKysrIGIvaHcvYXJtL3ZpcnQuYw0KPiBAQCAtMjE2OCw4ICsyMTY4LDcgQEAg
-c3RhdGljIHZvaWQgbWFjaHZpcnRfaW5pdChNYWNoaW5lU3RhdGUgKm1hY2hpbmUpDQo+ICAgICBi
-b29sIGhhc19nZWQgPSAhdm1jLT5ub19nZWQ7DQo+ICAgICB1bnNpZ25lZCBpbnQgc21wX2NwdXMg
-PSBtYWNoaW5lLT5zbXAuY3B1czsNCj4gICAgIHVuc2lnbmVkIGludCBtYXhfY3B1cyA9IG1hY2hp
-bmUtPnNtcC5tYXhfY3B1czsNCj4gLQ0KPiAtICAgIHBvc3NpYmxlX2NwdXMgPSBtYy0+cG9zc2li
-bGVfY3B1X2FyY2hfaWRzKG1hY2hpbmUpOw0KPiArICAgIERldmljZUNsYXNzICpkYzsNCj4gDQo+
-ICAgICAvKg0KPiAgICAgICogSW4gYWNjZWxlcmF0ZWQgbW9kZSwgdGhlIG1lbW9yeSBtYXAgaXMg
-Y29tcHV0ZWQgZWFybGllciBpbiBrdm1fdHlwZSgpDQo+IEBAIC0yMTg2LDcgKzIxODUsNyBAQCBz
-dGF0aWMgdm9pZCBtYWNodmlydF9pbml0KE1hY2hpbmVTdGF0ZSAqbWFjaGluZSkNCj4gICAgICAg
-ICAgKiB3ZSBhcmUgYWJvdXQgdG8gZGVhbCB3aXRoLiBPbmNlIHRoaXMgaXMgZG9uZSwgZ2V0IHJp
-ZCBvZg0KPiAgICAgICAgICAqIHRoZSBvYmplY3QuDQo+ICAgICAgICAgICovDQo+IC0gICAgICAg
-IGNwdW9iaiA9IG9iamVjdF9uZXcocG9zc2libGVfY3B1cy0+Y3B1c1swXS50eXBlKTsNCj4gKyAg
-ICAgICAgY3B1b2JqID0gb2JqZWN0X25ldyhtYWNoaW5lLT5jcHVfdHlwZSk7DQo+ICAgICAgICAg
-YXJtY3B1ID0gQVJNX0NQVShjcHVvYmopOw0KPiANCj4gICAgICAgICBwYV9iaXRzID0gYXJtX3Bh
-bWF4KGFybWNwdSk7DQo+IEBAIC0yMjAxLDYgKzIyMDAsNTcgQEAgc3RhdGljIHZvaWQgbWFjaHZp
-cnRfaW5pdChNYWNoaW5lU3RhdGUgKm1hY2hpbmUpDQo+ICAgICAgKi8NCj4gICAgIGZpbmFsaXpl
-X2dpY192ZXJzaW9uKHZtcyk7DQo+IA0KPiArICAgIC8qDQo+ICsgICAgICogVGhlIG1heGltdW0g
-bnVtYmVyIG9mIENQVXMgZGVwZW5kcyBvbiB0aGUgR0lDIHZlcnNpb24sIG9yIG9uIGhvdw0KPiAr
-ICAgICAqIG1hbnkgcmVkaXN0cmlidXRvcnMgd2UgY2FuIGZpdCBpbnRvIHRoZSBtZW1vcnkgbWFw
-ICh3aGljaCBpbiB0dXJuDQo+ICsgICAgICogZGVwZW5kcyBvbiB3aGV0aGVyIHRoaXMgaXMgYSBH
-SUN2MyBvciB2NCkuDQo+ICsgICAgICovDQo+ICsgICAgaWYgKHZtcy0+Z2ljX3ZlcnNpb24gPT0g
-VklSVF9HSUNfVkVSU0lPTl8yKSB7DQo+ICsgICAgICAgIHZpcnRfbWF4X2NwdXMgPSBHSUNfTkNQ
-VTsNCj4gKyAgICB9IGVsc2Ugew0KPiArICAgICAgICB2aXJ0X21heF9jcHVzID0gdmlydF9yZWRp
-c3RfY2FwYWNpdHkodm1zLCBWSVJUX0dJQ19SRURJU1QpOw0KPiArICAgICAgICBpZiAodm1zLT5o
-aWdobWVtX3JlZGlzdHMpIHsNCj4gKyAgICAgICAgICAgIHZpcnRfbWF4X2NwdXMgKz0gdmlydF9y
-ZWRpc3RfY2FwYWNpdHkodm1zLCBWSVJUX0hJR0hfR0lDX1JFRElTVDIpOw0KPiArICAgICAgICB9
-DQo+ICsgICAgfQ0KPiArDQo+ICsgICAgaWYgKCh0Y2dfZW5hYmxlZCgpICYmICFxZW11X3RjZ19t
-dHRjZ19lbmFibGVkKCkpIHx8IGh2Zl9lbmFibGVkKCkgfHwNCj4gKyAgICAgICAgcXRlc3RfZW5h
-YmxlZCgpIHx8IHZtcy0+Z2ljX3ZlcnNpb24gPT0gVklSVF9HSUNfVkVSU0lPTl8yKSB7DQo+ICsg
-ICAgICAgIG1heF9jcHVzID0gbWFjaGluZS0+c21wLm1heF9jcHVzID0gc21wX2NwdXM7DQo+ICsg
-ICAgICAgIGlmIChtYy0+aGFzX29ubGluZV9jYXBhYmxlX2NwdXMpIHsNCj4gKyAgICAgICAgICAg
-IGlmICh2bXMtPmdpY192ZXJzaW9uID09IFZJUlRfR0lDX1ZFUlNJT05fMikgew0KPiArICAgICAg
-ICAgICAgICAgIHdhcm5fcmVwb3J0KCJHSUN2MiBkb2VzIG5vdCBzdXBwb3J0IG9ubGluZS1jYXBh
-YmxlIENQVXMiKTsNCj4gKyAgICAgICAgICAgIH0NCj4gKyAgICAgICAgICAgIG1jLT5oYXNfb25s
-aW5lX2NhcGFibGVfY3B1cyA9IGZhbHNlOw0KPiArICAgICAgICB9DQo+ICsgICAgfQ0KPiArDQo+
-ICsgICAgaWYgKG1jLT5oYXNfb25saW5lX2NhcGFibGVfY3B1cykgew0KPiArICAgICAgICBtYXhf
-Y3B1cyA9IHNtcF9jcHVzICsgbWFjaGluZS0+c21wLmRpc2FibGVkY3B1czsNCj4gKyAgICAgICAg
-bWFjaGluZS0+c21wLm1heF9jcHVzID0gbWF4X2NwdXM7DQo+ICsgICAgfQ0KPiArDQo+ICsgICAg
-aWYgKG1heF9jcHVzID4gdmlydF9tYXhfY3B1cykgew0KPiArICAgICAgICBlcnJvcl9yZXBvcnQo
-Ik51bWJlciBvZiBTTVAgQ1BVcyByZXF1ZXN0ZWQgKCVkKSBleGNlZWRzIG1heCBDUFVzICINCj4g
-KyAgICAgICAgICAgICAgICAgICAgICJzdXBwb3J0ZWQgYnkgbWFjaGluZSAnbWFjaC12aXJ0JyAo
-JWQpIiwNCj4gKyAgICAgICAgICAgICAgICAgICAgIG1heF9jcHVzLCB2aXJ0X21heF9jcHVzKTsN
-Cj4gKyAgICAgICAgaWYgKHZtcy0+Z2ljX3ZlcnNpb24gIT0gVklSVF9HSUNfVkVSU0lPTl8yICYm
-ICF2bXMtPmhpZ2htZW1fcmVkaXN0cykgew0KPiArICAgICAgICAgICAgZXJyb3JfcHJpbnRmKCJU
-cnkgJ2hpZ2htZW0tcmVkaXN0cz1vbicgZm9yIG1vcmUgQ1BVc1xuIik7DQo+ICsgICAgICAgIH0N
-Cj4gKw0KPiArICAgICAgICBleGl0KDEpOw0KPiArICAgIH0NCj4gKw0KPiArICAgIGRjID0gREVW
-SUNFX0NMQVNTKG9iamVjdF9jbGFzc19ieV9uYW1lKG1hY2hpbmUtPmNwdV90eXBlKSk7DQo+ICsg
-ICAgaWYgKCFkYykgew0KPiArICAgICAgICBlcnJvcl9yZXBvcnQoIkNQVSB0eXBlICclcycgbm90
-IHJlZ2lzdGVyZWQiLCBtYWNoaW5lLT5jcHVfdHlwZSk7DQo+ICsgICAgICAgIGV4aXQoMSk7DQo+
-ICsgICAgfQ0KPiArICAgIGRjLT5hZG1pbl9wb3dlcl9zdGF0ZV9zdXBwb3J0ZWQgPSBtYy0+aGFz
-X29ubGluZV9jYXBhYmxlX2NwdXM7DQo+ICsNCj4gKyAgICAvKiB1c2VzIHNtcC5tYXhfY3B1cyB0
-byBpbml0aWFsaXplIGFsbCBwb3NzaWJsZSB2Q1BVcyAqLw0KPiArICAgIHBvc3NpYmxlX2NwdXMg
-PSBtYy0+cG9zc2libGVfY3B1X2FyY2hfaWRzKG1hY2hpbmUpOw0KPiArDQo+ICAgICBpZiAodm1z
-LT5zZWN1cmUpIHsNCj4gICAgICAgICAvKg0KPiAgICAgICAgICAqIFRoZSBTZWN1cmUgdmlldyBv
-ZiB0aGUgd29ybGQgaXMgdGhlIHNhbWUgYXMgdGhlIE5vblNlY3VyZSwNCj4gQEAgLTIyMzUsMzEg
-KzIyODUsNiBAQCBzdGF0aWMgdm9pZCBtYWNodmlydF9pbml0KE1hY2hpbmVTdGF0ZSAqbWFjaGlu
-ZSkNCj4gICAgICAgICB2bXMtPnBzY2lfY29uZHVpdCA9IFFFTVVfUFNDSV9DT05EVUlUX0hWQzsN
-Cj4gICAgIH0NCj4gDQo+IC0gICAgLyoNCj4gLSAgICAgKiBUaGUgbWF4aW11bSBudW1iZXIgb2Yg
-Q1BVcyBkZXBlbmRzIG9uIHRoZSBHSUMgdmVyc2lvbiwgb3Igb24gaG93DQo+IC0gICAgICogbWFu
-eSByZWRpc3RyaWJ1dG9ycyB3ZSBjYW4gZml0IGludG8gdGhlIG1lbW9yeSBtYXAgKHdoaWNoIGlu
-IHR1cm4NCj4gLSAgICAgKiBkZXBlbmRzIG9uIHdoZXRoZXIgdGhpcyBpcyBhIEdJQ3YzIG9yIHY0
-KS4NCj4gLSAgICAgKi8NCj4gLSAgICBpZiAodm1zLT5naWNfdmVyc2lvbiA9PSBWSVJUX0dJQ19W
-RVJTSU9OXzIpIHsNCj4gLSAgICAgICAgdmlydF9tYXhfY3B1cyA9IEdJQ19OQ1BVOw0KPiAtICAg
-IH0gZWxzZSB7DQo+IC0gICAgICAgIHZpcnRfbWF4X2NwdXMgPSB2aXJ0X3JlZGlzdF9jYXBhY2l0
-eSh2bXMsIFZJUlRfR0lDX1JFRElTVCk7DQo+IC0gICAgICAgIGlmICh2bXMtPmhpZ2htZW1fcmVk
-aXN0cykgew0KPiAtICAgICAgICAgICAgdmlydF9tYXhfY3B1cyArPSB2aXJ0X3JlZGlzdF9jYXBh
-Y2l0eSh2bXMsIFZJUlRfSElHSF9HSUNfUkVESVNUMik7DQo+IC0gICAgICAgIH0NCj4gLSAgICB9
-DQo+IC0NCj4gLSAgICBpZiAobWF4X2NwdXMgPiB2aXJ0X21heF9jcHVzKSB7DQo+IC0gICAgICAg
-IGVycm9yX3JlcG9ydCgiTnVtYmVyIG9mIFNNUCBDUFVzIHJlcXVlc3RlZCAoJWQpIGV4Y2VlZHMg
-bWF4IENQVXMgIg0KPiAtICAgICAgICAgICAgICAgICAgICAgInN1cHBvcnRlZCBieSBtYWNoaW5l
-ICdtYWNoLXZpcnQnICglZCkiLA0KPiAtICAgICAgICAgICAgICAgICAgICAgbWF4X2NwdXMsIHZp
-cnRfbWF4X2NwdXMpOw0KPiAtICAgICAgICBpZiAodm1zLT5naWNfdmVyc2lvbiAhPSBWSVJUX0dJ
-Q19WRVJTSU9OXzIgJiYgIXZtcy0+aGlnaG1lbV9yZWRpc3RzKSB7DQo+IC0gICAgICAgICAgICBl
-cnJvcl9wcmludGYoIlRyeSAnaGlnaG1lbS1yZWRpc3RzPW9uJyBmb3IgbW9yZSBDUFVzXG4iKTsN
-Cj4gLSAgICAgICAgfQ0KPiAtDQo+IC0gICAgICAgIGV4aXQoMSk7DQo+IC0gICAgfQ0KPiAtDQo+
-ICAgICBpZiAodm1zLT5zZWN1cmUgJiYgIXRjZ19lbmFibGVkKCkgJiYgIXF0ZXN0X2VuYWJsZWQo
-KSkgew0KPiAgICAgICAgIGVycm9yX3JlcG9ydCgibWFjaC12aXJ0OiAlcyBkb2VzIG5vdCBzdXBw
-b3J0IHByb3ZpZGluZyAiDQo+ICAgICAgICAgICAgICAgICAgICAgICJTZWN1cml0eSBleHRlbnNp
-b25zIChUcnVzdFpvbmUpIHRvIHRoZSBndWVzdCBDUFUiLA0KPiBAQCAtMzI0NSw2ICszMjcwLDkg
-QEAgc3RhdGljIHZvaWQgdmlydF9tYWNoaW5lX2NsYXNzX2luaXQoT2JqZWN0Q2xhc3MgKm9jLCBj
-b25zdCB2b2lkICpkYXRhKQ0KPiAgICAgaGMtPnBsdWcgPSB2aXJ0X21hY2hpbmVfZGV2aWNlX3Bs
-dWdfY2I7DQo+ICAgICBoYy0+dW5wbHVnX3JlcXVlc3QgPSB2aXJ0X21hY2hpbmVfZGV2aWNlX3Vu
-cGx1Z19yZXF1ZXN0X2NiOw0KPiAgICAgaGMtPnVucGx1ZyA9IHZpcnRfbWFjaGluZV9kZXZpY2Vf
-dW5wbHVnX2NiOw0KPiArDQo+ICsgICAgbWMtPmhhc19vbmxpbmVfY2FwYWJsZV9jcHVzID0gdHJ1
-ZTsNCj4gKw0KPiAgICAgbWMtPm52ZGltbV9zdXBwb3J0ZWQgPSB0cnVlOw0KPiAgICAgbWMtPnNt
-cF9wcm9wcy5jbHVzdGVyc19zdXBwb3J0ZWQgPSB0cnVlOw0KPiAgICAgbWMtPmF1dG9fZW5hYmxl
-X251bWFfd2l0aF9tZW1ocCA9IHRydWU7DQo+IGRpZmYgLS1naXQgYS9pbmNsdWRlL2h3L2JvYXJk
-cy5oIGIvaW5jbHVkZS9ody9ib2FyZHMuaA0KPiBpbmRleCAyYjE4MmQ3ODE3Li5iMjdjMjMyNmEy
-IDEwMDY0NA0KPiAtLS0gYS9pbmNsdWRlL2h3L2JvYXJkcy5oDQo+ICsrKyBiL2luY2x1ZGUvaHcv
-Ym9hcmRzLmgNCj4gQEAgLTMwMiw2ICszMDIsNyBAQCBzdHJ1Y3QgTWFjaGluZUNsYXNzIHsNCj4g
-ICAgIGJvb2wgcm9tX2ZpbGVfaGFzX21yOw0KPiAgICAgaW50IG1pbmltdW1fcGFnZV9iaXRzOw0K
-PiAgICAgYm9vbCBoYXNfaG90cGx1Z2dhYmxlX2NwdXM7DQo+ICsgICAgYm9vbCBoYXNfb25saW5l
-X2NhcGFibGVfY3B1czsNCj4gICAgIGJvb2wgaWdub3JlX21lbW9yeV90cmFuc2FjdGlvbl9mYWls
-dXJlczsNCj4gICAgIGludCBudW1hX21lbV9hbGlnbl9zaGlmdDsNCj4gICAgIGNvbnN0IGNoYXIg
-KiBjb25zdCAqdmFsaWRfY3B1X3R5cGVzOw0KPiAtLSANCj4gMi4zNC4xDQo+IA0KDQo=
+On Thu, 09 Oct 2025 10:55:40 +0200
+Markus Armbruster <armbru@redhat.com> wrote:
+
+> salil.mehta@opnsrc.net writes:
+>=20
+> > From: Salil Mehta <salil.mehta@huawei.com>
+> >
+> > This patch adds a "device_set" interface for modifying properties of de=
+vices
+> > that already exist in the guest topology. Unlike 'device_add'/'device_d=
+el'
+> > (hot-plug), 'device_set' does not create or destroy devices. It is inte=
+nded
+> > for guest-visible hot-add semantics where hardware is provisioned at bo=
+ot but
+> > logically enabled/disabled later via administrative policy.
+> >
+> > Compared to the existing 'qom-set' command, which is less intuitive and=
+ works
+> > only with object IDs, device_set provides a more device-oriented interf=
+ace.
+> > It can be invoked at the QEMU prompt using natural device arguments, an=
+d the
+> > new '-deviceset' CLI option allows properties to be set at boot time, s=
+imilar
+> > to how '-device' specifies device creation. =20
+>=20
+> Why can't we use -device?
+
+that's was my concern/suggestion in reply to cover letter
+(as a place to put high level review and what can be done for the next revi=
+sion)
+
+(PS: It looks like I'm having email receiving issues (i.e. not getting from
+mail list my own emails that it bonces to me, so threading is all broken on
+my side and I'm might miss replies). But on positive side it looks like my
+replies reach the list and CCed just fine)
+
+
+> > While the initial implementation focuses on "admin-state" changes (e.g.=
+,
+> > enable/disable a CPU already described by ACPI/DT), the interface is de=
+signed
+> > to be generic. In future, it could be used for other per-device set/uns=
+et
+> > style controls =E2=80=94 beyond administrative power-states =E2=80=94 p=
+rovided the target
+> > device explicitly allows such changes. This enables fine-grained runtim=
+e
+> > control of device properties. =20
+>=20
+> Beware, designing a generic interface can be harder, sometimes much
+> harder, than designing a specialized one.
+>=20
+> device_add and qom-set are generic, and they have issues:
+>=20
+> * device_add effectively bypasses QAPI by using 'gen': false.
+>=20
+>   This bypasses QAPI's enforcement of documentation.  Property
+>   documentation is separate and poor.
+>=20
+>   It also defeats introspection with query-qmp-schema.  You need to
+>   resort to other means instead, say QOM introspection (which is a bag
+>   of design flaws on its own), then map from QOM to qdev.
+>=20
+> * device_add lets you specify any qdev property, even properties that
+>   are intended only for use by C code.
+>=20
+>   This results in accidental external interfaces.
+>=20
+>   We tend to name properties like "x-prop" to discourage external use,
+>   but I wouldn't bet my own money on us getting that always right.
+>   Moreover, there's beauties like "x-origin".
+>=20
+> * qom-set & friends effectively bypass QAPI by using type 'any'.
+>=20
+>   Again, the bypass results in poor documentation and a defeat of
+>   query-qmp-schema.
+>=20
+> * qom-set lets you mess with any QOM property with a setter callback.
+>=20
+>   Again, accidental external interfaces: most of these properties are
+>   not meant for use with qom-set.  For some, qom-set works, for some it
+>   silently does nothing, and for some it crashes.  A lot more dangerous
+>   than device_add.
+>=20
+>   The "x-" convention can't help here: some properties are intended for
+>   external use with object-add, but not with qom-set.
+>=20
+> We should avoid such issues in new interfaces.
+>=20
+> We'll examine how this applies to device_set when I review the QAPI
+> schema.
+>=20
+> > Key pieces:
+> >   * QMP: qmp_device_set() to update an existing device. The device can =
+be
+> >     located by "id" or via driver+property match using a DeviceListener
+> >     callback (qdev_find_device()).
+> >   * HMP: "device_set" command with tab-completion. Errors are surfaced =
+via
+> >     hmp_handle_error().
+> >   * CLI: "-deviceset" option for setting startup/admin properties at bo=
+ot,
+> >     including a JSON form. Options are parsed into qemu_deviceset_opts =
+and
+> >     applied after device creation.
+> >   * Docs/help: HMP help text and qemu-options.hx additions explain usag=
+e and
+> >     explicitly note that no hot-plug occurs.
+> >   * Safety: disallowed during live migration (migration_is_idle() check=
+).
+> >
+> > Semantics:
+> >   * Operates on an existing DeviceState; no enumeration/new device appe=
+ars.
+> >   * Complements device_add/device_del by providing state mutation only.
+> >   * Backward compatible: no behavior change unless "device_set"/"-devic=
+eset"
+> >     is used.
+> >
+> > Examples:
+> >   HMP:
+> >     (qemu) device_set host-arm-cpu,core-id=3D3,admin-state=3Denable
+> >
+> >   CLI (at boot):
+> >     -smp cpus=3D4,maxcpus=3D4 \
+> >     -deviceset host-arm-cpu,core-id=3D2,admin-state=3Ddisable
+> >
+> >   QMP (JSON form):
+> >     { "execute": "device_set",
+> >       "arguments": {
+> >         "driver": "host-arm-cpu",
+> >         "core-id": 1,
+> >         "admin-state": "disable"
+> >       }
+> >     } =20
+>=20
+> {"error": {"class": "CommandNotFound", "desc": "The command device_set ha=
+s not been found"}}
+>=20
+> Clue below.
+>=20
+> > NOTE: The qdev_enable()/qdev_disable() hooks for acting on admin-state =
+will be
+> > added in subsequent patches. Device classes must explicitly support any
+> > property they want to expose through device_set.
+> >
+> > Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
+> > ---
+> >  hmp-commands.hx         |  30 +++++++++
+> >  hw/arm/virt.c           |  86 +++++++++++++++++++++++++
+> >  hw/core/cpu-common.c    |  12 ++++
+> >  hw/core/qdev.c          |  21 ++++++
+> >  include/hw/arm/virt.h   |   1 +
+> >  include/hw/core/cpu.h   |  11 ++++
+> >  include/hw/qdev-core.h  |  22 +++++++
+> >  include/monitor/hmp.h   |   2 +
+> >  include/monitor/qdev.h  |  30 +++++++++
+> >  include/system/system.h |   1 +
+> >  qemu-options.hx         |  51 +++++++++++++--
+> >  system/qdev-monitor.c   | 139 +++++++++++++++++++++++++++++++++++++++-
+> >  system/vl.c             |  39 +++++++++++
+> >  13 files changed, 440 insertions(+), 5 deletions(-) =20
+>=20
+> Clue: no update to the QAPI schema, i.e. the QMP command does not exist.
+>=20
+> >
+> > diff --git a/hmp-commands.hx b/hmp-commands.hx
+> > index d0e4f35a30..18056cf21d 100644
+> > --- a/hmp-commands.hx
+> > +++ b/hmp-commands.hx
+> > @@ -707,6 +707,36 @@ SRST
+> >    or a QOM object path.
+> >  ERST
+> > =20
+> > +{
+> > +    .name       =3D "device_set",
+> > +    .args_type  =3D "device:O",
+> > +    .params     =3D "driver[,prop=3Dvalue][,...]",
+> > +    .help       =3D "set/unset existing device property",
+> > +    .cmd        =3D hmp_device_set,
+> > +    .command_completion =3D device_set_completion,
+> > +},
+> > +
+> > +SRST
+> > +``device_set`` *driver[,prop=3Dvalue][,...]*
+> > +  Change the administrative power state of an existing device.
+> > +
+> > +  This command enables or disables a known device (e.g., CPU) using th=
+e
+> > +  "device_set" interface. It does not hotplug or add a new device.
+> > +
+> > +  Depending on platform support (e.g., PSCI or ACPI), this may trigger
+> > +  corresponding operational changes =E2=80=94 such as powering down a =
+CPU or
+> > +  transitioning it to active use.
+> > +
+> > +  Administrative state:
+> > +    * *enabled*  =E2=80=94 Allows the guest to use the device (e.g., C=
+PU_ON)
+> > +    * *disabled* =E2=80=94 Prevents guest use; device is powered off (=
+e.g., CPU_OFF)
+> > +
+> > +  Note: The device must already exist (be declared during machine crea=
+tion).
+> > +
+> > +  Example:
+> > +      (qemu) device_set host-arm-cpu,core-id=3D3,admin-state=3Ddisable=
+d
+> > +ERST =20
+>=20
+> How exactly is the device selected?  You provide a clue above: 'can be
+> located by "id" or via driver+property match'.
+>=20
+> I assume by "id" is just like device_del, i.e. by qdev ID or QOM path.
+>=20
+> By "driver+property match" is not obvious.  Which of the arguments are
+> for matching, and which are for setting?
+>=20
+> If "id" is specified, is there any matching?
+>=20
+> The matching feature complicates this interface quite a bit.  I doubt
+> it's worth the complexity.  If you think it is, please split it off into
+> a separate patch.
+
+It's likely /me who to blame for asking to invent generic
+device-set QMP command.
+I see another application (beside ARM CPU power-on/off) for it,
+PCI devices to simulate powering on/off them at runtime without
+actually removing device.
+
+wrt command,
+I'd use only 'id' with it to identify target device
+(i.e. no template matching nor QMP path either).
+To enforce rule, what user hasn't named explicitly by providing 'id'
+isn't meant to be accessed/manged by user later on.=20
+
+potentially we can invent specialized power_set/get command as
+an alternative if it makes design easier.
+But then we would be spawning similar commands for other things,
+where as device-set would cover it all. But then I might be
+over-complicating things by suggesting a generic approach.=20
+
+> Next question.  Is there a way for management applications to detect
+> whether a certain device supports device_set for a certain property?
+
+is there some kind of QMP command to check what does a device support,
+or at least what properties it supports? Can we piggy-back on that?
+=20
+>=20
+> Without that, what are management application supposed to do?  Hard-code
+> what works?  Run the command and see whether it fails?
+
+Adding libvirt list to discussion and possible ideas on what can be done he=
+re.
+
+> I understand right now the command supports just "admin-state" for a
+> certain set of devices, so hard-coding would be possible.  But every new
+> (device, property) pair then requires management application updates,
+> and the hard-coded information becomes version specific.  This will
+> become unworkable real quick.  Not good enough for a command designed to
+> be generic.
+>=20
+> > +
+> >      {
+> >          .name       =3D "cpu",
+> >          .args_type  =3D "index:i", =20
+
+We still do have a few legacy uses of cpu index (CLI|HMP), but
+I'd avoid using cpu index or something similar in new interfaces.
+
+> [...]
+>=20
+> > diff --git a/qemu-options.hx b/qemu-options.hx
+> > index 83ccde341b..f517b91042 100644
+> > --- a/qemu-options.hx
+> > +++ b/qemu-options.hx
+> > @@ -375,7 +375,10 @@ SRST
+> >      This is different from CPU hotplug where additional CPUs are not e=
+ven
+> >      present in the system description. Administratively disabled CPUs =
+appear in
+> >      ACPI tables i.e. are provisioned, but cannot be used until explici=
+tly
+> > -    enabled via QMP/HMP or the deviceset API.
+> > +    enabled via QMP/HMP or the deviceset API. On ACPI guests, each vCP=
+U counted
+> > +    by 'disabledcpus=3D' is provisioned with '\ ``_STA``\ ' reporting =
+Present=3D1
+> > +    and Enabled=3D0 (present-offline) at boot; it becomes Enabled=3D1 =
+when brought
+> > +    online via 'device_set ... admin-state=3Denable'.
+> > =20
+> >      On boards supporting CPU hotplug, the optional '\ ``maxcpus``\ ' p=
+arameter
+> >      can be set to enable further CPUs to be added at runtime. When bot=
+h
+> > @@ -455,6 +458,15 @@ SRST
+> > =20
+> >          -smp 2
+> > =20
+> > +    Note: The cluster topology will only be generated in ACPI and expo=
+sed
+> > +    to guest if it's explicitly specified in -smp.
+> > +
+> > +    Note: Administratively disabled CPUs (specified via 'disabledcpus=
+=3D' and
+> > +    '-deviceset' at CLI during boot) are especially useful for platfor=
+ms like
+> > +    ARM that lack native CPU hotplug support. These CPUs will appear t=
+o the
+> > +    guest as unavailable, and any attempt to bring them online must go=
+ through
+> > +    QMP/HMP commands like 'device_set'.
+> > +
+> >      Examples using 'disabledcpus':
+> > =20
+> >      For a board without CPU hotplug, enable 4 CPUs at boot and provisi=
+on
+> > @@ -472,9 +484,6 @@ SRST
+> >      ::
+> > =20
+> >          -smp cpus=3D4,disabledcpus=3D2,maxcpus=3D8
+> > -
+> > -    Note: The cluster topology will only be generated in ACPI and expo=
+sed
+> > -    to guest if it's explicitly specified in -smp.
+> >  ERST
+> > =20
+> >  DEF("numa", HAS_ARG, QEMU_OPTION_numa,
+> > @@ -1281,6 +1290,40 @@ SRST
+> > =20
+> >  ERST
+> > =20
+> > +DEF("deviceset", HAS_ARG, QEMU_OPTION_deviceset,
+> > +    "-deviceset driver[,prop[=3Dvalue]][,...]\n"
+> > +    "                Set administrative power state of an existing dev=
+ice.\n"
+> > +    "                Does not hotplug a new device. Can disable or ena=
+ble\n"
+> > +    "                devices (such as CPUs) at boot based on policy.\n=
+"
+> > +    "                Example:\n"
+> > +    "                    -deviceset host-arm-cpu,core-id=3D2,admin-sta=
+te=3Ddisabled\n"
+> > +    "                Use '-deviceset help' for supported drivers\n"
+> > +    "                Use '-deviceset driver,help' for driver-specific =
+properties\n",
+> > +    QEMU_ARCH_ALL)
+> > +SRST
+> > +``-deviceset driver[,prop[=3Dvalue]][,...]``
+> > +    Configure an existing device's administrative power state or prope=
+rties.
+> > +
+> > +    Unlike ``-device``, this option does not create a new device. Inst=
+ead,
+> > +    it sets startup properties (such as administrative power state) fo=
+r
+> > +    a device already declared via -smp or other machine configuration.
+> > +
+> > +    Example:
+> > +        -smp cpus=3D4
+> > +        -deviceset host-arm-cpu,core-id=3D2,admin-state=3Ddisabled
+> > +
+> > +    The above disables CPU core 2 at boot using administrative offlini=
+ng.
+> > +    The guest may later re-enable the core (if permitted by platform p=
+olicy).
+> > +
+> > +    ``state=3Denabled|disabled``
+> > +        Sets the administrative state of the device:
+> > +        - ``enabled``: device is made available at boot
+> > +        - ``disabled``: device is administratively disabled and powere=
+d off
+> > +
+> > +    Use ``-deviceset help`` to view all supported drivers.
+> > +    Use ``-deviceset driver,help`` for property-specific help.
+> > +ERST
+> > +
+> >  DEF("name", HAS_ARG, QEMU_OPTION_name,
+> >      "-name string1[,process=3Dstring2][,debug-threads=3Don|off]\n"
+> >      "                set the name of the guest\n"
+> > diff --git a/system/qdev-monitor.c b/system/qdev-monitor.c
+> > index 2ac92d0a07..1099b1237d 100644
+> > --- a/system/qdev-monitor.c
+> > +++ b/system/qdev-monitor.c
+> > @@ -263,12 +263,20 @@ static DeviceClass *qdev_get_device_class(const c=
+har **driver, Error **errp)
+> >      }
+> > =20
+> >      dc =3D DEVICE_CLASS(oc);
+> > -    if (!dc->user_creatable) {
+> > +    if (!dc->user_creatable && !dc->admin_power_state_supported) {
+> >          error_setg(errp, QERR_INVALID_PARAMETER_VALUE, "driver",
+> >                     "a pluggable device type");
+> >          return NULL;
+> >      }
+> > =20
+> > +    if (phase_check(PHASE_MACHINE_READY) &&
+> > +        (!dc->hotpluggable || !dc->admin_power_state_supported)) {
+> > +        error_setg(errp, QERR_INVALID_PARAMETER_VALUE, "driver",
+> > +                   "a pluggable device type or which supports changing=
+ power-"
+> > +                   "state administratively");
+> > +        return NULL;
+> > +    }
+> > +
+> >      if (object_class_dynamic_cast(oc, TYPE_SYS_BUS_DEVICE)) {
+> >          /* sysbus devices need to be allowed by the machine */
+> >          MachineClass *mc =3D MACHINE_CLASS(object_get_class(qdev_get_m=
+achine()));
+> > @@ -939,6 +947,76 @@ void qmp_device_del(const char *id, Error **errp)
+> >      }
+> >  }
+> > =20
+> > +void qmp_device_set(const QDict *qdict, Error **errp)
+> > +{
+> > +    const char *state;
+> > +    const char *driver;
+> > +    DeviceState *dev;
+> > +    DeviceClass *dc;
+> > +    const char *id;
+> > +
+> > +    driver =3D qdict_get_try_str(qdict, "driver");
+> > +    if (!driver) {
+> > +        error_setg(errp, "Parameter 'driver' is missing");
+> > +        return;
+> > +    }
+> > +
+> > +    /* check driver exists and we are at the right phase of machine in=
+it */
+> > +    dc =3D qdev_get_device_class(&driver, errp);
+> > +    if (!dc) { =20
+>=20
+> Since qdev_get_device_class() sets an error when it fails, *errp is not
+> null here, ...
+>=20
+> > +        error_setg(errp, "driver '%s' not supported", driver); =20
+>=20
+> ... which makes this wrong.  Caught by error_setv()'s assertion.
+>=20
+> Please test your error paths.
+>=20
+> > +        return;
+> > +    }
+> > +
+> > +    if (migration_is_running()) {
+> > +        error_setg(errp, "device_set not allowed while migrating");
+> > +        return;
+> > +    }
+> > +
+> > +    id =3D qdict_get_try_str(qdict, "id");
+> > +
+> > +    if (id) {
+> > +        /* Lookup by ID */
+> > +        dev =3D find_device_state(id, false, errp);
+> > +        if (errp && *errp) {
+> > +            error_prepend(errp, "Device lookup failed for ID '%s': ", =
+id);
+> > +            return;
+> > +        }
+> > +    } else {
+> > +        /* Lookup using driver and properties */
+> > +        dev =3D qdev_find_device(qdict, errp);
+> > +        if (errp && *errp) {
+> > +            error_prepend(errp, "Device lookup for %s failed: ", drive=
+r);
+> > +            return;
+> > +        }
+> > +    }
+> > +    if (!dev) {
+> > +        error_set(errp, ERROR_CLASS_DEVICE_NOT_FOUND,
+> > +                  "No device found for driver '%s'", driver);
+> > +        return;
+> > +    }
+> > +
+> > +    state =3D qdict_get_try_str(qdict, "admin-state");
+> > +    if (!state) {
+> > +        error_setg(errp, "no device state change specified for device =
+%s ",
+> > +                   dev->id);
+> > +        return;
+> > +    } else if (!strcmp(state, "enable")) {
+> > +
+> > +        if (!qdev_enable(dev, qdev_get_parent_bus(DEVICE(dev)), errp))=
+ {
+> > +            return;
+> > +        }
+> > +    } else if (!strcmp(state, "disable")) {
+> > +        if (!qdev_disable(dev, qdev_get_parent_bus(DEVICE(dev)), errp)=
+) {
+> > +            return;
+> > +        }
+> > +    } else {
+> > +        error_setg(errp, "unrecognized specified state *%s* for device=
+ %s",
+> > +                   state, dev->id);
+> > +        return;
+> > +    }
+> > +}
+> > +
+> >  int qdev_sync_config(DeviceState *dev, Error **errp)
+> >  {
+> >      DeviceClass *dc =3D DEVICE_GET_CLASS(dev); =20
+>=20
+> [...]
+>=20
+
 

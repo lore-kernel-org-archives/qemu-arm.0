@@ -4,100 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D8DECCD184
-	for <qemu-arm@archiver.kernel.org>; Thu,  9 Oct 2025 15:20:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D59ECCD184
+	for <qemu-arm@archiver.kernel.org>; Thu,  9 Oct 2025 16:31:41 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v6sQv-0004V6-MF; Thu, 09 Oct 2025 11:19:59 -0400
+	id 1v6tYA-0002OA-C8; Thu, 09 Oct 2025 12:31:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1v6sQi-0004Kg-Hw
- for qemu-arm@nongnu.org; Thu, 09 Oct 2025 11:19:46 -0400
-Received: from mail-yx1-xb135.google.com ([2607:f8b0:4864:20::b135])
+ (Exim 4.90_1) (envelope-from <xpahos@gmail.com>) id 1v6tXj-00026n-91
+ for qemu-arm@nongnu.org; Thu, 09 Oct 2025 12:31:08 -0400
+Received: from mail-lf1-x135.google.com ([2a00:1450:4864:20::135])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1v6sQZ-0001NH-K4
- for qemu-arm@nongnu.org; Thu, 09 Oct 2025 11:19:43 -0400
-Received: by mail-yx1-xb135.google.com with SMTP id
- 956f58d0204a3-635283199a9so1102308d50.1
- for <qemu-arm@nongnu.org>; Thu, 09 Oct 2025 08:19:34 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <xpahos@gmail.com>) id 1v6tXO-0002MY-D8
+ for qemu-arm@nongnu.org; Thu, 09 Oct 2025 12:30:52 -0400
+Received: by mail-lf1-x135.google.com with SMTP id
+ 2adb3069b0e04-57dfd0b6cd7so1216873e87.0
+ for <qemu-arm@nongnu.org>; Thu, 09 Oct 2025 09:30:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1760023173; x=1760627973; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=GZg4AF6rIh+C8il8WtkM5K9qNXhZ3A87/kzIWgW9rok=;
- b=zPXJSfHKfy+yycbzV0ymS1gWX292AiwjnszfuTaKS1YX6OFBnKxDPFicMmzfQ1wGwA
- vutzm2liKfinRY1nLLd0PmO0QMqTVaARJBktQv3Z/x41RrI5UCgcKV+Db+gjGC2wDdNf
- UuA0hireUEoDW0gojYYz91UHhAwXoXwqiPtyyiQz5wlMY+cHD2lyKIkLmFEABsfBOYm+
- D4eGa6ajF1wXOOOqOjDb7EWebvH0fFCNrd10JA5tZ/voy8zpPHmt3itoCyi1NOLytEvQ
- E27Qx1KuXYXXv4H09woyadf/Rghjt4tc3OCIGCv6PrSqqzUI64mC73P5YxN7IsIK4DBN
- hLGQ==
+ d=gmail.com; s=20230601; t=1760027436; x=1760632236; darn=nongnu.org;
+ h=references:to:cc:in-reply-to:date:subject:mime-version:message-id
+ :from:from:to:cc:subject:date:message-id:reply-to;
+ bh=yfy1uw0tzBmzu04ewmVK3e/c3N9puNn3+f72CIFjysA=;
+ b=D9dXiex3EElDkLQjyVyoo21ZOPxXIRN6Fwi/hL3O6CVjmH84bt4uB1fHfdo7L1IqR7
+ jLSYhgmXSIz4ilwcghoGHR2kdVsIDehb4zG2fJElmEp5Uu/7RndwbOACISdOEOboY/pk
+ DTQ3YPyDYV3bV5iZh9ej+hNdIx3QJrz8dGi4i+32zgtbjr7RTe+W7bDVIfKYrZkpMd/R
+ 88Bc9Ds6QGm1ml2JvJEZPNmHYsUXqjPyV36SMrnyu7ZOTlR0wCSXHi3gH/U+l1y6/yhr
+ 07fZKPS6CMOrpxCFqgO0xFG1eWPT58KsFIF37335IPvc4xLSuci2xW9rMmd3u/wzFzvE
+ f3PQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1760023173; x=1760627973;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=GZg4AF6rIh+C8il8WtkM5K9qNXhZ3A87/kzIWgW9rok=;
- b=F1Ou1d+Mbi55Fi543TOuFnUw0t0Ranw2aUvLL1ArkdOe+JRVsiVI9M2SPa9t8tOzH6
- BMUegFAXoumCXqIesaATPwwXb6e9n6rz0BD60xDKxftV4oY+ysitZIhiux2tAWeXY/so
- YFNQYE7ewTISQ9iEyfq2rC4ziJsLUB7DeBdvls0a+K1GU74VEGleEeaABZ/bUT4kKXJa
- 5nb3FVLcaKMIkzPQK0ivPY13uw3iSrwVgD7F2qee6u8bH7hsPaCDviIexxbA+uDJX9iE
- VStqnLBRLmt2WHGjXSQRfBPRyBCXIKpR8iGjyHsbRzD+h2CqoqnzrDeBwcy9ufLMMDRp
- QBjw==
+ d=1e100.net; s=20230601; t=1760027436; x=1760632236;
+ h=references:to:cc:in-reply-to:date:subject:mime-version:message-id
+ :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=yfy1uw0tzBmzu04ewmVK3e/c3N9puNn3+f72CIFjysA=;
+ b=f7REyjOADUimSbjNLp3tCKLEoXPbKLlm2JeYoV9OMUOluI+fvU7ckCJS5ZNdsnltWP
+ NpYJ+z1/nEmzaqRpDrb4MrX59swFYSS9nfbbzBNrVxBqAqcW2qlbHRDPuxw7vPCeVCsI
+ Dk/jb4dKCpqoIc77w2nBfVfB4q3SJ/19SyIWNvXXLe5iQnZ1oO/I+l0r1DmRcQEwHfEM
+ uqw0zRIfBLKI1p0WF6weIFy5R1qY9io6AQzpsic/kTKxyMkcGNHBJlbxkRtITi5CM4XZ
+ IKA1h4xhBMBFXbnCGWAs6/5jSGHIZf8s43I9ApAa6YQt62cwByUDB6tLGnk9JROj5mp5
+ xf7g==
 X-Forwarded-Encrypted: i=1;
- AJvYcCU0+RcM+dRfo2z3a0iM06umsnP3sVFV7G/N4NjnibnZHWTCVw6kt8e+3zoSJ7ZrkWIW+02JZdXOGQ==@nongnu.org
-X-Gm-Message-State: AOJu0YzV44oXgUxh7kIEf7MaOZPMWYcGMCh3y8ULufUBAjZ1Qzj+otXG
- ougSibbPiqYI1ki8EMWi0MR1uumV7Z11k18bNy37bE5VresiRceTYNFPC+7AaAOXPKzw9hp8QaU
- b8ANiv6S+F4cd5nAPnzrMOKOWAEsdwsPAzJgx07y7qg==
-X-Gm-Gg: ASbGncujaCnEeTw4LRDrKXnHbf7RjGAWhplYpst9CF4T4+dAS19qyqU8CANpZW4GEKr
- X3iUEL2X57lFPZCECY3Y3jqZP26lzEdvKR8x40JXBbR/8a4UwDO60Jw1UvThMooWWw5fGECe5/U
- Xd6okUlFJ5mmSGcX0TuffiKHPiF2hklmPmtKdkgxty6b/gSJCZJ28HkBxyQNz+HcIDpuWFBSsYT
- vKZn+AYekg8nDsaAVyjwluyzI5AYlbbl3JO7ZA50VgaI3k=
-X-Google-Smtp-Source: AGHT+IGmS7nTo+O/VdN+IQZ4G/SUWtNQDcbSp9xh4nxNSxQXQ8oOmNXga3efTJZqLYpk1plKAdOk1eQafehtsqf9KSI=
-X-Received: by 2002:a53:c9c6:0:b0:636:1fd9:d64b with SMTP id
- 956f58d0204a3-63ccb825212mr5677209d50.2.1760023172847; Thu, 09 Oct 2025
- 08:19:32 -0700 (PDT)
-MIME-Version: 1.0
-References: <20251001010127.3092631-1-salil.mehta@opnsrc.net>
- <20251001010127.3092631-23-salil.mehta@opnsrc.net>
- <87plawh2sz.fsf@pond.sub.org>
- <20251009145125.6583a24a@fedora> <87wm54nmyt.fsf@pond.sub.org>
-In-Reply-To: <87wm54nmyt.fsf@pond.sub.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 9 Oct 2025 16:19:21 +0100
-X-Gm-Features: AS18NWBQyNfXQcnxi4vPQTObzUW2InZV_ETHl2QjL9ahSGJnOXebjCpJ1lpn8BQ
-Message-ID: <CAFEAcA9wa2_c5YYwYJRL-aZThujxYPt1mg3zy_YEBaQ_8cX3Xw@mail.gmail.com>
-Subject: Re: [PATCH RFC V6 22/24] monitor,qdev: Introduce 'device_set' to
- change admin state of existing devices
-To: Markus Armbruster <armbru@redhat.com>
-Cc: Igor Mammedov <imammedo@redhat.com>, salil.mehta@opnsrc.net,
- qemu-devel@nongnu.org, 
- qemu-arm@nongnu.org, mst@redhat.com, salil.mehta@huawei.com, maz@kernel.org, 
- jean-philippe@linaro.org, jonathan.cameron@huawei.com, lpieralisi@kernel.org, 
- richard.henderson@linaro.org, andrew.jones@linux.dev, david@redhat.com, 
- philmd@linaro.org, eric.auger@redhat.com, will@kernel.org, ardb@kernel.org, 
- oliver.upton@linux.dev, pbonzini@redhat.com, gshan@redhat.com, 
- rafael@kernel.org, borntraeger@linux.ibm.com, alex.bennee@linaro.org, 
- gustavo.romero@linaro.org, npiggin@gmail.com, harshpb@linux.ibm.com, 
- linux@armlinux.org.uk, darren@os.amperecomputing.com, 
- ilkka@os.amperecomputing.com, vishnu@os.amperecomputing.com, 
- gankulkarni@os.amperecomputing.com, karl.heubaum@oracle.com, 
- miguel.luis@oracle.com, zhukeqian1@huawei.com, wangxiongfeng2@huawei.com, 
- wangyanan55@huawei.com, wangzhou1@hisilicon.com, linuxarm@huawei.com, 
- jiakernel2@gmail.com, maobibo@loongson.cn, lixianglai@loongson.cn, 
- shahuang@redhat.com, zhao1.liu@intel.com, devel@lists.libvirt.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b135;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb135.google.com
+ AJvYcCUG8h1O12eeKwioSKHR1KIiCRwRf7MiQiufGjrCViGit/yw8QaGMTuWBJvOaxGilnLU9snwmKjICA==@nongnu.org
+X-Gm-Message-State: AOJu0Yw5cKK/JL94XhTxdYkSRNrTiGz5Ig/yh9C5NEry8TjwkGkHGS6Q
+ 8GMumQLcNdZFo5r03+KpSYCkApSaXeI+6kahzKlg36EY6Q96QvpOu2Qb
+X-Gm-Gg: ASbGncsQMAXP7Cv3brEdR2VtukkahipRCXKZZiP97eFJnaEZRO619tvX9KwHoWkKliX
+ LQCk3SBxM4ZQBJzj8rzx9aRl9nZNeoVayOugeH63LWzS5hMA+CK6gS+q6TylM5E5P9Si9L7sIYs
+ Tql5tvzJKx9vozA/pQOrG93rCoHAjzA9MMTziyGf6baK/9ifModUpiSGRQfi0cdxPIsZiDxT4fs
+ Jr7PjZgqQPu7Um36YZhP3KmcETVa54eq6CGIejxG6G9kvtns+gpJ53nlSr2wYdyuIL7qRx3oYXt
+ 0rySsFt90ekyLUZwW78nCaT5BF90jJsAZFRGz9bJu+UyQlwqyuZGjXJ+LhA1YTjw7bG/oYDJ9rC
+ OMqJtzxbjOj1oq9xUPMDbyRPjVV34LK3wYtIpjMc9tQboZCmsaT+ox8JiAfwoX3AHW+c=
+X-Google-Smtp-Source: AGHT+IGzqIY4dPGYrbYxu/CCBHusrsqXTvTd8Wx7c0VenbOJgmwj4rXH4wzN5pDtmQ1ba5+dut1SEA==
+X-Received: by 2002:a05:6512:3e1d:b0:571:86bc:423b with SMTP id
+ 2adb3069b0e04-5906d9e8a5fmr2291928e87.44.1760027435679; 
+ Thu, 09 Oct 2025 09:30:35 -0700 (PDT)
+Received: from smtpclient.apple ([2a02:6bf:8011:f00:6191:211a:2507:cf35])
+ by smtp.gmail.com with ESMTPSA id
+ 2adb3069b0e04-5907ac2349fsm1174239e87.56.2025.10.09.09.30.33
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Thu, 09 Oct 2025 09:30:34 -0700 (PDT)
+From: Alexander Gryanko <xpahos@gmail.com>
+Message-Id: <9961189C-3A61-4767-B620-C1B7315495CA@gmail.com>
+Content-Type: multipart/alternative;
+ boundary="Apple-Mail=_5F9C7B1A-F043-4F6D-A059-7892AC94ABF2"
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3776.700.51.11.2\))
+Subject: Re: [PATCH] hw/arm: add pvpanic mmio device for arm
+Date: Thu, 9 Oct 2025 19:30:22 +0300
+In-Reply-To: <CAFEAcA8LQi+nVztx7oz6yGaYgKvnECj_0Xom3NbxLAFK82hWTQ@mail.gmail.com>
+Cc: Igor Mammedov <imammedo@redhat.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, qemu-trivial@nongnu.org
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <CC5A0011-CD14-40F9-8023-8BF5F989BCCF@gmail.com>
+ <20251007151157.5a601c3e@fedora>
+ <DFAE42FB-786F-45D3-9FC5-C72DEC5A4301@gmail.com>
+ <CAFEAcA8LQi+nVztx7oz6yGaYgKvnECj_0Xom3NbxLAFK82hWTQ@mail.gmail.com>
+X-Mailer: Apple Mail (2.3776.700.51.11.2)
+Received-SPF: pass client-ip=2a00:1450:4864:20::135;
+ envelope-from=xpahos@gmail.com; helo=mail-lf1-x135.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -113,24 +102,233 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, 9 Oct 2025 at 15:56, Markus Armbruster <armbru@redhat.com> wrote:
-> qdev introspection (device-list-properties) is like QOM type
-> introspection.  I'm not sure why it exists.
 
-It exists because it is the older of the two interfaces:
-device-list-properties was added in 2012, whereas
-qom-list-properties was only added in 2018.
+--Apple-Mail=_5F9C7B1A-F043-4F6D-A059-7892AC94ABF2
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain;
+	charset=utf-8
 
-device-list-properties also does some device-specific
-sanitization that may or may not be helpful: it won't
-let you try it on an abstract base class, for instance,
-and it won't list "legacy-" properties.
 
-One problem you don't mention with QOM introspection is
-that we have no marking for whether properties are intended
-to be user-facing knobs, configurable things to be set
-by other parts of QEMU, or purely details of the implementation.
 
-thanks
--- PMM
+> On 9 Oct 2025, at 16:29, Peter Maydell <peter.maydell@linaro.org> =
+wrote:
+>=20
+> On Thu, 9 Oct 2025 at 14:26, Alexander Gryanko <xpahos@gmail.com =
+<mailto:xpahos@gmail.com>> wrote:
+>>=20
+>>=20
+>>=20
+>>> On 7 Oct 2025, at 16:11, Igor Mammedov <imammedo@redhat.com> wrote:
+>>>=20
+>>> On Sat, 4 Oct 2025 23:19:09 +0300
+>>> Alexander Gryanko <xpahos@gmail.com> wrote:
+>>>=20
+>>>> Currently, pvpanic is available in three device types: ISA,
+>>>> MMIO, and PCI. For early stages of system initialisation
+>>>> before PCI enumeration, only ISA and MMIO are suitable.
+>>>> ISA is specific to the x86 platform; only MMIO devices
+>>>> can be used for ARM. It is not possible to specify a
+>>>> device as on the x86 platform (-device pvpanic); the
+>>>=20
+>>> perhaps ARM folsk know better, don't we have some
+>>> user create-able sysbus devices? Can it be implemented
+>>> as such, so we would avoid creating built-in device?
+>>=20
+>> As a QEMU user, I expected there to be a way to specify a dtb from a =
+file that could be used as the actual device tree inside the virtual =
+machine. Perhaps there is a way to do this, but I am not very familiar =
+with the QEMU code and do not know how it should work.
+>=20
+> You can generally use '-machine dtb=3Dfile.dtb'. But note that
+> this entirely overrides any internally generated dtb file
+> for machines that do that, so for those machine types it's
+> mostly a helpful debugging tool.
+
+I added '-machine dumpdtb=3Dqemu.dtb', then converted dtb to dts 'dtc -I =
+dtb -O dts -o qemu.dts qemu.dtb', added=20
+
+        pvpanic@9060000 {
+                reg =3D <0x0 0x09060000 0x0 0x2>;
+                compatible =3D "qemu,pvpanic-mmio";
+        };
+
+Then I compiled qemu without optimisation and set a breakpoint in =
+=E2=80=98pvpanic_mmio_initfn'. It was never called with '-machine =
+dtb=3Dfile.dtb'. 'info qtree' also does not show the device. Perhaps I =
+have configured something incorrectly?
+
+/opt/qemu10/bin/qemu-system-aarch64 \
+  -S -d guest_errors,unimp -trace enable=3Ddevice_* -D $CWD/qemu.log \
+  -trace memory_region_ops_write \
+  -cpu cortex-a72 \
+  -m 2048 \
+  -bios $CWD/QEMU_EFI.fd \
+  -nographic \
+  -qmp unix:$CWD/qmp.sock,server,nowait \
+  -drive if=3Dvirtio,format=3Draw,file=3D$CWD/market.img \
+  -chardev =
+socket,id=3Dch0,path=3D$CWD/serial0.sock,reconnect=3D1,logfile=3D$CWD/seri=
+al0.log \
+  -serial chardev:ch0 \
+  -blockdev =
+driver=3Dfile,filename=3D"$CWD/OVMF_VARS.fd",node-name=3Duefi-vars,read-on=
+ly=3Don \
+  -vnc :0 \
+  -display none \
+  -audiodev none,id=3Dnone \
+  -machine virt,dtb=3Duefi.dtb \
+  -monitor stdio \
+
+>=20
+> -- PMM
+
+
+--Apple-Mail=_5F9C7B1A-F043-4F6D-A059-7892AC94ABF2
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html;
+	charset=utf-8
+
+<html><head><meta http-equiv=3D"content-type" content=3D"text/html; =
+charset=3Dutf-8"></head><body style=3D"overflow-wrap: break-word; =
+-webkit-nbsp-mode: space; line-break: after-white-space;"><br =
+id=3D"lineBreakAtBeginningOfMessage"><div><br><blockquote =
+type=3D"cite"><div>On 9 Oct 2025, at 16:29, Peter Maydell =
+&lt;peter.maydell@linaro.org&gt; wrote:</div><br =
+class=3D"Apple-interchange-newline"><div><span style=3D"caret-color: =
+rgb(0, 0, 0); font-family: Helvetica; font-size: 12px; font-style: =
+normal; font-variant-caps: normal; font-weight: 400; letter-spacing: =
+normal; text-align: start; text-indent: 0px; text-transform: none; =
+white-space: normal; word-spacing: 0px; -webkit-text-stroke-width: 0px; =
+text-decoration: none; float: none; display: inline !important;">On Thu, =
+9 Oct 2025 at 14:26, Alexander Gryanko &lt;</span><a =
+href=3D"mailto:xpahos@gmail.com" style=3D"font-family: Helvetica; =
+font-size: 12px; font-style: normal; font-variant-caps: normal; =
+font-weight: 400; letter-spacing: normal; orphans: auto; text-align: =
+start; text-indent: 0px; text-transform: none; white-space: normal; =
+widows: auto; word-spacing: 0px; -webkit-text-stroke-width: =
+0px;">xpahos@gmail.com</a><span style=3D"caret-color: rgb(0, 0, 0); =
+font-family: Helvetica; font-size: 12px; font-style: normal; =
+font-variant-caps: normal; font-weight: 400; letter-spacing: normal; =
+text-align: start; text-indent: 0px; text-transform: none; white-space: =
+normal; word-spacing: 0px; -webkit-text-stroke-width: 0px; =
+text-decoration: none; float: none; display: inline !important;">&gt; =
+wrote:</span><br style=3D"caret-color: rgb(0, 0, 0); font-family: =
+Helvetica; font-size: 12px; font-style: normal; font-variant-caps: =
+normal; font-weight: 400; letter-spacing: normal; text-align: start; =
+text-indent: 0px; text-transform: none; white-space: normal; =
+word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration: =
+none;"><blockquote type=3D"cite" style=3D"font-family: Helvetica; =
+font-size: 12px; font-style: normal; font-variant-caps: normal; =
+font-weight: 400; letter-spacing: normal; orphans: auto; text-align: =
+start; text-indent: 0px; text-transform: none; white-space: normal; =
+widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; =
+text-decoration: none;"><br><br><br><blockquote type=3D"cite">On 7 Oct =
+2025, at 16:11, Igor Mammedov &lt;imammedo@redhat.com&gt; =
+wrote:<br><br>On Sat, 4 Oct 2025 23:19:09 +0300<br>Alexander Gryanko =
+&lt;xpahos@gmail.com&gt; wrote:<br><br><blockquote =
+type=3D"cite">Currently, pvpanic is available in three device types: =
+ISA,<br>MMIO, and PCI. For early stages of system =
+initialisation<br>before PCI enumeration, only ISA and MMIO are =
+suitable.<br>ISA is specific to the x86 platform; only MMIO =
+devices<br>can be used for ARM. It is not possible to specify =
+a<br>device as on the x86 platform (-device pvpanic); =
+the<br></blockquote><br>perhaps ARM folsk know better, don't we have =
+some<br>user create-able sysbus devices? Can it be implemented<br>as =
+such, so we would avoid creating built-in device?<br></blockquote><br>As =
+a QEMU user, I expected there to be a way to specify a dtb from a file =
+that could be used as the actual device tree inside the virtual machine. =
+Perhaps there is a way to do this, but I am not very familiar with the =
+QEMU code and do not know how it should work.<br></blockquote><br =
+style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
+12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
+letter-spacing: normal; text-align: start; text-indent: 0px; =
+text-transform: none; white-space: normal; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration: none;"><span =
+style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
+12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
+letter-spacing: normal; text-align: start; text-indent: 0px; =
+text-transform: none; white-space: normal; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
+display: inline !important;">You can generally use '-machine =
+dtb=3Dfile.dtb'. But note that</span><br style=3D"caret-color: rgb(0, 0, =
+0); font-family: Helvetica; font-size: 12px; font-style: normal; =
+font-variant-caps: normal; font-weight: 400; letter-spacing: normal; =
+text-align: start; text-indent: 0px; text-transform: none; white-space: =
+normal; word-spacing: 0px; -webkit-text-stroke-width: 0px; =
+text-decoration: none;"><span style=3D"caret-color: rgb(0, 0, 0); =
+font-family: Helvetica; font-size: 12px; font-style: normal; =
+font-variant-caps: normal; font-weight: 400; letter-spacing: normal; =
+text-align: start; text-indent: 0px; text-transform: none; white-space: =
+normal; word-spacing: 0px; -webkit-text-stroke-width: 0px; =
+text-decoration: none; float: none; display: inline !important;">this =
+entirely overrides any internally generated dtb file</span><br =
+style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
+12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
+letter-spacing: normal; text-align: start; text-indent: 0px; =
+text-transform: none; white-space: normal; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration: none;"><span =
+style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
+12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
+letter-spacing: normal; text-align: start; text-indent: 0px; =
+text-transform: none; white-space: normal; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
+display: inline !important;">for machines that do that, so for those =
+machine types it's</span><br style=3D"caret-color: rgb(0, 0, 0); =
+font-family: Helvetica; font-size: 12px; font-style: normal; =
+font-variant-caps: normal; font-weight: 400; letter-spacing: normal; =
+text-align: start; text-indent: 0px; text-transform: none; white-space: =
+normal; word-spacing: 0px; -webkit-text-stroke-width: 0px; =
+text-decoration: none;"><span style=3D"caret-color: rgb(0, 0, 0); =
+font-family: Helvetica; font-size: 12px; font-style: normal; =
+font-variant-caps: normal; font-weight: 400; letter-spacing: normal; =
+text-align: start; text-indent: 0px; text-transform: none; white-space: =
+normal; word-spacing: 0px; -webkit-text-stroke-width: 0px; =
+text-decoration: none; float: none; display: inline !important;">mostly =
+a helpful debugging tool.</span><br style=3D"caret-color: rgb(0, 0, 0); =
+font-family: Helvetica; font-size: 12px; font-style: normal; =
+font-variant-caps: normal; font-weight: 400; letter-spacing: normal; =
+text-align: start; text-indent: 0px; text-transform: none; white-space: =
+normal; word-spacing: 0px; -webkit-text-stroke-width: 0px; =
+text-decoration: none;"></div></blockquote><div><br></div><div><div>I =
+added '-machine dumpdtb=3Dqemu.dtb', then converted dtb to dts 'dtc -I =
+dtb -O dts -o qemu.dts qemu.dtb', =
+added&nbsp;</div><div><br></div><div>&nbsp; &nbsp; &nbsp; &nbsp; =
+pvpanic@9060000 {</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; reg =3D &lt;0x0 0x09060000 0x0 0x2&gt;;</div><div>&nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; compatible =3D =
+"qemu,pvpanic-mmio";</div><div>&nbsp; &nbsp; &nbsp; &nbsp; =
+};</div><div><br></div><div>Then I compiled qemu without optimisation =
+and set a breakpoint in =E2=80=98pvpanic_mmio_initfn'. It was never =
+called with '-machine dtb=3Dfile.dtb'. 'info qtree' also does not show =
+the device.&nbsp;Perhaps I have configured something =
+incorrectly?</div><div><br></div><div><div>/opt/qemu10/bin/qemu-system-aar=
+ch64 \</div><div>&nbsp; -S -d guest_errors,unimp -trace enable=3Ddevice_* =
+-D $CWD/qemu.log \</div><div>&nbsp; -trace memory_region_ops_write =
+\</div><div>&nbsp; -cpu cortex-a72 \</div><div>&nbsp; -m 2048 =
+\</div><div>&nbsp; -bios $CWD/QEMU_EFI.fd \</div><div>&nbsp; -nographic =
+\</div><div>&nbsp; -qmp unix:$CWD/qmp.sock,server,nowait =
+\</div><div>&nbsp; -drive if=3Dvirtio,format=3Draw,file=3D$CWD/market.img =
+\</div><div>&nbsp; -chardev =
+socket,id=3Dch0,path=3D$CWD/serial0.sock,reconnect=3D1,logfile=3D$CWD/seri=
+al0.log \</div><div>&nbsp; -serial chardev:ch0 \</div><div>&nbsp; =
+-blockdev =
+driver=3Dfile,filename=3D"$CWD/OVMF_VARS.fd",node-name=3Duefi-vars,read-on=
+ly=3Don \</div><div>&nbsp; -vnc :0 \</div><div>&nbsp; -display none =
+\</div><div>&nbsp; -audiodev none,id=3Dnone \</div><div>&nbsp; -machine =
+virt,dtb=3Duefi.dtb \</div><div>&nbsp; -monitor stdio =
+\</div></div></div><br><blockquote type=3D"cite"><div><br =
+style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
+12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
+letter-spacing: normal; text-align: start; text-indent: 0px; =
+text-transform: none; white-space: normal; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration: none;"><span =
+style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
+12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
+letter-spacing: normal; text-align: start; text-indent: 0px; =
+text-transform: none; white-space: normal; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
+display: inline !important;">-- =
+PMM</span></div></blockquote></div><br></body></html>=
+
+--Apple-Mail=_5F9C7B1A-F043-4F6D-A059-7892AC94ABF2--
 

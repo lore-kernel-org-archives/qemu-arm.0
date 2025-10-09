@@ -4,94 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FE73CCA471
-	for <qemu-arm@archiver.kernel.org>; Thu,  9 Oct 2025 06:34:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6302DCCD183
+	for <qemu-arm@archiver.kernel.org>; Thu,  9 Oct 2025 08:56:41 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v6kDw-0002tS-9l; Thu, 09 Oct 2025 02:34:01 -0400
+	id 1v6mRY-0001F7-9C; Thu, 09 Oct 2025 04:56:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v6kDt-0002sA-NW
- for qemu-arm@nongnu.org; Thu, 09 Oct 2025 02:33:57 -0400
-Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v6kDp-0003DJ-BO
- for qemu-arm@nongnu.org; Thu, 09 Oct 2025 02:33:57 -0400
-Received: by mail-wr1-x435.google.com with SMTP id
- ffacd0b85a97d-3ee1381b835so533135f8f.1
- for <qemu-arm@nongnu.org>; Wed, 08 Oct 2025 23:33:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1759991627; x=1760596427; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:references:cc:to:from
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=GYzC75wWAZej4UuEIDmUKOezyjzGUUOJzlifIRQQ6O0=;
- b=SHOfi0Emmg2E7i3jxkguBsnyC8JwVqIwCi/xVp8VD7Hg5mT5zhTI2bD+vMUbE4iB9+
- f/m5Ob6PxroooEaNY7lMR0SUONk0JeNnr8/+CE8XGv/Erd2suwTErc5m8GY1RpY1n3sB
- ExDcrAxXQLd8txzsOj2o/R+4ldzuDyCj+YIiTcysaRvTQVO50Wrob8HwhGNywzdoi0ZH
- tcbZpa5ryTItD8FQOmz1iDwS7V6VWjmoLlS8o91I7fegJk/RTEGZzTiS5ZDD0aRC7n1i
- 7Jgd0UmcAgFZI7cHMFmQglSyuw90QUxxtZWyeVby6NlIP4B3JIJkKk97b5u8aGJ2gJDB
- FwCw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759991627; x=1760596427;
- h=content-transfer-encoding:in-reply-to:references:cc:to:from
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=GYzC75wWAZej4UuEIDmUKOezyjzGUUOJzlifIRQQ6O0=;
- b=bqp+emlkJ1Xnuh0CqRaBqoVC+86NToC3tqRb2izh+Tbsp7aOhlFGNZcXVlJxeWF2p4
- nlioK9Tas+1hV7rbvzzO7b/WTRQ81pFiF96EJTiPT4wY2BaLMiynMZeZlgQHgo0dskny
- eJvMtD/AIQj/7f1ucpQw0QWeU8SR7nURUWtYITU+zXm0B+YPolXRZQyTWrUjJuwB0HTc
- egaRK6MlQsxF1DSx9HaAzrSaTQbGRUL8isSuajSrCLcYFxXbIHtyuCik5mjy8SeO+Axb
- kcWuZpe/hKE2pEezLvE4a5wg6sxiTMT2/tWw4VNPePuYjJXd62MVN7G39bS8gNHInmeH
- E/pA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXXEBTatcrmVCXJAhajDNDhKIcLVPvJ4wQyLrm6t3qNmUDBUdcokXbzWIGUtd9VKuGsz45ozJam8Q==@nongnu.org
-X-Gm-Message-State: AOJu0Yw6eonS1LOdtig6AbIIWTcFqnYmiLa4oVPwZJD+zk9iZH/irwPW
- rYOAOhd3oKPxqG7TwnhNTEgUfFuOdnJ6/c74On1bgQz3bER3H42UBh3qnJm20eJEu7w=
-X-Gm-Gg: ASbGnctEoxM8AFkgENSdh6zlkxOrdbreECAN6nGjF1Tf8pmw34XWfIQ0vfD4SHKcNd9
- 78tieHyEk5tby7itrCoAf9kvGXadrBFDnW+rsIzs+SqMImIYAiGE7MQ83yih3fHLxXVdLsa6fjh
- Hw9u8kV/X5vvFmcfazBlUCfweT5yfWEXWxCahe1Ig3DsVFQ9GFH9CGIbtLAou1FWWRLY691Ub/V
- se0tEt0OSEdjXxmVP5cMw9u/9qju3D9T+w3b+4fUGzGbWIY4vyqqTOJbc2HpuIw6Ie7dUP2nzc8
- LJA6YNv5gUlfvRv8piU057wPU/M6I4TV0O9pbggoaK37J+UhB4GAzVjm9DdFQCi/YcIFOpadPh2
- XouFXD0uV5dXSFITmB6IRMKcydxLXJfwSFmxDsgRYYyblG07ooD6ihYtmI7i+yt2rnUe4YgqKRJ
- cNhf00YducmLpgnsZR4Q==
-X-Google-Smtp-Source: AGHT+IGRMfMbS5ExzOnBQ/G6CiSdh8HoLtJx633PjWfgjJCF6PZk2X/grgTybN/DDUN7UTdjIRcIUg==
-X-Received: by 2002:a05:6000:240d:b0:425:7c3c:82cf with SMTP id
- ffacd0b85a97d-4266e7cdc8fmr4338579f8f.11.1759991627504; 
- Wed, 08 Oct 2025 23:33:47 -0700 (PDT)
-Received: from [192.168.69.221] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4255d8e9724sm32855296f8f.28.2025.10.08.23.33.46
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 08 Oct 2025 23:33:46 -0700 (PDT)
-Message-ID: <bad14513-b99b-4cf8-b6d0-2d338e4ebc50@linaro.org>
-Date: Thu, 9 Oct 2025 08:33:46 +0200
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1v6mRW-0001CK-9w
+ for qemu-arm@nongnu.org; Thu, 09 Oct 2025 04:56:11 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1v6mRQ-0004zn-Jy
+ for qemu-arm@nongnu.org; Thu, 09 Oct 2025 04:56:09 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1760000159;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=mJNs2atY5G+CU0EvB4JZA2FQVC+cgtYvJ5y+1WeUiKg=;
+ b=gWCHnU5ougvr99uQ4DkJWa/bmkeoBd86Xj3yQqNk54M36r8LEgZmVxR8Ym2RbUxq/eoqGJ
+ 9oT8TqhirtqUPze4RY2tUbPuQVqdWitIM5ySsTaV2UTq0fBHpKzeitCNFglY9yM3E942on
+ CmbCNC/5exW5SsHog+ZL4BZyxa345zM=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-615-D98z8LsaMq-f6VUaGIiplQ-1; Thu,
+ 09 Oct 2025 04:55:53 -0400
+X-MC-Unique: D98z8LsaMq-f6VUaGIiplQ-1
+X-Mimecast-MFC-AGG-ID: D98z8LsaMq-f6VUaGIiplQ_1760000149
+Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 09BA8180035C; Thu,  9 Oct 2025 08:55:47 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.45.242.6])
+ by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 836261800577; Thu,  9 Oct 2025 08:55:43 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id BED8C21E6A27; Thu, 09 Oct 2025 10:55:40 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: salil.mehta@opnsrc.net
+Cc: qemu-devel@nongnu.org,  qemu-arm@nongnu.org,  mst@redhat.com,
+ salil.mehta@huawei.com,  maz@kernel.org,  jean-philippe@linaro.org,
+ jonathan.cameron@huawei.com,  lpieralisi@kernel.org,
+ peter.maydell@linaro.org,  richard.henderson@linaro.org,
+ imammedo@redhat.com,  andrew.jones@linux.dev,  david@redhat.com,
+ philmd@linaro.org,  eric.auger@redhat.com,  will@kernel.org,
+ ardb@kernel.org,  oliver.upton@linux.dev,  pbonzini@redhat.com,
+ gshan@redhat.com,  rafael@kernel.org,  borntraeger@linux.ibm.com,
+ alex.bennee@linaro.org,  gustavo.romero@linaro.org,  npiggin@gmail.com,
+ harshpb@linux.ibm.com,  linux@armlinux.org.uk,
+ darren@os.amperecomputing.com,  ilkka@os.amperecomputing.com,
+ vishnu@os.amperecomputing.com,  gankulkarni@os.amperecomputing.com,
+ karl.heubaum@oracle.com,  miguel.luis@oracle.com,  zhukeqian1@huawei.com,
+ wangxiongfeng2@huawei.com,  wangyanan55@huawei.com,
+ wangzhou1@hisilicon.com,  linuxarm@huawei.com,  jiakernel2@gmail.com,
+ maobibo@loongson.cn,  lixianglai@loongson.cn,  shahuang@redhat.com,
+ zhao1.liu@intel.com
+Subject: Re: [PATCH RFC V6 22/24] monitor,qdev: Introduce 'device_set' to
+ change admin state of existing devices
+In-Reply-To: <20251001010127.3092631-23-salil.mehta@opnsrc.net> (salil mehta's
+ message of "Wed, 1 Oct 2025 01:01:25 +0000")
+References: <20251001010127.3092631-1-salil.mehta@opnsrc.net>
+ <20251001010127.3092631-23-salil.mehta@opnsrc.net>
+Date: Thu, 09 Oct 2025 10:55:40 +0200
+Message-ID: <87plawh2sz.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 0/7] Register API leaks fixes
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: Luc Michel <luc.michel@amd.com>, qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Francisco Iglesias <francisco.iglesias@amd.com>,
- "Edgar E . Iglesias" <edgar.iglesias@amd.com>,
- Alistair Francis <alistair@alistair23.me>,
- Vikram Garhwal <vikram.garhwal@bytedance.com>
-References: <20251002073418.109375-1-luc.michel@amd.com>
- <64f40ff8-3694-4c9a-80b6-0f58f01d7995@linaro.org>
-In-Reply-To: <64f40ff8-3694-4c9a-80b6-0f58f01d7995@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::435;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x435.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.442,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -107,124 +104,448 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 9/10/25 08:23, Philippe Mathieu-Daudé wrote:
-> Hi Luc,
-> 
-> On 2/10/25 09:34, Luc Michel wrote:
-> 
->> This series addresses the memory leaks caused by the register API. The
->> first patches fix the API itself while the last ones take care of the
->> CANFD model.
-> 
-> 
->> Luc Michel (7):
->>    hw/core/register: remove the REGISTER device type
->>    hw/core/register: add the REGISTER_ARRAY type
->>    hw/core/register: remove the calls to `register_finalize_block'
->>    hw/core/register: remove the `register_finalize_block' function
->>    hw/net/can/xlnx-versal-canfd: remove unused include directives
->>    hw/net/can/xlnx-versal-canfd: refactor the banked registers logic
->>    hw/net/can/xlnx-versal-canfd: remove register API usage for banked
->>      regs
-> 
-> I had few issues with your series:
-> 
-> ../../hw/net/can/xlnx-versal-canfd.c:1917:30: error: unused variable 
-> 'canfd_regs_ops' [-Werror,-Wunused-const-variable]
->   1917 | static const MemoryRegionOps canfd_regs_ops = {
->        |                              ^~~~~~~~~~~~~~
-> 
-> ../../hw/net/can/xlnx-versal-canfd.c:1871:42: error: use of undeclared 
-> identifier 'TYPE_REGISTER'
->   1871 |         object_initialize(r, sizeof(*r), TYPE_REGISTER);
->        |                                          ^
-> 
-> ../../hw/net/can/xlnx-versal-canfd.c:1700:48: error: incompatible 
-> pointer types passing 'hwaddr *' (aka 'unsigned long long *') to 
-> parameter of type 'size_t *' (aka 'unsigned long *') [-Werror,- 
-> Wincompatible-pointer-types]
->   1700 |     if (!canfd_decode_addr(s, addr, &bank_idx, &reg_offset)) {
->        |                                                ^~~~~~~~~~~
-> ../../hw/net/can/xlnx-versal-canfd.c:1651:52: note: passing argument to 
-> parameter 'offset' here
->   1651 |                               size_t *idx, size_t *offset)
->        |                                                    ^
-> ../../hw/net/can/xlnx-versal-canfd.c:1722:48: error: incompatible 
-> pointer types passing 'hwaddr *' (aka 'unsigned long long *') to 
-> parameter of type 'size_t *' (aka 'unsigned long *') [-Werror,- 
-> Wincompatible-pointer-types]
->   1722 |     if (!canfd_decode_addr(s, addr, &bank_idx, &reg_offset)) {
->        |                                                ^~~~~~~~~~~
-> ../../hw/net/can/xlnx-versal-canfd.c:1651:52: note: passing argument to 
-> parameter 'offset' here
->   1651 |                               size_t *idx, size_t *offset)
->        |                                                    ^
-> 
-> I fixed them by re-ordering the xlnx-versal-canfd patches first,
-> having canfd_decode_FOO() taking a 'hwaddr *offset' and using a
-> temporary __attribute__ ((unused)) for canfd_regs_ops[].
-> 
-> I'm queuing this series as fixed, except if you disagree.
+salil.mehta@opnsrc.net writes:
 
-Bah, qtest/device-introspect-test is failing:
+> From: Salil Mehta <salil.mehta@huawei.com>
+>
+> This patch adds a "device_set" interface for modifying properties of devi=
+ces
+> that already exist in the guest topology. Unlike 'device_add'/'device_del'
+> (hot-plug), 'device_set' does not create or destroy devices. It is intend=
+ed
+> for guest-visible hot-add semantics where hardware is provisioned at boot=
+ but
+> logically enabled/disabled later via administrative policy.
+>
+> Compared to the existing 'qom-set' command, which is less intuitive and w=
+orks
+> only with object IDs, device_set provides a more device-oriented interfac=
+e.
+> It can be invoked at the QEMU prompt using natural device arguments, and =
+the
+> new '-deviceset' CLI option allows properties to be set at boot time, sim=
+ilar
+> to how '-device' specifies device creation.
 
-# Testing device 'xlnx-zynqmp-efuse'
-Broken pipe
-../../tests/qtest/libqtest.c:208: kill_qemu() detected QEMU death from 
-signal 11 (Segmentation fault: 11)
-Abort trap: 6
+Why can't we use -device?
 
-(lldb) bt
-* thread #5, stop reason = EXC_BAD_ACCESS (code=1, address=0x50)
-   * frame #0: 0x00000001007dcf18 
-qemu-system-aarch64`object_finalize_child_property(obj=<unavailable>, 
-name=<unavailable>, opaque=0x00000001561f0c90) at object.c:1814:23
-     frame #1: 0x00000001007d9ebc 
-qemu-system-aarch64`object_property_del_all(obj=0x0000000138008000) at 
-object.c:667:21 [inlined]
-     frame #2: 0x00000001007d9e1c 
-qemu-system-aarch64`object_finalize(data=0x0000000138008000) at 
-object.c:728:5 [inlined]
-     frame #3: 0x00000001007d9e14 
-qemu-system-aarch64`object_unref(objptr=0x0000000138008000) at 
-object.c:1232:9
-     frame #4: 0x00000001008af32c 
-qemu-system-aarch64`qmp_device_list_properties(typename=<unavailable>, 
-errp=0x000000017002ac98) at qom-qmp-cmds.c:237:5
-     frame #5: 0x000000010092d7a4 
-qemu-system-aarch64`qmp_marshal_device_list_properties(args=0x0000000145809400, 
-ret=0x0000000104827a18, errp=0x0000000104827a20) at 
-qapi-commands-qdev.c:65:14
-     frame #6: 0x0000000100948784 
-qemu-system-aarch64`do_qmp_dispatch_bh(opaque=0x00000001048279e8) at 
-qmp-dispatch.c:128:5
+> While the initial implementation focuses on "admin-state" changes (e.g.,
+> enable/disable a CPU already described by ACPI/DT), the interface is desi=
+gned
+> to be generic. In future, it could be used for other per-device set/unset
+> style controls =E2=80=94 beyond administrative power-states =E2=80=94 pro=
+vided the target
+> device explicitly allows such changes. This enables fine-grained runtime
+> control of device properties.
 
-I'm dropping this series, please have a look.
+Beware, designing a generic interface can be harder, sometimes much
+harder, than designing a specialized one.
 
-Stashed changes:
+device_add and qom-set are generic, and they have issues:
 
--- >8 --
-diff --git a/hw/net/can/xlnx-versal-canfd.c b/hw/net/can/xlnx-versal-canfd.c
-index 81615bc52a6..d559fc06804 100644
---- a/hw/net/can/xlnx-versal-canfd.c
-+++ b/hw/net/can/xlnx-versal-canfd.c
-@@ -1784,3 +1784,3 @@ static bool 
-canfd_decode_reg_bank(XlnxVersalCANFDState *s, hwaddr addr,
-                                    hwaddr first_reg, hwaddr last_reg,
--                                  size_t num_banks, size_t *idx, size_t 
-*offset)
-+                                  size_t num_banks, size_t *idx, hwaddr 
-*offset)
-  {
-@@ -1809,3 +1809,3 @@ static bool 
-canfd_decode_reg_bank(XlnxVersalCANFDState *s, hwaddr addr,
-  static bool canfd_decode_addr(XlnxVersalCANFDState *s, hwaddr addr,
--                              size_t *idx, size_t *offset)
-+                              size_t *idx, hwaddr *offset)
-  {
-@@ -1916,2 +1916,3 @@ static const MemoryRegionOps canfd_ops = {
+* device_add effectively bypasses QAPI by using 'gen': false.
 
-+__attribute__ ((unused))
-  static const MemoryRegionOps canfd_regs_ops = {
----
+  This bypasses QAPI's enforcement of documentation.  Property
+  documentation is separate and poor.
+
+  It also defeats introspection with query-qmp-schema.  You need to
+  resort to other means instead, say QOM introspection (which is a bag
+  of design flaws on its own), then map from QOM to qdev.
+
+* device_add lets you specify any qdev property, even properties that
+  are intended only for use by C code.
+
+  This results in accidental external interfaces.
+
+  We tend to name properties like "x-prop" to discourage external use,
+  but I wouldn't bet my own money on us getting that always right.
+  Moreover, there's beauties like "x-origin".
+
+* qom-set & friends effectively bypass QAPI by using type 'any'.
+
+  Again, the bypass results in poor documentation and a defeat of
+  query-qmp-schema.
+
+* qom-set lets you mess with any QOM property with a setter callback.
+
+  Again, accidental external interfaces: most of these properties are
+  not meant for use with qom-set.  For some, qom-set works, for some it
+  silently does nothing, and for some it crashes.  A lot more dangerous
+  than device_add.
+
+  The "x-" convention can't help here: some properties are intended for
+  external use with object-add, but not with qom-set.
+
+We should avoid such issues in new interfaces.
+
+We'll examine how this applies to device_set when I review the QAPI
+schema.
+
+> Key pieces:
+>   * QMP: qmp_device_set() to update an existing device. The device can be
+>     located by "id" or via driver+property match using a DeviceListener
+>     callback (qdev_find_device()).
+>   * HMP: "device_set" command with tab-completion. Errors are surfaced via
+>     hmp_handle_error().
+>   * CLI: "-deviceset" option for setting startup/admin properties at boot,
+>     including a JSON form. Options are parsed into qemu_deviceset_opts and
+>     applied after device creation.
+>   * Docs/help: HMP help text and qemu-options.hx additions explain usage =
+and
+>     explicitly note that no hot-plug occurs.
+>   * Safety: disallowed during live migration (migration_is_idle() check).
+>
+> Semantics:
+>   * Operates on an existing DeviceState; no enumeration/new device appear=
+s.
+>   * Complements device_add/device_del by providing state mutation only.
+>   * Backward compatible: no behavior change unless "device_set"/"-devices=
+et"
+>     is used.
+>
+> Examples:
+>   HMP:
+>     (qemu) device_set host-arm-cpu,core-id=3D3,admin-state=3Denable
+>
+>   CLI (at boot):
+>     -smp cpus=3D4,maxcpus=3D4 \
+>     -deviceset host-arm-cpu,core-id=3D2,admin-state=3Ddisable
+>
+>   QMP (JSON form):
+>     { "execute": "device_set",
+>       "arguments": {
+>         "driver": "host-arm-cpu",
+>         "core-id": 1,
+>         "admin-state": "disable"
+>       }
+>     }
+
+{"error": {"class": "CommandNotFound", "desc": "The command device_set has =
+not been found"}}
+
+Clue below.
+
+> NOTE: The qdev_enable()/qdev_disable() hooks for acting on admin-state wi=
+ll be
+> added in subsequent patches. Device classes must explicitly support any
+> property they want to expose through device_set.
+>
+> Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
+> ---
+>  hmp-commands.hx         |  30 +++++++++
+>  hw/arm/virt.c           |  86 +++++++++++++++++++++++++
+>  hw/core/cpu-common.c    |  12 ++++
+>  hw/core/qdev.c          |  21 ++++++
+>  include/hw/arm/virt.h   |   1 +
+>  include/hw/core/cpu.h   |  11 ++++
+>  include/hw/qdev-core.h  |  22 +++++++
+>  include/monitor/hmp.h   |   2 +
+>  include/monitor/qdev.h  |  30 +++++++++
+>  include/system/system.h |   1 +
+>  qemu-options.hx         |  51 +++++++++++++--
+>  system/qdev-monitor.c   | 139 +++++++++++++++++++++++++++++++++++++++-
+>  system/vl.c             |  39 +++++++++++
+>  13 files changed, 440 insertions(+), 5 deletions(-)
+
+Clue: no update to the QAPI schema, i.e. the QMP command does not exist.
+
+>
+> diff --git a/hmp-commands.hx b/hmp-commands.hx
+> index d0e4f35a30..18056cf21d 100644
+> --- a/hmp-commands.hx
+> +++ b/hmp-commands.hx
+> @@ -707,6 +707,36 @@ SRST
+>    or a QOM object path.
+>  ERST
+>=20=20
+> +{
+> +    .name       =3D "device_set",
+> +    .args_type  =3D "device:O",
+> +    .params     =3D "driver[,prop=3Dvalue][,...]",
+> +    .help       =3D "set/unset existing device property",
+> +    .cmd        =3D hmp_device_set,
+> +    .command_completion =3D device_set_completion,
+> +},
+> +
+> +SRST
+> +``device_set`` *driver[,prop=3Dvalue][,...]*
+> +  Change the administrative power state of an existing device.
+> +
+> +  This command enables or disables a known device (e.g., CPU) using the
+> +  "device_set" interface. It does not hotplug or add a new device.
+> +
+> +  Depending on platform support (e.g., PSCI or ACPI), this may trigger
+> +  corresponding operational changes =E2=80=94 such as powering down a CP=
+U or
+> +  transitioning it to active use.
+> +
+> +  Administrative state:
+> +    * *enabled*  =E2=80=94 Allows the guest to use the device (e.g., CPU=
+_ON)
+> +    * *disabled* =E2=80=94 Prevents guest use; device is powered off (e.=
+g., CPU_OFF)
+> +
+> +  Note: The device must already exist (be declared during machine creati=
+on).
+> +
+> +  Example:
+> +      (qemu) device_set host-arm-cpu,core-id=3D3,admin-state=3Ddisabled
+> +ERST
+
+How exactly is the device selected?  You provide a clue above: 'can be
+located by "id" or via driver+property match'.
+
+I assume by "id" is just like device_del, i.e. by qdev ID or QOM path.
+
+By "driver+property match" is not obvious.  Which of the arguments are
+for matching, and which are for setting?
+
+If "id" is specified, is there any matching?
+
+The matching feature complicates this interface quite a bit.  I doubt
+it's worth the complexity.  If you think it is, please split it off into
+a separate patch.
+
+Next question.  Is there a way for management applications to detect
+whether a certain device supports device_set for a certain property?
+
+Without that, what are management application supposed to do?  Hard-code
+what works?  Run the command and see whether it fails?
+
+I understand right now the command supports just "admin-state" for a
+certain set of devices, so hard-coding would be possible.  But every new
+(device, property) pair then requires management application updates,
+and the hard-coded information becomes version specific.  This will
+become unworkable real quick.  Not good enough for a command designed to
+be generic.
+
+> +
+>      {
+>          .name       =3D "cpu",
+>          .args_type  =3D "index:i",
+
+[...]
+
+> diff --git a/qemu-options.hx b/qemu-options.hx
+> index 83ccde341b..f517b91042 100644
+> --- a/qemu-options.hx
+> +++ b/qemu-options.hx
+> @@ -375,7 +375,10 @@ SRST
+>      This is different from CPU hotplug where additional CPUs are not even
+>      present in the system description. Administratively disabled CPUs ap=
+pear in
+>      ACPI tables i.e. are provisioned, but cannot be used until explicitly
+> -    enabled via QMP/HMP or the deviceset API.
+> +    enabled via QMP/HMP or the deviceset API. On ACPI guests, each vCPU =
+counted
+> +    by 'disabledcpus=3D' is provisioned with '\ ``_STA``\ ' reporting Pr=
+esent=3D1
+> +    and Enabled=3D0 (present-offline) at boot; it becomes Enabled=3D1 wh=
+en brought
+> +    online via 'device_set ... admin-state=3Denable'.
+>=20=20
+>      On boards supporting CPU hotplug, the optional '\ ``maxcpus``\ ' par=
+ameter
+>      can be set to enable further CPUs to be added at runtime. When both
+> @@ -455,6 +458,15 @@ SRST
+>=20=20
+>          -smp 2
+>=20=20
+> +    Note: The cluster topology will only be generated in ACPI and exposed
+> +    to guest if it's explicitly specified in -smp.
+> +
+> +    Note: Administratively disabled CPUs (specified via 'disabledcpus=3D=
+' and
+> +    '-deviceset' at CLI during boot) are especially useful for platforms=
+ like
+> +    ARM that lack native CPU hotplug support. These CPUs will appear to =
+the
+> +    guest as unavailable, and any attempt to bring them online must go t=
+hrough
+> +    QMP/HMP commands like 'device_set'.
+> +
+>      Examples using 'disabledcpus':
+>=20=20
+>      For a board without CPU hotplug, enable 4 CPUs at boot and provision
+> @@ -472,9 +484,6 @@ SRST
+>      ::
+>=20=20
+>          -smp cpus=3D4,disabledcpus=3D2,maxcpus=3D8
+> -
+> -    Note: The cluster topology will only be generated in ACPI and exposed
+> -    to guest if it's explicitly specified in -smp.
+>  ERST
+>=20=20
+>  DEF("numa", HAS_ARG, QEMU_OPTION_numa,
+> @@ -1281,6 +1290,40 @@ SRST
+>=20=20
+>  ERST
+>=20=20
+> +DEF("deviceset", HAS_ARG, QEMU_OPTION_deviceset,
+> +    "-deviceset driver[,prop[=3Dvalue]][,...]\n"
+> +    "                Set administrative power state of an existing devic=
+e.\n"
+> +    "                Does not hotplug a new device. Can disable or enabl=
+e\n"
+> +    "                devices (such as CPUs) at boot based on policy.\n"
+> +    "                Example:\n"
+> +    "                    -deviceset host-arm-cpu,core-id=3D2,admin-state=
+=3Ddisabled\n"
+> +    "                Use '-deviceset help' for supported drivers\n"
+> +    "                Use '-deviceset driver,help' for driver-specific pr=
+operties\n",
+> +    QEMU_ARCH_ALL)
+> +SRST
+> +``-deviceset driver[,prop[=3Dvalue]][,...]``
+> +    Configure an existing device's administrative power state or propert=
+ies.
+> +
+> +    Unlike ``-device``, this option does not create a new device. Instea=
+d,
+> +    it sets startup properties (such as administrative power state) for
+> +    a device already declared via -smp or other machine configuration.
+> +
+> +    Example:
+> +        -smp cpus=3D4
+> +        -deviceset host-arm-cpu,core-id=3D2,admin-state=3Ddisabled
+> +
+> +    The above disables CPU core 2 at boot using administrative offlining.
+> +    The guest may later re-enable the core (if permitted by platform pol=
+icy).
+> +
+> +    ``state=3Denabled|disabled``
+> +        Sets the administrative state of the device:
+> +        - ``enabled``: device is made available at boot
+> +        - ``disabled``: device is administratively disabled and powered =
+off
+> +
+> +    Use ``-deviceset help`` to view all supported drivers.
+> +    Use ``-deviceset driver,help`` for property-specific help.
+> +ERST
+> +
+>  DEF("name", HAS_ARG, QEMU_OPTION_name,
+>      "-name string1[,process=3Dstring2][,debug-threads=3Don|off]\n"
+>      "                set the name of the guest\n"
+> diff --git a/system/qdev-monitor.c b/system/qdev-monitor.c
+> index 2ac92d0a07..1099b1237d 100644
+> --- a/system/qdev-monitor.c
+> +++ b/system/qdev-monitor.c
+> @@ -263,12 +263,20 @@ static DeviceClass *qdev_get_device_class(const cha=
+r **driver, Error **errp)
+>      }
+>=20=20
+>      dc =3D DEVICE_CLASS(oc);
+> -    if (!dc->user_creatable) {
+> +    if (!dc->user_creatable && !dc->admin_power_state_supported) {
+>          error_setg(errp, QERR_INVALID_PARAMETER_VALUE, "driver",
+>                     "a pluggable device type");
+>          return NULL;
+>      }
+>=20=20
+> +    if (phase_check(PHASE_MACHINE_READY) &&
+> +        (!dc->hotpluggable || !dc->admin_power_state_supported)) {
+> +        error_setg(errp, QERR_INVALID_PARAMETER_VALUE, "driver",
+> +                   "a pluggable device type or which supports changing p=
+ower-"
+> +                   "state administratively");
+> +        return NULL;
+> +    }
+> +
+>      if (object_class_dynamic_cast(oc, TYPE_SYS_BUS_DEVICE)) {
+>          /* sysbus devices need to be allowed by the machine */
+>          MachineClass *mc =3D MACHINE_CLASS(object_get_class(qdev_get_mac=
+hine()));
+> @@ -939,6 +947,76 @@ void qmp_device_del(const char *id, Error **errp)
+>      }
+>  }
+>=20=20
+> +void qmp_device_set(const QDict *qdict, Error **errp)
+> +{
+> +    const char *state;
+> +    const char *driver;
+> +    DeviceState *dev;
+> +    DeviceClass *dc;
+> +    const char *id;
+> +
+> +    driver =3D qdict_get_try_str(qdict, "driver");
+> +    if (!driver) {
+> +        error_setg(errp, "Parameter 'driver' is missing");
+> +        return;
+> +    }
+> +
+> +    /* check driver exists and we are at the right phase of machine init=
+ */
+> +    dc =3D qdev_get_device_class(&driver, errp);
+> +    if (!dc) {
+
+Since qdev_get_device_class() sets an error when it fails, *errp is not
+null here, ...
+
+> +        error_setg(errp, "driver '%s' not supported", driver);
+
+... which makes this wrong.  Caught by error_setv()'s assertion.
+
+Please test your error paths.
+
+> +        return;
+> +    }
+> +
+> +    if (migration_is_running()) {
+> +        error_setg(errp, "device_set not allowed while migrating");
+> +        return;
+> +    }
+> +
+> +    id =3D qdict_get_try_str(qdict, "id");
+> +
+> +    if (id) {
+> +        /* Lookup by ID */
+> +        dev =3D find_device_state(id, false, errp);
+> +        if (errp && *errp) {
+> +            error_prepend(errp, "Device lookup failed for ID '%s': ", id=
+);
+> +            return;
+> +        }
+> +    } else {
+> +        /* Lookup using driver and properties */
+> +        dev =3D qdev_find_device(qdict, errp);
+> +        if (errp && *errp) {
+> +            error_prepend(errp, "Device lookup for %s failed: ", driver);
+> +            return;
+> +        }
+> +    }
+> +    if (!dev) {
+> +        error_set(errp, ERROR_CLASS_DEVICE_NOT_FOUND,
+> +                  "No device found for driver '%s'", driver);
+> +        return;
+> +    }
+> +
+> +    state =3D qdict_get_try_str(qdict, "admin-state");
+> +    if (!state) {
+> +        error_setg(errp, "no device state change specified for device %s=
+ ",
+> +                   dev->id);
+> +        return;
+> +    } else if (!strcmp(state, "enable")) {
+> +
+> +        if (!qdev_enable(dev, qdev_get_parent_bus(DEVICE(dev)), errp)) {
+> +            return;
+> +        }
+> +    } else if (!strcmp(state, "disable")) {
+> +        if (!qdev_disable(dev, qdev_get_parent_bus(DEVICE(dev)), errp)) {
+> +            return;
+> +        }
+> +    } else {
+> +        error_setg(errp, "unrecognized specified state *%s* for device %=
+s",
+> +                   state, dev->id);
+> +        return;
+> +    }
+> +}
+> +
+>  int qdev_sync_config(DeviceState *dev, Error **errp)
+>  {
+>      DeviceClass *dc =3D DEVICE_GET_CLASS(dev);
+
+[...]
+
 

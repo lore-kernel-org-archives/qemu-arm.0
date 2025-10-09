@@ -4,27 +4,27 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08C15CCA470
-	for <qemu-arm@archiver.kernel.org>; Thu,  9 Oct 2025 02:33:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F628CAC5BB
+	for <qemu-arm@archiver.kernel.org>; Thu,  9 Oct 2025 02:34:11 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v6gT6-0006Zv-O7; Wed, 08 Oct 2025 22:33:24 -0400
+	id 1v6gTq-0006k1-6A; Wed, 08 Oct 2025 22:34:10 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1v6gT4-0006Z9-CS; Wed, 08 Oct 2025 22:33:22 -0400
+ id 1v6gTo-0006jl-Vt; Wed, 08 Oct 2025 22:34:08 -0400
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1v6gT1-0007cH-MO; Wed, 08 Oct 2025 22:33:22 -0400
+ id 1v6gTm-0007cH-DI; Wed, 08 Oct 2025 22:34:08 -0400
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Thu, 9 Oct
- 2025 10:33:02 +0800
+ 2025 10:33:06 +0800
 Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
- Transport; Thu, 9 Oct 2025 10:33:02 +0800
+ Transport; Thu, 9 Oct 2025 10:33:06 +0800
 To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
  <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
@@ -32,10 +32,10 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  "open list:All patches CC here" <qemu-devel@nongnu.org>
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
  <kane_chen@aspeedtech.com>
-Subject: [PATCH v2 01/16] hw/arm/aspeed: Remove AspeedSoCState dependency from
- aspeed_uart_first() API
-Date: Thu, 9 Oct 2025 10:32:40 +0800
-Message-ID: <20251009023301.4085829-2-jamin_lin@aspeedtech.com>
+Subject: [PATCH v2 08/16] hw/arm/aspeed: Remove AspeedSoCState dependency from
+ aspeed_soc_uart_realize() API
+Date: Thu, 9 Oct 2025 10:32:47 +0800
+Message-ID: <20251009023301.4085829-9-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20251009023301.4085829-1-jamin_lin@aspeedtech.com>
 References: <20251009023301.4085829-1-jamin_lin@aspeedtech.com>
@@ -67,69 +67,257 @@ From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Refactor the aspeed_uart_first() helper to remove its dependency on
-AspeedSoCState and make the UART helper APIs more generic.
+Refactor aspeed_soc_uart_realize() to take MemoryRegion *, SerialMM *,
+and MMIO base addr instead of AspeedSoCState *, decoupling the helper
+from SoC state and making it reusable per-UART.
 
-The function now takes uarts_base as an integer parameter instead of
-requiring a full SoC class instance. Corresponding call sites in
-aspeed.c and aspeed_soc_common.c are updated accordingly.
+The helper now realizes a single UART instance and maps its MMIO.
+IRQ wiring and iteration over all UARTs are moved to callers.
+
+Update call sites in AST1030, AST2400, AST2600, AST27x0 SSP/TSP, and
+AST2700 to loop over UARTs, call the new helper, and connect IRQ via
+aspeed_soc_get_irq(sc->get_irq, s, uart).
+
+This simplifies the UART realize path and reduces cross-module coupling.
 
 No functional change.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 ---
- include/hw/arm/aspeed_soc.h | 6 +++---
- hw/arm/aspeed.c             | 2 +-
- hw/arm/aspeed_soc_common.c  | 2 +-
- 3 files changed, 5 insertions(+), 5 deletions(-)
+ include/hw/arm/aspeed_soc.h |  3 ++-
+ hw/arm/aspeed_ast10x0.c     | 10 ++++++++--
+ hw/arm/aspeed_ast2400.c     | 10 ++++++++--
+ hw/arm/aspeed_ast2600.c     | 10 ++++++++--
+ hw/arm/aspeed_ast27x0-ssp.c | 10 ++++++++--
+ hw/arm/aspeed_ast27x0-tsp.c | 10 ++++++++--
+ hw/arm/aspeed_ast27x0.c     | 10 ++++++++--
+ hw/arm/aspeed_soc_common.c  | 29 ++++++++++-------------------
+ 8 files changed, 60 insertions(+), 32 deletions(-)
 
 diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
-index ed32efb543..5786fbbcbb 100644
+index 427708c087..3cd9ad189f 100644
 --- a/include/hw/arm/aspeed_soc.h
 +++ b/include/hw/arm/aspeed_soc.h
-@@ -326,14 +326,14 @@ static inline int aspeed_uart_index(int uart_dev)
-     return uart_dev - ASPEED_DEV_UART0;
- }
+@@ -305,7 +305,8 @@ enum {
+ const char *aspeed_soc_cpu_type(const char * const *valid_cpu_types);
+ qemu_irq aspeed_soc_get_irq(qemu_irq (*fn)(void *ctx, int dev),
+                             void *ctx, int dev);
+-bool aspeed_soc_uart_realize(AspeedSoCState *s, Error **errp);
++bool aspeed_soc_uart_realize(MemoryRegion *memory, SerialMM *smm,
++                             const hwaddr addr, Error **errp);
+ void aspeed_soc_uart_set_chr(SerialMM *uart, int dev, int uarts_base,
+                              int uarts_num, Chardev *chr);
+ bool aspeed_soc_dram_init(AspeedSoCState *s, Error **errp);
+diff --git a/hw/arm/aspeed_ast10x0.c b/hw/arm/aspeed_ast10x0.c
+index 3ce866c66a..80e0da526c 100644
+--- a/hw/arm/aspeed_ast10x0.c
++++ b/hw/arm/aspeed_ast10x0.c
+@@ -193,6 +193,7 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
+     AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
+     DeviceState *armv7m;
+     Error *err = NULL;
++    int uart;
+     int i;
+     g_autofree char *sram_name = NULL;
  
--static inline int aspeed_uart_first(AspeedSoCClass *sc)
-+static inline int aspeed_uart_first(int uarts_base)
- {
--    return aspeed_uart_index(sc->uarts_base);
-+    return aspeed_uart_index(uarts_base);
- }
+@@ -317,8 +318,13 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
+                                 sc->irqmap[ASPEED_DEV_KCS] + aspeed_lpc_kcs_4));
  
- static inline int aspeed_uart_last(AspeedSoCClass *sc)
- {
--    return aspeed_uart_first(sc) + sc->uarts_num - 1;
-+    return aspeed_uart_first(sc->uarts_base) + sc->uarts_num - 1;
- }
+     /* UART */
+-    if (!aspeed_soc_uart_realize(s, errp)) {
+-        return;
++    for (i = 0, uart = sc->uarts_base; i < sc->uarts_num; i++, uart++) {
++        if (!aspeed_soc_uart_realize(s->memory, &s->uart[i],
++                                     sc->memmap[uart], errp)) {
++            return;
++        }
++        sysbus_connect_irq(SYS_BUS_DEVICE(&s->uart[i]), 0,
++                           aspeed_soc_get_irq(sc->get_irq, s, uart));
+     }
  
- #endif /* ASPEED_SOC_H */
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 6046ec0bb2..471ad7fb84 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -1310,7 +1310,7 @@ static void aspeed_set_bmc_console(Object *obj, const char *value, Error **errp)
-     AspeedMachineClass *amc = ASPEED_MACHINE_GET_CLASS(bmc);
-     AspeedSoCClass *sc = ASPEED_SOC_CLASS(object_class_by_name(amc->soc_name));
-     int val;
--    int uart_first = aspeed_uart_first(sc);
-+    int uart_first = aspeed_uart_first(sc->uarts_base);
-     int uart_last = aspeed_uart_last(sc);
+     /* Timer */
+diff --git a/hw/arm/aspeed_ast2400.c b/hw/arm/aspeed_ast2400.c
+index 2910c40807..33736a8988 100644
+--- a/hw/arm/aspeed_ast2400.c
++++ b/hw/arm/aspeed_ast2400.c
+@@ -252,6 +252,7 @@ static void aspeed_ast2400_soc_realize(DeviceState *dev, Error **errp)
+     AspeedSoCState *s = ASPEED_SOC(dev);
+     AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
+     g_autofree char *sram_name = NULL;
++    int uart;
  
-     if (sscanf(value, "uart%u", &val) != 1) {
+     /* Default boot region (SPI memory or ROMs) */
+     memory_region_init(&s->spi_boot_container, OBJECT(s),
+@@ -339,8 +340,13 @@ static void aspeed_ast2400_soc_realize(DeviceState *dev, Error **errp)
+                        aspeed_soc_get_irq(sc->get_irq, s, ASPEED_DEV_ADC));
+ 
+     /* UART */
+-    if (!aspeed_soc_uart_realize(s, errp)) {
+-        return;
++    for (i = 0, uart = sc->uarts_base; i < sc->uarts_num; i++, uart++) {
++        if (!aspeed_soc_uart_realize(s->memory, &s->uart[i],
++                                     sc->memmap[uart], errp)) {
++            return;
++        }
++        sysbus_connect_irq(SYS_BUS_DEVICE(&s->uart[i]), 0,
++                           aspeed_soc_get_irq(sc->get_irq, s, uart));
+     }
+ 
+     /* I2C */
+diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+index cd14dc95bb..80570698fb 100644
+--- a/hw/arm/aspeed_ast2600.c
++++ b/hw/arm/aspeed_ast2600.c
+@@ -363,6 +363,7 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
+     AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
+     qemu_irq irq;
+     g_autofree char *sram_name = NULL;
++    int uart;
+ 
+     /* Default boot region (SPI memory or ROMs) */
+     memory_region_init(&s->spi_boot_container, OBJECT(s),
+@@ -489,8 +490,13 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
+                        aspeed_soc_get_irq(sc->get_irq, s, ASPEED_DEV_ADC));
+ 
+     /* UART */
+-    if (!aspeed_soc_uart_realize(s, errp)) {
+-        return;
++    for (i = 0, uart = sc->uarts_base; i < sc->uarts_num; i++, uart++) {
++        if (!aspeed_soc_uart_realize(s->memory, &s->uart[i],
++                                     sc->memmap[uart], errp)) {
++            return;
++        }
++        sysbus_connect_irq(SYS_BUS_DEVICE(&s->uart[i]), 0,
++                           aspeed_soc_get_irq(sc->get_irq, s, uart));
+     }
+ 
+     /* I2C */
+diff --git a/hw/arm/aspeed_ast27x0-ssp.c b/hw/arm/aspeed_ast27x0-ssp.c
+index e63a4b3ad3..57dd588af4 100644
+--- a/hw/arm/aspeed_ast27x0-ssp.c
++++ b/hw/arm/aspeed_ast27x0-ssp.c
+@@ -165,6 +165,7 @@ static void aspeed_soc_ast27x0ssp_realize(DeviceState *dev_soc, Error **errp)
+     AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
+     DeviceState *armv7m;
+     g_autofree char *sram_name = NULL;
++    int uart;
+     int i;
+ 
+     if (!clock_has_source(s->sysclk)) {
+@@ -238,8 +239,13 @@ static void aspeed_soc_ast27x0ssp_realize(DeviceState *dev_soc, Error **errp)
+                         qdev_get_gpio_in(DEVICE(&a->intc[0].orgates[0]), i));
+     }
+     /* UART */
+-    if (!aspeed_soc_uart_realize(s, errp)) {
+-        return;
++    for (i = 0, uart = sc->uarts_base; i < sc->uarts_num; i++, uart++) {
++        if (!aspeed_soc_uart_realize(s->memory, &s->uart[i],
++                                     sc->memmap[uart], errp)) {
++            return;
++        }
++        sysbus_connect_irq(SYS_BUS_DEVICE(&s->uart[i]), 0,
++                           aspeed_soc_get_irq(sc->get_irq, s, uart));
+     }
+ 
+     aspeed_mmio_map_unimplemented(s->memory, SYS_BUS_DEVICE(&s->timerctrl),
+diff --git a/hw/arm/aspeed_ast27x0-tsp.c b/hw/arm/aspeed_ast27x0-tsp.c
+index 9537ce121c..28376b3338 100644
+--- a/hw/arm/aspeed_ast27x0-tsp.c
++++ b/hw/arm/aspeed_ast27x0-tsp.c
+@@ -165,6 +165,7 @@ static void aspeed_soc_ast27x0tsp_realize(DeviceState *dev_soc, Error **errp)
+     AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
+     DeviceState *armv7m;
+     g_autofree char *sram_name = NULL;
++    int uart;
+     int i;
+ 
+     if (!clock_has_source(s->sysclk)) {
+@@ -238,8 +239,13 @@ static void aspeed_soc_ast27x0tsp_realize(DeviceState *dev_soc, Error **errp)
+                         qdev_get_gpio_in(DEVICE(&a->intc[0].orgates[0]), i));
+     }
+     /* UART */
+-    if (!aspeed_soc_uart_realize(s, errp)) {
+-        return;
++    for (i = 0, uart = sc->uarts_base; i < sc->uarts_num; i++, uart++) {
++        if (!aspeed_soc_uart_realize(s->memory, &s->uart[i],
++                                     sc->memmap[uart], errp)) {
++            return;
++        }
++        sysbus_connect_irq(SYS_BUS_DEVICE(&s->uart[i]), 0,
++                           aspeed_soc_get_irq(sc->get_irq, s, uart));
+     }
+ 
+     aspeed_mmio_map_unimplemented(s->memory, SYS_BUS_DEVICE(&s->timerctrl),
+diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
+index 9a53f51ec5..de2b4277ce 100644
+--- a/hw/arm/aspeed_ast27x0.c
++++ b/hw/arm/aspeed_ast27x0.c
+@@ -688,6 +688,7 @@ static void aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
+     AspeedINTCClass *icio = ASPEED_INTC_GET_CLASS(&a->intc[1]);
+     g_autofree char *name = NULL;
+     qemu_irq irq;
++    int uart;
+ 
+     /* Default boot region (SPI memory or ROMs) */
+     memory_region_init(&s->spi_boot_container, OBJECT(s),
+@@ -789,8 +790,13 @@ static void aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
+                     sc->memmap[ASPEED_DEV_SCUIO]);
+ 
+     /* UART */
+-    if (!aspeed_soc_uart_realize(s, errp)) {
+-        return;
++    for (i = 0, uart = sc->uarts_base; i < sc->uarts_num; i++, uart++) {
++        if (!aspeed_soc_uart_realize(s->memory, &s->uart[i],
++                                     sc->memmap[uart], errp)) {
++            return;
++        }
++        sysbus_connect_irq(SYS_BUS_DEVICE(&s->uart[i]), 0,
++                           aspeed_soc_get_irq(sc->get_irq, s, uart));
+     }
+ 
+     /* FMC, The number of CS is set at the board level */
 diff --git a/hw/arm/aspeed_soc_common.c b/hw/arm/aspeed_soc_common.c
-index bc70e864fb..a4e74acdce 100644
+index 2bd872d9a6..6bb8ed730f 100644
 --- a/hw/arm/aspeed_soc_common.c
 +++ b/hw/arm/aspeed_soc_common.c
-@@ -62,7 +62,7 @@ bool aspeed_soc_uart_realize(AspeedSoCState *s, Error **errp)
- void aspeed_soc_uart_set_chr(AspeedSoCState *s, int dev, Chardev *chr)
+@@ -36,28 +36,19 @@ qemu_irq aspeed_soc_get_irq(qemu_irq (*fn)(void *ctx, int dev),
+     return fn(ctx, dev);
+ }
+ 
+-bool aspeed_soc_uart_realize(AspeedSoCState *s, Error **errp)
++bool aspeed_soc_uart_realize(MemoryRegion *memory, SerialMM *smm,
++                             const hwaddr addr, Error **errp)
  {
-     AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
--    int uart_first = aspeed_uart_first(sc);
-+    int uart_first = aspeed_uart_first(sc->uarts_base);
-     int uart_index = aspeed_uart_index(dev);
-     int i = uart_index - uart_first;
+-    AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
+-    SerialMM *smm;
+-
+-    for (int i = 0, uart = sc->uarts_base; i < sc->uarts_num; i++, uart++) {
+-        smm = &s->uart[i];
+-
+-        /* Chardev property is set by the machine. */
+-        qdev_prop_set_uint8(DEVICE(smm), "regshift", 2);
+-        qdev_prop_set_uint32(DEVICE(smm), "baudbase", 38400);
+-        qdev_set_legacy_instance_id(DEVICE(smm), sc->memmap[uart], 2);
+-        qdev_prop_set_uint8(DEVICE(smm), "endianness", DEVICE_LITTLE_ENDIAN);
+-        if (!sysbus_realize(SYS_BUS_DEVICE(smm), errp)) {
+-            return false;
+-        }
+-
+-        sysbus_connect_irq(SYS_BUS_DEVICE(smm), 0,
+-                           aspeed_soc_get_irq(sc->get_irq, s, uart));
+-        aspeed_mmio_map(s->memory, SYS_BUS_DEVICE(smm), 0, sc->memmap[uart]);
++    /* Chardev property is set by the machine. */
++    qdev_prop_set_uint8(DEVICE(smm), "regshift", 2);
++    qdev_prop_set_uint32(DEVICE(smm), "baudbase", 38400);
++    qdev_set_legacy_instance_id(DEVICE(smm), addr, 2);
++    qdev_prop_set_uint8(DEVICE(smm), "endianness", DEVICE_LITTLE_ENDIAN);
++    if (!sysbus_realize(SYS_BUS_DEVICE(smm), errp)) {
++        return false;
+     }
+ 
++    aspeed_mmio_map(memory, SYS_BUS_DEVICE(smm), 0, addr);
+     return true;
+ }
  
 -- 
 2.43.0

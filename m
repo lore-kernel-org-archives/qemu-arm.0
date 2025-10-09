@@ -4,117 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C803BCCD187
-	for <qemu-arm@archiver.kernel.org>; Thu,  9 Oct 2025 11:34:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05211CCD187
+	for <qemu-arm@archiver.kernel.org>; Thu,  9 Oct 2025 11:53:19 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v6ouv-0004rb-Lb; Thu, 09 Oct 2025 07:34:41 -0400
+	id 1v6pC6-0004Gq-0X; Thu, 09 Oct 2025 07:52:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1v6our-0004o3-3C; Thu, 09 Oct 2025 07:34:37 -0400
-Received: from 7.mo548.mail-out.ovh.net ([46.105.33.25])
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1v6pC4-0004GK-8B
+ for qemu-arm@nongnu.org; Thu, 09 Oct 2025 07:52:24 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1v6oum-0004GL-74; Thu, 09 Oct 2025 07:34:35 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.110.0.106])
- by mo548.mail-out.ovh.net (Postfix) with ESMTPS id 4cj77h0Svwz5xL3;
- Thu,  9 Oct 2025 11:34:23 +0000 (UTC)
-Received: from kaod.org (37.59.142.96) by DAG8EX2.mxp5.local (172.16.2.72)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.59; Thu, 9 Oct
- 2025 13:34:21 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-96R0018d25e0da-97f2-4ae4-8970-232277aa75f7,
- 0ABBE769FBEA5341A3875E1E3E57BEA7B23E4658) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <326472bf-4242-4d05-bca5-b0066b48c541@kaod.org>
-Date: Thu, 9 Oct 2025 13:34:21 +0200
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1v6pBz-0006Rl-RW
+ for qemu-arm@nongnu.org; Thu, 09 Oct 2025 07:52:22 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1760010733;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=4c7uVSn+Kn6G+Dn/w/q6K1P6gCgJrQWomLtdvAQhYcA=;
+ b=OyJokswXwz79AGvmoQPH9ZxFYEWcP3h0bDG4CX4xybPAg4kx7Xh+kQErlzlgb1qB7jyIYf
+ yWO3GMVmAMKMOZh0dtwPC4CdK982pzZ67WBhzdZwgmL9Wh7kwprRb2S6f9g8KlQIAWRSwY
+ 3N6QvmVP8gwpYDJrYbDU0jy9m5qv3CE=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-635-YcvYj-jkM9eNF6I6Hgo07g-1; Thu,
+ 09 Oct 2025 07:52:09 -0400
+X-MC-Unique: YcvYj-jkM9eNF6I6Hgo07g-1
+X-Mimecast-MFC-AGG-ID: YcvYj-jkM9eNF6I6Hgo07g_1760010725
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id C74C4195604F; Thu,  9 Oct 2025 11:52:03 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.45.242.6])
+ by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 512AB30001B7; Thu,  9 Oct 2025 11:52:00 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 8525321E6A27; Thu, 09 Oct 2025 13:51:57 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: salil.mehta@opnsrc.net
+Cc: qemu-devel@nongnu.org,  qemu-arm@nongnu.org,  mst@redhat.com,
+ salil.mehta@huawei.com,  maz@kernel.org,  jean-philippe@linaro.org,
+ jonathan.cameron@huawei.com,  lpieralisi@kernel.org,
+ peter.maydell@linaro.org,  richard.henderson@linaro.org,
+ imammedo@redhat.com,  andrew.jones@linux.dev,  david@redhat.com,
+ philmd@linaro.org,  eric.auger@redhat.com,  will@kernel.org,
+ ardb@kernel.org,  oliver.upton@linux.dev,  pbonzini@redhat.com,
+ gshan@redhat.com,  rafael@kernel.org,  borntraeger@linux.ibm.com,
+ alex.bennee@linaro.org,  gustavo.romero@linaro.org,  npiggin@gmail.com,
+ harshpb@linux.ibm.com,  linux@armlinux.org.uk,
+ darren@os.amperecomputing.com,  ilkka@os.amperecomputing.com,
+ vishnu@os.amperecomputing.com,  gankulkarni@os.amperecomputing.com,
+ karl.heubaum@oracle.com,  miguel.luis@oracle.com,  zhukeqian1@huawei.com,
+ wangxiongfeng2@huawei.com,  wangyanan55@huawei.com,
+ wangzhou1@hisilicon.com,  linuxarm@huawei.com,  jiakernel2@gmail.com,
+ maobibo@loongson.cn,  lixianglai@loongson.cn,  shahuang@redhat.com,
+ zhao1.liu@intel.com
+Subject: Re: [PATCH RFC V6 02/24] hw/core, qemu-options.hx: Introduce
+ 'disabledcpus' SMP parameter
+In-Reply-To: <20251001010127.3092631-3-salil.mehta@opnsrc.net> (salil mehta's
+ message of "Wed, 1 Oct 2025 01:01:05 +0000")
+References: <20251001010127.3092631-1-salil.mehta@opnsrc.net>
+ <20251001010127.3092631-3-salil.mehta@opnsrc.net>
+Date: Thu, 09 Oct 2025 13:51:57 +0200
+Message-ID: <87ikgoqoma.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [SPAM] [PATCH v2 00/16] Introduce AspeedCoprocessor class and
- base implementation
-To: Jamin Lin <jamin_lin@aspeedtech.com>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, Joel
- Stanley <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-CC: <troy_lee@aspeedtech.com>, <kane_chen@aspeedtech.com>
-References: <20251009023301.4085829-1-jamin_lin@aspeedtech.com>
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Content-Language: en-US, fr
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <20251009023301.4085829-1-jamin_lin@aspeedtech.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [37.59.142.96]
-X-ClientProxiedBy: DAG3EX2.mxp5.local (172.16.2.22) To DAG8EX2.mxp5.local
- (172.16.2.72)
-X-Ovh-Tracer-GUID: 3a573b4d-f33e-4778-b5c3-0ae125f6645b
-X-Ovh-Tracer-Id: 11366803986204101554
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTFZIliC4rtRc7GPWHR+UrUILm7lcoBUU0+RMJCNMS/KX7uFl50xZYzSjXkmmpTRMKBAozmyWEGaH7aUUACDVWZBa3h81B31tGDZ8GSWLSc5fTbtsRdLBar8t1fBz5symPpLXRIbdEOk7UJ7iJYANF7uzqbQSL44xIs4yOWkOp2tcKyIav7/yjR9HwpFidU1A3gj0nBep7463qMK7WSGiU2Yd4Giw1nPK3KhheVH83vs6KS/EU5Zjk9a70CGIaa6MIYWzxiLliphz5jQk/CUxOp816/XMSxYtDT9C4U9/cOU5KBNcY36937hl1cVYhdQEza6K+JDIGQItTtzNuLPHp+NH85iHfko4kid2Y9xuFfL2wsrjIi5KHrbKd4WeSH9cd/uhBs2QHWkST8In51caEqM3wM8xw+0AMS7mUdIU1y3NFbAlQdAU5XO/2cxCeKzWo90ebKykj3v8LAjC/MzAj2A/g/jiMZbHDRgAC7iUnKHo6Ve5cPaTDK2+Da5N5/jJYN5pgZ1mFgZjgWGEgQgv0zeMLKQG2beraPLVUSBoSsSJZQ+QVVZi84EDd9moUq5aV2MpOvAiS4OC+KcCA1vWhgVpIpGwhNV8Jjgae+YEUDl8Y1eXa6bgWQYkJ7HCti/6KVbgNQymM3uvHQTnUCvhVDumkw0mCuhvRjtH1L3tdZqUg
-DKIM-Signature: a=rsa-sha256; bh=nk+40nzDkcPjPHK4QxuEV2jMJGZsMxwitxFHRbcdXcI=; 
- c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1760009665; v=1;
- b=u538e7e4M3T0iE1HQRCYYoxP7BeVGCjcnllLosRa5ssUYBrC/LsQav/c6NhCVi1nyG4Zva9a
- l8QPl6xad+lko9X93ZPX3T+DN31yI6VrZGOFFFLg/M5/Z1naAbMvCyJRFpKxPEvrI4JMtGlcZ+M
- PVyu68nSD4IAuh8hoKJ7nzUTI2naFvofIi/y6GRIOc23eeayUfIfvZ98kpWZ2nBcMyQdxbgKU7z
- rNAIhxZ5rtvi1pJQMPeHCUWSqix0XJOLYX3gDA4encws2X2KXC1jcqP/JZ+imQdQIYoMqvfFn40
- PimqYbIAoZBGudqgLYf1RkATIUnOviQqJmdxY6384v1Hg==
-Received-SPF: pass client-ip=46.105.33.25; envelope-from=clg@kaod.org;
- helo=7.mo548.mail-out.ovh.net
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.438,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -130,77 +104,248 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Jamin,
+salil.mehta@opnsrc.net writes:
 
-On 10/9/25 04:32, Jamin Lin wrote:
-> v1:
->    1. Remove AspeedSoCState dependency from aspeed_uart_first, aspeed_uart_last,
->       aspeed_soc_uart_set_chr, aspeed_soc_cpu_type, aspeed_mmio_map,
->       aspeed_mmio_map_unimplemented, aspeed_soc_get_irq, and
->       aspeed_soc_uart_realize APIs.
->    2. Introduce AspeedCoprocessor class and base implementation
-> 
-> v2:
->    Fix the "make check" failure.
+> From: Salil Mehta <salil.mehta@huawei.com>
+>
+> Add support for a new SMP configuration parameter, 'disabledcpus', which
+> specifies the number of additional CPUs that are present in the virtual
+> machine but administratively disabled at boot. These CPUs are visible in
+> firmware (e.g. ACPI tables) yet unavailable to the guest until explicitly
+> enabled via QMP/HMP, or via the 'device_set' API (introduced in later
+> patches).
+>
+> This feature is intended for architectures that lack native CPU hotplug
+> support but can change the administrative power state of present CPUs.
+> It allows simulating CPU hot-add=E2=80=93like scenarios while all CPUs re=
+main
+> physically present in the topology at boot time.
+>
+> Note: ARM is the first architecture to support this concept.
+>
+> Changes include:
+>  - Extend CpuTopology with a 'disabledcpus' field.
+>  - Update machine_parse_smp_config() to account for disabled CPUs when
+>    computing 'cpus' and 'maxcpus'.
+>  - Update SMPConfiguration in QAPI to accept 'disabledcpus'.
+>  - Extend -smp option documentation to describe 'disabledcpus' usage and
+>    behavior.
+>
+> Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
 
+[...]
 
-A part from patch 7, the changes look good.
+> diff --git a/qapi/machine.json b/qapi/machine.json
+> index 038eab281c..e45740da33 100644
+> --- a/qapi/machine.json
+> +++ b/qapi/machine.json
+> @@ -1634,6 +1634,8 @@
+>  #
+>  # @cpus: number of virtual CPUs in the virtual machine
+>  #
+> +# @disabledcpus: number of additional present but disabled(or offline) C=
+PUs
+> +#
+>  # @maxcpus: maximum number of hotpluggable virtual CPUs in the virtual
+>  #     machine
+>  #
+> @@ -1657,6 +1659,7 @@
+>  ##
+>  { 'struct': 'SMPConfiguration', 'data': {
+>       '*cpus': 'int',
+> +     '*disabledcpus': 'int',
+>       '*drawers': 'int',
+>       '*books': 'int',
+>       '*sockets': 'int',
 
+We prefer words-with-dashes to wordsruntogether in QAPI/QMP, for
+readability: disabled-cpus.
 
-Thanks,
+Missing here even before the patch: how these values are related.  That
+information appears to be buried in machine_parse_smp_config(), which is
+160 lines long and with too many conditionals for me to make sense of
+now.
 
-C.
+> diff --git a/qemu-options.hx b/qemu-options.hx
+> index ab23f14d21..83ccde341b 100644
+> --- a/qemu-options.hx
+> +++ b/qemu-options.hx
+> @@ -326,12 +326,15 @@ SRST
+>  ERST
+>=20=20
+>  DEF("smp", HAS_ARG, QEMU_OPTION_smp,
+> -    "-smp [[cpus=3D]n][,maxcpus=3Dmaxcpus][,drawers=3Ddrawers][,books=3D=
+books][,sockets=3Dsockets]\n"
+> -    "               [,dies=3Ddies][,clusters=3Dclusters][,modules=3Dmodu=
+les][,cores=3Dcores]\n"
+> -    "               [,threads=3Dthreads]\n"
+> -    "                set the number of initial CPUs to 'n' [default=3D1]=
+\n"
+> -    "                maxcpus=3D maximum number of total CPUs, including\=
+n"
+> -    "                offline CPUs for hotplug, etc\n"
+> +    "-smp [[cpus=3D]n][,disabledcpus=3Ddisabledcpus][,maxcpus=3Dmaxcpus]=
+[,drawers=3Ddrawers][,books=3Dbooks]\n"
+> +    "               [,sockets=3Dsockets][,dies=3Ddies][,clusters=3Dclust=
+ers][,modules=3Dmodules]\n"
+> +    "               [,cores=3Dcores][,threads=3Dthreads]\n"
+> +    "                set the initial number of CPUs present and\n"
+> +    "                  administratively enabled at boot time to 'n' [def=
+ault=3D1]\n"
+> +    "                disabledcpus=3D number of present but administrativ=
+ely\n"
+> +    "                  disabled CPUs (unavailable to the guest at boot)\=
+n"
+> +    "                maxcpus=3D maximum total CPUs (present + hotpluggab=
+le)\n"
+> +    "                  on machines without CPU hotplug, defaults to n + =
+disabledcpus\n"
+>      "                drawers=3D number of drawers on the machine board\n"
+>      "                books=3D number of books in one drawer\n"
+>      "                sockets=3D number of sockets in one book\n"
+> @@ -351,22 +354,49 @@ DEF("smp", HAS_ARG, QEMU_OPTION_smp,
+>      "      For a particular machine type board, an expected CPU topology=
+ hierarchy\n"
+>      "      can be defined through the supported sub-option. Unsupported =
+parameters\n"
+>      "      can also be provided in addition to the sub-option, but their=
+ values\n"
+> -    "      must be set as 1 in the purpose of correct parsing.\n",
+> +    "      must be set as 1 in the purpose of correct parsing.\n"
+> +    "                                                          \n"
+> +    "      Administratively disabled CPUs: Some machine types do not sup=
+port vCPU\n"
+> +    "      hotplug but their CPUs can be marked disabled (powered off) a=
+nd kept\n"
+> +    "      unavailable to the guest. Later, such CPUs can be enabled via=
+ QMP/HMP\n"
+> +    "      (e.g., 'device_set ... admin-state=3Denable'). This is simila=
+r to hotplug,\n"
+> +    "      except all disabled CPUs are already present at boot. Useful =
+on\n"
+> +    "      architectures that lack architectural CPU hotplug.\n",
+>      QEMU_ARCH_ALL)
+>  SRST
+> -``-smp [[cpus=3D]n][,maxcpus=3Dmaxcpus][,drawers=3Ddrawers][,books=3Dboo=
+ks][,sockets=3Dsockets][,dies=3Ddies][,clusters=3Dclusters][,modules=3Dmodu=
+les][,cores=3Dcores][,threads=3Dthreads]``
+> -    Simulate a SMP system with '\ ``n``\ ' CPUs initially present on
+> -    the machine type board. On boards supporting CPU hotplug, the option=
+al
+> -    '\ ``maxcpus``\ ' parameter can be set to enable further CPUs to be
+> -    added at runtime. When both parameters are omitted, the maximum numb=
+er
+> +``-smp [[cpus=3D]n][,disabledcpus=3Ddisabledcpus][,maxcpus=3Dmaxcpus][,d=
+rawers=3Ddrawers][,books=3Dbooks][,sockets=3Dsockets][,dies=3Ddies][,cluste=
+rs=3Dclusters][,modules=3Dmodules][,cores=3Dcores][,threads=3Dthreads]``
+> +    Simulate a SMP system with '\ ``n``\ ' CPUs initially present & enab=
+led on
+> +    the machine type board. Furthermore, on architectures that support c=
+hanging
+> +    the administrative power state of CPUs, optional '\ ``disabledcpus``=
+\ '
+> +    parameter specifies *additional* CPUs that are present in firmware (=
+e.g.,
+> +    ACPI) but are administratively disabled (i.e., not usable by the gue=
+st at
+> +    boot time).
+> +
+> +    This is different from CPU hotplug where additional CPUs are not even
+> +    present in the system description. Administratively disabled CPUs ap=
+pear in
+> +    ACPI tables i.e. are provisioned, but cannot be used until explicitly
+> +    enabled via QMP/HMP or the deviceset API.
+> +
+> +    On boards supporting CPU hotplug, the optional '\ ``maxcpus``\ ' par=
+ameter
+> +    can be set to enable further CPUs to be added at runtime. When both
+> +    '\ ``n``\ ' & '\ ``maxcpus``\ ' parameters are omitted, the maximum =
+number
+>      of CPUs will be calculated from the provided topology members and the
+> -    initial CPU count will match the maximum number. When only one of th=
+em
+> -    is given then the omitted one will be set to its counterpart's value.
+> -    Both parameters may be specified, but the maximum number of CPUs must
+> -    be equal to or greater than the initial CPU count. Product of the
+> -    CPU topology hierarchy must be equal to the maximum number of CPUs.
+> -    Both parameters are subject to an upper limit that is determined by
+> -    the specific machine type chosen.
+> +    initial CPU count will match the maximum number. When only one of th=
+em is
+> +    given then the omitted one will be set to its counterpart's value. B=
+oth
+> +    parameters may be specified, but the maximum number of CPUs must be =
+equal
+> +    to or greater than the initial CPU count. Product of the CPU topology
+> +    hierarchy must be equal to the maximum number of CPUs. Both paramete=
+rs are
+> +    subject to an upper limit that is determined by the specific machine=
+ type
+> +    chosen. Boards that support administratively disabled CPUs but do *n=
+ot*
+> +    support CPU hotplug derive the maximum number of CPUs implicitly:
+> +    '\ ``maxcpus``\ ' is treated as '\ ``n + disabledcpus``\ ' (the tota=
+l CPUs
+> +    present in firmware). If '\ ``maxcpus``\ ' is provided, it must equal
+> +    '\ ``n + disabledcpus``\ '. The topology product must equal this der=
+ived
+> +    maximum as well.
+> +
+> +    Note: Administratively disabled CPUs will appear to the guest as
+> +    unavailable, and any attempt to bring them online must go through QM=
+P/HMP
+> +    commands like 'device_set'.
+>=20=20
+>      To control reporting of CPU topology information, values of the topo=
+logy
+>      parameters can be specified. Machines may only support a subset of t=
+he
+> @@ -425,6 +455,24 @@ SRST
+>=20=20
+>          -smp 2
+>=20=20
+> +    Examples using 'disabledcpus':
+> +
+> +    For a board without CPU hotplug, enable 4 CPUs at boot and provision
+> +    2 additional administratively disabled CPUs (maximum is derived
+> +    implicitly as 6 =3D 4 + 2):
+> +
+> +    ::
+> +
+> +        -smp cpus=3D4,disabledcpus=3D2
+> +
+> +    For a board that supports CPU hotplug and 'disabledcpus', enable 4 C=
+PUs
+> +    at boot, provision 2 administratively disabled CPUs, and allow hotpl=
+ug of
+> +    2 more CPUs (for a maximum of 8):
+> +
+> +    ::
+> +
+> +        -smp cpus=3D4,disabledcpus=3D2,maxcpus=3D8
+> +
 
+So, maxcpus =3D cpus + disabledcpus?
 
+Is drawers * books * sockets * dies * clusters * modules * cores *
+threads equal or greater than maxcpus?
 
-> Jamin Lin (16):
->    hw/arm/aspeed: Remove AspeedSoCState dependency from
->      aspeed_uart_first() API
->    hw/arm/aspeed: Remove AspeedSoCClass dependency from
->      aspeed_uart_last() API
->    hw/arm/aspeed: Remove AspeedSoCState dependency from
->      aspeed_soc_uart_set_chr() API
->    hw/arm/aspeed: Remove AspeedSoCClass dependency from
->      aspeed_soc_cpu_type() API
->    hw/arm/aspeed: Remove AspeedSoCState dependency from aspeed_mmio_map()
->      API
->    hw/arm/aspeed: Remove AspeedSoCState dependency from
->      aspeed_mmio_map_unimplemented() API
->    hw/arm/aspeed: Remove AspeedSoCState dependency from
->      aspeed_soc_get_irq() API
->    hw/arm/aspeed: Remove AspeedSoCState dependency from
->      aspeed_soc_uart_realize() API
->    hw/arm/aspeed: Introduce AspeedCoprocessor class and base
->      implementation
->    hw/arm/aspeed_ast27x0-ssp: Make AST27x0 SSP inherit from
->      AspeedCoprocessor instead of AspeedSoC
->    hw/arm/aspeed_ast27x0-tsp: Make AST27x0 TSP inherit from
->      AspeedCoprocessor instead of AspeedSoC
->    hw/arm/aspeed_ast27x0-ssp: Change to use Aspeed27x0CoprocessorState
->    hw/arm/aspeed_ast27x0-tsp: Change to use Aspeed27x0CoprocessorState
->    hw/arm/aspeed_ast27x0-ssp: Rename type to
->      TYPE_ASPEED27X0SSP_COPROCESSOR
->    hw/arm/aspeed_ast27x0-tsp: Rename type to
->      TYPE_ASPEED27X0TSP_COPROCESSOR
->    hw/arm/aspeed_ast27x0-{ssp,tsp}: Fix coding style
-> 
->   include/hw/arm/aspeed_coprocessor.h |  62 ++++++++++++++
->   include/hw/arm/aspeed_soc.h         |  51 ++++-------
->   hw/arm/aspeed.c                     |  10 ++-
->   hw/arm/aspeed_ast10x0.c             |  92 ++++++++++++--------
->   hw/arm/aspeed_ast2400.c             |  97 ++++++++++++---------
->   hw/arm/aspeed_ast2600.c             | 126 +++++++++++++++++-----------
->   hw/arm/aspeed_ast27x0-fc.c          |  33 +++++---
->   hw/arm/aspeed_ast27x0-ssp.c         |  73 ++++++++--------
->   hw/arm/aspeed_ast27x0-tsp.c         |  73 ++++++++--------
->   hw/arm/aspeed_ast27x0.c             | 109 +++++++++++++-----------
->   hw/arm/aspeed_coprocessor_common.c  |  49 +++++++++++
->   hw/arm/aspeed_soc_common.c          |  63 +++++++-------
->   hw/arm/fby35.c                      |  10 ++-
->   hw/arm/meson.build                  |   7 +-
->   14 files changed, 524 insertions(+), 331 deletions(-)
->   create mode 100644 include/hw/arm/aspeed_coprocessor.h
->   create mode 100644 hw/arm/aspeed_coprocessor_common.c
-> 
+>      Note: The cluster topology will only be generated in ACPI and exposed
+>      to guest if it's explicitly specified in -smp.
+>  ERST
+> diff --git a/system/vl.c b/system/vl.c
+> index 3b7057e6c6..2f0fd21a1f 100644
+> --- a/system/vl.c
+> +++ b/system/vl.c
+> @@ -736,6 +736,9 @@ static QemuOptsList qemu_smp_opts =3D {
+>          {
+>              .name =3D "cpus",
+>              .type =3D QEMU_OPT_NUMBER,
+> +        }, {
+> +            .name =3D "disabledcpus",
+> +            .type =3D QEMU_OPT_NUMBER,
+>          }, {
+>              .name =3D "drawers",
+>              .type =3D QEMU_OPT_NUMBER,
 
 

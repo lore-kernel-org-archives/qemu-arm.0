@@ -4,124 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7391BCCD183
-	for <qemu-arm@archiver.kernel.org>; Fri, 10 Oct 2025 03:17:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0CD0CAC5BB
+	for <qemu-arm@archiver.kernel.org>; Fri, 10 Oct 2025 03:22:20 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v73c2-00023M-9s; Thu, 09 Oct 2025 23:16:10 -0400
+	id 1v73hb-0003Y9-Ho; Thu, 09 Oct 2025 23:21:55 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <salil.mehta@opnsrc.net>)
- id 1v73c1-000231-1t
- for qemu-arm@nongnu.org; Thu, 09 Oct 2025 23:16:09 -0400
-Received: from mail-oa1-x30.google.com ([2001:4860:4864:20::30])
+ id 1v73ha-0003Xz-LQ
+ for qemu-arm@nongnu.org; Thu, 09 Oct 2025 23:21:54 -0400
+Received: from mail-oo1-xc2c.google.com ([2607:f8b0:4864:20::c2c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <salil.mehta@opnsrc.net>)
- id 1v73bv-0007QR-RI
- for qemu-arm@nongnu.org; Thu, 09 Oct 2025 23:16:08 -0400
-Received: by mail-oa1-x30.google.com with SMTP id
- 586e51a60fabf-30cce872d9cso1121514fac.1
- for <qemu-arm@nongnu.org>; Thu, 09 Oct 2025 20:16:01 -0700 (PDT)
+ id 1v73hX-00085b-M8
+ for qemu-arm@nongnu.org; Thu, 09 Oct 2025 23:21:54 -0400
+Received: by mail-oo1-xc2c.google.com with SMTP id
+ 006d021491bc7-648746b05ecso487611eaf.0
+ for <qemu-arm@nongnu.org>; Thu, 09 Oct 2025 20:21:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=opnsrc.net; s=google; t=1760066157; x=1760670957; darn=nongnu.org;
+ d=opnsrc.net; s=google; t=1760066506; x=1760671306; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=WrGY7pQhf7viHLOc4nGJ3PBr/8dvl3VzOqhYCDsy3i0=;
- b=eQ/vrQj3IEhGQjxuPhDYvolfJ0uhBYXvKYdyzVL7JHYNaGqTNZkxrJwUbeGOjfX7Jy
- Ad46uZqsD3QutlGXZTi0HHO+ddQbSqXZnXX1GX+QZ6jLqU1aQRLw6WEmmoPmr+sGxVbn
- GtlCp7iUISMrw59PZ6BmiYNIOFbniKjCun76kFRevpBKPmmVqivL9duR9hroF35i1dIV
- JKtbkqismdZjlmieF6CGLHVnyp4i/wFfrJcVfGB5lVgGsARVNdQNrDrPwPMQFclwqZqE
- 3hwCRym4HdTJ6cRTcD25cDjW7aIGjMH1McFFVbgptqLfwSRA8+j66cqD53d1qjcQfpxZ
- 8u5A==
+ bh=EGUCbquu7MKyc+ExilLriCce2z2XG0aQ6PXI2Lj1xe8=;
+ b=R3cKw9EnmsGhYRQIRYnM43Kio403TdydUG6yY7TfFsq2MQStBRnvx/Az7Dqszq9e2+
+ RMRolUJgrqCYB9eOiziCOty5r+GkQ2+7OUNfX4nKlSMDwlcasrwnyWZE3by/mleJYvAZ
+ RfhQQC0vu9GHqmFO9aK/cXYBqp/X/UKqUH3FZBm/YWRA80Mobnu8lEZu7Yrs1Nz79Q5d
+ eQ2Fpl5JmUc6XUnKHDECTRhtYf3BUoGZaQAwkUUvFzb5wLnRxPZtBQibPqU8pJiewtSB
+ I0zKb4792JT8G+RHJcLGy1Uz/AngpW/u6HEHRKB3vEl30LGUFQaxnQU3CItAzTjEH0X5
+ YX2g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1760066157; x=1760670957;
+ d=1e100.net; s=20230601; t=1760066506; x=1760671306;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=WrGY7pQhf7viHLOc4nGJ3PBr/8dvl3VzOqhYCDsy3i0=;
- b=kf1QnK3QEr53BvXqy1uRFqMLMmOd6hwKSDzSbhMz9U97GRsZmRuh01vtavSCaPmEn0
- HshFvDs+JO1fHa+BZlLwZAlEAIdN2mq1V5txZM6rB6IzemmufBFddsEQz7FX4sEN/Mfo
- 14kIkC684oJKWzzM6HPz+TtwKckSPKdNWSyIj1gOpxGPWcNHXP2KFg+KmOrhQaa06LeO
- +ybKd8x4/0V8S0WIT9c/TVjVXFb+S784L1Hg/vjVOsOVBdgdNnKPcimTzjuWpt2Zp/SJ
- ZfSlqYWSXCKPP5Ytj8xmP/ZM+8H6VfHN0vJH5QtJGo+wTdaQxXJX7ftGPofdcpFw4b0g
- fQcA==
+ bh=EGUCbquu7MKyc+ExilLriCce2z2XG0aQ6PXI2Lj1xe8=;
+ b=Ww7DG92RzXBIaSzv0GU97//m10BF1qa02iyJ0BPzGmFypbhMmp9ehpgwiBKXCLbpi0
+ z2OQMfD0XM97nSnq26j48l2pjyCg0QAQvrcgNhsOd1Mjeud6xeHQXyxSRDzMMtmlQywN
+ jbmyJasr8TEh4o84FLj168pUsiM0EfCwhMX0BKpzxtwZRQb2k9pYbcck0RmIahUCyep5
+ iGYzh6y94bSgcbUQPb/X3IroQj016GifXYiDBfrBZImu0XuGSqtPuhmvEg79MYsadEQF
+ /FIgfXCZMr6faHN8wLPiLLs1oXO85QEal1Nu/kIc5Mt4HCyxHsUyKHikCYN9cimRl6N0
+ GIlA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCV/gQzEbN0cG0aRaK/FBj5jCt/AjeODcLJ30IYLYrN6B26SfVAYPhJfKixu5HyKwesejh4Y25aHkw==@nongnu.org
-X-Gm-Message-State: AOJu0YxnluNHL3i0zuouk34r9I9c/tci9xt1+PC2bdFP+fg/vC6annoI
- +yI11j2KHLXR7eG8z6QMVtPmWSSIBIteWOf7osczPNAVMqZhdgZfSzcONV0tUAoVqWIs0/G1FAR
- /LiV8jvYZtj66wE9xK33IRUu2w/LXshmb3QB529vkpw==
-X-Gm-Gg: ASbGnctDKzmOQrWwTpCRZUjyYvonF097UUcsTHt/zuyj3Gs5eY2UPcZJr7T5qoS9MIQ
- Je3EClvAQ7qL0UBziYshsl305XbQxj7xvbp57IjtyAv/v/0hxNBaqjURr6afpB8dR9Q5E45km+5
- i4RVC9qgWMAAOlLug10edEFEN4XXz1PCV1+DAA8By0Xg8s8j5AnOC01zij9Ypy8tOd28IvF6kH5
- kWyN5hYLLw4EvLpu7P+KGKYccQK+fP1UqDZ/ur7sDH0mWN6PbFDHG1CO7CTy3Zyq3/kSAMUaaSe
- AkQAW/geI2Iy6pX4GQ==
-X-Google-Smtp-Source: AGHT+IGbs5CZdj+DkHVuGVM2+H2z53v0R3MBIlNeKwAxLSM8QeG9b3xvC6SH7x78L2aDl/ZxKV//jVg7k4Gwr98FcKk=
-X-Received: by 2002:a05:6870:8114:b0:36d:535f:830c with SMTP id
- 586e51a60fabf-3c0f6af2706mr4476494fac.17.1760066156490; Thu, 09 Oct 2025
- 20:15:56 -0700 (PDT)
+ AJvYcCWSvTgva4fZzQr2aJJL9WB0WnC9ymhHFDXCSoYv9FQgHUUIbQTC1xwmHJucUGJh5fdYlnOjYwK80g==@nongnu.org
+X-Gm-Message-State: AOJu0Yx/EZTywTGiBiszz+0CU9VNNiq/p9wxUYYaVZ12X7oG72tpgrMY
+ ZdhZjoiVBEhUmFkBesQDIi0eUN5iFWUGDASqYbV08bIliCEkt7ecWrYzZ7j9IS4FknVMLnE1zVY
+ YYbYDxe3zGEu35LGcGAqVVJ1x/cAQAM6AUAkozLKzIA==
+X-Gm-Gg: ASbGncuxzaowsgKAnqqDpYDa6JS81v9Vn9Op/EkS2UOwXK9tKPkpgyCn8aks6gfG4Ih
+ HxsWYkIjcRs6QitOLP+tV9IMYxRikoAsWi/z1nKA+5ErfbcLKjebkUhSuqf9zWuZbBQpj+ytrXJ
+ Jx253tx3rrBeQRL5lHpiKRF0mKs59KurBIZfhhqABYFQLBAz4WPxKQYEON7BKRt4Cw3CLIF5waG
+ xupHArAhkcgdSQuXYAu0MMvPjqeZBNw1vQP/14rUXvso7qSLspABaZiGWiQu9b4EzUOa11JwNHi
+ gnMo23g=
+X-Google-Smtp-Source: AGHT+IEHLaXNtXD7YVPgP/v0UdENfIJFJ2hjQCiMBH4i3iykUAqxGez2QDb5eB7YqxzugOsIpv9ggcIrfPpsrZv7t/Y=
+X-Received: by 2002:a05:6870:82a6:b0:376:bfb7:18a with SMTP id
+ 586e51a60fabf-3c0f48c60a3mr4218402fac.12.1760066506269; Thu, 09 Oct 2025
+ 20:21:46 -0700 (PDT)
 MIME-Version: 1.0
-References: <20251001010127.3092631-1-salil.mehta@opnsrc.net>
- <20251001010127.3092631-12-salil.mehta@opnsrc.net>
- <20251003170908.48070061@fedora>
- <0175e40f70424dd9a29389b8a4f16c42@huawei.com> <20251007142016.3ed85bff@fedora>
-In-Reply-To: <20251007142016.3ed85bff@fedora>
+References: <20250930224037.224833-1-salil.mehta@huawei.com>
+ <871pndlgi7.fsf@pond.sub.org>
+In-Reply-To: <871pndlgi7.fsf@pond.sub.org>
 From: Salil Mehta <salil.mehta@opnsrc.net>
-Date: Fri, 10 Oct 2025 03:15:45 +0000
-X-Gm-Features: AS18NWBK4f6T6cw8NtI3bjCooy0-QY3JbqFpVEeq6Z7Tji4KZE6FjQoHFxZ4emY
-Message-ID: <CAJ7pxeYjCUmDZ8j=WryrezLQvWCo4Siww-=vJZ59nA3Fhgm4xA@mail.gmail.com>
-Subject: Re: [PATCH RFC V6 11/24] hw/arm/acpi: MADT change to size the guest
- with possible vCPUs
-To: Igor Mammedov <imammedo@redhat.com>
-Cc: Salil Mehta <salil.mehta@huawei.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, 
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "mst@redhat.com" <mst@redhat.com>,
- "maz@kernel.org" <maz@kernel.org>, 
- "jean-philippe@linaro.org" <jean-philippe@linaro.org>,
- Jonathan Cameron <jonathan.cameron@huawei.com>, 
- "lpieralisi@kernel.org" <lpieralisi@kernel.org>, 
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>, 
- "richard.henderson@linaro.org" <richard.henderson@linaro.org>,
- "armbru@redhat.com" <armbru@redhat.com>, 
- "andrew.jones@linux.dev" <andrew.jones@linux.dev>,
- "david@redhat.com" <david@redhat.com>, 
- "philmd@linaro.org" <philmd@linaro.org>,
- "eric.auger@redhat.com" <eric.auger@redhat.com>, 
- "will@kernel.org" <will@kernel.org>, "ardb@kernel.org" <ardb@kernel.org>, 
- "oliver.upton@linux.dev" <oliver.upton@linux.dev>,
- "pbonzini@redhat.com" <pbonzini@redhat.com>, 
- "gshan@redhat.com" <gshan@redhat.com>, "rafael@kernel.org" <rafael@kernel.org>,
- "borntraeger@linux.ibm.com" <borntraeger@linux.ibm.com>, 
- "alex.bennee@linaro.org" <alex.bennee@linaro.org>, 
- "gustavo.romero@linaro.org" <gustavo.romero@linaro.org>,
- "npiggin@gmail.com" <npiggin@gmail.com>, 
- "harshpb@linux.ibm.com" <harshpb@linux.ibm.com>,
- "linux@armlinux.org.uk" <linux@armlinux.org.uk>, 
- "darren@os.amperecomputing.com" <darren@os.amperecomputing.com>, 
- "ilkka@os.amperecomputing.com" <ilkka@os.amperecomputing.com>, 
- "vishnu@os.amperecomputing.com" <vishnu@os.amperecomputing.com>, 
- "gankulkarni@os.amperecomputing.com" <gankulkarni@os.amperecomputing.com>, 
- "karl.heubaum@oracle.com" <karl.heubaum@oracle.com>,
- "miguel.luis@oracle.com" <miguel.luis@oracle.com>, 
- zhukeqian <zhukeqian1@huawei.com>,
- "wangxiongfeng (C)" <wangxiongfeng2@huawei.com>, 
- "wangyanan (Y)" <wangyanan55@huawei.com>,
- "Wangzhou (B)" <wangzhou1@hisilicon.com>, 
- Linuxarm <linuxarm@huawei.com>, "jiakernel2@gmail.com" <jiakernel2@gmail.com>, 
- "maobibo@loongson.cn" <maobibo@loongson.cn>,
- "lixianglai@loongson.cn" <lixianglai@loongson.cn>, 
- "shahuang@redhat.com" <shahuang@redhat.com>,
- "zhao1.liu@intel.com" <zhao1.liu@intel.com>
-Content-Type: multipart/alternative; boundary="00000000000009ffa70640c55614"
-Received-SPF: pass client-ip=2001:4860:4864:20::30;
- envelope-from=salil.mehta@opnsrc.net; helo=mail-oa1-x30.google.com
+Date: Fri, 10 Oct 2025 03:21:34 +0000
+X-Gm-Features: AS18NWAArEiq3NdvYWAvnAIkDAvaN-UwvutJ0MTDvk50y9S4KegIk9PvsljrbRY
+Message-ID: <CAJ7pxeagneZ4-R8BDPjzGPSOQXjMgoO_78+D5yq_jrs1UAEN+A@mail.gmail.com>
+Subject: Re: [PATCH RFC V6 00/24] Support of Virtual CPU Hotplug-like Feature
+ for ARMv8+ Arch
+To: Markus Armbruster <armbru@redhat.com>
+Cc: Salil Mehta <salil.mehta@huawei.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, 
+ mst@redhat.com, maz@kernel.org, jean-philippe@linaro.org, 
+ jonathan.cameron@huawei.com, lpieralisi@kernel.org, peter.maydell@linaro.org, 
+ richard.henderson@linaro.org, imammedo@redhat.com, andrew.jones@linux.dev, 
+ david@redhat.com, philmd@linaro.org, eric.auger@redhat.com, will@kernel.org, 
+ ardb@kernel.org, oliver.upton@linux.dev, pbonzini@redhat.com, 
+ gshan@redhat.com, rafael@kernel.org, borntraeger@linux.ibm.com, 
+ alex.bennee@linaro.org, gustavo.romero@linaro.org, npiggin@gmail.com, 
+ harshpb@linux.ibm.com, linux@armlinux.org.uk, darren@os.amperecomputing.com, 
+ ilkka@os.amperecomputing.com, vishnu@os.amperecomputing.com, 
+ gankulkarni@os.amperecomputing.com, karl.heubaum@oracle.com, 
+ miguel.luis@oracle.com, zhukeqian1@huawei.com, wangxiongfeng2@huawei.com, 
+ wangyanan55@huawei.com, wangzhou1@hisilicon.com, linuxarm@huawei.com, 
+ jiakernel2@gmail.com, maobibo@loongson.cn, lixianglai@loongson.cn, 
+ shahuang@redhat.com, zhao1.liu@intel.com
+Content-Type: multipart/alternative; boundary="000000000000e3360c0640c56aa8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::c2c;
+ envelope-from=salil.mehta@opnsrc.net; helo=mail-oo1-xc2c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, HTML_MESSAGE=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -137,666 +112,201 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
---00000000000009ffa70640c55614
+--000000000000e3360c0640c56aa8
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-Hi Igor,
+HI Markus,
 
-On Tue, Oct 7, 2025 at 12:20=E2=80=AFPM Igor Mammedov <imammedo@redhat.com>=
- wrote:
+Thanks for reporting this issue. Sorry, I forgot to check it for x86 and
+other platforms.
+I'll try to fix this or you can share the fix. I'll add to the series.
 
-> On Tue, 7 Oct 2025 11:34:48 +0000
-> Salil Mehta <salil.mehta@huawei.com> wrote:
+Best regards
+Salil
+
+On Wed, Oct 8, 2025 at 12:34=E2=80=AFPM Markus Armbruster <armbru@redhat.co=
+m> wrote:
+
+> Salil Mehta <salil.mehta@huawei.com> writes:
 >
-> > Hi Igor,
-> >
-> > > From: Igor Mammedov <imammedo@redhat.com>
-> > > Sent: Friday, October 3, 2025 4:09 PM
-> > > To: salil.mehta@opnsrc.net
-> > >
-> > > On Wed,  1 Oct 2025 01:01:14 +0000
-> > > salil.mehta@opnsrc.net wrote:
-> > >
-> > > > From: Salil Mehta <salil.mehta@huawei.com>
-> > > >
-> > > > When QEMU builds the MADT table, modifications are needed to includ=
-e
-> > > > information about possible vCPUs that are exposed as ACPI-disabled
-> (i.e.,
-> > > `_STA.Enabled=3D0`).
-> > > > This new information will help the guest kernel pre-size its
-> resources
-> > > > during boot time. Pre-sizing based on possible vCPUs will facilitat=
-e
-> > > > the future hot-plugging of the currently disabled vCPUs.
-> > > >
-> > > > Additionally, this change addresses updates to the ACPI MADT GIC CP=
-U
-> > > > interface flags, as introduced in the UEFI ACPI 6.5 specification
-> [1].
-> > > > These updates enable deferred virtual CPU onlining in the guest
-> kernel.
-> > > >
-> > > > Reference:
-> > > > [1] 5.2.12.14. GIC CPU Interface (GICC) Structure (Table 5.37 GICC
-> CPU
-> > > Interface Flags)
-> > > >     Link:
-> > > >
-> > > https://uefi.org/specs/ACPI/6.5/05_ACPI_Software_Programming_Model.h
-> > > tm
-> > > > l#gic-cpu-interface-gicc-structure
-> > > >
-> > > > Co-developed-by: Keqian Zhu <zhukeqian1@huawei.com>
-> > > > Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
-> > > > Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
-> > > > ---
-> > > >  hw/arm/virt-acpi-build.c | 40 ++++++++++++++++++++++++++++++++++-
-> > > -----
-> > > >  hw/core/machine.c        | 14 ++++++++++++++
-> > > >  include/hw/boards.h      | 20 ++++++++++++++++++++
-> > > >  3 files changed, 68 insertions(+), 6 deletions(-)
-> > > >
-> > > > diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index
-> > > > b01fc4f8ef..7c24dd6369 100644
-> > > > --- a/hw/arm/virt-acpi-build.c
-> > > > +++ b/hw/arm/virt-acpi-build.c
-> > > > @@ -760,6 +760,32 @@ static void build_append_gicr(GArray
-> *table_data,
-> > > uint64_t base, uint32_t size)
-> > > >      build_append_int_noprefix(table_data, size, 4); /* Discovery
-> > > > Range Length */  }
-> > > >
-> > > > +static uint32_t virt_acpi_get_gicc_flags(CPUState *cpu) {
-> > > > +    MachineClass *mc =3D MACHINE_GET_CLASS(qdev_get_machine());
-> > > > +    const uint32_t GICC_FLAG_ENABLED =3D BIT(0);
-> > > > +    const uint32_t GICC_FLAG_ONLINE_CAPABLE =3D BIT(3);
-> > > > +
-> > > > +    /* ARM architecture does not support vCPU hotplug yet */
-> > > > +    if (!cpu) {
-> > > > +        return 0;
-> > > > +    }
-> > > > +
-> > > > +    /*
-> > > > +     * If the machine does not support online-capable CPUs, report
-> the
-> > > GICC as
-> > > > +     * 'enabled' only.
-> > > > +     */
-> > > > +    if (!mc->has_online_capable_cpus) {
-> > > > +        return GICC_FLAG_ENABLED;
-> > > > +    }
-> > > > +
-> > > > +    /*
-> > > > +     * ACPI 6.5, 5.2.12.14 (GICC): mark the boot CPU 'enabled' and
-> all others
-> > > > +     * 'online-capable'.
-> > > > +     */
-> > > > +    return (cpu =3D=3D first_cpu) ? GICC_FLAG_ENABLED :
-> > > > +GICC_FLAG_ONLINE_CAPABLE; }
-> > > > +
-> > > >  static void
-> > > >  build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineStat=
-e
-> > > > *vms)  { @@ -785,12 +811,14 @@ build_madt(GArray *table_data,
-> > > > BIOSLinker *linker, VirtMachineState *vms)
-> > > >      build_append_int_noprefix(table_data, vms->gic_version, 1);
-> > > >      build_append_int_noprefix(table_data, 0, 3);   /* Reserved */
-> > > >
-> > > > -    for (i =3D 0; i < MACHINE(vms)->smp.cpus; i++) {
-> > > > -        ARMCPU *armcpu =3D ARM_CPU(qemu_get_cpu(i));
-> > > > +    for (i =3D 0; i < MACHINE(vms)->smp.max_cpus; i++) {
-> > >                                      ^^^^^^^^^^^^
-> > > > +        CPUState *cpu =3D machine_get_possible_cpu(i);
-> > > ...
-> > > > +        CPUArchId *archid =3D machine_get_possible_cpu_arch_id(i);
-> > >
-> > > what complexity above adds? /and then you say creating instantiating
-> ARM
-> > > VM is slow./
-> > >
-> > > I'd drop machine_get_possible_cpu/machine_get_possible_cpu_arch_id
-> > > altogether and mimic what acpi_build_madt() does.
-> >
-> >
-> > We can do that here but I need this function elsewhere in the monitor
-> code as well
-> > to iterate over the possible CPUs and if I remember correctly I was
-> getting compilation
-> > errors there. But I will check if this can be removed.
-> >
-> > I would like to keep machine_get_possible_cpu().
+> [...]
 >
-> if you did iteration with this helper over CPUs, you'd basically
-> introducing
-> ^2 complexity at that point.
-> But that's details, we will sort it out eventually.
->
-
-Sure. you might be right here. I do not intend to disagree. I'll surely
-look into it.
-
-Thanks for this.
-
-
->
+> > =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+> > (VIII) Repositories
+> > =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
 > >
-> > I think you've misunderstood the reason of the boot time delay mentione=
+> > (*) Latest Qemu RFC V6 (Architecture Specific) patch set:
+> >     https://github.com/salil-mehta/qemu.git virt-cpuhp-armv8/rfc-v6
+>
+> Does not compile for me (x86_64 box running Fedora 41):
+>
+>     [...]
+>
+>     FAILED: qemu-system-loongarch64
+>     cc -m64 @qemu-system-loongarch64.rsp
+>     /usr/bin/ld:
+> libsystem.a.p/hw_acpi_generic_event_device.c.o:(.data.rel+0x50): undefine=
 d
-> to you in RFC V5.
-> > It is because of the realization leg i.e. qdev_relaize(), of the vCPU
-> and not because of this
-> > initialization leg
+> reference to `vmstate_cpu_ospm_state'
+>     collect2: error: ld returned 1 exit status
+>     [6757/7232] Linking target qemu-system-mips64
+>     [6758/7232] Generating docs/QEMU manual with a custom command
+>     FAILED: docs/docs.stamp
+>     /usr/bin/env CONFDIR=3Detc/qemu
+> /work/armbru/qemu/bld/pyvenv/bin/sphinx-build -q -W -Dkerneldoc_werror=3D=
+1 -j
+> auto -Dversion=3D10.1.50 -Drelease=3D -Ddepfile=3Ddocs/docs.d
+> -Ddepfile_stamp=3Ddocs/docs.stamp -b html -d
+> /work/armbru/qemu/bld/docs/manual.p /work/armbru/qemu/docs
+> /work/armbru/qemu/bld/docs/manual
+>     /work/armbru/qemu/docs/../include/hw/qdev-core.h:190: warning:
+> Function parameter or member 'admin_power_state_supported' not described =
+in
+> 'DeviceClass'
+>     /work/armbru/qemu/docs/../include/hw/qdev-core.h:269: warning: Enum
+> value 'DEVICE_ADMIN_POWER_STATE_ENABLED' not described in enum
+> 'DeviceAdminPowerState'
+>     /work/armbru/qemu/docs/../include/hw/qdev-core.h:269: warning: Enum
+> value 'DEVICE_ADMIN_POWER_STATE_DISABLED' not described in enum
+> 'DeviceAdminPowerState'
+>     /work/armbru/qemu/docs/../include/hw/qdev-core.h:269: warning: Enum
+> value 'DEVICE_ADMIN_POWER_STATE_REMOVED' not described in enum
+> 'DeviceAdminPowerState'
+>     /work/armbru/qemu/docs/../include/hw/qdev-core.h:269: warning: Enum
+> value 'DEVICE_ADMIN_POWER_STATE_MAX' not described in enum
+> 'DeviceAdminPowerState'
+>     1 warnings as Errors
 >
-> I did misunderstood wrt slow vcpus creation.
+>     Warning, treated as error:
+>     kernel-doc 'perl /work/armbru/qemu/docs/../scripts/kernel-doc -rst
+> -enable-lineno -sphinx-version 7.3.7 -Werror
+> /work/armbru/qemu/docs/../include/hw/qdev-core.h' failed with return code=
+ 1
+>     [6759/7232] Linking target qemu-system-i386
+>     FAILED: qemu-system-i386
+>     cc -m64 @qemu-system-i386.rsp
+>     /usr/bin/ld:
+> libsystem.a.p/hw_acpi_generic_event_device.c.o:(.data.rel+0x50): undefine=
+d
+> reference to `vmstate_cpu_ospm_state'
+>     collect2: error: ld returned 1 exit status
 >
-
-No issues
-
-
-> I did object to lazy creation in general, and well I still dislike it.
+>     [...]
 >
-
-For sure, and I respect your apprehensions. I want to understand the
-technical reasons why
-you think having this approach could be problematic?
-
-We have used this because:
-1. It will drastically change the boot time on 500+ core system. In fact
-boot time becomes
-    constant almost independent of the core count. I had previous even
-share the numbers
-    for this in the KVM Forum 2023 conference slides
-2.  Just for this series RFC V6, we have a bigger problem in leaving
-disabled vCPUs threads
-     running. These add to the KVM Lock contention during VM initialization
-time and cpu_reset()
-     can fail due to failure in ICC_CTLR_EL1 fetch.
-
-Point 2 is a blocker.
-
-
-> For more on this topic see my reply to cover letter, let continue
-> discussion there
-> about that.
+>     [6874/7232] Linking target qemu-system-x86_64
+>     FAILED: qemu-system-x86_64
+>     cc -m64 @qemu-system-x86_64.rsp
+>     /usr/bin/ld:
+> libsystem.a.p/hw_acpi_generic_event_device.c.o:(.data.rel+0x50): undefine=
+d
+> reference to `vmstate_cpu_ospm_state'
+>     collect2: error: ld returned 1 exit status
 >
-
-sure, I will later today.
-
-Sorry, for the gaps in my replies. My mails are either not reaching the
-mailing list and
-the people or I'm not receiving them. For legal reasons we must make
-technical discussion
-public so I'm refraining to reply from official ID till this problem gets
-identified.
-
-The discussion otherwise appears under broken links defeating the
-traceability part. Later
-is a legal requirement.
-
-I've been told lore.kernel server is rejecting the emails. I don't know
-whom to contact?
-
-
+>     [...]
 >
-> >
-> >
-> > >
-> > > > +        uint32_t flags =3D virt_acpi_get_gicc_flags(cpu);
-> > > > +        uint64_t mpidr =3D archid->arch_id;
-> > > >
-> > > >          if (vms->gic_version =3D=3D VIRT_GIC_VERSION_2) {
-> > > >              physical_base_address =3D memmap[VIRT_GIC_CPU].base; @=
-@
-> > > > -805,7 +833,7 @@ build_madt(GArray *table_data, BIOSLinker *linker,
-> > > VirtMachineState *vms)
-> > > >          build_append_int_noprefix(table_data, i, 4);    /* GIC ID =
-*/
-> > > >          build_append_int_noprefix(table_data, i, 4);    /* ACPI
-> Processor UID
-> > > */
-> > > >          /* Flags */
-> > > > -        build_append_int_noprefix(table_data, 1, 4);    /* Enabled
-> */
-> > > > +        build_append_int_noprefix(table_data, flags, 4);
-> > > >          /* Parking Protocol Version */
-> > > >          build_append_int_noprefix(table_data, 0, 4);
-> > > >          /* Performance Interrupt GSIV */ @@ -819,7 +847,7 @@
-> > > > build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState
-> > > *vms)
-> > > >          build_append_int_noprefix(table_data, vgic_interrupt, 4);
-> > > >          build_append_int_noprefix(table_data, 0, 8);    /* GICR
-> Base
-> > > Address*/
-> > > >          /* MPIDR */
-> > > > -        build_append_int_noprefix(table_data,
-> > > arm_cpu_mp_affinity(armcpu), 8);
-> > > > +        build_append_int_noprefix(table_data, mpidr, 8);
-> > > >          /* Processor Power Efficiency Class */
-> > > >          build_append_int_noprefix(table_data, 0, 1);
-> > > >          /* Reserved */
-> > > > diff --git a/hw/core/machine.c b/hw/core/machine.c index
-> > > > 69d5632464..65388d859a 100644
-> > > > --- a/hw/core/machine.c
-> > > > +++ b/hw/core/machine.c
-> > > > @@ -1383,6 +1383,20 @@ CPUState *machine_get_possible_cpu(int64_t
-> > > cpu_index)
-> > > >      return NULL;
-> > > >  }
-> > > >
-> > > > +CPUArchId *machine_get_possible_cpu_arch_id(int64_t cpu_index) {
-> > > > +    MachineState *ms =3D MACHINE(qdev_get_machine());
-> > > > +    CPUArchIdList *possible_cpus =3D ms->possible_cpus;
-> > > > +
-> > > > +    for (int i =3D 0; i < possible_cpus->len; i++) {
-> > > > +        if (possible_cpus->cpus[i].cpu &&
-> > > > +            possible_cpus->cpus[i].cpu->cpu_index =3D=3D cpu_index=
-) {
-> > > > +            return &possible_cpus->cpus[i];
-> > > > +        }
-> > > > +    }
-> > > > +    return NULL;
-> > > > +}
-> > > > +
-> > > >  static char *cpu_slot_to_string(const CPUArchId *cpu)  {
-> > > >      GString *s =3D g_string_new(NULL);
-> > > > diff --git a/include/hw/boards.h b/include/hw/boards.h index
-> > > > 3ff77a8b3a..fe51ca58bf 100644
-> > > > --- a/include/hw/boards.h
-> > > > +++ b/include/hw/boards.h
-> > > > @@ -461,6 +461,26 @@ struct MachineState {
-> > > >      bool acpi_spcr_enabled;
-> > > >  };
-> > > >
-> > > > +/*
-> > > > + * machine_get_possible_cpu_arch_id:
-> > > > + * @cpu_index: logical cpu_index to search for
-> > > > + *
-> > > > + * Return a pointer to the CPUArchId entry matching the given
-> > > > +@cpu_index
-> > > > + * in the current machine's MachineState. The possible_cpus array
-> > > > +holds
-> > > > + * the full set of CPUs that the machine could support, including
-> > > > +those
-> > > > + * that may be created as disabled or taken offline.
-> > > > + *
-> > > > + * The slot index in ms->possible_cpus[] is always sequential, but
-> > > > +the
-> > > > + * logical cpu_index values are assigned by QEMU and may or may no=
-t
-> > > > +be
-> > > > + * sequential depending on the implementation of a particular
-> machine.
-> > > > + * Direct indexing by cpu_index is therefore unsafe in general. Th=
-is
-> > > > + * helper performs a linear search of the possible_cpus array to
-> find
-> > > > + * the matching entry.
-> > > > + *
-> > > > + * Returns: pointer to the matching CPUArchId, or NULL if not foun=
-d.
-> > > > + */
-> > > > +CPUArchId *machine_get_possible_cpu_arch_id(int64_t cpu_index);
-> > > > +
-> > > >  /*
-> > > >   * The macros which follow are intended to facilitate the
-> > > >   * definition of versioned machine types, using a somewhat
-> > >
-> >
+>     ninja: build stopped: cannot make progress due to previous errors.
+>     make: *** [Makefile:168: run-ninja] Error 1
+>     make: Target 'all' not remade because of errors.
+>     make: Leaving directory '/work/armbru/qemu/bld'
+>
+> [...]
 >
 >
 
---00000000000009ffa70640c55614
+--000000000000e3360c0640c56aa8
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-<div dir=3D"ltr"><div dir=3D"ltr">Hi Igor,</div><br><div class=3D"gmail_quo=
-te gmail_quote_container"><div dir=3D"ltr" class=3D"gmail_attr">On Tue, Oct=
- 7, 2025 at 12:20=E2=80=AFPM Igor Mammedov &lt;<a href=3D"mailto:imammedo@r=
-edhat.com">imammedo@redhat.com</a>&gt; wrote:<br></div><blockquote class=3D=
-"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(2=
-04,204,204);padding-left:1ex">On Tue, 7 Oct 2025 11:34:48 +0000<br>
+<div dir=3D"ltr"><div dir=3D"ltr">HI Markus,<div><br></div><div>Thanks for =
+reporting this issue. Sorry, I forgot=C2=A0to check it for x86 and other pl=
+atforms.</div><div>I&#39;ll try to fix this or you can share the fix. I&#39=
+;ll add to the series.</div><div><br></div><div>Best=C2=A0regards</div><div=
+>Salil</div></div><br><div class=3D"gmail_quote gmail_quote_container"><div=
+ dir=3D"ltr" class=3D"gmail_attr">On Wed, Oct 8, 2025 at 12:34=E2=80=AFPM M=
+arkus Armbruster &lt;<a href=3D"mailto:armbru@redhat.com">armbru@redhat.com=
+</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:=
+0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">=
 Salil Mehta &lt;<a href=3D"mailto:salil.mehta@huawei.com" target=3D"_blank"=
->salil.mehta@huawei.com</a>&gt; wrote:<br>
+>salil.mehta@huawei.com</a>&gt; writes:<br>
 <br>
-&gt; Hi Igor,<br>
-&gt; <br>
-&gt; &gt; From: Igor Mammedov &lt;<a href=3D"mailto:imammedo@redhat.com" ta=
-rget=3D"_blank">imammedo@redhat.com</a>&gt;<br>
-&gt; &gt; Sent: Friday, October 3, 2025 4:09 PM<br>
-&gt; &gt; To: <a href=3D"mailto:salil.mehta@opnsrc.net" target=3D"_blank">s=
-alil.mehta@opnsrc.net</a><br>
-&gt; &gt; <br>
-&gt; &gt; On Wed,=C2=A0 1 Oct 2025 01:01:14 +0000<br>
-&gt; &gt; <a href=3D"mailto:salil.mehta@opnsrc.net" target=3D"_blank">salil=
-.mehta@opnsrc.net</a> wrote:<br>
-&gt; &gt;=C2=A0 =C2=A0<br>
-&gt; &gt; &gt; From: Salil Mehta &lt;<a href=3D"mailto:salil.mehta@huawei.c=
-om" target=3D"_blank">salil.mehta@huawei.com</a>&gt;<br>
-&gt; &gt; &gt;<br>
-&gt; &gt; &gt; When QEMU builds the MADT table, modifications are needed to=
- include<br>
-&gt; &gt; &gt; information about possible vCPUs that are exposed as ACPI-di=
-sabled (i.e.,=C2=A0 <br>
-&gt; &gt; `_STA.Enabled=3D0`).=C2=A0 <br>
-&gt; &gt; &gt; This new information will help the guest kernel pre-size its=
- resources<br>
-&gt; &gt; &gt; during boot time. Pre-sizing based on possible vCPUs will fa=
-cilitate<br>
-&gt; &gt; &gt; the future hot-plugging of the currently disabled vCPUs.<br>
-&gt; &gt; &gt;<br>
-&gt; &gt; &gt; Additionally, this change addresses updates to the ACPI MADT=
- GIC CPU<br>
-&gt; &gt; &gt; interface flags, as introduced in the UEFI ACPI 6.5 specific=
-ation [1].<br>
-&gt; &gt; &gt; These updates enable deferred virtual CPU onlining in the gu=
-est kernel.<br>
-&gt; &gt; &gt;<br>
-&gt; &gt; &gt; Reference:<br>
-&gt; &gt; &gt; [1] 5.2.12.14. GIC CPU Interface (GICC) Structure (Table 5.3=
-7 GICC CPU=C2=A0 <br>
-&gt; &gt; Interface Flags)=C2=A0 <br>
-&gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0Link:<br>
-&gt; &gt; &gt;=C2=A0 <br>
-&gt; &gt; <a href=3D"https://uefi.org/specs/ACPI/6.5/05_ACPI_Software_Progr=
-amming_Model.h" rel=3D"noreferrer" target=3D"_blank">https://uefi.org/specs=
-/ACPI/6.5/05_ACPI_Software_Programming_Model.h</a><br>
-&gt; &gt; tm=C2=A0 <br>
-&gt; &gt; &gt; l#gic-cpu-interface-gicc-structure<br>
-&gt; &gt; &gt;<br>
-&gt; &gt; &gt; Co-developed-by: Keqian Zhu &lt;<a href=3D"mailto:zhukeqian1=
-@huawei.com" target=3D"_blank">zhukeqian1@huawei.com</a>&gt;<br>
-&gt; &gt; &gt; Signed-off-by: Keqian Zhu &lt;<a href=3D"mailto:zhukeqian1@h=
-uawei.com" target=3D"_blank">zhukeqian1@huawei.com</a>&gt;<br>
-&gt; &gt; &gt; Signed-off-by: Salil Mehta &lt;<a href=3D"mailto:salil.mehta=
-@huawei.com" target=3D"_blank">salil.mehta@huawei.com</a>&gt;<br>
-&gt; &gt; &gt; ---<br>
-&gt; &gt; &gt;=C2=A0 hw/arm/virt-acpi-build.c | 40 ++++++++++++++++++++++++=
-++++++++++-=C2=A0 <br>
-&gt; &gt; -----=C2=A0 <br>
-&gt; &gt; &gt;=C2=A0 hw/core/machine.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 | 14 ++++=
-++++++++++<br>
-&gt; &gt; &gt;=C2=A0 include/hw/boards.h=C2=A0 =C2=A0 =C2=A0 | 20 +++++++++=
-+++++++++++<br>
-&gt; &gt; &gt;=C2=A0 3 files changed, 68 insertions(+), 6 deletions(-)<br>
-&gt; &gt; &gt;<br>
-&gt; &gt; &gt; diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-bui=
-ld.c index<br>
-&gt; &gt; &gt; b01fc4f8ef..7c24dd6369 100644<br>
-&gt; &gt; &gt; --- a/hw/arm/virt-acpi-build.c<br>
-&gt; &gt; &gt; +++ b/hw/arm/virt-acpi-build.c<br>
-&gt; &gt; &gt; @@ -760,6 +760,32 @@ static void build_append_gicr(GArray *t=
-able_data,=C2=A0 <br>
-&gt; &gt; uint64_t base, uint32_t size)=C2=A0 <br>
-&gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 build_append_int_noprefix(table_data, si=
-ze, 4); /* Discovery<br>
-&gt; &gt; &gt; Range Length */=C2=A0 }<br>
-&gt; &gt; &gt;<br>
-&gt; &gt; &gt; +static uint32_t virt_acpi_get_gicc_flags(CPUState *cpu) {<b=
-r>
-&gt; &gt; &gt; +=C2=A0 =C2=A0 MachineClass *mc =3D MACHINE_GET_CLASS(qdev_g=
-et_machine());<br>
-&gt; &gt; &gt; +=C2=A0 =C2=A0 const uint32_t GICC_FLAG_ENABLED =3D BIT(0);<=
-br>
-&gt; &gt; &gt; +=C2=A0 =C2=A0 const uint32_t GICC_FLAG_ONLINE_CAPABLE =3D B=
-IT(3);<br>
-&gt; &gt; &gt; +<br>
-&gt; &gt; &gt; +=C2=A0 =C2=A0 /* ARM architecture does not support vCPU hot=
-plug yet */<br>
-&gt; &gt; &gt; +=C2=A0 =C2=A0 if (!cpu) {<br>
-&gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 return 0;<br>
-&gt; &gt; &gt; +=C2=A0 =C2=A0 }<br>
-&gt; &gt; &gt; +<br>
-&gt; &gt; &gt; +=C2=A0 =C2=A0 /*<br>
-&gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0* If the machine does not support onlin=
-e-capable CPUs, report the=C2=A0 <br>
-&gt; &gt; GICC as=C2=A0 <br>
-&gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0* &#39;enabled&#39; only.<br>
-&gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0*/<br>
-&gt; &gt; &gt; +=C2=A0 =C2=A0 if (!mc-&gt;has_online_capable_cpus) {<br>
-&gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 return GICC_FLAG_ENABLED;<br>
-&gt; &gt; &gt; +=C2=A0 =C2=A0 }<br>
-&gt; &gt; &gt; +<br>
-&gt; &gt; &gt; +=C2=A0 =C2=A0 /*<br>
-&gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0* ACPI 6.5, 5.2.12.14 (GICC): mark the =
-boot CPU &#39;enabled&#39; and all others<br>
-&gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0* &#39;online-capable&#39;.<br>
-&gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0*/<br>
-&gt; &gt; &gt; +=C2=A0 =C2=A0 return (cpu =3D=3D first_cpu) ? GICC_FLAG_ENA=
-BLED :<br>
-&gt; &gt; &gt; +GICC_FLAG_ONLINE_CAPABLE; }<br>
-&gt; &gt; &gt; +<br>
-&gt; &gt; &gt;=C2=A0 static void<br>
-&gt; &gt; &gt;=C2=A0 build_madt(GArray *table_data, BIOSLinker *linker, Vir=
-tMachineState<br>
-&gt; &gt; &gt; *vms)=C2=A0 { @@ -785,12 +811,14 @@ build_madt(GArray *table=
-_data,<br>
-&gt; &gt; &gt; BIOSLinker *linker, VirtMachineState *vms)<br>
-&gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 build_append_int_noprefix(table_data, vm=
-s-&gt;gic_version, 1);<br>
-&gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 build_append_int_noprefix(table_data, 0,=
- 3);=C2=A0 =C2=A0/* Reserved */<br>
-&gt; &gt; &gt;<br>
-&gt; &gt; &gt; -=C2=A0 =C2=A0 for (i =3D 0; i &lt; MACHINE(vms)-&gt;smp.cpu=
-s; i++) {<br>
-&gt; &gt; &gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 ARMCPU *armcpu =3D ARM_CPU(qemu=
-_get_cpu(i));<br>
-&gt; &gt; &gt; +=C2=A0 =C2=A0 for (i =3D 0; i &lt; MACHINE(vms)-&gt;smp.max=
-_cpus; i++) {=C2=A0 <br>
-&gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 ^^^^^^^^=
-^^^^=C2=A0 <br>
-&gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 CPUState *cpu =3D machine_get_p=
-ossible_cpu(i);=C2=A0 <br>
-&gt; &gt; ...=C2=A0 <br>
-&gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 CPUArchId *archid =3D machine_g=
-et_possible_cpu_arch_id(i);=C2=A0 <br>
-&gt; &gt; <br>
-&gt; &gt; what complexity above adds? /and then you say creating instantiat=
-ing ARM<br>
-&gt; &gt; VM is slow./<br>
-&gt; &gt; <br>
-&gt; &gt; I&#39;d drop machine_get_possible_cpu/machine_get_possible_cpu_ar=
-ch_id<br>
-&gt; &gt; altogether and mimic what acpi_build_madt() does.=C2=A0 <br>
-&gt; <br>
-&gt; <br>
-&gt; We can do that here but I need this function elsewhere in the monitor =
-code as well<br>
-&gt; to iterate over the possible CPUs and if I remember correctly I was ge=
-tting compilation<br>
-&gt; errors there. But I will check if this can be removed.<br>
-&gt; <br>
-&gt; I would like to keep machine_get_possible_cpu().<br>
+[...]<br>
 <br>
-if you did iteration with this helper over CPUs, you&#39;d basically introd=
-ucing<br>
-^2 complexity at that point.<br>
-But that&#39;s details, we will sort it out eventually.<br></blockquote><di=
-v><br></div><div>Sure. you might be right here. I do not intend=C2=A0to dis=
-agree. I&#39;ll surely look into it.</div><div><br></div><div>Thanks for th=
-is.</div><div>=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin=
-:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"=
->
+&gt; =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D<br>
+&gt; (VIII) Repositories<br>
+&gt; =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D<br>
+&gt;<br>
+&gt; (*) Latest Qemu RFC V6 (Architecture Specific) patch set:<br>
+&gt;=C2=A0 =C2=A0 =C2=A0<a href=3D"https://github.com/salil-mehta/qemu.git"=
+ rel=3D"noreferrer" target=3D"_blank">https://github.com/salil-mehta/qemu.g=
+it</a> virt-cpuhp-armv8/rfc-v6<br>
 <br>
-&gt; <br>
-&gt; I think you&#39;ve misunderstood the reason of the boot time delay men=
-tioned to you in RFC V5.<br>
-&gt; It is because of the realization leg i.e. qdev_relaize(), of the vCPU =
-and not because of this<br>
-&gt; initialization leg<br>
+Does not compile for me (x86_64 box running Fedora 41):<br>
 <br>
-I did misunderstood wrt slow vcpus creation.<br></blockquote><div><br></div=
-><div>No issues</div><div>=C2=A0</div><blockquote class=3D"gmail_quote" sty=
-le=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);paddi=
-ng-left:1ex">
-I did object to lazy creation in general, and well I still dislike it.<br><=
-/blockquote><div><br></div><div>For sure, and I respect your apprehensions.=
- I want to understand the technical reasons why</div><div>you think having =
-this approach could be problematic?</div><div><br></div><div>We have used t=
-his because:</div><div>1. It will drastically change the boot time on 500+ =
-core system. In fact boot time becomes</div><div>=C2=A0 =C2=A0 constant alm=
-ost independent=C2=A0of the core count. I had previous even share the numbe=
-rs</div><div>=C2=A0 =C2=A0 for this in the KVM Forum 2023 conference slides=
-</div><div>2.=C2=A0 Just for this series RFC V6, we have a bigger problem i=
-n leaving disabled vCPUs threads</div><div>=C2=A0 =C2=A0 =C2=A0running. The=
-se add to the KVM Lock contention during VM initialization time and cpu_res=
-et()</div><div>=C2=A0 =C2=A0 =C2=A0can fail due to failure in ICC_CTLR_EL1 =
-fetch.</div><div><br></div><div>Point 2 is a blocker.</div><div>=C2=A0</div=
-><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border=
--left:1px solid rgb(204,204,204);padding-left:1ex">
-For more on this topic see my reply to cover letter, let continue discussio=
-n there<br>
-about that.<br></blockquote><div><br></div><div>sure, I will later today.</=
-div><div><br></div><div>Sorry, for the gaps in my replies. My mails are eit=
-her not reaching the mailing list and</div><div>the people or I&#39;m not r=
-eceiving them. For legal reasons we must make technical discussion</div><di=
-v>public so I&#39;m refraining to reply from official ID till this problem =
-gets identified.</div><div><br></div><div>The discussion otherwise appears =
-under broken links defeating the traceability part. Later</div><div>is a le=
-gal requirement.</div><div><br></div><div>I&#39;ve been told lore.kernel se=
-rver is rejecting the emails. I don&#39;t=C2=A0know whom to contact?</div><=
-div>=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0=
-px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
+=C2=A0 =C2=A0 [...]<br>
 <br>
-&gt; <br>
-&gt; <br>
-&gt; &gt;=C2=A0 =C2=A0<br>
-&gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 uint32_t flags =3D virt_acpi_ge=
-t_gicc_flags(cpu);<br>
-&gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 uint64_t mpidr =3D archid-&gt;a=
-rch_id;<br>
-&gt; &gt; &gt;<br>
-&gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 if (vms-&gt;gic_version =
-=3D=3D VIRT_GIC_VERSION_2) {<br>
-&gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 physical_bas=
-e_address =3D memmap[VIRT_GIC_CPU].base; @@<br>
-&gt; &gt; &gt; -805,7 +833,7 @@ build_madt(GArray *table_data, BIOSLinker *=
-linker,=C2=A0 <br>
-&gt; &gt; VirtMachineState *vms)=C2=A0 <br>
-&gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 build_append_int_noprefix(=
-table_data, i, 4);=C2=A0 =C2=A0 /* GIC ID */<br>
-&gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 build_append_int_noprefix(=
-table_data, i, 4);=C2=A0 =C2=A0 /* ACPI Processor UID=C2=A0 <br>
-&gt; &gt; */=C2=A0 <br>
-&gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 /* Flags */<br>
-&gt; &gt; &gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 build_append_int_noprefix(table=
-_data, 1, 4);=C2=A0 =C2=A0 /* Enabled */<br>
-&gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 build_append_int_noprefix(table=
-_data, flags, 4);<br>
-&gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 /* Parking Protocol Versio=
-n */<br>
-&gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 build_append_int_noprefix(=
-table_data, 0, 4);<br>
-&gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 /* Performance Interrupt G=
-SIV */ @@ -819,7 +847,7 @@<br>
-&gt; &gt; &gt; build_madt(GArray *table_data, BIOSLinker *linker, VirtMachi=
-neState=C2=A0 <br>
-&gt; &gt; *vms)=C2=A0 <br>
-&gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 build_append_int_noprefix(=
-table_data, vgic_interrupt, 4);<br>
-&gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 build_append_int_noprefix(=
-table_data, 0, 8);=C2=A0 =C2=A0 /* GICR Base=C2=A0 <br>
-&gt; &gt; Address*/=C2=A0 <br>
-&gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 /* MPIDR */<br>
-&gt; &gt; &gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 build_append_int_noprefix(table=
-_data,=C2=A0 <br>
-&gt; &gt; arm_cpu_mp_affinity(armcpu), 8);=C2=A0 <br>
-&gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 build_append_int_noprefix(table=
-_data, mpidr, 8);<br>
-&gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 /* Processor Power Efficie=
-ncy Class */<br>
-&gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 build_append_int_noprefix(=
-table_data, 0, 1);<br>
-&gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 /* Reserved */<br>
-&gt; &gt; &gt; diff --git a/hw/core/machine.c b/hw/core/machine.c index<br>
-&gt; &gt; &gt; 69d5632464..65388d859a 100644<br>
-&gt; &gt; &gt; --- a/hw/core/machine.c<br>
-&gt; &gt; &gt; +++ b/hw/core/machine.c<br>
-&gt; &gt; &gt; @@ -1383,6 +1383,20 @@ CPUState *machine_get_possible_cpu(in=
-t64_t=C2=A0 <br>
-&gt; &gt; cpu_index)=C2=A0 <br>
-&gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 return NULL;<br>
-&gt; &gt; &gt;=C2=A0 }<br>
-&gt; &gt; &gt;<br>
-&gt; &gt; &gt; +CPUArchId *machine_get_possible_cpu_arch_id(int64_t cpu_ind=
-ex) {<br>
-&gt; &gt; &gt; +=C2=A0 =C2=A0 MachineState *ms =3D MACHINE(qdev_get_machine=
-());<br>
-&gt; &gt; &gt; +=C2=A0 =C2=A0 CPUArchIdList *possible_cpus =3D ms-&gt;possi=
-ble_cpus;<br>
-&gt; &gt; &gt; +<br>
-&gt; &gt; &gt; +=C2=A0 =C2=A0 for (int i =3D 0; i &lt; possible_cpus-&gt;le=
-n; i++) {<br>
-&gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (possible_cpus-&gt;cpus[i].c=
-pu &amp;&amp;<br>
-&gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 possible_cpus-&gt=
-;cpus[i].cpu-&gt;cpu_index =3D=3D cpu_index) {<br>
-&gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 return &amp;possi=
-ble_cpus-&gt;cpus[i];<br>
-&gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
-&gt; &gt; &gt; +=C2=A0 =C2=A0 }<br>
-&gt; &gt; &gt; +=C2=A0 =C2=A0 return NULL;<br>
-&gt; &gt; &gt; +}<br>
-&gt; &gt; &gt; +<br>
-&gt; &gt; &gt;=C2=A0 static char *cpu_slot_to_string(const CPUArchId *cpu)=
-=C2=A0 {<br>
-&gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 GString *s =3D g_string_new(NULL);<br>
-&gt; &gt; &gt; diff --git a/include/hw/boards.h b/include/hw/boards.h index=
+=C2=A0 =C2=A0 FAILED: qemu-system-loongarch64 <br>
+=C2=A0 =C2=A0 cc -m64 @qemu-system-loongarch64.rsp<br>
+=C2=A0 =C2=A0 /usr/bin/ld: libsystem.a.p/hw_acpi_generic_event_device.c.o:(=
+.data.rel+0x50): undefined reference to `vmstate_cpu_ospm_state&#39;<br>
+=C2=A0 =C2=A0 collect2: error: ld returned 1 exit status<br>
+=C2=A0 =C2=A0 [6757/7232] Linking target qemu-system-mips64<br>
+=C2=A0 =C2=A0 [6758/7232] Generating docs/QEMU manual with a custom command=
 <br>
-&gt; &gt; &gt; 3ff77a8b3a..fe51ca58bf 100644<br>
-&gt; &gt; &gt; --- a/include/hw/boards.h<br>
-&gt; &gt; &gt; +++ b/include/hw/boards.h<br>
-&gt; &gt; &gt; @@ -461,6 +461,26 @@ struct MachineState {<br>
-&gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 bool acpi_spcr_enabled;<br>
-&gt; &gt; &gt;=C2=A0 };<br>
-&gt; &gt; &gt;<br>
-&gt; &gt; &gt; +/*<br>
-&gt; &gt; &gt; + * machine_get_possible_cpu_arch_id:<br>
-&gt; &gt; &gt; + * @cpu_index: logical cpu_index to search for<br>
-&gt; &gt; &gt; + *<br>
-&gt; &gt; &gt; + * Return a pointer to the CPUArchId entry matching the giv=
-en<br>
-&gt; &gt; &gt; +@cpu_index<br>
-&gt; &gt; &gt; + * in the current machine&#39;s MachineState. The possible_=
-cpus array<br>
-&gt; &gt; &gt; +holds<br>
-&gt; &gt; &gt; + * the full set of CPUs that the machine could support, inc=
-luding<br>
-&gt; &gt; &gt; +those<br>
-&gt; &gt; &gt; + * that may be created as disabled or taken offline.<br>
-&gt; &gt; &gt; + *<br>
-&gt; &gt; &gt; + * The slot index in ms-&gt;possible_cpus[] is always seque=
-ntial, but<br>
-&gt; &gt; &gt; +the<br>
-&gt; &gt; &gt; + * logical cpu_index values are assigned by QEMU and may or=
- may not<br>
-&gt; &gt; &gt; +be<br>
-&gt; &gt; &gt; + * sequential depending on the implementation of a particul=
-ar machine.<br>
-&gt; &gt; &gt; + * Direct indexing by cpu_index is therefore unsafe in gene=
-ral. This<br>
-&gt; &gt; &gt; + * helper performs a linear search of the possible_cpus arr=
-ay to find<br>
-&gt; &gt; &gt; + * the matching entry.<br>
-&gt; &gt; &gt; + *<br>
-&gt; &gt; &gt; + * Returns: pointer to the matching CPUArchId, or NULL if n=
-ot found.<br>
-&gt; &gt; &gt; + */<br>
-&gt; &gt; &gt; +CPUArchId *machine_get_possible_cpu_arch_id(int64_t cpu_ind=
-ex);<br>
-&gt; &gt; &gt; +<br>
-&gt; &gt; &gt;=C2=A0 /*<br>
-&gt; &gt; &gt;=C2=A0 =C2=A0* The macros which follow are intended to facili=
-tate the<br>
-&gt; &gt; &gt;=C2=A0 =C2=A0* definition of versioned machine types, using a=
- somewhat=C2=A0 <br>
-&gt; &gt;=C2=A0 =C2=A0<br>
-&gt; <br>
+=C2=A0 =C2=A0 FAILED: docs/docs.stamp <br>
+=C2=A0 =C2=A0 /usr/bin/env CONFDIR=3Detc/qemu /work/armbru/qemu/bld/pyvenv/=
+bin/sphinx-build -q -W -Dkerneldoc_werror=3D1 -j auto -Dversion=3D10.1.50 -=
+Drelease=3D -Ddepfile=3Ddocs/docs.d -Ddepfile_stamp=3Ddocs/docs.stamp -b ht=
+ml -d /work/armbru/qemu/bld/docs/manual.p /work/armbru/qemu/docs /work/armb=
+ru/qemu/bld/docs/manual<br>
+=C2=A0 =C2=A0 /work/armbru/qemu/docs/../include/hw/qdev-core.h:190: warning=
+: Function parameter or member &#39;admin_power_state_supported&#39; not de=
+scribed in &#39;DeviceClass&#39;<br>
+=C2=A0 =C2=A0 /work/armbru/qemu/docs/../include/hw/qdev-core.h:269: warning=
+: Enum value &#39;DEVICE_ADMIN_POWER_STATE_ENABLED&#39; not described in en=
+um &#39;DeviceAdminPowerState&#39;<br>
+=C2=A0 =C2=A0 /work/armbru/qemu/docs/../include/hw/qdev-core.h:269: warning=
+: Enum value &#39;DEVICE_ADMIN_POWER_STATE_DISABLED&#39; not described in e=
+num &#39;DeviceAdminPowerState&#39;<br>
+=C2=A0 =C2=A0 /work/armbru/qemu/docs/../include/hw/qdev-core.h:269: warning=
+: Enum value &#39;DEVICE_ADMIN_POWER_STATE_REMOVED&#39; not described in en=
+um &#39;DeviceAdminPowerState&#39;<br>
+=C2=A0 =C2=A0 /work/armbru/qemu/docs/../include/hw/qdev-core.h:269: warning=
+: Enum value &#39;DEVICE_ADMIN_POWER_STATE_MAX&#39; not described in enum &=
+#39;DeviceAdminPowerState&#39;<br>
+=C2=A0 =C2=A0 1 warnings as Errors<br>
+<br>
+=C2=A0 =C2=A0 Warning, treated as error:<br>
+=C2=A0 =C2=A0 kernel-doc &#39;perl /work/armbru/qemu/docs/../scripts/kernel=
+-doc -rst -enable-lineno -sphinx-version 7.3.7 -Werror /work/armbru/qemu/do=
+cs/../include/hw/qdev-core.h&#39; failed with return code 1<br>
+=C2=A0 =C2=A0 [6759/7232] Linking target qemu-system-i386<br>
+=C2=A0 =C2=A0 FAILED: qemu-system-i386 <br>
+=C2=A0 =C2=A0 cc -m64 @qemu-system-i386.rsp<br>
+=C2=A0 =C2=A0 /usr/bin/ld: libsystem.a.p/hw_acpi_generic_event_device.c.o:(=
+.data.rel+0x50): undefined reference to `vmstate_cpu_ospm_state&#39;<br>
+=C2=A0 =C2=A0 collect2: error: ld returned 1 exit status<br>
+<br>
+=C2=A0 =C2=A0 [...]<br>
+<br>
+=C2=A0 =C2=A0 [6874/7232] Linking target qemu-system-x86_64<br>
+=C2=A0 =C2=A0 FAILED: qemu-system-x86_64 <br>
+=C2=A0 =C2=A0 cc -m64 @qemu-system-x86_64.rsp<br>
+=C2=A0 =C2=A0 /usr/bin/ld: libsystem.a.p/hw_acpi_generic_event_device.c.o:(=
+.data.rel+0x50): undefined reference to `vmstate_cpu_ospm_state&#39;<br>
+=C2=A0 =C2=A0 collect2: error: ld returned 1 exit status<br>
+<br>
+=C2=A0 =C2=A0 [...]<br>
+<br>
+=C2=A0 =C2=A0 ninja: build stopped: cannot make progress due to previous er=
+rors.<br>
+=C2=A0 =C2=A0 make: *** [Makefile:168: run-ninja] Error 1<br>
+=C2=A0 =C2=A0 make: Target &#39;all&#39; not remade because of errors.<br>
+=C2=A0 =C2=A0 make: Leaving directory &#39;/work/armbru/qemu/bld&#39;<br>
+<br>
+[...]<br>
 <br>
 </blockquote></div></div>
 
---00000000000009ffa70640c55614--
+--000000000000e3360c0640c56aa8--
 

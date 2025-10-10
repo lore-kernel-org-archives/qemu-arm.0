@@ -4,95 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A286ECCA476
-	for <qemu-arm@archiver.kernel.org>; Fri, 10 Oct 2025 13:48:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C40FFCCA476
+	for <qemu-arm@archiver.kernel.org>; Fri, 10 Oct 2025 13:49:40 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v7DQX-0003Ig-Bn; Fri, 10 Oct 2025 09:44:57 -0400
+	id 1v7DQW-0003Hu-Ap; Fri, 10 Oct 2025 09:44:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v7DQG-0002to-SO
- for qemu-arm@nongnu.org; Fri, 10 Oct 2025 09:44:41 -0400
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v7DQU-0003Fa-NL
+ for qemu-arm@nongnu.org; Fri, 10 Oct 2025 09:44:54 -0400
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v7DPG-0008FN-Gu
- for qemu-arm@nongnu.org; Fri, 10 Oct 2025 09:44:40 -0400
-Received: by mail-wm1-x344.google.com with SMTP id
- 5b1f17b1804b1-46e42deffa8so18966505e9.0
- for <qemu-arm@nongnu.org>; Fri, 10 Oct 2025 06:43:36 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v7DPQ-0008HO-26
+ for qemu-arm@nongnu.org; Fri, 10 Oct 2025 09:44:54 -0400
+Received: by mail-wr1-x430.google.com with SMTP id
+ ffacd0b85a97d-3f0308469a4so1272756f8f.0
+ for <qemu-arm@nongnu.org>; Fri, 10 Oct 2025 06:43:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1760103814; x=1760708614; darn=nongnu.org;
+ d=linaro.org; s=google; t=1760103824; x=1760708624; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=sslmAmFx5Cxrr/elCIaZt4ybkrnljBL49HYxD0V3YF0=;
- b=b5IKHz2fhYGFR5V+3HM5k3w4Tvaa4FVLVfGYQ9F7dUhBkGD5V+pbMcB8gMr14iVQPn
- 06MXvUSkGnorJMC3XPHFzWzWE13+9al2p9/zV7vRakbMae20878f89U2Pt3wQ4CHYNZM
- EhDZQxzq3BhJIdxBN0i6jzPmAWN9WMIKk4ih9jHwdGHMV0VZbnmF8Vm+zJ0kcAtEDYjY
- Of14SZ1KkrNIXnL5E6Cwn54kKvZJE7FzwdOhfP7uAjJMFvQq3lY08beTJtmU89ufa6mq
- HB+ksh3rEyTMccSRz9Xa9SuiqkLSS9edl/QcK05i3zQZ73UERF+Z8pqg9bjsGzdK22jW
- /BdA==
+ bh=r4HGgiMv15db038MKi02IiRG5N36n+u7KrBeSKqnYB8=;
+ b=Wud4NyLONgRfkVQ11XqFFCRUIi2lgEX73SFrzObShxW2rBbxZoA6O0BUqstKGzBLit
+ dwa3aLJHCt4WDNCV36IrZCgWnnsTM6P09EmmAkK1iT9+pxXgE9d871YvZ/LSiMR799ND
+ LzLAhGhC1Eiw2ysv1ej52nrty1Bbgr4fKz36vQX0kbny8BDq99mfKhGdvZlJCUjamxfF
+ lo3JQXuuRkrpCcPJdVG+CR3XFfx7BPF2OVKtq+Fcz/uGueZ1sJPf2mIsEGSfCJEk3XQ1
+ CqWLDpCqLVv2yGVbjmklKZzWdMnELepJnJ2MgPCREk6EFS2XrL3h89AXOELYy5rzhJJb
+ XkIw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1760103814; x=1760708614;
+ d=1e100.net; s=20230601; t=1760103824; x=1760708624;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=sslmAmFx5Cxrr/elCIaZt4ybkrnljBL49HYxD0V3YF0=;
- b=V1JTQHQxrXs7IbARs8lR6DjxTllbv3GiOF402LXMbydZ9ulxykMmrhzJaw7MEYrNMV
- uOfKWRv1qadCn3iYrkkiSWQFOQ1M0i8B0tzjyL7Siln5LIVPBVRIX1tvUZfPP0R7HpAN
- dTpdQNpl3Hetd5xTBWAKNQAu0tuccMTn1jwo+1nX+4pgCDhODFurE2LNr8p67h8ZAl7L
- jV+zXl73HJ0i7L6dX5+UlvMNb6RR0Cgq6Du4uPnF3g22Z6S9zjHZwYFikLekLjQIriMD
- V30Q7sv9D7PBuK4oFdyWpUJAeVVIQDDc1aEKeB/6E9JcpDZFPW1gbRnSIu4uzHGApw78
- LiCg==
+ bh=r4HGgiMv15db038MKi02IiRG5N36n+u7KrBeSKqnYB8=;
+ b=HJP17Mj8f+vuOpAGEUGxtfwliiQl2UYSQ8muIHd/7xx2xZ11lMYFJA22ABzGS3OZQZ
+ W4u4BYkKKWUoq+PiF9R3LOrhV0xJtKW0cEY6hcBN3gZEMS3lo9lCeyAhMXcWpNRlnHHr
+ yomShqb5jzsVPHOKaWL94iHnpynzMWfMQG0lZAFQWos5GVxTR2SZ6So0Wlg3wiDHwSc/
+ M3tpt11Q996167eHWOMbDcuTMikXQIFcwv2vcaDQ1IEy4zaQ0RQjNOUeQKEfNY33fV9K
+ ShRezxXjR4tf+1iKBSzJuGJItthqm88oI1zu76RVIbiedojDYnfvlT40Z41Pk8WJUGGH
+ zKug==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVcZvSSX/BgExM5ccaTR4D0OUsFpaSRfAr99t4z2ZgvMq7f58xHXiRa7OOEcPbzAIxwZYV1SRkr1Q==@nongnu.org
-X-Gm-Message-State: AOJu0YxBRl7a7k3xrvYmY+pW/1G8RT8pNCskb68qK6BoLsExhVE82t+N
- AJulfOuVO11YPjbbDnTCJDGD++ZKA2OrVZ9r0uPqm0yt3fJ3FINIMme46cajvbrXZdI=
-X-Gm-Gg: ASbGncuQcLzDtB0DApkzernJjTC8tteqoZKFV9EwlgyxqRCXjLca2sKjEwhW25Yc7p8
- o/AGWMyJffJPm4Qp7JVBC6YiPAR/iwORuWTahLzgDuROLLBKucZZsOT7BhIYZxHakop0pI/H16z
- 4+aXUsZbZCzEZbgcd0Zq9nWKwqYa+qNevn92VWv0bWz8joI7JwCf3nKFWHXMjPwscKPVpN9v/WO
- UbWv/fU8rVuVlLWWClf9qt3vlLH48BGNvgwvIfKIuvChhW5ntUT9+Bj4CK4jruZvEBIxGBRUI16
- 6VBj5m5N5p5IRcZW5pHEwPoqlpnNfVgLGj9xCk8NZeURw22Scdc/bVRYJOoh5sSB0xkvGZilaGt
- FmtO006Ga7Qq8u5Kw2gdE593ASwJ5z7z8YmuLdETKDdwWFYmwL0/zKW83a4Uwg8cp77sFsyovEa
- Xpuyr4PxhHGvm9CmV5qwE=
-X-Google-Smtp-Source: AGHT+IEq7PwzNWupra1NG1OBtrWiBM/xZ8ZbE2ssL1sNC/gPpkHqvpUEmnX8rktwHeIqbswn441T9g==
-X-Received: by 2002:a05:600c:a341:b0:46e:39da:1195 with SMTP id
- 5b1f17b1804b1-46fa9a8b3a9mr84537105e9.3.1760103813909; 
- Fri, 10 Oct 2025 06:43:33 -0700 (PDT)
+ AJvYcCVCSQ/XG7/yfPbs9+VRn0yCLey74Pl2g0sc/XR3byztJbMzUZG4N81n9ZnCzifT0iCoMKzauYc38g==@nongnu.org
+X-Gm-Message-State: AOJu0YzivvxajaUfcOiW73XEq3G3AX64+O+OoJ6tjoNFe/dwwP8TWsXJ
+ VkiAZDAiJGZQSyibod/gMowYRc33z5hsBqU+p9CkShlc9jE+oD3gF6vidxlJGY0puKE=
+X-Gm-Gg: ASbGncu9YoqyqfrWxDO7IIY1Cjjdzb9lhAzxqiMZSPKPJJfHcaS6z80HLgxxW+1Twr0
+ 8VeWNKQtFN/tJclqBa12F6Ej1vXbPawJSX082X1qBZbj+pMAwqERARLMVp/8cKyB3l7AhgAtwNT
+ ATna5Xb3+cQoGbD29wCQ/RRKx2pVvW6q1xtshB7fmREMJW+fliJkjMtPI3vMpTimwGmFFK0ch+v
+ nuq74KoUUmw5yLTD/xCIeqvkTkwsMKurri3rP8YyBOwHMOXOQms/RXxcwbgLNEFMmptq1J1255/
+ z5VCE1nENqXe8PELbxvcHGvqhMOkGxqZ9iQH6jiJRogTvZTzXbrlr21v1YfnSgxQj44+vU1YXPx
+ pOd4MVB/eCeL3MHENx2E4Nip/83azTApbfJqLxil72rCx/mkbcYLVkanpkQFLW+IIDNoGzWQmlb
+ 4jX5smnSlOo/9VXenMfng=
+X-Google-Smtp-Source: AGHT+IHEvlUtvA1b47Zvxo/zoUXjFDcn/NFvuh+N6pNi1JzgwJ6dpmrR/Ll2gcdeH1ymCCVWKFtYgQ==
+X-Received: by 2002:a05:6000:1ac8:b0:3f7:b7ac:f3d4 with SMTP id
+ ffacd0b85a97d-42666abbbc1mr9120199f8f.5.1760103824459; 
+ Fri, 10 Oct 2025 06:43:44 -0700 (PDT)
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-46fab3cd658sm62396535e9.1.2025.10.10.06.43.32
+ ffacd0b85a97d-426ce583424sm4269124f8f.21.2025.10.10.06.43.43
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 10 Oct 2025 06:43:32 -0700 (PDT)
+ Fri, 10 Oct 2025 06:43:43 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org, qemu-arm@nongnu.org, qemu-riscv@nongnu.org,
  qemu-s390x@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Nicholas Piggin <npiggin@gmail.com>, Chinmay Rath <rathc@linux.ibm.com>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>, kvm@vger.kernel.org
-Subject: [PATCH 12/16] target/ppc: Replace HOST_BIG_ENDIAN #ifdef with runtime
- if() check
-Date: Fri, 10 Oct 2025 15:42:21 +0200
-Message-ID: <20251010134226.72221-13-philmd@linaro.org>
+ Richard Henderson <richard.henderson@linaro.org>,
+ David Hildenbrand <david@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
+ Thomas Huth <thuth@redhat.com>
+Subject: [PATCH 14/16] target/s390x: Replace HOST_BIG_ENDIAN #ifdef with
+ runtime if() check
+Date: Fri, 10 Oct 2025 15:42:23 +0200
+Message-ID: <20251010134226.72221-15-philmd@linaro.org>
 X-Mailer: git-send-email 2.51.0
 In-Reply-To: <20251010134226.72221-1-philmd@linaro.org>
 References: <20251010134226.72221-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::344;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x344.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::430;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x430.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, T_SPF_HELO_TEMPERROR=0.01,
- T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -116,238 +114,44 @@ No functional change intended.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- target/ppc/arch_dump.c              |  9 ++-------
- target/ppc/int_helper.c             | 28 ++++++++++++++--------------
- target/ppc/kvm.c                    | 25 +++++++++----------------
- target/ppc/translate/vmx-impl.c.inc | 14 +++++++-------
- target/ppc/translate/vsx-impl.c.inc |  6 +++---
- tcg/ppc/tcg-target.c.inc            | 24 ++++++++++++------------
- 6 files changed, 47 insertions(+), 59 deletions(-)
+ target/s390x/tcg/translate.c        | 6 +++---
+ target/s390x/tcg/translate_vx.c.inc | 6 +++---
+ 2 files changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/target/ppc/arch_dump.c b/target/ppc/arch_dump.c
-index 80ac6c3e320..5cb8dbe9a6a 100644
---- a/target/ppc/arch_dump.c
-+++ b/target/ppc/arch_dump.c
-@@ -158,21 +158,16 @@ static void ppc_write_elf_vmxregset(NoteFuncArg *arg, PowerPCCPU *cpu, int id)
-     struct PPCElfVmxregset *vmxregset;
-     Note *note = &arg->note;
-     DumpState *s = arg->state;
-+    const int host_data_order = HOST_BIG_ENDIAN ? ELFDATA2MSB : ELFDATA2LSB;
-+    const bool needs_byteswap = s->dump_info.d_endian == host_data_order;
- 
-     note->hdr.n_type = cpu_to_dump32(s, NT_PPC_VMX);
-     vmxregset = &note->contents.vmxregset;
-     memset(vmxregset, 0, sizeof(*vmxregset));
- 
-     for (i = 0; i < 32; i++) {
--        bool needs_byteswap;
-         ppc_avr_t *avr = cpu_avr_ptr(&cpu->env, i);
- 
--#if HOST_BIG_ENDIAN
--        needs_byteswap = s->dump_info.d_endian == ELFDATA2LSB;
--#else
--        needs_byteswap = s->dump_info.d_endian == ELFDATA2MSB;
--#endif
--
-         if (needs_byteswap) {
-             vmxregset->avr[i].u64[0] = bswap64(avr->u64[1]);
-             vmxregset->avr[i].u64[1] = bswap64(avr->u64[0]);
-diff --git a/target/ppc/int_helper.c b/target/ppc/int_helper.c
-index ef4b2e75d60..0c6f5b2e519 100644
---- a/target/ppc/int_helper.c
-+++ b/target/ppc/int_helper.c
-@@ -1678,13 +1678,13 @@ void helper_vslo(ppc_avr_t *r, ppc_avr_t *a, ppc_avr_t *b)
- {
-     int sh = (b->VsrB(0xf) >> 3) & 0xf;
- 
--#if HOST_BIG_ENDIAN
--    memmove(&r->u8[0], &a->u8[sh], 16 - sh);
--    memset(&r->u8[16 - sh], 0, sh);
--#else
--    memmove(&r->u8[sh], &a->u8[0], 16 - sh);
--    memset(&r->u8[0], 0, sh);
--#endif
-+    if (HOST_BIG_ENDIAN) {
-+        memmove(&r->u8[0], &a->u8[sh], 16 - sh);
-+        memset(&r->u8[16 - sh], 0, sh);
-+    } else {
-+        memmove(&r->u8[sh], &a->u8[0], 16 - sh);
-+        memset(&r->u8[0], 0, sh);
-+    }
- }
- 
- #if HOST_BIG_ENDIAN
-@@ -1898,13 +1898,13 @@ void helper_vsro(ppc_avr_t *r, ppc_avr_t *a, ppc_avr_t *b)
- {
-     int sh = (b->VsrB(0xf) >> 3) & 0xf;
- 
--#if HOST_BIG_ENDIAN
--    memmove(&r->u8[sh], &a->u8[0], 16 - sh);
--    memset(&r->u8[0], 0, sh);
--#else
--    memmove(&r->u8[0], &a->u8[sh], 16 - sh);
--    memset(&r->u8[16 - sh], 0, sh);
--#endif
-+    if (HOST_BIG_ENDIAN) {
-+        memmove(&r->u8[sh], &a->u8[0], 16 - sh);
-+        memset(&r->u8[0], 0, sh);
-+    } else {
-+        memmove(&r->u8[0], &a->u8[sh], 16 - sh);
-+        memset(&r->u8[16 - sh], 0, sh);
-+    }
- }
- 
- void helper_vsumsws(CPUPPCState *env, ppc_avr_t *r, ppc_avr_t *a, ppc_avr_t *b)
-diff --git a/target/ppc/kvm.c b/target/ppc/kvm.c
-index 2521ff65c6c..c00d29ce2c8 100644
---- a/target/ppc/kvm.c
-+++ b/target/ppc/kvm.c
-@@ -651,13 +651,13 @@ static int kvm_put_fp(CPUState *cs)
-             uint64_t *fpr = cpu_fpr_ptr(env, i);
-             uint64_t *vsrl = cpu_vsrl_ptr(env, i);
- 
--#if HOST_BIG_ENDIAN
--            vsr[0] = float64_val(*fpr);
--            vsr[1] = *vsrl;
--#else
--            vsr[0] = *vsrl;
--            vsr[1] = float64_val(*fpr);
--#endif
-+            if (HOST_BIG_ENDIAN) {
-+                vsr[0] = float64_val(*fpr);
-+                vsr[1] = *vsrl;
-+            } else {
-+                vsr[0] = *vsrl;
-+                vsr[1] = float64_val(*fpr);
-+            }
-             reg.addr = (uintptr_t) &vsr;
-             reg.id = vsx ? KVM_REG_PPC_VSR(i) : KVM_REG_PPC_FPR(i);
- 
-@@ -728,17 +728,10 @@ static int kvm_get_fp(CPUState *cs)
-                                         strerror(errno));
-                 return ret;
-             } else {
--#if HOST_BIG_ENDIAN
--                *fpr = vsr[0];
-+                *fpr = vsr[!HOST_BIG_ENDIAN];
-                 if (vsx) {
--                    *vsrl = vsr[1];
-+                    *vsrl = vsr[HOST_BIG_ENDIAN];
-                 }
--#else
--                *fpr = vsr[1];
--                if (vsx) {
--                    *vsrl = vsr[0];
--                }
--#endif
-             }
-         }
-     }
-diff --git a/target/ppc/translate/vmx-impl.c.inc b/target/ppc/translate/vmx-impl.c.inc
-index 92d6e8c6032..ca9cf1823d4 100644
---- a/target/ppc/translate/vmx-impl.c.inc
-+++ b/target/ppc/translate/vmx-impl.c.inc
-@@ -134,9 +134,9 @@ static void gen_mtvscr(DisasContext *ctx)
- 
-     val = tcg_temp_new_i32();
-     bofs = avr_full_offset(rB(ctx->opcode));
--#if HOST_BIG_ENDIAN
--    bofs += 3 * 4;
--#endif
-+    if (HOST_BIG_ENDIAN) {
-+        bofs += 3 * 4;
-+    }
- 
-     tcg_gen_ld_i32(val, tcg_env, bofs);
-     gen_helper_mtvscr(tcg_env, val);
-@@ -1528,10 +1528,10 @@ static void gen_vsplt(DisasContext *ctx, int vece)
- 
-     /* Experimental testing shows that hardware masks the immediate.  */
-     bofs += (uimm << vece) & 15;
+diff --git a/target/s390x/tcg/translate.c b/target/s390x/tcg/translate.c
+index c7e8574438c..ec9e5a07516 100644
+--- a/target/s390x/tcg/translate.c
++++ b/target/s390x/tcg/translate.c
+@@ -258,9 +258,9 @@ static inline int vec_reg_offset(uint8_t reg, uint8_t enr, MemOp es)
+      * 16 byte operations to handle it in a special way.
+      */
+     g_assert(es <= MO_64);
 -#if !HOST_BIG_ENDIAN
--    bofs ^= 15;
--    bofs &= ~((1 << vece) - 1);
+-    offs ^= (8 - bytes);
 -#endif
 +    if (!HOST_BIG_ENDIAN) {
-+        bofs ^= 15;
-+        bofs &= ~((1 << vece) - 1);
++        offs ^= (8 - bytes);
 +    }
- 
-     tcg_gen_gvec_dup_mem(vece, dofs, bofs, 16, 16);
+     return offs + vec_full_reg_offset(reg);
  }
-diff --git a/target/ppc/translate/vsx-impl.c.inc b/target/ppc/translate/vsx-impl.c.inc
-index 00ad57c6282..8e5c75961f4 100644
---- a/target/ppc/translate/vsx-impl.c.inc
-+++ b/target/ppc/translate/vsx-impl.c.inc
-@@ -1642,9 +1642,9 @@ static bool trans_XXSPLTW(DisasContext *ctx, arg_XX2_uim *a)
-     tofs = vsr_full_offset(a->xt);
-     bofs = vsr_full_offset(a->xb);
-     bofs += a->uim << MO_32;
+ 
+diff --git a/target/s390x/tcg/translate_vx.c.inc b/target/s390x/tcg/translate_vx.c.inc
+index e073e5ad3aa..f3b4b48ab7b 100644
+--- a/target/s390x/tcg/translate_vx.c.inc
++++ b/target/s390x/tcg/translate_vx.c.inc
+@@ -175,9 +175,9 @@ static void get_vec_element_ptr_i64(TCGv_ptr ptr, uint8_t reg, TCGv_i64 enr,
+ 
+     /* convert it to an element offset relative to tcg_env (vec_reg_offset() */
+     tcg_gen_shli_i64(tmp, tmp, es);
 -#if !HOST_BIG_ENDIAN
--    bofs ^= 8 | 4;
+-    tcg_gen_xori_i64(tmp, tmp, 8 - NUM_VEC_ELEMENT_BYTES(es));
 -#endif
 +    if (!HOST_BIG_ENDIAN) {
-+        bofs ^= 8 | 4;
++        tcg_gen_xori_i64(tmp, tmp, 8 - NUM_VEC_ELEMENT_BYTES(es));
 +    }
+     tcg_gen_addi_i64(tmp, tmp, vec_full_reg_offset(reg));
  
-     tcg_gen_gvec_dup_mem(MO_32, tofs, bofs, 16, 16);
-     return true;
-diff --git a/tcg/ppc/tcg-target.c.inc b/tcg/ppc/tcg-target.c.inc
-index b8b23d44d5e..61aa77f5454 100644
---- a/tcg/ppc/tcg-target.c.inc
-+++ b/tcg/ppc/tcg-target.c.inc
-@@ -3951,9 +3951,9 @@ static bool tcg_out_dupm_vec(TCGContext *s, TCGType type, unsigned vece,
-             tcg_out_mem_long(s, 0, LVEBX, out, base, offset);
-         }
-         elt = extract32(offset, 0, 4);
--#if !HOST_BIG_ENDIAN
--        elt ^= 15;
--#endif
-+        if (!HOST_BIG_ENDIAN) {
-+            elt ^= 15;
-+        }
-         tcg_out32(s, VSPLTB | VRT(out) | VRB(out) | (elt << 16));
-         break;
-     case MO_16:
-@@ -3964,9 +3964,9 @@ static bool tcg_out_dupm_vec(TCGContext *s, TCGType type, unsigned vece,
-             tcg_out_mem_long(s, 0, LVEHX, out, base, offset);
-         }
-         elt = extract32(offset, 1, 3);
--#if !HOST_BIG_ENDIAN
--        elt ^= 7;
--#endif
-+        if (!HOST_BIG_ENDIAN) {
-+            elt ^= 7;
-+        }
-         tcg_out32(s, VSPLTH | VRT(out) | VRB(out) | (elt << 16));
-         break;
-     case MO_32:
-@@ -3977,9 +3977,9 @@ static bool tcg_out_dupm_vec(TCGContext *s, TCGType type, unsigned vece,
-         tcg_debug_assert((offset & 3) == 0);
-         tcg_out_mem_long(s, 0, LVEWX, out, base, offset);
-         elt = extract32(offset, 2, 2);
--#if !HOST_BIG_ENDIAN
--        elt ^= 3;
--#endif
-+        if (!HOST_BIG_ENDIAN) {
-+            elt ^= 3;
-+        }
-         tcg_out32(s, VSPLTW | VRT(out) | VRB(out) | (elt << 16));
-         break;
-     case MO_64:
-@@ -3991,9 +3991,9 @@ static bool tcg_out_dupm_vec(TCGContext *s, TCGType type, unsigned vece,
-         tcg_out_mem_long(s, 0, LVX, out, base, offset & -16);
-         tcg_out_vsldoi(s, TCG_VEC_TMP1, out, out, 8);
-         elt = extract32(offset, 3, 1);
--#if !HOST_BIG_ENDIAN
--        elt = !elt;
--#endif
-+        if (!HOST_BIG_ENDIAN) {
-+            elt = !elt;
-+        }
-         if (elt) {
-             tcg_out_vsldoi(s, out, out, TCG_VEC_TMP1, 8);
-         } else {
+     /* generate the final ptr by adding tcg_env */
 -- 
 2.51.0
 

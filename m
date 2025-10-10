@@ -4,151 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40FB1CCD18A
-	for <qemu-arm@archiver.kernel.org>; Fri, 10 Oct 2025 13:57:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EEF91CCD185
+	for <qemu-arm@archiver.kernel.org>; Fri, 10 Oct 2025 14:38:59 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v7DcW-0001Pw-PX; Fri, 10 Oct 2025 09:57:20 -0400
+	id 1v7EGL-0004pD-BU; Fri, 10 Oct 2025 10:38:32 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1v7DcS-0001ON-VJ
- for qemu-arm@nongnu.org; Fri, 10 Oct 2025 09:57:17 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1v7DcG-0003gA-69
- for qemu-arm@nongnu.org; Fri, 10 Oct 2025 09:57:13 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1760104613;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=K0dV9pyr8a70FDWuP2mWjgdH86WHWjV11KceYCHWSa4=;
- b=N7GQ9rShaga2iqbjVF7twrs44fjyiJAgYUkXdjHFEuX6Jei8KdEE9Fh6ugfJWuDf6ZrfWt
- nMbzxAW8ncHcuZQH/0ZP4S30ys4N7fRHykqm9SXuLy1SHxirrZ9y3LheNBmLgOdi1MK1bo
- EshcFrjhfCNTIkPERJd+CzW6tZCh4OI=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-103-qxPnCBrWM62T8mO05SJgBw-1; Fri, 10 Oct 2025 09:56:52 -0400
-X-MC-Unique: qxPnCBrWM62T8mO05SJgBw-1
-X-Mimecast-MFC-AGG-ID: qxPnCBrWM62T8mO05SJgBw_1760104611
-Received: by mail-wm1-f69.google.com with SMTP id
- 5b1f17b1804b1-46e2c11b94cso14898065e9.3
- for <qemu-arm@nongnu.org>; Fri, 10 Oct 2025 06:56:52 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v7EGI-0004nj-N3
+ for qemu-arm@nongnu.org; Fri, 10 Oct 2025 10:38:28 -0400
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v7EFv-0003gu-Vn
+ for qemu-arm@nongnu.org; Fri, 10 Oct 2025 10:38:25 -0400
+Received: by mail-wm1-x333.google.com with SMTP id
+ 5b1f17b1804b1-46e3cdc1a6aso16663975e9.1
+ for <qemu-arm@nongnu.org>; Fri, 10 Oct 2025 07:37:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1760107073; x=1760711873; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=8quOKggH2MDngAZiD5kJOV1t5NoqB0UhD9/qU6D9F8s=;
+ b=a9nLam65UEt2Qj2rlrKBcOgbzZ3vGedHO0skYx48MZAQzULu8DmTGeFG0Zc/UuUHyt
+ PwKpLDw2YYJJIIrtEDpHDseyx8mwJOJlgyc0V9U3NZEKT0m/247O3W6gNQiNvmFgUSfp
+ YiECkGj11nak2Xig4TwofLJPKrUzWS7Kb07sFWWR9sJ7fy1Ed/9JNE2xQqUnctwY2JtK
+ pCdmW52D38VrT6mgxnyiIoAwoHEN1kEKfrPYBqdDFNeI5VuipUfiLr7J+BWlNYvg/ZwP
+ iX0l3nfpnwSgEow4IeYxsi4vCeieGofYF/dXXi7sUXEITjdyYoe/rNLWWfg/V9/OoTLC
+ jPEw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1760104611; x=1760709411;
- h=content-transfer-encoding:in-reply-to:autocrypt:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=K0dV9pyr8a70FDWuP2mWjgdH86WHWjV11KceYCHWSa4=;
- b=DdqeYIvPMW1YyZAjgBXPzC7J22wIZMq/yu3Xpy6NxV9rbk8/UzYOPG62uQoSAmInXW
- f9YqHTQA+iAsxjyIovz8X/j7yz3bMkGaeQnEPG3JlfCoqulebBQ6L/CehS/TrPRr3kQI
- z83g6Wv5Ve5b8TEUsEkUz5Yj34B1EfXe6meIXsry4qfmJjyI6Kld06L7Wf4UMOMVDzVw
- FaWO0GGuf3ce0Lmf8TrQM2Yi9uvxVPaZejbIrflU095R9092twTi1gvsSYqkWDO1tmWV
- yzAab3Xv2sfdcedTgQGp/ehssFc8geA5URdIcxLR8SUefIL8bh2lQ5pzg9ozPNI5VEyX
- ZmXg==
+ d=1e100.net; s=20230601; t=1760107073; x=1760711873;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=8quOKggH2MDngAZiD5kJOV1t5NoqB0UhD9/qU6D9F8s=;
+ b=YbHx6YxaHWhHqNgZxSvMVLtk7Uid8WLFz95jahKo9dq5txsqRkK3e9VfKayXB6CSIp
+ 4GuNc6SjbaNoy/HrZp6QWcKY2FBfG021yKoLVnUBdO2YIZ6JmSZ3buUzGXw3Xyfmn+yk
+ DQGtnbUE3jFy5StTzbH2QGlGc0SCy20GQCLs9du8jJZ76tfWev7i1DVehfNKVlbBJDQh
+ YNWEKtFK1D7jP56Evm36KOpDkv9EPb3F8xDcDl1vy44T9nxg+Orh5lwxx0zHyGm15kGA
+ OvDSqzhoX2Km3XwrDoEiKmXARmYAVF9tWYcmLK9/pFupJTZLDvFF5uPBy7Wwf1dy8ko9
+ 2noA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXUmwxLRD2pZ54nz1NVW5vOHU5IrjOh/U5b7KqMqaEpBGsIexQ55Y1Z08fnenOtQIs4eKpIot696w==@nongnu.org
-X-Gm-Message-State: AOJu0YxGrSKRRqUPhNYZhiEb5bGeOER+VkMNy3jMe0hH5FvOI8BtkO6S
- Z+68aldeIwyziSqni/HoNLJGexwydwD7WEIS2wTc0aLKxy7j9feMgMqMy15afgJx3e/yO/wMSoj
- XnywJLEa3viMgcKKBycuZ0TZOCOL+wihqmSC9MHyeRBPK9qtaNOmfBA==
-X-Gm-Gg: ASbGnctKEw/3+D8hd9eMAdn9kadbUUMt1THDuD5Yh1gv1Hg23bq8XbrMD0qYoOgSWGa
- S0xZqBDL8vYnMTEv8cUkh1oDtSSo6UWlZHP20nOJPhzPsarJrf0eThNqVZfRpM/llGuk8C5W18U
- au4SFAy96W2yDpd7yUPGycRKamK2mq/nN7Fon9+pFhHvozzyFhdxeUJci1J8ArybodA0hGgleeB
- eFHOr9Oh+lPvXYPZT7AuTnNvNlM1W7cpy4lpBoxKw8xa3v8DXqu7EZAIFujidf2LH90BO2fqyKX
- 5AigR1i/819QvDGbavvOXsl3Baq6iU3ccyxamOTM3QXdB0oXSFRP0N714E5DFdTyeGVDdfd50GM
- Vx5g=
-X-Received: by 2002:a5d:5848:0:b0:3fa:2316:c32 with SMTP id
- ffacd0b85a97d-4266e8e44c9mr7271366f8f.57.1760104611025; 
- Fri, 10 Oct 2025 06:56:51 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGENIRTu4x1YfWf5sEr+OkoAv5O8anisJTdon6IIG82DWjj3HDGNKjnJT1sArP3tlPxghheig==
-X-Received: by 2002:a5d:5848:0:b0:3fa:2316:c32 with SMTP id
- ffacd0b85a97d-4266e8e44c9mr7271345f8f.57.1760104610559; 
- Fri, 10 Oct 2025 06:56:50 -0700 (PDT)
-Received: from [192.168.3.141] (tmo-083-189.customers.d1-online.com.
- [80.187.83.189]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-426ce5e7e44sm4301361f8f.46.2025.10.10.06.56.49
+ AJvYcCUjDtg132aRESya/waHOx4ZjLnZjB9BzkAVnuC10m4SmS9kEMOmLXqRDXSZsJ+anKMxq//EJH1l4g==@nongnu.org
+X-Gm-Message-State: AOJu0YxINmqI+bSmzAJdNimlvoZL1O2LRJosJhf8XMW7ICiJFzUdx2bD
+ qG+Ol7/p03WG0bdXwrIZWewXVeBv47LDkGHqF3Go52TEMIULjtaHFlUeVruveEtsQM0=
+X-Gm-Gg: ASbGncvzbXxc8omNUhhoH/0he3IN7ONByDTJ6Kl/BJxl1yagrA7Z6T43zLG2QeTb4eu
+ yhbPyHBSZ4t1DvKbgDbr51DZzY4386AvS/g5OTH2gF5SNW9gsmlWj1xY1/3x5lYvbKMegKG/ltU
+ im7LsJOPa/Ni8LhiKNu9di20SQN/+LLH6YKtkDo/Hr8datdKccKHv7d4rvtfJnysfhkzoCIXAWE
+ y9JbP/Am3kcX1BjXzjITEMN+5I09E3GT/neQy1xhh2Hn06KVte3gkoW2E2j3fYnf0bKyX6rHUdM
+ QeB5JPSzv2aI/fq9lrmFrD7DZENTi43sTlevSh/wltxrweTgRDkRmq8b5QbYdsUbdG9o7hINFlI
+ taQPYuVV3LWRAW+gBk/h8uyUfsuuBCGkWGRU2WT2fEjlGcAeIcc9+IVkznlCVdMYKp3c6k4gusr
+ yJ+v7y9ZzebdTw
+X-Google-Smtp-Source: AGHT+IGO1e0SuQS25tGqDlkxLz4xhu3MmOqg0u8G4suXSWNF437Xcfw8L7dSkV5uasgUDNa2d8L1Ww==
+X-Received: by 2002:a05:600c:6592:b0:46f:a2ba:581f with SMTP id
+ 5b1f17b1804b1-46fa9ec796bmr87600855e9.16.1760107073294; 
+ Fri, 10 Oct 2025 07:37:53 -0700 (PDT)
+Received: from [192.168.69.221] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-46fb49d0307sm47978965e9.18.2025.10.10.07.37.52
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 10 Oct 2025 06:56:50 -0700 (PDT)
-Message-ID: <2fc018c3-6548-490e-a220-fb203a588138@redhat.com>
-Date: Fri, 10 Oct 2025 15:56:48 +0200
+ Fri, 10 Oct 2025 07:37:52 -0700 (PDT)
+Message-ID: <614c4af0-1fea-4d48-bb52-a1ef60302b9a@linaro.org>
+Date: Fri, 10 Oct 2025 16:37:51 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 14/16] target/s390x: Replace HOST_BIG_ENDIAN #ifdef with
+Subject: Re: [PATCH 00/16] overall: Replace HOST_BIG_ENDIAN #ifdef with
  runtime if() check
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: qemu-ppc@nongnu.org, qemu-arm@nongnu.org, qemu-riscv@nongnu.org,
- qemu-s390x@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
- Ilya Leoshkevich <iii@linux.ibm.com>, Thomas Huth <thuth@redhat.com>
-References: <20251010134226.72221-1-philmd@linaro.org>
- <20251010134226.72221-15-philmd@linaro.org>
-From: David Hildenbrand <david@redhat.com>
-Autocrypt: addr=david@redhat.com; keydata=
- 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
- qIws/H2t
-In-Reply-To: <20251010134226.72221-15-philmd@linaro.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: nSnmgGS_M_RRGHDRuMxyoxhQUbrHVcL6agFqddm94vs_1760104611
-X-Mimecast-Originator: redhat.com
 Content-Language: en-US
+To: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-ppc@nongnu.org, qemu-arm@nongnu.org, qemu-riscv@nongnu.org,
+ qemu-s390x@nongnu.org
+References: <20251010134226.72221-1-philmd@linaro.org>
+ <5e4d3a1a-ee13-40c3-b470-d68f5b6b4ad1@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <5e4d3a1a-ee13-40c3-b470-d68f5b6b4ad1@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=david@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
-X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.441,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001,
- T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::333;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x333.google.com
+X-Spam_score_int: 4
+X-Spam_score: 0.4
+X-Spam_bar: /
+X-Spam_report: (0.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ SUSPICIOUS_RECIPS=2.51 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -164,22 +105,26 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 10.10.25 15:42, Philippe Mathieu-Daudé wrote:
-> Replace compile-time #ifdef with a runtime check to ensure all code
-> paths are built and tested. This reduces build-time configuration
-> complexity and improves maintainability.
+On 10/10/25 15:51, Paolo Bonzini wrote:
+> On 10/10/25 15:42, Philippe Mathieu-Daudé wrote:
+>> Replace compile-time #ifdef with a runtime check to ensure all code
+>> paths are built and tested. This reduces build-time configuration
+>> complexity and improves maintainability.
+>>
+>> No functional change intended.
 > 
-> No functional change intended.
+> No need to repost (and I didn't review), but please change throughout 
+> the commit message to mention a *compile-time* if() check.  The code for 
+> the wrong endianness will not make it past compilation, and mentioning 
+> runtime checks left me wondering if you had mistaken HOST for TARGET.
+
+I want HOST, and hope the changes are correct: I meant to express the
+code is elided by the compiler, indeed not at *runtime* 🤦 I'll reword
+the commit description. Thanks for catching this.
+
 > 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> ---
-
-
-Reviewed-by: David Hildenbrand <david@redhat.com>
-
--- 
-Cheers
-
-David / dhildenb
+> Thanks,
+> 
+> Paolo
 
 

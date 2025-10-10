@@ -4,81 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0A6ACCD185
-	for <qemu-arm@archiver.kernel.org>; Fri, 10 Oct 2025 12:10:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46B1ECCA476
+	for <qemu-arm@archiver.kernel.org>; Fri, 10 Oct 2025 13:44:10 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v7Bwk-0006I5-Ak; Fri, 10 Oct 2025 08:10:06 -0400
+	id 1v7DOp-0002B9-82; Fri, 10 Oct 2025 09:43:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1v7Bwi-0006Gr-9Z
- for qemu-arm@nongnu.org; Fri, 10 Oct 2025 08:10:04 -0400
-Received: from mail-yx1-xb12f.google.com ([2607:f8b0:4864:20::b12f])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v7DOk-00028o-Jr
+ for qemu-arm@nongnu.org; Fri, 10 Oct 2025 09:43:07 -0400
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1v7BwZ-00022H-2v
- for qemu-arm@nongnu.org; Fri, 10 Oct 2025 08:10:04 -0400
-Received: by mail-yx1-xb12f.google.com with SMTP id
- 956f58d0204a3-6361a421b67so2181568d50.2
- for <qemu-arm@nongnu.org>; Fri, 10 Oct 2025 05:09:48 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v7DOU-0007rG-1d
+ for qemu-arm@nongnu.org; Fri, 10 Oct 2025 09:43:03 -0400
+Received: by mail-wr1-x433.google.com with SMTP id
+ ffacd0b85a97d-4257aafab98so1829840f8f.3
+ for <qemu-arm@nongnu.org>; Fri, 10 Oct 2025 06:42:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1760098187; x=1760702987; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
+ d=linaro.org; s=google; t=1760103758; x=1760708558; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=3IUDUai/bqlrO+MrdnH4PeedG7nz4mt9Thnj6tMCPn0=;
- b=ybDkXlWgbFCWdBPUmt+GXuydFIBsKnURqAMDAyJXtyy9z7vHSw6gXLlWv2j53acShl
- o7+CjwgaWj4cx+2WYGOoPkfLqMaenvmhsB0fYD8hDasJ6JvWQn0HO5Ud+BScbLwf0P3E
- jaNUh1H5uSDyFy/6Xq23YNw7uk6unA3kk7Mbza4mnTRp6M9S+bodW128o/kV/njj1sNq
- mUMBVTztl6Hpwmw6AsksCEgHoQlyJxg0CFqcXWzJ9ocDYnI6A4GnZYtNulPT6e1x1dGY
- 46FbVftIwCnuuEUogXe4J57ddiBgEkmUYCnwxsXQtmImij0rqKr5/nahpec4i0uTJsJy
- FLUA==
+ bh=9OSShypqbaYu7gg2JRcaPkTQFiWcjkliGca982i75nQ=;
+ b=J0vCIJG7y/kA8FgU9elcsWyEwAYXIQUKlcLT4IXuXZOMdl69a61Kt/0Iiy7U2wwSfj
+ LqkmapS+gEGhpdIKRUZVjMMMhZn11ciYJtDmndsT1FGk/itLPG6FSxdq/CS31OUW4rrh
+ 53IgeQYEYuGmJzGARc1lYItwippXBHgn+4AH//hyXYpcIEfA+rfrLW3hLoKn1ux3ZsYD
+ jXUmH3ojX+CcLMeysslGCfTtMrkCjkWzqfyrakPS2XrYxBWoFlFtJTmJ2nqQ5KOQL3MW
+ VBxs7uHvKd+3H0UqCL2KrkkhphHUAM58PdiMEXsXqi0FIhF9M707HVh/IGqSjAzQj15x
+ 15Ug==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1760098187; x=1760702987;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ d=1e100.net; s=20230601; t=1760103758; x=1760708558;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=3IUDUai/bqlrO+MrdnH4PeedG7nz4mt9Thnj6tMCPn0=;
- b=wTp6F+tXif/UkJpwQ3/QUKOjWt3MtnKVqdxXiSfriDWo8ed9Csl3kaBRL/giKQcD10
- Ospdi43zWvX8SzGrqs7NSXCfnoNp9kLjTIn4nQjWGXbOVx2gzSDehv7KRe9LGiElaYf/
- nwqvJPSha0x8tNmy7+1qNY/PBvcJ8EoLto9Qs18oD4k4IAQAiewktwD8H2TUMdu0Nnfa
- q/7O7hhdzG8xxWFpbn1KidD2ViI3Ucu3U+EDlGkR58wARvHyR00/3lvofXHKL2S4Z30W
- jKdgPwo+NymysSA869JeafdsxrZMkFiIsp35NGQzHI7FyTOk+QhVLz+j4x7BXHDKhXWx
- cxng==
+ bh=9OSShypqbaYu7gg2JRcaPkTQFiWcjkliGca982i75nQ=;
+ b=k2xzO/YKWTUbcewN7Tm1FAdCCoXpl8BMaS0hAIJ8D076JlH3OVYEM0JYbB5SHMTC1U
+ FrnqFkZUEW43JVN7C9Ol9rUKWSAonFsZJy3j2/AUbS1ouN3LMLXW+Mu5A1nvhXlYxlkn
+ PvKRz7WL6OYMaMHNbt0OWmnxOhTm+/YQLysK49daMfz2Ryx2H3g0qg0wBu9Kp8l8/TpK
+ KQ6RhLwF1gAHpyqkml31fgjYnbtbttvnlxwgOtKLbc9sD9fKimiF/xD1nQQaCBmjVJdr
+ QzWIrC3AAnNPiPvaEvfI7QtZ0AdmJX37Gyanc6AC2Bd2t+OWiPHfwEgpGKrvmu2Bc2F2
+ 8Xtw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXK6KM3xHwK29F29VpgpdBKdw2z2raMU6oDn54oecZ+95RVaqdYRS9xYcz2JiAwRLQmcUninBY+xw==@nongnu.org
-X-Gm-Message-State: AOJu0YwvSX5h/0HEUWuhm/ONSB9iJt347o2W4RMFNeiB/VnMmeK729jW
- XV+yM8hI9R20YQB0kg5gRmtXJtnVT9Z1l6RpnIq/YBdU2zPyOq1JPyyZiu94hbEzazr/0cRNbsv
- CRd9b2il7ceVCE5PDl844Dt51wBQD2fWWbpIIo/L4RA==
-X-Gm-Gg: ASbGncvknbLqHp9zrQOIY+zaGTfb8Di2N/j7d2X5jdSQGF6QgpWfF7NdlqgWNPjWRaG
- GvOx1G4uOIocxdF4N4nWw4h1r0xMrxYVA46aY7s0DZ9qt5equOTPQngaSg5cL8nKtidWSUcf22S
- 4xCy+S7XIhkfH0b7vy2731FEytoixyE7eXh4O8RSDFZWab+fA5M+EOWbsfuQedWzyE+CSis63MI
- 5GrW9+jUsg/iRqmqGJWnmM4csGfomvqUn3IY5CEL63MJOQep6Mo
-X-Google-Smtp-Source: AGHT+IGyecNBG1e1CUEElBxIlbpQc58+LQms0Kcgk9dAN9dHP7MOfk3cBPNdGLIxD3pGx23+gwazzKElUY1x38PXCP0=
-X-Received: by 2002:a53:d607:0:b0:634:e9b2:eedc with SMTP id
- 956f58d0204a3-63ccb8f1f80mr8879189d50.38.1760098186694; Fri, 10 Oct 2025
- 05:09:46 -0700 (PDT)
+ AJvYcCXnu4GuS8h6hXoX1NBtGKOqLfVGsh2ymxrW49983CrPrux25AS9ze3EBnMcb7fInzpsWjvdsX5/bA==@nongnu.org
+X-Gm-Message-State: AOJu0YwmPX1p7ONDAOH4Up3IkA1nVX4vkGFaH4J+tYQympU3E184kdPJ
+ InaFKrxGTx7Qsrury5wFsYSL2ryN4iQzHms+YmWLtsK85fT9OcnrJVGm7zQfVIH+JeA=
+X-Gm-Gg: ASbGnctdzhuxdhsR4zeRm6cZHsncx97n6ZyGRePFLWblr1PJHyYNDno10qfQMGNofv+
+ zVTWHOcB0+s2fSGjLDnMcKt0IwaycZm+79leISee0gqRUwzme9H+1oWt2aVscOOytOqiZeAYN9K
+ MqZ/dAIH+u77KLR4tlYhgayZjxKOMCsBCqTQVUr+ltcj8feRTmoUeVkELxUX5uKFHaBZ1MA3HgZ
+ KopU/lcugZEPi79TwKRCw+9LmRG2at29an+h7ruzctU6M1BDc0m0b5WWbAWgVaBT9yQvQoL4ttr
+ /BmfSA9mCXw3SV5gbTOXlb15XIMY7JeukrjwFnQD+N/aB2xEGdKdkwRRyyYp8sp4AZaqoMVTtQL
+ hXDKyvCoRZCJouo5FWNlUlSIYHHHoWLFItqdIkoYjyM2LMG7kIGmdi+8BG9ScjlHt70Md/xLLxi
+ NVw6vGJ4ujMPiRjy2wAGo=
+X-Google-Smtp-Source: AGHT+IGji93i+SOihun7JFXHhG4hGqXkH4wmT2Nj3yjUj0PvGZai8kOCJcP8uw/NluQ56SyBGkWf3Q==
+X-Received: by 2002:a05:6000:4023:b0:3ec:e277:288c with SMTP id
+ ffacd0b85a97d-4266e7d90e2mr7334892f8f.31.1760103758528; 
+ Fri, 10 Oct 2025 06:42:38 -0700 (PDT)
+Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-426ce5cfe74sm4140481f8f.35.2025.10.10.06.42.37
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Fri, 10 Oct 2025 06:42:37 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-ppc@nongnu.org, qemu-arm@nongnu.org, qemu-riscv@nongnu.org,
+ qemu-s390x@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Laurent Vivier <laurent@vivier.eu>
+Subject: [PATCH 02/16] linux-user/arm: Replace HOST_BIG_ENDIAN #ifdef with
+ runtime if() check
+Date: Fri, 10 Oct 2025 15:42:11 +0200
+Message-ID: <20251010134226.72221-3-philmd@linaro.org>
+X-Mailer: git-send-email 2.51.0
+In-Reply-To: <20251010134226.72221-1-philmd@linaro.org>
+References: <20251010134226.72221-1-philmd@linaro.org>
 MIME-Version: 1.0
-References: <20251008191716.3005164-1-daan.j.demeyer@gmail.com>
- <CAFEAcA-iQkqxR5jPtGC1EAtcH4FYD5y71x6RFSWC3vP05krScw@mail.gmail.com>
- <87sefrvuq5.fsf@draig.linaro.org>
-In-Reply-To: <87sefrvuq5.fsf@draig.linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 10 Oct 2025 13:09:35 +0100
-X-Gm-Features: AS18NWAEwuscctzRu2mHoN89ZakLsD8Chxbl04_CVGW1TF1x9SdlQBSpMgi2w1o
-Message-ID: <CAFEAcA_hv0fMyJ7WQks8SA5Af7xVvTo3gjKNM4QBFCMWAH=2DA@mail.gmail.com>
-Subject: Re: [PATCH] Add support for zboot images compressed with zstd
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: Daan De Meyer <daan.j.demeyer@gmail.com>, qemu-devel@nongnu.org, 
- Gerd Hoffmann <kraxel@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b12f;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12f.google.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::433;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x433.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -101,40 +105,97 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, 10 Oct 2025 at 12:53, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
-te:
->
-> Peter Maydell <peter.maydell@linaro.org> writes:
->
-> > On Wed, 8 Oct 2025 at 20:17, Daan De Meyer <daan.j.demeyer@gmail.com> w=
-rote:
-> >> +    } else {
-> >> +        fprintf(stderr,
-> >> +                "unable to handle EFI zboot image with \"%.*s\" compr=
-ession\n",
-> >> +                (int)sizeof(header->compression_type) - 1,
-> >> +                header->compression_type);
-> >> +        return -1;
-> >
-> > Moving the "unrecognized compression type" error path down to
-> > here means that we have moved it below the g_malloc() of the
-> > data buffer, so we now need to g_free() to avoid a leak.
->
-> Could we not declare:
->
->       g_autofree uint8_t *data =3D NULL;
->
-> and drop the cleanup?
+Replace compile-time #ifdef with a runtime check to ensure all code
+paths are built and tested. This reduces build-time configuration
+complexity and improves maintainability.
 
-You could, if you wanted to, convert the file to g_autofree, yes.
-You would need to also adjust the tail end of the function
-in the success path to do
-  *buffer =3D g_realloc(g_steal_pointer(&data), bytes);
-so we don't double-free (and drop the cleanup in other
-error exit paths).
+No functional change intended.
 
-I don't mind either way, but if we want to convert to g_autofree
-we should do it as a preliminary patch.
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ linux-user/arm/nwfpe/double_cpdo.c | 12 ++----------
+ linux-user/arm/nwfpe/fpa11_cpdt.c  | 29 ++++++++++++++---------------
+ 2 files changed, 16 insertions(+), 25 deletions(-)
 
--- PMM
+diff --git a/linux-user/arm/nwfpe/double_cpdo.c b/linux-user/arm/nwfpe/double_cpdo.c
+index d45ece2e2fe..e29b38aada0 100644
+--- a/linux-user/arm/nwfpe/double_cpdo.c
++++ b/linux-user/arm/nwfpe/double_cpdo.c
+@@ -150,11 +150,7 @@ unsigned int DoubleCPDO(const unsigned int opcode)
+       case MNF_CODE:
+       {
+          unsigned int *p = (unsigned int*)&rFm;
+-#if HOST_BIG_ENDIAN
+-         p[0] ^= 0x80000000;
+-#else
+-         p[1] ^= 0x80000000;
+-#endif
++         p[!HOST_BIG_ENDIAN] ^= 0x80000000;
+          fpa11->fpreg[Fd].fDouble = rFm;
+       }
+       break;
+@@ -162,11 +158,7 @@ unsigned int DoubleCPDO(const unsigned int opcode)
+       case ABS_CODE:
+       {
+          unsigned int *p = (unsigned int*)&rFm;
+-#if HOST_BIG_ENDIAN
+-         p[0] &= 0x7fffffff;
+-#else
+-         p[1] &= 0x7fffffff;
+-#endif
++         p[!HOST_BIG_ENDIAN] &= 0x7fffffff;
+          fpa11->fpreg[Fd].fDouble = rFm;
+       }
+       break;
+diff --git a/linux-user/arm/nwfpe/fpa11_cpdt.c b/linux-user/arm/nwfpe/fpa11_cpdt.c
+index 6b0317883a7..7b0a715d403 100644
+--- a/linux-user/arm/nwfpe/fpa11_cpdt.c
++++ b/linux-user/arm/nwfpe/fpa11_cpdt.c
+@@ -44,15 +44,14 @@ void loadDouble(const unsigned int Fn, target_ulong addr)
+     unsigned int *p;
+     p = (unsigned int *)&fpa11->fpreg[Fn].fDouble;
+     fpa11->fType[Fn] = typeDouble;
+-#if HOST_BIG_ENDIAN
+     /* FIXME - handle failure of get_user() */
+-    get_user_u32(p[0], addr);       /* sign & exponent */
+-    get_user_u32(p[1], addr + 4);
+-#else
+-    /* FIXME - handle failure of get_user() */
+-    get_user_u32(p[0], addr + 4);
+-    get_user_u32(p[1], addr);       /* sign & exponent */
+-#endif
++    if (HOST_BIG_ENDIAN) {
++        get_user_u32(p[0], addr);   /* sign & exponent */
++        get_user_u32(p[1], addr + 4);
++    } else {
++        get_user_u32(p[0], addr + 4);
++        get_user_u32(p[1], addr);   /* sign & exponent */
++    }
+ }
+ 
+ static inline
+@@ -151,13 +150,13 @@ void storeDouble(const unsigned int Fn, target_ulong addr)
+         val = fpa11->fpreg[Fn].fDouble;
+     }
+     /* FIXME - handle put_user() failures */
+-#if HOST_BIG_ENDIAN
+-    put_user_u32(p[0], addr);           /* msw */
+-    put_user_u32(p[1], addr + 4);       /* lsw */
+-#else
+-    put_user_u32(p[1], addr);           /* msw */
+-    put_user_u32(p[0], addr + 4);       /* lsw */
+-#endif
++    if (HOST_BIG_ENDIAN) {
++        put_user_u32(p[0], addr);       /* msw */
++        put_user_u32(p[1], addr + 4);   /* lsw */
++    } else {
++        put_user_u32(p[1], addr);       /* msw */
++        put_user_u32(p[0], addr + 4);   /* lsw */
++    }
+ }
+ 
+ static inline
+-- 
+2.51.0
+
 

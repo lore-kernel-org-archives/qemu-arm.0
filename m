@@ -4,92 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F5C5CAC5BB
-	for <qemu-arm@archiver.kernel.org>; Fri, 10 Oct 2025 05:00:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9D92CCA476
+	for <qemu-arm@archiver.kernel.org>; Fri, 10 Oct 2025 10:06:37 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v75EA-0002VA-Kl; Fri, 10 Oct 2025 00:59:38 -0400
+	id 1v7A0j-0000ap-2s; Fri, 10 Oct 2025 06:06:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1v75E8-0002Us-Qh
- for qemu-arm@nongnu.org; Fri, 10 Oct 2025 00:59:36 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1v75E1-0001ZT-Qq
- for qemu-arm@nongnu.org; Fri, 10 Oct 2025 00:59:36 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1760072362;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=2z1w9Lnhze5+3c99FIjGbAIMKd++Ed0320hJGHvmgyY=;
- b=DcFhQ0JqmuG6V2jv4RmPrq8fYwVLr28WfyTyyQXFvkfPWjrs3Ji6cm4sULj+A8VNFwoeD5
- TWLv0uTXuAt/KJ2f95DHSVp6iN0FhtpC9VLyFc6qmVUudnC6ute2jLU3lDbZsuDJQHFsYf
- iQLMQdXbhKvXMCc+shMxTsTYRdPWXqI=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-610-QF6lu1PHMfyCrXBf53jfJg-1; Fri,
- 10 Oct 2025 00:59:18 -0400
-X-MC-Unique: QF6lu1PHMfyCrXBf53jfJg-1
-X-Mimecast-MFC-AGG-ID: QF6lu1PHMfyCrXBf53jfJg_1760072354
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 4DFC7180034F; Fri, 10 Oct 2025 04:59:12 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.45.242.6])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 756703000381; Fri, 10 Oct 2025 04:59:08 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id B199521E6A27; Fri, 10 Oct 2025 06:59:05 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Igor Mammedov <imammedo@redhat.com>,  salil.mehta@opnsrc.net,
- qemu-devel@nongnu.org,  qemu-arm@nongnu.org,  mst@redhat.com,
- salil.mehta@huawei.com,  maz@kernel.org,  jean-philippe@linaro.org,
- jonathan.cameron@huawei.com,  lpieralisi@kernel.org,
- richard.henderson@linaro.org,  andrew.jones@linux.dev,  david@redhat.com,
- philmd@linaro.org,  eric.auger@redhat.com,  will@kernel.org,
- ardb@kernel.org,  oliver.upton@linux.dev,  pbonzini@redhat.com,
- gshan@redhat.com,  rafael@kernel.org,  borntraeger@linux.ibm.com,
- alex.bennee@linaro.org,  gustavo.romero@linaro.org,  npiggin@gmail.com,
- harshpb@linux.ibm.com,  linux@armlinux.org.uk,
- darren@os.amperecomputing.com,  ilkka@os.amperecomputing.com,
- vishnu@os.amperecomputing.com,  gankulkarni@os.amperecomputing.com,
- karl.heubaum@oracle.com,  miguel.luis@oracle.com,  zhukeqian1@huawei.com,
- wangxiongfeng2@huawei.com,  wangyanan55@huawei.com,
- wangzhou1@hisilicon.com,  linuxarm@huawei.com,  jiakernel2@gmail.com,
- maobibo@loongson.cn,  lixianglai@loongson.cn,  shahuang@redhat.com,
- zhao1.liu@intel.com,  devel@lists.libvirt.org
-Subject: Re: [PATCH RFC V6 22/24] monitor,qdev: Introduce 'device_set' to
- change admin state of existing devices
-In-Reply-To: <CAFEAcA9wa2_c5YYwYJRL-aZThujxYPt1mg3zy_YEBaQ_8cX3Xw@mail.gmail.com>
- (Peter Maydell's message of "Thu, 9 Oct 2025 16:19:21 +0100")
-References: <20251001010127.3092631-1-salil.mehta@opnsrc.net>
- <20251001010127.3092631-23-salil.mehta@opnsrc.net>
- <87plawh2sz.fsf@pond.sub.org> <20251009145125.6583a24a@fedora>
- <87wm54nmyt.fsf@pond.sub.org>
- <CAFEAcA9wa2_c5YYwYJRL-aZThujxYPt1mg3zy_YEBaQ_8cX3Xw@mail.gmail.com>
-Date: Fri, 10 Oct 2025 06:59:05 +0200
-Message-ID: <87ecrbmjxi.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1v7A0h-0000aW-52
+ for qemu-arm@nongnu.org; Fri, 10 Oct 2025 06:06:04 -0400
+Received: from mail-yx1-xb136.google.com ([2607:f8b0:4864:20::b136])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1v7A0b-0003NI-Qo
+ for qemu-arm@nongnu.org; Fri, 10 Oct 2025 06:06:02 -0400
+Received: by mail-yx1-xb136.google.com with SMTP id
+ 956f58d0204a3-63cf081f87fso191146d50.1
+ for <qemu-arm@nongnu.org>; Fri, 10 Oct 2025 03:05:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1760090754; x=1760695554; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=oIoax9uN8gg45sVHNBStsxb2JzoQaro5TWlzSUBN8IQ=;
+ b=tAHT2XiefWDB0wSrMI3zXOa+0xQSCMLrhmxDAsuZ2lThHFZiD/v7q1pOu0UMSempgE
+ MOs2//Nuy8gXuw10/JnNa+XW1/vF4zqQhmrjUfBhlsbdGK+ekMJUkLGZ8+gUsMjbvTkf
+ j8HHRasaa50WdqdxdCM4g5qzzvLjNdUKPB939Sjw8tVCEnBQm0o3lAETEec/+Nl4VDd2
+ wF3mIxyt1c1+InhbXMRRbKw19aIVM1FEmTzc7rIpVwav7n3yUqgs8Un2JGURqPi5mGgL
+ Pmc9VFGBWw1L5LypONkMOZyXL65OoIYOiWNH8riCKgj1jdILjeDD0nFCn9iX6oGEpgda
+ jeNQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1760090754; x=1760695554;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=oIoax9uN8gg45sVHNBStsxb2JzoQaro5TWlzSUBN8IQ=;
+ b=SrQbSUgvdhqifb5tfJr7fvUcHAUr4wP3q6DkBmxQAcO1ra5CC96g4YGb7KBnQkM2wQ
+ 48vLXfhXuh3/R/5eTry6mdMtfLGs2sa27xPajb/3BjuCQrHwOuLn3cGJa8cERSDsFHW1
+ kYr+Y3QfgyiRJtHNE94xMIbXagRQadXVK8hqttUT3i9dvE4fSYjxGKpxwols+tidhFxq
+ PzQZQwYQWXmdLi44BG7JW3V5z+vYK/kmZrnA2S3Jp41/bGVXItb32AyLm1L1Jpn2cw/T
+ UYAD2+1V3vMeEGkKEFdb+NeMFeHtclII2oSOuBZ6HDKkwpDHHb60Ws7sUP+Ebkd//nr4
+ dwHg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWJmMGC4BrIWrGQAixFluxJu0RSO4zms95SkOtWgg+czu7a0bGx/0VGkYe5AoHhF2vJJuAfnNoSLw==@nongnu.org
+X-Gm-Message-State: AOJu0Yw2JtQvchEVleKEj7MrD1ARGj6QCCMSasCasxZ+PgWUzRxYlQTv
+ +6JSZbByqO84ORnOOWUDCTmOuaOwLl8Z7vFKs17vtpBhxkNXm3PMMKxSQdhHuCdCJvyzPsL08SJ
+ tTKe6aBep+7Z0qV/uZq0thio055Qbci8L8b+jUjx8qw==
+X-Gm-Gg: ASbGnctYk961NZB/m54R06lHoqGc/nQfLy5uzcQvSiDtZDx6SWXho1QIzHoJ1//p0k6
+ /XlZjU5gRAmhYcYFjfm41GM6mS31NqDCtYGsn+cG+67M4GY5zDCpiCQnwJP/JkfeCQQGlv+zOvR
+ QnTcWal9W7FUKZ4Jn8IBDjkGbg4wo1JNIiSqwpQjwbmgsoVojBBvDdH3qfbha8uiVQ85C0zTvle
+ HHrvmaBs0M7FGo40j/lvQghVHyxBi4A1k4UvtEjTmXV4e5ybXoS
+X-Google-Smtp-Source: AGHT+IF3QESCaFC0aA2EnILx5L3ho7+zGK1rBALBf+620KHP1wALSqdfWhmO1OtrV9tLWjCgGfz2+sGzZhRZ7U0ieUk=
+X-Received: by 2002:a05:690e:158e:10b0:63c:e3dc:bef with SMTP id
+ 956f58d0204a3-63ce3dc1563mr3412328d50.40.1760090754277; Fri, 10 Oct 2025
+ 03:05:54 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+References: <20251008191716.3005164-1-daan.j.demeyer@gmail.com>
+In-Reply-To: <20251008191716.3005164-1-daan.j.demeyer@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 10 Oct 2025 11:05:43 +0100
+X-Gm-Features: AS18NWD3-O5OrmtNOmCHdMsQxniwCHYzGfre40vQnil6iNE0F30IMys2Uqs6_jA
+Message-ID: <CAFEAcA-iQkqxR5jPtGC1EAtcH4FYD5y71x6RFSWC3vP05krScw@mail.gmail.com>
+Subject: Re: [PATCH] Add support for zboot images compressed with zstd
+To: Daan De Meyer <daan.j.demeyer@gmail.com>
+Cc: qemu-devel@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b136;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb136.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ T_SPF_TEMPERROR=0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -105,40 +96,82 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Peter Maydell <peter.maydell@linaro.org> writes:
-
-> On Thu, 9 Oct 2025 at 15:56, Markus Armbruster <armbru@redhat.com> wrote:
->> qdev introspection (device-list-properties) is like QOM type
->> introspection.  I'm not sure why it exists.
+On Wed, 8 Oct 2025 at 20:17, Daan De Meyer <daan.j.demeyer@gmail.com> wrote:
 >
-> It exists because it is the older of the two interfaces:
-> device-list-properties was added in 2012, whereas
-> qom-list-properties was only added in 2018.
+> Signed-off-by: Daan De Meyer <daan.j.demeyer@gmail.com>
+> ---
+>  hw/arm/boot.c       |  2 +-
+>  hw/core/loader.c    | 36 ++++++++++++++++++++++++------------
+>  hw/nvram/fw_cfg.c   |  2 +-
+>  include/hw/loader.h |  2 +-
+>  4 files changed, 27 insertions(+), 15 deletions(-)
+>
+> diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+> index e77d8679d8..c0dec0343a 100644
+> --- a/hw/arm/boot.c
+> +++ b/hw/arm/boot.c
+> @@ -826,7 +826,7 @@ static uint64_t load_aarch64_image(const char *filename, hwaddr mem_base,
+>      ssize_t size;
+>
+>      /* On aarch64, it's the bootloader's job to uncompress the kernel. */
+> -    size = load_image_gzipped_buffer(filename, LOAD_IMAGE_MAX_GUNZIP_BYTES,
+> +    size = load_image_gzipped_buffer(filename, LOAD_IMAGE_MAX_DECOMPRESSED_BYTES,
+>                                       &buffer);
 
-I suspected it was, but didn't want to make unchecked claims.  Thanks
-for checking!
+I would either not bother renaming this constant, or else do
+it in a preliminary patch of its own in the series. (That
+makes the part of the patch which is making the functional
+change easier to read and review.)
 
-> device-list-properties also does some device-specific
-> sanitization that may or may not be helpful: it won't
-> let you try it on an abstract base class, for instance,
+> @@ -882,14 +887,6 @@ ssize_t unpack_efi_zboot_image(uint8_t **buffer, ssize_t *size)
+>          return 0;
+>      }
+>
+> -    if (strcmp(header->compression_type, "gzip") != 0) {
+> -        fprintf(stderr,
+> -                "unable to handle EFI zboot image with \"%.*s\" compression\n",
+> -                (int)sizeof(header->compression_type) - 1,
+> -                header->compression_type);
+> -        return -1;
+> -    }
+> -
+>      ploff = ldl_le_p(&header->payload_offset);
+>      plsize = ldl_le_p(&header->payload_size);
+>
+> @@ -898,8 +895,23 @@ ssize_t unpack_efi_zboot_image(uint8_t **buffer, ssize_t *size)
+>          return -1;
+>      }
+>
+> -    data = g_malloc(LOAD_IMAGE_MAX_GUNZIP_BYTES);
+> -    bytes = gunzip(data, LOAD_IMAGE_MAX_GUNZIP_BYTES, *buffer + ploff, plsize);
+> +    data = g_malloc(LOAD_IMAGE_MAX_DECOMPRESSED_BYTES);
+> +
+> +    if (strcmp(header->compression_type, "gzip") == 0) {
+> +        bytes = gunzip(data, LOAD_IMAGE_MAX_DECOMPRESSED_BYTES, *buffer + ploff, plsize);
+> +#ifdef CONFIG_ZSTD
+> +    } else if (strcmp(header->compression_type, "zstd") == 0) {
+> +        size_t ret = ZSTD_decompress(data, LOAD_IMAGE_MAX_DECOMPRESSED_BYTES, *buffer + ploff, plsize);
+> +        bytes = ZSTD_isError(ret) ? -1 : (ssize_t) ret;
+> +#endif
+> +    } else {
+> +        fprintf(stderr,
+> +                "unable to handle EFI zboot image with \"%.*s\" compression\n",
+> +                (int)sizeof(header->compression_type) - 1,
+> +                header->compression_type);
+> +        return -1;
 
-Introspecting abstract bases is probably not useful.  But what harm
-could it do?  Can't see why preventing it is worth the bother.  Of
-course, changing it now is not worth the bother, either :)
+Moving the "unrecognized compression type" error path down to
+here means that we have moved it below the g_malloc() of the
+data buffer, so we now need to g_free() to avoid a leak.
 
-> and it won't list "legacy-" properties.
+> +    }
+> +
+>      if (bytes < 0) {
+>          fprintf(stderr, "failed to decompress EFI zboot image\n");
+>          g_free(data);
 
-I remember these exist, but not what they're good for :)
+Otherwise I think this looks OK.
 
-Should we deprecate device-list-properties in favour of
-qom-list-properties?
-
-> One problem you don't mention with QOM introspection is
-> that we have no marking for whether properties are intended
-> to be user-facing knobs, configurable things to be set
-> by other parts of QEMU, or purely details of the implementation.
-
-Yes.  This is what I had in mind when I pointed out "accidental external
-interfaces".
-
+thanks
+-- PMM
 

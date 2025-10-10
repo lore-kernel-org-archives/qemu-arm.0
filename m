@@ -4,92 +4,142 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 338BACCD18A
-	for <qemu-arm@archiver.kernel.org>; Fri, 10 Oct 2025 13:52:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 062CACCD185
+	for <qemu-arm@archiver.kernel.org>; Fri, 10 Oct 2025 13:52:24 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v7DPe-0002T5-E7; Fri, 10 Oct 2025 09:44:02 -0400
+	id 1v7DXO-0003zg-SP; Fri, 10 Oct 2025 09:52:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v7DPN-0002K6-Ao
- for qemu-arm@nongnu.org; Fri, 10 Oct 2025 09:43:46 -0400
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v7DOm-0007tD-87
- for qemu-arm@nongnu.org; Fri, 10 Oct 2025 09:43:42 -0400
-Received: by mail-wm1-x330.google.com with SMTP id
- 5b1f17b1804b1-46e2e6a708fso13873055e9.0
- for <qemu-arm@nongnu.org>; Fri, 10 Oct 2025 06:42:53 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1760103771; x=1760708571; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=glWOQWNC3/3zXE9lsfJz0FVW5jre8WEcmZkI6CO0cfo=;
- b=EFzhVWxfOGOZcgMwM9IZKXokT9pM8ZaxsVx0y+xggG2iFyg4aIEDYLSDcVU5g7sF52
- uZr8q+j/itYmHi7aKYu5K87C/zW0lFN6RBeXgqDhTF/OLwr8akBkRU2lHl4xnDM+16RE
- ehieUmfoPZN94sO0dQHUSoxndbq61L6TcyHJxWN6wyxOOJIChDbzcVsvC9VfDvKhBOPB
- hk+oXPpX8ZFPD61JYAvMKL2EOoTgxivzlk6FBvmTXGbpr3gidJwL74j8/TdmpKTXNwws
- 0CJEVofJQBj9DmkGmaC4KOYizzWRg2uZfbULufQSticK0ufTM0+OPvOX6px4IEPGOArc
- fx+g==
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1v7DXN-0003yy-79
+ for qemu-arm@nongnu.org; Fri, 10 Oct 2025 09:52:01 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1v7DXF-0001zM-2c
+ for qemu-arm@nongnu.org; Fri, 10 Oct 2025 09:52:00 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1760104307;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=+ezLzMZUEvQY/Da7NbSajglqdxE0IFn3y1EU1TDDLW8=;
+ b=Je1K3n4ffGkelO/0VggGiR+0h9fn3uBeHLc45y5Q4ejeCuUZZZSmeyijdykR9j1iyNaSSy
+ SualUrasVY7iaxOlBAPxNQkv1JZgI/rUz75wq1Ch2jLm7mXRW0rLto+TQgKAQRUXcmLJEf
+ dbxKMVB5iRCdmNoNee9BVdk87eJnJ3E=
+Received: from mail-ej1-f72.google.com (mail-ej1-f72.google.com
+ [209.85.218.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-255-YceRe85gOwu0YqGt3YccCA-1; Fri, 10 Oct 2025 09:51:45 -0400
+X-MC-Unique: YceRe85gOwu0YqGt3YccCA-1
+X-Mimecast-MFC-AGG-ID: YceRe85gOwu0YqGt3YccCA_1760104303
+Received: by mail-ej1-f72.google.com with SMTP id
+ a640c23a62f3a-b2f989de76eso379264266b.1
+ for <qemu-arm@nongnu.org>; Fri, 10 Oct 2025 06:51:45 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1760103771; x=1760708571;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=glWOQWNC3/3zXE9lsfJz0FVW5jre8WEcmZkI6CO0cfo=;
- b=UBuy2cVgsEEF6esC4iD5HcBeBNhI59JGXfGAanuxS1OgLI6ylNAA5VyK/3UQy4o25N
- bwxfdsD09KbuzYGSnNXOUH/k2lsmCQ4wCW/VcWccgLI651RLG1J1GUevt/QIEley91le
- Wfhd6y6+CXFzHZYxr4ME+5q/P7OVnGMhhz2lAHfbUGQB6nT9WhMZTpKefWQ2ShPEe+dV
- L+l1Ys7tJEHdeLdJOG1n9oGzOu0gTh+8fbe33BGfh6FPBKp22r9cKt2JktfHBriRG+n9
- lUwTBsF3cpUAH0dz2HtoKmeZTyT6sgYoOTalZRTL5o2mQAIVbN6ydBSYhC2WIWSRaLFQ
- CGXg==
+ d=1e100.net; s=20230601; t=1760104303; x=1760709103;
+ h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=+ezLzMZUEvQY/Da7NbSajglqdxE0IFn3y1EU1TDDLW8=;
+ b=EXUSx79giYEQujBargsCQTim/93/fo0QBSMcQLsIHi/ZcjQ2NN53KTCmS3X+VAMWfC
+ ZYmuZfTMJwGrHHlZk1O8vlVqHluacVMRTrbYE2WJSelf95VKPTPKr+ou+t9Ib0dYc4j1
+ ewjefnz/y+wzTi+sxtEf8vAKSWgBLne4A9XYltXsrj92oy5RNAPRrzLHmL57jD5g+JzS
+ oenrfYXW2O5WquZiPTkYLO3eM1Plr7R1oJW/k0QwDAQj2FfZSYOvYTsuioqMdovaHCRv
+ pY86+sLMLPZQzJp7r0/TKhPUKs5u3yhWIzuzszV1N6HYkcc1E0KFFIw8sfoxnMYwCBI0
+ 3Nxg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWrt8vqrLjOUdtN1tjbWOWjwrLKDtgs6Lj7vmEALaVj0sxM4AO+OBBSNsILusMwUhU/Z9sFC+kFaw==@nongnu.org
-X-Gm-Message-State: AOJu0YwkFzyX98rc7sAjNMkm9vl/Aom788c7raqlMxl/1NAuyuPflWyQ
- qe5tNUE4Io1J4AVbSv0LAihfXQU6vTEV3ivv0M/YgMnKtn4UAjkpq7GjOG7pQN7Ovhg=
-X-Gm-Gg: ASbGncuSFEH5Don5Q0+s6o4uMYnxrtLrXPhh834GORCRzMl8H/yiy6d8XKQK6/z0D/R
- R9INN0F6KWcMbCcrlgdrohxIpVtqSmMVbliKdoywW6z3w1socxRdl89E0lDmRmysL47QN0CywcW
- SYcpf6SxyovTiHoNd8OOuwOVdNSzmtBR9W31yYA1OXqqZYZtVobdXV/RgOHJ/qUsALAqobZWBS+
- Ro6szimKyLXbOYEB8X3coWRgl80EZq5MCO8NUxoRvf8zY88h8TJIDX+D+uNNQvXz8BIGz9fgLLQ
- 9Kl918/Q2kDNwuqgMK62VlE6eI6z0zZV6zUsMukLD2oyu9xI+6bynLExGgrOugg/Xp29PuLvqQe
- u9Qf4JQ9YoRQyV1lok7Fvm55Q2NSkTkeCKhcaRqgF8LhDI0NU88zjOpB4qKzw5ER9/kecT7rhfq
- qef2n/EcKSrx0gnUlsOTw=
-X-Google-Smtp-Source: AGHT+IFj/ht5sl+sluGOMrkKYrfsxcYSRA4eSOSl5wJQr2sAZXH/Rlebae2Q4vcDEqBBJVKVMRb4Fw==
-X-Received: by 2002:a05:600c:1e86:b0:46e:4784:cdf5 with SMTP id
- 5b1f17b1804b1-46fa9a9f254mr89740875e9.15.1760103770793; 
- Fri, 10 Oct 2025 06:42:50 -0700 (PDT)
-Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-426ce5e0a03sm4250770f8f.37.2025.10.10.06.42.49
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 10 Oct 2025 06:42:49 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-ppc@nongnu.org, qemu-arm@nongnu.org, qemu-riscv@nongnu.org,
- qemu-s390x@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Jason Wang <jasowang@redhat.com>
-Subject: [PATCH 04/16] net: Replace HOST_BIG_ENDIAN #ifdef with runtime if()
- check
-Date: Fri, 10 Oct 2025 15:42:13 +0200
-Message-ID: <20251010134226.72221-5-philmd@linaro.org>
-X-Mailer: git-send-email 2.51.0
-In-Reply-To: <20251010134226.72221-1-philmd@linaro.org>
-References: <20251010134226.72221-1-philmd@linaro.org>
+ AJvYcCV1vQ+lStP2q1wkD0PeSo/Ti/3v6kfcbmGvf1WcbT/RYaSI5doPqCTdAgDaCkQoWLmju34ah7y2xQ==@nongnu.org
+X-Gm-Message-State: AOJu0YwLB87v2US1F8RD1MQ7TrFeh7wfoPlgYn7HrU28PPFXCfQq/eae
+ Q1qkfUkB8fCNTsky4srzJaxV0aho0iqTLshxJjAdFk8cq1Dxk2El3KWc3MMOHLePt6+mJtSYN4p
+ oUoinvFKfqdAbaj8KSSYsrmf5smxzThgWNA9trujwes2vClZrO3Ypew==
+X-Gm-Gg: ASbGncst5i3nT5b3BAzHil3mpikjjSB38eVuVJVNRTZ/ayDZ4ZvJnpbo7pBovmfYqXs
+ af7UljmDck55aq9YHXGWF/2thEW0o60msevYKhgsQAH905gVQRtLr1TslTXdExS/RkeEeIF5wMA
+ 9N7p1ar1PgKSABsWpwqovp35gmg8Ket9YOXehnV1QycQzsdoxqVTXIIQC6VHxvao5yY7W9sAP15
+ feUnqJcIrLSrfFh2amKZuukiMui/kNtCWfe1ez3WwIfqp73jxCR/2XL7p9NzRhFDSc4YkwqgvCV
+ W7plfS0CwUlE5mr+Fhi2YJR7lE4P6YlKHuYG4V5NijJMbOPh3bG0FcbroOeXuUUOEFbiwW55Bzr
+ uyz6O7/9rtRUGIYCJr/Dhxg/BriXIzeMitLFxI3HAdwtk
+X-Received: by 2002:a17:906:d554:b0:aff:1586:14c2 with SMTP id
+ a640c23a62f3a-b50bcbe2790mr1563166366b.4.1760104303228; 
+ Fri, 10 Oct 2025 06:51:43 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHBsPYpHVvNwPaVC9ygVyhlaUiXRZP5CQvimnBAVx38VfokcnHFD3k1No6BBIA6hhtmuuLaiA==
+X-Received: by 2002:a17:906:d554:b0:aff:1586:14c2 with SMTP id
+ a640c23a62f3a-b50bcbe2790mr1563162466b.4.1760104302835; 
+ Fri, 10 Oct 2025 06:51:42 -0700 (PDT)
+Received: from [192.168.10.81] ([151.49.231.162])
+ by smtp.googlemail.com with ESMTPSA id
+ a640c23a62f3a-b55d69dbd99sm238450166b.40.2025.10.10.06.51.41
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 10 Oct 2025 06:51:42 -0700 (PDT)
+Message-ID: <5e4d3a1a-ee13-40c3-b470-d68f5b6b4ad1@redhat.com>
+Date: Fri, 10 Oct 2025 15:51:40 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 00/16] overall: Replace HOST_BIG_ENDIAN #ifdef with
+ runtime if() check
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: qemu-ppc@nongnu.org, qemu-arm@nongnu.org, qemu-riscv@nongnu.org,
+ qemu-s390x@nongnu.org
+References: <20251010134226.72221-1-philmd@linaro.org>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Autocrypt: addr=pbonzini@redhat.com; keydata=
+ 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
+In-Reply-To: <20251010134226.72221-1-philmd@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: ZyP6qBXT8nqs8xzhVZi2TsUGlger0UU0ZXC6EIR70kc_1760104303
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=pbonzini@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: 0
+X-Spam_score: -0.0
+X-Spam_bar: /
+X-Spam_report: (-0.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.441,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SUSPICIOUS_RECIPS=2.51,
+ T_SPF_TEMPERROR=0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -105,57 +155,75 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Replace compile-time #ifdef with a runtime check to ensure all code
-paths are built and tested. This reduces build-time configuration
-complexity and improves maintainability.
+On 10/10/25 15:42, Philippe Mathieu-Daudé wrote:
+> Replace compile-time #ifdef with a runtime check to ensure all code
+> paths are built and tested. This reduces build-time configuration
+> complexity and improves maintainability.
+> 
+> No functional change intended.
 
-No functional change intended.
+No need to repost (and I didn't review), but please change throughout 
+the commit message to mention a *compile-time* if() check.  The code for 
+the wrong endianness will not make it past compilation, and mentioning 
+runtime checks left me wondering if you had mistaken HOST for TARGET.
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- net/net.c | 14 ++++++--------
- 1 file changed, 6 insertions(+), 8 deletions(-)
+Thanks,
 
-diff --git a/net/net.c b/net/net.c
-index 27e0d278071..11d1f7616a6 100644
---- a/net/net.c
-+++ b/net/net.c
-@@ -593,28 +593,26 @@ bool qemu_get_vnet_hash_supported_types(NetClientState *nc, uint32_t *types)
- 
- int qemu_set_vnet_le(NetClientState *nc, bool is_le)
- {
--#if HOST_BIG_ENDIAN
-+    if (!HOST_BIG_ENDIAN) {
-+        return 0;
-+    }
-     if (!nc || !nc->info->set_vnet_le) {
-         return -ENOSYS;
-     }
- 
-     return nc->info->set_vnet_le(nc, is_le);
--#else
--    return 0;
--#endif
- }
- 
- int qemu_set_vnet_be(NetClientState *nc, bool is_be)
- {
--#if HOST_BIG_ENDIAN
--    return 0;
--#else
-+    if (HOST_BIG_ENDIAN) {
-+        return 0;
-+    }
-     if (!nc || !nc->info->set_vnet_be) {
-         return -ENOSYS;
-     }
- 
-     return nc->info->set_vnet_be(nc, is_be);
--#endif
- }
- 
- int qemu_can_receive_packet(NetClientState *nc)
--- 
-2.51.0
+Paolo
+
+> Philippe Mathieu-Daudé (16):
+>    linux-user/arm: Checkpatch style cleanups
+>    linux-user/arm: Replace HOST_BIG_ENDIAN #ifdef with runtime if() check
+>    ui: Replace HOST_BIG_ENDIAN #ifdef with runtime if() check
+>    net: Replace HOST_BIG_ENDIAN #ifdef with runtime if() check
+>    disas: Replace HOST_BIG_ENDIAN #ifdef with runtime if() check
+>    hw/core/loader: Replace HOST_BIG_ENDIAN #ifdef with runtime if() check
+>    hw/display: Replace HOST_BIG_ENDIAN #ifdef with runtime if() check
+>    hw/virtio: Replace HOST_BIG_ENDIAN #ifdef with runtime if() check
+>    target/alpha: Replace HOST_BIG_ENDIAN #ifdef with runtime if() check
+>    target/arm: Replace HOST_BIG_ENDIAN #ifdef with runtime if() check
+>    target/mips: Replace HOST_BIG_ENDIAN #ifdef with runtime if() check
+>    target/ppc: Replace HOST_BIG_ENDIAN #ifdef with runtime if() check
+>    target/riscv: Replace HOST_BIG_ENDIAN #ifdef with runtime if() check
+>    target/s390x: Replace HOST_BIG_ENDIAN #ifdef with runtime if() check
+>    target/sparc: Replace HOST_BIG_ENDIAN #ifdef with runtime if() check
+>    util/bitmap: Replace HOST_BIG_ENDIAN #ifdef with runtime if() check
+> 
+>   include/hw/virtio/virtio-access.h       |   6 +-
+>   include/hw/virtio/virtio-gpu-bswap.h    |   6 +-
+>   target/arm/cpu.h                        |   8 +-
+>   target/arm/tcg/translate-a64.h          |   5 +-
+>   disas/disas-host.c                      |   6 +-
+>   hw/core/loader.c                        |   5 +-
+>   hw/display/artist.c                     |  12 +-
+>   hw/display/vga.c                        |  20 +-
+>   hw/display/virtio-gpu-gl.c              |   8 +-
+>   hw/display/virtio-gpu-rutabaga.c        |   8 +-
+>   hw/virtio/vhost.c                       |   7 +-
+>   linux-user/arm/nwfpe/double_cpdo.c      |  12 +-
+>   linux-user/arm/nwfpe/fpa11_cpdt.c       |  77 +-
+>   net/net.c                               |  14 +-
+>   target/alpha/translate.c                |  11 +-
+>   target/arm/tcg/sve_helper.c             |  10 +-
+>   target/arm/tcg/translate-sve.c          |  22 +-
+>   target/arm/tcg/translate-vfp.c          |   8 +-
+>   target/arm/tcg/translate.c              |   6 +-
+>   target/mips/tcg/msa_helper.c            | 889 ++++++++++++------------
+>   target/ppc/arch_dump.c                  |   9 +-
+>   target/ppc/int_helper.c                 |  28 +-
+>   target/ppc/kvm.c                        |  25 +-
+>   target/riscv/vector_helper.c            |  32 +-
+>   target/s390x/tcg/translate.c            |   6 +-
+>   target/sparc/vis_helper.c               |  18 +-
+>   ui/vdagent.c                            |  16 +-
+>   ui/vnc.c                                |   6 +-
+>   util/bitmap.c                           |  19 +-
+>   target/ppc/translate/vmx-impl.c.inc     |  14 +-
+>   target/ppc/translate/vsx-impl.c.inc     |   6 +-
+>   target/riscv/insn_trans/trans_rvv.c.inc |  16 +-
+>   target/s390x/tcg/translate_vx.c.inc     |   6 +-
+>   tcg/ppc/tcg-target.c.inc                |  24 +-
+>   34 files changed, 656 insertions(+), 709 deletions(-)
+> 
 
 

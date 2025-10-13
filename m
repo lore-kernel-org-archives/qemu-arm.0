@@ -4,45 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9AE04CCD185
-	for <qemu-arm@archiver.kernel.org>; Mon, 13 Oct 2025 09:29:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 771B6CCD183
+	for <qemu-arm@archiver.kernel.org>; Mon, 13 Oct 2025 09:29:59 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v8Es0-00032e-Ey; Mon, 13 Oct 2025 05:29:33 -0400
+	id 1v8EsN-00049O-DL; Mon, 13 Oct 2025 05:29:55 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1v8Erx-0002u8-VO; Mon, 13 Oct 2025 05:29:30 -0400
-Received: from 1.mo548.mail-out.ovh.net ([178.32.121.110])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1v8EsJ-00043D-PA
+ for qemu-arm@nongnu.org; Mon, 13 Oct 2025 05:29:52 -0400
+Received: from 9.mo552.mail-out.ovh.net ([87.98.180.222])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1v8Ert-0005Li-EW; Mon, 13 Oct 2025 05:29:29 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.110.0.200])
- by mo548.mail-out.ovh.net (Postfix) with ESMTPS id 4clX9X3srLz6T2l;
- Mon, 13 Oct 2025 09:29:20 +0000 (UTC)
-Received: from kaod.org (37.59.142.106) by DAG8EX2.mxp5.local (172.16.2.72)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1v8EsH-0005Ng-Bz
+ for qemu-arm@nongnu.org; Mon, 13 Oct 2025 05:29:51 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.110.0.125])
+ by mo552.mail-out.ovh.net (Postfix) with ESMTPS id 4clXB12dGTz6S2P;
+ Mon, 13 Oct 2025 09:29:45 +0000 (UTC)
+Received: from kaod.org (37.59.142.99) by DAG8EX2.mxp5.local (172.16.2.72)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.59; Mon, 13 Oct
- 2025 11:29:19 +0200
+ 2025 11:29:44 +0200
 Authentication-Results: garm.ovh; auth=pass
- (GARM-106R0065c79bdca-1831-43c6-9487-537caaeda458,
+ (GARM-99G003490950b2-53c6-456f-87c9-989bdccb0e7d,
  E27D2F41E47E806E38994DC6761E007B2CBA9264) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
-Message-ID: <a284b770-1634-4106-b186-6c501ec438ba@kaod.org>
-Date: Mon, 13 Oct 2025 11:29:19 +0200
+Message-ID: <a4d48573-20a3-44a9-b204-97a9a4b7ff36@kaod.org>
+Date: Mon, 13 Oct 2025 11:29:44 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [SPAM] [PATCH v3 15/16] hw/arm/aspeed_ast27x0-tsp: Rename type to
- TYPE_ASPEED27X0TSP_COPROCESSOR
-To: Jamin Lin <jamin_lin@aspeedtech.com>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, Joel
- Stanley <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-CC: <troy_lee@aspeedtech.com>, <kane_chen@aspeedtech.com>
-References: <20251013054334.955331-1-jamin_lin@aspeedtech.com>
- <20251013054334.955331-16-jamin_lin@aspeedtech.com>
+Subject: Re: [PATCH 0/5] aspeed: machine deprecations and test improvements
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>,
+ <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
+CC: Peter Maydell <peter.maydell@linaro.org>, Steven Lee
+ <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, Jamin Lin
+ <jamin_lin@aspeedtech.com>, Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Joel Stanley <joel@jms.id.au>, Thomas Huth <thuth@redhat.com>
+References: <20251007141604.761686-1-clg@redhat.com>
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Content-Language: en-US, fr
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -87,35 +85,35 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20251013054334.955331-16-jamin_lin@aspeedtech.com>
+In-Reply-To: <20251007141604.761686-1-clg@redhat.com>
 Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.106]
-X-ClientProxiedBy: DAG2EX2.mxp5.local (172.16.2.12) To DAG8EX2.mxp5.local
+X-Originating-IP: [37.59.142.99]
+X-ClientProxiedBy: DAG8EX1.mxp5.local (172.16.2.71) To DAG8EX2.mxp5.local
  (172.16.2.72)
-X-Ovh-Tracer-GUID: d51a5423-8425-4674-9319-6b503f6835b4
-X-Ovh-Tracer-Id: 14298928819131091890
+X-Ovh-Tracer-GUID: f67e894c-f70c-4972-b5f4-3536c4cd0f17
+X-Ovh-Tracer-Id: 14305965694137043890
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTFHBGgsDqN5JHe3G2+uMngoC/psFFp9otMkXlTEuQy2R5Wv1pqNOnA3zd2Av4R/pm9flhd9WyQ+wqH27m074fjjAvjoV/fLPDWGYxiqjpk0tFZzOyZUIrx7/b/HTbHhCtZFOKjoT6TccOyRxjl21BY8BKEnaZwatTr18fPuEqdIGSVZigBKeNTq8f18Ojk5o4Aes6lobgfH5Zmrp/RCedk8YqJl5Os7I4dJOH0jUkuqN0HyjGLFtqZPCz17PgsCDl0tqL1z6oziXuQLFsQJqVXPKYuJx/To1Q+ULpbs6p5JBgTjC417x8c30MFxONXx/VpdoU7AMy7/H68immoH5zO9RAemWRo5Ebj6QCUmUTDJiqHemueq2d5MwdCz0LGCf6IvpgHsdkQA69U9g7XvUjKb3FULDm/KiuLKoWngn8Oda+Gl5xWuH3rJdu2QyNNR0LKNe58N9KrvxQJKGBe1oXclqlJercdCJYy2B0oa/4UTohKIwOepUH32+g41T1zuOhMu+hwx1qdXxcoj/e/d5ku1YJlfKr+mI1+Jdfm1HCdJTpqtt6sAwafG1nOp3guYVuCVJw9GjIPlp/NrHh8KJfYJ0nld0/YP/gJxx2Hfkbi1QV0+vSouiNM30i4XReajZyTfk+ADBzfvmYzu6DSq/5KlDn38EbxbB1gocUI9jP5wqg
-DKIM-Signature: a=rsa-sha256; bh=zZ/zFFfn4QRDgAQNd+Xq/5UVG0gp95QBK9cRuPjb3GQ=; 
+X-VR-SPAMCAUSE: dmFkZTE9VTX+ijz0fVirTNoSacqh9QmpEkvyGf9pNuOhx64HC0BBIJVZvhj8Bxok8eueWwMOeMAV3QQpsxh5FHRWay4BrKj/uTe8FM9DwKBHcIZM8iLMrx4nulkwJ3CbjPXszh7vX7YfPn9yHuBZCDvf8qrUNHTCFddTw5BHolsdmVNYWU6udxr48Mjf/H0Y2vc/9aLKYmR2TTHYCYItChey3Y/OdAU8fAvg1cAcWzF2us7rYvODsLo2Ho4NOE6FG9VU+gAuMtywkPCV5smEPtXIgv0RfFyyc99vmiRo8APcDZ9fPgUxFp6K43zSBYkhsKJKopdqWLX43vR+YToAEi9Qz6UNWbIuvIMU0jn85gZMsc+rzqmHOH+BB7J51C23Sa2rtzKdfoZkjFe1jqcgLiRr457Mk2uX8O7hu555pEDFqphDb0czW4ZK63WGKgO1TOg5/2P5LFVYUcDhMsI0/Hz6amq0ERIHvloC0x1ENUICTdTCQOTetSk0YJrhklO2VsRQv9OXXGONK++f+KxRq2ixJ98iW4BEmM0dJGGUlOtgzFK9iKZwOdG6U15qDXlRxdQcucYOEe7qEiTX18mrH/NWuVNYKxk9JFZQVRxe67CgQTrU0mBRX5uFlgrPhtwFpCauBPiimMGEvmBi1YCQ4ZFUPVgQ9bvFpi2MK4u0lT9pFMXdgQ
+DKIM-Signature: a=rsa-sha256; bh=Au2myoRCd0XH4IOTPIGg200/Szy2Vzf8/1V/goOE6os=; 
  c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1760347760; v=1;
- b=gVPD4qYpwAX66QKYlJUsnnAZJi9zBx7Ih7AVphSvJNhW9DAb208H3zQMO/pU5J+effvx6KYu
- xPeB5X69Ca7KlkW16rbnMLKpEq2rQwC1NfCl1Q9VjxSFeBPWnUay9of8TV6QqpqSID7ykGbG/jn
- IpfScjtMCxqLd3moEDasZZ4rRXZWMeW+8EzCYRviH2yzR+KkTeiQ9hlD+QdNnWHiTfYxyAWqUgl
- TUaMIfg4vllvWfAftKFNlFAYcDx0SjWzFSvQSI7kSV2iVPk7Jv7t2MsHOv2nCzxzTdH6BtJDs9f
- 4RncMtTfAOH2BK/yjoggLEGczmHoXw++hKQhC8ubE12dA==
-Received-SPF: pass client-ip=178.32.121.110; envelope-from=clg@kaod.org;
- helo=1.mo548.mail-out.ovh.net
+ t=1760347786; v=1;
+ b=N7+9rH5xbZbLO0Tb/llsRkopyWboRu4SrqAl7NfMyPxr0viCnAlac9LL7fWwZ1WUkdwhZUGJ
+ 9kcsRAb9T0M6whCqkWUT32bhTTv79aI88xo/ESpCFI4VXO+D6KRiOnRlULMiv2mkQs074Rn6YTi
+ hYvtJLIK/qCOAYJXfEferQjVZgs0vLt+kuk3WXpDgL4BWco2sYFZpWiO7D3PhSpuDTLPYSd5dxX
+ W511wnZM/iGolQwLNH68nASQN3HI+d2brk99CfveulaM3cH1QGwkbmc1DDK4tq72m/P4/nVfFs0
+ LvHJIZJfO4S2a1FhYHlQ1izS7MkZEA2N0Aj/3ohmh6OTQ==
+Received-SPF: pass client-ip=87.98.180.222; envelope-from=clg@kaod.org;
+ helo=9.mo552.mail-out.ovh.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -131,30 +129,40 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 10/13/25 07:43, Jamin Lin wrote:
-> Rename the AST27x0 TSP type from TYPE_ASPEED27X0TSP_SOC to
-> TYPE_ASPEED27X0TSP_COPROCESSOR to align with the naming convention used
-> for the SSP coprocessor (TYPE_ASPEED27X0SSP_COPROCESSOR).
-> This change clarifies that TSP is implemented as a coprocessor rather than
-> a full SoC.
+On 10/7/25 16:15, Cédric Le Goater wrote:
+> Hello,
 > 
-> This ensures consistent terminology between SSP and TSP components and
-> improves clarity within the coprocessor subsystem code.
+> The first three patches deprecate machines that have no functional
+> tests and can be replaced by more generic machines (evbs) with
+> command-line options for I2C device.
 > 
-> No functional change.
+> The last two patches improve the functional tests for the ast2700
+> machines to save CI resources.
 > 
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-> ---
->   include/hw/arm/aspeed_coprocessor.h |  4 ++--
->   hw/arm/aspeed_ast27x0-fc.c          |  3 ++-
->   hw/arm/aspeed_ast27x0-tsp.c         | 10 +++++-----
->   3 files changed, 9 insertions(+), 8 deletions(-)
+> Thanks,
+> 
+> C.
+> 
+> Cédric Le Goater (5):
+>    aspeed: Deprecate the sonorapass-bmc machine
+>    aspeed: Deprecate the qcom-dc-scm-v1-bmc and qcom-firework-bmc
+>      machines
+>    aspeed: Deprecate the fp5280g2-bmc machine
+>    test/functional/aarch64: Remove test for the ast2700a0-evb machine
+>    test/functional/aarch64: Split the ast2700a1-evb OpenBMC boot test
+> 
+>   docs/about/deprecated.rst                     | 27 +++++++++++++++++++
+>   hw/arm/aspeed.c                               |  4 +++
+>   .../functional/aarch64/test_aspeed_ast2700.py | 21 ++++-----------
+>   3 files changed, 36 insertions(+), 16 deletions(-)
 > 
 
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
+
+Applied to aspeed-next.
 
 Thanks,
 
 C.
+
 
 

@@ -4,96 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60B06CCD183
-	for <qemu-arm@archiver.kernel.org>; Mon, 13 Oct 2025 11:57:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D54B5CCD183
+	for <qemu-arm@archiver.kernel.org>; Mon, 13 Oct 2025 12:45:05 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v8HBJ-00082e-6A; Mon, 13 Oct 2025 07:57:38 -0400
+	id 1v8Hut-0004RG-6P; Mon, 13 Oct 2025 08:44:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mlureau@redhat.com>)
- id 1v8HBH-00081x-Ag
- for qemu-arm@nongnu.org; Mon, 13 Oct 2025 07:57:35 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1v8Hum-0004PS-7P
+ for qemu-arm@nongnu.org; Mon, 13 Oct 2025 08:44:36 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mlureau@redhat.com>)
- id 1v8HBA-0001dl-PZ
- for qemu-arm@nongnu.org; Mon, 13 Oct 2025 07:57:34 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1v8Hui-0007sD-7D
+ for qemu-arm@nongnu.org; Mon, 13 Oct 2025 08:44:35 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1760356645;
+ s=mimecast20190719; t=1760359466;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=BbqqdvDIeJ3GclYuDYa5riG1p6Sktidf0Dul2IV54B8=;
- b=L6lCwXrkmY8V3MoSSkOdEiddyOQfj2t0ZcRiK27GJIu6BDBVTWpH+yJdmEtnFY3LWiKEHl
- QMqjAcsGLKXoveqKATpCAzSNq8WN4wRPRfJUbnFFl6Jpmg35S1l8bTKPaS5vFz7DNnaLht
- WNfcp0OJpUkQxCow+FATmuczDThqu7g=
-Received: from mail-pf1-f198.google.com (mail-pf1-f198.google.com
- [209.85.210.198]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-519-MfutUTGHN4OL4Mrhuq-bpg-1; Mon, 13 Oct 2025 07:57:23 -0400
-X-MC-Unique: MfutUTGHN4OL4Mrhuq-bpg-1
-X-Mimecast-MFC-AGG-ID: MfutUTGHN4OL4Mrhuq-bpg_1760356643
-Received: by mail-pf1-f198.google.com with SMTP id
- d2e1a72fcca58-76e2e60221fso12342354b3a.0
- for <qemu-arm@nongnu.org>; Mon, 13 Oct 2025 04:57:23 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1760356643; x=1760961443;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=BbqqdvDIeJ3GclYuDYa5riG1p6Sktidf0Dul2IV54B8=;
- b=tAAJTAiXEpsX0Xn4hpbVwnEWQbfWSphbhlgBeCD3EPn7Kt2bScdFpx99tp1GFjUWgU
- ip2HHleljOfITJfzhh3ku8k1nUBcAiQkayK8kTkco+ImH8YSIaPDQZB4cEX97dnNeYs/
- snRKg9XF0/iM2gcDlrnI+yEPoBask6BgMUBnjGLwnS/xkRbZCxeNlPHJqoHgwhrJad2p
- Hl6NVoxBns0hd6Cba7qtwF4LrmOY7cYqhEo8R1LfEHfUAjWVyeyrL64L2V9vIao8ldfn
- MGN7cdEtajKnc3fNZgRrCfDexkOZ7d5kNuCz0R5uaBMjGHlTo7s4FABOLq2rnd1ryh6p
- REHg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUdZKucs6ie4dpVv7bcaZIggjlSy3y10BdOPqd7iFrgrxuyBKvKSZi2/SOY8bmgHn4HzTHm9nZj4Q==@nongnu.org
-X-Gm-Message-State: AOJu0YwVrAvU578xcrKaAqdvX/9LC+VUciD9qzTwADtYLTVB9mIAjuxB
- 5O1a7kpa02ALtoTHKE9oCZcRiBZN7PvMNp34QQmYMAYI481pRVhMCmRZGHkFGeceOmcj/ZEv2xm
- slBQJ2xJe2Ddc757tLBlHgC7arlUlZtpykNa6m609epslVOf+sap6Vk9kHkagvO6/iwN3sgACwG
- wuTfBqcH+vT813UX3tilCqii/qVq+g
-X-Gm-Gg: ASbGncsmYwD1rkGtfcEi+UOS74WPSCV0pOjmLAJuj4AzaY7475c0NeYjixgsGlBx3+t
- wkccuDwXhQpy953wNhbNBEupxFrzgazsfN6IlfNs9WDFLRzwVyLFxbLQ1QTfKYV1Lopr6NR4/Qx
- oiGHNsLLnQQBfSh+98yp0df+mgQ68XfQAIjsI6KO0BmLuMu8T2Ibqc
-X-Received: by 2002:a05:6a21:99a8:b0:2d5:e559:d22f with SMTP id
- adf61e73a8af0-32da845fb4bmr30683543637.49.1760356642742; 
- Mon, 13 Oct 2025 04:57:22 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IH7LGixjjEDseKUORIGEudWXi/O2opok7Q7zmrqIyrLJdJkjU2cMwoI7xu5JYsoh2aEUdni4H4BFclC4wLPObw=
-X-Received: by 2002:a05:6a21:99a8:b0:2d5:e559:d22f with SMTP id
- adf61e73a8af0-32da845fb4bmr30683526637.49.1760356642407; Mon, 13 Oct 2025
- 04:57:22 -0700 (PDT)
+ content-transfer-encoding:content-transfer-encoding;
+ bh=KwS1s6BweObhq51LZdXVO6paV/VKh606Qo+phZxDgaA=;
+ b=hyA5smnzKWKNzHtlmh/I3f+bQmALnP7dD5jo+K23Mahk57aIbRYRdFH8EgewwS9qCIaAos
+ a/nlHVFxkJlRi68omjSJmJuSu6pNtRDOVFU1953X+MZgm+MqAXE0lAQXDR4/HJhO6fmN3n
+ 6kmJUccmU7OsS3CRDWXioZVTFSVJ11U=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-611-xRm_90NHOpyRDBPbVpeRLw-1; Mon,
+ 13 Oct 2025 08:44:25 -0400
+X-MC-Unique: xRm_90NHOpyRDBPbVpeRLw-1
+X-Mimecast-MFC-AGG-ID: xRm_90NHOpyRDBPbVpeRLw_1760359464
+Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 7F5C51800372; Mon, 13 Oct 2025 12:44:24 +0000 (UTC)
+Received: from corto.redhat.com (unknown [10.45.225.105])
+ by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id EEF6E1800446; Mon, 13 Oct 2025 12:44:22 +0000 (UTC)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+Subject: [PULL 00/29] aspeed queue
+Date: Mon, 13 Oct 2025 14:43:51 +0200
+Message-ID: <20251013124421.71977-1-clg@redhat.com>
 MIME-Version: 1.0
-References: <20251010134226.72221-1-philmd@linaro.org>
- <20251010134226.72221-4-philmd@linaro.org>
-In-Reply-To: <20251010134226.72221-4-philmd@linaro.org>
-From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>
-Date: Mon, 13 Oct 2025 15:57:10 +0400
-X-Gm-Features: AS18NWDk4SvZ4_CNTAWuVHePQfmjemFIniEPBq48zkrNcM1cWAstXNj9j5GWPEQ
-Message-ID: <CAMxuvaxHGS_-VBP72ZzzHN63z0fGvPchy7XDGSU8XAf6AOkvRg@mail.gmail.com>
-Subject: Re: [PATCH 03/16] ui: Replace HOST_BIG_ENDIAN #ifdef with runtime
- if() check
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-ppc@nongnu.org, qemu-arm@nongnu.org, 
- qemu-riscv@nongnu.org, qemu-s390x@nongnu.org
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: Kna1rIXBse2Osh9umvh4KfQwSB7g3jOTVtCghBEP6oA_1760356643
-X-Mimecast-Originator: redhat.com
-Content-Type: multipart/alternative; boundary="000000000000595458064108f8f3"
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=mlureau@redhat.com;
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 4
-X-Spam_score: 0.4
-X-Spam_bar: /
-X-Spam_report: (0.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001,
- RCVD_IN_MSPIKE_WL=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_PASS=-0.001,
- SUSPICIOUS_RECIPS=2.51, T_SPF_TEMPERROR=0.01 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -109,170 +80,88 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
---000000000000595458064108f8f3
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+The following changes since commit f3f2ad119347e8c086b72282febcaac5d731b343:
 
-On Fri, Oct 10, 2025 at 5:42=E2=80=AFPM Philippe Mathieu-Daud=C3=A9 <philmd=
-@linaro.org>
-wrote:
+  Merge tag 'pull-target-arm-20251010' of https://gitlab.com/pm215/qemu into staging (2025-10-10 08:26:09 -0700)
 
-> Replace compile-time #ifdef with a runtime check to ensure all code
-> paths are built and tested. This reduces build-time configuration
-> complexity and improves maintainability.
->
-> No functional change intended.
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
->
+are available in the Git repository at:
 
-Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+  https://github.com/legoater/qemu/ tags/pull-aspeed-20251013
 
+for you to fetch changes up to 0cf9761b0ae6dd04815b54eb785301f35015246d:
 
-> ---
->  ui/vdagent.c | 16 ++++++++--------
->  ui/vnc.c     |  6 +-----
->  2 files changed, 9 insertions(+), 13 deletions(-)
->
-> diff --git a/ui/vdagent.c b/ui/vdagent.c
-> index ddb91e75c64..66dc33567df 100644
-> --- a/ui/vdagent.c
-> +++ b/ui/vdagent.c
-> @@ -660,14 +660,14 @@ static void vdagent_chr_open(Chardev *chr,
->      VDAgentChardev *vd =3D QEMU_VDAGENT_CHARDEV(chr);
->      ChardevQemuVDAgent *cfg =3D backend->u.qemu_vdagent.data;
->
-> -#if HOST_BIG_ENDIAN
-> -    /*
-> -     * TODO: vdagent protocol is defined to be LE,
-> -     * so we have to byteswap everything on BE hosts.
-> -     */
-> -    error_setg(errp, "vdagent is not supported on bigendian hosts");
-> -    return;
-> -#endif
-> +    if (HOST_BIG_ENDIAN) {
-> +        /*
-> +         * TODO: vdagent protocol is defined to be LE,
-> +         * so we have to byteswap everything on BE hosts.
-> +         */
-> +        error_setg(errp, "vdagent is not supported on bigendian hosts");
-> +        return;
-> +    }
->
->      vd->mouse =3D VDAGENT_MOUSE_DEFAULT;
->      if (cfg->has_mouse) {
-> diff --git a/ui/vnc.c b/ui/vnc.c
-> index 77c823bf2e8..e93b5335690 100644
-> --- a/ui/vnc.c
-> +++ b/ui/vnc.c
-> @@ -2348,11 +2348,7 @@ static void pixel_format_message (VncState *vs) {
->      vnc_write_u8(vs, vs->client_pf.bits_per_pixel); /* bits-per-pixel */
->      vnc_write_u8(vs, vs->client_pf.depth); /* depth */
->
-> -#if HOST_BIG_ENDIAN
-> -    vnc_write_u8(vs, 1);             /* big-endian-flag */
-> -#else
-> -    vnc_write_u8(vs, 0);             /* big-endian-flag */
-> -#endif
-> +    vnc_write_u8(vs, HOST_BIG_ENDIAN);         /* big-endian-flag */
->      vnc_write_u8(vs, 1);             /* true-color-flag */
->      vnc_write_u16(vs, vs->client_pf.rmax);     /* red-max */
->      vnc_write_u16(vs, vs->client_pf.gmax);     /* green-max */
-> --
-> 2.51.0
->
->
+  hw/arm/aspeed_ast27x0-{ssp,tsp}: Fix coding style (2025-10-13 14:37:55 +0200)
 
---000000000000595458064108f8f3
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+----------------------------------------------------------------
+aspeed queue:
 
-<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote g=
-mail_quote_container"><div dir=3D"ltr" class=3D"gmail_attr">On Fri, Oct 10,=
- 2025 at 5:42=E2=80=AFPM Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:=
-philmd@linaro.org">philmd@linaro.org</a>&gt; wrote:<br></div><blockquote cl=
-ass=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid=
- rgb(204,204,204);padding-left:1ex">Replace compile-time #ifdef with a runt=
-ime check to ensure all code<br>
-paths are built and tested. This reduces build-time configuration<br>
-complexity and improves maintainability.<br>
-<br>
-No functional change intended.<br>
-<br>
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@lin=
-aro.org" target=3D"_blank">philmd@linaro.org</a>&gt;<br></blockquote><div><=
-br></div><div>Reviewed-by: Marc-Andr=C3=A9 Lureau &lt;<a href=3D"mailto:mar=
-candre.lureau@redhat.com">marcandre.lureau@redhat.com</a>&gt;</div><div>=C2=
-=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8e=
-x;border-left:1px solid rgb(204,204,204);padding-left:1ex">
----<br>
-=C2=A0ui/vdagent.c | 16 ++++++++--------<br>
-=C2=A0ui/vnc.c=C2=A0 =C2=A0 =C2=A0|=C2=A0 6 +-----<br>
-=C2=A02 files changed, 9 insertions(+), 13 deletions(-)<br>
-<br>
-diff --git a/ui/vdagent.c b/ui/vdagent.c<br>
-index ddb91e75c64..66dc33567df 100644<br>
---- a/ui/vdagent.c<br>
-+++ b/ui/vdagent.c<br>
-@@ -660,14 +660,14 @@ static void vdagent_chr_open(Chardev *chr,<br>
-=C2=A0 =C2=A0 =C2=A0VDAgentChardev *vd =3D QEMU_VDAGENT_CHARDEV(chr);<br>
-=C2=A0 =C2=A0 =C2=A0ChardevQemuVDAgent *cfg =3D backend-&gt;u.qemu_vdagent.=
-data;<br>
-<br>
--#if HOST_BIG_ENDIAN<br>
--=C2=A0 =C2=A0 /*<br>
--=C2=A0 =C2=A0 =C2=A0* TODO: vdagent protocol is defined to be LE,<br>
--=C2=A0 =C2=A0 =C2=A0* so we have to byteswap everything on BE hosts.<br>
--=C2=A0 =C2=A0 =C2=A0*/<br>
--=C2=A0 =C2=A0 error_setg(errp, &quot;vdagent is not supported on bigendian=
- hosts&quot;);<br>
--=C2=A0 =C2=A0 return;<br>
--#endif<br>
-+=C2=A0 =C2=A0 if (HOST_BIG_ENDIAN) {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 /*<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0* TODO: vdagent protocol is defined to b=
-e LE,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0* so we have to byteswap everything on B=
-E hosts.<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0*/<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 error_setg(errp, &quot;vdagent is not supporte=
-d on bigendian hosts&quot;);<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 return;<br>
-+=C2=A0 =C2=A0 }<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0vd-&gt;mouse =3D VDAGENT_MOUSE_DEFAULT;<br>
-=C2=A0 =C2=A0 =C2=A0if (cfg-&gt;has_mouse) {<br>
-diff --git a/ui/vnc.c b/ui/vnc.c<br>
-index 77c823bf2e8..e93b5335690 100644<br>
---- a/ui/vnc.c<br>
-+++ b/ui/vnc.c<br>
-@@ -2348,11 +2348,7 @@ static void pixel_format_message (VncState *vs) {<br=
->
-=C2=A0 =C2=A0 =C2=A0vnc_write_u8(vs, vs-&gt;client_pf.bits_per_pixel); /* b=
-its-per-pixel */<br>
-=C2=A0 =C2=A0 =C2=A0vnc_write_u8(vs, vs-&gt;client_pf.depth); /* depth */<b=
-r>
-<br>
--#if HOST_BIG_ENDIAN<br>
--=C2=A0 =C2=A0 vnc_write_u8(vs, 1);=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0/* big-endian-flag */<br>
--#else<br>
--=C2=A0 =C2=A0 vnc_write_u8(vs, 0);=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0/* big-endian-flag */<br>
--#endif<br>
-+=C2=A0 =C2=A0 vnc_write_u8(vs, HOST_BIG_ENDIAN);=C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0/* big-endian-flag */<br>
-=C2=A0 =C2=A0 =C2=A0vnc_write_u8(vs, 1);=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0/* true-color-flag */<br>
-=C2=A0 =C2=A0 =C2=A0vnc_write_u16(vs, vs-&gt;client_pf.rmax);=C2=A0 =C2=A0 =
-=C2=A0/* red-max */<br>
-=C2=A0 =C2=A0 =C2=A0vnc_write_u16(vs, vs-&gt;client_pf.gmax);=C2=A0 =C2=A0 =
-=C2=A0/* green-max */<br>
--- <br>
-2.51.0<br>
-<br>
-</blockquote></div></div>
+* Introduce AspeedCoprocessor class and base implementation
+* Remove redudant functional tests to optimize for CI resources
+* Deprecate fp5280g2-bmc, qcom-dc-scm-v1-bmc, qcom-firework-bmc and
+  sonorapass-bmc machines
+* Bump ASPEED SDK to v09.08
+* Add PCIe and network tests
 
---000000000000595458064108f8f3--
+----------------------------------------------------------------
+Cédric Le Goater (7):
+      aspeed: Don't set 'auto_create_sdcard'
+      tests/functional/arm: Split the ast2600 tests in two files
+      aspeed: Deprecate the sonorapass-bmc machine
+      aspeed: Deprecate the qcom-dc-scm-v1-bmc and qcom-firework-bmc machines
+      aspeed: Deprecate the fp5280g2-bmc machine
+      test/functional/aarch64: Remove test for the ast2700a0-evb machine
+      test/functional/aarch64: Split the ast2700a1-evb OpenBMC boot test
+
+Jamin Lin (22):
+      tests/functional/aarch64/aspeed_ast2700: Add PCIe and network tests
+      tests/functional/arm/test_aspeed_ast1030: Update test ASPEED SDK v03.03
+      tests/functional/arm/test_aspeed_ast2500: Update test ASPEED SDK v09.08
+      tests/functional/arm/test_aspeed_ast2600: Update test ASPEED SDK v09.08
+      tests/functional/aarch64/test_aspeed_ast2700: Update test ASPEED SDK v09.08 for A1
+      tests/functional/aarch64/test_aspeed_ast2700: Move eth2 IP check into common function
+      hw/arm/aspeed: Remove AspeedSoCState dependency from aspeed_uart_first() API
+      hw/arm/aspeed: Remove AspeedSoCClass dependency from aspeed_uart_last() API
+      hw/arm/aspeed: Remove AspeedSoCState dependency from aspeed_soc_uart_set_chr() API
+      hw/arm/aspeed: Remove AspeedSoCClass dependency from aspeed_soc_cpu_type() API
+      hw/arm/aspeed: Remove AspeedSoCState dependency from aspeed_mmio_map() API
+      hw/arm/aspeed: Remove AspeedSoCState dependency from aspeed_mmio_map_unimplemented() API
+      hw/arm/aspeed: Remove AspeedSoCState dependency from aspeed_soc_uart_realize() API
+      hw/arm/aspeed: Remove the aspeed_soc_get_irq and class get_irq hook
+      hw/arm/aspeed: Introduce AspeedCoprocessor class and base implementation
+      hw/arm/aspeed_ast27x0-ssp: Make AST27x0 SSP inherit from AspeedCoprocessor instead of AspeedSoC
+      hw/arm/aspeed_ast27x0-tsp: Make AST27x0 TSP inherit from AspeedCoprocessor instead of AspeedSoC
+      hw/arm/aspeed_ast27x0-ssp: Change to use Aspeed27x0CoprocessorState
+      hw/arm/aspeed_ast27x0-tsp: Change to use Aspeed27x0CoprocessorState
+      hw/arm/aspeed_ast27x0-ssp: Rename type to TYPE_ASPEED27X0SSP_COPROCESSOR
+      hw/arm/aspeed_ast27x0-tsp: Rename type to TYPE_ASPEED27X0TSP_COPROCESSOR
+      hw/arm/aspeed_ast27x0-{ssp,tsp}: Fix coding style
+
+ docs/about/deprecated.rst                          |  27 +++++
+ include/hw/arm/aspeed_coprocessor.h                |  61 +++++++++++
+ include/hw/arm/aspeed_soc.h                        |  48 ++------
+ hw/arm/aspeed.c                                    |  36 ++----
+ hw/arm/aspeed_ast10x0.c                            |  89 +++++++++------
+ hw/arm/aspeed_ast2400.c                            |  94 +++++++++-------
+ hw/arm/aspeed_ast2600.c                            | 121 ++++++++++++---------
+ hw/arm/aspeed_ast27x0-fc.c                         |  33 ++++--
+ hw/arm/aspeed_ast27x0-ssp.c                        |  74 +++++++------
+ hw/arm/aspeed_ast27x0-tsp.c                        |  74 +++++++------
+ hw/arm/aspeed_ast27x0.c                            | 107 ++++++++++--------
+ hw/arm/aspeed_coprocessor_common.c                 |  49 +++++++++
+ hw/arm/aspeed_soc_common.c                         |  63 +++++------
+ hw/arm/fby35.c                                     |  10 +-
+ hw/arm/meson.build                                 |   7 +-
+ tests/functional/aarch64/test_aspeed_ast2700.py    |  60 +++++-----
+ tests/functional/aarch64/test_aspeed_ast2700fc.py  |  13 +++
+ tests/functional/arm/meson.build                   |   6 +-
+ tests/functional/arm/test_aspeed_ast1030.py        |  17 +--
+ tests/functional/arm/test_aspeed_ast2500.py        |   8 +-
+ ...ast2600.py => test_aspeed_ast2600_buildroot.py} |  74 -------------
+ tests/functional/arm/test_aspeed_ast2600_sdk.py    |  94 ++++++++++++++++
+ 22 files changed, 690 insertions(+), 475 deletions(-)
+ create mode 100644 include/hw/arm/aspeed_coprocessor.h
+ create mode 100644 hw/arm/aspeed_coprocessor_common.c
+ rename tests/functional/arm/{test_aspeed_ast2600.py => test_aspeed_ast2600_buildroot.py} (57%)
+ create mode 100755 tests/functional/arm/test_aspeed_ast2600_sdk.py
 
 

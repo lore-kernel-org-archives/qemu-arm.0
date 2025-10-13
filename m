@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 428C9CCD183
-	for <qemu-arm@archiver.kernel.org>; Mon, 13 Oct 2025 09:22:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64A6ACCD185
+	for <qemu-arm@archiver.kernel.org>; Mon, 13 Oct 2025 09:23:09 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v8Eks-0002dB-Bj; Mon, 13 Oct 2025 05:22:10 -0400
+	id 1v8EkD-0001fP-LE; Mon, 13 Oct 2025 05:21:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1v8Ekq-0002cJ-SK
- for qemu-arm@nongnu.org; Mon, 13 Oct 2025 05:22:08 -0400
-Received: from smtpout3.mo529.mail-out.ovh.net ([46.105.54.81])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1v8EkA-0001eU-8M; Mon, 13 Oct 2025 05:21:26 -0400
+Received: from 8.mo552.mail-out.ovh.net ([46.105.37.156])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1v8Ekm-0004So-UL
- for qemu-arm@nongnu.org; Mon, 13 Oct 2025 05:22:08 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.110.58.224])
- by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 4clX165SZ3z5w0k;
- Mon, 13 Oct 2025 09:22:02 +0000 (UTC)
-Received: from kaod.org (37.59.142.114) by DAG8EX2.mxp5.local (172.16.2.72)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1v8Ek6-0004J1-0E; Mon, 13 Oct 2025 05:21:25 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.109.231.70])
+ by mo552.mail-out.ovh.net (Postfix) with ESMTPS id 4clX0F4R01z6N1G;
+ Mon, 13 Oct 2025 09:21:17 +0000 (UTC)
+Received: from kaod.org (37.59.142.98) by DAG8EX2.mxp5.local (172.16.2.72)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.59; Mon, 13 Oct
- 2025 11:22:01 +0200
+ 2025 11:21:16 +0200
 Authentication-Results: garm.ovh; auth=pass
- (GARM-114S00856259d8c-1a33-4877-9417-18d4d633e367,
+ (GARM-98R0027edc1db7-e750-4d25-8785-777561e23d1b,
  E27D2F41E47E806E38994DC6761E007B2CBA9264) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
-Message-ID: <1b65a32e-ad6a-4ed6-bd17-ab40ca679afe@kaod.org>
-Date: Mon, 13 Oct 2025 11:22:01 +0200
+Message-ID: <9d145642-6ddc-4b3c-af43-0b94664f2f3a@kaod.org>
+Date: Mon, 13 Oct 2025 11:21:15 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [SPAM] [PATCH v3 06/16] hw/arm/aspeed: Remove AspeedSoCState
- dependency from aspeed_mmio_map_unimplemented() API
+Subject: Re: [SPAM] [PATCH v3 04/16] hw/arm/aspeed: Remove AspeedSoCClass
+ dependency from aspeed_soc_cpu_type() API
 To: Jamin Lin <jamin_lin@aspeedtech.com>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
  <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, Joel
@@ -42,7 +42,7 @@ To: Jamin Lin <jamin_lin@aspeedtech.com>, Peter Maydell
  "open list:All patches CC here" <qemu-devel@nongnu.org>
 CC: <troy_lee@aspeedtech.com>, <kane_chen@aspeedtech.com>
 References: <20251013054334.955331-1-jamin_lin@aspeedtech.com>
- <20251013054334.955331-7-jamin_lin@aspeedtech.com>
+ <20251013054334.955331-5-jamin_lin@aspeedtech.com>
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Content-Language: en-US, fr
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -87,35 +87,35 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20251013054334.955331-7-jamin_lin@aspeedtech.com>
+In-Reply-To: <20251013054334.955331-5-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.114]
-X-ClientProxiedBy: DAG8EX2.mxp5.local (172.16.2.72) To DAG8EX2.mxp5.local
+X-Originating-IP: [37.59.142.98]
+X-ClientProxiedBy: DAG3EX1.mxp5.local (172.16.2.21) To DAG8EX2.mxp5.local
  (172.16.2.72)
-X-Ovh-Tracer-GUID: 0ec9dfd8-74b6-4579-a308-11c354891818
-X-Ovh-Tracer-Id: 14175642779737164722
+X-Ovh-Tracer-GUID: 312ceef5-f38d-4a05-a2d9-8452de2ddde3
+X-Ovh-Tracer-Id: 14162694931420711858
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTFztRFT9abrdjyGgf427JWtcw8TtUc/9gGZroJBVZZqX4aAI7YlegXLLco0GOmPXljMgl0EMOWCgU3iWBKz4h9VbT4r5Xze8HA1bZB240FgbHSUGuphfWh8223IoQ+YwzKpSyDVJsWTzyCXjKuK4kfj0UOTbUVkTNU0oiifqj7t2NuYlWPtRSRZPcv7a0psRYY38eInZwfW2jeZO0nOsPoHkUaaGfifAmOB3a4MNLsFkwEvzQcQamtE7+VrdF3eKI8HvMinu0PkputDA/yO1nSyE53TST7BlUNW4yKFlDpUKV2Qjl/ec66EQWRpmIlcmwJS3teLqWAxCGBxXZZvSwL/ih5lYfiUrLJ0rvaL/8zzmMHBlokWxHQd+KuvHgz85qw/qv7i5ox/GvPtOTWWSu00NvcjgWvcJh/L4cfqHT3lYmEOnb2ltnjLlP2o3s2jknq+vunnZiM3S3h9CQp5zVwRdvv8Xute38ToF3SOeymBV53gNHnU5GB9qvzr4/ClcEwfqGu+BxG+DhKRenrT3fn3G1uLfMzrMbSEoGmSaRupOA9VDpgHIMAoZnNyvpLQF6aCOY+CdEwDch9Kh5wS6YCgAmNlJn4ptEn6kAxvhYNKuMe3C61/hz9oPbhroUWSJFLi6rPZ84tztDDm7voGDqjEvg/IQp78VH1VzkB20oskvQ
-DKIM-Signature: a=rsa-sha256; bh=/BhTWeaoNhVvSmeKS6fyaP93M96FhK9olpV9xBt8z1Y=; 
+X-VR-SPAMCAUSE: dmFkZTFOPVdP/117dPgbZzLhrsAnCLxxY8oDKf7VZMEzwaYiBJKxY3kKANlBsr1BqwTAHQ10+0GjdBAxO9PJvjUOeglKlQR99jQsIvY+YQho5TtXycUvjIDMOMPeN/WsnleFTSfkT4vpnHTPHguckBimuSHA5tMbz/buUPsXD6WiICNJCtFENz33bNy4FnY6mbeCaYUXJtLSt3ZjgMBuBqrnhfEYTuxL223oSE69lcxxLz5RUqGsBDg+P9HFG6g8ovT0t3uffsGgnohtBO22Qfnht5FHGxc0bclEU7E+T80xJR1wKVTY/T9EG7NrVaVr9kirtj79dudFNz/da2AAeCo4ju+HDnYttxXAeoS96PxsUzSQZs/WTcQnB10T2mfqbtXqIrIdtf6V8BGKOMFaM6qvRLJjfGP0Lee4nf+S/w9gUJUzvBAEmkmVnPTQzvrpf2mE4Ijb5L/svqh6WzhiloudPkO16FzIMs93I/1UnKzVIk4KXC06wSrvJGZV4wDe+kwflO2MOidn4FVASJqdZQG/ivtWDvqqE63N8CeLG1e4SWu6ts+Tm723AR+bj0EVBh/AONgBeoVxjLN9C/mMtO29H3IExHL2leiAZxgsR7I2xTUTWoKG8sZMTIMb1rPlKAJATGrLB54Sl0AA4aXH9Va3CN0FdE3qdlLWW2u430AV+ybT/A
+DKIM-Signature: a=rsa-sha256; bh=AHrJVZb7ji+CfQxgCCbSIbPpCKiDskH1p2LsUfLmt4w=; 
  c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1760347323; v=1;
- b=QdhXpB3aNOvfpBbRwkSPf+voWPXGQb0qFhYZqwDu8K8up1ikllUSQcy/gnfwAfMD8aEEI9mS
- tn5xg+oyKiqlmoltS4TtmR+5qACRKrTr8UWmekhjcrvb2xoq4b+tHECJdATJrCGDVrQtXbhP66W
- JdWQiNxJUeil9g9Rv2T9cfuPvzb+MYB15N8nT9S7N5sfQkgbXfXP0dNB7HQQw9UVajCxrXUMSGg
- Gtenus0mtXCsyVvVp5B1RGqfUkZ5u2y69PDEz7eRHzzI+mn5ZlaRsTWY2ph2QoNbXPNlWkSu/+v
- Xxzc6H4CfLLNbSyF63E875NzTNSbbt8pEvkjaZWRWkgmQ==
-Received-SPF: pass client-ip=46.105.54.81; envelope-from=clg@kaod.org;
- helo=smtpout3.mo529.mail-out.ovh.net
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ t=1760347278; v=1;
+ b=JmqM4Cu1QfCOhMVgFVXiVWXemVl7VIuDZj/wILZXXl9E9jzmeoXiYbdz9ZfgwO/p0LIgS425
+ Lh3XI8WsOMasLyN+l4+I0r6ZKVxE8Ys2XTqRR+qfWCyCVjk4uCfa1PK3yCL7Tx/ghcoujRBLBEj
+ U5gatN7WmKeywSzZMO65TPpFr7XAwsQWx2cSE/RmYxA79jgZSjTe+pK6WXU8FNcERNkLj4Tuy2L
+ LgLYgaAX8AZHKBDmPtxf7UgLcZMci2MyKph/MAJS173AplV+Tn6fVXluq7dMYdQwx+xqrKWTo3K
+ 870PSSZmDYx7zOr5RhDfchvJUcnE8TMlxpRhsaoVAqYIw==
+Received-SPF: pass client-ip=46.105.37.156; envelope-from=clg@kaod.org;
+ helo=8.mo552.mail-out.ovh.net
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=-1, RCVD_IN_MSPIKE_WL=-0.01,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -132,31 +132,31 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 10/13/25 07:43, Jamin Lin wrote:
-> Refactor aspeed_mmio_map_unimplemented() to take MemoryRegion *
-> instead of AspeedSoCState *, removing its dependency on SoC state and
-> aligning it with the updated aspeed_mmio_map() interface.
+> Refactor the aspeed_soc_cpu_type() helper to remove its dependency on
+> AspeedSoCClass and make CPU type retrieval more generic.
 > 
-> All related call sites are updated to explicitly pass s->memory.
-> Affected files include headers, aspeed_soc_common.c, and SoC realize
-> functions in AST10x0, AST2400, AST2600, AST27x0 (SSP/TSP), and AST2700.
+> The function now takes valid_cpu_types as a const char * const *
+> parameter instead of requiring a full AspeedSoCClass instance.
+> All corresponding call sites in various Aspeed SoC initialization files
+> (aspeed_ast10x0.c, aspeed_ast2400.c, aspeed_ast2600.c,
+> aspeed_ast27x0.c, and related variants) are updated accordingly.
 > 
-> This change simplifies the MMIO mapping helpers, improves API
-> consistency, and reduces coupling between SoC logic and memory
-> operations.
+> This change simplifies the API, eliminates unnecessary type coupling,
+> and improves code reusability across different SoC families.
 > 
 > No functional change.
 > 
 > Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 > ---
->   include/hw/arm/aspeed_soc.h |  2 +-
->   hw/arm/aspeed_ast10x0.c     | 24 ++++++++++++++++--------
->   hw/arm/aspeed_ast2400.c     |  6 ++++--
->   hw/arm/aspeed_ast2600.c     | 12 ++++++++----
->   hw/arm/aspeed_ast27x0-ssp.c |  8 ++++----
->   hw/arm/aspeed_ast27x0-tsp.c |  8 ++++----
->   hw/arm/aspeed_ast27x0.c     | 10 +++++-----
->   hw/arm/aspeed_soc_common.c  |  4 ++--
->   8 files changed, 44 insertions(+), 30 deletions(-)
+>   include/hw/arm/aspeed_soc.h |  3 +--
+>   hw/arm/aspeed_ast10x0.c     |  3 ++-
+>   hw/arm/aspeed_ast2400.c     |  2 +-
+>   hw/arm/aspeed_ast2600.c     |  2 +-
+>   hw/arm/aspeed_ast27x0-ssp.c |  3 ++-
+>   hw/arm/aspeed_ast27x0-tsp.c |  3 ++-
+>   hw/arm/aspeed_ast27x0.c     |  2 +-
+>   hw/arm/aspeed_soc_common.c  | 10 +++++-----
+>   8 files changed, 15 insertions(+), 13 deletions(-)
 > 
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
 

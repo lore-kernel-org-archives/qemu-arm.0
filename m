@@ -4,56 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 568B8CCA476
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3CADCCD18E
 	for <qemu-arm@archiver.kernel.org>; Mon, 13 Oct 2025 12:48:03 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v8Hvt-0005AW-6T; Mon, 13 Oct 2025 08:45:45 -0400
+	id 1v8Hv4-0004TJ-Hl; Mon, 13 Oct 2025 08:44:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1v8HvY-0004uh-CA
- for qemu-arm@nongnu.org; Mon, 13 Oct 2025 08:45:31 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1v8Hul-0004PR-MV
+ for qemu-arm@nongnu.org; Mon, 13 Oct 2025 08:44:36 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1v8HvM-0008CE-Sq
- for qemu-arm@nongnu.org; Mon, 13 Oct 2025 08:45:22 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1v8Hui-0007st-ES
+ for qemu-arm@nongnu.org; Mon, 13 Oct 2025 08:44:35 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1760359511;
+ s=mimecast20190719; t=1760359470;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=H0QrLhBvqbk7rYuSeyggsaT9tykkvaYvB/E9Wk1LPEc=;
- b=T4PnNOR4wVYoptnWfG8LM1ypkpzfNFqhCE2dXe6szaYKQCMfQ1nCVjco2/kWoB+PiYqcMk
- XCmkTNnSNV+Rujf6ke0MY+xgeVjinD66QNbfdC2yKSqrdSnq7A5WHI0nJxtG9yxW5mHjDi
- k56GudZYScUXxLIVa999Ydki1d6Wn/c=
+ bh=PH43Dh/oEMaltFLCgST7LlrkWmG9Na+ZM+oAkdq05pY=;
+ b=KM00kcqG7u1VtvStwYgs3ulUHQhCSDXwrhNPF8owdN+BwYgxTkTYNhYRFIs/H2fr75Qpd4
+ vm9wQDBBc7DOou8k2CVZ+7Mj3aIAdZAzf7cOIf2+/Z/QqfAPFG9E8irlSGqnbmu+8ci6Yo
+ NQsNiPDB+VFZxq0bVIasSL8SCRexvEQ=
 Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-194-5jQPuWBCMnOTVeJfpENnCg-1; Mon,
- 13 Oct 2025 08:45:09 -0400
-X-MC-Unique: 5jQPuWBCMnOTVeJfpENnCg-1
-X-Mimecast-MFC-AGG-ID: 5jQPuWBCMnOTVeJfpENnCg_1760359508
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-56-TjzMoI0yMrydITepsxQ4SQ-1; Mon,
+ 13 Oct 2025 08:44:29 -0400
+X-MC-Unique: TjzMoI0yMrydITepsxQ4SQ-1
+X-Mimecast-MFC-AGG-ID: TjzMoI0yMrydITepsxQ4SQ_1760359468
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id C78141956086; Mon, 13 Oct 2025 12:45:08 +0000 (UTC)
+ id 63BFA1956095; Mon, 13 Oct 2025 12:44:28 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.45.225.105])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 541171800446; Mon, 13 Oct 2025 12:45:07 +0000 (UTC)
+ id E4B241800446; Mon, 13 Oct 2025 12:44:26 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 22/29] hw/arm/aspeed: Introduce AspeedCoprocessor class and
- base implementation
-Date: Mon, 13 Oct 2025 14:44:13 +0200
-Message-ID: <20251013124421.71977-23-clg@redhat.com>
+Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PULL 02/29] aspeed: Don't set 'auto_create_sdcard'
+Date: Mon, 13 Oct 2025 14:43:53 +0200
+Message-ID: <20251013124421.71977-3-clg@redhat.com>
 In-Reply-To: <20251013124421.71977-1-clg@redhat.com>
 References: <20251013124421.71977-1-clg@redhat.com>
 MIME-Version: 1.0
@@ -85,153 +84,202 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Jamin Lin <jamin_lin@aspeedtech.com>
+The Aspeed machines inherited from a 'no_sdcard' attribute when first
+introduced in QEMU. This attribute was later renamed to
+'auto_create_sdcard' by commit cdc8d7cadaac ("hw/boards: Rename
+no_sdcard -> auto_create_sdcard") and set to 'true'. This has the
+indesirable efect to automatically create SD cards at init time.
 
-Add a new AspeedCoprocessor class that defines the foundational structure for
-ASPEED coprocessor models. This class encapsulates a base DeviceState with
-links to system memory, clock, and peripheral components such as SCU, SCUIO,
-Timer Controller, and UARTs.
+Remove 'auto_create_sdcard' to avoid creating a SD card device.
 
-Introduce the corresponding implementation file
-aspeed_coprocessor_common.c, which provides the aspeed_coprocessor_realize()
-method, property registration, and QOM type registration. The class is marked
-as abstract and intended to serve as a common base for specific coprocessor
-variants (e.g. SSP/TSP subsystems).
-
-This establishes a reusable and extensible framework for modeling ASPEED
-coprocessor devices.
-
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20251013054334.955331-10-jamin_lin@aspeedtech.com
+Cc: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Link: https://lore.kernel.org/qemu-devel/20251003103024.1863551-1-clg@redhat.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- include/hw/arm/aspeed_coprocessor.h | 44 ++++++++++++++++++++++++++
- hw/arm/aspeed_coprocessor_common.c  | 49 +++++++++++++++++++++++++++++
- hw/arm/meson.build                  |  3 +-
- 3 files changed, 95 insertions(+), 1 deletion(-)
- create mode 100644 include/hw/arm/aspeed_coprocessor.h
- create mode 100644 hw/arm/aspeed_coprocessor_common.c
+ hw/arm/aspeed.c | 22 ----------------------
+ 1 file changed, 22 deletions(-)
 
-diff --git a/include/hw/arm/aspeed_coprocessor.h b/include/hw/arm/aspeed_coprocessor.h
-new file mode 100644
-index 000000000000..793c7b1f8be9
---- /dev/null
-+++ b/include/hw/arm/aspeed_coprocessor.h
-@@ -0,0 +1,44 @@
-+/*
-+ * ASPEED Coprocessor
-+ *
-+ * Copyright (C) 2025 ASPEED Technology Inc.
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#ifndef ASPEED_COPROCESSOR_H
-+#define ASPEED_COPROCESSOR_H
-+
-+#include "qom/object.h"
-+#include "hw/arm/aspeed_soc.h"
-+
-+struct AspeedCoprocessorState {
-+    DeviceState parent;
-+
-+    MemoryRegion *memory;
-+    MemoryRegion sram;
-+    Clock *sysclk;
-+
-+    AspeedSCUState scu;
-+    AspeedSCUState scuio;
-+    AspeedTimerCtrlState timerctrl;
-+    SerialMM uart[ASPEED_UARTS_NUM];
-+};
-+
-+#define TYPE_ASPEED_COPROCESSOR "aspeed-coprocessor"
-+OBJECT_DECLARE_TYPE(AspeedCoprocessorState, AspeedCoprocessorClass,
-+                    ASPEED_COPROCESSOR)
-+
-+struct AspeedCoprocessorClass {
-+    DeviceClass parent_class;
-+
-+    /** valid_cpu_types: NULL terminated array of a single CPU type. */
-+    const char * const *valid_cpu_types;
-+    uint32_t silicon_rev;
-+    const hwaddr *memmap;
-+    const int *irqmap;
-+    int uarts_base;
-+    int uarts_num;
-+};
-+
-+#endif /* ASPEED_COPROCESSOR_H */
-diff --git a/hw/arm/aspeed_coprocessor_common.c b/hw/arm/aspeed_coprocessor_common.c
-new file mode 100644
-index 000000000000..8a94b44f07f2
---- /dev/null
-+++ b/hw/arm/aspeed_coprocessor_common.c
-@@ -0,0 +1,49 @@
-+/*
-+ * ASPEED Coprocessor
-+ *
-+ * Copyright (C) 2025 ASPEED Technology Inc.
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qapi/error.h"
-+#include "system/memory.h"
-+#include "hw/qdev-properties.h"
-+#include "hw/arm/aspeed_coprocessor.h"
-+
-+static void aspeed_coprocessor_realize(DeviceState *dev, Error **errp)
-+{
-+    AspeedCoprocessorState *s = ASPEED_COPROCESSOR(dev);
-+
-+    if (!s->memory) {
-+        error_setg(errp, "'memory' link is not set");
-+        return;
-+    }
-+}
-+
-+static const Property aspeed_coprocessor_properties[] = {
-+    DEFINE_PROP_LINK("memory", AspeedCoprocessorState, memory,
-+                     TYPE_MEMORY_REGION, MemoryRegion *),
-+};
-+
-+static void aspeed_coprocessor_class_init(ObjectClass *oc, const void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(oc);
-+
-+    dc->realize = aspeed_coprocessor_realize;
-+    device_class_set_props(dc, aspeed_coprocessor_properties);
-+}
-+
-+static const TypeInfo aspeed_coprocessor_types[] = {
-+    {
-+        .name           = TYPE_ASPEED_COPROCESSOR,
-+        .parent         = TYPE_DEVICE,
-+        .instance_size  = sizeof(AspeedCoprocessorState),
-+        .class_size     = sizeof(AspeedCoprocessorClass),
-+        .class_init     = aspeed_coprocessor_class_init,
-+        .abstract       = true,
-+    },
-+};
-+
-+DEFINE_TYPES(aspeed_coprocessor_types)
-diff --git a/hw/arm/meson.build b/hw/arm/meson.build
-index dc68391305fe..56bdb88b1175 100644
---- a/hw/arm/meson.build
-+++ b/hw/arm/meson.build
-@@ -52,7 +52,8 @@ arm_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
-   'fby35.c'))
- arm_common_ss.add(when: ['CONFIG_ASPEED_SOC', 'TARGET_AARCH64'], if_true: files(
-   'aspeed_ast27x0.c',
--  'aspeed_ast27x0-fc.c',))
-+  'aspeed_ast27x0-fc.c',
-+  'aspeed_coprocessor_common.c'))
- arm_common_ss.add(when: 'CONFIG_MPS2', if_true: files('mps2.c'))
- arm_common_ss.add(when: 'CONFIG_MPS2', if_true: files('mps2-tz.c'))
- arm_common_ss.add(when: 'CONFIG_MSF2', if_true: files('msf2-soc.c'))
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index 6046ec0bb2a2..58cfbc713794 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -1418,7 +1418,6 @@ static void aspeed_machine_palmetto_class_init(ObjectClass *oc,
+     amc->spi_model = "mx25l25635f";
+     amc->num_cs    = 1;
+     amc->i2c_init  = palmetto_bmc_i2c_init;
+-    mc->auto_create_sdcard = true;
+     mc->default_ram_size       = 256 * MiB;
+     aspeed_machine_class_init_cpus_defaults(mc);
+ };
+@@ -1436,7 +1435,6 @@ static void aspeed_machine_quanta_q71l_class_init(ObjectClass *oc,
+     amc->spi_model = "mx25l25635e";
+     amc->num_cs    = 1;
+     amc->i2c_init  = quanta_q71l_bmc_i2c_init;
+-    mc->auto_create_sdcard = true;
+     mc->default_ram_size       = 128 * MiB;
+     aspeed_machine_class_init_cpus_defaults(mc);
+ }
+@@ -1455,7 +1453,6 @@ static void aspeed_machine_supermicrox11_bmc_class_init(ObjectClass *oc,
+     amc->num_cs    = 1;
+     amc->macs_mask = ASPEED_MAC0_ON | ASPEED_MAC1_ON;
+     amc->i2c_init  = palmetto_bmc_i2c_init;
+-    mc->auto_create_sdcard = true;
+     mc->default_ram_size = 256 * MiB;
+     aspeed_machine_class_init_cpus_defaults(mc);
+ }
+@@ -1474,7 +1471,6 @@ static void aspeed_machine_supermicro_x11spi_bmc_class_init(ObjectClass *oc,
+     amc->num_cs    = 1;
+     amc->macs_mask = ASPEED_MAC0_ON | ASPEED_MAC1_ON;
+     amc->i2c_init  = palmetto_bmc_i2c_init;
+-    mc->auto_create_sdcard = true;
+     mc->default_ram_size = 512 * MiB;
+     aspeed_machine_class_init_cpus_defaults(mc);
+ }
+@@ -1492,7 +1488,6 @@ static void aspeed_machine_ast2500_evb_class_init(ObjectClass *oc,
+     amc->spi_model = "mx25l25635f";
+     amc->num_cs    = 1;
+     amc->i2c_init  = ast2500_evb_i2c_init;
+-    mc->auto_create_sdcard = true;
+     mc->default_ram_size       = 512 * MiB;
+     aspeed_machine_class_init_cpus_defaults(mc);
+ };
+@@ -1511,7 +1506,6 @@ static void aspeed_machine_yosemitev2_class_init(ObjectClass *oc,
+     amc->spi_model = "mx25l25635e";
+     amc->num_cs    = 2;
+     amc->i2c_init  = yosemitev2_bmc_i2c_init;
+-    mc->auto_create_sdcard = true;
+     mc->default_ram_size       = 512 * MiB;
+     aspeed_machine_class_init_cpus_defaults(mc);
+ };
+@@ -1529,7 +1523,6 @@ static void aspeed_machine_romulus_class_init(ObjectClass *oc,
+     amc->spi_model = "mx66l1g45g";
+     amc->num_cs    = 2;
+     amc->i2c_init  = romulus_bmc_i2c_init;
+-    mc->auto_create_sdcard = true;
+     mc->default_ram_size       = 512 * MiB;
+     aspeed_machine_class_init_cpus_defaults(mc);
+ };
+@@ -1548,7 +1541,6 @@ static void aspeed_machine_tiogapass_class_init(ObjectClass *oc,
+     amc->spi_model = "mx25l25635e";
+     amc->num_cs    = 2;
+     amc->i2c_init  = tiogapass_bmc_i2c_init;
+-    mc->auto_create_sdcard = true;
+     mc->default_ram_size       = 1 * GiB;
+     aspeed_machine_class_init_cpus_defaults(mc);
+ };
+@@ -1566,7 +1558,6 @@ static void aspeed_machine_sonorapass_class_init(ObjectClass *oc,
+     amc->spi_model = "mx66l1g45g";
+     amc->num_cs    = 2;
+     amc->i2c_init  = sonorapass_bmc_i2c_init;
+-    mc->auto_create_sdcard = true;
+     mc->default_ram_size       = 512 * MiB;
+     aspeed_machine_class_init_cpus_defaults(mc);
+ };
+@@ -1584,7 +1575,6 @@ static void aspeed_machine_witherspoon_class_init(ObjectClass *oc,
+     amc->spi_model = "mx66l1g45g";
+     amc->num_cs    = 2;
+     amc->i2c_init  = witherspoon_bmc_i2c_init;
+-    mc->auto_create_sdcard = true;
+     mc->default_ram_size = 512 * MiB;
+     aspeed_machine_class_init_cpus_defaults(mc);
+ };
+@@ -1606,7 +1596,6 @@ static void aspeed_machine_ast2600_evb_class_init(ObjectClass *oc,
+                      ASPEED_MAC3_ON;
+     amc->sdhci_wp_inverted = true;
+     amc->i2c_init  = ast2600_evb_i2c_init;
+-    mc->auto_create_sdcard = true;
+     mc->default_ram_size = 1 * GiB;
+     aspeed_machine_class_init_cpus_defaults(mc);
+     aspeed_machine_ast2600_class_emmc_init(oc);
+@@ -1625,7 +1614,6 @@ static void aspeed_machine_g220a_class_init(ObjectClass *oc, const void *data)
+     amc->num_cs    = 2;
+     amc->macs_mask  = ASPEED_MAC0_ON | ASPEED_MAC1_ON;
+     amc->i2c_init  = g220a_bmc_i2c_init;
+-    mc->auto_create_sdcard = true;
+     mc->default_ram_size = 1024 * MiB;
+     aspeed_machine_class_init_cpus_defaults(mc);
+ };
+@@ -1644,7 +1632,6 @@ static void aspeed_machine_fp5280g2_class_init(ObjectClass *oc,
+     amc->num_cs    = 2;
+     amc->macs_mask  = ASPEED_MAC0_ON | ASPEED_MAC1_ON;
+     amc->i2c_init  = fp5280g2_bmc_i2c_init;
+-    mc->auto_create_sdcard = true;
+     mc->default_ram_size = 512 * MiB;
+     aspeed_machine_class_init_cpus_defaults(mc);
+ };
+@@ -1663,7 +1650,6 @@ static void aspeed_machine_rainier_class_init(ObjectClass *oc, const void *data)
+     amc->num_cs    = 2;
+     amc->macs_mask  = ASPEED_MAC2_ON | ASPEED_MAC3_ON;
+     amc->i2c_init  = rainier_bmc_i2c_init;
+-    mc->auto_create_sdcard = true;
+     mc->default_ram_size = 1 * GiB;
+     aspeed_machine_class_init_cpus_defaults(mc);
+     aspeed_machine_ast2600_class_emmc_init(oc);
+@@ -1686,7 +1672,6 @@ static void aspeed_machine_fuji_class_init(ObjectClass *oc, const void *data)
+     amc->macs_mask = ASPEED_MAC3_ON;
+     amc->i2c_init = fuji_bmc_i2c_init;
+     amc->uart_default = ASPEED_DEV_UART1;
+-    mc->auto_create_sdcard = true;
+     mc->default_ram_size = FUJI_BMC_RAM_SIZE;
+     aspeed_machine_class_init_cpus_defaults(mc);
+ };
+@@ -1708,7 +1693,6 @@ static void aspeed_machine_bletchley_class_init(ObjectClass *oc,
+     amc->num_cs    = 2;
+     amc->macs_mask = ASPEED_MAC2_ON;
+     amc->i2c_init  = bletchley_bmc_i2c_init;
+-    mc->auto_create_sdcard = true;
+     mc->default_ram_size = BLETCHLEY_BMC_RAM_SIZE;
+     aspeed_machine_class_init_cpus_defaults(mc);
+ }
+@@ -1728,7 +1712,6 @@ static void aspeed_machine_catalina_class_init(ObjectClass *oc,
+     amc->num_cs    = 2;
+     amc->macs_mask = ASPEED_MAC2_ON;
+     amc->i2c_init  = catalina_bmc_i2c_init;
+-    mc->auto_create_sdcard = true;
+     mc->default_ram_size = CATALINA_BMC_RAM_SIZE;
+     aspeed_machine_class_init_cpus_defaults(mc);
+     aspeed_machine_ast2600_class_emmc_init(oc);
+@@ -1796,7 +1779,6 @@ static void aspeed_machine_fby35_class_init(ObjectClass *oc, const void *data)
+     amc->num_cs    = 2;
+     amc->macs_mask = ASPEED_MAC3_ON;
+     amc->i2c_init  = fby35_i2c_init;
+-    mc->auto_create_sdcard = true;
+     /* FIXME: Replace this macro with something more general */
+     mc->default_ram_size = FUJI_BMC_RAM_SIZE;
+     aspeed_machine_class_init_cpus_defaults(mc);
+@@ -1909,7 +1891,6 @@ static void aspeed_machine_ast2700a0_evb_class_init(ObjectClass *oc,
+     amc->uart_default = ASPEED_DEV_UART12;
+     amc->i2c_init  = ast2700_evb_i2c_init;
+     amc->vbootrom = true;
+-    mc->auto_create_sdcard = true;
+     mc->default_ram_size = 1 * GiB;
+     aspeed_machine_class_init_cpus_defaults(mc);
+ }
+@@ -1932,7 +1913,6 @@ static void aspeed_machine_ast2700a1_evb_class_init(ObjectClass *oc,
+     amc->uart_default = ASPEED_DEV_UART12;
+     amc->i2c_init  = ast2700_evb_i2c_init;
+     amc->vbootrom = true;
+-    mc->auto_create_sdcard = true;
+     mc->default_ram_size = 1 * GiB;
+     aspeed_machine_class_init_cpus_defaults(mc);
+ }
+@@ -1953,7 +1933,6 @@ static void aspeed_machine_qcom_dc_scm_v1_class_init(ObjectClass *oc,
+     amc->num_cs    = 2;
+     amc->macs_mask = ASPEED_MAC2_ON | ASPEED_MAC3_ON;
+     amc->i2c_init  = qcom_dc_scm_bmc_i2c_init;
+-    mc->auto_create_sdcard = true;
+     mc->default_ram_size = 1 * GiB;
+     aspeed_machine_class_init_cpus_defaults(mc);
+ };
+@@ -1973,7 +1952,6 @@ static void aspeed_machine_qcom_firework_class_init(ObjectClass *oc,
+     amc->num_cs    = 2;
+     amc->macs_mask = ASPEED_MAC2_ON | ASPEED_MAC3_ON;
+     amc->i2c_init  = qcom_dc_scm_firework_i2c_init;
+-    mc->auto_create_sdcard = true;
+     mc->default_ram_size = 1 * GiB;
+     aspeed_machine_class_init_cpus_defaults(mc);
+ };
 -- 
 2.51.0
 

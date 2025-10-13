@@ -4,63 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B5BBCCD183
-	for <qemu-arm@archiver.kernel.org>; Mon, 13 Oct 2025 12:47:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82709CCD18C
+	for <qemu-arm@archiver.kernel.org>; Mon, 13 Oct 2025 12:48:03 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v8Hv4-0004TK-He; Mon, 13 Oct 2025 08:44:57 -0400
+	id 1v8HvJ-0004dh-CE; Mon, 13 Oct 2025 08:45:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1v8Hus-0004QP-Cw
- for qemu-arm@nongnu.org; Mon, 13 Oct 2025 08:44:42 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1v8Hv5-0004TP-Ih
+ for qemu-arm@nongnu.org; Mon, 13 Oct 2025 08:44:57 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1v8Huj-0007ss-4R
- for qemu-arm@nongnu.org; Mon, 13 Oct 2025 08:44:38 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1v8Hux-0007v5-Qw
+ for qemu-arm@nongnu.org; Mon, 13 Oct 2025 08:44:54 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1760359470;
+ s=mimecast20190719; t=1760359485;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=o9XJQoWj0w1litKRtm7b6WTU9qbMY5CqhuJH/7tfqOI=;
- b=iumP59N8pxWcQZJHBZ1cZWoWrwTPQ2UmfV68aaHlhFmqpdaMy07vpQkf30088Rp+dWnyqC
- c7hd0v6fk7kpjR5A2k2OBkfrb6wgZJXEvyREMUqY+Jn+/5VqcohKPWOYJ7jH0OkerZX9qH
- ghmgX7Kslm3Rlx8TQhHvM1t5vp1x3Bo=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=ijCwE0uUK8yoWCTNQnVIDnTuHcOQiowpag0WnR7dcns=;
+ b=IGQ2ZeIWNaSmyj+/8Nzgx+PqpkY+4SOJHYAOqyG3h1vCkyq2RV5glZoqbolhVbq0mb/beB
+ 3wlLaPlhtUoJEo0HlVIyxY7DJtRh/2pExAINXLPHuPuVZdM0ekImRGfHsykxquemCxS2vN
+ u1b+2UguIeYsTVq1e0zOfGB8qD2GyT8=
+Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-401-WdDIGCHnN2aMOSfkr7yc2w-1; Mon,
- 13 Oct 2025 08:44:27 -0400
-X-MC-Unique: WdDIGCHnN2aMOSfkr7yc2w-1
-X-Mimecast-MFC-AGG-ID: WdDIGCHnN2aMOSfkr7yc2w_1760359466
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-474-arH30Y27PvaJ0UWwBSETtA-1; Mon,
+ 13 Oct 2025 08:44:43 -0400
+X-MC-Unique: arH30Y27PvaJ0UWwBSETtA-1
+X-Mimecast-MFC-AGG-ID: arH30Y27PvaJ0UWwBSETtA_1760359482
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 7147218004D8; Mon, 13 Oct 2025 12:44:26 +0000 (UTC)
+ by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 93633195608A; Mon, 13 Oct 2025 12:44:42 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.45.225.105])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id F33BD180047F; Mon, 13 Oct 2025 12:44:24 +0000 (UTC)
+ id 1995F180141C; Mon, 13 Oct 2025 12:44:40 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 01/29] tests/functional/aarch64/aspeed_ast2700: Add PCIe and
- network tests
-Date: Mon, 13 Oct 2025 14:43:52 +0200
-Message-ID: <20251013124421.71977-2-clg@redhat.com>
+Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
+ Patrick Williams <patrick@stwcx.xyz>
+Subject: [PULL 09/29] aspeed: Deprecate the sonorapass-bmc machine
+Date: Mon, 13 Oct 2025 14:44:00 +0200
+Message-ID: <20251013124421.71977-10-clg@redhat.com>
 In-Reply-To: <20251013124421.71977-1-clg@redhat.com>
 References: <20251013124421.71977-1-clg@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -85,123 +84,56 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Jamin Lin <jamin_lin@aspeedtech.com>
+The 'sonorapass-bmc' machine represents a lab server that never
+entered production. There are no functional tests for this machine
+which makes harder to determine when something becomes deprecated or
+unused.
 
-Extend the AST2700 and AST2700fc functional tests with PCIe and network
-checks.
+Since the machine does not rely on any specific device models, it can
+be replaced by the 'ast2500-evb' machine using the 'fmc-model' option
+to specify the flash type. The I2C devices connected to the board can
+be defined via the QEMU command line.
 
-This patch introduces a helper "do_ast2700_pcie_test()" that runs "lspci"
-on the emulated system and verifies the expected PCIe devices:
-
-- 0002:00:00.0 PCI bridge: ASPEED Technology, Inc. AST1150 PCI-to-PCI Bridge
-- 0002:01:00.0 Ethernet controller: Intel Corporation 82574L Gigabit Network Connection
-
-Additional changes:
-- Add `-device e1000e,netdev=net1,bus=pcie.2 -netdev user,id=net1` to the
-  AST2700 and AST2700fc test machines.
-- In the AST2700 vbootrom test, assign an IP address to the e1000e
-  interface and verify it using `ip addr`.
-
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20250919093017.338309-15-jamin_lin@aspeedtech.com
+Cc: Patrick Williams <patrick@stwcx.xyz>
+Link: https://lore.kernel.org/qemu-devel/20251007141604.761686-2-clg@redhat.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- .../functional/aarch64/test_aspeed_ast2700.py | 21 +++++++++++++++++++
- .../aarch64/test_aspeed_ast2700fc.py          | 13 ++++++++++++
- 2 files changed, 34 insertions(+)
+ docs/about/deprecated.rst | 9 +++++++++
+ hw/arm/aspeed.c           | 1 +
+ 2 files changed, 10 insertions(+)
 
-diff --git a/tests/functional/aarch64/test_aspeed_ast2700.py b/tests/functional/aarch64/test_aspeed_ast2700.py
-index a3db26729499..0973fce0e995 100755
---- a/tests/functional/aarch64/test_aspeed_ast2700.py
-+++ b/tests/functional/aarch64/test_aspeed_ast2700.py
-@@ -69,6 +69,16 @@ def do_ast2700_i2c_test(self):
-         exec_command_and_wait_for_pattern(self,
-             'cat /sys/bus/i2c/devices/1-004d/hwmon/hwmon*/temp1_input', '18000')
+diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
+index 67e527740c0e..ce8fe9ac1be7 100644
+--- a/docs/about/deprecated.rst
++++ b/docs/about/deprecated.rst
+@@ -285,6 +285,15 @@ and serves as the initial engineering sample rather than a production version.
+ A newer revision, A1, is now supported, and the ``ast2700a1-evb`` should
+ replace the older A0 version.
  
-+    def do_ast2700_pcie_test(self):
-+        exec_command_and_wait_for_pattern(self,
-+            'lspci -s 0002:00:00.0',
-+            '0002:00:00.0 PCI bridge: '
-+            'ASPEED Technology, Inc. AST1150 PCI-to-PCI Bridge')
-+        exec_command_and_wait_for_pattern(self,
-+            'lspci -s 0002:01:00.0',
-+            '0002:01:00.0 Ethernet controller: '
-+            'Intel Corporation 82574L Gigabit Network Connection')
++Arm ``sonorapass-bmc`` machine (since 10.2)
++'''''''''''''''''''''''''''''''''''''''''''
 +
-     def start_ast2700_test(self, name):
-         num_cpu = 4
-         uboot_size = os.path.getsize(self.scratch_file(name,
-@@ -125,20 +135,31 @@ def test_aarch64_ast2700a0_evb_sdk_v09_06(self):
- 
-     def test_aarch64_ast2700a1_evb_sdk_v09_06(self):
-         self.set_machine('ast2700a1-evb')
-+        self.require_netdev('user')
- 
-         self.archive_extract(self.ASSET_SDK_V906_AST2700A1)
-+        self.vm.add_args('-device', 'e1000e,netdev=net1,bus=pcie.2')
-+        self.vm.add_args('-netdev', 'user,id=net1')
-         self.start_ast2700_test('ast2700-default')
-         self.verify_openbmc_boot_and_login('ast2700-default')
-         self.do_ast2700_i2c_test()
-+        self.do_ast2700_pcie_test()
- 
-     def test_aarch64_ast2700a1_evb_sdk_vbootrom_v09_07(self):
-         self.set_machine('ast2700a1-evb')
-+        self.require_netdev('user')
- 
-         self.archive_extract(self.ASSET_SDK_V907_AST2700A1_VBOOROM)
-+        self.vm.add_args('-device', 'e1000e,netdev=net1,bus=pcie.2')
-+        self.vm.add_args('-netdev', 'user,id=net1')
-         self.start_ast2700_test_vbootrom('ast2700-default')
-         self.verify_vbootrom_firmware_flow()
-         self.verify_openbmc_boot_and_login('ast2700-default')
-         self.do_ast2700_i2c_test()
-+        self.do_ast2700_pcie_test()
-+        exec_command_and_wait_for_pattern(self,
-+            'ip addr show dev eth2',
-+            'inet 10.0.2.15/24')
- 
- if __name__ == '__main__':
-     QemuSystemTest.main()
-diff --git a/tests/functional/aarch64/test_aspeed_ast2700fc.py b/tests/functional/aarch64/test_aspeed_ast2700fc.py
-index b85370e182ea..28b66614d970 100755
---- a/tests/functional/aarch64/test_aspeed_ast2700fc.py
-+++ b/tests/functional/aarch64/test_aspeed_ast2700fc.py
-@@ -20,6 +20,8 @@ def do_test_aarch64_aspeed_sdk_start(self, image):
-         self.vm.set_console()
-         self.vm.add_args('-device',
-                          'tmp105,bus=aspeed.i2c.bus.1,address=0x4d,id=tmp-test')
-+        self.vm.add_args('-device', 'e1000e,netdev=net1,bus=pcie.2')
-+        self.vm.add_args('-netdev', 'user,id=net1')
-         self.vm.add_args('-drive', 'file=' + image + ',if=mtd,format=raw',
-                          '-net', 'nic', '-net', 'user', '-snapshot')
- 
-@@ -49,6 +51,16 @@ def do_ast2700_i2c_test(self):
-         exec_command_and_wait_for_pattern(self,
-             'cat /sys/bus/i2c/devices/1-004d/hwmon/hwmon*/temp1_input', '18000')
- 
-+    def do_ast2700_pcie_test(self):
-+        exec_command_and_wait_for_pattern(self,
-+            'lspci -s 0002:00:00.0',
-+            '0002:00:00.0 PCI bridge: '
-+            'ASPEED Technology, Inc. AST1150 PCI-to-PCI Bridge')
-+        exec_command_and_wait_for_pattern(self,
-+            'lspci -s 0002:01:00.0',
-+            '0002:01:00.0 Ethernet controller: '
-+            'Intel Corporation 82574L Gigabit Network Connection')
++The ``sonorapass-bmc`` machine represents a lab server that never
++entered production. Since it does not rely on any specific device
++models, it can be replaced by the ``ast2500-evb`` machine using the
++``fmc-model`` option to specify the flash type. The I2C devices
++connected to the board can be defined via the QEMU command line.
 +
-     def do_ast2700fc_ssp_test(self):
-         self.vm.shutdown()
-         self.vm.set_console(console_index=1)
-@@ -128,6 +140,7 @@ def test_aarch64_ast2700fc_sdk_v09_06(self):
-         self.start_ast2700fc_test('ast2700-default')
-         self.verify_openbmc_boot_and_login('ast2700-default')
-         self.do_ast2700_i2c_test()
-+        self.do_ast2700_pcie_test()
-         self.do_ast2700fc_ssp_test()
-         self.do_ast2700fc_tsp_test()
+ RISC-V default machine option (since 10.0)
+ ''''''''''''''''''''''''''''''''''''''''''
  
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index 58cfbc713794..d3a0c81f454f 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -1552,6 +1552,7 @@ static void aspeed_machine_sonorapass_class_init(ObjectClass *oc,
+     AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
+ 
+     mc->desc       = "OCP SonoraPass BMC (ARM1176)";
++    mc->deprecation_reason = "use 'ast2500-evb' instead";
+     amc->soc_name  = "ast2500-a1";
+     amc->hw_strap1 = SONORAPASS_BMC_HW_STRAP1;
+     amc->fmc_model = "mx66l1g45g";
 -- 
 2.51.0
 

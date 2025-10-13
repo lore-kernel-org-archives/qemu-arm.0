@@ -4,52 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 150F4CCD185
-	for <qemu-arm@archiver.kernel.org>; Mon, 13 Oct 2025 05:48:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30751CCA476
+	for <qemu-arm@archiver.kernel.org>; Mon, 13 Oct 2025 07:11:02 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v8BN0-0000PW-U1; Mon, 13 Oct 2025 01:45:22 -0400
+	id 1v8ChW-0004xW-2j; Mon, 13 Oct 2025 03:10:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1v8BMh-00005v-0d; Mon, 13 Oct 2025 01:44:59 -0400
-Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1v8ChU-0004xK-4k
+ for qemu-arm@nongnu.org; Mon, 13 Oct 2025 03:10:32 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1v8BMe-0002Gm-WA; Mon, 13 Oct 2025 01:44:58 -0400
-Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Mon, 13 Oct
- 2025 13:43:40 +0800
-Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
- Transport; Mon, 13 Oct 2025 13:43:40 +0800
-To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
- Stanley" <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
- <kane_chen@aspeedtech.com>
-Subject: [PATCH v3 14/16] hw/arm/aspeed_ast27x0-ssp: Rename type to
- TYPE_ASPEED27X0SSP_COPROCESSOR
-Date: Mon, 13 Oct 2025 13:43:26 +0800
-Message-ID: <20251013054334.955331-15-jamin_lin@aspeedtech.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20251013054334.955331-1-jamin_lin@aspeedtech.com>
-References: <20251013054334.955331-1-jamin_lin@aspeedtech.com>
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1v8ChI-0003Sm-Tv
+ for qemu-arm@nongnu.org; Mon, 13 Oct 2025 03:10:31 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1760339415;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=bD4AHTLcc7fbKRV//SENrWHRrcTQoO2hrD3fVWjcjOI=;
+ b=fSfIWe+S69lAfEneNppSIwdfZN2almNDVqiTnmBOqe1eM/3CJW7RSsWlUPaIxiumUY87/s
+ TzwmCiabcOTN1opjYoAQOV/DKdtjymo77+bz0akaVhsJouQFN/bJU+Mf8At+o3wXNeUC4U
+ gcxLD5ixWOh9IEZ7SXu9LcuRlvz2nGs=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-274-m-QJCZmXNkm-mcG5PtIeMg-1; Mon,
+ 13 Oct 2025 03:10:13 -0400
+X-MC-Unique: m-QJCZmXNkm-mcG5PtIeMg-1
+X-Mimecast-MFC-AGG-ID: m-QJCZmXNkm-mcG5PtIeMg_1760339412
+Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 47FE91800578; Mon, 13 Oct 2025 07:10:12 +0000 (UTC)
+Received: from redhat.com (unknown [10.42.28.40])
+ by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 0B6371800447; Mon, 13 Oct 2025 07:10:08 +0000 (UTC)
+Date: Mon, 13 Oct 2025 08:10:04 +0100
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Daan De Meyer <daan.j.demeyer@gmail.com>
+Cc: qemu-devel@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-arm@nongnu.org
+Subject: Re: [PATCH v3 1/3] Rename LOAD_IMAGE_MAX_GUNZIP_BYTES to
+ LOAD_IMAGE_MAX_DECOMPRESSED_BYTES
+Message-ID: <aOyluIOOB-NSo7tQ@redhat.com>
+References: <20251011081553.4065883-1-daan.j.demeyer@gmail.com>
+ <20251011081553.4065883-2-daan.j.demeyer@gmail.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-Received-SPF: pass client-ip=211.20.114.72;
- envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX01.aspeed.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
+In-Reply-To: <20251011081553.4065883-2-daan.j.demeyer@gmail.com>
+User-Agent: Mutt/2.2.14 (2025-02-20)
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -62,107 +89,30 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
-From:  Jamin Lin via <qemu-arm@nongnu.org>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Rename the AST27x0 SSP type from TYPE_ASPEED27X0SSP_SOC to
-TYPE_ASPEED27X0SSP_COPROCESSOR to better reflect its role as a coprocessor
-rather than a standalone SoC. This aligns naming conventions with the
-coprocessor-based design introduced in earlier refactors.
+On Sat, Oct 11, 2025 at 10:15:51AM +0200, Daan De Meyer wrote:
+> Preparation for adding support for zstd compressed efi zboot kernel
+> images.
+> 
+> Signed-off-by: Daan De Meyer <daan.j.demeyer@gmail.com>
+> ---
+>  hw/arm/boot.c       | 2 +-
+>  hw/core/loader.c    | 8 ++++----
+>  hw/nvram/fw_cfg.c   | 2 +-
+>  include/hw/loader.h | 2 +-
+>  4 files changed, 7 insertions(+), 7 deletions(-)
 
-This change improves naming consistency across SSP and TSP coprocessor
-implementations and clarifies their relationship to the unified
-Aspeed27x0CoprocessorState.
+Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
 
-No functional change.
 
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
----
- include/hw/arm/aspeed_coprocessor.h |  5 +++--
- hw/arm/aspeed_ast27x0-fc.c          |  3 ++-
- hw/arm/aspeed_ast27x0-ssp.c         | 10 +++++-----
- 3 files changed, 10 insertions(+), 8 deletions(-)
-
-diff --git a/include/hw/arm/aspeed_coprocessor.h b/include/hw/arm/aspeed_coprocessor.h
-index 110e776c62..1c201a15c6 100644
---- a/include/hw/arm/aspeed_coprocessor.h
-+++ b/include/hw/arm/aspeed_coprocessor.h
-@@ -50,8 +50,9 @@ struct Aspeed27x0CoprocessorState {
-     ARMv7MState armv7m;
- };
- 
--#define TYPE_ASPEED27X0SSP_SOC "aspeed27x0ssp-soc"
--OBJECT_DECLARE_SIMPLE_TYPE(Aspeed27x0CoprocessorState, ASPEED27X0SSP_SOC)
-+#define TYPE_ASPEED27X0SSP_COPROCESSOR "aspeed27x0ssp-coprocessor"
-+OBJECT_DECLARE_SIMPLE_TYPE(Aspeed27x0CoprocessorState,
-+                           ASPEED27X0SSP_COPROCESSOR)
- 
- #define TYPE_ASPEED27X0TSP_SOC "aspeed27x0tsp-soc"
- DECLARE_OBJ_CHECKERS(Aspeed27x0CoprocessorState, AspeedCoprocessorClass,
-diff --git a/hw/arm/aspeed_ast27x0-fc.c b/hw/arm/aspeed_ast27x0-fc.c
-index c2fa8df33c..67982d2fa0 100644
---- a/hw/arm/aspeed_ast27x0-fc.c
-+++ b/hw/arm/aspeed_ast27x0-fc.c
-@@ -121,7 +121,8 @@ static bool ast2700fc_ssp_init(MachineState *machine, Error **errp)
-     s->ssp_sysclk = clock_new(OBJECT(s), "SSP_SYSCLK");
-     clock_set_hz(s->ssp_sysclk, 200000000ULL);
- 
--    object_initialize_child(OBJECT(s), "ssp", &s->ssp, TYPE_ASPEED27X0SSP_SOC);
-+    object_initialize_child(OBJECT(s), "ssp", &s->ssp,
-+                            TYPE_ASPEED27X0SSP_COPROCESSOR);
-     memory_region_init(&s->ssp_memory, OBJECT(&s->ssp), "ssp-memory",
-                        UINT64_MAX);
- 
-diff --git a/hw/arm/aspeed_ast27x0-ssp.c b/hw/arm/aspeed_ast27x0-ssp.c
-index f8319c95fd..d27be8b925 100644
---- a/hw/arm/aspeed_ast27x0-ssp.c
-+++ b/hw/arm/aspeed_ast27x0-ssp.c
-@@ -1,5 +1,5 @@
- /*
-- * ASPEED Ast27x0 SSP SoC
-+ * ASPEED Ast27x0 SSP Coprocessor
-  *
-  * Copyright (C) 2025 ASPEED Technology Inc.
-  *
-@@ -108,7 +108,7 @@ static struct nvic_intc_irq_info ast2700_ssp_intcmap[] = {
- static qemu_irq aspeed_soc_ast27x0ssp_get_irq(AspeedCoprocessorState *s,
-                                               int dev)
- {
--    Aspeed27x0CoprocessorState *a = ASPEED27X0SSP_SOC(s);
-+    Aspeed27x0CoprocessorState *a = ASPEED27X0SSP_COPROCESSOR(s);
-     AspeedCoprocessorClass *sc = ASPEED_COPROCESSOR_GET_CLASS(s);
- 
-     int or_idx;
-@@ -130,7 +130,7 @@ static qemu_irq aspeed_soc_ast27x0ssp_get_irq(AspeedCoprocessorState *s,
- 
- static void aspeed_soc_ast27x0ssp_init(Object *obj)
- {
--    Aspeed27x0CoprocessorState *a = ASPEED27X0SSP_SOC(obj);
-+    Aspeed27x0CoprocessorState *a = ASPEED27X0SSP_COPROCESSOR(obj);
-     AspeedCoprocessorState *s = ASPEED_COPROCESSOR(obj);
-     AspeedCoprocessorClass *sc = ASPEED_COPROCESSOR_GET_CLASS(s);
-     int i;
-@@ -161,7 +161,7 @@ static void aspeed_soc_ast27x0ssp_init(Object *obj)
- 
- static void aspeed_soc_ast27x0ssp_realize(DeviceState *dev_soc, Error **errp)
- {
--    Aspeed27x0CoprocessorState *a = ASPEED27X0SSP_SOC(dev_soc);
-+    Aspeed27x0CoprocessorState *a = ASPEED27X0SSP_COPROCESSOR(dev_soc);
-     AspeedCoprocessorState *s = ASPEED_COPROCESSOR(dev_soc);
-     AspeedCoprocessorClass *sc = ASPEED_COPROCESSOR_GET_CLASS(s);
-     DeviceState *armv7m;
-@@ -286,7 +286,7 @@ static void aspeed_soc_ast27x0ssp_class_init(ObjectClass *klass, const void *dat
- 
- static const TypeInfo aspeed_soc_ast27x0ssp_types[] = {
-     {
--        .name           = TYPE_ASPEED27X0SSP_SOC,
-+        .name           = TYPE_ASPEED27X0SSP_COPROCESSOR,
-         .parent         = TYPE_ASPEED_COPROCESSOR,
-         .instance_size  = sizeof(Aspeed27x0CoprocessorState),
-         .instance_init  = aspeed_soc_ast27x0ssp_init,
+With regards,
+Daniel
 -- 
-2.43.0
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
 
 

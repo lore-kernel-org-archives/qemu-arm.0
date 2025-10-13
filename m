@@ -4,56 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7346CCD183
-	for <qemu-arm@archiver.kernel.org>; Mon, 13 Oct 2025 12:54:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC67BCCA476
+	for <qemu-arm@archiver.kernel.org>; Mon, 13 Oct 2025 12:54:46 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v8Hw0-0005HC-Nf; Mon, 13 Oct 2025 08:45:55 -0400
+	id 1v8Hw7-0005PG-7b; Mon, 13 Oct 2025 08:45:59 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1v8Hvd-0004vG-Bc
- for qemu-arm@nongnu.org; Mon, 13 Oct 2025 08:45:35 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1v8HvW-0004ub-R3
+ for qemu-arm@nongnu.org; Mon, 13 Oct 2025 08:45:30 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1v8HvQ-0008Cx-1m
- for qemu-arm@nongnu.org; Mon, 13 Oct 2025 08:45:29 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1v8HvO-0008CL-8z
+ for qemu-arm@nongnu.org; Mon, 13 Oct 2025 08:45:22 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1760359514;
+ s=mimecast20190719; t=1760359511;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=oVAPHq5CeoKAkjbrrNqZPoiL/G46kzVCOd4OTh1ST/o=;
- b=PPUGqby8jFvbu6CoMyLWADTo2NlDOKV3b+XOQ90wDvDeS5Qp2/Z8yWP1n7UkKK+os1WaCM
- mVlLZy07UvtdQYanPv3xeu0y2a9mdo2j/Kr4OSJNf+/pUyhW15Uci4MOI+VbOth/fRX41Y
- vwCVtegnpMNr8OLXF+AV17mentznGIk=
-Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
+ bh=jdcuTtv3GtelBi1Eyq/x52H6yVAK2KRf0s4RoIRaUOI=;
+ b=jIJcs6j0bkwBManxQMCoHLfQG75xxnZ2WzQMyO7XEYqWOspzvT4qFpZzwbO1Anr6ynNxoI
+ MG/aiScJuAxBh484cMswsTMMN3RlSjHQ5BUHaRWsFqkcBIyPqvEANKj/8TtnH9udjQfIIr
+ LFAy1tTgq+Ftbaxcv4i/Brr+Fgq7ZQY=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-404-zoWCPJzuOUaep4sK2keV7w-1; Mon,
- 13 Oct 2025 08:45:11 -0400
-X-MC-Unique: zoWCPJzuOUaep4sK2keV7w-1
-X-Mimecast-MFC-AGG-ID: zoWCPJzuOUaep4sK2keV7w_1760359510
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-270-tmCOMAeOOP2A9HvjP-UTAw-1; Mon,
+ 13 Oct 2025 08:45:05 -0400
+X-MC-Unique: tmCOMAeOOP2A9HvjP-UTAw-1
+X-Mimecast-MFC-AGG-ID: tmCOMAeOOP2A9HvjP-UTAw_1760359505
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id B982219540C3; Mon, 13 Oct 2025 12:45:10 +0000 (UTC)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id E8DC219560B7; Mon, 13 Oct 2025 12:45:04 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.45.225.105])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 44F101800446; Mon, 13 Oct 2025 12:45:09 +0000 (UTC)
+ id 755781800446; Mon, 13 Oct 2025 12:45:03 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 23/29] hw/arm/aspeed_ast27x0-ssp: Make AST27x0 SSP inherit from
- AspeedCoprocessor instead of AspeedSoC
-Date: Mon, 13 Oct 2025 14:44:14 +0200
-Message-ID: <20251013124421.71977-24-clg@redhat.com>
+Subject: [PULL 20/29] hw/arm/aspeed: Remove AspeedSoCState dependency from
+ aspeed_soc_uart_realize() API
+Date: Mon, 13 Oct 2025 14:44:11 +0200
+Message-ID: <20251013124421.71977-21-clg@redhat.com>
 In-Reply-To: <20251013124421.71977-1-clg@redhat.com>
 References: <20251013124421.71977-1-clg@redhat.com>
 MIME-Version: 1.0
@@ -87,231 +87,260 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-Refactor the AST27x0 SSP implementation to derive from the newly introduced
-AspeedCoprocessor base class rather than AspeedSoC. The AspeedSoC class
-contains many SoC-level fields and behaviors that are not applicable to
-coprocessor subsystems like SSP, leading to unnecessary coupling and code size.
+Refactor aspeed_soc_uart_realize() to take MemoryRegion *, SerialMM *,
+and MMIO base addr instead of AspeedSoCState *, decoupling the helper
+from SoC state and making it reusable per-UART.
 
-This change moves the Aspeed27x0SSPSoCState structure definition into
-aspeed_coprocessor.h and updates related references in
-aspeed_ast27x0-ssp.c and aspeed_ast27x0-fc.c to use
-AspeedCoprocessorState and AspeedCoprocessorClass.
+The helper now realizes a single UART instance and maps its MMIO.
+IRQ wiring and iteration over all UARTs are moved to callers.
 
-Key updates include:
+Update call sites in AST1030, AST2400, AST2600, AST27x0 SSP/TSP, and
+AST2700 to loop over UARTs, call the new helper, and connect IRQ via
+aspeed_soc_get_irq().
 
-- Replace inheritance from AspeedSoC -> AspeedCoprocessor.
-- Replace type casts and class access macros (ASPEED_SOC_*) with
-ASPEED_COPROCESSOR_*.
-
-This refactor improves modularity, reduces memory footprint, and prepares
-for future coprocessor variants to share a lighter-weight common base.
+This simplifies the UART realize path and reduces cross-module coupling.
 
 No functional change.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20251013054334.955331-11-jamin_lin@aspeedtech.com
+Link: https://lore.kernel.org/qemu-devel/20251013054334.955331-8-jamin_lin@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- include/hw/arm/aspeed_coprocessor.h | 12 ++++++++++++
- include/hw/arm/aspeed_soc.h         | 12 ------------
- hw/arm/aspeed_ast27x0-fc.c          | 10 +++++-----
- hw/arm/aspeed_ast27x0-ssp.c         | 30 +++++++++++++----------------
- hw/arm/meson.build                  |  2 +-
- 5 files changed, 31 insertions(+), 35 deletions(-)
+ include/hw/arm/aspeed_soc.h |  3 ++-
+ hw/arm/aspeed_ast10x0.c     | 10 ++++++++--
+ hw/arm/aspeed_ast2400.c     | 10 ++++++++--
+ hw/arm/aspeed_ast2600.c     | 10 ++++++++--
+ hw/arm/aspeed_ast27x0-ssp.c | 10 ++++++++--
+ hw/arm/aspeed_ast27x0-tsp.c | 10 ++++++++--
+ hw/arm/aspeed_ast27x0.c     | 10 ++++++++--
+ hw/arm/aspeed_soc_common.c  | 28 ++++++++++------------------
+ 8 files changed, 60 insertions(+), 31 deletions(-)
 
-diff --git a/include/hw/arm/aspeed_coprocessor.h b/include/hw/arm/aspeed_coprocessor.h
-index 793c7b1f8be9..901b8d8e249d 100644
---- a/include/hw/arm/aspeed_coprocessor.h
-+++ b/include/hw/arm/aspeed_coprocessor.h
-@@ -41,4 +41,16 @@ struct AspeedCoprocessorClass {
-     int uarts_num;
- };
- 
-+struct Aspeed27x0SSPSoCState {
-+    AspeedCoprocessorState parent;
-+    AspeedINTCState intc[2];
-+    UnimplementedDeviceState ipc[2];
-+    UnimplementedDeviceState scuio;
-+
-+    ARMv7MState armv7m;
-+};
-+
-+#define TYPE_ASPEED27X0SSP_SOC "aspeed27x0ssp-soc"
-+OBJECT_DECLARE_SIMPLE_TYPE(Aspeed27x0SSPSoCState, ASPEED27X0SSP_SOC)
-+
- #endif /* ASPEED_COPROCESSOR_H */
 diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
-index 0e07c079f0cf..a34ab986a9da 100644
+index 957362b88d06..47341ea2fdbc 100644
 --- a/include/hw/arm/aspeed_soc.h
 +++ b/include/hw/arm/aspeed_soc.h
-@@ -153,18 +153,6 @@ struct Aspeed10x0SoCState {
-     ARMv7MState armv7m;
- };
+@@ -304,7 +304,8 @@ enum {
  
--struct Aspeed27x0SSPSoCState {
--    AspeedSoCState parent;
--    AspeedINTCState intc[2];
--    UnimplementedDeviceState ipc[2];
--    UnimplementedDeviceState scuio;
--
--    ARMv7MState armv7m;
--};
--
--#define TYPE_ASPEED27X0SSP_SOC "aspeed27x0ssp-soc"
--OBJECT_DECLARE_SIMPLE_TYPE(Aspeed27x0SSPSoCState, ASPEED27X0SSP_SOC)
--
- struct Aspeed27x0TSPSoCState {
-     AspeedSoCState parent;
-     AspeedINTCState intc[2];
-diff --git a/hw/arm/aspeed_ast27x0-fc.c b/hw/arm/aspeed_ast27x0-fc.c
-index e598f57ca228..4315e8da98d2 100644
---- a/hw/arm/aspeed_ast27x0-fc.c
-+++ b/hw/arm/aspeed_ast27x0-fc.c
-@@ -21,7 +21,7 @@
- #include "hw/loader.h"
- #include "hw/arm/boot.h"
- #include "hw/block/flash.h"
--
-+#include "hw/arm/aspeed_coprocessor.h"
+ const char *aspeed_soc_cpu_type(const char * const *valid_cpu_types);
+ qemu_irq aspeed_soc_get_irq(AspeedSoCState *s, int dev);
+-bool aspeed_soc_uart_realize(AspeedSoCState *s, Error **errp);
++bool aspeed_soc_uart_realize(MemoryRegion *memory, SerialMM *smm,
++                             const hwaddr addr, Error **errp);
+ void aspeed_soc_uart_set_chr(SerialMM *uart, int dev, int uarts_base,
+                              int uarts_num, Chardev *chr);
+ bool aspeed_soc_dram_init(AspeedSoCState *s, Error **errp);
+diff --git a/hw/arm/aspeed_ast10x0.c b/hw/arm/aspeed_ast10x0.c
+index e861b6dad699..ff781379c10e 100644
+--- a/hw/arm/aspeed_ast10x0.c
++++ b/hw/arm/aspeed_ast10x0.c
+@@ -192,6 +192,7 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
+     AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
+     DeviceState *armv7m;
+     Error *err = NULL;
++    int uart;
+     int i;
+     g_autofree char *sram_name = NULL;
  
- #define TYPE_AST2700A1FC MACHINE_TYPE_NAME("ast2700fc")
- OBJECT_DECLARE_SIMPLE_TYPE(Ast2700FCState, AST2700A1FC);
-@@ -115,8 +115,8 @@ static bool ast2700fc_ca35_init(MachineState *machine, Error **errp)
+@@ -316,8 +317,13 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
+                                 sc->irqmap[ASPEED_DEV_KCS] + aspeed_lpc_kcs_4));
  
- static bool ast2700fc_ssp_init(MachineState *machine, Error **errp)
- {
--    AspeedSoCState *soc;
--    AspeedSoCClass *sc;
-+    AspeedCoprocessorState *soc;
-+    AspeedCoprocessorClass *sc;
-     Ast2700FCState *s = AST2700A1FC(machine);
-     s->ssp_sysclk = clock_new(OBJECT(s), "SSP_SYSCLK");
-     clock_set_hz(s->ssp_sysclk, 200000000ULL);
-@@ -129,8 +129,8 @@ static bool ast2700fc_ssp_init(MachineState *machine, Error **errp)
-     object_property_set_link(OBJECT(&s->ssp), "memory",
-                              OBJECT(&s->ssp_memory), &error_abort);
+     /* UART */
+-    if (!aspeed_soc_uart_realize(s, errp)) {
+-        return;
++    for (i = 0, uart = sc->uarts_base; i < sc->uarts_num; i++, uart++) {
++        if (!aspeed_soc_uart_realize(s->memory, &s->uart[i],
++                                     sc->memmap[uart], errp)) {
++            return;
++        }
++        sysbus_connect_irq(SYS_BUS_DEVICE(&s->uart[i]), 0,
++                           aspeed_soc_get_irq(s, uart));
+     }
  
--    soc = ASPEED_SOC(&s->ssp);
--    sc = ASPEED_SOC_GET_CLASS(soc);
-+    soc = ASPEED_COPROCESSOR(&s->ssp);
-+    sc = ASPEED_COPROCESSOR_GET_CLASS(soc);
-     aspeed_soc_uart_set_chr(soc->uart, ASPEED_DEV_UART4, sc->uarts_base,
-                             sc->uarts_num, serial_hd(1));
-     if (!qdev_realize(DEVICE(&s->ssp), NULL, errp)) {
+     /* Timer */
+diff --git a/hw/arm/aspeed_ast2400.c b/hw/arm/aspeed_ast2400.c
+index e0604851a558..8d4d6564c7ad 100644
+--- a/hw/arm/aspeed_ast2400.c
++++ b/hw/arm/aspeed_ast2400.c
+@@ -251,6 +251,7 @@ static void aspeed_ast2400_soc_realize(DeviceState *dev, Error **errp)
+     AspeedSoCState *s = ASPEED_SOC(dev);
+     AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
+     g_autofree char *sram_name = NULL;
++    int uart;
+ 
+     /* Default boot region (SPI memory or ROMs) */
+     memory_region_init(&s->spi_boot_container, OBJECT(s),
+@@ -337,8 +338,13 @@ static void aspeed_ast2400_soc_realize(DeviceState *dev, Error **errp)
+                        aspeed_soc_get_irq(s, ASPEED_DEV_ADC));
+ 
+     /* UART */
+-    if (!aspeed_soc_uart_realize(s, errp)) {
+-        return;
++    for (i = 0, uart = sc->uarts_base; i < sc->uarts_num; i++, uart++) {
++        if (!aspeed_soc_uart_realize(s->memory, &s->uart[i],
++                                     sc->memmap[uart], errp)) {
++            return;
++        }
++        sysbus_connect_irq(SYS_BUS_DEVICE(&s->uart[i]), 0,
++                           aspeed_soc_get_irq(s, uart));
+     }
+ 
+     /* I2C */
+diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+index ed0985a16e08..f508bf53e71d 100644
+--- a/hw/arm/aspeed_ast2600.c
++++ b/hw/arm/aspeed_ast2600.c
+@@ -362,6 +362,7 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
+     AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
+     qemu_irq irq;
+     g_autofree char *sram_name = NULL;
++    int uart;
+ 
+     /* Default boot region (SPI memory or ROMs) */
+     memory_region_init(&s->spi_boot_container, OBJECT(s),
+@@ -488,8 +489,13 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
+                        aspeed_soc_get_irq(s, ASPEED_DEV_ADC));
+ 
+     /* UART */
+-    if (!aspeed_soc_uart_realize(s, errp)) {
+-        return;
++    for (i = 0, uart = sc->uarts_base; i < sc->uarts_num; i++, uart++) {
++        if (!aspeed_soc_uart_realize(s->memory, &s->uart[i],
++                                     sc->memmap[uart], errp)) {
++            return;
++        }
++        sysbus_connect_irq(SYS_BUS_DEVICE(&s->uart[i]), 0,
++                           aspeed_soc_get_irq(s, uart));
+     }
+ 
+     /* I2C */
 diff --git a/hw/arm/aspeed_ast27x0-ssp.c b/hw/arm/aspeed_ast27x0-ssp.c
-index f90d14437291..1ebf06299ebe 100644
+index 99a3de15b56c..7420ae04acb5 100644
 --- a/hw/arm/aspeed_ast27x0-ssp.c
 +++ b/hw/arm/aspeed_ast27x0-ssp.c
-@@ -14,6 +14,7 @@
- #include "hw/qdev-clock.h"
- #include "hw/misc/unimp.h"
- #include "hw/arm/aspeed_soc.h"
-+#include "hw/arm/aspeed_coprocessor.h"
- 
- #define AST2700_SSP_RAM_SIZE (32 * MiB)
- 
-@@ -104,10 +105,11 @@ static struct nvic_intc_irq_info ast2700_ssp_intcmap[] = {
-     {136, 0, 9, NULL},
- };
- 
--static qemu_irq aspeed_soc_ast27x0ssp_get_irq(AspeedSoCState *s, int dev)
-+static qemu_irq aspeed_soc_ast27x0ssp_get_irq(AspeedCoprocessorState *s,
-+                                              int dev)
- {
-     Aspeed27x0SSPSoCState *a = ASPEED27X0SSP_SOC(s);
--    AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
-+    AspeedCoprocessorClass *sc = ASPEED_COPROCESSOR_GET_CLASS(s);
- 
-     int or_idx;
-     int idx;
-@@ -129,8 +131,8 @@ static qemu_irq aspeed_soc_ast27x0ssp_get_irq(AspeedSoCState *s, int dev)
- static void aspeed_soc_ast27x0ssp_init(Object *obj)
- {
-     Aspeed27x0SSPSoCState *a = ASPEED27X0SSP_SOC(obj);
--    AspeedSoCState *s = ASPEED_SOC(obj);
--    AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
-+    AspeedCoprocessorState *s = ASPEED_COPROCESSOR(obj);
-+    AspeedCoprocessorClass *sc = ASPEED_COPROCESSOR_GET_CLASS(s);
-     int i;
- 
-     object_initialize_child(obj, "armv7m", &a->armv7m, TYPE_ARMV7M);
-@@ -160,8 +162,8 @@ static void aspeed_soc_ast27x0ssp_init(Object *obj)
- static void aspeed_soc_ast27x0ssp_realize(DeviceState *dev_soc, Error **errp)
- {
-     Aspeed27x0SSPSoCState *a = ASPEED27X0SSP_SOC(dev_soc);
--    AspeedSoCState *s = ASPEED_SOC(dev_soc);
--    AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
-+    AspeedCoprocessorState *s = ASPEED_COPROCESSOR(dev_soc);
-+    AspeedCoprocessorClass *sc = ASPEED_COPROCESSOR_GET_CLASS(s);
+@@ -164,6 +164,7 @@ static void aspeed_soc_ast27x0ssp_realize(DeviceState *dev_soc, Error **errp)
+     AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
      DeviceState *armv7m;
      g_autofree char *sram_name = NULL;
-     int uart;
-@@ -185,8 +187,8 @@ static void aspeed_soc_ast27x0ssp_realize(DeviceState *dev_soc, Error **errp)
-     sram_name = g_strdup_printf("aspeed.dram.%d",
-                                 CPU(a->armv7m.cpu)->cpu_index);
++    int uart;
+     int i;
  
--    if (!memory_region_init_ram(&s->sram, OBJECT(s), sram_name, sc->sram_size,
--                                errp)) {
-+    if (!memory_region_init_ram(&s->sram, OBJECT(s), sram_name,
-+                                AST2700_SSP_RAM_SIZE, errp)) {
-         return;
+     if (!clock_has_source(s->sysclk)) {
+@@ -237,8 +238,13 @@ static void aspeed_soc_ast27x0ssp_realize(DeviceState *dev_soc, Error **errp)
+                         qdev_get_gpio_in(DEVICE(&a->intc[0].orgates[0]), i));
      }
-     memory_region_add_subregion(s->memory,
-@@ -268,30 +270,24 @@ static void aspeed_soc_ast27x0ssp_class_init(ObjectClass *klass, const void *dat
-         NULL
-     };
-     DeviceClass *dc = DEVICE_CLASS(klass);
--    AspeedSoCClass *sc = ASPEED_SOC_CLASS(dc);
-+    AspeedCoprocessorClass *sc = ASPEED_COPROCESSOR_CLASS(dc);
+     /* UART */
+-    if (!aspeed_soc_uart_realize(s, errp)) {
+-        return;
++    for (i = 0, uart = sc->uarts_base; i < sc->uarts_num; i++, uart++) {
++        if (!aspeed_soc_uart_realize(s->memory, &s->uart[i],
++                                     sc->memmap[uart], errp)) {
++            return;
++        }
++        sysbus_connect_irq(SYS_BUS_DEVICE(&s->uart[i]), 0,
++                           aspeed_soc_get_irq(s, uart));
+     }
  
--    /* Reason: The Aspeed SoC can only be instantiated from a board */
-+    /* Reason: The Aspeed Coprocessor can only be instantiated from a board */
-     dc->user_creatable = false;
-     dc->realize = aspeed_soc_ast27x0ssp_realize;
+     aspeed_mmio_map_unimplemented(s->memory, SYS_BUS_DEVICE(&s->timerctrl),
+diff --git a/hw/arm/aspeed_ast27x0-tsp.c b/hw/arm/aspeed_ast27x0-tsp.c
+index 568d7555e26e..b764147a3313 100644
+--- a/hw/arm/aspeed_ast27x0-tsp.c
++++ b/hw/arm/aspeed_ast27x0-tsp.c
+@@ -164,6 +164,7 @@ static void aspeed_soc_ast27x0tsp_realize(DeviceState *dev_soc, Error **errp)
+     AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
+     DeviceState *armv7m;
+     g_autofree char *sram_name = NULL;
++    int uart;
+     int i;
  
-     sc->valid_cpu_types = valid_cpu_types;
-     sc->silicon_rev = AST2700_A1_SILICON_REV;
--    sc->sram_size = AST2700_SSP_RAM_SIZE;
--    sc->spis_num = 0;
--    sc->ehcis_num = 0;
--    sc->wdts_num = 0;
--    sc->macs_num = 0;
-     sc->uarts_num = 13;
-     sc->uarts_base = ASPEED_DEV_UART0;
-     sc->irqmap = aspeed_soc_ast27x0ssp_irqmap;
-     sc->memmap = aspeed_soc_ast27x0ssp_memmap;
--    sc->num_cpus = 1;
+     if (!clock_has_source(s->sysclk)) {
+@@ -237,8 +238,13 @@ static void aspeed_soc_ast27x0tsp_realize(DeviceState *dev_soc, Error **errp)
+                         qdev_get_gpio_in(DEVICE(&a->intc[0].orgates[0]), i));
+     }
+     /* UART */
+-    if (!aspeed_soc_uart_realize(s, errp)) {
+-        return;
++    for (i = 0, uart = sc->uarts_base; i < sc->uarts_num; i++, uart++) {
++        if (!aspeed_soc_uart_realize(s->memory, &s->uart[i],
++                                     sc->memmap[uart], errp)) {
++            return;
++        }
++        sysbus_connect_irq(SYS_BUS_DEVICE(&s->uart[i]), 0,
++                           aspeed_soc_get_irq(s, uart));
+     }
+ 
+     aspeed_mmio_map_unimplemented(s->memory, SYS_BUS_DEVICE(&s->timerctrl),
+diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
+index 9b645c6c5502..96882b875548 100644
+--- a/hw/arm/aspeed_ast27x0.c
++++ b/hw/arm/aspeed_ast27x0.c
+@@ -687,6 +687,7 @@ static void aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
+     AspeedINTCClass *icio = ASPEED_INTC_GET_CLASS(&a->intc[1]);
+     g_autofree char *name = NULL;
+     qemu_irq irq;
++    int uart;
+ 
+     /* Default boot region (SPI memory or ROMs) */
+     memory_region_init(&s->spi_boot_container, OBJECT(s),
+@@ -788,8 +789,13 @@ static void aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
+                     sc->memmap[ASPEED_DEV_SCUIO]);
+ 
+     /* UART */
+-    if (!aspeed_soc_uart_realize(s, errp)) {
+-        return;
++    for (i = 0, uart = sc->uarts_base; i < sc->uarts_num; i++, uart++) {
++        if (!aspeed_soc_uart_realize(s->memory, &s->uart[i],
++                                     sc->memmap[uart], errp)) {
++            return;
++        }
++        sysbus_connect_irq(SYS_BUS_DEVICE(&s->uart[i]), 0,
++                           aspeed_soc_get_irq(s, uart));
+     }
+ 
+     /* FMC, The number of CS is set at the board level */
+diff --git a/hw/arm/aspeed_soc_common.c b/hw/arm/aspeed_soc_common.c
+index e7d0a9c2909a..a785a50609e3 100644
+--- a/hw/arm/aspeed_soc_common.c
++++ b/hw/arm/aspeed_soc_common.c
+@@ -35,27 +35,19 @@ qemu_irq aspeed_soc_get_irq(AspeedSoCState *s, int dev)
+     return ASPEED_SOC_GET_CLASS(s)->get_irq(s, dev);
  }
  
- static const TypeInfo aspeed_soc_ast27x0ssp_types[] = {
-     {
-         .name           = TYPE_ASPEED27X0SSP_SOC,
--        .parent         = TYPE_ASPEED_SOC,
-+        .parent         = TYPE_ASPEED_COPROCESSOR,
-         .instance_size  = sizeof(Aspeed27x0SSPSoCState),
-         .instance_init  = aspeed_soc_ast27x0ssp_init,
-         .class_init     = aspeed_soc_ast27x0ssp_class_init,
-diff --git a/hw/arm/meson.build b/hw/arm/meson.build
-index 56bdb88b1175..b9e02ace7f21 100644
---- a/hw/arm/meson.build
-+++ b/hw/arm/meson.build
-@@ -45,7 +45,6 @@ arm_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
-   'aspeed_soc_common.c',
-   'aspeed_ast2400.c',
-   'aspeed_ast2600.c',
--  'aspeed_ast27x0-ssp.c',
-   'aspeed_ast27x0-tsp.c',
-   'aspeed_ast10x0.c',
-   'aspeed_eeprom.c',
-@@ -53,6 +52,7 @@ arm_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
- arm_common_ss.add(when: ['CONFIG_ASPEED_SOC', 'TARGET_AARCH64'], if_true: files(
-   'aspeed_ast27x0.c',
-   'aspeed_ast27x0-fc.c',
-+  'aspeed_ast27x0-ssp.c',
-   'aspeed_coprocessor_common.c'))
- arm_common_ss.add(when: 'CONFIG_MPS2', if_true: files('mps2.c'))
- arm_common_ss.add(when: 'CONFIG_MPS2', if_true: files('mps2-tz.c'))
+-bool aspeed_soc_uart_realize(AspeedSoCState *s, Error **errp)
++bool aspeed_soc_uart_realize(MemoryRegion *memory, SerialMM *smm,
++                             const hwaddr addr, Error **errp)
+ {
+-    AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
+-    SerialMM *smm;
+-
+-    for (int i = 0, uart = sc->uarts_base; i < sc->uarts_num; i++, uart++) {
+-        smm = &s->uart[i];
+-
+-        /* Chardev property is set by the machine. */
+-        qdev_prop_set_uint8(DEVICE(smm), "regshift", 2);
+-        qdev_prop_set_uint32(DEVICE(smm), "baudbase", 38400);
+-        qdev_set_legacy_instance_id(DEVICE(smm), sc->memmap[uart], 2);
+-        qdev_prop_set_uint8(DEVICE(smm), "endianness", DEVICE_LITTLE_ENDIAN);
+-        if (!sysbus_realize(SYS_BUS_DEVICE(smm), errp)) {
+-            return false;
+-        }
+-
+-        sysbus_connect_irq(SYS_BUS_DEVICE(smm), 0, aspeed_soc_get_irq(s, uart));
+-        aspeed_mmio_map(s->memory, SYS_BUS_DEVICE(smm), 0, sc->memmap[uart]);
++    /* Chardev property is set by the machine. */
++    qdev_prop_set_uint8(DEVICE(smm), "regshift", 2);
++    qdev_prop_set_uint32(DEVICE(smm), "baudbase", 38400);
++    qdev_set_legacy_instance_id(DEVICE(smm), addr, 2);
++    qdev_prop_set_uint8(DEVICE(smm), "endianness", DEVICE_LITTLE_ENDIAN);
++    if (!sysbus_realize(SYS_BUS_DEVICE(smm), errp)) {
++        return false;
+     }
+ 
++    aspeed_mmio_map(memory, SYS_BUS_DEVICE(smm), 0, addr);
+     return true;
+ }
+ 
 -- 
 2.51.0
 

@@ -4,56 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51A53CCD183
-	for <qemu-arm@archiver.kernel.org>; Mon, 13 Oct 2025 12:46:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49CA5CCD183
+	for <qemu-arm@archiver.kernel.org>; Mon, 13 Oct 2025 12:46:22 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v8HvK-0004dx-4U; Mon, 13 Oct 2025 08:45:10 -0400
+	id 1v8HvI-0004c4-IE; Mon, 13 Oct 2025 08:45:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1v8HvC-0004Xn-P7
- for qemu-arm@nongnu.org; Mon, 13 Oct 2025 08:45:02 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1v8Huy-0004Rr-1m
+ for qemu-arm@nongnu.org; Mon, 13 Oct 2025 08:44:49 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1v8Hv1-0007vg-Mc
- for qemu-arm@nongnu.org; Mon, 13 Oct 2025 08:45:00 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1v8Hus-0007tC-3P
+ for qemu-arm@nongnu.org; Mon, 13 Oct 2025 08:44:46 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1760359487;
+ s=mimecast20190719; t=1760359473;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=8WfXGILBNYR99ZcZmGRV3dHeIDrpAHHauEYKqToDeHM=;
- b=esBiLcLjwAlNAggCJA7KuNrGQdDUEJVDuWhSndJeZHu7wCKPIyEQ+JUcaO9kmD0YYYqWoz
- UHYK13hI020uVTmaLrC8HOxHhVZeBQou05rsY9xZI+uVvamk/kmcOTGnyRkurxpSpCuDBb
- SB65qDgWid6kArJSlcEWR7HRO79uRHg=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=gDa4MlGPXC/kLw04nHyA0sUhKFEOWlwz/Set6pS/fKA=;
+ b=L0gAgx3XlmE+OIt8ERhieJwXlHF7E0DlP0UufA1bVwXKxD8fk68DyEBu3tK/24ItsS3044
+ A5tpFN8YYY648xoM78CQ5RmembEKhps8HX3ZpHOvVu6ivmkIHkf3ZMvWmIYpPfVNVAa+Xn
+ RXd+unRUbiAV6OjnJ4UyQuSnncjagdk=
+Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-232-kAr_k-8yMGKtFE_G_mp39A-1; Mon,
- 13 Oct 2025 08:44:45 -0400
-X-MC-Unique: kAr_k-8yMGKtFE_G_mp39A-1
-X-Mimecast-MFC-AGG-ID: kAr_k-8yMGKtFE_G_mp39A_1760359484
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-146-TNj5ifmkO7uwr5Uuop2-eA-1; Mon,
+ 13 Oct 2025 08:44:31 -0400
+X-MC-Unique: TNj5ifmkO7uwr5Uuop2-eA-1
+X-Mimecast-MFC-AGG-ID: TNj5ifmkO7uwr5Uuop2-eA_1760359470
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 888B81800366; Mon, 13 Oct 2025 12:44:44 +0000 (UTC)
+ by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 8CCE9195410A; Mon, 13 Oct 2025 12:44:30 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.45.225.105])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 105581800446; Mon, 13 Oct 2025 12:44:42 +0000 (UTC)
+ id D4B701800282; Mon, 13 Oct 2025 12:44:28 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
- Jae Hyun Yoo <quic_jaehyoo@quicinc.com>
-Subject: [PULL 10/29] aspeed: Deprecate the qcom-dc-scm-v1-bmc and
- qcom-firework-bmc machines
-Date: Mon, 13 Oct 2025 14:44:01 +0200
-Message-ID: <20251013124421.71977-11-clg@redhat.com>
+Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+Subject: [PULL 03/29] tests/functional/arm/test_aspeed_ast1030: Update test
+ ASPEED SDK v03.03
+Date: Mon, 13 Oct 2025 14:43:54 +0200
+Message-ID: <20251013124421.71977-4-clg@redhat.com>
 In-Reply-To: <20251013124421.71977-1-clg@redhat.com>
 References: <20251013124421.71977-1-clg@redhat.com>
 MIME-Version: 1.0
@@ -69,7 +69,7 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -85,64 +85,56 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-There are no functional tests for the 'qcom-dc-scm-v1-bmc' and
-'qcom-firework-bmc' machines which makes harder to determine when
-something becomes deprecated or unused.
+From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-Since the machines do not rely on any specific device models, they can
-be replaced by the 'ast2600-evb' machine using the 'fmc-model' option
-to specify the flash type. The I2C devices connected to the board can
-be defined via the QEMU command line.
-
-Cc: Jae Hyun Yoo <quic_jaehyoo@quicinc.com>
-Link: https://lore.kernel.org/qemu-devel/20251007141604.761686-3-clg@redhat.com
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
+Link: https://lore.kernel.org/qemu-devel/20251003072107.3530642-2-jamin_lin@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- docs/about/deprecated.rst | 10 ++++++++++
- hw/arm/aspeed.c           |  2 ++
- 2 files changed, 12 insertions(+)
+ tests/functional/arm/test_aspeed_ast1030.py | 17 +++++++++--------
+ 1 file changed, 9 insertions(+), 8 deletions(-)
 
-diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
-index ce8fe9ac1be7..f6410037ead2 100644
---- a/docs/about/deprecated.rst
-+++ b/docs/about/deprecated.rst
-@@ -294,6 +294,16 @@ models, it can be replaced by the ``ast2500-evb`` machine using the
- ``fmc-model`` option to specify the flash type. The I2C devices
- connected to the board can be defined via the QEMU command line.
+diff --git a/tests/functional/arm/test_aspeed_ast1030.py b/tests/functional/arm/test_aspeed_ast1030.py
+index e47b597d0bd9..60e2b0251c6c 100755
+--- a/tests/functional/arm/test_aspeed_ast1030.py
++++ b/tests/functional/arm/test_aspeed_ast1030.py
+@@ -13,17 +13,17 @@
  
-+Arm ``qcom-dc-scm-v1-bmc`` and ``qcom-firework-bmc`` machine (since 10.2)
-+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-+
-+The ``qcom-dc-scm-v1-bmc`` and ``qcom-firework-bmc`` represent lab
-+servers that never entered production. Since they do not rely on any
-+specific device models, they can be replaced by the ``ast2600-evb``
-+machine using the ``fmc-model`` option to specify the flash type. The
-+I2C devices connected to the board can be defined via the QEMU command
-+line.
-+
- RISC-V default machine option (since 10.0)
- ''''''''''''''''''''''''''''''''''''''''''
+ class AST1030Machine(AspeedTest):
  
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index d3a0c81f454f..0707a760fda6 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -1926,6 +1926,7 @@ static void aspeed_machine_qcom_dc_scm_v1_class_init(ObjectClass *oc,
-     AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
+-    ASSET_ZEPHYR_3_02 = Asset(
++    ASSET_ZEPHYR_3_03 = Asset(
+         ('https://github.com/AspeedTech-BMC'
+-         '/zephyr/releases/download/v00.03.02/ast1030-evb-demo.zip'),
+-        '1ec83caab3ddd5d09481772801be7210e222cb015ce22ec6fffb8a76956dcd4f')
++         '/zephyr/releases/download/v00.03.03/ast1030-evb-demo.zip'),
++         '27cd73cdee6374bceb4ee58b3ace87989fa3f0684f4e612510804b588b24d4e0')
  
-     mc->desc       = "Qualcomm DC-SCM V1 BMC (Cortex A7)";
-+    mc->deprecation_reason = "use 'ast2600-evb' instead";
-     amc->soc_name  = "ast2600-a3";
-     amc->hw_strap1 = QCOM_DC_SCM_V1_BMC_HW_STRAP1;
-     amc->hw_strap2 = QCOM_DC_SCM_V1_BMC_HW_STRAP2;
-@@ -1945,6 +1946,7 @@ static void aspeed_machine_qcom_firework_class_init(ObjectClass *oc,
-     AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
+-    def test_arm_ast1030_zephyros_3_02(self):
++    def test_arm_ast1030_zephyros_3_03(self):
+         self.set_machine('ast1030-evb')
  
-     mc->desc       = "Qualcomm DC-SCM V1/Firework BMC (Cortex A7)";
-+    mc->deprecation_reason = "use 'ast2600-evb' instead";
-     amc->soc_name  = "ast2600-a3";
-     amc->hw_strap1 = QCOM_DC_SCM_V1_BMC_HW_STRAP1;
-     amc->hw_strap2 = QCOM_DC_SCM_V1_BMC_HW_STRAP2;
+-        kernel_name = "ast1030-evb-demo-3/zephyr.elf"
++        kernel_name = "ast1030-evb-demo/zephyr.elf"
+         kernel_file = self.archive_extract(
+-            self.ASSET_ZEPHYR_3_02, member=kernel_name)
++            self.ASSET_ZEPHYR_3_03, member=kernel_name)
+ 
+         self.vm.set_console()
+         self.vm.add_args('-kernel', kernel_file, '-nographic')
+@@ -72,8 +72,9 @@ def test_arm_ast1030_zephyros_1_07(self):
+     def test_arm_ast1030_otp_blockdev_device(self):
+         self.vm.set_machine("ast1030-evb")
+ 
+-        kernel_name = "ast1030-evb-demo-3/zephyr.elf"
+-        kernel_file = self.archive_extract(self.ASSET_ZEPHYR_3_02, member=kernel_name)
++        kernel_name = "ast1030-evb-demo/zephyr.elf"
++        kernel_file = self.archive_extract(self.ASSET_ZEPHYR_3_03,
++                                           member=kernel_name)
+         otp_img = self.generate_otpmem_image()
+ 
+         self.vm.set_console()
 -- 
 2.51.0
 

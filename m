@@ -4,75 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7808CCD18D
-	for <qemu-arm@archiver.kernel.org>; Mon, 13 Oct 2025 13:36:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15EA7CCD183
+	for <qemu-arm@archiver.kernel.org>; Mon, 13 Oct 2025 13:36:52 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v8IiD-0004v7-12; Mon, 13 Oct 2025 09:35:41 -0400
+	id 1v8Ij2-0005X3-6A; Mon, 13 Oct 2025 09:36:32 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1v8IiB-0004uI-Kh
- for qemu-arm@nongnu.org; Mon, 13 Oct 2025 09:35:39 -0400
-Received: from mail-yx1-xb12e.google.com ([2607:f8b0:4864:20::b12e])
+ id 1v8Ij0-0005We-GM
+ for qemu-arm@nongnu.org; Mon, 13 Oct 2025 09:36:30 -0400
+Received: from mail-yw1-x112b.google.com ([2607:f8b0:4864:20::112b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1v8Ii9-0006LA-Af
- for qemu-arm@nongnu.org; Mon, 13 Oct 2025 09:35:39 -0400
-Received: by mail-yx1-xb12e.google.com with SMTP id
- 956f58d0204a3-6353e91a04aso4495369d50.2
- for <qemu-arm@nongnu.org>; Mon, 13 Oct 2025 06:35:36 -0700 (PDT)
+ id 1v8Iiy-0006PT-NL
+ for qemu-arm@nongnu.org; Mon, 13 Oct 2025 09:36:30 -0400
+Received: by mail-yw1-x112b.google.com with SMTP id
+ 00721157ae682-72e565bf2f0so44015377b3.3
+ for <qemu-arm@nongnu.org>; Mon, 13 Oct 2025 06:36:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1760362534; x=1760967334; darn=nongnu.org;
+ d=linaro.org; s=google; t=1760362587; x=1760967387; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=BbGPzHO4D2+JbEkVm+sHzPDR4Z5KWXP3eIew5Y6DeQI=;
- b=t1b+Iq7P2X4a/ImQhpxv0ni1j8e/ffqD7qqzTu1CIIxzloANVrO/ar/AWiWBLpdbsb
- 7UwRMnz0trXNi/Mzo3cxutzTD312YfKeyOaJSpUgDA0jqDr/I2rKiiYmumthDyVyJWXW
- Z3bMtNinMCAzFoemACWhGEUFR/Re+1vg6ZS3hLEqovcNA8p+tw1x+6OO5AsLLZqtzx/Q
- DohkimgQVXJ8TtVpyZ5AOG/OYs586TO6Z2hOz2npAzmF34YLqvY1kf2BEXTepreXbHgN
- /QYjdHBLrL2gm4sTi925cc2Z3UE+qKyOA1SG8fblEv71g62qbHf7v1Ta/izHZNJjixrk
- W8Sw==
+ bh=sFzIbSNWSlokoLsVJ01E0TJJ/rLPCd+u6AXIbjzCbQA=;
+ b=F1026YWdiJyOY+30budCDo8FRzHdmkkMsplUpjEB8T1lX1AWQPjqPXYpwD84nmlg3Q
+ 0RSavUz8tzwZw/ebADHAfNww4K6uufFotwApOu0mrOW+OVYHsv5Sw2VDbLQGq9H+xpdr
+ R6mQpVul/flhG2fyYNXMIILwY+o2JbqcEDSbIla/W6Cz01i3pKTLDN+aOvCxr7K92xlX
+ EO1D1sZCOJBFlfvRhMR+ZfhJ2X/5/7L1ldHHUkyr6VXaEAbe5o4ZD7LE+IYtLem+aCzC
+ uSM4wUoaSqeQKL5gd1FMgzKxNRa2yLfouY/E6UCvZnbagQ7GhcfP+NwU9y5Qra5+SBYf
+ lQuA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1760362534; x=1760967334;
+ d=1e100.net; s=20230601; t=1760362587; x=1760967387;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=BbGPzHO4D2+JbEkVm+sHzPDR4Z5KWXP3eIew5Y6DeQI=;
- b=WnPZpTH0Z9LANA1jTf/bXnO9xELoyLDTc0ypZRpedmnE/lAMuKEGoLu5RY7QwP3Q4Z
- yx7AxSCP6/v3t047SaSzl4EF2YnwsCvAbyz7ZRidWnX2CX8utyl+v0Lx32JPG5JdqJCR
- uK/artp5ZtZr2w75Brj7gICWLkisAytZO+fxwc05K1a5b+5udaUjvZbNO14N8CPXLbsr
- YzDNXClTuBz093mm+4QpuG03Verh/r0Wb+QF8UrYV+06xhO/HEe9qOk0PgZCAoJQU52r
- +iK0a6bxitAs0e/w2/dITkz9g0Dszf6WJ0xXp919PgoaFhTK4f5PGsyP98fckxM8BHYo
- J5UQ==
+ bh=sFzIbSNWSlokoLsVJ01E0TJJ/rLPCd+u6AXIbjzCbQA=;
+ b=Hef1Kzja8UG2+6TX80BngTn5B3DGz7UrmG/2IC57XIXDeQzsSlJVL/BRWV3+MlbP5J
+ uyMcYkXe4YtERnmV6dXZ+YruyWxlqIOqT7aKXApsJkdNdUbJsrHmDJ1VEcB/dyA8TCSb
+ QiAC5aNc480LSFHhFICd+lrFUq57yd3cHs2V6h00jw5TxzYAz0gngnnhSAcU5z7tl1pQ
+ LF8HASHeyw++C2A8kZ13pZByAeQqXOD7jCNk6VYCzG3yvCNdFv0isXgozkWZ7UB7yD+n
+ 0/DMipKIyOBrm6KtvitQC93zxIoqI2Fvf01UjQoFEpXWZeD/h8gb4y5RA0wjjmI0gsez
+ XJKA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCX1BOQbW9WaR/Y060a4N7sb7tC/ML8EA9ayI4BskgtIwixR3mnNuORPyOKIOCt064QbjOS3vtMhbg==@nongnu.org
-X-Gm-Message-State: AOJu0YxUX+plbN2DEYjcAMUkxbHZ5i2w6LBBSjq4Bk+BmXZO2Oo+Ef6B
- 2H8FJkZysBt/h/uurfx2BVAlssiUQTM5vfDjEd0/PTy68n+aMN7KV3mHqQTSNaws/KNVIoUcFYA
- xSI58hfUW0JRPwxpq6DlqF+3j42ueEFx8uKfqsdJS4Q==
-X-Gm-Gg: ASbGncuSOPB1feYMsF8mvK11Ks9RLLstWPcZ18W1RzKb2X33JLLYYSR4vVfEEuCAanY
- ltACbMJSmhBqr0x54JNFD8OFcfK9B/zprsYk7tgezu2V7N8TZRCM1cNsqswjtu/h8xQ17/SYRy5
- XPPLsq2ATmQHYywP9/YE4puVxpV3aZzlvmsexz4Q+GUtZMndJL644t8a7TF1e+Jvei303Y+1d+j
- Qzu7kH3PLq8vN+SngYKxYKtHghdaF8=
-X-Google-Smtp-Source: AGHT+IHTOsARVZqb37VE0phudY4MW1lSyw3KxCAjhJvK4vggJm6E5BXrxTG7UZQyM+vOnKPVJWaoMDejNOEUjwpfZi4=
-X-Received: by 2002:a05:690c:316:b0:721:6b2e:a08a with SMTP id
- 00721157ae682-780e16d29f5mr347191427b3.37.1760362533826; Mon, 13 Oct 2025
- 06:35:33 -0700 (PDT)
+ AJvYcCVJ7IdnLt51fhE34BIRObmykZkVi4cI7i78mAdRjEJ0GVDwAZe7eOt84NQfqDlUycQ8x+ArsiOO8w==@nongnu.org
+X-Gm-Message-State: AOJu0YyBSv4hWUqUHtkTpQz1f6T7lO8cxI+BzwnKse7VIK6EPsYi1YKU
+ UO27k5RL4pRmriCP2lzl3LWp3k2LzwaMrQieq5vQLO6BiLW8Ugc/hn6wWQLUDGKn15aAQru49t5
+ pwUAwGCqHjXzA0oi9oaVdObmgZjJcMZmZ3FXdadQlW/kOMwrB2Bkh
+X-Gm-Gg: ASbGncvoZLAaavuazKjs6KLQl8ECgD6OBq/VlU4fJJj7BO9uS5/xdz9mHhQsUY+5PY9
+ Ijs5UBSflkgWFTbUbnnvOi9BmJ8ZGGm2ttedXulA50JKrMz2KEkteQvFAsNw5dXz4V7gMbi2AtZ
+ uWSytbPMs25rRyHfd9zP8q4W/OYHpLhdBliWTvwuQvlS4SHEno0TJ8OlX+7GcflgBfNlWJJGJrD
+ rGjwLehJ50Gw4FMfhlat+dxKHeUcOz+9wd0nid3NJW9Ti2whEBY
+X-Google-Smtp-Source: AGHT+IGa9KGFD9GkIWACxfuhDx/PeAo3vh7rSF8pBHErx60Ml+nka4BiwT1sChLHUXO0zg9jSZOwE4UkCKGF7dKIJtM=
+X-Received: by 2002:a05:690e:158e:10b0:63c:f5a6:f2ee with SMTP id
+ 956f58d0204a3-63cf5a70b20mr6347293d50.64.1760362587269; Mon, 13 Oct 2025
+ 06:36:27 -0700 (PDT)
 MIME-Version: 1.0
 References: <20251010201917.685716-1-richard.henderson@linaro.org>
- <20251010201917.685716-2-richard.henderson@linaro.org>
-In-Reply-To: <20251010201917.685716-2-richard.henderson@linaro.org>
+ <20251010201917.685716-6-richard.henderson@linaro.org>
+In-Reply-To: <20251010201917.685716-6-richard.henderson@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 13 Oct 2025 14:35:22 +0100
-X-Gm-Features: AS18NWC8mj_KiNvpg0_UFwT8VB_z802EXIg5h-ZtywS2vElYbowxv29q16aPwqs
-Message-ID: <CAFEAcA_CmQ2w0Waa6K_vOPjibGhcE5oUG3GrhaC5r1t2-QXgYg@mail.gmail.com>
-Subject: Re: [PATCH 1/7] target/arm: Add isar feature test for FEAT_AIE
+Date: Mon, 13 Oct 2025 14:36:15 +0100
+X-Gm-Features: AS18NWDL0G-598jTRuTEmRcvpFsH7N3uXzZdtB6mjxBNZRaIS_UC1oo9aVGswSU
+Message-ID: <CAFEAcA_WdDpndTFOADR61Wgc87LVuOcEjn2y8UgNrfHORaUh2Q@mail.gmail.com>
+Subject: Re: [PATCH 5/7] target/arm: Use el local indexing mair_el
 To: Richard Henderson <richard.henderson@linaro.org>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b12e;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12e.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -95,33 +95,30 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, 10 Oct 2025 at 21:19, Richard Henderson
+On Fri, 10 Oct 2025 at 21:20, Richard Henderson
 <richard.henderson@linaro.org> wrote:
+>
+> We already have regime_el() computed to a local.
 >
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
->  target/arm/cpu-features.h | 5 +++++
->  1 file changed, 5 insertions(+)
+>  target/arm/ptw.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 >
-> diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
-> index 37f1eca3af..579fa8f8f4 100644
-> --- a/target/arm/cpu-features.h
-> +++ b/target/arm/cpu-features.h
-> @@ -1364,6 +1364,11 @@ static inline bool isar_feature_aa64_s2pie(const ARMISARegisters *id)
->      return FIELD_EX64_IDREG(id, ID_AA64MMFR3, S2PIE) != 0;
->  }
+> diff --git a/target/arm/ptw.c b/target/arm/ptw.c
+> index 54c45fc9fe..5fcf104272 100644
+> --- a/target/arm/ptw.c
+> +++ b/target/arm/ptw.c
+> @@ -2319,7 +2319,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
 >
-> +static inline bool isar_feature_aa64_aie(const ARMISARegisters *id)
-> +{
-> +    return FIELD_EX64_IDREG(id, ID_AA64MMFR3, AIE) != 0;
-> +}
-> +
->  static inline bool isar_feature_aa64_mec(const ARMISARegisters *id)
->  {
->      return FIELD_EX64_IDREG(id, ID_AA64MMFR3, MEC) != 0;
+>          /* Index into MAIR registers for cache attributes */
+>          attrindx = extract32(attrs, 2, 3);
+> -        mair = env->cp15.mair_el[regime_el(mmu_idx)];
+> +        mair = env->cp15.mair_el[el];
+>          result->cacheattrs.is_s2_format = false;
+>          result->cacheattrs.attrs = extract64(mair, attrindx * 8, 8);
+>
 > --
-> 2.43.0
->
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 

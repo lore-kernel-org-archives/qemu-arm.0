@@ -4,55 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82709CCD18C
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 568B8CCA476
 	for <qemu-arm@archiver.kernel.org>; Mon, 13 Oct 2025 12:48:03 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v8HvJ-0004dh-CE; Mon, 13 Oct 2025 08:45:09 -0400
+	id 1v8Hvt-0005AW-6T; Mon, 13 Oct 2025 08:45:45 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1v8Hv5-0004TP-Ih
- for qemu-arm@nongnu.org; Mon, 13 Oct 2025 08:44:57 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1v8HvY-0004uh-CA
+ for qemu-arm@nongnu.org; Mon, 13 Oct 2025 08:45:31 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1v8Hux-0007v5-Qw
- for qemu-arm@nongnu.org; Mon, 13 Oct 2025 08:44:54 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1v8HvM-0008CE-Sq
+ for qemu-arm@nongnu.org; Mon, 13 Oct 2025 08:45:22 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1760359485;
+ s=mimecast20190719; t=1760359511;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=ijCwE0uUK8yoWCTNQnVIDnTuHcOQiowpag0WnR7dcns=;
- b=IGQ2ZeIWNaSmyj+/8Nzgx+PqpkY+4SOJHYAOqyG3h1vCkyq2RV5glZoqbolhVbq0mb/beB
- 3wlLaPlhtUoJEo0HlVIyxY7DJtRh/2pExAINXLPHuPuVZdM0ekImRGfHsykxquemCxS2vN
- u1b+2UguIeYsTVq1e0zOfGB8qD2GyT8=
+ bh=H0QrLhBvqbk7rYuSeyggsaT9tykkvaYvB/E9Wk1LPEc=;
+ b=T4PnNOR4wVYoptnWfG8LM1ypkpzfNFqhCE2dXe6szaYKQCMfQ1nCVjco2/kWoB+PiYqcMk
+ XCmkTNnSNV+Rujf6ke0MY+xgeVjinD66QNbfdC2yKSqrdSnq7A5WHI0nJxtG9yxW5mHjDi
+ k56GudZYScUXxLIVa999Ydki1d6Wn/c=
 Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-474-arH30Y27PvaJ0UWwBSETtA-1; Mon,
- 13 Oct 2025 08:44:43 -0400
-X-MC-Unique: arH30Y27PvaJ0UWwBSETtA-1
-X-Mimecast-MFC-AGG-ID: arH30Y27PvaJ0UWwBSETtA_1760359482
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-194-5jQPuWBCMnOTVeJfpENnCg-1; Mon,
+ 13 Oct 2025 08:45:09 -0400
+X-MC-Unique: 5jQPuWBCMnOTVeJfpENnCg-1
+X-Mimecast-MFC-AGG-ID: 5jQPuWBCMnOTVeJfpENnCg_1760359508
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 93633195608A; Mon, 13 Oct 2025 12:44:42 +0000 (UTC)
+ id C78141956086; Mon, 13 Oct 2025 12:45:08 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.45.225.105])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 1995F180141C; Mon, 13 Oct 2025 12:44:40 +0000 (UTC)
+ id 541171800446; Mon, 13 Oct 2025 12:45:07 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
- Patrick Williams <patrick@stwcx.xyz>
-Subject: [PULL 09/29] aspeed: Deprecate the sonorapass-bmc machine
-Date: Mon, 13 Oct 2025 14:44:00 +0200
-Message-ID: <20251013124421.71977-10-clg@redhat.com>
+Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+Subject: [PULL 22/29] hw/arm/aspeed: Introduce AspeedCoprocessor class and
+ base implementation
+Date: Mon, 13 Oct 2025 14:44:13 +0200
+Message-ID: <20251013124421.71977-23-clg@redhat.com>
 In-Reply-To: <20251013124421.71977-1-clg@redhat.com>
 References: <20251013124421.71977-1-clg@redhat.com>
 MIME-Version: 1.0
@@ -84,56 +85,153 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The 'sonorapass-bmc' machine represents a lab server that never
-entered production. There are no functional tests for this machine
-which makes harder to determine when something becomes deprecated or
-unused.
+From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-Since the machine does not rely on any specific device models, it can
-be replaced by the 'ast2500-evb' machine using the 'fmc-model' option
-to specify the flash type. The I2C devices connected to the board can
-be defined via the QEMU command line.
+Add a new AspeedCoprocessor class that defines the foundational structure for
+ASPEED coprocessor models. This class encapsulates a base DeviceState with
+links to system memory, clock, and peripheral components such as SCU, SCUIO,
+Timer Controller, and UARTs.
 
-Cc: Patrick Williams <patrick@stwcx.xyz>
-Link: https://lore.kernel.org/qemu-devel/20251007141604.761686-2-clg@redhat.com
+Introduce the corresponding implementation file
+aspeed_coprocessor_common.c, which provides the aspeed_coprocessor_realize()
+method, property registration, and QOM type registration. The class is marked
+as abstract and intended to serve as a common base for specific coprocessor
+variants (e.g. SSP/TSP subsystems).
+
+This establishes a reusable and extensible framework for modeling ASPEED
+coprocessor devices.
+
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
+Link: https://lore.kernel.org/qemu-devel/20251013054334.955331-10-jamin_lin@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- docs/about/deprecated.rst | 9 +++++++++
- hw/arm/aspeed.c           | 1 +
- 2 files changed, 10 insertions(+)
+ include/hw/arm/aspeed_coprocessor.h | 44 ++++++++++++++++++++++++++
+ hw/arm/aspeed_coprocessor_common.c  | 49 +++++++++++++++++++++++++++++
+ hw/arm/meson.build                  |  3 +-
+ 3 files changed, 95 insertions(+), 1 deletion(-)
+ create mode 100644 include/hw/arm/aspeed_coprocessor.h
+ create mode 100644 hw/arm/aspeed_coprocessor_common.c
 
-diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
-index 67e527740c0e..ce8fe9ac1be7 100644
---- a/docs/about/deprecated.rst
-+++ b/docs/about/deprecated.rst
-@@ -285,6 +285,15 @@ and serves as the initial engineering sample rather than a production version.
- A newer revision, A1, is now supported, and the ``ast2700a1-evb`` should
- replace the older A0 version.
- 
-+Arm ``sonorapass-bmc`` machine (since 10.2)
-+'''''''''''''''''''''''''''''''''''''''''''
+diff --git a/include/hw/arm/aspeed_coprocessor.h b/include/hw/arm/aspeed_coprocessor.h
+new file mode 100644
+index 000000000000..793c7b1f8be9
+--- /dev/null
++++ b/include/hw/arm/aspeed_coprocessor.h
+@@ -0,0 +1,44 @@
++/*
++ * ASPEED Coprocessor
++ *
++ * Copyright (C) 2025 ASPEED Technology Inc.
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
 +
-+The ``sonorapass-bmc`` machine represents a lab server that never
-+entered production. Since it does not rely on any specific device
-+models, it can be replaced by the ``ast2500-evb`` machine using the
-+``fmc-model`` option to specify the flash type. The I2C devices
-+connected to the board can be defined via the QEMU command line.
++#ifndef ASPEED_COPROCESSOR_H
++#define ASPEED_COPROCESSOR_H
 +
- RISC-V default machine option (since 10.0)
- ''''''''''''''''''''''''''''''''''''''''''
- 
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 58cfbc713794..d3a0c81f454f 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -1552,6 +1552,7 @@ static void aspeed_machine_sonorapass_class_init(ObjectClass *oc,
-     AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
- 
-     mc->desc       = "OCP SonoraPass BMC (ARM1176)";
-+    mc->deprecation_reason = "use 'ast2500-evb' instead";
-     amc->soc_name  = "ast2500-a1";
-     amc->hw_strap1 = SONORAPASS_BMC_HW_STRAP1;
-     amc->fmc_model = "mx66l1g45g";
++#include "qom/object.h"
++#include "hw/arm/aspeed_soc.h"
++
++struct AspeedCoprocessorState {
++    DeviceState parent;
++
++    MemoryRegion *memory;
++    MemoryRegion sram;
++    Clock *sysclk;
++
++    AspeedSCUState scu;
++    AspeedSCUState scuio;
++    AspeedTimerCtrlState timerctrl;
++    SerialMM uart[ASPEED_UARTS_NUM];
++};
++
++#define TYPE_ASPEED_COPROCESSOR "aspeed-coprocessor"
++OBJECT_DECLARE_TYPE(AspeedCoprocessorState, AspeedCoprocessorClass,
++                    ASPEED_COPROCESSOR)
++
++struct AspeedCoprocessorClass {
++    DeviceClass parent_class;
++
++    /** valid_cpu_types: NULL terminated array of a single CPU type. */
++    const char * const *valid_cpu_types;
++    uint32_t silicon_rev;
++    const hwaddr *memmap;
++    const int *irqmap;
++    int uarts_base;
++    int uarts_num;
++};
++
++#endif /* ASPEED_COPROCESSOR_H */
+diff --git a/hw/arm/aspeed_coprocessor_common.c b/hw/arm/aspeed_coprocessor_common.c
+new file mode 100644
+index 000000000000..8a94b44f07f2
+--- /dev/null
++++ b/hw/arm/aspeed_coprocessor_common.c
+@@ -0,0 +1,49 @@
++/*
++ * ASPEED Coprocessor
++ *
++ * Copyright (C) 2025 ASPEED Technology Inc.
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "qemu/osdep.h"
++#include "qapi/error.h"
++#include "system/memory.h"
++#include "hw/qdev-properties.h"
++#include "hw/arm/aspeed_coprocessor.h"
++
++static void aspeed_coprocessor_realize(DeviceState *dev, Error **errp)
++{
++    AspeedCoprocessorState *s = ASPEED_COPROCESSOR(dev);
++
++    if (!s->memory) {
++        error_setg(errp, "'memory' link is not set");
++        return;
++    }
++}
++
++static const Property aspeed_coprocessor_properties[] = {
++    DEFINE_PROP_LINK("memory", AspeedCoprocessorState, memory,
++                     TYPE_MEMORY_REGION, MemoryRegion *),
++};
++
++static void aspeed_coprocessor_class_init(ObjectClass *oc, const void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(oc);
++
++    dc->realize = aspeed_coprocessor_realize;
++    device_class_set_props(dc, aspeed_coprocessor_properties);
++}
++
++static const TypeInfo aspeed_coprocessor_types[] = {
++    {
++        .name           = TYPE_ASPEED_COPROCESSOR,
++        .parent         = TYPE_DEVICE,
++        .instance_size  = sizeof(AspeedCoprocessorState),
++        .class_size     = sizeof(AspeedCoprocessorClass),
++        .class_init     = aspeed_coprocessor_class_init,
++        .abstract       = true,
++    },
++};
++
++DEFINE_TYPES(aspeed_coprocessor_types)
+diff --git a/hw/arm/meson.build b/hw/arm/meson.build
+index dc68391305fe..56bdb88b1175 100644
+--- a/hw/arm/meson.build
++++ b/hw/arm/meson.build
+@@ -52,7 +52,8 @@ arm_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
+   'fby35.c'))
+ arm_common_ss.add(when: ['CONFIG_ASPEED_SOC', 'TARGET_AARCH64'], if_true: files(
+   'aspeed_ast27x0.c',
+-  'aspeed_ast27x0-fc.c',))
++  'aspeed_ast27x0-fc.c',
++  'aspeed_coprocessor_common.c'))
+ arm_common_ss.add(when: 'CONFIG_MPS2', if_true: files('mps2.c'))
+ arm_common_ss.add(when: 'CONFIG_MPS2', if_true: files('mps2-tz.c'))
+ arm_common_ss.add(when: 'CONFIG_MSF2', if_true: files('msf2-soc.c'))
 -- 
 2.51.0
 

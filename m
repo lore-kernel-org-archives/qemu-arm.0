@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F247CCD183
-	for <qemu-arm@archiver.kernel.org>; Mon, 13 Oct 2025 09:23:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88A4ECCD18E
+	for <qemu-arm@archiver.kernel.org>; Mon, 13 Oct 2025 09:23:17 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v8Ejy-0001V0-LM; Mon, 13 Oct 2025 05:21:15 -0400
+	id 1v8Ejy-0001Uz-Ka; Mon, 13 Oct 2025 05:21:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1v8Ejt-0001UC-JG
- for qemu-arm@nongnu.org; Mon, 13 Oct 2025 05:21:11 -0400
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1v8Eju-0001UK-8h; Mon, 13 Oct 2025 05:21:11 -0400
 Received: from smtpout3.mo529.mail-out.ovh.net ([46.105.54.81])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1v8Ejo-0004G4-Ac
- for qemu-arm@nongnu.org; Mon, 13 Oct 2025 05:21:08 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.110.43.14])
- by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 4clWzx67c3z5wnV;
- Mon, 13 Oct 2025 09:21:01 +0000 (UTC)
-Received: from kaod.org (37.59.142.101) by DAG8EX2.mxp5.local (172.16.2.72)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1v8Ejn-0004De-A6; Mon, 13 Oct 2025 05:21:09 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.109.231.75])
+ by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 4clWzh1sdsz5wn6;
+ Mon, 13 Oct 2025 09:20:47 +0000 (UTC)
+Received: from kaod.org (37.59.142.105) by DAG8EX2.mxp5.local (172.16.2.72)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.59; Mon, 13 Oct
- 2025 11:21:01 +0200
+ 2025 11:20:41 +0200
 Authentication-Results: garm.ovh; auth=pass
- (GARM-101G0043a42d21c-91ba-48a1-8b0a-e37a13fb74ab,
+ (GARM-105G006dd2d3285-5dcd-470e-9e28-373dc6d71e29,
  E27D2F41E47E806E38994DC6761E007B2CBA9264) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
-Message-ID: <a16f60a0-e371-4620-a108-9ceb59d29ccc@kaod.org>
-Date: Mon, 13 Oct 2025 11:21:00 +0200
+Message-ID: <c13e8fd0-40df-4b13-baeb-4558d59da013@kaod.org>
+Date: Mon, 13 Oct 2025 11:20:40 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [SPAM] [PATCH v3 03/16] hw/arm/aspeed: Remove AspeedSoCState
- dependency from aspeed_soc_uart_set_chr() API
+Subject: Re: [SPAM] [PATCH v3 01/16] hw/arm/aspeed: Remove AspeedSoCState
+ dependency from aspeed_uart_first() API
 To: Jamin Lin <jamin_lin@aspeedtech.com>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
  <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, Joel
@@ -42,7 +42,7 @@ To: Jamin Lin <jamin_lin@aspeedtech.com>, Peter Maydell
  "open list:All patches CC here" <qemu-devel@nongnu.org>
 CC: <troy_lee@aspeedtech.com>, <kane_chen@aspeedtech.com>
 References: <20251013054334.955331-1-jamin_lin@aspeedtech.com>
- <20251013054334.955331-4-jamin_lin@aspeedtech.com>
+ <20251013054334.955331-2-jamin_lin@aspeedtech.com>
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Content-Language: en-US, fr
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -87,25 +87,25 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20251013054334.955331-4-jamin_lin@aspeedtech.com>
+In-Reply-To: <20251013054334.955331-2-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.101]
-X-ClientProxiedBy: DAG8EX2.mxp5.local (172.16.2.72) To DAG8EX2.mxp5.local
+X-Originating-IP: [37.59.142.105]
+X-ClientProxiedBy: DAG9EX1.mxp5.local (172.16.2.81) To DAG8EX2.mxp5.local
  (172.16.2.72)
-X-Ovh-Tracer-GUID: bd4d8d9c-ae76-4d05-ace2-98b1f93749ff
-X-Ovh-Tracer-Id: 14158472807252593586
+X-Ovh-Tracer-GUID: a5fef19a-a646-4fca-8337-a16bcd440cfa
+X-Ovh-Tracer-Id: 14152843306289367986
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTGNoIoHsu1xdOBH/Eke09bYtRVh1g27RjmeSMpnyv7nAK+F8allf1PWKYPOYsduizeaEsMA6hQJ/T/nDXMg0wVwFuul5lcaezk9p7GzLXTZtSXacMQGO4hi34Pa/Ga+g3b+XlozH/D8Jm3oSIi82DQ9MRC1SBNc4jrwnfwe91gdxYI/tSQyoM3YLYRZLPxE8+PGho4xkEEjTvEQljQqaddf+ObOCX/UIiOY795rxVHyVgi5OR3lUZQREr2FMaY8x7ICdtRsoIKqNFT0NK4jJyQUZ8wIY0j6m7Lo/d/UmPVE993/fnI5bl8QiOrvfYVrJBUsOI21xH+eHsrUsc4O4WXaBzrKUu87m5Lz53AinoT+2WUkfbYKBlV9OdqJjpCPSs2EKKsrOc3qXmLVAvbsxZ/x8e0OEbPGdHCfGcN9zhhw6s9XK4wIwPrlFElj/HsdmWbAyHsXamHjeh1AHVxx9gwYtJo+v32KFUP5jkuJcLH2dBAhStNFoap/ztbTYarKT+ab8RHMGvOGUb4SfqoL5fivaL9dzwBVgFztdSdcVCo2LGFdW8vjMCHtVsgK7Sm+DgSxpJ3hXzmyh4bpbhH/CezJfcPfukPaRitrXggt40A+EdrSadUoaHaaFvHU7B/+JbHSH+fLJUC0INcoUGzNjILJVTEatW2PHkgvg53tO4kFZg
-DKIM-Signature: a=rsa-sha256; bh=mzKP+EiXwQalivGj5k+5h0T/uQkBrQ0n8YX3yKr5y38=; 
+X-VR-SPAMCAUSE: dmFkZTEMxPYhsgjc+XRzYFE4j/XTc8ckyd3yihlDsnYOccg62aQkp//Aif2JXp1rxGt3+usH7S5ImAM3PqVXNztMyA0PBV3oq2TdR8JKeVo2jTmSoKw64VZ0g8pebihF5cdb+ygsvtpiT6VeoraAEPcVNF0hB4ceHHPn+Ed1ZlSngkcmKWFNTj0PMM7VH+h2i9hP/sFfQqTLGB/Qi3PsPGdm5eydChWy+TBaBK0pQHdSzgMo8V1nPbN87UE4NslTkpMYC20gCohR61ijgYTJbvxtjjXm8KtCkPjCe/irBY27rPizWWmOQvmTRhK+gWtC7hILjEXj3TMe5FM6MTvAhnnoPdaOVj9PQow+Yf1lc8A2fJwJus4jhfJKTt8tXvQGwnEWHAoppAAhCn6AZaeV2SZjHNuXqHDjDIaEzZKugxI+AN9Yef4NHy96RwX03NYZV/ZC+Q3VoJRgQSi4gMPtKYEuk8YN6AfsIE/sW/gx+crHY6GZ30n020gv8HG6Wwi2oMPQDWRcpR+QmEeoGhDH7Tx6skLhmYPR6HBUjaejPMF69IG72hzxXpw42httAJ5NtoP9uV/s3FMenPyEzam/8DTAVUA+LIC5ZjiimPF4xFvwtnsnb21Fiy51SUJPLRn5I8q87sJmyPfXD3lNRiE3w8i+cSQXh/RM1FCFqkHTC810DUjhxA
+DKIM-Signature: a=rsa-sha256; bh=6dicNZqHyEkUWmWVlqZ81X4QswxcunqYM/0jGNNoxpM=; 
  c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1760347262; v=1;
- b=CSAa5AyPNP+hhRde26BHddRTfYEm3zGyWqXlw8UlenfdSfbacelGwQWY5iC9Ldib1lSp4cfK
- YukQ3IdsZJelTSHuxh3dyEqk0pmcrDkRPa8sEHLEMUm1X2RKu90xpcLCqlRzJKCC2DjhABOngWT
- e0jEnsEmElOh5cWIvVLE5eE125aEj/0H6rq82yAQ694sLmPPupb3qAGCU/RSbparY4xSZK8c76j
- ibM0nzOuwqgpmXXPmnCcwz+fJTwxVQY8YvTI09lrxUpoFEOWa/7AJ8csTykb5q2/owq8DnlHgA4
- nPx9xO5vwQvFgpSQuKF6r7K7KRwjUvqFkG/yuy5uu1T8w==
+ t=1760347249; v=1;
+ b=E4UL/brZCVFCHuw4KFGPW4QxnBqGo14ly/yiFhvPaOJiHx9BvShM2UsQlDpbhw+Dn47mA0tk
+ XGUbPuCOO2JOl4xfDQRGbP5q20hhwgfPUF5FNA9GQ4wyC/kdNTZ4pJ7LgFiAhdXUWUdWD1+s/kb
+ akgPu9/Z9U5dIeqaE2+X6ZlZOiPs9dQgw+R3ooADxXvuLOWtUkJkipG0+A8jEONxJjVR07Qj1XF
+ xsQynKz6BbhEIv0KleA1H236owHAmEdoeA3rgTWz+5LjbRI575ArggLfAYH0frNrFdwGlPOQmtu
+ XD8aurv3vx4wFAqvjGQ4uhrx/e6nHYhmsCzkfrdZgv3kA==
 Received-SPF: pass client-ip=46.105.54.81; envelope-from=clg@kaod.org;
  helo=smtpout3.mo529.mail-out.ovh.net
 X-Spam_score_int: -30
@@ -132,33 +132,28 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 10/13/25 07:43, Jamin Lin wrote:
-> Refactor the aspeed_soc_uart_set_chr() helper to remove its dependency
-> on AspeedSoCState and make the UART character device binding more
-> generic.
+> Refactor the aspeed_uart_first() helper to remove its dependency on
+> AspeedSoCState and make the UART helper APIs more generic.
 > 
-> The function now takes SerialMM *uart, uarts_base, and uarts_num
-> as arguments instead of relying on AspeedSoCState. All affected call
-> sites in aspeed.c, aspeed_ast27x0-fc.c, and fby35.c are updated
-> to use the new parameter format.
-> 
-> This improves API flexibility and enables reuse across different Aspeed
-> SoC variants without requiring access to internal SoC state.
+> The function now takes uarts_base as an integer parameter instead of
+> requiring a full SoC class instance. Corresponding call sites in
+> aspeed.c and aspeed_soc_common.c are updated accordingly.
 > 
 > No functional change.
 > 
 > Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 > ---
->   include/hw/arm/aspeed_soc.h |  3 ++-
->   hw/arm/aspeed.c             |  6 ++++--
->   hw/arm/aspeed_ast27x0-fc.c  | 13 ++++++++++---
->   hw/arm/aspeed_soc_common.c  | 10 +++++-----
->   hw/arm/fby35.c              | 10 ++++++++--
->   5 files changed, 29 insertions(+), 13 deletions(-)
+>   include/hw/arm/aspeed_soc.h | 6 +++---
+>   hw/arm/aspeed.c             | 2 +-
+>   hw/arm/aspeed_soc_common.c  | 2 +-
+>   3 files changed, 5 insertions(+), 5 deletions(-)
 > 
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
 
 Thanks,
 
 C.
+
+
 
 

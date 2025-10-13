@@ -4,94 +4,127 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 100F3CCD185
-	for <qemu-arm@archiver.kernel.org>; Mon, 13 Oct 2025 19:03:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBF7ECCD183
+	for <qemu-arm@archiver.kernel.org>; Mon, 13 Oct 2025 19:43:01 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v8Noz-0001Zd-UG; Mon, 13 Oct 2025 15:03:02 -0400
+	id 1v8ORK-00075G-DI; Mon, 13 Oct 2025 15:42:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v8Nox-0001ZO-CT
- for qemu-arm@nongnu.org; Mon, 13 Oct 2025 15:02:59 -0400
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v8Nov-0008VL-Io
- for qemu-arm@nongnu.org; Mon, 13 Oct 2025 15:02:59 -0400
-Received: by mail-wm1-x336.google.com with SMTP id
- 5b1f17b1804b1-46e326e4e99so26688905e9.1
- for <qemu-arm@nongnu.org>; Mon, 13 Oct 2025 12:02:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1760382175; x=1760986975; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=wKJtvVBeUpceoS4GGuZ7Rw36+X8tmV8xTrk3JT9ph9A=;
- b=mkhe/hsMASChTgsnqlAEObyaVa/8C3VEGdrY/Qj7H8Ceoc0Qud7Ev0EA9D7jp9wWuM
- mJbfZQ+v62VFhwbBxWviAe/rygBvzVOK7PmvRHv2500aV4+B4iX0v7vqmee7vWUEqkYS
- WbLbctLJWcH1L02RXGvV7ui0Hx4Ewcfz3BnCPhAlHm8e8qjmK9Go1Tx0jHej3D6a8vk8
- K61Enwddhl8Y/MhgCiqtPrYN5H9c1DPR/G2q8KE/IxUDnVqyBGl24R809u/6QPxf8Fl8
- ysbQD02zBrrwBHQKfz1OcJcZazpORzbEsEU7WaEwtWpbwwTYBKWwkeaAhvPCuy0EUpEh
- Nw9A==
+ (Exim 4.90_1) (envelope-from <jae.yoo@oss.qualcomm.com>)
+ id 1v8NMu-0003nr-R6
+ for qemu-arm@nongnu.org; Mon, 13 Oct 2025 14:34:01 -0400
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jae.yoo@oss.qualcomm.com>)
+ id 1v8NMs-0004us-D0
+ for qemu-arm@nongnu.org; Mon, 13 Oct 2025 14:34:00 -0400
+Received: from pps.filterd (m0279866.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 59DINglI026577
+ for <qemu-arm@nongnu.org>; Mon, 13 Oct 2025 18:33:54 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+ cc:content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+ eriIZRj0aLw32fFI3rvHJA8aUgtHNZuPJUOPpKVLn1Q=; b=AwG1Plko5FV338g/
+ 56CbTWwlakUuE+24q7K/o8Ox1weEJWMVV0XV8w+sMXo/10SaiIvQgwNyFcdBHM3v
+ 16+sCdwv8WBDtyg6qyAV/Bwj4J8HQ6iaPITIsdm1ZPcUDHQDlGKUfY33ZsjiHcYr
+ D/LVe2ZYrMhtpjt/To5jcdHQM7GL4dDU/Wwbk55Jvw+9A/AdePLoB7rIqJCuZCrH
+ NsV5hWR/T9uHAVoP9+JF7PDIFSVVXttnAfaXGIbkd3xIo2DSDYmPjVCCznwlqjLL
+ cr620M91Ivugkp+OmNJtujLfltuXY8QdHfa+lCjNyhZ5JYxOh5p5lhHn8bm4J+9+
+ iyOpkw==
+Received: from mail-pl1-f198.google.com (mail-pl1-f198.google.com
+ [209.85.214.198])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 49s6mwg0xg-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
+ for <qemu-arm@nongnu.org>; Mon, 13 Oct 2025 18:33:54 +0000 (GMT)
+Received: by mail-pl1-f198.google.com with SMTP id
+ d9443c01a7336-2697c4e7354so88183025ad.0
+ for <qemu-arm@nongnu.org>; Mon, 13 Oct 2025 11:33:54 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1760382175; x=1760986975;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
+ d=1e100.net; s=20230601; t=1760380433; x=1760985233;
+ h=content-transfer-encoding:in-reply-to:from:cc:content-language
+ :references:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=wKJtvVBeUpceoS4GGuZ7Rw36+X8tmV8xTrk3JT9ph9A=;
- b=o5SOdpGx1yC/DPrY00HARuIjMtP6wtkjLvOMz1OZjQjH6tfAXkphZgS+Yd1TNioZsb
- SgW4hW3olmq2QscS8isUTzcfGwYmWbvuwkkZQ06pkFORlniYvJMvineX9TQ9f/E9yMAW
- qveTocH9PGXtqwCzRfKW44B4Z55Odlmf93GMvakTkTX+ZslO/P05e33Td4bKeMVQ5ZBv
- sntQPjgWNfENLlrmO93JSbMAMtneZPFYjqvNTxAfPYTfMHsdhM7+BInYK1+sSvs05uFm
- uZn+ugvpEihp6QyiP2MPDE9+MCLR/wPtPMZfRr+xzNwYoAzEoaHZV1Qzmbqpim1dkvIt
- 3yiQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXLqGkFcSkZfBQRAtH1Zlp7ck/WA+TqFQfwtABOd9yENT0cl4i9fRVsBTX/qFMioybCzDTBz9y9kA==@nongnu.org
-X-Gm-Message-State: AOJu0YyE6tdcwMlm4Y3z/sww9DpD/mKLy7pUCKvqG5qG1YHJDvSBzBnF
- xj8nw36U3QLf2RVF4OoEHzRGXzIW+RDIPrSBQAm1k59vDQVfW2A43A+5JoIr/IiNW0s=
-X-Gm-Gg: ASbGncv1pdVMdF9sfTcHfTfbrne5XCS8wXJK0UfKO3JLmtcodCF3fvPVDzdvrU31FP0
- l/ewF0vLuhbKEsOehkXua4+jMlZ/4wBRzzy5GDemHjyoIaGsSQTkOBEWzD8UfbP1Gp5JhXDcNVA
- V2e7xYXK/kLERLq/xjoNuLgz6mmJsl5g1+stgkfpWMyQb0UBsb1pcLcbgCjlXDvosUcxHP0gOm2
- wdVhaWTMM7mMUoXm9AO3VH9ZUDWm1F2ZvEHamGIhv5PafjlL3aSI5wBYE5LkrSDXtnjcKYOExqD
- Q+lRHCU8u7KSpKVZAwJugpIOH8dbH02OlK2+0JeQ6wOlPaNUtAee+IdqjZfWvJ8g9EjbkeTnpnw
- waidGUCKmw+ZKeiCjXB0uSYC93zo3tWJUBR5bJT2Gk1+9G/otunQ7Y1s4Fj6eFdGULdEPVEDvYd
- cyV196QvEJHMfBMKO4974zQX4=
-X-Google-Smtp-Source: AGHT+IHH11zCSmmv2HyW/zq6ZrYND0/s/6qw5dDtxk0RD0xvF0e4++DMwcu0QSFIdAFGYjRcpGdTJA==
-X-Received: by 2002:a05:600c:1277:b0:46c:adf8:cd82 with SMTP id
- 5b1f17b1804b1-46fa2952c02mr127987755e9.3.1760382175311; 
- Mon, 13 Oct 2025 12:02:55 -0700 (PDT)
-Received: from [192.168.69.221] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-426ce589a21sm20144116f8f.23.2025.10.13.12.02.54
+ bh=eriIZRj0aLw32fFI3rvHJA8aUgtHNZuPJUOPpKVLn1Q=;
+ b=UHdSthnz5MJbPSrjivu2UCXMgkN3AcnsJyT3SfKmeocrbz3tPoN6kHsV9P0D7SLiph
+ eRd5D0FayjoVNK1z4+I8Y6iFyLI76FkeMrhO7sCfQMesA/pQzOcFJyryXPicIge1SuRa
+ wWzuvmVMu8BaishOiF/5876TXg5UOmg0NKm2rnJ+VupqLU09VdcLLmrJw4vQrTxHrRUP
+ cJx9oA1FlalMiQJH+9IbFnjjErqcYEdYP26HT3SQRp4/N+KZvsA1oklbE4VZJCjCch0J
+ 7r6FC2oi81/7q6SyjKDKxLVCU5tqUZnv8mzAmt1w601pVqjey+A1xhl8qNW3dIY3XefS
+ Tr1g==
+X-Gm-Message-State: AOJu0YwFhpFxvMk0Z+5oR0GbQitZRLYMSn517G1MsM1c6chqKihFLz9p
+ A6SQOZpexmG6vfX10ybt8hzlJFY1dco3fQJtdOQNLn8G7RW9c7Y4UNdYxiSqTCwVZqm9BDjAJS+
+ mgmlUPQllqBj4itQg4x3WtX+ekw6kcb4Uvccq6iA4tWcO0WG6pTfHysA=
+X-Gm-Gg: ASbGncsiMsN1n3uNH/opdeX5afpQvCnWpmD3ldKcSJqOzLJ7x/BvMYPbHf5UlrZTQPo
+ Re0wzfLJxHfDGQzmQ+KPPwnZidaqTMDLeVSdb4qLA9qumBhuzkcLvCtiD5zI9Fj0BYDRGFaGKoL
+ SxsJ6A9uBCfxcvF4Frh4Jos5yXUqZgUaGStMRtY4gqnCi7exFp/ygJH9gYYege38TA1utV7aHD2
+ G3G/c+mJqBhQU5e54noSpVTmC2mzhKD6vqHHkqQhgYgLZ52CuO5ftSfBROyuKhakHeqjiTk2zUP
+ LQB4hSWzcB3lP0EqDGbU/zH67dJaO83ZgXiHgxSKqRYLHsKz7H96bGgTCzdkA+WUdee6INqgS07
+ Oo4v+uVM9IWdN
+X-Received: by 2002:a17:903:1b2e:b0:272:a847:cabb with SMTP id
+ d9443c01a7336-28ec9cd69d2mr333636385ad.28.1760380433242; 
+ Mon, 13 Oct 2025 11:33:53 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IECcThxp2S5IOcp2KEvK6UNMqOcMLZ9ipWFXsPxpzuLuh+bESomOoHSiKnTri2l2la3E63ywQ==
+X-Received: by 2002:a17:903:1b2e:b0:272:a847:cabb with SMTP id
+ d9443c01a7336-28ec9cd69d2mr333636135ad.28.1760380432696; 
+ Mon, 13 Oct 2025 11:33:52 -0700 (PDT)
+Received: from [192.168.0.9] (71-34-64-202.ptld.qwest.net. [71.34.64.202])
+ by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-29034f362efsm140833025ad.89.2025.10.13.11.33.51
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 13 Oct 2025 12:02:54 -0700 (PDT)
-Message-ID: <d3e9d489-eb54-4540-9752-f691f6481c40@linaro.org>
-Date: Mon, 13 Oct 2025 21:02:53 +0200
+ Mon, 13 Oct 2025 11:33:52 -0700 (PDT)
+Message-ID: <261a0676-c6bf-4cb2-9859-b0ef63db5a08@oss.qualcomm.com>
+Date: Mon, 13 Oct 2025 11:33:51 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC v2 1/4] hw: vmapple: include missing headers
+Subject: Re: [PULL 10/29] aspeed: Deprecate the qcom-dc-scm-v1-bmc and
+ qcom-firework-bmc machines
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
+References: <20251013124421.71977-1-clg@redhat.com>
+ <20251013124421.71977-11-clg@redhat.com>
+ <SA2PR02MB78514EE956DEF4BED254BA758DEAA@SA2PR02MB7851.namprd02.prod.outlook.com>
 Content-Language: en-US
-To: Mohamed Mediouni <mohamed@unpredictable.fr>, qemu-devel@nongnu.org
-Cc: Mads Ynddal <mads@ynddal.dk>, qemu-arm@nongnu.org,
- Cameron Esfahani <dirty@apple.com>, Peter Maydell
- <peter.maydell@linaro.org>, Roman Bolshakov <rbolshakov@ddn.com>,
- Alexander Graf <agraf@csgraf.de>, Phil Dennis-Jordan <phil@philjordan.eu>
-References: <20251007203153.30136-1-mohamed@unpredictable.fr>
- <20251007203153.30136-2-mohamed@unpredictable.fr>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20251007203153.30136-2-mohamed@unpredictable.fr>
+Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "Jae Hyun Yoo (QUIC)" <quic_jaehyoo@quicinc.com>
+From: Jae Hyun Yoo <jae.yoo@oss.qualcomm.com>
+In-Reply-To: <SA2PR02MB78514EE956DEF4BED254BA758DEAA@SA2PR02MB7851.namprd02.prod.outlook.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::336;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x336.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMDEzMDA4MyBTYWx0ZWRfX2J144OUSQg2L
+ eaMkpdYSId0S8KMMP0pbL+3jr04fADiLl+TzoCkJAlkfRYF81HX0Vez/AnK9p9nP8MLFblvRjMl
+ pnbSXxXQzDWmlje5bsco8Sio9N1J/lL48uddN1TPwGrAhyk5uoE7pOLJJGSsUgBfW1UiW+oF8kx
+ s7BagFV3vfBfAlUvHIhfNqcqT8qBnfczXa/VWKW8eY3J283q414HaXkg2gG+s9STEOfGoHhXYnn
+ u3EpQwxZRqaTFgQ2AVQy8hFtIJsP7kCH5xRQOdHCElkJDXcByTu7MDfGNCxdangfWRKFd7y9MuO
+ GmT+VbJ9cBODuPQ+TYlj2pWBEtgLHeIMQOQxdBZhiW2lJ9kbf0c/KkDnk43PK4fcX1dmfZY+RRl
+ e5nCdRkGmqVfpvAOvLRuE6VWCLgIXQ==
+X-Authority-Analysis: v=2.4 cv=Fr4IPmrq c=1 sm=1 tr=0 ts=68ed4612 cx=c_pps
+ a=MTSHoo12Qbhz2p7MsH1ifg==:117 a=eIIDeNP1OUjBW9wmmAUtdQ==:17
+ a=IkcTkHD0fZMA:10 a=x6icFKpwvdMA:10 a=VwQbUJbxAAAA:8 a=20KFwNOVAAAA:8
+ a=EUspDBNiAAAA:8 a=COk6AnOGAAAA:8 a=aW39nIJ4cvaJ_DaTxZUA:9 a=3ZKOabzyN94A:10
+ a=QEXdDO2ut3YA:10 a=GvdueXVYPmCkWapjIL-Q:22 a=TjNXssC_j7lpFel5tvFf:22
+X-Proofpoint-GUID: 17T41w3zeYpVUVwegSn5LgysWDly5eX_
+X-Proofpoint-ORIG-GUID: 17T41w3zeYpVUVwegSn5LgysWDly5eX_
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1117,Hydra:6.1.9,FMLib:17.12.80.40
+ definitions=2025-10-13_06,2025-10-13_01,2025-03-28_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ priorityscore=1501 impostorscore=0 spamscore=0 phishscore=0 malwarescore=0
+ adultscore=0 lowpriorityscore=0 bulkscore=0 suspectscore=0 clxscore=1011
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.19.0-2510020000 definitions=main-2510130083
+Received-SPF: pass client-ip=205.220.168.131;
+ envelope-from=jae.yoo@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
+X-Spam_score_int: -26
+X-Spam_score: -2.7
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_LOW=-0.7,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Mon, 13 Oct 2025 15:42:34 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -106,44 +139,74 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 7/10/25 22:31, Mohamed Mediouni wrote:
-> Disablement by default led to:
+Hi Cédric,
+
+Reviewed-by: Jae Hyun Yoo <jae.yoo@oss.qualcomm.com>
+
+Thanks,
+Jae
+
+On 10/13/2025 05:44 AM, Cédric Le Goater wrote:
+> There are no functional tests for the 'qcom-dc-scm-v1-bmc' and
+> 'qcom-firework-bmc' machines which makes harder to determine when
+> something becomes deprecated or unused.
 > 
-> ../hw/vmapple/vmapple.c:276:39: error: use of undeclared identifier 'GTIMER_VIRT'
->    276 |         qdev_connect_gpio_out(cpudev, GTIMER_VIRT,
->        |                                       ^
-> ../hw/vmapple/vmapple.c:479:54: error: use of undeclared identifier 'QEMU_PSCI_CONDUIT_HVC'
->    479 |         object_property_set_int(cpu, "psci-conduit", QEMU_PSCI_CONDUIT_HVC,
->        |                                                      ^
-> ../hw/vmapple/vmapple.c:556:13: error: call to undeclared function 'arm_build_mp_affinity'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
->    556 |             arm_build_mp_affinity(n, GICV3_TARGETLIST_BITS);
->        |             ^
-> 3 errors generated.
+> Since the machines do not rely on any specific device models, they can
+> be replaced by the 'ast2600-evb' machine using the 'fmc-model' option
+> to specify the flash type. The I2C devices connected to the board can
+> be defined via the QEMU command line.
 > 
-> pretty quickly.
-> 
-> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+> Cc: Jae Hyun Yoo <quic_jaehyoo@quicinc.com>
+> Link: https://lore.kernel.org/qemu-devel/20251007141604.761686-3-clg@redhat.com
+> Signed-off-by: Cédric Le Goater <clg@redhat.com>
 > ---
->   hw/vmapple/vmapple.c | 2 ++
->   1 file changed, 2 insertions(+)
+>   docs/about/deprecated.rst | 10 ++++++++++
+>   hw/arm/aspeed.c           |  2 ++
+>   2 files changed, 12 insertions(+)
 > 
-> diff --git a/hw/vmapple/vmapple.c b/hw/vmapple/vmapple.c
-> index 16e6110b68..5928df4411 100644
-> --- a/hw/vmapple/vmapple.c
-> +++ b/hw/vmapple/vmapple.c
-> @@ -51,6 +51,8 @@
->   #include "system/reset.h"
->   #include "system/runstate.h"
->   #include "system/system.h"
-> +#include "gtimer.h"
-> +#include "cpu.h"
-
-Queued using instead:
-
-#include "target/arm/gtimer.h"
-#include "target/arm/cpu.h"
-
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Tested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
+> index ce8fe9ac1be7..f6410037ead2 100644
+> --- a/docs/about/deprecated.rst
+> +++ b/docs/about/deprecated.rst
+> @@ -294,6 +294,16 @@ models, it can be replaced by the ``ast2500-evb`` machine using the
+>   ``fmc-model`` option to specify the flash type. The I2C devices
+>   connected to the board can be defined via the QEMU command line.
+> 
+> +Arm ``qcom-dc-scm-v1-bmc`` and ``qcom-firework-bmc`` machine (since 10.2)
+> +'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+> +
+> +The ``qcom-dc-scm-v1-bmc`` and ``qcom-firework-bmc`` represent lab
+> +servers that never entered production. Since they do not rely on any
+> +specific device models, they can be replaced by the ``ast2600-evb``
+> +machine using the ``fmc-model`` option to specify the flash type. The
+> +I2C devices connected to the board can be defined via the QEMU command
+> +line.
+> +
+>   RISC-V default machine option (since 10.0)
+>   ''''''''''''''''''''''''''''''''''''''''''
+> 
+> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+> index d3a0c81f454f..0707a760fda6 100644
+> --- a/hw/arm/aspeed.c
+> +++ b/hw/arm/aspeed.c
+> @@ -1926,6 +1926,7 @@ static void aspeed_machine_qcom_dc_scm_v1_class_init(ObjectClass *oc,
+>       AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
+> 
+>       mc->desc       = "Qualcomm DC-SCM V1 BMC (Cortex A7)";
+> +    mc->deprecation_reason = "use 'ast2600-evb' instead";
+>       amc->soc_name  = "ast2600-a3";
+>       amc->hw_strap1 = QCOM_DC_SCM_V1_BMC_HW_STRAP1;
+>       amc->hw_strap2 = QCOM_DC_SCM_V1_BMC_HW_STRAP2;
+> @@ -1945,6 +1946,7 @@ static void aspeed_machine_qcom_firework_class_init(ObjectClass *oc,
+>       AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
+> 
+>       mc->desc       = "Qualcomm DC-SCM V1/Firework BMC (Cortex A7)";
+> +    mc->deprecation_reason = "use 'ast2600-evb' instead";
+>       amc->soc_name  = "ast2600-a3";
+>       amc->hw_strap1 = QCOM_DC_SCM_V1_BMC_HW_STRAP1;
+>       amc->hw_strap2 = QCOM_DC_SCM_V1_BMC_HW_STRAP2;
+> --
+> 2.51.0
+> 
 
 

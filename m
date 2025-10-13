@@ -4,70 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30751CCA476
-	for <qemu-arm@archiver.kernel.org>; Mon, 13 Oct 2025 07:11:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F1ADCCD185
+	for <qemu-arm@archiver.kernel.org>; Mon, 13 Oct 2025 07:11:23 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v8ChW-0004xW-2j; Mon, 13 Oct 2025 03:10:34 -0400
+	id 1v8Cho-00054o-QQ; Mon, 13 Oct 2025 03:10:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1v8ChU-0004xK-4k
- for qemu-arm@nongnu.org; Mon, 13 Oct 2025 03:10:32 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1v8Chn-000542-3u
+ for qemu-arm@nongnu.org; Mon, 13 Oct 2025 03:10:51 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1v8ChI-0003Sm-Tv
- for qemu-arm@nongnu.org; Mon, 13 Oct 2025 03:10:31 -0400
+ id 1v8Chk-0003Z7-UX
+ for qemu-arm@nongnu.org; Mon, 13 Oct 2025 03:10:50 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1760339415;
+ s=mimecast20190719; t=1760339447;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=bD4AHTLcc7fbKRV//SENrWHRrcTQoO2hrD3fVWjcjOI=;
- b=fSfIWe+S69lAfEneNppSIwdfZN2almNDVqiTnmBOqe1eM/3CJW7RSsWlUPaIxiumUY87/s
- TzwmCiabcOTN1opjYoAQOV/DKdtjymo77+bz0akaVhsJouQFN/bJU+Mf8At+o3wXNeUC4U
- gcxLD5ixWOh9IEZ7SXu9LcuRlvz2nGs=
+ bh=Nl4lVFgVF/7NlU2gSeS71we4qGDDTEIO9Rvi3fuNNeo=;
+ b=Uw8E03XcnYBJiHkjTO44H55s4KRdLBD6D2Z5EVnRR+P9vX4FzBu8Y+ksEMpPGqbt6eFFXe
+ UwOUaW4Px2yqG/WNINNJB1VkUWhVMCKRRcluvSBYrJbrDuorHFgB4YYiePS6ypHNrCNIUU
+ BBrb/B2qbLrN2pyJUIjWG6asYxHzlBk=
 Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-274-m-QJCZmXNkm-mcG5PtIeMg-1; Mon,
- 13 Oct 2025 03:10:13 -0400
-X-MC-Unique: m-QJCZmXNkm-mcG5PtIeMg-1
-X-Mimecast-MFC-AGG-ID: m-QJCZmXNkm-mcG5PtIeMg_1760339412
-Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-551-Z6GoxuBwPyOhZFHPpRE-tw-1; Mon,
+ 13 Oct 2025 03:10:42 -0400
+X-MC-Unique: Z6GoxuBwPyOhZFHPpRE-tw-1
+X-Mimecast-MFC-AGG-ID: Z6GoxuBwPyOhZFHPpRE-tw_1760339441
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 47FE91800578; Mon, 13 Oct 2025 07:10:12 +0000 (UTC)
+ id D63EE180057B; Mon, 13 Oct 2025 07:10:40 +0000 (UTC)
 Received: from redhat.com (unknown [10.42.28.40])
- by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 0B6371800447; Mon, 13 Oct 2025 07:10:08 +0000 (UTC)
-Date: Mon, 13 Oct 2025 08:10:04 +0100
+ by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id C962D195410A; Mon, 13 Oct 2025 07:10:37 +0000 (UTC)
+Date: Mon, 13 Oct 2025 08:10:33 +0100
 From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 To: Daan De Meyer <daan.j.demeyer@gmail.com>
 Cc: qemu-devel@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  qemu-arm@nongnu.org
-Subject: Re: [PATCH v3 1/3] Rename LOAD_IMAGE_MAX_GUNZIP_BYTES to
- LOAD_IMAGE_MAX_DECOMPRESSED_BYTES
-Message-ID: <aOyluIOOB-NSo7tQ@redhat.com>
+Subject: Re: [PATCH v3 2/3] Use g_autofree in unpack_efi_zboot_image()
+Message-ID: <aOyl6SDFAwJo3uFT@redhat.com>
 References: <20251011081553.4065883-1-daan.j.demeyer@gmail.com>
- <20251011081553.4065883-2-daan.j.demeyer@gmail.com>
+ <20251011081553.4065883-3-daan.j.demeyer@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20251011081553.4065883-2-daan.j.demeyer@gmail.com>
+In-Reply-To: <20251011081553.4065883-3-daan.j.demeyer@gmail.com>
 User-Agent: Mutt/2.2.14 (2025-02-20)
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -93,17 +92,11 @@ Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Sat, Oct 11, 2025 at 10:15:51AM +0200, Daan De Meyer wrote:
-> Preparation for adding support for zstd compressed efi zboot kernel
-> images.
-> 
+On Sat, Oct 11, 2025 at 10:15:52AM +0200, Daan De Meyer wrote:
 > Signed-off-by: Daan De Meyer <daan.j.demeyer@gmail.com>
 > ---
->  hw/arm/boot.c       | 2 +-
->  hw/core/loader.c    | 8 ++++----
->  hw/nvram/fw_cfg.c   | 2 +-
->  include/hw/loader.h | 2 +-
->  4 files changed, 7 insertions(+), 7 deletions(-)
+>  hw/core/loader.c | 5 ++---
+>  1 file changed, 2 insertions(+), 3 deletions(-)
 
 Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
 

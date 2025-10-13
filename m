@@ -4,53 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D54B5CCD183
-	for <qemu-arm@archiver.kernel.org>; Mon, 13 Oct 2025 12:45:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 970C5CCD183
+	for <qemu-arm@archiver.kernel.org>; Mon, 13 Oct 2025 12:45:27 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v8Hut-0004RG-6P; Mon, 13 Oct 2025 08:44:43 -0400
+	id 1v8HvI-0004dI-Jj; Mon, 13 Oct 2025 08:45:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1v8Hum-0004PS-7P
- for qemu-arm@nongnu.org; Mon, 13 Oct 2025 08:44:36 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1v8HvE-0004ZZ-Ma
+ for qemu-arm@nongnu.org; Mon, 13 Oct 2025 08:45:04 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1v8Hui-0007sD-7D
- for qemu-arm@nongnu.org; Mon, 13 Oct 2025 08:44:35 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1v8HvB-0007xl-Ff
+ for qemu-arm@nongnu.org; Mon, 13 Oct 2025 08:45:04 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1760359466;
+ s=mimecast20190719; t=1760359499;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=KwS1s6BweObhq51LZdXVO6paV/VKh606Qo+phZxDgaA=;
- b=hyA5smnzKWKNzHtlmh/I3f+bQmALnP7dD5jo+K23Mahk57aIbRYRdFH8EgewwS9qCIaAos
- a/nlHVFxkJlRi68omjSJmJuSu6pNtRDOVFU1953X+MZgm+MqAXE0lAQXDR4/HJhO6fmN3n
- 6kmJUccmU7OsS3CRDWXioZVTFSVJ11U=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=SrwrWKaIS2o37Qz4VfMfpXaOvS9X4oGUK9EI9bLyxAM=;
+ b=Tb3zTJ2XkxAtuEVEKrvEkIZ3wislfHhLYsq+yXMCKuCHsAYZSRto1hnBPxmDHiLaXFZ15s
+ xiRfR0ON+obAs2THzIEXPK26ZtlaGKzrIAxsSpeQ6rxd61LcIRGOn524tCrWKklTXAxuxG
+ PWDMeJjKe2jPGSc4Fo+tHxg5AMH3Uhw=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-611-xRm_90NHOpyRDBPbVpeRLw-1; Mon,
- 13 Oct 2025 08:44:25 -0400
-X-MC-Unique: xRm_90NHOpyRDBPbVpeRLw-1
-X-Mimecast-MFC-AGG-ID: xRm_90NHOpyRDBPbVpeRLw_1760359464
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-511-4wUgr6e5N_CzxqvL0IlM5w-1; Mon,
+ 13 Oct 2025 08:44:55 -0400
+X-MC-Unique: 4wUgr6e5N_CzxqvL0IlM5w-1
+X-Mimecast-MFC-AGG-ID: 4wUgr6e5N_CzxqvL0IlM5w_1760359495
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 7F5C51800372; Mon, 13 Oct 2025 12:44:24 +0000 (UTC)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id D8AEA1800285; Mon, 13 Oct 2025 12:44:54 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.45.225.105])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id EEF6E1800446; Mon, 13 Oct 2025 12:44:22 +0000 (UTC)
+ id 66C53180141F; Mon, 13 Oct 2025 12:44:53 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 00/29] aspeed queue
-Date: Mon, 13 Oct 2025 14:43:51 +0200
-Message-ID: <20251013124421.71977-1-clg@redhat.com>
+Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+Subject: [PULL 15/29] hw/arm/aspeed: Remove AspeedSoCClass dependency from
+ aspeed_uart_last() API
+Date: Mon, 13 Oct 2025 14:44:06 +0200
+Message-ID: <20251013124421.71977-16-clg@redhat.com>
+In-Reply-To: <20251013124421.71977-1-clg@redhat.com>
+References: <20251013124421.71977-1-clg@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -64,7 +69,7 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -80,88 +85,56 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The following changes since commit f3f2ad119347e8c086b72282febcaac5d731b343:
+From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-  Merge tag 'pull-target-arm-20251010' of https://gitlab.com/pm215/qemu into staging (2025-10-10 08:26:09 -0700)
+Refactor the aspeed_uart_last() helper to remove its dependency on
+AspeedSoCClass and make the UART helper APIs more generic.
 
-are available in the Git repository at:
+The function now takes uarts_base and uarts_num as integer
+parameters instead of requiring a full SoC class instance.
+All related call sites in aspeed.c are updated accordingly.
 
-  https://github.com/legoater/qemu/ tags/pull-aspeed-20251013
+No functional change.
 
-for you to fetch changes up to 0cf9761b0ae6dd04815b54eb785301f35015246d:
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
+Link: https://lore.kernel.org/qemu-devel/20251013054334.955331-3-jamin_lin@aspeedtech.com
+Signed-off-by: Cédric Le Goater <clg@redhat.com>
+---
+ include/hw/arm/aspeed_soc.h | 4 ++--
+ hw/arm/aspeed.c             | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
 
-  hw/arm/aspeed_ast27x0-{ssp,tsp}: Fix coding style (2025-10-13 14:37:55 +0200)
-
-----------------------------------------------------------------
-aspeed queue:
-
-* Introduce AspeedCoprocessor class and base implementation
-* Remove redudant functional tests to optimize for CI resources
-* Deprecate fp5280g2-bmc, qcom-dc-scm-v1-bmc, qcom-firework-bmc and
-  sonorapass-bmc machines
-* Bump ASPEED SDK to v09.08
-* Add PCIe and network tests
-
-----------------------------------------------------------------
-Cédric Le Goater (7):
-      aspeed: Don't set 'auto_create_sdcard'
-      tests/functional/arm: Split the ast2600 tests in two files
-      aspeed: Deprecate the sonorapass-bmc machine
-      aspeed: Deprecate the qcom-dc-scm-v1-bmc and qcom-firework-bmc machines
-      aspeed: Deprecate the fp5280g2-bmc machine
-      test/functional/aarch64: Remove test for the ast2700a0-evb machine
-      test/functional/aarch64: Split the ast2700a1-evb OpenBMC boot test
-
-Jamin Lin (22):
-      tests/functional/aarch64/aspeed_ast2700: Add PCIe and network tests
-      tests/functional/arm/test_aspeed_ast1030: Update test ASPEED SDK v03.03
-      tests/functional/arm/test_aspeed_ast2500: Update test ASPEED SDK v09.08
-      tests/functional/arm/test_aspeed_ast2600: Update test ASPEED SDK v09.08
-      tests/functional/aarch64/test_aspeed_ast2700: Update test ASPEED SDK v09.08 for A1
-      tests/functional/aarch64/test_aspeed_ast2700: Move eth2 IP check into common function
-      hw/arm/aspeed: Remove AspeedSoCState dependency from aspeed_uart_first() API
-      hw/arm/aspeed: Remove AspeedSoCClass dependency from aspeed_uart_last() API
-      hw/arm/aspeed: Remove AspeedSoCState dependency from aspeed_soc_uart_set_chr() API
-      hw/arm/aspeed: Remove AspeedSoCClass dependency from aspeed_soc_cpu_type() API
-      hw/arm/aspeed: Remove AspeedSoCState dependency from aspeed_mmio_map() API
-      hw/arm/aspeed: Remove AspeedSoCState dependency from aspeed_mmio_map_unimplemented() API
-      hw/arm/aspeed: Remove AspeedSoCState dependency from aspeed_soc_uart_realize() API
-      hw/arm/aspeed: Remove the aspeed_soc_get_irq and class get_irq hook
-      hw/arm/aspeed: Introduce AspeedCoprocessor class and base implementation
-      hw/arm/aspeed_ast27x0-ssp: Make AST27x0 SSP inherit from AspeedCoprocessor instead of AspeedSoC
-      hw/arm/aspeed_ast27x0-tsp: Make AST27x0 TSP inherit from AspeedCoprocessor instead of AspeedSoC
-      hw/arm/aspeed_ast27x0-ssp: Change to use Aspeed27x0CoprocessorState
-      hw/arm/aspeed_ast27x0-tsp: Change to use Aspeed27x0CoprocessorState
-      hw/arm/aspeed_ast27x0-ssp: Rename type to TYPE_ASPEED27X0SSP_COPROCESSOR
-      hw/arm/aspeed_ast27x0-tsp: Rename type to TYPE_ASPEED27X0TSP_COPROCESSOR
-      hw/arm/aspeed_ast27x0-{ssp,tsp}: Fix coding style
-
- docs/about/deprecated.rst                          |  27 +++++
- include/hw/arm/aspeed_coprocessor.h                |  61 +++++++++++
- include/hw/arm/aspeed_soc.h                        |  48 ++------
- hw/arm/aspeed.c                                    |  36 ++----
- hw/arm/aspeed_ast10x0.c                            |  89 +++++++++------
- hw/arm/aspeed_ast2400.c                            |  94 +++++++++-------
- hw/arm/aspeed_ast2600.c                            | 121 ++++++++++++---------
- hw/arm/aspeed_ast27x0-fc.c                         |  33 ++++--
- hw/arm/aspeed_ast27x0-ssp.c                        |  74 +++++++------
- hw/arm/aspeed_ast27x0-tsp.c                        |  74 +++++++------
- hw/arm/aspeed_ast27x0.c                            | 107 ++++++++++--------
- hw/arm/aspeed_coprocessor_common.c                 |  49 +++++++++
- hw/arm/aspeed_soc_common.c                         |  63 +++++------
- hw/arm/fby35.c                                     |  10 +-
- hw/arm/meson.build                                 |   7 +-
- tests/functional/aarch64/test_aspeed_ast2700.py    |  60 +++++-----
- tests/functional/aarch64/test_aspeed_ast2700fc.py  |  13 +++
- tests/functional/arm/meson.build                   |   6 +-
- tests/functional/arm/test_aspeed_ast1030.py        |  17 +--
- tests/functional/arm/test_aspeed_ast2500.py        |   8 +-
- ...ast2600.py => test_aspeed_ast2600_buildroot.py} |  74 -------------
- tests/functional/arm/test_aspeed_ast2600_sdk.py    |  94 ++++++++++++++++
- 22 files changed, 690 insertions(+), 475 deletions(-)
- create mode 100644 include/hw/arm/aspeed_coprocessor.h
- create mode 100644 hw/arm/aspeed_coprocessor_common.c
- rename tests/functional/arm/{test_aspeed_ast2600.py => test_aspeed_ast2600_buildroot.py} (57%)
- create mode 100755 tests/functional/arm/test_aspeed_ast2600_sdk.py
+diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
+index 5786fbbcbbe7..0162738f884e 100644
+--- a/include/hw/arm/aspeed_soc.h
++++ b/include/hw/arm/aspeed_soc.h
+@@ -331,9 +331,9 @@ static inline int aspeed_uart_first(int uarts_base)
+     return aspeed_uart_index(uarts_base);
+ }
+ 
+-static inline int aspeed_uart_last(AspeedSoCClass *sc)
++static inline int aspeed_uart_last(int uarts_base, int uarts_num)
+ {
+-    return aspeed_uart_first(sc->uarts_base) + sc->uarts_num - 1;
++    return aspeed_uart_first(uarts_base) + uarts_num - 1;
+ }
+ 
+ #endif /* ASPEED_SOC_H */
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index 49d8debf9988..ad17471c8d61 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -1311,7 +1311,7 @@ static void aspeed_set_bmc_console(Object *obj, const char *value, Error **errp)
+     AspeedSoCClass *sc = ASPEED_SOC_CLASS(object_class_by_name(amc->soc_name));
+     int val;
+     int uart_first = aspeed_uart_first(sc->uarts_base);
+-    int uart_last = aspeed_uart_last(sc);
++    int uart_last = aspeed_uart_last(sc->uarts_base, sc->uarts_num);
+ 
+     if (sscanf(value, "uart%u", &val) != 1) {
+         error_setg(errp, "Bad value for \"uart\" property");
+-- 
+2.51.0
 
 

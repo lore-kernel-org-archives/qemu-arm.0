@@ -4,82 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7DEACCD18D
-	for <qemu-arm@archiver.kernel.org>; Mon, 13 Oct 2025 14:05:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC093CCD183
+	for <qemu-arm@archiver.kernel.org>; Mon, 13 Oct 2025 16:11:14 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v8JBL-0003Dl-6y; Mon, 13 Oct 2025 10:05:47 -0400
+	id 1v8L8b-0007ke-Gq; Mon, 13 Oct 2025 12:11:06 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1v8JBI-0003D0-Tw
- for qemu-arm@nongnu.org; Mon, 13 Oct 2025 10:05:44 -0400
-Received: from mail-yx1-xb12e.google.com ([2607:f8b0:4864:20::b12e])
+ id 1v8L8O-0007j8-29
+ for qemu-arm@nongnu.org; Mon, 13 Oct 2025 12:10:52 -0400
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1v8JBA-0002AJ-Sa
- for qemu-arm@nongnu.org; Mon, 13 Oct 2025 10:05:44 -0400
-Received: by mail-yx1-xb12e.google.com with SMTP id
- 956f58d0204a3-63470a6f339so4127606d50.0
- for <qemu-arm@nongnu.org>; Mon, 13 Oct 2025 07:05:34 -0700 (PDT)
+ id 1v8L8I-0002mG-1A
+ for qemu-arm@nongnu.org; Mon, 13 Oct 2025 12:10:51 -0400
+Received: by mail-wr1-x429.google.com with SMTP id
+ ffacd0b85a97d-42420c7de22so2005530f8f.1
+ for <qemu-arm@nongnu.org>; Mon, 13 Oct 2025 09:10:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1760364332; x=1760969132; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=9l46JjeZiu1BMV5wUaWsW4A92fE98oMzJFrRyS3dnSg=;
- b=e0dtK6Dv3s4hWlw7A7tnCZ6wdJthX1Y+aa+oZpyDnXR7QkfHdkTp7FC/bGPIQZaUdU
- L8xk0msF6SX1yU1plYXiEiyAHUR90jq6C4GnqcjaedtdIKrLa4cHjf0i+/WA7MdEHQcV
- MNMkcTgMxc3azJemmRyPQVWegEHY9MYAUrt67R0jWRfq8HX9fgvkOTh9E78nobmKMP76
- TLfRRML43Z7CYp6nKxSwNrmEFfXxC45JGbI+9xRI9+EbJ2jxXL3XHLg0TWbvrfEVOA8O
- HgNKD3U7+a3Wvz9TAAKZEophvuafrhgreZCTQd5sTM6ZSgkyuDs6mcTXJljga+xhoJYR
- FNOg==
+ d=linaro.org; s=google; t=1760371843; x=1760976643; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=/+EHTUCThtQN+m+O/VxTEtMg257BUkao1q2OCXKIy5s=;
+ b=GGc7akSGlpTmecqyOPlS80I57cENM88zsjVyUphierSd5UR0VbNxobM0I1Nul7+UiM
+ p+7yV8tRN83CgaNzrFVckHiQUd8rTwT++hmQX8IlIsjv1lTnxJgzlCItMdrQprZuS56f
+ xrZCd8hXYxIunRabWvDxjWc1tSNNf2j+jzI9ZAUK97A8fp89AX684hM6JM3fxtVj+KPW
+ jqYI6WKS1RtqDOKMVFSO1OmzEhZGUttm1t7S93srmqLprme/tbOYNR1P13lGFOVXR0e4
+ dMVWD+b3Ww55tCp7DCRhpWignktVgcS7C+LdAYR/aSarZ2OqcOoVmhhPNQQz+mFeCqr3
+ 8E7A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1760364332; x=1760969132;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ d=1e100.net; s=20230601; t=1760371843; x=1760976643;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=9l46JjeZiu1BMV5wUaWsW4A92fE98oMzJFrRyS3dnSg=;
- b=KmQRHF6J5WscWxR7545f2DiSH8wSzQBGJmvifynN2fFybN+a5nkXRxeCDwqfwannPs
- lkPRbr2YPKYwIyAJcJNOE6CP5rihrNnNhdqMbt5VS87fDxIoe49AdnWdfAJcwBkWoKGl
- 9x+CM+xLE4jkDpDb4DSGlRxtLb1xxYzCMn7tZQwbv/gj0nhp8QXwy+KQwVQ4VS3F8V4n
- i+FCGjSj+wO/s9k3fD0RIuKacfVmSrgWaBFwzoSUkOzJJjveCNllhekbFcHTMWkHMOsa
- 1B4+7tPmpaehkFSufOFPxQXZO6Y7u4IVJHTfDnzulpU5rnmsCFeAGR/0G3MWmJOlenCe
- edkw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVMpTp2UStfIzi1CXM7/UYu/UT363fJQJt7vRK4YHl2TDdmkm8G7UYQadSnVaxU/JqVWetUCIMi+w==@nongnu.org
-X-Gm-Message-State: AOJu0YyjMi/ooonoM2lZF7pin8BJb+C0pIQiakVT+HHjw+m2e8KRTHrn
- vvYzemT9mxrhxkbEeC90FQ2OPRMLm9nIXo1zaOElW06n/OilMa/7J8YxrdkI6HA9aYeqDoEVwwW
- IFQy359Y5XjxST1KwAzo5bik1SBea8phClE8EW4+w5w==
-X-Gm-Gg: ASbGnctXS26GQDGb7uVnIqrl4VurPuIt3/19MfSlpPSzPiUqYi0TObJ4GrJEDkSHWZi
- oNGSU6o3prrWVHtkXi1UP/zFUeTAsTayYN+bZrcCMFk18s3wLhFD5qKaXJ88W5SaJM7827BeQTg
- v1/c6IDnCbZCwtSQEAbn5DelqnFh7C4QPGyUn6nbTimJuVGAa19V/4l/9k+BEdduFvB3oLXW+gn
- J9EcdZsJhIza70Plu1K9gBRmBg8sv2Mfkfp4V8EewHqvGBW8KKG
-X-Google-Smtp-Source: AGHT+IGYJkdtw1tYwqcowgG+b55nFswVDVeJE4gCb29hFo0SfEDlQS4iBLxtYNcDYvIWzvA0AYULQ/RVNDJ6pAq6DO4=
-X-Received: by 2002:a05:690c:6c90:b0:781:258:d87a with SMTP id
- 00721157ae682-7810258f27dmr227499357b3.33.1760364331818; Mon, 13 Oct 2025
- 07:05:31 -0700 (PDT)
-MIME-Version: 1.0
-References: <20251010201917.685716-1-richard.henderson@linaro.org>
- <20251010201917.685716-4-richard.henderson@linaro.org>
-In-Reply-To: <20251010201917.685716-4-richard.henderson@linaro.org>
+ bh=/+EHTUCThtQN+m+O/VxTEtMg257BUkao1q2OCXKIy5s=;
+ b=lEoTMj+jMJ63GaoIo/XJT3ZnbcmN7a9qRuh033E1wf0St12cV/18j3PNpiu5jdM83P
+ Hs3hG0BOoc1G+M4ozjmdCsc72et1/xVZTzqu0ZEWS48tyzHDAvys+AMrmhmX1EYXMIJN
+ F3SNWfP86mXDhJAFcH04MAVWrLEGdYjAQEyGLaShrhhbvhYf672FAtVTESSozfTIlTzz
+ kLXKUSSRB6jW0ZhD8C11M0V04PDd8G7krXynYCFuV12DcSwtyXSUfdpeJwCSNLsCEYVu
+ fFw4JsBSHewtfTxtMqUddkZ/m8Nzja4Lnhjb1HMDgQ9BVAzOdjD/0VU425HiYTPy38VB
+ BG6g==
+X-Gm-Message-State: AOJu0Yytc0hXM5DX/jVxs6vVyFW7mznl17h9QDrUzzyVMuCNQCq1FqKT
+ 2fA41AiTAGjLqe/OOx2heb51Du4sslnv/f1TFNWhzChqwX1q8FUl9HjM0MwUstYY+qNeDc2DjYh
+ DtTzn
+X-Gm-Gg: ASbGncuyW1H8Vx1NRAhgNqHHiOhaJnutjnUEOx4lTkJqIV67hAtUmlse4h4k1kAJuVV
+ vglTodL9jZ48y2VcOogpp9AdmBeg1H3oSbY0O7EFLw5T+2ZheVtqihOfLm8J8Q+bsQyOxsEJZ0P
+ uBPVnEk72cVnmlr4uWa+mrIPLViiHsnrcVlyeyS4+hIjRE7exYhL8KNu517yMwEGubrZfvXwUBU
+ PVygHFcCHi0AAvTaAB1tTWYzuid1/ObI2L3nrEZnicaniP4Lgiq76lGhkk06BBCeF/lEoITQ+KN
+ /JP+TbQRK3gNba6UnPKhwDh00lIVNCzUbKqze72rgHcFlRzKFPZUdPqNsViXkZ1ytyUnPe0EaHW
+ 3IVut27kpS8JCeTInyhAejeUW6Ik/hvsVmYiCLONmJOZ8LYVEXJw=
+X-Google-Smtp-Source: AGHT+IH15Y3LAVReqswQHCmpDmwNjSoUGzwUL4IxWBNZ0aeEklCJKIneRlba+0QMfAyk5+PhmMdfhg==
+X-Received: by 2002:a05:6000:4202:b0:3f9:e348:f5c with SMTP id
+ ffacd0b85a97d-4266e8e9026mr14215622f8f.60.1760371842814; 
+ Mon, 13 Oct 2025 09:10:42 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-46fb497af18sm192750255e9.3.2025.10.13.09.10.41
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 13 Oct 2025 09:10:42 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 13 Oct 2025 15:05:19 +0100
-X-Gm-Features: AS18NWCXwC119tILLg9SkSrcATPC1dlSge4QwqtxoyD8sk0pB8Y2uGCzVApmX0c
-Message-ID: <CAFEAcA8G3CB49XiME3-HhPUiOec63=NNF6Dg7q=+05hv8ToLQQ@mail.gmail.com>
-Subject: Re: [PATCH 3/7] target/arm: Add AIE to ARMVAParameters
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b12e;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12e.google.com
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: qemu-stable@nongnu.org
+Subject: [PATCH] target/arm: Fix reads of CNTFRQ_EL0 in linux-user mode
+Date: Mon, 13 Oct 2025 17:10:40 +0100
+Message-ID: <20251013161040.216819-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.43.0
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::429;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x429.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -95,21 +98,45 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, 10 Oct 2025 at 21:20, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> Allow the bit to be set in TCR2;
-> extract the bit in aa64_va_parameters.
->
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->  target/arm/internals.h |  1 +
->  target/arm/helper.c    | 30 +++++++++++++++++++++---------
->  2 files changed, 22 insertions(+), 9 deletions(-)
+In commit bd8e9ddf6f6 ("target/arm: Refactor default generic timer
+frequency handling") we changed how we initialized the generic timer
+frequency as reported in the CNTFRQ_EL0 register.  As part of that,
+we chanegd the linux-user version of the CNTFRQ_EL0 sysreg from
+having a constant value set at compile time through the .resetvalue
+field to having a reset value which we compute in a .resetfn.
 
+This accidentally broke the reading of CNTFRQ_EL0 in linux-user mode,
+because the cpreg is marked as ARM_CP_CONST, which means we translate
+it as a read of the compile-time constant value in the .resetvalue
+field.  This is now zero, so userspace sees a 0 frequency value.
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Fix the bug by dropping the ARM_CP_CONST marking.  This will cause us
+to translate the read as a load of the value from the CPU state
+struct cp15.c14_cntfrq field, which is where the real frequency value
+now lives.
 
-thanks
--- PMM
+Cc: qemu-stable@nongnu.org
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/3159
+Fixes: bd8e9ddf6f6 ("target/arm: Refactor default generic timer frequency handling")
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ target/arm/helper.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 167f2909b3f..1e1c0e41415 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -2306,7 +2306,7 @@ static uint64_t gt_virt_cnt_read(CPUARMState *env, const ARMCPRegInfo *ri)
+ static const ARMCPRegInfo generic_timer_cp_reginfo[] = {
+     { .name = "CNTFRQ_EL0", .state = ARM_CP_STATE_AA64,
+       .opc0 = 3, .opc1 = 3, .crn = 14, .crm = 0, .opc2 = 0,
+-      .type = ARM_CP_CONST, .access = PL0_R /* no PL1_RW in linux-user */,
++      .access = PL0_R /* no PL1_RW in linux-user */,
+       .fieldoffset = offsetof(CPUARMState, cp15.c14_cntfrq),
+       .resetfn = arm_gt_cntfrq_reset,
+     },
+-- 
+2.43.0
+
 

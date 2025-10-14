@@ -4,86 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 482E8CCD18E
-	for <qemu-arm@archiver.kernel.org>; Tue, 14 Oct 2025 20:21:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 852BECCD184
+	for <qemu-arm@archiver.kernel.org>; Tue, 14 Oct 2025 20:21:14 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v8lJq-0002VV-AM; Tue, 14 Oct 2025 16:08:26 -0400
+	id 1v8lK2-0002gm-KH; Tue, 14 Oct 2025 16:08:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1v8lJd-0002K7-81
- for qemu-arm@nongnu.org; Tue, 14 Oct 2025 16:08:15 -0400
-Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
+ id 1v8lK0-0002fr-WB
+ for qemu-arm@nongnu.org; Tue, 14 Oct 2025 16:08:37 -0400
+Received: from mail-pg1-x52f.google.com ([2607:f8b0:4864:20::52f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1v8lJ1-0005Ml-KO
- for qemu-arm@nongnu.org; Tue, 14 Oct 2025 16:08:11 -0400
-Received: by mail-pl1-x635.google.com with SMTP id
- d9443c01a7336-28832ad6f64so64881085ad.1
- for <qemu-arm@nongnu.org>; Tue, 14 Oct 2025 13:07:34 -0700 (PDT)
+ id 1v8lJ9-0005Nk-33
+ for qemu-arm@nongnu.org; Tue, 14 Oct 2025 16:08:36 -0400
+Received: by mail-pg1-x52f.google.com with SMTP id
+ 41be03b00d2f7-b5515eaefceso4987947a12.2
+ for <qemu-arm@nongnu.org>; Tue, 14 Oct 2025 13:07:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1760472453; x=1761077253; darn=nongnu.org;
+ d=linaro.org; s=google; t=1760472456; x=1761077256; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=m4ZA5d5/lIwohpPGdIEr8HPomZYv1KX6aQnbN5YCFBA=;
- b=f5+ZErS6n6/6q7PEWoo+7ApjNjsXYHp4uqqPU+EbT1E+c8id2RJqVUnnjvnEM3WWW8
- OwWP6QN6Ej4tHVHoFniZVLe+FkTCHO8Kv1Pnicp1mCxLx8jPMyqmog1yhoOmNdHR4DmN
- TVyitPP3DQ81paokJvik3b1N+YqOlNCOLeZ3a25Lkr/XCPcvi1w6Jwsfmu4dSJwHJxKH
- RdbWnHXXdaGa/exxscHzVIbx5WZodAh76WQ1Dq8CrgjFsjvTxDajErsaQLOb6qk3BfWx
- hi63CI8YTp4SVVyE4t/gLMH58yBNrzXEF7rESbABlnxW9ojdAd4DxhHlEr+IsDLAau1S
- t5Ug==
+ bh=eSnDOhind8ZKnhqaEP5AqE4yrhsCwnVK+1ojrTTr64k=;
+ b=Fu7remyGmW6yfJGRhZrI7emjMnYqkZVsQsh22fC+OhkLGUT7gnT/h/aUDXzZA3eh51
+ Q85rxYhnmjsEt2d7e2iLPfjpW7wabvc8jjnA3/7Eh2NrY4nGg/H5wk8+IL65Z9h9v56C
+ VFFA1yOsy04+OW0ODt1uTBcN4exItlYFWAKmhpzTjHHeHGbSdbtgM7v7XlJ0tfNFnap1
+ 4ytO4fJA2YdL6dIsws7dQeZcuudRZ2OVd9caS69MuZL3ehDzBaK29I1Vq8UMhaV4gihy
+ 3GPCODxXiUkPeyinIhxtir62estOWXThqgSAFIpnccYpgLvqOiFpUD5Q9ssOwerhvcuB
+ Lb2Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1760472453; x=1761077253;
+ d=1e100.net; s=20230601; t=1760472456; x=1761077256;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=m4ZA5d5/lIwohpPGdIEr8HPomZYv1KX6aQnbN5YCFBA=;
- b=HOJ9cgqIYcFtWlyEto5OAkXyLiDM9e8h74hDNDO2N3w4hLX2QV/p3Ip4EnP4T/xAMQ
- gwaesVxrjztFTiS72eUduNFNf6PvGgScbZofiaorYxbgHGlfTKniEmsJN2/zK8G4vXyj
- lrq7i3fFLxX4UsmHMlUP2sbfg5xoC5E0M+3BDuuBjVlT+v8Yg6SDY9PUciodM+qYKECJ
- Msmk2WDy3uV/pmugcobu2P4WCnenvQ0fLFltLX2F/r+l3joDdsdmeU1G6zylnnvA50Q3
- YM1LyyMNUnzEdKUGQwWBl9dkr2THkMdo8XxT5K//s2lL+y/WrE/Ur5fL4UEphT/TjAtH
- fmAA==
-X-Gm-Message-State: AOJu0YzpNCJjoogw5fvtj28zk098ZpWjGW3x6f/JOmvXlsNtHmME9vxm
- HgOZ2dG08MkMq9mQ/b5Kj8JAz2M0lE/ZpcmVOiwbloOGHoZE8qDOe9KmCCC22PEvrbuJL/inyNJ
- uLscBDM8=
-X-Gm-Gg: ASbGncs8pHUqLJOx/RhNHPX+BvCse18vp+LzZdtbMOggAF0xSdC0pbR1JxVaMOSARcH
- z3fhL61SdPJ13OmoZJZ1FmeyraVmWHSjTYRCZiel33KDPhanvpAU+edufeR+/GV2BG6iFeW7oof
- rarQQh4BiqeYLD6x1lsELv+50Lqx6ZiJfWkEYup8OjRfWJ7WHF/HjhYzStER2m7b9P1AHMxxt+n
- USkBMyeE/peguE8wIxL7aZyh1sFvUCUs52YZSnagBLzDZC44kM6nVmsTqkrj3JFBJtsZj2e2DR0
- +haeJMBjDZOU8jH3+/9SuIhVk2lx69/sLeTqJ+te2pe8Tsf0BsNTsYqgNqvvlaPCsUv+AQXrCA0
- 1IYNNW/jhzEzbiMN50KWgVo0fw4de4eAANXkFsoJ4Ij9GwBu/dFk=
-X-Google-Smtp-Source: AGHT+IE7iCQzqsBb9Divqn/CkCnH6B0Jm+Elirzzaim4LQLCfrcqSv4pNMoQBi5enL9tqbv/B/q20w==
-X-Received: by 2002:a17:902:f609:b0:282:2c52:5094 with SMTP id
- d9443c01a7336-290272c31d0mr332861725ad.37.1760472452826; 
- Tue, 14 Oct 2025 13:07:32 -0700 (PDT)
+ bh=eSnDOhind8ZKnhqaEP5AqE4yrhsCwnVK+1ojrTTr64k=;
+ b=bhxcK0hjy0a8Z4bDg9b8jMKCy1Wxi4nJ9zdc4eQbmLv1Y2bxBexhPhB6DM/tXRbvd3
+ ThvAxDNO4BXPKJ4JBCozwEDw5ZAic7CzmCy+W9AMbgHZFpkAM8hnT5tko4DjWWw2yGA9
+ Y5t4DvmkSMBhFs7BET9rNmecTbi5x3pxho7LUzyM4iDLvw/73N1He2EBuys5czb9+uBG
+ fF3INtYznZ1cvSmQj8BDnECwVFTpstpPizpZGkNj4KdVXT71HKkkUV7EoEAjbTdV8jpK
+ OTiv99X8h6jEuE8qY06PyhJU8IVXkFc4A7yK+qiR8XngJzzwGxg6kUkSYShI3tsHko4v
+ Smcg==
+X-Gm-Message-State: AOJu0Yw1QDKU5Uxvlf3ioxZ2/TpWdFOI/yg3OFmqexySTEKjt+UJH7SK
+ 1sgSXzwm+h6AUiXTwL3TpBxiyVi4DkiDT+sw6FTmz4MOb8/SjHSXQ8FCZVMsPA7CF4ZznWHvU2N
+ OUcNV/iQ=
+X-Gm-Gg: ASbGncv7T9+tfM9s7ZnqAFi433lHtJck4zKJPCaIycVl/J2nWFRzn9Z96sP/LnKfibj
+ tmiJNjsP/GcIPVU3rAVYo3tqsaVo9WbcuEhh9t84SMXp0NVtOFqecCW8VMwmb/VzqSUXpmuQoWU
+ +AW+L1TGdoEIhNtK3kEQpjS0pYVNhyD9izRyefWI5Di29027I7oI9wTpwRIHgmgr7oBHRIViPrb
+ iMSRTcrk9TCHZ4HFzIUsmC2MpMWUVVwbUOnupgAbn8sbMQx5NNJsqPaPpxnN2p203BFKtw0oHYT
+ QVOYwuAgHlcd4zY2yQ4ib115BAZH9W5FY5jOhRUHNdQldiYQq5jq5RqWTVN9dkDnQ8D3RrqB0FE
+ m/q59+KEdFxnLsCjzEO96WccdMLm5Fy+X4D54iZ6xaMGSKTrJzCqMA+vB3J+Qfw==
+X-Google-Smtp-Source: AGHT+IGbld38GjPclS18zrmaf+l/YXNWYpnfLVXJrqTlgQZMMctkxuCHUpwNFQKFWniGQZEQnY6osg==
+X-Received: by 2002:a17:903:1547:b0:26d:f589:9cd7 with SMTP id
+ d9443c01a7336-29027373c2bmr356992095ad.15.1760472456344; 
+ Tue, 14 Oct 2025 13:07:36 -0700 (PDT)
 Received: from stoup.. ([71.212.157.132]) by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-29034f93ea2sm172100975ad.126.2025.10.14.13.07.32
+ d9443c01a7336-29034f93ea2sm172100975ad.126.2025.10.14.13.07.35
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 14 Oct 2025 13:07:32 -0700 (PDT)
+ Tue, 14 Oct 2025 13:07:36 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH v2 19/37] target/arm: Implement MRRS, MSRR, SYSP
-Date: Tue, 14 Oct 2025 13:07:00 -0700
-Message-ID: <20251014200718.422022-20-richard.henderson@linaro.org>
+Subject: [PATCH v2 24/37] target/arm: Use flush_if_asid_change in
+ vmsa_ttbr_write
+Date: Tue, 14 Oct 2025 13:07:05 -0700
+Message-ID: <20251014200718.422022-25-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20251014200718.422022-1-richard.henderson@linaro.org>
 References: <20251014200718.422022-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::635;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x635.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::52f;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x52f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -99,286 +99,44 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+Only flush the subset of tlbs that are affected by the ttbr
+register to which we are writing.
+
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/tcg/translate-a64.c | 169 +++++++++++++++++++++++++--------
- target/arm/tcg/a64.decode      |  12 ++-
- 2 files changed, 139 insertions(+), 42 deletions(-)
+ target/arm/helper.c | 19 ++++++++++++++-----
+ 1 file changed, 14 insertions(+), 5 deletions(-)
 
-diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-index 918d5ed112..c3b717b408 100644
---- a/target/arm/tcg/translate-a64.c
-+++ b/target/arm/tcg/translate-a64.c
-@@ -2752,17 +2752,23 @@ redirect_cpreg(DisasContext *s, uint32_t key, bool isread)
- 
- /* MRS - move from system register
-  * MSR (register) - move to system register
-+ * MRRS
-+ * MSRR
-  * SYS
-  * SYSL
-+ * SYSP
-  * These are all essentially the same insn in 'read' and 'write'
-  * versions, with varying op0 fields.
-+ *
-+ * RT2 is non-zero if and only if this is a 128-bit access.
-  */
- static void handle_sys(DisasContext *s, bool isread,
-                        unsigned int op0, unsigned int op1, unsigned int op2,
--                       unsigned int crn, unsigned int crm, unsigned int rt)
-+                       unsigned int crn, unsigned int crm, unsigned int rt,
-+                       unsigned int rt2)
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index c6d290ce7c..2b55e219c2 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -2943,11 +2943,20 @@ static void flush_if_asid_change(CPUARMState *env, const ARMCPRegInfo *ri,
+ static void vmsa_ttbr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+                             uint64_t value)
  {
-     uint32_t key = ENCODE_AA64_CP_REG(op0, op1, crn, crm, op2);
--    const ARMCPRegInfo *ri = get_arm_cp_reginfo(s->cp_regs, key);
-+    const ARMCPRegInfo *ri;
-     bool need_exit_tb = false;
-     bool nv_trap_to_el2 = false;
-     bool nv_redirect_reg = false;
-@@ -2770,7 +2776,16 @@ static void handle_sys(DisasContext *s, bool isread,
-     bool nv2_mem_redirect = false;
-     TCGv_ptr tcg_ri = NULL;
-     TCGv_i64 tcg_rt;
--    uint32_t syndrome = syn_aa64_sysregtrap(op0, op1, op2, crn, crm, rt, isread);
-+    uint32_t syndrome;
-+    bool is128 = rt2 != 0;
-+
-+    if (is128) {
-+        key |= CP_REG_AA64_128BIT_MASK;
-+        syndrome = syn_aa64_sysreg128trap(op0, op1, op2, crn, crm, rt, isread);
-+    } else {
-+        syndrome = syn_aa64_sysregtrap(op0, op1, op2, crn, crm, rt, isread);
-+    }
-+    ri = get_arm_cp_reginfo(s->cp_regs, key);
- 
-     if (crn == 11 || crn == 15) {
-         /*
-@@ -2790,12 +2805,14 @@ static void handle_sys(DisasContext *s, bool isread,
+-    /* If the ASID changes (with a 64-bit write), we must flush the TLB.  */
+-    if (cpreg_field_type(ri) == MO_64 &&
+-        extract64(raw_read(env, ri) ^ value, 48, 16) != 0) {
+-        ARMCPU *cpu = env_archcpu(env);
+-        tlb_flush(CPU(cpu));
++    /*
++     * If the ASID changes (with a 64-bit write), we must flush the TLB.
++     * The non-secure ttbr registers affect the EL1 regime;
++     * the secure ttbr registers affect the AA32 EL3 regime.
++     */
++    if (cpreg_field_type(ri) == MO_64) {
++        flush_if_asid_change(env, ri, value,
++                             ri->secure & ARM_CP_SECSTATE_S
++                             ? (ARMMMUIdxBit_E30_0 |
++                                ARMMMUIdxBit_E30_3_PAN |
++                                ARMMMUIdxBit_E3)
++                             : (ARMMMUIdxBit_E10_1 |
++                                ARMMMUIdxBit_E10_1_PAN |
++                                ARMMMUIdxBit_E10_0));
      }
- 
-     if (!ri) {
--        /* Unknown register; this might be a guest error or a QEMU
--         * unimplemented feature.
-+        /*
-+         * Unknown register, or 128-bit access to a 64-bit register.
-+         * This might be a guest error or a QEMU unimplemented feature.
-          */
--        qemu_log_mask(LOG_UNIMP, "%s access to unsupported AArch64 "
-+        qemu_log_mask(LOG_UNIMP, "%s%s access to unsupported AArch64 "
-                       "system register op0:%d op1:%d crn:%d crm:%d op2:%d\n",
--                      isread ? "read" : "write", op0, op1, crn, crm, op2);
-+                      isread ? "read" : "write", is128 ? "128" : "",
-+                      op0, op1, crn, crm, op2);
-         gen_sysreg_undef(s, isread, op0, op1, op2, crn, crm, rt);
-         return;
-     }
-@@ -2918,7 +2935,7 @@ static void handle_sys(DisasContext *s, bool isread,
-          * We don't use the EL1 register's access function, and
-          * fine-grained-traps on EL1 also do not apply here.
-          */
--        key = ENCODE_AA64_CP_REG(op0, 0, crn, crm, op2);
-+        key &= ~CP_REG_ARM64_SYSREG_OP1_MASK;
-         ri = redirect_cpreg(s, key, isread);
-         /*
-          * We might not have done an update_pc earlier, so check we don't
-@@ -2933,32 +2950,44 @@ static void handle_sys(DisasContext *s, bool isread,
-          * This means it is not an IO operation, doesn't change hflags,
-          * and need not end the TB, because it has no side effects.
-          *
--         * The access is 64-bit single copy atomic, guaranteed aligned because
--         * of the definition of VCNR_EL2. Its endianness depends on
--         * SCTLR_EL2.EE, not on the data endianness of EL1.
--         * It is done under either the EL2 translation regime or the EL2&0
--         * translation regime, depending on HCR_EL2.E2H. It behaves as if
--         * PSTATE.PAN is 0.
-+         * The access is 64-bit (R_VFMQB) or 128-bit (R_BSBZP) single copy
-+         * atomic, guaranteed aligned because of the definition of VCNR_EL2.
-+         * Its endianness depends on SCTLR_EL2.EE, not on the data endianness
-+         * of EL1. It is done under either the EL2 translation regime or
-+         * the EL2&0 translation regime, depending on HCR_EL2.E2H.
-+         * It behaves as if PSTATE.PAN is 0.
-          */
-         TCGv_i64 ptr = tcg_temp_new_i64();
--        MemOp mop = MO_64 | MO_ALIGN | MO_ATOM_IFALIGN;
-+        MemOp mop = MO_ALIGN | MO_ATOM_IFALIGN;
-         ARMMMUIdx armmemidx = s->nv2_mem_e20 ? ARMMMUIdx_E20_2 : ARMMMUIdx_E2;
-         int memidx = arm_to_core_mmu_idx(armmemidx);
--        uint32_t syn;
- 
-         mop |= (s->nv2_mem_be ? MO_BE : MO_LE);
-+        disas_set_insn_syndrome(s, syn_data_abort_vncr(0, !isread, 0));
- 
-         tcg_gen_ld_i64(ptr, tcg_env, offsetof(CPUARMState, cp15.vncr_el2));
-         tcg_gen_addi_i64(ptr, ptr,
-                          (ri->nv2_redirect_offset & ~NV2_REDIR_FLAG_MASK));
--        tcg_rt = cpu_reg(s, rt);
- 
--        syn = syn_data_abort_vncr(0, !isread, 0);
--        disas_set_insn_syndrome(s, syn);
--        if (isread) {
--            tcg_gen_qemu_ld_i64(tcg_rt, ptr, memidx, mop);
-+        if (is128) {
-+            TCGv_i128 t128 = tcg_temp_new_i128();
-+
-+            mop |= MO_128;
-+            if (isread) {
-+                tcg_gen_qemu_ld_i128(t128, ptr, memidx, mop);
-+                tcg_gen_extr_i128_i64(cpu_reg(s, rt), cpu_reg(s, rt2), t128);
-+            } else {
-+                tcg_gen_concat_i64_i128(t128, cpu_reg(s, rt), cpu_reg(s, rt2));
-+                tcg_gen_qemu_st_i128(t128, ptr, memidx, mop);
-+            }
-         } else {
--            tcg_gen_qemu_st_i64(tcg_rt, ptr, memidx, mop);
-+            mop |= MO_64;
-+            tcg_rt = cpu_reg(s, rt);
-+            if (isread) {
-+                tcg_gen_qemu_ld_i64(tcg_rt, ptr, memidx, mop);
-+            } else {
-+                tcg_gen_qemu_st_i64(tcg_rt, ptr, memidx, mop);
-+            }
-         }
-         return;
-     }
-@@ -3099,28 +3128,63 @@ static void handle_sys(DisasContext *s, bool isread,
- 
-     tcg_rt = cpu_reg(s, rt);
- 
--    if (isread) {
--        if (ri->type & ARM_CP_CONST) {
--            tcg_gen_movi_i64(tcg_rt, ri->resetvalue);
--        } else if (ri->readfn) {
--            if (!tcg_ri) {
--                tcg_ri = gen_lookup_cp_reg(key);
-+    if (is128) {
-+        TCGv_i64 tcg_rt2 = cpu_reg(s, rt2);
-+
-+        if (isread) {
-+            if (ri->type & ARM_CP_CONST) {
-+                /* E.g. TTBR0_EL2 is RES0 from EL3 when !FEAT_EL2. */
-+                tcg_gen_movi_i64(tcg_rt, ri->resetvalue);
-+                tcg_gen_movi_i64(tcg_rt2, 0);
-+            } else if (ri->read128fn) {
-+                TCGv_i128 t128 = tcg_temp_new_i128();
-+                if (!tcg_ri) {
-+                    tcg_ri = gen_lookup_cp_reg(key);
-+                }
-+                gen_helper_get_cp_reg128(t128, tcg_env, tcg_ri);
-+                tcg_gen_extr_i128_i64(tcg_rt, tcg_rt2, t128);
-+            } else {
-+                tcg_gen_ld_i64(tcg_rt, tcg_env, ri->fieldoffset);
-+                tcg_gen_ld_i64(tcg_rt2, tcg_env, ri->fieldoffsethi);
-             }
--            gen_helper_get_cp_reg64(tcg_rt, tcg_env, tcg_ri);
-         } else {
--            tcg_gen_ld_i64(tcg_rt, tcg_env, ri->fieldoffset);
-+            if (ri->type & ARM_CP_CONST) {
-+                /* If not forbidden by access permissions, treat as WI */
-+                return;
-+            } else if (ri->write128fn) {
-+                if (!tcg_ri) {
-+                    tcg_ri = gen_lookup_cp_reg(key);
-+                }
-+                gen_helper_set_cp_reg128(tcg_env, tcg_ri, tcg_rt, tcg_rt2);
-+            } else {
-+                tcg_gen_st_i64(tcg_rt, tcg_env, ri->fieldoffset);
-+                tcg_gen_st_i64(tcg_rt2, tcg_env, ri->fieldoffsethi);
-+            }
-         }
-     } else {
--        if (ri->type & ARM_CP_CONST) {
--            /* If not forbidden by access permissions, treat as WI */
--            return;
--        } else if (ri->writefn) {
--            if (!tcg_ri) {
--                tcg_ri = gen_lookup_cp_reg(key);
-+        if (isread) {
-+            if (ri->type & ARM_CP_CONST) {
-+                tcg_gen_movi_i64(tcg_rt, ri->resetvalue);
-+            } else if (ri->readfn) {
-+                if (!tcg_ri) {
-+                    tcg_ri = gen_lookup_cp_reg(key);
-+                }
-+                gen_helper_get_cp_reg64(tcg_rt, tcg_env, tcg_ri);
-+            } else {
-+                tcg_gen_ld_i64(tcg_rt, tcg_env, ri->fieldoffset);
-             }
--            gen_helper_set_cp_reg64(tcg_env, tcg_ri, tcg_rt);
-         } else {
--            tcg_gen_st_i64(tcg_rt, tcg_env, ri->fieldoffset);
-+            if (ri->type & ARM_CP_CONST) {
-+                /* If not forbidden by access permissions, treat as WI */
-+                return;
-+            } else if (ri->writefn) {
-+                if (!tcg_ri) {
-+                    tcg_ri = gen_lookup_cp_reg(key);
-+                }
-+                gen_helper_set_cp_reg64(tcg_env, tcg_ri, tcg_rt);
-+            } else {
-+                tcg_gen_st_i64(tcg_rt, tcg_env, ri->fieldoffset);
-+            }
-         }
-     }
- 
-@@ -3144,7 +3208,34 @@ static void handle_sys(DisasContext *s, bool isread,
- 
- static bool trans_SYS(DisasContext *s, arg_SYS *a)
- {
--    handle_sys(s, a->l, a->op0, a->op1, a->op2, a->crn, a->crm, a->rt);
-+    handle_sys(s, a->l, a->op0, a->op1, a->op2, a->crn, a->crm, a->rt, 0);
-+    return true;
-+}
-+
-+static bool trans_SYS128(DisasContext *s, arg_sys *a)
-+{
-+    if (!dc_isar_feature(aa64_sysreg128, s) || (a->rt & 1)) {
-+        return false;
-+    }
-+    handle_sys(s, a->l, a->op0, a->op1, a->op2, a->crn, a->crm,
-+               a->rt, a->rt + 1);
-+    return true;
-+}
-+
-+static bool trans_SYSP(DisasContext *s, arg_sys *a)
-+{
-+    int rt2;
-+    if (!dc_isar_feature(aa64_sysinstr128, s)) {
-+        return false;
-+    }
-+    if (a->rt == 31) {
-+        rt2 = 31;
-+    } else if (a->rt & 1) {
-+        return false;
-+    } else {
-+        rt2 = a->rt + 1;
-+    }
-+    handle_sys(s, a->l, a->op0, a->op1, a->op2, a->crn, a->crm, a->rt, rt2);
-     return true;
+     raw_write(env, ri, value);
  }
- 
-diff --git a/target/arm/tcg/a64.decode b/target/arm/tcg/a64.decode
-index 01b1b3e38b..c76757ed01 100644
---- a/target/arm/tcg/a64.decode
-+++ b/target/arm/tcg/a64.decode
-@@ -302,9 +302,15 @@ MSR_i_SVCR      1101 0101 0000 0 011 0100 0 mask:2 imm:1 011 11111
- # same instruction as far as QEMU is concerned.
- # NB: op0 is bits [20:19], but op0=0b00 is other insns, so we have
- # to hand-decode it.
--SYS             1101 0101 00 l:1 01 op1:3 crn:4 crm:4 op2:3 rt:5 op0=1
--SYS             1101 0101 00 l:1 10 op1:3 crn:4 crm:4 op2:3 rt:5 op0=2
--SYS             1101 0101 00 l:1 11 op1:3 crn:4 crm:4 op2:3 rt:5 op0=3
-+&sys            l op0 op1 op2 crn crm rt
-+SYS             1101 0101 00 l:1 01 op1:3 crn:4 crm:4 op2:3 rt:5 &sys op0=1
-+SYS             1101 0101 00 l:1 10 op1:3 crn:4 crm:4 op2:3 rt:5 &sys op0=2
-+SYS             1101 0101 00 l:1 11 op1:3 crn:4 crm:4 op2:3 rt:5 &sys op0=3
-+
-+# MRRS, MSRR
-+SYS128          1101 0101 01 l:1 10 op1:3 crn:4 crm:4 op2:3 rt:5 &sys op0=2
-+SYS128          1101 0101 01 l:1 11 op1:3 crn:4 crm:4 op2:3 rt:5 &sys op0=3
-+SYSP            1101 0101 01 0   01 op1:3 crn:4 crm:4 op2:3 rt:5 &sys op0=1 l=0
- 
- # Exception generation
- 
 -- 
 2.43.0
 

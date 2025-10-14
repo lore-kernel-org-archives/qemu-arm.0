@@ -4,72 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDEECCCD184
-	for <qemu-arm@archiver.kernel.org>; Tue, 14 Oct 2025 10:41:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA73FCCD184
+	for <qemu-arm@archiver.kernel.org>; Tue, 14 Oct 2025 10:43:55 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v8cSY-00025M-IC; Tue, 14 Oct 2025 06:40:50 -0400
+	id 1v8cVO-0004XD-Cj; Tue, 14 Oct 2025 06:43:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1v8cSW-00025E-S4
- for qemu-arm@nongnu.org; Tue, 14 Oct 2025 06:40:48 -0400
-Received: from mail-yx1-xb131.google.com ([2607:f8b0:4864:20::b131])
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1v8cVG-0004PI-5m
+ for qemu-arm@nongnu.org; Tue, 14 Oct 2025 06:43:40 -0400
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1v8cSS-0003Nt-65
- for qemu-arm@nongnu.org; Tue, 14 Oct 2025 06:40:47 -0400
-Received: by mail-yx1-xb131.google.com with SMTP id
- 956f58d0204a3-63bcfcb800aso5528168d50.0
- for <qemu-arm@nongnu.org>; Tue, 14 Oct 2025 03:40:41 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1v8cVB-0003Wy-Pj
+ for qemu-arm@nongnu.org; Tue, 14 Oct 2025 06:43:36 -0400
+Received: by mail-wr1-x42a.google.com with SMTP id
+ ffacd0b85a97d-3ecde0be34eso3190655f8f.1
+ for <qemu-arm@nongnu.org>; Tue, 14 Oct 2025 03:43:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1760438438; x=1761043238; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=fV7/jrMkBaJn6/SK6psmoZxBrmB/QuRq2mi1M4MJLDM=;
- b=xx6XgFymdx2Dm2V59cEsmnXahLbcpl2f3vOtiVcXDUkpl9HTvsQh367F4uuaxuXLAN
- EFxdE8vkAnGB3N7y6+WQxZklI8tPWAj1axQQkqsHjY0NdivFuErXeqA9KtWlhPW5s5TO
- KRmE5lZJpQ8zrFNO96JL8cOtZlnxL1CWTcdTHlfnCMfrQBDreDdsloDYrUrN0hVE9cYj
- CfhBjhaLzQxHRtZ9SadyveZEdNConrWpoSS/DaBU28CDKp6ulMEE/UgRZoNLTs3PSI/o
- TvqO4i+Sjlg0B8u+doDX2qC0+/MyrVaT6N/U1rVpA9QhfmRJCdgoOQ74JM6PyF1m6pp0
- kaMw==
+ d=linaro.org; s=google; t=1760438605; x=1761043405; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=Jil0Ama1zoQrZnPdRDjlJAWkmuZcYK/+OGYeLjiDqe0=;
+ b=p154IGX5rhIDLDWv+CwtHRzGTgar/5m/1tLfCuoJmj8NFStWaVRNbw1efoHQTwJ2bE
+ jrhsmONqH/XjckqIrOuXGwkEa5CWZFIZHJfznLNKQg8SaaMvs4LEO2793uJ/redep2Cp
+ L7MSiYbotGRgUcqGwsXx4Z4DdqkNykvPQhfhCFL3S+Qf8gxvrofjOfEeuAfWBIyVFpck
+ vCYQV3YCboWDRaJWN5L2VSA7N+WtKB9S/x4PaE4MM3XxtecuyL2wOw6fMe0ewvk+3yln
+ FyMKBZn6kssaxq325OiCHdzJZ14yLzGB3dys9/G5+Yvd0OjD8iChFlo3tbwGYoU5KO76
+ 5EZw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1760438438; x=1761043238;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ d=1e100.net; s=20230601; t=1760438605; x=1761043405;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=fV7/jrMkBaJn6/SK6psmoZxBrmB/QuRq2mi1M4MJLDM=;
- b=LWZjVgJAyu454244OyuJovTheOTAnH1+5Xu7OlpKY6gQRAiZfKDYtiODJDm+tPFDAi
- lhfBAoxou53jOXvWeB/1VaRIPAYqmkkpZIpi+j2RoUCbC1hGwdlPabMAw3EAzARK1RSQ
- A8Ej3M/cJBqoGPshcCl/lmh+Mfg/UzU2JpJElI0cETQ0CZ29ZfDZUX8iRKgWjRv6MDFo
- 5m6xRUAnHhCZkuS05YC90zlcxn30jbYdq82uq6Z0y15D5XzdJE/842UBBnfFR0k4LVqQ
- H9KbAUJEKkUlOlAORCMuhWRGgCFLZF/J1GX7tECUVGEpPBSXQY/ibO+uinzAMo9SxjFe
- 19dQ==
-X-Gm-Message-State: AOJu0YzzGzOHP3Ixn71bNGmFMfN3+4/QqJJjzS7n88VIK+CtEnMw5U30
- Zn3d8flLXqHMJSpuQbFBdcG4aUxpteYu+tn3T/ZFm1KEM9+e0jjt+qa81b9fp5sN6E29YQSoZF7
- 29Uh28V29Q5CI5dzPloc+PseyZt82sSXDSEGLHwS3UdkoYntkuTVD
-X-Gm-Gg: ASbGncsg1UemoR50yNMDY3iEOraIwZ7gfGmS2hkaSbvAbvWCMoUzzE7zguJy4FdhmXs
- cFgg3CjFFV9c0QP3HNgH4Etkym7l+jRPVzw+h52DHXz3Es4Bu6EmMGnmnkrCZX2pIJhKqLewtZn
- 8qtZwcVnZqHtcjYUo5kwm6XsOJLXbfMdXsniAvrvQhO8aNc+BZ6hMJ8qbGUeqFt/pt5LDLL4oli
- Q41qpHmcPbxHAzxoEV2wIW5WDU5Wr/KsxHhaQ8bQQ==
-X-Google-Smtp-Source: AGHT+IHU25n+NhO/XEBsOpVv+Dv7mHjyhEKj989SEiZfz77ncLsJkxn7uC2b82nVld78ZQAkn2bckryrhV0afokk0ek=
-X-Received: by 2002:a53:cec2:0:b0:62a:b545:54b6 with SMTP id
- 956f58d0204a3-63ccb8f2f76mr15802555d50.35.1760438437741; Tue, 14 Oct 2025
- 03:40:37 -0700 (PDT)
+ bh=Jil0Ama1zoQrZnPdRDjlJAWkmuZcYK/+OGYeLjiDqe0=;
+ b=cgOdL9khLYuAqMIOFGn7Q7quBTiQ25Fhni5yza63UzxI+A9I//DJQKzqEeR5A4ZHtj
+ snfyov3NQf5dpSBidnSozEI+1pBTNb4ygbX/liJNJTFwlpaiBHSghr9KD3symwObIW/s
+ 1DRnpKO93BLZmjsvE93EX+ynbr7vXZGwbOiZ615Dd1Hz/ko3jwlyZ2Z7Znm9ovLs17iX
+ QyA9KDtFQR+m9xbOKW4rsfR7tNRdXw6WNNSwtLzuoce4u1nohsVUnkESWVC8sNFYA/Oj
+ N+M+cvCu6BxjcW5rbF5JvSRiCjKi2BEIPaZE5Wn2P2CQh/5joFSryLi7VIZHN0kQEDMl
+ Z06Q==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUt8TEskNNXJ9aW/u9+HHTtu18yRnBYA0VS6wy/r9b0yq+vvJd97a5Jfmrtiwfyx6Os7yk9xu7d3Q==@nongnu.org
+X-Gm-Message-State: AOJu0YxlUUuV6uMP7y6m38VDaqrB1K+VqUlicPv+hZINx9wEdhQoICcL
+ Zi7v1U+utS7OmWY6ABM9nzuhQJFaC/w5x8b6nJ/mXgUZwkmmSiCtCLAHBsm7M2VskNQ=
+X-Gm-Gg: ASbGncsSDmu6pCQ1ROe2Bgfg4Kyp0Ykkfbd6w2GmK6T+3zPJM49c3Eh/ySi1bN17RTE
+ 8K0jJMpjn9bSYPqDmIjrUuRAoUARRRJtbB8lqsBzA61YQiYmbDsgG+t4NJhplPxx56gCTb98Evr
+ QRs8tBBbQDR7eihZqwbBKkg5mHHGUJEm7oU2t6SyKmAag463m6YFKL1aFA2aNk0oKKy3X568IC7
+ 9LInv8Wqv8fmXiMzpyQy20FIxidHt8M1SRnGYWsrlmEBopdfiQZwEZhwKwL77Utm3sM9NFTswff
+ aI0BTI3H0LYJy5MqrmS+TXZHGA/gzTmo7SCamzpaOrSDIK2z3CQKZ+2VNwN6Z2Bb77zW45/Di1M
+ rUb9Ol61AqK08ghfEIngw1DsoKfzvWQ1YkyADHz2GQIM/GZa+M56SokeY
+X-Google-Smtp-Source: AGHT+IEapHYNwEsBeHKpfb8hNIa+UaI/5witG9DkXrRFY1Y8kMzrkmWlFHzupl/07WpZBNXGZEKkbQ==
+X-Received: by 2002:a05:6000:40c8:b0:410:f600:c35e with SMTP id
+ ffacd0b85a97d-425829b0561mr16342480f8f.8.1760438604816; 
+ Tue, 14 Oct 2025 03:43:24 -0700 (PDT)
+Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-426ce583424sm22685054f8f.21.2025.10.14.03.43.23
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 14 Oct 2025 03:43:24 -0700 (PDT)
+Received: from draig.lan (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id 5264A5F812;
+ Tue, 14 Oct 2025 11:43:23 +0100 (BST)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+ qemu-arm@nongnu.org, Gustavo Romero <gustavo.romero@linaro.org>,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ BALATON Zoltan <balaton@eik.bme.hu>, qemu-s390x@nongnu.org
+Subject: [PATCH 0/5] testing/next - arm custom runner tweaks
+Date: Tue, 14 Oct 2025 11:43:17 +0100
+Message-ID: <20251014104323.3023714-1-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.47.3
 MIME-Version: 1.0
-References: <20250708115238.667050-1-peter.maydell@linaro.org>
-In-Reply-To: <20250708115238.667050-1-peter.maydell@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 14 Oct 2025 11:40:26 +0100
-X-Gm-Features: AS18NWBgEyajiYmPUV-neW3F_hyeBVXdjoo5-mhRmEe8VsCU4lpfFONRodvhii8
-Message-ID: <CAFEAcA_MqNWHJ62sRCCK5s6-V6-qA4BWP5aFp0PZPeLDyXbYOw@mail.gmail.com>
-Subject: Re: [PATCH v2 0/3] hw/intc: handle GICD_TYPER2 for KVM GICv3
-To: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Cc: Eric Auger <eric.auger@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b131;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb131.google.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x42a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -92,36 +105,66 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, 8 Jul 2025 at 12:52, Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> The GICD_TYPER2 GICv3 distributor register is one that is added
-> for GICv4.1; previously this was architected as a RES0 location.
-> Our TCG GIC doesn't implement GICv4.1, but for KVM the kernel
-> might support it.
->
-> This patchset:
->  * makes GICD_TYPER0 reads not trigger a bad-read trace
->    event on the TCG GICv3, for the benefit of GICv4.1-aware
->    guest code
->  * migrates the GICD_TYPER2 register value on a KVM GIC,
->    so that a mismatch between source and destination
->    can be caught by the destination kernel
->
-> Note that I have only very lightly tested this, on a
-> host which (I believe) doesn't have a GICv4.1.
->
-> Changes v1->v2:
->  * fix comment missing bracket
->  * fix reset handling so this works on GICv4.1 hosts
->  * move get/put code to be with the other GICD regs
->  * new patch 3 to drop a barely-used debug printf macro
+This isn't quite ready yet as there is an in-flight MR for libvirt-ci
+and the final patch has to manually drop a couple of packages which
+don't cleanly install. I don't know if we should deal with that
+upstream or in the lcitool metadata. For reference the two packages
+are:
 
-I never applied this, I think because I was concerned about
-not having tested patch 2 very much. But patches 1 and 3
-are definitely simple and safe, so I'm going to pick those
-up. Patch 2 is still probably a good idea, but IDK if I'm
-going to get round to testing it, especially since I don't
-have a GICv4.1 host to hand...
+  libcurl4-gnutls-dev:armhf
+  libglusterfs-dev:armhf
 
--- PMM
+which I don't think are crucial to coverage. The main motivation was
+to include the crypto libs so the block io tests don't fail.
+
+However the the bulk of it works to:
+
+  - improve utilisation of the new CI machines
+  - remove hacks that get in the way of private test runners
+  - fully drive ansible packages with lcitool
+  - widen the testing of 32 bit Arm on the custom runner
+
+Please review.
+
+Alex.
+
+Alex Bennée (5):
+  tests/lcitool: bump to latest version and regenerate (!wait on
+    upstream)
+  gitlab: use template for ubuntu-24.04-aarch64 jobs
+  gitlab: modernise the ubuntu24.04-aarch32 jobs
+  scripts/setup: update the armhf overlay
+  scripts/setup: update build-environment to use armhf yaml (!WIP)
+
+ .../custom-runners/ubuntu-24.04-aarch32.yml   |  15 +-
+ .../custom-runners/ubuntu-24.04-aarch64.yml   | 230 ++++++++----------
+ scripts/ci/setup/ubuntu/build-environment.yml |  22 +-
+ .../ci/setup/ubuntu/ubuntu-2404-aarch64.yaml  |   4 +-
+ ...armhf-cross.yml => ubuntu-2404-armhf.yaml} |  67 +----
+ .../ci/setup/ubuntu/ubuntu-2404-s390x.yaml    |   4 +-
+ tests/docker/dockerfiles/alpine.docker        |  10 +-
+ tests/docker/dockerfiles/centos9.docker       |  10 +-
+ .../dockerfiles/debian-amd64-cross.docker     |  16 +-
+ .../dockerfiles/debian-arm64-cross.docker     |  16 +-
+ .../dockerfiles/debian-armhf-cross.docker     |  16 +-
+ .../dockerfiles/debian-i686-cross.docker      |  16 +-
+ .../dockerfiles/debian-mips64el-cross.docker  |  16 +-
+ .../dockerfiles/debian-mipsel-cross.docker    |  16 +-
+ .../dockerfiles/debian-ppc64el-cross.docker   |  16 +-
+ .../dockerfiles/debian-riscv64-cross.docker   |  16 +-
+ .../dockerfiles/debian-s390x-cross.docker     |  16 +-
+ tests/docker/dockerfiles/debian.docker        |  10 +-
+ .../dockerfiles/fedora-rust-nightly.docker    |  10 +-
+ .../dockerfiles/fedora-win64-cross.docker     |  14 +-
+ tests/docker/dockerfiles/fedora.docker        |  10 +-
+ tests/docker/dockerfiles/opensuse-leap.docker |  10 +-
+ tests/docker/dockerfiles/ubuntu2204.docker    |  10 +-
+ tests/lcitool/libvirt-ci                      |   2 +-
+ tests/lcitool/refresh                         |  11 +
+ 25 files changed, 259 insertions(+), 324 deletions(-)
+ rename scripts/ci/setup/ubuntu/{ubuntu-2204-armhf-cross.yml => ubuntu-2404-armhf.yaml} (63%)
+
+-- 
+2.47.3
+
 

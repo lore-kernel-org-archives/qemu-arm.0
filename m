@@ -4,85 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27E8ECCD190
-	for <qemu-arm@archiver.kernel.org>; Tue, 14 Oct 2025 20:20:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9689DCCD18E
+	for <qemu-arm@archiver.kernel.org>; Tue, 14 Oct 2025 20:20:32 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v8lJy-0002ec-L8; Tue, 14 Oct 2025 16:08:34 -0400
+	id 1v8lJG-00027G-Mt; Tue, 14 Oct 2025 16:07:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1v8lJi-0002Lx-DB
- for qemu-arm@nongnu.org; Tue, 14 Oct 2025 16:08:18 -0400
-Received: from mail-pg1-x52b.google.com ([2607:f8b0:4864:20::52b])
+ id 1v8lJD-00025R-27
+ for qemu-arm@nongnu.org; Tue, 14 Oct 2025 16:07:47 -0400
+Received: from mail-pg1-x536.google.com ([2607:f8b0:4864:20::536])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1v8lJ5-0005MW-Cd
- for qemu-arm@nongnu.org; Tue, 14 Oct 2025 16:08:17 -0400
-Received: by mail-pg1-x52b.google.com with SMTP id
- 41be03b00d2f7-b57bf560703so3750923a12.2
- for <qemu-arm@nongnu.org>; Tue, 14 Oct 2025 13:07:36 -0700 (PDT)
+ id 1v8lIs-0005Ke-UD
+ for qemu-arm@nongnu.org; Tue, 14 Oct 2025 16:07:46 -0400
+Received: by mail-pg1-x536.google.com with SMTP id
+ 41be03b00d2f7-b5a631b9c82so3559438a12.1
+ for <qemu-arm@nongnu.org>; Tue, 14 Oct 2025 13:07:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1760472451; x=1761077251; darn=nongnu.org;
+ d=linaro.org; s=google; t=1760472445; x=1761077245; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=7ml8IrqFS6Bp/u7C5UDkNEfubshsEhfFYuVLQAR5MCA=;
- b=ZJpfN1GmimFihjUFMNTEmOzopYz0+6uogVTbLiI63l797ifdX8Fq3y5g0W7T+YdOwO
- 8ULPNHzn+6jkQF9PWTIbwiFJa3jPO0RrU54RJIQmaEe2KtVFxGxoFsDIHbEL6P3NVJxH
- xAe2mphyanTXJ+sd4FAcqnFvoPL6ermznM7qPOD/xqtA+rNWmGfxRuUig7T6SSzrRhdP
- fIjVDoHoK/GtmaeFlBjHRA0UHr1co/IsbXdsExUrFtXgXSbjjqhSxKtz+/J5bJi5NrNH
- tM/bF7aGvN4aG+k1yNLFDX1yULdp3RZ06eWAhiB4feFFVic7JlHi1621e0Y9YUusTTE/
- OPQw==
+ bh=K0fUP5O6nkxBJR5PVsToUmM6ZB4XOvQbuwCKjBR/iU8=;
+ b=NUrTxAShOnLA0obeuLNPOsYfVWKQjwB5V3c7Qt2MDRoyesABvHZ7nk1703SlvjuUbK
+ gLMfiI3hd99Gm7NMAPDCh8EqUJZagwHtmY0kTzvSmLGr7VyJkBA04WnM616nxlwo/jg8
+ hyCWr7/tH0gLD2uV2fd9ptWKFAvF4dTiEBZ468Km2ndkDgqNdsfts48nu19g74o+R1dn
+ c1WQJKSFyus67UT3j3rQbp3TImkDBf5X7J/+BDPQXYe5PdWkhaAzEQVWbrHmtP05GQtt
+ zFfxU0v8dWtGt4X8k3Tv+Mkv69yk3xK2fNDIoanm6Ix26VqHLxBD1SLJF+bDdEmFF81N
+ b73w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1760472451; x=1761077251;
+ d=1e100.net; s=20230601; t=1760472445; x=1761077245;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=7ml8IrqFS6Bp/u7C5UDkNEfubshsEhfFYuVLQAR5MCA=;
- b=P2cZpocMnOISLCGgGd6XJYIgOHSnhhF91Cb6K+Ln5YVnaxiyojVWkH/49a7Ena0T1O
- mQ+mhFfQ4ioJ8God1Bei9IZce9E3/wJhqEt5b9OGnM84hcgHuHkAJf9R/Sy0Q6Ia8ies
- 4nPG/nfoE802bDte5Ju37NBpKCRC1OL4Uctr9HsxqLHvpUcJHai0hdyubtNm5WMFuJNr
- +e+q/YxL75kK7vdxUBwQCUdv453YlbgD4gSCgveLQLHbNTHejRV8hFLfusDQeeNZ5B3W
- otepRFqt2wl4nN4NcKpplN5xPe91cY31/OWRJu5blqfwl5qq6U72IOuG+xruRpWv1Dbo
- gCWQ==
-X-Gm-Message-State: AOJu0YydeWO0O6auvEOXhR03Pp/y65EyDZk6gzzGp1JmvSByRO4Xnk6o
- HvjoNsZyfXVpaepg6pXEQ1FdeQaXnnVZLEowzMfms6IkEK79Kb1d0SIC4hgwBkeH5Uo=
-X-Gm-Gg: ASbGncs2CjndhkzELrhuKhW3uYZz45MfZNdl6ia8RkgiyHE/soEJ3+1zY9r1qNkQJkt
- hhYzTPNN4MGuBFO5Ue6u8loJTNjG73x77kq6tVUZHEm3iIV049SFkf7uKg+U5V2vuAVJEdfTJ/U
- ToOLnh6f6RcGymESHyytispp+AFU4OdKxA8KE/1jNeKrYqGBYaffc00LHfHoxNhRONcq2cTH0Xs
- 0ul8K8nzMhzA67EVEjakmNSPyOC9P3/Hn/5Ze0fKINes0qH6SQ4skNj+iitmFmkpebeeqOn3i8l
- C2XIk9QPhA5ad4X2TYpSjl+PF9GvbkYr/yRugBt4ldrGHSf3GQWmiwQJNTf/AAEugzYMOdy6ukT
- IgpCvorZfftrah3EehudCGVsF0aUHw/L4RiGI0EwjpI7w3BQNbLyOBcnRZv4gAA==
-X-Google-Smtp-Source: AGHT+IGddwtrEJT9yctbOJQ5fnpwgPSu7nfi3Kncqa2YkkR8NuSG8e7a/PuiFQHaBD/FSYpAeAsUEA==
-X-Received: by 2002:a17:903:2349:b0:290:56e7:8ca9 with SMTP id
- d9443c01a7336-29056e79048mr149323765ad.52.1760472451587; 
- Tue, 14 Oct 2025 13:07:31 -0700 (PDT)
+ bh=K0fUP5O6nkxBJR5PVsToUmM6ZB4XOvQbuwCKjBR/iU8=;
+ b=wQNhM+emUqNGdSogpp9yUaJyinFwYR35yhsrkmA9ZNLOiuzDRRSmI541ijEQnOnHBw
+ fKMl3mYnFmAwzjG6Ww4XJOgbytouqryxNDwDxIOQiVbAOk5MK7KN0rdV5cxwoQiJi3Mw
+ ow97Wp5a7MGlXxWtzdFrRQRXM4AYKSH+iWy83t8NPZyiGZ1p748eWZ6T86bYc4AfmNkn
+ AhIij5LXNdgmfs3slXt/VQM200oQH9+sybwj8qQRJl0kHwekSO87aU+vYaQxhOh9G2xp
+ oJB2T65uok98wtz3c7cpZN7FkPcGSSgOEwHaLGwTMkN84PgGyxl5x3d+KyOce+VCODpI
+ PeSg==
+X-Gm-Message-State: AOJu0YxgEKaFk8ULN94PBtPaPOPjTTXHR9ZSNh1/UsOOa3uT9/x3kidg
+ eEPM5Pz0Azijfda7WSvhjrLX6Tuju8qwwUooCaIvKFlLGDQKaJQGAar/HMh4SnQDPBY=
+X-Gm-Gg: ASbGncsTamm1dOAn7bmSeUYUwNX0gJsHssxCLG4xHoJ8LGj1tSYRFBRGb+XcuiHE/Q3
+ y1uVX47p4d1MecM4O1knESjKMM8Ggv1aVR1AJDrwpOhiZderHFa30LblnGs11m5Y7r3/T1ELBhR
+ 0mIMaBjFnFfepQUiZ7MAwQpl8v3da8abKDcD60n54QYEODfZ9gpXJd4Mr73k9emtJqBGhMdhOQ6
+ 9Bnn32NRoehk4ZfsuoOD6ioHHAE8Cv24raYXeh7UYXf+51kPVZ6/uNTxTw+Gw5qjk3JHEAQimzf
+ IFjqS6S5/vj5kFjX/rFmaxOWgK4nD3LMwx/n0TVTYR7S3Vv7aBFpDuOpbX4z1uFWFUpmKTGvXGr
+ FSphJVeatjAEe7fzOg1RH84dFYBzXd5ZgKxMQkGOvwDpLUxfvP+SF3Y7gVjMf7w==
+X-Google-Smtp-Source: AGHT+IGT1IUZzEA0Rx3uAGwlskvY/zznUYoy1T6TPaEUv6Zhtb7VvhFERK5IeW7O244drVkSygWXrA==
+X-Received: by 2002:a17:902:ce81:b0:288:ea7a:56b5 with SMTP id
+ d9443c01a7336-2902723b882mr375122985ad.15.1760472444677; 
+ Tue, 14 Oct 2025 13:07:24 -0700 (PDT)
 Received: from stoup.. ([71.212.157.132]) by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-29034f93ea2sm172100975ad.126.2025.10.14.13.07.30
+ d9443c01a7336-29034f93ea2sm172100975ad.126.2025.10.14.13.07.24
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 14 Oct 2025 13:07:31 -0700 (PDT)
+ Tue, 14 Oct 2025 13:07:24 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH v2 17/37] target/arm: Add syn_aa64_sysreg128trap
-Date: Tue, 14 Oct 2025 13:06:58 -0700
-Message-ID: <20251014200718.422022-18-richard.henderson@linaro.org>
+Subject: [PATCH v2 08/37] target/arm: Use cpreg_field_type in
+ arm_gen_one_feature_sysreg
+Date: Tue, 14 Oct 2025 13:06:49 -0700
+Message-ID: <20251014200718.422022-9-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20251014200718.422022-1-richard.henderson@linaro.org>
 References: <20251014200718.422022-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::52b;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x52b.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::536;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x536.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -98,42 +98,75 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-System register access with MRRS/MSRR use a different
-exception class.
+Deduce bitsize from cpreg_field_type.  With this, we can
+simplify arm_register_sysreg_for_feature.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/syndrome.h | 10 ++++++++++
- 1 file changed, 10 insertions(+)
+ target/arm/gdbstub.c | 40 +++++++++++++++++++---------------------
+ 1 file changed, 19 insertions(+), 21 deletions(-)
 
-diff --git a/target/arm/syndrome.h b/target/arm/syndrome.h
-index bff61f052c..2c7dc53507 100644
---- a/target/arm/syndrome.h
-+++ b/target/arm/syndrome.h
-@@ -45,6 +45,7 @@ enum arm_exception_class {
-     EC_AA32_SVC               = 0x11,
-     EC_AA32_HVC               = 0x12,
-     EC_AA32_SMC               = 0x13,
-+    EC_SYSTEMREGISTER128TRAP  = 0x14,
-     EC_AA64_SVC               = 0x15,
-     EC_AA64_HVC               = 0x16,
-     EC_AA64_SMC               = 0x17,
-@@ -187,6 +188,15 @@ static inline uint32_t syn_aa64_sysregtrap(int op0, int op1, int op2,
-         | (crm << 1) | isread;
+diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
+index 8d2229f519..89324e4ae9 100644
+--- a/target/arm/gdbstub.c
++++ b/target/arm/gdbstub.c
+@@ -274,8 +274,9 @@ static int arm_gdb_set_sysreg(CPUState *cs, uint8_t *buf, int reg)
+ static void arm_gen_one_feature_sysreg(GDBFeatureBuilder *builder,
+                                        DynamicGDBFeatureInfo *dyn_feature,
+                                        ARMCPRegInfo *ri, uint32_t ri_key,
+-                                       int bitsize, int n)
++                                       int n)
+ {
++    int bitsize = 8 << cpreg_field_type(ri);
+     gdb_feature_builder_append_reg(builder, ri->name, bitsize, n,
+                                    "int", "cp_regs");
+ 
+@@ -292,28 +293,25 @@ static void arm_register_sysreg_for_feature(gpointer key, gpointer value,
+     CPUARMState *env = &cpu->env;
+     DynamicGDBFeatureInfo *dyn_feature = &cpu->dyn_sysreg_feature;
+ 
+-    if (!(ri->type & (ARM_CP_NO_RAW | ARM_CP_NO_GDB))) {
+-        if (arm_feature(env, ARM_FEATURE_AARCH64)) {
+-            if (ri->state == ARM_CP_STATE_AA64) {
+-                arm_gen_one_feature_sysreg(&param->builder, dyn_feature,
+-                                           ri, ri_key, 64, param->n++);
+-            }
+-        } else {
+-            if (ri->state == ARM_CP_STATE_AA32) {
+-                if (!arm_feature(env, ARM_FEATURE_EL3) &&
+-                    (ri->secure & ARM_CP_SECSTATE_S)) {
+-                    return;
+-                }
+-                if (ri->type & ARM_CP_64BIT) {
+-                    arm_gen_one_feature_sysreg(&param->builder, dyn_feature,
+-                                               ri, ri_key, 64, param->n++);
+-                } else {
+-                    arm_gen_one_feature_sysreg(&param->builder, dyn_feature,
+-                                               ri, ri_key, 32, param->n++);
+-                }
+-            }
++    if (ri->type & (ARM_CP_NO_RAW | ARM_CP_NO_GDB)) {
++        return;
++    }
++    if (arm_feature(env, ARM_FEATURE_AARCH64)) {
++        if (ri->state != ARM_CP_STATE_AA64) {
++            return;
++        }
++    } else {
++        if (ri->state != ARM_CP_STATE_AA32) {
++            return;
++        }
++        if (!arm_feature(env, ARM_FEATURE_EL3)
++            && (ri->secure & ARM_CP_SECSTATE_S)) {
++            return;
+         }
+     }
++
++    arm_gen_one_feature_sysreg(&param->builder, dyn_feature,
++                               ri, ri_key, param->n++);
  }
  
-+static inline uint32_t syn_aa64_sysreg128trap(int op0, int op1, int op2,
-+                                              int crn, int crm, int rt,
-+                                              int isread)
-+{
-+    return (EC_SYSTEMREGISTER128TRAP << ARM_EL_EC_SHIFT) | ARM_EL_IL
-+        | (op0 << 20) | (op2 << 17) | (op1 << 14) | (crn << 10) | (rt << 5)
-+        | (crm << 1) | isread;
-+}
-+
- static inline uint32_t syn_cp14_rt_trap(int cv, int cond, int opc1, int opc2,
-                                         int crn, int crm, int rt, int isread,
-                                         bool is_16bit)
+ static GDBFeature *arm_gen_dynamic_sysreg_feature(CPUState *cs, int base_reg)
 -- 
 2.43.0
 

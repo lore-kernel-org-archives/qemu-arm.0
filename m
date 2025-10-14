@@ -4,87 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14B56CCD184
-	for <qemu-arm@archiver.kernel.org>; Tue, 14 Oct 2025 20:09:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA018CCD18E
+	for <qemu-arm@archiver.kernel.org>; Tue, 14 Oct 2025 20:09:06 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v8lJT-0002Di-TK; Tue, 14 Oct 2025 16:08:05 -0400
+	id 1v8lJj-0002O0-42; Tue, 14 Oct 2025 16:08:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1v8lJK-00029n-E2
- for qemu-arm@nongnu.org; Tue, 14 Oct 2025 16:07:56 -0400
-Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
+ id 1v8lJT-0002Ha-Tc
+ for qemu-arm@nongnu.org; Tue, 14 Oct 2025 16:08:05 -0400
+Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1v8lIw-0005Kz-1q
- for qemu-arm@nongnu.org; Tue, 14 Oct 2025 16:07:54 -0400
-Received: by mail-pl1-x635.google.com with SMTP id
- d9443c01a7336-2697899a202so1827055ad.0
- for <qemu-arm@nongnu.org>; Tue, 14 Oct 2025 13:07:27 -0700 (PDT)
+ id 1v8lIy-0005Lw-Ss
+ for qemu-arm@nongnu.org; Tue, 14 Oct 2025 16:08:01 -0400
+Received: by mail-pf1-x42a.google.com with SMTP id
+ d2e1a72fcca58-7811a02316bso4053239b3a.3
+ for <qemu-arm@nongnu.org>; Tue, 14 Oct 2025 13:07:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1760472445; x=1761077245; darn=nongnu.org;
+ d=linaro.org; s=google; t=1760472449; x=1761077249; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=4ARUYNEiSDCx6dUOsxKOfcVAkTmdI2Q03KQKAjoC4js=;
- b=yIHlYprMq9iXaXUKv6YnzhVnPuRFtxlYI/NqKeEeHdm2IE79zBvH1Bu72UIK7M/RjH
- aZLS3oCf0A/VNBM5/Vw4YkUjpLY4CbE4Pi4eGqMStb2pEUH9lMT6Xej6vlVvx4f8PGwh
- clfOqjR1R+76RmpxswCAuAQ7xBvHnDS1yYjlyIxHzGbCeApVgCAPPSKGvAQAGDlfUzel
- ZQ1/7MCyWLnK+tpvU7XGQEyeoZMLhoV01zRauxm0O8g4q0cIEVx8Dww09L4db72JKn7u
- jLpivbu5gQdcLUieR8Asdz90Ulaelpq0mwUBd493hCJjAUEJ41OOpf+4o3toTRt9Zz/Z
- DlcA==
+ bh=RYs+R8nBuhH5wnLhGR7+Tv1X+mkctfJ2nU8EoakcyGU=;
+ b=YTiQdQqsJlHekxaruxFhBOR2Tbqk/yNl8wISELCn4vBMRebGC24QeJSg0ZPEiV7Uz9
+ 0X/6V0Glb+nfgfCKQU3tEeMu394ZuTkF55XGu8DbVnL7LA8n3tvjyWMLk17Wv2ZQJpMA
+ ZkxrJsNiHPX7zH9X8DxJv61F/XBrKh4UQOxqLbyBt2i1YuQykJM3lHS0lTbZp2RwcrLv
+ N4hUu6eRlLHB6+bnyVtydt0rFS0tuhuAfUC0lSdJA8b+7nz6GPLNRpxFgUH6Zp5hYB7P
+ ufb4DOBlqO4oWQgEljkmYpjjzKnxW35dPP1XceRwOkivW53BIFUQ+Es0idfdjzY3/KBk
+ kVsQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1760472445; x=1761077245;
+ d=1e100.net; s=20230601; t=1760472449; x=1761077249;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=4ARUYNEiSDCx6dUOsxKOfcVAkTmdI2Q03KQKAjoC4js=;
- b=JRsR5ZvxKelJFfGtONvKstggwmE3HtSC+xblGehpljKolDGjlfBr173WRjBn7KW1ZS
- rqSFjzAyoluzFCc03aQW3tYoYyQ3vWJGGC6Pa4pW3y9xhWuU2FGZXt9fiXl/4HNlrfU+
- UMw0oRqNyRw7qswZdnJ/QXNE7LEJWrrLUImWOgtZhvBdrCNebh1Cm54IdWq6Nen7yQrU
- XbALkQX8YWzZpMUvVl2aHeD2m3pthqUUctO+gGBL9zpQaLZqpc6sLEBTNmJKchlbdFRu
- FLfpI+3B8cw61kjGucmQSQ9bPPU5iG5YekeE9FfFDisVHoMj9TV9dxoTjVoFC1wxDPQ8
- 5HEg==
-X-Gm-Message-State: AOJu0YxcfsNR7GC50lv/N4aQeZg1KmRhEOmwaDjz2+M9RaG5UFwyHeLU
- 2bKXi4U+xI1UX73sTwCtVJARxJIqUeBLn4969YY2/MRBUJZ6m7YkcL4MBveDbs0BtYPa+RWqkCZ
- w0umRDwk=
-X-Gm-Gg: ASbGncvGh9zgZXuCq4dVINE6/vdaWuIx7CJyWsP/PnvWB996mfoagKRWxx6XAEFlSdx
- a9fJxgpt5nPtcEMJlMePk7MFjqkKsQ5xqVzi0uu5agAkdg0eqcXRpsQQNvv8HNNEmJwzpKbebWD
- Sbjjz+uqN3JvVP+kZ/G2wij8iZQxk3eT8JqfPkNfdJy+0Nu4lsfGe4GBFi/ZZuiD+MqRPgBl8f3
- 3lFJM4EHWG+44M3S9seP+rAP6Z09lzizhVOQRTHmGBM3NFgmuhTjd4ZiOVtfbWI6gqM8u3gTn0C
- zRPU+AKV+lvEJmK3Alybjpmm2T1zbYcNqdbELRqoPCf2P0RUChfo7USdGnapnUNShw7t66uF4xO
- FTopE01hqafnw3jmZHpSYEuxf8lcZyp8WwRQJwkjV7JJ73fI9O+U=
-X-Google-Smtp-Source: AGHT+IH21jFpL/bS81DHPbHi/pP111ZmhHJzcDXosPjr09I9i3JezC31Cq3blrVFawB/o9GEsn0CyQ==
-X-Received: by 2002:a17:903:faf:b0:28e:873d:8a with SMTP id
- d9443c01a7336-29027f0cd0cmr322417955ad.15.1760472445567; 
- Tue, 14 Oct 2025 13:07:25 -0700 (PDT)
+ bh=RYs+R8nBuhH5wnLhGR7+Tv1X+mkctfJ2nU8EoakcyGU=;
+ b=ajrHQQEYAYXZBcudP1trDIeXs7PHGpmPqaMEVpS+xZYb7ubDipmMMfcQMI8aS8M5z3
+ FCXnKwGSfbXN9iABiG7XHyP+1uKrXAj1oa89ZRTblwcGnvjza7Y4Fnuo656DtqUmbM9P
+ Irdx2nvVMVUg8whLdlF9bYkzwURIiKpC2S9Obcduuu19mGV5PlW5cC7hzlE9HVuDNygu
+ Ph6U1fnKgXbA+FJmCxfaao6cvuSU+n50pO5ZehVrWqRfpwNqCBdiA+oDH+NsVriLWP/Q
+ Xk1qlcEUQKvj+KZOKiJEmrLRARrfQBA0rYgrWftj1Tji/iBfk0rylPs5NhvY2Yd5XZGM
+ OUBQ==
+X-Gm-Message-State: AOJu0YwWCMO8XsP9pb2eLVcz7GPACrh4ZsrQNHteK2Ka6yJzZK0qd5We
+ kV/6wYY9dILWZlV2ory2dKwHlnpJEjdBTF5s3qlnv0S2DwkKwrPEgn0uk/adorm9g1s9GMYiWE/
+ lIjarABY=
+X-Gm-Gg: ASbGncuXlEDhtIaflhFNvko/l0TFaSWIro25yd+EYj+9+Bve7sP2UcYCuYebdrSWPsq
+ zgKIRcF+gNRD0OHuTdheYnm9QMspB9ui2ALR1HEHNOB18no1C1hfAETWkMZC7W5AGYkU3qsnoCX
+ +jG7vr1/MrLuHeg7UIhmrzPdVA5aYfIQC77hK+jGhnwsnIaxe7fUdovbQI6Yeikmrh71hMKiWYl
+ xP6/mMo4kKrKgh0GsUIYdaVWYCK27KzhlWzCuh9WB8tbEX1c6FlfU94VwY0oIdR2El2fiwnip34
+ WlR8k6X3rCpCtuD14zfQ+q+0ciQo6uxL8h8QMKNJxJfELIRpXwgMsY/C7LZlRxYiVtisW4wE3O7
+ R4ZBPTWVk99vs0o/vN8qaShaSYFoLQGWr1xoDiS+ec5oYlwar7Ao=
+X-Google-Smtp-Source: AGHT+IHPEMx4e4eTE1GhbtCL72Gkra25XCwoVcJSGS5u1w7u0d5tMSGxSSED9iUGP0IXib1cEP4xXw==
+X-Received: by 2002:a17:902:ef09:b0:27f:1c1a:ee43 with SMTP id
+ d9443c01a7336-290272c2564mr335665385ad.29.1760472449429; 
+ Tue, 14 Oct 2025 13:07:29 -0700 (PDT)
 Received: from stoup.. ([71.212.157.132]) by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-29034f93ea2sm172100975ad.126.2025.10.14.13.07.24
+ d9443c01a7336-29034f93ea2sm172100975ad.126.2025.10.14.13.07.28
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 14 Oct 2025 13:07:25 -0700 (PDT)
+ Tue, 14 Oct 2025 13:07:29 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH v2 09/37] target/arm: Merge arm_gen_one_feature_sysreg into
- the single caller
-Date: Tue, 14 Oct 2025 13:06:50 -0700
-Message-ID: <20251014200718.422022-10-richard.henderson@linaro.org>
+Subject: [PATCH v2 14/37] target/arm/hvf: Assert no 128-bit sysregs in
+ hvf_arch_init_vcpu
+Date: Tue, 14 Oct 2025 13:06:55 -0700
+Message-ID: <20251014200718.422022-15-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20251014200718.422022-1-richard.henderson@linaro.org>
 References: <20251014200718.422022-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::635;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x635.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42a;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -100,55 +100,35 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+HVF has not yet enabled 128-bit system registers.
+
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/gdbstub.c | 19 ++++---------------
- 1 file changed, 4 insertions(+), 15 deletions(-)
+ target/arm/hvf/hvf.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
-index 89324e4ae9..8583057b58 100644
---- a/target/arm/gdbstub.c
-+++ b/target/arm/gdbstub.c
-@@ -271,18 +271,6 @@ static int arm_gdb_set_sysreg(CPUState *cs, uint8_t *buf, int reg)
-     return 0;
- }
+diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+index 0658a99a2d..aa42fa09c3 100644
+--- a/target/arm/hvf/hvf.c
++++ b/target/arm/hvf/hvf.c
+@@ -897,6 +897,9 @@ int hvf_arch_init_vcpu(CPUState *cpu)
+     env->aarch64 = true;
+     asm volatile("mrs %0, cntfrq_el0" : "=r"(arm_cpu->gt_cntfrq_hz));
  
--static void arm_gen_one_feature_sysreg(GDBFeatureBuilder *builder,
--                                       DynamicGDBFeatureInfo *dyn_feature,
--                                       ARMCPRegInfo *ri, uint32_t ri_key,
--                                       int n)
--{
--    int bitsize = 8 << cpreg_field_type(ri);
--    gdb_feature_builder_append_reg(builder, ri->name, bitsize, n,
--                                   "int", "cp_regs");
--
--    dyn_feature->data.cpregs.keys[n] = ri_key;
--}
--
- static void arm_register_sysreg_for_feature(gpointer key, gpointer value,
-                                             gpointer p)
- {
-@@ -291,7 +279,6 @@ static void arm_register_sysreg_for_feature(gpointer key, gpointer value,
-     RegisterSysregFeatureParam *param = p;
-     ARMCPU *cpu = ARM_CPU(param->cs);
-     CPUARMState *env = &cpu->env;
--    DynamicGDBFeatureInfo *dyn_feature = &cpu->dyn_sysreg_feature;
++    /* No support yet for FEAT_D128 */
++    assert(arm_cpu->cpreg128_array_len == 0);
++
+     /* Allocate enough space for our sysreg sync */
+     arm_cpu->cpreg_indexes = g_renew(uint64_t, arm_cpu->cpreg_indexes,
+                                      sregs_match_len);
+@@ -920,6 +923,7 @@ int hvf_arch_init_vcpu(CPUState *cpu)
  
-     if (ri->type & (ARM_CP_NO_RAW | ARM_CP_NO_GDB)) {
-         return;
-@@ -310,8 +297,10 @@ static void arm_register_sysreg_for_feature(gpointer key, gpointer value,
+         if (ri) {
+             assert(!(ri->type & ARM_CP_NO_RAW));
++            assert(!(ri->type & ARM_CP_128BIT));
+             arm_cpu->cpreg_indexes[sregs_cnt++] = kvm_id;
          }
      }
- 
--    arm_gen_one_feature_sysreg(&param->builder, dyn_feature,
--                               ri, ri_key, param->n++);
-+    gdb_feature_builder_append_reg(&param->builder, ri->name,
-+                                   8 << cpreg_field_type(ri),
-+                                   param->n, "int", "cp_regs");
-+    cpu->dyn_sysreg_feature.data.cpregs.keys[param->n++] = ri_key;
- }
- 
- static GDBFeature *arm_gen_dynamic_sysreg_feature(CPUState *cs, int base_reg)
 -- 
 2.43.0
 

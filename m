@@ -4,89 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58ADDCCD184
-	for <qemu-arm@archiver.kernel.org>; Tue, 14 Oct 2025 18:19:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56F75CCD190
+	for <qemu-arm@archiver.kernel.org>; Tue, 14 Oct 2025 18:22:44 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v8jcA-0000tU-WA; Tue, 14 Oct 2025 14:19:15 -0400
+	id 1v8jey-0002qb-6r; Tue, 14 Oct 2025 14:22:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1v8jc9-0000t3-Aa
- for qemu-arm@nongnu.org; Tue, 14 Oct 2025 14:19:13 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1v8jew-0002q1-55
+ for qemu-arm@nongnu.org; Tue, 14 Oct 2025 14:22:06 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1v8jc6-00080q-S8
- for qemu-arm@nongnu.org; Tue, 14 Oct 2025 14:19:13 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1v8jeu-000093-3y
+ for qemu-arm@nongnu.org; Tue, 14 Oct 2025 14:22:05 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1760465947;
+ s=mimecast20190719; t=1760466118;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=BhpgFY4LwiuKePr+EVvOD9fACdNwCXyrctCHfHZ+FIU=;
- b=L1bxhrVcgmgTPX2Umi/XOLwxagEdLBTPU1ZNpb7ASt6tuJNHz9HGXSSxpGSSBVJWWBQJ7O
- mpGDwrVtxMRecVgmCKbzj52PyDPYPeiJpi00zt7y4n38nMQ6xBlnZff/DWK4M40NdGTVxg
- f0UYgP/GgDc7dhzJQmUY/EMKRYsImEE=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=+1dKwRBjDlYULLOrwDEsAyAmaDoYlzjkVheLqNBOEjg=;
+ b=ZFxVOToXsjVzpDsiXqpoiSdKeaomPvpu9lMs25lp8l+SkYTM1zEDmfYWEJIS8PIkUjzxvf
+ nw59WOzoZM526lDBUZCFgjOaBKpewVgjpa+E/16p6wpA4D6hYt/OsH76tYUwisfyTqjkvF
+ Wwoh1AfZCEyZdVQ4GsFX+UCSafsdMvE=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-272-fFc9IIs-M8eTDWwIS6IdrA-1; Tue, 14 Oct 2025 14:19:06 -0400
-X-MC-Unique: fFc9IIs-M8eTDWwIS6IdrA-1
-X-Mimecast-MFC-AGG-ID: fFc9IIs-M8eTDWwIS6IdrA_1760465945
-Received: by mail-wr1-f72.google.com with SMTP id
- ffacd0b85a97d-4256fae4b46so3952437f8f.0
- for <qemu-arm@nongnu.org>; Tue, 14 Oct 2025 11:19:05 -0700 (PDT)
+ us-mta-307-3t04XTTQNw2TDUPG7t6dKA-1; Tue, 14 Oct 2025 14:21:53 -0400
+X-MC-Unique: 3t04XTTQNw2TDUPG7t6dKA-1
+X-Mimecast-MFC-AGG-ID: 3t04XTTQNw2TDUPG7t6dKA_1760466111
+Received: by mail-wm1-f69.google.com with SMTP id
+ 5b1f17b1804b1-46e38bd6680so30873645e9.1
+ for <qemu-arm@nongnu.org>; Tue, 14 Oct 2025 11:21:53 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1760465945; x=1761070745;
+ d=1e100.net; s=20230601; t=1760466111; x=1761070911;
  h=content-transfer-encoding:in-reply-to:autocrypt:content-language
  :from:references:cc:to:subject:user-agent:mime-version:date
  :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=BhpgFY4LwiuKePr+EVvOD9fACdNwCXyrctCHfHZ+FIU=;
- b=W2RCX7kG8u9V8LGbvIowpZSrIufEg35Pu8348R0+BwwbI1mulk8BfG0O5FTavQ01q8
- f/e5V3Ya/9BApQ6u/FeJWwEdhMS0pH63JKQ0YBsRfb38jWRju1ARHTZPv1fWr0lFjfz0
- lV3stDpz0md1kGEopRlaBkCdNuMQ62p+ngF0a/U2PVZdDOdmbOz/UhrYOxkLTfnGZUOw
- YFbkYai+NgYfWMdTisUlGf+z7AnV65TQcfIqR6r2USnEFkjaFUOnja2XlU7ODlzSxJpB
- NkAwG7uX9Th8wcvojUa1VJOJkOtuTyHMhWgelsIBRLjBPl+aerPWCYR4h7A1zPW9doyw
- E/xg==
+ bh=+1dKwRBjDlYULLOrwDEsAyAmaDoYlzjkVheLqNBOEjg=;
+ b=GZCiYY2bi52HlczVxewMsskSr1zxUuUaL8ivlwNEQfKzu3NB3TmuVEhw0qR2ZeOYFR
+ seD2i6x5KMvsMQ2rUk6IhXRtV3AyUYvgxsuQeyhNXa52baL+MnBorM7pEe0ZXxZkyc0N
+ nkDRK4WeVb3TtsoutJnsxM1MdpzHFnF7G/NyPiEzwkJgX2fGjxD3T2U6VLZXQWJKs5nI
+ /mPCn2F3B9J1QR2MeST3xkyh0Y40FA3lR3B6DnpjiaAU0uc9SYvG/2bWEiEJNlgpFkib
+ 2zNi8n1plaMbezFYDyz2gwgo7HKPtAp+EwSasemp1Y8LcTP5rf2ooQDr6ahwn5S2hT+F
+ 9wNw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVNmdl8FcEL3A4Qzhn5jrZcxHUsnsw+EPcKGmedCKATGfHrqrPtkAfbjjUwg9j009/01/FOH4zT6A==@nongnu.org
-X-Gm-Message-State: AOJu0YzwgyaXKN6r2l4PnnYV9ELIRWEHjwTo16FfPNVTVD29k46hMSie
- EEZ1lFkl97Sb/7/gKlN/pTB3247s3ocgKjglJAOAl4+Bz7yDKOHMacFGoFoEBC1ScEHiUhgcGic
- 2PAoL4wpS6p4rto0kzuTv7c/rTwCGXrHDXoN4kYEskOvlCkLuCh2jfw==
-X-Gm-Gg: ASbGncspwjMztoNUEOjPXIohBTb81vAzBoRHnRLBLCLIuFXeu2UktPMCh08xfzdjD8p
- ZHLjggvOrvijLVos2/8wReogwcQPpZyqYVxX/0ADbG4dU8Oqq6GZzqigBAb31nXkLkf8QLEoxKV
- hme20JJk6J1L9UfWHvRwWkg8DiIFJ0G9okioluDnh0eXJ9xq28WXaQxIJik4BnC8slqKkB9wxTX
- C2QajOR8gOmNxvFquwbU+Oeq8n9X7bSyedRHoMLT9AGKQ9cVd0Unf4xTBidOwXkfKqWx5jyp/5m
- izj3yWvNDEjYbQaRkKOfgMFdbcjob4ZD6RboJTCbSYFn4SZG9tzWaqhGYrC6DuOt/q0FEcTZCqI
- QpuiHWg==
-X-Received: by 2002:a05:600c:870e:b0:46e:35eb:43a with SMTP id
- 5b1f17b1804b1-46fa9a9f16emr192093135e9.15.1760465944731; 
- Tue, 14 Oct 2025 11:19:04 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFWr+ozzSJ+gbFVhc4vxItT+LcXkPpNu/pb0JOGKck4KVSZMtlMM0wMSDA/lKfWmOejWV3OCg==
-X-Received: by 2002:a05:600c:870e:b0:46e:35eb:43a with SMTP id
- 5b1f17b1804b1-46fa9a9f16emr192092915e9.15.1760465944276; 
- Tue, 14 Oct 2025 11:19:04 -0700 (PDT)
+ AJvYcCVecGZ3OqiwZrCXs5vxZxWkb7Ej+UD8/q9YiEjoqeHffCoOv5S7FY6g2C45Q+DsSn9GV27qERWCpA==@nongnu.org
+X-Gm-Message-State: AOJu0Ywmm91rNPtVUZ7kVKHYIg9cL+N9+wvP9oIyLaWqHzOwTn++IHCN
+ WVYLSb1GM1kMpxk373Q2c7z0N/cmGoP13Xe5h35LnxuYN1CLciB8F5NTxdKN/98I4Nz/9B37zIg
+ 5xfASGMdkXdPiUc44hdzSOU7vG9Q3RivmfTo9lk/O6ZO5sx9yStmAeg==
+X-Gm-Gg: ASbGncvpRq9Onl82G/VRsNgbThMuiCfdtoXpm5IyLSPKc8ptYA6JQmb3vOL8nU+iHaA
+ +sTJdSUMS+uGYKvuyS1RYD3NGPBZnskidpqJBz4BIQ6Fg7RrxVMQmg+YmlTlG2g59FkZBj+gFej
+ k5dqoI6SN2imLxvLnvAH5LoFECS5nZ1/ql547qM0pocIvRS9saLu3ovdOxeGQHxNyA69VEjtkeG
+ qnBz/Kpyem9IMa29SQFoN6mtHoo20XWTph7+xQJqwH2JgDaH9l6r9goVHkzE+u/ctAKc4d/xf1F
+ oRBg7Hrsa0j6XHW7w9fAbzxEipMo3rYng3Mi/uZA/fztQ3SP8EN2ZJHETKOu+wluDDJal5/ZaDd
+ /VnUmPw==
+X-Received: by 2002:adf:e18a:0:b0:426:d81f:a86 with SMTP id
+ ffacd0b85a97d-426d81f0b0amr9669128f8f.58.1760466110997; 
+ Tue, 14 Oct 2025 11:21:50 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGbecB1C0bZflckKYFG4INZlZ916sUGPaRrx27aJMyNsQOc1QLfLVk0ygQGqNFlGxaTNdrjfA==
+X-Received: by 2002:adf:e18a:0:b0:426:d81f:a86 with SMTP id
+ ffacd0b85a97d-426d81f0b0amr9669113f8f.58.1760466110576; 
+ Tue, 14 Oct 2025 11:21:50 -0700 (PDT)
 Received: from [192.168.0.7] (ltea-047-064-112-136.pools.arcor-ip.net.
  [47.64.112.136]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-46fab36ed3bsm169164735e9.0.2025.10.14.11.19.03
+ ffacd0b85a97d-426ce582b39sm24583054f8f.15.2025.10.14.11.21.49
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 14 Oct 2025 11:19:03 -0700 (PDT)
-Message-ID: <c32612d4-3def-47b3-b32c-fbd1ec527012@redhat.com>
-Date: Tue, 14 Oct 2025 20:19:02 +0200
+ Tue, 14 Oct 2025 11:21:50 -0700 (PDT)
+Message-ID: <a0d4ba3d-f799-4ec3-8d3b-efdc33527242@redhat.com>
+Date: Tue, 14 Oct 2025 20:21:49 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 0/5] testing/next - arm custom runner tweaks
-To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org, Gustavo Romero <gustavo.romero@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- BALATON Zoltan <balaton@eik.bme.hu>, qemu-s390x@nongnu.org,
- Liviu Ionescu <ilg@livius.net>
-References: <20251014104323.3023714-1-alex.bennee@linaro.org>
- <c5003498-7914-4d94-bb79-0851c49c47a1@redhat.com>
- <874is1l7db.fsf@draig.linaro.org>
+Subject: Re: [PATCH v5 2/9] python: Install pygdbmi in meson's venv
+To: John Snow <jsnow@redhat.com>, Gustavo Romero <gustavo.romero@linaro.org>, 
+ Paolo Bonzini <pbonzini@redhat.com>
+Cc: qemu-devel@nongnu.org, alex.bennee@linaro.org, berrange@redhat.com,
+ qemu-arm@nongnu.org
+References: <20251002020432.54443-1-gustavo.romero@linaro.org>
+ <20251002020432.54443-3-gustavo.romero@linaro.org>
+ <CAFn=p-bscu00jtyfm+SmeYqB7gt6eA+F8uuYb8ng6rTe_a=HTA@mail.gmail.com>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -130,14 +128,14 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <874is1l7db.fsf@draig.linaro.org>
+In-Reply-To: <CAFn=p-bscu00jtyfm+SmeYqB7gt6eA+F8uuYb8ng6rTe_a=HTA@mail.gmail.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: ofdvNPQyI3JlHKGpuonALSmUtCvY56FY05kMP3vwhhs_1760465945
+X-Mimecast-MFC-PROC-ID: ipcP7z7OGkFuMSI1mJJnZWb2nWjnn9YqnlEHTuacSsE_1760466111
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -146,7 +144,7 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -162,46 +160,43 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 14/10/2025 19.29, Alex Bennée wrote:
-> Thomas Huth <thuth@redhat.com> writes:
-> 
->> On 14/10/2025 12.43, Alex Bennée wrote:
->>> This isn't quite ready yet as there is an in-flight MR for libvirt-ci
->>> and the final patch has to manually drop a couple of packages which
->>> don't cleanly install. I don't know if we should deal with that
->>> upstream or in the lcitool metadata. For reference the two packages
->>> are:
->>>     libcurl4-gnutls-dev:armhf
->>>     libglusterfs-dev:armhf
+On 14/10/2025 19.39, John Snow wrote:
+> On Wed, Oct 1, 2025 at 10:09 PM Gustavo Romero
+> <gustavo.romero@linaro.org> wrote:
 >>
->> FYI, glusterfs is deprecated in QEMU since a while:
+>> The upcoming changes in the reverse_debugging functional test to remove
+>> Avocado as a dependency will require pygdbmi for interacting with GDB,
+>> so install it in meson's venv (located in the build dir's pyvenv/).
 >>
->>   https://gitlab.com/qemu-project/qemu/-/commit/b873463821343c6f702c4195f2168790b09cf44e
+>> Reviewed-by: Thomas Huth <thuth@redhat.com>
+>> Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
+>> ---
+>>   pythondeps.toml | 1 +
+>>   1 file changed, 1 insertion(+)
 >>
->> ... so you could also add a patch that removes it from QEMU now, I
->> guess.
+>> diff --git a/pythondeps.toml b/pythondeps.toml
+>> index 16fb2a989c..98e99e7900 100644
+>> --- a/pythondeps.toml
+>> +++ b/pythondeps.toml
+>> @@ -33,3 +33,4 @@ sphinx_rtd_theme = { accepted = ">=0.5", installed = "1.2.2" }
+>>
+>>   [testdeps]
+>>   qemu.qmp = { accepted = ">=0.0.3", installed = "0.0.3" }
+>> +pygdbmi = { accepted = ">=0.11.0.0", installed = "0.11.0.0" }
+>> --
+>> 2.34.1
+>>
 > 
-> I can do that.
-> 
-> 
-> Richard and Phillipe reminded me that we are due to drop 32 bit hosts
-> real soon now so maybe I should just remove the runner and the hacks
-> needed to get it working?
+> Do we need to vendor pygdbmi? Currently, mkvenv does not consult
+> online sources and so if this package is missing, pulling in testdeps
+> will fail.
 
-Let see ... the last time I tried to deprecate 32-bit arm, I've been told 
-that the Raspberry Pis still use a 32-bit OS by default:
+This is handled by the "check-venv" target which is called now when you do a 
+"make check-functional". See:
 
-  https://lore.kernel.org/qemu-devel/F852C238-77B8-4E24-9494-8D060EB78F9F@livius.net/
+  https://gitlab.com/qemu-project/qemu/-/commit/75b1786996c422878d09bd12f166004a7d32e459
 
-... and the right time to drop 32-bit arm is when most Pi users install a 
-64-bit OS by default:
-
-  https://lore.kernel.org/qemu-devel/379B4C23-61C2-4AA3-A851-EEFC98A9AFF6@livius.net/
-
-So looking at https://www.raspberrypi.com/software/operating-systems/ now, 
-it seems like the 64-bit version is the default nowadays (at least it is the 
-first option there, and no more recommendation for the 32-bit version), so 
-yes, it's likely about time to get rid of the 32-bit arm hosts now!
+Works fine for me, did you hit any issues here?
 
   Thomas
 

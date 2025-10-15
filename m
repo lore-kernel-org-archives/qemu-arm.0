@@ -4,85 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90A6BCCD192
-	for <qemu-arm@archiver.kernel.org>; Wed, 15 Oct 2025 13:13:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50F82CCD18E
+	for <qemu-arm@archiver.kernel.org>; Wed, 15 Oct 2025 13:45:01 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v91Jl-0002S8-Qh; Wed, 15 Oct 2025 09:13:26 -0400
+	id 1v91nK-0005RN-8G; Wed, 15 Oct 2025 09:43:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1v91Jj-0002RP-6F
- for qemu-arm@nongnu.org; Wed, 15 Oct 2025 09:13:23 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <conor@kernel.org>)
+ id 1v8xRN-0007WF-Le; Wed, 15 Oct 2025 05:05:01 -0400
+Received: from sea.source.kernel.org ([172.234.252.31])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1v91Jd-0001xa-IT
- for qemu-arm@nongnu.org; Wed, 15 Oct 2025 09:13:22 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1760533987;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Dt73WI0EUdeOhWsEo2yudqjG8YLrA2wI+alCNe9pK1c=;
- b=ET+Mnbq+6MmnB0XfUSTzkmNpOsM+O+RrovAL8cKT+k7EUBVU3RoidsXrhgVHCBupGFNKJU
- 8yrYTkCTGqtHhbp5b53k4h80ct1vFLzjkEnf9vKxxNALabW8ljYR2BduM2BbL9fb7d1TSE
- /Qn6ZxGUeG6w4d9f22QrG7w6pkTZKxE=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-440-01mKq6WHM3ivYnwkn6Vv1g-1; Wed,
- 15 Oct 2025 09:13:04 -0400
-X-MC-Unique: 01mKq6WHM3ivYnwkn6Vv1g-1
-X-Mimecast-MFC-AGG-ID: 01mKq6WHM3ivYnwkn6Vv1g_1760533982
-Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 4D35E1800592; Wed, 15 Oct 2025 13:13:02 +0000 (UTC)
-Received: from localhost (dhcp-192-195.str.redhat.com [10.33.192.195])
- by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 76B631800446; Wed, 15 Oct 2025 13:13:01 +0000 (UTC)
-From: Cornelia Huck <cohuck@redhat.com>
-To: eric.auger@redhat.com, Sebastian Ott <sebott@redhat.com>, Shameer
- Kolothum <skolothumtho@nvidia.com>
-Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- peter.maydell@linaro.org, maz@kernel.org, oliver.upton@linux.dev,
- gshan@redhat.com
-Subject: Re: [RFC 1/3] target/arm/cpu: Add new CPU property for KVM regs to
- hide
-In-Reply-To: <9590ce96-6617-4cfb-849e-b24ea7fcacb9@redhat.com>
-Organization: "Red Hat GmbH, Sitz: Werner-von-Siemens-Ring 12, D-85630
- Grasbrunn, Handelsregister: Amtsgericht =?utf-8?Q?M=C3=BCnchen=2C?= HRB
- 153243,
- =?utf-8?Q?Gesch=C3=A4ftsf=C3=BChrer=3A?= Ryan Barnhart, Charles Cachera,
- Avril Crosse O'Flaherty"
-References: <20250911134324.3702720-1-eric.auger@redhat.com>
- <20250911134324.3702720-2-eric.auger@redhat.com>
- <0f05a0ec-8b98-a9b7-6e3a-9ef73d0c34e7@redhat.com>
- <b2ae3dc0-9bf0-4e89-a995-b97410d57861@redhat.com>
- <87ikgpv6yo.fsf@redhat.com>
- <9590ce96-6617-4cfb-849e-b24ea7fcacb9@redhat.com>
-User-Agent: Notmuch/0.38.3 (https://notmuchmail.org)
-Date: Wed, 15 Oct 2025 15:12:58 +0200
-Message-ID: <87cy6oux45.fsf@redhat.com>
+ (Exim 4.90_1) (envelope-from <conor@kernel.org>)
+ id 1v8xRF-0005Xy-ST; Wed, 15 Oct 2025 05:05:01 -0400
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by sea.source.kernel.org (Postfix) with ESMTP id A9D2948DBF;
+ Wed, 15 Oct 2025 09:04:36 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8DDC4C4CEF8;
+ Wed, 15 Oct 2025 09:04:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1760519076;
+ bh=VB4Fcz2lHkrUMyoTfMgNF7qNNy6BHxWOLyZuLsG1jyg=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=uq6qEb6XMWo1QnZalvPo5+eGqR5RV0x/7Cd90aaNqZTxH5ErMQi+aIDN6ZhgAOJmp
+ /59VCqs46yXuBPgTqkgiAINIEOng4rnBNXzu9DCwn4br01VnrHAWM32+L7dAcoQVgy
+ U9XkzHvC/8JyLJmpw0vKtqQSYxdAnwSGLrdDlORC0BVpuFkE8L2yth7zd5S/xRM54G
+ wt+IGQ8sJK3ycb+m2p+M/L2v5l/8tVdHZJheabqXhsNZJuBoJYELGDfO4+FWejaxOi
+ kgZyDRXSpUKX6AZn+dQMV0NFT/Uli6tQKZUPqgxyT6mSZIrFDCzzgd2QgWaMfAAeGl
+ ongojqv65GW6w==
+Date: Wed, 15 Oct 2025 10:04:32 +0100
+From: Conor Dooley <conor@kernel.org>
+To: Alistair Francis <alistair23@gmail.com>
+Cc: Guenter Roeck <linux@roeck-us.net>,
+ "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, qemu-riscv@nongnu.org
+Subject: Re: [PATCH 0/4] Fix Ethernet interface support for
+ microchip-icicle-kit
+Message-ID: <20251015-chump-certainly-c220ef4541ab@spud>
+References: <20251004200049.871646-1-linux@roeck-us.net>
+ <CAKmqyKPQDUjQPgzfpcUBSEZ=y1Of6dcrWBj8e6cBhHUH8F9Kng@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=cohuck@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Content-Type: multipart/signed; micalg=pgp-sha512;
+ protocol="application/pgp-signature"; boundary="6CQf4aeaa1Viu3Cu"
+Content-Disposition: inline
+In-Reply-To: <CAKmqyKPQDUjQPgzfpcUBSEZ=y1Of6dcrWBj8e6cBhHUH8F9Kng@mail.gmail.com>
+Received-SPF: pass client-ip=172.234.252.31; envelope-from=conor@kernel.org;
+ helo=sea.source.kernel.org
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Wed, 15 Oct 2025 09:43:57 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,81 +77,52 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, Oct 14 2025, Eric Auger <eric.auger@redhat.com> wrote:
 
-> On 10/8/25 3:49 PM, Cornelia Huck wrote:
->> On Fri, Oct 03 2025, Eric Auger <eric.auger@redhat.com> wrote:
->>
->>> Hi Sebastian,
->>>
->>> On 9/18/25 6:16 PM, Sebastian Ott wrote:
->>>> On Thu, 11 Sep 2025, Eric Auger wrote:
->>>>> New kernels sometimes expose new registers in an unconditionnal
->>>>> manner.=C2=A0 This situation breaks backward migration as qemu notices
->>>>> there are more registers to store on guest than supported in the
->>>>> destination kerenl. This leads to a "failed to load
->>>>> cpu:cpreg_vmstate_array_len" error.
->>>>>
->>>>> A good example is the introduction of KVM_REG_ARM_VENDOR_HYP_BMAP_2
->>>>> pseudo FW register in v6.16 by commit C0000e58c74e (=E2=80=9CKVM: arm=
-64:
->>>>> Introduce KVM_REG_ARM_VENDOR_HYP_BMAP_2=E2=80=9D). Trying to do backw=
-ard
->>>>> migration from a host kernel which features the commit to a destinati=
-on
->>>>> host that doesn't fail.
->>>>>
->>>>> Currently QEMU is not using that feature so ignoring this latter
->>>>> is not a problem. An easy way to fix the migration issue is to teach
->>>>> qemu we don't care about that register and we can simply ignore it,
->>>>> including its state migration.
->>>>>
->>>>> This patch introduces a CPU property, under the form of an array of
->>>>> reg indices which indicates which registers can be ignored.
->>>>>
->>>>> The goal then is to set this property in machine type compats such
->>>>> as:
->>>>> static GlobalProperty arm_virt_kernel_compat_10_1[] =3D {
->>>>> =C2=A0=C2=A0 /* KVM_REG_ARM_VENDOR_HYP_BMAP_2 */
->>>>> =C2=A0=C2=A0 { TYPE_ARM_CPU, "kvm-hidden-regs", "0x6030000000160003" =
-},
->>>>> }
->>>> One thing worth noting - once this series lands:
->>>> https://lore.kernel.org/qemu-devel/20250801074730.28329-1-shameerkolot=
-hum@gmail.com/
->>>>
->>>> we might need to add a bit more logic here. Either using the kvm
->>>> interfaces (only ignore KVM_REG_ARM_VENDOR_HYP_BMAP_2 when the register
->>>> value is 0) or qemu knowledge (only ignore KVM_REG_ARM_VENDOR_HYP_BMAP=
-_2
->>>> when the impl-cpu property is not used).
->>> Effectively if we "hide" KVM_REG_ARM_VENDOR_HYP_BMAP_2 on save/restore
->>> we must enforce the reg is not used by userspace.
->>>
->>> One way would be to test whether KVM_REG_ARM_VENDOR_HYP_BMAP_2 is hidden
->>> in kvm_arm_target_impl_cpus_supported() and if it is, report false.
->>> However for every new functionality in qemu it does not sound sensible
->>> to check whether new KVM regs being used are anonymously hidden.
->>>
->>> Another way could be to fail kvm_set_one_reg/kvm_get_one_reg in case the
->>> register is hidden. That way in Shameer's series, kvm_arch_init_vcpu()
->>> would fail if BMAP_2 is hidden, ie. in our example for all machines
->>> types before 10.2. By the way adding Shameer.
->> I think tying this to the state of the reg (hidden or not) is less
->> error-prone (I'd assume we'd have different ways of detecting whether
->> something is used for future cases, and "is the reg hidden?" would work
->> in all cases.) We'd need to tie migration to matching machine versions
->> anyway, I think.
->>
-> I guess you suggest to check the hidden/fake state in
->
-> kvm_set_one_reg/kvm_get_one_reg too. One issue is those helpers are arch =
-agnostic. I would need to either introduce a callback in the CPU class to c=
-heck the actual status or add the props in the parent CPU object. Or introd=
-uce a KVM IOTCL to teach KVM a reg shall never be accessed.
+--6CQf4aeaa1Viu3Cu
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Aren't they always called from arch code, though? We could easily wrap
-them for arm, I think. (Unless there's some more generic interest in
-conditional ONE_REG accesses.)
+On Wed, Oct 15, 2025 at 01:03:50PM +1000, Alistair Francis wrote:
+> On Sun, Oct 5, 2025 at 6:02=E2=80=AFAM Guenter Roeck <linux@roeck-us.net>=
+ wrote:
+> >
+> > The Microchip PolarFire SoC Icicle Kit supports two Ethernet interfaces.
+> > The PHY on each may be connected to separate MDIO busses, or both may be
+> > connected on the same MDIO bus using different PHY addresses. Add suppo=
+rt
+> > for it to the Cadence GEM emulation.
+> >
+> > The Linux kernel checks the PCS disabled bit in the R_DESCONF register
+> > to determine if SGMII is supported. If the bit is set, SGMII support is
+> > disabled. Since the Microchip Icicle devicetree file configures SGMII
+> > interface mode, enabling the Ethernet interfaces fails when booting
+> > the Linux kernel. Add support for clearing the PCS disabled bit.
+> >
+> > ----------------------------------------------------------------
+> > Guenter Roeck (4):
+> >       hw/net/cadence_gem: Support two Ethernet interfaces connected to =
+single MDIO bus
+> >       hw/riscv: microchip_pfsoc: Connect Ethernet PHY channels
+> >       hw/net/cadence_gem: Add pcs-enabled property
+> >       microchip icicle: Enable PCS on Cadence Ethernet
+>=20
+> Thanks!
+>=20
+> Applied to riscv-to-apply.next
 
+Didn't notice these in time, thanks for fixing this Guenter.
+
+--6CQf4aeaa1Viu3Cu
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaO9joAAKCRB4tDGHoIJi
+0hQkAP9Fdj/+Z2jwIImK9jyVTpkpgNfxKgIvkDS1c/rwA81KUAD9H1aSP6tW5zol
+N+wi9ANWAaggx/aqCh2Nk5UuEr/2rws=
+=VzkN
+-----END PGP SIGNATURE-----
+
+--6CQf4aeaa1Viu3Cu--
 

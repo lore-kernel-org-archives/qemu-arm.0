@@ -4,84 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A704CCD18E
-	for <qemu-arm@archiver.kernel.org>; Wed, 15 Oct 2025 02:52:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9DE7CCD18E
+	for <qemu-arm@archiver.kernel.org>; Wed, 15 Oct 2025 03:05:28 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v8rce-000349-Hx; Tue, 14 Oct 2025 22:52:16 -0400
+	id 1v8roo-0000An-8j; Tue, 14 Oct 2025 23:04:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1v8rcd-00033y-3O
- for qemu-arm@nongnu.org; Tue, 14 Oct 2025 22:52:15 -0400
-Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
+ id 1v8roa-000085-6C
+ for qemu-arm@nongnu.org; Tue, 14 Oct 2025 23:04:38 -0400
+Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1v8rcV-0006j1-Gx
- for qemu-arm@nongnu.org; Tue, 14 Oct 2025 22:52:13 -0400
-Received: by mail-ed1-x52e.google.com with SMTP id
- 4fb4d7f45d1cf-639e1e8c8c8so11674993a12.1
- for <qemu-arm@nongnu.org>; Tue, 14 Oct 2025 19:52:06 -0700 (PDT)
+ id 1v8roL-0008SG-KD
+ for qemu-arm@nongnu.org; Tue, 14 Oct 2025 23:04:34 -0400
+Received: by mail-ed1-x534.google.com with SMTP id
+ 4fb4d7f45d1cf-634a3327ff7so12289338a12.1
+ for <qemu-arm@nongnu.org>; Tue, 14 Oct 2025 20:04:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1760496722; x=1761101522; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1760497456; x=1761102256; darn=nongnu.org;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=yrYATmWBAX2GR6ZMhMA7RmRp8c2zVgLxLVX3yrwBUEU=;
- b=JPMlEsS1FIv6YW1EhtHIV8Nmwko+ve8fISn5p+u3f9d4UAbeaH5fSQJ/Y15+2byUWx
- bkoUXCCVeLl7lm+bSrycjrzIrtk4vn0ep3PpfgOx3d9Fipn1A8VSDaOaV7TKpyLUan9/
- gHxCjgCjAXR9xSC7A5+GxZb8gFQH6rA+kQgGKks9ONN2no6Lq8WvxKYiaelEG9xOXUZZ
- uOVUMnzzclpcvznU+MTRrP3SeIrMO16XT50f7hq1QTTjEgCiS6yqaheny7eTf56Z/6Gy
- D4Sug9TZWcWq9PXzHq/ztjqulCHqvlTgyQiKujvcXg4OnLD23geoL887MzuGjYh4h/WB
- UtuQ==
+ bh=XVsr5GB0VRiKOkdxbOkd6pGSyHcGmpP5OKM77x47VP0=;
+ b=nAcRK8E/DJDBqDWkhMkXHShxLXWRgZcNihH1Vok3RkLR4DsyyArzdLk2DQGEyo5OYe
+ gR/tIMSZl5LdO7DzgAFYd9J5eMPFEcQLWnwXSQCNfGuhg/RQHT5ldyxsUnYfaoNPEhdL
+ 72T1/1S1Egm2xHp5Mb6rLcsygyMiW4YxiSOwXFtZpISjw83AnwbVLHgaly41Nro9pSCi
+ QgwvJdVqjccYzRq9USOzuFwL7edhOBUoPYh+GdONhkVhm++xn0AyqqEIibSOKBpE6XAq
+ kZkYsP4I99B5ZvVJjFd8CoA0mbfG/in7XKvhicQ7S7h7q/7SpUCbOe9JoVxExhD+nUDb
+ ESag==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1760496722; x=1761101522;
+ d=1e100.net; s=20230601; t=1760497456; x=1761102256;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=yrYATmWBAX2GR6ZMhMA7RmRp8c2zVgLxLVX3yrwBUEU=;
- b=iNz5Rq78bp6PCR0uEnoZtawHaDIcubl0dvQj0S+Stn8BKAvoP3oeegVVGrLKwVNd82
- mf+qJAIM0RDFXl6WQVyIbllrERv9QpW9os0ZzxfAuaCwX5GA4WHkRDFycfNb1SC4g5oh
- OulZpP33KK0+WZswhCnHBlZe+VlHb/reT595XiiRNTYX0XCSdDb4+N2X74oToEEitEJ0
- eELzyB501swRcSMGKoe5e20nqRX8tsi9V0+XAs5Pg4J+NXJB4e5+S9UVtfLnrFtMQYbu
- DvXfsXpSv+e1jyZz/03vdZD2mHoy21sW8miIhOoJfNBjQFizIHr/mM+qLssfc8gOky1U
- +wWA==
+ bh=XVsr5GB0VRiKOkdxbOkd6pGSyHcGmpP5OKM77x47VP0=;
+ b=eZ88gl8m8PVj6Li9xQSEU8poMNCnWtYOcyXzsfaefF4qr7ACwo9MpjfUjo3MgI/qLi
+ H1vPABFlE/ZFU8O+fduMT55ezVGI2rcxDZ78/Mtbc9fDNCitd6rIkbHm73SixjkPzjgq
+ t4z4KMQBkNO6VmWlHbstOSLr/x4Yk5TbIg4nPYZczKVDt5B3+UyOGeMjnVD8cyPpLwnS
+ 9/TaMT6PoDIa1+SMPb1BIJrAk8lt+OBb6KRUASXljpHZwu2OA2aS4ugjPK70pWQL7OyM
+ VrX+qqX+sSJM5/Hg1qh1mXVWF+6I79Sbs3VdkOW/dnOEJqcRA6jVXzqLXrAxBiGd+uGa
+ /4lw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXj/Z/Rm4RFXl8I7kt+Erik//PL9qsbhLNd/CkP6IHij1qt3jfrwnyRcUtPjI0ZxlUq9WYR7yHC1A==@nongnu.org
-X-Gm-Message-State: AOJu0YwkGZkqrW0PAghnAorBTQDHTDXwHxQGm9TloiAde/HHzikwP7U5
- n6q8dPvgpdUbOiyIHir7xbaws/i9vKXAGj4rhY5hrA+teeRWEhX4UarYi3UibSv6vitklSZgXAV
- Rvm1g3l5Y+U8wS0dw/SiTHN7xLH/oITs=
-X-Gm-Gg: ASbGnctc4Qd7UkKwBHKfVeCPLBBq6kN0/U+zcHk5qQpxH7oCLB2y0lT2AEQ9L8cZwNr
- 2LipReyit/45iZmpfa8xkyYvXKktfvYRFoqpgqNnbpYV7CClB6CGezp35VN0KaujJ4vRZyI5YXn
- iqz0dyVFhR9Wlpy+jfHNBpyHrEyhBDtiak6J5yKkbfcjPku72dDQVssY0h8sITFbo3zMa2sDgbz
- qpbfVzJLxJ0fOOHl6zNKaw3zyGG8oR3b0998m84hkg1WlqGe4rGu03n
-X-Google-Smtp-Source: AGHT+IHfdiazKAbx3IzJ0+Yac/K58inmUv1XsIBrE0OCc+SfRlMNaRiS7aEv5XbNypPb0qc6WRbYd9uawaSR9g5s9FQ=
-X-Received: by 2002:a05:6402:2789:b0:63b:ee26:546d with SMTP id
- 4fb4d7f45d1cf-63bee265665mr584877a12.12.1760496721892; Tue, 14 Oct 2025
- 19:52:01 -0700 (PDT)
+ AJvYcCWTxC1AHkCkZQN1t2k0nKF5CsepF8ztAPmjgsfs77+tzZwB4jaApOmUb0oNait9yLB4guSTvLYOyw==@nongnu.org
+X-Gm-Message-State: AOJu0YxiyIIHPoJpZwnVj36J3p8eSC9aRJ28jFFENR1J24v98PbJ+tZv
+ G2QY1cTiYibVm5Lu61kPfvJ5w91OcORxPGmVYMiMQXiXxVkWEZ1HUC6Sj91S9uwuzeqOU8loyBK
+ YPUfmjKiYM1kXxnk7M8NbNBJj7uPGs+c=
+X-Gm-Gg: ASbGncu6npOvptQFyV5Xwa0mluPkNtPAa77dxTcRW342ZPkb9Xg4nGRfvZPzUg9Buny
+ 3xdWAZcaycvwg/cUczqallythOV3tGcOhC6zoBYqxYVabqNAZQSZb4Z9KbSZW3N8hBw0503yu5d
+ zhmCjI9bs4aVZWnIy/A+D2+m/TAsIhdRHzMvcf4pP1J/ufPEvxUS3iTgX39uQJtyP1UtxU1leiZ
+ 3HrHS4M6mc3Cv51Ys/K5TLKYp8bbG4/O4prI6BJi/EvEynlFs9O1I47tncN5UBLbLg=
+X-Google-Smtp-Source: AGHT+IHvkG9cjwFmvDVdq10v/nPsBJLWpvQpCEdkDUzJUdiZ84B7RkTbzdks46hNWWl9Nu0+Rd3+g5FSCTVyJmsKOks=
+X-Received: by 2002:a05:6402:5244:b0:633:d0b7:d6d2 with SMTP id
+ 4fb4d7f45d1cf-639d5c3eb8amr25711387a12.18.1760497456213; Tue, 14 Oct 2025
+ 20:04:16 -0700 (PDT)
 MIME-Version: 1.0
-References: <20251010134226.72221-1-philmd@linaro.org>
- <20251010134226.72221-14-philmd@linaro.org>
-In-Reply-To: <20251010134226.72221-14-philmd@linaro.org>
+References: <20251004200049.871646-1-linux@roeck-us.net>
+In-Reply-To: <20251004200049.871646-1-linux@roeck-us.net>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Wed, 15 Oct 2025 12:51:34 +1000
-X-Gm-Features: AS18NWBwVRqB-drBRL_aG1NiBUYL6uW6v4KzuNNNosV6WccScC7pzNA2dGBiVuE
-Message-ID: <CAKmqyKPtjuAa=-fTukwE0-x5Ds5YLLotCHzxk=_TJaqzxuGwqA@mail.gmail.com>
-Subject: Re: [PATCH 13/16] target/riscv: Replace HOST_BIG_ENDIAN #ifdef with
- runtime if() check
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-ppc@nongnu.org, qemu-arm@nongnu.org, 
- qemu-riscv@nongnu.org, qemu-s390x@nongnu.org, 
- Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <alistair.francis@wdc.com>, 
- Weiwei Li <liwei1518@gmail.com>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>, 
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>
+Date: Wed, 15 Oct 2025 13:03:50 +1000
+X-Gm-Features: AS18NWApnYh0fWjWmq3EcC3R_qAdfydsH3MmvqQxgVVddViALQzB1G3qV-TdmMk
+Message-ID: <CAKmqyKPQDUjQPgzfpcUBSEZ=y1Of6dcrWBj8e6cBhHUH8F9Kng@mail.gmail.com>
+Subject: Re: [PATCH 0/4] Fix Ethernet interface support for
+ microchip-icicle-kit
+To: Guenter Roeck <linux@roeck-us.net>
+Cc: "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>, 
+ Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>, 
+ Palmer Dabbelt <palmer@dabbelt.com>, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ qemu-riscv@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::52e;
- envelope-from=alistair23@gmail.com; helo=mail-ed1-x52e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::534;
+ envelope-from=alistair23@gmail.com; helo=mail-ed1-x534.google.com
 X-Spam_score_int: -17
 X-Spam_score: -1.8
 X-Spam_bar: -
@@ -89,7 +86,7 @@ X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -105,111 +102,38 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, Oct 10, 2025 at 11:52=E2=80=AFPM Philippe Mathieu-Daud=C3=A9
-<philmd@linaro.org> wrote:
+On Sun, Oct 5, 2025 at 6:02=E2=80=AFAM Guenter Roeck <linux@roeck-us.net> w=
+rote:
 >
-> Replace compile-time #ifdef with a runtime check to ensure all code
-> paths are built and tested. This reduces build-time configuration
-> complexity and improves maintainability.
+> The Microchip PolarFire SoC Icicle Kit supports two Ethernet interfaces.
+> The PHY on each may be connected to separate MDIO busses, or both may be
+> connected on the same MDIO bus using different PHY addresses. Add support
+> for it to the Cadence GEM emulation.
 >
-> No functional change intended.
+> The Linux kernel checks the PCS disabled bit in the R_DESCONF register
+> to determine if SGMII is supported. If the bit is set, SGMII support is
+> disabled. Since the Microchip Icicle devicetree file configures SGMII
+> interface mode, enabling the Ethernet interfaces fails when booting
+> the Linux kernel. Add support for clearing the PCS disabled bit.
 >
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+> ----------------------------------------------------------------
+> Guenter Roeck (4):
+>       hw/net/cadence_gem: Support two Ethernet interfaces connected to si=
+ngle MDIO bus
+>       hw/riscv: microchip_pfsoc: Connect Ethernet PHY channels
+>       hw/net/cadence_gem: Add pcs-enabled property
+>       microchip icicle: Enable PCS on Cadence Ethernet
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+Thanks!
+
+Applied to riscv-to-apply.next
 
 Alistair
 
-> ---
->  target/riscv/vector_helper.c            | 32 ++++++++++++-------------
->  target/riscv/insn_trans/trans_rvv.c.inc | 16 ++++++-------
->  2 files changed, 24 insertions(+), 24 deletions(-)
 >
-> diff --git a/target/riscv/vector_helper.c b/target/riscv/vector_helper.c
-> index 41ea2231067..2de3358ee86 100644
-> --- a/target/riscv/vector_helper.c
-> +++ b/target/riscv/vector_helper.c
-> @@ -235,26 +235,26 @@ vext_continuous_ldst_host(CPURISCVState *env, vext_=
-ldst_elem_fn_host *ldst_host,
->                          void *vd, uint32_t evl, uint32_t reg_start, void=
- *host,
->                          uint32_t esz, bool is_load)
->  {
-> -#if HOST_BIG_ENDIAN
-> -    for (; reg_start < evl; reg_start++, host +=3D esz) {
-> -        ldst_host(vd, reg_start, host);
-> -    }
-> -#else
-> -    if (esz =3D=3D 1) {
-> -        uint32_t byte_offset =3D reg_start * esz;
-> -        uint32_t size =3D (evl - reg_start) * esz;
-> -
-> -        if (is_load) {
-> -            memcpy(vd + byte_offset, host, size);
-> -        } else {
-> -            memcpy(host, vd + byte_offset, size);
-> -        }
-> -    } else {
-> +    if (HOST_BIG_ENDIAN) {
->          for (; reg_start < evl; reg_start++, host +=3D esz) {
->              ldst_host(vd, reg_start, host);
->          }
-> +    } else {
-> +        if (esz =3D=3D 1) {
-> +            uint32_t byte_offset =3D reg_start * esz;
-> +            uint32_t size =3D (evl - reg_start) * esz;
-> +
-> +            if (is_load) {
-> +                memcpy(vd + byte_offset, host, size);
-> +            } else {
-> +                memcpy(host, vd + byte_offset, size);
-> +            }
-> +        } else {
-> +            for (; reg_start < evl; reg_start++, host +=3D esz) {
-> +                ldst_host(vd, reg_start, host);
-> +            }
-> +        }
->      }
-> -#endif
->  }
->
->  static void vext_set_tail_elems_1s(target_ulong vl, void *vd,
-> diff --git a/target/riscv/insn_trans/trans_rvv.c.inc b/target/riscv/insn_=
-trans/trans_rvv.c.inc
-> index f4b5460340e..2a487179f63 100644
-> --- a/target/riscv/insn_trans/trans_rvv.c.inc
-> +++ b/target/riscv/insn_trans/trans_rvv.c.inc
-> @@ -3351,19 +3351,19 @@ static void load_element(TCGv_i64 dest, TCGv_ptr =
-base,
->  /* offset of the idx element with base register r */
->  static uint32_t endian_ofs(DisasContext *s, int r, int idx)
->  {
-> -#if HOST_BIG_ENDIAN
-> -    return vreg_ofs(s, r) + ((idx ^ (7 >> s->sew)) << s->sew);
-> -#else
-> -    return vreg_ofs(s, r) + (idx << s->sew);
-> -#endif
-> +    if (HOST_BIG_ENDIAN) {
-> +        return vreg_ofs(s, r) + ((idx ^ (7 >> s->sew)) << s->sew);
-> +    } else {
-> +        return vreg_ofs(s, r) + (idx << s->sew);
-> +    }
->  }
->
->  /* adjust the index according to the endian */
->  static void endian_adjust(TCGv_i32 ofs, int sew)
->  {
-> -#if HOST_BIG_ENDIAN
-> -    tcg_gen_xori_i32(ofs, ofs, 7 >> sew);
-> -#endif
-> +    if (HOST_BIG_ENDIAN) {
-> +        tcg_gen_xori_i32(ofs, ofs, 7 >> sew);
-> +    }
->  }
->
->  /* Load idx >=3D VLMAX ? 0 : vreg[idx] */
-> --
-> 2.51.0
->
+>  hw/net/cadence_gem.c         | 31 ++++++++++++++++++++++++-------
+>  hw/riscv/microchip_pfsoc.c   |  6 ++++++
+>  include/hw/net/cadence_gem.h |  4 ++++
+>  3 files changed, 34 insertions(+), 7 deletions(-)
 >
 

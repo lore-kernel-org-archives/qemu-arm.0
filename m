@@ -4,95 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6ABD3CCD183
-	for <qemu-arm@archiver.kernel.org>; Thu, 16 Oct 2025 09:12:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2451CCD183
+	for <qemu-arm@archiver.kernel.org>; Thu, 16 Oct 2025 09:43:19 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v9K2C-0007OO-PG; Thu, 16 Oct 2025 05:12:34 -0400
+	id 1v9KVS-0008BG-Bk; Thu, 16 Oct 2025 05:42:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v9K2B-0007Nk-2E
- for qemu-arm@nongnu.org; Thu, 16 Oct 2025 05:12:31 -0400
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1v9KVQ-0008Aj-QT
+ for qemu-arm@nongnu.org; Thu, 16 Oct 2025 05:42:44 -0400
+Received: from mail-yx1-xb12f.google.com ([2607:f8b0:4864:20::b12f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v9K27-0007Y1-Oh
- for qemu-arm@nongnu.org; Thu, 16 Oct 2025 05:12:30 -0400
-Received: by mail-wm1-x334.google.com with SMTP id
- 5b1f17b1804b1-46e491a5b96so3630865e9.2
- for <qemu-arm@nongnu.org>; Thu, 16 Oct 2025 02:12:27 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1v9KVK-0003A6-7o
+ for qemu-arm@nongnu.org; Thu, 16 Oct 2025 05:42:44 -0400
+Received: by mail-yx1-xb12f.google.com with SMTP id
+ 956f58d0204a3-635380a4a67so458428d50.0
+ for <qemu-arm@nongnu.org>; Thu, 16 Oct 2025 02:42:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1760605944; x=1761210744; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=xNfv9xsmmhteqxadkVhT2+fkyYPSah+3ICpJbHA4auM=;
- b=fYWxzTg75xkyqxbMA+A2hRj6d6MJ++WASzMcmYxTRgZ8gJkfnmlczf0HinOpRbDOfa
- k3bnXyPzNQrFlYhXlw1WfLprZ6rlwK0Q3oGXlA62p4Vsc5K8tpt8N0NA4KUlqzvhVub/
- Rf2wCinriQ8CM/hygso8KzvkvfLZrfc8yiqr+ugg6Nv6lyptboF/BrOx9ccbMkyRNi+P
- aUTHncu4Ya7WB4AyIlSI27xSkZBVoPKu2O2wTQWwk5ZwClD3b069bycfFgRK1j8DNPG9
- pOONqR6A2T3pQ5cEHvW9E9brdw9671HKC4qsxZGLQgUk4OHaAT/K8XlkCrjP+CCTvqhS
- 0cew==
+ d=linaro.org; s=google; t=1760607755; x=1761212555; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=V6rOswSehswh0XIgMOOQrsdytpAZ+iR4TYOhcF6U7ZQ=;
+ b=EuBUKcdccRkc7MxiPp0TO05dRd/ArtUP5D1M+xeYUF2WJ79KTjiIAd4eKof1GIqfk5
+ QYKLI2rkyQZ4Rj7KQ9g2n8fQnFJAITTbwj4n4Jhfqv92ZtQ654VNlImMeDHx0yN63Hnk
+ H0DirK/y/RBKya/XKnUEHViwgcl4n6iC+BIsehBoOUQHmpgfjIdHPrvUz4IWz3fh824r
+ QXCgKQeT7b7J13shEII5LgumJsZzbAVZDHy5eFCpRvNKV+wKTuGHPAqLQmiSTSd2+w8s
+ Ie7rda6D4G/Xc7c0dB+l74SmADEZ0rhWIdvnsbx8jpH4gtdNyRCJe4pDqqWtltoI8skr
+ xlNQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1760605944; x=1761210744;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=xNfv9xsmmhteqxadkVhT2+fkyYPSah+3ICpJbHA4auM=;
- b=wL6hYQ0iUBiPI1pa+QqktQ4gzCBWk8aMBdTG4/VWmTD79evp2aAoboEvMWkJniR8QO
- s+EWXzeU7W/kvuS38/zG8p/EDhnSKRgdmq2MlixdMYTdVe/Db5bQMm+q1VDsfM7n5tMg
- 9SB4gMzhSZi4FIfQekkhV6y1c/Hv5SWo7Geg8mmEb3px2YeQNHAU/AZJ/jCaWoutoEK8
- hLP+Pnfs7qH7naq2K+R4ewudhT6qWE4rVcCMqL3/HAlenXWNT8gh3aU9CqJsIetbfDkC
- iimnvpekokUikYZrvjup1Px+POAHVEioxiZNPMjN4aifa+wWyOrl8sGMt2SFsbnv3bbh
- uVLw==
+ d=1e100.net; s=20230601; t=1760607755; x=1761212555;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=V6rOswSehswh0XIgMOOQrsdytpAZ+iR4TYOhcF6U7ZQ=;
+ b=Hx88t9x8JY5RD9Yvx9bQEFQqeOGBhGfBBX7OdLphPB94kLUz7fVE65JKry3MpsEr4y
+ 8hoPLRAMth6zdrOVSYPVJGcvMY/jDgS5hK39LHoIb3AdV2rV7ijWr69Sq3y5GLYjCSU4
+ 3B5FfZ2j0yziu9rC9bt+rfo49aT+7bCtT1rvP++zBTfMVbUnJssbc8DD2yX9FP5q1PA1
+ +xfUNPj6IKZKgd0AQHQV2NtjJ0vNOMF/XpNH6dBrrykLQ8jYjnTvsKnRZQbrIV2+wpnH
+ pPmLCnArzG0q3WIyK62ioItIYis6jkzOSs2pJVmkRmbdr6kqpLEUBRgGtqxaEoDg4H6r
+ EXGQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCW3Nyf5BDmQxP/GBbdadlaGmcG0qx4Z8RVIyjSN4J96oaYWGKBZfvQSBP0GQMA1TbACAVbQfBigEQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yzfbh+pWLYnY9vIB7lYi7lxGnlqOOannLaFBw+sbl2lz77GYkL6
- 1Eyjc/X1H5OpGn4F9eoeTYR7AJFybDeCiXcvRghJy6whfA++50NCArsSVDZR7CeioJE=
-X-Gm-Gg: ASbGncuYwuuAvGC3nIhc9x+MARqnBuAY+33Xk9u6uFvP5ZhOZomUlEVt8R9sBc8dmbE
- cZoy5xwqX62jFT+dNwOKo8AatsRetsM8DK9dnbu74hgX80geg03+BC/M8IYujVUb2v2vCGdGb2E
- M0um3x6lx7upji5GE63rZJCMrG3rxqxr2XbCkzI0YR0P3m6AEFeUnTQWaQoh3T5bD++LqohcGwU
- oxRBN3wwu2AMvwGG0XgdLr25zmj1f3V9RQ0jOEsdFpK8MBWunxGizTP3deDK4qxe/QMEGicGx+5
- dFMbgfZqO0zORRxltMRcNcb3+aH4a/zqyhElGidw0NiUF6kfJ50yO1CPYEK1FgR3PVP4SZbZYhF
- /0kgswzNNMwvRgq/foAqwtv6cUOjELPZKXLhXbS4Zgl1JPFGg1X4RzG2mPmkZ6zsfw41/538XjW
- +5/nJ53kYq/Cwxa2i8NGC8AdwGnwfRxWiC2O/uDAsFaBsgjxnvyxU4n4LmUw==
-X-Google-Smtp-Source: AGHT+IE80TJxnu4thgS5f+era764aCpK9tGSrOOZRfaWpeLL3Lkv72yXnMKHQ6DPJ379DWca9g9xvg==
-X-Received: by 2002:a05:6000:258a:b0:425:8bc2:9c4b with SMTP id
- ffacd0b85a97d-42666abb51amr16517178f8f.6.1760605943892; 
- Thu, 16 Oct 2025 02:12:23 -0700 (PDT)
-Received: from [192.168.69.221] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4710cd833ebsm16015305e9.3.2025.10.16.02.12.22
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 16 Oct 2025 02:12:23 -0700 (PDT)
-Message-ID: <ea10c781-d15f-4346-a092-78d203f2f0c9@linaro.org>
-Date: Thu, 16 Oct 2025 11:12:22 +0200
+ AJvYcCU2O8mQCOs0PKvzLBCqn0xOnQdXbF0C/8LaEiGKfKo4bRJ9jg5qNwGI/rTuTAPCCGxPdg8gqrFxLg==@nongnu.org
+X-Gm-Message-State: AOJu0Yxw1TrRdrZEbWm9u9sE8+YHFApMw9sUP1djJ76tu6yVsFkPfik2
+ zqAkzNlVOtpKxsJr27tNl3GNbU61TAJ66xKh7c2idMdBtmJ02un/3UqBpxYp08Xysci+oa+Mq7B
+ PefzE8N0OaS1TS7Sw7RTZosSp75/NIXELleINfN9tIQ==
+X-Gm-Gg: ASbGnctJNE6+UBCXEW5H+Z9LDP2IFXFPG+2MlogV5i8jzc/AAc1xjJ1JYBHox8FRt6i
+ ByfojFNrSk70Sf48ztk810S3RBlkl/sUEfvJfvmncWFj628pXMaX4zUyx2dtp/ch8ORuGzNqdn1
+ spIDhPWqFpCtA7t2LiTYXFRh3Z44mDtNFjpDkYT5acYwxbYON0Xy70DaQMJyDxg/FQUcMlnIy48
+ wIFTp1FsWQ1tBJ6lcsZPJ534ARxTgpbgyXcVIYJU8uchN8WddyTE+/DoNuLNQnxwQ==
+X-Google-Smtp-Source: AGHT+IFCXbmvh4mNTeiCOeqBezWjctrUf2+bf/buK/iCka9aUTo/uH1NjlIpgeLbXNIs28qMqwOzFvKDHVW3xc3964o=
+X-Received: by 2002:a05:690e:1287:b0:63e:12d7:8f35 with SMTP id
+ 956f58d0204a3-63e12d79256mr206375d50.49.1760607754958; Thu, 16 Oct 2025
+ 02:42:34 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: aspeed: Split the machine definition into individual source files
-Content-Language: en-US
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
- "'qemu-arm@nongnu.org'" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-Cc: 'Andrew Jeffery' <andrew@codeconstruct.com.au>,
- Joel Stanley <joel@jms.id.au>, 'Jamin Lin' <jamin_lin@aspeedtech.com>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Patrick Williams <patrick@stwcx.xyz>
-References: <e2df1ff1-3ce4-4233-b32e-2bc680725c71@kaod.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <e2df1ff1-3ce4-4233-b32e-2bc680725c71@kaod.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::334;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x334.google.com
+References: <20251014195017.421681-1-richard.henderson@linaro.org>
+In-Reply-To: <20251014195017.421681-1-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 16 Oct 2025 10:42:23 +0100
+X-Gm-Features: AS18NWC8K0ufqNl7Cgw4af0HhhAnRft205TH4114Baj3fD58ykMu5ZGK5myrOHc
+Message-ID: <CAFEAcA-tT_CH-SM2q58EcZnKNW+wtWF71wywJ88+qtPaRNRj0g@mail.gmail.com>
+Subject: Re: [PATCH v2 0/7] target/arm: Implement FEAT_AIE
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b12f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -108,40 +94,30 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 19/6/25 11:23, Cédric Le Goater wrote:
-> Hi,
-> 
-> This is a follow up of a private discussion with Patrick.
-> 
-> Aspeed modeling started nearly 10y ago with the palmetto-bmc machine.
-> We now have 5 SoCs and 25 machines which are mostly defined in
-> in a single aspeed.c file. Multi SoC machines, fby35 and ast2700fc,
-> are defined in fby35.c and aspeed_ast27x0-fc.c respectively.
-> 
-> Since we started separating the SoCs :
-> 
->    hw/arm/aspeed_ast10x0.c
->    hw/arm/aspeed_ast2400.c
->    hw/arm/aspeed_ast2600.c
->    hw/arm/aspeed_ast27x0.c
->    hw/arm/aspeed_ast27x0-ssp.c
->    hw/arm/aspeed_ast27x0-tsp.c
-> 
-> We could do the same for the machines keeping an 'aspeed_ast<rev>'
-> prefix (and maybe avoid the 'bmc' suffix). I think this would ease
-> introduction of new machines. We would be able to get rid of
-> aspeed_eeprom.[ch] and move machine custom data in the machine source
-> file. Which seems cleaner.
-> 
-> Timing is about right for code reshuffling, still 3w before soft
-> freeze, no important changes inflight, but if we start doing this
-> conversion, we should do it for all. See the list below for the brave.
-> 
-> Comments ?
+On Tue, 14 Oct 2025 at 20:51, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> This feature adds new registers so that we can support 16 attribute
+> indirection indexes.  It is a pre-requisite for FEAT_D128.
+>
+> Changes for v2:
+>   - Update arm_emulate_firmware_reset.
+>
+> r~
+>
+> Richard Henderson (7):
+>   target/arm: Add isar feature test for FEAT_AIE
+>   target/arm: Implement MAIR2_ELx and AMAIR2_ELx
+>   target/arm: Add AIE to ARMVAParameters
+>   target/arm: Drop trivial assert vs attrindx
+>   target/arm: Use el local indexing mair_el
+>   target/arm: Honor param.aie in get_phys_addr_lpae
+>   target/arm: Enable FEAT_AIE for -cpu max
+>
 
-Good idea, but please split ASPEED_SOC in Kconfig accordingly.
 
-Regards,
 
-Phil.
+Applied to target-arm.next, thanks.
+
+-- PMM
 

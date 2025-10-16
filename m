@@ -4,34 +4,34 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16D0BCCD199
-	for <qemu-arm@archiver.kernel.org>; Thu, 16 Oct 2025 17:41:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41FF0CCD199
+	for <qemu-arm@archiver.kernel.org>; Thu, 16 Oct 2025 17:41:53 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v9RwU-0006j2-Dk; Thu, 16 Oct 2025 13:39:10 -0400
+	id 1v9RwM-0006YU-KR; Thu, 16 Oct 2025 13:39:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1v9RwR-0006gL-TJ
- for qemu-arm@nongnu.org; Thu, 16 Oct 2025 13:39:08 -0400
-Received: from p-east2-cluster4-host9-snip4-1.eps.apple.com ([57.103.78.212]
+ id 1v9RwI-0006WZ-Df
+ for qemu-arm@nongnu.org; Thu, 16 Oct 2025 13:38:58 -0400
+Received: from p-east2-cluster2-host7-snip4-10.eps.apple.com ([57.103.78.53]
  helo=outbound.st.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1v9RwD-0007hH-Lm
- for qemu-arm@nongnu.org; Thu, 16 Oct 2025 13:39:07 -0400
+ id 1v9Rw5-0007fd-9X
+ for qemu-arm@nongnu.org; Thu, 16 Oct 2025 13:38:57 -0400
 Received: from outbound.st.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-east-1a-100-percent-6 (Postfix) with ESMTPS id
- 71BFD18000B4; Thu, 16 Oct 2025 17:38:43 +0000 (UTC)
+ 8439A180016E; Thu, 16 Oct 2025 17:38:36 +0000 (UTC)
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; bh=h7u/XWsux0pmMZnA7+paR99F4ZhLVNBkIu/tmCtAH0I=;
+ s=sig1; bh=hP9mipJJlzEp8BAG964JLQLLOKiV7YupjQ0pPg2yZ4w=;
  h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
- b=JN5jeqlo2Exp4YvILakcUUrx3AjSfjGt663Ogt/r53YZdHbDYW81d6YRofnLWLuggocs2PxdwMi+ILVyXvrO9cYkUQqVQVctlEWC7sOtgTmrI8XSsPRt3butg8HkLJ7xmkne++3HJbH8zlvHLLWTcHZUrhMKOqVkvFWQeNw97LAP9rl2sdY9kc8YzXBhJiTnUaXuyp8X0VqflV9UgZksyrqWzQZUbOjQxXrGQYSGnEFZdIDNhtKL1T3XC1JpKfib71GfxgEqVS+IP5PXUB9q4/pJ9sWnuRYSAVve2PsiN7cFbMmt4gp4hhblKmP64M6Cr9Cgbke1V6HIjdXRYOdFtQ==
+ b=LQ/mP+dL4vmoR5+mMT20McOOgJS6/v7mOjOP4zGQ5QVRJT1K9oR5TeuYvv53KNblg5jkcGt6MX37PM7wE2ZMIZKGsOQrd5/q9H1+sDuzemYOzi2aQokzEsvp4juSsKL4YFPbZJMPD7ch0V/48I/zLiVw1Y6bZCxlfOubgJeI7D1U6KYG5RuahwFagmoRGyrhAUEvxOGNnZb9OYFpDYADQGuAvO5wEfdP5J6xJZvdjt7eblrcv34gfbC7WohQPlxQyh6uBH8Tds0PqsJn+zqehsPw49f6fWZKm0UEFQ34FRsQDzFovxNm/Nq/HbZkLXePjGrytK1DfJifeeJNSgfMPQ==
 mail-alias-created-date: 1752046281608
 Received: from localhost.localdomain (unknown [17.42.251.67])
  by p00-icloudmta-asmtp-us-east-1a-100-percent-6 (Postfix) with ESMTPSA id
- 68FC6180011E; Thu, 16 Oct 2025 17:38:39 +0000 (UTC)
+ 9C4AA180010C; Thu, 16 Oct 2025 17:38:32 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, kvm@vger.kernel.org,
@@ -53,39 +53,40 @@ Cc: qemu-arm@nongnu.org, kvm@vger.kernel.org,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  Pedro Barbuda <pbarbuda@microsoft.com>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v8 10/24] hw, target,
- accel: whpx: change apic_in_platform to kernel_irqchip
-Date: Thu, 16 Oct 2025 19:37:49 +0200
-Message-ID: <20251016173803.65764-11-mohamed@unpredictable.fr>
+Subject: [PATCH v8 08/24] whpx: ifdef out winhvemulation on non-x86_64
+Date: Thu, 16 Oct 2025 19:37:47 +0200
+Message-ID: <20251016173803.65764-9-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.50.1
 In-Reply-To: <20251016173803.65764-1-mohamed@unpredictable.fr>
 References: <20251016173803.65764-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-ORIG-GUID: DnZSo4s4XFJnREjgYizwyW10D3MEFkuo
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMDE2MDEyOCBTYWx0ZWRfXxca1J95xqtkD
- /kiEI75dPjqax2czblyuIxQ+H9QHIbJjDUA88EtUEk464RpKn75D8bgYft16QTJtxy9LGE0V+d7
- vJfmmLynTWXLBdLvTBR/Vlr2a7ihxJ6wJC+tgSDfCeRDLi2FfOum4wmRBX3qh/Hh7JFcjCJbKQF
- Eq1x319FNsAsyFVmqPfNjlpZj82wAsVZ37+zWx3wMVy+er11yG0e7MFeEMi2x1KXI3sgrz23YyY
- AaHh4zty2KrlsM6BxsBpb7of33eCqtmmG0Uy4rwu/65Ce/EqYN5ZruEq/3vPxcFt8zgHnmRuE=
-X-Proofpoint-GUID: DnZSo4s4XFJnREjgYizwyW10D3MEFkuo
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMDE2MDEyOCBTYWx0ZWRfX+5XTb8DqkP/w
+ aomfMluWZrAbrKPOpHDpZuMJ9RfmvHiFbjbz17SK1VMpeCmhaJzEQrfh1ZR+bpcFi2WzN59xJrZ
+ 5JHALVbVCFEOt/4uUxlrMORbEm9mEABxd2OAmcHFM7GJj3FaI8DRLyvnt/qidcFvLnZqufcxzaI
+ x/plseLI8BgFN07UWf8dz3mkxLEhpfU3sWeAAU3MZah8Sn8zwg57eSSwpAIGzJ4D3Zsbu291Foc
+ E+QgHZ2ZoHTT8NOtOyFl135FnrhfudVKYfz48QkORndVoH9Vt4PQa9tT2eDeXXDZ8hCtEN0tw=
+X-Proofpoint-GUID: OwHBBW0hubc9_F7Zm8yQkW0bZjpjpFgQ
+X-Proofpoint-ORIG-GUID: OwHBBW0hubc9_F7Zm8yQkW0bZjpjpFgQ
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.80.40
  definitions=2025-10-16_03,2025-10-13_01,2025-03-28_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
- phishscore=0 mlxlogscore=999 spamscore=0 malwarescore=0 bulkscore=0
- suspectscore=0 mlxscore=0 clxscore=1030 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.22.0-2506270000 definitions=main-2510160128
-X-JNJ: AAAAAAABdYQDfXaimbPEVmD7jPciPmOIiYTIt+BYBc5nSBvYHn/MWMS4G7zM07R8USejcSp4bl0qBRtJE9+3JOBumNcGZO4aMhIx3bRLlmGVNQ2kwKicNAV3tOrrLPEV8ZlsZVkluEYJ7mSfemSOKHGPBXVblU9N7T5I10w8Gg5ijqz7GoWSBJ+xoUbM+1Hjl2hJoA2Q2A2qTNsCsk94x5SP4i1Uoan4t+TppG6imzpR4PSuWGgnT9WZdf46qwS2gDyIzCTTPCbK41wNL1vFTm/jV4D0S+lzusUXSuP1Q0Tcv1qs0HrDmoM5oVfTB2IUAy8mxaNYGbU7pt3PbD+8jHR+0lzPjzldGMFyr6krPKfQxRiBoPsmvU329XpdShLuv1PQCDAMgwu+h+fL63RYOhSyfuEShTUkiPSRHhLBZFLwxKQOFBveEyyPFD8DQdJHOk2kJEt6i3BJLANYv+uiCEAnm3jbLph9aAlNMF0Taio7lgGBPkXxGl5stpt4DGOjMiCCGhf0vD+iWOsC9rEBS5RPg0k6rrX2kdAnQKFWu/utUk3zjgp0fIII5qiSVSXA5pOsK4bLrr93eUbHffo8nSUaYv92UVEcdgHpBfGItpQirsaZfjsmpY/BgwlmNOwfMSoL+pOnrivNfpOOpr3LBWFBQ0NR5COdgoWU9aynWgcMP75bqrYJu7J96Cu4bfBT/T4Hz/FtkmhVjI2UCTck+mqSoLLn2FV7eAZ/CsBwzcESiaQ4es5Mj6vDY7OVTxInzxgRGcALDTZ1SRSPJ4nS5vMQ5NLoYrH4T7gngR9wOnb3JJZIe0jv9C/W0FamZbZH+UZ0CMQF6UV9IgT33djtyhvZlQlJsZeCfOjyHOAqunKKAkTwnbsYtqB7W0s6f394T+2dN+/J54zjM6fkr/mjYrJ7ootYLM5xAKX+mj4=
-Received-SPF: pass client-ip=57.103.78.212;
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=766
+ clxscore=1030 phishscore=0 malwarescore=0
+ spamscore=0 mlxscore=0 adultscore=0
+ suspectscore=0 bulkscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.22.0-2506270000 definitions=main-2510160128
+X-JNJ: AAAAAAABxHUhm1q3G6Znj6AlF1nV1EKLBkFxsC7wPJ1b+/zbqfSH+KqPFww3qdrBf1HV/N10gMrED5RZV6aPsaGdHuPHyX2aVzHkCwK//xSz5GragYlSWYhVkcdSfZUrNB3xHN7Z3BDpkr+75l5oPrkaHNzYz6wjwGwp6Fl/vq0Lr3QlHG1iAPXbyq77hG/9ALsCsLbADqDmSxwieQKxd7CMi3widk968g0vP9A1XOtAcxsy78n3mk+Ww1ZljYlFUlRF6XnvOjtW2CI3MH0uH2mYafpedv+TEZX713o3Wq6XEbS0oGzq//L5VbZ3aescJlyBWpMpSbdxKGlZEPW9bzXVJjArz8oaN9rzXMJTfNQncpkw8Ssws/xHevQqeHJPVArl3BChZiDRBRAO+o1XQLIKXHnPwAOWBPnP72lMzwWIHfAuG4gSWEYVNbi9ovuQdiOqKUj3qUiHqkCp1zmB+bkOYusBy9gXBPwarmEGwxdbpNDBFB700cS1n5HdnUcaeMfGWwl3QbdFoZjdJH7/hDd5QTYsBiDI8jjQYidumpXU+1pwWuywVnN2NTQPnGnIODEPKIolRG0IrC+el4mGjjHBbdqYvuTDYamAehRXoDDqT+JDDGQ2lwbxb/Z1wLiWzgG2VDMLTgXa5g/17Dh7E5+kaYYroVm3EDV/g01bmwdIVBAG6gII953MjbcqnbiDehPoNo95+4XxqNHzDLrvFaxe8gTZEwEpPiEsKh5T6BNMaCfSz46SBdZYgq0gzjX7bVu0SnoFmRwzWHflkeLBATuTmHWc+9elBmlSnVIklJbWeQQ/2KzS2tM/rUlN+KzBMjTLPk/cSKc5oi2P8icGg7WSFLuajuG3vz5MoXPT/r/7TGw5hW/ttrOH1tjmBx0WUhO3UmTOeCYX/GebIPrb6vcapFw=
+Received-SPF: pass client-ip=57.103.78.53;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.st.icloud.com
-X-Spam_score_int: -16
-X-Spam_score: -1.7
+X-Spam_score_int: -17
+X-Spam_score: -1.8
 X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
- DKIM_SIGNED=0.1, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FORGED_SPF_HELO=1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, SPF_HELO_PASS=-0.001,
+ T_SPF_TEMPERROR=0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -101,182 +102,129 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Change terminology to match the KVM one, as APIC is x86-specific.
+winhvemulation is x86_64 only.
+
+In the future, we might want to get rid of winhvemulation usage
+entirely.
 
 Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 ---
- accel/whpx/whpx-accel-ops.c    |  2 +-
- accel/whpx/whpx-common.c       |  4 ++--
- hw/i386/x86-cpu.c              |  4 ++--
- include/system/whpx-internal.h |  2 +-
- include/system/whpx.h          |  4 ++--
- target/i386/cpu-apic.c         |  2 +-
- target/i386/whpx/whpx-all.c    | 14 +++++++-------
- 7 files changed, 16 insertions(+), 16 deletions(-)
+ accel/whpx/whpx-common.c       | 14 ++++++++++++--
+ include/system/whpx-common.h   |  2 ++
+ include/system/whpx-internal.h |  7 ++++++-
+ 3 files changed, 20 insertions(+), 3 deletions(-)
 
-diff --git a/accel/whpx/whpx-accel-ops.c b/accel/whpx/whpx-accel-ops.c
-index c84a25c273..50fadea0fd 100644
---- a/accel/whpx/whpx-accel-ops.c
-+++ b/accel/whpx/whpx-accel-ops.c
-@@ -78,7 +78,7 @@ static void whpx_kick_vcpu_thread(CPUState *cpu)
- 
- static bool whpx_vcpu_thread_is_idle(CPUState *cpu)
- {
--    return !whpx_apic_in_platform();
-+    return !whpx_irqchip_in_kernel();
- }
- 
- static void whpx_accel_ops_class_init(ObjectClass *oc, const void *data)
 diff --git a/accel/whpx/whpx-common.c b/accel/whpx/whpx-common.c
-index c0ff6cacb8..18d93225c1 100644
+index 66c9238586..95664a1df7 100644
 --- a/accel/whpx/whpx-common.c
 +++ b/accel/whpx/whpx-common.c
-@@ -496,9 +496,9 @@ static const TypeInfo whpx_cpu_accel_type = {
-  * Partition support
-  */
+@@ -41,7 +41,9 @@
+ bool whpx_allowed;
+ static bool whp_dispatch_initialized;
+ static HMODULE hWinHvPlatform;
++#ifdef __x86_64__
+ static HMODULE hWinHvEmulation;
++#endif
  
--bool whpx_apic_in_platform(void)
-+bool whpx_irqchip_in_kernel(void)
- {
--    return whpx_global.apic_in_platform;
-+    return whpx_global.kernel_irqchip;
+ struct whpx_state whpx_global;
+ struct WHPDispatch whp_dispatch;
+@@ -236,8 +238,10 @@ void whpx_destroy_vcpu(CPUState *cpu)
+     struct whpx_state *whpx = &whpx_global;
+ 
+     whp_dispatch.WHvDeleteVirtualProcessor(whpx->partition, cpu->cpu_index);
++#ifdef __x86_64__
+     AccelCPUState *vcpu = cpu->accel;
+     whp_dispatch.WHvEmulatorDestroyEmulator(vcpu->emulator);
++#endif
+     g_free(cpu->accel);
  }
  
- static void whpx_accel_class_init(ObjectClass *oc, const void *data)
-diff --git a/hw/i386/x86-cpu.c b/hw/i386/x86-cpu.c
-index c876e6709e..778607e7ca 100644
---- a/hw/i386/x86-cpu.c
-+++ b/hw/i386/x86-cpu.c
-@@ -45,7 +45,7 @@ static void pic_irq_request(void *opaque, int irq, int level)
+@@ -412,8 +416,12 @@ static bool load_whp_dispatch_fns(HMODULE *handle,
+         LIST_WINHVPLATFORM_FUNCTIONS(WHP_LOAD_FIELD)
+         break;
+     case WINHV_EMULATION_FNS_DEFAULT:
++#ifdef __x86_64__
+         WHP_LOAD_LIB(WINHV_EMULATION_DLL, hLib)
+         LIST_WINHVEMULATION_FUNCTIONS(WHP_LOAD_FIELD)
++#else
++        g_assert_not_reached();
++#endif
+         break;
+     case WINHV_PLATFORM_FNS_SUPPLEMENTAL:
+         WHP_LOAD_LIB(WINHV_PLATFORM_DLL, hLib)
+@@ -539,11 +547,11 @@ bool init_whp_dispatch(void)
+     if (!load_whp_dispatch_fns(&hWinHvPlatform, WINHV_PLATFORM_FNS_DEFAULT)) {
+         goto error;
+     }
+-
++#ifdef __x86_64__
+     if (!load_whp_dispatch_fns(&hWinHvEmulation, WINHV_EMULATION_FNS_DEFAULT)) {
+         goto error;
+     }
+-
++#endif
+     assert(load_whp_dispatch_fns(&hWinHvPlatform,
+         WINHV_PLATFORM_FNS_SUPPLEMENTAL));
+     whp_dispatch_initialized = true;
+@@ -553,9 +561,11 @@ error:
+     if (hWinHvPlatform) {
+         FreeLibrary(hWinHvPlatform);
+     }
++#ifdef __x86_64__
+     if (hWinHvEmulation) {
+         FreeLibrary(hWinHvEmulation);
+     }
++#endif
+     return false;
+ }
  
-     trace_x86_pic_interrupt(irq, level);
-     if (cpu_is_apic_enabled(cpu->apic_state) && !kvm_irqchip_in_kernel() &&
--        !whpx_apic_in_platform()) {
-+        !whpx_irqchip_in_kernel()) {
-         CPU_FOREACH(cs) {
-             cpu = X86_CPU(cs);
-             if (apic_accept_pic_intr(cpu->apic_state)) {
-@@ -71,7 +71,7 @@ int cpu_get_pic_interrupt(CPUX86State *env)
-     X86CPU *cpu = env_archcpu(env);
-     int intno;
+diff --git a/include/system/whpx-common.h b/include/system/whpx-common.h
+index e549c7539c..7a7c607e0a 100644
+--- a/include/system/whpx-common.h
++++ b/include/system/whpx-common.h
+@@ -3,7 +3,9 @@
+ #define SYSTEM_WHPX_COMMON_H
  
--    if (!kvm_irqchip_in_kernel() && !whpx_apic_in_platform()) {
-+    if (!kvm_irqchip_in_kernel() && !whpx_irqchip_in_kernel()) {
-         intno = apic_get_interrupt(cpu->apic_state);
-         if (intno >= 0) {
-             return intno;
+ struct AccelCPUState {
++#ifdef __x86_64__
+     WHV_EMULATOR_HANDLE emulator;
++#endif
+     bool window_registered;
+     bool interruptable;
+     bool ready_for_pic_interrupt;
 diff --git a/include/system/whpx-internal.h b/include/system/whpx-internal.h
-index e57d2c8526..366bc525a3 100644
+index e61375d554..e57d2c8526 100644
 --- a/include/system/whpx-internal.h
 +++ b/include/system/whpx-internal.h
-@@ -42,7 +42,7 @@ struct whpx_state {
+@@ -4,8 +4,9 @@
  
-     bool kernel_irqchip_allowed;
-     bool kernel_irqchip_required;
--    bool apic_in_platform;
-+    bool kernel_irqchip;
+ #include <windows.h>
+ #include <winhvplatform.h>
++#ifdef __x86_64__
+ #include <winhvemulation.h>
+-
++#endif
+ typedef enum WhpxBreakpointState {
+     WHPX_BP_CLEARED = 0,
+     WHPX_BP_SET_PENDING,
+@@ -98,12 +99,16 @@ void whpx_apic_get(DeviceState *s);
+ 
+ /* Define function typedef */
+ LIST_WINHVPLATFORM_FUNCTIONS(WHP_DEFINE_TYPE)
++#ifdef __x86_64__
+ LIST_WINHVEMULATION_FUNCTIONS(WHP_DEFINE_TYPE)
++#endif
+ LIST_WINHVPLATFORM_FUNCTIONS_SUPPLEMENTAL(WHP_DEFINE_TYPE)
+ 
+ struct WHPDispatch {
+     LIST_WINHVPLATFORM_FUNCTIONS(WHP_DECLARE_MEMBER)
++#ifdef __x86_64__
+     LIST_WINHVEMULATION_FUNCTIONS(WHP_DECLARE_MEMBER)
++#endif
+     LIST_WINHVPLATFORM_FUNCTIONS_SUPPLEMENTAL(WHP_DECLARE_MEMBER)
  };
- 
- extern struct whpx_state whpx_global;
-diff --git a/include/system/whpx.h b/include/system/whpx.h
-index 00f6a3e523..98fe045ba1 100644
---- a/include/system/whpx.h
-+++ b/include/system/whpx.h
-@@ -26,10 +26,10 @@
- #ifdef CONFIG_WHPX_IS_POSSIBLE
- extern bool whpx_allowed;
- #define whpx_enabled() (whpx_allowed)
--bool whpx_apic_in_platform(void);
-+bool whpx_irqchip_in_kernel(void);
- #else /* !CONFIG_WHPX_IS_POSSIBLE */
- #define whpx_enabled() 0
--#define whpx_apic_in_platform() (0)
-+#define whpx_irqchip_in_kernel() (0)
- #endif /* !CONFIG_WHPX_IS_POSSIBLE */
- 
- #endif /* QEMU_WHPX_H */
-diff --git a/target/i386/cpu-apic.c b/target/i386/cpu-apic.c
-index 242a05fdbe..d4d371a616 100644
---- a/target/i386/cpu-apic.c
-+++ b/target/i386/cpu-apic.c
-@@ -32,7 +32,7 @@ APICCommonClass *apic_get_class(Error **errp)
-         apic_type = "kvm-apic";
-     } else if (xen_enabled()) {
-         apic_type = "xen-apic";
--    } else if (whpx_apic_in_platform()) {
-+    } else if (whpx_irqchip_in_kernel()) {
-         apic_type = "whpx-apic";
-     }
- 
-diff --git a/target/i386/whpx/whpx-all.c b/target/i386/whpx/whpx-all.c
-index d1f8e49cb2..feabbec427 100644
---- a/target/i386/whpx/whpx-all.c
-+++ b/target/i386/whpx/whpx-all.c
-@@ -607,7 +607,7 @@ void whpx_get_registers(CPUState *cpu)
-                      hr);
-     }
- 
--    if (whpx_apic_in_platform()) {
-+    if (whpx_irqchip_in_kernel()) {
-         /*
-          * Fetch the TPR value from the emulated APIC. It may get overwritten
-          * below with the value from CR8 returned by
-@@ -749,7 +749,7 @@ void whpx_get_registers(CPUState *cpu)
- 
-     assert(idx == RTL_NUMBER_OF(whpx_register_names));
- 
--    if (whpx_apic_in_platform()) {
-+    if (whpx_irqchip_in_kernel()) {
-         whpx_apic_get(x86_cpu->apic_state);
-     }
- 
-@@ -1379,7 +1379,7 @@ static void whpx_vcpu_pre_run(CPUState *cpu)
-     }
- 
-     /* Get pending hard interruption or replay one that was overwritten */
--    if (!whpx_apic_in_platform()) {
-+    if (!whpx_irqchip_in_kernel()) {
-         if (!vcpu->interruption_pending &&
-             vcpu->interruptable && (env->eflags & IF_MASK)) {
-             assert(!new_int.InterruptionPending);
-@@ -1552,7 +1552,7 @@ int whpx_vcpu_run(CPUState *cpu)
- 
-     if (exclusive_step_mode == WHPX_STEP_NONE) {
-         whpx_vcpu_process_async_events(cpu);
--        if (cpu->halted && !whpx_apic_in_platform()) {
-+        if (cpu->halted && !whpx_irqchip_in_kernel()) {
-             cpu->exception_index = EXCP_HLT;
-             qatomic_set(&cpu->exit_request, false);
-             return 0;
-@@ -1641,7 +1641,7 @@ int whpx_vcpu_run(CPUState *cpu)
-             break;
- 
-         case WHvRunVpExitReasonX64ApicEoi:
--            assert(whpx_apic_in_platform());
-+            assert(whpx_irqchip_in_kernel());
-             ioapic_eoi_broadcast(vcpu->exit_ctx.ApicEoi.InterruptVector);
-             break;
- 
-@@ -2186,7 +2186,7 @@ int whpx_accel_init(AccelState *as, MachineState *ms)
-                 goto error;
-             }
-         } else {
--            whpx->apic_in_platform = true;
-+            whpx->kernel_irqchip = true;
-         }
-     }
- 
-@@ -2195,7 +2195,7 @@ int whpx_accel_init(AccelState *as, MachineState *ms)
-     prop.ExtendedVmExits.X64MsrExit = 1;
-     prop.ExtendedVmExits.X64CpuidExit = 1;
-     prop.ExtendedVmExits.ExceptionExit = 1;
--    if (whpx_apic_in_platform()) {
-+    if (whpx_irqchip_in_kernel()) {
-         prop.ExtendedVmExits.X64ApicInitSipiExitTrap = 1;
-     }
  
 -- 
 2.50.1 (Apple Git-155)

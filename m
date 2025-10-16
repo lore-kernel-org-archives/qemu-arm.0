@@ -4,87 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A123ACCD194
-	for <qemu-arm@archiver.kernel.org>; Thu, 16 Oct 2025 12:28:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD0BECCD199
+	for <qemu-arm@archiver.kernel.org>; Thu, 16 Oct 2025 13:57:38 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v9N0i-0000HB-U0; Thu, 16 Oct 2025 08:23:13 -0400
+	id 1v9OTQ-0006cs-Ru; Thu, 16 Oct 2025 09:56:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1v9MzV-0006Gr-BS
- for qemu-arm@nongnu.org; Thu, 16 Oct 2025 08:21:59 -0400
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1v9MzK-0000Xp-8g
- for qemu-arm@nongnu.org; Thu, 16 Oct 2025 08:21:56 -0400
-Received: by mail-wm1-x32b.google.com with SMTP id
- 5b1f17b1804b1-46e33b260b9so7609335e9.2
- for <qemu-arm@nongnu.org>; Thu, 16 Oct 2025 05:21:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1760617298; x=1761222098; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=j5JoI8Mc0kdc4AY9UQ6qwcX98nv+ym+WkOZXJtVQ8Ec=;
- b=bf2JvhJF5CtvgP/fAucvncQsufyhxQC/zM3vLP2mPXTrL72LBp8B2PAEKAt/OCl+/O
- BE0pc3OEC0w+e93kg8k+DAiRWJj8y739nZA09ecqoXYI6LGptgO2oCgJw30ParHH+xxO
- g4YIPZhmRSTjZuLQd4dcohvQt0Uv2g/2IHP++mmZgYs5pb4VoB6fzdzMm9WL3xQsDFs6
- 7w+t/NWZe9b3oWcyo+uLXMRflXEXDVdn+ORW3MCaVEfK24jtzUL2f1O5btQBvKvIDYm/
- WcGhM7l1FoGZjH9XGPHIANKbcqwaFQzrJ528u7Uf/bXgKMERgMHtoNK7QzB6T062OwiS
- jtUA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1760617298; x=1761222098;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=j5JoI8Mc0kdc4AY9UQ6qwcX98nv+ym+WkOZXJtVQ8Ec=;
- b=PXKLPUVmQ11mlbMhv5isccvti6Dyc1heY958+pldTQB91UYZ6Fvx/ZOoD+mlMmnnt9
- d6ABff/5/VcrM06Eo2sqVf/pjMsZmFpVwIpq9pucwvRWzpTeaaMjN83nUa60ACb/HtEy
- jo2Me0p2hVmTDhEWS6ufFe8/FmP7FiN9HlgK2kNsBbhsvsvg+S1EIsEcf2WtsDwASRz4
- KYOBfY1ILoN53mujG3jCWn6THbXg+hJ6H2YWzlrmFaYcti9MvxMPVFVoMDkJiW1kwVuq
- hRheNIBj3Ux4plNxF2uAfOfpL7vofiVtVLwOLBu/Rz6PF7iHjxERF/tkjkQzjetCZTpo
- RHiA==
-X-Gm-Message-State: AOJu0YxCvz+eXZcvF/UVuPDl+1j6ejPQ98qN+sEysjiFNWc7dxX1I/C4
- 0/8+2kUr4B5EVbBIKw1UmW3osIDSm6xX35436nehChrx11Oyg568cUweRc3RvwggJGMHLOVn4uv
- 518bw
-X-Gm-Gg: ASbGncv4yE564stMT1RhC21yArrxEk+I0Auq8IDS/jArX3A667j6RnNvenRSikPEvtU
- yF0AaCYKvC5xJ3zZkBLn2f2pc7aZUZsJbiJvvisortUBR8QwwMuI6zaT8qQ68voc2sabv2vLR7v
- TgudCnINjeNSk7zeYY9R2Yh/3OBgiw1FKeAXDQbNaYqaoZXH2OIUrl667CjVnZGg3SdJYUUPjtf
- 1KzpqkYDUCSETmV6CFwsCc/XAMCSEM6WhMUY9aIYtO/3Du6eCQrALeP48rJZfTMUPRtY7M2sICF
- QGHOZyauM7ChH/ggZtYbdrFHNlLJN/hQXULYwFR3fuwYFZ9uOwHXjxpqmJ7IseF+chc+mKVUQs4
- yeiHVRQRhE4Qrrn9If2TxO+bycsvw3CKgV6jOJuwzIE1Z0hmhp1UvaP7FUynkKbVRxo+xg77pWd
- rY/lDRp7A7Rw==
-X-Google-Smtp-Source: AGHT+IHcZysFXQCwAEBikJfkIp62aHPwAa6z4lu2jMo7yA3IQR+WFapZx8B+nbU8tMh+BPREnNbw3A==
-X-Received: by 2002:a05:6000:25c4:b0:426:ee84:25a1 with SMTP id
- ffacd0b85a97d-426ee842899mr7611238f8f.38.1760617298536; 
- Thu, 16 Oct 2025 05:21:38 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-426ff65596csm3412428f8f.24.2025.10.16.05.21.37
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 16 Oct 2025 05:21:37 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: Vacha Bhavsar <vacha.bhavsar@oss.qualcomm.com>
-Subject: [PATCH 0/2] target/arm: Support SME2 in gdbstub
-Date: Thu, 16 Oct 2025 13:21:30 +0100
-Message-ID: <20251016122132.737016-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.43.0
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1v9OTO-0006c0-Ii
+ for qemu-arm@nongnu.org; Thu, 16 Oct 2025 09:56:54 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1v9OTG-00065E-0q
+ for qemu-arm@nongnu.org; Thu, 16 Oct 2025 09:56:54 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1760623000;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=jJXkalnXc8twVuHEZ1Cy/JQpH0FxYFZzPkuFhGnTsCQ=;
+ b=eIyT+6XqoHF5wMEwruwyz3Pau1VvtlNar6dfhQ4QvUk2DGI8pStLnWmVU6Qu8epk7iCSGj
+ fX1BvLxMCCzUL99vDg9rjOlbBB9jynUEDQazD8fE05P+9LwCb3oLUole9Lf+hUbvaDRDos
+ r7nnwI1ncA/LcWgo9XKxb9LB5DJ1wuA=
+Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-612-0XajE8XePjOcddOFZbkW6Q-1; Thu,
+ 16 Oct 2025 09:56:36 -0400
+X-MC-Unique: 0XajE8XePjOcddOFZbkW6Q-1
+X-Mimecast-MFC-AGG-ID: 0XajE8XePjOcddOFZbkW6Q_1760622995
+Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 116C7195609F; Thu, 16 Oct 2025 13:56:35 +0000 (UTC)
+Received: from laptop.redhat.com (unknown [10.44.32.238])
+ by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 284FB19560AD; Thu, 16 Oct 2025 13:56:29 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, peter.maydell@linaro.org, cohuck@redhat.com,
+ maz@kernel.org, oliver.upton@linux.dev, sebott@redhat.com,
+ gshan@redhat.com, ddutile@redhat.com, peterx@redhat.com, philmd@linaro.org,
+ pbonzini@redhat.com
+Subject: [PATCH 0/7] Mitigation of "failed to load
+ cpu:cpreg_vmstate_array_len" migration failures
+Date: Thu, 16 Oct 2025 15:55:12 +0200
+Message-ID: <20251016135625.249551-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32b.google.com
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_PASS=-0.001, T_SPF_HELO_TEMPERROR=0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -100,36 +85,61 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This patchseries adds SME2 support to the gdbstub. This is
-fairly straightforward as the only thing we need to do is
-expose the new ZT0 register in the XML in the way that gdb
-documents that we should.
+When migrating ARM guests accross same machines with different host
+kernels we are likely to encounter failures such as:
 
-Patch 2 is a simple "check reads and writes" test case along
-the lines of our existing SME tests. I don't think there are
-any specific gdb version requirements here because the XML
-should be enough for gdb to know it's a 64 byte vector.
-(I also did a little manual testing with a program that
-reads and writes the ZT0 value in guest code to confirm that
-gdb interactions do the right thing.)
+"failed to load cpu:cpreg_vmstate_array_len"
 
-thanks
--- PMM
+This is due to the fact KVM exposes a different number of registers
+to qemu on source and destination. When trying to migrate a bigger
+register set to a smaller one, qemu cannot save the CPU state.
 
-Peter Maydell (2):
-  target/arm: Implement SME2 support in gdbstub
-  tests/tcg/aarch64: Add test case for SME2 gdbstub registers
+For example, recently we faced such kind of situations with:
+- unconditionnal exposure of KVM_REG_ARM_VENDOR_HYP_BMAP_2 FW pseudo
+  register from v6.16 onwards. Causes backward migration failure.
+- removal of unconditionnal exposure of TCR2_EL1, PIRE0_EL1, PIR_EL1
+  from v6.13 onwards. Causes forward migration failure.
 
- target/arm/cpu.h                       |  1 +
- target/arm/internals.h                 |  3 +
- target/arm/gdbstub.c                   |  7 +++
- target/arm/gdbstub64.c                 | 76 ++++++++++++++++++++++++++
- tests/tcg/aarch64/Makefile.target      |  9 ++-
- tests/tcg/aarch64/gdbstub/test-sme2.py | 41 ++++++++++++++
- 6 files changed, 136 insertions(+), 1 deletion(-)
- create mode 100644 tests/tcg/aarch64/gdbstub/test-sme2.py
+This situation is really problematic for distributions which want to
+guarantee forward and backward migration of a given machine type
+between different releases.
+
+This small series tries to address that issue by introducing CPU
+array properties that list the registers to ignore or to fake according
+to the situation. An example is given to illustrate how those props
+could be used to apply compats for machine types supposed to "see" the
+same register set accross various host kernels.
+
+The first patch improves the tracing so that we can quickly detect
+which registers are unexpected and cause the migration failure. Missing
+registers are also traced. Those do not fail migration but their default
+value is kept on the destination.
+
+Then we introduce the infrastructure to handle 'hidden' registers and
+'fake' registers.
+
+Eric Auger (7):
+  target/arm/machine: Improve traces on register mismatch during
+    migration
+  target/arm/kvm: Introduce the concept of hidden KVM regs
+  target/arm/kvm: Introduce the concept of enforced/fake registers
+  kvm-all: Add the capability to blacklist some KVM regs
+  target/arm/cpu: Implement hide_reg callback()
+  target/arm/kvm: Expose kvm-hidden-regs and kvm-fake-regs properties
+  hw/arm/virt: [DO NOT UPSTREAM] Enforce compatibility with older
+    kernels
+
+ include/hw/core/cpu.h   |  2 ++
+ target/arm/cpu.h        | 42 ++++++++++++++++++++++++
+ accel/kvm/kvm-all.c     | 12 +++++++
+ hw/arm/virt.c           | 19 +++++++++++
+ target/arm/cpu.c        | 12 +++++++
+ target/arm/kvm.c        | 73 ++++++++++++++++++++++++++++++++++++++++-
+ target/arm/machine.c    | 71 +++++++++++++++++++++++++++++++++++----
+ target/arm/trace-events | 11 +++++++
+ 8 files changed, 235 insertions(+), 7 deletions(-)
 
 -- 
-2.43.0
+2.49.0
 
 

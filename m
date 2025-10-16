@@ -4,108 +4,113 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7BD5FCCD19A
-	for <qemu-arm@archiver.kernel.org>; Thu, 16 Oct 2025 17:17:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74DF2CCD183
+	for <qemu-arm@archiver.kernel.org>; Thu, 16 Oct 2025 17:34:32 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v9RaS-0005VH-1V; Thu, 16 Oct 2025 13:16:25 -0400
+	id 1v9RrK-0003wP-F3; Thu, 16 Oct 2025 13:33:50 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1v9RZT-000541-G0
- for qemu-arm@nongnu.org; Thu, 16 Oct 2025 13:15:26 -0400
-Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1v9RZL-0004Yf-E8
- for qemu-arm@nongnu.org; Thu, 16 Oct 2025 13:15:21 -0400
-Received: by mail-pf1-x433.google.com with SMTP id
- d2e1a72fcca58-7835321bc98so1010290b3a.2
- for <qemu-arm@nongnu.org>; Thu, 16 Oct 2025 10:15:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1760634909; x=1761239709; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=tof3EVSvHhBUpVi7ajOyVgIJrNKqbMisVbLCxByvW5s=;
- b=Fqj90toHeOtgQ9OoWG0XX1DbbJeulXW6ioSso58JJqZgCfu1M303Kp/w/goxHqKJPo
- f9N69dAV1sCvkpfe+uR4yZjJl1gRsI9AgNwd/byPzvZWTAFP76LcF2b1aHJ4so4okkoE
- tLvV7JCkZ+ZojYEImtA/ZTq9s4QuXEBxVq7EQaH9xR/Pc5OvovyE1YR0CtNbQClfmNAw
- lO7IzV74vSHtp4gl7LM3pIGqQtKIyPgqgt3EV5GgAALefKRtSDKaaUGxhZ3VvEjAXV6j
- MkoWrG4tsTGillnFnQHudeQS7+/3zPrFrEThYnFeE0u8ziGXl37FEFe8gO9NvdkBKBSg
- 7rOg==
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1v9RrI-0003vY-EO
+ for qemu-arm@nongnu.org; Thu, 16 Oct 2025 13:33:48 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1v9Rr6-0006pe-V2
+ for qemu-arm@nongnu.org; Thu, 16 Oct 2025 13:33:47 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1760636013;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=3lKLu4Av1xpHCHBANQM6SCtMuajiuq4iWmzi38wMJxY=;
+ b=G1mrMs/VQ1BIsyg7w4h16TXM5B35gM5GAYMrmKCTxBbpMxa7lNgWcv4AlM1XdQgGfMWfRt
+ Kcdp90WEaE/IFmdUciXFQvyvUYdMq1/c8w5ZsRsJgtPlk5HdrsWPzo3ZXOG8k/wS2N6i5D
+ pbTxHOkjkeFOjy2n5vXbXerN1rJFGWE=
+Received: from mail-qv1-f72.google.com (mail-qv1-f72.google.com
+ [209.85.219.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-169-YPrLmqxHPA21LF8X9-8ZZg-1; Thu, 16 Oct 2025 13:33:30 -0400
+X-MC-Unique: YPrLmqxHPA21LF8X9-8ZZg-1
+X-Mimecast-MFC-AGG-ID: YPrLmqxHPA21LF8X9-8ZZg_1760636009
+Received: by mail-qv1-f72.google.com with SMTP id
+ 6a1803df08f44-8787a94467cso33913366d6.0
+ for <qemu-arm@nongnu.org>; Thu, 16 Oct 2025 10:33:30 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1760634909; x=1761239709;
+ d=1e100.net; s=20230601; t=1760636009; x=1761240809;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=tof3EVSvHhBUpVi7ajOyVgIJrNKqbMisVbLCxByvW5s=;
- b=h4lGZi3C6ZUyAPnKndSwwoWrqkZ4t6RbuytpHmxndM3f4/e9n/FtrVH1ukzrHjj2a/
- 63g4+zwQWKUEfh4dKZk7YiYtUm8D4j5UlJCT+piWAG4/X8YFNezkPB8Mwgb2fA28FS1D
- WqP4jm9Zyno7nvzK3CwFrQAvNTnNarDKVpkPKUyFy1Poxfzf6Y0ZN8yWNpLLGLX60L1U
- 9pOB4plgUJychzw89nubpvKJtmD7beVDOz9KaWeB35Tg80+ZLdZArTYrJy1e0w/DmNEx
- 8DY+jTMUJAHQAwFJcXbkT02l7iIzLGiUZTfVOE6KPPxvgOffHO7GS8XciQsH3IXwY7bP
- dR/A==
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=3lKLu4Av1xpHCHBANQM6SCtMuajiuq4iWmzi38wMJxY=;
+ b=Hbk1axhaBTwtI9g2u+zcqnM7Knjh9TqERWKFDcgZC+b1RSp+CmmC9cJ1RZga6dEIVc
+ vAa+WRjkFWApc+UAESAvMB+qaH+9H5TBUERxTWx10u1MA+cBfG+o8ozkpSDWm+ogDYPV
+ ZJNQbJNSlP5tzClGERWFG8PzrsiptbeCE75IbBCZMpnLWf8MxjfHBUtFXcNBGLrf4Pb3
+ 0ERUD4YAXQYrS9+yRIiO6aSryeuXQ8xVarWGu3PdW/0+8bxYvM7/e3MsWfg52oimjIZ7
+ 3DPEgE1hHesLFaJgCtTmkrktfNZRVQJz/ZYFe5EiJ43QaiFg0i+pyrQBVOnP8sbNb4YU
+ jlqA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCV8tYnBVPr1lc3fzBqCwn7fkaPS0xj4VZVLXufWrTLzRIlLmxXEVTkiJKMquyAjFHpB1WsxrEn2dQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yz6EnUC+RSU1lS1VZUH52GJkpQe9myhdqfzg4z71GXkUJdQTHNe
- +SfzRB0jpUHzhmMAgSb10D7phJ4yctBXo/qqQ8MrshTCnVNGxW/Ou/ozHLPB5vWulXE=
-X-Gm-Gg: ASbGncsaxtoDq/j9moH9uYaV7dXLVgodVo2Ft98D3pcZC8mdQ9H3DyYxBoH26Bqo7/8
- dVOEBAgvhEikANt9LEHYqKz+JG4ez3WXdzl95jtt9R9PSjOyBC+XRK0BdFx4wC5b4eh0oVRRCV1
- KEcv8oKpPjcjmNV5DvdtTzyVka9jGD5Y0zCPjHZfc8yM/lLiTGOKJ5qu0Wpp4zS/hDQu+NzjRVw
- uYmge3avqsEHdShUEL0ZrQVa8jofAPuGpPmie7U1WCpr8JSxllrMbd9G95yc/xFpQDn44LBeSkB
- SMnDd8nomBEkM1JZjWeqDNEXt2sMsb5gdV3zMVSbNEOd8E4MX07iJzVFdAXg8rV6Qvl4Bjqu5tZ
- EexVFqavIc/13laK7Vf8L6ZDW0Np1Xoiph9zE3wpJ5A2QbggS77Ktfl0u0MZg9glKbyMKhRvedo
- Xv8MYfRvq9Snk5
-X-Google-Smtp-Source: AGHT+IHfOj2/RGEhI9uYqAiueQ5geH38L5kdOF1sE9vNJMIOJ7LSbEsFzN5vZE3JkIhfd+nJud+MPg==
-X-Received: by 2002:a05:6a20:3c8e:b0:334:9c41:bdcb with SMTP id
- adf61e73a8af0-334a86445ddmr785445637.58.1760634909132; 
- Thu, 16 Oct 2025 10:15:09 -0700 (PDT)
-Received: from [192.168.1.87] ([38.41.223.211])
+ AJvYcCX7V6K1tLGh7+3jgwezo6I39m6WezIfr5I7Nlx7rgRFR49AyshvxTp0aKPVd99e5y7b9n+7lRNyeA==@nongnu.org
+X-Gm-Message-State: AOJu0Yz2n33IaXMXaiAAHMvlikIXP/eZqjCIM+eCGRL2QTqBzbXRQKxv
+ p7Pb5NKH+qwOZUHYl8mzztHu5XeimI5LWf0rsqnPPP0J3sDQD4W1STZvUj4Mv3J2h7/sUouEfEp
+ rHAS96z2bM6UX57Yi4XiCUmv+eHoFlu+N2BFLYp+rjUwhczc6I5qb9w==
+X-Gm-Gg: ASbGncsErpsuHZKx6wPlZmsVy27g4uU9WZwxWQpRPtaWRUnf/qFMM3ga+0uIdN/VXQL
+ AM5QvXApOAGifk+S0aFPEELakSSHyY44yEQxKh7Iw90ouYsv7Ap5fZSJGe0t0+ol7wzpWAu3T3R
+ e8KHUp+ms0gt65ask/JwiHC29NcXh/ude3UWWTx33l4GJkTV5Ib6xlafhOkOCOdI7038RnMqzjc
+ Te1hvlauaT24IkKJuj9OxBQ6L7h8dYRE8xxftTVYaug36ATEGlwL2oH+l0aXCGmraiTPOLTtphb
+ t0136U+6FXVidXW41NoFBr3FMkabXhyBZQLVS4ojC+2HMj6UIASSKMigk7Un5GrGhqfh21jr0XW
+ 8OTnrOsNCtbQA071A11YjVCbkgmWZ5CIF632rOKacnReGHg==
+X-Received: by 2002:a05:622a:2c7:b0:4e0:3486:8873 with SMTP id
+ d75a77b69052e-4e89d414c8fmr13679621cf.75.1760636009417; 
+ Thu, 16 Oct 2025 10:33:29 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGmRrDRdc2F9Fmhs+JizR4ybIBNZ//fiU+oHWXD3HcZg3wJVk4EVeHueGz0x3Isz2j5LcUf7g==
+X-Received: by 2002:a05:622a:2c7:b0:4e0:3486:8873 with SMTP id
+ d75a77b69052e-4e89d414c8fmr13679161cf.75.1760636008900; 
+ Thu, 16 Oct 2025 10:33:28 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-7992b060962sm23224426b3a.1.2025.10.16.10.15.08
+ af79cd13be357-88f35c6756asm242033185a.22.2025.10.16.10.33.23
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 16 Oct 2025 10:15:08 -0700 (PDT)
-Message-ID: <faf3cd2b-4961-4d7c-899f-bfaa9f2ee271@linaro.org>
-Date: Thu, 16 Oct 2025 10:15:07 -0700
+ Thu, 16 Oct 2025 10:33:28 -0700 (PDT)
+Message-ID: <e08c0f4b-fc8d-4420-ac07-78b9f2ce4ef0@redhat.com>
+Date: Thu, 16 Oct 2025 19:33:20 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v7 23/24] MAINTAINERS: update maintainers for WHPX
+Subject: Re: [RFC 1/3] target/arm/cpu: Add new CPU property for KVM regs to
+ hide
+To: Cornelia Huck <cohuck@redhat.com>, Sebastian Ott <sebott@redhat.com>,
+ Shameer Kolothum <skolothumtho@nvidia.com>
+Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ peter.maydell@linaro.org, maz@kernel.org, oliver.upton@linux.dev,
+ gshan@redhat.com
+References: <20250911134324.3702720-1-eric.auger@redhat.com>
+ <20250911134324.3702720-2-eric.auger@redhat.com>
+ <0f05a0ec-8b98-a9b7-6e3a-9ef73d0c34e7@redhat.com>
+ <b2ae3dc0-9bf0-4e89-a995-b97410d57861@redhat.com> <87ikgpv6yo.fsf@redhat.com>
+ <9590ce96-6617-4cfb-849e-b24ea7fcacb9@redhat.com> <87cy6oux45.fsf@redhat.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <87cy6oux45.fsf@redhat.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: 8Wx5_wFVo4FrMgtqP8iDbAOvPO9_Ig3Ip4JPbEmmiSk_1760636009
+X-Mimecast-Originator: redhat.com
 Content-Language: en-US
-To: Mohamed Mediouni <mohamed@unpredictable.fr>, qemu-devel@nongnu.org
-Cc: Alexander Graf <agraf@csgraf.de>,
- Richard Henderson <richard.henderson@linaro.org>,
- Cameron Esfahani <dirty@apple.com>, Mads Ynddal <mads@ynddal.dk>,
- qemu-arm@nongnu.org, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>, Ani Sinha <anisinha@redhat.com>,
- Phil Dennis-Jordan <phil@philjordan.eu>,
- Eduardo Habkost <eduardo@habkost.net>,
- Sunil Muthuswamy <sunilmut@microsoft.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Yanan Wang <wangyanan55@huawei.com>,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- Shannon Zhao <shannon.zhaosl@gmail.com>, kvm@vger.kernel.org,
- Peter Maydell <peter.maydell@linaro.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- Pedro Barbuda <pbarbuda@microsoft.com>, Zhao Liu <zhao1.liu@intel.com>,
- Roman Bolshakov <rbolshakov@ddn.com>
-References: <20251016165520.62532-1-mohamed@unpredictable.fr>
- <20251016165520.62532-24-mohamed@unpredictable.fr>
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-In-Reply-To: <20251016165520.62532-24-mohamed@unpredictable.fr>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::433;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pf1-x433.google.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -118,21 +123,87 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 10/16/25 9:55 AM, Mohamed Mediouni wrote:
-> And add arm64 files.
-> 
->  From Pedro Barbuda (on Teams):
-> 
->> we meant to have that switched a while back. you can add me as the maintainer. Pedro Barbuda (pbarbuda@microsoft.com)
-> 
-> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
-> ---
->   MAINTAINERS | 7 +++++--
->   1 file changed, 5 insertions(+), 2 deletions(-)
+Hi Connie,
 
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+On 10/15/25 3:12 PM, Cornelia Huck wrote:
+> On Tue, Oct 14 2025, Eric Auger <eric.auger@redhat.com> wrote:
+>
+>> On 10/8/25 3:49 PM, Cornelia Huck wrote:
+>>> On Fri, Oct 03 2025, Eric Auger <eric.auger@redhat.com> wrote:
+>>>
+>>>> Hi Sebastian,
+>>>>
+>>>> On 9/18/25 6:16 PM, Sebastian Ott wrote:
+>>>>> On Thu, 11 Sep 2025, Eric Auger wrote:
+>>>>>> New kernels sometimes expose new registers in an unconditionnal
+>>>>>> manner.  This situation breaks backward migration as qemu notices
+>>>>>> there are more registers to store on guest than supported in the
+>>>>>> destination kerenl. This leads to a "failed to load
+>>>>>> cpu:cpreg_vmstate_array_len" error.
+>>>>>>
+>>>>>> A good example is the introduction of KVM_REG_ARM_VENDOR_HYP_BMAP_2
+>>>>>> pseudo FW register in v6.16 by commit C0000e58c74e (“KVM: arm64:
+>>>>>> Introduce KVM_REG_ARM_VENDOR_HYP_BMAP_2”). Trying to do backward
+>>>>>> migration from a host kernel which features the commit to a destination
+>>>>>> host that doesn't fail.
+>>>>>>
+>>>>>> Currently QEMU is not using that feature so ignoring this latter
+>>>>>> is not a problem. An easy way to fix the migration issue is to teach
+>>>>>> qemu we don't care about that register and we can simply ignore it,
+>>>>>> including its state migration.
+>>>>>>
+>>>>>> This patch introduces a CPU property, under the form of an array of
+>>>>>> reg indices which indicates which registers can be ignored.
+>>>>>>
+>>>>>> The goal then is to set this property in machine type compats such
+>>>>>> as:
+>>>>>> static GlobalProperty arm_virt_kernel_compat_10_1[] = {
+>>>>>>    /* KVM_REG_ARM_VENDOR_HYP_BMAP_2 */
+>>>>>>    { TYPE_ARM_CPU, "kvm-hidden-regs", "0x6030000000160003" },
+>>>>>> }
+>>>>> One thing worth noting - once this series lands:
+>>>>> https://lore.kernel.org/qemu-devel/20250801074730.28329-1-shameerkolothum@gmail.com/
+>>>>>
+>>>>> we might need to add a bit more logic here. Either using the kvm
+>>>>> interfaces (only ignore KVM_REG_ARM_VENDOR_HYP_BMAP_2 when the register
+>>>>> value is 0) or qemu knowledge (only ignore KVM_REG_ARM_VENDOR_HYP_BMAP_2
+>>>>> when the impl-cpu property is not used).
+>>>> Effectively if we "hide" KVM_REG_ARM_VENDOR_HYP_BMAP_2 on save/restore
+>>>> we must enforce the reg is not used by userspace.
+>>>>
+>>>> One way would be to test whether KVM_REG_ARM_VENDOR_HYP_BMAP_2 is hidden
+>>>> in kvm_arm_target_impl_cpus_supported() and if it is, report false.
+>>>> However for every new functionality in qemu it does not sound sensible
+>>>> to check whether new KVM regs being used are anonymously hidden.
+>>>>
+>>>> Another way could be to fail kvm_set_one_reg/kvm_get_one_reg in case the
+>>>> register is hidden. That way in Shameer's series, kvm_arch_init_vcpu()
+>>>> would fail if BMAP_2 is hidden, ie. in our example for all machines
+>>>> types before 10.2. By the way adding Shameer.
+>>> I think tying this to the state of the reg (hidden or not) is less
+>>> error-prone (I'd assume we'd have different ways of detecting whether
+>>> something is used for future cases, and "is the reg hidden?" would work
+>>> in all cases.) We'd need to tie migration to matching machine versions
+>>> anyway, I think.
+>>>
+>> I guess you suggest to check the hidden/fake state in
+>>
+>> kvm_set_one_reg/kvm_get_one_reg too. One issue is those helpers are arch agnostic. I would need to either introduce a callback in the CPU class to check the actual status or add the props in the parent CPU object. Or introduce a KVM IOTCL to teach KVM a reg shall never be accessed.
+> Aren't they always called from arch code, though? We could easily wrap
+> them for arm, I think. (Unless there's some more generic interest in
+> conditional ONE_REG accesses.)
+
+For the time being I chose to add a new CPU class callback to check
+whether the reg is hidden in kvm_set/get_one_reg.
+Let's wait for other comments ... ;-)
+
+Thanks
+
+Eric
+>
 
 

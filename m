@@ -4,87 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C705FCCD183
-	for <qemu-arm@archiver.kernel.org>; Thu, 16 Oct 2025 17:06:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DEC31CCD183
+	for <qemu-arm@archiver.kernel.org>; Thu, 16 Oct 2025 17:08:45 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v9RI6-0000wE-NX; Thu, 16 Oct 2025 12:57:26 -0400
+	id 1v9RSb-0007yt-9J; Thu, 16 Oct 2025 13:08:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1v9RI5-0000v7-KZ
- for qemu-arm@nongnu.org; Thu, 16 Oct 2025 12:57:25 -0400
-Received: from p-east2-cluster1-host6-snip4-10.eps.apple.com ([57.103.76.103]
- helo=outbound.st.icloud.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1v9RHo-0001ZW-St
- for qemu-arm@nongnu.org; Thu, 16 Oct 2025 12:57:24 -0400
-Received: from outbound.st.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-east-1a-100-percent-2 (Postfix) with ESMTPS id
- 5440818000A2; Thu, 16 Oct 2025 16:56:59 +0000 (UTC)
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; bh=9vYko/DI2RK+OqhuWK0dyFWYB5OCgm45PuZW5dC4nJ8=;
- h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
- b=Gzby4UYUzpY3g8LA3ulEXCMPcPTQQUS2RUpDEfng7KV8eR/8kRatU59mCSf6dDHjSHWSxYFofepPHbZwQ1kDiEiLY3F7avCgMyhtvhdDcATPd/eL8MVBt5QQC41ntQuZVK1Ka0kUozgmvxIhWXHhZm7xOttxBPEQ4APdKXOPwEXpapTbqdcmd2+5X0Bd579pPpcZ0/aB/KQNMc9dqfrMcVJHdmaCV2HgUlV/gT8bL/9dW9i5iyTibQ+pSAmyobB+legHBSy+Lyc3b/iQGijtFivpEdJ6w2HV6neQPXnwFQ0sYAtkrR+1JVkS6DINoRW4OHPEMH/UbaN1vpFq6r3BLQ==
-mail-alias-created-date: 1752046281608
-Received: from localhost.localdomain (unknown [17.42.251.67])
- by p00-icloudmta-asmtp-us-east-1a-100-percent-2 (Postfix) with ESMTPSA id
- 1B4C818015F7; Thu, 16 Oct 2025 16:55:39 +0000 (UTC)
-From: Mohamed Mediouni <mohamed@unpredictable.fr>
-To: qemu-devel@nongnu.org
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
+ id 1v9RSY-0007yS-N9
+ for qemu-arm@nongnu.org; Thu, 16 Oct 2025 13:08:14 -0400
+Received: from mail-pf1-x42b.google.com ([2607:f8b0:4864:20::42b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
+ id 1v9RSM-0003DF-Ec
+ for qemu-arm@nongnu.org; Thu, 16 Oct 2025 13:08:13 -0400
+Received: by mail-pf1-x42b.google.com with SMTP id
+ d2e1a72fcca58-7a213c3c3f5so1373549b3a.3
+ for <qemu-arm@nongnu.org>; Thu, 16 Oct 2025 10:08:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1760634476; x=1761239276; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=mzbO6qxXTSLN2VfEZ7sgVqVzDYN015Du6ppqHnVvYSo=;
+ b=DRXYJhLts6pQgIWra1GSFIW5VaTQItoQM3/7fG0FXbPtENJe+YjVPS6f/Nf5tdwrwl
+ Ipv4eb8Nnb7vmKvmdiC2hsrV22+fwWCctjRgPU4EcS8d15vPrxafkHlB95JEgKUUL+/F
+ CHK2Mbtm6SnPBG2/S9W0m4CfHXC8fWDBcGmWt0oq7S75q/aWZQgxe/b0om5SYuC2oqZs
+ 3iehZYOTyzPuAlX97fsLNCFsvB1zn0XLQiIgpVvAwFbUsYy+29JTcGO5ng9y4clySpNk
+ 8xf70YW/D/nBPlvoGF+IVpkTzTNOlMKGBkwV0VLaFKf4ZzTsXiL5x3P3vCYHbWviMHA+
+ +crQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1760634476; x=1761239276;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=mzbO6qxXTSLN2VfEZ7sgVqVzDYN015Du6ppqHnVvYSo=;
+ b=V/WzbKja5pHoNMGdc5Suf8cAHSzOxNiDe4cfQZas05MGqc8/rJU2+SCvd1sDV1BT7z
+ tkmSUtSPHzMElKv56OyMEz6WRP65YbtaVtR4L/TT5gYx28JJEJ0ZX3MYlx3GkNsGN+M3
+ kv4qjufV1UMcDPJa2pBULYEevIz1RIzmLphogGfgTMXk3rGnorNF48RKjkI1sZhmchIR
+ hPu8//TAR1SvrvgUggz7xbhkPctsHbiRpH8gCnKN6kJ+kYJJ5PGRoF8ODqSsZhkUyX/2
+ P/lX0Df69xia9XprAU2AVN6q6dSEh1/HS50DCUYi/CNAxKyDEG5DYUrNKDJDWlme9+Y6
+ kMjw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVZkDaOeJTMRvuA9aklpJrI2rylytuHuCYJnpRTrQzNdq0G4hyGLErzARIfk4NBorL1uLvqjRYSTg==@nongnu.org
+X-Gm-Message-State: AOJu0YxJmOsN0uVDrnDKolxkjONZhS2/OHlLr8IHSQ4xvl4VGTA7ayHR
+ 6ZqOw+oibBICMZQWp4tCIZOIrEUAE3xYjlhfGWgX0wntEFP/Hrw3xE0DAaTXDGyTiEM=
+X-Gm-Gg: ASbGncuEtNlfnxRjRZyrzmfIWoTl4Yzl+HzSAty8B2wFbZSzssKdHh0QlOZUQZILCQE
+ g5+JXzz4oIlzk2BFKQoE9liJfRn7lGZ6AZTMIn8K1W2FE18LJ3WMz7FnvxXPgnBhwqpMMmXNxP7
+ 38q3877r3+j8VN7K+KDT1JS8oL29qND7pSPf8Y318TgdNFIZfCeFRkEAA0sy8A/I2pUX4e+y3xn
+ PCIGrdw3d98uUOl18Uv7kq6foJ5NFTBeGcR3TJIPztHMUZiUNieVrDWEFZws88hGXZNlhHORJwI
+ vZ46TuZkO9H8VdBNIr13d/yXfnvMx9fA8cX5AgwyBe+nklSMl9k9zd6hCJneZlg5n1k9v5QPgDQ
+ 5MWnwiPO+lZlwegOIk8wBpHrsXi5ElkHc4/b5o3KCZgCGEWIYYOWTtulbbLjrvyuqT9UFr7aSKq
+ jYltmVq08rdYICDPehNgwJQd4=
+X-Google-Smtp-Source: AGHT+IEz4yyVpPHAHnaSdwY5OhhzkZ+c1o6Qi6CcgXGWF688z8Ud9rib7Lcs7Z3hHBFsvf4idG26UQ==
+X-Received: by 2002:a05:6a21:6da1:b0:262:da1c:3bfb with SMTP id
+ adf61e73a8af0-334a84854b9mr821530637.7.1760634476213; 
+ Thu, 16 Oct 2025 10:07:56 -0700 (PDT)
+Received: from [192.168.1.87] ([38.41.223.211])
+ by smtp.gmail.com with ESMTPSA id
+ 41be03b00d2f7-b6a31e443e9sm1825218a12.16.2025.10.16.10.07.55
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 16 Oct 2025 10:07:55 -0700 (PDT)
+Message-ID: <0d421108-0a63-464d-82de-071ccbc61919@linaro.org>
+Date: Thu, 16 Oct 2025 10:07:54 -0700
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v7 01/24] target/arm/kvm: add constants for new PSCI
+ versions
+Content-Language: en-US
+To: Mohamed Mediouni <mohamed@unpredictable.fr>, qemu-devel@nongnu.org
 Cc: Alexander Graf <agraf@csgraf.de>,
  Richard Henderson <richard.henderson@linaro.org>,
  Cameron Esfahani <dirty@apple.com>, Mads Ynddal <mads@ynddal.dk>,
- qemu-arm@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Ani Sinha <anisinha@redhat.com>, Phil Dennis-Jordan <phil@philjordan.eu>,
- Mohamed Mediouni <mohamed@unpredictable.fr>,
+ qemu-arm@nongnu.org, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>, Ani Sinha <anisinha@redhat.com>,
+ Phil Dennis-Jordan <phil@philjordan.eu>,
  Eduardo Habkost <eduardo@habkost.net>,
  Sunil Muthuswamy <sunilmut@microsoft.com>,
  "Michael S. Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Yanan Wang <wangyanan55@huawei.com>,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
  Shannon Zhao <shannon.zhaosl@gmail.com>, kvm@vger.kernel.org,
  Peter Maydell <peter.maydell@linaro.org>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
  Pedro Barbuda <pbarbuda@microsoft.com>, Zhao Liu <zhao1.liu@intel.com>,
- Roman Bolshakov <rbolshakov@ddn.com>
-Subject: [PATCH v7 05/24] tests: data: update AArch64 ACPI tables
-Date: Thu, 16 Oct 2025 18:55:01 +0200
-Message-ID: <20251016165520.62532-6-mohamed@unpredictable.fr>
-X-Mailer: git-send-email 2.50.1
-In-Reply-To: <20251016165520.62532-1-mohamed@unpredictable.fr>
+ Roman Bolshakov <rbolshakov@ddn.com>, Sebastian Ott <sebott@redhat.com>
 References: <20251016165520.62532-1-mohamed@unpredictable.fr>
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Proofpoint-GUID: nL2f9-qVKTAOT-czoVdv_a_CelvUcbF5
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMDE2MDEyMiBTYWx0ZWRfX7McmO7U0ku9C
- Vo7zo9TnQ7Dqp3OkEkuK8UHp8I1ZYgSxc0nMeTY9GVSTrf6junCxUfKvo5JVGudhpczISVV+YAT
- TNN5rPnhJplCJvbIQFPcCkF+9yuWXnu/mmH+vuAZyPRkg7/gIr5qOvwr9Tb6hm/J2z1RqzTZMP9
- ra/1O/wMGZMKKVNArF1TeE4xZEoTQ7NmKALced+StQz3O2H9391SQP98v5a/KkLoRABCwm/y/IF
- jOujzwEP+/mHcDxTAffFZbHHZxZtwlcf+PQmoEVihccUzUoEpWxnyxPJl1IPizaZnepNw9Ymg=
-X-Proofpoint-ORIG-GUID: nL2f9-qVKTAOT-czoVdv_a_CelvUcbF5
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.80.40
- definitions=2025-10-16_03,2025-10-13_01,2025-03-28_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
- malwarescore=0 mlxscore=0 spamscore=0 mlxlogscore=999 clxscore=1030
- bulkscore=0 phishscore=0 suspectscore=0 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.22.0-2506270000 definitions=main-2510160122
-X-JNJ: AAAAAAABrUdMCKki9ilHdx9Qzz2Bf5D66wXh2PwhbP78n2nI7EphiiJDoEK87mNlONjy7lPHd1aEdwxgT0usOUl1I3zjVuEdkDhzLTrqMcby9qzqmYG81p5T9RNSyN+TilfYEcracdJZ2NR1oK0Vlll5o8r8Tlm11NNtFlRv5DnmbvCiyyUWE2yRGRolW66qziVSfooOhnj1NIU+xM0QHKRsJWMrdT0eh+P6ghm8WX1z1pfGgRCUR8rGh5CDb6IgizU4iBwigB6Z3ccn5REYtMuZZzLQl2nlr4GB/MbcgXWR7rW0c21vJ6WeK26jPbskBEyuQ3wph+crGO7HNHBUd2PW0JG8uLkJdn8XN3dY1h7meqF4+AE1W6IUUhpxKfbgDjiLowHSZI2/s4Y7kjQWI7PnjH0+mABacJjO9Fj99h0sBKdCD0ENVPaYuxmNrrm2TsdfA46afg2Ct7iW0LOzTVDBHMO0jdvCkYKzSUFsDV4zL1VxCiQXXkjaasaPTI5igGuWb1Yncv5c17XMJ8gjC/Qoz3eQKZWKhde7P4hf2whmVwhBfh3JvYKa9xkYnDOgDGslhq2bitykTIxre7frd0WB2f2hUUOf1KxdbfOanjZv/wWCU4CXYAKqop/SIUOWOvZJ3VZlyDf6get8y+iOI7GIwuFnIM6So/ryum2o/O0V1hyvHq3ehBFaBeqxRfgdD9//SqskkEhuTOwmNJgTU9+HTjEjMeYtQoyIxp4PbGD/TyL+Tl7m9BYMY1CgIxV3r0H0SxSilsLet5jrTpHmcpyXwah4HhMlf6fCxuWZWC5mZT3kXTeeV6tStxu3AYM+JRPvKFltM/RujVcuuPxchEpgG/kQhyt78C/T+dq12C2X3E3VB2WGVGa3hARyveO24sGjQ3CE1poSNAlg/HpUfMPyIgbzdt6f
-Received-SPF: pass client-ip=57.103.76.103;
- envelope-from=mohamed@unpredictable.fr; helo=outbound.st.icloud.com
-X-Spam_score_int: -23
-X-Spam_score: -2.4
+ <20251016165520.62532-2-mohamed@unpredictable.fr>
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+In-Reply-To: <20251016165520.62532-2-mohamed@unpredictable.fr>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42b;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pf1-x42b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
- DKIM_SIGNED=0.1, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001,
- RCVD_IN_MSPIKE_WL=0.001, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_PASS=-0.001,
- T_SPF_HELO_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -100,32 +122,15 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-After the previous commit introducing GICv3 + GICv2m configurations,
-update the AArch64 ACPI table for the its=off case.
-
-Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
----
- tests/data/acpi/aarch64/virt/APIC.its_off   | Bin 164 -> 188 bytes
- tests/qtest/bios-tables-test-allowed-diff.h |   1 -
- 2 files changed, 1 deletion(-)
-
-diff --git a/tests/data/acpi/aarch64/virt/APIC.its_off b/tests/data/acpi/aarch64/virt/APIC.its_off
-index 6130cb7d07103b326feb4dcd7034f85808bebadf..16a01a17c0af605daf64f3cd2de3572be9e60cab 100644
-GIT binary patch
-delta 43
-qcmZ3&xQCI;F~HM#4+8@Oi@`*$SrWVwKqeS4aeydBAa-B~U;qHCpaq8j
-
-delta 18
-ZcmdnPxP+0*F~HM#2?GNI3&%vRSpY3v1aANU
-
-diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
-index bfc4d60124..dfb8523c8b 100644
---- a/tests/qtest/bios-tables-test-allowed-diff.h
-+++ b/tests/qtest/bios-tables-test-allowed-diff.h
-@@ -1,2 +1 @@
- /* List of comma-separated changed AML files to ignore */
--"tests/data/acpi/aarch64/virt/APIC.its_off",
--- 
-2.50.1 (Apple Git-155)
+On 10/16/25 9:54 AM, Mohamed Mediouni wrote:
+> From: Sebastian Ott <sebott@redhat.com>
+> 
+> Add constants for PSCI version 1_2 and 1_3.
+> 
+> Signed-off-by: Sebastian Ott <sebott@redhat.com>
+> ---
+>   target/arm/kvm-consts.h | 2 ++
+>   1 file changed, 2 insertions(+)
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 
 

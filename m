@@ -4,106 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F193ACCD195
-	for <qemu-arm@archiver.kernel.org>; Thu, 16 Oct 2025 14:03:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2009FCCD183
+	for <qemu-arm@archiver.kernel.org>; Thu, 16 Oct 2025 16:57:44 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v9OZb-0004nE-9f; Thu, 16 Oct 2025 10:03:20 -0400
+	id 1v9RHx-0000qO-BE; Thu, 16 Oct 2025 12:57:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1v9OZX-0004l6-Pr
- for qemu-arm@nongnu.org; Thu, 16 Oct 2025 10:03:15 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1v9RHu-0000ok-7L
+ for qemu-arm@nongnu.org; Thu, 16 Oct 2025 12:57:14 -0400
+Received: from p-east2-cluster3-host10-snip4-10.eps.apple.com ([57.103.77.151]
+ helo=outbound.st.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1v9OZT-000794-1m
- for qemu-arm@nongnu.org; Thu, 16 Oct 2025 10:03:15 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1760623385;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=t8giGHhG8T5nbIjMPjoC+yK9yQpSqCmuqMYVXVpZhhA=;
- b=gkhDqwmupkgcKdxBy0JTvKItIkesprJrsP+1mXFTBOcmHK1nqR5dXmrF6ET4Peah2ycsxT
- WVjHkWZ0Cawl38vBKLajqLzEy5CYtGeTrUxf1mCoU/u+3KanQGjrJjttM923xgKdmIn9j4
- PB9JVfr/lOJ3vWDzokwrVj1gXNGlVVc=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-489-m9Gp0YFsO26k3swgOsCK9g-1; Thu, 16 Oct 2025 10:03:04 -0400
-X-MC-Unique: m9Gp0YFsO26k3swgOsCK9g-1
-X-Mimecast-MFC-AGG-ID: m9Gp0YFsO26k3swgOsCK9g_1760623383
-Received: by mail-wm1-f69.google.com with SMTP id
- 5b1f17b1804b1-471144baa6bso2588005e9.1
- for <qemu-arm@nongnu.org>; Thu, 16 Oct 2025 07:03:03 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1760623383; x=1761228183;
- h=content-transfer-encoding:in-reply-to:from:references:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=t8giGHhG8T5nbIjMPjoC+yK9yQpSqCmuqMYVXVpZhhA=;
- b=RkNL2wct6usayP6zxQqPyD78AbqFA7hx1A221yaX/vNGrU6kwTAmaWqyNpi9zVwF62
- S2JWcVdCKDCX2h57yodX5APngZTOPq5v9HiQNp7TPy+fKGcvqGpqPXQBrDrgx2PDiEgX
- Knv0ZUyz8przpdkLpCdilx+iaDzBXZ36zRiKM6uIwwNQLaQkpIavS7FjZQdVO25TjubP
- IwKHrMZzcRO8KlVSq/CTY5sMLHR+0CcFC8AtInJd/Yiw1Z1Lrnf/m/h6fo4ma123JZtH
- 7mQ2StNqrZp56m6d5CBjmYHXHHKHSw7d4Otw2L+U6DEw3W1v3YUJIzlLaMtJtSSY7An2
- QCVA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCU3l2jTezHFqjF4zeWy3TcIJ30nbOmlNs9YQ9OZY3p+MnC5ssz3B91a5IOEDvS74fBFlAvpj5ZMcA==@nongnu.org
-X-Gm-Message-State: AOJu0YzMb+oqb0jdIMwBeKp63ZU8fyZAniulmDvlURfto1DFk905J3kC
- ArnapdRtxG6RzKYJjLh39CAcmCsTLQRLhSSpvhW8L1ulu5YDPz/Ynzhf5iP1fyij4ve2I+u7TBA
- ZNTUEqMeSTVDUGHMww0dm5YOR3WY/SspCOnvj7ZAPbP9F1toLGr+UBw==
-X-Gm-Gg: ASbGnctJnxIyQhj/H94jmnRM9dmtkphPYDN3qHyuXQPMOO6Wvbk+cLLf+pwARNWfa2I
- 7WopVKWhyu6aGo9hlZtRB7DVosGr8/pqUkT2hGZfk11p7fhN05PLCTl1BL9uXuwSug0bvdtSV1e
- 9ho6cCtJtH1FVjA2/M90nVj6+YMxJbeN3fB33ok1t6n+SR50D2EBrsfcoB4KZN+njIM95KusLzM
- nzPjPyfIiCJElX3lXT2AJ4k279gbSHY3+Ba+ynuMEh5ZtZwiAFtZ7Ii+r9t1zfyDt6zWdDvNAb/
- oh36yOfQLzWj0BxEB+8fqiMGOER2cmn10+kr6qWWCSTDWEiTDG/ZjB30CyMkqRe0b1vN3RGkg7F
- yQqD4nbgf+7J0BnTI33pN7YcPgekRyz7Tg9IzpStGgU2Eww==
-X-Received: by 2002:a05:600c:3544:b0:471:c72:c80b with SMTP id
- 5b1f17b1804b1-471178ad7b3mr599665e9.18.1760623382758; 
- Thu, 16 Oct 2025 07:03:02 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHJrVIC0NiC3D/z9lLru4+1nxANr45HaI5xWg8T/RSKZr4f2v5O4Ms8S+qsCZMRpPTLQqsf9A==
-X-Received: by 2002:a05:600c:3544:b0:471:c72:c80b with SMTP id
- 5b1f17b1804b1-471178ad7b3mr599375e9.18.1760623382104; 
- Thu, 16 Oct 2025 07:03:02 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4710f289daasm20449135e9.6.2025.10.16.07.03.00
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 16 Oct 2025 07:03:01 -0700 (PDT)
-Message-ID: <6b07479f-cc69-4b05-bd6b-ef3fa199794a@redhat.com>
-Date: Thu, 16 Oct 2025 16:02:59 +0200
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1v9RHm-0001Yt-D3
+ for qemu-arm@nongnu.org; Thu, 16 Oct 2025 12:57:13 -0400
+Received: from outbound.st.icloud.com (unknown [127.0.0.2])
+ by p00-icloudmta-asmtp-us-east-1a-100-percent-2 (Postfix) with ESMTPS id
+ 94E4C18011DF; Thu, 16 Oct 2025 16:56:57 +0000 (UTC)
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
+ s=sig1; bh=2o+iQBYw5OGJygArfdAEPT3ofAe32f1/RgxpAOHPkHU=;
+ h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
+ b=g/o12BhYV0kSp6Lv61nvr9KSF7iE0iHCjGDbi9oMePztcxtorQD34KeUZCPQpgNNyl+Wn6gEaCp9ST6AeWaaOAIZ+lmkjF/8Ax+KcankAB4KuDRlyjWUl4XPnnXCYTmiuPWyiESvh/za4o1hJOrKU6zSW8Zc1dDiepEGudkjy1WYakcClFruKMibXLGdVweRTk2EZe1NV4DPrF5ED4vUevlx42nhjii6inI5AoRqfvuQODy5qVKHIe0MiaIHrV+x3eBZmyhS/jvPjCh1HNNPGM7rPieSQ0hf2LRbFlEPVVgvaAI3qPWfnvnOBEHBHMPQRtlIO8fsEeQj2P9/KN/y/Q==
+mail-alias-created-date: 1752046281608
+Received: from localhost.localdomain (unknown [17.42.251.67])
+ by p00-icloudmta-asmtp-us-east-1a-100-percent-2 (Postfix) with ESMTPSA id
+ C2EB41800303; Thu, 16 Oct 2025 16:55:36 +0000 (UTC)
+From: Mohamed Mediouni <mohamed@unpredictable.fr>
+To: qemu-devel@nongnu.org
+Cc: Alexander Graf <agraf@csgraf.de>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Cameron Esfahani <dirty@apple.com>, Mads Ynddal <mads@ynddal.dk>,
+ qemu-arm@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Ani Sinha <anisinha@redhat.com>, Phil Dennis-Jordan <phil@philjordan.eu>,
+ Mohamed Mediouni <mohamed@unpredictable.fr>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Sunil Muthuswamy <sunilmut@microsoft.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Yanan Wang <wangyanan55@huawei.com>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>, kvm@vger.kernel.org,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ Pedro Barbuda <pbarbuda@microsoft.com>, Zhao Liu <zhao1.liu@intel.com>,
+ Roman Bolshakov <rbolshakov@ddn.com>
+Subject: [PATCH v7 04/24] hw/arm: virt: add GICv2m for the case when ITS is
+ not available
+Date: Thu, 16 Oct 2025 18:55:00 +0200
+Message-ID: <20251016165520.62532-5-mohamed@unpredictable.fr>
+X-Mailer: git-send-email 2.50.1
+In-Reply-To: <20251016165520.62532-1-mohamed@unpredictable.fr>
+References: <20251016165520.62532-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 0/7] Mitigation of "failed to load
- cpu:cpreg_vmstate_array_len" migration failures
-To: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- peter.maydell@linaro.org, cohuck@redhat.com, maz@kernel.org,
- oliver.upton@linux.dev, sebott@redhat.com, gshan@redhat.com,
- ddutile@redhat.com, peterx@redhat.com, philmd@linaro.org, pbonzini@redhat.com
-References: <20251016135625.249551-1-eric.auger@redhat.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20251016135625.249551-1-eric.auger@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: -B05Vi0GFTX7HHDGC8kf1fpfI_zP0YFv6U4zh9rCC5A_1760623383
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Transfer-Encoding: 8bit
+X-Proofpoint-GUID: NflitDkLeRPflpB13P4irTzFB3BRXTCM
+X-Proofpoint-ORIG-GUID: NflitDkLeRPflpB13P4irTzFB3BRXTCM
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMDE2MDEyMiBTYWx0ZWRfX5o/RKKSk+Dk7
+ YxCre0muXCXuL1hDmv0p6WGJWLQCYvFnOnvNFX3AQuMI6QBha2GaVBzHKzpQt0811sQnVytY81T
+ KOG2r/JzgCIkxgB+DUkQdE+Yff5l28Ig9vKs9aIn4hPzsyGYTW6rsfE1ud+6priH3j9Z/FtV8Ti
+ eSIdft/8FaX91kW/uObgfIgPkYNJBe1Ql6d5V7G1KuRnoAi5+S5Kwhln+jRBbyCo6aKHAkK3rKt
+ DlqH2OqxT/7ItwIP3WNj+sSqS5opSFEuCzgnlqEbVNf14k7Pboz+AwGJxigz9JjXj3fM3IeSk=
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.80.40
+ definitions=2025-10-16_03,2025-10-13_01,2025-03-28_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 clxscore=1030
+ malwarescore=0 adultscore=0 mlxscore=0 suspectscore=0 spamscore=0 bulkscore=0
+ mlxlogscore=999 phishscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.22.0-2506270000 definitions=main-2510160122
+X-JNJ: AAAAAAAB141GGGzy1g/I+KVYGIgsxPYyTtG7ECm+jj6ITc5MLZ2H/pW8+t2T3yz+onpDsTEU+1Nhmmv96EcL1xB3LIQeT+Jj5MnY3Mjh3g3GjsVJpMIX7vxb84uOuCzSARfk9jqLYQVS1/G3huYAT7sEHsRJRYJ3VeAo6Kvs+eRr/hpG2CkZxCxj/lFEylxE8YOPIKVzY9b7rffv6tDpDGEfWgaYHYT+1W8rJvgOqoHI9nm0C3gu6GmtDRv/tYMZ1KKRifWIpzDbX8q2DAqx34orU23yMaxtw55ih75zTNhlbnmOFawGNClq9BxgCTdT+yX7fHlj6KaYD/dr17bJ8qehXAUWvmRD7BheGzo6zycbmlqC6wyyyEgM+cefnCv2ItVPNYTHIFUYmil29mYv7KIRe7VcMeUcT1QC6aTEsEi+3a8hbH2wnsPEIoXEBPlfJSr9zIAyBdrzuOrY0UU/cNWYiDW3d1KjvWpUaCm9tm06v+AZAM5jnHGTSjEcJWLKWnMoRfufaQyJrs5ULI+xzkBoSDjfB3jRb0+apJgjuBlel4EDlM/e2Ba+HI4OSL3n3UXwX/JYORFayco4x+liX7Ikt+w+xFv3CTCtequEeDWYab7yN+5aWGwnURg8IP/iJTeughoTTj1+9E+vZZeSL2pwQsjwfq04Inx4YolryJXve4frf6v7Ug1nB9kutJvIA0OQAH//7/MtFf8hb8U1If9AbIkPZ3jAYcd8PH4OGP5uoFsjtKQx8E/SQ64q/7K2aB+zZouOOZMCKw8dPMQD0yO5F1ZjmI/6Ljfra2PrIr7MVwdID74V2M0WY9EG6e7Xq7Oly77x67M1N3QkOKtPqx7QVgBGLFCmW0ortUZEHk3NKkFCOOHWY5/oYhGX3bD97rfH2A2837KufPC0I3vae/u4sVKU
+Received-SPF: pass client-ip=57.103.77.151;
+ envelope-from=mohamed@unpredictable.fr; helo=outbound.st.icloud.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -118,75 +98,99 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi,
+On Hypervisor.framework for macOS and WHPX for Windows, the provided environment is a GICv3 without ITS.
 
-On 10/16/25 3:55 PM, Eric Auger wrote:
-> When migrating ARM guests accross same machines with different host
-> kernels we are likely to encounter failures such as:
->
-> "failed to load cpu:cpreg_vmstate_array_len"
->
-> This is due to the fact KVM exposes a different number of registers
-> to qemu on source and destination. When trying to migrate a bigger
-> register set to a smaller one, qemu cannot save the CPU state.
->
-> For example, recently we faced such kind of situations with:
-> - unconditionnal exposure of KVM_REG_ARM_VENDOR_HYP_BMAP_2 FW pseudo
->   register from v6.16 onwards. Causes backward migration failure.
-> - removal of unconditionnal exposure of TCR2_EL1, PIRE0_EL1, PIR_EL1
->   from v6.13 onwards. Causes forward migration failure.
->
-> This situation is really problematic for distributions which want to
-> guarantee forward and backward migration of a given machine type
-> between different releases.
->
-> This small series tries to address that issue by introducing CPU
-> array properties that list the registers to ignore or to fake according
-> to the situation. An example is given to illustrate how those props
-> could be used to apply compats for machine types supposed to "see" the
-> same register set accross various host kernels.
->
-> The first patch improves the tracing so that we can quickly detect
-> which registers are unexpected and cause the migration failure. Missing
-> registers are also traced. Those do not fail migration but their default
-> value is kept on the destination.
->
-> Then we introduce the infrastructure to handle 'hidden' registers and
-> 'fake' registers.
->
-> Eric Auger (7):
->   target/arm/machine: Improve traces on register mismatch during
->     migration
->   target/arm/kvm: Introduce the concept of hidden KVM regs
->   target/arm/kvm: Introduce the concept of enforced/fake registers
->   kvm-all: Add the capability to blacklist some KVM regs
->   target/arm/cpu: Implement hide_reg callback()
->   target/arm/kvm: Expose kvm-hidden-regs and kvm-fake-regs properties
->   hw/arm/virt: [DO NOT UPSTREAM] Enforce compatibility with older
->     kernels
-For some reason the last patch was not properly sent
-PATCH 7/7] hw/arm/virt: [DO NOT UPSTREAM] Enforce compatibility with
-older kernels
+As such, support a GICv3 w/ GICv2m for that scenario.
 
-got "4.7.1 Service unavailable - try again later"
+Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+---
+ hw/arm/virt-acpi-build.c | 4 +++-
+ hw/arm/virt.c            | 8 ++++++++
+ include/hw/arm/virt.h    | 2 ++
+ 3 files changed, 13 insertions(+), 1 deletion(-)
 
-So I resent. Sorry for the noise.
-
-Eric
->
->  include/hw/core/cpu.h   |  2 ++
->  target/arm/cpu.h        | 42 ++++++++++++++++++++++++
->  accel/kvm/kvm-all.c     | 12 +++++++
->  hw/arm/virt.c           | 19 +++++++++++
->  target/arm/cpu.c        | 12 +++++++
->  target/arm/kvm.c        | 73 ++++++++++++++++++++++++++++++++++++++++-
->  target/arm/machine.c    | 71 +++++++++++++++++++++++++++++++++++----
->  target/arm/trace-events | 11 +++++++
->  8 files changed, 235 insertions(+), 7 deletions(-)
->
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 8bb6b60515..0a6ec74aa0 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -959,7 +959,9 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+             build_append_int_noprefix(table_data, memmap[VIRT_GIC_ITS].base, 8);
+             build_append_int_noprefix(table_data, 0, 4);    /* Reserved */
+         }
+-    } else {
++    }
++
++    if (!(vms->gic_version != VIRT_GIC_VERSION_2 && vms->its) && !vms->no_gicv3_with_gicv2m) {
+         const uint16_t spi_base = vms->irqmap[VIRT_GIC_V2M] + ARM_SPI_BASE;
+ 
+         /* 5.2.12.16 GIC MSI Frame Structure */
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 175023897a..61d7bab803 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -956,6 +956,8 @@ static void create_gic(VirtMachineState *vms, MemoryRegion *mem)
+ 
+     if (vms->gic_version != VIRT_GIC_VERSION_2 && vms->its) {
+         create_its(vms);
++    } else if (vms->gic_version != VIRT_GIC_VERSION_2 && !vms->no_gicv3_with_gicv2m) {
++        create_v2m(vms);
+     } else if (vms->gic_version == VIRT_GIC_VERSION_2) {
+         create_v2m(vms);
+     }
+@@ -2447,6 +2449,8 @@ static void machvirt_init(MachineState *machine)
+     vms->ns_el2_virt_timer_irq = ns_el2_virt_timer_present() &&
+         !vmc->no_ns_el2_virt_timer_irq;
+ 
++    vms->no_gicv3_with_gicv2m = vmc->no_gicv3_with_gicv2m;
++
+     fdt_add_timer_nodes(vms);
+     fdt_add_cpu_nodes(vms);
+ 
+@@ -3484,6 +3488,7 @@ static void virt_instance_init(Object *obj)
+     vms->its = true;
+     /* Allow ITS emulation if the machine version supports it */
+     vms->tcg_its = !vmc->no_tcg_its;
++    vms->no_gicv3_with_gicv2m = false;
+ 
+     /* Default disallows iommu instantiation */
+     vms->iommu = VIRT_IOMMU_NONE;
+@@ -3536,9 +3541,12 @@ DEFINE_VIRT_MACHINE_AS_LATEST(10, 2)
+ 
+ static void virt_machine_10_1_options(MachineClass *mc)
+ {
++    VirtMachineClass *vmc = VIRT_MACHINE_CLASS(OBJECT_CLASS(mc));
++
+     virt_machine_10_2_options(mc);
+     mc->smbios_memory_device_size = 2047 * TiB;
+     compat_props_add(mc->compat_props, hw_compat_10_1, hw_compat_10_1_len);
++    vmc->no_gicv3_with_gicv2m = true;
+ }
+ DEFINE_VIRT_MACHINE(10, 1)
+ 
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index 04a09af354..d31348dd61 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -132,6 +132,7 @@ struct VirtMachineClass {
+     bool no_cpu_topology;
+     bool no_tcg_lpa2;
+     bool no_ns_el2_virt_timer_irq;
++    bool no_gicv3_with_gicv2m;
+     bool no_nested_smmu;
+ };
+ 
+@@ -180,6 +181,7 @@ struct VirtMachineState {
+     char *oem_id;
+     char *oem_table_id;
+     bool ns_el2_virt_timer_irq;
++    bool no_gicv3_with_gicv2m;
+     CXLState cxl_devices_state;
+     bool legacy_smmuv3_present;
+ };
+-- 
+2.50.1 (Apple Git-155)
 
 

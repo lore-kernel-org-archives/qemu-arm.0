@@ -4,92 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47144CCD199
-	for <qemu-arm@archiver.kernel.org>; Thu, 16 Oct 2025 21:11:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08EF6CCD199
+	for <qemu-arm@archiver.kernel.org>; Thu, 16 Oct 2025 21:25:05 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v9VFV-0004dW-1W; Thu, 16 Oct 2025 17:11:01 -0400
+	id 1v9VSz-0007du-1b; Thu, 16 Oct 2025 17:24:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1v9VFT-0004d6-Q0
- for qemu-arm@nongnu.org; Thu, 16 Oct 2025 17:10:59 -0400
-Received: from mail-pj1-x102a.google.com ([2607:f8b0:4864:20::102a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1v9VFR-0007vP-1S
- for qemu-arm@nongnu.org; Thu, 16 Oct 2025 17:10:59 -0400
-Received: by mail-pj1-x102a.google.com with SMTP id
- 98e67ed59e1d1-33badfbbc48so1564424a91.2
- for <qemu-arm@nongnu.org>; Thu, 16 Oct 2025 14:10:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1760649055; x=1761253855; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=Xyb1nOZ+eh4MNq5s9DJmELq5g2kNAkzasbhNkSmGFT0=;
- b=jvDePxFlqJNLEAqVFsDmZltbwi7A/O3UAYmSSYtdLhNA7mnW/KUEQHI5FjLrZYtb+h
- ODvHMFRLO5N0XVKWj6lS7JROLrcMmkRv6NOhyEuxCbK9aY+FdJwuSL2tAXYGek1ytCr7
- GJWDT48IkbhEmIHs6lgMRxmn8Rrk10QMxF4vbNZldLBifYbFcwPxZqKWhhgzI7HOaoIs
- CxDTwJSqpYh+vzWkbAHIr250Uq+uAEyHJUc5PNEQcbtzr3b8PU66Ixug165Va3nOX8eZ
- kMHvwRSHZE6tD635gxNA+wGdDcLsE4WM7M26sO9iFPuz+1+wf7MBHs8EzTD10S4mcO2+
- ZXHg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1760649055; x=1761253855;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=Xyb1nOZ+eh4MNq5s9DJmELq5g2kNAkzasbhNkSmGFT0=;
- b=NnU1AI5tzBNcmQsClmlDBLoyBaE/rOTzKt2B1y6vbYlX0q8rhfNjVNLiOQl3Bb4yGI
- 0ffcrDjX4B7mwHaGCQ0r+RPnrnGY/Unhy4yX9A4ZNgLbR04p2Ykd7dxCMVa4DU2gpKys
- hHShQtRy1osr2Ej7338yDl1uvaLo6Fg9R+XQB5QlUdMgvDp7B82K0PsFi39hmxTtdypj
- b9juooc3iz4g0XoyjTWs8q6IlzB9dAxtuwE2CAOZpdyM3QlnaTMJOoIIfVD/hMjJFsQc
- PmHpgiVcLJMm5ByPNhdeWcr7p6e/CWKjwAzasoCvgmAiD3Mpa6oK/LUyHoo2gYGxqQqD
- BnLQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUSjpBTvYmdnriBEKbkpFYjQssCjI5mhz/ChZ0z6qk82IoAw2g+qYD96LMZsyiEQCLQqXASOmJ1wA==@nongnu.org
-X-Gm-Message-State: AOJu0Yw16QW34v1gU6MEAK/X1GSW+qZ40uV27Vn01thoq4rhr5ON/Zzs
- Llh8P87T3wNgEsMfU32l0tF6vpFQl210Aam5JmOiHLjPWhsWe8y587j5pV7gRFVgSCU=
-X-Gm-Gg: ASbGncuAGM7MDANWU8jMnMEn5ONIIqXkDUIfKAb3ixNzVv4rmRo+Da3sODDXQF/AJAP
- +Fb8K/LaIgqn6jRxc8NRsYKOS2XXQjpCQWy5iUTwlKdA1q/jp7S7xyZADRhraonoDvbA2B64Sae
- sfg8j6G6DMhYf3NrVZYIowR+AAoJAMeFydBhqQP6F2/6nUWnB1Sfmh6pTRSaXGPbVoO+M6GCdCP
- fmzm75n0MfEJCk5x03lAQV1EYIkaeRDscsUKICoFsUdQPcYTRQUyflGrm/qgbvzpn08nVguO17r
- NGvKCdD+aay9NGZJyXpwvlr8vm0w75F5ArlXY+oZx4iXiZXrUT51mEZMIwCGvT38zxhPJxXYBeN
- SqCk09m4VRioXK6prXOs862f3bh60uq/TlNCO+UgodmUAQ03lZsTy8Ddu1wOlP27+gifTwXCsE5
- WffIte2T4Rbp0ipuGjBHRkgAc1
-X-Google-Smtp-Source: AGHT+IFYSNJw2AQjCzkjgvCGLn43zsEt555nXZUZI+ZgPLIDfsg4iLfQBfCNyC1qWf245bdTtwVEtA==
-X-Received: by 2002:a17:90b:248f:b0:33b:cfae:3621 with SMTP id
- 98e67ed59e1d1-33bcfae47d8mr817291a91.32.1760649055029; 
- Thu, 16 Oct 2025 14:10:55 -0700 (PDT)
-Received: from [192.168.0.4] ([71.212.157.132])
- by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-33bb66a2085sm3021831a91.11.2025.10.16.14.10.54
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 16 Oct 2025 14:10:54 -0700 (PDT)
-Message-ID: <e869022c-ace2-4bf4-b72a-fb1d28556fb6@linaro.org>
-Date: Thu, 16 Oct 2025 14:10:53 -0700
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1v9VSx-0007di-RX
+ for qemu-arm@nongnu.org; Thu, 16 Oct 2025 17:24:55 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1v9VSt-0000wf-VK
+ for qemu-arm@nongnu.org; Thu, 16 Oct 2025 17:24:55 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1760649888;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=tiuBWUc6T5G+I6xnsPaISzzZSKfO3+syCb4QhaRxXMg=;
+ b=U2XHEhWzoBzEiMRaQzH3CzpICiIs8pgu0LkxhTaqJoSpeOm+f7aGmlENLPvecsMs628Ayd
+ fbJC38Rh9LtaqacvzYrhmn/nCu3dvvRa5uK0Q8qaNcGTm+/HVdmtD2adrplXvNi6+/f8FW
+ 51tj6b18ddqoq3UT7jPqt0xtPTQSEUs=
+Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-682-SAQU2gYINtO4WpP66pJ44A-1; Thu,
+ 16 Oct 2025 17:24:45 -0400
+X-MC-Unique: SAQU2gYINtO4WpP66pJ44A-1
+X-Mimecast-MFC-AGG-ID: SAQU2gYINtO4WpP66pJ44A_1760649884
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 717601956087; Thu, 16 Oct 2025 21:24:43 +0000 (UTC)
+Received: from corto.redhat.com (unknown [10.45.225.105])
+ by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 969491956056; Thu, 16 Oct 2025 21:24:39 +0000 (UTC)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+To: qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Joel Stanley <joel@jms.id.au>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+Subject: [PATCH] hw/arm/aspeed: ast2600-evb: Use w25q512jv flash model
+Date: Thu, 16 Oct 2025 23:24:37 +0200
+Message-ID: <20251016212437.1046135-1-clg@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 0/2] target/arm: Support SME2 in gdbstub
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: Vacha Bhavsar <vacha.bhavsar@oss.qualcomm.com>
-References: <20251016122132.737016-1-peter.maydell@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Content-Language: en-US
-In-Reply-To: <20251016122132.737016-1-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102a;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102a.google.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -105,18 +85,54 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 10/16/25 05:21, Peter Maydell wrote:
-> This patchseries adds SME2 support to the gdbstub. This is
-> fairly straightforward as the only thing we need to do is
-> expose the new ZT0 register in the XML in the way that gdb
-> documents that we should.
+The ast2600-evb machine model is using the "mx66u51235f" flash model,
+which has issues with recent Linux kernels (6.15+) when reading SFDP
+data.
 
-We're also missing TPIDR2.
+Change the flash model to "w25q512jv", which is the model present on
+some ast2600a3 EVB board and is known to work correctly with recent
+kernels. Adjust the corresponding qtest to reflect the new JEDEC ID of
+the w25q512jv flash.
 
-According to gdb/features/aarch64-tls.c, "org.gnu.gdb.aarch64.tls" should contain 2 
-registers, tpidr and tpidr2.  Apparently the second is optional, and we should have been 
-providing the "tls" with just tpidr all along.
+Signed-off-by: Cédric Le Goater <clg@redhat.com>
+---
+ hw/arm/aspeed.c               | 4 ++--
+ tests/qtest/aspeed_smc-test.c | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
 
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index 2e43898d6403..c29bbd54059d 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -1610,8 +1610,8 @@ static void aspeed_machine_ast2600_evb_class_init(ObjectClass *oc,
+     amc->soc_name  = "ast2600-a3";
+     amc->hw_strap1 = AST2600_EVB_HW_STRAP1;
+     amc->hw_strap2 = AST2600_EVB_HW_STRAP2;
+-    amc->fmc_model = "mx66u51235f";
+-    amc->spi_model = "mx66u51235f";
++    amc->fmc_model = "w25q512jv";
++    amc->spi_model = "w25q512jv";
+     amc->num_cs    = 1;
+     amc->macs_mask = ASPEED_MAC0_ON | ASPEED_MAC1_ON | ASPEED_MAC2_ON |
+                      ASPEED_MAC3_ON;
+diff --git a/tests/qtest/aspeed_smc-test.c b/tests/qtest/aspeed_smc-test.c
+index 52a00e6f0a7e..50a87e625001 100644
+--- a/tests/qtest/aspeed_smc-test.c
++++ b/tests/qtest/aspeed_smc-test.c
+@@ -134,10 +134,10 @@ static void test_ast2600_evb(AspeedSMCTestData *data)
+                           "-drive file=%s,format=raw,if=mtd",
+                           data->tmp_path);
+ 
+-    /* fmc cs0 with mx66u51235f flash */
++    /* fmc cs0 with w25q512jv flash */
+     data->flash_base = 0x20000000;
+     data->spi_base = 0x1E620000;
+-    data->jedec_id = 0xc2253a;
++    data->jedec_id = 0xef4020;
+     data->cs = 0;
+     data->node = "/machine/soc/fmc/ssi.0/child[0]";
+     /* beyond 16MB */
+-- 
+2.51.0
 
-r~
 

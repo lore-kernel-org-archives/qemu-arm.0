@@ -4,77 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 810C9CCD199
-	for <qemu-arm@archiver.kernel.org>; Thu, 16 Oct 2025 20:23:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47144CCD199
+	for <qemu-arm@archiver.kernel.org>; Thu, 16 Oct 2025 21:11:17 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v9UTE-0005b6-4K; Thu, 16 Oct 2025 16:21:08 -0400
+	id 1v9VFV-0004dW-1W; Thu, 16 Oct 2025 17:11:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1v9UT7-0005Y4-9o
- for qemu-arm@nongnu.org; Thu, 16 Oct 2025 16:21:01 -0400
-Received: from npq-east2-cluster1-host8-snip4-10.eps.apple.com
- ([57.103.77.123] helo=outbound.st.icloud.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1v9UT5-0000x8-Df
- for qemu-arm@nongnu.org; Thu, 16 Oct 2025 16:21:00 -0400
-Received: from outbound.st.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-east-1a-60-percent-2 (Postfix) with ESMTPS id
- 6446318005FE; Thu, 16 Oct 2025 20:20:57 +0000 (UTC)
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; bh=aRq3YU5535mG5uSPAFBSlmsbBJkL1R5+IAqIsTf/zZw=;
- h=From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:x-icloud-hme;
- b=Q5Kmf2c2LdGezhxzE/ZBDH5dAE+7LDDxcHNt9UwEuQNGNZViB26aJEMT3KAaLmC2SSsLH8x4Y1nNuFBbn7gTRvkbB+1ANf5gNQZTLy7ncr6gWwh4eImz8U5mT1+/ngdgf0RP3jbQhfTowsJErpmoJSV6E9nEQUKzBEDV/Ui2lG666RkfW86T2zXAmrWhWyWhsCqNnTJNE1HFdD8eSLMhbIlfyAhOKZg9+6dAfINeRpku/olTYPWjyUkhJ3D0wxKcxPxQ/+l+5ya7CypePaT7ANA4ax4GeAOtrt6Lq6bV8GSGSjFHnbZo8Nd4n0OHFqeRCpswZ6j3KA7jRYaSwW3MBA==
-mail-alias-created-date: 1752046281608
-Received: from localhost.localdomain (unknown [17.42.251.67])
- by p00-icloudmta-asmtp-us-east-1a-60-percent-2 (Postfix) with ESMTPSA id
- 6C1CF18002F6; Thu, 16 Oct 2025 20:20:50 +0000 (UTC)
-From: Mohamed Mediouni <mohamed@unpredictable.fr>
-To: qemu-devel@nongnu.org
-Cc: Pedro Barbuda <pbarbuda@microsoft.com>, qemu-arm@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>,
- Mohamed Mediouni <mohamed@unpredictable.fr>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Phil Dennis-Jordan <phil@philjordan.eu>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>
-Subject: [PATCH v9 02/24] accel/system: Introduce hwaccel_enabled() helper
-Date: Thu, 16 Oct 2025 22:20:22 +0200
-Message-ID: <20251016202044.75261-3-mohamed@unpredictable.fr>
-X-Mailer: git-send-email 2.50.1
-In-Reply-To: <20251016202044.75261-1-mohamed@unpredictable.fr>
-References: <20251016202044.75261-1-mohamed@unpredictable.fr>
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1v9VFT-0004d6-Q0
+ for qemu-arm@nongnu.org; Thu, 16 Oct 2025 17:10:59 -0400
+Received: from mail-pj1-x102a.google.com ([2607:f8b0:4864:20::102a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1v9VFR-0007vP-1S
+ for qemu-arm@nongnu.org; Thu, 16 Oct 2025 17:10:59 -0400
+Received: by mail-pj1-x102a.google.com with SMTP id
+ 98e67ed59e1d1-33badfbbc48so1564424a91.2
+ for <qemu-arm@nongnu.org>; Thu, 16 Oct 2025 14:10:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1760649055; x=1761253855; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=Xyb1nOZ+eh4MNq5s9DJmELq5g2kNAkzasbhNkSmGFT0=;
+ b=jvDePxFlqJNLEAqVFsDmZltbwi7A/O3UAYmSSYtdLhNA7mnW/KUEQHI5FjLrZYtb+h
+ ODvHMFRLO5N0XVKWj6lS7JROLrcMmkRv6NOhyEuxCbK9aY+FdJwuSL2tAXYGek1ytCr7
+ GJWDT48IkbhEmIHs6lgMRxmn8Rrk10QMxF4vbNZldLBifYbFcwPxZqKWhhgzI7HOaoIs
+ CxDTwJSqpYh+vzWkbAHIr250Uq+uAEyHJUc5PNEQcbtzr3b8PU66Ixug165Va3nOX8eZ
+ kMHvwRSHZE6tD635gxNA+wGdDcLsE4WM7M26sO9iFPuz+1+wf7MBHs8EzTD10S4mcO2+
+ ZXHg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1760649055; x=1761253855;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=Xyb1nOZ+eh4MNq5s9DJmELq5g2kNAkzasbhNkSmGFT0=;
+ b=NnU1AI5tzBNcmQsClmlDBLoyBaE/rOTzKt2B1y6vbYlX0q8rhfNjVNLiOQl3Bb4yGI
+ 0ffcrDjX4B7mwHaGCQ0r+RPnrnGY/Unhy4yX9A4ZNgLbR04p2Ykd7dxCMVa4DU2gpKys
+ hHShQtRy1osr2Ej7338yDl1uvaLo6Fg9R+XQB5QlUdMgvDp7B82K0PsFi39hmxTtdypj
+ b9juooc3iz4g0XoyjTWs8q6IlzB9dAxtuwE2CAOZpdyM3QlnaTMJOoIIfVD/hMjJFsQc
+ PmHpgiVcLJMm5ByPNhdeWcr7p6e/CWKjwAzasoCvgmAiD3Mpa6oK/LUyHoo2gYGxqQqD
+ BnLQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUSjpBTvYmdnriBEKbkpFYjQssCjI5mhz/ChZ0z6qk82IoAw2g+qYD96LMZsyiEQCLQqXASOmJ1wA==@nongnu.org
+X-Gm-Message-State: AOJu0Yw16QW34v1gU6MEAK/X1GSW+qZ40uV27Vn01thoq4rhr5ON/Zzs
+ Llh8P87T3wNgEsMfU32l0tF6vpFQl210Aam5JmOiHLjPWhsWe8y587j5pV7gRFVgSCU=
+X-Gm-Gg: ASbGncuAGM7MDANWU8jMnMEn5ONIIqXkDUIfKAb3ixNzVv4rmRo+Da3sODDXQF/AJAP
+ +Fb8K/LaIgqn6jRxc8NRsYKOS2XXQjpCQWy5iUTwlKdA1q/jp7S7xyZADRhraonoDvbA2B64Sae
+ sfg8j6G6DMhYf3NrVZYIowR+AAoJAMeFydBhqQP6F2/6nUWnB1Sfmh6pTRSaXGPbVoO+M6GCdCP
+ fmzm75n0MfEJCk5x03lAQV1EYIkaeRDscsUKICoFsUdQPcYTRQUyflGrm/qgbvzpn08nVguO17r
+ NGvKCdD+aay9NGZJyXpwvlr8vm0w75F5ArlXY+oZx4iXiZXrUT51mEZMIwCGvT38zxhPJxXYBeN
+ SqCk09m4VRioXK6prXOs862f3bh60uq/TlNCO+UgodmUAQ03lZsTy8Ddu1wOlP27+gifTwXCsE5
+ WffIte2T4Rbp0ipuGjBHRkgAc1
+X-Google-Smtp-Source: AGHT+IFYSNJw2AQjCzkjgvCGLn43zsEt555nXZUZI+ZgPLIDfsg4iLfQBfCNyC1qWf245bdTtwVEtA==
+X-Received: by 2002:a17:90b:248f:b0:33b:cfae:3621 with SMTP id
+ 98e67ed59e1d1-33bcfae47d8mr817291a91.32.1760649055029; 
+ Thu, 16 Oct 2025 14:10:55 -0700 (PDT)
+Received: from [192.168.0.4] ([71.212.157.132])
+ by smtp.gmail.com with ESMTPSA id
+ 98e67ed59e1d1-33bb66a2085sm3021831a91.11.2025.10.16.14.10.54
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 16 Oct 2025 14:10:54 -0700 (PDT)
+Message-ID: <e869022c-ace2-4bf4-b72a-fb1d28556fb6@linaro.org>
+Date: Thu, 16 Oct 2025 14:10:53 -0700
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Proofpoint-ORIG-GUID: lsNe0lHgjcNVy_cnFFeQXn3h1LeDuTFd
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMDE2MDE1MSBTYWx0ZWRfX7wplO7uq0zvI
- FQ/06r+hxWefs72wyXV1Ee48WIbeDHOe3JafERcVkVs2nEc681SkErY38W5YB/Eh0mRjT3ecLl3
- Z8rg21+h/XX4LcO8rJ/221xqXv3iPQjAudtwiGB1HPXhLQsL5Eo5Wd568tOlww3jAEJ/82td35o
- YxjWd4XaCDnGs15/pYHeLRvJaRoSA1x4KyCkJzyn3Bi19UJJYqv0G3U66TuOHIPs3c0oLaitSsm
- rDoQa0fJJm0Zmw/7Hm066KJoDrdPjfX5v542FgCVPTRvgD5I+IS3UQ5a9V2658es4/il2RhvQ=
-X-Proofpoint-GUID: lsNe0lHgjcNVy_cnFFeQXn3h1LeDuTFd
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.80.40
- definitions=2025-10-16_04,2025-10-13_01,2025-03-28_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 clxscore=1030
- adultscore=0 malwarescore=0 bulkscore=0 suspectscore=0 mlxlogscore=999
- phishscore=0 mlxscore=0 spamscore=0 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.22.0-2506270000 definitions=main-2510160151
-X-JNJ: AAAAAAABMqHCHrhiGcn/ZdyUuy4d4ZoGQOKtR0E2CDrv3ZrPu8A0hu4+NQNWoRTMGRw84Ukel4wyw5uKXtqrhWkNiW1t6ty9kinFAgwCIeuqyGY2x2l909QBb9ip5prwANJdr5gR6xZr4pwdpRZkmbMHdgFDFqDqlLKKQEXkxd/nxi8fiFC47xmb4V0VpE1wUfQFUMM+6krHqtGvaLRupIq2DfANORa/Oda7/fKvzY59eRlS7ySc0LeBDTRWWGejL8EDLCE49R5NNGH+ptQrlugvIgGOn1RQpvxkVC65Cxc6cZJQfjb0OfrpVEugiSmMwLUhOa7xINnXAkKGYU5cn9cK+80Wej3kVtjO+hCUXJka9s/5qVCDfqCDufIHoJLCtl70j0hHgojIhVLug9qqT9EY4G2EgWp8+kz4Qk4M1N0d4U5NHfRE9vD+TgnXPzZSmiitn/72bqmuffZCbgs2oURmhQ7aUv7K2mS9kILi/KkHAGGSVZNM/lEMX59mh0fab/C1o/jhdc605noUG3kycyuSaoQXPsIfOoULNH/6g8hKWQUnrSxT56hW4hbP1F6u0lcDYqQcgLA825h08A+ztjzi0/6t/mOwEV43fSLKzTagvbUABninybBjtj1wE5u0XQlA+P6zEIe8/YEjVLJbrxar3Shxxj4Je6pNoapsZ/HHMYpdvPWRdLA2Onrq
-Received-SPF: pass client-ip=57.103.77.123;
- envelope-from=mohamed@unpredictable.fr; helo=outbound.st.icloud.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 0/2] target/arm: Support SME2 in gdbstub
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: Vacha Bhavsar <vacha.bhavsar@oss.qualcomm.com>
+References: <20251016122132.737016-1-peter.maydell@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Content-Language: en-US
+In-Reply-To: <20251016122132.737016-1-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102a;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102a.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -90,40 +105,18 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Philippe Mathieu-Daudé <philmd@linaro.org>
+On 10/16/25 05:21, Peter Maydell wrote:
+> This patchseries adds SME2 support to the gdbstub. This is
+> fairly straightforward as the only thing we need to do is
+> expose the new ZT0 register in the XML in the way that gdb
+> documents that we should.
 
-hwaccel_enabled() return whether any hardware accelerator
-is enabled.
+We're also missing TPIDR2.
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
----
- include/system/hw_accel.h | 13 +++++++++++++
- 1 file changed, 13 insertions(+)
+According to gdb/features/aarch64-tls.c, "org.gnu.gdb.aarch64.tls" should contain 2 
+registers, tpidr and tpidr2.  Apparently the second is optional, and we should have been 
+providing the "tls" with just tpidr all along.
 
-diff --git a/include/system/hw_accel.h b/include/system/hw_accel.h
-index 55497edc29..628a50e066 100644
---- a/include/system/hw_accel.h
-+++ b/include/system/hw_accel.h
-@@ -40,4 +40,17 @@ void cpu_synchronize_pre_loadvm(CPUState *cpu);
- void cpu_synchronize_post_reset(CPUState *cpu);
- void cpu_synchronize_post_init(CPUState *cpu);
- 
-+/**
-+ * hwaccel_enabled:
-+ *
-+ * Returns: %true if a hardware accelerator is enabled, %false otherwise.
-+ */
-+static inline bool hwaccel_enabled(void)
-+{
-+    return hvf_enabled()
-+        || kvm_enabled()
-+        || nvmm_enabled()
-+        || whpx_enabled();
-+}
-+
- #endif /* QEMU_HW_ACCEL_H */
--- 
-2.50.1 (Apple Git-155)
 
+r~
 

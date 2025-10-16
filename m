@@ -4,34 +4,34 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87ED6CCD199
-	for <qemu-arm@archiver.kernel.org>; Thu, 16 Oct 2025 17:02:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29EBFCCD183
+	for <qemu-arm@archiver.kernel.org>; Thu, 16 Oct 2025 17:02:54 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v9RJA-0001eN-7S; Thu, 16 Oct 2025 12:58:32 -0400
+	id 1v9RJA-0001eS-Eb; Thu, 16 Oct 2025 12:58:32 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1v9RJ5-0001X2-3q
+ id 1v9RJ5-0001XE-4s
  for qemu-arm@nongnu.org; Thu, 16 Oct 2025 12:58:27 -0400
-Received: from p-east2-cluster1-host6-snip4-2.eps.apple.com ([57.103.76.95]
+Received: from p-east2-cluster1-host3-snip4-3.eps.apple.com ([57.103.76.6]
  helo=outbound.st.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1v9RIV-0001hP-Tr
- for qemu-arm@nongnu.org; Thu, 16 Oct 2025 12:58:15 -0400
+ id 1v9RIV-0001gf-W8
+ for qemu-arm@nongnu.org; Thu, 16 Oct 2025 12:58:18 -0400
 Received: from outbound.st.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-east-1a-100-percent-2 (Postfix) with ESMTPS id
- A6A4D180017F; Thu, 16 Oct 2025 16:57:45 +0000 (UTC)
+ B9FC81801850; Thu, 16 Oct 2025 16:57:41 +0000 (UTC)
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; bh=c/5rsUrStdeRorYSqBu3+Q8xyENsD0DokCuHFqMkrGk=;
+ s=sig1; bh=XXxmCGrw3A7yoY22VdhSWP2DZy3nPyJTDepFV431JiU=;
  h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
- b=Qx2WAH2lDvnTPqu2Ezpway7CAh7U/kHiAa0myPfLiHvnT5JzbCU/Ozxql8vTWLU1uHZXDPFNovGSgfPLdh3FjMS1Q6Mcv/yB9RX3Uq8bh8UaqlD0dLmcpukI09uy68zUG/VFSkEdmzU341tNoAzhlHfucpE913sENz34yvIMi+OtNTa3mZFm9Wk0L7WdTsx0YP5uY/4aYWK6DysBMOuf9CAm+NW8qwxmViwYmLZgye7QsB0WXzEqHP3WV2Ku8DoWyW6+l875mrE64TMz7BsD+qu0i0b+59sT0UO6T4ngowZ4wHldGKPUlPtRLxh1WPYjvribVZr6jfudXpWDMxDSlg==
+ b=GB7hwzHKFmN/hEulG5ra+neIontyGtqIBFYeaRTdwZz8UxCvIi9MNlu9ssEMub4fVMwQ+2ddVjoEiDeGDxmpcnmZhSVInr5360GW6dXcWtDpmDqQMmPzZJFVtH86CAIDm60FPBw6Nat0KPZfbah+DidrETXDkPy8GBbBgRaJsOVPZd/G41hBcoVWhLLLxnQ0Swx+zdloMEvoeRyIffO4/Cb7fdyk1Fc+pf7kiXdD2/YKqksiscqpP1OwdtjN+lEfEApWmxGNsNgyf+nLmL0cvw9S5B2i0u0K1ZXnQT7XuKR0+Ojq2lPMo1ilZnxZ5ouoP+dFsR02eER0sG5vQNuduA==
 mail-alias-created-date: 1752046281608
 Received: from localhost.localdomain (unknown [17.42.251.67])
  by p00-icloudmta-asmtp-us-east-1a-100-percent-2 (Postfix) with ESMTPSA id
- B3362180074D; Thu, 16 Oct 2025 16:56:44 +0000 (UTC)
+ 6100018011DC; Thu, 16 Oct 2025 16:56:41 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: qemu-devel@nongnu.org
 Cc: Alexander Graf <agraf@csgraf.de>,
@@ -52,32 +52,31 @@ Cc: Alexander Graf <agraf@csgraf.de>,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  Pedro Barbuda <pbarbuda@microsoft.com>, Zhao Liu <zhao1.liu@intel.com>,
  Roman Bolshakov <rbolshakov@ddn.com>
-Subject: [PATCH v7 24/24] whpx: apic: use non-deprecated APIs to control
- interrupt controller state
-Date: Thu, 16 Oct 2025 18:55:20 +0200
-Message-ID: <20251016165520.62532-25-mohamed@unpredictable.fr>
+Subject: [PATCH v7 23/24] MAINTAINERS: update maintainers for WHPX
+Date: Thu, 16 Oct 2025 18:55:19 +0200
+Message-ID: <20251016165520.62532-24-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.50.1
 In-Reply-To: <20251016165520.62532-1-mohamed@unpredictable.fr>
 References: <20251016165520.62532-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMDE2MDEyMiBTYWx0ZWRfX3i591J451V0o
- sUr0Fl3iXpQwy/Fl4zdiWLFiMpXCSfVPkj64i2rGs4UIzKhvNch4ARxEuJ7d3V9UM+LlzeWvYiP
- CwiG54MjcbPEiIH9JB05aIfno0GN3YhuvFQT6jmSNZanRe0M3bYaDtlmhT2ptdLSU/QIjB14sEv
- Vw+njagl+uYv4sVOoEPu76T34W2l7r7fHWpXMjGViTX6wRD0Nj50QwooFH0g9aDqKVY8VLImich
- O5ekCNCxPInhMy6eMRcvIGRoGtM8Et4yD5CPzHTDVYxlKCZswSRI9MtGKRrlm9f7ebn+Vt80A=
-X-Proofpoint-ORIG-GUID: LFF1_aj_2RXFysquanP2u9LYbbvtgC-y
-X-Proofpoint-GUID: LFF1_aj_2RXFysquanP2u9LYbbvtgC-y
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMDE2MDEyMiBTYWx0ZWRfXxVvW6wWaENS+
+ 2A3l3E2Virp5V14DLevwsSjjyHn9uN/EQ+TIcgB0XjAxrHwAFDpd0PtM82CkbmUiPq6oMTy1gvg
+ f7CAAXDCGZLPGVBcaVd1q3gGJbJrkfJlA22/CA+I2toVIsLT2XSE1Wo09tl9yd5q7SYLkDGuxcH
+ JH4M49aC7Wcz05r5QpfZeNK+wtSwPyva+5cjp11OKQA5twzd9n7D08qCx2MdcQzt0WLPJGlNzR9
+ QzxgiuVfopKi3rfugfwqiX9EY8mO3CtJw52S8dlh5LK0dZIg5PpxpecUVnCjl9xmg4qx+5JLg=
+X-Proofpoint-GUID: wJNaRMLLJzLK6FHYFfpP3tbniwg0bIlp
+X-Proofpoint-ORIG-GUID: wJNaRMLLJzLK6FHYFfpP3tbniwg0bIlp
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.80.40
  definitions=2025-10-16_03,2025-10-13_01,2025-03-28_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
- spamscore=0 mlxlogscore=824 mlxscore=0 bulkscore=0
- phishscore=0
- suspectscore=0 adultscore=0 clxscore=1030 classifier=spam adjust=0 reason=mlx
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ mlxlogscore=900 bulkscore=0 phishscore=0
+ adultscore=0 mlxscore=0
+ clxscore=1030 malwarescore=0 spamscore=0 classifier=spam adjust=0 reason=mlx
  scancount=1 engine=8.22.0-2506270000 definitions=main-2510160122
-X-JNJ: AAAAAAABCDIHi3Oq+7eUfU6kQVtln5bsGab5D20obzhGx/RBwT3+UnCVMabBxb0dMK01J2HgwJ46Ww/4ugDyIy4pWrM9aJgR5Ic5avONZXpjWKzw4dSjkzeg9pKKVeoeiXLXV47Q5fv+c9MMPP+ltky/OJ81LqzITocrn4Ssnk47d66KC/iBUaAsW+73JI/Rd/EdvFNanjHdRj/uT3rr/lYsshaeLsvzBS5aUWYDcwH6Gg6GrbuFGuKrKA4XEpOiDJ1qnjKnYDxZUuzLjc8WoYIqdwyGF9P0FsWjCHN7gvSveEv69ZDybTPlmE7O6121UR6WS7+DpeOAOHrScyG1WAyH50iEbVhXlthWY66jLDUAfgwtG62RZEJKPJFP30MANYW3ZNqIDsxKdX/0K+9jv75271g/chZmpeQuZGH5qn4waXrO2U3GAj32rXkT60JGX9T+vPspdNHQUMbs0wLBzTIz00jGmj2fvovUvGnqUwE9RSzAlhN5e01hlqV3g8n8Yxc0SAu71D/StJlQgVSxiUKBfjORcInbFBDloXgvSKtT0rn+3pyCFt8IeUWUiZO4BNv0tvztVQgumWlsplFgLR3ypIqBqzEGR21HBRbXyCPIisP88hl6qRVYjC5yrn6n3u0MPVIHHL9uHph36Icm8UeQc6fYpEriWwKE6S5nRMFvMm9845X73TpiM/Zuhj6hCUtgXkSOYV61ryHBwTRomlO9ALuAw5R7yAw7DiWZXmkempImhGf0OaVtbSG7GVPkpsjKQzz4sKNWn/iB22pXaj+l2M3fmz0tWzbJyEswFSUHLNa8suzsktqNQHoUklpSE69DblaHahW/XxLGE5QRpXJp0oC1GB+29vqp+O1z8WgPxh7TTCCcEAw/xXFxnzQ2kVr2N24Eo4xTnZu13Pb7/AevUVx1hJFABKfq
-Received-SPF: pass client-ip=57.103.76.95;
+X-JNJ: AAAAAAABBFeBE2oOJopGBuIMoX+iRngQjjVB2BEL7RjgOojp2rWGSIeRpyN2yUjJSd+DxsgU52nfeb6448yILSWcKR4KSpvpqsNw99oj04kXpWolG6nAtVMu8KYjRv9KcybJkRJq7cGo6y1vliJcw+v5p2qKpZ4VXAq3MOJmDetcMES1EBWaKAFkC1FE0VgF+eyZM6tUeiNApCB3FopG5sYyYlgh/fwiLeUec0QeNb+hp9A8UnpSsRPgtLPsEgZzNDV1xl4qNnl/t+Q5pu1qLpxgWqc6JxkBvPFyApOezVoLQ+371QheCsDoE+f7A/gffS1QY98PB5/jOAZ4yubOIUC4rzZNP9qbDpyTRZ2vod5DGk6qdyL+/S0s2pjdDwO+SfhKJ2JgONXiydGzITXktbiyQqPdForCQIOqd6nAIeTbCxUhiBLeCKTxw28UCezhvOzpFGxLAOrMZOdcIlfuJ8n+HboH2OYWiGr7a8rLi6kg9+hLVKISyoA7QI6HKHoR/PInOSRaPq7eRQP6NiKPGwgdUeJTpg0PoOMd9t1LA5AG62viX4nb+vp27lP/wEHR89frPHNKOM2IEWbdbapbCNxzjWvRTrs8gtYAs4QAKdse8oevZVKxWCplIVKjApvcjWt5oXRhnf8HJ5yA5w/FPjzm7NoJJqYNrSGOdVPrDdBKKLef+1nQKoa+zyVOOkwoJjSOp8879AJEQxIPkFBQ4qh36xINAE+a5sMS9WJ5Llo066+MCyP4M+/nnUAIEeUIk+Q3BYD6Uuvihc5F3L6/PwB5poNZbls3pA0mGcTU3CmXl44v7VGsQrQKjdUWWu+pwv+N6lfs8OIkRQ9sFPoU4NF0bx/8A1Kr6G4TfOX9En9UnwwBDMawj59/iXn6+v4R7IM9Zk+qetevD6T9WEa6SkUp
+Received-SPF: pass client-ip=57.103.76.6;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.st.icloud.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -85,7 +84,8 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001,
+ T_SPF_HELO_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -101,106 +101,38 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-WHvGetVirtualProcessorInterruptControllerState2 and
-WHvSetVirtualProcessorInterruptControllerState2 are
-deprecated since Windows 10 version 2004.
+And add arm64 files.
 
-Use the non-deprecated WHvGetVirtualProcessorState and
-WHvSetVirtualProcessorState when available.
+From Pedro Barbuda (on Teams):
+
+> we meant to have that switched a while back. you can add me as the maintainer. Pedro Barbuda (pbarbuda@microsoft.com)
 
 Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 ---
- include/system/whpx-internal.h |  9 +++++++
- target/i386/whpx/whpx-apic.c   | 46 +++++++++++++++++++++++++---------
- 2 files changed, 43 insertions(+), 12 deletions(-)
+ MAINTAINERS | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
 
-diff --git a/include/system/whpx-internal.h b/include/system/whpx-internal.h
-index 366bc525a3..b87d35cf1b 100644
---- a/include/system/whpx-internal.h
-+++ b/include/system/whpx-internal.h
-@@ -84,6 +84,15 @@ void whpx_apic_get(DeviceState *s);
-   X(HRESULT, WHvSetVirtualProcessorInterruptControllerState2, \
-         (WHV_PARTITION_HANDLE Partition, UINT32 VpIndex, PVOID State, \
-          UINT32 StateSize)) \
-+  X(HRESULT, WHvGetVirtualProcessorState, \
-+        (WHV_PARTITION_HANDLE Partition, UINT32 VpIndex, \
-+        WHV_VIRTUAL_PROCESSOR_STATE_TYPE StateType, PVOID Buffer, \
-+        UINT32 BufferSizeInBytes, UINT32 *BytesWritten)) \
-+  X(HRESULT, WHvSetVirtualProcessorState, \
-+        (WHV_PARTITION_HANDLE Partition, UINT32 VpIndex, \
-+        WHV_VIRTUAL_PROCESSOR_STATE_TYPE StateType, PVOID Buffer, \
-+        UINT32 BufferSizeInBytes)) \
-+
+diff --git a/MAINTAINERS b/MAINTAINERS
+index a516e66642..5faa4a2fb6 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -544,11 +544,14 @@ F: accel/stubs/hvf-stub.c
+ F: include/system/hvf.h
+ F: include/system/hvf_int.h
  
- #define LIST_WINHVEMULATION_FUNCTIONS(X) \
-   X(HRESULT, WHvEmulatorCreateEmulator, (const WHV_EMULATOR_CALLBACKS* Callbacks, WHV_EMULATOR_HANDLE* Emulator)) \
-diff --git a/target/i386/whpx/whpx-apic.c b/target/i386/whpx/whpx-apic.c
-index badb404b63..285ca28ba2 100644
---- a/target/i386/whpx/whpx-apic.c
-+++ b/target/i386/whpx/whpx-apic.c
-@@ -137,11 +137,21 @@ static void whpx_apic_put(CPUState *cs, run_on_cpu_data data)
-     whpx_put_apic_base(CPU(s->cpu), s->apicbase);
-     whpx_put_apic_state(s, &kapic);
- 
--    hr = whp_dispatch.WHvSetVirtualProcessorInterruptControllerState2(
--        whpx_global.partition,
--        cs->cpu_index,
--        &kapic,
--        sizeof(kapic));
-+    if (whp_dispatch.WHvSetVirtualProcessorState) {
-+        hr = whp_dispatch.WHvSetVirtualProcessorState(
-+            whpx_global.partition,
-+            cs->cpu_index,
-+            WHvVirtualProcessorStateTypeInterruptControllerState2,
-+            &kapic,
-+            sizeof(kapic));
-+    } else {
-+        hr = whp_dispatch.WHvSetVirtualProcessorInterruptControllerState2(
-+            whpx_global.partition,
-+            cs->cpu_index,
-+            &kapic,
-+            sizeof(kapic));
-+    }
-+
-     if (FAILED(hr)) {
-         fprintf(stderr,
-             "WHvSetVirtualProcessorInterruptControllerState failed: %08lx\n",
-@@ -156,16 +166,28 @@ void whpx_apic_get(DeviceState *dev)
-     APICCommonState *s = APIC_COMMON(dev);
-     CPUState *cpu = CPU(s->cpu);
-     struct whpx_lapic_state kapic;
-+    HRESULT hr;
-+
-+    if (whp_dispatch.WHvGetVirtualProcessorState) {
-+        hr = whp_dispatch.WHvGetVirtualProcessorState(
-+            whpx_global.partition,
-+            cpu->cpu_index,
-+            WHvVirtualProcessorStateTypeInterruptControllerState2,
-+            &kapic,
-+            sizeof(kapic),
-+            NULL);
-+    } else {
-+        hr = whp_dispatch.WHvGetVirtualProcessorInterruptControllerState2(
-+            whpx_global.partition,
-+            cpu->cpu_index,
-+            &kapic,
-+            sizeof(kapic),
-+            NULL);
-+    }
- 
--    HRESULT hr = whp_dispatch.WHvGetVirtualProcessorInterruptControllerState2(
--        whpx_global.partition,
--        cpu->cpu_index,
--        &kapic,
--        sizeof(kapic),
--        NULL);
-     if (FAILED(hr)) {
-         fprintf(stderr,
--            "WHvSetVirtualProcessorInterruptControllerState failed: %08lx\n",
-+            "WHvGetVirtualProcessorInterruptControllerState failed: %08lx\n",
-             hr);
- 
-         abort();
+-WHPX CPUs
+-M: Sunil Muthuswamy <sunilmut@microsoft.com>
++WHPX
++M: Pedro Barbuda <pbarbuda@microsoft.com>
++M: Mohamed Mediouni <mohamed@unpredictable.fr>
+ S: Supported
+ F: accel/whpx/
+ F: target/i386/whpx/
++F: target/arm/whpx_arm.h
++F: target/arm/whpx/
+ F: accel/stubs/whpx-stub.c
+ F: include/system/whpx.h
+ F: include/system/whpx-accel-ops.h
 -- 
 2.50.1 (Apple Git-155)
 

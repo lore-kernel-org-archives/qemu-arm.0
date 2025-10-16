@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77809CCD183
-	for <qemu-arm@archiver.kernel.org>; Thu, 16 Oct 2025 21:49:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83EF0CCD199
+	for <qemu-arm@archiver.kernel.org>; Thu, 16 Oct 2025 22:31:27 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v9Vq7-0002Yc-CI; Thu, 16 Oct 2025 17:48:51 -0400
+	id 1v9WUe-0007E9-Dc; Thu, 16 Oct 2025 18:30:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
- id 1v9Vq5-0002Y7-HX; Thu, 16 Oct 2025 17:48:49 -0400
-Received: from mail-eastus2azlp170100001.outbound.protection.outlook.com
- ([2a01:111:f403:c110::1] helo=BN1PR04CU002.outbound.protection.outlook.com)
+ id 1v9WUb-0007Do-PS; Thu, 16 Oct 2025 18:30:42 -0400
+Received: from mail-westusazlp170100001.outbound.protection.outlook.com
+ ([2a01:111:f403:c000::1] helo=BYAPR05CU005.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
- id 1v9Vq3-0004fL-5z; Thu, 16 Oct 2025 17:48:49 -0400
+ id 1v9WUZ-0002Yb-53; Thu, 16 Oct 2025 18:30:41 -0400
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=zBVN6j8mDoqmxtWo4ar+WMrbNJz3t+0Plf2Keaauo7mhJZCE4ttC/3qsM42gaaE4wLAL7YlwQdL6xxRx6qoQGbeqEW/NlmmIxRMVBH5k1Jc8U0ywXZowxHX/XzHejrYS5wYIajfqYRYpsxQTEDZ0QpVjFVFBwSVF+EJIJma7XUYje8LWEltN73X4Er77+tAfwKoZIpnU0CVWOHsFZla24gjnQ2MMTC11qcXjrZbhtOvX99BvVgzSPiHW1o05aBTSdZusXqQeRb02y2OVCIv6H55JQldInHyuVQljZYSDYenEfUUpYVzOd83fvg+3eoKbxjsPPgUjApU8cwxzkdAJ9A==
+ b=xz5bDtrO3B1Nc6nTaOV6xsI3cE6rLYK6rMb8XeTuvWWwzci5qnsCHCStxGbVgFMvlnx/xQp8+jkGZhFHeFrh4G9ejo4tSGQLnR4Z6HSUND+c6aH0x4M4tISEWoHiAQnvW6BhkOjXcGtsGrrsbc4hJbLAeGnB9OqfMdyTTTSS/9yRRwRZ1WH2caSIKvzL5W45PPApLD6oF7l0cR88kXKr+dLaOW5IUh3ku8a6B0hqouNN8U0YDIfl5A2No8kMBtIMi9TXYy0xIQDd8qhMOeT7rlO6iD3CQmcnU6nB25N5XIKiTld83DdL1y9X2zV+5Fm6MU33lY98hEFTF3hkwl744Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=whthyiAI2DBYZd4Y4veBADFPT1WSb96NW/DOEQ9mYMA=;
- b=A43q70lHeMkZjenRmwPIab7lgUJiTJOsHnGUM42ssuCmbAEM+u8iSSbZCPZKPzltQQqYr4bRBGviSzJPgj5ziE/XhM5mFmz971PAav19qFDBzITZ1mHbzfWo6LB797vqbtIM02LIq9183vPb/HeTYWsEfWHg4fk6JwIYZz6LhKL81VKt6Qne6OK3GDxiidSD5Rp2PZITRGo57Bw1Byx2XOKJlsTvITTF/pPukJ2ia7LC4OGlXgIyZlgZx+hqqyf/krXnsOLxAA8FwXa4032EqHIFnm+v7Rw319wq5S03wsAsBvX4cjERZEhMjMAiw9fgDhU2WlpseGNCfR+mOqszUw==
+ bh=hvy+hobdbUndbt+9x6sm7iCCltKis0sdnWimKHxuAyk=;
+ b=NY71njUvMHLL6Y+uEge0TxcKKmwwJEtpXepNhNSq8XDegEUytTRYZhrwGsq040CgCErgeUjG7moEmCltZakhMAsEHuIQsFaF2dymTlwl4QJU2ySKidNrep55UmDXmMnwxwFM3hIPU2/FufCOS/PWF4YYt/BeQIZVei+xpBtXt4SLeFyJ3Z1XQlatXDom4rE2kL/9uTq6/4+KsMFHwVVj5itgw/76FOsRR6E6BZin61SzTNME7mQJmQKuWtqIQh2eMWLTqdonn0uElNlKCPwXE/TtV7Qphy7PFoiH9TQNMajosG9zipj991uR2E788CtBzAO3BXwu0CceSSMaRYmuHQ==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.117.160) smtp.rcpttodomain=intel.com smtp.mailfrom=nvidia.com;
+ 216.228.118.233) smtp.rcpttodomain=intel.com smtp.mailfrom=nvidia.com;
  dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
  dkim=none (message not signed); arc=none (0)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
  s=selector2;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=whthyiAI2DBYZd4Y4veBADFPT1WSb96NW/DOEQ9mYMA=;
- b=SJttiY4b5ZtGmNjVj22XEyZWrjOui/qFe12WfgVxTgGf7CJkCV4QusGoj9n7JTNgvevhfS1mlU0uPA0dfsWIdOxb/jhp8Mhd7NjnI04B4rUwFDndsRvsL/GeLc9qPNSjmIbFCZH3o+Mx1qPz+eK48ZoTplCu4iRCRX+FGFDU8MfSX50Om4+SkrMpu3t/Xfl0P47cwMq+7bSnP/EEssFVckkWJ+Gf749fhfrOaeL9egyvrLB0knB4jg72mjsrUQcx0FeVXkgBFf0OAHJ2Fh3GiRY17MSSiL37C+CEWtTyzJQbpm3zXQO9TUyTuUZRSAZ3u6/5y2RACAy+ewbDpJSjNA==
-Received: from BN9PR03CA0638.namprd03.prod.outlook.com (2603:10b6:408:13b::13)
- by CY8PR12MB7147.namprd12.prod.outlook.com (2603:10b6:930:5d::19)
+ bh=hvy+hobdbUndbt+9x6sm7iCCltKis0sdnWimKHxuAyk=;
+ b=L+jlaqLSp1CWRn9+Lp1/B/WidfzCnVWPBi/nwlyHGo5jn4Dgflh5aYCb0E/i2OtkOS8UCdR/zgtYNXYO9BjUxJqr/TepFxzHdM8p0dQBUGK/qWw2qO2o7hF5OfNxhz5nNl1iaVaFDza9lNblEMXrxIW+K+jAdTjxQgS6TegM1gKxO4BXM4Wf8TN4Ci2f4etmLzIdb9A8i7rsipLl4rBsijWhXCIcoA6Tv4v2jlwuDdMslDXNcYlzSmCHBGmdod3mj0BGgl8uDrDYg61z0wHfh6m/ONym61LdTMGgmTWqYmM47GdRikH5bxqQr+kGPJoyWchGOy7dVBe5F62DHDyjxw==
+Received: from BL1PR13CA0111.namprd13.prod.outlook.com (2603:10b6:208:2b9::26)
+ by CH3PR12MB9196.namprd12.prod.outlook.com (2603:10b6:610:197::6)
  with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9203.12; Thu, 16 Oct
- 2025 21:48:37 +0000
-Received: from BL6PEPF00020E61.namprd04.prod.outlook.com
- (2603:10b6:408:13b:cafe::9e) by BN9PR03CA0638.outlook.office365.com
- (2603:10b6:408:13b::13) with Microsoft SMTP Server (version=TLS1_3,
- cipher=TLS_AES_256_GCM_SHA384) id 15.20.9228.12 via Frontend Transport; Thu,
- 16 Oct 2025 21:48:37 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.160)
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9228.10; Thu, 16 Oct
+ 2025 22:30:27 +0000
+Received: from BN1PEPF00004686.namprd03.prod.outlook.com
+ (2603:10b6:208:2b9:cafe::c1) by BL1PR13CA0111.outlook.office365.com
+ (2603:10b6:208:2b9::26) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.9253.6 via Frontend Transport; Thu,
+ 16 Oct 2025 22:30:27 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.118.233)
  smtp.mailfrom=nvidia.com;
  dkim=none (message not signed)
  header.d=none;dmarc=pass action=none header.from=nvidia.com;
 Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.117.160 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.117.160; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (216.228.117.160) by
- BL6PEPF00020E61.mail.protection.outlook.com (10.167.249.22) with Microsoft
+ 216.228.118.233 as permitted sender) receiver=protection.outlook.com;
+ client-ip=216.228.118.233; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (216.228.118.233) by
+ BN1PEPF00004686.mail.protection.outlook.com (10.167.243.91) with Microsoft
  SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.9228.7 via Frontend Transport; Thu, 16 Oct 2025 21:48:36 +0000
-Received: from rnnvmail205.nvidia.com (10.129.68.10) by mail.nvidia.com
- (10.129.200.66) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.34; Thu, 16 Oct
- 2025 14:48:20 -0700
-Received: from rnnvmail201.nvidia.com (10.129.68.8) by rnnvmail205.nvidia.com
- (10.129.68.10) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20; Thu, 16 Oct
- 2025 14:48:20 -0700
-Received: from Asurada-Nvidia (10.127.8.12) by mail.nvidia.com (10.129.68.8)
- with Microsoft SMTP Server (version=TLS1_2,
+ 15.20.9228.7 via Frontend Transport; Thu, 16 Oct 2025 22:30:27 +0000
+Received: from drhqmail201.nvidia.com (10.126.190.180) by mail.nvidia.com
+ (10.127.129.6) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14; Thu, 16 Oct
+ 2025 15:30:08 -0700
+Received: from drhqmail202.nvidia.com (10.126.190.181) by
+ drhqmail201.nvidia.com (10.126.190.180) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.20; Thu, 16 Oct 2025 15:30:06 -0700
+Received: from Asurada-Nvidia (10.127.8.12) by mail.nvidia.com
+ (10.126.190.181) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20 via Frontend
- Transport; Thu, 16 Oct 2025 14:48:18 -0700
-Date: Thu, 16 Oct 2025 14:48:17 -0700
+ Transport; Thu, 16 Oct 2025 15:30:06 -0700
+Date: Thu, 16 Oct 2025 15:30:04 -0700
 From: Nicolin Chen <nicolinc@nvidia.com>
 To: Shameer Kolothum <skolothumtho@nvidia.com>
 CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, <eric.auger@redhat.com>,
@@ -77,78 +77,68 @@ CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, <eric.auger@redhat.com>,
  <smostafa@google.com>, <wangzhou1@hisilicon.com>, <jiangkunkun@huawei.com>,
  <jonathan.cameron@huawei.com>, <zhangfei.gao@linaro.org>,
  <zhenzhong.duan@intel.com>, <yi.l.liu@intel.com>, <shameerkolothum@gmail.com>
-Subject: Re: [PATCH v4 20/27] hw/arm/smmuv3: Add accel property for SMMUv3
- device
-Message-ID: <aPFoIcxQnOrQVNTE@Asurada-Nvidia>
+Subject: Re: [PATCH v4 11/27] hw/pci/pci: Introduce optional
+ get_msi_address_space() callback
+Message-ID: <aPFx7Egdny+JCO9U@Asurada-Nvidia>
 References: <20250929133643.38961-1-skolothumtho@nvidia.com>
- <20250929133643.38961-21-skolothumtho@nvidia.com>
+ <20250929133643.38961-12-skolothumtho@nvidia.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20250929133643.38961-21-skolothumtho@nvidia.com>
+In-Reply-To: <20250929133643.38961-12-skolothumtho@nvidia.com>
 X-NV-OnPremToCloud: ExternallySecured
 X-EOPAttributedMessage: 0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: BL6PEPF00020E61:EE_|CY8PR12MB7147:EE_
-X-MS-Office365-Filtering-Correlation-Id: cb16723c-42a8-42d4-e0c5-08de0cfdc2b8
+X-MS-TrafficTypeDiagnostic: BN1PEPF00004686:EE_|CH3PR12MB9196:EE_
+X-MS-Office365-Filtering-Correlation-Id: ca448ab3-7519-4a48-c236-08de0d039b45
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
- ARA:13230040|36860700013|1800799024|82310400026|7416014|376014; 
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?RUhqK2ZhSlA0ZmZ3VjlLWHNWamlBSm9FY3NaRXRJVW1GSGQ5dFZ6SHNpcS91?=
- =?utf-8?B?QmtOWWpUV2pManlXTGFhcnpMdCtvcmJuYitXdG9UK1F6QytUaDJlZHUrVWlM?=
- =?utf-8?B?TW9iOWZUbmZZWXVLbkFMOFNWYWRUSUQ0OGVhaHRXRlFXalhORDZ6UjNiTHpE?=
- =?utf-8?B?eUthSkFDU3MxLzRXdFNDcnlPMWJ1T1RiU0JxaGNEMk1zWW83eVd1REUvZzd4?=
- =?utf-8?B?c3ZBdHByZkpyTjFqTFhWMFl5VTlYcUJNNG5JY0NYSDNybC9tcGdkQkk1SG0w?=
- =?utf-8?B?K3pIOW83UC9IRTJ3bzcrMjZHVytjYXluNmVuc3Q0U2ZwOWxkbnowT1M2c2pT?=
- =?utf-8?B?eW5zL1d3bnB0ZllZTmFPWkN6QnB1aXlqOUJ6K1d3S2QwQXJkeVg4VC9iWTNz?=
- =?utf-8?B?aUJPMFJvd0VPWUY2c2lKVXdORmpEdU8rVUpCV1l4L0FpS2ZsbFBITTFobjdD?=
- =?utf-8?B?K1dnVVIrdEtaeE15a2xkUVZWR1pHYXRzY2daaDZFbWdrZXphb0dNbUZtYXJx?=
- =?utf-8?B?QlVFM2d2dmdHTlVFUlRpQ0djMmQzM0VLaTFjRFkzTVViRDdaL2pab2NnS2du?=
- =?utf-8?B?a1hzRUxTc2p2YkgyK3FkQzVROStObzFhV2MrSDZqY3o3cERsbFZmVzUvTlA5?=
- =?utf-8?B?WHRTQW9jYWttOXlxQ0ZPbFkrTzQ3dUVyaHVrYmhOTEFtNGZWdURJb1RHSUQx?=
- =?utf-8?B?RVN3NCtRWnBWalp5QWJ2QnRlbmtFb0JiUjRsVVVTbTM3cEdmb3JMQlBGN0Vt?=
- =?utf-8?B?K2pWQzFVUERNREJscnBnRzByN25nUkdRYk91L3EwMFliM3ZkNnRWbityMmww?=
- =?utf-8?B?YVpCdHZWZGhRNjdQZ3pIWDM4RUVVU2JGQklPMUllOTVpZUh2dTJsRFVxOFpy?=
- =?utf-8?B?MnFqK2hGUWhtc2lCdTZhZGcrcGd6ZmpZOXBCeHcyL2pRaTFCVGpYSDc5Sk1E?=
- =?utf-8?B?N2QvcjlrTG53TUJ0Q1hEallzUHFndFZ4T3RtcnpCZ0RBYWVjQUZ4cnBzenFi?=
- =?utf-8?B?MVYwUTJXUlAyMFVyeUlpcHBUUFp4aXNUVlpSRVpsK3VBdmdkbTNiYWVzOVJR?=
- =?utf-8?B?dWVTcitTeGhvY1dGNm1wOW5oa0dVYXg0RXFxSW5zWXp4Y0thd1V1WWhnMmE3?=
- =?utf-8?B?RnJ1NG9tM0VpZUNWamVLOGV2Ti9UNE5RU0VWcmZwQklVa3MzVHJwUFhNS3RC?=
- =?utf-8?B?WFVMcUsrUzB3RlJUeE1IMnYwelhlN0plYzd5NFdoWVV2RkdDK0dOSGs0bUZl?=
- =?utf-8?B?M0hsNjNJblJuS01nVkhERFdiRFhtQm5oL1hvYVdpejQraEM3V1BFbnB3U2pO?=
- =?utf-8?B?cnloVVB0cHRoc1BCUldsaDNHWXhCVmpYbDV5V3ZML2F1WWxKRFNmRENTcGJJ?=
- =?utf-8?B?a1NveVRJMDhENElud3lXeE1LZ05mVGtBNHhWQXdrZndubEtxdkE0TkdwdXRF?=
- =?utf-8?B?TXVaWnNxWEJJWS9CSlUxdC9EU2l1TW1MSkVDcE51NndicU1SV1BBaFNkRnZ4?=
- =?utf-8?B?NXRmQjZyV3VWTmhYSE1mMUZ2djd1Nmx6UXpXNFpIWnQrWUpkaGNMMjllK3hW?=
- =?utf-8?B?MytibE4xWEloRFpTM2pYVmJlUStUM2RpVU8vdXdoS2NRU2pkekcveFZUYy9m?=
- =?utf-8?B?Z1ozVXN3S2d5NjcxVUhlR0VSNElMZk9jWFBOTmUwRzFNcVJIaU9YRDZIcEU3?=
- =?utf-8?B?Q0tPWk1RWENQSFFsaEkzWXNqSkhSRTBnSXJkY3ZPMy9sVDhGMWtFVjA4Ky8y?=
- =?utf-8?B?M3BGamUzOHdHdXF5Ylljb0JadE9sMEtTOGlYMllEYzRDTGR6UHQ1RUsrem4r?=
- =?utf-8?B?K2VOZ2N4K2Z3Rm1wVEZGeTQxYmhaU2hibFlpNFNnOGNGYUk2MlpQcDNlbis3?=
- =?utf-8?B?WWkvbnloMVlaUHVTcWdEbk5kYkxRVFZXR0UwbjFQSGVJZDBQTDIyOUtUVXJn?=
- =?utf-8?B?dFFmenNMTEZ4Z3h4UjBxSmwzdE1wbUhmeGxtRHcrUmJ4YlJ1RktlZUgzdW5K?=
- =?utf-8?B?SXdlYWRBNWV1N0phTDF2U0k3UlhhQVJPNzMzREZla09Ja0Y1a0tEN3dsM21Z?=
- =?utf-8?B?WGJONkE0dHpsMEFxUy82VU1XdlhhTlRGeW5OVUthdFJtQ1hweHh0L3YrMHJT?=
- =?utf-8?Q?h0vo=3D?=
-X-Forefront-Antispam-Report: CIP:216.228.117.160; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge1.nvidia.com; CAT:NONE;
- SFS:(13230040)(36860700013)(1800799024)(82310400026)(7416014)(376014); DIR:OUT;
+ ARA:13230040|7416014|1800799024|82310400026|376014|36860700013; 
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?XrdQ/Y2vqeAW9YokUFyKx50rX1gPi6tIXl6DSwC4Lt5yFbIoBQV/UMS0t7Iu?=
+ =?us-ascii?Q?kPtqkwQ/TjhBg/ktOsylHXPvA2BoMBDD4G7YH/S05WVBBkmj5i5naAJPjkT0?=
+ =?us-ascii?Q?OoQ3oNft3pTmC1DRxH1el6D1nsstC/wwnrupjuvNb9bZ2tpVzEBN+PpZTS/P?=
+ =?us-ascii?Q?vuCcd0aHOccl2dcVXGhUU8UQRP8IVEmJZ9SA0z/Kpfp0o3qUSpzIQZe6KaTe?=
+ =?us-ascii?Q?4ChdYp/oTTEgvoIHWhTpvHZXuqqB+/s1PylrofVPpd3JPcn6w8NLpD524lvr?=
+ =?us-ascii?Q?8CnMYcan3sv4Hf+IchEuE0hmRiXcnQe9szsXhBP4FphjImksklcyYoMGPMaT?=
+ =?us-ascii?Q?0BKEm4h4jkqK74XlX7r1MVz303LvyjSH24T2eRBybF4HZ7phDQJXmGRAInv3?=
+ =?us-ascii?Q?/tzubsrm/0Cv6Gg6zQ87+esrHmzlaYVxCWBlmG8maQXo0+LNu4s4K/pUUnbr?=
+ =?us-ascii?Q?MAOT8kAS3HKlmJFvPb2lVq6elzK2OckEVhPv45Qv/6bU5xYtTPqQkmGlpXNj?=
+ =?us-ascii?Q?5MW9yrrrCb0jZBLl66JfLD9NYtAo+uyyz8HqN1rSjcpIWO3NLK0trQNYxpAI?=
+ =?us-ascii?Q?t3bYHNRY2TCWafr/2iQFFP4/RT0FUX0ncMkKbhMdqkQJwPIEzZwI5+z6R9N1?=
+ =?us-ascii?Q?cThw7ZHGt0KZy5+DW3nsSQ9bBnnTBN85j9BRbFQtI73emI924+AKPjhMlRKC?=
+ =?us-ascii?Q?Po5016zcfJl/ap8V5RZWQbPtcGMI+PD0kcYhM8WG0TmOYgJVDdffgzmJP8eI?=
+ =?us-ascii?Q?lOk+D8EZeQul8Uk/xq+2snEQOCNGgMnHYCEuVv5PT9IR/VFdJxyYU5wVyP1M?=
+ =?us-ascii?Q?vDxSd2MRaKfYA3E18cMLcJGKk7QF1Jr+2SJ/qiseskk9u1yDLJKgU4ijBCwG?=
+ =?us-ascii?Q?xhj9F4rXccQCsVRQG85zgVoFeCphNlUt5zTUWQrXgF76ERxj6UCaJmU3mpiU?=
+ =?us-ascii?Q?sTMIxkiWH/fOvQIT4o36lyjrvzyL8/2rvkKQ00SS0cuOLSnaiWT/wR1DOQc8?=
+ =?us-ascii?Q?ZvLptIs1DMabEE5LHY3PwQJQCgxnxsaSNnJpAdqiAisKjYR23gJWsP8S6+kE?=
+ =?us-ascii?Q?J7A22ZSYOiBVTbchZ5unnXuqKaxzyN88aE850apA64c8KFXN+97RvvyoOLEO?=
+ =?us-ascii?Q?jGfNBos+EKQ78uy2SZxNwChmdOGOX2axdJ2uE+3egLszO9SVo8oDMyB/iJWI?=
+ =?us-ascii?Q?7edwAoV5WXqxUb0HwO3y4L1U7H4VOz2v2UOL3LF+nrhJvx5MXy4L0Oqjjwzp?=
+ =?us-ascii?Q?nIRhb33uhyJgr3xpJN9OIvm30UKWlizsFaUUhqF8xWko0c0jBOT6ZbiNB9DA?=
+ =?us-ascii?Q?SUfxPCncwKX7/94UeFwWrXsRVL1AFWXPZEsJMT38FkXO8hfCf9GKt2vGN4Fz?=
+ =?us-ascii?Q?mJ6ftcpHJtVULV9HYxRyUIJDr0X0sWv3BUbSdKXq2Nvf3bI6jjaWHAIVBb/n?=
+ =?us-ascii?Q?r193tlg12bRGZOHQeEL1nQ4De8WhAwVeSqZ9F2Ej906fnDjaDkD9acf3CLHv?=
+ =?us-ascii?Q?fvybAplh6J7z+MMzUyCwUHYX81qV6fGbndaviNhlY0jxAaoLDzbpAZteckOI?=
+ =?us-ascii?Q?RHMgxCakjAbcbQEasgY=3D?=
+X-Forefront-Antispam-Report: CIP:216.228.118.233; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc7edge2.nvidia.com; CAT:NONE;
+ SFS:(13230040)(7416014)(1800799024)(82310400026)(376014)(36860700013); DIR:OUT;
  SFP:1101; 
 X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 Oct 2025 21:48:36.4454 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: cb16723c-42a8-42d4-e0c5-08de0cfdc2b8
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 Oct 2025 22:30:27.2529 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: ca448ab3-7519-4a48-c236-08de0d039b45
 X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.160];
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.118.233];
  Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: BL6PEPF00020E61.namprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthSource: BN1PEPF00004686.namprd03.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Anonymous
 X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY8PR12MB7147
-Received-SPF: permerror client-ip=2a01:111:f403:c110::1;
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH3PR12MB9196
+Received-SPF: permerror client-ip=2a01:111:f403:c000::1;
  envelope-from=nicolinc@nvidia.com;
- helo=BN1PR04CU002.outbound.protection.outlook.com
+ helo=BYAPR05CU005.outbound.protection.outlook.com
 X-Spam_score_int: -10
 X-Spam_score: -1.1
 X-Spam_bar: -
@@ -171,26 +161,73 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, Sep 29, 2025 at 02:36:36PM +0100, Shameer Kolothum wrote:
-> Introduce an “accel” property to enable accelerator mode.
-
-Looks better with ASCII quotation marks: "accel".
-
-> Live migration is currently unsupported when accelerator mode is enabled,
-> so a migration blocker is added.
+On Mon, Sep 29, 2025 at 02:36:27PM +0100, Shameer Kolothum wrote:
+> On ARM, when a device is behind an IOMMU, its MSI doorbell address is
+> subject to translation by the IOMMU. This behavior affects vfio-pci
+> passthrough devices assigned to guests using an accelerated SMMUv3.
 > 
-> Because this mode relies on IORT RMR for MSI support, accelerator mode is
-> not supported for device tree boot.
+> In this setup, we configure the host SMMUv3 in nested mode, where
+> VFIO sets up the Stage-2 (S2) mappings for guest RAM, while the guest
+> controls Stage-1 (S1). To allow VFIO to correctly configure S2 mappings,
+> we currently return the system address space via the get_address_space()
+> callback for vfio-pci devices.
 > 
-> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
+> However, QEMU/KVM also uses this same callback path when resolving the
+> address space for MSI doorbells:
+> 
+> kvm_irqchip_add_msi_route()
+>   kvm_arch_fixup_msi_route()
+>     pci_device_iommu_address_space()
+>      get_address_space()
+> 
+> This will cause the device to be configured with wrong MSI doorbell
+> address if it return the system address space.
 
-Reviewed-by: Nicolin Chen <nicolinc@nvidia.com>
+I think it'd be nicer to elaborate why a wrong address will be returned:
 
-> @@ -67,6 +67,7 @@ struct SMMUv3State {
->      /* SMMU has HW accelerator support for nested S1 + s2 */
->      bool accel;
->      struct SMMUv3AccelState  *s_accel;
-> +    Error  *migration_blocker;
+--------------------------------------------------------------------------
+On ARM, a device behind an IOMMU requires translation for its MSI doorbell
+address. When HW nested translation is enabled, the translation will also
+happen in two stages: gIOVA => gPA => ITS page.
 
-No need of double space.
+In the accelerated SMMUv3 mode, both stages are translated by the HW. So,
+get_address_space() returns the system address space for stage-2 mappings,
+as the smmuv3-accel model doesn't involve in either stage.
+
+On the other hand, this callback is also invoked by QEMU/KVM:
+
+ kvm_irqchip_add_msi_route()
+   kvm_arch_fixup_msi_route()
+     pci_device_iommu_address_space()
+      get_address_space()
+
+What KVM wants is to translate an MSI doorbell gIOVA to a vITS page (gPA),
+so as to inject IRQs to the guest VM. And it expected get_address_space()
+to return the address space for stage-1 mappings instead. Apparently, this
+is broken.
+
+Introduce an optional get_msi_address_space() callback and use that in the
+above path.
+--------------------------------------------------------------------------
+
+> @@ -652,6 +652,21 @@ typedef struct PCIIOMMUOps {
+>                              uint32_t pasid, bool priv_req, bool exec_req,
+>                              hwaddr addr, bool lpig, uint16_t prgi, bool is_read,
+>                              bool is_write);
+> +    /**
+> +     * @get_msi_address_space: get the address space for MSI doorbell address
+> +     * for devices
+
++     * @get_msi_address_space: get the address space to translate MSI doorbell
++     * address for a device
+
+> +     *
+> +     * Optional callback which returns a pointer to an #AddressSpace. This
+> +     * is required if MSI doorbell also gets translated through IOMMU(eg: ARM)
+
+through vIOMMU (e.g. ARM).
+
+With these,
+
+Reviewed-by Nicolin Chen <nicolinc@nvidia.com>
 

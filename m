@@ -4,34 +4,34 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC4CDCCD183
-	for <qemu-arm@archiver.kernel.org>; Thu, 16 Oct 2025 18:45:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85173CCD199
+	for <qemu-arm@archiver.kernel.org>; Thu, 16 Oct 2025 18:46:11 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v9Sxq-0001gN-Iv; Thu, 16 Oct 2025 14:44:38 -0400
+	id 1v9Sxp-0001gA-RD; Thu, 16 Oct 2025 14:44:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1v9Sxp-0001fb-LX
- for qemu-arm@nongnu.org; Thu, 16 Oct 2025 14:44:37 -0400
-Received: from p-east3-cluster6-host8-snip4-4.eps.apple.com ([57.103.85.205]
+ id 1v9Sxn-0001eF-LT
+ for qemu-arm@nongnu.org; Thu, 16 Oct 2025 14:44:35 -0400
+Received: from p-east3-cluster6-host5-snip4-8.eps.apple.com ([57.103.85.179]
  helo=outbound.qs.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1v9Sxh-000272-Qp
- for qemu-arm@nongnu.org; Thu, 16 Oct 2025 14:44:37 -0400
+ id 1v9Sxe-000267-4D
+ for qemu-arm@nongnu.org; Thu, 16 Oct 2025 14:44:35 -0400
 Received: from outbound.qs.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-east-2d-100-percent-9 (Postfix) with ESMTPS id
- 7FD381800387; Thu, 16 Oct 2025 18:44:25 +0000 (UTC)
+ 4CFB41800161; Thu, 16 Oct 2025 18:44:22 +0000 (UTC)
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; bh=yaziaz//KfkV1qB+UvLaS9dqmb7Qx8vSQ/YVwpl0DrQ=;
+ s=sig1; bh=PC8lHa9L/eTJ6vFt+Ut95xvBVS4mUtYzEzdzPpMOvK8=;
  h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
- b=M2O3zpnqRU0A/o/NiHxtzv0CWEyQ4KL7t/bUhKbtvHa5fTlodppZ8Qsx5so5fKPs0nxcFZXdRFFXwGBLaMRmYWiqVmGs7nyVC7Ele3VjR5afuPtFLaMZ9UYFPoE1+7GAgEAbOmro0PZulJbJGQQ8Fg9FwWWymad41arbMkxN1+OoIJ1d8PdT/wkIc6n8jfWnts2ocXEQekmgWAbxtAi5rm9GOEmqhwXBxOoJTdvGv0N2kJu5VObmwPkO7eOhVSV1KXHaQx9ZatFpQE6rdYK90awlmcxCcmcFEpG74gMsb3Z2QMrvztGb/EnhHXxiaMcglmdQgtOha+1hxnA8/2ynjg==
+ b=Ko+Gl0rDACHcJ9VsMHbjMjVVskx5gHaEIVXXNqnskakSuQBIyourn5dHAlWE0K5SBfeJRya50ctnnCHvxFj8DVAa6i+rjYUDZbRcEfO3TAVpHN5Ic5U/TlDs0rmIyMrcUL1aEDW8XQlTb38At9CEMn5RcG/NnFDlisIVuttC7wpf8ZQrgtH3SMfEwXGIAwtAt+v+kEgtljzvjhh6yBhzkpB2SixFDHRE2kDKb4KcZncGYec5gGuIvUW8xn5JG4PKIOLxTXGVUm5Q31oaoMzDOgdraLp/20rxwfpkjsdh0mYCtoAf9K9MZrztfXuuqhd7oUVZXev4+wxuPnr5eUwInA==
 mail-alias-created-date: 1752046281608
 Received: from localhost.localdomain (unknown [17.57.155.37])
  by p00-icloudmta-asmtp-us-east-2d-100-percent-9 (Postfix) with ESMTPSA id
- 6B7CB180016B; Thu, 16 Oct 2025 18:44:23 +0000 (UTC)
+ 38BAA18004C7; Thu, 16 Oct 2025 18:44:20 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
@@ -43,31 +43,32 @@ Cc: qemu-arm@nongnu.org,
  Mohamed Mediouni <mohamed@unpredictable.fr>, Mads Ynddal <mads@ynddal.dk>,
  Pedro Barbuda <pbarbuda@microsoft.com>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v8 20/24] target/arm: whpx: instantiate GIC early
-Date: Thu, 16 Oct 2025 20:44:09 +0200
-Message-ID: <20251016184413.69870-6-mohamed@unpredictable.fr>
+Subject: [PATCH v8 18/24] hw/arm, accel/hvf,
+ whpx: unify get_physical_address_range between WHPX and HVF
+Date: Thu, 16 Oct 2025 20:44:07 +0200
+Message-ID: <20251016184413.69870-4-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.50.1
 In-Reply-To: <20251016184413.69870-1-mohamed@unpredictable.fr>
 References: <20251016184413.69870-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-GUID: b-rAZPVuogUQxiVu2GuKxg4gM29ya_q5
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMDE2MDEzNyBTYWx0ZWRfX0D4YqSgiDzpj
- koxg8enKMxdoxRSj4T91xCO4PneMBks1+t7qfR2T05u3E86IJF53aIXC66SSUOJKGZYpuiWLoMG
- Cnzd8MCCuaVNuHnC6pYsnz+7Umfye7ZIK4E/8i9R26Sc+x+OQCSRnrMEbbFRulVPK41dR+MrT96
- 52hVyaU6Hwxox4T3j6u2L8WLp+FeL/eWZAipMj+zeBpano1THvXlzHUxH3Id+1tZpr/GxaV8+Uo
- anoTm91Vmnr3QIZeIprcBXUDAe5zrLICgNhhyAMuJcFwgdlLTV2j3Yw/Z2htOFz9KE2rCtm6k=
-X-Proofpoint-ORIG-GUID: b-rAZPVuogUQxiVu2GuKxg4gM29ya_q5
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMDE2MDEzOCBTYWx0ZWRfX805o4vKAQkkp
+ eCxDrUffrLGmu1KW7D8f7CAUxESH462nMZSozi4Esk5XwH6yRYKjGAEsN8SFlJjBwkP7gtVSV/o
+ UaO4+HPh7FW57fL8kmjEKMqcMFQQT6CWyMJm4VXnmzHZO9LugH5IFuUr6j2xPfpkiTeOWyqDoJA
+ ykYOOzoUmtEusUC10LqcOEi1CCaXPsQzpeXfAAJCjKErxPYy1PS556ggtiJ7yw2MeIRZ3qA7vcx
+ CTxIHzqb8VipMqHNI2ILCLjO7ufjtT05HRXx172P2tvd2AO4LS90UW1cAuwGNmAXkkKetBTAo=
+X-Proofpoint-GUID: zLVWPcA20SnFIxa4y3Nq6RVvQQX8iFv4
+X-Proofpoint-ORIG-GUID: zLVWPcA20SnFIxa4y3Nq6RVvQQX8iFv4
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.80.40
  definitions=2025-10-16_03,2025-10-13_01,2025-03-28_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
- bulkscore=0 mlxlogscore=608 phishscore=0
- clxscore=1030 spamscore=0
- adultscore=0 suspectscore=0 mlxscore=0 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.22.0-2506270000 definitions=main-2510160137
-X-JNJ: AAAAAAABvPxEW/d3I27A5YYqXEz8hh3xs5XcxZ9RDPp6hPUX8yPGUynRoH8KeQ2dfXpyY2LP3JHpTgYQwe+cOpauv4CHNaexBaaNyRsl/DiQlsvpm/s6OMIosk9Ja6SGZo28wjRXlINlcK6WbfYf4SR7R7rWoAuTE1TSIu+PuBa+4O3LI+TvL/shf7fKQ4Kg1nMuQ0PxhHO92A4SsBCEdt6TvTkF4yXbUY7PlMCExKtzq6uh855YNvaYlT92h7RaXirGj7uPZKvKWpF9207SDrJTz2KyAVZtu9L3Gsp+JDM0P3EMCrZD/4pEHTCq7qYy3zr974tXOhhnaienteWvVU/ob+Es3Nl/PeibQInzN9RRSlui5K5jSrZJySFkdSH8MMl72aIMSY0v20c/orf2xr08YvvM2pHe7Lbg4XGLqt1yuWj8HJEqg5u6PQxCwk77Xv313ayYMCOT0nzAoIbJ0tfVYaQN85yh2sqPqphmq5JR/nVX5kT7SpB2xFHzgSrOy+cvUyhf5ZGpnpsPm4NE4qiEAxyDRTwpqDHaG9OJiH5h7J9L2TzsisklX9IRv3URnabeMMUGr2ljnkgMEbJKWm54XZXRlfl6x9sANnYibp4/uzc0Y8hNoxab+WV7fLKrVwO5jpr8GSf3v3TJaOt7VhMICGOzSexnPQCHbWa9fbPm1vLBR9Fnj0Qg/HyaG4+O3K8BC7iNTZIx3gm4
-Received-SPF: pass client-ip=57.103.85.205;
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ malwarescore=0 phishscore=0 clxscore=1030
+ spamscore=0 bulkscore=0
+ adultscore=0 mlxscore=0 mlxlogscore=999 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.22.0-2506270000 definitions=main-2510160138
+X-JNJ: AAAAAAABDmWJNOdaVQIsyHuorBUWHkejTQMdw9now/Jt1g3L5j9Z+anof+6JSaOfzNOiDQH/UAOsPLKbOUSJrrLxW82tlws6mP1UtqdylePej4wPRDJmi7UAfAF4xd/VLsuz04s8oyGzfl/EXiPnld6TZn3hOcXaQ1Gy07hSkNdOevYbe2GNxXAz9R3OvUQwXpeBPi7ET2lAu9biIEfSCgVWL8MvKPQ590yengVm5xTXOMdvowfofbX3zGtUC8MHuLCW9V8iGcX8V4Wvtd1UPSO4JFmZbXFHQnA+oF4K0VAaNKDgsVHFPx6FNSrOmmU7/jbwD5mFQfOaScmYsFO+xsnsd8hsh5Eb2Hv9Bxx94x723GZwCcA3GlJc37wFO4FWRYIUm+4uV2q+v7iUxBrAW/u8UC/PqVGyBoyMTn0LcFM9k96j12w0STlnwBKmNsdcpGZifkmjEjGWG+S3rSscirKbOK0Y7Gi7PCrmG3gXeup0Lg3YvIrfb2JXkwiYU7a/MF7yBxCjtIczh+8WxOn+eNVJVm2pure9vspZan2f5yuayXt+AZs15yVK1N5vcweUb1rKNOihJd40BuUpmV4etAkHUTil613H+fm5cv3vCk42eXabyAsGav5lVDQ1OyPm9XwXVwt1DLxilRNC0I6RHNCYhlv9xy0GPjMRTrErp9QpZOAC6GmgWHmQm/ZyrwK/dy29cym/79Rgd8XCkK2IM5P/XLAZaNDyPnKte1WC31MkrQ659A==
+Received-SPF: pass client-ip=57.103.85.179;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.qs.icloud.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -91,51 +92,264 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-While figuring out a better spot for it, put it in whpx_accel_init.
-
-Needs to be done before WHvSetupPartition.
-
 Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 ---
- target/arm/whpx/whpx-all.c | 23 +++++++++++++++++++++++
- 1 file changed, 23 insertions(+)
+ accel/hvf/hvf-all.c        |  7 +++++--
+ hw/arm/virt.c              | 41 ++++----------------------------------
+ include/hw/boards.h        |  4 ++--
+ include/system/hvf_int.h   |  2 ++
+ target/arm/hvf-stub.c      | 20 -------------------
+ target/arm/hvf/hvf.c       |  6 +++---
+ target/arm/hvf_arm.h       |  3 ---
+ target/arm/meson.build     |  1 -
+ target/arm/whpx/whpx-all.c |  5 +++--
+ target/i386/hvf/hvf.c      | 11 ++++++++++
+ 10 files changed, 30 insertions(+), 70 deletions(-)
+ delete mode 100644 target/arm/hvf-stub.c
 
+diff --git a/accel/hvf/hvf-all.c b/accel/hvf/hvf-all.c
+index 0a4b498e83..8229ad8640 100644
+--- a/accel/hvf/hvf-all.c
++++ b/accel/hvf/hvf-all.c
+@@ -17,6 +17,7 @@
+ #include "system/hvf_int.h"
+ #include "hw/core/cpu.h"
+ #include "hw/boards.h"
++#include "target/arm/hvf_arm.h"
+ #include "trace.h"
+ 
+ bool hvf_allowed;
+@@ -256,8 +257,10 @@ static int hvf_accel_init(AccelState *as, MachineState *ms)
+     int pa_range = 36;
+     MachineClass *mc = MACHINE_GET_CLASS(ms);
+ 
+-    if (mc->hvf_get_physical_address_range) {
+-        pa_range = mc->hvf_get_physical_address_range(ms);
++
++    if (mc->get_physical_address_range) {
++        pa_range = mc->get_physical_address_range(ms,
++            hvf_arch_get_default_ipa_bit_size(), hvf_arch_get_max_ipa_bit_size());
+         if (pa_range < 0) {
+             return -EINVAL;
+         }
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 7afc275f79..fc8298bae8 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -3254,43 +3254,11 @@ static int virt_kvm_type(MachineState *ms, const char *type_str)
+     return fixed_ipa ? 0 : requested_pa_size;
+ }
+ 
+-static int virt_whpx_get_physical_address_range(MachineState *ms)
++static int virt_get_physical_address_range(MachineState *ms,
++    int default_ipa_size, int max_ipa_size)
+ {
+     VirtMachineState *vms = VIRT_MACHINE(ms);
+ 
+-    int max_ipa_size = whpx_arm_get_ipa_bit_size();
+-
+-    /* We freeze the memory map to compute the highest gpa */
+-    virt_set_memmap(vms, max_ipa_size);
+-
+-    int requested_ipa_size = 64 - clz64(vms->highest_gpa);
+-
+-    /*
+-     * If we're <= the default IPA size just use the default.
+-     * If we're above the default but below the maximum, round up to
+-     * the maximum. hvf_arm_get_max_ipa_bit_size() conveniently only
+-     * returns values that are valid ARM PARange values.
+-     */
+-    if (requested_ipa_size <= max_ipa_size) {
+-        requested_ipa_size = max_ipa_size;
+-    } else {
+-        error_report("-m and ,maxmem option values "
+-                     "require an IPA range (%d bits) larger than "
+-                     "the one supported by the host (%d bits)",
+-                     requested_ipa_size, max_ipa_size);
+-        return -1;
+-    }
+-
+-    return requested_ipa_size;
+-}
+-
+-static int virt_hvf_get_physical_address_range(MachineState *ms)
+-{
+-    VirtMachineState *vms = VIRT_MACHINE(ms);
+-
+-    int default_ipa_size = hvf_arm_get_default_ipa_bit_size();
+-    int max_ipa_size = hvf_arm_get_max_ipa_bit_size();
+-
+     /* We freeze the memory map to compute the highest gpa */
+     virt_set_memmap(vms, max_ipa_size);
+ 
+@@ -3299,7 +3267,7 @@ static int virt_hvf_get_physical_address_range(MachineState *ms)
+     /*
+      * If we're <= the default IPA size just use the default.
+      * If we're above the default but below the maximum, round up to
+-     * the maximum. hvf_arm_get_max_ipa_bit_size() conveniently only
++     * the maximum. hvf_arch_get_max_ipa_bit_size() conveniently only
+      * returns values that are valid ARM PARange values.
+      */
+     if (requested_ipa_size <= default_ipa_size) {
+@@ -3375,8 +3343,7 @@ static void virt_machine_class_init(ObjectClass *oc, const void *data)
+     mc->valid_cpu_types = valid_cpu_types;
+     mc->get_default_cpu_node_id = virt_get_default_cpu_node_id;
+     mc->kvm_type = virt_kvm_type;
+-    mc->hvf_get_physical_address_range = virt_hvf_get_physical_address_range;
+-    mc->whpx_get_physical_address_range = virt_whpx_get_physical_address_range;
++    mc->get_physical_address_range = virt_get_physical_address_range;
+     assert(!mc->get_hotplug_handler);
+     mc->get_hotplug_handler = virt_machine_get_hotplug_handler;
+     hc->pre_plug = virt_machine_device_pre_plug_cb;
+diff --git a/include/hw/boards.h b/include/hw/boards.h
+index 3d01fb8cc9..aecf5ca92e 100644
+--- a/include/hw/boards.h
++++ b/include/hw/boards.h
+@@ -275,8 +275,8 @@ struct MachineClass {
+     void (*reset)(MachineState *state, ResetType type);
+     void (*wakeup)(MachineState *state);
+     int (*kvm_type)(MachineState *machine, const char *arg);
+-    int (*hvf_get_physical_address_range)(MachineState *machine);
+-    int (*whpx_get_physical_address_range)(MachineState *machine);
++    int (*get_physical_address_range)(MachineState *machine,
++        int default_ipa_size, int max_ipa_size);
+ 
+     BlockInterfaceType block_default_type;
+     int units_per_default_bus;
+diff --git a/include/system/hvf_int.h b/include/system/hvf_int.h
+index a3b06a3e75..8b6447c238 100644
+--- a/include/system/hvf_int.h
++++ b/include/system/hvf_int.h
+@@ -71,6 +71,8 @@ void assert_hvf_ok_impl(hv_return_t ret, const char *file, unsigned int line,
+ const char *hvf_return_string(hv_return_t ret);
+ int hvf_arch_init(void);
+ hv_return_t hvf_arch_vm_create(MachineState *ms, uint32_t pa_range);
++uint32_t hvf_arch_get_default_ipa_bit_size(void);
++uint32_t hvf_arch_get_max_ipa_bit_size(void);
+ int hvf_arch_init_vcpu(CPUState *cpu);
+ void hvf_arch_vcpu_destroy(CPUState *cpu);
+ int hvf_vcpu_exec(CPUState *);
+diff --git a/target/arm/hvf-stub.c b/target/arm/hvf-stub.c
+deleted file mode 100644
+index ff137267a0..0000000000
+--- a/target/arm/hvf-stub.c
++++ /dev/null
+@@ -1,20 +0,0 @@
+-/*
+- * QEMU Hypervisor.framework (HVF) stubs for ARM
+- *
+- *  Copyright (c) Linaro
+- *
+- * SPDX-License-Identifier: GPL-2.0-or-later
+- */
+-
+-#include "qemu/osdep.h"
+-#include "hvf_arm.h"
+-
+-uint32_t hvf_arm_get_default_ipa_bit_size(void)
+-{
+-    g_assert_not_reached();
+-}
+-
+-uint32_t hvf_arm_get_max_ipa_bit_size(void)
+-{
+-    g_assert_not_reached();
+-}
+diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+index 0658a99a2d..ecca1a63ec 100644
+--- a/target/arm/hvf/hvf.c
++++ b/target/arm/hvf/hvf.c
+@@ -725,7 +725,7 @@ static uint64_t hvf_get_reg(CPUState *cpu, int rt)
+ static void clamp_id_aa64mmfr0_parange_to_ipa_size(ARMISARegisters *isar)
+ {
+     uint32_t ipa_size = chosen_ipa_bit_size ?
+-            chosen_ipa_bit_size : hvf_arm_get_max_ipa_bit_size();
++            chosen_ipa_bit_size : hvf_arch_get_max_ipa_bit_size();
+     uint64_t id_aa64mmfr0;
+ 
+     /* Clamp down the PARange to the IPA size the kernel supports. */
+@@ -816,7 +816,7 @@ static bool hvf_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+     return r == HV_SUCCESS;
+ }
+ 
+-uint32_t hvf_arm_get_default_ipa_bit_size(void)
++uint32_t hvf_arch_get_default_ipa_bit_size(void)
+ {
+     uint32_t default_ipa_size;
+     hv_return_t ret = hv_vm_config_get_default_ipa_size(&default_ipa_size);
+@@ -825,7 +825,7 @@ uint32_t hvf_arm_get_default_ipa_bit_size(void)
+     return default_ipa_size;
+ }
+ 
+-uint32_t hvf_arm_get_max_ipa_bit_size(void)
++uint32_t hvf_arch_get_max_ipa_bit_size(void)
+ {
+     uint32_t max_ipa_size;
+     hv_return_t ret = hv_vm_config_get_max_ipa_size(&max_ipa_size);
+diff --git a/target/arm/hvf_arm.h b/target/arm/hvf_arm.h
+index ea82f2691d..5d19d82e5d 100644
+--- a/target/arm/hvf_arm.h
++++ b/target/arm/hvf_arm.h
+@@ -22,7 +22,4 @@ void hvf_arm_init_debug(void);
+ 
+ void hvf_arm_set_cpu_features_from_host(ARMCPU *cpu);
+ 
+-uint32_t hvf_arm_get_default_ipa_bit_size(void);
+-uint32_t hvf_arm_get_max_ipa_bit_size(void);
+-
+ #endif
+diff --git a/target/arm/meson.build b/target/arm/meson.build
+index 61277a627c..9f2eb91635 100644
+--- a/target/arm/meson.build
++++ b/target/arm/meson.build
+@@ -41,7 +41,6 @@ arm_common_system_ss.add(files('cpu.c'))
+ arm_common_system_ss.add(when: 'TARGET_AARCH64', if_false: files(
+   'cpu32-stubs.c'))
+ arm_common_system_ss.add(when: 'CONFIG_KVM', if_false: files('kvm-stub.c'))
+-arm_common_system_ss.add(when: 'CONFIG_HVF', if_false: files('hvf-stub.c'))
+ arm_common_system_ss.add(when: 'CONFIG_ARM_COMPATIBLE_SEMIHOSTING',
+ 		                 if_true: files('common-semi-target.c'))
+ arm_common_system_ss.add(files(
 diff --git a/target/arm/whpx/whpx-all.c b/target/arm/whpx/whpx-all.c
-index 8f0a54f080..4d58e5e939 100644
+index e6bafb0601..23c7beefaf 100644
 --- a/target/arm/whpx/whpx-all.c
 +++ b/target/arm/whpx/whpx-all.c
-@@ -973,6 +973,29 @@ int whpx_accel_init(AccelState *as, MachineState *ms)
+@@ -805,8 +805,9 @@ int whpx_accel_init(AccelState *as, MachineState *ms)
+         goto error;
+     }
  
-     memset(&prop, 0, sizeof(WHV_PARTITION_PROPERTY));
+-    if (mc->whpx_get_physical_address_range) {
+-        pa_range = mc->whpx_get_physical_address_range(ms);
++    if (mc->get_physical_address_range) {
++        pa_range = mc->get_physical_address_range(ms,
++            whpx_arm_get_ipa_bit_size(), whpx_arm_get_ipa_bit_size());
+         if (pa_range < 0) {
+             return -EINVAL;
+         }
+diff --git a/target/i386/hvf/hvf.c b/target/i386/hvf/hvf.c
+index 8445cadece..0994b8643d 100644
+--- a/target/i386/hvf/hvf.c
++++ b/target/i386/hvf/hvf.c
+@@ -225,6 +225,17 @@ int hvf_arch_init(void)
+     return 0;
+ }
  
-+    WHV_ARM64_IC_PARAMETERS ic_params = {
-+        .EmulationMode = WHvArm64IcEmulationModeGicV3,
-+        .GicV3Parameters = {
-+            .GicdBaseAddress = 0x08000000,
-+            .GitsTranslaterBaseAddress = 0x08080000,
-+            .GicLpiIntIdBits = 0,
-+            .GicPpiPerformanceMonitorsInterrupt = VIRTUAL_PMU_IRQ,
-+            .GicPpiOverflowInterruptFromCntv = ARCH_TIMER_VIRT_IRQ
-+        }
-+    };
-+    prop.Arm64IcParameters = ic_params;
++/* 48-bit on all Intel Macs. Function currently unused. */
++uint32_t hvf_arch_get_default_ipa_bit_size(void)
++{
++    g_assert_not_reached();
++}
 +
-+    hr = whp_dispatch.WHvSetPartitionProperty(
-+            whpx->partition,
-+            WHvPartitionPropertyCodeArm64IcParameters,
-+            &prop,
-+            sizeof(WHV_PARTITION_PROPERTY));
-+    if (FAILED(hr)) {
-+        error_report("WHPX: Failed to enable GICv3 interrupt controller, hr=%08lx", hr);
-+        ret = -EINVAL;
-+        goto error;
-+    }
++uint32_t hvf_arch_get_max_ipa_bit_size(void)
++{
++    g_assert_not_reached();
++}
 +
-     hr = whp_dispatch.WHvSetupPartition(whpx->partition);
-     if (FAILED(hr)) {
-         error_report("WHPX: Failed to setup partition, hr=%08lx", hr);
+ hv_return_t hvf_arch_vm_create(MachineState *ms, uint32_t pa_range)
+ {
+     return hv_vm_create(HV_VM_DEFAULT);
 -- 
 2.50.1 (Apple Git-155)
 

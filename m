@@ -4,93 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E94ECCD199
-	for <qemu-arm@archiver.kernel.org>; Fri, 17 Oct 2025 13:18:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A96B4CCD199
+	for <qemu-arm@archiver.kernel.org>; Fri, 17 Oct 2025 13:18:35 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v9kE9-0005VY-B9; Fri, 17 Oct 2025 09:10:37 -0400
+	id 1v9kFw-0007st-Vi; Fri, 17 Oct 2025 09:12:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v9kDc-0004FX-1V
- for qemu-arm@nongnu.org; Fri, 17 Oct 2025 09:10:04 -0400
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1v9kFl-0007jp-TM
+ for qemu-arm@nongnu.org; Fri, 17 Oct 2025 09:12:19 -0400
+Received: from mail-yw1-x1129.google.com ([2607:f8b0:4864:20::1129])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v9kDT-0004ge-Fb
- for qemu-arm@nongnu.org; Fri, 17 Oct 2025 09:10:03 -0400
-Received: by mail-wr1-x434.google.com with SMTP id
- ffacd0b85a97d-426f1574a14so1113162f8f.3
- for <qemu-arm@nongnu.org>; Fri, 17 Oct 2025 06:09:54 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1v9kFd-0005Kh-Bl
+ for qemu-arm@nongnu.org; Fri, 17 Oct 2025 09:12:17 -0400
+Received: by mail-yw1-x1129.google.com with SMTP id
+ 00721157ae682-780fe73e337so24988517b3.1
+ for <qemu-arm@nongnu.org>; Fri, 17 Oct 2025 06:12:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1760706593; x=1761311393; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=eFKu1ozhaHpdAj12FHVUlzMeiE8N2MTuFr4PiE9GBwE=;
- b=FSxlvD60ueGTdvMx7njQyZ1LZEz/NL/+JxgKg6K70EN5sW20r7vdNBPwynqFL6TBe9
- JhnQcmU/Nz4S73STqGMSfGcWienGIS14ZatRloq/YC0wPvKw6MDUt/2rFcIy6P908TyG
- 5XQ3ebbYEwUAqq8codJ8bErt3BFXdYTU5HREqnVHFMDLMjUNe/kL2B9hyPcKq7dUvPl/
- /rT1oLNsTmiHSmfloxf1Db+wXInF17eEZFj27cbk7EFdLWlMMJvxxJEL3qJCitYqzKOx
- mwK2lqvgTYcWS6ZBz4803gqc6NfQQE4V8vi2DrB1NVV5HCeeCmVvxSBtxBD6vH0y6ohZ
- DSkQ==
+ d=linaro.org; s=google; t=1760706724; x=1761311524; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=D9xlQoRZeoR1UXPG1KXCkxosrjIsVdx7ZL3Vee6w0bQ=;
+ b=O8TSKDSFEPC/bvWpl8qTUxz+E4ytuEkolgACQzUlU6dlLNVQERpX1B+LAUU33nedK+
+ wMUOYnL7T44Zp8JOuakoHmd25T8RyfN0HzXsXR2TACUxOLQdoaf8JgwSjyoGTXzhc2o0
+ UIETbzJJ+q4XMRd7NuO+XwCb7JyfBuy1Nm1thMUKIndv062dQkvMCD8ZGafCTra9YAZO
+ E3haM7c2BZ/3w0jVfNeQHoAyl+4GPEWrxk9BLtqvd25Lv8ERheirRjTg2TO39bFK3vT7
+ pghoUBlioLGH75KC5NtS/8MOkJQvBeHqZBa1HXKgUVqGlJSAth0K6GFHlOkyE2GPp+FA
+ UDyw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1760706593; x=1761311393;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=eFKu1ozhaHpdAj12FHVUlzMeiE8N2MTuFr4PiE9GBwE=;
- b=vAUkBasQaZnKkawbfWKdxOBSGXlTW6q4/ImO7BaHqhiiR5R55iJHGcqKzBymWcJyVQ
- MwHFlDcdhjvSSlJamyOe0vuZ9qeX3GT2Bdyw6YmfelomdRIExp/MaMe13nFwtXGPGnBN
- rTK5wNq/1yYNoVdIx1LaL6dMC8wV4KJ6EuG68rF+GPLSYFwtJ68SViXcWiV2VG5SINWf
- 3vNOOWC7klI+PrQXIBZaes2QG4K0O39J90PGP7O3MDpCZpfnbgW367HeHq9rRc0VqEuQ
- q8cTp5NnkwKdnD6Z929HeYzFpYIw4tf+jWvpe9gXIiYZdH8NJW5hZrIVgwqbZM9FXKgP
- LLrQ==
+ d=1e100.net; s=20230601; t=1760706724; x=1761311524;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=D9xlQoRZeoR1UXPG1KXCkxosrjIsVdx7ZL3Vee6w0bQ=;
+ b=RckqdTfTVdE5ftgxXIp95/vMMN9+SvDcgITKCX0esxV8J7xtHtU03Vhz95v7SMlYGi
+ 3917xJC/0lP/A0qk6bUh4ydIgJOA+Je6SKVkVF6oEx0rtYu+szxApBAq4+Ies6voRl3y
+ lUKrSQuiRZ5NrsDTpPh8D6JSi//heqURVFtcse858gY5fKvM0DQX1DikMol3fDD9nJOL
+ DIzkgLnOMgv+SHTZKafsZV/KNHqXGw64ixTw8V8wRw3BcaqKbqPtYVMtMalxNyORKS6Z
+ quk4dtjpVAE3yXaw5eX2kqAIUXUz8sLmWsOphW6sJAFYqmUherMHnuiWxIUGu8raXnRL
+ pTNQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXnoWm+Ue8yP15/R7JDnCMCSN1hAsogfuGN9wBmvF5MTqeIH4BDkzcj7S+E0oYffoZ7UOoswjTslA==@nongnu.org
-X-Gm-Message-State: AOJu0Yzd6uy93fnF7oAGsplIf/qnYrO2anljtpURqINMeqmGzwcl7C9C
- pd0MzeVgmSmJT/6xOCSJAGdEy7xJK2WyNliFGrsxrgSJlcqQF1tDV8L9wcmxAjAdJ3A9mXoL+K/
- TAsOxOu0=
-X-Gm-Gg: ASbGncvtci9YCuOI3k9eDQnKxAvNbQj1xap9kX1LQj1+C7l3rj3VvUmj3G0l8/56TRw
- ystP4krq8dRV+kyD0IYKHtmHSEukifrwmikNQ+4dImL8fwtOV8uacnSOeY3GlvkGPByRj7557VQ
- S34hFRaKkGJVq+yJhlEbepZOaKz/tF4+Ubxf04jElev8IJ2o0gZz8nqbusUwGaJOOSYkjEfkhLf
- TjA39bauoHO3oXyANXr4w/mZyaaZzoDGMWKVZeqTAkHbf5XG7FaUS97F+gA7o2bdkKC3eNQiEgT
- /65VIRLl5yUMUkM9FPlzgx9ylgVAyFlENWyLPrMo3EylQjM2JSmcoRJAHDnr08HW6yLS7j81y1r
- N+gxfgRgcMv5fcvlgbprVpwN44bLR9wDP9P87jjpR6BOV2sZfQqWtGy7nSqDq2eFzR88t5mTPRn
- D2mxANM9iWpsZ4wPw9IvdrxtP+7EmW8DLO9gmTdjid88X0tzcBLn6x3LylgZnR
-X-Google-Smtp-Source: AGHT+IE9D14EnEh6r5ayWynENo7rhlBVs5+9hx6WqNcyncvun2mxUnzMRjwkSa9cvdDzMC7LvF/GyA==
-X-Received: by 2002:a5d:5d01:0:b0:427:7ac:528f with SMTP id
- ffacd0b85a97d-42707ac53b8mr1656002f8f.33.1760706591735; 
- Fri, 17 Oct 2025 06:09:51 -0700 (PDT)
-Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-42700072619sm8986487f8f.46.2025.10.17.06.09.50
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 17 Oct 2025 06:09:51 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: "Michael S. Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- Andrew Jones <ajones@ventanamicro.com>, Ani Sinha <anisinha@redhat.com>,
- qemu-arm@nongnu.org, Shannon Zhao <shannon.zhaosl@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 18/20] hw/arm/virt: Remove deprecated virt-7.1 machine
-Date: Fri, 17 Oct 2025 15:08:17 +0200
-Message-ID: <20251017130821.58388-19-philmd@linaro.org>
-X-Mailer: git-send-email 2.51.0
-In-Reply-To: <20251017130821.58388-1-philmd@linaro.org>
-References: <20251017130821.58388-1-philmd@linaro.org>
+ AJvYcCU+QlqHETu3jAxLZCXB4P4p6UK+995uEgojViRT0XsZyki/V8ia1lp46C5MNS56H40eXEarUvFiOA==@nongnu.org
+X-Gm-Message-State: AOJu0YwRkuBceFlbvp+vSUkk1cJCvF3idEd3vCKS4BZ6oIupepzDQtuC
+ g0rb5kqJ1l7WJjOzyMqgGZt3leK/PtEyRlfpFcLobt/mOm6P05VuWt/XihTz65IaeENpK96ZCWt
+ Rd1l9KalYQtwKEbUauxTAOvWpMyjPrxz1h4jYhOoj4iE7dSIvvppF
+X-Gm-Gg: ASbGncvM1ERSKSCv9xWexJyss79InMkBPeC/9EadeI5mmf0fZB+nN9e7ojyt7mIDA/Y
+ 4asEw310DnRJxUExhmv7TeD/aNLsnA4sf7qhelzK4PBjhD4P1VXTDg/8Q0Y+ftlxT7PQzkgxvBj
+ LrACU3F0SqGl3xx4J3HB4uzmvpQLODnVsr6rro6PjLS1R7Hzj1OWKNNk7yYV7llB8EbN21n4wLD
+ fq/5VAd1o0xI4FVWSN9yE/8jiPE2ob1VyNuxspl/fejmS/7s0O08CHveS1KlSoFYQxxEwyAZezi
+ lmBsx34=
+X-Google-Smtp-Source: AGHT+IHj32EUe0DPXTrJw6gc1fccEkjFc08onpntnLN/ztdEO8OXcqaA+W0DC0ZIrICEFzGm47HEc5FCcdzBd9pzo/s=
+X-Received: by 2002:a05:690e:4192:b0:636:1b01:63df with SMTP id
+ 956f58d0204a3-63e16168e5emr3252986d50.14.1760706724375; Fri, 17 Oct 2025
+ 06:12:04 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::434;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x434.google.com
+References: <20251014200718.422022-1-richard.henderson@linaro.org>
+ <20251014200718.422022-8-richard.henderson@linaro.org>
+In-Reply-To: <20251014200718.422022-8-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 17 Oct 2025 14:11:51 +0100
+X-Gm-Features: AS18NWBjL6FzFSgT8OsWQa2THimdmBQGVf5uXcNEKR8NsFgWUidraGP6nLrsSMg
+Message-ID: <CAFEAcA-OoeSq9iOrtf_23-x8tZBCyZJ2wQ2ckrYo6tY8e2w9FQ@mail.gmail.com>
+Subject: Re: [PATCH v2 07/37] target/arm: Add read_raw_cp_reg128,
+ write_raw_cp_reg128
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1129;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1129.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -106,36 +97,34 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This machine has been supported for a period of more than 6 years.
-According to our versioned machine support policy (see commit
-ce80c4fa6ff "docs: document special exception for machine type
-deprecation & removal") it can now be removed.
+On Tue, 14 Oct 2025 at 21:12, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> Add the functions and update raw_accessors_invalid to match.
+> Add assertions for !ARM_CP_128BIT in read_raw_cp_reg and
+> write_raw_cp_reg.
+>
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- hw/arm/virt.c | 11 -----------
- 1 file changed, 11 deletions(-)
+> +__attribute__((unused))
+> +static void write_raw_cp_reg128(CPUARMState *env, const ARMCPRegInfo *ri,
+> +                                Int128 v)
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 7218badc8c7..4a8a2a91b07 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -3586,14 +3586,3 @@ static void virt_machine_7_2_options(MachineClass *mc)
-     compat_props_add(mc->compat_props, hw_compat_7_2, hw_compat_7_2_len);
- }
- DEFINE_VIRT_MACHINE(7, 2)
--
--static void virt_machine_7_1_options(MachineClass *mc)
--{
--    VirtMachineClass *vmc = VIRT_MACHINE_CLASS(OBJECT_CLASS(mc));
--
--    virt_machine_7_2_options(mc);
--    compat_props_add(mc->compat_props, hw_compat_7_1, hw_compat_7_1_len);
--    /* Compact layout for high memory regions was introduced with 7.2 */
--    vmc->no_highmem_compact = true;
--}
--DEFINE_VIRT_MACHINE(7, 1)
--- 
-2.51.0
+Why does this one take an Int128 rather than a lo/hi pair?
 
+> +{
+> +    uint64_t lo = int128_getlo(v);
+> +    uint64_t hi = int128_gethi(v);
+> +
+> +    assert(ri->type & ARM_CP_128BIT);
+> +    if (ri->raw_write128fn) {
+> +        ri->raw_write128fn(env, ri, lo, hi);
+> +    } else if (ri->write128fn) {
+> +        ri->write128fn(env, ri, lo, hi);
+> +    } else {
+> +        raw_write128(env, ri, lo, hi);
+> +    }
+> +}
+
+thanks
+-- PMM
 

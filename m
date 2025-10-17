@@ -4,113 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A2E1CCD195
-	for <qemu-arm@archiver.kernel.org>; Fri, 17 Oct 2025 12:11:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8AC9CCCD195
+	for <qemu-arm@archiver.kernel.org>; Fri, 17 Oct 2025 12:22:30 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v9jHw-00049N-Va; Fri, 17 Oct 2025 08:10:34 -0400
+	id 1v9jTG-0002gt-Vw; Fri, 17 Oct 2025 08:22:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1v9jEB-0002qg-H4
- for qemu-arm@nongnu.org; Fri, 17 Oct 2025 08:06:39 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ id 1v9jTF-0002gL-Le
+ for qemu-arm@nongnu.org; Fri, 17 Oct 2025 08:22:09 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1v9jDr-0003NP-Lm
- for qemu-arm@nongnu.org; Fri, 17 Oct 2025 08:06:33 -0400
+ id 1v9jT5-0005y7-Rs
+ for qemu-arm@nongnu.org; Fri, 17 Oct 2025 08:22:08 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1760702770;
+ s=mimecast20190719; t=1760703712;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=s1x/oC5Jnn+OJC2a26uV7m24hSQxQ7YA8v356EGvGEo=;
- b=c8zi7mbsS7tUz/OT8lprUvzxX/dXMFz9xb/n9Z4ue/IX4lhhS72XFWM8Qu1GRRxAt6rHzo
- oxq+001ncTvT400uTH2qHunuCrjD/G3ciEX4KgKU+2EfYh4S+DpHYUJOlA9pRIqITKe3Fj
- PCldXAkNJGvOVhJb2cWrE7zpGze0P3M=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=I1f1Go9ZF0u3/1wsJbk01335+NkqP7+Lb6UADGNjGWw=;
+ b=YIRuJv3+0WjyNYwDB8ZVuARNLlBJ0eaVL0zTOahv96WpA+sKFg4W2vsh88B9cxBFCMe96a
+ J4KUo5entbFqhinT23jE5bibEXk4Rd7eu+eTLGt79HC0CHRDwIP0PRmQ3f1xjQhb4orfo3
+ 8EJhKLZHuZnyBwGC6tHawZ1sQX4kFQU=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-347-cyuHk2pTPaGTMt4_oyuhNA-1; Fri, 17 Oct 2025 08:06:07 -0400
-X-MC-Unique: cyuHk2pTPaGTMt4_oyuhNA-1
-X-Mimecast-MFC-AGG-ID: cyuHk2pTPaGTMt4_oyuhNA_1760702766
-Received: by mail-wr1-f72.google.com with SMTP id
- ffacd0b85a97d-3ece0fd841cso1029058f8f.0
- for <qemu-arm@nongnu.org>; Fri, 17 Oct 2025 05:06:07 -0700 (PDT)
+ us-mta-682-PjSRdQgIOnyTH_n28OjPGw-1; Fri, 17 Oct 2025 08:21:51 -0400
+X-MC-Unique: PjSRdQgIOnyTH_n28OjPGw-1
+X-Mimecast-MFC-AGG-ID: PjSRdQgIOnyTH_n28OjPGw_1760703710
+Received: by mail-wm1-f71.google.com with SMTP id
+ 5b1f17b1804b1-471168953bdso12114495e9.1
+ for <qemu-arm@nongnu.org>; Fri, 17 Oct 2025 05:21:51 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1760702766; x=1761307566;
+ d=1e100.net; s=20230601; t=1760703710; x=1761308510;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:reply-to:user-agent:mime-version:date
  :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=s1x/oC5Jnn+OJC2a26uV7m24hSQxQ7YA8v356EGvGEo=;
- b=dGuXbOahAIFx1w8f6mSEZsnms+bLLm5qLeVxm3b/ikiCXQhztrpi3nlQM9rVAYgvsZ
- WZ6QziWkxyVtEJkm5S/X7gWzsGLHXWSJvK/cANwLg6EyIQOiEAFfEFrSehisxCwKhbyl
- UGE7Cxd+PSvjrw/bffNY5fI7VKbeBpmYj/3ptN/jYapGl7aFtqJbFF15zETzshKPzsUf
- hUeS4z/hmwYGH2uZZAS5gqn+urz1S/EmgR6U1vBsCDSVukDd/Q6+obLP8XsITIT2ZTHy
- YwQyiZ95FyX7gCLBKm2EL63bWsXY1NfhL9cOycQssl+Ii3RqZiDtFQrwfkticgHaRhJ/
- yCVg==
-X-Gm-Message-State: AOJu0YwJh9dJijQmofwS1vRRp1QFWtCk1TEBmepQdrgFfTEpgcQo0erD
- ymqADwVzpoiNENkmQq5KPZFyAyRuoBzWgp/mGMuTfLSCjZDklvN+PL1z156kxICp0xrmJQC0knK
- aMf2gqZVOalHuHDu44waxuhRYI6FSY885XLbsCzxuXPCcAilOivYsJg==
-X-Gm-Gg: ASbGncuqNnJzUbap/+H58TM4UO+XLEndxRADoV212OHIdjk8ksoIV4+aVXd0ZzbPSB1
- cbLB+yoGHf6OnYHXXF0qotMz2BXmqG53Wvp+ET/x3c0usu6ag6/MOb2lK7rXHBNI3Nz2o0xv92n
- Fr3vKBP7pkdQMWgUy5kAffEGC82w/vkHq0mo/PEw/DyhmuhPveuiZvGno36tB4tm81gyl1l1m09
- HtLjrmrk/MZ87zOzV8eWKopgNEAoue3HoIGUZQyj5/JL6s5nCvk3M3rvduZ5WwLU43GY9Xkrhne
- UxHFzm0pMyTTcaaknyA4DxvednkXU75sjFsQhyeuiwY9v+76H7k+KV5SOdJq65b21bugA+XaH4X
- o4xm8n7NgJpmCUJ7C8E9hGmiQt99J9i6GtO0iMJbRPUe/SQ==
-X-Received: by 2002:a05:6000:24c2:b0:427:376:2f81 with SMTP id
- ffacd0b85a97d-42704d498efmr2941921f8f.5.1760702766179; 
- Fri, 17 Oct 2025 05:06:06 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFT5/A7dVhmPWKMECeVGhmZpq8prz6LysqOF6lFJu+rCFDLZo9mpXiwtRUrtzZ7aZ/EgneEdw==
-X-Received: by 2002:a05:6000:24c2:b0:427:376:2f81 with SMTP id
- ffacd0b85a97d-42704d498efmr2941885f8f.5.1760702765700; 
- Fri, 17 Oct 2025 05:06:05 -0700 (PDT)
+ bh=I1f1Go9ZF0u3/1wsJbk01335+NkqP7+Lb6UADGNjGWw=;
+ b=n6eNg48PBDhyJilK3TyjQ+wSfumWeNwBS3tokx5vIQ6IF/nbQA3icQNOTEhQmaj1x9
+ 6BFVkkNbt+RSuJnccOQjKeWA27+9HVveDqO79+I4trNAryRlKA0dXJNLe0FM81Qw3tq7
+ KB9pd78sq3pozAXX/oDeAuTLzpC+Sj7NZ11kYA9SQrRdE6En5jvGDHg8hPFaWgiAoSX/
+ T8GZUp5FSFZxb1RwRuKJ+UcCYpwRUhte9u+lY8lJEnN7gnVX5yqNoPoLPamGW/JhAaW3
+ Bf9M8i5pPBgDpVlDg2cvleb/BkLHTQ8StiYRd/CDKvT41lr/4YArGEbcQ5e41ST3SN0z
+ Ze1g==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVZtL9yGtFmx7OEzFXkvFeesmmT4uZl9tFYAXX5Vm/ZjSlH7GLIIGLxNvgaJyS2/eQWpN36qZDoxQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yw5TwQ6Kkl7c3+Zho3BPlAPfs7XcLR53kbUn4pjH4a3IcMZR2Ca
+ Bl0j/U8Qptok2eZ0X4AaF0r+72wyrvLSLWSyHJQRn26NGcGsvOCKI/ZSEsp+ADEi83SUEj4q2kp
+ KHaJVvKCHzxTGeCJrvGOirEqmNuAtyvlYqWiqKEVpfRVAzXpfdMYuQg==
+X-Gm-Gg: ASbGnctZAFAIrm7bIZ5CEkB9GRmIc4W4EaL0frzuH72Ez4q1iIAVdI6cXsitOxMlwxE
+ mAKIe0MCEBhs1e9NMU1up/uwka/DQPhAottRwpN5WxogRCfcAFgKia3NYcqlDXWYRkvuR0Edu+o
+ LH1ro+sAU6x6XTcARcaNBjdm2Ny0NEfvn6BsRDj9cKi+acxl3WJjnYRMhLsdsu+N8fQxdDIZvUw
+ MZ6g964lW8YjfAmqn2XaFjVsfu+NE66MeqJ4IGniAvuvm1a5dDhjVnqVqcHfabnl364QDX/CfSp
+ 3mO5MQcSGjVqTSK5qu6uDU1EvunTzAeyjWesLWAVSIF1/QvuO8SSHkz2kybYB+G9vIHU2KLLppO
+ jas+9hgjJ1YKRVNK6vdJLdeyptDpTJAyEf2kHAGN9GP15lQ==
+X-Received: by 2002:a05:600c:a088:b0:46f:a2ba:581f with SMTP id
+ 5b1f17b1804b1-47117315d8emr30430915e9.16.1760703710016; 
+ Fri, 17 Oct 2025 05:21:50 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGZJG2OOrkBcB2lepufImcSIW620Gsz5N0PtVw2QTLigW0pT1n8E08vq54EXqG4HeJQzh7inQ==
+X-Received: by 2002:a05:600c:a088:b0:46f:a2ba:581f with SMTP id
+ 5b1f17b1804b1-47117315d8emr30430685e9.16.1760703709595; 
+ Fri, 17 Oct 2025 05:21:49 -0700 (PDT)
 Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
  ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4710ed9e7d7sm48560215e9.3.2025.10.17.05.06.04
+ 5b1f17b1804b1-4711c487dfesm42391865e9.17.2025.10.17.05.21.48
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 17 Oct 2025 05:06:05 -0700 (PDT)
-Message-ID: <fb96b52e-e631-4e2a-bb02-3137a673bf42@redhat.com>
-Date: Fri, 17 Oct 2025 14:06:04 +0200
+ Fri, 17 Oct 2025 05:21:49 -0700 (PDT)
+Message-ID: <47578bc5-d12e-4208-9744-2929a17d8789@redhat.com>
+Date: Fri, 17 Oct 2025 14:21:47 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 08/27] hw/arm/smmuv3-accel: Add set/unset_iommu_device
- callback
-To: Nicolin Chen <nicolinc@nvidia.com>,
- Shameer Kolothum <skolothumtho@nvidia.com>
-Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- Jason Gunthorpe <jgg@nvidia.com>, "ddutile@redhat.com" <ddutile@redhat.com>,
- "berrange@redhat.com" <berrange@redhat.com>, Nathan Chen
- <nathanc@nvidia.com>, Matt Ochs <mochs@nvidia.com>,
- "smostafa@google.com" <smostafa@google.com>,
- "wangzhou1@hisilicon.com" <wangzhou1@hisilicon.com>,
- "jiangkunkun@huawei.com" <jiangkunkun@huawei.com>,
- "jonathan.cameron@huawei.com" <jonathan.cameron@huawei.com>,
- "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>,
- "zhenzhong.duan@intel.com" <zhenzhong.duan@intel.com>,
- "yi.l.liu@intel.com" <yi.l.liu@intel.com>,
- "shameerkolothum@gmail.com" <shameerkolothum@gmail.com>
+Subject: Re: [PATCH v4 01/27] backends/iommufd: Introduce
+ iommufd_backend_alloc_viommu
+To: Shameer Kolothum <skolothumtho@nvidia.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, jgg@nvidia.com, nicolinc@nvidia.com,
+ ddutile@redhat.com, berrange@redhat.com, nathanc@nvidia.com,
+ mochs@nvidia.com, smostafa@google.com, wangzhou1@hisilicon.com,
+ jiangkunkun@huawei.com, jonathan.cameron@huawei.com,
+ zhangfei.gao@linaro.org, zhenzhong.duan@intel.com, yi.l.liu@intel.com,
+ shameerkolothum@gmail.com
 References: <20250929133643.38961-1-skolothumtho@nvidia.com>
- <20250929133643.38961-9-skolothumtho@nvidia.com>
- <7167d287-f0d0-4bb8-8750-e38e9e31df10@redhat.com>
- <CH3PR12MB7548C5CB7B9BE18AAE5492BEABE7A@CH3PR12MB7548.namprd12.prod.outlook.com>
- <aN6r4n2F1s2ZLm9d@Asurada-Nvidia>
+ <20250929133643.38961-2-skolothumtho@nvidia.com>
 From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <aN6r4n2F1s2ZLm9d@Asurada-Nvidia>
+In-Reply-To: <20250929133643.38961-2-skolothumtho@nvidia.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: ejWUvBogEZNqbjIPoLczl3KdFdBbyWl8wlpzOAWmtlY_1760702766
+X-Mimecast-MFC-PROC-ID: ulRudE-kLLDfbs0-VDMloBpAuD38sUYJXF94RPqS7eI_1760703710
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124;
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -119,7 +110,8 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001,
+ T_SPF_HELO_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -138,75 +130,104 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 
 
-On 10/2/25 6:44 PM, Nicolin Chen wrote:
-> On Thu, Oct 02, 2025 at 04:34:17AM -0700, Shameer Kolothum wrote:
->>>> Implement a set_iommu_device callback:
->>>>  -If found an existing viommu reuse that.
->>> I think you need to document why you need a vIOMMU object.
->>>>  -Else,
->>>>     Allocate a vIOMMU with the nested parent S2 hwpt allocated by VFIO.
->>>>     Though, iommufd’s vIOMMU model supports nested translation by
->>>>     encapsulating a S2 nesting parent HWPT, devices cannot attach to this
->>>>     parent HWPT directly. So two proxy nested HWPTs (bypass and abort) are
->>>>     allocated to handle device attachments.
->>> "devices cannot attach to this parent HWPT directly".  Why? It is not clear to
->>> me what those hwpt are used for compared to the original one. Why are they
->>> mandated? To me this deserves some additional explanations. If they are s2
->>> ones, I would use an s2 prefix too.
->> Ok. This needs some rephrasing.
->>
->> The idea is, we cannot yet attach a domain to the SMMUv3 for this device yet.
->> We need a vDEVICE object (which will link vSID to pSID) for attach. Please see
->> Patch #10.
->>
->> Here we just allocate two domains(bypass or abort) for later attach based on
->> Guest request.
->>
->> These are not S2 only HWPT per se. They are of type IOMMU_DOMAIN_NESTED.
->>
->> From kernel doc:
->>
->> #define __IOMMU_DOMAIN_NESTED   (1U << 6)  /* User-managed address space nested
->>                                               on a stage-2 translation        */
-> There are a couple of things going on here:
-> 1) We should not attach directly to the S2 HWPT that eventually
->    will be shared across vSMMU instances. In other word, an S2
->    HWPT will not be attachable for lacking of its tie to an SMMU
->    instance and not having a VMID at all. Instead, each vIOMMU
->    object allocated using this S2 HWPT will hold the VMID.
+On 9/29/25 3:36 PM, Shameer Kolothum wrote:
+> From: Nicolin Chen <nicolinc@nvidia.com>
 >
-> 2) A device cannot attach to a vIOMMU directly but has to attach
->    through a proxy nested HWPT (IOMMU_DOMAIN_NESTED). To attach
->    to an IOMMU_DOMAIN_NESTED, a vDEVICE must be allocated with a
->    given vSID.
+> Add a helper to allocate a viommu object.
 >
-> This might sound a bit complicated but I think it makes sense from
-> a VM perspective, as a device that's behind a vSMMU should have a
-> guest-level SID and its corresponding STE: if the device is working
-> in the S2-only mode (physically), there must be a guest-level STE
-> configuring to the S1-BYPASS mode, where the "bypass" proxy HWPT
-> will be picked for attachment.
+> Also introduce a struct IOMMUFDViommu that can be used later by vendor
+> IOMMU implementations.
 >
-> So, for rephrasing, I think it would nicer to say something like:
+> Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
+> Reviewed-by: Eric Auger <eric.auger@redhat.com>
+> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
+> ---
+>  backends/iommufd.c       | 26 ++++++++++++++++++++++++++
+>  backends/trace-events    |  1 +
+>  include/system/iommufd.h | 14 ++++++++++++++
+>  3 files changed, 41 insertions(+)
 >
-> "
-> A device that is put behind a vSMMU instance must have a vSID and its
-> corresponding vSTEs (bypass/abort/translate). Pre-allocate the bypass
-> and abort vSTEs as two proxy nested HWPTs for the device to attach to
-> a vIOMMU.
->
-> Note that the core-managed nesting parent HWPT should not be attached
-> directly when using the iommufd's vIOMMU model. This is also because
-> we want that nesting parent HWPT to be reused eventually across vSMMU
-> instances in the same VM.
-> "
-
-I would add 1) and 2) also in the commit msg. This definitively helps
-understanding the whole setup
+> diff --git a/backends/iommufd.c b/backends/iommufd.c
+> index 2a33c7ab0b..7b2e5ace2d 100644
+> --- a/backends/iommufd.c
+> +++ b/backends/iommufd.c
+> @@ -446,6 +446,32 @@ bool iommufd_backend_invalidate_cache(IOMMUFDBackend *be, uint32_t id,
+>      return !ret;
+>  }
+>  
+> +bool iommufd_backend_alloc_viommu(IOMMUFDBackend *be, uint32_t dev_id,
+> +                                  uint32_t viommu_type, uint32_t hwpt_id,
+> +                                  uint32_t *out_viommu_id, Error **errp)
+> +{
+> +    int ret;
+> +    struct iommu_viommu_alloc alloc_viommu = {
+> +        .size = sizeof(alloc_viommu),
+> +        .type = viommu_type,
+> +        .dev_id = dev_id,
+> +        .hwpt_id = hwpt_id,
+> +    };
+> +
+> +    ret = ioctl(be->fd, IOMMU_VIOMMU_ALLOC, &alloc_viommu);
+> +
+> +    trace_iommufd_backend_alloc_viommu(be->fd, dev_id, viommu_type, hwpt_id,
+> +                                       alloc_viommu.out_viommu_id, ret);
+> +    if (ret) {
+> +        error_setg_errno(errp, errno, "IOMMU_VIOMMU_ALLOC failed");
+> +        return false;
+> +    }
+> +
+> +    g_assert(out_viommu_id);
+> +    *out_viommu_id = alloc_viommu.out_viommu_id;
+> +    return true;
+> +}
+> +
+>  bool host_iommu_device_iommufd_attach_hwpt(HostIOMMUDeviceIOMMUFD *idev,
+>                                             uint32_t hwpt_id, Error **errp)
+>  {
+> diff --git a/backends/trace-events b/backends/trace-events
+> index 56132d3fd2..01c2d9bde9 100644
+> --- a/backends/trace-events
+> +++ b/backends/trace-events
+> @@ -21,3 +21,4 @@ iommufd_backend_free_id(int iommufd, uint32_t id, int ret) " iommufd=%d id=%d (%
+>  iommufd_backend_set_dirty(int iommufd, uint32_t hwpt_id, bool start, int ret) " iommufd=%d hwpt=%u enable=%d (%d)"
+>  iommufd_backend_get_dirty_bitmap(int iommufd, uint32_t hwpt_id, uint64_t iova, uint64_t size, uint64_t page_size, int ret) " iommufd=%d hwpt=%u iova=0x%"PRIx64" size=0x%"PRIx64" page_size=0x%"PRIx64" (%d)"
+>  iommufd_backend_invalidate_cache(int iommufd, uint32_t id, uint32_t data_type, uint32_t entry_len, uint32_t entry_num, uint32_t done_num, uint64_t data_ptr, int ret) " iommufd=%d id=%u data_type=%u entry_len=%u entry_num=%u done_num=%u data_ptr=0x%"PRIx64" (%d)"
+> +iommufd_backend_alloc_viommu(int iommufd, uint32_t dev_id, uint32_t type, uint32_t hwpt_id, uint32_t viommu_id, int ret) " iommufd=%d type=%u dev_id=%u hwpt_id=%u viommu_id=%u (%d)"
+> diff --git a/include/system/iommufd.h b/include/system/iommufd.h
+> index c9c72ffc45..dfe1dc2850 100644
+> --- a/include/system/iommufd.h
+> +++ b/include/system/iommufd.h
+> @@ -38,6 +38,16 @@ struct IOMMUFDBackend {
+>      /*< public >*/
+>  };
+>  
+> +/*
+> + * Virtual IOMMU object that respresents physical IOMMU's virtualization
+represents
 
 Eric
->
-> Nicolin
->
+> + * support
+> + */
+> +typedef struct IOMMUFDViommu {
+> +    IOMMUFDBackend *iommufd;
+> +    uint32_t s2_hwpt_id; /* Id of stage 2 HWPT */
+> +    uint32_t viommu_id;  /* virtual IOMMU ID of allocated object */
+> +} IOMMUFDViommu;
+> +
+>  bool iommufd_backend_connect(IOMMUFDBackend *be, Error **errp);
+>  void iommufd_backend_disconnect(IOMMUFDBackend *be);
+>  
+> @@ -59,6 +69,10 @@ bool iommufd_backend_alloc_hwpt(IOMMUFDBackend *be, uint32_t dev_id,
+>                                  uint32_t data_type, uint32_t data_len,
+>                                  void *data_ptr, uint32_t *out_hwpt,
+>                                  Error **errp);
+> +bool iommufd_backend_alloc_viommu(IOMMUFDBackend *be, uint32_t dev_id,
+> +                                  uint32_t viommu_type, uint32_t hwpt_id,
+> +                                  uint32_t *out_hwpt, Error **errp);
+> +
+>  bool iommufd_backend_set_dirty_tracking(IOMMUFDBackend *be, uint32_t hwpt_id,
+>                                          bool start, Error **errp);
+>  bool iommufd_backend_get_dirty_bitmap(IOMMUFDBackend *be, uint32_t hwpt_id,
 
 

@@ -4,80 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC602CCD195
-	for <qemu-arm@archiver.kernel.org>; Fri, 17 Oct 2025 13:20:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0B20CCD195
+	for <qemu-arm@archiver.kernel.org>; Fri, 17 Oct 2025 13:22:28 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v9kM9-0007dO-13; Fri, 17 Oct 2025 09:18:53 -0400
+	id 1v9kMV-00084h-4t; Fri, 17 Oct 2025 09:19:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1v9kM7-0007bk-BO
- for qemu-arm@nongnu.org; Fri, 17 Oct 2025 09:18:51 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1v9kLw-0006GN-VD
- for qemu-arm@nongnu.org; Fri, 17 Oct 2025 09:18:51 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1760707117;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=jAkRelVz1BnP2QFOmLj5neVDaWWMzJ0SC1T6l3BxGAY=;
- b=K5GoxzZeb//TFrOdRTTg+1GZET37bp2MBRecoyK3ngz2bwBNTy6kZFiSADEM/FRA9e0Dl/
- 5Whbkgy/PGXZ9rdZBNdTyQnBUifrVGe8EUSEtIwQ5RQqLZd6H4WdRBljXlhvYEWeytYLho
- p6XL5g/hAwjD46VlylUTnRzAhmkcrDE=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-158-5E2a032kMP-KYOp3hGJEIg-1; Fri,
- 17 Oct 2025 09:18:33 -0400
-X-MC-Unique: 5E2a032kMP-KYOp3hGJEIg-1
-X-Mimecast-MFC-AGG-ID: 5E2a032kMP-KYOp3hGJEIg_1760707112
-Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 2B6031956048; Fri, 17 Oct 2025 13:18:32 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.139])
- by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 7BFD9180035A; Fri, 17 Oct 2025 13:18:29 +0000 (UTC)
-Date: Fri, 17 Oct 2025 14:18:26 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
- Igor Mammedov <imammedo@redhat.com>,
- Andrew Jones <ajones@ventanamicro.com>,
- Ani Sinha <anisinha@redhat.com>, qemu-arm@nongnu.org,
- Shannon Zhao <shannon.zhaosl@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [PATCH 00/20] hw/arm/virt: Remove virt-4.1 -> virt-7.2 machines
-Message-ID: <aPJCIuoL2_C2wrv2@redhat.com>
-References: <20251017130821.58388-1-philmd@linaro.org>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1v9kMH-0007lx-KQ
+ for qemu-arm@nongnu.org; Fri, 17 Oct 2025 09:19:06 -0400
+Received: from mail-yx1-xb134.google.com ([2607:f8b0:4864:20::b134])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1v9kM6-0006Hc-K6
+ for qemu-arm@nongnu.org; Fri, 17 Oct 2025 09:19:01 -0400
+Received: by mail-yx1-xb134.google.com with SMTP id
+ 956f58d0204a3-63e17c0fefbso1130488d50.1
+ for <qemu-arm@nongnu.org>; Fri, 17 Oct 2025 06:18:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1760707127; x=1761311927; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=CVwhx/Y3jd9YTRbtqmLkOCCzKA/XZRPfggZEaUB8WTI=;
+ b=CFaO67a/oLfMJ9QrBD2/c9qmMtGQE92gOx6Sg/pDRR8V5pGLwV+n6yCNQUREkIUQnq
+ aD2lM7HlR09CsDUQrFGneEyL3fykL1tXcP3Bvt+Fug02RTmdNHvFObMs28fn4T1W3/50
+ ETD2/49vImLah4MFEef5n5jmjemZl/FpMwdRISLwuNdkmU0sGZsduOYxzDJq5SxUDLvb
+ siVhB5fzkMIeoRYb5rmBmvwPRSGQTuKtgKZGFKBZCdPeQeV84HkdPOC3gR46b7hVcfUL
+ Lj5HIx+aCE9CAGHo67735KlJW1WmuNvPayfvE8abdRhhduqOKp8jOwCHexHbykD+4w13
+ bYAA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1760707127; x=1761311927;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=CVwhx/Y3jd9YTRbtqmLkOCCzKA/XZRPfggZEaUB8WTI=;
+ b=Ac+FXMVwRN2dhE+1ePVXevWFSOd5d+KrfZLdZF3CTlTxKeP9VraEviIIZ5/nznckQ7
+ bB4JBl2XjWWt9vS8Sc/H2cq6gxw/F63fsbKfeIa7bxPsn4BgrfS/JjfIjwIxqj+Uvyrc
+ 2ml6O40A55J1IkQeu+rE95kiKGuEPAd2Kej+ZULSkKf4VDzXDHRn/PQrBCQs9MTH5oP8
+ PipqddRvxaXnURi1P64aJ1OHnisxagG2VVtPOKTiSV6qjnaymOTztqx0o2g4HELlFRvp
+ +vylbwhmSfmKf7B6gdKVfjHOuMIt7qqQF9NSjqD2hjORNgMoIl+vD0s3IBVyLL1Ki5Qr
+ 6hwA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWYJlxUWKYx26ToORCVZ0b+J9VEVcKtNwU+8jidYXzyfhk/8dn2Ez5sBnDRPhxj7FuT1C8nkYnNTw==@nongnu.org
+X-Gm-Message-State: AOJu0YyWbhAZ5btT9HTP50HZyqILtz6SgddVcZ3qJ2KRnmidmmWyMXuH
+ FPBv5T2qVcuVJK5/I2elgYsDi5hhSMrB41sF2b0ACbuIJA8AC/op2Y5E/1yf30UsYRKY8+fKX/b
+ q1TK/zHyXxgFZez4ZzqwQDsN89kUIUz+z46iiymagwnEjvcdrSS5V
+X-Gm-Gg: ASbGncuY5Yi3H31u7LMQB56TSCVCtl6ghPVM5jN/tdT32Bf1TCX10nAiBNsSH6H7J+d
+ Oo/WAP4dFRg9vjrlxGd+9ufvXl786/5yH8OU1x1vs7CaSjWTRoxDdtGBXmBgw0JL8a5O5Y+oU4G
+ kbAmUEteuDbTEWY0IxdE+HvL740Bu5MzRHF2haONjRjm3tKsyEG93DM/tN0XV1edNtzBXyCWk56
+ 1uquFy1AlhyoAJ7awCzluDvkbuP96VLsztuplVFMcoOSF0dTowjkxkxZxSh5bhp+kheTugO
+X-Google-Smtp-Source: AGHT+IHfEwqoXakU6nTuWLFz3/JWHZ+0hbEjkn+LshmqaNjTUjwQl/cSptR2r+6F0A7aqt3Pjh1Mo/2q9IubPr+AMsM=
+X-Received: by 2002:a05:690e:408b:b0:63e:2284:83c6 with SMTP id
+ 956f58d0204a3-63e22848539mr550523d50.49.1760707126795; Fri, 17 Oct 2025
+ 06:18:46 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20251017130821.58388-1-philmd@linaro.org>
-User-Agent: Mutt/2.2.14 (2025-02-20)
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+References: <20251014200718.422022-1-richard.henderson@linaro.org>
+ <20251014200718.422022-11-richard.henderson@linaro.org>
+In-Reply-To: <20251014200718.422022-11-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 17 Oct 2025 14:18:35 +0100
+X-Gm-Features: AS18NWAE0aEdvQTkLUxgrpK93SLD59xlfe2VkVtmAec-F21-oiILg9wMbVS56XM
+Message-ID: <CAFEAcA-AakSNHvFUDWz51h9MvdotBJMc94UdSxCYvaiRWyEHUA@mail.gmail.com>
+Subject: Re: [PATCH v2 10/37] target/arm: Handle MO_128 in arm_gdb_get_sysreg
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b134;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb134.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- T_SPF_HELO_TEMPERROR=0.01,
- T_SPF_TEMPERROR=0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -90,57 +92,20 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, Oct 17, 2025 at 03:07:59PM +0200, Philippe Mathieu-Daudé wrote:
-> Remove the deprecated virt-4.1 up to virt-7.2 machines,
-> which are older than 6 years. Remove resulting dead code.
+On Tue, 14 Oct 2025 at 21:11, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> Handle gdb reads of 128-bit system registers.
+>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
 
-Nope, that's too aggressive here too. Only the 4.1/4.2 machines
-can be removed. The others are all still reported as being valid
-machines with '-machine help' - they'll be automatically removed
-from that list once their expiry release cycle is started.
 
-> 
-> Philippe Mathieu-Daudé (20):
->   hw/arm/virt: Remove deprecated virt-4.1 machine
->   hw/arm/virt: Remove VirtMachineClass::no_ged field
->   hw/arm/virt: Remove deprecated virt-4.2 machine
->   hw/arm/virt: Remove VirtMachineClass::kvm_no_adjvtime field
->   hw/arm/virt: Remove deprecated virt-5.0 machine
->   hw/arm/virt: Remove VirtMachineClass::acpi_expose_flash field
->   hw/arm/virt: Remove deprecated virt-5.1 machine
->   hw/arm/virt: Remove VirtMachineClass::no_kvm_steal_time field
->   hw/arm/virt: Remove deprecated virt-5.2 machine
->   hw/arm/virt: Remove VirtMachineClass::no_secure_gpio field
->   hw/arm/virt: Remove deprecated virt-6.0 machine
->   hw/arm/virt: Remove deprecated virt-6.1 machine
->   hw/arm/virt: Remove VirtMachineClass::no_tcg_its field
->   hw/arm/virt: Remove VirtMachineClass::no_cpu_topology field
->   hw/arm/virt: Remove deprecated virt-6.2 machine
->   hw/arm/virt: Remove VirtMachineClass::no_tcg_lpa2 field
->   hw/arm/virt: Remove deprecated virt-7.0 machine
->   hw/arm/virt: Remove deprecated virt-7.1 machine
->   hw/arm/virt: Remove VirtMachineClass::no_highmem_compact field
->   hw/arm/virt: Remove deprecated virt-7.2 machine
-> 
->  include/hw/arm/virt.h    |  11 --
->  hw/arm/virt-acpi-build.c |  37 +------
->  hw/arm/virt.c            | 228 ++++++++-------------------------------
->  3 files changed, 50 insertions(+), 226 deletions(-)
-> 
-> -- 
-> 2.51.0
-> 
-> 
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-With regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
-
+thanks
+-- PMM
 

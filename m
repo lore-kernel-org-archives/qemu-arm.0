@@ -4,93 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A8AECCD199
-	for <qemu-arm@archiver.kernel.org>; Fri, 17 Oct 2025 13:22:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F223CCD195
+	for <qemu-arm@archiver.kernel.org>; Fri, 17 Oct 2025 13:35:45 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v9kDP-0003qI-5x; Fri, 17 Oct 2025 09:09:51 -0400
+	id 1v9kbr-0004U6-IT; Fri, 17 Oct 2025 09:35:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v9kD3-0003PX-SH
- for qemu-arm@nongnu.org; Fri, 17 Oct 2025 09:09:30 -0400
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1v9kbY-0004JI-My
+ for qemu-arm@nongnu.org; Fri, 17 Oct 2025 09:34:52 -0400
+Received: from mail-yw1-x112a.google.com ([2607:f8b0:4864:20::112a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v9kCp-0004Z0-KM
- for qemu-arm@nongnu.org; Fri, 17 Oct 2025 09:09:19 -0400
-Received: by mail-wm1-x32b.google.com with SMTP id
- 5b1f17b1804b1-46e6ba26c50so14173225e9.2
- for <qemu-arm@nongnu.org>; Fri, 17 Oct 2025 06:09:13 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1v9kbR-00008z-AN
+ for qemu-arm@nongnu.org; Fri, 17 Oct 2025 09:34:48 -0400
+Received: by mail-yw1-x112a.google.com with SMTP id
+ 00721157ae682-783fa3aa582so2432917b3.3
+ for <qemu-arm@nongnu.org>; Fri, 17 Oct 2025 06:34:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1760706552; x=1761311352; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=/GqgVIjIVxL9Bk7BWZfwdZrQ/R8VZlnoVGR9k0eNJZE=;
- b=P3ADTI2ObpzYGdRzEIUrIeecDvc2ADgodLxuOKJ0MPOOfoYbbT/lKFJud+GjbUSSid
- Wzfojc9DZZycpUgRcxswGWS5G1JFTTRGrlWsQO+N7W5r+QLuy6+4SX+XofqMbwyn45sF
- kJ9YwpU6CURc94AltMxutEnT/CkwzbiZnA6puxmThgsMUZjzna3JN8cujk6fVzUfaiF3
- zXxqwWc1HymcbuVM+oUkxWs6o2xp3NgaSFrSutvj340SOHxQce9aUbuxTowa4EJyPPjW
- Z+veDerSNLlCEKVmRCDUJiEmLUaIVafOfS5aQs9NkP9s89vkpVPsRlfnMxX/0iOzPOnp
- ePag==
+ d=linaro.org; s=google; t=1760708072; x=1761312872; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=zU23yWGtSetwuWLS5SAyqN+GewwgZYsp4hXqLSA2xTQ=;
+ b=MGMHqj0JoftpTZ5BhBKoiJFLv47A2ffNJfJsANoljYtTFCLmE1KBVIKDt/rHKH6BQo
+ z6vtamKtZKN7wUEY3XRCNNKy6x4gvdar7Z4Qvx97+1T+4ThsHKbY0J64kqVxDaWL3bYe
+ MuQAlD5g6KcxZ/S4lm9j/cCiUZHCmxdN8YbTtLQQ/s+X30qGB7tlko3BycTlaj3ikC2v
+ FVBPolYNNc5JdmO1Ozv7j+C4NiL0INNjdTcMJSoXD9CTB4w+xLJDkwd+ChPVgfH+adPI
+ Sy0mVxuZCQc30B9RH1mqeKBPn2PCPo7lnY5h1OPKZN5Iy70IIKaDFfnixW8VE7w8uWYR
+ /j0w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1760706552; x=1761311352;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=/GqgVIjIVxL9Bk7BWZfwdZrQ/R8VZlnoVGR9k0eNJZE=;
- b=BwRhd78CVIsZAg+8afnIkqZzSjU88tcux2n2qVnRVUCFkHsU9iC9eFPrRFcm+8Hcps
- an1OrnXKevoFajS3qWGJYz/nRD28dkOkrEIZEI8pMncAGDfvWrPCaGgILZNV1d9fUNt/
- apsn8+4L163GxhQe5cqPUFXQ2a0dHIKSwZeLRxrUEC59dZsgxQrWflcC6rzbyHnx1lxg
- 3dJRmYnZcu1xb8eCIVn0re8+qNiv7iWTSQruow3HhHnB2jFkzLHICfPiNHna+nwmmmYS
- Krz98728bz1D6KIR4uS82gyOwS9WG33kv9ErS508DPI7bfsJ29jmzYyn5HjLDlNowiVb
- T7KQ==
+ d=1e100.net; s=20230601; t=1760708072; x=1761312872;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=zU23yWGtSetwuWLS5SAyqN+GewwgZYsp4hXqLSA2xTQ=;
+ b=dlA3pGo86LoPlQRy0dQacDYIQr1WSIMh2oE3lvRF5cAAd7+9SulGZnYqPJZYs6WC5q
+ RFGZd32JVeGkRxuSTlnCuugpIbDOT3P7WD0FmU09j/LJ16wM1Gz4/Y2n7l0dufBm9qIC
+ HmV7i6wk/Wid8FWAngwutQqTokZbcMyDFWoqUNzXSlO8ftGGrwM4wTX/6jzt9KgGla2X
+ SYoXW3+hAaAKMU5GuecHavZ7isOm6OFsfo0udTJTADua0/J9GbRpYJ0L8h4H3bGCarI8
+ OeIM6MUO15igtKFYNtd1TWngmxrEPnZmiNftybN/kPZyKzVSeSc98+VoeFquOguHwISD
+ UAwQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUNYSbBM5ZA9jlMVG/LVV0vHI+XbzoUJiDYxRENdn+qBi602nbdpH5PHaVUhHvXvmsEyjxfVCES8A==@nongnu.org
-X-Gm-Message-State: AOJu0YxVVg74Re3e1ZzhSI7Zu0c8knbDaUl0yFWqCbul23ceM534wGkF
- VY3CIBu9DSGOMkF1hbNvlNFrg6xiDdRvARdGAJyQxMZi0+YHtGITLwdmGzWJrry3BU0=
-X-Gm-Gg: ASbGnctr968uKK7BlrCnohqgcAUbvtvdLwc5rRYOj/2yXQBeDFwJjQysimoeVlfHttZ
- SeO+KOHkWL6MotssmhuUT7kujVHPOHA8dBdv4NHAWnpfmL9j5I9a9aF/92Iy43fqG85ZDmQjE28
- xHQyq7PS1TDcpBIvgMrLC06RKpDFcbbe7K3f0b1aMl5JDUM8ueePuLHv+kv0VvmuAUD2iMTrhDp
- g467U+Yq6HJVbsDvZqV/eUIHX0gq1sLh+Z/xV6CQ6uBoz6Y+t6JbCpd+OudFHR9ndpmLbjA5eZ6
- wkiR6g/Mjyf7HNG8PUasD45HyXRq8IqMTpunsSM3b0818rVYN1OCZnd0elxDoWrmQlYdMSkB2vs
- dgSNkH8EQeHuTbV6wHRmg1YqoAsHl5eJGqGoq1ibdfARARtG7KAW0NWtD8b+oYrP1/Dtiqc2Vn4
- EkQzg2RUKEYM/psPMOLdN1ATD6Nq4UAp5vgjBv58XIi/+2AO3M+Ln+vtxhgYM5K9NfyhmMbr8=
-X-Google-Smtp-Source: AGHT+IE8PhpIiHfHWpHcb8zHxB6YySKZ3L4Z+1bd8cjkOVSeAHxTMdwlRmXGPYuQj0ra9V8k/mg7sg==
-X-Received: by 2002:a05:600c:8284:b0:45d:d505:a1c3 with SMTP id
- 5b1f17b1804b1-47117920935mr31315235e9.37.1760706551922; 
- Fri, 17 Oct 2025 06:09:11 -0700 (PDT)
-Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-426ce5e10e8sm40948238f8f.39.2025.10.17.06.09.10
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 17 Oct 2025 06:09:11 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: "Michael S. Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- Andrew Jones <ajones@ventanamicro.com>, Ani Sinha <anisinha@redhat.com>,
- qemu-arm@nongnu.org, Shannon Zhao <shannon.zhaosl@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 10/20] hw/arm/virt: Remove VirtMachineClass::no_secure_gpio
- field
-Date: Fri, 17 Oct 2025 15:08:09 +0200
-Message-ID: <20251017130821.58388-11-philmd@linaro.org>
-X-Mailer: git-send-email 2.51.0
-In-Reply-To: <20251017130821.58388-1-philmd@linaro.org>
-References: <20251017130821.58388-1-philmd@linaro.org>
+ AJvYcCVw9SSR2MZjuzJh+rdLHFvtmYAAkLMSduRUoitIaxmfVB8Qm/PzpaOcVxkBhmnVCxCyYQinf1au5Q==@nongnu.org
+X-Gm-Message-State: AOJu0Yw/GhF4XPME2Vg0EWT7Bdol7WKpk1YZV5J18WR4AqCj4q3lelXa
+ /k0+c6bQ2C5+ViaZEw+M7Bx6bs0sYMxk7q5O0TQWAeoj9KZ5omYzar3e3ZvReZiqCcqp4dnSyqd
+ cWSvsTFbkM6YGf5YoJoa3xtPnz0xduzeFcdwTB8lojVm0WDMwUNsL
+X-Gm-Gg: ASbGncthGytCNWsIQYe2bA/kSgZAXW/K4/4F3ZPaY4dOOFnJDzu6cf9059HpFPtn1EU
+ q17JGVu44DFUSZLCgCQt/OUWf4LCFLYnQAsmv87HYELIw7kyWAMGRHz/cGShpdu5lxBIxcUszR8
+ Rul5wkTRs3Zk/kmmdZxyqrCjcGJGAbIQ6AY+JoF74vg3qqaWoyLDbBp8jid/t5h7RUrracndrdZ
+ UZ296Hyd25aUtq4GuMy1NdNwKRbeQePUyna0j3m4/zdIYM7yTaavccKXMyWog==
+X-Google-Smtp-Source: AGHT+IHNj6Hn16xb/wtZGMMzSy61F2WVi+0rR/OZMYChgRQ/dXTByA1NI4KKESVUjB6oxsMM2gb+Qq5FMeHXntmGGsE=
+X-Received: by 2002:a05:690e:4182:b0:632:5ba8:1bb5 with SMTP id
+ 956f58d0204a3-63e161395c5mr3448885d50.21.1760708072371; Fri, 17 Oct 2025
+ 06:34:32 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32b.google.com
+References: <20251014200718.422022-1-richard.henderson@linaro.org>
+ <20251014200718.422022-12-richard.henderson@linaro.org>
+In-Reply-To: <20251014200718.422022-12-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 17 Oct 2025 14:34:20 +0100
+X-Gm-Features: AS18NWBs8X9ldjDYHkAX24-dX5s7TD8iVpA1kJ2Ohte3MQtLfk26shTo3wJHFec
+Message-ID: <CAFEAcA9VbjnWPV+WmtHPc+H46aW96Yq3VQEBwzKzOzqA5M1xrg@mail.gmail.com>
+Subject: Re: [PATCH v2 11/37] target/arm: Handle ARM_CP_128BIT in cpu reset
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -106,42 +95,14 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The VirtMachineClass::no_secure_gpio field was
-only used by virt-5.2 machine, which got removed.
-Remove it as now unused.
+On Tue, 14 Oct 2025 at 21:09, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- include/hw/arm/virt.h | 1 -
- hw/arm/virt.c         | 2 +-
- 2 files changed, 1 insertion(+), 2 deletions(-)
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-index 96f3569c290..c5ccd6ec9ea 100644
---- a/include/hw/arm/virt.h
-+++ b/include/hw/arm/virt.h
-@@ -123,7 +123,6 @@ struct VirtMachineClass {
-     MachineClass parent;
-     bool no_tcg_its;
-     bool no_highmem_compact;
--    bool no_secure_gpio;
-     /* Machines < 6.2 have no support for describing cpu topology to guest */
-     bool no_cpu_topology;
-     bool no_tcg_lpa2;
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index e49af505431..33c0034b030 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -2510,7 +2510,7 @@ static void machvirt_init(MachineState *machine)
-         create_gpio_devices(vms, VIRT_GPIO, sysmem);
-     }
- 
--    if (vms->secure && !vmc->no_secure_gpio) {
-+    if (vms->secure) {
-         create_gpio_devices(vms, VIRT_SECURE_GPIO, secure_sysmem);
-     }
- 
--- 
-2.51.0
-
+thanks
+-- PMM
 

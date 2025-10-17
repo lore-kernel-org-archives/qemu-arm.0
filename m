@@ -4,77 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCE03CCD195
-	for <qemu-arm@archiver.kernel.org>; Fri, 17 Oct 2025 15:43:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31150CCD199
+	for <qemu-arm@archiver.kernel.org>; Fri, 17 Oct 2025 15:46:38 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v9mbf-0004Ky-1C; Fri, 17 Oct 2025 11:43:03 -0400
+	id 1v9meY-0005qB-T7; Fri, 17 Oct 2025 11:46:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1v9mbb-0004JV-Ko
- for qemu-arm@nongnu.org; Fri, 17 Oct 2025 11:43:00 -0400
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1v9meR-0005oA-Ad
+ for qemu-arm@nongnu.org; Fri, 17 Oct 2025 11:45:55 -0400
+Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1v9mbV-0002hR-Hf
- for qemu-arm@nongnu.org; Fri, 17 Oct 2025 11:42:58 -0400
-Received: by mail-wr1-x436.google.com with SMTP id
- ffacd0b85a97d-426f1574a14so1224251f8f.3
- for <qemu-arm@nongnu.org>; Fri, 17 Oct 2025 08:42:48 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1v9meO-00035z-6f
+ for qemu-arm@nongnu.org; Fri, 17 Oct 2025 11:45:54 -0400
+Received: by mail-pl1-x62a.google.com with SMTP id
+ d9443c01a7336-279e2554c8fso20320905ad.2
+ for <qemu-arm@nongnu.org>; Fri, 17 Oct 2025 08:45:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1760715766; x=1761320566; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:to
- :from:from:to:cc:subject:date:message-id:reply-to;
- bh=QfPQEIKuZQv3UL6IYvQM6c/lQ2qRgXLAwDHW1Znm2Rk=;
- b=Mx9uqNrik8USiyLsbqnAdk01JbSkdFqqKTGi5s6RQIOc1VVU3VfWWkbaUZPjJCquDy
- 496BAYT/QbD09TYlPlMdY6ufU4Xrj7pXqgzxKqYo7xVFSHfZ+xB/lFeP/h6f+w7B/5xy
- sq+uWVuiLUWnXkTYPQRPsgg44j9BPhC44yeNdnBDsUKe0GzPYoLs4Ej98m/vvhFCY/NU
- hIlYLiKVcKDNJAzvtfmiPVVzv+ddNFMxKFBDoffSjC9UrIG36iFGMGI5ZTCIzgnQPTKK
- rDtz15FYgwWesvrXLAI3/3lJPxLlQ7PRCobmUJmnahM/1q1OeevvAEinDxfBM0m6rRmy
- 54dQ==
+ d=linaro.org; s=google; t=1760715937; x=1761320737; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=0x1qDm/tny55L9yhWpq0+6upt+w1IGSdr0TK274fmJ8=;
+ b=YZVKWPnnXf9bx8fssK+xa0c6uzZfzp70liN8jVs7Axt2uNK0MM+lg/EFeXPf8JnOhR
+ G/WB6poIgkpLhraU6wFdWt8O0kYIqhoPg9iXbGxz1Mvobrukn+c8s3ycLNUYWMgDIj8N
+ +vUn8oJKaP1ZFHJhxBUi9pnDtgFteTtBMNdTZ4cQZir4Oo3Gjy4k53FEUBy+gCHc8DTT
+ xCj+IqTWuKse+8UBrmJKJi2SZL300uA9ddWLYub/6DNt1YhDlsS0QDyE1q3hZjhNHiS/
+ 1fSSLgWpJoi0rEsrXcLGDubhhTJjK8eMayPHxkyxLGL9YKfFnF2htsyLD1dudF3REv5i
+ UKTA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1760715766; x=1761320566;
- h=content-transfer-encoding:mime-version:message-id:date:subject:to
- :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=QfPQEIKuZQv3UL6IYvQM6c/lQ2qRgXLAwDHW1Znm2Rk=;
- b=WaS5ZlcGwVkoC5jvIUIiHlSlIxv6w89SIypp/ZoopoJECM/uBMrXSP8i1etAVz97ZQ
- WCbQYRC7Nvp/51hcBu79xvLOFjKrDvSPSvE0DFgpOfIF7NM/DO+v6BaWWh45lSX8gTae
- rtUfdQQth8JHcgSbSxlDK57xjC9xFsGLOZc6lZnn1MqgcjVSLs/VHBvbPBfViU/czqdD
- 3Yx9kaaB32PvZqNVw6MD3pZEBa8SKSgqfkvNYtJua7tev+eyFKLjTWEcZSKAkGRunb+m
- +TcpiIPYQHV/GZVoIAKJN3NfEvenQomAcHGermMMCJkEQTvoCd5OSTELdAbCwzxvUDZh
- p61g==
-X-Gm-Message-State: AOJu0Yw4/1j3ZtmTF+8LKrzlGdYpBpm8qGzBzrKMEjrFZc91SyDT3/FV
- hKjlYX5Kxo25b+wNSWFMcth1reGGhWlfQ03U0oaOvarQ2RcaDepg5hvfpS1T2NlzLfgMbRvxsz/
- 4nxQX
-X-Gm-Gg: ASbGncuCd0GFOi5AC6GFKEBF3GUHV3w0PJcpnLTVjQQRdXvfKXuUN++cgCUspe4yG7Z
- z313HV7DGg00GaPq/1HbKNXevI9uIcFxdRSZcRHMcbkj+nC7qBfNVcNuRQYkfPKP7jo1H0Lopx0
- /mcvdf1XTJ9d94QRvni8YhFlvZNIoAGkK/TsmZ8kGb039xgfTnZomqBVZAfgq0zICm9j5nUC28Z
- /G7fSDW7DikrFyjzB89uvyTspy1zHUb0M/bFUX69A4pkL7YjkoOklkOrFL/6OjrH8RDWSdMLq1K
- Qe2c9zdC317rqVOWS8VkHnhhVymH+LZWflOYX0I/gSWhTwzue2l6TutTM8bmYi2bgnEaQemQ2Tq
- CNNILkJByc6G/3CSGxXEW8M4d2nzVJkt2wqVaEN869MmFNsoUJb5yNxBK629pbKOL6KMbaPBlQg
- W8Iax4S75xichZM7d1
-X-Google-Smtp-Source: AGHT+IHDd2mcENcS66YRK0QSVLWJrvHxttKuteaRjflMx/bQuzP5QIqrt1wdOMH1V3OvNeLSfL2yxA==
-X-Received: by 2002:a05:6000:2486:b0:3e7:4893:f9be with SMTP id
- ffacd0b85a97d-42704d82dfbmr3010770f8f.12.1760715766243; 
- Fri, 17 Oct 2025 08:42:46 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+ d=1e100.net; s=20230601; t=1760715937; x=1761320737;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=0x1qDm/tny55L9yhWpq0+6upt+w1IGSdr0TK274fmJ8=;
+ b=Q4FwGKWZyXMdAbPJesg1RCP80RF7kQjbBVeWVMBbLIjVC+y+lK0mrcTJw1tgWY0rQ6
+ GzKM9ZwP9TDNZPgFGr61GorCE5WLUqfZKaUyeW/bG9d1Y04hFV/VBo8p7mRfOuwiaCzu
+ 4GH5xz0iOoySNco+mHvN2F1iMoxrdWevq4QKjXyhSdxS5XO9+lMeF3KRD7arWLPS6hnE
+ S5v35PQKGZC+OgOF4YKCOMlyS9Ly8UkUGRKJDRY/QYSjAdj3KtuZJMPmwl4resKGVTZs
+ N0w9zYODXIFLuts/WA5kupuPgKlEo5kXXJeSY/puJAuLlfZvA9ps2y/agzacKp0y0pi8
+ 3Jng==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXm3ZcqAuwUSd0ekjpBSh4A5wURWWzqnC09rWbWRopf2Isp+C7hGu/XkT6Dum7CPkVRW0+3zFLtVQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yzc6b3RG3+p30Ae4yC/VWcS8n8kgi2UEu2mIN6yO+R6RKXbFCfQ
+ 9Ex0m8Gs3/DCSK6mOLSK76QKD+6Hrb83zkaJJh/7yVEsdYrcOMYyu1Wh5uIk7aCJIF8=
+X-Gm-Gg: ASbGncsCYa3r6nV9OKFjxB7jEuClcUQ/vl10zbpw43XwCvCQaWUBu503kq9ZcMUQnAt
+ /DIezD3tEMbfPMiiwp5DJXX+mNogmSlKxGOSxqv9wEftzv0euWbBn12FsrmZMs+DsgVsk0v3jFJ
+ prz9WEoFMW4+uTvNbqmgCIBc7Ft/XSORJlAdGw57S4jUAefoh//PCetuuK4ChQW50yZW5h8xrFm
+ 51ZPS8icnta1FMUa5Ci82y+w/4kcm9fYaAQKpBSRYtDKsR4ZjvkEsLXpHJLuEaYzhsEO4KLgYP7
+ hf2C5img+YM8+x569W/3EnNK03AqY5vE7LorBP8PDNZhcpOaEcpLa6W0BYdOrDJ+rW52W4XwZgc
+ jWXLeM40Tca9A4WiKXhccihplXUD2TiHaLHfHf9E5cfqzgs6c55Y3qPrhsvzVcgaoh0d76AQPuS
+ pdWT22yr53r1W8KvFm8zI9WLkw
+X-Google-Smtp-Source: AGHT+IFs15lbeBxAT0+8G1jvH0ft8vRna/95ANzQuLh5JIFKyjldzpUIysAro6KgOc6bGypzhHCPKQ==
+X-Received: by 2002:a17:902:f647:b0:266:ddd:772f with SMTP id
+ d9443c01a7336-290c9c89cc9mr55775785ad.9.1760715936995; 
+ Fri, 17 Oct 2025 08:45:36 -0700 (PDT)
+Received: from [192.168.0.4] ([71.212.157.132])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-426ce5e1284sm40900691f8f.45.2025.10.17.08.42.45
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 17 Oct 2025 08:42:45 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH] MAINTAINERS: Claim the Arm XML in gdb-xml
-Date: Fri, 17 Oct 2025 16:42:44 +0100
-Message-ID: <20251017154244.971608-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.43.0
+ d9443c01a7336-290993102c9sm68123885ad.24.2025.10.17.08.45.36
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 17 Oct 2025 08:45:36 -0700 (PDT)
+Message-ID: <8e7b2ce8-e0d6-46fe-9df9-30a6cd983d71@linaro.org>
+Date: Fri, 17 Oct 2025 08:45:35 -0700
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 1/3] target/arm: Implement SME2 support in gdbstub
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: Vacha Bhavsar <vacha.bhavsar@oss.qualcomm.com>
+References: <20251017153027.969016-1-peter.maydell@linaro.org>
+ <20251017153027.969016-2-peter.maydell@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Content-Language: en-US
+In-Reply-To: <20251017153027.969016-2-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::436;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x436.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62a;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -97,32 +106,33 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Add F: entries to the Arm CPU section to claim the Arm related
-XML files in gdb-xml.
+On 10/17/25 08:30, Peter Maydell wrote:
+> For SME2, we need to expose the new ZT0 register in the gdbstub XML.
+> gdb documents that the requirements are:
+> 
+>> The ‘org.gnu.gdb.aarch64.sme2’ feature is optional.  If present,
+>> then the ‘org.gnu.gdb.aarch64.sme’ feature must also be present.
+>> The ‘org.gnu.gdb.aarch64.sme2’ feature should contain the
+>> following:
+>>
+>>     - ZT0 is a register of 512 bits (64 bytes).  It is defined as a
+>>       vector of bytes.
+> Implement this.
+> 
+> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
+> ---
+>   configs/targets/aarch64-bsd-user.mak      |  2 +-
+>   configs/targets/aarch64-linux-user.mak    |  2 +-
+>   configs/targets/aarch64-softmmu.mak       |  2 +-
+>   configs/targets/aarch64_be-linux-user.mak |  2 +-
+>   target/arm/internals.h                    |  2 +
+>   target/arm/gdbstub.c                      |  6 +++
+>   target/arm/gdbstub64.c                    | 52 +++++++++++++++++++++++
+>   gdb-xml/aarch64-sme2.xml                  | 14 ++++++
+>   8 files changed, 78 insertions(+), 4 deletions(-)
+>   create mode 100644 gdb-xml/aarch64-sme2.xml
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
-I happened to notice while doing the SME2 gdbstub handling
-that we didn't have an entry in MAINTAINERS making the
-Arm gdb xml files fall under the right section.
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
- MAINTAINERS | 2 ++
- 1 file changed, 2 insertions(+)
-
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 667acd933c7..3ec14bde6bc 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -208,6 +208,8 @@ F: hw/cpu/a*mpcore.c
- F: include/hw/cpu/a*mpcore.h
- F: docs/system/target-arm.rst
- F: docs/system/arm/cpu-features.rst
-+F: gdb-xml/arm*.xml
-+F: gdb-xml/aarch64*.xml
- 
- ARM SMMU
- M: Eric Auger <eric.auger@redhat.com>
--- 
-2.43.0
-
+r~
 

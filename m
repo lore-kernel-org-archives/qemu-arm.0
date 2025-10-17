@@ -4,88 +4,122 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99EF4CCD195
-	for <qemu-arm@archiver.kernel.org>; Fri, 17 Oct 2025 10:57:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A2E1CCD195
+	for <qemu-arm@archiver.kernel.org>; Fri, 17 Oct 2025 12:11:09 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v9i8d-0000gm-Fl; Fri, 17 Oct 2025 06:56:47 -0400
+	id 1v9jHw-00049N-Va; Fri, 17 Oct 2025 08:10:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1v9i8a-0000g5-TZ
- for qemu-arm@nongnu.org; Fri, 17 Oct 2025 06:56:45 -0400
-Received: from p-east2-cluster3-host3-snip4-10.eps.apple.com ([57.103.77.161]
- helo=outbound.st.icloud.com)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1v9jEB-0002qg-H4
+ for qemu-arm@nongnu.org; Fri, 17 Oct 2025 08:06:39 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1v9i8U-0007fM-Ey
- for qemu-arm@nongnu.org; Fri, 17 Oct 2025 06:56:43 -0400
-Received: from outbound.st.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-east-1a-60-percent-0 (Postfix) with ESMTPS id
- ACE5F1800D56; Fri, 17 Oct 2025 10:56:30 +0000 (UTC)
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; bh=vF1GaK7WYs32tzG9X+aOFxs95mgw5O/OaYYSamcEdfo=;
- h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To:x-icloud-hme;
- b=fnu37x7m/xKug0WRgBSF5fu2TThB0WnNPWi9VFelHwRlPGgVimQ51MZ3IX2uH7pl0+NUAUSVhkwRq/fOTmhAHUi7UZa6s+pIK/5lNpKqg/kZigmpqKeWK9UZnD/8cKGBPO/0bFMunNbhS0PpQQDmKUQfaFcltc2si6aT9U21WvX76VHVxBI5Hc5Q/5weMUKoSfmYSBCf2FuUxnw0uN4flBGMt1b26owPOI1JfmlOoSIpAAF8LVqascGVsNtp2dCnH3sRpiYdBIJ59sCwYbNqbH/g25DTNgw+EHas4/dDNEdSBd0iuRIjwFFxWR54ElYIjZl9FY5KuQUDWDq53Zl9hQ==
-mail-alias-created-date: 1752046281608
-Received: from smtpclient.apple (unknown [17.42.251.67])
- by p00-icloudmta-asmtp-us-east-1a-60-percent-0 (Postfix) with ESMTPSA id
- 9E6971800121; Fri, 17 Oct 2025 10:56:26 +0000 (UTC)
-Content-Type: text/plain;
-	charset=utf-8
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3864.100.1.1.5\))
-Subject: Re: [PATCH v7 00/24] WHPX support for Arm
-From: Mohamed Mediouni <mohamed@unpredictable.fr>
-In-Reply-To: <CAFEAcA9VWiQoOytHh9PbbQZVXm4ET7Ud9eLQP0C0njOO8R8qzA@mail.gmail.com>
-Date: Fri, 17 Oct 2025 12:56:14 +0200
-Cc: qemu-devel@nongnu.org, Alexander Graf <agraf@csgraf.de>,
- Richard Henderson <richard.henderson@linaro.org>,
- Cameron Esfahani <dirty@apple.com>, Mads Ynddal <mads@ynddal.dk>,
- qemu-arm@nongnu.org,
- =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Ani Sinha <anisinha@redhat.com>, Phil Dennis-Jordan <phil@philjordan.eu>,
- Eduardo Habkost <eduardo@habkost.net>,
- Sunil Muthuswamy <sunilmut@microsoft.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Yanan Wang <wangyanan55@huawei.com>,
- =?utf-8?B?IkRhbmllbCBQLiBCZXJyYW5nw6ki?= <berrange@redhat.com>,
- Shannon Zhao <shannon.zhaosl@gmail.com>, kvm@vger.kernel.org,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- =?utf-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- Pedro Barbuda <pbarbuda@microsoft.com>, Zhao Liu <zhao1.liu@intel.com>,
- Roman Bolshakov <rbolshakov@ddn.com>
-Content-Transfer-Encoding: quoted-printable
-Message-Id: <3C1B04B2-75AB-4EE4-93AD-8C76EEEDA73C@unpredictable.fr>
-References: <20251016165520.62532-1-mohamed@unpredictable.fr>
- <CAFEAcA9VWiQoOytHh9PbbQZVXm4ET7Ud9eLQP0C0njOO8R8qzA@mail.gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-X-Mailer: Apple Mail (2.3864.100.1.1.5)
-X-Proofpoint-GUID: COHrM0wKK2z-Y-ubsreiZJ4VTOiuC4xO
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMDE3MDA4MSBTYWx0ZWRfX1xzUrn+FZl93
- O7ralrla+j7yGDk4/LDoEFMqCaspyDad04cofHx/1uw4YYLjyYJ9k5Cwe0hJAdRWskqdvzMPvJb
- b85LZ9N5UaxBVqHR3Pp9hDOFVAuQOt+Qdi8btHG8tcZ2mFejKKYJUIcNiAUaVun2t2Rv3d2nbS/
- BAvHOMD/8NNWfYgPDrZYHTMuXRtfRE/q8onZJ/vn/rNU58JM7l1rsC4hA4Pai6K/YkJMW//tWVT
- 8Mi/UqloLrz2ojOTKNkSOETc9jS3qlnJUgW5tQZFxvFk8cJl7n2pah/FQqhk9ZuyiPrln7ZoI=
-X-Proofpoint-ORIG-GUID: COHrM0wKK2z-Y-ubsreiZJ4VTOiuC4xO
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.80.40
- definitions=2025-10-17_04,2025-10-13_01,2025-03-28_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
- spamscore=0 suspectscore=0 mlxlogscore=999 bulkscore=0 malwarescore=0
- mlxscore=0 phishscore=0 clxscore=1030 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.22.0-2506270000 definitions=main-2510170081
-X-JNJ: AAAAAAABAYrxi4EnHCsKcJi5Cn5YI6Jwvc4g3o3GixEaxAxfLeERwUcm+GAlW5y8aBcimEis6EsgpdRreTkQzuUFKoJ9EX9JNRdnFyZXV/ICcSTs5T45BeF17Pu93HRdosTIjQNUadqyc/yGT7IdAvcutaFccZQqnp3LYEG02kf98QmEL1IU9jeUXrt+0ioo0vBhdqvBto4KrPkPqVoL+5gQdIKFNCa8F4hcSdCFBtay9EJJcV2UU5nOnphpuUWtZX3sNxrIuZ8qHtdn9iw47GrGu7tnRydSRwQjvZCQOctSQGL5gMm+qrs3QYzwCcYS1jlLQJAhkpXANMOb7SQD7AoV25io7CWH6JqEv4/Sn/oFQz6c7T9IJXa5W7qFnLjO5StXCGCJwx9rnWH3dMC1LnE/QL1ke7x9UObj/RUqKIBVzO0hsYa/WxlZ/IGX97xr6so7V5ossI/0mEpxWCdiV7nmFaHVHVbI/QNaDMtAtD0ZRnn/K4wCkDZ8z9k5yLFTGqD2QdrBVG0wmfe9blv7ozQKwbW5tMW5TDNF0s4qZwxLYE5M7LNeUA8Lq+YHxfjlY28nvMAVzeiCKhVqdVlZNbTY2y4qJcywwW0Fovda82Mo83HESRswcUqV4Vjnggsv6RwMSr5DpHWGo9IbzQmikn0tM0DsnTgjAXOgewM5JwjU4SKhPinNx1K6x43SVJF2i0Sgcza0m27QRXLmISTZqHtMYOEAYqUr3f9eTKcepvY7PwRzUzT+lqZ1ub8LfnykZp6L4fIvftkO7nx/ixOHR4dNbf+M/Lmhk9mwOCmH6ERfY03JYiA05BebDHN/H+X8uN+QLUzINDd8qQXeXvHCa69ITq3VlaUTJBe2tegRGOME0ro4+nCRGDbB5f/p1tWuBCQGKWVPFnIFWxa81wv/A6lEC4OsTsy8WLs0TVv0bek1JKxxG+eLWPF1jaA3Cx9/lQ==
-Received-SPF: pass client-ip=57.103.77.161;
- envelope-from=mohamed@unpredictable.fr; helo=outbound.st.icloud.com
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1v9jDr-0003NP-Lm
+ for qemu-arm@nongnu.org; Fri, 17 Oct 2025 08:06:33 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1760702770;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=s1x/oC5Jnn+OJC2a26uV7m24hSQxQ7YA8v356EGvGEo=;
+ b=c8zi7mbsS7tUz/OT8lprUvzxX/dXMFz9xb/n9Z4ue/IX4lhhS72XFWM8Qu1GRRxAt6rHzo
+ oxq+001ncTvT400uTH2qHunuCrjD/G3ciEX4KgKU+2EfYh4S+DpHYUJOlA9pRIqITKe3Fj
+ PCldXAkNJGvOVhJb2cWrE7zpGze0P3M=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-347-cyuHk2pTPaGTMt4_oyuhNA-1; Fri, 17 Oct 2025 08:06:07 -0400
+X-MC-Unique: cyuHk2pTPaGTMt4_oyuhNA-1
+X-Mimecast-MFC-AGG-ID: cyuHk2pTPaGTMt4_oyuhNA_1760702766
+Received: by mail-wr1-f72.google.com with SMTP id
+ ffacd0b85a97d-3ece0fd841cso1029058f8f.0
+ for <qemu-arm@nongnu.org>; Fri, 17 Oct 2025 05:06:07 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1760702766; x=1761307566;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=s1x/oC5Jnn+OJC2a26uV7m24hSQxQ7YA8v356EGvGEo=;
+ b=dGuXbOahAIFx1w8f6mSEZsnms+bLLm5qLeVxm3b/ikiCXQhztrpi3nlQM9rVAYgvsZ
+ WZ6QziWkxyVtEJkm5S/X7gWzsGLHXWSJvK/cANwLg6EyIQOiEAFfEFrSehisxCwKhbyl
+ UGE7Cxd+PSvjrw/bffNY5fI7VKbeBpmYj/3ptN/jYapGl7aFtqJbFF15zETzshKPzsUf
+ hUeS4z/hmwYGH2uZZAS5gqn+urz1S/EmgR6U1vBsCDSVukDd/Q6+obLP8XsITIT2ZTHy
+ YwQyiZ95FyX7gCLBKm2EL63bWsXY1NfhL9cOycQssl+Ii3RqZiDtFQrwfkticgHaRhJ/
+ yCVg==
+X-Gm-Message-State: AOJu0YwJh9dJijQmofwS1vRRp1QFWtCk1TEBmepQdrgFfTEpgcQo0erD
+ ymqADwVzpoiNENkmQq5KPZFyAyRuoBzWgp/mGMuTfLSCjZDklvN+PL1z156kxICp0xrmJQC0knK
+ aMf2gqZVOalHuHDu44waxuhRYI6FSY885XLbsCzxuXPCcAilOivYsJg==
+X-Gm-Gg: ASbGncuqNnJzUbap/+H58TM4UO+XLEndxRADoV212OHIdjk8ksoIV4+aVXd0ZzbPSB1
+ cbLB+yoGHf6OnYHXXF0qotMz2BXmqG53Wvp+ET/x3c0usu6ag6/MOb2lK7rXHBNI3Nz2o0xv92n
+ Fr3vKBP7pkdQMWgUy5kAffEGC82w/vkHq0mo/PEw/DyhmuhPveuiZvGno36tB4tm81gyl1l1m09
+ HtLjrmrk/MZ87zOzV8eWKopgNEAoue3HoIGUZQyj5/JL6s5nCvk3M3rvduZ5WwLU43GY9Xkrhne
+ UxHFzm0pMyTTcaaknyA4DxvednkXU75sjFsQhyeuiwY9v+76H7k+KV5SOdJq65b21bugA+XaH4X
+ o4xm8n7NgJpmCUJ7C8E9hGmiQt99J9i6GtO0iMJbRPUe/SQ==
+X-Received: by 2002:a05:6000:24c2:b0:427:376:2f81 with SMTP id
+ ffacd0b85a97d-42704d498efmr2941921f8f.5.1760702766179; 
+ Fri, 17 Oct 2025 05:06:06 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFT5/A7dVhmPWKMECeVGhmZpq8prz6LysqOF6lFJu+rCFDLZo9mpXiwtRUrtzZ7aZ/EgneEdw==
+X-Received: by 2002:a05:6000:24c2:b0:427:376:2f81 with SMTP id
+ ffacd0b85a97d-42704d498efmr2941885f8f.5.1760702765700; 
+ Fri, 17 Oct 2025 05:06:05 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4710ed9e7d7sm48560215e9.3.2025.10.17.05.06.04
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 17 Oct 2025 05:06:05 -0700 (PDT)
+Message-ID: <fb96b52e-e631-4e2a-bb02-3137a673bf42@redhat.com>
+Date: Fri, 17 Oct 2025 14:06:04 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 08/27] hw/arm/smmuv3-accel: Add set/unset_iommu_device
+ callback
+To: Nicolin Chen <nicolinc@nvidia.com>,
+ Shameer Kolothum <skolothumtho@nvidia.com>
+Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ Jason Gunthorpe <jgg@nvidia.com>, "ddutile@redhat.com" <ddutile@redhat.com>,
+ "berrange@redhat.com" <berrange@redhat.com>, Nathan Chen
+ <nathanc@nvidia.com>, Matt Ochs <mochs@nvidia.com>,
+ "smostafa@google.com" <smostafa@google.com>,
+ "wangzhou1@hisilicon.com" <wangzhou1@hisilicon.com>,
+ "jiangkunkun@huawei.com" <jiangkunkun@huawei.com>,
+ "jonathan.cameron@huawei.com" <jonathan.cameron@huawei.com>,
+ "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>,
+ "zhenzhong.duan@intel.com" <zhenzhong.duan@intel.com>,
+ "yi.l.liu@intel.com" <yi.l.liu@intel.com>,
+ "shameerkolothum@gmail.com" <shameerkolothum@gmail.com>
+References: <20250929133643.38961-1-skolothumtho@nvidia.com>
+ <20250929133643.38961-9-skolothumtho@nvidia.com>
+ <7167d287-f0d0-4bb8-8750-e38e9e31df10@redhat.com>
+ <CH3PR12MB7548C5CB7B9BE18AAE5492BEABE7A@CH3PR12MB7548.namprd12.prod.outlook.com>
+ <aN6r4n2F1s2ZLm9d@Asurada-Nvidia>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <aN6r4n2F1s2ZLm9d@Asurada-Nvidia>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: ejWUvBogEZNqbjIPoLczl3KdFdBbyWl8wlpzOAWmtlY_1760702766
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -98,54 +132,81 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 
 
-> On 17. Oct 2025, at 11:59, Peter Maydell <peter.maydell@linaro.org> =
-wrote:
->=20
-> On Thu, 16 Oct 2025 at 17:56, Mohamed Mediouni =
-<mohamed@unpredictable.fr> wrote:
->>=20
->> Link to branch: https://github.com/mediouni-m/qemu whpx (tag for this =
-submission: whpx-v6)
->>=20
->> Missing features:
->> - PSCI state sync with Hyper-V
->> - Interrupt controller save-restore
->> - SVE register sync
->=20
-> The interrupt-controller save-state we can probably live
-> without if we have a migration-blocker for it, but the
-> SVE and PSCI state sync missing seems like it would be
-> a source of bugs?
-For SVE it=E2=80=99s dealt with by disabling it. There=E2=80=99s no =
-consumer Windows on arm64 hardware with SVE available for sale right now =
-unfortunately - but it=E2=80=99s coming in Q1 next year.=20
+On 10/2/25 6:44 PM, Nicolin Chen wrote:
+> On Thu, Oct 02, 2025 at 04:34:17AM -0700, Shameer Kolothum wrote:
+>>>> Implement a set_iommu_device callback:
+>>>>  -If found an existing viommu reuse that.
+>>> I think you need to document why you need a vIOMMU object.
+>>>>  -Else,
+>>>>     Allocate a vIOMMU with the nested parent S2 hwpt allocated by VFIO.
+>>>>     Though, iommufd’s vIOMMU model supports nested translation by
+>>>>     encapsulating a S2 nesting parent HWPT, devices cannot attach to this
+>>>>     parent HWPT directly. So two proxy nested HWPTs (bypass and abort) are
+>>>>     allocated to handle device attachments.
+>>> "devices cannot attach to this parent HWPT directly".  Why? It is not clear to
+>>> me what those hwpt are used for compared to the original one. Why are they
+>>> mandated? To me this deserves some additional explanations. If they are s2
+>>> ones, I would use an s2 prefix too.
+>> Ok. This needs some rephrasing.
+>>
+>> The idea is, we cannot yet attach a domain to the SMMUv3 for this device yet.
+>> We need a vDEVICE object (which will link vSID to pSID) for attach. Please see
+>> Patch #10.
+>>
+>> Here we just allocate two domains(bypass or abort) for later attach based on
+>> Guest request.
+>>
+>> These are not S2 only HWPT per se. They are of type IOMMU_DOMAIN_NESTED.
+>>
+>> From kernel doc:
+>>
+>> #define __IOMMU_DOMAIN_NESTED   (1U << 6)  /* User-managed address space nested
+>>                                               on a stage-2 translation        */
+> There are a couple of things going on here:
+> 1) We should not attach directly to the S2 HWPT that eventually
+>    will be shared across vSMMU instances. In other word, an S2
+>    HWPT will not be attachable for lacking of its tie to an SMMU
+>    instance and not having a VMID at all. Instead, each vIOMMU
+>    object allocated using this S2 HWPT will hold the VMID.
+>
+> 2) A device cannot attach to a vIOMMU directly but has to attach
+>    through a proxy nested HWPT (IOMMU_DOMAIN_NESTED). To attach
+>    to an IOMMU_DOMAIN_NESTED, a vDEVICE must be allocated with a
+>    given vSID.
+>
+> This might sound a bit complicated but I think it makes sense from
+> a VM perspective, as a device that's behind a vSMMU should have a
+> guest-level SID and its corresponding STE: if the device is working
+> in the S2-only mode (physically), there must be a guest-level STE
+> configuring to the S1-BYPASS mode, where the "bypass" proxy HWPT
+> will be picked for attachment.
+>
+> So, for rephrasing, I think it would nicer to say something like:
+>
+> "
+> A device that is put behind a vSMMU instance must have a vSID and its
+> corresponding vSTEs (bypass/abort/translate). Pre-allocate the bypass
+> and abort vSTEs as two proxy nested HWPTs for the device to attach to
+> a vIOMMU.
+>
+> Note that the core-managed nesting parent HWPT should not be attached
+> directly when using the iommufd's vIOMMU model. This is also because
+> we want that nesting parent HWPT to be reused eventually across vSMMU
+> instances in the same VM.
+> "
 
-For PSCI state sync it=E2=80=99s=E2=80=A6 well, brittle on the Hyper-V =
-side (with opaque, currently undocumented flags). Doing it would fix =
-reboots though.
+I would add 1) and 2) also in the commit msg. This definitively helps
+understanding the whole setup
 
-Note that Hyper-V doesn't cause VM exits for PSCI calls today, even if =
-it=E2=80=99s to bring up a CPU.
-
->> Known bugs:
->> - reboots when multiple cores are enabled are currently broken
->> - U-Boot still doesn't work (hangs when trying to parse firmware) but =
-EDK2 does.
->=20
-> You need to fix your known bugs before we take this, I think...
-
-I can try to address the first one/on the cards but the second one would =
-probably come later (if it=E2=80=99s not actually due to a platform =
-bug=E2=80=A6) .
-
--Mohamed
-> thanks
-> -- PMM
->=20
+Eric
+>
+> Nicolin
+>
 
 

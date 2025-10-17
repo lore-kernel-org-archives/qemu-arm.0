@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA129CCD19E
-	for <qemu-arm@archiver.kernel.org>; Fri, 17 Oct 2025 05:31:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A89FCCD199
+	for <qemu-arm@archiver.kernel.org>; Fri, 17 Oct 2025 05:31:31 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v9d12-0001bx-EI; Fri, 17 Oct 2025 01:28:36 -0400
+	id 1v9d1j-0001lE-5Q; Fri, 17 Oct 2025 01:29:19 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1v9d10-0001bo-K5
- for qemu-arm@nongnu.org; Fri, 17 Oct 2025 01:28:34 -0400
-Received: from 3.mo548.mail-out.ovh.net ([188.165.32.156])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1v9d1h-0001ku-SR
+ for qemu-arm@nongnu.org; Fri, 17 Oct 2025 01:29:17 -0400
+Received: from 2.mo548.mail-out.ovh.net ([178.33.255.19])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1v9d0v-0001jE-Re
- for qemu-arm@nongnu.org; Fri, 17 Oct 2025 01:28:34 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.110.58.222])
- by mo548.mail-out.ovh.net (Postfix) with ESMTPS id 4cntdh4GFsz5y2J;
- Fri, 17 Oct 2025 05:28:24 +0000 (UTC)
-Received: from kaod.org (37.59.142.110) by DAG8EX2.mxp5.local (172.16.2.72)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1v9d1d-0001pb-UC
+ for qemu-arm@nongnu.org; Fri, 17 Oct 2025 01:29:16 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.109.254.100])
+ by mo548.mail-out.ovh.net (Postfix) with ESMTPS id 4cntfZ50cHz5yBj;
+ Fri, 17 Oct 2025 05:29:10 +0000 (UTC)
+Received: from kaod.org (37.59.142.102) by DAG8EX2.mxp5.local (172.16.2.72)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.59; Fri, 17 Oct
- 2025 07:28:23 +0200
+ 2025 07:29:10 +0200
 Authentication-Results: garm.ovh; auth=pass
- (GARM-110S004dde2f7f3-2e77-4121-8e42-616f73ae4f5c,
+ (GARM-102R00467cc7780-1129-43f9-a7c9-735bc74be614,
  48F321F6F3AAA1B288770452BCFEC79A981EE5C7) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
-Message-ID: <a540fa15-6e0e-4b01-8c36-50440558bade@kaod.org>
-Date: Fri, 17 Oct 2025 07:28:23 +0200
+Message-ID: <1fa67818-cbc3-4812-b970-c400ad5b020e@kaod.org>
+Date: Fri, 17 Oct 2025 07:29:09 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [SPAM] [PATCH v1 03/12] hw/arm/ast27x0: Add SRAM link and alias
- mapping for SSP coprocessor
+Subject: Re: [SPAM] [PATCH v1 09/12] tests/functional/aarch64/ast2700fc:
+ Update test ASPEED SDK v09.08
 To: Jamin Lin <jamin_lin@aspeedtech.com>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
  <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, Joel
@@ -42,7 +42,7 @@ To: Jamin Lin <jamin_lin@aspeedtech.com>, Peter Maydell
  "open list:All patches CC here" <qemu-devel@nongnu.org>
 CC: <troy_lee@aspeedtech.com>
 References: <20251015062210.3128710-1-jamin_lin@aspeedtech.com>
- <20251015062210.3128710-4-jamin_lin@aspeedtech.com>
+ <20251015062210.3128710-10-jamin_lin@aspeedtech.com>
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Content-Language: en-US, fr
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -87,35 +87,35 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20251015062210.3128710-4-jamin_lin@aspeedtech.com>
+In-Reply-To: <20251015062210.3128710-10-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.110]
-X-ClientProxiedBy: DAG6EX2.mxp5.local (172.16.2.52) To DAG8EX2.mxp5.local
+X-Originating-IP: [37.59.142.102]
+X-ClientProxiedBy: DAG7EX1.mxp5.local (172.16.2.61) To DAG8EX2.mxp5.local
  (172.16.2.72)
-X-Ovh-Tracer-GUID: 9b4f35c1-17e1-4cff-9516-043229b7a2a9
-X-Ovh-Tracer-Id: 15273958137082448687
+X-Ovh-Tracer-GUID: 52def445-5b21-4b11-a32f-bf85732a1281
+X-Ovh-Tracer-Id: 15286905989355047727
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTFZq5SZnFJE7G4OKQNfF2Fc3k8YMuST+QnEcwN4XU0wZXaBvYA88NmRdFlg8x1CrbvTiPOWs+PCSoT/fqeKJPRCu8vSJw/oCllFpiabx1ImQ57yuIxdOfTb74e1DWFeIn5279a7y0jceIsC8KKm0Sl00RrD6LRbRRELBYw0XbMC2wK6vDGI61YFPSXD7j6v+fbgCWPZ6lEfRdKGw4XJIsvIZn9Jb1Iv5nICXlY1EE+iHRMAjIgZchnzJWYgeChjh/CxMtLTr4yexbbJthRbJ4VJ0QrSKBRRwV5U/VbyutIZMKzN7kGHxYgbMqRNDKcCybbRxo2eNaN0QMFwWcTJMxvjaom0zv8+3Ivlt4LOrp99enm0oAuS86FIjAzBRtTFziEgv2DdHwxywIKUkdXVStc9R0zGWb9lqsO28pbl186rJlXSn0lQHYeN3gathXmf4XbCzi3v65VWWm3ietY4lUU23SJCwn8jgLLDd6X6DjYg/XdoFfDmFHdNqFII2v5v5I8yIltsjagaV1eoBvwdJOVMAzLQeM7ZmOtJ4dsEvrfGPIMcljofKmt1NZiy938hveyeH7JkKyVtIrr6V78iV/mDjQtj380884w2kUhVptvXar25VK580/6Cxwvk0iil+X7nJbN/YH0mYk3cwf2EO2IkjFSt/aYRf5/+kpfAFDgC1A
-DKIM-Signature: a=rsa-sha256; bh=LNAMW1isCWZMxdd24Di8tMuD7kgjmi7l3lhCfc6WTIY=; 
+X-VR-SPAMCAUSE: dmFkZTEgW1XoTQFBXLr1PSh5roNn2Iid70h18L7CzIQExlQSn9u90AIYO8wsSxSLCGdgJAHO4o78LhirdEtQW/Jb6IIf1AhZ1Vi8POHYlTRJkWpVYZijvq/c8ZnUgoJUHvVpN6SlPPzeAhMMXcbAh3tvOUE23ZHRsEAX0DZZKtowjO4qhC3v/3J+MEsyvgZ/978zCkGyeY5vrhC61Sj9rdBvsMChhUooiK8XOBExRD7WCPK8TeaHaXgrjz24nkBgdNT6T3wSXSkwikESP8tvtxFTmLJZG/2tkbm/R3nmfrwvyCEmOxjviJDePzdqkkPZjOLYDjXs1v9Sh8Q9Svi0PGtRFkYoYRgn25hYagwhhzLt9ZYYVbTeucpPoB8p7YCxQA0NvGjCSiTqMSWDomLRXXfKXnuZI8V2KJp7AyBeLyp1s7gmtUUiCjcTCK9HovhNrRcQYejyLqC9Gz5o8pkupKYr6kYSDPFARaWqFr76o2GFI9glsWnoy/gif+V4lekYe7uK1Ob3r5nB2gAnPLWwS/TsSS07KAKf61kU1RQ2wzVewmCKxc7hEG4OU42JO3SMrK9aOHiWsmz+17CbETRJ5ibE4XhP/2dTFZmTuUXwbFcZkTeys4VSpXpZqgzszPWVS5CM2keqyjYMy8W+EAZvljQXdz+SExpIzJCl61zPBmarpaxWMQ
+DKIM-Signature: a=rsa-sha256; bh=wrG/i1JNLXjmEvGFmdX4ImiIhdVoeyNfIhHBWsnywI8=; 
  c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1760678904; v=1;
- b=LXGLzviEFjsq2qvA7zhHxVbMJ9lfiLwweht5158LrsshmWBA85DQjgLaOBmHWXESk0sRUu94
- HPV4T8IsOaa0lzLb+Ni69bx34CiixZxC8JZZk0X5ZOE8NOOkWri6CmcgRyUesPGjiAP6jz2i0ez
- pQ2ffaVrE/MicSK1Ml4sHtBZueeMBXkI64JQyVCbtXn+nDy38hR/ogCuFXWDF2EzgWZVJpYX+ct
- pIwp+GxPNDlGFFqGQUEmgQRSiFMcOxofHBKd+TKysJWlIS/Q3jwZzyRJvA8UJOzknvn5n7B7hlp
- qtS7Gyfi+69V/DVRKgKxWwYv915WUg8oAG5lqmEIBB4yA==
-Received-SPF: pass client-ip=188.165.32.156; envelope-from=clg@kaod.org;
- helo=3.mo548.mail-out.ovh.net
+ t=1760678950; v=1;
+ b=r5OW7BzC1qkrzd/j2TAgDlbVu2Lc+9ZjZAtGL9lG8InnwR48thJga08xQXcjD4ERSrr0YfUb
+ wre1De0JFIKiG8Z4QES7mdgcavlz+MMlT6hLTGHSRTvnPWgmsOysYS9LJNNXg9lJlCPqiEcUGUE
+ Q02HZyeVjo1r/uh3SqiynaGT9piIpC4HhHK/ev9dWqkjBwNdwi6LIbmoKAJjWmIw7dmTx92KYB0
+ 4Zn5H8uOoy9YLNpd3QYkpqrZw+1eAykz2/Eb1Yxpf8GGSoTh+k4liCWlfG5NI2EQwCAGKl183WU
+ r6ynksaG96SzEgn+juCqnSvBrTRQ61tYnLICGa4TjjmHg==
+Received-SPF: pass client-ip=178.33.255.19; envelope-from=clg@kaod.org;
+ helo=2.mo548.mail-out.ovh.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -131,36 +131,52 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 10/15/25 08:21, Jamin Lin wrote:
-> AST2700 has a 128KB SRAM, physically mapped at 0x10000000–0x1001FFFF for
-> the PSP (CA35) processor. The SSP coprocessor shares this same SRAM but
-> accesses it through a different address window at 0x70000000–0x7001FFFF.
-> 
-> To model this shared-memory behavior in QEMU, this commit introduces a
-> linked SRAM property and alias mapping between the PSP and SSP subsystems.
-> 
-> Changes include:
-> - Add a "MemoryRegion *sram" link and "MemoryRegion sram_alias" to
->    AspeedCoprocessorState.
-> - Register the new "sram" property in aspeed_coprocessor_common.c.
-> - In aspeed_ast27x0-fc.c, connect the SSP coprocessor’s "sram" link to
->    the PSP’s SRAM region.
-> - In aspeed_ast27x0-ssp.c, create an alias mapping for SRAM at
->    0x70000000 – 0x7001FFFF in the SSP’s memory map.
-> 
-> This ensures that the SSP can correctly access the shared SRAM contents
-> through its own address space while maintaining a consistent physical
-> backing region. It also guarantees that the SRAM is realized before the
-> SSP device, ensuring successful alias setup.
-> 
+On 10/15/25 08:22, Jamin Lin wrote:
 > Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 > ---
->   include/hw/arm/aspeed_coprocessor.h | 3 ++-
->   hw/arm/aspeed_ast27x0-fc.c          | 4 ++++
->   hw/arm/aspeed_ast27x0-ssp.c         | 7 +++++++
->   hw/arm/aspeed_coprocessor_common.c  | 2 ++
->   4 files changed, 15 insertions(+), 1 deletion(-)
+>   tests/functional/aarch64/test_aspeed_ast2700fc.py | 12 ++++++------
+>   1 file changed, 6 insertions(+), 6 deletions(-)
 > 
+> diff --git a/tests/functional/aarch64/test_aspeed_ast2700fc.py b/tests/functional/aarch64/test_aspeed_ast2700fc.py
+> index 28b66614d9..bcce0c8d4e 100755
+> --- a/tests/functional/aarch64/test_aspeed_ast2700fc.py
+> +++ b/tests/functional/aarch64/test_aspeed_ast2700fc.py
+> @@ -36,9 +36,9 @@ def verify_openbmc_boot_and_login(self, name):
+>           exec_command_and_wait_for_pattern(self, 'root', 'Password:')
+>           exec_command_and_wait_for_pattern(self, '0penBmc', f'root@{name}:~#')
+>   
+> -    ASSET_SDK_V906_AST2700 = Asset(
+> -            'https://github.com/AspeedTech-BMC/openbmc/releases/download/v09.06/ast2700-default-obmc.tar.gz',
+> -            'f1d53e0be8a404ecce3e105f72bc50fa4e090ad13160ffa91b10a6e0233a9dc6')
+> +    ASSET_SDK_V908_AST2700 = Asset(
+> +            'https://github.com/AspeedTech-BMC/openbmc/releases/download/v09.08/ast2700-default-obmc.tar.gz',
+> +            'eac3dc409b7ea3cd4b03d4792d3cebd469792ad893cb51e1d15f0fc20bd1e2cd')
+>   
+>       def do_ast2700_i2c_test(self):
+>           exec_command_and_wait_for_pattern(self,
+> @@ -66,7 +66,7 @@ def do_ast2700fc_ssp_test(self):
+>           self.vm.set_console(console_index=1)
+>           self.vm.launch()
+>   
+> -        exec_command_and_wait_for_pattern(self, '\012', 'ssp:~$')
+> +        exec_command_and_wait_for_pattern(self, '\012', 'ssp_tsp:~$')
+>           exec_command_and_wait_for_pattern(self, 'version',
+>                                             'Zephyr version 3.7.1')
+>           exec_command_and_wait_for_pattern(self, 'md 72c02000 1',
+> @@ -133,10 +133,10 @@ def start_ast2700fc_test(self, name):
+>           self.do_test_aarch64_aspeed_sdk_start(
+>                   self.scratch_file(name, 'image-bmc'))
+>   
+> -    def test_aarch64_ast2700fc_sdk_v09_06(self):
+> +    def test_aarch64_ast2700fc_sdk_v09_08(self):
+>           self.set_machine('ast2700fc')
+>   
+> -        self.archive_extract(self.ASSET_SDK_V906_AST2700)
+> +        self.archive_extract(self.ASSET_SDK_V908_AST2700)
+>           self.start_ast2700fc_test('ast2700-default')
+>           self.verify_openbmc_boot_and_login('ast2700-default')
+>           self.do_ast2700_i2c_test()
+
 
 
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
@@ -168,7 +184,6 @@ Reviewed-by: Cédric Le Goater <clg@redhat.com>
 Thanks,
 
 C.
-
 
 
 

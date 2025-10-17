@@ -4,78 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0043CCD199
-	for <qemu-arm@archiver.kernel.org>; Fri, 17 Oct 2025 15:01:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A05CCCD199
+	for <qemu-arm@archiver.kernel.org>; Fri, 17 Oct 2025 15:02:35 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v9lwW-0001UQ-3y; Fri, 17 Oct 2025 11:00:32 -0400
+	id 1v9lyG-0002d4-GS; Fri, 17 Oct 2025 11:02:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1v9lwT-0001Ta-F6
- for qemu-arm@nongnu.org; Fri, 17 Oct 2025 11:00:29 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1v9lwI-0004d2-PS
- for qemu-arm@nongnu.org; Fri, 17 Oct 2025 11:00:28 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1760713209;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=g6V1FrDJ+Af8kWa47B2peRWpCLaGtgrvraDenPng+ps=;
- b=c3on27P1fBT5FyaAqACr0eUn5KVYP+gWckClRM0nDwCmBF0aLQsGKQOBhz0mJn+inSjuzZ
- veHA1PywSP2XdpfpdZCaMzZkLkCNcohw60QFXV3iCuC6PPVhF5gem3JZq3UzEmMVkhGK7q
- C2mCIN7NEF5dJqwGcKzIwMgMYHZw6Ko=
-Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-22-_rO3DNDwNmmRgHfu3vmzZA-1; Fri,
- 17 Oct 2025 11:00:03 -0400
-X-MC-Unique: _rO3DNDwNmmRgHfu3vmzZA-1
-X-Mimecast-MFC-AGG-ID: _rO3DNDwNmmRgHfu3vmzZA_1760713202
-Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 934DD195422C; Fri, 17 Oct 2025 15:00:01 +0000 (UTC)
-Received: from localhost (unknown [10.45.226.16])
- by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 69B24180035A; Fri, 17 Oct 2025 14:59:58 +0000 (UTC)
-From: Cornelia Huck <cohuck@redhat.com>
-To: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
- eric.auger@redhat.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- peter.maydell@linaro.org, maz@kernel.org, oliver.upton@linux.dev,
- sebott@redhat.com, gshan@redhat.com, ddutile@redhat.com,
- peterx@redhat.com, philmd@linaro.org, pbonzini@redhat.com
-Subject: Re: [RESEND PATCH 1/7] target/arm/machine: Improve traces on
- register mismatch during migration
-In-Reply-To: <20251016140039.250111-2-eric.auger@redhat.com>
-Organization: "Red Hat GmbH, Sitz: Werner-von-Siemens-Ring 12, D-85630
- Grasbrunn, Handelsregister: Amtsgericht =?utf-8?Q?M=C3=BCnchen=2C?= HRB
- 153243,
- =?utf-8?Q?Gesch=C3=A4ftsf=C3=BChrer=3A?= Ryan Barnhart, Charles Cachera,
- Avril Crosse O'Flaherty"
-References: <20251016140039.250111-1-eric.auger@redhat.com>
- <20251016140039.250111-2-eric.auger@redhat.com>
-User-Agent: Notmuch/0.38.3 (https://notmuchmail.org)
-Date: Fri, 17 Oct 2025 16:59:56 +0200
-Message-ID: <877bwtvaj7.fsf@redhat.com>
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1v9ly5-0002Q9-Ma
+ for qemu-arm@nongnu.org; Fri, 17 Oct 2025 11:02:11 -0400
+Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1v9lxv-0004jJ-Oq
+ for qemu-arm@nongnu.org; Fri, 17 Oct 2025 11:02:08 -0400
+Received: by mail-pl1-x635.google.com with SMTP id
+ d9443c01a7336-26e68904f0eso21148245ad.0
+ for <qemu-arm@nongnu.org>; Fri, 17 Oct 2025 08:01:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1760713310; x=1761318110; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=MDtjB7BWmW9MfKm6fCWkzHH7AMYlVmTgFy2gFDI3M44=;
+ b=q24+ry9ATphWlRRT4gxV50+SJ26n9w37kb+E7xt3zu61ignPYyKvpGp6s8/kwidDoL
+ g+kSEYOExgD9thIVHYlWzLa1nszsRzRzQl5JccdnynbPjuCmP6DfMWtSbL8wNP2QUO1E
+ s2FwxO6GBFxnBhFBga5/nJ0FONLnLE8JQ0zMfV9wqTyFaIbFJ0YFWulPedAEHAvN/m2o
+ C/z9NrnuCZCPeKVgb7+7OY7Fx6AkmKynihwqwQbyy3LA7oSPAllZzJS+5GyRxNnPoZmt
+ OTUJepw4jaZgECr50aOZru9pu94Lzi9nxiE5X9qcMEixAIsMzJS+3Ei+sop2VWhOnaun
+ PRoA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1760713310; x=1761318110;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=MDtjB7BWmW9MfKm6fCWkzHH7AMYlVmTgFy2gFDI3M44=;
+ b=F2VwUhCYL74oxOsxDMOY7OxmnU2VKToHH+KzGn9JgCeSSTEczOmfxCvciNrdX8CUQg
+ 4AGpMA7W+5vv2Vj9l7XwD08YI4ASozZEp8Y+SOQBmyiO180W/MxM+d1nh0olc6oWQ4t1
+ wBHswm1GTSsMFwB2kiMjsMg6qGcz+zfJC+suYF073uh4UULRsfAOhxK7Ivr1O9Lkm7eV
+ qRHDTTnGBUTD0kqNqc4CphCqSTcr872/0sJomiUcX3wDOszRcaWsrf1Y7sPD/0Qt7cml
+ kymjLgnlG/DoL12vN6oes5HP6KEnq0UUz8BFYYpKu54ZCu1LSZd6YyCN55uTcTDvaIQX
+ OziA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCW7oEdckOOqbzyMS369kW0HJlrFyMdhmgIn4UJw/d7eOLfRiX3YrzjwgPa9Nrf9V/sGWiI9hjhXTA==@nongnu.org
+X-Gm-Message-State: AOJu0YzzB1BoqWuEyHxDzesvX0Hbdn1CC9Y/ZW9j0qYgywSQGPNtarmr
+ xImigNG6w6BijJyasATlMtTz7ye/5mru6AEjKeSdTFCrF1DRCSwE06HZs659vM4Dk3w=
+X-Gm-Gg: ASbGncuQiT3Hr9FLeC/04Bvg2H8QENxUX7IBKut/NCI/23vWYWfee8XQxmEul+JoZSO
+ v5QASM442/lVxLZQ+UR6NyF0yt8kRSVgokGTCpYoeY+BQcBDQ6IsWcec+UJcWj6pfS/uKEaWSsQ
+ ZmY5VQnh8FTLr5434NFgHKsUywb7Iks38+4QIkHPJH0dJf/hgQnT/E8/GoDPDvWcoue7tDBrVdS
+ EWqYlhj/jugT5xx+QT3HnZdvVzcIUAcSsPENsCwjE5uH4ujvSMnV9vsxU88F4fAO/lp/XscMs3a
+ BRQcwpGw8OLFjnok8JFcphFWvjgpX2Yk6tJ8AiAx3EuAbbzhw/cAtVGmb9aIk7muFPImi+FajdA
+ 1ehCQ7AmKwZz2E7d7DdRd0LFh7ZBWUvfsZJgm9MsAlZ/8Iovp+35HzfyUeQ1DWOk+Yl44QvatFw
+ kfDdVKXMMjcwH/DrpzT9CaRrdI
+X-Google-Smtp-Source: AGHT+IH8FjVqmKL+m9ZKw9PckeHysrYmB53LsNkpPQQyvU7DR5pKX4ZdmEbn4tBvw//iIk69xZOnag==
+X-Received: by 2002:a17:902:e78b:b0:288:e46d:b325 with SMTP id
+ d9443c01a7336-290caf858bcmr50921135ad.43.1760713309698; 
+ Fri, 17 Oct 2025 08:01:49 -0700 (PDT)
+Received: from [192.168.0.4] ([71.212.157.132])
+ by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-29099aba99asm66272675ad.87.2025.10.17.08.01.49
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 17 Oct 2025 08:01:49 -0700 (PDT)
+Message-ID: <87479dcd-8db2-44a7-858e-acdebbadff55@linaro.org>
+Date: Fri, 17 Oct 2025 08:01:47 -0700
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=cohuck@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 04/37] target/arm: Asserts for ARM_CP_128BIT in
+ define_one_arm_cp_reg
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+References: <20251014200718.422022-1-richard.henderson@linaro.org>
+ <20251014200718.422022-5-richard.henderson@linaro.org>
+ <CAFEAcA_YRU8F02wM2z_DvR-0hryUYEZYA99fy1c+H3M6xzqN0Q@mail.gmail.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Content-Language: en-US
+In-Reply-To: <CAFEAcA_YRU8F02wM2z_DvR-0hryUYEZYA99fy1c+H3M6xzqN0Q@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::635;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x635.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, T_SPF_TEMPERROR=0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -91,85 +107,15 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, Oct 16 2025, Eric Auger <eric.auger@redhat.com> wrote:
+On 10/17/25 05:59, Peter Maydell wrote:
+>> +        assert(r->resetvalue == 0);
+>> +        assert(r->resetfn == NULL);
+> 
+> 
+> I assume that not permitting a non-zero reset value is just
+> "we don't need this yet, so don't bother writing code for it" ?
 
-More information is really valuable here. I have some nits :)
+Yes.
 
-> Currently whenthe number of KVM registers exposed by the source is
-
-s/whenthe/when the/
-
-> larger than the one exposed on the destination, the migration fails
-> with: "failed to load cpu:cpreg_vmstate_array_len"
->
-> This gives no information about which registers are causing the trouble.
->
-> This patches rework the target/arm/machine code so that it becomes
-
-s/patches rework/patch reworks/
-
-> able to handle an input stream with a larger set of registers than
-> the destination and print useful information about which registers
-> are causing the trouble. The migration outcome is unchanged:
-> - unexpected registers still will fail the migration
-> - missing ones are print but will not fail the migration, as done today.
-
-s/print/printed/
-
->
-> The input stream can contain MAX_CPREG_VMSTATE_ANOMALIES(10) extra
-> registers compared to what exists on the target.
->
-> If there are more registers we will still hit the previous
-> "load cpu:cpreg_vmstate_array_len" error.
->
-> At most, MAX_CPREG_VMSTATE_ANOMALIES missing registers
-> and MAX_CPREG_VMSTATE_ANOMALIES unexpected registers are print.
-
-s/print/printed/
-
-If we really get tons of register discrepancies, I'd expect the reason for
-that to be something more obvious, so limiting should be fine.
-
->
-> Example:
->
-> qemu-system-aarch64: kvm_arm_cpu_post_load Missing register in input stream: 0 0x6030000000160003 fw feat reg 3
-> qemu-system-aarch64: kvm_arm_cpu_post_load Unexpected register in input stream: 0 0x603000000013c103 op0:3 op1:0 crn:2 crm:0 op2:3
-> qemu-system-aarch64: kvm_arm_cpu_post_load Unexpected register in input stream: 1 0x603000000013c512 op0:3 op1:0 crn:10 crm:2 op2:2
-> qemu-system-aarch64: kvm_arm_cpu_post_load Unexpected register in input stream: 2 0x603000000013c513 op0:3 op1:0 crn:10 crm:2 op2:3
-> qemu-system-aarch64: error while loading state for instance 0x0 of device 'cpu'
-> qemu-system-aarch64: load of migration failed: Operation not permitted
->
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> ---
->  target/arm/cpu.h        |  6 +++++
->  target/arm/kvm.c        | 23 ++++++++++++++++
->  target/arm/machine.c    | 58 ++++++++++++++++++++++++++++++++++++-----
->  target/arm/trace-events |  7 +++++
->  4 files changed, 88 insertions(+), 6 deletions(-)
->
-> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> index bf221e6f97..a7ed3f34f8 100644
-> --- a/target/arm/cpu.h
-> +++ b/target/arm/cpu.h
-> @@ -936,6 +936,12 @@ struct ArchCPU {
->      uint64_t *cpreg_vmstate_values;
->      int32_t cpreg_vmstate_array_len;
->  
-> +    #define MAX_CPREG_VMSTATE_ANOMALIES 10
-> +    uint64_t cpreg_vmstate_missing_indexes[MAX_CPREG_VMSTATE_ANOMALIES];
-> +    int32_t cpreg_vmstate_missing_indexes_array_len;
-> +    uint64_t cpreg_vmstate_unexpected_indexes[MAX_CPREG_VMSTATE_ANOMALIES];
-> +    int32_t cpreg_vmstate_unexpected_indexes_array_len;
-
-"indices"?
-
-> +
->      DynamicGDBFeatureInfo dyn_sysreg_feature;
->      DynamicGDBFeatureInfo dyn_svereg_feature;
->      DynamicGDBFeatureInfo dyn_smereg_feature;
-
-(...)
-
+r~
 

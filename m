@@ -4,113 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E0ABCCD19A
-	for <qemu-arm@archiver.kernel.org>; Fri, 17 Oct 2025 12:24:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CADC7CCD199
+	for <qemu-arm@archiver.kernel.org>; Fri, 17 Oct 2025 12:36:07 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v9jUi-00037c-UL; Fri, 17 Oct 2025 08:23:41 -0400
+	id 1v9jg2-0006Sq-Sk; Fri, 17 Oct 2025 08:35:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1v9jUh-000378-1l
- for qemu-arm@nongnu.org; Fri, 17 Oct 2025 08:23:39 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1v9jUZ-00061g-BA
- for qemu-arm@nongnu.org; Fri, 17 Oct 2025 08:23:38 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1760703808;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=gir8vCCONvNLbr5oS8AWzNsJd6V+MI0sZXsiRO1ZMdE=;
- b=IXzBIkZij414Eswa5KxjO1JcJHwr9hqeISE9Rgv4aXehPwJjHM5+UIMP25013v4lRVqKVG
- tx0GpgDq88AeYrDiFPV5qe8eZM4akQPDz/U1xsRd5Ntsi0sAbdP2gR/4NIS9ve8Q7hqn4o
- h2+9Q1d0RVqfcyUibTWQsaapDX8U4ds=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-108-kmIiV4rnN52WP7PZqwGuyw-1; Fri, 17 Oct 2025 08:23:27 -0400
-X-MC-Unique: kmIiV4rnN52WP7PZqwGuyw-1
-X-Mimecast-MFC-AGG-ID: kmIiV4rnN52WP7PZqwGuyw_1760703806
-Received: by mail-wm1-f69.google.com with SMTP id
- 5b1f17b1804b1-4710c04a403so16648585e9.3
- for <qemu-arm@nongnu.org>; Fri, 17 Oct 2025 05:23:26 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1v9jg1-0006Sf-7F
+ for qemu-arm@nongnu.org; Fri, 17 Oct 2025 08:35:21 -0400
+Received: from mail-yw1-x112d.google.com ([2607:f8b0:4864:20::112d])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1v9jfw-00083s-4t
+ for qemu-arm@nongnu.org; Fri, 17 Oct 2025 08:35:20 -0400
+Received: by mail-yw1-x112d.google.com with SMTP id
+ 00721157ae682-783fa3aa582so1607377b3.3
+ for <qemu-arm@nongnu.org>; Fri, 17 Oct 2025 05:35:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1760704505; x=1761309305; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=/Im8n8W1Z7g5zp9YF8c/Dn0qzXY5azv+YP1D6jqojBE=;
+ b=mdA0r5rzRowKBFZFqFExDwJhjSE3fK79ODrxLZow2186V9I9pwI+WtMkLg82M/Vnjk
+ K3Ie2J6IpUiDqCiB6Yv3vWXPZDlAbK4YqSOXmfpEiJcp5RNX64dGBdbdrgyoik2stIBx
+ QvjqqT5SicKRB1Ce88BHRRbisFcZOGxtqkqpGlAwd8N2+8+4UtqXL4FsrVofBlQKYWFZ
+ i5Lksb70qLEFs8MVeHeRUVAx4OtNS9xcG9zdJeV9GjGwT6B8V5eYb4D1AbVkx6BIMC3J
+ /vOVaw3xC2kKpxqSD52koilCbSD05268rTCePMNYUONec5oRY7yLpnQPw9Jpxy5BnPNi
+ q25w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1760703806; x=1761308606;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ d=1e100.net; s=20230601; t=1760704505; x=1761309305;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=gir8vCCONvNLbr5oS8AWzNsJd6V+MI0sZXsiRO1ZMdE=;
- b=WosP18/28WXIwHDI1VZPZxSG9bcQSdBS2kd9dMZeI5eRM48TinykMokZgzH6hELFDR
- lWFZou+HOojmbyU3fV9a/b5YIczUcUYexc4zwemPx2EFx5u48JaDEP/owoFtl4MlGF0o
- qxzl/lePwLKwMbtXozXeZ2duxFCVaIFI9T0TO+BXxclg1Qecq+wV8jvU+Y4Ies1THgYG
- 1CC8o04M8FZpzHXIkP3wFY684Cutw8L6Wa7oFKWpTublC3kJCMXegLCR/x24O5hpJ47e
- fXzpGHqoU9VAfME5NBY2HDPng9q22dFN1QCEWMoc8OAQyJ+fszk95yvRaekwjefCnGpy
- UzNg==
+ bh=/Im8n8W1Z7g5zp9YF8c/Dn0qzXY5azv+YP1D6jqojBE=;
+ b=KVkowPtIkESWxP/9siRXWcDS9lseUb8b52KbwbDrFlnTEx5r+6qb/anArcjfTBBQei
+ 1P+cbqyWlFu4b0fP63gUD2B6hXLKIW1/6zTEqp5Ut7E+RCFM6w+Ny0dJSwaK7Pt0rXpH
+ 9YuUjTsr9qgXrVC0MD70ScOUOEx2h+l8c5a/QWf1PUXqhxk0uu0CqaCDwXHWHeMzVB48
+ 9Xafv8t0A98jtr8eW15GcoSpvm+F36jEFoqji7fU7o5j/Ciu25G8KVf7nnJwSkmD4W7K
+ +EIjTmbvbcmxlwhoPRcW9J60rUieIJ4SQGCT8uAYwgQXOUYvBl1aNMTVrV5r81Op+N1e
+ FGrg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXnrQEg9yjikWca4oUZ57PytvqnNLWjI+7ZONXCE0ncznzYyB9HqEKaunbF0aw3hMwdwgp5hN1K4Q==@nongnu.org
-X-Gm-Message-State: AOJu0Yw2Gn0zyLIENkgCSeeorP0miDmsQlF9p0tyyO0C4lZ+S1zg4jmX
- 9+iSHQErvyvnT9h3l+sBd3QEro0kUqAFdxfO1iCe421MPHrCXPUTNHV12zYwpOTOk+kJnOOoORR
- LG6cBd5ydkCBH+vme9Unc9jaKAXpjmtQbeocvzMQ7Y1mc+crFo59lRQ==
-X-Gm-Gg: ASbGncuao+bobHV8xOaGQ0jk2PcMZpQ5kwavuFInjE1BBJFn/I1T5p0lr23PuaDMiWo
- ySNyS2IPsejA0NIE/qzLTK4KC38nys19KgET4JKOGU93BpGoGp8BTn75UmWy0e8KClWdFE+Qk55
- ung6yrZArJWLU/9MS0Aw/37NpzNRcxtSqo95p/Q9/p6zAnRl3cm1FjXbZgkCp+vPoPiUM44ST05
- V8FjpRQRvJSlFa6+3j4Rc7jqNoKU0TTsjL7lDhS1IfYvDkn/wriMRxAgfw8M8IAYVOPvccoU2C3
- FmAIjUBGF2s0jXxQpYmDuyyWBdVDxBBiMRHfUP9TBF3lDerOUQj9SUxAfa2yzddaLnMJFnRlFSu
- IPHQhqZ+BLvyLAMAH3sl6wDGBcD4rl201qb1lt/mKSxEPZg==
-X-Received: by 2002:a05:600c:5029:b0:46f:b32e:4af3 with SMTP id
- 5b1f17b1804b1-471178784efmr23790635e9.1.1760703805737; 
- Fri, 17 Oct 2025 05:23:25 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IG5b1wu857sDXHKaCt0SZFQGUs/3rIRFnWzbKmIFNuBfi0g78y8Hkf5jW/4Fz05LMp9btXiTQ==
-X-Received: by 2002:a05:600c:5029:b0:46f:b32e:4af3 with SMTP id
- 5b1f17b1804b1-471178784efmr23790345e9.1.1760703805247; 
- Fri, 17 Oct 2025 05:23:25 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4710cd4480fsm49085275e9.1.2025.10.17.05.23.24
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 17 Oct 2025 05:23:24 -0700 (PDT)
-Message-ID: <8ee4e023-7a14-4a02-b481-b54bb9f5225b@redhat.com>
-Date: Fri, 17 Oct 2025 14:23:23 +0200
+ AJvYcCWLaDWKLW5yaC6y0i/0T69FnkusU8G5xYGrPirA9zeD5urflgHetUXLAfkO3HKjrdRJ92LASAi/EA==@nongnu.org
+X-Gm-Message-State: AOJu0YykqkuhyXP7gE7CBdZnM2d/TYqW3KNROY+4/upEFQBsZmS00I0m
+ EOivj2/PQzGwSYyPaJEKnIjEVBSO4OTeJKyLDL9PJpTqtXmuj03ddlipJ135GaD2gblEC855xHI
+ C/v7u2Bdpn5B1IPj5iQ7EA1n6wKyYOfI8Ajc1susoXQ==
+X-Gm-Gg: ASbGnculOVdo1l9q6SwBdPHH6PiZxcM1d8Aui93TisfY7GXsSaljkDtPpUD0662yhJm
+ 47My14OGZl7Iz4duyKu6sBvIl69ABvcuCRL68RSnDSvVlxqwVa4bgIAI+zWAeoCiQL8hSIff/Kq
+ xBiBMkGx6nUsD4wqBbseoDzLROE4H0GQdlWE/l3OS59JDHgEFpnTfU9JEqP2BRicbf/dGfyFNPD
+ MsZ7aodjaRa/UINCxmggcSn1M75CPzOx0+YlL8vj5pHYpNr/4UVzCR8ZPWX7w==
+X-Google-Smtp-Source: AGHT+IE38sTrckDgXthyVbtXVmG5hifkfeN/QP0Riq5nsw6+tu2sooydYSno6qgHjIWy4uo8Mqe1Og9fX1PysmQqV1Y=
+X-Received: by 2002:a05:690e:4182:b0:632:5ba8:1bb5 with SMTP id
+ 956f58d0204a3-63e161395c5mr3287979d50.21.1760704505435; Fri, 17 Oct 2025
+ 05:35:05 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 08/27] hw/arm/smmuv3-accel: Add set/unset_iommu_device
- callback
-To: Shameer Kolothum <skolothumtho@nvidia.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, jgg@nvidia.com, nicolinc@nvidia.com,
- ddutile@redhat.com, berrange@redhat.com, nathanc@nvidia.com,
- mochs@nvidia.com, smostafa@google.com, wangzhou1@hisilicon.com,
- jiangkunkun@huawei.com, jonathan.cameron@huawei.com,
- zhangfei.gao@linaro.org, zhenzhong.duan@intel.com, yi.l.liu@intel.com,
- shameerkolothum@gmail.com
-References: <20250929133643.38961-1-skolothumtho@nvidia.com>
- <20250929133643.38961-9-skolothumtho@nvidia.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20250929133643.38961-9-skolothumtho@nvidia.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: yeZGJ9IYrB6a4QHjseo0VShyG_zOj1g_HiYYGB_qhz8_1760703806
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+References: <20251014200718.422022-1-richard.henderson@linaro.org>
+ <20251014200718.422022-2-richard.henderson@linaro.org>
+In-Reply-To: <20251014200718.422022-2-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 17 Oct 2025 13:34:53 +0100
+X-Gm-Features: AS18NWCfNdJXFeJFOInNNx-gLywkQeyWWc4On1e5LCbjUCYPG1fcf59ATJc-jBs
+Message-ID: <CAFEAcA8R8u7D9Hh4h68q3h-38Mjfmk5qB0Z-=u_18s1j-cFzFQ@mail.gmail.com>
+Subject: Re: [PATCH v2 01/37] target/arm: Implement isar tests for
+ FEAT_SYSREG128, FEAT_SYSINSTR128
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+ Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -123,292 +94,19 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-
-
-On 9/29/25 3:36 PM, Shameer Kolothum wrote:
-> From: Nicolin Chen <nicolinc@nvidia.com>
+On Tue, 14 Oct 2025 at 21:08, Richard Henderson
+<richard.henderson@linaro.org> wrote:
 >
-> Implement a set_iommu_device callback:
->  -If found an existing viommu reuse that.
->  -Else,
->     Allocate a vIOMMU with the nested parent S2 hwpt allocated by VFIO.
->     Though, iommufd’s vIOMMU model supports nested translation by
->     encapsulating a S2 nesting parent HWPT, devices cannot attach to this
->     parent HWPT directly. So two proxy nested HWPTs (bypass and abort) are
->     allocated to handle device attachments.
->  -And add the dev to viommu device list
->
-> Also add an unset_iommu_device to unwind/cleanup above.
->
-> Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
-> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com
-> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
+> Reviewed-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
->  hw/arm/smmuv3-accel.c   | 150 ++++++++++++++++++++++++++++++++++++++++
->  hw/arm/smmuv3-accel.h   |  17 +++++
->  hw/arm/trace-events     |   4 ++
->  include/hw/arm/smmuv3.h |   1 +
->  4 files changed, 172 insertions(+)
->
-> diff --git a/hw/arm/smmuv3-accel.c b/hw/arm/smmuv3-accel.c
-> index 6b0e512d86..81fa738f6f 100644
-> --- a/hw/arm/smmuv3-accel.c
-> +++ b/hw/arm/smmuv3-accel.c
-> @@ -8,6 +8,7 @@
->  
->  #include "qemu/osdep.h"
->  #include "qemu/error-report.h"
-> +#include "trace.h"
->  
->  #include "hw/arm/smmuv3.h"
->  #include "hw/iommu.h"
-> @@ -17,6 +18,9 @@
->  
->  #include "smmuv3-accel.h"
->  
-> +#define SMMU_STE_VALID      (1ULL << 0)
-> +#define SMMU_STE_CFG_BYPASS (1ULL << 3)
-> +
->  static SMMUv3AccelDevice *smmuv3_accel_get_dev(SMMUState *bs, SMMUPciBus *sbus,
->                                                 PCIBus *bus, int devfn)
->  {
-> @@ -35,6 +39,149 @@ static SMMUv3AccelDevice *smmuv3_accel_get_dev(SMMUState *bs, SMMUPciBus *sbus,
->      return accel_dev;
->  }
->  
-> +static bool
-> +smmuv3_accel_dev_alloc_viommu(SMMUv3AccelDevice *accel_dev,
-> +                              HostIOMMUDeviceIOMMUFD *idev, Error **errp)
-> +{
-> +    struct iommu_hwpt_arm_smmuv3 bypass_data = {
-> +        .ste = { SMMU_STE_CFG_BYPASS | SMMU_STE_VALID, 0x0ULL },
-> +    };
-> +    struct iommu_hwpt_arm_smmuv3 abort_data = {
-> +        .ste = { SMMU_STE_VALID, 0x0ULL },
-> +    };
-> +    SMMUDevice *sdev = &accel_dev->sdev;
-> +    SMMUState *bs = sdev->smmu;
-> +    SMMUv3State *s = ARM_SMMUV3(bs);
-> +    SMMUv3AccelState *s_accel = s->s_accel;
-> +    uint32_t s2_hwpt_id = idev->hwpt_id;
-> +    SMMUViommu *viommu;
-> +    uint32_t viommu_id;
-> +
-> +    if (s_accel->viommu) {
-> +        accel_dev->viommu = s_accel->viommu;
-> +        return true;
-> +    }
-> +
-> +    if (!iommufd_backend_alloc_viommu(idev->iommufd, idev->devid,
-> +                                      IOMMU_VIOMMU_TYPE_ARM_SMMUV3,
-> +                                      s2_hwpt_id, &viommu_id, errp)) {
-> +        return false;
-> +    }
-> +
-> +    viommu = g_new0(SMMUViommu, 1);
-> +    viommu->core.viommu_id = viommu_id;
-> +    viommu->core.s2_hwpt_id = s2_hwpt_id;
-> +    viommu->core.iommufd = idev->iommufd;
-> +
-> +    if (!iommufd_backend_alloc_hwpt(idev->iommufd, idev->devid,
-> +                                    viommu->core.viommu_id, 0,
-> +                                    IOMMU_HWPT_DATA_ARM_SMMUV3,
-> +                                    sizeof(abort_data), &abort_data,
-> +                                    &viommu->abort_hwpt_id, errp)) {
-> +        goto free_viommu;
-> +    }
-> +
-> +    if (!iommufd_backend_alloc_hwpt(idev->iommufd, idev->devid,
-> +                                    viommu->core.viommu_id, 0,
-> +                                    IOMMU_HWPT_DATA_ARM_SMMUV3,
-> +                                    sizeof(bypass_data), &bypass_data,
-> +                                    &viommu->bypass_hwpt_id, errp)) {
-> +        goto free_abort_hwpt;
-> +    }
-> +
-> +    viommu->iommufd = idev->iommufd;
-> +
-> +    s_accel->viommu = viommu;
-> +    accel_dev->viommu = viommu;
-> +    return true;
-> +
-> +free_abort_hwpt:
-> +    iommufd_backend_free_id(idev->iommufd, viommu->abort_hwpt_id);
-> +free_viommu:
-> +    iommufd_backend_free_id(idev->iommufd, viommu->core.viommu_id);
-> +    g_free(viommu);
-> +    return false;
-> +}
-> +
-> +static bool smmuv3_accel_set_iommu_device(PCIBus *bus, void *opaque, int devfn,
-> +                                          HostIOMMUDevice *hiod, Error **errp)
-> +{
-> +    HostIOMMUDeviceIOMMUFD *idev = HOST_IOMMU_DEVICE_IOMMUFD(hiod);
-> +    SMMUState *bs = opaque;
-> +    SMMUv3State *s = ARM_SMMUV3(bs);
-> +    SMMUv3AccelState *s_accel = s->s_accel;
-> +    SMMUPciBus *sbus = smmu_get_sbus(bs, bus);
-> +    SMMUv3AccelDevice *accel_dev = smmuv3_accel_get_dev(bs, sbus, bus, devfn);
-> +    SMMUDevice *sdev = &accel_dev->sdev;
-> +    uint16_t sid = smmu_get_sid(sdev);
-> +
-> +    if (!idev) {
-> +        return true;
-> +    }
-> +
-> +    if (accel_dev->idev) {
-> +        if (accel_dev->idev != idev) {
-> +            error_setg(errp, "Device 0x%x already has an associated IOMMU dev",
-> +                       sid);
-> +            return false;
-> +        }
-> +        return true;
-> +    }
-> +
-> +    if (!smmuv3_accel_dev_alloc_viommu(accel_dev, idev, errp)) {
-> +        error_setg(errp, "Device 0x%x: Unable to alloc viommu", sid);
-> +        return false;
-> +    }
-> +
-> +    accel_dev->idev = idev;
-> +    QLIST_INSERT_HEAD(&s_accel->viommu->device_list, accel_dev, next);
-> +    trace_smmuv3_accel_set_iommu_device(devfn, sid);
-> +    return true;
-> +}
-> +
-> +static void smmuv3_accel_unset_iommu_device(PCIBus *bus, void *opaque,
-> +                                            int devfn)
-> +{
-> +    SMMUState *bs = opaque;
-> +    SMMUv3State *s = ARM_SMMUV3(bs);
-> +    SMMUPciBus *sbus = g_hash_table_lookup(bs->smmu_pcibus_by_busptr, bus);
-> +    SMMUv3AccelDevice *accel_dev;
-> +    SMMUViommu *viommu;
-> +    SMMUDevice *sdev;
-> +    uint16_t sid;
-> +
-> +    if (!sbus) {
-> +        return;
-> +    }
-> +
-> +    sdev = sbus->pbdev[devfn];
-> +    if (!sdev) {
-> +        return;
-> +    }
-> +
-> +    sid = smmu_get_sid(sdev);
-> +    accel_dev = container_of(sdev, SMMUv3AccelDevice, sdev);
-> +    if (!host_iommu_device_iommufd_attach_hwpt(accel_dev->idev,
-> +                                               accel_dev->idev->hwpt_id,
-> +                                               NULL)) {
-> +        error_report("Unable to attach dev 0x%x to the default HW pagetable",
-> +                     sid);
-> +    }
-> +
-> +    accel_dev->idev = NULL;
-> +    QLIST_REMOVE(accel_dev, next);
-> +    trace_smmuv3_accel_unset_iommu_device(devfn, sid);
-> +
-> +    viommu = s->s_accel->viommu;
-> +    if (QLIST_EMPTY(&viommu->device_list)) {
-> +        iommufd_backend_free_id(viommu->iommufd, viommu->bypass_hwpt_id);
-> +        iommufd_backend_free_id(viommu->iommufd, viommu->abort_hwpt_id);
-> +        iommufd_backend_free_id(viommu->iommufd, viommu->core.viommu_id);
-> +        g_free(viommu);
-> +        s->s_accel->viommu = NULL;
-> +    }
-> +}
-> +
->  static bool smmuv3_accel_pdev_allowed(PCIDevice *pdev, bool *vfio_pci)
->  {
->  
-> @@ -121,6 +268,8 @@ static uint64_t smmuv3_accel_get_viommu_flags(void *opaque)
->  static const PCIIOMMUOps smmuv3_accel_ops = {
->      .get_address_space = smmuv3_accel_find_add_as,
->      .get_viommu_flags = smmuv3_accel_get_viommu_flags,
-> +    .set_iommu_device = smmuv3_accel_set_iommu_device,
-> +    .unset_iommu_device = smmuv3_accel_unset_iommu_device,
->  };
->  
->  void smmuv3_accel_init(SMMUv3State *s)
-> @@ -128,4 +277,5 @@ void smmuv3_accel_init(SMMUv3State *s)
->      SMMUState *bs = ARM_SMMU(s);
->  
->      bs->iommu_ops = &smmuv3_accel_ops;
-> +    s->s_accel = g_new0(SMMUv3AccelState, 1);
->  }
-> diff --git a/hw/arm/smmuv3-accel.h b/hw/arm/smmuv3-accel.h
-> index 70da16960f..3c8506d1e6 100644
-> --- a/hw/arm/smmuv3-accel.h
-> +++ b/hw/arm/smmuv3-accel.h
-> @@ -10,12 +10,29 @@
->  #define HW_ARM_SMMUV3_ACCEL_H
->  
->  #include "hw/arm/smmu-common.h"
-> +#include "system/iommufd.h"
-> +#include <linux/iommufd.h>
->  #include CONFIG_DEVICES
->  
-> +typedef struct SMMUViommu {
-> +    IOMMUFDBackend *iommufd;
-> +    IOMMUFDViommu core;
-could we avoid using too generic field names like "core". In the rest of
-the code it is then difficult to understand what the field corresponds to.
 
-viommu?
-> +    uint32_t bypass_hwpt_id;
-> +    uint32_t abort_hwpt_id;
-> +    QLIST_HEAD(, SMMUv3AccelDevice) device_list;
-> +} SMMUViommu;
-> +
->  typedef struct SMMUv3AccelDevice {
->      SMMUDevice  sdev;
-> +    HostIOMMUDeviceIOMMUFD *idev;
-same here. hdev at least would refer to host dev at least. Or does it
-correspond to some kernel terminology?
 
-Eric
-> +    SMMUViommu *viommu;
-> +    QLIST_ENTRY(SMMUv3AccelDevice) next;
->  } SMMUv3AccelDevice;
->  
-> +typedef struct SMMUv3AccelState {
-> +    SMMUViommu *viommu;
-> +} SMMUv3AccelState;
-> +
->  #ifdef CONFIG_ARM_SMMUV3_ACCEL
->  void smmuv3_accel_init(SMMUv3State *s);
->  #else
-> diff --git a/hw/arm/trace-events b/hw/arm/trace-events
-> index f3386bd7ae..86370d448a 100644
-> --- a/hw/arm/trace-events
-> +++ b/hw/arm/trace-events
-> @@ -66,6 +66,10 @@ smmuv3_notify_flag_del(const char *iommu) "DEL SMMUNotifier node for iommu mr=%s
->  smmuv3_inv_notifiers_iova(const char *name, int asid, int vmid, uint64_t iova, uint8_t tg, uint64_t num_pages, int stage) "iommu mr=%s asid=%d vmid=%d iova=0x%"PRIx64" tg=%d num_pages=0x%"PRIx64" stage=%d"
->  smmu_reset_exit(void) ""
->  
-> +#smmuv3-accel.c
-> +smmuv3_accel_set_iommu_device(int devfn, uint32_t sid) "devfn=0x%x (sid=0x%x)"
-> +smmuv3_accel_unset_iommu_device(int devfn, uint32_t sid) "devfn=0x%x (sid=0x%x)"
-> +
->  # strongarm.c
->  strongarm_uart_update_parameters(const char *label, int speed, char parity, int data_bits, int stop_bits) "%s speed=%d parity=%c data=%d stop=%d"
->  strongarm_ssp_read_underrun(void) "SSP rx underrun"
-> diff --git a/include/hw/arm/smmuv3.h b/include/hw/arm/smmuv3.h
-> index bb7076286b..5f3e9089a7 100644
-> --- a/include/hw/arm/smmuv3.h
-> +++ b/include/hw/arm/smmuv3.h
-> @@ -66,6 +66,7 @@ struct SMMUv3State {
->  
->      /* SMMU has HW accelerator support for nested S1 + s2 */
->      bool accel;
-> +    struct SMMUv3AccelState  *s_accel;
->  };
->  
->  typedef enum {
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
+thanks
+-- PMM
 

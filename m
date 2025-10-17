@@ -4,45 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A89FCCD199
-	for <qemu-arm@archiver.kernel.org>; Fri, 17 Oct 2025 05:31:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1ABE5CCD199
+	for <qemu-arm@archiver.kernel.org>; Fri, 17 Oct 2025 05:32:16 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v9d1j-0001lE-5Q; Fri, 17 Oct 2025 01:29:19 -0400
+	id 1v9d4M-0005ns-IT; Fri, 17 Oct 2025 01:32:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1v9d1h-0001ku-SR
- for qemu-arm@nongnu.org; Fri, 17 Oct 2025 01:29:17 -0400
-Received: from 2.mo548.mail-out.ovh.net ([178.33.255.19])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1v9d4D-0005NV-VS
+ for qemu-arm@nongnu.org; Fri, 17 Oct 2025 01:31:59 -0400
+Received: from smtpout3.mo529.mail-out.ovh.net ([46.105.54.81])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1v9d1d-0001pb-UC
- for qemu-arm@nongnu.org; Fri, 17 Oct 2025 01:29:16 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.109.254.100])
- by mo548.mail-out.ovh.net (Postfix) with ESMTPS id 4cntfZ50cHz5yBj;
- Fri, 17 Oct 2025 05:29:10 +0000 (UTC)
-Received: from kaod.org (37.59.142.102) by DAG8EX2.mxp5.local (172.16.2.72)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1v9d44-0002Ft-Uf
+ for qemu-arm@nongnu.org; Fri, 17 Oct 2025 01:31:51 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.109.249.222])
+ by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 4cntjS2TnNz5vpM;
+ Fri, 17 Oct 2025 05:31:40 +0000 (UTC)
+Received: from kaod.org (37.59.142.95) by DAG8EX2.mxp5.local (172.16.2.72)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.59; Fri, 17 Oct
- 2025 07:29:10 +0200
+ 2025 07:31:39 +0200
 Authentication-Results: garm.ovh; auth=pass
- (GARM-102R00467cc7780-1129-43f9-a7c9-735bc74be614,
+ (GARM-95G001f12d9d3a-9a75-4460-9390-78b17ef9ed53,
  48F321F6F3AAA1B288770452BCFEC79A981EE5C7) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
-Message-ID: <1fa67818-cbc3-4812-b970-c400ad5b020e@kaod.org>
-Date: Fri, 17 Oct 2025 07:29:09 +0200
+Message-ID: <f1bd1978-2f2f-4df3-9a09-77e15ccb46cf@kaod.org>
+Date: Fri, 17 Oct 2025 07:31:39 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [SPAM] [PATCH v1 09/12] tests/functional/aarch64/ast2700fc:
- Update test ASPEED SDK v09.08
-To: Jamin Lin <jamin_lin@aspeedtech.com>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, Joel
- Stanley <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-CC: <troy_lee@aspeedtech.com>
-References: <20251015062210.3128710-1-jamin_lin@aspeedtech.com>
- <20251015062210.3128710-10-jamin_lin@aspeedtech.com>
+Subject: Re: [PATCH v2 1/5] hw/gpio: Add property for ASPEED GPIO in 32 bits
+ basis
+To: Andrew Jeffery <andrew@codeconstruct.com.au>, Coco Li
+ <lixiaoyan@google.com>, <peter.maydell@linaro.org>
+CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, <flwu@google.com>,
+ <philmd@linaro.org>
+References: <20251015011830.1688468-1-lixiaoyan@google.com>
+ <20251015011830.1688468-2-lixiaoyan@google.com>
+ <dbd7c26cf0a77545bffaccaed7c9a364f97ac7af.camel@codeconstruct.com.au>
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Content-Language: en-US, fr
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -87,35 +86,35 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20251015062210.3128710-10-jamin_lin@aspeedtech.com>
+In-Reply-To: <dbd7c26cf0a77545bffaccaed7c9a364f97ac7af.camel@codeconstruct.com.au>
 Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.102]
-X-ClientProxiedBy: DAG7EX1.mxp5.local (172.16.2.61) To DAG8EX2.mxp5.local
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [37.59.142.95]
+X-ClientProxiedBy: DAG4EX2.mxp5.local (172.16.2.32) To DAG8EX2.mxp5.local
  (172.16.2.72)
-X-Ovh-Tracer-GUID: 52def445-5b21-4b11-a32f-bf85732a1281
-X-Ovh-Tracer-Id: 15286905989355047727
+X-Ovh-Tracer-GUID: 4c64469f-f015-44d4-94a4-632657ccf278
+X-Ovh-Tracer-Id: 15329127232020450153
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTEgW1XoTQFBXLr1PSh5roNn2Iid70h18L7CzIQExlQSn9u90AIYO8wsSxSLCGdgJAHO4o78LhirdEtQW/Jb6IIf1AhZ1Vi8POHYlTRJkWpVYZijvq/c8ZnUgoJUHvVpN6SlPPzeAhMMXcbAh3tvOUE23ZHRsEAX0DZZKtowjO4qhC3v/3J+MEsyvgZ/978zCkGyeY5vrhC61Sj9rdBvsMChhUooiK8XOBExRD7WCPK8TeaHaXgrjz24nkBgdNT6T3wSXSkwikESP8tvtxFTmLJZG/2tkbm/R3nmfrwvyCEmOxjviJDePzdqkkPZjOLYDjXs1v9Sh8Q9Svi0PGtRFkYoYRgn25hYagwhhzLt9ZYYVbTeucpPoB8p7YCxQA0NvGjCSiTqMSWDomLRXXfKXnuZI8V2KJp7AyBeLyp1s7gmtUUiCjcTCK9HovhNrRcQYejyLqC9Gz5o8pkupKYr6kYSDPFARaWqFr76o2GFI9glsWnoy/gif+V4lekYe7uK1Ob3r5nB2gAnPLWwS/TsSS07KAKf61kU1RQ2wzVewmCKxc7hEG4OU42JO3SMrK9aOHiWsmz+17CbETRJ5ibE4XhP/2dTFZmTuUXwbFcZkTeys4VSpXpZqgzszPWVS5CM2keqyjYMy8W+EAZvljQXdz+SExpIzJCl61zPBmarpaxWMQ
-DKIM-Signature: a=rsa-sha256; bh=wrG/i1JNLXjmEvGFmdX4ImiIhdVoeyNfIhHBWsnywI8=; 
+X-VR-SPAMCAUSE: dmFkZTGy39/g7VddYU7IHDk4EFM/ak3RdrvKVj+Np12/GC/DF0dbH739MkJ5BayWbb2JSFN8mRPdjBtj7D9aLud5MkJSgFUeSf7451/+/qTJzp/K7GJ9hnLAfO9GNM2Nr2UD02lJGpMGTlUOpVvcskP6qrO438xEiN7fHe1e9FehZnhTYfTVk7l6UwDQV1gsMr+FNnZR+oeHhaIFYcUrv8RD66fhEGmP9Tpq327G0rXvRNS1DZIjN+yGuqpjsgMt+CXriQC4FFZzCWu9jRUn1LDQ58u9VOOchHpV0RQjFSz4QKAmav3e6YF+g7XxMi/nwC/ewcUm1EtaxlFsidJ3ZEstwdBSojwUqH2rY3KqnHLGoGQwGtCsQ3IsnhPPGXMph7hdl6RseXnrnAVaQ3HTLdolscY6LTLb+I9cVlDep+euDpQ8r5rFhhLfsbb1H7BRBhHz6hJEU+oHCGKXHleRSau2ENajTDEWn3QeOLs+HkbKsx9MhbqlITvR3Mo3ZCc1lbFRIwGV/Bsnfb8lkOZmhxYZQoLUJVmIO32H/txzpxylMNy5g7/S3cuZhXEIo0UREAzgaGJy+irXltuJNyzr9aNw5Z1XmmQQvbPdoLJfozMg0g9XusQOUfugmfBKy45BY0rIQ0CHoBT2U0H/xlO0LAcOq/qQuIADWHtWwCRCD73ZReLHpg
+DKIM-Signature: a=rsa-sha256; bh=036JagTWklqcsM7825S7Bf/5Pda4V47gxaXL61jjmRA=; 
  c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1760678950; v=1;
- b=r5OW7BzC1qkrzd/j2TAgDlbVu2Lc+9ZjZAtGL9lG8InnwR48thJga08xQXcjD4ERSrr0YfUb
- wre1De0JFIKiG8Z4QES7mdgcavlz+MMlT6hLTGHSRTvnPWgmsOysYS9LJNNXg9lJlCPqiEcUGUE
- Q02HZyeVjo1r/uh3SqiynaGT9piIpC4HhHK/ev9dWqkjBwNdwi6LIbmoKAJjWmIw7dmTx92KYB0
- 4Zn5H8uOoy9YLNpd3QYkpqrZw+1eAykz2/Eb1Yxpf8GGSoTh+k4liCWlfG5NI2EQwCAGKl183WU
- r6ynksaG96SzEgn+juCqnSvBrTRQ61tYnLICGa4TjjmHg==
-Received-SPF: pass client-ip=178.33.255.19; envelope-from=clg@kaod.org;
- helo=2.mo548.mail-out.ovh.net
+ t=1760679100; v=1;
+ b=F8eMTPmU5hzLXIwgLuvKs/uoHe1jdYnPFmkYCP0ayBVbtw7WutcmddUj61b1zGhM9+tlAyck
+ IKl1Ap5rZODaC8zkRzn9q03HiN1eD0OZszt6lXkUjShWhQtf0pEDMCnSEiSVV8BVNadiNIC2L83
+ KgykS2viOnI/4hah+ESWCjEbRy4mqrxEkxwVmYUeXOz2X8tIM93UIxazANpFqYdn4+H8tF7MNQu
+ 3wgoKOIPgVVWrtWXCLvbYCZzkPkkveYBonxjuJMD2Uy6WcGX4lbqt+IkHBqaS4tyuczLN1ms2Pa
+ ac6IHfwRfO22ZEGLq5NxyJ1nin8rn2LREevSGfrVyanUA==
+Received-SPF: pass client-ip=46.105.54.81; envelope-from=clg@kaod.org;
+ helo=smtpout3.mo529.mail-out.ovh.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, T_SPF_TEMPERROR=0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -131,55 +130,26 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 10/15/25 08:22, Jamin Lin wrote:
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-> ---
->   tests/functional/aarch64/test_aspeed_ast2700fc.py | 12 ++++++------
->   1 file changed, 6 insertions(+), 6 deletions(-)
+On 10/17/25 00:56, Andrew Jeffery wrote:
+> On Wed, 2025-10-15 at 01:18 +0000, Coco Li wrote:
+>> From: Felix Wu <flwu@google.com>
+>>
+>> Added 32 bits property for ASPEED GPIO. Previously it can only be access in bitwise manner.
+>>
+>> The changes to qobject is to index gpios with array indices on top of accessing with registers.
+>> This allows for easier gpio access, especially in tests with complex behaviors that requires large number of gpios at a time, like fault injection and networking behaviors.
+>>
+>> Indexing multiple gpios at once allows qmp/side band client to no longer hardcode and populate register names and manipulate them faster.
+>>
+>> Signed-off-by: Felix Wu <flwu@google.com>
 > 
-> diff --git a/tests/functional/aarch64/test_aspeed_ast2700fc.py b/tests/functional/aarch64/test_aspeed_ast2700fc.py
-> index 28b66614d9..bcce0c8d4e 100755
-> --- a/tests/functional/aarch64/test_aspeed_ast2700fc.py
-> +++ b/tests/functional/aarch64/test_aspeed_ast2700fc.py
-> @@ -36,9 +36,9 @@ def verify_openbmc_boot_and_login(self, name):
->           exec_command_and_wait_for_pattern(self, 'root', 'Password:')
->           exec_command_and_wait_for_pattern(self, '0penBmc', f'root@{name}:~#')
->   
-> -    ASSET_SDK_V906_AST2700 = Asset(
-> -            'https://github.com/AspeedTech-BMC/openbmc/releases/download/v09.06/ast2700-default-obmc.tar.gz',
-> -            'f1d53e0be8a404ecce3e105f72bc50fa4e090ad13160ffa91b10a6e0233a9dc6')
-> +    ASSET_SDK_V908_AST2700 = Asset(
-> +            'https://github.com/AspeedTech-BMC/openbmc/releases/download/v09.08/ast2700-default-obmc.tar.gz',
-> +            'eac3dc409b7ea3cd4b03d4792d3cebd469792ad893cb51e1d15f0fc20bd1e2cd')
->   
->       def do_ast2700_i2c_test(self):
->           exec_command_and_wait_for_pattern(self,
-> @@ -66,7 +66,7 @@ def do_ast2700fc_ssp_test(self):
->           self.vm.set_console(console_index=1)
->           self.vm.launch()
->   
-> -        exec_command_and_wait_for_pattern(self, '\012', 'ssp:~$')
-> +        exec_command_and_wait_for_pattern(self, '\012', 'ssp_tsp:~$')
->           exec_command_and_wait_for_pattern(self, 'version',
->                                             'Zephyr version 3.7.1')
->           exec_command_and_wait_for_pattern(self, 'md 72c02000 1',
-> @@ -133,10 +133,10 @@ def start_ast2700fc_test(self, name):
->           self.do_test_aarch64_aspeed_sdk_start(
->                   self.scratch_file(name, 'image-bmc'))
->   
-> -    def test_aarch64_ast2700fc_sdk_v09_06(self):
-> +    def test_aarch64_ast2700fc_sdk_v09_08(self):
->           self.set_machine('ast2700fc')
->   
-> -        self.archive_extract(self.ASSET_SDK_V906_AST2700)
-> +        self.archive_extract(self.ASSET_SDK_V908_AST2700)
->           self.start_ast2700fc_test('ast2700-default')
->           self.verify_openbmc_boot_and_login('ast2700-default')
->           self.do_ast2700_i2c_test()
+> Thanks for updating the commit message. It should be properly wrapped,
+> but I expect that can be done when the patch is applied.
+> 
+> Reviewed-by: Andrew Jeffery <andrew@codeconstruct.com.au>
 
+yeah. I can do that.
 
-
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
 
 Thanks,
 

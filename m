@@ -4,81 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE2B6CCD195
-	for <qemu-arm@archiver.kernel.org>; Fri, 17 Oct 2025 15:12:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8539FCCD195
+	for <qemu-arm@archiver.kernel.org>; Fri, 17 Oct 2025 15:31:03 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v9m7M-0005ml-Mf; Fri, 17 Oct 2025 11:11:45 -0400
+	id 1v9mPr-0005KO-Qx; Fri, 17 Oct 2025 11:30:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1v9m7J-0005mS-1a
- for qemu-arm@nongnu.org; Fri, 17 Oct 2025 11:11:41 -0400
-Received: from mail-yx1-xb12d.google.com ([2607:f8b0:4864:20::b12d])
+ id 1v9mPk-0005ES-DV
+ for qemu-arm@nongnu.org; Fri, 17 Oct 2025 11:30:47 -0400
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1v9m7F-0005zS-R2
- for qemu-arm@nongnu.org; Fri, 17 Oct 2025 11:11:40 -0400
-Received: by mail-yx1-xb12d.google.com with SMTP id
- 956f58d0204a3-6360397e8c7so2228163d50.0
- for <qemu-arm@nongnu.org>; Fri, 17 Oct 2025 08:11:34 -0700 (PDT)
+ id 1v9mPe-000158-2E
+ for qemu-arm@nongnu.org; Fri, 17 Oct 2025 11:30:43 -0400
+Received: by mail-wm1-x332.google.com with SMTP id
+ 5b1f17b1804b1-47100eae3e5so20447965e9.1
+ for <qemu-arm@nongnu.org>; Fri, 17 Oct 2025 08:30:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1760713891; x=1761318691; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=WLPXgJeVat7oDNY1CZ+cXvPctPFHchcSnpArFIUPAvo=;
- b=SCAqCx2joZh+1UnCCF6DGduKcWgnVuOP9wVfeit60uwe+TvMJGbEb+ugFJl5vH55Rk
- dk/TqJzEPhpgfhjs6dlDxxQTnKghtGunCoeWaGou6ti908wkJqCStA0FGW0wikrXwrbe
- B/XUICXaKHQuyh8kXWRO+29RaEOq+sPPe5czoXvZHFIe2eZa7+d0HYMPdOXRIEtlVX/G
- JG0kSVykcP1oGSeZSQTdvDFfYRcKPkcxgFuKIsw+NBGe52UoQULoTjlpmjsii0vtlW4V
- wj1H5klq1pKLWWxpaKLR0oOwDvRtg/BWUH1lcfsjRqYI2eY0DdpYdZ4aPQhrvYEO3WJG
- 0OOg==
+ d=linaro.org; s=google; t=1760715030; x=1761319830; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=AtSS8KnvSb4J83ASd5oqMayj/FmTzdqH/eYszZmtz3A=;
+ b=fcW1Z9eCR24xIojSOJfObrx/9xAuTAoLAvn7vUlcAhlkxF2Zi+X6MjdxSRKBlW78pZ
+ 7dBgj3PBENPMANLO4BqR+Vs94GV3Y63bI8S0DrpJu7Xj7n360ucjiR/qH1QgYvgLsdGC
+ SxkpzZd3EqNHAjBCc3OIyrnMgJx8rnUr3ZSlwk1lmPpJLXvz8hC+OZoQ9TyA4h/UlJia
+ slPVNhGTA3z/zpaPJaSo8YL0D51SitCSrcbUxR4Yy5kPGnR+w2HoRYF7R96pHQe3VHUW
+ wZqYWf/82HTbcNBlghSPT72HeLvIPxnRU1vxwsJuMVVMk1EklpcXHtQbzNK7ekL/ZKTd
+ z/3g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1760713891; x=1761318691;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=WLPXgJeVat7oDNY1CZ+cXvPctPFHchcSnpArFIUPAvo=;
- b=jZm5hOTYhPZ3o6fu2L/kPK0wKjK0In7Q+rjSlOo560rZKgyb/Rgm2awjXxsqBWI5GQ
- 5yx3XFr6HGU2qABaz/BvydXTrIEyWmbBRwhTHeLZ3c+kQyPRL1aNii52PB42T7yGuB2u
- DtQrCQ22wnlHuDgCVHNs4jcvO9zs9P6ZgDh0NmewkQMewc0BPADnFwU9bVeBMNhoWZ0B
- nlDW1I7elDbNxOcBMetTpge/eaCBYHkqNEgl98DgSzzeRkjuXqPrN2GLCFetTST1KNbO
- 3WD6H2Wui4LQsVXW0kCiXrT2dLm7P0tt8GDmfBI/Rp0q1SZ+64S+6wwq4rNzDmPyq7E/
- bcrw==
-X-Gm-Message-State: AOJu0Yx95kp3spYTjvmXjQEqdNbsnYiupI1s1m2d3Q77gxLPCIMGIvL9
- 1n2FB1FPTnBka9B7E61n/Qj74dBSKu3iB+Vw8Q3OfYJknnmhxmUU5ZTiQrZtrZwiyi1huW6s1tG
- mD0aHncdl+aRvmt9mIJPwoZorRPEgg+yP++WQsIkAV07WTUAP+okw
-X-Gm-Gg: ASbGncsa2KC4hXrBgyYJckDpKpzM4FctJJ5D5BnxJzDHronXpnTE7VvXp0jvjQgSM/l
- VsAo0EG+L/KbJhIcVpRCIh4Y0bkZPEUA2TqMARndTclHggSaTDSzaTUSeMPd2HIIY1u/A2EUKc3
- C7OS2C0E0ZVRA+cYajCOA/2I+ar0dNvdGlPPE6TdXh8oeF1cX8J3IcbuZMLd7hbFMykK8S/SEeU
- 5YsT80JoGzfn6hDRNZeVAmpbeOyJt9ahacnN8DXgeIj7n44BG+fmzU9e+kcQg==
-X-Google-Smtp-Source: AGHT+IGfob1Vl5LkyZJefYGukGPbhexB362aiPrv7wVjXM1ieNI1YTCv6K+U3EwQgRv/GPMMlKyu2gWoCjjISvMQBGU=
-X-Received: by 2002:a05:690e:14c1:b0:63e:231a:cb5a with SMTP id
- 956f58d0204a3-63e231acc2fmr751556d50.48.1760713891322; Fri, 17 Oct 2025
- 08:11:31 -0700 (PDT)
-MIME-Version: 1.0
-References: <20251016122132.737016-1-peter.maydell@linaro.org>
- <20251016122132.737016-3-peter.maydell@linaro.org>
-In-Reply-To: <20251016122132.737016-3-peter.maydell@linaro.org>
+ d=1e100.net; s=20230601; t=1760715030; x=1761319830;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=AtSS8KnvSb4J83ASd5oqMayj/FmTzdqH/eYszZmtz3A=;
+ b=TXpurF7zfXtauloH4UUjjCJ/UMlgNTJi6Di+gmyKUAqXdUXrXOc+rL6RMXTnkcNXt/
+ d1P7xSt8b62P8IO1spdUU7z5G732I0XINReGiJbYqrWUbOlqUczLrsm5B9oeqCY042h6
+ GRTOgIHyhcxOlKaGaRgMyzbaKGT8f2mPrqzLMQgIYD5r1/juZ5UGQ1pbDrUE4qhECuoX
+ Cqqc++tPqsNGFmzh4OnOLDknzUwCy7kwYxsgdfjjLdeHmZ9Yyc1wj5z4Bfyjp7sYKhSA
+ boU6GD4mZLCM7EsSP92hF0b19C8wbafV+KTHJc1ya//3V8OFsz4b9VYGvAd8ii+W1cGz
+ XEcQ==
+X-Gm-Message-State: AOJu0YyGu2cC/31IviH2XAmhgOIvQZlJ3pUWnITiaxWP1OR1/rIwV0pw
+ suCc1jiNmim+eoLLsbcXEQV9Eo0eACdWgs4rjXV/VAThrexQ+CxXi2noNZLaRu5kmHCct6qU8gq
+ BMIGm
+X-Gm-Gg: ASbGncvdUoRsFBb2Vz6s/6zKOvQA9PP9CIX73TkDPn63e8ea7IPUXw09uhhutrEhUNJ
+ ISNlCra/jKYnsZDWePiWjQj0fyBLIkGyWBxct6fJk6aJz8y366qD9QJSlYUhlyq/Ju5sUBa4hDQ
+ HQmFatOUH950HpH4HwS17YYB09dy57tNdihmWe8olLcZSpv/eRYlgHeMaFBzb4hgtvHg5zaebvw
+ c61fwVYjVbCVzuadNHlFDjgWuum7iQIr6rCtFk9fZEbj9OQlAIQcNrDYGct++dFAOVhXgeivGsS
+ 2z98tWt6jfhdwyr9jkjE0+EhTe/9OdvOX7Pzz485sjlu/XtpIOoNL/X6M5ow7lVCmPRJTIWQP/u
+ YAsSTJwxPFL9Lpsx2u6CiPcIilNxRQNUhhcY5VHGi5Y8iqgb9HuJ1ZoDiZoVsi3CxwvgEG+8X0S
+ bPp7T5AQ==
+X-Google-Smtp-Source: AGHT+IFgsKCvYqY7LCVTEPsuKew7kaQMjAYDwZrazSQgOY26RsfDKQEqVsoXRbmozAVtgC2GT+9uRQ==
+X-Received: by 2002:a5d:5888:0:b0:426:f38a:a51 with SMTP id
+ ffacd0b85a97d-42704d8d684mr3466148f8f.22.1760715030138; 
+ Fri, 17 Oct 2025 08:30:30 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-471144d17cdsm85038635e9.18.2025.10.17.08.30.29
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 17 Oct 2025 08:30:29 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 17 Oct 2025 16:11:19 +0100
-X-Gm-Features: AS18NWAa9NvZBNarUD9X2a3av_-e8MwJYcp2VzyC8KSX4I9KZ9fo7EGn_PBk9cU
-Message-ID: <CAFEAcA9o6zTXn-=YmZizZ7rephox_FjpGs3Z8+PmJLeUNKcsMw@mail.gmail.com>
-Subject: Re: [PATCH 2/2] tests/tcg/aarch64: Add test case for SME2 gdbstub
- registers
-To: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Cc: Vacha Bhavsar <vacha.bhavsar@oss.qualcomm.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b12d;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12d.google.com
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: Richard Henderson <richard.henderson@linaro.org>,
+ Vacha Bhavsar <vacha.bhavsar@oss.qualcomm.com>
+Subject: [PATCH v2 1/3] target/arm: Implement SME2 support in gdbstub
+Date: Fri, 17 Oct 2025 16:30:25 +0100
+Message-ID: <20251017153027.969016-2-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20251017153027.969016-1-peter.maydell@linaro.org>
+References: <20251017153027.969016-1-peter.maydell@linaro.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::332;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x332.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -94,71 +104,194 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, 16 Oct 2025 at 13:21, Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> Test the SME2 register exposure over gdbstub, in the same way
-> we already do for SME.
->
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  tests/tcg/aarch64/Makefile.target      |  9 +++++-
->  tests/tcg/aarch64/gdbstub/test-sme2.py | 41 ++++++++++++++++++++++++++
->  2 files changed, 49 insertions(+), 1 deletion(-)
->  create mode 100644 tests/tcg/aarch64/gdbstub/test-sme2.py
->
-> diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
-> index 55ce34e45ee..9fa86874534 100644
-> --- a/tests/tcg/aarch64/Makefile.target
-> +++ b/tests/tcg/aarch64/Makefile.target
-> @@ -164,7 +164,14 @@ run-gdbstub-sysregs-sme-tile-slice: sysregs
->         "selected gdb ($(GDB)) does not support SME ZA tile slices")
->  endif
->
-> -EXTRA_RUNS += run-gdbstub-sysregs-sme run-gdbstub-sysregs-sme-tile-slice
-> +run-gdbstub-sysregs-sme2: sysregs
-> +       $(call run-test, $@, $(GDB_SCRIPT) \
-> +               --gdb $(GDB) \
-> +               --qemu $(QEMU) --qargs "$(QEMU_OPTS)" \
-> +               --bin $< --test $(AARCH64_SRC)/gdbstub/test-sme2.py, \
-> +       gdbstub SME ZA tile slice support)
-> +
-> +EXTRA_RUNS += run-gdbstub-sysregs-sme run-gdbstub-sysregs-sme-tile-slice run-gdbstub-sysregs-sme2
->
->  endif
->
-> diff --git a/tests/tcg/aarch64/gdbstub/test-sme2.py b/tests/tcg/aarch64/gdbstub/test-sme2.py
-> new file mode 100644
-> index 00000000000..1d189ac01ca
-> --- /dev/null
-> +++ b/tests/tcg/aarch64/gdbstub/test-sme2.py
-> @@ -0,0 +1,41 @@
-> +#
-> +# Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
+For SME2, we need to expose the new ZT0 register in the gdbstub XML.
+gdb documents that the requirements are:
 
-This is obviously wrong -- I used the SME test case as
-an initial template, but forgot to edit the copyright line :-/
+> The ‘org.gnu.gdb.aarch64.sme2’ feature is optional.  If present,
+> then the ‘org.gnu.gdb.aarch64.sme’ feature must also be present.
+> The ‘org.gnu.gdb.aarch64.sme2’ feature should contain the
+> following:
+>
+>    - ZT0 is a register of 512 bits (64 bytes).  It is defined as a
+>      vector of bytes.
 
-Will fix in v2.
+Implement this.
 
-> +#
-> +# SPDX-License-Identifier: GPL-2.0-or-later
-> +
-> +#
-> +# Test the SME registers are visible and changeable via gdbstub
-> +#
-> +# This is launched via tests/guest-debug/run-test.py
-> +#
-> +
-> +import argparse
-> +import gdb
-> +from test_gdbstub import main, report
-> +
-> +MAGIC = 0x01020304
-> +BASIC_ZA_TEST = 0
-> +TILE_SLICE_TEST = 0
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ configs/targets/aarch64-bsd-user.mak      |  2 +-
+ configs/targets/aarch64-linux-user.mak    |  2 +-
+ configs/targets/aarch64-softmmu.mak       |  2 +-
+ configs/targets/aarch64_be-linux-user.mak |  2 +-
+ target/arm/internals.h                    |  2 +
+ target/arm/gdbstub.c                      |  6 +++
+ target/arm/gdbstub64.c                    | 52 +++++++++++++++++++++++
+ gdb-xml/aarch64-sme2.xml                  | 14 ++++++
+ 8 files changed, 78 insertions(+), 4 deletions(-)
+ create mode 100644 gdb-xml/aarch64-sme2.xml
 
-These constants and the argparse import aren't needed
-for this simple test case.
+diff --git a/configs/targets/aarch64-bsd-user.mak b/configs/targets/aarch64-bsd-user.mak
+index f99c73377a9..7f42e060477 100644
+--- a/configs/targets/aarch64-bsd-user.mak
++++ b/configs/targets/aarch64-bsd-user.mak
+@@ -1,4 +1,4 @@
+ TARGET_ARCH=aarch64
+ TARGET_BASE_ARCH=arm
+-TARGET_XML_FILES= gdb-xml/aarch64-core.xml gdb-xml/aarch64-fpu.xml gdb-xml/aarch64-pauth.xml
++TARGET_XML_FILES= gdb-xml/aarch64-core.xml gdb-xml/aarch64-fpu.xml gdb-xml/aarch64-pauth.xml gdb-xml/aarch64-sme2.xml
+ TARGET_LONG_BITS=64
+diff --git a/configs/targets/aarch64-linux-user.mak b/configs/targets/aarch64-linux-user.mak
+index b779ac3b4a0..bf328b3b80c 100644
+--- a/configs/targets/aarch64-linux-user.mak
++++ b/configs/targets/aarch64-linux-user.mak
+@@ -1,6 +1,6 @@
+ TARGET_ARCH=aarch64
+ TARGET_BASE_ARCH=arm
+-TARGET_XML_FILES= gdb-xml/aarch64-core.xml gdb-xml/aarch64-fpu.xml gdb-xml/aarch64-pauth.xml gdb-xml/aarch64-mte.xml
++TARGET_XML_FILES= gdb-xml/aarch64-core.xml gdb-xml/aarch64-fpu.xml gdb-xml/aarch64-pauth.xml gdb-xml/aarch64-mte.xml gdb-xml/aarch64-sme2.xml
+ TARGET_HAS_BFLT=y
+ CONFIG_SEMIHOSTING=y
+ CONFIG_ARM_COMPATIBLE_SEMIHOSTING=y
+diff --git a/configs/targets/aarch64-softmmu.mak b/configs/targets/aarch64-softmmu.mak
+index 5dfeb35af90..d14bcfc4900 100644
+--- a/configs/targets/aarch64-softmmu.mak
++++ b/configs/targets/aarch64-softmmu.mak
+@@ -1,7 +1,7 @@
+ TARGET_ARCH=aarch64
+ TARGET_BASE_ARCH=arm
+ TARGET_KVM_HAVE_GUEST_DEBUG=y
+-TARGET_XML_FILES= gdb-xml/aarch64-core.xml gdb-xml/aarch64-fpu.xml gdb-xml/arm-core.xml gdb-xml/arm-vfp.xml gdb-xml/arm-vfp3.xml gdb-xml/arm-vfp-sysregs.xml gdb-xml/arm-neon.xml gdb-xml/arm-m-profile.xml gdb-xml/arm-m-profile-mve.xml gdb-xml/aarch64-pauth.xml
++TARGET_XML_FILES= gdb-xml/aarch64-core.xml gdb-xml/aarch64-fpu.xml gdb-xml/arm-core.xml gdb-xml/arm-vfp.xml gdb-xml/arm-vfp3.xml gdb-xml/arm-vfp-sysregs.xml gdb-xml/arm-neon.xml gdb-xml/arm-m-profile.xml gdb-xml/arm-m-profile-mve.xml gdb-xml/aarch64-pauth.xml gdb-xml/aarch64-sme2.xml
+ # needed by boot.c
+ TARGET_NEED_FDT=y
+ TARGET_LONG_BITS=64
+diff --git a/configs/targets/aarch64_be-linux-user.mak b/configs/targets/aarch64_be-linux-user.mak
+index ef9be02290f..284430add7b 100644
+--- a/configs/targets/aarch64_be-linux-user.mak
++++ b/configs/targets/aarch64_be-linux-user.mak
+@@ -1,7 +1,7 @@
+ TARGET_ARCH=aarch64
+ TARGET_BASE_ARCH=arm
+ TARGET_BIG_ENDIAN=y
+-TARGET_XML_FILES= gdb-xml/aarch64-core.xml gdb-xml/aarch64-fpu.xml gdb-xml/aarch64-pauth.xml gdb-xml/aarch64-mte.xml
++TARGET_XML_FILES= gdb-xml/aarch64-core.xml gdb-xml/aarch64-fpu.xml gdb-xml/aarch64-pauth.xml gdb-xml/aarch64-mte.xml gdb-xml/aarch64-sme2.xml
+ TARGET_HAS_BFLT=y
+ CONFIG_SEMIHOSTING=y
+ CONFIG_ARM_COMPATIBLE_SEMIHOSTING=y
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index f539bbe58e1..b8b07e6477c 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -1719,6 +1719,8 @@ int aarch64_gdb_get_sve_reg(CPUState *cs, GByteArray *buf, int reg);
+ int aarch64_gdb_set_sve_reg(CPUState *cs, uint8_t *buf, int reg);
+ int aarch64_gdb_get_sme_reg(CPUState *cs, GByteArray *buf, int reg);
+ int aarch64_gdb_set_sme_reg(CPUState *cs, uint8_t *buf, int reg);
++int aarch64_gdb_get_sme2_reg(CPUState *cs, GByteArray *buf, int reg);
++int aarch64_gdb_set_sme2_reg(CPUState *cs, uint8_t *buf, int reg);
+ int aarch64_gdb_get_fpu_reg(CPUState *cs, GByteArray *buf, int reg);
+ int aarch64_gdb_set_fpu_reg(CPUState *cs, uint8_t *buf, int reg);
+ int aarch64_gdb_get_pauth_reg(CPUState *cs, GByteArray *buf, int reg);
+diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
+index 8d2229f5192..1ca3e647a84 100644
+--- a/target/arm/gdbstub.c
++++ b/target/arm/gdbstub.c
+@@ -554,6 +554,12 @@ void arm_cpu_register_gdb_regs_for_features(ARMCPU *cpu)
+                 arm_gen_dynamic_smereg_feature(cs, cs->gdb_num_regs);
+             gdb_register_coprocessor(cs, aarch64_gdb_get_sme_reg,
+                                      aarch64_gdb_set_sme_reg, sme_feature, 0);
++            if (isar_feature_aa64_sme2(&cpu->isar)) {
++                gdb_register_coprocessor(cs, aarch64_gdb_get_sme2_reg,
++                                         aarch64_gdb_set_sme2_reg,
++                                         gdb_find_static_feature("aarch64-sme2.xml"),
++                                         0);
++            }
+         }
+         /*
+          * Note that we report pauth information via the feature name
+diff --git a/target/arm/gdbstub64.c b/target/arm/gdbstub64.c
+index 65d6bbe65fb..5ad00fe771d 100644
+--- a/target/arm/gdbstub64.c
++++ b/target/arm/gdbstub64.c
+@@ -335,6 +335,58 @@ int aarch64_gdb_set_sme_reg(CPUState *cs, uint8_t *buf, int reg)
+     return 0;
+ }
+ 
++int aarch64_gdb_get_sme2_reg(CPUState *cs, GByteArray *buf, int reg)
++{
++    ARMCPU *cpu = ARM_CPU(cs);
++    CPUARMState *env = &cpu->env;
++    int len = 0;
++
++    switch (reg) {
++    case 0: /* ZT0 */
++        for (int i = 0; i < ARRAY_SIZE(env->za_state.zt0); i += 2) {
++            len += gdb_get_reg128(buf, env->za_state.zt0[i + 1],
++                                  env->za_state.zt0[i]);
++        }
++        return len;
++    default:
++        /* gdbstub asked for something out of range */
++        qemu_log_mask(LOG_UNIMP, "%s: out of range register %d", __func__, reg);
++        break;
++    }
++
++    return 0;
++}
++
++int aarch64_gdb_set_sme2_reg(CPUState *cs, uint8_t *buf, int reg)
++{
++    ARMCPU *cpu = ARM_CPU(cs);
++    CPUARMState *env = &cpu->env;
++    int len = 0;
++
++    switch (reg) {
++    case 0: /* ZT0 */
++        for (int i = 0; i < ARRAY_SIZE(env->za_state.zt0); i += 2) {
++            if (target_big_endian()) {
++                env->za_state.zt0[i + 1] = ldq_p(buf);
++                buf += 8;
++                env->za_state.zt0[i] = ldq_p(buf);
++            } else {
++                env->za_state.zt0[i] = ldq_p(buf);
++                buf += 8;
++                env->za_state.zt0[i + 1] = ldq_p(buf);
++            }
++            buf += 8;
++            len += 16;
++        }
++        return len;
++    default:
++        /* gdbstub asked for something out of range */
++        break;
++    }
++
++    return 0;
++}
++
+ int aarch64_gdb_get_pauth_reg(CPUState *cs, GByteArray *buf, int reg)
+ {
+     ARMCPU *cpu = ARM_CPU(cs);
+diff --git a/gdb-xml/aarch64-sme2.xml b/gdb-xml/aarch64-sme2.xml
+new file mode 100644
+index 00000000000..43911dae160
+--- /dev/null
++++ b/gdb-xml/aarch64-sme2.xml
+@@ -0,0 +1,14 @@
++<?xml version="1.0"?>
++<!-- Copyright (C) 2025 Linaro Ltd.
++
++     SPDX-License-Identifier: GPL-2.0-or-later
++
++     This is the SME2 ZT0 register. Upstream GDB dynamically generates
++     the XML for this feature, but because the vector is always 64 bytes
++     in size we prefer to use static XML for it.
++     -->
++<!DOCTYPE feature SYSTEM "gdb-target.dtd">
++<feature name="org.gnu.gdb.aarch64.sme2">
++  <vector id="sme2_bv" type="uint8" count="64"/>
++  <reg name="zt0" bitsize="512" type="sme2_bv"/>
++</feature>
+-- 
+2.43.0
 
--- PMM
 

@@ -4,125 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C185CCD195
-	for <qemu-arm@archiver.kernel.org>; Fri, 17 Oct 2025 17:20:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F3B6CCD199
+	for <qemu-arm@archiver.kernel.org>; Fri, 17 Oct 2025 19:04:10 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1v9o75-0005qq-TL; Fri, 17 Oct 2025 13:19:36 -0400
+	id 1v9pk6-0000It-Mz; Fri, 17 Oct 2025 15:03:59 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1v9o74-0005qT-9v
- for qemu-arm@nongnu.org; Fri, 17 Oct 2025 13:19:34 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1v9o70-0007NN-52
- for qemu-arm@nongnu.org; Fri, 17 Oct 2025 13:19:34 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1760721566;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=xqKQOA7IIgOldgwfrDPBw5DFY0Ez/V7/yqopDGqLJaY=;
- b=hGYIY9942KFCVBevcLO3rGsWMX0wkaoU0Z1sLitiveKxp81hbhkBp7wVI6Eg7sSuvNdToV
- gZ6Yc/XAawRUypbQsEds8NLfUq7R5qXw6HogHa3HKZrluE/p4/H29RjHxp7Gkl73SOnYFf
- Rbj1B33QkR9IhybqPf0hN7nNHVOKFPU=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-482-Ttma3mznPhSgYHTWkiDoZA-1; Fri, 17 Oct 2025 13:19:24 -0400
-X-MC-Unique: Ttma3mznPhSgYHTWkiDoZA-1
-X-Mimecast-MFC-AGG-ID: Ttma3mznPhSgYHTWkiDoZA_1760721560
-Received: by mail-wr1-f72.google.com with SMTP id
- ffacd0b85a97d-42700160169so1263314f8f.1
- for <qemu-arm@nongnu.org>; Fri, 17 Oct 2025 10:19:21 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1v9pk5-0000IW-JG
+ for qemu-arm@nongnu.org; Fri, 17 Oct 2025 15:03:57 -0400
+Received: from mail-pj1-x1031.google.com ([2607:f8b0:4864:20::1031])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1v9pk2-0005Cc-Jy
+ for qemu-arm@nongnu.org; Fri, 17 Oct 2025 15:03:57 -0400
+Received: by mail-pj1-x1031.google.com with SMTP id
+ 98e67ed59e1d1-3352018e051so2675976a91.0
+ for <qemu-arm@nongnu.org>; Fri, 17 Oct 2025 12:03:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1760727832; x=1761332632; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=Uku7aAPcFrSLbT4Wezvfehb1h4Yz0KUtRB+nV1hGm6k=;
+ b=LBi95shy77gxB6GRd/rOoECIQlYnVKplPoorkx9cWIYNC5cAg+Nx6Sy+DzbXfBRRb6
+ TVVpOrKZpELvU+88gto0Qs1HiVist9b/7EBkinOkDcf9ze/1V6eS5f/q80p4sMQMPrmd
+ JHrLz5SHc/GdkO6CmP24J/abK4zcEb7ZcVV9xJEintR2kjTKgtl3w56U22NwlRM6lX++
+ jtOIXaUwfBGWeANkDzwZ1vFd5w90DaUlcGS1NSGSBn1Jh60ETbQRZMFImUrmbU8Nu3rz
+ A4WacKMZxsiJalFelAxX9P2NwugwvyEapjG+TalWt5eV/lBBGF5OYwu3dT/dy+4HEHTk
+ YoyQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1760721560; x=1761326360;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=xqKQOA7IIgOldgwfrDPBw5DFY0Ez/V7/yqopDGqLJaY=;
- b=SIqUDDeseqtPqgEVWkloVQoCwrTjPF5ZVS0SQe3hvTYUw8lVzKWAxUP1B/zFfxOM8Q
- eOxEONahLDd+Lp3Fkt8lpwRvBIkLLx4RcGQKwosQdTV+ZoRKlKTZzryFJdOeN0EZUCCv
- rAJAux1j7j4vu+ZTAm6/pfuIN/3/7oN/F8mh6VnYchD9PNNz5vpn/mvAKMbhEhKhgQVH
- yOXKuE1aidonq0xit6jBu5xE4Jm2L45k37vIQV1CbAe6JC+E63oY2Rbg/ZgwkmACHo39
- J3rKDHDPJsSXbMf38oCCiP3VfgUrJ02AUhJFHlR49HKTxLCUxj5XLeUiRxla2m6Vhk3f
- DoxQ==
+ d=1e100.net; s=20230601; t=1760727832; x=1761332632;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=Uku7aAPcFrSLbT4Wezvfehb1h4Yz0KUtRB+nV1hGm6k=;
+ b=gYjp8ygU4vESD8kNOYGUo4ULvxVsuBIyLrIxuEsKc3z3Lkj7EhBCamkr0fdLE6sW5I
+ mNFBIwFYB4wae7kirkkYSRy5Vipee18N3f5EhrQ/jqQ8lCilIUq8DnU22jvLZZR6iarD
+ 2VlU0i7Wrl2X5Z7sIMycGbiZrpN4lVDqgcMJYcXPzUWkOHUV+FtFjyFJ3Hlli6R3gZzT
+ wpIV/N9PrRa39ANjTJGmIg5Cb3sEVajtav+F2qw7hqsqpdO1yt3ccHMD2cTGbgKiifxA
+ b23REc3keuM2JEX1+odS0HV8cAZLktfIk9SehiJ6rFN0CC8chjzlEWCeTGhPj4rpVKFm
+ yO6A==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVvofE0QZlj9FroJ/n/QMcyp2yTEo/+ld9T97g4lhKiaxImv/QG/AoCv8McQrcF9PLFjvH7r06HRw==@nongnu.org
-X-Gm-Message-State: AOJu0YwputEdusvzSJkqFmFwTtifzRcXUxYXmDKo2yKJG3CPVenaXEWh
- 9BTlaZX0gRwS+N/t8ehl2iGHITQnjbScWKQ3G3TDY8peVCJbxzedJm9yZTp31mcuPulDFTCiaLy
- LDXXfCIyD6ieoEHKN6+xPGGoD8iTYEnWcqoVVF4gohUaI8T5eH5wLAg==
-X-Gm-Gg: ASbGncutscDS0MmNJD3rBNyXslKcs1QC2NZB9pUc9yYQDnSZ4+yAP6AwBi7MtDlzJ5G
- yjpflNU+VpjWC409YBIo9/znb6VbZgzSkcYB0xEVjN10hRGvU0QvWFXBJEk+6GhKsSuwGnnFxxi
- 75/sazBmhozOKLXsdssKpgwAtzwccNnCDt/kC1ynKprfKTtgsKN/kDQZO7d5wd4InlhJN8RiMkS
- gbmNsYUDDgO02MMPC90lbMusnz3a3yJT4nLsi9VlzTfHzE7d6MfNWhd7jG2kdUY0OpBBvvXFmK8
- KblhbplULPmMMOnz98ajQBFWumbpfANAzbZxCgzbzYkZwBLL78haVMsRPF9U+5xsDwza2ufJm74
- 3kyHERFd1wwwCCXlbgQOALj0dszZbtn8fm/r8qM74IImkwA==
-X-Received: by 2002:a05:6000:4202:b0:426:d82f:889e with SMTP id
- ffacd0b85a97d-42704d74dc8mr3406026f8f.14.1760721560242; 
- Fri, 17 Oct 2025 10:19:20 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEW05dIykKGzxbQKK/MbtwylPUzy4uySA73CqXJwXsG+Gmz0TxlbmsnMSvyCFmMiFNXFbVmYw==
-X-Received: by 2002:a05:6000:4202:b0:426:d82f:889e with SMTP id
- ffacd0b85a97d-42704d74dc8mr3406003f8f.14.1760721559783; 
- Fri, 17 Oct 2025 10:19:19 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ AJvYcCWqp631SZ/ij4zD2MoNQ16rAc/6Ml77KIMy9Y4yP6gNBij17t48rnN3SKi2GqiaHZyytIEaotajlQ==@nongnu.org
+X-Gm-Message-State: AOJu0YwABQub4epycjmivwRlCbABAsFKIhRaaTsLrqfkbzQkHxl0ZyMD
+ 9bBvc+BgSZHP76M0/HLOE51lFlwL96Xye8cZXl10rTJ5NYsAFcEuUpLRHvv7wrKFx14=
+X-Gm-Gg: ASbGncvUj7Pk3IUaXMOc4lE2ON0TyKuN+j+06dzMqhjjVts934gLE8Kd2yJkWMSHJ/o
+ 0ZjX9tx9olI27kvDjD1v97qu9WPEh3qaAwkNJ0K3vb6iRco27fIcMEtscLN4MTe48nznonVA8x+
+ ENOqVdmhJZGOODyKHqnuLFm4beRBERmqPkgKaRC9ZZ5rF6O2hqCPCVf1PgUmUCAyDL5gZlAFcDp
+ 9WO2NxGInJGp+/CsdoH2aeN2lpq5I3AQsmO/xIpxJhlQEpAC8nx8cUdfR/dsrP/eKIz2qY6oMkK
+ 1+ASscns4vjnuCjJ/r8y6RtmUVS9MTXaAu0ss4UGhWHto7Z5ecBmyRpqvSkgZdeov4yKrFR0Ewh
+ jLmzRq28gaoSqYtYO6idTL1Noi6m/mlS2Oj5NL1eN7bLiTVsdyWwo9Me0N7+0OBbjuoszz3vSyH
+ IDtZwqrCbuiesXdD0UBO/UdFCN
+X-Google-Smtp-Source: AGHT+IFvUw3WBtk4jgwLRQ2LURgGvv6bDzvu9p3O9Cc9ClpQ8Zh7sSW5p2VtwBwl3EKkuM3OZigj9w==
+X-Received: by 2002:a17:90b:2d8b:b0:336:bfce:13c9 with SMTP id
+ 98e67ed59e1d1-33bcf8e3d37mr5532297a91.20.1760727832337; 
+ Fri, 17 Oct 2025 12:03:52 -0700 (PDT)
+Received: from [192.168.0.4] ([71.212.157.132])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-427ea5b3f5esm312080f8f.20.2025.10.17.10.19.17
+ 98e67ed59e1d1-33ba96ca5d9sm2800586a91.2.2025.10.17.12.03.51
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 17 Oct 2025 10:19:19 -0700 (PDT)
-Message-ID: <c6007575-a32a-44fd-b23e-6d340928a5e0@redhat.com>
-Date: Fri, 17 Oct 2025 19:19:17 +0200
+ Fri, 17 Oct 2025 12:03:51 -0700 (PDT)
+Message-ID: <3593bf1e-1036-485c-87c9-41fc650823b7@linaro.org>
+Date: Fri, 17 Oct 2025 12:03:50 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 06/27] hw/arm/smmuv3-accel: Restrict accelerated SMMUv3
- to vfio-pci endpoints with iommufd
-To: Shameer Kolothum <skolothumtho@nvidia.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- Jason Gunthorpe <jgg@nvidia.com>, Nicolin Chen <nicolinc@nvidia.com>,
- "ddutile@redhat.com" <ddutile@redhat.com>,
- "berrange@redhat.com" <berrange@redhat.com>, Nathan Chen
- <nathanc@nvidia.com>, Matt Ochs <mochs@nvidia.com>,
- "smostafa@google.com" <smostafa@google.com>,
- "wangzhou1@hisilicon.com" <wangzhou1@hisilicon.com>,
- "jiangkunkun@huawei.com" <jiangkunkun@huawei.com>,
- "jonathan.cameron@huawei.com" <jonathan.cameron@huawei.com>,
- "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>,
- "zhenzhong.duan@intel.com" <zhenzhong.duan@intel.com>,
- "yi.l.liu@intel.com" <yi.l.liu@intel.com>,
- "shameerkolothum@gmail.com" <shameerkolothum@gmail.com>
-References: <20250929133643.38961-1-skolothumtho@nvidia.com>
- <20250929133643.38961-7-skolothumtho@nvidia.com>
- <cba0a4c0-9d0c-4137-ae0a-7460da56ac56@redhat.com>
- <CH3PR12MB754822A08B7D9D7317DBECD8ABE7A@CH3PR12MB7548.namprd12.prod.outlook.com>
- <646bbedb-cfa4-418c-80b2-f143f6f97544@redhat.com>
- <CH3PR12MB7548CA7BFC577C90C3876748ABF6A@CH3PR12MB7548.namprd12.prod.outlook.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <CH3PR12MB7548CA7BFC577C90C3876748ABF6A@CH3PR12MB7548.namprd12.prod.outlook.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: PmKBahszz2Lo7eTndGlMCWhDyrS_i5z6Q_1Hv2f1cQ0_1760721560
-X-Mimecast-Originator: redhat.com
+Subject: Re: [PATCH v2 21/37] target/arm: Extend PAR_EL1 to 128-bit
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+References: <20251014200718.422022-1-richard.henderson@linaro.org>
+ <20251014200718.422022-22-richard.henderson@linaro.org>
+ <CAFEAcA9J-g1cKTXk_pv1AWLgx5YksvEGyAbL2Z6coB6=wA0dZw@mail.gmail.com>
+From: Richard Henderson <richard.henderson@linaro.org>
 Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <CAFEAcA9J-g1cKTXk_pv1AWLgx5YksvEGyAbL2Z6coB6=wA0dZw@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1031;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1031.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -135,124 +103,46 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+On 10/17/25 05:49, Peter Maydell wrote:
+> On Tue, 14 Oct 2025 at 21:19, Richard Henderson
+> <richard.henderson@linaro.org> wrote:
+>>
+>> Do not yet produce the 128-bit AT format result, but zero the
+>> high bits whenever the low bits are written.  This corresponds
+>> to PAR_EL1.D128 = 0, and bits [127:65] as RES0.
+>>
+>> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> 
+> 
+>> diff --git a/target/arm/tcg/cpregs-at.c b/target/arm/tcg/cpregs-at.c
+>> index 0e8f229aa7..9e6af3d974 100644
+>> --- a/target/arm/tcg/cpregs-at.c
+>> +++ b/target/arm/tcg/cpregs-at.c
+>> @@ -353,6 +353,7 @@ static void ats_write64(CPUARMState *env, const ARMCPRegInfo *ri,
+>>
+>>       ss = for_el3 ? arm_security_space(env) : arm_security_space_below_el3(env);
+>>       env->cp15.par_el[1] = do_ats_write(env, value, access_perm, mmu_idx, ss);
+>> +    env->cp15.par_el1_hi = 0;
+>>   }
+>>
+>>   static CPAccessResult ats_access(CPUARMState *env, const ARMCPRegInfo *ri,
+>> @@ -496,6 +497,7 @@ static void ats_s1e1a(CPUARMState *env, const ARMCPRegInfo *ri, uint64_t value)
+>>       ARMSecuritySpace ss = arm_security_space_below_el3(env);
+>>
+>>       env->cp15.par_el[1] = do_ats_write(env, value, 0, mmu_idx, ss);
+>> +    env->cp15.par_el1_hi = 0;
+> 
+> I guess this is where the downside of not storing the
+> register as an Int128 shows up -- we have to remember
+> to explicitly clear the high half everywhere that we
+> have code that's doing an implicit-write to the 64-bit
+> version of the register.
+
+Yes.  Thankfully, PAR_EL1 is the only 128-bit register with implicit writes.
 
 
-On 10/17/25 3:15 PM, Shameer Kolothum wrote:
-> Hi Eric,
->
->> -----Original Message-----
->> From: Eric Auger <eric.auger@redhat.com>
->> Sent: 17 October 2025 13:47
->> To: Shameer Kolothum <skolothumtho@nvidia.com>; qemu-
->> arm@nongnu.org; qemu-devel@nongnu.org
->> Cc: peter.maydell@linaro.org; Jason Gunthorpe <jgg@nvidia.com>; Nicolin
->> Chen <nicolinc@nvidia.com>; ddutile@redhat.com; berrange@redhat.com;
->> Nathan Chen <nathanc@nvidia.com>; Matt Ochs <mochs@nvidia.com>;
->> smostafa@google.com; wangzhou1@hisilicon.com;
->> jiangkunkun@huawei.com; jonathan.cameron@huawei.com;
->> zhangfei.gao@linaro.org; zhenzhong.duan@intel.com; yi.l.liu@intel.com;
->> shameerkolothum@gmail.com
->> Subject: Re: [PATCH v4 06/27] hw/arm/smmuv3-accel: Restrict accelerated
->> SMMUv3 to vfio-pci endpoints with iommufd
->>
->> External email: Use caution opening links or attachments
->>
->>
->> Hi Shameer,
->>
->> On 10/2/25 11:30 AM, Shameer Kolothum wrote:
->>> Hi Eric,
->>>
->>>> -----Original Message-----
->>>> From: Eric Auger <eric.auger@redhat.com>
->>>> Sent: 01 October 2025 18:32
->>>> To: Shameer Kolothum <skolothumtho@nvidia.com>; qemu-
->>>> arm@nongnu.org; qemu-devel@nongnu.org
->>>> Cc: peter.maydell@linaro.org; Jason Gunthorpe <jgg@nvidia.com>; Nicolin
->>>> Chen <nicolinc@nvidia.com>; ddutile@redhat.com; berrange@redhat.com;
->>>> Nathan Chen <nathanc@nvidia.com>; Matt Ochs <mochs@nvidia.com>;
->>>> smostafa@google.com; wangzhou1@hisilicon.com;
->>>> jiangkunkun@huawei.com; jonathan.cameron@huawei.com;
->>>> zhangfei.gao@linaro.org; zhenzhong.duan@intel.com; yi.l.liu@intel.com;
->>>> shameerkolothum@gmail.com
->>>> Subject: Re: [PATCH v4 06/27] hw/arm/smmuv3-accel: Restrict accelerated
->>>> SMMUv3 to vfio-pci endpoints with iommufd
->>>>
->>>> External email: Use caution opening links or attachments
->>>>
->>>> Hi Shameer,
->>>>
->>>> On 9/29/25 3:36 PM, Shameer Kolothum wrote:
->>>>> Accelerated SMMUv3 is only useful when the device can take advantage
->>>>> of the host's SMMUv3 in nested mode. To keep things simple and
->>>>> correct, we only allow this feature for vfio-pci endpoint devices that
->>>>> use the iommufd backend. We also allow non-endpoint emulated devices
->>>>> like PCI bridges and root ports, so that users can plug in these
->>>>> vfio-pci devices. We can only enforce this if devices are cold
->>>>> plugged. For hotplug cases, give appropriate
->>>> "We can only enforce this if devices are cold plugged": I don't really
->>>> understand that statement.
->>> By "enforce" here I meant, we can prevent user from starting a Guest
->>> with a non "vfio-pci/iommufd dev" with accel=one case.
->> Ah OK I misread the code. I thought you were also exiting in case of
->> hotplug but you only issue a warn_report.
->> From a user point of view, the assigned device will succeed attachment
->> but won't work. Will we get subsequent messages? 
-> It will work. But as the warning says, it may degrade the performance especially
-> If the SMMUv3 has other vfio-pci devices. Because the TLB invalidations
-> from emulated one will be issued to host SMMUv3 as well.
->
->  I understand the pain
->> of propagating the error but if the user experience is bad I think it
->> should weight over ?
-> I am not against it. But can be taken up as a separate one if required.
->
->>> Please let me know your thoughts.
->> Can't you move the assignment of bus->devices[devfn] before the call and
->> unset it in case of failure?
->>
->> Or if you propagate errors from
->>
->> get_address_space() you could retry the call later?
-> For now, I have a fix like below that seems to do the
-> Job.
->
-> diff --git a/hw/pci/pci.c b/hw/pci/pci.c
-> index c9932c87e3..9693d7f10c 100644
-> --- a/hw/pci/pci.c
-> +++ b/hw/pci/pci.c
-> @@ -1370,9 +1370,6 @@ static PCIDevice *do_pci_register_device(PCIDevice *pci_dev,
->      pci_dev->bus_master_as.max_bounce_buffer_size =
->          pci_dev->max_bounce_buffer_size;
->
-> -    if (phase_check(PHASE_MACHINE_READY)) {
-> -        pci_init_bus_master(pci_dev);
-> -    }
->      pci_dev->irq_state = 0;
->      pci_config_alloc(pci_dev);
->
-> @@ -1416,6 +1413,9 @@ static PCIDevice *do_pci_register_device(PCIDevice *pci_dev,
->      pci_dev->config_write = config_write;
->      bus->devices[devfn] = pci_dev;
->      pci_dev->version_id = 2; /* Current pci device vmstate version */
-> +    if (phase_check(PHASE_MACHINE_READY)) {
-> +        pci_init_bus_master(pci_dev);
-> +    }
->      return pci_dev;
-
-OK worth putting it in a separate patch to allow finer review of PCI
-maintainers.
-
-Thanks
-
-Eric
->  }
->
-> Thanks,
-> Shameer
-
+r~
 

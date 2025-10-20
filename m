@@ -4,75 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E71D4CCD199
-	for <qemu-arm@archiver.kernel.org>; Mon, 20 Oct 2025 13:52:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F829CCD1A2
+	for <qemu-arm@archiver.kernel.org>; Mon, 20 Oct 2025 13:52:05 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vAqIr-0004s2-3w; Mon, 20 Oct 2025 09:52:01 -0400
+	id 1vAqIS-0004I6-Ku; Mon, 20 Oct 2025 09:51:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
- id 1vAqIo-0004kf-9I
- for qemu-arm@nongnu.org; Mon, 20 Oct 2025 09:51:58 -0400
-Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629])
+ id 1vAqIK-00049i-Ft
+ for qemu-arm@nongnu.org; Mon, 20 Oct 2025 09:51:31 -0400
+Received: from mail-pl1-x631.google.com ([2607:f8b0:4864:20::631])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
- id 1vAqIc-0004MR-EB
- for qemu-arm@nongnu.org; Mon, 20 Oct 2025 09:51:55 -0400
-Received: by mail-pl1-x629.google.com with SMTP id
- d9443c01a7336-273a0aeed57so67654885ad.1
- for <qemu-arm@nongnu.org>; Mon, 20 Oct 2025 06:51:42 -0700 (PDT)
+ id 1vAqIC-0004Ku-FE
+ for qemu-arm@nongnu.org; Mon, 20 Oct 2025 09:51:27 -0400
+Received: by mail-pl1-x631.google.com with SMTP id
+ d9443c01a7336-27c369f898fso63547885ad.3
+ for <qemu-arm@nongnu.org>; Mon, 20 Oct 2025 06:51:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1760968300; x=1761573100; darn=nongnu.org;
+ d=linaro.org; s=google; t=1760968274; x=1761573074; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=tGaO24M3YKRNtnw6KKmxUy09RGunEmU8iH3jXb4pSDI=;
- b=NYev633HgMG+/zum6twyi5OE39XVXknfHyZmw4xityQ244Ag+KTA7JW8+I+YwoqwhB
- USkx37FWZbLiA/RFdx9g+Ti1GgYmANGzpyfwZIl2p1WrkbSdAOFd04u/se9V0kWaxVyT
- G2lorkmYhTyXK9Jr2YQqXS6mk916fAKJSixhspS0uV3JRbhiAgLb0Co4bGMi5kvudOTw
- 3QkigHp5utC4dijpqXhh5JwfmdQHo9ZmKMGrI0ilxEwr8TmesHWkyJobFZOcCq7FFv3z
- iPbC0W8vjIr9gzXDG/HqKkker14qib8D+3NlY/8SlJW7PgLbHk4ybv+5CqnTogCCvADq
- ZO/g==
+ bh=FLRcPYHUX1H3kceekwGVJLdRpYa9rDD2yTovwxh3vAI=;
+ b=eDvsDgRP2e37XgjrLrSsY6+tXhVwgWhuVV2hZwoBWZAPv3281i8WdIN7fF3DHlB3oM
+ xyuqMvDhuE3YjGe7K1y7vwmb4MBeyrZjzyCs+XWlIE3jmRpsE5mVgc/YGvkvbJAIMZEa
+ ysoFCJepJUcrhaPjyahq+AwV7/38q/jVU+LG4U1hOqoXAE/zzJltR0Y1qvy336MUh8tB
+ EnBJqGA2IVRp+pUs83+WaZhKOEcx7o1wh/GPgu/xj8G3ULNA//+XgzyCUBJ6/SR6nkfT
+ RWXVKPkowD14kquKDKuo1i+syEXqSffjSSM0Mn6DoHCbKJQSjGa+/IwzArboHRq+U8yi
+ XlFg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1760968300; x=1761573100;
+ d=1e100.net; s=20230601; t=1760968274; x=1761573074;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=tGaO24M3YKRNtnw6KKmxUy09RGunEmU8iH3jXb4pSDI=;
- b=oIrBoGYPEwB68CtZfcUa8slq0LtYA5lIGtoF4T3cnyt1A21wx92D2FoMgmUICxh4tA
- 1xsLEaYOqr+LJ0wXlViouttr4Wg7toHIEqX9fci/iz4Bf3f2F1AUYlTHuxQPob2Y0D/9
- QxAQnGJdeUjE2y6Nwi4RfpK0fPmL/qaW5lrRCLdfPKN/W7tg36b24nhvP2HDpYeTnEs1
- kXi+R2ljOkXIr1ogDM2BHHhmIEh2k6EnMcEuEjTTGlilQQot7Rf9ohD3aqpQ/aZEEmcP
- A9trlp705PC6oP+yKOYi3qUItsCRdZbnEwBSJa7cbP/8UumTBCj8icNhsMs9clfjLMJJ
- z3sQ==
+ bh=FLRcPYHUX1H3kceekwGVJLdRpYa9rDD2yTovwxh3vAI=;
+ b=RPhTTC/A/csncQkcnaWL+inwCg4ENn7lczXnLGPjaADVXud00kZkFxb3cGHocKDEwy
+ ZDSF7JvuotkqFCT3kfky7g6JNoGzYLLTMt/Q/dgrqZHCjqBydtR+Z1Z+1gHVA6qCFGkj
+ e953WkyMVTF0EAV99RMOqy2x62uykFn6a3v42UISmhP4HKqPI/fZACc8I0+58r9KXOTS
+ lcYfXm6VQ+4zuIBB3IPNBu7R/f9QY3IbRDCV3gL/D1FuXRPRcU4hsvTDkuq0OV968vPp
+ zm/zQQxKC1I82cSOwfrbte6HxcSNRE4uIURvq5+lWuPezaeY0ueL/fexPinTl6XTXI6D
+ uHBg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXM14daaVKWdlnhu3zFGOZJI4K911+4cIOtWWhuXkr7uApkM2pXgE681ZVV1SNYKoyz+nz0YKSxYA==@nongnu.org
-X-Gm-Message-State: AOJu0YzZw3F5F4yCwzNoBdjELnHcHoLGadPfIb//WqOm9BcnhHANVdLz
- SFB4Hay6zGHUUBZ8sKUV58C0aSa4+XPakUte83Guc/+zl9wFjjpS6Rpe02rDKp0bQzA=
-X-Gm-Gg: ASbGnctiB6rXJLlSjDJh2A/kuWmv1BQzCLTuzH2zWRks0hSgMJ9Hk9u4q7D89sd4lyB
- JgHR1AamifVKdRC3XuGoe82NK8JeAa6Gc1w7Fo860qHsaWlUJJGibaJZRCunbLDS81Pso1q56yQ
- +NAREuB+sLjtQ+eNowaeA+1wCipl7SLYMJpDwucinO8X4n6Huv0GlV/JhxduGqN8oGR4UoP1cFb
- R5v2jR6Uv14Whw0hHq5FzZElwY716y3DI7JnOsSiYXEsgSIB32L8/nAyoMiDQJolg0o8Lkc9y1P
- /cK9ZRE+9C/jT9hMtz/z6+4+fmrsRgHZ1EX2Z56e3wkxnuaMiQZPPbdnBeDcpoMncZ/a/1S/Alq
- njgfnv6gEG/2vV51MQ323hi4EGpdROCW8Ri595h5Dji57Wet9ZBAP1pgKk+kbfrvJC6GACJ78qD
- rQhMn/Y+rFxFENvuFV4JMIrveu1Z8JiyGwtTOymWIFrNVsEi9J+RVmgA==
-X-Google-Smtp-Source: AGHT+IG40EwByZ0bchpGAbPiyfAp/r25fX2f06pxU5Wn/E0CNHqu5u79hk9tnN1CzrqSLM0JttppJQ==
-X-Received: by 2002:a17:903:19cb:b0:24c:db7c:bc34 with SMTP id
- d9443c01a7336-290c6afd047mr181506845ad.13.1760968300327; 
- Mon, 20 Oct 2025 06:51:40 -0700 (PDT)
+ AJvYcCXs2GcM6n2/l4k0nzwzZG33vR7oSmw8HsCXfOdQadKGlIigkHolakDG2m38xyzMEKrUWVA7OJyNIQ==@nongnu.org
+X-Gm-Message-State: AOJu0YyT/x5jhu283DBb43jo3VNbpoDtK082UI8DQ0OhXBwiGyKC0qMI
+ 2wGWFewRlZgSQV3/w5O4C9+DwvOMEC5pbgnwwzAfvSfjJzD1Yx3JThe/uqgWf6gSmT0=
+X-Gm-Gg: ASbGncvJI6slV4eAp+Han+NGJ8W78k23hmZKLXlG+59XaPxMT8AAs7YIogAJxf9WItg
+ 6XMRhR/b+I5ku7Z/YX1SlYXwQbHT+edL+MwtGk+CossUFCsWcZzCmWtGIGyodTjdxMQReE6McKZ
+ n8uIwfE3tcN4jkJgJLChRJD4V7l2TFru9wWEPqSSRDz4kwFWc5bfsyU2YZ/0PcZQeVpA42yM9L9
+ n8j9gFMKhmkb7DTRNruaWeK8EuzCz/NHOe4B5PKvmW5CtRJ1y/5zdxrVNyIPvr60i4UD2OrG+Zr
+ uWWqrp+sPTNhLNfthshBVReQRSlA7vu9Im4TRfrKk3p/rLR9J3NQ2AzyHumr231eTe61cAhLf9O
+ G3bhm0GjS+54jQj7gXxwwa8z+u4jbfEuVg7BQ6hzeFy8q4bbGvQ8+183ilzWqlTABOwOn2g5rd0
+ fOOD79/XtwzwgP3QCim6QLn80J9SdTS3XHJPttSc3j+dk1xa3EhvOSaLnDew624Yvm
+X-Google-Smtp-Source: AGHT+IGpWHkCTvRx5UrFZo4Wrnv0DENiYoWfJQgWepF+PAl/JEQqJLTNKeaeYSFxOUkgy6h03RcqhA==
+X-Received: by 2002:a17:903:15ce:b0:290:b53b:7456 with SMTP id
+ d9443c01a7336-290c9c93d46mr153277185ad.5.1760968274357; 
+ Mon, 20 Oct 2025 06:51:14 -0700 (PDT)
 Received: from ?IPV6:2804:7f0:b401:1d95:5a7c:524e:bcac:abea?
  ([2804:7f0:b401:1d95:5a7c:524e:bcac:abea])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2924700a883sm81142245ad.49.2025.10.20.06.51.33
+ 98e67ed59e1d1-33d5de30555sm8105183a91.12.2025.10.20.06.51.08
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 20 Oct 2025 06:51:39 -0700 (PDT)
-Message-ID: <b172780b-62aa-4aeb-a4ef-1543c3b42883@linaro.org>
-Date: Mon, 20 Oct 2025 10:51:31 -0300
+ Mon, 20 Oct 2025 06:51:14 -0700 (PDT)
+Message-ID: <41ac930f-2288-434d-af47-6ed82781727e@linaro.org>
+Date: Mon, 20 Oct 2025 10:51:06 -0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v16 1/8] target/arm/tcg: increase cache level for cpu=max
+Subject: Re: [PATCH v16 0/8] Specifying cache topology on ARM
 To: Alireza Sanaee <alireza.sanaee@huawei.com>, qemu-devel@nongnu.org
 Cc: anisinha@redhat.com, armbru@redhat.com, berrange@redhat.com,
  dapeng1.mi@linux.intel.com, eric.auger@redhat.com, farman@linux.ibm.com,
@@ -82,14 +82,13 @@ Cc: anisinha@redhat.com, armbru@redhat.com, berrange@redhat.com,
  qemu-arm@nongnu.org, richard.henderson@linaro.org, shannon.zhaosl@gmail.com,
  yangyicong@hisilicon.com, zhao1.liu@intel.com
 References: <20250827142152.206-1-alireza.sanaee@huawei.com>
- <20250827142152.206-2-alireza.sanaee@huawei.com>
 Content-Language: en-US
 From: Gustavo Romero <gustavo.romero@linaro.org>
-In-Reply-To: <20250827142152.206-2-alireza.sanaee@huawei.com>
+In-Reply-To: <20250827142152.206-1-alireza.sanaee@huawei.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::629;
- envelope-from=gustavo.romero@linaro.org; helo=mail-pl1-x629.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::631;
+ envelope-from=gustavo.romero@linaro.org; helo=mail-pl1-x631.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -114,58 +113,188 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 Hi Alireza,
 
+I've started to review your series and have some questions/comments on it,
+please see them inline in the patches.
+
+
 On 8/27/25 11:21, Alireza Sanaee wrote:
-> This patch addresses cache description in the `aarch64_max_tcg_initfn`
-> function for cpu=max. It introduces three layers of caches and modifies
-> the cache description registers accordingly.
-> 
-> Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-> Signed-off-by: Alireza Sanaee <alireza.sanaee@huawei.com>
-> ---
->   target/arm/tcg/cpu64.c | 13 +++++++++++++
->   1 file changed, 13 insertions(+)
-> 
-> diff --git a/target/arm/tcg/cpu64.c b/target/arm/tcg/cpu64.c
-> index 35cddbafa4..bf1372ecdf 100644
-> --- a/target/arm/tcg/cpu64.c
-> +++ b/target/arm/tcg/cpu64.c
-> @@ -1093,6 +1093,19 @@ void aarch64_max_tcg_initfn(Object *obj)
->       uint64_t t;
->       uint32_t u;
->   
-> +    /*
-> +     * Expanded cache set
-> +     */
+> Specifying the cache layout in virtual machines is useful for
+> applications and operating systems to fetch accurate information about
+> the cache structure and make appropriate adjustments. Enforcing correct
 
-Can't make sense of this comment. I think it can be confused with anything
-related to "Expanded cache index" (FEAT_CCIDX), which is a format not being
-used to set the caches below, so maybe remove it?
-
-
-> +    SET_IDREG(isar, CLIDR, 0x8200123); /* 4 4 3 in 3 bit fields */
-
-Please improve the comment on CLIDR fields here if you want to keep it, like you
-did below, i.e., stating what is selected for LoUU, LoC, LoUIS, and the type
-of caches at L1, L2, and L3, like "Separate", "Unified", "Unified" etc.
-
-Just to confirm, the ICB field is set to "Not disclosed by this mechanism" because
-we don't want to bother setting it as we customize/tweak the topology?
-
-
-> +    /* 64KB L1 dcache */
-> +    cpu->ccsidr[0] = make_ccsidr(CCSIDR_FORMAT_LEGACY, 4, 64, 64 * KiB, 7);
-> +    /* 64KB L1 icache */
-> +    cpu->ccsidr[1] = make_ccsidr(CCSIDR_FORMAT_LEGACY, 4, 64, 64 * KiB, 2);
-> +    /* 1MB L2 unified cache */
-> +    cpu->ccsidr[2] = make_ccsidr(CCSIDR_FORMAT_LEGACY, 8, 64, 1 * MiB, 7);
-> +    /* 2MB L3 unified cache */
-> +    cpu->ccsidr[4] = make_ccsidr(CCSIDR_FORMAT_LEGACY, 8, 64, 2 * MiB, 7);
-> +
->       /*
->        * Unset ARM_FEATURE_BACKCOMPAT_CNTFRQ, which we would otherwise default
->        * to because we started with aarch64_a57_initfn(). A 'max' CPU might
+Since this series applies only to TCG and all cache management
+instruction are modeled as NOPs I'm wondering what would be a use case
+for being able to specify the cache layout. I'm not saying I'm against it,
+specially because it's for the virt machine and we have sort of freedom to
+"customize" it in general.
 
 
 Cheers,
 Gustavo
+
+> sharing information can lead to better optimizations. Patches that allow
+> for an interface to express caches was landed in the prior cycles. This
+> patchset uses the interface as a foundation.  Thus, the device tree and
+> ACPI/PPTT table, and device tree are populated based on
+> user-provided information and CPU topology.
+> 
+> Example:
+> 
+> +----------------+                         +----------------+
+> |    Socket 0    |                         |    Socket 1    |
+> |    (L3 Cache)  |                         |    (L3 Cache)  |
+> +--------+-------+                         +--------+-------+
+>           |                                          |
+> +--------+--------+                        +--------+--------+
+> |   Cluster 0     |                        |   Cluster 0     |
+> |   (L2 Cache)    |                        |   (L2 Cache)    |
+> +--------+--------+                        +--------+--------+
+>           |                                          |
+> +--------+--------+  +--------+--------+   +--------+--------+  +--------+----+
+> |   Core 0         | |   Core 1        |   |   Core 0        |  |   Core 1    |
+> |   (L1i, L1d)     | |   (L1i, L1d)    |   |   (L1i, L1d)    |  |   (L1i, L1d)|
+> +--------+--------+  +--------+--------+   +--------+--------+  +--------+----+
+>           |                    |                     |                    |
+> +--------+              +--------+             +--------+           +--------+
+> |Thread 0|              |Thread 1|             |Thread 1|           |Thread 0|
+> +--------+              +--------+             +--------+           +--------+
+> |Thread 1|              |Thread 0|             |Thread 0|           |Thread 1|
+> +--------+              +--------+             +--------+           +--------+
+> 
+> 
+> The following command will represent the system relying on **ACPI PPTT tables**.
+> 
+> ./qemu-system-aarch64 \
+>   -machine virt,smp-cache.0.cache=l1i,smp-cache.0.topology=core,smp-cache.1.cache=l1d,smp-cache.1.topology=core,smp-cache.2.cache=l2,smp-cache.2.topology=cluster,smp-cache.3.cache=l3,smp-cache.3.topology=socket \
+>   -cpu max \
+>   -m 2048 \
+>   -smp sockets=2,clusters=1,cores=2,threads=2 \
+>   -kernel ./Image.gz \
+>   -append "console=ttyAMA0 root=/dev/ram rdinit=/init acpi=force" \
+>   -initrd rootfs.cpio.gz \
+>   -bios ./edk2-aarch64-code.fd \
+>   -nographic
+> 
+> The following command will represent the system relying on **the device tree**.
+> 
+> ./qemu-system-aarch64 \
+>   -machine virt,acpi=off,smp-cache.0.cache=l1i,smp-cache.0.topology=core,smp-cache.1.cache=l1d,smp-cache.1.topology=core,smp-cache.2.cache=l2,smp-cache.2.topology=cluster,smp-cache.3.cache=l3,smp-cache.3.topology=socket \
+>   -cpu max \
+>   -m 2048 \
+>   -smp sockets=2,clusters=1,cores=2,threads=2 \
+>   -kernel ./Image.gz \
+>   -append "console=ttyAMA0 root=/dev/ram rdinit=/init acpi=off" \
+>   -initrd rootfs.cpio.gz \
+>   -nographic
+> 
+> Failure cases:
+>      1) There are scenarios where caches exist in systems' registers but
+>      left unspecified by users. In this case qemu returns failure.
+> 
+>      2) SMT threads cannot share caches which is not very common. More
+>      discussions here [1].
+> 
+> Currently only three levels of caches are supported to be specified from
+> the command line. However, increasing the value does not require
+> significant changes. Further, this patch assumes l2 and l3 unified
+> caches and does not allow l(2/3)(i/d). The level terminology is
+> thread/core/cluster/socket. Hierarchy assumed in this patch:
+> Socket level = Cluster level + 1 = Core level + 2 = Thread level + 3;
+> 
+> Possible future enhancements:
+>    1) Separated data and instruction cache at L2 and L3.
+>    2) Additional cache controls.  e.g. size of L3 may not want to just
+>    match the underlying system, because only some of the associated host
+>    CPUs may be bound to this VM.
+> 
+> [1] https://lore.kernel.org/devicetree-spec/20250203120527.3534-1-alireza.sanaee@huawei.com/
+> 
+> Change Log:
+>    v15->v16:
+>      * Rebase to e771ba98de25c9f43959f79fc7099cf7fbba44cc (Open 10.2 development tree)
+>      * v15: https://lore.kernel.org/qemu-devel/20250812122829.204-1-alireza.sanaee@huawei.com/
+> 
+>    v14->v15:
+>     * Introduced a separate patch for loongarch64 build_pptt function.
+>     * Made sure loongarch64 tests pass.
+>     * Downgraded to V2 for ACPI PPTT. Removed PPTT IDs as was not necessary.
+>     * Removed dependency as it's been merged in the recent cycle.
+>       -- 20250604115233.1234-1-alireza.sanaee@huawei.com
+>     * Fixed styling issues and removed irrelevant changes.
+>     * Moved cache headers to core/cpu.h to be used in both acpi and virt.
+>     * v14: https://lore.kernel.org/qemu-devel/20250707121908.155-1-alireza.sanaee@huawei.com/
+>     # Thanks to Jonathan and Zhao for their comments.
+> 
+>    v13->v14:
+>     * Rebased on latest staging.
+>     * Made some naming changes to machine-smp.c, addd docs added to the
+>          same file.
+> 
+>    v12->v13:
+>     * Applied comments from Zhao.
+>     * Introduced a new patch for machine specific cache topology functions.
+>     * Base: bc98ffdc7577e55ab8373c579c28fe24d600c40f.
+> 
+>    v11->v12:
+>     * Patch #4 couldn't not merge properly as the main file diverged. Now it is fixed (hopefully).
+>     * Loonarch build_pptt function updated.
+>     * Rebased on 09be8a511a2e278b45729d7b065d30c68dd699d0.
+> 
+>    v10->v11:
+>     * Fix some coding style issues.
+>     * Rename some variables.
+> 
+>    v9->v10:
+>     * PPTT rev down to 2.
+> 
+>    v8->v9:
+>     * rebase to 10
+>     * Fixed a bug in device-tree generation related to a scenario when
+>          caches are shared at core in higher levels than 1.
+>    v7->v8:
+>     * rebase: Merge tag 'pull-nbd-2024-08-26' of https://repo.or.cz/qemu/ericb into staging
+>     * I mis-included a file in patch #4 and I removed it in this one.
+> 
+>    v6->v7:
+>     * Intel stuff got pulled up, so rebase.
+>     * added some discussions on device tree.
+> 
+>    v5->v6:
+>     * Minor bug fix.
+>     * rebase based on new Intel patchset.
+>       - https://lore.kernel.org/qemu-devel/20250110145115.1574345-1-zhao1.liu@intel.com/
+> 
+>    v4->v5:
+>      * Added Reviewed-by tags.
+>      * Applied some comments.
+> 
+>    v3->v4:
+>      * Device tree added.
+> 
+> Alireza Sanaee (8):
+>    target/arm/tcg: increase cache level for cpu=max
+>    hw/core/machine: topology functions capabilities added
+>    hw/arm/virt: add cache hierarchy to device tree
+>    bios-tables-test: prepare to change ARM ACPI virt PPTT
+>    acpi: add caches to ACPI build_pptt table function
+>    hw/acpi: add cache hierarchy to pptt table
+>    tests/qtest/bios-table-test: testing new ARM ACPI PPTT topology
+>    Update the ACPI tables based on new aml-build.c
+> 
+>   hw/acpi/aml-build.c                        | 203 +++++++++-
+>   hw/arm/virt-acpi-build.c                   |   8 +-
+>   hw/arm/virt.c                              | 412 ++++++++++++++++++++-
+>   hw/core/machine-smp.c                      |  56 +++
+>   hw/loongarch/virt-acpi-build.c             |   4 +-
+>   include/hw/acpi/aml-build.h                |   4 +-
+>   include/hw/acpi/cpu.h                      |  10 +
+>   include/hw/arm/virt.h                      |   7 +-
+>   include/hw/boards.h                        |   5 +
+>   include/hw/core/cpu.h                      |  12 +
+>   target/arm/tcg/cpu64.c                     |  13 +
+>   tests/data/acpi/aarch64/virt/PPTT.topology | Bin 356 -> 516 bytes
+>   tests/qtest/bios-tables-test.c             |   4 +
+>   13 files changed, 723 insertions(+), 15 deletions(-)
+> 
+
 

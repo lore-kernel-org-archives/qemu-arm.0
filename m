@@ -4,91 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED432CCD1A5
-	for <qemu-arm@archiver.kernel.org>; Mon, 20 Oct 2025 11:23:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23AF3CCD193
+	for <qemu-arm@archiver.kernel.org>; Mon, 20 Oct 2025 12:19:48 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vAnyE-0004Zw-Cx; Mon, 20 Oct 2025 07:22:34 -0400
+	id 1vAorQ-0001pw-Hp; Mon, 20 Oct 2025 08:19:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1vAnyC-0004Za-As
- for qemu-arm@nongnu.org; Mon, 20 Oct 2025 07:22:32 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1vAny9-0007DI-5v
- for qemu-arm@nongnu.org; Mon, 20 Oct 2025 07:22:31 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1760959347;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=8QgpCDAkRTu2tl9gzQf3q9l+ijeCZzRCPWnZc03gAFQ=;
- b=e3JBSg5uvFdpR3TBCkieIg9oP0dp19o3mAXOP+bR7dQ85GysEaFa+jP0qquoLNE4MwXZyx
- lLDD4FmuRzfallAmDFpiR3fX96tEzCkkED2NlRjVvJIyruPYdvZzBVESi05DsJxpn7Qdy/
- /g3KO+7Rc/1Q/es+NPjZQ02vaL+cP7c=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-321-cKVgYY23MkWpEkFPmWtIBg-1; Mon,
- 20 Oct 2025 07:22:23 -0400
-X-MC-Unique: cKVgYY23MkWpEkFPmWtIBg-1
-X-Mimecast-MFC-AGG-ID: cKVgYY23MkWpEkFPmWtIBg_1760959337
-Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id A02C019560A3; Mon, 20 Oct 2025 11:22:14 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.45.242.19])
- by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id AAB571800451; Mon, 20 Oct 2025 11:22:11 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id CB84A21E6A27; Mon, 20 Oct 2025 13:22:08 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Igor Mammedov <imammedo@redhat.com>
-Cc: salil.mehta@opnsrc.net,  qemu-devel@nongnu.org,  qemu-arm@nongnu.org,
- mst@redhat.com,  salil.mehta@huawei.com,  maz@kernel.org,
- jean-philippe@linaro.org,  jonathan.cameron@huawei.com,
- lpieralisi@kernel.org,  peter.maydell@linaro.org,
- richard.henderson@linaro.org,  andrew.jones@linux.dev,  david@redhat.com,
- philmd@linaro.org,  eric.auger@redhat.com,  will@kernel.org,
- ardb@kernel.org,  oliver.upton@linux.dev,  pbonzini@redhat.com,
- gshan@redhat.com,  rafael@kernel.org,  borntraeger@linux.ibm.com,
- alex.bennee@linaro.org,  gustavo.romero@linaro.org,  npiggin@gmail.com,
- harshpb@linux.ibm.com,  linux@armlinux.org.uk,
- darren@os.amperecomputing.com,  ilkka@os.amperecomputing.com,
- vishnu@os.amperecomputing.com,  gankulkarni@os.amperecomputing.com,
- karl.heubaum@oracle.com,  miguel.luis@oracle.com,  zhukeqian1@huawei.com,
- wangxiongfeng2@huawei.com,  wangyanan55@huawei.com,
- wangzhou1@hisilicon.com,  linuxarm@huawei.com,  jiakernel2@gmail.com,
- maobibo@loongson.cn,  lixianglai@loongson.cn,  shahuang@redhat.com,
- zhao1.liu@intel.com,  devel@lists.libvirt.org
-Subject: Re: [PATCH RFC V6 22/24] monitor,qdev: Introduce 'device_set' to
- change admin state of existing devices
-In-Reply-To: <20251017165044.76b39f5c@fedora> (Igor Mammedov's message of
- "Fri, 17 Oct 2025 16:50:44 +0200")
-References: <20251001010127.3092631-1-salil.mehta@opnsrc.net>
- <20251001010127.3092631-23-salil.mehta@opnsrc.net>
- <87plawh2sz.fsf@pond.sub.org> <20251009145125.6583a24a@fedora>
- <87wm54nmyt.fsf@pond.sub.org> <20251017165044.76b39f5c@fedora>
-Date: Mon, 20 Oct 2025 13:22:08 +0200
-Message-ID: <87v7k96cnz.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vAorH-0001l8-O8
+ for qemu-arm@nongnu.org; Mon, 20 Oct 2025 08:19:30 -0400
+Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vAorE-0006p5-4J
+ for qemu-arm@nongnu.org; Mon, 20 Oct 2025 08:19:27 -0400
+Received: by mail-ej1-x629.google.com with SMTP id
+ a640c23a62f3a-b3d50882cc2so818048766b.2
+ for <qemu-arm@nongnu.org>; Mon, 20 Oct 2025 05:19:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1760962760; x=1761567560; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=kT0j/s0XBuP0ITAjNCV5ZQF3F9LmCWWFhKV3gfp9k/0=;
+ b=hztNPnoxOrpfLoXPP8uR93C59lHP7cHo9os0kAIisNPXj6KsbXhnc/xLsSCJskApKg
+ WH28jd8p1eneYq8d105eM5O25hr1mb0BgwrdxRyRyp9ieLpRJB3WAKVYGLCE6nctBKM3
+ wA+WGMkkg05ZaOzrnxUMuhV2q0fDQQ93K8eL0kN+Xsfm5xpudhjnuj5KbKHv76yH7TKc
+ L/pHS0hy3kiUKZUVDypWe85DQBms9jxYt9deJHBG6YBvoC6NspEF9S9TF/qp9xs077cE
+ JBXYrQK1SG1dvHaZuEnnEwzVwf2hdRtkfTHBOwPBhnM6AJJhjLGqYwp10IgxgLZp8utd
+ UOiA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1760962760; x=1761567560;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=kT0j/s0XBuP0ITAjNCV5ZQF3F9LmCWWFhKV3gfp9k/0=;
+ b=kYIX+Ukf6tfwL9dE3vXiGx0LJhMopaz9yIfpYHMcMz61N2a3QSqfev1Xf1NHb1t/Ou
+ 8bH9MNzG5xZKClgW/VyxpJQkSI3FIKSuVH0EKyWiIpA5jBYIvh20R9T7+QjQIFq6o3hA
+ IFZu3fQgjkEckRzHRUhqRslbbm7LA4U4QPL01jJGWoeoIN7w56hUzYEscW3vRPeMeZWM
+ BbkQpQpo/42+Yx3nZhZCTrWOql8rN2yJsrMXOqGGYup27wNIuxyeSEXEgeFmAQoRSyHt
+ uiDYLCQLUqYm5jaWNu/R9RS+zuV0RhwK0fdY4n6ERO+0EvxGOWUXX7NjY3qCBsFJi8VO
+ oVqg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUpqnOSW9zTmhBXHFu/BNkwhv3KrwBHejPH+EAYH39jY1riBSq7EpB7PKYjHLcQaNTdoNtJOleyiw==@nongnu.org
+X-Gm-Message-State: AOJu0YxsWETJytNlaQku13kWwJHeq+ZzKwxvAwWkcSc3WbBmZFwUSetk
+ yaKLqg5GvN2irxd9uK2fy0rEq2EiUf0yNbTajNh+O3mNAHmiwvo9vtsR
+X-Gm-Gg: ASbGncsyOGUcjhj6Di79mAkWAyJMAEsHH095388vc44LnLyoOJdJWWDSJ35m+8LaRyU
+ SdOikXsHd8VCatglQLrrbd7JXXuHIr0A2IosH2TVZWCd1MOvpIEGP4/3CRuvmq5q3TNZBwNUXjC
+ 3Q1uCmR2AwbYYD4FhkoxVfvqAQ1Cju4tWAdZcXaCKZvtDmWFujpvvmgl2/eQGJCvHlLxjappSPP
+ CWdR/67JU54ETtEyRtnk0B/clNoYgkYxwFTDhTzodfEv8of9R+CoWPkYrNkNdmKzQGe/yQ+K8v2
+ GVedhfezFTmf4dQsRjvc5V2eFHAtcmM8zj6YDJ6a+PGe6eAX5UybGIBtM5v8Eg1vhqhsQDGL1fI
+ cRNUEiIdM9Jm9OeZrOswdT2r4by8umWF36mwlbjN36cx7jrYamntV23sLcYtOhKU4m6M+vSbo2A
+ QQAGC78rwmuMlo5qiJGA==
+X-Google-Smtp-Source: AGHT+IHxPPhHxkb1OPMx+8tRbXsfi7bsKNPwr2ehmzVPkmhExYX3HfawB7KM5n+STVBA8HM1UbVekw==
+X-Received: by 2002:a17:907:3dac:b0:b45:8370:ef10 with SMTP id
+ a640c23a62f3a-b647245845bmr1536621066b.22.1760962759904; 
+ Mon, 20 Oct 2025 05:19:19 -0700 (PDT)
+Received: from ehlo.thunderbird.net ([90.187.110.129])
+ by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-b65eb0362fbsm784362466b.39.2025.10.20.05.19.19
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 20 Oct 2025 05:19:19 -0700 (PDT)
+Date: Mon, 20 Oct 2025 10:27:14 +0000
+From: Bernhard Beschow <shentey@gmail.com>
+To: qemu-devel@nongnu.org, Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ Mohamed Mediouni <mohamed@unpredictable.fr>
+CC: Alexander Graf <agraf@csgraf.de>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Cameron Esfahani <dirty@apple.com>, Mads Ynddal <mads@ynddal.dk>,
+ qemu-arm@nongnu.org,
+ =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>,
+ Ani Sinha <anisinha@redhat.com>, Phil Dennis-Jordan <phil@philjordan.eu>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Sunil Muthuswamy <sunilmut@microsoft.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Yanan Wang <wangyanan55@huawei.com>,
+ =?ISO-8859-1?Q?Daniel_P=2E_Berrang=E9?= <berrange@redhat.com>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>, kvm@vger.kernel.org,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ =?ISO-8859-1?Q?Marc-Andr=E9_Lureau?= <marcandre.lureau@redhat.com>,
+ Pedro Barbuda <pbarbuda@microsoft.com>, Zhao Liu <zhao1.liu@intel.com>,
+ Roman Bolshakov <rbolshakov@ddn.com>
+Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_v7_24/24=5D_whpx=3A_apic=3A_use_non-deprec?=
+ =?US-ASCII?Q?ated_APIs_to_control_interrupt_controller_state?=
+In-Reply-To: <2cbd9feb-2c20-46e0-af40-0bd64060dfba@linaro.org>
+References: <20251016165520.62532-1-mohamed@unpredictable.fr>
+ <20251016165520.62532-25-mohamed@unpredictable.fr>
+ <2cbd9feb-2c20-46e0-af40-0bd64060dfba@linaro.org>
+Message-ID: <6982BC4E-1F59-47AD-B6E6-9FFF4212C627@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::629;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x629.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -104,84 +121,30 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Igor Mammedov <imammedo@redhat.com> writes:
 
-> On Thu, 09 Oct 2025 16:55:54 +0200
-> Markus Armbruster <armbru@redhat.com> wrote:
+
+Am 16=2E Oktober 2025 17:15:42 UTC schrieb Pierrick Bouvier <pierrick=2Ebo=
+uvier@linaro=2Eorg>:
+>On 10/16/25 9:55 AM, Mohamed Mediouni wrote:
+>> WHvGetVirtualProcessorInterruptControllerState2 and
+>> WHvSetVirtualProcessorInterruptControllerState2 are
+>> deprecated since Windows 10 version 2004=2E
+>>=20
+>> Use the non-deprecated WHvGetVirtualProcessorState and
+>> WHvSetVirtualProcessorState when available=2E
+>>=20
+>> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable=2Efr>
+>> ---
+>>   include/system/whpx-internal=2Eh |  9 +++++++
+>>   target/i386/whpx/whpx-apic=2Ec   | 46 +++++++++++++++++++++++++------=
+---
+>>   2 files changed, 43 insertions(+), 12 deletions(-)
 >
->> Igor Mammedov <imammedo@redhat.com> writes:
+>Reviewed-by: Pierrick Bouvier <pierrick=2Ebouvier@linaro=2Eorg>
 
-[...]
+Couldn't we merge this patch already until the rest of the series is figur=
+ed out?
 
->> > It's likely /me who to blame for asking to invent generic
->> > device-set QMP command.
->> > I see another application (beside ARM CPU power-on/off) for it,
->> > PCI devices to simulate powering on/off them at runtime without
->> > actually removing device.  
->> 
->> I prefer generic commands over collecting ad hoc single-purpose
->> commands, too.  Getting the design right can be difficult.
->> 
->> > wrt command,
->> > I'd use only 'id' with it to identify target device
->> > (i.e. no template matching nor QMP path either).
->> > To enforce rule, what user hasn't named explicitly by providing 'id'
->> > isn't meant to be accessed/manged by user later on.   
->> 
->> Works well, except when we need to access / manage onboard devices.
->> That's still an unsolved problem.
->> 
->> > potentially we can invent specialized power_set/get command as
->> > an alternative if it makes design easier.
->> > But then we would be spawning similar commands for other things,
->> > where as device-set would cover it all. But then I might be
->> > over-complicating things by suggesting a generic approach.   
->> 
->> Unclear.
->> 
->> I feel it's best to start the design process with ensvisaged uses.  Can
->> you tell me a bit more about the uses you have in mind?
->
-> We have nic failover 'feature'
->    https://www.qemu.org/docs/master/system/virtio-net-failover.html
-> to make it work we do abuse hotplug and that poses problem
-> during migration, since:
->   - unplugging primary device releases resources (which might not be
->     possible to claim back in case migration failure)
-
-Serious reliability issue with no work-around.
-
->   - it's similar on destination side, where attempt to hotplug
->     primary might fail die to insufficient resources leaving guest
->     on 'degraded' virtio-net link.
-
-Obvious work-around is failing the migration.  Same as we do when we
-can't create devices.
-
-> Idea was that instead of hotplug we can power off primary device,
-> (it will still exist and keep resources), initiate migration,
-> and then on target do the same starting with primary fully realized
-> but powered of (and failing migration early if it can't claim resources,
-> safely resuming QEMU on source incl. primary link), and then guest
-> failover driver on destination would power primary on as part of
-> switching to primary link.
-
-I can see how power on / off makes more sense than hot plug / unplug.
-
-> Above would require -device/device_add support for specifying device's
-> power state as minimum.
-
-The obvious way to control a device's power state with -device /
-device_add is a qdev property.  Easy enough.
-
-Do we need to control a device's power state after it's created?  If I
-understand your use case correctly, the answer is yes.  -device /
-device_add can't do that.
-
-qom-set could, but friends don't let friends use it in production.
-
-Any other prior art for controlling device state at run time via QMP?
-
-[...]
-
+Best regards,
+Bernhard
 

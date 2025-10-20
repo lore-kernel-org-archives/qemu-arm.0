@@ -4,106 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23AF3CCD193
-	for <qemu-arm@archiver.kernel.org>; Mon, 20 Oct 2025 12:19:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 579EBCCD199
+	for <qemu-arm@archiver.kernel.org>; Mon, 20 Oct 2025 12:35:23 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vAorQ-0001pw-Hp; Mon, 20 Oct 2025 08:19:37 -0400
+	id 1vAp6G-00069q-Fr; Mon, 20 Oct 2025 08:34:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vAorH-0001l8-O8
- for qemu-arm@nongnu.org; Mon, 20 Oct 2025 08:19:30 -0400
-Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1vAp6F-00069S-0B
+ for qemu-arm@nongnu.org; Mon, 20 Oct 2025 08:34:55 -0400
+Received: from mail-yw1-x1129.google.com ([2607:f8b0:4864:20::1129])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vAorE-0006p5-4J
- for qemu-arm@nongnu.org; Mon, 20 Oct 2025 08:19:27 -0400
-Received: by mail-ej1-x629.google.com with SMTP id
- a640c23a62f3a-b3d50882cc2so818048766b.2
- for <qemu-arm@nongnu.org>; Mon, 20 Oct 2025 05:19:22 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1vAp6B-0000Dv-3k
+ for qemu-arm@nongnu.org; Mon, 20 Oct 2025 08:34:54 -0400
+Received: by mail-yw1-x1129.google.com with SMTP id
+ 00721157ae682-78378cb66d6so24670577b3.2
+ for <qemu-arm@nongnu.org>; Mon, 20 Oct 2025 05:34:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1760962760; x=1761567560; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
- :message-id:reply-to;
- bh=kT0j/s0XBuP0ITAjNCV5ZQF3F9LmCWWFhKV3gfp9k/0=;
- b=hztNPnoxOrpfLoXPP8uR93C59lHP7cHo9os0kAIisNPXj6KsbXhnc/xLsSCJskApKg
- WH28jd8p1eneYq8d105eM5O25hr1mb0BgwrdxRyRyp9ieLpRJB3WAKVYGLCE6nctBKM3
- wA+WGMkkg05ZaOzrnxUMuhV2q0fDQQ93K8eL0kN+Xsfm5xpudhjnuj5KbKHv76yH7TKc
- L/pHS0hy3kiUKZUVDypWe85DQBms9jxYt9deJHBG6YBvoC6NspEF9S9TF/qp9xs077cE
- JBXYrQK1SG1dvHaZuEnnEwzVwf2hdRtkfTHBOwPBhnM6AJJhjLGqYwp10IgxgLZp8utd
- UOiA==
+ d=linaro.org; s=google; t=1760963688; x=1761568488; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=ti09JlmrVOoi6F9mmuvbMaEYHC6q3mHj+MBsaiHpyok=;
+ b=cy75YdmXAPT11cdAk1UeEhmxTkglM9od8qcN/Xe+koxrx2787J4/sjoepg7ywuYsNj
+ XQJsOl0mw7UaHNCS43tblR9YFl8EadxPcT3G62pguguD1rHFOEtzuBedcpuCHneRYXg7
+ r9O8nD5bu7x5DDmoOnERPgDTDIqPkiw+cxZbb9D0i4HtDjD6+IJNFb2vD+EGS60iFikG
+ lPyucpY11fFzE3KVOJlUHbf0p0OeIPST4xC5OCnj/88ugGYUJaltZJsi70BOcpsa6HXb
+ yuHZ1tOPUDbZ/+mAs2hU2C0im/U6IjS2U9Uphzgxo9MhC9hWmqCRUTCMJs+FQoSmz9Hx
+ O3wA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1760962760; x=1761567560;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=kT0j/s0XBuP0ITAjNCV5ZQF3F9LmCWWFhKV3gfp9k/0=;
- b=kYIX+Ukf6tfwL9dE3vXiGx0LJhMopaz9yIfpYHMcMz61N2a3QSqfev1Xf1NHb1t/Ou
- 8bH9MNzG5xZKClgW/VyxpJQkSI3FIKSuVH0EKyWiIpA5jBYIvh20R9T7+QjQIFq6o3hA
- IFZu3fQgjkEckRzHRUhqRslbbm7LA4U4QPL01jJGWoeoIN7w56hUzYEscW3vRPeMeZWM
- BbkQpQpo/42+Yx3nZhZCTrWOql8rN2yJsrMXOqGGYup27wNIuxyeSEXEgeFmAQoRSyHt
- uiDYLCQLUqYm5jaWNu/R9RS+zuV0RhwK0fdY4n6ERO+0EvxGOWUXX7NjY3qCBsFJi8VO
- oVqg==
+ d=1e100.net; s=20230601; t=1760963688; x=1761568488;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=ti09JlmrVOoi6F9mmuvbMaEYHC6q3mHj+MBsaiHpyok=;
+ b=epJgHyRJC47MlHfrBNKca1YxMI+FgVjsPi6FkMZFEn5FaO7VXarfXlz2gZAWLa9fHd
+ gnUBUwjST5Cy8uphHfCM9gZzkAVm7/WWTAsKpmci1UgRos2yOmGP+qC8DBSZtSMKSmLn
+ pZ77kgLGKCT9hnM6sl8fXWLpGPh0euPzniXBeOzq8X+HoyVug0VuSDdyjvw7lo5PUOZ6
+ oPmBvoUjI/St/IVnIJ+RceBqthIp4wqtby4qT4RxlB/8iLoH8CIBCj9/OEXlqLllGYQ0
+ fO9RkfxqlEooIiKeFBAS7KAemvmkaIbxjvOeFhRVATvA/hYQxfZwFLsFGrkETKLNpOlS
+ L0mA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUpqnOSW9zTmhBXHFu/BNkwhv3KrwBHejPH+EAYH39jY1riBSq7EpB7PKYjHLcQaNTdoNtJOleyiw==@nongnu.org
-X-Gm-Message-State: AOJu0YxsWETJytNlaQku13kWwJHeq+ZzKwxvAwWkcSc3WbBmZFwUSetk
- yaKLqg5GvN2irxd9uK2fy0rEq2EiUf0yNbTajNh+O3mNAHmiwvo9vtsR
-X-Gm-Gg: ASbGncsyOGUcjhj6Di79mAkWAyJMAEsHH095388vc44LnLyoOJdJWWDSJ35m+8LaRyU
- SdOikXsHd8VCatglQLrrbd7JXXuHIr0A2IosH2TVZWCd1MOvpIEGP4/3CRuvmq5q3TNZBwNUXjC
- 3Q1uCmR2AwbYYD4FhkoxVfvqAQ1Cju4tWAdZcXaCKZvtDmWFujpvvmgl2/eQGJCvHlLxjappSPP
- CWdR/67JU54ETtEyRtnk0B/clNoYgkYxwFTDhTzodfEv8of9R+CoWPkYrNkNdmKzQGe/yQ+K8v2
- GVedhfezFTmf4dQsRjvc5V2eFHAtcmM8zj6YDJ6a+PGe6eAX5UybGIBtM5v8Eg1vhqhsQDGL1fI
- cRNUEiIdM9Jm9OeZrOswdT2r4by8umWF36mwlbjN36cx7jrYamntV23sLcYtOhKU4m6M+vSbo2A
- QQAGC78rwmuMlo5qiJGA==
-X-Google-Smtp-Source: AGHT+IHxPPhHxkb1OPMx+8tRbXsfi7bsKNPwr2ehmzVPkmhExYX3HfawB7KM5n+STVBA8HM1UbVekw==
-X-Received: by 2002:a17:907:3dac:b0:b45:8370:ef10 with SMTP id
- a640c23a62f3a-b647245845bmr1536621066b.22.1760962759904; 
- Mon, 20 Oct 2025 05:19:19 -0700 (PDT)
-Received: from ehlo.thunderbird.net ([90.187.110.129])
- by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-b65eb0362fbsm784362466b.39.2025.10.20.05.19.19
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 20 Oct 2025 05:19:19 -0700 (PDT)
-Date: Mon, 20 Oct 2025 10:27:14 +0000
-From: Bernhard Beschow <shentey@gmail.com>
-To: qemu-devel@nongnu.org, Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- Mohamed Mediouni <mohamed@unpredictable.fr>
-CC: Alexander Graf <agraf@csgraf.de>,
- Richard Henderson <richard.henderson@linaro.org>,
- Cameron Esfahani <dirty@apple.com>, Mads Ynddal <mads@ynddal.dk>,
- qemu-arm@nongnu.org,
- =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>,
- Ani Sinha <anisinha@redhat.com>, Phil Dennis-Jordan <phil@philjordan.eu>,
- Eduardo Habkost <eduardo@habkost.net>,
- Sunil Muthuswamy <sunilmut@microsoft.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Yanan Wang <wangyanan55@huawei.com>,
- =?ISO-8859-1?Q?Daniel_P=2E_Berrang=E9?= <berrange@redhat.com>,
- Shannon Zhao <shannon.zhaosl@gmail.com>, kvm@vger.kernel.org,
- Peter Maydell <peter.maydell@linaro.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- =?ISO-8859-1?Q?Marc-Andr=E9_Lureau?= <marcandre.lureau@redhat.com>,
- Pedro Barbuda <pbarbuda@microsoft.com>, Zhao Liu <zhao1.liu@intel.com>,
- Roman Bolshakov <rbolshakov@ddn.com>
-Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_v7_24/24=5D_whpx=3A_apic=3A_use_non-deprec?=
- =?US-ASCII?Q?ated_APIs_to_control_interrupt_controller_state?=
-In-Reply-To: <2cbd9feb-2c20-46e0-af40-0bd64060dfba@linaro.org>
-References: <20251016165520.62532-1-mohamed@unpredictable.fr>
- <20251016165520.62532-25-mohamed@unpredictable.fr>
- <2cbd9feb-2c20-46e0-af40-0bd64060dfba@linaro.org>
-Message-ID: <6982BC4E-1F59-47AD-B6E6-9FFF4212C627@gmail.com>
+ AJvYcCVHfj7hJjSa56q+bog3ulVE8RY590fKBWLdtEW1+/cL8VqhQS/1sINgJ37hcuUR8BR2e2Dh6EOciQ==@nongnu.org
+X-Gm-Message-State: AOJu0YyvwKHA/2gvYaqb4YOxHmfwpLfsva+z0usHanFlfPCnRnPvo8IT
+ YEDDNdN9cxdeMEMUiUxwDtx7iMwHKGMLZyqNAuLIGqgze5lQDKT95kJdb9NBBeZ+VTgA0e5CxVf
+ MRHeS2i+XaQ1jU5hC8D0OLG04hGeK72z2BMmEF2zmbg==
+X-Gm-Gg: ASbGnctrsXpSfFTvSqTVwazcodszNqxBOj6RxCwDfDS5yXK7uneEdzNeAccRc8ZoUPZ
+ o/tUgAk0KwrkuPAwJuyb6HlYMHAo1qSaakSAsJ9wYmmKb0HHj6rX+XDTdavI0wMT8ns7VaPHQLm
+ OhpsH++z+HJWh7SnK561E1r2JQnrIzLYUJ26538ts0SdFmM+8L+kIkJmtmYIyWCsKVd0o4W/1Dr
+ EvhX2apfeaMpH/wfvct4CqVhlPosPVL+ZD79OVdxtOcsTapxK/xp24Hz/++ArWLAxEwSDKjpCZ7
+ iIlKcD8=
+X-Google-Smtp-Source: AGHT+IGcp17uK5fx3DVj4obHQSb9dnXxCTgp6N+Zq2D7RRkmTGxQHDAnFsEwdtC9FU9e3h8IBKDGto3x3YwEK9GMaq0=
+X-Received: by 2002:a05:690e:1289:b0:63c:ec55:321d with SMTP id
+ 956f58d0204a3-63e15fdb808mr9062042d50.0.1760963688112; Mon, 20 Oct 2025
+ 05:34:48 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::629;
- envelope-from=shentey@gmail.com; helo=mail-ej1-x629.google.com
+References: <20251014200718.422022-1-richard.henderson@linaro.org>
+ <20251014200718.422022-13-richard.henderson@linaro.org>
+In-Reply-To: <20251014200718.422022-13-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 20 Oct 2025 13:34:36 +0100
+X-Gm-Features: AS18NWDI2KCaFWq2XrxfBeh_s76Gx5w_p2dmMLhdon2cE-fT8tylNri6BYLj9fk
+Message-ID: <CAFEAcA_trFRDSsot8JZBnspUvi2rTYze5obm9pAQj1597E3SBg@mail.gmail.com>
+Subject: Re: [PATCH v2 12/37] target/arm: Put 128-bit sysregs into a separate
+ list
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1129;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1129.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
@@ -121,30 +97,22 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-
-
-Am 16=2E Oktober 2025 17:15:42 UTC schrieb Pierrick Bouvier <pierrick=2Ebo=
-uvier@linaro=2Eorg>:
->On 10/16/25 9:55 AM, Mohamed Mediouni wrote:
->> WHvGetVirtualProcessorInterruptControllerState2 and
->> WHvSetVirtualProcessorInterruptControllerState2 are
->> deprecated since Windows 10 version 2004=2E
->>=20
->> Use the non-deprecated WHvGetVirtualProcessorState and
->> WHvSetVirtualProcessorState when available=2E
->>=20
->> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable=2Efr>
->> ---
->>   include/system/whpx-internal=2Eh |  9 +++++++
->>   target/i386/whpx/whpx-apic=2Ec   | 46 +++++++++++++++++++++++++------=
----
->>   2 files changed, 43 insertions(+), 12 deletions(-)
+On Tue, 14 Oct 2025 at 21:08, Richard Henderson
+<richard.henderson@linaro.org> wrote:
 >
->Reviewed-by: Pierrick Bouvier <pierrick=2Ebouvier@linaro=2Eorg>
+> Duplicate the cpreg_{indexes,values,array_len} array as
+> cpreg128_{indexes,values,array_len}.  Similarly for
+> cpreg_vmstate_{indexes,values,array_len}.
+>
+> Split the values between the two arrays during
+> write_cpustate_to_list, write_list_to_cpustate,
+> count_cpreg, and add_cpreg_to_list.
+>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 
-Couldn't we merge this patch already until the rest of the series is figur=
-ed out?
 
-Best regards,
-Bernhard
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+
+thanks
+-- PMM
 

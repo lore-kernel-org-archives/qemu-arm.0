@@ -4,76 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77FEBCCD193
-	for <qemu-arm@archiver.kernel.org>; Mon, 20 Oct 2025 13:24:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4CB68CCD199
+	for <qemu-arm@archiver.kernel.org>; Mon, 20 Oct 2025 13:32:38 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vApr6-0002zv-Jv; Mon, 20 Oct 2025 09:23:20 -0400
+	id 1vApza-0006sB-L5; Mon, 20 Oct 2025 09:32:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vApr5-0002zc-RZ
- for qemu-arm@nongnu.org; Mon, 20 Oct 2025 09:23:19 -0400
-Received: from mail-yx1-xb12f.google.com ([2607:f8b0:4864:20::b12f])
+ id 1vApzM-0006pX-0g
+ for qemu-arm@nongnu.org; Mon, 20 Oct 2025 09:31:52 -0400
+Received: from mail-yw1-x1129.google.com ([2607:f8b0:4864:20::1129])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vApr3-0008NI-N6
- for qemu-arm@nongnu.org; Mon, 20 Oct 2025 09:23:19 -0400
-Received: by mail-yx1-xb12f.google.com with SMTP id
- 956f58d0204a3-63e3568f90dso1195140d50.0
- for <qemu-arm@nongnu.org>; Mon, 20 Oct 2025 06:23:16 -0700 (PDT)
+ id 1vApzH-00013K-6h
+ for qemu-arm@nongnu.org; Mon, 20 Oct 2025 09:31:51 -0400
+Received: by mail-yw1-x1129.google.com with SMTP id
+ 00721157ae682-781421f5bf5so48145747b3.3
+ for <qemu-arm@nongnu.org>; Mon, 20 Oct 2025 06:31:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1760966595; x=1761571395; darn=nongnu.org;
+ d=linaro.org; s=google; t=1760967104; x=1761571904; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=P9egt/9Hwhp6Onvn+4vsjbCWth6QxdvUQI9K6mF2srk=;
- b=PAa+brgYY/hABkHIW3U7QkH+z8HQjf8ljsGrx3YC3F6X2XFMAGw0PCQoPZgoeDcpvd
- cShfnkoR800xsr35nuXvAsI2Q5OnroM8Je1y0dp9lFyqo6UsTXiWNK+/BBSAwaAzWqsY
- izAneVK+Qs7PEe2BVXYNE1MydiIC7+NshPCLCXjf11oVUVHEuaEPrSv0WgcD20i5dcJl
- kNA5B+x6hewKqbCPmwclA1tjwudczx84i10vUBxm5xhooCqkynesCgSX5jQSCGJoBFJ1
- LJ/trZyq/yRBisQ5ucLCfFsLRo+DN3EkVSRTSWY+BDRDKjnkUJ/k/cLJnzlwIeBgHnw0
- jmug==
+ bh=0LPKHz+mniEvRap+Bab+PlEBxCjH0WDsg0DZht8KEqM=;
+ b=TDN1zVooT4WkDrkofiCSTWKYCrQ/Z6kg24U+aQw85hy5kauDgrvObHSOQiWxHfHmrK
+ +ozN3qN4sJX3Twstrta7EQUSfeQkDeNnirSj3+1BtGZ4HdQi+gq6dnXzI+mlJEe/CNd+
+ eMLoKMvMt7nUNAVGWuWwLvjl04Yz0ybx5As/KGEgbDvUGf0MaUxEQ6z88DuH03iHw+av
+ weX7iZ7ORQ4igwVrlgqEQhVmZ5jfdLvxlJvqtZheQU1OV/4Cjhy3yqY6C6DE9kTBkSwk
+ DdDioKJW/L6BuxXkEru7JjM3UQLID46BExR7I0D3pNcbxBxkSMHBcmIH+Fx4aqJiwXQm
+ dt0g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1760966595; x=1761571395;
+ d=1e100.net; s=20230601; t=1760967104; x=1761571904;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=P9egt/9Hwhp6Onvn+4vsjbCWth6QxdvUQI9K6mF2srk=;
- b=CP/rEjRJdt7yJ35nKlmSnl8kAdTSdDV141hiRRoqn5ZBiaV0nEF4bg44fdRIKF8C7O
- dYPzSOKDCGssBnVNkogFwGUOoHJaPiKJ+J0uyL0Sx8GJ+GgIn6lr4JRy6XLKKKezjRbl
- tmDtk5MiA8/G84iOGc3ZRm9mORnG996Ii7cDRGUpyHYvofaxaYQ2RKbIw+nLEYNAJRQY
- n92JfRtW6o3PS+gtqViaqHalNErYBcJHhlkV3v0Ju8Ueu1qUFtHXOAQgVgc/rU/lMMLO
- PWMNuK+/wB+qmLMOs3mSlx/bkNovU5ycBfGwwqSBeiyBEjmNJVKaPEddFfaPn08NcLyC
- zpjQ==
+ bh=0LPKHz+mniEvRap+Bab+PlEBxCjH0WDsg0DZht8KEqM=;
+ b=lp54Q46JFF97/OpAahbzXS8CLSx+EC2z1iQZVq0YQc3kXxnt96H9n66w5p83gvGJ4f
+ a5hXgoUr9qauB9ts2aeIQ6guzGpcSCUgUGEoF/AGDwNt69FYjWdvSkMfCIs+GjuL+nTd
+ Cof2VDkBmL/GW4XHKdKzKck72W4XlM4rKq4P7aST8b4F15dgl6o0VdbWaQeIhM7ympTA
+ 2Gu7i//fCuaaqoEUF7aUnalmkhLVBWCBrA+om8nlTcwNZRIHCQJqVlnqsWX6jCeEyljc
+ zTs4Y/POvMNVpwiRA+72/72FIqfZ4oXQ29TLxid+6zyXllkUFK3RaJWhdYPOFr5VdrES
+ XIaA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVn7ZFv6T78GlaPpc1O/8CwS4fblmXS18MF0haiJK5TPRFhpkwuooEjZmwlFjcQ5o2jMAffnXZOGQ==@nongnu.org
-X-Gm-Message-State: AOJu0YySykMnRIZXLHxr2wiU3hT0DJCwQ7tK405tSQ6VNLlT1t4BVdbc
- 9QoXjrvo3fOwXXRFd6Hewt6jqmPnfAS9pNy0b1wpD6FROhYkbb+JQPazIGvwxPjZNVvhJ30d0Gy
- /HS+LRC45wE/N2BvVkmbjixJ3a1WkSwRRUyns/jzVBw==
-X-Gm-Gg: ASbGncu1d/mXv4wx9RBYLuHwgzKDTTrT7m18sdLq6qQQiWoUkZxoDVqS9FppyD3db1U
- Sdp82NMHMZFAuQEyD9OI6OOolNQaaOTz2+EIy5rRyr/sfcCLp+P7kCZQv7cFNBxgZNRn/CbrcCv
- b2wSIl6BOZ0gdmc9ooHQ3cXYt1PubpbcbH8ViEW98dZMVsTMIIYnexRPiA9vffeybRRuVKC7CLq
- yNf2e6iK+3MTiv8G/WC23ARctTkAErj8BGb67zkvCG+cO72wTW6QOxQYdVhFks1y1xDoJDq
-X-Google-Smtp-Source: AGHT+IG2dPtNBdhu+MWiLmeQmudTw1vZny2562UyoBM+bqLvvazAbgF3CDI3g6RP8F+3zo9+DjQyabMQWQZLRC7X2n8=
-X-Received: by 2002:a05:690e:4086:b0:63e:1878:b951 with SMTP id
- 956f58d0204a3-63e1878b9dcmr9583968d50.64.1760966595297; Mon, 20 Oct 2025
- 06:23:15 -0700 (PDT)
+ AJvYcCXsVNOoLFxBGPYOIpAk6WrZstIpfg3NNREBhzH0HTT6KyaMvQXvEEppZV8S1yP1YPMhuBIsglZtjA==@nongnu.org
+X-Gm-Message-State: AOJu0Yw4NYD0pQ2kfw3b7DnnARKFKpoeoIq6wPesw1itehn4Fm7vjMRM
+ kbN9TSIVp3kuawtXvKBtrEKrh5I3zl2FpfkMVe/sn1jT6OgzJVyceIR5qfg3sLTRO1ygvJfyv5W
+ 6UzCZJCBM4r98yaaxllCzEziY4THvKKm31gv0lLoNWQ==
+X-Gm-Gg: ASbGnct9dts0b6K88ozQWgeFzcSJ8FrvjGC1k6xUyDpnsqzilN6+BEdTX90weE0RrnD
+ iMCY4WWClpNmohxamkhs4wSUfqbgjG58zKVWXkU4hWSoUIlrSt60EwsMtxpOC7o7+XyhqsQ6oqJ
+ 4ZIOEyt6FJjxci6PX5wqFmOvLki1hpMKA832VwUTNg9SS2EVlru6MZzxefUk5u1mNSE+/x8QFHG
+ 1psTlMQJCsEX+Dnig3+zFXjeh09d6QuX2JDIIOrcENz79t5DEN+SQWtzmTvObMmMWMVseXi
+X-Google-Smtp-Source: AGHT+IHu8sAPqH7wiF4hdv7DjYU4aUdUTdADZzoEy/3mL/wYFa4HhkX10hLcZovNDDgvcK4hr7HoXYF3zSFTf1ZhkVk=
+X-Received: by 2002:a05:690c:600f:b0:721:6b2e:a08a with SMTP id
+ 00721157ae682-7836d2d6737mr198517967b3.37.1760967104228; Mon, 20 Oct 2025
+ 06:31:44 -0700 (PDT)
 MIME-Version: 1.0
 References: <20251014200718.422022-1-richard.henderson@linaro.org>
- <20251014200718.422022-8-richard.henderson@linaro.org>
-In-Reply-To: <20251014200718.422022-8-richard.henderson@linaro.org>
+ <20251014200718.422022-21-richard.henderson@linaro.org>
+In-Reply-To: <20251014200718.422022-21-richard.henderson@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 20 Oct 2025 14:23:02 +0100
-X-Gm-Features: AS18NWA3MraPAwaI5UA27UVboQa0HDxR-eE6mwmdYplIlkFZgL3dOl1o7Qnn-NQ
-Message-ID: <CAFEAcA8w6XV6AAycu1nYSqhpoOr3BsYn-x6Bk=Sybz0=FWK5JQ@mail.gmail.com>
-Subject: Re: [PATCH v2 07/37] target/arm: Add read_raw_cp_reg128,
- write_raw_cp_reg128
+Date: Mon, 20 Oct 2025 14:31:32 +0100
+X-Gm-Features: AS18NWAf5v-M6EKBEz6H-2q3wbNX3p0avf_b5AtuspTP3NSWU5xtheyEf34gPG4
+Message-ID: <CAFEAcA-tVBn3g185gzs2uOCnYLeqWN_zwfeQ0DccLf0n8BN5PQ@mail.gmail.com>
+Subject: Re: [PATCH v2 20/37] target/arm: Consolidate definitions of PAR
 To: Richard Henderson <richard.henderson@linaro.org>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b12f;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12f.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1129;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1129.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -96,22 +95,17 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, 14 Oct 2025 at 21:12, Richard Henderson
+On Tue, 14 Oct 2025 at 21:11, Richard Henderson
 <richard.henderson@linaro.org> wrote:
 >
-> Add the functions and update raw_accessors_invalid to match.
-> Add assertions for !ARM_CP_128BIT in read_raw_cp_reg and
-> write_raw_cp_reg.
+> Create a function define_par_register which handles the 3
+> distinct cases for PAR.  It is easier to understand with
+> the definitions all in one place.
 >
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->  target/arm/cpregs.h |  1 +
->  target/arm/helper.c | 49 +++++++++++++++++++++++++++++++++++++++++----
->  2 files changed, 46 insertions(+), 4 deletions(-)
->
+> Make the aarch64 to be the primary definition, when present,
+> rather than being an alias of the 64-bit non-secure aa32 reg.
 
-
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Doesn't that break tcg-to-tcg migration across this commit?
 
 thanks
 -- PMM

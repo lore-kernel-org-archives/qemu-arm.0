@@ -4,86 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23B91CCD1A7
-	for <qemu-arm@archiver.kernel.org>; Mon, 20 Oct 2025 20:14:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8AD1BCCD1A2
+	for <qemu-arm@archiver.kernel.org>; Mon, 20 Oct 2025 22:10:17 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vAwGn-0001E5-8W; Mon, 20 Oct 2025 16:14:17 -0400
+	id 1vAy4k-0006Qu-SS; Mon, 20 Oct 2025 18:09:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vAwGl-00019Y-3L
- for qemu-arm@nongnu.org; Mon, 20 Oct 2025 16:14:15 -0400
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vAy4j-0006Qc-U1
+ for qemu-arm@nongnu.org; Mon, 20 Oct 2025 18:09:57 -0400
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vAwGg-0002jH-Rr
- for qemu-arm@nongnu.org; Mon, 20 Oct 2025 16:14:14 -0400
-Received: by mail-wm1-x330.google.com with SMTP id
- 5b1f17b1804b1-4711b95226dso35242075e9.0
- for <qemu-arm@nongnu.org>; Mon, 20 Oct 2025 13:14:10 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vAy4i-00063D-93
+ for qemu-arm@nongnu.org; Mon, 20 Oct 2025 18:09:57 -0400
+Received: by mail-wr1-x435.google.com with SMTP id
+ ffacd0b85a97d-427007b1fe5so3175429f8f.1
+ for <qemu-arm@nongnu.org>; Mon, 20 Oct 2025 15:09:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1760991249; x=1761596049; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=HTlBXxT501vvUXl0VG6ZOeVeFMSbAeDpWnXLAE816iw=;
- b=Qy6xq0+HcuyKZu8n+VJ5QgEDseWuDlNNGoy+osqm5f88W55tWuJzaM06Bd6m4owGuq
- pzD83w3ctkblzFRTc8NHsDxq0M8shiUNL7nfjMfL4nH5I6Sns9HHr5fEmUWYonqcfTUm
- mZDbeZOBKPFZHr44vntleMJWRAI6oWWczADazjg8bNmMTFUEL0Jjt8I337+cAuXmgwcU
- tLzpICPlSboLP9lGef5Oa/m5G2GOwzFu7R0D9mBiPMMzDx2YvLfejWgu8ZautdmaVuJI
- sLrevQcW72JxWv81nnUl1WjfrH4esA5Kza0Ma7pCaVcwM517ePB1/1iX1O/padAOdgYq
- gcKg==
+ d=linaro.org; s=google; t=1760998194; x=1761602994; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=6P9UIa815BoFMfvuHAe0eB6WpnwGzSLVK/UX/75kvXQ=;
+ b=e5T6Q8+mRt2OLkMW7564zXF3+ViSizdSHncBEIq7K8Xe6smPwhxnUK9cVv6whLFLbM
+ uRdW1q6X9eCK1AHrPFm03NXFGdaOZBtpxevw1SV6lxnh8gBXnk1ivxPpECvIy/Ow28JU
+ NK2cn7Kd4thIvSwYcTqPT1reps3OcCazCWU7pSazN532A9AJgQll+PzJM4rzWaSGINM9
+ akW9ODFr8ILLMvGPJNwbFKa0411PEbha2q6yq0u/F1JNqkZUJZhmaRRgQQqSdHkqNtv2
+ uIhi46tsLcUI3v7R1SI5eO+bcelVzoWJTxY8prrkxPMG0n5urV3sK4LurB4MI8ryektf
+ SXLw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1760991249; x=1761596049;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=HTlBXxT501vvUXl0VG6ZOeVeFMSbAeDpWnXLAE816iw=;
- b=u2IlSgWoOA85iyBCm6QGMAtLimuaXCkF4XeltbgX5Sj6wy0YbZVfuVa7z/LkeSX9p1
- UUGo5h5aNBCBrHOqEyhUQNUELoXUfX8NIPeIQTPbkhDgyjFzE000m+SQHfzKhlB6yv5k
- y87gDbhPpAM4pyd5I+uQh1UamL+1P+pkBYbwvGQlxHT5cQ6nLwtKFcfsEh2btjeCzlVW
- VKhzwwG8Qd1OUZ8Z/o0vmWdRvWD1sZolfi+wWm6L2wUoJ1XNgk48AAYoh+60eXV9zA9T
- yhJWte8KaPeCKkjKJ3D6lNumxdIwQt15FU7cBTUzJ2efGQ9tMfadOUPCuy2AYIrZmxsw
- IrSw==
+ d=1e100.net; s=20230601; t=1760998194; x=1761602994;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=6P9UIa815BoFMfvuHAe0eB6WpnwGzSLVK/UX/75kvXQ=;
+ b=xGH8xzbpJ8fbOqNmCG4EtjI6qe+RBngnE77vdtpV+hCzOPHjmY29MD/iG0lRXrmOrj
+ PNt3zKlJowV669NPJf7XCvOUMGXJ++CBJnFLjDHSrHiA6ihJLMZDhHIX4Nl0urWcP4Uf
+ H8soIZrwiqk0CYVArgQVzGll1ei91IPCHbuiMScofQ49ogF6N9qruD0cvGHK6T4fHkQq
+ biL/ysSTA7GDfxRE76GEy1Ztcr59b6SLSnThpvPVeDm0/Gq/1++L9k85cC3Mv2AJcWAg
+ GY4lR0B95AwV8S3q4+BNzvpExqYRlVS2hhiD6FYr0jqb+XPkxAdZ6tqM2VV/wn4zlfD3
+ icYw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCV5ZMxDXc3JqOGYWWY54B8rVyv3B1lulUqksNJuP8DR7UBaPIdUP2ZaKqrUMNjO7qk7Pq7ouSyssw==@nongnu.org
-X-Gm-Message-State: AOJu0YwLtjdBDM7Ep5wETRlUGFbmR37J0d7rZgfCPtZLTrGSTsfNEmyH
- sp3RLxgIfxthcCJ8BgjCQKsUQjxl8dV8D/MHlVxht7TnHTNJxzgdbXHNAkJlLKuDtW8=
-X-Gm-Gg: ASbGncvwWAIw4OvCgx8TtoGLYLIjPWG1lAmQRsLg+Oq5fK5NUdMNncSGXfPWzlDLcQa
- TMFGr+FAcR3+yrp7G8myxfgc+XothpIp5gDBq/wqKByEX2prtSVP/Iop7KGbCBryD2yOazg3l2T
- t/jJqwBRTEcAwe2H6QdXlP3Hz9GULUyjN/GWiJ8G5Z9il1bTdF64v4sHGi84TK2vDUEysqTD58w
- 1v5CpaQDQbqeRuR9iIgKQf897+x/ukC7soHL3KSITwbhTlJggqaXqTRKJHZCnfq6LIIsJ9dOcUQ
- BGkTjdWkV7JRBOyHe64eSqsqwMBL+U9ThFj1/q+Uf6i6xH1RSjmIuUHfsO2wNcrGni+L05DMiSJ
- n5aKFPuu8RgFbKGqx081ln4srRBL7LtrA5X59Wpeoz9Xt4xsEqHsi0iiSOFE+a2sxq9feQtP4Qn
- GV4kBiO3PgYOnefXbwCZYEkd19Z5RrnnIdThTxmVoUfAmsKk6VSPTXyA==
-X-Google-Smtp-Source: AGHT+IH1pBCu+tgFq81xuLDN55p4o5PQ3bBlSmKkx/x46aNevlNeNzrUGclWri4jW6CK1uXJnP/9Wg==
-X-Received: by 2002:a05:6000:2301:b0:428:3e62:3225 with SMTP id
- ffacd0b85a97d-4283e6236f6mr6420531f8f.60.1760991248866; 
- Mon, 20 Oct 2025 13:14:08 -0700 (PDT)
-Received: from [192.168.69.221] (88-187-86-199.subs.proxad.net.
+ AJvYcCUGbwflPh4gQSy7hYBY3/Xv5EbaA455Aou3zqDM/LfHWUIqAr48UcOCyWuLdPej+HFHi753W969WQ==@nongnu.org
+X-Gm-Message-State: AOJu0YzqGu8Mw4E7QXdqU2mlzntWIVvxZoWuov5EwzeXVfABxvy37D71
+ fRhH5pffeLXsuLym/HfB1xow8Wz6IbfiucoTdfUJkM+fKxYJO2/3luYdOZZKf+YoGlM=
+X-Gm-Gg: ASbGncvGNX8QSfz5MQZevIMhoxZECj/iR5zyeTdGHGjRfmy3UEsNtowOUdMjBhM5fjY
+ ZzKgj3kII//lSsVLhULPhifX8H0zvph17p/+ldOyXmWu9M4V/DBHwSvTadPml1OU+78DOlx8Jyo
+ 4mIlbgZzSxGbo8qk3Uv33aq/8c7M3PFWpRgnU6nlb8JCr2lvuxLU2WIau9VmEIzMZ4/kZoNwXHL
+ g3TSgUd9DMLqYtpywPApBvW5sRrLb112CXhHaZHylC2Du/HWOBD11bwoaXs81E3l++tsQ5zV1ih
+ T8kh/u4otN7NvzrFZ7NvY2j2xNKkEx9Bjof0mkjer4541NFLPpFlgTnjITcvR7Xa809u9J7ytLU
+ +ORCmlf047Bn+DvIWLfJBk87Cr2hGYpkHIT7xwCUDEfGoEFOf/UEpW9FyxCgY3gxV4VE1A6gyhX
+ Gjyyhs6HYhkWHJ4SuEDRzm290ghgZhE04erfMf+d3pREwa+5aYgg==
+X-Google-Smtp-Source: AGHT+IE2Uoq5hN4doKbSKcD358Qkz4tLJtvkVmPAjMVM//DTLHuBjmNj+UMpaVMK/oUu9y3zX108+w==
+X-Received: by 2002:a05:6000:2384:b0:3ee:13ba:e133 with SMTP id
+ ffacd0b85a97d-42704d83e59mr8910249f8f.1.1760998194608; 
+ Mon, 20 Oct 2025 15:09:54 -0700 (PDT)
+Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-427ea5b3acfsm16687432f8f.14.2025.10.20.13.14.08
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 20 Oct 2025 13:14:08 -0700 (PDT)
-Message-ID: <2cffde5d-e76c-4600-8f79-968581ab050e@linaro.org>
-Date: Mon, 20 Oct 2025 22:14:07 +0200
+ ffacd0b85a97d-427ea5a0f19sm17335233f8f.9.2025.10.20.15.09.53
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Mon, 20 Oct 2025 15:09:54 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ Anton Johansson <anjo@rev.ng>, qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, Bernhard Beschow <shentey@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Zhao Liu <zhao1.liu@intel.com>, Eduardo Habkost <eduardo@habkost.net>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Yanan Wang <wangyanan55@huawei.com>
+Subject: [PATCH v6 02/30] hw/boards: Move DEFINE_MACHINE() definition closer
+ to its doc string
+Date: Tue, 21 Oct 2025 00:09:11 +0200
+Message-ID: <20251020220941.65269-3-philmd@linaro.org>
+X-Mailer: git-send-email 2.51.0
+In-Reply-To: <20251020220941.65269-1-philmd@linaro.org>
+References: <20251020220941.65269-1-philmd@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 3/3] tests/tcg/aarch64: Add test case for SME2 gdbstub
- registers
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: Richard Henderson <richard.henderson@linaro.org>,
- Vacha Bhavsar <vacha.bhavsar@oss.qualcomm.com>
-References: <20251017153027.969016-1-peter.maydell@linaro.org>
- <20251017153027.969016-4-peter.maydell@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20251017153027.969016-4-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::435;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x435.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -106,17 +111,67 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 17/10/25 17:30, Peter Maydell wrote:
-> Test the SME2 register exposure over gdbstub, in the same way
-> we already do for SME.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->   tests/tcg/aarch64/Makefile.target      |  9 ++++++-
->   tests/tcg/aarch64/gdbstub/test-sme2.py | 36 ++++++++++++++++++++++++++
->   2 files changed, 44 insertions(+), 1 deletion(-)
->   create mode 100644 tests/tcg/aarch64/gdbstub/test-sme2.py
+Code movement to have the DEFINE_MACHINE() definition follow
+its usage documentation comment.
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ include/hw/boards.h | 34 +++++++++++++++++-----------------
+ 1 file changed, 17 insertions(+), 17 deletions(-)
+
+diff --git a/include/hw/boards.h b/include/hw/boards.h
+index 665b6201214..67c94bff1c6 100644
+--- a/include/hw/boards.h
++++ b/include/hw/boards.h
+@@ -503,6 +503,23 @@ struct MachineState {
+  *      DEFINE_VIRT_MACHINE_IMPL(false, major, minor, micro, _, tag)
+  */
+ 
++#define DEFINE_MACHINE(namestr, machine_initfn) \
++    static void machine_initfn##_class_init(ObjectClass *oc, const void *data) \
++    { \
++        MachineClass *mc = MACHINE_CLASS(oc); \
++        machine_initfn(mc); \
++    } \
++    static const TypeInfo machine_initfn##_typeinfo = { \
++        .name       = MACHINE_TYPE_NAME(namestr), \
++        .parent     = TYPE_MACHINE, \
++        .class_init = machine_initfn##_class_init, \
++    }; \
++    static void machine_initfn##_register_types(void) \
++    { \
++        type_register_static(&machine_initfn##_typeinfo); \
++    } \
++    type_init(machine_initfn##_register_types)
++
+ /*
+  * Helper for dispatching different macros based on how
+  * many __VA_ARGS__ are passed. Supports 1 to 5 variadic
+@@ -762,23 +779,6 @@ struct MachineState {
+         } \
+     } while (0)
+ 
+-#define DEFINE_MACHINE(namestr, machine_initfn) \
+-    static void machine_initfn##_class_init(ObjectClass *oc, const void *data) \
+-    { \
+-        MachineClass *mc = MACHINE_CLASS(oc); \
+-        machine_initfn(mc); \
+-    } \
+-    static const TypeInfo machine_initfn##_typeinfo = { \
+-        .name       = MACHINE_TYPE_NAME(namestr), \
+-        .parent     = TYPE_MACHINE, \
+-        .class_init = machine_initfn##_class_init, \
+-    }; \
+-    static void machine_initfn##_register_types(void) \
+-    { \
+-        type_register_static(&machine_initfn##_typeinfo); \
+-    } \
+-    type_init(machine_initfn##_register_types)
+-
+ extern GlobalProperty hw_compat_10_1[];
+ extern const size_t hw_compat_10_1_len;
+ 
+-- 
+2.51.0
 
 

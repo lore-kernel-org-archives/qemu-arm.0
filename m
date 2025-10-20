@@ -4,84 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C0D2CCD199
-	for <qemu-arm@archiver.kernel.org>; Mon, 20 Oct 2025 16:22:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7414CCD193
+	for <qemu-arm@archiver.kernel.org>; Mon, 20 Oct 2025 16:32:02 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vAsdo-00058M-Mk; Mon, 20 Oct 2025 12:21:48 -0400
+	id 1vAsnZ-000206-NX; Mon, 20 Oct 2025 12:31:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vAsdn-0004yM-1Y
- for qemu-arm@nongnu.org; Mon, 20 Oct 2025 12:21:47 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ id 1vAsnW-0001yc-C3
+ for qemu-arm@nongnu.org; Mon, 20 Oct 2025 12:31:51 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vAsdk-0000xb-Lp
- for qemu-arm@nongnu.org; Mon, 20 Oct 2025 12:21:46 -0400
+ id 1vAsnT-0002N6-BV
+ for qemu-arm@nongnu.org; Mon, 20 Oct 2025 12:31:49 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1760977301;
+ s=mimecast20190719; t=1760977904;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=TMuhqLCiwvXGhWuHTfUFcUWo7NHSVOEqil3zUev/Yug=;
- b=h6bIlKg0Ud2yvyBo9Pq7Url2Qkkwu3bCfSdwi3DPU3FfzFKilxZI7wUJ+oqIeAcPAT+g0j
- 0xROs+ThO6CNeWQSpbbmDzaiDuNbSkgEbUakN9yPAxsyk7adLPiF9ffUaWsSt3PEQ5Z8/+
- tVCvmcBHdw9UV+5olcNEQ5T6cAgBrO8=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=eliS72N0sdUsfaYKdTm7smRN3W9Mo6oi1QQs5hUEzKQ=;
+ b=jDEdNlCwgpcEhcRIB7PZWc0AFqV/uj4cKF3W65ulpSnPqFleSFFHUhKm2jVDfOaPVbS1fI
+ VBDJxHb4ZNM9H6rY2QRkxu//FP/2hbG6NmnbzqxrDxFzJnOxknSSs0kLKZNI2J/RLfSxHB
+ mRtAijNXcpRAhYX33kOF8ESJSffc+Qs=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-607-9qXG-WNxNxqF3KKB5YeJ0w-1; Mon, 20 Oct 2025 12:21:40 -0400
-X-MC-Unique: 9qXG-WNxNxqF3KKB5YeJ0w-1
-X-Mimecast-MFC-AGG-ID: 9qXG-WNxNxqF3KKB5YeJ0w_1760977299
-Received: by mail-wr1-f69.google.com with SMTP id
- ffacd0b85a97d-427013eb71dso5113704f8f.2
- for <qemu-arm@nongnu.org>; Mon, 20 Oct 2025 09:21:39 -0700 (PDT)
+ us-mta-102-5BA0t71HO_qco1eNEcLDgg-1; Mon, 20 Oct 2025 12:31:42 -0400
+X-MC-Unique: 5BA0t71HO_qco1eNEcLDgg-1
+X-Mimecast-MFC-AGG-ID: 5BA0t71HO_qco1eNEcLDgg_1760977901
+Received: by mail-wm1-f69.google.com with SMTP id
+ 5b1f17b1804b1-47111dc7bdbso35041715e9.0
+ for <qemu-arm@nongnu.org>; Mon, 20 Oct 2025 09:31:42 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1760977299; x=1761582099;
- h=content-transfer-encoding:in-reply-to:content-language:references
- :cc:to:reply-to:subject:from:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=TMuhqLCiwvXGhWuHTfUFcUWo7NHSVOEqil3zUev/Yug=;
- b=HAOZNqPn6IOgm4HkWbeL4LJTz+gxD3W7TsvSuutIomYfT6W/0Blr2V1EQ4J8GKGSze
- 0y5TiizjXcT9YJBBUT9k8f7Wf6hoZrhr5JQgg3yH/TXvwL1fc2Pw+3fkEFWQO9iEqz+s
- zFxjEWexeO1GylsAtDAvu4TWYIdbpSxCIeAipRqKhUd1vOCZRum4YHnuBiD/sBQ5+4Bj
- yB2JgYgc7SyuJYhnQOLRJTo6ZZ74sQsiClufevcm+Sbt96zvMmPpxztRfHC1ASN6M3Uo
- UTY6zYZd6Z9oi+pIcK17oBts9hofSR5/3S14D1k4cekHWFVpTURn9kpoCyxpt5p+mYWC
- Wzlw==
+ d=1e100.net; s=20230601; t=1760977901; x=1761582701;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=eliS72N0sdUsfaYKdTm7smRN3W9Mo6oi1QQs5hUEzKQ=;
+ b=eer6IQHN0bE70NSdxxn05JXDlzOncMDvIp1xP0xzFrSfTG9B5PHRHY03ANklDLCVdn
+ kqLK12WBK/IvlchtgxVIRlqsHhwlDn1wy1SCHj9tOKI6JEdkwYP4FbgZWY3Xr2vbfTuX
+ hylQPikCPa5uvaqYdF483zIVl0tqESX4RdOnv2cdtpgwXaFIJMTHQP0/or2WLJUUiu45
+ Rcx0mDFNhVISSiVSNX9nLEhdjaOUj2zBK8/+JCnCpCzI1eLMf3RyJeEtOQw7bHdXjwyY
+ RxJaW0Assqx9RVnRxoCdFvylyzqIScrIz4zwYFHufPtvV+PuM0a6jllLEnX8qJ6/Gl5J
+ Pj9w==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUCMr1N2o1hY7XsmKUQ0jn5hUTRYaCV2d4ZOwx5WuQ+xxT8UZXmcoZstu+rjbymDNOHbkoO3SA8Zw==@nongnu.org
-X-Gm-Message-State: AOJu0YxCW7kM+JApLLnNiClEO90D1zZu8I0cUx/nByZQ1Jy7UcRFdGEX
- KgjypyA/8CbUTUXykVEKNCgKZcC0IOlHQ5dXDEiU/MZ9QOXnRE9zlObvOvYdfplUj5zst0MD5nu
- Mldqmxmlj4Yh+9DfU5Kx6weUAQ86z7RY00l3icu3eQuqLIAN3cvOevA==
-X-Gm-Gg: ASbGncvCaYTfCHdxyHZ8oi/g3898nc/Ryy8HQWwzK4FjlzHPWBXOr9QjEeVht/KRR39
- O2rHCPAodkcsde6HSGYbP2y1GgexX4ATcu2CBQubxhS8Jb5fRKgHUMBNoWhwRx9PwShZ2smUxXG
- F5NqDp7VoRfKb/5q/Cm2uolIIqWzv/QkTCDSp11lWXbGgxYwJic1h4fAnAummZyCaTJ1BZ3n9cM
- 4fjl+KGad2St+zwjnygqcfKQ6eL5ovAXN9IHcpYfBknaNe8p8TIaHJyK8zyMRDZFA+3nPBnTX21
- y9FNe+h74iRR3NgZM1guUyVCG5FhSPb8N3FVKJP9qY3fYG8ZR3CRbCmADF7zZZDguRT84kZC2t5
- O2TwC
-X-Received: by 2002:a05:6000:41f4:b0:427:614:83da with SMTP id
- ffacd0b85a97d-4270614850bmr9459395f8f.48.1760977298753; 
- Mon, 20 Oct 2025 09:21:38 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGK1UI06KtBEwhhq8nnp2NmuOuW1bNA2Uh80dIcvi53PgnJznSKm7vuRcy8FWkfVEkUDEr3HA==
-X-Received: by 2002:a05:6000:41f4:b0:427:614:83da with SMTP id
- ffacd0b85a97d-4270614850bmr9459371f8f.48.1760977298331; 
- Mon, 20 Oct 2025 09:21:38 -0700 (PDT)
+ AJvYcCUvGehtyJoUxM8vhRFc5hl7V768AYhJNUkk0IMoUOyIV+R70Vju7iVTDSRbxx91xwNxNm1l4XcBoA==@nongnu.org
+X-Gm-Message-State: AOJu0Yx+U1kd7hBN4Izn87LDdCdIa6isbtrKJZRzPgofBILuGbS+gT/5
+ UGuUJpKgYMGfyffixsNlfkdM2RMd6917UADWl9lMDnNroNPxlk+lAIM2+Z+iBQ69rdGRb3IRUe5
+ X8zX8xxtfKaWQW10hMPO4s7KO4Bf8WTviXWU38MUI3Il6tJzD4pDcww==
+X-Gm-Gg: ASbGncth4j83I9A3BRMuYCKoDjmNFclKaxgC2drIxoaIZNsj2t30felfVs+N+IDgcrN
+ NRaZyLScsVnfS2Z7CESHfXrRbXdUwEaSw5xxB+F+NIQGaC0WV+M40fCeiNDDerM/w9A5TLRcaBV
+ ezSsVAIqUPsC5YznJQEY4UhAIuqQVSTnCdn2JI4aH6Wk3lhlSNzzcYmw1b9Bkik7uRWYNYY1B9d
+ SXKorhn/zPONztLO5VW2UpA5SNv37YRzrO/MfrEVXO7EOHzYD/gzFbFMGrtkBwjdQV9YkYUArcp
+ HTzJBq2XRpX93f8/gdbcvlJ1/qomMNKES/gyLRA0pffCsDNR1NuZEn16djBbF/dneN9VmoEHwTc
+ aNwOg
+X-Received: by 2002:a05:600c:3553:b0:46e:1cc6:25f7 with SMTP id
+ 5b1f17b1804b1-4711789daf3mr102148505e9.9.1760977901101; 
+ Mon, 20 Oct 2025 09:31:41 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IF1/qUuMW9W/6SyzKFOBMd3J952H15FJU+wRJs69YecWnaGH0CDN3lmy/KBxDvm/P5UMjY9uA==
+X-Received: by 2002:a05:600c:3553:b0:46e:1cc6:25f7 with SMTP id
+ 5b1f17b1804b1-4711789daf3mr102148135e9.9.1760977900653; 
+ Mon, 20 Oct 2025 09:31:40 -0700 (PDT)
 Received: from [192.168.43.95] ([37.166.134.90])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-427ea5a0f19sm16190908f8f.9.2025.10.20.09.21.35
+ 5b1f17b1804b1-4710ca2a4a0sm122015085e9.0.2025.10.20.09.31.38
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 20 Oct 2025 09:21:37 -0700 (PDT)
-Message-ID: <94132491-1af5-491e-ac98-68e4313bf6af@redhat.com>
-Date: Mon, 20 Oct 2025 18:21:34 +0200
+ Mon, 20 Oct 2025 09:31:40 -0700 (PDT)
+Message-ID: <b222848f-c933-43dc-b6e0-97dd8455cee6@redhat.com>
+Date: Mon, 20 Oct 2025 18:31:38 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-From: Eric Auger <eric.auger@redhat.com>
-Subject: Re: [PATCH v4 11/27] hw/pci/pci: Introduce optional
- get_msi_address_space() callback
+Subject: Re: [PATCH v4 06/27] hw/arm/smmuv3-accel: Restrict accelerated SMMUv3
+ to vfio-pci endpoints with iommufd
 To: Shameer Kolothum <skolothumtho@nvidia.com>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 Cc: peter.maydell@linaro.org, jgg@nvidia.com, nicolinc@nvidia.com,
@@ -91,15 +91,16 @@ Cc: peter.maydell@linaro.org, jgg@nvidia.com, nicolinc@nvidia.com,
  zhangfei.gao@linaro.org, zhenzhong.duan@intel.com, yi.l.liu@intel.com,
  shameerkolothum@gmail.com
 References: <20250929133643.38961-1-skolothumtho@nvidia.com>
- <20250929133643.38961-12-skolothumtho@nvidia.com>
-In-Reply-To: <20250929133643.38961-12-skolothumtho@nvidia.com>
+ <20250929133643.38961-7-skolothumtho@nvidia.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <20250929133643.38961-7-skolothumtho@nvidia.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: fGPeTd-ZRkrIrtoSp9WwRstkhThrhZMfrisX907d6O0_1760977299
+X-Mimecast-MFC-PROC-ID: yx6PH3JxvnOanMjDbsngyX94Y1HfqaLjhFw5jhsSky8_1760977901
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124;
+Received-SPF: pass client-ip=170.10.133.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -125,133 +126,167 @@ Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Shameer
+
 
 On 9/29/25 3:36 PM, Shameer Kolothum wrote:
-> On ARM, when a device is behind an IOMMU, its MSI doorbell address is
-> subject to translation by the IOMMU. This behavior affects vfio-pci
-> passthrough devices assigned to guests using an accelerated SMMUv3.
+> Accelerated SMMUv3 is only useful when the device can take advantage of
+> the host's SMMUv3 in nested mode. To keep things simple and correct, we
+> only allow this feature for vfio-pci endpoint devices that use the iommufd
+> backend. We also allow non-endpoint emulated devices like PCI bridges and
+> root ports, so that users can plug in these vfio-pci devices. We can only
+> enforce this if devices are cold plugged. For hotplug cases, give appropriate
+> warnings.
 >
-> In this setup, we configure the host SMMUv3 in nested mode, where
-> VFIO sets up the Stage-2 (S2) mappings for guest RAM, while the guest
-> controls Stage-1 (S1). To allow VFIO to correctly configure S2 mappings,
-> we currently return the system address space via the get_address_space()
-> callback for vfio-pci devices.
+> Another reason for this limit is to avoid problems with IOTLB
+> invalidations. Some commands (e.g., CMD_TLBI_NH_ASID) lack an associated
+> SID, making it difficult to trace the originating device. If we allowed
+> emulated endpoint devices, QEMU would have to invalidate both its own
+> software IOTLB and the host's hardware IOTLB, which could slow things
+> down.
 >
-> However, QEMU/KVM also uses this same callback path when resolving the
-> address space for MSI doorbells:
+> Since vfio-pci devices in nested mode rely on the host SMMUv3's nested
+> translation (S1+S2), their get_address_space() callback must return the
+> system address space so that VFIO core can setup correct S2 mappings
+> for guest RAM.
 >
-> kvm_irqchip_add_msi_route()
->   kvm_arch_fixup_msi_route()
->     pci_device_iommu_address_space()
->      get_address_space()
+> So in short:
+>  - vfio-pci devices(with iommufd as backend) return the system address
+>    space.
+>  - bridges and root ports return the IOMMU address space.
 >
-> This will cause the device to be configured with wrong MSI doorbell
-> address if it return the system address space.
-returns
-> Introduce an optional get_msi_address_space() callback and use that in
-> the above path if available. This will enable IOMMU implementations to
-> make use of this if  required.
-if required
-> Suggested-by: Nicolin Chen <nicolinc@nvidia.com>
-> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
 > Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
-> ---	
->  hw/pci/pci.c         | 19 +++++++++++++++++++
->  include/hw/pci/pci.h | 16 ++++++++++++++++
->  target/arm/kvm.c     |  2 +-
->  3 files changed, 36 insertions(+), 1 deletion(-)
+> ---
+>  hw/arm/smmuv3-accel.c               | 68 ++++++++++++++++++++++++++++-
+>  hw/pci-bridge/pci_expander_bridge.c |  1 -
+>  include/hw/pci/pci_bridge.h         |  1 +
+>  3 files changed, 68 insertions(+), 2 deletions(-)
 >
-> diff --git a/hw/pci/pci.c b/hw/pci/pci.c
-> index 1315ef13ea..6f9e1616dd 100644
-> --- a/hw/pci/pci.c
-> +++ b/hw/pci/pci.c
-> @@ -2964,6 +2964,25 @@ AddressSpace *pci_device_iommu_address_space(PCIDevice *dev)
->      return &address_space_memory;
+> diff --git a/hw/arm/smmuv3-accel.c b/hw/arm/smmuv3-accel.c
+> index 79f1713be6..44410cfb2a 100644
+> --- a/hw/arm/smmuv3-accel.c
+> +++ b/hw/arm/smmuv3-accel.c
+> @@ -7,8 +7,13 @@
+>   */
+>  
+>  #include "qemu/osdep.h"
+> +#include "qemu/error-report.h"
+>  
+>  #include "hw/arm/smmuv3.h"
+> +#include "hw/pci/pci_bridge.h"
+> +#include "hw/pci-host/gpex.h"
+> +#include "hw/vfio/pci.h"
+> +
+>  #include "smmuv3-accel.h"
+>  
+>  static SMMUv3AccelDevice *smmuv3_accel_get_dev(SMMUState *bs, SMMUPciBus *sbus,
+> @@ -29,15 +34,76 @@ static SMMUv3AccelDevice *smmuv3_accel_get_dev(SMMUState *bs, SMMUPciBus *sbus,
+>      return accel_dev;
 >  }
 >  
-> +AddressSpace *pci_device_iommu_msi_address_space(PCIDevice *dev)
+> +static bool smmuv3_accel_pdev_allowed(PCIDevice *pdev, bool *vfio_pci)
 > +{
-> +    PCIBus *bus;
-> +    PCIBus *iommu_bus;
-> +    int devfn;
 > +
-> +    pci_device_get_iommu_bus_devfn(dev, &iommu_bus, &bus, &devfn);
-> +    if (iommu_bus) {
-> +        if (iommu_bus->iommu_ops->get_msi_address_space) {
-> +            return iommu_bus->iommu_ops->get_msi_address_space(bus,
-> +                                 iommu_bus->iommu_opaque, devfn);
-See my reply to Nicolin's comment. From a high level point of view the
-semantic of
-
-get_msi_address_space versus get_address_space
- does not look very clear. I have the impression for HW nested implementation you were forced to return the &system_address through the get_address_space
- although there is a protecting IOMMU and you need another callback for return a proper IOMMU as for MSIs. This is still unclear and looks hacky to me at this point. I think we need to get the semantic of get_msi_address_space vs get_address_space more solid and you need to explain why get_address_space
-is mandated to return &system_address in our case. 
-Maybe you explained that earlier in some thread but I fail to find those info again in the commit messages/comments and I think this is important.
-
-> +        } else {
-> +            return iommu_bus->iommu_ops->get_address_space(bus,
-> +                                 iommu_bus->iommu_opaque, devfn);
+> +    if (object_dynamic_cast(OBJECT(pdev), TYPE_PCI_BRIDGE) ||
+> +        object_dynamic_cast(OBJECT(pdev), TYPE_PXB_PCIE_DEV) ||
+> +        object_dynamic_cast(OBJECT(pdev), TYPE_GPEX_ROOT_DEVICE)) {
+> +        return true;
+> +    } else if ((object_dynamic_cast(OBJECT(pdev), TYPE_VFIO_PCI))) {
+> +        *vfio_pci = true;
+> +        if (object_property_get_link(OBJECT(pdev), "iommufd", NULL)) {
+> +            return true;
 > +        }
 > +    }
-> +    return &address_space_memory;
+> +    return false;
 > +}
 > +
->  int pci_iommu_init_iotlb_notifier(PCIDevice *dev, IOMMUNotifier *n,
->                                    IOMMUNotify fn, void *opaque)
+>  static AddressSpace *smmuv3_accel_find_add_as(PCIBus *bus, void *opaque,
+>                                                int devfn)
 >  {
-> diff --git a/include/hw/pci/pci.h b/include/hw/pci/pci.h
-> index c54f2b53ae..0d3b351903 100644
-> --- a/include/hw/pci/pci.h
-> +++ b/include/hw/pci/pci.h
-> @@ -652,6 +652,21 @@ typedef struct PCIIOMMUOps {
->                              uint32_t pasid, bool priv_req, bool exec_req,
->                              hwaddr addr, bool lpig, uint16_t prgi, bool is_read,
->                              bool is_write);
-> +    /**
-> +     * @get_msi_address_space: get the address space for MSI doorbell address
-> +     * for devices
+> +    PCIDevice *pdev = pci_find_device(bus, pci_bus_num(bus), devfn);
+>      SMMUState *bs = opaque;
+>      SMMUPciBus *sbus = smmu_get_sbus(bs, bus);
+>      SMMUv3AccelDevice *accel_dev = smmuv3_accel_get_dev(bs, sbus, bus, devfn);
+>      SMMUDevice *sdev = &accel_dev->sdev;
+> +    bool vfio_pci = false;
+> +
+> +    if (pdev && !smmuv3_accel_pdev_allowed(pdev, &vfio_pci)) {
+> +        if (DEVICE(pdev)->hotplugged) {
+> +            if (vfio_pci) {
+> +                warn_report("Hot plugging a vfio-pci device (%s) without "
+> +                            "iommufd as backend is not supported", pdev->name);
+> +            } else {
+> +                warn_report("Hot plugging an emulated device %s with "
+> +                            "accelerated SMMUv3. This will bring down "
+> +                            "performace", pdev->name);
+> +            }
+> +            /*
+> +             * Both cases, we will return IOMMU address space. For hotplugged
+> +             * vfio-pci dev without iommufd as backend, it will fail later in
+> +             * smmuv3_notify_flag_changed() with "requires iommu MAP notifier"
+> +             * error message.
+> +             */
+> +             return &sdev->as;
+> +        } else {
+> +            error_report("Device(%s) not allowed. Only PCIe root complex "
+> +                         "devices or PCI bridge devices or vfio-pci endpoint "
+> +                         "devices with iommufd as backend is allowed with "
+> +                         "arm-smmuv3,accel=on", pdev->name);
+> +            exit(1);
+> +        }
+> +    }
+>  
+> -    return &sdev->as;
+> +    /*
+> +     * We return the system address for vfio-pci devices(with iommufd as
+> +     * backend) so that the VFIO core can set up Stage-2 (S2) mappings for
+> +     * guest RAM. This is needed because, in the accelerated SMMUv3 case,
+> +     * the host SMMUv3 runs in nested (S1 + S2)  mode where the guest
+> +     * manages its own S1 page tables while the host manages S2.
 > +     *
-> +     * Optional callback which returns a pointer to an #AddressSpace. This
-> +     * is required if MSI doorbell also gets translated through IOMMU(eg: ARM)
-IOMMU (
-
-> +     *
-> +     * @bus: the #PCIBus being accessed.
-> +     *
-> +     * @opaque: the data passed to pci_setup_iommu().
-> +     *
-> +     * @devfn: device and function number
+> +     * We are using the global &address_space_memory here, as this will ensure
+> +     * same system address space pointer for all devices behind the accelerated
+> +     * SMMUv3s in a VM. That way VFIO/iommufd can reuse a single IOAS ID in
+> +     * iommufd_cdev_attach(), allowing the Stage-2 page tables to be shared
+> +     * within the VM instead of duplicating them for every SMMUv3 instance.
 > +     */
-> +    AddressSpace * (*get_msi_address_space)(PCIBus *bus, void *opaque,
-> +                                            int devfn);
->  } PCIIOMMUOps;
->  
->  bool pci_device_get_iommu_bus_devfn(PCIDevice *dev, PCIBus **piommu_bus,
-> @@ -660,6 +675,7 @@ AddressSpace *pci_device_iommu_address_space(PCIDevice *dev);
->  bool pci_device_set_iommu_device(PCIDevice *dev, HostIOMMUDevice *hiod,
->                                   Error **errp);
->  void pci_device_unset_iommu_device(PCIDevice *dev);
-> +AddressSpace *pci_device_iommu_msi_address_space(PCIDevice *dev);
->  
->  /**
->   * pci_device_get_viommu_flags: get vIOMMU flags.
-> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-> index b8a1c071f5..10eb8655c6 100644
-> --- a/target/arm/kvm.c
-> +++ b/target/arm/kvm.c
-> @@ -1611,7 +1611,7 @@ int kvm_arm_set_irq(int cpu, int irqtype, int irq, int level)
->  int kvm_arch_fixup_msi_route(struct kvm_irq_routing_entry *route,
->                               uint64_t address, uint32_t data, PCIDevice *dev)
->  {
-> -    AddressSpace *as = pci_device_iommu_address_space(dev);
-> +    AddressSpace *as = pci_device_iommu_msi_address_space(dev);
->      hwaddr xlat, len, doorbell_gpa;
->      MemoryRegionSection mrs;
->      MemoryRegion *mr;
-Thanks
+> +    if (vfio_pci) {
+> +        return &address_space_memory;
+From that comment one understands the need of a single and common AS.
+However it is not obvious why it shall be
+
+&address_space_memory and not an AS created on purpose.
 
 Eric
+
+> +    } else {
+> +        return &sdev->as;
+> +    }
+>  }
+>  
+>  static const PCIIOMMUOps smmuv3_accel_ops = {
+> diff --git a/hw/pci-bridge/pci_expander_bridge.c b/hw/pci-bridge/pci_expander_bridge.c
+> index 1bcceddbc4..a8eb2d2426 100644
+> --- a/hw/pci-bridge/pci_expander_bridge.c
+> +++ b/hw/pci-bridge/pci_expander_bridge.c
+> @@ -48,7 +48,6 @@ struct PXBBus {
+>      char bus_path[8];
+>  };
+>  
+> -#define TYPE_PXB_PCIE_DEV "pxb-pcie"
+>  OBJECT_DECLARE_SIMPLE_TYPE(PXBPCIEDev, PXB_PCIE_DEV)
+>  
+>  static GList *pxb_dev_list;
+> diff --git a/include/hw/pci/pci_bridge.h b/include/hw/pci/pci_bridge.h
+> index a055fd8d32..b61360b900 100644
+> --- a/include/hw/pci/pci_bridge.h
+> +++ b/include/hw/pci/pci_bridge.h
+> @@ -106,6 +106,7 @@ typedef struct PXBPCIEDev {
+>  
+>  #define TYPE_PXB_PCIE_BUS "pxb-pcie-bus"
+>  #define TYPE_PXB_CXL_BUS "pxb-cxl-bus"
+> +#define TYPE_PXB_PCIE_DEV "pxb-pcie"
+>  #define TYPE_PXB_DEV "pxb"
+>  OBJECT_DECLARE_SIMPLE_TYPE(PXBDev, PXB_DEV)
+>  
 
 

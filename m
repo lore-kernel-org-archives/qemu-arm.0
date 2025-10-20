@@ -4,76 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 060D5CCD199
-	for <qemu-arm@archiver.kernel.org>; Mon, 20 Oct 2025 14:03:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1644CCD199
+	for <qemu-arm@archiver.kernel.org>; Mon, 20 Oct 2025 14:09:34 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vAqTM-0000MZ-Qb; Mon, 20 Oct 2025 10:02:52 -0400
+	id 1vAqZX-0003DC-Dj; Mon, 20 Oct 2025 10:09:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vAqTK-0000Lx-IY
- for qemu-arm@nongnu.org; Mon, 20 Oct 2025 10:02:51 -0400
-Received: from mail-yw1-x1136.google.com ([2607:f8b0:4864:20::1136])
+ id 1vAqZT-0003CX-9x
+ for qemu-arm@nongnu.org; Mon, 20 Oct 2025 10:09:11 -0400
+Received: from mail-yx1-xb136.google.com ([2607:f8b0:4864:20::b136])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vAqTI-00068K-9y
- for qemu-arm@nongnu.org; Mon, 20 Oct 2025 10:02:50 -0400
-Received: by mail-yw1-x1136.google.com with SMTP id
- 00721157ae682-7849f01e56eso11837857b3.0
- for <qemu-arm@nongnu.org>; Mon, 20 Oct 2025 07:02:47 -0700 (PDT)
+ id 1vAqZQ-0006i8-MV
+ for qemu-arm@nongnu.org; Mon, 20 Oct 2025 10:09:10 -0400
+Received: by mail-yx1-xb136.google.com with SMTP id
+ 956f58d0204a3-63e0c6f0adfso4502860d50.3
+ for <qemu-arm@nongnu.org>; Mon, 20 Oct 2025 07:09:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1760968966; x=1761573766; darn=nongnu.org;
+ d=linaro.org; s=google; t=1760969346; x=1761574146; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=6oefEeElhYPYPCx1qUppDDmR2fZgIlurlDig6wAbh7M=;
- b=x+NXrDa1TF6xQUWnPSSeBPMnOFatQexBPVsINco+01w/xqqaJW9w34+SOIgrqtKpFm
- c573Y9k8rgCRRdFf1sbDkB0THifORVvzqzOehmI2ba3s3DlE0BjfAUdMTG6svyccGGHQ
- AH4lENU4CsjXqfXtIb2ZAoSKVvBXMYieQ5pAlwHh8aC/0QsZW7yWOuRFUiWTcn2r8kp0
- 0uGAiLK+xfrSkOxtAYbmz3BwPRAHQj/QMdOSPz0moZl+TxhHUAhKeUKWCkA+v13X5ZQT
- 2+y/8Qym22ilmFPJum16uGKKDPmgcd4rvFBbx2bhBQ57ZYFXHqgHV4RkkLLKKpGysLrL
- ootA==
+ bh=R+vWKXYePCWA4bi2+f4sMJFhep6lKGDa+fVhlfdzZ7k=;
+ b=xUOkKoB8nzqZDFGXz+xx9XYQMBJexPenM5rraNAh+AW1nwSWlCiqgr/bDf2fL/lN5J
+ JADcuCk3IB09uFEpBaV81Z6u9OmRKtlpjoGiN+mBxhdWrEYGrSmFP84TMBcE1xa2qaTw
+ bZrd+a9gpi6azilLY80PvsGqz3k1UJ4aexEnGprBAVdG6GADLK/s+qKtbtvvyYK93n6t
+ 0yBbt88LiS8g/93uqwagWdq1XpVkkrjHpA9rcPyNut/wVIf+VpN2eXsxCgjU3NScIQT1
+ w1g/EQj9dCURzXMz65OLPvkI6SfESV5Hkkjto06+4w4QkWVwzZSk4ahkxUj7k070u/eh
+ hkDA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1760968966; x=1761573766;
+ d=1e100.net; s=20230601; t=1760969346; x=1761574146;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=6oefEeElhYPYPCx1qUppDDmR2fZgIlurlDig6wAbh7M=;
- b=eegbd3rXuaCbqPv+6IYmuXuy7DzsbDOomXoHz3egrx5Bjy4idYcjhFidw2rtkgEW3n
- 1/93b+qZ1F64la+bx8wL5SddiAs3gAVIhDkgu4l9XX/tCwjdmNNa4wRcTb8o2TMIYo1l
- +wOI2ghbm3T4lUg70qXuSebL+nj1RmY6FjyYVsvsT6bSZLGMSmjZm7Rbu3BWanI7nG6x
- GUQUlw++S8VMQugfvI7lOTrIIB0lOM1m0lgdtXi708EacRyByzkL/yu8PgTp0GJTEdPq
- /MsF5JPfhg7qqMey3BAOJ7/fH2D63rNhl/w02YVY1Ol3Vdb5vGjsy0EYlwXNYZbya7Qp
- XmjA==
+ bh=R+vWKXYePCWA4bi2+f4sMJFhep6lKGDa+fVhlfdzZ7k=;
+ b=bgESSS7eCS06kASzNMS8gW9nK5Wt2o0FGKEBlSPMVrqqKhm7Caq/bYGCFJsC3a5aTt
+ 4QW1ah4fIXTk+UyRyFv0kJSCyqxURQk6nb764DHOgThVe8WwqmU2R5Ysj7Gz3SpXu+Uq
+ i3TeyAhUAHVRAYcZLjDI3dGTgrstvDZrcTqycG6I2hv3SEEBU+PQQjg9cfLm9lzHTNBQ
+ ReiLh7LxwH35YUDCV2VWGOhH/7/DZ6ldyfSI9b6pIGpb1GCInoRvRZBoQQ4XSUbX/Qm9
+ R4cYpQcr75IS/tStUfu1d9KvObsnsBvm4KZc6rascCPMsNX/FUvznIwT4XlI1grltJ7f
+ clMQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWJOlLfWP1/dIkQIxvgC4MQHdluJikUwe0aKBSvuUKq3hzwXF044RVvJNcNPTkrQfOOnaQi2njq7Q==@nongnu.org
-X-Gm-Message-State: AOJu0Yx1A+st4A1fhASD/aBuxYoWFCetJuW3RhAkirWJ7yWf3wW79o3f
- LhQpU9mWOozmXO5yDHkOq0615u0bnN9EQQqo/uKYLXj64g9sxrw8ehUQT/XYy+r2zKFrAWc9+x3
- vsrlq92tKHJk4CMiyzBAUdnfHEkenpeWnvSBuSaC30g==
-X-Gm-Gg: ASbGncvwpKgcNs0DueOc1KJ5vTuKPkOLayKibLH+fnmv7QhABb9YxRpH0mg/vdicTd3
- GR3TR7Y/0+s/GvTWPOjLurS3XkiGjsTMKUNW45lmz6RTJyo6/eDv1Cdq/vXPLp4/OCGGLRtHFtC
- b7q/D5gZTDyUTy6+l9D3gJKihUltNUr0eHs4+Vy16iXcoUg28/mNytgHRXBhApxjrF7puwVmYmE
- vjZ2sqcq80E1a2Sf0KeVWU32uwa8J3ncKRMjGXd26kbVI/gYV+UWXwqwWCYU9PrMDEzn1YMsBao
- 7wsro+U=
-X-Google-Smtp-Source: AGHT+IHyR71RpTTAZYNB+rqqkildeyPeFQBbf7p05glcaf1EnasO72ZD71W/Ri0nV/PyC6JQ1ZdilqoMpy4hqcQCXLs=
-X-Received: by 2002:a05:690e:134f:b0:63e:4264:878b with SMTP id
- 956f58d0204a3-63e42648febmr813507d50.58.1760968965760; Mon, 20 Oct 2025
- 07:02:45 -0700 (PDT)
+ AJvYcCUBoE5PhaQ+1DpbiUqIAkw5qp8uMDIo7EBzjVoOf9drVq/p4MT6tf9D5vmDJTB8XyKuMh+XLaUqKw==@nongnu.org
+X-Gm-Message-State: AOJu0Yz9R0xNRmHgB13+hhqvJ7JvCdPEwRoyknrz3g5Uvc1WhVi4YVXD
+ epDpbw5MnizQ9hbvz2DL0RdgO6AV6qO3vc2+AKWg+sGHdZQvsznA1nd3YtQDbYf9xZrOjy6Q3Y3
+ XvdKHt/frjLTKrFbt61a4GX8xjxAO+e+NUbP6Q7kCiI60fwgIG6MH
+X-Gm-Gg: ASbGncviKDas7YW/8oJ9CMg8kkwBg06Wpoz9DL1u6rMGGZ0uiGO9xGPAknXtMFTaNYq
+ DbYdjjBo0hUHHq8ybnK9T1ivsgjldOWXSmzmvP9FpMCfjsOzo8qzbu85O5TIwEMIWT6XYCUPEXb
+ jrfcgaQwm6ObBLdzOZZFGrpJIHijHb/L0jB5zTom9to4e//0857XwVbChjI5fV6uAwvbVdIrgow
+ R+eVeIsgS4ZKbFzAxv/zbzFz7v/KiZ8z1UU0ygZyGJrN7418PBopbVzkFSgHoNRuC4ZRaPQ
+X-Google-Smtp-Source: AGHT+IG1g9MIK2HmIcZrQnYY4gQuZUMU8itXPFC/kokpgHb3APNlaF+E+7rux+R5C/rhLYsTPgYNQ3TdDxXz+MsCAPg=
+X-Received: by 2002:a05:690e:d5c:b0:63d:d8c1:4347 with SMTP id
+ 956f58d0204a3-63e160e9854mr10475477d50.5.1760969346395; Mon, 20 Oct 2025
+ 07:09:06 -0700 (PDT)
 MIME-Version: 1.0
 References: <20251014200718.422022-1-richard.henderson@linaro.org>
- <20251014200718.422022-24-richard.henderson@linaro.org>
-In-Reply-To: <20251014200718.422022-24-richard.henderson@linaro.org>
+ <20251014200718.422022-25-richard.henderson@linaro.org>
+In-Reply-To: <20251014200718.422022-25-richard.henderson@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 20 Oct 2025 15:02:34 +0100
-X-Gm-Features: AS18NWBYAnMgSSKYIOOzfTHtcZVH1S3l2zaPhCouSn-oVl0S9hyz1hhcGB75uxA
-Message-ID: <CAFEAcA9MUijSfAZpcQGMw5DM2qoBstviAA2HF+aJb+L7-tsS6g@mail.gmail.com>
-Subject: Re: [PATCH v2 23/37] target/arm: Split out flush_if_asid_change
+Date: Mon, 20 Oct 2025 15:08:54 +0100
+X-Gm-Features: AS18NWDdNoKF3wHrZijxN11VA7z1qACq_TLm8RjBi4iW4v6zKryskTnAUq0QHMY
+Message-ID: <CAFEAcA83Tgv5CV+EjMDemEb5FQkfAj0en7dq1g4JkxHZ1kKOdQ@mail.gmail.com>
+Subject: Re: [PATCH v2 24/37] target/arm: Use flush_if_asid_change in
+ vmsa_ttbr_write
 To: Richard Henderson <richard.henderson@linaro.org>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1136;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1136.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b136;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb136.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -96,15 +96,48 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, 14 Oct 2025 at 21:11, Richard Henderson
+On Tue, 14 Oct 2025 at 21:17, Richard Henderson
 <richard.henderson@linaro.org> wrote:
+>
+> Only flush the subset of tlbs that are affected by the ttbr
+> register to which we are writing.
 >
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
->  target/arm/helper.c | 33 +++++++++++++++++++--------------
->  1 file changed, 19 insertions(+), 14 deletions(-)
+>  target/arm/helper.c | 19 ++++++++++++++-----
+>  1 file changed, 14 insertions(+), 5 deletions(-)
+>
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index c6d290ce7c..2b55e219c2 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -2943,11 +2943,20 @@ static void flush_if_asid_change(CPUARMState *env, const ARMCPRegInfo *ri,
+>  static void vmsa_ttbr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+>                              uint64_t value)
+>  {
+> -    /* If the ASID changes (with a 64-bit write), we must flush the TLB.  */
+> -    if (cpreg_field_type(ri) == MO_64 &&
+> -        extract64(raw_read(env, ri) ^ value, 48, 16) != 0) {
+> -        ARMCPU *cpu = env_archcpu(env);
+> -        tlb_flush(CPU(cpu));
+> +    /*
+> +     * If the ASID changes (with a 64-bit write), we must flush the TLB.
+> +     * The non-secure ttbr registers affect the EL1 regime;
+> +     * the secure ttbr registers affect the AA32 EL3 regime.
+> +     */
+> +    if (cpreg_field_type(ri) == MO_64) {
+> +        flush_if_asid_change(env, ri, value,
+> +                             ri->secure & ARM_CP_SECSTATE_S
+> +                             ? (ARMMMUIdxBit_E30_0 |
+> +                                ARMMMUIdxBit_E30_3_PAN |
+> +                                ARMMMUIdxBit_E3)
+> +                             : (ARMMMUIdxBit_E10_1 |
+> +                                ARMMMUIdxBit_E10_1_PAN |
+> +                                ARMMMUIdxBit_E10_0));
+>      }
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+What's the value of ri->secure here for the case where EL3 is
+AArch64 and we're in Secure EL1 at AArch32 ?
 
 thanks
 -- PMM

@@ -4,75 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB34DCCD19F
-	for <qemu-arm@archiver.kernel.org>; Mon, 20 Oct 2025 23:02:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0A9BCCD1A2
+	for <qemu-arm@archiver.kernel.org>; Mon, 20 Oct 2025 23:03:31 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vAytu-00055a-Th; Mon, 20 Oct 2025 19:02:50 -0400
+	id 1vAyuL-0005nz-PR; Mon, 20 Oct 2025 19:03:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vAytt-00051i-7u
- for qemu-arm@nongnu.org; Mon, 20 Oct 2025 19:02:49 -0400
-Received: from mail-pf1-x42c.google.com ([2607:f8b0:4864:20::42c])
+ id 1vAyuK-0005nT-Fb
+ for qemu-arm@nongnu.org; Mon, 20 Oct 2025 19:03:16 -0400
+Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vAytr-0005sB-F3
- for qemu-arm@nongnu.org; Mon, 20 Oct 2025 19:02:49 -0400
-Received: by mail-pf1-x42c.google.com with SMTP id
- d2e1a72fcca58-782e93932ffso4195521b3a.3
- for <qemu-arm@nongnu.org>; Mon, 20 Oct 2025 16:02:46 -0700 (PDT)
+ id 1vAyuI-0005vX-Ju
+ for qemu-arm@nongnu.org; Mon, 20 Oct 2025 19:03:16 -0400
+Received: by mail-pf1-x42a.google.com with SMTP id
+ d2e1a72fcca58-7800ff158d5so4402611b3a.1
+ for <qemu-arm@nongnu.org>; Mon, 20 Oct 2025 16:03:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1761001366; x=1761606166; darn=nongnu.org;
+ d=linaro.org; s=google; t=1761001393; x=1761606193; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=z2um92yXr1aIjgkBdR9GQ5+cVtbbBFhBD83xlz0b/hA=;
- b=znI6V00BI6jYAwVBd8VD3y0NP81q+DxONSn6NmOVp3O8h4G/myqVlF1nkpbANHdzNj
- 7zrd8LZX7XEsdy2EDsg6VuJtWjjHC+Q4b6WpWsZLNwkhBqv+hKHJhJPZRh+CivaGMnxp
- mW0RUeKQsMb8xd+Ev3CNwGW8vEhbsJSmZ4koPIvV9IbcqCrux1Vgwi6Ha91K/3N3xCLQ
- LY3jUsvjI5/dElpChClGyqkRNCEqQgk18N03EkZpP70HX2uAll7eyyHZoNG592QEC0hX
- 5PrtlFYlOhevrIRHbXiJNrbkrmn0dF0EbIcXRjYJpvQyODX3x3G1i49eKB+Qf/KvbS19
- 0xPw==
+ bh=6o+fgao+xR3zoHTFJffxoX24yvZBwmWhIFo4CHdugOM=;
+ b=TOYaeynLkXyjPHtfCzC8LbvVWixtht/zKUoviY0qKT+yBADnYeOojtybDHoYnJT6IE
+ yul/tTk8hPWFGFOSK06VkjDFcq233fLpPTfy9PhFf1xYfEcvhgf0KoXoRxRwq6YQ9Zwn
+ 7XKcZ/ZHLAZ5qAmpkBfQksAwDYXWe0KdC37fkk2evEg07GTdCQxoX0xS42Ou8BwDKHoT
+ f5a0seBlL/9536nqSMu7ZspzZQbc7cuNr+QR1PR7gx5xfQAaKYfdZcv3LO3msTPtcoB5
+ sTQjqCaJjXRDDxq3bmZcIvkn0bvbW4VUX0zuRZENrPHyLLAURujYO63JXoIa0YNEbR9F
+ HR2A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761001366; x=1761606166;
+ d=1e100.net; s=20230601; t=1761001393; x=1761606193;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=z2um92yXr1aIjgkBdR9GQ5+cVtbbBFhBD83xlz0b/hA=;
- b=iNSS3XGtvOwCeFfCZjbkjXi5gRMkX1uNR+Gz3p/7oLGeK+R3AnVaf6mT7lqU9C0xf+
- Il6xkiXOhpa7uYoQ5ORMXEc2Bz8/7AtgsnZ+Ls9pAOpr21Dh0ULbe0WQnVe3AGBcnk1Q
- HYHGB68hAGxkttC1esyLIhDCI0THv9ZPjsSCZUnFjaLbWrEeKK8tL7Eh7Jay9IOVq5zT
- +tQoxKvBzTnH11Fh39OBO5HtE7Op8kXraA8PRU0KPu6woSC1BMwYPD45WKsEFAlt0ugI
- O7TsJekwZ3gPJLf06MSutvtDq360BM197gggJgJhGuBTEq5nrwDp1LzFXSg3z3cAvRK/
- UkPA==
+ bh=6o+fgao+xR3zoHTFJffxoX24yvZBwmWhIFo4CHdugOM=;
+ b=OYcUnYdxKY5rSWto9fZ/u4H33MIS6MSVvqIrfVHC00K7UI54FEkDcdcGqd8bXZghnz
+ s9ERpV8RYa/1FSlOaCKkV6y1aF01SeNSX6KZge9zsXPPeZlicCvYUQxyeXauTEa6PNXr
+ h5f3MaLKE/jErwfL5A/lz88n3yf2jJnd/Ne9svX+y1+EITPYCS6ctdXwbBb8DfJYynQF
+ A39d37a1+5HxC1aA/yMri1WH/NOvBldSmBaacQQXg0PAzTn+h0tzclfzuR+X7masCpoW
+ bIzIml7Hdc1RfgR9iQXSxTJDo1167b3E+E+41EFBDPPW4xWQTteLAMsMWBR4fcJYpF1g
+ XGEw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUefEcxDrUcfCd9k0D6cJ3HwXAaB6xMaJHRgwSauwRaJbu/U00+oCnPvtxnJavKBvLQEwn42M6PlA==@nongnu.org
-X-Gm-Message-State: AOJu0YzpPnJ39nK8VKzZ6L13G2Tv9XAO4Hkbk0kSZKNbLxGMByT9hH07
- T3uOpvhe4gN+HIAbzEgoXi2lO8Bx9N+TNz2kqh4BGmqmYf5d/zWpwb4DnniCzKN1k/c=
-X-Gm-Gg: ASbGncsubcAINcNIKTrb1O5WdO4FA6E/OSv5cqA3yS4qMUOBYaII7sItIrOXlu3V7eL
- gbl6EqPlK3J7VPk9QSW4PF6eSx2LfTCLEHyIa3sN77mSLlRcbZRmhEubmnh5fb9GR5nsTmbsNzm
- HOUdR1Jcgc6dO53+DBEm6aC7UtdAw2MU9ZPvL+96WEyE6SlaUqJhvVyaSWSfDAlhwYVMksgK4Ug
- 28DfItokAQQjHvli4yOwMJs6FhQwHefYfmqbzepxioDZ0t3rClHlO7qn3NlIF/7AF0XAeMzVW0S
- 9ZFghNrXrZISQ35V5amq1p/MBnMxWNfrxPdP75yqzF9aX7IPY+V1LinBL5GA7SfPeGNYlcGOIBu
- NGTUBhO23Q9wuEeuhmb9aKA921ok04dOv3j2CkB7lUvurHoDXqDvn1tR5DYXAUQ8Jl79H7koPSm
- +/9/04kYrir+kRWg==
-X-Google-Smtp-Source: AGHT+IEBIyQN4SCFFQ7hdXsAs4JWBKK2NtyulPAwRd8PaO/NuVZIubmQec1t9h9KuJp8t5gwY+wKpw==
-X-Received: by 2002:a17:90a:ec8b:b0:32e:a10b:ce48 with SMTP id
- 98e67ed59e1d1-33bcf86c996mr21051673a91.12.1761001365852; 
- Mon, 20 Oct 2025 16:02:45 -0700 (PDT)
+ AJvYcCWXzqNkd+vIr98sABWN+OBAz0HHQddGbujYjR5LpqhQ4HNG1pEHxgeCm9yCbM3fkbj1apmIeYSOaQ==@nongnu.org
+X-Gm-Message-State: AOJu0YzpguHTUJ7dmRUtf9ZqN5wrccIhevA2DZ4yBZCf8XB6GvNmtwXR
+ 2T9XjPlWQhUMu05O6BZdXH1cvO+juRR2YQCrWwFDPo4+XHYNzExqwCGO805pZFFE/Mg=
+X-Gm-Gg: ASbGncs1hc6i8MIEoKh8ZmaFLy+c71HUJVOKOqPr2rO9hTY4SkhDmqluEVcfocg9WIf
+ yzHvEWi4/DtZATdWdaMOjTKgsLnssL+LBlX4OPntRSIadywIjDoexw4rHma4BA7GJ4lGJVqezHn
+ cKsXuo52HJtZSKKCmUnEnzXQ8uZeolPmy4+BattlJVKPB3uInwt7NnI3CF1TZt/CzsRHig8gTeA
+ QN/cQOYhVjulILIoU6wlXDc2zUB838c7ZvhyKNV976jxf7w22IqFPiQpdx3zI98eTzBzAqSQyk8
+ kOY3+OL1aJid5jHmQ8NLsbciB5FhKfiwy9sODfkWFziIsesh+X19djw9kN7gc5MJ7mMM+Hl1L1u
+ ziT3nMIDwNRIs5xvASU2rjCfq8R8QsY+SQNlLfb67Ukh/uzggEbDyvM6/mVfjp21rUxw3LGbdTj
+ oI9CFyUyRqWuU3lD6PSfpfd5bW
+X-Google-Smtp-Source: AGHT+IGJZGStCCoVg5U1Vfh3jGGEEg7kmJ+akvU25mZyWwHHkVp0QSJCrdvEwDbanQOt2oyMPyr9NA==
+X-Received: by 2002:a05:6a20:394c:b0:32b:6f9e:d62e with SMTP id
+ adf61e73a8af0-334a85baeeemr18118061637.47.1761001393021; 
+ Mon, 20 Oct 2025 16:03:13 -0700 (PDT)
 Received: from [192.168.1.111] ([38.41.223.211])
  by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-33d5de14becsm9177503a91.10.2025.10.20.16.02.44
+ 41be03b00d2f7-b6a7664a228sm8553342a12.4.2025.10.20.16.03.11
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 20 Oct 2025 16:02:45 -0700 (PDT)
-Message-ID: <f853622f-ac71-4e17-9f64-699e91636da2@linaro.org>
-Date: Mon, 20 Oct 2025 16:02:43 -0700
+ Mon, 20 Oct 2025 16:03:12 -0700 (PDT)
+Message-ID: <c4754279-8cc5-4e14-a2e9-215e9963de15@linaro.org>
+Date: Mon, 20 Oct 2025 16:03:11 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 02/30] hw/boards: Move DEFINE_MACHINE() definition
- closer to its doc string
+Subject: Re: [PATCH v6 03/30] hw/boards: Extend DEFINE_MACHINE macro to cover
+ more use cases
 Content-Language: en-US
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  qemu-devel@nongnu.org
@@ -82,16 +82,17 @@ Cc: Anton Johansson <anjo@rev.ng>, qemu-arm@nongnu.org,
  Richard Henderson <richard.henderson@linaro.org>,
  Zhao Liu <zhao1.liu@intel.com>, Eduardo Habkost <eduardo@habkost.net>,
  =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ BALATON Zoltan <balaton@eik.bme.hu>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Yanan Wang <wangyanan55@huawei.com>
 References: <20251020220941.65269-1-philmd@linaro.org>
- <20251020220941.65269-3-philmd@linaro.org>
+ <20251020220941.65269-4-philmd@linaro.org>
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-In-Reply-To: <20251020220941.65269-3-philmd@linaro.org>
+In-Reply-To: <20251020220941.65269-4-philmd@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42c;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pf1-x42c.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42a;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pf1-x42a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -115,14 +116,19 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 2025-10-20 15:09, Philippe Mathieu-Daudé wrote:
-> Code movement to have the DEFINE_MACHINE() definition follow
-> its usage documentation comment.
+> From: BALATON Zoltan <balaton@eik.bme.hu>
 > 
+> Add a more general DEFINE_MACHINE_EXTENDED macro and define simpler
+> versions with less parameters based on that. This is inspired by how
+> the OBJECT_DEFINE macros do this in a similar way to allow using the
+> shortened definition in more complex cases too.
+> 
+> Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
+> Message-ID: <d75c8bbed97650f1a4d2d675444582a240a335b4.1760798392.git.balaton@eik.bme.hu>
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > ---
->   include/hw/boards.h | 34 +++++++++++++++++-----------------
->   1 file changed, 17 insertions(+), 17 deletions(-)
-
+>   include/hw/boards.h | 16 ++++++++++++++--
+>   1 file changed, 14 insertions(+), 2 deletions(-)
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 
 

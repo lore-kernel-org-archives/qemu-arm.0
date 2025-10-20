@@ -4,77 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D733ACCD193
-	for <qemu-arm@archiver.kernel.org>; Mon, 20 Oct 2025 12:35:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9EAEDCCD199
+	for <qemu-arm@archiver.kernel.org>; Mon, 20 Oct 2025 12:42:30 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vAp6d-0006HU-CM; Mon, 20 Oct 2025 08:35:19 -0400
+	id 1vApCv-0004tp-Sm; Mon, 20 Oct 2025 08:41:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vAp6b-0006Db-Rr
- for qemu-arm@nongnu.org; Mon, 20 Oct 2025 08:35:18 -0400
-Received: from mail-yw1-x1134.google.com ([2607:f8b0:4864:20::1134])
+ id 1vApCp-0004t4-SV
+ for qemu-arm@nongnu.org; Mon, 20 Oct 2025 08:41:45 -0400
+Received: from mail-yx1-xb134.google.com ([2607:f8b0:4864:20::b134])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vAp6S-0000R4-0X
- for qemu-arm@nongnu.org; Mon, 20 Oct 2025 08:35:17 -0400
-Received: by mail-yw1-x1134.google.com with SMTP id
- 00721157ae682-73b4e3d0756so47808477b3.3
- for <qemu-arm@nongnu.org>; Mon, 20 Oct 2025 05:35:07 -0700 (PDT)
+ id 1vApCm-0001Mc-E7
+ for qemu-arm@nongnu.org; Mon, 20 Oct 2025 08:41:43 -0400
+Received: by mail-yx1-xb134.google.com with SMTP id
+ 956f58d0204a3-63e393c49f1so912246d50.0
+ for <qemu-arm@nongnu.org>; Mon, 20 Oct 2025 05:41:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1760963705; x=1761568505; darn=nongnu.org;
+ d=linaro.org; s=google; t=1760964098; x=1761568898; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=aQAoilAjBcDCKGTGqZZ98OivUN223MWls7lmhQrOdTU=;
- b=OsFzUwBIw5od/CrES7nO85yi1w/BlKb3FqFUAKSNBVyv5/8leEDnsY05APlHIKK9zj
- 5Zlq1DmZ3j2ONelB1PvvK7g1oQuhITfYKOBlQcbZhTjFC23O9eHt4Mr3tRbAgg20nhqR
- DCP7tIQbCnOFWxDZ1Da4Sm/fZqD+bZtkYhE2j5hHa0CFrRFW4f7cjbXtB0AkZV3pfbE6
- gvJpeVZasnV241Iwz79koIRgEiowHiJSDv8eRtqGWbhBeLGDbgbtYu1x4bgKA4AJ2wwi
- jE+zl1Xbpfd4EBFG0W1ZDmFuHXDxxrO7EVUkWnjmdCbacMgjdnjiCGOwiK4BmSC4nh2g
- V3Rw==
+ bh=PW65LhS1X6Ec177D/Y4bYc12+jOSUfnDfv/L8UlPQuo=;
+ b=seB5eaMv/bl2+vMbpT6wBsUlYzQaZhltL/KGYarExRpjXswAOSOnqAyteXylsofdyX
+ vx2TTfm6kvITyFeskuZrF9KBffaaW+d1kIboCUov6No405cbP37DtmvYdnIVbc8M119E
+ zvC0SPd7Eh2qSyXvo68maFsH9OORW8FBLnMrQDgQdEOZgtL9O6+BY87NgNgPZHTnxxPm
+ yANKPYR5tz7e2xidG9w9u6H5uhH+NaS0s65HIA+aODO3akS8pGN77s3x+0WtUvNr3/Hn
+ XlCME6KsaAMozN+o+wxoVYovR7FsLbPouMcOuYdvx2PxuVz5PSK4x9g9nyikV+v35A34
+ Tkbw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1760963705; x=1761568505;
+ d=1e100.net; s=20230601; t=1760964098; x=1761568898;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=aQAoilAjBcDCKGTGqZZ98OivUN223MWls7lmhQrOdTU=;
- b=J4xab9QXY8mX6HJFhtvTJ0xW9sc7vvsskXLJqZuT5FffZlaZg0XUci1npkgQv8JLZA
- NBGCcDysl3IV3XfCLzx6Ja1TghZ+fFwiM8HRfCUHfoPNUuKLcjzsYvms76RT4kP3t0m3
- 7FJI7gmteAlZP5JFKCXWr2MRZDg3WAHXGCu6RzPO5s6x4lRqz1eSAt52jAQAk6SRS3WV
- Gib/QbqJ0aJ9GAr9Hv1Z7JIdESusdQS8Hm/p1vdWMjWvdJXGkjDB/aWPGD3ic5E1/f0C
- mTBRXWu1hsb2H2JZKX8+UwiJpdc/ZRykd+j0albNyg8aJeoX7fXxdRugdzym3hAJ63nb
- WAvA==
+ bh=PW65LhS1X6Ec177D/Y4bYc12+jOSUfnDfv/L8UlPQuo=;
+ b=RWlyyEvl1SiosM/5SSsE4gH1/PXFEwOodldfTHwj8lkJR0ynT63g/DWN19G/R7nHiT
+ zjHfxxLZw6C7H6/wzLEXPcYA/U0wAPiqCoeq4A1MoaWAbIbfb8ZvdUytiuveyCjjMq7v
+ UeEL5Rqb6rMcQH+RSihOF46ggc/Blya41Nvle9TdShaHODhxN46VQjaqWw4msKYeicTp
+ Xg5fAqkaoSJ+Gc15BikDp1FA0Ks/YCVavkL1BTVlNfzg7SRHRYMNxYRGH0t1ire/v9WM
+ lIrOG2sr9o3I+fV/OyjMTBZNX8tH3OdLb1n2S/XzJavXFeb3eWRRSs3at5QgJKOKGpp9
+ TSPg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUPTJUjSFiRbsYPZvzRSxxarifCMkqqYQ6n4LmbTn7l2hFAF6oFJ8UzheQeuG1IDeJlcR61rkMWbg==@nongnu.org
-X-Gm-Message-State: AOJu0YwICLt711bcm8jhO27UJdrRpfoZO9bJFMseWRrfpAjBkLGf9ndV
- 9yUF6ghiOP+u2TptWN7SGtx0i8VQx6dqVI3OzPJmSXmDmfxhemc36ELQHPTyEvR8HLcey0dqidM
- 0S4RqLiaHhQiFGyKsmXr1hvfsWwJRnNsq1Xj8EwoHyQ==
-X-Gm-Gg: ASbGncscNH7s4IXAYFjZmXF6BK4ISDb7CIy7ZejPpc8YfeSC6EQreX9iEM3nPGom4Lk
- RNEn/m1xA7NUJ0DFPqqyKXSCyqUUUvxye3qW3Q5UZj474cI7xPUrIRajUFZyudLcTZVUFz8p5os
- LMTR/fCCrU+66ZUQqJMeHEkFJpcca6+rBHN/Xy2RZp44p4NYOGh40+v4JWpaggmFjTyx8xEOujk
- kHTPNsTePSUhUdP6nvottswfz5p3LlVVihzZTwCg3YkSFcxa0EzKK7gQOmVwhfCcUBVzeSC/SgK
- SsoQwtw=
-X-Google-Smtp-Source: AGHT+IEUUUeUEHdTVFB6lvU+m/SZqyrx6pCsxthNvWu6aYke9ysuFNJFd2SX9Wr17H9IMIoVsimOtneycEDEQJWYrUc=
-X-Received: by 2002:a05:690e:d56:b0:63b:47b3:4fef with SMTP id
- 956f58d0204a3-63e160e9866mr10038577d50.14.1760963705406; Mon, 20 Oct 2025
- 05:35:05 -0700 (PDT)
+ AJvYcCWPIXBOOYGBKaLIBM9IEolyqxWCzwS84KWmbkTpnGDUxiJXKbYuBL00NG8uMm2SIRVpSrFHtjv2Wg==@nongnu.org
+X-Gm-Message-State: AOJu0YwvCTVtadH57rWPwxqNZ41CacIzApa/0iv8Y28RvBYgvm+H89l9
+ n83VfcdCcg/ah6sEyzo6VJPNwBE+GSNzdSPhnZrTHrfkF9xlcb8orsAjiFWVusOr3k1fvobHCnT
+ 2ZovKe012Pv7Og8McN0G/gY3gOhbtZ6po+4B9XDduw5v5eMtyLaDv
+X-Gm-Gg: ASbGnctHiamq7/qMoA041B8Uf7pTEtRpTEPMHfWTMaomp0VHN6oG4PQj3+UcGxCA3ZD
+ WuqX+awxdZ/x0gvEVNnpqKsKXeSTMBGYyHZ8gC7koc9l2arK+qaY7ELweOrKy2hDFX/211BUB/d
+ F0xWuxGOEPQGIVpBw3oMFQ6fiFzzHz4fmv+xBqCQJ1pb7YgA5I3KFWRTpRnSQ5xY3tI7OOGLI0e
+ tw91c3X1XnLrHzQkgfkBfdDEq14Gzg9q8zpVxmT1wVxJ6JVkUcajRNqy7v8Bg==
+X-Google-Smtp-Source: AGHT+IGjb2wT4a9okBYL7Ycm/UGOZ4cT5cqiTpOitPQJ2SEAPOijQYiz9sUV8cTHYaOAfZ0AscQ57USyY/lVIqvIpRQ=
+X-Received: by 2002:a05:690e:1483:b0:63e:2906:e7f7 with SMTP id
+ 956f58d0204a3-63e2906ef1fmr6269550d50.8.1760964098088; Mon, 20 Oct 2025
+ 05:41:38 -0700 (PDT)
 MIME-Version: 1.0
 References: <20251014200718.422022-1-richard.henderson@linaro.org>
- <20251014200718.422022-14-richard.henderson@linaro.org>
-In-Reply-To: <20251014200718.422022-14-richard.henderson@linaro.org>
+ <20251014200718.422022-16-richard.henderson@linaro.org>
+In-Reply-To: <20251014200718.422022-16-richard.henderson@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 20 Oct 2025 13:34:54 +0100
-X-Gm-Features: AS18NWDYhpjchLWD1YLekr9vNDWMhc2yupizqFSTYU8-uVkWv7cRa0Xt3ycyGQs
-Message-ID: <CAFEAcA8bB5jbc1bEd2zUJUDj8=q0jfWvfcUwdUPW0Upbr3u8_w@mail.gmail.com>
-Subject: Re: [PATCH v2 13/37] target/arm/kvm: Assert no 128-bit sysregs in
- kvm_arm_init_cpreg_list
+Date: Mon, 20 Oct 2025 13:41:26 +0100
+X-Gm-Features: AS18NWDKNyW8_yAq6MvaNA8dVB5NJnzJfY17NelQWIMp1erE5nUpPb9mQU-jfvo
+Message-ID: <CAFEAcA_c7xk51H5cwvYJa2vUKBT9NJMg2_qVSz3nAGXVYK1+3Q@mail.gmail.com>
+Subject: Re: [PATCH v2 15/37] migration: Add vmstate_info_int128
 To: Richard Henderson <richard.henderson@linaro.org>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1134;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1134.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b134;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb134.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -97,30 +95,14 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, 14 Oct 2025 at 21:11, Richard Henderson
+On Tue, 14 Oct 2025 at 21:10, Richard Henderson
 <richard.henderson@linaro.org> wrote:
->
-> KVM has not yet enabled 128-bit system registers.
 >
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
->  target/arm/kvm.c | 2 ++
->  1 file changed, 2 insertions(+)
->
-> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-> index 4f769d69b3..3e7738592f 100644
-> --- a/target/arm/kvm.c
-> +++ b/target/arm/kvm.c
-> @@ -804,6 +804,8 @@ static int kvm_arm_init_cpreg_list(ARMCPU *cpu)
->          arraylen++;
->      }
->
-> +    assert(cpu->cpreg128_array_len == 0);
-> +
->      cpu->cpreg_indexes = g_renew(uint64_t, cpu->cpreg_indexes, arraylen);
->      cpu->cpreg_values = g_renew(uint64_t, cpu->cpreg_values, arraylen);
->      cpu->cpreg_vmstate_indexes = g_renew(uint64_t, cpu->cpreg_vmstate_indexes,
-> --
+>  include/migration/vmstate.h |  1 +
+>  migration/vmstate-types.c   | 30 ++++++++++++++++++++++++++++++
+>  2 files changed, 31 insertions(+)
 
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>

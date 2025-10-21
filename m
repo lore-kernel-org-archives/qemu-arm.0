@@ -4,85 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9E08CCD1A5
-	for <qemu-arm@archiver.kernel.org>; Tue, 21 Oct 2025 07:53:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09A33CCD184
+	for <qemu-arm@archiver.kernel.org>; Tue, 21 Oct 2025 07:56:00 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vB7BT-0002z8-6a; Tue, 21 Oct 2025 03:53:31 -0400
+	id 1vB7Dj-0004CT-I1; Tue, 21 Oct 2025 03:55:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vB7BS-0002z0-0j
- for qemu-arm@nongnu.org; Tue, 21 Oct 2025 03:53:30 -0400
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vB7Di-0004C7-CW
+ for qemu-arm@nongnu.org; Tue, 21 Oct 2025 03:55:50 -0400
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vB7BP-0002o3-Sh
- for qemu-arm@nongnu.org; Tue, 21 Oct 2025 03:53:29 -0400
-Received: by mail-wm1-x330.google.com with SMTP id
- 5b1f17b1804b1-4711b95226dso40125585e9.0
- for <qemu-arm@nongnu.org>; Tue, 21 Oct 2025 00:53:21 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vB7De-0003AZ-A1
+ for qemu-arm@nongnu.org; Tue, 21 Oct 2025 03:55:49 -0400
+Received: by mail-wr1-x431.google.com with SMTP id
+ ffacd0b85a97d-4285169c005so101414f8f.0
+ for <qemu-arm@nongnu.org>; Tue, 21 Oct 2025 00:55:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1761033200; x=1761638000; darn=nongnu.org;
+ d=linaro.org; s=google; t=1761033343; x=1761638143; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=4XSzm0wfUSA4CIUhFWciPqUNrYgEsNDDhSIDvvR9MXA=;
- b=B9n2DoaafE7jElxj45XyA0gXigsHAqsUSGiFk/h5KjYht/0SVsoQBM80CwVNNy4DZG
- umu9wDczD8wn1GRYlWdFZEHKmEAEHg4rLz7efspCQSW4zBCOr3QXe8yBb5EgDbjZ9kDs
- cFk6o+DNkm8VzY9UyTJTvfDidVyNHVdkIg4ya90d8QlVmm6H8YmNpeVtvrkdLWEwFeWr
- I5ta9EaxHEorRaqkRv+T+4AbFY1kNjtxQKNR+gAKCAtFt7E09XVNiX8YtwEsRFUHT7ao
- 3cNt5XYNdmmVYJy+VP/T9V9hFVdPFq+CQ6l1ZLiWaaY2ZQ0ETwv1GA0DS/sLN6YzqLXY
- Y8mA==
+ bh=qzGFx25f9CU4f0k+8+/Qge7EPXnpJflLIxX31Ci50KI=;
+ b=R/zWB8hg5lY9BlBE2gTGCmjMzdZKcAbNWJKY5B8H4lF6j99SIOfYtTptCH6wC96cI9
+ vRMRa05F/4onm3K4RhfBlL2+vj1gFU6Sdf1Kld2nIl3Dm7wHIXEhwjxouYPbiiVx9qrh
+ mWQtrr+xxu6r4biBNORaLIpM989NLRmGYVfuOz8pOYpc0INwrvxVYMa7Pdb+QXmwLvop
+ 4rHUWJEv4MNrgu3SIVb8Yr6K7qolKoFL/wOzQ/jEmqHAGn5f+HUyz+9VdLq1NpSWXxxq
+ F0JlYD0UhTHgMgGeb6PJBFbnWeROufujHKoD7GIbJFEcwWsauNTcFOmBm2Lj3PBvWxoZ
+ Lt5A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761033200; x=1761638000;
+ d=1e100.net; s=20230601; t=1761033343; x=1761638143;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=4XSzm0wfUSA4CIUhFWciPqUNrYgEsNDDhSIDvvR9MXA=;
- b=PKsm5EZyzYAzizLvbvsuJpVXvgxa5EhWFbp0dWZ+C/QSIoCkEQLWPLaRhwP5eNpiuQ
- QeiNBROTnBMOSD/uWG8BnOX9OcFJfhlsuUGMsHG3/XBWdg2l3u3XSfhbteHYjHtfC6+r
- b9uO8hJjk0G0C3RqjHmBhEGsZp4bvNGsIPE/SL8EEko4j/8YQU/Lq7VWPm3dEclqHgDD
- b2wmMro/cVhOFqO5VpXalRHIbtPdrUKzpPupim9EaIT2dzIFa22ciOe0ZK/YZpqZLLE1
- 39AfqYdMIiNDgoFDb8wNk6BCiG4Qn+aM29v7swp4+5keHYS3EaNk7lhhRBJnFWlVYKYa
- 3xqA==
+ bh=qzGFx25f9CU4f0k+8+/Qge7EPXnpJflLIxX31Ci50KI=;
+ b=EMvgrwmlAt9vaIE3C0mPbIG7AcaeNKKFcQgs2F9TpGf1x2i0/Zte3CZL4ko5mAs4So
+ IEVGszuaOSnfn5hFYLIif/JZ9dNZVg9YgIWGyNHDGBeV23unfMgp3wQiuiI8ozOe61L8
+ /i5bAAzBNN/pyWhSYPDilG+cmjic6Om1fAtwGqnGHleZH26uYjcUezCUINCJiq0tQw7p
+ wr/ne9TTkZhJJmSGV0s63JCKB4p+RMyNu1ieaoVuz9WXPXPcJX4J+UUmQ+Q/5zTRGaBF
+ thYd78MGIsPiQysXnP+wyCyGy52Vof2jpEdQbMu2chjOyB1zAgk4/qqje9pVNzprVs6S
+ ATow==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVfyggDgAzbLFt3r2JNsIUaV0etXzFjTTKS46RZBuOaUZJswsHoEyiibLciq+HhKEVUYU5oPBl29w==@nongnu.org
-X-Gm-Message-State: AOJu0YxGo/YWGv94WvqQEh4+8lcRud9XwdAKIYs6MMzfyAhVGmFudFjq
- YKCFqKWAs+L8qIJEFt1Zo1hyjzqY2ZvyUzp8mb2s/jicRxLE4VVodgPaHhj1qmZpc45fOCjejJP
- Kk8NvHrU=
-X-Gm-Gg: ASbGncsgQohKalg5b3V/bMEYqUk9016LGCsag+ZIIvjr68rpHpS9Pk0SEGSFyXdZLY1
- DXH86hfjvcrrpzSop1x1YH90ANzTmg6H/se07+sk4EfCriRu0Dya4o18xmYRsP8lrrh7kYCth2w
- AwHYAiPL3Ab2EBeDJhNonJv1P1YWAD3ScfTf81IdxDKQO3DeryTh1HU/sCeCzRnlWdbhytqp/B4
- r8xG1EtUZDHl9w9wC52dHWt8fqmit4yP/lJUpApeujEjULpKROAtCzX/V3yoI+nS5HZQf7roVpR
- E18Lu0jck4WWELqO7Ce3seVp8Eg37W1GroUR0O4QWfU8BM/5PApVa/1OapCIxP41taLc4BdICOT
- Xjp9KEFZxa6eOpxLOvVbj+LBFi6bYY3djRBjgA7xCtlJ/o6W//BUO4x3qDRJ9MpYz+F6jayoGYM
- 1HzyTpNAEQUld4NaHdPyqwe/VYqHkJN7JnMgptBR39LkWcrZHBJzgv7Q==
-X-Google-Smtp-Source: AGHT+IGE/vHKF0Erfc5wVRVZkuf2QIZN0tTKp1Pxq4T4C2tMAQMK2l5Jk6432IoFNv1goONmMlkQVQ==
-X-Received: by 2002:a05:6000:4285:b0:3eb:9447:b97a with SMTP id
- ffacd0b85a97d-42704dab1e2mr10803396f8f.54.1761033200022; 
- Tue, 21 Oct 2025 00:53:20 -0700 (PDT)
+ AJvYcCWPNBmK0hKUISEAEusCqczDcI+rZz+MLPBzkwWiao532UPWnpopWqqi1hEIK0qWZ9kR1jKSYKzhlw==@nongnu.org
+X-Gm-Message-State: AOJu0YzBHfJKuqs1sMu0kaeqMH0AWCD6BHEbXzMHxGEHsKZOyJO+G5pD
+ Hh8+IUMOV+38MngY19ZRDsVqJPiqs35IFHwHS2oppF5WmhQiU+kYUzRZq9XR3AkxWrDLq7CREs/
+ kReRGYM4=
+X-Gm-Gg: ASbGncshbm72D6hWkTlHGXXmAMva0EE7BgQzuxzPpE0HoTm0zzqo8Oy5LZuaYqvZPhi
+ NMJw0p9uZNqFpIpmJ/2hS0nrMzyj6K7Zj+maeUEyc/Fikmm9t4SHitJIjfcDCj9UAthMYrYR5Mn
+ Pc2O1nR2PqLUb9vyJdkLoYtlpRu1OsVVANna6Qk8qgnscUtjVn1sBv1ufi/D+CkNsbe1HVZSv3w
+ ICKzjL+X4UwJrd1LJr4LfCRqFq1rApdz7jp661yNYgl/4hCDdn0cSxwh2aG5WWdC1yg+xJ1TS6f
+ KIYsBqDVO7l5n0M8/cWfWF9Tk+V5mKwKBse/SXKtI6Jely2WuBgSbIEqbIHot9DF/s3Gm5sUzH6
+ Rx34kfLXQASp51OAjLNJcd5+YEw6n8Lpy+9JO44Ey0wWJ1POa4aYE3of7CKg6TQWsQaStOZUoS4
+ VX6erpZ9tjUwF0SKy5FIm3SVyQsOnSTlgwThtRAjrfntc=
+X-Google-Smtp-Source: AGHT+IEhLMan6NE95k5qpUeyTzN1VkiWFNaJskz7cGA6Qf7j4pgIY9J2gb5xTlWTQm4+Xneq0iKUyA==
+X-Received: by 2002:a05:6000:2889:b0:428:3fbb:83f9 with SMTP id
+ ffacd0b85a97d-4283fbb8f1amr6296064f8f.40.1761033343153; 
+ Tue, 21 Oct 2025 00:55:43 -0700 (PDT)
 Received: from [192.168.69.221] (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-471553f8a3asm212347275e9.16.2025.10.21.00.53.19
+ 5b1f17b1804b1-4711442dbaesm270415835e9.8.2025.10.21.00.55.40
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 21 Oct 2025 00:53:19 -0700 (PDT)
-Message-ID: <60f2024e-324e-4856-952b-59ededfb2468@linaro.org>
-Date: Tue, 21 Oct 2025 09:53:18 +0200
+ Tue, 21 Oct 2025 00:55:42 -0700 (PDT)
+Message-ID: <27316450-54a9-43af-a6a3-a02373aa8e43@linaro.org>
+Date: Tue, 21 Oct 2025 09:55:40 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 19/30] qemu/target-info: Add target_base_arch()
+Subject: Re: [PATCH v6 08/30] hw/arm: Filter machine types for
+ qemu-system-arm/aarch64 binaries
 Content-Language: en-US
-To: Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-devel@nongnu.org
-Cc: Anton Johansson <anjo@rev.ng>, qemu-arm@nongnu.org
+To: Jan Kiszka <jan.kiszka@web.de>, qemu-devel@nongnu.org
+Cc: Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ Anton Johansson <anjo@rev.ng>, qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, Bernhard Beschow <shentey@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Zhao Liu <zhao1.liu@intel.com>, Eduardo Habkost <eduardo@habkost.net>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ Samuel Tardieu <sam@rfc1149.net>, Beniamino Galvani <b.galvani@gmail.com>,
+ Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
+ Antony Pavlov <antonynpavlov@gmail.com>,
+ Igor Mitsyanko <i.mitsyanko@gmail.com>, Rob Herring <robh@kernel.org>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Andrey Smirnov <andrew.smirnov@gmail.com>,
+ Subbaraya Sundeep <sundeep.lkml@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>, Tyrone Ting <kfting@nuvoton.com>,
+ Hao Wu <wuhaotsh@google.com>, Felipe Balbi <balbi@kernel.org>,
+ Niek Linnenbank <nieklinnenbank@gmail.com>,
+ Radoslaw Biernacki <rad@semihalf.com>,
+ Leif Lindholm <leif.lindholm@oss.qualcomm.com>,
+ Alexandre Iooss <erdnaxe@crans.org>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
 References: <20251020220941.65269-1-philmd@linaro.org>
- <20251020221508.67413-4-philmd@linaro.org>
- <bc03818e-d76a-4301-931a-058f21bb6847@linaro.org>
+ <20251020220941.65269-9-philmd@linaro.org>
+ <29fe5291-9517-4c47-a16a-6de639bdd932@web.de>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <bc03818e-d76a-4301-931a-058f21bb6847@linaro.org>
+In-Reply-To: <29fe5291-9517-4c47-a16a-6de639bdd932@web.de>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::431;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x431.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -105,109 +129,48 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 21/10/25 01:15, Pierrick Bouvier wrote:
-> On 2025-10-20 15:14, Philippe Mathieu-Daudé wrote:
->> When multiple QEMU targets are variants (word size, endianness)
->> of the same base architecture, target_base_arch() returns this
->> base. For example, for the Aarch64 target it will return
->> SYS_EMU_TARGET_ARM as common base.
+On 21/10/25 07:41, Jan Kiszka wrote:
+> On 21.10.25 00:09, Philippe Mathieu-Daudé wrote:
+>> Register machines to be able to run with the qemu-system-arm
+>> and qemu-system-aarch64 binaries, except few machines which
+>> are only available on the qemu-system-aarch64 binary:
 >>
 > 
-> I'm not sure that reusing semantic on a subset of this enum is the best 
-> idea, so many things can go wrong.
+> ...
 > 
-> More widely, I don't know where we would need to access this, versus 
-> specific functions like target_base_arm().
-> If a code needs to check various base archs target_base_*, or it can use 
-> a switch with all variants.
+>> diff --git a/hw/arm/musicpal.c b/hw/arm/musicpal.c
+>> index 329b162eb20..548c218a039 100644
+>> --- a/hw/arm/musicpal.c
+>> +++ b/hw/arm/musicpal.c
+>> @@ -15,6 +15,7 @@
+>>   #include "hw/sysbus.h"
+>>   #include "migration/vmstate.h"
+>>   #include "hw/arm/boot.h"
+>> +#include "hw/arm/machines-qom.h"
+>>   #include "net/net.h"
+>>   #include "system/system.h"
+>>   #include "hw/boards.h"
+>> @@ -1346,7 +1347,7 @@ static void musicpal_machine_init(MachineClass *mc)
+>>       machine_add_audiodev_property(mc);
+>>   }
+>>   
+>> -DEFINE_MACHINE("musicpal", musicpal_machine_init)
+>> +DEFINE_MACHINE_ARM_AARCH64("musicpal", musicpal_machine_init)
+> 
+> This is modelling a real, ancient device which only had a single CPU
+> type and runs the original firmware - makes no sense.
 
-Yeah, good point. I'll just drop this single patch.
+The goal of this effort is to have a single qemu-system-aarch64 binary
+absorbing the qemu-system-arm one. At this point we are trying to do
+preparatory work with no single change for the users.
 
-> 
-> If we really want to have this target_base concept, at least it deserves 
-> it's own enum, separate from SYS_EMU_TARGET.
-> 
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->> ---
->>   include/qemu/target-info-impl.h |  2 ++
->>   include/qemu/target-info-qapi.h |  7 +++++++
->>   target-info-stub.c              |  1 +
->>   target-info.c                   | 10 ++++++++++
->>   4 files changed, 20 insertions(+)
->>
->> diff --git a/include/qemu/target-info-impl.h b/include/qemu/target- 
->> info-impl.h
->> index e446585bf53..2c171f8359b 100644
->> --- a/include/qemu/target-info-impl.h
->> +++ b/include/qemu/target-info-impl.h
->> @@ -17,6 +17,8 @@ typedef struct TargetInfo {
->>       const char *target_name;
->>       /* related to TARGET_ARCH definition */
->>       SysEmuTarget target_arch;
->> +    /* related to TARGET_BASE_ARCH definition (target/${base_arch}/ 
->> path) */
->> +    SysEmuTarget target_base_arch;
->>       /* runtime equivalent of TARGET_LONG_BITS definition */
->>       unsigned long_bits;
->>       /* runtime equivalent of CPU_RESOLVING_TYPE definition */
->> diff --git a/include/qemu/target-info-qapi.h b/include/qemu/target- 
->> info-qapi.h
->> index d5ce0523238..65ed4ca8eea 100644
->> --- a/include/qemu/target-info-qapi.h
->> +++ b/include/qemu/target-info-qapi.h
->> @@ -19,6 +19,13 @@
->>    */
->>   SysEmuTarget target_arch(void);
->> +/**
->> + * target_base_arch:
->> + *
->> + * Returns: QAPI SysEmuTarget enum (i.e. SYS_EMU_TARGET_I386).
->> + */
->> +SysEmuTarget target_base_arch(void);
->> +
->>   /**
->>    * target_endian_mode:
->>    *
->> diff --git a/target-info-stub.c b/target-info-stub.c
->> index d96d8249c1d..d2cfca1b4c2 100644
->> --- a/target-info-stub.c
->> +++ b/target-info-stub.c
->> @@ -19,6 +19,7 @@ QEMU_BUILD_BUG_ON(offsetof(ArchCPU, env) != 
->> sizeof(CPUState));
->>   static const TargetInfo target_info_stub = {
->>       .target_name = TARGET_NAME,
->>       .target_arch = SYS_EMU_TARGET__MAX,
->> +    .target_base_arch = SYS_EMU_TARGET__MAX,
-> 
-> And nothing can enforce base and arch match by design, which is a 
-> problem IMHO.
-> 
->>       .long_bits = TARGET_LONG_BITS,
->>       .cpu_type = CPU_RESOLVING_TYPE,
->>       .machine_typename = TYPE_MACHINE,
->> diff --git a/target-info.c b/target-info.c
->> index e567cb4c40a..332198e40a2 100644
->> --- a/target-info.c
->> +++ b/target-info.c
->> @@ -33,6 +33,16 @@ SysEmuTarget target_arch(void)
->>       return arch;
->>   }
->> +SysEmuTarget target_base_arch(void)
->> +{
->> +    SysEmuTarget base_arch = target_info()->target_base_arch;
->> +
->> +    if (base_arch == SYS_EMU_TARGET__MAX) {
->> +        base_arch = target_arch();
->> +    }
->> +    return base_arch;
-> 
-> More confusing, we can eventually return a non base arch if base arch 
-> was not correctly set above.
-> 
->> +}
->> +
->>   const char *target_cpu_type(void)
->>   {
->>       return target_info()->cpu_type;
+Are you suggesting to directly add a DEFINE_MACHINE_ARM() macro for
+these 32-bit only machines? This was planned to be done on top, but
+maybe you are right, since we have to review this change, better
+start with it now...
 
+> Wouldn't be surprised if there are more of this kind in the list.
+> 
+> Jan
+> 
 

@@ -4,136 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94B84CCD184
-	for <qemu-arm@archiver.kernel.org>; Tue, 21 Oct 2025 14:28:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E79BCCD184
+	for <qemu-arm@archiver.kernel.org>; Tue, 21 Oct 2025 14:39:13 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vBDLS-0005oA-Jh; Tue, 21 Oct 2025 10:28:14 -0400
+	id 1vBDVu-0002Ei-Qg; Tue, 21 Oct 2025 10:39:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
- id 1vBDLR-0005no-I9
- for qemu-arm@nongnu.org; Tue, 21 Oct 2025 10:28:13 -0400
-Received: from mail-qv1-xf35.google.com ([2607:f8b0:4864:20::f35])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vBDVk-0002E8-3G
+ for qemu-arm@nongnu.org; Tue, 21 Oct 2025 10:38:53 -0400
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
- id 1vBDLP-0003pg-Hr
- for qemu-arm@nongnu.org; Tue, 21 Oct 2025 10:28:13 -0400
-Received: by mail-qv1-xf35.google.com with SMTP id
- 6a1803df08f44-87c237eca60so64405406d6.1
- for <qemu-arm@nongnu.org>; Tue, 21 Oct 2025 07:28:10 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vBDVg-0005aX-Ox
+ for qemu-arm@nongnu.org; Tue, 21 Oct 2025 10:38:51 -0400
+Received: by mail-wr1-x42b.google.com with SMTP id
+ ffacd0b85a97d-421851bcb25so3359632f8f.2
+ for <qemu-arm@nongnu.org>; Tue, 21 Oct 2025 07:38:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1761056890; x=1761661690; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=fOkDZIYP624hXJ84QvSPoENvTgmCF83wfkY593GGoOU=;
- b=QUdK5Stl2zYXVQPt5bFRvNrHAo4oyeSdDOkTiXrn05Pr9rNn6GY5parIxFPYQST4e0
- +gjlvrc7m3JP8//WWuOG55vLri7NDyLHBcqzwLgK/pMqENNA8BIq/zns1k7e3tEBgnAs
- 5vy6laYEOHgElibV5X/UsMW3qYTpkfBq3CSqXovfOMA2cUkUjWZ7lDSeJ8pOozKdxTeN
- j8kdgD8k4EXGM6lv+oLgCiJj0W5t3lH6urGME/7kYi3eKPvqan14No6v8AqJjNR4HqjP
- rR+SsYHwAp+BjoBCJEyjqVtXkzJ67NRNi0h5cy2M0lMy6sUZ87LXU1HSs9QvVNrewU5O
- gCeQ==
+ d=linaro.org; s=google; t=1761057526; x=1761662326; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=nvfb6jgM7jLFSk3JMWS/e7n86t42/AC+DtEAZZ2VMO4=;
+ b=SHif4l9lzf650H/VsESsUwuAgSCp8owRW9SS5Z7j9N5AxCuvhb7aAvP86Faj6yYh2K
+ mtPDkkDoxyeg2ITL+sGOqj/l8XL2w02vl8vKjNqSWKTfAGU8LcmjJVfVjBneGn3XxDsJ
+ Il50dAJvg15BioL5ZDVDudUpAvRJiOZAs78/CuKCXTGCC1ZsRBLsVIoxcYm+3l/xk/0C
+ deWFeUwrzG7mU3hwA2wyK9/QgG+n19fZ/UYkQylzhumpjmUfXTRTcRTFuck7WCUqukrb
+ HVvacN9nTd5A91EN+mDfuF45j4GorWJlmy8egO4Mhn2oRFbmUvDjRfrBY95D+L/vBvZC
+ uZRQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761056890; x=1761661690;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=fOkDZIYP624hXJ84QvSPoENvTgmCF83wfkY593GGoOU=;
- b=gr2C8mWf6aX8ZGKWd5rB1IgHjZvqkipjJgqb50hOHDKWTgtTJtskXKQC++fB2y8j2n
- n44MgA9c4rvcS1DmPTVbgfwjn+/shWJamV9HjXclE21kT5j1Dv6BlrWnS50g+mtw2iT3
- iYhepdbEGqEQgC5pWDBSz8TomdrQ+2ItPRCefWbFyTEpY4yvZPP+fufqefyMl91hKSyq
- o2TEls/tcsnyjI5uQ3xPtJq8RqFk1og4ldJKkaZzrQNoWAMdnuVvT+hlW+ysvQO2Rbzy
- IYdFIm7c1XcyEda8JjJogfuBqJxQcjKd+L7Bs5sieeq1M452gcKb52hTO/k7nwz70WTv
- 3BAQ==
+ d=1e100.net; s=20230601; t=1761057526; x=1761662326;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=nvfb6jgM7jLFSk3JMWS/e7n86t42/AC+DtEAZZ2VMO4=;
+ b=JZq+IrUaktpKAruoCXtiz1xiLwhRCz4Z5SzNdt9T+cv+Au2HgxeJyb/m9Cz/vPcGHz
+ DxLBrCm10sf9n/9yLtAQiv7YFyr7LTpZwgelJoq/W4pBF98X9Z/yp3uK6mBTpkfIz3sk
+ YkEaGa9dVKQuXrv8sqTztYW7cr/X/AggKsyJtHOaMdhDsqG9OsI17Hge4sXVFfZuMHzt
+ T5cV+Na6bK+C1xEijvu1epuNB4bN3J3EjG4NZYUzdag3ncbxl4WpeVE9gNS59mh1RPX7
+ UH1JwchLta+XYoSGwaqwhcS47DIm/j20RGv9HeihvHnNKI+bwcQH1lOm3yV/YGvrGaA8
+ 579g==
 X-Forwarded-Encrypted: i=1;
- AJvYcCV9hTpoeicvSoXG+xV6dyU/xY6aJ2Y9SfThNGlIWECSF8oTVJ24oCP8uUU3mllAFMVDNgK/ykdLLQ==@nongnu.org
-X-Gm-Message-State: AOJu0YzFNirogLKJyb+0ZU0W9ETowUPwiQ8CkXFRQ/akheAMjf+G1Ie8
- +ijUTXt46OYjEF0OI3PvjEbdMOIGPjJCgqsh1REbAa1Z5CrCYJ4JTyjwLDOt2bhvAhCKJ8lchrc
- K+WkY8V91TE/hmzhDs3FsttUle38IfXo=
-X-Gm-Gg: ASbGncuIgG8yJgboAFO+4Xly0k1wA5lYVx++ZJcUndYKUe1URaYtr/vSkZIm3f1WZU3
- EvI0/ZMfO5iI+KpangW9CFc901JGJqN+VLeo+0ba+fFjmhMEmkv7bNpfz35MTVZcqUvqn0OzCz6
- 1CQtxsZcoDnI1U/STooONweDJqPaIEBH3Bs12IpN8S4SukMTxr/ivMQ35ABjeGGoKBsCdz2Cua5
- XsOndLdzen7D0CKwKs/vv9qKaGlxobOKGLU3LK8/l6t8IVIGXwAek8vIkZqm3/+zaSFCDuyqNl3
- GNlLJNC/3eOOC4ZQ
-X-Google-Smtp-Source: AGHT+IGp+zf0u9SIF08iLE3a5Asq68ZbyrbibcTK8YXdD3xNkn5pXcBzDMuiMfZHuV9n++d97YerVbPf0S+nqo2EBIc=
-X-Received: by 2002:a05:622a:310:b0:4d9:dea6:4ff0 with SMTP id
- d75a77b69052e-4e89d3d5924mr245955091cf.56.1761056889597; Tue, 21 Oct 2025
- 07:28:09 -0700 (PDT)
+ AJvYcCW3f8hgu4AYbbzL3pt/Dovnq0LWFO0C3h9ft78bZ2gw5Qo68dLaSoT+4kHIFqOXT+5L3LXCUgEqsw==@nongnu.org
+X-Gm-Message-State: AOJu0Yyi6wlcg6EU/OOe7i5YEaBRMXW2c/2IVLg6d+FWrY0oFmYBS+xc
+ MPgCHlM5d9lIG0Yew57TDtz/Bs31pdPTOxDSc8gcmdbJMAhUAS/7Gk1JEfgrMNEjnfE=
+X-Gm-Gg: ASbGncuSo9B1POwlDsQ25qaxlNitaY9m+AqO04Iyoqd+bzwf9rKgp4i5/MPEoTv4oao
+ 7d8zCCtevNtrV4snubHF8R61JbSxE4RmcH/bIUSWXDcUe3xUJXxMSLjXVxER0DyzvJJc5AXlCkQ
+ 5ufhXKMsd/G8GxXX5rIXKYqWA5D1dtf5fjAxRITM6YyMXvnue7LNyY1HmvHIGtX9pmVic2+i3xt
+ YIDSmlGtHmhwpM0oTaCQohQwyOQ2U4QPh2AGIZriSLrOtLcb9tjhsWLE38bG4IVgXuZ2nLxITBo
+ lwnPJXAPzZoQlV6ZmlFVE5C4CZp2vNUFn1JbBq6pD6vKdAmSfkDspFx5wXBhwDx/0A0BmQUbYdN
+ BqFPp5LzvN6ZJNyzdpnB2lKkqOgLdhQ+1Tjle+px44FeDnJndbUmsZ6ZN4aLLIBWcESLRwDH+eV
+ 7lrZqy5WESjr7kPlcJecSjjKxiXMqv3asmnkvdc4ntBPM=
+X-Google-Smtp-Source: AGHT+IGo/WV3P/gIXVAfOj6/zzovwdZjTmIZqHJo4uhakNqdIn1TXbytnnffIAvPc5ctlVK5bpNhcg==
+X-Received: by 2002:a5d:5888:0:b0:427:151:3d9a with SMTP id
+ ffacd0b85a97d-42704d52316mr12176398f8f.17.1761057525735; 
+ Tue, 21 Oct 2025 07:38:45 -0700 (PDT)
+Received: from [192.168.69.221] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-427f00ce3e2sm20644550f8f.47.2025.10.21.07.38.44
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 21 Oct 2025 07:38:45 -0700 (PDT)
+Message-ID: <aeeed164-d464-43b3-9ef3-487268099a98@linaro.org>
+Date: Tue, 21 Oct 2025 16:38:44 +0200
 MIME-Version: 1.0
-References: <20251021122533.721467-1-marcandre.lureau@redhat.com>
- <CAFEAcA-jPE_onLYLMxgcAOB7dWRXOLJrWcGPnR0NUdjYytPDVA@mail.gmail.com>
- <aPePcTKl6s4FoLCL@gallifrey>
- <CAJ+F1C+bGKtY6nf3LCXrwhZ2aEdu2npXJ9FapmsqgX0uLL5TUw@mail.gmail.com>
- <f764e4cf-d134-4c4d-a313-a5b7dd6620d0@linaro.org>
-In-Reply-To: <f764e4cf-d134-4c4d-a313-a5b7dd6620d0@linaro.org>
-From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
-Date: Tue, 21 Oct 2025 18:27:58 +0400
-X-Gm-Features: AS18NWCtKDmDRRz11NBqNv3KECG8ofxt09PdE7ub3r-ykIF5WUP85WNT3b3fqdE
-Message-ID: <CAJ+F1CKG1G=5o+bDBXmLm6ywWDD19z1OFBwQQnDMxMFytFQ2SQ@mail.gmail.com>
-Subject: Re: [PATCH] char: rename CharBackend->CharFrontend
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: "Dr. David Alan Gilbert" <dave@treblig.org>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org, 
- pbonzini@redhat.com, "Michael S. Tsirkin" <mst@redhat.com>, 
- Stefano Garzarella <sgarzare@redhat.com>,
- "Gonglei (Arei)" <arei.gonglei@huawei.com>, 
- Zhenwei Pi <pizhenwei@bytedance.com>, Laurent Vivier <lvivier@redhat.com>, 
- Amit Shah <amit@kernel.org>, Stefan Berger <stefanb@linux.vnet.ibm.com>, 
- =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
- Igor Mitsyanko <i.mitsyanko@gmail.com>,
- =?UTF-8?Q?Cl=C3=A9ment_Chigot?= <chigot@adacore.com>, 
- Frederic Konrad <konrad.frederic@yahoo.fr>, Alberto Garcia <berto@igalia.com>, 
- Thomas Huth <huth@tuxfamily.org>, Halil Pasic <pasic@linux.ibm.com>, 
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- Jason Herne <jjherne@linux.ibm.com>, 
- Yoshinori Sato <yoshinori.sato@nifty.com>, Magnus Damm <magnus.damm@gmail.com>,
- Nicholas Piggin <npiggin@gmail.com>, Harsh Prateek Bora <harshpb@linux.ibm.com>,
- "Collin L. Walling" <walling@linux.ibm.com>,
- Stefano Stabellini <sstabellini@kernel.org>, 
- Anthony PERARD <anthony@xenproject.org>, Paul Durrant <paul@xen.org>, 
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Alistair Francis <alistair@alistair23.me>, 
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
- Eduardo Habkost <eduardo@habkost.net>, Corey Minyard <minyard@acm.org>, 
- Paul Burton <paulburton@kernel.org>, Aleksandar Rikalo <arikalo@gmail.com>, 
- Aurelien Jarno <aurelien@aurel32.net>, Palmer Dabbelt <palmer@dabbelt.com>, 
- Weiwei Li <liwei1518@gmail.com>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>, 
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, 
- Samuel Thibault <samuel.thibault@ens-lyon.org>,
- Michael Rolnik <mrolnik@gmail.com>, 
- Antony Pavlov <antonynpavlov@gmail.com>, Joel Stanley <joel@jms.id.au>, 
- Vijai Kumar K <vijai@behindbytes.com>, Samuel Tardieu <sam@rfc1149.net>, 
- Gustavo Romero <gustavo.romero@linaro.org>,
- Raphael Norwitz <raphael@enfabrica.net>, 
- Stefan Hajnoczi <stefanha@redhat.com>,
- "reviewer:vhost-user-scmi" <mzamazal@redhat.com>, 
- Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>, 
- Dmitry Osipenko <dmitry.osipenko@collabora.com>,
- Fabiano Rosas <farosas@suse.de>, 
- Markus Armbruster <armbru@redhat.com>, Zhang Chen <zhangckid@gmail.com>, 
- Li Zhijian <lizhijian@fujitsu.com>, Jason Wang <jasowang@redhat.com>, 
- Manos Pitsidianakis <manos.pitsidianakis@linaro.org>, 
- Richard Henderson <richard.henderson@linaro.org>, Helge Deller <deller@gmx.de>,
- Max Filippov <jcmvbkbc@gmail.com>, Lukas Straub <lukasstraub2@web.de>, 
- "open list:Sharp SL-5500 Co..." <qemu-arm@nongnu.org>, 
- "open list:S390 SCLP-backed..." <qemu-s390x@nongnu.org>,
- "open list:sPAPR (pseries)" <qemu-ppc@nongnu.org>, 
- "open list:X86 Xen CPUs" <xen-devel@lists.xenproject.org>, 
- "open list:RISC-V TCG CPUs" <qemu-riscv@nongnu.org>,
- "open list:virtiofs" <virtio-fs@lists.linux.dev>, 
- "open list:Rust-related patc..." <qemu-rust@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::f35;
- envelope-from=marcandre.lureau@gmail.com; helo=mail-qv1-xf35.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 0/6] Register API leaks fixes
+Content-Language: en-US
+To: Luc Michel <luc.michel@amd.com>, qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Francisco Iglesias <francisco.iglesias@amd.com>,
+ "Edgar E . Iglesias" <edgar.iglesias@amd.com>,
+ Alistair Francis <alistair@alistair23.me>
+References: <20251017161809.235740-1-luc.michel@amd.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20251017161809.235740-1-luc.michel@amd.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -151,53 +105,177 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi
-
-On Tue, Oct 21, 2025 at 6:23=E2=80=AFPM Philippe Mathieu-Daud=C3=A9
-<philmd@linaro.org> wrote:
->
-> On 21/10/25 15:58, Marc-Andr=C3=A9 Lureau wrote:
-> > Hi
-> >
-> > On Tue, Oct 21, 2025 at 5:52=E2=80=AFPM Dr. David Alan Gilbert <dave@tr=
-eblig.org> wrote:
-> >>
-> >> * Peter Maydell (peter.maydell@linaro.org) wrote:
-> >>> Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com> wrote:
-> >>>> The actual backend is "Chardev", CharBackend is the frontend side of=
- it,
-> >>>> let's rename it for readability.
-> >>>
-> >>> I always thought the "frontend" was the device the guest
-> >>> saw (the 16650 UART or whatever). invocation.html has bits
-> >>> talking about "virtio hvc console frontend device" which
-> >>> seem like they also use that terminology.
-> >>>
-> >>> If we want to clean up the naming it might be helpful to have
-> >>> a comment somewhere documenting the different components and
-> >>> what names we give them and how they fit together (or even
-> >>> better, something in docs/devel/...)
-> >>
-> >> Or something more descriptive like 'CharGuestSide'
-> >
-> > If we are talking about the Chardev frontend or user, that's too
-> > restrictive. We have generic stream handling code (think
-> > mux/hub/tests/client/server etc) that do not fit that usage naming.
->
-> Isn't it
->
-> - backend -> host adapter
-> - frontend -> implementation used by guest
->
-
-Sort of, but I think it's too restrictive to name them after "host"
-and "guest", as they also have different purposes than strictly VM
-components/side usage.
-
-I believe talking about backend and frontend is usually the preferred
-convention.
+On 17/10/25 18:17, Luc Michel wrote:
+> v3:
+>    - Rebased on master
+>    - Fixed compilation issues in intermediate patches [Phil]
+>    - Parent the memory region in the REGISTER_ARRAY object to the
+>      REGISTER_ARRAY object itself instead of the REGISTER_ARRAY owner.
+>      This ensure correct finalizing order and fixes the use-after-free
+>      encountered by Phil [Phil]
 
 
---=20
-Marc-Andr=C3=A9 Lureau
+> Luc Michel (6):
+>    hw/core/register: remove the REGISTER device type
+>    hw/core/register: add the REGISTER_ARRAY type
+>    hw/core/register: remove the calls to `register_finalize_block'
+>    hw/core/register: remove the `register_finalize_block' function
+>    hw/net/can/xlnx-versal-canfd: refactor the banked registers logic
+>    hw/net/can/xlnx-versal-canfd: remove register API usage for banked
+>      regs
+
+Thanks, queued squashing on patch #5 ...:
+
+-- >8 --
+--- a/hw/net/can/xlnx-versal-canfd.c
++++ b/hw/net/can/xlnx-versal-canfd.c
+@@ -1411,18 +1411,17 @@ static uint64_t canfd_srr_pre_write(RegisterInfo 
+*reg, uint64_t val64)
+  }
+
+  static void filter_reg_write(XlnxVersalCANFDState *s, hwaddr addr,
+-                             size_t bank_idx, uint32_t val)
++                             unsigned bank_idx, uint32_t val)
+  {
+      size_t reg_idx = addr / sizeof(uint32_t);
+
+      if (!(s->regs[R_ACCEPTANCE_FILTER_CONTROL_REGISTER] &
+          (1 << bank_idx))) {
+          s->regs[reg_idx] = val;
+      } else {
+          g_autofree char *path = object_get_canonical_path(OBJECT(s));
+
+          qemu_log_mask(LOG_GUEST_ERROR, "%s: Acceptance filter register 
+0x%"
+-                      HWADDR_PRIx " changed while filter %zu enabled\n",
++                      HWADDR_PRIx " changed while filter %u enabled\n",
+                        path, addr, bank_idx + 1);
+      }
+  }
+@@ -1782,16 +1781,19 @@ static void xlnx_versal_canfd_ptimer_cb(void 
+*opaque)
+
+  static bool canfd_decode_reg_bank(XlnxVersalCANFDState *s, hwaddr addr,
+                                    hwaddr first_reg, hwaddr last_reg,
+-                                  size_t num_banks, size_t *idx, size_t 
+*offset)
++                                  size_t num_banks, unsigned *idx,
++                                  hwaddr *offset)
+  {
+      hwaddr base = addr - first_reg;
+      hwaddr span = last_reg - first_reg + sizeof(uint32_t);
++    unsigned index = base / span;
+
+-    *idx = base / span;
+-
+-    if (*idx >= num_banks) {
++    if (index >= num_banks) {
+          return false;
+      }
++    if (idx) {
++        *idx = index;
++    }
+
+      *offset = base % span;
+      *offset += first_reg;
+@@ -1807,7 +1809,7 @@ static bool 
+canfd_decode_reg_bank(XlnxVersalCANFDState *s, hwaddr addr,
+   * @return true is the decoding succeded, false otherwise
+   */
+  static bool canfd_decode_addr(XlnxVersalCANFDState *s, hwaddr addr,
+-                              size_t *idx, hwaddr *offset)
++                              unsigned *idx, hwaddr *offset)
+  {
+      if (addr <= A_RX_FIFO_WATERMARK_REGISTER) {
+          /* from 0x0 to 0xec. Handled by the register API */
+@@ -1852,11 +1854,10 @@ static bool 
+canfd_decode_addr(XlnxVersalCANFDState *s, hwaddr addr,
+  static uint64_t canfd_read(void *opaque, hwaddr addr, unsigned size)
+  {
+      XlnxVersalCANFDState *s = XILINX_CANFD(opaque);
+-    size_t bank_idx;
+      hwaddr reg_offset;
+      uint64_t ret;
+
+-    if (!canfd_decode_addr(s, addr, &bank_idx, &reg_offset)) {
++    if (!canfd_decode_addr(s, addr, NULL, &reg_offset)) {
+          qemu_log_mask(LOG_GUEST_ERROR, TYPE_XILINX_CANFD
+                        ": read to unknown register at address 0x%"
+                        HWADDR_PRIx "\n", addr);
+@@ -1875,7 +1876,7 @@ static void canfd_write(void *opaque, hwaddr addr, 
+uint64_t value,
+                          unsigned size)
+  {
+      XlnxVersalCANFDState *s = XILINX_CANFD(opaque);
+-    size_t bank_idx;
++    unsigned bank_idx;
+      hwaddr reg_offset;
+
+      if (!canfd_decode_addr(s, addr, &bank_idx, &reg_offset)) {
+---
+
+... in order to avoid:
+
+hw/net/can/xlnx-versal-canfd.c:1822:59: error: incompatible pointer 
+types passing 'hwaddr *' (aka 'unsigned long long *') to parameter of 
+type 'size_t *' (aka 'unsigned long *') 
+[-Werror,-Wincompatible-pointer-types]
+  1822 |                                      s->cfg.tx_fifo, idx, offset);
+       |                                                           ^~~~~~
+hw/net/can/xlnx-versal-canfd.c:1785:74: note: passing argument to 
+parameter 'offset' here
+  1785 |                                   size_t num_banks, size_t 
+*idx, size_t *offset)
+       | 
+          ^
+hw/net/can/xlnx-versal-canfd.c:1827:47: error: incompatible pointer 
+types passing 'hwaddr *' (aka 'unsigned long long *') to parameter of 
+type 'size_t *' (aka 'unsigned long *') 
+[-Werror,-Wincompatible-pointer-types]
+  1827 |                                      32, idx, offset);
+       |                                               ^~~~~~
+hw/net/can/xlnx-versal-canfd.c:1785:74: note: passing argument to 
+parameter 'offset' here
+  1785 |                                   size_t num_banks, size_t 
+*idx, size_t *offset)
+       | 
+          ^
+hw/net/can/xlnx-versal-canfd.c:1833:47: error: incompatible pointer 
+types passing 'hwaddr *' (aka 'unsigned long long *') to parameter of 
+type 'size_t *' (aka 'unsigned long *') 
+[-Werror,-Wincompatible-pointer-types]
+  1833 |                                      32, idx, offset);
+       |                                               ^~~~~~
+hw/net/can/xlnx-versal-canfd.c:1785:74: note: passing argument to 
+parameter 'offset' here
+  1785 |                                   size_t num_banks, size_t 
+*idx, size_t *offset)
+       | 
+          ^
+hw/net/can/xlnx-versal-canfd.c:1839:60: error: incompatible pointer 
+types passing 'hwaddr *' (aka 'unsigned long long *') to parameter of 
+type 'size_t *' (aka 'unsigned long *') 
+[-Werror,-Wincompatible-pointer-types]
+  1839 |                                      s->cfg.rx0_fifo, idx, offset);
+       |                                                            ^~~~~~
+hw/net/can/xlnx-versal-canfd.c:1785:74: note: passing argument to 
+parameter 'offset' here
+  1785 |                                   size_t num_banks, size_t 
+*idx, size_t *offset)
+       | 
+          ^
+hw/net/can/xlnx-versal-canfd.c:1845:60: error: incompatible pointer 
+types passing 'hwaddr *' (aka 'unsigned long long *') to parameter of 
+type 'size_t *' (aka 'unsigned long *') 
+[-Werror,-Wincompatible-pointer-types]
+  1845 |                                      s->cfg.rx1_fifo, idx, offset);
+       |                                                            ^~~~~~
+hw/net/can/xlnx-versal-canfd.c:1785:74: note: passing argument to 
+parameter 'offset' here
+  1785 |                                   size_t num_banks, size_t 
+*idx, size_t *offset)
+       | 
+          ^
+5 errors generated.
+
 

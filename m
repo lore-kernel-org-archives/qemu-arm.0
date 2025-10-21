@@ -4,66 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8F31CCD1A5
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7B8ACCD1AA
 	for <qemu-arm@archiver.kernel.org>; Tue, 21 Oct 2025 20:58:22 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vBJQu-0000Mg-U3; Tue, 21 Oct 2025 16:58:18 -0400
+	id 1vBJQh-000062-IK; Tue, 21 Oct 2025 16:58:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vBJQr-0000HO-JT
- for qemu-arm@nongnu.org; Tue, 21 Oct 2025 16:58:13 -0400
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vBJQf-00004t-BV
+ for qemu-arm@nongnu.org; Tue, 21 Oct 2025 16:58:01 -0400
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vBJQp-0002KS-6h
- for qemu-arm@nongnu.org; Tue, 21 Oct 2025 16:58:12 -0400
-Received: by mail-wr1-x436.google.com with SMTP id
- ffacd0b85a97d-3ee15b5435bso5893763f8f.0
- for <qemu-arm@nongnu.org>; Tue, 21 Oct 2025 13:58:10 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vBJQc-0002Hi-S6
+ for qemu-arm@nongnu.org; Tue, 21 Oct 2025 16:58:00 -0400
+Received: by mail-wm1-x333.google.com with SMTP id
+ 5b1f17b1804b1-47109187c32so28865925e9.2
+ for <qemu-arm@nongnu.org>; Tue, 21 Oct 2025 13:57:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1761080289; x=1761685089; darn=nongnu.org;
+ d=linaro.org; s=google; t=1761080277; x=1761685077; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=9sl5D2OBPAk30ix5XFbA96G64ecqbTuVPaB9Fe4lYaE=;
- b=XNVb3k9MBJThoZ44+XQjrO+b6QKnaFu5xafRltySz0G64Z9YG4sIdvyhFoYVg1xtZt
- NFmD9tCd28Vcw9pb5f2G+TJP5C9mpBDfmCzKDafvlcBYVVi8pJbR2MmW8tXZsb1ks9cR
- BH99lh4ZCgxL3yl6DQHg3xNRTTsvAfYiI63frvgAyRq5PCyclQRtusvRJ4p5rNKb6YKR
- EEKt5Ay1qoCRTUsmfngGuarhy+5ZDct/O7/HcZahM1NlZymXTBua+r/IFzrQNa0n8gr6
- nsjsX/rqwsuk07RNN+OsAZIf+SlcVQV971w08c0v8R1s57HVkDswZg18+kMqfBs4q1rC
- WpRA==
+ bh=2lrAQwDz95GQqXWTWVIMmW6B1FdErbGMCTqSMKZ+Gno=;
+ b=nlJ0fcLUs4f9Os92Z+m/qZ6XMJCFB2G9Cz+e7FVjBPL7sWZfiB7VNNm+Xvm2NBWE1F
+ qYE5NM7opOjfHRxbnS845nyoa6mUUVEhy4sxTQhsYuiCJBnHno+0lIxuvNntxne44nT1
+ DVXLv1oTlNZv4C9oXJ2Klm53RJgZwWkjCAm5VsEQmUPuVo9Jcwq2aCENozgCHi2frS8U
+ mcEH3WgFLeSM5oPaYBfEFNwrw4Zr12LOTCkbxO1hIwo8mdfDyeHUg9niloggkoXg+vcQ
+ pxLSmfwTm9hf1++a2RIe8Ky+v7WENRgi3Cy3fVY2yQsX+KYGYhSYsJwpsa8gFvocBjHw
+ pRkA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761080289; x=1761685089;
+ d=1e100.net; s=20230601; t=1761080277; x=1761685077;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=9sl5D2OBPAk30ix5XFbA96G64ecqbTuVPaB9Fe4lYaE=;
- b=Cfu9xY4iBI+LL8NS6az2ZxyF7qNsB/f3mUdmEsSZrWScp+OGa1VbX8tmomSo4bIVrX
- aelU2vgvkxiVf5cS7nWNphyj0Zq1NB8KdasxARTIDrNW2jBElJhTaO6ODlilUQyRjFvb
- a1pkZz+koltmHiUAT4GHCNK3wZsL/X/TWBtZ/Sl+wrmQPZhOmll2Wo+taWffAUt/kHOU
- f/gMHKtYrtKe9fC0M7XQVsa4td5dV8+8Q29BiX4PCmcDwRnYkSuAeKB25H5wZh5nuZJK
- KYSGqGnQVNzPFF+DwJy/cWeJOFBBcbXHmWsa2bdYYz/xP+FZkRdDMV8ZfR0h9YFjt6Iw
- vHbA==
-X-Gm-Message-State: AOJu0Ywdtg0ZuM+qkBjZ3TlQTBykiFixN8hYswbNQ/eVYS8bYQSEcXQu
- VsnTZrdpOz2KQU+n+JEosww6ApzB/IvJFgEtDAtWhbMuCq+TNR14iqY+scRnUIgMQmy0rMovzvq
- +jrA1uf8=
-X-Gm-Gg: ASbGncsDGlME3kvAoGdO1B/ZfruVK+3Mzg+S0ELDRpWsl5V/yj/1ikvH9Ioq1P7LKtb
- GKnhY33J83Hx8Th7DURL/ph7Deg9/BPkQHrB5dy5bip0FNLNv5FhV26noBthv/lPKU3A22XTvUS
- G0r6cQg8D0FRGr3o5ZEshEZZPDo+4BGGabsUAhvs9VGWfvf8EAri0oF4kejiY5bFNRe+UVvjXH0
- fbZiEAtr1ZGF3BuJXbV2GMs14OqSX+Pxb5LbHJBVd/bM34k547V/uDgu0refnNvV1rfm97NmoXR
- oun5UdHoOHVSWhCSCBigR7X6DZ16ilMzyHvsi4UTaFP7Le32Tww5gfFwnJ6dnuQfPmdNU8lA6s+
- AEC6ngROcNp7Tg3ZZ4/HAysZxM1qwIII7WEGNBQkEiCdPoT934cppH2WysJ84FGO9j6gVudhuR7
- fsEj/YTk+UnOJDqgH0pNVq0C597cwaKVJVV3NBGLi2uclA0qPkjUUHNE3MznOB
-X-Google-Smtp-Source: AGHT+IEcYx2NWo7ZVGfQ4bQn+5YRxVCrdpGy3IdED3MhyOFuAHW7g1LXvX5oHMpDysX6MzPHpf7wkg==
-X-Received: by 2002:a05:6000:1a8e:b0:427:60d:c505 with SMTP id
- ffacd0b85a97d-427060dc6eamr11476513f8f.15.1761080289506; 
- Tue, 21 Oct 2025 13:58:09 -0700 (PDT)
+ bh=2lrAQwDz95GQqXWTWVIMmW6B1FdErbGMCTqSMKZ+Gno=;
+ b=P/F4kQj/5EolqCdCjqJ6JX1pfEBXbqixdvJ6q1qmQND4Od8h+nT/i9XDYMTMs1ULdW
+ XEiacvzUBnF/k+syKcvwcvWtEq5CB6iHWk53oeth5UCmsJtjnqX6oMinqz+Mf2pO1hIQ
+ vHvi2Y2MaVkKQxzzo1P9YneeJNhpgWnV4gCHLWzjObpv3o4WVafklsgd8uyZPnYmv7EG
+ BgjYCdHfvXsg+EwsY+TVd8tLr25k05KdhZMVRVTY31rCyl+wJHgFHdMD+M5GafL+9lZI
+ SgEGs8TUGNRSjAIGiwCp6LQWo48GuZqepPiKYTLm2qt67zlbPfLFH4D27Adc0qFduwGD
+ bafg==
+X-Gm-Message-State: AOJu0YwiNkgZWtJBBDykfd7cV9IXIsu3RfFILnleynOypK2cDNa6wpy/
+ gfT8FCY/0wiozi0raev+D5lp1vZfkC4Uqfv5prMMn2LKlkxaaYjkdXRdoj8K+7SJ0xs=
+X-Gm-Gg: ASbGncsy2nwBlWi/TDg1mbb/pgnjnpindgx60k79CvACYeWLBaUi+iPhCVpIuAWA+GU
+ ucKBQbh8Mv9kroLofpvSR7MHnF9ZBSGcMAaFBmvUn7x4jTTqy9P2GJWT+baIRWYRM38BsSJsGXA
+ t+6At1dp8awIdmqg8PTLTJ3q1OAzV0YYq+sEAQUgOQqADVcAnqLXIPpX4EzkumSJTTw+NRA2r4+
+ yXz9Y3H8EYBuIxk9QPVdVNetY6lIAW/7pWcH7C5WEVvarggan2GOCkYo2d7yAJNfjaqnGd//f0e
+ 6sQdTXcgbjb4IzxqcX7BgQBNX2X08WNCfN9gzKwzYwQbKI0tCTxSAswDsQzMU7eInFawq7Xwyk5
+ CJXbIYMZrbjkHorNTTgz4ptL4LtNzRddwqWIHE7m6iB+M2+ofAADkNY6F1nR0v/YBNo1mXY7Okj
+ DMi7Wo7uAfNV/9oxYAFlnssHi8wXpDoJP/yulKv8TlTW08Du29j/9RDRVCOVvF
+X-Google-Smtp-Source: AGHT+IHfivURQppPOG7xVw+QeOgPzHJEUKQhL+nIqhbGD9J70obPcLW+g002F0nv/0oD1+boAXl82Q==
+X-Received: by 2002:a05:6000:290d:b0:427:9d7:86f9 with SMTP id
+ ffacd0b85a97d-42709d787bemr11572592f8f.47.1761080276883; 
+ Tue, 21 Oct 2025 13:57:56 -0700 (PDT)
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-427f00b9853sm21746997f8f.33.2025.10.21.13.58.07
+ ffacd0b85a97d-427ea5a1505sm22127964f8f.8.2025.10.21.13.57.54
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 21 Oct 2025 13:58:08 -0700 (PDT)
+ Tue, 21 Oct 2025 13:57:55 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Anton Johansson <anjo@rev.ng>,
@@ -71,21 +70,22 @@ Cc: qemu-arm@nongnu.org, Anton Johansson <anjo@rev.ng>,
  Zhao Liu <zhao1.liu@intel.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Yanan Wang <wangyanan55@huawei.com>
-Subject: [PATCH v7 02/19] hw/core: Allow ARM/Aarch64 binaries to use the
- 'none' machine
-Date: Tue, 21 Oct 2025 22:57:23 +0200
-Message-ID: <20251021205741.57109-3-philmd@linaro.org>
+ Richard Henderson <richard.henderson@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
+Subject: [PATCH v7 01/19] hw/arm: Register TYPE_TARGET_ARM/AARCH64_MACHINE QOM
+ interfaces
+Date: Tue, 21 Oct 2025 22:57:22 +0200
+Message-ID: <20251021205741.57109-2-philmd@linaro.org>
 X-Mailer: git-send-email 2.51.0
 In-Reply-To: <20251021205741.57109-1-philmd@linaro.org>
 References: <20251021205741.57109-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::436;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x436.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::333;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x333.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -108,38 +108,90 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-When we'll start to use target_machine_typename() to filter
-machines for the ARM/Aarch64 binaries, the 'none' machine
-would be filtered. Register the proper interfaces to keep
-it available.
+Define the TYPE_TARGET_ARM_MACHINE and TYPE_TARGET_AARCH64_MACHINE
+QOM interface names to allow machines to implement them.
+
+Register these interfaces in common code in target_info-qom.c used
+by all binaries because QOM interfaces must be registered before
+being checked (see next commit with the 'none' machine).
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- hw/core/null-machine.c | 6 +++++-
- 1 file changed, 5 insertions(+), 1 deletion(-)
+ meson.build                   |  1 +
+ include/hw/arm/machines-qom.h | 18 ++++++++++++++++++
+ target-info-qom.c             | 24 ++++++++++++++++++++++++
+ 3 files changed, 43 insertions(+)
+ create mode 100644 include/hw/arm/machines-qom.h
+ create mode 100644 target-info-qom.c
 
-diff --git a/hw/core/null-machine.c b/hw/core/null-machine.c
-index a6e477a2d88..67b769bd3e0 100644
---- a/hw/core/null-machine.c
-+++ b/hw/core/null-machine.c
-@@ -16,6 +16,7 @@
- #include "hw/boards.h"
- #include "system/address-spaces.h"
- #include "hw/core/cpu.h"
+diff --git a/meson.build b/meson.build
+index c5710a6a47c..f4ac0a6e95b 100644
+--- a/meson.build
++++ b/meson.build
+@@ -3911,6 +3911,7 @@ common_ss.add(pagevary)
+ specific_ss.add(files('page-vary-target.c'))
+ 
+ common_ss.add(files('target-info.c'))
++system_ss.add(files('target-info-qom.c'))
+ specific_ss.add(files('target-info-stub.c'))
+ 
+ subdir('backends')
+diff --git a/include/hw/arm/machines-qom.h b/include/hw/arm/machines-qom.h
+new file mode 100644
+index 00000000000..a17225f5f92
+--- /dev/null
++++ b/include/hw/arm/machines-qom.h
+@@ -0,0 +1,18 @@
++/*
++ * QOM type definitions for ARM / Aarch64 machines
++ *
++ *  Copyright (c) Linaro
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#ifndef HW_ARM_MACHINES_QOM_H
++#define HW_ARM_MACHINES_QOM_H
++
++#define TYPE_TARGET_ARM_MACHINE \
++        "target-info-arm-machine"
++
++#define TYPE_TARGET_AARCH64_MACHINE \
++        "target-info-aarch64-machine"
++
++#endif
+diff --git a/target-info-qom.c b/target-info-qom.c
+new file mode 100644
+index 00000000000..7fd58d24818
+--- /dev/null
++++ b/target-info-qom.c
+@@ -0,0 +1,24 @@
++/*
++ * QEMU binary/target API (QOM types)
++ *
++ *  Copyright (c) Linaro
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "qemu/osdep.h"
++#include "qom/object.h"
 +#include "hw/arm/machines-qom.h"
- 
- static void machine_none_init(MachineState *mch)
- {
-@@ -55,4 +56,7 @@ static void machine_none_machine_init(MachineClass *mc)
-     mc->no_cdrom = 1;
- }
- 
--DEFINE_MACHINE("none", machine_none_machine_init)
-+DEFINE_MACHINE_WITH_INTERFACES("none", machine_none_machine_init,
-+                               { TYPE_TARGET_AARCH64_MACHINE },
-+                               { TYPE_TARGET_ARM_MACHINE },
-+                               { })
++
++static const TypeInfo target_info_types[] = {
++    {
++        .name           = TYPE_TARGET_ARM_MACHINE,
++        .parent         = TYPE_INTERFACE,
++    },
++    {
++        .name           = TYPE_TARGET_AARCH64_MACHINE,
++        .parent         = TYPE_INTERFACE,
++    },
++};
++
++DEFINE_TYPES(target_info_types)
 -- 
 2.51.0
 

@@ -4,87 +4,121 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E549CCD1A7
-	for <qemu-arm@archiver.kernel.org>; Tue, 21 Oct 2025 14:53:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BEEFACCD184
+	for <qemu-arm@archiver.kernel.org>; Tue, 21 Oct 2025 15:28:34 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vBDju-0005Bk-Dj; Tue, 21 Oct 2025 10:53:31 -0400
+	id 1vBEHb-0005zg-1b; Tue, 21 Oct 2025 11:28:19 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vBDjm-00059T-GO
- for qemu-arm@nongnu.org; Tue, 21 Oct 2025 10:53:23 -0400
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vBDji-0007Xg-DC
- for qemu-arm@nongnu.org; Tue, 21 Oct 2025 10:53:21 -0400
-Received: by mail-wm1-x32b.google.com with SMTP id
- 5b1f17b1804b1-4711f156326so43874715e9.1
- for <qemu-arm@nongnu.org>; Tue, 21 Oct 2025 07:53:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1761058396; x=1761663196; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=MVnIcv6wpbRHfrTNL4tWp8Jqn8R3H5q+xlspGqWOfao=;
- b=MyecDPnMjxkBNskRSBzrE4x3QYi/O9J7OWgIythzkAzZfe0bKGIuyE9ooBMNwM5+09
- NLW1odVpJqLLIIENzg8wjaQVQOE9xJp0xt8w8AbguOLegcAhq1yZQcaF0RDN4mgUXyr1
- 3WF3pNmrv2S/K4InTzDWfNIhTM8E/lZYWgd5EWdJEFDgRxsEQM7MRE/tcN4dTeJrgm8u
- hPaGV4EZj4W2535niHR7gUnDT42jITOaC2HYuwHsxQyxpWrrURh5ca+28PmE7sIDBgMN
- xOotF6RIfY5upaZGI5b1m43X7bX758E5zluSaG8iYQ8ojMmjcHZP+xJkBlZpY5RfV6Zi
- Kaow==
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1vBEHY-0005yg-R2
+ for qemu-arm@nongnu.org; Tue, 21 Oct 2025 11:28:16 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1vBEHW-00043u-7d
+ for qemu-arm@nongnu.org; Tue, 21 Oct 2025 11:28:16 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1761060492;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=mbrzgMo94ooAa/hP7tAvefYUfhTg/GV6LnkjfJ4a/hU=;
+ b=DzMbwQ6UE6UNOmA17mO030bt2a9183eD3G+KkynWGerywz7CdT+VLJbSQB5WUr2oQlBcKm
+ /CHn3R+CquiGaYSUCVjb3ACFtZbBQpmBOUyuz3RFiYY+rie70AuPmONB+Ir+ezr8voA8Sc
+ yae2ttUyoot0IarCoBgMC1Jh4rsX44g=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-384-AplR0_XINBCfyCXj3FCaRQ-1; Tue, 21 Oct 2025 11:28:10 -0400
+X-MC-Unique: AplR0_XINBCfyCXj3FCaRQ-1
+X-Mimecast-MFC-AGG-ID: AplR0_XINBCfyCXj3FCaRQ_1761060490
+Received: by mail-wm1-f70.google.com with SMTP id
+ 5b1f17b1804b1-471144baa6bso33413445e9.1
+ for <qemu-arm@nongnu.org>; Tue, 21 Oct 2025 08:28:10 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761058396; x=1761663196;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ d=1e100.net; s=20230601; t=1761060489; x=1761665289;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=MVnIcv6wpbRHfrTNL4tWp8Jqn8R3H5q+xlspGqWOfao=;
- b=Zj0bmjMMyXCnW5B9IiVbbJCNB1ihSSRb2puN8qTvW62P42L412UQdtLtWFPuqohxHa
- D/w+mu7UaYfRXir4H9NAuEfXuAUUqPumQh88pBEraMiy8aDspCFuuEuJ7MxjuXinlFcT
- pQa5HSE3uDYs6Q8bG/atY36IQnDxgm5GhPI6JvJlcxtBjelUNYr+AOkd6DtWTZx0/Exo
- MS2zYBKNpvArXB4u23peZmfIW8orVcBKBEynORpOq59L4DbzPvQBTg7of/phbD5lDtW8
- 5bkXhjU0MThhxTIWMSqEKhVVADFXRcEQxOKePMSSXtKk2+1mlQTS0B43Mi2WqCwdS+BZ
- b86g==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXnlI0v6OFyhg/zVeTH2YEPkhWcRgLyvc4EwrzXEvf5ukTmWXgmoEq7Q1A5ihmSIm0ct8NH79S81A==@nongnu.org
-X-Gm-Message-State: AOJu0YwTzB9v9OSIOKvi38HZSw35QqwU8JWG7/RLa8TiPLyojSn3KnQK
- ZVSHa0os3dt2liLqsk6+n2QRhKOV5HqfWxQ/Q8guE/W0J1mL5fBK8dR3Lg3YBzuFSYs=
-X-Gm-Gg: ASbGncty4JPbbzcH3GYywf4q3qlG6p/90NGWZEfK42CeDl+DpzA4rfr4wgYnTTmnYvt
- R8yV8giUBIEL1CU+/gk5irPyU1PA3/u38V8E6p6em0PdJDuZ4q1jaoiCNXAyHI/YcXmDkx9ZURu
- yYBmsiL9p7xdmtV8xPwHxXRIvAVdEnGFMV9/WpwyxdVv7RD+LSdReoG+ZHavYHlXyI+wc9nlF+7
- VVtg6OvQbxhtqdT1DUEzimzxFPBmO6/veys2glqT7azZDczLK1sOnKT7j0K96YwBL2xYYywkXSH
- 8szxj6Fp2dsJW0vQmBhprgsCCT/V//EuBtcBRxLN7DQNyDNnCjdrc161netH8G8fwBYfli5iXan
- Cs4GrxTvGYWo8kWTRpYpqYVnFjCrlZuDNRrvh2bSfTMQd0eEkUAKxD2lV9rcbwqeswUhUks/D0R
- kbezQWebpVFPX5AITYxyQ9R9Te02vjGk2PUoClK63HJiaBEMjY4XwQqulB4xDkunW1PH7hPuQ=
-X-Google-Smtp-Source: AGHT+IEYJDoQQSAN5VthxcVOeBgHBGl95cNTPBPha3rR2zTBcOQ5ZsgFUCegQrHpYAPXBKSWPNeHww==
-X-Received: by 2002:a05:600c:4e11:b0:471:c72:c807 with SMTP id
- 5b1f17b1804b1-471179079c7mr142401585e9.22.1761058395936; 
- Tue, 21 Oct 2025 07:53:15 -0700 (PDT)
-Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-427f009a797sm20694706f8f.27.2025.10.21.07.53.14
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 21 Oct 2025 07:53:15 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Phil Dennis-Jordan <phil@philjordan.eu>, qemu-arm@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>, Alexander Graf <agraf@csgraf.de>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v2] hw/gpio/pl061: Declare pullups/pulldowns as 8-bit types
-Date: Tue, 21 Oct 2025 16:53:13 +0200
-Message-ID: <20251021145313.4584-1-philmd@linaro.org>
-X-Mailer: git-send-email 2.51.0
+ bh=mbrzgMo94ooAa/hP7tAvefYUfhTg/GV6LnkjfJ4a/hU=;
+ b=nnhN7ecwKy2v3+B1J04qT1AKvkjuuPVg5/um0Onbl3pNSQ990m1N/KjsBqGL3nSSHZ
+ 1UsJ55qk41z9uezaBnNweFxXLxtWtXGHSHhvzjoXCxIH1I9Nc8rN3ikwwl2oF6qzjnvv
+ gZZ7R3MEGaACmcixIT7rjVkxVS3jgi17DqaLYiZEGEibFN8PX9d2Y9OubklR7sQWPy/l
+ lHaWM77iOW5bRGtpIR7FAdNH/9sCaJEVFJoPGLqPIh+MIWiUel3MzfVIsKXajLMbfOO1
+ SGOOYHgBitxNGKIKk0xC8gvfS63nJ3Lm3kevHzfDn3xO4VZkYzCeIBtu/zfeQIBlA00a
+ xcog==
+X-Gm-Message-State: AOJu0YzwIDIbUFHBRyZBWKA6ZJygldnf01OPdEAnwhu1eayZCpdyj7n+
+ GhcbVgScuB0cmcqIJupc8CVTaxIOUZRHJGaBjCbxj/ENfYd6Jr6g5xkiIpCY2CLfCo8VY7vgeTM
+ DlcfqEVGZB1R10YL5+RwRu0jk/qdwV4WcbULiuQCbKjQU1v14DArLAA==
+X-Gm-Gg: ASbGncsi/yA1BR4Qg1VNkS6z+JbSolL73J4YVBfse8cTG51S4p7x8oPf2VDQnkjdpFa
+ tgXKHjVAlhj2yL5kyXwLQ+xVXRU1fa772Tgxy0cchPKY2ApWMD0ZFgCFplLhXvzN13DbCOVC5/z
+ G06syzrlchZVc3IB9BV+IRkYKmN6yBkmVeBPFllKI8OiI1k2OzpxkbI6VaGBgUQg4efj+Yhf4wt
+ qgA/lP+6C6R3ZsriBtLw+cJHP1D1Z7+9RoYKJ+9+Bitx8pz1uti0Iqg7PQu0cFAaMRAzrpaxPjx
+ TGC3voiL5u6P3KcKPVFfXAa8tXqx3Q8q6lMLByk3IXTBV2aef5dZS3lhOimFgFKxMnmSbxjNErc
+ /d3LP
+X-Received: by 2002:a05:600c:3541:b0:46d:a04:50c6 with SMTP id
+ 5b1f17b1804b1-4711791934dmr133224975e9.30.1761060489556; 
+ Tue, 21 Oct 2025 08:28:09 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHiEMgEdUK1kr3M17GRhS1inC/gUeQo+zbKZIJbu14Dbv7PX3rHQ29+tWi708fkbKAob6TmfA==
+X-Received: by 2002:a05:600c:3541:b0:46d:a04:50c6 with SMTP id
+ 5b1f17b1804b1-4711791934dmr133224695e9.30.1761060489106; 
+ Tue, 21 Oct 2025 08:28:09 -0700 (PDT)
+Received: from [192.168.43.95] ([78.245.103.33])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-427ea5b3b45sm20985267f8f.11.2025.10.21.08.28.06
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 21 Oct 2025 08:28:07 -0700 (PDT)
+Message-ID: <8d87fa88-2b1c-4ae8-b4c6-89a788da4bcc@redhat.com>
+Date: Tue, 21 Oct 2025 17:28:06 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 06/27] hw/arm/smmuv3-accel: Restrict accelerated SMMUv3
+ to vfio-pci endpoints with iommufd
+To: Shameer Kolothum <skolothumtho@nvidia.com>,
+ Nicolin Chen <nicolinc@nvidia.com>
+Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ Jason Gunthorpe <jgg@nvidia.com>, "ddutile@redhat.com" <ddutile@redhat.com>,
+ "berrange@redhat.com" <berrange@redhat.com>, Nathan Chen
+ <nathanc@nvidia.com>, Matt Ochs <mochs@nvidia.com>,
+ "smostafa@google.com" <smostafa@google.com>,
+ "wangzhou1@hisilicon.com" <wangzhou1@hisilicon.com>,
+ "jiangkunkun@huawei.com" <jiangkunkun@huawei.com>,
+ "jonathan.cameron@huawei.com" <jonathan.cameron@huawei.com>,
+ "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>,
+ "zhenzhong.duan@intel.com" <zhenzhong.duan@intel.com>,
+ "yi.l.liu@intel.com" <yi.l.liu@intel.com>,
+ "shameerkolothum@gmail.com" <shameerkolothum@gmail.com>
+References: <20250929133643.38961-1-skolothumtho@nvidia.com>
+ <20250929133643.38961-7-skolothumtho@nvidia.com>
+ <b222848f-c933-43dc-b6e0-97dd8455cee6@redhat.com>
+ <aPZ+i6Vgxww1OTTo@Asurada-Nvidia>
+ <CH3PR12MB754822875EB806B9C5F6889EABF5A@CH3PR12MB7548.namprd12.prod.outlook.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <CH3PR12MB754822875EB806B9C5F6889EABF5A@CH3PR12MB7548.namprd12.prod.outlook.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: 3VaI3g-OoTihYyX6QFj6LAbHmQgOAmqV-5guhWYLdRw_1761060490
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32b.google.com
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -97,96 +131,81 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-uint8_t is good enough to hold a property "between 0 and 0xff".
 
-Define pullups/pulldowns properties using DEFINE_PROP_UINT8()
-macro, remove unnecessary range checks in pl061_realize().
-Update the two caller sites.
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
-v2: qdev_prop_set_uint32 -> qdev_prop_set_uint8 in callers (Peter)
----
- hw/arm/virt.c        |  4 ++--
- hw/gpio/pl061.c      | 16 ++++------------
- hw/vmapple/vmapple.c |  4 ++--
- 3 files changed, 8 insertions(+), 16 deletions(-)
+On 10/20/25 8:59 PM, Shameer Kolothum wrote:
+>
+>> -----Original Message-----
+>> From: Nicolin Chen <nicolinc@nvidia.com>
+>> Sent: 20 October 2025 19:25
+>> To: Eric Auger <eric.auger@redhat.com>
+>> Cc: Shameer Kolothum <skolothumtho@nvidia.com>; qemu-
+>> arm@nongnu.org; qemu-devel@nongnu.org; peter.maydell@linaro.org;
+>> Jason Gunthorpe <jgg@nvidia.com>; ddutile@redhat.com;
+>> berrange@redhat.com; Nathan Chen <nathanc@nvidia.com>; Matt Ochs
+>> <mochs@nvidia.com>; smostafa@google.com; wangzhou1@hisilicon.com;
+>> jiangkunkun@huawei.com; jonathan.cameron@huawei.com;
+>> zhangfei.gao@linaro.org; zhenzhong.duan@intel.com; yi.l.liu@intel.com;
+>> shameerkolothum@gmail.com
+>> Subject: Re: [PATCH v4 06/27] hw/arm/smmuv3-accel: Restrict accelerated
+>> SMMUv3 to vfio-pci endpoints with iommufd
+>>
+>> On Mon, Oct 20, 2025 at 06:31:38PM +0200, Eric Auger wrote:
+>>> On 9/29/25 3:36 PM, Shameer Kolothum wrote:
+>>>> +    /*
+>>>> +     * We return the system address for vfio-pci devices(with iommufd as
+>>>> +     * backend) so that the VFIO core can set up Stage-2 (S2) mappings for
+>>>> +     * guest RAM. This is needed because, in the accelerated SMMUv3
+>> case,
+>>>> +     * the host SMMUv3 runs in nested (S1 + S2)  mode where the guest
+>>>> +     * manages its own S1 page tables while the host manages S2.
+>>>> +     *
+>>>> +     * We are using the global &address_space_memory here, as this will
+>> ensure
+>>>> +     * same system address space pointer for all devices behind the
+>> accelerated
+>>>> +     * SMMUv3s in a VM. That way VFIO/iommufd can reuse a single IOAS
+>> ID in
+>>>> +     * iommufd_cdev_attach(), allowing the Stage-2 page tables to be
+>> shared
+>>>> +     * within the VM instead of duplicating them for every SMMUv3
+>> instance.
+>>>> +     */
+>>>> +    if (vfio_pci) {
+>>>> +        return &address_space_memory;
+>>> From that comment one understands the need of a single and common AS.
+>>> However it is not obvious why it shall be
+>>>
+>>> &address_space_memory and not an AS created on purpose.
+>> We tried creating an AS, but it was not straightforward to share across vSMMU
+>> instances, as most of the structures are per vSMMU.
+>>
+>> Only SMMUv3Class seems to be shared across vSMMU instances, but it
+>> doesn't seem to be the good place to hold an AS pointer either.
+>>
+>> The global @address_space_memory is provisioned as the system AS, so it's
+>> easy to use.
+> We had discussed this previously here,
+> https://lore.kernel.org/qemu-devel/aJKn650gOGQh2whD@Asurada-Nvidia/
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 175023897a7..28e842f22ea 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -1133,8 +1133,8 @@ static void create_gpio_devices(const VirtMachineState *vms, int gpio,
- 
-     pl061_dev = qdev_new("pl061");
-     /* Pull lines down to 0 if not driven by the PL061 */
--    qdev_prop_set_uint32(pl061_dev, "pullups", 0);
--    qdev_prop_set_uint32(pl061_dev, "pulldowns", 0xff);
-+    qdev_prop_set_uint8(pl061_dev, "pullups", 0);
-+    qdev_prop_set_uint8(pl061_dev, "pulldowns", 0xff);
-     s = SYS_BUS_DEVICE(pl061_dev);
-     sysbus_realize_and_unref(s, &error_fatal);
-     memory_region_add_subregion(mem, base, sysbus_mmio_get_region(s, 0));
-diff --git a/hw/gpio/pl061.c b/hw/gpio/pl061.c
-index 1acca3f2f80..a3ac038c2f7 100644
---- a/hw/gpio/pl061.c
-+++ b/hw/gpio/pl061.c
-@@ -79,8 +79,8 @@ struct PL061State {
-     qemu_irq out[N_GPIOS];
-     const unsigned char *id;
-     /* Properties, for non-Luminary PL061 */
--    uint32_t pullups;
--    uint32_t pulldowns;
-+    uint8_t pullups;
-+    uint8_t pulldowns;
- };
- 
- static const VMStateDescription vmstate_pl061 = {
-@@ -547,14 +547,6 @@ static void pl061_realize(DeviceState *dev, Error **errp)
- {
-     PL061State *s = PL061(dev);
- 
--    if (s->pullups > 0xff) {
--        error_setg(errp, "pullups property must be between 0 and 0xff");
--        return;
--    }
--    if (s->pulldowns > 0xff) {
--        error_setg(errp, "pulldowns property must be between 0 and 0xff");
--        return;
--    }
-     if (s->pullups & s->pulldowns) {
-         error_setg(errp, "no bit may be set both in pullups and pulldowns");
-         return;
-@@ -562,8 +554,8 @@ static void pl061_realize(DeviceState *dev, Error **errp)
- }
- 
- static const Property pl061_props[] = {
--    DEFINE_PROP_UINT32("pullups", PL061State, pullups, 0xff),
--    DEFINE_PROP_UINT32("pulldowns", PL061State, pulldowns, 0x0),
-+    DEFINE_PROP_UINT8("pullups", PL061State, pullups, 0xff),
-+    DEFINE_PROP_UINT8("pulldowns", PL061State, pulldowns, 0x0),
- };
- 
- static void pl061_class_init(ObjectClass *klass, const void *data)
-diff --git a/hw/vmapple/vmapple.c b/hw/vmapple/vmapple.c
-index 1e4365f32c9..f3cff329244 100644
---- a/hw/vmapple/vmapple.c
-+++ b/hw/vmapple/vmapple.c
-@@ -326,8 +326,8 @@ static void create_gpio_devices(const VMAppleMachineState *vms, int gpio,
- 
-     pl061_dev = qdev_new("pl061");
-     /* Pull lines down to 0 if not driven by the PL061 */
--    qdev_prop_set_uint32(pl061_dev, "pullups", 0);
--    qdev_prop_set_uint32(pl061_dev, "pulldowns", 0xff);
-+    qdev_prop_set_uint8(pl061_dev, "pullups", 0);
-+    qdev_prop_set_uint8(pl061_dev, "pulldowns", 0xff);
-     s = SYS_BUS_DEVICE(pl061_dev);
-     sysbus_realize_and_unref(s, &error_fatal);
-     memory_region_add_subregion(mem, base, sysbus_mmio_get_region(s, 0));
--- 
-2.51.0
+Thank you for the pointer. I definitively missed that thread. Seems
+Peter was not very keen either to use the address_space_memory. Why
+can't we use a global variable in smmu-accel.c ? in hw/vfio/container.c
+there is a list of VFIOAddressSpace for instance.
+Is there anything wrong doing that?
+
+Thanks
+
+Eric
+
+Eric
+>
+> Thanks,
+> Shameer
+>
 
 

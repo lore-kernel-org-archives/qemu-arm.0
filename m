@@ -4,92 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C02BCCD1AA
-	for <qemu-arm@archiver.kernel.org>; Tue, 21 Oct 2025 21:04:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72876CCD1AA
+	for <qemu-arm@archiver.kernel.org>; Tue, 21 Oct 2025 21:07:17 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vBJX2-0007FM-G6; Tue, 21 Oct 2025 17:04:38 -0400
+	id 1vBJZR-0001R0-Bs; Tue, 21 Oct 2025 17:07:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vBJVv-0006Ws-BY
- for qemu-arm@nongnu.org; Tue, 21 Oct 2025 17:03:29 -0400
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vBJZN-0001QU-S9
+ for qemu-arm@nongnu.org; Tue, 21 Oct 2025 17:07:02 -0400
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vBJVs-000329-QM
- for qemu-arm@nongnu.org; Tue, 21 Oct 2025 17:03:27 -0400
-Received: by mail-wm1-x32b.google.com with SMTP id
- 5b1f17b1804b1-46e6a689bd0so57807405e9.1
- for <qemu-arm@nongnu.org>; Tue, 21 Oct 2025 14:03:23 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vBJZM-0003Pi-0i
+ for qemu-arm@nongnu.org; Tue, 21 Oct 2025 17:07:01 -0400
+Received: by mail-wm1-x331.google.com with SMTP id
+ 5b1f17b1804b1-47103b6058fso1583455e9.1
+ for <qemu-arm@nongnu.org>; Tue, 21 Oct 2025 14:06:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1761080602; x=1761685402; darn=nongnu.org;
+ d=linaro.org; s=google; t=1761080818; x=1761685618; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=JJ3ixfClpg8mA00v0V9RN1om183YDcGw634WpNvfvI8=;
- b=y44QMRwxuy6i/Dgx1FNqiRG9etI+bZZFNveEjFDu+7+2TQNz9zwWNwtmUhgYtbPOiN
- uEYkDhFbcpJZDipTXrmB1jYxLzQKm9viwq9czEpD2t8sHhh6VngL9orX/e2vh1V0OU99
- T325VNcH9ejlnG0l8K2OuYVdmrr+cp8K88G/1BMOEmDF9B2af6FJd41NlI9PGjGPBapR
- pVAAdxaJElPYn6D1rdrwrLl1eO7Lo4mAL6Sb3O+9x/X6Ilk8mjpC5J0szls47x72iYNg
- 3xEjDSPBTzJkS6RK1eJvyc7Fx8S0lppxMbMv10kN4glR5aWtB4mFP6BBLHAX/j0vPVS2
- NJQA==
+ bh=LoAB3dp+YFOpUFb+CMAQLT6lLdWoV7loZBds5Fzk15c=;
+ b=BxQ1ASKN+CKM9U8Up0aC2nYiHEuc9BZR0sdrQ+OyO+yzv+Gm7t+niHTofNG19U+EH+
+ EXO947GXLHO3GSX0MMqs+mJRhtxKEgSTD3Wh9KDZDOtXpAJyYbEIEqRdFFaf2j2I8fu3
+ ofpzYcNXrTE4RpOwJNs5U+ur4fPBpOW5mntacOeKvaG0472yly06FLqoTR+PybAAnff6
+ ifrkfFwh5CGnvZgwxL0LVD5rC5e1VHkCJStfvAczQHrEqJh0OponAH6WSmn/5qSNRybf
+ jxb7sgJrtq+oIa2B4kkAll0CValCe6WsBW5ikcw1e/JI4LRzZvdWP12xksR5tcL130md
+ zyvQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761080602; x=1761685402;
+ d=1e100.net; s=20230601; t=1761080818; x=1761685618;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=JJ3ixfClpg8mA00v0V9RN1om183YDcGw634WpNvfvI8=;
- b=I4O/638uCNJ+/Qo3UUmssp3rMvGUbk8YVAYIR7QXLHtA8DEx/Wd8Py4KOUzk2tB3DG
- UzBXT9+FuV6ifTKkgMTWJTvjUIJgggIaz5/xDqRpC3zl7DQ0QUEH5Ms1dcRiJ8FapUEy
- +QpZv5Tv/Y0YfJqix9TaK3iEeOInCAuhBskUuSQqVoXjpccNvNvzvzhnlvGZHK4wzPOm
- F5Z3IZ0cr1Zk3R58TYcsDAP142Yd8hC5CqHFsTpyslk2QuYiBZTqI+eAuoQFa88VH6PV
- kcY0jzlsY96rAWMz3PgZIxt78dU4kvPoM5HCraCRKUY0nLBRN4bs3S/fxs6jg1BN/qGF
- 8fSg==
+ bh=LoAB3dp+YFOpUFb+CMAQLT6lLdWoV7loZBds5Fzk15c=;
+ b=NrDiO5JZcPEA5vP7X1GDUYaYdTmlNVLhzvTOBGNbCRv+SzjkaCUq3zhPorVDmmCKEQ
+ 66djVsSs44rye3dMyIJCmMUjPWtqCfDr4NTkrnq+ezL+l5vJ54qcyCs1tSK9GF+RGGRe
+ LhLV87rlqGfXi3KFkG6e/4+4MV7/F5JXuDJdEOx2u2FReSVu6+sZS6xdrO6Fr723Qh0X
+ KvX2qlB+8tc8fOfdJmkPmoHmVhH29EXJb2TEfaYeX0QU9b0SWJ+DXaR8qaCRIeNjl8zC
+ SXxEZ9UdXs/xnpXipKeqRosJ8w427d7jFtsB4vO0kh91SD3c69FmPfFqHt3xwznFk8x/
+ mMgg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWk5oz/5r7ro1TQYgnLqhdSafa4obfyb8gmnB5P5V0N2ryosgGkwvH9H2WG9+0wNeMtjcdK/V3vWw==@nongnu.org
-X-Gm-Message-State: AOJu0Yxlz5ILz45AgdPw/p4QlwPn2mThl++mXkqvtZWg6w2Z0COoKdXu
- cGL2LNDv8k3Jh3ZpkWKi2LCoaUECfL43bl1WQ5gJ5cLsYrZqwT+PhDbyNHimAOeCl+Y=
-X-Gm-Gg: ASbGnctKLa3d4rOnXWpdFj/+bDmt8gF/00ieZTU8dS0op71k4Y6PfXqcWz5EX+JnbHR
- ooijcJFocMXVvD3YDeVXvX7JpPZkciZGuJm2+ugs3Kj/27aw8LpdnPhQqkE0xX6Prz+v5XIwPJb
- rUZHMjA+e0hpFQnP8ML2zro0DaQl8X2OmruKYDyIkuCD2JbS3vN3Se7ctSbd2ComFQzD29GsOQ0
- +Kdj2vZUQXvXAAZD55o6axBugXJTaRw6WUEms2BA2JU9DO28mfFJxFBF+tc2QffoNZ96hvonjvZ
- 0aDgwvehcEgycnwNN+jT1YWGO1IzsETi+rMCRXd1pA8q48raLchGlmYamXSLo9XeCZ5pE7PWP1c
- HnmF9yjO2G7zu5fjFenGXSmpTRgsJQwtb1RXcPaOKrZrSfx6SoCKTYu6Ka6KwVXfWFcU/EDNvX1
- 45N7uF/LSWwGA8n3KnrplbmXToU9ZxfnOHz25DHGdUCDAQ1uxw1IpMPzqMBuej
-X-Google-Smtp-Source: AGHT+IGOJ1cHOBGtyG4jOMNDRNFiIU1lBxvwITh6/0NB7YbTNx7z9/jfUGKw3EgM1s9MSiFBWMBHNA==
-X-Received: by 2002:a05:600c:8b0c:b0:471:15df:9fcd with SMTP id
- 5b1f17b1804b1-47117911c51mr140610065e9.25.1761080601735; 
- Tue, 21 Oct 2025 14:03:21 -0700 (PDT)
+ AJvYcCXwE4Hbou3MLdsp8M1J+7augxCfWf+ELk9/Pj8WYwXWzeyWHGY5KMDYC5X9Lwk4KAPE2HL4C5HtVQ==@nongnu.org
+X-Gm-Message-State: AOJu0YzdxYdYAYrfpNk9eaf1nqcQoTKhNVnlTLR/wO4hctX8WIlKAn5k
+ zlsbxKDVg2M6GSXKt7EBLvK+8d27cXCPbsqWilOxwnuN0WTLLUNBODhuzSGGmJ6eaYg=
+X-Gm-Gg: ASbGncvJCjZ7G6FGHoxAzLx0HYJIcvHqhO9TAcUwze54LfR4txjZFU8ZIIr0dOQy3tS
+ sEftuhU0wreojGagHEtGiDMxg2hvtDKmavgjF5DGDiaiAIHkxqqPJQsq28MPhR/VI39nWPYD3iW
+ ey2Fb5/fDo6hpFItT4/PFgWlsMg3SBDzdXpPyfKOqYlL/UAU5id3iVkilQd5K+OkTIEZT5TRXYM
+ +AKX8sUi6Ria8EcU5YgnAekAaOAVgyyoc5whk2wesP3Nrdzd9ZXeGhbpY47xte69ss5U2L3eiMz
+ x9NX3zdH9Wd6aehuYP2g/Q8ryCm6f/6hbkYKXHkvy1N9UIp5YEAPBwbpid3Tuyy+XhYNfdgzpYk
+ MMSE1wqLwkrnhyG3rHCjw1O+/VBF6o8zl+9mi3Z/x290LBMMZrfitygy7aqsW0MWaYNa2ox88rI
+ 6Yyl4lzdt7qLpapXZj5TKGzwsrtpq3BNnbP4/ssP7CvEYqwnsRfaKCVgKi+wLq
+X-Google-Smtp-Source: AGHT+IFbQhL7Weww0w8Jt7c8f3WqscQNJNNrfx5pccSBZZfKZiRzyJYa57M2yntYSzOJ/VAVCUewLQ==
+X-Received: by 2002:a7b:cb17:0:b0:46e:24a4:c247 with SMTP id
+ 5b1f17b1804b1-475c3ea4383mr6896415e9.5.1761080818342; 
+ Tue, 21 Oct 2025 14:06:58 -0700 (PDT)
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-47496d23237sm23027555e9.10.2025.10.21.14.03.20
+ ffacd0b85a97d-427f00ce08asm21879566f8f.44.2025.10.21.14.06.56
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 21 Oct 2025 14:03:21 -0700 (PDT)
+ Tue, 21 Oct 2025 14:06:57 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: Luc Michel <luc.michel@amd.com>, Peter Maydell <peter.maydell@linaro.org>,
- Anton Johansson <anjo@rev.ng>, qemu-arm@nongnu.org,
- Zhao Liu <zhao1.liu@intel.com>,
+Cc: Zhao Liu <zhao1.liu@intel.com>, qemu-arm@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>, Luc Michel <luc.michel@amd.com>,
+ Anton Johansson <anjo@rev.ng>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v7 17/19] hw/arm/virt-acpi-build: Build only once
-Date: Tue, 21 Oct 2025 23:01:41 +0200
-Message-ID: <20251021210144.58108-9-philmd@linaro.org>
+Subject: [PATCH v7 19/19] hw/arm/meson: Move Xen files to arm_common_ss[]
+Date: Tue, 21 Oct 2025 23:06:55 +0200
+Message-ID: <20251021210655.59278-1-philmd@linaro.org>
 X-Mailer: git-send-email 2.51.0
 In-Reply-To: <20251021205741.57109-1-philmd@linaro.org>
 References: <20251021205741.57109-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::331;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x331.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -105,9 +105,6 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Previous commits removed the target-specificities,
-we can now move virt-acpi-build.c to arm_common_ss[].
-
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 ---
@@ -115,18 +112,18 @@ Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/hw/arm/meson.build b/hw/arm/meson.build
-index 531a635936a..df4c1be3b3b 100644
+index 9fbbbc9a6fe..61c66ee2d0b 100644
 --- a/hw/arm/meson.build
 +++ b/hw/arm/meson.build
-@@ -1,7 +1,7 @@
- arm_ss = ss.source_set()
- arm_common_ss = ss.source_set()
- arm_ss.add(when: 'CONFIG_ARM_VIRT', if_true: files('virt.c'))
--arm_ss.add(when: 'CONFIG_ACPI', if_true: files('virt-acpi-build.c'))
-+arm_common_ss.add(when: 'CONFIG_ACPI', if_true: files('virt-acpi-build.c'))
- arm_common_ss.add(when: 'CONFIG_DIGIC', if_true: files('digic_boards.c'))
- arm_common_ss.add(when: 'CONFIG_EMCRAFT_SF2', if_true: files('msf2-som.c'))
- arm_common_ss.add(when: 'CONFIG_HIGHBANK', if_true: files('highbank.c'))
+@@ -65,7 +65,7 @@ arm_common_ss.add(when: 'CONFIG_FSL_IMX8MP_EVK', if_true: files('imx8mp-evk.c'))
+ arm_common_ss.add(when: 'CONFIG_ARM_SMMUV3', if_true: files('smmuv3.c'))
+ arm_common_ss.add(when: 'CONFIG_FSL_IMX6UL', if_true: files('fsl-imx6ul.c', 'mcimx6ul-evk.c'))
+ arm_common_ss.add(when: 'CONFIG_NRF51_SOC', if_true: files('nrf51_soc.c'))
+-arm_ss.add(when: 'CONFIG_XEN', if_true: files(
++arm_common_ss.add(when: 'CONFIG_XEN', if_true: files(
+   'xen-stubs.c',
+   'xen-pvh.c',
+ ))
 -- 
 2.51.0
 

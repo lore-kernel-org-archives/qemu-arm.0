@@ -4,91 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5DB1BCCD1A5
-	for <qemu-arm@archiver.kernel.org>; Tue, 21 Oct 2025 11:05:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2384ECCD184
+	for <qemu-arm@archiver.kernel.org>; Tue, 21 Oct 2025 12:12:15 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vBAAQ-0001jj-AZ; Tue, 21 Oct 2025 07:04:38 -0400
+	id 1vBBDb-0003PH-FP; Tue, 21 Oct 2025 08:12:00 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vBAAM-0001il-BP
- for qemu-arm@nongnu.org; Tue, 21 Oct 2025 07:04:34 -0400
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vBAAK-0003GK-Bf
- for qemu-arm@nongnu.org; Tue, 21 Oct 2025 07:04:34 -0400
-Received: by mail-wm1-x330.google.com with SMTP id
- 5b1f17b1804b1-47114a40161so11604965e9.3
- for <qemu-arm@nongnu.org>; Tue, 21 Oct 2025 04:04:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1761044669; x=1761649469; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=8vv9/PEKtlnIDMF7ULGPxN0cdBSG0BVV0CmxG/jvMKQ=;
- b=V03Yuj/T7OHMHX35yeb756wRfYv7vgDo411NgOYF0t0by4kd64oShefRulMFBo+o5D
- AfBR37eQcLUREMlmRvYRil5UhOCyuuav4IgPqbAevcu1b2uqHtHphoWDSzM214LhIQOh
- VW40/VrMrl2QByTPu9DjWHIYM52ILNS6Nmfhp844zM2ml3S7lfSL0+uDJ6xFvtA2+R/q
- 3pAin5vqeui0MKZX3T1X9KQMC9GbsHxqLUQqYyG8i656l6V5RxKjBoyKYIIMit8JfHuH
- LrV8XaCHTBL8MJ9og16EuvyLzoncDChs6CNcHiTmAfInsT+3cudEjx0nJUQguzK5+jlF
- pf9g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761044669; x=1761649469;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=8vv9/PEKtlnIDMF7ULGPxN0cdBSG0BVV0CmxG/jvMKQ=;
- b=rgzA9gOenSfUCuhxV6XjD4NqPCIqKiwlmat5uzkhqoCjZ2h28TvWYU/BGJBA2JE6Nq
- 0dIKZntrPAdox3NaurTmu95/CgGdnrsgAXM4xtQiD86M/+e2eZHsgBy+NgW2em9AnhUu
- vaZ7KjSe9VVFDS1OJA4i4I32HaW2iiKUZHs0To32ZNfY6QDPjCuc83yh0iFHJb3wgB9G
- TX3d6hI/zoMFKMxjOaahAMpbEmW/k6FLnsdhiBtyUoK36SD4ZV7IkA7DQbwPRiZV5t6L
- jdCbD3mCzKBpvq41tlpGSHmUiczj8JqNEjEE9UBl7YXMzGt0Tm8efHR27oasoTJDPWHx
- B8RQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWTAj26GcjobwdvX5A7TXs44OjNFMDNWd+ynD2suoCk7w4Y7Ob5UMaFtRvSzA9ONWpvSFol3aPbHw==@nongnu.org
-X-Gm-Message-State: AOJu0YwX9Ou5Pq4FsVyLmYMrsc4NtHQOb5hN3XSQTFGtKvrxyt5IRH4T
- GOzJkKRUUzuY1FwhwRTMQXghmJsyZtYZwTvG/us5/zFL1n5KP29bNACFWYHCLRsk5es=
-X-Gm-Gg: ASbGncuX9IZSp5PPF2xHc6VArENj6Ee8Gq28gJP3qFII1FHg8TYAjxGKuEX+2IXkhoZ
- uj7temGWVsV4DZDIbeU11wRqLFII8G4B1fxuGFrn8OX93c9hWzGKSo0nixTeJ9+EvloLtc8FPCY
- Th7ye0F3Vh9d8j4j8RRI8/NeeONaoggoCe/NjrIt4jmkliL2MgHMWigEemUr4OCXZP/xRNkh89/
- e0JjSYeKTr0wpfGUB+S/YMtlwjXEwVNWoMJh21UeVF/oWD5BoZX9g/61yMo0n3d3nrVDI0AHL5D
- UJezGDXE76renC0Cw82rmerDrn5QPTccpalseDXaGe2ZzPWZ29F84I0xezgqgdUO1puseMElXDn
- SXDg00yAvhxGfUbAf9nkkF+qf9NPOhBExQc9G5y5t3M4nu1p41angJcH2Gg1qgz2rMd/99g1vcG
- +LM1lLmhrF551pxhGJKwOQ8HFUbKF2fJ/i6dNMYB8U7YgE6g67Nw==
-X-Google-Smtp-Source: AGHT+IGB+0YzsJHVRX/3U55NHWvcBKArwVcVnTolWAKZQazTpcc+LydtphPE38wdTc/ZbSViVDe04g==
-X-Received: by 2002:a05:600d:420f:b0:471:131f:85b7 with SMTP id
- 5b1f17b1804b1-4711787dcbdmr117863165e9.15.1761044669496; 
- Tue, 21 Oct 2025 04:04:29 -0700 (PDT)
-Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-47496d26affsm13793315e9.12.2025.10.21.04.04.28
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 21 Oct 2025 04:04:28 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Joel Stanley <joel@jms.id.au>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
- Troy Lee <leetroy@gmail.com>, Peter Maydell <peter.maydell@linaro.org>,
- Andrew Jeffery <andrew@codeconstruct.com.au>,
- Steven Lee <steven_lee@aspeedtech.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH] hw/arm/aspeed: Remove ast2700fc self-aliasing
-Date: Tue, 21 Oct 2025 13:04:27 +0200
-Message-ID: <20251021110427.93991-1-philmd@linaro.org>
-X-Mailer: git-send-email 2.51.0
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1vBBDX-0003Oy-22; Tue, 21 Oct 2025 08:11:56 -0400
+Received: from zero.eik.bme.hu ([152.66.115.2])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1vBBDR-0003zl-Ps; Tue, 21 Oct 2025 08:11:54 -0400
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id 861BB5972E3;
+ Tue, 21 Oct 2025 14:11:45 +0200 (CEST)
+X-Virus-Scanned: amavis at eik.bme.hu
+Received: from zero.eik.bme.hu ([127.0.0.1])
+ by localhost (zero.eik.bme.hu [127.0.0.1]) (amavis, port 10028) with ESMTP
+ id TeorvflxJvs1; Tue, 21 Oct 2025 14:11:43 +0200 (CEST)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+ id 6CBDA5972E2; Tue, 21 Oct 2025 14:11:43 +0200 (CEST)
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id 6A3FF5972DE;
+ Tue, 21 Oct 2025 14:11:43 +0200 (CEST)
+Date: Tue, 21 Oct 2025 14:11:43 +0200 (CEST)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+To: =?ISO-8859-15?Q?Marc-Andr=E9_Lureau?= <marcandre.lureau@redhat.com>
+cc: qemu-devel@nongnu.org, 
+ =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>, 
+ Paolo Bonzini <pbonzini@redhat.com>, 
+ =?ISO-8859-15?Q?Volker_R=FCmelin?= <vr_qemu@t-online.de>, 
+ Gerd Hoffmann <kraxel@redhat.com>, Laurent Vivier <laurent@vivier.eu>, 
+ Manos Pitsidianakis <manos.pitsidianakis@linaro.org>, 
+ "Michael S. Tsirkin" <mst@redhat.com>, 
+ =?ISO-8859-15?Q?Daniel_P=2E_Berrang=E9?= <berrange@redhat.com>, 
+ Eduardo Habkost <eduardo@habkost.net>, 
+ Alistair Francis <alistair@alistair23.me>, 
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
+ Peter Maydell <peter.maydell@linaro.org>, 
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, 
+ "open list:Xilinx ZynqMP and..." <qemu-arm@nongnu.org>
+Subject: Re: [PATCH 35/43] audio: rename QEMUSoundCard -> AudioFE
+In-Reply-To: <20251021090317.425409-36-marcandre.lureau@redhat.com>
+Message-ID: <e8232530-ce04-c542-d39e-c0e2dc5014b3@eik.bme.hu>
+References: <20251021090317.425409-1-marcandre.lureau@redhat.com>
+ <20251021090317.425409-36-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: multipart/mixed;
+ boundary="3866299591-890452336-1761048703=:49605"
+Received-SPF: pass client-ip=152.66.115.2; envelope-from=balaton@eik.bme.hu;
+ helo=zero.eik.bme.hu
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -104,31 +78,64 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Remove pointless alias to the very same machine:
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-  $ qemu-system-aarch64 -M help | fgrep ast2700fc
-  ast2700fc            ast2700 full core support (alias of ast2700fc)
-  ast2700fc            ast2700 full core support
+--3866299591-890452336-1761048703=:49605
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8BIT
 
-Fixes: a74faf35efc ("hw/arm: Introduce ASPEED AST2700 A1 full core machine")
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- hw/arm/aspeed_ast27x0-fc.c | 1 -
- 1 file changed, 1 deletion(-)
+On Tue, 21 Oct 2025, marcandre.lureau@redhat.com wrote:
+> From: Marc-André Lureau <marcandre.lureau@redhat.com>
+>
+> Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+> ---
+> audio/audio.h                       | 20 ++++++++++----------
+> audio/audio_int.h                   |  6 +++---
+> audio/audio_template.h              |  4 ++--
+> hw/audio/lm4549.h                   |  2 +-
+> include/hw/audio/asc.h              |  2 +-
+> include/hw/audio/virtio-snd.h       |  2 +-
+> include/hw/display/xlnx_dp.h        |  2 +-
+> include/hw/isa/vt82c686.h           |  2 +-
+> include/hw/qdev-properties-system.h |  2 +-
+> audio/audio.c                       | 10 +++++-----
+> hw/audio/ac97.c                     |  6 +++---
+> hw/audio/adlib.c                    |  6 +++---
+> hw/audio/asc.c                      |  6 +++---
+> hw/audio/cs4231a.c                  |  4 ++--
+> hw/audio/es1370.c                   |  6 +++---
+> hw/audio/gus.c                      |  6 +++---
+> hw/audio/hda-codec.c                |  6 +++---
+> hw/audio/lm4549.c                   |  2 +-
+> hw/audio/pcspk.c                    |  4 ++--
+> hw/audio/sb16.c                     |  4 ++--
+> hw/audio/via-ac97.c                 |  4 ++--
+> hw/audio/virtio-snd.c               |  4 ++--
+> hw/audio/wm8750.c                   |  6 +++---
+> hw/core/qdev-properties-system.c    |  4 ++--
+> hw/display/xlnx_dp.c                |  2 +-
+> hw/usb/dev-audio.c                  |  6 +++---
+> 26 files changed, 64 insertions(+), 64 deletions(-)
+>
+> diff --git a/audio/audio.h b/audio/audio.h
+> index 845e078169..a43ca0700c 100644
+> --- a/audio/audio.h
+> +++ b/audio/audio.h
+> @@ -70,18 +70,18 @@ struct AudioBEClass {
+> };
+>
+> typedef struct AudioBE AudioBE;
+> -typedef struct QEMUSoundCard {
+> +typedef struct AudioFE {
 
-diff --git a/hw/arm/aspeed_ast27x0-fc.c b/hw/arm/aspeed_ast27x0-fc.c
-index a61ecff3909..463dd30cc5d 100644
---- a/hw/arm/aspeed_ast27x0-fc.c
-+++ b/hw/arm/aspeed_ast27x0-fc.c
-@@ -180,7 +180,6 @@ static void ast2700fc_class_init(ObjectClass *oc, const void *data)
- {
-     MachineClass *mc = MACHINE_CLASS(oc);
- 
--    mc->alias = "ast2700fc";
-     mc->desc = "ast2700 full core support";
-     mc->init = ast2700fc_init;
-     mc->no_floppy = 1;
--- 
-2.51.0
+You could also leave it as it is. While it's a bit odd naming it's clear 
+enough and not at least the local variables now called "card" match the 
+type which would not be the case if you rename it to Audiodev or something 
+else but not rename all the locals. So maybe it does not worth the churn 
+to change this type name.
 
+Regards,
+BALATON Zoltan
+--3866299591-890452336-1761048703=:49605--
 

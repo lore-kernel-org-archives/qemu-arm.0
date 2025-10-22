@@ -4,56 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1DFBBCCD1BB
-	for <qemu-arm@archiver.kernel.org>; Wed, 22 Oct 2025 12:32:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E53BFCCD1AB
+	for <qemu-arm@archiver.kernel.org>; Wed, 22 Oct 2025 12:32:52 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vBXyz-0001FS-79; Wed, 22 Oct 2025 08:30:25 -0400
+	id 1vBY0o-0002nV-NJ; Wed, 22 Oct 2025 08:32:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vBXyo-00017K-Et
- for qemu-arm@nongnu.org; Wed, 22 Oct 2025 08:30:14 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vBXzJ-0001RP-J2
+ for qemu-arm@nongnu.org; Wed, 22 Oct 2025 08:30:56 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vBXym-0008M4-3X
- for qemu-arm@nongnu.org; Wed, 22 Oct 2025 08:30:13 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vBXzF-0008RG-CW
+ for qemu-arm@nongnu.org; Wed, 22 Oct 2025 08:30:43 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1761136211;
+ s=mimecast20190719; t=1761136239;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=aWLaHec6OH8er+yCVkAR80rxv7wHU2S6lmmqzgzou4o=;
- b=PoKfHXKJoWtBkAvAdcShjdOGGK+gD2CKxvZZKKe/S6ae/xac3KctR0M2Hl2biAOcMkSP4l
- gW3iIHRKB0jPbqtU2FFMKvAyGc8EYO35QeqYNjBsyq8oeErl+vnuczA+6/K1Nai7Sfa14H
- P3cCP4A9yDqyb+oUJffgkHP6rnKEqoc=
+ bh=FW6JqfxgLAwqsIH9ljEDUOQ58wJhevs/bEIifDWovxY=;
+ b=WvbR7/u5xvObhlDgjayD+oeG1YeqhekdD2QpQpOCag8gUzdNiBsT9J9jq8pjzTtM3jtzGC
+ 9fMoebXjJ3KNdSrhdbXKFjf0KeVrBlwevUj2Ad70JquKZIe1ZZS/H32P5xKr44vbvmOFdX
+ OzDGwGqJRU0jBnqWNl1Kt0+gKw2tid8=
 Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-690-lpzDsHizNVC-HhGqJyLbPA-1; Wed,
- 22 Oct 2025 08:30:08 -0400
-X-MC-Unique: lpzDsHizNVC-HhGqJyLbPA-1
-X-Mimecast-MFC-AGG-ID: lpzDsHizNVC-HhGqJyLbPA_1761136207
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-652-9wrK0TKDO6OLGEKF03D3rw-1; Wed,
+ 22 Oct 2025 08:30:37 -0400
+X-MC-Unique: 9wrK0TKDO6OLGEKF03D3rw-1
+X-Mimecast-MFC-AGG-ID: 9wrK0TKDO6OLGEKF03D3rw_1761136236
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 0D171180135A; Wed, 22 Oct 2025 12:30:07 +0000 (UTC)
+ id 0A31A1800D81; Wed, 22 Oct 2025 12:30:36 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.45.224.12])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 3A9171800584; Wed, 22 Oct 2025 12:30:04 +0000 (UTC)
+ id 37E671800584; Wed, 22 Oct 2025 12:30:33 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 02/16] hw/arm/aspeed_ast27x0-tsp: Add SDRAM region and fix
- naming and size to 512MB
-Date: Wed, 22 Oct 2025 14:29:39 +0200
-Message-ID: <20251022122953.877335-3-clg@redhat.com>
+Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>
+Subject: [PULL 15/16] hw/arm/aspeed: ast2600-evb: Use w25q512jv flash model
+Date: Wed, 22 Oct 2025 14:29:52 +0200
+Message-ID: <20251022122953.877335-16-clg@redhat.com>
 In-Reply-To: <20251022122953.877335-1-clg@redhat.com>
 References: <20251022122953.877335-1-clg@redhat.com>
 MIME-Version: 1.0
@@ -85,70 +84,55 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Jamin Lin <jamin_lin@aspeedtech.com>
+The ast2600-evb machine model is using the "mx66u51235f" flash model,
+which has issues with recent Linux kernels (6.15+) when reading SFDP
+data.
 
-Previously, the TSP memory was incorrectly modeled as "SRAM" with
-a 32 MB size. Rename from SRAM to SDRAM and correct size from 32MB
-to 512MB to match hardware.
+Change the flash model to "w25q512jv", which is the model present on
+some ast2600a3 EVB board and is known to work correctly with recent
+kernels. Adjust the corresponding qtest to reflect the new JEDEC ID of
+the w25q512jv flash.
 
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20251015062210.3128710-3-jamin_lin@aspeedtech.com
+Reviewed-by: Jamin Lin <jamin_lin@aspeedtech.com>
+Link: https://lore.kernel.org/qemu-devel/20251016212437.1046135-1-clg@redhat.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- hw/arm/aspeed_ast27x0-tsp.c | 20 ++++++++++----------
- 1 file changed, 10 insertions(+), 10 deletions(-)
+ hw/arm/aspeed.c               | 4 ++--
+ tests/qtest/aspeed_smc-test.c | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/hw/arm/aspeed_ast27x0-tsp.c b/hw/arm/aspeed_ast27x0-tsp.c
-index 9318f8c86c51..caeb3392a8e6 100644
---- a/hw/arm/aspeed_ast27x0-tsp.c
-+++ b/hw/arm/aspeed_ast27x0-tsp.c
-@@ -16,10 +16,10 @@
- #include "hw/arm/aspeed_soc.h"
- #include "hw/arm/aspeed_coprocessor.h"
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index 21ee62f75044..1bc9e534ba49 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -1592,8 +1592,8 @@ static void aspeed_machine_ast2600_evb_class_init(ObjectClass *oc,
+     amc->soc_name  = "ast2600-a3";
+     amc->hw_strap1 = AST2600_EVB_HW_STRAP1;
+     amc->hw_strap2 = AST2600_EVB_HW_STRAP2;
+-    amc->fmc_model = "mx66u51235f";
+-    amc->spi_model = "mx66u51235f";
++    amc->fmc_model = "w25q512jv";
++    amc->spi_model = "w25q512jv";
+     amc->num_cs    = 1;
+     amc->macs_mask = ASPEED_MAC0_ON | ASPEED_MAC1_ON | ASPEED_MAC2_ON |
+                      ASPEED_MAC3_ON;
+diff --git a/tests/qtest/aspeed_smc-test.c b/tests/qtest/aspeed_smc-test.c
+index 52a00e6f0a7e..50a87e625001 100644
+--- a/tests/qtest/aspeed_smc-test.c
++++ b/tests/qtest/aspeed_smc-test.c
+@@ -134,10 +134,10 @@ static void test_ast2600_evb(AspeedSMCTestData *data)
+                           "-drive file=%s,format=raw,if=mtd",
+                           data->tmp_path);
  
--#define AST2700_TSP_RAM_SIZE (32 * MiB)
-+#define AST2700_TSP_SDRAM_SIZE (512 * MiB)
- 
- static const hwaddr aspeed_soc_ast27x0tsp_memmap[] = {
--    [ASPEED_DEV_SRAM]      =  0x00000000,
-+    [ASPEED_DEV_SDRAM]     =  0x00000000,
-     [ASPEED_DEV_INTC]      =  0x72100000,
-     [ASPEED_DEV_SCU]       =  0x72C02000,
-     [ASPEED_DEV_SCUIO]     =  0x74C02000,
-@@ -165,7 +165,7 @@ static void aspeed_soc_ast27x0tsp_realize(DeviceState *dev_soc, Error **errp)
-     AspeedCoprocessorState *s = ASPEED_COPROCESSOR(dev_soc);
-     AspeedCoprocessorClass *sc = ASPEED_COPROCESSOR_GET_CLASS(s);
-     DeviceState *armv7m;
--    g_autofree char *sram_name = NULL;
-+    g_autofree char *sdram_name = NULL;
-     int uart;
-     int i;
- 
-@@ -184,16 +184,16 @@ static void aspeed_soc_ast27x0tsp_realize(DeviceState *dev_soc, Error **errp)
-                              OBJECT(s->memory), &error_abort);
-     sysbus_realize(SYS_BUS_DEVICE(&a->armv7m), &error_abort);
- 
--    sram_name = g_strdup_printf("aspeed.dram.%d",
--                                CPU(a->armv7m.cpu)->cpu_index);
--
--    if (!memory_region_init_ram(&s->sram, OBJECT(s), sram_name,
--                                AST2700_TSP_RAM_SIZE, errp)) {
-+    /* SDRAM */
-+    sdram_name = g_strdup_printf("aspeed.sdram.%d",
-+                                 CPU(a->armv7m.cpu)->cpu_index);
-+    if (!memory_region_init_ram(&s->sdram, OBJECT(s), sdram_name,
-+                                AST2700_TSP_SDRAM_SIZE, errp)) {
-         return;
-     }
-     memory_region_add_subregion(s->memory,
--                                sc->memmap[ASPEED_DEV_SRAM],
--                                &s->sram);
-+                                sc->memmap[ASPEED_DEV_SDRAM],
-+                                &s->sdram);
- 
-     /* SCU */
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->scu), errp)) {
+-    /* fmc cs0 with mx66u51235f flash */
++    /* fmc cs0 with w25q512jv flash */
+     data->flash_base = 0x20000000;
+     data->spi_base = 0x1E620000;
+-    data->jedec_id = 0xc2253a;
++    data->jedec_id = 0xef4020;
+     data->cs = 0;
+     data->node = "/machine/soc/fmc/ssi.0/child[0]";
+     /* beyond 16MB */
 -- 
 2.51.0
 

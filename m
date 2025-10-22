@@ -4,188 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A71CCCD1AB
-	for <qemu-arm@archiver.kernel.org>; Wed, 22 Oct 2025 16:57:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2D1BCCD1BB
+	for <qemu-arm@archiver.kernel.org>; Wed, 22 Oct 2025 18:19:18 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vBc91-0003TJ-7W; Wed, 22 Oct 2025 12:57:03 -0400
+	id 1vBdQW-0007g4-2I; Wed, 22 Oct 2025 14:19:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
- id 1vBc8x-0003SX-4f; Wed, 22 Oct 2025 12:56:59 -0400
-Received: from mail-northcentralusazlp170130007.outbound.protection.outlook.com
- ([2a01:111:f403:c105::7] helo=CH4PR04CU002.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
- id 1vBc8s-00063D-1m; Wed, 22 Oct 2025 12:56:57 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=qiqtg4BoGvghkDuziHi4xSY3wA+cBumAofZN4tk0HGVXszko6+512eWo/LFq1ao3tE7LuBbF071tpxfRm4K2lDrhMfedYmns1tcKVLCEVR4GOjWL4j9Z1JUTIxguNjJdtS+v6tKNVdto0dnmi9uAwjrvsBYIrxDZHCNfDIIJP8xcbRg4hC15y7DsEOCSfrhPhvDboo7aocSGlMFe6BRf+VyqP8jlyqD2C/z39Qgy6XrZCGhrqGyEH/CUnEOZH1cD06DKhX4T32dSLnsZCP185tOHB2X2sY8WYKpExWDFPTmt4l4xem1Ra96lnTYLOatgkfHDCNfFXsfcmFQCjQ0bJw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=4ymd8z3LMXPM0yPg6WpufFR8luixMN5qT6Kba9/AH5c=;
- b=s3yajevzltqK7ruOKwX1CwoajRDJJfmhjlUgcQn0eUeWjSl37pIxROy0zTtCaUyXWNIiU0BDuipkE+8HWa/6INkecW4qaDCzWSNEdZ3jwnyKHND9N+cXxSIfj9XQGz3U95pJNgf/ail5IzQYy8VWoWwW945Hs/r0rideQETlVzZ44J+hrIdJIqj1PNlIqD7TlPMvshfesMA99O8FmpQmlGEk5WIXMVXB8yX9ae5bowEJvdY9sdNREh5tMlyY+yr7utzm+R8034jBPMe255tFRq8//KfOYBGdIHdxNBvv/r0RNO6vp7LKmz38wx0A45CgO+EuK9zm+NAd6WcFrgINcA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=4ymd8z3LMXPM0yPg6WpufFR8luixMN5qT6Kba9/AH5c=;
- b=OmUT210FpaDXcKX6ZUbZ5DtxRX/dRCyee5FAz3g5a1M8v92t7PwCruVmvoHSDvMbpbhcmGYAJkMyBSsvFPbTnff768aaUk/AjX5+EK7pOPLiLR4jF3h+tHyN/fGdC+1PWquk3icVXhxXeXGFdVeuFUZZOiW2Xwo/zsoBAV5+Lo1iir0uAvZFbLXK8c8kju4DVdg5kxYYqfEtYgd3SYd254PGwEodUkYNSpeASBEr/LXkWXDt1G8gKii1wV0/GnFJym1zQWO0uVJl1NDB+T7nRO/K8fpTqTkO9t3Lq9rqDaVItNmxncpmv8623KMkd5+hwCzlniSDqWO11zx2LDhZxw==
-Received: from CH3PR12MB7548.namprd12.prod.outlook.com (2603:10b6:610:144::12)
- by IA0PPF7646FEBB5.namprd12.prod.outlook.com
- (2603:10b6:20f:fc04::bd3) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9228.17; Wed, 22 Oct
- 2025 16:56:46 +0000
-Received: from CH3PR12MB7548.namprd12.prod.outlook.com
- ([fe80::e8c:e992:7287:cb06]) by CH3PR12MB7548.namprd12.prod.outlook.com
- ([fe80::e8c:e992:7287:cb06%5]) with mapi id 15.20.9253.011; Wed, 22 Oct 2025
- 16:56:46 +0000
-From: Shameer Kolothum <skolothumtho@nvidia.com>
-To: "eric.auger@redhat.com" <eric.auger@redhat.com>, Nicolin Chen
- <nicolinc@nvidia.com>
-CC: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
- <qemu-devel@nongnu.org>, "peter.maydell@linaro.org"
- <peter.maydell@linaro.org>, Jason Gunthorpe <jgg@nvidia.com>,
- "ddutile@redhat.com" <ddutile@redhat.com>, "berrange@redhat.com"
- <berrange@redhat.com>, Nathan Chen <nathanc@nvidia.com>, Matt Ochs
- <mochs@nvidia.com>, "smostafa@google.com" <smostafa@google.com>,
- "wangzhou1@hisilicon.com" <wangzhou1@hisilicon.com>, "jiangkunkun@huawei.com"
- <jiangkunkun@huawei.com>, "jonathan.cameron@huawei.com"
- <jonathan.cameron@huawei.com>, "zhangfei.gao@linaro.org"
- <zhangfei.gao@linaro.org>, "zhenzhong.duan@intel.com"
- <zhenzhong.duan@intel.com>, "yi.l.liu@intel.com" <yi.l.liu@intel.com>,
- "shameerkolothum@gmail.com" <shameerkolothum@gmail.com>
-Subject: RE: [PATCH v4 11/27] hw/pci/pci: Introduce optional
- get_msi_address_space() callback
-Thread-Topic: [PATCH v4 11/27] hw/pci/pci: Introduce optional
- get_msi_address_space() callback
-Thread-Index: AQHcPuxqe+DDJPdOuEOlF5uaJh/2rbTLO2WAgAAdj4CAAXgngIAAKdcAgAFoKQCAAAdlgA==
-Date: Wed, 22 Oct 2025 16:56:46 +0000
-Message-ID: <CH3PR12MB754834276B67565854CB973BABF3A@CH3PR12MB7548.namprd12.prod.outlook.com>
-References: <20250929133643.38961-1-skolothumtho@nvidia.com>
- <20250929133643.38961-12-skolothumtho@nvidia.com>
- <aPFx7Egdny+JCO9U@Asurada-Nvidia>
- <291fe8be-405e-4ea3-acfb-d090f6a7cd15@redhat.com>
- <aPZ4tcsMfN+2puGL@Asurada-Nvidia>
- <add07edd-3652-430d-b52c-cb2bdbc7f587@redhat.com>
- <aPfXWKE70OuumOQD@Asurada-Nvidia>
- <8cb2101e-6699-44c9-bb51-d092e0024cd9@redhat.com>
-In-Reply-To: <8cb2101e-6699-44c9-bb51-d092e0024cd9@redhat.com>
-Accept-Language: en-US, en-GB
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: CH3PR12MB7548:EE_|IA0PPF7646FEBB5:EE_
-x-ms-office365-filtering-correlation-id: 611be56d-afa1-430d-08b1-08de118bfc50
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|1800799024|7416014|366016|376014|38070700021; 
-x-microsoft-antispam-message-info: =?utf-8?B?QkdYVm1zS0RLbzJmT2g2MDNSdFRYeTVEMzUyVGwwcHlNY3lRYlhIdjdTdHg3?=
- =?utf-8?B?WmZSTHFRRjZ2WmVDZ1ZaRTRVcUlsVk0yV2xiSW85eFpJQzkyYzEvNU04ZGVh?=
- =?utf-8?B?T1o0VEU3NHlYbjZ0U2owZkFYZksxSVRzSjdUdlhjbHRocnFKMDBaemVoWUl1?=
- =?utf-8?B?TldlRkw3T1BjK052R0k3Z1lOYXg0NDY2ZklqVlZMeFU2YXBrNVBYdlFZM1dq?=
- =?utf-8?B?Y004U0ZWYVVzVHUzdy9OcUVtQS9WR0kxZE04R29vdFdkV0pCczNCcE1uTGdJ?=
- =?utf-8?B?dDdKb2kxQXp4SFNvT3FwYjd1bFFyOEZEbitxTjZQVHFvOVlZWlNYZkxmWHlZ?=
- =?utf-8?B?aUFKR0pHK040MEpLd3pJNHk4cUZiNHdNU1h1L0NLOHNIbStZUm82RE9Zdmxw?=
- =?utf-8?B?eTArQ2pxaFU5UlNhL3p3Nkt1NjRMVUhFWWNuM1hjVUNmdUtWb1lISXcvUlFw?=
- =?utf-8?B?MkRYSGFIQm4va09xSk5QOTlZT3JSNVNYMEo0ckttVUVSeWw0YzY2UHR3YVB3?=
- =?utf-8?B?THVRcnhuaDFLR0VnY3hIczBRdHNVeGxNd1hsWlNBTmk2VEdIeGFMUVQzWUh5?=
- =?utf-8?B?SUVBOUVzSzJ1STRwSDFWSmRGUUJkMytQb2RUdHhpYkRCSE5ISkd2Rk40QnE1?=
- =?utf-8?B?ZldkdHRkclJYMVpVRDRGRktvK2VXdyt5MStJVDRDVUhFODhiOTJXQTF4ZHBR?=
- =?utf-8?B?OHpuclorUTVKZ0E3bWxvV3RFcGNtRmk1VzZqZWJORDRJU3dHdU5adHVnZUlk?=
- =?utf-8?B?MFRJTVVzR0Jyc1JScUZrMmk1ekJFZjRnaE5UYW5YdzNFakdUYTVWTi9ZWFM2?=
- =?utf-8?B?WW1ya2tDVEFvNEJQamNzQXJBZmc4b3pKK2M5alh1NVhLMDgva3VDVFlZRk5I?=
- =?utf-8?B?ZndVRVNnZXUyVDcxTUdWZTNrckx5MW1JenR3QkpCSGY1aTBqWk9LbXpqN3Ju?=
- =?utf-8?B?MndJNi9FNFMvb0tMYWl5QVk4ak4rZlJDam9uK0o3TmF3NGg4Q3hJTTZxSldP?=
- =?utf-8?B?ZWVOTmJhY21Da3U5VmJCdUJWcyt1OFJSWXJ5M3ZPS0k1T3ZrVGRZbzZ4QTFn?=
- =?utf-8?B?ZlJEOFBvSHBoQWZaZFRUdjNoVGNTcHRORXdOMk11Nm1XNUZJMzh3bGpoSm0y?=
- =?utf-8?B?eWZmaXVWWWlEK1NFNm5Mb2tabkxkVHhpa2RUdXVNOG51c1czQUxxbHFGcXpT?=
- =?utf-8?B?aUYyQTZvbXJkazFlaHhIT0xLMzBmNEkySytPVjB0MW9MSEkrZnVYKzJYTnJH?=
- =?utf-8?B?dEo3THJqMnBNcStBdmRvOTdzL0hhNi9YQWltb3NrWWFRT2hYWXRtYVdsNlZk?=
- =?utf-8?B?cldqbnQ5SmZHdEdvbVRtWG5NM2pPTGpiOFJ5V05Za3M4dklvV3RDVDFJWFdF?=
- =?utf-8?B?cEZZbUJieDFWajNyQVNBQjJQZXI5dlFQZjFMT0h6d1BmZm1WVTYvMUMrSFRX?=
- =?utf-8?B?bFZhU0ZKYUc4dWFiem9GNHBHWDBycDFKYnZSK2hnWjQxVWcxTVVmaDFzbkJr?=
- =?utf-8?B?YzhxZkdoRllEWEZJT0RjdHNFaldsbkQ1WTRONzEvNitGWmhvaFZGazVzY081?=
- =?utf-8?B?R2x5MzdaNG9ybFUyRVUzREJNSlVxK2o2MFRlR0cxSWZhOEx1Sm1hZ0RUdFNP?=
- =?utf-8?B?ZVRUVHAxVUcxTWFtS2RvUFhSY01JMHU0RGhBN3c0eUpXaWV4cjh2U05nVVly?=
- =?utf-8?B?YjY4a3RERzNzYmdYc01mRWtTY3F3dHk4ZFhJM3BwWnY1MVYzYlN3RVUzOHU5?=
- =?utf-8?B?cXZmQVprMGtYZDMra2FhZEJWU0R4eE9SS1VJd0U5aWM3d1N4dS9rcG9hL08w?=
- =?utf-8?B?ajUrakUvWmxNREFUaUcvR2RROFVBQnJUZUJxdVYySzl4Vm5Va3NZb1ptdHBN?=
- =?utf-8?B?QkNmbkR4WFZGS0I4NjZRYVRiVnd2T2JlL2gzSlF6d2ViN3NRLy9rUXlDeW1m?=
- =?utf-8?B?TEhsdGNWZG9UWTJ5c0hUenJyaVlxZGYrTjhzVDZrVnJMSk5mMFRlR3E0b1pE?=
- =?utf-8?B?M1JubldKMnllZ2dqb3I1bTR3ZUFzL0p3d0lTbkhPajdxa295djYwSFNFRzZl?=
- =?utf-8?Q?RSSZgi?=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:CH3PR12MB7548.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(1800799024)(7416014)(366016)(376014)(38070700021); DIR:OUT;
- SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?L01oejlXSTlKRmFGU0oyWlJoOEU2Q2hUNFVnK3FhM3BrTko3VkNaRDB5dE1q?=
- =?utf-8?B?K1Exd204MGpmeXdZTnNYQ2dNcHJZdFV0SnFRZ1dDWkJsc0pYaC9sOVhFUmNB?=
- =?utf-8?B?RHZWR0JlelNRdmJUd3cwd0szbktlbEo5UmlSMkYwdnNzZXB3MENTcUZrOFM0?=
- =?utf-8?B?TENpMDFXSXVjc2hJMER3NW1qd2hQL29lMmpHUlpnZFhXODBaYXdvUVpIK2RK?=
- =?utf-8?B?Z1Q3YkVGVWthUXFNQW5OVEhJeCtOOTduUkZjZC80S3BvQ0N2UkQ4MnJ6eHQ1?=
- =?utf-8?B?d3d2ZmlidmJvYVBXN3JXVkhsUUZDZWlZcDVGODhiMkdlWWh1SnlSQnYxbWRs?=
- =?utf-8?B?V1FnMlI1dWdkczAzYWZ0VlQ0Nk5nTkR3RllnbjBhRjc1SEc3NHBTUzdCaUpT?=
- =?utf-8?B?SWVFbkZnTmRreStsbTBBalQvU3FvREszYkJvRGVoZzdINHZ0Y0RrTXNxMVVl?=
- =?utf-8?B?NTloUHlUdGF5b3JuUGxZclBCY0dFMWYrUFVkMk5Wd2tOOUtMMjZiQVdaNlJK?=
- =?utf-8?B?WVQwSTc0dlFSSldWeG9KOGU1SWRFWjNCY2tjVm02TkJ6UklqYm4rR1lEU0xh?=
- =?utf-8?B?aWloV0hVY2lNNVlyMzNRZGkzZ1duOUg3dUhXbFdXT1RMejBBVzBVSkhXZFZy?=
- =?utf-8?B?TExQL3BDNmFRZmpZUlFwTSt0K2JmMlJaUktYbW9qV3pMNHBYY3hka0R0WURQ?=
- =?utf-8?B?QktQWjVzaVJGaVdRdk96c0lndDREWkphVWxuOE1zdzNGYWJFYnpzY1hDMTRn?=
- =?utf-8?B?MUFCTXUrVGVjeUpqREhlL01OZ2VrV2tFYmtHc2R2Q2ljTzd1Vjhkbi9TNlpk?=
- =?utf-8?B?L1hkT1d0elM4dTZoTmtLYm4zeEFmbVdrKy9rbXdDUm1IN2FwSkcvRkZGbS8x?=
- =?utf-8?B?OHZyNWcyNFhXNlN6TVBFUHZLT2wwMG12cDJxN2VsTFdlQnVEVk9wa0UzbVQ5?=
- =?utf-8?B?dzJjRUpVb1Y3WWsvSGp2VDI4N1pHZG9sMzdtaGJkMGxQa2hVNXhLUm04UDlT?=
- =?utf-8?B?Y0hPWnBaV1hEaGJ1ZHprVU9IdVpGR0xTR0VOZVJQWHl4Mmt6U1RFaHhEeEV6?=
- =?utf-8?B?T2V2dWs3YXNxQnlDRmxUNGwveko5Nmh4UVJLWWpPMEFITWo1VGthWXZYdFlS?=
- =?utf-8?B?TUhtSTVDYzMvaG9BQ2Z6cW1wS2dvakxUNkNIUGx6V3luU1puR1JEN29MZXBC?=
- =?utf-8?B?RXY1OFArcFNiWFV2Y0JCeEVFbjV6a0hrTkIwVDg0SDNHOUVqRjlLbVRNd3lk?=
- =?utf-8?B?TUxpOTc0U3QxT2ZTVkpBZHJWRUtDY29YU2VlWHh3b2kzd3grWE5pOEdMc3Nz?=
- =?utf-8?B?b01rNEsyVVFVRWF6dkpRZWkrS284RkkxTDBrbjF3K2w3djJ5R2xjNmc1Y0pj?=
- =?utf-8?B?ZDBoU0hsNUVmNS8xcnhkdDdHQUxpNi8vNUFRdXdYa2U1UkRINngrYUtiNHls?=
- =?utf-8?B?TFRZS1M1ZVRKbnN5RkV5aVM1dk40NENkelhRQ3MyalA0bFZJR3F5UHlWMjFl?=
- =?utf-8?B?cldTZnZGS2pvQjVaU01KU1o1VU8xNC9BOXZiMTNLRHB0eFk2QVFnbDBSaWlY?=
- =?utf-8?B?aGlkUW5GK1Vxc2RmS3dqN3NjUGI3WC93Qk1vc2h5d295bWxVeWVwdFpSRmgv?=
- =?utf-8?B?LzdyUEErOFp0NDdROFFnOEZxWSt0OG9jVkJXN1dRdVlpQndWSWdLWEQ0THRy?=
- =?utf-8?B?Z3ZxTFVOZGtzSUFzR2gzVFdxcjBHZmtPUlJndlNVWi8vZnpTaUVPMDNyMGhL?=
- =?utf-8?B?YUw0ajJYc0swVVNOT2VmT0M2NXNlbkdSMHFiYUg2MGhoeURZRDRyOENqZm9p?=
- =?utf-8?B?TCtiWnU3dkdKbURUeTBJbHpkYmUrVWJNbWJ6eHVIWE41dGtDbFJla0dQaFV3?=
- =?utf-8?B?RElEMzhGSVBZdzVIL3F1M2hlSnhmbUNPTzVFWnZjTlU0dFZSSWsySG01UFVX?=
- =?utf-8?B?NU5aa09TaENKZmgyd2Nibi81SGc0bzJqM24xYjFtbnJJS3JFTGYvbi9zZ0Ri?=
- =?utf-8?B?VHJDT3NhZDdNSmhybkhJREFpMllsL1RkK05QcG15QWFWbVljMTRJOTlaVUh3?=
- =?utf-8?B?MGtSK1J5eXdYNHFRWGw2YUZFWEVDZnZhT29oZ0M5RlVDV0VNM2lwbnF2UE5w?=
- =?utf-8?Q?ri7T2eQwXGoNq8KoC+Kyx8DUB?=
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ (Exim 4.90_1) (envelope-from <salil.mehta@opnsrc.net>)
+ id 1vBdQC-0007ZW-G8
+ for qemu-arm@nongnu.org; Wed, 22 Oct 2025 14:18:52 -0400
+Received: from mail-oo1-xc2d.google.com ([2607:f8b0:4864:20::c2d])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <salil.mehta@opnsrc.net>)
+ id 1vBdQ9-0000Kh-M2
+ for qemu-arm@nongnu.org; Wed, 22 Oct 2025 14:18:52 -0400
+Received: by mail-oo1-xc2d.google.com with SMTP id
+ 006d021491bc7-65366485678so514063eaf.2
+ for <qemu-arm@nongnu.org>; Wed, 22 Oct 2025 11:18:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=opnsrc.net; s=google; t=1761157123; x=1761761923; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=1lwpDoE+AQS0vtBN6brZEAMWyxfShnXJKsHxHNq6DP8=;
+ b=JrwMGBRin2fhRz1vMU9L8ybMuXdgJgSp1WluOYES4mwgyR1WJp2zarL3ffWfCp5dq8
+ M15E+Ju/F9MLMPnJm0fdqmWG7vXQZ6afW2FdJ2+L9dJXXdsEvPqOujBwBfCCWd1IaYRs
+ weyZbNa4gVaguaBLN54sVszRWQb/n2hOY/mB51WKbAsn3+fAjx25kLZ/1yez1o03m7me
+ ++Py8PIj8R0q7WfMnLKmK2WvqJIT07Qcgp3Vaw1i9H1lLvREQI0Gkt7CrpMiyZ5s+Hd4
+ omNx0vRoSU+Xb8kooHlZ+wNhg71Xy9Gnl07fy0IxO/4FhDOTFeS/EFg48glnImdHxk2c
+ DAoQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1761157123; x=1761761923;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=1lwpDoE+AQS0vtBN6brZEAMWyxfShnXJKsHxHNq6DP8=;
+ b=a3nId0qboMRc8NDZ35Wrs7rXq78G3i8C8skg0w7rROX7g0DlG7krO1cokFQBTE+S0r
+ GHz3ojMwyw24ur5NmPGdx7mQIccS9DcxTD9Hg/BuZWPZTukMqxLlUvTf11uayT+sTsqZ
+ dmJdr2oVwXqIXOYK5Il69q4LQUiuYCtbzjN+dNEVIjN5UFkfIivquq2BBFvDWErwT1t0
+ vtA1PcNAYzrDBqKE1gLSgPpqE0DPGRsgXN8+yjEMKy/e7/oZJGPSeMrCcLUDX+fKC8BH
+ bXD9mhP8a/koNKVx+CjQCCbz3IeGa5K/1pzcdrU6F2V/wGsp5UtKK/Et52Oux0LxfoP/
+ o0EA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWEJOpTyB0DDNhpTaojBkbOmthXTxM8X5aG23VCMXKYXOEkxyC3NsVAdoC+AKPerUxDCCAxhLKfgg==@nongnu.org
+X-Gm-Message-State: AOJu0Yzrb3MHASEe5iCt/GMLWKQqd6Yl4So9K3G7HbFxYzs2q5Ms24r6
+ XQsmEkOCc5RDbEiyMVXzeUuAzKn/E80bL8jLAL3gywAd7rrETMUMTU5NFQmxTSaFLvW4Yg5lhoe
+ vXyctEXrakL/aC6UvbuZvYQ8P0lEk+EQ7y0gJuZ005g==
+X-Gm-Gg: ASbGncuqsz4rP24cWmBiqljWNjx91LkYD5vJWDMD5A7dB4d3nfr0eS11uq0+7wd5Iu3
+ k/j3yPOSaGxQiRbcgIUioeQABuVm1wRVNVMeq4muYtnDLWUbasagyeMJ0NUGce8ycCbbdw/CK3u
+ sr6McsER9Z5SNxEvgnvxTp4NUYq9RFyJDwa38QITp1ut8dhoJ09PJTRQ32IsmHvBKQ1+EJp28HB
+ SqTWJlxigm94YIgnAMref8S6zJejG87fY7Xpc2gZNZkV3n/7otiKeQBKLSQYWytGSdyFBnf1Lbb
+ q0mQC4ca2ZL3AM54MBI06KVm6TnBSx6HholS2ehp9i/n3rofPvG1
+X-Google-Smtp-Source: AGHT+IEorxuBFMx1iGhPbbFBaeth67qGUV5xZCEsQtYHTc/NgjqRZ0+VCcsIevn2FKpn1j7OXqqGWMMJICEMvFDzfCQ=
+X-Received: by 2002:a05:6870:eca9:b0:345:c0a7:5fa3 with SMTP id
+ 586e51a60fabf-3c98cf94fc9mr7634155fac.20.1761157123290; Wed, 22 Oct 2025
+ 11:18:43 -0700 (PDT)
 MIME-Version: 1.0
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: CH3PR12MB7548.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 611be56d-afa1-430d-08b1-08de118bfc50
-X-MS-Exchange-CrossTenant-originalarrivaltime: 22 Oct 2025 16:56:46.3812 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 88i/a3eN9p1v+GpzgtsMwVGsE6Qx4yxm4huIbvq4qFBMee7n0BmDtU4uiJKQv+DTaVuKuQS1NcVi2YWO72uf8Q==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA0PPF7646FEBB5
-Received-SPF: permerror client-ip=2a01:111:f403:c105::7;
- envelope-from=skolothumtho@nvidia.com;
- helo=CH4PR04CU002.outbound.protection.outlook.com
-X-Spam_score_int: -10
-X-Spam_score: -1.1
-X-Spam_bar: -
-X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FORGED_SPF_HELO=1, SPF_HELO_PASS=-0.001,
- SPF_NONE=0.001 autolearn=no autolearn_force=no
+References: <20251001010127.3092631-1-salil.mehta@opnsrc.net>
+ <20251001010127.3092631-6-salil.mehta@opnsrc.net>
+ <a03ed205-b61a-4bba-9f25-83663b7d8a86@redhat.com>
+In-Reply-To: <a03ed205-b61a-4bba-9f25-83663b7d8a86@redhat.com>
+From: Salil Mehta <salil.mehta@opnsrc.net>
+Date: Wed, 22 Oct 2025 18:18:32 +0000
+X-Gm-Features: AS18NWC1ttp07K6Ix5F0Fg-D8s8wWwKauzGSj4OsCDZxJrxv5NlAHhq3699c2mI
+Message-ID: <CAJ7pxeYurHLqj8GnLrfznmofMpsaw91GeZ3KMyucL0B_gn9gPg@mail.gmail.com>
+Subject: Re: [PATCH RFC V6 05/24] arm/virt,kvm: Pre-create KVM vCPUs for
+ 'disabled' QOM vCPUs at machine init
+To: Gavin Shan <gshan@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, mst@redhat.com, 
+ salil.mehta@huawei.com, maz@kernel.org, jean-philippe@linaro.org, 
+ jonathan.cameron@huawei.com, lpieralisi@kernel.org, peter.maydell@linaro.org, 
+ richard.henderson@linaro.org, imammedo@redhat.com, armbru@redhat.com, 
+ andrew.jones@linux.dev, david@redhat.com, philmd@linaro.org, 
+ eric.auger@redhat.com, will@kernel.org, ardb@kernel.org, 
+ oliver.upton@linux.dev, pbonzini@redhat.com, rafael@kernel.org, 
+ borntraeger@linux.ibm.com, alex.bennee@linaro.org, gustavo.romero@linaro.org, 
+ npiggin@gmail.com, harshpb@linux.ibm.com, linux@armlinux.org.uk, 
+ darren@os.amperecomputing.com, ilkka@os.amperecomputing.com, 
+ vishnu@os.amperecomputing.com, gankulkarni@os.amperecomputing.com, 
+ karl.heubaum@oracle.com, miguel.luis@oracle.com, zhukeqian1@huawei.com, 
+ wangxiongfeng2@huawei.com, wangyanan55@huawei.com, wangzhou1@hisilicon.com, 
+ linuxarm@huawei.com, jiakernel2@gmail.com, maobibo@loongson.cn, 
+ lixianglai@loongson.cn, shahuang@redhat.com, zhao1.liu@intel.com, 
+ Keqian Zhu <zhuqian1@huawei.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::c2d;
+ envelope-from=salil.mehta@opnsrc.net; helo=mail-oo1-xc2d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -201,88 +115,411 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-DQoNCj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4gRnJvbTogRXJpYyBBdWdlciA8ZXJp
-Yy5hdWdlckByZWRoYXQuY29tPg0KPiBTZW50OiAyMiBPY3RvYmVyIDIwMjUgMTc6MjUNCj4gVG86
-IE5pY29saW4gQ2hlbiA8bmljb2xpbmNAbnZpZGlhLmNvbT4NCj4gQ2M6IFNoYW1lZXIgS29sb3Ro
-dW0gPHNrb2xvdGh1bXRob0BudmlkaWEuY29tPjsgcWVtdS0NCj4gYXJtQG5vbmdudS5vcmc7IHFl
-bXUtZGV2ZWxAbm9uZ251Lm9yZzsgcGV0ZXIubWF5ZGVsbEBsaW5hcm8ub3JnOw0KPiBKYXNvbiBH
-dW50aG9ycGUgPGpnZ0BudmlkaWEuY29tPjsgZGR1dGlsZUByZWRoYXQuY29tOw0KPiBiZXJyYW5n
-ZUByZWRoYXQuY29tOyBOYXRoYW4gQ2hlbiA8bmF0aGFuY0BudmlkaWEuY29tPjsgTWF0dCBPY2hz
-DQo+IDxtb2Noc0BudmlkaWEuY29tPjsgc21vc3RhZmFAZ29vZ2xlLmNvbTsgd2FuZ3pob3UxQGhp
-c2lsaWNvbi5jb207DQo+IGppYW5na3Vua3VuQGh1YXdlaS5jb207IGpvbmF0aGFuLmNhbWVyb25A
-aHVhd2VpLmNvbTsNCj4gemhhbmdmZWkuZ2FvQGxpbmFyby5vcmc7IHpoZW56aG9uZy5kdWFuQGlu
-dGVsLmNvbTsgeWkubC5saXVAaW50ZWwuY29tOw0KPiBzaGFtZWVya29sb3RodW1AZ21haWwuY29t
-DQo+IFN1YmplY3Q6IFJlOiBbUEFUQ0ggdjQgMTEvMjddIGh3L3BjaS9wY2k6IEludHJvZHVjZSBv
-cHRpb25hbA0KPiBnZXRfbXNpX2FkZHJlc3Nfc3BhY2UoKSBjYWxsYmFjaw0KPiANCj4gRXh0ZXJu
-YWwgZW1haWw6IFVzZSBjYXV0aW9uIG9wZW5pbmcgbGlua3Mgb3IgYXR0YWNobWVudHMNCj4gDQo+
-IA0KPiBIaSBOaWNvbGluLA0KPiANCj4gT24gMTAvMjEvMjUgODo1NiBQTSwgTmljb2xpbiBDaGVu
-IHdyb3RlOg0KPiA+IE9uIFR1ZSwgT2N0IDIxLCAyMDI1IGF0IDA2OjI2OjM5UE0gKzAyMDAsIEVy
-aWMgQXVnZXIgd3JvdGU6DQo+ID4+IEhpIE5pY29saW4sDQo+ID4+DQo+ID4+IE9uIDEwLzIwLzI1
-IDg6MDAgUE0sIE5pY29saW4gQ2hlbiB3cm90ZToNCj4gPj4+IE9uIE1vbiwgT2N0IDIwLCAyMDI1
-IGF0IDA2OjE0OjMzUE0gKzAyMDAsIEVyaWMgQXVnZXIgd3JvdGU6DQo+ID4+Pj4+PiBUaGlzIHdp
-bGwgY2F1c2UgdGhlIGRldmljZSB0byBiZSBjb25maWd1cmVkIHdpdGggd3JvbmcgTVNJIGRvb3Ji
-ZWxsDQo+ID4+Pj4+PiBhZGRyZXNzIGlmIGl0IHJldHVybiB0aGUgc3lzdGVtIGFkZHJlc3Mgc3Bh
-Y2UuDQo+ID4+Pj4+IEkgdGhpbmsgaXQnZCBiZSBuaWNlciB0byBlbGFib3JhdGUgd2h5IGEgd3Jv
-bmcgYWRkcmVzcyB3aWxsIGJlIHJldHVybmVkOg0KPiA+Pj4+Pg0KPiA+Pj4+PiAtLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLQ0KPiA+Pj4+PiBPbiBBUk0sIGEgZGV2aWNlIGJlaGluZCBhbiBJT01NVSByZXF1aXJl
-cyB0cmFuc2xhdGlvbiBmb3IgaXRzIE1TSQ0KPiBkb29yYmVsbA0KPiA+Pj4+PiBhZGRyZXNzLiBX
-aGVuIEhXIG5lc3RlZCB0cmFuc2xhdGlvbiBpcyBlbmFibGVkLCB0aGUgdHJhbnNsYXRpb24gd2ls
-bA0KPiBhbHNvDQo+ID4+Pj4+IGhhcHBlbiBpbiB0d28gc3RhZ2VzOiBnSU9WQSA9PiBnUEEgPT4g
-SVRTIHBhZ2UuDQo+ID4+Pj4+DQo+ID4+Pj4+IEluIHRoZSBhY2NlbGVyYXRlZCBTTU1VdjMgbW9k
-ZSwgYm90aCBzdGFnZXMgYXJlIHRyYW5zbGF0ZWQgYnkgdGhlDQo+IEhXLiBTbywNCj4gPj4+Pj4g
-Z2V0X2FkZHJlc3Nfc3BhY2UoKSByZXR1cm5zIHRoZSBzeXN0ZW0gYWRkcmVzcyBzcGFjZSBmb3Ig
-c3RhZ2UtMg0KPiBtYXBwaW5ncywNCj4gPj4+Pj4gYXMgdGhlIHNtbXV2My1hY2NlbCBtb2RlbCBk
-b2Vzbid0IGludm9sdmUgaW4gZWl0aGVyIHN0YWdlLg0KPiA+Pj4+IEkgZG9uJ3QgdW5kZXJzdGFu
-ZCAiZG9lc24ndCBpbnZvbHZlIGluIGVpdGhlciBzdGFnZSIuIFRoaXMgaXMgc3RpbGwgbm90DQo+
-ID4+Pj4gb2Jpb3VzIHRvIG1lIHRoYXQgZm9yIGFuIEhXIGFjY2VsZXJhdGVkIG5lc3RlZCBJT01N
-VQ0KPiBnZXRfYWRkcmVzc19zcGFjZSgpDQo+ID4+Pj4gc2hhbGwgcmV0dXJuIHRoZSBzeXN0ZW0g
-YWRkcmVzcyBzcGFjZS4gSSB0aGluayB0aGlzIGRlc2VydmVzIHRvIGJlDQo+ID4+Pj4gZXhwbGFp
-bmVkIGFuZCBtYXliZSBkb2N1bWVudGVkIGFsb25nIHdpdGggdGhlIGNhbGxiYWNrLg0KPiA+Pj4g
-Z2V0X2FkZHJlc3Nfc3BhY2UoKSBpcyB1c2VkIGJ5IHBjaV9kZXZpY2VfaW9tbXVfYWRkcmVzc19z
-cGFjZSgpLA0KPiA+Pj4gd2hpY2ggaXMgZm9yIGF0dGFjaCBvciB0cmFuc2xhdGlvbi4NCj4gPj4+
-DQo+ID4+PiBJbiBRRU1VLCB3ZSBoYXZlIGFuICJpb21tdSIgdHlwZSBvZiBtZW1vcnkgcmVnaW9u
-LCB0byByZXByZXNlbnQNCj4gPj4+IHRoZSBhZGRyZXNzIHNwYWNlIHByb3ZpZGluZyB0aGUgc3Rh
-Z2UtMSB0cmFuc2xhdGlvbi4NCj4gPj4+DQo+ID4+PiBJbiBhY2NlbCBjYXNlIGV4Y2x1ZGluZyBN
-U0ksIHRoZXJlIGlzIG5vIG5lZWQgb2YgImVtdWxhdGVkIGlvbW11DQo+ID4+PiB0cmFuc2xhdGlv
-biIgc2luY2UgSFcvaG9zdCBTTU1VIHRha2VzIGNhcmUgb2YgYm90aCBzdGFnZXMuIFRodXMsDQo+
-ID4+PiB0aGUgc3lzdGVtIGFkZHJlc3MgaXMgcmV0dXJuZWQgZm9yIGdldF9hZGRyZXNzX3NwYWNl
-KCksIHRvIGF2b2lkDQo+ID4+PiBzdGFnZS0xIHRyYW5zbGF0aW9uIGFuZCB0byBhbHNvIGFsbG93
-IFZGSU8gZGV2aWNlcyB0byBhdHRhY2ggdG8NCj4gPj4+IHRoZSBzeXN0ZW0gYWRkcmVzcyBzcGFj
-ZSB0aGF0IHRoZSBWRklPIGNvcmUgd2lsbCBtb25pdG9yIHRvIHRha2UNCj4gPj4+IGNhcmUgb2Yg
-c3RhZ2UtMiBtYXBwaW5ncy4NCj4gPj4gYnV0IGluIGdlbmVyYWwgaWYgeW91IHNldCBhcyBvdXRw
-dXQgJ2FzJyB0aGUgc3lzdGVtX2FkZHJlc3NfbWVtb3J5IGl0DQo+ID4+IHJhdGhlciBtZWFucyB5
-b3UgaGF2ZSBubyB0cmFuc2xhdGlvbiBpbiBwbGFjZS4gVGhpcyBpcyB3aGF0IEkgYW0gbm90DQo+
-ID4+IGNvbnZpbmNlZCBhYm91dC4NCj4gPiBZb3UgbWVhbiB5b3UgYXJlIG5vdCBjb252aW5jZWQg
-YWJvdXQgIm5vIHRyYW5zbGF0aW9uIj8NCj4gSSBhbSBub3QgY29udmluY2VkIGFib3V0IHRoZSBj
-aG9pY2Ugb2YgdXNpbmcgYWRkcmVzc19zcGFjZV9tZW1vcnkuDQo+ID4NCj4gPj4geW91IHNheSBp
-dCBhaW1zIGF0DQo+ID4+IC0gYXZvaWRpbmcgc3RhZ2UtMSB0cmFuc2xhdGlvbiAtIGFsbG93IFZG
-SU8gZGV2aWNlcyB0byBhdHRhY2ggdG8gdGhlDQo+ID4+IHN5c3RlbSBhZGRyZXNzIHNwYWNlIHRo
-YXQgdGhlIFZGSU8gY29yZSB3aWxsIG1vbml0b3IgdG8gdGFrZSBjYXJlIG9mDQo+ID4+IHN0YWdl
-LTIgbWFwcGluZ3MuIENhbiB5b3UgYWNoaWV2ZSB0aGUgc2FtZSBnb2FscyB3aXRoIGEgcHJvcGVy
-IGFkZHJlc3MNCj4gPj4gc3BhY2U/DQo+ID4gV291bGQgeW91IHBsZWFzZSBkZWZpbmUgInByb3Bl
-ciI/DQo+IGFuIGFkZHJlc3Mgc3BhY2UgZGlmZmVyZW50IGZyb20gYWRkcmVzc19zcGFjZV9tZW1v
-cnkNCj4gPg0KPiA+IFRoZSBkaXNhZ3JlZW1lbnQgaXMgc2VlbWluZ2x5IGFib3V0IHVzaW5nIHN5
-c3RlbSBhZGRyZXNzIHNwYWNlIG9yDQo+ID4gZXZlbiBhZGRyZXNzX3NwYWNlX21lbW9yeSwgSUlV
-SUMuDQo+IFllcyBteSBkb3VidCBpcyBhYm91dDoNCj4gDQo+IHNtbXV2M19hY2NlbF9maW5kX2Fk
-ZF9hcygpDQo+ICAgICAgKiBXZSBhcmUgdXNpbmcgdGhlIGdsb2JhbCAmYWRkcmVzc19zcGFjZV9t
-ZW1vcnkgaGVyZSwgYXMgdGhpcyB3aWxsDQo+IGVuc3VyZQ0KPiAgICAgICogc2FtZSBzeXN0ZW0g
-YWRkcmVzcyBzcGFjZSBwb2ludGVyIGZvciBhbGwgZGV2aWNlcyBiZWhpbmQgdGhlDQo+IGFjY2Vs
-ZXJhdGVkDQo+ICAgICAgKiBTTU1VdjNzIGluIGEgVk0uIFRoYXQgd2F5IFZGSU8vaW9tbXVmZCBj
-YW4gcmV1c2UgYSBzaW5nbGUgSU9BUyBJRCBpbg0KPiAgICAgICogaW9tbXVmZF9jZGV2X2F0dGFj
-aCgpLCBhbGxvd2luZyB0aGUgU3RhZ2UtMiBwYWdlIHRhYmxlcyB0byBiZSBzaGFyZWQNCj4gICAg
-ICAqIHdpdGhpbiB0aGUgVk0gaW5zdGVhZCBvZiBkdXBsaWNhdGluZyB0aGVtIGZvciBldmVyeSBT
-TU1VdjMgaW5zdGFuY2UuDQo+ICAgICAgKi8NCj4gICAgIGlmICh2ZmlvX3BjaSkgew0KPiAgICAg
-ICAgIHJldHVybiAmYWRkcmVzc19zcGFjZV9tZW1vcnk7DQo+IA0KPiBJIHRoaW5rIGl0IHdvdWxk
-IGJlIGNsZWFuZXIgdG8gYSBoYXZlIGFuIEFkZHJlc3NTcGFjZSBhbGxvY2F0ZWQgb24NCj4gcHVy
-cG9zZSB0byBzdXBwb3J0IHRoZSBWRklPIGFjY2VsIHVzZSBjYXNlLCBpZiBwb3NzaWJsZS4NCj4g
-VG8gbWUgcmV0dXJuaW5nIGFkZHJlc3Nfc3BhY2VfbWVtb3J5IHByZXRlbmRzIHdlIGFyZSBub3Qg
-ZG9pbmcgYW55DQo+IHRyYW5zbGF0aW9uLiBJIHVuZGVyc3RhbmQgaXQgaXMgImVhc3kiIHRvIHJl
-dXNlIHRoYXQgb25lIGJ1dCBJIHdvbmRlciBpdA0KPiBpcyB0aGUgc3Bpcml0IG9mIHRoZSBnZXRf
-YWRkcmVzc19zcGFjZSBjYWxsYmFjay4NCj4gDQo+IEkgd291bGQgcmF0aGVyIGFsbG9jYXRlIGEg
-ZGVkaWNhdGVkIChzaGFyZWQpIEFkZHJlc3NTcGFjZSB0byBzdXBwb3J0IHRoZQ0KPiBWRklPIGFj
-Y2VsIGNhc2UuIFRoYXQncyBteSBzdWdnZXN0aW9uLg0KDQpPay4gSSB3aWxsIGdpdmUgaXQgYSBn
-byB3aXRoIHRoZSAiZ2xvYmFsIHZhcmlhYmxlIGluIHNtbXUtYWNjZWwuYyIgcm91dGUgZm9yIGEg
-DQpzZXBhcmF0ZSBzaGFyZWQgYWRkcmVzcyBzcGFjZSB0aGF0IHlvdSBzdWdnZXN0ZWQgZWFybGll
-ciBpbiBwYXRjaCAjNiB0aHJlYWQuDQoNClRoYW5rcywNClNoYW1lZXINCg==
+Hi Gavin,
+
+On Wed, Oct 22, 2025 at 10:37=E2=80=AFAM Gavin Shan <gshan@redhat.com> wrot=
+e:
+>
+> Hi Salil,
+>
+> On 10/1/25 11:01 AM, salil.mehta@opnsrc.net wrote:
+> > From: Salil Mehta <salil.mehta@huawei.com>
+> >
+> > ARM CPU architecture does not allow CPUs to be plugged after system has
+> > initialized. This is a constraint. Hence, the Kernel must know all the =
+CPUs
+> > being booted during its initialization. This applies to the Guest Kerne=
+l as
+> > well and therefore, the number of KVM vCPU descriptors in the host must=
+ be
+> > fixed at VM initialization time.
+> >
+> > Also, the GIC must know all the CPUs it is connected to during its
+> > initialization, and this cannot change afterward. This must also be ens=
+ured
+> > during the initialization of the VGIC in KVM. This is necessary because=
+:
+> >
+> > 1. The association between GICR and MPIDR must be fixed at VM initializ=
+ation
+> >     time. This is represented by the register
+> >     `GICR_TYPER(mp_affinity, proc_num)`.
+> > 2. Memory regions associated with GICR, etc., cannot be changed (added,
+> >     deleted, or modified) after the VM has been initialized. This is no=
+t an
+> >     ARM architectural constraint but rather invites a difficult and mes=
+sy
+> >     change in VGIC data structures.
+> >
+> > To enable a hot-add=E2=80=93like model while preserving these constrain=
+ts, the virt
+> > machine may enumerate more CPUs than are enabled at boot using
+> > `-smp disabledcpus=3DN`. Such CPUs are present but start offline (i.e.,
+> > administratively disabled at init). The topology remains fixed at VM
+> > creation time; only the online/offline status may change later.
+> >
+> > Administratively disabled vCPUs are not realized in QOM until first ena=
+bled,
+> > avoiding creation of unnecessary vCPU threads at boot. On large systems=
+, this
+> > reduces startup time proportionally to the number of disabled vCPUs. On=
+ce a
+> > QOM vCPU is realized and its thread created, subsequent enable/disable =
+actions
+> > do not unrealize it. This behaviour was adopted following review feedba=
+ck and
+> > differs from earlier RFC versions.
+> >
+> > Co-developed-by: Keqian Zhu <zhuqian1@huawei.com>
+> > Signed-off-by: Keqian Zhu <zhuqian1@huawei.com>
+> > Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
+> > ---
+> >   accel/kvm/kvm-all.c    |  2 +-
+> >   hw/arm/virt.c          | 77 ++++++++++++++++++++++++++++++++++++++---=
+-
+> >   hw/core/qdev.c         | 17 ++++++++++
+> >   include/hw/qdev-core.h | 19 +++++++++++
+> >   include/system/kvm.h   |  8 +++++
+> >   target/arm/cpu.c       |  2 ++
+> >   target/arm/kvm.c       | 40 +++++++++++++++++++++-
+> >   target/arm/kvm_arm.h   | 11 ++++++
+> >   8 files changed, 168 insertions(+), 8 deletions(-)
+> >
+[...]
+> >
+> > +static void
+> > +virt_setup_lazy_vcpu_realization(Object *cpuobj, VirtMachineState *vms=
+)
+> > +{
+> > +    /*
+> > +     * Present & administratively disabled vCPUs:
+> > +     *
+> > +     * These CPUs are marked offline at init via '-smp disabledcpus=3D=
+N'. We
+> > +     * intentionally do not realize them during the first boot, since =
+it is
+> > +     * not known if or when they will ever be enabled. The decision to=
+ enable
+> > +     * such CPUs depends on policy (e.g. guided by SLAs or other deplo=
+yment
+> > +     * requirements).
+> > +     *
+> > +     * Realizing all disabled vCPUs up front would make boot time prop=
+ortional
+> > +     * to 'maxcpus', even if policy permits only a small subset to be =
+enabled.
+> > +     * This can lead to unacceptable boot delays in some scenarios.
+> > +     *
+> > +     * Instead, these CPUs remain administratively disabled and unreal=
+ized at
+> > +     * boot, to be instantiated and brought online only if policy late=
+r allows
+> > +     * it.
+> > +     */
+> > +
+> > +    /* set this vCPU to be administratively 'disabled' in QOM */
+> > +    qdev_disable(DEVICE(cpuobj), NULL, &error_fatal);
+> > +
+> > +    if (vms->psci_conduit !=3D QEMU_PSCI_CONDUIT_DISABLED) {
+> > +        object_property_set_int(cpuobj, "psci-conduit", vms->psci_cond=
+uit,
+> > +                                NULL);
+> > +    }
+> > +
+> > +    /*
+> > +     * [!] Constraint: The ARM CPU architecture does not permit new CP=
+Us
+> > +     * to be added after system initialization.
+> > +     *
+> > +     * Workaround: Pre-create KVM vCPUs even for those that are not ye=
+t
+> > +     * online i.e. powered-off, keeping them `parked` and in an
+> > +     * `unrealized (at-least during boot time)` state within QEMU unti=
+l
+> > +     * they are powered-on and made online.
+> > +     */
+> > +    if (kvm_enabled()) {
+> > +        kvm_arm_create_host_vcpu(ARM_CPU(cpuobj));
+> > +    }
+> > +}
+> > +
+> >   static void machvirt_init(MachineState *machine)
+> >   {
+> >       VirtMachineState *vms =3D VIRT_MACHINE(machine);
+> > @@ -2319,10 +2362,6 @@ static void machvirt_init(MachineState *machine)
+> >           Object *cpuobj;
+> >           CPUState *cs;
+> >
+> > -        if (n >=3D smp_cpus) {
+> > -            break;
+> > -        }
+> > -
+> >           cpuobj =3D object_new(possible_cpus->cpus[n].type);
+> >           object_property_set_int(cpuobj, "mp-affinity",
+> >                                   possible_cpus->cpus[n].arch_id, NULL)=
+;
+> > @@ -2427,8 +2466,34 @@ static void machvirt_init(MachineState *machine)
+> >               }
+> >           }
+> >
+> > -        qdev_realize(DEVICE(cpuobj), NULL, &error_fatal);
+> > -        object_unref(cpuobj);
+> > +        /* start secondary vCPUs in a powered-down state */
+> > +        if(n && mc->has_online_capable_cpus) {
+> > +            object_property_set_bool(cpuobj, "start-powered-off", true=
+, NULL);
+> > +        }
+> > +
+> > +        if (n < smp_cpus) {
+> > +            /* 'Present' & 'Enabled' vCPUs */
+> > +            qdev_realize(DEVICE(cpuobj), NULL, &error_fatal);
+> > +            object_unref(cpuobj);
+> > +        } else {
+> > +            /* 'Present' & 'Disabled' vCPUs */
+> > +            virt_setup_lazy_vcpu_realization(cpuobj, vms);
+> > +        }
+> > +
+> > +        /*
+> > +         * All possible vCPUs should have QOM vCPU Object pointer & ar=
+ch-id.
+> > +         * 'cpus_queue' (accessed via qemu_get_cpu()) contains only re=
+alized and
+> > +         * enabled vCPUs. Hence, we must now populate the 'possible_cp=
+us' list.
+> > +         */
+> > +        if (kvm_enabled()) {
+> > +            /*
+> > +             * Override the default architecture ID with the one retri=
+eved
+> > +             * from KVM, as they currently differ.
+> > +             */
+> > +            machine->possible_cpus->cpus[n].arch_id =3D
+> > +                arm_cpu_mp_affinity(ARM_CPU(cs));
+> > +        }
+> > +        machine->possible_cpus->cpus[n].cpu =3D cs;
+> >       }
+> >
+> >       /* Now we've created the CPUs we can see if they have the hypvirt=
+ timer */
+> > diff --git a/hw/core/qdev.c b/hw/core/qdev.c
+> > index 8502d6216f..5816abae39 100644
+> > --- a/hw/core/qdev.c
+> > +++ b/hw/core/qdev.c
+> > @@ -309,6 +309,23 @@ void qdev_assert_realized_properly(void)
+> >                                      qdev_assert_realized_properly_cb, =
+NULL);
+> >   }
+> >
+
+[...]
+
+> > +void kvm_arm_create_host_vcpu(ARMCPU *cpu)
+> > +{
+> > +    CPUState *cs =3D CPU(cpu);
+> > +    unsigned long vcpu_id =3D cs->cpu_index;
+> > +    int ret;
+> > +
+> > +    ret =3D kvm_create_vcpu(cs);
+> > +    if (ret < 0) {
+> > +        error_report("Failed to create host vcpu %ld", vcpu_id);
+> > +        abort();
+> > +    }
+> > +
+> > +    /*
+> > +     * Initialize the vCPU in the host. This will reset the sys regs
+> > +     * for this vCPU and related registers like MPIDR_EL1 etc. also
+> > +     * get programmed during this call to host. These are referenced
+> > +     * later while setting device attributes of the GICR during GICv3
+> > +     * reset.
+> > +     */
+> > +    ret =3D kvm_arch_init_vcpu(cs);
+> > +    if (ret < 0) {
+> > +        error_report("Failed to initialize host vcpu %ld", vcpu_id);
+> > +        abort();
+> > +    }
+> > +
+> > +    /*
+> > +     * park the created vCPU. shall be used during kvm_get_vcpu() when
+> > +     * threads are created during realization of ARM vCPUs.
+> > +     */
+> > +    kvm_park_vcpu(cs);
+> > +}
+> > +
+>
+> I don't think we're able to simply call kvm_arch_init_vcpu() in the lazil=
+y realized
+> path. Otherwise, it can trigger a crash dump on my Nvidia's grace-hopper =
+machine where
+> SVE is supported by default.
+
+Thanks for reporting this. That is not true. As long as we initialize
+KVM correctly and
+finalize the features like SVE we should be fine. In fact, this is
+precisely what we are
+doing right now.
+
+To understand the crash, I need a bit more info.
+
+1#  is happening because KVM_ARM_VCPU_INIT is failing. If yes, the can you =
+check
+      within the KVM if it is happening because
+     a.  features specified by QEMU are not matching the defaults within th=
+e KVM
+           (HInt: check kvm_vcpu_init_check_features())?
+     b. or complaining about init feate change kvm_vcpu_init_changed()?
+2#  or it is happening during the setting of vector length or
+finalizing features?
+
+int kvm_arch_init_vcpu(CPUState *cs)
+{
+   [...]
+         /* Do KVM_ARM_VCPU_INIT ioctl */
+        ret =3D kvm_arm_vcpu_init(cpu);   ---->[1]
+        if (ret) {
+           return ret;
+       }
+          if (cpu_isar_feature(aa64_sve, cpu)) {
+        ret =3D kvm_arm_sve_set_vls(cpu); ---->[2]
+        if (ret) {
+            return ret;
+        }
+        ret =3D kvm_arm_vcpu_finalize(cpu, KVM_ARM_VCPU_SVE);--->[3]
+        if (ret) {
+            return ret;
+        }
+    }
+[...]
+}
+
+I think it's happening because vector length is going uninitialized.
+This initialization
+happens in context to  arm_cpu_finalize_features() which I forgot to call b=
+efore
+calling KVM finalize.
+
+>
+> kvm_arch_init_vcpu() is supposed to be called in the realization path in =
+current
+> implementation (without this series) because the parameters (features) to=
+ KVM_ARM_VCPU_INIT
+> is populated at vCPU realization time.
+
+Not necessarily. It is just meant to initialize the KVM. If we take care of=
+ the
+KVM requirements in the similar way the realize path does we should be
+fine. Can you try to add the patch below in your code and test if it works?
+
+ diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+index c4b68a0b17..1091593478 100644
+--- a/target/arm/kvm.c
++++ b/target/arm/kvm.c
+@@ -1068,6 +1068,9 @@ void kvm_arm_create_host_vcpu(ARMCPU *cpu)
+         abort();
+     }
+
++     /* finalize the features like SVE, SME etc */
++     arm_cpu_finalize_features(cpu, &error_abort);
++
+     /*
+      * Initialize the vCPU in the host. This will reset the sys regs
+      * for this vCPU and related registers like MPIDR_EL1 etc. also
+
+
+
+
+>
+> $ home/gavin/sandbox/qemu.main/build/qemu-system-aarch64           \
+>    --enable-kvm -machine virt,gic-version=3D3 -cpu host               \
+>    -smp cpus=3D4,disabledcpus=3D2 -m 1024M                              \
+>    -kernel /home/gavin/sandbox/linux.guest/arch/arm64/boot/Image    \
+>    -initrd /home/gavin/sandbox/images/rootfs.cpio.xz -nographic
+> qemu-system-aarch64: Failed to initialize host vcpu 4
+> Aborted (core dumped)
+>
+> Backtrace
+> =3D=3D=3D=3D=3D=3D=3D=3D=3D
+> (gdb) bt
+> #0  0x0000ffff9106bc80 in __pthread_kill_implementation () at /lib64/libc=
+.so.6
+> #1  0x0000ffff9101aa40 [PAC] in raise () at /lib64/libc.so.6
+> #2  0x0000ffff91005988 [PAC] in abort () at /lib64/libc.so.6
+> #3  0x0000aaaab1cc26b8 [PAC] in kvm_arm_create_host_vcpu (cpu=3D0xaaaab9a=
+b1bc0)
+>      at ../target/arm/kvm.c:1081
+> #4  0x0000aaaab1cd0c94 in virt_setup_lazy_vcpu_realization (cpuobj=3D0xaa=
+aab9ab1bc0, vms=3D0xaaaab98870a0)
+>      at ../hw/arm/virt.c:2483
+> #5  0x0000aaaab1cd180c in machvirt_init (machine=3D0xaaaab98870a0) at ../=
+hw/arm/virt.c:2777
+> #6  0x0000aaaab160f220 in machine_run_board_init
+>      (machine=3D0xaaaab98870a0, mem_path=3D0x0, errp=3D0xfffffa86bdc8) at=
+ ../hw/core/machine.c:1722
+> #7  0x0000aaaab1a25ef4 in qemu_init_board () at ../system/vl.c:2723
+> #8  0x0000aaaab1a2635c in qmp_x_exit_preconfig (errp=3D0xaaaab38a50f0 <er=
+ror_fatal>)
+>      at ../system/vl.c:2821
+> #9  0x0000aaaab1a28b08 in qemu_init (argc=3D15, argv=3D0xfffffa86c1f8) at=
+ ../system/vl.c:3882
+> #10 0x0000aaaab221d9e4 in main (argc=3D15, argv=3D0xfffffa86c1f8) at ../s=
+ystem/main.c:71
+
+
+Thank you for this. Please let me know if the above fix works and also
+the return values in
+case you encounter errors.
+
+Many thanks!
+Salil.
+
+
+>
+> Thanks,
+> Gavin
+>
+> >   /*
+> >    * Update KVM's MP_STATE based on what QEMU thinks it is
+> >    */
+> > @@ -1876,7 +1908,13 @@ int kvm_arch_init_vcpu(CPUState *cs)
+> >           return -EINVAL;
+> >       }
+> >
+> > -    qemu_add_vm_change_state_handler(kvm_arm_vm_state_change, cpu);
+> > +    /*
+> > +     * Install VM change handler only when vCPU thread has been spawne=
+d
+> > +     * i.e. vCPU is being realized
+> > +     */
+> > +    if (cs->thread_id) {
+> > +        qemu_add_vm_change_state_handler(kvm_arm_vm_state_change, cpu)=
+;
+> > +    }
+> >
+> >       /* Determine init features for this CPU */
+> >       memset(cpu->kvm_init_features, 0, sizeof(cpu->kvm_init_features))=
+;
+> > diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
+> > index 6a9b6374a6..ec9dc95ee8 100644
+> > --- a/target/arm/kvm_arm.h
+> > +++ b/target/arm/kvm_arm.h
+> > @@ -98,6 +98,17 @@ bool kvm_arm_cpu_post_load(ARMCPU *cpu);
+> >   void kvm_arm_reset_vcpu(ARMCPU *cpu);
+> >
+> >   struct kvm_vcpu_init;
+> > +
+> > +/**
+> > + * kvm_arm_create_host_vcpu:
+> > + * @cpu: ARMCPU
+> > + *
+> > + * Called to pre-create possible KVM vCPU within the host during the
+> > + * `virt_machine` initialization phase. This pre-created vCPU will be =
+parked and
+> > + * will be reused when ARM QOM vCPU is actually hotplugged.
+> > + */
+> > +void kvm_arm_create_host_vcpu(ARMCPU *cpu);
+> > +
+> >   /**
+> >    * kvm_arm_create_scratch_host_vcpu:
+> >    * @fdarray: filled in with kvmfd, vmfd, cpufd file descriptors in th=
+at order
+>
 

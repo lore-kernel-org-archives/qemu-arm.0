@@ -4,53 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50038CCD1BB
-	for <qemu-arm@archiver.kernel.org>; Wed, 22 Oct 2025 12:32:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD9CACCD1BB
+	for <qemu-arm@archiver.kernel.org>; Wed, 22 Oct 2025 12:33:05 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vBXyn-00017C-Ko; Wed, 22 Oct 2025 08:30:14 -0400
+	id 1vBY0A-0001vc-4P; Wed, 22 Oct 2025 08:31:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vBXym-00016q-4l
- for qemu-arm@nongnu.org; Wed, 22 Oct 2025 08:30:12 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vBXz5-0001Hn-Lt
+ for qemu-arm@nongnu.org; Wed, 22 Oct 2025 08:30:34 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vBXyh-0008L8-JJ
- for qemu-arm@nongnu.org; Wed, 22 Oct 2025 08:30:11 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vBXz1-0008Ox-U6
+ for qemu-arm@nongnu.org; Wed, 22 Oct 2025 08:30:29 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1761136206;
+ s=mimecast20190719; t=1761136227;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=TEge10vV9mli/1aV/MJpt2qglZAVU9uWLxHfc1MMbFc=;
- b=DMGdcSqQ/oP12MConWRV6ICQsNs6B7lbebzr5Qcjd81el52YQQP/wg4lnCoFJsCPuoBVUg
- S+z9XbMe86IhRSb93x0VEcBsg93cmKW/GwiN8EXOKRRp9a9Cl01z0X09OYh6RqEjEWqw62
- W4JY4ak+fL54hL+Gu7S13Tw5mVhLZGk=
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=sBKVPsCk6JfCpKccEDyOPP4XCsV/Wew3iFRnXLLT2RA=;
+ b=SoISACR6RrQVNhjJiBGXXGFrGQvYKSp3OFGC8wK9hrzUdZEM7kHsi6Yw1oXDgeQEA1HK3g
+ tY99ggFAmXjg6LWVHXVhOXpRzVd7AV1DejCzhtdawd/5Nq/JaJidouHcYG8MXD7yAbzQ+b
+ QnCVhxbelUxmmZUEk5ROEjATPk53QVs=
 Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-634-Gf3noQULMoKLWaloXBRd8Q-1; Wed,
- 22 Oct 2025 08:30:03 -0400
-X-MC-Unique: Gf3noQULMoKLWaloXBRd8Q-1
-X-Mimecast-MFC-AGG-ID: Gf3noQULMoKLWaloXBRd8Q_1761136202
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-322-Diz9goS1MHKOBMJ5pAsCkA-1; Wed,
+ 22 Oct 2025 08:30:23 -0400
+X-MC-Unique: Diz9goS1MHKOBMJ5pAsCkA-1
+X-Mimecast-MFC-AGG-ID: Diz9goS1MHKOBMJ5pAsCkA_1761136222
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 534931800673; Wed, 22 Oct 2025 12:30:02 +0000 (UTC)
+ id A04751800669; Wed, 22 Oct 2025 12:30:22 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.45.224.12])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id CEAD51800586; Wed, 22 Oct 2025 12:30:00 +0000 (UTC)
+ id 0858F1800584; Wed, 22 Oct 2025 12:30:20 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 00/16] aspeed queue
-Date: Wed, 22 Oct 2025 14:29:37 +0200
-Message-ID: <20251022122953.877335-1-clg@redhat.com>
+Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+Subject: [PULL 09/16] tests/functional/aarch64/ast2700fc: Update test ASPEED
+ SDK v09.08
+Date: Wed, 22 Oct 2025 14:29:46 +0200
+Message-ID: <20251022122953.877335-10-clg@redhat.com>
+In-Reply-To: <20251022122953.877335-1-clg@redhat.com>
+References: <20251022122953.877335-1-clg@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -64,7 +69,8 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ TVD_SPACE_RATIO=0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -80,64 +86,56 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The following changes since commit 3c0b42c68f98fb276fa248012642be8cbf2cab70:
+From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-  Merge tag 'pull-request-2025-10-21' of https://gitlab.com/thuth/qemu into staging (2025-10-21 08:59:35 -0500)
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
+Link: https://lore.kernel.org/qemu-devel/20251015062210.3128710-10-jamin_lin@aspeedtech.com
+Signed-off-by: Cédric Le Goater <clg@redhat.com>
+---
+ tests/functional/aarch64/test_aspeed_ast2700fc.py | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
-are available in the Git repository at:
-
-  https://github.com/legoater/qemu/ tags/pull-aspeed-20251022
-
-for you to fetch changes up to d7bd42a740d0e8887540d7b450d0bdb2d6ba31ea:
-
-  hw/arm/aspeed: Remove ast2700fc self-aliasing (2025-10-22 08:14:09 +0200)
-
-----------------------------------------------------------------
-aspeed queue:
-
-* Improve AST2700 co-processor models
-* Add vbootrom support to the ast2700fc multi-soc machine
-* Bump SDK version to v09.08 for the ast2700fc machine
-* Add 32 bits property for Aspeed GPIOs
-* Change ast2600-evb machine flash model to w25q512jv
-
-----------------------------------------------------------------
-Cédric Le Goater (1):
-      hw/arm/aspeed: ast2600-evb: Use w25q512jv flash model
-
-Felix Wu (2):
-      hw/gpio: Add property for ASPEED GPIO in 32 bits basis
-      tests/qtest: Add qtest for for ASPEED GPIO gpio-set property
-
-Jamin Lin (12):
-      hw/arm/aspeed_ast27x0-ssp: Add SDRAM region and fix naming and size to 512MB
-      hw/arm/aspeed_ast27x0-tsp: Add SDRAM region and fix naming and size to 512MB
-      hw/arm/ast27x0: Add SRAM link and alias mapping for SSP coprocessor
-      hw/arm/ast27x0: Add SRAM link and alias mapping for TSP coprocessor
-      hw/arm/ast27x0: Share single SCU instance across PSP, SSP, and TSP
-      hw/arm/ast27x0: Share single UART set across PSP, SSP, and TSP
-      hw/arm/aspeed_ast27x0-fc: Map FMC0 flash contents into CA35 boot ROM
-      hw/arm/aspeed_ast27x0-fc: Add VBOOTROM support
-      tests/functional/aarch64/ast2700fc: Update test ASPEED SDK v09.08
-      tests/functional/aarch64/ast2700fc: Add eth2 network interface check in PCIe test
-      tests/functional/aarch64/ast2700fc: Move coprocessor image loading to common function
-      tests/functional/aarch64/ast2700fc: Add vbootrom test
-
-Philippe Mathieu-Daudé (1):
-      hw/arm/aspeed: Remove ast2700fc self-aliasing
-
- include/hw/arm/aspeed_coprocessor.h               |  14 +--
- include/qobject/qdict.h                           |   1 +
- hw/arm/aspeed.c                                   |   4 +-
- hw/arm/aspeed_ast27x0-fc.c                        |  56 ++++++++----
- hw/arm/aspeed_ast27x0-ssp.c                       |  69 +++++++-------
- hw/arm/aspeed_ast27x0-tsp.c                       |  69 +++++++-------
- hw/arm/aspeed_coprocessor_common.c                |   7 ++
- hw/gpio/aspeed_gpio.c                             |  57 ++++++++++++
- qobject/qdict.c                                   |  13 +++
- tests/qtest/aspeed_gpio-test.c                    | 105 ++++++++++++++++++++--
- tests/qtest/aspeed_smc-test.c                     |   4 +-
- tests/functional/aarch64/test_aspeed_ast2700fc.py |  51 +++++++----
- 12 files changed, 331 insertions(+), 119 deletions(-)
+diff --git a/tests/functional/aarch64/test_aspeed_ast2700fc.py b/tests/functional/aarch64/test_aspeed_ast2700fc.py
+index 28b66614d970..bcce0c8d4e53 100755
+--- a/tests/functional/aarch64/test_aspeed_ast2700fc.py
++++ b/tests/functional/aarch64/test_aspeed_ast2700fc.py
+@@ -36,9 +36,9 @@ def verify_openbmc_boot_and_login(self, name):
+         exec_command_and_wait_for_pattern(self, 'root', 'Password:')
+         exec_command_and_wait_for_pattern(self, '0penBmc', f'root@{name}:~#')
+ 
+-    ASSET_SDK_V906_AST2700 = Asset(
+-            'https://github.com/AspeedTech-BMC/openbmc/releases/download/v09.06/ast2700-default-obmc.tar.gz',
+-            'f1d53e0be8a404ecce3e105f72bc50fa4e090ad13160ffa91b10a6e0233a9dc6')
++    ASSET_SDK_V908_AST2700 = Asset(
++            'https://github.com/AspeedTech-BMC/openbmc/releases/download/v09.08/ast2700-default-obmc.tar.gz',
++            'eac3dc409b7ea3cd4b03d4792d3cebd469792ad893cb51e1d15f0fc20bd1e2cd')
+ 
+     def do_ast2700_i2c_test(self):
+         exec_command_and_wait_for_pattern(self,
+@@ -66,7 +66,7 @@ def do_ast2700fc_ssp_test(self):
+         self.vm.set_console(console_index=1)
+         self.vm.launch()
+ 
+-        exec_command_and_wait_for_pattern(self, '\012', 'ssp:~$')
++        exec_command_and_wait_for_pattern(self, '\012', 'ssp_tsp:~$')
+         exec_command_and_wait_for_pattern(self, 'version',
+                                           'Zephyr version 3.7.1')
+         exec_command_and_wait_for_pattern(self, 'md 72c02000 1',
+@@ -133,10 +133,10 @@ def start_ast2700fc_test(self, name):
+         self.do_test_aarch64_aspeed_sdk_start(
+                 self.scratch_file(name, 'image-bmc'))
+ 
+-    def test_aarch64_ast2700fc_sdk_v09_06(self):
++    def test_aarch64_ast2700fc_sdk_v09_08(self):
+         self.set_machine('ast2700fc')
+ 
+-        self.archive_extract(self.ASSET_SDK_V906_AST2700)
++        self.archive_extract(self.ASSET_SDK_V908_AST2700)
+         self.start_ast2700fc_test('ast2700-default')
+         self.verify_openbmc_boot_and_login('ast2700-default')
+         self.do_ast2700_i2c_test()
+-- 
+2.51.0
 
 

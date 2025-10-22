@@ -4,63 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9664DCCD1BB
-	for <qemu-arm@archiver.kernel.org>; Wed, 22 Oct 2025 12:31:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63CDDCCD1BB
+	for <qemu-arm@archiver.kernel.org>; Wed, 22 Oct 2025 12:31:20 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vBXzD-0001Ne-PM; Wed, 22 Oct 2025 08:30:40 -0400
+	id 1vBXyy-0001Ee-9Y; Wed, 22 Oct 2025 08:30:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vBXz1-0001Gn-CG
- for qemu-arm@nongnu.org; Wed, 22 Oct 2025 08:30:27 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vBXyv-0001AS-Uo
+ for qemu-arm@nongnu.org; Wed, 22 Oct 2025 08:30:22 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vBXyy-0008OI-5v
- for qemu-arm@nongnu.org; Wed, 22 Oct 2025 08:30:27 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vBXys-0008NK-Tw
+ for qemu-arm@nongnu.org; Wed, 22 Oct 2025 08:30:21 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1761136222;
+ s=mimecast20190719; t=1761136218;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=kB28TO+73+LeDdZTZD3TGVweCe+TgzwQ/tG9XCfyIjw=;
- b=dqDPO4ztdMHGHuJzJmNxis8H+dttdUCHrIUgzQh2PHMeD96zxaxXgq6HP9aL+RM7R/gRHN
- yuYnTsD6BZetaxnFEpH935V+brIPI6nTQo4iYb18q6lF3QKA1o9Y+2OI2PjLHAppCe2byp
- vm2x0OCQff9fOJWWBdn2pkfnhs6q9y4=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=h+iSTY7ypTD5IhBhaGjoBU8rgZcYEQnS7JehcOzg5B0=;
+ b=Rmcv1h+yayySDj3Zj0rv3X/fdaX/amplI8ZOysgcWHH0/9qtH+6kXqba4S39uDYyzJTR+6
+ rT7gmryf+XkoFt0DrFvT/YnyE7/aXtS9UOzV8x3244VbeEb3zNQQ+JUvsKT6Dj+7S2DZL6
+ sdsy6QrEBdFiQvhzEnkmZtL6ciWhUXc=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-323-1neqlS2fOtyROEuuzDVpwQ-1; Wed,
- 22 Oct 2025 08:30:19 -0400
-X-MC-Unique: 1neqlS2fOtyROEuuzDVpwQ-1
-X-Mimecast-MFC-AGG-ID: 1neqlS2fOtyROEuuzDVpwQ_1761136218
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-356-GOkRwBQZNYCdp5xdUN5D0g-1; Wed,
+ 22 Oct 2025 08:30:14 -0400
+X-MC-Unique: GOkRwBQZNYCdp5xdUN5D0g-1
+X-Mimecast-MFC-AGG-ID: GOkRwBQZNYCdp5xdUN5D0g_1761136213
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 581191801312; Wed, 22 Oct 2025 12:30:18 +0000 (UTC)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id B3AFB1956095; Wed, 22 Oct 2025 12:30:13 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.45.224.12])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 92315180057E; Wed, 22 Oct 2025 12:30:16 +0000 (UTC)
+ id 19F8B180057E; Wed, 22 Oct 2025 12:30:11 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 07/16] hw/arm/aspeed_ast27x0-fc: Map FMC0 flash contents into
- CA35 boot ROM
-Date: Wed, 22 Oct 2025 14:29:44 +0200
-Message-ID: <20251022122953.877335-8-clg@redhat.com>
+Subject: [PULL 05/16] hw/arm/ast27x0: Share single SCU instance across PSP, SSP,
+ and TSP
+Date: Wed, 22 Oct 2025 14:29:42 +0200
+Message-ID: <20251022122953.877335-6-clg@redhat.com>
 In-Reply-To: <20251022122953.877335-1-clg@redhat.com>
 References: <20251022122953.877335-1-clg@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -87,81 +87,180 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-This patch introduces a dedicated ca35_boot_rom memory region and
-copies the FMC0 flash data into it.
+AST2700 has a single SCU hardware block, memory-mapped at
+0x12C02000–0x12C03FFF from the perspective of the main CA35 processor (PSP).
+The SSP and TSP coprocessors access this same SCU block at different
+addresses: 0x72C02000–0x72C03FFF.
 
-The motivation is to support the upcoming vbootrom. The vbootrom
-replaces the existing BOOTMCU (RISC-V 32 SPL) flow, which currently reads
-the "image-bmc" from FMC_CS0 and loads the following components
-into DRAM:
+Previously, each subsystem (PSP, SSP, and TSP) instantiated its own SCU
+device, resulting in three independent SCU instances in the QEMU model.
+In real hardware, however, only a single SCU exists and is shared among
+all processors.
 
-- Trusted Firmware-A
-- OP-TEE OS
-- u-boot-nodtb.bin
-- u-boot.dtb
+This commit reworks the SCU model to correctly reflect the hardware
+behavior by allowing SSP and TSP to reference the PSP’s SCU instance.
+The following changes are introduced:
 
-After loading, BOOTMCU releases the CA35 reset so that CA35 can start
-executing Trusted Firmware-A.
+- Add a scu property to AspeedCoprocessorState for linking the
+  coprocessor to the PSP’s SCU instance.
+- Replace per-coprocessor SCU instantiation with a shared SCU link.
+- Add "MemoryRegion scu_alias" to model address remapping for SSP and TSP.
+- Create SCU alias regions in both SSP and TSP coprocessors and map
+  them at 0x72C02000 to mirror the PSP’s SCU registers.
+- Ensure the SCU device in PSP is realized before SSP/TSP alias setup.
 
-The vbootrom follows the same sequence: CA35 fetches "image-bmc" from FMC0
-flash at the SPI boot ROM base address (0x100000000), parses the FIT image,
-loads each component into its designated DRAM location, and then jumps to
-Trusted Firmware-A.
+With this change, PSP, SSP, and TSP now share a consistent SCU state,
+matching the single-SCU hardware design of AST2700.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20251015062210.3128710-8-jamin_lin@aspeedtech.com
+Link: https://lore.kernel.org/qemu-devel/20251015062210.3128710-6-jamin_lin@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- hw/arm/aspeed_ast27x0-fc.c | 14 ++++++++++++--
- 1 file changed, 12 insertions(+), 2 deletions(-)
+ include/hw/arm/aspeed_coprocessor.h |  4 ++--
+ hw/arm/aspeed_ast27x0-fc.c          |  4 ++++
+ hw/arm/aspeed_ast27x0-ssp.c         | 13 +++++--------
+ hw/arm/aspeed_ast27x0-tsp.c         | 13 +++++--------
+ hw/arm/aspeed_coprocessor_common.c  |  2 ++
+ 5 files changed, 18 insertions(+), 18 deletions(-)
 
+diff --git a/include/hw/arm/aspeed_coprocessor.h b/include/hw/arm/aspeed_coprocessor.h
+index d9a5f517d7c7..c1f2c549c323 100644
+--- a/include/hw/arm/aspeed_coprocessor.h
++++ b/include/hw/arm/aspeed_coprocessor.h
+@@ -19,9 +19,10 @@ struct AspeedCoprocessorState {
+     MemoryRegion sdram;
+     MemoryRegion *sram;
+     MemoryRegion sram_alias;
++    MemoryRegion scu_alias;
+     Clock *sysclk;
+ 
+-    AspeedSCUState scu;
++    AspeedSCUState *scu;
+     AspeedSCUState scuio;
+     AspeedTimerCtrlState timerctrl;
+     SerialMM uart[ASPEED_UARTS_NUM];
+@@ -36,7 +37,6 @@ struct AspeedCoprocessorClass {
+ 
+     /** valid_cpu_types: NULL terminated array of a single CPU type. */
+     const char * const *valid_cpu_types;
+-    uint32_t silicon_rev;
+     const hwaddr *memmap;
+     const int *irqmap;
+     int uarts_base;
 diff --git a/hw/arm/aspeed_ast27x0-fc.c b/hw/arm/aspeed_ast27x0-fc.c
-index 99af87dbd7bd..99c0b3415990 100644
+index dfac7d1e17b8..ba43a4620760 100644
 --- a/hw/arm/aspeed_ast27x0-fc.c
 +++ b/hw/arm/aspeed_ast27x0-fc.c
-@@ -35,6 +35,7 @@ struct Ast2700FCState {
+@@ -138,6 +138,8 @@ static bool ast2700fc_ssp_init(MachineState *machine, Error **errp)
+                             sc->uarts_num, serial_hd(1));
+     object_property_set_link(OBJECT(&s->ssp), "sram",
+                              OBJECT(&psp->sram), &error_abort);
++    object_property_set_link(OBJECT(&s->ssp), "scu",
++                             OBJECT(&psp->scu), &error_abort);
+     if (!qdev_realize(DEVICE(&s->ssp), NULL, errp)) {
+         return false;
+     }
+@@ -170,6 +172,8 @@ static bool ast2700fc_tsp_init(MachineState *machine, Error **errp)
+                             sc->uarts_num, serial_hd(2));
+     object_property_set_link(OBJECT(&s->tsp), "sram",
+                              OBJECT(&psp->sram), &error_abort);
++    object_property_set_link(OBJECT(&s->tsp), "scu",
++                             OBJECT(&psp->scu), &error_abort);
+     if (!qdev_realize(DEVICE(&s->tsp), NULL, errp)) {
+         return false;
+     }
+diff --git a/hw/arm/aspeed_ast27x0-ssp.c b/hw/arm/aspeed_ast27x0-ssp.c
+index 66c4ef6d1b74..577a3379c6c0 100644
+--- a/hw/arm/aspeed_ast27x0-ssp.c
++++ b/hw/arm/aspeed_ast27x0-ssp.c
+@@ -137,9 +137,7 @@ static void aspeed_soc_ast27x0ssp_init(Object *obj)
+     int i;
  
-     MemoryRegion ca35_memory;
-     MemoryRegion ca35_dram;
-+    MemoryRegion ca35_boot_rom;
-     MemoryRegion ssp_memory;
-     MemoryRegion tsp_memory;
+     object_initialize_child(obj, "armv7m", &a->armv7m, TYPE_ARMV7M);
+-    object_initialize_child(obj, "scu", &s->scu, TYPE_ASPEED_2700_SCU);
+     s->sysclk = qdev_init_clock_in(DEVICE(s), "sysclk", NULL, NULL, 0);
+-    qdev_prop_set_uint32(DEVICE(&s->scu), "silicon-rev", sc->silicon_rev);
  
-@@ -44,8 +45,6 @@ struct Ast2700FCState {
-     Aspeed27x0SoCState ca35;
-     Aspeed27x0CoprocessorState ssp;
-     Aspeed27x0CoprocessorState tsp;
--
--    bool mmio_exec;
+     for (i = 0; i < sc->uarts_num; i++) {
+         object_initialize_child(obj, "uart[*]", &s->uart[i], TYPE_SERIAL_MM);
+@@ -203,11 +201,11 @@ static void aspeed_soc_ast27x0ssp_realize(DeviceState *dev_soc, Error **errp)
+                                 &s->sram_alias);
+ 
+     /* SCU */
+-    if (!sysbus_realize(SYS_BUS_DEVICE(&s->scu), errp)) {
+-        return;
+-    }
+-    aspeed_mmio_map(s->memory, SYS_BUS_DEVICE(&s->scu), 0,
+-                    sc->memmap[ASPEED_DEV_SCU]);
++    memory_region_init_alias(&s->scu_alias, OBJECT(s), "scu.alias",
++                             &s->scu->iomem, 0,
++                             memory_region_size(&s->scu->iomem));
++    memory_region_add_subregion(s->memory, sc->memmap[ASPEED_DEV_SCU],
++                                &s->scu_alias);
+ 
+     /* INTC */
+     if (!sysbus_realize(SYS_BUS_DEVICE(&a->intc[0]), errp)) {
+@@ -285,7 +283,6 @@ static void aspeed_soc_ast27x0ssp_class_init(ObjectClass *klass,
+     dc->realize = aspeed_soc_ast27x0ssp_realize;
+ 
+     sc->valid_cpu_types = valid_cpu_types;
+-    sc->silicon_rev = AST2700_A1_SILICON_REV;
+     sc->uarts_num = 13;
+     sc->uarts_base = ASPEED_DEV_UART0;
+     sc->irqmap = aspeed_soc_ast27x0ssp_irqmap;
+diff --git a/hw/arm/aspeed_ast27x0-tsp.c b/hw/arm/aspeed_ast27x0-tsp.c
+index 56b68adf541b..a7c141678fc2 100644
+--- a/hw/arm/aspeed_ast27x0-tsp.c
++++ b/hw/arm/aspeed_ast27x0-tsp.c
+@@ -137,9 +137,7 @@ static void aspeed_soc_ast27x0tsp_init(Object *obj)
+     int i;
+ 
+     object_initialize_child(obj, "armv7m", &a->armv7m, TYPE_ARMV7M);
+-    object_initialize_child(obj, "scu", &s->scu, TYPE_ASPEED_2700_SCU);
+     s->sysclk = qdev_init_clock_in(DEVICE(s), "sysclk", NULL, NULL, 0);
+-    qdev_prop_set_uint32(DEVICE(&s->scu), "silicon-rev", sc->silicon_rev);
+ 
+     for (i = 0; i < sc->uarts_num; i++) {
+         object_initialize_child(obj, "uart[*]", &s->uart[i], TYPE_SERIAL_MM);
+@@ -203,11 +201,11 @@ static void aspeed_soc_ast27x0tsp_realize(DeviceState *dev_soc, Error **errp)
+                                 &s->sram_alias);
+ 
+     /* SCU */
+-    if (!sysbus_realize(SYS_BUS_DEVICE(&s->scu), errp)) {
+-        return;
+-    }
+-    aspeed_mmio_map(s->memory, SYS_BUS_DEVICE(&s->scu), 0,
+-                    sc->memmap[ASPEED_DEV_SCU]);
++    memory_region_init_alias(&s->scu_alias, OBJECT(s), "scu.alias",
++                             &s->scu->iomem, 0,
++                             memory_region_size(&s->scu->iomem));
++    memory_region_add_subregion(s->memory, sc->memmap[ASPEED_DEV_SCU],
++                                &s->scu_alias);
+ 
+     /* INTC */
+     if (!sysbus_realize(SYS_BUS_DEVICE(&a->intc[0]), errp)) {
+@@ -285,7 +283,6 @@ static void aspeed_soc_ast27x0tsp_class_init(ObjectClass *klass,
+     dc->realize = aspeed_soc_ast27x0tsp_realize;
+ 
+     sc->valid_cpu_types = valid_cpu_types;
+-    sc->silicon_rev = AST2700_A1_SILICON_REV;
+     sc->uarts_num = 13;
+     sc->uarts_base = ASPEED_DEV_UART0;
+     sc->irqmap = aspeed_soc_ast27x0tsp_irqmap;
+diff --git a/hw/arm/aspeed_coprocessor_common.c b/hw/arm/aspeed_coprocessor_common.c
+index 8322ad5eb544..14e26bbe234e 100644
+--- a/hw/arm/aspeed_coprocessor_common.c
++++ b/hw/arm/aspeed_coprocessor_common.c
+@@ -27,6 +27,8 @@ static const Property aspeed_coprocessor_properties[] = {
+                      TYPE_MEMORY_REGION, MemoryRegion *),
+     DEFINE_PROP_LINK("sram", AspeedCoprocessorState, sram, TYPE_MEMORY_REGION,
+                      MemoryRegion *),
++    DEFINE_PROP_LINK("scu", AspeedCoprocessorState, scu, TYPE_ASPEED_SCU,
++                     AspeedSCUState *),
  };
  
- #define AST2700FC_BMC_RAM_SIZE (1 * GiB)
-@@ -61,6 +60,9 @@ static bool ast2700fc_ca35_init(MachineState *machine, Error **errp)
-     Ast2700FCState *s = AST2700A1FC(machine);
-     AspeedSoCState *soc;
-     AspeedSoCClass *sc;
-+    BlockBackend *fmc0 = NULL;
-+    DeviceState *dev = NULL;
-+    uint64_t rom_size;
- 
-     object_initialize_child(OBJECT(s), "ca35", &s->ca35, "ast2700-a1");
-     soc = ASPEED_SOC(&s->ca35);
-@@ -112,6 +114,14 @@ static bool ast2700fc_ca35_init(MachineState *machine, Error **errp)
-     ast2700fc_board_info.ram_size = machine->ram_size;
-     ast2700fc_board_info.loader_start = sc->memmap[ASPEED_DEV_SDRAM];
- 
-+    dev = ssi_get_cs(soc->fmc.spi, 0);
-+    fmc0 = dev ? m25p80_get_blk(dev) : NULL;
-+
-+    if (fmc0) {
-+        rom_size = memory_region_size(&soc->spi_boot);
-+        aspeed_install_boot_rom(soc, fmc0, &s->ca35_boot_rom, rom_size);
-+    }
-+
-     arm_load_kernel(ARM_CPU(first_cpu), machine, &ast2700fc_board_info);
- 
-     return true;
+ static void aspeed_coprocessor_class_init(ObjectClass *oc, const void *data)
 -- 
 2.51.0
 

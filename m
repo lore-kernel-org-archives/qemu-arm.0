@@ -4,63 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00B1DCCD1AB
-	for <qemu-arm@archiver.kernel.org>; Wed, 22 Oct 2025 12:34:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D3CDCCD1BB
+	for <qemu-arm@archiver.kernel.org>; Wed, 22 Oct 2025 12:34:21 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vBY0D-00023b-EI; Wed, 22 Oct 2025 08:31:41 -0400
+	id 1vBY0u-0002z7-Le; Wed, 22 Oct 2025 08:32:25 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vBXz6-0001Hv-KZ
- for qemu-arm@nongnu.org; Wed, 22 Oct 2025 08:30:34 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vBXzN-0001Rl-At
+ for qemu-arm@nongnu.org; Wed, 22 Oct 2025 08:30:56 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vBXz4-0008PZ-OC
- for qemu-arm@nongnu.org; Wed, 22 Oct 2025 08:30:32 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vBXzJ-0008Rb-BC
+ for qemu-arm@nongnu.org; Wed, 22 Oct 2025 08:30:48 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1761136229;
+ s=mimecast20190719; t=1761136242;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=TdTrbPXtynNAXwAhpN5/gd4TGsAWE13woMEeI3VLlnU=;
- b=Bs8YsgW/Dz4t0kYM55UoicJIbcHSYdCrbJMzu/OaP4GvcWD5RuPay0vDPwGR1larlYwp4u
- nrgKB0WoUNJn+VK0PMheyE9ROCZIUqI/toZ//rj3gI0NzAbVa5oYCBw9gAhLBWZ0kw1AZ6
- fSTJ1W4FL6tGrEbBLeL3IJu7qnxzwqY=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ bh=M40PfpnOpJtcy9N5Nocxi9lKZu+Hq5YHP/I1TensomQ=;
+ b=XR2siB5IitiL86Oec8oJ3PrwQViZu7uE4HOCdaaBO0Vwqc3yWXDWYYNXO0WHDhTwfKoB1D
+ xMrlJr9B3l+5qjyenvAf7gbvRBijbJQCMshsLxolr6q5lXA+RSN/Hh0ozsYpfM5aDyXii5
+ +0Qmiy1+Ol2BjDFTmN9Gq5GT3B/3zkY=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-618-qgk6dzNRN2yK9iS0MJowxQ-1; Wed,
- 22 Oct 2025 08:30:27 -0400
-X-MC-Unique: qgk6dzNRN2yK9iS0MJowxQ-1
-X-Mimecast-MFC-AGG-ID: qgk6dzNRN2yK9iS0MJowxQ_1761136227
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-209-m1M24P3-McGcFrucXlUoOQ-1; Wed,
+ 22 Oct 2025 08:30:39 -0400
+X-MC-Unique: m1M24P3-McGcFrucXlUoOQ-1
+X-Mimecast-MFC-AGG-ID: m1M24P3-McGcFrucXlUoOQ_1761136238
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id E610D18002C0; Wed, 22 Oct 2025 12:30:26 +0000 (UTC)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 3B21D18001C6; Wed, 22 Oct 2025 12:30:38 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.45.224.12])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 4EE871800586; Wed, 22 Oct 2025 12:30:25 +0000 (UTC)
+ id 8BB021800584; Wed, 22 Oct 2025 12:30:36 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 11/16] tests/functional/aarch64/ast2700fc: Move coprocessor
- image loading to common function
-Date: Wed, 22 Oct 2025 14:29:48 +0200
-Message-ID: <20251022122953.877335-12-clg@redhat.com>
+Subject: [PULL 16/16] hw/arm/aspeed: Remove ast2700fc self-aliasing
+Date: Wed, 22 Oct 2025 14:29:53 +0200
+Message-ID: <20251022122953.877335-17-clg@redhat.com>
 In-Reply-To: <20251022122953.877335-1-clg@redhat.com>
 References: <20251022122953.877335-1-clg@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -69,7 +68,7 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -85,59 +84,35 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Jamin Lin <jamin_lin@aspeedtech.com>
+From: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-This removes duplicate code in start_ast2700fc_test() and prepares for reuse in
-upcoming VBOOTROM tests.
+Remove pointless alias to the very same machine:
 
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+  $ qemu-system-aarch64 -M help | fgrep ast2700fc
+  ast2700fc            ast2700 full core support (alias of ast2700fc)
+  ast2700fc            ast2700 full core support
+
+Fixes: a74faf35efc ("hw/arm: Introduce ASPEED AST2700 A1 full core machine")
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20251015062210.3128710-12-jamin_lin@aspeedtech.com
+Link: https://lore.kernel.org/qemu-devel/20251021110427.93991-1-philmd@linaro.org
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- .../aarch64/test_aspeed_ast2700fc.py          | 22 ++++++++++---------
- 1 file changed, 12 insertions(+), 10 deletions(-)
+ hw/arm/aspeed_ast27x0-fc.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/tests/functional/aarch64/test_aspeed_ast2700fc.py b/tests/functional/aarch64/test_aspeed_ast2700fc.py
-index 843647e6c539..9ab3d3269b2a 100755
---- a/tests/functional/aarch64/test_aspeed_ast2700fc.py
-+++ b/tests/functional/aarch64/test_aspeed_ast2700fc.py
-@@ -36,6 +36,17 @@ def verify_openbmc_boot_and_login(self, name):
-         exec_command_and_wait_for_pattern(self, 'root', 'Password:')
-         exec_command_and_wait_for_pattern(self, '0penBmc', f'root@{name}:~#')
+diff --git a/hw/arm/aspeed_ast27x0-fc.c b/hw/arm/aspeed_ast27x0-fc.c
+index 7be2e849274d..580ac5f7a124 100644
+--- a/hw/arm/aspeed_ast27x0-fc.c
++++ b/hw/arm/aspeed_ast27x0-fc.c
+@@ -207,7 +207,6 @@ static void ast2700fc_class_init(ObjectClass *oc, const void *data)
+ {
+     MachineClass *mc = MACHINE_CLASS(oc);
  
-+    def load_ast2700fc_coprocessor(self, name):
-+        load_elf_list = {
-+            'ssp': self.scratch_file(name, 'zephyr-aspeed-ssp.elf'),
-+            'tsp': self.scratch_file(name, 'zephyr-aspeed-tsp.elf')
-+        }
-+
-+        for cpu_num, key in enumerate(load_elf_list, start=4):
-+            file = load_elf_list[key]
-+            self.vm.add_args('-device',
-+                             f'loader,file={file},cpu-num={cpu_num}')
-+
-     ASSET_SDK_V908_AST2700 = Asset(
-             'https://github.com/AspeedTech-BMC/openbmc/releases/download/v09.08/ast2700-default-obmc.tar.gz',
-             'eac3dc409b7ea3cd4b03d4792d3cebd469792ad893cb51e1d15f0fc20bd1e2cd')
-@@ -123,16 +134,7 @@ def start_ast2700fc_test(self, name):
-             self.vm.add_args('-device',
-                              f'loader,addr=0x430000000,cpu-num={i}')
- 
--        load_elf_list = {
--            'ssp': self.scratch_file(name, 'zephyr-aspeed-ssp.elf'),
--            'tsp': self.scratch_file(name, 'zephyr-aspeed-tsp.elf')
--        }
--
--        for cpu_num, key in enumerate(load_elf_list, start=4):
--            file = load_elf_list[key]
--            self.vm.add_args('-device',
--                             f'loader,file={file},cpu-num={cpu_num}')
--
-+        self.load_ast2700fc_coprocessor(name)
-         self.do_test_aarch64_aspeed_sdk_start(
-                 self.scratch_file(name, 'image-bmc'))
- 
+-    mc->alias = "ast2700fc";
+     mc->desc = "ast2700 full core support";
+     mc->init = ast2700fc_init;
+     mc->no_floppy = 1;
 -- 
 2.51.0
 

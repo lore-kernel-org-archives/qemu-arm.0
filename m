@@ -4,27 +4,27 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13061CCD193
-	for <qemu-arm@archiver.kernel.org>; Thu, 23 Oct 2025 10:02:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A632CCD1BC
+	for <qemu-arm@archiver.kernel.org>; Thu, 23 Oct 2025 10:02:33 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vBs97-0001HR-He; Thu, 23 Oct 2025 06:02:15 -0400
+	id 1vBs9F-0001Ig-EG; Thu, 23 Oct 2025 06:02:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1vBs8w-0001Gb-HH; Thu, 23 Oct 2025 06:02:05 -0400
+ id 1vBs93-0001H3-4g; Thu, 23 Oct 2025 06:02:09 -0400
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1vBs8u-00039r-8P; Thu, 23 Oct 2025 06:02:02 -0400
+ id 1vBs91-00039r-0G; Thu, 23 Oct 2025 06:02:08 -0400
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Thu, 23 Oct
- 2025 18:01:50 +0800
+ 2025 18:01:51 +0800
 Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
- Transport; Thu, 23 Oct 2025 18:01:50 +0800
+ Transport; Thu, 23 Oct 2025 18:01:51 +0800
 To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
  <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
@@ -32,14 +32,16 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  "open list:All patches CC here" <qemu-devel@nongnu.org>
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
  <kane_chen@aspeedtech.com>
-Subject: [PATCH v1 00/13] Split AST2500 SoC machines into separate source
- files for maintainability
-Date: Thu, 23 Oct 2025 18:01:33 +0800
-Message-ID: <20251023100150.295370-1-jamin_lin@aspeedtech.com>
+Subject: [PATCH v1 02/13] hw/arm/aspeed: Make
+ aspeed_machine_class_init_cpus_defaults() globally accessible
+Date: Thu, 23 Oct 2025 18:01:35 +0800
+Message-ID: <20251023100150.295370-3-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20251023100150.295370-1-jamin_lin@aspeedtech.com>
+References: <20251023100150.295370-1-jamin_lin@aspeedtech.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 Received-SPF: pass client-ip=211.20.114.72;
  envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX01.aspeed.com
 X-Spam_score_int: -18
@@ -65,72 +67,47 @@ From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-v1:
- 1. Move "AspeedMachineState" definition to a shared header.
- 2. Make common helper functions globally accessible.
- 3. Split each AST2500 machine into its own source file:
-   - FP5280G2
-   - G220A
-   - Tiogapass
-   - YosemiteV2
-   - Witherspoon
-   - Sonorapass
-   - Romulus
-   - Supermicro X11SPI
-   - AST2500 EVB
+The function aspeed_machine_class_init_cpus_defaults() is now made
+globally visible so that it can be used by other Aspeed machine C files.
+
+Previously, this function was declared as static, restricting its
+visibility to aspeed.c. Since future machine split files will also
+need to call this helper to initialize default CPU settings, its
+declaration has been moved to the common header aspeed.h and the
+static keyword has been removed.
+
+No functional changes.
+
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+---
+ include/hw/arm/aspeed.h | 1 +
+ hw/arm/aspeed.c         | 2 +-
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/include/hw/arm/aspeed.h b/include/hw/arm/aspeed.h
+index 383ebb9759..7743ad2fb0 100644
+--- a/include/hw/arm/aspeed.h
++++ b/include/hw/arm/aspeed.h
+@@ -59,5 +59,6 @@ struct AspeedMachineClass {
+     bool vbootrom;
+ };
  
-Jamin Lin (13):
-  hw/arm/aspeed: Move AspeedMachineState definition to common header for
-    reuse
-  hw/arm/aspeed: Make aspeed_machine_class_init_cpus_defaults() globally
-    accessible
-  hw/arm/aspeed: Make create_pca9552() globally accessible for reuse
-  hw/arm/aspeed: Make create_pca9554() available for use by other Aspeed
-    machines
-  hw/arm/aspeed: Split FP5280G2 machine into a separate source file for
-    maintenance
-  hw/arm/aspeed: Split G220A machine into a separate source file for
-    better maintenance
-  hw/arm/aspeed: Split Tiogapass machine into a separate source file for
-    cleanup
-  hw/arm/aspeed: Split YosemiteV2 machine into a separate source file
-    for maintainability
-  hw/arm/aspeed: Split Witherspoon machine into a separate source file
-    for maintainability
-  hw/arm/aspeed: Split Sonorapass machine into a separate source file
-    for maintainability
-  hw/arm/aspeed: Split Romulus machine into a separate source file for
-    maintainability
-  hw/arm/aspeed: Split Supermicro X11SPI machine into a separate file
-    for maintainability
-  hw/arm/aspeed: Split AST2500 EVB machine into a separate source file
-    for maintainability
-
- hw/arm/aspeed_eeprom.h                    |   7 -
- include/hw/arm/aspeed.h                   |  17 +
- hw/arm/aspeed.c                           | 508 +---------------------
- hw/arm/aspeed_ast2500_evb.c               |  66 +++
- hw/arm/aspeed_ast2500_fp5280g2.c          |  87 ++++
- hw/arm/aspeed_ast2500_g220a.c             |  91 ++++
- hw/arm/aspeed_ast2500_romulus.c           |  61 +++
- hw/arm/aspeed_ast2500_sonorapass.c        | 101 +++++
- hw/arm/aspeed_ast2500_supermicro-x11spi.c |  76 ++++
- hw/arm/aspeed_ast2500_tiogapass.c         |  89 ++++
- hw/arm/aspeed_ast2500_witherspoon.c       | 111 +++++
- hw/arm/aspeed_ast2500_yosemitev2.c        |  90 ++++
- hw/arm/aspeed_eeprom.c                    |  44 --
- hw/arm/meson.build                        |   9 +
- 14 files changed, 801 insertions(+), 556 deletions(-)
- create mode 100644 hw/arm/aspeed_ast2500_evb.c
- create mode 100644 hw/arm/aspeed_ast2500_fp5280g2.c
- create mode 100644 hw/arm/aspeed_ast2500_g220a.c
- create mode 100644 hw/arm/aspeed_ast2500_romulus.c
- create mode 100644 hw/arm/aspeed_ast2500_sonorapass.c
- create mode 100644 hw/arm/aspeed_ast2500_supermicro-x11spi.c
- create mode 100644 hw/arm/aspeed_ast2500_tiogapass.c
- create mode 100644 hw/arm/aspeed_ast2500_witherspoon.c
- create mode 100644 hw/arm/aspeed_ast2500_yosemitev2.c
-
++void aspeed_machine_class_init_cpus_defaults(MachineClass *mc);
+ 
+ #endif
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index 761b526994..5da21a4d6a 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -1338,7 +1338,7 @@ static void aspeed_machine_class_props_init(ObjectClass *oc)
+                                           "Change the SPI Flash model");
+ }
+ 
+-static void aspeed_machine_class_init_cpus_defaults(MachineClass *mc)
++void aspeed_machine_class_init_cpus_defaults(MachineClass *mc)
+ {
+     AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(mc);
+     AspeedSoCClass *sc = ASPEED_SOC_CLASS(object_class_by_name(amc->soc_name));
 -- 
 2.43.0
 

@@ -4,73 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C2B0CCD1BC
-	for <qemu-arm@archiver.kernel.org>; Thu, 23 Oct 2025 14:39:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7062CCD1BE
+	for <qemu-arm@archiver.kernel.org>; Thu, 23 Oct 2025 14:41:27 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vBwTI-0004c2-8r; Thu, 23 Oct 2025 10:39:20 -0400
+	id 1vBwUy-0005Z0-K1; Thu, 23 Oct 2025 10:41:04 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vBwTF-0004ZN-4O
- for qemu-arm@nongnu.org; Thu, 23 Oct 2025 10:39:17 -0400
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vBwUq-0005Wi-Eq
+ for qemu-arm@nongnu.org; Thu, 23 Oct 2025 10:40:57 -0400
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vBwTD-0002pa-HX
- for qemu-arm@nongnu.org; Thu, 23 Oct 2025 10:39:16 -0400
-Received: by mail-wm1-x329.google.com with SMTP id
- 5b1f17b1804b1-471131d6121so7223985e9.1
- for <qemu-arm@nongnu.org>; Thu, 23 Oct 2025 07:39:14 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vBwUo-0003Cd-Cc
+ for qemu-arm@nongnu.org; Thu, 23 Oct 2025 10:40:56 -0400
+Received: by mail-wr1-x429.google.com with SMTP id
+ ffacd0b85a97d-427007b1fe5so804901f8f.1
+ for <qemu-arm@nongnu.org>; Thu, 23 Oct 2025 07:40:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1761230353; x=1761835153; darn=nongnu.org;
+ d=linaro.org; s=google; t=1761230452; x=1761835252; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=dVKThUFXuZtqkYzX5p6Uhhgaqobr/Pe8uEyKy/8egPc=;
- b=Q/4hBTzEnbCivcSaXuGAO8CGbw25P//jD2Hx8gD533K9vAE5WcNN8/0HWT3A1udEiP
- 90Uy7p1hVWgzc5XDeFdqcIrbNO71OoNDsCdeB/UkH9f3GJG6sBwKcO2x/N84n6TO0V7p
- zb+O4rVCf08aN6wwyO6nzlTsl7G1x3NjoCHUx2fbN0Td5JPu7a05c0fxYDA3Ifs96L2y
- etznRu/T9524A2ZtrJty6Vl8Oj+2aDAq/BKTcIjj8skonQuk74FUJG1LO6PAVPt1huw6
- gvXR2VGNSSa749eUrnrIkMx+IMdKIFPc1F4EqYT4JdOjShivhUiqR4Y2+IcDZVSjCISz
- gZlg==
+ bh=IbKgAE2uNrIDuHHlNskaqajnAfIjgweZ0iP6Yko2TDY=;
+ b=Gg5Zzo9JaCVp3ND7ucOi8NZJjqYxWzdqfqh8OHCzJHQFxQdJHV66Ezw/jwqIUqNIjp
+ /QScWF1IZQ5eWkTMRdxCrXGlXe6miXEO9ixCEy2G8w93ixVtuIzhhDO4A+4T6V6W4mLb
+ NzZj67P/UDJcAbAuvMKPacisdNflewslm5XXRN8JEC7iTxoRcfkbVzcpQE58owCrMti4
+ EY1STYUbT8hm1ETwM73zs+blJn+bQuSzZklPrL30gIYSQxaOaADp0AbQ8T6NcA4Y2apk
+ ryl6y7JaOyrGUOPd/B8EuNj3UBjoYjSgnug/VlGTXX0vBXcLRZBeQJhGA95YxSIb5mlf
+ Qxjw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761230353; x=1761835153;
+ d=1e100.net; s=20230601; t=1761230452; x=1761835252;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=dVKThUFXuZtqkYzX5p6Uhhgaqobr/Pe8uEyKy/8egPc=;
- b=D8FJyb2GcaMBWdk+kslU6se8o9J8XtcTMjo9UDuRnm9UZXUZgkXjz44yrBIELWmlpr
- rrOtvrauvGfS3X4yaIBfApuDwHulxLY9BvCOCDrJx24PaRWLjcHCdM6g//a3FY8TQhCS
- zBuuMEIOezOYM/ZQVPOwp9HooapB1DsClSR+uPnmfctv+Nhe1yeMkCL17HNgGwb4KqR7
- n4wEwkykuNY9f3NKyqevczB6BBZfFHUXVyR+AGE+ThzubvztRqQCxrbWxhwyP7sZWTqQ
- O/HyUL8kiG/BAoS6JNIQuyPifYwicijTOhZQf594rv+7XmYdrG+qcinLOjeso7f4weYY
- uQ2w==
+ bh=IbKgAE2uNrIDuHHlNskaqajnAfIjgweZ0iP6Yko2TDY=;
+ b=Zf20RXgTLLDgsgR3Y0sTVexv+eiHaZK/9F4aDtR53x7kBSdQ/moMftuFIVrNj/Xig+
+ scCBWuUIfWZ0WUfLiV+4z7XOeyQLyBikQQHkbTlrBp1yHVeZqZHPzvoxevcJ9KkTwgm7
+ MDT0UIqI4xl+oxht50oUgaraGsBzTL2HDLG/PnqgISjSB5kOeW0dXDK+6AV/WPwMzA/r
+ +7ixJz3HaFlLGipJfPdw5//fBgFPiXvpkUX4wEYBfkLo5knBw1OOY/YHfd7/FIodAGo9
+ FJdCC3ZKnIa5xQ4xNUWc9kCukdgk3h9VHT4qUhcA+dSyffbiu0x4DadtMefU/0TEeo8c
+ Gqnw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCW4deTrD2n8Ampsibrt7KZlzTtATRwnuIeC6/bj8r/0AA2BYAWrn5lxMd8C88YmAHBbVbZeLOSHVA==@nongnu.org
-X-Gm-Message-State: AOJu0YwVUHZPEYwhPZvp9OLdyNgRTuWGDJYaDZ1d7oA8DIb+NeyQs2uK
- cNsOVJG+8SUTsxcQiVKQD07fffjd+02MZplY3T2isFi/1mbuedG3DDa39RG4tsgxhtk=
-X-Gm-Gg: ASbGncsu14MISyncxNGYWm0MLtw7OU5iPG64EtebfHBgvMD/GLj84c/4lRKQoMtkON8
- ZBUxWIIAQvjEwKN9wfg5ceOLykYNkSnYvP3dSocUYpgzBmsBSJ4FgyDBGAdghE9sjpHmtiAevrZ
- A5rWamv3foYxYjz3DAlyvLBNsuZ+nLP89hTU7OBOfLt5Ph8tQV2hTlC3nOZQDqWh7jrd5FoTymj
- lLEZ6ya8wr3tYAK2v2dlqJWwCkxtfu/4rUd2jzCmOsBnAuyhoKX4T4Tpu7Mq4IUxZoSnUfBquGI
- Jjv/pDRSXn/4NHHDJ2Uo5YoAIRVAdL877LQSgbFkHzSqRaoC4Yb9GRENjwEWltgmMyg9Qzu9LKY
- wAmnL74cCbIiBEb79YQl0tNJg6WA2Sgin+s/O2qtXgtxPzhG7DCGGjQMA3tTC3af3oXoi8yzthK
- tkcafqR3WRbYdvC1YviRlybK+kCcuzpPGizkpO3MmqwUU=
-X-Google-Smtp-Source: AGHT+IHdNKBpI5e4QjWPUqViCm/ReKkO1hg+TqmM7B1lZGZa36Idk9zMTArdYKaGZhtCFXzr5S8EYw==
-X-Received: by 2002:a5d:5c89:0:b0:3ec:d7c4:25b6 with SMTP id
- ffacd0b85a97d-42704d78abfmr18711642f8f.27.1761230353273; 
- Thu, 23 Oct 2025 07:39:13 -0700 (PDT)
+ AJvYcCUThEPixRo2dqeucntdP282oteUJ7njXPhn+LPhBR0t5KgY2NAolr1+jnzNAgmmO2niMzQuezcvxg==@nongnu.org
+X-Gm-Message-State: AOJu0YxSsAxV668MOlY+kwuCHdkdmeampBbOZStbE2qRaXXoPyN0vDYn
+ zzWoBrfBnA+GRufu8FCR+q4gsq5ymk46bpKSWkJzQwyi5k3jnVclAfq9eatb1urVMDc=
+X-Gm-Gg: ASbGncvvqzstx+Krtq3aXL7cVzxcnIFh+n8WzOdf8uIonTF8kszDC2wjwvZk0mjXJWO
+ Iw65e9fgcVkRHM0vJ0eUqwkusFKZ28QDLhWCdgmK+ANkMgWFVjidWjL6nsNjsPh8L2th+K7YMcX
+ Ig5Gc2JOQtQnwbuVlJc9Yw0HDMMNVkovrDpzXxcScjiMmG58Uef0ZYvapos9eqEPCungHpehJnB
+ ILAHRYLdcEM01CHwg8i+o7kC7PekGgrvtAgJ7ww+sqlcVtp/bcQUkHmRuihhYk4grdJlJEiNtLH
+ VN2l284nrSIzjNrEpkBOV55zhLg/gKhsHGr78ppGdTiVSJ6aF2IeMfTIiP1CEfZMgkF6KEovd4S
+ L8kwswnAYEyrQoOE6CYOf5ck6scsODcECw0V+F1cPv4Ioi9SiOh2seqOvP4FCjH9hTwOwoXxQfu
+ If5CgvaYSwjf+MYo0LYf3ps7/XKcNUjKElfyeulgFzzSNUgzqn364D6A==
+X-Google-Smtp-Source: AGHT+IEY4i3PZU6v2r3M8iTnFgj7CVpgKsLHcKK90UVPqV005BQxg6bl1pBn8xvzJUPDkJ5f7DhsEA==
+X-Received: by 2002:a5d:5f48:0:b0:426:ff2f:9c15 with SMTP id
+ ffacd0b85a97d-42704d83d04mr19381137f8f.5.1761230452107; 
+ Thu, 23 Oct 2025 07:40:52 -0700 (PDT)
 Received: from [192.168.69.201] (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-429898ecabdsm4549978f8f.47.2025.10.23.07.39.12
+ ffacd0b85a97d-429897ff371sm4330603f8f.21.2025.10.23.07.40.50
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 23 Oct 2025 07:39:12 -0700 (PDT)
-Message-ID: <8a9db920-c140-4faa-9824-882760b46053@linaro.org>
-Date: Thu, 23 Oct 2025 16:39:11 +0200
+ Thu, 23 Oct 2025 07:40:51 -0700 (PDT)
+Message-ID: <89e1f33a-2d3a-46dc-aeeb-b14f169d6b7a@linaro.org>
+Date: Thu, 23 Oct 2025 16:40:50 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 36/58] target/i386/hvf: Use address_space_translate in
- ept_emulation_fault
+Subject: Re: [PATCH v2 37/58] accel/hvf: Simplify hvf_log_*
 Content-Language: en-US
 To: qemu-devel@nongnu.org
 Cc: Mohamed Mediouni <mohamed@unpredictable.fr>,
@@ -81,13 +80,13 @@ Cc: Mohamed Mediouni <mohamed@unpredictable.fr>,
  Roman Bolshakov <rbolshakov@ddn.com>, Alexander Graf <agraf@csgraf.de>,
  Stefan Hajnoczi <stefanha@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
 References: <20251023114638.5667-1-philmd@linaro.org>
- <20251023115311.6944-7-philmd@linaro.org>
+ <20251023115311.6944-8-philmd@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20251023115311.6944-7-philmd@linaro.org>
+In-Reply-To: <20251023115311.6944-8-philmd@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::329;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x329.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::429;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x429.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -113,15 +112,15 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 On 23/10/25 13:52, Philippe Mathieu-Daudé wrote:
 > From: Richard Henderson <richard.henderson@linaro.org>
 > 
-> The hvf_slot structure is a poor replacement for properly
-> looking up a memory region in the address space.
-> Use memory_region_get_dirty_log_mask instead of HVF_SLOT_LOG.
+> Rely on the AddressSpace and MemoryRegion structures
+> rather than hvf_slot.
 > 
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > ---
->   target/i386/hvf/hvf.c | 34 +++++++++++++++++-----------------
->   1 file changed, 17 insertions(+), 17 deletions(-)
+>   include/system/hvf_int.h |  3 ---
+>   accel/hvf/hvf-all.c      | 40 ++++++++++------------------------------
+>   2 files changed, 10 insertions(+), 33 deletions(-)
 
 Tested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>

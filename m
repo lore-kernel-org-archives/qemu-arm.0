@@ -4,52 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8CDBCCD1BF
-	for <qemu-arm@archiver.kernel.org>; Thu, 23 Oct 2025 10:04:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B388CCD193
+	for <qemu-arm@archiver.kernel.org>; Thu, 23 Oct 2025 10:06:41 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vBs9N-0001N5-Vd; Thu, 23 Oct 2025 06:02:29 -0400
+	id 1vBsD9-0008O4-Fy; Thu, 23 Oct 2025 06:06:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1vBs9K-0001LN-4N; Thu, 23 Oct 2025 06:02:27 -0400
-Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1vBs9I-00039r-7c; Thu, 23 Oct 2025 06:02:25 -0400
-Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Thu, 23 Oct
- 2025 18:01:53 +0800
-Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
- Transport; Thu, 23 Oct 2025 18:01:53 +0800
-To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
- Stanley" <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
- <kane_chen@aspeedtech.com>
-Subject: [PATCH v1 06/13] hw/arm/aspeed: Split G220A machine into a separate
- source file for better maintenance
-Date: Thu, 23 Oct 2025 18:01:39 +0800
-Message-ID: <20251023100150.295370-7-jamin_lin@aspeedtech.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20251023100150.295370-1-jamin_lin@aspeedtech.com>
-References: <20251023100150.295370-1-jamin_lin@aspeedtech.com>
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1vBsD8-0008NZ-GT
+ for qemu-arm@nongnu.org; Thu, 23 Oct 2025 06:06:22 -0400
+Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1vBsD6-0003cI-6r
+ for qemu-arm@nongnu.org; Thu, 23 Oct 2025 06:06:22 -0400
+Received: by mail-ej1-x633.google.com with SMTP id
+ a640c23a62f3a-b3b3a6f4dd4so134972466b.0
+ for <qemu-arm@nongnu.org>; Thu, 23 Oct 2025 03:06:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1761213977; x=1761818777; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:user-agent
+ :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=NVomLDbVmARYunsc9Z3lmN1gnQQOyQfCvPbQDLofxi0=;
+ b=FwjPghqo54HkVe3mrNY8ehEmLuTQZ0xWUkPIypoyjfC3Z/dupna+JPGlTRotmCMOsF
+ c7QbASsNOlZhrbuZTEdvU/Bw0lVy5dxTWR0/6ue4Wt77m1L5fsm3dC+AQXsHo8k5SkzS
+ I6aTAoDHPrR39ucReG7iPh9miR/DiKENzso32OMPRlZRqv0HlTF5m76HnCIHTtBze58m
+ nl8k20gnKuh3KQ77QD24EWg+B7jQ6H1O15m8EeJxtp2M44F8dS8Pitf73EMrSY87/EQJ
+ GFY2nUQq/yilAf0kA96wizqnGY093XNOXQiM+i9TOIV+VpSCu1MISxPCUoh/Rpm/IieP
+ Jvrg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1761213977; x=1761818777;
+ h=content-transfer-encoding:mime-version:message-id:date:user-agent
+ :references:in-reply-to:subject:cc:to:from:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=NVomLDbVmARYunsc9Z3lmN1gnQQOyQfCvPbQDLofxi0=;
+ b=lqDSbRtVxNFfs/uXWWD8op14mEWZ4qDXzgTaJ2zQHipSroefEAN0FPKcTLDmAEE/tn
+ 8QJFqO2prCMl5UNEDS3gBrit+fpX0MAUrGRNVD2COr9fr1jMIKMmBEk6fLA3QFSuwHz3
+ KVr0EoizZxtoknqohk3WXM0LJ+pqW+RfqsyyiOoM3CsvGvXhEy8jrExggAG7cyyR+zfk
+ u+5egfIYMnNkOevZCicELbz2mn9NKY+ETa2BJ1S0IJqd/JpB7PkYUo6AF5FCxwtFmNRd
+ tJcA90Iljee2+ZLRFyRvk5VgCR8+7gTY0BfCF+8Mb3qO54TivkkYV3yHcz8Ai6wBmQ8h
+ /JVg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXx+bX9II98RzXt7AQyzTzShwteerlbkDGOykPJATTzPMzGfwDKxb3Wq7Dtj56yC8rY53SX1sHuag==@nongnu.org
+X-Gm-Message-State: AOJu0YwzlehZQQVUc40uOkvlNqriBQaKyFTRh6TE+kH0j5e3zqPJkF9g
+ iyvDOgB3iV27gHlfqIKEtxQX3Lez1ipBvhTX6HrRMELdeRNjdOMnbI+NApAMJX0x4NU=
+X-Gm-Gg: ASbGncvYGdyOlEwkQjr7ZfTROtIsic5iqla5QhvzS7nmndPng1Y4gs31EiQFjAasdt6
+ Is2KhVqVUahzFhRmQV3C9MkFF/oHXLMmK/WPPiUravJ7r4H9QJ3tXuY6114ITZT2usT23z1KP9d
+ eZnDwec/3G3j6wkJohIaEbzEkWltLH1KeKJov2JpXe/DRs1SwTrPcW1xMK1DoqtqtkmLVP4dZp0
+ jUkrbcbB5Lmrr9FCDtNov+QpITueJBo1RhdtDz+N+K6TWtyXuURnThgEMN1NHkalEoODwQg1h5W
+ z1Y+OfrSDbcurrvS/kP1l0pPITzs9dBFt0le+r29SwBzT+S6UXvRHkxrHrIfYoae7k+ugpSV3lv
+ YALizso8FdnzbcnrrPab87U2CpWkk3CJ/a1I2jgSm9MEdmHmBW/+PymlZyk0thiqQ7HgzrrHVsI
+ mD
+X-Google-Smtp-Source: AGHT+IGyEkN//H10RUH7q8DN8m8vdD3nU2spnXFCL4TZDwJYOJNEVOmFokAJJhkUd14qPHtryexPQQ==
+X-Received: by 2002:a17:906:c155:b0:b42:9840:eac1 with SMTP id
+ a640c23a62f3a-b64764e33cbmr2623795066b.49.1761213977013; 
+ Thu, 23 Oct 2025 03:06:17 -0700 (PDT)
+Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-b6d513197d5sm168883366b.34.2025.10.23.03.06.16
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 23 Oct 2025 03:06:16 -0700 (PDT)
+Received: from draig (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id 55D6F5F8DF;
+ Thu, 23 Oct 2025 11:06:15 +0100 (BST)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: tangtao1634 <tangtao1634@phytium.com.cn>
+Cc: pbonzini@redhat.com,  farosas@suse.de,  lvivier@redhat.com,  Eric Auger
+ <eric.auger@redhat.com>,  Peter Maydell <peter.maydell@linaro.org>,
+ qemu-devel@nongnu.org,  qemu-arm@nongnu.org,  Chen Baozi
+ <chenbaozi@phytium.com.cn>,  Pierrick Bouvier
+ <pierrick.bouvier@linaro.org>,  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>,  Jean-Philippe Brucker <jean-philippe@linaro.org>,
+ Mostafa Saleh <smostafa@google.com>
+Subject: Re: [RFC v2 0/2] hw/misc: Introduce a new SMMUv3 test framework
+In-Reply-To: <20250930165340.42788-1-tangtao1634@phytium.com.cn> (tangtao's
+ message of "Wed, 1 Oct 2025 00:53:38 +0800")
+References: <20250930165340.42788-1-tangtao1634@phytium.com.cn>
+User-Agent: mu4e 1.12.14-dev1; emacs 30.1
+Date: Thu, 23 Oct 2025 11:06:15 +0100
+Message-ID: <87v7k6lyp4.fsf@draig.linaro.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-Received-SPF: pass client-ip=211.20.114.72;
- envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX01.aspeed.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::633;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x633.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -62,252 +109,167 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
-From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This commit refactors the Bytedance G220A BMC machine by moving its
-implementation from aspeed.c into a new dedicated file
-aspeed_ast2500_g220a.c.
+tangtao1634 <tangtao1634@phytium.com.cn> writes:
 
-The goal is to improve modularity and maintainability of Aspeed
-machine definitions by isolating each platform into its own source
-file. This aligns with ongoing efforts to simplify aspeed.c,
-which previously contained all machine configurations.
+> From: Tao Tang <tangtao1634@phytium.com.cn>
+>
+> This patch series (V2) introduces several cleanups and improvements to th=
+e smmu-testdev device. The main goals are to refactor shared code, enhance =
+robustness, and significantly clarify the complex page table construction u=
+sed for testing.
+>
+> Motivation
+> ----------
+>
+> Currently, thoroughly testing the SMMUv3 emulation requires a significant
+> software stack. We need to boot a full guest operating system (like Linux)
+> with the appropriate drivers (e.g., IOMMUFD) and rely on firmware (e.g.,
+> ACPI with IORT tables or Hafnium) to correctly configure the SMMU and
+> orchestrate DMA from a peripheral device.
+>
+> This dependency on a complex software stack presents several challenges:
+>
+> * High Barrier to Entry: Writing targeted tests for specific SMMU
+>     features (like fault handling, specific translation regimes, etc.)
+>     becomes cumbersome.
+>
+> * Difficult to Debug: It's hard to distinguish whether a bug originates
+>     from the SMMU emulation itself, the guest driver, the firmware
+>     tables, or the guest kernel's configuration.
+>
+> * Slow Iteration: The need to boot a full guest OS slows down the
+>     development and testing cycle.
+>
+> The primary goal of this work is to create a lightweight, self-contained
+> testing environment that allows us to exercise the SMMU's core logic
+> directly at the qtest level, removing the need for any guest-side
+> software.
 
-Key updates include:
+I agree, an excellent motivation.
 
-- Moved G220A_BMC_HW_STRAP1 definition and
-g220a_bmc_i2c_init() function into aspeed_ast2500_g220a.c.
-- Moved aspeed_machine_g220a_class_init() and related type
-registration to the new file.
-- Added the new file to the build system (meson.build).
-- Removed all G220A-specific code from aspeed.c.
+>
+> Our Approach: A Dedicated Test Device
+> -------------------------------------
+>
+> To achieve this, we introduce two main components:
+>
+> * A new, minimal hardware device: smmu-testdev.
+> * A corresponding qtest that drives this device to generate SMMU-bound
+>     traffic.
+>
+> A key question is, "Why introduce a new smmu-testdev instead of using an
+> existing PCIe or platform device?"
 
-No functional changes.
+I curious what the split between PCIe and platform devices that need an
+SMMU are. I suspect there is a strong split between the virtualisation
+case and the emulation case.
 
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
----
- hw/arm/aspeed.c               | 71 ---------------------------
- hw/arm/aspeed_ast2500_g220a.c | 91 +++++++++++++++++++++++++++++++++++
- hw/arm/meson.build            |  1 +
- 3 files changed, 92 insertions(+), 71 deletions(-)
- create mode 100644 hw/arm/aspeed_ast2500_g220a.c
+> The answer lies in our goal to minimize complexity. Standard devices,
+> whether PCIe or platform, come with their own intricate initialization
+> protocols and often require a complex driver state machine to function.
+> Using them would re-introduce the very driver-level complexity we aim to
+> avoid.
+>
+> The smmu-testdev is intentionally not a conformant, general-purpose PCIe
+> or platform device. It is a purpose-built, highly simplified "DMA engine."
+> I've designed it to be analogous to a minimal PCIe Root Complex that
+> bypasses the full, realistic topology (Host Bridges, Switches, Endpoints)
+> to provide a direct, programmable path for a DMA request to reach the SMM=
+U.
+> Its sole purpose is to trigger a DMA transaction when its registers are
+> written to, making it perfectly suited for direct control from a test
+> environment like qtest.
+>
+> The Qtest Framework
+> -------------------
+>
+> The new qtest (smmu-testdev-qtest.c) serves as the "bare-metal driver"
+> for both the SMMU and the smmu-testdev. It manually performs all the
+> setup that would typically be handled by the guest kernel and firmware,
+> but in a completely controlled and predictable manner:
+>
+> 1.  SMMU Configuration: It directly initializes the SMMU's registers to a
+>     known state.
+>
+> 2.  Translation Structure Setup: It manually constructs the necessary
+>     translation structures in memory, including Stream Table Entries
+>     (STEs), Context Descriptors (CDs), and Page Tables (PTEs).
+>
+> 3.  DMA Trigger: It programs the smmu-testdev to initiate a DMA operation
+>     targeting a specific IOVA.
+>
+> 4.  Verification: It waits for the transaction to complete and verifies
+>     that the memory was accessed correctly after address translation by
+>     the SMMU.
+>
+> This framework provides a solid and extensible foundation for validating
+> the SMMU's core translation paths. The initial test included in this
+> series covers a basic DMA completion path in the Non-Secure bank,
+> serving as a smoke test and a proof of concept.
+>
+> It is worth noting that this series currently only includes tests for the
+> Non-Secure SMMU. I am aware of the ongoing discussions and RFC patches
+> for Secure SMMU support. To avoid a dependency on unmerged work, this
+> submission does not include tests for the Secure world. However, I have
+> already implemented these tests locally, and I am prepared to submit
+> them for review as soon as the core Secure SMMU support is merged
+> upstream.
 
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 48c3d73e73..dbeb751275 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -116,20 +116,6 @@ static struct arm_boot_info aspeed_board_binfo = {
-         SCU_HW_STRAP_VGA_SIZE_SET(VGA_16M_DRAM) |                       \
-         SCU_AST2500_HW_STRAP_RESERVED1)
- 
--#define G220A_BMC_HW_STRAP1 (                                      \
--        SCU_AST2500_HW_STRAP_SPI_AUTOFETCH_ENABLE |                     \
--        SCU_AST2500_HW_STRAP_GPIO_STRAP_ENABLE |                        \
--        SCU_AST2500_HW_STRAP_UART_DEBUG |                               \
--        SCU_AST2500_HW_STRAP_RESERVED28 |                               \
--        SCU_AST2500_HW_STRAP_DDR4_ENABLE |                              \
--        SCU_HW_STRAP_2ND_BOOT_WDT |                                     \
--        SCU_HW_STRAP_VGA_CLASS_CODE |                                   \
--        SCU_HW_STRAP_LPC_RESET_PIN |                                    \
--        SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_MASTER) |                \
--        SCU_AST2500_HW_STRAP_SET_AXI_AHB_RATIO(AXI_AHB_RATIO_2_1) |     \
--        SCU_HW_STRAP_VGA_SIZE_SET(VGA_64M_DRAM) |                       \
--        SCU_AST2500_HW_STRAP_RESERVED1)
--
- /* Witherspoon hardware value: 0xF10AD216 (but use romulus definition) */
- #define WITHERSPOON_BMC_HW_STRAP1 ROMULUS_BMC_HW_STRAP1
- 
-@@ -634,42 +620,6 @@ static void witherspoon_bmc_i2c_init(AspeedMachineState *bmc)
-     /* Bus 11: TODO ucd90160@64 */
- }
- 
--static void g220a_bmc_i2c_init(AspeedMachineState *bmc)
--{
--    AspeedSoCState *soc = bmc->soc;
--    DeviceState *dev;
--
--    dev = DEVICE(i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 3),
--                                         "emc1413", 0x4c));
--    object_property_set_int(OBJECT(dev), "temperature0", 31000, &error_abort);
--    object_property_set_int(OBJECT(dev), "temperature1", 28000, &error_abort);
--    object_property_set_int(OBJECT(dev), "temperature2", 20000, &error_abort);
--
--    dev = DEVICE(i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 12),
--                                         "emc1413", 0x4c));
--    object_property_set_int(OBJECT(dev), "temperature0", 31000, &error_abort);
--    object_property_set_int(OBJECT(dev), "temperature1", 28000, &error_abort);
--    object_property_set_int(OBJECT(dev), "temperature2", 20000, &error_abort);
--
--    dev = DEVICE(i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 13),
--                                         "emc1413", 0x4c));
--    object_property_set_int(OBJECT(dev), "temperature0", 31000, &error_abort);
--    object_property_set_int(OBJECT(dev), "temperature1", 28000, &error_abort);
--    object_property_set_int(OBJECT(dev), "temperature2", 20000, &error_abort);
--
--    static uint8_t eeprom_buf[2 * 1024] = {
--            0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0xfe,
--            0x01, 0x06, 0x00, 0xc9, 0x42, 0x79, 0x74, 0x65,
--            0x64, 0x61, 0x6e, 0x63, 0x65, 0xc5, 0x47, 0x32,
--            0x32, 0x30, 0x41, 0xc4, 0x41, 0x41, 0x42, 0x42,
--            0xc4, 0x43, 0x43, 0x44, 0x44, 0xc4, 0x45, 0x45,
--            0x46, 0x46, 0xc4, 0x48, 0x48, 0x47, 0x47, 0xc1,
--            0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xa7,
--    };
--    smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 4), 0x57,
--                          eeprom_buf);
--}
--
- static void rainier_bmc_i2c_init(AspeedMachineState *bmc)
- {
-     AspeedSoCState *soc = bmc->soc;
-@@ -1548,23 +1498,6 @@ static void aspeed_machine_ast2600_evb_class_init(ObjectClass *oc,
-     aspeed_machine_ast2600_class_emmc_init(oc);
- };
- 
--static void aspeed_machine_g220a_class_init(ObjectClass *oc, const void *data)
--{
--    MachineClass *mc = MACHINE_CLASS(oc);
--    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
--
--    mc->desc       = "Bytedance G220A BMC (ARM1176)";
--    amc->soc_name  = "ast2500-a1";
--    amc->hw_strap1 = G220A_BMC_HW_STRAP1;
--    amc->fmc_model = "n25q512a";
--    amc->spi_model = "mx25l25635e";
--    amc->num_cs    = 2;
--    amc->macs_mask  = ASPEED_MAC0_ON | ASPEED_MAC1_ON;
--    amc->i2c_init  = g220a_bmc_i2c_init;
--    mc->default_ram_size = 1024 * MiB;
--    aspeed_machine_class_init_cpus_defaults(mc);
--};
--
- static void aspeed_machine_rainier_class_init(ObjectClass *oc, const void *data)
- {
-     MachineClass *mc = MACHINE_CLASS(oc);
-@@ -1928,10 +1861,6 @@ static const TypeInfo aspeed_machine_types[] = {
-         .name          = MACHINE_TYPE_NAME("tiogapass-bmc"),
-         .parent        = TYPE_ASPEED_MACHINE,
-         .class_init    = aspeed_machine_tiogapass_class_init,
--    }, {
--        .name          = MACHINE_TYPE_NAME("g220a-bmc"),
--        .parent        = TYPE_ASPEED_MACHINE,
--        .class_init    = aspeed_machine_g220a_class_init,
-     }, {
-         .name          = MACHINE_TYPE_NAME("qcom-dc-scm-v1-bmc"),
-         .parent        = TYPE_ASPEED_MACHINE,
-diff --git a/hw/arm/aspeed_ast2500_g220a.c b/hw/arm/aspeed_ast2500_g220a.c
-new file mode 100644
-index 0000000000..d9cc0ca018
---- /dev/null
-+++ b/hw/arm/aspeed_ast2500_g220a.c
-@@ -0,0 +1,91 @@
-+/*
-+ * Bytedance G220A
-+ *
-+ * Copyright (C) 2025 ASPEED Technology Inc.
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qapi/error.h"
-+#include "hw/arm/aspeed.h"
-+#include "hw/arm/aspeed_soc.h"
-+#include "hw/i2c/smbus_eeprom.h"
-+
-+#define G220A_BMC_HW_STRAP1 (                                      \
-+        SCU_AST2500_HW_STRAP_SPI_AUTOFETCH_ENABLE |                     \
-+        SCU_AST2500_HW_STRAP_GPIO_STRAP_ENABLE |                        \
-+        SCU_AST2500_HW_STRAP_UART_DEBUG |                               \
-+        SCU_AST2500_HW_STRAP_RESERVED28 |                               \
-+        SCU_AST2500_HW_STRAP_DDR4_ENABLE |                              \
-+        SCU_HW_STRAP_2ND_BOOT_WDT |                                     \
-+        SCU_HW_STRAP_VGA_CLASS_CODE |                                   \
-+        SCU_HW_STRAP_LPC_RESET_PIN |                                    \
-+        SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_MASTER) |                \
-+        SCU_AST2500_HW_STRAP_SET_AXI_AHB_RATIO(AXI_AHB_RATIO_2_1) |     \
-+        SCU_HW_STRAP_VGA_SIZE_SET(VGA_64M_DRAM) |                       \
-+        SCU_AST2500_HW_STRAP_RESERVED1)
-+
-+static void g220a_bmc_i2c_init(AspeedMachineState *bmc)
-+{
-+    AspeedSoCState *soc = bmc->soc;
-+    DeviceState *dev;
-+
-+    dev = DEVICE(i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 3),
-+                                         "emc1413", 0x4c));
-+    object_property_set_int(OBJECT(dev), "temperature0", 31000, &error_abort);
-+    object_property_set_int(OBJECT(dev), "temperature1", 28000, &error_abort);
-+    object_property_set_int(OBJECT(dev), "temperature2", 20000, &error_abort);
-+
-+    dev = DEVICE(i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 12),
-+                                         "emc1413", 0x4c));
-+    object_property_set_int(OBJECT(dev), "temperature0", 31000, &error_abort);
-+    object_property_set_int(OBJECT(dev), "temperature1", 28000, &error_abort);
-+    object_property_set_int(OBJECT(dev), "temperature2", 20000, &error_abort);
-+
-+    dev = DEVICE(i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 13),
-+                                         "emc1413", 0x4c));
-+    object_property_set_int(OBJECT(dev), "temperature0", 31000, &error_abort);
-+    object_property_set_int(OBJECT(dev), "temperature1", 28000, &error_abort);
-+    object_property_set_int(OBJECT(dev), "temperature2", 20000, &error_abort);
-+
-+    static uint8_t eeprom_buf[2 * 1024] = {
-+            0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0xfe,
-+            0x01, 0x06, 0x00, 0xc9, 0x42, 0x79, 0x74, 0x65,
-+            0x64, 0x61, 0x6e, 0x63, 0x65, 0xc5, 0x47, 0x32,
-+            0x32, 0x30, 0x41, 0xc4, 0x41, 0x41, 0x42, 0x42,
-+            0xc4, 0x43, 0x43, 0x44, 0x44, 0xc4, 0x45, 0x45,
-+            0x46, 0x46, 0xc4, 0x48, 0x48, 0x47, 0x47, 0xc1,
-+            0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xa7,
-+    };
-+    smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 4), 0x57,
-+                          eeprom_buf);
-+}
-+
-+static void aspeed_machine_g220a_class_init(ObjectClass *oc, const void *data)
-+{
-+    MachineClass *mc = MACHINE_CLASS(oc);
-+    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
-+
-+    mc->desc       = "Bytedance G220A BMC (ARM1176)";
-+    amc->soc_name  = "ast2500-a1";
-+    amc->hw_strap1 = G220A_BMC_HW_STRAP1;
-+    amc->fmc_model = "n25q512a";
-+    amc->spi_model = "mx25l25635e";
-+    amc->num_cs    = 2;
-+    amc->macs_mask  = ASPEED_MAC0_ON | ASPEED_MAC1_ON;
-+    amc->i2c_init  = g220a_bmc_i2c_init;
-+    mc->default_ram_size = 1024 * MiB;
-+    aspeed_machine_class_init_cpus_defaults(mc);
-+};
-+
-+static const TypeInfo aspeed_ast2500_g220a_types[] = {
-+    {
-+        .name          = MACHINE_TYPE_NAME("g220a-bmc"),
-+        .parent        = TYPE_ASPEED_MACHINE,
-+        .class_init    = aspeed_machine_g220a_class_init,
-+    }
-+};
-+
-+DEFINE_TYPES(aspeed_ast2500_g220a_types)
-+
-diff --git a/hw/arm/meson.build b/hw/arm/meson.build
-index 55513db65b..a8539ff51e 100644
---- a/hw/arm/meson.build
-+++ b/hw/arm/meson.build
-@@ -45,6 +45,7 @@ arm_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
-   'aspeed_soc_common.c',
-   'aspeed_ast2400.c',
-   'aspeed_ast2500_fp5280g2.c',
-+  'aspeed_ast2500_g220a.c',
-   'aspeed_ast2600.c',
-   'aspeed_ast10x0.c',
-   'aspeed_eeprom.c',
--- 
-2.43.0
+What about other IOMMU's? Are there any other bus mediating devices
+modelled in QEMU that could also benefit from the ability to trigger DMA
+transactions?
 
+>
+>
+> Changes from v1 RFC:
+> - Clarify Page Table Construction:
+> Detailed comments have been added to the page table construction logic. T=
+his is a key improvement, as the test setup extensively re-uses the same se=
+t of page tables for multiple translation stages and purposes (e.g., nested=
+ S1/S2 walks, CD fetch). The new comments explain this sharing mechanism, w=
+hich can otherwise be confusing to follow.
+>
+> - Refactor Shared Helpers:
+> The helper functions std_space_offset and std_space_to_str are now moved =
+to a common header file. This allows them to be used by both the main devic=
+e implementation (hw/misc/smmu-testdev.c) and its qtest (tests/qtest/smmu-t=
+estdev-qtest.c), improving code re-use and maintainability.
+>
+> - Enhance Robustness:
+> Assertions have been added to ensure the device operates only in the expe=
+cted Non-secure context. Additional conditional checks are also included to=
+ prevent potential runtime errors and make the test device more stable.
+>
+> - Code Simplification and Cleanup:
+> Several functions that were redundant with existing macros for constructi=
+ng Context Descriptors (CD) and Stream Table Entries (STE) have been remove=
+d. This simplifies the test data setup and reduces code duplication.
+>
+> Other unused code fragments have also been removed to improve overall cod=
+e clarity and hygiene.
+>
+> Tao Tang (2):
+>   hw/misc/smmu-testdev: introduce minimal SMMUv3 test device
+>   tests/qtest: add SMMUv3 smoke test using smmu-testdev DMA source
+>
+>  docs/specs/index.rst             |   1 +
+>  docs/specs/smmu-testdev.rst      |  45 ++
+>  hw/misc/Kconfig                  |   5 +
+>  hw/misc/meson.build              |   1 +
+>  hw/misc/smmu-testdev.c           | 943 +++++++++++++++++++++++++++++++
+>  include/hw/misc/smmu-testdev.h   | 402 +++++++++++++
+>  tests/qtest/meson.build          |   1 +
+>  tests/qtest/smmu-testdev-qtest.c | 238 ++++++++
+>  8 files changed, 1636 insertions(+)
+>  create mode 100644 docs/specs/smmu-testdev.rst
+>  create mode 100644 hw/misc/smmu-testdev.c
+>  create mode 100644 include/hw/misc/smmu-testdev.h
+>  create mode 100644 tests/qtest/smmu-testdev-qtest.c
+
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro
 

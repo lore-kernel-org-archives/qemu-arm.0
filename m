@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37856CCD1BC
-	for <qemu-arm@archiver.kernel.org>; Thu, 23 Oct 2025 12:40:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5DD92CCD1BC
+	for <qemu-arm@archiver.kernel.org>; Thu, 23 Oct 2025 12:41:54 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vBuUq-000661-60; Thu, 23 Oct 2025 08:32:48 -0400
+	id 1vBuXU-0001yv-3d; Thu, 23 Oct 2025 08:35:32 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vBuTv-0005FE-9E
- for qemu-arm@nongnu.org; Thu, 23 Oct 2025 08:31:54 -0400
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vBuUc-0005fR-Iz
+ for qemu-arm@nongnu.org; Thu, 23 Oct 2025 08:32:37 -0400
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vBuTs-0008O6-Jp
- for qemu-arm@nongnu.org; Thu, 23 Oct 2025 08:31:50 -0400
-Received: by mail-wr1-x42c.google.com with SMTP id
- ffacd0b85a97d-427084a641aso551217f8f.1
- for <qemu-arm@nongnu.org>; Thu, 23 Oct 2025 05:31:48 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vBuUZ-0008SI-5m
+ for qemu-arm@nongnu.org; Thu, 23 Oct 2025 08:32:33 -0400
+Received: by mail-wm1-x332.google.com with SMTP id
+ 5b1f17b1804b1-4710683a644so6325855e9.0
+ for <qemu-arm@nongnu.org>; Thu, 23 Oct 2025 05:32:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1761222705; x=1761827505; darn=nongnu.org;
+ d=linaro.org; s=google; t=1761222748; x=1761827548; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=P9xBVWd6FRt+OGCLZ6nEzr4EP/14LH00UlqrogCUybs=;
- b=szpLmfg2FC2G7G+igeW45fL7idbOcuRAt1Pc3SO7bF6x7DShjORFITgZgnBX16E2nR
- UihLWS9qucJ+p+vKF0BeRPVk6hj4B/DpuUNsmhqlczO7kNV1J1bOYxzEILLJB+CheXLs
- vBrjIMByAmyOt3QV4ScXBdGaeF5tO6+3boD7VfFh/VKUF1MW8BlehrQ1ui7GSdlc97fR
- QF1aKMRrr0nhRgF9Tiu7J1BzGjI1yCcbijC4xlibIUdDoh9dWGv5XKVABgETOAYUkhVo
- XV3pzdf9zq0fFL5fc5+Z+t1zSqWupgR8B2MMygkG0ic7mc2UuUrVUjUEOl3j+Mb8x4y+
- mImA==
+ bh=2a4PoXZUReoA7VfVNmy1fiLzr59C5J9k1wUFYONVrhA=;
+ b=kPJiKj2cbJKGdhb/RU9bLUahmVkd9PRuC9zqRcIEOoAUS5ElVG+XIY3+RVzLgBC5kv
+ DUB8JaKRZew3sk2PVJsiage8DfBcEDd+lE9PMUzxMI7RwZlKasw8CiWm5dt+9JtshL8R
+ yVb7jQItet0oWcQ+x2ERm9vunnrFxGa1F674HkCpoVEEy/V1apwAkatKECVUZdiij4sG
+ 3nIFt9s+Xp5W9aS/qFSxEz1TCDMUPgK/3WL3qu3uf+SAZmpYrGoWUXRGFQs1zvFZzdec
+ SiXt1qvbApTsSuqHFXSAOApnLtM8ZyH1NdSfWUX3Gef7Mk0CW0SOvq3sEKHC/Eg1I0Vn
+ LJdQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761222705; x=1761827505;
+ d=1e100.net; s=20230601; t=1761222748; x=1761827548;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=P9xBVWd6FRt+OGCLZ6nEzr4EP/14LH00UlqrogCUybs=;
- b=balXlsTR+mJAIW571cR0JryDLd/R/F065lZ373fwv5qhfqy+dlFAuV4gwLZ6MnypVH
- jDmXWbCMfuk46XVaUtWc78mwEqL5cKNJXKuBFJGpqZwi0dv3F2hIfgmc/7fzaf0RGomN
- UhOe4oaCAery2EIEZa51h7TG37MPIbvY/X5GMGfXd6rRO/+RaioiJ+K0EvCKY9oZJtSM
- DAoZ+EoQXVeBXRI8Rio6PTAZMULEOszJlfYKMCEFqkWYqMNX18GOxQgasyA8TG2SGIFe
- UD8FSW/+X+s++wWZpEc/iAutWo7X8fcWP0cltCGgNy9T9wmrsZvQKEYQYRnALi+FqBj6
- bCPw==
+ bh=2a4PoXZUReoA7VfVNmy1fiLzr59C5J9k1wUFYONVrhA=;
+ b=NBWpoUrp3P+6xqNkzf+cpXZ2hNJrZa9lumBe5BUTpvLSxALxhroSz6QuutdVnlcGQw
+ 5a+V5dtxaU+k0LXh1ZThoCxo+3SpLEVAPAUUX886zM/LsYQiBj5+JS7dvJgzouZXFnip
+ BFwRB1/9QMrCYd8+K8oR/KOr5UFUZF8KJFpzZBgCWguhD+518Pei0zot8/+MmnrTuBBN
+ Lv6YiyIdeMSWuI+8yCHpKzNfUeipymOZce0xvzkkPgzscWTafWNbqbflhatC045OyWZu
+ aWfjkjtGnzZy65PJqSnxQ0JM8PWMls6LYK3CkbFqcmV2aqWJ8z2fZMWTtIEDOqIoG7RF
+ Z6lw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCX0LNpP2rOaZIw6reBdJy6K2lNcjo7e1+tt0I33sGL6zZvh/9JvKkd00OGIx//8EyOTWOV+hnQpnw==@nongnu.org
-X-Gm-Message-State: AOJu0YzYeBTotrgUq6/o44S/ExxeFyfBPUbgA719V5VhdUI23VCWHXGy
- jQQS+mBoIbDqePOKdojrheLZjDemAIcg80VviXye33To5bHOLzDF0kuvBg6B64fSJg8=
-X-Gm-Gg: ASbGncswumx3Zq9DztoEsIt+JuXmu4lSi6yykSv4xeRHh15Jm43+Qt1GuxmY3vldxVD
- Z9EE1ONgMLlQqmkkMlnTZ07R0WzsPifJ+eKTb62Oam1bLZTECPoEIHTTHnfDqUiYDFg98wJD+zh
- hreIBf7RyaY1wsX10/OC0pq1KxrUPkTBeLg0m3eiAkHL/ywmeGGlrqQT2dFr3XpI05bgVcRNHKX
- S1O6WKmz7qACEJAhsmsPZtITNU8TK5eLGnk6EYDIpZDlBihHA8oKFfj2cK2RXr+zqiyEPgwBf3a
- SnpWZhwawByFiYY4ScE/CrhMJYQ0Wk15g7NtJl9+9TAncY9oRUGtA6RfBp0agipgkpfdP3G6vwz
- ennt9+WBhy5SGnF1VcbEyt5LMNMLPv1LKx4ubkbv84bxohopsDhfjIC3q/J8/NJoF6Qoc/IbQ0s
- 5QVvZARdr9/d4Y9VmrVOWmOVIfYU3n30U2GBGWY9fauHizlpVVkg==
-X-Google-Smtp-Source: AGHT+IFepACm3K4zjIZUTmac3W2rSbj15b968A/27aOp77LvhZzzmOLCvTNXq2XWyWm8tmCnMF9LEg==
-X-Received: by 2002:a05:6000:428a:b0:428:3cd7:a336 with SMTP id
- ffacd0b85a97d-4283cd7a3a7mr14311255f8f.63.1761222705120; 
- Thu, 23 Oct 2025 05:31:45 -0700 (PDT)
+ AJvYcCVK1xxIHP2D2hr+RCHwrBL8KGmEISPx6PYZ8yDgOjBM+z8vtFXUJ2Nkbvx8e0inlTvdcPgGWRqIrQ==@nongnu.org
+X-Gm-Message-State: AOJu0YwzyBweGDQ0DDZr3sNAV2xK+XDOq8TNqTdbVOALqhq753duZ3qZ
+ Br3rUt2vXP4KgAFIK72lJ9RXqiFs0bUw8xZroQcrHFRd4w905egeoRQnpxZHkSe8Utk=
+X-Gm-Gg: ASbGncsXri72vVKR+qK8HuYjLE6LfTV5zIsiiHx56gAXVt+hNKGDlQgUqiMHVICJl31
+ 0dA0SdToCFgr8eEeMcrXV6vrLN4GppvxwQ7WSjs2gA4zkzhd30GPM+MEhtwZ7+7cTpzu+w+vEYR
+ woGrqGpZEO7OiSjAsk3S5TAi3TCX6erIoEgLVHj58xZOWVhT/OCEjZLBvGgJ/T+06OONcMHGDH8
+ piIYGiSPSLrEvsso69oJcebPcX9apEelPtMZJQ9t/SX0o2X3Rh6AhFnWuxkLIICH6yv4GOo8vcp
+ pjD638tZhhGIYn6nWlxDxo0msXPZAuXe/Uaeva9H0xgYKY9kurA3DrhP5LsHF/1OpmQEVevgOtx
+ 9MeJL2/wB6sGCWWmLXE7a5JA5F0nvLM4WTiAfekz9YRz6ZlIhHOd3gxgrN4e2rtYwONkt08r+N1
+ xm6rq83gY4KRYgptUh8QZXC4E8EREN1Qu8+olOoE0QRIJFC8yRp5LbbHa+L5X3
+X-Google-Smtp-Source: AGHT+IHXSw/fevYz6MyC72SPBobc67WK2XNzTHBsMH/1mqhupLtvi+rVRmQeKXVOKH10Ct5cjU3tmQ==
+X-Received: by 2002:a05:600c:8b66:b0:46f:a995:55f8 with SMTP id
+ 5b1f17b1804b1-475c6f5df70mr37661025e9.13.1761222747787; 
+ Thu, 23 Oct 2025 05:32:27 -0700 (PDT)
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-429897ff371sm3744166f8f.21.2025.10.23.05.31.43
+ 5b1f17b1804b1-47496d4b923sm56754855e9.14.2025.10.23.05.32.26
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 23 Oct 2025 05:31:44 -0700 (PDT)
+ Thu, 23 Oct 2025 05:32:27 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -76,17 +76,17 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Mads Ynddal <mads@ynddal.dk>, Phil Dennis-Jordan <phil@philjordan.eu>,
  Richard Henderson <richard.henderson@linaro.org>,
  Roman Bolshakov <rbolshakov@ddn.com>, Cameron Esfahani <dirty@apple.com>
-Subject: [PATCH v2 50/58] accel/hvf: Sync CNTV_CTL_EL0 & CNTV_CVAL_EL0
-Date: Thu, 23 Oct 2025 14:31:34 +0200
-Message-ID: <20251023123142.8062-1-philmd@linaro.org>
+Subject: [PATCH v2 58/58] target/arm: Only allow disabling NEON when using TCG
+Date: Thu, 23 Oct 2025 14:31:42 +0200
+Message-ID: <20251023123142.8062-9-philmd@linaro.org>
 X-Mailer: git-send-email 2.51.0
 In-Reply-To: <20251023114638.5667-1-philmd@linaro.org>
 References: <20251023114638.5667-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::332;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x332.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -109,75 +109,40 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+Only allow disabling NEON when using TCG.
+
+This avoids confusing user experience:
+
+  $ qemu-system-aarch64 -M virt -accel hvf \
+                        -cpu host,neon=off,vfp=off,vfp-d32=off
+  qemu-system-aarch64: AArch64 CPUs must have both VFP and Neon or neither
+
+  $ qemu-system-aarch64 -M virt -accel hvf \
+                        -cpu host,neon=off,vfp=off,vfp-d32=off
+  qemu-system-aarch64: ARM CPUs must have both VFP-D32 and Neon or neither
+
+  $ qemu-system-aarch64 -M virt -accel hvf \
+                        -cpu host,neon=off,vfp=off,vfp-d32=off
+  qemu-system-aarch64: can't apply global host-arm-cpu.vfp-d32=off: Property 'host-arm-cpu.vfp-d32' not found
+
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- target/arm/hvf/hvf.c | 39 +++++++++++++++++++++++++++++++++++++++
- 1 file changed, 39 insertions(+)
+ target/arm/cpu.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index 36fa67caf62..dbf6b83532d 100644
---- a/target/arm/hvf/hvf.c
-+++ b/target/arm/hvf/hvf.c
-@@ -201,6 +201,9 @@ void hvf_arm_init_debug(void)
- #define SYSREG_PMCEID0_EL0    SYSREG(3, 3, 9, 12, 6)
- #define SYSREG_PMCEID1_EL0    SYSREG(3, 3, 9, 12, 7)
- #define SYSREG_PMCCNTR_EL0    SYSREG(3, 3, 9, 13, 0)
-+
-+#define SYSREG_CNTV_CTL_EL0   SYSREG(3, 3, 14, 3, 1)
-+#define SYSREG_CNTV_CVAL_EL0  SYSREG(3, 3, 14, 3, 2)
- #define SYSREG_PMCCFILTR_EL0  SYSREG(3, 3, 14, 15, 7)
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index bfd3b57e8a8..9343c6093b9 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -1457,7 +1457,7 @@ static void arm_cpu_post_init(Object *obj)
  
- #define SYSREG_ICC_AP0R0_EL1     SYSREG(3, 0, 12, 8, 4)
-@@ -2009,13 +2012,49 @@ static int hvf_handle_vmexit(CPUState *cpu, hv_vcpu_exit_t *exit)
-     return ret;
- }
- 
-+static void hvf_sync_vtimer_pre_exec(CPUState *cpu)
-+{
-+    hv_return_t r;
-+    uint64_t val;
-+    bool b;
-+
-+    b = hvf_sysreg_read_cp(cpu, "VTimer", SYSREG_CNTV_CVAL_EL0, &val);
-+    assert(b);
-+    r = hv_vcpu_set_sys_reg(cpu->accel->fd, HV_SYS_REG_CNTV_CVAL_EL0, val);
-+    assert_hvf_ok(r);
-+
-+    b = hvf_sysreg_read_cp(cpu, "VTimer", SYSREG_CNTV_CTL_EL0, &val);
-+    assert(b);
-+    r = hv_vcpu_set_sys_reg(cpu->accel->fd, HV_SYS_REG_CNTV_CTL_EL0, val);
-+    assert_hvf_ok(r);
-+}
-+
-+static void hvf_sync_vtimer_post_exec(CPUState *cpu)
-+{
-+    hv_return_t r;
-+    uint64_t val;
-+    bool b;
-+
-+    r = hv_vcpu_get_sys_reg(cpu->accel->fd, HV_SYS_REG_CNTV_CVAL_EL0, &val);
-+    assert_hvf_ok(r);
-+    b = hvf_sysreg_write_cp(cpu, "VTimer", SYSREG_CNTV_CVAL_EL0, val);
-+    assert(b);
-+
-+    r = hv_vcpu_get_sys_reg(cpu->accel->fd, HV_SYS_REG_CNTV_CTL_EL0, &val);
-+    assert_hvf_ok(r);
-+    b = hvf_sysreg_write_cp(cpu, "VTimer", SYSREG_CNTV_CTL_EL0, val);
-+    assert(b);
-+}
-+
- void hvf_arch_cpu_synchronize_pre_exec(CPUState *cpu)
- {
-+    hvf_sync_vtimer_pre_exec(cpu);
-     flush_cpu_state(cpu);
- }
- 
- void hvf_arch_cpu_synchronize_post_exec(CPUState *cpu)
- {
-+    hvf_sync_vtimer_post_exec(cpu);
- }
- 
- int hvf_arch_vcpu_exec(CPUState *cpu)
+     if (arm_feature(&cpu->env, ARM_FEATURE_NEON)) {
+         cpu->has_neon = true;
+-        if (!kvm_enabled()) {
++        if (tcg_enabled() || qtest_enabled()) {
+             qdev_property_add_static(DEVICE(obj), &arm_cpu_has_neon_property);
+         }
+     }
 -- 
 2.51.0
 

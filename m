@@ -4,97 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AFF5BCCD1BE
-	for <qemu-arm@archiver.kernel.org>; Thu, 23 Oct 2025 12:42:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7254DCCD1BC
+	for <qemu-arm@archiver.kernel.org>; Thu, 23 Oct 2025 12:43:00 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vBuXU-0001yh-16; Thu, 23 Oct 2025 08:35:32 -0400
+	id 1vBuWg-0008KQ-2n; Thu, 23 Oct 2025 08:34:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vBuUK-0005Ws-Eq
- for qemu-arm@nongnu.org; Thu, 23 Oct 2025 08:32:33 -0400
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1vBuNk-0002D2-Fx
+ for qemu-arm@nongnu.org; Thu, 23 Oct 2025 08:25:33 -0400
+Received: from mail-yw1-x112f.google.com ([2607:f8b0:4864:20::112f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vBuUI-0008QV-45
- for qemu-arm@nongnu.org; Thu, 23 Oct 2025 08:32:16 -0400
-Received: by mail-wm1-x330.google.com with SMTP id
- 5b1f17b1804b1-47112a73785so5376925e9.3
- for <qemu-arm@nongnu.org>; Thu, 23 Oct 2025 05:32:12 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1vBuNg-0007du-Gj
+ for qemu-arm@nongnu.org; Thu, 23 Oct 2025 08:25:28 -0400
+Received: by mail-yw1-x112f.google.com with SMTP id
+ 00721157ae682-7847ee5f59dso9821757b3.2
+ for <qemu-arm@nongnu.org>; Thu, 23 Oct 2025 05:25:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1761222731; x=1761827531; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ d=linaro.org; s=google; t=1761222315; x=1761827115; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=LQ2Eh2V7b9Wp5VhIUqDSe6OaTHE71wRbrMgAmX2CIig=;
- b=om0RGH/GFlFkxbAGm1QtrhhvpiL79nFtbVlyBD0pt2M7S3W7LDH9xWl3rPytpgBFCi
- SnMNakYgpmgbA67M3xshUeJr2mktLeG/ZwjCo96aowyRcaK4uF2a52GrEJ+hlh5WgbZZ
- A6oi8USAkAgi8ioCE01v3ybOkukixR5aE8rQMVLL5Sx+r3pfWXG0bzTaw3zxrapLyfRc
- pvAQ7M80TbnNG9XJNK7Bj65O2P7In4nNh/RcEoIqYbCIp6RdZ96AtTtxKvh8EjM7nsjj
- gGhQM6iP0iZs8kX91dZcrY7j7kU9uX8Tu2tBqIhAblX4HHcCi7+/gWsuZoqc6q9vyGf4
- UOPw==
+ bh=coX3KGZGroDxNHrZ4mhAkuLR6HRjaI1KOz7uItO4O2U=;
+ b=aGrlR5i9oqqOjnX1in/aySesJX8t5LDVsgV9JUTfvTIAMzQgk/5PsFRVoAR1l0kogi
+ T5N7JgPKfQqvuTjZJG2dZZy8AgdDYIoCXE1Rgu6PF88eQxVz9LggjDi/BnGEOCvGnfa7
+ 7/l7yIBdBucAVvVzYA7c0bcAHJpHq2N/ts/UfyUVkly5vcALTpk5nG3Jk0KdKOebCJuf
+ ltEFEKCUSrNBH9jiY7gae8UC7UTjIN/fXj/WPKr4cv+OLqnwiPC6XpNYwkXq+gjopOqb
+ OWybaqm0wcAmpOaCrG7pxCW8D0fLTlqw0nBb4lwverYblDEzAAqyFO7Sr65uVN/pgeCh
+ jdNw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761222731; x=1761827531;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ d=1e100.net; s=20230601; t=1761222315; x=1761827115;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=LQ2Eh2V7b9Wp5VhIUqDSe6OaTHE71wRbrMgAmX2CIig=;
- b=sRhbN0vqBBJyWHqKBbi0GTln9GXKUU5T6tDdh0Swcz940dTPsUWlOJwOpOWFGaWtoX
- 7JyuUHNTahC7LcvoZpz0ySX3OAESHgwMcgD+uzitkHorWdgn1jkcU/Yj9ApiOLcw/2eq
- mL851NR9QKDfzj6rntF1YAoOZeez+ghHOqMZQh8VPv1tVIaUNc2mapZwI3hraFI+PlL0
- PLwn75j+7KKg0HHgQ8XU53t0gg43hDjvFf12g7k5BBbWS97nhopdpiuIbVedUPWK9KXZ
- q7FjSGL1B2VaE1U5/Vc739OgWAFAakBzeB07I4D7W91oBlwScJfnOroVv7HcUs2hUXLQ
- pXLA==
+ bh=coX3KGZGroDxNHrZ4mhAkuLR6HRjaI1KOz7uItO4O2U=;
+ b=u/pNW8lcdyjLq/rvBsWnqC2mQI2iiYaDX8KLmeHXOpEeb6rvsv8N/b+UThIaStNypp
+ UfNfGnk7cyFCvFqCkPRah0PYXWgD1Dv6BPL89hXCx+tq7sdgnbdbmd/GV+ZnptBashlX
+ 7/ax/OukkUnpGz0xsyJH3+Ck23aux6EkAzguc/4n/vX4oA8i/OjWpQGC7RLc/k/NE/S/
+ Fig29DgF8l72K6ZemNPPso4tgNz+p8E2aTKGhoT2C5yP5fKBWJmi/7A/mltHHQ5lAttg
+ RA0b/YedRLMamUA985gUazF7tDa+vuR4DEcdTIIBZU688m+vkM08I8w5SkjsQiEfMlzG
+ Cthw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUTlcfchTu6xBNqPHuWNcdrlFXyBCuG4BaR7m3zhz3tWvqHbAYG/jsPNHkrt4aN9k1EA1Gh5fvccg==@nongnu.org
-X-Gm-Message-State: AOJu0YxcWuIKIbPyu592mAPfcDYAcL5+dQPUWvXegPwj+4DTDwPAJO7U
- qJxgazulPTTlDH0IraH2ZdfK1B7IEOqKOan+gYw0BMtgbVeWCv1WT17wQtYNvvz8MTM=
-X-Gm-Gg: ASbGncsUjTnYJH6+gRXpsqIoSgiSfgSYZkNBKM3g/1+NKiOCcEQ321I5f6B/7ibNng8
- nZnD2GIR+8jgRpPxJAOHpeCW3NBegXddJYkYYhmHS0cNKPOdIAj90QXnuiRnRcqUqyKxgLtbSm6
- btj1Iv8HwZjLPqINjz1yNjEGrRXtGkmy7VRl4wIlcwPTbqzzEj2TdZZa1bQNUde0KZDEfKNUY4l
- BLz/EbfwOTm6iyyA5JRACnLM4tc0lRnc2cb6oAH4aFSZnA03by8CN80XItOErVlBDRztiTCrGze
- Dhu2jqxJw4m0vkA1iN7MOZ9j1g8ZakFpgtoY49ow1g8g7p/9DZjOn4u0NqbTSxy+e0KTHaYLpUC
- /g12Kc4ENOG4RznIDEsWXPnVPfIHD7YVTrSxly3qOMW3H0M7HBi0F/llm6yuK8z4++haU6eGjNZ
- 9vbZCtkaYWPA79A7TjWOmNtp923UzcVkqOm65PG8onDSnGH4XqNWSqDNXRKZco
-X-Google-Smtp-Source: AGHT+IHdLIabaXeqHr9Ts4VbsGbGYrlcJVb829CWbLCMNsHjme7sJzZscGlOyqbJYpq2gUpVBbCLyw==
-X-Received: by 2002:a05:600c:4fc2:b0:471:1765:839c with SMTP id
- 5b1f17b1804b1-4711791299amr163823875e9.20.1761222731365; 
- Thu, 23 Oct 2025 05:32:11 -0700 (PDT)
-Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-475cae924a1sm44072925e9.2.2025.10.23.05.32.10
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 23 Oct 2025 05:32:10 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Mohamed Mediouni <mohamed@unpredictable.fr>,
- Peter Collingbourne <pcc@google.com>, Alexander Graf <agraf@csgraf.de>,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-arm@nongnu.org, Stefan Hajnoczi <stefanha@redhat.com>,
- Mads Ynddal <mads@ynddal.dk>, Phil Dennis-Jordan <phil@philjordan.eu>,
- Richard Henderson <richard.henderson@linaro.org>,
- Roman Bolshakov <rbolshakov@ddn.com>, Cameron Esfahani <dirty@apple.com>
-Subject: [PATCH v2 55/58] target/arm/hvf: Really set Generic Timer counter
- frequency
-Date: Thu, 23 Oct 2025 14:31:39 +0200
-Message-ID: <20251023123142.8062-6-philmd@linaro.org>
-X-Mailer: git-send-email 2.51.0
-In-Reply-To: <20251023114638.5667-1-philmd@linaro.org>
-References: <20251023114638.5667-1-philmd@linaro.org>
+ AJvYcCV1VCBnRxC4tDbFzXMUXo1f1Mfbgko1f32+6971uRgTOKJZStQHnedAKikd3CpULUCfGieOwUREoQ==@nongnu.org
+X-Gm-Message-State: AOJu0YyckwSK8Z6GFNghI+PhoyCn5efN6KXOa6DqriZQJM2xEjiFEDX6
+ 9P9m7oafNVwJkwCy6iybBoCcA/gkVz+05b1ifQDrj02nfvet9YnD2y52imnbZCu7OMIrBeKXFjs
+ MTEGrs3nGZ6BuNcaF1gP0tp+yEvBbgeKzkG6WhbMCXw==
+X-Gm-Gg: ASbGncuomKHXAIAexIDT3M71RP9k/4jRhwo64yi1nLaKawuocDDqtgdtDMU5KrZo1iu
+ V2boDL4hgBGcD33HZZgjMdaaw8PsgbXejTb+MFkP/+sLsjp7RmMDH1seUflgcWpXfG7/nNrLcfI
+ l2pDmhhkyjOgbPMWLSVo5hwbr4NHvneozF2IZqBxA4YtnhZQVXeeWCcI5h0DITJSDpiJrDWZp3n
+ NUka3O0FrmVopAfO4Wg8v++WKn4I2I+TSt0/wH2Gru1Jwp89UPU87dvMqrY7Bo/zBIUoDs4
+X-Google-Smtp-Source: AGHT+IGzbrBaOc7ai4U1OaQbuxrP84QC0YVxrQ7D3vpHpxPjHvD9UkmEWLERW/NCW1H3gRZZpTCByAtiy8sYHS3ANtU=
+X-Received: by 2002:a05:690c:6891:b0:781:64f:2b0f with SMTP id
+ 00721157ae682-7836d39a031mr211048657b3.65.1761222315071; Thu, 23 Oct 2025
+ 05:25:15 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
+References: <20251015091729.33761-1-corvin.koehne@gmail.com>
+In-Reply-To: <20251015091729.33761-1-corvin.koehne@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 23 Oct 2025 13:25:03 +0100
+X-Gm-Features: AS18NWDD2W97qDDD_xi7uFaf-_MuoPVPNNqBSox42xGoAABTh1wWHkPB0-lbDr8
+Message-ID: <CAFEAcA9+oSu+z_Jgm6dK6hVdTYf=NyGrD_cOF--+j=uOZJD8rg@mail.gmail.com>
+Subject: Re: [PATCH v3 00/14] hw/arm: add Beckhoff CX7200 board
+To: =?UTF-8?Q?Corvin_K=C3=B6hne?= <corvin.koehne@gmail.com>
+Cc: qemu-devel@nongnu.org, Kevin Wolf <kwolf@redhat.com>, 
+ =?UTF-8?Q?Yannick_Vo=C3=9Fen?= <y.vossen@beckhoff.com>, 
+ Alistair Francis <alistair@alistair23.me>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
+ Hanna Reitz <hreitz@redhat.com>, 
+ qemu-block@nongnu.org, =?UTF-8?Q?Corvin_K=C3=B6hne?= <c.koehne@beckhoff.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -110,67 +102,22 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Setting ARMCPU::gt_cntfrq_hz in hvf_arch_init_vcpu() is
-not correct because the timers have already be initialized
-with the default frequency.
+On Wed, 15 Oct 2025 at 10:17, Corvin K=C3=B6hne <corvin.koehne@gmail.com> w=
+rote:
+>
+> From: Corvin K=C3=B6hne <c.koehne@beckhoff.com>
+>
+> Hi,
+>
+> Beckhoff has build a board, called CX7200, based on the Xilinx Zynq A9
+> platform. This commit series adds the Beckhoff CX7200 as new board varian=
+t to
+> QEMU.
 
-Set it earlier in the AccelOpsClass::cpu_target_realize()
-handler instead, and assert the value is correct when
-reaching hvf_arch_init_vcpu().
+Did you base this on current master? beckhoff_ccat.c tries
+to include "exec/address-spaces.h", which hasn't existed since
+commit dfc56946a7005 renamed it to system/address-spaces.h
+back in March, so it doesn't compile...
 
-Fixes: a1477da3dde ("hvf: Add Apple Silicon support")
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/hvf/hvf.c | 20 +++++++++++++++++++-
- 1 file changed, 19 insertions(+), 1 deletion(-)
-
-diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index 759fa2e4d7d..f3cf5793ba5 100644
---- a/target/arm/hvf/hvf.c
-+++ b/target/arm/hvf/hvf.c
-@@ -904,6 +904,13 @@ cleanup:
-     return ret;
- }
- 
-+static uint64_t get_cntfrq_el0(void)
-+{
-+    uint64_t freq_hz = 0;
-+    asm volatile("mrs %0, cntfrq_el0" : "=r"(freq_hz));
-+    return freq_hz;
-+}
-+
- int hvf_arch_init_vcpu(CPUState *cpu)
- {
-     ARMCPU *arm_cpu = ARM_CPU(cpu);
-@@ -915,7 +922,9 @@ int hvf_arch_init_vcpu(CPUState *cpu)
-     int i;
- 
-     env->aarch64 = true;
--    asm volatile("mrs %0, cntfrq_el0" : "=r"(arm_cpu->gt_cntfrq_hz));
-+
-+    /* system count frequency sanity check */
-+    assert(arm_cpu->gt_cntfrq_hz == get_cntfrq_el0());
- 
-     /* Allocate enough space for our sysreg sync */
-     arm_cpu->cpreg_indexes = g_renew(uint64_t, arm_cpu->cpreg_indexes,
-@@ -981,6 +990,15 @@ int hvf_arch_init_vcpu(CPUState *cpu)
- 
- bool hvf_arch_cpu_realize(CPUState *cs, Error **errp)
- {
-+    ARMCPU *cpu = ARM_CPU(cs);
-+
-+    /*
-+     * We must set the counter frequency HVF will be using
-+     * early, before arm_cpu_realizefn initializes the timers
-+     * with it.
-+     */
-+    cpu->gt_cntfrq_hz = get_cntfrq_el0();
-+
-     return true;
- }
- 
--- 
-2.51.0
-
+-- PMM
 

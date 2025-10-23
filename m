@@ -4,67 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C691CCD1BC
-	for <qemu-arm@archiver.kernel.org>; Thu, 23 Oct 2025 11:48:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BBF8CCD1BC
+	for <qemu-arm@archiver.kernel.org>; Thu, 23 Oct 2025 11:49:03 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vBtnR-00086G-SJ; Thu, 23 Oct 2025 07:47:58 -0400
+	id 1vBtmv-0006IV-N1; Thu, 23 Oct 2025 07:47:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vBtmr-0006HS-UO
- for qemu-arm@nongnu.org; Thu, 23 Oct 2025 07:47:23 -0400
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vBtmh-00062B-7b
+ for qemu-arm@nongnu.org; Thu, 23 Oct 2025 07:47:12 -0400
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vBtmo-00023F-R3
- for qemu-arm@nongnu.org; Thu, 23 Oct 2025 07:47:21 -0400
-Received: by mail-wm1-x333.google.com with SMTP id
- 5b1f17b1804b1-4711f156326so6890365e9.1
- for <qemu-arm@nongnu.org>; Thu, 23 Oct 2025 04:47:17 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vBtme-00022c-N0
+ for qemu-arm@nongnu.org; Thu, 23 Oct 2025 07:47:10 -0400
+Received: by mail-wm1-x331.google.com with SMTP id
+ 5b1f17b1804b1-47103b6058fso5578975e9.1
+ for <qemu-arm@nongnu.org>; Thu, 23 Oct 2025 04:47:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1761220035; x=1761824835; darn=nongnu.org;
+ d=linaro.org; s=google; t=1761220025; x=1761824825; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=PXz77BrZW3QUmlVNh5gnW4lPNFdnFM/IGe1E/YtD1U0=;
- b=AP4s2tyk888yIHsq5rxJaiHBNivDELc8peSJie6uyHaAHJCvnD1//4lwfg0GdeQ3FZ
- 2Xe89JvaYBlSZCAqFuV2evtfcXFY/uObrgHSFfoM421ZumxBuDFVO3LGtQvoUvpOWrT2
- 8apisztDBH2CosZLYhirCO2hEfQwzJQuh7JVUgyu+3X+kSAtlH3AEjqBZ4kjHAgQMrGk
- jM9OKQ9B0mgYoL2IB2ANYflRt13fETJ0CUSXyoVEuMABEPVtVmOXt+qyNSrE5PW36EN4
- pdhRjfo7NrWvkg+v9LMIimGTHVMC443QlH/3BxJiZQ4dIdjiSiuJfW+9TSqPlL2l41JS
- 4yYg==
+ bh=NgDIx1+WcFxzjLnk5TEpP+lXGB26NdtGHoTw7EUXsBM=;
+ b=erwlYu3tgYA8w7VxSgXk++1155piI7lpUKHP3cSTNhOPfC4dUf3g5XZi7n8oEFSPy4
+ NEA/lDxgqMr3JXsRH5s81RAsF6bMr2/FxZm8yHeTXW8ydlwCxtYGVXTjBgDpPYR7W9g+
+ ywkvQVu2lCYHy9xT4coyFLEP2dqlTlP0IC/41Vs6Vw5iTr9XfN0xyKbPBaYGYMd3Xe4g
+ 6Cdg1TR9manU4d8njmJkQ+WvQ+j99yaPZXGKcEnXoGplXqtjJPTA+shEg6kqf2E84gVt
+ G7H0VU5HwZfSlFy7aH6LjaujkvATL/SHbLrm+1oCCbC/lXsCd11Rai7jINu/C3VqLAS9
+ n43g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761220035; x=1761824835;
+ d=1e100.net; s=20230601; t=1761220025; x=1761824825;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=PXz77BrZW3QUmlVNh5gnW4lPNFdnFM/IGe1E/YtD1U0=;
- b=fiiXvUSiIUEomOHOgLAZNt4FfHr9zwsmHDgO+7RpMH5plprgU44g0lQpYoYTW7LO3Q
- 3JXEZeGGqBLMhjNowDRQMzeCYEs6ETLo7xLOYIMfCLZxQlcTi1Yfc9KzLs4DfZHv7dYo
- DQJ6OW5DNlAXC5FHhL1rOJcPkjaptqXt1qs7l+CcA4aD+vm3H9E/p8qpN3oQGS9EA4Q/
- RNYUKkcagwnCjQRNNOpVbwQ+TQGiJPo+E2CIPVPRoJglAlFA93fSg6WpeXjinp5fP2iB
- qFSxKzjXkxhRtUgR4XyBWkxAGIPpJfGk2GkpRr68wjjJnW2t27rK0/jifGuy7iEucOz6
- DROQ==
+ bh=NgDIx1+WcFxzjLnk5TEpP+lXGB26NdtGHoTw7EUXsBM=;
+ b=HeWHhA/VxTgvYzCJ6t76U4TW9o+FOJsOp2hiYCG2yqQNzDKApQqHHCCiQVwEGvlKpC
+ I8AdUqIa9FddDJdp0FWJYAlmNl7EGtwEUumUpkOfkIxQ3YWRJ4ZrH5lnn0Yy/upfQaDy
+ lzvsUd/NxzbNfY3XfSGTXVfFR06DW1myJ4PdzTMfMzOOoMjb1O6cMoo0NVCK5Qgio8yW
+ 1jWZe1nT12xCWROkn6UMsEQsfGoLeNrDqLrAl1vVPiI9ETO/jukak7BM3xhga61a/mnd
+ EAcwg8LazRpJSGl4sfzRyPoY5aISxsIWNn/Ml5RPXP0fXQKfjBvkyqUd5YFNb0yTLAAb
+ d7Qw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCW1hqLjZoRd9CcBkNv/3c/tR+cOwQZX7A06mA7u0dlgwnZLUw4uxRLD4+Qn8ZzddjaOeawb3sCCsA==@nongnu.org
-X-Gm-Message-State: AOJu0YzRfgoLUEQh2z1oM58oxyLc9OnS9h0raiIRy0faqo8KsNkk9bu8
- Jx0a1RIp9AJf+XWkp6nL9f2bou+l1+n45vkfukRe9kugeg05rvtVz5h2Vy20oJsG40Y=
-X-Gm-Gg: ASbGncvn/xHNxfjN1ry8/5Ez8HmeF6+vcpS1A+WVCF/l7L1DEFzOs7sUEkinboyw4E3
- VFdvoiOHnTz23TNpjy2ZxF/FYlDCL/dS33TVrOqd4UXWs40lOF0dQljSNpKVqOcY4egZ1iGRnoy
- I9B/aWrEyyjxzkRb/IYCqPB8edUioTaujwEBKYRk9Mw30TTL/QMmFx/tMc2Zk8xBNGeNGQUsOVH
- TyMG6xB9beWV/WQNDVkI4SED6JWA9Jh+yM42Kr0eBGj6QNCSUHMrVyojBplP3Mo0H+R9nTpV97C
- 73jVjl3a+7ZoWvdn1WyXJt8SwYwzx/zDu4MO02UoE3zorzp9kgrXv4xYQisVpxzsDgZqQIpH5rf
- ++CAOJTLHh1ZPnq3XAprDebZc7FuZOhqKiYMeF4bIuAMGeu5vxXkZ/H9bsM4XPnmYm+kWZpgnR/
- xlTHzbnvjtpGtL11fEa63T/eQHtn0lRkhNs6GHMhO5VbwQTxtnxAyyfWF+wSbrxpjd3DgZeqA=
-X-Google-Smtp-Source: AGHT+IG40mtVqCovXd+9LEpjM/bYQFuHSQCHhYNWE4+XKKPR2r/SITrZ2eIfuna2/wOrb33dtGCIdQ==
-X-Received: by 2002:a05:600c:1396:b0:46c:adf8:c845 with SMTP id
- 5b1f17b1804b1-471178aba5bmr160769465e9.16.1761220035456; 
- Thu, 23 Oct 2025 04:47:15 -0700 (PDT)
+ AJvYcCUXcb2KaVkIeeSSlTjbVDM+DgqRqPur4GLnXPNihzFqy0d+EnsXlgsnmtPc0+dc+uR7WPna04cCsQ==@nongnu.org
+X-Gm-Message-State: AOJu0YwVdO5MeUVuVaz/EoZ/5CpJDAS5LP+elO6WES0cZzMOX1tj0MH5
+ cHZy3BTps+/a1Zo+mg354yAc1j71O44IPO31HSNhb1S2XTICd8hN7wDSi5/5fJpGx66Gj6eunS/
+ ET3lRiaI=
+X-Gm-Gg: ASbGncsoagsXL65ZTFwHWzl9SjZ3QpVE7hP+AB/m0QIpyFKhQEXBk/6eMgd34Q6ZvTA
+ nnpB68qfCLoZYPhN2SYTYqxudLm1DRWax150j7BdoGXIFJNZNQYA3SK9caBNkLFDE+Zg8k/k/r7
+ +QcmT2z6jX4kXACC0df3RiGD3drfyOv7XCbf9Gti/6aO9WE1dLnDjClx85cY7ZG7GB+Q0PhXoNi
+ F/5e8EG+IxsHNYRgHwik6QCV+i3cyY4TySysFbUupVceQbLyUI8tEtabGIxUyRuA49kxK6YLQS+
+ rOwFyUNCoRq/sw0dACdEGgQb5/DK1bNXE56WGEJyJf2csImuniTQ5pLkxHCfNypsdk5XehbC5i9
+ 22iQCPj4fZKO2QvtE3Ujhr/SOxFVklArcHGrme1kh7hYyOKDCG2ghfld6n/StHhhtB6aD/kVy9X
+ xDDb3dB0lAMI6Tbz+fbG67k3G5Zw1L8QXwKP3qWGfUlm+SpdXBNA==
+X-Google-Smtp-Source: AGHT+IG7rmXOetjM/ycGc0DJG82ofEII35FjxrdyJN4zQyhDrYycLGkbcna1c9Y47mRGRSy+XMQN9A==
+X-Received: by 2002:a05:600c:620a:b0:46e:5302:7751 with SMTP id
+ 5b1f17b1804b1-475c3fc0f5cmr49089985e9.9.1761220025396; 
+ Thu, 23 Oct 2025 04:47:05 -0700 (PDT)
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-475c428e9b2sm93063075e9.5.2025.10.23.04.47.14
+ 5b1f17b1804b1-475cae92067sm34443695e9.4.2025.10.23.04.47.04
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 23 Oct 2025 04:47:14 -0700 (PDT)
+ Thu, 23 Oct 2025 04:47:04 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Cameron Esfahani <dirty@apple.com>,
@@ -78,18 +79,18 @@ Cc: Cameron Esfahani <dirty@apple.com>,
  Mads Ynddal <mads@ynddal.dk>, qemu-arm@nongnu.org,
  Peter Collingbourne <pcc@google.com>,
  Phil Dennis-Jordan <phil@philjordan.eu>
-Subject: [PATCH v2 07/58] target/arm/hvf: Mention flush_cpu_state() must run
- on vCPU thread
-Date: Thu, 23 Oct 2025 13:45:44 +0200
-Message-ID: <20251023114638.5667-8-philmd@linaro.org>
+Subject: [PATCH v2 05/58] accel/hvf: Rename hvf_vcpu_exec() ->
+ hvf_arch_vcpu_exec()
+Date: Thu, 23 Oct 2025 13:45:42 +0200
+Message-ID: <20251023114638.5667-6-philmd@linaro.org>
 X-Mailer: git-send-email 2.51.0
 In-Reply-To: <20251023114638.5667-1-philmd@linaro.org>
 References: <20251023114638.5667-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::333;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x333.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::331;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x331.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -112,28 +113,81 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Since flush_cpu_state() calls hvf_arch_put_registers(),
-which must run on a vCPU, it also must. Mention it.
+hvf_vcpu_exec() is implemented per target, rename it as
+hvf_arch_vcpu_exec(), following the per target pattern.
+
+Since it calls hv_vcpu_run(), mention it must be called
+on the vCPU.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Reviewed-by: Mads Ynddal <mads@ynddal.dk>
 ---
- target/arm/hvf/hvf.c | 1 +
- 1 file changed, 1 insertion(+)
+ include/system/hvf_int.h  | 4 +++-
+ accel/hvf/hvf-accel-ops.c | 2 +-
+ target/arm/hvf/hvf.c      | 2 +-
+ target/i386/hvf/hvf.c     | 2 +-
+ 4 files changed, 6 insertions(+), 4 deletions(-)
 
-diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index f0a0e5d1a75..fdf8df09d4b 100644
---- a/target/arm/hvf/hvf.c
-+++ b/target/arm/hvf/hvf.c
-@@ -689,6 +689,7 @@ int hvf_arch_put_registers(CPUState *cpu)
-     return 0;
- }
+diff --git a/include/system/hvf_int.h b/include/system/hvf_int.h
+index a3b06a3e75b..32b32e1d024 100644
+--- a/include/system/hvf_int.h
++++ b/include/system/hvf_int.h
+@@ -73,12 +73,14 @@ int hvf_arch_init(void);
+ hv_return_t hvf_arch_vm_create(MachineState *ms, uint32_t pa_range);
+ int hvf_arch_init_vcpu(CPUState *cpu);
+ void hvf_arch_vcpu_destroy(CPUState *cpu);
+-int hvf_vcpu_exec(CPUState *);
+ hvf_slot *hvf_find_overlap_slot(uint64_t, uint64_t);
+ int hvf_put_registers(CPUState *);
+ int hvf_get_registers(CPUState *);
+ void hvf_kick_vcpu_thread(CPUState *cpu);
  
 +/* Must be called by the owning thread */
- static void flush_cpu_state(CPUState *cpu)
++int hvf_arch_vcpu_exec(CPUState *);
++
+ struct hvf_sw_breakpoint {
+     vaddr pc;
+     vaddr saved_insn;
+diff --git a/accel/hvf/hvf-accel-ops.c b/accel/hvf/hvf-accel-ops.c
+index 8b794c2d418..005e2bd891a 100644
+--- a/accel/hvf/hvf-accel-ops.c
++++ b/accel/hvf/hvf-accel-ops.c
+@@ -194,7 +194,7 @@ static void *hvf_cpu_thread_fn(void *arg)
+     do {
+         qemu_process_cpu_events(cpu);
+         if (cpu_can_run(cpu)) {
+-            r = hvf_vcpu_exec(cpu);
++            r = hvf_arch_vcpu_exec(cpu);
+             if (r == EXCP_DEBUG) {
+                 cpu_handle_guest_debug(cpu);
+             }
+diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+index bbe0b24b821..9111c1d717b 100644
+--- a/target/arm/hvf/hvf.c
++++ b/target/arm/hvf/hvf.c
+@@ -1788,7 +1788,7 @@ static void hvf_sync_vtimer(CPUState *cpu)
+     }
+ }
+ 
+-int hvf_vcpu_exec(CPUState *cpu)
++int hvf_arch_vcpu_exec(CPUState *cpu)
  {
-     if (cpu->vcpu_dirty) {
+     ARMCPU *arm_cpu = ARM_CPU(cpu);
+     CPUARMState *env = &arm_cpu->env;
+diff --git a/target/i386/hvf/hvf.c b/target/i386/hvf/hvf.c
+index 33f723a76a7..b2bf59cb483 100644
+--- a/target/i386/hvf/hvf.c
++++ b/target/i386/hvf/hvf.c
+@@ -721,7 +721,7 @@ void hvf_simulate_wrmsr(CPUState *cs)
+     printf("write msr %llx\n", RCX(cs));*/
+ }
+ 
+-int hvf_vcpu_exec(CPUState *cpu)
++int hvf_arch_vcpu_exec(CPUState *cpu)
+ {
+     X86CPU *x86_cpu = X86_CPU(cpu);
+     CPUX86State *env = &x86_cpu->env;
 -- 
 2.51.0
 

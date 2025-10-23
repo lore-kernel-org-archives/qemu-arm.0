@@ -4,100 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1DB13CCD193
-	for <qemu-arm@archiver.kernel.org>; Thu, 23 Oct 2025 05:00:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9DA18CCD1BC
+	for <qemu-arm@archiver.kernel.org>; Thu, 23 Oct 2025 06:01:44 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vBnQa-0008TP-KX; Thu, 23 Oct 2025 00:59:56 -0400
+	id 1vBoNi-0003ab-2d; Thu, 23 Oct 2025 02:01:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1vBnQQ-0008RJ-V7; Thu, 23 Oct 2025 00:59:47 -0400
+ id 1vBoNg-0003a3-Ou; Thu, 23 Oct 2025 02:01:01 -0400
 Received: from www3579.sakura.ne.jp ([49.212.243.89])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1vBnQN-0004Cx-T1; Thu, 23 Oct 2025 00:59:46 -0400
+ id 1vBoNe-0005cP-R3; Thu, 23 Oct 2025 02:01:00 -0400
 Received: from [133.11.54.205] (h205.csg.ci.i.u-tokyo.ac.jp [133.11.54.205])
  (authenticated bits=0)
- by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 59N4q3NC011817
+ by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 59N606xo047612
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
- Thu, 23 Oct 2025 13:52:03 +0900 (JST)
+ Thu, 23 Oct 2025 15:00:06 +0900 (JST)
  (envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
-DKIM-Signature: a=rsa-sha256; bh=9xxZpM2nB0o+d7uobfPXc5xWQTeCnn5dD9HEOV+8JfY=; 
+DKIM-Signature: a=rsa-sha256; bh=4Kwdg/xUKT/hYZ2MQm9DvjoShZf20mM31V5QOgHQog8=; 
  c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
  h=Message-ID:Date:Subject:To:From;
- s=rs20250326; t=1761195124; v=1;
- b=jF3ibRwZ1YpqgeWufdnW0Y13nquI1Pea9esn0iH0zkCtqnmwPs1Eo+EIEzahu4CA
- WSZw53qbYxw0m3aVhmM+IPEFlo3TK+WItwGjAu0w7UJBltEaTmKC/DBhm09vQrLP
- dQ60t2nVw4sKFpv0ZPMZgjsDXfh3C2YvmsortOrOECMXVacOfWd1lT1uiVuqJNw2
- CSo6ZLtKggBnJn9SwpJYLxiv2CdD41GR2cHL3JnOehfoid2t0C2gwIkAicEOk0Z9
- nLwg0jqOUASUxIa5ejAJzD0x32S4I5/GL0PnYUXui+XlkKiJeSOQBLhxxCFKomD3
- GRrKSSfXhFwFh2hp75ZadQ==
-Message-ID: <f4547020-0df2-40a7-a625-7628ae36db02@rsg.ci.i.u-tokyo.ac.jp>
-Date: Thu, 23 Oct 2025 13:52:02 +0900
+ s=rs20250326; t=1761199207; v=1;
+ b=O7cybVz3Tu2lPK16XuOINxBD604m3nq6gMeQ6TIbdE++uFfnuLYojv9OYKrC8jiA
+ IndKpqZowizNX0CCuCeFNasUx3t+1bH9dVIykQmgGiQlRI9fMzfNnBh6fVPBvXSu
+ OAyfp7KRHg0LObRaRyPGWiRRYtsDBRwSlh3CmyN8fRNmSelPP9n2Mzo/qgaMh1Av
+ hS/Kpc8WbUOqizJgTI9sBdtqr6n2G+FOM8GBl5czwN9lwvYziCC2DuQzyP3BrqGF
+ xQ83wuBcCaaQVEzD4NhF2RgZhhPYeMRDt5GICNoNEXhOUYqSh0TZ/IxMql62puIU
+ wLW/rTZ4x/K/1txJb/zo/A==
+Message-ID: <bac5a6b1-6ccc-4cfb-a5b6-b2f4de2bc4e1@rsg.ci.i.u-tokyo.ac.jp>
+Date: Thu, 23 Oct 2025 15:00:06 +0900
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] char: rename CharBackend->CharFrontend
+Subject: Re: [PATCH 38/43] audio: move audio.h under include/qemu/
 To: marcandre.lureau@redhat.com, qemu-devel@nongnu.org
-Cc: "Gonglei (Arei)" <arei.gonglei@huawei.com>,
- Zhenwei Pi <pizhenwei@bytedance.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Stefano Garzarella <sgarzare@redhat.com>, Laurent Vivier
- <lvivier@redhat.com>, Amit Shah <amit@kernel.org>,
- Stefan Berger <stefanb@linux.vnet.ibm.com>,
- Paolo Bonzini <pbonzini@redhat.com>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
- <alex.bennee@linaro.org>, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>, Peter Maydell <peter.maydell@linaro.org>,
- Igor Mitsyanko <i.mitsyanko@gmail.com>, =?UTF-8?Q?Cl=C3=A9ment_Chigot?=
- <chigot@adacore.com>, Frederic Konrad <konrad.frederic@yahoo.fr>,
- Alberto Garcia <berto@igalia.com>, Thomas Huth <huth@tuxfamily.org>,
- Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- Jason Herne <jjherne@linux.ibm.com>,
- Yoshinori Sato <yoshinori.sato@nifty.com>,
- Magnus Damm <magnus.damm@gmail.com>, Nicholas Piggin <npiggin@gmail.com>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>,
- "Collin L. Walling" <walling@linux.ibm.com>,
- Stefano Stabellini <sstabellini@kernel.org>,
- Anthony PERARD <anthony@xenproject.org>, Paul Durrant <paul@xen.org>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+Cc: BALATON Zoltan <balaton@eik.bme.hu>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, =?UTF-8?Q?Volker_R=C3=BCmelin?=
+ <vr_qemu@t-online.de>, Gerd Hoffmann <kraxel@redhat.com>,
+ Christian Schoenebeck <qemu_oss@crudebyte.com>,
+ Thomas Huth <huth@tuxfamily.org>, Alexandre Ratchov <alex@caoua.org>,
+ Peter Maydell <peter.maydell@linaro.org>, Jan Kiszka <jan.kiszka@web.de>,
  Alistair Francis <alistair@alistair23.me>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Laurent Vivier <laurent@vivier.eu>, Eduardo Habkost <eduardo@habkost.net>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Yanan Wang <wangyanan55@huawei.com>, Zhao Liu <zhao1.liu@intel.com>,
  =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- Eduardo Habkost <eduardo@habkost.net>,
- Richard Henderson <richard.henderson@linaro.org>,
- Helge Deller <deller@gmx.de>, Corey Minyard <minyard@acm.org>,
- Paul Burton <paulburton@kernel.org>, Aleksandar Rikalo <arikalo@gmail.com>,
- Aurelien Jarno <aurelien@aurel32.net>,
- Palmer Dabbelt <palmer@dabbelt.com>, Weiwei Li <liwei1518@gmail.com>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Samuel Thibault <samuel.thibault@ens-lyon.org>,
- Michael Rolnik <mrolnik@gmail.com>,
- Antony Pavlov <antonynpavlov@gmail.com>, Joel Stanley <joel@jms.id.au>,
- Vijai Kumar K <vijai@behindbytes.com>, Samuel Tardieu <sam@rfc1149.net>,
- Gustavo Romero <gustavo.romero@linaro.org>,
- Raphael Norwitz <raphael@enfabrica.net>,
- Stefan Hajnoczi <stefanha@redhat.com>,
- "reviewer:vhost-user-scmi" <mzamazal@redhat.com>,
- Dmitry Osipenko <dmitry.osipenko@collabora.com>,
- Fabiano Rosas <farosas@suse.de>, Markus Armbruster <armbru@redhat.com>,
- "Dr. David Alan Gilbert" <dave@treblig.org>, Zhang Chen
- <zhangckid@gmail.com>, Li Zhijian <lizhijian@fujitsu.com>,
- Jason Wang <jasowang@redhat.com>,
+ =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
  Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
- Max Filippov <jcmvbkbc@gmail.com>, Lukas Straub <lukasstraub2@web.de>,
- "open list:Sharp SL-5500 Co..." <qemu-arm@nongnu.org>,
- "open list:S390 SCLP-backed..." <qemu-s390x@nongnu.org>,
- "open list:sPAPR (pseries)" <qemu-ppc@nongnu.org>,
- "open list:X86 Xen CPUs" <xen-devel@lists.xenproject.org>,
- "open list:RISC-V TCG CPUs" <qemu-riscv@nongnu.org>,
- "open list:virtiofs" <virtio-fs@lists.linux.dev>,
- "open list:Rust-related patc..." <qemu-rust@nongnu.org>
-References: <20251022074612.1258413-1-marcandre.lureau@redhat.com>
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
+ <alex.bennee@linaro.org>, "open list:Integrator CP" <qemu-arm@nongnu.org>,
+ "open list:PReP" <qemu-ppc@nongnu.org>
+References: <20251021090317.425409-1-marcandre.lureau@redhat.com>
+ <20251021090317.425409-39-marcandre.lureau@redhat.com>
 Content-Language: en-US
 From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-In-Reply-To: <20251022074612.1258413-1-marcandre.lureau@redhat.com>
+In-Reply-To: <20251021090317.425409-39-marcandre.lureau@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=49.212.243.89;
@@ -124,11 +89,8 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 2025/10/22 16:46, marcandre.lureau@redhat.com wrote:
+On 2025/10/21 18:03, marcandre.lureau@redhat.com wrote:
 > From: Marc-André Lureau <marcandre.lureau@redhat.com>
-> 
-> The actual backend is "Chardev", CharBackend is the frontend side of
-> it (whatever talks to the backend), let's rename it for readability.
 > 
 > Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 

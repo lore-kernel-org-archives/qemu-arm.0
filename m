@@ -4,27 +4,27 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9221CCCD193
-	for <qemu-arm@archiver.kernel.org>; Thu, 23 Oct 2025 10:03:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0AE3CCD1BC
+	for <qemu-arm@archiver.kernel.org>; Thu, 23 Oct 2025 10:03:58 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vBs9U-0001PY-2n; Thu, 23 Oct 2025 06:02:36 -0400
+	id 1vBs9L-0001LZ-Lo; Thu, 23 Oct 2025 06:02:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1vBs9S-0001PG-JO; Thu, 23 Oct 2025 06:02:34 -0400
+ id 1vBs9G-0001Jg-Jm; Thu, 23 Oct 2025 06:02:23 -0400
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1vBs9Q-00039r-FB; Thu, 23 Oct 2025 06:02:34 -0400
+ id 1vBs9E-00039r-7B; Thu, 23 Oct 2025 06:02:22 -0400
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Thu, 23 Oct
- 2025 18:01:54 +0800
+ 2025 18:01:52 +0800
 Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
- Transport; Thu, 23 Oct 2025 18:01:54 +0800
+ Transport; Thu, 23 Oct 2025 18:01:52 +0800
 To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
  <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
@@ -32,10 +32,10 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  "open list:All patches CC here" <qemu-devel@nongnu.org>
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
  <kane_chen@aspeedtech.com>
-Subject: [PATCH v1 08/13] hw/arm/aspeed: Split YosemiteV2 machine into a
- separate source file for maintainability
-Date: Thu, 23 Oct 2025 18:01:41 +0800
-Message-ID: <20251023100150.295370-9-jamin_lin@aspeedtech.com>
+Subject: [PATCH v1 05/13] hw/arm/aspeed: Split FP5280G2 machine into a
+ separate source file for maintenance
+Date: Thu, 23 Oct 2025 18:01:38 +0800
+Message-ID: <20251023100150.295370-6-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20251023100150.295370-1-jamin_lin@aspeedtech.com>
 References: <20251023100150.295370-1-jamin_lin@aspeedtech.com>
@@ -67,123 +67,133 @@ From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This commit moves the YosemiteV2 BMC machine implementation from
-aspeed.c into a new standalone file aspeed_ast2500_yosemitev2.c.
+This commit moves the FP5280G2 BMC machine implementation from
+aspeed.c into a new standalone file aspeed_ast2500_fp5280g2.c.
 
-To support splitting YosemiteV2 into a dedicated source file,
-a new YOSEMITEV2_BMC_HW_STRAP1 macro is added as a copy of
-AST2500_EVB_HW_STRAP1.
-
-The refactor is part of an ongoing effort to modularize Aspeed
-machine definitions by separating each board into its own source
-file. This improves code readability, maintainability, and simplifies
-future platform-specific changes.
+The change improves code organization and prepares the Aspeed
+machine framework for future expansion and easier maintenance.
 
 Key updates include:
-
-- Moved yosemitev2_bmc_i2c_init() and its FRU data into a new file.
-- Removed aspeed_machine_yosemitev2_class_init() and type registration
-from aspeed.c.
-- Removed YosemiteV2 FRUID data and declarations from
-aspeed_eeprom.c and aspeed_eeprom.h.
-- Added aspeed_ast2500_yosemitev2.c to the build system
-(meson.build).
+- Moved fp5280g2_bmc_i2c_init() and related machine class init
+functions into aspeed_ast2500_fp5280g2.c.
+- Added new file to hw/arm/meson.build for compilation.
+- Removed obsolete FP5280G2 definitions from aspeed.c
 
 No functional changes.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 ---
- hw/arm/aspeed_eeprom.h             |  3 -
- hw/arm/aspeed.c                    | 36 ------------
- hw/arm/aspeed_ast2500_yosemitev2.c | 90 ++++++++++++++++++++++++++++++
- hw/arm/aspeed_eeprom.c             | 22 --------
- hw/arm/meson.build                 |  1 +
- 5 files changed, 91 insertions(+), 61 deletions(-)
- create mode 100644 hw/arm/aspeed_ast2500_yosemitev2.c
+ hw/arm/aspeed.c                  | 65 ------------------------
+ hw/arm/aspeed_ast2500_fp5280g2.c | 87 ++++++++++++++++++++++++++++++++
+ hw/arm/meson.build               |  1 +
+ 3 files changed, 88 insertions(+), 65 deletions(-)
+ create mode 100644 hw/arm/aspeed_ast2500_fp5280g2.c
 
-diff --git a/hw/arm/aspeed_eeprom.h b/hw/arm/aspeed_eeprom.h
-index a9ae95940c..5448eeeab7 100644
---- a/hw/arm/aspeed_eeprom.h
-+++ b/hw/arm/aspeed_eeprom.h
-@@ -14,9 +14,6 @@ extern const size_t fby35_nic_fruid_len;
- extern const size_t fby35_bb_fruid_len;
- extern const size_t fby35_bmc_fruid_len;
- 
--extern const uint8_t yosemitev2_bmc_fruid[];
--extern const size_t yosemitev2_bmc_fruid_len;
--
- extern const uint8_t rainier_bb_fruid[];
- extern const size_t rainier_bb_fruid_len;
- extern const uint8_t rainier_bmc_fruid[];
 diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 4ac998df4e..f890d30d0e 100644
+index 8a22696da9..48c3d73e73 100644
 --- a/hw/arm/aspeed.c
 +++ b/hw/arm/aspeed.c
-@@ -469,20 +469,6 @@ static void ast2600_evb_i2c_init(AspeedMachineState *bmc)
-                      TYPE_TMP105, 0x4d);
+@@ -130,21 +130,6 @@ static struct arm_boot_info aspeed_board_binfo = {
+         SCU_HW_STRAP_VGA_SIZE_SET(VGA_64M_DRAM) |                       \
+         SCU_AST2500_HW_STRAP_RESERVED1)
+ 
+-/* FP5280G2 hardware value: 0XF100D286 */
+-#define FP5280G2_BMC_HW_STRAP1 (                                      \
+-        SCU_AST2500_HW_STRAP_SPI_AUTOFETCH_ENABLE |                     \
+-        SCU_AST2500_HW_STRAP_GPIO_STRAP_ENABLE |                        \
+-        SCU_AST2500_HW_STRAP_UART_DEBUG |                               \
+-        SCU_AST2500_HW_STRAP_RESERVED28 |                               \
+-        SCU_AST2500_HW_STRAP_DDR4_ENABLE |                              \
+-        SCU_HW_STRAP_VGA_CLASS_CODE |                                   \
+-        SCU_HW_STRAP_LPC_RESET_PIN |                                    \
+-        SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_MASTER) |                \
+-        SCU_AST2500_HW_STRAP_SET_AXI_AHB_RATIO(AXI_AHB_RATIO_2_1) |     \
+-        SCU_HW_STRAP_MAC1_RGMII |                                       \
+-        SCU_HW_STRAP_VGA_SIZE_SET(VGA_16M_DRAM) |                       \
+-        SCU_AST2500_HW_STRAP_RESERVED1)
+-
+ /* Witherspoon hardware value: 0xF10AD216 (but use romulus definition) */
+ #define WITHERSPOON_BMC_HW_STRAP1 ROMULUS_BMC_HW_STRAP1
+ 
+@@ -685,33 +670,6 @@ static void g220a_bmc_i2c_init(AspeedMachineState *bmc)
+                           eeprom_buf);
  }
  
--static void yosemitev2_bmc_i2c_init(AspeedMachineState *bmc)
+-static void fp5280g2_bmc_i2c_init(AspeedMachineState *bmc)
 -{
 -    AspeedSoCState *soc = bmc->soc;
+-    I2CSlave *i2c_mux;
 -
--    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 4), 0x51, 128 * KiB);
--    at24c_eeprom_init_rom(aspeed_i2c_get_bus(&soc->i2c, 8), 0x51, 128 * KiB,
--                          yosemitev2_bmc_fruid, yosemitev2_bmc_fruid_len);
--    /* TMP421 */
--    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 11), "tmp421", 0x1f);
--    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 9), "tmp421", 0x4e);
--    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 9), "tmp421", 0x4f);
+-    /* The at24c256 */
+-    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 1), 0x50, 32768);
 -
+-    /* The fp5280g2 expects a TMP112 but a TMP105 is compatible */
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 2), TYPE_TMP105,
+-                     0x48);
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 2), TYPE_TMP105,
+-                     0x49);
+-
+-    i2c_mux = i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 2),
+-                     "pca9546", 0x70);
+-    /* It expects a TMP112 but a TMP105 is compatible */
+-    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 0), TYPE_TMP105,
+-                     0x4a);
+-
+-    /* It expects a ds3232 but a ds1338 is good enough */
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 4), "ds1338", 0x68);
+-
+-    /* It expects a pca9555 but a pca9552 is compatible */
+-    create_pca9552(soc, 8, 0x30);
 -}
 -
- static void romulus_bmc_i2c_init(AspeedMachineState *bmc)
+ static void rainier_bmc_i2c_init(AspeedMachineState *bmc)
  {
      AspeedSoCState *soc = bmc->soc;
-@@ -1375,24 +1361,6 @@ static void aspeed_machine_ast2500_evb_class_init(ObjectClass *oc,
+@@ -1607,25 +1565,6 @@ static void aspeed_machine_g220a_class_init(ObjectClass *oc, const void *data)
      aspeed_machine_class_init_cpus_defaults(mc);
  };
  
--static void aspeed_machine_yosemitev2_class_init(ObjectClass *oc,
--                                                 const void *data)
+-static void aspeed_machine_fp5280g2_class_init(ObjectClass *oc,
+-                                               const void *data)
 -{
 -    MachineClass *mc = MACHINE_CLASS(oc);
 -    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
 -
--    mc->desc       = "Facebook YosemiteV2 BMC (ARM1176)";
+-    mc->desc       = "Inspur FP5280G2 BMC (ARM1176)";
+-    mc->deprecation_reason = "use 'ast2500-evb' instead";
 -    amc->soc_name  = "ast2500-a1";
--    amc->hw_strap1 = AST2500_EVB_HW_STRAP1;
--    amc->hw_strap2 = 0;
--    amc->fmc_model = "n25q256a";
+-    amc->hw_strap1 = FP5280G2_BMC_HW_STRAP1;
+-    amc->fmc_model = "n25q512a";
 -    amc->spi_model = "mx25l25635e";
 -    amc->num_cs    = 2;
--    amc->i2c_init  = yosemitev2_bmc_i2c_init;
--    mc->default_ram_size       = 512 * MiB;
+-    amc->macs_mask  = ASPEED_MAC0_ON | ASPEED_MAC1_ON;
+-    amc->i2c_init  = fp5280g2_bmc_i2c_init;
+-    mc->default_ram_size = 512 * MiB;
 -    aspeed_machine_class_init_cpus_defaults(mc);
 -};
 -
- static void aspeed_machine_romulus_class_init(ObjectClass *oc,
-                                               const void *data)
+ static void aspeed_machine_rainier_class_init(ObjectClass *oc, const void *data)
  {
-@@ -1822,10 +1790,6 @@ static const TypeInfo aspeed_machine_types[] = {
-         .name          = MACHINE_TYPE_NAME("ast2600-evb"),
+     MachineClass *mc = MACHINE_CLASS(oc);
+@@ -2001,10 +1940,6 @@ static const TypeInfo aspeed_machine_types[] = {
+         .name          = MACHINE_TYPE_NAME("qcom-firework-bmc"),
          .parent        = TYPE_ASPEED_MACHINE,
-         .class_init    = aspeed_machine_ast2600_evb_class_init,
+         .class_init    = aspeed_machine_qcom_firework_class_init,
 -    }, {
--        .name          = MACHINE_TYPE_NAME("yosemitev2-bmc"),
+-        .name          = MACHINE_TYPE_NAME("fp5280g2-bmc"),
 -        .parent        = TYPE_ASPEED_MACHINE,
--        .class_init    = aspeed_machine_yosemitev2_class_init,
+-        .class_init    = aspeed_machine_fp5280g2_class_init,
      }, {
-         .name          = MACHINE_TYPE_NAME("qcom-dc-scm-v1-bmc"),
+         .name          = MACHINE_TYPE_NAME("quanta-q71l-bmc"),
          .parent        = TYPE_ASPEED_MACHINE,
-diff --git a/hw/arm/aspeed_ast2500_yosemitev2.c b/hw/arm/aspeed_ast2500_yosemitev2.c
+diff --git a/hw/arm/aspeed_ast2500_fp5280g2.c b/hw/arm/aspeed_ast2500_fp5280g2.c
 new file mode 100644
-index 0000000000..4ec9beb2b7
+index 0000000000..a312c29c5d
 --- /dev/null
-+++ b/hw/arm/aspeed_ast2500_yosemitev2.c
-@@ -0,0 +1,90 @@
++++ b/hw/arm/aspeed_ast2500_fp5280g2.c
+@@ -0,0 +1,87 @@
 +/*
-+ * Facebook YosemiteV2
++ * Inspur FP5280G2
 + *
 + * Copyright (C) 2025 ASPEED Technology Inc.
 + *
@@ -195,132 +205,89 @@ index 0000000000..4ec9beb2b7
 +#include "hw/arm/aspeed.h"
 +#include "hw/arm/aspeed_soc.h"
 +#include "hw/nvram/eeprom_at24c.h"
++#include "hw/i2c/i2c_mux_pca954x.h"
++#include "hw/sensor/tmp105.h"
 +
-+/* value: 0xF100C2E6 */
-+#define YOSEMITEV2_BMC_HW_STRAP1 ((                                        \
-+        AST2500_HW_STRAP1_DEFAULTS |                                    \
++/* FP5280G2 hardware value: 0XF100D286 */
++#define FP5280G2_BMC_HW_STRAP1 (                                      \
 +        SCU_AST2500_HW_STRAP_SPI_AUTOFETCH_ENABLE |                     \
 +        SCU_AST2500_HW_STRAP_GPIO_STRAP_ENABLE |                        \
 +        SCU_AST2500_HW_STRAP_UART_DEBUG |                               \
++        SCU_AST2500_HW_STRAP_RESERVED28 |                               \
 +        SCU_AST2500_HW_STRAP_DDR4_ENABLE |                              \
++        SCU_HW_STRAP_VGA_CLASS_CODE |                                   \
++        SCU_HW_STRAP_LPC_RESET_PIN |                                    \
++        SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_MASTER) |                \
++        SCU_AST2500_HW_STRAP_SET_AXI_AHB_RATIO(AXI_AHB_RATIO_2_1) |     \
 +        SCU_HW_STRAP_MAC1_RGMII |                                       \
-+        SCU_HW_STRAP_MAC0_RGMII) &                                      \
-+        ~SCU_HW_STRAP_2ND_BOOT_WDT)
++        SCU_HW_STRAP_VGA_SIZE_SET(VGA_16M_DRAM) |                       \
++        SCU_AST2500_HW_STRAP_RESERVED1)
 +
-+/* Yosemite V2 BMC FRU */
-+static const uint8_t yosemitev2_bmc_fruid[] = {
-+    0x01, 0x00, 0x00, 0x01, 0x0d, 0x00, 0x00, 0xf1, 0x01, 0x0c, 0x00, 0x36,
-+    0xe6, 0xd0, 0xc6, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd2, 0x42, 0x61,
-+    0x73, 0x65, 0x62, 0x6f, 0x61, 0x72, 0x64, 0x20, 0x4d, 0x50, 0x00, 0x00,
-+    0x00, 0x00, 0x00, 0x00, 0xcd, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
-+    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xce, 0x58, 0x58, 0x58, 0x58, 0x58,
-+    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc3, 0x31, 0x2e,
-+    0x30, 0xc9, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd2,
-+    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
-+    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc1, 0x39, 0x01, 0x0c, 0x00, 0xc6,
-+    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd2, 0x59, 0x6f, 0x73, 0x65, 0x6d,
-+    0x69, 0x74, 0x65, 0x20, 0x56, 0x32, 0x20, 0x4d, 0x50, 0x00, 0x00, 0x00,
-+    0x00, 0xce, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
-+    0x58, 0x58, 0x58, 0x58, 0xc4, 0x45, 0x56, 0x54, 0x32, 0xcd, 0x58, 0x58,
-+    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc7,
-+    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc3, 0x31, 0x2e, 0x30, 0xc9,
-+    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc8, 0x43, 0x6f,
-+    0x6e, 0x66, 0x69, 0x67, 0x20, 0x41, 0xc1, 0x45,
-+};
-+
-+static const size_t yosemitev2_bmc_fruid_len = sizeof(yosemitev2_bmc_fruid);
-+
-+static void yosemitev2_bmc_i2c_init(AspeedMachineState *bmc)
++static void fp5280g2_bmc_i2c_init(AspeedMachineState *bmc)
 +{
 +    AspeedSoCState *soc = bmc->soc;
++    I2CSlave *i2c_mux;
 +
-+    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 4), 0x51, 128 * KiB);
-+    at24c_eeprom_init_rom(aspeed_i2c_get_bus(&soc->i2c, 8), 0x51, 128 * KiB,
-+                          yosemitev2_bmc_fruid, yosemitev2_bmc_fruid_len);
-+    /* TMP421 */
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 11), "tmp421", 0x1f);
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 9), "tmp421", 0x4e);
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 9), "tmp421", 0x4f);
++    /* The at24c256 */
++    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 1), 0x50, 32768);
 +
++    /* The fp5280g2 expects a TMP112 but a TMP105 is compatible */
++    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 2), TYPE_TMP105,
++                     0x48);
++    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 2), TYPE_TMP105,
++                     0x49);
++
++    i2c_mux = i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 2),
++                     "pca9546", 0x70);
++    /* It expects a TMP112 but a TMP105 is compatible */
++    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 0), TYPE_TMP105,
++                     0x4a);
++
++    /* It expects a ds3232 but a ds1338 is good enough */
++    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 4), "ds1338", 0x68);
++
++    /* It expects a pca9555 but a pca9552 is compatible */
++    create_pca9552(soc, 8, 0x30);
 +}
 +
-+static void aspeed_machine_yosemitev2_class_init(ObjectClass *oc,
-+                                                 const void *data)
++static void aspeed_machine_fp5280g2_class_init(ObjectClass *oc,
++                                               const void *data)
 +{
 +    MachineClass *mc = MACHINE_CLASS(oc);
 +    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
 +
-+    mc->desc       = "Facebook YosemiteV2 BMC (ARM1176)";
++    mc->desc       = "Inspur FP5280G2 BMC (ARM1176)";
++    mc->deprecation_reason = "use 'ast2500-evb' instead";
 +    amc->soc_name  = "ast2500-a1";
-+    amc->hw_strap1 = YOSEMITEV2_BMC_HW_STRAP1;
-+    amc->hw_strap2 = 0;
-+    amc->fmc_model = "n25q256a";
++    amc->hw_strap1 = FP5280G2_BMC_HW_STRAP1;
++    amc->fmc_model = "n25q512a";
 +    amc->spi_model = "mx25l25635e";
 +    amc->num_cs    = 2;
-+    amc->i2c_init  = yosemitev2_bmc_i2c_init;
-+    mc->default_ram_size       = 512 * MiB;
++    amc->macs_mask  = ASPEED_MAC0_ON | ASPEED_MAC1_ON;
++    amc->i2c_init  = fp5280g2_bmc_i2c_init;
++    mc->default_ram_size = 512 * MiB;
 +    aspeed_machine_class_init_cpus_defaults(mc);
 +};
 +
-+static const TypeInfo aspeed_ast2500_yosemitev2_types[] = {
++static const TypeInfo aspeed_ast2500_fp5280g2_types[] = {
 +    {
-+        .name          = MACHINE_TYPE_NAME("yosemitev2-bmc"),
++        .name          = MACHINE_TYPE_NAME("fp5280g2-bmc"),
 +        .parent        = TYPE_ASPEED_MACHINE,
-+        .class_init    = aspeed_machine_yosemitev2_class_init,
++        .class_init    = aspeed_machine_fp5280g2_class_init,
 +    }
 +};
 +
-+DEFINE_TYPES(aspeed_ast2500_yosemitev2_types)
++DEFINE_TYPES(aspeed_ast2500_fp5280g2_types)
 +
-diff --git a/hw/arm/aspeed_eeprom.c b/hw/arm/aspeed_eeprom.c
-index f0ced29cf1..124277eaca 100644
---- a/hw/arm/aspeed_eeprom.c
-+++ b/hw/arm/aspeed_eeprom.c
-@@ -78,27 +78,6 @@ const uint8_t fby35_bmc_fruid[] = {
-     0x6e, 0x66, 0x69, 0x67, 0x20, 0x41, 0xc1, 0x45,
- };
- 
--/* Yosemite V2 BMC FRU */
--const uint8_t yosemitev2_bmc_fruid[] = {
--    0x01, 0x00, 0x00, 0x01, 0x0d, 0x00, 0x00, 0xf1, 0x01, 0x0c, 0x00, 0x36,
--    0xe6, 0xd0, 0xc6, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd2, 0x42, 0x61,
--    0x73, 0x65, 0x62, 0x6f, 0x61, 0x72, 0x64, 0x20, 0x4d, 0x50, 0x00, 0x00,
--    0x00, 0x00, 0x00, 0x00, 0xcd, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
--    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xce, 0x58, 0x58, 0x58, 0x58, 0x58,
--    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc3, 0x31, 0x2e,
--    0x30, 0xc9, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd2,
--    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
--    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc1, 0x39, 0x01, 0x0c, 0x00, 0xc6,
--    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd2, 0x59, 0x6f, 0x73, 0x65, 0x6d,
--    0x69, 0x74, 0x65, 0x20, 0x56, 0x32, 0x20, 0x4d, 0x50, 0x00, 0x00, 0x00,
--    0x00, 0xce, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
--    0x58, 0x58, 0x58, 0x58, 0xc4, 0x45, 0x56, 0x54, 0x32, 0xcd, 0x58, 0x58,
--    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc7,
--    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc3, 0x31, 0x2e, 0x30, 0xc9,
--    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc8, 0x43, 0x6f,
--    0x6e, 0x66, 0x69, 0x67, 0x20, 0x41, 0xc1, 0x45,
--};
--
- const uint8_t rainier_bb_fruid[] = {
-     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x84,
-     0x28, 0x00, 0x52, 0x54, 0x04, 0x56, 0x48, 0x44, 0x52, 0x56, 0x44, 0x02,
-@@ -163,7 +142,6 @@ const uint8_t gb200nvl_bmc_fruid[] = {
- const size_t fby35_nic_fruid_len = sizeof(fby35_nic_fruid);
- const size_t fby35_bb_fruid_len = sizeof(fby35_bb_fruid);
- const size_t fby35_bmc_fruid_len = sizeof(fby35_bmc_fruid);
--const size_t yosemitev2_bmc_fruid_len = sizeof(yosemitev2_bmc_fruid);
- const size_t rainier_bb_fruid_len = sizeof(rainier_bb_fruid);
- const size_t rainier_bmc_fruid_len = sizeof(rainier_bmc_fruid);
- const size_t gb200nvl_bmc_fruid_len = sizeof(gb200nvl_bmc_fruid);
 diff --git a/hw/arm/meson.build b/hw/arm/meson.build
-index 849534f6ad..d07ebc9dd7 100644
+index b88b5b06d7..55513db65b 100644
 --- a/hw/arm/meson.build
 +++ b/hw/arm/meson.build
-@@ -47,6 +47,7 @@ arm_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
-   'aspeed_ast2500_fp5280g2.c',
-   'aspeed_ast2500_g220a.c',
-   'aspeed_ast2500_tiogapass.c',
-+  'aspeed_ast2500_yosemitev2.c',
+@@ -44,6 +44,7 @@ arm_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
+   'aspeed.c',
+   'aspeed_soc_common.c',
+   'aspeed_ast2400.c',
++  'aspeed_ast2500_fp5280g2.c',
    'aspeed_ast2600.c',
    'aspeed_ast10x0.c',
    'aspeed_eeprom.c',

@@ -4,64 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27E23CCD1BE
-	for <qemu-arm@archiver.kernel.org>; Thu, 23 Oct 2025 01:30:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 871A2CCD1BC
+	for <qemu-arm@archiver.kernel.org>; Thu, 23 Oct 2025 01:59:01 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vBk9J-0005kB-OX; Wed, 22 Oct 2025 21:29:53 -0400
+	id 1vBkbH-0000Q2-4r; Wed, 22 Oct 2025 21:58:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <salil.mehta@opnsrc.net>)
- id 1vBk9H-0005jN-Jd
- for qemu-arm@nongnu.org; Wed, 22 Oct 2025 21:29:51 -0400
-Received: from mail-oa1-x31.google.com ([2001:4860:4864:20::31])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <salil.mehta@opnsrc.net>)
- id 1vBk9E-0006Fr-Dr
- for qemu-arm@nongnu.org; Wed, 22 Oct 2025 21:29:51 -0400
-Received: by mail-oa1-x31.google.com with SMTP id
- 586e51a60fabf-3c99a6a2afeso169476fac.1
- for <qemu-arm@nongnu.org>; Wed, 22 Oct 2025 18:29:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=opnsrc.net; s=google; t=1761182986; x=1761787786; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=JbS7DWNkjaRtOeQKkVUNfO5+R/utuynE2kVQqawniPw=;
- b=WbE6TrZSc3h8RoIHpm/tApuyzPqulC60sckJt136M3B4oGCgodpSRe3fEbeI3tfDKk
- Iq6R1yoK2gRv/isYOV8dfrSsIN3HRDLi8WBAtn8DAW0QABe7xld9VCEyi5gNptOGYp7G
- UnksPBwrF+OgII7JjOjXvPSL7BaCY1tQQmkcLyucf34qxjtve0d+ROtMcyyyg1rmK9xD
- ILbVA2jPS5pZyvo1A+oUYuhxUjcXEwiADBtqHrq53GzysGVu0Jk+wypuUgKsexAr6m44
- r3B40q/T5YQn5NNKSLX3knBSRtsWHObk2qbDIsimrZrkULnMR1ovr3WsSWoAs5guO2zS
- kiyA==
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1vBkbF-0000Pm-H8
+ for qemu-arm@nongnu.org; Wed, 22 Oct 2025 21:58:45 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1vBkbC-0000hM-JT
+ for qemu-arm@nongnu.org; Wed, 22 Oct 2025 21:58:45 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1761184719;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=rLIRAtTk5wrvbZRpK/LftAlTIbj9T9Qc4n5r36kVcmc=;
+ b=KI1W8tCaZ8I5sml4wsZQA71DW5tmSQIRbzfi7vy7KBeVWw59N0xQfuOi/DmJFekexQow+M
+ Rxay0YBqyH8vFcOvmq05Y/tTbzRElZYrww03QMx3onYJh+O/U6WDb0hcojtDah1Y4MnXqb
+ 1y9En6iYBU/79bGMH+8mr3ltK99w8yM=
+Received: from mail-pg1-f198.google.com (mail-pg1-f198.google.com
+ [209.85.215.198]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-480-w4PjDTchNWKzuXl69zgYgQ-1; Wed, 22 Oct 2025 21:58:37 -0400
+X-MC-Unique: w4PjDTchNWKzuXl69zgYgQ-1
+X-Mimecast-MFC-AGG-ID: w4PjDTchNWKzuXl69zgYgQ_1761184717
+Received: by mail-pg1-f198.google.com with SMTP id
+ 41be03b00d2f7-b557abaad02so388054a12.3
+ for <qemu-arm@nongnu.org>; Wed, 22 Oct 2025 18:58:37 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761182986; x=1761787786;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=JbS7DWNkjaRtOeQKkVUNfO5+R/utuynE2kVQqawniPw=;
- b=ge5bEnF88AQYMgHuQD/vEJumWB9srA2hZqkbAOUKyk+LcnAMGzsw8I55Bs4mHL4oXL
- B4DX4R5a/Ud80F/IjZ2myZHSJtPkZmlKDBqNnJW5ZfMJ14n9QaqYHcrMHzIwNUoCQQiF
- c4dNz9PeZiG4QLB0tL/JsvQt2KJYumVhidl1wuqZsky6na8G1rNHkXYWgED1Fzc2KKrr
- KdquKf5b460RLUri2I1BXAg+r+FnVK672DYbEg7H1bKr36W2kLqBvh63hgFQ0rNE0Czf
- S8eH7ew0qUrYoU0ScSEuSU2Ot8vdt/0fM5gYqh1pGf6M3HP+NoBZF1NZqXy/5ylNojfc
- b//Q==
+ d=1e100.net; s=20230601; t=1761184717; x=1761789517;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=rLIRAtTk5wrvbZRpK/LftAlTIbj9T9Qc4n5r36kVcmc=;
+ b=LvuPyJv6gEpDBgXdPekdXYS9fkQMRBPiD1NKSJ6JKdesBLOb8qiAXK6dwhYdz5xhCa
+ pZJDUpR/Ia5YCyrtsm38PsTweMWZ47xogqf9AWE1P/Rq9+sBpzXEM3E02+PgmTsqt+sG
+ Q9h0Vrodaer4TgZQCutcp+GTdOtXbWgwdI3JLShpXakVPFq3ratdYjgAe6sop25qIZsx
+ 72QfxzQtuD5Wc7kqPLrr4QGKyD4osfR0K/qQov27dak6yi62mKs2KZEkVuCYoKDjkhjI
+ BDlzw0CvIY6ztsPJVM632VNENAJu4CLYw2nD7amoEi8kFE9+T+nzqI3RpW0MtCyQqy/I
+ 6nwQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUpbckn4PvrOVN9fO8Bvfz5veCpu/f6zejS6qssZgXQU5R8DctHpME728u1njd297IAOOTKTIXqBw==@nongnu.org
-X-Gm-Message-State: AOJu0YyO5VF6SRJGNTkCjYin5J/00gd3fcQ+sgaSBzKp13cwMktozSFY
- wOGM7QFfBWgGg0l0EAOsLBiJ+3RgG3CNso6M8DTIMOablM1Mg4OuqGarNPXVEyyONLUuSayMQDr
- A084laYop+yGgs0Xu3JV+7v2CQ9HE/AKhC1vt2ixh9A==
-X-Gm-Gg: ASbGncuUlRo5q+0cTU5J/qAWCfgxdwV6uBlB/55ZrKGnnoBKsQ2Cwq0Rpyi5oLGqMZk
- 9p1z8YS3pYqFOqPM5Qd6vN78hL5OLA4syCEmRQBQ0jmSNpkqIp50Ql3owZBU5d+VJR1FDetlIgh
- 6Paa2yJI9lp6uCQa5Psl1wqxyGZtXJdxlHAFGlhhBwWPVHrVTtuUyG+IuBiLNsl1ETAdvjQKT3y
- uOTkNYBcItmlIeCn1NH9e0brv1U7tXZDYjVwRl/75tPqyoqvGWBrqltXd4gkyEEhWjmlIpSM3YZ
- 9cWrkkGxa3mVH6359C7ZKvvNIOypW5WUoYzFwpohPf5bDEsI5LPs
-X-Google-Smtp-Source: AGHT+IHeYXbAg1Pyk2ClfL4MF1j+v6VNnuO1jm28/TBzGf9WG+ZB0B0y8la+9xAJusW6W3hMdvO6GjKjcjhc1yaqNyw=
-X-Received: by 2002:a05:6870:9721:b0:35b:a4be:c076 with SMTP id
- 586e51a60fabf-3c98cf268e9mr8700985fac.3.1761182986142; Wed, 22 Oct 2025
- 18:29:46 -0700 (PDT)
+ AJvYcCVbcubJJJVSD9Vx52bOCaL9IzGXgjc6IhPupykQwEoUJRe5HyHguZWKNMtySYkgxIR99bmbrd+dHw==@nongnu.org
+X-Gm-Message-State: AOJu0YyDxvfk4u+WpYCR64SoWqu36Rg5IRILK9DgA2kGu8tJDVljXSfW
+ LZ/1Nk2Gck+os8DjCmEhBNx10X+HzAKoM5wWNWXGm75F//+A61G2np4XX+sejdv2JVnm7IhO5Ep
+ vxm2iF/Mh7OW6YwN4MNtbFFkI6Z5X1gPik7GptxZlsybEX7qd0pC1uA==
+X-Gm-Gg: ASbGncvvi6Ycu4FpXSlorpbV+al5LaN7UhLPP9u0SQ6rruUFZ69aKNZEt7EPJ00d4kO
+ x0tRoLRaMeh087evX2efCP5XraRL3IqHVSD+HD52naMveesAzWA3vJWQyqxH8sVr/iov6IjEFyQ
+ oHk7W283xvJwRrQYBtkDcDmRXr1IvxXORz++rdkheTUPCjw3TkwqMDgnAYPiaZD8vKM5v8clTCs
+ 612ch/+usy0BAEfvyI/tscJLmszc2Bi1sMYrH3knzXQ0uivUXl35+C21/vNE5I4nXoambd+ysro
+ vcMu9mNW6jcPwZ3o8UFYj82QkiOG7ABu3m9cZBWuxrJ1mhv08T+i9B4Swrvbc9wSlB77BDW6ldX
+ P+vjSWebkNlaQkvLe3syIcCFswSFxZ3lOwFQ7Mg4=
+X-Received: by 2002:a05:6a20:3d81:b0:32b:83af:9b5 with SMTP id
+ adf61e73a8af0-334a861740cmr32187828637.33.1761184716814; 
+ Wed, 22 Oct 2025 18:58:36 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHkfr/rEg0MK3RyApv9Sehg292xcxqyonjPqUBvzKrxOBv+Z9dc1jOVcqUt1qfoMxrfrFDz0w==
+X-Received: by 2002:a05:6a20:3d81:b0:32b:83af:9b5 with SMTP id
+ adf61e73a8af0-334a861740cmr32187791637.33.1761184716378; 
+ Wed, 22 Oct 2025 18:58:36 -0700 (PDT)
+Received: from [192.168.68.51] (n175-34-62-5.mrk21.qld.optusnet.com.au.
+ [175.34.62.5]) by smtp.gmail.com with ESMTPSA id
+ d2e1a72fcca58-7a274a64c5esm683255b3a.10.2025.10.22.18.58.21
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 22 Oct 2025 18:58:35 -0700 (PDT)
+Message-ID: <fa5d5a65-616f-405a-a5e5-f8b70ff32193@redhat.com>
+Date: Thu, 23 Oct 2025 11:58:19 +1000
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH RFC V6 05/24] arm/virt,kvm: Pre-create KVM vCPUs for
+ 'disabled' QOM vCPUs at machine init
+To: Salil Mehta <salil.mehta@opnsrc.net>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, mst@redhat.com,
+ salil.mehta@huawei.com, maz@kernel.org, jean-philippe@linaro.org,
+ jonathan.cameron@huawei.com, lpieralisi@kernel.org,
+ peter.maydell@linaro.org, richard.henderson@linaro.org, imammedo@redhat.com,
+ armbru@redhat.com, andrew.jones@linux.dev, david@redhat.com,
+ philmd@linaro.org, eric.auger@redhat.com, will@kernel.org, ardb@kernel.org,
+ oliver.upton@linux.dev, pbonzini@redhat.com, rafael@kernel.org,
+ borntraeger@linux.ibm.com, alex.bennee@linaro.org,
+ gustavo.romero@linaro.org, npiggin@gmail.com, harshpb@linux.ibm.com,
+ linux@armlinux.org.uk, darren@os.amperecomputing.com,
+ ilkka@os.amperecomputing.com, vishnu@os.amperecomputing.com,
+ gankulkarni@os.amperecomputing.com, karl.heubaum@oracle.com,
+ miguel.luis@oracle.com, zhukeqian1@huawei.com, wangxiongfeng2@huawei.com,
+ wangyanan55@huawei.com, wangzhou1@hisilicon.com, linuxarm@huawei.com,
+ jiakernel2@gmail.com, maobibo@loongson.cn, lixianglai@loongson.cn,
+ shahuang@redhat.com, zhao1.liu@intel.com, Keqian Zhu <zhuqian1@huawei.com>
 References: <20251001010127.3092631-1-salil.mehta@opnsrc.net>
  <20251001010127.3092631-6-salil.mehta@opnsrc.net>
  <a03ed205-b61a-4bba-9f25-83663b7d8a86@redhat.com>
@@ -69,41 +102,24 @@ References: <20251001010127.3092631-1-salil.mehta@opnsrc.net>
  <CAJ7pxeaUfUeXwtTVheCTxej-aCTCx0n8-XyAKaFneVUjcWL_7w@mail.gmail.com>
  <beab3dd4-0c19-441c-a9f5-ecae9e791753@redhat.com>
  <CAJ7pxeYEpJGhtL1-3qFEJYTzL-s19fF-it6p5dkq=fg384wBpg@mail.gmail.com>
+From: Gavin Shan <gshan@redhat.com>
 In-Reply-To: <CAJ7pxeYEpJGhtL1-3qFEJYTzL-s19fF-it6p5dkq=fg384wBpg@mail.gmail.com>
-From: Salil Mehta <salil.mehta@opnsrc.net>
-Date: Thu, 23 Oct 2025 01:29:34 +0000
-X-Gm-Features: AS18NWBADk8WQJlHCPqrcb4QzMADot2olENlMPQhcYHKg40G3U5l1s8fxtQJYuM
-Message-ID: <CAJ7pxeZG1w++2DNVD5L5N3sEPRLYPFSFECLqFgh3BYgKpfJtog@mail.gmail.com>
-Subject: Re: [PATCH RFC V6 05/24] arm/virt,kvm: Pre-create KVM vCPUs for
- 'disabled' QOM vCPUs at machine init
-To: Gavin Shan <gshan@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, mst@redhat.com, 
- salil.mehta@huawei.com, maz@kernel.org, jean-philippe@linaro.org, 
- jonathan.cameron@huawei.com, lpieralisi@kernel.org, peter.maydell@linaro.org, 
- richard.henderson@linaro.org, imammedo@redhat.com, armbru@redhat.com, 
- andrew.jones@linux.dev, david@redhat.com, philmd@linaro.org, 
- eric.auger@redhat.com, will@kernel.org, ardb@kernel.org, 
- oliver.upton@linux.dev, pbonzini@redhat.com, rafael@kernel.org, 
- borntraeger@linux.ibm.com, alex.bennee@linaro.org, gustavo.romero@linaro.org, 
- npiggin@gmail.com, harshpb@linux.ibm.com, linux@armlinux.org.uk, 
- darren@os.amperecomputing.com, ilkka@os.amperecomputing.com, 
- vishnu@os.amperecomputing.com, gankulkarni@os.amperecomputing.com, 
- karl.heubaum@oracle.com, miguel.luis@oracle.com, zhukeqian1@huawei.com, 
- wangxiongfeng2@huawei.com, wangyanan55@huawei.com, wangzhou1@hisilicon.com, 
- linuxarm@huawei.com, jiakernel2@gmail.com, maobibo@loongson.cn, 
- lixianglai@loongson.cn, shahuang@redhat.com, zhao1.liu@intel.com, 
- Keqian Zhu <zhuqian1@huawei.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2001:4860:4864:20::31;
- envelope-from=salil.mehta@opnsrc.net; helo=mail-oa1-x31.google.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: lTmRUuZTyR-8KCZf17yBpZlUs5Ebn7C8_a_yY-8SRV4_1761184717
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=gshan@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,339 +135,211 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Gavin,
+Hi Salil,
 
-On Thu, Oct 23, 2025 at 12:35=E2=80=AFAM Salil Mehta <salil.mehta@opnsrc.ne=
-t> wrote:
->
-> HI Gavin,
->
-> On Thu, Oct 23, 2025 at 12:14=E2=80=AFAM Gavin Shan <gshan@redhat.com> wr=
-ote:
-> >
-> > Hi Salil,
-> >
-> > On 10/23/25 4:50 AM, Salil Mehta wrote:
-> > > On Wed, Oct 22, 2025 at 6:18=E2=80=AFPM Salil Mehta <salil.mehta@opns=
-rc.net> wrote:
-> > >> On Wed, Oct 22, 2025 at 10:37=E2=80=AFAM Gavin Shan <gshan@redhat.co=
-m> wrote:
-> > >>>
-> > >>> Hi Salil,
-> > >>>
-> > >>> On 10/1/25 11:01 AM, salil.mehta@opnsrc.net wrote:
-> > >>>> From: Salil Mehta <salil.mehta@huawei.com>
-> > >>>>
-> > >>>> ARM CPU architecture does not allow CPUs to be plugged after syste=
-m has
-> > >>>> initialized. This is a constraint. Hence, the Kernel must know all=
- the CPUs
-> > >>>> being booted during its initialization. This applies to the Guest =
-Kernel as
-> > >>>> well and therefore, the number of KVM vCPU descriptors in the host=
- must be
-> > >>>> fixed at VM initialization time.
-> > >>>>
-> > >>>> Also, the GIC must know all the CPUs it is connected to during its
-> > >>>> initialization, and this cannot change afterward. This must also b=
-e ensured
-> > >>>> during the initialization of the VGIC in KVM. This is necessary be=
-cause:
-> > >>>>
-> > >>>> 1. The association between GICR and MPIDR must be fixed at VM init=
-ialization
-> > >>>>      time. This is represented by the register
-> > >>>>      `GICR_TYPER(mp_affinity, proc_num)`.
-> > >>>> 2. Memory regions associated with GICR, etc., cannot be changed (a=
-dded,
-> > >>>>      deleted, or modified) after the VM has been initialized. This=
- is not an
-> > >>>>      ARM architectural constraint but rather invites a difficult a=
-nd messy
-> > >>>>      change in VGIC data structures.
-> > >>>>
-> > >>>> To enable a hot-add=E2=80=93like model while preserving these cons=
-traints, the virt
-> > >>>> machine may enumerate more CPUs than are enabled at boot using
-> > >>>> `-smp disabledcpus=3DN`. Such CPUs are present but start offline (=
-i.e.,
-> > >>>> administratively disabled at init). The topology remains fixed at =
-VM
-> > >>>> creation time; only the online/offline status may change later.
-> > >>>>
-> > >>>> Administratively disabled vCPUs are not realized in QOM until firs=
-t enabled,
-> > >>>> avoiding creation of unnecessary vCPU threads at boot. On large sy=
-stems, this
-> > >>>> reduces startup time proportionally to the number of disabled vCPU=
-s. Once a
-> > >>>> QOM vCPU is realized and its thread created, subsequent enable/dis=
-able actions
-> > >>>> do not unrealize it. This behaviour was adopted following review f=
-eedback and
-> > >>>> differs from earlier RFC versions.
-> > >>>>
-> > >>>> Co-developed-by: Keqian Zhu <zhuqian1@huawei.com>
-> > >>>> Signed-off-by: Keqian Zhu <zhuqian1@huawei.com>
-> > >>>> Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
-> > >>>> ---
-> > >>>>    accel/kvm/kvm-all.c    |  2 +-
-> > >>>>    hw/arm/virt.c          | 77 +++++++++++++++++++++++++++++++++++=
-+++----
-> > >>>>    hw/core/qdev.c         | 17 ++++++++++
-> > >>>>    include/hw/qdev-core.h | 19 +++++++++++
-> > >>>>    include/system/kvm.h   |  8 +++++
-> > >>>>    target/arm/cpu.c       |  2 ++
-> > >>>>    target/arm/kvm.c       | 40 +++++++++++++++++++++-
-> > >>>>    target/arm/kvm_arm.h   | 11 ++++++
-> > >>>>    8 files changed, 168 insertions(+), 8 deletions(-)
-> > >>>>
-> > >
-> > > [...]
-> > >
-> > >>>> +void kvm_arm_create_host_vcpu(ARMCPU *cpu)
-> > >>>> +{
-> > >>>> +    CPUState *cs =3D CPU(cpu);
-> > >>>> +    unsigned long vcpu_id =3D cs->cpu_index;
-> > >>>> +    int ret;
-> > >>>> +
-> > >>>> +    ret =3D kvm_create_vcpu(cs);
-> > >>>> +    if (ret < 0) {
-> > >>>> +        error_report("Failed to create host vcpu %ld", vcpu_id);
-> > >>>> +        abort();
-> > >>>> +    }
-> > >>>> +
-> > >>>> +    /*
-> > >>>> +     * Initialize the vCPU in the host. This will reset the sys r=
-egs
-> > >>>> +     * for this vCPU and related registers like MPIDR_EL1 etc. al=
-so
-> > >>>> +     * get programmed during this call to host. These are referen=
-ced
-> > >>>> +     * later while setting device attributes of the GICR during G=
-ICv3
-> > >>>> +     * reset.
-> > >>>> +     */
-> > >>>> +    ret =3D kvm_arch_init_vcpu(cs);
-> > >>>> +    if (ret < 0) {
-> > >>>> +        error_report("Failed to initialize host vcpu %ld", vcpu_i=
-d);
-> > >>>> +        abort();
-> > >>>> +    }
-> > >>>> +
-> > >>>> +    /*
-> > >>>> +     * park the created vCPU. shall be used during kvm_get_vcpu()=
- when
-> > >>>> +     * threads are created during realization of ARM vCPUs.
-> > >>>> +     */
-> > >>>> +    kvm_park_vcpu(cs);
-> > >>>> +}
-> > >>>> +
-> > >>>
-> > >>> I don't think we're able to simply call kvm_arch_init_vcpu() in the=
- lazily realized
-> > >>> path. Otherwise, it can trigger a crash dump on my Nvidia's grace-h=
-opper machine where
-> > >>> SVE is supported by default.
-> > >>
-> > >> Thanks for reporting this. That is not true. As long as we initializ=
-e
-> > >> KVM correctly and
-> > >> finalize the features like SVE we should be fine. In fact, this is
-> > >> precisely what we are
-> > >> doing right now.
-> > >>
-> > >> To understand the crash, I need a bit more info.
-> > >>
-> > >> 1#  is happening because KVM_ARM_VCPU_INIT is failing. If yes, the c=
-an you check
-> > >>        within the KVM if it is happening because
-> > >>       a.  features specified by QEMU are not matching the defaults w=
-ithin the KVM
-> > >>             (HInt: check kvm_vcpu_init_check_features())?
-> > >>       b. or complaining about init feate change kvm_vcpu_init_change=
-d()?
-> > >> 2#  or it is happening during the setting of vector length or
-> > >> finalizing features?
-> > >>
-> > >> int kvm_arch_init_vcpu(CPUState *cs)
-> > >> {
-> > >>     [...]
-> > >>           /* Do KVM_ARM_VCPU_INIT ioctl */
-> > >>          ret =3D kvm_arm_vcpu_init(cpu);   ---->[1]
-> > >>          if (ret) {
-> > >>             return ret;
-> > >>         }
-> > >>            if (cpu_isar_feature(aa64_sve, cpu)) {
-> > >>          ret =3D kvm_arm_sve_set_vls(cpu); ---->[2]
-> > >>          if (ret) {
-> > >>              return ret;
-> > >>          }
-> > >>          ret =3D kvm_arm_vcpu_finalize(cpu, KVM_ARM_VCPU_SVE);--->[3=
-]
-> > >>          if (ret) {
-> > >>              return ret;
-> > >>          }
-> > >>      }
-> > >> [...]
-> > >> }
-> > >>
-> > >> I think it's happening because vector length is going uninitialized.
-> > >> This initialization
-> > >> happens in context to  arm_cpu_finalize_features() which I forgot to=
- call before
-> > >> calling KVM finalize.
-> > >>
-> > >>>
-> > >>> kvm_arch_init_vcpu() is supposed to be called in the realization pa=
-th in current
-> > >>> implementation (without this series) because the parameters (featur=
-es) to KVM_ARM_VCPU_INIT
-> > >>> is populated at vCPU realization time.
-> > >>
-> > >> Not necessarily. It is just meant to initialize the KVM. If we take =
-care of the
-> > >> KVM requirements in the similar way the realize path does we should =
-be
-> > >> fine. Can you try to add the patch below in your code and test if it=
- works?
-> > >>
-> > >>   diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-> > >> index c4b68a0b17..1091593478 100644
-> > >> --- a/target/arm/kvm.c
-> > >> +++ b/target/arm/kvm.c
-> > >> @@ -1068,6 +1068,9 @@ void kvm_arm_create_host_vcpu(ARMCPU *cpu)
-> > >>           abort();
-> > >>       }
-> > >>
-> > >> +     /* finalize the features like SVE, SME etc */
-> > >> +     arm_cpu_finalize_features(cpu, &error_abort);
-> > >> +
-> > >>       /*
-> > >>        * Initialize the vCPU in the host. This will reset the sys re=
-gs
-> > >>        * for this vCPU and related registers like MPIDR_EL1 etc. als=
-o
-> > >>
-> > >>
-> > >>
-> > >>
-> > >>>
-> > >>> $ home/gavin/sandbox/qemu.main/build/qemu-system-aarch64           =
-\
-> > >>>     --enable-kvm -machine virt,gic-version=3D3 -cpu host           =
-    \
-> > >>>     -smp cpus=3D4,disabledcpus=3D2 -m 1024M                        =
-      \
-> > >>>     -kernel /home/gavin/sandbox/linux.guest/arch/arm64/boot/Image  =
-  \
-> > >>>     -initrd /home/gavin/sandbox/images/rootfs.cpio.xz -nographic
-> > >>> qemu-system-aarch64: Failed to initialize host vcpu 4
-> > >>> Aborted (core dumped)
-> > >>>
-> > >>> Backtrace
-> > >>> =3D=3D=3D=3D=3D=3D=3D=3D=3D
-> > >>> (gdb) bt
-> > >>> #0  0x0000ffff9106bc80 in __pthread_kill_implementation () at /lib6=
-4/libc.so.6
-> > >>> #1  0x0000ffff9101aa40 [PAC] in raise () at /lib64/libc.so.6
-> > >>> #2  0x0000ffff91005988 [PAC] in abort () at /lib64/libc.so.6
-> > >>> #3  0x0000aaaab1cc26b8 [PAC] in kvm_arm_create_host_vcpu (cpu=3D0xa=
-aaab9ab1bc0)
-> > >>>       at ../target/arm/kvm.c:1081
-> > >>> #4  0x0000aaaab1cd0c94 in virt_setup_lazy_vcpu_realization (cpuobj=
-=3D0xaaaab9ab1bc0, vms=3D0xaaaab98870a0)
-> > >>>       at ../hw/arm/virt.c:2483
-> > >>> #5  0x0000aaaab1cd180c in machvirt_init (machine=3D0xaaaab98870a0) =
-at ../hw/arm/virt.c:2777
-> > >>> #6  0x0000aaaab160f220 in machine_run_board_init
-> > >>>       (machine=3D0xaaaab98870a0, mem_path=3D0x0, errp=3D0xfffffa86b=
-dc8) at ../hw/core/machine.c:1722
-> > >>> #7  0x0000aaaab1a25ef4 in qemu_init_board () at ../system/vl.c:2723
-> > >>> #8  0x0000aaaab1a2635c in qmp_x_exit_preconfig (errp=3D0xaaaab38a50=
-f0 <error_fatal>)
-> > >>>       at ../system/vl.c:2821
-> > >>> #9  0x0000aaaab1a28b08 in qemu_init (argc=3D15, argv=3D0xfffffa86c1=
-f8) at ../system/vl.c:3882
-> > >>> #10 0x0000aaaab221d9e4 in main (argc=3D15, argv=3D0xfffffa86c1f8) a=
-t ../system/main.c:71
-> > >>
-> > >>
-> > >> Thank you for this. Please let me know if the above fix works and al=
-so
-> > >> the return values in
-> > >> case you encounter errors.
-> > >
-> > > I've pushed the fix to below branch for your convenience:
-> > >
-> > > Branch: https://github.com/salil-mehta/qemu/commits/virt-cpuhp-armv8/=
-rfc-v6.2
-> > > Fix: https://github.com/salil-mehta/qemu/commit/1f1fbc0998ffb1fe26140=
-df3c336bf2be2aa8669
-> > >
-> >
-> > I guess rfc-v6.2 branch isn't ready for test because it runs into anoth=
-er crash
-> > dump with rfc-v6.2 branch, like below.
->
->
+On 10/23/25 10:35 AM, Salil Mehta wrote:
+> On Thu, Oct 23, 2025 at 12:14 AM Gavin Shan <gshan@redhat.com> wrote:
+>> On 10/23/25 4:50 AM, Salil Mehta wrote:
+>>> On Wed, Oct 22, 2025 at 6:18 PM Salil Mehta <salil.mehta@opnsrc.net> wrote:
+>>>> On Wed, Oct 22, 2025 at 10:37 AM Gavin Shan <gshan@redhat.com> wrote:
+>>>>> On 10/1/25 11:01 AM, salil.mehta@opnsrc.net wrote:
+>>>>>> From: Salil Mehta <salil.mehta@huawei.com>
+
+[...]
+
+>>>>>> +void kvm_arm_create_host_vcpu(ARMCPU *cpu)
+>>>>>> +{
+>>>>>> +    CPUState *cs = CPU(cpu);
+>>>>>> +    unsigned long vcpu_id = cs->cpu_index;
+>>>>>> +    int ret;
+>>>>>> +
+>>>>>> +    ret = kvm_create_vcpu(cs);
+>>>>>> +    if (ret < 0) {
+>>>>>> +        error_report("Failed to create host vcpu %ld", vcpu_id);
+>>>>>> +        abort();
+>>>>>> +    }
+>>>>>> +
+>>>>>> +    /*
+>>>>>> +     * Initialize the vCPU in the host. This will reset the sys regs
+>>>>>> +     * for this vCPU and related registers like MPIDR_EL1 etc. also
+>>>>>> +     * get programmed during this call to host. These are referenced
+>>>>>> +     * later while setting device attributes of the GICR during GICv3
+>>>>>> +     * reset.
+>>>>>> +     */
+>>>>>> +    ret = kvm_arch_init_vcpu(cs);
+>>>>>> +    if (ret < 0) {
+>>>>>> +        error_report("Failed to initialize host vcpu %ld", vcpu_id);
+>>>>>> +        abort();
+>>>>>> +    }
+>>>>>> +
+>>>>>> +    /*
+>>>>>> +     * park the created vCPU. shall be used during kvm_get_vcpu() when
+>>>>>> +     * threads are created during realization of ARM vCPUs.
+>>>>>> +     */
+>>>>>> +    kvm_park_vcpu(cs);
+>>>>>> +}
+>>>>>> +
+>>>>>
+>>>>> I don't think we're able to simply call kvm_arch_init_vcpu() in the lazily realized
+>>>>> path. Otherwise, it can trigger a crash dump on my Nvidia's grace-hopper machine where
+>>>>> SVE is supported by default.
+>>>>
+>>>> Thanks for reporting this. That is not true. As long as we initialize
+>>>> KVM correctly and
+>>>> finalize the features like SVE we should be fine. In fact, this is
+>>>> precisely what we are
+>>>> doing right now.
+>>>>
+>>>> To understand the crash, I need a bit more info.
+>>>>
+>>>> 1#  is happening because KVM_ARM_VCPU_INIT is failing. If yes, the can you check
+>>>>         within the KVM if it is happening because
+>>>>        a.  features specified by QEMU are not matching the defaults within the KVM
+>>>>              (HInt: check kvm_vcpu_init_check_features())?
+>>>>        b. or complaining about init feate change kvm_vcpu_init_changed()?
+>>>> 2#  or it is happening during the setting of vector length or
+>>>> finalizing features?
+>>>>
+>>>> int kvm_arch_init_vcpu(CPUState *cs)
+>>>> {
+>>>>      [...]
+>>>>            /* Do KVM_ARM_VCPU_INIT ioctl */
+>>>>           ret = kvm_arm_vcpu_init(cpu);   ---->[1]
+>>>>           if (ret) {
+>>>>              return ret;
+>>>>          }
+>>>>             if (cpu_isar_feature(aa64_sve, cpu)) {
+>>>>           ret = kvm_arm_sve_set_vls(cpu); ---->[2]
+>>>>           if (ret) {
+>>>>               return ret;
+>>>>           }
+>>>>           ret = kvm_arm_vcpu_finalize(cpu, KVM_ARM_VCPU_SVE);--->[3]
+>>>>           if (ret) {
+>>>>               return ret;
+>>>>           }
+>>>>       }
+>>>> [...]
+>>>> }
+>>>>
+>>>> I think it's happening because vector length is going uninitialized.
+>>>> This initialization
+>>>> happens in context to  arm_cpu_finalize_features() which I forgot to call before
+>>>> calling KVM finalize.
+>>>>
+>>>>>
+>>>>> kvm_arch_init_vcpu() is supposed to be called in the realization path in current
+>>>>> implementation (without this series) because the parameters (features) to KVM_ARM_VCPU_INIT
+>>>>> is populated at vCPU realization time.
+>>>>
+>>>> Not necessarily. It is just meant to initialize the KVM. If we take care of the
+>>>> KVM requirements in the similar way the realize path does we should be
+>>>> fine. Can you try to add the patch below in your code and test if it works?
+>>>>
+>>>>    diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+>>>> index c4b68a0b17..1091593478 100644
+>>>> --- a/target/arm/kvm.c
+>>>> +++ b/target/arm/kvm.c
+>>>> @@ -1068,6 +1068,9 @@ void kvm_arm_create_host_vcpu(ARMCPU *cpu)
+>>>>            abort();
+>>>>        }
+>>>>
+>>>> +     /* finalize the features like SVE, SME etc */
+>>>> +     arm_cpu_finalize_features(cpu, &error_abort);
+>>>> +
+>>>>        /*
+>>>>         * Initialize the vCPU in the host. This will reset the sys regs
+>>>>         * for this vCPU and related registers like MPIDR_EL1 etc. also
+>>>>
+>>>>
+>>>>
+>>>>
+>>>>>
+>>>>> $ home/gavin/sandbox/qemu.main/build/qemu-system-aarch64           \
+>>>>>      --enable-kvm -machine virt,gic-version=3 -cpu host               \
+>>>>>      -smp cpus=4,disabledcpus=2 -m 1024M                              \
+>>>>>      -kernel /home/gavin/sandbox/linux.guest/arch/arm64/boot/Image    \
+>>>>>      -initrd /home/gavin/sandbox/images/rootfs.cpio.xz -nographic
+>>>>> qemu-system-aarch64: Failed to initialize host vcpu 4
+>>>>> Aborted (core dumped)
+>>>>>
+>>>>> Backtrace
+>>>>> =========
+>>>>> (gdb) bt
+>>>>> #0  0x0000ffff9106bc80 in __pthread_kill_implementation () at /lib64/libc.so.6
+>>>>> #1  0x0000ffff9101aa40 [PAC] in raise () at /lib64/libc.so.6
+>>>>> #2  0x0000ffff91005988 [PAC] in abort () at /lib64/libc.so.6
+>>>>> #3  0x0000aaaab1cc26b8 [PAC] in kvm_arm_create_host_vcpu (cpu=0xaaaab9ab1bc0)
+>>>>>        at ../target/arm/kvm.c:1081
+>>>>> #4  0x0000aaaab1cd0c94 in virt_setup_lazy_vcpu_realization (cpuobj=0xaaaab9ab1bc0, vms=0xaaaab98870a0)
+>>>>>        at ../hw/arm/virt.c:2483
+>>>>> #5  0x0000aaaab1cd180c in machvirt_init (machine=0xaaaab98870a0) at ../hw/arm/virt.c:2777
+>>>>> #6  0x0000aaaab160f220 in machine_run_board_init
+>>>>>        (machine=0xaaaab98870a0, mem_path=0x0, errp=0xfffffa86bdc8) at ../hw/core/machine.c:1722
+>>>>> #7  0x0000aaaab1a25ef4 in qemu_init_board () at ../system/vl.c:2723
+>>>>> #8  0x0000aaaab1a2635c in qmp_x_exit_preconfig (errp=0xaaaab38a50f0 <error_fatal>)
+>>>>>        at ../system/vl.c:2821
+>>>>> #9  0x0000aaaab1a28b08 in qemu_init (argc=15, argv=0xfffffa86c1f8) at ../system/vl.c:3882
+>>>>> #10 0x0000aaaab221d9e4 in main (argc=15, argv=0xfffffa86c1f8) at ../system/main.c:71
+>>>>
+>>>>
+>>>> Thank you for this. Please let me know if the above fix works and also
+>>>> the return values in
+>>>> case you encounter errors.
+>>>
+>>> I've pushed the fix to below branch for your convenience:
+>>>
+>>> Branch: https://github.com/salil-mehta/qemu/commits/virt-cpuhp-armv8/rfc-v6.2
+>>> Fix: https://github.com/salil-mehta/qemu/commit/1f1fbc0998ffb1fe26140df3c336bf2be2aa8669
+>>>
+>>
+>> I guess rfc-v6.2 branch isn't ready for test because it runs into another crash
+>> dump with rfc-v6.2 branch, like below.
+> 
+> 
 > rfc-6.2 is not crashing on Kunpeng920 where I tested. But this
 > chip does not have some ARM extensions like SVE etc so
 > Unfortunately, I can't test SVE/SME/PAuth etc support.
->
+> 
 > Can you disable SVE and then try if it comes up just to corner
 > the case?
->
-> >
-> > host$ /home/gavin/sandbox/qemu.main/build/qemu-system-aarch64          =
-           \
-> >        -accel kvm -machine virt,gic-version=3Dhost,nvdimm=3Don         =
-                \
-> >        -cpu host,sve=3Don                                              =
-              \
-> >        -smp maxcpus=3D4,cpus=3D2,disabledcpus=3D2,sockets=3D2,clusters=
-=3D2,cores=3D1,threads=3D1 \
-> >        -m 4096M,slots=3D16,maxmem=3D128G                               =
-                \
-> >        -object memory-backend-ram,id=3Dmem0,size=3D2048M               =
-                \
-> >        -object memory-backend-ram,id=3Dmem1,size=3D2048M               =
-                \
-> >        -numa node,nodeid=3D0,memdev=3Dmem0,cpus=3D0-1                  =
-                  \
-> >        -numa node,nodeid=3D1,memdev=3Dmem1,cpus=3D2-3                  =
-                  \
-> >        -L /home/gavin/sandbox/qemu.main/build/pc-bios                  =
-            \
-> >        -monitor none -serial mon:stdio -nographic -gdb tcp::6666       =
-            \
-> >        -qmp tcp:localhost:5555,server,wait=3Doff                       =
-              \
-> >        -bios /home/gavin/sandbox/qemu.main/build/pc-bios/edk2-aarch64-c=
-ode.fd      \
-> >        -kernel /home/gavin/sandbox/linux.guest/arch/arm64/boot/Image   =
-            \
-> >        -initrd /home/gavin/sandbox/images/rootfs.cpio.xz               =
-            \
-> >        -append memhp_default_state=3Donline_movable
-> >          :
-> >          :
-> > guest$ cd /sys/devices/system/cpu/
-> > guest$ cat present enabled online
-> > 0-3
-> > 0-1
-> > 0-1
-> > (qemu) device_set host-arm-cpu,socket-id=3D1,cluster-id=3D0,core-id=3D0=
-,thread-id=3D0,admin-state=3Denable
-> > qemu-system-aarch64: kvm_init_vcpu: kvm_arch_init_vcpu failed (2): Oper=
-ation not permitted
->
->
+> 
+
+Right, this crash dump shouldn't be encountered if SVE isn't supported. I already
+had the workaround "-cpu host,sve=off" to keep my tests moving forwards...
+
+>>
+>> host$ /home/gavin/sandbox/qemu.main/build/qemu-system-aarch64                     \
+>>         -accel kvm -machine virt,gic-version=host,nvdimm=on                         \
+>>         -cpu host,sve=on                                                            \
+>>         -smp maxcpus=4,cpus=2,disabledcpus=2,sockets=2,clusters=2,cores=1,threads=1 \
+>>         -m 4096M,slots=16,maxmem=128G                                               \
+>>         -object memory-backend-ram,id=mem0,size=2048M                               \
+>>         -object memory-backend-ram,id=mem1,size=2048M                               \
+>>         -numa node,nodeid=0,memdev=mem0,cpus=0-1                                    \
+>>         -numa node,nodeid=1,memdev=mem1,cpus=2-3                                    \
+>>         -L /home/gavin/sandbox/qemu.main/build/pc-bios                              \
+>>         -monitor none -serial mon:stdio -nographic -gdb tcp::6666                   \
+>>         -qmp tcp:localhost:5555,server,wait=off                                     \
+>>         -bios /home/gavin/sandbox/qemu.main/build/pc-bios/edk2-aarch64-code.fd      \
+>>         -kernel /home/gavin/sandbox/linux.guest/arch/arm64/boot/Image               \
+>>         -initrd /home/gavin/sandbox/images/rootfs.cpio.xz                           \
+>>         -append memhp_default_state=online_movable
+>>           :
+>>           :
+>> guest$ cd /sys/devices/system/cpu/
+>> guest$ cat present enabled online
+>> 0-3
+>> 0-1
+>> 0-1
+>> (qemu) device_set host-arm-cpu,socket-id=1,cluster-id=0,core-id=0,thread-id=0,admin-state=enable
+>> qemu-system-aarch64: kvm_init_vcpu: kvm_arch_init_vcpu failed (2): Operation not permitted
+> 
+> 
 > Ah, I see. I think I understand the issue. It's complaining
 > about calling the  finalize twice. Is it possible to check as
 > I do not have a way to test it?
->
->
+> 
+> 
 > int kvm_arm_vcpu_finalize(struct kvm_vcpu *vcpu, int feature)
 > {
 > switch (feature) {
@@ -461,16 +349,55 @@ ation not permitted
 > return -EPERM;-----> this where it must be popping?
 > [...]
 > }
+> 
 
-I've pushed the fix to avoid calling the finalizing SVE
-feature (KVM_ARM_VCPU_FINALIZE) twice on the
-same RFC-V6.2 branch.
+Right, I think that's the case: QEMU tries to finalize SVE capability for twice,
+which is the real problem. I'm explaining what I found as below, which would be
+helpful to the forthcoming revisions.
 
-May I kindly request you to validate the fix again and
-check SVE works on NVIDIA grace-hopper?
+machvirt_init
+   virt_setup_lazy_vcpu_realization
+     arm_cpu_finalize_features
+     kvm_arm_create_host_vcpu
+       kvm_create_vcpu                       // New fd is created
+       kvm_arch_init_vcpu
+         kvm_arm_vcpu_init
+         kvm_arm_sve_set_vls
+         kvm_arm_vcpu_finalize               // (A) SVE capability is finalized
 
-Many thanks!
+device_set_admin_power_state
+   device_pre_poweron
+     virt_machine_device_pre_poweron
+       virt_cpu_pre_poweron
+         qdev_realize
+           arm_cpu_realizefn
+             cpu_exec_realizefn
+             arm_cpu_finalize_features       // Called for the second time
+             qemu_init_vcpu
+               kvm_start_vcpu_thread
+                 kvm_vcpu_thread_fn
+                   kvm_init_vcpu
+                     kvm_create_vcpu         // Called for the second time
+                     kvm_arch_init_vcpu      // Called for the second time
+                       kvm_arm_vcpu_init
+                       kvm_arm_sve_set_vls   // (B) Failed here
+                       kvm_arm_vcpu_finalize
 
-Best regards
-Salil.
+(B) where we try to finalize SVE capability again. It has been finalized at (A)
+     Fianlizing SVE capability for twice is disallowed by KVM on the host side.
+
+
+>>
+>> I picked the fix (the last patch in rfc-v6.2 branch) to rfc-v6 branch, same crash dump
+>> can be seen.
+> 
+> Are you getting previously reported abort or above new problem?
+> 
+
+Previously, the VM can't be started. After your fix is applied, the VM is able to start.
+It's a new problem that qemu crash dump is seens on attempt to hot add a vCPU.
+
+Thanks,
+Gavin
+
 

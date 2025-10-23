@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1DFACCCD1BC
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B4E4CCD1BF
 	for <qemu-arm@archiver.kernel.org>; Thu, 23 Oct 2025 12:15:33 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vBuAI-0001K2-Lf; Thu, 23 Oct 2025 08:11:35 -0400
+	id 1vBuB2-0001yZ-54; Thu, 23 Oct 2025 08:12:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vBu8o-0008MT-Nn
- for qemu-arm@nongnu.org; Thu, 23 Oct 2025 08:10:09 -0400
-Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
+ id 1vBu8y-0008Vy-12
+ for qemu-arm@nongnu.org; Thu, 23 Oct 2025 08:10:13 -0400
+Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vBu8l-0005FE-JM
- for qemu-arm@nongnu.org; Thu, 23 Oct 2025 08:10:02 -0400
-Received: by mail-ed1-x533.google.com with SMTP id
- 4fb4d7f45d1cf-63c3c7d3d53so1140248a12.2
- for <qemu-arm@nongnu.org>; Thu, 23 Oct 2025 05:09:58 -0700 (PDT)
+ id 1vBu8t-0005Iq-PX
+ for qemu-arm@nongnu.org; Thu, 23 Oct 2025 08:10:11 -0400
+Received: by mail-ej1-x629.google.com with SMTP id
+ a640c23a62f3a-b4f323cf89bso168008466b.2
+ for <qemu-arm@nongnu.org>; Thu, 23 Oct 2025 05:10:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1761221397; x=1761826197; darn=nongnu.org;
+ d=linaro.org; s=google; t=1761221402; x=1761826202; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=g+0U4t7TJx0pQHp17q8cgNldMYGi3quYhnb/lv6Cse4=;
- b=pVVcc+lSaVTqdNcFNmgKEz5KHQv/7EZdo1RYGqXomiKNWUIR/hE/j4PTZGJtdxyKk6
- hXDtixIuoiT5IO+bIXPWvN8PZlXC49N0XwUE/mZRdHBVU1mTgYV+jme/lhirAESrwT2X
- LAC0AkrpEk7m3Iuuj58lLYIC/T4QNwWN47WbU8k7gM6UXWTx0fY1ewdE0EP0d6DI+cbM
- J9X51FGEWvsAj3Mb0MicTUFYfB8ICYeKwWl2fOP0aKWCAGGBH9Jq2p9HJyI72b8570BX
- 3JVh4oADNxi/msHGNcwJ9EIwRdSkQHUpuIWOHK9wNDP/JoVO3ypVT50YbOeyYsIu5XAg
- LzFw==
+ bh=06bmaVkTHcaq4jFseyDrJdNi7QHB236TwhvYBcaGYEw=;
+ b=h+c7DzOaT4gE2QP8zRX6W25a72F4y9/aB0YmfbhDEkW7YLN097PNnnsZfcDlhn6LKO
+ rj/h6z0DRoNFtjggWRI3UFyalNomvTPUqifOVutG16H8S7KCoGvRUqCJEPFz120wAGQK
+ 3xuct1jGGzlN9xdZkwYMcodhZxxnzgYXxrJlHpZZGk4BgPyk8gi1HLjUAt4fHGOk4o2+
+ lvCYx3EY4b+7s0B5dQFY8xPlq8rniaMi0aC176syhFGdil8WAvIV/qQEbOVt+yO/yaru
+ XIcWrtJvD8L5A7qaAmhmrzFYkY49Tv2Bf8QvWKUE8lu4Nt0QUdKQRUCK8NRk87U0Ic+z
+ lQPQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761221397; x=1761826197;
+ d=1e100.net; s=20230601; t=1761221402; x=1761826202;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=g+0U4t7TJx0pQHp17q8cgNldMYGi3quYhnb/lv6Cse4=;
- b=GJDBq0GtpZv2AWzti/mAvIHRQ0Rt7ClpF+F/7QKv3Rp8Ceumitkwk5MnN2SIkSAox7
- 22NNqbfgSRSlyTlU+YSXjxdPs+Pc9yf4FcW0O8Ea4YfeKnSByZxYEHykAi6bj2ZLkhxO
- p8aqozE5n+jupMW9pi4tpsXhAAVlDlWUGvrAzlWlbuCZ3+2dgrIfGVR4OxsSTCi7NLur
- q376k64pn63krNW786QwDrbk2gSh+KkmA3Y2M2V5jz+AZVAb3HoNt/R87pMICCMMhc3L
- 9xQaFiZYteIhJqGOA5RMyxiUzGm6dJKqZDKyWvv1ulqdXmEM6sjbVXBshzGipqXWzSMT
- ffVw==
+ bh=06bmaVkTHcaq4jFseyDrJdNi7QHB236TwhvYBcaGYEw=;
+ b=T0gf4ya47o5Cb5S+Tq81h27KOqZi0fYli+VOzmL9jmDzup6yVulB9l5jA8cunsiRBa
+ oUkT4+Pjp4g+7RzRWNhg5WGm9EKdNvSAukh554wou3r+eTH0utGuMu9+hjMezv476uFE
+ 2B+c0xt2su5loeQEd30WTEm7hTdr5Zhclwsp2l9AKkGOXeDrlc5fRjU/IbN8l/7VidDS
+ PRn1cLYZmXXluuiNZIzqQjD/d+EkzQLxpea87QzpIpmF2DsLb9Lm3i2kShcacdjjCJ0K
+ lrVanZRaQ8TPbjlUtu8okiiZJJhmIqu4o82a31xKxmu+T2qFQpTg4aTkpiFG1FBMks79
+ jFKg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWpuBmlufNwTPx4Vu6WblOZmrdF1eYN5ZknQiDKYqIKhPM8ZO8ABCNMMqmK5HaimXWddKhoGR3qFw==@nongnu.org
-X-Gm-Message-State: AOJu0YxPOIXYO7mIca63qVFIK31GdL2Qp2gSSLT44OLAub++ejTYPoC6
- nGjwwrLONInCR5/FttZ2WljMqdZtb3QDRP9Nt2oQbk9SrNCO+FmqFtyiK0MPduWjKEY=
-X-Gm-Gg: ASbGncv+8P9CPFnX6tXvMIv7sr1LP6Imz9eiYYzi2mJNsr6ECFTeLL/lLEC2qRpzKtQ
- W7MvlsQgJGgA2VKi1dfd/6nRaRCkGgUU2QuTF91W4EL7nFDJTGKYF+zxiX36TCOQAdPZkv/At36
- 5BcZLZY+4BQRqxqPb0zp51Q1Bdl6gfIZXPWAyRWn+uDWGdL904nMg10jz6CsxXXdKGMAzXs7GlE
- C9l7vh545AONSqba0nolowEGEnpwjPL8qQ9tG0mmldXkTBP9nthWI8GjcwGLGKaz1uQ0wf0dna2
- fH9gjAfLMx0noNazCShf5D1aSOqhCeNyabucWURMfjCGM8lLlOngNnWi25Ev9xzbrGmtn1YZItZ
- ppuFVTHSc8a48bJ9N2kGp2r4007id5rNePAM52kleGAeivYBuS1SPTuLvynlTuqSYUgUVKMTD6y
- rG
-X-Google-Smtp-Source: AGHT+IGYxYTBza0UK+fad1RIGV4aG5m25NcQ0rxVC3BvIg5L0VkjF4a8JVKWyklfghiIlXAWgrrBuw==
-X-Received: by 2002:a05:6402:35c7:b0:63b:ea47:bcbb with SMTP id
- 4fb4d7f45d1cf-63c1f64c996mr23288766a12.8.1761221396978; 
- Thu, 23 Oct 2025 05:09:56 -0700 (PDT)
+ AJvYcCVqZifq+25gKknxOt7QMEFw7btaWWduVIPMG+eQGQZ/eQ23ED0vcAMtYjVkz2BOf2u/JpzZ5wrBFA==@nongnu.org
+X-Gm-Message-State: AOJu0Yyu2RGVl+IAyh9s3G7kachf8P/gKBJ0LORslOEwYcgVqOxeHq9e
+ x+YK9G9xhVPYlVKe/SThcjAEPA3ldJ7/RsXRDqNrzfZdghOC4iuQDdxbvdQ8d3wHdNA=
+X-Gm-Gg: ASbGncvYOJjXJJuj9JTAnInS7fsrQevP6nk5CHDWKr7HqChGzNGj4QDB8f59Z1rVs5k
+ PfpGrmde7WQRfs5V806eLGzTtuT8BxoAMsBEsVZet9bj96SWLsT5S1MjJwaqz8GonLDEGLhwnPC
+ /NAhk1Z6MvXRYY1IAglJzcwb6NBMdU2LUBmN0QXWQJ+pG33CB1BlZpy5CELyuYbn5tvAbQ+vkVT
+ m6ebv/Ny1KCzNzglBC0pGK3IU+9oTJAlVRougc09F85ejjWgw4Iit97tvL0b/wgb76hzbiB1W8r
+ zlcClmxSKDdESvRKp+AI3VvfdZaFcRmwcbQP2uacm19QP9NGxM0khP0F9D1kU6tGBc6a8vAmr8Q
+ kwo8fxs2eAIIMJCppaXsFa/mwZ2thBJ1p21tMZtfVHhEoUNZc4XhC/Nq9lW4+7syhYBvX27mISk
+ ryV0RPO11wtyMiRiFM5KH40g==
+X-Google-Smtp-Source: AGHT+IEvbafavPUhgLdXbmF3gP2et1yYkX/XgDnGBThDhol3Cgi0iPpfJig3NhF4r6BCcMGBKIefKA==
+X-Received: by 2002:a17:906:794e:b0:b3a:b949:3059 with SMTP id
+ a640c23a62f3a-b6473143f12mr3069083566b.18.1761221402278; 
+ Thu, 23 Oct 2025 05:10:02 -0700 (PDT)
 Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-63e3f324628sm1531832a12.34.2025.10.23.05.09.54
+ a640c23a62f3a-b6d511f87a9sm208019366b.26.2025.10.23.05.09.56
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 23 Oct 2025 05:09:54 -0700 (PDT)
+ Thu, 23 Oct 2025 05:09:59 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 062D960E36;
+ by draig.lan (Postfix) with ESMTP id 7613C610D1;
  Thu, 23 Oct 2025 13:09:54 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -76,17 +76,17 @@ Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  qemu-arm@nongnu.org, Gustavo Romero <gustavo.romero@linaro.org>,
  Peter Maydell <peter.maydell@linaro.org>, qemu-s390x@nongnu.org,
  =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH 2/7] scripts/ci/setup: regenerate yaml
-Date: Thu, 23 Oct 2025 13:09:48 +0100
-Message-ID: <20251023120953.2905297-3-alex.bennee@linaro.org>
+Subject: [PATCH 7/7] gitlab: add initial ppc64le custom-runner test
+Date: Thu, 23 Oct 2025 13:09:53 +0100
+Message-ID: <20251023120953.2905297-8-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20251023120953.2905297-1-alex.bennee@linaro.org>
 References: <20251023120953.2905297-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::533;
- envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x533.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::629;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x629.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -109,59 +109,88 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-0d4fb8f746d (configure: set the bindgen cross target) updated the base
-libvirt-ci project which has resulted in changes.
+This is a plain configure/make check build.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- scripts/ci/setup/ubuntu/ubuntu-2404-aarch64.yaml | 4 ++--
- scripts/ci/setup/ubuntu/ubuntu-2404-s390x.yaml   | 4 ++--
- 2 files changed, 4 insertions(+), 4 deletions(-)
+ docs/devel/testing/ci-jobs.rst.inc            |  6 +++
+ .gitlab-ci.d/custom-runners.yml               |  1 +
+ .../custom-runners/debian-13-ppc64le.yml      | 40 +++++++++++++++++++
+ 3 files changed, 47 insertions(+)
+ create mode 100644 .gitlab-ci.d/custom-runners/debian-13-ppc64le.yml
 
-diff --git a/scripts/ci/setup/ubuntu/ubuntu-2404-aarch64.yaml b/scripts/ci/setup/ubuntu/ubuntu-2404-aarch64.yaml
-index ce632d97108..70063db198e 100644
---- a/scripts/ci/setup/ubuntu/ubuntu-2404-aarch64.yaml
-+++ b/scripts/ci/setup/ubuntu/ubuntu-2404-aarch64.yaml
-@@ -26,7 +26,7 @@ packages:
-   - git
-   - hostname
-   - libaio-dev
--  - libasan6
-+  - libasan8
-   - libasound2-dev
-   - libattr1-dev
-   - libbpf-dev
-@@ -37,7 +37,7 @@ packages:
-   - libcap-ng-dev
-   - libcapstone-dev
-   - libcbor-dev
--  - libclang-dev
-+  - libclang-rt-dev
-   - libcmocka-dev
-   - libcurl4-gnutls-dev
-   - libdaxctl-dev
-diff --git a/scripts/ci/setup/ubuntu/ubuntu-2404-s390x.yaml b/scripts/ci/setup/ubuntu/ubuntu-2404-s390x.yaml
-index f45f75c9602..4f1a49be34a 100644
---- a/scripts/ci/setup/ubuntu/ubuntu-2404-s390x.yaml
-+++ b/scripts/ci/setup/ubuntu/ubuntu-2404-s390x.yaml
-@@ -26,7 +26,7 @@ packages:
-   - git
-   - hostname
-   - libaio-dev
--  - libasan6
-+  - libasan8
-   - libasound2-dev
-   - libattr1-dev
-   - libbpf-dev
-@@ -37,7 +37,7 @@ packages:
-   - libcap-ng-dev
-   - libcapstone-dev
-   - libcbor-dev
--  - libclang-dev
-+  - libclang-rt-dev
-   - libcmocka-dev
-   - libcurl4-gnutls-dev
-   - libdaxctl-dev
+diff --git a/docs/devel/testing/ci-jobs.rst.inc b/docs/devel/testing/ci-jobs.rst.inc
+index b92d372a0a9..f1c70344ece 100644
+--- a/docs/devel/testing/ci-jobs.rst.inc
++++ b/docs/devel/testing/ci-jobs.rst.inc
+@@ -174,6 +174,12 @@ If you've got access to an IBM Z host that can be used as a gitlab-CI
+ runner, you can set this variable to enable the tests that require this
+ kind of host. The runner should be tagged with "s390x".
+ 
++PPC64LE_RUNNER_AVAILABLE
++~~~~~~~~~~~~~~~~~~~~~~~~
++If you've got access to an PPC64LE host that can be used as a gitlab-CI
++runner, you can set this variable to enable the tests that require this
++kind of host. The runner should be tagged with "ppc64le".
++
+ CCACHE_DISABLE
+ ~~~~~~~~~~~~~~
+ The jobs are configured to use "ccache" by default since this typically
+diff --git a/.gitlab-ci.d/custom-runners.yml b/.gitlab-ci.d/custom-runners.yml
+index 142fbf4a242..3e28e48c97c 100644
+--- a/.gitlab-ci.d/custom-runners.yml
++++ b/.gitlab-ci.d/custom-runners.yml
+@@ -31,3 +31,4 @@
+ include:
+   - local: '/.gitlab-ci.d/custom-runners/ubuntu-24.04-s390x.yml'
+   - local: '/.gitlab-ci.d/custom-runners/ubuntu-24.04-aarch64.yml'
++  - local: '/.gitlab-ci.d/custom-runners/debian-13-ppc64le.yml'
+diff --git a/.gitlab-ci.d/custom-runners/debian-13-ppc64le.yml b/.gitlab-ci.d/custom-runners/debian-13-ppc64le.yml
+new file mode 100644
+index 00000000000..6733a8e0dae
+--- /dev/null
++++ b/.gitlab-ci.d/custom-runners/debian-13-ppc64le.yml
+@@ -0,0 +1,40 @@
++# All jobs should run successfully in an environment setup by the
++# scripts/ci/setup/build-environment.yml task:
++# "Install basic packages to build QEMU on Ubuntu/Debian"
++
++.debian_ppc64le_template:
++  extends: .custom_runner_template
++  needs: []
++  stage: build
++  tags:
++    - debian_13
++    - ppc64le
++  rules:
++    - if: '$CI_PROJECT_NAMESPACE == "qemu-project" && $CI_COMMIT_BRANCH =~ /^staging/'
++    - if: "$PPC64LE_RUNNER_AVAILABLE"
++  before_script:
++    - source scripts/ci/gitlab-ci-section
++    - section_start setup "Pre-script setup"
++    - JOBS=$(expr $(nproc) - 2)
++    - section_end setup
++  script:
++    - mkdir build
++    - cd build
++    - section_start configure "Running configure"
++    - ../configure $CONFIGURE_ARGS ||
++          { cat config.log meson-logs/meson-log.txt && exit 1; }
++    - section_end configure
++    - section_start build "Building QEMU"
++    - make --output-sync -j"$JOBS"
++    - section_end build
++    - section_start test "Running tests"
++    - if test -n "$MAKE_CHECK_ARGS";
++      then
++        make -j"$JOBS" $MAKE_CHECK_ARGS ;
++      fi
++    - section_end test
++
++debian-13-ppc64le-default:
++  extends: .debian_ppc64le_template
++  variables:
++    MAKE_CHECK_ARGS: check
 -- 
 2.47.3
 

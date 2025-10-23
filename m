@@ -4,63 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C04ACCD1BC
-	for <qemu-arm@archiver.kernel.org>; Thu, 23 Oct 2025 11:17:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75C2FCCD1BC
+	for <qemu-arm@archiver.kernel.org>; Thu, 23 Oct 2025 11:28:12 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vBtJv-00013b-BY; Thu, 23 Oct 2025 07:17:27 -0400
+	id 1vBtTq-0004tF-MQ; Thu, 23 Oct 2025 07:27:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <salil.mehta@opnsrc.net>)
- id 1vBtJt-0000xZ-7N
- for qemu-arm@nongnu.org; Thu, 23 Oct 2025 07:17:25 -0400
-Received: from mail-oa1-x29.google.com ([2001:4860:4864:20::29])
+ id 1vBtTk-0004sh-VZ
+ for qemu-arm@nongnu.org; Thu, 23 Oct 2025 07:27:37 -0400
+Received: from mail-oa1-x2e.google.com ([2001:4860:4864:20::2e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <salil.mehta@opnsrc.net>)
- id 1vBtJr-00063E-41
- for qemu-arm@nongnu.org; Thu, 23 Oct 2025 07:17:24 -0400
-Received: by mail-oa1-x29.google.com with SMTP id
- 586e51a60fabf-373b7e07182so355470fac.0
- for <qemu-arm@nongnu.org>; Thu, 23 Oct 2025 04:17:22 -0700 (PDT)
+ id 1vBtTi-0007j7-If
+ for qemu-arm@nongnu.org; Thu, 23 Oct 2025 07:27:36 -0400
+Received: by mail-oa1-x2e.google.com with SMTP id
+ 586e51a60fabf-394587df7c4so330735fac.2
+ for <qemu-arm@nongnu.org>; Thu, 23 Oct 2025 04:27:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=opnsrc.net; s=google; t=1761218239; x=1761823039; darn=nongnu.org;
+ d=opnsrc.net; s=google; t=1761218853; x=1761823653; darn=nongnu.org;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=OJWYBEk/V4d9wpSFG/g1KRLHkm47ZYXjvJVAJan0qOA=;
- b=HnKbFrBVu/N8tTmG3HidTnopSYYJpKI6S9eWC7K/QJwd725sXq3/VX8q250XSi9+aE
- JMD15reu2ueCHxdMS9XmrQtwFQG6/fzdfdEIiZ6Xmh3fVNAhhgn0ANdRQKckYzadJ4Tl
- RXbNfgPAaRqZ/BOo8QsH/5sBRmj/4iJMjmD5e9zZL9+ZEExbubwZEUKA0i68Au3rEbjb
- OXrEwkEx4CpPP81AtsDCxKg/Yehqrp5hAtMC+WXdrl/QjmGj3QKg2JS8Uihra4o8VEuA
- 3VJy0XqDY6YLO9NzHJLK6jh6VsfV52XM9oJDP2FmCMwLpwJc/y/2pnk0W4ch5x95lfm3
- Ip+Q==
+ bh=sY0R1iCadEwKjmswbPNallgydnb2h51wAU0Tm1ZwDMA=;
+ b=CHrO/ct3/QukmZoH9MF24Jzc/eP/AoNO57nRjf0lS848btvrW3t9wlwAv+ZrcJ0dIW
+ DePEq+FDKBJEL9Wt0JqdqXTL4dnKq6FTes6n+TCsKfI+ExHgKtUOczHlAoNlkmleZVXc
+ JizVfYSutKikOROSnh5/Sj951l37U8Ptm5KHfB30Ayoc1caYOiNFMrtN8DhOm+LAy0sO
+ 4XB7MvuKejgscOQ4YtWb+ZBik0e9diewbKbK+gGWVZNolTjfICOMjMXlEcDGvWKPHNi3
+ v6RZb2tVYAYI1XPKipcGoFNRYPINZQAoEksskxdBEfsrLjJNA93nBb7PfgygoaqWStQr
+ JNqQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761218239; x=1761823039;
+ d=1e100.net; s=20230601; t=1761218853; x=1761823653;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=OJWYBEk/V4d9wpSFG/g1KRLHkm47ZYXjvJVAJan0qOA=;
- b=QeFHbioJvDvHEdxiaV3kEK19LE7DbDbebyDUl5i3U8ofZTSvZaqwhk0XXZ4jbkooGI
- a2kBGGKmUrLf1vFJKu5hhhjtIE6G/nx0XyPD9bwVTSFtycwr73BzCZwt5TEBbdk5xuTb
- PYAdExPtK0/1wxRMXA4EAz69Gee1MxNid1a3eWFkAoy7IKXOC+33qKqkCf7sU4aX5EMi
- YerrS3WQTw3chX4nYNNRAtZ5KI1VhzIJpHxZNCYT05a/F6EMILmxa8b1Ww0s6Zpo7wgd
- rEJpshiJTfLfeFPdd/mbOL7osjMR24KMzuhoki+KrbGPFCO/rbHHZ+HftKiQEThsP63k
- LRlQ==
+ bh=sY0R1iCadEwKjmswbPNallgydnb2h51wAU0Tm1ZwDMA=;
+ b=ncTjdEiQbo9yZt8776scqw8CfVVmVkLXYMCfM6Bsw1jZgdYoRZH+t4wBA3vKnBNo8n
+ Jm/Cyj2WWPEb16JsoamIE6lgeq80LR6r/S1Sen4cVBG7uEobpWqOltptfTvPfxPUx6Nh
+ aCmmZH+i48yBTODlVg0tQydcrdpSk5YDxQYxQ0LtsK5DptJigNiIFHB58XArZbPDyEgD
+ BYD8LREe1AfWD4+VPiPKlHbE5jxzFUKFzvgFAw/6PiL4svL5I6gGlPFacOmMXH7m/KPE
+ Ar2NiNwNBEKd4jmUT468kPbhbG5zKKsnk0f8R19q6kS0V4tiOHurlAmohQq/CsbE6Ddl
+ mF6A==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVBWi9dfxsz55zidt7rSiXjiKPtiBjIEha62HG6FJMyr/3bbuzhs5DCkiCVykpzZwnkYPYh7wTl+A==@nongnu.org
-X-Gm-Message-State: AOJu0YzwD8yEu4yZvU/zzRDVwsNTSrwKWxCvqKgB7fMcMcwmMdu2CJwc
- qpWcKk2zuPufmtxZgJwx+1q9BcVlMeXx6cjVCO5Zzm6a9wLur7FD01vm4LOxlz/wQgj6FOlhjxe
- 77zV4Siix2x0Z58nBlRWdGC9FEPfIb7L9Ty1cl3Akzg==
-X-Gm-Gg: ASbGncvFNvfC5F/vPDFT2SpBSgc8p047OVdpvQxuVLQE/LH9U9N72X3td2bgdq6SEfU
- k7YyHsDkdm5AC1g5ZtvqHou//UQfR/WzlSUctSVvLMM85BoNiad9AOByzHEBr6NZW+weWHLnbYp
- W2l0BgWPM+lDH9eIvx3rfGbbdq/g0qMblEAAGq1x9NA/8WpPxI59OPryHdPatV7AUOfJAtNK7U4
- IXluTCYnMnRHOXn+1J+k4bcmGgK/bmv0TnfGW7f2xQ4G6g9Fs1JRGjfAde0Hn8VffwdkCXXc7y9
- DsyGhxUXirDnu6EcpHpvVpP4oz99+IM2BEGKCzZO2Q==
-X-Google-Smtp-Source: AGHT+IGICgurpd3aMLuZ1wxCw3RNpOzkGRQbLMtX0qb9usCEuRGzqnsd0LmxJeXXYle+k1jmQANreIsqiuovY2tthfI=
-X-Received: by 2002:a05:6871:1ca:b0:3cd:aa60:c2ce with SMTP id
- 586e51a60fabf-3cdc5aa5472mr875723fac.45.1761218238908; Thu, 23 Oct 2025
- 04:17:18 -0700 (PDT)
+ AJvYcCX8MO/H9updS8wLlggvWCuS933rEBrtgmxBGjnvY7xK4RQHt3TgQNphAWdezHOwfkl7A4iVZGLdqg==@nongnu.org
+X-Gm-Message-State: AOJu0YxRw0YNTJCQ3zzqJ61ckIT+ZnBzcLjxnOiMnRTUpxD9mue8VZJ9
+ JAIf91pgVfIUxyvjFLBVM0U16DKd2i4By4aVEl0j0XPsi0EvvlNdPe/CclL4VJfHdeQqdyvykxY
+ qTVhAN0Hpcx/vc79W2FpWatn27hSiMpzlSqiEF353EA==
+X-Gm-Gg: ASbGncsPTg6taP4lP8gBt/hvXjkeAEME91W3jAmzmBs9/CpFSyBPw73yF6fiymHUb43
+ Klyovhj1cNHQQHM6UfAfaKfSZ5WKl8jy2ma44rhDj/nnD/NokUdlnhMozGQmebdbJ32PsTdnmoK
+ PhrqtMBTrEBJ6auo2V5lJ17wP/iMeEXQd9cfupCnpqrtiHkr1fQ4ib5xGJkV59S2LosvlDmTgiY
+ DOVEqzjN4qdSQgQSBbtz16M5bpgqpS1YHk8thaSyLsflc9tmSzDDFOb5rATQVBwjLnWaSsBU/wx
+ Kx7D3EyOOMCZj3mQtt9eXyTvAaRKoNtIS+RmkQkdduPk3p6opkLZ
+X-Google-Smtp-Source: AGHT+IHYQSsjgzlxQeE5KrjCG5/Mk5Izu1cI3D06NYqUjyUougJrRjYzhox7YfKYRRHA3my3zwVSx72+KHv7exxqtLs=
+X-Received: by 2002:a05:6870:6123:b0:35c:3928:478b with SMTP id
+ 586e51a60fabf-3c98d12ee06mr10855939fac.38.1761218852702; Thu, 23 Oct 2025
+ 04:27:32 -0700 (PDT)
 MIME-Version: 1.0
 References: <20251001010127.3092631-1-salil.mehta@opnsrc.net>
  <20251001010127.3092631-6-salil.mehta@opnsrc.net>
@@ -69,12 +69,13 @@ References: <20251001010127.3092631-1-salil.mehta@opnsrc.net>
  <CAJ7pxeaUfUeXwtTVheCTxej-aCTCx0n8-XyAKaFneVUjcWL_7w@mail.gmail.com>
  <beab3dd4-0c19-441c-a9f5-ecae9e791753@redhat.com>
  <CAJ7pxeYEpJGhtL1-3qFEJYTzL-s19fF-it6p5dkq=fg384wBpg@mail.gmail.com>
- <fa5d5a65-616f-405a-a5e5-f8b70ff32193@redhat.com>
-In-Reply-To: <fa5d5a65-616f-405a-a5e5-f8b70ff32193@redhat.com>
+ <CAJ7pxeZG1w++2DNVD5L5N3sEPRLYPFSFECLqFgh3BYgKpfJtog@mail.gmail.com>
+ <5a13811b-628f-4e47-86b9-fad1ab7df244@redhat.com>
+In-Reply-To: <5a13811b-628f-4e47-86b9-fad1ab7df244@redhat.com>
 From: Salil Mehta <salil.mehta@opnsrc.net>
-Date: Thu, 23 Oct 2025 11:17:06 +0000
-X-Gm-Features: AS18NWAMDKvdk11IzAj_EjqCCe8eeIgV6YFd8IufHo1HI04c-yM3AhG5gQvOK_Q
-Message-ID: <CAJ7pxeanrOU4cuf-JLgR-v7kMLqkrFUUvb95bBpx9mPy1BcsdA@mail.gmail.com>
+Date: Thu, 23 Oct 2025 11:27:20 +0000
+X-Gm-Features: AS18NWCB8gZU37rJ9KuOnLp9Gq_euh4HIBeGVBGoLKK3ahqwn2jWFpxq4tN6xK0
+Message-ID: <CAJ7pxebfrSLG66t+7CQEGLL-ia4kqTAHRShxK76GcR0h=Dfk9w@mail.gmail.com>
 Subject: Re: [PATCH RFC V6 05/24] arm/virt,kvm: Pre-create KVM vCPUs for
  'disabled' QOM vCPUs at machine init
 To: Gavin Shan <gshan@redhat.com>
@@ -96,8 +97,8 @@ Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, mst@redhat.com,
  Keqian Zhu <zhuqian1@huawei.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2001:4860:4864:20::29;
- envelope-from=salil.mehta@opnsrc.net; helo=mail-oa1-x29.google.com
+Received-SPF: pass client-ip=2001:4860:4864:20::2e;
+ envelope-from=salil.mehta@opnsrc.net; helo=mail-oa1-x2e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -120,113 +121,64 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Gavin
+[!] Sending this again, to keep conversation *legally* correct,
+as this did not appear in the mailing-list when sent from my
+official ID.
 
-On Thu, Oct 23, 2025 at 1:58=E2=80=AFAM Gavin Shan <gshan@redhat.com> wrote=
+Sorry for any inconvenience caused due to this.
+
+On Thu, Oct 23, 2025 at 4:14=E2=80=AFAM Gavin Shan <gshan@redhat.com> wrote=
 :
 >
 > Hi Salil,
 >
-> On 10/23/25 10:35 AM, Salil Mehta wrote:
-> > On Thu, Oct 23, 2025 at 12:14=E2=80=AFAM Gavin Shan <gshan@redhat.com> =
-wrote:
-> >> On 10/23/25 4:50 AM, Salil Mehta wrote:
-> >>> On Wed, Oct 22, 2025 at 6:18=E2=80=AFPM Salil Mehta <salil.mehta@opns=
-rc.net> wrote:
-> >>>> On Wed, Oct 22, 2025 at 10:37=E2=80=AFAM Gavin Shan <gshan@redhat.co=
-m> wrote:
-> >>>>> On 10/1/25 11:01 AM, salil.mehta@opnsrc.net wrote:
-> >>>>>> From: Salil Mehta <salil.mehta@huawei.com>
-
-[...]
-
-> >> guest$ cd /sys/devices/system/cpu/
-> >> guest$ cat present enabled online
-> >> 0-3
-> >> 0-1
-> >> 0-1
-> >> (qemu) device_set host-arm-cpu,socket-id=3D1,cluster-id=3D0,core-id=3D=
-0,thread-id=3D0,admin-state=3Denable
-> >> qemu-system-aarch64: kvm_init_vcpu: kvm_arch_init_vcpu failed (2): Ope=
-ration not permitted
-> >
-> >
-> > Ah, I see. I think I understand the issue. It's complaining
-> > about calling the  finalize twice. Is it possible to check as
-> > I do not have a way to test it?
-> >
-> >
-> > int kvm_arm_vcpu_finalize(struct kvm_vcpu *vcpu, int feature)
-> > {
-> > switch (feature) {
-> > case KVM_ARM_VCPU_SVE:
-> > [...]
-> > if (kvm_arm_vcpu_sve_finalized(vcpu))
-> > return -EPERM;-----> this where it must be popping?
-> > [...]
-> > }
-> >
+> On 10/23/25 11:29 AM, Salil Mehta wrote:
 >
-> Right, I think that's the case: QEMU tries to finalize SVE capability for=
- twice,
-> which is the real problem. I'm explaining what I found as below, which wo=
-uld be
-> helpful to the forthcoming revisions.
->
-> machvirt_init
->    virt_setup_lazy_vcpu_realization
->      arm_cpu_finalize_features
->      kvm_arm_create_host_vcpu
->        kvm_create_vcpu                       // New fd is created
->        kvm_arch_init_vcpu
->          kvm_arm_vcpu_init
->          kvm_arm_sve_set_vls
->          kvm_arm_vcpu_finalize               // (A) SVE capability is fin=
-alized
->
-> device_set_admin_power_state
->    device_pre_poweron
->      virt_machine_device_pre_poweron
->        virt_cpu_pre_poweron
->          qdev_realize
->            arm_cpu_realizefn
->              cpu_exec_realizefn
->              arm_cpu_finalize_features       // Called for the second tim=
-e
->              qemu_init_vcpu
->                kvm_start_vcpu_thread
->                  kvm_vcpu_thread_fn
->                    kvm_init_vcpu
->                      kvm_create_vcpu         // Called for the second tim=
-e
->                      kvm_arch_init_vcpu      // Called for the second tim=
-e
->                        kvm_arm_vcpu_init
->                        kvm_arm_sve_set_vls   // (B) Failed here
->                        kvm_arm_vcpu_finalize
->
-> (B) where we try to finalize SVE capability again. It has been finalized =
-at (A)
->      Fianlizing SVE capability for twice is disallowed by KVM on the host=
- side.
->
+> [...]
 >
 > >>
-> >> I picked the fix (the last patch in rfc-v6.2 branch) to rfc-v6 branch,=
- same crash dump
-> >> can be seen.
+> >> Ah, I see. I think I understand the issue. It's complaining
+> >> about calling the  finalize twice. Is it possible to check as
+> >> I do not have a way to test it?
+> >>
+> >>
+> >> int kvm_arm_vcpu_finalize(struct kvm_vcpu *vcpu, int feature)
+> >> {
+> >> switch (feature) {
+> >> case KVM_ARM_VCPU_SVE:
+> >> [...]
+> >> if (kvm_arm_vcpu_sve_finalized(vcpu))
+> >> return -EPERM;-----> this where it must be popping?
+> >> [...]
+> >> }
 > >
-> > Are you getting previously reported abort or above new problem?
+> > I've pushed the fix to avoid calling the finalizing SVE
+> > feature (KVM_ARM_VCPU_FINALIZE) twice on the
+> > same RFC-V6.2 branch.
+> >
+> > May I kindly request you to validate the fix again and
+> > check SVE works on NVIDIA grace-hopper?
 > >
 >
-> Previously, the VM can't be started. After your fix is applied, the VM is=
- able to start.
-> It's a new problem that qemu crash dump is seens on attempt to hot add a =
-vCPU.
+> With the latest rfc-v6.2 branch, I don't hit the issue. The vCPU can be h=
+ot added
+> and removed on grace-hopper host.
+
+Excellent, SVE/SME and other ARM extensions have not been tested earlier.
+It would be of immense help if all of these can be validated as I do not ha=
+ve
+capable hardware to test them.
+
+Many thanks for your proactive efforts in reporting, reviewing the fixes an=
+d
+validating them as well. I appreciate it!
+
+For anyone who wants to try, fix is here:
+ https://github.com/salil-mehta/qemu/commits/virt-cpuhp-armv8/rfc-v6.2
+https://github.com/salil-mehta/qemu/commit/cd58e65a79c224a59407553c1a6288ed=
+667b19ed
 
 
-Thanks for confirming this as well.
-
-Cheers
+Many thanks!
 Salil.
 

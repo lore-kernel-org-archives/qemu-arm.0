@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7BC46CCD1BE
-	for <qemu-arm@archiver.kernel.org>; Thu, 23 Oct 2025 14:14:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C77BDCCD1BC
+	for <qemu-arm@archiver.kernel.org>; Thu, 23 Oct 2025 14:14:47 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vBw4e-0005he-OW; Thu, 23 Oct 2025 10:13:52 -0400
+	id 1vBw59-0005xG-Qj; Thu, 23 Oct 2025 10:14:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vBw4d-0005gm-0u
- for qemu-arm@nongnu.org; Thu, 23 Oct 2025 10:13:51 -0400
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vBw58-0005w5-3f
+ for qemu-arm@nongnu.org; Thu, 23 Oct 2025 10:14:22 -0400
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vBw4a-0007MY-Fr
- for qemu-arm@nongnu.org; Thu, 23 Oct 2025 10:13:50 -0400
-Received: by mail-wr1-x434.google.com with SMTP id
- ffacd0b85a97d-4283be7df63so389481f8f.1
- for <qemu-arm@nongnu.org>; Thu, 23 Oct 2025 07:13:48 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vBw54-0007QO-KL
+ for qemu-arm@nongnu.org; Thu, 23 Oct 2025 10:14:20 -0400
+Received: by mail-wr1-x42e.google.com with SMTP id
+ ffacd0b85a97d-4298b865f84so399472f8f.3
+ for <qemu-arm@nongnu.org>; Thu, 23 Oct 2025 07:14:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1761228826; x=1761833626; darn=nongnu.org;
+ d=linaro.org; s=google; t=1761228857; x=1761833657; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=bn2C92Ox23h5s0IuScw63a4Ihrbd//B4afSM1bgktqo=;
- b=zCut6CCnlIr/hJcruYMVtZg71sK+5Uh5Kt2OVLSn3yHPnIu5e/kkSb8HMwVNKOZQof
- en/ue5ACG0sv4DDSe/DrysYnT1enfSszzE8QpfxR006zCtcRpVMg5gdkZfK6jmbEFY0I
- sERYil58MJSPZyuSf3ltpFFNHAaxX88TK0BmumuWx370on3GBMGK9MKceIpwdMuC6qov
- MoR9c9/NUAz50Zc7h+WMapQ1UdGdaXWdpMMAPD24vdcfP8GkBzfUnQkNbF3X3ZlZ5Syl
- hVLJRhpjI8HMaAebltvRT5kqZjhvjOFkJoNT941My6bqfzB+yyD2/1/6ebk2fdh6CpKW
- 5JZg==
+ bh=xgErgOnMx4s5YU2iFG4R59NbVSZsMjKyT1ZEI6z6Tkc=;
+ b=bNpr4qYAay/9DubdRd0YTDUo6DOeeCX8781bzLcc00U/cm6WatD/Ru8jeg/mRXwHqd
+ L49iVrc4+LbamnOLajQKaLOjrTCQ4JxQ1BI6IBYvvvpXdZg7HEMZSIPU3ETt19S41Rcd
+ SVOYzZv55DYWnW2SHY5xhedoTAeuYze9TN0Ja87D+1dtjuKN6kZ3Cbfmbo+hhs3nUwqv
+ QyWhaOd/LEjjF1u3/ZJGbIK7Uvxbm4cSrTZ1bbBMEHtwuQlVmYXPn1ggp9GRyIf6IKYf
+ SmL4NDxOp2ygvU/8y52nbU/PRR7xo/a28WChPH/jj41MiqkT8i76sTydFWzyUENSvNuq
+ agVg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761228826; x=1761833626;
+ d=1e100.net; s=20230601; t=1761228857; x=1761833657;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=bn2C92Ox23h5s0IuScw63a4Ihrbd//B4afSM1bgktqo=;
- b=e1Uz9ZR2UQV4cAO2udc+VkO2BLsgVckftTFXJztFw1+Gpg6LJjidTF3Oe5lAsuUYzR
- 59bCZ0wJph6CiF6zrfReklA/uM4aHRS2RInzLSWpK0u0iUmT5JwbQpCkcPc0mTCUxupn
- S38CZV36spWTujVJHxTVN29/OcIpOtqU7b+WdLPbSHDKtk63eeLXyuf3RcPaAWt61ITK
- ntJhRiLcOXeLMAG8nm7w8uhiuJIfOF5AEKrRJZUaVt5tgNQ0xvo7jWCHWGkSvJPCBoAm
- ubSu8rHSrikizChqmhDD/7+Dm3uId792n3R9k1Up0eYc6KJnLXAUyX0qQSdOue3+rFc6
- vYLQ==
+ bh=xgErgOnMx4s5YU2iFG4R59NbVSZsMjKyT1ZEI6z6Tkc=;
+ b=bycQtyeRM7LO8ncQLPQRoYI1MDTcxX/YgTWApV7cwtITyhWri29nElCTPobIKIwyrP
+ eWCMolm/RaoBnKX8YzSOzTQCKL9aS1K8Bpbknmbwvs08ci8UZObLEY5QuNoGyGUGk6a+
+ YTIR0BXVcSDDQ5BmBgd6+fGydJN2LZxc2havN2SDMEe5ExogNiTMEK9wASasXJ4qwQqs
+ yNQg8VM2NIVKNqc+iWM12uN7LYeL+WmiXrtybj/lCG2/kTuHCMHut2mQ1aId//f00JsQ
+ udZSG/xG+gsc3tZlkQuGPPro9PMoia34TRRkrPQZk62Yt03tsATArNPrGepjEb+QT/pE
+ H68g==
 X-Forwarded-Encrypted: i=1;
- AJvYcCViKIX25bU3D5eds/OsxOLNTpNHwQZLKws/lnQz4jmwyIT7zzq0bISGF+2416bmM+NaspD6qj5mtw==@nongnu.org
-X-Gm-Message-State: AOJu0Yw/ELJxwEuhAB5CB3hWOHb1B192yc8BH0ZzAH8dSM/rJyrqdlXe
- /HwUNk9BKuWWzfn3tqMFNqVgzK7bK8dyMGHqTi8/yH4xTYIakzsLUg2qOr7DOYu0/qo=
-X-Gm-Gg: ASbGncue6rLJN2Mr6QQ/eh3WjMl/Rzqz0rpSwwH8AB6FIjMNWeztgDiSIdlku4rI6lu
- 1CWcifixAEZ6ExspA808/BHsEvpex4QtykcYy6CL/gZCF1sOIDn9hYNyQ2bV2KZb+y+EXLye2sS
- 9b6PecAYOv5QMmQXhhvifNZBSzkXTc3hjZTt93cXuhIF+l+6cb4jxBFS/rpCx7gdwjtk/NtId7q
- rWKy8dFJbhn2oEUG+zpKbJtMUOJFkkYnh0y1NwpzbSR0l28e1t9JdrKUp6d+9ODuzLiKZiVLRDE
- PLxnsyHWsr4AfbPr4Ka0P8P44+WsSS+m0gXknLldnZw2e6jw3dB0vy4Gmz6kbfuFN+MmGYvWvFp
- h7Z03Xy+zv5/Xhia/g1LhuDYcx6HtukMz9S5sowKv8FqzFeZdEVcBNEW+JTcpB+JnxMmdEg9ttB
- OF4KFlMe9L96EJj3dWwAFZrBWF1cIByGq2RKrpV7n+1wgptzmEVCNVw1s439lC
-X-Google-Smtp-Source: AGHT+IFOObY4FZQI60HAKVyYFMcVdLy2QIR00SAsee7dM4Kc4Y6LZN9jVb7S4ynbEXe1Qt2RZDCCiw==
-X-Received: by 2002:a05:6000:2884:b0:429:8d0f:eb4 with SMTP id
- ffacd0b85a97d-4298d0f1116mr410025f8f.28.1761228826243; 
- Thu, 23 Oct 2025 07:13:46 -0700 (PDT)
+ AJvYcCX4SD3Fs9tK8O4xUVXnevqHWL8IVW338Pa36yQo1nHskHDgK3PH5WEjdGwbW3FEmuaRHvrbHs4fJg==@nongnu.org
+X-Gm-Message-State: AOJu0YxPaeGriQ4owQVN6rP7JHf7cYIZScnbHubSKXGwkRnbq2E1f/0n
+ tyDYjHWz9sMimySQX1hLxz9UNY6tut91tLFytH4ajP2QylcO4vOvcMAAD1irXXj+CxQ=
+X-Gm-Gg: ASbGncvLTfQ8yR6Gs4aaXdc7anlcwC46BfDAt3SOPiAv6F3GZhvNH1e5v7UkQmNlsf/
+ AucD6daRm+q0pfjwwupkCOBmK+MEFaeSx0R0UA50YZKYzQwUxw0BLLyzAz/4H4BstMkdqfHfXBt
+ oEJp4/fM9bhfyYa9lkNw2L7uDh28H6umlPeYXQrGhYYf7P8mDBrOpgOalZToy/Kg7FaVfiH90GW
+ QY1yaybZy20nyq6dIN2svjoWaiUeAMFxKLck2HieB7GSRBhJfBDhlNauquaNksRavD3Gyi7zYpB
+ eIywmhh6pHels/vjBWyj7hzeUwclOrPWowPyQebedSRuqIC62uALtH8T33uk1CsGHYFNpvrKGuK
+ LfCcsNyyPwjgmanjUanpJzNfRF4s8tgLBaRaYWVE0h2IjPxesRfuveZKBSsRKvVTiyfkdgNCBB7
+ rVorJM+TU+F3IdLF4RLIPDLJUsIEflihYnzVGNNq/YCcT8A5GcoQ==
+X-Google-Smtp-Source: AGHT+IFYkyq1X8eXbyXkDCQdNSLrDoS4J4Uoi4L4ULVb0t4OtBAflKybfpOydN2uOI4v0/1ko63L5Q==
+X-Received: by 2002:a05:6000:428a:b0:425:8559:5d17 with SMTP id
+ ffacd0b85a97d-42704d9457amr15218026f8f.30.1761228856561; 
+ Thu, 23 Oct 2025 07:14:16 -0700 (PDT)
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-429897ff3f5sm4349458f8f.22.2025.10.23.07.13.44
+ ffacd0b85a97d-429897f53bcsm4272553f8f.11.2025.10.23.07.14.15
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 23 Oct 2025 07:13:45 -0700 (PDT)
+ Thu, 23 Oct 2025 07:14:16 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Mohamed Mediouni <mohamed@unpredictable.fr>,
@@ -77,18 +77,17 @@ Cc: Mohamed Mediouni <mohamed@unpredictable.fr>,
  Paolo Bonzini <pbonzini@redhat.com>,
  Phil Dennis-Jordan <phil@philjordan.eu>, Mads Ynddal <mads@ynddal.dk>,
  Roman Bolshakov <rbolshakov@ddn.com>
-Subject: [PATCH v2 11/58] accel/hvf: Mention hvf_arch_update_guest_debug()
- must run on vCPU
-Date: Thu, 23 Oct 2025 16:13:30 +0200
-Message-ID: <20251023141339.10143-2-philmd@linaro.org>
+Subject: [PATCH v2 17/58] target/arm/hvf: Factor hvf_handle_exception() out
+Date: Thu, 23 Oct 2025 16:13:36 +0200
+Message-ID: <20251023141339.10143-8-philmd@linaro.org>
 X-Mailer: git-send-email 2.51.0
 In-Reply-To: <20251023114638.5667-1-philmd@linaro.org>
 References: <20251023114638.5667-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::434;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x434.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -111,37 +110,181 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Since hvf_arch_update_guest_debug() calls hvf_arch_set_traps()
-and hvf_arch_update_guest_debug(), which must run on a vCPU, it
-also must. Mention it.
+Factor hvf_handle_exception() out of hvf_vcpu_exec().
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Mads Ynddal <mads@ynddal.dk>
 ---
- include/system/hvf_int.h | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ target/arm/hvf/hvf.c | 123 +++++++++++++++++++++++--------------------
+ 1 file changed, 65 insertions(+), 58 deletions(-)
 
-diff --git a/include/system/hvf_int.h b/include/system/hvf_int.h
-index 0c335facc3b..241c668795e 100644
---- a/include/system/hvf_int.h
-+++ b/include/system/hvf_int.h
-@@ -83,6 +83,8 @@ int hvf_arch_vcpu_exec(CPUState *);
- int hvf_arch_put_registers(CPUState *);
- /* Must be called by the owning thread */
- int hvf_arch_get_registers(CPUState *);
-+/* Must be called by the owning thread */
-+void hvf_arch_update_guest_debug(CPUState *cpu);
+diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+index fcb6950692b..8553ce6adc2 100644
+--- a/target/arm/hvf/hvf.c
++++ b/target/arm/hvf/hvf.c
+@@ -1802,61 +1802,15 @@ static void hvf_sync_vtimer(CPUState *cpu)
+     }
+ }
  
- struct hvf_sw_breakpoint {
-     vaddr pc;
-@@ -109,7 +111,6 @@ void hvf_arch_remove_all_hw_breakpoints(void);
-  * handled by calling down to hvf_arch_update_guest_debug.
-  */
- int hvf_update_guest_debug(CPUState *cpu);
--void hvf_arch_update_guest_debug(CPUState *cpu);
+-int hvf_arch_vcpu_exec(CPUState *cpu)
++static int hvf_handle_exception(CPUState *cpu, hv_vcpu_exit_exception_t *excp)
+ {
+-    ARMCPU *arm_cpu = ARM_CPU(cpu);
+-    CPUARMState *env = &arm_cpu->env;
+-    int ret;
+-    hv_vcpu_exit_t *hvf_exit = cpu->accel->exit;
+-    hv_return_t r;
+-    bool advance_pc = false;
+-
+-    if (!(cpu->singlestep_enabled & SSTEP_NOIRQ) &&
+-        hvf_inject_interrupts(cpu)) {
+-        return EXCP_INTERRUPT;
+-    }
+-
+-    if (cpu->halted) {
+-        return EXCP_HLT;
+-    }
+-
+-    flush_cpu_state(cpu);
+-
+-    bql_unlock();
+-    r = hv_vcpu_run(cpu->accel->fd);
+-    bql_lock();
+-    switch (r) {
+-    case HV_SUCCESS:
+-        break;
+-    case HV_ILLEGAL_GUEST_STATE:
+-        trace_hvf_illegal_guest_state();
+-        /* fall through */
+-    default:
+-        g_assert_not_reached();
+-    }
+-
+-    /* handle VMEXIT */
+-    uint64_t exit_reason = hvf_exit->reason;
+-    uint64_t syndrome = hvf_exit->exception.syndrome;
++    CPUARMState *env = cpu_env(cpu);
++    ARMCPU *arm_cpu = env_archcpu(env);
++    uint64_t syndrome = excp->syndrome;
+     uint32_t ec = syn_get_ec(syndrome);
+-
+-    ret = 0;
+-    switch (exit_reason) {
+-    case HV_EXIT_REASON_EXCEPTION:
+-        /* This is the main one, handle below. */
+-        break;
+-    case HV_EXIT_REASON_VTIMER_ACTIVATED:
+-        qemu_set_irq(arm_cpu->gt_timer_outputs[GTIMER_VIRT], 1);
+-        cpu->accel->vtimer_masked = true;
+-        return 0;
+-    case HV_EXIT_REASON_CANCELED:
+-        /* we got kicked, no exit to process */
+-        return 0;
+-    default:
+-        g_assert_not_reached();
+-    }
+-
+-    hvf_sync_vtimer(cpu);
++    bool advance_pc = false;
++    hv_return_t r;
++    int ret = 0;
  
- /*
-  * Return whether the guest supports debugging.
+     switch (ec) {
+     case EC_SOFTWARESTEP: {
+@@ -1895,7 +1849,7 @@ int hvf_arch_vcpu_exec(CPUState *cpu)
+         cpu_synchronize_state(cpu);
+ 
+         CPUWatchpoint *wp =
+-            find_hw_watchpoint(cpu, hvf_exit->exception.virtual_address);
++            find_hw_watchpoint(cpu, excp->virtual_address);
+         if (!wp) {
+             error_report("EXCP_DEBUG but unknown hw watchpoint");
+         }
+@@ -1913,8 +1867,8 @@ int hvf_arch_vcpu_exec(CPUState *cpu)
+         uint32_t cm = (syndrome >> 8) & 0x1;
+         uint64_t val = 0;
+ 
+-        trace_hvf_data_abort(hvf_exit->exception.virtual_address,
+-                             hvf_exit->exception.physical_address, isv,
++        trace_hvf_data_abort(excp->virtual_address,
++                             excp->physical_address, isv,
+                              iswrite, s1ptw, len, srt);
+ 
+         if (cm) {
+@@ -1928,11 +1882,11 @@ int hvf_arch_vcpu_exec(CPUState *cpu)
+         if (iswrite) {
+             val = hvf_get_reg(cpu, srt);
+             address_space_write(&address_space_memory,
+-                                hvf_exit->exception.physical_address,
++                                excp->physical_address,
+                                 MEMTXATTRS_UNSPECIFIED, &val, len);
+         } else {
+             address_space_read(&address_space_memory,
+-                               hvf_exit->exception.physical_address,
++                               excp->physical_address,
+                                MEMTXATTRS_UNSPECIFIED, &val, len);
+             if (sse) {
+                 val = sextract64(val, 0, len * 8);
+@@ -2030,6 +1984,59 @@ int hvf_arch_vcpu_exec(CPUState *cpu)
+     return ret;
+ }
+ 
++int hvf_arch_vcpu_exec(CPUState *cpu)
++{
++    ARMCPU *arm_cpu = ARM_CPU(cpu);
++    hv_vcpu_exit_t *hvf_exit = cpu->accel->exit;
++    hv_return_t r;
++
++    if (!(cpu->singlestep_enabled & SSTEP_NOIRQ) &&
++        hvf_inject_interrupts(cpu)) {
++        return EXCP_INTERRUPT;
++    }
++
++    if (cpu->halted) {
++        return EXCP_HLT;
++    }
++
++    flush_cpu_state(cpu);
++
++    bql_unlock();
++    r = hv_vcpu_run(cpu->accel->fd);
++    bql_lock();
++    switch (r) {
++    case HV_SUCCESS:
++        break;
++    case HV_ILLEGAL_GUEST_STATE:
++        trace_hvf_illegal_guest_state();
++        /* fall through */
++    default:
++        g_assert_not_reached();
++    }
++
++    /* handle VMEXIT */
++    uint64_t exit_reason = hvf_exit->reason;
++
++    switch (exit_reason) {
++    case HV_EXIT_REASON_EXCEPTION:
++        /* This is the main one, handle below. */
++        break;
++    case HV_EXIT_REASON_VTIMER_ACTIVATED:
++        qemu_set_irq(arm_cpu->gt_timer_outputs[GTIMER_VIRT], 1);
++        cpu->accel->vtimer_masked = true;
++        return 0;
++    case HV_EXIT_REASON_CANCELED:
++        /* we got kicked, no exit to process */
++        return 0;
++    default:
++        g_assert_not_reached();
++    }
++
++    hvf_sync_vtimer(cpu);
++
++    return hvf_handle_exception(cpu, &hvf_exit->exception);
++}
++
+ static const VMStateDescription vmstate_hvf_vtimer = {
+     .name = "hvf-vtimer",
+     .version_id = 1,
 -- 
 2.51.0
 

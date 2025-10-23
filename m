@@ -4,64 +4,110 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65537CCD193
-	for <qemu-arm@archiver.kernel.org>; Thu, 23 Oct 2025 09:05:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B365CCD193
+	for <qemu-arm@archiver.kernel.org>; Thu, 23 Oct 2025 09:24:46 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vBrFl-000395-3T; Thu, 23 Oct 2025 05:05:01 -0400
+	id 1vBrYd-0007kk-K7; Thu, 23 Oct 2025 05:24:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tangtao1634@phytium.com.cn>)
- id 1vBrFg-00035s-VK; Thu, 23 Oct 2025 05:04:56 -0400
-Received: from sgoci-sdnproxy-4.icoremail.net ([129.150.39.64])
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <tangtao1634@phytium.com.cn>)
- id 1vBrFe-00045E-8a; Thu, 23 Oct 2025 05:04:56 -0400
-Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
- by hzbj-icmmx-6 (Coremail) with SMTP id AQAAfwCXnCSw7_looZVpAA--.32950S2;
- Thu, 23 Oct 2025 17:04:48 +0800 (CST)
-Received: from [10.31.62.13] (unknown [218.76.62.144])
- by mail (Coremail) with SMTP id AQAAfwB32eag7_lojwBnAA--.38881S2;
- Thu, 23 Oct 2025 17:04:39 +0800 (CST)
-Message-ID: <ee9e6c20-55c0-4636-a8d1-f616ad31a9e7@phytium.com.cn>
-Date: Thu, 23 Oct 2025 17:04:31 +0800
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vBrYZ-0007k9-Fg
+ for qemu-arm@nongnu.org; Thu, 23 Oct 2025 05:24:27 -0400
+Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vBrYV-0006iV-H9
+ for qemu-arm@nongnu.org; Thu, 23 Oct 2025 05:24:26 -0400
+Received: by mail-ej1-x62e.google.com with SMTP id
+ a640c23a62f3a-b3c2db014easo137543966b.0
+ for <qemu-arm@nongnu.org>; Thu, 23 Oct 2025 02:24:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1761211460; x=1761816260; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=wc/vWIbe7zNmH17tpBpu1vmNiEABiUvd2vn+iEYOxDg=;
+ b=XDPIPsydj0vNGjkq3CpeGqe2QULeaVtK5b+KGye/iYxpIpnyXmzLBmkyH4bc7KUN5r
+ qVVJWfN49xI9lH4hoR9rJDvjEAIrAPISMX8dzqj+FgBR1e4OSLEw9S1y1mAfmj0DM74S
+ lUGpYBIGM9DMYyt8arg2yte5TsbT0wrKKX5DCg3+1dOG929CM1kGJS58rYn6rFydSpkU
+ c8eTfshvjXXq+2YXS3WG6CoFb/kHi61dXM8RjvR7WAiQy7vMxXW01eVfBJmNklg9F/52
+ PbAsYYiUJATlyTpnG/9aKkg48KfJLqCvww7rv2T5yQWxGh9/meMXtwvYjd0axnajiUvt
+ reiQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1761211460; x=1761816260;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=wc/vWIbe7zNmH17tpBpu1vmNiEABiUvd2vn+iEYOxDg=;
+ b=d+TN+BtnedWpYKj2oGje8QnFnoyf2F3oBNHr3Vi/K4FrWupT2KDvbcVHHmvEpRvS5c
+ ONiJ+IR//kTp8OOIiOuisd2Jel8qkRSYaYC92z/wSuIRCyf744WiTp5ssKdTxnljg6S0
+ K+EXMCvMMWTjZ8XpMGVIOvmY/h/g6M4W2Vjgm3KwVdeqIMy/6rNsYGi4TY2wGXhAEWhJ
+ TWcK5xLcxl2oDQRzon9LV3QDw3b0O8Ny+wDOsWlAVKoIAx+VXgAbPzqyZ8Z/KE5MVyro
+ Pg/uGQ4SNv+gh4r/3X7OLq1GGYyOZOTXjgl9EGzfYCwvoiYciXWkMLYVxIzqzaoaOVrM
+ /oJg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCV063VE3b7aJqC62jf/eMZk7SGIK0/wR6+v57Q3RSHNXkcR1tvnsz2rTj5Adk4MtBju4PL0RznkHQ==@nongnu.org
+X-Gm-Message-State: AOJu0YwVRHl1VIfaYbg65ZP0j1lERuXQannnnpanrFo5zlJZ4Kbg0jeG
+ 1PfcJ/Li+RnuqksM4FMHf+Wn3RtidCPjYJUf1o6tmdoZ/fLQGbF3iacC
+X-Gm-Gg: ASbGncvRaElNAJ+Q7t+ieV/0HLytJz+sYIZ8w2Bc73NlflUfhLQpVgGZxylOtILHzf3
+ bwk1UD1SJg/8mTiYxHaLWfoakkLmOH6zVQBFn4i4m/9+gjnZFD4gz6nzzOeC+IRI5pkGWysu4K0
+ Qx1slobEBhNq8GvMDLOkhZMKcsn9qvDpz3l4UsLZppYHFINqCobdHyieGKoBOAXCcZ0LwRUAuhj
+ KtM2FLyXM0gd167wd2H9TnHeJ0/Y+VAinDvu/s9pdl6D+EzG6qdgIKIkMwknIYxD3RAWNZsy9CD
+ wSUtg0mzlZ52HwKjq3TM6crRDli/kc9XY8mDPcJznMhe3PoK0D7MSVvLUpt/5ydYx1lQU4nw3KA
+ xpXqJuopkWfhzEMG1jjmmsRVj345HnRSmJa4CFcuTVpibauHPqbksMsbpDCo+wPqxHJEMllVvSK
+ 4obRE0CFwU/y84NW+dxh3D9vqoJx0jMXq1amDL8pARvZc=
+X-Google-Smtp-Source: AGHT+IHU5Gei9CD4nq02yBKhEDZA0JJxDkKkZgFYiynYffZtcnsonISoZsbX4e2VEGaNNDX6TpUBgA==
+X-Received: by 2002:a17:907:1b1b:b0:b39:57ab:ec18 with SMTP id
+ a640c23a62f3a-b6d51c2f64amr167997066b.45.1761211460182; 
+ Thu, 23 Oct 2025 02:24:20 -0700 (PDT)
+Received: from ehlo.thunderbird.net (ip-109-41-112-116.web.vodafone.de.
+ [109.41.112.116]) by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-b6d511d012bsm182635966b.7.2025.10.23.02.24.18
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 23 Oct 2025 02:24:19 -0700 (PDT)
+Date: Thu, 23 Oct 2025 09:23:58 +0000
+From: Bernhard Beschow <shentey@gmail.com>
+To: =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org, Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ Mohamed Mediouni <mohamed@unpredictable.fr>
+CC: Alexander Graf <agraf@csgraf.de>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Cameron Esfahani <dirty@apple.com>, Mads Ynddal <mads@ynddal.dk>,
+ qemu-arm@nongnu.org, Ani Sinha <anisinha@redhat.com>,
+ Phil Dennis-Jordan <phil@philjordan.eu>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Sunil Muthuswamy <sunilmut@microsoft.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Yanan Wang <wangyanan55@huawei.com>,
+ =?ISO-8859-1?Q?Daniel_P=2E_Berrang=E9?= <berrange@redhat.com>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>, kvm@vger.kernel.org,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ =?ISO-8859-1?Q?Marc-Andr=E9_Lureau?= <marcandre.lureau@redhat.com>,
+ Pedro Barbuda <pbarbuda@microsoft.com>, Zhao Liu <zhao1.liu@intel.com>,
+ Roman Bolshakov <rbolshakov@ddn.com>
+Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_v7_24/24=5D_whpx=3A_apic=3A_use_non-deprec?=
+ =?US-ASCII?Q?ated_APIs_to_control_interrupt_controller_state?=
+In-Reply-To: <60cd413d-d901-4da7-acb6-c9d47a198c9c@linaro.org>
+References: <20251016165520.62532-1-mohamed@unpredictable.fr>
+ <20251016165520.62532-25-mohamed@unpredictable.fr>
+ <2cbd9feb-2c20-46e0-af40-0bd64060dfba@linaro.org>
+ <6982BC4E-1F59-47AD-B6E6-9FFF4212C627@gmail.com>
+ <60cd413d-d901-4da7-acb6-c9d47a198c9c@linaro.org>
+Message-ID: <0C41CA0E-C523-4C00-AD07-71F6A7890C0E@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC v2 0/2] hw/misc: Introduce a new SMMUv3 test framework
-To: Eric Auger <eric.auger@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini
- <pbonzini@redhat.com>, Fabiano Rosas <farosas@suse.de>,
- Laurent Vivier <lvivier@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Chen Baozi <chenbaozi@phytium.com.cn>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Jean-Philippe Brucker <jean-philippe@linaro.org>,
- Mostafa Saleh <smostafa@google.com>
-References: <20250930165340.42788-1-tangtao1634@phytium.com.cn>
-From: Tao Tang <tangtao1634@phytium.com.cn>
-In-Reply-To: <20250930165340.42788-1-tangtao1634@phytium.com.cn>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: AQAAfwB32eag7_lojwBnAA--.38881S2
-X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQAMBWj5PBkB+gAJsO
-Authentication-Results: hzbj-icmmx-6; spf=neutral smtp.mail=tangtao163
- 4@phytium.com.cn;
-X-Coremail-Antispam: 1Uk129KBjvJXoW3WrW8Jw4kZw4rWFW5Ww4DJwb_yoWxCF4rpF
- Z3Wa4ayF48JFn7Cr1xAw40vFy5Xws3Jw4UCr1fKw1xu3sxCFyvqFyxK34FyF95J39YvF1I
- vw4Utr1kWan0yFJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
- DUYxn0WfASr-VFAU7a7-sFnT9fnUUIcSsGvfJ3UbIYCTnIWIevJa73UjIFyTuYvj4RJUUU
- UUUUU
-Received-SPF: pass client-ip=129.150.39.64;
- envelope-from=tangtao1634@phytium.com.cn; helo=sgoci-sdnproxy-4.icoremail.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::62e;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x62e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -77,144 +123,43 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Gentle ping.
-
-Any feedback on this patch series would be appreciated.
 
 
-V2: 
-  https://lore.kernel.org/qemu-devel/20250930165340.42788-1-tangtao1634@phytium.com.cn/
+Am 23=2E Oktober 2025 06:33:18 UTC schrieb "Philippe Mathieu-Daud=C3=A9" <=
+philmd@linaro=2Eorg>:
+>On 20/10/25 12:27, Bernhard Beschow wrote:
+>>=20
+>>=20
+>> Am 16=2E Oktober 2025 17:15:42 UTC schrieb Pierrick Bouvier <pierrick=
+=2Ebouvier@linaro=2Eorg>:
+>>> On 10/16/25 9:55 AM, Mohamed Mediouni wrote:
+>>>> WHvGetVirtualProcessorInterruptControllerState2 and
+>>>> WHvSetVirtualProcessorInterruptControllerState2 are
+>>>> deprecated since Windows 10 version 2004=2E
+>>>>=20
+>>>> Use the non-deprecated WHvGetVirtualProcessorState and
+>>>> WHvSetVirtualProcessorState when available=2E
+>>>>=20
+>>>> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable=2Efr>
+>>>> ---
+>>>>    include/system/whpx-internal=2Eh |  9 +++++++
+>>>>    target/i386/whpx/whpx-apic=2Ec   | 46 +++++++++++++++++++++++++---=
+------
+>>>>    2 files changed, 43 insertions(+), 12 deletions(-)
+>>>=20
+>>> Reviewed-by: Pierrick Bouvier <pierrick=2Ebouvier@linaro=2Eorg>
+>>=20
+>> Couldn't we merge this patch already until the rest of the series is fi=
+gured out?
+>
+>OK if you provide your Tested-by tag (:
 
-V1: 
-  https://lore.kernel.org/qemu-devel/20250925153550.105915-1-tangtao1634@phytium.com.cn/
+Oh, I did for an older version of the series w/o this patch: <https://lore=
+=2Ekernel=2Eorg/qemu-devel/5758AEBA-9E33-4DCA-9B08-0AF91FD03B0E@gmail=2Ecom=
+/>
 
+I'll retest=2E
 
-On 2025/10/1 00:53, tangtao1634 wrote:
-> From: Tao Tang <tangtao1634@phytium.com.cn>
->
-> This patch series (V2) introduces several cleanups and improvements to the smmu-testdev device. The main goals are to refactor shared code, enhance robustness, and significantly clarify the complex page table construction used for testing.
->
-> Motivation
-> ----------
->
-> Currently, thoroughly testing the SMMUv3 emulation requires a significant
-> software stack. We need to boot a full guest operating system (like Linux)
-> with the appropriate drivers (e.g., IOMMUFD) and rely on firmware (e.g.,
-> ACPI with IORT tables or Hafnium) to correctly configure the SMMU and
-> orchestrate DMA from a peripheral device.
->
-> This dependency on a complex software stack presents several challenges:
->
-> * High Barrier to Entry: Writing targeted tests for specific SMMU
->      features (like fault handling, specific translation regimes, etc.)
->      becomes cumbersome.
->
-> * Difficult to Debug: It's hard to distinguish whether a bug originates
->      from the SMMU emulation itself, the guest driver, the firmware
->      tables, or the guest kernel's configuration.
->
-> * Slow Iteration: The need to boot a full guest OS slows down the
->      development and testing cycle.
->
-> The primary goal of this work is to create a lightweight, self-contained
-> testing environment that allows us to exercise the SMMU's core logic
-> directly at the qtest level, removing the need for any guest-side software.
->
-> Our Approach: A Dedicated Test Device
-> -------------------------------------
->
-> To achieve this, we introduce two main components:
->
-> * A new, minimal hardware device: smmu-testdev.
-> * A corresponding qtest that drives this device to generate SMMU-bound
->      traffic.
->
-> A key question is, "Why introduce a new smmu-testdev instead of using an
-> existing PCIe or platform device?"
->
-> The answer lies in our goal to minimize complexity. Standard devices,
-> whether PCIe or platform, come with their own intricate initialization
-> protocols and often require a complex driver state machine to function.
-> Using them would re-introduce the very driver-level complexity we aim to
-> avoid.
->
-> The smmu-testdev is intentionally not a conformant, general-purpose PCIe
-> or platform device. It is a purpose-built, highly simplified "DMA engine."
-> I've designed it to be analogous to a minimal PCIe Root Complex that
-> bypasses the full, realistic topology (Host Bridges, Switches, Endpoints)
-> to provide a direct, programmable path for a DMA request to reach the SMMU.
-> Its sole purpose is to trigger a DMA transaction when its registers are
-> written to, making it perfectly suited for direct control from a test
-> environment like qtest.
->
-> The Qtest Framework
-> -------------------
->
-> The new qtest (smmu-testdev-qtest.c) serves as the "bare-metal driver"
-> for both the SMMU and the smmu-testdev. It manually performs all the
-> setup that would typically be handled by the guest kernel and firmware,
-> but in a completely controlled and predictable manner:
->
-> 1.  SMMU Configuration: It directly initializes the SMMU's registers to a
->      known state.
->
-> 2.  Translation Structure Setup: It manually constructs the necessary
->      translation structures in memory, including Stream Table Entries
->      (STEs), Context Descriptors (CDs), and Page Tables (PTEs).
->
-> 3.  DMA Trigger: It programs the smmu-testdev to initiate a DMA operation
->      targeting a specific IOVA.
->
-> 4.  Verification: It waits for the transaction to complete and verifies
->      that the memory was accessed correctly after address translation by
->      the SMMU.
->
-> This framework provides a solid and extensible foundation for validating
-> the SMMU's core translation paths. The initial test included in this
-> series covers a basic DMA completion path in the Non-Secure bank,
-> serving as a smoke test and a proof of concept.
->
-> It is worth noting that this series currently only includes tests for the
-> Non-Secure SMMU. I am aware of the ongoing discussions and RFC patches
-> for Secure SMMU support. To avoid a dependency on unmerged work, this
-> submission does not include tests for the Secure world. However, I have
-> already implemented these tests locally, and I am prepared to submit
-> them for review as soon as the core Secure SMMU support is merged
-> upstream.
->
->
-> Changes from v1 RFC:
-> - Clarify Page Table Construction:
-> Detailed comments have been added to the page table construction logic. This is a key improvement, as the test setup extensively re-uses the same set of page tables for multiple translation stages and purposes (e.g., nested S1/S2 walks, CD fetch). The new comments explain this sharing mechanism, which can otherwise be confusing to follow.
->
-> - Refactor Shared Helpers:
-> The helper functions std_space_offset and std_space_to_str are now moved to a common header file. This allows them to be used by both the main device implementation (hw/misc/smmu-testdev.c) and its qtest (tests/qtest/smmu-testdev-qtest.c), improving code re-use and maintainability.
->
-> - Enhance Robustness:
-> Assertions have been added to ensure the device operates only in the expected Non-secure context. Additional conditional checks are also included to prevent potential runtime errors and make the test device more stable.
->
-> - Code Simplification and Cleanup:
-> Several functions that were redundant with existing macros for constructing Context Descriptors (CD) and Stream Table Entries (STE) have been removed. This simplifies the test data setup and reduces code duplication.
->
-> Other unused code fragments have also been removed to improve overall code clarity and hygiene.
->
-> Tao Tang (2):
->    hw/misc/smmu-testdev: introduce minimal SMMUv3 test device
->    tests/qtest: add SMMUv3 smoke test using smmu-testdev DMA source
->
->   docs/specs/index.rst             |   1 +
->   docs/specs/smmu-testdev.rst      |  45 ++
->   hw/misc/Kconfig                  |   5 +
->   hw/misc/meson.build              |   1 +
->   hw/misc/smmu-testdev.c           | 943 +++++++++++++++++++++++++++++++
->   include/hw/misc/smmu-testdev.h   | 402 +++++++++++++
->   tests/qtest/meson.build          |   1 +
->   tests/qtest/smmu-testdev-qtest.c | 238 ++++++++
->   8 files changed, 1636 insertions(+)
->   create mode 100644 docs/specs/smmu-testdev.rst
->   create mode 100644 hw/misc/smmu-testdev.c
->   create mode 100644 include/hw/misc/smmu-testdev.h
->   create mode 100644 tests/qtest/smmu-testdev-qtest.c
->
-
+Best regards,
+Bernhard
 

@@ -4,119 +4,114 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5AFCDCCD193
-	for <qemu-arm@archiver.kernel.org>; Thu, 23 Oct 2025 06:56:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2BC9CCD193
+	for <qemu-arm@archiver.kernel.org>; Thu, 23 Oct 2025 08:48:27 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vBpEr-0002Tp-1W; Thu, 23 Oct 2025 02:55:57 -0400
+	id 1vBqzK-0007cq-Cj; Thu, 23 Oct 2025 04:48:04 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vBpEp-0002St-D0
- for qemu-arm@nongnu.org; Thu, 23 Oct 2025 02:55:55 -0400
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
+ id 1vBqzG-0007bh-4M
+ for qemu-arm@nongnu.org; Thu, 23 Oct 2025 04:47:59 -0400
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vBpEm-0003rE-FD
- for qemu-arm@nongnu.org; Thu, 23 Oct 2025 02:55:55 -0400
-Received: by mail-wm1-x32a.google.com with SMTP id
- 5b1f17b1804b1-46e6a689bd0so4115335e9.1
- for <qemu-arm@nongnu.org>; Wed, 22 Oct 2025 23:55:52 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
+ id 1vBqzE-0002kZ-3a
+ for qemu-arm@nongnu.org; Thu, 23 Oct 2025 04:47:57 -0400
+Received: by mail-wr1-x42e.google.com with SMTP id
+ ffacd0b85a97d-3ee15b5435bso333203f8f.0
+ for <qemu-arm@nongnu.org>; Thu, 23 Oct 2025 01:47:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1761202551; x=1761807351; darn=nongnu.org;
+ d=linaro.org; s=google; t=1761209273; x=1761814073; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=yBjsiZOdEn77FHXbaFH/pyzY5kAYbLCRT+sJz0dq6fA=;
- b=MAl0EdifKB7nEfBtFd4hmJ4NHsVqUegp720GrbjTUGvyCUMMC/sSoebrAhUxBuuceq
- mYSlkBJzXrDb1XG5t/73Wmp9T/kPygmYbZ5iJdbInvW/3oMhSswTFconW+4fCKW5vYgs
- rzTJbSG1jpwblLkjxNVwe5JK2ps/hxv6DcJEGK35B3Tloj/x7UplzX+Us0Hez13jNQOX
- PzWzYg0diG8WxGCUVbI92bEU6WrzEB57DU+FXHNUsWKEpkQRki4ZS2rclW9C4FOPea+b
- +062MqgYokmahzDF8VawksuMzdC2l7siO06+TVOV9rbNxECJcPKKqcNXJIceYKJxCApo
- A/CA==
+ bh=Rz8/K0tEMyMdFk9Zgt2mrSe6G0rqUn802kF8LFl6g/o=;
+ b=USCFQHox6j3EMxFHJ2AvEOzfRZWjcAHXRxxLZkdaLLYwpbY3OYYmZaIsdLi8Aw5LGo
+ sRdCkRU7Ac9AbwVMpRcHtZ6uW9njRa4AIl32yF4dMeiR6XY0b/Wse53RuV8Yp7eNSsVX
+ gcSDibp4o4L2CdctYzfeIV4J3GLAI22so7ShmDlwXcUEHW7WiOM4n8+dShB6DUPy1Myd
+ q781mPqXuxXMs2ZVlW9A/G2CeU43hol8Ulhcpc9bbosorOZ/WQGu7i7l1IKYbhNjDPcS
+ 4/j3zfWRA7SbSD+ori/6GZciJzyYwqwX8ZLGCA71g2fGAR8m42EBk/sn7MQvllyK8KL9
+ Vp4Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761202551; x=1761807351;
+ d=1e100.net; s=20230601; t=1761209273; x=1761814073;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=yBjsiZOdEn77FHXbaFH/pyzY5kAYbLCRT+sJz0dq6fA=;
- b=vaXhNpJHwNgE1K90xuC9mBo8GNtbtAShusciUlhHjlF4yGdBNufVXmXA5F8vYLNmo7
- lHEHpNbbHJgTGAg6dsAHF3d0pDSXhZ1W9V5VBD+/DfpF3s99lE5+Cv5wQtzXABSrfKCy
- 1Hqjcel39UryWhdl3r5D7OVB/ptWtYRirpB664ynI/Z4l0ezAEoo8BkuUMdkAQQK6TX4
- FuFcbSbzTx/q84gObgf9syCVSYsxIGqyOb8+VQRvS8EcEeiNcHh6hCIPVq56vaaxxitd
- l3/qUFACABI+3i/R5JG0F8ciARZGliSTh+/BhvApfP8l7egFPhZ8gexA4KhPcMPGm13+
- RxCw==
+ bh=Rz8/K0tEMyMdFk9Zgt2mrSe6G0rqUn802kF8LFl6g/o=;
+ b=QPMBuFp3g6iTjCBtXRQfdjqjSUpR2PrsEGTJ7FmVEsWGgwQ3Y+HIvKhXiLGt9sVrX3
+ 9k8kXvna01I158MT8IssvKiaakd78ElVs2lMY0gcEX17v8appT60FZwBsuIDj6TQLLgX
+ JnYbIXKItNep5q6G20+kIowiDbE09/0/xwAz/V2ZYba844xwuCJyoC9jkTxCjRyIauTu
+ 6JoBHr+ZZYv+kjZKOODw4kRutys6h8kZpbxYpGieuXimDQZ2HJJNrJ4K4mPsiXmTf5I1
+ j4m4/QWy0TVeMA6krqBCtVu0eNWeXSuEiuvcPmEpmxm9deMwtpg4PyDLzlpcnTyTe3oe
+ +/kw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVWIoSBLIsjeWf8qAauf8XE8YWiGYLqU/Mk75n0X0O6GBbtsXTkAThuKq1UkNFCjDv4qkNP+jFtHA==@nongnu.org
-X-Gm-Message-State: AOJu0Yzs1HgwaggZUIVTtPrs/0zPJIqi7+15ZimaoNgyI/AQC5m8gzql
- N7u/VRgvtPQBjy0RJls4BqY+bz+5QGB77Bwy7Pr45AKGoz4KUO09IjCiOZ6S86X2LAc=
-X-Gm-Gg: ASbGncvKzXifE8bTgCD7fD0VTArN/NelqtIKTYr11mDwFEcpKzoqAdJ7lga/DfXhsjA
- NNrDvUirCwgpZq7HnEPq6N/+7ymrENaAyNFDN7PHTk8VtHU27Oeo55bam500vWeAVJiIyuB8QaZ
- dfhWmv1TknSSkGbRPZ6c/gS1YPZSsyDqFgRYn4aS5jSLBm3/g3ze6qR23ervFu7NAg/cDXKg2pV
- 2kzZT9UWemPIDkrcpL8YsFysOdNg8QVQHma/hZ51qPWfKWa6hZ+dPaZ6FbBLzeRuAE6ONGJ4GHv
- v8TwiYW/rodD3ie81JNmcw5Ye2nUnhthNa5aVozdWMOOojBFT4z5XfBdwitrgLJCW0nb4hU74Eh
- bvZzekwkGkGo50x8JCokBe2q7Qnh8Bq1yerEm78DCnnJQRwVN+loUb1WKHm0Vsa415QQk13Ltal
- NqO/Rvcm980HqU1b1wy+JyM/HWkPfY0zKM3UAaKSYIHD6KDks91VlxJQ==
-X-Google-Smtp-Source: AGHT+IFc7GZgQ+HjgYh3w9CjXImj+3Na+YnYobgCi3dJmLowW01x3YzXkb4t8JrWd9L/fU1Q9uMKFQ==
-X-Received: by 2002:a05:600c:4ec9:b0:46e:2562:e7b8 with SMTP id
- 5b1f17b1804b1-471179123admr170521105e9.21.1761202550629; 
- Wed, 22 Oct 2025 23:55:50 -0700 (PDT)
-Received: from [192.168.69.201] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-429897ff3f5sm2354381f8f.22.2025.10.22.23.55.48
+ AJvYcCXrwiMhRugXqjzdYdx7jsJfZW+IP+Js/qC9Rp0BXX37Mq1Pj8m2gNwNrGTEOUAVnXENXHwm5b02Vw==@nongnu.org
+X-Gm-Message-State: AOJu0YwnNSSzXSDTjT15IZw2JqBgljdZR6OPmHW0wDeaiUi+7bgcMu//
+ u6GW36lMOZWE12YGWDz3Y1KW7IoTeTl+ZNCfxA+Hu8aw5rG9ingzqfhaTf5tA/qi4Bo=
+X-Gm-Gg: ASbGncv5gifHhp7MP3BlcCx0EIBBz9nvVdzACjE+PUi8gsUMsx8Sq5M93TS0N8/es31
+ QxbwL5swJuElhD04g4nEVcRdG+VhhcV7uHoRhoIULctFQgFxgvYSc04f2idkzxpfdaZlKbYCIvm
+ dGT0aQRGLz/sEITCPO9yRixPLW4QOjLncZADGiCyN+UZWZkQIySVKNudGlt0BFLsNl2M97YNTvX
+ oz4NyR9tCkgnLVaCQU7UtSKjImevX44vj9ZTZFgqnlMW52VCa1zQunIzgtQ0BPTaIiSCg7nIzAq
+ GZYG8Y+3YkcA3udM+Ic8Q6pCbcOmDYzQPPE881LbVBcS0TYgzCTai8mNQVW+59Eish8z8m6Inp0
+ zqMimy7aY+nfy3qdEZ2KrCqz4Sm5D6jj5Qqy0OCKlfVH7JF+UnGF8lZGPb4FMy59WBJ2JtuyFBg
+ C6FHqM1rFAXYW5nuRp4004tRVJrp/duyFBwg5N7jgVSLCHbH8qh/MFBHczZ8gotsn6VA==
+X-Google-Smtp-Source: AGHT+IFDm4qYEEpbTlOdExTrEq2HLGdn+RSQQuCW6SQSu4OKkkIkvK0iQV/mXC3K8TkmaNLnEhoL1w==
+X-Received: by 2002:a5d:5f93:0:b0:427:4b0:b3f9 with SMTP id
+ ffacd0b85a97d-4298a04071bmr981873f8f.3.1761209273145; 
+ Thu, 23 Oct 2025 01:47:53 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:404:4d10:9f16:e9b1:dc97:28e6?
+ ([2a01:e0a:404:4d10:9f16:e9b1:dc97:28e6])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-429898adf78sm3002027f8f.32.2025.10.23.01.47.49
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 22 Oct 2025 23:55:50 -0700 (PDT)
-Message-ID: <c013adf2-9620-4766-8f5b-1000ed1a494a@linaro.org>
-Date: Thu, 23 Oct 2025 08:55:47 +0200
+ Thu, 23 Oct 2025 01:47:52 -0700 (PDT)
+Message-ID: <67daa7b7-7411-4207-bae3-0bccf33f77f5@linaro.org>
+Date: Thu, 23 Oct 2025 10:47:46 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] remove redundant typedef when use
- OBJECT_DECLARE_SIMPLE_TYPE
+Subject: Re: [PATCH v7 24/24] whpx: apic: use non-deprecated APIs to control
+ interrupt controller state
 Content-Language: en-US
-To: Nguyen Dinh Phi <phind.uet@gmail.com>,
- "Gonglei (Arei)" <arei.gonglei@huawei.com>,
- Zhenwei Pi <pizhenwei@bytedance.com>, Alberto Garcia <berto@igalia.com>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Stefano Stabellini <sstabellini@kernel.org>,
- Anthony PERARD <anthony@xenproject.org>, Paul Durrant <paul@xen.org>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Bernhard Beschow <shentey@gmail.com>, Jason Wang <jasowang@redhat.com>,
- Huacai Chen <chenhuacai@kernel.org>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Nicholas Piggin <npiggin@gmail.com>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>,
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org,
+ Mohamed Mediouni <mohamed@unpredictable.fr>
+Cc: Alexander Graf <agraf@csgraf.de>,
  Richard Henderson <richard.henderson@linaro.org>,
- Helge Deller <deller@gmx.de>, Tyrone Ting <kfting@nuvoton.com>,
- Hao Wu <wuhaotsh@google.com>, Aditya Gupta <adityag@linux.ibm.com>,
- Glenn Miles <milesg@linux.ibm.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <alistair.francis@wdc.com>, Weiwei Li
- <liwei1518@gmail.com>, Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, Fam Zheng <fam@euphon.net>,
- Alex Williamson <alex@shazbot.org>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
- <clg@redhat.com>, Laurent Vivier <lvivier@redhat.com>,
- Amit Shah <amit@kernel.org>, "Michael S. Tsirkin" <mst@redhat.com>,
- Pavel Pisa <pisa@cmp.felk.cvut.cz>,
- Francisco Iglesias <francisco.iglesias@amd.com>,
- Vikram Garhwal <vikram.garhwal@bytedance.com>
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
- xen-devel@lists.xenproject.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- qemu-riscv@nongnu.org
-References: <20251023063429.1400398-1-phind.uet@gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20251023063429.1400398-1-phind.uet@gmail.com>
+ Cameron Esfahani <dirty@apple.com>, Mads Ynddal <mads@ynddal.dk>,
+ qemu-arm@nongnu.org, Ani Sinha <anisinha@redhat.com>,
+ Phil Dennis-Jordan <phil@philjordan.eu>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Sunil Muthuswamy <sunilmut@microsoft.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Yanan Wang <wangyanan55@huawei.com>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>, kvm@vger.kernel.org,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ Pedro Barbuda <pbarbuda@microsoft.com>, Zhao Liu <zhao1.liu@intel.com>,
+ Roman Bolshakov <rbolshakov@ddn.com>
+References: <20251016165520.62532-1-mohamed@unpredictable.fr>
+ <20251016165520.62532-25-mohamed@unpredictable.fr>
+ <2cbd9feb-2c20-46e0-af40-0bd64060dfba@linaro.org>
+ <6982BC4E-1F59-47AD-B6E6-9FFF4212C627@gmail.com>
+ <60cd413d-d901-4da7-acb6-c9d47a198c9c@linaro.org>
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+In-Reply-To: <60cd413d-d901-4da7-acb6-c9d47a198c9c@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-wr1-x42e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -132,37 +127,33 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 23/10/25 08:34, Nguyen Dinh Phi wrote:
-> When OBJECT_DECLARE_SIMPLE_TYPE is used, it automatically provides
-> the typedef, so we don’t have to define it ourselves.
+On 2025-10-23 08:33, Philippe Mathieu-Daudé wrote:
+> On 20/10/25 12:27, Bernhard Beschow wrote:
+>>
+>>
+>> Am 16. Oktober 2025 17:15:42 UTC schrieb Pierrick Bouvier <pierrick.bouvier@linaro.org>:
+>>> On 10/16/25 9:55 AM, Mohamed Mediouni wrote:
+>>>> WHvGetVirtualProcessorInterruptControllerState2 and
+>>>> WHvSetVirtualProcessorInterruptControllerState2 are
+>>>> deprecated since Windows 10 version 2004.
+>>>>
+>>>> Use the non-deprecated WHvGetVirtualProcessorState and
+>>>> WHvSetVirtualProcessorState when available.
+>>>>
+>>>> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+>>>> ---
+>>>>     include/system/whpx-internal.h |  9 +++++++
+>>>>     target/i386/whpx/whpx-apic.c   | 46 +++++++++++++++++++++++++---------
+>>>>     2 files changed, 43 insertions(+), 12 deletions(-)
+>>>
+>>> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+>>
+>> Couldn't we merge this patch already until the rest of the series is figured out?
 > 
-> Signed-off-by: Nguyen Dinh Phi <phind.uet@gmail.com>
-> ---
->   backends/cryptodev-lkcf.c               | 1 -
->   hw/char/ipoctal232.c                    | 9 ++++-----
->   hw/char/xen_console.c                   | 1 -
->   hw/dma/pl330.c                          | 6 ++----
->   hw/net/fsl_etsec/etsec.h                | 1 -
->   hw/net/xen_nic.c                        | 2 --
->   hw/pci-host/bonito.c                    | 7 +++----
->   hw/ppc/pef.c                            | 1 -
->   hw/usb/dev-mtp.c                        | 7 +++----
->   hw/usb/dev-uas.c                        | 7 +++----
->   include/hw/char/serial.h                | 1 -
->   include/hw/input/lasips2.h              | 6 ++----
->   include/hw/misc/auxbus.h                | 7 +++----
->   include/hw/misc/bcm2835_mphi.h          | 7 ++-----
->   include/hw/misc/npcm7xx_pwm.h           | 7 ++-----
->   include/hw/pci-host/pnv_phb3.h          | 6 ++----
->   include/hw/pci-host/pnv_phb4.h          | 8 ++++----
->   include/hw/ppc/mac_dbdma.h              | 7 +++----
->   include/hw/riscv/iommu.h                | 3 ---
->   include/hw/scsi/scsi.h                  | 7 +++----
->   include/hw/vfio/vfio-container-legacy.h | 5 ++---
->   include/hw/virtio/virtio-serial.h       | 5 ++---
->   include/net/can_emu.h                   | 7 +++----
->   23 files changed, 43 insertions(+), 75 deletions(-)
+> OK if you provide your Tested-by tag (:
+> 
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-
+I did in the past, but I'm not sure it was reapplied by Mohamed.
+In all cases,
+Tested-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 

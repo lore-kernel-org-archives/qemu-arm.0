@@ -4,117 +4,149 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BFC44CCD1A5
-	for <qemu-arm@archiver.kernel.org>; Fri, 24 Oct 2025 06:56:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5DBD0CCD1AB
+	for <qemu-arm@archiver.kernel.org>; Fri, 24 Oct 2025 08:47:41 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vCBiE-00077u-7t; Fri, 24 Oct 2025 02:55:46 -0400
+	id 1vCDRo-0007Bf-0O; Fri, 24 Oct 2025 04:46:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1vCBi9-00077V-LR
- for qemu-arm@nongnu.org; Fri, 24 Oct 2025 02:55:42 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
+ id 1vCDRW-0006tk-S8; Fri, 24 Oct 2025 04:46:44 -0400
+Received: from mail-westcentralusazlp170100005.outbound.protection.outlook.com
+ ([2a01:111:f403:c112::5] helo=CY7PR03CU001.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1vCBi5-0006cS-GH
- for qemu-arm@nongnu.org; Fri, 24 Oct 2025 02:55:41 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1761288935;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=qk/1K0avWi1fwiLFQ6xtzNkb1QuApfY9mW8p4gvIfN4=;
- b=PKXTzejjOKVDBfQyVANK6elK56JxpMTp38AMjqQ00/c0e1pJWPtkrOjFtPaLRVUdmW+PSj
- Xl/zuwlAiGjS1eGfO9ogROiRd8o8Y4XFjx16Qrr26OQ0xu/qRB8I4dflGwsP/qVeq4jqei
- 0Oeb9gxT28IVo58Zr3TJ7v7i282fsWU=
-Received: from mail-pj1-f69.google.com (mail-pj1-f69.google.com
- [209.85.216.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-629-2CH3GVTWP0q2LSlLW3fVzg-1; Fri, 24 Oct 2025 02:55:32 -0400
-X-MC-Unique: 2CH3GVTWP0q2LSlLW3fVzg-1
-X-Mimecast-MFC-AGG-ID: 2CH3GVTWP0q2LSlLW3fVzg_1761288931
-Received: by mail-pj1-f69.google.com with SMTP id
- 98e67ed59e1d1-33bb3b235ebso3861879a91.1
- for <qemu-arm@nongnu.org>; Thu, 23 Oct 2025 23:55:32 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761288931; x=1761893731;
- h=content-transfer-encoding:in-reply-to:content-language:references
- :cc:to:from:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=qk/1K0avWi1fwiLFQ6xtzNkb1QuApfY9mW8p4gvIfN4=;
- b=FZvUs0nrqBofmCwUYPgHwlz0z8q3XD9jh+WjRiHaGJaT+WwaINA5AoPo26tJst8HHO
- 4c6ux8FYYmm611Nxg4KoKblUdaVrNTiHy6l93oXbw/w0igI92zZQix6CPsW14I+kcNNL
- QS2Q9aVFqxInE+2vyJY6YCrb2mymtBb5DRQNpWprRaBPRD6J0o9t1PAOj8vyKlsg7HJn
- LJHbtLwoi/Bn/lekk9inxRy6skKNgAleSk6vomLnGBPKxD5NnrHUWAqKhasLCytYDEh5
- I9ZvPpsGUusLu3aEPG0DwTBnV7RW3bFsFTnR3n7G82NCbmLWq8zoTRt6053fN+RoCz3k
- vjTg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCV4FLRwSodhc1+2sTbr/FnB0w/zNopVUbwhZ+SlchHAkVRK7v7EOjmMVQBqSM8/euBwBJ+mHDgmZQ==@nongnu.org
-X-Gm-Message-State: AOJu0YwKcK/b8eaNZTU4D3nyVvtFfuzhvHtEQ35Io7ekRh8EueiH90wo
- gKF6ddVmdGA39idsqS6X1lOEklDCtPgW3rmZ9uwINH14//Qm9/nWqkFsyXh9l6efnOECVcorLJU
- f2Z8tp1HLBVGY7LFgH5pSzHhC8y/vgQofYQgop5q0dPd0uykw9UwiDQ==
-X-Gm-Gg: ASbGnctboRiBvJW8t4JvXawAsXeWig38OrKwd4LHarSfiS7Cf27pmLUGGoWFcI/3JG8
- poLE2/t3gfZnVwIkP/z7fNE2hlmwC64lkNVaAa/8EKzLkhS7xFgzLetl6SzAZz2RsJ4bK3eztqp
- Ha/WYa6VQqU3eEdXWPxa9Jz1nUpiPrHZEiawtImhUhDIgAhcMAx3SG1aCoDY94BC0JFAT0vO+FQ
- AAKZUvNf5biDSIIn7vS6MQcE+l3gR1quAoBkNGIa9PDFurAvFYCZeJmGa82BY3jK2yKfbJoIsMm
- 5PglyMlL4APnP4BEhppKSd9zQL7dN/OwWNWUsPf/yODxlhF/nWYw/hI5+pfo2pcbuFXQw6AkXcG
- Lw7m7Ag8PjRRwALrrw+5VvvftlJ0NKwUQ7Qa+H8o=
-X-Received: by 2002:a17:902:cec6:b0:27e:f201:ec94 with SMTP id
- d9443c01a7336-2948b98294amr18185165ad.18.1761288931170; 
- Thu, 23 Oct 2025 23:55:31 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGgef95mK+Ki2hx1NleNTDyL0rmdqa3EraCCc9f9J5a/5oLh2Z4mfb5VfE8OmNXFAdv4TGihQ==
-X-Received: by 2002:a17:902:cec6:b0:27e:f201:ec94 with SMTP id
- d9443c01a7336-2948b98294amr18184875ad.18.1761288930747; 
- Thu, 23 Oct 2025 23:55:30 -0700 (PDT)
-Received: from [192.168.68.51] (n175-34-62-5.mrk21.qld.optusnet.com.au.
- [175.34.62.5]) by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2946ddee569sm44681375ad.31.2025.10.23.23.55.16
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 23 Oct 2025 23:55:30 -0700 (PDT)
-Message-ID: <f6c6abf0-e57c-4f67-9289-371196d062a5@redhat.com>
-Date: Fri, 24 Oct 2025 16:55:14 +1000
+ (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
+ id 1vCDRT-0006pt-Sy; Fri, 24 Oct 2025 04:46:38 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=s+BdsvlGhbIz1BofAfTapqGJfucwjXa7LV8frbR2dyRKRws6ESErc1Z7lv97uQTe4zJxwtE1w68SijZlPOJU5o6UXDTWvxm7SLuqM9xzpDwpMrCe7LwRXpn4NtIcnI3fwFdj5b6MUHORX65XIZ0GuqTK1LGU4t8fFkVoSR/splNCjTIVWtRko2c+YGv/uosDkRfhYkyKf7sHG9Y5gkTNAAYp2yTpapP7OD1/5YCKBhZrQTgXId0CmRN1qc7+hV3loWw0683WwnqnJtnWGJmHHBRbCRJChnlUHOThImPg3us/HfNO4OMaqIhijuTvlev84KWmmqbI2T7iRwoSSH43JA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=TAITzpvevrTbO6jaKcE0muCh/s09+Nbx6Ga9bQSYroM=;
+ b=P/RZfG9W/GuXmD/X8NMPjzLostKExMPqC9whNzByTFRZV6Zr/NnMN/mFJF60u46OJ0UGAs30fqbaYI45QQr6n3IeD6O/b7TKGgnEwqsPBzAcE0RoJybXgmLuRhjIn8HbetqFq2OcQNyizd++ONSKZIqSp9FzVMihsFEZ8/m/Xe0C85pxJmjJZDppV9PS7iQMYmYGy8lPTjnt3pdc57RIHr5Ggx4InotIBbvqPxyAxeQOe1YlUb1FtWRdlbXvYC7bgn0AjQMRlbcVSOmG4KJ78SmCG/C8//yxe3ezOIVizrWgE4VxTvsuFQBojsVLomgwa+edEpFP6kGXrfVTev7yyA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 216.228.117.160) smtp.rcpttodomain=nongnu.org smtp.mailfrom=nvidia.com;
+ dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
+ dkim=none (message not signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=TAITzpvevrTbO6jaKcE0muCh/s09+Nbx6Ga9bQSYroM=;
+ b=EWDDFSj87qUxjwqxiJ/oSoYB6rAUanzRIX2IojQP04UtxBn7p+qI0efHcmQaovdcyaOsE08k4/7YBdraLBkdLkIN7xUKujJqXMQwK91hotH80dJ0VtqUIIh0fPXe8T7hql6Q8vkY7WoJYs5BSWei4l17MFKg8VxhqJRsLih9t1h8bbvqXHkRef/sH4ekhVHddagkcRin0MVm+hMzJfAQvP6/1AjTeyf8bFf7pkg7TqJgWAscvodjWe6OGEnomIUzuvCL6ZTgxGKhr7dWYXNejQrHXJ80Eo7LI6mtmEmF20LGGjh6lTyrFRZfFqOj1UAwBmOhbVfJ2xi+v9RYu+pWpQ==
+Received: from MN0P220CA0010.NAMP220.PROD.OUTLOOK.COM (2603:10b6:208:52e::20)
+ by IA1PR12MB9064.namprd12.prod.outlook.com (2603:10b6:208:3a8::19)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9253.12; Fri, 24 Oct
+ 2025 08:46:26 +0000
+Received: from BL02EPF0002992B.namprd02.prod.outlook.com
+ (2603:10b6:208:52e:cafe::34) by MN0P220CA0010.outlook.office365.com
+ (2603:10b6:208:52e::20) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.9253.12 via Frontend Transport; Fri,
+ 24 Oct 2025 08:46:25 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.160)
+ smtp.mailfrom=nvidia.com;
+ dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=nvidia.com;
+Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
+ 216.228.117.160 as permitted sender) receiver=protection.outlook.com;
+ client-ip=216.228.117.160; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (216.228.117.160) by
+ BL02EPF0002992B.mail.protection.outlook.com (10.167.249.56) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.9253.7 via Frontend Transport; Fri, 24 Oct 2025 08:46:26 +0000
+Received: from rnnvmail201.nvidia.com (10.129.68.8) by mail.nvidia.com
+ (10.129.200.66) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.34; Fri, 24 Oct
+ 2025 01:46:10 -0700
+Received: from NV-2Y5XW94.nvidia.com (10.126.231.35) by rnnvmail201.nvidia.com
+ (10.129.68.8) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20; Fri, 24 Oct
+ 2025 01:46:07 -0700
+From: Shameer Kolothum <skolothumtho@nvidia.com>
+To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
+CC: <eric.auger@redhat.com>, <peter.maydell@linaro.org>,
+ <nicolinc@nvidia.com>, <ddutile@redhat.com>, <nathanc@nvidia.com>,
+ <mochs@nvidia.com>, <jonathan.cameron@huawei.com>
+Subject: [PATCH v2] docs/system/arm/virt: Document user-creatable SMMUv3
+Date: Fri, 24 Oct 2025 09:43:43 +0100
+Message-ID: <20251024084350.252702-1-skolothumtho@nvidia.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH RFC V6 00/24] Support of Virtual CPU Hotplug-like Feature
- for ARMv8+ Arch
-From: Gavin Shan <gshan@redhat.com>
-To: salil.mehta@opnsrc.net, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- mst@redhat.com
-Cc: salil.mehta@huawei.com, maz@kernel.org, jean-philippe@linaro.org,
- jonathan.cameron@huawei.com, lpieralisi@kernel.org,
- peter.maydell@linaro.org, richard.henderson@linaro.org, imammedo@redhat.com,
- armbru@redhat.com, andrew.jones@linux.dev, david@redhat.com,
- philmd@linaro.org, eric.auger@redhat.com, will@kernel.org, ardb@kernel.org,
- oliver.upton@linux.dev, pbonzini@redhat.com, rafael@kernel.org,
- borntraeger@linux.ibm.com, alex.bennee@linaro.org,
- gustavo.romero@linaro.org, npiggin@gmail.com, harshpb@linux.ibm.com,
- linux@armlinux.org.uk, darren@os.amperecomputing.com,
- ilkka@os.amperecomputing.com, vishnu@os.amperecomputing.com,
- gankulkarni@os.amperecomputing.com, karl.heubaum@oracle.com,
- miguel.luis@oracle.com, zhukeqian1@huawei.com, wangxiongfeng2@huawei.com,
- wangyanan55@huawei.com, wangzhou1@hisilicon.com, linuxarm@huawei.com,
- jiakernel2@gmail.com, maobibo@loongson.cn, lixianglai@loongson.cn,
- shahuang@redhat.com, zhao1.liu@intel.com
-References: <20251001010127.3092631-1-salil.mehta@opnsrc.net>
- <b1c0a0a8-3b94-47ee-ab8b-e42099f3f1a8@redhat.com>
-In-Reply-To: <b1c0a0a8-3b94-47ee-ab8b-e42099f3f1a8@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: HF4So7EhaEKp5IfiH00H2Nuo1ymQ6CdAZBWNPzVbHvc_1761288931
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=gshan@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Originating-IP: [10.126.231.35]
+X-ClientProxiedBy: rnnvmail203.nvidia.com (10.129.68.9) To
+ rnnvmail201.nvidia.com (10.129.68.8)
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: BL02EPF0002992B:EE_|IA1PR12MB9064:EE_
+X-MS-Office365-Filtering-Correlation-Id: f3f36a74-7b0a-423f-49ac-08de12d9d18b
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|36860700013|82310400026|376014|1800799024; 
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?bFhzMzVmQTQ4WTNhd09hTUxRRVVjcXNONHhvYzZOVUFNb0ZDYWxXVTV2VzdW?=
+ =?utf-8?B?WDFpTnhhbHhqMmxiK2h0VWhPeUpCTDFiaVNDZW9jVnBQMDMxTXdQQW5EZDdR?=
+ =?utf-8?B?ZTRVS2l3WGhscnRSUWRObC9MMGpuZ2tqOE1abHU5UVJpM0x3UTJxL0Vva3M5?=
+ =?utf-8?B?Q1NvOGxQNWVBUGFpZ2xFUDV3NUNJazNVMDBYZWJiSmczNTBHR2JIbFlCTXlD?=
+ =?utf-8?B?eGpKUDFqbCtLL203UWM1bHNCRWRXdFVrRVRMSmRsMkR4dTZVRUZpRFN6MllD?=
+ =?utf-8?B?eEhYc1Z1aFZzb2FreEtPTkdpTVVDR0JyK2tOM2ZuT3UzQnl4d0lpeWVZbDBG?=
+ =?utf-8?B?R2Rmc3o0YTgxZk5pazNDWEZKZVhJb2dxWmxMNGs3UWdBWlZVRk5MNEk2bTl2?=
+ =?utf-8?B?Vy8vemFwWHllNDBubEc0L3BBL1JMYWxkNTMzK241K2k2UmppUTJTL25saEpJ?=
+ =?utf-8?B?aEhnSkJkK0IrdVd3S0lJRVFTbndJbTQzTzREclpsYWRLdzNiMExyWjdsV01M?=
+ =?utf-8?B?OTNKNVJVdlhzRFRraFBwV01PYUYveEk4MnNwbkxxZGJ1VWdqcXAvM1l6K09Y?=
+ =?utf-8?B?a1lXWndVZXZOQS9qbzdJc0wzYk9JajR0UGRsSUhWSlhHNTZIM1c2WUpHcHNF?=
+ =?utf-8?B?V0FxWDNZV2l1RDhTME03cjZJREl3NXpvM00xeDNIZktnL3BRREZEUWx1dmVp?=
+ =?utf-8?B?ZDE3bmhScytJdG5LNThVRjg1cFJUemIzR1hDejFaNS9Db2tQUC9GclJtTUI3?=
+ =?utf-8?B?QVJwNXhhY2tucnBtTkhpYUxVTjR6eXhhc2lFbkhwc2Y2WUJncUdzTWpOVEY2?=
+ =?utf-8?B?SFVZRjhwallvbFZEVXJ1RXZaR2wweFJUblFTdENmd2JDMUxNZkVTa2JVU28z?=
+ =?utf-8?B?a0dKRUZHemp6akFEbWxkZ3RJUmxWQ25sbTRzZzhkTDBjdzZIMVcwT2NBMkU4?=
+ =?utf-8?B?UXd3dkwvaTBTVmxJNTA0c2RhZWpXckQ0SmlHZG5Ma3hndXNWdkRVZTlMUVR4?=
+ =?utf-8?B?ejI0NjhOdU5ZL3dGclZzTDgxcmpqNFlBOENUUVVOU2UvcERWK3RRaFlVM09w?=
+ =?utf-8?B?aG00c3l6SGFNZ1RQRjE3cFhBbThsVUprMGh4dVNDZFVVRUQydEthY1lrcFYy?=
+ =?utf-8?B?OWxUVHJkajF5VFNCbGI0SHJjb2ZhNGhJc1RHTU5nSWRYaHJXSnJieVB4bHBU?=
+ =?utf-8?B?VDBvVDNmZm4zV0xLZy9KRXA3MWpkQXpMTDZTcDlNSjU2QjhVdlF0ZnB6MGhs?=
+ =?utf-8?B?TWd0UzNwNm5ZM1dCNUVjem01YXNJVUJOckJMblpneHgyMFVra1lzOG5aRjJq?=
+ =?utf-8?B?MlFteHF0NXo4blFiQ1pIdGZqekU1cHRMZ3ovQnZrTWNkTHRyYzZpS3dQaXNB?=
+ =?utf-8?B?UGNLMlo0Z3R4Z1B1Y3VUSXEvUzA1ekpsTmxJT1JUU25qbGZWajFodmZxbCtT?=
+ =?utf-8?B?UlBGMTk0TEFZaUZ6UFoyNVB4Smc1Mzc0OExWbzdzU21Fb0tzZjhQbFNVbFV0?=
+ =?utf-8?B?YUJXR2pXaWh0S3JkVVFiSk1UWUVhaGNvMVR1dUtQeGxLT0NaRTlUN3liWkg3?=
+ =?utf-8?B?cm1Na3d3RzN1ZXBRRVd0MktYSFlheHF1UEZ4dGx4Qk5nNDAwM2pvQzE4NTEz?=
+ =?utf-8?B?S1JYK0NyNHlxbmFqYkF5SmwwVW9tSHlwaG16L0xZRnIwdkY5dlBvTGtwWkpq?=
+ =?utf-8?B?TTNBd21xTUNjVVJGRG9xRTdSZytBd2hxaTlQdmhTZ213bml0SmpCM2IxS09a?=
+ =?utf-8?B?Tm5PNjNhaVFka0duc0xRWkNYeFE4YWhncWhhb2tjeW9hOW80OVMwalllbVVJ?=
+ =?utf-8?B?eGl6R1dOQmhVSGJuQzJoQUhOdnZlcGowQk13MytVRGFiT2wwbnVpZlhLNXZD?=
+ =?utf-8?B?d2E2a2kvSGh1ZWpMaWErbmRqRlkxbEtwQW9FZ2ZZUjd3ZG9RNzJXN0RJRWFp?=
+ =?utf-8?B?dHh0aks4dDlGUHFpalpXV0hZTUJ1QVFGeWJoU2lWUUNoUGVSaEdOQzNjWmU3?=
+ =?utf-8?B?MFlZRFNwUEIzcWQxb3dmTGJRbnhhSGMzdUEzeks4MjN1UDdmakdJRnVYNWsr?=
+ =?utf-8?B?MXVGTGVlcUpqMlpSN3NzWitNT0xWaGZHeWVzQ3c2VDFVTkxXdDNsUTUwNG4w?=
+ =?utf-8?Q?D0kI=3D?=
+X-Forefront-Antispam-Report: CIP:216.228.117.160; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge1.nvidia.com; CAT:NONE;
+ SFS:(13230040)(36860700013)(82310400026)(376014)(1800799024); DIR:OUT;
+ SFP:1101; 
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 24 Oct 2025 08:46:26.4166 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: f3f36a74-7b0a-423f-49ac-08de12d9d18b
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.160];
+ Helo=[mail.nvidia.com]
+X-MS-Exchange-CrossTenant-AuthSource: BL02EPF0002992B.namprd02.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA1PR12MB9064
+Received-SPF: permerror client-ip=2a01:111:f403:c112::5;
+ envelope-from=skolothumtho@nvidia.com;
+ helo=CY7PR03CU001.outbound.protection.outlook.com
+X-Spam_score_int: -10
+X-Spam_score: -1.1
+X-Spam_bar: -
+X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ FORGED_SPF_HELO=1, SPF_HELO_PASS=-0.001, SPF_NONE=0.001,
+ WEIRD_QUOTING=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -130,99 +162,79 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Salil,
+The virt machine now supports creating multiple SMMUv3 instances, each
+associated with a separate PCIe root complex.
 
-On 10/22/25 8:07 PM, Gavin Shan wrote:
-> On 10/1/25 11:01 AM, salil.mehta@opnsrc.net wrote:
->>
->> ===================
->> (VII) Commands Used
->> ===================
->>
->> A. Qemu launch commands to init the machine (with 6 possible vCPUs):
->>
->> $ qemu-system-aarch64 --enable-kvm -machine virt,gic-version=3 \
->> -cpu host -smp cpus=4,disabled=2 \
->> -m 300M \
->> -kernel Image \
->> -initrd rootfs.cpio.gz \
->> -append "console=ttyAMA0 root=/dev/ram rdinit=/init maxcpus=2 acpi=force" \
->> -nographic \
->> -bios QEMU_EFI.fd \
->>
-> 
-> The parameter 'disabled=2' isn't correct here and it needs to be 'disabledcpus=2'.
-> Otherwise, the VM won't be started due to the unrecognized parameter.
-> 
-> $ /home/gavin/sandbox/qemu.main/build/qemu-system-aarch64       \
->    --enable-kvm -machine virt,gic-version=3 -cpu host,sve=off    \
->    -smp cpus=4,disabled=2 -m 1024M                               \
->    -kernel /home/gavin/sandbox/linux.guest/arch/arm64/boot/Image \
->    -initrd /home/gavin/sandbox/images/rootfs.cpio.xz -nographic
-> qemu-system-aarch64: Parameter 'smp.disabled' is unexpected
-> 
+Update the documentation with an example.
 
-Apart from the issues that were reported previously, there are more issues.
-some of them may be invalid. I'm sharing the extra issues below.
+Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
+---
+ Addressed feedback from v1.(Thanks!).
+ https://lore.kernel.org/qemu-devel/20251006182900.100580-1-skolothumtho@nvidia.com/
+---
+ docs/system/arm/virt.rst | 34 ++++++++++++++++++++++++++++++++--
+ 1 file changed, 32 insertions(+), 2 deletions(-)
 
-The VM is always started using the following command lines.
-
-host$ /home/gavin/sandbox/qemu.main/build/qemu-system-aarch64               \
--accel kvm -machine virt,gic-version=host,nvdimm=on                         \
--cpu host,sve=off                                                           \
--smp maxcpus=4,cpus=2,disabledcpus=2,sockets=2,clusters=2,cores=1,threads=1 \
--m 4096M,slots=16,maxmem=128G -object memory-backend-ram,id=mem0,size=2048M \
--object memory-backend-ram,id=mem1,size=2048M                               \
--numa node,nodeid=0,memdev=mem0,cpus=0-1                                    \
--numa node,nodeid=1,memdev=mem1,cpus=2-3                                    \
--L /home/gavin/sandbox/qemu.main/build/pc-bios                              \
--monitor none -serial mon:stdio                                             \
--nographic -gdb tcp::6666 -qmp tcp:localhost:5555,server,wait=off           \
--bios /home/gavin/sandbox/qemu.main/build/pc-bios/edk2-aarch64-code.fd      \
--kernel /home/gavin/sandbox/linux.guest/arch/arm64/boot/Image               \
--initrd /home/gavin/sandbox/images/rootfs.cpio.xz                           \
--append memhp_default_state=online_movable
-
-[Issue-1]: Inconsistent output from 'qom-list /machine/unattached'. The disabled
-CPU device doesn't show up at the beginning, but it appears after it's hot added.
-However, the CPU device is still seen after it's hot removed.
-
-(qemu) qom-list /machine/unattached
-device[0] (child<host-arm-cpu>)
-device[1] (child<host-arm-cpu>)
-   :
-(qemu) device_set host-arm-cpu,socket-id=1,admin-state=enable
-(qemu) qom-list /machine/unattached
-device[0] (child<host-arm-cpu>)
-device[1] (child<host-arm-cpu>)
-device[42] (child<host-arm-cpu>)
-   :
-(qemu) device_set host-arm-cpu,socket-id=1,admin-state=disable
-(qemu) qom-list /machine/unattached
-device[0] (child<host-arm-cpu>)
-device[1] (child<host-arm-cpu>)
-device[42] (child<host-arm-cpu>)
-
-[Issue-2]: The hot added CPU disappears after a system reset
-
-guest$ cat /sys/devices/system/cpu/online
-0-1
-(qemu) device_set host-arm-cpu,socket-id=1,admin-state=enable
-guest$ echo 1 > /sys/devices/system/cpu/cpu2/online
-guest$ cat /sys/devices/system/cpu/online
-0-2
-
-(qemu) system_reset
-guest$ cat /sys/devices/system/cpu/online
-0-1
-
-[Issue-3] PCDIMM is unable to be hot added.
-
-(qemu) object_add memory-backend-ram,id=hp-mem0,size=512M
-(qemu) device_add pc-dimm,id=hp-dimm0,memdev=hp-mem0,node=0
-Error: Parameter 'driver' expects a pluggable device type or which supports changing power-state administratively
-
-Thanks,
-Gavin
+diff --git a/docs/system/arm/virt.rst b/docs/system/arm/virt.rst
+index 10cbffc8a7..339aa99ae1 100644
+--- a/docs/system/arm/virt.rst
++++ b/docs/system/arm/virt.rst
+@@ -37,7 +37,8 @@ The virt board supports:
+ - An RTC
+ - The fw_cfg device that allows a guest to obtain data from QEMU
+ - A PL061 GPIO controller
+-- An optional SMMUv3 IOMMU
++- An optional machine-wide SMMUv3 IOMMU
++- User-creatable SMMUv3 devices (see below for example)
+ - hotpluggable DIMMs
+ - hotpluggable NVDIMMs
+ - An MSI controller (GICv2M or ITS). GICv2M is selected by default along
+@@ -176,7 +177,7 @@ iommu
+   ``none``
+     Don't create an IOMMU (the default)
+   ``smmuv3``
+-    Create an SMMUv3
++    Create a machine-wide SMMUv3.
+ 
+ default-bus-bypass-iommu
+   Set ``on``/``off`` to enable/disable `bypass_iommu
+@@ -219,6 +220,35 @@ x-oem-table-id
+   Set string (up to 8 bytes) to override the default value of field OEM Table ID
+   in ACPI table header.
+ 
++SMMU configuration
++""""""""""""""""""
++
++Machine-wide SMMUv3 IOMMU
++  See the machine-specific ``iommu`` option above. This allows specifying
++  a single, machine-wide SMMUv3 instance that applies to all devices in
++  the PCIe topology.
++
++  For information about selectively bypassing devices, refer to
++  ``docs/bypass-iommu.txt``.
++
++User-creatable SMMUv3 devices
++  Allows creating multiple user-defined SMMUv3 devices, each associated
++  with a separate PCIe root complex. This is only permitted if the
++  machine-wide SMMUv3 (``iommu=smmuv3``) option is not used.
++
++  This model is useful when you want to mirror a host configuration where
++  each NUMA node typically has its own SMMU, allowing the VM topology to
++  align more closely with the host’s hardware layout. Supporting multiple
++  SMMUv3 instances is also a prerequisite for future accelerated SMMUv3
++  support.
++
++  Example::
++
++      -device arm-smmuv3,primary-bus=pcie.0,id=smmuv3.0
++      ...
++      -device pxb-pcie,id=pcie.1,numa_node=1
++      -device arm-smmuv3,primary-bus=pcie.1,id=smmuv3.1
++
+ Linux guest kernel configuration
+ """"""""""""""""""""""""""""""""
+ 
+-- 
+2.43.0
 
 

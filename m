@@ -4,89 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E854CCCF9E0
-	for <qemu-arm@archiver.kernel.org>; Fri, 24 Oct 2025 19:28:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7ADFCCCD1BF
+	for <qemu-arm@archiver.kernel.org>; Fri, 24 Oct 2025 19:29:28 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vCNRq-00061a-4X; Fri, 24 Oct 2025 15:27:38 -0400
+	id 1vCNTM-00078M-9o; Fri, 24 Oct 2025 15:29:13 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vCNRo-00060Y-Rl
- for qemu-arm@nongnu.org; Fri, 24 Oct 2025 15:27:36 -0400
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vCNTJ-00077v-Km
+ for qemu-arm@nongnu.org; Fri, 24 Oct 2025 15:29:10 -0400
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vCNRm-0000kL-7q
- for qemu-arm@nongnu.org; Fri, 24 Oct 2025 15:27:36 -0400
-Received: by mail-wm1-x335.google.com with SMTP id
- 5b1f17b1804b1-475db4ad7e4so622945e9.3
- for <qemu-arm@nongnu.org>; Fri, 24 Oct 2025 12:27:33 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vCNTH-0000sV-Ia
+ for qemu-arm@nongnu.org; Fri, 24 Oct 2025 15:29:09 -0400
+Received: by mail-wm1-x333.google.com with SMTP id
+ 5b1f17b1804b1-47114a40161so25036795e9.3
+ for <qemu-arm@nongnu.org>; Fri, 24 Oct 2025 12:29:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1761334052; x=1761938852; darn=nongnu.org;
+ d=linaro.org; s=google; t=1761334146; x=1761938946; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=BRr6s/NgJvS1YxYxcoI/3ZRoDWUxn4NQSax9XkT8Jh0=;
- b=yr68Feu6nxvOjRVtK+m88hS3PWu+sbnJXzK6hQrmOGYsmkh38g3HPQhOH0uGF1zWxV
- cP1oNmChZzhrcZL2/rcir48SGaG2iSYUC8dv7RaI+FYeE74zPBDe+s1jQnN7ub3KU1VR
- 2vb9a29r56xb5xx3/y2Bykxfnb/Eg+oK6mB/uEKbzpB9XYTIh9cUrrE6m2rsYu3RV9RO
- szzcg3ghtUQJ5XkGG5hU9LArtXXqAn4azNMarsOrRV+WNK1lQBxeaPYttGnWRq/GRMUK
- HtaSdQN3ncq332Div7iIq2t0vVg9B24GiZIygYgObVC4EnU9AuPnTEH0is8iaqoKSWkc
- OjUw==
+ bh=ZmR/vKigIXSmSa6cg9qftLuQu/Ejb6TYNf4zV+r4wwo=;
+ b=gAQZQAuS2XN4/6O/QglTa6pHYVPE7mGLlTTK1WAVFlYtO6A1WWaLHEJYxZ+PQFOOw3
+ tYl8kwE6Dzv6PZndKo9DE/Cpp4lVdqs8/ZB8DpG5njcYPdTYrx5f+pjCxaJB9lu11j0y
+ n/rIaEnuTOQpc+LWvhp2cSlvwY1GdgvZ4uJ4np9BC83fZc7+Dp+iVh3J05apLm2CFQSx
+ AwonEikaEx+w7858fQi3MZVcnNlMWyXAkRY8VBdv4/j/A5+izYap+2HgW4FwWvjkyXhh
+ Je6tNALkjxrrFnWY2oake48EfikVqGR1afoHzI7OAGt2uq8kL2yTzzyMdM5WgQyOG5A3
+ y4Dg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761334052; x=1761938852;
+ d=1e100.net; s=20230601; t=1761334146; x=1761938946;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=BRr6s/NgJvS1YxYxcoI/3ZRoDWUxn4NQSax9XkT8Jh0=;
- b=L73/o6EDVP62BvWRwgcLXvamAdfKrGxktLCEjA9khJ8zNsjtcGNH0LyTX+o6lhhaaJ
- yZvIivyu24DfNAeSGH2jctOtpZol9iRfLrmgeI8ebzcRGzJXoJWEJHvsfv3KwWT737rf
- iSOIuOoOeTQKNExLU589IUHYKDm3iF9S2ErsYHr85gTME1MDDBQzo57EWnIsl+3hZzcU
- /lk7MYFkbMFAfePvx1q/5BVSq8Y4cBfFgpMYlog997RQQUNMss5fuNli+xeEukZb2Mju
- /MzApGAdqRdArKdqCfJp93FWuBJ+t98xnoP//1kGGnC2Ozy9+kFyohaZ1+mQ69ZEt/7i
- 2h/A==
-X-Gm-Message-State: AOJu0YzFKh7LpxW8qnFFc9VE/BdpPAlc2s0H+WhVa4WBKAZWAJo43bb7
- wxixvSnLspcDZQ0KgCoIrh1HvNwqqKDQV7H7NySBznHcm5PlQEB3akeCPpUuQq6lwh4=
-X-Gm-Gg: ASbGncvh7oKVqPKvfi5H/Yj+9ygLlWprCxFdZ1kcZaEIxVRWJ56B0JjZuXzvSbLfNlf
- WmZRvpL00kPPm/vSmkSe2dxMnbVjlZ8rQNU5FVO5iIZXdDpGNKfwh1FrYiEN28nbcyVOx59a0YR
- eMRFY3+Q3SDNWPIi5t4q0Ba5+2AispjjsACp6VE+cj2WRTWZ3G8psMDNx1Q7C0AiQh4HxrHddU9
- +7SXCGm4DrxpKgnnzHNW9jatlMJGvXVyP6RK7u3S0IGhDUADX0pHsmzLIcjxWw5dEdQYqb6qBsN
- bddgWK7FXr/+wmqikk2/nnfqYFawk/2O8mslG7agdoPDwFoqOwou8FGM4GKFnsmgcjvt2mglDrl
- iynb6tu/U6EY/iwGWBcuIUuzppkQhUOhHjwmRFlZYbS/nyfcPAbt1P1kLuFIo63AuyDLpdN92xf
- sajpfoWIsX4yGzouqUMkeTBGKTPT5wq35p48pheMBnjUUUgYtYrg==
-X-Google-Smtp-Source: AGHT+IEJH9HIK6kSBuDnnvRqluhCJafija2xTj0gjgv2ujNy5AGIoNYwoO1veDzcJF6EF7ylgaCN8w==
-X-Received: by 2002:a05:600d:4392:b0:475:d8f3:71c1 with SMTP id
- 5b1f17b1804b1-475d8f37463mr11574525e9.27.1761334052556; 
- Fri, 24 Oct 2025 12:27:32 -0700 (PDT)
+ bh=ZmR/vKigIXSmSa6cg9qftLuQu/Ejb6TYNf4zV+r4wwo=;
+ b=Ws5HDR/tp0HE4BAMGjiKrUwoSpCGe3E9IRxZ+0FZ9/gRXPXhXLxfPvlejpdzZJTiF0
+ JVRBLV/nx+3qkG8yzHFAi0QyVDof1cN58Dpuy3PUf5iWLUDlUQTHuU693sQ5+XqlLJ/n
+ ZpeGJ+a1Yp6ycjwKXKJ8EFG9hCWaPVxsuwBXg7T0uxStghyOtB2hY/m48qEXvK5EAKsZ
+ YUjTOaYmDM4mXUz+xEAiyk2+ZERyeqGvDpfnR6Ozs0QUiIwFbwx958v7DBvUhJ4YNYvN
+ X3JH3pcGkYCXOTVlOqs/fWheCX6JYSqpNwy3LVXn3FBZa40rDloYDnPrxv7ybQnsfOZh
+ wMxA==
+X-Gm-Message-State: AOJu0Yw8DTnnOaCGcbmfpBSCOMsulPSlkXI0UqQRdr6JJt0Y26l4DICc
+ MDaINzSwm9ItlRCd3gs8oS17JHwRbnCf87N7E4H7hSPnmUEhdVgsRyDeaefAGc476es=
+X-Gm-Gg: ASbGncvgfvFflMl0PhJ8sQMQl1o5nGjiw4leODBnz4ingVcJf74LHiGMGe7eaPYEdFg
+ QrfgEKqNWYhAY5P4pFwYYTy0tHjb8dVaxiimSxdGIfoc43hqlnKM2QXr80KTd8lkJSVnrS0XSSj
+ 6K5281MbSEfLON0ZVtrXYegTlVgWl3ZXLnUD8gvNeJoGxZ5QxRBCMkWiUWVGA+YHl3yGsOYoyh5
+ GiBcRv/1FxdbvzKsVHruFr8k3aaEO6UVWmniaqrrL1rgz4zKLGKdevo46DKDylTvZqn/oFhC2Er
+ OdyKDCeMmWsr+FU/9gF9rmt/X7L9WIWf+lUVjeWa6MWSZxhJ2yILZszdBZQSPTBz8HAGxE18aCl
+ 3qPoE369gj1oNp7nEI/VIAq0Tm1pcaTlMP4N89cCCRK8nD2M9nofW0nDbvQceeyjRFVFfM/i7Xg
+ AF8PNrSotKfaEDng8RS6rtFgWAjb3BlZEwAK1xrvP1suXI9vEgOw==
+X-Google-Smtp-Source: AGHT+IG0RiK01kZIh16MR1iqaoEqzr4gEB8V2N/4RTW4W09n9yQ2EU7tZFGNsh9H1+jSXGktk6surA==
+X-Received: by 2002:a05:600c:6085:b0:471:133c:4b9a with SMTP id
+ 5b1f17b1804b1-4711786c79emr250191335e9.6.1761334145875; 
+ Fri, 24 Oct 2025 12:29:05 -0700 (PDT)
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-475c43900e1sm195951725e9.17.2025.10.24.12.27.31
+ ffacd0b85a97d-429898cce3bsm10580944f8f.38.2025.10.24.12.29.03
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 24 Oct 2025 12:27:31 -0700 (PDT)
+ Fri, 24 Oct 2025 12:29:04 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-riscv@nongnu.org, qemu-block@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
-Subject: [PATCH 15/27] hw/pci/pcihost: Include missing 'system/memory.h' header
-Date: Fri, 24 Oct 2025 21:04:02 +0200
-Message-ID: <20251024190416.8803-16-philmd@linaro.org>
+ Paolo Bonzini <pbonzini@redhat.com>, Fam Zheng <fam@euphon.net>
+Subject: [PATCH 16/27] hw/scsi/esp: Include missing 'system/memory.h' header
+Date: Fri, 24 Oct 2025 21:04:03 +0200
+Message-ID: <20251024190416.8803-17-philmd@linaro.org>
 X-Mailer: git-send-email 2.51.0
 In-Reply-To: <20251024190416.8803-1-philmd@linaro.org>
 References: <20251024190416.8803-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::335;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x335.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::333;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x333.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -105,27 +104,28 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 "system/memory.h" header is indirectly pulled by "hw/sysbus.h".
 Include it explicitly to avoid when refactoring the latter:
 
-  include/hw/pci/pci_host.h:42:18: error: field has incomplete type 'MemoryRegion' (aka 'struct MemoryRegion')
-     42 |     MemoryRegion conf_mem;
+  In file included from ../../hw/scsi/esp.c:31:
+  include/hw/scsi/esp.h:82:18: error: field has incomplete type 'MemoryRegion' (aka 'struct MemoryRegion')
+     82 |     MemoryRegion iomem;
         |                  ^
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- include/hw/pci/pci_host.h | 1 +
+ include/hw/scsi/esp.h | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/include/hw/pci/pci_host.h b/include/hw/pci/pci_host.h
-index 954dd446fa4..d06d64f6cad 100644
---- a/include/hw/pci/pci_host.h
-+++ b/include/hw/pci/pci_host.h
-@@ -29,6 +29,7 @@
- #define PCI_HOST_H
+diff --git a/include/hw/scsi/esp.h b/include/hw/scsi/esp.h
+index 3526bad7464..340a713831e 100644
+--- a/include/hw/scsi/esp.h
++++ b/include/hw/scsi/esp.h
+@@ -1,6 +1,7 @@
+ #ifndef QEMU_HW_ESP_H
+ #define QEMU_HW_ESP_H
  
- #include "hw/sysbus.h"
 +#include "system/memory.h"
- #include "qom/object.h"
- 
- #define PCI_HOST_BYPASS_IOMMU "bypass-iommu"
+ #include "hw/scsi/scsi.h"
+ #include "hw/sysbus.h"
+ #include "qemu/fifo8.h"
 -- 
 2.51.0
 

@@ -4,84 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05196CCD1BF
-	for <qemu-arm@archiver.kernel.org>; Fri, 24 Oct 2025 19:15:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3EE6ACCF9E0
+	for <qemu-arm@archiver.kernel.org>; Fri, 24 Oct 2025 19:16:57 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vCNFq-0007FK-JY; Fri, 24 Oct 2025 15:15:16 -0400
+	id 1vCNHL-0008CF-J2; Fri, 24 Oct 2025 15:16:48 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vCNFo-0007E3-4y
- for qemu-arm@nongnu.org; Fri, 24 Oct 2025 15:15:12 -0400
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vCNHI-0008B8-LB
+ for qemu-arm@nongnu.org; Fri, 24 Oct 2025 15:16:44 -0400
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vCNFk-0007Ju-G7
- for qemu-arm@nongnu.org; Fri, 24 Oct 2025 15:15:11 -0400
-Received: by mail-wm1-x330.google.com with SMTP id
- 5b1f17b1804b1-4710a1f9e4cso18892565e9.0
- for <qemu-arm@nongnu.org>; Fri, 24 Oct 2025 12:15:07 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vCNHF-0007TN-6b
+ for qemu-arm@nongnu.org; Fri, 24 Oct 2025 15:16:44 -0400
+Received: by mail-wm1-x334.google.com with SMTP id
+ 5b1f17b1804b1-47103b6058fso17989035e9.1
+ for <qemu-arm@nongnu.org>; Fri, 24 Oct 2025 12:16:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1761333307; x=1761938107; darn=nongnu.org;
+ d=linaro.org; s=google; t=1761333399; x=1761938199; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=mty3IBivH6Vnk+xdMuiwBkLnhhTV1D3AWcAhgKsnzI8=;
- b=O2A9iXcCJbkisWGAjWfIBmNOC1GcrXu3C3JnF9szEq/B2T8/doAyRCzDTlPTWklH5+
- 3i/+9OPdCzuhxVhOkXxQnhEQLdE7lw9XAQSzi8/KiiNgO7NoiZLh48wlVduH1FZ2BlWq
- mHH9AdH8AUgwlKe1dY12CZNJJCneMZm3+SAeh84tGyIFOVsUw5yhsb6v/bzC93CrOvqU
- WyUEPD4SgOl0VbztnAJCigmM9Uu6WxVn4hvRWGYLyR6pwTZ0QS5g1SIy16ASWgNbDz/J
- lJulh9uW0zh071HifU7D5ZMOL/UFJtqMaqWlXpEH0aa7ClBe0BlD2RNlex3xSDGW8YSl
- k8zg==
+ bh=YDlsCHLjW8G2DhCTmRjvAvj5A32lGQeNER622BWchio=;
+ b=TZxWXh6JJa86ctZBewkITm391ndMopoqfCe5p0zcmZ6nKco1PeSR3SMp9p8dHNb4pu
+ TK1Kxh6gSall8qZnay9499fsdyuMwhzOoaAaaoAcAyI5HGhaj1wzh9/R+xUQqsMFKGt7
+ Mohm7DQWNuBnKWopUsnxLiFHDaLoPi86yOPwW3kDJDC2S9C+AY0eII6FnQ5ze5mlnNNX
+ +45xOeFdJ5rWoapY12AKL86aWsei6dstcljmTR92dbal6lZLeRhtydOvp94uDV7QE7SM
+ LkaiNSe5ukOobp3aCq+FqIiy0GfHmhCvjkSKQSNoI+u/kvJpvilu28Pyx1oJpADELQcH
+ OHyw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761333307; x=1761938107;
+ d=1e100.net; s=20230601; t=1761333399; x=1761938199;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=mty3IBivH6Vnk+xdMuiwBkLnhhTV1D3AWcAhgKsnzI8=;
- b=CA4xb0PSWKCKJeh0l/GXuMcSg/4Og6wFwHgyV2Z9UijTDnPUEhw30cCwALMumYyXCU
- cs4vULtO7lmpgY2BJ3u/rD52gHQIKsbJJuyMu2wYqtp/AtgTqVd8OEv0oJa4pLvGHwie
- ipucaWyCkNxesCdzvrhdbRYPgQ17efi25JS3w/xkGilWbIsvKTOmHaiKqEwZTlv4nNuE
- Exgt8GL+CDAm048B09PrK6mIp+hs7zlATSpru207cjheMW70ndxitvM1Y23Hu+42EX5W
- ny9LixcS8WgukIu26YUsWQzkwhOuA1njSfq8shQRyCrYwcnlnsmlCBcNbVRtw4XXoR7P
- pSJw==
-X-Gm-Message-State: AOJu0YygChpyx2pB+YFp6pY2WMWgYML9D2T+Y6fQbsDIixxTM+bEu6tO
- 9EK4zfhsVGlNUTnfGfzxiZMMKjmrxrEs0uqvEE/joie9uBwUT3lCjSTET7FAnrUlVEg=
-X-Gm-Gg: ASbGnctwMsLGsKslNMwwRQFIBN3r1hzJrH6li8mHcYPXW7vWCR4gZ0rUplpu8LDBW5q
- 6CE9t2UOWK9E13BtmM0QdBrL/wSJoc5ZVeWr4tFhEtVo/UOUEqOeyaVG69RYP8xagO4b/LNasFY
- QDmmWoApcLobk8KixqJKHHZB35UJc+m1I7OGsIPKzR11ghEYtqWokTGhou+KU2bxgEqE5tSVUsa
- dSZro/NcnKfJ1su4tR9stML0vK94GPqcwUj16avZcAaI09sbr41pJXwmpczU2J+m+CEmozKfRZJ
- huLZ0A6kJwcc+wI4YEEj5sSGIjN/lEDphXGrVSmnjmuTxf+CrgzL4obPavBlxbG8nFYBj4Nt3HL
- UnSspkASVnTuWKAYIzUGW+h6YLfrS6wzjd+SqwTkV+g4Pa/BbQany8gfCu5LXB9D5i85m5UhKvl
- 5oUItU9RxQBGEjNVE+wVCpDQIglrqOUWL+rYmz9zU4mJvMBD0FPQ==
-X-Google-Smtp-Source: AGHT+IHJPulElC4lE3QAPYJe+DLg06Uu2ObsGTptGP/SwFf6wsdthQIWa17PhJOf2v9TAr2kywqJKw==
-X-Received: by 2002:a05:600c:35c3:b0:471:5bf:cd02 with SMTP id
- 5b1f17b1804b1-475d2e83b91mr31895795e9.11.1761333306698; 
- Fri, 24 Oct 2025 12:15:06 -0700 (PDT)
+ bh=YDlsCHLjW8G2DhCTmRjvAvj5A32lGQeNER622BWchio=;
+ b=CXQDdVrI6eTNsutrLJ0xRRBPZXHbfZ6hBrIjd14CeE0SbnI/Q5Cm9+GCjjm44HN1iB
+ 2tc1t2lWPscDcCnjOlhXqUZ+jWAXJUPwPJPHKx7+VsaGaG6dQ7lfYVm0m7M+G9dw3pHe
+ NNzi9LwOG0aZPXT5d7gSQUwnuYkhEDejMvGNti+/PDHSGjcirNnig//5Xf1VNWVI6zIR
+ MFVBf8L40gavjy8fbLrimct7qdhxw5PmOP38vQIejPag4OzWoenbEcbiy0omHC4vCdF5
+ syWUa2M7DK2ahxWYVwAKfr7IPwF9L++eW7wcThk9WgJg2EcEnLs1wbKjVIrVZDmY27Bt
+ A/fA==
+X-Gm-Message-State: AOJu0YwZSWcX5hPd55GkKt+WXN40RMGCyihmeqFxL1v92VQvkguiDCBm
+ anjdlGa15u56gKI8ke4d8oYJwqymWRev9fhf48VIurT8aJBw+yGw8he9cSxsSX2DfVo=
+X-Gm-Gg: ASbGncvx7sYS4XISUDtqK1Et+tN1yd44edI2lXHx1kvHye5SYMtMM/owQ5z7O7j43c8
+ ulvFXJbN5YGMD5ibdBmJkvPhZPcrm9YPVFPU9U0hqW2yatqI6RCo6QoLoz09gWe+MmmH9DSMlIB
+ 98kOzi7FgkzcLbVz+KD+4rguMJdAw62p5QPnzIzxy+xvPkyzhIKzZgn7E0JSW1tluHvIKS/lFvq
+ Y4q7RLyL4iR1OTelSVFrVkcmvRiYFrQjR2x/xeent60KH+UCIEjjRECjLZU9vF7/c41+ZWBNASK
+ arhEEbK5JTkFMC+cFrPcmHIdLhQUFTuk+15SH2e6aXLdc4AE5niq9pTDhJgj+n4zqocEEnaHcYN
+ cFmnCBd+oX4igyAIsuIQOCoOn8s/+K9vTTwmbPrIwn9QXSVbfSw+BAbB5oqGT6zMkc1xmJ/dN+/
+ r5A9nD8Y5UtQPefjswO0mx2ENPnLE7n5tpRxM5vlL3U4YDSfBatTZPKYFn7LlH
+X-Google-Smtp-Source: AGHT+IG+U60Ir9bRtfjEJVzelu3OzmRk1cfg5abPsD4lECTtWtXQXdua34LmaMXSL0w4T+Zl7suArw==
+X-Received: by 2002:a05:600c:3f0d:b0:45d:dc10:a5ee with SMTP id
+ 5b1f17b1804b1-475d2430687mr30364255e9.15.1761333399299; 
+ Fri, 24 Oct 2025 12:16:39 -0700 (PDT)
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-475caf2ef9fsm105040325e9.13.2025.10.24.12.15.04
+ 5b1f17b1804b1-475caf152absm125783415e9.9.2025.10.24.12.16.37
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 24 Oct 2025 12:15:05 -0700 (PDT)
+ Fri, 24 Oct 2025 12:16:38 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-riscv@nongnu.org, qemu-block@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- Eduardo Habkost <eduardo@habkost.net>
-Subject: [PATCH 07/27] hw/sysbus: Add sysbus_has_pio() and
- sysbus_pio_get_address()
-Date: Fri, 24 Oct 2025 21:03:54 +0200
-Message-ID: <20251024190416.8803-8-philmd@linaro.org>
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+Subject: [PATCH 08/27] hw/pci-bridge/pci_expander_bridge: Use proper SysBus
+ accessors
+Date: Fri, 24 Oct 2025 21:03:55 +0200
+Message-ID: <20251024190416.8803-9-philmd@linaro.org>
 X-Mailer: git-send-email 2.51.0
 In-Reply-To: <20251024190416.8803-1-philmd@linaro.org>
 References: <20251024190416.8803-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::334;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x334.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -104,57 +103,38 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Similarly to sysbus_has_mmio() and sysbus_mmio_get_region(),
-add sysbus_has_pio() and sysbus_pio_get_address() for PIO.
+SysBusDevice::mmio[] and SysBusDevice::pio[] are kind of internal.
+Use the proper accessors.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- include/hw/sysbus.h |  2 ++
- hw/core/sysbus.c    | 11 +++++++++++
- 2 files changed, 13 insertions(+)
+ hw/pci-bridge/pci_expander_bridge.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/include/hw/sysbus.h b/include/hw/sysbus.h
-index 69eb62e29c8..07a307b5ca0 100644
---- a/include/hw/sysbus.h
-+++ b/include/hw/sysbus.h
-@@ -71,6 +71,7 @@ typedef void FindSysbusDeviceFunc(SysBusDevice *sbdev, void *opaque);
+diff --git a/hw/pci-bridge/pci_expander_bridge.c b/hw/pci-bridge/pci_expander_bridge.c
+index 1bcceddbc4d..2e84bbe1615 100644
+--- a/hw/pci-bridge/pci_expander_bridge.c
++++ b/hw/pci-bridge/pci_expander_bridge.c
+@@ -157,13 +157,13 @@ static char *pxb_host_ofw_unit_address(const SysBusDevice *dev)
+     main_host = PCI_HOST_BRIDGE(pxb_dev_base->parent_bus->parent);
+     main_host_sbd = SYS_BUS_DEVICE(main_host);
  
- void sysbus_init_mmio(SysBusDevice *dev, MemoryRegion *memory);
- MemoryRegion *sysbus_mmio_get_region(const SysBusDevice *dev, int n);
-+uint32_t sysbus_pio_get_address(const SysBusDevice *dev, int n);
- void sysbus_init_irq(SysBusDevice *dev, qemu_irq *p);
- void sysbus_pass_irq(SysBusDevice *dev, SysBusDevice *target);
- void sysbus_init_ioports(SysBusDevice *dev, uint32_t ioport, uint32_t size);
-@@ -78,6 +79,7 @@ void sysbus_init_ioports(SysBusDevice *dev, uint32_t ioport, uint32_t size);
- 
- bool sysbus_has_irq(const SysBusDevice *dev, int n);
- bool sysbus_has_mmio(const SysBusDevice *dev, unsigned int n);
-+bool sysbus_has_pio(const SysBusDevice *dev, unsigned int n);
- void sysbus_connect_irq(SysBusDevice *dev, int n, qemu_irq irq);
- bool sysbus_is_irq_connected(const SysBusDevice *dev, int n);
- qemu_irq sysbus_get_connected_irq(const SysBusDevice *dev, int n);
-diff --git a/hw/core/sysbus.c b/hw/core/sysbus.c
-index d33be6b2b52..1dbc345a3ef 100644
---- a/hw/core/sysbus.c
-+++ b/hw/core/sysbus.c
-@@ -206,6 +206,17 @@ void sysbus_init_ioports(SysBusDevice *dev, uint32_t ioport, uint32_t size)
+-    if (main_host_sbd->num_mmio > 0) {
+-        return g_strdup_printf(HWADDR_FMT_plx ",%x",
+-                               main_host_sbd->mmio[0].addr, position + 1);
++    if (sysbus_has_mmio(main_host_sbd, 0)) {
++        MemoryRegion *mr = sysbus_mmio_get_region(main_host_sbd, 0);
++        return g_strdup_printf(HWADDR_FMT_plx ",%x", mr->addr, position + 1);
      }
+-    if (main_host_sbd->num_pio > 0) {
+-        return g_strdup_printf("i%04x,%x",
+-                               main_host_sbd->pio[0], position + 1);
++    if (sysbus_has_pio(main_host_sbd, 0)) {
++        uint32_t addr = sysbus_pio_get_address(main_host_sbd, 0);
++        return g_strdup_printf("i%04x,%x", addr, position + 1);
+     }
+     return NULL;
  }
- 
-+bool sysbus_has_pio(const SysBusDevice *dev, unsigned int n)
-+{
-+    return (n < dev->num_pio);
-+}
-+
-+uint32_t sysbus_pio_get_address(const SysBusDevice *dev, int n)
-+{
-+    assert(n >= 0 && n < QDEV_MAX_PIO);
-+    return dev->pio[n];
-+}
-+
- /* The purpose of preserving this empty realize function
-  * is to prevent the parent_realize field of some subclasses
-  * from being set to NULL to break the normal init/realize
 -- 
 2.51.0
 

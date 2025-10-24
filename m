@@ -4,82 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1717CCF9E3
-	for <qemu-arm@archiver.kernel.org>; Fri, 24 Oct 2025 19:32:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E758BCCD1BF
+	for <qemu-arm@archiver.kernel.org>; Fri, 24 Oct 2025 19:34:14 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vCNWK-0000kW-Kj; Fri, 24 Oct 2025 15:32:16 -0400
+	id 1vCNXr-00029p-Hq; Fri, 24 Oct 2025 15:33:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vCNWJ-0000jv-VR
- for qemu-arm@nongnu.org; Fri, 24 Oct 2025 15:32:15 -0400
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vCNXp-000292-Qe
+ for qemu-arm@nongnu.org; Fri, 24 Oct 2025 15:33:49 -0400
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vCNWH-0001KN-7Z
- for qemu-arm@nongnu.org; Fri, 24 Oct 2025 15:32:15 -0400
-Received: by mail-wm1-x32d.google.com with SMTP id
- 5b1f17b1804b1-4710a1f9e4cso19009965e9.0
- for <qemu-arm@nongnu.org>; Fri, 24 Oct 2025 12:32:12 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vCNXm-0001WR-UK
+ for qemu-arm@nongnu.org; Fri, 24 Oct 2025 15:33:49 -0400
+Received: by mail-wr1-x434.google.com with SMTP id
+ ffacd0b85a97d-42701b29a7eso1303467f8f.0
+ for <qemu-arm@nongnu.org>; Fri, 24 Oct 2025 12:33:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1761334331; x=1761939131; darn=nongnu.org;
+ d=linaro.org; s=google; t=1761334425; x=1761939225; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=5PQvFv3KYt9affpbRt+SdFadtQ6SLXOOKaJGxhZMFw4=;
- b=ltc9ljk0XhRbxFnG6VvaG4Vh6EmkAH1iqLpMWLqiSqEx0GOPAcwFs6rE3ZPaWRl/lD
- iQFISzv2a413k2ZjHpzEI9hK33Nf1Z4l7oXSK8iIuU6QQ7ViQe+g1KKPBDflKI2FWrLW
- ReKl61948B4D4nzynlcOkB66qKDeIxl6bLsGs36fg0mGJlUbM18WSIga/f6BZCUdJkIx
- tOfJJFsFojTUzC2lEv4/LGc8EA737llDfU6x1TuQQkQT4Ne6m0UlaEU7bIIBDGjfxTHh
- ST/98SfZSdlVhAnMJUyXkrFilRiqR12Huj7lYR+aTXFQCRWQEqT8ov+/tMxqpWUjsjjy
- IP0w==
+ bh=9oW3kM/3oARNy2RW6YInbEGkmlrAbvhqLZNt15hfyFU=;
+ b=kCn4fne0SYfExI4hVKpKprFTB2AsLI15tdyssFGkxCYzlt3Sc90RVMNpeP4mBGHK6P
+ h+QX4NkDT0Vy81Za78vyD765Wg4LrnNzSptg5ffDwgvhg4GV1Jz/0TP7MGBF3duib3aA
+ j4oA+tCfPw65n/fLAJDWjFJwfJtXcYjT9vJy22osxhxcCTublhPz8BRiZLfrJyJUtplC
+ f6i20HpxoClHqKm56XnldJYqs1JNM0QrKnyc3eUm/r0IC9RViBe5Ufw0Sw5W9S26VBVQ
+ bX40rjx3ZmstE2hPs/8/pzJABu6Y7jULjJWOWxJDh2ecm1POWUNIxxyCqfcrEkyDfsgc
+ ZUmA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761334331; x=1761939131;
+ d=1e100.net; s=20230601; t=1761334425; x=1761939225;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=5PQvFv3KYt9affpbRt+SdFadtQ6SLXOOKaJGxhZMFw4=;
- b=SFTdXo36bixW/i+HKL8Brr2dFEKplD2TiqU+IDJSFqShrxOoO61AZYVqG6CRvWh163
- xvV8xR+X3GerKIiR6oB/hDp79c6LBxrg+Yd6bpQ9P17k0oGEL1NLHE6afnASwlkyOw5f
- tRXfy4+5GB+oXzjsZmnmK+JYcrjgm5TfpUDdSwU1c4rxtOYJWnaDJbZi5emv4wQNpWVJ
- etnIgNTc9HAaneKxmft0+G4Ad9hkJmdFWVFL8+qpuj53gdCyinOmiV/U5BTJ9WuQHD6c
- t4+8Vn+wKeaNMPzX1gF1JLPZtEAWkSLEbS4+DNGeO9LpCQnz/SL2PpA8pZpLf8Benply
- Fp2A==
-X-Gm-Message-State: AOJu0YyTp1wo5GwkuVAxj/6lAE+NxYhoe61GRBromzs/1xIKzB8QlsQG
- BoygtNyQEv2V/3UGt7TtSJQDYGqrMuQxOiX0T8LLZO8jXFWiIYo707LeUa3wHficlZc=
-X-Gm-Gg: ASbGnctyTmGbp8qr5MOXWLyhskyIlQP2/CF65j/5llJV5UIr/r1LKK/xi1bydCiKFQe
- P3LQh5Pw5TfvtfhIGMrTnfB3QujOh1SE1krEbtb+57CzUGu/onyINoFL4orwlNtBOddMBXJ1Rbd
- 1N/R4lu2vdd3H/SU0K0+s7SqjkfYFldvmqaQ9BwlYu6IpLLmjNCYawf464BZn6+EbJcAtnG5GdJ
- SKHjlNXMfErE9pYZs+wTbIU87UxnIgW8b3v1k/CbQ5kqFfUSokboihf2S6LOS30JvIleuHC3f7D
- df4XAlHFuPU/IDbd0XJpQcnUcSmWe1cuUxV0Z8Bt0a3Q5PSB2Djn02fD5mA/TQlB+Kf7eG0XfYh
- 9YRW+HwScRP5WUyW4slYrs6CTyZtU9OaXi1/TUXq/KwS405CUujWn5cTCZfa/kUP7orzOBCIFg3
- t8OmCPk2jScFb8daRNoMOfjNws/KTq17ajFpHiZpDadJkn5tPObQ==
-X-Google-Smtp-Source: AGHT+IHzBFBxTwcnx5jxUEP6XJQmCf6wUV3hwfL9BoJ/otuH7ZCqfcBQTrLP8ONMEFAiO3sZ94W1hQ==
-X-Received: by 2002:a05:600c:4510:b0:46e:1fb7:a1b3 with SMTP id
- 5b1f17b1804b1-475d2ec5729mr30808125e9.23.1761334331350; 
- Fri, 24 Oct 2025 12:32:11 -0700 (PDT)
+ bh=9oW3kM/3oARNy2RW6YInbEGkmlrAbvhqLZNt15hfyFU=;
+ b=G2dFDgBastp720Z89A4zQC+R2SNNmPcAFp98S5u+UOJQmAAgoXpU7URInpKsfZpH6u
+ HgVivRD2xoOAO5eyS7j8gOWDq5ZjfwJnx/lOGCPC4iATT74a7joKwyyGY9eU/scj3jCT
+ MoC3/W5pmpEII7McA2X2OOSgqmRz9F2iXF/89Y1SEaOwJvK7ZRuFRn0kE+imHND8LIKI
+ fF4uKw7PIKIN9v0RNoguq5PfPqM7EtLWQ1I+XxYE9yFSdYiSS8cDIYBwXKRAP8tP7Vpr
+ YGajjzT237fr+P0rYRcL6YgBGzFbIZA1ENUg+/MQP3Nhn4TWLTV+ejHUoqGQmISHKEAt
+ /YJA==
+X-Gm-Message-State: AOJu0YzSiutFBZor5JU7LKyZGJqw36ldw4FJ5ahDlx3/v6MieLNZPIg4
+ tTotUdpN72DFPaUeb3OtbQcYuF8wUdhYEVWjL8YQD5QVItSeLhmSvjaCu2Y5k/ntc6s=
+X-Gm-Gg: ASbGnctFZvm/0/pQqBMgN3pzga26UvgUZAKuyE9ANP1Dxr22cwcB1CfYEPNtQy3yl+S
+ h3qgtfZfnMl/ZT3wtD9OQ53aqja6+Vr+BulLfoXkluQ7jRldJDX4Fp538ozhw/RyCSyZUgfj2bE
+ Wo4FZ8WO7b8j7Cfq6wR/ELkUEWF8wry6+UgA2c3/wW7v8GnnBDJoF89gME5UhNxYccwB2aiG/CZ
+ EH3gLBSAhTZeIaubod4qfam3H4Wp4URV3v4wHob2P3iNdo1xWEQJ10F7yBldT4tKSeJ9UTkWX2l
+ w1adN7SBWIwH49FfF2wmbYAYd7bfWF5kUfiqW3rbKFx1PtxIzHGlnptv9d2/9QklnwRZsSE9Pql
+ W+ULXOntmjrHZHbOomPziwEe1n/25vYMmb1Glo99WZEEA0vLoy1VcgUhXKrziIujwJ28OeIFFHl
+ wDyLXd98Nlsu42ZDbbD2neYjcqG3SytClVIFau+jud3cWMcVlnqbuZh29UD6YS
+X-Google-Smtp-Source: AGHT+IH3sVraY9UzOiUmgqIAZfHGC9NuCzcLxWSPWLL0hHm0cCzMFDWXm0YYL7vX9i3JJbK5n3x1Ng==
+X-Received: by 2002:a5d:5d10:0:b0:425:86da:325f with SMTP id
+ ffacd0b85a97d-4298f58257fmr3644090f8f.27.1761334424881; 
+ Fri, 24 Oct 2025 12:33:44 -0700 (PDT)
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-429952b79cbsm18173f8f.4.2025.10.24.12.32.10
+ ffacd0b85a97d-429952d9e80sm7223f8f.28.2025.10.24.12.33.42
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 24 Oct 2025 12:32:10 -0700 (PDT)
+ Fri, 24 Oct 2025 12:33:44 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-riscv@nongnu.org, qemu-block@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Helge Deller <deller@gmx.de>
-Subject: [PATCH 18/27] hw/input/lassi: Include missing 'system/memory.h' header
-Date: Fri, 24 Oct 2025 21:04:05 +0200
-Message-ID: <20251024190416.8803-19-philmd@linaro.org>
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
+Subject: [PATCH 19/27] hw/tricore: Include missing 'system/memory.h' header
+Date: Fri, 24 Oct 2025 21:04:06 +0200
+Message-ID: <20251024190416.8803-20-philmd@linaro.org>
 X-Mailer: git-send-email 2.51.0
 In-Reply-To: <20251024190416.8803-1-philmd@linaro.org>
 References: <20251024190416.8803-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::434;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x434.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -105,41 +104,40 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 "system/memory.h" header is indirectly pulled by "hw/sysbus.h".
 Include it explicitly to avoid when refactoring the latter:
 
-  In file included from ../../hw/input/lasips2.c:29:
-  include/hw/input/lasips2.h:41:18: error: field has incomplete type 'MemoryRegion' (aka 'struct MemoryRegion')
-     41 |     MemoryRegion reg;
+  include/hw/tricore/tricore_testdevice.h:30:18: error: field has incomplete type 'MemoryRegion' (aka 'struct MemoryRegion')
+     30 |     MemoryRegion iomem;
         |                  ^
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- include/hw/input/lasips2.h | 1 +
- include/hw/misc/lasi.h     | 1 +
+ include/hw/tricore/tc27x_soc.h          | 1 +
+ include/hw/tricore/tricore_testdevice.h | 1 +
  2 files changed, 2 insertions(+)
 
-diff --git a/include/hw/input/lasips2.h b/include/hw/input/lasips2.h
-index 01911c50f9b..3510216effd 100644
---- a/include/hw/input/lasips2.h
-+++ b/include/hw/input/lasips2.h
-@@ -22,6 +22,7 @@
- #include "exec/hwaddr.h"
+diff --git a/include/hw/tricore/tc27x_soc.h b/include/hw/tricore/tc27x_soc.h
+index dd3a7485c85..40962eab04d 100644
+--- a/include/hw/tricore/tc27x_soc.h
++++ b/include/hw/tricore/tc27x_soc.h
+@@ -24,6 +24,7 @@
  #include "hw/sysbus.h"
- #include "hw/input/ps2.h"
+ #include "target/tricore/cpu.h"
+ #include "qom/object.h"
 +#include "system/memory.h"
  
- #define TYPE_LASIPS2_PORT "lasips2-port"
- OBJECT_DECLARE_TYPE(LASIPS2Port, LASIPS2PortDeviceClass, LASIPS2_PORT)
-diff --git a/include/hw/misc/lasi.h b/include/hw/misc/lasi.h
-index 0bdfb11b501..70c99fc017e 100644
---- a/include/hw/misc/lasi.h
-+++ b/include/hw/misc/lasi.h
-@@ -15,6 +15,7 @@
- #include "system/address-spaces.h"
- #include "hw/pci/pci_host.h"
- #include "hw/boards.h"
+ #define TYPE_TC27X_SOC ("tc27x-soc")
+ OBJECT_DECLARE_TYPE(TC27XSoCState, TC27XSoCClass, TC27X_SOC)
+diff --git a/include/hw/tricore/tricore_testdevice.h b/include/hw/tricore/tricore_testdevice.h
+index 2c57b62f222..98ef6e7a3d0 100644
+--- a/include/hw/tricore/tricore_testdevice.h
++++ b/include/hw/tricore/tricore_testdevice.h
+@@ -19,6 +19,7 @@
+ #define HW_TRICORE_TESTDEVICE_H
+ 
+ #include "hw/sysbus.h"
 +#include "system/memory.h"
  
- #define TYPE_LASI_CHIP "lasi-chip"
- OBJECT_DECLARE_SIMPLE_TYPE(LasiState, LASI_CHIP)
+ #define TYPE_TRICORE_TESTDEVICE "tricore_testdevice"
+ #define TRICORE_TESTDEVICE(obj) \
 -- 
 2.51.0
 

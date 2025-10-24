@@ -4,91 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C75CCCD1BF
-	for <qemu-arm@archiver.kernel.org>; Fri, 24 Oct 2025 14:44:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A498CCD1BF
+	for <qemu-arm@archiver.kernel.org>; Fri, 24 Oct 2025 19:04:51 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vCJ14-0002kA-G1; Fri, 24 Oct 2025 10:43:42 -0400
+	id 1vCN5N-0000uI-03; Fri, 24 Oct 2025 15:04:25 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vCJ13-0002jy-6R
- for qemu-arm@nongnu.org; Fri, 24 Oct 2025 10:43:41 -0400
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vCN5L-0000tU-HL
+ for qemu-arm@nongnu.org; Fri, 24 Oct 2025 15:04:23 -0400
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vCJ11-0002Zg-Fa
- for qemu-arm@nongnu.org; Fri, 24 Oct 2025 10:43:40 -0400
-Received: by mail-wm1-x330.google.com with SMTP id
- 5b1f17b1804b1-475c9881821so14575205e9.0
- for <qemu-arm@nongnu.org>; Fri, 24 Oct 2025 07:43:38 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vCN5J-0004zo-2M
+ for qemu-arm@nongnu.org; Fri, 24 Oct 2025 15:04:23 -0400
+Received: by mail-wm1-x32d.google.com with SMTP id
+ 5b1f17b1804b1-46fcf9f63b6so14522795e9.2
+ for <qemu-arm@nongnu.org>; Fri, 24 Oct 2025 12:04:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1761317016; x=1761921816; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=MeXAehse69IhwBgE2ta5MNN1CuhQA28c4e5HiOGylrY=;
- b=Y8S1Y9qz5Ql2504ASiFt1+g1MtW1F4WEOAsSDzdcgaCFnzvsz8X6aAqPo7QIB+rzTo
- qA+fnYy8NIlZAFknSrhALZtpPL17PMCTAeQqURE/NqiGayX3Yl2AS9IAQsbemwqBGXtP
- 3DHniuLhfU1p02wR/jpN6lxqk2sIEcNEQyauCapRRChoXfCQLdDZp4Mr1TkbHKEtA33G
- kFRdgrW9VrrDDPNH1hVdLZJVpfPxrLUtHA6UaS/QsZTXn5ifnnx6F8beDozJVWRWlHSI
- O55Kj30xGVDbGdm6Ou5xJomF8xZtmDJoS3goIDMlJN5KBfY+9/cjsix0/M4BMywDQQZT
- ho/g==
+ d=linaro.org; s=google; t=1761332658; x=1761937458; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=DI4urzwiBkpvf6sSaNyHt9E181h3FLTAu5FO96TNJJo=;
+ b=GwMmGgEak/WOwFj9r5E7CxWN8Mc2vMMqVTgBhV1xqatu3SfqmJEhqVCMEXmhb+xGRD
+ eVAF3ALaW1WCHSc5bTXfKhua3hl1aCmKtUpaOGmUAJxelkerh/9Jz0rAddlD8tzJ8FnZ
+ GNTz3300Zx/EFTiAGnmuMO2Gk07wwcuLV20afE6uZnjfAa4yawrKIOusUMhZG0ZA7C+M
+ 7YpSTBpYHS/rXBRr2OiQgKjIbIjxjsJHro0gm3XBRCcMA6NmqQUf+F2pLjXlG7aUBBgP
+ /pf+zeIanUPmd9vpTLeB/efCISt6XOrbI9GyhW2l/XaRJFmI0EUk5871qWBknA6C951Q
+ brHw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761317016; x=1761921816;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=MeXAehse69IhwBgE2ta5MNN1CuhQA28c4e5HiOGylrY=;
- b=OUgFAKY0Euy950ubTf+rKrSK4N/gbWD1ZWK/6NEAImEnVjFoAh5dw4k/fqZqELTbLQ
- AnYpCSTKp6KV1uCqi3HIQQj9pxOshcdTr765EtuALdq5o04/uIthrjuLzXFgVSUy+K3G
- VTft5ly/01KGLlQNlyyQPpP2XoMqsni78Mhzt4lCLQFAr8OaRtnDNz+eyCVI1S7gyoiT
- vyogKVLCsPQL7MOMJTM2cbFi+PW0BpUmPoVzZrXEArzgVFxsJlvumqohSgwmd/N3Y/XO
- KYSfzImYKjYUOTNXxPeZQrk++T+JqqkIlYewwuzqodDuxZrBhHhyaEQK4NHwGC6QQq//
- CDZQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCX7s8qP8lUi+YINHXeV0On0NCWQ2eIk66QQxXGzZzyWD+J/unyJ0Eh9l5Bh4smCTa4O9yB/wPnnAw==@nongnu.org
-X-Gm-Message-State: AOJu0YyumCIeKKlo98kOmcvhP9yVLKEQ0Uf0o83zCNCONcUWKrTj8iKK
- yKxAVv9Prxq/2JZr0i9qg5MPfSFTpDIg243+gEwlPKTAuHhmGnvFjhJddR4hkaWLRr8=
-X-Gm-Gg: ASbGnct/qBCON0CBkMWOoiE5/Cf0FT0uFy5dlCoayr8Ya/Juq5lrkVUbHahw6kPUYhx
- AY1l6iGiqs4H+6F5jehg4LRsRCjqYir0Tzk3ziYwoOa4aNmBZYtNXJ83HErUHxfTMkF05K/FmVv
- aJ+aRKbCq6a18eokW4IALfGpWGPPQzeaYVdYeckyV5S7/zDE6IbU0I/cEhZ+X0afVrseyI/wf3G
- /8GKg6Y98nLxf3q3Nmse1/DdFw7PL/bBZNhy5uN37M8mDOgec1yohFdWonQIa49V3c0DYpsYcl5
- Royj8xJF/5fKUi0tTAJlkmCsNWrXbRh4KUZaYmBURmypsvuNXrAC5mQiJRroGxNxG2njyvE4u8h
- 5HF9ASLFFgcSIykrmzKZRlC6iqA+5QEJJ2qzAozM2RRNs0Tkip5ujsoPkuGNqy+NJOateRpX5mw
- 7QKvGIo+RNRWjAWV7YK1b3JcwTtKn0COOE9Gys5YFQSp/U78njKSme/A==
-X-Google-Smtp-Source: AGHT+IHcLsBPWNUVB3dq2PvtLXk70B2+RU9HdkJgTtEzGy9Zvy80VUahV92lsDfZ2Do2sVjxLbjcuQ==
-X-Received: by 2002:a05:600c:c16b:b0:45d:5c71:769d with SMTP id
- 5b1f17b1804b1-475d5680454mr21077855e9.8.1761317016459; 
- Fri, 24 Oct 2025 07:43:36 -0700 (PDT)
-Received: from [192.168.69.201] (88-187-86-199.subs.proxad.net.
+ d=1e100.net; s=20230601; t=1761332658; x=1761937458;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=DI4urzwiBkpvf6sSaNyHt9E181h3FLTAu5FO96TNJJo=;
+ b=hXJSlhmTzcAdhZKWFMcABxBddBn+CvreGfZPY7Lh2Zil7pTvnMJ7XRzZ+ryk+dRZrB
+ sRJMIsStdu/8qo/ytLgnP97YkFobbAHEiss9vk/KaXUsQqMJcCtt5PDDDi7CLZ9PLRAC
+ ZrSZrMQAJ41zZPwFtpNoSPxhw9BIPYe7m4N3LVSGFy1wbS25S3L+GGLrGZ1HkaLIqZ6i
+ amoI0wyCw4ZB3dZPNmfevGGfU+XcJxtJuge1Hn219GMvfp9kkcr+PS6D5kqCxY0wBpK6
+ UlcT4K4Tt9xIkOdSgQCgl2OUxPCqiB8Z1CcNmlR1b74G9Zfase7Xwij42N+1YYPAkOi8
+ iQzw==
+X-Gm-Message-State: AOJu0YwBr8W8Mig4whHBcPWa97FKMVwRHmPQ50VUP9hV/7qfY+8E0hPI
+ kIAgw29ZwwmiXwMLLvHU9lsekNzcgqk8QMQggmDBhJ3jEh2SqFWS9QukW/QKZhwt62w=
+X-Gm-Gg: ASbGncvynos4v365HQH9owlS87gZgQDOAXVn6VB7ISFEmQuPTBOPCEv4ORxKcaxmDTA
+ Vm3nnyRi4sWG882iRRuQjIUOhVdTXluQHZsSN5YKxz/whq+YIeLL3bgwdaqZzT5FCDiDJaru03I
+ +RQAboE3wzO0dgKp4wmLOaPSTyjTMaj3qtOp1kvA/3OZPTcUrSVZSOkAqyqh60ISrjdLh2IeVBb
+ Pxokhz6NhlMnOvh+iNPSi01JXaVnj7b5o36Y41XHz89W4AvAWURl1xK69+TKx0y/Q/aQjzxmEMM
+ q/lpIP56IWg9D9SpyVHfcm0TkIJTtp+PCUroQK5OKGG6SZkg5fzlVqFbhYb+fB59nn+eYieSH3q
+ kqEAmwzbsR+68V6tHXCQhClD6xybPN1KAVTDBMX9X9b7ChxRsHfLrAAq8XuDdNKeHswHeCfaTlM
+ 4+HSeZJ6YW8Jlm31PFc9j+RfZ4KMt98iFy3SFQibnj6O19MOCFEg==
+X-Google-Smtp-Source: AGHT+IHRTgCZhtm+u8RTYICAZZr5sSX1RA/Uh2bvpsX7iZwxYT/r4c1t3Oq+vhjlWWoItp1FMGaGDg==
+X-Received: by 2002:a05:600c:474b:b0:46e:4e6d:79f4 with SMTP id
+ 5b1f17b1804b1-47117877525mr210287255e9.15.1761332658488; 
+ Fri, 24 Oct 2025 12:04:18 -0700 (PDT)
+Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-475c427f77bsm157026255e9.3.2025.10.24.07.43.34
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 24 Oct 2025 07:43:35 -0700 (PDT)
-Message-ID: <04aad62d-321e-4b37-ad11-4f785f7c3d81@linaro.org>
-Date: Fri, 24 Oct 2025 16:43:34 +0200
+ 5b1f17b1804b1-475caf15416sm105328485e9.10.2025.10.24.12.04.17
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Fri, 24 Oct 2025 12:04:17 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, qemu-riscv@nongnu.org, qemu-block@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH 00/27] hw/sysbus: Spring cleanups (part 1)
+Date: Fri, 24 Oct 2025 21:03:47 +0200
+Message-ID: <20251024190416.8803-1-philmd@linaro.org>
+X-Mailer: git-send-email 2.51.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PULL 04/24] hw/uefi: add include/hw/uefi/var-service.h
-Content-Language: en-US
-To: Gerd Hoffmann <kraxel@redhat.com>, qemu-devel@nongnu.org
-Cc: Richard Henderson <richard.henderson@linaro.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Eric Blake <eblake@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Peter Maydell
- <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- Michael Roth <michael.roth@amd.com>, Markus Armbruster <armbru@redhat.com>,
- Eduardo Habkost <eduardo@habkost.net>,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-References: <20250304124815.591749-1-kraxel@redhat.com>
- <20250304124815.591749-5-kraxel@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20250304124815.591749-5-kraxel@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -111,117 +97,116 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi,
+- Constify SysBusDevice argument
+- Add sysbus_has_pio() and sysbus_pio_get_address()
+- Use proper SysBus accessors
+- Include missing 'exec/cpu-common.h' and 'system/memory.h' headers
 
-On 4/3/25 13:47, Gerd Hoffmann wrote:
-> Add state structs and function declarations for the uefi-vars device.
-> 
-> Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
-> Message-ID: <20250225163031.1409078-5-kraxel@redhat.com>
-> ---
->   include/hw/uefi/var-service.h | 191 ++++++++++++++++++++++++++++++++++
->   1 file changed, 191 insertions(+)
->   create mode 100644 include/hw/uefi/var-service.h
-> 
-> diff --git a/include/hw/uefi/var-service.h b/include/hw/uefi/var-service.h
-> new file mode 100644
-> index 000000000000..f7ceac4ce243
-> --- /dev/null
-> +++ b/include/hw/uefi/var-service.h
-> @@ -0,0 +1,191 @@
-> +/*
-> + * SPDX-License-Identifier: GPL-2.0-or-later
-> + *
-> + * uefi-vars device - state struct and function prototypes
-> + */
-> +#ifndef QEMU_UEFI_VAR_SERVICE_H
-> +#define QEMU_UEFI_VAR_SERVICE_H
-> +
-> +#include "qemu/uuid.h"
-> +#include "qemu/queue.h"
-> +
-> +#include "hw/uefi/var-service-edk2.h"
-> +
-> +#define MAX_BUFFER_SIZE (64 * 1024)
-> +
-> +typedef struct uefi_variable uefi_variable;
-> +typedef struct uefi_var_policy uefi_var_policy;
-> +typedef struct uefi_vars_state uefi_vars_state;
-> +
-> +typedef struct uefi_vars_cert uefi_vars_cert;
-> +typedef struct uefi_vars_hash uefi_vars_hash;
-> +typedef struct uefi_vars_siglist uefi_vars_siglist;
-> +
-> +struct uefi_variable {
-> +    QemuUUID                          guid;
-> +    uint16_t                          *name;
-> +    uint32_t                          name_size;
-> +    uint32_t                          attributes;
-> +    void                              *data;
-> +    uint32_t                          data_size;
-> +    efi_time                          time;
-> +    void                              *digest;
-> +    uint32_t                          digest_size;
-> +    QTAILQ_ENTRY(uefi_variable)       next;
-> +};
-> +
-> +struct uefi_var_policy {
-> +    variable_policy_entry             *entry;
-> +    uint32_t                          entry_size;
-> +    uint16_t                          *name;
-> +    uint32_t                          name_size;
-> +
-> +    /* number of hashmarks (wildcard character) in name */
-> +    uint32_t                          hashmarks;
-> +
-> +    QTAILQ_ENTRY(uefi_var_policy)     next;
-> +};
-> +
-> +struct uefi_vars_state {
-> +    MemoryRegion                      mr;
+Philippe Mathieu-Daudé (27):
+  hw/qdev: Have qdev_get_gpio_out_connector() take const DeviceState arg
+  hw/sysbus: Have various helpers take a const SysBusDevice argument
+  hw/sysbus: Use memory_region_name()
+  hw/i386/microvm: Use proper SysBus accessors
+  hw/timer/hpet: Use proper SysBus accessors
+  hw/acpi/cxl: Use proper SysBus accessors
+  hw/sysbus: Add sysbus_has_pio() and sysbus_pio_get_address()
+  hw/pci-bridge/pci_expander_bridge: Use proper SysBus accessors
+  hw/platform-bus: Include missing 'system/memory.h' header
+  hw/block/pflash: Include missing 'system/memory.h' header
+  hw/misc/unimp: Include missing 'system/memory.h' header
+  hw/misc/empty_slot: Include missing 'system/memory.h' header
+  hw/uefi: Include missing 'system/memory.h' header
+  hw/usb/imx: Include missing 'system/memory.h' header
+  hw/pci/pcihost: Include missing 'system/memory.h' header
+  hw/scsi/esp: Include missing 'system/memory.h' header
+  hw/avr: Include missing 'system/memory.h' header
+  hw/input/lassi: Include missing 'system/memory.h' header
+  hw/tricore: Include missing 'system/memory.h' header
+  hw/int/loongarch: Include missing 'system/memory.h' header
+  hw/rtc/m48t59: Include missing 'system/memory.h' header
+  hw/rtc/sun: Include 'exec/cpu-common.h' and 'system/memory.h' headers
+  hw/xilinx: Include 'exec/cpu-common.h' and 'system/memory.h' headers
+  hw/mips: Include missing 'system/memory.h' header
+  hw/sparc: Include missing 'system/memory.h' header
+  hw/riscv: Include missing 'system/memory.h' header
+  hw/rx: Include missing 'system/memory.h' header
 
-FYI this is missing "system/memory.h" which is indirectly included,
-otherwise when refactoring unrelated generic headers I get:
+ hw/rtc/m48t59-internal.h                  |  2 ++
+ include/hw/char/avr_usart.h               |  1 +
+ include/hw/char/cadence_uart.h            |  1 +
+ include/hw/char/ibex_uart.h               |  1 +
+ include/hw/char/renesas_sci.h             |  1 +
+ include/hw/char/shakti_uart.h             |  1 +
+ include/hw/char/sifive_uart.h             |  1 +
+ include/hw/gpio/sifive_gpio.h             |  1 +
+ include/hw/input/lasips2.h                |  1 +
+ include/hw/intc/loongarch_dintc.h         |  2 +-
+ include/hw/intc/loongarch_extioi_common.h |  1 +
+ include/hw/intc/loongarch_pch_msi.h       |  1 +
+ include/hw/intc/loongarch_pic_common.h    |  1 +
+ include/hw/intc/loongson_ipi_common.h     |  2 ++
+ include/hw/intc/riscv_aclint.h            |  1 +
+ include/hw/intc/riscv_aplic.h             |  1 +
+ include/hw/intc/riscv_imsic.h             |  1 +
+ include/hw/intc/rx_icu.h                  |  1 +
+ include/hw/intc/sifive_plic.h             |  1 +
+ include/hw/misc/avr_power.h               |  1 +
+ include/hw/misc/lasi.h                    |  1 +
+ include/hw/misc/mchp_pfsoc_dmc.h          |  1 +
+ include/hw/misc/mchp_pfsoc_ioscb.h        |  1 +
+ include/hw/misc/mchp_pfsoc_sysreg.h       |  1 +
+ include/hw/misc/mips_cmgcr.h              |  1 +
+ include/hw/misc/mips_itu.h                |  1 +
+ include/hw/misc/sifive_e_aon.h            |  1 +
+ include/hw/misc/sifive_e_prci.h           |  1 +
+ include/hw/misc/sifive_test.h             |  1 +
+ include/hw/misc/sifive_u_otp.h            |  1 +
+ include/hw/misc/sifive_u_prci.h           |  1 +
+ include/hw/misc/unimp.h                   |  1 +
+ include/hw/net/cadence_gem.h              |  1 +
+ include/hw/pci/pci_host.h                 |  1 +
+ include/hw/platform-bus.h                 |  1 +
+ include/hw/qdev-core.h                    |  3 ++-
+ include/hw/riscv/opentitan.h              |  1 +
+ include/hw/riscv/shakti_c.h               |  1 +
+ include/hw/riscv/sifive_e.h               |  1 +
+ include/hw/riscv/xiangshan_kmh.h          |  1 +
+ include/hw/rtc/goldfish_rtc.h             |  1 +
+ include/hw/scsi/esp.h                     |  1 +
+ include/hw/sparc/sparc32_dma.h            |  1 +
+ include/hw/sparc/sun4m_iommu.h            |  1 +
+ include/hw/sparc/sun4u_iommu.h            |  1 +
+ include/hw/ssi/ibex_spi_host.h            |  1 +
+ include/hw/ssi/sifive_spi.h               |  1 +
+ include/hw/sysbus.h                       | 12 +++++++-----
+ include/hw/timer/avr_timer16.h            |  1 +
+ include/hw/timer/cadence_ttc.h            |  1 +
+ include/hw/timer/ibex_timer.h             |  1 +
+ include/hw/timer/renesas_cmt.h            |  1 +
+ include/hw/timer/renesas_tmr.h            |  1 +
+ include/hw/timer/sifive_pwm.h             |  1 +
+ include/hw/tricore/tc27x_soc.h            |  1 +
+ include/hw/tricore/tricore_testdevice.h   |  1 +
+ include/hw/uefi/var-service.h             |  1 +
+ include/hw/usb/imx-usb-phy.h              |  1 +
+ hw/acpi/cxl.c                             |  2 +-
+ hw/block/pflash_cfi01.c                   |  1 +
+ hw/block/pflash_cfi02.c                   |  1 +
+ hw/char/xilinx_uartlite.c                 |  2 ++
+ hw/core/gpio.c                            |  3 ++-
+ hw/core/sysbus.c                          | 23 +++++++++++++++++------
+ hw/i386/microvm-dt.c                      |  6 ++++--
+ hw/intc/xilinx_intc.c                     |  2 ++
+ hw/misc/empty_slot.c                      |  1 +
+ hw/net/xilinx_axienet.c                   |  2 ++
+ hw/pci-bridge/pci_expander_bridge.c       | 12 ++++++------
+ hw/rtc/sun4v-rtc.c                        |  2 ++
+ hw/ssi/xilinx_spi.c                       |  2 ++
+ hw/timer/hpet.c                           |  3 ++-
+ hw/timer/xilinx_timer.c                   |  2 ++
+ 73 files changed, 114 insertions(+), 24 deletions(-)
 
-include/hw/uefi/var-service.h:50:39: error: field has incomplete type 
-'MemoryRegion' (aka 'struct MemoryRegion')
-    50 |     MemoryRegion                      mr;
-       |                                       ^
-include/qemu/typedefs.h:68:16: note: forward declaration of 'struct 
-MemoryRegion'
-    68 | typedef struct MemoryRegion MemoryRegion;
-       |                ^
-
-No need to post a fix, I'll with my refactor.
-
-> +    uint16_t                          sts;
-> +    uint32_t                          buf_size;
-> +    uint32_t                          buf_addr_lo;
-> +    uint32_t                          buf_addr_hi;
-> +    uint8_t                           *buffer;
-> +    QTAILQ_HEAD(, uefi_variable)      variables;
-> +    QTAILQ_HEAD(, uefi_var_policy)    var_policies;
-> +
-> +    /* pio transfer buffer */
-> +    uint32_t                          pio_xfer_offset;
-> +    uint8_t                           *pio_xfer_buffer;
-> +
-> +    /* boot phases */
-> +    bool                              end_of_dxe;
-> +    bool                              ready_to_boot;
-> +    bool                              exit_boot_service;
-> +    bool                              policy_locked;
-> +
-> +    /* storage accounting */
-> +    uint64_t                          max_storage;
-> +    uint64_t                          used_storage;
-> +
-> +    /* config options */
-> +    char                              *jsonfile;
-> +    int                               jsonfd;
-> +    bool                              force_secure_boot;
-> +    bool                              disable_custom_mode;
-> +    bool                              use_pio;
-> +};
+-- 
+2.51.0
 
 

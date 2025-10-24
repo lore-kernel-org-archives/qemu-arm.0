@@ -4,77 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A498CCD1BF
-	for <qemu-arm@archiver.kernel.org>; Fri, 24 Oct 2025 19:04:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8EF66CCF9E0
+	for <qemu-arm@archiver.kernel.org>; Fri, 24 Oct 2025 19:06:28 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vCN5N-0000uI-03; Fri, 24 Oct 2025 15:04:25 -0400
+	id 1vCN6s-00029O-Ab; Fri, 24 Oct 2025 15:05:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vCN5L-0000tU-HL
- for qemu-arm@nongnu.org; Fri, 24 Oct 2025 15:04:23 -0400
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vCN6p-00027l-LT
+ for qemu-arm@nongnu.org; Fri, 24 Oct 2025 15:05:55 -0400
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vCN5J-0004zo-2M
- for qemu-arm@nongnu.org; Fri, 24 Oct 2025 15:04:23 -0400
-Received: by mail-wm1-x32d.google.com with SMTP id
- 5b1f17b1804b1-46fcf9f63b6so14522795e9.2
- for <qemu-arm@nongnu.org>; Fri, 24 Oct 2025 12:04:20 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vCN6n-0005KP-0i
+ for qemu-arm@nongnu.org; Fri, 24 Oct 2025 15:05:55 -0400
+Received: by mail-wr1-x430.google.com with SMTP id
+ ffacd0b85a97d-421851bca51so2151972f8f.1
+ for <qemu-arm@nongnu.org>; Fri, 24 Oct 2025 12:05:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1761332658; x=1761937458; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=DI4urzwiBkpvf6sSaNyHt9E181h3FLTAu5FO96TNJJo=;
- b=GwMmGgEak/WOwFj9r5E7CxWN8Mc2vMMqVTgBhV1xqatu3SfqmJEhqVCMEXmhb+xGRD
- eVAF3ALaW1WCHSc5bTXfKhua3hl1aCmKtUpaOGmUAJxelkerh/9Jz0rAddlD8tzJ8FnZ
- GNTz3300Zx/EFTiAGnmuMO2Gk07wwcuLV20afE6uZnjfAa4yawrKIOusUMhZG0ZA7C+M
- 7YpSTBpYHS/rXBRr2OiQgKjIbIjxjsJHro0gm3XBRCcMA6NmqQUf+F2pLjXlG7aUBBgP
- /pf+zeIanUPmd9vpTLeB/efCISt6XOrbI9GyhW2l/XaRJFmI0EUk5871qWBknA6C951Q
- brHw==
+ d=linaro.org; s=google; t=1761332751; x=1761937551; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=FimQXnCYHKm6ncvC3S5Pc9wwaP1Ko27xUZV6rL9UQNE=;
+ b=xVksornqzr5W0Q7/tyitYhH8vL5Y19YzqdSTRZI6Hnlxo/WsSh7HjwYXrDFyVuw01b
+ l4IIsvmUS0ip1BWAkrExdWcaXxoIJ1zZtcqZpml3UioguFEJw+FTc42NzlpkWqPoHQBd
+ 9perQJpBF403n6xHmATZuG3aja15Nzk4TyjOOTk7p7twjzAlkARfbhGrUAPK5QZghLaB
+ HiToLgHljQ3Twx5AsJKzJopJ8PEl4n9g4d5lscMZLQtn2RN2k1UKILCSACN2xG7x3Lc/
+ UJVyIdSvaRJl0V8t93nv63egXYbJJt8RgZP/yoFD7SjrhhRwaZHl1L/vy5xC0fEN22ue
+ dmLA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761332658; x=1761937458;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=DI4urzwiBkpvf6sSaNyHt9E181h3FLTAu5FO96TNJJo=;
- b=hXJSlhmTzcAdhZKWFMcABxBddBn+CvreGfZPY7Lh2Zil7pTvnMJ7XRzZ+ryk+dRZrB
- sRJMIsStdu/8qo/ytLgnP97YkFobbAHEiss9vk/KaXUsQqMJcCtt5PDDDi7CLZ9PLRAC
- ZrSZrMQAJ41zZPwFtpNoSPxhw9BIPYe7m4N3LVSGFy1wbS25S3L+GGLrGZ1HkaLIqZ6i
- amoI0wyCw4ZB3dZPNmfevGGfU+XcJxtJuge1Hn219GMvfp9kkcr+PS6D5kqCxY0wBpK6
- UlcT4K4Tt9xIkOdSgQCgl2OUxPCqiB8Z1CcNmlR1b74G9Zfase7Xwij42N+1YYPAkOi8
- iQzw==
-X-Gm-Message-State: AOJu0YwBr8W8Mig4whHBcPWa97FKMVwRHmPQ50VUP9hV/7qfY+8E0hPI
- kIAgw29ZwwmiXwMLLvHU9lsekNzcgqk8QMQggmDBhJ3jEh2SqFWS9QukW/QKZhwt62w=
-X-Gm-Gg: ASbGncvynos4v365HQH9owlS87gZgQDOAXVn6VB7ISFEmQuPTBOPCEv4ORxKcaxmDTA
- Vm3nnyRi4sWG882iRRuQjIUOhVdTXluQHZsSN5YKxz/whq+YIeLL3bgwdaqZzT5FCDiDJaru03I
- +RQAboE3wzO0dgKp4wmLOaPSTyjTMaj3qtOp1kvA/3OZPTcUrSVZSOkAqyqh60ISrjdLh2IeVBb
- Pxokhz6NhlMnOvh+iNPSi01JXaVnj7b5o36Y41XHz89W4AvAWURl1xK69+TKx0y/Q/aQjzxmEMM
- q/lpIP56IWg9D9SpyVHfcm0TkIJTtp+PCUroQK5OKGG6SZkg5fzlVqFbhYb+fB59nn+eYieSH3q
- kqEAmwzbsR+68V6tHXCQhClD6xybPN1KAVTDBMX9X9b7ChxRsHfLrAAq8XuDdNKeHswHeCfaTlM
- 4+HSeZJ6YW8Jlm31PFc9j+RfZ4KMt98iFy3SFQibnj6O19MOCFEg==
-X-Google-Smtp-Source: AGHT+IHRTgCZhtm+u8RTYICAZZr5sSX1RA/Uh2bvpsX7iZwxYT/r4c1t3Oq+vhjlWWoItp1FMGaGDg==
-X-Received: by 2002:a05:600c:474b:b0:46e:4e6d:79f4 with SMTP id
- 5b1f17b1804b1-47117877525mr210287255e9.15.1761332658488; 
- Fri, 24 Oct 2025 12:04:18 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1761332751; x=1761937551;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=FimQXnCYHKm6ncvC3S5Pc9wwaP1Ko27xUZV6rL9UQNE=;
+ b=rySOgVikEu58x3+SladXWsEkYdRaLrPvZWqeTmF/nrHC7slSnlcwatw+yLGDM9gwJM
+ nxkpFM9hQ1ywZROhRnz97tn+8oX2+Q5mkrU1r4JHqnx+LxzMiLbx5LCB5mtr3cmyFNMH
+ Q7LS8vHTHqg90GDnEJTqVrvM5GCUPZVDYWbHGZZk7MiPgbA1ETuIvieNINrk7cE0y/f2
+ d8OFQfZVA4wgjrXNObAicOad5GItplamiVpUeCLwdrqfSaxx4KaDhWxZp1xHR0AYr2FQ
+ Kcd32MfWl03yLkdBa+5baYQHsPcu7512oo1AXRUJgYMcMNoNXXhNdkJe1DRNGp2fP+fl
+ dOHQ==
+X-Gm-Message-State: AOJu0YzcQ5keRcoWhAmRaqfQPof5QX3taINQYJdklMly13GO1EriQYL2
+ lHi/PofDwT2rxUxAznhVBSiocKzqcgMnRG1aN1x+AfsvohFHGSg0TZKQj0jJXi7CU6M=
+X-Gm-Gg: ASbGncvQJAAUd/2qEJZORRtx02ReJAFnPYlS99ibo99p2Tqk7LDfcr1n4evbesK4rIA
+ 2ngyub84v3KwQdZZUuVrDCbb7YHEYeOwCD6o0IStCZ2v+yMS060k28m0B+KUnD4Vr48lEOgZZuv
+ PaVh9hnWEWecvvckPyXAyDbc1BYfiJnBRi7cCr6h40Wtm1QIP0dedonpgU06eLpfijFlTLouWld
+ UZ+Mzr7Q1guzCxMKttAu0B2lAwWmQDeHzXI1M76lfgLCUaxFxFDRfvq6wHQqX03dXqXM4i3U2lN
+ Oj8ECqMmoYa7FycVGM/hbazYpI0rKruKRdsRbDJ4rZGhEM3Q7mJ6m0eQ9cYZySeLWB7M981RvKd
+ 13jQ6iZeZfwNBQD3rQS8JwCOaqekvwCUp+V1MKSb2O3rKJSRQqZ+MtLr02PDxPYSZz5wiaVUSxv
+ BkDl6Ng1v6tjdVKZ0xtpu027g1t0dUtHdXJ3+lIfqwvVcUXyayhjp7OdtyvQ+U
+X-Google-Smtp-Source: AGHT+IFKoLkMs5+SowOaBcE+d8/5jPxLp08ETkRhmQ7aRqBnMfobElkOPpHUE3vyYwWq5FBgfpakRQ==
+X-Received: by 2002:a05:6000:2dc6:b0:425:86f0:6817 with SMTP id
+ ffacd0b85a97d-4299075b4a0mr2530630f8f.57.1761332750813; 
+ Fri, 24 Oct 2025 12:05:50 -0700 (PDT)
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-475caf15416sm105328485e9.10.2025.10.24.12.04.17
+ ffacd0b85a97d-429897f57cesm11088658f8f.17.2025.10.24.12.05.49
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 24 Oct 2025 12:04:17 -0700 (PDT)
+ Fri, 24 Oct 2025 12:05:50 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-riscv@nongnu.org, qemu-block@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 00/27] hw/sysbus: Spring cleanups (part 1)
-Date: Fri, 24 Oct 2025 21:03:47 +0200
-Message-ID: <20251024190416.8803-1-philmd@linaro.org>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Eduardo Habkost <eduardo@habkost.net>
+Subject: [PATCH 01/27] hw/qdev: Have qdev_get_gpio_out_connector() take const
+ DeviceState arg
+Date: Fri, 24 Oct 2025 21:03:48 +0200
+Message-ID: <20251024190416.8803-2-philmd@linaro.org>
 X-Mailer: git-send-email 2.51.0
+In-Reply-To: <20251024190416.8803-1-philmd@linaro.org>
+References: <20251024190416.8803-1-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::430;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x430.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -97,115 +104,43 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-- Constify SysBusDevice argument
-- Add sysbus_has_pio() and sysbus_pio_get_address()
-- Use proper SysBus accessors
-- Include missing 'exec/cpu-common.h' and 'system/memory.h' headers
+This getter doesn't update any DeviceState internal fields,
+make it const.
 
-Philippe Mathieu-Daudé (27):
-  hw/qdev: Have qdev_get_gpio_out_connector() take const DeviceState arg
-  hw/sysbus: Have various helpers take a const SysBusDevice argument
-  hw/sysbus: Use memory_region_name()
-  hw/i386/microvm: Use proper SysBus accessors
-  hw/timer/hpet: Use proper SysBus accessors
-  hw/acpi/cxl: Use proper SysBus accessors
-  hw/sysbus: Add sysbus_has_pio() and sysbus_pio_get_address()
-  hw/pci-bridge/pci_expander_bridge: Use proper SysBus accessors
-  hw/platform-bus: Include missing 'system/memory.h' header
-  hw/block/pflash: Include missing 'system/memory.h' header
-  hw/misc/unimp: Include missing 'system/memory.h' header
-  hw/misc/empty_slot: Include missing 'system/memory.h' header
-  hw/uefi: Include missing 'system/memory.h' header
-  hw/usb/imx: Include missing 'system/memory.h' header
-  hw/pci/pcihost: Include missing 'system/memory.h' header
-  hw/scsi/esp: Include missing 'system/memory.h' header
-  hw/avr: Include missing 'system/memory.h' header
-  hw/input/lassi: Include missing 'system/memory.h' header
-  hw/tricore: Include missing 'system/memory.h' header
-  hw/int/loongarch: Include missing 'system/memory.h' header
-  hw/rtc/m48t59: Include missing 'system/memory.h' header
-  hw/rtc/sun: Include 'exec/cpu-common.h' and 'system/memory.h' headers
-  hw/xilinx: Include 'exec/cpu-common.h' and 'system/memory.h' headers
-  hw/mips: Include missing 'system/memory.h' header
-  hw/sparc: Include missing 'system/memory.h' header
-  hw/riscv: Include missing 'system/memory.h' header
-  hw/rx: Include missing 'system/memory.h' header
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ include/hw/qdev-core.h | 3 ++-
+ hw/core/gpio.c         | 3 ++-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
 
- hw/rtc/m48t59-internal.h                  |  2 ++
- include/hw/char/avr_usart.h               |  1 +
- include/hw/char/cadence_uart.h            |  1 +
- include/hw/char/ibex_uart.h               |  1 +
- include/hw/char/renesas_sci.h             |  1 +
- include/hw/char/shakti_uart.h             |  1 +
- include/hw/char/sifive_uart.h             |  1 +
- include/hw/gpio/sifive_gpio.h             |  1 +
- include/hw/input/lasips2.h                |  1 +
- include/hw/intc/loongarch_dintc.h         |  2 +-
- include/hw/intc/loongarch_extioi_common.h |  1 +
- include/hw/intc/loongarch_pch_msi.h       |  1 +
- include/hw/intc/loongarch_pic_common.h    |  1 +
- include/hw/intc/loongson_ipi_common.h     |  2 ++
- include/hw/intc/riscv_aclint.h            |  1 +
- include/hw/intc/riscv_aplic.h             |  1 +
- include/hw/intc/riscv_imsic.h             |  1 +
- include/hw/intc/rx_icu.h                  |  1 +
- include/hw/intc/sifive_plic.h             |  1 +
- include/hw/misc/avr_power.h               |  1 +
- include/hw/misc/lasi.h                    |  1 +
- include/hw/misc/mchp_pfsoc_dmc.h          |  1 +
- include/hw/misc/mchp_pfsoc_ioscb.h        |  1 +
- include/hw/misc/mchp_pfsoc_sysreg.h       |  1 +
- include/hw/misc/mips_cmgcr.h              |  1 +
- include/hw/misc/mips_itu.h                |  1 +
- include/hw/misc/sifive_e_aon.h            |  1 +
- include/hw/misc/sifive_e_prci.h           |  1 +
- include/hw/misc/sifive_test.h             |  1 +
- include/hw/misc/sifive_u_otp.h            |  1 +
- include/hw/misc/sifive_u_prci.h           |  1 +
- include/hw/misc/unimp.h                   |  1 +
- include/hw/net/cadence_gem.h              |  1 +
- include/hw/pci/pci_host.h                 |  1 +
- include/hw/platform-bus.h                 |  1 +
- include/hw/qdev-core.h                    |  3 ++-
- include/hw/riscv/opentitan.h              |  1 +
- include/hw/riscv/shakti_c.h               |  1 +
- include/hw/riscv/sifive_e.h               |  1 +
- include/hw/riscv/xiangshan_kmh.h          |  1 +
- include/hw/rtc/goldfish_rtc.h             |  1 +
- include/hw/scsi/esp.h                     |  1 +
- include/hw/sparc/sparc32_dma.h            |  1 +
- include/hw/sparc/sun4m_iommu.h            |  1 +
- include/hw/sparc/sun4u_iommu.h            |  1 +
- include/hw/ssi/ibex_spi_host.h            |  1 +
- include/hw/ssi/sifive_spi.h               |  1 +
- include/hw/sysbus.h                       | 12 +++++++-----
- include/hw/timer/avr_timer16.h            |  1 +
- include/hw/timer/cadence_ttc.h            |  1 +
- include/hw/timer/ibex_timer.h             |  1 +
- include/hw/timer/renesas_cmt.h            |  1 +
- include/hw/timer/renesas_tmr.h            |  1 +
- include/hw/timer/sifive_pwm.h             |  1 +
- include/hw/tricore/tc27x_soc.h            |  1 +
- include/hw/tricore/tricore_testdevice.h   |  1 +
- include/hw/uefi/var-service.h             |  1 +
- include/hw/usb/imx-usb-phy.h              |  1 +
- hw/acpi/cxl.c                             |  2 +-
- hw/block/pflash_cfi01.c                   |  1 +
- hw/block/pflash_cfi02.c                   |  1 +
- hw/char/xilinx_uartlite.c                 |  2 ++
- hw/core/gpio.c                            |  3 ++-
- hw/core/sysbus.c                          | 23 +++++++++++++++++------
- hw/i386/microvm-dt.c                      |  6 ++++--
- hw/intc/xilinx_intc.c                     |  2 ++
- hw/misc/empty_slot.c                      |  1 +
- hw/net/xilinx_axienet.c                   |  2 ++
- hw/pci-bridge/pci_expander_bridge.c       | 12 ++++++------
- hw/rtc/sun4v-rtc.c                        |  2 ++
- hw/ssi/xilinx_spi.c                       |  2 ++
- hw/timer/hpet.c                           |  3 ++-
- hw/timer/xilinx_timer.c                   |  2 ++
- 73 files changed, 114 insertions(+), 24 deletions(-)
-
+diff --git a/include/hw/qdev-core.h b/include/hw/qdev-core.h
+index a7bfb10dc70..2caa0cbd26f 100644
+--- a/include/hw/qdev-core.h
++++ b/include/hw/qdev-core.h
+@@ -725,7 +725,8 @@ void qdev_connect_gpio_out_named(DeviceState *dev, const char *name, int n,
+  *
+  * Return: qemu_irq associated with GPIO or NULL if un-wired.
+  */
+-qemu_irq qdev_get_gpio_out_connector(DeviceState *dev, const char *name, int n);
++qemu_irq qdev_get_gpio_out_connector(const DeviceState *dev,
++                                     const char *name, int n);
+ 
+ /**
+  * qdev_intercept_gpio_out: Intercept an existing GPIO connection
+diff --git a/hw/core/gpio.c b/hw/core/gpio.c
+index 6e32a8eec61..c7c2936fc55 100644
+--- a/hw/core/gpio.c
++++ b/hw/core/gpio.c
+@@ -129,7 +129,8 @@ void qdev_connect_gpio_out_named(DeviceState *dev, const char *name, int n,
+     g_free(propname);
+ }
+ 
+-qemu_irq qdev_get_gpio_out_connector(DeviceState *dev, const char *name, int n)
++qemu_irq qdev_get_gpio_out_connector(const DeviceState *dev,
++                                     const char *name, int n)
+ {
+     g_autofree char *propname = g_strdup_printf("%s[%d]",
+                                      name ? name : "unnamed-gpio-out", n);
 -- 
 2.51.0
 

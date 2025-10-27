@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C543ECCF9F0
-	for <qemu-arm@archiver.kernel.org>; Mon, 27 Oct 2025 11:07:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52993CCF9E0
+	for <qemu-arm@archiver.kernel.org>; Mon, 27 Oct 2025 11:07:36 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vDL1v-0000wW-2M; Mon, 27 Oct 2025 07:04:51 -0400
+	id 1vDL2S-0001k0-Hr; Mon, 27 Oct 2025 07:05:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vDL1Q-0000dd-3z
- for qemu-arm@nongnu.org; Mon, 27 Oct 2025 07:04:21 -0400
-Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
+ id 1vDL2G-0001Sb-Sa
+ for qemu-arm@nongnu.org; Mon, 27 Oct 2025 07:05:13 -0400
+Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vDL1I-0005gP-NU
- for qemu-arm@nongnu.org; Mon, 27 Oct 2025 07:04:19 -0400
-Received: by mail-ed1-x52e.google.com with SMTP id
- 4fb4d7f45d1cf-63c21467e5bso480501a12.0
- for <qemu-arm@nongnu.org>; Mon, 27 Oct 2025 04:04:00 -0700 (PDT)
+ id 1vDL1Z-0005bq-1w
+ for qemu-arm@nongnu.org; Mon, 27 Oct 2025 07:05:10 -0400
+Received: by mail-ed1-x534.google.com with SMTP id
+ 4fb4d7f45d1cf-63d6ee383bdso9764973a12.2
+ for <qemu-arm@nongnu.org>; Mon, 27 Oct 2025 04:03:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1761563037; x=1762167837; darn=nongnu.org;
+ d=linaro.org; s=google; t=1761563030; x=1762167830; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=S+B5t2CS/T8KjhtvrkR91LD1xXhHenjI0bMGIecipr8=;
- b=GgXLmexawwlsv/1igkmwbYEFBzAoXdecLpStTG1L3LsljiasGqe4uPKBmgV1kbQuQE
- G0ThAwNrXqXtm9ncpITlV0XBqnIlacEhBhjCmvc/BgQIYNfb9ofYmYZRwO7cgJTHda0d
- yzvd3C/Y3AJD0tJOgh73/Jx4TRFecgWg9htWO4P7e3OZZE930pXN8HMFNLV1pNMt9CoS
- dLX9ciEgX9a7lVjKQ1F+aujPJC7Ot0jk3Ou4XpnyQNJHr+wTEOU6jmIZdSkLBLdWLTR5
- DrDwId+mZ8hXcWSQIrwj1/ZgHb896cMKEvPGIBJxsJthEuYNanQObj3K/id5odYZF4mo
- X/eg==
+ bh=XeRSVxV/a/+cXLwVgc+XC0DpKFA3aVxT1tt4Uj60OQ8=;
+ b=wWD9G/qJHJV+g3P9eISyRZZS2+K1MzOHe6L9jminNsfavdvHYfvPEM+AHjebDnuU7L
+ +mvu/ONdLQGDyaYEqNDzYHMWgQC2/PaJCQ7TmLIAP89OSgotaA+2iuTOKWFrvEgjx9Rl
+ ETOkTqZb7vZ3Bc+MetDp14GEqsOSr5nlZrbliQKTbM7Tlm78pjpa4vIkYEcwgkk4Cpjv
+ X57VVGVVNtTfDneg+bEvQapDd+O+o54FYbHsnuR1Y4ZoISc/82bAyM13C9cz8XHiHFbW
+ s5TJPXMSUFBcYGXR1JesyhNXJXYfFZDEmsJVRkoVIsPB/l7pvH43C1ZCz36i7f25MpIq
+ 9Odw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761563037; x=1762167837;
+ d=1e100.net; s=20230601; t=1761563030; x=1762167830;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=S+B5t2CS/T8KjhtvrkR91LD1xXhHenjI0bMGIecipr8=;
- b=XsZoAFiwaPG+I8HCq1W3xBFIuSqRns6m53uwApIlo7rYTI9G4n5XaPF4hxlTvzIuXx
- WW2qSMcNsON/0+Dj7pnbkHd5e5AqZ0y+eMwVklZD/11EUOamAduopLmtTh8z/ZWHKPhN
- jb63Z4Bz0qQV/FBVhpXWipHHQSto/MCqLEoadZwfBg8vR8KDlAG7j4UAcmx7/RlW+14G
- B2qr5c69Z38ewimJavtCHRxJNM9iNx6SoxFFs5WCbOUt9lxBFhyNKPVo3lfF6RM4N8ny
- 0OkDdjYKaFGPuKXDTxulFvtogjeiAjiFsdMdZupPzwNutJhzau3kM7uIR+iardWrrP7l
- haHA==
+ bh=XeRSVxV/a/+cXLwVgc+XC0DpKFA3aVxT1tt4Uj60OQ8=;
+ b=QUORYPG4tKlaMTAlwCz4X6DL59zfNlLQBtVwAtVaMMB8bIAZGVIYP+ZpAz0JhaIku8
+ MdC4NNADjSaUm/1u+7gjr1Mz/MGb2Hh8DflP+1/zLP87aojsgbsvXOFaeZIhdJCd5Bg3
+ fck1ff2kTtUEIxkenAiKBR1NymPtAI7RJHAAKebtGn22lZFo9FqRyi4ecCO1yB/CdaoH
+ PSda5XiZFY0m5UCR+lf2W08UWQ0m38Jjw2k9lMCEXAbnzX+G8zub9AjonzKv7fxu1e0U
+ 9VyQgna9kCzID2yQjuWYA77ugCLIbsVVamYk0rQP4cOagZQ7g/9Ke7NjHgsX5dqLXJnU
+ wUMw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXUqxw+BEIaZXXawWe69+igHRvaL5l9DjC2//SMzMqsl9Fb1P7MjcVyyU81xSKjQ7FHYpkicrpHEw==@nongnu.org
-X-Gm-Message-State: AOJu0YywHMlOz/JTtm4vd0OAmQ8wYQNfkSSydCRkv17HK17UXGIcVUEE
- Zgr1VwjMZHCCVx5Yis4YO0NfrvZiU12usNe/Et3a5wj3GiaRa4yL7Sce2R95qugiqj4=
-X-Gm-Gg: ASbGncv6jz6GBCOVm5iZGTlxQ575H61pe6mvoCEf7KVN3V3vPPo4cVtv/CtTOHGkOaa
- BUkisViB7/7oVCKC1hgnUyx+Gy8LNHmYTf/ecCM6lqas7jKA/NTr4ncexV5ftPorA5xaOyjTBUk
- QDesCGkD5tzmPT/iPNJrxIH8HKUgHDl7QxzCAl4NXkyQLF7ESL6tTQuOr0tBmP3IsjFdznz+7Lz
- mMRv8Sv00CI3pKV7a7oXloFXN7GjU9wxccWj5wBpMIk93iP2SvrvI1PSqjwdOo8y7xGkBdJ/MFC
- t285kw9tnWnON0oEnwQRoevk3l64LUGb+/9mlluowoFG3lq1BCOqX9pp49CAxbEi8iLRPjEm8vT
- FzWz5VQAq0YOXVg562RoSCvnJKhOK7kgxNd1WYh4B5dHS5agMmendk/oS/dui2SQa6Oui9uEqwb
- PIrcF7JbY3qH4=
-X-Google-Smtp-Source: AGHT+IFOqsFhi++XSrIN3tvwX7vv/Rng/GC5ur0yItPZWJFnvIrwnw8USTNuYmK9pTg/cUeHEl2iog==
-X-Received: by 2002:a05:6402:5650:b0:636:6801:eed7 with SMTP id
- 4fb4d7f45d1cf-63c1f6d05b1mr25599778a12.32.1761563037184; 
- Mon, 27 Oct 2025 04:03:57 -0700 (PDT)
+ AJvYcCWNKkAgzLXoFZYX/4Cl29GLTuVi9ghB1tmDiTnns7zfLixQpku8eklUp6SUoJdeRpL8Ij1BM8ZxHg==@nongnu.org
+X-Gm-Message-State: AOJu0YxUhHLCDLN+YVS000p5FHjjb58FQYcShU2X6/fdYelF+H6bN0RM
+ WLEGrzGwE7+xF9S8wosBkNuChnANatbOLYD92y4vw2ybgQoOTwNt6NG/CZyBbVjiMWU=
+X-Gm-Gg: ASbGncssHb+LTo0vl4WCWt1DgrD4lsKF2WTEDc8pxslvoayLVpcFXuh0SznSY25+saV
+ 9bSm9k5YNrleuLG6/ZjA7K47hi/Lafrph5PkvKHJLJ9eRWmgicLGJ7TYW5izS0kDspVLpS0nJm7
+ jWVmXAqbgZXxw/snbbEMtTS4noULDpyW954Q4TPnW4ju6AoB1QUnTNnjO/rHW29b+wvkoJLh4XY
+ GQLH58SKLXxaTmSC3SubfUo8/3jCBko+ilik3zD2cLwqco6zrO/Bg2LAdu0h3a/Uv3Bj0dfjiFn
+ lbsSchjD/wkTyGK3jJO3ebxXsbgqU1n3GdeArzgOJ/36F72ze+ytivQfxvha6q2e8rpOEtJvfvP
+ TAjKhrNwrxYKd/WSBV8MKYPOT7o1iIi9DWPWidSCid+zDgXA1yichURNj7O2WkqD6IhMkZqNh7M
+ wI6L6ql/MlGjo=
+X-Google-Smtp-Source: AGHT+IGVeVAd9SOhpQydD1C6iIU4n4tkewdKGA2QFdCIbJrrSlQ45g2gAXLS0i8sKETvZQ5il8jl6g==
+X-Received: by 2002:a17:906:794f:b0:b6d:80e6:cf with SMTP id
+ a640c23a62f3a-b6d80e6068cmr742975766b.44.1761563029639; 
+ Mon, 27 Oct 2025 04:03:49 -0700 (PDT)
 Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-63e7efb97b3sm5942298a12.30.2025.10.27.04.03.50
+ a640c23a62f3a-b6d853077c7sm733658066b.7.2025.10.27.04.03.46
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 27 Oct 2025 04:03:53 -0700 (PDT)
+ Mon, 27 Oct 2025 04:03:49 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id A56E160C1B;
- Mon, 27 Oct 2025 11:03:45 +0000 (GMT)
+ by draig.lan (Postfix) with ESMTP id 94EBF5FA07;
+ Mon, 27 Oct 2025 11:03:44 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
@@ -96,25 +96,26 @@ Cc: Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Jiaxun Yang <jiaxun.yang@flygoat.com>, Michael Rolnik <mrolnik@gmail.com>,
  Song Gao <gaosong@loongson.cn>, qemu-riscv@nongnu.org,
- Aleksandar Rikalo <arikalo@gmail.com>, Julian Ganz <neither@nut.email>
-Subject: [PATCH 17/35] target/m68k: call plugin trap callbacks
-Date: Mon, 27 Oct 2025 11:03:24 +0000
-Message-ID: <20251027110344.2289945-18-alex.bennee@linaro.org>
+ Aleksandar Rikalo <arikalo@gmail.com>
+Subject: [PATCH 05/35] tests/lcitool: generate a yaml file for the ppc64le
+ runner
+Date: Mon, 27 Oct 2025 11:03:12 +0000
+Message-ID: <20251027110344.2289945-6-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20251027110344.2289945-1-alex.bennee@linaro.org>
 References: <20251027110344.2289945-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::52e;
- envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x52e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::534;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x534.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -130,90 +131,203 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Julian Ganz <neither@nut.email>
+Unlike the Aarch64 runners this comes with pure Debian out of the box.
+We need a minor tweak to build-environment to deal with the
+differences in naming convention.
 
-We recently introduced API for registering callbacks for trap related
-events as well as the corresponding hook functions. Due to differences
-between architectures, the latter need to be called from target specific
-code.
-
-This change places hooks for Motorola 68000 targets.
-
-Signed-off-by: Julian Ganz <neither@nut.email>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- target/m68k/op_helper.c | 22 ++++++++++++++++++++++
- 1 file changed, 22 insertions(+)
+ scripts/ci/setup/build-environment.yml        |  10 +-
+ .../ci/setup/debian/debian-13-ppc64le.yaml    | 134 ++++++++++++++++++
+ tests/lcitool/refresh                         |   1 +
+ 3 files changed, 143 insertions(+), 2 deletions(-)
+ create mode 100644 scripts/ci/setup/debian/debian-13-ppc64le.yaml
 
-diff --git a/target/m68k/op_helper.c b/target/m68k/op_helper.c
-index f29ae12af84..e9c20a8e032 100644
---- a/target/m68k/op_helper.c
-+++ b/target/m68k/op_helper.c
-@@ -22,6 +22,7 @@
- #include "exec/helper-proto.h"
- #include "accel/tcg/cpu-ldst.h"
- #include "semihosting/semihost.h"
-+#include "qemu/plugin.h"
+diff --git a/scripts/ci/setup/build-environment.yml b/scripts/ci/setup/build-environment.yml
+index 253d0b759bc..528150dce78 100644
+--- a/scripts/ci/setup/build-environment.yml
++++ b/scripts/ci/setup/build-environment.yml
+@@ -27,20 +27,26 @@
+         - ansible_facts['distribution'] in ['Ubuntu', 'Debian']
  
- #if !defined(CONFIG_USER_ONLY)
+     # the package lists are updated by "make lcitool-refresh"
+-    - name: Define package list file path
++    - name: Define package list file path for Ubuntu
+       set_fact:
+         package_file: "ubuntu/ubuntu-2404-{{ ansible_facts['architecture'] }}.yaml"
+       when:
+         - ansible_facts['distribution'] == 'Ubuntu'
+         - ansible_facts['distribution_version'] == '24.04'
  
-@@ -183,6 +184,21 @@ static const char *m68k_exception_name(int index)
-     return "Unassigned";
- }
- 
-+static void do_plugin_vcpu_interrupt_cb(CPUState *cs, uint64_t from)
-+{
-+    switch (cs->exception_index) {
-+    case EXCP_SPURIOUS ... EXCP_INT_LEVEL_7:
-+        qemu_plugin_vcpu_interrupt_cb(cs, from);
-+        break;
-+    case EXCP_SEMIHOSTING:
-+        qemu_plugin_vcpu_hostcall_cb(cs, from);
-+        break;
-+    default:
-+        qemu_plugin_vcpu_exception_cb(cs, from);
-+        break;
-+    }
-+}
++    - name: Define package list file path for Debian
++      set_fact:
++        package_file: "debian/debian-{{ ansible_facts['distribution_major_version'] }}-{{ ansible_facts['architecture'] }}.yaml"
++      when:
++        - ansible_facts['distribution'] == 'Debian'
 +
- static void cf_interrupt_all(CPUM68KState *env, int is_hw)
- {
-     CPUState *cs = env_cpu(env);
-@@ -203,6 +219,7 @@ static void cf_interrupt_all(CPUM68KState *env, int is_hw)
-             return;
-         case EXCP_SEMIHOSTING:
-             do_m68k_semihosting(env, env->dregs[0]);
-+            qemu_plugin_vcpu_hostcall_cb(cs, retaddr);
-             return;
-         }
-     }
-@@ -239,6 +256,8 @@ static void cf_interrupt_all(CPUM68KState *env, int is_hw)
-     env->aregs[7] = sp;
-     /* Jump to vector.  */
-     env->pc = cpu_ldl_mmuidx_ra(env, env->vbr + vector, MMU_KERNEL_IDX, 0);
+     - name: Include package lists based on OS and architecture
+       include_vars:
+         file: "{{ package_file }}"
+       when:
+         - package_file is exists
+ 
+-    - name: Install packages for QEMU on Ubuntu 24.04
++    - name: Install packages for QEMU on Ubuntu/Debian
+       package:
+         name: "{{ packages }}"
+       when:
+diff --git a/scripts/ci/setup/debian/debian-13-ppc64le.yaml b/scripts/ci/setup/debian/debian-13-ppc64le.yaml
+new file mode 100644
+index 00000000000..e29c9c18403
+--- /dev/null
++++ b/scripts/ci/setup/debian/debian-13-ppc64le.yaml
+@@ -0,0 +1,134 @@
++# THIS FILE WAS AUTO-GENERATED
++#
++#  $ lcitool variables --host-arch ppc64le debian-13 qemu
++#
++# https://gitlab.com/libvirt/libvirt-ci
 +
-+    do_plugin_vcpu_interrupt_cb(cs, retaddr);
- }
- 
- static inline void do_stack_frame(CPUM68KState *env, uint32_t *sp,
-@@ -277,6 +296,7 @@ static void m68k_interrupt_all(CPUM68KState *env, int is_hw)
-     uint32_t sp;
-     uint32_t vector;
-     uint16_t sr, oldsr;
-+    uint64_t last_pc = env->pc;
- 
-     if (!is_hw) {
-         switch (cs->exception_index) {
-@@ -417,6 +437,8 @@ static void m68k_interrupt_all(CPUM68KState *env, int is_hw)
-     env->aregs[7] = sp;
-     /* Jump to vector.  */
-     env->pc = cpu_ldl_mmuidx_ra(env, env->vbr + vector, MMU_KERNEL_IDX, 0);
++packages:
++  - bash
++  - bc
++  - bindgen
++  - bison
++  - bsdextrautils
++  - bzip2
++  - ca-certificates
++  - ccache
++  - clang
++  - dbus
++  - debianutils
++  - diffutils
++  - exuberant-ctags
++  - findutils
++  - flex
++  - gcc
++  - gcovr
++  - gettext
++  - git
++  - hostname
++  - libaio-dev
++  - libasan8
++  - libasound2-dev
++  - libattr1-dev
++  - libbpf-dev
++  - libbrlapi-dev
++  - libbz2-dev
++  - libc6-dev
++  - libcacard-dev
++  - libcap-ng-dev
++  - libcapstone-dev
++  - libcbor-dev
++  - libclang-rt-dev
++  - libcmocka-dev
++  - libcurl4-gnutls-dev
++  - libdaxctl-dev
++  - libdrm-dev
++  - libepoxy-dev
++  - libfdt-dev
++  - libffi-dev
++  - libfuse3-dev
++  - libgbm-dev
++  - libgcrypt20-dev
++  - libglib2.0-dev
++  - libglusterfs-dev
++  - libgnutls28-dev
++  - libgtk-3-dev
++  - libgtk-vnc-2.0-dev
++  - libibverbs-dev
++  - libiscsi-dev
++  - libjemalloc-dev
++  - libjpeg62-turbo-dev
++  - libjson-c-dev
++  - liblttng-ust-dev
++  - liblzo2-dev
++  - libncursesw5-dev
++  - libnfs-dev
++  - libnuma-dev
++  - libpam0g-dev
++  - libpcre2-dev
++  - libpipewire-0.3-dev
++  - libpixman-1-dev
++  - libpng-dev
++  - libpulse-dev
++  - librbd-dev
++  - librdmacm-dev
++  - libsasl2-dev
++  - libsdl2-dev
++  - libsdl2-image-dev
++  - libseccomp-dev
++  - libselinux1-dev
++  - libslirp-dev
++  - libsnappy-dev
++  - libsndio-dev
++  - libspice-protocol-dev
++  - libspice-server-dev
++  - libssh-dev
++  - libstd-rust-dev
++  - libsystemd-dev
++  - libtasn1-6-dev
++  - libubsan1
++  - libudev-dev
++  - liburing-dev
++  - libusb-1.0-0-dev
++  - libusbredirhost-dev
++  - libvdeplug-dev
++  - libvirglrenderer-dev
++  - libvte-2.91-dev
++  - libxdp-dev
++  - libzstd-dev
++  - llvm
++  - locales
++  - make
++  - mtools
++  - multipath-tools
++  - ncat
++  - nettle-dev
++  - ninja-build
++  - openssh-client
++  - pkgconf
++  - python3
++  - python3-numpy
++  - python3-opencv
++  - python3-pillow
++  - python3-pip
++  - python3-setuptools
++  - python3-sphinx
++  - python3-sphinx-rtd-theme
++  - python3-tomli
++  - python3-venv
++  - python3-wheel
++  - python3-yaml
++  - rpm2cpio
++  - rustc
++  - sed
++  - socat
++  - sparse
++  - swtpm
++  - systemtap-sdt-dev
++  - tar
++  - tesseract-ocr
++  - tesseract-ocr-eng
++  - vulkan-tools
++  - xorriso
++  - zlib1g-dev
++  - zstd
 +
-+    do_plugin_vcpu_interrupt_cb(cs, last_pc);
- }
+diff --git a/tests/lcitool/refresh b/tests/lcitool/refresh
+index 056cfb6e9d7..7fbdf6f340b 100755
+--- a/tests/lcitool/refresh
++++ b/tests/lcitool/refresh
+@@ -272,6 +272,7 @@ try:
+     #
+     generate_yaml("ubuntu", "ubuntu-2404", "aarch64")
+     generate_yaml("ubuntu", "ubuntu-2404", "s390x")
++    generate_yaml("debian", "debian-13", "ppc64le")
  
- static void do_interrupt_all(CPUM68KState *env, int is_hw)
+ 
+     sys.exit(0)
 -- 
 2.47.3
 

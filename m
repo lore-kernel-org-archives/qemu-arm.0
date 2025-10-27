@@ -4,113 +4,115 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F2E9CCF9E0
-	for <qemu-arm@archiver.kernel.org>; Mon, 27 Oct 2025 10:46:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0E0ECCF9E0
+	for <qemu-arm@archiver.kernel.org>; Mon, 27 Oct 2025 11:04:30 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vDKkT-0003qn-G1; Mon, 27 Oct 2025 06:46:49 -0400
+	id 1vDL1I-0000bV-N5; Mon, 27 Oct 2025 07:04:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vDKkO-0003ne-Ul
- for qemu-arm@nongnu.org; Mon, 27 Oct 2025 06:46:45 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vDKkL-0002OQ-Fj
- for qemu-arm@nongnu.org; Mon, 27 Oct 2025 06:46:44 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1761561999;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=FmCI4CFlIlpO5XbDp8FpQdT99z9xtBk9MdxOfGMxWDQ=;
- b=O1LSS1LE14M2HTsHeDeZEiQFArjjwPUlIBIjofCdfmZNa930+tnp3yIL8lhxzmfGAhZja+
- N+WSc/SQvwXGToBGJ2B4gXh8gZP4PkKvcWYvQVb6bEH5UwQDUHF3KVU306yxSy7jcIHDhL
- Y6p2KqgK5BHR2D82w8wuAqZUqygyTEA=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-241-yDLh7x5TMBG3yOOMdMIRDg-1; Mon, 27 Oct 2025 06:46:36 -0400
-X-MC-Unique: yDLh7x5TMBG3yOOMdMIRDg-1
-X-Mimecast-MFC-AGG-ID: yDLh7x5TMBG3yOOMdMIRDg_1761561995
-Received: by mail-wm1-f69.google.com with SMTP id
- 5b1f17b1804b1-47105bfcf15so25554875e9.2
- for <qemu-arm@nongnu.org>; Mon, 27 Oct 2025 03:46:36 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1vDL1A-0000Yp-2B
+ for qemu-arm@nongnu.org; Mon, 27 Oct 2025 07:04:04 -0400
+Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1vDL0w-0005aG-IL
+ for qemu-arm@nongnu.org; Mon, 27 Oct 2025 07:03:57 -0400
+Received: by mail-ed1-x534.google.com with SMTP id
+ 4fb4d7f45d1cf-6399328ff1fso7789467a12.0
+ for <qemu-arm@nongnu.org>; Mon, 27 Oct 2025 04:03:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1761563026; x=1762167826; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=CZxOmv1h9X+NtE8CrFVjihKiw1E4S/yG+7YAk6GJ2BI=;
+ b=ux+8I8pEsCSkzMAI/oEQ1jFvolUvgt/AuUBDJSPwsiVRq+WgnZykTGJEVxTa2b5SDb
+ RZPIaXwInKY6WPAobmJwn+YWnevKVhW9EbNdFewOiP894mkoHuC4LzokPoiCsGjzAUeu
+ ViMft+y+k8riXU5J8++/l/C2aCetmFcA2w4IRmLLkuNi7rTy0mEp/PfGqKVTK2NEY3fh
+ 9l8t7+nfZSQiyXpj6c2iQw+a884sQYjgOcwBnkl7Yi/Ttkol4Vs4rISQhMa20iXxRhXe
+ QGiQ4D6dwhA3KzZwR2/yyRoiQoVmVcV5zewR/r+Tl/XTRbyixv5fIk9rySp1nhcFBecP
+ FolQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761561995; x=1762166795;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ d=1e100.net; s=20230601; t=1761563026; x=1762167826;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=FmCI4CFlIlpO5XbDp8FpQdT99z9xtBk9MdxOfGMxWDQ=;
- b=HrhwO1hH217mumljyrOXgJmJw0ktgKVKciziBCRCQVFxVlUz9ZiMjbeoJzHr3IZsxk
- 1ZjmRrf8T0noI3a/Rc1Kp54ZmxPMIWV18tkoue+Rhq8sQ7VS0CQ4aXIT4wKqjFkfU6no
- EnMSvzUjda6dpu74ds99jUxFcc7JSu2Q5sGiTDXsahBkgQneelM10PStH39AU6wjwKJ6
- gOERnGPbOBlqFR4Ul74N7PURlR6hxOXEy2cTulnJ30t3B/8DoEB5ObJ5gNmQVk/tRs8M
- SMlD9jiHBMUchq7xFjGBsxBn7IOEyvPCKU7GAWOpXXynLv9bXgbQEzYQh9OpFCOYkeyT
- FAcA==
+ bh=CZxOmv1h9X+NtE8CrFVjihKiw1E4S/yG+7YAk6GJ2BI=;
+ b=QVCZe5TUf5L6nDE1yxRmsaZw5M8OyYCnDFDHvVfhhKa+ugOGWK38AHy3LFy7ayJ18C
+ F9SFZMG57zsk9C+RKnhNoCZnPRM8f810qotJNc27fJD9WnGGrWNJgTuqzFzV+H99HHLU
+ jrv2xLQ8XQvLHg/oBvWPSrS2na9wmPLdSLp4n9Akr4cPK8Gf/zwbUepl6o+Q8YIAbLe7
+ e7E9xESoQUK7epL5cLR6q/uLoxm4uM9hddTaVd+9NHwnX0bv48SpPM6Qe8NFiTdGWgkE
+ hIfvOrDAWdrr0V3mlvK1ZA5+ogortdjWOQ9k5loJbimTjpd1uEzgDuXLSo5llzXJ9aFe
+ MaNw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCV8D5qw8NqIbY8D1cjwKwdQ9kIak2PwTI2s4n1ynSaXhpWumz3QSElx+8wGHFlta+F64mgOYJ/gtw==@nongnu.org
-X-Gm-Message-State: AOJu0Yx01qauzo3VwhBxG6DJFODjErbHvGijUK7sNVuQzLi46VuBsvRz
- 56InQRdkr7fut4zClwikLjeMXqMhzECPsClvNImb0aBhXN7BwsT/NLjAtk4E9is5VefUh6Rt0sq
- 5vOt09SgANeVQbrRpLgpnkczSKU2x8kIbrZdJV9eaqSAvXLIOqTa+fw==
-X-Gm-Gg: ASbGncvxRV2t4ZZ8k+VyJErN49PKfoK72WsgbSSS5mdP8hYdetuRRjXmxJlbEyqFyQh
- tz79jzT+F5k5NwqR19TGxRO0lgweHKWgY58OeyDcG776njaaq+Z8R57seCIzqcgL58fN34+Iv/t
- qfHsR6vEFOBt3LvGNGLHYMP/ndR7KzQnxENUP89RZJOoXzZzHz3tSv4/smra1TfERArsyBuyRut
- RpSST/ux6Yz5QV6LP0YT1M2DyokDqp+w7DDY3qmv4HyUW0UwHraeYML1nyDwyv/ECHQzuO8ZSZo
- brklZ8lcr476RvegxhsMU3ocPCUZPOM+mDsrzJ2DXvKNwobsJ9pUw0ZvWSuKZ9CuIxlyPz9gQtQ
- 4CoZJAOA1P6Os1qLwibBGel7yfAPt0HnXlThuf6nn9RbPRw==
-X-Received: by 2002:a05:600c:3b8d:b0:45d:f81d:eae7 with SMTP id
- 5b1f17b1804b1-471179176b9mr325877945e9.28.1761561995326; 
- Mon, 27 Oct 2025 03:46:35 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IE5dRTaE6QJAVnzFty1GjXpeTc/xnv2a0oHeAoTrpETA0dawahkIRzTlpgo9g7HOPmIRHqhzA==
-X-Received: by 2002:a05:600c:3b8d:b0:45d:f81d:eae7 with SMTP id
- 5b1f17b1804b1-471179176b9mr325877455e9.28.1761561994803; 
- Mon, 27 Oct 2025 03:46:34 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-475dd489e6dsm128426165e9.6.2025.10.27.03.46.33
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 27 Oct 2025 03:46:34 -0700 (PDT)
-Message-ID: <46292ce1-e930-4ae8-97fe-626ed2e4d3c4@redhat.com>
-Date: Mon, 27 Oct 2025 11:46:33 +0100
+ AJvYcCV58uVIjlB8QHPpMVjKpAjOxTKm/rbu5t+94x398g1YLthYPSvn9iHY1XWk3BGfI+mTJ6E1j+tJPQ==@nongnu.org
+X-Gm-Message-State: AOJu0YxGtIiTB8W+WPiFvNPzha8OE999bkk3uiaxFTOcYsHX7VKiPktz
+ wn1RQOAoPzB/4IjhfOSkrW6Od3+Eqr/8zBh8C1uEZ37RqTK176LNndju3CB4/sCB/7s=
+X-Gm-Gg: ASbGnctYThRGieuGC4FrorL54cRdvH2YUsGu/vEe388t3y/gM9iK1JDtK4CK9SffJfz
+ 1x9682JP6X8f14STuKa06+OgRIMLIqom042KkO4pXFONEM8yZgdVTXGQnkwAovWzLkD36AWTR0N
+ 7+a6u/ys8zL9tmpD1cBsNxxJr/UHqkXSaHnZUhc9NPpWdCm1rxocxHh/yg3ZRCtfSPZdHVAadfI
+ AeKiiUHPeyyInkbOoEIZ9r7usLZafNh37ge5Bz12gyh/qDxp9UWwwBWR3+TfZetypl8YBN99pi4
+ 8jW9vhMjp0b88dMyRVrZSZzcG5dHU66/31UHr3NGyd+5rg7FcHXUOBUDBH8T0tDuV5NA1X2aQna
+ 9UZin10uYGv3DstaUq6+745jd2jlzCzByK9/I6I/ikHFinoac2A9/aC2sTVk9Bx2+K2leUxfCbV
+ G9
+X-Google-Smtp-Source: AGHT+IEjdh5wekeDnj/JN/hpImq3PiBtRv+N6Y50dWW99nPrapeBSLqmnoWMTqOiYMColqDL85c1Jg==
+X-Received: by 2002:a05:6402:34d1:b0:636:7e05:b6c0 with SMTP id
+ 4fb4d7f45d1cf-63e5fa7473amr9185535a12.0.1761563025832; 
+ Mon, 27 Oct 2025 04:03:45 -0700 (PDT)
+Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
+ 4fb4d7f45d1cf-63e8036cdd4sm5887848a12.22.2025.10.27.04.03.44
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 27 Oct 2025 04:03:45 -0700 (PDT)
+Received: from draig.lan (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id 1DCEB5F8CD;
+ Mon, 27 Oct 2025 11:03:44 +0000 (GMT)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ Alexandre Iooss <erdnaxe@crans.org>, Chinmay Rath <rathc@linux.ibm.com>,
+ qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Nicholas Piggin <npiggin@gmail.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
+ David Hildenbrand <david@redhat.com>, qemu-ppc@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-s390x@nongnu.org,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Helge Deller <deller@gmx.de>,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Stafford Horne <shorne@gmail.com>, Mahmoud Mandour <ma.mandourr@gmail.com>,
+ Artyom Tarasenko <atar4qemu@gmail.com>,
+ Eduardo Habkost <eduardo@habkost.net>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Laurent Vivier <laurent@vivier.eu>, Weiwei Li <liwei1518@gmail.com>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Yoshinori Sato <yoshinori.sato@nifty.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Aurelien Jarno <aurelien@aurel32.net>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Thomas Huth <thuth@redhat.com>, Max Filippov <jcmvbkbc@gmail.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, Michael Rolnik <mrolnik@gmail.com>,
+ Song Gao <gaosong@loongson.cn>, qemu-riscv@nongnu.org,
+ Aleksandar Rikalo <arikalo@gmail.com>
+Subject: [PATCH 00/35] maintainer updates for 8.2 softfeeeze (ci, plugins,
+ semihosting) pre-PR
+Date: Mon, 27 Oct 2025 11:03:07 +0000
+Message-ID: <20251027110344.2289945-1-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.47.3
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 14/27] hw/arm/smmuv3-accel: Get host SMMUv3 hw info and
- validate
-To: Shameer Kolothum <skolothumtho@nvidia.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, jgg@nvidia.com, nicolinc@nvidia.com,
- ddutile@redhat.com, berrange@redhat.com, nathanc@nvidia.com,
- mochs@nvidia.com, smostafa@google.com, wangzhou1@hisilicon.com,
- jiangkunkun@huawei.com, jonathan.cameron@huawei.com,
- zhangfei.gao@linaro.org, zhenzhong.duan@intel.com, yi.l.liu@intel.com,
- shameerkolothum@gmail.com
-References: <20250929133643.38961-1-skolothumtho@nvidia.com>
- <20250929133643.38961-15-skolothumtho@nvidia.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20250929133643.38961-15-skolothumtho@nvidia.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: CE6c8gyNzSSnwnwGkoOMVYqzPlfpwsVvNb0GdQP6d0w_1761561995
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::534;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x534.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -123,178 +125,135 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+Hi,
 
+This should be my final pull-request before softfreeze on the 4th of
+November. As I'll be travelling I intend to send it out by the end of
+the week.
 
-On 9/29/25 3:36 PM, Shameer Kolothum wrote:
-> Just before the device gets attached to the SMMUv3, make sure QEMU SMMUv3
-> features are compatible with the host SMMUv3.
->
-> Not all fields in the host SMMUv3 IDR registers are meaningful for userspace.
-> Only the following fields can be used:
->
->   - IDR0: ST_LEVEL, TERM_MODEL, STALL_MODEL, TTENDIAN, CD2L, ASID16, TTF
->   - IDR1: SIDSIZE, SSIDSIZE
->   - IDR3: BBML, RIL
->   - IDR5: VAX, GRAN64K, GRAN16K, GRAN4K
->
-> For now, the check is to make sure the features are in sync to enable
-> basic accelerated SMMUv3 support.
->
-> One other related change is, move the smmuv3_init_regs() to smmu_realize()
-> so that we do have that early enough for the check mentioned above.
->
-> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
-> ---
->  hw/arm/smmuv3-accel.c | 98 +++++++++++++++++++++++++++++++++++++++++++
->  hw/arm/smmuv3.c       |  4 +-
->  2 files changed, 100 insertions(+), 2 deletions(-)
->
-> diff --git a/hw/arm/smmuv3-accel.c b/hw/arm/smmuv3-accel.c
-> index 9ad8595ce2..defeddbd8c 100644
-> --- a/hw/arm/smmuv3-accel.c
-> +++ b/hw/arm/smmuv3-accel.c
-> @@ -39,6 +39,96 @@
->  #define STE1_MASK     (STE1_ETS | STE1_S1STALLD | STE1_S1CSH | STE1_S1COR | \
->                         STE1_S1CIR | STE1_S1DSS)
->  
-> +static bool
-> +smmuv3_accel_check_hw_compatible(SMMUv3State *s,
-> +                                 struct iommu_hw_info_arm_smmuv3 *info,
-> +                                 Error **errp)
-> +{
-> +    uint32_t val;
-> +
-> +    /*
-> +     * QEMU SMMUv3 supports both linear and 2-level stream tables.
-> +     */
-> +    val = FIELD_EX32(info->idr[0], IDR0, STLEVEL);
-> +    if (val != FIELD_EX32(s->idr[0], IDR0, STLEVEL)) {
-> +        s->idr[0] = FIELD_DP32(s->idr[0], IDR0, STLEVEL, val);
-> +        error_setg(errp, "Host SUMMUv3 differs in Stream Table format");
-> +        return false;
-> +    }
-> +
-> +    /* QEMU SMMUv3 supports only little-endian translation table walks */
-> +    val = FIELD_EX32(info->idr[0], IDR0, TTENDIAN);
-> +    if (!val && val > FIELD_EX32(s->idr[0], IDR0, TTENDIAN)) {
-> +        error_setg(errp, "Host SUMMUv3 doesn't support Little-endian "
-> +                   "translation table");
-> +        return false;
-> +    }
-> +
-> +    /* QEMU SMMUv3 supports only AArch64 translation table format */
-> +    val = FIELD_EX32(info->idr[0], IDR0, TTF);
-> +    if (val < FIELD_EX32(s->idr[0], IDR0, TTF)) {
-> +        error_setg(errp, "Host SUMMUv3 deosn't support Arch64 Translation "
-> +                   "table format");
-> +        return false;
-> +    }
-> +
-> +    /* QEMU SMMUv3 supports SIDSIZE 16 */
-> +    val = FIELD_EX32(info->idr[1], IDR1, SIDSIZE);
-> +    if (val < FIELD_EX32(s->idr[1], IDR1, SIDSIZE)) {
-> +        error_setg(errp, "Host SUMMUv3 SIDSIZE not compatible");
-> +        return false;
-> +    }
-> +
-> +    /* QEMU SMMUv3 supports Range Invalidation by default */
-> +    val = FIELD_EX32(info->idr[3], IDR3, RIL);
-> +    if (val != FIELD_EX32(s->idr[3], IDR3, RIL)) {
-> +        error_setg(errp, "Host SUMMUv3 deosn't support Range Invalidation");
-> +        return false;
-> +    }
-> +
-> +    val = FIELD_EX32(info->idr[5], IDR5, GRAN4K);
-> +    if (val != FIELD_EX32(s->idr[5], IDR5, GRAN4K)) {
-> +        error_setg(errp, "Host SMMUv3 doesn't support 64K translation granule");
-> +        return false;
-> +    }
-> +    val = FIELD_EX32(info->idr[5], IDR5, GRAN16K);
-> +    if (val != FIELD_EX32(s->idr[5], IDR5, GRAN16K)) {
-> +        error_setg(errp, "Host SMMUv3 doesn't support 16K translation granule");
-> +        return false;
-> +    }
-> +    val = FIELD_EX32(info->idr[5], IDR5, GRAN64K);
-> +    if (val != FIELD_EX32(s->idr[5], IDR5, GRAN64K)) {
-> +        error_setg(errp, "Host SMMUv3 doesn't support 16K translation granule");
-> +        return false;
-> +    }
-> +    return true;
-> +}
-> +
-> +static bool
-> +smmuv3_accel_hw_compatible(SMMUv3State *s, HostIOMMUDeviceIOMMUFD *idev,
-> +                           Error **errp)
-> +{
-> +    struct iommu_hw_info_arm_smmuv3 info;
-> +    uint32_t data_type;
-> +    uint64_t caps;
-> +
-> +    if (!iommufd_backend_get_device_info(idev->iommufd, idev->devid, &data_type,
-> +                                         &info, sizeof(info), &caps, errp)) {
-> +        return false;
-> +    }
-> +
-> +    if (data_type != IOMMU_HW_INFO_TYPE_ARM_SMMUV3) {
-> +        error_setg(errp, "Wrong data type (%d) for Host SMMUv3 device info",
-> +                     data_type);
-> +        return false;
-> +    }
-> +
-> +    if (!smmuv3_accel_check_hw_compatible(s, &info, errp)) {
-> +        return false;
-> +    }
-> +    return true;
-> +}
-> +
->  static bool
->  smmuv3_accel_alloc_vdev(SMMUv3AccelDevice *accel_dev, int sid, Error **errp)
->  {
-> @@ -363,6 +453,14 @@ static bool smmuv3_accel_set_iommu_device(PCIBus *bus, void *opaque, int devfn,
->          return true;
->      }
->  
-> +    /*
-> +     * Check the host SMMUv3 associated with the dev is compatible with the
-> +     * QEMU SMMUv3 accel.
-> +     */
-> +    if (!smmuv3_accel_hw_compatible(s, idev, errp)) {
-> +        return false;
-> +    }
-> +
->      if (!smmuv3_accel_dev_alloc_viommu(accel_dev, idev, errp)) {
->          error_setg(errp, "Device 0x%x: Unable to alloc viommu", sid);
->          return false;
-> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-> index 3963bdc87f..5830cf5a03 100644
-> --- a/hw/arm/smmuv3.c
-> +++ b/hw/arm/smmuv3.c
-> @@ -1913,8 +1913,6 @@ static void smmu_reset_exit(Object *obj, ResetType type)
->      if (c->parent_phases.exit) {
->          c->parent_phases.exit(obj, type);
->      }
-> -
-> -    smmuv3_init_regs(s);
-does that work on reset()? Besides setting idr regs, smmuv3_init_regs() also
-resets the cmdq and eventq plus a bunch of dynamic registers. That needs
-to happen on reset I think.
+The CI changes are mostly cleanups for the ansible scripts. I've
+dropped the final testing/next patch which enables the ppc64le custom
+runner as I don't think I'll have time to debug that before the
+freeze.
 
-Eric
->  }
->  
->  static void smmu_realize(DeviceState *d, Error **errp)
-> @@ -1945,6 +1943,8 @@ static void smmu_realize(DeviceState *d, Error **errp)
->      sysbus_init_mmio(dev, &sys->iomem);
->  
->      smmu_init_irq(s, dev);
-> +
-> +    smmuv3_init_regs(s);
->  }
->  
->  static const VMStateDescription vmstate_smmuv3_queue = {
+The plugin updates are already well reviewed and should make more
+richer plugins giving semantic info on the type of discontinuities you
+can see.
+
+There are a few other minor fixes including come missing CFI tags for
+some plugin callbacks and fixing the minimal -no-tcg build.
+
+The following still need review:
+
+  scripts/ci: modify gitlab runner deb setup
+  tests/lcitool: generate a yaml file for the ppc64le runner
+  scripts/ci: allow both Ubuntu or Debian to run upgrade
+  scripts/ci: move build-environment.yaml up a level
+  scripts/ci/setup: regenerate yaml
+  ci: clean-up remaining bits of armhf builds.
+
+Alex.
+
+Alex Bennée (8):
+  ci: clean-up remaining bits of armhf builds.
+  scripts/ci/setup: regenerate yaml
+  scripts/ci: move build-environment.yaml up a level
+  scripts/ci: allow both Ubuntu or Debian to run upgrade
+  tests/lcitool: generate a yaml file for the ppc64le runner
+  scripts/ci: modify gitlab runner deb setup
+  plugins/core: add missing QEMU_DISABLE_CFI annotations
+  configs: drop SBSA_REF from minimal specification
+
+Julian Ganz (25):
+  plugins: add types for callbacks related to certain discontinuities
+  plugins: add API for registering discontinuity callbacks
+  plugins: add hooks for new discontinuity related callbacks
+  contrib/plugins: add plugin showcasing new dicontinuity related API
+  target/alpha: call plugin trap callbacks
+  target/arm: call plugin trap callbacks
+  target/avr: call plugin trap callbacks
+  target/hppa: call plugin trap callbacks
+  target/i386: call plugin trap callbacks
+  target/loongarch: call plugin trap callbacks
+  target/m68k: call plugin trap callbacks
+  target/microblaze: call plugin trap callbacks
+  target/mips: call plugin trap callbacks
+  target/openrisc: call plugin trap callbacks
+  target/ppc: call plugin trap callbacks
+  target/riscv: call plugin trap callbacks
+  target/rx: call plugin trap callbacks
+  target/s390x: call plugin trap callbacks
+  target/sh4: call plugin trap callbacks
+  target/sparc: call plugin trap callbacks
+  target/tricore: call plugin trap callbacks
+  target/xtensa: call plugin trap callbacks
+  tests: add plugin asserting correctness of discon event's to_pc
+  tests: add test for double-traps on rv64
+  tests: add test with interrupted memory accesses on rv64
+
+Sean Anderson (2):
+  gdbstub: Fix %s formatting
+  semihosting: Fix GDB File-I/O FLEN
+
+ docs/about/emulation.rst                      |   8 +
+ docs/devel/testing/ci-jobs.rst.inc            |   7 -
+ configs/devices/aarch64-softmmu/minimal.mak   |   1 -
+ include/qemu/plugin-event.h                   |   3 +
+ include/qemu/plugin.h                         |  13 ++
+ include/qemu/qemu-plugin.h                    |  60 +++++
+ target/arm/internals.h                        |   1 +
+ contrib/plugins/traps.c                       |  83 +++++++
+ gdbstub/syscalls.c                            |   2 +-
+ plugins/core.c                                |  58 +++++
+ plugins/loader.c                              |   1 +
+ semihosting/arm-compat-semi.c                 |   5 +-
+ target/alpha/helper.c                         |  13 ++
+ target/arm/helper.c                           |  24 ++
+ target/arm/tcg/m_helper.c                     |   5 +
+ target/avr/helper.c                           |   3 +
+ target/hppa/int_helper.c                      |  17 ++
+ target/i386/tcg/excp_helper.c                 |   3 +
+ target/i386/tcg/seg_helper.c                  |   4 +
+ target/loongarch/tcg/tcg_cpu.c                |   4 +
+ target/m68k/op_helper.c                       |  22 ++
+ target/microblaze/helper.c                    |  10 +
+ target/mips/tcg/system/tlb_helper.c           |  11 +
+ target/openrisc/interrupt.c                   |  15 ++
+ target/ppc/excp_helper.c                      |  41 ++++
+ target/riscv/cpu_helper.c                     |   9 +
+ target/rx/helper.c                            |  12 +
+ target/s390x/tcg/excp_helper.c                |   8 +
+ target/sh4/helper.c                           |   4 +
+ target/sparc/int32_helper.c                   |   7 +
+ target/sparc/int64_helper.c                   |  10 +
+ target/tricore/op_helper.c                    |   5 +
+ target/xtensa/exc_helper.c                    |   6 +
+ target/xtensa/xtensa-semi.c                   |   3 +
+ tests/tcg/plugins/discons.c                   | 221 ++++++++++++++++++
+ .../custom-runners/ubuntu-24.04-aarch64.yml   |   2 -
+ contrib/plugins/meson.build                   |   2 +-
+ .../setup/{ubuntu => }/build-environment.yml  |  32 +--
+ .../ci/setup/debian/debian-13-ppc64le.yaml    | 134 +++++++++++
+ scripts/ci/setup/gitlab-runner.yml            |   6 +-
+ .../ci/setup/ubuntu/ubuntu-2404-aarch64.yaml  |   4 +-
+ .../ci/setup/ubuntu/ubuntu-2404-s390x.yaml    |   4 +-
+ tests/lcitool/refresh                         |   1 +
+ tests/tcg/plugins/meson.build                 |   2 +-
+ tests/tcg/riscv64/Makefile.softmmu-target     |  12 +
+ tests/tcg/riscv64/doubletrap.S                |  73 ++++++
+ tests/tcg/riscv64/interruptedmemory.S         |  97 ++++++++
+ 47 files changed, 1031 insertions(+), 37 deletions(-)
+ create mode 100644 contrib/plugins/traps.c
+ create mode 100644 tests/tcg/plugins/discons.c
+ rename scripts/ci/setup/{ubuntu => }/build-environment.yml (63%)
+ create mode 100644 scripts/ci/setup/debian/debian-13-ppc64le.yaml
+ create mode 100644 tests/tcg/riscv64/doubletrap.S
+ create mode 100644 tests/tcg/riscv64/interruptedmemory.S
+
+-- 
+2.47.3
 
 

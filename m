@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1427ACCF9EA
-	for <qemu-arm@archiver.kernel.org>; Mon, 27 Oct 2025 11:13:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78C99CCF9E0
+	for <qemu-arm@archiver.kernel.org>; Mon, 27 Oct 2025 11:13:56 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vDL9d-0006Y3-LX; Mon, 27 Oct 2025 07:12:49 -0400
+	id 1vDL27-0001Eh-QA; Mon, 27 Oct 2025 07:05:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vDL9P-0005rd-TC
- for qemu-arm@nongnu.org; Mon, 27 Oct 2025 07:12:36 -0400
-Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
+ id 1vDL1o-0000pP-1p
+ for qemu-arm@nongnu.org; Mon, 27 Oct 2025 07:04:49 -0400
+Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vDL9A-0007bu-45
- for qemu-arm@nongnu.org; Mon, 27 Oct 2025 07:12:35 -0400
-Received: by mail-ej1-x631.google.com with SMTP id
- a640c23a62f3a-b6d6c11f39aso616706966b.2
- for <qemu-arm@nongnu.org>; Mon, 27 Oct 2025 04:12:15 -0700 (PDT)
+ id 1vDL1Q-0005d0-Ms
+ for qemu-arm@nongnu.org; Mon, 27 Oct 2025 07:04:43 -0400
+Received: by mail-ed1-x535.google.com with SMTP id
+ 4fb4d7f45d1cf-63c0c9a408aso7200398a12.3
+ for <qemu-arm@nongnu.org>; Mon, 27 Oct 2025 04:03:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1761563533; x=1762168333; darn=nongnu.org;
+ d=linaro.org; s=google; t=1761563031; x=1762167831; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=OP5xRq/2+HQuKT/1mrxcUI8zA2gE9pSdxS9XYDeOM4Q=;
- b=OQLI7QvPFveRCOrwb5IIxbZ1m4mb5TJzkJJ6nH9l0AZmm8RDsHn+yvLeMLt+nkPgRg
- ixpkyPtRT1mmvJ9Pni2bwTqn8sK9wx8tQiCvY6VCGrysawJJpnNhqUP163nH3DAIVZoZ
- p4RqWzy5/zbWmNM/s+QzcfxR/ylQ9DC5hDK3YrfCGLYuhQJLs2EcYhn0DLZknB07Pts6
- D6lWWD8BTICRsMSOq5JxoSg5haT0R6S28S59eZp2tt3LiiAzBXxJ/reSoCBrtjkj+Ly6
- BbWexSNj7fhEPmJCeTh/F0rinFPsaVAxpWqueNJtyrGPwTp8Arlp3uo99ozKrs9iyktn
- DPag==
+ bh=80isSoz7EOdlCaIZfqdN1lA628I3DHM5sFKCGcUmW68=;
+ b=TSPh37aPZW4vu1QXTfVnStpNZsT7hT7MQtrkc6ivXSfapjyFzfGftgQ/4ZfG3c4yom
+ GH4V4QV+9XWeZ4r+fpg3WiJzLwGSHagvTsiEANHzfeL8pOohfpEjf7LU7GFCSbSugOUu
+ N8S3j8OmJBdpGJv/Js5hJmZy8te6kSlB/kPeZ+xOn/eeHyAm1+TA8v5ZcaULxVP2GUwV
+ DHDE3vB7WzfVHSfqVa69Vn53nAavojUoxogYL7x/dUgGKCX9VM+dLetStcL/0xjo7ieR
+ edbU3Gjxj6K8f47XTczS1/WME7wg4ImMLmPvPk0tbM67adn2slhmHpJFiIqA6T1HanK/
+ nLXA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761563533; x=1762168333;
+ d=1e100.net; s=20230601; t=1761563031; x=1762167831;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=OP5xRq/2+HQuKT/1mrxcUI8zA2gE9pSdxS9XYDeOM4Q=;
- b=QR9eJ2NnoY+5Am3kXqIoDwQBZvs0/EWPO4NT4B4tifhuF0hxzSc3ae0/ogQGzfTOYN
- hkl1mxtMhulpaHS9h5BBtZM2wghvhcxnG8ra77l43c8yAkTYsaeCEhh5I62CbvK2Y/rf
- qFArjV11jjfN0zhXtmISUIopsbXEeimy9n07oWcU7dyId2vDU+5CFq+0n6LCadWo5amk
- mR3dSwxwiiHXYURQc1SZ1+aH09q2L918r7Ef/l3gRlc6xFPaux18rzMuBzcSEmy3o8pl
- zebv+9hyqiBLJU7mdxuLcfk2/X8M+plcGKZIVCxdFh37lVmaU11yx8ZzJRYJqP3cSC+0
- /hSA==
+ bh=80isSoz7EOdlCaIZfqdN1lA628I3DHM5sFKCGcUmW68=;
+ b=p5WjXGzvBWHeOPv/NF7npVmKaixMpiXQhvyG2jgnkistacivZnM7aQ9GdFb/S003RG
+ 7nZuflMqrSeeY0te8MUDYgVsenhew+2FkKrPPsgF8Pu9obSwlfPB52TxaSBzdomIfh1o
+ ePcav/7DxEu8uCbUm8mkbhsQURTlC9+ku/e1ZQ4aowEZ3BBY5Zpldg5kEWVXb3Yp1uBh
+ x2IKXIBwixySd6vMrSHQo8ngNDIro4MDBzuJc9QEtkghSq1XHM9sTFJMLAp72jFXut5Y
+ cQsmUQ6scxk/S2KGKj1pb/JilJhq+ODt8KlAEQr01l3a1YQ8BwzXJ36Wl5sXACfjiVRr
+ yrcg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUWr174xTU4a47OfE6RD3NUVf5J2H8lKKjp03rVRFgz9SNXuctpbhiefDq9occoBDUqk5dYJ13MfA==@nongnu.org
-X-Gm-Message-State: AOJu0YxIm4EvdwpPDbnzXZQbAd0Rn4di1DKmBXYuG82yryIC/steZiqI
- dVkoRwBZf8hLJ5smLAzgLmuepxU6EFgQ7dLKYZunDU7eL1u5WwyQlucPO+aYkVr8gGY=
-X-Gm-Gg: ASbGncv1Emq9c+soUscUKgc92OlBGooZFmC2JLMe9/ChFcOXwpV7nalfaYtvvpxIU+G
- maHYuGqHLQCLfRj1YHtCYKR+4EJ54whGBAvTE0d3rgrWAgliWmsHfJ8qLNOSjMDEo9raNC4ct03
- MMbgwgWK9bDLNovFgmTESZMByDh5x5WG2UGNPmUMLKvLKMFbM1PvViEYKqI6fY+37MujA1JX75o
- tqRhsxujW8aP25ovABDMd3dhDAmVhuWl8jv1H9KkX+u1dxFZZZI3JM31cTXhZ5REy6BZ/CkTQbv
- XqIqta/B48gxsOhvevc376MB6IYiZmLavOSkfMYnwrTxBmL22intPDjlttz4iLRcLgRw68hQmk+
- QkFCPK3m741W3eCnUuX4QKRNRhqSjYqcyIr+Jw21s1nYNTJ79Cd0QzT3lc5Lt2Ot0KPOQMx0SbN
- tW
-X-Google-Smtp-Source: AGHT+IFf1e5BUD3bGIAW80hEOc4A/ZMLN+6c91S7j0DbPYjB69Ht/8CPBBkQ+pHOyAdD1COvmtiQuw==
-X-Received: by 2002:a17:907:7f07:b0:b3f:9e3d:daa4 with SMTP id
- a640c23a62f3a-b6d51c50982mr1328725066b.65.1761563533351; 
- Mon, 27 Oct 2025 04:12:13 -0700 (PDT)
+ AJvYcCWx3pPFgmY1EZbxlvziFZaOUZDVZ9UdUjiJHaDiCqjNpapjxF4PQVF/C5FJI/jmKekuX1lc/P8s8A==@nongnu.org
+X-Gm-Message-State: AOJu0YyP6DAQ0JZt2ToSc9umfCva3mazd4UUoe41W+j2HFjkpfgBrOin
+ c0MjwYqkb9zBODfn+bcY1u4M7mzOXiN07sSe4/2I0fgmgk7RdkS2ojiey0IKephvEXc=
+X-Gm-Gg: ASbGnctcW2nrbVQ4ctw1hLZnQp4fhEe/8iROB5elHbwifoed6+o6guUb4P/HZxHJ0Vd
+ oQj+H/zXbRXp3QMTPHUD8eeMNmC6TRcwq6SERKNinbivUzyWUw5UEqe96IB141CDDM4SUNFk8ZC
+ AjC4KSSzKPgI7FmHGz3dn/mbNxcnbO+iyTorfbqZ75ppwjYXu4kYjLvrtNcjcxSyWtGkpKGH8/N
+ OycaCG5wzQwRb9EhbLE7AeOWoDK6WEt4XoUicDIFnZI41Wp/NdonyJd7v2UYpzZk0UEvAqde9Ri
+ 9pSF6xrqvhsrMpsjRB1IT+vlUPXWqv7HaDRQBDn60CQNc+AWt1BpxaLLt0mCOn2NdGcxdK80n2B
+ z3toaHoLRYx7f2TYHQ1cgNCy85dOOozmLDAqcqmH6QWS1/vboUkSyYxLjY0xLkwjX2z9zIQVz+g
+ Tv
+X-Google-Smtp-Source: AGHT+IEwkJfYwImH4/uCjYjquIxa9anv7Yli+nUcbmModwXg9PXqYo5p22WyVAQiluKBu9SNJZsjpA==
+X-Received: by 2002:a05:6402:5191:b0:63c:4f1e:6d82 with SMTP id
+ 4fb4d7f45d1cf-63c4f1e73acmr31079387a12.24.1761563030929; 
+ Mon, 27 Oct 2025 04:03:50 -0700 (PDT)
 Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-b6d8541e99fsm728060866b.61.2025.10.27.04.12.10
+ 4fb4d7f45d1cf-63e7efb950csm6163477a12.28.2025.10.27.04.03.47
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 27 Oct 2025 04:12:12 -0700 (PDT)
+ Mon, 27 Oct 2025 04:03:49 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 7247B61534;
- Mon, 27 Oct 2025 11:03:47 +0000 (GMT)
+ by draig.lan (Postfix) with ESMTP id BD2B55FAD0;
+ Mon, 27 Oct 2025 11:03:44 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
@@ -96,19 +96,19 @@ Cc: Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Jiaxun Yang <jiaxun.yang@flygoat.com>, Michael Rolnik <mrolnik@gmail.com>,
  Song Gao <gaosong@loongson.cn>, qemu-riscv@nongnu.org,
- Aleksandar Rikalo <arikalo@gmail.com>,
- Sean Anderson <sean.anderson@linux.dev>
-Subject: [PATCH 35/35] semihosting: Fix GDB File-I/O FLEN
-Date: Mon, 27 Oct 2025 11:03:42 +0000
-Message-ID: <20251027110344.2289945-36-alex.bennee@linaro.org>
+ Aleksandar Rikalo <arikalo@gmail.com>, Julian Ganz <neither@nut.email>
+Subject: [PATCH 07/35] plugins: add types for callbacks related to certain
+ discontinuities
+Date: Mon, 27 Oct 2025 11:03:14 +0000
+Message-ID: <20251027110344.2289945-8-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20251027110344.2289945-1-alex.bennee@linaro.org>
 References: <20251027110344.2289945-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::631;
- envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x631.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::535;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x535.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -131,39 +131,104 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Sean Anderson <sean.anderson@linux.dev>
+From: Julian Ganz <neither@nut.email>
 
-fstat returns 0 on success and -1 on error. Since we have already
-checked for error, ret must be zero. Therefore, any call to fstat on a
-non-empty file will return -1/EOVERFLOW.
+The plugin API allows registration of callbacks for a variety of VCPU
+related events, such as VCPU reset, idle and resume. However, traps of
+any kind, i.e. interrupts or exceptions, were previously not covered.
+These kinds of events are arguably quite significant and usually go hand
+in hand with a PC discontinuity. On most platforms, the discontinuity
+also includes a transition from some "mode" to another. Thus, plugins
+for the analysis of (virtualized) embedded systems may benefit from or
+even require the possiblity to perform work on the occurance of an
+interrupt or exception.
 
-Restore the original logic that just did a byteswap. I don't really know
-what the intention of the fixed commit was.
+This change introduces the concept of such a discontinuity event in the
+form of an enumeration. Currently only traps are covered. Specifically
+we (loosely) define interrupts, exceptions and host calls across all
+platforms. In addition, this change introduces a type to use for
+callback functions related to such events. Since possible modes and the
+enumeration of interupts and exceptions vary greatly between different
+architectures, the callback type only receives the VCPU id, the type of
+event as well as the old and new PC.
 
-Fixes: a6300ed6b7 ("semihosting: Split out semihost_sys_flen")
-Signed-off-by: Sean Anderson <sean.anderson@linux.dev>
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Signed-off-by: Julian Ganz <neither@nut.email>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- semihosting/arm-compat-semi.c | 5 +----
- 1 file changed, 1 insertion(+), 4 deletions(-)
+ include/qemu/plugin.h      |  1 +
+ include/qemu/qemu-plugin.h | 44 ++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 45 insertions(+)
 
-diff --git a/semihosting/arm-compat-semi.c b/semihosting/arm-compat-semi.c
-index 61001267965..c5a07cb947b 100644
---- a/semihosting/arm-compat-semi.c
-+++ b/semihosting/arm-compat-semi.c
-@@ -316,10 +316,7 @@ common_semi_flen_fstat_cb(CPUState *cs, uint64_t ret, int err)
-                                 &size, 8, 0)) {
-             ret = -1, err = EFAULT;
-         } else {
--            size = be64_to_cpu(size);
--            if (ret != size) {
--                ret = -1, err = EOVERFLOW;
--            }
-+            ret = be64_to_cpu(size);
-         }
-     }
-     common_semi_cb(cs, ret, err);
+diff --git a/include/qemu/plugin.h b/include/qemu/plugin.h
+index f355c7cb8ab..8cf20cd96f7 100644
+--- a/include/qemu/plugin.h
++++ b/include/qemu/plugin.h
+@@ -59,6 +59,7 @@ union qemu_plugin_cb_sig {
+     qemu_plugin_udata_cb_t           udata;
+     qemu_plugin_vcpu_simple_cb_t     vcpu_simple;
+     qemu_plugin_vcpu_udata_cb_t      vcpu_udata;
++    qemu_plugin_vcpu_discon_cb_t     vcpu_discon;
+     qemu_plugin_vcpu_tb_trans_cb_t   vcpu_tb_trans;
+     qemu_plugin_vcpu_mem_cb_t        vcpu_mem;
+     qemu_plugin_vcpu_syscall_cb_t    vcpu_syscall;
+diff --git a/include/qemu/qemu-plugin.h b/include/qemu/qemu-plugin.h
+index c450106af18..08bf366e363 100644
+--- a/include/qemu/qemu-plugin.h
++++ b/include/qemu/qemu-plugin.h
+@@ -161,6 +161,50 @@ typedef void (*qemu_plugin_vcpu_simple_cb_t)(qemu_plugin_id_t id,
+ typedef void (*qemu_plugin_vcpu_udata_cb_t)(unsigned int vcpu_index,
+                                             void *userdata);
+ 
++
++/**
++ * enum qemu_plugin_discon_type - type of a (potential) PC discontinuity
++ *
++ * @QEMU_PLUGIN_DISCON_INTERRUPT: an interrupt, defined across all architectures
++ *                                as an asynchronous event, usually originating
++ *                                from outside the CPU
++ * @QEMU_PLUGIN_DISCON_EXCEPTION: an exception, defined across all architectures
++ *                                as a synchronous event in response to a
++ *                                specific instruction being executed
++ * @QEMU_PLUGIN_DISCON_HOSTCALL: a host call, functionally a special kind of
++ *                               exception that is not handled by code run by
++ *                               the vCPU but machinery outside the vCPU
++ * @QEMU_PLUGIN_DISCON_ALL: all types of disconinuity events currently covered
++ */
++enum qemu_plugin_discon_type {
++    QEMU_PLUGIN_DISCON_INTERRUPT = 1 << 0,
++    QEMU_PLUGIN_DISCON_EXCEPTION = 1 << 1,
++    QEMU_PLUGIN_DISCON_HOSTCALL = 1 << 2,
++    QEMU_PLUGIN_DISCON_ALL = -1
++};
++
++/**
++ * typedef qemu_plugin_vcpu_discon_cb_t - vcpu discontinuity callback
++ * @id: plugin ID
++ * @vcpu_index: the current vcpu context
++ * @type: the type of discontinuity
++ * @from_pc: the source of the discontinuity, e.g. the PC before the
++ *           transition
++ * @to_pc: the PC pointing to the next instruction to be executed
++ *
++ * The exact semantics of @from_pc depends on the @type of discontinuity. For
++ * interrupts, @from_pc will point to the next instruction which would have
++ * been executed. For exceptions and host calls, @from_pc will point to the
++ * instruction that caused the exception or issued the host call. Note that
++ * in the case of exceptions, the instruction may not be retired and thus not
++ * observable via general instruction exec callbacks. The same may be the case
++ * for some host calls such as hypervisor call "exceptions".
++ */
++typedef void (*qemu_plugin_vcpu_discon_cb_t)(qemu_plugin_id_t id,
++                                             unsigned int vcpu_index,
++                                             enum qemu_plugin_discon_type type,
++                                             uint64_t from_pc, uint64_t to_pc);
++
+ /**
+  * qemu_plugin_uninstall() - Uninstall a plugin
+  * @id: this plugin's opaque ID
 -- 
 2.47.3
 

@@ -4,80 +4,115 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55D4CCCF9E0
-	for <qemu-arm@archiver.kernel.org>; Mon, 27 Oct 2025 11:16:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68F88CCF9EA
+	for <qemu-arm@archiver.kernel.org>; Mon, 27 Oct 2025 11:16:55 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vDLC6-0001rl-EN; Mon, 27 Oct 2025 07:15:22 -0400
+	id 1vDLA1-0007F0-OO; Mon, 27 Oct 2025 07:13:13 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vDLBd-0000bF-1a
- for qemu-arm@nongnu.org; Mon, 27 Oct 2025 07:14:55 -0400
-Received: from mail-yx1-xb130.google.com ([2607:f8b0:4864:20::b130])
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1vDL9l-0006ob-5o
+ for qemu-arm@nongnu.org; Mon, 27 Oct 2025 07:12:57 -0400
+Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vDLBR-00089V-Cl
- for qemu-arm@nongnu.org; Mon, 27 Oct 2025 07:14:52 -0400
-Received: by mail-yx1-xb130.google.com with SMTP id
- 956f58d0204a3-63cf0df1abbso4982729d50.2
- for <qemu-arm@nongnu.org>; Mon, 27 Oct 2025 04:14:30 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1vDL9E-0007cb-Ds
+ for qemu-arm@nongnu.org; Mon, 27 Oct 2025 07:12:56 -0400
+Received: by mail-ed1-x536.google.com with SMTP id
+ 4fb4d7f45d1cf-63c09141cabso6640595a12.0
+ for <qemu-arm@nongnu.org>; Mon, 27 Oct 2025 04:12:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1761563668; x=1762168468; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=pskZw5DLpP/xDMQMjw31wbkLr9mwhPCBWcUw9JjqcWk=;
- b=sOxCcdL9XTSd1RA6F2/mf2kEgwEaV/Kas8hM2inPNFCyLQgt2kltikoOKV530BQgDM
- o5G5VlEPWmgtgtw68V7qE3POtd4vPOoVb5CoyXQ6XpGE1ejrsc+xWp1MhLNbrCkJWfms
- R3r2ezQaIgnvgxnke1PlZD7Hco5uMZEPWw+y75ALqwl+zJX2ZBKUH/aCzqytsy1sTcN0
- +LAXg43bqhwO3UByGpeTg35CuAyG/dj6nuSm8s9B9/QeM5APZvTb5+58UG3SaqC0qssL
- UIf5zmD9g3rMioBnsrD8baHdyYjD6pv0KemA63qYsLZO1D3koxWEOcm/sIUQibFx64c5
- TeEg==
+ d=linaro.org; s=google; t=1761563535; x=1762168335; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=4PhvPHHz2nKzNx0dR+rkbmZq1ESoRDt6FUBPfkcoyms=;
+ b=wFIIH1LW/SN5gWuu1FNeYKW0lOBFUVQhuL+8AFprkZHWzsPCicgd4XOJWmBWwq9VcT
+ F4l8oaXV3gwoD/4nHhy+3GYL8XUbsgNjLY/kdYWDFUDboUjRiMiOo6stAhQgVuUCCfB4
+ 3nh2GGN/m7UxtG8bp5zt5np9UM3N6eCTs1CnDbS8x4nAgYfw3RNepcfSI7gvnAoOaNeS
+ 9ASBa0yfNQguM6adc52tbMAsok+T8qmx+zm0O5lsBddDqaXY9Le0YRg8fK1rH5hgxV3s
+ Oq5qgDmmeXyL1xZG7eKD9mAFKXORHyErHK4k0GHw34b/lMhVa2jRck+Xn/TmOielkQTp
+ 4MgQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761563668; x=1762168468;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=pskZw5DLpP/xDMQMjw31wbkLr9mwhPCBWcUw9JjqcWk=;
- b=fYBdh/Ct4LNeUThhqxA+zTEVFxlFlwGn9WYydr0m0QjOoxnw39/2bZdWdQw2rQgKq2
- eunZLc0ghEHRWM8CvMsluBcvydcOmvl67j+Gezc+0WH7N704RuMSdT7WuREF/bXtrA7n
- ZWAM81aC8bszaf4ERWc7Ah+ZBTaaV1i5c86P1QW5Kxa8xHW0jbC1p0viCd/0zvCzJ0YC
- aLw2qqmHM3N+K3TPTBwb6FVox+CtvvKL7XpTdBrqu1pfTs2UFh2rcP/gH6mmK/mw7lEr
- N8JQxeOcfxmtALp8kYP+ABRH2mZaOl9cUCJ6MtfZE5QLLlQU7k87p1ofWTIhDDsPuc4w
- A5Ow==
+ d=1e100.net; s=20230601; t=1761563535; x=1762168335;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=4PhvPHHz2nKzNx0dR+rkbmZq1ESoRDt6FUBPfkcoyms=;
+ b=coyaXH6Jejq+xUgyAP+LvVHSZCq6U8tQJKinLgbJiQFC/RB0vliV4tM2lnZCqSPvtb
+ ZRhO6DIS8UMmg0VX/BSR8V8g7MMLHI3uLmyC9gGZFt3e2hpGL0EvaV4U/lMpLmfnHT7d
+ oTmQC2JfPddBQdDJSxa8FWn88XcR6V06VmpwdW0UeeqZt4pGTwGttFSsAzuhbwcEY+DX
+ gL4Lep2sMliUMOtBJZALDyHsiRoN0XP93mNLvYzH9gCMMSCDkn8eAsQHXp42YogATmt3
+ 0iu8kkQ5fpxJaGbTx5oKHARk/bDRZDvPnR6FyFfXHeQZYXhudrggQHdGlLVgfVmg0h+v
+ rvug==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWt+TtsqWZwPRToQI0DCeJOINTp4VC0F8W3ARsPctYVDM9yS2kipoKnBxDlcOUaDIvrlDN66COixQ==@nongnu.org
-X-Gm-Message-State: AOJu0YxSMvQuCF+S+KG8mvavxVgutcfuk4Izh7sn6xzZcv/5Jbrp/sZi
- jptaExjXKeOMpL7vRwSMwpzir6eb2I1uA0drSGzvFOCn3I6FiToFoxMSOSpmIbgsA0ijGtu8c5O
- dw+mPWm9aRV+eAiQOBgI9C/RPDHGnEgnbv29yQuzTG8AIWux4ryS7
-X-Gm-Gg: ASbGncuhPMbQX/rI/KPZRLnYig3H9XLqaEE1IIXkURtfsvky3rmQhL57czPnlko2dcC
- /pDIpDOqkuVSnw8rCJbcCdDfY6mkHGLGAOGFQC22c+lJfVuWHIXwrDHel/VAsuObnYO+xqkg6Hf
- iIcqLYY4W+RbguwXUyEd6yLJsGuCcJ1qqK/LO8vSGBx7mS7/hmDumNfvZ8h4oUp69xt/EpajXHk
- 0tGh6xb8Z50PzSUNjTYZOhnJJ2nTCafGBJ/m2tJVqSm6ZeKnEIl/N6qiGCcHw==
-X-Google-Smtp-Source: AGHT+IGWME6nkNKfaH+Bbk6rsG35FBrEEilNG8kWH1HP6RTwHfHFiNDFyG05H20xRMwXzcHLFqSud9l4o941jY3upDM=
-X-Received: by 2002:a05:690e:419b:b0:63e:1c4c:302b with SMTP id
- 956f58d0204a3-63f378c4e53mr12969017d50.47.1761563667703; Mon, 27 Oct 2025
- 04:14:27 -0700 (PDT)
+ AJvYcCXfz5nNjawxy2ptbtslr97vVL9dWkb56d69FKWtLpdYj26BRykhMp22M0rc56MzSxGQL9012xRqrQ==@nongnu.org
+X-Gm-Message-State: AOJu0YxFigPHYhBK5Z68o6CFi9WKoEVeb+x1iCmE2iZfi1RuYOefO4gX
+ lK4TucIdRAQB0f9sNXM0kMl+NzqM/FvGEGUwdpsd39MPNSMIhZXj2sBC9fJkDLPth0U=
+X-Gm-Gg: ASbGncuQ9Uwa3r6XPWLThOUN5wbcKTINZSr4BsyrjbAZA/YLOZGqQbN5GrOrkzzNSkF
+ u0e99l9clWY5Ov57bBO7eBOr/vy4QwY7IOY/c6780Spssrv9Zt9+82QS/EWI0En4x9KVLUk+F6v
+ WqUWBVAgK+bGqJYcJHPs+cE0zgaia2CZ73LE9pskOu10d7OmBX4C6FP6kGwpD6uSND0dEkUgwUH
+ fVSBfW3kJUmoyzJbhPD2g6eMmIMTWHvH1FNeaD4V+WXW1bd+Tnl3wOqe2s3jn1i+riV/TA0U554
+ bGLshmQXL51MGyDbclQVyGDgQmN2FnChQvucgFYq0/bVUNx33QfPpikRw6auJLfyYv+8DOUs8sd
+ 8MA+5YUO2XD/uZEJs6CjbjLJVpJpmGSR2dbDqyuJB+ginj0qx5UB3UiCkXSp285snBhYNZHiE4r
+ SF
+X-Google-Smtp-Source: AGHT+IFvvCvIty1DfR5lRQdjx9oxrgbu4HcCbWQum7FpsPzWGCkS4/ZxOKXh/Bm3P5OVv9Aw1Mskyg==
+X-Received: by 2002:a17:907:3e0c:b0:b6d:7e04:7a24 with SMTP id
+ a640c23a62f3a-b6d7e047d4cmr934588966b.36.1761563535106; 
+ Mon, 27 Oct 2025 04:12:15 -0700 (PDT)
+Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-b6d8548ed8fsm737084866b.73.2025.10.27.04.12.10
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 27 Oct 2025 04:12:12 -0700 (PDT)
+Received: from draig.lan (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id 460455F929;
+ Mon, 27 Oct 2025 11:03:47 +0000 (GMT)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ Alexandre Iooss <erdnaxe@crans.org>, Chinmay Rath <rathc@linux.ibm.com>,
+ qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Nicholas Piggin <npiggin@gmail.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
+ David Hildenbrand <david@redhat.com>, qemu-ppc@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-s390x@nongnu.org,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Helge Deller <deller@gmx.de>,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Stafford Horne <shorne@gmail.com>, Mahmoud Mandour <ma.mandourr@gmail.com>,
+ Artyom Tarasenko <atar4qemu@gmail.com>,
+ Eduardo Habkost <eduardo@habkost.net>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Laurent Vivier <laurent@vivier.eu>, Weiwei Li <liwei1518@gmail.com>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Yoshinori Sato <yoshinori.sato@nifty.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Aurelien Jarno <aurelien@aurel32.net>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Thomas Huth <thuth@redhat.com>, Max Filippov <jcmvbkbc@gmail.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, Michael Rolnik <mrolnik@gmail.com>,
+ Song Gao <gaosong@loongson.cn>, qemu-riscv@nongnu.org,
+ Aleksandar Rikalo <arikalo@gmail.com>
+Subject: [PATCH 33/35] configs: drop SBSA_REF from minimal specification
+Date: Mon, 27 Oct 2025 11:03:40 +0000
+Message-ID: <20251027110344.2289945-34-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.47.3
+In-Reply-To: <20251027110344.2289945-1-alex.bennee@linaro.org>
+References: <20251027110344.2289945-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-References: <20251021145313.4584-1-philmd@linaro.org>
-In-Reply-To: <20251021145313.4584-1-philmd@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 27 Oct 2025 11:14:15 +0000
-X-Gm-Features: AWmQ_bkH_jL3DWOvxchR7RvXqEKF12Utam3dMdEF2ldn_SnlYqpl2of3h2vWnqk
-Message-ID: <CAFEAcA9D+zHH_+UQDPc-GqSH-b8NC9VvoXXJwhOxT8Mtry08Mg@mail.gmail.com>
-Subject: Re: [PATCH v2] hw/gpio/pl061: Declare pullups/pulldowns as 8-bit types
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, Phil Dennis-Jordan <phil@philjordan.eu>,
- qemu-arm@nongnu.org, Alexander Graf <agraf@csgraf.de>
-Content-Type: multipart/alternative; boundary="000000000000a9b7210642220007"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b130;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb130.google.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::536;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x536.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, HTML_MESSAGE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
@@ -95,49 +130,44 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
---000000000000a9b7210642220007
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+The whole point of SBSA_REF is for testing firmware which by
+definition requires TCG. This means the configuration of:
 
-On Tue, 21 Oct 2025 at 15:53, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.or=
-g>
-wrote:
->
-> uint8_t is good enough to hold a property "between 0 and 0xff".
->
-> Define pullups/pulldowns properties using DEFINE_PROP_UINT8()
-> macro, remove unnecessary range checks in pl061_realize().
-> Update the two caller sites.
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
-> ---
-> v2: qdev_prop_set_uint32 -> qdev_prop_set_uint8 in callers (Peter)
+  --disable-tcg --with-devices-aarch64=minimal
 
+makes no sense (and indeed is broken for the
+ubuntu-24.04-aarch64-notcg) test. Drop it from minimal and remove the
+allow_failure from the test case.
 
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+---
+ configs/devices/aarch64-softmmu/minimal.mak          | 1 -
+ .gitlab-ci.d/custom-runners/ubuntu-24.04-aarch64.yml | 2 --
+ 2 files changed, 3 deletions(-)
 
-Applied to target-arm.next, thanks.
+diff --git a/configs/devices/aarch64-softmmu/minimal.mak b/configs/devices/aarch64-softmmu/minimal.mak
+index 0ebc1dca561..3c8582e12cc 100644
+--- a/configs/devices/aarch64-softmmu/minimal.mak
++++ b/configs/devices/aarch64-softmmu/minimal.mak
+@@ -6,4 +6,3 @@
+ #
+ 
+ CONFIG_ARM_VIRT=y
+-CONFIG_SBSA_REF=y
+diff --git a/.gitlab-ci.d/custom-runners/ubuntu-24.04-aarch64.yml b/.gitlab-ci.d/custom-runners/ubuntu-24.04-aarch64.yml
+index 46db9ae0138..ee13587d99e 100644
+--- a/.gitlab-ci.d/custom-runners/ubuntu-24.04-aarch64.yml
++++ b/.gitlab-ci.d/custom-runners/ubuntu-24.04-aarch64.yml
+@@ -107,7 +107,5 @@ ubuntu-24.04-aarch64-notcg:
+   rules:
+     - if: '$CI_PROJECT_NAMESPACE == "qemu-project" && $CI_COMMIT_BRANCH =~ /^staging/'
+       when: manual
+-      allow_failure: true
+     - if: "$AARCH64_RUNNER_AVAILABLE"
+       when: manual
+-      allow_failure: true
+-- 
+2.47.3
 
--- PMM
-
---000000000000a9b7210642220007
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><br><br>On Tue, 21 Oct 2025 at 15:53, Philippe Mathieu-Dau=
-d=C3=A9 &lt;<a href=3D"mailto:philmd@linaro.org">philmd@linaro.org</a>&gt; =
-wrote:<br>&gt;<br>&gt; uint8_t is good enough to hold a property &quot;betw=
-een 0 and 0xff&quot;.<br>&gt;<br>&gt; Define pullups/pulldowns properties u=
-sing DEFINE_PROP_UINT8()<br>&gt; macro, remove unnecessary range checks in =
-pl061_realize().<br>&gt; Update the two caller sites.<br>&gt;<br>&gt; Signe=
-d-off-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@linaro.o=
-rg">philmd@linaro.org</a>&gt;<br>&gt; ---<br><div>&gt; v2: qdev_prop_set_ui=
-nt32 -&gt; qdev_prop_set_uint8 in callers (Peter)</div><div><br></div><div>=
-<br>
-<br>
-Applied to target-arm.next, thanks.<br>
-<br>
--- PMM<br>
-<br></div></div>
-
---000000000000a9b7210642220007--
 

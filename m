@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE31CCCF9E5
-	for <qemu-arm@archiver.kernel.org>; Mon, 27 Oct 2025 15:19:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89211CCF9EF
+	for <qemu-arm@archiver.kernel.org>; Mon, 27 Oct 2025 15:19:40 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vDOvl-0004wS-Ty; Mon, 27 Oct 2025 11:14:46 -0400
+	id 1vDOsy-0001XS-0X; Mon, 27 Oct 2025 11:11:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1vDOvc-0004aK-7W
- for qemu-arm@nongnu.org; Mon, 27 Oct 2025 11:14:36 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1vDOsv-0001Ug-AH
+ for qemu-arm@nongnu.org; Mon, 27 Oct 2025 11:11:49 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1vDOvK-00041F-7X
- for qemu-arm@nongnu.org; Mon, 27 Oct 2025 11:14:35 -0400
+ id 1vDOsk-0003YG-2W
+ for qemu-arm@nongnu.org; Mon, 27 Oct 2025 11:11:46 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1761578052;
+ s=mimecast20190719; t=1761577891;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=hJdGU9DzZc1OdjmKNpY5b7B8mNo7SSiOx2uhBAHgmoU=;
- b=faWl04wX8cZeI6qEasTr0Z5fJHdo23ty3AsKfmTP8Mjw/53zQvc8reSdR0jzZoKCr2fDBT
- SKX8GIShHIyTrodOVqhbDa8JC2ESyIBMnoswWD8ED+K46u8UNcNy/ixJWUgp8eMDv2O3g7
- H9qjtNFmHnWnfuZN+B6iMqIeqQucjQA=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=dzfYqy7pT6JSh7R8VigHurPFSvYSuhqMGSyp2fsHB9M=;
+ b=bxguQZoqT9JWxdC3fWGd5qriN5jaw1MksmtF1ZeH6YsxeRiLJ1BN2xPYhfGGsVu8Wb9KJE
+ VXvjstEnzFimKQsH6tj3EHRoAPWXBTSrYh+FmyDmZoiJ2Sd2L2NO3hmNAo3r98T11Rqnck
+ kl5rw6B5gTMfzGfs2XMecyyZJlWE5gs=
+Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-418-IMkDxbJ4M4m2XKwAwJ7OhA-1; Mon,
- 27 Oct 2025 11:14:06 -0400
-X-MC-Unique: IMkDxbJ4M4m2XKwAwJ7OhA-1
-X-Mimecast-MFC-AGG-ID: IMkDxbJ4M4m2XKwAwJ7OhA_1761578044
-Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-381-P-d05SHaP1KwRHvEgaxZCQ-1; Mon,
+ 27 Oct 2025 11:11:24 -0400
+X-MC-Unique: P-d05SHaP1KwRHvEgaxZCQ-1
+X-Mimecast-MFC-AGG-ID: P-d05SHaP1KwRHvEgaxZCQ_1761577881
+Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id E0741180121B; Mon, 27 Oct 2025 15:14:03 +0000 (UTC)
+ by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 9A18619541BB; Mon, 27 Oct 2025 15:11:20 +0000 (UTC)
 Received: from localhost (unknown [10.45.242.5])
- by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id D9ABA19560AD; Mon, 27 Oct 2025 15:14:01 +0000 (UTC)
+ by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 579E0180057C; Mon, 27 Oct 2025 15:11:17 +0000 (UTC)
 From: marcandre.lureau@redhat.com
 To: qemu-devel@nongnu.org
 Cc: Alexandre Ratchov <alex@caoua.org>,
@@ -71,16 +71,17 @@ Cc: Alexandre Ratchov <alex@caoua.org>,
  Paolo Bonzini <pbonzini@redhat.com>,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
  BALATON Zoltan <balaton@eik.bme.hu>, Laurent Vivier <laurent@vivier.eu>
-Subject: [PATCH v3 29/35] audio: move audio.h under include/qemu/
-Date: Mon, 27 Oct 2025 19:10:36 +0400
-Message-ID: <20251027151045.2863176-30-marcandre.lureau@redhat.com>
+Subject: [PATCH v3 04/35] hw/audio: use better naming for -audio model
+ handling code
+Date: Mon, 27 Oct 2025 19:10:11 +0400
+Message-ID: <20251027151045.2863176-5-marcandre.lureau@redhat.com>
 In-Reply-To: <20251027151045.2863176-1-marcandre.lureau@redhat.com>
 References: <20251027151045.2863176-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-Received-SPF: pass client-ip=170.10.133.124;
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
+Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=marcandre.lureau@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
@@ -108,745 +109,438 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Marc-André Lureau <marcandre.lureau@redhat.com>
 
-Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-Reviewed-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
----
- MAINTAINERS                                         | 1 +
- audio/audio_int.h                                   | 2 +-
- hw/audio/lm4549.h                                   | 2 +-
- include/hw/audio/asc.h                              | 2 +-
- include/hw/audio/virtio-snd.h                       | 2 +-
- include/hw/display/xlnx_dp.h                        | 2 +-
- include/hw/isa/vt82c686.h                           | 2 +-
- {audio => include/qemu}/audio.h                     | 0
- include/system/replay.h                             | 2 +-
- ui/vnc.h                                            | 2 +-
- audio/alsaaudio.c                                   | 2 +-
- audio/audio.c                                       | 2 +-
- audio/audio_win_int.c                               | 2 +-
- audio/dbusaudio.c                                   | 2 +-
- audio/dsoundaudio.c                                 | 2 +-
- audio/jackaudio.c                                   | 2 +-
- audio/mixeng.c                                      | 2 +-
- audio/noaudio.c                                     | 2 +-
- audio/ossaudio.c                                    | 2 +-
- audio/paaudio.c                                     | 2 +-
- audio/pwaudio.c                                     | 2 +-
- audio/sdlaudio.c                                    | 2 +-
- audio/sndioaudio.c                                  | 2 +-
- audio/spiceaudio.c                                  | 2 +-
- audio/wavaudio.c                                    | 2 +-
- hw/arm/integratorcp.c                               | 2 +-
- hw/arm/musicpal.c                                   | 2 +-
- hw/arm/realview.c                                   | 2 +-
- hw/arm/versatilepb.c                                | 2 +-
- hw/arm/vexpress.c                                   | 2 +-
- hw/arm/xlnx-zcu102.c                                | 2 +-
- hw/audio/ac97.c                                     | 2 +-
- hw/audio/adlib.c                                    | 2 +-
- hw/audio/asc.c                                      | 2 +-
- hw/audio/cs4231a.c                                  | 2 +-
- hw/audio/es1370.c                                   | 2 +-
- hw/audio/gus.c                                      | 2 +-
- hw/audio/hda-codec.c                                | 2 +-
- hw/audio/lm4549.c                                   | 2 +-
- hw/audio/marvell_88w8618.c                          | 2 +-
- hw/audio/pcspk.c                                    | 2 +-
- hw/audio/sb16.c                                     | 2 +-
- hw/audio/wm8750.c                                   | 2 +-
- hw/core/machine.c                                   | 2 +-
- hw/core/qdev-properties-system.c                    | 2 +-
- hw/ppc/prep.c                                       | 2 +-
- hw/usb/dev-audio.c                                  | 2 +-
- replay/replay-audio.c                               | 2 +-
- system/runstate.c                                   | 2 +-
- system/vl.c                                         | 2 +-
- ui/dbus.c                                           | 3 +--
- audio/coreaudio.m                                   | 2 +-
- scripts/codeconverter/codeconverter/test_regexps.py | 2 +-
- 53 files changed, 52 insertions(+), 52 deletions(-)
- rename {audio => include/qemu}/audio.h (100%)
+All the functions are about "-audio model=" handling, a simpler
+way to setup audio. Rename functions/variables to reflect this better.
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index f33f95ceea..a4f650a88f 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -2975,6 +2975,7 @@ X: audio/paaudio.c
- X: audio/sdlaudio.c
- X: audio/sndioaudio.c
- X: audio/spiceaudio.c
-+F: include/qemu/audio.h
- F: qapi/audio.json
- 
- ALSA Audio backend
-diff --git a/audio/audio_int.h b/audio/audio_int.h
-index d66f7aac32..8d4f4ca8fc 100644
---- a/audio/audio_int.h
-+++ b/audio/audio_int.h
-@@ -29,7 +29,7 @@
- #define FLOAT_MIXENG
- /* #define RECIPROCAL */
- #endif
--#include "audio.h"
-+#include "qemu/audio.h"
- #include "mixeng.h"
- 
- #ifdef CONFIG_GIO
-diff --git a/hw/audio/lm4549.h b/hw/audio/lm4549.h
-index 1d858e2a04..bbd73057bf 100644
---- a/hw/audio/lm4549.h
-+++ b/hw/audio/lm4549.h
-@@ -12,7 +12,7 @@
- #ifndef HW_LM4549_H
- #define HW_LM4549_H
- 
--#include "audio/audio.h"
-+#include "qemu/audio.h"
- #include "exec/hwaddr.h"
- 
- typedef void (*lm4549_callback)(void *opaque);
-diff --git a/include/hw/audio/asc.h b/include/hw/audio/asc.h
-index a60c2f597c..bb51e9a3d1 100644
---- a/include/hw/audio/asc.h
-+++ b/include/hw/audio/asc.h
-@@ -14,7 +14,7 @@
- #define HW_AUDIO_ASC_H
- 
- #include "hw/sysbus.h"
--#include "audio/audio.h"
-+#include "qemu/audio.h"
- 
- #define ASC_FREQ 22257
- 
-diff --git a/include/hw/audio/virtio-snd.h b/include/hw/audio/virtio-snd.h
-index 0ad80bc9be..c176066584 100644
---- a/include/hw/audio/virtio-snd.h
-+++ b/include/hw/audio/virtio-snd.h
-@@ -17,7 +17,7 @@
- #define QEMU_VIRTIO_SOUND_H
- 
- #include "hw/virtio/virtio.h"
--#include "audio/audio.h"
-+#include "qemu/audio.h"
- #include "standard-headers/linux/virtio_ids.h"
- #include "standard-headers/linux/virtio_snd.h"
- 
-diff --git a/include/hw/display/xlnx_dp.h b/include/hw/display/xlnx_dp.h
-index 802a1427c9..af859e477d 100644
---- a/include/hw/display/xlnx_dp.h
-+++ b/include/hw/display/xlnx_dp.h
-@@ -33,7 +33,7 @@
- #include "qemu/fifo8.h"
- #include "qemu/units.h"
- #include "hw/dma/xlnx_dpdma.h"
--#include "audio/audio.h"
-+#include "qemu/audio.h"
- #include "qom/object.h"
- #include "hw/ptimer.h"
- 
-diff --git a/include/hw/isa/vt82c686.h b/include/hw/isa/vt82c686.h
-index 48c412ce81..ace9e6650e 100644
---- a/include/hw/isa/vt82c686.h
-+++ b/include/hw/isa/vt82c686.h
-@@ -2,7 +2,7 @@
- #define HW_VT82C686_H
- 
- #include "hw/pci/pci_device.h"
--#include "audio/audio.h"
-+#include "qemu/audio.h"
- 
- #define TYPE_VT82C686B_ISA "vt82c686b-isa"
- #define TYPE_VT82C686B_USB_UHCI "vt82c686b-usb-uhci"
-diff --git a/audio/audio.h b/include/qemu/audio.h
-similarity index 100%
-rename from audio/audio.h
-rename to include/qemu/audio.h
-diff --git a/include/system/replay.h b/include/system/replay.h
-index 1e63c0784c..68f91bdfbf 100644
---- a/include/system/replay.h
-+++ b/include/system/replay.h
-@@ -16,7 +16,7 @@
- #include "qapi/qapi-types-run-state.h"
- #include "qapi/qapi-types-ui.h"
- #include "block/aio.h"
--#include "audio/audio.h"
-+#include "qemu/audio.h"
- 
- /* replay clock kinds */
- enum ReplayClockKind {
-diff --git a/ui/vnc.h b/ui/vnc.h
-index e2137c5ed1..4d8363ebf3 100644
---- a/ui/vnc.h
-+++ b/ui/vnc.h
-@@ -31,7 +31,7 @@
- #include "qemu/thread.h"
- #include "ui/clipboard.h"
- #include "ui/console.h"
--#include "audio/audio.h"
-+#include "qemu/audio.h"
- #include "qemu/bitmap.h"
- #include "crypto/tlssession.h"
- #include "qemu/buffer.h"
-diff --git a/audio/alsaaudio.c b/audio/alsaaudio.c
-index 797cb478e6..d1e4817081 100644
---- a/audio/alsaaudio.c
-+++ b/audio/alsaaudio.c
-@@ -26,7 +26,7 @@
- #include <alsa/asoundlib.h>
- #include "qemu/main-loop.h"
- #include "qemu/module.h"
--#include "audio.h"
-+#include "qemu/audio.h"
- #include "trace.h"
- 
- #pragma GCC diagnostic ignored "-Waddress"
-diff --git a/audio/audio.c b/audio/audio.c
-index ab33b7f9a7..4bbe6b242f 100644
---- a/audio/audio.c
-+++ b/audio/audio.c
-@@ -23,7 +23,7 @@
-  */
- 
- #include "qemu/osdep.h"
--#include "audio.h"
-+#include "qemu/audio.h"
- #include "migration/vmstate.h"
- #include "qemu/timer.h"
- #include "qapi/error.h"
-diff --git a/audio/audio_win_int.c b/audio/audio_win_int.c
-index 316f118f50..44a8ff24a6 100644
---- a/audio/audio_win_int.c
-+++ b/audio/audio_win_int.c
-@@ -7,7 +7,7 @@
- #include <mmreg.h>
- #include <mmsystem.h>
- 
--#include "audio.h"
-+#include "qemu/audio.h"
- #include "audio_int.h"
- #include "audio_win_int.h"
- 
-diff --git a/audio/dbusaudio.c b/audio/dbusaudio.c
-index c97c34b486..157d36428e 100644
---- a/audio/dbusaudio.c
-+++ b/audio/dbusaudio.c
-@@ -35,7 +35,7 @@
- #include "ui/dbus-display1.h"
- 
- #define AUDIO_CAP "dbus"
--#include "audio.h"
-+#include "qemu/audio.h"
- #include "audio_int.h"
- #include "trace.h"
- 
-diff --git a/audio/dsoundaudio.c b/audio/dsoundaudio.c
-index bd00c50e80..8b773ded21 100644
---- a/audio/dsoundaudio.c
-+++ b/audio/dsoundaudio.c
-@@ -27,7 +27,7 @@
-  */
- 
- #include "qemu/osdep.h"
--#include "audio.h"
-+#include "qemu/audio.h"
- 
- #define AUDIO_CAP "dsound"
- #include "audio_int.h"
-diff --git a/audio/jackaudio.c b/audio/jackaudio.c
-index 974a3caad3..28face9989 100644
---- a/audio/jackaudio.c
-+++ b/audio/jackaudio.c
-@@ -26,7 +26,7 @@
- #include "qemu/module.h"
- #include "qemu/atomic.h"
- #include "qemu/main-loop.h"
--#include "audio.h"
-+#include "qemu/audio.h"
- 
- #define AUDIO_CAP "jack"
- #include "audio_int.h"
-diff --git a/audio/mixeng.c b/audio/mixeng.c
-index af9ec3d4d2..e63c76e021 100644
---- a/audio/mixeng.c
-+++ b/audio/mixeng.c
-@@ -24,7 +24,7 @@
-  */
- #include "qemu/osdep.h"
- #include "qemu/bswap.h"
--#include "audio.h"
-+#include "qemu/audio.h"
- 
- #define AUDIO_CAP "mixeng"
- #include "audio_int.h"
-diff --git a/audio/noaudio.c b/audio/noaudio.c
-index 34ff1d2a27..b136b74e26 100644
---- a/audio/noaudio.c
-+++ b/audio/noaudio.c
-@@ -24,7 +24,7 @@
- 
- #include "qemu/osdep.h"
- #include "qemu/module.h"
--#include "audio.h"
-+#include "qemu/audio.h"
- 
- #define AUDIO_CAP "noaudio"
- #include "audio_int.h"
-diff --git a/audio/ossaudio.c b/audio/ossaudio.c
-index 4a549b26a2..5ba91f6793 100644
---- a/audio/ossaudio.c
-+++ b/audio/ossaudio.c
-@@ -29,7 +29,7 @@
- #include "qemu/module.h"
- #include "qemu/host-utils.h"
- #include "qapi/error.h"
--#include "audio.h"
-+#include "qemu/audio.h"
- #include "trace.h"
- 
- #define AUDIO_CAP "oss"
-diff --git a/audio/paaudio.c b/audio/paaudio.c
-index 93030f3fc8..8eb80ede45 100644
---- a/audio/paaudio.c
-+++ b/audio/paaudio.c
-@@ -2,7 +2,7 @@
- 
- #include "qemu/osdep.h"
- #include "qemu/module.h"
--#include "audio.h"
-+#include "qemu/audio.h"
- #include "qapi/error.h"
- 
- #include <pulse/pulseaudio.h>
-diff --git a/audio/pwaudio.c b/audio/pwaudio.c
-index 8e13b58286..8f6c0900c8 100644
---- a/audio/pwaudio.c
-+++ b/audio/pwaudio.c
-@@ -10,7 +10,7 @@
- 
- #include "qemu/osdep.h"
- #include "qemu/module.h"
--#include "audio.h"
-+#include "qemu/audio.h"
- #include "qemu/error-report.h"
- #include "qapi/error.h"
- #include <spa/param/audio/format-utils.h>
-diff --git a/audio/sdlaudio.c b/audio/sdlaudio.c
-index 641357e5ee..4ef73c8dfb 100644
---- a/audio/sdlaudio.c
-+++ b/audio/sdlaudio.c
-@@ -27,7 +27,7 @@
- #include <SDL_thread.h>
- #include "qemu/module.h"
- #include "qapi/error.h"
--#include "audio.h"
-+#include "qemu/audio.h"
- 
- #ifndef _WIN32
- #ifdef __sun__
-diff --git a/audio/sndioaudio.c b/audio/sndioaudio.c
-index 8eb35e1e53..f4f53b1c6f 100644
---- a/audio/sndioaudio.c
-+++ b/audio/sndioaudio.c
-@@ -18,7 +18,7 @@
- #include <poll.h>
- #include <sndio.h>
- #include "qemu/main-loop.h"
--#include "audio.h"
-+#include "qemu/audio.h"
- #include "trace.h"
- 
- #define AUDIO_CAP "sndio"
-diff --git a/audio/spiceaudio.c b/audio/spiceaudio.c
-index 7e737bff9a..77ba89ffaa 100644
---- a/audio/spiceaudio.c
-+++ b/audio/spiceaudio.c
-@@ -26,7 +26,7 @@
- #include "ui/qemu-spice.h"
- 
- #define AUDIO_CAP "spice"
--#include "audio.h"
-+#include "qemu/audio.h"
- #include "audio_int.h"
- 
- #if SPICE_INTERFACE_PLAYBACK_MAJOR > 1 || SPICE_INTERFACE_PLAYBACK_MINOR >= 3
-diff --git a/audio/wavaudio.c b/audio/wavaudio.c
-index a098b20cad..4d9c921305 100644
---- a/audio/wavaudio.c
-+++ b/audio/wavaudio.c
-@@ -24,7 +24,7 @@
- 
- #include "qemu/osdep.h"
- #include "qemu/module.h"
--#include "audio.h"
-+#include "qemu/audio.h"
- 
- #define AUDIO_CAP "wav"
- #include "audio_int.h"
-diff --git a/hw/arm/integratorcp.c b/hw/arm/integratorcp.c
-index b1d8fbd470..81ed051b98 100644
---- a/hw/arm/integratorcp.c
-+++ b/hw/arm/integratorcp.c
-@@ -26,7 +26,7 @@
- #include "hw/irq.h"
- #include "hw/sd/sd.h"
- #include "qom/object.h"
--#include "audio/audio.h"
-+#include "qemu/audio.h"
- #include "target/arm/cpu-qom.h"
- 
- #define TYPE_INTEGRATOR_CM "integrator_core"
-diff --git a/hw/arm/musicpal.c b/hw/arm/musicpal.c
-index 329b162eb2..6032301bb6 100644
---- a/hw/arm/musicpal.c
-+++ b/hw/arm/musicpal.c
-@@ -36,7 +36,7 @@
- #include "qemu/cutils.h"
- #include "qom/object.h"
- #include "hw/net/mv88w8618_eth.h"
--#include "audio/audio.h"
-+#include "qemu/audio.h"
- #include "qemu/error-report.h"
- #include "target/arm/cpu-qom.h"
- 
-diff --git a/hw/arm/realview.c b/hw/arm/realview.c
-index 5c9050490b..892bdc8db2 100644
---- a/hw/arm/realview.c
-+++ b/hw/arm/realview.c
-@@ -29,7 +29,7 @@
- #include "hw/irq.h"
- #include "hw/i2c/arm_sbcon_i2c.h"
- #include "hw/sd/sd.h"
--#include "audio/audio.h"
-+#include "qemu/audio.h"
- #include "target/arm/cpu-qom.h"
- 
- #define SMP_BOOT_ADDR 0xe0000000
-diff --git a/hw/arm/versatilepb.c b/hw/arm/versatilepb.c
-index 5cf1a70d10..cba77864e8 100644
---- a/hw/arm/versatilepb.c
-+++ b/hw/arm/versatilepb.c
-@@ -25,7 +25,7 @@
- #include "hw/char/pl011.h"
- #include "hw/sd/sd.h"
- #include "qom/object.h"
--#include "audio/audio.h"
-+#include "qemu/audio.h"
- #include "target/arm/cpu-qom.h"
- #include "qemu/log.h"
- 
-diff --git a/hw/arm/vexpress.c b/hw/arm/vexpress.c
-index 35f8d05ea1..14d38cea8b 100644
---- a/hw/arm/vexpress.c
-+++ b/hw/arm/vexpress.c
-@@ -44,7 +44,7 @@
- #include "hw/sd/sd.h"
- #include "qobject/qlist.h"
- #include "qom/object.h"
--#include "audio/audio.h"
-+#include "qemu/audio.h"
- #include "target/arm/cpu-qom.h"
- 
- #define VEXPRESS_BOARD_ID 0x8e0
-diff --git a/hw/arm/xlnx-zcu102.c b/hw/arm/xlnx-zcu102.c
-index 14b6641a71..4ed346a88d 100644
---- a/hw/arm/xlnx-zcu102.c
-+++ b/hw/arm/xlnx-zcu102.c
-@@ -25,7 +25,7 @@
- #include "system/device_tree.h"
- #include "qom/object.h"
- #include "net/can_emu.h"
--#include "audio/audio.h"
-+#include "qemu/audio.h"
- 
- struct XlnxZCU102 {
-     MachineState parent_obj;
+audio_register_model_with_cb() dropped "pci" from the name, since it
+will be generalized next.
+
+deprecated_register_soundhw() was actually not a function to be
+removed since it's used for "-audio model=" aliasing.
+
+Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ include/hw/audio/model.h                      | 14 +++++
+ include/hw/audio/soundhw.h                    | 13 -----
+ hw/audio/ac97.c                               |  5 +-
+ hw/audio/adlib.c                              |  4 +-
+ hw/audio/cs4231a.c                            |  4 +-
+ hw/audio/es1370.c                             |  5 +-
+ hw/audio/gus.c                                |  4 +-
+ hw/audio/intel-hda.c                          |  4 +-
+ hw/audio/{soundhw.c => model.c}               | 58 +++++++++----------
+ hw/audio/pcspk.c                              |  2 +-
+ hw/audio/sb16.c                               |  5 +-
+ hw/audio/virtio-snd-pci.c                     |  4 +-
+ system/vl.c                                   |  6 +-
+ hw/audio/meson.build                          |  2 +-
+ .../codeconverter/test_regexps.py             |  2 +-
+ 15 files changed, 65 insertions(+), 67 deletions(-)
+ create mode 100644 include/hw/audio/model.h
+ delete mode 100644 include/hw/audio/soundhw.h
+ rename hw/audio/{soundhw.c => model.c} (68%)
+
+diff --git a/include/hw/audio/model.h b/include/hw/audio/model.h
+new file mode 100644
+index 0000000000..aa237e9eb6
+--- /dev/null
++++ b/include/hw/audio/model.h
+@@ -0,0 +1,14 @@
++/* SPDX-License-Identifier: GPL-2.0-or-later */
++#ifndef HW_AUDIO_MODEL_H
++#define HW_AUDIO_MODEL_H
++
++void audio_register_model_with_cb(const char *name, const char *descr,
++                                  int (*init_pci)(PCIBus *bus, const char *audiodev));
++void audio_register_model(const char *name, const char *descr,
++                          int isa, const char *typename);
++
++void audio_model_init(void);
++void audio_print_available_models(void);
++void audio_set_model(const char *name, const char *audiodev);
++
++#endif
+diff --git a/include/hw/audio/soundhw.h b/include/hw/audio/soundhw.h
+deleted file mode 100644
+index 83b3011083..0000000000
+--- a/include/hw/audio/soundhw.h
++++ /dev/null
+@@ -1,13 +0,0 @@
+-#ifndef HW_SOUNDHW_H
+-#define HW_SOUNDHW_H
+-
+-void pci_register_soundhw(const char *name, const char *descr,
+-                          int (*init_pci)(PCIBus *bus, const char *audiodev));
+-void deprecated_register_soundhw(const char *name, const char *descr,
+-                                 int isa, const char *typename);
+-
+-void soundhw_init(void);
+-void audio_print_available_models(void);
+-void select_soundhw(const char *name, const char *audiodev);
+-
+-#endif
 diff --git a/hw/audio/ac97.c b/hw/audio/ac97.c
-index a91bf52b95..be7a39377f 100644
+index 828333b66a..9dee5bb143 100644
 --- a/hw/audio/ac97.c
 +++ b/hw/audio/ac97.c
-@@ -19,7 +19,7 @@
+@@ -18,7 +18,7 @@
+  */
  
  #include "qemu/osdep.h"
- #include "hw/audio/model.h"
--#include "audio/audio.h"
-+#include "qemu/audio.h"
+-#include "hw/audio/soundhw.h"
++#include "hw/audio/model.h"
+ #include "audio/audio.h"
  #include "hw/pci/pci_device.h"
  #include "hw/qdev-properties.h"
- #include "migration/vmstate.h"
+@@ -1362,8 +1362,7 @@ static const TypeInfo ac97_info = {
+ static void ac97_register_types(void)
+ {
+     type_register_static(&ac97_info);
+-    deprecated_register_soundhw("ac97", "Intel 82801AA AC97 Audio",
+-                                0, TYPE_AC97);
++    audio_register_model("ac97", "Intel 82801AA AC97 Audio", 0, TYPE_AC97);
+ }
+ 
+ type_init(ac97_register_types)
 diff --git a/hw/audio/adlib.c b/hw/audio/adlib.c
-index 4e6c80b8e0..19d3a5f128 100644
+index 772435f04c..d0b2817843 100644
 --- a/hw/audio/adlib.c
 +++ b/hw/audio/adlib.c
-@@ -26,7 +26,7 @@
+@@ -25,7 +25,7 @@
+ #include "qemu/osdep.h"
  #include "qapi/error.h"
  #include "qemu/module.h"
- #include "hw/audio/model.h"
--#include "audio/audio.h"
-+#include "qemu/audio.h"
+-#include "hw/audio/soundhw.h"
++#include "hw/audio/model.h"
+ #include "audio/audio.h"
  #include "hw/isa/isa.h"
  #include "hw/qdev-properties.h"
- #include "qemu/error-report.h"
-diff --git a/hw/audio/asc.c b/hw/audio/asc.c
-index 5c3f6c8f86..0abb106979 100644
---- a/hw/audio/asc.c
-+++ b/hw/audio/asc.c
-@@ -15,7 +15,7 @@
- #include "qapi/error.h"
- #include "hw/sysbus.h"
- #include "hw/irq.h"
--#include "audio/audio.h"
-+#include "qemu/audio.h"
- #include "hw/audio/asc.h"
- #include "hw/qdev-properties.h"
- #include "migration/vmstate.h"
+@@ -323,7 +323,7 @@ static const TypeInfo adlib_info = {
+ static void adlib_register_types (void)
+ {
+     type_register_static (&adlib_info);
+-    deprecated_register_soundhw("adlib", ADLIB_DESC, 1, TYPE_ADLIB);
++    audio_register_model("adlib", ADLIB_DESC, 1, TYPE_ADLIB);
+ }
+ 
+ type_init (adlib_register_types)
 diff --git a/hw/audio/cs4231a.c b/hw/audio/cs4231a.c
-index ec9643b817..98fdbc5b72 100644
+index 7931fcfec8..0979cf5f16 100644
 --- a/hw/audio/cs4231a.c
 +++ b/hw/audio/cs4231a.c
-@@ -24,7 +24,7 @@
- 
- #include "qemu/osdep.h"
- #include "hw/audio/model.h"
--#include "audio/audio.h"
-+#include "qemu/audio.h"
- #include "hw/irq.h"
- #include "hw/isa/isa.h"
- #include "hw/qdev-properties.h"
-diff --git a/hw/audio/es1370.c b/hw/audio/es1370.c
-index 0628f03310..9873ffadab 100644
---- a/hw/audio/es1370.c
-+++ b/hw/audio/es1370.c
-@@ -27,7 +27,7 @@
- 
- #include "qemu/osdep.h"
- #include "hw/audio/model.h"
--#include "audio/audio.h"
-+#include "qemu/audio.h"
- #include "hw/pci/pci_device.h"
- #include "migration/vmstate.h"
- #include "qemu/cutils.h"
-diff --git a/hw/audio/gus.c b/hw/audio/gus.c
-index d253329021..68f89e994c 100644
---- a/hw/audio/gus.c
-+++ b/hw/audio/gus.c
-@@ -26,7 +26,7 @@
- #include "qapi/error.h"
- #include "qemu/module.h"
- #include "hw/audio/model.h"
--#include "audio/audio.h"
-+#include "qemu/audio.h"
- #include "hw/irq.h"
- #include "hw/isa/isa.h"
- #include "hw/qdev-properties.h"
-diff --git a/hw/audio/hda-codec.c b/hw/audio/hda-codec.c
-index f7ae2aa1fd..e90c9de046 100644
---- a/hw/audio/hda-codec.c
-+++ b/hw/audio/hda-codec.c
-@@ -25,7 +25,7 @@
- #include "qemu/host-utils.h"
- #include "qemu/module.h"
- #include "intel-hda-defs.h"
--#include "audio/audio.h"
-+#include "qemu/audio.h"
- #include "trace.h"
- #include "qom/object.h"
- 
-diff --git a/hw/audio/lm4549.c b/hw/audio/lm4549.c
-index c51ec0e66f..745441bd79 100644
---- a/hw/audio/lm4549.c
-+++ b/hw/audio/lm4549.c
-@@ -15,7 +15,7 @@
- 
- #include "qemu/osdep.h"
- #include "hw/hw.h"
--#include "audio/audio.h"
-+#include "qemu/audio.h"
- #include "lm4549.h"
- #include "migration/vmstate.h"
- 
-diff --git a/hw/audio/marvell_88w8618.c b/hw/audio/marvell_88w8618.c
-index c5c79d083a..a483f4e70d 100644
---- a/hw/audio/marvell_88w8618.c
-+++ b/hw/audio/marvell_88w8618.c
-@@ -16,7 +16,7 @@
- #include "hw/irq.h"
- #include "hw/qdev-properties.h"
- #include "hw/audio/wm8750.h"
--#include "audio/audio.h"
-+#include "qemu/audio.h"
- #include "qapi/error.h"
- #include "qemu/module.h"
- #include "qom/object.h"
-diff --git a/hw/audio/pcspk.c b/hw/audio/pcspk.c
-index a41f5b11f0..916c56fa4c 100644
---- a/hw/audio/pcspk.c
-+++ b/hw/audio/pcspk.c
-@@ -25,7 +25,7 @@
- #include "qemu/osdep.h"
- #include "hw/isa/isa.h"
- #include "hw/audio/model.h"
--#include "audio/audio.h"
-+#include "qemu/audio.h"
- #include "qemu/module.h"
- #include "qemu/timer.h"
- #include "qemu/error-report.h"
-diff --git a/hw/audio/sb16.c b/hw/audio/sb16.c
-index 8109d124d1..1e3c4caf5e 100644
---- a/hw/audio/sb16.c
-+++ b/hw/audio/sb16.c
-@@ -24,7 +24,7 @@
- 
- #include "qemu/osdep.h"
- #include "hw/audio/model.h"
--#include "audio/audio.h"
-+#include "qemu/audio.h"
- #include "hw/irq.h"
- #include "hw/isa/isa.h"
- #include "hw/qdev-properties.h"
-diff --git a/hw/audio/wm8750.c b/hw/audio/wm8750.c
-index d399c335c3..336fb6d20b 100644
---- a/hw/audio/wm8750.c
-+++ b/hw/audio/wm8750.c
-@@ -12,7 +12,7 @@
- #include "migration/vmstate.h"
- #include "qemu/module.h"
- #include "hw/audio/wm8750.h"
--#include "audio/audio.h"
-+#include "qemu/audio.h"
- #include "qom/object.h"
- 
- #define IN_PORT_N	3
-diff --git a/hw/core/machine.c b/hw/core/machine.c
-index 28d2833c5d..0580550e12 100644
---- a/hw/core/machine.c
-+++ b/hw/core/machine.c
-@@ -36,7 +36,7 @@
- #include "hw/virtio/virtio-net.h"
- #include "hw/virtio/virtio-iommu.h"
- #include "hw/acpi/generic_event_device.h"
--#include "audio/audio.h"
-+#include "qemu/audio.h"
- 
- GlobalProperty hw_compat_10_1[] = {
-     { TYPE_ACPI_GED, "x-has-hest-addr", "false" },
-diff --git a/hw/core/qdev-properties-system.c b/hw/core/qdev-properties-system.c
-index 578cbdc015..6560205f9f 100644
---- a/hw/core/qdev-properties-system.c
-+++ b/hw/core/qdev-properties-system.c
-@@ -27,7 +27,7 @@
- #include "qemu/error-report.h"
- #include "qdev-prop-internal.h"
- 
--#include "audio/audio.h"
-+#include "qemu/audio.h"
- #include "chardev/char-fe.h"
- #include "system/block-backend.h"
- #include "system/blockdev.h"
-diff --git a/hw/ppc/prep.c b/hw/ppc/prep.c
-index c730cb3429..d9c5d14cbd 100644
---- a/hw/ppc/prep.c
-+++ b/hw/ppc/prep.c
-@@ -46,7 +46,7 @@
- #include "trace.h"
- #include "elf.h"
- #include "qemu/units.h"
--#include "audio/audio.h"
-+#include "qemu/audio.h"
- 
- /* SMP is not enabled, for now */
- #define MAX_CPUS 1
-diff --git a/hw/usb/dev-audio.c b/hw/usb/dev-audio.c
-index c8e032ab64..8dd9d26599 100644
---- a/hw/usb/dev-audio.c
-+++ b/hw/usb/dev-audio.c
-@@ -35,7 +35,7 @@
- #include "hw/usb.h"
- #include "migration/vmstate.h"
- #include "desc.h"
--#include "audio/audio.h"
-+#include "qemu/audio.h"
- #include "qom/object.h"
- 
- static void usb_audio_reinit(USBDevice *dev, unsigned channels);
-diff --git a/replay/replay-audio.c b/replay/replay-audio.c
-index 3413801062..1b614f4137 100644
---- a/replay/replay-audio.c
-+++ b/replay/replay-audio.c
-@@ -13,7 +13,7 @@
- #include "qemu/error-report.h"
- #include "system/replay.h"
- #include "replay-internal.h"
--#include "audio/audio.h"
-+#include "qemu/audio.h"
- 
- void replay_audio_out(size_t *played)
- {
-diff --git a/system/runstate.c b/system/runstate.c
-index 32467aa882..e3ec16ab74 100644
---- a/system/runstate.c
-+++ b/system/runstate.c
 @@ -23,7 +23,7 @@
   */
  
  #include "qemu/osdep.h"
--#include "audio/audio.h"
-+#include "qemu/audio.h"
- #include "block/block.h"
- #include "block/export.h"
- #include "chardev/char.h"
-diff --git a/system/vl.c b/system/vl.c
-index dc2ea4c298..29f5389151 100644
---- a/system/vl.c
-+++ b/system/vl.c
-@@ -87,7 +87,7 @@
- #include "system/tpm.h"
- #include "system/dma.h"
- #include "hw/audio/model.h"
--#include "audio/audio.h"
-+#include "qemu/audio.h"
- #include "system/cpus.h"
- #include "system/cpu-timers.h"
- #include "exec/icount.h"
-diff --git a/ui/dbus.c b/ui/dbus.c
-index fbe108af1e..d2dff33258 100644
---- a/ui/dbus.c
-+++ b/ui/dbus.c
-@@ -34,8 +34,7 @@
- #include "ui/egl-helpers.h"
- #include "ui/egl-context.h"
- #endif
--#include "audio/audio.h"
--#include "audio/audio_int.h"
-+#include "qemu/audio.h"
- #include "qapi/error.h"
- #include "trace.h"
+-#include "hw/audio/soundhw.h"
++#include "hw/audio/model.h"
+ #include "audio/audio.h"
+ #include "hw/irq.h"
+ #include "hw/isa/isa.h"
+@@ -723,7 +723,7 @@ static const TypeInfo cs4231a_info = {
+ static void cs4231a_register_types (void)
+ {
+     type_register_static (&cs4231a_info);
+-    deprecated_register_soundhw("cs4231a", "CS4231A", 1, TYPE_CS4231A);
++    audio_register_model("cs4231a", "CS4231A", 1, TYPE_CS4231A);
+ }
  
-diff --git a/audio/coreaudio.m b/audio/coreaudio.m
-index cadd729d50..8b3cd6db16 100644
---- a/audio/coreaudio.m
-+++ b/audio/coreaudio.m
-@@ -28,7 +28,7 @@
- 
- #include "qemu/main-loop.h"
- #include "qemu/module.h"
--#include "audio.h"
-+#include "qemu/audio.h"
- 
- #define AUDIO_CAP "coreaudio"
- #include "audio_int.h"
-diff --git a/scripts/codeconverter/codeconverter/test_regexps.py b/scripts/codeconverter/codeconverter/test_regexps.py
-index fe7354b473..b00e9ef15b 100644
---- a/scripts/codeconverter/codeconverter/test_regexps.py
-+++ b/scripts/codeconverter/codeconverter/test_regexps.py
-@@ -265,7 +265,7 @@ def test_initial_includes():
+ type_init (cs4231a_register_types)
+diff --git a/hw/audio/es1370.c b/hw/audio/es1370.c
+index 6b0da0746e..066b9906fa 100644
+--- a/hw/audio/es1370.c
++++ b/hw/audio/es1370.c
+@@ -26,7 +26,7 @@
+ #define VERBOSE_ES1370 0
  
  #include "qemu/osdep.h"
- #include "hw/audio/model.h"
--#include "audio/audio.h"
-+#include "qemu/audio.h"
+-#include "hw/audio/soundhw.h"
++#include "hw/audio/model.h"
+ #include "audio/audio.h"
+ #include "hw/pci/pci_device.h"
+ #include "migration/vmstate.h"
+@@ -905,8 +905,7 @@ static const TypeInfo es1370_info = {
+ static void es1370_register_types (void)
+ {
+     type_register_static (&es1370_info);
+-    deprecated_register_soundhw("es1370", "ENSONIQ AudioPCI ES1370",
+-                                0, TYPE_ES1370);
++    audio_register_model("es1370", "ENSONIQ AudioPCI ES1370", 0, TYPE_ES1370);
+ }
+ 
+ type_init (es1370_register_types)
+diff --git a/hw/audio/gus.c b/hw/audio/gus.c
+index 91d07e0f81..d5b1e62135 100644
+--- a/hw/audio/gus.c
++++ b/hw/audio/gus.c
+@@ -25,7 +25,7 @@
+ #include "qemu/osdep.h"
+ #include "qapi/error.h"
+ #include "qemu/module.h"
+-#include "hw/audio/soundhw.h"
++#include "hw/audio/model.h"
+ #include "audio/audio.h"
+ #include "hw/irq.h"
+ #include "hw/isa/isa.h"
+@@ -320,7 +320,7 @@ static const TypeInfo gus_info = {
+ static void gus_register_types (void)
+ {
+     type_register_static (&gus_info);
+-    deprecated_register_soundhw("gus", "Gravis Ultrasound GF1", 1, TYPE_GUS);
++    audio_register_model("gus", "Gravis Ultrasound GF1", 1, TYPE_GUS);
+ }
+ 
+ type_init (gus_register_types)
+diff --git a/hw/audio/intel-hda.c b/hw/audio/intel-hda.c
+index b256c8ccea..6a0db0dd9e 100644
+--- a/hw/audio/intel-hda.c
++++ b/hw/audio/intel-hda.c
+@@ -26,7 +26,7 @@
+ #include "qemu/log.h"
+ #include "qemu/module.h"
+ #include "qemu/error-report.h"
+-#include "hw/audio/soundhw.h"
++#include "hw/audio/model.h"
+ #include "intel-hda.h"
+ #include "migration/vmstate.h"
+ #include "intel-hda-defs.h"
+@@ -1324,7 +1324,7 @@ static void intel_hda_register_types(void)
+     type_register_static(&intel_hda_info_ich6);
+     type_register_static(&intel_hda_info_ich9);
+     type_register_static(&hda_codec_device_type_info);
+-    pci_register_soundhw("hda", "Intel HD Audio", intel_hda_and_codec_init);
++    audio_register_model_with_cb("hda", "Intel HD Audio", intel_hda_and_codec_init);
+ }
+ 
+ type_init(intel_hda_register_types)
+diff --git a/hw/audio/soundhw.c b/hw/audio/model.c
+similarity index 68%
+rename from hw/audio/soundhw.c
+rename to hw/audio/model.c
+index 29158c115c..ddfefea706 100644
+--- a/hw/audio/soundhw.c
++++ b/hw/audio/model.c
+@@ -32,9 +32,9 @@
+ #include "hw/qdev-properties.h"
+ #include "hw/isa/isa.h"
+ #include "hw/pci/pci.h"
+-#include "hw/audio/soundhw.h"
++#include "hw/audio/model.h"
+ 
+-struct soundhw {
++struct audio_model {
+     const char *name;
+     const char *descr;
+     const char *typename;
+@@ -42,38 +42,38 @@ struct soundhw {
+     int (*init_pci) (PCIBus *bus, const char *audiodev);
+ };
+ 
+-static struct soundhw soundhw[9];
+-static int soundhw_count;
++static struct audio_model audio_models[9];
++static int audio_models_count;
+ 
+-void pci_register_soundhw(const char *name, const char *descr,
+-                          int (*init_pci)(PCIBus *bus, const char *audiodev))
++void audio_register_model_with_cb(const char *name, const char *descr,
++                                  int (*init_pci)(PCIBus *bus, const char *audiodev))
+ {
+-    assert(soundhw_count < ARRAY_SIZE(soundhw) - 1);
+-    soundhw[soundhw_count].name = name;
+-    soundhw[soundhw_count].descr = descr;
+-    soundhw[soundhw_count].isa = 0;
+-    soundhw[soundhw_count].init_pci = init_pci;
+-    soundhw_count++;
++    assert(audio_models_count < ARRAY_SIZE(audio_models) - 1);
++    audio_models[audio_models_count].name = name;
++    audio_models[audio_models_count].descr = descr;
++    audio_models[audio_models_count].isa = 0;
++    audio_models[audio_models_count].init_pci = init_pci;
++    audio_models_count++;
+ }
+ 
+-void deprecated_register_soundhw(const char *name, const char *descr,
+-                                 int isa, const char *typename)
++void audio_register_model(const char *name, const char *descr,
++                          int isa, const char *typename)
+ {
+-    assert(soundhw_count < ARRAY_SIZE(soundhw) - 1);
+-    soundhw[soundhw_count].name = name;
+-    soundhw[soundhw_count].descr = descr;
+-    soundhw[soundhw_count].isa = isa;
+-    soundhw[soundhw_count].typename = typename;
+-    soundhw_count++;
++    assert(audio_models_count < ARRAY_SIZE(audio_models) - 1);
++    audio_models[audio_models_count].name = name;
++    audio_models[audio_models_count].descr = descr;
++    audio_models[audio_models_count].isa = isa;
++    audio_models[audio_models_count].typename = typename;
++    audio_models_count++;
+ }
+ 
+ void audio_print_available_models(void)
+ {
+-    struct soundhw *c;
++    struct audio_model *c;
+ 
+-    if (soundhw_count) {
++    if (audio_models_count) {
+         printf("Valid audio device model names:\n");
+-        for (c = soundhw; c->name; ++c) {
++        for (c = audio_models; c->name; ++c) {
+             printf("%-11s %s\n", c->name, c->descr);
+         }
+     } else {
+@@ -82,19 +82,19 @@ void audio_print_available_models(void)
+     }
+ }
+ 
+-static struct soundhw *selected = NULL;
++static struct audio_model *selected;
+ static const char *audiodev_id;
+ 
+-void select_soundhw(const char *name, const char *audiodev)
++void audio_set_model(const char *name, const char *audiodev)
+ {
+-    struct soundhw *c;
++    struct audio_model *c;
+ 
+     if (selected) {
+         error_report("only one -audio option is allowed");
+         exit(1);
+     }
+ 
+-    for (c = soundhw; c->name; ++c) {
++    for (c = audio_models; c->name; ++c) {
+         if (g_str_equal(c->name, name)) {
+             selected = c;
+             audiodev_id = audiodev;
+@@ -109,9 +109,9 @@ void select_soundhw(const char *name, const char *audiodev)
+     }
+ }
+ 
+-void soundhw_init(void)
++void audio_model_init(void)
+ {
+-    struct soundhw *c = selected;
++    struct audio_model *c = selected;
+ 
+     if (!c) {
+         return;
+diff --git a/hw/audio/pcspk.c b/hw/audio/pcspk.c
+index a719912872..48ef830292 100644
+--- a/hw/audio/pcspk.c
++++ b/hw/audio/pcspk.c
+@@ -24,7 +24,7 @@
+ 
+ #include "qemu/osdep.h"
+ #include "hw/isa/isa.h"
+-#include "hw/audio/soundhw.h"
++#include "hw/audio/model.h"
+ #include "audio/audio.h"
+ #include "qemu/module.h"
+ #include "qemu/timer.h"
+diff --git a/hw/audio/sb16.c b/hw/audio/sb16.c
+index 03c82f2777..5faa3f5fe3 100644
+--- a/hw/audio/sb16.c
++++ b/hw/audio/sb16.c
+@@ -23,7 +23,7 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "hw/audio/soundhw.h"
++#include "hw/audio/model.h"
+ #include "audio/audio.h"
+ #include "hw/irq.h"
+ #include "hw/isa/isa.h"
+@@ -1470,8 +1470,7 @@ static const TypeInfo sb16_info = {
+ static void sb16_register_types (void)
+ {
+     type_register_static (&sb16_info);
+-    deprecated_register_soundhw("sb16", "Creative Sound Blaster 16",
+-                                1, TYPE_SB16);
++    audio_register_model("sb16", "Creative Sound Blaster 16", 1, TYPE_SB16);
+ }
+ 
+ type_init (sb16_register_types)
+diff --git a/hw/audio/virtio-snd-pci.c b/hw/audio/virtio-snd-pci.c
+index 9eb0007392..613538e46f 100644
+--- a/hw/audio/virtio-snd-pci.c
++++ b/hw/audio/virtio-snd-pci.c
+@@ -11,7 +11,7 @@
+ #include "qemu/osdep.h"
+ #include "qom/object.h"
+ #include "qapi/error.h"
+-#include "hw/audio/soundhw.h"
++#include "hw/audio/model.h"
+ #include "hw/virtio/virtio-pci.h"
+ #include "hw/audio/virtio-snd.h"
+ 
+@@ -88,7 +88,7 @@ static int virtio_snd_pci_init(PCIBus *bus, const char *audiodev)
+ static void virtio_snd_pci_register(void)
+ {
+     virtio_pci_types_register(&virtio_snd_pci_info);
+-    pci_register_soundhw("virtio", "Virtio Sound", virtio_snd_pci_init);
++    audio_register_model_with_cb("virtio", "Virtio Sound", virtio_snd_pci_init);
+ }
+ 
+ type_init(virtio_snd_pci_register);
+diff --git a/system/vl.c b/system/vl.c
+index 4814ef11da..dc2ea4c298 100644
+--- a/system/vl.c
++++ b/system/vl.c
+@@ -86,7 +86,7 @@
+ #include "migration/snapshot.h"
+ #include "system/tpm.h"
+ #include "system/dma.h"
+-#include "hw/audio/soundhw.h"
++#include "hw/audio/model.h"
+ #include "audio/audio.h"
+ #include "system/cpus.h"
+ #include "system/cpu-timers.h"
+@@ -2732,7 +2732,7 @@ static void qemu_create_cli_devices(void)
+ {
+     DeviceOption *opt;
+ 
+-    soundhw_init();
++    audio_model_init();
+ 
+     qemu_opts_foreach(qemu_find_opts("fw_cfg"),
+                       parse_fw_cfg, fw_cfg_find(), &error_fatal);
+@@ -3088,7 +3088,7 @@ void qemu_init(int argc, char **argv)
+                 visit_free(v);
+                 if (model) {
+                     audio_add_audiodev(dev);
+-                    select_soundhw(model, dev->id);
++                    audio_set_model(model, dev->id);
+                     g_free(model);
+                 } else {
+                     audio_add_default_audiodev(dev, &error_fatal);
+diff --git a/hw/audio/meson.build b/hw/audio/meson.build
+index 2990974449..2154cbdb57 100644
+--- a/hw/audio/meson.build
++++ b/hw/audio/meson.build
+@@ -1,4 +1,4 @@
+-system_ss.add(files('soundhw.c'))
++system_ss.add(files('model.c'))
+ system_ss.add(when: 'CONFIG_AC97', if_true: files('ac97.c'))
+ system_ss.add(when: 'CONFIG_ADLIB', if_true: files('fmopl.c', 'adlib.c'))
+ system_ss.add(when: 'CONFIG_ASC', if_true: files('asc.c'))
+diff --git a/scripts/codeconverter/codeconverter/test_regexps.py b/scripts/codeconverter/codeconverter/test_regexps.py
+index 4526268ae8..fe7354b473 100644
+--- a/scripts/codeconverter/codeconverter/test_regexps.py
++++ b/scripts/codeconverter/codeconverter/test_regexps.py
+@@ -264,7 +264,7 @@ def test_initial_includes():
+ #define SILENT_ES1370
+ 
+ #include "qemu/osdep.h"
+-#include "hw/audio/soundhw.h"
++#include "hw/audio/model.h"
+ #include "audio/audio.h"
  #include "hw/pci/pci.h"
  #include "migration/vmstate.h"
- #include "qemu/module.h"
 -- 
 2.51.0
 

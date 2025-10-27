@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41EE1CCF9EA
-	for <qemu-arm@archiver.kernel.org>; Mon, 27 Oct 2025 12:37:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94FE1CCF9E5
+	for <qemu-arm@archiver.kernel.org>; Mon, 27 Oct 2025 12:38:16 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vDMTw-0005kz-45; Mon, 27 Oct 2025 08:37:53 -0400
+	id 1vDMTZ-0005fN-JP; Mon, 27 Oct 2025 08:37:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vDMTr-0005jo-5z
- for qemu-arm@nongnu.org; Mon, 27 Oct 2025 08:37:47 -0400
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vDMTX-0005eZ-2J
+ for qemu-arm@nongnu.org; Mon, 27 Oct 2025 08:37:28 -0400
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vDMTm-0006Mw-QX
- for qemu-arm@nongnu.org; Mon, 27 Oct 2025 08:37:45 -0400
-Received: by mail-wr1-x434.google.com with SMTP id
- ffacd0b85a97d-42557c5cedcso3108670f8f.0
- for <qemu-arm@nongnu.org>; Mon, 27 Oct 2025 05:37:37 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vDMTM-0006Iy-4M
+ for qemu-arm@nongnu.org; Mon, 27 Oct 2025 08:37:23 -0400
+Received: by mail-wm1-x333.google.com with SMTP id
+ 5b1f17b1804b1-47103b6058fso33825265e9.1
+ for <qemu-arm@nongnu.org>; Mon, 27 Oct 2025 05:37:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1761568655; x=1762173455; darn=nongnu.org;
+ d=linaro.org; s=google; t=1761568630; x=1762173430; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=GoeOKyftJ5MLGQxZGLLBGt1lpVhTU2P8wL0zlmwVEXI=;
- b=X2l/OGQJdJIXtzzwx3tyu5WVWYaVhiF00Nrj1P/MZAwCjCbF6yHzUWR7sdPG048g7O
- fodL3L4Lp0MT885CUCQIg9OYn0OdzVQh9q7bsg/b4MRQPoLarLZwfFwmd0FR7FOrXla4
- KAINNnMDomJ7PMKy/FfOIgeMu9Yz85y8yqXwgehPvv2/kfvJMngBVtFiYK2/UPNCccyo
- EtmIUP2q9DPZQEUTGJpitelJzZs1EI/ltCu3H9GHYnarG1XT9gWDRBXSPug/XVpJM7um
- Q+IqfpYI+Xr1bSprhzu3HS6hivjGFirJXG3nxnGp/2U/JbKUZvATsk3VqwZruxNSWXcL
- bYiQ==
+ bh=byf3wvrJPaiUb+20B8P2dJNrSEIy4cHbROmq/ZIrtd0=;
+ b=f7gYOTKZGl20sj8R5yWHoYXo19HgdHL5aJrsticajMmyQZ9Hf0seRMBxXVvxXdUBKr
+ VWdHxC53hn0HOfkP29PYETB+1ckT3o0MAuhXW2jWNEEqGqSqjA8Urvp3GbLkXJqjEEhM
+ MYAZxov5dNs0qwOCiG9/OqmdekOvssoZrqTMB1/8PRAtnTPkQcsBAg+oQvab8EL8naTy
+ 5T4myDbXrneoQf7TfQ4mOsa69adE18EZRZzzfOO7KoVN5Kg0N2SBac75NZomvoiub7lM
+ rURJa+jgD9Lp7Cnkl427QqpdsRu5v1Kq0BcvvB3VpRzaknPf1xc6rnddXi4cWL1YWATU
+ CPzQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761568655; x=1762173455;
+ d=1e100.net; s=20230601; t=1761568630; x=1762173430;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=GoeOKyftJ5MLGQxZGLLBGt1lpVhTU2P8wL0zlmwVEXI=;
- b=ZGg5HVQYjvtH5IDZa0M47jPRHPCygzeYTh9dQWmby9rqO3Z/cg1KPN+euE7siOjKaD
- nXRlpPmyvhfyEWQTdCpeobL0Xbxt7vPiW3rS5PWsORayOv9D38a6zw5Pfufjuii5ijrp
- tmmmJ3Zu6ZWU01Pr8vvpFIFQo6Eub1IIzm6PAAaiDoofN9LcLZexydsIvtgn/M8eRpYt
- GZCtw8DMfGjLfzZaZvXzeLRAcMhIeOA0VrccoRqt/4u92yevMsAinoFvsf4mDozu6VJX
- 3fPs1RMdvlE4brrzWB5QPlxG0hSyewXAebFzsZ/ep43ehOkWjO4ev57LO3nrS2yH3HyW
- T2tA==
+ bh=byf3wvrJPaiUb+20B8P2dJNrSEIy4cHbROmq/ZIrtd0=;
+ b=Kys9q33aIpumAn0GiPXT/oCV1bJSuXsANBX8wbxv8DKsFDGi9c3zeUpOubIJhlN2W9
+ AoDwivWBx7AZBDWB2JQkh7bO13QHkE+7CewD6JVNm9APaqxuw2DjnQ3jF9nARboUZKjH
+ ginRazNTBlqxfp5cGkbabe0yXiCnCZ93+qYpyNa4rLRDZwAPjS6MsdnUhleqfzG6PxmU
+ s02YvcvuVjNWhk7nBajAb8YGcscvA6IG+iq5Rjv6eCKMsIgMf0XPtp39eLxyn/j563Xd
+ JLmReJcO+MKyFSGZfOQTd4trPtimbSdhvjsKb/vZIbIzden+ZzViV63wLosRj1VnZiHg
+ MKxA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUYaw6DjeWZn7Don4HJc3A8kYtqmyhTrqLs6mnSCaiDP5Qbu7IFUpUBeoICb3rbi8nitizve1MDZQ==@nongnu.org
-X-Gm-Message-State: AOJu0YyAdVcBKqHgJhQ8/mthDanPqZfHWyoeP9D7+QtjCHCEwoRe4+O+
- 83yW8leoGLQiRtxDho9219LFAC6tT1U3VaTJSL5k4ahU0k7LWNOOgL37UHx10CgBFlA=
-X-Gm-Gg: ASbGncuXBmakLHiklBnh1VwNdiy7gJkEiHpgIudV7bxBmaufs23exz0heBoA9MIjfU8
- xxqCxW/cz/QqTw+HaKFpg1dkMKzal5iti4W5rMaeTvXAglr/xPVb/rkcicbCkRDCjUuJqA1KYqC
- pAPoNtQrzsshzcpv8lz+zmPWNju9wuY9XQHOt0ljGghXRIgXfzWM8DYInnx5d9p5mGwVFFdt2E9
- uGQ6nKQZ/xeZxtAxw7wKX3q7QbtXXSnB+q7QKTRCVmlyKT+5zesXuAkoIyHF0GGT3dw7b+GZKLK
- Zj9mYBjXqbC0XtweTjLIhqLbo3WeRu6K2O2eHrwc2MOBPRwArdfxJowG6NN5x3sj+pEBvGhCpDd
- k9xseYky/d/ppXop/uag+v4pwU5vUt4ZxVHsJKheMEhN5vpbjubXFud8nM+o8Wq34YWUe3v5b/H
- H/zHFyPzdKJ5QS6gDTbHG3YDX/jckDSDYfrPaLmKk7WuxpFmYOCQ==
-X-Google-Smtp-Source: AGHT+IEPzrIF85HI9BKZoZtnDex6BR5cCOZk8RX2NkrGGjPjR54GiLIVjSu74xAOEiV5Phys85ewCw==
-X-Received: by 2002:a05:6000:186a:b0:3ec:db13:89e with SMTP id
- ffacd0b85a97d-42704d1441cmr23640393f8f.7.1761568654607; 
- Mon, 27 Oct 2025 05:37:34 -0700 (PDT)
+ AJvYcCWOiozgW7Z2/di6bd1nH7SUNzwuu9dj3oDAvELA/8288U/aWJUArzw8La31PSDIZfFM5k/SEFmeDQ==@nongnu.org
+X-Gm-Message-State: AOJu0YxLHbcidEuST35POUNde6WwpoIJjTZxQ5MSKtEIGI1/w8d6X20q
+ iZKZhetgS2kfn7nyiR4v0rpgsJOikgcqDNFusZTWgCU4yPfZPY8y3DHjz2Z0jQLkz08=
+X-Gm-Gg: ASbGnctyZoZsljojUHQ6ly7J528wH4iujMS1Lx9U/HK5r1U0ahl/ki8Bqykav3MDKsN
+ zzcq91Cw9+K2H6bpySUv72Yp4cIGOEIccxk/7zHlTRiRFUqWeoKHFSftWHNyuSHXI0N6zTashY5
+ 8PTEMCdVHpaSJPZEPk7D/oPQ5mkyImPAKxY0YGxxLKegJoyWbCvzmni7AbbgO2uPKSJfdEstYYS
+ UUMHUHK+VXByPsiav2hu40PRgZBRlmO0Jbxh6CkFg1/CW8YHd/kEOj/U6/RWMhGiS7hg15Hy8eo
+ 5VbM5eDp2jhkqTmEYKZy9yeaLYZ/3v26lAShYbv42evgDT99iD5slnUiXrSuruS6N1ltvRf23SM
+ kZxT8RRB0mANI0ADNXfzWgd0Ec0MdMRzLY6EnTPrI1fWseWercX0rxDc6teMi80AfGvjFs91Tnq
+ nUN3KX4Tx2UQyltn4sR3cz3IF3lvmlFY/WtYeVUlb/upp7/sScag==
+X-Google-Smtp-Source: AGHT+IF0HM1WPelwexRRvaRYywTdAciouBmeE9MMLLDlaRyIPNrEjKd09Zq7ElpyHHwfs+kdey0Omw==
+X-Received: by 2002:a05:600d:8317:b0:46f:a8fd:c0dc with SMTP id
+ 5b1f17b1804b1-475d2412e43mr75835965e9.3.1761568630468; 
+ Mon, 27 Oct 2025 05:37:10 -0700 (PDT)
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-429952b7ce1sm13908142f8f.0.2025.10.27.05.37.33
+ 5b1f17b1804b1-475dd489fa4sm130398515e9.16.2025.10.27.05.37.09
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Mon, 27 Oct 2025 05:37:34 -0700 (PDT)
+ Mon, 27 Oct 2025 05:37:10 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Joel Stanley <joel@jms.id.au>, qemu-arm@nongnu.org,
@@ -79,25 +79,25 @@ Cc: Joel Stanley <joel@jms.id.au>, qemu-arm@nongnu.org,
  Andrew Jeffery <andrew@codeconstruct.com.au>, Peter Xu <peterx@redhat.com>,
  Artyom Tarasenko <atar4qemu@gmail.com>,
  Jamin Lin <jamin_lin@aspeedtech.com>
-Subject: [PATCH 4/6] hw/pci-host/aspeed: Log unassigned MMIO accesses with
+Subject: [PATCH 2/6] hw/display/vga: Log unassigned MMIO accesses with
  unassigned_mem_ops
-Date: Mon, 27 Oct 2025 13:36:41 +0100
-Message-ID: <20251027123644.63487-5-philmd@linaro.org>
+Date: Mon, 27 Oct 2025 13:36:39 +0100
+Message-ID: <20251027123644.63487-3-philmd@linaro.org>
 X-Mailer: git-send-email 2.51.0
 In-Reply-To: <20251027123644.63487-1-philmd@linaro.org>
 References: <20251027123644.63487-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::434;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x434.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::333;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x333.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -118,22 +118,45 @@ accesses as MMIO ones.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/pci-host/aspeed_pcie.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/display/bochs-display.c | 2 +-
+ hw/display/vga-pci.c       | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/hw/pci-host/aspeed_pcie.c b/hw/pci-host/aspeed_pcie.c
-index 2499d3fe680..0b32f217e91 100644
---- a/hw/pci-host/aspeed_pcie.c
-+++ b/hw/pci-host/aspeed_pcie.c
-@@ -197,7 +197,7 @@ static void aspeed_pcie_rc_realize(DeviceState *dev, Error **errp)
-     memory_region_init(&rc->io, OBJECT(rc), "io", 0x10000);
+diff --git a/hw/display/bochs-display.c b/hw/display/bochs-display.c
+index ad2821c9745..9fa52234219 100644
+--- a/hw/display/bochs-display.c
++++ b/hw/display/bochs-display.c
+@@ -286,7 +286,7 @@ static void bochs_display_realize(PCIDevice *dev, Error **errp)
+     memory_region_init_io(&s->qext, obj, &bochs_display_qext_ops, s,
+                           "qemu extended regs", PCI_VGA_QEXT_SIZE);
  
-     mmio_window_name = g_strdup_printf("pcie.%d.mmio_window", cfg->id);
--    memory_region_init_io(&rc->mmio_window, OBJECT(rc), &unassigned_io_ops,
-+    memory_region_init_io(&rc->mmio_window, OBJECT(rc), &unassigned_mem_ops,
-                           OBJECT(rc), mmio_window_name, UINT64_MAX);
-     ioport_window_name = g_strdup_printf("pcie.%d.ioport_window", cfg->id);
-     memory_region_init_io(&rc->io_window, OBJECT(rc), &unassigned_io_ops,
+-    memory_region_init_io(&s->mmio, obj, &unassigned_io_ops, NULL,
++    memory_region_init_io(&s->mmio, obj, &unassigned_mem_ops, NULL,
+                           "bochs-display-mmio", PCI_VGA_MMIO_SIZE);
+     memory_region_add_subregion(&s->mmio, PCI_VGA_BOCHS_OFFSET, &s->vbe);
+     memory_region_add_subregion(&s->mmio, PCI_VGA_QEXT_OFFSET, &s->qext);
+diff --git a/hw/display/vga-pci.c b/hw/display/vga-pci.c
+index b81f7fd2d0f..583f5d5dee6 100644
+--- a/hw/display/vga-pci.c
++++ b/hw/display/vga-pci.c
+@@ -254,7 +254,7 @@ static void pci_std_vga_realize(PCIDevice *dev, Error **errp)
+ 
+     /* mmio bar for vga register access */
+     if (d->flags & (1 << PCI_VGA_FLAG_ENABLE_MMIO)) {
+-        memory_region_init_io(&d->mmio, OBJECT(dev), &unassigned_io_ops, NULL,
++        memory_region_init_io(&d->mmio, OBJECT(dev), &unassigned_mem_ops, NULL,
+                               "vga.mmio", PCI_VGA_MMIO_SIZE);
+ 
+         if (d->flags & (1 << PCI_VGA_FLAG_ENABLE_QEXT)) {
+@@ -285,7 +285,7 @@ static void pci_secondary_vga_realize(PCIDevice *dev, Error **errp)
+     s->con = graphic_console_init(DEVICE(dev), 0, s->hw_ops, s);
+ 
+     /* mmio bar */
+-    memory_region_init_io(&d->mmio, OBJECT(dev), &unassigned_io_ops, NULL,
++    memory_region_init_io(&d->mmio, OBJECT(dev), &unassigned_mem_ops, NULL,
+                           "vga.mmio", PCI_VGA_MMIO_SIZE);
+ 
+     if (d->flags & (1 << PCI_VGA_FLAG_ENABLE_QEXT)) {
 -- 
 2.51.0
 

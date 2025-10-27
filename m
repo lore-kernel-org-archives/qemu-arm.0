@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D34E5CCF9E5
-	for <qemu-arm@archiver.kernel.org>; Mon, 27 Oct 2025 15:19:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 674A4CCF9EF
+	for <qemu-arm@archiver.kernel.org>; Mon, 27 Oct 2025 15:19:13 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vDOvi-0004se-Lj; Mon, 27 Oct 2025 11:14:43 -0400
+	id 1vDOta-0001zw-JP; Mon, 27 Oct 2025 11:12:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1vDOvQ-0004HT-L6
- for qemu-arm@nongnu.org; Mon, 27 Oct 2025 11:14:27 -0400
+ id 1vDOt7-0001iZ-Cm
+ for qemu-arm@nongnu.org; Mon, 27 Oct 2025 11:12:01 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1vDOuy-0003z1-Jt
- for qemu-arm@nongnu.org; Mon, 27 Oct 2025 11:14:19 -0400
+ id 1vDOt1-0003ai-Ha
+ for qemu-arm@nongnu.org; Mon, 27 Oct 2025 11:12:00 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1761578027;
+ s=mimecast20190719; t=1761577912;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=SjdZwH9zgieCYcFtuqyVlNQ4c4s0sJqI/ew69G8MOdY=;
- b=FMxCS4hGA6wKzU1N8CWr9gbq36APKz3SJVL8sbnWtA+KUcysFCiWruoq+0QLTUZY/uzpNn
- xIcUP9I6ed0kmFna6GHzXEPRZnEZzs3iezbzjW8/HDnyFsqY2fzgJvARYtlC/hkOHoNnyY
- MwxGp5UPuBVWQTi2Qv85hVOJu+y9U1g=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=1TxxLbBB/nlbhAyoE+VGB060htJ/JfCS5v+EnXEJWcY=;
+ b=c+VIhWz4OcF//Ftq0x+CVHgfTEqa6cLSbSKZhdSV2bQapM2CUAkrLeqG5Cekd6WFNpxv4E
+ IF6nSVSv+uqwtvw5CMNB/+epah2QW3+8uAm1H98kfj6wYTfRHePP59HVYSnUfTexh5bXre
+ 7BbrJGJN/0dEXCrWK1GlqqxfohH1Slk=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-57-UujwCvy4MYeqdp3j8szHmA-1; Mon,
- 27 Oct 2025 11:13:44 -0400
-X-MC-Unique: UujwCvy4MYeqdp3j8szHmA-1
-X-Mimecast-MFC-AGG-ID: UujwCvy4MYeqdp3j8szHmA_1761578020
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-549-uFlJT-OnPkuqMLLTGsG-kg-1; Mon,
+ 27 Oct 2025 11:11:49 -0400
+X-MC-Unique: uFlJT-OnPkuqMLLTGsG-kg-1
+X-Mimecast-MFC-AGG-ID: uFlJT-OnPkuqMLLTGsG-kg_1761577903
 Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 6EFCC1834512; Mon, 27 Oct 2025 15:13:36 +0000 (UTC)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 40CAF1954225; Mon, 27 Oct 2025 15:11:43 +0000 (UTC)
 Received: from localhost (unknown [10.45.242.5])
  by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id D0DEA180057E; Mon, 27 Oct 2025 15:13:34 +0000 (UTC)
+ id 60D491800577; Mon, 27 Oct 2025 15:11:40 +0000 (UTC)
 From: marcandre.lureau@redhat.com
 To: qemu-devel@nongnu.org
 Cc: Alexandre Ratchov <alex@caoua.org>,
@@ -71,9 +71,9 @@ Cc: Alexandre Ratchov <alex@caoua.org>,
  Paolo Bonzini <pbonzini@redhat.com>,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
  BALATON Zoltan <balaton@eik.bme.hu>, Laurent Vivier <laurent@vivier.eu>
-Subject: [PATCH v3 25/35] audio: move internal APIs to audio_int.h
-Date: Mon, 27 Oct 2025 19:10:32 +0400
-Message-ID: <20251027151045.2863176-26-marcandre.lureau@redhat.com>
+Subject: [PATCH v3 07/35] hw/audio: generalize audio_model.init()
+Date: Mon, 27 Oct 2025 19:10:14 +0400
+Message-ID: <20251027151045.2863176-8-marcandre.lureau@redhat.com>
 In-Reply-To: <20251027151045.2863176-1-marcandre.lureau@redhat.com>
 References: <20251027151045.2863176-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
@@ -90,7 +90,7 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -108,137 +108,102 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Marc-André Lureau <marcandre.lureau@redhat.com>
 
-Fix some check-patch issues while at it.
+It is no longer PCI bus only.
 
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- audio/audio.h          | 21 ---------------------
- audio/audio_int.h      | 24 ++++++++++++++++++++++++
- audio/audio-hmp-cmds.c |  2 +-
- audio/wavcapture.c     |  2 +-
- 4 files changed, 26 insertions(+), 23 deletions(-)
+ include/hw/audio/model.h |  2 +-
+ hw/audio/intel-hda.c     |  4 +---
+ hw/audio/model.c         | 12 ++++--------
+ 3 files changed, 6 insertions(+), 12 deletions(-)
 
-diff --git a/audio/audio.h b/audio/audio.h
-index 61ff900b7e..c0cad7d976 100644
---- a/audio/audio.h
-+++ b/audio/audio.h
-@@ -38,15 +38,6 @@ typedef struct audsettings {
-     int endianness;
- } audsettings;
+diff --git a/include/hw/audio/model.h b/include/hw/audio/model.h
+index aa237e9eb6..4d0be93042 100644
+--- a/include/hw/audio/model.h
++++ b/include/hw/audio/model.h
+@@ -3,7 +3,7 @@
+ #define HW_AUDIO_MODEL_H
  
--audsettings audiodev_to_audsettings(AudiodevPerDirectionOptions *pdo);
--int audioformat_bytes_per_sample(AudioFormat fmt);
--int audio_buffer_frames(AudiodevPerDirectionOptions *pdo,
--                        audsettings *as, int def_usecs);
--int audio_buffer_samples(AudiodevPerDirectionOptions *pdo,
--                         audsettings *as, int def_usecs);
--int audio_buffer_bytes(AudiodevPerDirectionOptions *pdo,
--                       audsettings *as, int def_usecs);
+ void audio_register_model_with_cb(const char *name, const char *descr,
+-                                  int (*init_pci)(PCIBus *bus, const char *audiodev));
++                                  void (*init_audio_model)(const char *audiodev));
+ void audio_register_model(const char *name, const char *descr,
+                           int isa, const char *typename);
+ 
+diff --git a/hw/audio/intel-hda.c b/hw/audio/intel-hda.c
+index c46b195b62..758e130c93 100644
+--- a/hw/audio/intel-hda.c
++++ b/hw/audio/intel-hda.c
+@@ -1303,7 +1303,7 @@ static const TypeInfo hda_codec_device_type_info = {
+  * create intel hda controller with codec attached to it,
+  * so '-soundhw hda' works.
+  */
+-static int intel_hda_and_codec_init(PCIBus *bus, const char *audiodev)
++static void intel_hda_and_codec_init(const char *audiodev)
+ {
+     g_autoptr(QDict) props = qdict_new();
+     DeviceState *intel_hda, *codec;
+@@ -1317,8 +1317,6 @@ static int intel_hda_and_codec_init(PCIBus *bus, const char *audiodev)
+     qdev_prop_set_string(codec, "audiodev", audiodev);
+     qdev_realize_and_unref(codec, hdabus, &error_fatal);
+     object_unref(intel_hda);
 -
- typedef enum {
-     AUD_CNOTIFY_ENABLE,
-     AUD_CNOTIFY_DISABLE
-@@ -88,9 +79,6 @@ typedef struct QEMUAudioTimeStamp {
-     uint64_t old_ts;
- } QEMUAudioTimeStamp;
+-    return 0;
+ }
  
--void AUD_vlog (const char *cap, const char *fmt, va_list ap) G_GNUC_PRINTF(2, 0);
--void AUD_log (const char *cap, const char *fmt, ...) G_GNUC_PRINTF(2, 3);
--
- bool AUD_register_card (const char *name, QEMUSoundCard *card, Error **errp);
- void AUD_remove_card (QEMUSoundCard *card);
- CaptureVoiceOut *AUD_add_capture(
-@@ -160,15 +148,6 @@ int  AUD_is_active_in (SWVoiceIn *sw);
- void     AUD_init_time_stamp_in (SWVoiceIn *sw, QEMUAudioTimeStamp *ts);
- uint64_t AUD_get_elapsed_usec_in (SWVoiceIn *sw, QEMUAudioTimeStamp *ts);
+ static void intel_hda_register_types(void)
+diff --git a/hw/audio/model.c b/hw/audio/model.c
+index ddfefea706..7af0d960f5 100644
+--- a/hw/audio/model.c
++++ b/hw/audio/model.c
+@@ -24,14 +24,11 @@
+ #include "qemu/osdep.h"
+ #include "hw/qdev-core.h"
+ #include "monitor/qdev.h"
+-#include "qemu/option.h"
+-#include "qemu/help_option.h"
+ #include "qemu/error-report.h"
+ #include "qapi/error.h"
+ #include "qom/object.h"
+ #include "hw/qdev-properties.h"
+ #include "hw/isa/isa.h"
+-#include "hw/pci/pci.h"
+ #include "hw/audio/model.h"
  
--static inline void *advance (void *p, int incr)
--{
--    uint8_t *d = p;
--    return (d + incr);
--}
--
--int wav_start_capture(AudioState *state, CaptureState *s, const char *path,
--                      int freq, int bits, int nchannels);
--
- void audio_cleanup(void);
- 
- typedef struct st_sample st_sample;
-diff --git a/audio/audio_int.h b/audio/audio_int.h
-index 4a4d69f2bf..d1badbf235 100644
---- a/audio/audio_int.h
-+++ b/audio/audio_int.h
-@@ -29,12 +29,19 @@
- #define FLOAT_MIXENG
- /* #define RECIPROCAL */
- #endif
-+#include "audio.h"
- #include "mixeng.h"
- 
- #ifdef CONFIG_GIO
- #include <gio/gio.h>
- #endif
- 
-+void G_GNUC_PRINTF(2, 0)
-+AUD_vlog(const char *cap, const char *fmt, va_list ap);
-+
-+void G_GNUC_PRINTF(2, 3)
-+AUD_log(const char *cap, const char *fmt, ...);
-+
- struct audio_pcm_ops;
- 
- struct audio_callback {
-@@ -187,6 +194,23 @@ struct audio_pcm_ops {
-     void   (*volume_in)(HWVoiceIn *hw, Volume *vol);
+ struct audio_model {
+@@ -39,20 +36,20 @@ struct audio_model {
+     const char *descr;
+     const char *typename;
+     int isa;
+-    int (*init_pci) (PCIBus *bus, const char *audiodev);
++    void (*init)(const char *audiodev);
  };
  
-+audsettings audiodev_to_audsettings(AudiodevPerDirectionOptions *pdo);
-+int audioformat_bytes_per_sample(AudioFormat fmt);
-+int audio_buffer_frames(AudiodevPerDirectionOptions *pdo,
-+                        audsettings *as, int def_usecs);
-+int audio_buffer_samples(AudiodevPerDirectionOptions *pdo,
-+                         audsettings *as, int def_usecs);
-+int audio_buffer_bytes(AudiodevPerDirectionOptions *pdo,
-+                       audsettings *as, int def_usecs);
-+
-+static inline void *advance(void *p, size_t incr)
-+{
-+    return (uint8_t *)p + incr;
-+}
-+
-+int wav_start_capture(AudioState *state, CaptureState *s, const char *path,
-+                      int freq, int bits, int nchannels);
-+
- void audio_generic_run_buffer_in(HWVoiceIn *hw);
- void *audio_generic_get_buffer_in(HWVoiceIn *hw, size_t *size);
- void audio_generic_put_buffer_in(HWVoiceIn *hw, void *buf, size_t size);
-diff --git a/audio/audio-hmp-cmds.c b/audio/audio-hmp-cmds.c
-index 8774c09f18..819f8fa9d8 100644
---- a/audio/audio-hmp-cmds.c
-+++ b/audio/audio-hmp-cmds.c
-@@ -23,7 +23,7 @@
-  */
+ static struct audio_model audio_models[9];
+ static int audio_models_count;
  
- #include "qemu/osdep.h"
--#include "audio/audio.h"
-+#include "audio_int.h"
- #include "monitor/hmp.h"
- #include "monitor/monitor.h"
- #include "qapi/error.h"
-diff --git a/audio/wavcapture.c b/audio/wavcapture.c
-index b990844d48..0fbc695d23 100644
---- a/audio/wavcapture.c
-+++ b/audio/wavcapture.c
-@@ -1,7 +1,7 @@
- #include "qemu/osdep.h"
- #include "qemu/qemu-print.h"
- #include "qemu/error-report.h"
--#include "audio.h"
-+#include "audio_int.h"
+ void audio_register_model_with_cb(const char *name, const char *descr,
+-                                  int (*init_pci)(PCIBus *bus, const char *audiodev))
++                                  void (*init_audio_model)(const char *audiodev))
+ {
+     assert(audio_models_count < ARRAY_SIZE(audio_models) - 1);
+     audio_models[audio_models_count].name = name;
+     audio_models[audio_models_count].descr = descr;
+     audio_models[audio_models_count].isa = 0;
+-    audio_models[audio_models_count].init_pci = init_pci;
++    audio_models[audio_models_count].init = init_audio_model;
+     audio_models_count++;
+ }
  
- typedef struct {
-     FILE *f;
+@@ -124,7 +121,6 @@ void audio_model_init(void)
+         qdev_realize_and_unref(dev, bus, &error_fatal);
+     } else {
+         assert(!c->isa);
+-        PCIBus *pci_bus = (PCIBus *) object_resolve_path_type("", TYPE_PCI_BUS, NULL);
+-        c->init_pci(pci_bus, audiodev_id);
++        c->init(audiodev_id);
+     }
+ }
 -- 
 2.51.0
 

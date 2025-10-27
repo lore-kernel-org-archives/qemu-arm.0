@@ -4,83 +4,116 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94689CCF9EA
-	for <qemu-arm@archiver.kernel.org>; Mon, 27 Oct 2025 11:28:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28E81CCF9EA
+	for <qemu-arm@archiver.kernel.org>; Mon, 27 Oct 2025 11:30:41 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vDLOT-0005kT-Je; Mon, 27 Oct 2025 07:28:11 -0400
-Received: from eggs.gnu.org ([209.51.188.92])
+	id 1vDLQ2-0006gR-L8; Mon, 27 Oct 2025 07:29:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vDLOQ-0005kE-Qg
- for qemu-arm@nongnu.org; Mon, 27 Oct 2025 07:28:07 -0400
-Received: from mail-yx1-xb12e.google.com ([2607:f8b0:4864:20::b12e])
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1vDLPt-0006bv-SQ
+ for qemu-arm@nongnu.org; Mon, 27 Oct 2025 07:29:40 -0400
+Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vDLON-0002iS-Ka
- for qemu-arm@nongnu.org; Mon, 27 Oct 2025 07:28:06 -0400
-Received: by mail-yx1-xb12e.google.com with SMTP id
- 956f58d0204a3-63d97bcb898so7436915d50.0
- for <qemu-arm@nongnu.org>; Mon, 27 Oct 2025 04:28:02 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1vDLPn-0002t6-N7
+ for qemu-arm@nongnu.org; Mon, 27 Oct 2025 07:29:36 -0400
+Received: by mail-ed1-x52e.google.com with SMTP id
+ 4fb4d7f45d1cf-63c0eb94ac3so8043177a12.2
+ for <qemu-arm@nongnu.org>; Mon, 27 Oct 2025 04:29:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1761564479; x=1762169279; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
+ d=linaro.org; s=google; t=1761564560; x=1762169360; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:user-agent
+ :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=O4jP1Cz7ht3qDcaecQqPJ9B0CKFuaGBf31D4PnuDzK0=;
- b=JXppUf3hUAPqAFqr6l5bVrhjB1AdY+08odD7TPoAWMyylSZQbcyJO6Gbii6bCHFW6L
- C5bqUm984Uat7XDgx0NOQHoCjvTqyVTgmaILOfBg4HbPzk/2YSiPFKvQ/aTwWDwNaZ22
- gQHDYrXPBwIT1BAecze6a2II5HxJYSP1+5fR1Mbfc7tLFrK92DYV6JH8EYnwee3F0q/P
- zNNfyxjPcOFFkhEkjiiLyP7JYsL7AJgVIm8H0y7jc9uNhUa//EQ9BuS6YuC8WGNRW3Nw
- n45x+4kEm9dcrGqlcEaqWoosh0d/+sx16sfl/PDkM61EhgoGHlSXSoddmtFQnfCvnvLR
- jjRw==
+ bh=6W1h9SPPhGdZNQbElgjYoxu13x/9GVYMR5jHwBwvdxM=;
+ b=FMj66o3CMuPelCpcDR5EKHNpkOVE9+qAwnbknzx5zsJJT8N38w/bstfgdmpwKM6d6n
+ ZS1m4K3smDkiG4DzM6BI0RKpQA9fEaKkaQWpmv4yVq666hD/L+uTa4S3MtgIqLOAp109
+ yZCm0SNnLX/c/8aXlmIaSZ4zRXBGYIeIln0O5dztLxT0vhbf928oxNydT8/9rHNdpjQy
+ dTDkZ6CixRqbY8rKcuLYgQd8K/z/Mv/VOeylWzoq/kQnZFB9vetUihC+BzBIcv1U5SrH
+ X7h/TnWQsIam2rApD9BfAlfFOkk8aaZ9xZeetGg8k+MUKeD3DF1LuZiFth3Qy9Bq5L6a
+ d++Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761564479; x=1762169279;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=O4jP1Cz7ht3qDcaecQqPJ9B0CKFuaGBf31D4PnuDzK0=;
- b=s3F37Fdl2upglv19YqQS/FhoCiqp2X/JZPwrEE3zkXFQ9d/Nm/QrXtfLeuU5dYXwtf
- 5D4+p5V0xYHMAGh/qY5J3LOvfRvma/NiJY6ND++LM88jmf8r2+4H2xl9KhLVmNu83dBe
- l4W98QE9vt0wtDmL2hx2KDRlkkoI6OgGr9sL1G7eClQZkcvlow5A+HvuGaciAOM1Grhm
- tCezmrL6Ou3PrgnTan6kryjqE4EjMGFWhdYpyxWjUSyhv86G5Cuhm4+XSoZrLkWcDllc
- pNeq3AOKqVxeljJpRhroJHF5zjBkLecBzsYVIQW7Gzc2poXHlz6b0OlvXFL81zDDAjlt
- hD7w==
-X-Gm-Message-State: AOJu0Ywb4dju5BcwEPYAThScWo7xR3SnTpFCwOfAYaRdTqjEOXFbZKqh
- rNC3aLXUUHN7/qpHp/2bFhp03liP+lL0Pl6QKHtUaj7iYcpn1wCv1BudnUzoL1z9t0WK7wjbQgd
- 8/XhZOJ+UESbYsndcnoK3FjGZUbJDEdZra7fLDYg2jw==
-X-Gm-Gg: ASbGncv4k0xTzAfmr30PJL5TVruBxGm7LSiiXcVBmCYJcTQlubMhKF6r0ZDqUhqd5+7
- SV8WBcH/teZLFHW9Du043Tj1o2b611q9xY2D1LtZnIAgL4tDc4+IV1YOMTC3FmJ943POPMbR4U/
- h1ymxNNrIAwji6M5JYJOOprtXh1N2HN/QRwRk0eWe5Dl2mAgB1thIJBdoS+lMBjvSQYjOupO55B
- RRy3dNuOXcdZwy9nBS6ogpvcv5qO0XnNQ/9jKOrbhWhk8FT7xlCbpq913AyLg==
-X-Google-Smtp-Source: AGHT+IFhI0/JA7jprOmtw2+D/ZgGi0FtUpueH2qezsAlbhu3t0Bca3EO3/REmwYGsQH11b1j/tgHLZd3UCRIQq91Tzg=
-X-Received: by 2002:a05:690e:1543:10b0:63b:a941:90c1 with SMTP id
- 956f58d0204a3-63f42b28a6cmr8268042d50.12.1761564479440; Mon, 27 Oct 2025
- 04:27:59 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1761564560; x=1762169360;
+ h=content-transfer-encoding:mime-version:message-id:date:user-agent
+ :references:in-reply-to:subject:cc:to:from:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=6W1h9SPPhGdZNQbElgjYoxu13x/9GVYMR5jHwBwvdxM=;
+ b=nR+H3mR3a+Wh1fJNojNTGa2XEFZXy2lS+OcUv5xwYyuQodoHlvpAYI5CBo8bCQF4JR
+ ys93Y1BGiM8JIMIaqc5FQ4/ADPuZmXNjbNk6mhtmfuTWe7Cfh2EXk1isNDLsPJNQ5jFp
+ WT9A52Hf7GhUdK4NaZqXlYK1JONNQmaeD6mg1eYaOMuvgEw/5nfi+jhkKv+ycX3CE4E5
+ +4gt6/EfOBEEduOlRcKNek/HwtPHzcEzU+NfPByrT4pSZCU40QG6mvS9LQ56HsQAN+M3
+ OVP6AZK8SGnpabO4i4I4DvURhHA4yXJCbheZiFkN5/s09HmgWcdNNkx0964vbFwtEF15
+ PyMg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWdJ3PqTM3+aNpX/tVFPhJZX3C+FB9BDef5cybUgxo9zaEvtXnPuvzzAKuV+GknwXHJGFR0u+aNUQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yy7q+2lo0psAKLFHZUCbL3eP3AUzpWKFPiSbmf2MrIdX6jvvdkN
+ n6RQE4qTuGch/gHz1ZKN1i7f9lOIvLZs/UUA2z5exwNvzIYZuJ6lHyKsXTy2dPDXEjg=
+X-Gm-Gg: ASbGncs9VwFNDA9k2tZho6ocsn7FXIAeXeemZATJ3M42CfrwBAJJ6kWWsRt2oGnAFzs
+ r+sghivkkdfc61yf0ezWbcgkIRvdf2H7k49/PfrAZr1AeoNpSKKf78TpDhuZd9zLAw+NNSeKa0n
+ sgJ+CWnTOibqkSOByU2xZ+dHuN6Gzl6UCfNpwXuCJb9r6AzdKNeObkaT3GzXZqgUKe4cTiofULX
+ W3WKsCw41mEVj+RhMppyKw7DPo6UkIwGiTEPofogrGE88Efn6/XdzROXPrQ6332F9OW6Nh+KR8y
+ bZXw0ZWTjJ7V8QLy6hxwwBfLoIZRlJaZqMVA3V1aIHAkGRxt7sa1LhYP+Y3ZRQnVUJ6zuvS8ygr
+ HQ/UW2ukApoei2Dfn6G02jQV8eP5qez173sJZb7igOAdd9PgSD+1pwQdB7uQdM4eJ8BSE3YNPIg
+ ozvb99gJER3pU=
+X-Google-Smtp-Source: AGHT+IHc4AQ+JBp1nIR+qFc6zaSMMCKxCXNHdvmH5AUywdFfQvEaemqlQ53JZqExwuln1jX+kqK5fA==
+X-Received: by 2002:a05:6402:4504:b0:634:ab34:ed40 with SMTP id
+ 4fb4d7f45d1cf-63c1f580cf2mr34932038a12.0.1761564559866; 
+ Mon, 27 Oct 2025 04:29:19 -0700 (PDT)
+Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
+ 4fb4d7f45d1cf-63e7ef829dasm6061281a12.13.2025.10.27.04.29.18
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 27 Oct 2025 04:29:19 -0700 (PDT)
+Received: from draig (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id 406825F8CD;
+ Mon, 27 Oct 2025 11:29:18 +0000 (GMT)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,  Alexandre Iooss
+ <erdnaxe@crans.org>,  Chinmay Rath <rathc@linux.ibm.com>,
+ qemu-arm@nongnu.org,  Peter Maydell <peter.maydell@linaro.org>,  Nicholas
+ Piggin <npiggin@gmail.com>,  Ilya Leoshkevich <iii@linux.ibm.com>,  David
+ Hildenbrand <david@redhat.com>,  qemu-ppc@nongnu.org,  Paolo Bonzini
+ <pbonzini@redhat.com>,  qemu-s390x@nongnu.org,  Pierrick Bouvier
+ <pierrick.bouvier@linaro.org>,  Bastian Koppelmann
+ <kbastian@mail.uni-paderborn.de>,  Helge Deller <deller@gmx.de>,  Stafford
+ Horne <shorne@gmail.com>,  Mahmoud Mandour <ma.mandourr@gmail.com>,
+ Artyom Tarasenko <atar4qemu@gmail.com>,  Eduardo Habkost
+ <eduardo@habkost.net>,  Palmer Dabbelt <palmer@dabbelt.com>,  Alistair
+ Francis <alistair.francis@wdc.com>,  Laurent Vivier <laurent@vivier.eu>,
+ Weiwei Li <liwei1518@gmail.com>,  Daniel Henrique Barboza
+ <dbarboza@ventanamicro.com>,  Mark Cave-Ayland
+ <mark.cave-ayland@ilande.co.uk>,  Yoshinori Sato
+ <yoshinori.sato@nifty.com>,  "Edgar E. Iglesias"
+ <edgar.iglesias@gmail.com>,  Aurelien Jarno <aurelien@aurel32.net>,
+ Richard Henderson <richard.henderson@linaro.org>,  Thomas Huth
+ <thuth@redhat.com>,  Max Filippov <jcmvbkbc@gmail.com>,  Philippe
+ =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,  Jiaxun Yang
+ <jiaxun.yang@flygoat.com>,
+ Michael Rolnik <mrolnik@gmail.com>,  Song Gao <gaosong@loongson.cn>,
+ qemu-riscv@nongnu.org,  Aleksandar Rikalo <arikalo@gmail.com>
+Subject: Re: [PATCH 00/35] maintainer updates for 10.2 softfeeeze (ci,
+ plugins, semihosting) pre-PR
+In-Reply-To: <20251027110344.2289945-1-alex.bennee@linaro.org> ("Alex
+ =?utf-8?Q?Benn=C3=A9e=22's?= message of "Mon, 27 Oct 2025 11:03:07 +0000")
+References: <20251027110344.2289945-1-alex.bennee@linaro.org>
+User-Agent: mu4e 1.12.14-dev2; emacs 30.1
+Date: Mon, 27 Oct 2025 11:29:18 +0000
+Message-ID: <87v7k0y44x.fsf@draig.linaro.org>
 MIME-Version: 1.0
-References: <20251024084350.252702-1-skolothumtho@nvidia.com>
-In-Reply-To: <20251024084350.252702-1-skolothumtho@nvidia.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 27 Oct 2025 11:27:48 +0000
-X-Gm-Features: AWmQ_bnr7tBjA-xLdosCLQmQwrzb33y_WPyCjqWOt-OWzaKBeJHlADY9T_Js7f0
-Message-ID: <CAFEAcA8SAQO0frmN-rK6zp_-fEGXLefAXAxHmT=LASqEL-UU5g@mail.gmail.com>
-Subject: Re: [PATCH v2] docs/system/arm/virt: Document user-creatable SMMUv3
-To: Shameer Kolothum <skolothumtho@nvidia.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, eric.auger@redhat.com, 
- nicolinc@nvidia.com, ddutile@redhat.com, nathanc@nvidia.com, mochs@nvidia.com, 
- jonathan.cameron@huawei.com
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b12e;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52e;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x52e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- WEIRD_QUOTING=0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -96,66 +129,137 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, 24 Oct 2025 at 09:46, Shameer Kolothum <skolothumtho@nvidia.com> wr=
-ote:
+Alex Benn=C3=A9e <alex.bennee@linaro.org> writes:
+
+> Hi,
 >
-> The virt machine now supports creating multiple SMMUv3 instances, each
-> associated with a separate PCIe root complex.
+> This should be my final pull-request before softfreeze on the 4th of
+> November. As I'll be travelling I intend to send it out by the end of
+> the week.
+
+This is of course the 10.2 softfreeze. I must be nostalgic ;-)
+
 >
-> Update the documentation with an example.
+> The CI changes are mostly cleanups for the ansible scripts. I've
+> dropped the final testing/next patch which enables the ppc64le custom
+> runner as I don't think I'll have time to debug that before the
+> freeze.
 >
-> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
+> The plugin updates are already well reviewed and should make more
+> richer plugins giving semantic info on the type of discontinuities you
+> can see.
+>
+> There are a few other minor fixes including come missing CFI tags for
+> some plugin callbacks and fixing the minimal -no-tcg build.
+>
+> The following still need review:
+>
+>   scripts/ci: modify gitlab runner deb setup
+>   tests/lcitool: generate a yaml file for the ppc64le runner
+>   scripts/ci: allow both Ubuntu or Debian to run upgrade
+>   scripts/ci: move build-environment.yaml up a level
+>   scripts/ci/setup: regenerate yaml
+>   ci: clean-up remaining bits of armhf builds.
+>
+> Alex.
+>
+> Alex Benn=C3=A9e (8):
+>   ci: clean-up remaining bits of armhf builds.
+>   scripts/ci/setup: regenerate yaml
+>   scripts/ci: move build-environment.yaml up a level
+>   scripts/ci: allow both Ubuntu or Debian to run upgrade
+>   tests/lcitool: generate a yaml file for the ppc64le runner
+>   scripts/ci: modify gitlab runner deb setup
+>   plugins/core: add missing QEMU_DISABLE_CFI annotations
+>   configs: drop SBSA_REF from minimal specification
+>
+> Julian Ganz (25):
+>   plugins: add types for callbacks related to certain discontinuities
+>   plugins: add API for registering discontinuity callbacks
+>   plugins: add hooks for new discontinuity related callbacks
+>   contrib/plugins: add plugin showcasing new dicontinuity related API
+>   target/alpha: call plugin trap callbacks
+>   target/arm: call plugin trap callbacks
+>   target/avr: call plugin trap callbacks
+>   target/hppa: call plugin trap callbacks
+>   target/i386: call plugin trap callbacks
+>   target/loongarch: call plugin trap callbacks
+>   target/m68k: call plugin trap callbacks
+>   target/microblaze: call plugin trap callbacks
+>   target/mips: call plugin trap callbacks
+>   target/openrisc: call plugin trap callbacks
+>   target/ppc: call plugin trap callbacks
+>   target/riscv: call plugin trap callbacks
+>   target/rx: call plugin trap callbacks
+>   target/s390x: call plugin trap callbacks
+>   target/sh4: call plugin trap callbacks
+>   target/sparc: call plugin trap callbacks
+>   target/tricore: call plugin trap callbacks
+>   target/xtensa: call plugin trap callbacks
+>   tests: add plugin asserting correctness of discon event's to_pc
+>   tests: add test for double-traps on rv64
+>   tests: add test with interrupted memory accesses on rv64
+>
+> Sean Anderson (2):
+>   gdbstub: Fix %s formatting
+>   semihosting: Fix GDB File-I/O FLEN
+>
+>  docs/about/emulation.rst                      |   8 +
+>  docs/devel/testing/ci-jobs.rst.inc            |   7 -
+>  configs/devices/aarch64-softmmu/minimal.mak   |   1 -
+>  include/qemu/plugin-event.h                   |   3 +
+>  include/qemu/plugin.h                         |  13 ++
+>  include/qemu/qemu-plugin.h                    |  60 +++++
+>  target/arm/internals.h                        |   1 +
+>  contrib/plugins/traps.c                       |  83 +++++++
+>  gdbstub/syscalls.c                            |   2 +-
+>  plugins/core.c                                |  58 +++++
+>  plugins/loader.c                              |   1 +
+>  semihosting/arm-compat-semi.c                 |   5 +-
+>  target/alpha/helper.c                         |  13 ++
+>  target/arm/helper.c                           |  24 ++
+>  target/arm/tcg/m_helper.c                     |   5 +
+>  target/avr/helper.c                           |   3 +
+>  target/hppa/int_helper.c                      |  17 ++
+>  target/i386/tcg/excp_helper.c                 |   3 +
+>  target/i386/tcg/seg_helper.c                  |   4 +
+>  target/loongarch/tcg/tcg_cpu.c                |   4 +
+>  target/m68k/op_helper.c                       |  22 ++
+>  target/microblaze/helper.c                    |  10 +
+>  target/mips/tcg/system/tlb_helper.c           |  11 +
+>  target/openrisc/interrupt.c                   |  15 ++
+>  target/ppc/excp_helper.c                      |  41 ++++
+>  target/riscv/cpu_helper.c                     |   9 +
+>  target/rx/helper.c                            |  12 +
+>  target/s390x/tcg/excp_helper.c                |   8 +
+>  target/sh4/helper.c                           |   4 +
+>  target/sparc/int32_helper.c                   |   7 +
+>  target/sparc/int64_helper.c                   |  10 +
+>  target/tricore/op_helper.c                    |   5 +
+>  target/xtensa/exc_helper.c                    |   6 +
+>  target/xtensa/xtensa-semi.c                   |   3 +
+>  tests/tcg/plugins/discons.c                   | 221 ++++++++++++++++++
+>  .../custom-runners/ubuntu-24.04-aarch64.yml   |   2 -
+>  contrib/plugins/meson.build                   |   2 +-
+>  .../setup/{ubuntu =3D> }/build-environment.yml  |  32 +--
+>  .../ci/setup/debian/debian-13-ppc64le.yaml    | 134 +++++++++++
+>  scripts/ci/setup/gitlab-runner.yml            |   6 +-
+>  .../ci/setup/ubuntu/ubuntu-2404-aarch64.yaml  |   4 +-
+>  .../ci/setup/ubuntu/ubuntu-2404-s390x.yaml    |   4 +-
+>  tests/lcitool/refresh                         |   1 +
+>  tests/tcg/plugins/meson.build                 |   2 +-
+>  tests/tcg/riscv64/Makefile.softmmu-target     |  12 +
+>  tests/tcg/riscv64/doubletrap.S                |  73 ++++++
+>  tests/tcg/riscv64/interruptedmemory.S         |  97 ++++++++
+>  47 files changed, 1031 insertions(+), 37 deletions(-)
+>  create mode 100644 contrib/plugins/traps.c
+>  create mode 100644 tests/tcg/plugins/discons.c
+>  rename scripts/ci/setup/{ubuntu =3D> }/build-environment.yml (63%)
+>  create mode 100644 scripts/ci/setup/debian/debian-13-ppc64le.yaml
+>  create mode 100644 tests/tcg/riscv64/doubletrap.S
+>  create mode 100644 tests/tcg/riscv64/interruptedmemory.S
 
-Thanks. I have some minor word-smithing tweaks, but I'll just
-apply them to this patch in target-arm.next if you're OK with
-that:
-
-
---- a/docs/system/arm/virt.rst
-+++ b/docs/system/arm/virt.rst
-@@ -224,23 +224,24 @@ SMMU configuration
- """"""""""""""""""
-
- Machine-wide SMMUv3 IOMMU
--  See the machine-specific ``iommu`` option above. This allows specifying
--  a single, machine-wide SMMUv3 instance that applies to all devices in
--  the PCIe topology.
-+  Setting the machine-specific option ``iommu=3Dsmmuv3`` causes QEMU to
-+  create a single, machine-wide SMMUv3 instance that applies to all
-+  devices in the PCIe topology.
-
-   For information about selectively bypassing devices, refer to
-   ``docs/bypass-iommu.txt``.
-
- User-creatable SMMUv3 devices
--  Allows creating multiple user-defined SMMUv3 devices, each associated
--  with a separate PCIe root complex. This is only permitted if the
--  machine-wide SMMUv3 (``iommu=3Dsmmuv3``) option is not used.
-+  You can use the ``-device arm-smmuv3`` option to create multiple
-+  user-defined SMMUv3 devices, each associated with a separate PCIe
-+  root complex. This is only permitted if the machine-wide SMMUv3
-+  (``iommu=3Dsmmuv3``) option is not used. Each ``arm-smmuv3`` device
-+  uses the ``primary-bus`` sub-option to specify which PCIe root
-+  complex it is associated with.
-
-   This model is useful when you want to mirror a host configuration where
-   each NUMA node typically has its own SMMU, allowing the VM topology to
--  align more closely with the host=E2=80=99s hardware layout. Supporting m=
-ultiple
--  SMMUv3 instances is also a prerequisite for future accelerated SMMUv3
--  support.
-+  align more closely with the host=E2=80=99s hardware layout.
-
-   Example::
-
-
-
-
-(I deleted the sentence about SMMU acceleration because that
-isn't upstream yet. When it lands then we can update the
-docs if the version of it that lands can't support acceleration
-of a single machine-wide accelerator.)
-
-thanks
--- PMM
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro
 

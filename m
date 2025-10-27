@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9DAA4CCF9E0
-	for <qemu-arm@archiver.kernel.org>; Mon, 27 Oct 2025 15:19:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31B5FCCF9EB
+	for <qemu-arm@archiver.kernel.org>; Mon, 27 Oct 2025 15:20:19 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vDOtg-00025H-N1; Mon, 27 Oct 2025 11:12:37 -0400
+	id 1vDOvW-0004JA-V7; Mon, 27 Oct 2025 11:14:33 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1vDOte-00023L-Mq
- for qemu-arm@nongnu.org; Mon, 27 Oct 2025 11:12:34 -0400
+ id 1vDOuR-0003Ec-PS
+ for qemu-arm@nongnu.org; Mon, 27 Oct 2025 11:13:25 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1vDOtb-0003lA-Rh
- for qemu-arm@nongnu.org; Mon, 27 Oct 2025 11:12:34 -0400
+ id 1vDOuE-0003tE-TZ
+ for qemu-arm@nongnu.org; Mon, 27 Oct 2025 11:13:23 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1761577948;
+ s=mimecast20190719; t=1761577981;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Ivw15n2eGgz0hbDON7Uymt7N26eR8ayKcunBK4tszNs=;
- b=PFhsMXY+GL2aG1GR4yuKI53dMR8J3Si+gZ6sLAWWmUaVwFUZ4PuEowz999+RQyaljL5iTX
- 2dp342SzQr093AnU4M05x7zA0oCPity2PU1J7rMmPFd8rEc0KlhSjrLC0q6wL6e1TsNr8i
- q8egoHq6VffsPVgXUJc2iWuYVOPSklk=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ bh=bOSLgVjPHdUB2gwynsz2wfdB4MYIe7lJk7NeWho0Ry8=;
+ b=YcuxNJ44VCKJYyfqRUAZyCRqB/Wr351+/APVS2hmXRPkBYNlMz1yi48savfBj2gonCGbDo
+ tV41Nr5AZdVVIRj/icEmgvsVHrE5M4LXfbHCwWUOn+nnxGM0zZ4Tq2lT/OoD40iKoUYLrK
+ SAVvJBRMl0NQNdllV/2QfdkADRkAF0I=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-245-Ttnqzm-RPi6ZxAjDGgXwBg-1; Mon,
- 27 Oct 2025 11:12:23 -0400
-X-MC-Unique: Ttnqzm-RPi6ZxAjDGgXwBg-1
-X-Mimecast-MFC-AGG-ID: Ttnqzm-RPi6ZxAjDGgXwBg_1761577940
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-381-eeISw9_WM4OFG4hsHH-W2A-1; Mon,
+ 27 Oct 2025 11:12:54 -0400
+X-MC-Unique: eeISw9_WM4OFG4hsHH-W2A-1
+X-Mimecast-MFC-AGG-ID: eeISw9_WM4OFG4hsHH-W2A_1761577972
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id B8ED31801359; Mon, 27 Oct 2025 15:12:20 +0000 (UTC)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id D64E81800451; Mon, 27 Oct 2025 15:12:51 +0000 (UTC)
 Received: from localhost (unknown [10.45.242.5])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 143CC30001A2; Mon, 27 Oct 2025 15:12:18 +0000 (UTC)
+ by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 01E771955F1B; Mon, 27 Oct 2025 15:12:49 +0000 (UTC)
 From: marcandre.lureau@redhat.com
 To: qemu-devel@nongnu.org
 Cc: Alexandre Ratchov <alex@caoua.org>,
@@ -71,26 +71,27 @@ Cc: Alexandre Ratchov <alex@caoua.org>,
  Paolo Bonzini <pbonzini@redhat.com>,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
  BALATON Zoltan <balaton@eik.bme.hu>, Laurent Vivier <laurent@vivier.eu>
-Subject: [PATCH v3 13/35] audio/dsound: simplify init()
-Date: Mon, 27 Oct 2025 19:10:20 +0400
-Message-ID: <20251027151045.2863176-14-marcandre.lureau@redhat.com>
+Subject: [PATCH v3 18/35] audio: keep vmstate handle with AudioState
+Date: Mon, 27 Oct 2025 19:10:25 +0400
+Message-ID: <20251027151045.2863176-19-marcandre.lureau@redhat.com>
 In-Reply-To: <20251027151045.2863176-1-marcandre.lureau@redhat.com>
 References: <20251027151045.2863176-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
 Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=marcandre.lureau@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001,
+ T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -108,75 +109,70 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Marc-André Lureau <marcandre.lureau@redhat.com>
 
-Use dsound_audio_fini() on error & fail if the capture failed to
-initialize too.
+QOM-ification continues.
 
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 ---
- audio/dsoundaudio.c | 29 +++++++++++------------------
- 1 file changed, 11 insertions(+), 18 deletions(-)
+ audio/audio_int.h |  1 +
+ audio/audio.c     | 12 ++++++++----
+ 2 files changed, 9 insertions(+), 4 deletions(-)
 
-diff --git a/audio/dsoundaudio.c b/audio/dsoundaudio.c
-index f3bb48d007..c8745a3df0 100644
---- a/audio/dsoundaudio.c
-+++ b/audio/dsoundaudio.c
-@@ -638,7 +638,7 @@ static void *dsound_audio_init(Audiodev *dev, Error **errp)
-     hr = CoInitialize (NULL);
-     if (FAILED (hr)) {
-         dsound_logerr (hr, "Could not initialize COM\n");
--        g_free(s);
-+        dsound_audio_fini(s);
-         return NULL;
-     }
+diff --git a/audio/audio_int.h b/audio/audio_int.h
+index 4187a2dbfc..4a4d69f2bf 100644
+--- a/audio/audio_int.h
++++ b/audio/audio_int.h
+@@ -235,6 +235,7 @@ typedef struct AudioState {
  
-@@ -651,19 +651,14 @@ static void *dsound_audio_init(Audiodev *dev, Error **errp)
-         );
-     if (FAILED (hr)) {
-         dsound_logerr (hr, "Could not create DirectSound instance\n");
--        g_free(s);
-+        dsound_audio_fini(s);
-         return NULL;
-     }
+     bool timer_running;
+     uint64_t timer_last;
++    VMChangeStateEntry *vmse;
+ } AudioState;
  
-     hr = IDirectSound_Initialize (s->dsound, NULL);
-     if (FAILED (hr)) {
-         dsound_logerr (hr, "Could not initialize DirectSound\n");
--
--        hr = IDirectSound_Release (s->dsound);
--        if (FAILED (hr)) {
--            dsound_logerr (hr, "Could not release DirectSound\n");
--        }
--        g_free(s);
-+        dsound_audio_fini(s);
-         return NULL;
-     }
+ extern const struct mixeng_volume nominal_volume;
+diff --git a/audio/audio.c b/audio/audio.c
+index 155809dee7..4c3c3fd52f 100644
+--- a/audio/audio.c
++++ b/audio/audio.c
+@@ -1622,6 +1622,9 @@ static void audio_state_init(Object *obj)
+     QLIST_INIT(&s->hw_head_in);
+     QLIST_INIT(&s->cap_head);
+     s->ts = timer_new_ns(QEMU_CLOCK_VIRTUAL, audio_timer, s);
++
++    s->vmse = qemu_add_vm_change_state_handler(audio_vm_change_state_handler, s);
++    assert(s->vmse != NULL);
+ }
  
-@@ -676,17 +671,15 @@ static void *dsound_audio_init(Audiodev *dev, Error **errp)
-         );
-     if (FAILED (hr)) {
-         dsound_logerr (hr, "Could not create DirectSoundCapture instance\n");
--    } else {
--        hr = IDirectSoundCapture_Initialize (s->dsound_capture, NULL);
--        if (FAILED (hr)) {
--            dsound_logerr (hr, "Could not initialize DirectSoundCapture\n");
-+        dsound_audio_fini(s);
-+        return NULL;
+ static void audio_state_finalize(Object *obj)
+@@ -1671,6 +1674,11 @@ static void audio_state_finalize(Object *obj)
+         timer_free(s->ts);
+         s->ts = NULL;
+     }
++
++    if (s->vmse) {
++        qemu_del_vm_change_state_handler(s->vmse);
++        s->vmse = NULL;
 +    }
+ }
  
--            hr = IDirectSoundCapture_Release (s->dsound_capture);
--            if (FAILED (hr)) {
--                dsound_logerr (hr, "Could not release DirectSoundCapture\n");
--            }
--            s->dsound_capture = NULL;
--        }
-+    hr = IDirectSoundCapture_Initialize (s->dsound_capture, NULL);
-+    if (FAILED(hr)) {
-+        dsound_logerr(hr, "Could not initialize DirectSoundCapture\n");
-+        dsound_audio_fini(s);
-+        return NULL;
+ static Object *get_audiodevs_root(void)
+@@ -1735,7 +1743,6 @@ static AudioState *audio_init(Audiodev *dev, Error **errp)
+ {
+     int done = 0;
+     const char *drvname;
+-    VMChangeStateEntry *vmse;
+     AudioState *s;
+     struct audio_driver *driver;
+ 
+@@ -1775,9 +1782,6 @@ static AudioState *audio_init(Audiodev *dev, Error **errp)
+         }
      }
  
-     err = dsound_set_cooperative_level(s);
+-    vmse = qemu_add_vm_change_state_handler (audio_vm_change_state_handler, s);
+-    assert(vmse != NULL);
+-
+     if (!object_property_try_add_child(get_audiodevs_root(), dev->id, OBJECT(s), errp)) {
+         goto out;
+     }
 -- 
 2.51.0
 

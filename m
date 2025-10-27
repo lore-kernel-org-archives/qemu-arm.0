@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9BE3CCF9E0
-	for <qemu-arm@archiver.kernel.org>; Mon, 27 Oct 2025 15:20:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E1CDCCF9EB
+	for <qemu-arm@archiver.kernel.org>; Mon, 27 Oct 2025 15:21:07 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vDOwl-0005t4-IY; Mon, 27 Oct 2025 11:15:49 -0400
+	id 1vDOtb-00022P-T3; Mon, 27 Oct 2025 11:12:32 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1vDOvv-00056E-Lx
- for qemu-arm@nongnu.org; Mon, 27 Oct 2025 11:14:56 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1vDOtR-0001uD-Cl
+ for qemu-arm@nongnu.org; Mon, 27 Oct 2025 11:12:23 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1vDOvk-00045Q-Ok
- for qemu-arm@nongnu.org; Mon, 27 Oct 2025 11:14:55 -0400
+ id 1vDOtN-0003go-2l
+ for qemu-arm@nongnu.org; Mon, 27 Oct 2025 11:12:20 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1761578081;
+ s=mimecast20190719; t=1761577934;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=wMmaChcf8jf2PWmovaXlzLXhyNCOVQEwDOiew6Lu3e4=;
- b=DX4FWdKLbiVo3hoaOFYGXq20K6s7G9+xWxl6RGlLGqyJQ7GG7Mq5jJ4tmt8PWHZz+5InIL
- MIR/5O/Rd7cKoyMdoiXTn8heWI5PEfwxTm6G8LQtUgUshXj5hXTn5gv1ie1ApufzMW8JVW
- 3aFuVXhubMgQzhZa0Bhl5MkEWViPMd0=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ bh=AtyKwWInGjMQa13I0aU5SVdhFBc+UH3Hxc/0w9qjB3I=;
+ b=X+xwG97sw/0x8AuSHSa+EwXIQLzyqmiBlDMvdGSI3tFlXkaHD3cbmukb11LsJ0a9tGDcFC
+ a8CxMQcB80m0rgvf/MlziHMkPYM3uKVZjb7aR3MOLSzn6iixy9Wst2eicGmZKlmpBLtUpL
+ 3ca/lnrQIn60XveOgi9tVlArxbltLwg=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-372-gHUPTVk1MFSKlxT8F1Xb0Q-1; Mon,
- 27 Oct 2025 11:14:37 -0400
-X-MC-Unique: gHUPTVk1MFSKlxT8F1Xb0Q-1
-X-Mimecast-MFC-AGG-ID: gHUPTVk1MFSKlxT8F1Xb0Q_1761578074
-Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-459-s-c1sNTQPju3TWLBjsdV5Q-1; Mon,
+ 27 Oct 2025 11:12:12 -0400
+X-MC-Unique: s-c1sNTQPju3TWLBjsdV5Q-1
+X-Mimecast-MFC-AGG-ID: s-c1sNTQPju3TWLBjsdV5Q_1761577929
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id B7E891801231; Mon, 27 Oct 2025 15:14:34 +0000 (UTC)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 1378018001E4; Mon, 27 Oct 2025 15:12:09 +0000 (UTC)
 Received: from localhost (unknown [10.45.242.5])
- by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 28EB2180057C; Mon, 27 Oct 2025 15:14:32 +0000 (UTC)
+ by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 2755830001A2; Mon, 27 Oct 2025 15:12:06 +0000 (UTC)
 From: marcandre.lureau@redhat.com
 To: qemu-devel@nongnu.org
 Cc: Alexandre Ratchov <alex@caoua.org>,
@@ -71,16 +71,16 @@ Cc: Alexandre Ratchov <alex@caoua.org>,
  Paolo Bonzini <pbonzini@redhat.com>,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
  BALATON Zoltan <balaton@eik.bme.hu>, Laurent Vivier <laurent@vivier.eu>
-Subject: [PATCH v3 34/35] audio: Remove pointless local variables
-Date: Mon, 27 Oct 2025 19:10:41 +0400
-Message-ID: <20251027151045.2863176-35-marcandre.lureau@redhat.com>
+Subject: [PATCH v3 11/35] audio: use /audiodevs QOM container
+Date: Mon, 27 Oct 2025 19:10:18 +0400
+Message-ID: <20251027151045.2863176-12-marcandre.lureau@redhat.com>
 In-Reply-To: <20251027151045.2863176-1-marcandre.lureau@redhat.com>
 References: <20251027151045.2863176-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-Received-SPF: pass client-ip=170.10.133.124;
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=marcandre.lureau@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
@@ -106,137 +106,114 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Philippe Mathieu-Daudé <philmd@linaro.org>
+From: Marc-André Lureau <marcandre.lureau@redhat.com>
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+audio_cleanup() is already called at exit (similar to chardev)
+
+Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 ---
- audio/ossaudio.c | 12 ++----------
- audio/sdlaudio.c | 12 ++----------
- 2 files changed, 4 insertions(+), 20 deletions(-)
+ audio/audio_int.h |  2 --
+ audio/audio.c     | 38 +++++++++++++-------------------------
+ 2 files changed, 13 insertions(+), 27 deletions(-)
 
-diff --git a/audio/ossaudio.c b/audio/ossaudio.c
-index ab8791bece..86c4805675 100644
---- a/audio/ossaudio.c
-+++ b/audio/ossaudio.c
-@@ -493,10 +493,8 @@ static int oss_init_out(HWVoiceOut *hw, struct audsettings *as,
+diff --git a/audio/audio_int.h b/audio/audio_int.h
+index b2b4d2d10e..4187a2dbfc 100644
+--- a/audio/audio_int.h
++++ b/audio/audio_int.h
+@@ -235,8 +235,6 @@ typedef struct AudioState {
+ 
+     bool timer_running;
+     uint64_t timer_last;
+-
+-    QTAILQ_ENTRY(AudioState) list;
+ } AudioState;
+ 
+ extern const struct mixeng_volume nominal_volume;
+diff --git a/audio/audio.c b/audio/audio.c
+index c291fd3e65..5bf4307fbd 100644
+--- a/audio/audio.c
++++ b/audio/audio.c
+@@ -102,8 +102,6 @@ static audio_driver *audio_driver_lookup(const char *name)
+     return NULL;
+ }
+ 
+-static QTAILQ_HEAD(AudioStateHead, AudioState) audio_states =
+-    QTAILQ_HEAD_INITIALIZER(audio_states);
+ static AudioState *default_audio_state;
+ 
+ const struct mixeng_volume nominal_volume = {
+@@ -1684,11 +1682,8 @@ static Object *get_audiodevs_root(void)
+ void audio_cleanup(void)
  {
-     OSSVoiceOut *oss = (OSSVoiceOut *) hw;
-     struct oss_params req, obt;
--    int endianness;
-     int err;
-     int fd;
--    AudioFormat effective_fmt;
-     struct audsettings obt_as;
-     Audiodev *dev = drv_opaque;
-     AudiodevOssOptions *oopts = &dev->u.oss;
-@@ -511,7 +509,7 @@ static int oss_init_out(HWVoiceOut *hw, struct audsettings *as,
-         return -1;
+     default_audio_state = NULL;
+-    while (!QTAILQ_EMPTY(&audio_states)) {
+-        AudioState *s = QTAILQ_FIRST(&audio_states);
+-        QTAILQ_REMOVE(&audio_states, s, list);
+-        object_unref(s);
+-    }
++
++    object_unparent(get_audiodevs_root());
+ }
+ 
+ static bool vmstate_audio_needed(void *opaque)
+@@ -1739,7 +1734,6 @@ void audio_create_default_audiodevs(void)
+  */
+ static AudioState *audio_init(Audiodev *dev, Error **errp)
+ {
+-    static bool atexit_registered;
+     int done = 0;
+     const char *drvname;
+     VMChangeStateEntry *vmse;
+@@ -1747,14 +1741,6 @@ static AudioState *audio_init(Audiodev *dev, Error **errp)
+     struct audio_driver *driver;
+ 
+     s = AUDIO_STATE(object_new(TYPE_AUDIO_STATE));
+-    if (!object_property_try_add_child(get_audiodevs_root(), dev->id, OBJECT(s), errp)) {
+-        goto out;
+-    }
+-
+-    if (!atexit_registered) {
+-        atexit(audio_cleanup);
+-        atexit_registered = true;
+-    }
+ 
+     if (dev) {
+         /* -audiodev option */
+@@ -1802,7 +1788,10 @@ static AudioState *audio_init(Audiodev *dev, Error **errp)
+                "(Audio can continue looping even after stopping the VM)\n");
      }
  
--    err = oss_to_audfmt (obt.fmt, &effective_fmt, &endianness);
-+    err = oss_to_audfmt(obt.fmt, &obt_as.fmt, &obt_as.endianness);
-     if (err) {
-         oss_anal_close (&fd);
-         return -1;
-@@ -519,8 +517,6 @@ static int oss_init_out(HWVoiceOut *hw, struct audsettings *as,
+-    QTAILQ_INSERT_TAIL(&audio_states, s, list);
++    if (!object_property_try_add_child(get_audiodevs_root(), dev->id, OBJECT(s), errp)) {
++        goto out;
++    }
++    object_unref(s);
+     QLIST_INIT (&s->card_head);
+     vmstate_register_any(NULL, &vmstate_audio, s);
+     return s;
+@@ -2249,15 +2238,14 @@ int audio_buffer_bytes(AudiodevPerDirectionOptions *pdo,
  
-     obt_as.freq = obt.freq;
-     obt_as.nchannels = obt.nchannels;
--    obt_as.fmt = effective_fmt;
--    obt_as.endianness = endianness;
- 
-     audio_pcm_init_info (&hw->info, &obt_as);
-     oss->nfrags = obt.nfrags;
-@@ -628,10 +624,8 @@ static int oss_init_in(HWVoiceIn *hw, struct audsettings *as, void *drv_opaque)
+ AudioState *audio_state_by_name(const char *name, Error **errp)
  {
-     OSSVoiceIn *oss = (OSSVoiceIn *) hw;
-     struct oss_params req, obt;
--    int endianness;
-     int err;
-     int fd;
--    AudioFormat effective_fmt;
-     struct audsettings obt_as;
-     Audiodev *dev = drv_opaque;
- 
-@@ -644,7 +638,7 @@ static int oss_init_in(HWVoiceIn *hw, struct audsettings *as, void *drv_opaque)
-         return -1;
+-    AudioState *s;
+-    QTAILQ_FOREACH(s, &audio_states, list) {
+-        assert(s->dev);
+-        if (strcmp(name, s->dev->id) == 0) {
+-            return s;
+-        }
++    Object *obj = object_resolve_path_component(get_audiodevs_root(), name);
++
++    if (!obj) {
++        error_setg(errp, "audiodev '%s' not found", name);
++        return NULL;
++    } else {
++        return AUDIO_STATE(obj);
      }
+-    error_setg(errp, "audiodev '%s' not found", name);
+-    return NULL;
+ }
  
--    err = oss_to_audfmt (obt.fmt, &effective_fmt, &endianness);
-+    err = oss_to_audfmt(obt.fmt, &obt_as.fmt, &obt_as.endianness);
-     if (err) {
-         oss_anal_close (&fd);
-         return -1;
-@@ -652,8 +646,6 @@ static int oss_init_in(HWVoiceIn *hw, struct audsettings *as, void *drv_opaque)
- 
-     obt_as.freq = obt.freq;
-     obt_as.nchannels = obt.nchannels;
--    obt_as.fmt = effective_fmt;
--    obt_as.endianness = endianness;
- 
-     audio_pcm_init_info (&hw->info, &obt_as);
-     oss->nfrags = obt.nfrags;
-diff --git a/audio/sdlaudio.c b/audio/sdlaudio.c
-index a7a9652d29..707110973a 100644
---- a/audio/sdlaudio.c
-+++ b/audio/sdlaudio.c
-@@ -338,9 +338,7 @@ static int sdl_init_out(HWVoiceOut *hw, struct audsettings *as,
- {
-     SDLVoiceOut *sdl = (SDLVoiceOut *)hw;
-     SDL_AudioSpec req, obt;
--    int endianness;
-     int err;
--    AudioFormat effective_fmt;
-     Audiodev *dev = drv_opaque;
-     AudiodevSdlPerDirectionOptions *spdo = dev->u.sdl.out;
-     struct audsettings obt_as;
-@@ -360,7 +358,7 @@ static int sdl_init_out(HWVoiceOut *hw, struct audsettings *as,
-         return -1;
-     }
- 
--    err = sdl_to_audfmt(obt.format, &effective_fmt, &endianness);
-+    err = sdl_to_audfmt(obt.format, &obt_as.fmt, &obt_as.endianness);
-     if (err) {
-         sdl_close_out(sdl);
-         return -1;
-@@ -368,8 +366,6 @@ static int sdl_init_out(HWVoiceOut *hw, struct audsettings *as,
- 
-     obt_as.freq = obt.freq;
-     obt_as.nchannels = obt.channels;
--    obt_as.fmt = effective_fmt;
--    obt_as.endianness = endianness;
- 
-     audio_pcm_init_info (&hw->info, &obt_as);
-     hw->samples = (spdo->has_buffer_count ? spdo->buffer_count : 4) *
-@@ -398,9 +394,7 @@ static int sdl_init_in(HWVoiceIn *hw, audsettings *as, void *drv_opaque)
- {
-     SDLVoiceIn *sdl = (SDLVoiceIn *)hw;
-     SDL_AudioSpec req, obt;
--    int endianness;
-     int err;
--    AudioFormat effective_fmt;
-     Audiodev *dev = drv_opaque;
-     AudiodevSdlPerDirectionOptions *spdo = dev->u.sdl.in;
-     struct audsettings obt_as;
-@@ -420,7 +414,7 @@ static int sdl_init_in(HWVoiceIn *hw, audsettings *as, void *drv_opaque)
-         return -1;
-     }
- 
--    err = sdl_to_audfmt(obt.format, &effective_fmt, &endianness);
-+    err = sdl_to_audfmt(obt.format, &obt_as.fmt, &obt_as.endianness);
-     if (err) {
-         sdl_close_in(sdl);
-         return -1;
-@@ -428,8 +422,6 @@ static int sdl_init_in(HWVoiceIn *hw, audsettings *as, void *drv_opaque)
- 
-     obt_as.freq = obt.freq;
-     obt_as.nchannels = obt.channels;
--    obt_as.fmt = effective_fmt;
--    obt_as.endianness = endianness;
- 
-     audio_pcm_init_info(&hw->info, &obt_as);
-     hw->samples = (spdo->has_buffer_count ? spdo->buffer_count : 4) *
+ const char *audio_get_id(QEMUSoundCard *card)
 -- 
 2.51.0
 

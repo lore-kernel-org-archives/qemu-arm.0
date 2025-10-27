@@ -4,149 +4,113 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CEDBDCCF9EB
-	for <qemu-arm@archiver.kernel.org>; Mon, 27 Oct 2025 17:15:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15FDFCCF9E0
+	for <qemu-arm@archiver.kernel.org>; Mon, 27 Oct 2025 17:29:45 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vDQna-00059L-D0; Mon, 27 Oct 2025 13:14:26 -0400
+	id 1vDR1b-0001fw-Ee; Mon, 27 Oct 2025 13:28:55 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
- id 1vDQnV-00057e-Rf; Mon, 27 Oct 2025 13:14:21 -0400
-Received: from mail-westcentralusazlp170100005.outbound.protection.outlook.com
- ([2a01:111:f403:c112::5] helo=CY7PR03CU001.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1vDR1Y-0001fG-Dz
+ for qemu-arm@nongnu.org; Mon, 27 Oct 2025 13:28:53 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
- id 1vDQnF-0003Zs-Q6; Mon, 27 Oct 2025 13:14:18 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=M6+ytpOvVhWrPLNuus2i282CJJ9cOjX6NBHMS51ZqNSpYUS64g7v75Cmd5i9z5py+9s9ZLdKqF/dLUzlIiT39ibcSlk5oHs534q7ipX6YLnae2BtAYbqNw0JBCb8UeJ1D7CXMRC1K7Gicy93lFz0A0d9z+9Df0GGBLCA5WVPYrkmeI4sc6R5Z/0gpHnwd7dy/v6BUNovedQY4RkOOEXfGR9xOM8h1C31vkE1suzVxE53sAreXNIC5i8CGTrqb9gAxmlLSxz8c7kjNpy4ADeZ19YoGo1TOgH7DzeAv1qQDNasq/uBfJ6UqpIFoHi6PCRJ20cceT/7KBkK5eSAOJpRhg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=1KFdbc2uhKPP9c5Ih9zc+45zYUafk+k/CnjaBNYd1/E=;
- b=uIvHTb/8vkQRPsz7aQKzrlivwMA68sOyfwPPyYBksy+qDmML92RqtSkq36sXhc+y9HmIo+7vmqKLLXDqjUXz48xef4v0yzUmB4ZiwVBp1c+eZD7P5NGOVomw43t7snO+HzU7yIzXkEeMCu3+18C/Sp9bNImw8vVHFu4+inHaU33vls+XV/ZunrrXOx+l6IQWR8cPLvFpIJ6WaRTPowuRzIPPZWJhko/lShJPOrNova2qXhjHNSbylM5Mx946rSN2QdyFz5Bt6cZZRCvLhu0VmguNCM26qAAjpwDdN0i/4/cR1FN99VA+GU1Wii9nLqKgnnPVZ6so0vWflNGpGNB68Q==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.118.232) smtp.rcpttodomain=redhat.com smtp.mailfrom=nvidia.com;
- dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
- dkim=none (message not signed); arc=none (0)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=1KFdbc2uhKPP9c5Ih9zc+45zYUafk+k/CnjaBNYd1/E=;
- b=N2gdOoImzdUcA5cGNoE4M82NfkM/Jy8fCT6XYKFrXiJCH1MizXacuHtk9/F4KVO+vlVEBrc0M8/NmbdFLgOXOCuETO/lxEg4OXyIwxxbNJMmkvUoyw+AQER4TJNeU4BpmR7mZzPJpB63mtxFVcyMZqAy+jt3Dbq3+r8iypZAKGMkxIcTqNkCLY1vVMMl02bWA7FXlaoNEseXZLdR5Q8CCSC23ei9FDiteJz5dxO1W3h98FTTWAikIWlPZ+xmQNlyTmNpCqDIDeUAm+7LulLRAzEbeHvLYxMMHL61UehMwSfuHvbXKYJczI2E9K0AtMF9pH4jrVuFkA/YDIZtMqd+8w==
-Received: from SA1P222CA0180.NAMP222.PROD.OUTLOOK.COM (2603:10b6:806:3c4::17)
- by MN0PR12MB6366.namprd12.prod.outlook.com (2603:10b6:208:3c1::19)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9253.15; Mon, 27 Oct
- 2025 17:13:55 +0000
-Received: from SA2PEPF00003F64.namprd04.prod.outlook.com
- (2603:10b6:806:3c4:cafe::42) by SA1P222CA0180.outlook.office365.com
- (2603:10b6:806:3c4::17) with Microsoft SMTP Server (version=TLS1_3,
- cipher=TLS_AES_256_GCM_SHA384) id 15.20.9253.18 via Frontend Transport; Mon,
- 27 Oct 2025 17:13:55 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.118.232)
- smtp.mailfrom=nvidia.com;
- dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.118.232 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.118.232; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (216.228.118.232) by
- SA2PEPF00003F64.mail.protection.outlook.com (10.167.248.39) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.9275.10 via Frontend Transport; Mon, 27 Oct 2025 17:13:55 +0000
-Received: from drhqmail201.nvidia.com (10.126.190.180) by mail.nvidia.com
- (10.127.129.5) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14; Mon, 27 Oct
- 2025 10:13:42 -0700
-Received: from drhqmail202.nvidia.com (10.126.190.181) by
- drhqmail201.nvidia.com (10.126.190.180) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.20; Mon, 27 Oct 2025 10:13:42 -0700
-Received: from Asurada-Nvidia (10.127.8.13) by mail.nvidia.com
- (10.126.190.181) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20 via Frontend
- Transport; Mon, 27 Oct 2025 10:13:41 -0700
-Date: Mon, 27 Oct 2025 10:13:40 -0700
-To: Eric Auger <eric.auger@redhat.com>
-CC: Shameer Kolothum <skolothumtho@nvidia.com>, <qemu-arm@nongnu.org>,
- <qemu-devel@nongnu.org>, <peter.maydell@linaro.org>, <jgg@nvidia.com>,
- <ddutile@redhat.com>, <berrange@redhat.com>, <nathanc@nvidia.com>,
- <mochs@nvidia.com>, <smostafa@google.com>, <wangzhou1@hisilicon.com>,
- <jiangkunkun@huawei.com>, <jonathan.cameron@huawei.com>,
- <zhangfei.gao@linaro.org>, <zhenzhong.duan@intel.com>, <yi.l.liu@intel.com>,
- <shameerkolothum@gmail.com>
-Subject: Re: [PATCH v4 22/27] hw/arm/smmuv3-accel: Add support for ATS
-Message-ID: <aP+oRLu/BYNaAPHG@Asurada-Nvidia>
-References: <20250929133643.38961-1-skolothumtho@nvidia.com>
- <20250929133643.38961-23-skolothumtho@nvidia.com>
- <26f4d9b2-75be-4913-bb60-01e647a7ec83@redhat.com>
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1vDR1Q-0005pR-78
+ for qemu-arm@nongnu.org; Mon, 27 Oct 2025 13:28:51 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1761586119;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=nLIboskL/rQ/k7TUMmbaT8PpA+hD/Sk2wIipoyR6JjE=;
+ b=U/gmkKM0Hjvod2WE9y9Z3myXmXed9364rcc7kU1SpiRpkQrP4n3rXOIAAoTyinFMi1JJLr
+ st8bw6BR6Crvd7IGnYOa8vdzCCAl3aMnhOFbqaZxdnyJRJrpatp86NLGUsJ/vGAD+xY+gQ
+ fR3N3oDHJxn3ZuDDOQVh5qmzvLINt3Q=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-680-XWS_AP-zOIe-0xzd2xfgxQ-1; Mon, 27 Oct 2025 13:28:37 -0400
+X-MC-Unique: XWS_AP-zOIe-0xzd2xfgxQ-1
+X-Mimecast-MFC-AGG-ID: XWS_AP-zOIe-0xzd2xfgxQ_1761586116
+Received: by mail-wr1-f70.google.com with SMTP id
+ ffacd0b85a97d-4256fae4b46so3823909f8f.0
+ for <qemu-arm@nongnu.org>; Mon, 27 Oct 2025 10:28:37 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1761586116; x=1762190916;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=nLIboskL/rQ/k7TUMmbaT8PpA+hD/Sk2wIipoyR6JjE=;
+ b=NF3ZBaCmBFYgJcjSDfATxEuZ1BrP5nzuuKt5mJnAqhFeXA6YAioKjJZs5vduTolfwr
+ 0Da+BFXJNfHAFdq4jrDGJXR17RLwfVmG1e/KDFe4mweE7aw7Mh5mrLbWR5uwMvVL4bZO
+ 7sluKEw+gDe7Osuql7rcHo2MuPzNdWad/Hhhwkp6w5l0293jfL6oF/MV0Jwx61unlkem
+ ZNXaFl1vLXPE1X/CSY6bCsxZdHXKcPa1Y4Pktsicfh0GtB1khcz1OC3r7zaTN6GOQdpC
+ f+F7YQ1a2uNK24cptKATK9S7zXuhGy7saLsFA6DuafzaAuDqrMII+MU9i57qL7PypiTm
+ PHeA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXzXPacyG8Ah+FSRqqexQ1iQHx7d8bxUNw9rp0YQzxOxcg8KnVdzzHKUqJyIbDlo/BlWaGGmRMJqg==@nongnu.org
+X-Gm-Message-State: AOJu0YxZEcK9dbrw7DA2M9hJZM/sncWakzXWzBqY3p6Se08LcpgIC/S8
+ wMlkQoscbEBATlAewLGzLPmhLwqXTF3LPZrk6IbinKpjCyWd7aIv0jghysXRGBm0bghnTKQy62B
+ BLHOiSavmTBDgCf/0Y6Lsys/4U3U++/35ce+au9xeKVhDKuKbquru3g==
+X-Gm-Gg: ASbGncv2aMZwiqzu0uM2B1qAs9GNam8NuLqzb5UpfD1rQJzRYfiZR8gJQDwrRMX55uv
+ ejUPQmTkxDy0ac+Xw5fMaeEZSj/eyyOTstd9qhbecxk+Vl51AZELO0dxnuh+A2ox19TbWJAIOCI
+ 0vvkTomJc5s2WSMtxmenTBpF/y7mLDHyAgenkf9qaflvN9808ZDYQXIupN2BCpNSlLOMgSBATrg
+ ET7NOstoVjx7J6dXMZw9lbr1q8k02ry68bAF8xVcSMTDJOeQB3Fixz530NqPWIK93mZjbT56Ax7
+ lcM5JMlJMmZlPai/p3C8/pJVYEn98/8E4ygfdJr9imhJIFNJ1Bs1U00SAAJe04vO8fuGg502LCv
+ N2b+gEsJr7UZ+gs/6GRmvqEXLjSlvru9iLhP9AO0r9/epMQ==
+X-Received: by 2002:a05:6000:2381:b0:3eb:5245:7c1f with SMTP id
+ ffacd0b85a97d-429a7e35cddmr401038f8f.2.1761586116442; 
+ Mon, 27 Oct 2025 10:28:36 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEECNBbkkanBJOCmuNxECWe+RldEe86PX/D9bIC19yYKIgd0pa9jybRTI0BhR2KBrdbIOQcEQ==
+X-Received: by 2002:a05:6000:2381:b0:3eb:5245:7c1f with SMTP id
+ ffacd0b85a97d-429a7e35cddmr401017f8f.2.1761586116023; 
+ Mon, 27 Oct 2025 10:28:36 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-429952b7ce1sm15144251f8f.0.2025.10.27.10.28.34
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 27 Oct 2025 10:28:35 -0700 (PDT)
+Message-ID: <c2c6a1ec-1590-4eaf-b59a-a2dc3b5ed260@redhat.com>
+Date: Mon, 27 Oct 2025 18:28:34 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Disposition: inline
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 25/27] backends/iommufd: Add a callback helper to
+ retrieve PASID support
+To: Shameer Kolothum <skolothumtho@nvidia.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, jgg@nvidia.com, nicolinc@nvidia.com,
+ ddutile@redhat.com, berrange@redhat.com, nathanc@nvidia.com,
+ mochs@nvidia.com, smostafa@google.com, wangzhou1@hisilicon.com,
+ jiangkunkun@huawei.com, jonathan.cameron@huawei.com,
+ zhangfei.gao@linaro.org, zhenzhong.duan@intel.com, yi.l.liu@intel.com,
+ shameerkolothum@gmail.com
+References: <20250929133643.38961-1-skolothumtho@nvidia.com>
+ <20250929133643.38961-26-skolothumtho@nvidia.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <20250929133643.38961-26-skolothumtho@nvidia.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: MAo-rtPyeW_0xzH684G6P5rtm4RfPNZUWocrpIy6wC0_1761586116
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <26f4d9b2-75be-4913-bb60-01e647a7ec83@redhat.com>
-X-NV-OnPremToCloud: ExternallySecured
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: SA2PEPF00003F64:EE_|MN0PR12MB6366:EE_
-X-MS-Office365-Filtering-Correlation-Id: d8e74400-71c6-4f39-9814-08de157c3598
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230040|1800799024|376014|7416014|36860700013|82310400026; 
-X-Microsoft-Antispam-Message-Info: =?iso-8859-1?Q?xD+smRG+MgiFUZM6R2f9GS+JyIDXR0QraPNiWL2OlpdtXDqukuTJ+Co6bR?=
- =?iso-8859-1?Q?yXid/IvJsq0/KqNDdud0ATWZgnynnlJ5XoEc1dVGy37KX18B4hMhyizTLM?=
- =?iso-8859-1?Q?PIYq+XSt3M8j2AxGxt0YrqGSc6z2W+8nM23PrHtNSmooU5eWPlLmN/Squc?=
- =?iso-8859-1?Q?mmLfvFfTkBK9GxsHpsKm5d/wS27B85qCznnTQU8R04NS0zYhoGP+WFySfY?=
- =?iso-8859-1?Q?5f8KkI1rI+JdrGbKxRv0FYlvmFaoSkOeh3ioMjcxTXooqnAShMTrD7unkJ?=
- =?iso-8859-1?Q?COGrf3xRL3mADWY0AEFUH6eJd1s1tYZh3lMvzoowwUVRne8B6P6h5u4PgB?=
- =?iso-8859-1?Q?7auFt5kwMxgfExyEAwGvcVdzSTe7UG+K7zY0A5xC+X8UMYgAjvWOLPRaOD?=
- =?iso-8859-1?Q?ztrtrKKi/r3ecx8OGGGPARNtbdo8kqQF5ICbvSHT3n6u0rnz6vu3MXxmVC?=
- =?iso-8859-1?Q?gw47BGZo2Kd+iZfMsUw68qSEP/YK3vq+iGgavL6Cr2ET1+SKzD1MDM2WnN?=
- =?iso-8859-1?Q?UJuTvAnY4jDBcFUjE1j30BxXHpQJS00+foma3J6ZpOHF8I4bFfiM5awMHZ?=
- =?iso-8859-1?Q?EhdEf64kNE30vqFG0uGqjDj8GexKlRptPJbDm40VFW4RhwkQ27kcDo+q+y?=
- =?iso-8859-1?Q?YG2LpbhBrjHpq54G/b1uHvt0/foEkIg1xRMhp1hVcIV05eFHmWXtzAj0QM?=
- =?iso-8859-1?Q?EBtCfcGBAtzyVsbCqcS1AXS1dsIt1Cj0utV/q3eZcSFcNOGQkiXL/JK1+h?=
- =?iso-8859-1?Q?KfwN/kPxfS6TIwivmrGlSqrrAp00PvZFEL4B71mxbI5eU33gGC9S9LvnrO?=
- =?iso-8859-1?Q?dOG+AhHyiXn3utEvRUTRDcsyOj9RfCaqg5iZBJlZVn+Vt7CNd7F1R2QxpG?=
- =?iso-8859-1?Q?BhqY8qDD7mJNOTubdXG9yRlsbV6ky8Lib0vcCqsFyCEzR5Om5DddI3Pcrg?=
- =?iso-8859-1?Q?9fDtqOzc+G5mdcj/F4OVwE/4ojcnplwTaYpiOvv3l6Atl+lQdYVJJEI5VA?=
- =?iso-8859-1?Q?dSuvzH+SiU/k2zxuXcD7dLbQZgQwexmN5Ek62XyDWSCvyZuCqEkOAX4C45?=
- =?iso-8859-1?Q?zjRo0yNY8pA6o0UAqeYxfb4vLBl5zK41pyyiqmlXQ5C9dA32yoXbu0CgHS?=
- =?iso-8859-1?Q?v2jE2x12x1g+OByVnpLFVsKuTe1JtTpI2tTHKtmPNAcnHZbEa8X7hSVRMk?=
- =?iso-8859-1?Q?N5bTz+YbIoqpSJLO4MmDU6VPJyF1ZyGieQ9aMAAG/NnboezSNXksk3kDjo?=
- =?iso-8859-1?Q?DAcLMC20xEA1v1ryhVY1AvI7qHbD2EmWH4KTvXsw8w4dnDv3JWSno80Sf5?=
- =?iso-8859-1?Q?pg7RILOjXP32weyF7LZxgXhxmKqqVzCPWnPCDr4vWYVXRQWuH+1D4ult82?=
- =?iso-8859-1?Q?BDDFCDC033HhlQjytAcwev6ABa8lcqBEmr7FBGg/nx5AQaRCRkOaQYeES8?=
- =?iso-8859-1?Q?yMBaK8a+4WX8kNfE+Zm+AgFQPQzd307OnbyVrzJApbdYBwTyPggvfu5pW8?=
- =?iso-8859-1?Q?SAVB3fBUU92IaClJ5xb8AkKBkBN7+fYMZcKWUcgbWLh++XR/9RvmIV+1Qv?=
- =?iso-8859-1?Q?94kqPRTPdKTRXCYozG86VVYCVBDoRr3ckdZqeNKUF/sOZ45t3gwrqWSoqc?=
- =?iso-8859-1?Q?7L1UX5Z4EHp53O1PLDlZyKnOH1mGJJCvfE?=
-X-Forefront-Antispam-Report: CIP:216.228.118.232; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc7edge1.nvidia.com; CAT:NONE;
- SFS:(13230040)(1800799024)(376014)(7416014)(36860700013)(82310400026); DIR:OUT;
- SFP:1101; 
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 27 Oct 2025 17:13:55.1212 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: d8e74400-71c6-4f39-9814-08de157c3598
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.118.232];
- Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: SA2PEPF00003F64.namprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN0PR12MB6366
-Received-SPF: permerror client-ip=2a01:111:f403:c112::5;
- envelope-from=nicolinc@nvidia.com;
- helo=CY7PR03CU001.outbound.protection.outlook.com
-X-Spam_score_int: -6
-X-Spam_score: -0.7
-X-Spam_bar: /
-X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
- DKIM_SIGNED=0.1, FORGED_SPF_HELO=1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_PASS=-0.001, SPF_NONE=0.001 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
+ DKIM_SIGNED=0.1, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -159,49 +123,89 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Nicolin Chen <nicolinc@nvidia.com>
-From:  Nicolin Chen via <qemu-arm@nongnu.org>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Eric,
+Hi Shameer,
 
-On Mon, Oct 27, 2025 at 05:59:13PM +0100, Eric Auger wrote:
-> On 9/29/25 3:36 PM, Shameer Kolothum wrote:
-> > QEMU SMMUv3 does not enable ATS (Address Translation Services) by default.
-> > When accelerated mode is enabled and the host SMMUv3 supports ATS, it can
-> > be useful to report ATS capability to the guest so it can take advantage
-> > of it if the device also supports ATS.
-> >
-> > Note: ATS support cannot be reliably detected from the host SMMUv3 IDR
-> > registers alone, as firmware ACPI IORT tables may override them. The
-> > user must therefore ensure the support before enabling it.
+On 9/29/25 3:36 PM, Shameer Kolothum wrote:
+> Subsequent patchÂ will make use of this to add a PASID CAP for assigned devices.
+>
+> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
+> ---
+>  backends/iommufd.c                 |  9 +++++++++
+>  include/system/host_iommu_device.h | 12 ++++++++++++
+>  2 files changed, 21 insertions(+)
+>
+> diff --git a/backends/iommufd.c b/backends/iommufd.c
+> index 023e67bc46..0ff46a5747 100644
+> --- a/backends/iommufd.c
+> +++ b/backends/iommufd.c
+> @@ -523,6 +523,14 @@ bool host_iommu_device_iommufd_detach_hwpt(HostIOMMUDeviceIOMMUFD *idev,
+>      return idevc->detach_hwpt(idev, errp);
+>  }
+>  
+> +static uint8_t hiod_iommufd_get_pasid(HostIOMMUDevice *hiod, uint64_t *hw_caps)
+I would call it hiod_iommufd_get_max_pasid_log2 instead.
+> +{
+> +    HostIOMMUDeviceCaps *caps = &hiod->caps;
+> +
+> +    *hw_caps = caps->hw_caps;
+> +    return caps->max_pasid_log2;
+> +}
+> +
+>  static int hiod_iommufd_get_cap(HostIOMMUDevice *hiod, int cap, Error **errp)
+>  {
+>      HostIOMMUDeviceCaps *caps = &hiod->caps;
+> @@ -543,6 +551,7 @@ static void hiod_iommufd_class_init(ObjectClass *oc, const void *data)
+>      HostIOMMUDeviceClass *hioc = HOST_IOMMU_DEVICE_CLASS(oc);
+>  
+>      hioc->get_cap = hiod_iommufd_get_cap;
+> +    hioc->get_pasid = hiod_iommufd_get_pasid;
+same for the cb name
+>  };
+>  
+>  static const TypeInfo types[] = {
+> diff --git a/include/system/host_iommu_device.h b/include/system/host_iommu_device.h
+> index c6a2a3899a..3773c54977 100644
+> --- a/include/system/host_iommu_device.h
+> +++ b/include/system/host_iommu_device.h
+> @@ -115,6 +115,18 @@ struct HostIOMMUDeviceClass {
+>       * @hiod: handle to the host IOMMU device
+>       */
+>      uint64_t (*get_page_size_mask)(HostIOMMUDevice *hiod);
+> +    /**
+> +     * @get_pasid: Get PASID support information along this
+> +     *             @hiod Host IOMMU device
+> +     * Optional callback. If not implemented, PASID not supported
+> +     *
+> +     * @hiod: handle to the host IOMMU device
+> +     *
+> +     * @out_hw_caps: Output the generic iommu capability info which includes
+> +     *               device PASID CAP info
 
-> This looks incomplete to me. ATS is a big topic in itself. I would
-> prefer we do not advertise it until we do not have full support for it
-> (including emulation). Comparing to
-> c049bf5bb9dd ("intel_iommu: Add support for ATS") which was recently
-> contributed we miss at least translation request implementations
-> (PCIIOMMUOps ats_request_translation callback implementation).
-> 
-> See:
-> https://lore.kernel.org/all/20250628180226.133285-11-clement.mathieu--drif@eviden.com/#r
+I would precise this corresponds to kernel bitmap of enum iommufd_hw_capabilities
 
-In accelerated SMMUv3 case, ATS translation and invalidation are
-done by the physical SMMU. Wondering why do we need this?
+> +     * Returns the width of PASIDs. Zero means no PASID support
+> +     */
+> +     uint8_t (*get_pasid)(HostIOMMUDevice *hiod, uint64_t *out_hw_caps);
+ditto. But actually even get_pasid_max_pasid_log2 is not very well
+suited as it returns both iommu_hw_capabilities and max_pasid_log2.
+and this can now be easily mixed up with the other get_cap() callback.
 
-IIRC, intel is mixing their emulated translation and accelerated
-one, and their pasid table is not integrated like SMMU's CD table
-that we already passed entirely via the STE.
+Why can't we use hiod_iommufd_get_cap() cb instead that would return an
+uint64_t instead. we could easily add new cap value for max_pasid_log2
+and output_hw_capabilities.
 
-> Also in SMMU spec I see other stuff like STE.EATS, ATS skipping stage 1,
-> ... Here I only see  SMMU_CMD_ATC_INV and this is only implemented for
-> accel. I think I would rather stick to the minimum in this series, ie.
-> reject in case of ATS mismatch (for testing purpose you will just need a
-> small hack until we get ATS support), work on ATS enablement in parallel
-
-That SMMU_CMD_ATC_INV seems to be the only thing we need for ATS..
+Or do I miss something?
 
 Thanks
-Nicolin
+
+Eric
+
+>  };
+>  
+>  /*
+
 

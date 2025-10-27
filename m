@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70085CCF9EA
-	for <qemu-arm@archiver.kernel.org>; Mon, 27 Oct 2025 11:16:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 235FFCCF9E0
+	for <qemu-arm@archiver.kernel.org>; Mon, 27 Oct 2025 11:18:27 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vDL9H-0005bW-Fj; Mon, 27 Oct 2025 07:12:27 -0400
+	id 1vDL9Y-0006HT-Pz; Mon, 27 Oct 2025 07:12:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vDL99-0005BR-8E
- for qemu-arm@nongnu.org; Mon, 27 Oct 2025 07:12:20 -0400
-Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
+ id 1vDL9O-0005pB-Hu
+ for qemu-arm@nongnu.org; Mon, 27 Oct 2025 07:12:35 -0400
+Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vDL93-0007aM-Kk
- for qemu-arm@nongnu.org; Mon, 27 Oct 2025 07:12:18 -0400
-Received: by mail-ej1-x629.google.com with SMTP id
- a640c23a62f3a-b6d5e04e0d3so711548766b.2
- for <qemu-arm@nongnu.org>; Mon, 27 Oct 2025 04:12:11 -0700 (PDT)
+ id 1vDL99-0007c9-1j
+ for qemu-arm@nongnu.org; Mon, 27 Oct 2025 07:12:34 -0400
+Received: by mail-ej1-x62d.google.com with SMTP id
+ a640c23a62f3a-b3f5e0e2bf7so1018224666b.3
+ for <qemu-arm@nongnu.org>; Mon, 27 Oct 2025 04:12:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1761563530; x=1762168330; darn=nongnu.org;
+ d=linaro.org; s=google; t=1761563534; x=1762168334; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Ebp/epSF7muaQbMsubBHfpMjof/a62SHlqNtbg8Z0UI=;
- b=c8mudxhtE0Ys1g7ClB3SWybxMtTyTmm7O7MRpoJ7fo+U9sU3Afk0NU+xF+py3+9yK7
- qd9OitsDVcDlW0u1KvLyDErj98bBpxD/uHZNnsZ/FqpGiGO2l/ZjaBirCMhr9PmjoCGh
- gqJI43Zta0Eun3DtKDPkuJAyJ+j1ezmtOJlHH5nACpHNCsoPYGK+JanQi+Gghc0Yh5XY
- E0eyaDrhU9Xa9UBw4GHG/ROpeZ5C9t32nEvUWlx5eRQers2Ql3N3XKhpgq+jhC8HBTyh
- AO+KlGyum2/p2xzNnOHQCKlzPFpbiOqnJ/UdSEtEHLYrUfkQeAzj/BKye48+EOC3ydpI
- vvYg==
+ bh=99wY+4qgow5/XXKtFXSxRzQjqRZizwoEw9ERNRXbkf0=;
+ b=y1s9NCkigk50JZDbj1DlK2PjS3XKZabSJqRNhbKz7LQrbY1oFI/VPBr2Y3MpI9E4mL
+ wu9GvMvtZvpVONga522a3tqFAaLckYygoe10mN8ZYUnjhovDKVs1sR7J/VUagYAUm+FX
+ L0fugHo51Q7uabBN4aYDzMGjIm48GhyzeSfXuI49v2KficbK8M4h3luhmmMBbySTUdqJ
+ FKxlPkcqV467fAd+lXSFdpy3DNOmzSXFGAWYl8dj5T6OpkNg9QPgePPOBocdbRRcF0j1
+ Ge4PsFCwPFp2N+5Z+L7r/ozuej3q4RUJXMezvG9p3r6mWr0sw1KD0h1f07EjNYyh4vvg
+ 1Svw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761563530; x=1762168330;
+ d=1e100.net; s=20230601; t=1761563534; x=1762168334;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=Ebp/epSF7muaQbMsubBHfpMjof/a62SHlqNtbg8Z0UI=;
- b=JtsJODpVpDEfdEuzp26CCyucxcdS4OFGMeyqlpqZcUouGfwr+33TZm6yrOFeGlUpi2
- 3VSQzeoJRrro54139/TDvwMIeQdu2G33AtvnY9GT/9JY3qnG6+2CoUr5fk6XuNSZpngi
- uHar52kFfxTtknfSO63ASxzIJRGYktPtE97NmQ41Wy+oSxyci7jxKaoa85uozNcsdQxU
- 40XFnxnXQptdovEH91ZgsAqKBnEOzHT2wRC9OIewQOLkKi+Ady7vpCvhO043OE/Ds6gn
- v4Y0rqMM8QDWkUaxedmUghDxojKcROKUrORfwIdY0aU2kX2wZ881NNLyg8lKzNygWr7/
- wvCA==
+ bh=99wY+4qgow5/XXKtFXSxRzQjqRZizwoEw9ERNRXbkf0=;
+ b=WW9DngqSERJcSxocoYJCDDu34K6MIIgXB25HZ9BGF0gZ9EsFUYHWRJ91TQ05jH/CGS
+ NBpv6Em3pcHSbGP9pvkwmtl/t0xXDUR+KIuLMGizQfqb0yhVrgUcq5UrJZ40BKkj7K7H
+ SL5rOBnCs3APZDqUYmlLZT7rzBN3WTiOCTGEyxvutzh9TlNID7i5gPXa9B9Eeb+uNLQt
+ AXHoZEpdMYbezaJzY4ITUuI/8e0JEKkaneE8jJnr8K254ivGHZz/fst0Ly0VwQN70rrh
+ f35vDVn7sfciW+DcrnUd7fau95TyqF4Udsg6L0ZRRz79r2ZS6dZqTVJyoGhR0BH7TGel
+ mdlA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWqmucCVrpIyH2CFTbCIlQHr/pMZkYMmJc8AoO82QN0y2ZGAEVrNI6/FBwDp89xA9sEBjoTMJG9/w==@nongnu.org
-X-Gm-Message-State: AOJu0YxkbhdYHX/VTNmRrDdgakt6oN2MnuW4wYcFgbG7yM5NJJkX7RrK
- 3QoZCITUBCPwdMFYKxFRmiCmCvXYNNjriNQS1YxPofvZbxrMk/OmpY8xfFVQ/ar3AQU=
-X-Gm-Gg: ASbGncuVOnS1X0OFxX9+hwmSepmLTvLyUUJrQ6/JxjBJqKmmSOGjQ1P1Kbqv8/tugSD
- Qvhg4YI4eiRLrcnuAqlkxWQzh7ufW7aKirIiX59a1hXHBweIRQM2WwlSWruwDS715NXTYjTr4oN
- uf2SBM/2qjDT5ymtJMx2HNYQD9JxVdyOgaPkaWdXJcZGHKrrxIDNsEFvZQUJ3c0rPCYopN1b4Sl
- DirFqVTdo7Y1br4J74m0P+CjDWw4ngbL8opMZ6qiuzYV7sthOizhw7FOZKwpJOjT73ARpWn089h
- PK+Jv/7ixieHpGNXJmlQHhn9tz+bs/rHSST82qkai6SiYq+G1z/UE8xZwCt8c/320AIF2x7luw2
- 1xIyQEaIpyO6cOueuvJDnmJ7anXvD9fQ/Ob1C9BH5xbNKuoU7CaI7kKFqrg9l4tvAG6gi5h7TUK
- 6Q
-X-Google-Smtp-Source: AGHT+IHw+fFt1vxI3afdl5Mm0RuD/0R4AOwToR0nUpX3DiGL1ZjBpMF+xhKh6S1HJdvyALHqhPmlYg==
-X-Received: by 2002:a17:906:fe4d:b0:b3c:e14c:e24 with SMTP id
- a640c23a62f3a-b647195b339mr4091529366b.13.1761563529688; 
- Mon, 27 Oct 2025 04:12:09 -0700 (PDT)
+ AJvYcCWzZFdBvNDkEZUMF1wHrQ3V9ki+/9osIz2U4PBHYZon877hUGz/TiyIrQa4JI4b0hldzRwXtvzXYw==@nongnu.org
+X-Gm-Message-State: AOJu0YwH/cXayh9eDiu/J5ynruWUVLkrQyO7tjncbOWW2p4qCgMo5fl7
+ ZQgD89qra/ebLgVyKiRFtz1cAN1fMkNARQnfMnTBIurG1v3451hrWUqJaGiVeDGTHpA=
+X-Gm-Gg: ASbGncuJeU+Ub1WJyAuR9wexwvtWPbpaXypr2ZhCnAJ9/rWDdBlSXxf7aCKj2WMSplL
+ eZYoB+VnrtwdCZpOx4YwjTCVOgNiBevrC2ycJNP/g2WxJXKYgah70vnSIvDdfbqoqZnrqIyuggU
+ VAAXZ8vB0FNTC4kJ3gSZylRsj7cwNsP3uPKxC4PHmFN9dsrBvoThwhZL841Ybmnrj1PkJiSaAHW
+ WDSk0e/86Nv6ZMWxRQa0/m8V8H+wcpJ3/XkyF0AK0aX7uO1rEFHghfikE1b33ish0ccCdPfngj8
+ /0iFYxvLNTbP228VxpqpkqElIlnlaRwoUUrvoV6lZ3rnErhFUJYjUZ/LiBg5Prp++TVETkdMJKv
+ h8bRJBxO9RFf0z9AuOfQKRL6tpssTzna6S7wcM6mMSqvcKbkjQ+WGopMdsYwnaOYrmWTn9eDaVT
+ aO
+X-Google-Smtp-Source: AGHT+IFAsNEZ+YI0fTj3+OVyMqueS8NODeiYMhkciUB7twUSrCCRe95Tk7Kfy7cqzVEbD+wz6+XjSg==
+X-Received: by 2002:a17:906:fe4b:b0:b0b:f228:25a with SMTP id
+ a640c23a62f3a-b6475a0347bmr3777669866b.64.1761563534193; 
+ Mon, 27 Oct 2025 04:12:14 -0700 (PDT)
 Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-b6d853fc258sm721557266b.53.2025.10.27.04.12.08
+ a640c23a62f3a-b6d853386casm723218466b.15.2025.10.27.04.12.10
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 27 Oct 2025 04:12:08 -0700 (PDT)
+ Mon, 27 Oct 2025 04:12:12 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 5C8A86152D;
- Mon, 27 Oct 2025 11:03:47 +0000 (GMT)
+ by draig.lan (Postfix) with ESMTP id 6FF7F60F51;
+ Mon, 27 Oct 2025 11:03:46 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
@@ -96,26 +96,25 @@ Cc: Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Jiaxun Yang <jiaxun.yang@flygoat.com>, Michael Rolnik <mrolnik@gmail.com>,
  Song Gao <gaosong@loongson.cn>, qemu-riscv@nongnu.org,
- Aleksandar Rikalo <arikalo@gmail.com>,
- Sean Anderson <sean.anderson@linux.dev>
-Subject: [PATCH 34/35] gdbstub: Fix %s formatting
-Date: Mon, 27 Oct 2025 11:03:41 +0000
-Message-ID: <20251027110344.2289945-35-alex.bennee@linaro.org>
+ Aleksandar Rikalo <arikalo@gmail.com>, Julian Ganz <neither@nut.email>
+Subject: [PATCH 25/35] target/sh4: call plugin trap callbacks
+Date: Mon, 27 Oct 2025 11:03:32 +0000
+Message-ID: <20251027110344.2289945-26-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20251027110344.2289945-1-alex.bennee@linaro.org>
 References: <20251027110344.2289945-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::629;
- envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x629.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::62d;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x62d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -131,34 +130,58 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Sean Anderson <sean.anderson@linux.dev>
+From: Julian Ganz <neither@nut.email>
 
-The format string for %s has two format characters. This causes it to
-emit strings like "466f5bd8/6x" instead of "466f5bd8/6". GDB detects
-this and returns EIO, causing all open File I/O calls to fail.
+We recently introduced API for registering callbacks for trap related
+events as well as the corresponding hook functions. Due to differences
+between architectures, the latter need to be called from target specific
+code.
 
-Fixes: 0820a075af ("gdbstub: Adjust gdb_do_syscall to only use uint32_t and uint64_t")
-Signed-off-by: Sean Anderson <sean.anderson@linux.dev>
+This change places hooks for SuperH targets.
+
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Reviewed-by: Yoshinori Sato <yoshinori.sato@nifty.com>
+Signed-off-by: Julian Ganz <neither@nut.email>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- gdbstub/syscalls.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ target/sh4/helper.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/gdbstub/syscalls.c b/gdbstub/syscalls.c
-index e855df21aba..d8bb90cc1c7 100644
---- a/gdbstub/syscalls.c
-+++ b/gdbstub/syscalls.c
-@@ -127,7 +127,7 @@ void gdb_do_syscall(gdb_syscall_complete_cb cb, const char *fmt, ...)
-             case 's':
-                 i64 = va_arg(va, uint64_t);
-                 i32 = va_arg(va, uint32_t);
--                p += snprintf(p, p_end - p, "%" PRIx64 "/%x" PRIx32, i64, i32);
-+                p += snprintf(p, p_end - p, "%" PRIx64 "/%" PRIx32, i64, i32);
-                 break;
-             default:
-             bad_format:
+diff --git a/target/sh4/helper.c b/target/sh4/helper.c
+index 3b18a320b86..5d6295618f5 100644
+--- a/target/sh4/helper.c
++++ b/target/sh4/helper.c
+@@ -24,6 +24,7 @@
+ #include "exec/page-protection.h"
+ #include "exec/target_page.h"
+ #include "exec/log.h"
++#include "qemu/plugin.h"
+ 
+ #if !defined(CONFIG_USER_ONLY)
+ #include "hw/sh4/sh_intc.h"
+@@ -60,6 +61,7 @@ void superh_cpu_do_interrupt(CPUState *cs)
+     CPUSH4State *env = cpu_env(cs);
+     int do_irq = cpu_test_interrupt(cs, CPU_INTERRUPT_HARD);
+     int do_exp, irq_vector = cs->exception_index;
++    uint64_t last_pc = env->pc;
+ 
+     /* prioritize exceptions over interrupts */
+ 
+@@ -176,12 +178,14 @@ void superh_cpu_do_interrupt(CPUState *cs)
+             env->pc = env->vbr + 0x100;
+             break;
+         }
++        qemu_plugin_vcpu_exception_cb(cs, last_pc);
+         return;
+     }
+ 
+     if (do_irq) {
+         env->intevt = irq_vector;
+         env->pc = env->vbr + 0x600;
++        qemu_plugin_vcpu_interrupt_cb(cs, last_pc);
+         return;
+     }
+ }
 -- 
 2.47.3
 

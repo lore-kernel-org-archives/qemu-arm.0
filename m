@@ -4,102 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3319CCF9EB
-	for <qemu-arm@archiver.kernel.org>; Mon, 27 Oct 2025 16:59:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99083CCF9EB
+	for <qemu-arm@archiver.kernel.org>; Mon, 27 Oct 2025 17:01:17 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vDQZG-0005l7-19; Mon, 27 Oct 2025 12:59:38 -0400
+	id 1vDQae-0006TR-QX; Mon, 27 Oct 2025 13:01:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vDQZE-0005kU-7T
- for qemu-arm@nongnu.org; Mon, 27 Oct 2025 12:59:36 -0400
+ id 1vDQaG-0006DH-5i
+ for qemu-arm@nongnu.org; Mon, 27 Oct 2025 13:00:55 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vDQZ4-0001Xp-Rf
- for qemu-arm@nongnu.org; Mon, 27 Oct 2025 12:59:35 -0400
+ id 1vDQa6-0001pv-Oq
+ for qemu-arm@nongnu.org; Mon, 27 Oct 2025 13:00:36 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1761584360;
+ s=mimecast20190719; t=1761584426;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=j41cxjkghcTMvKJC+/FgnDUTcci1yx5wmZ+6lysiwSo=;
- b=TtbiIr4lwjB4Xqm2kOrwKdxi0cdVhPtWo/ImDWcNE/vy3bn0gFb8K3G1wNTSFxHlE9703k
- P28WxE+Hp44Q74rTpf2bloPNf2Pz62sFXHdmfvInBm9i6hGw6kJvkyYluQiCUeU5YFN+TQ
- rRWG9x/1IH4WMV6H2bVpMIoESEkYUIs=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=PFyGEEJsv/btQlGzcO53SOtrSj8HXWlXlL90oNywvTo=;
+ b=DYbDzpm63WLyfcP+tdcw+CT419RhEUuWdln4/ZYLYqwd10JspqURqcua0bupjyr6wsTfCJ
+ 2qt0Jq4pWkw/WJRg5u308aGUWWkNFq1bhQQFdlMKSpYxEJfay+P0FR9Rdv9n2rfPrhNGQH
+ y6bcsf+FIdf0OtRnk1HPjMWSMqRS/rE=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-588-Jo0nu3EyME6eDu9WAYn_PA-1; Mon, 27 Oct 2025 12:59:17 -0400
-X-MC-Unique: Jo0nu3EyME6eDu9WAYn_PA-1
-X-Mimecast-MFC-AGG-ID: Jo0nu3EyME6eDu9WAYn_PA_1761584356
-Received: by mail-wm1-f71.google.com with SMTP id
- 5b1f17b1804b1-471201dc0e9so29781185e9.2
- for <qemu-arm@nongnu.org>; Mon, 27 Oct 2025 09:59:17 -0700 (PDT)
+ us-mta-376-LQn_eLWAP5ybnfVGPNeyyw-1; Mon, 27 Oct 2025 13:00:24 -0400
+X-MC-Unique: LQn_eLWAP5ybnfVGPNeyyw-1
+X-Mimecast-MFC-AGG-ID: LQn_eLWAP5ybnfVGPNeyyw_1761584423
+Received: by mail-wr1-f71.google.com with SMTP id
+ ffacd0b85a97d-3f6b44ab789so1970419f8f.3
+ for <qemu-arm@nongnu.org>; Mon, 27 Oct 2025 10:00:24 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761584356; x=1762189156;
+ d=1e100.net; s=20230601; t=1761584423; x=1762189223;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:reply-to:user-agent:mime-version:date
  :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=j41cxjkghcTMvKJC+/FgnDUTcci1yx5wmZ+6lysiwSo=;
- b=YenXcNDM2/h8psKITulN7NwSwHq3ax+q15QVCnxlsYDU6hFNbGyNp3IeVIp1rfPt2L
- aCoUcEbJIn7xu3GwexqGewyz1uMU/FgGiShCoM299Vdi8/t0xqzlOZ3FFFiGXqjlS4q6
- MoPWRX2ZGVH/yPzdsma+6+sUObTgPSoOnOV8sNuw8RerfvLne7DSDHcPzJN8z6GthWoA
- 4wlUyuoWnF7CbOnax13VPaPVkZtBtblgJUXiGsXdps31YJ6jAWGpEwbzuYUc3NZl1zxZ
- 03cLYDl5D2JGYv+9+USdHwo4Ni2v2+WyxRbO0IHI0SNKAfe5XAU02ENuISf3KL8e6yEW
- 5Fcw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWaqPdAFhY7WyPAk5s2sBmfG86c9OeXYHBFELGiG/qu0eTvHFODDiMX/b8pQ0VyYoqmXegHM/VLtA==@nongnu.org
-X-Gm-Message-State: AOJu0YyDUSZnD8BIRUfJ1nazg0unDl9mE7U5MCLLvubMHEvBdcHSpzoy
- 9/j8PJQXnOgP7vSEE4UnB70xkMwAcglFNbQ9z9xZ84Ew3kfay1j8y3hthnALJkICTn8gN33Xz9y
- 1X8cWBXkz7xbitZOiohYy7l96dJ0P9u0O8x4Y/ZyBMDzk8bnG04CMUw==
-X-Gm-Gg: ASbGncv3zv8Bz4pE9LHx0JfAr3nn4WsKOrfsYDfncL/JZKYzUOlAwCPwT1jYPHTKdK4
- HseJL7P2ZgDDbpy19BRzWcOWSPAMBL4pG+SPZ8lMceIg//Qhcqv5/GLlmiyTwuKO5j1KKiKzQZy
- 28jO9naK+R4/ufs1+volE6Dm5DojUD9c//fw57yk7LDFbH8QKkslcdM7cAVTwhW413viTT4Ntry
- ECjhtZIL0dEYqGrFQa4Z8nm5ReQGkzkGv+9GDNwvzb36XGs5qJb7UiGSxnGddkhwcNwK1knY7Xk
- PJGxrQAsqJ+oDiOTIBh93+0vD1SKxXUrf3cL+V2DDjqjnphyGOQXdoj/B+tS7HJImffIe/JiX4g
- zXdygXjndalnImkEBKj910yPZ7QTi9ynRa9B1RrGt+2ziYg==
-X-Received: by 2002:a05:600c:348c:b0:471:133c:4b9a with SMTP id
- 5b1f17b1804b1-47717df534dmr3882825e9.6.1761584355910; 
- Mon, 27 Oct 2025 09:59:15 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEa96xmk/c+cDmgl1bgmjVdrVJWi31AxMsNA3pamjA94ZGvPUVzp/R9y1J7EFlqJC3oAbPLLg==
-X-Received: by 2002:a05:600c:348c:b0:471:133c:4b9a with SMTP id
- 5b1f17b1804b1-47717df534dmr3881855e9.6.1761584354589; 
- Mon, 27 Oct 2025 09:59:14 -0700 (PDT)
+ bh=PFyGEEJsv/btQlGzcO53SOtrSj8HXWlXlL90oNywvTo=;
+ b=Ur74RzAZtW50AbI+9GhMAryvziVCp2lxWyPfOrn5hFsqgKH4LOZhRMHsPMMdy1wnEl
+ oZkHiQec2JeiadHojkIZxpiekYVagSpzsKYKOCi08ghjON9mWXNAMf++exMdtDKzutbr
+ 3ZklDsyyvCkKcQ73+N+57CLE5Divsx1aZv9447QUtuhyjX6opu51JAs+wIS5eYcT3fkk
+ omZF0fgWYqzedTVMHoreq4Ms/UHcetBkS7VxKuEW9Pi023VxpJ5NBDQzqaMYss9P9reu
+ Alq0I89stCmhdGB1871Rrpp5bmORlzUHLmrYDaz+lUGmJW412zhwuM5qUvnUPJm3hWdk
+ ZRsQ==
+X-Gm-Message-State: AOJu0YxNY1gs12Lo4fNYvkkP2Y/xfPxb0RAhYgH8v/rAPYxoBpX5hSC8
+ 4d+QJUTsm4FMf4DD1k+U//vgw73lgMX6XRM3PisnFR+07oi0xOLwNMg7z8EHPsaHYGTwMcuAEW7
+ efaZQgiBSdUrzb+LnSSVD97G6wBJszsjjubqma6WCH8M0jq6B4YiIqQ==
+X-Gm-Gg: ASbGnctzE0oP/+bFDAjiIwWpTZo1HzmB9zqMotPSqCP8mAvUoMFo5GT3KsbF1fntj/z
+ XGHHi76+semvYD/TJcirxBzOwzRYB8AimwboG9fUSTqMQdBQmSbXAVcxya6P8kNd6dsUktXyGMk
+ RgsLrwc3VVEcZ0TA0DlDXcYTCZYgaDHDdh//qCjAI/jRpp4JhMN8ZzfSQCWVuXk/UlL+IOD/Np/
+ EltM2E0MGy1h0ATwLHYFUPUqWrmRRTayT8P34dnQKz+T71wEaRo/nQQu5Rgr4ZkhTsaMjtDo3cQ
+ +InNq3FWkygM6omx6tslBnHKJ2UaTfV1W14cmfpj1wYjSDNmKkIotqNBh1YhTxKhnlbzDKyOahF
+ d/9tfU2CeUHTLr77VnpFQ4Cy/ok/wSgoKNDxKZtQ+UtlZ7g==
+X-Received: by 2002:a05:600d:4388:b0:46e:1d8d:cfa2 with SMTP id
+ 5b1f17b1804b1-4771840b04bmr203075e9.20.1761584423433; 
+ Mon, 27 Oct 2025 10:00:23 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IElWgmW0e5JBE0sEZI66IzLDiupXsMZ6Oys+FZPDGRcAWQUoe0TW6guVHlXglWFkdB3GMnmiw==
+X-Received: by 2002:a05:600d:4388:b0:46e:1d8d:cfa2 with SMTP id
+ 5b1f17b1804b1-4771840b04bmr202855e9.20.1761584423011; 
+ Mon, 27 Oct 2025 10:00:23 -0700 (PDT)
 Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
  ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-475dd4a5cc4sm143041055e9.11.2025.10.27.09.59.13
+ 5b1f17b1804b1-475dd4783b8sm147111875e9.15.2025.10.27.10.00.21
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 27 Oct 2025 09:59:14 -0700 (PDT)
-Message-ID: <26f4d9b2-75be-4913-bb60-01e647a7ec83@redhat.com>
-Date: Mon, 27 Oct 2025 17:59:13 +0100
+ Mon, 27 Oct 2025 10:00:22 -0700 (PDT)
+Message-ID: <b620c85a-973d-4bf5-a53c-4c2b5962281e@redhat.com>
+Date: Mon, 27 Oct 2025 18:00:20 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 22/27] hw/arm/smmuv3-accel: Add support for ATS
-To: Shameer Kolothum <skolothumtho@nvidia.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, jgg@nvidia.com, nicolinc@nvidia.com,
- ddutile@redhat.com, berrange@redhat.com, nathanc@nvidia.com,
- mochs@nvidia.com, smostafa@google.com, wangzhou1@hisilicon.com,
- jiangkunkun@huawei.com, jonathan.cameron@huawei.com,
+Subject: Re: [PATCH v4 24/27] backends/iommufd: Retrieve PASID width from
+ iommufd_backend_get_device_info()
+To: Jonathan Cameron <jonathan.cameron@huawei.com>,
+ Shameer Kolothum <skolothumtho@nvidia.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, peter.maydell@linaro.org,
+ jgg@nvidia.com, nicolinc@nvidia.com, ddutile@redhat.com,
+ berrange@redhat.com, nathanc@nvidia.com, mochs@nvidia.com,
+ smostafa@google.com, wangzhou1@hisilicon.com, jiangkunkun@huawei.com,
  zhangfei.gao@linaro.org, zhenzhong.duan@intel.com, yi.l.liu@intel.com,
  shameerkolothum@gmail.com
 References: <20250929133643.38961-1-skolothumtho@nvidia.com>
- <20250929133643.38961-23-skolothumtho@nvidia.com>
+ <20250929133643.38961-25-skolothumtho@nvidia.com>
+ <20251001145006.00001837@huawei.com>
 From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20250929133643.38961-23-skolothumtho@nvidia.com>
+In-Reply-To: <20251001145006.00001837@huawei.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: QR5cWiSoZkwVOxlGHIecvGYEmhHKu9u-d4uALeG8u7g_1761584356
+X-Mimecast-MFC-PROC-ID: 6rbSvDLhvvAjRwDatI2-yLSzi8cJZGrmF9r_kXGNHCg_1761584423
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=170.10.133.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
@@ -126,179 +126,70 @@ Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Shameer,
-On 9/29/25 3:36 PM, Shameer Kolothum wrote:
-> QEMU SMMUv3 does not enable ATS (Address Translation Services) by default.
-> When accelerated mode is enabled and the host SMMUv3 supports ATS, it can
-> be useful to report ATS capability to the guest so it can take advantage
-> of it if the device also supports ATS.
->
-> Note: ATS support cannot be reliably detected from the host SMMUv3 IDR
-> registers alone, as firmware ACPI IORT tables may override them. The
-> user must therefore ensure the support before enabling it.
-This looks incomplete to me. ATS is a big topic in itself. I would
-prefer we do not advertise it until we do not have full support for it
-(including emulation). Comparing to
-c049bf5bb9dd ("intel_iommu: Add support for ATS") which was recently
-contributed we miss at least translation request implementations
-(PCIIOMMUOps ats_request_translation callback implementation).
 
-See:
-https://lore.kernel.org/all/20250628180226.133285-11-clement.mathieu--drif@eviden.com/#r
 
-Also in SMMU spec I see other stuff like STE.EATS, ATS skipping stage 1,
-... Here I only see  SMMU_CMD_ATC_INV and this is only implemented for
-accel. I think I would rather stick to the minimum in this series, ie.
-reject in case of ATS mismatch (for testing purpose you will just need a
-small hack until we get ATS support), work on ATS enablement in parallel
-. Thanks Eric
+On 10/1/25 3:50 PM, Jonathan Cameron wrote:
+> On Mon, 29 Sep 2025 14:36:40 +0100
+> Shameer Kolothum <skolothumtho@nvidia.com> wrote:
 >
-> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
-> ---
->  hw/arm/smmuv3-accel.c    |  4 ++++
->  hw/arm/smmuv3.c          | 25 ++++++++++++++++++++++++-
->  hw/arm/virt-acpi-build.c | 10 ++++++++--
->  include/hw/arm/smmuv3.h  |  1 +
->  4 files changed, 37 insertions(+), 3 deletions(-)
+> Bring the bit of the description in the title down here as well.
+> Depending on what tools people use for browsing git it might
+> end up in very different places on their screen.
++1
+
+Eric
 >
-> diff --git a/hw/arm/smmuv3-accel.c b/hw/arm/smmuv3-accel.c
-> index e8607b253e..eee54316bf 100644
-> --- a/hw/arm/smmuv3-accel.c
-> +++ b/hw/arm/smmuv3-accel.c
-> @@ -644,6 +644,10 @@ void smmuv3_accel_idr_override(SMMUv3State *s)
->      if (!s->ril) {
->          s->idr[3] = FIELD_DP32(s->idr[3], IDR3, RIL, 0);
->      }
-> +    /* QEMU SMMUv3 has no ATS. Update IDR0 if user has enabled it */
-> +    if (s->ats) {
-> +        s->idr[0] = FIELD_DP32(s->idr[0], IDR0, ATS, 1); /* ATS */
-> +    }
->  }
->  
->  /*
-> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-> index 0f3a61646a..77d46a9cd6 100644
-> --- a/hw/arm/smmuv3.c
-> +++ b/hw/arm/smmuv3.c
-> @@ -1510,13 +1510,28 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
->               */
->              smmuv3_range_inval(bs, &cmd, SMMU_STAGE_2);
->              break;
-> +        case SMMU_CMD_ATC_INV:
-> +        {
-> +            SMMUDevice *sdev = smmu_find_sdev(bs, CMD_SID(&cmd));
-> +            Error *local_err = NULL;
-> +
-> +            if (!sdev) {
-> +                break;
-> +            }
-> +
-> +            if (!smmuv3_accel_issue_inv_cmd(s, &cmd, sdev, &local_err)) {
-> +                error_report_err(local_err);
-> +                cmd_error = SMMU_CERROR_ILL;
-> +                break;
-> +            }
-> +            break;
-> +        }
->          case SMMU_CMD_TLBI_EL3_ALL:
->          case SMMU_CMD_TLBI_EL3_VA:
->          case SMMU_CMD_TLBI_EL2_ALL:
->          case SMMU_CMD_TLBI_EL2_ASID:
->          case SMMU_CMD_TLBI_EL2_VA:
->          case SMMU_CMD_TLBI_EL2_VAA:
-> -        case SMMU_CMD_ATC_INV:
->          case SMMU_CMD_PRI_RESP:
->          case SMMU_CMD_RESUME:
->          case SMMU_CMD_STALL_TERM:
-> @@ -1934,6 +1949,10 @@ static bool smmu_validate_property(SMMUv3State *s, Error **errp)
->          error_setg(errp, "ril can only be disabled if accel=on");
->          return false;
->      }
-> +    if (s->ats) {
-> +        error_setg(errp, "ats can only be enabled if accel=on");
-> +        return false;
-> +    }
->      return true;
->  }
->  
-> @@ -2058,6 +2077,7 @@ static const Property smmuv3_properties[] = {
->      DEFINE_PROP_BOOL("accel", SMMUv3State, accel, false),
->      /* RIL can be turned off for accel cases */
->      DEFINE_PROP_BOOL("ril", SMMUv3State, ril, true),
-> +    DEFINE_PROP_BOOL("ats", SMMUv3State, ats, false),
->  };
->  
->  static void smmuv3_instance_init(Object *obj)
-> @@ -2087,6 +2107,9 @@ static void smmuv3_class_init(ObjectClass *klass, const void *data)
->                                            "in nested mode for vfio-pci dev assignment");
->      object_class_property_set_description(klass, "ril",
->          "Enable/disable range invalidation support");
-> +    object_class_property_set_description(klass, "ats",
-> +        "Enable/disable ATS support. Please ensure host platform has ATS "
-> +        "support before enabling this");
->  }
->  
->  static int smmuv3_notify_flag_changed(IOMMUMemoryRegion *iommu,
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index d0c1e10019..a53f0229b8 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -322,6 +322,7 @@ typedef struct AcpiIortSMMUv3Dev {
->      /* Offset of the SMMUv3 IORT Node relative to the start of the IORT */
->      size_t offset;
->      bool accel;
-> +    bool ats;
->  } AcpiIortSMMUv3Dev;
->  
->  /*
-> @@ -377,6 +378,7 @@ static int iort_smmuv3_devices(Object *obj, void *opaque)
->  
->      bus = PCI_BUS(object_property_get_link(obj, "primary-bus", &error_abort));
->      sdev.accel = object_property_get_bool(obj, "accel", &error_abort);
-> +    sdev.ats = object_property_get_bool(obj, "ats", &error_abort);
->      pbus = PLATFORM_BUS_DEVICE(vms->platform_bus_dev);
->      sbdev = SYS_BUS_DEVICE(obj);
->      sdev.base = platform_bus_get_mmio_addr(pbus, sbdev, 0);
-> @@ -511,6 +513,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->      int i, nb_nodes, rc_mapping_count;
->      AcpiIortSMMUv3Dev *sdev;
->      size_t node_size;
-> +    bool ats_needed = false;
->      int num_smmus = 0;
->      uint32_t id = 0;
->      int rc_smmu_idmaps_len = 0;
-> @@ -546,6 +549,9 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->          /* Calculate RMR nodes required. One per SMMUv3 with accelerated mode */
->          for (i = 0; i < num_smmus; i++) {
->              sdev = &g_array_index(smmuv3_devs, AcpiIortSMMUv3Dev, i);
-> +            if (sdev->ats) {
-> +                ats_needed = true;
-> +            }
->              if (sdev->accel) {
->                  nb_nodes++;
->              }
-> @@ -645,8 +651,8 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->      build_append_int_noprefix(table_data, 0, 2); /* Reserved */
->      /* Table 15 Memory Access Flags */
->      build_append_int_noprefix(table_data, 0x3 /* CCA = CPM = DACS = 1 */, 1);
-> -
-> -    build_append_int_noprefix(table_data, 0, 4); /* ATS Attribute */
-> +    /* ATS Attribute */
-> +    build_append_int_noprefix(table_data, (ats_needed ? 1 : 0), 4);
->      /* MCFG pci_segment */
->      build_append_int_noprefix(table_data, 0, 4); /* PCI Segment number */
->  
-> diff --git a/include/hw/arm/smmuv3.h b/include/hw/arm/smmuv3.h
-> index c555ea684e..6f07baa144 100644
-> --- a/include/hw/arm/smmuv3.h
-> +++ b/include/hw/arm/smmuv3.h
-> @@ -69,6 +69,7 @@ struct SMMUv3State {
->      struct SMMUv3AccelState  *s_accel;
->      Error  *migration_blocker;
->      bool ril;
-> +    bool ats;
->  };
->  
->  typedef enum {
+>> And store it in HostIOMMUDeviceCaps for later use.
+>>
+>> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
+> Trivial comment inline.
+>
+> Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
+>
+>> ---
+>>  backends/iommufd.c                 | 6 +++++-
+>>  hw/arm/smmuv3-accel.c              | 3 ++-
+>>  hw/vfio/iommufd.c                  | 7 +++++--
+>>  include/system/host_iommu_device.h | 2 ++
+>>  include/system/iommufd.h           | 3 ++-
+>>  5 files changed, 16 insertions(+), 5 deletions(-)
+> ...
+>
+>> diff --git a/include/system/host_iommu_device.h b/include/system/host_iommu_device.h
+>> index ab849a4a82..c6a2a3899a 100644
+>> --- a/include/system/host_iommu_device.h
+>> +++ b/include/system/host_iommu_device.h
+>> @@ -29,6 +29,7 @@ typedef union VendorCaps {
+>>   *
+>>   * @hw_caps: host platform IOMMU capabilities (e.g. on IOMMUFD this represents
+>>   *           the @out_capabilities value returned from IOMMU_GET_HW_INFO ioctl)
+> Blank line here to match local style. 
+>
+>> + * @max_pasid_log2: width of PASIDs supported by host IOMMU device
+>>   *
+>>   * @vendor_caps: host platform IOMMU vendor specific capabilities (e.g. on
+>>   *               IOMMUFD this represents a user-space buffer filled by kernel
+>> @@ -37,6 +38,7 @@ typedef union VendorCaps {
+>>  typedef struct HostIOMMUDeviceCaps {
+>>      uint32_t type;
+>>      uint64_t hw_caps;
+>> +    uint8_t max_pasid_log2;
+>>      VendorCaps vendor_caps;
+>>  } HostIOMMUDeviceCaps;
+>>  #endif
+>> diff --git a/include/system/iommufd.h b/include/system/iommufd.h
+>> index e852193f35..d3efcffc45 100644
+>> --- a/include/system/iommufd.h
+>> +++ b/include/system/iommufd.h
+>> @@ -71,7 +71,8 @@ int iommufd_backend_unmap_dma(IOMMUFDBackend *be, uint32_t ioas_id,
+>>                                hwaddr iova, ram_addr_t size);
+>>  bool iommufd_backend_get_device_info(IOMMUFDBackend *be, uint32_t devid,
+>>                                       uint32_t *type, void *data, uint32_t len,
+>> -                                     uint64_t *caps, Error **errp);
+>> +                                     uint64_t *caps, uint8_t *pasid_log2,
+>> +                                     Error **errp);
+>>  bool iommufd_backend_alloc_hwpt(IOMMUFDBackend *be, uint32_t dev_id,
+>>                                  uint32_t pt_id, uint32_t flags,
+>>                                  uint32_t data_type, uint32_t data_len,
 
 

@@ -4,96 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 866E8CCF9EB
-	for <qemu-arm@archiver.kernel.org>; Mon, 27 Oct 2025 15:53:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64793CCF9EB
+	for <qemu-arm@archiver.kernel.org>; Mon, 27 Oct 2025 15:55:09 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vDPWf-00075K-G6; Mon, 27 Oct 2025 11:52:53 -0400
+	id 1vDPYf-0008BV-JO; Mon, 27 Oct 2025 11:54:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vDPWe-00074y-PU
- for qemu-arm@nongnu.org; Mon, 27 Oct 2025 11:52:52 -0400
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1vDPYe-0008BL-VX
+ for qemu-arm@nongnu.org; Mon, 27 Oct 2025 11:54:57 -0400
+Received: from mail-yw1-x1135.google.com ([2607:f8b0:4864:20::1135])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vDPWV-0001Qw-W7
- for qemu-arm@nongnu.org; Mon, 27 Oct 2025 11:52:52 -0400
-Received: by mail-wr1-x42d.google.com with SMTP id
- ffacd0b85a97d-426f1574a14so3179591f8f.3
- for <qemu-arm@nongnu.org>; Mon, 27 Oct 2025 08:52:39 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1vDPYb-0001kE-2m
+ for qemu-arm@nongnu.org; Mon, 27 Oct 2025 11:54:56 -0400
+Received: by mail-yw1-x1135.google.com with SMTP id
+ 00721157ae682-7832691f86cso65153287b3.1
+ for <qemu-arm@nongnu.org>; Mon, 27 Oct 2025 08:54:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1761580357; x=1762185157; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=ogXZxyzPaxjWuprtWPOLHF5wOuMHCIeyn0aJmTaSpoA=;
- b=FB9Lc03R2CZYzz23hLOsviCEys8SNdVAfMl/t7ZXsdBWGRgXs5wLNvmOgHbMEmoQh+
- E7Oj1TlizsfdcLPOychj7OtlnXchvhoSQJ4cqDg9WDsw8nH0o37DSzdX3eH8y5QVD2YH
- 0sMnxNjkZLfGH2GIokGqRPUuCrfViu7UBtJ34sdiJiSj+PazOGVv0j9c2ioN2tC2RRmx
- 8TCy26X4glmN/bZNhg5OwiaMe95V/QuTy4IiVXW2NMTS1+YyNsYdKinIAln2grIqBklt
- dg10dD97ANX1t+jiLvb8KNbuIrLBzRZVHxApJRonGtPd5oCgynEAAuYDIFMy278XXkG7
- RQHw==
+ d=linaro.org; s=google; t=1761580489; x=1762185289; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=534W0gf88r0k0nhqi42TOYPRiaR4x055x+ZUe0CVgKc=;
+ b=FFUUWNp3+4DXvFIxZ3nmWGIgIphYmnxT813HFyg3UXKmI7N1+xyepL9rn0VioNXsiR
+ mWGL3ZJn1GN1jZBxSIzas1hkDjs0porQx9RDvtjr4u+XlnUCTWrK0aox3yGgQVAxqq1I
+ x3k40NOzTcUlId7uHMgq64Kw7VE+Mo7ptbuc637/uAVv0DvFGVlksj2UWFLbwrXbJahz
+ K3wKEwFFpUCAL5pi02a/eiyL5+Ty9vzbyor4CCcvLAsazUZgJy8pUGmacAjDCBkcgdkK
+ gza3VkUhXHXjDYCzDvTd2Ge+SyY6tDABlw4/UzmRwzY3KiI6lvcKrQqLSBXuO/MFQYXR
+ n6Jg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761580357; x=1762185157;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=ogXZxyzPaxjWuprtWPOLHF5wOuMHCIeyn0aJmTaSpoA=;
- b=J9kHV9LofPJzerM0UiWIP//CcNVvQeDAu/zNapq88JhZ1sge238EmywAsWVe0ekBYj
- egf7ca7o/diFOSye+D3ISxEIRXL435kjmMI7k3FFuzJjy7aXbv2yxkaCOwm6uEV/JRUe
- SBoCKUVrspcbOXbEDsUOx8hyaCARcV97dHwJerPLaE8Up5+Rok8p89P42WSEvpAwDMhM
- aqyqSCY/IgqzY6NHpsX4y8wEQ/h0brd6dsJEEADQAAScaZihPLlcvjPYskBwTb1Xhna0
- 5x0OOf9fhONVxRqo+1cSIryiXMxB9f5nCZsBQ4LX9cDxub6mU5t9FvuMs6rdxzPlf4C/
- wzYA==
+ d=1e100.net; s=20230601; t=1761580489; x=1762185289;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=534W0gf88r0k0nhqi42TOYPRiaR4x055x+ZUe0CVgKc=;
+ b=Efbg8U9zoIVD3m48HE5UWbfqH+1KVomi++yzQCcI9l7yfv3QUEWnzTG4IQJiNlAHTY
+ WpLYJb7OM7oHO/T+ShuK4aA2EniuJhduuy8wJmI/u6DsrBv4++aFv8IzcNT/bjUWoMVZ
+ ny/ftigUP2dGqFy2xe7HKHKaB8VB1a1eW4LPfSMnCLAZbc9mMixDpNhq7vyF/yu6d5J8
+ ccPSvUTfPRRUTbXNNq4WXRCL5dQrvysvFkGPustjpf2Dj9gn2HbqewRlqSl6RcBSJMTa
+ kuzX+EisNUi6YNH6qdPO0MTb4x19StmRktyW882aUN9qqH1qjp5qM+W0MytQgGbnFRXv
+ K3+Q==
 X-Forwarded-Encrypted: i=1;
- AJvYcCX1C5LeSw+lk74MnshcyKCqDkezDCdGRohg3Pp4XelBqyu1fMvqmTJ7G7kLCHx/sNUE9o+ZvxfWgg==@nongnu.org
-X-Gm-Message-State: AOJu0Yx4LcBqMe2u5ngVgP2I/uyBVhiWqrZhvwMn6w/um9jYDPcLLDKg
- DQqWITEHhzjZM4pCzYSvjt3QGTtK3LYVqbSWl4mK9z11lq3XED7gZOtRhxrXOuDdWjU=
-X-Gm-Gg: ASbGncshEVuo866IKNjrj3n51lzNs7fd00QhwAKuoGi+Dgl2JsYaC2p0Deu712oQAJC
- CnJFlYPFMsaUBLcAS6g8Yvh93hEjCr8y2y8BE9fFPf+btcyjVmRiYKyYZEKGHoHc51b1qGV04s2
- 3ej4r0Z1BDJG6XegSsr3olKDPuKxTvTaEl1rvsjfD2v4qRcp0ezBxlUAAWbJAUTNekJhrzVyV6N
- +r1DTQE+R4j6cEaSmbl4IcTpQuVSyYAUmXmbE3ZV4pDHbm3/MkDDTUUP47VoG9LB3B60kndHUVE
- N3SGdkjK3ut0r+LvXOV/m8HHmX1loucwGaa0aWf84r2NOu4YCDe1esHSsL310l5pJtMEvio+Xzg
- cW7jMxnraJm9PjqMc/EYhgN285k3Qk3KtyyBP0VmLUOU9U5s/aB5DmjVoSvu/TUaCo/H3ymOoqZ
- Z6K0EPwZDZ322f4bzhYn7a0Ugz/HRaTQeZ4fgtSi7TtD/rmEDSozOPpFg=
-X-Google-Smtp-Source: AGHT+IFJ1rYxb38BcPzvJi4w2kIpfoHD2jfv8K/V341TSmca0B3jWuLres9cuJYCpfrHmw37/t8szg==
-X-Received: by 2002:a5d:5d07:0:b0:427:652:b7ff with SMTP id
- ffacd0b85a97d-429a7e91e75mr149714f8f.60.1761580356742; 
- Mon, 27 Oct 2025 08:52:36 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:404:4d10:9f16:e9b1:dc97:28e6?
- ([2a01:e0a:404:4d10:9f16:e9b1:dc97:28e6])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-429952d5768sm15340127f8f.24.2025.10.27.08.52.33
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 27 Oct 2025 08:52:36 -0700 (PDT)
-Message-ID: <792a06cd-302c-46a5-997c-026cb67f8f2e@linaro.org>
-Date: Mon, 27 Oct 2025 16:52:31 +0100
+ AJvYcCXatzRyhGUzs6ia+KBX91RqAxuYDyqTet/pZabSzqzV8rS7yYY7vPFvvt2ckEyI/sbLZ5+THTSs3w==@nongnu.org
+X-Gm-Message-State: AOJu0Yy3fpzDsexEeX/oLFwR84OGFec+6A2PQ1MPImToFW8AViTwfAqC
+ laPUQgMXgigd3fV3ONnHz1hfNbIkKzV7ibRdGyY0Az39f9SUAjs4y8lHybha4gTx3CY9hXUUONO
+ +6EiAFQy1CKp+ZE4k1CQ2SJJR9Uq3yx8uyBwPKHFvRQ==
+X-Gm-Gg: ASbGncvJmQ7Q4retKvlakuTBG2QgLMDSUnsIa/sIFk5RddagFOK3C4Nmx3Metn+kQoV
+ M/6dC0oCpyg+ODrnZlgHaYLD8Uw0RO8v7z6+iWEff390/YhD9zspXzsJGPRWlDsdzTt2I4DFqlZ
+ NKIUlP5/nH/IKCL7G9TAAH1ACQHTpZYGceqSB6GWRpbhb/Mjt2+cWaoaFFGOzwVJF5D5XnClDJP
+ 2uOe5Oe/zd14pNvSyemf9fq6TtD2+KMeS/2X6JW732NrGSoLCqDN0t7+TzCtQ==
+X-Google-Smtp-Source: AGHT+IHwDmrvh1yhQoDkKBtbYbt5ChlKJQtJy7NeC5ljO4ls29LThOtWrX4JzpUrHBD7XNdjZomrvP7qZklUiJweLoU=
+X-Received: by 2002:a05:690c:88b:b0:785:ca0f:b357 with SMTP id
+ 00721157ae682-78617ff8d4emr2864737b3.58.1761580489509; Mon, 27 Oct 2025
+ 08:54:49 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC v2 2/2] tests/qtest: add SMMUv3 smoke test using
- smmu-testdev DMA source
-To: Tao Tang <tangtao1634@phytium.com.cn>,
- =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-Cc: Eric Auger <eric.auger@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, Chen Baozi <chenbaozi@phytium.com.cn>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Jean-Philippe Brucker <jean-philippe@linaro.org>,
- Mostafa Saleh <smostafa@google.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>
-References: <20250930165340.42788-1-tangtao1634@phytium.com.cn>
- <20250930165340.42788-3-tangtao1634@phytium.com.cn>
- <87jz0lnan1.fsf@draig.linaro.org>
- <ce64f4a2-75a0-442c-a26f-7391a378e8d0@phytium.com.cn>
-Content-Language: en-US
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-In-Reply-To: <ce64f4a2-75a0-442c-a26f-7391a378e8d0@phytium.com.cn>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-wr1-x42d.google.com
+References: <20251016202044.75261-1-mohamed@unpredictable.fr>
+In-Reply-To: <20251016202044.75261-1-mohamed@unpredictable.fr>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 27 Oct 2025 15:54:38 +0000
+X-Gm-Features: AWmQ_bmZk_C6Nd8lpxfl8TluecCBX-hQSvMpYShzqn2w0sod-vN8Db5r7yoXXXk
+Message-ID: <CAFEAcA9nTQx-gEjvh-WO5RvS0D+qpMMmbB4UseC1ZhGcwrRgHQ@mail.gmail.com>
+Subject: Re: [PATCH v9 00/24] WHPX support for Arm
+To: Mohamed Mediouni <mohamed@unpredictable.fr>
+Cc: qemu-devel@nongnu.org, Pedro Barbuda <pbarbuda@microsoft.com>,
+ qemu-arm@nongnu.org, 
+ Paolo Bonzini <pbonzini@redhat.com>, Phil Dennis-Jordan <phil@philjordan.eu>, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ Richard Henderson <richard.henderson@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1135;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1135.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -116,193 +98,28 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Tao,
-
-On 2025-10-27 16:26, Tao Tang wrote:
-> Hi Alex,
-> 
-> On 2025/10/23 19:02, Alex Bennée wrote:
->> tangtao1634 <tangtao1634@phytium.com.cn> writes:
->>
->>> From: Tao Tang <tangtao1634@phytium.com.cn>
->>>
->>> Introduce a bare-metal qtest that drives the new smmu-testdev to exercise
->>> the SMMUv3 emulation without guest firmware or drivers. The test programs
->>> a minimal Non-Secure context (STE/CD/PTE), triggers a DMA, and asserts
->>> translation results.
->>>
->>> Motivation
->>> ----------
->>> SMMU testing in emulation often requires a large software stack and a
->>> realistic PCIe fabric, which adds flakiness and obscures failures. This
->>> qtest keeps the surface small and deterministic by using a hermetic DMA
->>> source that feeds the SMMU directly.
->>>
->>> What the test covers
->>> --------------------
->>> * Builds a Non-Secure STE/CD/PTE for a chosen stream_id/ssid.
->>> * Primes source and destination host buffers.
->>> * Kicks a DMA via smmu-testdev and waits for completion.
->>> * Verifies translated access and payload equality.
->>>
->>> Non-goals and scope limits
->>> --------------------------
->>> * Secure bank flows are omitted because Secure SMMU support is still RFC.
->>>     A local Secure test exists and can be posted once the upstream series
->>>     lands.
->>> * PCIe discovery, MSI/INTx, ATS/PRI, and driver bring-up are out of scope
->>>     as smmu-testdev is not a realistic PCIe Endpoint nor a platform device.
->>>
->>> Rationale for a dedicated path
->>> ------------------------------
->>> Using a generic PCI or virtio device would still require driver init and a
->>> richer bus model, undermining determinism for this focused purpose. This
->>> qtest, paired with smmu-testdev, keeps failures attributable to the SMMU
->>> translation path.
->>>
->>> Finally we document the smmu-testdev device in docs/specs.
->>>
->>> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
->>> ---
->>> ------------------------------<snip>------------------------------
->>>
->>>
->>>
->>> ------------------------------<snip>------------------------------
->>> +
->>> +    /* Find device by vendor/device ID to avoid slot surprises. */
->>> +    dev = NULL;
->> might as well init when you declare.
->>
->>> +    g_assert_nonnull(dev);
->> surely g_assert(dev) would do.
->>
->>> +    const uint32_t modes[] = { 0u, 1u, 2u }; /* Stage1, Stage2, Nested stage */
->>> +    const SMMUTestDevSpace spaces[] = { STD_SPACE_NONSECURE };
->> top of block.
-> 
-> 
-> Thank you very much for your valuable feedback. Also I will refactor
-> these codes with the guide of summarized plans as described in patch #1.
-> 
->>
->>> +    /* Use attrs-DMA path for end-to-end */
->>> +    qpci_io_writel(dev, bar, STD_REG_DMA_MODE, 1);
->>> +    for (size_t mi = 0; mi < sizeof(modes) / sizeof(modes[0]); mi++) {
->>> +        const SMMUTestDevSpace *s1_set = NULL;
->>> +        size_t s1_count = 0;
->>> +        const SMMUTestDevSpace *s2_set = NULL;
->>> +        size_t s2_count = 0;
->>> +
->>> +        switch (modes[mi]) {
->>> +        case 0u:
->>> +        case 1u:
->>> +        case 2u:
->>> +            s1_set = spaces;
->>> +            s1_count = sizeof(spaces) / sizeof(spaces[0]);
->>> +            s2_set = spaces;
->>> +            s2_count = sizeof(spaces) / sizeof(spaces[0]);
->>> +            break;
->>> +        default:
->>> +            g_assert_not_reached();
->>> +        }
->>> +
->>> +        for (size_t si = 0; si < s1_count; si++) {
->>> +            for (size_t sj = 0; sj < s2_count; sj++) {
->>> +                qpci_io_writel(dev, bar, STD_REG_TRANS_MODE, modes[mi]);
->>> +                qpci_io_writel(dev, bar, STD_REG_S1_SPACE, s1_set[si]);
->>> +                qpci_io_writel(dev, bar, STD_REG_S2_SPACE, s2_set[sj]);
->>> +                qpci_io_writel(dev, bar, STD_REG_TRANS_DBELL, 0x2);
->>> +                qpci_io_writel(dev, bar, STD_REG_TRANS_DBELL, 0x1);
->>> +
->>> +                uint32_t st = qpci_io_readl(dev, bar,
->>> +                                            STD_REG_TRANS_STATUS);
->>> +                g_test_message("build: stage=%s s1=%s s2=%s status=0x%x",
->>> +                                std_mode_to_str(modes[mi]),
->>> +                                std_space_to_str(s1_set[si]),
->>> +                                std_space_to_str(s2_set[sj]), st);
->>> +                /* Program SMMU registers in selected control bank. */
->>> +                smmu_prog_minimal(qts, s1_set[si]);
->>> +
->>> +                /* End-to-end DMA using tx_space per mode. */
->>> +                SMMUTestDevSpace tx_space =
->>> +                    (modes[mi] == 0u) ? s1_set[si] : s2_set[sj];
->>> +                uint32_t dma_attrs = ((uint32_t)tx_space << 1);
->>> +                qpci_io_writel(dev, bar, STD_REG_DMA_ATTRS,
->>> +                                dma_attrs);
->>> +                qpci_io_writel(dev, bar, STD_REG_DMA_DBELL, 1);
->>> +                /* Wait for DMA completion and assert success. */
->>> +                {
->>> +                    uint32_t dr = poll_dma_result(dev, bar, qts);
->>> +                    uint32_t exp = expected_dma_result(modes[mi],
->>> +                                                        spaces[si],
->>> +                                                        spaces[sj]);
->>> +                    g_assert_cmpuint(dr, ==, exp);
->>> +                    g_test_message("polling end. attrs=0x%x res=0x%x",
->>> +                                   dma_attrs, dr);
->>> +                }
->>> +                /* Clear CD/STE/PTE built by the device for next round. */
->>> +                qpci_io_writel(dev, bar, STD_REG_TRANS_CLEAR, 1);
->>> +                g_test_message("clear cache end.");
->>> +            }
->>> +        }
->>> +    }
->> I suspect this function could be broken up a bit as new tests are added
->> and functionality shared?
-> 
-> 
-> Sure. I've actually been thinking along the same lines. As I plan for
-> future tests, I'm considering how best to organize the test cases given
-> the numerous combinations of features we'll need to cover. For example,
-> beyond iterating through security states and translation stages, we will
-> also need to test many other parameters, such as:
-> 
-> - Linear vs. two-level Stream Tables
-> 
-> - Different Output Address Sizes (Although only support 44bits in
-> current SMMU implementation)
+On Thu, 16 Oct 2025 at 21:20, Mohamed Mediouni <mohamed@unpredictable.fr> wrote:
+>
+> Link to branch: https://github.com/mediouni-m/qemu whpx (tag for this submission: whpx-v9)
+>
+> Missing features:
+> - PSCI state sync with Hyper-V
+> - Interrupt controller save-restore
+> - SVE register sync
+>
+> Known bugs:
+> - reboots when multiple cores are enabled are currently broken
+> - U-Boot still doesn't work (hangs when trying to parse firmware) but EDK2 does.
+>
+> Known issues (outside of this patchset)
+> - Qemu on Windows seems to have regressed at least with the GTK backend in ways that broke
+> virtio-gpu and ramfb, but this also affects TCG...
 >
 
-Reading through this, I start to wonder if we will not end up rewriting 
-a full SMMU driver by accident. The problem with SMMU development is 
-that from the outside, it seems to be "just a device translating DMA 
-accesses". In reality, the "just" means we have a stateful device, 
-configured from possibly different parts in a software stack. For 
-example, with Realms, TF-A, RMM, and kernel all contribute to this state.
+FYI, only patches 1 to 10 seem to have made it to the list:
 
-A possible analogy would be if we used a QTest device to test QEMU MMU 
-implementation, instead of simply relying on running a kernel exercising 
-this code.
+https://lore.kernel.org/qemu-devel/20251016202044.75261-1-mohamed@unpredictable.fr/
 
-That said, it's still useful for some basic scenarios, but I'm not sure 
-it's the ultimate answer for complex use cases, and thus, it should not 
-try to cover it.
-As well, this brings the question of which kind of solution we would 
-need for that. It seems that one need would be to check the SMMU "state" 
-from user space, which moves the problem on having a driver able to poke 
-this state.
-
-> My question to you and the wider group is, how far should we go in
-> covering these combinations for an initial smoke test? The current loops
-> for security state and translation stage cover the basics, but I'm
-> wondering if we should aim for more complexity at this stage, or if
-> that's a task for future patches. I'd be very interested to hear
-> everyone's opinion on the right scope.
->
-
-We have to start somewhere, so something simple and not trying to solve 
-all use cases is the right approach. It can even just be read/write 
-config/registers before trying to add any DMA scenario.
-
-> In any case, your suggestion to break the current test logic into
-> smaller, shared functions is definitely the right first step to manage
-> the structure. I will refactor the code accordingly in the next version.
-> 
-> Thanks again for the valuable suggestion!
-> 
-> Best regards,
-> 
-> Tao
-> 
-
+thanks
+-- PMM
 

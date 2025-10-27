@@ -4,113 +4,114 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15FDFCCF9E0
-	for <qemu-arm@archiver.kernel.org>; Mon, 27 Oct 2025 17:29:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C20DCCCF9E0
+	for <qemu-arm@archiver.kernel.org>; Mon, 27 Oct 2025 17:39:07 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vDR1b-0001fw-Ee; Mon, 27 Oct 2025 13:28:55 -0400
+	id 1vDRAs-0003mv-3S; Mon, 27 Oct 2025 13:38:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vDR1Y-0001fG-Dz
- for qemu-arm@nongnu.org; Mon, 27 Oct 2025 13:28:53 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1vDRAn-0003m9-Il
+ for qemu-arm@nongnu.org; Mon, 27 Oct 2025 13:38:27 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vDR1Q-0005pR-78
- for qemu-arm@nongnu.org; Mon, 27 Oct 2025 13:28:51 -0400
+ id 1vDRAf-00075j-O7
+ for qemu-arm@nongnu.org; Mon, 27 Oct 2025 13:38:25 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1761586119;
+ s=mimecast20190719; t=1761586693;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=nLIboskL/rQ/k7TUMmbaT8PpA+hD/Sk2wIipoyR6JjE=;
- b=U/gmkKM0Hjvod2WE9y9Z3myXmXed9364rcc7kU1SpiRpkQrP4n3rXOIAAoTyinFMi1JJLr
- st8bw6BR6Crvd7IGnYOa8vdzCCAl3aMnhOFbqaZxdnyJRJrpatp86NLGUsJ/vGAD+xY+gQ
- fR3N3oDHJxn3ZuDDOQVh5qmzvLINt3Q=
+ bh=x7ljtdk6QTU3Cuz3gyrAiBhi8Funmosax55z7rWz2uQ=;
+ b=LV1glGeMR/uJ9Anmpuv9O7HsoTELyt62vDyaIroRDKjUin21GrhfQb254gT2kMCSYr8br0
+ y2VjSLiSJ8gjbgNiqJG310VS6eY3hiKlVnkKrvfHNXUuS7WB7MraFmckvkARgTde/SS2QZ
+ QakRukKvYKoLe1o2jrH3XCeO0tEAXQU=
 Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
  [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-680-XWS_AP-zOIe-0xzd2xfgxQ-1; Mon, 27 Oct 2025 13:28:37 -0400
-X-MC-Unique: XWS_AP-zOIe-0xzd2xfgxQ-1
-X-Mimecast-MFC-AGG-ID: XWS_AP-zOIe-0xzd2xfgxQ_1761586116
+ us-mta-517-dk2ypSqdPM-0nfxs9mIReg-1; Mon, 27 Oct 2025 13:38:12 -0400
+X-MC-Unique: dk2ypSqdPM-0nfxs9mIReg-1
+X-Mimecast-MFC-AGG-ID: dk2ypSqdPM-0nfxs9mIReg_1761586691
 Received: by mail-wr1-f70.google.com with SMTP id
- ffacd0b85a97d-4256fae4b46so3823909f8f.0
- for <qemu-arm@nongnu.org>; Mon, 27 Oct 2025 10:28:37 -0700 (PDT)
+ ffacd0b85a97d-426d4f59cbcso3820502f8f.1
+ for <qemu-arm@nongnu.org>; Mon, 27 Oct 2025 10:38:12 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761586116; x=1762190916;
+ d=1e100.net; s=20230601; t=1761586691; x=1762191491;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:reply-to:user-agent:mime-version:date
  :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=nLIboskL/rQ/k7TUMmbaT8PpA+hD/Sk2wIipoyR6JjE=;
- b=NF3ZBaCmBFYgJcjSDfATxEuZ1BrP5nzuuKt5mJnAqhFeXA6YAioKjJZs5vduTolfwr
- 0Da+BFXJNfHAFdq4jrDGJXR17RLwfVmG1e/KDFe4mweE7aw7Mh5mrLbWR5uwMvVL4bZO
- 7sluKEw+gDe7Osuql7rcHo2MuPzNdWad/Hhhwkp6w5l0293jfL6oF/MV0Jwx61unlkem
- ZNXaFl1vLXPE1X/CSY6bCsxZdHXKcPa1Y4Pktsicfh0GtB1khcz1OC3r7zaTN6GOQdpC
- f+F7YQ1a2uNK24cptKATK9S7zXuhGy7saLsFA6DuafzaAuDqrMII+MU9i57qL7PypiTm
- PHeA==
+ bh=x7ljtdk6QTU3Cuz3gyrAiBhi8Funmosax55z7rWz2uQ=;
+ b=G/Nmxj/dENsCG/ysqSbbJKcUApPZAKVuyuTPJZLntjwxYz67TBMolHwshHdGxPNWpc
+ MH/3iwAphkP8uX/jCXHryVcIcovsUn4BZ2y0GbKx5nr0mmbYFUimpBiCtkvjsCPBfsl3
+ r8/1KXNNNZnwQCeCUChGRaAwoFsODZRHfqMVQrJNKHVuYzm8FJVSt5cG1CMuHyVVLw1W
+ kqCaCOcyuP63bzJN7rfsBzUEYXrAljCZNsmYqLA16FRnnD+88EKV1PdyuZlx+Krnp88L
+ Zzb9jUHNY6oDPmp8uFHMlZg9iCxJheaxxnrywNmrLpTG3YIc5P+0Eqj3CntjwlqQFJbC
+ msFA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXzXPacyG8Ah+FSRqqexQ1iQHx7d8bxUNw9rp0YQzxOxcg8KnVdzzHKUqJyIbDlo/BlWaGGmRMJqg==@nongnu.org
-X-Gm-Message-State: AOJu0YxZEcK9dbrw7DA2M9hJZM/sncWakzXWzBqY3p6Se08LcpgIC/S8
- wMlkQoscbEBATlAewLGzLPmhLwqXTF3LPZrk6IbinKpjCyWd7aIv0jghysXRGBm0bghnTKQy62B
- BLHOiSavmTBDgCf/0Y6Lsys/4U3U++/35ce+au9xeKVhDKuKbquru3g==
-X-Gm-Gg: ASbGncv2aMZwiqzu0uM2B1qAs9GNam8NuLqzb5UpfD1rQJzRYfiZR8gJQDwrRMX55uv
- ejUPQmTkxDy0ac+Xw5fMaeEZSj/eyyOTstd9qhbecxk+Vl51AZELO0dxnuh+A2ox19TbWJAIOCI
- 0vvkTomJc5s2WSMtxmenTBpF/y7mLDHyAgenkf9qaflvN9808ZDYQXIupN2BCpNSlLOMgSBATrg
- ET7NOstoVjx7J6dXMZw9lbr1q8k02ry68bAF8xVcSMTDJOeQB3Fixz530NqPWIK93mZjbT56Ax7
- lcM5JMlJMmZlPai/p3C8/pJVYEn98/8E4ygfdJr9imhJIFNJ1Bs1U00SAAJe04vO8fuGg502LCv
- N2b+gEsJr7UZ+gs/6GRmvqEXLjSlvru9iLhP9AO0r9/epMQ==
-X-Received: by 2002:a05:6000:2381:b0:3eb:5245:7c1f with SMTP id
- ffacd0b85a97d-429a7e35cddmr401038f8f.2.1761586116442; 
- Mon, 27 Oct 2025 10:28:36 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEECNBbkkanBJOCmuNxECWe+RldEe86PX/D9bIC19yYKIgd0pa9jybRTI0BhR2KBrdbIOQcEQ==
-X-Received: by 2002:a05:6000:2381:b0:3eb:5245:7c1f with SMTP id
- ffacd0b85a97d-429a7e35cddmr401017f8f.2.1761586116023; 
- Mon, 27 Oct 2025 10:28:36 -0700 (PDT)
+ AJvYcCVF2kCoW7u+MMPL6OwgQYb6OCk6T+Jpu82vXgPS8TFja4K99FyJazx2KffKixcpMG7dGs2NLoRonQ==@nongnu.org
+X-Gm-Message-State: AOJu0YzkT5MjVsoIbMkmybPd5j2lsY1En7iTZduJcFQLEvb2d4srW6F6
+ vkX9QF4Cvw1Rijx9F6KWwNHh502xxAxlfvg4ayutPGOeD/B1g+CRBb1sMdxvhdAeACloCa57Sf/
+ G3ZXoVxPtoT1A6eX2DewFTZXB4KnYBkm0kaJVT+mR4FR9jWbAxExExQ==
+X-Gm-Gg: ASbGncvYQ7DB7SO0QHYLOeVKKMG0xm29lyMrMHlc3e6gZg7JE7ZURHfSP8QrQNJkfaM
+ Fp3kE7SEoPpTXhfhXiFvSTLSszf2b6DbDxVkQvkHTXa+04IhzWS/gdKWpGNRE043arGKlOG50I/
+ geuw+KLT0C3Ef9rIbYNbViMrXmf9b+6qEwXAP2J1heVOb8Ql7fUnjw2LO6MI+y9xHt+Cr7fRg8B
+ 4oHXTPPPJz5WaVPhJFVnljDUAfFHliS0i47DM806isB+lVu6D2XvyviD0VXVgENA5hpdea3+2GG
+ p1xfSUubSTg/B0R4a6Qicm409pRtyivRSKpC8L0Ri4Jfnz8unVnM/elsAartjR1/leQwGgXvpXV
+ XjzzTCoRQhDA/Uoa0TNn0lRtTQP3MGqwtE50rxcgPmiykVg==
+X-Received: by 2002:a05:6000:4021:b0:411:3c14:3ad9 with SMTP id
+ ffacd0b85a97d-429a81c3e34mr325747f8f.21.1761586691064; 
+ Mon, 27 Oct 2025 10:38:11 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFbvlTRZt7VPRuhOMxtoSO3lpojw9R9eWb+Wpc8TeWzgrwqJsZgm+cDvZywMwLBZ0Jajp3nsQ==
+X-Received: by 2002:a05:6000:4021:b0:411:3c14:3ad9 with SMTP id
+ ffacd0b85a97d-429a81c3e34mr325722f8f.21.1761586690655; 
+ Mon, 27 Oct 2025 10:38:10 -0700 (PDT)
 Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
  ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-429952b7ce1sm15144251f8f.0.2025.10.27.10.28.34
+ ffacd0b85a97d-429952e2e06sm15436900f8f.46.2025.10.27.10.38.09
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 27 Oct 2025 10:28:35 -0700 (PDT)
-Message-ID: <c2c6a1ec-1590-4eaf-b59a-a2dc3b5ed260@redhat.com>
-Date: Mon, 27 Oct 2025 18:28:34 +0100
+ Mon, 27 Oct 2025 10:38:10 -0700 (PDT)
+Message-ID: <25d22f06-69e2-4954-9bd9-f73f899fc114@redhat.com>
+Date: Mon, 27 Oct 2025 18:38:08 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 25/27] backends/iommufd: Add a callback helper to
- retrieve PASID support
-To: Shameer Kolothum <skolothumtho@nvidia.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, jgg@nvidia.com, nicolinc@nvidia.com,
+Subject: Re: [PATCH v4 22/27] hw/arm/smmuv3-accel: Add support for ATS
+To: Nicolin Chen <nicolinc@nvidia.com>
+Cc: Shameer Kolothum <skolothumtho@nvidia.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, peter.maydell@linaro.org, jgg@nvidia.com,
  ddutile@redhat.com, berrange@redhat.com, nathanc@nvidia.com,
  mochs@nvidia.com, smostafa@google.com, wangzhou1@hisilicon.com,
  jiangkunkun@huawei.com, jonathan.cameron@huawei.com,
  zhangfei.gao@linaro.org, zhenzhong.duan@intel.com, yi.l.liu@intel.com,
  shameerkolothum@gmail.com
 References: <20250929133643.38961-1-skolothumtho@nvidia.com>
- <20250929133643.38961-26-skolothumtho@nvidia.com>
+ <20250929133643.38961-23-skolothumtho@nvidia.com>
+ <26f4d9b2-75be-4913-bb60-01e647a7ec83@redhat.com>
+ <aP+oRLu/BYNaAPHG@Asurada-Nvidia>
 From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20250929133643.38961-26-skolothumtho@nvidia.com>
+In-Reply-To: <aP+oRLu/BYNaAPHG@Asurada-Nvidia>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: MAo-rtPyeW_0xzH684G6P5rtm4RfPNZUWocrpIy6wC0_1761586116
+X-Mimecast-MFC-PROC-ID: Zeqed0H6syFMRd2-m2BsH9vXk5LgnvweAeUNMPpZLfE_1761586691
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124;
+Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
- DKIM_SIGNED=0.1, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001,
- RCVD_IN_MSPIKE_WL=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -127,85 +128,57 @@ Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Shameer,
 
-On 9/29/25 3:36 PM, Shameer Kolothum wrote:
-> Subsequent patch will make use of this to add a PASID CAP for assigned devices.
+
+On 10/27/25 6:13 PM, Nicolin Chen wrote:
+> Hi Eric,
 >
-> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
-> ---
->  backends/iommufd.c                 |  9 +++++++++
->  include/system/host_iommu_device.h | 12 ++++++++++++
->  2 files changed, 21 insertions(+)
->
-> diff --git a/backends/iommufd.c b/backends/iommufd.c
-> index 023e67bc46..0ff46a5747 100644
-> --- a/backends/iommufd.c
-> +++ b/backends/iommufd.c
-> @@ -523,6 +523,14 @@ bool host_iommu_device_iommufd_detach_hwpt(HostIOMMUDeviceIOMMUFD *idev,
->      return idevc->detach_hwpt(idev, errp);
->  }
->  
-> +static uint8_t hiod_iommufd_get_pasid(HostIOMMUDevice *hiod, uint64_t *hw_caps)
-I would call it hiod_iommufd_get_max_pasid_log2 instead.
-> +{
-> +    HostIOMMUDeviceCaps *caps = &hiod->caps;
-> +
-> +    *hw_caps = caps->hw_caps;
-> +    return caps->max_pasid_log2;
-> +}
-> +
->  static int hiod_iommufd_get_cap(HostIOMMUDevice *hiod, int cap, Error **errp)
->  {
->      HostIOMMUDeviceCaps *caps = &hiod->caps;
-> @@ -543,6 +551,7 @@ static void hiod_iommufd_class_init(ObjectClass *oc, const void *data)
->      HostIOMMUDeviceClass *hioc = HOST_IOMMU_DEVICE_CLASS(oc);
->  
->      hioc->get_cap = hiod_iommufd_get_cap;
-> +    hioc->get_pasid = hiod_iommufd_get_pasid;
-same for the cb name
->  };
->  
->  static const TypeInfo types[] = {
-> diff --git a/include/system/host_iommu_device.h b/include/system/host_iommu_device.h
-> index c6a2a3899a..3773c54977 100644
-> --- a/include/system/host_iommu_device.h
-> +++ b/include/system/host_iommu_device.h
-> @@ -115,6 +115,18 @@ struct HostIOMMUDeviceClass {
->       * @hiod: handle to the host IOMMU device
->       */
->      uint64_t (*get_page_size_mask)(HostIOMMUDevice *hiod);
-> +    /**
-> +     * @get_pasid: Get PASID support information along this
-> +     *             @hiod Host IOMMU device
-> +     * Optional callback. If not implemented, PASID not supported
-> +     *
-> +     * @hiod: handle to the host IOMMU device
-> +     *
-> +     * @out_hw_caps: Output the generic iommu capability info which includes
-> +     *               device PASID CAP info
+> On Mon, Oct 27, 2025 at 05:59:13PM +0100, Eric Auger wrote:
+>> On 9/29/25 3:36 PM, Shameer Kolothum wrote:
+>>> QEMU SMMUv3 does not enable ATS (Address Translation Services) by default.
+>>> When accelerated mode is enabled and the host SMMUv3 supports ATS, it can
+>>> be useful to report ATS capability to the guest so it can take advantage
+>>> of it if the device also supports ATS.
+>>>
+>>> Note: ATS support cannot be reliably detected from the host SMMUv3 IDR
+>>> registers alone, as firmware ACPI IORT tables may override them. The
+>>> user must therefore ensure the support before enabling it.
+>> This looks incomplete to me. ATS is a big topic in itself. I would
+>> prefer we do not advertise it until we do not have full support for it
+>> (including emulation). Comparing to
+>> c049bf5bb9dd ("intel_iommu: Add support for ATS") which was recently
+>> contributed we miss at least translation request implementations
+>> (PCIIOMMUOps ats_request_translation callback implementation).
+>>
+>> See:
+>> https://lore.kernel.org/all/20250628180226.133285-11-clement.mathieu--drif@eviden.com/#r
+> In accelerated SMMUv3 case, ATS translation and invalidation are
+> done by the physical SMMU. Wondering why do we need this?
 
-I would precise this corresponds to kernel bitmap of enum iommufd_hw_capabilities
+in 06/27 you still can have emulated EPs hotplugged in the loop, no?
 
-> +     * Returns the width of PASIDs. Zero means no PASID support
-> +     */
-> +     uint8_t (*get_pasid)(HostIOMMUDevice *hiod, uint64_t *out_hw_caps);
-ditto. But actually even get_pasid_max_pasid_log2 is not very well
-suited as it returns both iommu_hw_capabilities and max_pasid_log2.
-and this can now be easily mixed up with the other get_cap() callback.
-
-Why can't we use hiod_iommufd_get_cap() cb instead that would return an
-uint64_t instead. we could easily add new cap value for max_pasid_log2
-and output_hw_capabilities.
-
-Or do I miss something?
+I remember some discussions with Peter who was also reluctant in general
+to introduce some partial feature support. I think in general this is a
+good policy to have features emulated and then accelerated. That's also
+good for testing in case we can bring up some test env.
 
 Thanks
 
 Eric
-
->  };
->  
->  /*
+>
+> IIRC, intel is mixing their emulated translation and accelerated
+> one, and their pasid table is not integrated like SMMU's CD table
+> that we already passed entirely via the STE.
+>
+>> Also in SMMU spec I see other stuff like STE.EATS, ATS skipping stage 1,
+>> ... Here I only see  SMMU_CMD_ATC_INV and this is only implemented for
+>> accel. I think I would rather stick to the minimum in this series, ie.
+>> reject in case of ATS mismatch (for testing purpose you will just need a
+>> small hack until we get ATS support), work on ATS enablement in parallel
+> That SMMU_CMD_ATC_INV seems to be the only thing we need for ATS..
+>
+> Thanks
+> Nicolin
+>
 
 

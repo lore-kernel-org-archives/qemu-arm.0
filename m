@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B051CCF9E0
-	for <qemu-arm@archiver.kernel.org>; Mon, 27 Oct 2025 11:07:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DBFA7CCF9EC
+	for <qemu-arm@archiver.kernel.org>; Mon, 27 Oct 2025 11:07:39 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vDL2I-0001Y4-P8; Mon, 27 Oct 2025 07:05:15 -0400
+	id 1vDL2R-0001gz-J1; Mon, 27 Oct 2025 07:05:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vDL20-00012B-2F
- for qemu-arm@nongnu.org; Mon, 27 Oct 2025 07:04:56 -0400
-Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
+ id 1vDL2E-0001NQ-Bd
+ for qemu-arm@nongnu.org; Mon, 27 Oct 2025 07:05:10 -0400
+Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vDL1S-0005b6-Bg
- for qemu-arm@nongnu.org; Mon, 27 Oct 2025 07:04:55 -0400
-Received: by mail-ed1-x52d.google.com with SMTP id
- 4fb4d7f45d1cf-63c0eb94ac3so7997588a12.2
- for <qemu-arm@nongnu.org>; Mon, 27 Oct 2025 04:03:50 -0700 (PDT)
+ id 1vDL1Z-0005g6-AD
+ for qemu-arm@nongnu.org; Mon, 27 Oct 2025 07:05:09 -0400
+Received: by mail-ed1-x534.google.com with SMTP id
+ 4fb4d7f45d1cf-63bdfd73e6eso10284692a12.0
+ for <qemu-arm@nongnu.org>; Mon, 27 Oct 2025 04:03:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1761563028; x=1762167828; darn=nongnu.org;
+ d=linaro.org; s=google; t=1761563036; x=1762167836; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=XBaCUU+RDMe8Fm+rMDPlvgrTnuTfYc8fUoPcpfBGUms=;
- b=ZDl8/9Qt7Y+doaQTj+12ng6xydqfPt/krMdiLGH2c8sRHW2/MR1d6UTHR+Cw1U3zgs
- ytFzHernRvt56Q1+3L4GfLVrV+biOnyJc+IDJ0e+Vus4wl5nKcCmgkph6qq5cZk8Za0x
- QJ7rIe9MUw9sR3hKbh+Recs+jIu3lkRmixHU6n/XGgg0kMMAIIrc+khWrC+Je3dKfVVy
- Xm/0NKmCoQB4WRDxMtPJtRfAoyJCXE7o0c32zfGTXJVUKnBuDOvwyebuAwPubIwOHWoa
- hcsAaA3Ca4oYkmqryKkUVk1LMnw7+5xnyJscPWQRUHplnSTox51jdVGmyILpRUUzFY6D
- vw5w==
+ bh=6tc/ncHQ43H5RAM4g98aEerDqB5nJ7XC9XRTlxHTgjE=;
+ b=RC6W0lZoe2DPpgJuvPbnkpvI2CHFJov4P0RbMXSvPm5HiBQeFPMU0tGjvk1zxiVRET
+ jhJMbdR6idwvZX3aHQREyEDAHhx085ycv1byqAWs4uwawbAMwPjmT/otbcOOTBZccD7M
+ EV4FqvKtJ/oOV5gbVkR/QKr722By5jaOjkaTmB3iF4320yERYvkYadfvKwJjIdR3qL5f
+ NQo1t+HspSB+QYfao4l82rlR01T8yr4hz12E5phYJbNQUQvu/qnx7GWKtKhujEt4hoSu
+ lOULW40XFfd5detS3bPn73JF88QKM4rFezPilpqVPGhhJ91Ljcc/hRxMpkMuMQ0mmeOo
+ Trkg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761563028; x=1762167828;
+ d=1e100.net; s=20230601; t=1761563036; x=1762167836;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=XBaCUU+RDMe8Fm+rMDPlvgrTnuTfYc8fUoPcpfBGUms=;
- b=izTe8ulppOPYEjKQPiJs2LjxJQioZWPiL6+MW6A3VpM+mB3qSymFF8eXmIuknBJVAO
- nFCl2sPCMwptrskZxPeif9TzDJER2OAUxg8cK8zxj34TnSZIwBTlqSoKX3EcLmOZBesj
- MJ1CfehAcOH+u6yqwt0UryVy9CWO7wVihsvj8mO6cfTZoSp6IElspNVUuxYjE0TAKPFy
- mG5+gRKhngk4SORi+ftaFuOhutYlVMnpsKf/jwPWcV4DahbcXVu10WfyIk7A57gr2W2N
- cQb/LPDlueWkzeMF+P/05gR0+29+jsrxKk9CGDY/qfgnYc6meWTva0F6kNo09H+v0XhZ
- j7Rw==
+ bh=6tc/ncHQ43H5RAM4g98aEerDqB5nJ7XC9XRTlxHTgjE=;
+ b=lVymdJKBov0+DcegLWT74kPKeR4AxfGZ1LzyOkuJ++ewUsddXiuX4TIoMsn2IUdigs
+ Q+++29knMkpQrTBDN6AtkY+ZAKIxECWgb/iXuf55CFteMIx3bmaz2JjcsiUzO1OwvJRj
+ zk55j6DB8z1n7y+bhTAxlr221AnxAZBpPtRyLOoOrLJYl/Uynh3xxOc5qBsq+/xiBgLi
+ a/lvRoxcQn5bKrxxjafIGU5J0SvK0OZMl0nGiZZoDS4MHopmo0LdX3nDb9S02ancZGX8
+ BjuOZPI8COFB0N1WPEWYuEuBfax7bWUfgS+4dMLmS3iQ1era1etNOIhLBL5ZGlQMyLe7
+ VMnA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCU7wGH+mMtXrebOBsEW5QDKO99ww9HJEOnWveJkSX36N1HhH8xcDUjQNGZMk4V5wSKVsUa9X3tDrQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yxto1oSaq0Nz7bLoWYnLTzLsvQJJOxu9pnjfGRdOXEjKbb11nUE
- CLPuXVZ1wRNIWG2zvLCmLORrpVE7L3ib5h1yrOlXtJTlawS1yhHVwZZPYqtsW2JeMEo=
-X-Gm-Gg: ASbGncu/lGNQAglmc/9/fdbUJR87EGK+ZTiVio5XvEQydUccEXqML6MuQhzkXc+iYWY
- kHhnN4N+dKteY8bJxh6Xku7FiTXHc8QNizFoEk2jGXwyl7fIfdjwLJsIc3VH8Ht8hpOb3Y+Dugx
- 964ozoVIL4TphVEaURPDmryKnP5rf4BSrTCjwktExo4ZAUGvqszfcWuyPHufFHRt3SGEX1QcS4m
- VKghYtdQ0I7skz/cQS3WkTsnRcKdeTta0YDtrMZ1OLBKcBfkDtlETVqWERrF/hb+tUO855op7xK
- 6NgG7E/H6qCcTmnsoB5z9cmF9gRECer73Ywc7Pzcy2aJVHMWWPhPEkX/QDvNWXmmYLJ16TGvUkr
- Q7U/I9ccHwy3iCxaoV52qigxEvYgABKfZTwXDrgQJAYgfBR7JZb9hUqrA04dNEpl8ZEWzWuXhaJ
- hSzmYGcxo75lY=
-X-Google-Smtp-Source: AGHT+IFkfptHR6PlFDi2agbOhG8NdwOZDW+TmaYBSdpTlkdykfX5dwUJ7HJhZgUkUyvlt6G3flbptw==
-X-Received: by 2002:a50:c88b:0:b0:63c:ea6:5608 with SMTP id
- 4fb4d7f45d1cf-63c1f6dfc77mr24049039a12.36.1761563027728; 
- Mon, 27 Oct 2025 04:03:47 -0700 (PDT)
+ AJvYcCU3ttj8uHUMenzdPjgfK2CtheiicSsCpvcTlCr2ySngWpdqMMXmNUAGLYLPOP21kS2LFluscc9bAw==@nongnu.org
+X-Gm-Message-State: AOJu0YwescTBuHe8Gy6qLeaCQfdCbiutzUmc8p9/kZGEgZeWKUI9umTR
+ ePEcCegNiHSkKP3x/V5UWUSx2476FZqlVYk9We6jyX3EzwWSzIVo8Nk2WegmskbwrKk=
+X-Gm-Gg: ASbGncuXX7FPUJq3wyC+su8C/6TMbwev66+ilsa38KFfFpXeWlY6d/n2KuM/NJzTUgg
+ G4AQYIENvFxLPCk+nCBpWIpDAiyZwrlTM3nW3pQ+dy2t0IposNGsB29Bx5YEiSCtLMCjdYlgOQF
+ Gkr5yiooqQbh5FcCAv+xhKTqCksz5w82CXWe6RscjIkE++b/25W0fhrCtWBeWk1djMv9SffOGNz
+ 84u+FbpGq7kP1WpRj52naLLvOg3PQIm6sW4ODUu5BU+iUCXzs7zI8JmjhJwXDJiIo0OEbkOd1gZ
+ 999HbAiGHMXdPfEtIAA+ffv8xEmeUtta/ETTmgoLCQ+9uT8crDnjLlKZkX2n6FRz8fq9610mjpg
+ vUI0DrgSoZmwgnRzjyscZ5oKUIF+bvfo3off09z9ORx8bHV3LDsfWOC/BBoqyCOCCXBSKn1ykG+
+ TGzqIu9UCk0hI=
+X-Google-Smtp-Source: AGHT+IERY0LRDtAh/P/JnbkEdSaGPZN26CjXuTfwQxfSVQ5HKYkzM6nMMAvqidpDE39wy9t9gsU+wA==
+X-Received: by 2002:aa7:cf0a:0:b0:63e:6f85:1ef3 with SMTP id
+ 4fb4d7f45d1cf-63e6f851f34mr5947239a12.12.1761563036495; 
+ Mon, 27 Oct 2025 04:03:56 -0700 (PDT)
 Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-63e7efb97cbsm6176732a12.26.2025.10.27.04.03.44
+ 4fb4d7f45d1cf-63e7efb950csm6163591a12.28.2025.10.27.04.03.50
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 27 Oct 2025 04:03:45 -0700 (PDT)
+ Mon, 27 Oct 2025 04:03:53 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 62C4F5F92F;
- Mon, 27 Oct 2025 11:03:44 +0000 (GMT)
+ by draig.lan (Postfix) with ESMTP id 7AA5F60A94;
+ Mon, 27 Oct 2025 11:03:45 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
@@ -96,18 +96,18 @@ Cc: Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Jiaxun Yang <jiaxun.yang@flygoat.com>, Michael Rolnik <mrolnik@gmail.com>,
  Song Gao <gaosong@loongson.cn>, qemu-riscv@nongnu.org,
- Aleksandar Rikalo <arikalo@gmail.com>
-Subject: [PATCH 03/35] scripts/ci: move build-environment.yaml up a level
-Date: Mon, 27 Oct 2025 11:03:10 +0000
-Message-ID: <20251027110344.2289945-4-alex.bennee@linaro.org>
+ Aleksandar Rikalo <arikalo@gmail.com>, Julian Ganz <neither@nut.email>
+Subject: [PATCH 15/35] target/i386: call plugin trap callbacks
+Date: Mon, 27 Oct 2025 11:03:22 +0000
+Message-ID: <20251027110344.2289945-16-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20251027110344.2289945-1-alex.bennee@linaro.org>
 References: <20251027110344.2289945-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::52d;
- envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x52d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::534;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x534.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -130,53 +130,80 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-We can share the setup of the build environment with multiple
-operating systems as we just need to check the YAML for each env is
-present in the directory structure.
+From: Julian Ganz <neither@nut.email>
 
+We recently introduced API for registering callbacks for trap related
+events as well as the corresponding hook functions. Due to differences
+between architectures, the latter need to be called from target specific
+code.
+
+This change places the hook for x86 targets.
+
+Signed-off-by: Julian Ganz <neither@nut.email>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- .../ci/setup/{ubuntu => }/build-environment.yml  | 16 +++++++++++-----
- 1 file changed, 11 insertions(+), 5 deletions(-)
- rename scripts/ci/setup/{ubuntu => }/build-environment.yml (81%)
+ target/i386/tcg/excp_helper.c | 3 +++
+ target/i386/tcg/seg_helper.c  | 4 ++++
+ 2 files changed, 7 insertions(+)
 
-diff --git a/scripts/ci/setup/ubuntu/build-environment.yml b/scripts/ci/setup/build-environment.yml
-similarity index 81%
-rename from scripts/ci/setup/ubuntu/build-environment.yml
-rename to scripts/ci/setup/build-environment.yml
-index 1c517c74f74..66bde188755 100644
---- a/scripts/ci/setup/ubuntu/build-environment.yml
-+++ b/scripts/ci/setup/build-environment.yml
-@@ -27,18 +27,24 @@
-         - ansible_facts['distribution'] == 'Ubuntu'
+diff --git a/target/i386/tcg/excp_helper.c b/target/i386/tcg/excp_helper.c
+index 6fb8036d988..32f2784e923 100644
+--- a/target/i386/tcg/excp_helper.c
++++ b/target/i386/tcg/excp_helper.c
+@@ -23,6 +23,7 @@
+ #include "system/runstate.h"
+ #include "exec/helper-proto.h"
+ #include "helper-tcg.h"
++#include "qemu/plugin.h"
  
-     # the package lists are updated by "make lcitool-refresh"
--    - name: Include package lists based on OS and architecture
--      include_vars:
--        file: "ubuntu-2404-{{ ansible_facts['architecture'] }}.yaml"
-+    - name: Define package list file path
-+      set_fact:
-+        package_file: "ubuntu/ubuntu-2404-{{ ansible_facts['architecture'] }}.yaml"
-       when:
-         - ansible_facts['distribution'] == 'Ubuntu'
-         - ansible_facts['distribution_version'] == '24.04'
+ G_NORETURN void helper_raise_interrupt(CPUX86State *env, int intno,
+                                           int next_eip_addend)
+@@ -93,6 +94,7 @@ void raise_interrupt2(CPUX86State *env, int intno,
+                       uintptr_t retaddr)
+ {
+     CPUState *cs = env_cpu(env);
++    uint64_t last_pc = env->eip + env->segs[R_CS].base;
  
-+    - name: Include package lists based on OS and architecture
-+      include_vars:
-+        file: "{{ package_file }}"
-+      when:
-+        - package_file is exists
+     if (!is_int) {
+         cpu_svm_check_intercept_param(env, SVM_EXIT_EXCP_BASE + intno,
+@@ -106,6 +108,7 @@ void raise_interrupt2(CPUX86State *env, int intno,
+     env->error_code = error_code;
+     env->exception_is_int = is_int;
+     env->exception_next_eip = env->eip + next_eip_addend;
++    qemu_plugin_vcpu_exception_cb(cs, last_pc);
+     cpu_loop_exit_restore(cs, retaddr);
+ }
+ 
+diff --git a/target/i386/tcg/seg_helper.c b/target/i386/tcg/seg_helper.c
+index f49fe851cdf..667b1c38696 100644
+--- a/target/i386/tcg/seg_helper.c
++++ b/target/i386/tcg/seg_helper.c
+@@ -29,6 +29,7 @@
+ #include "seg_helper.h"
+ #include "access.h"
+ #include "tcg-cpu.h"
++#include "qemu/plugin.h"
+ 
+ #ifdef TARGET_X86_64
+ #define SET_ESP(val, sp_mask)                                   \
+@@ -1192,6 +1193,7 @@ void do_interrupt_all(X86CPU *cpu, int intno, int is_int,
+                       int error_code, target_ulong next_eip, int is_hw)
+ {
+     CPUX86State *env = &cpu->env;
++    uint64_t last_pc = env->eip + env->segs[R_CS].base;
+ 
+     if (qemu_loglevel_mask(CPU_LOG_INT)) {
+         if ((env->cr[0] & CR0_PE_MASK)) {
+@@ -1263,6 +1265,8 @@ void do_interrupt_all(X86CPU *cpu, int intno, int is_int,
+                  event_inj & ~SVM_EVTINJ_VALID);
+     }
+ #endif
 +
-     - name: Install packages for QEMU on Ubuntu 24.04
-       package:
-         name: "{{ packages }}"
-       when:
--        - ansible_facts['distribution'] == 'Ubuntu'
--        - ansible_facts['distribution_version'] == '24.04'
-+        - package_file is exists
-+        - packages is defined
++    qemu_plugin_vcpu_interrupt_cb(CPU(cpu), last_pc);
+ }
  
- 
+ void do_interrupt_x86_hardirq(CPUX86State *env, int intno, int is_hw)
 -- 
 2.47.3
 

@@ -4,73 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1EAE4CCF9EA
-	for <qemu-arm@archiver.kernel.org>; Mon, 27 Oct 2025 11:20:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07340CCF9EC
+	for <qemu-arm@archiver.kernel.org>; Mon, 27 Oct 2025 11:20:45 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vDL9x-00070q-Kg; Mon, 27 Oct 2025 07:13:10 -0400
+	id 1vDLHG-0002NZ-7Q; Mon, 27 Oct 2025 07:20:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vDL9e-0006Ym-1N
- for qemu-arm@nongnu.org; Mon, 27 Oct 2025 07:12:50 -0400
-Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vDLGy-0001x3-EZ
+ for qemu-arm@nongnu.org; Mon, 27 Oct 2025 07:20:34 -0400
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vDL9D-0007dn-BE
- for qemu-arm@nongnu.org; Mon, 27 Oct 2025 07:12:49 -0400
-Received: by mail-ej1-x62d.google.com with SMTP id
- a640c23a62f3a-b6d76a9eadbso394466466b.3
- for <qemu-arm@nongnu.org>; Mon, 27 Oct 2025 04:12:19 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vDLGu-0001Jm-N5
+ for qemu-arm@nongnu.org; Mon, 27 Oct 2025 07:20:24 -0400
+Received: by mail-wm1-x32c.google.com with SMTP id
+ 5b1f17b1804b1-475c9881821so28170505e9.0
+ for <qemu-arm@nongnu.org>; Mon, 27 Oct 2025 04:20:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1761563538; x=1762168338; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=GGapUoTaewrM/kono1/xvH1foLM0vdOPsMqSeCNHNKo=;
- b=TPCnbBCw+kIl9OKanfgeySBuGrIOk05JF4J9dLOG/QEUv8A+CAsGD0YyXOR324ou7j
- ArSgi0Qfq6kAQxmzjZshsuZdkjTPg1PvKabFsqvA5Ie4k2UST/wu4tcz6BQF5hppWDfE
- iTx3r+h0rGIrFY0Bwip8YymWXy4JRKLfzlYJl6KOB7tLQq58FkNzM6mluwQpjjiedBKA
- 77TtnMJArEO6degYPA7P3MrYpEUsLurHWtwaHMGYfFqvEPOvq8+i8oUDsx+/dBkn9mdJ
- UeO3PjYjW/l6mXbG/YSnnzQn9gvIas//U+iNrhX0R75kUBWhYKoTxXEXtjxbTehV10Bj
- r1cA==
+ d=linaro.org; s=google; t=1761564017; x=1762168817; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=nO3lNScKiiWvqqEh/loTsdCNf697WClZjXeg3xz97Jo=;
+ b=hKt9cxaF7FKuIdA0E1qDwd4IFdnoiqBrwHY3Q+UnB6AxT8o3/jfNuR846t5BHI1Mls
+ rvaDfRvCFaMlMCdqWa+zp164jQDUUI6q5YoGCsTn3i+YM0UBcISBJcanPKrz/SzgrTx2
+ CLkk4I5fdhPueL01xXVNE+pi3SCtA+orF9P7r6JKJqU9mKdLcmu534HmfltcP/VFKxBA
+ Yf/fDdd7daK56PeOH3OsEevTkMR8fh6Z7CJugJb3yHXVwKKjy2yUI5FaUmQAIhXOnrOt
+ 6BSeklQrcknP1673VtBcReCH0eLvrOql/4xtLqCrruEB59MsWztFwaVpf8tsZFz/cQgI
+ vtcQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761563538; x=1762168338;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=GGapUoTaewrM/kono1/xvH1foLM0vdOPsMqSeCNHNKo=;
- b=E1YQSyJuq/qbYu4OP6b6d57Xk37V4RVn03zqc4Quo7UsIENEq0kegyP9dIQ5wwEqVW
- cNt9NYsQLw04q2UHnyEPLI8PtUxROEHlDkRLnxRRjeJKx0KMjnmJpD47mwEB8i99RJ+1
- 8k5IWHng4v+CKQOy9qHUj0Y483fvtHXPpKh8g/7N5gaDxgM6hROf8pYR27oQyse0uUW+
- eAJPOlzhqpyijiCuiuUdJGbQj5bvmKn8tqgTUBySq+0yn2VVw7R8QfSCdF+kNqEodRja
- ArqZjrpPTsROJMD/WT55cqYQTY1Emhz6pNEzeIPLXPeAkyAzRZ/uVBhiPAhqEXLko9k1
- SiMA==
+ d=1e100.net; s=20230601; t=1761564017; x=1762168817;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=nO3lNScKiiWvqqEh/loTsdCNf697WClZjXeg3xz97Jo=;
+ b=rq0j8ed07HMWoqM80ZbWIoREbswVerDg2ZG/AyzWifOHkVSBeNbfuf4ofCBYlrGvj6
+ B2Ucc+NNPBQtCvu0++ALXDZtNiN2FlUMciPThrAGvu3BXzC3tGTzUL8HxQPMzpJDucLU
+ lwTSu6d1N3Ufag3pzCwV0fEyB/MWnDvHjpuM5IFuxIziKXL1PMBPvHGO6aVkyBccSKNg
+ aoYWT1j+XrFNNuTKB4QxfPi/opnNVD6fFV8lmAaywlAcWBIbAge8WIZASgjPiHrsFcwW
+ 8tpI0X0+oRpoUjrqbUQi6wBT55V58BZJbkEjgWVTVxS0oq0u65pWhQq8gG0h9p3dHuDq
+ TStA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVgW5uJb4VOYU0tXo0hFZvvV75ojm23NewelEXo67GduPlVE89Qb7i6nrGl5i54alds+rqPMGg3Vw==@nongnu.org
-X-Gm-Message-State: AOJu0YwGRS7k2PzmdWaizWbMhM2hntxaYa2SXikKzvrwW4do00+SqvJn
- YYGQcvqxsBh4ZyztMyJ9ZW2bSXbDKdvTsZKZyQyr2QFdNwWJS/Dxiq4Vv77SNqI6I7g=
-X-Gm-Gg: ASbGncuzzYM6iSiMEAjqQ3juYCUiXM8SLuSC+hUNfgDnq2DZsmS8CcNkhVnEU8W9dlm
- fQLHcjFqhwDBsPUkiEuHBOOIkhfDX8yvyj+PLbU+A0q1X9y2d5bRNDWoV99ww9YQgoDBI5Ip+5J
- GY4dHDQDsfTna+5b3U2LuU+2woTHxJokx34lDucBHojQWqZltTSIiq/bdi11axYBLrUfeN4hur1
- sRoM1N76vz7ylC/PRWcFd8NZbXI+SmuAKGad5jBU7BsdoUUjzxJXhuwM7j2wxWqToPrqglGznYP
- B//BEU74oaENY/iwmWUGrvubO7Lfa0ttHTWfD/pP0lDuC6K3YtUFmMl+8BYItpejNMi0PH07ODB
- 16LaECHA/B7YvuEZmJAdaDC/0vaaUhLvFM8qJ+RtE91ha4qkjArOJdcvPHfjamGFXGkEFZZBa0R
- dQ0cFOi1LPiZI=
-X-Google-Smtp-Source: AGHT+IGtBMpHIebheyONrWsxP0glj3ZoIlLecwrjIGlCGS2qBmkZj9gRmSWXNpNrJHhHYenJu4IrlA==
-X-Received: by 2002:a17:907:1b0c:b0:b6d:2f32:844a with SMTP id
- a640c23a62f3a-b6d2f328766mr2021446366b.22.1761563537679; 
- Mon, 27 Oct 2025 04:12:17 -0700 (PDT)
-Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-b6db2b010d9sm87578966b.43.2025.10.27.04.12.12
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 27 Oct 2025 04:12:12 -0700 (PDT)
-Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id A2BCA5F909;
- Mon, 27 Oct 2025 11:03:46 +0000 (GMT)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
+ AJvYcCXmZTGjFlQZpgOKavcjrEMmgSeouXiLIprbylBXuIWREX1NTENP8D/pgDmDVxFu3RLWYPodvIJW7Q==@nongnu.org
+X-Gm-Message-State: AOJu0Yy0ibj2rntisKE0UuJiRcCC01ALWphA+sPoXUGIUIv5LQqx848e
+ 4K9Ss1PwN6WnbV8ir7wnD167IdqcnqXZr4OebzMWDBE4MMAUG29WXsLwouBHK8H+HJ4=
+X-Gm-Gg: ASbGncuWRFxwAYVy/YgaHfDNoB4mE8/mYOF672qgWO9jkxTmuGzxCq1Jg8sKK3Fkc0e
+ USN+UdN7diIVntnnTQViuE16cAqTofwxEcatR9O36evYlDRH8GfDFXn/r68Z+KOrzwgII4XW+7w
+ cuUA52mLiB5+NBgknP+KZRIPh96gZ5I9f0E0NB77s9kbQNw9kWNkzTYhEQEoVCkOF05iOnRvRoA
+ Lj6bCTP8MWC2C+gXbHjjbESSFdXviAN+VZedqZpHgzXselLa8RFKf3ZAOlcXQgidUBkQpq792Vv
+ Kz9+WU+y9bxp7WTd0uc5xnzfUT8sB+ZnFhr0XP0qdt8XzXeppb1twv5y5zruLJpcEKBQfb4+EJ1
+ 2oOkGog9Fk6x8JK6etAtrRPbU7eLW9v6p05upyiAhDohJ+psKdb82WurhlUSiIWk6gcwKKY2Jd8
+ BHlEcnoRe5HVpXV4jfzC69P7YPXbp3GbJ70jpxT9XVDN3SaLlUzC1NMlo8tco=
+X-Google-Smtp-Source: AGHT+IHEUnV1AykrggKoia9CZDo9Z7W6W1PE4O2InlfS6IlS1+bf7cSFHkw2t1kCvzUiRP7UaublFA==
+X-Received: by 2002:a05:600d:42e2:b0:45d:e775:d8b8 with SMTP id
+ 5b1f17b1804b1-475d24088a3mr67734275e9.1.1761564016749; 
+ Mon, 27 Oct 2025 04:20:16 -0700 (PDT)
+Received: from [192.168.69.201] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-475dcbacdc6sm65522715e9.0.2025.10.27.04.20.13
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 27 Oct 2025 04:20:16 -0700 (PDT)
+Message-ID: <2e6c67ff-e8d3-40b0-a648-f0ad755fa433@linaro.org>
+Date: Mon, 27 Oct 2025 12:20:13 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 01/35] ci: clean-up remaining bits of armhf builds.
+Content-Language: en-US
+To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
 Cc: Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
  Alexandre Iooss <erdnaxe@crans.org>, Chinmay Rath <rathc@linux.ibm.com>,
  qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
@@ -79,11 +81,10 @@ Cc: Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
  Paolo Bonzini <pbonzini@redhat.com>, qemu-s390x@nongnu.org,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>,
  Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Helge Deller <deller@gmx.de>,
- =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Stafford Horne <shorne@gmail.com>, Mahmoud Mandour <ma.mandourr@gmail.com>,
- Artyom Tarasenko <atar4qemu@gmail.com>,
- Eduardo Habkost <eduardo@habkost.net>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Helge Deller <deller@gmx.de>, Stafford Horne <shorne@gmail.com>,
+ Mahmoud Mandour <ma.mandourr@gmail.com>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Eduardo Habkost
+ <eduardo@habkost.net>, Palmer Dabbelt <palmer@dabbelt.com>,
  Alistair Francis <alistair.francis@wdc.com>,
  Laurent Vivier <laurent@vivier.eu>, Weiwei Li <liwei1518@gmail.com>,
  Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
@@ -93,21 +94,17 @@ Cc: Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
  Aurelien Jarno <aurelien@aurel32.net>,
  Richard Henderson <richard.henderson@linaro.org>,
  Thomas Huth <thuth@redhat.com>, Max Filippov <jcmvbkbc@gmail.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Jiaxun Yang <jiaxun.yang@flygoat.com>, Michael Rolnik <mrolnik@gmail.com>,
  Song Gao <gaosong@loongson.cn>, qemu-riscv@nongnu.org,
- Aleksandar Rikalo <arikalo@gmail.com>, Julian Ganz <neither@nut.email>
-Subject: [PATCH 27/35] target/tricore: call plugin trap callbacks
-Date: Mon, 27 Oct 2025 11:03:34 +0000
-Message-ID: <20251027110344.2289945-28-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20251027110344.2289945-1-alex.bennee@linaro.org>
+ Aleksandar Rikalo <arikalo@gmail.com>
 References: <20251027110344.2289945-1-alex.bennee@linaro.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+ <20251027110344.2289945-2-alex.bennee@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20251027110344.2289945-2-alex.bennee@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62d;
- envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x62d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -130,57 +127,16 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Julian Ganz <neither@nut.email>
+On 27/10/25 12:03, Alex Bennée wrote:
+> We no longer need to support 32 bit builds and we missed this while
+> cleaning up.
+> 
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> ---
+>   docs/devel/testing/ci-jobs.rst.inc            | 7 -------
+>   scripts/ci/setup/ubuntu/build-environment.yml | 6 ------
+>   2 files changed, 13 deletions(-)
 
-We recently introduced API for registering callbacks for trap related
-events as well as the corresponding hook functions. Due to differences
-between architectures, the latter need to be called from target specific
-code.
-
-This change places an exception hook for TriCore targets. Interrupts are
-not implemented for this target and it has no host calls.
-
-Reviewed-by: Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Signed-off-by: Julian Ganz <neither@nut.email>
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- target/tricore/op_helper.c | 5 +++++
- 1 file changed, 5 insertions(+)
-
-diff --git a/target/tricore/op_helper.c b/target/tricore/op_helper.c
-index 610f148a237..2c8281a67e0 100644
---- a/target/tricore/op_helper.c
-+++ b/target/tricore/op_helper.c
-@@ -19,6 +19,7 @@
- #include "qemu/host-utils.h"
- #include "exec/helper-proto.h"
- #include "accel/tcg/cpu-ldst.h"
-+#include "qemu/plugin.h"
- #include <zlib.h> /* for crc32 */
- 
- 
-@@ -29,8 +30,11 @@ void raise_exception_sync_internal(CPUTriCoreState *env, uint32_t class, int tin
-                                    uintptr_t pc, uint32_t fcd_pc)
- {
-     CPUState *cs = env_cpu(env);
-+    uint64_t last_pc;
-+
-     /* in case we come from a helper-call we need to restore the PC */
-     cpu_restore_state(cs, pc);
-+    last_pc = env->PC;
- 
-     /* Tin is loaded into d[15] */
-     env->gpr_d[15] = tin;
-@@ -90,6 +94,7 @@ void raise_exception_sync_internal(CPUTriCoreState *env, uint32_t class, int tin
-     /* Update PC using the trap vector table */
-     env->PC = env->BTV | (class << 5);
- 
-+    qemu_plugin_vcpu_exception_cb(cs, last_pc);
-     cpu_loop_exit(cs);
- }
- 
--- 
-2.47.3
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
 

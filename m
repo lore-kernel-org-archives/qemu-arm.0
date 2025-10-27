@@ -4,83 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9CF72CCF9EA
-	for <qemu-arm@archiver.kernel.org>; Mon, 27 Oct 2025 14:26:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7AA37CCF9EA
+	for <qemu-arm@archiver.kernel.org>; Mon, 27 Oct 2025 14:29:23 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vDOBC-0000BI-Fj; Mon, 27 Oct 2025 10:26:39 -0400
+	id 1vDODU-0001XX-HG; Mon, 27 Oct 2025 10:29:00 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vDOBB-0000Ag-0I
- for qemu-arm@nongnu.org; Mon, 27 Oct 2025 10:26:37 -0400
+ id 1vDODS-0001Ww-IC
+ for qemu-arm@nongnu.org; Mon, 27 Oct 2025 10:28:58 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vDOB3-000618-Nr
- for qemu-arm@nongnu.org; Mon, 27 Oct 2025 10:26:36 -0400
+ id 1vDODK-0006JG-Em
+ for qemu-arm@nongnu.org; Mon, 27 Oct 2025 10:28:58 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1761575179;
+ s=mimecast20190719; t=1761575324;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=nNo+7U08zeZ1t/qGpXrtxPjo3ELlZLKLF79nlbKmt2o=;
- b=BpS2eRWFPaIT0yF6ubay6U4925QtXDwzXjubrXfuITw/3FObCZAnEj9EI+r6nWbDjmqMy9
- anz6XtAPvvg8NHehqSVfOJ2wj3A8b7Z7f7GAAnk4HiEuQMmaZBSCXeVGrRuVTiaI8RvT19
- bRBB1OnoI1ykGR9APP83hQ8XxyjVTsI=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=Q4+oj4RF7lNjQEMmYfNeix7T+L5tROC8e7rGvjg4KYw=;
+ b=cZfRQXuFtrWUUA+i+mNaimiGRmI9397c0QJba8gfPnXhvbyKrJYeCGhZUOv1jCE22Qe02c
+ CLW3e3RPtyEXgFayTwNsvB9eSB0OeOhz/n2wmh7/luTHOqPdznsNrxzovewXpAV4w0+44x
+ D2o8utdEYcZScqogbOLU0g7p0EFzIKw=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-17-9DzogkQmN5KlaEPDyANdlw-1; Mon, 27 Oct 2025 10:26:18 -0400
-X-MC-Unique: 9DzogkQmN5KlaEPDyANdlw-1
-X-Mimecast-MFC-AGG-ID: 9DzogkQmN5KlaEPDyANdlw_1761575177
-Received: by mail-wm1-f71.google.com with SMTP id
- 5b1f17b1804b1-475de0566adso21565075e9.0
- for <qemu-arm@nongnu.org>; Mon, 27 Oct 2025 07:26:18 -0700 (PDT)
+ us-mta-317-qUakZp2dOZ-EtbCveYX8VA-1; Mon, 27 Oct 2025 10:28:41 -0400
+X-MC-Unique: qUakZp2dOZ-EtbCveYX8VA-1
+X-Mimecast-MFC-AGG-ID: qUakZp2dOZ-EtbCveYX8VA_1761575320
+Received: by mail-wr1-f72.google.com with SMTP id
+ ffacd0b85a97d-426d4f59cbcso3688869f8f.1
+ for <qemu-arm@nongnu.org>; Mon, 27 Oct 2025 07:28:41 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761575177; x=1762179977;
+ d=1e100.net; s=20230601; t=1761575320; x=1762180120;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:reply-to:user-agent:mime-version:date
  :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=nNo+7U08zeZ1t/qGpXrtxPjo3ELlZLKLF79nlbKmt2o=;
- b=J0GhQngXrC+wH+NmpkI2ONMzJUnzOtswytxPP/HasROaySojZmZXSfA2KqUtmf8nLN
- P5ybkLPWd7Sdh7jRORxu71R7w+5Lm3qER8tUSqJ/ttRBJ1a8pzinjXGNMPIXn2xS77O0
- yjMTUR/4j82ILJlJImgEu5JPuHvtd9Lj6QNcwrKUQqsfKakB9lGtFbfy2pj7YaDWHaB3
- loAqh+us8q1UsTywvw4swx15BA3ytnvFOkT4ElDgGa2R3Ox+HJqPxcbSWwE8+L5S8TQO
- DVopggk37JU/pKkBMKxPYU3FezevyybsAjoQhKH1lOk4AbEmW2i4PPjk8WZ95MAgkmNI
- 7Qzg==
-X-Gm-Message-State: AOJu0YwM7LJJ6Hz8AZ1Zc4y/ySdo9TN8MBDbug5SXb2Wft1cd30xoHPm
- lIu3tHnWLv1ejvMl14gIQ7cjLgrG1VmP6SKVwPKubT6y+b26s93Rmvh6ERbbWC+qqjVFr8ByrbS
- WRN5b/YqUNfDAvzrT3SeqGFTI6MQFGIYizr8zyFavgzU+nCGg8WnWKQ==
-X-Gm-Gg: ASbGnctFm2RZbFLxZjmgCPxbOgdooPsyyBexbVnCeCEuvFIN5sP9YYxBO8/mqfmQ46o
- 4sWUJr2RetPUyiGnoZiZP9SWSaSxYTXvz4m9W4OzEITB9qErh7HCEO6bb7ZWxcT4Y5OlblhZY7c
- jUMb03oq40Om2i9bCm2/2qTidae2MsOx+J21y/co0z2rDJTOi1/XgbqdQ0SWzk0dsDRldN8wV+9
- szve5u06LDKs85s1rrwiM6Hnt8gqQkYOzlrt/r7bvrBKVKXPn5GvBiwQHS6oBPPcwmW8qSil70C
- 5lk5SkUwlJOn8tYDbsMAuyNHXZ59G/I5+RFV7I06hMs2aPr2g2MD3uPfV98mcOZzEEsc71MQRnc
- wN1iRqsmVdPaDDJ52i7fR2DOhGExu+NFgmFOPjKpc3OXAZA==
-X-Received: by 2002:a05:600c:3488:b0:459:e398:ed89 with SMTP id
- 5b1f17b1804b1-4711786c586mr278417645e9.1.1761575177067; 
- Mon, 27 Oct 2025 07:26:17 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGFKV5fwmYY/onkm0PCR9TuoYxaemxfRUL7rWK2Cl+CRsuyuTkmcOMK2wgJxviM01qagVNIsQ==
-X-Received: by 2002:a05:600c:3488:b0:459:e398:ed89 with SMTP id
- 5b1f17b1804b1-4711786c586mr278417255e9.1.1761575176634; 
- Mon, 27 Oct 2025 07:26:16 -0700 (PDT)
+ bh=Q4+oj4RF7lNjQEMmYfNeix7T+L5tROC8e7rGvjg4KYw=;
+ b=mbMNfQjQFcJabvQ/j/uAfO4L6aXKEAWlZfTo4B1dsFiUyVgPoGgGTSzogWz5JBXztb
+ YGvzpjnqnBFn7FrdmjkaH7Jl/jSoPrHPzkZ8Elwz3B6FIUAqRc+m5WZrU3H/y44LGrP3
+ Ny1pncsBcJ++HZelJi1vM/uzi6/BdVY1Nw+V5Ogkk9n3sntaC3RWfd5sI+VfZNX/cdmR
+ xegQQCsJx+l4jeuLgXF2gdWzYGVo9BB/gl9UpOo4NWmHPsW22/coGcTR60seukIiliUL
+ Mr+QLgXA+7lq91Ht+ruX61VS+7/WVRvGGnbZaJR9nD06Llkpazy93NAUrFaa3dbcjxH4
+ kODA==
+X-Gm-Message-State: AOJu0YxMUOw07GX6lFBqJJhgx0AUcGuJiexPdwdfHa8XmlXvWKn4j8EC
+ b2CB/796ym9RNajVQ/+o9jBXz/GzGZx5EyTecPtPOaV7BuicwrKaOuNZflKChwjBIgXcz8jMXje
+ dnon//apcLdNc/nJwtgwMvkRJkNbz9KGmhY2OeLEaVJ9ctxxwu4nCOg==
+X-Gm-Gg: ASbGnctbZ4w6BFvb3BWjGbk9s4ePChWBvhLhuRYvcFzmn2qLJb4HYcbORUSJJq+5omV
+ lfYTMtLYld9CwHTbsHGVoN957AsZAWvqZLfxg8gJpCjWD+fuh0K/sSD3rV/DT4zsdTc2F7ZiqCA
+ c5MV5eFapr80WjVsiHoJoLXt7BUZ2cUUCWKUK2AObEfteS4lSwiW42YLi38RAoCrI2d286X3cfR
+ Qf7mt8+DUSo8YzpIrqIVo7Ah6vK79AFwUYKRRNQwUJgAodf91ortQ8glmH0G1leJI/6YGRAJFpf
+ Fjv5egeF9L8A1td5yT+N3KS083XpsKMfsQAosGxMgema34a3iUaYE2h0WTArwNDaZdU7GU9z/N9
+ 5sbGxCfKx20mNulZ6sboHXoNK+zp2Dt5A2NhIoyYo+P3/yA==
+X-Received: by 2002:a05:6000:2889:b0:429:8b81:5ace with SMTP id
+ ffacd0b85a97d-4298f524747mr10425455f8f.7.1761575320437; 
+ Mon, 27 Oct 2025 07:28:40 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFbtJ6M7YWlvGTI6v01WaD3B/yhhPZCbLU2kCCJd6Y4IFSLl5K6DGThwW6QpxjUIxjZF35BLg==
+X-Received: by 2002:a05:6000:2889:b0:429:8b81:5ace with SMTP id
+ ffacd0b85a97d-4298f524747mr10425423f8f.7.1761575320075; 
+ Mon, 27 Oct 2025 07:28:40 -0700 (PDT)
 Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
  ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-475dd042499sm139643985e9.8.2025.10.27.07.26.15
+ ffacd0b85a97d-429952df62dsm15794354f8f.45.2025.10.27.07.28.39
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 27 Oct 2025 07:26:16 -0700 (PDT)
-Message-ID: <76ce5b05-98fe-4682-a5ca-2f87b7535f35@redhat.com>
-Date: Mon, 27 Oct 2025 15:26:15 +0100
+ Mon, 27 Oct 2025 07:28:39 -0700 (PDT)
+Message-ID: <236ab7f6-3296-4ea4-80a8-a1d7bf08c73a@redhat.com>
+Date: Mon, 27 Oct 2025 15:28:38 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 19/27] hw/arm/smmuv3-accel: Install S1 bypass hwpt on
- reset
+Subject: Re: [PATCH v4 20/27] hw/arm/smmuv3: Add accel property for SMMUv3
+ device
 To: Nicolin Chen <nicolinc@nvidia.com>,
  Shameer Kolothum <skolothumtho@nvidia.com>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, peter.maydell@linaro.org,
@@ -90,16 +90,16 @@ Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, peter.maydell@linaro.org,
  zhangfei.gao@linaro.org, zhenzhong.duan@intel.com, yi.l.liu@intel.com,
  shameerkolothum@gmail.com
 References: <20250929133643.38961-1-skolothumtho@nvidia.com>
- <20250929133643.38961-20-skolothumtho@nvidia.com>
- <aPF9l5GwctGN0tqT@Asurada-Nvidia>
+ <20250929133643.38961-21-skolothumtho@nvidia.com>
+ <aPFoIcxQnOrQVNTE@Asurada-Nvidia>
 From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <aPF9l5GwctGN0tqT@Asurada-Nvidia>
+In-Reply-To: <aPFoIcxQnOrQVNTE@Asurada-Nvidia>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: LG5q6kI2DppisLB4RitLKpmw1MF8QujVSj3cQ5U77Qg_1761575177
+X-Mimecast-MFC-PROC-ID: T2AE0mcbT92u4HvMoTbtI8sZgLOCisrupWwuLzzcQ9g_1761575320
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
@@ -109,7 +109,7 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -128,53 +128,31 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 
 
-On 10/17/25 1:19 AM, Nicolin Chen wrote:
-> On Mon, Sep 29, 2025 at 02:36:35PM +0100, Shameer Kolothum wrote:
->> When the guest reboots with devices in nested mode (S1 + S2), any QEMU/UEFI
->> access to those devices can fail because S1 translation is not valid during
->> the reboot. For example, a passthrough NVMe device may hold GRUB boot info
->> that UEFI tries to read during the reboot.
+On 10/16/25 11:48 PM, Nicolin Chen wrote:
+> On Mon, Sep 29, 2025 at 02:36:36PM +0100, Shameer Kolothum wrote:
+>> Introduce an “accel” property to enable accelerator mode.
+> Looks better with ASCII quotation marks: "accel".
+>
+>> Live migration is currently unsupported when accelerator mode is enabled,
+>> so a migration blocker is added.
 >>
->> Set S1 to bypass mode during reset to avoid such failures.
-> GBPA is set to bypass on reset so I think it's fine. Yet, maybe the
-> code should check that.
+>> Because this mode relies on IORT RMR for MSI support, accelerator mode is
+>> not supported for device tree boot.
+>>
+>> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
+> Reviewed-by: Nicolin Chen <nicolinc@nvidia.com>
+>
+>> @@ -67,6 +67,7 @@ struct SMMUv3State {
+>>      /* SMMU has HW accelerator support for nested S1 + s2 */
+>>      bool accel;
+>>      struct SMMUv3AccelState  *s_accel;
+>> +    Error  *migration_blocker;
+> No need of double space.
+>
+With Nicolin's comments:
 
-shouldn't we check its actual value before setting bypass?
-
-By the way the spec says is ABORT is set to 0x0:
-"Do not abort incoming transactions. Transactions bypass the SMMU with
-attributes given by other fields in this register."
-
-Wondering about those attributes and they can apply on the host?
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
 
 Eric
->
->> Reported-by: Matthew R. Ochs <mochs@nvidia.com>
->> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
->> ---
->>  hw/arm/smmuv3-accel.c | 29 +++++++++++++++++++++++++++++
->>  hw/arm/smmuv3-accel.h |  4 ++++
->>  hw/arm/smmuv3.c       |  1 +
->>  3 files changed, 34 insertions(+)
->>
->> diff --git a/hw/arm/smmuv3-accel.c b/hw/arm/smmuv3-accel.c
->> index defeddbd8c..8396053a6c 100644
->> --- a/hw/arm/smmuv3-accel.c
->> +++ b/hw/arm/smmuv3-accel.c
->> @@ -634,6 +634,35 @@ static const PCIIOMMUOps smmuv3_accel_ops = {
->>      .get_msi_address_space = smmuv3_accel_find_msi_as,
->>  };
->>  
->> +/*
->> + * If the guest reboots and devices are configured for S1+S2, Stage1 must
->> + * be switched to bypass. Otherwise, QEMU/UEFI may fail when accessing a
->> + * device, e.g. when UEFI retrieves boot partition information from an
->> + * assigned vfio-pci NVMe device.
->> + */
->> +void smmuv3_accel_attach_bypass_hwpt(SMMUv3State *s)
-> We could rename it to something like smmuv3_accel_reset().
->
-> Nicolin
->
 
 

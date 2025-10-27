@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B4A7CCF9E0
-	for <qemu-arm@archiver.kernel.org>; Mon, 27 Oct 2025 15:21:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3922CCF9EB
+	for <qemu-arm@archiver.kernel.org>; Mon, 27 Oct 2025 15:21:45 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vDOvc-0004Zg-1x; Mon, 27 Oct 2025 11:14:36 -0400
+	id 1vDOve-0004hk-Ff; Mon, 27 Oct 2025 11:14:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1vDOuo-0003Rh-OY
- for qemu-arm@nongnu.org; Mon, 27 Oct 2025 11:13:51 -0400
+ id 1vDOvI-0004DG-PA
+ for qemu-arm@nongnu.org; Mon, 27 Oct 2025 11:14:17 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1vDOuY-0003x4-QO
- for qemu-arm@nongnu.org; Mon, 27 Oct 2025 11:13:34 -0400
+ id 1vDOux-0003zB-4p
+ for qemu-arm@nongnu.org; Mon, 27 Oct 2025 11:14:16 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1761578004;
+ s=mimecast20190719; t=1761578029;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=hy4r03TiVsWUDCEtGQ377AJr9mo6eZ99I30huexBd+o=;
- b=ec3QuFgbU5AJmUfqnnzqqrwmay2OLeh7+nl4q3wj7x357UtMU1F6jC87yWwXLNfQVTah74
- bduEMUkoqOef2iLQSqLLMzQ1/hS58AjoruqM/kIB1cxnex+AkPr9GRiOdxMIIZ5zYDYHd9
- YYsiBn+zVJnWqxCYSSOXv7opP8gnwu0=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ bh=/psHEgf+aO3hHN5q3jbf/JtBqQzOgFo+DVlniZPsS5I=;
+ b=g0pkTAZ5gLqDTlRN0HO1MLAvQ865162R5ADB24CgMoKmYuuG90r19e6z+kEV1xbmALaJ+a
+ U6MbJYWWUcS5EnlXJELPfv8sJL0zVEvCPgC6ZPcOEUBhMMh0IXgPg2XFA8v6/VOIRzusCm
+ qEtB/dt14Bu/cF5sFSYDI3JUztgKPUE=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-503-DsO2r2GTNOaUEM264E1qjQ-1; Mon,
- 27 Oct 2025 11:13:19 -0400
-X-MC-Unique: DsO2r2GTNOaUEM264E1qjQ-1
-X-Mimecast-MFC-AGG-ID: DsO2r2GTNOaUEM264E1qjQ_1761577996
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-145-RPlU5UkYMemC3M7WFj-kfA-1; Mon,
+ 27 Oct 2025 11:13:46 -0400
+X-MC-Unique: RPlU5UkYMemC3M7WFj-kfA-1
+X-Mimecast-MFC-AGG-ID: RPlU5UkYMemC3M7WFj-kfA_1761578022
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 760801956096; Mon, 27 Oct 2025 15:13:16 +0000 (UTC)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id A910018002E4; Mon, 27 Oct 2025 15:13:42 +0000 (UTC)
 Received: from localhost (unknown [10.45.242.5])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 76B1330001A2; Mon, 27 Oct 2025 15:13:14 +0000 (UTC)
+ by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id EBB6C19540EB; Mon, 27 Oct 2025 15:13:40 +0000 (UTC)
 From: marcandre.lureau@redhat.com
 To: qemu-devel@nongnu.org
 Cc: Alexandre Ratchov <alex@caoua.org>,
@@ -71,15 +71,15 @@ Cc: Alexandre Ratchov <alex@caoua.org>,
  Paolo Bonzini <pbonzini@redhat.com>,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
  BALATON Zoltan <balaton@eik.bme.hu>, Laurent Vivier <laurent@vivier.eu>
-Subject: [PATCH v3 22/35] audio: remove AUDIO_HOST_ENDIANNESS
-Date: Mon, 27 Oct 2025 19:10:29 +0400
-Message-ID: <20251027151045.2863176-23-marcandre.lureau@redhat.com>
+Subject: [PATCH v3 26/35] audio: rename AudioState -> AudioBackend
+Date: Mon, 27 Oct 2025 19:10:33 +0400
+Message-ID: <20251027151045.2863176-27-marcandre.lureau@redhat.com>
 In-Reply-To: <20251027151045.2863176-1-marcandre.lureau@redhat.com>
 References: <20251027151045.2863176-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
 Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=marcandre.lureau@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
@@ -108,140 +108,792 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Marc-André Lureau <marcandre.lureau@redhat.com>
 
+Naming is hard. But in general in QEMU, a host "backend" is the term
+used to fullfill the request made by the device or frontend.
+
+AudioBackend will become an abstract base class in a follow-up series.
+
+Currently the frontend is QEMUSoundCard, we are going to drop that next.
+
+Note that "audiodev" is the corresponding QAPI type name (or configuration).
+
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- audio/audio.h      | 6 ------
- audio/audio.c      | 6 +++---
- audio/spiceaudio.c | 4 ++--
- hw/audio/adlib.c   | 2 +-
- hw/audio/asc.c     | 2 +-
- hw/audio/cs4231a.c | 2 +-
- hw/audio/gus.c     | 2 +-
- 7 files changed, 9 insertions(+), 15 deletions(-)
+ audio/audio.h                    | 16 +++---
+ audio/audio_int.h                | 20 +++----
+ audio/audio_template.h           | 20 +++----
+ ui/vnc.h                         |  2 +-
+ audio/alsaaudio.c                |  2 +-
+ audio/audio-hmp-cmds.c           |  2 +-
+ audio/audio.c                    | 90 ++++++++++++++++----------------
+ audio/dbusaudio.c                |  8 +--
+ audio/ossaudio.c                 |  4 +-
+ audio/wavcapture.c               |  2 +-
+ hw/audio/pcspk.c                 |  2 +-
+ hw/core/machine.c                |  2 +-
+ hw/core/qdev-properties-system.c |  6 +--
+ ui/dbus.c                        |  8 +--
+ ui/vnc.c                         | 10 ++--
+ 15 files changed, 97 insertions(+), 97 deletions(-)
 
 diff --git a/audio/audio.h b/audio/audio.h
-index 3be0c4f24f..0af911fd9a 100644
+index c0cad7d976..1d56f111ea 100644
 --- a/audio/audio.h
 +++ b/audio/audio.h
-@@ -31,12 +31,6 @@
+@@ -64,14 +64,14 @@ typedef struct SWVoiceOut SWVoiceOut;
+ typedef struct CaptureVoiceOut CaptureVoiceOut;
+ typedef struct SWVoiceIn SWVoiceIn;
  
- typedef void (*audio_callback_fn) (void *opaque, int avail);
+-struct AudioStateClass {
++struct AudioBackendClass {
+     ObjectClass parent_class;
+ };
  
--#if HOST_BIG_ENDIAN
--#define AUDIO_HOST_ENDIANNESS 1
--#else
--#define AUDIO_HOST_ENDIANNESS 0
--#endif
--
- typedef struct audsettings {
-     int freq;
-     int nchannels;
+-typedef struct AudioState AudioState;
++typedef struct AudioBackend AudioBackend;
+ typedef struct QEMUSoundCard {
+     char *name;
+-    AudioState *state;
++    AudioBackend *be;
+     QLIST_ENTRY (QEMUSoundCard) entries;
+ } QEMUSoundCard;
+ 
+@@ -82,7 +82,7 @@ typedef struct QEMUAudioTimeStamp {
+ bool AUD_register_card (const char *name, QEMUSoundCard *card, Error **errp);
+ void AUD_remove_card (QEMUSoundCard *card);
+ CaptureVoiceOut *AUD_add_capture(
+-    AudioState *s,
++    AudioBackend *s,
+     struct audsettings *as,
+     struct audio_capture_ops *ops,
+     void *opaque
+@@ -164,14 +164,14 @@ void audio_create_default_audiodevs(void);
+ void audio_init_audiodevs(void);
+ void audio_help(void);
+ 
+-AudioState *audio_state_by_name(const char *name, Error **errp);
+-AudioState *audio_get_default_audio_state(Error **errp);
++AudioBackend *audio_be_by_name(const char *name, Error **errp);
++AudioBackend *audio_get_default_audio_be(Error **errp);
+ const char *audio_get_id(QEMUSoundCard *card);
+ 
+ #define DEFINE_AUDIO_PROPERTIES(_s, _f)         \
+     DEFINE_PROP_AUDIODEV("audiodev", _s, _f)
+ 
+-#define TYPE_AUDIO_STATE "audio-state"
+-OBJECT_DECLARE_TYPE(AudioState, AudioStateClass, AUDIO_STATE)
++#define TYPE_AUDIO_BACKEND "audio-backend"
++OBJECT_DECLARE_TYPE(AudioBackend, AudioBackendClass, AUDIO_BACKEND)
+ 
+ #endif /* QEMU_AUDIO_H */
+diff --git a/audio/audio_int.h b/audio/audio_int.h
+index d1badbf235..338af38fd1 100644
+--- a/audio/audio_int.h
++++ b/audio/audio_int.h
+@@ -60,7 +60,7 @@ struct audio_pcm_info {
+     int swap_endianness;
+ };
+ 
+-typedef struct AudioState AudioState;
++typedef struct AudioBackend AudioBackend;
+ typedef struct SWVoiceCap SWVoiceCap;
+ 
+ typedef struct STSampleBuffer {
+@@ -69,7 +69,7 @@ typedef struct STSampleBuffer {
+ } STSampleBuffer;
+ 
+ typedef struct HWVoiceOut {
+-    AudioState *s;
++    AudioBackend *s;
+     int enabled;
+     int poll_mode;
+     int pending_disable;
+@@ -90,7 +90,7 @@ typedef struct HWVoiceOut {
+ } HWVoiceOut;
+ 
+ typedef struct HWVoiceIn {
+-    AudioState *s;
++    AudioBackend *s;
+     int enabled;
+     int poll_mode;
+     struct audio_pcm_info info;
+@@ -112,7 +112,7 @@ typedef struct HWVoiceIn {
+ 
+ struct SWVoiceOut {
+     QEMUSoundCard *card;
+-    AudioState *s;
++    AudioBackend *s;
+     struct audio_pcm_info info;
+     t_sample *conv;
+     STSampleBuffer resample_buf;
+@@ -129,7 +129,7 @@ struct SWVoiceOut {
+ 
+ struct SWVoiceIn {
+     QEMUSoundCard *card;
+-    AudioState *s;
++    AudioBackend *s;
+     int active;
+     struct audio_pcm_info info;
+     void *rate;
+@@ -150,7 +150,7 @@ struct audio_driver {
+     void *(*init) (Audiodev *, Error **);
+     void (*fini) (void *);
+ #ifdef CONFIG_GIO
+-    void (*set_dbus_server) (AudioState *s, GDBusObjectManagerServer *manager, bool p2p);
++    void (*set_dbus_server)(AudioBackend *s, GDBusObjectManagerServer *manager, bool p2p);
+ #endif
+     struct audio_pcm_ops *pcm_ops;
+     int max_voices_out;
+@@ -208,7 +208,7 @@ static inline void *advance(void *p, size_t incr)
+     return (uint8_t *)p + incr;
+ }
+ 
+-int wav_start_capture(AudioState *state, CaptureState *s, const char *path,
++int wav_start_capture(AudioBackend *state, CaptureState *s, const char *path,
+                       int freq, int bits, int nchannels);
+ 
+ void audio_generic_run_buffer_in(HWVoiceIn *hw);
+@@ -240,7 +240,7 @@ struct SWVoiceCap {
+     QLIST_ENTRY (SWVoiceCap) entries;
+ };
+ 
+-typedef struct AudioState {
++typedef struct AudioBackend {
+     Object parent;
+ 
+     struct audio_driver *drv;
+@@ -260,7 +260,7 @@ typedef struct AudioState {
+     bool timer_running;
+     uint64_t timer_last;
+     VMChangeStateEntry *vmse;
+-} AudioState;
++} AudioBackend;
+ 
+ extern const struct mixeng_volume nominal_volume;
+ 
+@@ -273,7 +273,7 @@ void audio_pcm_info_clear_buf (struct audio_pcm_info *info, void *buf, int len);
+ 
+ int audio_bug (const char *funcname, int cond);
+ 
+-void audio_run(AudioState *s, const char *msg);
++void audio_run(AudioBackend *s, const char *msg);
+ 
+ const char *audio_application_name(void);
+ 
+diff --git a/audio/audio_template.h b/audio/audio_template.h
+index c29d79c443..b3c10a0709 100644
+--- a/audio/audio_template.h
++++ b/audio/audio_template.h
+@@ -36,7 +36,7 @@
+ #define HWBUF hw->conv_buf
+ #endif
+ 
+-static void glue(audio_init_nb_voices_, TYPE)(AudioState *s,
++static void glue(audio_init_nb_voices_, TYPE)(AudioBackend *s,
+                                               struct audio_driver *drv, int min_voices)
+ {
+     int max_voices = glue (drv->max_voices_, TYPE);
+@@ -221,7 +221,7 @@ static void glue (audio_pcm_hw_del_sw_, TYPE) (SW *sw)
+ static void glue (audio_pcm_hw_gc_, TYPE) (HW **hwp)
+ {
+     HW *hw = *hwp;
+-    AudioState *s = hw->s;
++    AudioBackend *s = hw->s;
+ 
+     if (!hw->sw_head.lh_first) {
+ #ifdef DAC
+@@ -236,12 +236,12 @@ static void glue (audio_pcm_hw_gc_, TYPE) (HW **hwp)
+     }
+ }
+ 
+-static HW *glue(audio_pcm_hw_find_any_, TYPE)(AudioState *s, HW *hw)
++static HW *glue(audio_pcm_hw_find_any_, TYPE)(AudioBackend *s, HW *hw)
+ {
+     return hw ? hw->entries.le_next : glue (s->hw_head_, TYPE).lh_first;
+ }
+ 
+-static HW *glue(audio_pcm_hw_find_any_enabled_, TYPE)(AudioState *s, HW *hw)
++static HW *glue(audio_pcm_hw_find_any_enabled_, TYPE)(AudioBackend *s, HW *hw)
+ {
+     while ((hw = glue(audio_pcm_hw_find_any_, TYPE)(s, hw))) {
+         if (hw->enabled) {
+@@ -251,7 +251,7 @@ static HW *glue(audio_pcm_hw_find_any_enabled_, TYPE)(AudioState *s, HW *hw)
+     return NULL;
+ }
+ 
+-static HW *glue(audio_pcm_hw_find_specific_, TYPE)(AudioState *s, HW *hw,
++static HW *glue(audio_pcm_hw_find_specific_, TYPE)(AudioBackend *s, HW *hw,
+                                                    struct audsettings *as)
+ {
+     while ((hw = glue(audio_pcm_hw_find_any_, TYPE)(s, hw))) {
+@@ -262,7 +262,7 @@ static HW *glue(audio_pcm_hw_find_specific_, TYPE)(AudioState *s, HW *hw,
+     return NULL;
+ }
+ 
+-static HW *glue(audio_pcm_hw_add_new_, TYPE)(AudioState *s,
++static HW *glue(audio_pcm_hw_add_new_, TYPE)(AudioBackend *s,
+                                              struct audsettings *as)
+ {
+     HW *hw;
+@@ -398,7 +398,7 @@ AudiodevPerDirectionOptions *glue(audio_get_pdo_, TYPE)(Audiodev *dev)
+     abort();
+ }
+ 
+-static HW *glue(audio_pcm_hw_add_, TYPE)(AudioState *s, struct audsettings *as)
++static HW *glue(audio_pcm_hw_add_, TYPE)(AudioBackend *s, struct audsettings *as)
+ {
+     HW *hw;
+     AudiodevPerDirectionOptions *pdo = glue(audio_get_pdo_, TYPE)(s->dev);
+@@ -424,7 +424,7 @@ static HW *glue(audio_pcm_hw_add_, TYPE)(AudioState *s, struct audsettings *as)
+ }
+ 
+ static SW *glue(audio_pcm_create_voice_pair_, TYPE)(
+-    AudioState *s,
++    AudioBackend *s,
+     const char *sw_name,
+     struct audsettings *as
+     )
+@@ -494,7 +494,7 @@ SW *glue (AUD_open_, TYPE) (
+     struct audsettings *as
+     )
+ {
+-    AudioState *s;
++    AudioBackend *s;
+     AudiodevPerDirectionOptions *pdo;
+ 
+     if (audio_bug(__func__, !card || !name || !callback_fn || !as)) {
+@@ -503,7 +503,7 @@ SW *glue (AUD_open_, TYPE) (
+         goto fail;
+     }
+ 
+-    s = card->state;
++    s = card->be;
+     pdo = glue(audio_get_pdo_, TYPE)(s->dev);
+ 
+     ldebug ("open %s, freq %d, nchannels %d, fmt %d\n",
+diff --git a/ui/vnc.h b/ui/vnc.h
+index f2dab2f4d9..e2137c5ed1 100644
+--- a/ui/vnc.h
++++ b/ui/vnc.h
+@@ -184,7 +184,7 @@ struct VncDisplay
+     VncDisplaySASL sasl;
+ #endif
+ 
+-    AudioState *audio_state;
++    AudioBackend *audio_be;
+ 
+     VMChangeStateEntry *vmstate_handler_entry;
+ };
+diff --git a/audio/alsaaudio.c b/audio/alsaaudio.c
+index 9b6c01c0ef..797cb478e6 100644
+--- a/audio/alsaaudio.c
++++ b/audio/alsaaudio.c
+@@ -41,7 +41,7 @@ struct pollhlp {
+     struct pollfd *pfds;
+     int count;
+     int mask;
+-    AudioState *s;
++    AudioBackend *s;
+ };
+ 
+ typedef struct ALSAVoiceOut {
+diff --git a/audio/audio-hmp-cmds.c b/audio/audio-hmp-cmds.c
+index 819f8fa9d8..1e56af21ab 100644
+--- a/audio/audio-hmp-cmds.c
++++ b/audio/audio-hmp-cmds.c
+@@ -67,7 +67,7 @@ void hmp_wavcapture(Monitor *mon, const QDict *qdict)
+     const char *audiodev = qdict_get_str(qdict, "audiodev");
+     CaptureState *s;
+     Error *local_err = NULL;
+-    AudioState *as = audio_state_by_name(audiodev, &local_err);
++    AudioBackend *as = audio_be_by_name(audiodev, &local_err);
+ 
+     if (!as) {
+         error_report_err(local_err);
 diff --git a/audio/audio.c b/audio/audio.c
-index f334030d96..18bc9188db 100644
+index 8723f4e66e..8044d55c5c 100644
 --- a/audio/audio.c
 +++ b/audio/audio.c
-@@ -274,7 +274,7 @@ static int audio_pcm_info_eq (struct audio_pcm_info *info, struct audsettings *a
-         && info->is_signed == is_signed
-         && info->is_float == is_float
-         && info->bits == bits
--        && info->swap_endianness == (as->endianness != AUDIO_HOST_ENDIANNESS);
-+        && info->swap_endianness == (as->endianness != HOST_BIG_ENDIAN);
+@@ -99,7 +99,7 @@ static audio_driver *audio_driver_lookup(const char *name)
+     return NULL;
  }
  
- void audio_pcm_init_info (struct audio_pcm_info *info, struct audsettings *as)
-@@ -320,7 +320,7 @@ void audio_pcm_init_info (struct audio_pcm_info *info, struct audsettings *as)
-     info->nchannels = as->nchannels;
-     info->bytes_per_frame = as->nchannels * mul;
-     info->bytes_per_second = info->freq * info->bytes_per_frame;
--    info->swap_endianness = (as->endianness != AUDIO_HOST_ENDIANNESS);
-+    info->swap_endianness = (as->endianness != HOST_BIG_ENDIAN);
+-static AudioState *default_audio_state;
++static AudioBackend *default_audio_be;
+ 
+ const struct mixeng_volume nominal_volume = {
+     .mute = 0,
+@@ -380,7 +380,7 @@ void audio_pcm_info_clear_buf (struct audio_pcm_info *info, void *buf, int len)
+ /*
+  * Capture
+  */
+-static CaptureVoiceOut *audio_pcm_capture_find_specific(AudioState *s,
++static CaptureVoiceOut *audio_pcm_capture_find_specific(AudioBackend *s,
+                                                         struct audsettings *as)
+ {
+     CaptureVoiceOut *cap;
+@@ -460,7 +460,7 @@ static void audio_detach_capture (HWVoiceOut *hw)
+ 
+ static int audio_attach_capture (HWVoiceOut *hw)
+ {
+-    AudioState *s = hw->s;
++    AudioBackend *s = hw->s;
+     CaptureVoiceOut *cap;
+ 
+     audio_detach_capture (hw);
+@@ -798,7 +798,7 @@ static void audio_pcm_print_info (const char *cap, struct audio_pcm_info *info)
+ /*
+  * Timer
+  */
+-static int audio_is_timer_needed(AudioState *s)
++static int audio_is_timer_needed(AudioBackend *s)
+ {
+     HWVoiceIn *hwi = NULL;
+     HWVoiceOut *hwo = NULL;
+@@ -816,7 +816,7 @@ static int audio_is_timer_needed(AudioState *s)
+     return 0;
  }
  
- void audio_pcm_info_clear_buf (struct audio_pcm_info *info, void *buf, int len)
-@@ -2179,7 +2179,7 @@ audsettings audiodev_to_audsettings(AudiodevPerDirectionOptions *pdo)
-         .freq = pdo->frequency,
-         .nchannels = pdo->channels,
-         .fmt = pdo->format,
--        .endianness = AUDIO_HOST_ENDIANNESS,
-+        .endianness = HOST_BIG_ENDIAN,
-     };
+-static void audio_reset_timer (AudioState *s)
++static void audio_reset_timer(AudioBackend *s)
+ {
+     if (audio_is_timer_needed(s)) {
+         timer_mod_anticipate_ns(s->ts,
+@@ -838,7 +838,7 @@ static void audio_reset_timer (AudioState *s)
+ static void audio_timer (void *opaque)
+ {
+     int64_t now, diff;
+-    AudioState *s = opaque;
++    AudioBackend *s = opaque;
+ 
+     now = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
+     diff = now - s->timer_last;
+@@ -921,7 +921,7 @@ void AUD_set_active_out (SWVoiceOut *sw, int on)
+ 
+     hw = sw->hw;
+     if (sw->active != on) {
+-        AudioState *s = sw->s;
++        AudioBackend *s = sw->s;
+         SWVoiceOut *temp_sw;
+         SWVoiceCap *sc;
+ 
+@@ -969,7 +969,7 @@ void AUD_set_active_in (SWVoiceIn *sw, int on)
+ 
+     hw = sw->hw;
+     if (sw->active != on) {
+-        AudioState *s = sw->s;
++        AudioBackend *s = sw->s;
+         SWVoiceIn *temp_sw;
+ 
+         if (on) {
+@@ -1137,7 +1137,7 @@ static size_t audio_pcm_hw_run_out(HWVoiceOut *hw, size_t live)
+     return clipped;
  }
  
-diff --git a/audio/spiceaudio.c b/audio/spiceaudio.c
-index 7f02f7285c..7e737bff9a 100644
---- a/audio/spiceaudio.c
-+++ b/audio/spiceaudio.c
-@@ -102,7 +102,7 @@ static int line_out_init(HWVoiceOut *hw, struct audsettings *as,
- #endif
-     settings.nchannels  = SPICE_INTERFACE_PLAYBACK_CHAN;
-     settings.fmt        = AUDIO_FORMAT_S16;
--    settings.endianness = AUDIO_HOST_ENDIANNESS;
-+    settings.endianness = HOST_BIG_ENDIAN;
+-static void audio_run_out (AudioState *s)
++static void audio_run_out(AudioBackend *s)
+ {
+     HWVoiceOut *hw = NULL;
+     SWVoiceOut *sw;
+@@ -1291,7 +1291,7 @@ static size_t audio_pcm_hw_run_in(HWVoiceIn *hw, size_t samples)
+     return conv;
+ }
  
-     audio_pcm_init_info (&hw->info, &settings);
-     hw->samples = LINE_OUT_SAMPLES;
-@@ -218,7 +218,7 @@ static int line_in_init(HWVoiceIn *hw, struct audsettings *as, void *drv_opaque)
- #endif
-     settings.nchannels  = SPICE_INTERFACE_RECORD_CHAN;
-     settings.fmt        = AUDIO_FORMAT_S16;
--    settings.endianness = AUDIO_HOST_ENDIANNESS;
-+    settings.endianness = HOST_BIG_ENDIAN;
+-static void audio_run_in (AudioState *s)
++static void audio_run_in(AudioBackend *s)
+ {
+     HWVoiceIn *hw = NULL;
  
-     audio_pcm_init_info (&hw->info, &settings);
-     hw->samples = LINE_IN_SAMPLES;
-diff --git a/hw/audio/adlib.c b/hw/audio/adlib.c
-index 6aae365f47..45c0a458f2 100644
---- a/hw/audio/adlib.c
-+++ b/hw/audio/adlib.c
-@@ -272,7 +272,7 @@ static void adlib_realizefn (DeviceState *dev, Error **errp)
-     as.freq = s->freq;
-     as.nchannels = SHIFT;
-     as.fmt = AUDIO_FORMAT_S16;
--    as.endianness = AUDIO_HOST_ENDIANNESS;
-+    as.endianness = HOST_BIG_ENDIAN;
+@@ -1339,7 +1339,7 @@ static void audio_run_in (AudioState *s)
+     }
+ }
  
-     s->voice = AUD_open_out (
-         &s->card,
-diff --git a/hw/audio/asc.c b/hw/audio/asc.c
-index edd42d6d91..41472dc2e3 100644
---- a/hw/audio/asc.c
-+++ b/hw/audio/asc.c
-@@ -650,7 +650,7 @@ static void asc_realize(DeviceState *dev, Error **errp)
-     as.freq = ASC_FREQ;
-     as.nchannels = 2;
-     as.fmt = AUDIO_FORMAT_U8;
--    as.endianness = AUDIO_HOST_ENDIANNESS;
-+    as.endianness = HOST_BIG_ENDIAN;
+-static void audio_run_capture (AudioState *s)
++static void audio_run_capture(AudioBackend *s)
+ {
+     CaptureVoiceOut *cap;
  
-     s->voice = AUD_open_out(&s->card, s->voice, "asc.out", s, asc_out_cb,
-                             &as);
-diff --git a/hw/audio/cs4231a.c b/hw/audio/cs4231a.c
-index 3b80a61378..0a5d614f8b 100644
---- a/hw/audio/cs4231a.c
-+++ b/hw/audio/cs4231a.c
-@@ -305,7 +305,7 @@ static void cs_reset_voices (CSState *s, uint32_t val)
-         s->tab = ALawDecompressTable;
-     x_law:
-         as.fmt = AUDIO_FORMAT_S16;
--        as.endianness = AUDIO_HOST_ENDIANNESS;
-+        as.endianness = HOST_BIG_ENDIAN;
-         s->shift = as.nchannels == 2;
-         break;
+@@ -1386,7 +1386,7 @@ static void audio_run_capture (AudioState *s)
+     }
+ }
  
-diff --git a/hw/audio/gus.c b/hw/audio/gus.c
-index 45ea04bf89..d13a95eb5a 100644
---- a/hw/audio/gus.c
-+++ b/hw/audio/gus.c
-@@ -255,7 +255,7 @@ static void gus_realizefn (DeviceState *dev, Error **errp)
-     as.freq = s->freq;
-     as.nchannels = 2;
-     as.fmt = AUDIO_FORMAT_S16;
--    as.endianness = AUDIO_HOST_ENDIANNESS;
-+    as.endianness = HOST_BIG_ENDIAN;
+-void audio_run(AudioState *s, const char *msg)
++void audio_run(AudioBackend *s, const char *msg)
+ {
+     audio_run_out(s);
+     audio_run_in(s);
+@@ -1559,7 +1559,7 @@ size_t audio_generic_read(HWVoiceIn *hw, void *buf, size_t size)
+     return total;
+ }
  
-     s->voice = AUD_open_out (
-         &s->card,
+-static bool audio_driver_init(AudioState *s, struct audio_driver *drv,
++static bool audio_driver_init(AudioBackend *s, struct audio_driver *drv,
+                               Audiodev *dev, Error **errp)
+ {
+     s->drv_opaque = drv->init(dev, errp);
+@@ -1592,7 +1592,7 @@ static bool audio_driver_init(AudioState *s, struct audio_driver *drv,
+ static void audio_vm_change_state_handler (void *opaque, bool running,
+                                            RunState state)
+ {
+-    AudioState *s = opaque;
++    AudioBackend *s = opaque;
+     HWVoiceOut *hwo = NULL;
+     HWVoiceIn *hwi = NULL;
+ 
+@@ -1613,9 +1613,9 @@ static void audio_vm_change_state_handler (void *opaque, bool running,
+ 
+ static const VMStateDescription vmstate_audio;
+ 
+-static void audio_state_init(Object *obj)
++static void audio_be_init(Object *obj)
+ {
+-    AudioState *s = AUDIO_STATE(obj);
++    AudioBackend *s = AUDIO_BACKEND(obj);
+ 
+     QLIST_INIT(&s->hw_head_out);
+     QLIST_INIT(&s->hw_head_in);
+@@ -1629,9 +1629,9 @@ static void audio_state_init(Object *obj)
+     vmstate_register_any(NULL, &vmstate_audio, s);
+ }
+ 
+-static void audio_state_finalize(Object *obj)
++static void audio_be_finalize(Object *obj)
+ {
+-    AudioState *s = AUDIO_STATE(obj);
++    AudioBackend *s = AUDIO_BACKEND(obj);
+     HWVoiceOut *hwo, *hwon;
+     HWVoiceIn *hwi, *hwin;
+ 
+@@ -1692,7 +1692,7 @@ static Object *get_audiodevs_root(void)
+ 
+ void audio_cleanup(void)
+ {
+-    default_audio_state = NULL;
++    default_audio_be = NULL;
+ 
+     object_unparent(get_audiodevs_root());
+ }
+@@ -1743,14 +1743,14 @@ void audio_create_default_audiodevs(void)
+  * if dev == NULL => legacy implicit initialization, return the already created
+  *   state or create a new one
+  */
+-static AudioState *audio_init(Audiodev *dev, Error **errp)
++static AudioBackend *audio_init(Audiodev *dev, Error **errp)
+ {
+     int done = 0;
+     const char *drvname;
+-    AudioState *s;
++    AudioBackend *s;
+     struct audio_driver *driver;
+ 
+-    s = AUDIO_STATE(object_new(TYPE_AUDIO_STATE));
++    s = AUDIO_BACKEND(object_new(TYPE_AUDIO_BACKEND));
+ 
+     if (dev) {
+         /* -audiodev option */
+@@ -1766,7 +1766,7 @@ static AudioState *audio_init(Audiodev *dev, Error **errp)
+             goto out;
+         }
+     } else {
+-        assert(!default_audio_state);
++        assert(!default_audio_be);
+         for (;;) {
+             AudiodevListEntry *e = QSIMPLEQ_FIRST(&default_audiodevs);
+             if (!e) {
+@@ -1797,11 +1797,11 @@ out:
+     return NULL;
+ }
+ 
+-AudioState *audio_get_default_audio_state(Error **errp)
++AudioBackend *audio_get_default_audio_be(Error **errp)
+ {
+-    if (!default_audio_state) {
+-        default_audio_state = audio_init(NULL, errp);
+-        if (!default_audio_state) {
++    if (!default_audio_be) {
++        default_audio_be = audio_init(NULL, errp);
++        if (!default_audio_be) {
+             if (!QSIMPLEQ_EMPTY(&audiodevs)) {
+                 error_append_hint(errp, "Perhaps you wanted to use -audio or set audiodev=%s?\n",
+                                   QSIMPLEQ_FIRST(&audiodevs)->dev->id);
+@@ -1809,21 +1809,21 @@ AudioState *audio_get_default_audio_state(Error **errp)
+         }
+     }
+ 
+-    return default_audio_state;
++    return default_audio_be;
+ }
+ 
+ bool AUD_register_card (const char *name, QEMUSoundCard *card, Error **errp)
+ {
+-    if (!card->state) {
+-        card->state = audio_get_default_audio_state(errp);
+-        if (!card->state) {
++    if (!card->be) {
++        card->be = audio_get_default_audio_be(errp);
++        if (!card->be) {
+             return false;
+         }
+     }
+ 
+     card->name = g_strdup (name);
+     memset (&card->entries, 0, sizeof (card->entries));
+-    QLIST_INSERT_HEAD(&card->state->card_head, card, entries);
++    QLIST_INSERT_HEAD(&card->be->card_head, card, entries);
+ 
+     return true;
+ }
+@@ -1837,7 +1837,7 @@ void AUD_remove_card (QEMUSoundCard *card)
+ static struct audio_pcm_ops capture_pcm_ops;
+ 
+ CaptureVoiceOut *AUD_add_capture(
+-    AudioState *s,
++    AudioBackend *s,
+     struct audsettings *as,
+     struct audio_capture_ops *ops,
+     void *cb_opaque
+@@ -2220,7 +2220,7 @@ int audio_buffer_bytes(AudiodevPerDirectionOptions *pdo,
+         audioformat_bytes_per_sample(as->fmt);
+ }
+ 
+-AudioState *audio_state_by_name(const char *name, Error **errp)
++AudioBackend *audio_be_by_name(const char *name, Error **errp)
+ {
+     Object *obj = object_resolve_path_component(get_audiodevs_root(), name);
+ 
+@@ -2228,15 +2228,15 @@ AudioState *audio_state_by_name(const char *name, Error **errp)
+         error_setg(errp, "audiodev '%s' not found", name);
+         return NULL;
+     } else {
+-        return AUDIO_STATE(obj);
++        return AUDIO_BACKEND(obj);
+     }
+ }
+ 
+ const char *audio_get_id(QEMUSoundCard *card)
+ {
+-    if (card->state) {
+-        assert(card->state->dev);
+-        return card->state->dev->id;
++    if (card->be) {
++        assert(card->be->dev);
++        return card->be->dev->id;
+     } else {
+         return "";
+     }
+@@ -2305,19 +2305,19 @@ AudiodevList *qmp_query_audiodevs(Error **errp)
+     return ret;
+ }
+ 
+-static const TypeInfo audio_state_info = {
+-    .name = TYPE_AUDIO_STATE,
++static const TypeInfo audio_be_info = {
++    .name = TYPE_AUDIO_BACKEND,
+     .parent = TYPE_OBJECT,
+-    .instance_size = sizeof(AudioState),
+-    .instance_init = audio_state_init,
+-    .instance_finalize = audio_state_finalize,
++    .instance_size = sizeof(AudioBackend),
++    .instance_init = audio_be_init,
++    .instance_finalize = audio_be_finalize,
+     .abstract = false, /* TODO: subclass drivers and make it abstract */
+-    .class_size = sizeof(AudioStateClass),
++    .class_size = sizeof(AudioBackendClass),
+ };
+ 
+ static void register_types(void)
+ {
+-    type_register_static(&audio_state_info);
++    type_register_static(&audio_be_info);
+ }
+ 
+ type_init(register_types);
+diff --git a/audio/dbusaudio.c b/audio/dbusaudio.c
+index 908214a170..49cef38e3e 100644
+--- a/audio/dbusaudio.c
++++ b/audio/dbusaudio.c
+@@ -458,7 +458,7 @@ listener_in_vanished_cb(GDBusConnection *connection,
+ }
+ 
+ static gboolean
+-dbus_audio_register_listener(AudioState *s,
++dbus_audio_register_listener(AudioBackend *s,
+                              GDBusMethodInvocation *invocation,
+ #ifdef G_OS_UNIX
+                              GUnixFDList *fd_list,
+@@ -615,7 +615,7 @@ dbus_audio_register_listener(AudioState *s,
+ }
+ 
+ static gboolean
+-dbus_audio_register_out_listener(AudioState *s,
++dbus_audio_register_out_listener(AudioBackend *s,
+                                  GDBusMethodInvocation *invocation,
+ #ifdef G_OS_UNIX
+                                  GUnixFDList *fd_list,
+@@ -631,7 +631,7 @@ dbus_audio_register_out_listener(AudioState *s,
+ }
+ 
+ static gboolean
+-dbus_audio_register_in_listener(AudioState *s,
++dbus_audio_register_in_listener(AudioBackend *s,
+                                 GDBusMethodInvocation *invocation,
+ #ifdef G_OS_UNIX
+                                 GUnixFDList *fd_list,
+@@ -646,7 +646,7 @@ dbus_audio_register_in_listener(AudioState *s,
+ }
+ 
+ static void
+-dbus_audio_set_server(AudioState *s, GDBusObjectManagerServer *server, bool p2p)
++dbus_audio_set_server(AudioBackend *s, GDBusObjectManagerServer *server, bool p2p)
+ {
+     DBusAudio *da = s->drv_opaque;
+ 
+diff --git a/audio/ossaudio.c b/audio/ossaudio.c
+index c5858284a1..4a549b26a2 100644
+--- a/audio/ossaudio.c
++++ b/audio/ossaudio.c
+@@ -107,13 +107,13 @@ static void oss_anal_close (int *fdp)
+ 
+ static void oss_helper_poll_out (void *opaque)
+ {
+-    AudioState *s = opaque;
++    AudioBackend *s = opaque;
+     audio_run(s, "oss_poll_out");
+ }
+ 
+ static void oss_helper_poll_in (void *opaque)
+ {
+-    AudioState *s = opaque;
++    AudioBackend *s = opaque;
+     audio_run(s, "oss_poll_in");
+ }
+ 
+diff --git a/audio/wavcapture.c b/audio/wavcapture.c
+index 0fbc695d23..b33a38ff45 100644
+--- a/audio/wavcapture.c
++++ b/audio/wavcapture.c
+@@ -103,7 +103,7 @@ static struct capture_ops wav_capture_ops = {
+     .info = wav_capture_info
+ };
+ 
+-int wav_start_capture(AudioState *state, CaptureState *s, const char *path,
++int wav_start_capture(AudioBackend *state, CaptureState *s, const char *path,
+                       int freq, int bits, int nchannels)
+ {
+     WAVState *wav;
+diff --git a/hw/audio/pcspk.c b/hw/audio/pcspk.c
+index 48ef830292..e0b0949918 100644
+--- a/hw/audio/pcspk.c
++++ b/hw/audio/pcspk.c
+@@ -196,7 +196,7 @@ static void pcspk_realizefn(DeviceState *dev, Error **errp)
+ 
+     isa_register_ioport(isadev, &s->ioport, s->iobase);
+ 
+-    if (s->card.state && AUD_register_card(s_spk, &s->card, errp)) {
++    if (s->card.be && AUD_register_card(s_spk, &s->card, errp)) {
+         pcspk_audio_init(s);
+     }
+ }
+diff --git a/hw/core/machine.c b/hw/core/machine.c
+index cd63803000..28d2833c5d 100644
+--- a/hw/core/machine.c
++++ b/hw/core/machine.c
+@@ -760,7 +760,7 @@ static void machine_set_audiodev(Object *obj, const char *value,
+ {
+     MachineState *ms = MACHINE(obj);
+ 
+-    if (!audio_state_by_name(value, errp)) {
++    if (!audio_be_by_name(value, errp)) {
+         return;
+     }
+ 
+diff --git a/hw/core/qdev-properties-system.c b/hw/core/qdev-properties-system.c
+index 1f810b7ddf..c83a52fc62 100644
+--- a/hw/core/qdev-properties-system.c
++++ b/hw/core/qdev-properties-system.c
+@@ -499,16 +499,16 @@ static void set_audiodev(Object *obj, Visitor *v, const char* name,
+ {
+     const Property *prop = opaque;
+     QEMUSoundCard *card = object_field_prop_ptr(obj, prop);
+-    AudioState *state;
++    AudioBackend *state;
+     g_autofree char *str = NULL;
+ 
+     if (!visit_type_str(v, name, &str, errp)) {
+         return;
+     }
+ 
+-    state = audio_state_by_name(str, errp);
++    state = audio_be_by_name(str, errp);
+     if (state) {
+-        card->state = state;
++        card->be = state;
+     }
+ }
+ 
+diff --git a/ui/dbus.c b/ui/dbus.c
+index dd0336702d..84cff47ec7 100644
+--- a/ui/dbus.c
++++ b/ui/dbus.c
+@@ -220,16 +220,16 @@ dbus_display_complete(UserCreatable *uc, Error **errp)
+     }
+ 
+     if (dd->audiodev && *dd->audiodev) {
+-        AudioState *audio_state = audio_state_by_name(dd->audiodev, errp);
+-        if (!audio_state) {
++        AudioBackend *audio_be = audio_be_by_name(dd->audiodev, errp);
++        if (!audio_be) {
+             return;
+         }
+-        if (!g_str_equal(audio_state->drv->name, "dbus")) {
++        if (!g_str_equal(audio_be->drv->name, "dbus")) {
+             error_setg(errp, "Audiodev '%s' is not compatible with DBus",
+                        dd->audiodev);
+             return;
+         }
+-        audio_state->drv->set_dbus_server(audio_state, dd->server, dd->p2p);
++        audio_be->drv->set_dbus_server(audio_be, dd->server, dd->p2p);
+     }
+ 
+     consoles = g_array_new(FALSE, FALSE, sizeof(guint32));
+diff --git a/ui/vnc.c b/ui/vnc.c
+index 77c823bf2e..0094ec680c 100644
+--- a/ui/vnc.c
++++ b/ui/vnc.c
+@@ -1276,7 +1276,7 @@ static void audio_add(VncState *vs)
+     ops.destroy = audio_capture_destroy;
+     ops.capture = audio_capture;
+ 
+-    vs->audio_cap = AUD_add_capture(vs->vd->audio_state, &vs->as, &ops, vs);
++    vs->audio_cap = AUD_add_capture(vs->vd->audio_be, &vs->as, &ops, vs);
+     if (!vs->audio_cap) {
+         error_report("Failed to add audio capture");
+     }
+@@ -2193,7 +2193,7 @@ static void set_encodings(VncState *vs, int32_t *encodings, size_t n_encodings)
+             send_ext_key_event_ack(vs);
+             break;
+         case VNC_ENCODING_AUDIO:
+-            if (vs->vd->audio_state) {
++            if (vs->vd->audio_be) {
+                 vnc_set_feature(vs, VNC_FEATURE_AUDIO);
+                 send_ext_audio_ack(vs);
+             }
+@@ -4236,12 +4236,12 @@ void vnc_display_open(const char *id, Error **errp)
+ 
+     audiodev = qemu_opt_get(opts, "audiodev");
+     if (audiodev) {
+-        vd->audio_state = audio_state_by_name(audiodev, errp);
+-        if (!vd->audio_state) {
++        vd->audio_be = audio_be_by_name(audiodev, errp);
++        if (!vd->audio_be) {
+             goto fail;
+         }
+     } else {
+-        vd->audio_state = audio_get_default_audio_state(NULL);
++        vd->audio_be = audio_get_default_audio_be(NULL);
+     }
+ 
+     device_id = qemu_opt_get(opts, "display");
 -- 
 2.51.0
 

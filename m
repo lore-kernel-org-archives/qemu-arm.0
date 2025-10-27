@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E3A8CCF9EC
-	for <qemu-arm@archiver.kernel.org>; Mon, 27 Oct 2025 11:12:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0855CCF9EA
+	for <qemu-arm@archiver.kernel.org>; Mon, 27 Oct 2025 11:12:50 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vDL2V-0001mY-36; Mon, 27 Oct 2025 07:05:27 -0400
+	id 1vDL2E-0001Ng-Ff; Mon, 27 Oct 2025 07:05:10 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vDL2S-0001jc-7t
- for qemu-arm@nongnu.org; Mon, 27 Oct 2025 07:05:24 -0400
-Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
+ id 1vDL1t-0000rX-3R
+ for qemu-arm@nongnu.org; Mon, 27 Oct 2025 07:04:49 -0400
+Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vDL1a-0005co-JP
- for qemu-arm@nongnu.org; Mon, 27 Oct 2025 07:05:23 -0400
-Received: by mail-ej1-x62d.google.com with SMTP id
- a640c23a62f3a-b6d3340dc2aso1049243366b.0
- for <qemu-arm@nongnu.org>; Mon, 27 Oct 2025 04:03:52 -0700 (PDT)
+ id 1vDL1R-0005fI-Ur
+ for qemu-arm@nongnu.org; Mon, 27 Oct 2025 07:04:48 -0400
+Received: by mail-ej1-x62a.google.com with SMTP id
+ a640c23a62f3a-afcb7ae6ed0so1052816066b.3
+ for <qemu-arm@nongnu.org>; Mon, 27 Oct 2025 04:03:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1761563030; x=1762167830; darn=nongnu.org;
+ d=linaro.org; s=google; t=1761563035; x=1762167835; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=dPRpRXWNkgzTelJ9LaP0XDvrgpGKDnKCNCyXswtjrG8=;
- b=w5dLCARn5qgqtBNCDCY41zmbiYRysQivS7/97/aDe/4US434ThlSgwfMG2x2Ex+gg4
- pd4Fmj5rvKt0bxhzfl2AR41IMMbc41OGjR0Bqab7pk1CG2zRcBMS8X9STFNRk9XFzM/z
- jutJwpxpipYbqmLvFhgAXHgUXXuJA7PKSXlTVRzFxEH4XEtx4/SnppriHCMU014Vxhc4
- BcaF4u+o3XQDfu9VdPR12TOnYoDEhdHZkMlUtg/HAOY1G2jkG5Xs9kvlsg0utfgvEai7
- zjCOTJSKNOeAVz0N+2vEPkpeQxqlnSGYp0VVYEu0G2K/F6zocIpDZ0RGa+bPHsKdNTa8
- pqMQ==
+ bh=D1dBqMEfBlqSUG7PelnGPIkGv75RoYZ1ZvCkqq8IgNo=;
+ b=glzuNhfefPlRvwbG2yFjU6hUpmd014VOSa0ArrXDbYRCCLRxUw6kavgfMR1+etQk3k
+ ex7Ke3cOLDPDkuNEUXxh+8MR0RZnDvuM2CdlalJESHMZHNSh6o8o6gJwLlfXlgZxLKqD
+ tW1yoViMfnmDLmR37V4XkRQw+da0SrT3gIGBgmZ2EIOPILq3cTJgepGuW7m9hDDsq4B7
+ ls42jitiFxm2Op/7BfpwxskX1NuxQ0wrQlwa79iDKy79oiLscwT6EyvLekojvdh6TDl1
+ DYoPD7Y5B5yOcUlO/d0ukJ752dj39JnJYCjCDdyyrgooJ3ZqdMlZmlyWa9RjEpjbVMvv
+ Bc3A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761563030; x=1762167830;
+ d=1e100.net; s=20230601; t=1761563035; x=1762167835;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=dPRpRXWNkgzTelJ9LaP0XDvrgpGKDnKCNCyXswtjrG8=;
- b=Ole5i71r5PfBWjapNLgWWdk2Bkx+LbIkdfg7ON6uFOF8vczPoQZBcDnfJBUtFW9rWR
- HXFugrM39NuBpG19N8GSdO4//cv8xlYC/jVZqMnDazGZesJiUlPCKjbxrVgzy1tgodBZ
- MJv97J4INUbINAg8bZdbReuXS7g7XY/z7ItGs+QjgCI7OVkdr6leEhmOmvWZhNNDeoda
- FjVSutnr/L/O6GLVI/HNTECI3AM3aq/yrKDCumLdpn157fANwP3dCazqdL9d35LlDtTH
- 0ecLVvbfhc5aogXkGFag++rNDSHwTMqySHvJmSq2PqYVf08aESjUpCt9ZICBRsXcbtpD
- 63FA==
+ bh=D1dBqMEfBlqSUG7PelnGPIkGv75RoYZ1ZvCkqq8IgNo=;
+ b=cwjM/Av2xMk0KvuU8HvEWcwyAlx34bobKh3Wpz1PhdC2xIex6Il6CLKEKVakODm143
+ uhqYVagglqC+ATwagEmrUWFsozCSgI9OhUSRk5LIHzY+fWeuiqesRCrwBakiDz5svdCs
+ jsPt2gFyhIq83L/AscPbILSfG1mHz35INOtmCEAg2hE7eVRHIfm8b1hYsMWVmSmLCxnf
+ Yq4aCJFZmah9oODhTvyIeT46CSGDFcnDc9+e6MZH4mVFOqV+HqR6+WwcoGZitlAamkCr
+ H/kXo9zM2s3LCmcsApOLZyGGsNrfLYEAgRoA30rRZqP19gX+Xd6Q2Hcnz9UQa8oR2/9K
+ rrdA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXD0eP/RYfTbefblfYqDU5TPCyGUYs0RS8s73ZDluFGw3tC3tiQL6V894tIV7tTYMlfyLhOtheH3w==@nongnu.org
-X-Gm-Message-State: AOJu0YxuZZc4OUSLc/sr55WZSO+wCyeEpyfbXxao2bYU11G1DOAcv0Iy
- EmjA0Jw/uNZRk6blzN9ZIGIsZj4xs9iAB3peeorJmsPW+Z6HyU51ZUxDKOEQX3m7IUY=
-X-Gm-Gg: ASbGncswvxdAJr1pezoJsJMbpV026oxbEmm93Npvqf/EXHXGYhctKWYBybNfgYGYyIc
- 3sUp5jIjk6Oa4MhWCSmXtenimWRjnP0ms8q1DmIgLEBIn+GzdOQ0cF8XeSuR5rvX88CNWzOJDQo
- Q/stkvQIoeskgFTd6qvYme9anMscatFt2CwXE0vkOUbgIdmoFpZiiOKMgNyCEPqVbpqOi9z/pnO
- 9mRELGDRB8oL5YtPZ7jEZpqjvImWrSYcWKcY4SDzDOeNa/JiE4vwjiXhqVsYukAXBNMut9p1MwA
- sGxeC2RSm2JxGaPL6rAC2HaOlg9S/SB+wsCev2NX7RFzupUZMeWRhW8f7/olhVK+00/IZkNJt9H
- LQVc/XwqZ/NBhF+bpwJSshL0WZht/w5cr0E3a6Z0hwFlv4F7gQ1KvuRZj/JulLyGAmBZS9QEsNa
- 1RoIMtQaoAfnc=
-X-Google-Smtp-Source: AGHT+IEKOw2sZTHAivgqlTb6K/HYXBQhpYwxsm2va8DyFrA5s6EN+1suG8QBDsLHPxzTUtSD784+vA==
-X-Received: by 2002:a17:906:7955:b0:b6d:5fbf:8c63 with SMTP id
- a640c23a62f3a-b6d6bb4a57emr1240007166b.15.1761563030330; 
- Mon, 27 Oct 2025 04:03:50 -0700 (PDT)
+ AJvYcCXzq7guuxbirevWM4E4EsYTUV25jyw6s75zwZmZtn1QtFB7yf9Vu8p18ujjwQY3up/Tu9mzBI48+w==@nongnu.org
+X-Gm-Message-State: AOJu0YzhasWg1014Lkb8ppf7rQxz88ze13OKj3nXgtIYPgSC67AgA9f7
+ y+3oObxBKAlNELD62zUtxB6VoDwwFowTAdjC1GU2keV1fOx0SkSOcdL61DyXTku8feI=
+X-Gm-Gg: ASbGncve08ysKlo53HzrzqHTYFfijV8vEGvJuLlVpCD8tDFEk3hFpibWEQxPzV/ZOlF
+ g/jdU507U31exO9ndsbx8TLcyLSmAOscBUOpXYUaVO9GKp2KxrC7S6quX35tvivwg2+eTXOSuKI
+ +bEvf2mFlC3y3xAl1JYrEeCA81ui677i20jrFdgfzZ8n8HsFp7N9qdiu8ZnEc9Lr5gTM3q7x+uT
+ hNZz84tNTErCU+O63DylGg024Z13jYIZQ84+ozxFs6hggBGkUMNzw6LzMr7jolL4mEddUgj5S5t
+ pZAgKW67m7qZPs5Tu2TPT+rDDHTVsNc1ZD86nQULg0AUcXNC8rfJYrx4G6/uCJt4naX4to88KKM
+ 6uCAmZDRAxNT4YUcMLK49MdbXOcuymtD251NBko7/bXApdaezl0MD1VY91smIGrtMB9xQFwLtkc
+ r2LGoLhw/jgXk=
+X-Google-Smtp-Source: AGHT+IF5kYTpImflkBbD2clRHQr+gdOVKdNdq8AWjSa+ytlNl34JftCGYvwU6boz7oiv8UPvMHvJ7g==
+X-Received: by 2002:a17:907:3e0d:b0:b6d:5ef8:4bf1 with SMTP id
+ a640c23a62f3a-b6d6fe42fe9mr1097430066b.19.1761563034748; 
+ Mon, 27 Oct 2025 04:03:54 -0700 (PDT)
 Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-b6d85309069sm716387666b.10.2025.10.27.04.03.46
+ 4fb4d7f45d1cf-63e7efd116asm6178995a12.33.2025.10.27.04.03.48
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 27 Oct 2025 04:03:49 -0700 (PDT)
+ Mon, 27 Oct 2025 04:03:53 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id A833D5FAA7;
- Mon, 27 Oct 2025 11:03:44 +0000 (GMT)
+ by draig.lan (Postfix) with ESMTP id 3F828609D9;
+ Mon, 27 Oct 2025 11:03:45 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
@@ -96,25 +96,25 @@ Cc: Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Jiaxun Yang <jiaxun.yang@flygoat.com>, Michael Rolnik <mrolnik@gmail.com>,
  Song Gao <gaosong@loongson.cn>, qemu-riscv@nongnu.org,
- Aleksandar Rikalo <arikalo@gmail.com>
-Subject: [PATCH 06/35] scripts/ci: modify gitlab runner deb setup
-Date: Mon, 27 Oct 2025 11:03:13 +0000
-Message-ID: <20251027110344.2289945-7-alex.bennee@linaro.org>
+ Aleksandar Rikalo <arikalo@gmail.com>, Julian Ganz <neither@nut.email>
+Subject: [PATCH 12/35] target/arm: call plugin trap callbacks
+Date: Mon, 27 Oct 2025 11:03:19 +0000
+Message-ID: <20251027110344.2289945-13-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20251027110344.2289945-1-alex.bennee@linaro.org>
 References: <20251027110344.2289945-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62d;
- envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x62d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::62a;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x62a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -130,41 +130,145 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Both Debian and Ubuntu are setup the same way.
+From: Julian Ganz <neither@nut.email>
 
+We recently introduced API for registering callbacks for trap related
+events as well as the corresponding hook functions. Due to differences
+between architectures, the latter need to be called from target specific
+code.
+
+This change places hooks for ARM (and Aarch64) targets. We decided to
+treat the (V)IRQ, (VI/VF)NMI, (V)FIQ and VSERR exceptions as interrupts
+since they are, presumably, async in nature.
+
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Julian Ganz <neither@nut.email>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- scripts/ci/setup/gitlab-runner.yml | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ target/arm/internals.h    |  1 +
+ target/arm/helper.c       | 24 ++++++++++++++++++++++++
+ target/arm/tcg/m_helper.c |  5 +++++
+ 3 files changed, 30 insertions(+)
 
-diff --git a/scripts/ci/setup/gitlab-runner.yml b/scripts/ci/setup/gitlab-runner.yml
-index 7025935487a..76aeaf4ee95 100644
---- a/scripts/ci/setup/gitlab-runner.yml
-+++ b/scripts/ci/setup/gitlab-runner.yml
-@@ -56,12 +56,12 @@
-         url: "https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.deb.sh"
-         mode: 0755
-       when:
--        - ansible_facts['distribution'] == 'Ubuntu'
-+        - ansible_facts['distribution'] in ['Ubuntu', 'Debian']
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index f86f421a3db..6fbf7e1ca49 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -375,6 +375,7 @@ static inline int r14_bank_number(int mode)
  
-     - name: Run gitlab-runner repo setup script (DEB)
-       shell: "/root/script.deb.sh"
-       when:
--        - ansible_facts['distribution'] == 'Ubuntu'
-+        - ansible_facts['distribution'] in ['Ubuntu', 'Debian']
+ void arm_cpu_register(const ARMCPUInfo *info);
  
-     - name: Install gitlab-runner (DEB)
-       ansible.builtin.apt:
-@@ -69,7 +69,7 @@
-           update_cache: yes
-           state: present
-       when:
--        - ansible_facts['distribution'] == 'Ubuntu'
-+        - ansible_facts['distribution'] in ['Ubuntu', 'Debian']
++void arm_do_plugin_vcpu_discon_cb(CPUState *cs, uint64_t from);
+ void register_cp_regs_for_features(ARMCPU *cpu);
+ void init_cpreg_list(ARMCPU *cpu);
  
-     # RPM setup
-     - name: Get gitlab-runner repo setup script (RPM)
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 2ef9c178147..ef6435c3efb 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -34,6 +34,7 @@
+ #endif
+ #include "cpregs.h"
+ #include "target/arm/gtimer.h"
++#include "qemu/plugin.h"
+ 
+ #define HELPER_H "tcg/helper.h"
+ #include "exec/helper-proto.h.inc"
+@@ -8783,6 +8784,24 @@ static void take_aarch32_exception(CPUARMState *env, int new_mode,
+     }
+ }
+ 
++void arm_do_plugin_vcpu_discon_cb(CPUState *cs, uint64_t from)
++{
++    switch (cs->exception_index) {
++    case EXCP_IRQ:
++    case EXCP_VIRQ:
++    case EXCP_NMI:
++    case EXCP_VINMI:
++    case EXCP_FIQ:
++    case EXCP_VFIQ:
++    case EXCP_VFNMI:
++    case EXCP_VSERR:
++        qemu_plugin_vcpu_interrupt_cb(cs, from);
++        break;
++    default:
++        qemu_plugin_vcpu_exception_cb(cs, from);
++    }
++}
++
+ static void arm_cpu_do_interrupt_aarch32_hyp(CPUState *cs)
+ {
+     /*
+@@ -9473,6 +9492,7 @@ void arm_cpu_do_interrupt(CPUState *cs)
+     ARMCPU *cpu = ARM_CPU(cs);
+     CPUARMState *env = &cpu->env;
+     unsigned int new_el = env->exception.target_el;
++    uint64_t last_pc = cs->cc->get_pc(cs);
+ 
+     assert(!arm_feature(env, ARM_FEATURE_M));
+ 
+@@ -9489,6 +9509,7 @@ void arm_cpu_do_interrupt(CPUState *cs)
+     if (tcg_enabled() && arm_is_psci_call(cpu, cs->exception_index)) {
+         arm_handle_psci_call(cpu);
+         qemu_log_mask(CPU_LOG_INT, "...handled as PSCI call\n");
++        qemu_plugin_vcpu_hostcall_cb(cs, last_pc);
+         return;
+     }
+ 
+@@ -9500,6 +9521,7 @@ void arm_cpu_do_interrupt(CPUState *cs)
+ #ifdef CONFIG_TCG
+     if (cs->exception_index == EXCP_SEMIHOST) {
+         tcg_handle_semihosting(cs);
++        qemu_plugin_vcpu_hostcall_cb(cs, last_pc);
+         return;
+     }
+ #endif
+@@ -9525,6 +9547,8 @@ void arm_cpu_do_interrupt(CPUState *cs)
+     if (!kvm_enabled()) {
+         cpu_set_interrupt(cs, CPU_INTERRUPT_EXITTB);
+     }
++
++    arm_do_plugin_vcpu_discon_cb(cs, last_pc);
+ }
+ #endif /* !CONFIG_USER_ONLY */
+ 
+diff --git a/target/arm/tcg/m_helper.c b/target/arm/tcg/m_helper.c
+index d856e3bc8e2..3fb24c77900 100644
+--- a/target/arm/tcg/m_helper.c
++++ b/target/arm/tcg/m_helper.c
+@@ -23,6 +23,7 @@
+ #if !defined(CONFIG_USER_ONLY)
+ #include "hw/intc/armv7m_nvic.h"
+ #endif
++#include "qemu/plugin.h"
+ 
+ static void v7m_msr_xpsr(CPUARMState *env, uint32_t mask,
+                          uint32_t reg, uint32_t val)
+@@ -2194,6 +2195,7 @@ void arm_v7m_cpu_do_interrupt(CPUState *cs)
+     CPUARMState *env = &cpu->env;
+     uint32_t lr;
+     bool ignore_stackfaults;
++    uint64_t last_pc = env->regs[15];
+ 
+     arm_log_exception(cs);
+ 
+@@ -2361,6 +2363,7 @@ void arm_v7m_cpu_do_interrupt(CPUState *cs)
+         g_assert_not_reached();
+ #endif
+         env->regs[15] += env->thumb ? 2 : 4;
++        qemu_plugin_vcpu_hostcall_cb(cs, last_pc);
+         return;
+     case EXCP_BKPT:
+         armv7m_nvic_set_pending(env->nvic, ARMV7M_EXCP_DEBUG, false);
+@@ -2427,6 +2430,8 @@ void arm_v7m_cpu_do_interrupt(CPUState *cs)
+ 
+     ignore_stackfaults = v7m_push_stack(cpu);
+     v7m_exception_taken(cpu, lr, false, ignore_stackfaults);
++
++    arm_do_plugin_vcpu_discon_cb(cs, last_pc);
+ }
+ 
+ uint32_t HELPER(v7m_mrs)(CPUARMState *env, uint32_t reg)
 -- 
 2.47.3
 

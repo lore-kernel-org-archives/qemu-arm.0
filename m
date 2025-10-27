@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4378CCF9EC
-	for <qemu-arm@archiver.kernel.org>; Mon, 27 Oct 2025 11:07:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C543ECCF9F0
+	for <qemu-arm@archiver.kernel.org>; Mon, 27 Oct 2025 11:07:21 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vDL1u-0000sS-1z; Mon, 27 Oct 2025 07:04:50 -0400
+	id 1vDL1v-0000wW-2M; Mon, 27 Oct 2025 07:04:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vDL1O-0000d2-VC
- for qemu-arm@nongnu.org; Mon, 27 Oct 2025 07:04:19 -0400
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
+ id 1vDL1Q-0000dd-3z
+ for qemu-arm@nongnu.org; Mon, 27 Oct 2025 07:04:21 -0400
+Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vDL1G-0005e6-MD
- for qemu-arm@nongnu.org; Mon, 27 Oct 2025 07:04:14 -0400
-Received: by mail-ed1-x534.google.com with SMTP id
- 4fb4d7f45d1cf-63c45c11be7so7450156a12.3
- for <qemu-arm@nongnu.org>; Mon, 27 Oct 2025 04:03:54 -0700 (PDT)
+ id 1vDL1I-0005gP-NU
+ for qemu-arm@nongnu.org; Mon, 27 Oct 2025 07:04:19 -0400
+Received: by mail-ed1-x52e.google.com with SMTP id
+ 4fb4d7f45d1cf-63c21467e5bso480501a12.0
+ for <qemu-arm@nongnu.org>; Mon, 27 Oct 2025 04:04:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1761563033; x=1762167833; darn=nongnu.org;
+ d=linaro.org; s=google; t=1761563037; x=1762167837; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=RbvPrANYvJj3gNO97dH7gcz+uNRb8G5R8cbjz6SvgpA=;
- b=wRK/WRiWjNekM6KHFoSK3HItdhVpi7y5gpnTlQtaCvnOrB1wvKXxM/tgQSm98aWeM/
- VIsUCpZP3fe72O7AD+ZCWnXj73EwvDXWUN7tcdKAPBNSFY+ohEL06Zujqa2grjK+PkCv
- giS4BqgbzUMxgcNa8fef0nS1rwzf2GrHk4WXw+Ry3A1Nz67AkAVWTsYclrX8yQPy9FxA
- lN22VQM27woLbeNyYSqdzyMC31Bsh9Bh+4JtbvTsEB9syufUvQsk9WavYP3Vwb/AK/Gu
- HeukaiVfmO3Y3LGSsx4t1Y5bHMxj/u8X6Ct70KprzvG/jonbgpWc9cUPSpGrj0q3uywa
- Kr6Q==
+ bh=S+B5t2CS/T8KjhtvrkR91LD1xXhHenjI0bMGIecipr8=;
+ b=GgXLmexawwlsv/1igkmwbYEFBzAoXdecLpStTG1L3LsljiasGqe4uPKBmgV1kbQuQE
+ G0ThAwNrXqXtm9ncpITlV0XBqnIlacEhBhjCmvc/BgQIYNfb9ofYmYZRwO7cgJTHda0d
+ yzvd3C/Y3AJD0tJOgh73/Jx4TRFecgWg9htWO4P7e3OZZE930pXN8HMFNLV1pNMt9CoS
+ dLX9ciEgX9a7lVjKQ1F+aujPJC7Ot0jk3Ou4XpnyQNJHr+wTEOU6jmIZdSkLBLdWLTR5
+ DrDwId+mZ8hXcWSQIrwj1/ZgHb896cMKEvPGIBJxsJthEuYNanQObj3K/id5odYZF4mo
+ X/eg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761563033; x=1762167833;
+ d=1e100.net; s=20230601; t=1761563037; x=1762167837;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=RbvPrANYvJj3gNO97dH7gcz+uNRb8G5R8cbjz6SvgpA=;
- b=Vc0tYFTdFb07jbU66MjBqcDxSKhnEiTvHkk8iNCt1bhzkT+ozYAgoE9e/JnxHeMnxg
- s4gZr/r1yuyqfuOlxE9KEU+u0lKjN0pwD2BJbfyLxpQmhMhoCY1QWXzqkCNpoGM5UGOQ
- uMJfHumn47A9xn1ZhYAX/lmCCvOmNj9mm+Le4aLtzZxAnG9zwyHc1vxFhkIR9Sw+jTOp
- Q7mNs2TTzRIlahwLMiolXOs9qXREfC/nQSquwHCyoShv9KdzmbQs3SoGE7QrL9XwAnfT
- TbKwFyP57skBkenTHLZKnkSIy5rAErbhaQY4sJWOVjFbgCqH7RDfXfxnb6E50Ymt58Gm
- Pt0g==
+ bh=S+B5t2CS/T8KjhtvrkR91LD1xXhHenjI0bMGIecipr8=;
+ b=XsZoAFiwaPG+I8HCq1W3xBFIuSqRns6m53uwApIlo7rYTI9G4n5XaPF4hxlTvzIuXx
+ WW2qSMcNsON/0+Dj7pnbkHd5e5AqZ0y+eMwVklZD/11EUOamAduopLmtTh8z/ZWHKPhN
+ jb63Z4Bz0qQV/FBVhpXWipHHQSto/MCqLEoadZwfBg8vR8KDlAG7j4UAcmx7/RlW+14G
+ B2qr5c69Z38ewimJavtCHRxJNM9iNx6SoxFFs5WCbOUt9lxBFhyNKPVo3lfF6RM4N8ny
+ 0OkDdjYKaFGPuKXDTxulFvtogjeiAjiFsdMdZupPzwNutJhzau3kM7uIR+iardWrrP7l
+ haHA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWabQQ0g+7tXKWiL73yONyC6DbmjmEolab/pg3I7vqeRh4ZSQUuCSU1lmbPshIyXiHrX6X4bzkB4w==@nongnu.org
-X-Gm-Message-State: AOJu0Yyh7d7R4SdexH/kTgt9MSYNteAn8oRj0zzs+oES+oLaykaX6AzE
- 3XOwbDAMfmn/l9nXNuVnVYVSVYoHzRhlVm+lqmPGCubM9gCapI3rSBCsF2CHoNT6uxs=
-X-Gm-Gg: ASbGncv2vaAhkcAwUKUYIKa/NfbstJ7p3RrGlRpFAJyX/N0N+deG2LrA5wyDRznkIXh
- uEhl8JwY8EEGYX1mHom66ebqduWOnexjQL22EernVJTHcLdCXWR4BJN2fRSLH9QIHbpkrRKgQC4
- Fhzhzgna5Tfk9/ykw88FVqcXG6Cn5E4ivMobcPR44fscnJCqkfEPTLonMdTGxmPsZqAnMKQ/+lY
- tKOJaV1d9P3XdE1esGfvnS1z4BaCgYux+Qv9+c56LERHOMTVCO4gx0q0xu1CbFSuOSbk5YIRVyr
- HNXVoNNLGv9emPxCXIVTAjCOMZJYP5gaYrCZ4a3rzTScvRF9DTqGl2iquTv6rej1xlIyzgXO3+o
- RuZoUBVy04neC6/WkVA07/cp1ZYGnPFfstSmiFlJOOPZbhYp7oAz5raP+6R5L6yZvIQ+reeLFLP
- Tp
-X-Google-Smtp-Source: AGHT+IEgl+c4dRH+StKwomTRbDfEq8j/zmTZSSPAaJlwzgoFWODFr2XsptD7H1CqAq3BBX3xhzNDKw==
-X-Received: by 2002:a05:6402:27d1:b0:639:f54d:9274 with SMTP id
- 4fb4d7f45d1cf-63e60003a6dmr9269873a12.2.1761563032820; 
- Mon, 27 Oct 2025 04:03:52 -0700 (PDT)
+ AJvYcCXUqxw+BEIaZXXawWe69+igHRvaL5l9DjC2//SMzMqsl9Fb1P7MjcVyyU81xSKjQ7FHYpkicrpHEw==@nongnu.org
+X-Gm-Message-State: AOJu0YywHMlOz/JTtm4vd0OAmQ8wYQNfkSSydCRkv17HK17UXGIcVUEE
+ Zgr1VwjMZHCCVx5Yis4YO0NfrvZiU12usNe/Et3a5wj3GiaRa4yL7Sce2R95qugiqj4=
+X-Gm-Gg: ASbGncv6jz6GBCOVm5iZGTlxQ575H61pe6mvoCEf7KVN3V3vPPo4cVtv/CtTOHGkOaa
+ BUkisViB7/7oVCKC1hgnUyx+Gy8LNHmYTf/ecCM6lqas7jKA/NTr4ncexV5ftPorA5xaOyjTBUk
+ QDesCGkD5tzmPT/iPNJrxIH8HKUgHDl7QxzCAl4NXkyQLF7ESL6tTQuOr0tBmP3IsjFdznz+7Lz
+ mMRv8Sv00CI3pKV7a7oXloFXN7GjU9wxccWj5wBpMIk93iP2SvrvI1PSqjwdOo8y7xGkBdJ/MFC
+ t285kw9tnWnON0oEnwQRoevk3l64LUGb+/9mlluowoFG3lq1BCOqX9pp49CAxbEi8iLRPjEm8vT
+ FzWz5VQAq0YOXVg562RoSCvnJKhOK7kgxNd1WYh4B5dHS5agMmendk/oS/dui2SQa6Oui9uEqwb
+ PIrcF7JbY3qH4=
+X-Google-Smtp-Source: AGHT+IFOqsFhi++XSrIN3tvwX7vv/Rng/GC5ur0yItPZWJFnvIrwnw8USTNuYmK9pTg/cUeHEl2iog==
+X-Received: by 2002:a05:6402:5650:b0:636:6801:eed7 with SMTP id
+ 4fb4d7f45d1cf-63c1f6d05b1mr25599778a12.32.1761563037184; 
+ Mon, 27 Oct 2025 04:03:57 -0700 (PDT)
 Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-63e7efd0bc5sm6013871a12.32.2025.10.27.04.03.48
+ 4fb4d7f45d1cf-63e7efb97b3sm5942298a12.30.2025.10.27.04.03.50
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 27 Oct 2025 04:03:49 -0700 (PDT)
+ Mon, 27 Oct 2025 04:03:53 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 277AE609B7;
+ by draig.lan (Postfix) with ESMTP id A56E160C1B;
  Mon, 27 Oct 2025 11:03:45 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -97,17 +97,17 @@ Cc: Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
  Jiaxun Yang <jiaxun.yang@flygoat.com>, Michael Rolnik <mrolnik@gmail.com>,
  Song Gao <gaosong@loongson.cn>, qemu-riscv@nongnu.org,
  Aleksandar Rikalo <arikalo@gmail.com>, Julian Ganz <neither@nut.email>
-Subject: [PATCH 11/35] target/alpha: call plugin trap callbacks
-Date: Mon, 27 Oct 2025 11:03:18 +0000
-Message-ID: <20251027110344.2289945-12-alex.bennee@linaro.org>
+Subject: [PATCH 17/35] target/m68k: call plugin trap callbacks
+Date: Mon, 27 Oct 2025 11:03:24 +0000
+Message-ID: <20251027110344.2289945-18-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20251027110344.2289945-1-alex.bennee@linaro.org>
 References: <20251027110344.2289945-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::534;
- envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x534.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52e;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x52e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -137,53 +137,83 @@ events as well as the corresponding hook functions. Due to differences
 between architectures, the latter need to be called from target specific
 code.
 
-This change places hooks for Alpha targets.
+This change places hooks for Motorola 68000 targets.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Julian Ganz <neither@nut.email>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- target/alpha/helper.c | 13 +++++++++++++
- 1 file changed, 13 insertions(+)
+ target/m68k/op_helper.c | 22 ++++++++++++++++++++++
+ 1 file changed, 22 insertions(+)
 
-diff --git a/target/alpha/helper.c b/target/alpha/helper.c
-index 096eac34458..a9af52a928f 100644
---- a/target/alpha/helper.c
-+++ b/target/alpha/helper.c
-@@ -27,6 +27,7 @@
+diff --git a/target/m68k/op_helper.c b/target/m68k/op_helper.c
+index f29ae12af84..e9c20a8e032 100644
+--- a/target/m68k/op_helper.c
++++ b/target/m68k/op_helper.c
+@@ -22,6 +22,7 @@
  #include "exec/helper-proto.h"
- #include "qemu/qemu-print.h"
- #include "system/memory.h"
+ #include "accel/tcg/cpu-ldst.h"
+ #include "semihosting/semihost.h"
 +#include "qemu/plugin.h"
  
+ #if !defined(CONFIG_USER_ONLY)
  
- #define CONVERT_BIT(X, SRC, DST) \
-@@ -328,6 +329,7 @@ void alpha_cpu_do_interrupt(CPUState *cs)
- {
-     CPUAlphaState *env = cpu_env(cs);
-     int i = cs->exception_index;
-+    uint64_t last_pc = env->pc;
- 
-     if (qemu_loglevel_mask(CPU_LOG_INT)) {
-         static int count;
-@@ -431,6 +433,17 @@ void alpha_cpu_do_interrupt(CPUState *cs)
- 
-     /* Switch to PALmode.  */
-     env->flags |= ENV_FLAG_PAL_MODE;
-+
-+    switch (i) {
-+    case EXCP_SMP_INTERRUPT:
-+    case EXCP_CLK_INTERRUPT:
-+    case EXCP_DEV_INTERRUPT:
-+        qemu_plugin_vcpu_interrupt_cb(cs, last_pc);
-+        break;
-+    default:
-+        qemu_plugin_vcpu_exception_cb(cs, last_pc);
-+        break;
-+    }
+@@ -183,6 +184,21 @@ static const char *m68k_exception_name(int index)
+     return "Unassigned";
  }
  
- bool alpha_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
++static void do_plugin_vcpu_interrupt_cb(CPUState *cs, uint64_t from)
++{
++    switch (cs->exception_index) {
++    case EXCP_SPURIOUS ... EXCP_INT_LEVEL_7:
++        qemu_plugin_vcpu_interrupt_cb(cs, from);
++        break;
++    case EXCP_SEMIHOSTING:
++        qemu_plugin_vcpu_hostcall_cb(cs, from);
++        break;
++    default:
++        qemu_plugin_vcpu_exception_cb(cs, from);
++        break;
++    }
++}
++
+ static void cf_interrupt_all(CPUM68KState *env, int is_hw)
+ {
+     CPUState *cs = env_cpu(env);
+@@ -203,6 +219,7 @@ static void cf_interrupt_all(CPUM68KState *env, int is_hw)
+             return;
+         case EXCP_SEMIHOSTING:
+             do_m68k_semihosting(env, env->dregs[0]);
++            qemu_plugin_vcpu_hostcall_cb(cs, retaddr);
+             return;
+         }
+     }
+@@ -239,6 +256,8 @@ static void cf_interrupt_all(CPUM68KState *env, int is_hw)
+     env->aregs[7] = sp;
+     /* Jump to vector.  */
+     env->pc = cpu_ldl_mmuidx_ra(env, env->vbr + vector, MMU_KERNEL_IDX, 0);
++
++    do_plugin_vcpu_interrupt_cb(cs, retaddr);
+ }
+ 
+ static inline void do_stack_frame(CPUM68KState *env, uint32_t *sp,
+@@ -277,6 +296,7 @@ static void m68k_interrupt_all(CPUM68KState *env, int is_hw)
+     uint32_t sp;
+     uint32_t vector;
+     uint16_t sr, oldsr;
++    uint64_t last_pc = env->pc;
+ 
+     if (!is_hw) {
+         switch (cs->exception_index) {
+@@ -417,6 +437,8 @@ static void m68k_interrupt_all(CPUM68KState *env, int is_hw)
+     env->aregs[7] = sp;
+     /* Jump to vector.  */
+     env->pc = cpu_ldl_mmuidx_ra(env, env->vbr + vector, MMU_KERNEL_IDX, 0);
++
++    do_plugin_vcpu_interrupt_cb(cs, last_pc);
+ }
+ 
+ static void do_interrupt_all(CPUM68KState *env, int is_hw)
 -- 
 2.47.3
 

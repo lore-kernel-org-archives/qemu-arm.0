@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F148CCCF9EB
-	for <qemu-arm@archiver.kernel.org>; Mon, 27 Oct 2025 15:20:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9BE3CCF9E0
+	for <qemu-arm@archiver.kernel.org>; Mon, 27 Oct 2025 15:20:46 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vDOww-00060Y-Vc; Mon, 27 Oct 2025 11:15:59 -0400
+	id 1vDOwl-0005t4-IY; Mon, 27 Oct 2025 11:15:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1vDOvx-00058p-MV
- for qemu-arm@nongnu.org; Mon, 27 Oct 2025 11:14:59 -0400
+ id 1vDOvv-00056E-Lx
+ for qemu-arm@nongnu.org; Mon, 27 Oct 2025 11:14:56 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1vDOvq-00046k-2S
- for qemu-arm@nongnu.org; Mon, 27 Oct 2025 11:14:56 -0400
+ id 1vDOvk-00045Q-Ok
+ for qemu-arm@nongnu.org; Mon, 27 Oct 2025 11:14:55 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1761578086;
+ s=mimecast20190719; t=1761578081;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=5uEAD8IufxGlfbgcYTAd6K5nN0aUVsvDwES5X6ku/Aw=;
- b=AJl9r/eS8Jw668+AYjgFqK4WyciDKoBbVkW+ixGoMqcsn7SE34+1mF+5uKs19ZXuHFaE8K
- OdmMpwwlqU0mRu1xNGFJeGA1wc/ZcVRApoxftbEM/KqgFDhJ2eLGAKuGYTngul0PN1iFdi
- oBH6Eky7T5W8Lh1M7WVurtEufDyNgic=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ bh=wMmaChcf8jf2PWmovaXlzLXhyNCOVQEwDOiew6Lu3e4=;
+ b=DX4FWdKLbiVo3hoaOFYGXq20K6s7G9+xWxl6RGlLGqyJQ7GG7Mq5jJ4tmt8PWHZz+5InIL
+ MIR/5O/Rd7cKoyMdoiXTn8heWI5PEfwxTm6G8LQtUgUshXj5hXTn5gv1ie1ApufzMW8JVW
+ 3aFuVXhubMgQzhZa0Bhl5MkEWViPMd0=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-684-LlJD0ToGOFSD_dkmd2rLiQ-1; Mon,
- 27 Oct 2025 11:14:43 -0400
-X-MC-Unique: LlJD0ToGOFSD_dkmd2rLiQ-1
-X-Mimecast-MFC-AGG-ID: LlJD0ToGOFSD_dkmd2rLiQ_1761578081
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-372-gHUPTVk1MFSKlxT8F1Xb0Q-1; Mon,
+ 27 Oct 2025 11:14:37 -0400
+X-MC-Unique: gHUPTVk1MFSKlxT8F1Xb0Q-1
+X-Mimecast-MFC-AGG-ID: gHUPTVk1MFSKlxT8F1Xb0Q_1761578074
+Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id D4BAB180136C; Mon, 27 Oct 2025 15:14:40 +0000 (UTC)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id B7E891801231; Mon, 27 Oct 2025 15:14:34 +0000 (UTC)
 Received: from localhost (unknown [10.45.242.5])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 2862030001A2; Mon, 27 Oct 2025 15:14:38 +0000 (UTC)
+ by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 28EB2180057C; Mon, 27 Oct 2025 15:14:32 +0000 (UTC)
 From: marcandre.lureau@redhat.com
 To: qemu-devel@nongnu.org
 Cc: Alexandre Ratchov <alex@caoua.org>,
@@ -71,16 +71,15 @@ Cc: Alexandre Ratchov <alex@caoua.org>,
  Paolo Bonzini <pbonzini@redhat.com>,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
  BALATON Zoltan <balaton@eik.bme.hu>, Laurent Vivier <laurent@vivier.eu>
-Subject: [PATCH v3 35/35] audio: Rename @endianness argument as @big_endian
- for clarity
-Date: Mon, 27 Oct 2025 19:10:42 +0400
-Message-ID: <20251027151045.2863176-36-marcandre.lureau@redhat.com>
+Subject: [PATCH v3 34/35] audio: Remove pointless local variables
+Date: Mon, 27 Oct 2025 19:10:41 +0400
+Message-ID: <20251027151045.2863176-35-marcandre.lureau@redhat.com>
 In-Reply-To: <20251027151045.2863176-1-marcandre.lureau@redhat.com>
 References: <20251027151045.2863176-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
 Received-SPF: pass client-ip=170.10.133.124;
  envelope-from=marcandre.lureau@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
@@ -109,178 +108,135 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-@endianness is used as a boolean, rename for clarity.
-
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 ---
- audio/alsaaudio.c | 32 ++++++--------------------------
- audio/ossaudio.c  | 14 +++-----------
- audio/paaudio.c   |  8 ++++----
- audio/pwaudio.c   | 12 ++++++------
- 4 files changed, 19 insertions(+), 47 deletions(-)
+ audio/ossaudio.c | 12 ++----------
+ audio/sdlaudio.c | 12 ++----------
+ 2 files changed, 4 insertions(+), 20 deletions(-)
 
-diff --git a/audio/alsaaudio.c b/audio/alsaaudio.c
-index 89f6dad1a9..7d7da576dc 100644
---- a/audio/alsaaudio.c
-+++ b/audio/alsaaudio.c
-@@ -264,7 +264,7 @@ static int alsa_poll_in (HWVoiceIn *hw)
-     return alsa_poll_helper (alsa->handle, &alsa->pollhlp, POLLIN);
- }
- 
--static snd_pcm_format_t aud_to_alsafmt (AudioFormat fmt, int endianness)
-+static snd_pcm_format_t aud_to_alsafmt(AudioFormat fmt, bool big_endian)
- {
-     switch (fmt) {
-     case AUDIO_FORMAT_S8:
-@@ -274,39 +274,19 @@ static snd_pcm_format_t aud_to_alsafmt (AudioFormat fmt, int endianness)
-         return SND_PCM_FORMAT_U8;
- 
-     case AUDIO_FORMAT_S16:
--        if (endianness) {
--            return SND_PCM_FORMAT_S16_BE;
--        } else {
--            return SND_PCM_FORMAT_S16_LE;
--        }
-+        return big_endian ? SND_PCM_FORMAT_S16_BE : SND_PCM_FORMAT_S16_LE;
- 
-     case AUDIO_FORMAT_U16:
--        if (endianness) {
--            return SND_PCM_FORMAT_U16_BE;
--        } else {
--            return SND_PCM_FORMAT_U16_LE;
--        }
-+        return big_endian ? SND_PCM_FORMAT_U16_BE : SND_PCM_FORMAT_U16_LE;
- 
-     case AUDIO_FORMAT_S32:
--        if (endianness) {
--            return SND_PCM_FORMAT_S32_BE;
--        } else {
--            return SND_PCM_FORMAT_S32_LE;
--        }
-+        return big_endian ? SND_PCM_FORMAT_S32_BE : SND_PCM_FORMAT_S32_LE;
- 
-     case AUDIO_FORMAT_U32:
--        if (endianness) {
--            return SND_PCM_FORMAT_U32_BE;
--        } else {
--            return SND_PCM_FORMAT_U32_LE;
--        }
-+        return big_endian ? SND_PCM_FORMAT_U32_BE : SND_PCM_FORMAT_U32_LE;
- 
-     case AUDIO_FORMAT_F32:
--        if (endianness) {
--            return SND_PCM_FORMAT_FLOAT_BE;
--        } else {
--            return SND_PCM_FORMAT_FLOAT_LE;
--        }
-+        return big_endian ? SND_PCM_FORMAT_FLOAT_BE : SND_PCM_FORMAT_FLOAT_LE;
- 
-     default:
-         dolog ("Internal logic error: Bad audio format %d\n", fmt);
 diff --git a/audio/ossaudio.c b/audio/ossaudio.c
-index 86c4805675..c6cad47a01 100644
+index ab8791bece..86c4805675 100644
 --- a/audio/ossaudio.c
 +++ b/audio/ossaudio.c
-@@ -131,7 +131,7 @@ static void oss_poll_in (HWVoiceIn *hw)
-     qemu_set_fd_handler(oss->fd, oss_helper_poll_in, NULL, hw->s);
- }
- 
--static int aud_to_ossfmt (AudioFormat fmt, int endianness)
-+static int aud_to_ossfmt(AudioFormat fmt, bool big_endian)
+@@ -493,10 +493,8 @@ static int oss_init_out(HWVoiceOut *hw, struct audsettings *as,
  {
-     switch (fmt) {
-     case AUDIO_FORMAT_S8:
-@@ -141,18 +141,10 @@ static int aud_to_ossfmt (AudioFormat fmt, int endianness)
-         return AFMT_U8;
+     OSSVoiceOut *oss = (OSSVoiceOut *) hw;
+     struct oss_params req, obt;
+-    int endianness;
+     int err;
+     int fd;
+-    AudioFormat effective_fmt;
+     struct audsettings obt_as;
+     Audiodev *dev = drv_opaque;
+     AudiodevOssOptions *oopts = &dev->u.oss;
+@@ -511,7 +509,7 @@ static int oss_init_out(HWVoiceOut *hw, struct audsettings *as,
+         return -1;
+     }
  
-     case AUDIO_FORMAT_S16:
--        if (endianness) {
--            return AFMT_S16_BE;
--        } else {
--            return AFMT_S16_LE;
--        }
-+        return big_endian ? AFMT_S16_BE : AFMT_S16_LE;
+-    err = oss_to_audfmt (obt.fmt, &effective_fmt, &endianness);
++    err = oss_to_audfmt(obt.fmt, &obt_as.fmt, &obt_as.endianness);
+     if (err) {
+         oss_anal_close (&fd);
+         return -1;
+@@ -519,8 +517,6 @@ static int oss_init_out(HWVoiceOut *hw, struct audsettings *as,
  
-     case AUDIO_FORMAT_U16:
--        if (endianness) {
--            return AFMT_U16_BE;
--        } else {
--            return AFMT_U16_LE;
--        }
-+        return big_endian ? AFMT_U16_BE : AFMT_U16_LE;
+     obt_as.freq = obt.freq;
+     obt_as.nchannels = obt.nchannels;
+-    obt_as.fmt = effective_fmt;
+-    obt_as.endianness = endianness;
  
-     default:
-         dolog ("Internal logic error: Bad audio format %d\n", fmt);
-diff --git a/audio/paaudio.c b/audio/paaudio.c
-index 6b9b6d219a..0c06a39719 100644
---- a/audio/paaudio.c
-+++ b/audio/paaudio.c
-@@ -316,7 +316,7 @@ unlock_and_fail:
-     return 0;
- }
- 
--static pa_sample_format_t audfmt_to_pa (AudioFormat afmt, int endianness)
-+static pa_sample_format_t audfmt_to_pa(AudioFormat afmt, bool big_endian)
+     audio_pcm_init_info (&hw->info, &obt_as);
+     oss->nfrags = obt.nfrags;
+@@ -628,10 +624,8 @@ static int oss_init_in(HWVoiceIn *hw, struct audsettings *as, void *drv_opaque)
  {
-     int format;
+     OSSVoiceIn *oss = (OSSVoiceIn *) hw;
+     struct oss_params req, obt;
+-    int endianness;
+     int err;
+     int fd;
+-    AudioFormat effective_fmt;
+     struct audsettings obt_as;
+     Audiodev *dev = drv_opaque;
  
-@@ -327,14 +327,14 @@ static pa_sample_format_t audfmt_to_pa (AudioFormat afmt, int endianness)
-         break;
-     case AUDIO_FORMAT_S16:
-     case AUDIO_FORMAT_U16:
--        format = endianness ? PA_SAMPLE_S16BE : PA_SAMPLE_S16LE;
-+        format = big_endian ? PA_SAMPLE_S16BE : PA_SAMPLE_S16LE;
-         break;
-     case AUDIO_FORMAT_S32:
-     case AUDIO_FORMAT_U32:
--        format = endianness ? PA_SAMPLE_S32BE : PA_SAMPLE_S32LE;
-+        format = big_endian ? PA_SAMPLE_S32BE : PA_SAMPLE_S32LE;
-         break;
-     case AUDIO_FORMAT_F32:
--        format = endianness ? PA_SAMPLE_FLOAT32BE : PA_SAMPLE_FLOAT32LE;
-+        format = big_endian ? PA_SAMPLE_FLOAT32BE : PA_SAMPLE_FLOAT32LE;
-         break;
-     default:
-         dolog ("Internal logic error: Bad audio format %d\n", afmt);
-diff --git a/audio/pwaudio.c b/audio/pwaudio.c
-index 0fd59d9fe6..30f717ccac 100644
---- a/audio/pwaudio.c
-+++ b/audio/pwaudio.c
-@@ -324,7 +324,7 @@ done_unlock:
- }
+@@ -644,7 +638,7 @@ static int oss_init_in(HWVoiceIn *hw, struct audsettings *as, void *drv_opaque)
+         return -1;
+     }
  
- static int
--audfmt_to_pw(AudioFormat fmt, int endianness)
-+audfmt_to_pw(AudioFormat fmt, bool big_endian)
+-    err = oss_to_audfmt (obt.fmt, &effective_fmt, &endianness);
++    err = oss_to_audfmt(obt.fmt, &obt_as.fmt, &obt_as.endianness);
+     if (err) {
+         oss_anal_close (&fd);
+         return -1;
+@@ -652,8 +646,6 @@ static int oss_init_in(HWVoiceIn *hw, struct audsettings *as, void *drv_opaque)
+ 
+     obt_as.freq = obt.freq;
+     obt_as.nchannels = obt.nchannels;
+-    obt_as.fmt = effective_fmt;
+-    obt_as.endianness = endianness;
+ 
+     audio_pcm_init_info (&hw->info, &obt_as);
+     oss->nfrags = obt.nfrags;
+diff --git a/audio/sdlaudio.c b/audio/sdlaudio.c
+index a7a9652d29..707110973a 100644
+--- a/audio/sdlaudio.c
++++ b/audio/sdlaudio.c
+@@ -338,9 +338,7 @@ static int sdl_init_out(HWVoiceOut *hw, struct audsettings *as,
  {
-     int format;
+     SDLVoiceOut *sdl = (SDLVoiceOut *)hw;
+     SDL_AudioSpec req, obt;
+-    int endianness;
+     int err;
+-    AudioFormat effective_fmt;
+     Audiodev *dev = drv_opaque;
+     AudiodevSdlPerDirectionOptions *spdo = dev->u.sdl.out;
+     struct audsettings obt_as;
+@@ -360,7 +358,7 @@ static int sdl_init_out(HWVoiceOut *hw, struct audsettings *as,
+         return -1;
+     }
  
-@@ -336,19 +336,19 @@ audfmt_to_pw(AudioFormat fmt, int endianness)
-         format = SPA_AUDIO_FORMAT_U8;
-         break;
-     case AUDIO_FORMAT_S16:
--        format = endianness ? SPA_AUDIO_FORMAT_S16_BE : SPA_AUDIO_FORMAT_S16_LE;
-+        format = big_endian ? SPA_AUDIO_FORMAT_S16_BE : SPA_AUDIO_FORMAT_S16_LE;
-         break;
-     case AUDIO_FORMAT_U16:
--        format = endianness ? SPA_AUDIO_FORMAT_U16_BE : SPA_AUDIO_FORMAT_U16_LE;
-+        format = big_endian ? SPA_AUDIO_FORMAT_U16_BE : SPA_AUDIO_FORMAT_U16_LE;
-         break;
-     case AUDIO_FORMAT_S32:
--        format = endianness ? SPA_AUDIO_FORMAT_S32_BE : SPA_AUDIO_FORMAT_S32_LE;
-+        format = big_endian ? SPA_AUDIO_FORMAT_S32_BE : SPA_AUDIO_FORMAT_S32_LE;
-         break;
-     case AUDIO_FORMAT_U32:
--        format = endianness ? SPA_AUDIO_FORMAT_U32_BE : SPA_AUDIO_FORMAT_U32_LE;
-+        format = big_endian ? SPA_AUDIO_FORMAT_U32_BE : SPA_AUDIO_FORMAT_U32_LE;
-         break;
-     case AUDIO_FORMAT_F32:
--        format = endianness ? SPA_AUDIO_FORMAT_F32_BE : SPA_AUDIO_FORMAT_F32_LE;
-+        format = big_endian ? SPA_AUDIO_FORMAT_F32_BE : SPA_AUDIO_FORMAT_F32_LE;
-         break;
-     default:
-         dolog("Internal logic error: Bad audio format %d\n", fmt);
+-    err = sdl_to_audfmt(obt.format, &effective_fmt, &endianness);
++    err = sdl_to_audfmt(obt.format, &obt_as.fmt, &obt_as.endianness);
+     if (err) {
+         sdl_close_out(sdl);
+         return -1;
+@@ -368,8 +366,6 @@ static int sdl_init_out(HWVoiceOut *hw, struct audsettings *as,
+ 
+     obt_as.freq = obt.freq;
+     obt_as.nchannels = obt.channels;
+-    obt_as.fmt = effective_fmt;
+-    obt_as.endianness = endianness;
+ 
+     audio_pcm_init_info (&hw->info, &obt_as);
+     hw->samples = (spdo->has_buffer_count ? spdo->buffer_count : 4) *
+@@ -398,9 +394,7 @@ static int sdl_init_in(HWVoiceIn *hw, audsettings *as, void *drv_opaque)
+ {
+     SDLVoiceIn *sdl = (SDLVoiceIn *)hw;
+     SDL_AudioSpec req, obt;
+-    int endianness;
+     int err;
+-    AudioFormat effective_fmt;
+     Audiodev *dev = drv_opaque;
+     AudiodevSdlPerDirectionOptions *spdo = dev->u.sdl.in;
+     struct audsettings obt_as;
+@@ -420,7 +414,7 @@ static int sdl_init_in(HWVoiceIn *hw, audsettings *as, void *drv_opaque)
+         return -1;
+     }
+ 
+-    err = sdl_to_audfmt(obt.format, &effective_fmt, &endianness);
++    err = sdl_to_audfmt(obt.format, &obt_as.fmt, &obt_as.endianness);
+     if (err) {
+         sdl_close_in(sdl);
+         return -1;
+@@ -428,8 +422,6 @@ static int sdl_init_in(HWVoiceIn *hw, audsettings *as, void *drv_opaque)
+ 
+     obt_as.freq = obt.freq;
+     obt_as.nchannels = obt.channels;
+-    obt_as.fmt = effective_fmt;
+-    obt_as.endianness = endianness;
+ 
+     audio_pcm_init_info(&hw->info, &obt_as);
+     hw->samples = (spdo->has_buffer_count ? spdo->buffer_count : 4) *
 -- 
 2.51.0
 

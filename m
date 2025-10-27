@@ -4,117 +4,112 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 331FECCF9E0
-	for <qemu-arm@archiver.kernel.org>; Mon, 27 Oct 2025 11:19:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63434CCF9E0
+	for <qemu-arm@archiver.kernel.org>; Mon, 27 Oct 2025 11:19:16 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vDL9U-00067p-Tz; Mon, 27 Oct 2025 07:12:41 -0400
+	id 1vDLBx-0001BJ-76; Mon, 27 Oct 2025 07:15:13 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vDL9L-0005ib-KP
- for qemu-arm@nongnu.org; Mon, 27 Oct 2025 07:12:31 -0400
-Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vDL98-0007c1-J5
- for qemu-arm@nongnu.org; Mon, 27 Oct 2025 07:12:31 -0400
-Received: by mail-ed1-x52e.google.com with SMTP id
- 4fb4d7f45d1cf-63c09141cabso6640537a12.0
- for <qemu-arm@nongnu.org>; Mon, 27 Oct 2025 04:12:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1761563534; x=1762168334; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=MOIWat0zdvoLqu/dm2Cji7uUG0JRvbRh67vkFVnoxR0=;
- b=iW9VegSAwyykgu1vq5W01FUJ+YhkX1BGgNjBs5vO+zMsZ8rdB22gmk5TSYHQKl6T/f
- eQCsfRpQ3j7FDGy5IE9SCKTCDEHagDVfOZ5VqrGIn3YbMaruOIqv9zSZ4BzXsXZnNljt
- WBOwU1O7agn7NLuOZkOcrknciSyHMIP9thIv8mrO9uKrgI8BWRbD47L83bJ/e/gdMlJE
- 8U6CfdNp4PRMAKcsbpkV3HMLFkJRMJ+X3FD33Tn/QeIP1QpCWM7DQID1Ronhj6FqV/2S
- SsVu4PR1BPNJBF//UxJic9HKvzb7XsrLw4KAm4RNX2Tn9xF81x487ICYlV8KH12IrIZh
- 5ggQ==
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1vDLB3-0000Hm-3h
+ for qemu-arm@nongnu.org; Mon, 27 Oct 2025 07:14:18 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1vDLAu-00084k-Vz
+ for qemu-arm@nongnu.org; Mon, 27 Oct 2025 07:14:13 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1761563645;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=UB7t7wD3NVFDY4b1WC3tRHbChuKKwIXTFYvp4gnmd+U=;
+ b=EuxqI2M16FrCnU/Bzi4mulMBRQ+tvSATXcGm0Y04iU82OaXe7ZbWRSWnGqmflr6vyt0d8l
+ tJCNakDrPqeZ2qEYcDPEDraB2mYMCx6lxxXXdAusKks7pWlTPfOg4uVoVdHX+9SxKVZUT3
+ 0Fl+sEsdkZykLnVdE/ivkPdBGauDbLo=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-503-Cjya5UMSNumWQ8PJ6CjVKw-1; Mon, 27 Oct 2025 07:14:04 -0400
+X-MC-Unique: Cjya5UMSNumWQ8PJ6CjVKw-1
+X-Mimecast-MFC-AGG-ID: Cjya5UMSNumWQ8PJ6CjVKw_1761563643
+Received: by mail-wm1-f70.google.com with SMTP id
+ 5b1f17b1804b1-475e032d81bso15521605e9.3
+ for <qemu-arm@nongnu.org>; Mon, 27 Oct 2025 04:14:03 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761563534; x=1762168334;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=MOIWat0zdvoLqu/dm2Cji7uUG0JRvbRh67vkFVnoxR0=;
- b=Zb3TJO6mD30/BeHTo/j7E+ouyl5LEGlxloB73GbG0MxY1DXOmH3FPEfeg+zBJfaEzl
- fEnajOWRuiMkqis2YdNl7p6KcsemUGpzAG6QvArn7D2dRCgkLrCYaFQid0ZrrGPAztMf
- VHZI9rOFGI9qtQUVGzGwpdp/2l8lyJNiN/+igWaJChNgF1+h1KlrfQ/CIu1RC7Z5NPFr
- c1uqqpIS505Ns4xP+cwIBQ/No7euwxMbJkB8nkkGKm8BQx4UtdOjen6BJw6Sxx1t0jei
- pAOAuxxDeqnv92P8EA9smY4mpruCcl70cNSxXwS1G4hE16iGBISfwHHbWUTBSqkJwTH4
- P+Rg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUlpGkMWo1cacg+6aA3QV0NKO266OkRPshzwnx787SpcRU0ElZxrq1Ew0SJQuapFdJMr6MLiMView==@nongnu.org
-X-Gm-Message-State: AOJu0YzKJbc6SzGORUQW8ESkONwSyUOfTU4ZTG1wONaRfFTKzACIJrV4
- BVrygLFOH9lXYdivNil15pZhBCwtNz+X7P6Rf/Sqe7O8IZUxhl7ZYpw8lZe/IeTu9ao=
-X-Gm-Gg: ASbGncsLG0YtkaSrsC3xjl/S34IiXcyRhuRf+cWPvrO8cutBiGC0e2cPqcL8cbNMd+x
- 6uNKjznoLkpaoAfCZmS52Q8n63j+8cHBQQggWY5qEfqQ4nBERo6P5CWy6m6AwX3918eFx7fxlUW
- ZhU6RgRPVtMhIQ1258zortJcITGIt4hXVnE23Qi+9fa5L2mvbbY5poJAgGx+7wjPXOM4309LqF2
- aQcT3TrbvZnavlHexmNdER2294B3uyGrO7pQMaWjD6+31owQ99yZJDA6ZdDdDaDJVB8zOGUHGqp
- M7F7/3bBQ4SVVg8W1nUQ5IO3z62/twdbhEfnbFO85n1G7hHaQOm8cgZ8489+bDci1tbSQmzIkv+
- 8v+9M8rCDhxBqg7c4CRImHrmht4GioTnTA9bKtsrOpcrsGSHJkE3gKV21l6mq2GgcUn1BGNkwWd
- ypZdh4+BtG+nI=
-X-Google-Smtp-Source: AGHT+IG7xohgDbdCZpEaQql0WKu05/9DRCJ7c6eaYimOVb8vqucvzuXNIHI9wIYvrcQfxrfUbcLyJw==
-X-Received: by 2002:a05:6402:4504:b0:634:ab34:ed40 with SMTP id
- 4fb4d7f45d1cf-63c1f580cf2mr34888236a12.0.1761563533781; 
- Mon, 27 Oct 2025 04:12:13 -0700 (PDT)
-Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-63e7ef95cb9sm6162733a12.17.2025.10.27.04.12.10
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 27 Oct 2025 04:12:12 -0700 (PDT)
-Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id BC74960CB8;
- Mon, 27 Oct 2025 11:03:45 +0000 (GMT)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Alexandre Iooss <erdnaxe@crans.org>, Chinmay Rath <rathc@linux.ibm.com>,
- qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- Nicholas Piggin <npiggin@gmail.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
- David Hildenbrand <david@redhat.com>, qemu-ppc@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-s390x@nongnu.org,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Helge Deller <deller@gmx.de>,
- =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Stafford Horne <shorne@gmail.com>, Mahmoud Mandour <ma.mandourr@gmail.com>,
- Artyom Tarasenko <atar4qemu@gmail.com>,
- Eduardo Habkost <eduardo@habkost.net>, Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- Laurent Vivier <laurent@vivier.eu>, Weiwei Li <liwei1518@gmail.com>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Yoshinori Sato <yoshinori.sato@nifty.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Aurelien Jarno <aurelien@aurel32.net>,
- Richard Henderson <richard.henderson@linaro.org>,
- Thomas Huth <thuth@redhat.com>, Max Filippov <jcmvbkbc@gmail.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>, Michael Rolnik <mrolnik@gmail.com>,
- Song Gao <gaosong@loongson.cn>, qemu-riscv@nongnu.org,
- Aleksandar Rikalo <arikalo@gmail.com>, Julian Ganz <neither@nut.email>
-Subject: [PATCH 18/35] target/microblaze: call plugin trap callbacks
-Date: Mon, 27 Oct 2025 11:03:25 +0000
-Message-ID: <20251027110344.2289945-19-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20251027110344.2289945-1-alex.bennee@linaro.org>
-References: <20251027110344.2289945-1-alex.bennee@linaro.org>
+ d=1e100.net; s=20230601; t=1761563643; x=1762168443;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=UB7t7wD3NVFDY4b1WC3tRHbChuKKwIXTFYvp4gnmd+U=;
+ b=ofrZjPnYVi8VipJgzk5hXOxOtIe80fvipJBlJAtWEtLUcImI4qxtUzY8eOe+S1kDVi
+ t9ZkFb+MWDi+6wgQQtE+oXKJ/wnU4Ve+5j3t6YzHfUZGGHhd6c/hPBri3XCUXPFvR+ze
+ a5ozduyhYuJ0s2AKU2QMyLhMfs4DTOVutH0dGpdkJtMqh6Paa3dyasHm3GsP/z4z1For
+ 0a8TYKuohCGvhvufh7HpfzrmGzW+rR4Lt7oDMpRA0FvXnF+8xG5G60kvYeSlZ1yzP0yn
+ Rs2IahBNeCNmy3tYRZyX74W8EQeo0eFaKMva35ESP7Ru8NRKKQum3+XM6tSGVBK+E6RQ
+ NpeA==
+X-Gm-Message-State: AOJu0YyxtobzFGWbtlsrMgCNCJLIxgvKkIvt6TiNDH8RhlfI94uC6rLG
+ PbkB0P227AxYKx4ApPAKx8InSkaLbSz62YBv9byExnz4F0zeIz8DGn8O5v9J4fQximDEO80IVpP
+ Q/QKqa4jsTR3rgD15fPlH9yawrrSza/aGw23+oieJ5V/bsX2HVnRADg==
+X-Gm-Gg: ASbGnct/pcaRXZYiB1fQ65HaSPxKmNSxJM5PXmpqHZb1mNH2rsZQptygiPmi2uFekxU
+ zgNgMCGXAL6xDD5R5hhFjfj35rgDnEWevkQWMefb3ow6mx3Qrvc/RsC77haFWgS8qHdS2ysygiP
+ rB2YcVQ7MgljISEexmDsons+Er6Gp9Vv2Wddef3iVidXQRn0pOJk3dAvVQSZA9G2kRDgfBaZb2l
+ oBaVRQSjN0nMN0/RzZCSSS83vSIr+XyqKkUtW3yDHll605saqOO7jc6LYSWjw+8kgLNISWZh40Q
+ 1piJF2Nv0ddfMbK51xBvOn2EHffcnZ9R6n5HJFgxozuoDsguv1Tds4u6FTiQl9jhtrSlJGrOb8C
+ Zpgqo5luTPf6eK0WONQpi+UPOUa33ZiyvQu4zNCvhBwsv8w==
+X-Received: by 2002:a05:600c:3e12:b0:45b:7d77:b592 with SMTP id
+ 5b1f17b1804b1-471178a74demr269664195e9.12.1761563642880; 
+ Mon, 27 Oct 2025 04:14:02 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGXiRPNvBdDoUXgfgjhOiWXW7XhCGEauvpSnaZf/rD8J2Y67pmzryMQSElmLxkkNQ2xquIkFQ==
+X-Received: by 2002:a05:600c:3e12:b0:45b:7d77:b592 with SMTP id
+ 5b1f17b1804b1-471178a74demr269663915e9.12.1761563642335; 
+ Mon, 27 Oct 2025 04:14:02 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-475ddab6adcsm62452205e9.9.2025.10.27.04.14.01
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 27 Oct 2025 04:14:01 -0700 (PDT)
+Message-ID: <6576d1b9-dd44-4efe-946f-4dedc6df84d8@redhat.com>
+Date: Mon, 27 Oct 2025 12:14:00 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 16/27] hw/pci-host/gpex: Allow to generate preserve
+ boot config DSM #5
+To: Jonathan Cameron <jonathan.cameron@huawei.com>,
+ Shameer Kolothum <skolothumtho@nvidia.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, peter.maydell@linaro.org,
+ jgg@nvidia.com, nicolinc@nvidia.com, ddutile@redhat.com,
+ berrange@redhat.com, nathanc@nvidia.com, mochs@nvidia.com,
+ smostafa@google.com, wangzhou1@hisilicon.com, jiangkunkun@huawei.com,
+ zhangfei.gao@linaro.org, zhenzhong.duan@intel.com, yi.l.liu@intel.com,
+ shameerkolothum@gmail.com
+References: <20250929133643.38961-1-skolothumtho@nvidia.com>
+ <20250929133643.38961-17-skolothumtho@nvidia.com>
+ <20251001140523.00006635@huawei.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <20251001140523.00006635@huawei.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: G_vT-N0a-FxVX8QTmontheDUFuUWojGIvRCsbD7gTXI_1761563643
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::52e;
- envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x52e.google.com
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -127,76 +122,118 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Julian Ganz <neither@nut.email>
 
-We recently introduced API for registering callbacks for trap related
-events as well as the corresponding hook functions. Due to differences
-between architectures, the latter need to be called from target specific
-code.
 
-This change places the hook for MicroBlaze targets. This architecture
-has one special "exception" for interrupts and no host calls.
+On 10/1/25 3:05 PM, Jonathan Cameron wrote:
+> On Mon, 29 Sep 2025 14:36:32 +0100
+> Shameer Kolothum <skolothumtho@nvidia.com> wrote:
+>
+>> From: Eric Auger <eric.auger@redhat.com>
+>>
+>> Add a 'preserve_config' field in struct GPEXConfig and if set, generate the
+>> DSM #5 for preserving PCI boot configurations. For SMMUV3 accel=on support,
+>> we are making use of IORT RMRs in a subsequent patch and that requires the
+>> DSM #5.
+>>
+>> At the moment the DSM generation is not yet enabled.
+>>
+>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>> [Shameer: Removed possible duplicate _DSM creations]
+>> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+>> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
+> Throw an AML blob in the patch description as easier to check that against
+> the spec.  Add a specific spec reference as well.
+>
+>> ---
+>> Previously, QEMU reverted an attempt to enable DSM #5 because it caused a
+>> regression,
+>> https://lore.kernel.org/all/20210724185234.GA2265457@roeck-us.net/.
+>>
+>> However, in this series, we enable it selectively, only when SMMUv3 is in
+>> accelerator mode. The devices involved in the earlier regression are not
+>> expected in accelerated SMMUv3 use cases.
+>> ---
+>>  hw/pci-host/gpex-acpi.c    | 29 +++++++++++++++++++++++------
+>>  include/hw/pci-host/gpex.h |  1 +
+>>  2 files changed, 24 insertions(+), 6 deletions(-)
+>>
+>> diff --git a/hw/pci-host/gpex-acpi.c b/hw/pci-host/gpex-acpi.c
+>> index 4587baeb78..e3825ed0b1 100644
+>> --- a/hw/pci-host/gpex-acpi.c
+>> +++ b/hw/pci-host/gpex-acpi.c
+>> @@ -51,10 +51,11 @@ static void acpi_dsdt_add_pci_route_table(Aml *dev, uint32_t irq,
+>>      }
+>>  }
+>>  
+>> -static Aml *build_pci_host_bridge_dsm_method(void)
+>> +static Aml *build_pci_host_bridge_dsm_method(bool preserve_config)
+>>  {
+>>      Aml *method = aml_method("_DSM", 4, AML_NOTSERIALIZED);
+>>      Aml *UUID, *ifctx, *ifctx1, *buf;
+>> +    uint8_t byte_list[1] = {0};
+> The inline declaration is a bit odd, but I'm not seeing a specific reason to
+> change that here.  Perhaps call out the change as some 'other cleanup' in the
+> patch description if you want to make it anyway.
+I think this is a good cleanup anyway.
+>
+>>  
+>>      /* PCI Firmware Specification 3.0
+>>       * 4.6.1. _DSM for PCI Express Slot Information
+>> @@ -64,10 +65,23 @@ static Aml *build_pci_host_bridge_dsm_method(void)
+>>      UUID = aml_touuid("E5C937D0-3553-4D7A-9117-EA4D19C3434D");
+>>      ifctx = aml_if(aml_equal(aml_arg(0), UUID));
+>>      ifctx1 = aml_if(aml_equal(aml_arg(2), aml_int(0)));
+>> -    uint8_t byte_list[1] = {0};
+>> +    if (preserve_config) {
+>> +        /* support for function 0 and function 5 */
+>> +        byte_list[0] = 0x21;
+> Change the comment to reflect the fix in previous patch as otherwise
+> it sounds like bit(0) means function 0 is supported.
+>
+>        /* support functions other than 0, specifically function 5 */
 
-Signed-off-by: Julian Ganz <neither@nut.email>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- target/microblaze/helper.c | 10 ++++++++++
- 1 file changed, 10 insertions(+)
+yeah I was confused too after all this time. Maybe quote the ACPI spec
+at least in the commit msg:
 
-diff --git a/target/microblaze/helper.c b/target/microblaze/helper.c
-index cf577a72268..a1857b72172 100644
---- a/target/microblaze/helper.c
-+++ b/target/microblaze/helper.c
-@@ -27,6 +27,7 @@
- #include "qemu/host-utils.h"
- #include "exec/log.h"
- #include "exec/helper-proto.h"
-+#include "qemu/plugin.h"
- 
- 
- G_NORETURN
-@@ -35,6 +36,7 @@ static void mb_unaligned_access_internal(CPUState *cs, uint64_t addr,
- {
-     CPUMBState *env = cpu_env(cs);
-     uint32_t esr, iflags;
-+    uint64_t last_pc = env->pc;
- 
-     /* Recover the pc and iflags from the corresponding insn_start.  */
-     cpu_restore_state(cs, retaddr);
-@@ -54,6 +56,7 @@ static void mb_unaligned_access_internal(CPUState *cs, uint64_t addr,
-     env->ear = addr;
-     env->esr = esr;
-     cs->exception_index = EXCP_HW_EXCP;
-+    qemu_plugin_vcpu_exception_cb(cs, last_pc);
-     cpu_loop_exit(cs);
- }
- 
-@@ -152,6 +155,7 @@ void mb_cpu_do_interrupt(CPUState *cs)
-     CPUMBState *env = &cpu->env;
-     uint32_t t, msr = mb_cpu_read_msr(env);
-     bool set_esr;
-+    uint64_t last_pc = env->pc;
- 
-     /* IMM flag cannot propagate across a branch and into the dslot.  */
-     assert((env->iflags & (D_FLAG | IMM_FLAG)) != (D_FLAG | IMM_FLAG));
-@@ -256,6 +260,12 @@ void mb_cpu_do_interrupt(CPUState *cs)
-     env->res_addr = RES_ADDR_NONE;
-     env->iflags = 0;
- 
-+    if (cs->exception_index == EXCP_IRQ) {
-+        qemu_plugin_vcpu_interrupt_cb(cs, last_pc);
-+    } else {
-+        qemu_plugin_vcpu_exception_cb(cs, last_pc);
-+    }
-+
-     if (!set_esr) {
-         qemu_log_mask(CPU_LOG_INT,
-                       "         to pc=%08x msr=%08x\n", env->pc, msr);
--- 
-2.47.3
+"
+If Function Index is zero, the return is a buffer containing one bit for
+each function index, starting with zero. Bit 0 indicates whether there
+is support for any functions other than function 0 for the specified
+UUID and Revision ID. If set to zero, no functions are supported (other
+than function zero) for the specified UUID and Revision ID. If set to
+one, at least one additional function is supported. For all other bits
+in the buffer, a bit is set to zero to indicate if that function index
+is not supported for the specific UUID and Revision ID. (For example,
+bit 1 set to 0 indicates that function index 1 is not supported for the
+specific UUID and Revision ID.)
+"
+
+Eric
+
+
+>
+>> +    }
+>>      buf = aml_buffer(1, byte_list);
+>>      aml_append(ifctx1, aml_return(buf));
+>>      aml_append(ifctx, ifctx1);
+>> +    if (preserve_config) {
+>> +        Aml *ifctx2 = aml_if(aml_equal(aml_arg(2), aml_int(5)));
+>> +        /*
+>> +         * 0 - The operating system must not ignore the PCI configuration that
+>> +         *     firmware has done at boot time.
+>> +         */
+>> +        aml_append(ifctx2, aml_return(aml_int(0)));
+>> +        aml_append(ifctx, ifctx2);
+>> +    }
+>> +
+>>      aml_append(method, ifctx);
+>>  
+>>      byte_list[0] = 0;
+>> @@ -77,12 +91,13 @@ static Aml *build_pci_host_bridge_dsm_method(void)
+>>  }
 
 

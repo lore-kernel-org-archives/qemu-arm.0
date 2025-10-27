@@ -4,100 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97D05CCF9EC
-	for <qemu-arm@archiver.kernel.org>; Mon, 27 Oct 2025 12:38:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA0B9CCF9E5
+	for <qemu-arm@archiver.kernel.org>; Mon, 27 Oct 2025 13:13:30 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vDMUS-0006BK-6J; Mon, 27 Oct 2025 08:38:25 -0400
+	id 1vDN25-0006pZ-FV; Mon, 27 Oct 2025 09:13:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vDMUN-00066B-Mi
- for qemu-arm@nongnu.org; Mon, 27 Oct 2025 08:38:20 -0400
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1vDN1d-0006l4-5w
+ for qemu-arm@nongnu.org; Mon, 27 Oct 2025 09:12:43 -0400
+Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vDMUB-0006QO-Ks
- for qemu-arm@nongnu.org; Mon, 27 Oct 2025 08:38:19 -0400
-Received: by mail-wr1-x42a.google.com with SMTP id
- ffacd0b85a97d-421851bca51so4270203f8f.1
- for <qemu-arm@nongnu.org>; Mon, 27 Oct 2025 05:38:03 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1vDN1W-0003If-4j
+ for qemu-arm@nongnu.org; Mon, 27 Oct 2025 09:12:38 -0400
+Received: by mail-ej1-x632.google.com with SMTP id
+ a640c23a62f3a-b626a4cd9d6so956877366b.3
+ for <qemu-arm@nongnu.org>; Mon, 27 Oct 2025 06:12:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1761568679; x=1762173479; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ d=linaro.org; s=google; t=1761570747; x=1762175547; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:user-agent
+ :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Oa5aQxRYPo9Nd1dGHw3Wox9JI4dBESZln5Zp2k//GTA=;
- b=ZfdCAXw4FDdWumiv9y/kcNYvWW6mrC/eMI/L9pLls+jqRSyFbskOhgqqjeKpqA+2Sy
- GaS7LzIwFKcMr9uhPfMP+IhKzR2ZuCDIm7/obkVxa8LKuD2ztjKENU1Up+krlRaqHcYV
- 2eV/bF0VskALF+I4SXfk/NQjjH0Mtrznu87f6cui2nWtxGa9SthhoppQkUsoOcbCN9Le
- BwLNrqts6tqPusTJB14IIRjry0BBAttXcBc3JFY0PiKf91Tf+Yy2tcytrMSYwdppJToy
- sS7j8FI4LKQoWDDySZi31WzA1x5VzVm1TNsmMMsDL2Q2hx6tAXjcMrpPHjrFBDm0N/bw
- XZOg==
+ bh=BWo+5gPcqX9uNc+sUS39zUVj44E9phbewlddhUfkawQ=;
+ b=cnlE1r5dELh6EllqtG8CLL6Ata0t0LlcmeZGBFVqEKj09P+RNTuzQvyCL6rN2IVZSs
+ 9zm4ZWiT7Fcsk4ctpAnNN+yPmjPZ0t0yrxOS0zu5OrQjkFFZOsF3zoQ8e0zmM+s74qnk
+ kqEBvwzb6X0EK93JmfA6ICcoZfs4ArNriKxnpyDStWZYBPQ9p+b3X4JgY60dZn+KH8So
+ UXKkOaGVL9uYrl4hcZNzonWrTq0gl1+JLvUhX1dcm0wVX54uvrKY4pQ8OWKpX+aNJ25W
+ dYJCZqVnYMo6njlQumBLVce5g8wl+dK3kP4ScyHoovwWM1Av12ZjIitg4CsXVBnEmMLA
+ qMQA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761568679; x=1762173479;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=Oa5aQxRYPo9Nd1dGHw3Wox9JI4dBESZln5Zp2k//GTA=;
- b=VD/+Htc/+UQPdGpAKsLnW0Fs3WPIzfc4nPUrpQ8DwLsENtPOHKvnHz08yzSUdoR+yx
- Fu9sgYH8x09nzvSyGurMOUPtwgiuaVvAEhKB3G5iNbTlYujpklbwKmF+eKG1atF3VQxo
- 4VOPA0z1I6S6dnkOlq+kPiBBsHAZAGlA9c4zYJe72Bu/GghTDzHRnIbP3xDontSL5Tk4
- MTxcgtoYpC8ggt3JtjcEy63BDizPIjYgKcsWbck7nEXdN/+1ffIZuzawV5AqtC29ykF5
- fOxLzPUZLdeg8dexEDJGO+/7BPj0E28FecQTGCNhRpy8NtlhZpVbJuljBJcL0cfroan1
- sqtQ==
+ d=1e100.net; s=20230601; t=1761570747; x=1762175547;
+ h=content-transfer-encoding:mime-version:message-id:date:user-agent
+ :references:in-reply-to:subject:cc:to:from:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=BWo+5gPcqX9uNc+sUS39zUVj44E9phbewlddhUfkawQ=;
+ b=N3k7xA1iP25hQleNdDwz/nuSx0qfFK6yY0jvqVyC6Tl1dvv/uv68pHg4fjFivT3Gpb
+ X4OOknUsblGRwKJq+52Pegy+RkRkXOHfsXqFbbDkfUYnZgF93MAO238cegKr5Zv4vkjI
+ 5JGDOQxema6QTdXg6aYwQ8xAnE8w+eQ7c1zwi63z4h5S9hPo3BywL3Ha3v0ktJ95kIHt
+ c7HKogmsw0+KT3iRDiz79hmiGn+KO7unJnc8Zz2UBC/HMHNsqo34qP0B6aDTUkEv+QAa
+ aMByLfQZYLQug5JRj60q6kkKxHIs2aK50uyGo58ncLGcpndBeT4AWFwX+chNEaazE9q7
+ +CTQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXi0bHsWnsDMMx8In2xRR+7JX6oYuA1rtYaaavWRvnzJGBL/us2h6kV5IWBmgaZtpt3ckEVOasVhA==@nongnu.org
-X-Gm-Message-State: AOJu0YyyZ19wOd5XIBOtVWbcieIxMFaadZg+jofMi98Nhe+X09v4RC5L
- LzXzxFvkAgbNqaDQhNVySiUh5C24/EzbbVt46a1bQ02pcaO5xyfgxtHoqn47+HGDhD4=
-X-Gm-Gg: ASbGncu1lYk82KkcAUGDRd0Vj4Bw42/nbTs8kLBf0KQHotAuvRM37Ta8zP+LoJN03H+
- 4LpdCXqk+0ztJym65w9WoQMFvDfzXny06vVGzGldEZekaRD3ywekzF1cmyRS9+wqxWAc8J7snOT
- pWCazdNS6QkmkdY4X6w+rxdkmvAlON4AK0S9zlFpQZwC6/IvSZyTn94fb3wAocWQ7lYY0tXOGgL
- /IebcN0BV68UURAIhAG9ck9TM9NPN4ZboTmMstTZJjhexQwCOg5CuwZCQo0hL67zI5mtsDwzw44
- nvS8cQg79H3AsV4mt6V3pZN9h7K8tBegtFK/CEqx5IC8LkzNOl4t1UHUsbn45qECcQQ2R9zUSJl
- ZLC1KfW92qB4/hR60zZuUDhFkLaw20YraQwKdLUKh6OILonr9iqf3ybEUEgYUE7eSaNZViz7nEr
- RXD07OlnbnwKbSEYBDZiDZ6F55sI2GthnD2YDOj4P/SK6MQugjvg==
-X-Google-Smtp-Source: AGHT+IFnQVrSiGZZvXhqxIqDrh5o+Z52J2z6xQ+sXC6tpiz74mh6oATYobctlPMOFZJouBZIyIdbyA==
-X-Received: by 2002:a05:6000:40ca:b0:427:45f:ee21 with SMTP id
- ffacd0b85a97d-4299071f96bmr9266716f8f.27.1761568678787; 
- Mon, 27 Oct 2025 05:37:58 -0700 (PDT)
-Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-429952d5678sm14031058f8f.22.2025.10.27.05.37.57
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Mon, 27 Oct 2025 05:37:58 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Joel Stanley <joel@jms.id.au>, qemu-arm@nongnu.org,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- David Hildenbrand <david@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, Troy Lee <leetroy@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Helge Deller <deller@gmx.de>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Peter Xu <peterx@redhat.com>,
- Artyom Tarasenko <atar4qemu@gmail.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>
-Subject: [PATCH 6/6] hw/sparc64/ebus: Log unassigned MMIO accesses with
+ AJvYcCXdIXpmiLMKc9Gcl6I70kydTEoLQhbUKzDs8z9gDg+yZydenj+M7GWW8qkrVAGB3kwEy0egrITMSg==@nongnu.org
+X-Gm-Message-State: AOJu0YzrOEl/dUeS+UKcQCGvYysjeqFDaU5cM3RcJlJTBHVa8jVPSzDT
+ o7NdM1qX2+La5ZVJmY81R0OG5I8xMote7kwiTMD2E8ZF+BRl7frMd4GIPtZZq6Qpldk=
+X-Gm-Gg: ASbGncthaUXZgYqur0NfbVNB4Uev0tStnt6ugCo2tiLGzFLCRmdqGgNGZRfLpczXVOa
+ Wn/RP2yHr56V5Hji8k7SfXMhDeiMvT87VMljxQ9zzn/4H0qtU3ymzh1XXNzqSp9hL4AD64mbYMe
+ bhn8xQAs/ubajMA8qZGTgT6wz25mFQQnayk3H2WlBTfyERHVpWWV3xZIjBsc5iMaYXTypQtwado
+ 1CD/k6fb17npxTcMfvRko+wmLIxUbdB9eGxyYdhE62HlkrFcss8dwqXGiEqNS6OaBxMAi8E01AR
+ BJ8R+Ja78C+/npdYj71XHeSYPyYczbvDV6MoYfnjKiOg+lZT44hzIc54KMtbR9GO0ea1mIlnOob
+ piDbiWb9sKrnQK/0U7jQovvGMDTK0g2xOUzYTb2GYHD6po5lbNHG0MZN0cjs99n9+goqmkCRyg7
+ eZ
+X-Google-Smtp-Source: AGHT+IERPsJSD/g2t5a29OFpAPhtaDqWSOrkfAqr9rqLYBO5nwEroImSJyGb0DI9xMLYYJhJ5o51TA==
+X-Received: by 2002:a17:907:7291:b0:b6d:3f8c:a2ff with SMTP id
+ a640c23a62f3a-b6d6ff24b7fmr1304857766b.41.1761570747182; 
+ Mon, 27 Oct 2025 06:12:27 -0700 (PDT)
+Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-b6d85359687sm762958766b.23.2025.10.27.06.12.26
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 27 Oct 2025 06:12:26 -0700 (PDT)
+Received: from draig (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id B15E95F8CD;
+ Mon, 27 Oct 2025 13:12:25 +0000 (GMT)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org,  Joel Stanley <joel@jms.id.au>,
+ qemu-arm@nongnu.org,  =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
+ David Hildenbrand
+ <david@redhat.com>,  Gerd Hoffmann <kraxel@redhat.com>,  Peter Maydell
+ <peter.maydell@linaro.org>,  Troy Lee <leetroy@gmail.com>,  Paolo Bonzini
+ <pbonzini@redhat.com>,  Helge Deller <deller@gmx.de>,  Mark Cave-Ayland
+ <mark.cave-ayland@ilande.co.uk>,  Richard Henderson
+ <richard.henderson@linaro.org>,  Steven Lee <steven_lee@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>,  Peter Xu
+ <peterx@redhat.com>,  Artyom Tarasenko <atar4qemu@gmail.com>,  Jamin Lin
+ <jamin_lin@aspeedtech.com>
+Subject: Re: [PATCH 0/6] hw: Log unassigned MMIO accesses with
  unassigned_mem_ops
-Date: Mon, 27 Oct 2025 13:36:43 +0100
-Message-ID: <20251027123644.63487-7-philmd@linaro.org>
-X-Mailer: git-send-email 2.51.0
-In-Reply-To: <20251027123644.63487-1-philmd@linaro.org>
+In-Reply-To: <20251027123644.63487-1-philmd@linaro.org> ("Philippe
+ =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Mon, 27 Oct 2025 13:36:37
+ +0100")
 References: <20251027123644.63487-1-philmd@linaro.org>
+User-Agent: mu4e 1.12.14-dev2; emacs 30.1
+Date: Mon, 27 Oct 2025 13:12:25 +0000
+Message-ID: <87pla8xzd2.fsf@draig.linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42a.google.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::632;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x632.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -113,28 +118,36 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Replace unassigned_io_ops -> unassigned_mem_ops to log
-accesses as MMIO ones.
+Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- hw/sparc64/sun4u.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+> Do not log unassigned MMIO accesses as I/O ones:
+> expose unassigned_mem_ops then use it instead of
+> unassigned_io_ops.
 
-diff --git a/hw/sparc64/sun4u.c b/hw/sparc64/sun4u.c
-index e9f9b0a4cb9..87cf1c6c0bd 100644
---- a/hw/sparc64/sun4u.c
-+++ b/hw/sparc64/sun4u.c
-@@ -360,7 +360,7 @@ static void ebus_realize(PCIDevice *pci_dev, Error **errp)
-      * memory access to this region to succeed which allows the OpenBSD kernel
-      * to boot.
-      */
--    memory_region_init_io(&s->bar0, OBJECT(s), &unassigned_io_ops, s,
-+    memory_region_init_io(&s->bar0, OBJECT(s), &unassigned_mem_ops, s,
-                           "bar0", 0x1000000);
-     pci_register_bar(pci_dev, 0, PCI_BASE_ADDRESS_SPACE_MEMORY, &s->bar0);
-     memory_region_init_alias(&s->bar1, OBJECT(s), "bar1",
--- 
-2.51.0
+But why? Is it because ioport.c is a x86 io thing?
 
+>
+> Philippe Mathieu-Daud=C3=A9 (6):
+>   system/memory: Expose unassigned_mem_ops symbol
+>   hw/display/vga: Log unassigned MMIO accesses with unassigned_mem_ops
+>   hw/pci-host/gpex: Log unassigned MMIO accesses with unassigned_mem_ops
+>   hw/pci-host/aspeed: Log unassigned MMIO accesses with
+>     unassigned_mem_ops
+>   hw/pci-host/astro: Log unassigned MMIO accesses with
+>     unassigned_mem_ops
+>   hw/sparc64/ebus: Log unassigned MMIO accesses with unassigned_mem_ops
+>
+>  include/system/memory.h    | 2 ++
+>  system/memory-internal.h   | 2 --
+>  hw/display/bochs-display.c | 2 +-
+>  hw/display/vga-pci.c       | 4 ++--
+>  hw/pci-host/aspeed_pcie.c  | 2 +-
+>  hw/pci-host/astro.c        | 2 +-
+>  hw/pci-host/gpex.c         | 2 +-
+>  hw/sparc64/sun4u.c         | 2 +-
+>  8 files changed, 9 insertions(+), 9 deletions(-)
+
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro
 

@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF994CCF9EA
-	for <qemu-arm@archiver.kernel.org>; Mon, 27 Oct 2025 11:08:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 648E4CCF9EA
+	for <qemu-arm@archiver.kernel.org>; Mon, 27 Oct 2025 11:08:34 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vDL2F-0001QR-R0; Mon, 27 Oct 2025 07:05:12 -0400
+	id 1vDL2R-0001gE-1W; Mon, 27 Oct 2025 07:05:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vDL1y-0000zg-1y
- for qemu-arm@nongnu.org; Mon, 27 Oct 2025 07:04:54 -0400
-Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
+ id 1vDL2C-0001HX-5R
+ for qemu-arm@nongnu.org; Mon, 27 Oct 2025 07:05:08 -0400
+Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vDL1S-0005fn-H4
- for qemu-arm@nongnu.org; Mon, 27 Oct 2025 07:04:53 -0400
-Received: by mail-ed1-x52e.google.com with SMTP id
- 4fb4d7f45d1cf-63c21467e5bso480450a12.0
- for <qemu-arm@nongnu.org>; Mon, 27 Oct 2025 04:03:57 -0700 (PDT)
+ id 1vDL1Y-0005bb-WB
+ for qemu-arm@nongnu.org; Mon, 27 Oct 2025 07:05:06 -0400
+Received: by mail-ej1-x630.google.com with SMTP id
+ a640c23a62f3a-b3f5e0e2bf7so1016435266b.3
+ for <qemu-arm@nongnu.org>; Mon, 27 Oct 2025 04:03:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1761563036; x=1762167836; darn=nongnu.org;
+ d=linaro.org; s=google; t=1761563029; x=1762167829; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=5MFngHGehXpgcde25fEDm3yIeCRkA5CYGfoJypWa7UA=;
- b=A3HiKZAag/VDzVesdW8W4BzzVnQ9fQelHdrZha6zAdsN1IhDvaYM2QqkLblgo+w/iT
- 7R/T3T++7LRK1JI5crVUUJjbBEkpr3kcNrG7MKXLZ3bQPlOdt9HfI5xeHNEU08V+fpdd
- F5PG0wV/GbyLLi/DOIJZlyQzgvvtPaX3q7s8U07RdZQbMZJgTw0hNxcpaisRyYaUtg8S
- 1dep6JMdfEVtdrkF4t7c3POCAcD6/FURfCIya/d68TKwB6ZDCFM5BArqbLkGtG2yFDJf
- cEbyrhPA2MOiTVusla+TOMrJaTnwBhep5J4p62h0JrxCU1cKxygllqgOrvCjf8dnXewB
- N74g==
+ bh=j70gJxXdGck8MJa36gCkeQcF/t7I7PGzdE6PkZ71zsE=;
+ b=D4vcdQYl789pFjgIDXaLfjweHugOVaM40Pd89aFoaDIB5cNgPf6/+hPY6NL1J7A/5x
+ YxBQn31WOXZ3km06ytrmlF/SIDqq7geLUpAefHGVVOLLInh0yc0zytBPTnqcw4RKOKbb
+ zcoIUJ5Otj5MAp4ZhnUffwo0zlInzOMIX+SaGsbbPGEsGfF8c0citK60/TijGkXzQEd1
+ M1xeqx/ioN3EJr+SAcA4P/P7U3H31i75i/QKXco8XsQ2Lh8QbJ1vyeywO/kyWsY7Vdtt
+ 3JWGITBbsaY+xm9L6+/YJxT0gr09v8yWhy8sECUQm5d2ceObZa6LKSLOamQGJ4wdqJ/4
+ gwPg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761563036; x=1762167836;
+ d=1e100.net; s=20230601; t=1761563029; x=1762167829;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=5MFngHGehXpgcde25fEDm3yIeCRkA5CYGfoJypWa7UA=;
- b=m4Btbxi0FRiAT4lo4LaNgVFhHWCUboHGfKIgPG2JflZWRuXqSULYkDdUaLAjCQ9UaK
- RDp02rdw0c+Mgs9wWNrb23mwM5TAMcBWCTp/HHDQBii8bvvArHS7Ft3reMHaw7DwoiPY
- FOzD5ILSFBcGBt2Djlnmd9YrjiA/Cea7jIyJirWODmfVA8g/SDqPqX2xTd3+jTmBlWZU
- N5tecHvZoo5JT6A1ziD0uu1Id2Fb3huCNVOiA8O5jwvwQIH9mbmbQMCK4IQ2yxqANTvs
- b/63b35h+0T7adsv3VkJTBY2yDoAwhynRP9NSKxVDpA16apxIItGsRbYsJTbvvgckR8J
- dYlg==
+ bh=j70gJxXdGck8MJa36gCkeQcF/t7I7PGzdE6PkZ71zsE=;
+ b=EsNva0xSs81auL26CW4uO6kKl6fidGLQF2KFbX5YsgcnHEqPo66hQbBp5otQaclmjL
+ 2Ub/z4zYuwv4QUFT3KH8mWTuRZPslC3P0T50AiXY+H5eRtOxz7Fx9qPDZyjq9U9Zer8J
+ GMMyzdD33ulWINyTL9/lm3us6aJBAwMMsCwvHSWrFQnVKOM1ouUL5hH9B2vnX9iENHl6
+ XT8kY4uGXS7vcTph1W1xv0CmWC6rB79GUKjvtuq3fMkC/bUl5oOHqW1ZNWyGcz+Kx+Vx
+ 1hYsAPRaGMN1QvSTnJbe9tuwXC2ArSt3Etq0Hebi1NOGjmcV1J5NW4m9ZshQr1Exe4el
+ uFtw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXSz5NKacC9ukeA4tYaGaEZlavGOvBOwyac3TJCsW+Ov44Aa36WvVz8Rh6GWzZ03OVkALMG9JfmHg==@nongnu.org
-X-Gm-Message-State: AOJu0YxzhrAdK2TnQjEw9OSStHkKN0mm6vRKsu28fhzjRmibJ7+fgRXO
- QU9VnUgUp7ifPsrlk7gNYCvS+u0q5aJldEi/I3kj4PJXSgrKbVg7Nc5wu88/mP0zt0k=
-X-Gm-Gg: ASbGncu9MjTCjhqzhdbTC1ZFnhM11MF5ytXbWWdcIsAsg/+G/YGK++2keug3Es7JPum
- 8b4u8vwoPncWm2wWt3DsnROelifyJ94u+O7xMNo42ysNRi6Yh2Lb7i8cSgUPNmXSW9pdRhWzLNS
- UVDrjDPiyuQIGAXmi7io5mZtAInvk7vO1QsL9O8ZDHMKpjffm2jeaZ6+xyQfLqUKHnVcDNJu2H3
- W0kfVuSNudoFnca8V9MnEBcBHte6fnCWaNF6AGH+NTVDUP039tWLXJfzhpNa8lM5Cxix1aZ6H3E
- 1dK6R8aZAKRyE+4j/xieuaDLsNLvdLuKfnp3h3WkfT96lYRkh2snrafGfJKLfiaFOQLpr0yKgYG
- wxykOPdPfLnJT35+MPBD/SWL4NjbQBuB1VRF3hdKZDaxToGGuB7EhJwtyFmV1G5clUD9TjWs22S
- rzlW93R6C8WeE=
-X-Google-Smtp-Source: AGHT+IH3tkpPI8qkMNzSSKaTH+LGz+PSEOooZ0h8e2NnoKxhhJh8kTHLf7OwlNmHT6Lz3ZHEnK/s9A==
-X-Received: by 2002:a17:907:7254:b0:b6d:6955:aaff with SMTP id
- a640c23a62f3a-b6d6955aeeamr1290331366b.63.1761563035774; 
- Mon, 27 Oct 2025 04:03:55 -0700 (PDT)
+ AJvYcCWRh5ez2DjAel8tC1YJoodNZ2giYPe5JOdqK84hE8RoJRYvZv9U0T7/d5QVWEjt+Uy7DM8dFyemYw==@nongnu.org
+X-Gm-Message-State: AOJu0YwIiAvzKLlYMkV7z+qapiKWifVwtui2BDhLrBhNJ4d1046SXsN7
+ 95vwScUseIjk62IFKfMS0cFTz8LuS5AMc2D5+ZhwS4C8pwsxe9etdUkWorjnLuFbM9A=
+X-Gm-Gg: ASbGncvqeCO6E86A14FMSt+44MaB4I+pnIQaAnMsJmR3OxDWjigMKHaZkVs/OVjb3hF
+ vjudAXJ2b80QMXOSBaSfxG1Rf8Ya5VlZGiQsCdqwNA51aZ8n8uFqg6HWhje9cwjVm+FqSLRKHpT
+ s8gSb7VfwPB0paS0s/BofAlYXBz/qpsOWq7cEGmtT9oIbbTA/qQM7IjrWNuYBcdu2HHuo7w0OIQ
+ 5Ul9BDx1fFxa0SldWLkkiz25J/IRT1S3ywT9nBzmslj9fgUutN1snBtDzJwfxLmEx0aueJbMziP
+ 8Wya1pOZtDCGqOIoG2P6+bnAb1oRZmVjPW5BkqpUyWzZf4voIc5ULQi+Kn8anzPtVWHreZ59f0L
+ QR8yh5N1jb4ButSiurOD8umRZVxo2lvW3jaGoc6J7GcwyjtpGacYV+wSlckAqqGWwGHjHCAU1LD
+ wRRPQAWbffSU4QKSK5OWOwDw==
+X-Google-Smtp-Source: AGHT+IHMVv5tt5JLpSnfEJyZKqOa3wbzf1/A2Kwv6tqT7NQOmJaYgs5Vgi9m2Q2oWdSmj1jix/T2Ug==
+X-Received: by 2002:a17:907:c11:b0:b32:8943:7884 with SMTP id
+ a640c23a62f3a-b647500ee9amr3839114366b.45.1761563029024; 
+ Mon, 27 Oct 2025 04:03:49 -0700 (PDT)
 Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-b6d85369697sm757955266b.26.2025.10.27.04.03.49
+ a640c23a62f3a-b6d853edc87sm734402566b.46.2025.10.27.04.03.44
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 27 Oct 2025 04:03:53 -0700 (PDT)
+ Mon, 27 Oct 2025 04:03:45 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 528BB60A0F;
- Mon, 27 Oct 2025 11:03:45 +0000 (GMT)
+ by draig.lan (Postfix) with ESMTP id 7C0705F9E0;
+ Mon, 27 Oct 2025 11:03:44 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
@@ -96,25 +96,25 @@ Cc: Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Jiaxun Yang <jiaxun.yang@flygoat.com>, Michael Rolnik <mrolnik@gmail.com>,
  Song Gao <gaosong@loongson.cn>, qemu-riscv@nongnu.org,
- Aleksandar Rikalo <arikalo@gmail.com>, Julian Ganz <neither@nut.email>
-Subject: [PATCH 13/35] target/avr: call plugin trap callbacks
-Date: Mon, 27 Oct 2025 11:03:20 +0000
-Message-ID: <20251027110344.2289945-14-alex.bennee@linaro.org>
+ Aleksandar Rikalo <arikalo@gmail.com>
+Subject: [PATCH 04/35] scripts/ci: allow both Ubuntu or Debian to run upgrade
+Date: Mon, 27 Oct 2025 11:03:11 +0000
+Message-ID: <20251027110344.2289945-5-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20251027110344.2289945-1-alex.bennee@linaro.org>
 References: <20251027110344.2289945-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::52e;
- envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x52e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::630;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x630.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -130,45 +130,27 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Julian Ganz <neither@nut.email>
+There is no practical difference between the systems when it comes to
+updating the installed system.
 
-We recently introduced API for registering callbacks for trap related
-events as well as the corresponding hook functions. Due to differences
-between architectures, the latter need to be called from target specific
-code.
-
-This change places the hook for AVR targets. That architecture appears
-to only know interrupts.
-
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Signed-off-by: Julian Ganz <neither@nut.email>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- target/avr/helper.c | 3 +++
- 1 file changed, 3 insertions(+)
+ scripts/ci/setup/build-environment.yml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/target/avr/helper.c b/target/avr/helper.c
-index 4b29ab35263..365c8c60e19 100644
---- a/target/avr/helper.c
-+++ b/target/avr/helper.c
-@@ -28,6 +28,7 @@
- #include "exec/target_page.h"
- #include "accel/tcg/cpu-ldst.h"
- #include "exec/helper-proto.h"
-+#include "qemu/plugin.h"
+diff --git a/scripts/ci/setup/build-environment.yml b/scripts/ci/setup/build-environment.yml
+index 66bde188755..253d0b759bc 100644
+--- a/scripts/ci/setup/build-environment.yml
++++ b/scripts/ci/setup/build-environment.yml
+@@ -24,7 +24,7 @@
+         update_cache: yes
+         upgrade: yes
+       when:
+-        - ansible_facts['distribution'] == 'Ubuntu'
++        - ansible_facts['distribution'] in ['Ubuntu', 'Debian']
  
- bool avr_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
- {
-@@ -102,6 +103,8 @@ void avr_cpu_do_interrupt(CPUState *cs)
-     env->sregI = 0; /* clear Global Interrupt Flag */
- 
-     cs->exception_index = -1;
-+
-+    qemu_plugin_vcpu_interrupt_cb(cs, ret);
- }
- 
- hwaddr avr_cpu_get_phys_page_debug(CPUState *cs, vaddr addr)
+     # the package lists are updated by "make lcitool-refresh"
+     - name: Define package list file path
 -- 
 2.47.3
 

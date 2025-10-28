@@ -4,103 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8A8BCCF9E0
-	for <qemu-arm@archiver.kernel.org>; Tue, 28 Oct 2025 12:35:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BCEBCCF9E0
+	for <qemu-arm@archiver.kernel.org>; Tue, 28 Oct 2025 12:47:28 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vDiud-0007np-EO; Tue, 28 Oct 2025 08:34:55 -0400
+	id 1vDj6E-00026k-Fe; Tue, 28 Oct 2025 08:46:55 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
- id 1vDiub-0007n4-K0
- for qemu-arm@nongnu.org; Tue, 28 Oct 2025 08:34:53 -0400
-Received: from mail-qk1-x72f.google.com ([2607:f8b0:4864:20::72f])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1vDj6D-00026a-5f
+ for qemu-arm@nongnu.org; Tue, 28 Oct 2025 08:46:53 -0400
+Received: from mail-yx1-xb12b.google.com ([2607:f8b0:4864:20::b12b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
- id 1vDiuU-00053g-Lw
- for qemu-arm@nongnu.org; Tue, 28 Oct 2025 08:34:52 -0400
-Received: by mail-qk1-x72f.google.com with SMTP id
- af79cd13be357-8a3eac7ca30so171908985a.2
- for <qemu-arm@nongnu.org>; Tue, 28 Oct 2025 05:34:46 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1vDj6A-0006e8-9s
+ for qemu-arm@nongnu.org; Tue, 28 Oct 2025 08:46:52 -0400
+Received: by mail-yx1-xb12b.google.com with SMTP id
+ 956f58d0204a3-63e0c6f0adfso6030687d50.3
+ for <qemu-arm@nongnu.org>; Tue, 28 Oct 2025 05:46:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1761654883; x=1762259683; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=nQnjYQ0yGom/2oCJUwbsDLkSJOo+kap0BYVvQOuuuWc=;
- b=Xl/WJOs3ascQAfvsUJCDjsAzYH7v5+F8bIHxzj0vUBQWGUBW060c6EXtmJCCSOJJkw
- aGUBaJ0KhjSoWdvws6vKZmJxyGiNjVMsVGb6hcHJJ6s8O8ejBrhq1M1tCVGiLx3rhD8W
- dF86QfpJCoo+OZsXYV9S7NjnAyessbRTJMZHtBLqsW32V+6eYQbSqsMscEKFiXpJzvyT
- gYQuiOAY94i0C0BntSXE01yXYKtJ0H1fGA5RfiBcI4dV6uTnANtxoDWCdQIr9WrL2X1s
- L8oq7zL6ZlyjPUZGYlbIX9LYYd1HZgvjAH4BLrL41ge1ipcC2EzmkFNFZj30bhhWGHvo
- j45A==
+ d=linaro.org; s=google; t=1761655606; x=1762260406; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=D3RH6UsMdMy87c5o+TRKGSs4DdkK1RyRgMopjF4kntY=;
+ b=b5m96n2KyS2Bv/RVjdimjbhuwE4Hv2nt4lrqqQdxGbr3V6wSiHTd8J5Fp4j9eBBLV8
+ r0DXJrCubyQyNdVqbXEDZdRqStIxVKCNutVNWAHnsWJqkFtdh1sfdf/T2XaVnPQEc4B1
+ OzTpJ1/ZOj+rsBhOloO2M7JTT3b+CKD5k0dfdYlQSZ2IVn83y7nxsqsdqLa4NwREAW5g
+ xP2fdvY7Q9KoEUlJ1x2dDkTgHxH2RzhgSQzewo3ybgMS2UC71X4ZYKB9/yTEAlqBQq9+
+ C+8wDuQ7skYTsYhiRuV1BLAySxIUbekUdPjVc0VTlfCpc2EBgNr8Fh4vlGzoJQ4hUINy
+ akDA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761654883; x=1762259683;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=nQnjYQ0yGom/2oCJUwbsDLkSJOo+kap0BYVvQOuuuWc=;
- b=SquBo6H3liFdttvpGTlKVw092DRckSW6sEd0Po27SP2ehoNOmc3kzzvWUwZSP0QQur
- 0XH0YKUQGLkr6olh8ZdX2NArCL8tlPofAB5iOKJ0d6WN/M6Pj0jc7p/BvhjI3UZSoV/N
- CWZsiCL0MLtXm+KsYcpnTVSsV66vfi7/1XlSx3RDAZF7ImrrZyD4iW+2aqZ18yapcAGk
- 66IRHKJLC/733X7kBfCdDOdw9y3QNkET3/E7MmrqfIJhQDYMQsye44yoztOWGNnqmBfX
- zQNgi3NYZGeYInDrAHwH6klLmjH+2RcOshEE+f23+Qew6vcqCyknqw8AuLtNLkGQb5SW
- nmsA==
+ d=1e100.net; s=20230601; t=1761655606; x=1762260406;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=D3RH6UsMdMy87c5o+TRKGSs4DdkK1RyRgMopjF4kntY=;
+ b=bRJ9TsaZme8FpRNrgW+kGPHmP+MY+fSdg1/dOFHf6VsXOxWLUTb6P807aeeaSg4CAS
+ Gt0Id7PyAQ+wdUQgx0yAW9fyhZ390CSVgC6VN3DV/AdqodZKYj+gOPWjZotJWPkYAI0F
+ TzjZwrjNUDJwS6D9it5uRpn6mqX5D3h87q/NYDzlGlqjYBl1n9jUkIkNcF0ljTvnUZYH
+ /RfQD/3smpC8r7Q1hNbx9Xr+iyX/IgQNtSrDabwgAbM6BXCgRz5bAVfOZ8V8/cKQhNJz
+ cmNRuogxEh0bqVYS1NSKKTY9Zhgvn46YosIcrWjp8WDZf5z710SjmNe1sr6XSoDJl8gQ
+ PPDg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUJ+a4dJZs/ealRZNc/DGpMtF+BKgMtMfOl52KI5uGt/ZaI3Wp+4qnUY5Y01VdIpLV9nY6Q69yJSQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yy1+s6odB8TOkPzuJyS+wG8L2lmGOohqZG2jlreoF4ZpmHA84uq
- h3l5l1WmMmtUcq3NnzWxj5MIZEfX/oEVhDuvJOS0oVx9euXkxS60q+Z0nLaefTwIPXYxvM8D2W5
- zd0dxp5pMciQhx8YPislWe6IW8IjiJSM=
-X-Gm-Gg: ASbGncsdgNDPhkCorK/vgm13yEgkHvHKKKLJYBsakHxtDViG98ATvY/55qej3uFTspf
- mmxIwrxGhLJbAPcTlzFBoMrwH8a4VePaXgXQLTyu4B31bQMh4RGcngBk7/K1ZHQarr5JXRuN/2t
- cLlUJUxuLSRfndttgeyYQzMV6IQ/pOTgM+EtmNU0+dhQscyfBFNZcAyRbjA1c/6WsGS8rVsU6qJ
- ZdM9llW4a+SF1CUKdc8sy4CGf2wSym5nAwR2ekCj3uTY6BpJAvywjSYGqL6quanzZnxIu/DGpFR
- AJ+9QvWs8U9HhxlX
-X-Google-Smtp-Source: AGHT+IEMD1O4irbieBoEOhfE5znusIqCe6ZhScWbrxZOSavPj+LeiG4RBN3SjnRNCbbGFkVGkEdLfsFXDgjdPzvT28s=
-X-Received: by 2002:a05:620a:371b:b0:859:7e5d:efa3 with SMTP id
- af79cd13be357-8a6f3e24ecamr390126585a.14.1761654883326; Tue, 28 Oct 2025
- 05:34:43 -0700 (PDT)
+ AJvYcCW0GZRB7d91H4LweiaWIGESOEnNvkc/HlSALTLU+n4KEWo8peVmoUM1YQ7SKA8bIltKrLE14x2D5Q==@nongnu.org
+X-Gm-Message-State: AOJu0Yyvu5AnOcGPDrIITX8BNEGZvuV5J7aBE9PliBdHFImq1lnEd+Lg
+ 8AhDqqJlBUUSrrsUHxuFaFl0c4CFrKzbAkcH0oRKNKa7niYAvOqPM5bjGWPFrfFyn1atc2AL34L
+ KZcMeUnlbBEtAH+K17+HrFUT77P3YdGcUM8uFY/WvwA==
+X-Gm-Gg: ASbGncuIM0msmBVqg4JfDnPtm5Kpq9gs9QJC5i6xay419oe0njTQEfWSPv0wez7c3D2
+ +uEiV2KAAQ7XoF60CBREp9/DLOgAyH/MvTrQLde4FsRHOD0Q39rnINWLc8C/banpTT7/0sLYFIu
+ qPMqZNd1al431HVTTT2gU2Z+xiPLEW0PtgyqdAaRnMMXiwQrZGm+qo2VzpFek//YQtg/06rbpQT
+ LCmJIHeoSJHpjmK2UlAZfZt0Kb3bSHnjWI0/nKCbaYTeUKaIh4i7BXdc+eVag==
+X-Google-Smtp-Source: AGHT+IH1O6i8hecTj4l2aLo4OldJkWtQ8u8T0RQCgB8Hp4HMRcRLb8koFsgd74eAE4goa26cuPqJKqRaKkrJ4RO1PuE=
+X-Received: by 2002:a53:c64d:0:b0:63e:1395:1951 with SMTP id
+ 956f58d0204a3-63f6ba92260mr2329214d50.54.1761655606083; Tue, 28 Oct 2025
+ 05:46:46 -0700 (PDT)
 MIME-Version: 1.0
-References: <20251027151045.2863176-1-marcandre.lureau@redhat.com>
- <20251027151045.2863176-10-marcandre.lureau@redhat.com>
- <342519b4-4de6-f54b-606e-b1b3b1c97dc9@eik.bme.hu>
-In-Reply-To: <342519b4-4de6-f54b-606e-b1b3b1c97dc9@eik.bme.hu>
-From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
-Date: Tue, 28 Oct 2025 16:34:31 +0400
-X-Gm-Features: AWmQ_blNZnC3_C_4gNNJqKYn16ZoWmT3SY8KHGEr2VNmMH1EHPvD29EE9GfdRG8
-Message-ID: <CAJ+F1CJj__oPiBwXKeH88tF8k6vEjqqe6KMO4g9HmcnNqbpRfA@mail.gmail.com>
-Subject: Re: [PATCH v3 09/35] audio: start making AudioState a QOM Object
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, Alexandre Ratchov <alex@caoua.org>,
- Jan Kiszka <jan.kiszka@web.de>, 
- "Michael S. Tsirkin" <mst@redhat.com>, BALATON Zoltan <balaton@eik.bme.hu>, 
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Yanan Wang <wangyanan55@huawei.com>, Thomas Huth <huth@tuxfamily.org>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- Gerd Hoffmann <kraxel@redhat.com>, Peter Maydell <peter.maydell@linaro.org>, 
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
- Eduardo Habkost <eduardo@habkost.net>,
- Manos Pitsidianakis <manos.pitsidianakis@linaro.org>, 
- qemu-ppc@nongnu.org, Jiaxun Yang <jiaxun.yang@flygoat.com>, 
- Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>,
- =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>, 
- qemu-arm@nongnu.org, Alistair Francis <alistair@alistair23.me>, 
- Zhao Liu <zhao1.liu@intel.com>,
- =?UTF-8?Q?Volker_R=C3=BCmelin?= <vr_qemu@t-online.de>, 
- Christian Schoenebeck <qemu_oss@crudebyte.com>,
- Paolo Bonzini <pbonzini@redhat.com>, 
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Laurent Vivier <laurent@vivier.eu>
+References: <20250629204851.1778-1-shentey@gmail.com>
+ <20250629204851.1778-3-shentey@gmail.com>
+In-Reply-To: <20250629204851.1778-3-shentey@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 28 Oct 2025 12:46:34 +0000
+X-Gm-Features: AWmQ_bkMhIpPncgf5hD9mm751gVd8CuTkkix0pY9v1Zm67Q2MKeXiO5odTkC_cg
+Message-ID: <CAFEAcA9Rvvymu7oS0pPx00v9SdXzwr27vy1VmnZmwQ7ayZK+yQ@mail.gmail.com>
+Subject: Re: [PATCH 2/2] hw/arm/imx8mp-evk: Add KVM support
+To: Bernhard Beschow <shentey@gmail.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Phil_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::72f;
- envelope-from=marcandre.lureau@gmail.com; helo=mail-qk1-x72f.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b12b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -118,67 +98,92 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi
-
-On Mon, Oct 27, 2025 at 8:29=E2=80=AFPM BALATON Zoltan <balaton@eik.bme.hu>=
- wrote:
+On Sun, 29 Jun 2025 at 21:49, Bernhard Beschow <shentey@gmail.com> wrote:
 >
-> On Mon, 27 Oct 2025, marcandre.lureau@redhat.com wrote:
-> > From: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
-> >
-> > QOM brings some conveniences for introspection, type checking, referenc=
-e
-> > counting, interfaces etc. This is only the first step to introduce QOM
-> > in audio/ (I have more in the pipeline)
-> >
-> > Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
-> > Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
-> > ---
-> > audio/audio.h     |  7 +++++++
-> > audio/audio_int.h |  2 ++
-> > audio/audio.c     | 43 ++++++++++++++++++++++++++++++++-----------
-> > 3 files changed, 41 insertions(+), 11 deletions(-)
-> >
-> > diff --git a/audio/audio.h b/audio/audio.h
-> > index eb5b5d662d..e41c5bc55a 100644
-> > --- a/audio/audio.h
-> > +++ b/audio/audio.h
-> > @@ -80,6 +80,10 @@ typedef struct SWVoiceOut SWVoiceOut;
-> > typedef struct CaptureVoiceOut CaptureVoiceOut;
-> > typedef struct SWVoiceIn SWVoiceIn;
-> >
-> > +struct AudioStateClass {
-> > +    ObjectClass parent_class;
-> > +};
-> > +
-> > typedef struct AudioState AudioState;
-> > typedef struct QEMUSoundCard {
-> >     char *name;
-> > @@ -182,4 +186,7 @@ const char *audio_get_id(QEMUSoundCard *card);
-> > #define DEFINE_AUDIO_PROPERTIES(_s, _f)         \
-> >     DEFINE_PROP_AUDIODEV("audiodev", _s, _f)
-> >
-> > +#define TYPE_AUDIO_STATE "audio-state"
-> > +OBJECT_DECLARE_TYPE(AudioState, AudioStateClass, AUDIO_STATE)
-> > +
-> > #endif /* QEMU_AUDIO_H */
-> > diff --git a/audio/audio_int.h b/audio/audio_int.h
-> > index f78ca05f92..b2b4d2d10e 100644
-> > --- a/audio/audio_int.h
-> > +++ b/audio/audio_int.h
-> > @@ -217,6 +217,8 @@ struct SWVoiceCap {
-> > };
-> >
-> > typedef struct AudioState {
-> > +    Object parent;
+> Allows the imx8mp-evk machine to be run with KVM acceleration as a guest.
 >
-> Coding style says parent_obj, not sure other names are acceptable.
+> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+> ---
+>  docs/system/arm/imx8mp-evk.rst |  7 +++++++
+>  hw/arm/fsl-imx8mp.c            | 33 ++++++++++++++++++++++++++++-----
+>  hw/arm/imx8mp-evk.c            | 11 +++++++++++
+>  hw/arm/Kconfig                 |  3 ++-
+>  hw/arm/meson.build             |  2 +-
+>  5 files changed, 49 insertions(+), 7 deletions(-)
 >
+> diff --git a/docs/system/arm/imx8mp-evk.rst b/docs/system/arm/imx8mp-evk.rst
+> index b2f7d29ade..1399820163 100644
+> --- a/docs/system/arm/imx8mp-evk.rst
+> +++ b/docs/system/arm/imx8mp-evk.rst
+> @@ -60,3 +60,10 @@ Now that everything is prepared the machine can be started as follows:
+>        -dtb imx8mp-evk.dtb \
+>        -append "root=/dev/mmcblk2p2" \
+>        -drive file=sdcard.img,if=sd,bus=2,format=raw,id=mmcblk2
+> +
+> +
+> +KVM Virtualization
+> +------------------
+> +
+> +To enable hardware-assisted acceleration via KVM, append
+> +``-accel kvm -cpu host`` to the command line.
 
+Coming back to this now we've resolved the "does this put
+things inside our security-promises that we don't want"
+question...
 
-Alex, since you wrote that section in docs/devel/style.rst, should we
-enforce that naming?
+I think we should be a bit clearer in the documentation
+about what tradeoffs the user is making here when they select
+KVM. Specifically:
 
---=20
-Marc-Andr=C3=A9 Lureau
+ * we should note that this is intended only to improve
+   performance, and is not covered by QEMU's security policy
+ * we should say that you will not get a Cortex-A53, so any
+   guest code with tight dependencies on the host CPU type
+   might not work correctly
+ * we should say that the guest will only be able to run
+   at EL1, and (unlike TCG) there is no EL2 or EL3
+
+> diff --git a/hw/arm/fsl-imx8mp.c b/hw/arm/fsl-imx8mp.c
+> index 866f4d1d74..7e61392abb 100644
+> --- a/hw/arm/fsl-imx8mp.c
+> +++ b/hw/arm/fsl-imx8mp.c
+> @@ -12,11 +12,13 @@
+>  #include "system/address-spaces.h"
+>  #include "hw/arm/bsa.h"
+>  #include "hw/arm/fsl-imx8mp.h"
+> -#include "hw/intc/arm_gicv3.h"
+
+Why does this include get removed ?
+
+>  #include "hw/misc/unimp.h"
+>  #include "hw/boards.h"
+> +#include "system/kvm.h"
+>  #include "system/system.h"
+> +#include "target/arm/cpu.h"
+>  #include "target/arm/cpu-qom.h"
+> +#include "target/arm/kvm_arm.h"
+>  #include "qapi/error.h"
+>  #include "qobject/qlist.h"
+
+> diff --git a/hw/arm/meson.build b/hw/arm/meson.build
+> index d90be8f4c9..a4212a6ab2 100644
+> --- a/hw/arm/meson.build
+> +++ b/hw/arm/meson.build
+> @@ -59,7 +59,7 @@ arm_common_ss.add(when: 'CONFIG_MUSCA', if_true: files('musca.c'))
+>  arm_common_ss.add(when: 'CONFIG_ARMSSE', if_true: files('armsse.c'))
+>  arm_common_ss.add(when: 'CONFIG_FSL_IMX7', if_true: files('fsl-imx7.c', 'mcimx7d-sabre.c'))
+>  arm_common_ss.add(when: 'CONFIG_FSL_IMX8MP', if_true: files('fsl-imx8mp.c'))
+> -arm_common_ss.add(when: 'CONFIG_FSL_IMX8MP_EVK', if_true: files('imx8mp-evk.c'))
+> +arm_ss.add(when: 'CONFIG_FSL_IMX8MP_EVK', if_true: files('imx8mp-evk.c'))
+>  arm_common_ss.add(when: 'CONFIG_ARM_SMMUV3', if_true: files('smmuv3.c'))
+>  arm_common_ss.add(when: 'CONFIG_FSL_IMX6UL', if_true: files('fsl-imx6ul.c', 'mcimx6ul-evk.c'))
+>  arm_common_ss.add(when: 'CONFIG_NRF51_SOC', if_true: files('nrf51_soc.c'))
+
+Philippe, Pierrick: is it OK that this moves the
+fsl-imx8p.c file from arm_common to arm_ss, or is there
+a preferable way to do this from a single-binary point
+of view?
+
+thanks
+-- PMM
 

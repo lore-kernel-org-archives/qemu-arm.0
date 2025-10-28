@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BAB8CCF9E0
-	for <qemu-arm@archiver.kernel.org>; Tue, 28 Oct 2025 18:14:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF9B0CCD1BF
+	for <qemu-arm@archiver.kernel.org>; Tue, 28 Oct 2025 18:15:26 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vDoDa-0007Ax-Hl; Tue, 28 Oct 2025 14:14:52 -0400
+	id 1vDoE6-0007gs-Cy; Tue, 28 Oct 2025 14:15:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vDoD7-000705-PE
- for qemu-arm@nongnu.org; Tue, 28 Oct 2025 14:14:33 -0400
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vDoE1-0007dX-OS
+ for qemu-arm@nongnu.org; Tue, 28 Oct 2025 14:15:17 -0400
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vDoCv-0001fI-VY
- for qemu-arm@nongnu.org; Tue, 28 Oct 2025 14:14:21 -0400
-Received: by mail-wr1-x42c.google.com with SMTP id
- ffacd0b85a97d-427015003eeso5612320f8f.0
- for <qemu-arm@nongnu.org>; Tue, 28 Oct 2025 11:14:08 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vDoDw-0001wN-3f
+ for qemu-arm@nongnu.org; Tue, 28 Oct 2025 14:15:17 -0400
+Received: by mail-wm1-x32e.google.com with SMTP id
+ 5b1f17b1804b1-4710022571cso65597615e9.3
+ for <qemu-arm@nongnu.org>; Tue, 28 Oct 2025 11:15:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1761675245; x=1762280045; darn=nongnu.org;
+ d=linaro.org; s=google; t=1761675307; x=1762280107; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=RGm17n3GNDykAs4UeW0nI6eNRzRj+Ya0fbeg5mVxNeE=;
- b=sC9/aATb1oTLFCmiUQmN0XFGPc1CVbxzXBCP0txLTTWgZIZ/OEMXWa7o3Bu7fDGIjG
- DZab6hrXetfOhvs0f3gZXNJ+/hBxiEVZ8gFB9zT6Nhcg5MOrMEwIU7GeRVpWxyPmYNBb
- +cFsxey6xO9+MbFnHlGSy8uY4961RJmUtCkuuXJMB3JFbmG38eMqBCaN6AL83MdHIiKI
- 1z0zXGImSU/20mAePbOc6BZ6V89Up26eAuIDM5LxQVjqDJc1RAbBzF2BNWIfy9lvVf4U
- h6biidzBPU23ltTzJYObge9MoVKT+ElMSwk+0ejIsTWe9ztsMd0+o6+Bp3dMyYkVlvmG
- wGUA==
+ bh=zA8SKmOgkqXDGcERg1H6mkjaSwJToDep8qiHL7yl9oQ=;
+ b=kxf2Gi8s4AXIQUzGKJMNUAQE2EeJ4nKagRDiI81YYeAKnKnY7DJBHdxYkaQVVEy+q6
+ xLQUPFAM6vmjvXixGDJRHeVU0y4y/u8OgScq3YYVGkmrJhapuhTnZe72smNYYpfGdrPD
+ obBvya28p0wQHPbX+djEBGaKruCprqsksemVjDceMVbsvFqIYdoCeehORMFXBVoB/lwM
+ s7wUut9A9baN2M3UzbtqvgznUJ7uhw5Mv9HkKiiDfQSAfSZDi95mts+u25tuIuR8+YGu
+ VgWVSYtW/pQJXmBkl9/Ve7qb5HFNJoDCIZiWaphW8yaaLY4daQxaG97j5d0YCtF2Iwes
+ pUyw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761675245; x=1762280045;
+ d=1e100.net; s=20230601; t=1761675307; x=1762280107;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=RGm17n3GNDykAs4UeW0nI6eNRzRj+Ya0fbeg5mVxNeE=;
- b=qCjqX7SB/Lo2g351b+EfFhnx6fBKfmF77Jpn3pcI/EaTqPN++JzUfAuu0pIZp/lc4z
- fOD5ZOqAra1Cvj5CXakvzTXjCuYo0b8PepCH3kN3o3ovqfvu1XiB/2nQALSySdQhEnpi
- etUX5YCClM/gh1nD15t7m1rGrusXurHpNbKGNFG6vr6lo4Tdja+5f1vsEbmPu+2ZSFmR
- gdeS+wjhwlE8bozjtpcTJvZX03ZJp+lFkpGLWSrJ+FeQ8OFsLN5+HyuoGJC+k7yKKH0U
- hpLLISF0B25PUYVPDLR5uIwO+sCTcqTi67WrZsu6I2JUCRF13pUKIGeNTQlCLBXQq7BI
- 689w==
+ bh=zA8SKmOgkqXDGcERg1H6mkjaSwJToDep8qiHL7yl9oQ=;
+ b=KCygdESVeKbshzKuc8wkhHHvOIiwxzIZA0STYDMngKOAeIS22Is/G1lkSBH7/4N7w6
+ R3ot5eZYsFlpkHhW4KlONgARY3KpLZ35PzNqXUIaaCVTTlS5UoFf1cEIGq3nckM17hF0
+ jZuoGwS+j/JTp6DUpvIvV2KL0b/0PYCmsFrBsB86YUYXKCyJJBTEHSoJY7uLkHZeIRZj
+ JQ1fWkmjNS82rwEUYYX+HI9ku9Rlqlk1y/gD5Hw3ypmvZGxe91pfvk+qmPNhWbbKS3Ag
+ s9ZE+K5rt4Vuyi2/IChaLWd1OZr/zXVO4xJMzKbaMCtS7wIg3nyuOY/eRYfXqB8SLvim
+ Z+LQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVE+eTILQw0nedfdoLB6w857oZPLdJR9dNTgxhLg8M2yMMA4jczBYLkzzI85GriGYqT+TA1oFGBRw==@nongnu.org
-X-Gm-Message-State: AOJu0YyYt2zJa5A34grUUAJXqc+ZnP/WuMEc4ZCKRCZcHuUXBkfhMelP
- qQcV05R6we0MRLLuQZC4jaJdvtP/k6uvwQbHB8KggOtXFYa1pWQSmauPK0iYRgfdk0w=
-X-Gm-Gg: ASbGncts0uMundCAfR3xT4VvM0zQbUB3vBDUcKIXS5KZA4bRN/RSFRIbU8sM5EIzqwM
- EBrr1npZSID27Ya8LxAptbKD5wT00y+OIVcIyalIt23YlNB///iBnAPG4cPlQ/HBFpZC1AuExVF
- GHNdLuqkiFQE2i1T7PHG5J2JRS3ZIu9ocNDO0nt4+DH54+PnOBvVxRs2G4F1QP7WP0sDLc9P9Y8
- 3mfS4lsEgA6+XCtSnxm1kU/5e0PmnVseTlIqlqP3aOk2zSnS4IyKosnZ6l7I/FkAHBjJK1JlWKa
- 7gJMo0+/OVI7YvG+KovF8XoiLxUw6zl1xIm7OA/D/EE65ksm6OsD/JY+sxaoM0dC0sqg7b6JTnT
- lZKptO3m2oKOmd6C8ZziiSviU7ye7ls2PUyz3caHQ6U+hZrb4RXaVSLQpv2ipw/sDj9uaH4tCZy
- 9Js3k8+YniDaR/FugK5WmP0tDIx8N5LY/OC6zPbN7BkrxlTuJPxQ==
-X-Google-Smtp-Source: AGHT+IEn6BXLgcLqz8vdSXbRpjSkU44daKaJ2dzVUTotYkB7GlMJyzAOsTXte1or1dBi5x1pPqxwOQ==
-X-Received: by 2002:a05:6000:2c05:b0:427:9e6:3a64 with SMTP id
- ffacd0b85a97d-429a7e91ea7mr4547478f8f.47.1761675245209; 
- Tue, 28 Oct 2025 11:14:05 -0700 (PDT)
+ AJvYcCVGQYr935sYe8nXezDGYmQTEMSexJleHFEtI+D59xG1LW379cLBTfBzXV/cS8Wer8BaD1TCzBQkhw==@nongnu.org
+X-Gm-Message-State: AOJu0Yw7re55GhdHnRJdLt+J6SeoW8Irjns/vQnj7pJQ21vgJRpCeowH
+ 4jLS1vuZHVBCiUN4HR6/wmp5jCOD5HJJXOrMmimpswyqCy4ODmq23buvLynfEcMWcqc=
+X-Gm-Gg: ASbGncsOPsQBC4nRrsTmbjqW6HEOuSZTlqWwck6swaCWlpi/kNCL8fpDKV05lXL864B
+ MbDyAO8A3Dc7poPzZVD4hzFvWia7GSPdWVZXCmEszT0CCP0ZOjvtlq2Ij+kM0SVuPWWva8fZ7gp
+ Z5Uvkosfc4xYZOatG0WaYp7FOVsX9L0JKqebUMaHtFtUNnH8OZXiEcNyuAQwWSXM68HVQsJ/k2L
+ 7XBMxwa6wWRYzf/Y3Pj4CJLzL4G+KTiJzdTYgkdpeo8x36NevS1Pv7nn5LwDLP8TWCrFdGbj+bZ
+ EvcndgA0EIPz7V/a6I348HYPbyVwToy++/gHgJTV648MefyFm13ke/are1Sx/4CEQB/O2SBY1ff
+ 8Jsocbv+73KSGznS1p8qMlDfdCoWwjVqvQ3eRUB9hKefj2b9k/995DYLq+FmCMBeazZEPns59ko
+ NYEME4BOFcAVYsgdsGKGdd44aJ6OvSHbwHex7bh0xa9IVhRZ8Q2PMhWpxS0FuO
+X-Google-Smtp-Source: AGHT+IHGa7i8N5C193MPmkOywSRQJAfkqFaPiX57WAZi/cfIO5WheZGBTLOuNNoY3ewFL4QjIRNsZw==
+X-Received: by 2002:a05:600c:1549:b0:471:1306:aa0f with SMTP id
+ 5b1f17b1804b1-4771e20e400mr3209855e9.38.1761675307364; 
+ Tue, 28 Oct 2025 11:15:07 -0700 (PDT)
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-429952db99asm22057430f8f.32.2025.10.28.11.14.03
+ 5b1f17b1804b1-47718489d96sm26888875e9.0.2025.10.28.11.15.06
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 28 Oct 2025 11:14:04 -0700 (PDT)
+ Tue, 28 Oct 2025 11:15:06 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Mark Cave-Ayland <mark.caveayland@nutanix.com>, qemu-ppc@nongnu.org,
@@ -77,23 +77,24 @@ Cc: Mark Cave-Ayland <mark.caveayland@nutanix.com>, qemu-ppc@nongnu.org,
  Paolo Bonzini <pbonzini@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>,
  Eduardo Habkost <eduardo@habkost.net>
-Subject: [PATCH v3 01/25] hw/i386/microvm: Use proper SysBus accessors
-Date: Tue, 28 Oct 2025 19:12:35 +0100
-Message-ID: <20251028181300.41475-2-philmd@linaro.org>
+Subject: [PATCH v3 02/25] hw/i386/ioapic: Use proper SysBus accessors
+Date: Tue, 28 Oct 2025 19:12:36 +0100
+Message-ID: <20251028181300.41475-3-philmd@linaro.org>
 X-Mailer: git-send-email 2.51.0
 In-Reply-To: <20251028181300.41475-1-philmd@linaro.org>
 References: <20251028181300.41475-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -114,33 +115,30 @@ sysbus_mmio_get_region() to access it.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/i386/microvm-dt.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+ hw/i386/kvm/ioapic.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/hw/i386/microvm-dt.c b/hw/i386/microvm-dt.c
-index cb27dfd732e..d7f49bc1b5f 100644
---- a/hw/i386/microvm-dt.c
-+++ b/hw/i386/microvm-dt.c
-@@ -71,7 +71,8 @@ static void dt_add_virtio(MicrovmMachineState *mms, VirtIOMMIOProxy *mmio)
-         return;
-     }
- 
--    hwaddr base = dev->mmio[0].addr;
-+    MemoryRegion *mr = sysbus_mmio_get_region(dev, 0);
-+    hwaddr base = mr->addr;
-     hwaddr size = 512;
-     unsigned index = (base - VIRTIO_MMIO_BASE) / size;
-     uint32_t irq = mms->virtio_irq_base + index;
-@@ -150,7 +151,8 @@ static void dt_add_pcie(MicrovmMachineState *mms)
- 
- static void dt_add_ioapic(MicrovmMachineState *mms, SysBusDevice *dev)
+diff --git a/hw/i386/kvm/ioapic.c b/hw/i386/kvm/ioapic.c
+index 693ee978a12..0519432edbe 100644
+--- a/hw/i386/kvm/ioapic.c
++++ b/hw/i386/kvm/ioapic.c
+@@ -80,6 +80,7 @@ static void kvm_ioapic_put(IOAPICCommonState *s)
  {
--    hwaddr base = dev->mmio[0].addr;
-+    MemoryRegion *mr = sysbus_mmio_get_region(dev, 0);
-+    hwaddr base = mr->addr;
-     char *nodename;
-     uint32_t ph;
-     int index;
+     struct kvm_irqchip chip;
+     struct kvm_ioapic_state *kioapic;
++    MemoryRegion *mr = sysbus_mmio_get_region(s->busdev, 0);
+     int ret, i;
+ 
+     chip.chip_id = KVM_IRQCHIP_IOAPIC;
+@@ -87,7 +88,7 @@ static void kvm_ioapic_put(IOAPICCommonState *s)
+ 
+     kioapic->id = s->id;
+     kioapic->ioregsel = s->ioregsel;
+-    kioapic->base_address = s->busdev.mmio[0].addr;
++    kioapic->base_address = mr->addr;
+     kioapic->irr = s->irr;
+     for (i = 0; i < IOAPIC_NUM_PINS; i++) {
+         kioapic->redirtbl[i].bits = s->ioredtbl[i];
 -- 
 2.51.0
 

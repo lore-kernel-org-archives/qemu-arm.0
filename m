@@ -4,68 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E36F8CCD1BF
-	for <qemu-arm@archiver.kernel.org>; Tue, 28 Oct 2025 06:09:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77CBECCF9E0
+	for <qemu-arm@archiver.kernel.org>; Tue, 28 Oct 2025 06:09:44 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vDcsq-0007cT-N9; Tue, 28 Oct 2025 02:08:43 -0400
+	id 1vDctp-00080U-SC; Tue, 28 Oct 2025 02:09:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vDcsl-0007W7-DU
- for qemu-arm@nongnu.org; Tue, 28 Oct 2025 02:08:37 -0400
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vDctQ-0007s6-79
+ for qemu-arm@nongnu.org; Tue, 28 Oct 2025 02:09:16 -0400
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vDcsf-00069i-M7
- for qemu-arm@nongnu.org; Tue, 28 Oct 2025 02:08:33 -0400
-Received: by mail-wm1-x32e.google.com with SMTP id
- 5b1f17b1804b1-4770c2cd96fso18760415e9.3
- for <qemu-arm@nongnu.org>; Mon, 27 Oct 2025 23:08:25 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vDctK-0006CC-FR
+ for qemu-arm@nongnu.org; Tue, 28 Oct 2025 02:09:15 -0400
+Received: by mail-wm1-x331.google.com with SMTP id
+ 5b1f17b1804b1-4710683a644so45990265e9.0
+ for <qemu-arm@nongnu.org>; Mon, 27 Oct 2025 23:09:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1761631703; x=1762236503; darn=nongnu.org;
+ d=linaro.org; s=google; t=1761631746; x=1762236546; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=tXWJQrd0lCphm6hCLWJPyr8+ILvdsszdNySmyDwYfak=;
- b=gx/apBqwKf/d9fWsN5V40f5MB+8MYNwdANXJxRTJ3XPbaxbaA0ttoO8Ub5Yh+hbHH1
- RcbiwYdAE9krmDDvc12z43i4+nDHuo458SydzEOEZ+lUada3WzUv7SfQJ5OsnHdU/i7K
- 3QkDeic7kYxzzezWWHBieIf7wfYWLz7dJNLJJ8fVBtn0fn1/ecASRMf0224/03zEPYSo
- dzeQ55WcdXm8TKLO/eUEyt5nJLjapZ0xt7s8DOclCHRJGnEQdaU1NhWyWCkRNkxxebYn
- fb/D9z8jgF/WPAB0lnrIrbA/cJGXQTH8XqrH69kCNAM5qBuC3AD3e7DeHvABg2jUBUyC
- EDNA==
+ bh=Gg8KFIu162xAUD3ojqlP0hPF5Yesx/MjE4Lk5N+Iivs=;
+ b=ozj8DX1hQ7Hy/Yxyg7kvHD+rb1Zm3Flp3j5IFKntgAx5TOncHGhkrQeUbm/L2nKBvA
+ peKjabO+oP0UyyG9RKQ5EXiYSh148Qu1M3wAk53T66KIO9sMXOpnV20a1Z4QHzJitLw4
+ uLp8H25Vizf2y8BV37OdF3EdaRFCy8RzXKF3ekSVkRo3Qj3qRteI+jy0oUOrVTzZ6pS5
+ /o78Mw67+OXC/VoNIa7xVqs9BwmAZXZNUbA9Cx2KALX2vVd/7iD9fm/Eg5tjBxQ7vcEE
+ +k/a/2C4/TmuvHJA4CqHxGonJGNdIQMCrBCEsNq1XBrdKsUym88BX4o6Gy+CRuqTxCad
+ pWfg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761631703; x=1762236503;
+ d=1e100.net; s=20230601; t=1761631746; x=1762236546;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=tXWJQrd0lCphm6hCLWJPyr8+ILvdsszdNySmyDwYfak=;
- b=BkUR9SWyd+LJ4QMzlIzVJKYCaNEnXg/vbseN3jtv5fqBWWyAv9JBagD4226nN9eJOE
- Pe8cgKmSMaTafuYtBcmE1aArVYVfdMiLBxqS62TNTk/07fn71hwsE0liodMw6nfnjv3D
- 3DvwFiaoYkPM2QWew+V3ttlAOn7YKw9ezg8MKmLoYf51MYp8q+2Us2s3bgCQ4KmCgvzX
- ZnzmuEmcYkszQbtRkFbQaxXLxLx28y/koAO6Mu2rBJxaIpI/3TPIbYIswbzTea21FZYr
- /ogJ4eX4LzTEayhQd9d8cAYXAdSQ8jEFTfglXUAFyItsYhHwSFJUuahC4n2DVjJLwFrW
- WaVg==
+ bh=Gg8KFIu162xAUD3ojqlP0hPF5Yesx/MjE4Lk5N+Iivs=;
+ b=Xo0GF3xYeOWMwWsHhTpDChlkDn72EzS5nisHNzhN+hEwq9jX1kBa+aDgvHvTbSvQBM
+ yb03m17GiN2K31Y5ar+ImXnYaWwqVQTjUeOJcdMfVAoe8T5SuqV27wArSvHkx+cDHdOO
+ I8moNu3/y5gzOS3jc0Lq63qsJ4I/xMCfDLMCe02oGB9J3krBEsX/Rh7HWbXVvUymhkRy
+ l+5BlJ0wjubvZiEeZPV6sMeZ5RV0UHa4l8qR6FJ8lgd7Dq6tw1IivXdp9t3AjVZsf9DT
+ mIwLRm2FVrozt8y8tTCynIz/jX9jbMbMoshAuyJdQ2QyTgHhKf4ypASJWLf+z6Beefgw
+ Ktwg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUjlvDiWrEyjKSpi/fqcejqbRJ/Ylh87fifYgPqR4nXVjbQwtRdYLpbhvNKckJYD0JfbG/pEqi4Yg==@nongnu.org
-X-Gm-Message-State: AOJu0Yzftz3acyHNq99EtRP4gJlcO8Gzh+4aL0ceC/LiiKw40yV1kxrp
- 5waK6H2XvbtuYIApdUexuCmlT+iGtRqRqXSHgHCGpziv9Jah15+xWTM7EWI0jS1bSGa4L8HX02c
- c1Jp9Fx8=
-X-Gm-Gg: ASbGncvz2OTcp9qfMbyYOC00h8Z2GujyD6uf678MHtlxRfhXP5RstlKVfCVYjqaRiaL
- iHkxwHZWFSeL/WDimxI43zE1IpAmzAtqmuVGOEvk8Ho5ifrFnrTkkCdDi30CZW7s0Sr0EEzNO/j
- wVXCdTg1MYRmxvGQQgdgQbddUzmZfuWsr//gRUQn42upuo9ELUvWkYeGnROySGSNoQR5oTkqU/N
- f9J4HnP4wjOWHApxR2rz+5wms+HSgZNCKNP3kxoh9etPutLALyJNNRzakYGmxvXWSleP4KxydUi
- Y16pjTlCrE0TcZqajA2NdSYbtFQWaeGr3YJTesPDnsj2cxWQ1r2wAzfz74M/giB37AQ96E2uNa7
- U4iTyySqg9HgdeijhiYJvrp+UNlIbDLOzAmWZpx/CCrtTZGaJ6FlUleN5xBE89TTnQtdfqZjffy
- cJZmU8Rnf/jAh0s/oShzDBPsc1IN9aS/3r6A5gtbHls5iY0Iz9TbpyQ5A=
-X-Google-Smtp-Source: AGHT+IE6G3/3QL/NrzoW29LEAqzzVlCMrcwoFxl6ReO/FwEdV0ppoYrI7y7xmOU70hbENwsrmew1og==
-X-Received: by 2002:a05:6000:2886:b0:426:d5bf:aa1 with SMTP id
- ffacd0b85a97d-429a7e99fbcmr1739756f8f.62.1761631703540; 
- Mon, 27 Oct 2025 23:08:23 -0700 (PDT)
+ AJvYcCUF+Flqq2JUKXxvVTNShxGuRZUULAKS7EzunSwWvy1E19TDu6hR6gvthxKSDw8c5b6trw+rUcrR7Q==@nongnu.org
+X-Gm-Message-State: AOJu0YysL+LL1GgLSBP6Op6bnuFv6+LIF7uLffnRnu4gM282HuIaEN4n
+ 5b8on+20L//oGavgQCyJWqwudOq7Z+sHWQYzeAl9Gtyt5IQgXPiTcZHYsr4qJOZ74AvkBQN3ZUD
+ EVwER2OY=
+X-Gm-Gg: ASbGncsvtORv4D2mwyfnq3AOT91/i6VKNjEYkjEMLcTKJutI3YxAAdCmMCVlGFr2Z5H
+ dqjyHe3JZRDndV7dS8i40570cQrub07gCAABDwu0PKGx0c15mlVAaBf+HG/zWF29AyXBHswL5sg
+ yqQLfGof9dDvruBX8iJe9XA5mcLXH02V1FxvCu6dWIjXEyD9kd3LP/U/3Lpx5XH0flTqSoJCsyb
+ f8kr9p8AN3XzjFyViFMFKMf0lwMpi3uJX8suiVZg0XwX+m+XbW7IgLIW2/g62YKAt3WQ/C+oU3r
+ bGIVuZ/Vt4uHBt5B2yGtM4LTp53281Ebm3+CD1AGVFC9Vfj055zcjBQzy1iH3Kq9IUmf2WkVOFY
+ ZiuNRM1C0vsRm94B00i4nSSZBT5onBggtaYQZK6+HXlAVm6ku9O2G8NVkGxNB2iYW93nC5IDhkI
+ JakDs2dtiATXDKowLYi/2IdXUZpNLc14iZ/zcH+3fxP/+QIcf382Sa0n0=
+X-Google-Smtp-Source: AGHT+IG8AgGTkhfVnAdja4F6R3Y38ls6nGTFw292Qxu+898jzmfEA3pFoTuM/WPGMrtKLD7dKTiGsA==
+X-Received: by 2002:a05:600d:6251:b0:471:ea1:a460 with SMTP id
+ 5b1f17b1804b1-4771816e8fdmr9281555e9.11.1761631745976; 
+ Mon, 27 Oct 2025 23:09:05 -0700 (PDT)
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-429952cbc16sm17718151f8f.15.2025.10.27.23.08.22
+ 5b1f17b1804b1-4771906af34sm10675755e9.14.2025.10.27.23.09.04
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Mon, 27 Oct 2025 23:08:23 -0700 (PDT)
+ Mon, 27 Oct 2025 23:09:05 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Mads Ynddal <mads@ynddal.dk>, Cameron Esfahani <dirty@apple.com>,
@@ -77,17 +77,17 @@ Cc: Mads Ynddal <mads@ynddal.dk>, Cameron Esfahani <dirty@apple.com>,
  Peter Maydell <peter.maydell@linaro.org>, Alexander Graf <agraf@csgraf.de>,
  Richard Henderson <richard.henderson@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v3 36/59] accel/hvf: Simplify hvf_log_*
-Date: Tue, 28 Oct 2025 06:42:12 +0100
-Message-ID: <20251028054238.14949-37-philmd@linaro.org>
+Subject: [PATCH v3 37/59] accel/hvf: Move hvf_log_sync to hvf_log_clear
+Date: Tue, 28 Oct 2025 06:42:13 +0100
+Message-ID: <20251028054238.14949-38-philmd@linaro.org>
 X-Mailer: git-send-email 2.51.0
 In-Reply-To: <20251028054238.14949-1-philmd@linaro.org>
 References: <20251028054238.14949-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::331;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x331.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -112,100 +112,49 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Richard Henderson <richard.henderson@linaro.org>
 
-Rely on the AddressSpace and MemoryRegion structures
-rather than hvf_slot.
+Right idea, wrong hook.  log_sync is called before using
+dirty bit data (which for hvf is already up-to-date),
+whereas log_clear is called before cleaning the range.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 Tested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- include/system/hvf_int.h |  3 ---
- accel/hvf/hvf-all.c      | 40 ++++++++++------------------------------
- 2 files changed, 10 insertions(+), 33 deletions(-)
+ accel/hvf/hvf-all.c | 11 ++++++-----
+ 1 file changed, 6 insertions(+), 5 deletions(-)
 
-diff --git a/include/system/hvf_int.h b/include/system/hvf_int.h
-index 5a57691885f..ee7ab689f45 100644
---- a/include/system/hvf_int.h
-+++ b/include/system/hvf_int.h
-@@ -24,9 +24,6 @@ typedef hv_vcpu_t hvf_vcpuid;
- typedef hv_vcpuid_t hvf_vcpuid;
- #endif
- 
--/* hvf_slot flags */
--#define HVF_SLOT_LOG (1 << 0)
--
- typedef struct hvf_slot {
-     uint64_t start;
-     uint64_t size;
 diff --git a/accel/hvf/hvf-all.c b/accel/hvf/hvf-all.c
-index 2efecdc9f40..361d658a186 100644
+index 361d658a186..4b0a1af9fdc 100644
 --- a/accel/hvf/hvf-all.c
 +++ b/accel/hvf/hvf-all.c
-@@ -203,45 +203,24 @@ static void hvf_set_phys_mem(MemoryRegionSection *section, bool add)
+@@ -223,12 +223,13 @@ static void hvf_log_stop(MemoryListener *listener,
      }
  }
  
--static void hvf_set_dirty_tracking(MemoryRegionSection *section, bool on)
--{
--    hvf_slot *slot;
--
--    slot = hvf_find_overlap_slot(
--            section->offset_within_address_space,
--            int128_get64(section->size));
--
--    /* protect region against writes; begin tracking it */
--    if (on) {
--        slot->flags |= HVF_SLOT_LOG;
--        hv_vm_protect((uintptr_t)slot->start, (size_t)slot->size,
--                      HV_MEMORY_READ | HV_MEMORY_EXEC);
--    /* stop tracking region*/
--    } else {
--        slot->flags &= ~HVF_SLOT_LOG;
--        hv_vm_protect((uintptr_t)slot->start, (size_t)slot->size,
--                      HV_MEMORY_READ | HV_MEMORY_WRITE | HV_MEMORY_EXEC);
--    }
--}
--
- static void hvf_log_start(MemoryListener *listener,
-                           MemoryRegionSection *section, int old, int new)
+-static void hvf_log_sync(MemoryListener *listener,
+-                         MemoryRegionSection *section)
++static void hvf_log_clear(MemoryListener *listener,
++                          MemoryRegionSection *section)
  {
--    if (old != 0) {
--        return;
-+    assert(new != 0);
-+    if (old == 0) {
-+        hvf_protect_clean_range(section->offset_within_address_space,
-+                                int128_get64(section->size));
-     }
--
--    hvf_set_dirty_tracking(section, 1);
- }
- 
- static void hvf_log_stop(MemoryListener *listener,
-                          MemoryRegionSection *section, int old, int new)
- {
--    if (new != 0) {
--        return;
-+    assert(old != 0);
-+    if (new == 0) {
-+        hvf_unprotect_dirty_range(section->offset_within_address_space,
-+                                  int128_get64(section->size));
-     }
--
--    hvf_set_dirty_tracking(section, 0);
- }
- 
- static void hvf_log_sync(MemoryListener *listener,
-@@ -251,7 +230,8 @@ static void hvf_log_sync(MemoryListener *listener,
-      * sync of dirty pages is handled elsewhere; just make sure we keep
-      * tracking the region.
+     /*
+-     * sync of dirty pages is handled elsewhere; just make sure we keep
+-     * tracking the region.
++     * The dirty page bits within section are being cleared.
++     * Some number of those pages may have been dirtied and
++     * the write permission enabled.  Reset the range read-only.
       */
--    hvf_set_dirty_tracking(section, 1);
-+    hvf_protect_clean_range(section->offset_within_address_space,
-+                            int128_get64(section->size));
- }
+     hvf_protect_clean_range(section->offset_within_address_space,
+                             int128_get64(section->size));
+@@ -253,7 +254,7 @@ static MemoryListener hvf_memory_listener = {
+     .region_del = hvf_region_del,
+     .log_start = hvf_log_start,
+     .log_stop = hvf_log_stop,
+-    .log_sync = hvf_log_sync,
++    .log_clear = hvf_log_clear,
+ };
  
- static void hvf_region_add(MemoryListener *listener,
+ static int hvf_accel_init(AccelState *as, MachineState *ms)
 -- 
 2.51.0
 

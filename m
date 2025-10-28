@@ -4,79 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6BA38CCF9E0
-	for <qemu-arm@archiver.kernel.org>; Tue, 28 Oct 2025 10:38:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F34FCCF9E0
+	for <qemu-arm@archiver.kernel.org>; Tue, 28 Oct 2025 10:48:51 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vDh5S-00053W-R7; Tue, 28 Oct 2025 06:37:58 -0400
+	id 1vDhFP-0002JK-Tm; Tue, 28 Oct 2025 06:48:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vDh5O-000525-CY
- for qemu-arm@nongnu.org; Tue, 28 Oct 2025 06:37:54 -0400
-Received: from mail-yx1-xb131.google.com ([2607:f8b0:4864:20::b131])
+ id 1vDhF7-00024K-9J
+ for qemu-arm@nongnu.org; Tue, 28 Oct 2025 06:47:58 -0400
+Received: from mail-yx1-xb133.google.com ([2607:f8b0:4864:20::b133])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vDh52-0004Sa-Ag
- for qemu-arm@nongnu.org; Tue, 28 Oct 2025 06:37:41 -0400
-Received: by mail-yx1-xb131.google.com with SMTP id
- 956f58d0204a3-63d97bcb898so9500455d50.0
- for <qemu-arm@nongnu.org>; Tue, 28 Oct 2025 03:37:31 -0700 (PDT)
+ id 1vDhF0-0005xv-Q9
+ for qemu-arm@nongnu.org; Tue, 28 Oct 2025 06:47:57 -0400
+Received: by mail-yx1-xb133.google.com with SMTP id
+ 956f58d0204a3-63cd60ca2b2so6282908d50.2
+ for <qemu-arm@nongnu.org>; Tue, 28 Oct 2025 03:47:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1761647849; x=1762252649; darn=nongnu.org;
+ d=linaro.org; s=google; t=1761648467; x=1762253267; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=+VogG5bJlckXRcgChjIj0RuzZ9xCrcFLVwzWctAbkNQ=;
- b=d+DiUCqYtmmBS8+975zWxJ+tsqDkRijRURwtqVwR9YGQsVcF5l87AHjhnY/3+BEZqf
- Gn+V5UG2/DQHvsxbuLomQ3M1eKXtMvkKTKrOCuLO0DJlM2DjKZ46INxA+d/UaHKlGMbL
- cHMVTqMwNZQAE3BwjIAnGF8vf7fAJGWxJvBpHOnpR8uUpZC9Ko52y2WDPXA0+3YdVIsK
- yk/h5uh2lHawn6jDv6COobIaU1J6D1cdS/f/xYt2iuR5f1zrXUZXPtmjg6EcJS0sLMdo
- JkzTxVimdhJR4KZb+DCPkl40+psiXOzonnhDyNJYOQV0F/84W2gJQfaLkaoZf3GLV7KH
- krOw==
+ bh=iRUNPzBvz0MRk1I0+mVwY+KKP1PmceJ3cj2K11a40gQ=;
+ b=vlj1UcbJee65U6knCj7Tf9hlh8dEcWTMYM2ti0XrUHrLI5/oUfjvZoR43kkkunCHBv
+ TDwhHJ6lwoZoeAGK2+afIQWKMYYAwuJNVsvRWpz43ymWG1fzM2bxzeAMh7Ic3tImSF5I
+ Xc6vo6lI1VD4ZJgaG4V1zZaxiG6Dn4inTPlGoqvnpXr7sDT7bjk0+Zgx07kG9/Bz5iUt
+ G7a9Pk2C+JQcljMa823LHJYN3FRlpDM0rg/FZ2h8hNH8BpLFVMB4AiCajF/EQUFuwdyh
+ 2nr1ulBmREzfINNcw+B6CEq8bhR+2zSEfsumZ9XrkcfrCyKKH5nakT79PTVoj9sT42df
+ MfGw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761647849; x=1762252649;
+ d=1e100.net; s=20230601; t=1761648467; x=1762253267;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=+VogG5bJlckXRcgChjIj0RuzZ9xCrcFLVwzWctAbkNQ=;
- b=c3oCKnRQO59pdo57MHRi6LDC7loa1wUcVhoBhiq0qnYYSLmeNG/A/YMt5EZGjLQ9Kf
- WFCGPeIkjz0poCfOW5U+oN85ZNGsz8KeX2PIpgGAk/x1WnJ5ayZWPb3bSKsb1IuJTuPs
- wFMy0RJNbfr+R0PFgyC+XTNYYGNwLzIu2gnsErQ0ByN9oZ4k4yd9DhlPHU64kdYnoTAI
- JL9MSKhTJyaCL/xfXMCwy1DkZSCH3dSya35OSKXqC338nqL8rlZKpo+TsFC2tVoUtPmE
- SFFh5t4A2r8CwyA3XRsL0ke0BGv2JROAkRlzVOFaKh9PQwste7gKKDT0XeQZWRWOaErS
- 5ihw==
+ bh=iRUNPzBvz0MRk1I0+mVwY+KKP1PmceJ3cj2K11a40gQ=;
+ b=pbSKdxeMOfAGmUFS2D/X1GlpQ81EXo3m1dzbPA7d0F4NOjcYdsUP4A6CM+/mp8X03h
+ dBXSDqhho+EUlEkYXYXw60SWFnt5l/IyiifG8X7JBlC6RiN97utaUGeEtA03YfMwXkGD
+ 2iInnjlkKW9MTpmureMobhznqZYZh+zbzX40D0UDul03z7CCO8YNNC5RnZqhdF0pv8ae
+ aO4zpCIZXHGh64ZO/iryxWriwVBtHEhfwsiZA0MApvDG25yDd75+57cJ5dab26A7UOSy
+ /b8LA0F3KJSKFNKkS1QGL1aAhbSkfoGW3HOlnow+ucs8mEpvezGYn8uzYwbulRxsd0c2
+ 0vhw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVUpwZopTzrvuWNAfRe9zFOxWCCWVt1InLtY485rBwJX016UaJ+HjjGxwebyvytD1cLfYJk+87AHQ==@nongnu.org
-X-Gm-Message-State: AOJu0YwYUQNUd4xp+vylVHHvzSAddCrMzd3AGhSxzs35EFWm328I4CGo
- pB/O0zMYk0wBv2y4iQw9OIyoEIV2R4AoLkRkVhGMBytpb56y7AcOzG66ingqJG4IBlOh07oJlhs
- jmiDaYCAsyyj6FAgk5hX/vFMmM5b63WNjPv6mTC2jEA==
-X-Gm-Gg: ASbGnct0g5fP6A72aKUFsUvIn/s+epqfq0EOXtHXPqFc9/TNSh3urToWu6cw9eNzf0E
- w4pdo+r2uX8TXlaTWOC0C7UYXZXtOqw85cqfeKKq0tizHAj8MN4wBcKVXmHGRps+PRZsw7Hti/s
- TAD3jbBh8bGKr9KPht0MaonBcml7jZC5rX34N49CIB8pSL6aB+PTeR4OjaY+Cok9nD9d+eCLp+9
- rQv8eVDBCKSbcpmkgd16TtrdENnQaIh1T3F9mz44hDOzo1q4e4Gd0PVuGN+CyaF2DE73xo6
-X-Google-Smtp-Source: AGHT+IEZAM4auEqB+WSe5eHf5tb55iV8XjvGstcJeiHBlHKfHtoDsSVBcEG6hbld83dOg2ELkk9OTMWNP1XOnCzzI68=
-X-Received: by 2002:a05:690e:4009:b0:63c:e8f2:2280 with SMTP id
- 956f58d0204a3-63f6c5efbe2mr1952247d50.2.1761647849413; Tue, 28 Oct 2025
- 03:37:29 -0700 (PDT)
+ AJvYcCVsG6o7GnTX+81tYq0xE+6OvxnqF4aErsgA3AKhXT1y+DYkcDN/PYasNUgtBf+gIMjtO3SXYyObJg==@nongnu.org
+X-Gm-Message-State: AOJu0YxQUtkrnSDNLHEoe2h5cbri4D7qRQ33FCouL9NzkV/B1dCrhD1K
+ yksS3jMZz5Gt/WmvzPQCvHEgEigIompQxcixANV9ryrff5i6aXyhUstXdyaWPA+ynLkAT7U1WWO
+ KgSDqLjsd79hHtxqRauffUhg597j+TygZz+ZgUyy2Ug==
+X-Gm-Gg: ASbGncs5waVJOV225bqfpbt0wazcuIOvnWsNcjVwi15WUL64N771NsFkba2BQi1ob7h
+ WfMCwjYKAf6xm+9MISzEl6t6Rsz+Heggaryy1JaQ3Ru6kTiZ8WkCa9J9jJEpQ0WAQ/RQtNTWQU5
+ qEUJo7QdMim94lAQpXRTZwPG23xjnOgnq0xXm85seausUr6T0LsTkFhXhCFNmJym4xtAMfMVRwu
+ MHUkAnu6W96Cj8L64jUkn6AbxsdcDr2Mm5Be3MkxJHHF6Xhfn4kp9n7PxoAkg==
+X-Google-Smtp-Source: AGHT+IGPTM2iiHEyDIVRewOlL4lqy7N51X3cCne5oqH6fh2JoZ/udWKHzozJ6CuHLv136CHYTxWli41gm645UgJuv0o=
+X-Received: by 2002:a53:ad81:0:b0:63e:2fdc:b59 with SMTP id
+ 956f58d0204a3-63f6b92fd73mr2069912d50.1.1761648466612; Tue, 28 Oct 2025
+ 03:47:46 -0700 (PDT)
 MIME-Version: 1.0
 References: <20251016140039.250111-1-eric.auger@redhat.com>
- <20251016140039.250111-8-eric.auger@redhat.com>
-In-Reply-To: <20251016140039.250111-8-eric.auger@redhat.com>
+ <3c963761-8587-4905-8c8b-60dda381262f@redhat.com>
+In-Reply-To: <3c963761-8587-4905-8c8b-60dda381262f@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 28 Oct 2025 10:37:17 +0000
-X-Gm-Features: AWmQ_bkTPwDs2fMRUDbNnqYdUbteCNQqyI7sAymkPHEOjuNAZpoZQ1cllrhnKtE
-Message-ID: <CAFEAcA_DSo7COpwXF_W4sMiwwmGvZy21GON7UbKWm4H5uDxb4A@mail.gmail.com>
-Subject: Re: [RESEND PATCH 7/7] hw/arm/virt: [DO NOT UPSTREAM] Enforce
- compatibility with older kernels
-To: Eric Auger <eric.auger@redhat.com>
+Date: Tue, 28 Oct 2025 10:47:35 +0000
+X-Gm-Features: AWmQ_bm1K-lEwZ9WEx-MK3kzDLu5Q3463OgitBiBK4EtAiNaXzAKaDYryZDPANk
+Message-ID: <CAFEAcA9LfL8cYka8Dr2t6oS4av+4+Gvso4ywoMb8ERcXVJETHQ@mail.gmail.com>
+Subject: Re: [RESEND PATCH 0/7] Mitigation of "failed to load
+ cpu:cpreg_vmstate_array_len" migration failures
+To: eric.auger@redhat.com
 Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
  cohuck@redhat.com, maz@kernel.org, oliver.upton@linux.dev, sebott@redhat.com, 
  gshan@redhat.com, ddutile@redhat.com, peterx@redhat.com, philmd@linaro.org, 
  pbonzini@redhat.com
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b131;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb131.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b133;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb133.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -99,56 +99,44 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, 16 Oct 2025 at 15:01, Eric Auger <eric.auger@redhat.com> wrote:
+On Tue, 28 Oct 2025 at 10:05, Eric Auger <eric.auger@redhat.com> wrote:
 >
-> This is an example on how to use the new CPU options. This catters to
-> distributions who want machines to be migratable (forward and backward)
-> accross different host kernel versions in case KVM registers exposed
-> to qemu vary accross kernels. This patch is not meant to be upstreamed
-> as it is really kernel dependent. The goal is to illustrate how this
-> would be used.
 >
-> In this example, For 10_1 machines types and older we apply the following
-> host kernel related compats:
 >
-> 1) Make sure the KVM_REG_ARM_VENDOR_HYP_BMAP_2 exposed from v6.15 onwards
->    is ignored/hidden.
-> 2) Make sure TCR_EL1, PIRE0_EL1, PIR_EL1 are always seen by qemu
->    although not exposed by KVM. They were unconditionnally exposed before
->    v6.13 while from v6.13 they are only exposed if supported by the guest.
->
-> This will allow 10_1 machines types and older machines to migrate
-> forward and backward from old downstream kernels that do not feature
-> those changes to newer kernels (>= v6.15).
->
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> ---
->  hw/arm/virt.c | 19 +++++++++++++++++++
->  1 file changed, 19 insertions(+)
->
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 175023897a..c4f9b82c38 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -97,6 +97,23 @@ static GlobalProperty arm_virt_compat[] = {
->  };
->  static const size_t arm_virt_compat_len = G_N_ELEMENTS(arm_virt_compat);
->
-> +/*
-> + * if a 10_1 machine type or older is used:
-> + * 1) make sure TCR_EL1, PIRE0_EL1, PIR_EL1 are enforced, even if they are not
-> + *    exposed by the kernel
-> + * 2) hide KVM_REG_ARM_VENDOR_HYP_BMAP_2
-> + */
-> +static GlobalProperty arm_virt_kernel_compat_10_1[] = {
-> +    /* KVM_REG_ARM_VENDOR_HYP_BMAP_2 */
-> +    { TYPE_ARM_CPU, "kvm-hidden-regs", "0x6030000000160003" },
-> +    /* TCR_EL1, PIRE0_EL1, PIR_EL1 */
-> +    { TYPE_ARM_CPU, "kvm-enforced-regs",
-> +      "0x603000000013c103, 0x603000000013c512, 0x603000000013c513" },
+> On 10/16/25 3:59 PM, Eric Auger wrote:
+> > When migrating ARM guests accross same machines with different host
+> > kernels we are likely to encounter failures such as:
+> >
+> > "failed to load cpu:cpreg_vmstate_array_len"
+> >
+> > This is due to the fact KVM exposes a different number of registers
+> > to qemu on source and destination. When trying to migrate a bigger
+> > register set to a smaller one, qemu cannot save the CPU state.
+> >
+> > For example, recently we faced such kind of situations with:
+> > - unconditionnal exposure of KVM_REG_ARM_VENDOR_HYP_BMAP_2 FW pseudo
+> >   register from v6.16 onwards. Causes backward migration failure.
+> > - removal of unconditionnal exposure of TCR2_EL1, PIRE0_EL1, PIR_EL1
+> >   from v6.13 onwards. Causes forward migration failure.
 
-Strings which are lists of long hex numbers? Is there a
-more readable way to do this?
+> Gentle ping.
+>
+> Any comments on the approach?
 
+A couple of general remarks:
+
+(1) This isn't KVM specific -- see e.g. commit 4f2b82f60
+where we had to add back a fake cpreg to un-break forward
+migration of TCG CPUs. So our handling of this kind of problem
+shouldn't be restricted to only working with KVM.
+
+(2) essentially we're re-inventing the migration compat
+support that VMStateDescriptions provide. That's kind of
+unavoidable because of the way I implemented cpreg migration
+years ago, but is there anything we can learn in terms of
+(a) required feature set and (b) trying to keep parallels
+between the two for the way things work ?
+
+thanks
 -- PMM
 

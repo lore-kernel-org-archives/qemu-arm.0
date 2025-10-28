@@ -4,111 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC4AFCCF9E0
-	for <qemu-arm@archiver.kernel.org>; Tue, 28 Oct 2025 15:28:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93561CCF9E0
+	for <qemu-arm@archiver.kernel.org>; Tue, 28 Oct 2025 15:42:40 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vDlcE-0002eo-Fl; Tue, 28 Oct 2025 11:28:07 -0400
+	id 1vDlpZ-0006Fv-I8; Tue, 28 Oct 2025 11:41:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vDlcD-0002eP-Cf
- for qemu-arm@nongnu.org; Tue, 28 Oct 2025 11:28:05 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vDlc3-0001wq-OU
- for qemu-arm@nongnu.org; Tue, 28 Oct 2025 11:28:05 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1761665269;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=qGQw+A1JTXD93/cdpqTomTVVOnhkKl/PoqaDHAqcED8=;
- b=CaHgOE35LMOmYIYSkwuXC9oSvTic1vOeKrDWo/DmGs+PSpRXjgUeEg6dSWSGXNJHZSLmRv
- WgedGindxG5D6e9ycPzZ2ytmjJ/XBoFUQiC727qJSDls1cBTzqe/TSC2Kyyeio9iH9cN2r
- VhGOMXmifIGpOEKcgrd1+l2eJ1t1e7c=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-85-XtAH7rjbNN27fC_P02p6Bw-1; Tue, 28 Oct 2025 11:27:48 -0400
-X-MC-Unique: XtAH7rjbNN27fC_P02p6Bw-1
-X-Mimecast-MFC-AGG-ID: XtAH7rjbNN27fC_P02p6Bw_1761665267
-Received: by mail-wm1-f72.google.com with SMTP id
- 5b1f17b1804b1-47105bfcf15so35089525e9.2
- for <qemu-arm@nongnu.org>; Tue, 28 Oct 2025 08:27:47 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761665267; x=1762270067;
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vDlpX-0006Ff-Gt
+ for qemu-arm@nongnu.org; Tue, 28 Oct 2025 11:41:51 -0400
+Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vDlpU-0004Il-Be
+ for qemu-arm@nongnu.org; Tue, 28 Oct 2025 11:41:51 -0400
+Received: by mail-ej1-x633.google.com with SMTP id
+ a640c23a62f3a-b6d855ca585so249335566b.0
+ for <qemu-arm@nongnu.org>; Tue, 28 Oct 2025 08:41:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1761666101; x=1762270901; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=qGQw+A1JTXD93/cdpqTomTVVOnhkKl/PoqaDHAqcED8=;
- b=GKAZKbBIL1ybIIjY6xgkUBV6uWKmlaki9a1ql5fHrNJTqtxwbJjkXPu0zRE4kw1NhC
- X93CZmoFTjmb61muN1udncMCeSv/5f+9oGzzZeRlUFmLcuzjlHe5/btO+htqg8h1wdfz
- hCtYF5lJPn4LhanS0f6vwcav8/GCUHFDT8rLXZc+QI7FrYJqQ4VWnWRxfqnyhEKfFfyS
- 0uAedNUh+hy5g4TtjvFxUx4TpaZH6gNnt/mGQM6X2OkUrAS0h6Dv7arkBzXf4/zTLxfu
- 0U0YjJN4l99LEJo4XuCCVK3LHGLpMNL2+8UZzxMGbL+cKO9NOZXbqkIMmROBCB7/hXNB
- e8ug==
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=WhEgdXYWOCMpTXbdV4K3qyicdeKHvfSYotTmYvSaLr0=;
+ b=s0ID2jg9VTX8s0FnzMN4V4iwrfV8xJ2Dab4CryP3FCBf27vszUgEn7WT2cHv3qQ+Cx
+ pSwmFQGcpeT9zkZaMKG35B7/nbhOpLHjJ5OJKb5k/0FOVjKWlvLFCpKlqso6avyLbdWx
+ UO/NcyX1otTjbmP/HbhHblNwLFhUbLzBDNLcP5QChIOVfGSFhZt1QbTSdK/jkURFWFul
+ He/xvp01EJ+QcGjMP8yjKsVPDh6fQLvBw/Q7/bJL7TKmctoLZouZgbNeKFIi5tmlw2kp
+ uZY5i267G2GoCCRgQVYzS53InXHrgBNZT6rZmbf0BY6WnP3CJ6Oagz3EVB+C9GU1wD2p
+ +AgQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1761666101; x=1762270901;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=WhEgdXYWOCMpTXbdV4K3qyicdeKHvfSYotTmYvSaLr0=;
+ b=LRL9iJ3HoAMUTnkCQMwpPJo4qp9tUtK3hvPZqJ2Rri3P0TyDBvKm3kW1K/9Wd7/FI/
+ ZoauEx7SuePfuiARm33WPFt4tLyLIUrTyUadeL/avrz3rdxo9waSDlQwoSbYpRkaBDnC
+ jeraMoA6vUIq/kIXUaDXZunLb9FyZwFSj+1R8sMrXwS4j84MiMKzu8fiewA3ynYRO4Xe
+ +cJwauWt+WEf5hYcCOkaWNhEUt42E1vPD5lC/Vjaq9QliBwdQTEKbG4mAZ3DSuSjBtZG
+ Ft1MCofYkbGmzDG99EmtDRZ7O50PFZXI/acRDynme00P08K2K0dVYteW/l5QQTRgzhVS
+ K6Sg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXN6zysAU8tagoH8vRpz5/0JtmfxTswDIgVlRD8CO5VYWo8jtxDnvcKNfI31tvn2KG81dVu+trb4w==@nongnu.org
-X-Gm-Message-State: AOJu0YyUY6LXFMyzaT8h6FuaIQqjTLV5r5ncVWqWPcuby7lOi0onA5Q2
- zwHnSNz5cyb7emwfQZCplBcKXbsLtsqLYpfRYGyyLEWVxg3SmCAtBNbvrwRtLFqVbACqZsu0KnM
- cXKFH9CqhniEx2/KJmiJ1b0QA8L9+vkPtCue8xaqCh3hIE7L2xRnNaA==
-X-Gm-Gg: ASbGncuzbylAiBxgDeSJwNbd6MHsgMSMfgX/6qK38S+8lEzp+iC820DRfqfija0jpK4
- znJdVln7FVFB+iaTIM3NWTqXsIYc7GbaqUHLKl6HX7pS/ipkJAI5bkbC2w36JXgG3PKPqwFuX7u
- /EBIGnj9RdV7DSCI0lEz1d1u+n19bhFDdWagX772c1d6+nLOXojjC/oDGdoZ6oO7zjmuvLjdTtW
- qS629pHCNz2jxII5Gbm/xogZqgmLEs2mVFLfk5dkfdYOEuJlsHuRBoG9rbOClzYirYm5Ls7iJd6
- pPDpy3Kg5nyY2uuGsiv+1FS/Ih4KhAGFokGfi9XttsdR2y/3jQqPW3VZ+GdzWFWq53XpKNmeIjo
- NSpqoyHPU6YcozdbYDM2YPn91FKdGvCGsUY+ls3wix9o9Qg==
-X-Received: by 2002:a05:600c:4ecc:b0:46e:37a7:48d1 with SMTP id
- 5b1f17b1804b1-47717e6ac1cmr41288715e9.34.1761665266939; 
- Tue, 28 Oct 2025 08:27:46 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IE3Ld/qnc3/wN7I7cp03I6mkRUBEYJkmR3ltKfQUIKHVSTG0Woa3rNFDtS3ChQJFP9aB4QB3w==
-X-Received: by 2002:a05:600c:4ecc:b0:46e:37a7:48d1 with SMTP id
- 5b1f17b1804b1-47717e6ac1cmr41288415e9.34.1761665266509; 
- Tue, 28 Oct 2025 08:27:46 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-475dd478202sm200259115e9.14.2025.10.28.08.27.45
+ AJvYcCXU57wCCtLDVGKxLS9YJkEWXpzJw0svWrbkEsUJ0d44KSwiaJjMxZO/5yWOE5ZcpBrFVId42X4zng==@nongnu.org
+X-Gm-Message-State: AOJu0YxlcsQ5fIWVJgVi1YwH3GWRbPj7HPEkv3CmVfy5XNsCBtB0liLs
+ Xh1tvg+5Sp+dTBGPFqQeKzHrA3Y6VGsS9Fja2nW2e80vEjlyc0dJVSmYf+Ip2Ppn0eg=
+X-Gm-Gg: ASbGncs3YCxYfYxPumzagm69r0ei44P27wxs+6crC/BH6cYqgixnZPN5YiHAMMOl/Pd
+ MgQXh7ikkQL4Z1p7nJk8h06WQ4Ly+0TZpZ7j9Q+bkiY0hX9uIKeoL+q6HARiS/uRNvrHNlVc3sj
+ rqBAlQnd+7bH6FTTRhcH6J3AP+tf7gAQF1orjzJ0mek3EoF1qdDUTCmLJFU7v1XWcJ9nCnnkb9I
+ uqcqVlASWN2Ty+jCVjNxGADRybLZsnu6s99FrOKfbU8EAk9PnvWGjqctc1aQDqP0K1h6Yx/H0KE
+ K0KTnuT84QdfAMO8IY2MSmY8nnJyrn1xx2pj0FDPXz+NcAM76BZt4oSgRyDCcnqfjXfoQFQr1DN
+ kAeHfTjaa1l+TO3+M+DI8JZYRyGTiibj9uP16QKm95Q3q5pInLZfObGvLxzWFfytGEOtbrtmMkB
+ 09cncSvAgZlW/W7OZsy3ud8Vi7EDUO355coLWzn8kmGG4=
+X-Google-Smtp-Source: AGHT+IE/puHvSMWEyCjrzg4pbCHIK1YQGEGPCiK0Sh6xj/E+FqUaE2OiocE8gFuoCvht5swqRzyejw==
+X-Received: by 2002:a17:907:2d86:b0:b6d:3ad4:ecb5 with SMTP id
+ a640c23a62f3a-b70328da2bdmr707566b.40.1761666101171; 
+ Tue, 28 Oct 2025 08:41:41 -0700 (PDT)
+Received: from [192.168.69.201] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-b6d853f9a0fsm1117874166b.50.2025.10.28.08.41.39
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 28 Oct 2025 08:27:45 -0700 (PDT)
-Message-ID: <84affea6-414b-44c0-bc80-738e8348a333@redhat.com>
-Date: Tue, 28 Oct 2025 16:27:44 +0100
+ Tue, 28 Oct 2025 08:41:40 -0700 (PDT)
+Message-ID: <0d2fcc9b-ad42-4668-a8bd-9ecb70c9822e@linaro.org>
+Date: Tue, 28 Oct 2025 16:41:39 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RESEND PATCH 0/7] Mitigation of "failed to load
- cpu:cpreg_vmstate_array_len" migration failures
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- cohuck@redhat.com, maz@kernel.org, oliver.upton@linux.dev,
- sebott@redhat.com, gshan@redhat.com, ddutile@redhat.com, peterx@redhat.com,
- philmd@linaro.org, pbonzini@redhat.com
-References: <20251016140039.250111-1-eric.auger@redhat.com>
- <3c963761-8587-4905-8c8b-60dda381262f@redhat.com>
- <CAFEAcA9LfL8cYka8Dr2t6oS4av+4+Gvso4ywoMb8ERcXVJETHQ@mail.gmail.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <CAFEAcA9LfL8cYka8Dr2t6oS4av+4+Gvso4ywoMb8ERcXVJETHQ@mail.gmail.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 3zISMXBFnsh9_cExfSPHpfU5frHnW6_FL42kW14BRfk_1761665267
-X-Mimecast-Originator: redhat.com
+Subject: Re: [PATCH v3 00/59] target/arm/hvf: Consolidate
 Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, Mads Ynddal <mads@ynddal.dk>,
+ Cameron Esfahani <dirty@apple.com>, qemu-arm@nongnu.org,
+ Roman Bolshakov <rbolshakov@ddn.com>,
+ Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>,
+ Phil Dennis-Jordan <phil@philjordan.eu>,
+ Mohamed Mediouni <mohamed@unpredictable.fr>,
+ Peter Collingbourne <pcc@google.com>, Alexander Graf <agraf@csgraf.de>,
+ Richard Henderson <richard.henderson@linaro.org>
+References: <20251028054238.14949-1-philmd@linaro.org>
+ <CAFEAcA-3SzHPmLc-huMnyNbZBnEwi5+fbPNuvCYJcvY7gYboEA@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <CAFEAcA-3SzHPmLc-huMnyNbZBnEwi5+fbPNuvCYJcvY7gYboEA@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::633;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x633.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -121,58 +107,32 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Peter,
-
-On 10/28/25 11:47 AM, Peter Maydell wrote:
-> On Tue, 28 Oct 2025 at 10:05, Eric Auger <eric.auger@redhat.com> wrote:
+On 28/10/25 14:10, Peter Maydell wrote:
+> On Tue, 28 Oct 2025 at 05:42, Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
 >>
+>> Missing review: 15, 18, 26, 32, 33, 38 (up to #41 could be merged)
+>>                  42, 43 (up to #49 could be merged)
+>>                  50+
 >>
->> On 10/16/25 3:59 PM, Eric Auger wrote:
->>> When migrating ARM guests accross same machines with different host
->>> kernels we are likely to encounter failures such as:
->>>
->>> "failed to load cpu:cpreg_vmstate_array_len"
->>>
->>> This is due to the fact KVM exposes a different number of registers
->>> to qemu on source and destination. When trying to migrate a bigger
->>> register set to a smaller one, qemu cannot save the CPU state.
->>>
->>> For example, recently we faced such kind of situations with:
->>> - unconditionnal exposure of KVM_REG_ARM_VENDOR_HYP_BMAP_2 FW pseudo
->>>   register from v6.16 onwards. Causes backward migration failure.
->>> - removal of unconditionnal exposure of TCR2_EL1, PIRE0_EL1, PIR_EL1
->>>   from v6.13 onwards. Causes forward migration failure.
->> Gentle ping.
->>
->> Any comments on the approach?
-> A couple of general remarks:
->
-> (1) This isn't KVM specific -- see e.g. commit 4f2b82f60
-> where we had to add back a fake cpreg to un-break forward
-> migration of TCG CPUs. So our handling of this kind of problem
-> shouldn't be restricted to only working with KVM.
+>> Since v2:
+>> - Improve host page size/mask uses (rth)
+>> - Remove cpu_test_interrupt in hvf_wfi (rth)
+> 
+> Richard found an issue with patch 32, so I'm going to
 
-interesting. I will see how this can be extended to TCG
->
-> (2) essentially we're re-inventing the migration compat
-> support that VMStateDescriptions provide. That's kind of
-> unavoidable because of the way I implemented cpreg migration
-> years ago, but is there anything we can learn in terms of
-> (a) required feature set and (b) trying to keep parallels
-> between the two for the way things work ?
+IIUC this is not an issue, just a worry about performance,
+whether getpagesize() implementation calls a syscall.
+Anyway I'll cache the value locally -- or better, maybe
+have qemu_real_host_page_size() doing that --.
 
-OK I will study that further.
+> take patches 1-30 into target-arm.next (patch 31 is
+> reviewed, but conceptually part of the next few patches
+> in the set which use the new functions it defines).
 
-Thank you for your suggestions!
+Thanks, this is really helpful!
 
-Eric
->
-> thanks
-> -- PMM
->
-
+Phil.
 

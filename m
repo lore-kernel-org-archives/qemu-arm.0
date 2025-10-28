@@ -4,96 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB501CCD1BF
-	for <qemu-arm@archiver.kernel.org>; Tue, 28 Oct 2025 06:22:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58950CCF9E0
+	for <qemu-arm@archiver.kernel.org>; Tue, 28 Oct 2025 06:23:41 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vDd6R-0005rn-6T; Tue, 28 Oct 2025 02:22:47 -0400
+	id 1vDd7E-0006Tv-RL; Tue, 28 Oct 2025 02:23:35 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vDd6O-0005nM-Mq
- for qemu-arm@nongnu.org; Tue, 28 Oct 2025 02:22:40 -0400
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vDd6M-0000Uy-Oo
- for qemu-arm@nongnu.org; Tue, 28 Oct 2025 02:22:40 -0400
-Received: by mail-wr1-x42a.google.com with SMTP id
- ffacd0b85a97d-427007b1fe5so4703618f8f.1
- for <qemu-arm@nongnu.org>; Mon, 27 Oct 2025 23:22:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1761632554; x=1762237354; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=hXwgMzbkRa9lVN9HUpv/wtEfpGvPebV/MvemfcmQGBs=;
- b=ECBWx2Z8fyGQEehrOQ1DhKCRiFxvQBXlC1UqgzzUZpfbITAwp7o/5bPY77t4hIfeDO
- TGQ8OwhUKMR5ekFWbqv+PTGI7qqfIPXIdyeRfBVeXNDWTKF9brdZd6XFlCWv5kHqudFi
- e9UKzu17u+CpOm4ngB7FXZc/0wEAwP7K039ItbAJK5mn6woG0SBulTcDpJdHhjs7q2Fb
- RHY7IPWlvRb93OK92SaQ2pZG2L1U4MTeP33bT+8N9Kn7QrhtOpNPcI3XuRkjC3S3tFu/
- x2guZFFRDZYgtkGTxGAWExpsvg3+0wYPwnHpxlpu1LAzSAjBYbN5LNoSfGLV/3q1CHwf
- KzUw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761632554; x=1762237354;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=hXwgMzbkRa9lVN9HUpv/wtEfpGvPebV/MvemfcmQGBs=;
- b=FqGrj4wT/d3ZbxPNNbQSFItd0I0arNw4pwoYROiWnE1ete9Iha2KLF5mKOBszSab3x
- ZlP+qfA52BK10w+Sz960VMFOJRRvaYSg+Vctt7rmyZxN2fXWFH9w63Fhsg//CegkdFFp
- hsKOEmTyhXpwpHxQXilcFnYj1hwXuE7hIStlXvU2NffiTVLbL9YSNE1k3U7emj508YlW
- jFJeOL2mdf2GhAXAzOSyL8mDYh3VMOjIxnjtcRhfP8cA4FPlJcasmoHUMCg/LhK6/lFQ
- tAq5Dd+k1N4C87FoRIWGRTMOARXkeZbndtWeh8gYOCFU8phMUdhMJ2PbOBottz71JJ5X
- URog==
-X-Forwarded-Encrypted: i=1;
- AJvYcCW+GM8wqynjNdniG1xYklAQ91unkW/RzZw59RNIfs5iaT5H02aHYKR0/51fGv+/7QF7vZVrLEFnww==@nongnu.org
-X-Gm-Message-State: AOJu0Yy22eZfcKeMFwoRhstQeoK62RHTfCBLagcpjZNgJz6Wrjon/ldc
- chDn+xmjVULsAveWHWnjFgZX+8gMhTx3UQEClkf89YQFC5Y775pZgs/jA9BtHcqclhQ=
-X-Gm-Gg: ASbGncuHkDTMJz4oRU9TUjQdHtYZvZVkYG0T9UovBoQ7gWnSGHbny3Et2kp+cTYyrHQ
- lUYUMnOQ9pdVeJj7XDG6F84XqxAN6IYanUihAZGGaEknAmi8EvZDFoBr7vnlQdP0l8uMW3W0y95
- /1ul5s/I1JyoxQS+IlXhiNQWoU4gYfMJsa1KESYFz4mdpqwTEp9wKlkevWP6DlsP+Y4TG36XsuH
- ut4wSkNXuSUpHavkHdXSdNxUqVNq7Ids/7V+ArF5iTdPdbx5TcKa8h4cTDSyhxupRwekQ1tACf0
- Hyu7bqJMCAy3XH57ZBEDZ5A5hLfv3+F/we3xdDua1u9X6oepW0TH8ojfnoqMaHXMt2X5JLHsynV
- /T5vdH4Idsz130wEYl2G1NMm8SdhfgsQ2C6ArzIMkBVnmoMM/izKfcyWd9Wn5/o2Ws70uIsK/so
- NjTyN9H4oqqTp+SJWHutmwXHZvEpwWusjHF83m6oQyCq0uLYj/uIQoZ/0=
-X-Google-Smtp-Source: AGHT+IFYoE0SswbNXBThHEKhBOsbGc8TvLh3juZIX9BKBrwhesx8c5z9wspKYFw/+Pu/6IczywwArg==
-X-Received: by 2002:a05:6000:2008:b0:428:3d1d:6d15 with SMTP id
- ffacd0b85a97d-429a7e9c957mr1563338f8f.57.1761632554435; 
- Mon, 27 Oct 2025 23:22:34 -0700 (PDT)
-Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-429952df682sm18216529f8f.43.2025.10.27.23.22.33
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Mon, 27 Oct 2025 23:22:34 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Mads Ynddal <mads@ynddal.dk>, Cameron Esfahani <dirty@apple.com>,
- qemu-arm@nongnu.org, Roman Bolshakov <rbolshakov@ddn.com>,
- Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>,
- Phil Dennis-Jordan <phil@philjordan.eu>,
- Mohamed Mediouni <mohamed@unpredictable.fr>,
- Peter Collingbourne <pcc@google.com>,
- Peter Maydell <peter.maydell@linaro.org>, Alexander Graf <agraf@csgraf.de>,
- Richard Henderson <richard.henderson@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v3 56/59] target/arm: Better describe PMU depends on TCG or HVF
-Date: Tue, 28 Oct 2025 06:42:32 +0100
-Message-ID: <20251028054238.14949-57-philmd@linaro.org>
-X-Mailer: git-send-email 2.51.0
-In-Reply-To: <20251028054238.14949-1-philmd@linaro.org>
-References: <20251028054238.14949-1-philmd@linaro.org>
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1vDd76-0006Kv-BR; Tue, 28 Oct 2025 02:23:25 -0400
+Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1vDd72-0000XI-8u; Tue, 28 Oct 2025 02:23:24 -0400
+Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
+ (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Tue, 28 Oct
+ 2025 14:23:08 +0800
+Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
+ (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
+ Transport; Tue, 28 Oct 2025 14:23:08 +0800
+To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
+ <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
+ <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
+ Stanley" <joel@jms.id.au>, "open list:All patches CC here"
+ <qemu-devel@nongnu.org>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>
+CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
+ <kane_chen@aspeedtech.com>
+Subject: [PATCH v1 00/16] Split AST2400, AST2600,
+ AST2700 and AST1030 SoC machines into separate source files for
+ maintainability
+Date: Tue, 28 Oct 2025 14:22:44 +0800
+Message-ID: <20251028062307.2410346-1-jamin_lin@aspeedtech.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42a.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=211.20.114.72;
+ envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX01.aspeed.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -106,81 +61,106 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
+From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Simplify PMU logic by rewriting '!KVM' as 'TCG || HVF'
-(ignoring QTest, because vCPUs are not available there).
+This series depends on the following patch series:
+https://patchwork.kernel.org/project/qemu-devel/cover/20251023100150.295370-1-jamin_lin@aspeedtech.com/
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- target/arm/cpu.c     |  2 +-
- target/arm/machine.c | 10 +++++-----
- 2 files changed, 6 insertions(+), 6 deletions(-)
+v1:
+ 1. Split each Aspeed machine into its own source file for better
+    readability and maintainability:
+    - Quanta-Q71L
+    - Supermicro X11
+    - Palmetto
+    - Bletchley
+    - fby35 BMC
+    - Facebook Fuji
+    - QCOM Firework
+    - QCOM DC-SCM V1
+    - GB200NVL
+    - Rainier
+    - Catalina
+    - AST2600 EVB
+    - AST2700 EVB
+    - AST1030 EVB
+ 2. Make aspeed_machine_ast2600_class_emmc_init() a shared API
+    for eMMC boot setup.
+ 3. Promote connect_serial_hds_to_uarts() to a public machine API
+    for reuse across platforms.
 
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index eaf76532eca..5a5a9994af0 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -1979,7 +1979,7 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-     if (arm_feature(env, ARM_FEATURE_PMU)) {
-         pmu_init(cpu);
- 
--        if (!kvm_enabled()) {
-+        if (tcg_enabled() || hvf_enabled()) {
-             arm_register_pre_el_change_hook(cpu, &pmu_pre_el_change, 0);
-             arm_register_el_change_hook(cpu, &pmu_post_el_change, 0);
-         }
-diff --git a/target/arm/machine.c b/target/arm/machine.c
-index 44a0cf844b0..80aa2e34b4b 100644
---- a/target/arm/machine.c
-+++ b/target/arm/machine.c
-@@ -1,7 +1,7 @@
- #include "qemu/osdep.h"
- #include "cpu.h"
- #include "qemu/error-report.h"
--#include "system/kvm.h"
-+#include "system/hvf.h"
- #include "system/tcg.h"
- #include "kvm_arm.h"
- #include "internals.h"
-@@ -943,7 +943,7 @@ static int cpu_pre_save(void *opaque)
- {
-     ARMCPU *cpu = opaque;
- 
--    if (!kvm_enabled()) {
-+    if (tcg_enabled() || hvf_enabled()) {
-         pmu_op_start(&cpu->env);
-     }
- 
-@@ -978,7 +978,7 @@ static int cpu_post_save(void *opaque)
- {
-     ARMCPU *cpu = opaque;
- 
--    if (!kvm_enabled()) {
-+    if (tcg_enabled() || hvf_enabled()) {
-         pmu_op_finish(&cpu->env);
-     }
- 
-@@ -1011,7 +1011,7 @@ static int cpu_pre_load(void *opaque)
-      */
-     env->irq_line_state = UINT32_MAX;
- 
--    if (!kvm_enabled()) {
-+    if (tcg_enabled() || hvf_enabled()) {
-         pmu_op_start(env);
-     }
- 
-@@ -1103,7 +1103,7 @@ static int cpu_post_load(void *opaque, int version_id)
-         }
-     }
- 
--    if (!kvm_enabled()) {
-+    if (tcg_enabled() || hvf_enabled()) {
-         pmu_op_finish(env);
-     }
- 
+Jamin Lin (16):
+  hw/arm/aspeed: Split Quanta-Q71L machine into a separate source file
+    for maintainability
+  hw/arm/aspeed: Split Supermicro X11 machine into a separate source
+    file for maintainability
+  hw/arm/aspeed: Split Palmetto machine into a separate source file for
+    maintainability
+  hw/arm/aspeed: Split Bletchley machine into a separate source file for
+    maintainability
+  hw/arm/aspeed: Split fby35 BMC machine into a separate source file for
+    maintainability
+  hw/arm/aspeed: Split Facebook Fuji machine into a separate source file
+    for maintainability
+  hw/arm/aspeed: Split QCOM Firework machine into a separate source file
+    for maintainability
+  hw/arm/aspeed: Split QCOM DC-SCM V1 machine into a separate source
+    file for maintainability
+  hw/arm/aspeed: Make aspeed_machine_ast2600_class_emmc_init() a common
+    API for eMMC boot setup
+  hw/arm/aspeed: Split GB200NVL machine into a separate source file for
+    maintainability
+  hw/arm/aspeed: Split Rainier machine into a separate source file for
+    maintainability
+  hw/arm/aspeed: Split Catalina machine into a separate source file for
+    maintainability
+  hw/arm/aspeed: Split AST2600 EVB machine into a separate source file
+    for maintainability
+  hw/arm/aspeed: Split AST2700 EVB machine into a separate source file
+    for maintainability
+  hw/arm/aspeed: Promote connect_serial_hds_to_uarts() to public machine
+    API
+  hw/arm/aspeed: Split AST1030 EVB machine into a separate source file
+    for maintainability
+
+ hw/arm/aspeed_eeprom.h                        |   25 -
+ include/hw/arm/aspeed.h                       |    2 +
+ hw/arm/aspeed.c                               | 1144 +----------------
+ hw/arm/aspeed_ast10x0_evb.c                   |  107 ++
+ hw/arm/aspeed_ast2400_palmetto.c              |   79 ++
+ hw/arm/aspeed_ast2400_quanta-q71l.c           |   85 ++
+ hw/arm/aspeed_ast2400_supermicrox11.c         |   80 ++
+ hw/arm/aspeed_ast2600_bletchley.c             |   95 ++
+ hw/arm/aspeed_ast2600_catalina.c              |  223 ++++
+ hw/arm/aspeed_ast2600_evb.c                   |   64 +
+ ...aspeed_eeprom.c => aspeed_ast2600_fby35.c} |  164 ++-
+ hw/arm/aspeed_ast2600_fuji.c                  |  138 ++
+ hw/arm/aspeed_ast2600_gb200nvl.c              |  109 ++
+ hw/arm/aspeed_ast2600_qcom-dc-scm-v1.c        |   54 +
+ hw/arm/aspeed_ast2600_qcom-firework.c         |   90 ++
+ hw/arm/aspeed_ast2600_rainier.c               |  197 +++
+ hw/arm/aspeed_ast27x0_evb.c                   |   86 ++
+ hw/arm/meson.build                            |   15 +-
+ 18 files changed, 1521 insertions(+), 1236 deletions(-)
+ delete mode 100644 hw/arm/aspeed_eeprom.h
+ create mode 100644 hw/arm/aspeed_ast10x0_evb.c
+ create mode 100644 hw/arm/aspeed_ast2400_palmetto.c
+ create mode 100644 hw/arm/aspeed_ast2400_quanta-q71l.c
+ create mode 100644 hw/arm/aspeed_ast2400_supermicrox11.c
+ create mode 100644 hw/arm/aspeed_ast2600_bletchley.c
+ create mode 100644 hw/arm/aspeed_ast2600_catalina.c
+ create mode 100644 hw/arm/aspeed_ast2600_evb.c
+ rename hw/arm/{aspeed_eeprom.c => aspeed_ast2600_fby35.c} (51%)
+ create mode 100644 hw/arm/aspeed_ast2600_fuji.c
+ create mode 100644 hw/arm/aspeed_ast2600_gb200nvl.c
+ create mode 100644 hw/arm/aspeed_ast2600_qcom-dc-scm-v1.c
+ create mode 100644 hw/arm/aspeed_ast2600_qcom-firework.c
+ create mode 100644 hw/arm/aspeed_ast2600_rainier.c
+ create mode 100644 hw/arm/aspeed_ast27x0_evb.c
+
 -- 
-2.51.0
+2.43.0
 
 

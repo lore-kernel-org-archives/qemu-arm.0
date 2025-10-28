@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F64CCCF9E0
-	for <qemu-arm@archiver.kernel.org>; Tue, 28 Oct 2025 06:02:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5AD2ECCD1BF
+	for <qemu-arm@archiver.kernel.org>; Tue, 28 Oct 2025 06:02:51 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vDcmO-0002B9-9A; Tue, 28 Oct 2025 02:02:00 -0400
+	id 1vDcnA-0003KJ-Iz; Tue, 28 Oct 2025 02:02:48 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vDcmM-00027t-It
- for qemu-arm@nongnu.org; Tue, 28 Oct 2025 02:01:58 -0400
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vDcn5-0003Cy-O4
+ for qemu-arm@nongnu.org; Tue, 28 Oct 2025 02:02:43 -0400
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vDcmK-0005dd-2Z
- for qemu-arm@nongnu.org; Tue, 28 Oct 2025 02:01:58 -0400
-Received: by mail-wm1-x32c.google.com with SMTP id
- 5b1f17b1804b1-47114a40161so62401985e9.3
- for <qemu-arm@nongnu.org>; Mon, 27 Oct 2025 23:01:55 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vDcn3-0005fC-Ia
+ for qemu-arm@nongnu.org; Tue, 28 Oct 2025 02:02:43 -0400
+Received: by mail-wr1-x429.google.com with SMTP id
+ ffacd0b85a97d-4270a3464caso2674346f8f.1
+ for <qemu-arm@nongnu.org>; Mon, 27 Oct 2025 23:02:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1761631314; x=1762236114; darn=nongnu.org;
+ d=linaro.org; s=google; t=1761631358; x=1762236158; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=g7MgKZFYNv4e6Tb/k+QoGSCvRTnlJxwa/GyB/qCuFpQ=;
- b=KV1EYiJp1g9f/6YPKnBAy7C4Fkts5Lqt8lrD+nR3SQoYcbWkFYO8QvYxGLbDq2aZJF
- vq+XQmZ4VJTZr88aK6TYv+fwqssFiMy2NHL7PGMTFN8HRkuRC2TCSGa7cuChkY8bQFY/
- E+nX/vlHPqVEDMdtGKK4rMrtm/UFkXTpQeAA3KLqFCzd79IRjUHou2s9JvK5EQ5NY1QM
- JCXPBn8zkqlBHV4TJPtquqTTUBPt+ndWtIxfxI13X1muY/YPkthyDtUtjMcZnwPJC0z7
- wEyXOuLxTs+TPpBP273hWUa5MleVT5B5ydREER+ie6C2fyp2BxAdIM3WKWJhU3ZxTN0I
- Px5Q==
+ bh=HxYM4u3dYFgXtTituwGbMoaQJ7IaJZc35NgLj0t32r4=;
+ b=PDDGQy4/UZztCcX7moDM78ef6Uuvxh+PJ/eXiDNkH169IEdu+C5ZWqNpS39YFN0XhS
+ DmnO8OI4KH6gc4ELIl18nCJs5WiSAOimUpEHVPMQZ1fe/6VUoVdqUSmCCGZlsvFZoZcB
+ pTQ8BSitTnP+3JVITz10sjYc2cE5lAUHMiGUGT0JCHNXS+Viz+nri/JA8a1v1QAXKo1r
+ PR6w/YF+8TjaE0n5RjUt6maEcqOE5Ar0Q9YT+Azc+Leubhaw/7eONCCzPfvnwWU3lYp2
+ +HIknwf4YDZUMIUou0F6z6oThe/ANpmvwYwz1gDGdvLxbj64N4qIDBOth7yaMPkY9+/4
+ p3ZA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761631314; x=1762236114;
+ d=1e100.net; s=20230601; t=1761631358; x=1762236158;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=g7MgKZFYNv4e6Tb/k+QoGSCvRTnlJxwa/GyB/qCuFpQ=;
- b=tRKarvA7Lr81hjY2wm4+csZh8xO0dDplXxdaqYRxUuwwzJvY7VTg5QSMqdUspOCxNj
- 1mIhuaHeCoVFE02FYeRxo6x3M1P5zn6ZGI+Bjxaq1cG5Aav8kpa0x8/uufnoNCEarHTr
- KptgyI3jpF7MQ1F3cwWGlK/L/sjgKVY8ZYdO6+PgEPg6cpZdMLD5boocVhB9vB0svmCl
- tumBBbH2V88rRpP6Y0/PySrZLubtZGIqpdMp3nmb2u+HOY8UfvnM+K1q3b+wnypJYa/4
- KL8VFqLCJzF19aRxS/vkzeFsxD2fGpynICAM5FSG9eYE5i8Rn2K5BrPYNJDOKtNFnlWc
- vUNw==
+ bh=HxYM4u3dYFgXtTituwGbMoaQJ7IaJZc35NgLj0t32r4=;
+ b=GppjcNNtZ2OR35M5KNgHeShuR78du9zYk1Bv9S0xhHAp3+41yqC/x/jFlIljdI9TqV
+ npccds8mMfDvWWvc/oQFNsWuybg0Kg/+IYG9Q3Ltw5HFO79Xl2IkyTyiXAxsqIAX0Rz3
+ tRbX7+Ue+WMmBBKmiUNRfl6ft9h1jNXZqI5RUzZ7RfHkjWR7Yy8/R/AuxpLHE/NhEkfn
+ iwHI954igoxNLYaK6xV14CyeYous9HdZ2zpSWiE9t5pb5I9WWwq2XFA3VgMwVMgnyL00
+ r3+9hK6fpUdGCtCw+PYX8wnmwVM/HCvrCj1wxLL8gQoZ23eZJN7HN+zMnZyBRmxeEcR8
+ vcMw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXAr2enRoWgwxZs0LWE52bICOV+IqtQrmrzofhYhHTlSeaNIUemMyjmjGfAzHVGApQSQNHe1IZEkw==@nongnu.org
-X-Gm-Message-State: AOJu0Yzc364edFsXkHo9vfQ67D/BZHt9YiA5I1p48oExRCmwpWl48lGo
- AlVwRmUXM5sQ7X4Uj8eTMl1bWuXXrg+z6Rm8w7EXdGcGhOwAYAQFGKUsVaD8pBkEgU0=
-X-Gm-Gg: ASbGncuCgAecZaYYbTQ2Be8B8BS+MfOzb6XtU79szXDX5x6+GOu+g4QP/MwvLvWR85o
- Rne4osxq5TrXbETYpp2Yi5tMlAXqw7eGHPWntspjlNhXNbuuBoJYot+Oz+qUuV4ubKbQ9XBr2K3
- D605j73zCm3ZH+5w+rAk4OuOnMlbvDzyaIuY741TcrMM7pAATjRp2PGjQZhCD9WDSpqRZ9vWZbu
- H/UeN4S6jQz1gsgQ0QdMt8XmRW3kDSMIHf1ZQZ8vKbGTg6/vWwaGtecnecM7RaRQV/h+HmXre0S
- Gj4jlbRkeFVjjK61VGyjboQ8W25IBjanDdBJdY1hAiZqCD8aIHs7V4pxsCKxh1C2nWqtkj8G4MJ
- 4wyUv5kUXs5iqo7w/XySyA7naXzRk+wNqPrGV9Ir/loO12DU0BZw91UBfteIqqUUZLzQ1TEKw+9
- NRaX4F+m46+ByBXnuBsGQojvTUsIJCfcfwddjoyzoR31MSvNJemrHTz30=
-X-Google-Smtp-Source: AGHT+IFgn08EvjBhheTuphmBUBpmrDoN47Vrk7ZdoVRxwDSRdNnxJ2r5Qt+0rxuKwcfzFW45IKleQw==
-X-Received: by 2002:a05:600c:3d98:b0:471:131f:85b7 with SMTP id
- 5b1f17b1804b1-47717dfc5ebmr15621175e9.15.1761631314171; 
- Mon, 27 Oct 2025 23:01:54 -0700 (PDT)
+ AJvYcCWatuUcSP3bBzBBJRL3LEX4tUjNgHqHmHDs+ICg/BZ3LO3cWrA3yOzh6U+1wR0HE9DPDU1dZmszMw==@nongnu.org
+X-Gm-Message-State: AOJu0YzRbYI3Sx1lht2N9X7thPQBZmiA3dIyelgXEmgDbOvKAKbQb2+n
+ m7JHK0gDKMO7tT1mY/pDLhXJJebUiP26KFSzLcDExFM/2SwF7XHC7DsL+WyhFfmaVFU=
+X-Gm-Gg: ASbGncstuA4Q6tgHEVi2g0h13JJSMbDBob7mSqbyh2TMFtHQVaNTHTvNKFiyYmV/Bxv
+ 9bk9imSRBn3AxYdzTsPlu7OaCeD6pmy/C2NMHiIJ5cl2rN1U7ptmXfRDc7Jl+hUBVXmept/2mIM
+ KM0VwyhlWziLMZ7SRCXNZmtGt0G0oAtHp50aoemwZ3Apn9c8ZnorPjkMjzeuYE0Ss6Dq38NmCpn
+ PfTLCF8xITws0PWdN+6alWZXF3CVWiMDW7sgNo9ZufThH1EUbiuetl5oCmhreaf7oL1bApmhkcQ
+ HLEkvmLLwsHMBSax0NqKGgc/HwCS24249M3Q3YOI4TgbgYeqygtTU7HDX47ob7uyhp+vZijm+YV
+ zjNJIVzN4RENvpGNBI3c8l31XQ70b01IK4UT+n8Zrf4GZamD/+iimHbKuUD2wWF1ZIvujc1cTf2
+ HcZgHtRQ92mrkDt06jtxme7Wf6HgODBaiftjlsnNtl4fZL3JQ20IYTeNs=
+X-Google-Smtp-Source: AGHT+IHbRvYiKx9tn6WuwU4E2OJ5IIlqD6krLj9AFlgNx6ARYvSvP/g/equMOrbkdaV9m9wO6UZ8pA==
+X-Received: by 2002:a05:6000:718:b0:429:a7f1:bdf4 with SMTP id
+ ffacd0b85a97d-429a7f1bf3emr1801823f8f.26.1761631358406; 
+ Mon, 27 Oct 2025 23:02:38 -0700 (PDT)
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-475dd4cc596sm179237715e9.15.2025.10.27.23.01.52
+ ffacd0b85a97d-429952cb55asm18305284f8f.17.2025.10.27.23.02.35
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Mon, 27 Oct 2025 23:01:53 -0700 (PDT)
+ Mon, 27 Oct 2025 23:02:36 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Mads Ynddal <mads@ynddal.dk>, Cameron Esfahani <dirty@apple.com>,
@@ -76,17 +76,18 @@ Cc: Mads Ynddal <mads@ynddal.dk>, Cameron Esfahani <dirty@apple.com>,
  Peter Maydell <peter.maydell@linaro.org>, Alexander Graf <agraf@csgraf.de>,
  Richard Henderson <richard.henderson@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v3 27/59] target/arm: Re-use arm_is_psci_call() in HVF
-Date: Tue, 28 Oct 2025 06:42:03 +0100
-Message-ID: <20251028054238.14949-28-philmd@linaro.org>
+Subject: [PATCH v3 28/59] target/arm: Share ARM_PSCI_CALL trace event between
+ TCG and HVF
+Date: Tue, 28 Oct 2025 06:42:04 +0100
+Message-ID: <20251028054238.14949-29-philmd@linaro.org>
 X-Mailer: git-send-email 2.51.0
 In-Reply-To: <20251028054238.14949-1-philmd@linaro.org>
 References: <20251028054238.14949-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::429;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x429.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -109,36 +110,70 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Re-use arm_is_psci_call() instead of open-coding it.
+It is useful to compare PSCI calls of the same guest running
+under TCG or HVF.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/hvf/hvf.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ target/arm/hvf/hvf.c    | 3 ++-
+ target/arm/tcg/psci.c   | 3 +++
+ target/arm/trace-events | 3 +++
+ 3 files changed, 8 insertions(+), 1 deletion(-)
 
 diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index 26bafee259e..a3bb71e63b9 100644
+index a3bb71e63b9..f31b6e54ee7 100644
 --- a/target/arm/hvf/hvf.c
 +++ b/target/arm/hvf/hvf.c
-@@ -1934,7 +1934,7 @@ static int hvf_handle_exception(CPUState *cpu, hv_vcpu_exit_exception_t *excp)
-         break;
-     case EC_AA64_HVC:
-         cpu_synchronize_state(cpu);
--        if (arm_cpu->psci_conduit == QEMU_PSCI_CONDUIT_HVC) {
-+        if (arm_is_psci_call(arm_cpu, EXCP_HVC)) {
-             if (!hvf_handle_psci_call(cpu)) {
-                 trace_hvf_unknown_hvc(env->pc, env->xregs[0]);
-                 /* SMCCC 1.3 section 5.2 says every unknown SMCCC call returns -1 */
-@@ -1947,7 +1947,7 @@ static int hvf_handle_exception(CPUState *cpu, hv_vcpu_exit_exception_t *excp)
-         break;
-     case EC_AA64_SMC:
-         cpu_synchronize_state(cpu);
--        if (arm_cpu->psci_conduit == QEMU_PSCI_CONDUIT_SMC) {
-+        if (arm_is_psci_call(arm_cpu, EXCP_SMC)) {
-             advance_pc = true;
+@@ -34,6 +34,7 @@
+ #include "target/arm/internals.h"
+ #include "target/arm/multiprocessing.h"
+ #include "target/arm/gtimer.h"
++#include "target/arm/trace.h"
+ #include "trace.h"
+ #include "migration/vmstate.h"
  
-             if (!hvf_handle_psci_call(cpu)) {
+@@ -1025,7 +1026,7 @@ static bool hvf_handle_psci_call(CPUState *cpu)
+     int target_el = 1;
+     int32_t ret = 0;
+ 
+-    trace_hvf_psci_call(param[0], param[1], param[2], param[3],
++    trace_arm_psci_call(param[0], param[1], param[2], param[3],
+                         arm_cpu_mp_affinity(arm_cpu));
+ 
+     switch (param[0]) {
+diff --git a/target/arm/tcg/psci.c b/target/arm/tcg/psci.c
+index cabed43e8a8..2d409301578 100644
+--- a/target/arm/tcg/psci.c
++++ b/target/arm/tcg/psci.c
+@@ -25,6 +25,7 @@
+ #include "internals.h"
+ #include "arm-powerctl.h"
+ #include "target/arm/multiprocessing.h"
++#include "target/arm/trace.h"
+ 
+ bool arm_is_psci_call(ARMCPU *cpu, int excp_type)
+ {
+@@ -79,6 +80,8 @@ void arm_handle_psci_call(ARMCPU *cpu)
+          */
+         param[i] = is_a64(env) ? env->xregs[i] : env->regs[i];
+     }
++    trace_arm_psci_call(param[0], param[1], param[2], param[3],
++                        arm_cpu_mp_affinity(cpu));
+ 
+     if ((param[0] & QEMU_PSCI_0_2_64BIT) && !is_a64(env)) {
+         ret = QEMU_PSCI_RET_NOT_SUPPORTED;
+diff --git a/target/arm/trace-events b/target/arm/trace-events
+index 72a2c7d0969..676d29fe516 100644
+--- a/target/arm/trace-events
++++ b/target/arm/trace-events
+@@ -23,3 +23,6 @@ arm_powerctl_set_cpu_on(uint64_t mp_aff, unsigned target_el, const char *mode, u
+ arm_powerctl_set_cpu_on_and_reset(uint64_t mp_aff) "cpu %" PRIu64
+ arm_powerctl_set_cpu_off(uint64_t mp_aff) "cpu %" PRIu64
+ arm_powerctl_reset_cpu(uint64_t mp_aff) "cpu %" PRIu64
++
++# tcg/psci.c and hvf/hvf.c
++arm_psci_call(uint64_t x0, uint64_t x1, uint64_t x2, uint64_t x3, uint32_t cpuid) "PSCI Call x0=0x%016"PRIx64" x1=0x%016"PRIx64" x2=0x%016"PRIx64" x3=0x%016"PRIx64" cpuid=0x%x"
 -- 
 2.51.0
 

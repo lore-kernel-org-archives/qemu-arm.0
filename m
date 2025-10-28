@@ -4,74 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29F20CCD1BF
-	for <qemu-arm@archiver.kernel.org>; Tue, 28 Oct 2025 12:02:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41B2CCCD1BF
+	for <qemu-arm@archiver.kernel.org>; Tue, 28 Oct 2025 12:07:07 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vDiOz-0000XS-0q; Tue, 28 Oct 2025 08:02:13 -0400
+	id 1vDiTT-0001s9-DY; Tue, 28 Oct 2025 08:06:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1vDiOt-0000WG-Ok
- for qemu-arm@nongnu.org; Tue, 28 Oct 2025 08:02:07 -0400
-Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
+ id 1vDiTQ-0001rl-Bj
+ for qemu-arm@nongnu.org; Tue, 28 Oct 2025 08:06:48 -0400
+Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1vDiOf-0000S5-B9
- for qemu-arm@nongnu.org; Tue, 28 Oct 2025 08:02:07 -0400
-Received: by mail-ej1-x62a.google.com with SMTP id
- a640c23a62f3a-b6d345d7ff7so74114766b.1
- for <qemu-arm@nongnu.org>; Tue, 28 Oct 2025 05:01:52 -0700 (PDT)
+ id 1vDiTH-0001DO-05
+ for qemu-arm@nongnu.org; Tue, 28 Oct 2025 08:06:48 -0400
+Received: by mail-ed1-x533.google.com with SMTP id
+ 4fb4d7f45d1cf-63c489f1e6cso9382052a12.1
+ for <qemu-arm@nongnu.org>; Tue, 28 Oct 2025 05:06:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1761652910; x=1762257710; darn=nongnu.org;
+ d=linaro.org; s=google; t=1761653191; x=1762257991; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:content-language:from
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=ycLScXY9J/asCOE3L2rjsr+XkAIASPr7CwZbCPXlGvU=;
- b=CjIpAVv48D3yAxoc8EMKYA7G8axPmI5zyNGF6EhN+qZ0fS2/6YFzgO+hgXftXWIkNG
- hl9IJdUIwFDoN+n7zcAXa+XV4S/LfwAOQPQOgRPD2/WlHG9i46iIDp/zaZEY3vWdxJZn
- wqONYE7Puoty1ULJ458I+4IzOqkF2nuuraVXcjte3ZTW7ITL431vuhxsWwW1vj0omZYi
- OU4hIgQV2FvFLQaWterF64xdDKkIajoLeCgq070+d6wdPdq8KlrWILE/al6gytphr3re
- EFzlzArtSVADPymhxYq8Ha6zcWbGnNGDZ6uCwAMAj70fo2E7RdSmfZ720GR2Hx2KEfU/
- CD6g==
+ bh=DiblWjC4DiNmcx2LtiI+WmPU3NjmS1h1O2vd3ai/7E8=;
+ b=yYg6JLaXmmUmccY2LWZsiMu4d3ZRr907Vw0vX+WMGRqicXh9jpGuJe676IcVyKNQdd
+ xlJM84Kgs5C87UYr0t2mR9yFyHqazDCH2vKzThaO+FmLHvI/NQbsSbmY8sUGWOy4Xkzg
+ copSN0MG4l+1YP2JdhHXqTjoL4D3wiONfaBA7pTks+fu0Nj4dFQMxRHla7rL7onMLT0w
+ 46SY9Qx3O+fD5tefdxTcFmrDCuo7TcuMwecx+P1gzDoUYQTndi/GhB+2B4UI8lh+RAn5
+ xLaO260Tng4a5gx8sTEUVscrhv1O/YsoLrsr1hkBY8Q8R3cg77BpQgCfsf5ynjXBZahI
+ ot9g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761652910; x=1762257710;
+ d=1e100.net; s=20230601; t=1761653191; x=1762257991;
  h=content-transfer-encoding:in-reply-to:content-language:from
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=ycLScXY9J/asCOE3L2rjsr+XkAIASPr7CwZbCPXlGvU=;
- b=Lavov2nDThHQNIQnx2wpzbAVLtoyy0vcOz5qTWQMb0w6arEWq313Jx8oiFbtQnKXO6
- B5R/4uvCrGO2/d9RLxqzSQfSOUPoLgp1SzAcUsY7bf4leKAhwQKfklWl6bJ41q0On9Ff
- js/40xUe1R8dvfb1HdJUuCyfVnF46Hl6IJAFDs9X22AKgAm+RgAHWRmgCpdv2T/KNzKf
- 2pdK0cwBa88kkEW3cJ1V6SzdImq6jMIXUl65KLkwlM81clcNCzB+TjfdH8ZCJMMKGa3g
- Cbnp7IqIuHtM2sFgpd0OCyZ12D6YepVF0L45D08z3G57uKQs8veGAX7+n3zswgWbuT7F
- yenw==
+ bh=DiblWjC4DiNmcx2LtiI+WmPU3NjmS1h1O2vd3ai/7E8=;
+ b=UQYLt6fPXJ2hh+0Xpq3Yfr6BHFF58HtZHj+j5xfO8niKKtlYwDZPjgAwRoaOkprowj
+ rKuTaW6vgGAasbPQPI1C03f0eB/Gp54HJIqwYs1OoDELpGs8N15r+Dan237CsQjdGo1M
+ A1JX8mifj8ZTOPw1H9UkiSFK1zbGqPcU/wAzuNZF/hHxR4WCRMQXk54MLAdh1PjlZBW5
+ AeDORXUiccTlQ+oA2pQAzmQVc50xyKT5tQSCS7BNk39zPHHSW/oV9hmT1mm39MZyrZVX
+ c975hULomo9V2fmHrBbWhzpHUJ2ZwWDImMEGH/uq9tG2u3NNwTZT7D/+cbTezscd4WuS
+ BdWw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXHWiC/u6S4aRTiULuCQhBZ+vh3nPASI2gT61OgzPhRWFCjR6x9QuUs5jlWz5aSMUryGooOj+0K6w==@nongnu.org
-X-Gm-Message-State: AOJu0Yz02/aJ0t4i5Udb3d1fAyvMAWfw3ayrt2qvfCRgz770ZxbY3obf
- 2Ydy6WnQrQ0TCsIM/3a5FYRLcg1rpoIR5O+q/VNZpeNxlpP4kXtRjpQLb1BEzYR5mCQ=
-X-Gm-Gg: ASbGncuxMKGnmeMA3Imt4OExMnEe73AyK5OkKxXJhExnIYf76pbZWBEliG5XaItr691
- +IQgHegzc/kxWK0E8Dem66quP60erFMoEtbLHSWD0ekYJNC6o3QMXEZ9PtUCj/fexhnUX0CkS4q
- S8v4RGaDcpJqaT5UgjTTBydYC7METLPjIQt/1cnb9vpnxHA40kmovXcYDyI2DYNFE+9xTKM2HKJ
- FB/YxULLcWJOYAapl/XVuwFons0t8RxOf18y1QRT2slYbtckKbUKtzLcCaY3TZUmKKyyDEQWirN
- so/hS91ZxzYmMjoY/oXAxVbBI1XTfYZBRzOf/aHADl/DtE618j5+3W1gBMto9hr1BmoTj4rHrt8
- MSm1+jdI8nCwUKqvNDHQTzEnlHmmFIElMUCwKLyiWLEWbHZmfVmHnMGefKn+Eg5xeEhZRnMvcUv
- G0v8AtpNVm8zHRkpSB
-X-Google-Smtp-Source: AGHT+IHLDVweUzBUIAJvRB2B0+N2jjX9/zvKD3CQ8A/zpD84n3oQlgH29mo6qtHekqJY28nrbttJ9w==
-X-Received: by 2002:a17:907:3f83:b0:b4d:71e9:1662 with SMTP id
- a640c23a62f3a-b6dbc04da08mr309095366b.30.1761652910151; 
- Tue, 28 Oct 2025 05:01:50 -0700 (PDT)
+ AJvYcCUIX3KCpagomRiH5AvjXM9eHBtqUlY9KXHct9WwQZdrOmJGsBvnNXIHP/R4C3xt4Wqa5JEw5Da/3Q==@nongnu.org
+X-Gm-Message-State: AOJu0YyFpizBmpv5hespu2C4mVl+BpjJ9OFx3zAeP9IHn9z4bTccErHZ
+ PQ7lclOgMtReRGzgc5gkiiXvcdFSBj3uqV86IbjXOYRd+pg+UnqMn8QCNuBo0HIF2ds=
+X-Gm-Gg: ASbGnctoouVwgapzdWEJvbyVfUiGLWV3EopphhyH3AB6JqkieWRU39410BPSe6GkjYN
+ +Di5YhwYy8/t8JmtMYJFH6aRh2aCbiwbKj9ydgqkkReCviJKcBsAPCd8UXT6elxQxAi5SAFRFpz
+ +lEGP1PP42CC5nGWB6BYWmh2PbtJZ6gOUy5nydVTiXL43xv2bx60qjCHHcxrHIBqpejSeF+pyy4
+ HtL1MuI0Xnp4ONVs/zDTy+tXE/8RQKDDYDMezQSL3gAlRX25qPtqjwGvI+FeJLszVi6vY4n4HIv
+ uZaEdK6B7mDvEOvTX7we6iXN7OcMysNt7b6XWhSQ1CgoL3TEJWEg9j+/CosWObigSf4FofmT4Tu
+ iULCTXQ/tH36uq1VUpORh9s3Wv2lqtE5Zmx7oIaVeguaO1OmuO5/vPiiibk+QT4pzjhYRsCB/KM
+ wZI7XagnKM3vIiT83r
+X-Google-Smtp-Source: AGHT+IGUHlIIuX9epxS+xGNB53RfyAbX7IlL0JTDzGSP/zqt9Ey4ebZeGdyj/WrrCD4RO1kQBuH45w==
+X-Received: by 2002:a05:6402:430e:b0:639:db35:62df with SMTP id
+ 4fb4d7f45d1cf-63f4bca71b9mr2683223a12.3.1761653191364; 
+ Tue, 28 Oct 2025 05:06:31 -0700 (PDT)
 Received: from [10.240.88.227] ([212.144.248.67])
  by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-b6d853696aesm1095895966b.30.2025.10.28.05.01.49
+ 4fb4d7f45d1cf-63e7ef829dasm8854771a12.13.2025.10.28.05.06.30
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 28 Oct 2025 05:01:49 -0700 (PDT)
-Message-ID: <12196f65-ad1c-4753-ac15-211567c77297@linaro.org>
-Date: Tue, 28 Oct 2025 13:01:47 +0100
+ Tue, 28 Oct 2025 05:06:30 -0700 (PDT)
+Message-ID: <f7a2dc18-ecad-4487-9b7d-f85618fc2ba5@linaro.org>
+Date: Tue, 28 Oct 2025 13:06:28 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 43/59] accel/hvf: Implement WFI without using pselect()
+Subject: Re: [PATCH v3 50/59] target/arm/hvf: Do not abort in
+ hvf_arm_get_*_ipa_bit_size()
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  qemu-devel@nongnu.org
 Cc: Mads Ynddal <mads@ynddal.dk>, Cameron Esfahani <dirty@apple.com>,
@@ -82,21 +83,21 @@ Cc: Mads Ynddal <mads@ynddal.dk>, Cameron Esfahani <dirty@apple.com>,
  Peter Collingbourne <pcc@google.com>,
  Peter Maydell <peter.maydell@linaro.org>, Alexander Graf <agraf@csgraf.de>
 References: <20251028054238.14949-1-philmd@linaro.org>
- <20251028054238.14949-44-philmd@linaro.org>
+ <20251028054238.14949-51-philmd@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
 Content-Language: en-US
-In-Reply-To: <20251028054238.14949-44-philmd@linaro.org>
+In-Reply-To: <20251028054238.14949-51-philmd@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62a;
- envelope-from=richard.henderson@linaro.org; helo=mail-ej1-x62a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::533;
+ envelope-from=richard.henderson@linaro.org; helo=mail-ed1-x533.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ T_SPF_TEMPERROR=0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -113,28 +114,26 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 10/28/25 06:42, Philippe Mathieu-Daudé wrote:
-> --- a/accel/hvf/hvf-accel-ops.c
-> +++ b/accel/hvf/hvf-accel-ops.c
-> @@ -128,14 +128,15 @@ static int hvf_init_vcpu(CPUState *cpu)
->       cpu->accel = g_new0(AccelCPUState, 1);
->   
->       /* init cpu signals */
-> +    sigset_t unblock_ipi_mask;
+> Do not abort in hvf_arm_get_default_ipa_bit_size()
+> and hvf_arm_get_max_ipa_bit_size() when the IPA can
+> not be fetched. Return 0 (and document it).
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
+>   target/arm/hvf_arm.h | 11 +++++++++++
+>   target/arm/hvf/hvf.c |  8 ++------
+>   2 files changed, 13 insertions(+), 6 deletions(-)
 
-Why introduce this?  Surely it's unused...
+Doesn't this just lead to a nonsensical error_report, e.g.
 
->       struct sigaction sigact;
->   
->       memset(&sigact, 0, sizeof(sigact));
->       sigact.sa_handler = dummy_signal;
->       sigaction(SIG_IPI, &sigact, NULL);
->   
-> -    pthread_sigmask(SIG_BLOCK, NULL, &cpu->accel->unblock_ipi_mask);
-> -    sigdelset(&cpu->accel->unblock_ipi_mask, SIG_IPI);
-> +    pthread_sigmask(SIG_BLOCK, NULL, &unblock_ipi_mask);
-> +    sigdelset(&unblock_ipi_mask, SIG_IPI);
+-m and ,maxmem option values require an IPA range (XX bits) larger than the one supported 
+by the host (0 bits)
 
-... apart from mere initialization.
+?
+
+Is there a reasonable way to populate an Error return?
+I guess this only happens with older versions of Darwin, because surely we can always 
+probe the supported IPA size...
 
 
 r~
